@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE verbs [
+    <!ELEMENT verbs (verb+)>
+    <!ELEMENT verb (verb*)>
+    <!ATTLIST verb in CDATA #REQUIRED>
+    <!ATTLIST verb tn CDATA #REQUIRED>
+    <!ATTLIST verb fa CDATA #REQUIRED>
+    <!ATTLIST verb fr CDATA #REQUIRED>
+    <!ATTLIST verb ay CDATA #IMPLIED>
+]>
+
+<verbs>
+  <verb in="an+k^om^men" tn="arrive" ay="s" fr="255" ag="kommen" fa="s" />
+  <verb in="be*k^om^men" tn="get, receive" fr="30" ag="kommen" fa="s" />
+  <verb in="b^ie^ten" tn="offer" fr="22" ag="bieten" fa="s" />
+  <verb in="bl^ei^ben" tn="stay, remain" ay="s" fr="23" ag="bleiben" fa="s" />
+  <verb in="br^ing^en" tn="bring" fr="27" ag="bringen" fa="m" />
+  <verb in="d^ürf^en" tn="may, be allowed to" fr="24" ag="dürfen" fa="m" />
+  <verb in="er*h^a^lten" tn="receive, obtain" fr="29" ag="halten" fa="s" />
+  <verb in="f^i^nden" tn="find" fr="11" ag="finden" fa="s" />
+  <verb in="führen" tn="lead" fr="26" fa="w" />
+  <verb in="g^e^ben" tn="give" fr="5" ag="geben" fa="s" />
+  <verb in="g^eh^en" tn="go, walk" ay="s" fr="10" ag="gehen" fa="s" />
+  <verb in="h^ab^en" tn="have" fr="3" ag="haben" fa="m" />
+  <verb in="h^a^lten" tn="hold, stop" fr="28" ag="halten" fa="s" />
+  <verb in="k^önn^en" tn="can, be able to" fr="4" ag="können" fa="m" />
+  <verb in="k^om^men" tn="come" ay="s" fr="9" ag="kommen" fa="s" />
+  <verb in="l^a^ssen" tn="let, allow, leave" fr="12" ag="lassen" fa="s" />
+  <verb in="l^ie^gen" tn="lie, be situated" fr="19" ag="liegen" fa="s" />
+  <verb in="machen" tn="make, do" fr="8" fa="w" />
+  <verb in="m^ög^en" tn="like, may" fr="18" ag="mögen" fa="m" />
+  <verb in="m^üss^en" tn="must, have to" fr="6" ag="müssen" fa="m" />
+  <verb in="n^ehm^en" tn="take" fr="20" ag="nehmen" fa="s" />
+  <verb in="sagen" tn="say, tell" fr="16" fa="w" />
+  <verb in="^sei^n" tn="be" ay="s" fr="1" ag="sein" fa="s" />
+  <verb in="s^e^hen" tn="see" fr="15" ag="sehen" fa="s" />
+  <verb in="s^i^ngen" tn="sing" fr="354" ag="singen" fa="s" />
+  <verb in="s^itz^en" tn="sit" fr="135" ag="sitzen" fa="s" />
+  <verb in="sollen" tn="should, ought, be obligated, shall" fr="7" fa="w" />
+  <verb in="st^eh^en" tn="stand" fr="14" ag="stehen" fa="s" />
+  <verb in="stellen" tn="put, place, set" fr="17" fa="w" />
+  <verb in="studieren" tn="study" fr="353" fa="i" />
+  <verb in="ver*st^eh^en" tn="understand" fr="64" ag="stehen" fa="s" />
+  <verb in="w^e^rden" tn="become" ay="s" fr="2" ag="werden" fa="s" />
+  <verb in="w^iss^en" tn="know" fr="25" ag="wissen" fa="m" />
+  <verb in="w^oll^en" tn="want" fr="13" ag="wollen" fa="m" />
+  <verb in="zeigen" tn="show" fr="21" fa="w" />
+</verbs>

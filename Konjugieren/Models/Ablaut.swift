@@ -4,7 +4,7 @@ import Foundation
 
 struct Ablaut: Hashable {
   let lettersToUse: String
-  var appliesTo: [ConjugationGroup]
+  var appliesTo: [Conjugationgroup]
 
   init(xmlString: String) {
     let separator = ","
@@ -14,8 +14,8 @@ struct Ablaut: Hashable {
     }
     lettersToUse = components[0]
     appliesTo = []
-    for conjugationGroup in components[1 ..< components.count] {
-      switch conjugationGroup {
+    for conjugationgroup in components[1 ..< components.count] {
+      switch conjugationgroup {
       // präsensIndicativ
       case "a1s":
         appliesTo.append(.präsensIndicativ(.firstSingular))
@@ -101,7 +101,7 @@ struct Ablaut: Hashable {
           appliesTo.append(.imperativ($0))
         }
       default:
-        fatalError("Unrecognized ConjugationGroup \(conjugationGroup) was encountered.")
+        fatalError("Unrecognized Conjugationgroup \(conjugationgroup) was encountered.")
       }
     }
   }

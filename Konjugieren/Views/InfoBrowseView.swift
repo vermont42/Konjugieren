@@ -41,7 +41,7 @@ struct InfoRowView: View {
 
         Text(subtitle)
           .font(.subheadline)
-          .foregroundStyle(.secondary)
+          .foregroundStyle(.primary)
       }
     }
     .padding(.vertical, 8)

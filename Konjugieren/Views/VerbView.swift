@@ -4,6 +4,16 @@ import SwiftUI
 
 struct VerbView: View {
   let verb: Verb
+  private var settings: Settings { Current.settings }
+
+  private func displayName(for group: Conjugationgroup) -> String {
+    switch settings.conjugationgroupLang {
+    case .german:
+      return group.germanDisplayName
+    case .english:
+      return group.englishDisplayName
+    }
+  }
 
   var body: some View {
     ScrollView {
@@ -27,18 +37,18 @@ struct VerbView: View {
         VStack(alignment: .leading, spacing: 20) {
           // Participles
           ConjugationSectionView(
-            title: ConjugationGroup.perfektpartizip.displayName,
+            title: displayName(for: .perfektpartizip),
             conjugations: [conjugate(.perfektpartizip)]
           )
 
           ConjugationSectionView(
-            title: ConjugationGroup.präsenspartizip.displayName,
+            title: displayName(for: .präsenspartizip),
             conjugations: [conjugate(.präsenspartizip)]
           )
 
           // Präsens Indikativ
           ConjugationSectionView(
-            title: ConjugationGroup.präsensIndicativ(.firstSingular).displayName,
+            title: displayName(for: .präsensIndicativ(.firstSingular)),
             conjugations: PersonNumber.allCases.map { pn in
               ConjugationRow(pronoun: pn.pronoun, form: conjugate(.präsensIndicativ(pn)))
             }
@@ -46,7 +56,7 @@ struct VerbView: View {
 
           // Präteritum Indikativ
           ConjugationSectionView(
-            title: ConjugationGroup.präteritumIndicativ(.firstSingular).displayName,
+            title: displayName(for: .präteritumIndicativ(.firstSingular)),
             conjugations: PersonNumber.allCases.map { pn in
               ConjugationRow(pronoun: pn.pronoun, form: conjugate(.präteritumIndicativ(pn)))
             }
@@ -54,7 +64,7 @@ struct VerbView: View {
 
           // Präsens Konjunktiv I
           ConjugationSectionView(
-            title: ConjugationGroup.präsensKonjunktivI(.firstSingular).displayName,
+            title: displayName(for: .präsensKonjunktivI(.firstSingular)),
             conjugations: PersonNumber.allCases.map { pn in
               ConjugationRow(pronoun: pn.pronoun, form: conjugate(.präsensKonjunktivI(pn)))
             }
@@ -62,7 +72,7 @@ struct VerbView: View {
 
           // Präteritum Konditional
           ConjugationSectionView(
-            title: ConjugationGroup.präteritumKonditional(.firstSingular).displayName,
+            title: displayName(for: .präteritumKonditional(.firstSingular)),
             conjugations: PersonNumber.allCases.map { pn in
               ConjugationRow(pronoun: pn.pronoun, form: conjugate(.präteritumKonditional(pn)))
             }
@@ -70,7 +80,7 @@ struct VerbView: View {
 
           // Imperativ
           ConjugationSectionView(
-            title: ConjugationGroup.imperativ(.secondSingular).displayName,
+            title: displayName(for: .imperativ(.secondSingular)),
             conjugations: imperativConjugations()
           )
         }
@@ -82,8 +92,8 @@ struct VerbView: View {
     .navigationBarTitleDisplayMode(.large)
   }
 
-  private func conjugate(_ group: ConjugationGroup) -> String {
-    switch Conjugator.conjugate(infinitiv: verb.infinitiv, conjugationGroup: group) {
+  private func conjugate(_ group: Conjugationgroup) -> String {
+    switch Conjugator.conjugate(infinitiv: verb.infinitiv, conjugationgroup: group) {
     case .success(let form):
       return form
     case .failure:

@@ -1,7 +1,7 @@
 // Copyright © 2025 Josh Adams. All rights reserved.
 
 enum Conjugator {
-  static func conjugate(infinitiv: String, conjugationGroup: ConjugationGroup) -> Result<String, ConjugatorError> {
+  static func conjugate(infinitiv: String, conjugationgroup: Conjugationgroup) -> Result<String, ConjugatorError> {
     guard infinitiv.count >= Verb.minVerbLength else {
       return .failure(.verbTooShort)
     }
@@ -14,31 +14,31 @@ enum Conjugator {
       return .failure(.verbNotRecognized)
     }
 
-    switch conjugationGroup {
+    switch conjugationgroup {
     case .präsensIndicativ:
       let stamm = verb.stamm
-      let ending = conjugationGroup.ending(family: verb.family)
-      let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationGroup: conjugationGroup)
+      let ending = conjugationgroup.ending(family: verb.family)
+      let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: conjugationgroup)
       return .success(isFullOverride ? newStamm : newStamm + ending)
     case .präsensKonjunktivI:
       let stamm = verb.stamm
-      let ending = conjugationGroup.ending(family: verb.family)
-      let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationGroup: conjugationGroup)
+      let ending = conjugationgroup.ending(family: verb.family)
+      let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: conjugationgroup)
       return .success(isFullOverride ? newStamm : newStamm + ending)
     case .präteritumIndicativ:
       let stamm = verb.stamm
-      let ending = conjugationGroup.ending(family: verb.family)
-      let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationGroup: conjugationGroup)
+      let ending = conjugationgroup.ending(family: verb.family)
+      let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: conjugationgroup)
       return .success(isFullOverride ? newStamm : newStamm + ending)
     case .präteritumKonditional:
       let stamm = verb.stamm
-      let ending = conjugationGroup.ending(family: verb.family)
-      let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationGroup: conjugationGroup)
+      let ending = conjugationgroup.ending(family: verb.family)
+      let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: conjugationgroup)
       return .success(isFullOverride ? newStamm : newStamm + ending)
     case .perfektpartizip:
       let stamm = verb.stamm
-      let ending = conjugationGroup.ending(family: verb.family)
-      let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationGroup: conjugationGroup)
+      let ending = conjugationgroup.ending(family: verb.family)
+      let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: conjugationgroup)
       if isFullOverride {
         return .success(newStamm)
       }
@@ -50,7 +50,7 @@ enum Conjugator {
       }
     case .präsenspartizip:
       let stamm = verb.stamm
-      let ending = conjugationGroup.ending(family: verb.family)
+      let ending = conjugationgroup.ending(family: verb.family)
       return .success(stamm + ending)
     case .imperativ(let personNumber):
       return conjugateImperativ(verb: verb, personNumber: personNumber)
@@ -63,7 +63,7 @@ enum Conjugator {
     switch personNumber {
     case .secondSingular:
       // Check for explicit i2s override first
-      let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationGroup: .imperativ(.secondSingular))
+      let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: .imperativ(.secondSingular))
       if isFullOverride {
         return .success(withSeparablePrefix(verb: verb, form: newStamm))
       }
@@ -85,7 +85,7 @@ enum Conjugator {
 
     case .secondPlural:
       // Check for explicit i2p override first.
-      let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationGroup: .imperativ(.secondPlural))
+      let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: .imperativ(.secondPlural))
       if isFullOverride {
         return .success(withSeparablePrefix(verb: verb, form: newStamm))
       }
@@ -95,12 +95,12 @@ enum Conjugator {
 
     case .firstPlural:
       // Check for explicit i1p override first.
-      let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationGroup: .imperativ(.firstPlural))
+      let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: .imperativ(.firstPlural))
       if isFullOverride {
         return .success(withSeparablePrefixAndPronoun(verb: verb, form: newStamm, pronoun: "wir"))
       }
       // wir form: use Konjunktiv I 1p (stamm + "en", or special form for sein)
-      let (konjStamm, konjOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationGroup: .präsensKonjunktivI(.firstPlural))
+      let (konjStamm, konjOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: .präsensKonjunktivI(.firstPlural))
       let form: String
       if konjOverride {
         form = konjStamm
@@ -111,12 +111,12 @@ enum Conjugator {
 
     case .thirdPlural:
       // Check for explicit i3p override first.
-      let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationGroup: .imperativ(.thirdPlural))
+      let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: .imperativ(.thirdPlural))
       if isFullOverride {
         return .success(withSeparablePrefixAndPronoun(verb: verb, form: newStamm, pronoun: "Sie"))
       }
       // Sie form: use Konjunktiv I 3p (stamm + "en", or special form for sein)
-      let (konjStamm, konjOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationGroup: .präsensKonjunktivI(.thirdPlural))
+      let (konjStamm, konjOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: .präsensKonjunktivI(.thirdPlural))
       let form: String
       if konjOverride {
         form = konjStamm
@@ -184,13 +184,13 @@ enum Conjugator {
     }
   }
 
-  private static func applyAblaut(stamm: String, verb: Verb, conjugationGroup: ConjugationGroup) -> (stamm: String, isFullOverride: Bool) {
+  private static func applyAblaut(stamm: String, verb: Verb, conjugationgroup: Conjugationgroup) -> (stamm: String, isFullOverride: Bool) {
     switch verb.family {
     case .strong(ablautGroup: let ablautKey, ablautStartIndex: let ablautStartIndex, ablautEndIndex: let ablautEndIndex),
     .mixed(ablautGroup: let ablautKey, ablautStartIndex: let ablautStartIndex, ablautEndIndex: let ablautEndIndex):
       if
         let ablautGroup = AblautGroup.ablautGroups[ablautKey],
-        let ablaut = ablautGroup.ablauts[conjugationGroup]
+        let ablaut = ablautGroup.ablauts[conjugationgroup]
       {
         // Check for full override (ablaut ending with "*").
         if ablaut.hasSuffix("*") {

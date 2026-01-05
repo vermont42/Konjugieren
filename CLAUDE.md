@@ -22,7 +22,7 @@ xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren -destination 'plat
 
 ## Architecture Overview
 
-Konjugieren is an iOS app for learning German verb conjugations. It will eventually conjugate 1,000 verbs across all German tenses.
+Konjugieren is an iOS app for learning German verb conjugations. It will eventually conjugate 1,000 verbs across all German conjugationgroups ("tenses" in ordinary (and incorrect) parlance).
 
 ## Project Structure
 
@@ -32,22 +32,37 @@ Konjugieren/
 │   ├── KonjugierenApp.swift    # Main app entry point
 │   ├── AppLauncher.swift       # Determines test vs production app
 │   └── TestApp.swift           # Test app configuration
+├── Assets/
+│   ├── Localizable.xcstrings   # Localization strings (JSON format)
+│   └── Assets.xcassets/        # Colors, app icon, images
 ├── Models/
 │   ├── Verb.swift              # Verb model with stamm computation
 │   ├── VerbParser.swift        # Parses Verbs.xml
 │   ├── Verbs.xml               # Verb definitions
 │   ├── Conjugator.swift        # Core conjugation logic
-│   ├── ConjugationGroup.swift  # Enum of conjugation groups with endings
+│   ├── Conjugationgroup.swift  # Enum of conjugationgroups with endings
+│   ├── ConjugationgroupLang.swift  # Setting enum: german/english
+│   ├── ThirdPersonPronounGender.swift  # Setting enum: er/sie/es
 │   ├── Ablaut.swift            # Ablaut parsing from XML strings
 │   ├── AblautGroup.swift       # Groups of ablauts for a verb pattern
 │   ├── AblautGroupParser.swift # Parses AblautGroups.xml
 │   ├── AblautGroups.xml        # Ablaut pattern definitions
 │   ├── Family.swift            # Verb families (strong/weak/mixed/ieren)
-│   ├── PersonNumber.swift      # 1s, 2s, 3s, 1p, 2p, 3p
+│   ├── PersonNumber.swift      # 1s, 2s, 3s, 1p, 2p, 3p (uses settings)
 │   ├── Prefix.swift            # Separable/inseparable prefixes
 │   └── Auxiliary.swift         # haben/sein auxiliary verbs
+├── Utils/
+│   ├── World.swift             # Dependency injection container
+│   ├── Settings.swift          # @Observable settings with persistence
+│   ├── L.swift                 # Localization string accessors
+│   ├── GetterSetter.swift      # Protocol for key-value storage
+│   └── GetterSetterReal.swift  # UserDefaults implementation
 └── Views/
-    └── ContentView.swift       # SwiftUI view
+    ├── VerbBrowseView.swift    # List of verbs
+    ├── VerbView.swift          # Verb detail with conjugations
+    ├── SettingsView.swift      # Settings UI
+    ├── HistoryView.swift       # German verb system history
+    └── InfoBrowseView.swift    # Info/Help section
 ```
 
 ## Terminology
@@ -149,7 +164,7 @@ German strong and mixed verbs undergo vowel changes (ablaut) in different conjug
 **Example: sehen (to see)**
 - Infinitive: `s^e^hen` (ablaut region is "e" at indices 1..<2)
 - Stamm: "seh"
-- Ablaut group: `ie,a2s,a3s|a,bA|ä,dA`
+- Ablaut group: `IE,a2s,a3s|A,bA|Ä,dA`
 - Results:
   - Präsens 2s: replace "e" with "ie" → "sieh" + "st" = "siehst"
   - Präteritum: replace "e" with "a" → "sah" + endings
@@ -175,7 +190,7 @@ Simply add to Verbs.xml without ablaut markers:
 
 2. **Add ablaut group to AblautGroups.xml** (if new pattern):
    ```xml
-   <ag e="singen" a="a,bA|ä,dA|u,pp" />
+   <ag e="singen" a="A,bA|Ä,dA|U,pp" />
    ```
 
 3. **Look up conjugation** on German Wiktionary: `https://de.wiktionary.org/wiki/Flexion:VERB`
@@ -201,3 +216,133 @@ Prefixed verbs can share an ablaut group with their base verb.
 For verb conjugations: `https://de.wiktionary.org/wiki/Flexion:VERBNAME`
 
 Note: Wiktionary uses "Konjunktiv II" for what this codebase calls "Konditional" (Präteritum Konditional).
+
+## Dependency Injection
+
+The app uses a simple dependency injection pattern via `World.swift`:
+
+```swift
+var Current = World()
+
+struct World {
+  var settings: Settings
+  // ... other dependencies
+}
+```
+
+Access dependencies anywhere using syntax like `Current.settings`. This pattern enables:
+- Easy mocking in tests (swap `Current` with a test-configured `World`)
+- Centralized dependency management
+- Reactive UI updates (Settings uses `@Observable`)
+
+## Settings System
+
+Settings are managed by `Settings.swift`, an `@Observable` class that persists to UserDefaults via `GetterSetter`.
+
+### Current Settings
+
+| Setting | Enum | Default | Description |
+|---------|------|---------|-------------|
+| `conjugationgroupLang` | `ConjugationgroupLang` | `.german` | Display conjugationgroup names in German or English |
+| `thirdPersonPronounGender` | `ThirdPersonPronounGender` | `.er` | Which 3rd-person-singular pronoun to show (er/sie/es) |
+
+### Adding a New Setting
+
+1. **Create the enum** in `Models/` following this pattern:
+
+```swift
+enum MySetting: String, CaseIterable {
+  case optionA
+  case optionB
+
+  var localizedMySetting: String {
+    switch self {
+    case .optionA: return L.MySetting.optionA
+    case .optionB: return L.MySetting.optionB
+    }
+  }
+}
+```
+
+2. **Add to Settings.swift**:
+
+```swift
+var mySetting: MySetting = mySettingDefault {
+  didSet {
+    if mySetting != oldValue {
+      getterSetter.set(key: Settings.mySettingKey, value: "\(mySetting)")
+    }
+  }
+}
+static let mySettingKey = "mySetting"
+static let mySettingDefault: MySetting = .optionA
+
+// In init(), add:
+if let mySettingString = getterSetter.get(key: Settings.mySettingKey) {
+  mySetting = MySetting(rawValue: mySettingString) ?? Settings.mySettingDefault
+} else {
+  getterSetter.set(key: Settings.mySettingKey, value: "\(mySetting)")
+}
+```
+
+3. **Add localization strings** to `L.swift` and `Localizable.xcstrings`
+
+4. **Add UI** to `SettingsView.swift`
+
+## Localization System
+
+The app uses a two-part localization system:
+
+### L.swift
+
+Type-safe localization accessors organized by feature:
+
+```swift
+enum L {
+  enum Settings {
+    static var conjugationgroupLangHeading: String {
+      String(localized: "Settings.conjugationgroupLangHeading")
+    }
+  }
+
+  enum ThirdPersonPronounGender {
+    static var er: String { String(localized: "ThirdPersonPronounGender.er") }
+    static var sie: String { String(localized: "ThirdPersonPronounGender.sie") }
+    static var es: String { String(localized: "ThirdPersonPronounGender.es") }
+  }
+}
+```
+
+### Localizable.xcstrings
+
+JSON-based string catalog supporting multiple languages. Each key maps to translations:
+
+```json
+"Settings.thirdPersonPronounGenderHeading" : {
+  "localizations" : {
+    "de" : {
+      "stringUnit" : {
+        "state" : "translated",
+        "value" : "Pronomen 3. Person"
+      }
+    },
+    "en" : {
+      "stringUnit" : {
+        "state" : "translated",
+        "value" : "3P-Pronoun Gender"
+      }
+    }
+  }
+}
+```
+
+### Adding New Localized Strings
+
+1. Add the accessor to `L.swift` in the appropriate enum
+2. Add the key and translations to `Localizable.xcstrings`
+3. Use via `L.FeatureName.stringName` in code
+
+### Naming Conventions
+
+- Keys follow the pattern: `FeatureName.stringPurpose`
+- Examples: `Settings.conjugationgroupLangHeading`, `Navigation.verbs`, `History.stardustTitle`

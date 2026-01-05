@@ -1,6 +1,6 @@
 // Copyright © 2025 Josh Adams. All rights reserved.
 
-enum ConjugationGroup: Hashable {
+enum Conjugationgroup: Hashable {
   case perfektpartizip
   case präsenspartizip
 
@@ -10,41 +10,41 @@ enum ConjugationGroup: Hashable {
   case präteritumKonditional(_ personNumber: PersonNumber)
   case imperativ(_ personNumber: PersonNumber)
 
-  var titleCaseName: String {
+  var germanDisplayName: String {
     switch self {
     case .präsenspartizip:
       return "Präsens Partizip"
     case .perfektpartizip:
       return "Perfekt Partizip"
     case .präsensIndicativ:
-      return "Präsens Aktiv Indicativ"
+      return "Präsens Indicativ"
     case .präsensKonjunktivI:
-      return "Präsens Aktiv Konjunktiv I"
+      return "Präsens Konjunktiv I"
     case .präteritumIndicativ:
-      return "Präteritum Aktiv Indicativ"
+      return "Präteritum Indicativ"
     case .präteritumKonditional:
-      return "Präteritum Aktiv Konditional"
+      return "Präteritum Konditional"
     case .imperativ:
       return "Imperativ"
     }
   }
 
-  var displayName: String {
+  var englishDisplayName: String {
     switch self {
     case .präsenspartizip:
-      return L.ConjugationGroup.präsenspartizip
+      return "Present Participle"
     case .perfektpartizip:
-      return L.ConjugationGroup.perfektpartizip
+      return "Past Participle"
     case .präsensIndicativ:
-      return L.ConjugationGroup.präsensIndicativ
+      return "Present Indicative"
     case .präsensKonjunktivI:
-      return L.ConjugationGroup.präsensKonjunktivI
+      return "Present Subjunctive"
     case .präteritumIndicativ:
-      return L.ConjugationGroup.präteritumIndicativ
+      return "Past Indicative"
     case .präteritumKonditional:
-      return L.ConjugationGroup.präteritumKonditional
+      return "Past Conditional"
     case .imperativ:
-      return L.ConjugationGroup.imperativ
+      return "Imperative"
     }
   }
 

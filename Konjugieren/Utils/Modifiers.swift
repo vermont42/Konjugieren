@@ -1,0 +1,54 @@
+// Copyright © 2025 Josh Adams. All rights reserved.
+
+import SwiftUI
+
+extension View {
+  func settingsSubheadingLabel() -> some View {
+    modifier(SettingsSubheadingLabel())
+  }
+
+  func settingsLabel() -> some View {
+    modifier(SettingsLabel())
+  }
+
+  func headingLabel() -> some View {
+    modifier(HeadingLabel())
+  }
+
+  func segmentedPicker() -> some View {
+    modifier(SegmentedPicker())
+  }
+}
+
+private struct SettingsSubheadingLabel: ViewModifier {
+  func body(content: Content) -> some View {
+    content
+      .font(Font.custom(workSansSemiBold, size: 20))
+      .foregroundColor(.customYellow)
+  }
+}
+
+private struct SettingsLabel: ViewModifier {
+  func body(content: Content) -> some View {
+    content
+      .font(Font.custom(workSansRegular, size: 16))
+      .foregroundColor(.customForeground)
+      .padding(.horizontal, Layout.doubleDefaultSpacing)
+  }
+}
+
+private struct HeadingLabel: ViewModifier {
+  func body(content: Content) -> some View {
+    content
+      .font(Font.custom(workSansSemiBold, size: 22))
+      .accessibility(addTraits: [.isHeader])
+  }
+}
+
+private struct SegmentedPicker: ViewModifier {
+  func body(content: Content) -> some View {
+    content
+      .pickerStyle(.segmented)
+      .padding(.horizontal, Layout.doubleDefaultSpacing)
+  }
+}

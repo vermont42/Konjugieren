@@ -9,7 +9,7 @@ enum AppLauncher {
     AblautGroup.ablautGroups = AblautGroupParser().parse()
     
     for (_, value) in Verb.verbs {
-      print(Conjugator.conjugate(infinitiv: value.infinitiv, conjugationGroup: .perfektpartizip))
+      print(Conjugator.conjugate(infinitiv: value.infinitiv, conjugationgroup: .perfektpartizip))
     }
 
     for (_, value) in AblautGroup.ablautGroups {

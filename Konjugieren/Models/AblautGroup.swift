@@ -5,7 +5,7 @@ import Foundation
 struct AblautGroup: Hashable, CustomStringConvertible {
   static var ablautGroups: [String: AblautGroup] = [:]
   let exemplar: String
-  var ablauts: [ConjugationGroup: String] = [:]
+  var ablauts: [Conjugationgroup: String] = [:]
 
   init(exemplar: String, xmlString: String) {
     self.exemplar = exemplar
@@ -16,8 +16,8 @@ struct AblautGroup: Hashable, CustomStringConvertible {
       ablautArray.append(Ablaut(xmlString: $0))
     }
     for ablaut in ablautArray {
-      for conjugationGroup in ablaut.appliesTo {
-        ablauts[conjugationGroup] = ablaut.lettersToUse
+      for conjugationgroup in ablaut.appliesTo {
+        ablauts[conjugationgroup] = ablaut.lettersToUse
       }
     }
   }

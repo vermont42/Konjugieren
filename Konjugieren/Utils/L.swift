@@ -213,33 +213,75 @@ enum L {
     }
   }
 
-  enum ConjugationGroup {
+  enum Settings {
+    static var conjugationgroupLangHeading: String {
+      String(localized: "Settings.conjugationgroupLangHeading")
+    }
+
+    static var conjugationgroupLangDescription: String {
+      String(localized: "Settings.conjugationgroupLangDescription")
+    }
+
+    static var thirdPersonPronounGenderHeading: String {
+      String(localized: "Settings.thirdPersonPronounGenderHeading")
+    }
+
+    static var thirdPersonPronounGenderDescription: String {
+      String(localized: "Settings.thirdPersonPronounGenderDescription")
+    }
+  }
+
+  enum Conjugationgroup {
     static var perfektpartizip: String {
-      String(localized: "ConjugationGroup.perfektpartizip")
+      String(localized: "Conjugationgroup.perfektpartizip")
     }
 
     static var präsenspartizip: String {
-      String(localized: "ConjugationGroup.präsenspartizip")
+      String(localized: "Conjugationgroup.präsenspartizip")
     }
 
     static var präsensIndicativ: String {
-      String(localized: "ConjugationGroup.präsensIndicativ")
+      String(localized: "Conjugationgroup.präsensIndicativ")
     }
 
     static var präsensKonjunktivI: String {
-      String(localized: "ConjugationGroup.präsensKonjunktivI")
+      String(localized: "Conjugationgroup.präsensKonjunktivI")
     }
 
     static var präteritumIndicativ: String {
-      String(localized: "ConjugationGroup.präteritumIndicativ")
+      String(localized: "Conjugationgroup.präteritumIndicativ")
     }
 
     static var präteritumKonditional: String {
-      String(localized: "ConjugationGroup.präteritumKonditional")
+      String(localized: "Conjugationgroup.präteritumKonditional")
     }
 
     static var imperativ: String {
-      String(localized: "ConjugationGroup.imperativ")
+      String(localized: "Conjugationgroup.imperativ")
+    }
+  }
+
+  enum ConjugationgroupLang {
+    static var english: String {
+      String(localized: "ConjugationgroupLang.english")
+    }
+
+    static var german: String {
+      String(localized: "ConjugationgroupLang.german")
+    }
+  }
+
+  enum ThirdPersonPronounGender {
+    static var er: String {
+      String(localized: "ThirdPersonPronounGender.er")
+    }
+
+    static var sie: String {
+      String(localized: "ThirdPersonPronounGender.sie")
+    }
+
+    static var es: String {
+      String(localized: "ThirdPersonPronounGender.es")
     }
   }
 }

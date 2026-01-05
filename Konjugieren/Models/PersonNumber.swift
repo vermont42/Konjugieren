@@ -17,7 +17,7 @@ enum PersonNumber: String, CaseIterable {
     case .secondSingular:
       return "du"
     case .thirdSingular:
-      return "er" // TODO: Get gender from preference like Conjuguer.
+      return Current.settings.thirdPersonPronounGender.pronoun
     case .firstPlural:
       return "wir"
     case .secondPlural:

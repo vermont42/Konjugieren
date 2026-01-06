@@ -1,7 +1,6 @@
 // Copyright © 2025 Josh Adams. All rights reserved.
 
 import SwiftUI
-import UIKit
 
 let workSansRegular = "WorkSans-Regular"
 let workSansSemiBold = "WorkSans-SemiBold"

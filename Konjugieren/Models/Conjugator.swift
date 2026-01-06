@@ -62,44 +62,35 @@ enum Conjugator {
 
     switch personNumber {
     case .secondSingular:
-      // Check for explicit i2s override first
       let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: .imperativ(.secondSingular))
       if isFullOverride {
         return .success(withSeparablePrefix(verb: verb, form: newStamm))
       }
 
-      // If no explicit imperativ ablaut, check for e→i/ie stem change from präsens.
       let imperativStamm: String
       if newStamm != stamm {
-        // An imperativ-specific ablaut was applied.
         imperativStamm = newStamm
       } else {
-        // Check for e→i/ie change from präsens a2s.
         imperativStamm = applyEToIStemChange(stamm: stamm, verb: verb)
       }
 
-      // Stems ending in -d or -t need an -e for pronunciation.
       let needsE = imperativStamm.hasSuffix("d") || imperativStamm.hasSuffix("t")
       let form = needsE ? imperativStamm + "e" : imperativStamm
       return .success(withSeparablePrefix(verb: verb, form: form))
 
     case .secondPlural:
-      // Check for explicit i2p override first.
       let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: .imperativ(.secondPlural))
       if isFullOverride {
         return .success(withSeparablePrefix(verb: verb, form: newStamm))
       }
-      // ihr form: stamm + "t" (no stem changes in ihr imperative)
       let form = (newStamm != stamm ? newStamm : stamm) + "t"
       return .success(withSeparablePrefix(verb: verb, form: form))
 
     case .firstPlural:
-      // Check for explicit i1p override first.
       let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: .imperativ(.firstPlural))
       if isFullOverride {
         return .success(withSeparablePrefixAndPronoun(verb: verb, form: newStamm, pronoun: "wir"))
       }
-      // wir form: use Konjunktiv I 1p (stamm + "en", or special form for sein)
       let (konjStamm, konjOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: .präsensKonjunktivI(.firstPlural))
       let form: String
       if konjOverride {
@@ -110,12 +101,10 @@ enum Conjugator {
       return .success(withSeparablePrefixAndPronoun(verb: verb, form: form, pronoun: "wir"))
 
     case .thirdPlural:
-      // Check for explicit i3p override first.
       let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: .imperativ(.thirdPlural))
       if isFullOverride {
         return .success(withSeparablePrefixAndPronoun(verb: verb, form: newStamm, pronoun: "Sie"))
       }
-      // Sie form: use Konjunktiv I 3p (stamm + "en", or special form for sein)
       let (konjStamm, konjOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: .präsensKonjunktivI(.thirdPlural))
       let form: String
       if konjOverride {
@@ -130,7 +119,6 @@ enum Conjugator {
     }
   }
 
-  /// Applies e→i or e→ie stem change for du imperative (but not a→ä changes)
   private static func applyEToIStemChange(stamm: String, verb: Verb) -> String {
     switch verb.family {
     case .strong(ablautGroup: let ablautKey, ablautStartIndex: let ablautStartIndex, ablautEndIndex: let ablautEndIndex),
@@ -139,17 +127,14 @@ enum Conjugator {
         let ablautGroup = AblautGroup.ablautGroups[ablautKey],
         let ablaut = ablautGroup.ablauts[.präsensIndicativ(.secondSingular)]
       {
-        // Skip full overrides like "wirst*".
         if ablaut.hasSuffix("*") {
           return stamm
         }
 
-        // Only apply if this is an e→i or e→ie change (not a→ä).
         let startIndex = stamm.index(stamm.startIndex, offsetBy: ablautStartIndex)
         let endIndex = stamm.index(stamm.startIndex, offsetBy: ablautEndIndex)
         let originalRegion = String(stamm[startIndex ..< endIndex])
 
-        // Check if original starts with "e" and ablaut starts with "i" (e→i or e→ie change)
         if originalRegion.hasPrefix("e") && ablaut.lowercased().hasPrefix("i") {
           var result = stamm
           result.replaceSubrange(startIndex ..< endIndex, with: ablaut)
@@ -162,7 +147,6 @@ enum Conjugator {
     }
   }
 
-  /// Formats imperative with separable prefix at end for du/ihr forms.
   private static func withSeparablePrefix(verb: Verb, form: String) -> String {
     switch verb.prefix {
     case .separable(let prefix):
@@ -173,7 +157,6 @@ enum Conjugator {
     }
   }
 
-  /// Formats imperative with separable prefix and pronoun for wir/Sie forms.
   private static func withSeparablePrefixAndPronoun(verb: Verb, form: String, pronoun: String) -> String {
     switch verb.prefix {
     case .separable(let prefix):
@@ -192,7 +175,6 @@ enum Conjugator {
         let ablautGroup = AblautGroup.ablautGroups[ablautKey],
         let ablaut = ablautGroup.ablauts[conjugationgroup]
       {
-        // Check for full override (ablaut ending with "*").
         if ablaut.hasSuffix("*") {
           let overrideValue = String(ablaut.dropLast())
           return (overrideValue, true)

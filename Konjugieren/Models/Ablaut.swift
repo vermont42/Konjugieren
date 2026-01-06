@@ -16,7 +16,6 @@ struct Ablaut: Hashable {
     appliesTo = []
     for conjugationgroup in components[1 ..< components.count] {
       switch conjugationgroup {
-      // präsensIndicativ
       case "a1s":
         appliesTo.append(.präsensIndicativ(.firstSingular))
       case "a2s":
@@ -33,7 +32,6 @@ struct Ablaut: Hashable {
         PersonNumber.allCases.forEach {
           appliesTo.append(.präsensIndicativ($0))
         }
-      // präteritumIndicativ
       case "b1s":
         appliesTo.append(.präteritumIndicativ(.firstSingular))
       case "b2s":
@@ -50,7 +48,6 @@ struct Ablaut: Hashable {
         PersonNumber.allCases.forEach {
           appliesTo.append(.präteritumIndicativ($0))
         }
-      // präsensKonjunktivI
       case "c1s":
         appliesTo.append(.präsensKonjunktivI(.firstSingular))
       case "c2s":
@@ -67,7 +64,6 @@ struct Ablaut: Hashable {
         PersonNumber.allCases.forEach {
           appliesTo.append(.präsensKonjunktivI($0))
         }
-      // präteritumKonditional
       case "d1s":
         appliesTo.append(.präteritumKonditional(.firstSingular))
       case "d2s":
@@ -84,10 +80,8 @@ struct Ablaut: Hashable {
         PersonNumber.allCases.forEach {
           appliesTo.append(.präteritumKonditional($0))
         }
-      // perfektpartizip
       case "pp":
         appliesTo.append(.perfektpartizip)
-      // imperativ
       case "i2s":
         appliesTo.append(.imperativ(.secondSingular))
       case "i1p":

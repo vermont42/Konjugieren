@@ -102,20 +102,20 @@ struct VerbView: View {
   }
 
   private func imperativConjugations() -> [ConjugationRow] {
-    PersonNumber.imperativPersonNumbers.map { pn in
-      let form = conjugate(.imperativ(pn))
-      // For 2s and 2p, we show the pronoun separately
-      // For 1p and 3p, the form already includes the pronoun (e.g., "gehen wir")
-      switch pn {
+    PersonNumber.imperativPersonNumbers.map { personNumber in
+      let form = conjugate(.imperativ(personNumber))
+      // For 2s and 2p, show the pronoun separately.
+      // For 1p and 3p, the form already includes the pronoun (e.g., "gehen wir").
+      switch personNumber {
       case .secondSingular:
         return ConjugationRow(pronoun: "du", form: form)
       case .secondPlural:
         return ConjugationRow(pronoun: "ihr", form: form)
       case .firstPlural, .thirdPlural:
-        // Form already includes pronoun, so don't duplicate it
+        // Form already includes pronoun, so don't duplicate it.
         return ConjugationRow(pronoun: nil, form: form)
       default:
-        return ConjugationRow(pronoun: pn.pronoun, form: form)
+        return ConjugationRow(pronoun: personNumber.pronoun, form: form)
       }
     }
   }

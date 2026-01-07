@@ -29,6 +29,253 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "verstehen", conjugationgroup: .perfektpartizip, expected: "verstANDen")
   }
 
+  @Test func präsenspartizip() {
+    // Weak verb
+    expectConjugation(infinitiv: "machen", conjugationgroup: .präsenspartizip, expected: "machend")
+
+    // Strong verb
+    expectConjugation(infinitiv: "singen", conjugationgroup: .präsenspartizip, expected: "singend")
+    expectConjugation(infinitiv: "gehen", conjugationgroup: .präsenspartizip, expected: "gehend")
+
+    // -ieren verb
+    expectConjugation(infinitiv: "studieren", conjugationgroup: .präsenspartizip, expected: "studierend")
+
+    // Mixed verb
+    expectConjugation(infinitiv: "bringen", conjugationgroup: .präsenspartizip, expected: "bringend")
+
+    // Separable prefix verb
+    expectConjugation(infinitiv: "ankommen", conjugationgroup: .präsenspartizip, expected: "ankommend")
+
+    // Inseparable prefix verb
+    expectConjugation(infinitiv: "verstehen", conjugationgroup: .präsenspartizip, expected: "verstehend")
+  }
+
+  @Test func präsensIndicativ() {
+    // Weak verb - all persons
+    expectConjugation(infinitiv: "machen", conjugationgroup: .präsensIndicativ(.firstSingular), expected: "mache")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "machst")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "macht")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .präsensIndicativ(.firstPlural), expected: "machen")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .präsensIndicativ(.secondPlural), expected: "macht")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .präsensIndicativ(.thirdPlural), expected: "machen")
+
+    // Strong verb with e→i ablaut (sehen: e→ie in 2s, 3s)
+    expectConjugation(infinitiv: "sehen", conjugationgroup: .präsensIndicativ(.firstSingular), expected: "sehe")
+    expectConjugation(infinitiv: "sehen", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "sIEhst")
+    expectConjugation(infinitiv: "sehen", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "sIEht")
+    expectConjugation(infinitiv: "sehen", conjugationgroup: .präsensIndicativ(.firstPlural), expected: "sehen")
+
+    // Strong verb with a→ä ablaut (lassen: a→ä in 2s, 3s)
+    expectConjugation(infinitiv: "lassen", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "lÄsst")
+    expectConjugation(infinitiv: "lassen", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "lÄsst")
+
+    // Irregular sein
+    expectConjugation(infinitiv: "sein", conjugationgroup: .präsensIndicativ(.firstSingular), expected: "BIN")
+    expectConjugation(infinitiv: "sein", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "BIST")
+    expectConjugation(infinitiv: "sein", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "IST")
+    expectConjugation(infinitiv: "sein", conjugationgroup: .präsensIndicativ(.firstPlural), expected: "SIND")
+    expectConjugation(infinitiv: "sein", conjugationgroup: .präsensIndicativ(.secondPlural), expected: "SEID")
+    expectConjugation(infinitiv: "sein", conjugationgroup: .präsensIndicativ(.thirdPlural), expected: "SIND")
+
+    // Irregular haben
+    expectConjugation(infinitiv: "haben", conjugationgroup: .präsensIndicativ(.firstSingular), expected: "habe")
+    expectConjugation(infinitiv: "haben", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "hast")
+    expectConjugation(infinitiv: "haben", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "hat")
+
+    // -ieren verb
+    expectConjugation(infinitiv: "studieren", conjugationgroup: .präsensIndicativ(.firstSingular), expected: "studiere")
+    expectConjugation(infinitiv: "studieren", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "studiert")
+
+    // Separable prefix verb
+    expectConjugation(infinitiv: "ankommen", conjugationgroup: .präsensIndicativ(.firstSingular), expected: "ankomme")
+    expectConjugation(infinitiv: "ankommen", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "ankommt")
+  }
+
+  @Test func präsensKonjunktivI() {
+    // Weak verb - all persons
+    expectConjugation(infinitiv: "machen", conjugationgroup: .präsensKonjunktivI(.firstSingular), expected: "mache")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .präsensKonjunktivI(.secondSingular), expected: "machest")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .präsensKonjunktivI(.thirdSingular), expected: "mache")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .präsensKonjunktivI(.firstPlural), expected: "machen")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .präsensKonjunktivI(.secondPlural), expected: "machet")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .präsensKonjunktivI(.thirdPlural), expected: "machen")
+
+    // Strong verb (no ablaut in Konjunktiv I)
+    expectConjugation(infinitiv: "sehen", conjugationgroup: .präsensKonjunktivI(.firstSingular), expected: "sehe")
+    expectConjugation(infinitiv: "sehen", conjugationgroup: .präsensKonjunktivI(.secondSingular), expected: "sehest")
+    expectConjugation(infinitiv: "sehen", conjugationgroup: .präsensKonjunktivI(.thirdSingular), expected: "sehe")
+
+    // Irregular sein
+    expectConjugation(infinitiv: "sein", conjugationgroup: .präsensKonjunktivI(.firstSingular), expected: "SEI")
+    expectConjugation(infinitiv: "sein", conjugationgroup: .präsensKonjunktivI(.secondSingular), expected: "SEIST")
+    expectConjugation(infinitiv: "sein", conjugationgroup: .präsensKonjunktivI(.thirdSingular), expected: "SEI")
+    expectConjugation(infinitiv: "sein", conjugationgroup: .präsensKonjunktivI(.firstPlural), expected: "SEIEN")
+    expectConjugation(infinitiv: "sein", conjugationgroup: .präsensKonjunktivI(.secondPlural), expected: "SEIET")
+    expectConjugation(infinitiv: "sein", conjugationgroup: .präsensKonjunktivI(.thirdPlural), expected: "SEIEN")
+
+    // Irregular haben
+    expectConjugation(infinitiv: "haben", conjugationgroup: .präsensKonjunktivI(.firstSingular), expected: "habe")
+    expectConjugation(infinitiv: "haben", conjugationgroup: .präsensKonjunktivI(.thirdSingular), expected: "habe")
+  }
+
+  @Test func präteritumIndicativ() {
+    // Weak verb - all persons (uses -te endings)
+    expectConjugation(infinitiv: "machen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "machte")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .präteritumIndicativ(.secondSingular), expected: "machtest")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .präteritumIndicativ(.thirdSingular), expected: "machte")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .präteritumIndicativ(.firstPlural), expected: "machten")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .präteritumIndicativ(.secondPlural), expected: "machtet")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .präteritumIndicativ(.thirdPlural), expected: "machten")
+
+    // Strong verb (ablaut, no -te suffix)
+    expectConjugation(infinitiv: "singen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "sAng")
+    expectConjugation(infinitiv: "singen", conjugationgroup: .präteritumIndicativ(.secondSingular), expected: "sAngst")
+    expectConjugation(infinitiv: "singen", conjugationgroup: .präteritumIndicativ(.thirdSingular), expected: "sAng")
+    expectConjugation(infinitiv: "singen", conjugationgroup: .präteritumIndicativ(.firstPlural), expected: "sAngen")
+    expectConjugation(infinitiv: "singen", conjugationgroup: .präteritumIndicativ(.secondPlural), expected: "sAngt")
+    expectConjugation(infinitiv: "singen", conjugationgroup: .präteritumIndicativ(.thirdPlural), expected: "sAngen")
+
+    expectConjugation(infinitiv: "sehen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "sAh")
+    expectConjugation(infinitiv: "sehen", conjugationgroup: .präteritumIndicativ(.thirdSingular), expected: "sAh")
+
+    expectConjugation(infinitiv: "gehen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "gIng")
+
+    // Mixed verb (ablaut + -te suffix)
+    expectConjugation(infinitiv: "bringen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "brACHte")
+    expectConjugation(infinitiv: "bringen", conjugationgroup: .präteritumIndicativ(.secondSingular), expected: "brACHtest")
+    expectConjugation(infinitiv: "bringen", conjugationgroup: .präteritumIndicativ(.thirdSingular), expected: "brACHte")
+
+    // Irregular sein
+    expectConjugation(infinitiv: "sein", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "WAR")
+    expectConjugation(infinitiv: "sein", conjugationgroup: .präteritumIndicativ(.secondSingular), expected: "WARST")
+    expectConjugation(infinitiv: "sein", conjugationgroup: .präteritumIndicativ(.thirdSingular), expected: "WAR")
+    expectConjugation(infinitiv: "sein", conjugationgroup: .präteritumIndicativ(.firstPlural), expected: "WAREN")
+    expectConjugation(infinitiv: "sein", conjugationgroup: .präteritumIndicativ(.secondPlural), expected: "WART")
+    expectConjugation(infinitiv: "sein", conjugationgroup: .präteritumIndicativ(.thirdPlural), expected: "WAREN")
+
+    // -ieren verb (weak-style endings)
+    expectConjugation(infinitiv: "studieren", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "studierte")
+    expectConjugation(infinitiv: "studieren", conjugationgroup: .präteritumIndicativ(.thirdSingular), expected: "studierte")
+
+    // Separable prefix verb
+    expectConjugation(infinitiv: "ankommen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "ankAm")
+  }
+
+  @Test func präteritumKonditional() {
+    // Weak verb - all persons (uses -te endings, same as Präteritum for weak verbs)
+    expectConjugation(infinitiv: "machen", conjugationgroup: .präteritumKonditional(.firstSingular), expected: "machte")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .präteritumKonditional(.secondSingular), expected: "machtest")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .präteritumKonditional(.thirdSingular), expected: "machte")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .präteritumKonditional(.firstPlural), expected: "machten")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .präteritumKonditional(.secondPlural), expected: "machtet")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .präteritumKonditional(.thirdPlural), expected: "machten")
+
+    // Strong verb (ablaut often includes umlaut, Konjunktiv II endings)
+    expectConjugation(infinitiv: "singen", conjugationgroup: .präteritumKonditional(.firstSingular), expected: "sÄnge")
+    expectConjugation(infinitiv: "singen", conjugationgroup: .präteritumKonditional(.secondSingular), expected: "sÄngest")
+    expectConjugation(infinitiv: "singen", conjugationgroup: .präteritumKonditional(.thirdSingular), expected: "sÄnge")
+    expectConjugation(infinitiv: "singen", conjugationgroup: .präteritumKonditional(.firstPlural), expected: "sÄngen")
+    expectConjugation(infinitiv: "singen", conjugationgroup: .präteritumKonditional(.secondPlural), expected: "sÄnget")
+    expectConjugation(infinitiv: "singen", conjugationgroup: .präteritumKonditional(.thirdPlural), expected: "sÄngen")
+
+    expectConjugation(infinitiv: "sehen", conjugationgroup: .präteritumKonditional(.firstSingular), expected: "sÄhe")
+    expectConjugation(infinitiv: "gehen", conjugationgroup: .präteritumKonditional(.firstSingular), expected: "gInge")
+
+    // Mixed verb
+    expectConjugation(infinitiv: "bringen", conjugationgroup: .präteritumKonditional(.firstSingular), expected: "brÄCHte")
+    expectConjugation(infinitiv: "bringen", conjugationgroup: .präteritumKonditional(.thirdSingular), expected: "brÄCHte")
+
+    // Irregular sein
+    expectConjugation(infinitiv: "sein", conjugationgroup: .präteritumKonditional(.firstSingular), expected: "WÄRE")
+    expectConjugation(infinitiv: "sein", conjugationgroup: .präteritumKonditional(.secondSingular), expected: "WÄREST")
+    expectConjugation(infinitiv: "sein", conjugationgroup: .präteritumKonditional(.thirdSingular), expected: "WÄRE")
+    expectConjugation(infinitiv: "sein", conjugationgroup: .präteritumKonditional(.firstPlural), expected: "WÄREN")
+    expectConjugation(infinitiv: "sein", conjugationgroup: .präteritumKonditional(.secondPlural), expected: "WÄRET")
+    expectConjugation(infinitiv: "sein", conjugationgroup: .präteritumKonditional(.thirdPlural), expected: "WÄREN")
+
+    // -ieren verb
+    expectConjugation(infinitiv: "studieren", conjugationgroup: .präteritumKonditional(.firstSingular), expected: "studierte")
+
+    // Separable prefix verb
+    expectConjugation(infinitiv: "ankommen", conjugationgroup: .präteritumKonditional(.firstSingular), expected: "ankÄme")
+  }
+
+  @Test func perfektIndikativ() {
+    // Weak verb with haben auxiliary - all persons
+    expectConjugation(infinitiv: "machen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "habe gemacht")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .perfektIndikativ(.secondSingular), expected: "hast gemacht")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hat gemacht")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .perfektIndikativ(.firstPlural), expected: "haben gemacht")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .perfektIndikativ(.secondPlural), expected: "habt gemacht")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .perfektIndikativ(.thirdPlural), expected: "haben gemacht")
+
+    // Strong verb with sein auxiliary
+    expectConjugation(infinitiv: "gehen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "BIN gegANGen")
+    expectConjugation(infinitiv: "gehen", conjugationgroup: .perfektIndikativ(.secondSingular), expected: "BIST gegANGen")
+    expectConjugation(infinitiv: "gehen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "IST gegANGen")
+    expectConjugation(infinitiv: "gehen", conjugationgroup: .perfektIndikativ(.firstPlural), expected: "SIND gegANGen")
+    expectConjugation(infinitiv: "gehen", conjugationgroup: .perfektIndikativ(.secondPlural), expected: "SEID gegANGen")
+    expectConjugation(infinitiv: "gehen", conjugationgroup: .perfektIndikativ(.thirdPlural), expected: "SIND gegANGen")
+
+    // Strong verb with haben auxiliary
+    expectConjugation(infinitiv: "singen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "habe gesUngen")
+    expectConjugation(infinitiv: "singen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hat gesUngen")
+
+    expectConjugation(infinitiv: "sehen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "habe gesehen")
+    expectConjugation(infinitiv: "sehen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hat gesehen")
+
+    // Mixed verb
+    expectConjugation(infinitiv: "bringen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "habe gebrACHt")
+    expectConjugation(infinitiv: "bringen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hat gebrACHt")
+
+    // -ieren verb (no ge- prefix)
+    expectConjugation(infinitiv: "studieren", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "habe studiert")
+    expectConjugation(infinitiv: "studieren", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hat studiert")
+
+    // Separable prefix verb
+    expectConjugation(infinitiv: "ankommen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "BIN angekommen")
+    expectConjugation(infinitiv: "ankommen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "IST angekommen")
+
+    // Inseparable prefix verb
+    expectConjugation(infinitiv: "verstehen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "habe verstANDen")
+    expectConjugation(infinitiv: "verstehen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hat verstANDen")
+  }
+
+  @Test func perfektKonjunktivI() {
+    // Weak verb with haben auxiliary - all persons
+    expectConjugation(infinitiv: "machen", conjugationgroup: .perfektKonjunktivI(.firstSingular), expected: "habe gemacht")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .perfektKonjunktivI(.secondSingular), expected: "habest gemacht")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .perfektKonjunktivI(.thirdSingular), expected: "habe gemacht")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .perfektKonjunktivI(.firstPlural), expected: "haben gemacht")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .perfektKonjunktivI(.secondPlural), expected: "habet gemacht")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .perfektKonjunktivI(.thirdPlural), expected: "haben gemacht")
+
+    // Strong verb with sein auxiliary
+    expectConjugation(infinitiv: "gehen", conjugationgroup: .perfektKonjunktivI(.firstSingular), expected: "SEI gegANGen")
+    expectConjugation(infinitiv: "gehen", conjugationgroup: .perfektKonjunktivI(.secondSingular), expected: "SEIST gegANGen")
+    expectConjugation(infinitiv: "gehen", conjugationgroup: .perfektKonjunktivI(.thirdSingular), expected: "SEI gegANGen")
+    expectConjugation(infinitiv: "gehen", conjugationgroup: .perfektKonjunktivI(.firstPlural), expected: "SEIEN gegANGen")
+    expectConjugation(infinitiv: "gehen", conjugationgroup: .perfektKonjunktivI(.secondPlural), expected: "SEIET gegANGen")
+    expectConjugation(infinitiv: "gehen", conjugationgroup: .perfektKonjunktivI(.thirdPlural), expected: "SEIEN gegANGen")
+
+    // Strong verb with haben auxiliary
+    expectConjugation(infinitiv: "singen", conjugationgroup: .perfektKonjunktivI(.firstSingular), expected: "habe gesUngen")
+    expectConjugation(infinitiv: "singen", conjugationgroup: .perfektKonjunktivI(.thirdSingular), expected: "habe gesUngen")
+
+    // Mixed verb
+    expectConjugation(infinitiv: "bringen", conjugationgroup: .perfektKonjunktivI(.firstSingular), expected: "habe gebrACHt")
+
+    // -ieren verb
+    expectConjugation(infinitiv: "studieren", conjugationgroup: .perfektKonjunktivI(.firstSingular), expected: "habe studiert")
+
+    // Separable prefix verb
+    expectConjugation(infinitiv: "ankommen", conjugationgroup: .perfektKonjunktivI(.firstSingular), expected: "SEI angekommen")
+    expectConjugation(infinitiv: "ankommen", conjugationgroup: .perfektKonjunktivI(.thirdSingular), expected: "SEI angekommen")
+
+    // Inseparable prefix verb
+    expectConjugation(infinitiv: "verstehen", conjugationgroup: .perfektKonjunktivI(.firstSingular), expected: "habe verstANDen")
+  }
+
   @Test func imperativ() {
     // MARK: - du form (secondSingular)
 

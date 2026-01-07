@@ -22,7 +22,7 @@ xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren -destination 'plat
 
 ## Architecture Overview
 
-Konjugieren is an iOS app for learning German verb conjugations. It will eventually conjugate 1,000 verbs across all German conjugationgroups ("tenses" in ordinary (and incorrect) parlance).
+Konjugieren is an iOS app for learning German verb conjugations. It will eventually conjugate 1,000 verbs across all German conjugationgroups ("tenses" in ordinary (and incorrect) parlance). Konjugieren uses SwiftUI for its user interface.
 
 ## Project Structure
 
@@ -69,36 +69,42 @@ Konjugieren/
 
 ### Conjugation Group
 
-The term "conjugation group" was invented for this project because no existing term adequately described the concept. A conjugation group with more than one members, like Präsens Indikativ, combines tense and mood to identify a specific set of verb forms. The conjugation groups with one member are Perfektpartizip and Präsenspartizip.
+The term "conjugationgroup" was invented for this project because no existing term adequately described the concept. A conjugationgroup with more than one members, like Präsens Indikativ, combines tense and mood to identify a specific set of verb forms. The conjugation groups with one member are Perfektpartizip (past participle) and Präsenspartizip (present participle).
 
 ### Tense vs. Mood
 
-In discourse about Indo-European languages, "tense" refers only to time. German, like other Germanic languages, has only two tenses:
+In discourse about Indo-European languages, "tense" refers only to the time that an action occurs. German conjugationgroups have three tenses:
 - **Präsens** (present)
 - **Präteritum** (past)
+- **Futur** (future)
 
-Verbs are also encoded with **mood**. German has three moods:
+There is no Futur Partizip (participle).
+
+Multiple-member (not Perfektpartizip or Präsenspartizip) German verbs are also encoded with **mood**. German has four moods:
 - **Indikativ** - corresponds to the English indicative mood
 - **Konjunktiv I** - corresponds to the English subjunctive mood
 - **Konditional** (also called Konjunktiv II) - corresponds to the English conditional mood
+- **Imperativ** - corresponds to the English imperative mood
 
-### Conjugation Groups in This Codebase
+Multiple-member conjugationgroup have a tense and mood. For example, Präsens Indikativ has Präsens tense and Indikativ mood. Certain tense/mood combinations do not occur. For example, there is no conjugationgroup for Futur/Imperativ.
+
+### Conjugationgroups Currently in This Codebase
 
 | Conjugation Group | Tense | Mood | English Equivalent |
 |-------------------|-------|------|-------------------|
 | Präsens Indikativ | Präsens | Indikativ | Present indicative |
 | Präteritum Indikativ | Präteritum | Indikativ | Past indicative |
 | Präsens Konjunktiv I | Präsens | Konjunktiv I | Present subjunctive |
-| Präteritum Konditional | Präteritum | Konditional | Past conditional |
+| Präteritum Konditional | Präteritum | Konditional a/k/a Konjunktiv II | Past conditional |
 | Imperativ | - | Imperativ | Imperative |
-| Perfektpartizip | - | - | Past participle |
-| Präsenspartizip | - | - | Present participle |
+| Perfektpartizip | Präteritum | - | Past participle |
+| Präsenspartizip | Präsens | - | Present participle |
 
 ### Usage Notes
 
-- Avoid using "tense" to describe conjugation groups
+- Avoid using "tense" to describe conjugationgroups
 - Use "Konditional" rather than "Konjunktiv II" for clarity
-- The participles (Perfektpartizip, Präsenspartizip) are non-finite verb forms and do not have tense or mood
+- The participles (Perfektpartizip, Präsenspartizip) do not have mood
 
 ## XML File Formats
 
@@ -147,7 +153,7 @@ Defines vowel/consonant changes for strong and mixed verbs:
 - `pp` = Perfektpartizip
 - `i` = Imperativ (i2s, i1p, i2p, i3p, iA=all)
 
-**Full override:** Append `*` to replacement to use it as the complete conjugated form (skips adding the normal ending). Used for highly irregular verbs like sein:
+**Full override:** Append `*` to replacement to use it as the complete conjugated form, not adding the usual ending. This is used for highly irregular verbs like sein:
 
 ```xml
 <ag e="sein" a="bin*,a1s|bist*,a2s|ist*,a3s|..." />
@@ -155,7 +161,7 @@ Defines vowel/consonant changes for strong and mixed verbs:
 
 ## The Ablaut System
 
-German strong and mixed verbs undergo vowel changes (ablaut) in different conjugation groups. The system works as follows:
+German strong and mixed verbs undergo vowel and other changes (ablaut) in different conjugation groups. The system works as follows:
 
 1. **Verb definition** marks the ablaut region with `^` characters
 2. **Ablaut group** defines what replacements occur for each conjugation group

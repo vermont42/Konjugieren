@@ -1,6 +1,16 @@
 // Copyright © 2025 Josh Adams. All rights reserved.
 
 enum Conjugator {
+  static func conjugateUnsafely(infinitiv: String, conjugationgroup: Conjugationgroup) -> String {
+    let result = conjugate(infinitiv: infinitiv, conjugationgroup: conjugationgroup)
+    switch result {
+    case .success(let conjugation):
+      return conjugation
+    case .failure(let error):
+      fatalError("Conjugation of \(infinitiv) for conjugationgroup \(conjugationgroup) resulted in error \(error).")
+    }
+  }
+
   static func conjugate(infinitiv: String, conjugationgroup: Conjugationgroup) -> Result<String, ConjugatorError> {
     guard infinitiv.count >= Verb.minVerbLength else {
       return .failure(.verbTooShort)
@@ -20,21 +30,25 @@ enum Conjugator {
       let ending = conjugationgroup.ending(family: verb.family)
       let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: conjugationgroup)
       return .success(isFullOverride ? newStamm : newStamm + ending)
+
     case .präsensKonjunktivI:
       let stamm = verb.stamm
       let ending = conjugationgroup.ending(family: verb.family)
       let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: conjugationgroup)
       return .success(isFullOverride ? newStamm : newStamm + ending)
+
     case .präteritumIndicativ:
       let stamm = verb.stamm
       let ending = conjugationgroup.ending(family: verb.family)
       let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: conjugationgroup)
       return .success(isFullOverride ? newStamm : newStamm + ending)
+
     case .präteritumKonditional:
       let stamm = verb.stamm
       let ending = conjugationgroup.ending(family: verb.family)
       let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: conjugationgroup)
       return .success(isFullOverride ? newStamm : newStamm + ending)
+
     case .perfektpartizip:
       let stamm = verb.stamm
       let ending = conjugationgroup.ending(family: verb.family)
@@ -48,12 +62,44 @@ enum Conjugator {
       case .ieren:
         return .success(newStamm + ending)
       }
+
     case .präsenspartizip:
       let stamm = verb.stamm
       let ending = conjugationgroup.ending(family: verb.family)
       return .success(stamm + ending)
+
     case .imperativ(let personNumber):
       return conjugateImperativ(verb: verb, personNumber: personNumber)
+
+    case .perfektIndikativ(let personNumber):
+      let auxilliaryResult = Conjugator.conjugate(infinitiv: verb.auxiliary.verb, conjugationgroup: .präsensIndicativ(personNumber))
+      switch auxilliaryResult {
+      case .success(let auxilliary):
+        let partizipResult = Conjugator.conjugate(infinitiv: infinitiv, conjugationgroup: .perfektpartizip)
+        switch partizipResult {
+        case .success(let partizip):
+          return .success(auxilliary + " " + partizip)
+        case .failure:
+          return .failure(.conjugationFailed)
+        }
+      case .failure:
+        return .failure(.conjugationFailed)
+      }
+
+    case .perfektKonjunktivI(let personNumber):
+      let auxilliaryResult = Conjugator.conjugate(infinitiv: verb.auxiliary.verb, conjugationgroup: .präsensKonjunktivI(personNumber))
+      switch auxilliaryResult {
+      case .success(let auxilliary):
+        let partizipResult = Conjugator.conjugate(infinitiv: infinitiv, conjugationgroup: .perfektpartizip)
+        switch partizipResult {
+        case .success(let partizip):
+          return .success(auxilliary + " " + partizip)
+        case .failure:
+          return .failure(.conjugationFailed)
+        }
+      case .failure:
+        return .failure(.conjugationFailed)
+      }
     }
   }
 

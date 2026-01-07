@@ -5,4 +5,5 @@ enum ConjugatorError: String, Error {
   case personNumberNotSupported
   case verbTooShort
   case infinitivEndingInvalid
+  case conjugationFailed
 }

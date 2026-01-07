@@ -83,6 +83,22 @@ struct VerbView: View {
             title: displayName(for: .imperativ(.secondSingular)),
             conjugations: imperativConjugations()
           )
+
+          // Perfekt Indikativ
+          ConjugationSectionView(
+            title: displayName(for: .perfektIndikativ(.firstSingular)),
+            conjugations: PersonNumber.allCases.map { pn in
+              ConjugationRow(pronoun: pn.pronoun, form: conjugate(.perfektIndikativ(pn)))
+            }
+          )
+
+          // Perfekt Konjunktiv I
+          ConjugationSectionView(
+            title: displayName(for: .perfektKonjunktivI(.firstSingular)),
+            conjugations: PersonNumber.allCases.map { pn in
+              ConjugationRow(pronoun: pn.pronoun, form: conjugate(.perfektKonjunktivI(pn)))
+            }
+          )
         }
         .padding(.horizontal)
       }

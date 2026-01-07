@@ -10,6 +10,9 @@ enum Conjugationgroup: Hashable {
   case präteritumKonditional(_ personNumber: PersonNumber)
   case imperativ(_ personNumber: PersonNumber)
 
+  case perfektIndikativ(_ personNumber: PersonNumber)
+  case perfektKonjunktivI(_ personNumber: PersonNumber)
+
   var germanDisplayName: String {
     switch self {
     case .präsenspartizip:
@@ -26,6 +29,10 @@ enum Conjugationgroup: Hashable {
       return "Präteritum Konditional"
     case .imperativ:
       return "Imperativ"
+    case .perfektIndikativ:
+      return "Perfekt Indikativ"
+    case .perfektKonjunktivI:
+      return "Perfekt Konjunktiv I"
     }
   }
 
@@ -45,6 +52,10 @@ enum Conjugationgroup: Hashable {
       return "Past Conditional"
     case .imperativ:
       return "Imperative"
+    case .perfektIndikativ:
+      return "Present Perfect Indicative"
+    case .perfektKonjunktivI:
+      return "Present Perfect Subjunctive"
     }
   }
 
@@ -142,6 +153,8 @@ enum Conjugationgroup: Hashable {
       case .firstSingular, .thirdSingular:
         return ""
       }
+    case .perfektIndikativ, .perfektKonjunktivI:
+      fatalError("ending() was called for a compound tense. This is a logic error.")
     }
   }
 }

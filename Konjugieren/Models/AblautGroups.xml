@@ -24,11 +24,11 @@
   <ag e="müssen" a="MUSS*,a1s,a3s|MUSST*,a2s|USS,bA,pp" />
   <ag e="nehmen" a="IMM,a2s,a3s|AHM,bA|ÄHM,dA|OMM,pp" />
   <ag e="sehen" a="IE,a2s,a3s|A,bA|Ä,dA" />
-  <ag e="sein" a="BIN*,a1s|BIST*,a2s|IST*,a3s|SIND*,a1p,a3p|SEID*,a2p|WAR,bA|SEI*,c1s,c3s,i2s|SEIST*,c2s|SEIEN*,c1p,c3p,i1p,i3p|WÄR,dA|WES,pp|SEID*,i2p" />
+  <ag e="sein" a="BIN*,a1s|BIst*,a2s|IST*,a3s|sIND*,a1p,a3p|seiD*,a2p|WAR,bA|seI*,c1s,c3s,i2s|seIst*,c2s|WÄR,dA|WES,pp|seiD*,i2p" />
   <ag e="singen" a="A,bA|Ä,dA|U,pp" />
   <ag e="sitzen" a="ASS,bA|ÄSS,dA|ESS,pp" />
   <ag e="stehen" a="AND,bA,pp|ÄND,dA" />
-  <ag e="werden" a="WIRST*,a2s|WIRD*,a3s|WERDET*,a2p|WURDE*,b1s,b3s|WURDEST*,b2s|WURDET*,b2p|Ü,dA|O,pp" />
+  <ag e="werden" a="wIrst*,a2s|wIrD*,a3s|wErdEt*,a2p|wUrdE*,b1s,b3s|wUrdEst*,b2s|wUrdEt*,b2p|U,b3p|Ü,dA|O,pp" />
   <ag e="wissen" a="WEISS*,a1s,a3s|WEISST*,a2s|USS,bA,pp|ÜSS,dA" />
   <ag e="wollen" a="WILL*,a1s,a3s|WILLST*,a2s" />
 </ablautGroups>

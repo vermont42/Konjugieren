@@ -65,8 +65,8 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "sehen", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "sIEht")
     expectConjugation(infinitiv: "sehen", conjugationgroup: .präsensIndicativ(.firstPlural), expected: "sehen")
 
-    // Strong verb with a→ä ablaut (lassen: a→ä in 2s, 3s)
-    expectConjugation(infinitiv: "lassen", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "lÄsst")
+    // Strong verb lassen: 2s has full override showing irregular ending, 3s has standard ablaut
+    expectConjugation(infinitiv: "lassen", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "lÄssEst")
     expectConjugation(infinitiv: "lassen", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "lÄsst")
 
     // Irregular sein (uppercase shows ablaut, lowercase shows unchanged portions)
@@ -77,10 +77,10 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "sein", conjugationgroup: .präsensIndicativ(.secondPlural), expected: "seiD")
     expectConjugation(infinitiv: "sein", conjugationgroup: .präsensIndicativ(.thirdPlural), expected: "sIND")
 
-    // Irregular haben
+    // Irregular haben (uppercase A shows stem vowel change from "ab" to "A")
     expectConjugation(infinitiv: "haben", conjugationgroup: .präsensIndicativ(.firstSingular), expected: "habe")
-    expectConjugation(infinitiv: "haben", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "hast")
-    expectConjugation(infinitiv: "haben", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "hat")
+    expectConjugation(infinitiv: "haben", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "hAst")
+    expectConjugation(infinitiv: "haben", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "hAt")
 
     // -ieren verb
     expectConjugation(infinitiv: "studieren", conjugationgroup: .präsensIndicativ(.firstSingular), expected: "studiere")
@@ -274,6 +274,36 @@ struct ConjugatorTests {
 
     // Inseparable prefix verb
     expectConjugation(infinitiv: "verstehen", conjugationgroup: .perfektKonjunktivI(.firstSingular), expected: "habe verstANDen")
+  }
+
+  @Test func werden() {
+    // werden has extensive irregular forms with explicit full overrides
+    // Präsens Indikativ
+    expectConjugation(infinitiv: "werden", conjugationgroup: .präsensIndicativ(.firstSingular), expected: "werde")
+    expectConjugation(infinitiv: "werden", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "wIrst")
+    expectConjugation(infinitiv: "werden", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "wIrD")
+    expectConjugation(infinitiv: "werden", conjugationgroup: .präsensIndicativ(.firstPlural), expected: "werden")
+    expectConjugation(infinitiv: "werden", conjugationgroup: .präsensIndicativ(.secondPlural), expected: "wErdEt")
+    expectConjugation(infinitiv: "werden", conjugationgroup: .präsensIndicativ(.thirdPlural), expected: "werden")
+
+    // Präteritum Indikativ
+    expectConjugation(infinitiv: "werden", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "wUrdE")
+    expectConjugation(infinitiv: "werden", conjugationgroup: .präteritumIndicativ(.secondSingular), expected: "wUrdEst")
+    expectConjugation(infinitiv: "werden", conjugationgroup: .präteritumIndicativ(.thirdSingular), expected: "wUrdE")
+    expectConjugation(infinitiv: "werden", conjugationgroup: .präteritumIndicativ(.firstPlural), expected: "wUrden")
+    expectConjugation(infinitiv: "werden", conjugationgroup: .präteritumIndicativ(.secondPlural), expected: "wUrdEt")
+    expectConjugation(infinitiv: "werden", conjugationgroup: .präteritumIndicativ(.thirdPlural), expected: "wUrden")
+
+    // Präteritum Konditional (Konjunktiv II)
+    expectConjugation(infinitiv: "werden", conjugationgroup: .präteritumKonditional(.firstSingular), expected: "wÜrde")
+    expectConjugation(infinitiv: "werden", conjugationgroup: .präteritumKonditional(.secondSingular), expected: "wÜrdest")
+    expectConjugation(infinitiv: "werden", conjugationgroup: .präteritumKonditional(.thirdSingular), expected: "wÜrde")
+    expectConjugation(infinitiv: "werden", conjugationgroup: .präteritumKonditional(.firstPlural), expected: "wÜrden")
+    expectConjugation(infinitiv: "werden", conjugationgroup: .präteritumKonditional(.secondPlural), expected: "wÜrdet")
+    expectConjugation(infinitiv: "werden", conjugationgroup: .präteritumKonditional(.thirdPlural), expected: "wÜrden")
+
+    // Perfektpartizip
+    expectConjugation(infinitiv: "werden", conjugationgroup: .perfektpartizip, expected: "gewOrden")
   }
 
   @Test func imperativ() {

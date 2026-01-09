@@ -10,7 +10,7 @@
   <ag e="bieten" a="O,bA,pp|Ö,dA" />
   <ag e="bleiben" a="IE,bA,dA,pp" />
   <ag e="bringen" a="ACH,bA,pp|ÄCH,dA" />
-  <ag e="dürfen" a="DARF*,a1s,a3s|DARFST*,a2s|URF,bA,pp" />
+  <ag e="dürfen" a="darF*,a1s,a3s|dArfst*,a2s|Urf,bA,pp" />
   <ag e="halten" a="Ä,a2s,a3s|IE,bA,dA" />
   <ag e="finden" a="A,bA|Ä,dA|U,pp" />
   <ag e="geben" a="I,a2s,a3s|A,bA|Ä,dA" />
@@ -18,10 +18,10 @@
   <ag e="haben" a="A,a2s,a3s|AT,bA|ÄT,dA" />
   <ag e="kommen" a="A,bA|Ä,dA" />
   <ag e="können" a="KANN*,a1s,a3s|KANNST*,a2s|ONN,bA,pp" />
-  <ag e="lassen" a="Ä,a2s,a3s|IE,bA,dA|LIESSEST*,b2s" />
+  <ag e="lassen" a="Ä,a3s|lÄssEst*,a2s|IE,bA,dA|lIEssEst*,b2s" />
   <ag e="liegen" a="A,bA|Ä,dA|E,pp" />
   <ag e="mögen" a="MAG*,a1s,a3s|MAGST*,a2s|OCH,bA,pp|ÖCH,dA" />
-  <ag e="müssen" a="MUSS*,a1s,a3s|MUSST*,a2s|USS,bA,pp" />
+  <ag e="müssen" a="mUsS*,a1s,a3s|mUssT*,a2s|Uss,bA,pp" />
   <ag e="nehmen" a="IMM,a2s,a3s|AHM,bA|ÄHM,dA|OMM,pp" />
   <ag e="sehen" a="IE,a2s,a3s|A,bA|Ä,dA" />
   <ag e="sein" a="BIN*,a1s|BIst*,a2s|IST*,a3s|sIND*,a1p,a3p|seiD*,a2p|WAR,bA|seI*,c1s,c3s,i2s|seIst*,c2s|WÄR,dA|WES,pp|seiD*,i2p" />

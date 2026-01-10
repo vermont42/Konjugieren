@@ -25,25 +25,7 @@ enum Conjugator {
     }
 
     switch conjugationgroup {
-    case .präsensIndicativ:
-      let stamm = verb.stamm
-      let ending = conjugationgroup.ending(family: verb.family)
-      let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: conjugationgroup)
-      return .success(isFullOverride ? newStamm : newStamm + ending)
-
-    case .präsensKonjunktivI:
-      let stamm = verb.stamm
-      let ending = conjugationgroup.ending(family: verb.family)
-      let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: conjugationgroup)
-      return .success(isFullOverride ? newStamm : newStamm + ending)
-
-    case .präteritumIndicativ:
-      let stamm = verb.stamm
-      let ending = conjugationgroup.ending(family: verb.family)
-      let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: conjugationgroup)
-      return .success(isFullOverride ? newStamm : newStamm + ending)
-
-    case .präteritumKonditional:
+    case .präsensIndicativ, .präsensKonjunktivI, .präteritumIndicativ, .präteritumKonditional:
       let stamm = verb.stamm
       let ending = conjugationgroup.ending(family: verb.family)
       let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: conjugationgroup)
@@ -72,34 +54,22 @@ enum Conjugator {
       return conjugateImperativ(verb: verb, personNumber: personNumber)
 
     case .perfektIndikativ(let personNumber):
-      let auxilliaryResult = Conjugator.conjugate(infinitiv: verb.auxiliary.verb, conjugationgroup: .präsensIndicativ(personNumber))
-      switch auxilliaryResult {
-      case .success(let auxilliary):
-        let partizipResult = Conjugator.conjugate(infinitiv: infinitiv, conjugationgroup: .perfektpartizip)
-        switch partizipResult {
-        case .success(let partizip):
-          return .success(auxilliary + " " + partizip)
-        case .failure:
-          return .failure(.conjugationFailed)
-        }
-      case .failure:
-        return .failure(.conjugationFailed)
-      }
+      return conjugateCompoundTense(verb: verb, infinitiv: infinitiv, auxiliaryGroup: .präsensIndicativ(personNumber))
 
     case .perfektKonjunktivI(let personNumber):
-      let auxilliaryResult = Conjugator.conjugate(infinitiv: verb.auxiliary.verb, conjugationgroup: .präsensKonjunktivI(personNumber))
-      switch auxilliaryResult {
-      case .success(let auxilliary):
-        let partizipResult = Conjugator.conjugate(infinitiv: infinitiv, conjugationgroup: .perfektpartizip)
-        switch partizipResult {
-        case .success(let partizip):
-          return .success(auxilliary + " " + partizip)
-        case .failure:
-          return .failure(.conjugationFailed)
-        }
-      case .failure:
-        return .failure(.conjugationFailed)
-      }
+      return conjugateCompoundTense(verb: verb, infinitiv: infinitiv, auxiliaryGroup: .präsensKonjunktivI(personNumber))
+    }
+  }
+
+  private static func conjugateCompoundTense(verb: Verb, infinitiv: String, auxiliaryGroup: Conjugationgroup) -> Result<String, ConjugatorError> {
+    let auxiliaryResult = conjugate(infinitiv: verb.auxiliary.verb, conjugationgroup: auxiliaryGroup)
+    let partizipResult = conjugate(infinitiv: infinitiv, conjugationgroup: .perfektpartizip)
+
+    switch (auxiliaryResult, partizipResult) {
+    case (.success(let auxiliary), .success(let partizip)):
+      return .success(auxiliary + " " + partizip)
+    default:
+      return .failure(.conjugationFailed)
     }
   }
 
@@ -132,33 +102,15 @@ enum Conjugator {
       let form = (newStamm != stamm ? newStamm : stamm) + "t"
       return .success(withSeparablePrefix(verb: verb, form: form))
 
-    case .firstPlural:
-      let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: .imperativ(.firstPlural))
+    case .firstPlural, .thirdPlural:
+      let pronoun = personNumber == .firstPlural ? "wir" : "Sie"
+      let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: .imperativ(personNumber))
       if isFullOverride {
-        return .success(withSeparablePrefixAndPronoun(verb: verb, form: newStamm, pronoun: "wir"))
+        return .success(withSeparablePrefixAndPronoun(verb: verb, form: newStamm, pronoun: pronoun))
       }
-      let (konjStamm, konjOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: .präsensKonjunktivI(.firstPlural))
-      let form: String
-      if konjOverride {
-        form = konjStamm
-      } else {
-        form = (konjStamm != stamm ? konjStamm : stamm) + "en"
-      }
-      return .success(withSeparablePrefixAndPronoun(verb: verb, form: form, pronoun: "wir"))
-
-    case .thirdPlural:
-      let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: .imperativ(.thirdPlural))
-      if isFullOverride {
-        return .success(withSeparablePrefixAndPronoun(verb: verb, form: newStamm, pronoun: "Sie"))
-      }
-      let (konjStamm, konjOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: .präsensKonjunktivI(.thirdPlural))
-      let form: String
-      if konjOverride {
-        form = konjStamm
-      } else {
-        form = (konjStamm != stamm ? konjStamm : stamm) + "en"
-      }
-      return .success(withSeparablePrefixAndPronoun(verb: verb, form: form, pronoun: "Sie"))
+      let (konjStamm, konjOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: .präsensKonjunktivI(personNumber))
+      let form = konjOverride ? konjStamm : (konjStamm != stamm ? konjStamm : stamm) + "en"
+      return .success(withSeparablePrefixAndPronoun(verb: verb, form: form, pronoun: pronoun))
 
     case .firstSingular, .thirdSingular:
       return .failure(.personNumberNotSupported)

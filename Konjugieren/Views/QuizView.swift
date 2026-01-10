@@ -6,8 +6,11 @@ struct QuizView: View {
   @Environment(Quiz.self) var quiz
   @State private var userInput = ""
   @FocusState private var isTextFieldFocused: Bool
-
   private var settings: Settings { Current.settings }
+  @State private var currentAnimationAmount = 2.5
+  private let initialAnimationAmount = 2.5
+  private let animationModifier = 1.5
+  private let animationDuration = 2.0
 
   var body: some View {
     @Bindable var quiz = quiz
@@ -39,6 +42,14 @@ struct QuizView: View {
             Button(L.Quiz.start) {
               quiz.start()
             }
+            .onAppear {
+              self.currentAnimationAmount = initialAnimationAmount - animationModifier
+            }
+            .onDisappear {
+              self.currentAnimationAmount = initialAnimationAmount
+            }
+            .scaleEffect(currentAnimationAmount)
+            .animation(.linear(duration: animationDuration), value: currentAnimationAmount)
             .funButton()
           }
           Spacer()

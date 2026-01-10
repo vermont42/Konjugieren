@@ -67,6 +67,7 @@ struct QuizView: View {
       }
 
       Text("\(L.Quiz.conjugationgroup) \(question.displayName(lang: settings.conjugationgroupLang))")
+        .fixedSize(horizontal: false, vertical: true)
 
       HStack {
         Text("\(L.Quiz.progress) \(quiz.progressText)")

@@ -26,4 +26,17 @@ enum PersonNumber: String, CaseIterable {
       return "sie"
     }
   }
+
+  var pronounWithSieDisambiguation: String {
+    let base = pronoun
+    guard base == "sie" else { return base }
+    switch self {
+    case .thirdSingular:
+      return "sie (3s)"
+    case .thirdPlural:
+      return "sie (3p)"
+    default:
+      return base
+    }
+  }
 }

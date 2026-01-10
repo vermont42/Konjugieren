@@ -215,7 +215,7 @@ struct QuizItem: Identifiable {
     case .präsensIndicativ(let pn), .präsensKonjunktivI(let pn),
          .präteritumIndicativ(let pn), .präteritumKonditional(let pn),
          .perfektIndikativ(let pn), .perfektKonjunktivI(let pn):
-      return pn.pronoun
+      return pn.pronounWithSieDisambiguation
     case .imperativ(let pn):
       switch pn {
       case .secondSingular:

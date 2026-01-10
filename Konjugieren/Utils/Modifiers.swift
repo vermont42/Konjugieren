@@ -29,6 +29,7 @@ private struct SubheadingLabel: ViewModifier {
     content
       .font(Font.custom(workSansSemiBold, size: 20))
       .foregroundColor(.customYellow)
+      .padding(.horizontal, Layout.doubleDefaultSpacing)
   }
 }
 
@@ -37,6 +38,7 @@ private struct SettingsLabel: ViewModifier {
     content
       .font(Font.custom(workSansRegular, size: 16))
       .foregroundColor(.customForeground)
+      .frame(maxWidth: .infinity, alignment: .leading)
       .padding(.horizontal, Layout.doubleDefaultSpacing)
   }
 }

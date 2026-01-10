@@ -37,6 +37,16 @@ class Settings {
   static let quizDifficultyKey = "quizDifficulty"
   static let quizDifficultyDefault: QuizDifficulty = .regular
 
+  var audioFeedback: AudioFeedback = audioFeedbackDefault {
+    didSet {
+      if audioFeedback != oldValue {
+        getterSetter.set(key: Settings.audioFeedbackKey, value: "\(audioFeedback)")
+      }
+    }
+  }
+  static let audioFeedbackKey = "audioFeedback"
+  static let audioFeedbackDefault: AudioFeedback = .enable
+
   init(getterSetter: GetterSetter) {
     self.getterSetter = getterSetter
     if let conjugationgroupLangString = getterSetter.get(key: Settings.conjugationgroupLangKey) {
@@ -55,6 +65,12 @@ class Settings {
       quizDifficulty = QuizDifficulty(rawValue: quizDifficultyString) ?? Settings.quizDifficultyDefault
     } else {
       getterSetter.set(key: Settings.quizDifficultyKey, value: "\(quizDifficulty)")
+    }
+
+    if let audioFeedbackString = getterSetter.get(key: Settings.audioFeedbackKey) {
+      audioFeedback = AudioFeedback(rawValue: audioFeedbackString) ?? Settings.audioFeedbackDefault
+    } else {
+      getterSetter.set(key: Settings.audioFeedbackKey, value: "\(audioFeedback)")
     }
   }
 }

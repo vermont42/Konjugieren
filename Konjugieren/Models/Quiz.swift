@@ -66,6 +66,7 @@ class Quiz {
     isInProgress = true
     shouldShowResults = false
     startTimer()
+    SoundPlayer.play(Sound.randomGun)
   }
 
   func submitAnswer(_ answer: String) {
@@ -83,9 +84,11 @@ class Quiz {
       correctCount += 1
       lastIncorrectAnswer = nil
       lastCorrectAnswer = nil
+      SoundPlayer.play(.chime)
     } else {
       lastIncorrectAnswer = answer
       lastCorrectAnswer = questions[currentIndex].correctAnswer
+      SoundPlayer.play(.buzz)
     }
 
     currentIndex += 1
@@ -105,6 +108,7 @@ class Quiz {
     lastIncorrectAnswer = nil
     lastCorrectAnswer = nil
     questions = []
+    SoundPlayer.play(Sound.randomSadTrombone)
   }
 
   // MARK: - Private Methods
@@ -191,6 +195,7 @@ class Quiz {
     stopTimer()
     isInProgress = false
     shouldShowResults = true
+    SoundPlayer.play(Sound.randomApplause, shouldDebounce: false)
   }
 
   deinit {

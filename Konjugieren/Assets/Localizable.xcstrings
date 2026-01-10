@@ -47,6 +47,38 @@
     "%@ ✗" : {
 
     },
+    "AudioFeedback.disable" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deaktivieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disable"
+          }
+        }
+      }
+    },
+    "AudioFeedback.enable" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktivieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable"
+          }
+        }
+      }
+    },
     "Conjugationgroup.imperativ" : {
       "localizations" : {
         "de" : {
@@ -1243,6 +1275,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "3P-Pronoun Gender"
+          }
+        }
+      }
+    },
+    "Settings.audioFeedbackDescription" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Einstellung aktiviert Audio-Feedback während der Quizze."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This setting enables audio feedback during quizzes."
+          }
+        }
+      }
+    },
+    "Settings.audioFeedbackHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Audio-Feedback"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Audio Feedback"
           }
         }
       }

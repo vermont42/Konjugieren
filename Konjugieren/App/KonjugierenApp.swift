@@ -8,4 +8,8 @@ struct KonjugierenApp: App {
       MainTabView()
     }
   }
+
+  init() {
+    SoundPlayer.setup()
+  }
 }

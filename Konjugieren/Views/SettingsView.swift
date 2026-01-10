@@ -58,6 +58,21 @@ struct SettingsView: View {
             .settingsLabel()
 
           Spacer(minLength: Layout.tripleDefaultSpacing)
+
+          Text(L.Settings.audioFeedbackHeading)
+            .subheadingLabel()
+
+          Picker("", selection: $settings.audioFeedback) {
+            ForEach(AudioFeedback.allCases, id: \.self) { audioFeedback in
+              Text(audioFeedback.localizedAudioFeedback).tag(audioFeedback)
+            }
+          }
+          .segmentedPicker()
+
+          Text(L.Settings.audioFeedbackDescription)
+            .settingsLabel()
+
+          Spacer(minLength: Layout.tripleDefaultSpacing)
         }
       }
       .onAppear {

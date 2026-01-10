@@ -97,6 +97,14 @@ enum L {
     static var quizDifficultyDescription: String {
       String(localized: "Settings.quizDifficultyDescription")
     }
+
+    static var audioFeedbackHeading: String {
+      String(localized: "Settings.audioFeedbackHeading")
+    }
+
+    static var audioFeedbackDescription: String {
+      String(localized: "Settings.audioFeedbackDescription")
+    }
   }
 
   enum Conjugationgroup {
@@ -160,6 +168,16 @@ enum L {
 
     static var ridiculous: String {
       String(localized: "QuizDifficulty.ridiculous")
+    }
+  }
+
+  enum AudioFeedback {
+    static var enable: String {
+      String(localized: "AudioFeedback.enable")
+    }
+
+    static var disable: String {
+      String(localized: "AudioFeedback.disable")
     }
   }
 

@@ -4,6 +4,49 @@
     "" : {
 
     },
+    "%@ - %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ - %2$@"
+          }
+        }
+      }
+    },
+    "%@ %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@"
+          }
+        }
+      }
+    },
+    "%@ %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$lld"
+          }
+        }
+      }
+    },
+    "%@ %lld / %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$lld / %3$lld"
+          }
+        }
+      }
+    },
+    "%@ ✗" : {
+
+    },
     "Conjugationgroup.imperativ" : {
       "localizations" : {
         "de" : {
@@ -820,98 +863,258 @@
         }
       }
     },
-    "Settings.conjugationgroupLangDescription" : {
+    "Quiz.conjugation" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Diese Einstellung legt fest, ob in der Benutzeroberfläche von Konjugieren die tatsächlichen deutschen Conjugationgroupnamen oder deren englische Entsprechungen angezeigt werden."
+            "value" : "Konjugation"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This setting determines whether actual German conjugationgroup names or their English equivalents are shown in Konjugieren’s user interface. "
+            "value" : "Conjugation"
           }
         }
       }
     },
-    "Settings.conjugationgroupLangHeading" : {
+    "Quiz.conjugationgroup" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sprache der Conjugationgroup"
+            "value" : "Konjugationsgruppe:"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Conjugationgroup Language"
+            "value" : "Conjugationgroup:"
           }
         }
       }
     },
-    "Settings.thirdPersonPronounGenderDescription" : {
+    "Quiz.correct" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Diese Einstellung legt fest, welche deutschen Pronomen der dritten Person Singular in der Benutzeroberfläche angezeigt werden."
+            "value" : "Richtig:"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This setting determines which pronouns accompany third-person-singular conjugations."
+            "value" : "Correct:"
           }
         }
       }
     },
-    "Settings.thirdPersonPronounGenderHeading" : {
+    "Quiz.correctAnswer" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Pronomen 3. Person"
+            "value" : "Richtige Antwort:"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "3P-Pronoun Gender"
+            "value" : "Correct Answer:"
           }
         }
       }
     },
-    "Settings.quizDifficultyHeading" : {
+    "Quiz.difficulty" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Quizschwierigkeit"
+            "value" : "Schwierigkeit"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Quiz Difficulty"
+            "value" : "Difficulty"
           }
         }
       }
     },
-    "Settings.quizDifficultyDescription" : {
+    "Quiz.elapsed" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Diese Einstellung bestimmt die Schwierigkeit der Quizze. Normalerweise ist Regulär empfohlen, da Lächerlich Konjugationsgruppen enthält, die nicht weit verbreitet sind."
+            "value" : "Zeit:"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This setting determines the difficulty of quizzes. You probably want Regular because Ridiculous includes conjugationgroups that are not in widespread use."
+            "value" : "Elapsed:"
+          }
+        }
+      }
+    },
+    "Quiz.lastAnswer" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Letzte Antwort:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last Answer:"
+          }
+        }
+      }
+    },
+    "Quiz.progress" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fortschritt:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Progress:"
+          }
+        }
+      }
+    },
+    "Quiz.pronoun" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pronomen:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pronoun:"
+          }
+        }
+      }
+    },
+    "Quiz.quit" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beenden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quit"
+          }
+        }
+      }
+    },
+    "Quiz.results" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ergebnisse"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Results"
+          }
+        }
+      }
+    },
+    "Quiz.score" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Punkte:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Score:"
+          }
+        }
+      }
+    },
+    "Quiz.start" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start"
+          }
+        }
+      }
+    },
+    "Quiz.time" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeit:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Time:"
+          }
+        }
+      }
+    },
+    "Quiz.translation" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Übersetzung:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Translation:"
+          }
+        }
+      }
+    },
+    "Quiz.verb" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verb:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verb:"
           }
         }
       }
@@ -944,6 +1147,102 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ridiculous"
+          }
+        }
+      }
+    },
+    "Settings.conjugationgroupLangDescription" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Einstellung legt fest, ob in der Benutzeroberfläche von Konjugieren die tatsächlichen deutschen Conjugationgroupnamen oder deren englische Entsprechungen angezeigt werden."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This setting determines whether actual German conjugationgroup names or their English equivalents are shown in Konjugieren’s user interface. "
+          }
+        }
+      }
+    },
+    "Settings.conjugationgroupLangHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sprache der Conjugationgroup"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conjugationgroup Language"
+          }
+        }
+      }
+    },
+    "Settings.quizDifficultyDescription" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Einstellung bestimmt die Schwierigkeit der Quizze. Normalerweise ist Regulär empfohlen, da Lächerlich Konjugationsgruppen enthält, die nicht weit verbreitet sind."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This setting determines the difficulty of quizzes. You probably want Regular because Ridiculous includes conjugationgroups that are not in widespread use."
+          }
+        }
+      }
+    },
+    "Settings.quizDifficultyHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quizschwierigkeit"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quiz Difficulty"
+          }
+        }
+      }
+    },
+    "Settings.thirdPersonPronounGenderDescription" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Einstellung legt fest, welche deutschen Pronomen der dritten Person Singular in der Benutzeroberfläche angezeigt werden."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This setting determines which pronouns accompany third-person-singular conjugations."
+          }
+        }
+      }
+    },
+    "Settings.thirdPersonPronounGenderHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pronomen 3. Person"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3P-Pronoun Gender"
           }
         }
       }

@@ -163,6 +163,72 @@ enum L {
     }
   }
 
+  enum Quiz {
+    static var start: String {
+      String(localized: "Quiz.start")
+    }
+
+    static var quit: String {
+      String(localized: "Quiz.quit")
+    }
+
+    static var verb: String {
+      String(localized: "Quiz.verb")
+    }
+
+    static var translation: String {
+      String(localized: "Quiz.translation")
+    }
+
+    static var pronoun: String {
+      String(localized: "Quiz.pronoun")
+    }
+
+    static var conjugationgroup: String {
+      String(localized: "Quiz.conjugationgroup")
+    }
+
+    static var progress: String {
+      String(localized: "Quiz.progress")
+    }
+
+    static var elapsed: String {
+      String(localized: "Quiz.elapsed")
+    }
+
+    static var score: String {
+      String(localized: "Quiz.score")
+    }
+
+    static var lastAnswer: String {
+      String(localized: "Quiz.lastAnswer")
+    }
+
+    static var correctAnswer: String {
+      String(localized: "Quiz.correctAnswer")
+    }
+
+    static var conjugation: String {
+      String(localized: "Quiz.conjugation")
+    }
+
+    static var results: String {
+      String(localized: "Quiz.results")
+    }
+
+    static var correct: String {
+      String(localized: "Quiz.correct")
+    }
+
+    static var difficulty: String {
+      String(localized: "Quiz.difficulty")
+    }
+
+    static var time: String {
+      String(localized: "Quiz.time")
+    }
+  }
+
   enum History {
     static var stardustTitle: String {
       String(localized: "History.stardustTitle")

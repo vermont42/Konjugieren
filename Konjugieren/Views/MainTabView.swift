@@ -3,6 +3,8 @@
 import SwiftUI
 
 struct MainTabView: View {
+  @State private var quiz = Quiz()
+
   var body: some View {
     TabView {
       VerbBrowseView()
@@ -20,6 +22,7 @@ struct MainTabView: View {
         .tag(1)
 
       QuizView()
+        .environment(quiz)
         .tabItem {
           Image(systemName: "pencil.circle.fill")
           Text(L.Navigation.quiz)

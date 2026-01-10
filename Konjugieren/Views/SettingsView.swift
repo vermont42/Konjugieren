@@ -43,6 +43,21 @@ struct SettingsView: View {
             .settingsLabel()
 
           Spacer(minLength: Layout.tripleDefaultSpacing)
+
+          Text(L.Settings.quizDifficultyHeading)
+            .settingsSubheadingLabel()
+
+          Picker("", selection: $settings.quizDifficulty) {
+            ForEach(QuizDifficulty.allCases, id: \.self) { quizDifficulty in
+              Text(quizDifficulty.localizedQuizDifficulty).tag(quizDifficulty)
+            }
+          }
+          .segmentedPicker()
+
+          Text(L.Settings.quizDifficultyDescription)
+            .settingsLabel()
+
+          Spacer(minLength: Layout.tripleDefaultSpacing)
         }
       }
       .onAppear {

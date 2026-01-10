@@ -89,6 +89,14 @@ enum L {
     static var thirdPersonPronounGenderDescription: String {
       String(localized: "Settings.thirdPersonPronounGenderDescription")
     }
+
+    static var quizDifficultyHeading: String {
+      String(localized: "Settings.quizDifficultyHeading")
+    }
+
+    static var quizDifficultyDescription: String {
+      String(localized: "Settings.quizDifficultyDescription")
+    }
   }
 
   enum Conjugationgroup {
@@ -142,6 +150,16 @@ enum L {
 
     static var es: String {
       String(localized: "ThirdPersonPronounGender.es")
+    }
+  }
+
+  enum QuizDifficulty {
+    static var regular: String {
+      String(localized: "QuizDifficulty.regular")
+    }
+
+    static var ridiculous: String {
+      String(localized: "QuizDifficulty.ridiculous")
     }
   }
 

@@ -884,6 +884,70 @@
         }
       }
     },
+    "Settings.quizDifficultyHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quizschwierigkeit"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quiz Difficulty"
+          }
+        }
+      }
+    },
+    "Settings.quizDifficultyDescription" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Einstellung bestimmt die Schwierigkeit der Quizze. Normalerweise ist Regulär empfohlen, da Lächerlich Konjugationsgruppen enthält, die nicht weit verbreitet sind."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This setting determines the difficulty of quizzes. You probably want Regular because Ridiculous includes conjugationgroups that are not in widespread use."
+          }
+        }
+      }
+    },
+    "QuizDifficulty.regular" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regulär"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regular"
+          }
+        }
+      }
+    },
+    "QuizDifficulty.ridiculous" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lächerlich"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ridiculous"
+          }
+        }
+      }
+    },
     "Testing.runningUnitTests" : {
       "localizations" : {
         "de" : {

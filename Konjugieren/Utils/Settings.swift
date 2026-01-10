@@ -27,6 +27,16 @@ class Settings {
   static let thirdPersonPronounGenderKey = "thirdPersonPronounGender"
   static let thirdPersonPronounGenderDefault: ThirdPersonPronounGender = .er
 
+  var quizDifficulty: QuizDifficulty = quizDifficultyDefault {
+    didSet {
+      if quizDifficulty != oldValue {
+        getterSetter.set(key: Settings.quizDifficultyKey, value: "\(quizDifficulty)")
+      }
+    }
+  }
+  static let quizDifficultyKey = "quizDifficulty"
+  static let quizDifficultyDefault: QuizDifficulty = .regular
+
   init(getterSetter: GetterSetter) {
     self.getterSetter = getterSetter
     if let conjugationgroupLangString = getterSetter.get(key: Settings.conjugationgroupLangKey) {
@@ -39,6 +49,12 @@ class Settings {
       thirdPersonPronounGender = ThirdPersonPronounGender(rawValue: thirdPersonPronounGenderString) ?? Settings.thirdPersonPronounGenderDefault
     } else {
       getterSetter.set(key: Settings.thirdPersonPronounGenderKey, value: "\(thirdPersonPronounGender)")
+    }
+
+    if let quizDifficultyString = getterSetter.get(key: Settings.quizDifficultyKey) {
+      quizDifficulty = QuizDifficulty(rawValue: quizDifficultyString) ?? Settings.quizDifficultyDefault
+    } else {
+      getterSetter.set(key: Settings.quizDifficultyKey, value: "\(quizDifficulty)")
     }
   }
 }

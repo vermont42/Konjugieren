@@ -15,6 +15,15 @@ struct VerbView: View {
     }
   }
 
+  private func conjugationSection(for groupBuilder: (PersonNumber) -> Conjugationgroup) -> ConjugationSectionView {
+    ConjugationSectionView(
+      title: displayName(for: groupBuilder(.firstSingular)),
+      conjugations: PersonNumber.allCases.map { pn in
+        ConjugationRow(pronoun: pn.pronoun, form: conjugate(groupBuilder(pn)))
+      }
+    )
+  }
+
   var body: some View {
     ScrollView {
       VStack(alignment: .leading, spacing: 24) {
@@ -46,37 +55,10 @@ struct VerbView: View {
             conjugations: [conjugate(.präsenspartizip)]
           )
 
-          // Präsens Indikativ
-          ConjugationSectionView(
-            title: displayName(for: .präsensIndicativ(.firstSingular)),
-            conjugations: PersonNumber.allCases.map { pn in
-              ConjugationRow(pronoun: pn.pronoun, form: conjugate(.präsensIndicativ(pn)))
-            }
-          )
-
-          // Präteritum Indikativ
-          ConjugationSectionView(
-            title: displayName(for: .präteritumIndicativ(.firstSingular)),
-            conjugations: PersonNumber.allCases.map { pn in
-              ConjugationRow(pronoun: pn.pronoun, form: conjugate(.präteritumIndicativ(pn)))
-            }
-          )
-
-          // Präsens Konjunktiv I
-          ConjugationSectionView(
-            title: displayName(for: .präsensKonjunktivI(.firstSingular)),
-            conjugations: PersonNumber.allCases.map { pn in
-              ConjugationRow(pronoun: pn.pronoun, form: conjugate(.präsensKonjunktivI(pn)))
-            }
-          )
-
-          // Präteritum Konditional
-          ConjugationSectionView(
-            title: displayName(for: .präteritumKonditional(.firstSingular)),
-            conjugations: PersonNumber.allCases.map { pn in
-              ConjugationRow(pronoun: pn.pronoun, form: conjugate(.präteritumKonditional(pn)))
-            }
-          )
+          conjugationSection(for: Conjugationgroup.präsensIndicativ)
+          conjugationSection(for: Conjugationgroup.präteritumIndicativ)
+          conjugationSection(for: Conjugationgroup.präsensKonjunktivI)
+          conjugationSection(for: Conjugationgroup.präteritumKonditional)
 
           // Imperativ
           ConjugationSectionView(
@@ -84,21 +66,8 @@ struct VerbView: View {
             conjugations: imperativConjugations()
           )
 
-          // Perfekt Indikativ
-          ConjugationSectionView(
-            title: displayName(for: .perfektIndikativ(.firstSingular)),
-            conjugations: PersonNumber.allCases.map { pn in
-              ConjugationRow(pronoun: pn.pronoun, form: conjugate(.perfektIndikativ(pn)))
-            }
-          )
-
-          // Perfekt Konjunktiv I
-          ConjugationSectionView(
-            title: displayName(for: .perfektKonjunktivI(.firstSingular)),
-            conjugations: PersonNumber.allCases.map { pn in
-              ConjugationRow(pronoun: pn.pronoun, form: conjugate(.perfektKonjunktivI(pn)))
-            }
-          )
+          conjugationSection(for: Conjugationgroup.perfektIndikativ)
+          conjugationSection(for: Conjugationgroup.perfektKonjunktivI)
         }
         .padding(.horizontal)
       }

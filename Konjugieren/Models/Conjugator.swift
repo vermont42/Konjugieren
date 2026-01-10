@@ -99,8 +99,7 @@ enum Conjugator {
       if isFullOverride {
         return .success(withSeparablePrefix(verb: verb, form: newStamm))
       }
-      let form = (newStamm != stamm ? newStamm : stamm) + "t"
-      return .success(withSeparablePrefix(verb: verb, form: form))
+      return .success(withSeparablePrefix(verb: verb, form: newStamm + "t"))
 
     case .firstPlural, .thirdPlural:
       let pronoun = personNumber == .firstPlural ? "wir" : "Sie"
@@ -109,7 +108,7 @@ enum Conjugator {
         return .success(withSeparablePrefixAndPronoun(verb: verb, form: newStamm, pronoun: pronoun))
       }
       let (konjStamm, konjOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: .präsensKonjunktivI(personNumber))
-      let form = konjOverride ? konjStamm : (konjStamm != stamm ? konjStamm : stamm) + "en"
+      let form = konjOverride ? konjStamm : konjStamm + "en"
       return .success(withSeparablePrefixAndPronoun(verb: verb, form: form, pronoun: pronoun))
 
     case .firstSingular, .thirdSingular:

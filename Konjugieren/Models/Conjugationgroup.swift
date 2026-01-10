@@ -144,14 +144,12 @@ enum Conjugationgroup: Hashable {
       return "end"
     case .imperativ(let personNumber):
       switch personNumber {
-      case .secondSingular:
+      case .firstSingular, .secondSingular, .thirdSingular:
         return ""
       case .secondPlural:
         return "t"
       case .firstPlural, .thirdPlural:
         return "en"
-      case .firstSingular, .thirdSingular:
-        return ""
       }
     case .perfektIndikativ, .perfektKonjunktivI:
       fatalError("ending() was called for a compound tense. This is a logic error.")

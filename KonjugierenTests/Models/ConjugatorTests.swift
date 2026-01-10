@@ -138,7 +138,7 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "sehen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "sAh")
     expectConjugation(infinitiv: "sehen", conjugationgroup: .präteritumIndicativ(.thirdSingular), expected: "sAh")
 
-    expectConjugation(infinitiv: "gehen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "gIng")
+    expectConjugation(infinitiv: "gehen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "gING")
 
     // Mixed verb (ablaut + -te suffix)
     expectConjugation(infinitiv: "bringen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "brACHte")
@@ -179,7 +179,7 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "singen", conjugationgroup: .präteritumKonditional(.thirdPlural), expected: "sÄngen")
 
     expectConjugation(infinitiv: "sehen", conjugationgroup: .präteritumKonditional(.firstSingular), expected: "sÄhe")
-    expectConjugation(infinitiv: "gehen", conjugationgroup: .präteritumKonditional(.firstSingular), expected: "gInge")
+    expectConjugation(infinitiv: "gehen", conjugationgroup: .präteritumKonditional(.firstSingular), expected: "gINGe")
 
     // Mixed verb
     expectConjugation(infinitiv: "bringen", conjugationgroup: .präteritumKonditional(.firstSingular), expected: "brÄCHte")
@@ -203,8 +203,8 @@ struct ConjugatorTests {
   @Test func perfektIndikativ() {
     // Weak verb with haben auxiliary - all persons
     expectConjugation(infinitiv: "machen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "habe gemacht")
-    expectConjugation(infinitiv: "machen", conjugationgroup: .perfektIndikativ(.secondSingular), expected: "hast gemacht")
-    expectConjugation(infinitiv: "machen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hat gemacht")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .perfektIndikativ(.secondSingular), expected: "hAst gemacht")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt gemacht")
     expectConjugation(infinitiv: "machen", conjugationgroup: .perfektIndikativ(.firstPlural), expected: "haben gemacht")
     expectConjugation(infinitiv: "machen", conjugationgroup: .perfektIndikativ(.secondPlural), expected: "habt gemacht")
     expectConjugation(infinitiv: "machen", conjugationgroup: .perfektIndikativ(.thirdPlural), expected: "haben gemacht")
@@ -219,18 +219,18 @@ struct ConjugatorTests {
 
     // Strong verb with haben auxiliary
     expectConjugation(infinitiv: "singen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "habe gesUngen")
-    expectConjugation(infinitiv: "singen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hat gesUngen")
+    expectConjugation(infinitiv: "singen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt gesUngen")
 
     expectConjugation(infinitiv: "sehen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "habe gesehen")
-    expectConjugation(infinitiv: "sehen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hat gesehen")
+    expectConjugation(infinitiv: "sehen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt gesehen")
 
     // Mixed verb
     expectConjugation(infinitiv: "bringen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "habe gebrACHt")
-    expectConjugation(infinitiv: "bringen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hat gebrACHt")
+    expectConjugation(infinitiv: "bringen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt gebrACHt")
 
     // -ieren verb (no ge- prefix)
     expectConjugation(infinitiv: "studieren", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "habe studiert")
-    expectConjugation(infinitiv: "studieren", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hat studiert")
+    expectConjugation(infinitiv: "studieren", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt studiert")
 
     // Separable prefix verb (sein auxiliary reflects corrected ablaut)
     expectConjugation(infinitiv: "ankommen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "BIN angekommen")
@@ -238,7 +238,7 @@ struct ConjugatorTests {
 
     // Inseparable prefix verb
     expectConjugation(infinitiv: "verstehen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "habe verstANDen")
-    expectConjugation(infinitiv: "verstehen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hat verstANDen")
+    expectConjugation(infinitiv: "verstehen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt verstANDen")
   }
 
   @Test func perfektKonjunktivI() {

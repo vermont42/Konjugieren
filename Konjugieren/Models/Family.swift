@@ -8,11 +8,7 @@ enum Family: Hashable, CustomStringConvertible {
 
   var pastParticiplePrefix: String {
     switch self {
-    case .strong:
-      return "ge"
-    case .mixed:
-      return "ge"
-    case .weak:
+    case .strong, .mixed, .weak:
       return "ge"
     case .ieren:
       return ""

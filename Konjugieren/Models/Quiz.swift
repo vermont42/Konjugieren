@@ -41,7 +41,7 @@ class Quiz {
   }
 
   var elapsedText: String {
-    "\(elapsedSeconds)"
+    TimeFormatter.formatIntTime(elapsedSeconds)
   }
 
   var finalScore: Int {

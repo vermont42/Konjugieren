@@ -24,7 +24,7 @@ struct ResultsView: View {
           Text("\(L.Quiz.score) \(quiz.finalScore)")
           Text("\(L.Quiz.correct) \(quiz.correctCount) / \(Quiz.questionCount)")
           Text("\(quiz.difficultyText) \(L.Quiz.difficulty)")
-          Text("\(L.Quiz.time) \(quiz.elapsedSeconds)")
+          Text("\(L.Quiz.time) \(TimeFormatter.formatIntTime(quiz.elapsedSeconds))")
         }
         .padding(.horizontal, Layout.doubleDefaultSpacing)
         .padding(.top, Layout.doubleDefaultSpacing)

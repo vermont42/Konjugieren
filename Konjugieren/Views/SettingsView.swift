@@ -15,7 +15,7 @@ struct SettingsView: View {
           Spacer(minLength: Layout.tripleDefaultSpacing)
 
           Text(L.Settings.conjugationgroupLangHeading)
-            .settingsSubheadingLabel()
+            .subheadingLabel()
 
           Picker("", selection: $settings.conjugationgroupLang) {
             ForEach(ConjugationgroupLang.allCases, id: \.self) { conjugationgroupLang in
@@ -30,7 +30,7 @@ struct SettingsView: View {
           Spacer(minLength: Layout.tripleDefaultSpacing)
 
           Text(L.Settings.thirdPersonPronounGenderHeading)
-            .settingsSubheadingLabel()
+            .subheadingLabel()
 
           Picker("", selection: $settings.thirdPersonPronounGender) {
             ForEach(ThirdPersonPronounGender.allCases, id: \.self) { thirdPersonPronounGender in
@@ -45,7 +45,7 @@ struct SettingsView: View {
           Spacer(minLength: Layout.tripleDefaultSpacing)
 
           Text(L.Settings.quizDifficultyHeading)
-            .settingsSubheadingLabel()
+            .subheadingLabel()
 
           Picker("", selection: $settings.quizDifficulty) {
             ForEach(QuizDifficulty.allCases, id: \.self) { quizDifficulty in

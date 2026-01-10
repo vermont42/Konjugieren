@@ -3,8 +3,8 @@
 import SwiftUI
 
 extension View {
-  func settingsSubheadingLabel() -> some View {
-    modifier(SettingsSubheadingLabel())
+  func subheadingLabel() -> some View {
+    modifier(SubheadingLabel())
   }
 
   func settingsLabel() -> some View {
@@ -18,9 +18,13 @@ extension View {
   func segmentedPicker() -> some View {
     modifier(SegmentedPicker())
   }
+
+  func funButton() -> some View {
+    modifier(FunButton())
+  }
 }
 
-private struct SettingsSubheadingLabel: ViewModifier {
+private struct SubheadingLabel: ViewModifier {
   func body(content: Content) -> some View {
     content
       .font(Font.custom(workSansSemiBold, size: 20))
@@ -50,5 +54,14 @@ private struct SegmentedPicker: ViewModifier {
     content
       .pickerStyle(.segmented)
       .padding(.horizontal, Layout.doubleDefaultSpacing)
+  }
+}
+
+private struct FunButton: ViewModifier {
+  func body(content: Content) -> some View {
+    content
+      .foregroundColor(.customRed)
+      .buttonStyle(.bordered)
+      .tint(.customRed)
   }
 }

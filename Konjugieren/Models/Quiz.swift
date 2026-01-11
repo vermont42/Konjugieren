@@ -28,6 +28,7 @@ class Quiz {
 
   private var timer: Timer?
   private var difficultyUsed: QuizDifficulty = .regular
+  private var timerInterval: TimeInterval = 1.0
 
   // MARK: - Computed Properties
 
@@ -50,6 +51,10 @@ class Quiz {
 
   var difficultyText: String {
     difficultyUsed.localizedQuizDifficulty
+  }
+
+  init(timerInterval: TimeInterval = 1.0) {
+    self.timerInterval = timerInterval
   }
 
   // MARK: - Public Methods
@@ -181,7 +186,7 @@ class Quiz {
   }
 
   private func startTimer() {
-    timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { [weak self] _ in
+    timer = Timer.scheduledTimer(withTimeInterval: timerInterval, repeats: true) { [weak self] _ in
       self?.elapsedSeconds += 1
     }
   }

@@ -740,13 +740,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Zwischen etwa 4500 und 2500 v. Chr. bewohnte ein Volk, das wir Jamnaja nennen (vom russischen яма, \\\"Grube\\\", in Bezug auf ihre Bestattungspraktiken), die pontisch-kaspische Steppe. Sie gehörten zu den ersten, die das Pferd zum Reiten domestizierten, was ihnen – zusammen mit der kürzlich erfundenen Räderfahrzeuge – beispiellose Mobilität verlieh. Die Jamnaja waren halbnomadische Hirten, die Rinder, Schafe und Ziegen über die Grasländer trieben. Sie lebten in kleinen, mobilen Gruppen und folgten ihren Herden zu saisonalen Weiden.\n\nIhre Gesellschaft scheint patriarchalisch und hierarchisch gewesen zu sein. Sie bestatteten ihre Toten in charakteristischen Grubengräbern unter Erdhügeln, genannt Kurgane, oft mit Grabbeigaben, die den Status anzeigten: Waffen, Schmuck, Tieropfer. DNA-Belege deuten darauf hin, dass sie erhebliche Mengen an Milchprodukten konsumierten, da sie Laktosetoleranz entwickelt hatten, und archäologische Funde weisen auf eine durch Jagd und begrenzte Landwirtschaft ergänzte Ernährung hin.\n\nDie Jamnaja sprachen das, was Linguisten als Proto-Indoeuropäisch (PIE) rekonstruieren – den Vorfahren von fast der Hälfte aller heute gesprochenen Sprachen, einschließlich Deutsch, Englisch, Ukrainisch, Hindi, Persisch, Griechisch und Latein."
+            "value" : "Zwischen etwa 4500 und 2500 v. Chr. bewohnte ein Volk, das wir Jamnaja nennen (vom russischen яма, \\\"Grube\\\", in Bezug auf ihre Bestattungspraktiken), die pontisch-kaspische Steppe. Sie gehörten zu den ersten, die das Pferd zum Reiten domestizierten, was ihnen – zusammen mit der kürzlich erfundenen Räderfahrzeuge – beispiellose Mobilität verlieh. Die Jamnaja waren halbnomadische Hirten, die Rinder, Schafe und Ziegen über die Grasländer trieben. Sie lebten in kleinen, mobilen Gruppen und folgten ihren Herden zu saisonalen Weiden.\n\nIhre Gesellschaft scheint patriarchalisch und hierarchisch gewesen zu sein. Sie bestatteten ihre Toten in charakteristischen Grubengräbern unter Erdhügeln, genannt Kurgane, oft mit Grabbeigaben, die den Status anzeigten: Waffen, Schmuck, Tieropfer. DNA-Belege deuten darauf hin, dass sie erhebliche Mengen an Milchprodukten konsumierten, da sie Laktosetoleranz entwickelt hatten, und archäologische Funde weisen auf eine durch Jagd und begrenzte Landwirtschaft ergänzte Ernährung hin.\n\nDie Jamnaja sprachen das, was Linguisten als Proto-Indoeuropäisch (PIE) rekonstruieren – den Vorfahren von Deutsch, Englisch, Ukrainisch, Hindi, Persisch, Griechisch, Katalanisch und vielen anderen Sprachen der indoeuropäischen Sprachfamilie. Fast die Hälfte aller heute lebenden Menschen spricht eine indoeuropäische Sprache als Muttersprache."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Between approximately 4500 and 2500 BC, a people we call the Yamnaya (from Russian яма, \"pit,\" referring to their burial practices) inhabited the Pontic-Caspian steppe. They were among the first to domesticate the horse for riding, which—combined with the recent invention of wheeled vehicles—gave them unprecedented mobility. The Yamnaya were semi-nomadic pastoralists, herding cattle, sheep, and goats across the grasslands. They lived in small, mobile groups, following their herds to seasonal pastures.\n\nTheir society appears to have been patriarchal and hierarchical. They buried their dead in distinctive pit graves beneath earthen mounds called kurgans, often with grave goods indicating status: weapons, jewelry, animal sacrifices. DNA evidence suggests they consumed significant amounts of dairy, having evolved lactose tolerance, and archaeological evidence points to a diet supplemented by hunting and limited agriculture.\n\nThe Yamnaya spoke what linguists reconstruct as Proto-Indo-European (PIE), the ancestor of nearly half of all languages spoken today, including German, English, Ukrainian, Hindi, Persian, Greek, and Latin."
+            "value" : "Between approximately 4500 and 2500 BC, a people we call the Yamnaya (from Russian яма, \"pit,\" referring to their burial practices) inhabited the Pontic-Caspian steppe. They were among the first to domesticate the horse for riding, which—combined with the recent invention of wheeled vehicles—gave them unprecedented mobility. The Yamnaya were semi-nomadic pastoralists, herding cattle, sheep, and goats across the grasslands. They lived in small, mobile groups, following their herds to seasonal pastures.\n\nTheir society appears to have been patriarchal and hierarchical. They buried their dead in distinctive pit graves beneath earthen mounds called kurgans, often with grave goods indicating status: weapons, jewelry, animal sacrifices. DNA evidence suggests they consumed significant amounts of dairy, having evolved lactose tolerance, and archaeological evidence points to a diet supplemented by hunting and limited agriculture.\n\nThe Yamnaya spoke what linguists reconstruct as Proto-Indo-European (PIE), the ancestor of German, English, Ukrainian, Hindi, Persian, Greek, Catalan, and many other languages in the Indo-European language family. Nearly half of humans alive today speak an Indo-European language as their first language."
           }
         }
       }
@@ -1183,6 +1183,38 @@
         }
       }
     },
+    "Settings.audioFeedbackDescription" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Einstellung aktiviert Audio-Feedback während der Quizze."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This setting enables audio feedback during quizzes."
+          }
+        }
+      }
+    },
+    "Settings.audioFeedbackHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Audio-Feedback"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Audio Feedback"
+          }
+        }
+      }
+    },
     "Settings.conjugationgroupLangDescription" : {
       "localizations" : {
         "de" : {
@@ -1275,38 +1307,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "3P-Pronoun Gender"
-          }
-        }
-      }
-    },
-    "Settings.audioFeedbackDescription" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Diese Einstellung aktiviert Audio-Feedback während der Quizze."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "This setting enables audio feedback during quizzes."
-          }
-        }
-      }
-    },
-    "Settings.audioFeedbackHeading" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Audio-Feedback"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Audio Feedback"
           }
         }
       }

@@ -22,7 +22,7 @@ xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren -destination 'plat
 
 ## Architecture Overview
 
-Konjugieren is an iOS app for learning German verb conjugations. It will eventually conjugate 1,000 verbs across all German conjugationgroups ("tenses" in ordinary (and incorrect) parlance). Konjugieren uses SwiftUI for its user interface.
+Konjugieren is an iOS app for learning German verb conjugations. It will eventually conjugate 1,000 verbs across all German conjugationgroups ("tenses" in ordinary (and incorrect) parlance). Konjugieren uses SwiftUI for its user interface. Josh Adams, whose pronouns are he/him/his, is the developer of Konjugieren.
 
 ## Project Structure
 

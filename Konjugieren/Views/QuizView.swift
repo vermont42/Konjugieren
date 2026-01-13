@@ -15,47 +15,45 @@ struct QuizView: View {
   var body: some View {
     @Bindable var quiz = quiz
 
-    ZStack {
-      Color.customBackground
-        .ignoresSafeArea()
+    NavigationStack {
+      ZStack {
+        Color.customBackground
+          .ignoresSafeArea()
 
-      VStack(alignment: .leading) {
-        Text(L.Navigation.quiz)
-          .subheadingLabel()
-          .padding(.horizontal, Layout.doubleDefaultSpacing)
-          .padding(.top, Layout.tripleDefaultSpacing)
-
-        if quiz.isInProgress, let question = quiz.currentQuestion {
-          quizContent(question: question)
-        }
-
-        Spacer()
-
-        HStack {
-          Spacer()
-          if quiz.isInProgress {
-            Button(L.Quiz.quit) {
-              quiz.quit()
-            }
-            .funButton()
-          } else if !quiz.shouldShowResults {
-            Button(L.Quiz.start) {
-              quiz.start()
-            }
-            .onAppear {
-              self.currentAnimationAmount = initialAnimationAmount - animationModifier
-            }
-            .onDisappear {
-              self.currentAnimationAmount = initialAnimationAmount
-            }
-            .scaleEffect(currentAnimationAmount)
-            .animation(.linear(duration: animationDuration), value: currentAnimationAmount)
-            .funButton()
+        VStack(alignment: .leading) {
+          if quiz.isInProgress, let question = quiz.currentQuestion {
+            quizContent(question: question)
           }
+
           Spacer()
+
+          HStack {
+            Spacer()
+            if quiz.isInProgress {
+              Button(L.Quiz.quit) {
+                quiz.quit()
+              }
+              .funButton()
+            } else if !quiz.shouldShowResults {
+              Button(L.Quiz.start) {
+                quiz.start()
+              }
+              .onAppear {
+                self.currentAnimationAmount = initialAnimationAmount - animationModifier
+              }
+              .onDisappear {
+                self.currentAnimationAmount = initialAnimationAmount
+              }
+              .scaleEffect(currentAnimationAmount)
+              .animation(.linear(duration: animationDuration), value: currentAnimationAmount)
+              .funButton()
+            }
+            Spacer()
+          }
+          .padding(.bottom, Layout.tripleDefaultSpacing)
         }
-        .padding(.bottom, Layout.tripleDefaultSpacing)
       }
+      .navigationTitle(L.Navigation.quiz)
     }
     .sheet(isPresented: $quiz.shouldShowResults) {
       ResultsView(quiz: quiz)

@@ -4,17 +4,17 @@ import Foundation
 
 struct Info: Hashable {
   let heading: String
-  let attributedText: NSAttributedString
+  let richTextBlocks: [RichTextBlock]
   let alwaysUsesGermanPronunciation: Bool
   let imageInfo: ImageInfo?
 
   private init(heading: String, text: String, alwaysUsesGermanPronunciation: Bool = false, imageInfo: ImageInfo? = nil) {
     self.heading = heading
-    attributedText = text.attributedText
+    richTextBlocks = text.richTextBlocks
     self.alwaysUsesGermanPronunciation = alwaysUsesGermanPronunciation
     self.imageInfo = imageInfo
   }
-//  TODO: Make sure image is working. Do English strings with subheadings and conjugation text.
+
   static let infos: [Info] = [
     Info(heading: L.Info.dedicationHeading, text: L.Info.dedicationText, imageInfo: ImageInfo(filename: "JoshAdams", accessibilityLabel: L.ImageInfo.joshAdams)),
     Info(heading: L.Info.perfektpartizipHeading, text: L.Info.perfektpartizipText, alwaysUsesGermanPronunciation: true),

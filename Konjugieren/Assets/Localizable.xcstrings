@@ -768,13 +768,45 @@
       }
     },
     "ImageInfo.cliffSchmiesing" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cliff Schmiesing"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cliff Schmiesing"
+          }
+        }
+      }
     },
     "ImageInfo.joshAdams" : {
-
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Josh Adams"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Josh Adams"
+          }
+        }
+      }
     },
     "Info.dedicationHeading" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widmung"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -785,10 +817,16 @@
     },
     "Info.dedicationText" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese App ist ~Cliff Schmiesing~ gewidmet. Hier ist der Quellcode von ~Konjugieren~: %https://github.com/vermont42/Konjugieren%"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This app is dedicated to ~Cliff Scmiesing~. Here is the source code of ~Konjugieren~: %https://github.com/vermont42/Konjugieren%"
+            "value" : "This app is dedicated to ~Cliff Schmiesing~. Here is the source code of ~Konjugieren~: %https://github.com/vermont42/Konjugieren%"
           }
         }
       }
@@ -827,6 +865,12 @@
     },
     "Info.perfektpartizipHeading" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perfektpartizip"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
@@ -837,21 +881,16 @@
     },
     "Info.perfektpartizipText" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "`Perfektpartizip`\\n\\nHier ist ein Beispiel einer Perfektpartizip-Konjugation: $gesUngen$"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "`Perfektpartizip`\\n\\nHere is an example perfektpartizip conjugation: $gesUngen$"
-          }
-        }
-      }
-    },
-    "Navigation.back" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Back"
           }
         }
       }

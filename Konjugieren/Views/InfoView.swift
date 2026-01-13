@@ -16,30 +16,65 @@ struct InfoView: View {
       Color.customBackground
         .ignoresSafeArea()
 
-      VStack {
-        if let imageInfo = info.imageInfo {
-          Image(imageInfo.filename)
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(width: 270)
-            .accessibilityLabel(imageInfo.accessibilityLabel)
-        }
+      ScrollView {
+        VStack {
+          if let imageInfo = info.imageInfo {
+            Image(imageInfo.filename)
+              .resizable()
+              .aspectRatio(contentMode: .fit)
+              .frame(width: 270)
+              .accessibilityLabel(imageInfo.accessibilityLabel)
+          }
 
-        if shouldShowInfoHeading {
-          Text(info.heading)
-            .headingLabel()
-          Spacer()
-        }
+          if shouldShowInfoHeading {
+            Text(info.heading)
+              .headingLabel()
+            Spacer()
+          }
 
-        TextView(text: info.attributedText)
-          .frame(minWidth: 0, maxWidth: .infinity, minHeight: 0, maxHeight: .infinity)
-          .navigationTitle(info.heading)
+          RichTextView(blocks: info.richTextBlocks)
+            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+        }
+        .padding(.leading, Layout.doubleDefaultSpacing)
+        .padding(.trailing, Layout.doubleDefaultSpacing)
       }
-      .padding(.leading, Layout.doubleDefaultSpacing)
-      .padding(.trailing, Layout.doubleDefaultSpacing)
-      .onAppear {
-//        Current.analytics.recordViewAppeared("\(InfoView.self)")
-      }
+      .navigationTitle(info.heading)
     }
+    .environment(\.openURL, OpenURLAction { url in
+      handleInfoLink(url)
+    })
+  }
+
+  // MARK: - Link Handling
+
+  private func handleInfoLink(_ url: URL) -> OpenURLAction.Result {
+    let cleaned = cleanURLString(url.absoluteString)
+
+    // Check if it's an internal info link
+    if let infoIndex = Info.headingToIndex(heading: cleaned) {
+      if let infoURL = URL(string: "\(URL.konjugierenURLPrefix)\(URL.infoHost)/\(infoIndex)") {
+        Current.handleURL(infoURL)
+      }
+      return .handled
+    }
+
+    // Check if it's a verb link
+    if Verb.verbs[cleaned] != nil {
+      if let verbURL = URL(string: "\(URL.konjugierenURLPrefix)\(URL.verbHost)/\(cleaned)") {
+        Current.handleURL(verbURL)
+      }
+      return .handled
+    }
+
+    // External URL - let system handle it (opens Safari)
+    return .systemAction
+  }
+
+  private func cleanURLString(_ input: String) -> String {
+    let decoded = input.removingPercentEncoding ?? input
+    let parenless = decoded
+      .replacingOccurrences(of: "(", with: "")
+      .replacingOccurrences(of: ")", with: "")
+    return parenless.prefix(1).lowercased() + parenless.dropFirst()
   }
 }

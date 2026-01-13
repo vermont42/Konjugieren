@@ -6,78 +6,79 @@ struct SettingsView: View {
   var body: some View {
     @Bindable var settings = Current.settings
 
-    ZStack {
-      Color.customBackground
-        .ignoresSafeArea()
+    NavigationStack {
+      ZStack {
+        Color.customBackground
+          .ignoresSafeArea()
 
-      VStack(alignment: .leading) {
-        ScrollView(.vertical) {
-          Spacer(minLength: Layout.tripleDefaultSpacing)
+        VStack(alignment: .leading) {
+          ScrollView(.vertical) {
+            Text(L.Settings.conjugationgroupLangHeading)
+              .subheadingLabel()
 
-          Text(L.Settings.conjugationgroupLangHeading)
-            .subheadingLabel()
-
-          Picker("", selection: $settings.conjugationgroupLang) {
-            ForEach(ConjugationgroupLang.allCases, id: \.self) { conjugationgroupLang in
-              Text(conjugationgroupLang.localizedConjugationgroupLang).tag(conjugationgroupLang)
+            Picker("", selection: $settings.conjugationgroupLang) {
+              ForEach(ConjugationgroupLang.allCases, id: \.self) { conjugationgroupLang in
+                Text(conjugationgroupLang.localizedConjugationgroupLang).tag(conjugationgroupLang)
+              }
             }
-          }
-          .segmentedPicker()
+            .segmentedPicker()
 
-          Text(L.Settings.conjugationgroupLangDescription)
-            .settingsLabel()
+            Text(L.Settings.conjugationgroupLangDescription)
+              .settingsLabel()
 
-          Spacer(minLength: Layout.tripleDefaultSpacing)
+            Spacer(minLength: Layout.tripleDefaultSpacing)
 
-          Text(L.Settings.thirdPersonPronounGenderHeading)
-            .subheadingLabel()
+            Text(L.Settings.thirdPersonPronounGenderHeading)
+              .subheadingLabel()
 
-          Picker("", selection: $settings.thirdPersonPronounGender) {
-            ForEach(ThirdPersonPronounGender.allCases, id: \.self) { thirdPersonPronounGender in
-              Text(thirdPersonPronounGender.localizedThirdPersonPronounGender).tag(thirdPersonPronounGender)
+            Picker("", selection: $settings.thirdPersonPronounGender) {
+              ForEach(ThirdPersonPronounGender.allCases, id: \.self) { thirdPersonPronounGender in
+                Text(thirdPersonPronounGender.localizedThirdPersonPronounGender).tag(thirdPersonPronounGender)
+              }
             }
-          }
-          .segmentedPicker()
+            .segmentedPicker()
 
-          Text(L.Settings.thirdPersonPronounGenderDescription)
-            .settingsLabel()
+            Text(L.Settings.thirdPersonPronounGenderDescription)
+              .settingsLabel()
 
-          Spacer(minLength: Layout.tripleDefaultSpacing)
+            Spacer(minLength: Layout.tripleDefaultSpacing)
 
-          Text(L.Settings.quizDifficultyHeading)
-            .subheadingLabel()
+            Text(L.Settings.quizDifficultyHeading)
+              .subheadingLabel()
 
-          Picker("", selection: $settings.quizDifficulty) {
-            ForEach(QuizDifficulty.allCases, id: \.self) { quizDifficulty in
-              Text(quizDifficulty.localizedQuizDifficulty).tag(quizDifficulty)
+            Picker("", selection: $settings.quizDifficulty) {
+              ForEach(QuizDifficulty.allCases, id: \.self) { quizDifficulty in
+                Text(quizDifficulty.localizedQuizDifficulty).tag(quizDifficulty)
+              }
             }
-          }
-          .segmentedPicker()
+            .segmentedPicker()
 
-          Text(L.Settings.quizDifficultyDescription)
-            .settingsLabel()
+            Text(L.Settings.quizDifficultyDescription)
+              .settingsLabel()
 
-          Spacer(minLength: Layout.tripleDefaultSpacing)
+            Spacer(minLength: Layout.tripleDefaultSpacing)
 
-          Text(L.Settings.audioFeedbackHeading)
-            .subheadingLabel()
+            Text(L.Settings.audioFeedbackHeading)
+              .subheadingLabel()
 
-          Picker("", selection: $settings.audioFeedback) {
-            ForEach(AudioFeedback.allCases, id: \.self) { audioFeedback in
-              Text(audioFeedback.localizedAudioFeedback).tag(audioFeedback)
+            Picker("", selection: $settings.audioFeedback) {
+              ForEach(AudioFeedback.allCases, id: \.self) { audioFeedback in
+                Text(audioFeedback.localizedAudioFeedback).tag(audioFeedback)
+              }
             }
+            .segmentedPicker()
+
+            Text(L.Settings.audioFeedbackDescription)
+              .settingsLabel()
+
+            Spacer(minLength: Layout.tripleDefaultSpacing)
           }
-          .segmentedPicker()
-
-          Text(L.Settings.audioFeedbackDescription)
-            .settingsLabel()
-
-          Spacer(minLength: Layout.tripleDefaultSpacing)
+        }
+        .onAppear {
+          // TODO: Fire analytic and fetch ratings.
         }
       }
-      .onAppear {
-        // TODO: Fire analytic and fetch ratings.
-      }
+      .navigationTitle(L.Navigation.settings)
     }
   }
 }

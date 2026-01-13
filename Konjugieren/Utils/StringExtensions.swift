@@ -1,24 +1,30 @@
 // Copyright © 2025 Josh Adams. All rights reserved.
 
 import SwiftUI
-import UIKit
+
+// MARK: - RichTextBlock
+
+enum RichTextBlock: Hashable {
+  case subheading(String)
+  case body([TextSegment])
+}
+
+// MARK: - TextSegment
+
+enum TextSegment: Hashable {
+  case plain(String)
+  case bold(String)
+  case link(text: String, url: URL)
+  case conjugation(regular: String, irregular: String, trailing: String)  // before, red part, after
+}
+
+// MARK: - String Extensions
 
 extension String {
-  static var subheadingSeparator: Character {
-    "`"
-  }
-
-  static var boldSeparator: Character {
-    "~"
-  }
-
-  static var linkSeparator: Character {
-    "%"
-  }
-
-  static var conjugationSeparator: Character {
-    "$"
-  }
+  static var subheadingSeparator: Character { "`" }
+  static var boldSeparator: Character { "~" }
+  static var linkSeparator: Character { "%" }
+  static var conjugationSeparator: Character { "$" }
 
   func replaceFirstOccurence(of oldSubstring: String, with newSubstring: String) -> String {
     if let range = self.range(of: oldSubstring) {
@@ -27,155 +33,175 @@ extension String {
     return self
   }
 
-  var conjugatedString: NSAttributedString {
-    let nsStringCombined = NSString(string: self)
-    guard let nsStrings = NSArray(array: nsStringCombined.components(separatedBy: " ")) as? [NSString] else {
-      fatalError("nsStrings was nil.")
-    }
-    var attStrings: [NSAttributedString] = []
-    for nsString in nsStrings {
-      let length = nsString.length
-      var startIndex = -1
-      var endIndex = startIndex
-      let uppercaseLetters = NSCharacterSet.uppercaseLetters
-      for i in 0 ..< length {
-        guard let unicodeScalar = UnicodeScalar(nsString.character(at: i)) else {
-          fatalError("unicodeScalar was nil.")
-        }
-        if uppercaseLetters.contains(unicodeScalar) {
-          startIndex = i
-          break
-        }
-      }
-      if startIndex != -1 {
-        for i in (0 ..< length).reversed() {
-          guard let unicodeScalar = UnicodeScalar(nsString.character(at: i)) else {
-            fatalError("unicodeScalar was nil.")
-          }
-          if uppercaseLetters.contains(unicodeScalar) {
-            endIndex = i
-            break
-          }
-        }
-        let attString = NSMutableAttributedString(string: nsString.lowercased)
-        attString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor(Color.customRed), range: NSRange(location: startIndex, length: endIndex - startIndex + 1))
-        attStrings.append(attString)
-      } else {
-        attStrings.append(NSAttributedString(string: nsString as String))
-      }
-    }
-    var attString: NSAttributedString = attStrings[0]
-    for i in 1 ..< attStrings.count {
-      attString += (NSAttributedString(string: " " ) + attStrings[i])
-    }
-    return attString
-  }
+  // MARK: - Rich Text Block Parser
 
-  func coloredString(color: UIColor) -> NSAttributedString {
-    let attributedString = NSMutableAttributedString(string: self)
-    attributedString.addAttribute(NSAttributedString.Key.foregroundColor, value: color, range: NSRange(location: 0, length: count))
-    return attributedString
-  }
-
-  var attributedText: NSAttributedString {
-    // Localizable.xcstrings stores \n as literal backslash-n, so convert to actual newlines
+  var richTextBlocks: [RichTextBlock] {
+    // Convert literal \n from Localizable.xcstrings to actual newlines
     let processedString = self.replacingOccurrences(of: "\\n", with: "\n")
-    let attributedText = NSMutableAttributedString(string: processedString)
-    attributedText.addAttributes([NSAttributedString.Key.foregroundColor: UIColor(Color.customForeground), NSAttributedString.Key.font: Fonts.body], range: NSRange(location: 0, length: attributedText.length))
-    var attributesAndRanges: [(NSAttributedString.Key, Any, NSRange)] = []
-    var conjugationRanges: [NSRange] = []
-    let centeredStyle = NSMutableParagraphStyle()
-    centeredStyle.alignment = .center
+
+    var blocks: [RichTextBlock] = []
+    var currentText = ""
     var inSubheading = false
-    var inBold = false
-    var inConjugation = false
-    var inLink = false
-    var currentIndex = 0
-    var startIndex = 0
 
     for char in processedString {
       if char == String.subheadingSeparator {
         if inSubheading {
-          attributesAndRanges.append((NSAttributedString.Key.paragraphStyle, centeredStyle, NSRange(location: startIndex, length: currentIndex - startIndex)))
-          attributesAndRanges.append((NSAttributedString.Key.font, Fonts.subheading, NSRange(location: startIndex, length: currentIndex - startIndex)))
+          // Closing backtick: emit subheading block
+          let trimmed = currentText.trimmingCharacters(in: .whitespacesAndNewlines)
+          if !trimmed.isEmpty {
+            blocks.append(.subheading(trimmed))
+          }
+          currentText = ""
           inSubheading = false
         } else {
+          // Opening backtick: emit any pending body text first
+          if !currentText.isEmpty {
+            let segments = currentText.parseBodyToSegments()
+            blocks.append(.body(segments))
+            currentText = ""
+          }
           inSubheading = true
-          startIndex = currentIndex
         }
+      } else {
+        currentText.append(char)
       }
+    }
+
+    // Emit any remaining text as body
+    if !currentText.isEmpty {
+      let segments = currentText.parseBodyToSegments()
+      blocks.append(.body(segments))
+    }
+
+    return blocks
+  }
+
+  // MARK: - Body Text Parser (Bold, Links, Conjugations)
+
+  private func parseBodyToSegments() -> [TextSegment] {
+    var segments: [TextSegment] = []
+    var currentText = ""
+
+    var inBold = false
+    var inLink = false
+    var inConjugation = false
+    var markupStart = self.startIndex
+
+    for (offset, char) in self.enumerated() {
+      let index = self.index(self.startIndex, offsetBy: offset)
 
       if char == String.boldSeparator {
         if inBold {
-          attributesAndRanges.append((NSAttributedString.Key.font, Fonts.boldBody, NSRange(location: startIndex, length: currentIndex - startIndex)))
+          // Closing bold
+          let content = String(self[self.index(after: markupStart)..<index])
+          if !currentText.isEmpty {
+            segments.append(.plain(currentText))
+            currentText = ""
+          }
+          segments.append(.bold(content))
           inBold = false
         } else {
+          // Opening bold
+          if !currentText.isEmpty {
+            segments.append(.plain(currentText))
+            currentText = ""
+          }
           inBold = true
-          startIndex = currentIndex
+          markupStart = index
         }
-      }
-
-      if char == String.linkSeparator {
+      } else if char == String.linkSeparator {
         if inLink {
-          let nsRange = NSRange(location: startIndex + 1, length: (currentIndex - startIndex) - 1)
-          guard let range = Range(nsRange, in: processedString) else {
-            fatalError("Could not make Range.")
+          // Closing link
+          let content = String(self[self.index(after: markupStart)..<index])
+          if !currentText.isEmpty {
+            segments.append(.plain(currentText))
+            currentText = ""
           }
-          var subString = String(processedString[range])
-          let http = "http"
-          if subString.prefix(http.count) != http {
-            guard let encodedString = subString.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) else {
-              fatalError("Could not URL encode substring.")
-            }
-            subString = encodedString
+          // Create URL
+          let urlString: String
+          if content.hasPrefix("http") {
+            urlString = content
+          } else {
+            urlString = content.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? content
           }
-          attributesAndRanges.append((NSAttributedString.Key.link, subString, nsRange))
+          if let url = URL(string: urlString) {
+            segments.append(.link(text: content, url: url))
+          } else {
+            segments.append(.plain(content))
+          }
           inLink = false
         } else {
+          // Opening link
+          if !currentText.isEmpty {
+            segments.append(.plain(currentText))
+            currentText = ""
+          }
           inLink = true
-          startIndex = currentIndex
+          markupStart = index
         }
-      }
-
-      if char == String.conjugationSeparator {
+      } else if char == String.conjugationSeparator {
         if inConjugation {
-          let nsRange = NSRange(location: startIndex + 1, length: (currentIndex - startIndex) - 1)
-          conjugationRanges.append(nsRange)
+          // Closing conjugation
+          let content = String(self[self.index(after: markupStart)..<index])
+          if !currentText.isEmpty {
+            segments.append(.plain(currentText))
+            currentText = ""
+          }
+          // Parse conjugation into parts
+          let conjugationSegment = content.parseConjugationToSegment()
+          segments.append(conjugationSegment)
           inConjugation = false
         } else {
+          // Opening conjugation
+          if !currentText.isEmpty {
+            segments.append(.plain(currentText))
+            currentText = ""
+          }
           inConjugation = true
-          startIndex = currentIndex
+          markupStart = index
         }
-      }
-
-      currentIndex += 1
-    }
-
-    for triple in attributesAndRanges {
-      attributedText.addAttribute(triple.0, value: triple.1, range: triple.2)
-    }
-
-    for conjugationRange in conjugationRanges {
-      let conjugation = attributedText.mutableString.substring(with: conjugationRange)
-      let attributedString = (conjugation as String).conjugatedString
-      attributedText.replaceCharacters(in: conjugationRange, with: (processedString as NSString).substring(with: conjugationRange).lowercased())
-      attributedString.enumerateAttribute(NSAttributedString.Key.foregroundColor, in: NSRange(location: 0, length: attributedString.length), options: []) { (value, range, _) -> Void in
-        if value != nil {
-          let infoRange = NSRange(location: conjugationRange.location + range.location, length: range.length)
-          attributedText.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor(Color.customRed), range: infoRange)
-        }
+      } else if !inBold && !inLink && !inConjugation {
+        currentText.append(char)
       }
     }
 
-    [
-      String(String.subheadingSeparator),
-      String(String.boldSeparator),
-      String(String.linkSeparator),
-      String(String.conjugationSeparator)
-    ].forEach {
-      attributedText.mutableString.replaceOccurrences(of: $0, with: "", options: NSString.CompareOptions.caseInsensitive, range: NSRange(location: 0, length: attributedText.length))
+    // Append any remaining plain text
+    if !currentText.isEmpty {
+      segments.append(.plain(currentText))
     }
 
-    return attributedText
+    return segments
+  }
+
+  // MARK: - Conjugation Parser (Uppercase → Red)
+
+  private func parseConjugationToSegment() -> TextSegment {
+    let chars = Array(self)
+
+    // Find first and last uppercase letter indices
+    var firstUpper = -1
+    var lastUpper = -1
+
+    for (i, char) in chars.enumerated() {
+      if char.isUppercase {
+        if firstUpper == -1 {
+          firstUpper = i
+        }
+        lastUpper = i
+      }
+    }
+
+    let lowercased = self.lowercased()
+
+    if firstUpper == -1 {
+      // No uppercase letters - treat as plain text
+      return .conjugation(regular: lowercased, irregular: "", trailing: "")
+    } else {
+      let lowercasedChars = Array(lowercased)
+      let before = firstUpper > 0 ? String(lowercasedChars[0..<firstUpper]) : ""
+      let irregular = String(lowercasedChars[firstUpper...lastUpper])
+      let after = lastUpper < lowercasedChars.count - 1 ? String(lowercasedChars[(lastUpper + 1)...]) : ""
+      return .conjugation(regular: before, irregular: irregular, trailing: after)
+    }
   }
 }

@@ -8,6 +8,9 @@ var Current = World.chooseWorld()
 @Observable
 class World {
   var settings: Settings
+  var verb: Verb?
+  var family: String?
+  var info: Info?
 
   init(settings: Settings) {
     self.settings = settings
@@ -40,4 +43,33 @@ class World {
     let settings = Settings(getterSetter: GetterSetterFake())
     return World(settings: settings)
   }()
+
+  func handleURL(_ url: URL) {
+    guard
+      url.isDeeplink,
+      url.hasExpectedNumberOfDeeplinkComponents
+    else {
+      return
+    }
+
+    verb = nil
+    family = nil
+    info = nil
+
+    switch url.host {
+    case URL.verbHost:
+      verb = Verb.verbs[url.pathComponents[1]]
+    case URL.familyHost:
+      family = url.pathComponents[1]
+    case URL.infoHost:
+      if
+        let infoIndex = Int(url.pathComponents[1]),
+        infoIndex < Info.infos.count
+      {
+        info = Info.infos[infoIndex]
+      }
+    default:
+      return
+    }
+  }
 }

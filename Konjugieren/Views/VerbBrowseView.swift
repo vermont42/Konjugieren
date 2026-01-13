@@ -58,10 +58,9 @@ struct VerbRowView: View {
     HStack {
       VStack(alignment: .leading, spacing: 4) {
         Text(verb.infinitiv)
-          .font(.headline)
-          .foregroundStyle(.customYellow)
+          .tableText()
         Text(verb.translation)
-          .font(.subheadline)
+          .tableSubtext()
       }
 
       Spacer()

@@ -6,6 +6,7 @@ struct KonjugierenApp: App {
   var body: some Scene {
     WindowGroup {
       MainTabView()
+        .onOpenURL(perform: Current.handleURL(_:))
     }
   }
 

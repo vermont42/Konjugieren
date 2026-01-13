@@ -3,48 +3,70 @@
 import SwiftUI
 
 struct InfoBrowseView: View {
+  @State private var isPresentingInfo = false
+  @State private var isPresentingVerb = false
+
   var body: some View {
-    NavigationStack {
-      List {
-        NavigationLink {
-          HistoryView()
-        } label: {
-          InfoRowView(
-            title: L.Info.history,
-            subtitle: L.Info.historySubtitle,
-            systemImage: "clock.arrow.circlepath"
-          )
+    NavigationView {
+      ScrollView {
+        LazyVStack {
+          ForEach(Info.infos, id: \.heading) { info in
+            NavigationLink(destination: InfoView(info: info)) {
+              ZStack {
+                Color.customBackground
+                Text(info.heading)
+                  .tableText()
+              }
+            }
+            .buttonStyle(.plain)
+            .germanPronunciation(forReal: info.alwaysUsesGermanPronunciation)
+          }
         }
       }
-      .listStyle(.plain)
-      .navigationTitle(L.Navigation.info)
-    }
-  }
-}
-
-struct InfoRowView: View {
-  let title: String
-  let subtitle: String
-  let systemImage: String
-
-  var body: some View {
-    HStack(spacing: 16) {
-      Image(systemName: systemImage)
-        .font(.title2)
-        .foregroundStyle(.customYellow)
-        .frame(width: 32)
-
-      VStack(alignment: .leading, spacing: 4) {
-        Text(title)
-          .font(.headline)
-          .foregroundStyle(.primary)
-
-        Text(subtitle)
-          .font(.subheadline)
-          .foregroundStyle(.primary)
+      .navigationBarTitle(L.Navigation.info)
+      .navigationViewStyle(.stack) // https://stackoverflow.com/a/66024249
+      .onChange(of: Current.info) { _, newInfo in
+        if newInfo == nil {
+          isPresentingInfo = false
+        } else {
+          isPresentingInfo = true
+        }
       }
+      .onChange(of: Current.verb) { _, newVerb in
+        if newVerb == nil {
+          isPresentingVerb = false
+        } else {
+          isPresentingVerb = true
+        }
+      }
+      .sheet(
+        isPresented: $isPresentingInfo,
+        onDismiss: {
+          Current.info = nil
+          isPresentingInfo = false
+        },
+        content: {
+          Current.info.map {
+            InfoView(info: $0, shouldShowInfoHeading: true)
+          }
+        }
+      )
+      .sheet(
+        isPresented: $isPresentingVerb,
+        onDismiss: {
+          Current.verb = nil
+          isPresentingVerb = false
+        },
+        content: {
+          Current.verb.map {
+            VerbView(verb: $0)
+          }
+        }
+      )
+//      .onAppear {
+//        Current.analytics.recordViewAppeared("\(InfoBrowseView.self)")
+//      }
     }
-    .padding(.vertical, 8)
   }
 }
 

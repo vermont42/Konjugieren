@@ -22,6 +22,26 @@ extension View {
   func funButton() -> some View {
     modifier(FunButton())
   }
+
+  func tableText() -> some View {
+    modifier(TableText())
+  }
+
+  func tableSubtext() -> some View {
+    modifier(TableSubtext())
+  }
+
+  func buttonLabel() -> some View {
+    modifier(ButtonLabel())
+  }
+
+  func germanPronunciation(forReal: Bool = true) -> some View {
+    modifier(GermanPronunciation(forReal: forReal))
+  }
+
+  func englishPronunciation() -> some View {
+    modifier(EnglishPronunciation())
+  }
 }
 
 private struct SubheadingLabel: ViewModifier {
@@ -65,5 +85,48 @@ private struct FunButton: ViewModifier {
       .foregroundColor(.customRed)
       .buttonStyle(.bordered)
       .tint(.customRed)
+  }
+}
+
+private struct TableText: ViewModifier {
+  func body(content: Content) -> some View {
+    content
+      .font(Font.custom(workSansRegular, size: 18))
+      .foregroundColor(.customYellow)
+  }
+}
+
+private struct TableSubtext: ViewModifier {
+  func body(content: Content) -> some View {
+    content
+      .font(Font.custom(workSansRegular, size: 15))
+      .foregroundColor(.customForeground)
+  }
+}
+
+private struct ButtonLabel: ViewModifier {
+  func body(content: Content) -> some View {
+    content
+      .font(Font.custom(workSansSemiBold, size: 20))
+  }
+}
+
+private struct GermanPronunciation: ViewModifier {
+  let forReal: Bool
+
+  func body(content: Content) -> some View {
+    if forReal {
+      content
+        .environment(\.locale, .init(identifier: "de-DE"))
+    } else {
+      content
+    }
+  }
+}
+
+private struct EnglishPronunciation: ViewModifier {
+  func body(content: Content) -> some View {
+    content
+      .environment(\.locale, .init(identifier: "en-US"))
   }
 }

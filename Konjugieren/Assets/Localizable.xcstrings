@@ -767,6 +767,32 @@
         }
       }
     },
+    "ImageInfo.cliffSchmiesing" : {
+
+    },
+    "ImageInfo.joshAdams" : {
+
+    },
+    "Info.dedicationHeading" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dedication"
+          }
+        }
+      }
+    },
+    "Info.dedicationText" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This app is dedicated to ~Cliff Scmiesing~. Here is the source code of ~Konjugieren~: %https://github.com/vermont42/Konjugieren%"
+          }
+        }
+      }
+    },
     "Info.history" : {
       "localizations" : {
         "de" : {
@@ -795,6 +821,37 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "From stardust to speech"
+          }
+        }
+      }
+    },
+    "Info.perfektpartizipHeading" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perfektpartizip"
+          }
+        }
+      }
+    },
+    "Info.perfektpartizipText" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "`Perfektpartizip`\\n\\nHere is an example perfektpartizip conjugation: $gesUngen$"
+          }
+        }
+      }
+    },
+    "Navigation.back" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Back"
           }
         }
       }

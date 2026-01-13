@@ -71,6 +71,22 @@ enum L {
     static var historySubtitle: String {
       String(localized: "Info.historySubtitle")
     }
+
+    static var dedicationHeading: String {
+      String(localized: "Info.dedicationHeading")
+    }
+
+    static var dedicationText: String {
+      String(localized: "Info.dedicationText")
+    }
+
+    static var perfektpartizipHeading: String {
+      String(localized: "Info.perfektpartizipHeading")
+    }
+
+    static var perfektpartizipText: String {
+      String(localized: "Info.perfektpartizipText")
+    }
   }
 
   enum Settings {
@@ -366,6 +382,16 @@ enum L {
 
     static var verbSystemTodayContent: String {
       String(localized: "History.verbSystemTodayContent")
+    }
+  }
+
+  enum ImageInfo {
+    static var cliffSchmiesing: String {
+      String(localized: "ImageInfo.cliffSchmiesing")
+    }
+
+    static var joshAdams: String {
+      String(localized: "ImageInfo.joshAdams")
     }
   }
 }

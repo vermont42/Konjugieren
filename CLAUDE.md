@@ -10,14 +10,14 @@ This is an Xcode project. Use the following commands:
 # Build the app
 xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren -destination 'platform=iOS Simulator,name=iPhone 17' build
 
-# Run tests
-xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren -destination 'platform=iOS Simulator,name=iPhone 17' test
+# Run tests (disable parallel testing to avoid simulator flakiness)
+xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren -destination 'platform=iOS Simulator,name=iPhone 17' -parallel-testing-enabled NO test
 
 # Run a single test class
-xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren -destination 'platform=iOS Simulator,name=iPhone 17' test -only-testing:KonjugierenTests/Models/ConjugatorTests
+xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren -destination 'platform=iOS Simulator,name=iPhone 17' -parallel-testing-enabled NO test -only-testing:KonjugierenTests/Models/ConjugatorTests
 
 # Run a single test method
-xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren -destination 'platform=iOS Simulator,name=iPhone 17' test -only-testing:KonjugierenTests/Models/ConjugatorTests/perfektpartizip
+xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren -destination 'platform=iOS Simulator,name=iPhone 17' -parallel-testing-enabled NO test -only-testing:KonjugierenTests/Models/ConjugatorTests/perfektpartizip
 ```
 
 ## Architecture Overview

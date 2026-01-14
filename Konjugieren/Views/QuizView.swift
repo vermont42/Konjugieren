@@ -67,33 +67,29 @@ struct QuizView: View {
   @ViewBuilder
   private func quizContent(question: QuizItem) -> some View {
     VStack(alignment: .leading, spacing: Layout.defaultSpacing) {
-      Text("\(L.Quiz.verb) \(question.verb.infinitiv)")
+      Text(labeledText(label: L.Quiz.verb, value: question.verb.infinitiv))
 
-      Text("\(L.Quiz.translation) \(question.verb.translation)")
+      Text(labeledText(label: L.Quiz.translation, value: question.verb.translation))
 
       if let pronoun = question.pronoun {
-        Text("\(L.Quiz.pronoun) \(pronoun)")
+        Text(labeledText(label: L.Quiz.pronoun, value: pronoun))
       }
 
-      Text("\(L.Quiz.conjugationgroup) \(question.displayName(lang: settings.conjugationgroupLang))")
+      Text(labeledText(label: L.Quiz.conjugationgroup, value: question.displayName(lang: settings.conjugationgroupLang)))
         .fixedSize(horizontal: false, vertical: true)
 
       HStack {
-        Text("\(L.Quiz.progress) \(quiz.progressText)")
+        Text(labeledText(label: L.Quiz.progress, value: quiz.progressText))
         Spacer()
-        Text("\(L.Quiz.score) \(quiz.score)")
+        Text(labeledText(label: L.Quiz.score, value: "\(quiz.score)"))
       }
 
-      Text("\(L.Quiz.elapsed) \(quiz.elapsedText)")
+      Text(labeledText(label: L.Quiz.elapsed, value: quiz.elapsedText))
 
       if let lastIncorrect = quiz.lastIncorrectAnswer, let lastCorrect = quiz.lastCorrectAnswer {
-        Text("\(L.Quiz.lastAnswer) \(lastIncorrect)")
-          .foregroundStyle(.customYellow)
+        Text(labeledText(label: L.Quiz.lastAnswer, value: lastIncorrect, valueColor: .customYellow))
 
-        HStack(spacing: 4) {
-          Text(L.Quiz.correctAnswer)
-          Text(mixedCaseString: lastCorrect)
-        }
+        Text(labeledTextWithMixedCase(label: L.Quiz.correctAnswer, mixedCaseValue: lastCorrect))
       }
 
       TextField(L.Quiz.conjugation, text: $userInput)
@@ -108,6 +104,37 @@ struct QuizView: View {
     }
     .padding(.horizontal, Layout.doubleDefaultSpacing)
     .padding(.top, Layout.doubleDefaultSpacing)
+  }
+
+  private func labeledText(label: String, value: String, valueColor: Color = .customForeground) -> AttributedString {
+    var result = AttributedString()
+
+    var labelAttr = AttributedString(label + " ")
+    labelAttr.foregroundColor = Color.customYellow
+    result.append(labelAttr)
+
+    var valueAttr = AttributedString(value)
+    valueAttr.foregroundColor = valueColor
+    result.append(valueAttr)
+
+    return result
+  }
+
+  private func labeledTextWithMixedCase(label: String, mixedCaseValue: String) -> AttributedString {
+    var result = AttributedString()
+
+    var labelAttr = AttributedString(label)
+    labelAttr.foregroundColor = Color.customYellow
+    result.append(labelAttr)
+
+    let spaceAttr = AttributedString(" ")
+    result.append(spaceAttr)
+
+    var valueAttr = AttributedString(mixedCaseValue)
+    valueAttr.foregroundColor = Color.customForeground
+    result.append(valueAttr)
+
+    return result
   }
 }
 

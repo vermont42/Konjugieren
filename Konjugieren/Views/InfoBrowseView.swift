@@ -9,17 +9,16 @@ struct InfoBrowseView: View {
   var body: some View {
     NavigationView {
       ScrollView {
-        LazyVStack {
+        LazyVStack(spacing: 0) {
           ForEach(Info.infos, id: \.heading) { info in
             NavigationLink(destination: InfoView(info: info)) {
-              ZStack {
-                Color.customBackground
-                Text(info.heading)
-                  .tableText()
-              }
+              InfoRowView(info: info)
             }
             .buttonStyle(.plain)
             .germanPronunciation(forReal: info.alwaysUsesGermanPronunciation)
+
+            Divider()
+              .padding(.leading)
           }
         }
       }
@@ -67,6 +66,68 @@ struct InfoBrowseView: View {
 //        Current.analytics.recordViewAppeared("\(InfoBrowseView.self)")
 //      }
     }
+  }
+}
+
+struct InfoRowView: View {
+  let info: Info
+
+  var body: some View {
+    HStack(alignment: .top) {
+      VStack(alignment: .leading, spacing: info.hasPreview ? 4 : 0) {
+        Text(info.heading)
+          .tableText()
+        if info.hasPreview {
+          formattedPreviewText()
+            .lineLimit(2)
+        }
+      }
+
+      Spacer()
+
+      if let imageInfo = info.imageInfo {
+        Image(imageInfo.filename)
+          .resizable()
+          .aspectRatio(contentMode: .fit)
+          .frame(width: 60, height: 60)
+          .clipShape(RoundedRectangle(cornerRadius: 8))
+          .accessibilityLabel(imageInfo.accessibilityLabel)
+      }
+    }
+    .padding(.horizontal)
+    .padding(.vertical, 12)
+  }
+
+  private func formattedPreviewText() -> some View {
+    var result = AttributedString()
+
+    for segment in info.previewSegments {
+      switch segment {
+      case .plain(let text):
+        result.append(AttributedString(text))
+
+      case .bold(let text):
+        var attributed = AttributedString(text)
+        attributed.inlinePresentationIntent = .stronglyEmphasized
+        result.append(attributed)
+
+      case .link(let text, _):
+        result.append(AttributedString(text))
+
+      case .conjugation(let regular, let irregular, let trailing):
+        result.append(AttributedString(regular))
+
+        var irregularAttr = AttributedString(irregular)
+        irregularAttr.foregroundColor = Color.customRed
+        result.append(irregularAttr)
+
+        result.append(AttributedString(trailing))
+      }
+    }
+
+    return Text(result)
+      .font(.subheadline)
+      .foregroundColor(.customForeground)
   }
 }
 

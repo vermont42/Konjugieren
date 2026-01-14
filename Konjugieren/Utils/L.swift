@@ -87,6 +87,22 @@ enum L {
     static var perfektpartizipText: String {
       String(localized: "Info.perfektpartizipText")
     }
+
+    static var aboutHeading: String {
+      String(localized: "Info.aboutHeading")
+    }
+
+    static var aboutText: String {
+      String(localized: "Info.aboutText")
+    }
+
+    static var präsensIndicativHeading: String {
+      String(localized: "Info.präsensIndicativHeading")
+    }
+
+    static var präsensIndicativText: String {
+      String(localized: "Info.präsensIndicativText")
+    }
   }
 
   enum Settings {

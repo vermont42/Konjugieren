@@ -11,7 +11,7 @@ struct RichTextView: View {
         switch block {
         case .subheading(let text):
           Text(text)
-            .font(.custom(workSansSemiBold, size: 18))
+            .font(.system(size: 18, weight: .bold))
             .foregroundStyle(Color.customForeground)
             .frame(maxWidth: .infinity)
             .multilineTextAlignment(.center)
@@ -24,45 +24,55 @@ struct RichTextView: View {
   }
 }
 
-// MARK: - Body Text View (Text Concatenation)
+// MARK: - Body Text View (AttributedString-based)
 
 struct BodyTextView: View {
   let segments: [TextSegment]
 
   var body: some View {
-    buildText()
+    Text(buildAttributedString())
   }
 
-  private func buildText() -> Text {
-    var result = Text("")
+  private func buildAttributedString() -> AttributedString {
+    var result = AttributedString()
 
     for segment in segments {
       switch segment {
       case .plain(let text):
-        result = result + Text(text)
-          .foregroundColor(.customForeground)
+        var attributed = AttributedString(text)
+        attributed.foregroundColor = Color.customForeground
+        result.append(attributed)
 
       case .bold(let text):
-        result = result + Text(text)
-          .bold()
-          .foregroundColor(.customForeground)
+        var attributed = AttributedString(text)
+        attributed.inlinePresentationIntent = .stronglyEmphasized
+        attributed.foregroundColor = Color.customForeground
+        result.append(attributed)
 
       case .link(let text, let url):
         // Use markdown syntax for tappable links
         let markdownLink = "[\(text)](\(url.absoluteString))"
         if let attributedLink = try? AttributedString(markdown: markdownLink) {
-          result = result + Text(attributedLink)
+          result.append(attributedLink)
         } else {
-          result = result + Text(text)
-            .foregroundColor(.accentColor)
-            .underline()
+          var attributed = AttributedString(text)
+          attributed.foregroundColor = Color.accentColor
+          attributed.underlineStyle = .single
+          result.append(attributed)
         }
 
       case .conjugation(let regular, let irregular, let trailing):
-        result = result +
-          Text(regular).foregroundColor(.customForeground) +
-          Text(irregular).foregroundColor(.customRed) +
-          Text(trailing).foregroundColor(.customForeground)
+        var regularAttr = AttributedString(regular)
+        regularAttr.foregroundColor = Color.customForeground
+        result.append(regularAttr)
+
+        var irregularAttr = AttributedString(irregular)
+        irregularAttr.foregroundColor = Color.customRed
+        result.append(irregularAttr)
+
+        var trailingAttr = AttributedString(trailing)
+        trailingAttr.foregroundColor = Color.customForeground
+        result.append(trailingAttr)
       }
     }
 

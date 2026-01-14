@@ -17,6 +17,8 @@ struct Info: Hashable {
 
   static let infos: [Info] = [
     Info(heading: L.Info.dedicationHeading, text: L.Info.dedicationText, imageInfo: ImageInfo(filename: "JoshAdams", accessibilityLabel: L.ImageInfo.joshAdams)),
+    Info(heading: L.Info.aboutHeading, text: L.Info.aboutText),
+    Info(heading: L.Info.präsensIndicativHeading, text: L.Info.präsensIndicativText),
     Info(heading: L.Info.perfektpartizipHeading, text: L.Info.perfektpartizipText, alwaysUsesGermanPronunciation: true),
   ]
 
@@ -28,5 +30,18 @@ struct Info: Hashable {
     }
 
     return nil
+  }
+
+  var previewSegments: [TextSegment] {
+    for block in richTextBlocks {
+      if case .body(let segments) = block {
+        return segments
+      }
+    }
+    return []
+  }
+
+  var hasPreview: Bool {
+    !previewSegments.isEmpty
   }
 }

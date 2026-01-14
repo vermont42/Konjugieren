@@ -47,7 +47,7 @@ extension View {
 private struct SubheadingLabel: ViewModifier {
   func body(content: Content) -> some View {
     content
-      .font(Font.custom(workSansSemiBold, size: 20))
+      .font(.system(size: 20, weight: .bold))
       .foregroundColor(.customYellow)
       .padding(.horizontal, Layout.doubleDefaultSpacing)
   }
@@ -56,7 +56,7 @@ private struct SubheadingLabel: ViewModifier {
 private struct SettingsLabel: ViewModifier {
   func body(content: Content) -> some View {
     content
-      .font(Font.custom(workSansRegular, size: 16))
+      .font(.system(size: 16))
       .foregroundColor(.customForeground)
       .frame(maxWidth: .infinity, alignment: .leading)
       .padding(.horizontal, Layout.doubleDefaultSpacing)
@@ -66,7 +66,7 @@ private struct SettingsLabel: ViewModifier {
 private struct HeadingLabel: ViewModifier {
   func body(content: Content) -> some View {
     content
-      .font(Font.custom(workSansSemiBold, size: 22))
+      .font(.system(size: 22, weight: .bold))
       .accessibility(addTraits: [.isHeader])
   }
 }
@@ -91,7 +91,7 @@ private struct FunButton: ViewModifier {
 private struct TableText: ViewModifier {
   func body(content: Content) -> some View {
     content
-      .font(Font.custom(workSansRegular, size: 18))
+      .font(.system(size: 18))
       .foregroundColor(.customYellow)
   }
 }
@@ -99,7 +99,7 @@ private struct TableText: ViewModifier {
 private struct TableSubtext: ViewModifier {
   func body(content: Content) -> some View {
     content
-      .font(Font.custom(workSansRegular, size: 15))
+      .font(.system(size: 15))
       .foregroundColor(.customForeground)
   }
 }
@@ -107,7 +107,7 @@ private struct TableSubtext: ViewModifier {
 private struct ButtonLabel: ViewModifier {
   func body(content: Content) -> some View {
     content
-      .font(Font.custom(workSansSemiBold, size: 20))
+      .font(.system(size: 20, weight: .bold))
   }
 }
 

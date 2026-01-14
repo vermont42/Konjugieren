@@ -799,6 +799,38 @@
         }
       }
     },
+    "Info.aboutHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Über"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "About"
+          }
+        }
+      }
+    },
+    "Info.aboutText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Lorem ipsum ~dolor~ sit amet, ^consectetur^ adipiscing elit. $Sed$ do eiusmod %tempor% incididunt ut labore."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lorem ipsum ~dolor~ sit amet, $consecteTur$ adipiscing elit. $Sed$ do eiusmod %tempor% incididunt ut labore."
+          }
+        }
+      }
+    },
     "Info.dedicationHeading" : {
       "localizations" : {
         "de" : {
@@ -883,14 +915,46 @@
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "`Perfektpartizip`\\n\\nHier ist ein Beispiel einer Perfektpartizip-Konjugation: $gesUngen$"
+            "state" : "needs_review",
+            "value" : "`Perfektpartizip`\\nHier ist ein Beispiel einer Perfektpartizip-Konjugation: $gesUngen$"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "`Perfektpartizip`\\n\\nHere is an example perfektpartizip conjugation: $gesUngen$"
+            "value" : "`Subheading`Here is an example perfektpartizip conjugation: $gesUngen$"
+          }
+        }
+      }
+    },
+    "Info.präsensIndicativHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Präsens Indicativ"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Präsens Indicativ"
+          }
+        }
+      }
+    },
+    "Info.präsensIndicativText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Lorem ipsum ~dolor~ sit amet, ^consectetur^ adipiscing elit. $Sed$ do eiusmod %tempor% incididunt ut labore et dolore magna aliqua."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lorem ipsum ~dolor~ sit amet, $cNnsectetur$ adipiscing elit. $Sed$ do eiusmod %tempor% incididunt ut labore et dolore magna aliqua."
           }
         }
       }

@@ -17,6 +17,7 @@ struct Info: Hashable {
 
   static let infos: [Info] = [
     Info(heading: L.Info.dedicationHeading, text: L.Info.dedicationText),
+    Info(heading: L.Info.verbHistoryHeading, text: L.Info.verbHistoryText),
     Info(heading: L.Info.terminologyHeading, text: L.Info.terminologyText),
     Info(heading: L.Info.perfektpartizipHeading, text: L.Info.perfektpartizipText, alwaysUsesGermanPronunciation: true),
     Info(heading: L.Info.präsenspartizipHeading, text: L.Info.präsenspartizipText, alwaysUsesGermanPronunciation: true),
@@ -44,7 +45,14 @@ struct Info: Hashable {
   var previewSegments: [TextSegment] {
     for block in richTextBlocks {
       if case .body(let segments) = block {
-        return segments
+        // Strip leading newlines from the first segment if it's plain text
+        guard !segments.isEmpty else { return segments }
+        var result = segments
+        if case .plain(let text) = result[0] {
+          let trimmed = text.trimmingLeadingNewlines()
+          result[0] = .plain(trimmed)
+        }
+        return result
       }
     }
     return []

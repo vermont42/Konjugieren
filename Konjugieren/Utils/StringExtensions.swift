@@ -33,6 +33,14 @@ extension String {
     return self
   }
 
+  func trimmingLeadingNewlines() -> String {
+    var result = self
+    while result.hasPrefix("\n") {
+      result.removeFirst()
+    }
+    return result
+  }
+
   // MARK: - Rich Text Block Parser
 
   var richTextBlocks: [RichTextBlock] {

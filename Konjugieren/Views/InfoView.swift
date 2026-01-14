@@ -17,7 +17,15 @@ struct InfoView: View {
         .ignoresSafeArea()
 
       ScrollView {
-        VStack {
+        VStack(alignment: .leading, spacing: 0) {
+          // Custom large title that wraps and scrolls off-screen
+          Text(info.heading)
+            .font(.largeTitle.bold())
+            .multilineTextAlignment(.center)
+            .fixedSize(horizontal: false, vertical: true)
+            .frame(maxWidth: .infinity, alignment: .center)
+            .padding(.bottom, 8)
+
           if let imageInfo = info.imageInfo {
             Image(imageInfo.filename)
               .resizable()
@@ -38,7 +46,7 @@ struct InfoView: View {
         .padding(.leading, Layout.doubleDefaultSpacing)
         .padding(.trailing, Layout.doubleDefaultSpacing)
       }
-      .navigationTitle(info.heading)
+      .navigationBarTitleDisplayMode(.inline)
     }
     .environment(\.openURL, OpenURLAction { url in
       handleInfoLink(url)

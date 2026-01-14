@@ -167,6 +167,14 @@ enum L {
     static var creditsText: String {
       String(localized: "Info.creditsText")
     }
+
+    static var verbHistoryHeading: String {
+      String(localized: "Info.verbHistoryHeading")
+    }
+
+    static var verbHistoryText: String {
+      String(localized: "Info.verbHistoryText")
+    }
   }
 
   enum Settings {

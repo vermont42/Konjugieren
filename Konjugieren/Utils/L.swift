@@ -64,20 +64,20 @@ enum L {
   }
 
   enum Info {
-    static var history: String {
-      String(localized: "Info.history")
-    }
-
-    static var historySubtitle: String {
-      String(localized: "Info.historySubtitle")
-    }
-
     static var dedicationHeading: String {
       String(localized: "Info.dedicationHeading")
     }
 
     static var dedicationText: String {
       String(localized: "Info.dedicationText")
+    }
+
+    static var terminologyHeading: String {
+      String(localized: "Info.terminologyHeading")
+    }
+
+    static var terminologyText: String {
+      String(localized: "Info.terminologyText")
     }
 
     static var perfektpartizipHeading: String {
@@ -88,20 +88,84 @@ enum L {
       String(localized: "Info.perfektpartizipText")
     }
 
-    static var aboutHeading: String {
-      String(localized: "Info.aboutHeading")
+    static var präsenspartizipHeading: String {
+      String(localized: "Info.präsenspartizipHeading")
     }
 
-    static var aboutText: String {
-      String(localized: "Info.aboutText")
+    static var präsenspartizipText: String {
+      String(localized: "Info.präsenspartizipText")
     }
 
-    static var präsensIndicativHeading: String {
-      String(localized: "Info.präsensIndicativHeading")
+    static var präsensIndikativHeading: String {
+      String(localized: "Info.präsensIndikativHeading")
     }
 
-    static var präsensIndicativText: String {
-      String(localized: "Info.präsensIndicativText")
+    static var präsensIndikativText: String {
+      String(localized: "Info.präsensIndikativText")
+    }
+
+    static var präteritumIndikativHeading: String {
+      String(localized: "Info.präteritumIndikativHeading")
+    }
+
+    static var präteritumIndikativText: String {
+      String(localized: "Info.präteritumIndikativText")
+    }
+
+    static var präsensKonjunktivIHeading: String {
+      String(localized: "Info.präsensKonjunktivIHeading")
+    }
+
+    static var präsensKonjunktivIText: String {
+      String(localized: "Info.präsensKonjunktivIText")
+    }
+
+    static var präteritumKonditionalHeading: String {
+      String(localized: "Info.präteritumKonditionalHeading")
+    }
+
+    static var präteritumKonditionalText: String {
+      String(localized: "Info.präteritumKonditionalText")
+    }
+
+    static var imperativHeading: String {
+      String(localized: "Info.imperativHeading")
+    }
+
+    static var imperativText: String {
+      String(localized: "Info.imperativText")
+    }
+
+    static var perfektIndikativHeading: String {
+      String(localized: "Info.perfektIndikativHeading")
+    }
+
+    static var perfektIndikativText: String {
+      String(localized: "Info.perfektIndikativText")
+    }
+
+    static var perfektKonjunktivIHeading: String {
+      String(localized: "Info.perfektKonjunktivIHeading")
+    }
+
+    static var perfektKonjunktivIText: String {
+      String(localized: "Info.perfektKonjunktivIText")
+    }
+
+    static var questionsAndAnwersHeading: String {
+      String(localized: "Info.questionsAndAnwersHeading")
+    }
+
+    static var questionsAndAnwersText: String {
+      String(localized: "Info.questionsAndAnwersText")
+    }
+
+    static var creditsHeading: String {
+      String(localized: "Info.creditsHeading")
+    }
+
+    static var creditsText: String {
+      String(localized: "Info.creditsText")
     }
   }
 
@@ -276,128 +340,6 @@ enum L {
 
     static var time: String {
       String(localized: "Quiz.time")
-    }
-  }
-
-  enum History {
-    static var stardustTitle: String {
-      String(localized: "History.stardustTitle")
-    }
-
-    static var stardustContent: String {
-      String(localized: "History.stardustContent")
-    }
-
-    static var longRoadTitle: String {
-      String(localized: "History.longRoadTitle")
-    }
-
-    static var longRoadContent: String {
-      String(localized: "History.longRoadContent")
-    }
-
-    static var yamnayaTitle: String {
-      String(localized: "History.yamnayaTitle")
-    }
-
-    static var yamnayaContent: String {
-      String(localized: "History.yamnayaContent")
-    }
-
-    static var pieVerbSystemTitle: String {
-      String(localized: "History.pieVerbSystemTitle")
-    }
-
-    static var pieVerbSystemContent: String {
-      String(localized: "History.pieVerbSystemContent")
-    }
-
-    static var ablautTitle: String {
-      String(localized: "History.ablautTitle")
-    }
-
-    static var ablautContent: String {
-      String(localized: "History.ablautContent")
-    }
-
-    static var migrationTitle: String {
-      String(localized: "History.migrationTitle")
-    }
-
-    static var migrationContent: String {
-      String(localized: "History.migrationContent")
-    }
-
-    static var teutoburgTitle: String {
-      String(localized: "History.teutoburgTitle")
-    }
-
-    static var teutoburgContent: String {
-      String(localized: "History.teutoburgContent")
-    }
-
-    static var germanicLifewaysTitle: String {
-      String(localized: "History.germanicLifewaysTitle")
-    }
-
-    static var germanicLifewaysContent: String {
-      String(localized: "History.germanicLifewaysContent")
-    }
-
-    static var germanicVerbSystemTitle: String {
-      String(localized: "History.germanicVerbSystemTitle")
-    }
-
-    static var germanicVerbSystemContent: String {
-      String(localized: "History.germanicVerbSystemContent")
-    }
-
-    static var weakVerbsTitle: String {
-      String(localized: "History.weakVerbsTitle")
-    }
-
-    static var weakVerbsContent: String {
-      String(localized: "History.weakVerbsContent")
-    }
-
-    static var oldHighGermanTitle: String {
-      String(localized: "History.oldHighGermanTitle")
-    }
-
-    static var oldHighGermanContent: String {
-      String(localized: "History.oldHighGermanContent")
-    }
-
-    static var perfectTenseTitle: String {
-      String(localized: "History.perfectTenseTitle")
-    }
-
-    static var perfectTenseContent: String {
-      String(localized: "History.perfectTenseContent")
-    }
-
-    static var futureTenseTitle: String {
-      String(localized: "History.futureTenseTitle")
-    }
-
-    static var futureTenseContent: String {
-      String(localized: "History.futureTenseContent")
-    }
-
-    static var subjunctiveTitle: String {
-      String(localized: "History.subjunctiveTitle")
-    }
-
-    static var subjunctiveContent: String {
-      String(localized: "History.subjunctiveContent")
-    }
-
-    static var verbSystemTodayTitle: String {
-      String(localized: "History.verbSystemTodayTitle")
-    }
-
-    static var verbSystemTodayContent: String {
-      String(localized: "History.verbSystemTodayContent")
     }
   }
 

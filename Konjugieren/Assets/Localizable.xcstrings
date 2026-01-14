@@ -287,486 +287,6 @@
         }
       }
     },
-    "History.ablautContent" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vielleicht hat sich kein Merkmal des Proto-Indoeuropäischen als dauerhafter erwiesen als der Ablaut – der systematische Wechsel von Vokalen innerhalb von Wurzeln und Affixen zum Ausdruck grammatischer Unterscheidungen. Ablaut war kein willkürlicher Lautwandel, sondern ein strukturiertes System von Vokalstufen:\n\n• e-Stufe (Vollstufe): der Vokal *e (wie in der Wurzel *bʰer-, \\\"tragen\\\")\n• o-Stufe: der Vokal *o (wie in *bʰor-)\n• Nullstufe: Abwesenheit des Vokals (wie in *bʰr-)\n• gedehnte e-Stufe: *ē\n• gedehnte o-Stufe: *ō\n\nDiese Alternationen waren grammatisch bedeutsam. Zum Beispiel könnte der Präsensstamm die e-Stufe verwenden, während das Perfekt die o-Stufe verwendete; die Nullstufe erschien in bestimmten Suffixen und in unbetonten Positionen. Als PIE *e und *o sich später in den Tochtersprachen zu verschiedenen Vokalen entwickelten (deutsch e, i, a, o, u), wurden die Ablautmuster zu den Vokalwechseln, die wir noch heute in deutschen starken Verben sehen:\n\n• singen, sang, gesungen\n• nehmen, nahm, genommen\n• geben, gab, gegeben\n\nDiese Vokalwechsel sind direkte Erbschaften aus dem Proto-Indoeuropäischen, bewahrt über fünf Jahrtausende sprachlicher Evolution."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Perhaps no feature of Proto-Indo-European has proven more enduring than ablaut—the systematic alternation of vowels within roots and affixes to express grammatical distinctions. Ablaut was not arbitrary sound change but a structured system of vowel grades:\n\n• e-grade (full grade): the vowel *e (as in the root *bʰer-, \"to carry\")\n• o-grade: the vowel *o (as in *bʰor-)\n• zero-grade: absence of the vowel (as in *bʰr-)\n• lengthened e-grade: *ē\n• lengthened o-grade: *ō\n\nThese alternations were grammatically meaningful. For example, the present stem might use e-grade while the perfect used o-grade; the zero-grade appeared in certain suffixes and in unstressed positions. When PIE *e and *o later developed into different vowels in the daughter languages (German e, i, a, o, u), the ablaut patterns became the vowel alternations we still see in German strong verbs today:\n\n• singen, sang, gesungen (sing, sang, sung)\n• nehmen, nahm, genommen (take, took, taken)\n• geben, gab, gegeben (give, gave, given)\n\nThese vowel changes are direct inheritances from Proto-Indo-European, preserved across five millennia of linguistic evolution."
-          }
-        }
-      }
-    },
-    "History.ablautTitle" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ablaut: Das Herz der indoeuropäischen Morphologie"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ablaut: The Heart of Indo-European Morphology"
-          }
-        }
-      }
-    },
-    "History.futureTenseContent" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Das Althochdeutsche drückte zukünftige Zeit hauptsächlich durch das Präsens mit Zeitadverbien aus. Beginnend im Mittelhochdeutschen wurde das Verb werden als Futurauxiliar grammatikalisiert:\n\n• Ich werde singen\n\nDies schuf ein dreigliedriges temporales System (Präsens, Präteritum/Perfekt, Futur) aus dem ursprünglichen Zwei-Tempora-System des Proto-Germanischen – allerdings bemerkenswert durch Periphrase statt durch neue morphologische Formen am Verb selbst.\n\nDas Deutsche bewahrt eine besondere Klasse von Verben namens Präteritopräsentia: Verben, deren Präsensformen historisch von proto-germanischen starken Präterita abstammen. Diese umfassen die Modalverben können, müssen, dürfen, sollen, mögen und wissen.\n\nDie eigentümliche Konjugation dieser Verben – ohne Endung in der ersten und dritten Person Singular (ich kann, er kann) und Vokalunterschiede zwischen Singular und Plural (ich kann vs. wir können) – spiegelt ihren Ursprung als alte Präteritumformen wider, die als Präsensformen reanalysiert wurden."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Old High German expressed future time primarily through the present tense with temporal adverbs. Beginning in Middle High German, the verb werden (to become) was grammaticalized as a future auxiliary:\n\n• Ich werde singen (I will sing)\n\nThis created a three-way temporal system (present, preterite/perfect, future) from the original two-tense Proto-Germanic system—though notably through periphrasis rather than new morphological forms on the verb itself.\n\nGerman preserves a distinctive class of verbs called preterite-presents: verbs whose present-tense forms derive historically from Proto-Germanic strong preterites. These include the modal verbs können (can), müssen (must), dürfen (may), sollen (shall), mögen (may/like), and wissen (know).\n\nThe peculiar conjugation of these verbs—with no ending in the first and third person singular (ich kann, er kann) and vowel differences between singular and plural (ich kann vs. wir können)—reflects their origin as old preterite forms that were reanalyzed as presents."
-          }
-        }
-      }
-    },
-    "History.futureTenseTitle" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Das Futur und die Modalverben"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The Future Tense and Modal Verbs"
-          }
-        }
-      }
-    },
-    "History.germanicLifewaysContent" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zur Zeit der Schlacht im Teutoburger Wald lebten die germanischen Völker in kleinen Dörfern und Gehöften, die über die Wälder Nordeuropas verstreut waren. Sie betrieben gemischte Landwirtschaft, bauten Gerste, Hafer, Roggen und Weizen an und hielten Rinder, Schweine, Schafe und Pferde. Rinder waren besonders wichtig und dienten als Maß für Wohlstand und als Zahlungsmittel.\n\nDie Gesellschaft war um Verwandtschaftsgruppen und Stammeszugehörigkeiten organisiert, geführt von Häuptlingen, deren Autorität sich aus kriegerischer Tüchtigkeit, Großzügigkeit und edler Abstammung ableitete. Die Kriegeraristokratie bildete eine Gefolgschaft – eine Schar von Gefolgsleuten, die durch Treueide an ihren Herrn gebunden waren. Diese Krieger suchten Ruhm in der Schlacht und erwarteten Geschenke von Waffen, Gold und Festmählern als Gegenleistung für ihre Dienste.\n\nDie germanischen Völker hatten keine zentralisierten Staaten oder Städte. Sie errichteten keine Steinmonumente. Sie hinterließen wenig Schriftliches (obwohl sie das Runenalphabet für kurze Inschriften und magische Zwecke entwickelt hatten). Ihre Literatur war mündlich: Heldenpoesie, mythologische Erzählungen und Genealogien, die über Generationen von Sängern und Geschichtenerzählern weitergegeben wurden.\n\nIhre Religion konzentrierte sich auf ein Pantheon von Göttern – Wodan (später Odin), Donar (Thor), Ziu (Týr) und andere – die in heiligen Hainen statt in Tempeln verehrt wurden. Sie praktizierten Tier- und gelegentlich Menschenopfer, besonders in Zeiten der Krise oder Feier."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "At the time of the Teutoburg battle, the Germanic peoples lived in small villages and farmsteads scattered through the forests of northern Europe. They practiced mixed agriculture, growing barley, oats, rye, and wheat while raising cattle, pigs, sheep, and horses. Cattle were especially important, serving as a measure of wealth and a form of currency.\n\nSociety was organized around kinship groups and tribal affiliations, led by chieftains whose authority derived from military prowess, generosity, and noble lineage. The warrior aristocracy formed a comitatus—a band of followers bound to their lord by oaths of loyalty. These warriors sought glory in battle and expected gifts of weapons, gold, and feasting in return for their service.\n\nThe Germanic peoples had no centralized states or cities. They built no stone monuments. They committed little to writing (though they had developed the runic alphabet for short inscriptions and magical purposes). Their literature was oral: heroic poetry, mythological tales, and genealogies passed down through generations of singers and storytellers.\n\nTheir religion centered on a pantheon of gods—Wodan (later Odin), Donar (Thor), Tiw (Týr), and others—worshipped in sacred groves rather than temples. They practiced animal and occasionally human sacrifice, particularly at times of crisis or celebration."
-          }
-        }
-      }
-    },
-    "History.germanicLifewaysTitle" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lebensweisen der germanischen Stämme"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lifeways of the Germanic Tribes"
-          }
-        }
-      }
-    },
-    "History.germanicVerbSystemContent" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Als sich das Proto-Indoeuropäische über etwa zwei Jahrtausende zum Proto-Germanischen entwickelte, erfuhr das Verbsystem eine dramatische Umstrukturierung. Das ausgefeilte PIE-System wurde in mancher Hinsicht vereinfacht und in anderer erneuert.\n\nDie auffälligste Veränderung war der Zusammenbruch des Aspektsystems. Das Proto-Indoeuropäische hatte sorgfältig imperfektive, perfektive (Aorist) und stative (Perfekt) Aspekte unterschieden. Das Germanische gab diese Unterscheidungen fast vollständig auf. Der alte Imperfektiv wurde zum germanischen Präsens; das alte Perfekt mit seiner charakteristischen Reduplikation und o-Stufen-Ablaut wurde als Präteritum (Vergangenheit) umfunktioniert. Der Aorist ging weitgehend verloren, seine Formen verschmolzen gelegentlich mit dem neuen Präteritum.\n\nDies ließ das Germanische mit nur zwei Tempora zurück: Präsens und Präteritum. Wo das PIE subtile Unterscheidungen zwischen andauernder vergangener Handlung, abgeschlossener vergangener Handlung und gegenwärtigen Zuständen, die aus vergangener Handlung resultieren, ausdrücken konnte – alles durch Verbmorphologie – musste das Germanische sich auf Kontext oder periphrastische Konstruktionen (Kombinationen von Hilfsverben mit Hauptverben) verlassen.\n\nKonjunktiv und Optativ verschmolzen zu einem einzigen germanischen Konjunktiv, was die modalen Optionen für Sprecher reduzierte. Das Augment (*e-), das im PIE die Vergangenheit markiert hatte, ging im Germanischen vollständig verloren. Verbklassen vermehrten sich basierend auf der Struktur des Präsensstamms, was zum komplexen System der \\\"starken\\\" Verbklassen (organisiert nach Ablautmustern) und \\\"schwachen\\\" Verben (eine germanische Innovation mit einem Dentalsuffix für das Präteritum) führte."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "As Proto-Indo-European evolved into Proto-Germanic over some two millennia, the verb system underwent dramatic restructuring. The elaborate PIE system was simplified in some ways and innovated in others.\n\nThe most striking change was the collapse of the aspect system. Proto-Indo-European had carefully distinguished imperfective, perfective (aorist), and stative (perfect) aspects. Germanic abandoned these distinctions almost entirely. The old imperfective became the Germanic present; the old perfect, with its distinctive reduplication and o-grade ablaut, was repurposed as a preterite (past tense). The aorist was largely lost, its forms occasionally merging with the new preterite.\n\nThis left Germanic with only two tenses: present and preterite. Where PIE could express subtle distinctions between ongoing past action, completed past action, and present states resulting from past action—all through verb morphology—Germanic had to rely on context or periphrastic constructions (combinations of auxiliary verbs with main verbs).\n\nThe subjunctive and optative moods merged into a single Germanic subjunctive, reducing the modal options available to speakers. The augment (*e-), which had marked past tense in PIE, was lost entirely in Germanic. Verb classes proliferated based on the structure of the present stem, leading to the complex system of \"strong\" verb classes (organized by ablaut patterns) and \"weak\" verbs (a Germanic innovation using a dental suffix for the preterite)."
-          }
-        }
-      }
-    },
-    "History.germanicVerbSystemTitle" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Das germanische Verbsystem: Vereinfachung und Innovation"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The Germanic Verb System: Simplification and Innovation"
-          }
-        }
-      }
-    },
-    "History.longRoadContent" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Leben entstand auf der Erde vor vielleicht 3,8 Milliarden Jahren, aber der Weg zu sprachbegabten Wesen war ungeheuer lang. Der moderne Mensch – Homo sapiens – entwickelte sich vor etwa 300.000 Jahren in Afrika. Die meiste Zeit lebten unsere Vorfahren als Jäger und Sammler auf dem afrikanischen Kontinent und entwickelten die kognitiven Fähigkeiten, die schließlich komplexe Sprache ermöglichen sollten.\n\nVor etwa 70.000 Jahren begannen Wellen von Menschen, Afrika zu verlassen und sich über den Globus auszubreiten. Einige zogen nach Norden und Westen nach Europa; andere bewegten sich ostwärts durch Asien. Vor 45.000 Jahren hatten Menschen die pontisch-kaspische Steppe erreicht – die weiten Grasländer, die sich vom heutigen Ukraine bis nach Kasachstan erstrecken. Diese Region, nördlich des Schwarzen und Kaspischen Meeres gelegen, sollte zum Schmelztiegel einer der folgenreichsten sprachlichen Entwicklungen der Geschichte werden."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Life emerged on Earth perhaps 3.8 billion years ago, but the journey to language-bearing creatures was immensely long. Modern humans—Homo sapiens—evolved in Africa approximately 300,000 years ago. For most of that time, our ancestors lived as hunter-gatherers on the African continent, developing the cognitive capacities that would eventually enable complex language.\n\nBeginning around 70,000 years ago, waves of humans migrated out of Africa, spreading across the globe. Some traveled north and west into Europe; others moved east across Asia. By 45,000 years ago, humans had reached the Pontic-Caspian steppe—the vast grasslands stretching from what is now Ukraine to Kazakhstan. This region, lying north of the Black and Caspian Seas, would become the crucible of one of history's most consequential linguistic developments."
-          }
-        }
-      }
-    },
-    "History.longRoadTitle" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Der lange Weg zur Sprache"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The Long Road to Language"
-          }
-        }
-      }
-    },
-    "History.migrationContent" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ab etwa 3000 v. Chr. – vor ungefähr 5.000 Jahren – begannen die Jamnaja und ihre Nachkommen eine Reihe von Wanderungen, die die genetische und sprachliche Landschaft Europas umgestalten sollten. Ausgestattet mit Pferden, Räderkarren und vielleicht Bronzewaffen zogen sie in aufeinanderfolgenden Wellen westwärts.\n\nDiese Migranten brachten ihre proto-indoeuropäische Sprache mit. Als sie sich unter bestehenden Bevölkerungen niederließen oder diese verdrängten, divergierte ihre Sprache in regionale Varietäten. Der Zweig, der zum Germanischen werden sollte, trennte sich wahrscheinlich irgendwann zwischen 2500 und 2000 v. Chr. von anderen indoeuropäischen Gruppen, als Sprecher nach Skandinavien und Norddeutschland zogen.\n\nBis zum ersten Jahrtausend v. Chr. war eine erkennbare proto-germanische Sprache in Südskandinavien und entlang der Nordsee- und Ostseeküsten entstanden. Diese germanischsprachigen Völker – den Römern als Germanen bekannt – entwickelten eine Kultur, die an die Wälder und Küsten Nordeuropas angepasst war."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Beginning around 3000 BC—approximately 5,000 years ago—the Yamnaya and their descendants began a series of migrations that would reshape the genetic and linguistic landscape of Europe. Equipped with horses, wheeled carts, and perhaps bronze weapons, they moved westward in successive waves.\n\nThese migrants brought their Proto-Indo-European language with them. As they settled among or displaced existing populations, their speech diverged into regional varieties. The branch that would become Germanic likely separated from other Indo-European groups sometime between 2500 and 2000 BC, as speakers moved into Scandinavia and northern Germany.\n\nBy the first millennium BC, a recognizable Proto-Germanic language had emerged in southern Scandinavia and along the North Sea and Baltic coasts. These Germanic-speaking peoples—known to the Romans as Germani—developed a culture adapted to the forests and coastlines of northern Europe."
-          }
-        }
-      }
-    },
-    "History.migrationTitle" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Die Wanderung nach Europa"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The Migration to Europe"
-          }
-        }
-      }
-    },
-    "History.oldHighGermanContent" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Die germanischen Dialekte, die im heutigen Süddeutschland und der Schweiz gesprochen wurden, entwickelten sich zum Althochdeutschen (etwa 750–1050 n. Chr.), das sich von anderen germanischen Sprachen durch die hochdeutsche Lautverschiebung unterschied. Diese Lautveränderung verwandelte stimmlose Plosive in Frikative oder Affrikate (p → pf oder ff; t → ts oder ss; k → ch), wodurch deutsche Wörter wie Pfund, Wasser und machen ihre charakteristischen Laute erhielten, wo das Englische pound, water und make hat.\n\nDas Althochdeutsche erbte sieben Klassen starker Verben vom Proto-Germanischen, organisiert nach ihren Ablautmustern. Mit der Zeit begannen diese Klassen zu verschwimmen. Einige Verben wechselten die Klasse; andere wurden schwach. Die ursprüngliche phonologische Konditionierung, die die Klassenzugehörigkeit bestimmte, wurde undurchsichtig, als Lautveränderungen die Vokale veränderten. Heute müssen deutsche starke Verben größtenteils einzeln auswendig gelernt werden – ihre Ablautmuster, obwohl noch systematisch, sind nicht mehr aus der Infinitivform vorhersagbar."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The Germanic dialects spoken in what is now southern Germany and Switzerland developed into Old High German (roughly 750–1050 AD), distinguished from other Germanic languages by the High German consonant shift. This sound change transformed voiceless stops into fricatives or affricates (p → pf or ff; t → ts or ss; k → ch), giving German words like Pfund, Wasser, and machen their characteristic sounds where English has pound, water, and make.\n\nOld High German inherited seven classes of strong verbs from Proto-Germanic, organized by their ablaut patterns. Over time, these classes began to blur. Some verbs shifted classes; others became weak. The original phonological conditioning that determined class membership became opaque as sound changes altered vowels. Today, German strong verbs must largely be memorized individually—their ablaut patterns, while still systematic, are no longer predictable from the infinitive form."
-          }
-        }
-      }
-    },
-    "History.oldHighGermanTitle" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Althochdeutsch und die fortlaufende Entwicklung"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Old High German and the Continuing Evolution"
-          }
-        }
-      }
-    },
-    "History.perfectTenseContent" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Eine bedeutende Innovation in der Geschichte des Deutschen war die Entwicklung des Perfekts unter Verwendung der Hilfsverben haben und sein mit dem Partizip Perfekt. Diese Periphrase, die im Althochdeutschen begann und im Mittelhochdeutschen (1050–1350) vollständig etabliert wurde, schuf eine neue Art, abgeschlossene Handlung auszudrücken:\n\n• Ich habe gesungen\n• Ich bin gekommen\n\nIm modernen gesprochenen Deutsch hat diese Perfektkonstruktion weitgehend das einfache Präteritum in der Alltagssprache ersetzt, besonders in südlichen Dialekten. Das Präteritum überlebt hauptsächlich in der Schriftsprache, in nördlichen Dialekten und bei hochfrequenten Verben."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "A major innovation in the history of German was the development of the perfect tense using the auxiliaries haben (have) and sein (be) with the past participle. This periphrasis, which began in Old High German and became fully established in Middle High German (1050–1350), created a new way to express completed action:\n\n• Ich habe gesungen (I have sung)\n• Ich bin gekommen (I have come / I came)\n\nIn modern spoken German, this perfect construction has largely replaced the simple preterite in everyday speech, particularly in southern dialects. The preterite survives primarily in writing, in northern dialects, and with high-frequency verbs."
-          }
-        }
-      }
-    },
-    "History.perfectTenseTitle" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Entwicklung des Perfekts"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Development of the Perfect Tense"
-          }
-        }
-      }
-    },
-    "History.pieVerbSystemContent" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Das proto-indoeuropäische Verb war ein prächtiges und komplexes System, weit ausgefeilter als jede seiner Tochtersprachen bewahren sollte. PIE-Verben wurden auf Wurzeln aufgebaut – typischerweise aus einer Konsonant-Vokal-Konsonant-Struktur bestehend – die die Kernbedeutung trugen. Auf diese Wurzeln schichteten die Sprecher eine komplizierte Architektur von Präfixen, Suffixen und Infixen, um eine Vielzahl grammatischer Informationen auszudrücken.\n\nAspekt war im PIE von größter Bedeutung. Die Sprache unterschied drei Aspekte: Imperfektiv (auch Präsens genannt): andauernde oder wiederholte Handlung; Perfektiv (auch Aorist genannt): abgeschlossene Handlung als Ganzes betrachtet; und Stativ (auch Perfekt genannt): ein Zustand, der aus einer abgeschlossenen Handlung resultiert. Jeder Aspekt hatte seinen eigenen Stamm, oft durch verschiedene Ablautstufen und Affixe gebildet. Eine einzelne Verbwurzel konnte somit drei recht unterschiedliche Stammformen haben.\n\nTempus war dem Aspekt untergeordnet. PIE markierte Vergangenheit hauptsächlich durch ein Präfix namens Augment (rekonstruiert als *e-), obwohl dies im frühen PIE optional war und nicht alle Tochtersprachen es beibehielten. Das System erlaubte Präsens-, Vergangenheits- (Präteritum) und wohl auch Zukunftsausdrücke, aber die aspektuellen Unterscheidungen trugen mehr semantisches Gewicht als die temporalen.\n\nModus war reich entwickelt, einschließlich: Indikativ (Aussagen über Fakten), Konjunktiv (Wünsche, Möglichkeiten, Absichten), Optativ (Hoffnungen, Wünsche, sanfte Befehle) und Imperativ (direkte Befehle). Diathese unterschied Aktiv und Medium (letzteres zeigte Handlung an, die das Subjekt betrifft oder im Interesse des Subjekts geschieht), mit einem sich entwickelnden Passiv."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The Proto-Indo-European verb was a magnificent and complex system, far more elaborate than any of its daughter languages would retain. PIE verbs were built on roots—typically consisting of a consonant-vowel-consonant structure—that carried core meaning. Upon these roots, speakers layered an intricate architecture of prefixes, suffixes, and infixes to express a vast array of grammatical information.\n\nAspect was paramount in PIE. The language distinguished three aspects: Imperfective (also called present): ongoing or repeated action; Perfective (also called aorist): completed action viewed as a whole; and Stative (also called perfect): a state resulting from completed action. Each aspect had its own stem, often formed through different ablaut grades and affixes. A single verb root might thus have three quite different stem forms.\n\nTense was secondary to aspect. PIE marked past time primarily through a prefix called the augment (reconstructed as *e-), though this was optional in early PIE and not all daughter languages retained it. The system allowed for present, past (preterite), and arguably future expressions, but the aspectual distinctions carried more semantic weight than temporal ones.\n\nMood was richly developed, including: Indicative (statements of fact), Subjunctive (wishes, possibilities, intentions), Optative (hopes, desires, gentle commands), and Imperative (direct commands). Voice distinguished active and middle (the latter indicating action affecting the subject or done in the subject's interest), with a developing passive."
-          }
-        }
-      }
-    },
-    "History.pieVerbSystemTitle" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Das Verbsystem des Proto-Indoeuropäischen"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The Verb System of Proto-Indo-European"
-          }
-        }
-      }
-    },
-    "History.stardustContent" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Vor etwa 4,6 Milliarden Jahren begann eine riesige Wolke aus Gas und Staub in einem Winkel der Milchstraße zu kollabieren. Dieser Urnebel war keine gewöhnliche Ansammlung von Wasserstoff und Helium. Nahegelegene Supernovae – die explosiven Tode massereicher Sterne – hatten diese Wolke mit schweren Elementen angereichert, die in stellaren Öfen geschmiedet wurden: Kohlenstoff, das Rückgrat der organischen Chemie; Sauerstoff, unverzichtbar für Wasser und Atmung; Stickstoff, ein Baustein von Proteinen und DNA; Eisen, das den geschmolzenen Erdkern bilden und später durch menschliches Blut fließen würde; Kalzium, bestimmt für Knochen und Schalen; Phosphor, entscheidend für zelluläre Energie; Schwefel, Gold, Uran und Dutzende anderer Elemente, die nur im intensiven Druck kollabierender Sterne oder in der kataklysmischen Gewalt von Supernovae entstehen konnten.\n\nAls die Schwerkraft dieses angereicherte Material zusammenzog, entzündete sich die Sonne im Zentrum, während die übrigen Trümmer zu Planeten verschmolzen. Die Erde entstand vor etwa 4,5 Milliarden Jahren – ihr Eisen sank ab und bildete einen Kern, ihre leichteren Silikate stiegen auf und formten eine Kruste, und jene von Supernovae geschenkten Elemente verteilten sich überall – wartend, über Milliarden von Jahren, auf das Entstehen von Leben, das sie eines Tages nutzen würde, um zu sprechen, zu schreiben und Verben zu konjugieren."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Approximately 4.6 billion years ago, a vast cloud of gas and dust began to collapse in a corner of the Milky Way galaxy. This primordial nebula was no ordinary collection of hydrogen and helium. Nearby supernovae—the explosive deaths of massive stars—had enriched this cloud with heavy elements forged in stellar furnaces: carbon, the backbone of organic chemistry; oxygen, essential for water and respiration; nitrogen, a building block of proteins and DNA; iron, which would form Earth's molten core and later course through human blood; calcium, destined to become bones and shells; phosphorus, critical for cellular energy; sulfur, gold, uranium, and dozens of other elements that could only be created in the intense pressures of collapsing stars or the cataclysmic violence of supernovae.\n\nAs gravity drew this enriched material together, the Sun ignited at the center while the remaining debris coalesced into planets. Earth formed roughly 4.5 billion years ago, its iron sinking to create a core, its lighter silicates rising to form a crust, and those supernova-gifted elements distributing themselves throughout—awaiting, across billions of years, the emergence of life that would one day use them to speak, to write, and to conjugate verbs."
-          }
-        }
-      }
-    },
-    "History.stardustTitle" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Von Sternenstaub zur Sprache"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "From Stardust to Speech"
-          }
-        }
-      }
-    },
-    "History.subjunctiveContent" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Das Althochdeutsche hatte einen voll funktionsfähigen Konjunktiv sowohl im Präsens als auch im Präteritum. Mit der Zeit, als Vokalunterschiede schwanden und die Konjunktivformen bei vielen Verben identisch mit dem Indikativ wurden, verwendeten Sprecher zunehmend periphrastische Konstruktionen mit würde + Infinitiv, um auszudrücken, was der alte synthetische Konjunktiv einst vermittelte:\n\n• Alt: Wenn ich käme...\n• Moderne Alternative: Wenn ich kommen würde...\n\nDieser Trend setzt sich im gegenwärtigen Deutsch fort, wo die würde-Konstruktion zunehmend synthetische Konjunktivformen ersetzt, außer bei häufigen Verben und in formellen Registern."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Old High German had a fully functional subjunctive mood in both present and preterite. Over time, as vowel distinctions reduced and the subjunctive forms became identical to the indicative in many verbs, speakers increasingly used periphrastic constructions with würde (would) + infinitive to express what the old synthetic subjunctive once conveyed:\n\n• Old: Wenn ich käme... (If I came...)\n• Modern alternative: Wenn ich kommen würde... (If I would come...)\n\nThis trend continues in contemporary German, where the würde-construction increasingly replaces synthetic subjunctive forms except for common verbs and in formal registers."
-          }
-        }
-      }
-    },
-    "History.subjunctiveTitle" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Der Konjunktiv und das moderne Deutsch"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The Subjunctive and Modern German"
-          }
-        }
-      }
-    },
-    "History.teutoburgContent" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Im Jahr 9 n. Chr. fand eine entscheidende Konfrontation in den dicht bewaldeten Hügeln des heutigen Nordwestdeutschlands statt. Drei römische Legionen unter dem Kommando von Publius Quinctilius Varus – vielleicht 20.000 Soldaten – wurden von einer Allianz germanischer Stämme unter der Führung von Arminius (Hermann), einem romanisierten Häuptling der Cherusker, überfallen und vernichtet.\n\nDie Schlacht im Teutoburger Wald stoppte die römische Expansion in germanisches Territorium. Obwohl die Römer Strafexpeditionen starten und schließlich den Limes – eine befestigte Grenze – errichten würden, eroberten sie nie dauerhaft die Länder jenseits von Rhein und Donau. Dies hatte tiefgreifende sprachliche Konsequenzen: Die germanischen Sprachen entwickelten sich frei von der Romanisierung, die Gallisch in Französisch, iberische Sprachen in Spanisch und Portugiesisch und Dakisch in Rumänisch verwandelte.\n\nHätten die Römer Germanien erobert, hätten die germanischen Völker möglicherweise Vulgärlatein angenommen, wie so viele andere innerhalb des Imperiums. Stattdessen entwickelten sich die germanischen Sprachen – einschließlich dessen, was zu Deutsch, Englisch, Niederländisch und den skandinavischen Sprachen werden sollte – unabhängig, bewahrten alte Merkmale und entwickelten neue nach ihrer eigenen inneren Logik."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "In 9 AD, a pivotal confrontation occurred in the densely forested hills of what is now northwestern Germany. Three Roman legions under the command of Publius Quinctilius Varus—perhaps 20,000 soldiers—were ambushed and annihilated by an alliance of Germanic tribes led by Arminius (Hermann), a Romanized chieftain of the Cherusci.\n\nThe Battle of the Teutoburg Forest halted Roman expansion into Germanic territory. While the Romans would launch punitive expeditions and eventually establish the limes—a fortified frontier—they never permanently conquered the lands beyond the Rhine and Danube. This had profound linguistic consequences: the Germanic languages developed free from the Romanization that transformed Gaulish into French, Iberian languages into Spanish and Portuguese, and Dacian into Romanian.\n\nHad the Romans conquered Germania, the Germanic peoples might have adopted Vulgar Latin, as did so many others within the Empire. Instead, the Germanic languages—including what would become German, English, Dutch, and the Scandinavian languages—evolved independently, preserving ancient features and developing new ones according to their own internal logic."
-          }
-        }
-      }
-    },
-    "History.teutoburgTitle" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Die Schlacht im Teutoburger Wald"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The Battle of the Teutoburg Forest"
-          }
-        }
-      }
-    },
-    "History.verbSystemTodayContent" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Das moderne Deutsch behält die wesentliche Architektur bei, die im Proto-Germanischen etabliert wurde: zwei morphologische Tempora (Präsens und Präteritum), starke Verben mit Ablaut, schwache Verben mit einem Dentalsuffix und eine Unterscheidung zwischen Indikativ, Konjunktiv und Imperativ. Dennoch wurde das System durch Jahrtausende des Wandels transformiert:\n\n• Aspekt wird periphrastisch ausgedrückt (er liest = he reads/is reading) oder durch verbale Präfixe und Partikel (er liest das Buch aus = he finishes reading the book)\n• Futur wird mit werden + Infinitiv ausgedrückt\n• Perfekt wird mit haben/sein + Partizip Perfekt ausgedrückt\n• Passiv wird mit werden + Partizip Perfekt (Vorgangspassiv) oder sein + Partizip Perfekt (Zustandspassiv) ausgedrückt\n\nDie Ablautmuster, die einst die proto-indoeuropäische Morphologie durchdrangen, überleben in den starken Verben – ein lebendes Fossil jener 5.000-jährigen Reise von der pontischen Steppe in die deutschsprachigen Länder Mitteleuropas.\n\nWenn Sie ein deutsches Verb konjugieren – wenn Sie ich singe, ich sang, ich habe gesungen sagen – nehmen Sie an einer Tradition teil, die zurückreicht durch althochdeutsche Schreiber in mittelalterlichen Klöstern, durch germanische Krieger in ihren Walddörfern, durch Jamnaja-Hirten auf der windgepeitschten Steppe, bis hin zu jener ursprünglichen Wolke aus supernova-angereichertem Gas, aus der unser Sonnensystem geboren wurde. Die schweren Elemente, die in sterbenden Sternen geschmiedet wurden, wurden zur Erde; die Erde brachte Leben hervor; Leben entwickelte die Fähigkeit zur Sprache; und Sprache, von Generation zu Generation weitergegeben, trägt in sich die Spuren all dieser Geschichte – einschließlich, in den Vokalwechseln eines deutschen starken Verbs, des Echos des proto-indoeuropäischen Ablauts, das noch nach fünfzig Jahrhunderten nachklingt."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Modern German retains the essential architecture established in Proto-Germanic: two morphological tenses (present and preterite), strong verbs with ablaut, weak verbs with a dental suffix, and a distinction between indicative, subjunctive, and imperative moods. Yet the system has been transformed by millennia of change:\n\n• Aspect is expressed periphrastically (er liest = he reads/is reading) or through verbal prefixes and particles (er liest das Buch aus = he finishes reading the book)\n• Future is expressed with werden + infinitive\n• Perfect is expressed with haben/sein + past participle\n• Passive is expressed with werden + past participle (dynamic) or sein + past participle (stative)\n\nThe ablaut patterns that once pervaded Proto-Indo-European morphology survive in the strong verbs, a living fossil of that 5,000-year journey from the Pontic steppe to the German-speaking lands of central Europe.\n\nWhen you conjugate a German verb—when you say ich singe, ich sang, ich habe gesungen—you are participating in a tradition that stretches back through Old High German scribes in medieval monasteries, through Germanic warriors in their forest villages, through Yamnaya herders on the windswept steppe, all the way to that primordial cloud of supernova-enriched gas from which our solar system was born. The heavy elements forged in dying stars became the Earth; the Earth brought forth life; life evolved the capacity for language; and language, passed from generation to generation, carries within it the traces of all this history—including, in the vowel changes of a German strong verb, the echo of Proto-Indo-European ablaut, still sounding after fifty centuries."
-          }
-        }
-      }
-    },
-    "History.verbSystemTodayTitle" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Das Verbsystem heute"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The Verb System Today"
-          }
-        }
-      }
-    },
-    "History.weakVerbsContent" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Das Proto-Germanische schuf etwas Neues: das schwache Verb. Anstatt Ablaut zu verwenden, um das Präteritum zu markieren, fügten schwache Verben ein Dentalsuffix hinzu (*-d- oder *-t-). Dies ist der Ursprung der \\\"-te\\\"-Endung in deutschen Präterita (machte, sagte, spielte) und der \\\"-ed\\\"-Endung im Englischen (made, said, played).\n\nDer Ursprung dieses Dentalsuffixes ist umstritten, aber die am weitesten akzeptierte Theorie besagt, dass es von einer Zusammensetzung mit dem Verb \\\"tun\\\" (*dō-) stammt. Was vielleicht als \\\"ich liebe-tat\\\" begann, grammatikalisierte sich zu einem einzigen Wort mit einem verschmolzenen Vergangenheitssuffix. Diese Innovation war enorm produktiv: Neue Verben, die in germanische Sprachen eintraten, folgten fast immer dem schwachen Muster, und viele ursprünglich starke Verben wurden schließlich schwach."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Proto-Germanic created something new: the weak verb. Rather than using ablaut to mark the preterite, weak verbs added a dental suffix (*-d- or *-t-). This is the origin of the \"-te\" ending in German preterites (machte, sagte, spielte) and the \"-ed\" ending in English (made, said, played).\n\nThe origin of this dental suffix is debated, but the most widely accepted theory is that it derives from a compound with the verb \"to do\" (*dō-). What began perhaps as \"I love-did\" grammaticalized into a single word with a fused past-tense suffix. This innovation was enormously productive: new verbs entering Germanic languages almost always followed the weak pattern, and many originally strong verbs eventually became weak."
-          }
-        }
-      }
-    },
-    "History.weakVerbsTitle" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Die germanische Innovation: Schwache Verben"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The Germanic Innovation: Weak Verbs"
-          }
-        }
-      }
-    },
-    "History.yamnayaContent" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zwischen etwa 4500 und 2500 v. Chr. bewohnte ein Volk, das wir Jamnaja nennen (vom russischen яма, \\\"Grube\\\", in Bezug auf ihre Bestattungspraktiken), die pontisch-kaspische Steppe. Sie gehörten zu den ersten, die das Pferd zum Reiten domestizierten, was ihnen – zusammen mit der kürzlich erfundenen Räderfahrzeuge – beispiellose Mobilität verlieh. Die Jamnaja waren halbnomadische Hirten, die Rinder, Schafe und Ziegen über die Grasländer trieben. Sie lebten in kleinen, mobilen Gruppen und folgten ihren Herden zu saisonalen Weiden.\n\nIhre Gesellschaft scheint patriarchalisch und hierarchisch gewesen zu sein. Sie bestatteten ihre Toten in charakteristischen Grubengräbern unter Erdhügeln, genannt Kurgane, oft mit Grabbeigaben, die den Status anzeigten: Waffen, Schmuck, Tieropfer. DNA-Belege deuten darauf hin, dass sie erhebliche Mengen an Milchprodukten konsumierten, da sie Laktosetoleranz entwickelt hatten, und archäologische Funde weisen auf eine durch Jagd und begrenzte Landwirtschaft ergänzte Ernährung hin.\n\nDie Jamnaja sprachen das, was Linguisten als Proto-Indoeuropäisch (PIE) rekonstruieren – den Vorfahren von Deutsch, Englisch, Ukrainisch, Hindi, Persisch, Griechisch, Katalanisch und vielen anderen Sprachen der indoeuropäischen Sprachfamilie. Fast die Hälfte aller heute lebenden Menschen spricht eine indoeuropäische Sprache als Muttersprache."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Between approximately 4500 and 2500 BC, a people we call the Yamnaya (from Russian яма, \"pit,\" referring to their burial practices) inhabited the Pontic-Caspian steppe. They were among the first to domesticate the horse for riding, which—combined with the recent invention of wheeled vehicles—gave them unprecedented mobility. The Yamnaya were semi-nomadic pastoralists, herding cattle, sheep, and goats across the grasslands. They lived in small, mobile groups, following their herds to seasonal pastures.\n\nTheir society appears to have been patriarchal and hierarchical. They buried their dead in distinctive pit graves beneath earthen mounds called kurgans, often with grave goods indicating status: weapons, jewelry, animal sacrifices. DNA evidence suggests they consumed significant amounts of dairy, having evolved lactose tolerance, and archaeological evidence points to a diet supplemented by hunting and limited agriculture.\n\nThe Yamnaya spoke what linguists reconstruct as Proto-Indo-European (PIE), the ancestor of German, English, Ukrainian, Hindi, Persian, Greek, Catalan, and many other languages in the Indo-European language family. Nearly half of humans alive today speak an Indo-European language as their first language."
-          }
-        }
-      }
-    },
-    "History.yamnayaTitle" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Die Jamnaja und das Proto-Indoeuropäische"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The Yamnaya and Proto-Indo-European"
-          }
-        }
-      }
-    },
     "ImageInfo.cliffSchmiesing" : {
       "localizations" : {
         "de" : {
@@ -799,34 +319,34 @@
         }
       }
     },
-    "Info.aboutHeading" : {
+    "Info.creditsHeading" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Über"
+            "value" : "Credits"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "About"
+            "value" : "Credits"
           }
         }
       }
     },
-    "Info.aboutText" : {
+    "Info.creditsText" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Lorem ipsum ~dolor~ sit amet, ^consectetur^ adipiscing elit. $Sed$ do eiusmod %tempor% incididunt ut labore."
+            "state" : "translated",
+            "value" : "~Konjugieren~ was created by ~Josh Adams~. Source code: %https://github.com/vermont42/Konjugieren%"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lorem ipsum ~dolor~ sit amet, $consecteTur$ adipiscing elit. $Sed$ do eiusmod %tempor% incididunt ut labore."
+            "value" : "~Konjugieren~ was created by ~Josh Adams~. Source code: %https://github.com/vermont42/Konjugieren%"
           }
         }
       }
@@ -863,34 +383,98 @@
         }
       }
     },
-    "Info.history" : {
+    "Info.imperativHeading" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Verbgeschichte"
+            "value" : "Imperativ"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Verb History"
+            "value" : "Imperativ"
           }
         }
       }
     },
-    "Info.historySubtitle" : {
+    "Info.imperativText" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Von Sternenstaub zur Sprache"
+            "value" : "Information about the imperative mood."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "From stardust to speech"
+            "value" : "Information about the imperative mood."
+          }
+        }
+      }
+    },
+    "Info.perfektIndikativHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perfekt Indikativ"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perfekt Indikativ"
+          }
+        }
+      }
+    },
+    "Info.perfektIndikativText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information about the present perfect tense."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information about the present perfect tense."
+          }
+        }
+      }
+    },
+    "Info.perfektKonjunktivIHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perfekt Konjunktiv I"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perfekt Konjunktiv I"
+          }
+        }
+      }
+    },
+    "Info.perfektKonjunktivIText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information about perfect subjunctive."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information about perfect subjunctive."
           }
         }
       }
@@ -927,34 +511,226 @@
         }
       }
     },
-    "Info.präsensIndicativHeading" : {
+    "Info.präsensIndikativHeading" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Präsens Indicativ"
+            "value" : "Präsens Indikativ"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Präsens Indicativ"
+            "value" : "Präsens Indikativ"
           }
         }
       }
     },
-    "Info.präsensIndicativText" : {
+    "Info.präsensIndikativText" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Lorem ipsum ~dolor~ sit amet, ^consectetur^ adipiscing elit. $Sed$ do eiusmod %tempor% incididunt ut labore et dolore magna aliqua."
+            "state" : "translated",
+            "value" : "Information about the present tense."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lorem ipsum ~dolor~ sit amet, $cNnsectetur$ adipiscing elit. $Sed$ do eiusmod %tempor% incididunt ut labore et dolore magna aliqua."
+            "value" : "Information about the present tense."
+          }
+        }
+      }
+    },
+    "Info.präsensKonjunktivIHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Präsens Konjunktiv I"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Präsens Konjunktiv I"
+          }
+        }
+      }
+    },
+    "Info.präsensKonjunktivIText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information about present subjunctive."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information about present subjunctive."
+          }
+        }
+      }
+    },
+    "Info.präsenspartizipHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Präsenspartizip"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Präsenspartizip"
+          }
+        }
+      }
+    },
+    "Info.präsenspartizipText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information about the present participle."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information about the present participle."
+          }
+        }
+      }
+    },
+    "Info.präteritumIndikativHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Präteritum Indikativ"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Präteritum Indikativ"
+          }
+        }
+      }
+    },
+    "Info.präteritumIndikativText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information about simple past tense."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information about simple past tense."
+          }
+        }
+      }
+    },
+    "Info.präteritumKonditionalHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Präteritum Konditional"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Präteritum Konditional"
+          }
+        }
+      }
+    },
+    "Info.präteritumKonditionalText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information about past conditional."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information about past conditional."
+          }
+        }
+      }
+    },
+    "Info.questionsAndAnwersHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fragen und Antworten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questions and Answers"
+          }
+        }
+      }
+    },
+    "Info.questionsAndAnwersText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frequently asked questions about German conjugation."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frequently asked questions about German conjugation."
+          }
+        }
+      }
+    },
+    "Info.terminologyHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terminologie"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terminology"
+          }
+        }
+      }
+    },
+    "Info.terminologyText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "German conjugation terminology explained."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "German conjugation terminology explained."
           }
         }
       }

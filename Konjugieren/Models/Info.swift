@@ -16,10 +16,19 @@ struct Info: Hashable {
   }
 
   static let infos: [Info] = [
-    Info(heading: L.Info.dedicationHeading, text: L.Info.dedicationText, imageInfo: ImageInfo(filename: "JoshAdams", accessibilityLabel: L.ImageInfo.joshAdams)),
-    Info(heading: L.Info.aboutHeading, text: L.Info.aboutText),
-    Info(heading: L.Info.präsensIndicativHeading, text: L.Info.präsensIndicativText),
+    Info(heading: L.Info.dedicationHeading, text: L.Info.dedicationText),
+    Info(heading: L.Info.terminologyHeading, text: L.Info.terminologyText),
     Info(heading: L.Info.perfektpartizipHeading, text: L.Info.perfektpartizipText, alwaysUsesGermanPronunciation: true),
+    Info(heading: L.Info.präsenspartizipHeading, text: L.Info.präsenspartizipText, alwaysUsesGermanPronunciation: true),
+    Info(heading: L.Info.präsensIndikativHeading, text: L.Info.präsensIndikativText, alwaysUsesGermanPronunciation: true),
+    Info(heading: L.Info.präteritumIndikativHeading, text: L.Info.präteritumIndikativText, alwaysUsesGermanPronunciation: true),
+    Info(heading: L.Info.präsensKonjunktivIHeading, text: L.Info.präsensKonjunktivIText, alwaysUsesGermanPronunciation: true),
+    Info(heading: L.Info.präteritumKonditionalHeading, text: L.Info.präteritumKonditionalText, alwaysUsesGermanPronunciation: true),
+    Info(heading: L.Info.imperativHeading, text: L.Info.imperativText, alwaysUsesGermanPronunciation: true),
+    Info(heading: L.Info.perfektIndikativHeading, text: L.Info.perfektIndikativText, alwaysUsesGermanPronunciation: true),
+    Info(heading: L.Info.perfektKonjunktivIHeading, text: L.Info.perfektKonjunktivIText, alwaysUsesGermanPronunciation: true),
+    Info(heading: L.Info.questionsAndAnwersHeading, text: L.Info.questionsAndAnwersText),
+    Info(heading: L.Info.creditsHeading, text: L.Info.creditsText, imageInfo: ImageInfo(filename: "JoshAdams", accessibilityLabel: L.ImageInfo.joshAdams)),
   ]
 
   static func headingToIndex(heading: String) -> Int? {

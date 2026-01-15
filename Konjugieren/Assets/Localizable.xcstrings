@@ -336,13 +336,13 @@
         "de": {
           "stringUnit": {
             "state": "translated",
-            "value": "~Konjugieren~ was created by ~Josh Adams~. Source code: %https://github.com/vermont42/Konjugieren%"
+            "value": "`Entwickler`\n~Konjugieren~ wurde von ~Josh Adams~ entwickelt, einem iOS-App-Entwickler mit Sitz in der Nähe von San Francisco, Kalifornien. Er ist auch der Entwickler von Conjuguer, Conjugar und RaceRunner, die alle im iOS App Store erhältlich sind. Der Quellcode von Konjugieren ist hier verfügbar: %https://github.com/vermont42/Konjugieren%"
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "~Konjugieren~ was created by ~Josh Adams~. Source code: %https://github.com/vermont42/Konjugieren%"
+            "value": "`Creator`\n~Konjugieren~ was created by ~Josh Adams~, an iOS-app developer based near San Francisco, California. He is also the developer of Conjuguer, Conjugar, and RaceRunner, all available in the iOS App Store. Konjugieren's source code is available here: %https://github.com/vermont42/Konjugieren%"
           }
         }
       }
@@ -367,14 +367,14 @@
       "localizations": {
         "de": {
           "stringUnit": {
-            "state": "translated",
-            "value": "Diese App ist ~Cliff Schmiesing~ gewidmet. Hier ist der Quellcode von ~Konjugieren~: %https://github.com/vermont42/Konjugieren%"
+            "state": "needs_review",
+            "value": "Diese App ist meinem Großvater, ~Clifford August Schmiesing~, gewidmet.\n\nCliff wurde am 14. März 1904 in Minster, Ohio, geboren, einer Stadt, in der Deutsch die Sprache des täglichen Lebens war. Alle vier seiner Großeltern waren aus Deutschland eingewandert, und er wuchs tief in diesem Erbe verwurzelt auf – er besuchte öffentliche Schulen, die von deutschsprachigen Nonnen aus Deutschland unterrichtet wurden. Er studierte an der St. Louis University, wo er sowohl das College als auch das Medizinstudium abschloss und sich auf Geburtshilfe spezialisierte.\n\nIn St. Louis lernte Cliff ~Grace Ryan~ kennen, und sie heirateten und bekamen sechs Kinder, darunter Ryan, meine Mutter. Die Familie ließ sich in Salamanca, New York, nieder, wo Cliff als Hausarzt praktizierte und Babys zur Welt brachte. 1938 trat er der Army Reserve bei, um sein Einkommen aufzubessern. Als Amerika in den Zweiten Weltkrieg eintrat, zog die Familie im Januar 1942 nach Fort Jackson in Columbia, South Carolina. Im Dezember wurde Cliff nach Oran, Algerien, während der amerikanischen Besetzung entsandt.\n\nIn Oran behandelte Cliff Soldaten, die in Nordafrika, Sizilien und Süditalien verwundet worden waren. Er brachte auch die meisten der 1943 in Oran geborenen Babys zur Welt. Er starb dort am 21. Januar 1944. Meine Mutter war gerade vierzehn Monate alt.\n\nObwohl Ryan ihren Vater nie wirklich kannte, hat Cliffs Liebe zu seiner Familie über die Generationen hinweg nachgeklungen. Ich spüre sie heute. ~Konjugieren~ ist eine Hommage an Cliff und an die Sprache, die er und seine Vorfahren sprachen – Deutsch."
           }
         },
         "en": {
           "stringUnit": {
             "state": "translated",
-            "value": "This app is dedicated to ~Cliff Schmiesing~. Here is the source code of ~Konjugieren~: %https://github.com/vermont42/Konjugieren%"
+            "value": "This app is dedicated to my grandfather, ~Clifford August Schmiesing~.\n\nCliff was born on March 14, 1904, in Minster, Ohio, a town where German was the language of daily life. All four of his grandparents had immigrated from Germany, and he grew up steeped in that heritage—attending public schools taught by German-speaking nuns from Germany. He went on to study at St. Louis University, where he completed both college and medical school, specializing in obstetrics.\n\nIn St. Louis, Cliff met ~Grace Ryan~, and they married and had six children together, including Ryan, my mother. The family settled in Salamanca, New York, where Cliff practiced family medicine and delivered babies. In 1938, he joined the Army Reserve to supplement his income. When America entered World War II, the family moved to Fort Jackson in Columbia, South Carolina in January 1942. That December, Cliff was deployed to Oran, Algeria, during the American occupation.\n\nIn Oran, Cliff treated soldiers wounded in North Africa, Sicily, and Southern Italy. He also delivered most of the babies born in Oran in 1943. He died there on January 21, 1944. My mother was just fourteen months old.\n\nThough Ryan never truly knew her father, Cliff's love for his family has echoed through the generations. I feel it today. ~Konjugieren~ is a tribute to Cliff and to the language he and his ancestors spoke—German."
           }
         }
       }

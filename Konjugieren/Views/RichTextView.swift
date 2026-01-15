@@ -12,7 +12,7 @@ struct RichTextView: View {
         case .subheading(let text):
           Text(text)
             .font(.system(size: 18, weight: .bold))
-            .foregroundStyle(Color.customForeground)
+            .foregroundStyle(Color.customYellow)
             .frame(maxWidth: .infinity)
             .multilineTextAlignment(.center)
 

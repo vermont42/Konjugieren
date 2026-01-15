@@ -16,7 +16,7 @@ struct Info: Hashable {
   }
 
   static let infos: [Info] = [
-    Info(heading: L.Info.dedicationHeading, text: L.Info.dedicationText),
+    Info(heading: L.Info.dedicationHeading, text: L.Info.dedicationText, imageInfo: ImageInfo(filename: "CliffSchmiesing", accessibilityLabel: L.ImageInfo.cliffSchmiesing)),
     Info(heading: L.Info.verbHistoryHeading, text: L.Info.verbHistoryText),
     Info(heading: L.Info.terminologyHeading, text: L.Info.terminologyText),
     Info(heading: L.Info.perfektpartizipHeading, text: L.Info.perfektpartizipText, alwaysUsesGermanPronunciation: true),

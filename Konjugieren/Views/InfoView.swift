@@ -21,6 +21,7 @@ struct InfoView: View {
           // Custom large title that wraps and scrolls off-screen
           Text(info.heading)
             .font(.largeTitle.bold())
+            .foregroundColor(.customYellow)
             .multilineTextAlignment(.center)
             .fixedSize(horizontal: false, vertical: true)
             .frame(maxWidth: .infinity, alignment: .center)
@@ -31,7 +32,9 @@ struct InfoView: View {
               .resizable()
               .aspectRatio(contentMode: .fit)
               .frame(width: 270)
+              .frame(maxWidth: .infinity)
               .accessibilityLabel(imageInfo.accessibilityLabel)
+              .padding(.bottom, 16)
           }
 
           if shouldShowInfoHeading {

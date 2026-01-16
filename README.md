@@ -9,13 +9,13 @@ Konjugieren
 
 ### Screenshots
 
-| Verb List | Verb |
-| --- | --- |
-| ![](Images/verbList.png) | ![](Images/verb.png) |
+| Verb List | Verb | Quiz |
+| --- | --- | --- |
+| ![](Images/verbList.png) | ![](Images/verb.png) | ![](Images/quiz.png) |
 
-| Verb-History Index | Verb History |
+| Verb History | Dedication |
 | --- | --- |
-| ![](Images/historyIndex.png) | ![](Images/history.png) |
+| ![](Images/history.png) | ![](Images/dedication.png) |
 
 ### License
 

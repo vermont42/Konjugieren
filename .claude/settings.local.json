@@ -14,7 +14,8 @@
       "Bash(git commit -m \"$\\(cat <<''EOF''\nsimplify Conjugator by consolidating duplicate logic\n\n- Combine four identical simple tense cases into one multi-case match\n- Extract conjugateCompoundTense helper using tuple pattern matching\n- Merge firstPlural/thirdPlural imperativ cases \\(differ only by pronoun\\)\n\nReduces Conjugator.swift from 252 to 204 lines \\(-19%\\)\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n\\)\")",
       "Bash(git push)",
       "Bash(git stash:*)",
-      "Bash(languages\" to emphasizing speaker population instead. Adds Catalan to the\nlanguage list, removes Latin, and clarifies that nearly half of humans speak\nan Indo-European language as their first language.\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n\\)\")"
+      "Bash(languages\" to emphasizing speaker population instead. Adds Catalan to the\nlanguage list, removes Latin, and clarifies that nearly half of humans speak\nan Indo-European language as their first language.\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(ls:*)"
     ]
   },
   "outputStyle": "Explanatory"

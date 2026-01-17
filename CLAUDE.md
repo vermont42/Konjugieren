@@ -22,7 +22,13 @@ xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren -destination 'plat
 
 ## Architecture Overview
 
-Konjugieren is an iOS app for learning German verb conjugations. It will eventually conjugate 1,000 verbs across all German conjugationgroups ("tenses" in ordinary (and incorrect) parlance). Konjugieren uses SwiftUI for its user interface. Josh Adams, whose pronouns are he/him/his, is the developer of Konjugieren.
+Konjugieren is an iOS app for learning German verb conjugations. It will eventually conjugate 1,000 verbs across all German conjugationgroups ("tenses" in ordinary (and incorrect) parlance). Konjugieren uses SwiftUI for its user interface.
+
+## About the Developer
+
+Josh Adams (pronouns: he/him/his) is the developer of Konjugieren. He is an iOS-app developer, from New England but based near San Francisco, California. He also created Conjuguer (French), Conjugar (Spanish), and RaceRunner, all available in the iOS App Store.
+
+Josh created Konjugieren as a tribute to his grandfather, Clifford August Schmiesing (1904–1944), who was born in Minster, Ohio—a town where German was the language of daily life. Cliff served as an Army doctor in World War II and died in Oran, Algeria. The dedication in the app tells his story.
 
 ## Project Structure
 
@@ -90,6 +96,8 @@ Multiple-member conjugationgroup have a tense and mood. For example, Präsens In
 
 ### Conjugationgroups Currently in This Codebase
 
+#### Simple Conjugationgroups
+
 | Conjugation Group | Tense | Mood | English Equivalent |
 |-------------------|-------|------|-------------------|
 | Präsens Indikativ | Präsens | Indikativ | Present indicative |
@@ -100,11 +108,21 @@ Multiple-member conjugationgroup have a tense and mood. For example, Präsens In
 | Perfektpartizip | Präteritum | - | Past participle |
 | Präsenspartizip | Präsens | - | Present participle |
 
+#### Compound Conjugationgroups
+
+These conjugationgroups use an auxiliary verb (haben or sein) with the Perfektpartizip:
+
+| Conjugation Group | Auxiliary Mood | English Equivalent |
+|-------------------|----------------|-------------------|
+| Perfekt Indikativ | Indikativ | Present perfect indicative |
+| Perfekt Konjunktiv I | Konjunktiv I | Present perfect subjunctive |
+
 ### Usage Notes
 
 - Avoid using "tense" to describe conjugationgroups
 - Use "Konditional" rather than "Konjunktiv II" for clarity
 - The participles (Perfektpartizip, Präsenspartizip) do not have mood
+- Compound conjugationgroups combine an auxiliary verb conjugation with the Perfektpartizip
 
 ## XML File Formats
 
@@ -352,3 +370,40 @@ JSON-based string catalog supporting multiple languages. Each key maps to transl
 
 - Keys follow the pattern: `FeatureName.stringPurpose`
 - Examples: `Settings.conjugationgroupLangHeading`, `Navigation.verbs`, `History.stardustTitle`
+
+### Rich Text Markup in Localizable.xcstrings
+
+Long-form Info text (like `verbHistoryText`, `dedicationText`, `creditsText`) uses a custom markup system that the app's text renderer interprets:
+
+| Marker | Purpose | Example |
+|--------|---------|---------|
+| `` ` `` | Section headings (rendered larger/styled) | `` `Von Sternenstaub zur Sprache` `` |
+| `~` | Bold/emphasis | `~Homo sapiens~`, `~ablaut~` |
+| `$...$` | Ablaut highlighting (uppercase = changed vowel) | `$sAng$`, `$gesUngen$`, `$kÄme$` |
+| `%...%` | Clickable URLs | `%https://github.com/vermont42/Konjugieren%` |
+| 🇩🇪 | Bullet points in lists | `🇩🇪 ~Imperfektiv~: andauernde Handlung` |
+
+### Relocalization Workflow
+
+When the English version of a long text is edited, the German version must be relocalized:
+
+1. **Translate the prose** while maintaining natural German flow
+2. **Preserve all markup** in equivalent positions
+3. **Do NOT localize**:
+   - English example words with translations: `(sing, $sAng$, $sUng$)`
+   - God names: Wōðanaz, Þunaraz, Wōden, Óðinn, Þórr, Týr, etc.
+   - Reconstructed PIE forms: `*bʰer-`, `*e-`, `*dō-`
+   - Latin scholarly terms used in context: ~Germani~, ~comitatus~, ~limes~, ~kurgans~
+4. **Match heading structure** exactly between languages
+
+### The verbHistoryText
+
+The `Info.verbHistoryText` entry is an extensive (~3,000 word) educational essay tracing the German verb system from:
+- The formation of the Solar System (supernova-forged elements)
+- Human migration out of Africa to the Pontic-Caspian steppe
+- The Yamnaya people and Proto-Indo-European language
+- PIE verb system and ablaut
+- Germanic migrations and the Battle of Teutoburg Forest
+- Evolution through Old High German to modern German
+
+This text exists in both English and German versions. When one is edited, the other requires careful relocalization preserving all markup and technical content.

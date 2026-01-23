@@ -28,7 +28,11 @@ struct Info: Hashable {
     Info(heading: L.Info.imperativHeading, text: L.Info.imperativText, alwaysUsesGermanPronunciation: true),
     Info(heading: L.Info.perfektIndikativHeading, text: L.Info.perfektIndikativText, alwaysUsesGermanPronunciation: true),
     Info(heading: L.Info.perfektKonjunktivIHeading, text: L.Info.perfektKonjunktivIText, alwaysUsesGermanPronunciation: true),
-    Info(heading: L.Info.questionsAndAnwersHeading, text: L.Info.questionsAndAnwersText),
+    Info(heading: L.Info.plusquamperfektIndikativHeading, text: L.Info.plusquamperfektIndikativText, alwaysUsesGermanPronunciation: true),
+    Info(heading: L.Info.plusquamperfektKonditionalHeading, text: L.Info.plusquamperfektKonditionalText, alwaysUsesGermanPronunciation: true),
+    Info(heading: L.Info.futurIndikativHeading, text: L.Info.futurIndikativText, alwaysUsesGermanPronunciation: true),
+    Info(heading: L.Info.futurKonjunktivIHeading, text: L.Info.futurKonjunktivIText, alwaysUsesGermanPronunciation: true),
+    Info(heading: L.Info.futurKonditionalHeading, text: L.Info.futurKonditionalText, alwaysUsesGermanPronunciation: true),
     Info(heading: L.Info.creditsHeading, text: L.Info.creditsText, imageInfo: ImageInfo(filename: "JoshAdams", accessibilityLabel: L.ImageInfo.joshAdams)),
   ]
 

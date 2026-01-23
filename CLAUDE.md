@@ -75,9 +75,9 @@ Konjugieren/
 
 ### Conjugation Group
 
-The term "conjugationgroup" was invented for this project because no existing term adequately described the concept. A conjugationgroup with more than one members, like Präsens Indikativ, combines tense and mood to identify a specific set of verb forms. The conjugation groups with one member are Perfektpartizip (past participle) and Präsenspartizip (present participle).
+The term "conjugationgroup" was invented for this project because no existing term adequately described the concept. A conjugationgroup with more than one member, like Präsens Indikativ, combines tense, mood, and voice to identify a specific set of verb forms. The conjugationgroups with one member are Infinitiv (infinitive), Perfektpartizip (past participle), and Präsenspartizip (present participle). When translating conjugationgroup to German, use the word "Conjugationgroup", plural "Conjugationgroups". By analogy with Gruppe, Conjugationgroup is a feminine noun.
 
-### Tense vs. Mood
+### Tense, Mood, and Voice
 
 In discourse about Indo-European languages, "tense" refers only to the time that an action occurs. German conjugationgroups have three tenses:
 - **Präsens** (present)
@@ -93,6 +93,8 @@ Multiple-member (not Perfektpartizip or Präsenspartizip) German verbs are also 
 - **Imperativ** - corresponds to the English imperative mood
 
 Multiple-member conjugationgroup have a tense and mood. For example, Präsens Indikativ has Präsens tense and Indikativ mood. Certain tense/mood combinations do not occur. For example, there is no conjugationgroup for Futur/Imperativ.
+
+Multi-member conjugationgroups also sometimes encode **voice**. In English, the two voices are active and passive. German has Aktiv (active) voice and two passive voices, Vorgangspassiv and Zustandpassiv.
 
 ### Conjugationgroups Currently in This Codebase
 

@@ -152,12 +152,44 @@ enum L {
       String(localized: "Info.perfektKonjunktivIText")
     }
 
-    static var questionsAndAnwersHeading: String {
-      String(localized: "Info.questionsAndAnwersHeading")
+    static var plusquamperfektIndikativHeading: String {
+      String(localized: "Info.plusquamperfektIndikativHeading")
     }
 
-    static var questionsAndAnwersText: String {
-      String(localized: "Info.questionsAndAnwersText")
+    static var plusquamperfektIndikativText: String {
+      String(localized: "Info.plusquamperfektIndikativText")
+    }
+
+    static var plusquamperfektKonditionalHeading: String {
+      String(localized: "Info.plusquamperfektKonditionalHeading")
+    }
+
+    static var plusquamperfektKonditionalText: String {
+      String(localized: "Info.plusquamperfektKonditionalText")
+    }
+
+    static var futurIndikativHeading: String {
+      String(localized: "Info.futurIndikativHeading")
+    }
+
+    static var futurIndikativText: String {
+      String(localized: "Info.futurIndikativText")
+    }
+
+    static var futurKonjunktivIHeading: String {
+      String(localized: "Info.futurKonjunktivIHeading")
+    }
+
+    static var futurKonjunktivIText: String {
+      String(localized: "Info.futurKonjunktivIText")
+    }
+
+    static var futurKonditionalHeading: String {
+      String(localized: "Info.futurKonditionalHeading")
+    }
+
+    static var futurKonditionalText: String {
+      String(localized: "Info.futurKonditionalText")
     }
 
     static var creditsHeading: String {
@@ -238,6 +270,34 @@ enum L {
 
     static var imperativ: String {
       String(localized: "Conjugationgroup.imperativ")
+    }
+
+    static var perfektIndikativ: String {
+      String(localized: "Conjugationgroup.perfektIndikativ")
+    }
+
+    static var perfektKonjunktivI: String {
+      String(localized: "Conjugationgroup.perfektKonjunktivI")
+    }
+
+    static var plusquamperfektIndikativ: String {
+      String(localized: "Conjugationgroup.plusquamperfektIndikativ")
+    }
+
+    static var plusquamperfektKonditional: String {
+      String(localized: "Conjugationgroup.plusquamperfektKonditional")
+    }
+
+    static var futurIndikativ: String {
+      String(localized: "Conjugationgroup.futurIndikativ")
+    }
+
+    static var futurKonjunktivI: String {
+      String(localized: "Conjugationgroup.futurKonjunktivI")
+    }
+
+    static var futurKonditional: String {
+      String(localized: "Conjugationgroup.futurKonditional")
     }
   }
 

@@ -228,6 +228,118 @@
         }
       }
     },
+    "Conjugationgroup.perfektIndikativ" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perfekt Indikativ"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perfect Indicative"
+          }
+        }
+      }
+    },
+    "Conjugationgroup.perfektKonjunktivI" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perfekt Konjunktiv I"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perfect Subjunctive"
+          }
+        }
+      }
+    },
+    "Conjugationgroup.plusquamperfektIndikativ" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plusquamperfekt Indikativ"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pluperfect Indicative"
+          }
+        }
+      }
+    },
+    "Conjugationgroup.plusquamperfektKonditional" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plusquamperfekt Konditional"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pluperfect Conditional"
+          }
+        }
+      }
+    },
+    "Conjugationgroup.futurIndikativ" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Futur Indikativ"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Future Indicative"
+          }
+        }
+      }
+    },
+    "Conjugationgroup.futurKonjunktivI" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Futur Konjunktiv I"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Future Subjunctive"
+          }
+        }
+      }
+    },
+    "Conjugationgroup.futurKonditional" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Futur Konditional"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Future Conditional"
+          }
+        }
+      }
+    },
     "ConjugationgroupLang.english" : {
       "localizations" : {
         "de" : {
@@ -420,6 +532,102 @@
         }
       }
     },
+    "Info.futurIndikativHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Futur Indikativ"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Futur Indikativ"
+          }
+        }
+      }
+    },
+    "Info.futurIndikativText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informationen über das Futur Indikativ."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information about future indicative."
+          }
+        }
+      }
+    },
+    "Info.futurKonditionalHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Futur Konditional"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Futur Konditional"
+          }
+        }
+      }
+    },
+    "Info.futurKonditionalText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informationen über das Futur Konditional."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information about future conditional."
+          }
+        }
+      }
+    },
+    "Info.futurKonjunktivIHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Futur Konjunktiv I"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Futur Konjunktiv I"
+          }
+        }
+      }
+    },
+    "Info.futurKonjunktivIText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informationen über das Futur Konjunktiv I."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information about future subjunctive."
+          }
+        }
+      }
+    },
     "Info.imperativHeading" : {
       "localizations" : {
         "de" : {
@@ -473,13 +681,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Information about the present perfect tense."
+            "value" : "Informationen über das Perfekt Indikativ."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Information about the present perfect tense."
+            "value" : "Information about the perfect indicative."
           }
         }
       }
@@ -544,6 +752,70 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "`Subheading`Here is an example perfektpartizip conjugation: $gesUngen$"
+          }
+        }
+      }
+    },
+    "Info.plusquamperfektIndikativHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plusquamperfekt Indikativ"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plusquamperfekt Indikativ"
+          }
+        }
+      }
+    },
+    "Info.plusquamperfektIndikativText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informationen über das Plusquamperfekt Indikativ."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information about pluperfect indicative."
+          }
+        }
+      }
+    },
+    "Info.plusquamperfektKonditionalHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plusquamperfekt Konditional"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plusquamperfekt Konditional"
+          }
+        }
+      }
+    },
+    "Info.plusquamperfektKonditionalText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Informationen über das Plusquamperfekt Konditional."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information about pluperfect conditional."
           }
         }
       }
@@ -709,6 +981,7 @@
       }
     },
     "Info.questionsAndAnwersHeading" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -725,6 +998,7 @@
       }
     },
     "Info.questionsAndAnwersText" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

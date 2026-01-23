@@ -1046,6 +1046,102 @@
         }
       }
     },
+    "Info.tenseHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tempus"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tense"
+          }
+        }
+      }
+    },
+    "Info.tenseText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "`Tempus`\n\nIn der Linguistik bezieht sich ~Tempus~ ausschließlich auf die ~Zeit~, zu der eine Handlung stattfindet. Das Deutsche hat drei Tempora:\n\n🇩🇪 ~Präsens~ (Gegenwart)\n🇩🇪 ~Präteritum~ (Vergangenheit)\n🇩🇪 ~Futur~ (Zukunft)\n\nDas Tempus ist nur eine Komponente einer Conjugationgroup. Zum Beispiel hat Präsens Indikativ das Tempus Präsens, kombiniert aber auch den Modus Indikativ."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "`Tense`\n\nIn linguistics, ~tense~ refers only to the ~time~ that an action occurs. German has three tenses:\n\n🇩🇪 ~Präsens~ (present)\n🇩🇪 ~Präteritum~ (past)\n🇩🇪 ~Futur~ (future)\n\nTense is just one component of a conjugationgroup. For example, Präsens Indikativ has Präsens tense but also combines Indikativ mood."
+          }
+        }
+      }
+    },
+    "Info.moodHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modus"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mood"
+          }
+        }
+      }
+    },
+    "Info.moodText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "`Modus`\n\n~Modus~ drückt die Haltung des Sprechers zur Handlung aus. Das Deutsche hat vier Modi:\n\n🇩🇪 ~Indikativ~ – Tatsachen (entspricht dem englischen indicative)\n🇩🇪 ~Konjunktiv I~ – indirekte Rede (entspricht dem englischen subjunctive)\n🇩🇪 ~Konditional~ (auch Konjunktiv II) – hypothetische Situationen (entspricht dem englischen conditional)\n🇩🇪 ~Imperativ~ – Befehle (entspricht dem englischen imperative)\n\nMehrgliedrige Conjugationgroups haben sowohl ein Tempus als auch einen Modus. Zum Beispiel: Präsens Indikativ (Präsens + Indikativ)."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "`Mood`\n\n~Mood~ expresses the speaker's attitude toward the action. German has four moods:\n\n🇩🇪 ~Indikativ~ – facts (indicative)\n🇩🇪 ~Konjunktiv I~ – indirect speech (subjunctive)\n🇩🇪 ~Konditional~ (also called Konjunktiv II) – hypothetical situations (conditional)\n🇩🇪 ~Imperativ~ – commands (imperative)\n\nMulti-member conjugationgroups have both a tense and a mood. For example: Präsens Indikativ (Präsens tense + Indikativ mood)."
+          }
+        }
+      }
+    },
+    "Info.voiceHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genus Verbi"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voice"
+          }
+        }
+      }
+    },
+    "Info.voiceText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "`Genus Verbi`\n\n~Genus Verbi~ (auch Diathese) beschreibt die Beziehung zwischen dem Verb und seinen Argumenten. Das Deutsche hat drei Genera Verbi:\n\n🇩🇪 ~Aktiv~ – das Subjekt führt die Handlung aus (\"Ich singe das Lied\")\n🇩🇪 ~Vorgangspassiv~ – das Subjekt erleidet die Handlung (\"Das Lied wird gesungen\")\n🇩🇪 ~Zustandspassiv~ – das Subjekt befindet sich im Zustand nach der Handlung (\"Das Lied ist gesungen\")\n\nDiese App konzentriert sich derzeit auf Aktiv-Conjugationgroups. Passive Formen werden in zukünftigen Versionen hinzugefügt."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "`Voice`\n\n~Voice~ describes the relationship between the verb and its arguments. German has three voices:\n\n🇩🇪 ~Aktiv~ (active) – the subject performs the action (\"I sing the song\")\n🇩🇪 ~Vorgangspassiv~ (processual passive) – the subject undergoes the action (\"The song is being sung\")\n🇩🇪 ~Zustandspassiv~ (statal passive) – the subject is in the state after the action (\"The song is sung\")\n\nThis app currently focuses on active voice conjugationgroups. Passive forms will be added in future versions."
+          }
+        }
+      }
+    },
     "Info.verbHistoryHeading" : {
       "localizations" : {
         "de" : {

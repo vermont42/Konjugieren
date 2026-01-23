@@ -80,6 +80,30 @@ enum L {
       String(localized: "Info.terminologyText")
     }
 
+    static var tenseHeading: String {
+      String(localized: "Info.tenseHeading")
+    }
+
+    static var tenseText: String {
+      String(localized: "Info.tenseText")
+    }
+
+    static var moodHeading: String {
+      String(localized: "Info.moodHeading")
+    }
+
+    static var moodText: String {
+      String(localized: "Info.moodText")
+    }
+
+    static var voiceHeading: String {
+      String(localized: "Info.voiceHeading")
+    }
+
+    static var voiceText: String {
+      String(localized: "Info.voiceText")
+    }
+
     static var perfektpartizipHeading: String {
       String(localized: "Info.perfektpartizipHeading")
     }

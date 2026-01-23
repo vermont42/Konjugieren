@@ -283,7 +283,7 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "werden", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "wIrst")
     expectConjugation(infinitiv: "werden", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "wIrD")
     expectConjugation(infinitiv: "werden", conjugationgroup: .präsensIndicativ(.firstPlural), expected: "werden")
-    expectConjugation(infinitiv: "werden", conjugationgroup: .präsensIndicativ(.secondPlural), expected: "wErdEt")
+    expectConjugation(infinitiv: "werden", conjugationgroup: .präsensIndicativ(.secondPlural), expected: "werdEt")
     expectConjugation(infinitiv: "werden", conjugationgroup: .präsensIndicativ(.thirdPlural), expected: "werden")
 
     // Präteritum Indikativ

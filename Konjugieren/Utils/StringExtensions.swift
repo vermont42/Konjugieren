@@ -9,13 +9,20 @@ enum RichTextBlock: Hashable {
   case body([TextSegment])
 }
 
+// MARK: - ConjugationPart
+
+enum ConjugationPart: Hashable {
+  case regular(String)    // Expected characters (yellow)
+  case irregular(String)  // Changed characters (red)
+}
+
 // MARK: - TextSegment
 
 enum TextSegment: Hashable {
   case plain(String)
   case bold(String)
   case link(text: String, url: URL)
-  case conjugation(regular: String, irregular: String, trailing: String)  // before, red part, after
+  case conjugation([ConjugationPart])  // Alternating regular/irregular parts
 }
 
 // MARK: - String Extensions
@@ -181,35 +188,49 @@ extension String {
     return segments
   }
 
-  // MARK: - Conjugation Parser (Uppercase → Red)
+  // MARK: - Conjugation Parser (Uppercase → Red, Lowercase → Yellow)
 
   private func parseConjugationToSegment() -> TextSegment {
-    let chars = Array(self)
+    guard !self.isEmpty else {
+      return .conjugation([])
+    }
 
-    // Find first and last uppercase letter indices
-    var firstUpper = -1
-    var lastUpper = -1
+    var parts: [ConjugationPart] = []
+    var currentRun = ""
+    var currentIsUpper: Bool? = nil
 
-    for (i, char) in chars.enumerated() {
-      if char.isUppercase {
-        if firstUpper == -1 {
-          firstUpper = i
+    for char in self {
+      let isUpper = char.isUppercase
+      let lowercasedChar = char.lowercased()
+
+      if currentIsUpper == nil {
+        // First character
+        currentIsUpper = isUpper
+        currentRun = lowercasedChar
+      } else if isUpper == currentIsUpper {
+        // Same case as current run, append
+        currentRun += lowercasedChar
+      } else {
+        // Case changed, emit current run and start new one
+        if currentIsUpper == true {
+          parts.append(.irregular(currentRun))
+        } else {
+          parts.append(.regular(currentRun))
         }
-        lastUpper = i
+        currentRun = lowercasedChar
+        currentIsUpper = isUpper
       }
     }
 
-    let lowercased = self.lowercased()
-
-    if firstUpper == -1 {
-      // No uppercase letters - treat as plain text
-      return .conjugation(regular: lowercased, irregular: "", trailing: "")
-    } else {
-      let lowercasedChars = Array(lowercased)
-      let before = firstUpper > 0 ? String(lowercasedChars[0..<firstUpper]) : ""
-      let irregular = String(lowercasedChars[firstUpper...lastUpper])
-      let after = lastUpper < lowercasedChars.count - 1 ? String(lowercasedChars[(lastUpper + 1)...]) : ""
-      return .conjugation(regular: before, irregular: irregular, trailing: after)
+    // Emit final run
+    if !currentRun.isEmpty {
+      if currentIsUpper == true {
+        parts.append(.irregular(currentRun))
+      } else {
+        parts.append(.regular(currentRun))
+      }
     }
+
+    return .conjugation(parts)
   }
 }

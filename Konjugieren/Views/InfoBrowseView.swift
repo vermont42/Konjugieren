@@ -114,14 +114,17 @@ struct InfoRowView: View {
       case .link(let text, _):
         result.append(AttributedString(text))
 
-      case .conjugation(let regular, let irregular, let trailing):
-        result.append(AttributedString(regular))
-
-        var irregularAttr = AttributedString(irregular)
-        irregularAttr.foregroundColor = Color.customRed
-        result.append(irregularAttr)
-
-        result.append(AttributedString(trailing))
+      case .conjugation(let parts):
+        for part in parts {
+          switch part {
+          case .regular(let text):
+            result.append(AttributedString(text))
+          case .irregular(let text):
+            var irregularAttr = AttributedString(text)
+            irregularAttr.foregroundColor = Color.customRed
+            result.append(irregularAttr)
+          }
+        }
       }
     }
 

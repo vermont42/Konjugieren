@@ -28,7 +28,7 @@
   <ag e="singen" a="A,bA|Ä,dA|U,pp" />
   <ag e="sitzen" a="ASS,bA|ÄSS,dA|ESS,pp" />
   <ag e="stehen" a="AND,bA,pp|ÄND,dA" />
-  <ag e="werden" a="wIrst*,a2s|wIrD*,a3s|wErdEt*,a2p|wUrdE*,b1s,b3s|wUrdEst*,b2s|wUrdEt*,b2p|U,b1p,b3p|Ü,dA|O,pp" />
+  <ag e="werden" a="wIrst*,a2s|wIrD*,a3s|werdEt*,a2p|wUrdE*,b1s,b3s|wUrdEst*,b2s|wUrdEt*,b2p|U,b1p,b3p|Ü,dA|O,pp" />
   <ag e="wissen" a="WEISS*,a1s,a3s|WEISST*,a2s|USS,bA,pp|ÜSS,dA" />
   <ag e="wollen" a="WILL*,a1s,a3s|WILLST*,a2s" />
 </ablautGroups>

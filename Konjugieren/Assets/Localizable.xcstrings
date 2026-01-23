@@ -1,1415 +1,1417 @@
 {
-  "sourceLanguage": "en",
-  "strings": {
-    "": {},
-    "%@ - %@": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%1$@ - %2$@"
+  "sourceLanguage" : "en",
+  "strings" : {
+    "" : {
+
+    },
+    "%@ - %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ - %2$@"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%1$@ - %2$@"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ - %2$@"
           }
         }
       }
     },
-    "%@ %@": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%1$@ %2$@"
+    "%@ %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ %2$@"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%1$@ %2$@"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ %2$@"
           }
         }
       }
     },
-    "%@ %lld": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%1$@ %2$lld"
+    "%@ %lld" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ %2$lld"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%1$@ %2$lld"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ %2$lld"
           }
         }
       }
     },
-    "%@ %lld / %lld": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%1$@ %2$lld / %3$lld"
+    "%@ %lld / %lld" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ %2$lld / %3$lld"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%1$@ %2$lld / %3$lld"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ %2$lld / %3$lld"
           }
         }
       }
     },
-    "%@ ✗": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ ✗"
+    "%@ ✗" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ ✗"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "%@ ✗"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ ✗"
           }
         }
       }
     },
-    "AudioFeedback.disable": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Deaktivieren"
+    "AudioFeedback.disable" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deaktivieren"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Disable"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disable"
           }
         }
       }
     },
-    "AudioFeedback.enable": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Aktivieren"
+    "AudioFeedback.enable" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktivieren"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Enable"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable"
           }
         }
       }
     },
-    "Conjugationgroup.imperativ": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Imperativ"
+    "Conjugationgroup.imperativ" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imperativ"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Imperative"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imperative"
           }
         }
       }
     },
-    "Conjugationgroup.perfektpartizip": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Perfekt Partizip"
+    "Conjugationgroup.perfektpartizip" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perfekt Partizip"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Past Participle"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Past Participle"
           }
         }
       }
     },
-    "Conjugationgroup.präsensIndicativ": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Präsens Indicativ"
+    "Conjugationgroup.präsensIndicativ" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Präsens Indicativ"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Present Indicative"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Present Indicative"
           }
         }
       }
     },
-    "Conjugationgroup.präsensKonjunktivI": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Präsens Konjunktiv I"
+    "Conjugationgroup.präsensKonjunktivI" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Präsens Konjunktiv I"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Present Subjunctive"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Present Subjunctive"
           }
         }
       }
     },
-    "Conjugationgroup.präsenspartizip": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Präsens Partizip"
+    "Conjugationgroup.präsenspartizip" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Präsens Partizip"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Present Participle"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Present Participle"
           }
         }
       }
     },
-    "Conjugationgroup.präteritumIndicativ": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Präteritum Indicativ"
+    "Conjugationgroup.präteritumIndicativ" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Präteritum Indicativ"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Past Indicative"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Past Indicative"
           }
         }
       }
     },
-    "Conjugationgroup.präteritumKonditional": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Präteritum Konditional"
+    "Conjugationgroup.präteritumKonditional" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Präteritum Konditional"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Past Conditional"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Past Conditional"
           }
         }
       }
     },
-    "ConjugationgroupLang.english": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Englisch"
+    "ConjugationgroupLang.english" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Englisch"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "English"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "English"
           }
         }
       }
     },
-    "ConjugationgroupLang.german": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Deutsch"
+    "ConjugationgroupLang.german" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deutsch"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "German"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "German"
           }
         }
       }
     },
-    "Family.ieren": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "-ieren"
+    "Family.ieren" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "-ieren"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "-ieren"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "-ieren"
           }
         }
       }
     },
-    "Family.mixed": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Gemischt"
+    "Family.mixed" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gemischt"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Mixed"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mixed"
           }
         }
       }
     },
-    "Family.strong": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Stark"
+    "Family.strong" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stark"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Strong"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Strong"
           }
         }
       }
     },
-    "Family.weak": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Schwach"
+    "Family.weak" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schwach"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Weak"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weak"
           }
         }
       }
     },
-    "ImageInfo.cliffSchmiesing": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cliff Schmiesing"
+    "ImageInfo.cliffSchmiesing" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cliff Schmiesing"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Cliff Schmiesing"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cliff Schmiesing"
           }
         }
       }
     },
-    "ImageInfo.joshAdams": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Josh Adams"
+    "ImageInfo.joshAdams" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Josh Adams"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Josh Adams"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Josh Adams"
           }
         }
       }
     },
-    "Info.creditsHeading": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Credits"
+    "Info.creditsHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Credits"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Credits"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Credits"
           }
         }
       }
     },
-    "Info.creditsText": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "`Entwickler`\n~Konjugieren~ wurde von ~Josh Adams~ entwickelt, einem iOS-App-Entwickler mit Sitz in der Nähe von San Francisco, Kalifornien. Er ist auch der Entwickler von Conjuguer, Conjugar und RaceRunner, die alle im iOS App Store erhältlich sind. Der Quellcode von Konjugieren ist hier verfügbar: %https://github.com/vermont42/Konjugieren%"
+    "Info.creditsText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "`Entwickler`\n~Konjugieren~ wurde von ~Josh Adams~ entwickelt, einem iOS-App-Entwickler mit Sitz in der Nähe von San Francisco, Kalifornien. Er ist auch der Entwickler von Conjuguer, Conjugar und RaceRunner, die alle im iOS App Store erhältlich sind. Der Quellcode von Konjugieren ist hier verfügbar: %https://github.com/vermont42/Konjugieren%"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "`Creator`\n~Konjugieren~ was created by ~Josh Adams~, an iOS-app developer based near San Francisco, California. He is also the developer of Conjuguer, Conjugar, and RaceRunner, all available in the iOS App Store. Konjugieren's source code is available here: %https://github.com/vermont42/Konjugieren%"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "`Creator`\n~Konjugieren~ was created by ~Josh Adams~, an iOS-app developer based near San Francisco, California. He is also the developer of Conjuguer, Conjugar, and RaceRunner, all available in the iOS App Store. Konjugieren's source code is available here: %https://github.com/vermont42/Konjugieren%"
           }
         }
       }
     },
-    "Info.dedicationHeading": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Widmung"
+    "Info.dedicationHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Widmung"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Dedication"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dedication"
           }
         }
       }
     },
-    "Info.dedicationText": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Diese App ist meinem Großvater, ~Clifford August Schmiesing~, gewidmet.\n\nCliff wurde am 14. März 1904 in Minster, Ohio, geboren, einer Stadt, in der Deutsch die Sprache des täglichen Lebens war. Alle vier seiner Großeltern waren aus Deutschland eingewandert, und er wuchs tief in diesem Erbe verwurzelt auf – er besuchte öffentliche Schulen, die von deutschsprachigen Nonnen aus Deutschland unterrichtet wurden. Er studierte an der St. Louis University, wo er sowohl das College als auch das Medizinstudium abschloss und sich auf Geburtshilfe spezialisierte.\n\nIn St. Louis lernte Cliff ~Grace Ryan~ kennen, und sie heirateten und bekamen sechs Kinder, darunter Ryan, meine Mutter. Die Familie ließ sich in Salamanca, New York, nieder, wo Cliff als Hausarzt praktizierte und Babys zur Welt brachte. 1938 trat er der Army Reserve bei, um sein Einkommen aufzubessern. Als Amerika in den Zweiten Weltkrieg eintrat, zog die Familie im Januar 1942 nach Fort Jackson in Columbia, South Carolina. Im Dezember wurde Cliff nach Oran, Algerien, während der amerikanischen Besetzung entsandt.\n\nIn Oran behandelte Cliff Soldaten, die in Nordafrika, Sizilien und Süditalien verwundet worden waren. Er brachte auch die meisten der 1943 in Oran geborenen Babys zur Welt. Er starb dort am 21. Januar 1944. Meine Mutter war gerade vierzehn Monate alt.\n\nObwohl Ryan ihren Vater nie wirklich kannte, hat Cliffs Liebe zu seiner Familie über die Generationen hinweg nachgeklungen. Ich spüre sie heute. ~Konjugieren~ ist eine Hommage an Cliff und an die Sprache, die er und seine Vorfahren sprachen – Deutsch."
+    "Info.dedicationText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese App ist meinem Großvater, ~Clifford August Schmiesing~, gewidmet.\n\nCliff wurde am 14. März 1904 in Minster, Ohio, geboren, einer Stadt, in der Deutsch die Sprache des täglichen Lebens war. Alle vier seiner Großeltern waren aus Deutschland eingewandert, und er wuchs tief in diesem Erbe verwurzelt auf – er besuchte öffentliche Schulen, die von deutschsprachigen Nonnen aus Deutschland unterrichtet wurden. Er studierte an der St. Louis University, wo er sowohl das College als auch das Medizinstudium abschloss und sich auf Geburtshilfe spezialisierte.\n\nIn St. Louis lernte Cliff ~Grace Ryan~ kennen, und sie heirateten und bekamen sechs Kinder, darunter Ryan, meine Mutter. Die Familie ließ sich in Salamanca, New York, nieder, wo Cliff als Hausarzt praktizierte und Babys zur Welt brachte. 1938 trat er der Army Reserve bei, um sein Einkommen aufzubessern. Als Amerika in den Zweiten Weltkrieg eintrat, zog die Familie im Januar 1942 nach Fort Jackson in Columbia, South Carolina. Im Dezember wurde Cliff nach Oran, Algerien, während der amerikanischen Besetzung entsandt.\n\nIn Oran behandelte Cliff Soldaten, die in Nordafrika, Sizilien und Süditalien verwundet worden waren. Er brachte auch die meisten der 1943 in Oran geborenen Babys zur Welt. Er starb dort am 21. Januar 1944. Meine Mutter war gerade vierzehn Monate alt.\n\nObwohl Ryan ihren Vater nie wirklich kannte, hat Cliffs Liebe zu seiner Familie über die Generationen hinweg nachgeklungen. Ich spüre sie heute. ~Konjugieren~ ist eine Hommage an Cliff und an die Sprache, die er und seine Vorfahren sprachen – Deutsch."
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "This app is dedicated to my grandfather, ~Clifford August Schmiesing~.\n\nCliff was born on March 14, 1904, in Minster, Ohio, a town where German was the language of daily life. All four of his grandparents had immigrated from Germany, and he grew up steeped in that heritage—attending public schools taught by German-speaking nuns from Germany. He went on to study at St. Louis University, where he completed both college and medical school, specializing in obstetrics.\n\nIn St. Louis, Cliff met ~Grace Ryan~, and they married and had six children together, including Ryan, my mother. The family settled in Salamanca, New York, where Cliff practiced family medicine and delivered babies. In 1938, he joined the Army Reserve to supplement his income. When America entered World War II, the family moved to Fort Jackson in Columbia, South Carolina in January 1942. That December, Cliff was deployed to Oran, Algeria, during the American occupation.\n\nIn Oran, Cliff treated soldiers wounded in North Africa, Sicily, and Southern Italy. He also delivered most of the babies born in Oran in 1943. He died there on January 21, 1944. My mother was just fourteen months old.\n\nThough Ryan never truly knew her father, Cliff's love for his family has echoed through the generations. I feel it today. ~Konjugieren~ is a tribute to Cliff and to the language he and his ancestors spoke—German."
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This app is dedicated to my grandfather, ~Clifford August Schmiesing~.\n\nCliff was born on March 14, 1904, in Minster, Ohio, a town where German was the language of daily life. All four of his grandparents had immigrated from Germany, and he grew up steeped in that heritage—attending public schools taught by German-speaking nuns from Germany. He went on to study at St. Louis University, where he completed both college and medical school, specializing in obstetrics.\n\nIn St. Louis, Cliff met ~Grace Ryan~, and they married and had six children together, including Ryan, my mother. The family settled in Salamanca, New York, where Cliff practiced family medicine and delivered babies. In 1938, he joined the Army Reserve to supplement his income. When America entered World War II, the family moved to Fort Jackson in Columbia, South Carolina in January 1942. That December, Cliff was deployed to Oran, Algeria, during the American occupation.\n\nIn Oran, Cliff treated soldiers wounded in North Africa, Sicily, and Southern Italy. He also delivered most of the babies born in Oran in 1943. He died there on January 21, 1944. My mother was just fourteen months old.\n\nThough Ryan never truly knew her father, Cliff's love for his family has echoed through the generations. I feel it today. ~Konjugieren~ is a tribute to Cliff and to the language he and his ancestors spoke—German."
           }
         }
       }
     },
-    "Info.imperativHeading": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Imperativ"
+    "Info.imperativHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imperativ"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Imperativ"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Imperativ"
           }
         }
       }
     },
-    "Info.imperativText": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Information about the imperative mood."
+    "Info.imperativText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information about the imperative mood."
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Information about the imperative mood."
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information about the imperative mood."
           }
         }
       }
     },
-    "Info.perfektIndikativHeading": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Perfekt Indikativ"
+    "Info.perfektIndikativHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perfekt Indikativ"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Perfekt Indikativ"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perfekt Indikativ"
           }
         }
       }
     },
-    "Info.perfektIndikativText": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Information about the present perfect tense."
+    "Info.perfektIndikativText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information about the present perfect tense."
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Information about the present perfect tense."
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information about the present perfect tense."
           }
         }
       }
     },
-    "Info.perfektKonjunktivIHeading": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Perfekt Konjunktiv I"
+    "Info.perfektKonjunktivIHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perfekt Konjunktiv I"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Perfekt Konjunktiv I"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perfekt Konjunktiv I"
           }
         }
       }
     },
-    "Info.perfektKonjunktivIText": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Information about perfect subjunctive."
+    "Info.perfektKonjunktivIText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information about perfect subjunctive."
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Information about perfect subjunctive."
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information about perfect subjunctive."
           }
         }
       }
     },
-    "Info.perfektpartizipHeading": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Perfektpartizip"
+    "Info.perfektpartizipHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perfektpartizip"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Perfektpartizip"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perfektpartizip"
           }
         }
       }
     },
-    "Info.perfektpartizipText": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "`Perfektpartizip`\\nHier ist ein Beispiel einer Perfektpartizip-Konjugation: $gesUngen$"
+    "Info.perfektpartizipText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "`Perfektpartizip`\\nHier ist ein Beispiel einer Perfektpartizip-Konjugation: $gesUngen$"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "`Subheading`Here is an example perfektpartizip conjugation: $gesUngen$"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "`Subheading`Here is an example perfektpartizip conjugation: $gesUngen$"
           }
         }
       }
     },
-    "Info.präsensIndikativHeading": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Präsens Indikativ"
+    "Info.präsensIndikativHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Präsens Indikativ"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Präsens Indikativ"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Präsens Indikativ"
           }
         }
       }
     },
-    "Info.präsensIndikativText": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Information about the present tense."
+    "Info.präsensIndikativText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information about the present tense."
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Information about the present tense."
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information about the present tense."
           }
         }
       }
     },
-    "Info.präsensKonjunktivIHeading": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Präsens Konjunktiv I"
+    "Info.präsensKonjunktivIHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Präsens Konjunktiv I"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Präsens Konjunktiv I"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Präsens Konjunktiv I"
           }
         }
       }
     },
-    "Info.präsensKonjunktivIText": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Information about present subjunctive."
+    "Info.präsensKonjunktivIText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information about present subjunctive."
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Information about present subjunctive."
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information about present subjunctive."
           }
         }
       }
     },
-    "Info.präsenspartizipHeading": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Präsenspartizip"
+    "Info.präsenspartizipHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Präsenspartizip"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Präsenspartizip"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Präsenspartizip"
           }
         }
       }
     },
-    "Info.präsenspartizipText": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Information about the present participle."
+    "Info.präsenspartizipText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information about the present participle."
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Information about the present participle."
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information about the present participle."
           }
         }
       }
     },
-    "Info.präteritumIndikativHeading": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Präteritum Indikativ"
+    "Info.präteritumIndikativHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Präteritum Indikativ"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Präteritum Indikativ"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Präteritum Indikativ"
           }
         }
       }
     },
-    "Info.präteritumIndikativText": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Information about simple past tense."
+    "Info.präteritumIndikativText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information about simple past tense."
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Information about simple past tense."
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information about simple past tense."
           }
         }
       }
     },
-    "Info.präteritumKonditionalHeading": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Präteritum Konditional"
+    "Info.präteritumKonditionalHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Präteritum Konditional"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Präteritum Konditional"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Präteritum Konditional"
           }
         }
       }
     },
-    "Info.präteritumKonditionalText": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Information about past conditional."
+    "Info.präteritumKonditionalText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information about past conditional."
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Information about past conditional."
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Information about past conditional."
           }
         }
       }
     },
-    "Info.questionsAndAnwersHeading": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fragen und Antworten"
+    "Info.questionsAndAnwersHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fragen und Antworten"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Questions and Answers"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questions and Answers"
           }
         }
       }
     },
-    "Info.questionsAndAnwersText": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Frequently asked questions about German conjugation."
+    "Info.questionsAndAnwersText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frequently asked questions about German conjugation."
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Frequently asked questions about German conjugation."
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frequently asked questions about German conjugation."
           }
         }
       }
     },
-    "Info.terminologyHeading": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Terminologie"
+    "Info.terminologyHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terminologie"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Terminology"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terminology"
           }
         }
       }
     },
-    "Info.terminologyText": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "German conjugation terminology explained."
+    "Info.terminologyText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "German conjugation terminology explained."
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "German conjugation terminology explained."
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "`Verb`A ~verb~ is a kind of word that expresses an action. For example, in the German sentence \"Robert $sAng$ in London.\", “%singen%” is the verb. Likewise, in the English sentence “Robert $sAng$ in London.”, “to sing” is the verb.`Conjugation`A conjugation is a modification, or non-modification, of a verb for a specific purpose. For example, \"$hAst$\" and \"$hAst$\" are conjugations of the German and Early Modern English verbs \"%haben%\" and \"to have\", respectively, indicating that the verb is associated with an informal, second-person-singular subject pronoun (\"du\" or \"thou\") and that the action described, the act of possession, takes place (or is taking place) in the present.`Conjugationgroup`A ~conjugationgroup~ is a related family of one, two, four, or six conjugations. You have already seen one conjugationgroup, Infinitiv (infinitive), in the examples of \"%singen%\", \"%haben%\", \"to sing\", and \"to have\". In German and English, the Infinitiv is the reference conjugation for verbs and therefore the one you look up in a dictionary. In both languages, an Infinitiv can also represent the act of doing something.\\n\\n\"Ich $BIN$ gezwungen, die Verbkonjugationen zu ~lernen~.\" = \"I $AM$ compelled ~to study~ verb conjugations.\"\\n\\nThe uses of some German and English conjugationgroups closely correspond, as with Infinitiv/infinitive, but the uses of some do not. Consider this example:\\n\\n\"I eat.\" != \"Ich esse.\"\\n\\nIn this example, the German speaker might be currently eating, but the English speaker is describing a habitual action and is not necessarily eating at this moment. The %Präsens Indikativ%, the conjugationgroup demonstrated here, therefore has broader application than the similarly named Present Indicative.\\n\\nBecause of the inexact correspondence between German and English conjugationgroups, Konjugieren displays German conjugationgroup names by default, but there is a setting in the Settings tab to cause Konjugieren to display English conjugationgroup names, which are perhaps more familiar to the English-speaking target audience of Konjugieren.\\n\\nThe three conjugationgroups with one member each are Infinitiv, %Perfektpartizip% and %Präsenspartizip%.\\n\\nThe German conjugationgroup %Imperativ% has four members. Its English cousin, imperative, has two.\\n\\nAll other conjugationgroups have six members. You $sAW$ earlier $sAng$. This is a member of the conjugationgroup %Präteritum Indicativ%. Here are all six members of that conjugationgroup for %singen%:\\n\\n$sAng$, $sAngst$, $sAng$, $sAngen$, $sAngt$, $sAngen$\\n\\nThe developer of Konjugieren coined the term \"conjugationgroup\" in late 2025, but the concept has existed for 5,000 years, if not longer. Some language commentators use the word \"tense\" for this concept, but, for reasons described later, \"tense\" has a precise meaning that is not broad enough for this important concept.`Subject Pronoun`A ~subject pronoun~ is a word that stands in for the subject in a sentence. The subject is the actor. In English, the subject pronouns in widespread use are ~I~, ~you~, ~he/she/it/one~, ~we~, ~you/y’all~, and ~they~. The English subject pronouns ~ye~ and ~thou~ have been in decline since the Elizabethan period, which is too bad for German learners because they are cognate with (related to) the German subject pronouns ~ihr~ and ~du~.\\n\\nSubject pronouns correspond to the ~singular~ or ~plural~ number and to the ~first person~, ~second person~, or ~third person~.\\n\\nEnglish subject pronouns follow. Abbreviations of the person-number combinations are in parentheses.\\n\\n🏴󠁧󠁢󠁥󠁮󠁧󠁿 first person, singular (1s): ~I~\\n🏴󠁧󠁢󠁥󠁮󠁧󠁿 second person, singular (2s): ~you~\\n🏴󠁧󠁢󠁥󠁮󠁧󠁿 third person, singular (3s): ~he/she/it/one~\\n🏴󠁧󠁢󠁥󠁮󠁧󠁿 first person, plural (1p): ~we~\\n🏴󠁧󠁢󠁥󠁮󠁧󠁿/🇺🇸 second person, plural (2p): ~you/y’all~\\n🏴󠁧󠁢󠁥󠁮󠁧󠁿 third person, plural (3p): ~they~\\n\\nHere are the German subject pronouns arranged by person-number combination.\\n\\n🇩🇪 1s: ~ich~\\n🇩🇪 2s: ~du~ or ~Sie~\\n🇩🇪 3s: ~er~ (masc.)/~sie~ (fem.)/~es~ (neut.)\\n🇩🇪 1p: ~wir~\\n🇩🇪 2p: ~ihr~ or ~Sie~\\n🇩🇪 3p: ~sie~\\n\\n\"Fem.\", \"masc.\", and \"neut.\" refer to feminine, masculine, and neuter subjects, respectively.\\n\\nNote the two options for 2s and 2p, (~du~ or ~Sie~) and (~ihr~ or ~Sie~). ~Du~ and ~ihr~ are considered informal and may express emotional closeness. ~Sie~, which is always capitalized, is considered polite and may express emotional distance. Importantly for Konjugieren users, ~Sie~ uses the 3p conjugations`Presentation of Conjugations`Treatises on German verbs, when presenting the conjugations for a particular conjugationgroup, use the following person-number order: 1s, 2s, 3s, 1p, 2p, 3p. Respecting tradition, ~Konjugieren~ does the same. For example, ~Konjugieren~ presents the %Präsens Indikativ% conjugations of %werden% as follows:\\n\\nwerde, $wIrst$, $wIrD$, werden, $werdEt$, werden\\n\\nA conjugation has red letters representing irregularities in one or two of three scenarios.\\n\\n🇩🇪 First, there is a red letter if the vowel of the part of the Infinitiv, minus the -en ending, the ~Stamm~ (stem), has changed as a result of Ablaut, a phenomenon described in %A History of the German Verb System%.\\n🇩🇪 Second, there is a red letter if the ending on the conjugation differs from that of a regular verb like %machen%. The conjugation $wIrD$ demonstrates these first two scenarios because the expected conjugation would be ~werdt~.\\n🇩🇪 Third, a conjugation is entirely red when both the Stamm and ending $ARe$ completely unpredictable. For example, the 1s %Präsens Indikativ% conjugation of %sein% is $BIN$."
           }
         }
       }
     },
-    "Info.verbHistoryHeading": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Eine Geschichte des deutschen Verbsystems"
+    "Info.verbHistoryHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eine Geschichte des deutschen Verbsystems"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "A History of the German Verb System"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A History of the German Verb System"
           }
         }
       }
     },
-    "Info.verbHistoryText": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "`Von Sternenstaub zur Sprache`Vor etwa 4,6 Milliarden Jahren begann eine riesige Wolke aus Gas und Staub in einem Winkel der Milchstraße zu kollabieren. Dieser Urnebel war keine gewöhnliche Ansammlung von Wasserstoff und Helium. Nahegelegene Supernovae – die explosiven Tode massereicher Sterne – hatten diese Wolke mit schweren Elementen angereichert, die in stellaren Öfen geschmiedet wurden: Kohlenstoff, das Rückgrat der organischen Chemie; Sauerstoff, unverzichtbar für Wasser und Atmung; Stickstoff, ein Baustein von Proteinen und DNA; Eisen, das den geschmolzenen Erdkern bilden und später durch menschliches Blut fließen würde; Kalzium, bestimmt für Knochen und Schalen; Phosphor, entscheidend für zelluläre Energie; Schwefel, Gold, Uran und Dutzende anderer Elemente, die nur im intensiven Druck kollabierender Sterne oder in der kataklysmischen Gewalt von Supernovae entstehen konnten.\n\nAls die Schwerkraft dieses angereicherte Material zusammenzog, entzündete sich die Sonne im Zentrum, während die übrigen Trümmer zu Planeten verschmolzen. Die Erde entstand vor etwa 4,5 Milliarden Jahren – ihr Eisen sank ab und bildete einen Kern, ihre leichteren Silikate stiegen auf und formten eine Kruste, und jene von Supernovae geschenkten Elemente verteilten sich überall – wartend, über Milliarden von Jahren, auf das Entstehen von Leben, das sie eines Tages nutzen würde, um zu sprechen, zu schreiben und Verben zu konjugieren.`Der lange Weg zur Sprache`Leben entstand auf der Erde vor vielleicht 3,8 Milliarden Jahren, aber der Weg zu sprachbegabten Wesen war ungeheuer lang. Der moderne Mensch – ~Homo sapiens~ – entwickelte sich vor etwa 300.000 Jahren in Afrika. Die meiste Zeit lebten unsere Vorfahren als Jäger und Sammler auf dem afrikanischen Kontinent und entwickelten die kognitiven Fähigkeiten, die schließlich komplexe Sprache ermöglichen sollten.\n\nVor etwa 70.000 Jahren begannen Wellen von Menschen, Afrika zu verlassen und sich über den Globus auszubreiten. Einige zogen nach Norden und Westen nach Europa; andere bewegten sich ostwärts durch Asien. Vor 45.000 Jahren hatten Menschen die pontisch-kaspische Steppe erreicht – die weiten Grasländer, die sich vom heutigen Ukraine bis nach Kasachstan erstrecken. Diese Region, nördlich des Schwarzen und Kaspischen Meeres gelegen, sollte zum Schmelztiegel einer der folgenreichsten sprachlichen Entwicklungen der Geschichte werden.`Die Jamnaja und das Proto-Indoeuropäische`Zwischen etwa 4500 und 2500 v. Chr. bewohnte ein Volk, das wir Jamnaja nennen (vom russischen яма, „Grube\", bezogen auf ihre Bestattungspraktiken), die pontisch-kaspische Steppe. Sie gehörten zu den ersten, die das Pferd zum Reiten domestizierten, was ihnen – kombiniert mit der kürzlichen Erfindung von Radfahrzeugen – beispiellose Mobilität verlieh. Die Jamnaja waren halbnomadische Hirten, die Rinder, Schafe und Ziegen über die Grasländer trieben. Sie lebten in kleinen, mobilen Gruppen und folgten ihren Herden zu saisonalen Weiden.\n\nIhre Gesellschaft scheint patriarchalisch und hierarchisch gewesen zu sein. Sie bestatteten ihre Toten in charakteristischen Grubengräbern unter Erdhügeln, die ~Kurgane~ genannt werden, oft mit Grabbeigaben, die den Status anzeigten: Waffen, Schmuck, Tieropfer. DNA-Belege deuten darauf hin, dass sie erhebliche Mengen an Milchprodukten konsumierten, da sie Laktosetoleranz entwickelt hatten, und archäologische Funde weisen auf eine Ernährung hin, die durch Jagd und begrenzte Landwirtschaft ergänzt wurde.\n\nDie Jamnaja sprachen, was Linguisten als ~Proto-Indoeuropäisch~ (PIE) rekonstruieren – die Vorfahrensprache von fast der Hälfte aller heute lebenden Menschen. Zu diesen Sprachen gehören Deutsch, Englisch, Ukrainisch, Hindi, Persisch, Kornisch, Griechisch und Latein.`Das Verbsystem des Proto-Indoeuropäischen`Das proto-indoeuropäische Verb war ein prächtiges und komplexes System, weit ausgefeilter als jede seiner Tochtersprachen bewahren sollte. PIE-Verben wurden auf Wurzeln aufgebaut – typischerweise aus einer Konsonant-Vokal-Konsonant-Struktur bestehend – die die Kernbedeutung trugen. Auf diese Wurzeln schichteten die Sprecher eine komplizierte Architektur von Präfixen, Suffixen und Infixen, um eine Vielzahl grammatischer Informationen auszudrücken.\n\n~Aspekt~ war im PIE von größter Bedeutung. Die Sprache unterschied drei Aspekte:\n🇩🇪 ~Imperfektiv~ (auch Präsens genannt): andauernde oder wiederholte Handlung\n🇩🇪 ~Perfektiv~ (auch Aorist genannt): abgeschlossene Handlung als Ganzes betrachtet\n🇩🇪 ~Stativ~ (auch Perfekt genannt): ein Zustand, der aus einer abgeschlossenen Handlung resultiert\n\nJeder Aspekt hatte seinen eigenen Stamm, oft durch verschiedene Ablautstufen und Affixe gebildet. Eine einzelne Verbwurzel konnte somit drei recht unterschiedliche Stammformen haben.\n\n~Tempus~ war dem Aspekt untergeordnet. PIE markierte Vergangenheit hauptsächlich durch ein Präfix namens ~Augment~ (rekonstruiert als *e-), obwohl dies im frühen PIE optional war und nicht alle Tochtersprachen es beibehielten. Das System erlaubte Präsens-, Vergangenheits- (Präteritum) und wohl auch Zukunftsausdrücke, aber die aspektuellen Unterscheidungen trugen mehr semantisches Gewicht als die temporalen.\n\n~Modus~ war reich entwickelt, einschließlich:\n🇩🇪 ~Indikativ~: Aussagen über Fakten\n🇩🇪 ~Konjunktiv~: Wünsche, Möglichkeiten, Absichten\n🇩🇪 ~Optativ~: Hoffnungen, Wünsche, sanfte Befehle\n🇩🇪 ~Imperativ~: direkte Befehle\n\n~Diathese~ unterschied Aktiv und Medium (letzteres zeigte Handlung an, die das Subjekt betrifft oder im Interesse des Subjekts geschieht), mit einem sich entwickelnden Passiv.`Ablaut: Das Herz der indoeuropäischen Morphologie`Vielleicht hat sich kein Merkmal des Proto-Indoeuropäischen als dauerhafter erwiesen als der ~Ablaut~ – der systematische Wechsel von Vokalen innerhalb von Wurzeln und Affixen zum Ausdruck grammatischer Unterscheidungen. Ablaut war kein willkürlicher Lautwandel, sondern ein strukturiertes System von Vokalstufen:\n\n🇩🇪 ~e-Stufe~ (Vollstufe): der Vokal *e (wie in der Wurzel *bʰer-, „tragen\")\n🇩🇪 ~o-Stufe~: der Vokal *o (wie in *bʰor-)\n🇩🇪 ~Nullstufe~: Abwesenheit des Vokals (wie in *bʰr-)\n🇩🇪 ~gedehnte e-Stufe~: *ē (wie in *mḗh₁-n̥s)\n🇩🇪 ~gedehnte o-Stufe~: *ō (wie in *n̥-péh₂-tōr)\n\nDiese Alternationen waren grammatisch bedeutsam. Zum Beispiel könnte der Präsensstamm die e-Stufe verwenden, während das Perfekt die o-Stufe verwendete; die Nullstufe erschien in bestimmten Suffixen und in unbetonten Positionen. Als PIE *e und *o sich später in den Tochtersprachen zu verschiedenen Vokalen entwickelten, wurden die Ablautmuster zu den Vokalwechseln, die wir noch heute in deutschen starken Verben sehen:\n\n🇩🇪 singen, $sAng$, $gesUngen$ (sing, $sAng$, $sUng$)\n🇩🇪 nehmen, $nahm$, $genOMmen$ (take, $tOOk$, taken)\n🇩🇪 geben, $gAb$, gegeben (give, $gAve$, given)\n\nDiese Vokalwechsel sind direkte Erbschaften aus dem Proto-Indoeuropäischen, bewahrt über fünf Jahrtausende sprachlicher Evolution.`Die Wanderung nach Europa`Ab etwa 3000 v. Chr. – vor ungefähr 5.000 Jahren – begannen die Jamnaja und ihre Nachkommen eine Reihe von Wanderungen, die die genetische und sprachliche Landschaft Europas umgestalten sollten. Ausgestattet mit Pferden, Räderkarren und vielleicht Bronzewaffen zogen sie in aufeinanderfolgenden Wellen westwärts.\n\nDiese Migranten brachten ihre proto-indoeuropäische Sprache mit. Als sie sich unter bestehenden Bevölkerungen niederließen oder diese verdrängten, divergierte ihre Sprache in regionale Varietäten. Der Zweig, der zum Germanischen werden sollte, trennte sich wahrscheinlich irgendwann zwischen 2500 und 2000 v. Chr. von anderen indoeuropäischen Gruppen, als Sprecher nach Südskandinavien und Norddeutschland zogen.\n\nBis zum ersten Jahrtausend v. Chr. war eine erkennbare proto-germanische Sprache in Südskandinavien und entlang der Nordsee- und Ostseeküsten entstanden. Diese germanischsprachigen Völker – den Römern als ~Germani~ bekannt – entwickelten eine Kultur, die an die Wälder und Küsten Nordeuropas angepasst war.`Die Schlacht im Teutoburger Wald`Im Jahr 9 n. Chr. ereignete sich eine entscheidende Konfrontation in den dicht bewaldeten Hügeln des heutigen Nordwestdeutschland. Drei römische Legionen unter dem Kommando von Publius Quinctilius Varus – vielleicht 20.000 Soldaten – wurden von einer Allianz germanischer Stämme unter der Führung von Arminius (Hermann), einem romanisierten Häuptling der Cherusker, überfallen und vernichtet.\n\nDie Schlacht im Teutoburger Wald stoppte die römische Expansion in germanisches Territorium. Während die Römer Strafexpeditionen starten und schließlich den ~limes~ – eine befestigte Grenze – errichten sollten, eroberten sie nie dauerhaft die Länder jenseits von Rhein und Donau. Dies hatte tiefgreifende sprachliche Konsequenzen: Die germanischen Sprachen entwickelten sich frei von der Romanisierung, die Gallisch zu Französisch, iberische Sprachen zu Spanisch und Portugiesisch und Dakisch zu Rumänisch transformierte.\n\nHätten die Römer Germanien erobert, hätten die germanischen Völker möglicherweise Vulgärlatein übernommen, wie so viele andere innerhalb des Reiches. Stattdessen entwickelten sich die germanischen Sprachen – einschließlich dessen, was Deutsch, Englisch, Niederländisch und die skandinavischen Sprachen werden sollte – unabhängig und bewahrten alte Merkmale, während sie neue nach ihrer eigenen inneren Logik entwickelten.`Lebensweisen der germanischen Stämme`Zur Zeit der Schlacht im Teutoburger Wald lebten die germanischen Völker in kleinen Dörfern und Gehöften, die über die Wälder Nordeuropas verstreut waren. Sie betrieben gemischte Landwirtschaft, bauten Gerste, Hafer, Roggen und Weizen an und hielten Rinder, Schweine, Schafe und Pferde. Rinder waren besonders wichtig und dienten als Maß für Wohlstand und als Zahlungsmittel.\n\nDie Gesellschaft war um Verwandtschaftsgruppen und Stammeszugehörigkeiten organisiert, geführt von Häuptlingen, deren Autorität sich aus kriegerischer Tüchtigkeit, Großzügigkeit und edler Abstammung ableitete. Die Kriegeraristokratie bildete eine ~comitatus~ – eine Schar von Gefolgsleuten, die durch Treueide an ihren Herrn gebunden waren. Diese Krieger suchten Ruhm in der Schlacht und erwarteten Geschenke von Waffen, Gold und Festmählern als Gegenleistung für ihre Dienste.\n\nDie germanischen Völker hatten keine zentralisierten Staaten oder Städte. Sie errichteten keine Steinmonumente. Sie hinterließen wenig Schriftliches, obwohl sie das Runenalphabet für kurze Inschriften und magische Zwecke entwickelt hatten. Ihre Literatur war mündlich: Heldenpoesie, mythologische Erzählungen und Genealogien, die über Generationen von Sängern und Geschichtenerzählern weitergegeben wurden.\n\nIhre Religion konzentrierte sich auf ein Pantheon von Göttern – Wōðanaz (später Wōden (Altenglisch) und Óðinn (Altnordisch)), Þunaraz (Thunor und Þórr), Tīwaz (Tiw und Týr) und andere – die in heiligen Hainen statt in Tempeln verehrt wurden. Sie praktizierten Tier- und gelegentlich Menschenopfer, besonders in Zeiten der Krise oder Feier.`Das germanische Verbsystem: Vereinfachung und Innovation`Als sich das Proto-Indoeuropäische über etwa zwei Jahrtausende zum Proto-Germanischen entwickelte, erfuhr das Verbsystem eine dramatische Umstrukturierung. Das ausgefeilte PIE-System wurde in mancher Hinsicht vereinfacht und in anderer erneuert.`Verluste gegenüber dem Proto-Indoeuropäischen`Die auffälligste Veränderung war der ~Zusammenbruch des Aspektsystems~. Das Proto-Indoeuropäische hatte sorgfältig imperfektive, perfektive (Aorist) und stative (Perfekt) Aspekte unterschieden. Das Germanische gab diese Unterscheidungen fast vollständig auf. Der alte Imperfektiv wurde zum germanischen Präsens; das alte Perfekt mit seiner charakteristischen Reduplikation und o-Stufen-Ablaut wurde als Präteritum (Vergangenheit) umfunktioniert. Der Aorist ging weitgehend verloren, seine Formen verschmolzen gelegentlich mit dem neuen Präteritum.\n\nDies ließ das Germanische mit nur ~zwei Tempora~ zurück: Präsens und Präteritum. Wo das PIE subtile Unterscheidungen zwischen andauernder vergangener Handlung, abgeschlossener vergangener Handlung und gegenwärtigen Zuständen, die aus vergangener Handlung resultieren, ausdrücken konnte – alles durch Verbmorphologie – musste das Germanische sich auf Kontext oder periphrastische Konstruktionen (Kombinationen von Hilfsverben mit Hauptverben) verlassen.\n\n~Konjunktiv und Optativ verschmolzen~ zu einem einzigen germanischen Konjunktiv, was die modalen Optionen für Sprecher reduzierte.\n\nDas ~Augment~ (*e-), das im PIE die Vergangenheit markiert hatte, ging im Germanischen vollständig verloren.\n\n~Verbklassen vermehrten sich basierend auf der Struktur des Präsensstamms~, was zum komplexen System der „starken\" Verbklassen (organisiert nach Ablautmustern) und „schwachen\" Verben (eine germanische Innovation mit einem Dentalsuffix für das Präteritum) führte.`Die germanische Innovation: Schwache Verben`Das Proto-Germanische schuf etwas Neues: das ~schwache Verb~. Anstatt Ablaut zur Markierung des Präteritums zu verwenden, fügten schwache Verben ein Dentalsuffix (*-d- oder *-t-) hinzu. Dies ist der Ursprung der „-te\"-Endung in deutschen Präterita (machte, sagte, spielte) und der „-ed\"-Endung im Englischen ($mAde$, $saId$, played).\n\nDer Ursprung dieses Dentalsuffixes ist umstritten, aber die am weitesten akzeptierte Theorie ist, dass es von einer Zusammensetzung mit dem Verb „tun\" (*dō-) abstammt. Was vielleicht als „ich liebe-tat\" begann, grammatikalisierte sich zu einem einzigen Wort mit einem verschmolzenen Vergangenheitssuffix. Diese Innovation war enorm produktiv: Neue Verben, die in germanische Sprachen eintraten, folgten fast immer dem schwachen Muster, und viele ursprünglich starke Verben wurden schließlich schwach. Die King-James-Bibel liefert ein Beispiel für dieses Muster. In diesem Buch erscheint die Wendung „the cock $crEw$\". Sprecher des modernen Englisch wissen, dass die Konjugation später zu „crowed\" wurde.`Althochdeutsch und die fortlaufende Entwicklung`Die germanischen Dialekte, die im heutigen Süddeutschland und der Schweiz gesprochen wurden, entwickelten sich zum Althochdeutschen (etwa 750–1050 n. Chr.), das sich von anderen germanischen Sprachen durch die ~hochdeutsche Lautverschiebung~ unterschied. Diese Reihe von Lautveränderungen verwandelte stimmlose Plosive in Frikative oder Affrikate (p → pf oder ff; t → ts oder s; k → ch), wodurch deutsche Wörter wie ~Pfund~, ~Wasser~ und ~machen~ ihre charakteristischen Laute erhielten, wo das Englische ~pound~, ~water~ und ~make~ hat. Die Auswirkungen der Verschiebung waren nicht einheitlich. Dialekte weiter südlich erfuhren mehr Lautveränderungen. Zum Beispiel wurde im Schweizerdeutschen der /k/-Laut zum gutturalen /x/. Das schweizerdeutsche Wort für „Küche\" ist daher „Chuchi\", im Gegensatz zum Hochdeutschen „Küche\". Im Gegensatz dazu erfuhren nördlichere Dialekte bestimmte mit der Verschiebung verbundene Lautveränderungen nicht. Zum Beispiel verschob sich im Kölsch, gesprochen in Köln, das /t/ in „et\", englisch „it\", nie zu /s/, wie es im Deutschen „es\" geschah.`Umstrukturierung der starken Verbklassen`Das Althochdeutsche erbte sieben Klassen starker Verben vom Proto-Germanischen, organisiert nach ihren Ablautmustern. Mit der Zeit begannen diese Klassen zu verschwimmen. Einige Verben wechselten die Klasse; andere wurden schwach. Die ursprüngliche phonologische Konditionierung, die die Klassenzugehörigkeit bestimmte, wurde undurchsichtig, als Lautveränderungen die Vokale veränderten. Heute müssen deutsche starke Verben größtenteils einzeln auswendig gelernt werden – ihre Ablautmuster, obwohl noch systematisch, sind nicht mehr aus der Infinitivform vorhersagbar.`Entwicklung des Perfekts`Eine bedeutende Innovation in der Geschichte des Deutschen war die Entwicklung des ~Perfekts~ unter Verwendung der Hilfsverben ~haben~ und ~sein~ mit dem Partizip Perfekt. Diese Periphrase, die im Althochdeutschen begann und im Mittelhochdeutschen (1050–1350) vollständig etabliert wurde, schuf eine neue Art, abgeschlossene Handlung auszudrücken:\n\n🇩🇪 Ich habe $gesUngen$ (I have $sUng$)\n🇩🇪 Ich bin gekommen (I have come / I $cAme$)\n\nIm modernen gesprochenen Deutsch hat diese Perfektkonstruktion weitgehend das einfache Präteritum in der Alltagssprache ersetzt, besonders in südlichen Dialekten. Das Präteritum überlebt hauptsächlich in der Schriftsprache, in nördlichen Dialekten und bei hochfrequenten Verben.`Das Futur und die Modalverben`Das Althochdeutsche drückte zukünftige Zeit hauptsächlich durch das Präsens mit Zeitadverbien aus. Beginnend im Mittelhochdeutschen wurde das Verb ~werden~ als Futurauxiliar grammatikalisiert:\n\n🇩🇪 Ich werde singen (I will sing)\n\nDies schuf ein dreigliedriges temporales System (Präsens, Präteritum/Perfekt, Futur) aus dem ursprünglichen Zwei-Tempora-System des Proto-Germanischen – allerdings bemerkenswert durch Periphrase statt durch neue morphologische Formen am Verb selbst.`Präteritopräsentia`Das Deutsche bewahrt eine besondere Klasse von Verben namens ~Präteritopräsentia~: Verben, deren Präsensformen historisch von proto-germanischen starken Präterita abstammen. Diese umfassen die Modalverben ~können~, ~müssen~, ~dürfen~, ~sollen~, ~mögen~ und ~wissen~.\n\nDie eigentümliche Konjugation dieser Verben – ohne Endung in der ersten und dritten Person Singular (ich $kAnN$, er $kAnN$) und Vokalunterschiede zwischen Singular und Plural (ich $kAnN$ vs. wir können) – spiegelt ihren Ursprung als alte Präteritumformen wider, die als Präsensformen reanalysiert wurden.`Der Konjunktiv und das moderne Deutsch`Das Althochdeutsche hatte einen voll funktionsfähigen Konjunktiv sowohl im Präsens als auch im Präteritum. Mit der Zeit, als Vokalunterschiede sich reduzierten und die Konjunktivformen bei vielen Verben mit dem Indikativ identisch wurden, verwendeten Sprecher zunehmend periphrastische Konstruktionen mit ~würde~ + Infinitiv, um auszudrücken, was der alte synthetische Konjunktiv einst vermittelt hatte:\n\n🇩🇪 Alt: Wenn ich $kÄme$... (If I $cAme$...)\n🇩🇪 Moderne Alternative: Wenn ich kommen $wÜrde$... (If I $wOUld$ come...)\n\nDieser Trend setzt sich im zeitgenössischen Deutsch fort, wo die $wÜrde$-Konstruktion zunehmend synthetische Konjunktivformen ersetzt, außer bei häufigen Verben und in formellen Registern.`Das Verbsystem heute`Das moderne Deutsch bewahrt die wesentliche Architektur, die im Proto-Germanischen etabliert wurde: zwei morphologische Tempora (Präsens und Präteritum), starke Verben mit Ablaut, schwache Verben mit Dentalsuffix und eine Unterscheidung zwischen Indikativ, Konjunktiv und Imperativ. Dennoch wurde das System durch Jahrtausende des Wandels transformiert:\n\n🇩🇪 ~Aspekt~ wird periphrastisch ausgedrückt (er $lIest$ = he reads/is reading) oder durch verbale Präfixe und Partikeln (er $lIest$ das Buch aus = he finishes reading the book)\n🇩🇪 ~Futur~ wird mit ~werden~ + Infinitiv ausgedrückt\n🇩🇪 ~Perfekt~ wird mit ~haben~/~sein~ + Partizip Perfekt ausgedrückt\n🇩🇪 ~Passiv~ wird mit ~werden~ + Partizip Perfekt (dynamisch) oder ~sein~ + Partizip Perfekt (stativ) ausgedrückt\n\nDie Ablautmuster, die einst die proto-indoeuropäische Morphologie durchdrangen, überleben in den starken Verben – ein lebendes Fossil jener 5.000-jährigen Reise von der pontischen Steppe in die deutschsprachigen Länder Mitteleuropas.\n\nWenn Sie ein deutsches Verb konjugieren – wenn Sie ich singe, ich $sAng$, ich habe $gesUngen$ sagen – nehmen Sie an einer Tradition teil, die sich durch althochdeutsche Schreiber in mittelalterlichen Klöstern, durch germanische Krieger in ihren Walddörfern, durch Jamnaja-Hirten auf der windgepeitschten Steppe zurückerstreckt, bis hin zu jener Urwolke aus supernova-angereichertem Gas, aus der unser Sonnensystem geboren wurde. Die schweren Elemente, die in sterbenden Sternen geschmiedet wurden, wurden zur Erde; die Erde brachte Leben hervor; Leben entwickelte die Fähigkeit zur Sprache; und Sprache, von Generation zu Generation weitergegeben, trägt in sich die Spuren all dieser Geschichte – einschließlich, in den Vokalwechseln eines deutschen starken Verbs, des Echos des proto-indoeuropäischen Ablauts, der noch nach fünfzig Jahrhunderten nachklingt."
+    "Info.verbHistoryText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "`Von Sternenstaub zur Sprache`Vor etwa 4,6 Milliarden Jahren begann eine riesige Wolke aus Gas und Staub in einem Winkel der Milchstraße zu kollabieren. Dieser Urnebel war keine gewöhnliche Ansammlung von Wasserstoff und Helium. Nahegelegene Supernovae – die explosiven Tode massereicher Sterne – hatten diese Wolke mit schweren Elementen angereichert, die in stellaren Öfen geschmiedet wurden: Kohlenstoff, das Rückgrat der organischen Chemie; Sauerstoff, unverzichtbar für Wasser und Atmung; Stickstoff, ein Baustein von Proteinen und DNA; Eisen, das den geschmolzenen Erdkern bilden und später durch menschliches Blut fließen würde; Kalzium, bestimmt für Knochen und Schalen; Phosphor, entscheidend für zelluläre Energie; Schwefel, Gold, Uran und Dutzende anderer Elemente, die nur im intensiven Druck kollabierender Sterne oder in der kataklysmischen Gewalt von Supernovae entstehen konnten.\n\nAls die Schwerkraft dieses angereicherte Material zusammenzog, entzündete sich die Sonne im Zentrum, während die übrigen Trümmer zu Planeten verschmolzen. Die Erde entstand vor etwa 4,5 Milliarden Jahren – ihr Eisen sank ab und bildete einen Kern, ihre leichteren Silikate stiegen auf und formten eine Kruste, und jene von Supernovae geschenkten Elemente verteilten sich überall – wartend, über Milliarden von Jahren, auf das Entstehen von Leben, das sie eines Tages nutzen würde, um zu sprechen, zu schreiben und Verben zu konjugieren.`Der lange Weg zur Sprache`Leben entstand auf der Erde vor vielleicht 3,8 Milliarden Jahren, aber der Weg zu sprachbegabten Wesen war ungeheuer lang. Der moderne Mensch – ~Homo sapiens~ – entwickelte sich vor etwa 300.000 Jahren in Afrika. Die meiste Zeit lebten unsere Vorfahren als Jäger und Sammler auf dem afrikanischen Kontinent und entwickelten die kognitiven Fähigkeiten, die schließlich komplexe Sprache ermöglichen sollten.\n\nVor etwa 70.000 Jahren begannen Wellen von Menschen, Afrika zu verlassen und sich über den Globus auszubreiten. Einige zogen nach Norden und Westen nach Europa; andere bewegten sich ostwärts durch Asien. Vor 45.000 Jahren hatten Menschen die pontisch-kaspische Steppe erreicht – die weiten Grasländer, die sich vom heutigen Ukraine bis nach Kasachstan erstrecken. Diese Region, nördlich des Schwarzen und Kaspischen Meeres gelegen, sollte zum Schmelztiegel einer der folgenreichsten sprachlichen Entwicklungen der Geschichte werden.`Die Jamnaja und das Proto-Indoeuropäische`Zwischen etwa 4500 und 2500 v. Chr. bewohnte ein Volk, das wir Jamnaja nennen (vom russischen яма, „Grube\", bezogen auf ihre Bestattungspraktiken), die pontisch-kaspische Steppe. Sie gehörten zu den ersten, die das Pferd zum Reiten domestizierten, was ihnen – kombiniert mit der kürzlichen Erfindung von Radfahrzeugen – beispiellose Mobilität verlieh. Die Jamnaja waren halbnomadische Hirten, die Rinder, Schafe und Ziegen über die Grasländer trieben. Sie lebten in kleinen, mobilen Gruppen und folgten ihren Herden zu saisonalen Weiden.\n\nIhre Gesellschaft scheint patriarchalisch und hierarchisch gewesen zu sein. Sie bestatteten ihre Toten in charakteristischen Grubengräbern unter Erdhügeln, die ~Kurgane~ genannt werden, oft mit Grabbeigaben, die den Status anzeigten: Waffen, Schmuck, Tieropfer. DNA-Belege deuten darauf hin, dass sie erhebliche Mengen an Milchprodukten konsumierten, da sie Laktosetoleranz entwickelt hatten, und archäologische Funde weisen auf eine Ernährung hin, die durch Jagd und begrenzte Landwirtschaft ergänzt wurde.\n\nDie Jamnaja sprachen, was Linguisten als ~Proto-Indoeuropäisch~ (PIE) rekonstruieren – die Vorfahrensprache von fast der Hälfte aller heute lebenden Menschen. Zu diesen Sprachen gehören Deutsch, Englisch, Ukrainisch, Hindi, Persisch, Kornisch, Griechisch und Latein.`Das Verbsystem des Proto-Indoeuropäischen`Das proto-indoeuropäische Verb war ein prächtiges und komplexes System, weit ausgefeilter als jede seiner Tochtersprachen bewahren sollte. PIE-Verben wurden auf Wurzeln aufgebaut – typischerweise aus einer Konsonant-Vokal-Konsonant-Struktur bestehend – die die Kernbedeutung trugen. Auf diese Wurzeln schichteten die Sprecher eine komplizierte Architektur von Präfixen, Suffixen und Infixen, um eine Vielzahl grammatischer Informationen auszudrücken.\n\n~Aspekt~ war im PIE von größter Bedeutung. Die Sprache unterschied drei Aspekte:\n🇩🇪 ~Imperfektiv~ (auch Präsens genannt): andauernde oder wiederholte Handlung\n🇩🇪 ~Perfektiv~ (auch Aorist genannt): abgeschlossene Handlung als Ganzes betrachtet\n🇩🇪 ~Stativ~ (auch Perfekt genannt): ein Zustand, der aus einer abgeschlossenen Handlung resultiert\n\nJeder Aspekt hatte seinen eigenen Stamm, oft durch verschiedene Ablautstufen und Affixe gebildet. Eine einzelne Verbwurzel konnte somit drei recht unterschiedliche Stammformen haben.\n\n~Tempus~ war dem Aspekt untergeordnet. PIE markierte Vergangenheit hauptsächlich durch ein Präfix namens ~Augment~ (rekonstruiert als *e-), obwohl dies im frühen PIE optional war und nicht alle Tochtersprachen es beibehielten. Das System erlaubte Präsens-, Vergangenheits- (Präteritum) und wohl auch Zukunftsausdrücke, aber die aspektuellen Unterscheidungen trugen mehr semantisches Gewicht als die temporalen.\n\n~Modus~ war reich entwickelt, einschließlich:\n🇩🇪 ~Indikativ~: Aussagen über Fakten\n🇩🇪 ~Konjunktiv~: Wünsche, Möglichkeiten, Absichten\n🇩🇪 ~Optativ~: Hoffnungen, Wünsche, sanfte Befehle\n🇩🇪 ~Imperativ~: direkte Befehle\n\n~Diathese~ unterschied Aktiv und Medium (letzteres zeigte Handlung an, die das Subjekt betrifft oder im Interesse des Subjekts geschieht), mit einem sich entwickelnden Passiv.`Ablaut: Das Herz der indoeuropäischen Morphologie`Vielleicht hat sich kein Merkmal des Proto-Indoeuropäischen als dauerhafter erwiesen als der ~Ablaut~ – der systematische Wechsel von Vokalen innerhalb von Wurzeln und Affixen zum Ausdruck grammatischer Unterscheidungen. Ablaut war kein willkürlicher Lautwandel, sondern ein strukturiertes System von Vokalstufen:\n\n🇩🇪 ~e-Stufe~ (Vollstufe): der Vokal *e (wie in der Wurzel *bʰer-, „tragen\")\n🇩🇪 ~o-Stufe~: der Vokal *o (wie in *bʰor-)\n🇩🇪 ~Nullstufe~: Abwesenheit des Vokals (wie in *bʰr-)\n🇩🇪 ~gedehnte e-Stufe~: *ē (wie in *mḗh₁-n̥s)\n🇩🇪 ~gedehnte o-Stufe~: *ō (wie in *n̥-péh₂-tōr)\n\nDiese Alternationen waren grammatisch bedeutsam. Zum Beispiel könnte der Präsensstamm die e-Stufe verwenden, während das Perfekt die o-Stufe verwendete; die Nullstufe erschien in bestimmten Suffixen und in unbetonten Positionen. Als PIE *e und *o sich später in den Tochtersprachen zu verschiedenen Vokalen entwickelten, wurden die Ablautmuster zu den Vokalwechseln, die wir noch heute in deutschen starken Verben sehen:\n\n🇩🇪 singen, $sAng$, $gesUngen$ (sing, $sAng$, $sUng$)\n🇩🇪 nehmen, $nahm$, $genOMmen$ (take, $tOOk$, taken)\n🇩🇪 geben, $gAb$, gegeben (give, $gAve$, given)\n\nDiese Vokalwechsel sind direkte Erbschaften aus dem Proto-Indoeuropäischen, bewahrt über fünf Jahrtausende sprachlicher Evolution.`Die Wanderung nach Europa`Ab etwa 3000 v. Chr. – vor ungefähr 5.000 Jahren – begannen die Jamnaja und ihre Nachkommen eine Reihe von Wanderungen, die die genetische und sprachliche Landschaft Europas umgestalten sollten. Ausgestattet mit Pferden, Räderkarren und vielleicht Bronzewaffen zogen sie in aufeinanderfolgenden Wellen westwärts.\n\nDiese Migranten brachten ihre proto-indoeuropäische Sprache mit. Als sie sich unter bestehenden Bevölkerungen niederließen oder diese verdrängten, divergierte ihre Sprache in regionale Varietäten. Der Zweig, der zum Germanischen werden sollte, trennte sich wahrscheinlich irgendwann zwischen 2500 und 2000 v. Chr. von anderen indoeuropäischen Gruppen, als Sprecher nach Südskandinavien und Norddeutschland zogen.\n\nBis zum ersten Jahrtausend v. Chr. war eine erkennbare proto-germanische Sprache in Südskandinavien und entlang der Nordsee- und Ostseeküsten entstanden. Diese germanischsprachigen Völker – den Römern als ~Germani~ bekannt – entwickelten eine Kultur, die an die Wälder und Küsten Nordeuropas angepasst war.`Die Schlacht im Teutoburger Wald`Im Jahr 9 n. Chr. ereignete sich eine entscheidende Konfrontation in den dicht bewaldeten Hügeln des heutigen Nordwestdeutschland. Drei römische Legionen unter dem Kommando von Publius Quinctilius Varus – vielleicht 20.000 Soldaten – wurden von einer Allianz germanischer Stämme unter der Führung von Arminius (Hermann), einem romanisierten Häuptling der Cherusker, überfallen und vernichtet.\n\nDie Schlacht im Teutoburger Wald stoppte die römische Expansion in germanisches Territorium. Während die Römer Strafexpeditionen starten und schließlich den ~limes~ – eine befestigte Grenze – errichten sollten, eroberten sie nie dauerhaft die Länder jenseits von Rhein und Donau. Dies hatte tiefgreifende sprachliche Konsequenzen: Die germanischen Sprachen entwickelten sich frei von der Romanisierung, die Gallisch zu Französisch, iberische Sprachen zu Spanisch und Portugiesisch und Dakisch zu Rumänisch transformierte.\n\nHätten die Römer Germanien erobert, hätten die germanischen Völker möglicherweise Vulgärlatein übernommen, wie so viele andere innerhalb des Reiches. Stattdessen entwickelten sich die germanischen Sprachen – einschließlich dessen, was Deutsch, Englisch, Niederländisch und die skandinavischen Sprachen werden sollte – unabhängig und bewahrten alte Merkmale, während sie neue nach ihrer eigenen inneren Logik entwickelten.`Lebensweisen der germanischen Stämme`Zur Zeit der Schlacht im Teutoburger Wald lebten die germanischen Völker in kleinen Dörfern und Gehöften, die über die Wälder Nordeuropas verstreut waren. Sie betrieben gemischte Landwirtschaft, bauten Gerste, Hafer, Roggen und Weizen an und hielten Rinder, Schweine, Schafe und Pferde. Rinder waren besonders wichtig und dienten als Maß für Wohlstand und als Zahlungsmittel.\n\nDie Gesellschaft war um Verwandtschaftsgruppen und Stammeszugehörigkeiten organisiert, geführt von Häuptlingen, deren Autorität sich aus kriegerischer Tüchtigkeit, Großzügigkeit und edler Abstammung ableitete. Die Kriegeraristokratie bildete eine ~comitatus~ – eine Schar von Gefolgsleuten, die durch Treueide an ihren Herrn gebunden waren. Diese Krieger suchten Ruhm in der Schlacht und erwarteten Geschenke von Waffen, Gold und Festmählern als Gegenleistung für ihre Dienste.\n\nDie germanischen Völker hatten keine zentralisierten Staaten oder Städte. Sie errichteten keine Steinmonumente. Sie hinterließen wenig Schriftliches, obwohl sie das Runenalphabet für kurze Inschriften und magische Zwecke entwickelt hatten. Ihre Literatur war mündlich: Heldenpoesie, mythologische Erzählungen und Genealogien, die über Generationen von Sängern und Geschichtenerzählern weitergegeben wurden.\n\nIhre Religion konzentrierte sich auf ein Pantheon von Göttern – Wōðanaz (später Wōden (Altenglisch) und Óðinn (Altnordisch)), Þunaraz (Thunor und Þórr), Tīwaz (Tiw und Týr) und andere – die in heiligen Hainen statt in Tempeln verehrt wurden. Sie praktizierten Tier- und gelegentlich Menschenopfer, besonders in Zeiten der Krise oder Feier.`Das germanische Verbsystem: Vereinfachung und Innovation`Als sich das Proto-Indoeuropäische über etwa zwei Jahrtausende zum Proto-Germanischen entwickelte, erfuhr das Verbsystem eine dramatische Umstrukturierung. Das ausgefeilte PIE-System wurde in mancher Hinsicht vereinfacht und in anderer erneuert.`Verluste gegenüber dem Proto-Indoeuropäischen`Die auffälligste Veränderung war der ~Zusammenbruch des Aspektsystems~. Das Proto-Indoeuropäische hatte sorgfältig imperfektive, perfektive (Aorist) und stative (Perfekt) Aspekte unterschieden. Das Germanische gab diese Unterscheidungen fast vollständig auf. Der alte Imperfektiv wurde zum germanischen Präsens; das alte Perfekt mit seiner charakteristischen Reduplikation und o-Stufen-Ablaut wurde als Präteritum (Vergangenheit) umfunktioniert. Der Aorist ging weitgehend verloren, seine Formen verschmolzen gelegentlich mit dem neuen Präteritum.\n\nDies ließ das Germanische mit nur ~zwei Tempora~ zurück: Präsens und Präteritum. Wo das PIE subtile Unterscheidungen zwischen andauernder vergangener Handlung, abgeschlossener vergangener Handlung und gegenwärtigen Zuständen, die aus vergangener Handlung resultieren, ausdrücken konnte – alles durch Verbmorphologie – musste das Germanische sich auf Kontext oder periphrastische Konstruktionen (Kombinationen von Hilfsverben mit Hauptverben) verlassen.\n\n~Konjunktiv und Optativ verschmolzen~ zu einem einzigen germanischen Konjunktiv, was die modalen Optionen für Sprecher reduzierte.\n\nDas ~Augment~ (*e-), das im PIE die Vergangenheit markiert hatte, ging im Germanischen vollständig verloren.\n\n~Verbklassen vermehrten sich basierend auf der Struktur des Präsensstamms~, was zum komplexen System der „starken\" Verbklassen (organisiert nach Ablautmustern) und „schwachen\" Verben (eine germanische Innovation mit einem Dentalsuffix für das Präteritum) führte.`Die germanische Innovation: Schwache Verben`Das Proto-Germanische schuf etwas Neues: das ~schwache Verb~. Anstatt Ablaut zur Markierung des Präteritums zu verwenden, fügten schwache Verben ein Dentalsuffix (*-d- oder *-t-) hinzu. Dies ist der Ursprung der „-te\"-Endung in deutschen Präterita (machte, sagte, spielte) und der „-ed\"-Endung im Englischen ($mAde$, $saId$, played).\n\nDer Ursprung dieses Dentalsuffixes ist umstritten, aber die am weitesten akzeptierte Theorie ist, dass es von einer Zusammensetzung mit dem Verb „tun\" (*dō-) abstammt. Was vielleicht als „ich liebe-tat\" begann, grammatikalisierte sich zu einem einzigen Wort mit einem verschmolzenen Vergangenheitssuffix. Diese Innovation war enorm produktiv: Neue Verben, die in germanische Sprachen eintraten, folgten fast immer dem schwachen Muster, und viele ursprünglich starke Verben wurden schließlich schwach. Die King-James-Bibel liefert ein Beispiel für dieses Muster. In diesem Buch erscheint die Wendung „the cock $crEw$\". Sprecher des modernen Englisch wissen, dass die Konjugation später zu „crowed\" wurde.`Althochdeutsch und die fortlaufende Entwicklung`Die germanischen Dialekte, die im heutigen Süddeutschland und der Schweiz gesprochen wurden, entwickelten sich zum Althochdeutschen (etwa 750–1050 n. Chr.), das sich von anderen germanischen Sprachen durch die ~hochdeutsche Lautverschiebung~ unterschied. Diese Reihe von Lautveränderungen verwandelte stimmlose Plosive in Frikative oder Affrikate (p → pf oder ff; t → ts oder s; k → ch), wodurch deutsche Wörter wie ~Pfund~, ~Wasser~ und ~machen~ ihre charakteristischen Laute erhielten, wo das Englische ~pound~, ~water~ und ~make~ hat. Die Auswirkungen der Verschiebung waren nicht einheitlich. Dialekte weiter südlich erfuhren mehr Lautveränderungen. Zum Beispiel wurde im Schweizerdeutschen der /k/-Laut zum gutturalen /x/. Das schweizerdeutsche Wort für „Küche\" ist daher „Chuchi\", im Gegensatz zum Hochdeutschen „Küche\". Im Gegensatz dazu erfuhren nördlichere Dialekte bestimmte mit der Verschiebung verbundene Lautveränderungen nicht. Zum Beispiel verschob sich im Kölsch, gesprochen in Köln, das /t/ in „et\", englisch „it\", nie zu /s/, wie es im Deutschen „es\" geschah.`Umstrukturierung der starken Verbklassen`Das Althochdeutsche erbte sieben Klassen starker Verben vom Proto-Germanischen, organisiert nach ihren Ablautmustern. Mit der Zeit begannen diese Klassen zu verschwimmen. Einige Verben wechselten die Klasse; andere wurden schwach. Die ursprüngliche phonologische Konditionierung, die die Klassenzugehörigkeit bestimmte, wurde undurchsichtig, als Lautveränderungen die Vokale veränderten. Heute müssen deutsche starke Verben größtenteils einzeln auswendig gelernt werden – ihre Ablautmuster, obwohl noch systematisch, sind nicht mehr aus der Infinitivform vorhersagbar.`Entwicklung des Perfekts`Eine bedeutende Innovation in der Geschichte des Deutschen war die Entwicklung des ~Perfekts~ unter Verwendung der Hilfsverben ~haben~ und ~sein~ mit dem Partizip Perfekt. Diese Periphrase, die im Althochdeutschen begann und im Mittelhochdeutschen (1050–1350) vollständig etabliert wurde, schuf eine neue Art, abgeschlossene Handlung auszudrücken:\n\n🇩🇪 Ich habe $gesUngen$ (I have $sUng$)\n🇩🇪 Ich bin gekommen (I have come / I $cAme$)\n\nIm modernen gesprochenen Deutsch hat diese Perfektkonstruktion weitgehend das einfache Präteritum in der Alltagssprache ersetzt, besonders in südlichen Dialekten. Das Präteritum überlebt hauptsächlich in der Schriftsprache, in nördlichen Dialekten und bei hochfrequenten Verben.`Das Futur und die Modalverben`Das Althochdeutsche drückte zukünftige Zeit hauptsächlich durch das Präsens mit Zeitadverbien aus. Beginnend im Mittelhochdeutschen wurde das Verb ~werden~ als Futurauxiliar grammatikalisiert:\n\n🇩🇪 Ich werde singen (I will sing)\n\nDies schuf ein dreigliedriges temporales System (Präsens, Präteritum/Perfekt, Futur) aus dem ursprünglichen Zwei-Tempora-System des Proto-Germanischen – allerdings bemerkenswert durch Periphrase statt durch neue morphologische Formen am Verb selbst.`Präteritopräsentia`Das Deutsche bewahrt eine besondere Klasse von Verben namens ~Präteritopräsentia~: Verben, deren Präsensformen historisch von proto-germanischen starken Präterita abstammen. Diese umfassen die Modalverben ~können~, ~müssen~, ~dürfen~, ~sollen~, ~mögen~ und ~wissen~.\n\nDie eigentümliche Konjugation dieser Verben – ohne Endung in der ersten und dritten Person Singular (ich $kAnN$, er $kAnN$) und Vokalunterschiede zwischen Singular und Plural (ich $kAnN$ vs. wir können) – spiegelt ihren Ursprung als alte Präteritumformen wider, die als Präsensformen reanalysiert wurden.`Der Konjunktiv und das moderne Deutsch`Das Althochdeutsche hatte einen voll funktionsfähigen Konjunktiv sowohl im Präsens als auch im Präteritum. Mit der Zeit, als Vokalunterschiede sich reduzierten und die Konjunktivformen bei vielen Verben mit dem Indikativ identisch wurden, verwendeten Sprecher zunehmend periphrastische Konstruktionen mit ~würde~ + Infinitiv, um auszudrücken, was der alte synthetische Konjunktiv einst vermittelt hatte:\n\n🇩🇪 Alt: Wenn ich $kÄme$... (If I $cAme$...)\n🇩🇪 Moderne Alternative: Wenn ich kommen $wÜrde$... (If I $wOUld$ come...)\n\nDieser Trend setzt sich im zeitgenössischen Deutsch fort, wo die $wÜrde$-Konstruktion zunehmend synthetische Konjunktivformen ersetzt, außer bei häufigen Verben und in formellen Registern.`Das Verbsystem heute`Das moderne Deutsch bewahrt die wesentliche Architektur, die im Proto-Germanischen etabliert wurde: zwei morphologische Tempora (Präsens und Präteritum), starke Verben mit Ablaut, schwache Verben mit Dentalsuffix und eine Unterscheidung zwischen Indikativ, Konjunktiv und Imperativ. Dennoch wurde das System durch Jahrtausende des Wandels transformiert:\n\n🇩🇪 ~Aspekt~ wird periphrastisch ausgedrückt (er $lIest$ = he reads/is reading) oder durch verbale Präfixe und Partikeln (er $lIest$ das Buch aus = he finishes reading the book)\n🇩🇪 ~Futur~ wird mit ~werden~ + Infinitiv ausgedrückt\n🇩🇪 ~Perfekt~ wird mit ~haben~/~sein~ + Partizip Perfekt ausgedrückt\n🇩🇪 ~Passiv~ wird mit ~werden~ + Partizip Perfekt (dynamisch) oder ~sein~ + Partizip Perfekt (stativ) ausgedrückt\n\nDie Ablautmuster, die einst die proto-indoeuropäische Morphologie durchdrangen, überleben in den starken Verben – ein lebendes Fossil jener 5.000-jährigen Reise von der pontischen Steppe in die deutschsprachigen Länder Mitteleuropas.\n\nWenn Sie ein deutsches Verb konjugieren – wenn Sie ich singe, ich $sAng$, ich habe $gesUngen$ sagen – nehmen Sie an einer Tradition teil, die sich durch althochdeutsche Schreiber in mittelalterlichen Klöstern, durch germanische Krieger in ihren Walddörfern, durch Jamnaja-Hirten auf der windgepeitschten Steppe zurückerstreckt, bis hin zu jener Urwolke aus supernova-angereichertem Gas, aus der unser Sonnensystem geboren wurde. Die schweren Elemente, die in sterbenden Sternen geschmiedet wurden, wurden zur Erde; die Erde brachte Leben hervor; Leben entwickelte die Fähigkeit zur Sprache; und Sprache, von Generation zu Generation weitergegeben, trägt in sich die Spuren all dieser Geschichte – einschließlich, in den Vokalwechseln eines deutschen starken Verbs, des Echos des proto-indoeuropäischen Ablauts, der noch nach fünfzig Jahrhunderten nachklingt."
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "`From Stardust to Speech`Approximately 4.6 billion years ago, a vast cloud of gas and dust began to collapse in a corner of the Milky Way galaxy. This primordial nebula was no ordinary collection of hydrogen and helium. Nearby supernovae—the explosive deaths of massive stars—had enriched this cloud with heavy elements forged in stellar furnaces: carbon, the backbone of organic chemistry; oxygen, essential for water and respiration; nitrogen, a building block of proteins and DNA; iron, which would form Earth's molten core and later course through human blood; calcium, destined to become bones and shells; phosphorus, critical for cellular energy; sulfur, gold, uranium, and dozens of other elements that could only be created in the intense pressures of collapsing stars or the cataclysmic violence of supernovae.\n\nAs gravity drew this enriched material together, the Sun ignited at the center while the remaining debris coalesced into planets. Earth formed roughly 4.5 billion years ago, its iron sinking to create a core, its lighter silicates rising to form a crust, and those supernova-gifted elements distributing themselves throughout—awaiting, across billions of years, the emergence of life that would one day use them to speak, to write, and to conjugate verbs.`The Long Road to Language`Life emerged on Earth perhaps 3.8 billion years ago, but the journey to language-bearing creatures was immensely long. Modern humans—~Homo sapiens~—evolved in Africa approximately 300,000 years ago. For most of that time, our ancestors lived as hunter-gatherers on the African continent, developing the cognitive capacities that would eventually enable complex language.\n\nBeginning around 70,000 years ago, waves of humans migrated out of Africa, spreading across the globe. Some traveled north and west into Europe; others moved east across Asia. By 45,000 years ago, humans had reached the Pontic-Caspian steppe—the vast grasslands stretching from what is now Ukraine to Kazakhstan. This region, lying north of the Black and Caspian Seas, would become the crucible of one of history's most consequential linguistic developments.`The Yamnaya and Proto-Indo-European`Between approximately 4500 and 2500 BC, a people we call the Yamnaya (from Russian яма, \"pit\", referring to their burial practices) inhabited the Pontic-Caspian steppe. They were among the first to domesticate the horse for riding, which—combined with the recent invention of wheeled vehicles—gave them unprecedented mobility. The Yamnaya were semi-nomadic pastoralists, herding cattle, sheep, and goats across the grasslands. They lived in small, mobile groups, following their herds to seasonal pastures.\n\nTheir society appears to have been patriarchal and hierarchical. They buried their dead in distinctive pit graves beneath earthen mounds called ~kurgans~, often with grave goods indicating status: weapons, jewelry, animal sacrifices. DNA evidence suggests they consumed significant amounts of dairy, having evolved lactose tolerance, and archaeological evidence points to a diet supplemented by hunting and limited agriculture.\n\nThe Yamnaya spoke what linguists reconstruct as ~Proto-Indo-European~ (PIE), the ancestor of languages spoken by nearly half of humans alive today. These languages include German, English, Ukrainian, Hindi, Persian, Cornish, Greek, and Latin.`The Verb System of Proto-Indo-European`The Proto-Indo-European verb was a magnificent and complex system, far more elaborate than any of its daughter languages would retain. PIE verbs were built on roots—typically consisting of a consonant-vowel-consonant structure—that carried core meaning. Upon these roots, speakers layered an intricate architecture of prefixes, suffixes, and infixes to express a vast array of grammatical information.\n\n~Aspect~ was paramount in PIE. The language distinguished three aspects:\n🇩🇪 ~Imperfective~ (also called present): ongoing or repeated action\n🇩🇪 ~Perfective~ (also called aorist): completed action viewed as a whole\n🇩🇪 ~Stative~ (also called perfect): a state resulting from completed action\n\nEach aspect had its own stem, often formed through different ablaut grades and affixes. A single verb root might thus have three quite different stem forms.\n\n~Tense~ was secondary to aspect. PIE marked past time primarily through a prefix called the ~augment~ (reconstructed as *e-), though this was optional in early PIE, and not all daughter languages retained it. The system allowed for present, past (preterite), and arguably future expressions, but aspectual distinctions carried more semantic weight than temporal ones.\n\n~Mood~ was richly developed, including:\n🇩🇪 ~Indicative~: statements of fact\n🇩🇪 ~Subjunctive~: wishes, possibilities, intentions\n🇩🇪 ~Optative~: hopes, desires, gentle commands\n🇩🇪 ~Imperative~: direct commands\n\n~Voice~ distinguished active and middle (the latter indicating action affecting the subject or done in the subject's interest), with a developing passive.`Ablaut: The Heart of Indo-European Morphology`Perhaps no feature of Proto-Indo-European has proven more enduring than ~ablaut~—the systematic alternation of vowels within roots and affixes to express grammatical distinctions. Ablaut was not arbitrary sound change but a structured system of vowel grades:\n\n🇩🇪 ~e-grade~ (full grade): the vowel *e (as in the root *bʰer-, \"to carry\")\n🇩🇪 ~o-grade~: the vowel *o (as in *bʰor-)\n🇩🇪 ~zero-grade~: absence of the vowel (as in *bʰr-)\n🇩🇪 ~lengthened e-grade~: *ē (as in *mḗh₁-n̥s)\n🇩🇪 ~lengthened o-grade~: *ō (as in *n̥-péh₂-tōr)\n\nThese alternations were grammatically meaningful. For example, the present stem might use e-grade while the perfect used o-grade; the zero-grade appeared in certain suffixes and in unstressed positions. When PIE *e and *o later developed into different vowels in the daughter languages, the ablaut patterns became the vowel alternations we still see in German strong verbs today:\n\n🇩🇪 singen, $sAng$, $gesUngen$ (sing, $sAng$, $sUng$)\n🇩🇪 nehmen, $nahm$, $genOMmen$ (take, $tOOk$, taken)\n🇩🇪 geben, $gAb$, gegeben (give, $gAve$, given)\n\nThese vowel changes are direct inheritances from Proto-Indo-European, preserved across five millennia of linguistic evolution.`The Migration to Europe`Beginning around 3000 BC—approximately 5,000 years ago—the Yamnaya and their descendants began a series of migrations that would reshape the genetic and linguistic landscape of Europe. Equipped with horses, wheeled carts, and perhaps bronze weapons, they moved westward in successive waves.\n\nThese migrants brought their Proto-Indo-European language with them. As they settled among or displaced existing populations, their speech diverged into regional varieties. The branch that would become Germanic likely separated from other Indo-European groups sometime between 2500 and 2000 BC, as speakers moved into southern Scandinavia and northern Germany.\n\nBy the first millennium BC, a recognizable Proto-Germanic language had emerged in southern Scandinavia and along the North Sea and Baltic coasts. These Germanic-speaking peoples—known to the Romans as ~Germani~—developed a culture adapted to the forests and coastlines of northern Europe.`The Battle of the Teutoburg Forest`In 9 AD, a pivotal confrontation occurred in the densely forested hills of what is now northwestern Germany. Three Roman legions under the command of Publius Quinctilius Varus—perhaps 20,000 soldiers—were ambushed and annihilated by an alliance of Germanic tribes led by Arminius (Hermann), a Romanized chieftain of the Cherusci.\n\nThe Battle of the Teutoburg Forest halted Roman expansion into Germanic territory. While the Romans would launch punitive expeditions and eventually establish the ~limes~—a fortified frontier—they never permanently conquered the lands beyond the Rhine and Danube. This had profound linguistic consequences: the Germanic languages developed free from the Romanization that transformed Gaulish into French, Iberian languages into Spanish and Portuguese, and Dacian into Romanian.\n\nHad the Romans conquered Germania, the Germanic peoples might have adopted Vulgar Latin, as did so many others within the Empire. Instead, the Germanic languages—including what would become German, English, Dutch, and the Scandinavian languages—evolved independently, preserving ancient features and developing new ones according to their own internal logic.`Lifeways of the Germanic Tribes`At the time of the battle at Teutoburg, the Germanic peoples lived in small villages and farmsteads scattered through the forests of northern Europe. They practiced mixed agriculture, growing barley, oats, rye, and wheat while raising cattle, pigs, sheep, and horses. Cattle were especially important, serving as a measure of wealth and a form of currency.\n\nSociety was organized around kinship groups and tribal affiliations, led by chieftains whose authority derived from military prowess, generosity, and noble lineage. The warrior aristocracy formed a ~comitatus~—a band of followers bound to their lord by oaths of loyalty. These warriors sought glory in battle and expected gifts of weapons, gold, and feasting in return for their service.\n\nThe Germanic peoples had no centralized states or cities. They built no stone monuments. They committed little to writing, though they did develop the runic alphabet for short inscriptions and magical purposes. Their literature was oral: heroic poetry, mythological tales, and genealogies passed down through generations of singers and storytellers.\n\nTheir religion centered on a pantheon of gods—Wōðanaz (later Wōden (Old English) and Óðinn (Old Norse)), Þunaraz (Thunor and Þórr), Tīwaz (Tiw and Týr), and others—worshipped in sacred groves rather than temples. They practiced animal and occasionally human sacrifice, particularly at times of crisis or celebration.`The Germanic Verb System: Simplification and Innovation`As Proto-Indo-European evolved into Proto-Germanic over some two millennia, the verb system underwent dramatic restructuring. The elaborate PIE system was simplified in some ways and innovated in others.`Losses from Proto-Indo-European`The most striking change was the ~collapse of the aspect system~. Proto-Indo-European had carefully distinguished imperfective, perfective (aorist), and stative (perfect) aspects. Germanic abandoned these distinctions almost entirely. The old imperfective became the Germanic present; the old perfect, with its distinctive reduplication and o-grade ablaut, was repurposed as a preterite (past tense). The aorist was largely lost, its forms occasionally merging with the new preterite.\n\nThis left Germanic with only ~two tenses~: present and preterite. Where PIE could express subtle distinctions between ongoing past action, completed past action, and present states resulting from past action—all through verb morphology—Germanic had to rely on context or periphrastic constructions (combinations of auxiliary verbs with main verbs).\n\nThe ~subjunctive and optative moods merged~ into a single Germanic subjunctive, reducing the modal options available to speakers.\n\nThe ~augment~ (*e-), which had marked past tense in PIE, was lost entirely in Germanic.\n\n~Verb classes proliferated based on the structure of the present stem~, leading to the complex system of \"strong\" verb classes (organized by ablaut patterns) and \"weak\" verbs (a Germanic innovation using a dental suffix for the preterite).`The Germanic Innovation: Weak Verbs`Proto-Germanic created something new: the ~weak verb~. Rather than using ablaut to mark the preterite, weak verbs added a dental suffix (*-d- or *-t-). This is the origin of the \"-te\" ending in German preterites (machte, sagte, spielte) and the \"-ed\" ending in English ($mAde$, $saId$, played).\n\nThe origin of this dental suffix is debated, but the most widely accepted theory is that it derives from a compound with the verb \"to do\" (*dō-). What began perhaps as \"I love-did\" grammaticalized into a single word with a fused past-tense suffix. This innovation was enormously productive: new verbs entering Germanic languages almost always followed the weak pattern, and many originally strong verbs eventually became weak. The King James Bible provides one example of this pattern. In that book, the phrase \"the cock $crEw$\" appears. Speakers of Modern English are aware that the conjugation later became \"crowed\".`Old High German and the Continuing Evolution`The Germanic dialects spoken in what is now southern Germany and Switzerland developed into Old High German (roughly 750–1050 AD), distinguished from other Germanic languages by the ~High German consonant shift~. This series of sound changes transformed voiceless stops into fricatives or affricates (p → pf or ff; t → ts or s; k → ch), giving German words like ~Pfund~, ~Wasser~, and ~machen~ their characteristic sounds where English has ~pound~, ~water~, and ~make~. The effects of the shift were not uniform. Dialects further south experienced more sound changes. For example, in Swiss German, the /k/ sound became guttural /x/. The Swiss German word for \"kitchen\" is therefore \"Chuchi\", contrasting with High German \"Küche\". By contrast, more northerly dialects did not experience certain sound changes associated with the shift. For example, in Kölsch, spoken in Cologne, the /t/ in \"et\", English \"it\", never shifted to /s/, as it did in German \"es\".`Strong-Verb-Class Restructuring`Old High German inherited seven classes of strong verbs from Proto-Germanic, organized by their ablaut patterns. Over time, these classes began to blur. Some verbs shifted classes; others became weak. The original phonological conditioning that determined class membership became opaque as sound changes altered vowels. Today, German strong verbs must largely be memorized individually—their ablaut patterns, while still systematic, are no longer predictable from the infinitive form.`Development of the Perfect Tense`A major innovation in the history of German was the development of the ~perfect tense~ using the auxiliaries ~haben~ (to have) and ~sein~ (to be) with the past participle. This periphrasis, which began in Old High German and became fully established in Middle High German (1050–1350), created a new way to express completed action:\n\n🇩🇪 Ich habe $gesUngen$ (I have $sUng$)\n🇩🇪 Ich bin gekommen (I have come / I $cAme$)\n\nIn modern spoken German, this perfect construction has largely replaced the simple preterite in everyday speech, particularly in southern dialects. The preterite survives primarily in writing, in northern dialects, and with high-frequency verbs.`The Future Tense and Modal Verbs`Old High German expressed future time primarily through the present tense with temporal adverbs. Beginning in Middle High German, the verb ~werden~ (to become) was grammaticalized as a future auxiliary:\n\n🇩🇪 Ich werde singen (I will sing)\n\nThis created a three-way temporal system (present, preterite/perfect, future) from the original two-tense Proto-Germanic system—though notably through periphrasis rather than new morphological forms on the verb itself.`Preterite-Present Verbs`German preserves a distinctive class of verbs called ~preterite-presents~: verbs whose present-tense forms derive historically from Proto-Germanic strong preterites. These include the modal verbs ~können~ (can), ~müssen~ (must), ~dürfen~ (may), ~sollen~ (shall), ~mögen~ (may/like), and ~wissen~ (to know).\n\nThe peculiar conjugations of these verbs—with no endings in the first and third person singular (ich $kAnN$, er $kAnN$) and vowel differences between singular and plural (ich $kAnN$ vs. wir können)—reflects their origin as old preterite forms that were reanalyzed as presents.`The Subjunctive and Modern German`Old High German had a fully functional subjunctive mood in both present and preterite. Over time, as vowel distinctions reduced and the subjunctive forms became identical to the indicative in many verbs, speakers increasingly used periphrastic constructions with ~würde~ (would) + infinitive to express what the old synthetic subjunctive once conveyed:\n\n🇩🇪 Old: Wenn ich $kÄme$... (If I $cAme$...)\n🇩🇪 Modern alternative: Wenn ich kommen $wÜrde$... (If I $wOUld$ come...)\n\nThis trend continues in contemporary German, where the $wÜrde$ construction increasingly replaces synthetic subjunctive forms except for common verbs and in formal registers.`The Verb System Today`Modern German retains the essential architecture established in Proto-Germanic: two morphological tenses (present and preterite), strong verbs with ablaut, weak verbs with a dental suffix, and a distinction between indicative, subjunctive, and imperative moods. Yet the system has been transformed by millennia of change:\n\n🇩🇪 ~Aspect~ is expressed periphrastically (er $lIest$ = he reads/is reading) or through verbal prefixes and particles (er $lIest$ das Buch aus = he finishes reading the book)\n🇩🇪 ~Future~ is expressed with ~werden~ + infinitive\n🇩🇪 ~Perfect~ is expressed with ~haben~/~sein~ + past participle\n🇩🇪 ~Passive~ is expressed with ~werden~ + past participle (dynamic) or ~sein~ + past participle (stative)\n\nThe ablaut patterns that once pervaded Proto-Indo-European morphology survive in the strong verbs, a living fossil of that 5,000-year journey from the Pontic steppe to the German-speaking lands of central Europe.\n\nWhen you conjugate a German verb—when you say ich singe, ich $sAng$, ich habe $gesUngen$—you are participating in a tradition that stretches back through Old High German scribes in medieval monasteries, through Germanic warriors in their forest villages, through Yamnaya herders on the windswept steppe, all the way to that primordial cloud of supernova-enriched gas from which the Solar System was born. The heavy elements forged in dying stars became the Earth; the Earth brought forth life; life evolved the capacity for language; and language, passed from generation to generation, carries within it the traces of all this history—including, in the vowel changes of a German strong verb, the echo of Proto-Indo-European ablaut, still sounding after fifty centuries."
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "`From Stardust to Speech`Approximately 4.6 billion years ago, a vast cloud of gas and dust began to collapse in a corner of the Milky Way galaxy. This primordial nebula was no ordinary collection of hydrogen and helium. Nearby supernovae—the explosive deaths of massive stars—had enriched this cloud with heavy elements forged in stellar furnaces: carbon, the backbone of organic chemistry; oxygen, essential for water and respiration; nitrogen, a building block of proteins and DNA; iron, which would form Earth's molten core and later course through human blood; calcium, destined to become bones and shells; phosphorus, critical for cellular energy; sulfur, gold, uranium, and dozens of other elements that could only be created in the intense pressures of collapsing stars or the cataclysmic violence of supernovae.\n\nAs gravity drew this enriched material together, the Sun ignited at the center while the remaining debris coalesced into planets. Earth formed roughly 4.5 billion years ago, its iron sinking to create a core, its lighter silicates rising to form a crust, and those supernova-gifted elements distributing themselves throughout—awaiting, across billions of years, the emergence of life that would one day use them to speak, to write, and to conjugate verbs.`The Long Road to Language`Life emerged on Earth perhaps 3.8 billion years ago, but the journey to language-bearing creatures was immensely long. Modern humans—~Homo sapiens~—evolved in Africa approximately 300,000 years ago. For most of that time, our ancestors lived as hunter-gatherers on the African continent, developing the cognitive capacities that would eventually enable complex language.\n\nBeginning around 70,000 years ago, waves of humans migrated out of Africa, spreading across the globe. Some traveled north and west into Europe; others moved east across Asia. By 45,000 years ago, humans had reached the Pontic-Caspian steppe—the vast grasslands stretching from what is now Ukraine to Kazakhstan. This region, lying north of the Black and Caspian Seas, would become the crucible of one of history's most consequential linguistic developments.`The Yamnaya and Proto-Indo-European`Between approximately 4500 and 2500 BC, a people we call the Yamnaya (from Russian яма, \"pit\", referring to their burial practices) inhabited the Pontic-Caspian steppe. They were among the first to domesticate the horse for riding, which—combined with the recent invention of wheeled vehicles—gave them unprecedented mobility. The Yamnaya were semi-nomadic pastoralists, herding cattle, sheep, and goats across the grasslands. They lived in small, mobile groups, following their herds to seasonal pastures.\n\nTheir society appears to have been patriarchal and hierarchical. They buried their dead in distinctive pit graves beneath earthen mounds called ~kurgans~, often with grave goods indicating status: weapons, jewelry, animal sacrifices. DNA evidence suggests they consumed significant amounts of dairy, having evolved lactose tolerance, and archaeological evidence points to a diet supplemented by hunting and limited agriculture.\n\nThe Yamnaya spoke what linguists reconstruct as ~Proto-Indo-European~ (PIE), the ancestor of languages spoken by nearly half of humans alive today. These languages include German, English, Ukrainian, Hindi, Persian, Cornish, Greek, and Latin.`The Verb System of Proto-Indo-European`The Proto-Indo-European verb was a magnificent and complex system, far more elaborate than any of its daughter languages would retain. PIE verbs were built on roots—typically consisting of a consonant-vowel-consonant structure—that carried core meaning. Upon these roots, speakers layered an intricate architecture of prefixes, suffixes, and infixes to express a vast array of grammatical information.\n\n~Aspect~ was paramount in PIE. The language distinguished three aspects:\n🇩🇪 ~Imperfective~ (also called present): ongoing or repeated action\n🇩🇪 ~Perfective~ (also called aorist): completed action viewed as a whole\n🇩🇪 ~Stative~ (also called perfect): a state resulting from completed action\n\nEach aspect had its own stem, often formed through different ablaut grades and affixes. A single verb root might thus have three quite different stem forms.\n\n~Tense~ was secondary to aspect. PIE marked past time primarily through a prefix called the ~augment~ (reconstructed as *e-), though this was optional in early PIE, and not all daughter languages retained it. The system allowed for present, past (preterite), and arguably future expressions, but aspectual distinctions carried more semantic weight than temporal ones.\n\n~Mood~ was richly developed, including:\n🇩🇪 ~Indicative~: statements of fact\n🇩🇪 ~Subjunctive~: wishes, possibilities, intentions\n🇩🇪 ~Optative~: hopes, desires, gentle commands\n🇩🇪 ~Imperative~: direct commands\n\n~Voice~ distinguished active and middle (the latter indicating action affecting the subject or done in the subject's interest), with a developing passive.`Ablaut: The Heart of Indo-European Morphology`Perhaps no feature of Proto-Indo-European has proven more enduring than ~ablaut~—the systematic alternation of vowels within roots and affixes to express grammatical distinctions. Ablaut was not arbitrary sound change but a structured system of vowel grades:\n\n🇩🇪 ~e-grade~ (full grade): the vowel *e (as in the root *bʰer-, \"to carry\")\n🇩🇪 ~o-grade~: the vowel *o (as in *bʰor-)\n🇩🇪 ~zero-grade~: absence of the vowel (as in *bʰr-)\n🇩🇪 ~lengthened e-grade~: *ē (as in *mḗh₁-n̥s)\n🇩🇪 ~lengthened o-grade~: *ō (as in *n̥-péh₂-tōr)\n\nThese alternations were grammatically meaningful. For example, the present stem might use e-grade while the perfect used o-grade; the zero-grade appeared in certain suffixes and in unstressed positions. When PIE *e and *o later developed into different vowels in the daughter languages, the ablaut patterns became the vowel alternations we still see in German strong verbs today:\n\n🇩🇪 singen, $sAng$, $gesUngen$ (sing, $sAng$, $sUng$)\n🇩🇪 nehmen, $nahm$, $genOMmen$ (take, $tOOk$, taken)\n🇩🇪 geben, $gAb$, gegeben (give, $gAve$, given)\n\nThese vowel changes are direct inheritances from Proto-Indo-European, preserved across five millennia of linguistic evolution.`The Migration to Europe`Beginning around 3000 BC—approximately 5,000 years ago—the Yamnaya and their descendants began a series of migrations that would reshape the genetic and linguistic landscape of Europe. Equipped with horses, wheeled carts, and perhaps bronze weapons, they moved westward in successive waves.\n\nThese migrants brought their Proto-Indo-European language with them. As they settled among or displaced existing populations, their speech diverged into regional varieties. The branch that would become Germanic likely separated from other Indo-European groups sometime between 2500 and 2000 BC, as speakers moved into southern Scandinavia and northern Germany.\n\nBy the first millennium BC, a recognizable Proto-Germanic language had emerged in southern Scandinavia and along the North Sea and Baltic coasts. These Germanic-speaking peoples—known to the Romans as ~Germani~—developed a culture adapted to the forests and coastlines of northern Europe.`The Battle of the Teutoburg Forest`In 9 AD, a pivotal confrontation occurred in the densely forested hills of what is now northwestern Germany. Three Roman legions under the command of Publius Quinctilius Varus—perhaps 20,000 soldiers—were ambushed and annihilated by an alliance of Germanic tribes led by Arminius (Hermann), a Romanized chieftain of the Cherusci.\n\nThe Battle of the Teutoburg Forest halted Roman expansion into Germanic territory. While the Romans would launch punitive expeditions and eventually establish the ~limes~—a fortified frontier—they never permanently conquered the lands beyond the Rhine and Danube. This had profound linguistic consequences: the Germanic languages developed free from the Romanization that transformed Gaulish into French, Iberian languages into Spanish and Portuguese, and Dacian into Romanian.\n\nHad the Romans conquered Germania, the Germanic peoples might have adopted Vulgar Latin, as did so many others within the Empire. Instead, the Germanic languages—including what would become German, English, Dutch, and the Scandinavian languages—evolved independently, preserving ancient features and developing new ones according to their own internal logic.`Lifeways of the Germanic Tribes`At the time of the battle at Teutoburg, the Germanic peoples lived in small villages and farmsteads scattered through the forests of northern Europe. They practiced mixed agriculture, growing barley, oats, rye, and wheat while raising cattle, pigs, sheep, and horses. Cattle were especially important, serving as a measure of wealth and a form of currency.\n\nSociety was organized around kinship groups and tribal affiliations, led by chieftains whose authority derived from military prowess, generosity, and noble lineage. The warrior aristocracy formed a ~comitatus~—a band of followers bound to their lord by oaths of loyalty. These warriors sought glory in battle and expected gifts of weapons, gold, and feasting in return for their service.\n\nThe Germanic peoples had no centralized states or cities. They built no stone monuments. They committed little to writing, though they did develop the runic alphabet for short inscriptions and magical purposes. Their literature was oral: heroic poetry, mythological tales, and genealogies passed down through generations of singers and storytellers.\n\nTheir religion centered on a pantheon of gods—Wōðanaz (later Wōden (Old English) and Óðinn (Old Norse)), Þunaraz (Thunor and Þórr), Tīwaz (Tiw and Týr), and others—worshipped in sacred groves rather than temples. They practiced animal and occasionally human sacrifice, particularly at times of crisis or celebration.`The Germanic Verb System: Simplification and Innovation`As Proto-Indo-European evolved into Proto-Germanic over some two millennia, the verb system underwent dramatic restructuring. The elaborate PIE system was simplified in some ways and innovated in others.`Losses from Proto-Indo-European`The most striking change was the ~collapse of the aspect system~. Proto-Indo-European had carefully distinguished imperfective, perfective (aorist), and stative (perfect) aspects. Germanic abandoned these distinctions almost entirely. The old imperfective became the Germanic present; the old perfect, with its distinctive reduplication and o-grade ablaut, was repurposed as a preterite (past tense). The aorist was largely lost, its forms occasionally merging with the new preterite.\n\nThis left Germanic with only ~two tenses~: present and preterite. Where PIE could express subtle distinctions between ongoing past action, completed past action, and present states resulting from past action—all through verb morphology—Germanic had to rely on context or periphrastic constructions (combinations of auxiliary verbs with main verbs).\n\nThe ~subjunctive and optative moods merged~ into a single Germanic subjunctive, reducing the modal options available to speakers.\n\nThe ~augment~ (*e-), which had marked past tense in PIE, was lost entirely in Germanic.\n\n~Verb classes proliferated based on the structure of the present stem~, leading to the complex system of \"strong\" verb classes (organized by ablaut patterns) and \"weak\" verbs (a Germanic innovation using a dental suffix for the preterite).`The Germanic Innovation: Weak Verbs`Proto-Germanic created something new: the ~weak verb~. Rather than using ablaut to mark the preterite, weak verbs added a dental suffix (*-d- or *-t-). This is the origin of the \"-te\" ending in German preterites (machte, sagte, spielte) and the \"-ed\" ending in English ($mAde$, $saId$, played).\n\nThe origin of this dental suffix is debated, but the most widely accepted theory is that it derives from a compound with the verb \"to do\" (*dō-). What began perhaps as \"I love-did\" grammaticalized into a single word with a fused past-tense suffix. This innovation was enormously productive: new verbs entering Germanic languages almost always followed the weak pattern, and many originally strong verbs eventually became weak. The King James Bible provides one example of this pattern. In that book, the phrase \"the cock $crEw$\" appears. Speakers of Modern English are aware that the conjugation later became \"crowed\".`Old High German and the Continuing Evolution`The Germanic dialects spoken in what is now southern Germany and Switzerland developed into Old High German (roughly 750–1050 AD), distinguished from other Germanic languages by the ~High German consonant shift~. This series of sound changes transformed voiceless stops into fricatives or affricates (p → pf or ff; t → ts or s; k → ch), giving German words like ~Pfund~, ~Wasser~, and ~machen~ their characteristic sounds where English has ~pound~, ~water~, and ~make~. The effects of the shift were not uniform. Dialects further south experienced more sound changes. For example, in Swiss German, the /k/ sound became guttural /x/. The Swiss German word for \"kitchen\" is therefore \"Chuchi\", contrasting with High German \"Küche\". By contrast, more northerly dialects did not experience certain sound changes associated with the shift. For example, in Kölsch, spoken in Cologne, the /t/ in \"et\", English \"it\", never shifted to /s/, as it did in German \"es\".`Strong-Verb-Class Restructuring`Old High German inherited seven classes of strong verbs from Proto-Germanic, organized by their ablaut patterns. Over time, these classes began to blur. Some verbs shifted classes; others became weak. The original phonological conditioning that determined class membership became opaque as sound changes altered vowels. Today, German strong verbs must largely be memorized individually—their ablaut patterns, while still systematic, are no longer predictable from the infinitive form.`Development of the Perfect Tense`A major innovation in the history of German was the development of the ~perfect tense~ using the auxiliaries ~haben~ (to have) and ~sein~ (to be) with the past participle. This periphrasis, which began in Old High German and became fully established in Middle High German (1050–1350), created a new way to express completed action:\n\n🇩🇪 Ich habe $gesUngen$ (I have $sUng$)\n🇩🇪 Ich bin gekommen (I have come / I $cAme$)\n\nIn modern spoken German, this perfect construction has largely replaced the simple preterite in everyday speech, particularly in southern dialects. The preterite survives primarily in writing, in northern dialects, and with high-frequency verbs.`The Future Tense and Modal Verbs`Old High German expressed future time primarily through the present tense with temporal adverbs. Beginning in Middle High German, the verb ~werden~ (to become) was grammaticalized as a future auxiliary:\n\n🇩🇪 Ich werde singen (I will sing)\n\nThis created a three-way temporal system (present, preterite/perfect, future) from the original two-tense Proto-Germanic system—though notably through periphrasis rather than new morphological forms on the verb itself.`Preterite-Present Verbs`German preserves a distinctive class of verbs called ~preterite-presents~: verbs whose present-tense forms derive historically from Proto-Germanic strong preterites. These include the modal verbs ~können~ (can), ~müssen~ (must), ~dürfen~ (may), ~sollen~ (shall), ~mögen~ (may/like), and ~wissen~ (to know).\n\nThe peculiar conjugations of these verbs—with no endings in the first and third person singular (ich $kAnN$, er $kAnN$) and vowel differences between singular and plural (ich $kAnN$ vs. wir können)—reflects their origin as old preterite forms that were reanalyzed as presents.`The Subjunctive and Modern German`Old High German had a fully functional subjunctive mood in both present and preterite. Over time, as vowel distinctions reduced and the subjunctive forms became identical to the indicative in many verbs, speakers increasingly used periphrastic constructions with ~würde~ (would) + infinitive to express what the old synthetic subjunctive once conveyed:\n\n🇩🇪 Old: Wenn ich $kÄme$... (If I $cAme$...)\n🇩🇪 Modern alternative: Wenn ich kommen $wÜrde$... (If I $wOUld$ come...)\n\nThis trend continues in contemporary German, where the $wÜrde$ construction increasingly replaces synthetic subjunctive forms except for common verbs and in formal registers.`The Verb System Today`Modern German retains the essential architecture established in Proto-Germanic: two morphological tenses (present and preterite), strong verbs with ablaut, weak verbs with a dental suffix, and a distinction between indicative, subjunctive, and imperative moods. Yet the system has been transformed by millennia of change:\n\n🇩🇪 ~Aspect~ is expressed periphrastically (er $lIest$ = he reads/is reading) or through verbal prefixes and particles (er $lIest$ das Buch aus = he finishes reading the book)\n🇩🇪 ~Future~ is expressed with ~werden~ + infinitive\n🇩🇪 ~Perfect~ is expressed with ~haben~/~sein~ + past participle\n🇩🇪 ~Passive~ is expressed with ~werden~ + past participle (dynamic) or ~sein~ + past participle (stative)\n\nThe ablaut patterns that once pervaded Proto-Indo-European morphology survive in the strong verbs, a living fossil of that 5,000-year journey from the Pontic steppe to the German-speaking lands of central Europe.\n\nWhen you conjugate a German verb—when you say ich singe, ich $sAng$, ich habe $gesUngen$—you are participating in a tradition that stretches back through Old High German scribes in medieval monasteries, through Germanic warriors in their forest villages, through Yamnaya herders on the windswept steppe, all the way to that primordial cloud of supernova-enriched gas from which the Solar System was born. The heavy elements forged in dying stars became the Earth; the Earth brought forth life; life evolved the capacity for language; and language, passed from generation to generation, carries within it the traces of all this history—including, in the vowel changes of a German strong verb, the echo of Proto-Indo-European ablaut, still sounding after fifty centuries."
           }
         }
       }
     },
-    "Navigation.families": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Familien"
+    "Navigation.families" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Familien"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Families"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Families"
           }
         }
       }
     },
-    "Navigation.info": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Info"
+    "Navigation.info" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Info"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Info"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Info"
           }
         }
       }
     },
-    "Navigation.quiz": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quiz"
+    "Navigation.quiz" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quiz"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quiz"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quiz"
           }
         }
       }
     },
-    "Navigation.settings": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Einstellungen"
+    "Navigation.settings" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Settings"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Settings"
           }
         }
       }
     },
-    "Navigation.verb": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Verb"
+    "Navigation.verb" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verb"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Verb"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verb"
           }
         }
       }
     },
-    "Navigation.verbs": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Verben"
+    "Navigation.verbs" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verben"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Verbs"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verbs"
           }
         }
       }
     },
-    "Quiz.conjugation": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Konjugation"
+    "Quiz.conjugation" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konjugation"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Conjugation"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conjugation"
           }
         }
       }
     },
-    "Quiz.conjugationgroup": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Konjugationsgruppe:"
+    "Quiz.conjugationgroup" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konjugationsgruppe:"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Conjugationgroup:"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conjugationgroup:"
           }
         }
       }
     },
-    "Quiz.correct": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Richtig:"
+    "Quiz.correct" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Richtig:"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Correct:"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Correct:"
           }
         }
       }
     },
-    "Quiz.correctAnswer": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Richtige Antwort:"
+    "Quiz.correctAnswer" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Richtige Antwort:"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Correct Answer:"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Correct Answer:"
           }
         }
       }
     },
-    "Quiz.difficulty": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Schwierigkeit"
+    "Quiz.difficulty" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schwierigkeit"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Difficulty"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Difficulty"
           }
         }
       }
     },
-    "Quiz.elapsed": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zeit:"
+    "Quiz.elapsed" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeit:"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Elapsed:"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elapsed:"
           }
         }
       }
     },
-    "Quiz.lastAnswer": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Letzte Antwort:"
+    "Quiz.lastAnswer" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Letzte Antwort:"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Last Answer:"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last Answer:"
           }
         }
       }
     },
-    "Quiz.progress": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Fortschritt:"
+    "Quiz.progress" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fortschritt:"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Progress:"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Progress:"
           }
         }
       }
     },
-    "Quiz.pronoun": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pronomen:"
+    "Quiz.pronoun" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pronomen:"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pronoun:"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pronoun:"
           }
         }
       }
     },
-    "Quiz.quit": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Beenden"
+    "Quiz.quit" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beenden"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quit"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quit"
           }
         }
       }
     },
-    "Quiz.results": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ergebnisse"
+    "Quiz.results" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ergebnisse"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Results"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Results"
           }
         }
       }
     },
-    "Quiz.score": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Punkte:"
+    "Quiz.score" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Punkte:"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Score:"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Score:"
           }
         }
       }
     },
-    "Quiz.start": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Start"
+    "Quiz.start" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Start"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start"
           }
         }
       }
     },
-    "Quiz.time": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Zeit:"
+    "Quiz.time" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeit:"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Time:"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Time:"
           }
         }
       }
     },
-    "Quiz.translation": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Übersetzung:"
+    "Quiz.translation" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Übersetzung:"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Translation:"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Translation:"
           }
         }
       }
     },
-    "Quiz.verb": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Verb:"
+    "Quiz.verb" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verb:"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Verb:"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verb:"
           }
         }
       }
     },
-    "QuizDifficulty.regular": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Regulär"
+    "QuizDifficulty.regular" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regulär"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Regular"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regular"
           }
         }
       }
     },
-    "QuizDifficulty.ridiculous": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Lächerlich"
+    "QuizDifficulty.ridiculous" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lächerlich"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Ridiculous"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ridiculous"
           }
         }
       }
     },
-    "Settings.audioFeedbackDescription": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Diese Einstellung aktiviert Audio-Feedback während der Quizze."
+    "Settings.audioFeedbackDescription" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Einstellung aktiviert Audio-Feedback während der Quizze."
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "This setting enables audio feedback during quizzes."
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This setting enables audio feedback during quizzes."
           }
         }
       }
     },
-    "Settings.audioFeedbackHeading": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Audio-Feedback"
+    "Settings.audioFeedbackHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Audio-Feedback"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Audio Feedback"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Audio Feedback"
           }
         }
       }
     },
-    "Settings.conjugationgroupLangDescription": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Diese Einstellung legt fest, ob in der Benutzeroberfläche von Konjugieren die tatsächlichen deutschen Conjugationgroupnamen oder deren englische Entsprechungen angezeigt werden."
+    "Settings.conjugationgroupLangDescription" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Einstellung legt fest, ob in der Benutzeroberfläche von Konjugieren die tatsächlichen deutschen Conjugationgroupnamen oder deren englische Entsprechungen angezeigt werden."
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "This setting determines whether actual German conjugationgroup names or their English equivalents are shown in Konjugieren’s user interface. "
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This setting determines whether actual German conjugationgroup names or their English equivalents are shown in Konjugieren’s user interface. "
           }
         }
       }
     },
-    "Settings.conjugationgroupLangHeading": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sprache der Conjugationgroup"
+    "Settings.conjugationgroupLangHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sprache der Conjugationgroup"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Conjugationgroup Language"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conjugationgroup Language"
           }
         }
       }
     },
-    "Settings.quizDifficultyDescription": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Diese Einstellung bestimmt die Schwierigkeit der Quizze. Normalerweise ist Regulär empfohlen, da Lächerlich Konjugationsgruppen enthält, die nicht weit verbreitet sind."
+    "Settings.quizDifficultyDescription" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Einstellung bestimmt die Schwierigkeit der Quizze. Normalerweise ist Regulär empfohlen, da Lächerlich Konjugationsgruppen enthält, die nicht weit verbreitet sind."
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "This setting determines the difficulty of quizzes. You probably want Regular because Ridiculous includes conjugationgroups that are not in widespread use."
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This setting determines the difficulty of quizzes. You probably want Regular because Ridiculous includes conjugationgroups that are not in widespread use."
           }
         }
       }
     },
-    "Settings.quizDifficultyHeading": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quizschwierigkeit"
+    "Settings.quizDifficultyHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quizschwierigkeit"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Quiz Difficulty"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quiz Difficulty"
           }
         }
       }
     },
-    "Settings.thirdPersonPronounGenderDescription": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Diese Einstellung legt fest, welche deutschen Pronomen der dritten Person Singular in der Benutzeroberfläche angezeigt werden."
+    "Settings.thirdPersonPronounGenderDescription" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Einstellung legt fest, welche deutschen Pronomen der dritten Person Singular in der Benutzeroberfläche angezeigt werden."
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "This setting determines which pronouns accompany third-person-singular conjugations."
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This setting determines which pronouns accompany third-person-singular conjugations."
           }
         }
       }
     },
-    "Settings.thirdPersonPronounGenderHeading": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Pronomen 3. Person"
+    "Settings.thirdPersonPronounGenderHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pronomen 3. Person"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "3P-Pronoun Gender"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "3P-Pronoun Gender"
           }
         }
       }
     },
-    "Testing.runningUnitTests": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Unit-Tests laufen"
+    "Testing.runningUnitTests" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unit-Tests laufen"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Running Unit Tests"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Running Unit Tests"
           }
         }
       }
     },
-    "ThirdPersonPronounGender.er": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Er"
+    "ThirdPersonPronounGender.er" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Er"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Er"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Er"
           }
         }
       }
     },
-    "ThirdPersonPronounGender.es": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Es"
+    "ThirdPersonPronounGender.es" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Es"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Es"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Es"
           }
         }
       }
     },
-    "ThirdPersonPronounGender.sie": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sie"
+    "ThirdPersonPronounGender.sie" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sie"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Sie"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sie"
           }
         }
       }
     },
-    "VerbBrowse.alphabetical": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Alphabetisch"
+    "VerbBrowse.alphabetical" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alphabetisch"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Alphabetical"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alphabetical"
           }
         }
       }
     },
-    "VerbBrowse.frequency": {
-      "localizations": {
-        "de": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Häufigkeit"
+    "VerbBrowse.frequency" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Häufigkeit"
           }
         },
-        "en": {
-          "stringUnit": {
-            "state": "translated",
-            "value": "Frequency"
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Frequency"
           }
         }
       }
     }
   },
-  "version": "1.1"
+  "version" : "1.1"
 }

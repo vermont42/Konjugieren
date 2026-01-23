@@ -61,18 +61,19 @@ struct BodyTextView: View {
           result.append(attributed)
         }
 
-      case .conjugation(let regular, let irregular, let trailing):
-        var regularAttr = AttributedString(regular)
-        regularAttr.foregroundColor = Color.customForeground
-        result.append(regularAttr)
-
-        var irregularAttr = AttributedString(irregular)
-        irregularAttr.foregroundColor = Color.customRed
-        result.append(irregularAttr)
-
-        var trailingAttr = AttributedString(trailing)
-        trailingAttr.foregroundColor = Color.customForeground
-        result.append(trailingAttr)
+      case .conjugation(let parts):
+        for part in parts {
+          switch part {
+          case .regular(let text):
+            var regularAttr = AttributedString(text)
+            regularAttr.foregroundColor = Color.customForeground
+            result.append(regularAttr)
+          case .irregular(let text):
+            var irregularAttr = AttributedString(text)
+            irregularAttr.foregroundColor = Color.customRed
+            result.append(irregularAttr)
+          }
+        }
       }
     }
 

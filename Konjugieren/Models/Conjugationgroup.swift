@@ -1,4 +1,4 @@
-// Copyright © 2025 Josh Adams. All rights reserved.
+// Copyright © 2026 Josh Adams. All rights reserved.
 
 enum Conjugationgroup: Hashable {
   case perfektpartizip

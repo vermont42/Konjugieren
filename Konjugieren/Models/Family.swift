@@ -1,4 +1,4 @@
-// Copyright © 2025 Josh Adams. All rights reserved.
+// Copyright © 2026 Josh Adams. All rights reserved.
 
 enum Family: Hashable, CustomStringConvertible {
   case strong(ablautGroup: String, ablautStartIndex: Int, ablautEndIndex: Int)

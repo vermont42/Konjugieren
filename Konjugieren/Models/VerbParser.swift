@@ -1,4 +1,4 @@
-// Copyright © 2025 Josh Adams. All rights reserved.
+// Copyright © 2026 Josh Adams. All rights reserved.
 
 import Foundation
 
@@ -51,7 +51,7 @@ class VerbParser: NSObject, XMLParserDelegate {
           self.currentVerb = currentVerb
         }
       } else {
-        fatalError("No infinitiv specified.")
+        fatalError("No infinitive specified.")
       }
 
       if let translation = attributeDict["tn"] {
@@ -107,13 +107,13 @@ class VerbParser: NSObject, XMLParserDelegate {
 
       let caretCount = currentVerb.filter { $0 == "^" }.count
       if caretCount != 0 && caretCount != 2 {
-        fatalError("Verb \(currentVerb) has \(caretCount) ^s but must have 0 or 2.")
+        fatalError("Verb \(currentVerb) has \(caretCount) carets but must have 0 or 2.")
       }
       if ["w", "i"].contains(currentFamily) && caretCount > 0 {
-        fatalError("Verb \(currentVerb) has ^s but is weak or ieren.")
+        fatalError("Verb \(currentVerb) has carets but is weak or ieren.")
       }
       if ["s", "m"].contains(currentFamily) && caretCount != 2 {
-        fatalError("Strong or mixed verb \(currentVerb) must have exactly 2 ^s.")
+        fatalError("Strong or mixed verb \(currentVerb) must have exactly 2 carets.")
       }
 
       if caretCount == 2 {

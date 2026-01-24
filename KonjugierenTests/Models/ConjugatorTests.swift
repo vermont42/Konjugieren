@@ -1,4 +1,4 @@
-// Copyright © 2025 Josh Adams. All rights reserved.
+// Copyright © 2026 Josh Adams. All rights reserved.
 
 import Testing
 @testable import Konjugieren
@@ -170,7 +170,7 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "machen", conjugationgroup: .präteritumKonditional(.secondPlural), expected: "machtet")
     expectConjugation(infinitiv: "machen", conjugationgroup: .präteritumKonditional(.thirdPlural), expected: "machten")
 
-    // Strong verb (ablaut often includes umlaut, Konjunktiv II endings)
+    // Strong verb (ablaut often includes umlaut, Konditional endings)
     expectConjugation(infinitiv: "singen", conjugationgroup: .präteritumKonditional(.firstSingular), expected: "sÄnge")
     expectConjugation(infinitiv: "singen", conjugationgroup: .präteritumKonditional(.secondSingular), expected: "sÄngest")
     expectConjugation(infinitiv: "singen", conjugationgroup: .präteritumKonditional(.thirdSingular), expected: "sÄnge")
@@ -294,7 +294,7 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "werden", conjugationgroup: .präteritumIndicativ(.secondPlural), expected: "wUrdEt")
     expectConjugation(infinitiv: "werden", conjugationgroup: .präteritumIndicativ(.thirdPlural), expected: "wUrden")
 
-    // Präteritum Konditional (Konjunktiv II)
+    // Präteritum Konditional
     expectConjugation(infinitiv: "werden", conjugationgroup: .präteritumKonditional(.firstSingular), expected: "wÜrde")
     expectConjugation(infinitiv: "werden", conjugationgroup: .präteritumKonditional(.secondSingular), expected: "wÜrdest")
     expectConjugation(infinitiv: "werden", conjugationgroup: .präteritumKonditional(.thirdSingular), expected: "wÜrde")

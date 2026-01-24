@@ -15,7 +15,8 @@
       "Bash(git push)",
       "Bash(git stash:*)",
       "Bash(languages\" to emphasizing speaker population instead. Adds Catalan to the\nlanguage list, removes Latin, and clarifies that nearly half of humans speak\nan Indo-European language as their first language.\n\n🤖 Generated with [Claude Code]\\(https://claude.com/claude-code\\)\n\nCo-Authored-By: Claude <noreply@anthropic.com>\nEOF\n\\)\")",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(find:*)"
     ]
   },
   "outputStyle": "Explanatory"

@@ -20,11 +20,11 @@ enum Conjugationgroup: Hashable {
     case .perfektpartizip:
       return "Perfekt Partizip"
     case .präsensIndicativ:
-      return "Präsens Indicativ"
+      return "Präsens Indikativ"
     case .präsensKonjunktivI:
       return "Präsens Konjunktiv I"
     case .präteritumIndicativ:
-      return "Präteritum Indicativ"
+      return "Präteritum Indikativ"
     case .präteritumKonditional:
       return "Präteritum Konditional"
     case .imperativ:

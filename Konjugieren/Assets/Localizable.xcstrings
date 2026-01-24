@@ -116,6 +116,54 @@
         }
       }
     },
+    "Conjugationgroup.futurIndikativ" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Futur Indikativ"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Future Indicative"
+          }
+        }
+      }
+    },
+    "Conjugationgroup.futurKonditional" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Futur Konditional"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Future Conditional"
+          }
+        }
+      }
+    },
+    "Conjugationgroup.futurKonjunktivI" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Futur Konjunktiv I"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Future Subjunctive"
+          }
+        }
+      }
+    },
     "Conjugationgroup.imperativ" : {
       "localizations" : {
         "de" : {
@@ -132,6 +180,38 @@
         }
       }
     },
+    "Conjugationgroup.perfektIndikativ" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perfekt Indikativ"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perfect Indicative"
+          }
+        }
+      }
+    },
+    "Conjugationgroup.perfektKonjunktivI" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perfekt Konjunktiv I"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Perfect Subjunctive"
+          }
+        }
+      }
+    },
     "Conjugationgroup.perfektpartizip" : {
       "localizations" : {
         "de" : {
@@ -144,6 +224,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Past Participle"
+          }
+        }
+      }
+    },
+    "Conjugationgroup.plusquamperfektIndikativ" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plusquamperfekt Indikativ"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pluperfect Indicative"
+          }
+        }
+      }
+    },
+    "Conjugationgroup.plusquamperfektKonditional" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Plusquamperfekt Konditional"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pluperfect Conditional"
           }
         }
       }
@@ -224,118 +336,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Past Conditional"
-          }
-        }
-      }
-    },
-    "Conjugationgroup.perfektIndikativ" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Perfekt Indikativ"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Perfect Indicative"
-          }
-        }
-      }
-    },
-    "Conjugationgroup.perfektKonjunktivI" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Perfekt Konjunktiv I"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Perfect Subjunctive"
-          }
-        }
-      }
-    },
-    "Conjugationgroup.plusquamperfektIndikativ" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Plusquamperfekt Indikativ"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pluperfect Indicative"
-          }
-        }
-      }
-    },
-    "Conjugationgroup.plusquamperfektKonditional" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Plusquamperfekt Konditional"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Pluperfect Conditional"
-          }
-        }
-      }
-    },
-    "Conjugationgroup.futurIndikativ" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Futur Indikativ"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Future Indicative"
-          }
-        }
-      }
-    },
-    "Conjugationgroup.futurKonjunktivI" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Futur Konjunktiv I"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Future Subjunctive"
-          }
-        }
-      }
-    },
-    "Conjugationgroup.futurKonditional" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Futur Konditional"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Future Conditional"
           }
         }
       }
@@ -656,6 +656,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Information about the imperative mood."
+          }
+        }
+      }
+    },
+    "Info.moodHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modus"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mood"
+          }
+        }
+      }
+    },
+    "Info.moodText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "`Modus`\n\n~Modus~ drückt die Haltung des Sprechers zur Handlung aus. Das Deutsche hat vier Modi:\n\n🇩🇪 ~Indikativ~ – Tatsachen (entspricht dem englischen indicative)\n🇩🇪 ~Konjunktiv I~ – indirekte Rede (entspricht dem englischen subjunctive)\n🇩🇪 ~Konditional~ (auch Konjunktiv II) – hypothetische Situationen (entspricht dem englischen conditional)\n🇩🇪 ~Imperativ~ – Befehle (entspricht dem englischen imperative)\n\nMehrgliedrige Conjugationgroups haben sowohl ein Tempus als auch einen Modus. Zum Beispiel: Präsens Indikativ (Präsens + Indikativ)."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "`Mood`\n\n~Mood~ expresses the speaker's attitude toward the action. German has four moods:\n\n🇩🇪 ~Indikativ~ – facts (indicative)\n🇩🇪 ~Konjunktiv I~ – indirect speech (subjunctive)\n🇩🇪 ~Konditional~ (also called Konjunktiv II) – hypothetical situations (conditional)\n🇩🇪 ~Imperativ~ – commands (imperative)\n\nMulti-member conjugationgroups have both a tense and a mood. For example: Präsens Indikativ (Präsens tense + Indikativ mood)."
           }
         }
       }
@@ -1014,6 +1046,38 @@
         }
       }
     },
+    "Info.tenseHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tempus"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tense"
+          }
+        }
+      }
+    },
+    "Info.tenseText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "`Tempus`\n\nIn der Linguistik bezieht sich ~Tempus~ ausschließlich auf die ~Zeit~, zu der eine Handlung stattfindet. Das Deutsche hat drei Tempora:\n\n🇩🇪 ~Präsens~ (Gegenwart)\n🇩🇪 ~Präteritum~ (Vergangenheit)\n🇩🇪 ~Futur~ (Zukunft)\n\nDas Tempus ist nur eine Komponente einer Conjugationgroup. Zum Beispiel hat Präsens Indikativ das Tempus Präsens, kombiniert aber auch den Modus Indikativ."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In linguistics, ~tense~ refers to the ~time~ that an action encoded in a verb occurred, occurs, or will occur. Like English, German has three tenses: ~Präsens~ (present), ~Präteritum~ (past), and ~Futur~ (future).\n\nTense is one component of a conjugationgroup. For example, Präsens Aktiv Indikativ has Präsens tense, Aktiv voice, and Indikativ mood. (The Aktiv voice is implicit for conjugationgroups featuring it, and, unlike some sources, ~Konjugieren~ omits the word Aktiv from conjugationgroup names, for example %Präsens Indikativ%.)\n\nHere are the German conjugationgroups arranged by tense:\n\n🇩🇪 ~Präsens~: %Präsens Indikativ%, %Präsens Konjunktiv I%, %Präsens Partizip%\n🇩🇪 ~Präteritum~: %Präteritum Indikativ%, %Präteritum Konditional%, %Perfekt Indikativ%, %Perfekt Konjunktiv I%, %Perfekt Partizip%\n🇩🇪 ~Futur~: %Futur Indikativ%, %Futur Konjunktiv I%, %Futur Konditional%`Commentary`The ~Perfektpartizip~ is in the Präteritum 🇩🇪 item because this conjugationgroup inherently describes a completed action. In \"$gesUngen$\" ($sUng$), the singing is finished—a past-oriented meaning. This contrasts with the ~Präsenspartizip~, for example \"singend\" (singing), which describes an ongoing action.\n\nThe ~Imperativ~ doesn't fit neatly into tense categories. Commands like \"Sing!\" are directed at the present moment but don't describe past, present, or future actions in the traditional sense. Linguists sometimes call this \"tenseless\" or associate it loosely with present tense."
+          }
+        }
+      }
+    },
     "Info.terminologyHeading" : {
       "localizations" : {
         "de" : {
@@ -1041,103 +1105,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "`Verb`A ~verb~ is a kind of word that expresses an action. For example, in the German sentence \"Robert $sAng$ in London.\", “%singen%” is the verb. Likewise, in the English sentence “Robert $sAng$ in London.”, “to sing” is the verb.`Conjugation`A conjugation is a modification, or non-modification, of a verb for a specific purpose. For example, \"$hAst$\" and \"$hAst$\" are conjugations of the German and Early Modern English verbs \"%haben%\" and \"to have\", respectively, indicating that the verb is associated with an informal, second-person-singular subject pronoun (\"du\" or \"thou\") and that the action described, the act of possession, takes place (or is taking place) in the present.`Conjugationgroup`A ~conjugationgroup~ is a related family of one, two, four, or six conjugations. You have already seen one conjugationgroup, Infinitiv (infinitive), in the examples of \"%singen%\", \"%haben%\", \"to sing\", and \"to have\". In German and English, the Infinitiv is the reference conjugation for verbs and therefore the one you look up in a dictionary. In both languages, an Infinitiv can also represent the act of doing something.\\n\\n\"Ich $BIN$ gezwungen, die Verbkonjugationen zu ~lernen~.\" = \"I $AM$ compelled ~to study~ verb conjugations.\"\\n\\nThe uses of some German and English conjugationgroups closely correspond, as with Infinitiv/infinitive, but the uses of some do not. Consider this example:\\n\\n\"I eat.\" != \"Ich esse.\"\\n\\nIn this example, the German speaker might be currently eating, but the English speaker is describing a habitual action and is not necessarily eating at this moment. The %Präsens Indikativ%, the conjugationgroup demonstrated here, therefore has broader application than the similarly named Present Indicative.\\n\\nBecause of the inexact correspondence between German and English conjugationgroups, Konjugieren displays German conjugationgroup names by default, but there is a setting in the Settings tab to cause Konjugieren to display English conjugationgroup names, which are perhaps more familiar to the English-speaking target audience of Konjugieren.\\n\\nThe three conjugationgroups with one member each are Infinitiv, %Perfektpartizip% and %Präsenspartizip%.\\n\\nThe German conjugationgroup %Imperativ% has four members. Its English cousin, imperative, has two.\\n\\nAll other conjugationgroups have six members. You $sAW$ earlier $sAng$. This is a member of the conjugationgroup %Präteritum Indicativ%. Here are all six members of that conjugationgroup for %singen%:\\n\\n$sAng$, $sAngst$, $sAng$, $sAngen$, $sAngt$, $sAngen$\\n\\nThe developer of Konjugieren coined the term \"conjugationgroup\" in late 2025, but the concept has existed for 5,000 years, if not longer. Some language commentators use the word \"tense\" for this concept, but, for reasons described later, \"tense\" has a precise meaning that is not broad enough for this important concept.`Subject Pronoun`A ~subject pronoun~ is a word that stands in for the subject in a sentence. The subject is the actor. In English, the subject pronouns in widespread use are ~I~, ~you~, ~he/she/it/one~, ~we~, ~you/y’all~, and ~they~. The English subject pronouns ~ye~ and ~thou~ have been in decline since the Elizabethan period, which is too bad for German learners because they are cognate with (related to) the German subject pronouns ~ihr~ and ~du~.\\n\\nSubject pronouns correspond to the ~singular~ or ~plural~ number and to the ~first person~, ~second person~, or ~third person~.\\n\\nEnglish subject pronouns follow. Abbreviations of the person-number combinations are in parentheses.\\n\\n🏴󠁧󠁢󠁥󠁮󠁧󠁿 first person, singular (1s): ~I~\\n🏴󠁧󠁢󠁥󠁮󠁧󠁿 second person, singular (2s): ~you~\\n🏴󠁧󠁢󠁥󠁮󠁧󠁿 third person, singular (3s): ~he/she/it/one~\\n🏴󠁧󠁢󠁥󠁮󠁧󠁿 first person, plural (1p): ~we~\\n🏴󠁧󠁢󠁥󠁮󠁧󠁿/🇺🇸 second person, plural (2p): ~you/y’all~\\n🏴󠁧󠁢󠁥󠁮󠁧󠁿 third person, plural (3p): ~they~\\n\\nHere are the German subject pronouns arranged by person-number combination.\\n\\n🇩🇪 1s: ~ich~\\n🇩🇪 2s: ~du~ or ~Sie~\\n🇩🇪 3s: ~er~ (masc.)/~sie~ (fem.)/~es~ (neut.)\\n🇩🇪 1p: ~wir~\\n🇩🇪 2p: ~ihr~ or ~Sie~\\n🇩🇪 3p: ~sie~\\n\\n\"Fem.\", \"masc.\", and \"neut.\" refer to feminine, masculine, and neuter subjects, respectively.\\n\\nNote the two options for 2s and 2p, (~du~ or ~Sie~) and (~ihr~ or ~Sie~). ~Du~ and ~ihr~ are considered informal and may express emotional closeness. ~Sie~, which is always capitalized, is considered polite and may express emotional distance. Importantly for Konjugieren users, ~Sie~ uses the 3p conjugations`Presentation of Conjugations`Treatises on German verbs, when presenting the conjugations for a particular conjugationgroup, use the following person-number order: 1s, 2s, 3s, 1p, 2p, 3p. Respecting tradition, ~Konjugieren~ does the same. For example, ~Konjugieren~ presents the %Präsens Indikativ% conjugations of %werden% as follows:\\n\\nwerde, $wIrst$, $wIrD$, werden, $werdEt$, werden\\n\\nA conjugation has red letters representing irregularities in one or two of three scenarios.\\n\\n🇩🇪 First, there is a red letter if the vowel of the part of the Infinitiv, minus the -en ending, the ~Stamm~ (stem), has changed as a result of Ablaut, a phenomenon described in %A History of the German Verb System%.\\n🇩🇪 Second, there is a red letter if the ending on the conjugation differs from that of a regular verb like %machen%. The conjugation $wIrD$ demonstrates these first two scenarios because the expected conjugation would be ~werdt~.\\n🇩🇪 Third, a conjugation is entirely red when both the Stamm and ending $ARe$ completely unpredictable. For example, the 1s %Präsens Indikativ% conjugation of %sein% is $BIN$."
-          }
-        }
-      }
-    },
-    "Info.tenseHeading" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tempus"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tense"
-          }
-        }
-      }
-    },
-    "Info.tenseText" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "`Tempus`\n\nIn der Linguistik bezieht sich ~Tempus~ ausschließlich auf die ~Zeit~, zu der eine Handlung stattfindet. Das Deutsche hat drei Tempora:\n\n🇩🇪 ~Präsens~ (Gegenwart)\n🇩🇪 ~Präteritum~ (Vergangenheit)\n🇩🇪 ~Futur~ (Zukunft)\n\nDas Tempus ist nur eine Komponente einer Conjugationgroup. Zum Beispiel hat Präsens Indikativ das Tempus Präsens, kombiniert aber auch den Modus Indikativ."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "`Tense`\n\nIn linguistics, ~tense~ refers only to the ~time~ that an action occurs. German has three tenses:\n\n🇩🇪 ~Präsens~ (present)\n🇩🇪 ~Präteritum~ (past)\n🇩🇪 ~Futur~ (future)\n\nTense is just one component of a conjugationgroup. For example, Präsens Indikativ has Präsens tense but also combines Indikativ mood."
-          }
-        }
-      }
-    },
-    "Info.moodHeading" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Modus"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Mood"
-          }
-        }
-      }
-    },
-    "Info.moodText" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "`Modus`\n\n~Modus~ drückt die Haltung des Sprechers zur Handlung aus. Das Deutsche hat vier Modi:\n\n🇩🇪 ~Indikativ~ – Tatsachen (entspricht dem englischen indicative)\n🇩🇪 ~Konjunktiv I~ – indirekte Rede (entspricht dem englischen subjunctive)\n🇩🇪 ~Konditional~ (auch Konjunktiv II) – hypothetische Situationen (entspricht dem englischen conditional)\n🇩🇪 ~Imperativ~ – Befehle (entspricht dem englischen imperative)\n\nMehrgliedrige Conjugationgroups haben sowohl ein Tempus als auch einen Modus. Zum Beispiel: Präsens Indikativ (Präsens + Indikativ)."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "`Mood`\n\n~Mood~ expresses the speaker's attitude toward the action. German has four moods:\n\n🇩🇪 ~Indikativ~ – facts (indicative)\n🇩🇪 ~Konjunktiv I~ – indirect speech (subjunctive)\n🇩🇪 ~Konditional~ (also called Konjunktiv II) – hypothetical situations (conditional)\n🇩🇪 ~Imperativ~ – commands (imperative)\n\nMulti-member conjugationgroups have both a tense and a mood. For example: Präsens Indikativ (Präsens tense + Indikativ mood)."
-          }
-        }
-      }
-    },
-    "Info.voiceHeading" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Genus Verbi"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Voice"
-          }
-        }
-      }
-    },
-    "Info.voiceText" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "`Genus Verbi`\n\n~Genus Verbi~ (auch Diathese) beschreibt die Beziehung zwischen dem Verb und seinen Argumenten. Das Deutsche hat drei Genera Verbi:\n\n🇩🇪 ~Aktiv~ – das Subjekt führt die Handlung aus (\"Ich singe das Lied\")\n🇩🇪 ~Vorgangspassiv~ – das Subjekt erleidet die Handlung (\"Das Lied wird gesungen\")\n🇩🇪 ~Zustandspassiv~ – das Subjekt befindet sich im Zustand nach der Handlung (\"Das Lied ist gesungen\")\n\nDiese App konzentriert sich derzeit auf Aktiv-Conjugationgroups. Passive Formen werden in zukünftigen Versionen hinzugefügt."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "`Voice`\n\n~Voice~ describes the relationship between the verb and its arguments. German has three voices:\n\n🇩🇪 ~Aktiv~ (active) – the subject performs the action (\"I sing the song\")\n🇩🇪 ~Vorgangspassiv~ (processual passive) – the subject undergoes the action (\"The song is being sung\")\n🇩🇪 ~Zustandspassiv~ (statal passive) – the subject is in the state after the action (\"The song is sung\")\n\nThis app currently focuses on active voice conjugationgroups. Passive forms will be added in future versions."
+            "value" : "In linguistics, ~tense~ refers to the ~time~ that an action encoded in a verb occurred, occurs, or will occur. Like English, German has three tenses: ~Präsens~ (present), ~Präteritum~ (past), and ~Futur~ (future).\n\nTense is one component of a conjugationgroup. For example, Präsens Aktiv Indikativ has Präsens tense, Aktiv voice, and Indikativ mood. (The Aktiv voice is implicit for conjugationgroups featuring it, and, unlike some sources, ~Konjugieren~ omits the word Aktiv from conjugationgroup names, for example %Präsens Indikativ%.)\n\nHere are the German conjugationgroups arranged by tense:\n\n🇩🇪 ~Präsens~: %Präsens Indikativ%, %Präsens Konjunktiv I%, %Präsens Partizip%, %Perfekt Indikativ%, %Perfekt Konjunktiv I%\n🇩🇪 ~Präteritum~: %Präteritum Indikativ%, %Präteritum Konditional%, %Perfekt Partizip%\n🇩🇪 ~Futur~: %Futur Indikativ%, %Futur Konjunktiv I%, %Futur Konditional%\n`Commentary`Somewhat counterintuitively, the Perfekt conjugationgroups are in the Präsens 🇩🇪 item. They use an auxiliary verb (%haben% or %sein%) conjugated in the ~present~ tense, combined with the Perfektpartizip. For example, \"ich habe $gesUngen$\" (I have $sUng$) uses present-tense \"habe\". The action may be completed, but the grammatical tense of the auxiliary is Präsens and, by convention, the tense of the auxiliary takes precedence.\n\nThe ~Perfektpartizip~ is in the Präteritum 🇩🇪 item because this conjugationgroup inherently describes a completed action. In \"$gesUngen$\" ($sUng$), the singing is finished—a past-oriented meaning. This contrasts with Präsenspartizip, for example \"singend\" (singing), which describes an ongoing action.\n\nThe ~Imperativ~ doesn't fit neatly into tense categories. Commands like \"Sing!\" are directed at the present moment but don't describe past, present, or future actions in the traditional sense. Linguists sometimes call this \"tenseless\" or associate it loosely with present tense."
           }
         }
       }
@@ -1170,6 +1138,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "`From Stardust to Speech`Approximately 4.6 billion years ago, a vast cloud of gas and dust began to collapse in a corner of the Milky Way galaxy. This primordial nebula was no ordinary collection of hydrogen and helium. Nearby supernovae—the explosive deaths of massive stars—had enriched this cloud with heavy elements forged in stellar furnaces: carbon, the backbone of organic chemistry; oxygen, essential for water and respiration; nitrogen, a building block of proteins and DNA; iron, which would form Earth's molten core and later course through human blood; calcium, destined to become bones and shells; phosphorus, critical for cellular energy; sulfur, gold, uranium, and dozens of other elements that could only be created in the intense pressures of collapsing stars or the cataclysmic violence of supernovae.\n\nAs gravity drew this enriched material together, the Sun ignited at the center while the remaining debris coalesced into planets. Earth formed roughly 4.5 billion years ago, its iron sinking to create a core, its lighter silicates rising to form a crust, and those supernova-gifted elements distributing themselves throughout—awaiting, across billions of years, the emergence of life that would one day use them to speak, to write, and to conjugate verbs.`The Long Road to Language`Life emerged on Earth perhaps 3.8 billion years ago, but the journey to language-bearing creatures was immensely long. Modern humans—~Homo sapiens~—evolved in Africa approximately 300,000 years ago. For most of that time, our ancestors lived as hunter-gatherers on the African continent, developing the cognitive capacities that would eventually enable complex language.\n\nBeginning around 70,000 years ago, waves of humans migrated out of Africa, spreading across the globe. Some traveled north and west into Europe; others moved east across Asia. By 45,000 years ago, humans had reached the Pontic-Caspian steppe—the vast grasslands stretching from what is now Ukraine to Kazakhstan. This region, lying north of the Black and Caspian Seas, would become the crucible of one of history's most consequential linguistic developments.`The Yamnaya and Proto-Indo-European`Between approximately 4500 and 2500 BC, a people we call the Yamnaya (from Russian яма, \"pit\", referring to their burial practices) inhabited the Pontic-Caspian steppe. They were among the first to domesticate the horse for riding, which—combined with the recent invention of wheeled vehicles—gave them unprecedented mobility. The Yamnaya were semi-nomadic pastoralists, herding cattle, sheep, and goats across the grasslands. They lived in small, mobile groups, following their herds to seasonal pastures.\n\nTheir society appears to have been patriarchal and hierarchical. They buried their dead in distinctive pit graves beneath earthen mounds called ~kurgans~, often with grave goods indicating status: weapons, jewelry, animal sacrifices. DNA evidence suggests they consumed significant amounts of dairy, having evolved lactose tolerance, and archaeological evidence points to a diet supplemented by hunting and limited agriculture.\n\nThe Yamnaya spoke what linguists reconstruct as ~Proto-Indo-European~ (PIE), the ancestor of languages spoken by nearly half of humans alive today. These languages include German, English, Ukrainian, Hindi, Persian, Cornish, Greek, and Latin.`The Verb System of Proto-Indo-European`The Proto-Indo-European verb was a magnificent and complex system, far more elaborate than any of its daughter languages would retain. PIE verbs were built on roots—typically consisting of a consonant-vowel-consonant structure—that carried core meaning. Upon these roots, speakers layered an intricate architecture of prefixes, suffixes, and infixes to express a vast array of grammatical information.\n\n~Aspect~ was paramount in PIE. The language distinguished three aspects:\n🇩🇪 ~Imperfective~ (also called present): ongoing or repeated action\n🇩🇪 ~Perfective~ (also called aorist): completed action viewed as a whole\n🇩🇪 ~Stative~ (also called perfect): a state resulting from completed action\n\nEach aspect had its own stem, often formed through different ablaut grades and affixes. A single verb root might thus have three quite different stem forms.\n\n~Tense~ was secondary to aspect. PIE marked past time primarily through a prefix called the ~augment~ (reconstructed as *e-), though this was optional in early PIE, and not all daughter languages retained it. The system allowed for present, past (preterite), and arguably future expressions, but aspectual distinctions carried more semantic weight than temporal ones.\n\n~Mood~ was richly developed, including:\n🇩🇪 ~Indicative~: statements of fact\n🇩🇪 ~Subjunctive~: wishes, possibilities, intentions\n🇩🇪 ~Optative~: hopes, desires, gentle commands\n🇩🇪 ~Imperative~: direct commands\n\n~Voice~ distinguished active and middle (the latter indicating action affecting the subject or done in the subject's interest), with a developing passive.`Ablaut: The Heart of Indo-European Morphology`Perhaps no feature of Proto-Indo-European has proven more enduring than ~ablaut~—the systematic alternation of vowels within roots and affixes to express grammatical distinctions. Ablaut was not arbitrary sound change but a structured system of vowel grades:\n\n🇩🇪 ~e-grade~ (full grade): the vowel *e (as in the root *bʰer-, \"to carry\")\n🇩🇪 ~o-grade~: the vowel *o (as in *bʰor-)\n🇩🇪 ~zero-grade~: absence of the vowel (as in *bʰr-)\n🇩🇪 ~lengthened e-grade~: *ē (as in *mḗh₁-n̥s)\n🇩🇪 ~lengthened o-grade~: *ō (as in *n̥-péh₂-tōr)\n\nThese alternations were grammatically meaningful. For example, the present stem might use e-grade while the perfect used o-grade; the zero-grade appeared in certain suffixes and in unstressed positions. When PIE *e and *o later developed into different vowels in the daughter languages, the ablaut patterns became the vowel alternations we still see in German strong verbs today:\n\n🇩🇪 singen, $sAng$, $gesUngen$ (sing, $sAng$, $sUng$)\n🇩🇪 nehmen, $nahm$, $genOMmen$ (take, $tOOk$, taken)\n🇩🇪 geben, $gAb$, gegeben (give, $gAve$, given)\n\nThese vowel changes are direct inheritances from Proto-Indo-European, preserved across five millennia of linguistic evolution.`The Migration to Europe`Beginning around 3000 BC—approximately 5,000 years ago—the Yamnaya and their descendants began a series of migrations that would reshape the genetic and linguistic landscape of Europe. Equipped with horses, wheeled carts, and perhaps bronze weapons, they moved westward in successive waves.\n\nThese migrants brought their Proto-Indo-European language with them. As they settled among or displaced existing populations, their speech diverged into regional varieties. The branch that would become Germanic likely separated from other Indo-European groups sometime between 2500 and 2000 BC, as speakers moved into southern Scandinavia and northern Germany.\n\nBy the first millennium BC, a recognizable Proto-Germanic language had emerged in southern Scandinavia and along the North Sea and Baltic coasts. These Germanic-speaking peoples—known to the Romans as ~Germani~—developed a culture adapted to the forests and coastlines of northern Europe.`The Battle of the Teutoburg Forest`In 9 AD, a pivotal confrontation occurred in the densely forested hills of what is now northwestern Germany. Three Roman legions under the command of Publius Quinctilius Varus—perhaps 20,000 soldiers—were ambushed and annihilated by an alliance of Germanic tribes led by Arminius (Hermann), a Romanized chieftain of the Cherusci.\n\nThe Battle of the Teutoburg Forest halted Roman expansion into Germanic territory. While the Romans would launch punitive expeditions and eventually establish the ~limes~—a fortified frontier—they never permanently conquered the lands beyond the Rhine and Danube. This had profound linguistic consequences: the Germanic languages developed free from the Romanization that transformed Gaulish into French, Iberian languages into Spanish and Portuguese, and Dacian into Romanian.\n\nHad the Romans conquered Germania, the Germanic peoples might have adopted Vulgar Latin, as did so many others within the Empire. Instead, the Germanic languages—including what would become German, English, Dutch, and the Scandinavian languages—evolved independently, preserving ancient features and developing new ones according to their own internal logic.`Lifeways of the Germanic Tribes`At the time of the battle at Teutoburg, the Germanic peoples lived in small villages and farmsteads scattered through the forests of northern Europe. They practiced mixed agriculture, growing barley, oats, rye, and wheat while raising cattle, pigs, sheep, and horses. Cattle were especially important, serving as a measure of wealth and a form of currency.\n\nSociety was organized around kinship groups and tribal affiliations, led by chieftains whose authority derived from military prowess, generosity, and noble lineage. The warrior aristocracy formed a ~comitatus~—a band of followers bound to their lord by oaths of loyalty. These warriors sought glory in battle and expected gifts of weapons, gold, and feasting in return for their service.\n\nThe Germanic peoples had no centralized states or cities. They built no stone monuments. They committed little to writing, though they did develop the runic alphabet for short inscriptions and magical purposes. Their literature was oral: heroic poetry, mythological tales, and genealogies passed down through generations of singers and storytellers.\n\nTheir religion centered on a pantheon of gods—Wōðanaz (later Wōden (Old English) and Óðinn (Old Norse)), Þunaraz (Thunor and Þórr), Tīwaz (Tiw and Týr), and others—worshipped in sacred groves rather than temples. They practiced animal and occasionally human sacrifice, particularly at times of crisis or celebration.`The Germanic Verb System: Simplification and Innovation`As Proto-Indo-European evolved into Proto-Germanic over some two millennia, the verb system underwent dramatic restructuring. The elaborate PIE system was simplified in some ways and innovated in others.`Losses from Proto-Indo-European`The most striking change was the ~collapse of the aspect system~. Proto-Indo-European had carefully distinguished imperfective, perfective (aorist), and stative (perfect) aspects. Germanic abandoned these distinctions almost entirely. The old imperfective became the Germanic present; the old perfect, with its distinctive reduplication and o-grade ablaut, was repurposed as a preterite (past tense). The aorist was largely lost, its forms occasionally merging with the new preterite.\n\nThis left Germanic with only ~two tenses~: present and preterite. Where PIE could express subtle distinctions between ongoing past action, completed past action, and present states resulting from past action—all through verb morphology—Germanic had to rely on context or periphrastic constructions (combinations of auxiliary verbs with main verbs).\n\nThe ~subjunctive and optative moods merged~ into a single Germanic subjunctive, reducing the modal options available to speakers.\n\nThe ~augment~ (*e-), which had marked past tense in PIE, was lost entirely in Germanic.\n\n~Verb classes proliferated based on the structure of the present stem~, leading to the complex system of \"strong\" verb classes (organized by ablaut patterns) and \"weak\" verbs (a Germanic innovation using a dental suffix for the preterite).`The Germanic Innovation: Weak Verbs`Proto-Germanic created something new: the ~weak verb~. Rather than using ablaut to mark the preterite, weak verbs added a dental suffix (*-d- or *-t-). This is the origin of the \"-te\" ending in German preterites (machte, sagte, spielte) and the \"-ed\" ending in English ($mAde$, $saId$, played).\n\nThe origin of this dental suffix is debated, but the most widely accepted theory is that it derives from a compound with the verb \"to do\" (*dō-). What began perhaps as \"I love-did\" grammaticalized into a single word with a fused past-tense suffix. This innovation was enormously productive: new verbs entering Germanic languages almost always followed the weak pattern, and many originally strong verbs eventually became weak. The King James Bible provides one example of this pattern. In that book, the phrase \"the cock $crEw$\" appears. Speakers of Modern English are aware that the conjugation later became \"crowed\".`Old High German and the Continuing Evolution`The Germanic dialects spoken in what is now southern Germany and Switzerland developed into Old High German (roughly 750–1050 AD), distinguished from other Germanic languages by the ~High German consonant shift~. This series of sound changes transformed voiceless stops into fricatives or affricates (p → pf or ff; t → ts or s; k → ch), giving German words like ~Pfund~, ~Wasser~, and ~machen~ their characteristic sounds where English has ~pound~, ~water~, and ~make~. The effects of the shift were not uniform. Dialects further south experienced more sound changes. For example, in Swiss German, the /k/ sound became guttural /x/. The Swiss German word for \"kitchen\" is therefore \"Chuchi\", contrasting with High German \"Küche\". By contrast, more northerly dialects did not experience certain sound changes associated with the shift. For example, in Kölsch, spoken in Cologne, the /t/ in \"et\", English \"it\", never shifted to /s/, as it did in German \"es\".`Strong-Verb-Class Restructuring`Old High German inherited seven classes of strong verbs from Proto-Germanic, organized by their ablaut patterns. Over time, these classes began to blur. Some verbs shifted classes; others became weak. The original phonological conditioning that determined class membership became opaque as sound changes altered vowels. Today, German strong verbs must largely be memorized individually—their ablaut patterns, while still systematic, are no longer predictable from the infinitive form.`Development of the Perfect Tense`A major innovation in the history of German was the development of the ~perfect tense~ using the auxiliaries ~haben~ (to have) and ~sein~ (to be) with the past participle. This periphrasis, which began in Old High German and became fully established in Middle High German (1050–1350), created a new way to express completed action:\n\n🇩🇪 Ich habe $gesUngen$ (I have $sUng$)\n🇩🇪 Ich bin gekommen (I have come / I $cAme$)\n\nIn modern spoken German, this perfect construction has largely replaced the simple preterite in everyday speech, particularly in southern dialects. The preterite survives primarily in writing, in northern dialects, and with high-frequency verbs.`The Future Tense and Modal Verbs`Old High German expressed future time primarily through the present tense with temporal adverbs. Beginning in Middle High German, the verb ~werden~ (to become) was grammaticalized as a future auxiliary:\n\n🇩🇪 Ich werde singen (I will sing)\n\nThis created a three-way temporal system (present, preterite/perfect, future) from the original two-tense Proto-Germanic system—though notably through periphrasis rather than new morphological forms on the verb itself.`Preterite-Present Verbs`German preserves a distinctive class of verbs called ~preterite-presents~: verbs whose present-tense forms derive historically from Proto-Germanic strong preterites. These include the modal verbs ~können~ (can), ~müssen~ (must), ~dürfen~ (may), ~sollen~ (shall), ~mögen~ (may/like), and ~wissen~ (to know).\n\nThe peculiar conjugations of these verbs—with no endings in the first and third person singular (ich $kAnN$, er $kAnN$) and vowel differences between singular and plural (ich $kAnN$ vs. wir können)—reflects their origin as old preterite forms that were reanalyzed as presents.`The Subjunctive and Modern German`Old High German had a fully functional subjunctive mood in both present and preterite. Over time, as vowel distinctions reduced and the subjunctive forms became identical to the indicative in many verbs, speakers increasingly used periphrastic constructions with ~würde~ (would) + infinitive to express what the old synthetic subjunctive once conveyed:\n\n🇩🇪 Old: Wenn ich $kÄme$... (If I $cAme$...)\n🇩🇪 Modern alternative: Wenn ich kommen $wÜrde$... (If I $wOUld$ come...)\n\nThis trend continues in contemporary German, where the $wÜrde$ construction increasingly replaces synthetic subjunctive forms except for common verbs and in formal registers.`The Verb System Today`Modern German retains the essential architecture established in Proto-Germanic: two morphological tenses (present and preterite), strong verbs with ablaut, weak verbs with a dental suffix, and a distinction between indicative, subjunctive, and imperative moods. Yet the system has been transformed by millennia of change:\n\n🇩🇪 ~Aspect~ is expressed periphrastically (er $lIest$ = he reads/is reading) or through verbal prefixes and particles (er $lIest$ das Buch aus = he finishes reading the book)\n🇩🇪 ~Future~ is expressed with ~werden~ + infinitive\n🇩🇪 ~Perfect~ is expressed with ~haben~/~sein~ + past participle\n🇩🇪 ~Passive~ is expressed with ~werden~ + past participle (dynamic) or ~sein~ + past participle (stative)\n\nThe ablaut patterns that once pervaded Proto-Indo-European morphology survive in the strong verbs, a living fossil of that 5,000-year journey from the Pontic steppe to the German-speaking lands of central Europe.\n\nWhen you conjugate a German verb—when you say ich singe, ich $sAng$, ich habe $gesUngen$—you are participating in a tradition that stretches back through Old High German scribes in medieval monasteries, through Germanic warriors in their forest villages, through Yamnaya herders on the windswept steppe, all the way to that primordial cloud of supernova-enriched gas from which the Solar System was born. The heavy elements forged in dying stars became the Earth; the Earth brought forth life; life evolved the capacity for language; and language, passed from generation to generation, carries within it the traces of all this history—including, in the vowel changes of a German strong verb, the echo of Proto-Indo-European ablaut, still sounding after fifty centuries."
+          }
+        }
+      }
+    },
+    "Info.voiceHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Genus Verbi"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Voice"
+          }
+        }
+      }
+    },
+    "Info.voiceText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "`Genus Verbi`\n\n~Genus Verbi~ (auch Diathese) beschreibt die Beziehung zwischen dem Verb und seinen Argumenten. Das Deutsche hat drei Genera Verbi:\n\n🇩🇪 ~Aktiv~ – das Subjekt führt die Handlung aus (\"Ich singe das Lied\")\n🇩🇪 ~Vorgangspassiv~ – das Subjekt erleidet die Handlung (\"Das Lied wird gesungen\")\n🇩🇪 ~Zustandspassiv~ – das Subjekt befindet sich im Zustand nach der Handlung (\"Das Lied ist gesungen\")\n\nDiese App konzentriert sich derzeit auf Aktiv-Conjugationgroups. Passive Formen werden in zukünftigen Versionen hinzugefügt."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "`Voice`\n\n~Voice~ describes the relationship between the verb and its arguments. German has three voices:\n\n🇩🇪 ~Aktiv~ (active) – the subject performs the action (\"I sing the song\")\n🇩🇪 ~Vorgangspassiv~ (processual passive) – the subject undergoes the action (\"The song is being sung\")\n🇩🇪 ~Zustandspassiv~ (statal passive) – the subject is in the state after the action (\"The song is sung\")\n\nThis app currently focuses on active voice conjugationgroups. Passive forms will be added in future versions."
           }
         }
       }

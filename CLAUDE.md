@@ -65,10 +65,15 @@ Konjugieren/
 │   ├── Settings.swift          # @Observable settings with persistence
 │   ├── L.swift                 # Localization string accessors
 │   ├── GetterSetter.swift      # Protocol for key-value storage
-│   ├── GetterSetterReal.swift  # UserDefaults implementation
-│   ├── GameCenterManager.swift # Game Center authentication and scores
+│   ├── GetterSetterReal.swift  # Real UserDefaults implementation
+│   ├── GetterSetterDummy.swift # Test-double UserDefaults implementation
+│   ├── GameCenter.swift        # Game Center authentication and scores
+│   ├── GameCenterReal.swift    # Real Game Center implementation
+│   ├── GameCenterDummy.swift   # Test-double Game Center implementation
 │   ├── TimeFormatter.swift     # Elapsed time formatting (h:mm:ss)
-│   └── SoundPlayer.swift       # Audio playback with debouncing
+│   ├── SoundPlayer.swift       # Audio playback with debouncing
+│   ├── SoundPlayerReal.swift   # Real AVAudioPlayer sound-player implementation
+│   └── SoundPlayerDummy.swift  # Test-double sound-player implementation
 └── Views/
     ├── VerbBrowseView.swift    # List of verbs
     ├── VerbView.swift          # Verb detail with conjugations

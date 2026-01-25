@@ -82,7 +82,7 @@ private struct SegmentedPicker: ViewModifier {
 private struct FunButton: ViewModifier {
   func body(content: Content) -> some View {
     content
-      .foregroundColor(.customRed)
+      .foregroundColor(.customYellow)
       .buttonStyle(.bordered)
       .tint(.customRed)
   }

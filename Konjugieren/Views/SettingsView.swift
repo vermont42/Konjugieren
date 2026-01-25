@@ -3,6 +3,8 @@
 import SwiftUI
 
 struct SettingsView: View {
+  private var gameCenter: GameCenterManager { Current.gameCenter }
+
   var body: some View {
     @Bindable var settings = Current.settings
 
@@ -72,6 +74,15 @@ struct SettingsView: View {
               .settingsLabel()
 
             Spacer(minLength: Layout.tripleDefaultSpacing)
+
+            if gameCenter.isAuthenticated {
+              Button(L.GameCenter.viewLeaderboard) {
+                gameCenter.showLeaderboard()
+              }
+              .funButton()
+              .frame(maxWidth: .infinity)
+              .padding(.top, Layout.defaultSpacing)
+            }
           }
         }
         .onAppear {

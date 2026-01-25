@@ -5,6 +5,7 @@ import SwiftUI
 
 var Current = World.chooseWorld()
 
+@MainActor
 @Observable
 class World {
   var settings: Settings
@@ -13,7 +14,7 @@ class World {
   var family: String?
   var info: Info?
 
-  init(settings: Settings, gameCenter: GameCenterManager = GameCenterManager()) {
+  init(settings: Settings, gameCenter: GameCenterManager) {
     self.settings = settings
     self.gameCenter = gameCenter
   }
@@ -33,17 +34,17 @@ class World {
 
   static let device: World = {
     let settings = Settings(getterSetter: GetterSetterReal())
-    return World(settings: settings)
+    return World(settings: settings, gameCenter: GameCenterManager())
   }()
 
   static let simulator: World = {
     let settings = Settings(getterSetter: GetterSetterReal())
-    return World(settings: settings)
+    return World(settings: settings, gameCenter: GameCenterManager())
   }()
 
   static let unitTest: World = {
     let settings = Settings(getterSetter: GetterSetterFake())
-    return World(settings: settings)
+    return World(settings: settings, gameCenter: GameCenterManager())
   }()
 
   func handleURL(_ url: URL) {

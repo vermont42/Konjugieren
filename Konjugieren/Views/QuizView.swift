@@ -94,8 +94,8 @@ struct QuizView: View {
 
       TextField(L.Quiz.conjugation, text: $userInput)
         .textFieldStyle(.roundedBorder)
-        .autocapitalization(.none)
-        .disableAutocorrection(true)
+        .textInputAutocapitalization(.never)
+        .autocorrectionDisabled()
         .focused($isTextFieldFocused)
         .onSubmit {
           guard !userInput.isEmpty else { return }

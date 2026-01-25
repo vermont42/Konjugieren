@@ -7,7 +7,7 @@ struct RichTextView: View {
 
   var body: some View {
     VStack(alignment: .leading, spacing: 8) {
-      ForEach(Array(blocks.enumerated()), id: \.offset) { _, block in
+      ForEach(blocks, id: \.self) { block in
         switch block {
         case .subheading(let text):
           Text(text)

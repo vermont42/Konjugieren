@@ -20,7 +20,7 @@ struct InfoView: View {
         VStack(alignment: .leading, spacing: 0) {
           Text(info.heading)
             .font(.largeTitle.bold())
-            .foregroundColor(.customYellow)
+            .foregroundStyle(.customYellow)
             .multilineTextAlignment(.center)
             .fixedSize(horizontal: false, vertical: true)
             .frame(maxWidth: .infinity, alignment: .center)

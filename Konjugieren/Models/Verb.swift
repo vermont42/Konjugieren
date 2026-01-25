@@ -5,6 +5,15 @@ import Foundation
 struct Verb: Identifiable, Hashable, CustomStringConvertible {
   static var verbs: [String: Verb] = [:]
   static let minVerbLength = 3
+
+  static var verbsSortedAlphabetically: [Verb] {
+    Array(verbs.values).sorted { $0.infinitiv < $1.infinitiv }
+  }
+
+  static var verbsSortedByFrequency: [Verb] {
+    Array(verbs.values).sorted { $0.frequency < $1.frequency }
+  }
+
   let id = UUID()
   let infinitiv: String
   let translation: String

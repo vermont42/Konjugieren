@@ -7,41 +7,26 @@ struct MainTabView: View {
 
   var body: some View {
     TabView {
-      VerbBrowseView()
-        .tabItem {
-          Image(systemName: "book.fill")
-          Text(L.Navigation.verbs)
-        }
-        .tag(0)
+      Tab(L.Navigation.verbs, systemImage: "book.fill") {
+        VerbBrowseView()
+      }
 
-      FamilyBrowseView()
-        .tabItem {
-          Image(systemName: "key.fill")
-          Text(L.Navigation.families)
-        }
-        .tag(1)
+      Tab(L.Navigation.families, systemImage: "key.fill") {
+        FamilyBrowseView()
+      }
 
-      QuizView()
-        .environment(quiz)
-        .tabItem {
-          Image(systemName: "pencil.circle.fill")
-          Text(L.Navigation.quiz)
-        }
-        .tag(2)
+      Tab(L.Navigation.quiz, systemImage: "pencil.circle.fill") {
+        QuizView()
+          .environment(quiz)
+      }
 
-      InfoBrowseView()
-        .tabItem {
-          Image(systemName: "questionmark.diamond.fill")
-          Text(L.Navigation.info)
-        }
-        .tag(3)
+      Tab(L.Navigation.info, systemImage: "questionmark.diamond.fill") {
+        InfoBrowseView()
+      }
 
-      SettingsView()
-        .tabItem {
-          Image(systemName: "gearshape.2.fill")
-          Text(L.Navigation.settings)
-        }
-        .tag(4)
+      Tab(L.Navigation.settings, systemImage: "gearshape.2.fill") {
+        SettingsView()
+      }
     }
     .tint(.customRed)
   }

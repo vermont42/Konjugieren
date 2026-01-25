@@ -7,7 +7,7 @@ struct InfoBrowseView: View {
   @State private var isPresentingVerb = false
 
   var body: some View {
-    NavigationView {
+    NavigationStack {
       ScrollView {
         LazyVStack(spacing: 0) {
           ForEach(Info.infos, id: \.heading) { info in
@@ -22,8 +22,7 @@ struct InfoBrowseView: View {
           }
         }
       }
-      .navigationBarTitle(L.Navigation.info)
-      .navigationViewStyle(.stack) // https://stackoverflow.com/a/66024249
+      .navigationTitle(L.Navigation.info)
       .onChange(of: Current.info) { _, newInfo in
         if newInfo == nil {
           isPresentingInfo = false
@@ -127,7 +126,7 @@ struct InfoRowView: View {
 
     return Text(result)
       .font(.subheadline)
-      .foregroundColor(.customForeground)
+      .foregroundStyle(.customForeground)
   }
 }
 

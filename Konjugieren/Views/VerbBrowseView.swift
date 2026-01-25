@@ -4,16 +4,7 @@ import SwiftUI
 
 struct VerbBrowseView: View {
   @State private var sortOrder: SortOrder = .alphabetical
-
-  private var sortedVerbs: [Verb] {
-    let verbs = Array(Verb.verbs.values)
-    switch sortOrder {
-    case .alphabetical:
-      return verbs.sorted { $0.infinitiv < $1.infinitiv }
-    case .frequency:
-      return verbs.sorted { $0.frequency < $1.frequency }
-    }
-  }
+  @State private var sortedVerbs: [Verb] = Verb.verbsSortedAlphabetically
 
   var body: some View {
     NavigationStack {
@@ -47,6 +38,18 @@ struct VerbBrowseView: View {
       .navigationDestination(for: Verb.self) { verb in
         VerbView(verb: verb)
       }
+      .onChange(of: sortOrder) {
+        updateSortedVerbs()
+      }
+    }
+  }
+
+  private func updateSortedVerbs() {
+    switch sortOrder {
+    case .alphabetical:
+      sortedVerbs = Verb.verbsSortedAlphabetically
+    case .frequency:
+      sortedVerbs = Verb.verbsSortedByFrequency
     }
   }
 }

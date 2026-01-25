@@ -2,6 +2,7 @@
 
 import Foundation
 
+@MainActor
 @Observable
 class Quiz {
   static let questionCount = 30
@@ -168,7 +169,9 @@ class Quiz {
 
   private func startTimer() {
     timer = Timer.scheduledTimer(withTimeInterval: timerInterval, repeats: true) { [weak self] _ in
-      self?.elapsedSeconds += 1
+      MainActor.assumeIsolated {
+        self?.elapsedSeconds += 1
+      }
     }
   }
 
@@ -188,8 +191,9 @@ class Quiz {
     }
   }
 
+  @MainActor
   deinit {
-    stopTimer()
+    timer?.invalidate()
   }
 }
 

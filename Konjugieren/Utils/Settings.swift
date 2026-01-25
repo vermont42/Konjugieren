@@ -3,6 +3,7 @@
 import Foundation
 import Observation
 
+@MainActor
 @Observable
 class Settings {
   private let getterSetter: GetterSetter

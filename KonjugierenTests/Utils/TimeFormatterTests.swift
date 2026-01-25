@@ -4,8 +4,6 @@
 import Testing
 
 struct TimeFormatterTests {
-  // MARK: - Edge Cases
-
   @Test func zero() {
     #expect(TimeFormatter.formatIntTime(0) == "0")
   }
@@ -16,8 +14,6 @@ struct TimeFormatterTests {
     #expect(TimeFormatter.formatIntTime(-3600) == "0")
   }
 
-  // MARK: - Seconds Only (< 60)
-
   @Test func secondsOnly() {
     #expect(TimeFormatter.formatIntTime(1) == "1")
     #expect(TimeFormatter.formatIntTime(9) == "9")
@@ -26,8 +22,6 @@ struct TimeFormatterTests {
     #expect(TimeFormatter.formatIntTime(45) == "45")
     #expect(TimeFormatter.formatIntTime(59) == "59")
   }
-
-  // MARK: - Minutes and Seconds (60-3599)
 
   @Test func exactMinutes() {
     #expect(TimeFormatter.formatIntTime(60) == "1:00")
@@ -46,8 +40,6 @@ struct TimeFormatterTests {
     #expect(TimeFormatter.formatIntTime(599) == "9:59")
     #expect(TimeFormatter.formatIntTime(3599) == "59:59")
   }
-
-  // MARK: - Hours, Minutes, and Seconds (>= 3600)
 
   @Test func exactHours() {
     #expect(TimeFormatter.formatIntTime(3600) == "1:00:00")
@@ -70,24 +62,15 @@ struct TimeFormatterTests {
   }
 
   @Test func boundaryValues() {
-    // Just under 1 minute
     #expect(TimeFormatter.formatIntTime(59) == "59")
-    // Exactly 1 minute
     #expect(TimeFormatter.formatIntTime(60) == "1:00")
-    // Just under 1 hour
     #expect(TimeFormatter.formatIntTime(3599) == "59:59")
-    // Exactly 1 hour
     #expect(TimeFormatter.formatIntTime(3600) == "1:00:00")
   }
 
-  // MARK: - Large Values
-
   @Test func largeValues() {
-    // 24 hours
     #expect(TimeFormatter.formatIntTime(86400) == "24:00:00")
-    // 100 hours
     #expect(TimeFormatter.formatIntTime(360000) == "100:00:00")
-    // 999 hours, 59 minutes, 59 seconds
     #expect(TimeFormatter.formatIntTime(3599999) == "999:59:59")
   }
 }

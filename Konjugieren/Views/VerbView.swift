@@ -100,9 +100,12 @@ struct VerbView: View {
 }
 
 struct ConjugationRow: Identifiable {
-  let id = UUID()
   let pronoun: String?
   let form: String
+
+  var id: String {
+    "\(pronoun ?? ""):\(form)"
+  }
 
   init(pronoun: String? = nil, form: String) {
     self.pronoun = pronoun

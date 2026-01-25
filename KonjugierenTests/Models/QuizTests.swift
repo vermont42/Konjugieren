@@ -4,9 +4,8 @@ import Foundation
 import Testing
 @testable import Konjugieren
 
+@MainActor
 struct QuizTests {
-  // MARK: - Initial State
-
   @Test func initialState() {
     let quiz = Quiz()
     #expect(quiz.isInProgress == false)
@@ -20,8 +19,6 @@ struct QuizTests {
     #expect(quiz.questions.isEmpty)
     #expect(quiz.currentQuestion == nil)
   }
-
-  // MARK: - Start Quiz
 
   @Test func startQuiz() {
     let quiz = Quiz(timerInterval: 0.001)
@@ -67,8 +64,6 @@ struct QuizTests {
     quiz.quit()
   }
 
-  // MARK: - Quit Quiz
-
   @Test func quitQuiz() {
     let quiz = Quiz(timerInterval: 0.001)
     quiz.start()
@@ -83,8 +78,6 @@ struct QuizTests {
     #expect(quiz.lastCorrectAnswer == nil)
     #expect(quiz.questions.isEmpty)
   }
-
-  // MARK: - Submit Answer
 
   @Test func submitCorrectAnswer() {
     let quiz = Quiz(timerInterval: 0.001)
@@ -175,8 +168,6 @@ struct QuizTests {
     #expect(quiz.score == Quiz.questionCount * Quiz.pointsPerCorrect)
   }
 
-  // MARK: - Computed Properties
-
   @Test func currentQuestionReturnsCorrectQuestion() {
     let quiz = Quiz(timerInterval: 0.001)
     quiz.start()
@@ -240,9 +231,7 @@ struct QuizTests {
     Current.settings.quizDifficulty = .regular
   }
 
-  // MARK: - Timer
-
-  @Test @MainActor func timerIncrementsElapsedSeconds() {
+  @Test func timerIncrementsElapsedSeconds() {
     let quiz = Quiz(timerInterval: 0.01)
     quiz.start()
 
@@ -255,8 +244,6 @@ struct QuizTests {
 
     quiz.quit()
   }
-
-  // MARK: - QuizItem Pronoun
 
   @Test func quizItemPronounForParticiples() {
     let verb = Verb.verbs["machen"]!
@@ -318,8 +305,6 @@ struct QuizTests {
     #expect(sieItem.pronoun == "Sie")
   }
 
-  // MARK: - QuizItem DisplayName
-
   @Test func quizItemDisplayNameGerman() {
     let verb = Verb.verbs["machen"]!
     let item = QuizItem(
@@ -343,8 +328,6 @@ struct QuizTests {
     let englishName = item.displayName(lang: .english)
     #expect(englishName.contains("Present") || englishName.contains("Indicative"))
   }
-
-  // MARK: - Constants
 
   @Test func quizConstants() {
     #expect(Quiz.questionCount == 30)

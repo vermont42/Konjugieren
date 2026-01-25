@@ -48,7 +48,7 @@ private struct SubheadingLabel: ViewModifier {
   func body(content: Content) -> some View {
     content
       .font(.system(size: 20, weight: .bold))
-      .foregroundColor(.customYellow)
+      .foregroundStyle(.customYellow)
       .padding(.horizontal, Layout.doubleDefaultSpacing)
   }
 }
@@ -57,7 +57,7 @@ private struct SettingsLabel: ViewModifier {
   func body(content: Content) -> some View {
     content
       .font(.system(size: 16))
-      .foregroundColor(.customForeground)
+      .foregroundStyle(.customForeground)
       .frame(maxWidth: .infinity, alignment: .leading)
       .padding(.horizontal, Layout.doubleDefaultSpacing)
   }
@@ -67,7 +67,7 @@ private struct HeadingLabel: ViewModifier {
   func body(content: Content) -> some View {
     content
       .font(.system(size: 22, weight: .bold))
-      .accessibility(addTraits: [.isHeader])
+      .accessibilityAddTraits(.isHeader)
   }
 }
 
@@ -82,7 +82,7 @@ private struct SegmentedPicker: ViewModifier {
 private struct FunButton: ViewModifier {
   func body(content: Content) -> some View {
     content
-      .foregroundColor(.customYellow)
+      .foregroundStyle(.customYellow)
       .buttonStyle(.bordered)
       .tint(.customRed)
   }
@@ -92,7 +92,7 @@ private struct TableText: ViewModifier {
   func body(content: Content) -> some View {
     content
       .font(.system(size: 18))
-      .foregroundColor(.customYellow)
+      .foregroundStyle(.customYellow)
   }
 }
 
@@ -100,7 +100,7 @@ private struct TableSubtext: ViewModifier {
   func body(content: Content) -> some View {
     content
       .font(.system(size: 15))
-      .foregroundColor(.customForeground)
+      .foregroundStyle(.customForeground)
   }
 }
 

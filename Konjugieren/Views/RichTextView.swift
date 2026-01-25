@@ -24,8 +24,6 @@ struct RichTextView: View {
   }
 }
 
-// MARK: - Body Text View (AttributedString-based)
-
 struct BodyTextView: View {
   let segments: [TextSegment]
 
@@ -50,7 +48,6 @@ struct BodyTextView: View {
         result.append(attributed)
 
       case .link(let text, let url):
-        // Use markdown syntax for tappable links
         let markdownLink = "[\(text)](\(url.absoluteString))"
         if let attributedLink = try? AttributedString(markdown: markdownLink) {
           result.append(attributedLink)

@@ -27,7 +27,6 @@ struct VerbView: View {
   var body: some View {
     ScrollView {
       VStack(alignment: .leading, spacing: 24) {
-        // Header section
         VStack(alignment: .leading, spacing: 8) {
           Text(verb.translation)
             .font(.title2)
@@ -42,9 +41,7 @@ struct VerbView: View {
 
         Divider()
 
-        // Conjugations
         VStack(alignment: .leading, spacing: 20) {
-          // Participles
           ConjugationSectionView(
             title: displayName(for: .perfektpartizip),
             conjugations: [conjugate(.perfektpartizip)]
@@ -60,7 +57,6 @@ struct VerbView: View {
           conjugationSection(for: Conjugationgroup.präsensKonjunktivI)
           conjugationSection(for: Conjugationgroup.präteritumKonditional)
 
-          // Imperativ
           ConjugationSectionView(
             title: displayName(for: .imperativ(.secondSingular)),
             conjugations: imperativConjugations()
@@ -89,15 +85,12 @@ struct VerbView: View {
   private func imperativConjugations() -> [ConjugationRow] {
     PersonNumber.imperativPersonNumbers.map { personNumber in
       let form = conjugate(.imperativ(personNumber))
-      // For 2s and 2p, show the pronoun separately.
-      // For 1p and 3p, the form already includes the pronoun (e.g., "gehen wir").
       switch personNumber {
       case .secondSingular:
         return ConjugationRow(pronoun: "du", form: form)
       case .secondPlural:
         return ConjugationRow(pronoun: "ihr", form: form)
       case .firstPlural, .thirdPlural:
-        // Form already includes pronoun, so don't duplicate it.
         return ConjugationRow(pronoun: nil, form: form)
       default:
         return ConjugationRow(pronoun: personNumber.pronoun, form: form)

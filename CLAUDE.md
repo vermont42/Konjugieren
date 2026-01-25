@@ -79,6 +79,16 @@ Konjugieren/
     └── ResultsView.swift       # Quiz results modal
 ```
 
+## Comments
+
+Code should be well-written and therefore self-explanatory. Explanatory and MARK comments result in clutter and increased maintenance burden. Only use comments for the following purposes:
+
+* File headers
+* TODOs
+* Hacks or workarounds
+
+When reviewing code, do not flag these two types of comments.
+
 ## Terminology
 
 ### Conjugation Group

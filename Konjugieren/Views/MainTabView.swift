@@ -44,8 +44,5 @@ struct MainTabView: View {
         .tag(4)
     }
     .tint(.customRed)
-    .onAppear {
-      // Current.analytics.recordViewAppeared("\(MainTabView.self)")
-    }
   }
 }

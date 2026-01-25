@@ -16,7 +16,6 @@ class SoundPlayer {
   }
 
   static func play(_ sound: Sound, shouldDebounce: Bool = true) {
-    // Allow .silence for setup, but check setting for other sounds.
     if sound != .silence && Current.settings.audioFeedback == .disable {
       return
     }

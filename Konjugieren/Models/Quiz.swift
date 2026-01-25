@@ -7,8 +7,6 @@ class Quiz {
   static let questionCount = 30
   static let pointsPerCorrect = 10
 
-  // MARK: - Public State
-
   private(set) var isInProgress = false
   var shouldShowResults = false
   private(set) var currentIndex = 0
@@ -16,21 +14,14 @@ class Quiz {
   private(set) var elapsedSeconds = 0
   private(set) var correctCount = 0
 
-  // Wrong answer feedback (shown after incorrect submission)
   private(set) var lastIncorrectAnswer: String?
   private(set) var lastCorrectAnswer: String?
 
-  // MARK: - Quiz Data
-
   private(set) var questions: [QuizItem] = []
-
-  // MARK: - Private
 
   private var timer: Timer?
   private var difficultyUsed: QuizDifficulty = .regular
   private var timerInterval: TimeInterval = 1.0
-
-  // MARK: - Computed Properties
 
   var currentQuestion: QuizItem? {
     guard isInProgress, currentIndex < questions.count else { return nil }
@@ -56,8 +47,6 @@ class Quiz {
   init(timerInterval: TimeInterval = 1.0) {
     self.timerInterval = timerInterval
   }
-
-  // MARK: - Public Methods
 
   func start() {
     difficultyUsed = Current.settings.quizDifficulty
@@ -116,23 +105,18 @@ class Quiz {
     SoundPlayer.play(Sound.randomSadTrombone)
   }
 
-  // MARK: - Private Methods
-
   private func generateQuestions() -> [QuizItem] {
     let allVerbs = Array(Verb.verbs.values)
     guard !allVerbs.isEmpty else { return [] }
 
     var items: [QuizItem] = []
 
-    // Add exactly 1 präsenspartizip
     items.append(makeQuizItem(verb: allVerbs.randomElement()!, conjugationgroup: .präsenspartizip))
 
-    // Add exactly 2 perfektpartizips
     for _ in 0..<2 {
       items.append(makeQuizItem(verb: allVerbs.randomElement()!, conjugationgroup: .perfektpartizip))
     }
 
-    // Fill remaining 27 questions with non-participle conjugationgroups
     let remainingCount = Quiz.questionCount - 3
     for _ in 0..<remainingCount {
       let verb = allVerbs.randomElement()!
@@ -140,7 +124,6 @@ class Quiz {
       items.append(makeQuizItem(verb: verb, conjugationgroup: conjugationgroup))
     }
 
-    // Shuffle so participles aren't always first
     items.shuffle()
 
     return items
@@ -161,13 +144,11 @@ class Quiz {
   private func randomNonPartizipConjugationgroup() -> Conjugationgroup {
     var options: [() -> Conjugationgroup] = []
 
-    // Non-participle conjugationgroups for regular difficulty
     options.append { .präsensIndicativ(self.randomPersonNumber()) }
     options.append { .perfektIndikativ(self.randomPersonNumber()) }
     options.append { .imperativ(self.randomImperativPersonNumber()) }
 
     if difficultyUsed == .ridiculous {
-      // Additional conjugationgroups for ridiculous difficulty
       options.append { .präsensKonjunktivI(self.randomPersonNumber()) }
       options.append { .präteritumIndicativ(self.randomPersonNumber()) }
       options.append { .präteritumKonditional(self.randomPersonNumber()) }
@@ -211,8 +192,6 @@ class Quiz {
     stopTimer()
   }
 }
-
-// MARK: - QuizItem
 
 struct QuizItem: Identifiable {
   let id = UUID()

@@ -18,7 +18,6 @@ struct InfoView: View {
 
       ScrollView {
         VStack(alignment: .leading, spacing: 0) {
-          // Custom large title that wraps and scrolls off-screen
           Text(info.heading)
             .font(.largeTitle.bold())
             .foregroundColor(.customYellow)
@@ -56,12 +55,9 @@ struct InfoView: View {
     })
   }
 
-  // MARK: - Link Handling
-
   private func handleInfoLink(_ url: URL) -> OpenURLAction.Result {
     let cleaned = cleanURLString(url.absoluteString)
 
-    // Check if it's an internal info link
     if let infoIndex = Info.headingToIndex(heading: cleaned) {
       if let infoURL = URL(string: "\(URL.konjugierenURLPrefix)\(URL.infoHost)/\(infoIndex)") {
         Current.handleURL(infoURL)
@@ -69,7 +65,6 @@ struct InfoView: View {
       return .handled
     }
 
-    // Check if it's a verb link
     if Verb.verbs[cleaned] != nil {
       if let verbURL = URL(string: "\(URL.konjugierenURLPrefix)\(URL.verbHost)/\(cleaned)") {
         Current.handleURL(verbURL)
@@ -77,7 +72,6 @@ struct InfoView: View {
       return .handled
     }
 
-    // External URL - let system handle it (opens Safari)
     return .systemAction
   }
 

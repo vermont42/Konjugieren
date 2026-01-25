@@ -2,30 +2,22 @@
 
 import SwiftUI
 
-// MARK: - RichTextBlock
-
 enum RichTextBlock: Hashable {
   case subheading(String)
   case body([TextSegment])
 }
 
-// MARK: - ConjugationPart
-
 enum ConjugationPart: Hashable {
-  case regular(String)    // Expected characters (yellow)
-  case irregular(String)  // Changed characters (red)
+  case regular(String)
+  case irregular(String)
 }
-
-// MARK: - TextSegment
 
 enum TextSegment: Hashable {
   case plain(String)
   case bold(String)
   case link(text: String, url: URL)
-  case conjugation([ConjugationPart])  // Alternating regular/irregular parts
+  case conjugation([ConjugationPart])
 }
-
-// MARK: - String Extensions
 
 extension String {
   static var subheadingSeparator: Character { "`" }
@@ -48,10 +40,7 @@ extension String {
     return result
   }
 
-  // MARK: - Rich Text Block Parser
-
   var richTextBlocks: [RichTextBlock] {
-    // Convert literal \n from Localizable.xcstrings to actual newlines
     let processedString = self.replacingOccurrences(of: "\\n", with: "\n")
 
     var blocks: [RichTextBlock] = []
@@ -61,7 +50,6 @@ extension String {
     for char in processedString {
       if char == String.subheadingSeparator {
         if inSubheading {
-          // Closing backtick: emit subheading block
           let trimmed = currentText.trimmingCharacters(in: .whitespacesAndNewlines)
           if !trimmed.isEmpty {
             blocks.append(.subheading(trimmed))
@@ -69,7 +57,6 @@ extension String {
           currentText = ""
           inSubheading = false
         } else {
-          // Opening backtick: emit any pending body text first
           if !currentText.isEmpty {
             let segments = currentText.parseBodyToSegments()
             blocks.append(.body(segments))
@@ -82,7 +69,6 @@ extension String {
       }
     }
 
-    // Emit any remaining text as body
     if !currentText.isEmpty {
       let segments = currentText.parseBodyToSegments()
       blocks.append(.body(segments))
@@ -90,8 +76,6 @@ extension String {
 
     return blocks
   }
-
-  // MARK: - Body Text Parser (Bold, Links, Conjugations)
 
   private func parseBodyToSegments() -> [TextSegment] {
     var segments: [TextSegment] = []
@@ -107,7 +91,6 @@ extension String {
 
       if char == String.boldSeparator {
         if inBold {
-          // Closing bold
           let content = String(self[self.index(after: markupStart)..<index])
           if !currentText.isEmpty {
             segments.append(.plain(currentText))
@@ -116,7 +99,6 @@ extension String {
           segments.append(.bold(content))
           inBold = false
         } else {
-          // Opening bold
           if !currentText.isEmpty {
             segments.append(.plain(currentText))
             currentText = ""
@@ -126,13 +108,11 @@ extension String {
         }
       } else if char == String.linkSeparator {
         if inLink {
-          // Closing link
           let content = String(self[self.index(after: markupStart)..<index])
           if !currentText.isEmpty {
             segments.append(.plain(currentText))
             currentText = ""
           }
-          // Create URL
           let urlString: String
           if content.hasPrefix("http") {
             urlString = content
@@ -146,7 +126,6 @@ extension String {
           }
           inLink = false
         } else {
-          // Opening link
           if !currentText.isEmpty {
             segments.append(.plain(currentText))
             currentText = ""
@@ -156,18 +135,15 @@ extension String {
         }
       } else if char == String.conjugationSeparator {
         if inConjugation {
-          // Closing conjugation
           let content = String(self[self.index(after: markupStart)..<index])
           if !currentText.isEmpty {
             segments.append(.plain(currentText))
             currentText = ""
           }
-          // Parse conjugation into parts
           let conjugationSegment = content.parseConjugationToSegment()
           segments.append(conjugationSegment)
           inConjugation = false
         } else {
-          // Opening conjugation
           if !currentText.isEmpty {
             segments.append(.plain(currentText))
             currentText = ""
@@ -180,15 +156,12 @@ extension String {
       }
     }
 
-    // Append any remaining plain text
     if !currentText.isEmpty {
       segments.append(.plain(currentText))
     }
 
     return segments
   }
-
-  // MARK: - Conjugation Parser (Uppercase → Red, Lowercase → Yellow)
 
   private func parseConjugationToSegment() -> TextSegment {
     guard !self.isEmpty else {
@@ -204,14 +177,11 @@ extension String {
       let lowercasedChar = char.lowercased()
 
       if currentIsUpper == nil {
-        // First character
         currentIsUpper = isUpper
         currentRun = lowercasedChar
       } else if isUpper == currentIsUpper {
-        // Same case as current run, append
         currentRun += lowercasedChar
       } else {
-        // Case changed, emit current run and start new one
         if currentIsUpper == true {
           parts.append(.irregular(currentRun))
         } else {
@@ -222,7 +192,6 @@ extension String {
       }
     }
 
-    // Emit final run
     if !currentRun.isEmpty {
       if currentIsUpper == true {
         parts.append(.irregular(currentRun))

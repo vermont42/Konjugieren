@@ -52,7 +52,6 @@ struct Info: Hashable {
   var previewSegments: [TextSegment] {
     for block in richTextBlocks {
       if case .body(let segments) = block {
-        // Strip leading newlines from the first segment if it's plain text
         guard !segments.isEmpty else { return segments }
         var result = segments
         if case .plain(let text) = result[0] {

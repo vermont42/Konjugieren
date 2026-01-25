@@ -8,12 +8,14 @@ var Current = World.chooseWorld()
 @Observable
 class World {
   var settings: Settings
+  var gameCenter: GameCenterManager
   var verb: Verb?
   var family: String?
   var info: Info?
 
-  init(settings: Settings) {
+  init(settings: Settings, gameCenter: GameCenterManager = GameCenterManager()) {
     self.settings = settings
+    self.gameCenter = gameCenter
   }
 
   static func chooseWorld() -> World {

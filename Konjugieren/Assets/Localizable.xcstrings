@@ -436,6 +436,38 @@
         }
       }
     },
+    "GameCenter.leaderboard" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bestenliste"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Leaderboard"
+          }
+        }
+      }
+    },
+    "GameCenter.viewLeaderboard" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bestenliste anzeigen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View Leaderboard"
+          }
+        }
+      }
+    },
     "ImageInfo.cliffSchmiesing" : {
       "localizations" : {
         "de" : {

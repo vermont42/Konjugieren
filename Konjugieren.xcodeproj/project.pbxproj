@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		03C47DCD2F25BFFE0086AF63 /* GameCenterResources.gamekit in Resources */ = {isa = PBXBuildFile; fileRef = 03C47DCC2F25BFFE0086AF63 /* GameCenterResources.gamekit */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		033FC2932EF3161D00F9EE04 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -19,6 +23,7 @@
 /* Begin PBXFileReference section */
 		033FC2852EF3161C00F9EE04 /* Konjugieren.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Konjugieren.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		033FC2922EF3161D00F9EE04 /* KonjugierenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KonjugierenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		03C47DCC2F25BFFE0086AF63 /* GameCenterResources.gamekit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = GameCenterResources.gamekit; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -55,6 +60,7 @@
 		033FC27C2EF3161C00F9EE04 = {
 			isa = PBXGroup;
 			children = (
+				03C47DCC2F25BFFE0086AF63 /* GameCenterResources.gamekit */,
 				033FC2872EF3161C00F9EE04 /* Konjugieren */,
 				033FC2952EF3161D00F9EE04 /* KonjugierenTests */,
 				033FC2862EF3161C00F9EE04 /* Products */,
@@ -163,6 +169,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				03C47DCD2F25BFFE0086AF63 /* GameCenterResources.gamekit in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +336,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Konjugieren/Konjugieren.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V3L2PL4QC9;
@@ -361,6 +369,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = Konjugieren/Konjugieren.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V3L2PL4QC9;

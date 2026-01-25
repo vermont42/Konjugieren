@@ -1,0 +1,50 @@
+{
+  "meta" : {
+    "version" : "2024-11-15"
+  },
+  "resources" : {
+    "leaderboardImages" : {
+      "Leaderboard-de-DE" : [
+        {
+          "localID" : "Leaderboard-de-DE",
+          "url" : "de-DE\/LeaderboardImage-Leaderboard-de-DE.png"
+        }
+      ],
+      "Leaderboard-en-US" : [
+        {
+          "localID" : "Leaderboard-en-US",
+          "url" : "en-US\/LeaderboardImage-Leaderboard-en-US.png"
+        }
+      ]
+    },
+    "leaderboardLocalizations" : {
+      "Leaderboard" : [
+        {
+          "formatterOverride" : "INTEGER",
+          "locale" : "de-DE",
+          "localID" : "Leaderboard-de-DE",
+          "name" : "Bestenliste"
+        },
+        {
+          "formatterOverride" : "INTEGER",
+          "locale" : "en-US",
+          "localID" : "Leaderboard-en-US",
+          "name" : "Leaderboard"
+        }
+      ]
+    },
+    "leaderboards" : [
+      {
+        "archived" : false,
+        "defaultFormatter" : "INTEGER",
+        "referenceName" : "Leaderboard",
+        "scoreRangeEnd" : null,
+        "scoreRangeStart" : null,
+        "scoreSortType" : "DESC",
+        "submissionType" : "BEST_SCORE",
+        "vendorIdentifier" : "Leaderboard",
+        "visibility" : "SHOW_FOR_ALL"
+      }
+    ]
+  }
+}

@@ -7,6 +7,7 @@ struct ResultsView: View {
   @Environment(\.dismiss) private var dismiss
 
   private var settings: Settings { Current.settings }
+  private var gameCenter: GameCenterManager { Current.gameCenter }
 
   var body: some View {
     ZStack {
@@ -28,6 +29,15 @@ struct ResultsView: View {
         }
         .padding(.horizontal, Layout.doubleDefaultSpacing)
         .padding(.top, Layout.doubleDefaultSpacing)
+
+        if gameCenter.isAuthenticated {
+          Button(L.GameCenter.viewLeaderboard) {
+            showLeaderboard()
+          }
+          .funButton()
+          .frame(maxWidth: .infinity)
+          .padding(.top, Layout.defaultSpacing)
+        }
 
         List {
           ForEach(quiz.questions) { question in
@@ -64,6 +74,10 @@ struct ResultsView: View {
       }
     }
     .frame(maxWidth: .infinity)
+  }
+
+  private func showLeaderboard() {
+    gameCenter.showLeaderboard()
   }
 }
 

@@ -444,4 +444,14 @@ enum L {
       String(localized: "ImageInfo.joshAdams")
     }
   }
+
+  enum GameCenter {
+    static var leaderboard: String {
+      String(localized: "GameCenter.leaderboard")
+    }
+
+    static var viewLeaderboard: String {
+      String(localized: "GameCenter.viewLeaderboard")
+    }
+  }
 }

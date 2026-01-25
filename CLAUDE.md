@@ -56,19 +56,27 @@ Konjugieren/
 │   ├── Family.swift            # Verb families (strong/weak/mixed/ieren)
 │   ├── PersonNumber.swift      # 1s, 2s, 3s, 1p, 2p, 3p (uses settings)
 │   ├── Prefix.swift            # Separable/inseparable prefixes
-│   └── Auxiliary.swift         # haben/sein auxiliary verbs
+│   ├── Auxiliary.swift         # haben/sein auxiliary verbs
+│   ├── Quiz.swift              # Quiz game logic and state
+│   ├── QuizDifficulty.swift    # Regular vs ridiculous difficulty
+│   └── Sound.swift             # Sound effect definitions
 ├── Utils/
 │   ├── World.swift             # Dependency injection container
 │   ├── Settings.swift          # @Observable settings with persistence
 │   ├── L.swift                 # Localization string accessors
 │   ├── GetterSetter.swift      # Protocol for key-value storage
-│   └── GetterSetterReal.swift  # UserDefaults implementation
+│   ├── GetterSetterReal.swift  # UserDefaults implementation
+│   ├── GameCenterManager.swift # Game Center authentication and scores
+│   ├── TimeFormatter.swift     # Elapsed time formatting (h:mm:ss)
+│   └── SoundPlayer.swift       # Audio playback with debouncing
 └── Views/
     ├── VerbBrowseView.swift    # List of verbs
     ├── VerbView.swift          # Verb detail with conjugations
     ├── SettingsView.swift      # Settings UI
     ├── HistoryView.swift       # German verb system history
-    └── InfoBrowseView.swift    # Info/Help section
+    ├── InfoBrowseView.swift    # Info/Help section
+    ├── QuizView.swift          # Quiz UI with question display
+    └── ResultsView.swift       # Quiz results modal
 ```
 
 ## Terminology
@@ -271,6 +279,8 @@ Settings are managed by `Settings.swift`, an `@Observable` class that persists t
 |---------|------|---------|-------------|
 | `conjugationgroupLang` | `ConjugationgroupLang` | `.german` | Display conjugationgroup names in German or English |
 | `thirdPersonPronounGender` | `ThirdPersonPronounGender` | `.er` | Which 3rd-person-singular pronoun to show (er/sie/es) |
+| `quizDifficulty` | `QuizDifficulty` | `.regular` | Quiz difficulty level |
+| `audioFeedback` | `AudioFeedback` | `.enable` | Enable/disable sound effects |
 
 ### Adding a New Setting
 
@@ -314,6 +324,115 @@ if let mySettingString = getterSetter.get(key: Settings.mySettingKey) {
 3. **Add localization strings** to `L.swift` and `Localizable.xcstrings`
 
 4. **Add UI** to `SettingsView.swift`
+
+## Quiz System
+
+The quiz tests users' knowledge of German verb conjugations with timed, scored gameplay.
+
+### Architecture
+
+| File | Purpose |
+|------|---------|
+| `Quiz.swift` | `@Observable` class managing quiz state and logic |
+| `QuizView.swift` | SwiftUI view for active quiz gameplay |
+| `ResultsView.swift` | Modal sheet showing final results |
+| `QuizDifficulty.swift` | Difficulty setting enum |
+
+### Quiz Flow
+
+1. User taps "Start" → `quiz.start()` generates 30 questions
+2. Timer begins, questions presented one at a time
+3. User types conjugation, presses return → `quiz.submitAnswer()`
+4. After 30 questions → `quiz.finishQuiz()` shows ResultsView
+
+### Question Generation
+
+- **1** Präsenspartizip question
+- **2** Perfektpartizip questions
+- **27** other conjugationgroups (varies by difficulty)
+
+**Regular difficulty:** Präsens Indikativ, Perfekt Indikativ, Imperativ
+
+**Ridiculous difficulty:** Adds Präsens Konjunktiv I, Präteritum Indikativ, Präteritum Konditional, Perfekt Konjunktiv I
+
+### Scoring
+
+- **10 points** per correct answer
+- **Ridiculous difficulty:** 2x multiplier on final score
+- `quiz.finalScore` returns the multiplied score
+
+### Key Properties
+
+| Property | Type | Description |
+|----------|------|-------------|
+| `isInProgress` | `Bool` | Quiz currently active |
+| `currentIndex` | `Int` | Current question (0-29) |
+| `score` | `Int` | Raw score (before multiplier) |
+| `finalScore` | `Int` | Score with difficulty multiplier |
+| `elapsedSeconds` | `Int` | Time elapsed |
+| `correctCount` | `Int` | Number correct |
+| `questions` | `[QuizItem]` | All 30 questions |
+
+### Sound Effects
+
+Quiz uses `SoundPlayer` for audio feedback:
+- **Start:** Random gun sound
+- **Correct answer:** Chime
+- **Incorrect answer:** Buzz
+- **Quit:** Random sad trombone
+- **Finish:** Random applause
+
+## Game Center Integration
+
+The app integrates with Game Center to submit quiz scores to a global leaderboard.
+
+### Architecture
+
+| File | Purpose |
+|------|---------|
+| `GameCenterManager.swift` | Handles authentication and score submission |
+| `ResultsView.swift` | Shows "View Leaderboard" button when authenticated |
+
+### Leaderboard Configuration
+
+- **Leaderboard ID:** `Leaderboard`
+- **Score:** `quiz.finalScore` (includes 2x multiplier for ridiculous difficulty)
+- **Sort Order:** High to Low
+
+### iOS 26 API Notes
+
+The implementation uses `GKAccessPoint.shared.trigger(leaderboardID:playerScope:timeScope:handler:)` to display the leaderboard. This replaces the deprecated `GKGameCenterViewController` and `GKGameCenterControllerDelegate` APIs.
+
+### Authentication Flow
+
+1. `KonjugierenApp.init()` calls `Current.gameCenter.authenticate()`
+2. iOS presents Game Center login UI if needed
+3. `gameCenter.isAuthenticated` becomes `true` when successful
+
+### Score Submission
+
+Scores are submitted automatically in `Quiz.finishQuiz()`:
+
+```swift
+Task {
+  await Current.gameCenter.submitScore(finalScore)
+}
+```
+
+### Key Methods
+
+| Method | Description |
+|--------|-------------|
+| `authenticate()` | Initiates Game Center authentication |
+| `submitScore(_ score: Int)` | Submits score to leaderboard (async) |
+| `showLeaderboard()` | Triggers Game Center leaderboard via `GKAccessPoint` |
+
+### App Store Connect Setup
+
+Before the leaderboard works, configure in App Store Connect:
+1. Navigate to **Features** → **Game Center**
+2. Enable Game Center for the app
+3. Create leaderboard with ID `Leaderboard`
 
 ## Localization System
 

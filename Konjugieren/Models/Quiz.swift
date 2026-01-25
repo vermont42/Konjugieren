@@ -201,6 +201,10 @@ class Quiz {
     isInProgress = false
     shouldShowResults = true
     SoundPlayer.play(Sound.randomApplause, shouldDebounce: false)
+
+    Task {
+      await Current.gameCenter.submitScore(finalScore)
+    }
   }
 
   deinit {

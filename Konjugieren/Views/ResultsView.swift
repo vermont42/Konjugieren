@@ -5,9 +5,7 @@ import SwiftUI
 struct ResultsView: View {
   let quiz: Quiz
   @Environment(\.dismiss) private var dismiss
-
   private var settings: Settings { Current.settings }
-  private var gameCenter: GameCenterManager { Current.gameCenter }
 
   var body: some View {
     ZStack {
@@ -30,9 +28,9 @@ struct ResultsView: View {
         .padding(.horizontal, Layout.doubleDefaultSpacing)
         .padding(.top, Layout.doubleDefaultSpacing)
 
-        if gameCenter.isAuthenticated {
+        if Current.gameCenter.isAuthenticated {
           Button(L.GameCenter.viewLeaderboard) {
-            showLeaderboard()
+            Current.gameCenter.showLeaderboard()
           }
           .funButton()
           .frame(maxWidth: .infinity)
@@ -74,10 +72,6 @@ struct ResultsView: View {
       }
     }
     .frame(maxWidth: .infinity)
-  }
-
-  private func showLeaderboard() {
-    gameCenter.showLeaderboard()
   }
 }
 

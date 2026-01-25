@@ -11,7 +11,7 @@ struct KonjugierenApp: App {
   }
 
   init() {
-    SoundPlayer.setup()
+    Current.soundPlayer.setup()
     Current.gameCenter.authenticate()
   }
 }

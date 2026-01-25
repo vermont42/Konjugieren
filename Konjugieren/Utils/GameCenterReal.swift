@@ -4,7 +4,7 @@ import GameKit
 import Observation
 
 @Observable
-class GameCenterManager {
+class GameCenterReal: GameCenter {
   static let leaderboardID = "Leaderboard"
 
   private(set) var isAuthenticated = false

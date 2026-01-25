@@ -9,14 +9,16 @@ var Current = World.chooseWorld()
 @Observable
 class World {
   var settings: Settings
-  var gameCenter: GameCenterManager
+  var gameCenter: GameCenter
+  var soundPlayer: SoundPlayer
   var verb: Verb?
   var family: String?
   var info: Info?
 
-  init(settings: Settings, gameCenter: GameCenterManager) {
+  init(settings: Settings, gameCenter: GameCenter, soundPlayer: SoundPlayer) {
     self.settings = settings
     self.gameCenter = gameCenter
+    self.soundPlayer = soundPlayer
   }
 
   static func chooseWorld() -> World {
@@ -34,17 +36,17 @@ class World {
 
   static let device: World = {
     let settings = Settings(getterSetter: GetterSetterReal())
-    return World(settings: settings, gameCenter: GameCenterManager())
+    return World(settings: settings, gameCenter: GameCenterReal(), soundPlayer: SoundPlayerReal())
   }()
 
   static let simulator: World = {
     let settings = Settings(getterSetter: GetterSetterReal())
-    return World(settings: settings, gameCenter: GameCenterManager())
+    return World(settings: settings, gameCenter: GameCenterReal(), soundPlayer: SoundPlayerReal())
   }()
 
   static let unitTest: World = {
     let settings = Settings(getterSetter: GetterSetterFake())
-    return World(settings: settings, gameCenter: GameCenterManager())
+    return World(settings: settings, gameCenter: GameCenterDummy(), soundPlayer: SoundPlayerDummy())
   }()
 
   func handleURL(_ url: URL) {

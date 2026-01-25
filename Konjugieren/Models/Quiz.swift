@@ -61,7 +61,7 @@ class Quiz {
     isInProgress = true
     shouldShowResults = false
     startTimer()
-    SoundPlayer.play(Sound.randomGun)
+    Current.soundPlayer.play(Sound.randomGun)
   }
 
   func submitAnswer(_ answer: String) {
@@ -79,11 +79,11 @@ class Quiz {
       correctCount += 1
       lastIncorrectAnswer = nil
       lastCorrectAnswer = nil
-      SoundPlayer.play(.chime)
+      Current.soundPlayer.play(.chime)
     } else {
       lastIncorrectAnswer = answer
       lastCorrectAnswer = questions[currentIndex].correctAnswer
-      SoundPlayer.play(.buzz)
+      Current.soundPlayer.play(.buzz)
     }
 
     currentIndex += 1
@@ -103,7 +103,7 @@ class Quiz {
     lastIncorrectAnswer = nil
     lastCorrectAnswer = nil
     questions = []
-    SoundPlayer.play(Sound.randomSadTrombone)
+    Current.soundPlayer.play(Sound.randomSadTrombone)
   }
 
   private func generateQuestions() -> [QuizItem] {
@@ -184,7 +184,7 @@ class Quiz {
     stopTimer()
     isInProgress = false
     shouldShowResults = true
-    SoundPlayer.play(Sound.randomApplause, shouldDebounce: false)
+    Current.soundPlayer.play(Sound.randomApplause, shouldDebounce: false)
 
     Task {
       await Current.gameCenter.submitScore(finalScore)

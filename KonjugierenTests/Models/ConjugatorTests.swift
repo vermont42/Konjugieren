@@ -8,6 +8,9 @@ struct ConjugatorTests {
     // Weak verb
     expectConjugation(infinitiv: "machen", conjugationgroup: .perfektpartizip, expected: "gemacht")
 
+    // Weak verb with stamm ending in t (e-insertion: -t → -et)
+    expectConjugation(infinitiv: "arbeiten", conjugationgroup: .perfektpartizip, expected: "gearbeitet")
+
     // -ieren verb (no ge- prefix)
     expectConjugation(infinitiv: "studieren", conjugationgroup: .perfektpartizip, expected: "studiert")
 
@@ -351,6 +354,91 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "gehen", conjugationgroup: .imperativ(.thirdPlural), expected: "gehen Sie")
     expectConjugation(infinitiv: "sein", conjugationgroup: .imperativ(.thirdPlural), expected: "seien Sie")
     expectConjugation(infinitiv: "ankommen", conjugationgroup: .imperativ(.thirdPlural), expected: "kommen Sie an")
+  }
+
+  @Test func tun() {
+    // Präsens Indikativ - no ablaut
+    expectConjugation(infinitiv: "tun", conjugationgroup: .präsensIndicativ(.firstSingular), expected: "tue")
+    expectConjugation(infinitiv: "tun", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "tust")
+    expectConjugation(infinitiv: "tun", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "tut")
+    expectConjugation(infinitiv: "tun", conjugationgroup: .präsensIndicativ(.firstPlural), expected: "tun")
+    expectConjugation(infinitiv: "tun", conjugationgroup: .präsensIndicativ(.secondPlural), expected: "tut")
+    expectConjugation(infinitiv: "tun", conjugationgroup: .präsensIndicativ(.thirdPlural), expected: "tun")
+
+    // Präteritum Indikativ - u→at, with e-insertion for 2s/2p
+    expectConjugation(infinitiv: "tun", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "tAT")
+    expectConjugation(infinitiv: "tun", conjugationgroup: .präteritumIndicativ(.secondSingular), expected: "tATest")
+    expectConjugation(infinitiv: "tun", conjugationgroup: .präteritumIndicativ(.thirdSingular), expected: "tAT")
+    expectConjugation(infinitiv: "tun", conjugationgroup: .präteritumIndicativ(.firstPlural), expected: "tATen")
+    expectConjugation(infinitiv: "tun", conjugationgroup: .präteritumIndicativ(.secondPlural), expected: "tATet")
+    expectConjugation(infinitiv: "tun", conjugationgroup: .präteritumIndicativ(.thirdPlural), expected: "tATen")
+
+    // Präteritum Konditional - u→ät
+    expectConjugation(infinitiv: "tun", conjugationgroup: .präteritumKonditional(.firstSingular), expected: "tÄTe")
+    expectConjugation(infinitiv: "tun", conjugationgroup: .präteritumKonditional(.secondSingular), expected: "tÄTest")
+    expectConjugation(infinitiv: "tun", conjugationgroup: .präteritumKonditional(.thirdSingular), expected: "tÄTe")
+    expectConjugation(infinitiv: "tun", conjugationgroup: .präteritumKonditional(.firstPlural), expected: "tÄTen")
+    expectConjugation(infinitiv: "tun", conjugationgroup: .präteritumKonditional(.secondPlural), expected: "tÄTet")
+    expectConjugation(infinitiv: "tun", conjugationgroup: .präteritumKonditional(.thirdPlural), expected: "tÄTen")
+
+    // Perfektpartizip
+    expectConjugation(infinitiv: "tun", conjugationgroup: .perfektpartizip, expected: "getAn")
+  }
+
+  @Test func newVerbs() {
+    // gelten - strong verb with e→i (Präsens 2s/3s), e→a (Präteritum), e→o (Perfektpartizip)
+    expectConjugation(infinitiv: "gelten", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "gIltst")
+    expectConjugation(infinitiv: "gelten", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "gIlt")
+    expectConjugation(infinitiv: "gelten", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "gAlt")
+    expectConjugation(infinitiv: "gelten", conjugationgroup: .präteritumIndicativ(.secondSingular), expected: "gAltest")
+    expectConjugation(infinitiv: "gelten", conjugationgroup: .präteritumIndicativ(.secondPlural), expected: "gAltet")
+    expectConjugation(infinitiv: "gelten", conjugationgroup: .präteritumKonditional(.firstSingular), expected: "gÖlte")
+    expectConjugation(infinitiv: "gelten", conjugationgroup: .perfektpartizip, expected: "gegOlten")
+
+    // sprechen - strong verb with e→i (Präsens 2s/3s), e→a (Präteritum), e→o (Perfektpartizip)
+    expectConjugation(infinitiv: "sprechen", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "sprIchst")
+    expectConjugation(infinitiv: "sprechen", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "sprIcht")
+    expectConjugation(infinitiv: "sprechen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "sprAch")
+    expectConjugation(infinitiv: "sprechen", conjugationgroup: .präteritumKonditional(.firstSingular), expected: "sprÄche")
+    expectConjugation(infinitiv: "sprechen", conjugationgroup: .perfektpartizip, expected: "gesprOchen")
+
+    // helfen - uses sprechen ablaut pattern
+    expectConjugation(infinitiv: "helfen", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "hIlfst")
+    expectConjugation(infinitiv: "helfen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "hAlf")
+    expectConjugation(infinitiv: "helfen", conjugationgroup: .perfektpartizip, expected: "gehOlfen")
+
+    // lesen - uses sehen ablaut pattern (e→ie Präsens 2s/3s, e→a Präteritum)
+    expectConjugation(infinitiv: "lesen", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "lIEst")
+    expectConjugation(infinitiv: "lesen", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "lIEst")
+    expectConjugation(infinitiv: "lesen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "lAs")
+    expectConjugation(infinitiv: "lesen", conjugationgroup: .perfektpartizip, expected: "gelesen")
+
+    // beginnen - strong verb with i→a (Präteritum), i→o (Perfektpartizip)
+    expectConjugation(infinitiv: "beginnen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "begAnn")
+    expectConjugation(infinitiv: "beginnen", conjugationgroup: .präteritumKonditional(.firstSingular), expected: "begÄnne")
+    expectConjugation(infinitiv: "beginnen", conjugationgroup: .perfektpartizip, expected: "begOnnen")
+
+    // denken - mixed verb using bringen pattern (enk→ach)
+    expectConjugation(infinitiv: "denken", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "dACHte")
+    expectConjugation(infinitiv: "denken", conjugationgroup: .präteritumKonditional(.firstSingular), expected: "dÄCHte")
+    expectConjugation(infinitiv: "denken", conjugationgroup: .perfektpartizip, expected: "gedACHt")
+
+    // kennen - mixed verb (e→a Präteritum/Perfektpartizip)
+    expectConjugation(infinitiv: "kennen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "kAnnte")
+    expectConjugation(infinitiv: "kennen", conjugationgroup: .perfektpartizip, expected: "gekAnnt")
+
+    // bestehen - compound of stehen
+    expectConjugation(infinitiv: "bestehen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "bestAND")
+    expectConjugation(infinitiv: "bestehen", conjugationgroup: .perfektpartizip, expected: "bestANDen")
+
+    // schreiben - uses bleiben ablaut pattern (ei→ie)
+    expectConjugation(infinitiv: "schreiben", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "schrIEb")
+    expectConjugation(infinitiv: "schreiben", conjugationgroup: .perfektpartizip, expected: "geschrIEben")
+
+    // Weak verbs - spot check
+    expectConjugation(infinitiv: "arbeiten", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "arbeitete")
+    expectConjugation(infinitiv: "spielen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "spielte")
+    expectConjugation(infinitiv: "suchen", conjugationgroup: .perfektpartizip, expected: "gesucht")
   }
 
   private func expectConjugation(infinitiv: String, conjugationgroup: Conjugationgroup, expected: String) {

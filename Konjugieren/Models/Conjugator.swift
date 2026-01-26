@@ -29,7 +29,11 @@ enum Conjugator {
       let stamm = verb.stamm
       let ending = conjugationgroup.ending(family: verb.family)
       let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: conjugationgroup)
-      return .success(isFullOverride ? newStamm : newStamm + ending)
+      if isFullOverride {
+        return .success(newStamm)
+      }
+      let adjustedEnding = adjustEndingForPhonology(stamm: newStamm, ending: ending, family: verb.family, conjugationgroup: conjugationgroup)
+      return .success(newStamm + adjustedEnding)
 
     case .perfektpartizip:
       let stamm = verb.stamm
@@ -38,11 +42,12 @@ enum Conjugator {
       if isFullOverride {
         return .success(newStamm)
       }
+      let adjustedEnding = adjustPerfektpartizipEnding(stamm: newStamm, ending: ending, family: verb.family)
       switch verb.family {
       case .strong, .mixed, .weak:
-        return .success(perfektpartizipWithGeAndPrefix(verb: verb, stamm: newStamm, ending: ending))
+        return .success(perfektpartizipWithGeAndPrefix(verb: verb, stamm: newStamm, ending: adjustedEnding))
       case .ieren:
-        return .success(newStamm + ending)
+        return .success(newStamm + adjustedEnding)
       }
 
     case .präsenspartizip:
@@ -199,5 +204,56 @@ enum Conjugator {
     case .none:
       return "ge" + stamm + ending
     }
+  }
+
+  private static func adjustPerfektpartizipEnding(stamm: String, ending: String, family: Family) -> String {
+    guard ending == "t" else { return ending }
+    let lastChar = stamm.last.map { String($0).lowercased() } ?? ""
+    if ["t", "d"].contains(lastChar) {
+      switch family {
+      case .weak, .mixed, .ieren:
+        return "et"
+      case .strong:
+        return ending
+      }
+    }
+    return ending
+  }
+
+  private static func adjustEndingForPhonology(stamm: String, ending: String, family: Family, conjugationgroup: Conjugationgroup) -> String {
+    let lastChar = stamm.last.map { String($0).lowercased() } ?? ""
+
+    if ending == "st" && ["s", "ß", "x", "z"].contains(lastChar) {
+      return "t"
+    }
+
+    if ending == "t" && lastChar == "t" {
+      return ""
+    }
+
+    if ["t", "d"].contains(lastChar) {
+      switch family {
+      case .weak, .mixed, .ieren:
+        switch conjugationgroup {
+        case .präteritumIndicativ, .präteritumKonditional:
+          if ["te", "test", "ten", "tet"].contains(ending) {
+            return "e" + ending
+          }
+        case .präsensIndicativ(let pn), .präsensKonjunktivI(let pn):
+          if pn == .secondSingular && ending == "st" {
+            return "est"
+          }
+          if [.thirdSingular, .secondPlural].contains(pn) && ending == "t" {
+            return "et"
+          }
+        default:
+          break
+        }
+      case .strong:
+        break
+      }
+    }
+
+    return ending
   }
 }

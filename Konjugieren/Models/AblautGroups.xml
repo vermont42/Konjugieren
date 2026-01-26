@@ -7,15 +7,18 @@
 ]>
 
 <ablautGroups>
+  <ag e="beginnen" a="A,bA|Ä,dA|O,pp" />
   <ag e="bieten" a="O,bA,pp|Ö,dA" />
   <ag e="bleiben" a="IE,bA,dA,pp" />
   <ag e="bringen" a="ACH,bA,pp|ÄCH,dA" />
   <ag e="dürfen" a="darF*,a1s,a3s|dArfst*,a2s|Urf,bA,pp" />
-  <ag e="halten" a="Ä,a2s,a3s|IE,bA,dA" />
   <ag e="finden" a="A,bA|Ä,dA|U,pp" />
   <ag e="geben" a="I,a2s,a3s|A,bA|Ä,dA" />
   <ag e="gehen" a="ING,bA,dA|ANG,pp" />
+  <ag e="gelten" a="I,a2s,a3s|A,b1s,b3s,b1p,b3p|gAltest*,b2s|gAltet*,b2p|Ö,dA|O,pp" />
   <ag e="haben" a="A,a2s,a3s|AT,bA|ÄT,dA" />
+  <ag e="halten" a="Ä,a2s,a3s|IE,bA,dA" />
+  <ag e="kennen" a="A,bA,pp" />
   <ag e="kommen" a="A,bA|Ä,dA" />
   <ag e="können" a="KANN*,a1s,a3s|KANNST*,a2s|ONN,bA,pp" />
   <ag e="lassen" a="Ä,a3s|lÄssEst*,a2s|IE,bA,dA|lIEssEst*,b2s" />
@@ -27,7 +30,9 @@
   <ag e="sein" a="BIN*,a1s|BIst*,a2s|IST*,a3s|sIND*,a1p,a3p|seiD*,a2p|WAR,bA|seI*,c1s,c3s,i2s|seIst*,c2s|WÄR,dA|WES,pp|seiD*,i2p" />
   <ag e="singen" a="A,bA|Ä,dA|U,pp" />
   <ag e="sitzen" a="ASS,bA|ÄSS,dA|ESS,pp" />
+  <ag e="sprechen" a="I,a2s,a3s|A,bA|Ä,dA|O,pp" />
   <ag e="stehen" a="AND,bA,pp|ÄND,dA" />
+  <ag e="tun" a="tun*,a1p,a3p|AT,b1s,b3s,b1p,b3p|tATest*,b2s|tATet*,b2p|ÄT,dA|getAn*,pp" />
   <ag e="werden" a="wIrst*,a2s|wIrD*,a3s|werdEt*,a2p|wUrdE*,b1s,b3s|wUrdEst*,b2s|wUrdEt*,b2p|U,b1p,b3p|Ü,dA|O,pp" />
   <ag e="wissen" a="WEISS*,a1s,a3s|WEISST*,a2s|USS,bA,pp|ÜSS,dA" />
   <ag e="wollen" a="WILL*,a1s,a3s|WILLST*,a2s" />

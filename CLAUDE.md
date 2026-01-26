@@ -26,7 +26,7 @@ Konjugieren is an iOS app for learning German verb conjugations. It will eventua
 
 ## About the Developer
 
-Josh Adams (pronouns: he/him/his) is the developer of Konjugieren. He is an iOS-app developer, from New England but based near San Francisco, California. He also created Conjuguer (French), Conjugar (Spanish), and RaceRunner, all available in the iOS App Store.
+Josh Adams (pronouns: he/him/his) is the developer of Konjugieren. He is an iOS-app developer, from New England but based near San Francisco, California. He also created Conjuguer (French), Conjugar (Spanish), and RaceRunner, all available in the iOS App Store. When thinking or speaking about him, say "he" or "Josh", not "they" or "the developer".
 
 Josh created Konjugieren as a tribute to his grandfather, Clifford August Schmiesing (1904–1944), who was born in Minster, Ohio—a town where German was the language of daily life. Cliff served as an Army doctor in World War II and died in Oran, Algeria. The dedication in the app tells his story.
 
@@ -163,6 +163,18 @@ These conjugationgroups use an auxiliary verb (haben or sein) with the Perfektpa
 - The participles (Perfektpartizip, Präsenspartizip) do not have mood
 - Compound conjugationgroups combine an auxiliary verb conjugation with the Perfektpartizip
 
+## Writing Conjugationgroup Articles
+
+These are instructions for writing a description (e.g., `perfektpartizipText`) for a new conjugationgroup. See `conjugationgroupText.md` in the project root for:
+
+- Literary source URLs (Goethe, Kafka, Mann - German and English)
+- Old High German text references (Hildebrandslied, Tatian)
+- Rich-text markup conventions
+- Article structure template
+- Content guidelines and verification steps
+
+When asked to create a new conjugationgroup article (e.g., "Please create präsensIndikativText, English only"), consult that template file.
+
 ## XML File Formats
 
 ### Verbs.xml
@@ -264,6 +276,14 @@ Simply add to Verbs.xml without ablaut markers:
 - Inseparable prefix: use `*` (e.g., `ver*stehen`)
 
 Prefixed verbs can share an ablaut group with their base verb.
+
+### Alphabetical Ordering
+
+Both XML files must maintain alphabetical order:
+
+- **Verbs.xml**: Sort by the German verb name, ignoring prefix markers (`+`, `*`) and ablaut markers (`^`). For example, `an+k^om^men` sorts as "ankommen" and `g^e^lten` sorts as "gelten". Umlauts sort as their base vowels (ä≈a, ö≈o, ü≈u).
+
+- **AblautGroups.xml**: Sort by the exemplar verb name (`e` attribute).
 
 ## Verb Families
 

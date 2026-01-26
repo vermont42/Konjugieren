@@ -3,8 +3,8 @@
 import SwiftUI
 
 struct VerbBrowseView: View {
-  @State private var sortOrder: SortOrder = .alphabetical
-  @State private var sortedVerbs: [Verb] = Verb.verbsSortedAlphabetically
+  @State private var sortOrder: SortOrder = .frequency
+  @State private var sortedVerbs: [Verb] = Verb.verbsSortedByFrequency
 
   var body: some View {
     NavigationStack {

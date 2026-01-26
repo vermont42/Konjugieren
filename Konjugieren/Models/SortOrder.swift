@@ -1,15 +1,15 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
 enum SortOrder: String, CaseIterable {
-  case alphabetical
   case frequency
+  case alphabetical
 
   var displayName: String {
     switch self {
-    case .alphabetical:
-      return L.VerbBrowse.alphabetical
     case .frequency:
       return L.VerbBrowse.frequency
+    case .alphabetical:
+      return L.VerbBrowse.alphabetical
     }
   }
 }

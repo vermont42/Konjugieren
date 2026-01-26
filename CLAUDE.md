@@ -2,10 +2,6 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## TODO
-
-- [ ] Edit and fix the new `perfektpartizipText` (reminder from Josh)
-
 ## Build and Test Commands
 
 This is an Xcode project. Use the following commands:

@@ -57,7 +57,7 @@ When using `$...$` markers:
 
 Each conjugationgroup article should follow this structure:
 
-### Section 1: `What Is the [Conjugationgroup]?`
+### Section 1: `About`
 
 - Clear definition of what the conjugationgroup represents
 - Core function: when and why this form is used

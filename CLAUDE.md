@@ -35,53 +35,67 @@ Josh created Konjugieren as a tribute to his grandfather, Clifford August Schmie
 ```
 Konjugieren/
 ├── App/
-│   ├── KonjugierenApp.swift    # Main app entry point
-│   ├── AppLauncher.swift       # Determines test vs production app
-│   └── TestApp.swift           # Test app configuration
+│   ├── KonjugierenApp.swift    # Main app entry point with Game Center auth
+│   ├── AppLauncher.swift       # Chooses TestApp vs KonjugierenApp based on environment
+│   └── TestApp.swift           # Minimal app for unit test environment
 ├── Assets/
-│   ├── Localizable.xcstrings   # Localization strings (JSON format)
-│   └── Assets.xcassets/        # Colors, app icon, images
+│   ├── Localizable.xcstrings   # Localization strings (JSON format, EN/DE)
+│   └── Assets.xcassets/        # Colors, app icon, images (CliffSchmiesing, JoshAdams)
 ├── Models/
-│   ├── Verb.swift              # Verb model with stamm computation
-│   ├── VerbParser.swift        # Parses Verbs.xml
-│   ├── Verbs.xml               # Verb definitions
-│   ├── Conjugator.swift        # Core conjugation logic
-│   ├── Conjugationgroup.swift  # Enum of conjugationgroups with endings
-│   ├── ConjugationgroupLang.swift  # Setting enum: german/english
-│   ├── ThirdPersonPronounGender.swift  # Setting enum: er/sie/es
-│   ├── Ablaut.swift            # Ablaut parsing from XML strings
-│   ├── AblautGroup.swift       # Groups of ablauts for a verb pattern
-│   ├── AblautGroupParser.swift # Parses AblautGroups.xml
-│   ├── AblautGroups.xml        # Ablaut pattern definitions
+│   ├── Verb.swift              # Verb model with stamm/ablaut-region computation
+│   ├── VerbParser.swift        # XMLParser delegate that parses Verbs.xml
+│   ├── Verbs.xml               # ~200 verb definitions with markers and metadata
+│   ├── Conjugator.swift        # Core conjugation logic for all conjugationgroups
+│   ├── ConjugatorError.swift   # Error enum for conjugation failures
+│   ├── Conjugationgroup.swift  # Enum of all conjugationgroups with endings
+│   ├── ConjugationgroupLang.swift  # Setting enum: german/english display
+│   ├── ThirdPersonPronounGender.swift  # Setting enum: er/sie/es preference
+│   ├── Ablaut.swift            # Single ablaut: replacement + target conjugationgroups
+│   ├── AblautGroup.swift       # Named collection of ablauts for a verb pattern
+│   ├── AblautGroupParser.swift # XMLParser delegate that parses AblautGroups.xml
+│   ├── AblautGroups.xml        # ~40 ablaut pattern definitions
 │   ├── Family.swift            # Verb families (strong/weak/mixed/ieren)
-│   ├── PersonNumber.swift      # 1s, 2s, 3s, 1p, 2p, 3p (uses settings)
-│   ├── Prefix.swift            # Separable/inseparable prefixes
-│   ├── Auxiliary.swift         # haben/sein auxiliary verbs
-│   ├── Quiz.swift              # Quiz game logic and state
-│   ├── QuizDifficulty.swift    # Regular vs ridiculous difficulty
-│   └── Sound.swift             # Sound effect definitions
+│   ├── PersonNumber.swift      # 1s, 2s, 3s, 1p, 2p, 3p with localized pronouns
+│   ├── Prefix.swift            # Separable/inseparable prefix enum
+│   ├── Auxiliary.swift         # haben/sein auxiliary verb enum
+│   ├── Quiz.swift              # @Observable quiz state: questions, timer, scoring
+│   ├── QuizDifficulty.swift    # Setting enum: regular vs ridiculous
+│   ├── AudioFeedback.swift     # Setting enum: enable/disable sound effects
+│   ├── SortOrder.swift         # Enum for verb list sorting (alphabetical/frequency)
+│   ├── Sound.swift             # Sound effect definitions (guns, chimes, applause)
+│   ├── Info.swift              # Info article model with rich text and images
+│   ├── ImageInfo.swift         # Struct pairing image filename with accessibility label
+│   └── World.swift             # @Observable DI container with environment selection
 ├── Utils/
-│   ├── World.swift             # Dependency injection container
-│   ├── Settings.swift          # @Observable settings with persistence
-│   ├── L.swift                 # Localization string accessors
-│   ├── GetterSetter.swift      # Protocol for key-value storage
-│   ├── GetterSetterReal.swift  # Real UserDefaults implementation
-│   ├── GetterSetterDummy.swift # Test-double UserDefaults implementation
-│   ├── GameCenter.swift        # Game Center authentication and scores
-│   ├── GameCenterReal.swift    # Real Game Center implementation
-│   ├── GameCenterDummy.swift   # Test-double Game Center implementation
-│   ├── TimeFormatter.swift     # Elapsed time formatting (h:mm:ss)
-│   ├── SoundPlayer.swift       # Audio playback with debouncing
-│   ├── SoundPlayerReal.swift   # Real AVAudioPlayer sound-player implementation
-│   └── SoundPlayerDummy.swift  # Test-double sound-player implementation
+│   ├── Settings.swift          # @Observable settings with UserDefaults persistence
+│   ├── L.swift                 # Type-safe localization string accessors
+│   ├── GetterSetter.swift      # Protocol for key-value storage abstraction
+│   ├── GetterSetterReal.swift  # UserDefaults implementation of GetterSetter
+│   ├── GetterSetterFake.swift  # In-memory dictionary implementation for tests
+│   ├── GameCenter.swift        # Protocol for Game Center operations
+│   ├── GameCenterReal.swift    # Real GKLocalPlayer authentication and scores
+│   ├── GameCenterDummy.swift   # No-op implementation for tests/simulator
+│   ├── SoundPlayer.swift       # Protocol for audio playback
+│   ├── SoundPlayerReal.swift   # AVAudioPlayer implementation with debouncing
+│   ├── SoundPlayerDummy.swift  # No-op implementation for tests
+│   ├── TimeFormatter.swift     # Formats elapsed seconds as h:mm:ss
+│   ├── Fonts.swift             # Font constants for consistent typography
+│   ├── Layout.swift            # Spacing constants (8pt, 16pt, 24pt)
+│   ├── Modifiers.swift         # Custom ViewModifiers (headingLabel, funButton, etc.)
+│   ├── StringExtensions.swift  # Rich text markup parsing to RichTextBlock/TextSegment
+│   ├── TextExtension.swift     # Text(mixedCaseString:) for ablaut-highlighted display
+│   └── URLExtension.swift      # Deeplink URL helpers (konjugieren:// scheme)
 └── Views/
-    ├── VerbBrowseView.swift    # List of verbs
-    ├── VerbView.swift          # Verb detail with conjugations
-    ├── SettingsView.swift      # Settings UI
-    ├── HistoryView.swift       # German verb system history
-    ├── InfoBrowseView.swift    # Info/Help section
-    ├── QuizView.swift          # Quiz UI with question display
-    └── ResultsView.swift       # Quiz results modal
+    ├── MainTabView.swift       # Root TabView with five tabs
+    ├── VerbBrowseView.swift    # Searchable, sortable list of all verbs
+    ├── VerbView.swift          # Verb detail showing all conjugations
+    ├── FamilyBrowseView.swift  # Placeholder for verb family browser (coming soon)
+    ├── QuizView.swift          # Quiz gameplay: questions, timer, answer input
+    ├── ResultsView.swift       # Modal showing quiz results and leaderboard button
+    ├── InfoBrowseView.swift    # List of Info articles (dedication, history, etc.)
+    ├── InfoView.swift          # Detail view for a single Info article
+    ├── RichTextView.swift      # Renders RichTextBlock content with styling
+    └── SettingsView.swift      # Settings UI with segmented pickers
 ```
 
 ## Comments
@@ -268,21 +282,32 @@ Note: Wiktionary uses "Konjunktiv II" for what this codebase calls "Konditional"
 
 ## Dependency Injection
 
-The app uses a simple dependency injection pattern via `World.swift`:
+The app uses a simple dependency injection pattern via `Models/World.swift`:
 
 ```swift
-var Current = World()
+var Current = World.chooseWorld()
 
-struct World {
+@MainActor
+@Observable
+class World {
   var settings: Settings
-  // ... other dependencies
+  var gameCenter: GameCenter
+  var soundPlayer: SoundPlayer
+  var verb: Verb?       // For deeplink navigation
+  var family: String?   // For deeplink navigation
+  var info: Info?       // For deeplink navigation
 }
 ```
+
+`World.chooseWorld()` selects the appropriate configuration:
+- **Device/Simulator**: Uses `GetterSetterReal`, `GameCenterReal`, `SoundPlayerReal`
+- **Unit Tests**: Uses `GetterSetterFake`, `GameCenterDummy`, `SoundPlayerDummy`
 
 Access dependencies anywhere using syntax like `Current.settings`. This pattern enables:
 - Easy mocking in tests (swap `Current` with a test-configured `World`)
 - Centralized dependency management
-- Reactive UI updates (Settings uses `@Observable`)
+- Reactive UI updates (World uses `@Observable`)
+- Deeplink handling via `Current.handleURL(_:)`
 
 ## Settings System
 
@@ -405,7 +430,9 @@ The app integrates with Game Center to submit quiz scores to a global leaderboar
 
 | File | Purpose |
 |------|---------|
-| `GameCenterManager.swift` | Handles authentication and score submission |
+| `GameCenter.swift` | Protocol defining authentication and score submission |
+| `GameCenterReal.swift` | Real GKLocalPlayer implementation |
+| `GameCenterDummy.swift` | No-op implementation for tests |
 | `ResultsView.swift` | Shows "View Leaderboard" button when authenticated |
 
 ### Leaderboard Configuration
@@ -448,6 +475,48 @@ Before the leaderboard works, configure in App Store Connect:
 1. Navigate to **Features** → **Game Center**
 2. Enable Game Center for the app
 3. Create leaderboard with ID `Leaderboard`
+
+## Info System
+
+The Info system provides educational content about German verb conjugation, the dedication, and credits. It replaces the original single-view approach with a flexible article-based architecture.
+
+### Architecture
+
+| File | Purpose |
+|------|---------|
+| `Info.swift` | Model defining articles with heading, rich text, and optional image |
+| `ImageInfo.swift` | Pairs image filename with accessibility label |
+| `InfoBrowseView.swift` | List of all Info articles with previews |
+| `InfoView.swift` | Detail view rendering a single article |
+| `RichTextView.swift` | Renders `RichTextBlock` content with styling |
+| `StringExtensions.swift` | Parses markup strings into `RichTextBlock`/`TextSegment` |
+
+### Info Articles
+
+`Info.infos` is a static array containing all articles in display order:
+
+1. **Dedication** - Tribute to Clifford August Schmiesing (with photo)
+2. **Verb History** - 3,000-word essay on the evolution of German verbs
+3. **Terminology** - Explanation of conjugationgroup terminology
+4. **Tense/Mood/Voice** - Grammar concept explanations
+5. **Conjugationgroup guides** - One article per conjugationgroup (Perfektpartizip, Präsens Indikativ, etc.)
+6. **Credits** - App credits and developer info (with photo)
+
+### Rich Text Pipeline
+
+```
+Localized string (L.Info.verbHistoryText)
+    ↓
+String.richTextBlocks (StringExtensions.swift)
+    ↓
+[RichTextBlock] - .subheading(String) or .body([TextSegment])
+    ↓
+RichTextView renders with appropriate styling
+```
+
+### Deeplinks
+
+Info articles support internal linking via the `konjugieren://info/{index}` scheme. Links in article text can reference other articles or verbs, handled by `InfoView.handleInfoLink(_:)`.
 
 ## Localization System
 
@@ -509,7 +578,7 @@ JSON-based string catalog supporting multiple languages. Each key maps to transl
 
 ### Rich Text Markup in Localizable.xcstrings
 
-Long-form Info text (like `verbHistoryText`, `dedicationText`, `creditsText`) uses a custom markup system that the app's text renderer interprets:
+Long-form Info text (like `verbHistoryText`, `dedicationText`, `creditsText`) uses a custom markup system. The markup is parsed by `StringExtensions.swift` and rendered by `RichTextView.swift`:
 
 | Marker | Purpose | Example |
 |--------|---------|---------|
@@ -543,3 +612,39 @@ The `Info.verbHistoryText` entry is an extensive (~3,000 word) educational essay
 - Evolution through Old High German to modern German
 
 This text exists in both English and German versions. When one is edited, the other requires careful relocalization preserving all markup and technical content.
+
+## Deeplink System
+
+The app supports internal navigation via custom URL schemes, enabling links within Info articles and potential external integration.
+
+### URL Scheme
+
+```
+konjugieren://{host}/{path}
+```
+
+| Host | Path | Action |
+|------|------|--------|
+| `verb` | Verb infinitive | Navigate to VerbView for that verb |
+| `family` | Family name | Navigate to family (future feature) |
+| `info` | Index (0-based) | Navigate to Info article at that index |
+
+### Architecture
+
+| File | Purpose |
+|------|---------|
+| `URLExtension.swift` | URL helpers: `isDeeplink`, `konjugierenURLPrefix`, host constants |
+| `World.swift` | `handleURL(_:)` parses URL and sets `verb`/`family`/`info` properties |
+| `KonjugierenApp.swift` | Receives URLs via `.onOpenURL` and delegates to `Current.handleURL` |
+
+### Examples
+
+```
+konjugieren://verb/singen     → Opens VerbView for "singen"
+konjugieren://info/0          → Opens the Dedication article
+konjugieren://info/1          → Opens the Verb History article
+```
+
+### Internal Linking
+
+Info articles can link to verbs or other articles using the `%...%` markup. When tapped, `InfoView.handleInfoLink(_:)` constructs the appropriate deeplink URL and calls `Current.handleURL(_:)`.

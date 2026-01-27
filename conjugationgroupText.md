@@ -43,6 +43,15 @@ The app's rich text system uses these markers (parsed by `StringExtensions.swift
 | 🇩🇪 | Bullet points in lists | `🇩🇪 ~Strong verbs~: vowel change (ablaut)` |
 | `\n` | Newlines (within JSON string values) | Between paragraphs |
 
+For bullet items displaying non-German example words, phrases, or sentences, use the appropriate flag, as follows:
+English: 🏴󠁧󠁢󠁥󠁮󠁧󠁿
+Latin: 🇻🇦
+Sanskrit: 🇮🇳
+Gothic: 📜
+French: 🇫🇷
+Spanish: 🇪🇸
+Italian: 🇮🇹
+
 ### Ablaut Highlighting Rules
 
 When using `$...$` markers:

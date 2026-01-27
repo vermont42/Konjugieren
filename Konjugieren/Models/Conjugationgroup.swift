@@ -13,6 +13,12 @@ enum Conjugationgroup: Hashable {
   case perfektIndikativ(_ personNumber: PersonNumber)
   case perfektKonjunktivI(_ personNumber: PersonNumber)
 
+  case plusquamperfektIndikativ(_ personNumber: PersonNumber)
+  case plusquamperfektKonditional(_ personNumber: PersonNumber)
+  case futurIndikativ(_ personNumber: PersonNumber)
+  case futurKonjunktivI(_ personNumber: PersonNumber)
+  case futurKonditional(_ personNumber: PersonNumber)
+
   var germanDisplayName: String {
     switch self {
     case .präsenspartizip:
@@ -33,6 +39,16 @@ enum Conjugationgroup: Hashable {
       return "Perfekt Indikativ"
     case .perfektKonjunktivI:
       return "Perfekt Konjunktiv I"
+    case .plusquamperfektIndikativ:
+      return "Plusquamperfekt Indikativ"
+    case .plusquamperfektKonditional:
+      return "Plusquamperfekt Konditional"
+    case .futurIndikativ:
+      return "Futur Indikativ"
+    case .futurKonjunktivI:
+      return "Futur Konjunktiv I"
+    case .futurKonditional:
+      return "Futur Konditional"
     }
   }
 
@@ -56,6 +72,16 @@ enum Conjugationgroup: Hashable {
       return "Present Perfect Indicative"
     case .perfektKonjunktivI:
       return "Present Perfect Subjunctive"
+    case .plusquamperfektIndikativ:
+      return "Pluperfect Indicative"
+    case .plusquamperfektKonditional:
+      return "Pluperfect Conditional"
+    case .futurIndikativ:
+      return "Future Indicative"
+    case .futurKonjunktivI:
+      return "Future Subjunctive"
+    case .futurKonditional:
+      return "Future Conditional"
     }
   }
 
@@ -151,7 +177,7 @@ enum Conjugationgroup: Hashable {
       case .firstPlural, .thirdPlural:
         return "en"
       }
-    case .perfektIndikativ, .perfektKonjunktivI:
+    case .perfektIndikativ, .perfektKonjunktivI, .plusquamperfektIndikativ, .plusquamperfektKonditional, .futurIndikativ, .futurKonjunktivI, .futurKonditional:
       fatalError("ending() was called for a compound tense. This is a logic error.")
     }
   }

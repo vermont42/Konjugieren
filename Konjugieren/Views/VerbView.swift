@@ -64,6 +64,11 @@ struct VerbView: View {
 
           conjugationSection(for: Conjugationgroup.perfektIndikativ)
           conjugationSection(for: Conjugationgroup.perfektKonjunktivI)
+          conjugationSection(for: Conjugationgroup.plusquamperfektIndikativ)
+          conjugationSection(for: Conjugationgroup.plusquamperfektKonditional)
+          conjugationSection(for: Conjugationgroup.futurIndikativ)
+          conjugationSection(for: Conjugationgroup.futurKonjunktivI)
+          conjugationSection(for: Conjugationgroup.futurKonditional)
         }
         .padding(.horizontal)
       }

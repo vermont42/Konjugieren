@@ -59,20 +59,47 @@ enum Conjugator {
       return conjugateImperativ(verb: verb, personNumber: personNumber)
 
     case .perfektIndikativ(let personNumber):
-      return conjugateCompoundTense(verb: verb, infinitiv: infinitiv, auxiliaryGroup: .präsensIndicativ(personNumber))
+      return conjugateCompoundTense(verb: verb, infinitiv: infinitiv, auxiliaryInfinitiv: verb.auxiliary.verb, auxiliaryGroup: .präsensIndicativ(personNumber))
 
     case .perfektKonjunktivI(let personNumber):
-      return conjugateCompoundTense(verb: verb, infinitiv: infinitiv, auxiliaryGroup: .präsensKonjunktivI(personNumber))
+      return conjugateCompoundTense(verb: verb, infinitiv: infinitiv, auxiliaryInfinitiv: verb.auxiliary.verb, auxiliaryGroup: .präsensKonjunktivI(personNumber))
+
+    case .plusquamperfektIndikativ(let personNumber):
+      return conjugateCompoundTense(verb: verb, infinitiv: infinitiv, auxiliaryInfinitiv: verb.auxiliary.verb, auxiliaryGroup: .präteritumIndicativ(personNumber))
+
+    case .plusquamperfektKonditional(let personNumber):
+      return conjugateCompoundTense(verb: verb, infinitiv: infinitiv, auxiliaryInfinitiv: verb.auxiliary.verb, auxiliaryGroup: .präteritumKonditional(personNumber))
+
+    case .futurIndikativ(let personNumber):
+      return conjugateCompoundTense(verb: verb, infinitiv: infinitiv, auxiliaryInfinitiv: "werden", auxiliaryGroup: .präsensIndicativ(personNumber), useInfinitivAsSecondPart: true)
+
+    case .futurKonjunktivI(let personNumber):
+      return conjugateCompoundTense(verb: verb, infinitiv: infinitiv, auxiliaryInfinitiv: "werden", auxiliaryGroup: .präsensKonjunktivI(personNumber), useInfinitivAsSecondPart: true)
+
+    case .futurKonditional(let personNumber):
+      return conjugateCompoundTense(verb: verb, infinitiv: infinitiv, auxiliaryInfinitiv: "werden", auxiliaryGroup: .präteritumKonditional(personNumber), useInfinitivAsSecondPart: true)
     }
   }
 
-  private static func conjugateCompoundTense(verb: Verb, infinitiv: String, auxiliaryGroup: Conjugationgroup) -> Result<String, ConjugatorError> {
-    let auxiliaryResult = conjugate(infinitiv: verb.auxiliary.verb, conjugationgroup: auxiliaryGroup)
-    let partizipResult = conjugate(infinitiv: infinitiv, conjugationgroup: .perfektpartizip)
+  private static func conjugateCompoundTense(
+    verb: Verb,
+    infinitiv: String,
+    auxiliaryInfinitiv: String,
+    auxiliaryGroup: Conjugationgroup,
+    useInfinitivAsSecondPart: Bool = false
+  ) -> Result<String, ConjugatorError> {
+    let auxiliaryResult = conjugate(infinitiv: auxiliaryInfinitiv, conjugationgroup: auxiliaryGroup)
 
-    switch (auxiliaryResult, partizipResult) {
-    case (.success(let auxiliary), .success(let partizip)):
-      return .success(auxiliary + " " + partizip)
+    let secondPartResult: Result<String, ConjugatorError>
+    if useInfinitivAsSecondPart {
+      secondPartResult = .success(infinitiv)
+    } else {
+      secondPartResult = conjugate(infinitiv: infinitiv, conjugationgroup: .perfektpartizip)
+    }
+
+    switch (auxiliaryResult, secondPartResult) {
+    case (.success(let auxiliary), .success(let secondPart)):
+      return .success(auxiliary + " " + secondPart)
     default:
       return .failure(.conjugationFailed)
     }

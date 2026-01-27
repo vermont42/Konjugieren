@@ -16,7 +16,7 @@
   <ag e="geben" a="I,a2s,a3s|A,bA|Ä,dA" />
   <ag e="gehen" a="ING,bA,dA|ANG,pp" />
   <ag e="gelten" a="I,a2s,a3s|A,b1s,b3s,b1p,b3p|gAltest*,b2s|gAltet*,b2p|Ö,dA|O,pp" />
-  <ag e="haben" a="A,a2s,a3s|AT,bA|ÄT,dA" />
+  <ag e="haben" a="A,a2s,a3s|hATte*,b1s,b3s|hATtest*,b2s|hATten*,b1p,b3p|hATtet*,b2p|hÄTte*,d1s,d3s|hÄTtest*,d2s|hÄTten*,d1p,d3p|hÄTtet*,d2p" />
   <ag e="halten" a="Ä,a2s,a3s|IE,bA,dA" />
   <ag e="kennen" a="A,bA,pp" />
   <ag e="kommen" a="A,bA|Ä,dA" />

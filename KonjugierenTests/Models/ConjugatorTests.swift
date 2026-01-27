@@ -441,6 +441,159 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "suchen", conjugationgroup: .perfektpartizip, expected: "gesucht")
   }
 
+  @Test func plusquamperfektIndikativ() {
+    // Weak verb with haben auxiliary - all persons
+    expectConjugation(infinitiv: "machen", conjugationgroup: .plusquamperfektIndikativ(.firstSingular), expected: "hATte gemacht")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .plusquamperfektIndikativ(.secondSingular), expected: "hATtest gemacht")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .plusquamperfektIndikativ(.thirdSingular), expected: "hATte gemacht")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .plusquamperfektIndikativ(.firstPlural), expected: "hATten gemacht")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .plusquamperfektIndikativ(.secondPlural), expected: "hATtet gemacht")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .plusquamperfektIndikativ(.thirdPlural), expected: "hATten gemacht")
+
+    // Strong verb with sein auxiliary - all persons
+    expectConjugation(infinitiv: "gehen", conjugationgroup: .plusquamperfektIndikativ(.firstSingular), expected: "WAR gegANGen")
+    expectConjugation(infinitiv: "gehen", conjugationgroup: .plusquamperfektIndikativ(.secondSingular), expected: "WARst gegANGen")
+    expectConjugation(infinitiv: "gehen", conjugationgroup: .plusquamperfektIndikativ(.thirdSingular), expected: "WAR gegANGen")
+    expectConjugation(infinitiv: "gehen", conjugationgroup: .plusquamperfektIndikativ(.firstPlural), expected: "WARen gegANGen")
+    expectConjugation(infinitiv: "gehen", conjugationgroup: .plusquamperfektIndikativ(.secondPlural), expected: "WARt gegANGen")
+    expectConjugation(infinitiv: "gehen", conjugationgroup: .plusquamperfektIndikativ(.thirdPlural), expected: "WARen gegANGen")
+
+    // Strong verb with haben auxiliary
+    expectConjugation(infinitiv: "singen", conjugationgroup: .plusquamperfektIndikativ(.firstSingular), expected: "hATte gesUngen")
+    expectConjugation(infinitiv: "singen", conjugationgroup: .plusquamperfektIndikativ(.thirdSingular), expected: "hATte gesUngen")
+
+    // Mixed verb
+    expectConjugation(infinitiv: "bringen", conjugationgroup: .plusquamperfektIndikativ(.firstSingular), expected: "hATte gebrACHt")
+
+    // -ieren verb
+    expectConjugation(infinitiv: "studieren", conjugationgroup: .plusquamperfektIndikativ(.firstSingular), expected: "hATte studiert")
+
+    // Separable prefix verb
+    expectConjugation(infinitiv: "ankommen", conjugationgroup: .plusquamperfektIndikativ(.firstSingular), expected: "WAR angekommen")
+    expectConjugation(infinitiv: "ankommen", conjugationgroup: .plusquamperfektIndikativ(.thirdSingular), expected: "WAR angekommen")
+
+    // Inseparable prefix verb
+    expectConjugation(infinitiv: "verstehen", conjugationgroup: .plusquamperfektIndikativ(.firstSingular), expected: "hATte verstANDen")
+  }
+
+  @Test func plusquamperfektKonditional() {
+    // Weak verb with haben auxiliary - all persons
+    expectConjugation(infinitiv: "machen", conjugationgroup: .plusquamperfektKonditional(.firstSingular), expected: "hÄTte gemacht")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .plusquamperfektKonditional(.secondSingular), expected: "hÄTtest gemacht")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .plusquamperfektKonditional(.thirdSingular), expected: "hÄTte gemacht")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .plusquamperfektKonditional(.firstPlural), expected: "hÄTten gemacht")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .plusquamperfektKonditional(.secondPlural), expected: "hÄTtet gemacht")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .plusquamperfektKonditional(.thirdPlural), expected: "hÄTten gemacht")
+
+    // Strong verb with sein auxiliary - all persons
+    expectConjugation(infinitiv: "gehen", conjugationgroup: .plusquamperfektKonditional(.firstSingular), expected: "WÄRe gegANGen")
+    expectConjugation(infinitiv: "gehen", conjugationgroup: .plusquamperfektKonditional(.secondSingular), expected: "WÄRest gegANGen")
+    expectConjugation(infinitiv: "gehen", conjugationgroup: .plusquamperfektKonditional(.thirdSingular), expected: "WÄRe gegANGen")
+    expectConjugation(infinitiv: "gehen", conjugationgroup: .plusquamperfektKonditional(.firstPlural), expected: "WÄRen gegANGen")
+    expectConjugation(infinitiv: "gehen", conjugationgroup: .plusquamperfektKonditional(.secondPlural), expected: "WÄRet gegANGen")
+    expectConjugation(infinitiv: "gehen", conjugationgroup: .plusquamperfektKonditional(.thirdPlural), expected: "WÄRen gegANGen")
+
+    // Strong verb with haben auxiliary
+    expectConjugation(infinitiv: "singen", conjugationgroup: .plusquamperfektKonditional(.firstSingular), expected: "hÄTte gesUngen")
+
+    // Mixed verb
+    expectConjugation(infinitiv: "bringen", conjugationgroup: .plusquamperfektKonditional(.firstSingular), expected: "hÄTte gebrACHt")
+
+    // -ieren verb
+    expectConjugation(infinitiv: "studieren", conjugationgroup: .plusquamperfektKonditional(.firstSingular), expected: "hÄTte studiert")
+
+    // Separable prefix verb
+    expectConjugation(infinitiv: "ankommen", conjugationgroup: .plusquamperfektKonditional(.firstSingular), expected: "WÄRe angekommen")
+
+    // Inseparable prefix verb
+    expectConjugation(infinitiv: "verstehen", conjugationgroup: .plusquamperfektKonditional(.firstSingular), expected: "hÄTte verstANDen")
+  }
+
+  @Test func futurIndikativ() {
+    // Weak verb - all persons
+    expectConjugation(infinitiv: "machen", conjugationgroup: .futurIndikativ(.firstSingular), expected: "werde machen")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .futurIndikativ(.secondSingular), expected: "wIrst machen")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .futurIndikativ(.thirdSingular), expected: "wIrD machen")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .futurIndikativ(.firstPlural), expected: "werden machen")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .futurIndikativ(.secondPlural), expected: "werdEt machen")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .futurIndikativ(.thirdPlural), expected: "werden machen")
+
+    // Strong verb with sein auxiliary
+    expectConjugation(infinitiv: "gehen", conjugationgroup: .futurIndikativ(.firstSingular), expected: "werde gehen")
+    expectConjugation(infinitiv: "gehen", conjugationgroup: .futurIndikativ(.thirdSingular), expected: "wIrD gehen")
+
+    // Strong verb with haben auxiliary
+    expectConjugation(infinitiv: "singen", conjugationgroup: .futurIndikativ(.firstSingular), expected: "werde singen")
+
+    // Mixed verb
+    expectConjugation(infinitiv: "bringen", conjugationgroup: .futurIndikativ(.firstSingular), expected: "werde bringen")
+
+    // -ieren verb
+    expectConjugation(infinitiv: "studieren", conjugationgroup: .futurIndikativ(.firstSingular), expected: "werde studieren")
+
+    // Separable prefix verb
+    expectConjugation(infinitiv: "ankommen", conjugationgroup: .futurIndikativ(.firstSingular), expected: "werde ankommen")
+
+    // Inseparable prefix verb
+    expectConjugation(infinitiv: "verstehen", conjugationgroup: .futurIndikativ(.firstSingular), expected: "werde verstehen")
+  }
+
+  @Test func futurKonjunktivI() {
+    // Weak verb - all persons
+    expectConjugation(infinitiv: "machen", conjugationgroup: .futurKonjunktivI(.firstSingular), expected: "werde machen")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .futurKonjunktivI(.secondSingular), expected: "werdest machen")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .futurKonjunktivI(.thirdSingular), expected: "werde machen")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .futurKonjunktivI(.firstPlural), expected: "werden machen")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .futurKonjunktivI(.secondPlural), expected: "werdet machen")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .futurKonjunktivI(.thirdPlural), expected: "werden machen")
+
+    // Strong verb with sein auxiliary
+    expectConjugation(infinitiv: "gehen", conjugationgroup: .futurKonjunktivI(.firstSingular), expected: "werde gehen")
+
+    // Strong verb with haben auxiliary
+    expectConjugation(infinitiv: "singen", conjugationgroup: .futurKonjunktivI(.firstSingular), expected: "werde singen")
+
+    // Mixed verb
+    expectConjugation(infinitiv: "bringen", conjugationgroup: .futurKonjunktivI(.firstSingular), expected: "werde bringen")
+
+    // -ieren verb
+    expectConjugation(infinitiv: "studieren", conjugationgroup: .futurKonjunktivI(.firstSingular), expected: "werde studieren")
+
+    // Separable prefix verb
+    expectConjugation(infinitiv: "ankommen", conjugationgroup: .futurKonjunktivI(.firstSingular), expected: "werde ankommen")
+
+    // Inseparable prefix verb
+    expectConjugation(infinitiv: "verstehen", conjugationgroup: .futurKonjunktivI(.firstSingular), expected: "werde verstehen")
+  }
+
+  @Test func futurKonditional() {
+    // Weak verb - all persons
+    expectConjugation(infinitiv: "machen", conjugationgroup: .futurKonditional(.firstSingular), expected: "wÜrde machen")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .futurKonditional(.secondSingular), expected: "wÜrdest machen")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .futurKonditional(.thirdSingular), expected: "wÜrde machen")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .futurKonditional(.firstPlural), expected: "wÜrden machen")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .futurKonditional(.secondPlural), expected: "wÜrdet machen")
+    expectConjugation(infinitiv: "machen", conjugationgroup: .futurKonditional(.thirdPlural), expected: "wÜrden machen")
+
+    // Strong verb with sein auxiliary
+    expectConjugation(infinitiv: "gehen", conjugationgroup: .futurKonditional(.firstSingular), expected: "wÜrde gehen")
+
+    // Strong verb with haben auxiliary
+    expectConjugation(infinitiv: "singen", conjugationgroup: .futurKonditional(.firstSingular), expected: "wÜrde singen")
+
+    // Mixed verb
+    expectConjugation(infinitiv: "bringen", conjugationgroup: .futurKonditional(.firstSingular), expected: "wÜrde bringen")
+
+    // -ieren verb
+    expectConjugation(infinitiv: "studieren", conjugationgroup: .futurKonditional(.firstSingular), expected: "wÜrde studieren")
+
+    // Separable prefix verb
+    expectConjugation(infinitiv: "ankommen", conjugationgroup: .futurKonditional(.firstSingular), expected: "wÜrde ankommen")
+
+    // Inseparable prefix verb
+    expectConjugation(infinitiv: "verstehen", conjugationgroup: .futurKonditional(.firstSingular), expected: "wÜrde verstehen")
+  }
+
   private func expectConjugation(infinitiv: String, conjugationgroup: Conjugationgroup, expected: String) {
     let result = Conjugator.conjugate(infinitiv: infinitiv, conjugationgroup: conjugationgroup)
     switch result {

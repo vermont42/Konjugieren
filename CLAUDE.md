@@ -149,12 +149,29 @@ Multi-member conjugationgroups also sometimes encode **voice**. In English, the 
 
 #### Compound Conjugationgroups
 
-These conjugationgroups use an auxiliary verb (haben or sein) with the Perfektpartizip:
+These conjugationgroups use auxiliary verbs (haben/sein or werden) combined with the Perfektpartizip or Infinitiv:
 
-| Conjugation Group | Auxiliary Mood | English Equivalent |
-|-------------------|----------------|-------------------|
-| Perfekt Indikativ | Indikativ | Present perfect indicative |
-| Perfekt Konjunktiv I | Konjunktiv I | Present perfect subjunctive |
+**Perfekt (auxiliary in Präsens + Perfektpartizip):**
+
+| Conjugation Group | Auxiliary Tense | Auxiliary Mood | English Equivalent |
+|-------------------|-----------------|----------------|-------------------|
+| Perfekt Indikativ | Präsens | Indikativ | Present perfect indicative |
+| Perfekt Konjunktiv I | Präsens | Konjunktiv I | Present perfect subjunctive |
+
+**Plusquamperfekt (auxiliary in Präteritum + Perfektpartizip):**
+
+| Conjugation Group | Auxiliary Tense | Auxiliary Mood | English Equivalent |
+|-------------------|-----------------|----------------|-------------------|
+| Plusquamperfekt Indikativ | Präteritum | Indikativ | Pluperfect indicative |
+| Plusquamperfekt Konditional | Präteritum | Konditional | Pluperfect conditional |
+
+**Futur (werden + Infinitiv):**
+
+| Conjugation Group | Auxiliary Tense | Auxiliary Mood | English Equivalent |
+|-------------------|-----------------|----------------|-------------------|
+| Futur Indikativ | Präsens | Indikativ | Future indicative |
+| Futur Konjunktiv I | Präsens | Konjunktiv I | Future subjunctive |
+| Futur Konditional | Präsens | Konditional | Future conditional |
 
 ### Usage Notes
 

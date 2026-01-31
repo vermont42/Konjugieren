@@ -86,8 +86,8 @@ extension String {
     var inConjugation = false
     var markupStart = self.startIndex
 
-    for (offset, char) in self.enumerated() {
-      let index = self.index(self.startIndex, offsetBy: offset)
+    for index in self.indices {
+      let char = self[index]
 
       if char == String.boldSeparator {
         if inBold {

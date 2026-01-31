@@ -73,6 +73,7 @@ struct VerbRowView: View {
         .foregroundStyle(.secondary)
 
     }
+    .contentShape(Rectangle())
     .padding(.horizontal)
     .padding(.vertical, 12)
   }

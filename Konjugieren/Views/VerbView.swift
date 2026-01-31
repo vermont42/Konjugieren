@@ -55,7 +55,7 @@ struct VerbView: View {
           conjugationSection(for: Conjugationgroup.präsensIndicativ)
           conjugationSection(for: Conjugationgroup.präteritumIndicativ)
           conjugationSection(for: Conjugationgroup.präsensKonjunktivI)
-          conjugationSection(for: Conjugationgroup.präteritumKonditional)
+          conjugationSection(for: Conjugationgroup.präteritumKonjunktivII)
 
           ConjugationSectionView(
             title: displayName(for: .imperativ(.secondSingular)),
@@ -65,10 +65,10 @@ struct VerbView: View {
           conjugationSection(for: Conjugationgroup.perfektIndikativ)
           conjugationSection(for: Conjugationgroup.perfektKonjunktivI)
           conjugationSection(for: Conjugationgroup.plusquamperfektIndikativ)
-          conjugationSection(for: Conjugationgroup.plusquamperfektKonditional)
+          conjugationSection(for: Conjugationgroup.plusquamperfektKonjunktivII)
           conjugationSection(for: Conjugationgroup.futurIndikativ)
           conjugationSection(for: Conjugationgroup.futurKonjunktivI)
-          conjugationSection(for: Conjugationgroup.futurKonditional)
+          conjugationSection(for: Conjugationgroup.futurKonjunktivII)
         }
         .padding(.horizontal)
       }

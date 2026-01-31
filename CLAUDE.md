@@ -126,7 +126,7 @@ There is no Futur Partizip (participle).
 Multiple-member (not Perfektpartizip or Präsenspartizip) German verbs are also encoded with **mood**. German has four moods:
 - **Indikativ** - corresponds to the English indicative mood
 - **Konjunktiv I** - corresponds to the English subjunctive mood
-- **Konditional** (also called Konjunktiv II) - corresponds to the English conditional mood
+- **Konjunktiv II** - corresponds to the English conditional mood
 - **Imperativ** - corresponds to the English imperative mood
 
 Multiple-member conjugationgroup have a tense and mood. For example, Präsens Indikativ has Präsens tense and Indikativ mood. Certain tense/mood combinations do not occur. For example, there is no conjugationgroup for Futur/Imperativ.
@@ -137,12 +137,12 @@ Multi-member conjugationgroups also sometimes encode **voice**. In English, the 
 
 #### Simple Conjugationgroups
 
-| Conjugation Group | Tense | Mood | English Equivalent |
+| Conjugationgroup | Tense | Mood | English Equivalent |
 |-------------------|-------|------|-------------------|
 | Präsens Indikativ | Präsens | Indikativ | Present indicative |
 | Präteritum Indikativ | Präteritum | Indikativ | Past indicative |
 | Präsens Konjunktiv I | Präsens | Konjunktiv I | Present subjunctive |
-| Präteritum Konditional | Präteritum | Konditional a/k/a Konjunktiv II | Past conditional |
+| Präteritum Konjunktiv II | Präteritum | Konjunktiv II | Past conditional |
 | Imperativ | - | Imperativ | Imperative |
 | Perfektpartizip | Präteritum | - | Past participle |
 | Präsenspartizip | Präsens | - | Present participle |
@@ -163,7 +163,7 @@ These conjugationgroups use auxiliary verbs (haben/sein or werden) combined with
 | Conjugation Group | Auxiliary Tense | Auxiliary Mood | English Equivalent |
 |-------------------|-----------------|----------------|-------------------|
 | Plusquamperfekt Indikativ | Präteritum | Indikativ | Pluperfect indicative |
-| Plusquamperfekt Konditional | Präteritum | Konditional | Pluperfect conditional |
+| Plusquamperfekt Konjunktiv II | Präteritum | Konjunktiv II | Pluperfect conditional |
 
 **Futur (werden + Infinitiv):**
 
@@ -171,12 +171,11 @@ These conjugationgroups use auxiliary verbs (haben/sein or werden) combined with
 |-------------------|-----------------|----------------|-------------------|
 | Futur Indikativ | Präsens | Indikativ | Future indicative |
 | Futur Konjunktiv I | Präsens | Konjunktiv I | Future subjunctive |
-| Futur Konditional | Präsens | Konditional | Future conditional |
+| Futur Konjunktiv II | Präsens | Konjunktiv II | Future conditional |
 
 ### Usage Notes
 
 - Avoid using "tense" to describe conjugationgroups
-- Use "Konditional" rather than "Konjunktiv II" for clarity
 - The participles (Perfektpartizip, Präsenspartizip) do not have mood
 - Compound conjugationgroups combine an auxiliary verb conjugation with the Perfektpartizip
 
@@ -235,7 +234,7 @@ Defines vowel/consonant changes for strong and mixed verbs:
 - `a` = Präsens Indikativ (a1s, a2s, a3s, a1p, a2p, a3p, aA=all)
 - `b` = Präteritum Indikativ (b1s, b2s, b3s, b1p, b2p, b3p, bA=all)
 - `c` = Präsens Konjunktiv I (c1s, c2s, c3s, c1p, c2p, c3p, cA=all)
-- `d` = Präteritum Konditional (d1s, d2s, d3s, d1p, d2p, d3p, dA=all)
+- `d` = Präteritum Konjunktiv II (d1s, d2s, d3s, d1p, d2p, d3p, dA=all)
 - `pp` = Perfektpartizip
 - `i` = Imperativ (i2s, i1p, i2p, i3p, iA=all)
 
@@ -260,7 +259,7 @@ German strong and mixed verbs undergo vowel and other changes (ablaut) in differ
 - Results:
   - Präsens 2s: replace "e" with "ie" → "sieh" + "st" = "siehst"
   - Präteritum: replace "e" with "a" → "sah" + endings
-  - Konditional: replace "e" with "ä" → "säh" + endings
+  - Konjunktiv II: replace "e" with "ä" → "säh" + endings
 
 ## Adding a New Verb
 
@@ -314,8 +313,6 @@ Both XML files must maintain alphabetical order:
 ## Common Wiktionary Reference
 
 For verb conjugations: `https://de.wiktionary.org/wiki/Flexion:VERBNAME`
-
-Note: Wiktionary uses "Konjunktiv II" for what this codebase calls "Konditional" (Präteritum Konditional).
 
 ## Dependency Injection
 
@@ -430,7 +427,7 @@ The quiz tests users' knowledge of German verb conjugations with timed, scored g
 
 **Regular difficulty:** Präsens Indikativ, Perfekt Indikativ, Imperativ
 
-**Ridiculous difficulty:** Adds Präsens Konjunktiv I, Präteritum Indikativ, Präteritum Konditional, Perfekt Konjunktiv I
+**Ridiculous difficulty:** Adds Präsens Konjunktiv I, Präteritum Indikativ, Präteritum Konjunktiv II, Perfekt Konjunktiv I
 
 ### Scoring
 

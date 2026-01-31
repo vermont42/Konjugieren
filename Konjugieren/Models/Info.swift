@@ -27,15 +27,15 @@ struct Info: Hashable {
     Info(heading: L.Info.präsensIndikativHeading, text: L.Info.präsensIndikativText, alwaysUsesGermanPronunciation: true),
     Info(heading: L.Info.präteritumIndikativHeading, text: L.Info.präteritumIndikativText, alwaysUsesGermanPronunciation: true),
     Info(heading: L.Info.präsensKonjunktivIHeading, text: L.Info.präsensKonjunktivIText, alwaysUsesGermanPronunciation: true),
-    Info(heading: L.Info.präteritumKonditionalHeading, text: L.Info.präteritumKonditionalText, alwaysUsesGermanPronunciation: true),
+    Info(heading: L.Info.präteritumKonjunktivIIHeading, text: L.Info.präteritumKonjunktivIIText, alwaysUsesGermanPronunciation: true),
     Info(heading: L.Info.imperativHeading, text: L.Info.imperativText, alwaysUsesGermanPronunciation: true),
     Info(heading: L.Info.perfektIndikativHeading, text: L.Info.perfektIndikativText, alwaysUsesGermanPronunciation: true),
     Info(heading: L.Info.perfektKonjunktivIHeading, text: L.Info.perfektKonjunktivIText, alwaysUsesGermanPronunciation: true),
     Info(heading: L.Info.plusquamperfektIndikativHeading, text: L.Info.plusquamperfektIndikativText, alwaysUsesGermanPronunciation: true),
-    Info(heading: L.Info.plusquamperfektKonditionalHeading, text: L.Info.plusquamperfektKonditionalText, alwaysUsesGermanPronunciation: true),
+    Info(heading: L.Info.plusquamperfektKonjunktivIIHeading, text: L.Info.plusquamperfektKonjunktivIIText, alwaysUsesGermanPronunciation: true),
     Info(heading: L.Info.futurIndikativHeading, text: L.Info.futurIndikativText, alwaysUsesGermanPronunciation: true),
     Info(heading: L.Info.futurKonjunktivIHeading, text: L.Info.futurKonjunktivIText, alwaysUsesGermanPronunciation: true),
-    Info(heading: L.Info.futurKonditionalHeading, text: L.Info.futurKonditionalText, alwaysUsesGermanPronunciation: true),
+    Info(heading: L.Info.futurKonjunktivIIHeading, text: L.Info.futurKonjunktivIIText, alwaysUsesGermanPronunciation: true),
     Info(heading: L.Info.creditsHeading, text: L.Info.creditsText, imageInfo: ImageInfo(filename: "JoshAdams", accessibilityLabel: L.ImageInfo.joshAdams)),
   ]
 

@@ -65,20 +65,20 @@ struct Ablaut: Hashable {
           appliesTo.append(.präsensKonjunktivI($0))
         }
       case "d1s":
-        appliesTo.append(.präteritumKonditional(.firstSingular))
+        appliesTo.append(.präteritumKonjunktivII(.firstSingular))
       case "d2s":
-        appliesTo.append(.präteritumKonditional(.secondSingular))
+        appliesTo.append(.präteritumKonjunktivII(.secondSingular))
       case "d3s":
-        appliesTo.append(.präteritumKonditional(.thirdSingular))
+        appliesTo.append(.präteritumKonjunktivII(.thirdSingular))
       case "d1p":
-        appliesTo.append(.präteritumKonditional(.firstPlural))
+        appliesTo.append(.präteritumKonjunktivII(.firstPlural))
       case "d2p":
-        appliesTo.append(.präteritumKonditional(.secondPlural))
+        appliesTo.append(.präteritumKonjunktivII(.secondPlural))
       case "d3p":
-        appliesTo.append(.präteritumKonditional(.thirdPlural))
+        appliesTo.append(.präteritumKonjunktivII(.thirdPlural))
       case "dA":
         PersonNumber.allCases.forEach {
-          appliesTo.append(.präteritumKonditional($0))
+          appliesTo.append(.präteritumKonjunktivII($0))
         }
       case "pp":
         appliesTo.append(.perfektpartizip)

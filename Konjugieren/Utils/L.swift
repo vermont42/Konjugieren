@@ -144,12 +144,12 @@ enum L {
       String(localized: "Info.präsensKonjunktivIText")
     }
 
-    static var präteritumKonditionalHeading: String {
-      String(localized: "Info.präteritumKonditionalHeading")
+    static var präteritumKonjunktivIIHeading: String {
+      String(localized: "Info.präteritumKonjunktivIIHeading")
     }
 
-    static var präteritumKonditionalText: String {
-      String(localized: "Info.präteritumKonditionalText")
+    static var präteritumKonjunktivIIText: String {
+      String(localized: "Info.präteritumKonjunktivIIText")
     }
 
     static var imperativHeading: String {
@@ -184,12 +184,12 @@ enum L {
       String(localized: "Info.plusquamperfektIndikativText")
     }
 
-    static var plusquamperfektKonditionalHeading: String {
-      String(localized: "Info.plusquamperfektKonditionalHeading")
+    static var plusquamperfektKonjunktivIIHeading: String {
+      String(localized: "Info.plusquamperfektKonjunktivIIHeading")
     }
 
-    static var plusquamperfektKonditionalText: String {
-      String(localized: "Info.plusquamperfektKonditionalText")
+    static var plusquamperfektKonjunktivIIText: String {
+      String(localized: "Info.plusquamperfektKonjunktivIIText")
     }
 
     static var futurIndikativHeading: String {
@@ -208,12 +208,12 @@ enum L {
       String(localized: "Info.futurKonjunktivIText")
     }
 
-    static var futurKonditionalHeading: String {
-      String(localized: "Info.futurKonditionalHeading")
+    static var futurKonjunktivIIHeading: String {
+      String(localized: "Info.futurKonjunktivIIHeading")
     }
 
-    static var futurKonditionalText: String {
-      String(localized: "Info.futurKonditionalText")
+    static var futurKonjunktivIIText: String {
+      String(localized: "Info.futurKonjunktivIIText")
     }
 
     static var creditsHeading: String {
@@ -288,8 +288,8 @@ enum L {
       String(localized: "Conjugationgroup.präteritumIndicativ")
     }
 
-    static var präteritumKonditional: String {
-      String(localized: "Conjugationgroup.präteritumKonditional")
+    static var präteritumKonjunktivII: String {
+      String(localized: "Conjugationgroup.präteritumKonjunktivII")
     }
 
     static var imperativ: String {
@@ -308,8 +308,8 @@ enum L {
       String(localized: "Conjugationgroup.plusquamperfektIndikativ")
     }
 
-    static var plusquamperfektKonditional: String {
-      String(localized: "Conjugationgroup.plusquamperfektKonditional")
+    static var plusquamperfektKonjunktivII: String {
+      String(localized: "Conjugationgroup.plusquamperfektKonjunktivII")
     }
 
     static var futurIndikativ: String {
@@ -320,8 +320,8 @@ enum L {
       String(localized: "Conjugationgroup.futurKonjunktivI")
     }
 
-    static var futurKonditional: String {
-      String(localized: "Conjugationgroup.futurKonditional")
+    static var futurKonjunktivII: String {
+      String(localized: "Conjugationgroup.futurKonjunktivII")
     }
   }
 

@@ -153,12 +153,12 @@ class Quiz {
     if difficultyUsed == .ridiculous {
       options.append { .präsensKonjunktivI(self.randomPersonNumber()) }
       options.append { .präteritumIndicativ(self.randomPersonNumber()) }
-      options.append { .präteritumKonditional(self.randomPersonNumber()) }
+      options.append { .präteritumKonjunktivII(self.randomPersonNumber()) }
       options.append { .perfektKonjunktivI(self.randomPersonNumber()) }
       options.append { .plusquamperfektIndikativ(self.randomPersonNumber()) }
-      options.append { .plusquamperfektKonditional(self.randomPersonNumber()) }
+      options.append { .plusquamperfektKonjunktivII(self.randomPersonNumber()) }
       options.append { .futurKonjunktivI(self.randomPersonNumber()) }
-      options.append { .futurKonditional(self.randomPersonNumber()) }
+      options.append { .futurKonjunktivII(self.randomPersonNumber()) }
     }
 
     return options.randomElement()!()
@@ -215,10 +215,10 @@ struct QuizItem: Identifiable {
     case .präsenspartizip, .perfektpartizip:
       return nil
     case .präsensIndicativ(let pn), .präsensKonjunktivI(let pn),
-         .präteritumIndicativ(let pn), .präteritumKonditional(let pn),
+         .präteritumIndicativ(let pn), .präteritumKonjunktivII(let pn),
          .perfektIndikativ(let pn), .perfektKonjunktivI(let pn),
-         .plusquamperfektIndikativ(let pn), .plusquamperfektKonditional(let pn),
-         .futurIndikativ(let pn), .futurKonjunktivI(let pn), .futurKonditional(let pn):
+         .plusquamperfektIndikativ(let pn), .plusquamperfektKonjunktivII(let pn),
+         .futurIndikativ(let pn), .futurKonjunktivI(let pn), .futurKonjunktivII(let pn):
       return pn.pronounWithSieDisambiguation
     case .imperativ(let pn):
       switch pn {

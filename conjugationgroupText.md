@@ -10,6 +10,10 @@ Use these public-domain texts from Project Gutenberg for authentic literary exam
 
 ### Primary Texts
 
+**Luther: The Holy Bible (1534)**
+- German: https://bolls.life
+This site defaults to Genesis, which the site calls Mose, but you can get other books of the Bible by clicking the book button in the top-left corner of the page. Please perform your own English translations, where appropriate.
+
 **Goethe: "The Sorrows of Young Werther" (1774)**
 - German: https://www.gutenberg.org/cache/epub/2407/pg2407.txt
 - English: https://www.gutenberg.org/cache/epub/2527/pg2527.txt
@@ -131,6 +135,13 @@ If relevant to this conjugationgroup:
 - Connection to Proto-Indo-European or Proto-Germanic roots
 
 ## Guidelines
+
+### Terminology
+Use "conjugation" instead of "form" when referring to verb conjugations. For example:
+- ✓ "Two Perfekt Indikativ conjugations"
+- ✗ "Two Perfekt Indikativ forms"
+
+This maintains consistency with the project's terminology conventions established in CLAUDE.md.
 
 ### Length
 Target 1,500-2,500 words depending on conjugationgroup complexity. Participles and compound conjugationgroups may need more explanation.

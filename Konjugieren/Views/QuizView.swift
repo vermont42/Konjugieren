@@ -20,9 +20,14 @@ struct QuizView: View {
         Color.customBackground
           .ignoresSafeArea()
 
-        VStack(alignment: .leading) {
-          if quiz.isInProgress, let question = quiz.currentQuestion {
-            quizContent(question: question)
+        VStack {
+          ScrollView {
+            VStack(alignment: .leading) {
+              if quiz.isInProgress, let question = quiz.currentQuestion {
+                quizContent(question: question)
+              }
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
           }
 
           Spacer()
@@ -70,6 +75,7 @@ struct QuizView: View {
       Text(labeledText(label: L.Quiz.verb, value: question.verb.infinitiv))
 
       Text(labeledText(label: L.Quiz.translation, value: question.verb.translation))
+        .fixedSize(horizontal: false, vertical: true)
 
       if let pronoun = question.pronoun {
         Text(labeledText(label: L.Quiz.pronoun, value: pronoun))

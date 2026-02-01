@@ -15,6 +15,7 @@ class VerbParser: NSObject, XMLParserDelegate {
   private var currentAblautGroup = ""
   private var currentAblautStartIndex = 0
   private var currentAblautEndIndex = 0
+  private var currentIconSuffix = ""
 
   override init() {
     super.init()
@@ -82,6 +83,10 @@ class VerbParser: NSObject, XMLParserDelegate {
       } else {
         fatalError("No frequency specified.")
       }
+
+      if let iconSuffix = attributeDict["ic"] {
+        currentIconSuffix = iconSuffix
+      }
     }
   }
 
@@ -145,13 +150,16 @@ class VerbParser: NSObject, XMLParserDelegate {
         fatalError("Unrecognized family \(currentFamily) was provided for \(currentVerb).")
       }
 
+      let frequencyIcon = currentIconSuffix.isEmpty ? "figure" : "figure.\(currentIconSuffix)"
+
       verbs[currentVerb] = Verb(
         infinitiv: currentVerb,
         translation: currentTranslation,
         family: family,
         auxiliary: auxiliary,
         frequency: currentFrequency,
-        prefix: currentPrefix
+        prefix: currentPrefix,
+        frequencyIcon: frequencyIcon
       )
 
       currentVerb = ""
@@ -163,6 +171,7 @@ class VerbParser: NSObject, XMLParserDelegate {
       currentAblautStartIndex = 0
       currentAblautEndIndex = 0
       currentPrefix = .none
+      currentIconSuffix = ""
     }
   }
 }

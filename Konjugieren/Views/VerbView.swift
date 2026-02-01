@@ -34,7 +34,7 @@ struct VerbView: View {
           HStack(spacing: 16) {
             Label(verb.family.displayName, systemImage: "tag")
             Label(verb.auxiliary.verb, systemImage: "arrow.triangle.branch")
-            Label("#\(verb.frequency)", systemImage: RankIcon.random)
+            Label("#\(verb.frequency)", systemImage: verb.frequencyIcon)
           }
           .font(.subheadline)
         }
@@ -166,7 +166,8 @@ struct ConjugationSectionView: View {
       family: .strong(ablautGroup: "gehen", ablautStartIndex: 0, ablautEndIndex: 2),
       auxiliary: .sein,
       frequency: 10,
-      prefix: .none
+      prefix: .none,
+      frequencyIcon: "figure.walk"
     ))
   }
 }

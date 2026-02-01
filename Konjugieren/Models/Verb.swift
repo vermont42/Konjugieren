@@ -21,6 +21,7 @@ struct Verb: Identifiable, Hashable, CustomStringConvertible {
   let auxiliary: Auxiliary
   let frequency: Int
   let prefix: Prefix
+  let frequencyIcon: String
 
   var stamm: String {
     if infinitiv.hasSuffix("en") {

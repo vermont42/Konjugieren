@@ -34,6 +34,7 @@ struct VerbView: View {
           HStack(spacing: 16) {
             Label(verb.family.displayName, systemImage: "tag")
             Label(verb.auxiliary.verb, systemImage: "arrow.triangle.branch")
+            Label("#\(verb.frequency)", systemImage: RankIcon.random)
           }
           .font(.subheadline)
         }

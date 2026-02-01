@@ -9,16 +9,26 @@ struct VerbBrowseView: View {
   var body: some View {
     NavigationStack {
       VStack(spacing: 0) {
-        ScrollView {
-          LazyVStack(spacing: 0) {
-            ForEach(sortedVerbs) { verb in
-              NavigationLink(value: verb) {
-                VerbRowView(verb: verb)
-              }
-              .buttonStyle(.plain)
+        ScrollViewReader { proxy in
+          ScrollView {
+            LazyVStack(spacing: 0) {
+              ForEach(sortedVerbs) { verb in
+                NavigationLink(value: verb) {
+                  VerbRowView(verb: verb)
+                }
+                .buttonStyle(.plain)
 
-              Divider()
-                .padding(.leading)
+                Divider()
+                  .padding(.leading)
+              }
+            }
+          }
+          .onChange(of: sortOrder) {
+            updateSortedVerbs()
+            Task { @MainActor in
+              if let firstVerb = sortedVerbs.first {
+                proxy.scrollTo(firstVerb.id, anchor: .top)
+              }
             }
           }
         }
@@ -37,9 +47,6 @@ struct VerbBrowseView: View {
       .navigationTitle(L.Navigation.verbs)
       .navigationDestination(for: Verb.self) { verb in
         VerbView(verb: verb)
-      }
-      .onChange(of: sortOrder) {
-        updateSortedVerbs()
       }
     }
   }

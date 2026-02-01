@@ -39,7 +39,7 @@
   <ag e="lassen" a="Ä,a3s|lÄssEst*,a2s|IE,bA,dA|lIEssEst*,b2s" />
   <ag e="laufen" a="ÄU,a2s,a3s|IE,bA,dA" />
   <ag e="liegen" a="A,bA|Ä,dA|E,pp" />
-  <ag e="mögen" a="MAG*,a1s,a3s|MAGST*,a2s|OCH,bA,pp|ÖCH,dA" />
+  <ag e="mögen" a="mAG*,a1s,a3s|mAGst*,a2s|OCH,bA,pp|ÖCH,dA" />
   <ag e="müssen" a="mUsS*,a1s,a3s|mUssT*,a2s|Uss,bA,pp" />
   <ag e="nehmen" a="IMM,a2s,a3s|AHM,bA|ÄHM,dA|OMM,pp" />
   <ag e="rufen" a="IE,bA,dA" />
@@ -70,7 +70,7 @@
   <ag e="weisen" a="IE,bA,dA,pp" />
   <ag e="werden" a="wIrst*,a2s|wIrD*,a3s|werdEt*,a2p|wUrdE*,b1s,b3s|wUrdEst*,b2s|wUrdEt*,b2p|U,b1p,b3p|Ü,dA|O,pp" />
   <ag e="werfen" a="I,a2s,a3s|A,bA|Ü,dA|O,pp" />
-  <ag e="wissen" a="WEISS*,a1s,a3s|WEISST*,a2s|USS,bA,pp|ÜSS,dA" />
-  <ag e="wollen" a="WILL*,a1s,a3s|WILLST*,a2s" />
+  <ag e="wissen" a="wEIsS*,a1s,a3s|wEISst*,a2s|USS,bA,pp|ÜSS,dA" />
+  <ag e="wollen" a="wIlL*,a1s,a3s|wIllst*,a2s" />
   <ag e="ziehen" a="OG,bA,pp|ÖG,dA" />
 </ablautGroups>

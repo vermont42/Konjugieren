@@ -956,6 +956,34 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "erschaffen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "habe erschaffen")
   }
 
+  @Test func modalVerbs() {
+    // mögen - Präsens singular has full overrides, regular weak-style elsewhere
+    // Pattern: mAG*,a1s,a3s|mAGst*,a2s|OCH,bA,pp|ÖCH,dA
+    expectConjugation(infinitiv: "mögen", conjugationgroup: .präsensIndicativ(.firstSingular), expected: "mAG")
+    expectConjugation(infinitiv: "mögen", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "mAGst")
+    expectConjugation(infinitiv: "mögen", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "mAG")
+    expectConjugation(infinitiv: "mögen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "mOCHte")
+    expectConjugation(infinitiv: "mögen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "mÖCHte")
+    expectConjugation(infinitiv: "mögen", conjugationgroup: .perfektpartizip, expected: "gemOCHt")
+
+    // wissen - Präsens singular has full overrides, iss→uss/üss elsewhere
+    // Pattern: wEIsS*,a1s,a3s|wEISst*,a2s|USS,bA,pp|ÜSS,dA
+    expectConjugation(infinitiv: "wissen", conjugationgroup: .präsensIndicativ(.firstSingular), expected: "wEIsS")
+    expectConjugation(infinitiv: "wissen", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "wEISst")
+    expectConjugation(infinitiv: "wissen", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "wEIsS")
+    expectConjugation(infinitiv: "wissen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "wUSSte")
+    expectConjugation(infinitiv: "wissen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "wÜSSte")
+    expectConjugation(infinitiv: "wissen", conjugationgroup: .perfektpartizip, expected: "gewUSSt")
+
+    // wollen - Präsens singular has full overrides, regular weak-style elsewhere
+    // Pattern: wIlL*,a1s,a3s|wIllst*,a2s
+    expectConjugation(infinitiv: "wollen", conjugationgroup: .präsensIndicativ(.firstSingular), expected: "wIlL")
+    expectConjugation(infinitiv: "wollen", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "wIllst")
+    expectConjugation(infinitiv: "wollen", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "wIlL")
+    expectConjugation(infinitiv: "wollen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "wollte")
+    expectConjugation(infinitiv: "wollen", conjugationgroup: .perfektpartizip, expected: "gewollt")
+  }
+
   private func expectConjugation(infinitiv: String, conjugationgroup: Conjugationgroup, expected: String) {
     let result = Conjugator.conjugate(infinitiv: infinitiv, conjugationgroup: conjugationgroup)
     switch result {

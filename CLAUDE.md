@@ -20,6 +20,94 @@ xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren -destination 'plat
 xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren -destination 'platform=iOS Simulator,name=iPhone 17' -parallel-testing-enabled NO test -only-testing:KonjugierenTests/Models/ConjugatorTests/perfektpartizip
 ```
 
+## Test Suite
+
+The project uses Swift Testing (`import Testing`) for unit tests. Tests are located in `KonjugierenTests/`.
+
+### ConjugatorTests Structure
+
+`ConjugatorTests.swift` is the primary test file, containing ~50 test functions organized by conjugationgroup and feature:
+
+| Test Function | Coverage |
+|---------------|----------|
+| `perfektpartizip()` | Past participle for all verb families |
+| `präsenspartizip()` | Present participle |
+| `präsensIndicativ()` | Present tense, including sein/haben |
+| `präsensKonjunktivI()` | Present subjunctive |
+| `präteritumIndicativ()` | Simple past |
+| `präteritumKonjunktivII()` | Past conditional |
+| `perfektIndikativ()` | Present perfect |
+| `perfektKonjunktivI()` | Present perfect subjunctive |
+| `plusquamperfektIndikativ()` | Pluperfect |
+| `plusquamperfektKonjunktivII()` | Pluperfect conditional |
+| `futurIndikativ()` | Future tense |
+| `futurKonjunktivI()` | Future subjunctive |
+| `futurKonjunktivII()` | Future conditional |
+| `imperativ()` | Imperative mood |
+| `werden()` | The irregular verb werden |
+| `tun()` | The irregular verb tun |
+| `modalVerbs()` | Modal verbs: mögen, wissen, wollen |
+| `newAblautGroups()` | Tests for ablaut patterns |
+| `newAblautGroupsPhase2()` | Additional ablaut patterns |
+| `newVerbs()` | Tests for newly added verbs |
+| `schreienAblaut()` | Contracted participle pattern |
+| `schaffenAblaut()` | The schaffen/erschaffen pattern |
+
+### The expectConjugation Helper
+
+All conjugation tests use a private helper function:
+
+```swift
+private func expectConjugation(infinitiv: String, conjugationgroup: Conjugationgroup, expected: String) {
+  let result = Conjugator.conjugate(infinitiv: infinitiv, conjugationgroup: conjugationgroup)
+  switch result {
+  case .success(let conjugation):
+    #expect(conjugation == expected, "Expected \(infinitiv) → \(expected), got \(conjugation)")
+  case .failure(let err):
+    Issue.record("Failed to conjugate \(infinitiv): \(err)")
+  }
+}
+```
+
+### Mixed-Case Convention in Test Expectations
+
+Test expected values use mixed case to indicate ablaut changes:
+- **Lowercase** = expected/unchanged portions of the conjugation
+- **UPPERCASE** = unexpected/ablaut-changed portions
+
+Examples:
+```swift
+// Strong verb singen: i→a in Präteritum
+expectConjugation(infinitiv: "singen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "sAng")
+
+// Modal verb wissen: irregular Präsens
+expectConjugation(infinitiv: "wissen", conjugationgroup: .präsensIndicativ(.firstSingular), expected: "wEIsS")
+
+// Irregular sein: highly irregular forms
+expectConjugation(infinitiv: "sein", conjugationgroup: .präsensIndicativ(.firstSingular), expected: "BIN")
+```
+
+This convention helps verify that `Conjugator` correctly identifies and marks ablaut regions for UI highlighting.
+
+### Adding Tests for New Verbs
+
+When adding tests for a new verb or ablaut pattern:
+
+1. **Find the appropriate test function** based on what you're testing (e.g., `modalVerbs()` for modal verbs, `newAblautGroups()` for new patterns)
+
+2. **Add test cases** using the helper:
+   ```swift
+   // Comment explaining the verb pattern
+   expectConjugation(infinitiv: "verbname", conjugationgroup: .conjugationgroup(.person), expected: "expectedForm")
+   ```
+
+3. **Follow the mixed-case convention** for expected values—uppercase letters mark the ablaut-changed portions
+
+4. **Run the specific test** to verify:
+   ```bash
+   xcodebuild ... -only-testing:KonjugierenTests/Models/ConjugatorTests/testFunctionName
+   ```
+
 ## Architecture Overview
 
 Konjugieren is an iOS app for learning German verb conjugations. It will eventually conjugate 1,000 verbs across all German conjugationgroups ("tenses" in ordinary (and incorrect) parlance). Konjugieren uses SwiftUI for its user interface.
@@ -96,6 +184,13 @@ Konjugieren/
     ├── InfoView.swift          # Detail view for a single Info article
     ├── RichTextView.swift      # Renders RichTextBlock content with styling
     └── SettingsView.swift      # Settings UI with segmented pickers
+
+KonjugierenTests/
+├── Models/
+│   ├── ConjugatorTests.swift   # Comprehensive conjugation tests (~50 test functions)
+│   └── QuizTests.swift         # Quiz logic and scoring tests
+└── Utils/
+    └── TimeFormatterTests.swift # Time formatting utility tests
 ```
 
 ## Comments
@@ -107,6 +202,26 @@ Code should be well-written and therefore self-explanatory. Explanatory and MARK
 * Hacks or workarounds
 
 When reviewing code, do not flag these two types of comments.
+
+## Swift Coding Conventions
+
+### Avoid Force-Unwrapping
+
+In production code, use the nil-coalescing operator (`??`) with an appropriate fallback rather than force-unwrapping (`!`). If the nature of the fallback is non-obvious, ask Josh.
+
+```swift
+// Prefer this
+static var random: String {
+  allCases.randomElement()?.rawValue ?? fallback
+}
+
+// Avoid this
+static var random: String {
+  allCases.randomElement()!.rawValue
+}
+```
+
+This rule does not apply in unit tests, where force-unwrapping is, by convention, acceptable.
 
 ## Terminology
 

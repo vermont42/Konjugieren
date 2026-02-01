@@ -7,7 +7,9 @@ struct Verb: Identifiable, Hashable, CustomStringConvertible {
   static let minVerbLength = 3
 
   static var verbsSortedAlphabetically: [Verb] {
-    Array(verbs.values).sorted { $0.infinitiv < $1.infinitiv }
+    Array(verbs.values).sorted {
+      $0.infinitiv.compare($1.infinitiv, locale: Locale(identifier: "de")) == .orderedAscending
+    }
   }
 
   static var verbsSortedByFrequency: [Verb] {

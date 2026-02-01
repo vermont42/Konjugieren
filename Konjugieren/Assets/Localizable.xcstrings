@@ -4,6 +4,12 @@
     "" : {
 
     },
+    "\"%@\"" : {
+
+    },
+    "*%@" : {
+
+    },
     "#%lld" : {
 
     },
@@ -87,6 +93,15 @@
         }
       }
     },
+    "%lld" : {
+
+    },
+    "🏴󠁧󠁢󠁥󠁮󠁧󠁿" : {
+
+    },
+    "🐎" : {
+
+    },
     "AudioFeedback.disable" : {
       "localizations" : {
         "de" : {
@@ -115,6 +130,26 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Enable"
+          }
+        }
+      }
+    },
+    "BrowseableFamily.inseparable" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Inseparable"
+          }
+        }
+      }
+    },
+    "BrowseableFamily.separable" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Separable"
           }
         }
       }
@@ -435,6 +470,156 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Weak"
+          }
+        }
+      }
+    },
+    "FamilyBrowse.ierenShort" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verbs ending in -ieren. No ge- prefix in participle."
+          }
+        }
+      }
+    },
+    "FamilyBrowse.inseparableShort" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prefix stays attached. Like \"unfriend\" or \"overcome\"."
+          }
+        }
+      }
+    },
+    "FamilyBrowse.mixedShort" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Combines strong-verb ablaut with weak-verb endings."
+          }
+        }
+      }
+    },
+    "FamilyBrowse.separableShort" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prefix detaches in main clauses. Like \"come up\" or \"get down\"."
+          }
+        }
+      }
+    },
+    "FamilyBrowse.strongShort" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vowel changes (ablaut) in past tense and participle. The oldest verb pattern."
+          }
+        }
+      }
+    },
+    "FamilyBrowse.viewVerbs" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View Verbs →"
+          }
+        }
+      }
+    },
+    "FamilyBrowse.weakShort" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regular verbs with -te past and -t participle. The most common pattern."
+          }
+        }
+      }
+    },
+    "FamilyDetail.ierenLong" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "~-Ieren~ verbs came to German through Latin and French. Latin verbs in ~-are~ (like ~studiare~, to study) became French verbs in ~-er~, which German then borrowed with the characteristic ~-ieren~ ending.\n\nThese verbs behave like weak verbs with one key exception: they form the ~Perfektpartizip~ without the ~ge-~ prefix. So ~studieren~ becomes ~studiert~ (not ~gestudiert~), and ~telefonieren~ becomes ~telefoniert~.\n\nMany -ieren verbs describe modern concepts or formal activities: ~telefonieren~ (telephone), ~organisieren~ (organize), ~funktionieren~ (function), ~diskutieren~ (discuss). Their Latin-French origin often makes them recognizable to English speakers."
+          }
+        }
+      }
+    },
+    "FamilyDetail.inseparableLong" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "~Inseparable-prefix~ verbs have prefixes that never detach from the verb stem. English equivalents include \"unfriend\" (un- never separates) or \"overcome\" (over- stays attached).\n\nThe eight inseparable prefixes are ~be-~, ~emp-~, ~ent-~, ~er-~, ~ge-~, ~miss-~, ~ver-~, and ~zer-~. Each carries a distinct meaning that modifies the base verb. For example, ~ver-~ often indicates completion or error: ~stehen~ (stand) → ~verstehen~ (understand).\n\nInseparable verbs form the ~Perfektpartizip~ without adding ~ge-~, since the prefix occupies that position. So ~verstehen~ becomes ~verstanden~, not ~geverstanden~."
+          }
+        }
+      }
+    },
+    "FamilyDetail.mixedLong" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "~Mixed~ verbs combine features of both strong and weak verbs. Like strong verbs, they undergo a vowel change (ablaut) in the past tense. But like weak verbs, they use the ~-te~ suffix for the ~Präteritum~ and ~-t~ for the ~Perfektpartizip~.\n\nThe most common mixed verbs include ~bringen~ (bring, $brAchte$, $gebrAcht$), ~denken~ (think, $dAchte$, $gedAcht$), ~kennen~ (know, $kAnnte$, $gekAnnt$), and ~wissen~ (know facts, $wUsste$, $gewUsst$).\n\nMixed verbs likely arose when some strong verbs began following the more productive weak pattern while retaining their vowel changes. This hybrid category is small but includes several high-frequency verbs essential for everyday German."
+          }
+        }
+      }
+    },
+    "FamilyDetail.prefixesHeading" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prefixes"
+          }
+        }
+      }
+    },
+    "FamilyDetail.separableLong" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "~Separable-prefix~ verbs have prefixes that detach from the verb in main clauses and move to the end of the sentence. English phrasal verbs work similarly: \"pick up\" → \"I pick the phone up\" or \"come in\" → \"Please come in\".\n\nIn German: ~ankommen~ (arrive) → ~Ich komme morgen an~ (I arrive tomorrow). The prefix ~an-~ moves to the end. In subordinate clauses, the prefix stays attached: ~...weil ich morgen ankomme~.\n\nSeparable verbs form the ~Perfektpartizip~ by inserting ~ge-~ between the prefix and stem: ~ankommen~ → ~angekommen~. This mirrors how the prefix separates in speech."
+          }
+        }
+      }
+    },
+    "FamilyDetail.strongLong" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "~Strong~ verbs are the oldest verb pattern in German, inherited from Proto-Indo-European. They signal tense through vowel changes called ~ablaut~ rather than by adding suffixes. English retains this pattern in verbs like ~sing~, $sAng$, $sUng$ or ~drive~, $drOve$, $drIven$.\n\nThe ~Perfektpartizip~ of strong verbs ends in ~-en~ (like ~gesungen~, ~gefahren~) rather than the ~-t~ of weak verbs. This ~-en~ ending is another ancient feature shared with English (sung, driven).\n\nGerman has about 170 strong verbs, but they include many of the most common verbs in the language: ~sein~ (be), ~haben~ (have), ~gehen~ (go), ~kommen~ (come), ~sehen~ (see), ~geben~ (give). Despite being \"irregular\", strong verbs follow predictable ablaut patterns grouped by vowel series."
+          }
+        }
+      }
+    },
+    "FamilyDetail.verbsHeading" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verbs"
+          }
+        }
+      }
+    },
+    "FamilyDetail.weakLong" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "~Weak~ verbs form the vast majority of German verbs and represent the \"regular\" conjugation pattern. They signal past tense by adding a ~-te~ suffix to the stem: ~machen~ → ~machte~. The ~Perfektpartizip~ uses ~ge-~ plus ~-t~: ~gemacht~.\n\nThis pattern emerged in Proto-Germanic and proved so productive that nearly all new verbs entering German become weak verbs: ~googeln~ → ~googelte~, ~gegoogelt~.\n\nEnglish weak verbs work identically with ~-ed~: ~walk~ → ~walked~, ~walked~. The Germanic languages developed this pattern around 500 BCE, possibly by using a form of \"do\" as an auxiliary that eventually fused with the verb stem."
           }
         }
       }
@@ -1301,6 +1486,289 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Verbs"
+          }
+        }
+      }
+    },
+    "PrefixMeaning.ab" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "off, away, down"
+          }
+        }
+      }
+    },
+    "PrefixMeaning.an" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "at, on, to"
+          }
+        }
+      }
+    },
+    "PrefixMeaning.auf" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "up, open, on"
+          }
+        }
+      }
+    },
+    "PrefixMeaning.aus" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "out, from, off"
+          }
+        }
+      }
+    },
+    "PrefixMeaning.be" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "makes verb transitive"
+          }
+        }
+      }
+    },
+    "PrefixMeaning.bei" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "with, near, alongside"
+          }
+        }
+      }
+    },
+    "PrefixMeaning.ein" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "in, into"
+          }
+        }
+      }
+    },
+    "PrefixMeaning.emp" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "variant of ent- (receiving)"
+          }
+        }
+      }
+    },
+    "PrefixMeaning.ent" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "away, un-, de-"
+          }
+        }
+      }
+    },
+    "PrefixMeaning.er" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "achievement, completion"
+          }
+        }
+      }
+    },
+    "PrefixMeaning.fest" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "firm, fixed, tight"
+          }
+        }
+      }
+    },
+    "PrefixMeaning.fort" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "away, onward, continuing"
+          }
+        }
+      }
+    },
+    "PrefixMeaning.ge" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "collective, completion (various)"
+          }
+        }
+      }
+    },
+    "PrefixMeaning.her" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "toward speaker, hither"
+          }
+        }
+      }
+    },
+    "PrefixMeaning.hin" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "away from speaker, thither"
+          }
+        }
+      }
+    },
+    "PrefixMeaning.hoch" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "up, high"
+          }
+        }
+      }
+    },
+    "PrefixMeaning.los" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "loose, starting, off"
+          }
+        }
+      }
+    },
+    "PrefixMeaning.miss" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "wrongly, mis-"
+          }
+        }
+      }
+    },
+    "PrefixMeaning.mit" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "along, with, co-"
+          }
+        }
+      }
+    },
+    "PrefixMeaning.nach" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "after, following, re-"
+          }
+        }
+      }
+    },
+    "PrefixMeaning.um" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "around, over, re-"
+          }
+        }
+      }
+    },
+    "PrefixMeaning.ver" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "away, wrongly, completion"
+          }
+        }
+      }
+    },
+    "PrefixMeaning.vor" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "forward, before, pre-"
+          }
+        }
+      }
+    },
+    "PrefixMeaning.weg" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "away, gone"
+          }
+        }
+      }
+    },
+    "PrefixMeaning.zer" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "to pieces, apart"
+          }
+        }
+      }
+    },
+    "PrefixMeaning.zu" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "to, toward, closed"
+          }
+        }
+      }
+    },
+    "PrefixMeaning.zurueck" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "back, returning"
+          }
+        }
+      }
+    },
+    "PrefixMeaning.zusammen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "together, combined"
           }
         }
       }

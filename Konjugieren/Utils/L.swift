@@ -77,6 +77,182 @@ enum L {
     }
   }
 
+  enum BrowseableFamily {
+    static var separable: String {
+      String(localized: "BrowseableFamily.separable")
+    }
+
+    static var inseparable: String {
+      String(localized: "BrowseableFamily.inseparable")
+    }
+  }
+
+  enum FamilyBrowse {
+    static var viewVerbs: String {
+      String(localized: "FamilyBrowse.viewVerbs")
+    }
+
+    static var strongShort: String {
+      String(localized: "FamilyBrowse.strongShort")
+    }
+
+    static var weakShort: String {
+      String(localized: "FamilyBrowse.weakShort")
+    }
+
+    static var mixedShort: String {
+      String(localized: "FamilyBrowse.mixedShort")
+    }
+
+    static var ierenShort: String {
+      String(localized: "FamilyBrowse.ierenShort")
+    }
+
+    static var separableShort: String {
+      String(localized: "FamilyBrowse.separableShort")
+    }
+
+    static var inseparableShort: String {
+      String(localized: "FamilyBrowse.inseparableShort")
+    }
+  }
+
+  enum FamilyDetail {
+    static var verbsHeading: String {
+      String(localized: "FamilyDetail.verbsHeading")
+    }
+
+    static var prefixesHeading: String {
+      String(localized: "FamilyDetail.prefixesHeading")
+    }
+
+    static var strongLong: String {
+      String(localized: "FamilyDetail.strongLong")
+    }
+
+    static var weakLong: String {
+      String(localized: "FamilyDetail.weakLong")
+    }
+
+    static var mixedLong: String {
+      String(localized: "FamilyDetail.mixedLong")
+    }
+
+    static var ierenLong: String {
+      String(localized: "FamilyDetail.ierenLong")
+    }
+
+    static var separableLong: String {
+      String(localized: "FamilyDetail.separableLong")
+    }
+
+    static var inseparableLong: String {
+      String(localized: "FamilyDetail.inseparableLong")
+    }
+  }
+
+  enum PrefixMeaning {
+    static var ab: String {
+      String(localized: "PrefixMeaning.ab")
+    }
+
+    static var an: String {
+      String(localized: "PrefixMeaning.an")
+    }
+
+    static var auf: String {
+      String(localized: "PrefixMeaning.auf")
+    }
+
+    static var aus: String {
+      String(localized: "PrefixMeaning.aus")
+    }
+
+    static var bei: String {
+      String(localized: "PrefixMeaning.bei")
+    }
+
+    static var ein: String {
+      String(localized: "PrefixMeaning.ein")
+    }
+
+    static var fest: String {
+      String(localized: "PrefixMeaning.fest")
+    }
+
+    static var fort: String {
+      String(localized: "PrefixMeaning.fort")
+    }
+
+    static var her: String {
+      String(localized: "PrefixMeaning.her")
+    }
+
+    static var hin: String {
+      String(localized: "PrefixMeaning.hin")
+    }
+
+    static var hoch: String {
+      String(localized: "PrefixMeaning.hoch")
+    }
+
+    static var mit: String {
+      String(localized: "PrefixMeaning.mit")
+    }
+
+    static var nach: String {
+      String(localized: "PrefixMeaning.nach")
+    }
+
+    static var um: String {
+      String(localized: "PrefixMeaning.um")
+    }
+
+    static var vor: String {
+      String(localized: "PrefixMeaning.vor")
+    }
+
+    static var zu: String {
+      String(localized: "PrefixMeaning.zu")
+    }
+
+    static var zurueck: String {
+      String(localized: "PrefixMeaning.zurueck")
+    }
+
+    static var zusammen: String {
+      String(localized: "PrefixMeaning.zusammen")
+    }
+
+    static var be: String {
+      String(localized: "PrefixMeaning.be")
+    }
+
+    static var emp: String {
+      String(localized: "PrefixMeaning.emp")
+    }
+
+    static var ent: String {
+      String(localized: "PrefixMeaning.ent")
+    }
+
+    static var er: String {
+      String(localized: "PrefixMeaning.er")
+    }
+
+    static var ge: String {
+      String(localized: "PrefixMeaning.ge")
+    }
+
+    static var ver: String {
+      String(localized: "PrefixMeaning.ver")
+    }
+
+    static var zer: String {
+      String(localized: "PrefixMeaning.zer")
+    }
+  }
+
   enum Info {
     static var dedicationHeading: String {
       String(localized: "Info.dedicationHeading")

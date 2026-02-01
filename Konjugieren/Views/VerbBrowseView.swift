@@ -5,6 +5,22 @@ import SwiftUI
 struct VerbBrowseView: View {
   @State private var sortOrder: SortOrder = .frequency
   @State private var sortedVerbs: [Verb] = Verb.verbsSortedByFrequency
+  @State private var searchText: String = ""
+
+  private var settings: Settings { Current.settings }
+
+  private var filteredVerbs: [Verb] {
+    guard !searchText.isEmpty else { return sortedVerbs }
+    return sortedVerbs.filter { verb in
+      if verb.infinitiv.localizedCaseInsensitiveContains(searchText) {
+        return true
+      }
+      if settings.searchScope == .infinitiveAndTranslation {
+        return verb.translation.localizedCaseInsensitiveContains(searchText)
+      }
+      return false
+    }
+  }
 
   var body: some View {
     NavigationStack {
@@ -12,7 +28,7 @@ struct VerbBrowseView: View {
         ScrollViewReader { proxy in
           ScrollView {
             LazyVStack(spacing: 0) {
-              ForEach(sortedVerbs) { verb in
+              ForEach(filteredVerbs) { verb in
                 NavigationLink(value: verb) {
                   VerbRowView(verb: verb)
                 }
@@ -48,6 +64,7 @@ struct VerbBrowseView: View {
       .navigationDestination(for: Verb.self) { verb in
         VerbView(verb: verb)
       }
+      .searchable(text: $searchText, prompt: L.VerbBrowse.searchPrompt)
     }
   }
 

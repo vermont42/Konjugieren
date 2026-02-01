@@ -48,6 +48,16 @@ class Settings {
   static let audioFeedbackKey = "audioFeedback"
   static let audioFeedbackDefault: AudioFeedback = .enable
 
+  var searchScope: SearchScope = searchScopeDefault {
+    didSet {
+      if searchScope != oldValue {
+        getterSetter.set(key: Settings.searchScopeKey, value: "\(searchScope)")
+      }
+    }
+  }
+  static let searchScopeKey = "searchScope"
+  static let searchScopeDefault: SearchScope = .infinitiveOnly
+
   init(getterSetter: GetterSetter) {
     self.getterSetter = getterSetter
     if let conjugationgroupLangString = getterSetter.get(key: Settings.conjugationgroupLangKey) {
@@ -72,6 +82,12 @@ class Settings {
       audioFeedback = AudioFeedback(rawValue: audioFeedbackString) ?? Settings.audioFeedbackDefault
     } else {
       getterSetter.set(key: Settings.audioFeedbackKey, value: "\(audioFeedback)")
+    }
+
+    if let searchScopeString = getterSetter.get(key: Settings.searchScopeKey) {
+      searchScope = SearchScope(rawValue: searchScopeString) ?? Settings.searchScopeDefault
+    } else {
+      getterSetter.set(key: Settings.searchScopeKey, value: "\(searchScope)")
     }
   }
 }

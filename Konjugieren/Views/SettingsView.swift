@@ -73,6 +73,21 @@ struct SettingsView: View {
 
             Spacer(minLength: Layout.tripleDefaultSpacing)
 
+            Text(L.Settings.searchScopeHeading)
+              .subheadingLabel()
+
+            Picker("", selection: $settings.searchScope) {
+              ForEach(SearchScope.allCases, id: \.self) { searchScope in
+                Text(searchScope.localizedSearchScope).tag(searchScope)
+              }
+            }
+            .segmentedPicker()
+
+            Text(L.Settings.searchScopeDescription)
+              .settingsLabel()
+
+            Spacer(minLength: Layout.tripleDefaultSpacing)
+
             if Current.gameCenter.isAuthenticated {
               Button(L.GameCenter.viewLeaderboard) {
                 Current.gameCenter.showLeaderboard()

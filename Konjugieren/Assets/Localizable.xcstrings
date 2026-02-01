@@ -1593,6 +1593,38 @@
         }
       }
     },
+    "SearchScope.infinitiveAndTranslation" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Infinitiv + Übersetzung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Infinitive + Translation"
+          }
+        }
+      }
+    },
+    "SearchScope.infinitiveOnly" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nur Infinitiv"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Infinitive Only"
+          }
+        }
+      }
+    },
     "Settings.audioFeedbackDescription" : {
       "localizations" : {
         "de" : {
@@ -1685,6 +1717,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Quiz Difficulty"
+          }
+        }
+      }
+    },
+    "Settings.searchScopeDescription" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Einstellung bestimmt, ob die Verblisten-Suche nur Infinitive oder auch Übersetzungen berücksichtigt."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This setting determines whether verb-list search matches infinitives only or also matches translations."
+          }
+        }
+      }
+    },
+    "Settings.searchScopeHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suchbereich"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search Scope"
           }
         }
       }
@@ -1813,6 +1877,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Frequency"
+          }
+        }
+      }
+    },
+    "VerbBrowse.searchPrompt" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verben suchen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Search verbs"
           }
         }
       }

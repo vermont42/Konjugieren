@@ -43,6 +43,20 @@ enum L {
     static var frequency: String {
       String(localized: "VerbBrowse.frequency")
     }
+
+    static var searchPrompt: String {
+      String(localized: "VerbBrowse.searchPrompt")
+    }
+  }
+
+  enum SearchScope {
+    static var infinitiveOnly: String {
+      String(localized: "SearchScope.infinitiveOnly")
+    }
+
+    static var infinitiveAndTranslation: String {
+      String(localized: "SearchScope.infinitiveAndTranslation")
+    }
   }
 
   enum Family {
@@ -264,6 +278,14 @@ enum L {
 
     static var audioFeedbackDescription: String {
       String(localized: "Settings.audioFeedbackDescription")
+    }
+
+    static var searchScopeHeading: String {
+      String(localized: "Settings.searchScopeHeading")
+    }
+
+    static var searchScopeDescription: String {
+      String(localized: "Settings.searchScopeDescription")
     }
   }
 

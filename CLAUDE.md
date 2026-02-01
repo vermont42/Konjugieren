@@ -203,6 +203,25 @@ Code should be well-written and therefore self-explanatory. Explanatory and MARK
 
 When reviewing code, do not flag these two types of comments.
 
+## English Writing Conventions
+
+### Hyphenate Phrasal Adjectives
+
+When writing any English text (localization strings, documentation, comments), aggressively hyphenate phrasal adjectives (compound modifiers that appear before a noun). There are two exceptions:
+
+1. **-ly adverbs**: Do not hyphenate when the first word ends in -ly
+2. **Proper nouns**: Do not hyphenate proper noun phrases
+
+**Examples:**
+
+| Correct | Incorrect | Reason |
+|---------|-----------|--------|
+| verb-list search | verb list search | Phrasal adjective before noun |
+| case-insensitive matching | case insensitive matching | Phrasal adjective before noun |
+| swiftly tilting planet | swiftly-tilting planet | -ly adverb exception |
+| New Jersey Turnpike | New-Jersey Turnpike | Proper noun exception |
+| user-facing text | user facing text | Phrasal adjective before noun |
+
 ## Swift Coding Conventions
 
 ### Avoid Force-Unwrapping
@@ -222,6 +241,26 @@ static var random: String {
 ```
 
 This rule does not apply in unit tests, where force-unwrapping is, by convention, acceptable.
+
+### Switch Statement Formatting
+
+Place code executed in switch cases on separate lines from the case label. This aids both reading and debugging.
+
+```swift
+// Prefer this
+switch setting {
+case .optionA:
+  return L.Setting.optionA
+case .optionB:
+  return L.Setting.optionB
+}
+
+// Avoid this
+switch setting {
+case .optionA: return L.Setting.optionA
+case .optionB: return L.Setting.optionB
+}
+```
 
 ## Terminology
 
@@ -586,6 +625,10 @@ if let mySettingString = getterSetter.get(key: Settings.mySettingKey) {
 3. **Add localization strings** to `L.swift` and `Localizable.xcstrings`
 
 4. **Add UI** to `SettingsView.swift`
+
+### Setting Description Consistency
+
+Setting descriptions in `Localizable.xcstrings` should begin with "This setting determines..." to maintain consistency across all settings.
 
 ## Quiz System
 

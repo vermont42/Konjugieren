@@ -314,6 +314,79 @@ Both XML files must maintain alphabetical order:
 
 For verb conjugations: `https://de.wiktionary.org/wiki/Flexion:VERBNAME`
 
+## Lessons Learned from Adding Verbs
+
+These patterns emerged while adding verbs 51-400 and will help with the remaining 600 verbs.
+
+### Ablaut Region Must Include Consonant Changes
+
+When a verb's consonants change between tenses (not just vowels), the ablaut region must include those consonants:
+
+| Verb | Wrong | Correct | Reason |
+|------|-------|---------|--------|
+| schneiden | `schn^ei^den` | `schn^eid^en` | Präteritum is "schnitt" (d→tt) |
+| leiden | `l^ei^den` | `l^eid^en` | Präteritum is "litt" (d→tt) |
+| greifen | `gr^ei^fen` | `gr^eif^en` | Präteritum is "griff" (f→ff) |
+| treffen | `tr^e^ffen` | `tr^eff^en` | All forms change ff→different consonants |
+| ziehen | `z^ie^hen` | `z^ieh^en` | Präteritum is "zog" (h→g) |
+
+### Verbs Starting with "ge-" Need Inseparable Prefix Marker
+
+Verbs that naturally begin with "ge-" must use the inseparable prefix marker (`ge*`) to prevent double "ge-" in the Perfektpartizip:
+
+```xml
+<!-- Wrong: produces "gegewonnen" -->
+<verb in="gew^i^nnen" ... />
+
+<!-- Correct: produces "gewonnen" -->
+<verb in="ge*w^i^nnen" ... />
+```
+
+Affected verbs include: gewinnen, gelingen, genießen, gebären, geschehen, gefallen, gelangen, geraten.
+
+### Common Ablaut Patterns for Reuse
+
+Many verbs share ablaut patterns. When adding a new strong verb, first check if an existing pattern applies:
+
+| Pattern | Verbs Using It | Changes |
+|---------|---------------|---------|
+| singen | klingen, trinken, singen, beginnen, gewinnen, gelingen | i→a (Prät), i→ä (Konj II), i→u (PP) |
+| finden | binden, verschwinden, verbinden, empfinden | i→a (Prät), i→ä (Konj II), i→u (PP) |
+| bleiben | schreiben, treiben, entscheiden, vermeiden, verleihen | ei→ie (Prät, Konj II, PP) |
+| sprechen | brechen, helfen, sterben, treffen, werfen | e→i (Präs 2s/3s), e→a (Prät), e→o (PP) |
+| geben | lesen, sehen, vergessen, messen, essen | e→i/ie (Präs 2s/3s), e→a (Prät), e→ä (Konj II) |
+| fahren | tragen, schlagen, laden, wachsen | a→ä (Präs 2s/3s), a→u (Prät), a→ü (Konj II) |
+| schließen | fliegen, bieten, verlieren, heben, genießen | ie/e→o (Prät, PP), ie/e→ö (Konj II) |
+| halten | lassen, fallen, schlafen, laufen, rufen, heißen | Various, often a→ä (Präs) + ie (Prät) |
+| schneiden | leiden | eid→itt (all past forms) |
+
+### Verbs That Use "sein" as Auxiliary
+
+Verbs of motion or change of state use `ay="s"`:
+- **Motion verbs**: fahren, fliegen, gehen, kommen, laufen, reisen, steigen, fallen
+- **Change of state**: sterben, wachsen, werden, entstehen, verschwinden, geschehen
+- **Location-related intransitives**: bleiben, sein, ankommen, auftreten, landen
+
+### Compound Verb Prefix Patterns
+
+| Prefix Type | Marker | Examples | Perfektpartizip |
+|-------------|--------|----------|-----------------|
+| Separable | `+` | an+kommen, auf+treten, ein+laden | Prefix + ge + stamm + en (angekommen) |
+| Inseparable | `*` | ver*stehen, be*kommen, er*fahren | No ge- (verstanden) |
+| Naturally ge- | `ge*` | ge*winnen, ge*schehen | No double ge- (gewonnen) |
+
+### Quick Verb Classification Checklist
+
+When adding a new verb:
+
+1. **Is it an -ieren verb?** → `fa="i"`, no ablaut markers needed
+2. **Is it a regular weak verb?** → `fa="w"`, no ablaut markers needed
+3. **Does it have a prefix?** → Use `+` (separable) or `*` (inseparable)
+4. **Does it start with ge-?** → Use `ge*` prefix marker
+5. **Is it strong/mixed?** → Find matching ablaut pattern, mark region with `^`
+6. **Does it use sein?** → Add `ay="s"`
+7. **Verify on Wiktionary** → Check 2s/3s Präsens, Präteritum, Perfektpartizip
+
 ## Dependency Injection
 
 The app uses a simple dependency injection pattern via `Models/World.swift`:

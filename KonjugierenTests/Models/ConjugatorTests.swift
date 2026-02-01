@@ -385,6 +385,184 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "tun", conjugationgroup: .perfektpartizip, expected: "getAn")
   }
 
+  @Test func newAblautGroups() {
+    // fahren - a→ä (Präsens 2s,3s), a→u (Präteritum), a→ü (Konjunktiv II)
+    expectConjugation(infinitiv: "fahren", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "fÄhrst")
+    expectConjugation(infinitiv: "fahren", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "fÄhrt")
+    expectConjugation(infinitiv: "fahren", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "fUhr")
+    expectConjugation(infinitiv: "fahren", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "fÜhre")
+    expectConjugation(infinitiv: "fahren", conjugationgroup: .perfektpartizip, expected: "gefahren")
+
+    // laufen - au→äu (Präsens 2s,3s), au→ie (Präteritum, Konjunktiv II)
+    expectConjugation(infinitiv: "laufen", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "lÄUfst")
+    expectConjugation(infinitiv: "laufen", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "lÄUft")
+    expectConjugation(infinitiv: "laufen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "lIEf")
+    expectConjugation(infinitiv: "laufen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "lIEfe")
+    expectConjugation(infinitiv: "laufen", conjugationgroup: .perfektpartizip, expected: "gelaufen")
+
+    // fallen - all→äll (Präsens 2s,3s), all→iel (Präteritum, Konjunktiv II)
+    expectConjugation(infinitiv: "fallen", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "fÄLLst")
+    expectConjugation(infinitiv: "fallen", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "fÄLLt")
+    expectConjugation(infinitiv: "fallen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "fIEL")
+    expectConjugation(infinitiv: "fallen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "fIELe")
+    expectConjugation(infinitiv: "fallen", conjugationgroup: .perfektpartizip, expected: "gefallen")
+
+    // treffen - eff→iff (Präsens 2s,3s), eff→af (Präteritum), eff→äf (Konjunktiv II), eff→off (Perfektpartizip)
+    expectConjugation(infinitiv: "treffen", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "trIFFst")
+    expectConjugation(infinitiv: "treffen", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "trIFFt")
+    expectConjugation(infinitiv: "treffen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "trAF")
+    expectConjugation(infinitiv: "treffen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "trÄFe")
+    expectConjugation(infinitiv: "treffen", conjugationgroup: .perfektpartizip, expected: "getrOFFen")
+
+    // schließen - ie→o (Präteritum, Perfektpartizip), ie→ö (Konjunktiv II)
+    // Note: German spelling would convert ß→ss after short vowel, but conjugator preserves consonant
+    expectConjugation(infinitiv: "schließen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "schlOß")
+    expectConjugation(infinitiv: "schließen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "schlÖße")
+    expectConjugation(infinitiv: "schließen", conjugationgroup: .perfektpartizip, expected: "geschlOßen")
+
+    // heißen - ei→ie (Präteritum, Konjunktiv II)
+    expectConjugation(infinitiv: "heißen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "hIEß")
+    expectConjugation(infinitiv: "heißen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "hIEße")
+    expectConjugation(infinitiv: "heißen", conjugationgroup: .perfektpartizip, expected: "geheißen")
+
+    // ziehen - ieh→og (Präteritum, Perfektpartizip), ieh→ög (Konjunktiv II)
+    expectConjugation(infinitiv: "ziehen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "zOG")
+    expectConjugation(infinitiv: "ziehen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "zÖGe")
+    expectConjugation(infinitiv: "ziehen", conjugationgroup: .perfektpartizip, expected: "gezOGen")
+
+    // tragen - a→ä (Präsens 2s,3s), a→u (Präteritum), a→ü (Konjunktiv II)
+    expectConjugation(infinitiv: "tragen", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "trÄgst")
+    expectConjugation(infinitiv: "tragen", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "trÄgt")
+    expectConjugation(infinitiv: "tragen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "trUg")
+    expectConjugation(infinitiv: "tragen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "trÜge")
+    expectConjugation(infinitiv: "tragen", conjugationgroup: .perfektpartizip, expected: "getragen")
+
+    // gewinnen - i→a (Präteritum), i→ä (Konjunktiv II), i→o (Perfektpartizip)
+    expectConjugation(infinitiv: "gewinnen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "gewAnn")
+    expectConjugation(infinitiv: "gewinnen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "gewÄnne")
+    expectConjugation(infinitiv: "gewinnen", conjugationgroup: .perfektpartizip, expected: "gewOnnen")
+
+    // empfehlen - e→ie (Präsens 2s,3s), e→a (Präteritum), e→ä (Konjunktiv II), e→o (Perfektpartizip)
+    expectConjugation(infinitiv: "empfehlen", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "empfIEhlst")
+    expectConjugation(infinitiv: "empfehlen", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "empfIEhlt")
+    expectConjugation(infinitiv: "empfehlen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "empfAhl")
+    expectConjugation(infinitiv: "empfehlen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "empfÄhle")
+    expectConjugation(infinitiv: "empfehlen", conjugationgroup: .perfektpartizip, expected: "empfOhlen")
+
+    // treten - et→itt (Präsens 2s,3s), et→at (Präteritum), et→ät (Konjunktiv II), et→et (Perfektpartizip)
+    // Note: 3s ending -t merges with stamm ending -tt (German phonology)
+    expectConjugation(infinitiv: "treten", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "trITTst")
+    expectConjugation(infinitiv: "treten", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "trITT")
+    expectConjugation(infinitiv: "treten", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "trAT")
+    expectConjugation(infinitiv: "treten", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "trÄTe")
+    expectConjugation(infinitiv: "treten", conjugationgroup: .perfektpartizip, expected: "getrETen")
+
+    // verlieren - ie→o (Präteritum, Perfektpartizip), ie→ö (Konjunktiv II)
+    expectConjugation(infinitiv: "verlieren", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "verlOr")
+    expectConjugation(infinitiv: "verlieren", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "verlÖre")
+    expectConjugation(infinitiv: "verlieren", conjugationgroup: .perfektpartizip, expected: "verlOren")
+
+    // steigen - ei→ie (Präteritum, Konjunktiv II, Perfektpartizip)
+    expectConjugation(infinitiv: "steigen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "stIEg")
+    expectConjugation(infinitiv: "steigen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "stIEge")
+    expectConjugation(infinitiv: "steigen", conjugationgroup: .perfektpartizip, expected: "gestIEgen")
+
+    // erscheinen - ei→ie (Präteritum, Konjunktiv II, Perfektpartizip) with inseparable prefix
+    expectConjugation(infinitiv: "erscheinen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "erschIEn")
+    expectConjugation(infinitiv: "erscheinen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "erschIEne")
+    expectConjugation(infinitiv: "erscheinen", conjugationgroup: .perfektpartizip, expected: "erschIEnen")
+
+    // gelingen - i→a (Präteritum), i→ä (Konjunktiv II), i→u (Perfektpartizip)
+    expectConjugation(infinitiv: "gelingen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "gelAng")
+    expectConjugation(infinitiv: "gelingen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "gelÄnge")
+    expectConjugation(infinitiv: "gelingen", conjugationgroup: .perfektpartizip, expected: "gelUngen")
+
+    // schlagen - a→ä (Präsens 2s,3s), a→u (Präteritum), a→ü (Konjunktiv II)
+    expectConjugation(infinitiv: "schlagen", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "schlÄgst")
+    expectConjugation(infinitiv: "schlagen", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "schlÄgt")
+    expectConjugation(infinitiv: "schlagen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "schlUg")
+    expectConjugation(infinitiv: "schlagen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "schlÜge")
+    expectConjugation(infinitiv: "schlagen", conjugationgroup: .perfektpartizip, expected: "geschlagen")
+
+    // laden - a→ä (Präsens 2s,3s), a→u (Präteritum), a→ü (Konjunktiv II)
+    expectConjugation(infinitiv: "laden", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "lÄdst")
+    expectConjugation(infinitiv: "laden", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "lÄdt")
+    expectConjugation(infinitiv: "laden", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "lUd")
+    expectConjugation(infinitiv: "laden", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "lÜde")
+    expectConjugation(infinitiv: "laden", conjugationgroup: .perfektpartizip, expected: "geladen")
+
+    // wachsen - a→ä (Präsens 2s,3s), a→u (Präteritum), a→ü (Konjunktiv II)
+    expectConjugation(infinitiv: "wachsen", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "wÄchst")
+    expectConjugation(infinitiv: "wachsen", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "wÄchst")
+    expectConjugation(infinitiv: "wachsen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "wUchs")
+    expectConjugation(infinitiv: "wachsen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "wÜchse")
+    expectConjugation(infinitiv: "wachsen", conjugationgroup: .perfektpartizip, expected: "gewachsen")
+
+    // rufen - u→ie (Präteritum, Konjunktiv II)
+    expectConjugation(infinitiv: "rufen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "rIEf")
+    expectConjugation(infinitiv: "rufen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "rIEfe")
+    expectConjugation(infinitiv: "rufen", conjugationgroup: .perfektpartizip, expected: "gerufen")
+
+    // weisen - ei→ie (Präteritum, Konjunktiv II, Perfektpartizip)
+    expectConjugation(infinitiv: "weisen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "wIEs")
+    expectConjugation(infinitiv: "weisen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "wIEse")
+    expectConjugation(infinitiv: "weisen", conjugationgroup: .perfektpartizip, expected: "gewIEsen")
+
+    // genießen - ie→o (Präteritum, Perfektpartizip), ie→ö (Konjunktiv II)
+    // Note: genießen uses schließen pattern, ge- is inseparable prefix (no double ge-)
+    // German spelling would convert ß→ss after short vowel, but conjugator preserves consonant
+    expectConjugation(infinitiv: "genießen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "genOß")
+    expectConjugation(infinitiv: "genießen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "genÖße")
+    expectConjugation(infinitiv: "genießen", conjugationgroup: .perfektpartizip, expected: "genOßen")
+
+    // bitten - itt→at (Präteritum), itt→ät (Konjunktiv II), itt→et (Perfektpartizip)
+    expectConjugation(infinitiv: "bitten", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "bAT")
+    expectConjugation(infinitiv: "bitten", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "bÄTe")
+    expectConjugation(infinitiv: "bitten", conjugationgroup: .perfektpartizip, expected: "gebETen")
+
+    // essen - e→i (Präsens 2s,3s), e→a (Präteritum), e→ä (Konjunktiv II)
+    // Note: German spelling ß/ss rules not automatically applied by conjugator
+    // Perfektpartizip "gegessen" uses full override due to irregular form
+    expectConjugation(infinitiv: "essen", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "Isst")
+    expectConjugation(infinitiv: "essen", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "Isst")
+    expectConjugation(infinitiv: "essen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "Ass")
+    expectConjugation(infinitiv: "essen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "Ässe")
+    expectConjugation(infinitiv: "essen", conjugationgroup: .perfektpartizip, expected: "gegEssen")
+
+    // sterben - uses sprechen pattern (e→i Präsens 2s,3s, e→a Präteritum, e→o Perfektpartizip)
+    expectConjugation(infinitiv: "sterben", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "stIrbst")
+    expectConjugation(infinitiv: "sterben", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "stIrbt")
+    expectConjugation(infinitiv: "sterben", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "stArb")
+    expectConjugation(infinitiv: "sterben", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "stÜrbe")
+    expectConjugation(infinitiv: "sterben", conjugationgroup: .perfektpartizip, expected: "gestOrben")
+
+    // vergessen - uses geben pattern (e→i Präsens 2s,3s, e→a Präteritum)
+    // Note: German spelling ß/ss rules not automatically applied by conjugator
+    expectConjugation(infinitiv: "vergessen", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "vergIsst")
+    expectConjugation(infinitiv: "vergessen", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "vergIsst")
+    expectConjugation(infinitiv: "vergessen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "vergAss")
+    expectConjugation(infinitiv: "vergessen", conjugationgroup: .perfektpartizip, expected: "vergessen")
+
+    // Compound verbs test - ensure prefixed verbs work correctly
+    // erfahren - compound of fahren
+    expectConjugation(infinitiv: "erfahren", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "erfÄhrt")
+    expectConjugation(infinitiv: "erfahren", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "erfUhr")
+    expectConjugation(infinitiv: "erfahren", conjugationgroup: .perfektpartizip, expected: "erfahren")
+
+    // anbieten - separable prefix compound of bieten
+    expectConjugation(infinitiv: "anbieten", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "anbOt")
+    expectConjugation(infinitiv: "anbieten", conjugationgroup: .perfektpartizip, expected: "angebOten")
+
+    // betragen - compound of tragen
+    expectConjugation(infinitiv: "betragen", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "betrÄgt")
+    expectConjugation(infinitiv: "betragen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "betrUg")
+    expectConjugation(infinitiv: "betragen", conjugationgroup: .perfektpartizip, expected: "betragen")
+
+    // stattfinden - separable prefix compound of finden
+    expectConjugation(infinitiv: "stattfinden", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "stattfAnd")
+    expectConjugation(infinitiv: "stattfinden", conjugationgroup: .perfektpartizip, expected: "stattgefUnden")
+  }
+
   @Test func newVerbs() {
     // gelten - strong verb with e→i (Präsens 2s/3s), e→a (Präteritum), e→o (Perfektpartizip)
     expectConjugation(infinitiv: "gelten", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "gIltst")
@@ -592,6 +770,190 @@ struct ConjugatorTests {
 
     // Inseparable prefix verb
     expectConjugation(infinitiv: "verstehen", conjugationgroup: .futurKonjunktivII(.firstSingular), expected: "wÜrde verstehen")
+  }
+
+  @Test func newAblautGroupsPhase2() {
+    // fangen - a→ä (Präsens 2s,3s), a→i (Präteritum, Konjunktiv II)
+    expectConjugation(infinitiv: "fangen", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "fÄngst")
+    expectConjugation(infinitiv: "fangen", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "fÄngt")
+    expectConjugation(infinitiv: "fangen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "fIng")
+    expectConjugation(infinitiv: "fangen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "fInge")
+    expectConjugation(infinitiv: "fangen", conjugationgroup: .perfektpartizip, expected: "gefangen")
+
+    // anfangen - separable prefix compound of fangen
+    expectConjugation(infinitiv: "anfangen", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "anfÄngt")
+    expectConjugation(infinitiv: "anfangen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "anfIng")
+    expectConjugation(infinitiv: "anfangen", conjugationgroup: .perfektpartizip, expected: "angefangen")
+
+    // fliegen - ie→o (Präteritum, Perfektpartizip), ie→ö (Konjunktiv II)
+    expectConjugation(infinitiv: "fliegen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "flOg")
+    expectConjugation(infinitiv: "fliegen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "flÖge")
+    expectConjugation(infinitiv: "fliegen", conjugationgroup: .perfektpartizip, expected: "geflOgen")
+
+    // gebären - ä→ie (Präsens 2s,3s), ä→a (Präteritum), ä→ä (Konj II), ä→o (Perfektpartizip)
+    expectConjugation(infinitiv: "gebären", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "gebIERst")
+    expectConjugation(infinitiv: "gebären", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "gebIERt")
+    expectConjugation(infinitiv: "gebären", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "gebAR")
+    expectConjugation(infinitiv: "gebären", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "gebÄRe")
+    expectConjugation(infinitiv: "gebären", conjugationgroup: .perfektpartizip, expected: "gebORen")
+
+    // greifen - eif→iff (Präteritum, Konjunktiv II, Perfektpartizip)
+    expectConjugation(infinitiv: "greifen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "grIFF")
+    expectConjugation(infinitiv: "greifen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "grIFFe")
+    expectConjugation(infinitiv: "greifen", conjugationgroup: .perfektpartizip, expected: "gegrIFFen")
+
+    // heben - e→o (Präteritum, Perfektpartizip), e→ö (Konjunktiv II)
+    expectConjugation(infinitiv: "heben", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "hOb")
+    expectConjugation(infinitiv: "heben", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "hÖbe")
+    expectConjugation(infinitiv: "heben", conjugationgroup: .perfektpartizip, expected: "gehOben")
+
+    // erheben - inseparable prefix compound of heben
+    expectConjugation(infinitiv: "erheben", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "erhOb")
+    expectConjugation(infinitiv: "erheben", conjugationgroup: .perfektpartizip, expected: "erhOben")
+
+    // schlafen - a→ä (Präsens 2s,3s), a→ie (Präteritum, Konjunktiv II)
+    expectConjugation(infinitiv: "schlafen", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "schlÄfst")
+    expectConjugation(infinitiv: "schlafen", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "schlÄft")
+    expectConjugation(infinitiv: "schlafen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "schlIEf")
+    expectConjugation(infinitiv: "schlafen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "schlIEfe")
+    expectConjugation(infinitiv: "schlafen", conjugationgroup: .perfektpartizip, expected: "geschlafen")
+
+    // schneiden - ei→itt (Präteritum, Konjunktiv II, Perfektpartizip)
+    expectConjugation(infinitiv: "schneiden", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "schnITT")
+    expectConjugation(infinitiv: "schneiden", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "schnITTe")
+    expectConjugation(infinitiv: "schneiden", conjugationgroup: .perfektpartizip, expected: "geschnITTen")
+
+    // stoßen - o→ö (Präsens 2s,3s), o→ie (Präteritum, Konjunktiv II)
+    expectConjugation(infinitiv: "stoßen", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "stÖßt")
+    expectConjugation(infinitiv: "stoßen", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "stÖßt")
+    expectConjugation(infinitiv: "stoßen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "stIEß")
+    expectConjugation(infinitiv: "stoßen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "stIEße")
+    expectConjugation(infinitiv: "stoßen", conjugationgroup: .perfektpartizip, expected: "gestoßen")
+
+    // werfen - e→i (Präsens 2s,3s), e→a (Präteritum), e→ü (Konjunktiv II), e→o (Perfektpartizip)
+    expectConjugation(infinitiv: "werfen", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "wIrfst")
+    expectConjugation(infinitiv: "werfen", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "wIrft")
+    expectConjugation(infinitiv: "werfen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "wArf")
+    expectConjugation(infinitiv: "werfen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "wÜrfe")
+    expectConjugation(infinitiv: "werfen", conjugationgroup: .perfektpartizip, expected: "gewOrfen")
+
+    // Compound verb tests for new patterns
+    // verschwinden - uses finden pattern with inseparable prefix
+    expectConjugation(infinitiv: "verschwinden", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "verschwAnd")
+    expectConjugation(infinitiv: "verschwinden", conjugationgroup: .perfektpartizip, expected: "verschwUnden")
+
+    // trinken - uses singen pattern
+    expectConjugation(infinitiv: "trinken", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "trAnk")
+    expectConjugation(infinitiv: "trinken", conjugationgroup: .perfektpartizip, expected: "getrUnken")
+
+    // klingen - uses singen pattern
+    expectConjugation(infinitiv: "klingen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "klAng")
+    expectConjugation(infinitiv: "klingen", conjugationgroup: .perfektpartizip, expected: "geklUngen")
+
+    // leiden - uses bleiben pattern
+    expectConjugation(infinitiv: "leiden", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "lITT")
+    expectConjugation(infinitiv: "leiden", conjugationgroup: .perfektpartizip, expected: "gelITTen")
+
+    // brechen - uses sprechen pattern
+    expectConjugation(infinitiv: "brechen", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "brIcht")
+    expectConjugation(infinitiv: "brechen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "brAch")
+    expectConjugation(infinitiv: "brechen", conjugationgroup: .perfektpartizip, expected: "gebrOchen")
+
+    // messen - uses geben pattern
+    expectConjugation(infinitiv: "messen", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "mIsst")
+    expectConjugation(infinitiv: "messen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "mAss")
+    expectConjugation(infinitiv: "messen", conjugationgroup: .perfektpartizip, expected: "gemessen")
+  }
+
+  @Test func newAblautGroupsPhase3() {
+    // reißen - eiß→iss (Präteritum, Konjunktiv II, Perfektpartizip)
+    expectConjugation(infinitiv: "reißen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "rISS")
+    expectConjugation(infinitiv: "reißen", conjugationgroup: .präteritumIndicativ(.secondSingular), expected: "rISSt")
+    expectConjugation(infinitiv: "reißen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "rISSe")
+    expectConjugation(infinitiv: "reißen", conjugationgroup: .perfektpartizip, expected: "gerISSen")
+
+    // streichen - eich→ich (Präteritum, Konjunktiv II, Perfektpartizip)
+    expectConjugation(infinitiv: "streichen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "strICH")
+    expectConjugation(infinitiv: "streichen", conjugationgroup: .präteritumIndicativ(.secondSingular), expected: "strICHst")
+    expectConjugation(infinitiv: "streichen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "strICHe")
+    expectConjugation(infinitiv: "streichen", conjugationgroup: .perfektpartizip, expected: "gestrICHen")
+
+    // schreiten (via überschreiten) - eit→itt (Präteritum, Konjunktiv II, Perfektpartizip)
+    expectConjugation(infinitiv: "überschreiten", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "überschrITT")
+    expectConjugation(infinitiv: "überschreiten", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "überschrITTe")
+    expectConjugation(infinitiv: "überschreiten", conjugationgroup: .perfektpartizip, expected: "überschrITTen")
+
+    // Additional strong verbs from verbs 401-600
+    // zwingen - uses singen pattern (i→a Prät, i→ä Konj II, i→u PP)
+    expectConjugation(infinitiv: "zwingen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "zwAng")
+    expectConjugation(infinitiv: "zwingen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "zwÄnge")
+    expectConjugation(infinitiv: "zwingen", conjugationgroup: .perfektpartizip, expected: "gezwUngen")
+
+    // springen - uses singen pattern, with sein auxiliary
+    expectConjugation(infinitiv: "springen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "sprAng")
+    expectConjugation(infinitiv: "springen", conjugationgroup: .perfektpartizip, expected: "gesprUngen")
+    expectConjugation(infinitiv: "springen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "BIN gesprUngen")
+
+    // sinken - uses singen pattern, with sein auxiliary
+    expectConjugation(infinitiv: "sinken", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "sAnk")
+    expectConjugation(infinitiv: "sinken", conjugationgroup: .perfektpartizip, expected: "gesUnken")
+
+    // schieben - uses bieten pattern (ie→o Prät/PP, ie→ö Konj II)
+    expectConjugation(infinitiv: "schieben", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "schOb")
+    expectConjugation(infinitiv: "schieben", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "schÖbe")
+    expectConjugation(infinitiv: "schieben", conjugationgroup: .perfektpartizip, expected: "geschOben")
+
+    // verschieben - inseparable prefix compound of schieben
+    expectConjugation(infinitiv: "verschieben", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "verschOb")
+    expectConjugation(infinitiv: "verschieben", conjugationgroup: .perfektpartizip, expected: "verschOben")
+
+    // waschen - uses wachsen pattern (a→ä Präs 2s/3s, a→u Prät, a→ü Konj II)
+    expectConjugation(infinitiv: "waschen", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "wÄschst")
+    expectConjugation(infinitiv: "waschen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "wUsch")
+    expectConjugation(infinitiv: "waschen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "wÜsche")
+    expectConjugation(infinitiv: "waschen", conjugationgroup: .perfektpartizip, expected: "gewaschen")
+
+    // bewerben - uses sterben pattern (e→i Präs 2s/3s, e→a Prät, e→ü Konj II, e→o PP)
+    expectConjugation(infinitiv: "bewerben", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "bewIrbt")
+    expectConjugation(infinitiv: "bewerben", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "bewArb")
+    expectConjugation(infinitiv: "bewerben", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "bewÜrbe")
+    expectConjugation(infinitiv: "bewerben", conjugationgroup: .perfektpartizip, expected: "bewOrben")
+
+    // raten - uses halten pattern (a→ä Präs 2s/3s, a→ie Prät/Konj II)
+    expectConjugation(infinitiv: "raten", conjugationgroup: .präsensIndicativ(.secondSingular), expected: "rÄtst")
+    expectConjugation(infinitiv: "raten", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "rÄt")
+    expectConjugation(infinitiv: "raten", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "rIEt")
+    expectConjugation(infinitiv: "raten", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "rIEte")
+    expectConjugation(infinitiv: "raten", conjugationgroup: .perfektpartizip, expected: "geraten")
+
+    // geraten - inseparable ge- prefix, uses halten pattern
+    expectConjugation(infinitiv: "geraten", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "gerIEt")
+    expectConjugation(infinitiv: "geraten", conjugationgroup: .perfektpartizip, expected: "geraten")
+    expectConjugation(infinitiv: "geraten", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "BIN geraten")
+  }
+
+  @Test func schreienAblaut() {
+    // schreien - uses the schreien ablaut pattern with contracted Perfektpartizip
+    // Pattern: IE,bA,dA|geschrIEn*,pp (contracted from *geschrieen)
+    expectConjugation(infinitiv: "schreien", conjugationgroup: .präsensIndicativ(.firstSingular), expected: "schreie")
+    expectConjugation(infinitiv: "schreien", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "schreit")
+    expectConjugation(infinitiv: "schreien", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "schrIE")
+    expectConjugation(infinitiv: "schreien", conjugationgroup: .präteritumIndicativ(.thirdSingular), expected: "schrIE")
+    expectConjugation(infinitiv: "schreien", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "schrIEe")
+    expectConjugation(infinitiv: "schreien", conjugationgroup: .perfektpartizip, expected: "geschrIEn")
+    expectConjugation(infinitiv: "schreien", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "habe geschrIEn")
+  }
+
+  @Test func schaffenAblaut() {
+    // erschaffen - uses the schaffen ablaut pattern for the strong verb meaning "create"
+    // Pattern: U,bA|Ü,dA (Präteritum u, Konjunktiv II ü)
+    expectConjugation(infinitiv: "erschaffen", conjugationgroup: .präsensIndicativ(.firstSingular), expected: "erschaffe")
+    expectConjugation(infinitiv: "erschaffen", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "erschafft")
+    expectConjugation(infinitiv: "erschaffen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "erschUF")
+    expectConjugation(infinitiv: "erschaffen", conjugationgroup: .präteritumIndicativ(.thirdSingular), expected: "erschUF")
+    expectConjugation(infinitiv: "erschaffen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "erschÜFe")
+    expectConjugation(infinitiv: "erschaffen", conjugationgroup: .perfektpartizip, expected: "erschaffen")
+    expectConjugation(infinitiv: "erschaffen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "habe erschaffen")
   }
 
   private func expectConjugation(infinitiv: String, conjugationgroup: Conjugationgroup, expected: String) {

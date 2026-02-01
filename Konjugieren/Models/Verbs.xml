@@ -10,987 +10,992 @@
 ]>
 
 <verbs>
-  <verb in="ab+g^e^ben" tn="hand in, give away" fr="329" ag="geben" fa="s" />
-  <verb in="ab+bauen" tn="reduce, dismantle" fr="689" fa="w" />
-  <verb in="ab+bilden" tn="depict, illustrate" fr="744" fa="w" />
-  <verb in="ab+br^e^chen" tn="break off, cancel" fr="767" ag="sprechen" fa="s" />
-  <verb in="ab+decken" tn="cover" fr="675" fa="w" />
-  <verb in="ab+h^a^lten" tn="hold, prevent" fr="736" ag="halten" fa="s" />
-  <verb in="ab+holen" tn="pick up, collect" fr="645" fa="w" />
-  <verb in="ab+l^au^fen" tn="expire, proceed" ay="s" fr="750" ag="laufen" fa="s" />
-  <verb in="ab+legen" tn="file, take off" fr="644" fa="w" />
-  <verb in="ab+lehnen" tn="reject, decline" fr="469" fa="w" />
-  <verb in="ab+leiten" tn="derive, deduce" fr="732" fa="w" />
-  <verb in="ab+n^ehm^en" tn="decrease, lose weight" fr="532" ag="nehmen" fa="s" />
-  <verb in="ab+r^u^fen" tn="retrieve, call up" fr="797" ag="rufen" fa="s" />
-  <verb in="ab+sagen" tn="cancel, decline" fr="853" fa="w" />
-  <verb in="ab+schl^ie^ßen" tn="close, complete" fr="246" ag="schließen" fa="s" />
-  <verb in="ab+schn^eid^en" tn="cut off, perform" fr="889" ag="schneiden" fa="s" />
-  <verb in="ab+s^e^hen" tn="foresee, refrain from" fr="455" ag="sehen" fa="s" />
-  <verb in="ab+setzen" tn="depose, discontinue" fr="792" fa="w" />
-  <verb in="ab+sichern" tn="secure, safeguard" fr="926" fa="w" />
-  <verb in="absolvieren" tn="complete, graduate" fr="432" fa="i" />
-  <verb in="ab+stellen" tn="turn off, park" fr="899" fa="w" />
-  <verb in="ab+stimmen" tn="vote, coordinate" fr="529" fa="w" />
-  <verb in="ab+warten" tn="wait for" fr="798" fa="w" />
-  <verb in="ab+z^ieh^en" tn="deduct, withdraw" fr="826" ag="ziehen" fa="s" />
-  <verb in="achten" tn="pay attention, respect" fr="195" fa="w" />
-  <verb in="agieren" tn="act" fr="651" fa="i" />
-  <verb in="ahnen" tn="suspect, sense" fr="923" fa="w" />
-  <verb in="ähneln" tn="resemble" fr="984" fa="w" />
-  <verb in="aktivieren" tn="activate" fr="435" fa="i" />
-  <verb in="aktualisieren" tn="update" fr="584" fa="i" />
-  <verb in="akzeptieren" tn="accept" fr="416" fa="i" />
-  <verb in="analysieren" tn="analyze" fr="444" fa="i" />
-  <verb in="ändern" tn="change" fr="90" fa="w" />
-  <verb in="an+fertigen" tn="make, produce" fr="936" fa="w" />
-  <verb in="an+f^a^ngen" tn="begin" fr="248" ag="fangen" fa="s" />
-  <verb in="an+g^e^ben" tn="state, indicate" fr="290" ag="geben" fa="s" />
-  <verb in="an+g^eh^en" tn="concern, approach" fr="369" ag="gehen" fa="s" />
-  <verb in="an+h^a^lten" tn="stop, continue" fr="812" ag="halten" fa="s" />
-  <verb in="an+hören" tn="listen to" fr="970" fa="w" />
-  <verb in="an+k^om^men" tn="arrive" ay="s" fr="255" ag="kommen" fa="s" />
-  <verb in="anlegen" tn="create, invest" fr="311" fa="w" />
-  <verb in="an+melden" tn="register, announce" fr="347" fa="w" />
-  <verb in="an+n^ehm^en" tn="assume, accept" fr="216" ag="nehmen" fa="s" />
-  <verb in="an+ordnen" tn="arrange, order" fr="802" fa="w" />
-  <verb in="an+passen" tn="adapt, adjust" fr="395" fa="w" />
-  <verb in="an+regen" tn="stimulate, suggest" fr="716" fa="w" />
-  <verb in="an+r^u^fen" tn="call, phone" fr="688" ag="rufen" fa="s" />
+  <verb in="ab+bauen" tn="reduce, dismantle" fr="680" fa="w" />
+  <verb in="ab+bilden" tn="depict, illustrate" fr="733" fa="w" />
+  <verb in="ab+br^e^chen" tn="break off, cancel" fr="756" ag="sprechen" fa="s" />
+  <verb in="ab+decken" tn="cover" fr="666" fa="w" />
+  <verb in="ab+g^e^ben" tn="hand in, give away" fr="326" ag="geben" fa="s" />
+  <verb in="ab+h^a^lten" tn="hold, prevent" fr="726" ag="halten" fa="s" />
+  <verb in="ab+holen" tn="pick up, collect" fr="636" fa="w" />
+  <verb in="ab+l^au^fen" tn="expire, proceed" ay="s" fr="739" ag="laufen" fa="s" />
+  <verb in="ab+legen" tn="file, take off" fr="635" fa="w" />
+  <verb in="ab+lehnen" tn="reject, decline" fr="463" fa="w" />
+  <verb in="ab+leiten" tn="derive, deduce" fr="722" fa="w" />
+  <verb in="ab+n^ehm^en" tn="decrease, lose weight" fr="526" ag="nehmen" fa="s" />
+  <verb in="ab+r^u^fen" tn="retrieve, call up" fr="786" ag="rufen" fa="s" />
+  <verb in="ab+sagen" tn="cancel, decline" fr="842" fa="w" />
+  <verb in="ab+schl^ie^ßen" tn="close, complete" fr="244" ag="schließen" fa="s" />
+  <verb in="ab+schn^eid^en" tn="cut off, perform" fr="878" ag="schneiden" fa="s" />
+  <verb in="ab+s^e^hen" tn="foresee, refrain from" fr="449" ag="sehen" fa="s" />
+  <verb in="ab+setzen" tn="depose, discontinue" fr="781" fa="w" />
+  <verb in="ab+sichern" tn="secure, safeguard" fr="915" fa="w" />
+  <verb in="absolvieren" tn="complete, graduate" fr="426" fa="i" />
+  <verb in="ab+stellen" tn="turn off, park" fr="888" fa="w" />
+  <verb in="ab+stimmen" tn="vote, coordinate" fr="523" fa="w" />
+  <verb in="ab+warten" tn="wait for" fr="787" fa="w" />
+  <verb in="ab+z^ieh^en" tn="deduct, withdraw" fr="815" ag="ziehen" fa="s" />
+  <verb in="achten" tn="pay attention, respect" fr="194" fa="w" />
+  <verb in="agieren" tn="act" fr="642" fa="i" />
+  <verb in="ähneln" tn="resemble" fr="973" fa="w" />
+  <verb in="ahnen" tn="suspect, sense" fr="912" fa="w" />
+  <verb in="aktivieren" tn="activate" fr="429" fa="i" />
+  <verb in="aktualisieren" tn="update" fr="576" fa="i" />
+  <verb in="akzeptieren" tn="accept" fr="410" fa="i" />
+  <verb in="analysieren" tn="analyze" fr="438" fa="i" />
   <verb in="an+b^ie^ten" tn="offer" fr="106" ag="bieten" fa="s" />
-  <verb in="an+führen" tn="lead, cite" fr="931" fa="w" />
-  <verb in="an+gehören" tn="belong to" fr="937" fa="w" />
-  <verb in="an+br^ing^en" tn="attach, install" fr="534" ag="bringen" fa="m" />
-  <verb in="an*erk^e^nnen" tn="recognize, acknowledge" fr="470" ag="kennen" fa="m" />
-  <verb in="an+gr^eif^en" tn="attack" fr="591" ag="greifen" fa="s" />
-  <verb in="an+kündigen" tn="announce" fr="510" fa="w" />
-  <verb in="an+schauen" tn="look at" fr="352" fa="w" />
-  <verb in="an+schl^ie^ßen" tn="connect" fr="388" ag="schließen" fa="s" />
-  <verb in="an+sagen" tn="announce" fr="910" fa="w" />
-  <verb in="an+s^e^hen" tn="look at, regard" fr="202" ag="sehen" fa="s" />
-  <verb in="an+setzen" tn="set, schedule" fr="715" fa="w" />
-  <verb in="an+siedeln" tn="settle" fr="951" fa="w" />
-  <verb in="an+spr^e^chen" tn="address, appeal to" fr="357" ag="sprechen" fa="s" />
-  <verb in="an+stellen" tn="employ, turn on" fr="818" fa="w" />
-  <verb in="an+streben" tn="strive for" fr="865" fa="w" />
-  <verb in="an+tr^et^en" tn="start, take up" ay="s" fr="554" ag="treten" fa="s" />
-  <verb in="antworten" tn="answer" fr="350" fa="w" />
-  <verb in="anwenden" tn="apply" fr="300" fa="w" />
-  <verb in="an+w^ei^sen" tn="instruct, transfer" fr="719" ag="weisen" fa="s" />
-  <verb in="anzeigen" tn="display, report" fr="192" fa="w" />
-  <verb in="an+z^ieh^en" tn="attract, dress" fr="685" ag="ziehen" fa="s" />
+  <verb in="an+br^ing^en" tn="attach, install" fr="528" ag="bringen" fa="m" />
+  <verb in="ändern" tn="change" fr="90" fa="w" />
+  <verb in="an*erk^e^nnen" tn="recognize, acknowledge" fr="464" ag="kennen" fa="m" />
+  <verb in="an+f^a^ngen" tn="begin" fr="246" ag="fangen" fa="s" />
+  <verb in="an+fertigen" tn="make, produce" fr="925" fa="w" />
+  <verb in="an+führen" tn="lead, cite" fr="920" fa="w" />
+  <verb in="an+g^e^ben" tn="state, indicate" fr="287" ag="geben" fa="s" />
+  <verb in="an+g^eh^en" tn="concern, approach" fr="364" ag="gehen" fa="s" />
+  <verb in="an+gehören" tn="belong to" fr="926" fa="w" />
+  <verb in="an+gr^eif^en" tn="attack" fr="583" ag="greifen" fa="s" />
+  <verb in="an+h^a^lten" tn="stop, continue" fr="801" ag="halten" fa="s" />
+  <verb in="an+hören" tn="listen to" fr="959" fa="w" />
+  <verb in="an+k^om^men" tn="arrive" ay="s" fr="253" ag="kommen" fa="s" />
+  <verb in="an+kündigen" tn="announce" fr="504" fa="w" />
+  <verb in="anlegen" tn="create, invest" fr="308" fa="w" />
+  <verb in="an+melden" tn="register, announce" fr="343" fa="w" />
+  <verb in="an+n^ehm^en" tn="assume, accept" fr="215" ag="nehmen" fa="s" />
+  <verb in="an+ordnen" tn="arrange, order" fr="791" fa="w" />
+  <verb in="an+passen" tn="adapt, adjust" fr="389" fa="w" />
+  <verb in="an+regen" tn="stimulate, suggest" fr="706" fa="w" />
+  <verb in="an+r^u^fen" tn="call, phone" fr="679" ag="rufen" fa="s" />
+  <verb in="an+sagen" tn="announce" fr="899" fa="w" />
+  <verb in="an+schauen" tn="look at" fr="348" fa="w" />
+  <verb in="an+schl^ie^ßen" tn="connect" fr="383" ag="schließen" fa="s" />
+  <verb in="an+s^e^hen" tn="look at, regard" fr="201" ag="sehen" fa="s" />
+  <verb in="an+setzen" tn="set, schedule" fr="705" fa="w" />
+  <verb in="an+siedeln" tn="settle" fr="940" fa="w" />
+  <verb in="an+spr^e^chen" tn="address, appeal to" fr="353" ag="sprechen" fa="s" />
+  <verb in="an+stellen" tn="employ, turn on" fr="807" fa="w" />
+  <verb in="an+streben" tn="strive for" fr="854" fa="w" />
+  <verb in="an+tr^et^en" tn="start, take up" ay="s" fr="548" ag="treten" fa="s" />
+  <verb in="antworten" tn="answer" fr="346" fa="w" />
+  <verb in="an+w^ei^sen" tn="instruct, transfer" fr="709" ag="weisen" fa="s" />
+  <verb in="anwenden" tn="apply" fr="297" fa="w" />
+  <verb in="anzeigen" tn="display, report" fr="191" fa="w" />
+  <verb in="an+z^ieh^en" tn="attract, dress" fr="676" ag="ziehen" fa="s" />
   <verb in="arbeiten" tn="work" fr="40" fa="w" />
-  <verb in="ärgern" tn="annoy" fr="863" fa="w" />
-  <verb in="atmen" tn="breathe" fr="968" fa="w" />
-  <verb in="äußern" tn="express, utter" fr="379" fa="w" />
-  <verb in="auf+bauen" tn="build up" fr="203" fa="w" />
-  <verb in="auf+bewahren" tn="keep, store" fr="890" fa="w" />
-  <verb in="auf+br^ing^en" tn="raise, muster" fr="954" ag="bringen" fa="m" />
-  <verb in="auf+fordern" tn="call on, demand" fr="728" fa="w" />
-  <verb in="auf+führen" tn="perform, list" fr="603" fa="w" />
-  <verb in="auf+gr^eif^en" tn="take up, seize" fr="881" ag="greifen" fa="s" />
-  <verb in="auf+h^a^lten" tn="stop, detain" fr="616" ag="halten" fa="s" />
-  <verb in="auf+hören" tn="stop" fr="757" fa="w" />
-  <verb in="auf+klären" tn="clarify, enlighten" fr="924" fa="w" />
-  <verb in="auf+k^om^men" tn="arise, pay for" ay="s" fr="952" ag="kommen" fa="s" />
-  <verb in="auf+lösen" tn="dissolve, solve" fr="607" fa="w" />
+  <verb in="ärgern" tn="annoy" fr="852" fa="w" />
+  <verb in="atmen" tn="breathe" fr="957" fa="w" />
+  <verb in="auf+bauen" tn="build up" fr="202" fa="w" />
+  <verb in="auf+bewahren" tn="keep, store" fr="879" fa="w" />
+  <verb in="auf+br^ing^en" tn="raise, muster" fr="943" ag="bringen" fa="m" />
+  <verb in="auf+f^all^en" tn="stand out, be noticeable" ay="s" fr="496" ag="fallen" fa="s" />
+  <verb in="auf+fordern" tn="call on, demand" fr="718" fa="w" />
+  <verb in="auf+führen" tn="perform, list" fr="595" fa="w" />
+  <verb in="auf+g^e^ben" tn="give up" fr="477" ag="geben" fa="s" />
+  <verb in="auf+gr^eif^en" tn="take up, seize" fr="870" ag="greifen" fa="s" />
+  <verb in="auf+h^a^lten" tn="stop, detain" fr="607" ag="halten" fa="s" />
+  <verb in="auf+h^e^ben" tn="pick up, cancel" fr="509" ag="heben" fa="s" />
+  <verb in="auf+hören" tn="stop" fr="746" fa="w" />
+  <verb in="auf+klären" tn="clarify, enlighten" fr="913" fa="w" />
+  <verb in="auf+k^om^men" tn="arise, pay for" ay="s" fr="941" ag="kommen" fa="s" />
+  <verb in="auf+lösen" tn="dissolve, solve" fr="598" fa="w" />
   <verb in="auf+n^ehm^en" tn="record, admit" fr="137" ag="nehmen" fa="s" />
-  <verb in="auf+r^u^fen" tn="call up, summon" fr="540" ag="rufen" fa="s" />
-  <verb in="auf+passen" tn="pay attention, watch out" fr="882" fa="w" />
-  <verb in="auf+stellen" tn="set up, put up" fr="407" fa="w" />
-  <verb in="auf+suchen" tn="visit, seek out" fr="911" fa="w" />
-  <verb in="auf+tauchen" tn="appear, emerge" ay="s" fr="614" fa="w" />
-  <verb in="auf+teilen" tn="divide, split" fr="859" fa="w" />
-  <verb in="auf+tr^a^gen" tn="apply, serve" fr="880" ag="tragen" fa="s" />
-  <verb in="auf+tr^et^en" tn="appear, occur" ay="s" fr="303" ag="treten" fa="s" />
-  <verb in="auf+w^a^chsen" tn="grow up" ay="s" fr="896" ag="wachsen" fa="s" />
-  <verb in="auf+w^ei^sen" tn="show, display" fr="464" ag="weisen" fa="s" />
-  <verb in="auf+zeigen" tn="show, demonstrate" fr="570" fa="w" />
-  <verb in="auf+f^all^en" tn="stand out, be noticeable" ay="s" fr="502" ag="fallen" fa="s" />
-  <verb in="auf+g^e^ben" tn="give up" fr="483" ag="geben" fa="s" />
-  <verb in="auf+h^e^ben" tn="pick up, cancel" fr="515" ag="heben" fa="s" />
-  <verb in="aus+bauen" tn="expand" fr="427" fa="w" />
-  <verb in="aus+bilden" tn="train, educate" fr="725" fa="w" />
-  <verb in="aus+drücken" tn="express" fr="566" fa="w" />
-  <verb in="aus+einander+setzen" tn="deal with, debate" fr="661" fa="w" />
-  <verb in="aus+f^all^en" tn="fail, be cancelled" ay="s" fr="520" ag="fallen" fa="s" />
-  <verb in="aus+führen" tn="execute, carry out" fr="319" fa="w" />
-  <verb in="aus+g^e^ben" tn="spend, issue" fr="498" ag="geben" fa="s" />
-  <verb in="aus+g^eh^en" tn="go out, assume" ay="s" fr="271" ag="gehen" fa="s" />
-  <verb in="aus+gl^eich^en" tn="balance, compensate" fr="681" ag="streichen" fa="s" />
-  <verb in="aus+legen" tn="interpret, lay out" fr="618" fa="w" />
-  <verb in="aus+liefern" tn="deliver, extradite" fr="901" fa="w" />
-  <verb in="aus+lösen" tn="trigger, release" fr="438" fa="w" />
-  <verb in="aus+reichen" tn="suffice, be enough" fr="756" fa="w" />
-  <verb in="aus+richten" tn="align, organize" fr="500" fa="w" />
-  <verb in="aus+schalten" tn="turn off, eliminate" fr="886" fa="w" />
-  <verb in="aus+schl^ie^ßen" tn="exclude" fr="313" ag="schließen" fa="s" />
-  <verb in="aus+s^e^hen" tn="look, appear" fr="223" ag="sehen" fa="s" />
-  <verb in="aus+setzen" tn="expose, suspend" fr="486" fa="w" />
-  <verb in="aus+spr^e^chen" tn="pronounce, express" fr="565" ag="sprechen" fa="s" />
-  <verb in="aus+statten" tn="equip" fr="286" fa="w" />
-  <verb in="aus+stellen" tn="exhibit, issue" fr="717" fa="w" />
-  <verb in="aus+suchen" tn="choose, select" fr="747" fa="w" />
-  <verb in="ausprobieren" tn="try out" fr="381" fa="i" />
-  <verb in="aus+tauschen" tn="exchange" fr="437" fa="w" />
-  <verb in="aus+tr^a^gen" tn="deliver, hold" fr="967" ag="tragen" fa="s" />
-  <verb in="aus+üben" tn="practice, exert" fr="572" fa="w" />
-  <verb in="aus+w^ei^sen" tn="identify, show" fr="942" ag="weisen" fa="s" />
-  <verb in="aus+werten" tn="evaluate, analyze" fr="851" fa="w" />
-  <verb in="aus+wirken" tn="affect, have effect" fr="687" fa="w" />
-  <verb in="auswählen" tn="select" fr="318" fa="w" />
-  <verb in="aus+zeichnen" tn="distinguish, award" fr="412" fa="w" />
-  <verb in="backen" tn="bake" fr="648" fa="w" />
-  <verb in="basteln" tn="craft, tinker" fr="780" fa="w" />
+  <verb in="auf+passen" tn="pay attention, watch out" fr="871" fa="w" />
+  <verb in="auf+r^u^fen" tn="call up, summon" fr="534" ag="rufen" fa="s" />
+  <verb in="auf+stellen" tn="set up, put up" fr="401" fa="w" />
+  <verb in="auf+suchen" tn="visit, seek out" fr="900" fa="w" />
+  <verb in="auf+tauchen" tn="appear, emerge" ay="s" fr="605" fa="w" />
+  <verb in="auf+teilen" tn="divide, split" fr="848" fa="w" />
+  <verb in="auf+tr^a^gen" tn="apply, serve" fr="869" ag="tragen" fa="s" />
+  <verb in="auf+tr^et^en" tn="appear, occur" ay="s" fr="300" ag="treten" fa="s" />
+  <verb in="auf+w^a^chsen" tn="grow up" ay="s" fr="885" ag="wachsen" fa="s" />
+  <verb in="auf+w^ei^sen" tn="show, display" fr="458" ag="weisen" fa="s" />
+  <verb in="auf+zeigen" tn="show, demonstrate" fr="562" fa="w" />
+  <verb in="aus+bauen" tn="expand" fr="421" fa="w" />
+  <verb in="aus+bilden" tn="train, educate" fr="715" fa="w" />
+  <verb in="aus+drücken" tn="express" fr="558" fa="w" />
+  <verb in="aus+einander+setzen" tn="deal with, debate" fr="652" fa="w" />
+  <verb in="aus+f^all^en" tn="fail, be cancelled" ay="s" fr="514" ag="fallen" fa="s" />
+  <verb in="aus+führen" tn="execute, carry out" fr="316" fa="w" />
+  <verb in="aus+g^e^ben" tn="spend, issue" fr="492" ag="geben" fa="s" />
+  <verb in="aus+g^eh^en" tn="go out, assume" ay="s" fr="269" ag="gehen" fa="s" />
+  <verb in="aus+gl^eich^en" tn="balance, compensate" fr="672" ag="streichen" fa="s" />
+  <verb in="aus+legen" tn="interpret, lay out" fr="609" fa="w" />
+  <verb in="aus+liefern" tn="deliver, extradite" fr="890" fa="w" />
+  <verb in="aus+lösen" tn="trigger, release" fr="432" fa="w" />
+  <verb in="aus+machen" tn="turn off, constitute, matter" fr="521" fa="w" />
+  <verb in="ausprobieren" tn="try out" fr="376" fa="i" />
+  <verb in="aus+reichen" tn="suffice, be enough" fr="745" fa="w" />
+  <verb in="aus+richten" tn="align, organize" fr="494" fa="w" />
+  <verb in="aus+schalten" tn="turn off, eliminate" fr="875" fa="w" />
+  <verb in="aus+schl^ie^ßen" tn="exclude" fr="310" ag="schließen" fa="s" />
+  <verb in="aus+s^e^hen" tn="look, appear" fr="222" ag="sehen" fa="s" />
+  <verb in="aus+setzen" tn="expose, suspend" fr="480" fa="w" />
+  <verb in="aus+spr^e^chen" tn="pronounce, express" fr="557" ag="sprechen" fa="s" />
+  <verb in="aus+statten" tn="equip" fr="283" fa="w" />
+  <verb in="aus+stellen" tn="exhibit, issue" fr="707" fa="w" />
+  <verb in="aus+suchen" tn="choose, select" fr="736" fa="w" />
+  <verb in="aus+tauschen" tn="exchange" fr="431" fa="w" />
+  <verb in="aus+tr^a^gen" tn="deliver, hold" fr="956" ag="tragen" fa="s" />
+  <verb in="aus+üben" tn="practice, exert" fr="564" fa="w" />
+  <verb in="auswählen" tn="select" fr="315" fa="w" />
+  <verb in="aus+w^ei^sen" tn="identify, show" fr="931" ag="weisen" fa="s" />
+  <verb in="aus+werten" tn="evaluate, analyze" fr="840" fa="w" />
+  <verb in="aus+wirken" tn="affect, have effect" fr="678" fa="w" />
+  <verb in="aus+zeichnen" tn="distinguish, award" fr="406" fa="w" />
+  <verb in="äußern" tn="express, utter" fr="374" fa="w" />
+  <verb in="backen" tn="bake" fr="639" fa="w" />
+  <verb in="basieren" tn="be based on" fr="428" fa="i" />
+  <verb in="basteln" tn="craft, tinker" fr="769" fa="w" />
   <verb in="bauen" tn="build" fr="111" fa="w" />
-  <verb in="basieren" tn="be based on" fr="434" fa="i" />
-  <verb in="beauftragen" tn="commission, instruct" fr="640" fa="w" />
-  <verb in="be*achten" tn="observe, note" fr="176" fa="w" />
-  <verb in="beantworten" tn="answer" fr="275" fa="w" />
-  <verb in="be*arbeiten" tn="edit, process" fr="309" fa="w" />
-  <verb in="be*danken" tn="thank" fr="472" fa="w" />
-  <verb in="be*d^enk^en" tn="consider, bear in mind" fr="507" ag="bringen" fa="m" />
+  <verb in="be*achten" tn="observe, note" fr="175" fa="w" />
+  <verb in="be*antragen" tn="apply for, request" fr="419" fa="w" />
+  <verb in="beantworten" tn="answer" fr="273" fa="w" />
+  <verb in="be*arbeiten" tn="edit, process" fr="306" fa="w" />
+  <verb in="beauftragen" tn="commission, instruct" fr="631" fa="w" />
+  <verb in="be*danken" tn="thank" fr="466" fa="w" />
+  <verb in="be*d^enk^en" tn="consider, bear in mind" fr="501" ag="bringen" fa="m" />
   <verb in="be*deuten" tn="mean" fr="84" fa="w" />
-  <verb in="bedienen" tn="serve, operate" fr="356" fa="w" />
-  <verb in="be*drohen" tn="threaten" fr="726" fa="w" />
-  <verb in="be*d^ürf^en" tn="require, need" fr="418" ag="dürfen" fa="m" />
-  <verb in="be*eindrucken" tn="impress" fr="790" fa="w" />
-  <verb in="be*enden" tn="end, finish" fr="280" fa="w" />
-  <verb in="be*einflussen" tn="influence" fr="317" fa="w" />
-  <verb in="be*einträchtigen" tn="impair, affect" fr="711" fa="w" />
-  <verb in="be*festigen" tn="fasten, attach" fr="665" fa="w" />
+  <verb in="bedienen" tn="serve, operate" fr="352" fa="w" />
+  <verb in="be*drohen" tn="threaten" fr="716" fa="w" />
+  <verb in="be*d^ürf^en" tn="require, need" fr="412" ag="dürfen" fa="m" />
+  <verb in="be*eindrucken" tn="impress" fr="779" fa="w" />
+  <verb in="be*einflussen" tn="influence" fr="314" fa="w" />
+  <verb in="be*einträchtigen" tn="impair, affect" fr="701" fa="w" />
+  <verb in="be*enden" tn="end, finish" fr="277" fa="w" />
+  <verb in="be*fassen" tn="deal with, occupy oneself" fr="471" fa="w" />
+  <verb in="be*festigen" tn="fasten, attach" fr="656" fa="w" />
   <verb in="be*f^i^nden" tn="be located" fr="61" ag="finden" fa="s" />
-  <verb in="be*fördern" tn="promote, transport" fr="868" fa="w" />
-  <verb in="be*fragen" tn="question, survey" fr="816" fa="w" />
-  <verb in="be*freien" tn="free, liberate" fr="452" fa="w" />
-  <verb in="be*fürchten" tn="fear" fr="670" fa="w" />
-  <verb in="be*g^e^ben" tn="go, proceed" fr="542" ag="geben" fa="s" />
-  <verb in="be*g^eh^en" tn="commit, walk" fr="623" ag="gehen" fa="s" />
-  <verb in="be*gegnen" tn="meet, encounter" ay="s" fr="386" fa="w" />
-  <verb in="be*geistern" tn="inspire, enthuse" fr="415" fa="w" />
-  <verb in="be*grenzen" tn="limit" fr="619" fa="w" />
-  <verb in="be*gleiten" tn="accompany" fr="190" fa="w" />
-  <verb in="be*gr^eif^en" tn="understand, grasp" fr="600" ag="greifen" fa="s" />
-  <verb in="begrüßen" tn="greet, welcome" fr="322" fa="w" />
-  <verb in="be*gründen" tn="justify, establish" fr="400" fa="w" />
-  <verb in="be*h^a^lten" tn="keep" fr="291" ag="halten" fa="s" />
-  <verb in="behandeln" tn="treat" fr="206" fa="w" />
-  <verb in="be*h^e^ben" tn="remedy, fix" fr="672" ag="heben" fa="s" />
-  <verb in="be*herrschen" tn="master, dominate" fr="596" fa="w" />
-  <verb in="be*kämpfen" tn="fight, combat" fr="683" fa="w" />
-  <verb in="be*haupten" tn="claim, assert" fr="302" fa="w" />
+  <verb in="be*fördern" tn="promote, transport" fr="857" fa="w" />
+  <verb in="be*fragen" tn="question, survey" fr="805" fa="w" />
+  <verb in="be*freien" tn="free, liberate" fr="446" fa="w" />
+  <verb in="be*fürchten" tn="fear" fr="661" fa="w" />
+  <verb in="be*g^e^ben" tn="go, proceed" fr="536" ag="geben" fa="s" />
+  <verb in="be*gegnen" tn="meet, encounter" ay="s" fr="381" fa="w" />
+  <verb in="be*g^eh^en" tn="commit, walk" fr="614" ag="gehen" fa="s" />
+  <verb in="be*geistern" tn="inspire, enthuse" fr="409" fa="w" />
   <verb in="be*g^i^nnen" tn="begin" fr="46" ag="beginnen" fa="s" />
-  <verb in="bei+tr^a^gen" tn="contribute" fr="293" ag="tragen" fa="s" />
-  <verb in="be*inhalten" tn="include, contain" fr="332" fa="w" />
-  <verb in="be*k^e^nnen" tn="confess, profess" fr="422" ag="kennen" fa="m" />
+  <verb in="be*gleiten" tn="accompany" fr="189" fa="w" />
+  <verb in="be*gr^eif^en" tn="understand, grasp" fr="592" ag="greifen" fa="s" />
+  <verb in="be*grenzen" tn="limit" fr="610" fa="w" />
+  <verb in="be*gründen" tn="justify, establish" fr="394" fa="w" />
+  <verb in="begrüßen" tn="greet, welcome" fr="319" fa="w" />
+  <verb in="be*h^a^lten" tn="keep" fr="288" ag="halten" fa="s" />
+  <verb in="behandeln" tn="treat" fr="205" fa="w" />
+  <verb in="be*haupten" tn="claim, assert" fr="299" fa="w" />
+  <verb in="be*h^e^ben" tn="remedy, fix" fr="663" ag="heben" fa="s" />
+  <verb in="be*herrschen" tn="master, dominate" fr="588" fa="w" />
+  <verb in="be*inhalten" tn="include, contain" fr="329" fa="w" />
+  <verb in="bei+tr^a^gen" tn="contribute" fr="290" ag="tragen" fa="s" />
+  <verb in="be*kämpfen" tn="fight, combat" fr="674" fa="w" />
+  <verb in="be*k^e^nnen" tn="confess, profess" fr="416" ag="kennen" fa="m" />
   <verb in="be*k^om^men" tn="get, receive" fr="30" ag="kommen" fa="s" />
-  <verb in="be*lasten" tn="burden, charge" fr="620" fa="w" />
-  <verb in="be*l^au^fen" tn="amount to" fr="999" ag="laufen" fa="s" />
-  <verb in="belegen" tn="prove, occupy" fr="266" fa="w" />
-  <verb in="be*leuchten" tn="illuminate, examine" fr="705" fa="w" />
-  <verb in="be*lohnen" tn="reward" fr="807" fa="w" />
-  <verb in="be*merken" tn="notice" fr="417" fa="w" />
-  <verb in="be*mühen" tn="endeavor, make effort" fr="544" fa="w" />
-  <verb in="be*n^e^nnen" tn="name, designate" fr="517" ag="kennen" fa="m" />
+  <verb in="be*lasten" tn="burden, charge" fr="611" fa="w" />
+  <verb in="be*l^au^fen" tn="amount to" fr="987" ag="laufen" fa="s" />
+  <verb in="belegen" tn="prove, occupy" fr="264" fa="w" />
+  <verb in="be*leuchten" tn="illuminate, examine" fr="695" fa="w" />
+  <verb in="be*lohnen" tn="reward" fr="796" fa="w" />
+  <verb in="be*merken" tn="notice" fr="411" fa="w" />
+  <verb in="be*mühen" tn="endeavor, make effort" fr="538" fa="w" />
+  <verb in="be*n^e^nnen" tn="name, designate" fr="511" ag="kennen" fa="m" />
   <verb in="be*nötigen" tn="need, require" fr="101" fa="w" />
-  <verb in="be*nutzen" tn="use" fr="179" fa="w" />
-  <verb in="be*obachten" tn="observe" fr="226" fa="w" />
-  <verb in="be*r^a^ten" tn="advise, consult" fr="288" ag="halten" fa="s" />
-  <verb in="be*rechnen" tn="calculate" fr="410" fa="w" />
-  <verb in="be*rechtigen" tn="entitle, authorize" fr="980" fa="w" />
-  <verb in="be*reichern" tn="enrich" fr="969" fa="w" />
-  <verb in="bereit+stellen" tn="provide, make available" fr="568" fa="w" />
-  <verb in="bereiten" tn="prepare" fr="368" fa="w" />
-  <verb in="b^e^rgen" tn="salvage, rescue" fr="734" ag="sprechen" fa="s" />
+  <verb in="be*nutzen" tn="use" fr="178" fa="w" />
+  <verb in="be*obachten" tn="observe" fr="225" fa="w" />
+  <verb in="be*r^a^ten" tn="advise, consult" fr="285" ag="halten" fa="s" />
+  <verb in="be*rechnen" tn="calculate" fr="404" fa="w" />
+  <verb in="be*rechtigen" tn="entitle, authorize" fr="969" fa="w" />
+  <verb in="be*reichern" tn="enrich" fr="958" fa="w" />
+  <verb in="bereiten" tn="prepare" fr="363" fa="w" />
+  <verb in="bereit+stellen" tn="provide, make available" fr="560" fa="w" />
+  <verb in="b^e^rgen" tn="salvage, rescue" fr="724" ag="sprechen" fa="s" />
   <verb in="be*richten" tn="report" fr="113" fa="w" />
-  <verb in="berücksichtigen" tn="consider, take into account" fr="217" fa="w" />
-  <verb in="be*r^u^fen" tn="appoint, call" fr="658" ag="rufen" fa="s" />
-  <verb in="be*ruhen" tn="be based on" fr="539" fa="w" />
-  <verb in="be*ruhigen" tn="calm, reassure" fr="836" fa="w" />
-  <verb in="be*rühren" tn="touch" fr="552" fa="w" />
-  <verb in="be*sorgen" tn="get, obtain" fr="707" fa="w" />
-  <verb in="be*schädigen" tn="damage" fr="761" fa="w" />
-  <verb in="be*schäftigen" tn="employ, occupy" fr="156" fa="w" />
-  <verb in="be*schleunigen" tn="accelerate" fr="729" fa="w" />
-  <verb in="be*schl^ie^ßen" tn="decide" fr="259" ag="schließen" fa="s" />
+  <verb in="berücksichtigen" tn="consider, take into account" fr="216" fa="w" />
+  <verb in="be*r^u^fen" tn="appoint, call" fr="649" ag="rufen" fa="s" />
+  <verb in="be*ruhen" tn="be based on" fr="533" fa="w" />
+  <verb in="be*ruhigen" tn="calm, reassure" fr="825" fa="w" />
+  <verb in="be*rühren" tn="touch" fr="546" fa="w" />
+  <verb in="be*schädigen" tn="damage" fr="750" fa="w" />
+  <verb in="be*schäftigen" tn="employ, occupy" fr="155" fa="w" />
+  <verb in="be*schleunigen" tn="accelerate" fr="719" fa="w" />
+  <verb in="be*schl^ie^ßen" tn="decide" fr="257" ag="schließen" fa="s" />
+  <verb in="be*schränken" tn="restrict, limit" fr="442" fa="w" />
   <verb in="be*schreiben" tn="describe" fr="126" fa="w" />
-  <verb in="be*schränken" tn="restrict, limit" fr="448" fa="w" />
-  <verb in="be*seitigen" tn="remove, eliminate" fr="613" fa="w" />
-  <verb in="be*setzen" tn="occupy, cast" fr="526" fa="w" />
-  <verb in="be*sichtigen" tn="visit, view" fr="786" fa="w" />
-  <verb in="be*siegen" tn="defeat" fr="827" fa="w" />
-  <verb in="be*sitzen" tn="own, possess" fr="148" fa="w" />
-  <verb in="be*stätigen" tn="confirm" fr="181" fa="w" />
-  <verb in="be*stellen" tn="order" fr="191" fa="w" />
+  <verb in="be*seitigen" tn="remove, eliminate" fr="604" fa="w" />
+  <verb in="be*setzen" tn="occupy, cast" fr="520" fa="w" />
+  <verb in="be*sichtigen" tn="visit, view" fr="775" fa="w" />
+  <verb in="be*siegen" tn="defeat" fr="816" fa="w" />
+  <verb in="be*sitzen" tn="own, possess" fr="147" fa="w" />
+  <verb in="be*sorgen" tn="get, obtain" fr="697" fa="w" />
+  <verb in="be*spr^e^chen" tn="discuss" fr="541" ag="sprechen" fa="s" />
+  <verb in="be*stätigen" tn="confirm" fr="180" fa="w" />
   <verb in="be*st^eh^en" tn="exist, pass" fr="37" ag="stehen" fa="s" />
-  <verb in="be*stimmen" tn="determine" fr="166" fa="w" />
-  <verb in="be*str^eit^en" tn="dispute, finance" fr="720" ag="schneiden" fa="s" />
-  <verb in="be*spr^e^chen" tn="discuss" fr="547" ag="sprechen" fa="s" />
+  <verb in="be*stellen" tn="order" fr="190" fa="w" />
+  <verb in="be*stimmen" tn="determine" fr="165" fa="w" />
+  <verb in="be*str^eit^en" tn="dispute, finance" fr="710" ag="schneiden" fa="s" />
   <verb in="be*suchen" tn="visit" fr="134" fa="w" />
-  <verb in="beten" tn="pray" fr="699" fa="w" />
-  <verb in="be*teiligen" tn="participate" fr="249" fa="w" />
-  <verb in="be*tonen" tn="emphasize" fr="281" fa="w" />
-  <verb in="be*trachten" tn="consider, view" fr="188" fa="w" />
-  <verb in="be*tr^a^gen" tn="amount to" fr="182" ag="tragen" fa="s" />
-  <verb in="be*treuen" tn="care for, supervise" fr="473" fa="w" />
-  <verb in="be*tr^eff^en" tn="concern, affect" fr="159" ag="treffen" fa="s" />
-  <verb in="be*tr^et^en" tn="enter" fr="605" ag="treten" fa="s" />
-  <verb in="be*tr^ei^ben" tn="operate, run" fr="218" ag="bleiben" fa="s" />
-  <verb in="be*urteilen" tn="judge, assess" fr="530" fa="w" />
-  <verb in="bevorzugen" tn="prefer" fr="635" fa="w" />
-  <verb in="be*wahren" tn="preserve, keep" fr="537" fa="w" />
-  <verb in="be*währen" tn="prove oneself" fr="928" fa="w" />
-  <verb in="bewältigen" tn="cope with, manage" fr="662" fa="w" />
-  <verb in="be*wegen" tn="move" fr="174" fa="w" />
-  <verb in="be*werten" tn="evaluate" fr="292" fa="w" />
-  <verb in="be*w^e^rben" tn="apply, advertise" fr="516" ag="sterben" fa="s" />
-  <verb in="be*w^ei^sen" tn="prove" fr="335" ag="weisen" fa="s" />
-  <verb in="be*wirken" tn="cause, bring about" fr="553" fa="w" />
-  <verb in="be*wundern" tn="admire" fr="815" fa="w" />
-  <verb in="be*zahlen" tn="pay" fr="220" fa="w" />
-  <verb in="be*zeichnen" tn="describe, designate" fr="145" fa="w" />
-  <verb in="be*z^ieh^en" tn="refer to, obtain" fr="172" ag="ziehen" fa="s" />
-  <verb in="b^ie^gen" tn="bend" fr="974" ag="fliegen" fa="s" />
+  <verb in="be*teiligen" tn="participate" fr="247" fa="w" />
+  <verb in="beten" tn="pray" fr="689" fa="w" />
+  <verb in="be*tonen" tn="emphasize" fr="278" fa="w" />
+  <verb in="be*trachten" tn="consider, view" fr="187" fa="w" />
+  <verb in="be*tr^a^gen" tn="amount to" fr="181" ag="tragen" fa="s" />
+  <verb in="be*tr^eff^en" tn="concern, affect" fr="158" ag="treffen" fa="s" />
+  <verb in="be*tr^ei^ben" tn="operate, run" fr="217" ag="bleiben" fa="s" />
+  <verb in="be*tr^et^en" tn="enter" fr="597" ag="treten" fa="s" />
+  <verb in="be*treuen" tn="care for, supervise" fr="467" fa="w" />
+  <verb in="be*urteilen" tn="judge, assess" fr="524" fa="w" />
+  <verb in="bevorzugen" tn="prefer" fr="626" fa="w" />
+  <verb in="be*wahren" tn="preserve, keep" fr="531" fa="w" />
+  <verb in="be*währen" tn="prove oneself" fr="917" fa="w" />
+  <verb in="bewältigen" tn="cope with, manage" fr="653" fa="w" />
+  <verb in="be*wegen" tn="move" fr="173" fa="w" />
+  <verb in="be*w^ei^sen" tn="prove" fr="332" ag="weisen" fa="s" />
+  <verb in="be*w^e^rben" tn="apply, advertise" fr="510" ag="sterben" fa="s" />
+  <verb in="be*werten" tn="evaluate" fr="289" fa="w" />
+  <verb in="be*wirken" tn="cause, bring about" fr="547" fa="w" />
+  <verb in="be*wundern" tn="admire" fr="804" fa="w" />
+  <verb in="be*zahlen" tn="pay" fr="219" fa="w" />
+  <verb in="be*zeichnen" tn="describe, designate" fr="144" fa="w" />
+  <verb in="be*z^ieh^en" tn="refer to, obtain" fr="171" ag="ziehen" fa="s" />
+  <verb in="b^ie^gen" tn="bend" fr="963" ag="fliegen" fa="s" />
   <verb in="b^ie^ten" tn="offer" fr="22" ag="bieten" fa="s" />
   <verb in="bilden" tn="form, educate" fr="100" fa="w" />
-  <verb in="b^i^nden" tn="bind, tie" fr="397" ag="finden" fa="s" />
-  <verb in="b^itt^en" tn="ask, request" fr="180" ag="bitten" fa="s" />
+  <verb in="b^i^nden" tn="bind, tie" fr="391" ag="finden" fa="s" />
+  <verb in="b^itt^en" tn="ask, request" fr="179" ag="bitten" fa="s" />
   <verb in="bl^ei^ben" tn="stay, remain" ay="s" fr="23" ag="bleiben" fa="s" />
-  <verb in="blicken" tn="look, glance" fr="414" fa="w" />
-  <verb in="blockieren" tn="block" fr="857" fa="i" />
+  <verb in="blicken" tn="look, glance" fr="408" fa="w" />
+  <verb in="blockieren" tn="block" fr="846" fa="i" />
   <verb in="brauchen" tn="need" fr="39" fa="w" />
-  <verb in="br^e^chen" tn="break" fr="299" ag="sprechen" fa="s" />
-  <verb in="br^e^nnen" tn="burn" fr="601" ag="kennen" fa="m" />
+  <verb in="br^e^chen" tn="break" fr="296" ag="sprechen" fa="s" />
+  <verb in="br^e^nnen" tn="burn" fr="593" ag="kennen" fa="m" />
   <verb in="br^ing^en" tn="bring" fr="27" ag="bringen" fa="m" />
-  <verb in="buchen" tn="book" fr="305" fa="w" />
-  <verb in="danken" tn="thank" fr="211" fa="w" />
-  <verb in="dar+legen" tn="explain, set forth" fr="979" fa="w" />
+  <verb in="buchen" tn="book" fr="302" fa="w" />
+  <verb in="danken" tn="thank" fr="210" fa="w" />
+  <verb in="dar+legen" tn="explain, set forth" fr="968" fa="w" />
   <verb in="darstellen" tn="represent, portray" fr="125" fa="w" />
-  <verb in="dauern" tn="last, take time" fr="185" fa="w" />
-  <verb in="decken" tn="cover" fr="445" fa="w" />
-  <verb in="deaktivieren" tn="deactivate" fr="945" fa="i" />
-  <verb in="definieren" tn="define" fr="334" fa="i" />
-  <verb in="demonstrieren" tn="demonstrate" fr="804" fa="i" />
-  <verb in="deuten" tn="interpret, point" fr="555" fa="w" />
-  <verb in="dokumentieren" tn="document" fr="506" fa="i" />
-  <verb in="dominieren" tn="dominate" fr="785" fa="i" />
+  <verb in="dauern" tn="last, take time" fr="184" fa="w" />
+  <verb in="deaktivieren" tn="deactivate" fr="934" fa="i" />
+  <verb in="decken" tn="cover" fr="439" fa="w" />
+  <verb in="definieren" tn="define" fr="331" fa="i" />
+  <verb in="demonstrieren" tn="demonstrate" fr="793" fa="i" />
   <verb in="d^enk^en" tn="think" fr="45" ag="bringen" fa="m" />
+  <verb in="deuten" tn="interpret, point" fr="549" fa="w" />
   <verb in="dienen" tn="serve" fr="109" fa="w" />
-  <verb in="diskutieren" tn="discuss" fr="253" fa="i" />
-  <verb in="drängen" tn="urge, push" fr="656" fa="w" />
-  <verb in="drehen" tn="turn, rotate" fr="209" fa="w" />
-  <verb in="dr^i^ngen" tn="penetrate, urge" ay="s" fr="948" ag="singen" fa="s" />
-  <verb in="drohen" tn="threaten" fr="411" fa="w" />
-  <verb in="drucken" tn="print" fr="597" fa="w" />
-  <verb in="drücken" tn="press, push" fr="260" fa="w" />
+  <verb in="diskutieren" tn="discuss" fr="251" fa="i" />
+  <verb in="dokumentieren" tn="document" fr="500" fa="i" />
+  <verb in="dominieren" tn="dominate" fr="774" fa="i" />
+  <verb in="drängen" tn="urge, push" fr="647" fa="w" />
+  <verb in="drehen" tn="turn, rotate" fr="208" fa="w" />
+  <verb in="dr^i^ngen" tn="penetrate, urge" ay="s" fr="937" ag="singen" fa="s" />
+  <verb in="drohen" tn="threaten" fr="405" fa="w" />
+  <verb in="drücken" tn="press, push" fr="258" fa="w" />
+  <verb in="drucken" tn="print" fr="589" fa="w" />
   <verb in="durchführen" tn="carry out" fr="112" fa="w" />
-  <verb in="durch+l^au^fen" tn="go through, run through" fr="998" ag="laufen" fa="s" />
-  <verb in="durch+setzen" tn="enforce, prevail" fr="439" fa="w" />
+  <verb in="durch+l^au^fen" tn="go through, run through" fr="986" ag="laufen" fa="s" />
+  <verb in="durch+setzen" tn="enforce, prevail" fr="433" fa="w" />
   <verb in="d^ürf^en" tn="may, be allowed to" fr="24" ag="dürfen" fa="m" />
-  <verb in="ehren" tn="honor" fr="751" fa="w" />
+  <verb in="ehren" tn="honor" fr="740" fa="w" />
   <verb in="eignen" tn="be suitable" fr="129" fa="w" />
-  <verb in="ein+bauen" tn="install, build in" fr="465" fa="w" />
-  <verb in="ein+b^e^ziehen" tn="include, involve" fr="630" ag="ziehen" fa="s" />
-  <verb in="ein+b^i^nden" tn="integrate, bind" fr="594" ag="finden" fa="s" />
-  <verb in="ein+br^ing^en" tn="bring in, contribute" fr="487" ag="bringen" fa="m" />
-  <verb in="ein+f^all^en" tn="occur to, collapse" ay="s" fr="833" ag="fallen" fa="s" />
-  <verb in="ein+fügen" tn="insert, add" fr="678" fa="w" />
-  <verb in="ein+führen" tn="introduce" fr="371" fa="w" />
-  <verb in="ein+g^e^ben" tn="enter, input" fr="653" ag="geben" fa="s" />
-  <verb in="ein+g^eh^en" tn="enter into" fr="339" ag="gehen" fa="s" />
-  <verb in="ein+h^a^lten" tn="keep, observe" fr="494" ag="halten" fa="s" />
-  <verb in="ein+holen" tn="catch up, obtain" fr="852" fa="w" />
-  <verb in="ein+igen" tn="agree, unite" fr="871" fa="w" />
-  <verb in="ein+kaufen" tn="shop" fr="748" fa="w" />
-  <verb in="ein+l^a^den" tn="invite" fr="301" ag="laden" fa="s" />
-  <verb in="ein+l^a^ssen" tn="let in, get involved" fr="885" ag="lassen" fa="s" />
-  <verb in="ein+legen" tn="insert, preserve" fr="770" fa="w" />
-  <verb in="ein+leiten" tn="initiate, introduce" fr="759" fa="w" />
-  <verb in="ein+n^ehm^en" tn="take, occupy" fr="481" ag="nehmen" fa="s" />
-  <verb in="ein+räumen" tn="admit, put away" fr="982" fa="w" />
-  <verb in="ein+reichen" tn="submit, file" fr="610" fa="w" />
-  <verb in="ein+richten" tn="set up, furnish" fr="328" fa="w" />
-  <verb in="ein+schalten" tn="turn on, involve" fr="702" fa="w" />
-  <verb in="ein+schätzen" tn="assess, estimate" fr="776" fa="w" />
-  <verb in="ein+schränken" tn="restrict, limit" fr="588" fa="w" />
-  <verb in="ein+s^e^hen" tn="realize, see" fr="796" ag="sehen" fa="s" />
+  <verb in="ein+bauen" tn="install, build in" fr="459" fa="w" />
+  <verb in="ein+b^e^ziehen" tn="include, involve" fr="621" ag="ziehen" fa="s" />
+  <verb in="ein+b^i^nden" tn="integrate, bind" fr="586" ag="finden" fa="s" />
+  <verb in="ein+br^ing^en" tn="bring in, contribute" fr="481" ag="bringen" fa="m" />
+  <verb in="ein+f^all^en" tn="occur to, collapse" ay="s" fr="822" ag="fallen" fa="s" />
+  <verb in="ein+fügen" tn="insert, add" fr="669" fa="w" />
+  <verb in="ein+führen" tn="introduce" fr="366" fa="w" />
+  <verb in="ein+g^e^ben" tn="enter, input" fr="644" ag="geben" fa="s" />
+  <verb in="ein+g^eh^en" tn="enter into" fr="336" ag="gehen" fa="s" />
+  <verb in="ein+h^a^lten" tn="keep, observe" fr="488" ag="halten" fa="s" />
+  <verb in="ein+holen" tn="catch up, obtain" fr="841" fa="w" />
+  <verb in="ein+igen" tn="agree, unite" fr="860" fa="w" />
+  <verb in="ein+kaufen" tn="shop" fr="737" fa="w" />
+  <verb in="ein+l^a^den" tn="invite" fr="298" ag="laden" fa="s" />
+  <verb in="ein+l^a^ssen" tn="let in, get involved" fr="874" ag="lassen" fa="s" />
+  <verb in="ein+legen" tn="insert, preserve" fr="759" fa="w" />
+  <verb in="ein+leiten" tn="initiate, introduce" fr="748" fa="w" />
+  <verb in="ein+n^ehm^en" tn="take, occupy" fr="475" ag="nehmen" fa="s" />
+  <verb in="ein+räumen" tn="admit, put away" fr="971" fa="w" />
+  <verb in="ein+reichen" tn="submit, file" fr="601" fa="w" />
+  <verb in="ein+richten" tn="set up, furnish" fr="325" fa="w" />
+  <verb in="ein+schalten" tn="turn on, involve" fr="692" fa="w" />
+  <verb in="ein+schätzen" tn="assess, estimate" fr="765" fa="w" />
+  <verb in="ein+schränken" tn="restrict, limit" fr="580" fa="w" />
+  <verb in="ein+s^e^hen" tn="realize, see" fr="785" ag="sehen" fa="s" />
   <verb in="einsetzen" tn="use, deploy" fr="96" fa="w" />
-  <verb in="ein+st^ei^gen" tn="get in, enter" ay="s" fr="858" ag="steigen" fa="s" />
-  <verb in="einstellen" tn="set, hire" fr="204" fa="w" />
-  <verb in="ein+stufen" tn="classify, rate" fr="884" fa="w" />
-  <verb in="ein+tr^a^gen" tn="enter, register" fr="446" ag="tragen" fa="s" />
-  <verb in="ein+tr^et^en" tn="enter, occur" ay="s" fr="543" ag="treten" fa="s" />
-  <verb in="ein+z^ieh^en" tn="move in, collect" fr="819" ag="ziehen" fa="s" />
-  <verb in="emp*f^a^ngen" tn="receive" fr="471" ag="fangen" fa="s" />
+  <verb in="ein+st^ei^gen" tn="get in, enter" ay="s" fr="847" ag="steigen" fa="s" />
+  <verb in="einstellen" tn="set, hire" fr="203" fa="w" />
+  <verb in="ein+stufen" tn="classify, rate" fr="873" fa="w" />
+  <verb in="ein+tr^a^gen" tn="enter, register" fr="440" ag="tragen" fa="s" />
+  <verb in="ein+tr^et^en" tn="enter, occur" ay="s" fr="537" ag="treten" fa="s" />
+  <verb in="ein+z^ieh^en" tn="move in, collect" fr="808" ag="ziehen" fa="s" />
+  <verb in="emp*f^a^ngen" tn="receive" fr="465" ag="fangen" fa="s" />
   <verb in="emp*f^e^hlen" tn="recommend" fr="98" ag="empfehlen" fa="s" />
-  <verb in="emp*f^i^nden" tn="feel, perceive" fr="433" ag="finden" fa="s" />
-  <verb in="enden" tn="end" fr="258" fa="w" />
-  <verb in="engagieren" tn="engage, hire" fr="496" fa="i" />
+  <verb in="emp*f^i^nden" tn="feel, perceive" fr="427" ag="finden" fa="s" />
+  <verb in="enden" tn="end" fr="256" fa="w" />
+  <verb in="engagieren" tn="engage, hire" fr="490" fa="i" />
   <verb in="ent*decken" tn="discover" fr="127" fa="w" />
-  <verb in="ent*f^all^en" tn="be omitted, lapse" ay="s" fr="589" ag="fallen" fa="s" />
-  <verb in="ent*falten" tn="unfold, develop" fr="659" fa="w" />
-  <verb in="ent*fernen" tn="remove" fr="162" fa="w" />
-  <verb in="ent*g^eh^en" tn="escape, elude" fr="846" ag="gehen" fa="s" />
+  <verb in="ent*f^all^en" tn="be omitted, lapse" ay="s" fr="581" ag="fallen" fa="s" />
+  <verb in="ent*falten" tn="unfold, develop" fr="650" fa="w" />
+  <verb in="ent*fernen" tn="remove" fr="161" fa="w" />
+  <verb in="ent*g^eh^en" tn="escape, elude" fr="835" ag="gehen" fa="s" />
   <verb in="ent*h^a^lten" tn="contain" fr="89" ag="halten" fa="s" />
-  <verb in="ent*l^a^ssen" tn="dismiss, release" fr="914" ag="lassen" fa="s" />
-  <verb in="ent*lasten" tn="relieve, exonerate" fr="878" fa="w" />
-  <verb in="ent*n^ehm^en" tn="take from, gather" fr="493" ag="nehmen" fa="s" />
+  <verb in="ent*l^a^ssen" tn="dismiss, release" fr="903" ag="lassen" fa="s" />
+  <verb in="ent*lasten" tn="relieve, exonerate" fr="867" fa="w" />
+  <verb in="ent*n^ehm^en" tn="take from, gather" fr="487" ag="nehmen" fa="s" />
   <verb in="ent*sch^ei^den" tn="decide" fr="79" ag="bleiben" fa="s" />
-  <verb in="ent*schl^ie^ßen" tn="decide, resolve" fr="733" ag="schließen" fa="s" />
-  <verb in="ent*schuldigen" tn="excuse, apologize" fr="940" fa="w" />
-  <verb in="ent*sorgen" tn="dispose of" fr="992" fa="w" />
-  <verb in="ent*spannen" tn="relax" fr="654" fa="w" />
-  <verb in="ent*spr^e^chen" tn="correspond to" fr="155" ag="sprechen" fa="s" />
+  <verb in="ent*schl^ie^ßen" tn="decide, resolve" fr="723" ag="schließen" fa="s" />
+  <verb in="ent*schuldigen" tn="excuse, apologize" fr="929" fa="w" />
+  <verb in="ent*sorgen" tn="dispose of" fr="980" fa="w" />
+  <verb in="ent*spannen" tn="relax" fr="645" fa="w" />
+  <verb in="ent*spr^e^chen" tn="correspond to" fr="154" ag="sprechen" fa="s" />
   <verb in="ent*st^eh^en" tn="arise, emerge" ay="s" fr="58" ag="stehen" fa="s" />
-  <verb in="enttäuschen" tn="disappoint" fr="873" fa="w" />
-  <verb in="ent*w^e^rfen" tn="design, draft" fr="652" ag="werfen" fa="s" />
+  <verb in="enttäuschen" tn="disappoint" fr="862" fa="w" />
+  <verb in="ent*w^e^rfen" tn="design, draft" fr="643" ag="werfen" fa="s" />
   <verb in="entwickeln" tn="develop" fr="54" fa="w" />
-  <verb in="ent*z^ieh^en" tn="withdraw, deprive" fr="673" ag="ziehen" fa="s" />
-  <verb in="er*arbeiten" tn="work out, develop" fr="449" fa="w" />
-  <verb in="erbauen" tn="build, edify" fr="932" fa="w" />
-  <verb in="er*br^ing^en" tn="provide, render" fr="595" ag="bringen" fa="m" />
+  <verb in="ent*z^ieh^en" tn="withdraw, deprive" fr="664" ag="ziehen" fa="s" />
+  <verb in="er*arbeiten" tn="work out, develop" fr="443" fa="w" />
+  <verb in="erbauen" tn="build, edify" fr="921" fa="w" />
+  <verb in="er*br^ing^en" tn="provide, render" fr="587" ag="bringen" fa="m" />
   <verb in="er*f^a^hren" tn="experience, learn" fr="103" ag="fahren" fa="s" />
-  <verb in="er*fassen" tn="record, grasp" fr="341" fa="w" />
+  <verb in="er*fassen" tn="record, grasp" fr="338" fa="w" />
+  <verb in="er*f^i^nden" tn="invent" fr="693" ag="finden" fa="s" />
   <verb in="er*folgen" tn="occur, take place" ay="s" fr="77" fa="w" />
-  <verb in="er*f^i^nden" tn="invent" fr="703" ag="finden" fa="s" />
-  <verb in="er*fordern" tn="require" fr="373" fa="w" />
-  <verb in="er*forschen" tn="explore, research" fr="791" fa="w" />
-  <verb in="er*freuen" tn="please, delight" fr="624" fa="w" />
-  <verb in="er*füllen" tn="fulfill" fr="149" fa="w" />
-  <verb in="er*gänzen" tn="complement, add" fr="257" fa="w" />
+  <verb in="er*fordern" tn="require" fr="368" fa="w" />
+  <verb in="er*forschen" tn="explore, research" fr="780" fa="w" />
+  <verb in="er*freuen" tn="please, delight" fr="615" fa="w" />
+  <verb in="er*füllen" tn="fulfill" fr="148" fa="w" />
+  <verb in="er*gänzen" tn="complement, add" fr="255" fa="w" />
   <verb in="er*g^e^ben" tn="result in, yield" fr="123" ag="geben" fa="s" />
-  <verb in="er*gr^eif^en" tn="seize, take" fr="627" ag="greifen" fa="s" />
-  <verb in="er*h^e^ben" tn="raise, collect" fr="289" ag="heben" fa="s" />
-  <verb in="er*holen" tn="recover, relax" fr="856" fa="w" />
-  <verb in="er*höhen" tn="increase, raise" fr="165" fa="w" />
+  <verb in="er*gr^eif^en" tn="seize, take" fr="618" ag="greifen" fa="s" />
   <verb in="er*h^a^lten" tn="receive, obtain" fr="29" ag="halten" fa="s" />
+  <verb in="er*h^e^ben" tn="raise, collect" fr="286" ag="heben" fa="s" />
+  <verb in="er*höhen" tn="increase, raise" fr="164" fa="w" />
+  <verb in="er*holen" tn="recover, relax" fr="845" fa="w" />
   <verb in="er*innern" tn="remember, remind" fr="142" fa="w" />
   <verb in="er*k^e^nnen" tn="recognize" fr="80" ag="kennen" fa="m" />
   <verb in="er*klären" tn="explain" fr="63" fa="w" />
-  <verb in="er*kunden" tn="explore" fr="533" fa="w" />
-  <verb in="er*kranken" tn="fall ill" ay="s" fr="977" fa="w" />
-  <verb in="er*l^a^ssen" tn="issue, remit" fr="947" ag="lassen" fa="s" />
-  <verb in="er*langen" tn="attain, obtain" fr="560" fa="w" />
-  <verb in="er*läutern" tn="explain" fr="387" fa="w" />
-  <verb in="er*l^eid^en" tn="suffer, sustain" fr="771" ag="schneiden" fa="s" />
-  <verb in="er*leichtern" tn="facilitate, relieve" fr="413" fa="w" />
-  <verb in="er*lernen" tn="learn, acquire" fr="743" fa="w" />
-  <verb in="er*lauben" tn="allow" fr="199" fa="w" />
+  <verb in="er*kranken" tn="fall ill" ay="s" fr="966" fa="w" />
+  <verb in="er*kunden" tn="explore" fr="527" fa="w" />
+  <verb in="er*langen" tn="attain, obtain" fr="553" fa="w" />
+  <verb in="er*l^a^ssen" tn="issue, remit" fr="936" ag="lassen" fa="s" />
+  <verb in="er*lauben" tn="allow" fr="198" fa="w" />
+  <verb in="er*läutern" tn="explain" fr="382" fa="w" />
   <verb in="er*leben" tn="experience" fr="107" fa="w" />
-  <verb in="er*ledigen" tn="handle, complete" fr="396" fa="w" />
-  <verb in="er*mitteln" tn="determine, investigate" fr="340" fa="w" />
+  <verb in="er*ledigen" tn="handle, complete" fr="390" fa="w" />
+  <verb in="er*leichtern" tn="facilitate, relieve" fr="407" fa="w" />
+  <verb in="er*l^eid^en" tn="suffer, sustain" fr="760" ag="schneiden" fa="s" />
+  <verb in="er*lernen" tn="learn, acquire" fr="732" fa="w" />
+  <verb in="er*mitteln" tn="determine, investigate" fr="337" fa="w" />
   <verb in="ermöglichen" tn="enable, make possible" fr="83" fa="w" />
-  <verb in="er*nähren" tn="feed, nourish" fr="939" fa="w" />
-  <verb in="er*n^e^nnen" tn="appoint" fr="908" ag="kennen" fa="m" />
-  <verb in="er*neuern" tn="renew, renovate" fr="801" fa="w" />
-  <verb in="er*nten" tn="harvest" fr="963" fa="w" />
-  <verb in="erobern" tn="conquer" fr="784" fa="w" />
-  <verb in="eröffnen" tn="open" fr="228" fa="w" />
+  <verb in="er*nähren" tn="feed, nourish" fr="928" fa="w" />
+  <verb in="er*n^e^nnen" tn="appoint" fr="897" ag="kennen" fa="m" />
+  <verb in="er*neuern" tn="renew, renovate" fr="790" fa="w" />
+  <verb in="er*nten" tn="harvest" fr="952" fa="w" />
+  <verb in="erobern" tn="conquer" fr="773" fa="w" />
+  <verb in="eröffnen" tn="open" fr="227" fa="w" />
   <verb in="er*reichen" tn="reach" fr="43" fa="w" />
-  <verb in="errichten" tn="erect, establish" fr="383" fa="w" />
-  <verb in="er*sch^aff^en" tn="create" fr="845" ag="schaffen" fa="s" />
+  <verb in="errichten" tn="erect, establish" fr="378" fa="w" />
+  <verb in="er*sch^aff^en" tn="create" fr="834" ag="schaffen" fa="s" />
   <verb in="er*sch^ei^nen" tn="appear" ay="s" fr="82" ag="erscheinen" fa="s" />
-  <verb in="er*schl^ie^ßen" tn="develop, tap into" fr="695" ag="schließen" fa="s" />
-  <verb in="er*schweren" tn="complicate, make difficult" fr="855" fa="w" />
-  <verb in="ersetzen" tn="replace" fr="238" fa="w" />
-  <verb in="er*sparen" tn="save, spare" fr="989" fa="w" />
+  <verb in="er*schl^ie^ßen" tn="develop, tap into" fr="686" ag="schließen" fa="s" />
+  <verb in="er*schweren" tn="complicate, make difficult" fr="844" fa="w" />
+  <verb in="ersetzen" tn="replace" fr="236" fa="w" />
+  <verb in="er*sparen" tn="save, spare" fr="977" fa="w" />
+  <verb in="er*statten" tn="reimburse, file" fr="944" fa="w" />
   <verb in="erstellen" tn="create" fr="121" fa="w" />
-  <verb in="er*statten" tn="reimburse, file" fr="955" fa="w" />
-  <verb in="erstrecken" tn="extend, stretch" fr="712" fa="w" />
-  <verb in="er*teilen" tn="grant, give" fr="528" fa="w" />
-  <verb in="er*wähnen" tn="mention" fr="263" fa="w" />
+  <verb in="erstrecken" tn="extend, stretch" fr="702" fa="w" />
+  <verb in="er*teilen" tn="grant, give" fr="522" fa="w" />
+  <verb in="er*wähnen" tn="mention" fr="261" fa="w" />
   <verb in="er*warten" tn="expect" fr="92" fa="w" />
-  <verb in="er*w^e^rben" tn="acquire" fr="282" ag="sterben" fa="s" />
-  <verb in="er*w^ei^sen" tn="prove, show" fr="440" ag="weisen" fa="s" />
-  <verb in="er*weitern" tn="expand" fr="256" fa="w" />
-  <verb in="er*wecken" tn="awaken, arouse" fr="953" fa="w" />
-  <verb in="er*wischen" tn="catch" fr="769" fa="w" />
+  <verb in="er*wecken" tn="awaken, arouse" fr="942" fa="w" />
+  <verb in="er*w^ei^sen" tn="prove, show" fr="434" ag="weisen" fa="s" />
+  <verb in="er*weitern" tn="expand" fr="254" fa="w" />
+  <verb in="er*w^e^rben" tn="acquire" fr="279" ag="sterben" fa="s" />
+  <verb in="er*wischen" tn="catch" fr="758" fa="w" />
   <verb in="erzählen" tn="tell, narrate" fr="119" fa="w" />
-  <verb in="erzeugen" tn="generate, produce" fr="273" fa="w" />
-  <verb in="er*zielen" tn="achieve" fr="229" fa="w" />
-  <verb in="^e^ssen" tn="eat" fr="189" ag="essen" fa="s" />
-  <verb in="etablieren" tn="establish" fr="549" fa="i" />
-  <verb in="existieren" tn="exist" fr="336" fa="i" />
+  <verb in="erzeugen" tn="generate, produce" fr="271" fa="w" />
+  <verb in="er*zielen" tn="achieve" fr="228" fa="w" />
+  <verb in="^e^ssen" tn="eat" fr="188" ag="essen" fa="s" />
+  <verb in="etablieren" tn="establish" fr="543" fa="i" />
+  <verb in="existieren" tn="exist" fr="333" fa="i" />
   <verb in="f^a^hren" tn="drive, go" fr="51" ag="fahren" fa="s" />
   <verb in="f^all^en" tn="fall" ay="s" fr="66" ag="fallen" fa="s" />
-  <verb in="fällen" tn="fell, pass" fr="722" fa="w" />
-  <verb in="f^a^ngen" tn="catch" fr="272" ag="fangen" fa="s" />
-  <verb in="fassen" tn="grasp, hold" fr="333" fa="w" />
+  <verb in="fällen" tn="fell, pass" fr="712" fa="w" />
+  <verb in="f^a^ngen" tn="catch" fr="270" ag="fangen" fa="s" />
+  <verb in="fassen" tn="grasp, hold" fr="330" fa="w" />
   <verb in="fehlen" tn="be missing, lack" fr="110" fa="w" />
-  <verb in="feiern" tn="celebrate" fr="168" fa="w" />
-  <verb in="fertigen" tn="manufacture" fr="475" fa="w" />
-  <verb in="fest+h^a^lten" tn="hold on, record" fr="457" ag="halten" fa="s" />
-  <verb in="festlegen" tn="determine, fix" fr="330" fa="w" />
-  <verb in="feststellen" tn="determine, notice" fr="193" fa="w" />
+  <verb in="feiern" tn="celebrate" fr="167" fa="w" />
+  <verb in="fertigen" tn="manufacture" fr="469" fa="w" />
+  <verb in="fest+h^a^lten" tn="hold on, record" fr="451" ag="halten" fa="s" />
+  <verb in="festlegen" tn="determine, fix" fr="327" fa="w" />
+  <verb in="feststellen" tn="determine, notice" fr="192" fa="w" />
+  <verb in="filmen" tn="film" fr="949" fa="w" />
+  <verb in="finanzieren" tn="finance" fr="472" fa="i" />
   <verb in="f^i^nden" tn="find" fr="11" ag="finden" fa="s" />
-  <verb in="filmen" tn="film" fr="960" fa="w" />
-  <verb in="finanzieren" tn="finance" fr="478" fa="i" />
-  <verb in="fixieren" tn="fix, focus on" fr="987" fa="i" />
-  <verb in="fl^ie^gen" tn="fly" ay="s" fr="306" ag="fliegen" fa="s" />
-  <verb in="fl^ie^hen" tn="flee, escape" ay="s" fr="806" ag="fliegen" fa="s" />
-  <verb in="fl^ie^ßen" tn="flow" ay="s" fr="458" ag="schließen" fa="s" />
+  <verb in="fixieren" tn="fix, focus on" fr="975" fa="i" />
+  <verb in="fl^ie^gen" tn="fly" ay="s" fr="303" ag="fliegen" fa="s" />
+  <verb in="fl^ie^hen" tn="flee, escape" ay="s" fr="795" ag="fliegen" fa="s" />
+  <verb in="fl^ie^ßen" tn="flow" ay="s" fr="452" ag="schließen" fa="s" />
   <verb in="folgen" tn="follow" ay="s" fr="67" fa="w" />
   <verb in="fordern" tn="demand" fr="136" fa="w" />
-  <verb in="formen" tn="form, shape" fr="682" fa="w" />
-  <verb in="formulieren" tn="formulate" fr="499" fa="i" />
-  <verb in="fort+setzen" tn="continue" fr="582" fa="w" />
-  <verb in="fördern" tn="promote, support" fr="146" fa="w" />
-  <verb in="fotografieren" tn="photograph" fr="686" fa="i" />
+  <verb in="fördern" tn="promote, support" fr="145" fa="w" />
+  <verb in="formen" tn="form, shape" fr="673" fa="w" />
+  <verb in="formulieren" tn="formulate" fr="493" fa="i" />
+  <verb in="fort+setzen" tn="continue" fr="574" fa="w" />
+  <verb in="fotografieren" tn="photograph" fr="677" fa="i" />
   <verb in="fragen" tn="ask" fr="69" fa="w" />
-  <verb in="frei+g^e^ben" tn="release, clear" fr="925" ag="geben" fa="s" />
-  <verb in="fr^e^ssen" tn="eat (animals)" fr="667" ag="essen" fa="s" />
+  <verb in="frei+g^e^ben" tn="release, clear" fr="914" ag="geben" fa="s" />
+  <verb in="fr^e^ssen" tn="eat (animals)" fr="658" ag="essen" fa="s" />
   <verb in="freuen" tn="be happy, please" fr="56" fa="w" />
+  <verb in="fügen" tn="add, join" fr="489" fa="w" />
   <verb in="fühlen" tn="feel" fr="104" fa="w" />
   <verb in="führen" tn="lead" fr="26" fa="w" />
-  <verb in="fügen" tn="add, join" fr="495" fa="w" />
-  <verb in="füllen" tn="fill" fr="321" fa="w" />
-  <verb in="fungieren" tn="function, act as" fr="872" fa="i" />
-  <verb in="fürchten" tn="fear" fr="646" fa="w" />
-  <verb in="füttern" tn="feed" fr="965" fa="w" />
+  <verb in="füllen" tn="fill" fr="318" fa="w" />
+  <verb in="fungieren" tn="function, act as" fr="861" fa="i" />
   <verb in="funktionieren" tn="function, work" fr="105" fa="i" />
+  <verb in="fürchten" tn="fear" fr="637" fa="w" />
+  <verb in="füttern" tn="feed" fr="954" fa="w" />
+  <verb in="garantieren" tn="guarantee" fr="402" fa="i" />
+  <verb in="ge*b^är^en" tn="give birth" fr="268" ag="gebären" fa="s" />
   <verb in="g^e^ben" tn="give" fr="5" ag="geben" fa="s" />
-  <verb in="garantieren" tn="guarantee" fr="408" fa="i" />
-  <verb in="ge*b^är^en" tn="give birth" fr="270" ag="gebären" fa="s" />
-  <verb in="ge*brauchen" tn="use" fr="930" fa="w" />
+  <verb in="ge*b^ie^ten" tn="command, demand" fr="617" ag="bieten" fa="s" />
+  <verb in="ge*brauchen" tn="use" fr="919" fa="w" />
+  <verb in="ge*fährden" tn="endanger" fr="622" fa="w" />
+  <verb in="ge*f^all^en" tn="please" fr="249" ag="fallen" fa="s" />
   <verb in="g^eh^en" tn="go, walk" ay="s" fr="10" ag="gehen" fa="s" />
   <verb in="gehören" tn="belong" fr="38" fa="w" />
-  <verb in="ge*fährden" tn="endanger" fr="631" fa="w" />
-  <verb in="ge*f^all^en" tn="please" fr="251" ag="fallen" fa="s" />
-  <verb in="gelangen" tn="reach, arrive at" ay="s" fr="338" fa="w" />
-  <verb in="ge*leiten" tn="escort, lead" fr="817" fa="w" />
+  <verb in="gelangen" tn="reach, arrive at" ay="s" fr="335" fa="w" />
+  <verb in="ge*leiten" tn="escort, lead" fr="806" fa="w" />
   <verb in="ge*l^i^ngen" tn="succeed" ay="s" fr="114" ag="gelingen" fa="s" />
   <verb in="g^e^lten" tn="be valid, apply" fr="33" ag="gelten" fa="s" />
-  <verb in="ge*nehmigen" tn="approve, authorize" fr="906" fa="w" />
-  <verb in="generieren" tn="generate" fr="710" fa="i" />
-  <verb in="genügen" tn="suffice, be enough" fr="511" fa="w" />
+  <verb in="ge*nehmigen" tn="approve, authorize" fr="895" fa="w" />
+  <verb in="generieren" tn="generate" fr="700" fa="i" />
   <verb in="ge*n^ie^ßen" tn="enjoy" fr="133" ag="schließen" fa="s" />
-  <verb in="ge*r^a^ten" tn="get into, turn out" ay="s" fr="428" ag="halten" fa="s" />
-  <verb in="ge*sch^e^hen" tn="happen" ay="s" fr="213" ag="sehen" fa="s" />
+  <verb in="genügen" tn="suffice, be enough" fr="505" fa="w" />
+  <verb in="ge*r^a^ten" tn="get into, turn out" ay="s" fr="422" ag="halten" fa="s" />
+  <verb in="ge*sch^e^hen" tn="happen" ay="s" fr="212" ag="sehen" fa="s" />
   <verb in="gestalten" tn="design, shape" fr="139" fa="w" />
-  <verb in="ge*statten" tn="allow, permit" fr="800" fa="w" />
-  <verb in="ge*b^ie^ten" tn="command, demand" fr="626" ag="bieten" fa="s" />
-  <verb in="gewährleisten" tn="ensure" fr="297" fa="w" />
-  <verb in="gewähren" tn="grant" fr="649" fa="w" />
-  <verb in="ge*wöhnen" tn="accustom" fr="714" fa="w" />
+  <verb in="ge*statten" tn="allow, permit" fr="789" fa="w" />
+  <verb in="gewähren" tn="grant" fr="640" fa="w" />
+  <verb in="gewährleisten" tn="ensure" fr="294" fa="w" />
   <verb in="ge*w^i^nnen" tn="win" fr="81" ag="gewinnen" fa="s" />
-  <verb in="g^ie^ßen" tn="pour, water" fr="934" ag="schließen" fa="s" />
-  <verb in="glänzen" tn="shine, excel" fr="993" fa="w" />
+  <verb in="ge*wöhnen" tn="accustom" fr="704" fa="w" />
+  <verb in="g^ie^ßen" tn="pour, water" fr="923" ag="schließen" fa="s" />
+  <verb in="glänzen" tn="shine, excel" fr="981" fa="w" />
   <verb in="glauben" tn="believe" fr="73" fa="w" />
-  <verb in="gl^eich^en" tn="resemble, equal" fr="774" ag="streichen" fa="s" />
-  <verb in="gönnen" tn="grant, not begrudge" fr="735" fa="w" />
-  <verb in="gratulieren" tn="congratulate" fr="832" fa="i" />
-  <verb in="gr^eif^en" tn="grasp, reach" fr="219" ag="greifen" fa="s" />
-  <verb in="gründen" tn="found, establish" fr="201" fa="w" />
-  <verb in="grüßen" tn="greet" fr="390" fa="w" />
-  <verb in="gucken" tn="look" fr="550" fa="w" />
+  <verb in="gl^eich^en" tn="resemble, equal" fr="763" ag="streichen" fa="s" />
+  <verb in="gönnen" tn="grant, not begrudge" fr="725" fa="w" />
+  <verb in="gratulieren" tn="congratulate" fr="821" fa="i" />
+  <verb in="gr^eif^en" tn="grasp, reach" fr="218" ag="greifen" fa="s" />
+  <verb in="gründen" tn="found, establish" fr="200" fa="w" />
+  <verb in="grüßen" tn="greet" fr="385" fa="w" />
+  <verb in="gucken" tn="look" fr="544" fa="w" />
   <verb in="h^ab^en" tn="have" fr="3" ag="haben" fa="m" />
-  <verb in="haften" tn="stick, be liable" fr="823" fa="w" />
+  <verb in="haften" tn="stick, be liable" fr="812" fa="w" />
   <verb in="h^a^lten" tn="hold, stop" fr="28" ag="halten" fa="s" />
   <verb in="handeln" tn="act, trade" fr="62" fa="w" />
-  <verb in="hängen" tn="hang" fr="169" fa="w" />
-  <verb in="hassen" tn="hate" fr="916" fa="w" />
-  <verb in="hauen" tn="hit, hew" fr="837" fa="w" />
-  <verb in="h^e^ben" tn="lift, raise" fr="372" ag="heben" fa="s" />
-  <verb in="heilen" tn="heal, cure" fr="810" fa="w" />
-  <verb in="heiraten" tn="marry" fr="633" fa="w" />
+  <verb in="hängen" tn="hang" fr="168" fa="w" />
+  <verb in="hassen" tn="hate" fr="905" fa="w" />
+  <verb in="hauen" tn="hit, hew" fr="826" fa="w" />
+  <verb in="h^e^ben" tn="lift, raise" fr="367" ag="heben" fa="s" />
+  <verb in="heilen" tn="heal, cure" fr="799" fa="w" />
+  <verb in="heiraten" tn="marry" fr="624" fa="w" />
   <verb in="h^ei^ßen" tn="be called" fr="52" ag="heißen" fa="s" />
   <verb in="h^e^lfen" tn="help" fr="44" ag="sprechen" fa="s" />
-  <verb in="heran+z^ieh^en" tn="consult, raise" fr="920" ag="ziehen" fa="s" />
-  <verb in="heraus+g^e^ben" tn="publish, hand out" fr="902" ag="geben" fa="s" />
-  <verb in="heraus+f^i^nden" tn="find out" fr="518" ag="finden" fa="s" />
-  <verb in="heraus+stellen" tn="turn out, highlight" fr="922" fa="w" />
-  <verb in="herrschen" tn="rule, prevail" fr="398" fa="w" />
-  <verb in="herunter+l^a^den" tn="download" fr="579" ag="laden" fa="s" />
-  <verb in="herstellen" tn="produce, manufacture" fr="194" fa="w" />
-  <verb in="hervor+h^e^ben" tn="emphasize, highlight" fr="789" ag="heben" fa="s" />
-  <verb in="hervor+r^u^fen" tn="cause, provoke" fr="895" ag="rufen" fa="s" />
-  <verb in="hindern" tn="hinder, prevent" fr="950" fa="w" />
-  <verb in="hin+n^ehm^en" tn="accept, put up with" fr="995" ag="nehmen" fa="s" />
-  <verb in="hinter+fragen" tn="question" fr="971" fa="w" />
-  <verb in="hinter*l^a^ssen" tn="leave behind" fr="476" ag="lassen" fa="s" />
-  <verb in="hinzu+fügen" tn="add" fr="442" fa="w" />
-  <verb in="hin+w^ei^sen" tn="point out" fr="365" ag="weisen" fa="s" />
-  <verb in="hoch+l^a^den" tn="upload" fr="949" ag="laden" fa="s" />
+  <verb in="heran+z^ieh^en" tn="consult, raise" fr="909" ag="ziehen" fa="s" />
+  <verb in="heraus+f^i^nden" tn="find out" fr="512" ag="finden" fa="s" />
+  <verb in="heraus+g^e^ben" tn="publish, hand out" fr="891" ag="geben" fa="s" />
+  <verb in="heraus+stellen" tn="turn out, highlight" fr="911" fa="w" />
+  <verb in="herrschen" tn="rule, prevail" fr="392" fa="w" />
+  <verb in="herstellen" tn="produce, manufacture" fr="193" fa="w" />
+  <verb in="herunter+l^a^den" tn="download" fr="571" ag="laden" fa="s" />
+  <verb in="hervor+h^e^ben" tn="emphasize, highlight" fr="778" ag="heben" fa="s" />
+  <verb in="hervor+r^u^fen" tn="cause, provoke" fr="884" ag="rufen" fa="s" />
+  <verb in="hindern" tn="hinder, prevent" fr="939" fa="w" />
+  <verb in="hin+n^ehm^en" tn="accept, put up with" fr="983" ag="nehmen" fa="s" />
+  <verb in="hinter+fragen" tn="question" fr="960" fa="w" />
+  <verb in="hinter*l^a^ssen" tn="leave behind" fr="470" ag="lassen" fa="s" />
+  <verb in="hin+w^ei^sen" tn="point out" fr="360" ag="weisen" fa="s" />
+  <verb in="hinzu+fügen" tn="add" fr="436" fa="w" />
+  <verb in="hoch+l^a^den" tn="upload" fr="938" ag="laden" fa="s" />
   <verb in="hoffen" tn="hope" fr="120" fa="w" />
-  <verb in="holen" tn="fetch, get" fr="152" fa="w" />
+  <verb in="holen" tn="fetch, get" fr="151" fa="w" />
   <verb in="hören" tn="hear" fr="85" fa="w" />
-  <verb in="identifizieren" tn="identify" fr="505" fa="i" />
-  <verb in="ignorieren" tn="ignore" fr="657" fa="i" />
+  <verb in="identifizieren" tn="identify" fr="499" fa="i" />
+  <verb in="ignorieren" tn="ignore" fr="648" fa="i" />
   <verb in="informieren" tn="inform" fr="140" fa="i" />
-  <verb in="inspirieren" tn="inspire" fr="608" fa="i" />
-  <verb in="installieren" tn="install" fr="295" fa="i" />
-  <verb in="integrieren" tn="integrate" fr="324" fa="i" />
-  <verb in="interessieren" tn="interest" fr="224" fa="i" />
-  <verb in="interpretieren" tn="interpret" fr="718" fa="i" />
-  <verb in="investieren" tn="invest" fr="325" fa="i" />
-  <verb in="jagen" tn="hunt" fr="822" fa="w" />
-  <verb in="kämpfen" tn="fight" fr="247" fa="w" />
+  <verb in="inspirieren" tn="inspire" fr="599" fa="i" />
+  <verb in="installieren" tn="install" fr="292" fa="i" />
+  <verb in="integrieren" tn="integrate" fr="321" fa="i" />
+  <verb in="interessieren" tn="interest" fr="223" fa="i" />
+  <verb in="interpretieren" tn="interpret" fr="708" fa="i" />
+  <verb in="investieren" tn="invest" fr="322" fa="i" />
+  <verb in="jagen" tn="hunt" fr="811" fa="w" />
+  <verb in="kämpfen" tn="fight" fr="245" fa="w" />
   <verb in="kaufen" tn="buy" fr="71" fa="w" />
-  <verb in="kehren" tn="sweep, turn" fr="454" fa="w" />
-  <verb in="kennzeichnen" tn="characterize, mark" fr="599" fa="w" />
-  <verb in="kennenlernen" tn="get to know" fr="384" fa="w" />
+  <verb in="kehren" tn="sweep, turn" fr="448" fa="w" />
   <verb in="k^e^nnen" tn="know (be acquainted with)" fr="49" ag="kennen" fa="m" />
-  <verb in="klagen" tn="complain, sue" fr="900" fa="w" />
-  <verb in="klappen" tn="work out, fold" fr="345" fa="w" />
-  <verb in="klären" tn="clarify" fr="358" fa="w" />
-  <verb in="kleben" tn="stick, glue" fr="803" fa="w" />
-  <verb in="klettern" tn="climb" ay="s" fr="919" fa="w" />
-  <verb in="klicken" tn="click" fr="279" fa="w" />
-  <verb in="kl^i^ngen" tn="sound" fr="232" ag="singen" fa="s" />
-  <verb in="knüpfen" tn="tie, establish" fr="847" fa="w" />
+  <verb in="kennenlernen" tn="get to know" fr="379" fa="w" />
+  <verb in="kennzeichnen" tn="characterize, mark" fr="591" fa="w" />
+  <verb in="klagen" tn="complain, sue" fr="889" fa="w" />
+  <verb in="klappen" tn="work out, fold" fr="341" fa="w" />
+  <verb in="klären" tn="clarify" fr="354" fa="w" />
+  <verb in="kleben" tn="stick, glue" fr="792" fa="w" />
+  <verb in="klettern" tn="climb" ay="s" fr="908" fa="w" />
+  <verb in="klicken" tn="click" fr="276" fa="w" />
+  <verb in="kl^i^ngen" tn="sound" fr="230" ag="singen" fa="s" />
+  <verb in="knüpfen" tn="tie, establish" fr="836" fa="w" />
+  <verb in="kochen" tn="cook" fr="445" fa="w" />
+  <verb in="kombinieren" tn="combine" fr="400" fa="i" />
   <verb in="k^om^men" tn="come" ay="s" fr="9" ag="kommen" fa="s" />
-  <verb in="kochen" tn="cook" fr="451" fa="w" />
-  <verb in="kombinieren" tn="combine" fr="406" fa="i" />
-  <verb in="kommentieren" tn="comment" fr="677" fa="i" />
-  <verb in="kommunizieren" tn="communicate" fr="636" fa="i" />
-  <verb in="konfrontieren" tn="confront" fr="752" fa="i" />
-  <verb in="kontaktieren" tn="contact" fr="586" fa="i" />
-  <verb in="kontrollieren" tn="control, check" fr="421" fa="i" />
-  <verb in="konzentrieren" tn="concentrate" fr="367" fa="i" />
-  <verb in="konzipieren" tn="design, conceive" fr="731" fa="i" />
-  <verb in="kopieren" tn="copy" fr="708" fa="i" />
-  <verb in="korrigieren" tn="correct" fr="698" fa="i" />
+  <verb in="kommentieren" tn="comment" fr="668" fa="i" />
+  <verb in="kommunizieren" tn="communicate" fr="627" fa="i" />
+  <verb in="konfrontieren" tn="confront" fr="741" fa="i" />
   <verb in="k^önn^en" tn="can, be able to" fr="4" ag="können" fa="m" />
-  <verb in="kosten" tn="cost" fr="167" fa="w" />
-  <verb in="kreieren" tn="create" fr="894" fa="i" />
-  <verb in="kriegen" tn="get" fr="463" fa="w" />
-  <verb in="kündigen" tn="terminate, give notice" fr="450" fa="w" />
-  <verb in="kümmern" tn="take care of" fr="287" fa="w" />
-  <verb in="kürzen" tn="shorten, cut" fr="997" fa="w" />
-  <verb in="l^a^den" tn="load, charge" fr="160" ag="laden" fa="s" />
-  <verb in="lächeln" tn="smile" fr="849" fa="w" />
-  <verb in="lachen" tn="laugh" fr="403" fa="w" />
-  <verb in="lagern" tn="store" fr="724" fa="w" />
-  <verb in="landen" tn="land" ay="s" fr="314" fa="w" />
-  <verb in="lehnen" tn="lean" fr="585" fa="w" />
-  <verb in="lehren" tn="teach" fr="628" fa="w" />
+  <verb in="kontaktieren" tn="contact" fr="578" fa="i" />
+  <verb in="kontrollieren" tn="control, check" fr="415" fa="i" />
+  <verb in="konzentrieren" tn="concentrate" fr="362" fa="i" />
+  <verb in="konzipieren" tn="design, conceive" fr="721" fa="i" />
+  <verb in="kopieren" tn="copy" fr="698" fa="i" />
+  <verb in="korrigieren" tn="correct" fr="688" fa="i" />
+  <verb in="kosten" tn="cost" fr="166" fa="w" />
+  <verb in="kreieren" tn="create" fr="883" fa="i" />
+  <verb in="kriegen" tn="get" fr="457" fa="w" />
+  <verb in="kritisieren" tn="criticize" fr="478" fa="i" />
+  <verb in="kümmern" tn="take care of" fr="284" fa="w" />
+  <verb in="kündigen" tn="terminate, give notice" fr="444" fa="w" />
+  <verb in="kürzen" tn="shorten, cut" fr="985" fa="w" />
+  <verb in="lächeln" tn="smile" fr="838" fa="w" />
+  <verb in="lachen" tn="laugh" fr="397" fa="w" />
+  <verb in="l^a^den" tn="load, charge" fr="159" ag="laden" fa="s" />
+  <verb in="lagern" tn="store" fr="714" fa="w" />
+  <verb in="landen" tn="land" ay="s" fr="311" fa="w" />
   <verb in="l^a^ssen" tn="let, allow, leave" fr="12" ag="lassen" fa="s" />
   <verb in="l^au^fen" tn="run, walk" ay="s" fr="55" ag="laufen" fa="s" />
-  <verb in="lauten" tn="read, be worded" fr="307" fa="w" />
+  <verb in="lauten" tn="read, be worded" fr="304" fa="w" />
   <verb in="leben" tn="live" fr="59" fa="w" />
   <verb in="legen" tn="lay, put" fr="65" fa="w" />
-  <verb in="l^eid^en" tn="suffer" fr="268" ag="schneiden" fa="s" />
-  <verb in="leisten" tn="achieve, perform" fr="158" fa="w" />
-  <verb in="leiten" tn="lead, conduct" fr="343" fa="w" />
-  <verb in="lenken" tn="steer, direct" fr="676" fa="w" />
+  <verb in="lehnen" tn="lean" fr="577" fa="w" />
+  <verb in="lehren" tn="teach" fr="619" fa="w" />
+  <verb in="l^eid^en" tn="suffer" fr="266" ag="schneiden" fa="s" />
+  <verb in="leisten" tn="achieve, perform" fr="157" fa="w" />
+  <verb in="leiten" tn="lead, conduct" fr="339" fa="w" />
+  <verb in="lenken" tn="steer, direct" fr="667" fa="w" />
   <verb in="lernen" tn="learn" fr="75" fa="w" />
   <verb in="l^e^sen" tn="read" fr="48" ag="sehen" fa="s" />
-  <verb in="leuchten" tn="shine, glow" fr="738" fa="w" />
+  <verb in="leuchten" tn="shine, glow" fr="728" fa="w" />
   <verb in="lieben" tn="love" fr="138" fa="w" />
   <verb in="liefern" tn="deliver" fr="131" fa="w" />
   <verb in="l^ie^gen" tn="lie, be situated" fr="19" ag="liegen" fa="s" />
-  <verb in="loben" tn="praise" fr="809" fa="w" />
-  <verb in="locken" tn="lure, entice" fr="634" fa="w" />
-  <verb in="lohnen" tn="be worth it" fr="243" fa="w" />
-  <verb in="löschen" tn="delete, extinguish" fr="331" fa="w" />
-  <verb in="lösen" tn="solve" fr="154" fa="w" />
+  <verb in="loben" tn="praise" fr="798" fa="w" />
+  <verb in="locken" tn="lure, entice" fr="625" fa="w" />
+  <verb in="lohnen" tn="be worth it" fr="241" fa="w" />
+  <verb in="löschen" tn="delete, extinguish" fr="328" fa="w" />
+  <verb in="lösen" tn="solve" fr="153" fa="w" />
   <verb in="machen" tn="make, do" fr="8" fa="w" />
-  <verb in="malen" tn="paint" fr="647" fa="w" />
-  <verb in="markieren" tn="mark" fr="593" fa="i" />
+  <verb in="malen" tn="paint" fr="638" fa="w" />
+  <verb in="markieren" tn="mark" fr="585" fa="i" />
   <verb in="meinen" tn="mean, think" fr="74" fa="w" />
-  <verb in="meistern" tn="master" fr="768" fa="w" />
-  <verb in="melden" tn="report, announce" fr="157" fa="w" />
-  <verb in="merken" tn="notice" fr="240" fa="w" />
-  <verb in="mieten" tn="rent" fr="642" fa="w" />
-  <verb in="minimieren" tn="minimize" fr="990" fa="i" />
-  <verb in="mischen" tn="mix" fr="578" fa="w" />
-  <verb in="m^e^ssen" tn="measure" fr="382" ag="geben" fa="s" />
-  <verb in="mit+machen" tn="participate, join in" fr="650" fa="w" />
-  <verb in="montieren" tn="assemble, mount" fr="663" fa="i" />
-  <verb in="motivieren" tn="motivate" fr="669" fa="i" />
-  <verb in="mit+br^ing^en" tn="bring along" fr="525" ag="bringen" fa="m" />
-  <verb in="mit+n^ehm^en" tn="take along" fr="467" ag="nehmen" fa="s" />
-  <verb in="mit+machen" tn="participate, join in" fr="650" fa="w" />
-  <verb in="mit+teilen" tn="inform, communicate" fr="374" fa="w" />
+  <verb in="meistern" tn="master" fr="757" fa="w" />
+  <verb in="melden" tn="report, announce" fr="156" fa="w" />
+  <verb in="merken" tn="notice" fr="238" fa="w" />
+  <verb in="m^e^ssen" tn="measure" fr="377" ag="geben" fa="s" />
+  <verb in="mieten" tn="rent" fr="633" fa="w" />
+  <verb in="minimieren" tn="minimize" fr="978" fa="i" />
+  <verb in="mischen" tn="mix" fr="570" fa="w" />
+  <verb in="mit+br^ing^en" tn="bring along" fr="519" ag="bringen" fa="m" />
+  <verb in="mit+machen" tn="participate, join in" fr="641" fa="w" />
+  <verb in="mit+n^ehm^en" tn="take along" fr="461" ag="nehmen" fa="s" />
+  <verb in="mit+teilen" tn="inform, communicate" fr="369" fa="w" />
   <verb in="m^ög^en" tn="like, may" fr="18" ag="mögen" fa="m" />
+  <verb in="montieren" tn="assemble, mount" fr="654" fa="i" />
+  <verb in="motivieren" tn="motivate" fr="660" fa="i" />
   <verb in="m^üss^en" tn="must, have to" fr="6" ag="müssen" fa="m" />
+  <verb in="nach+d^enk^en" tn="think about, reflect" fr="508" ag="bringen" fa="m" />
+  <verb in="nach+fragen" tn="inquire, ask" fr="877" fa="w" />
+  <verb in="nach+g^eh^en" tn="follow, pursue" fr="901" ag="gehen" fa="s" />
+  <verb in="nach+l^e^sen" tn="look up, read again" fr="809" ag="sehen" fa="s" />
+  <verb in="nach+voll+z^ieh^en" tn="comprehend, retrace" fr="717" ag="ziehen" fa="s" />
+  <verb in="nach+w^ei^sen" tn="prove, detect" fr="450" ag="weisen" fa="s" />
+  <verb in="nähen" tn="sew" fr="762" fa="w" />
+  <verb in="nähern" tn="approach" fr="788" fa="w" />
   <verb in="n^ehm^en" tn="take" fr="20" ag="nehmen" fa="s" />
+  <verb in="neigen" tn="incline, tend" fr="731" fa="w" />
   <verb in="n^e^nnen" tn="name, call" fr="76" ag="kennen" fa="m" />
+  <verb in="nerven" tn="annoy" fr="896" fa="w" />
+  <verb in="notieren" tn="note, write down" fr="946" fa="i" />
   <verb in="nutzen" tn="use" fr="36" fa="w" />
-  <verb in="nützen" tn="be useful" fr="915" fa="w" />
-  <verb in="nach+d^enk^en" tn="think about, reflect" fr="514" ag="bringen" fa="m" />
-  <verb in="nach+fragen" tn="inquire, ask" fr="888" fa="w" />
-  <verb in="nach+g^eh^en" tn="follow, pursue" fr="912" ag="gehen" fa="s" />
-  <verb in="nach+l^e^sen" tn="look up, read again" fr="820" ag="sehen" fa="s" />
-  <verb in="nach+voll+z^ieh^en" tn="comprehend, retrace" fr="727" ag="ziehen" fa="s" />
-  <verb in="nach+w^ei^sen" tn="prove, detect" fr="456" ag="weisen" fa="s" />
-  <verb in="nähern" tn="approach" fr="799" fa="w" />
-  <verb in="nähen" tn="sew" fr="773" fa="w" />
-  <verb in="neigen" tn="incline, tend" fr="741" fa="w" />
-  <verb in="nerven" tn="annoy" fr="907" fa="w" />
-  <verb in="notieren" tn="note, write down" fr="957" fa="i" />
+  <verb in="nützen" tn="be useful" fr="904" fa="w" />
+  <verb in="offenbaren" tn="reveal" fr="853" fa="w" />
   <verb in="öffnen" tn="open" fr="117" fa="w" />
-  <verb in="offenbaren" tn="reveal" fr="864" fa="w" />
-  <verb in="optimieren" tn="optimize" fr="512" fa="i" />
-  <verb in="ordnen" tn="arrange, order" fr="839" fa="w" />
-  <verb in="orientieren" tn="orient" fr="459" fa="i" />
-  <verb in="organisieren" tn="organize" fr="254" fa="i" />
-  <verb in="packen" tn="pack, grab" fr="485" fa="w" />
+  <verb in="optimieren" tn="optimize" fr="506" fa="i" />
+  <verb in="ordnen" tn="arrange, order" fr="828" fa="w" />
+  <verb in="organisieren" tn="organize" fr="252" fa="i" />
+  <verb in="orientieren" tn="orient" fr="453" fa="i" />
+  <verb in="packen" tn="pack, grab" fr="479" fa="w" />
   <verb in="passen" tn="fit" fr="94" fa="w" />
   <verb in="passieren" tn="happen" ay="s" fr="141" fa="i" />
-  <verb in="pflanzen" tn="plant" fr="897" fa="w" />
-  <verb in="pflegen" tn="care for, nurse" fr="360" fa="w" />
+  <verb in="pflanzen" tn="plant" fr="886" fa="w" />
+  <verb in="pflegen" tn="care for, nurse" fr="356" fa="w" />
   <verb in="planen" tn="plan" fr="128" fa="w" />
-  <verb in="platzieren" tn="place" fr="643" fa="i" />
-  <verb in="positionieren" tn="position" fr="927" fa="i" />
-  <verb in="posten" tn="post" fr="758" fa="w" />
-  <verb in="prägen" tn="shape, mint" fr="296" fa="w" />
-  <verb in="präsentieren" tn="present" fr="147" fa="i" />
-  <verb in="produzieren" tn="produce" fr="250" fa="i" />
-  <verb in="probieren" tn="try, taste" fr="423" fa="i" />
-  <verb in="profitieren" tn="profit, benefit" fr="264" fa="i" />
-  <verb in="prüfen" tn="check, test" fr="196" fa="w" />
-  <verb in="punkten" tn="score points" fr="843" fa="w" />
-  <verb in="qualifizieren" tn="qualify" fr="813" fa="i" />
-  <verb in="räumen" tn="clear, vacate" fr="730" fa="w" />
-  <verb in="rauchen" tn="smoke" fr="988" fa="w" />
-  <verb in="reagieren" tn="react" fr="236" fa="i" />
-  <verb in="recherchieren" tn="research" fr="972" fa="i" />
-  <verb in="rechnen" tn="calculate, expect" fr="227" fa="w" />
-  <verb in="reden" tn="talk" fr="237" fa="w" />
-  <verb in="reduzieren" tn="reduce" fr="230" fa="i" />
-  <verb in="reflektieren" tn="reflect" fr="829" fa="i" />
-  <verb in="regen" tn="stir, move" fr="834" fa="w" />
-  <verb in="regeln" tn="regulate" fr="364" fa="w" />
-  <verb in="regnen" tn="rain" fr="978" fa="w" />
-  <verb in="registrieren" tn="register" fr="521" fa="i" />
+  <verb in="platzieren" tn="place" fr="634" fa="i" />
+  <verb in="positionieren" tn="position" fr="916" fa="i" />
+  <verb in="posten" tn="post" fr="747" fa="w" />
+  <verb in="prägen" tn="shape, mint" fr="293" fa="w" />
+  <verb in="präsentieren" tn="present" fr="146" fa="i" />
+  <verb in="probieren" tn="try, taste" fr="417" fa="i" />
+  <verb in="produzieren" tn="produce" fr="248" fa="i" />
+  <verb in="profitieren" tn="profit, benefit" fr="262" fa="i" />
+  <verb in="prüfen" tn="check, test" fr="195" fa="w" />
+  <verb in="punkten" tn="score points" fr="832" fa="w" />
+  <verb in="qualifizieren" tn="qualify" fr="802" fa="i" />
+  <verb in="r^a^ten" tn="advise, guess" fr="575" ag="halten" fa="s" />
+  <verb in="rauchen" tn="smoke" fr="976" fa="w" />
+  <verb in="räumen" tn="clear, vacate" fr="720" fa="w" />
+  <verb in="reagieren" tn="react" fr="234" fa="i" />
+  <verb in="realisieren" tn="realize, implement" fr="399" fa="i" />
+  <verb in="recherchieren" tn="research" fr="961" fa="i" />
+  <verb in="rechnen" tn="calculate, expect" fr="226" fa="w" />
+  <verb in="rechtfertigen" tn="justify" fr="590" fa="w" />
+  <verb in="reden" tn="talk" fr="235" fa="w" />
+  <verb in="reduzieren" tn="reduce" fr="229" fa="i" />
+  <verb in="reflektieren" tn="reflect" fr="818" fa="i" />
+  <verb in="regeln" tn="regulate" fr="359" fa="w" />
+  <verb in="regen" tn="stir, move" fr="823" fa="w" />
+  <verb in="registrieren" tn="register" fr="515" fa="i" />
+  <verb in="regnen" tn="rain" fr="967" fa="w" />
   <verb in="reichen" tn="reach, suffice" fr="122" fa="w" />
-  <verb in="reinigen" tn="clean" fr="501" fa="w" />
-  <verb in="r^eiß^en" tn="tear, rip" fr="531" ag="reißen" fa="s" />
-  <verb in="reisen" tn="travel" fr="359" fa="w" />
-  <verb in="r^eit^en" tn="ride" fr="961" ag="schneiden" fa="s" />
-  <verb in="r^e^nnen" tn="run, race" ay="s" fr="745" ag="kennen" fa="m" />
-  <verb in="reparieren" tn="repair" fr="841" fa="i" />
-  <verb in="repräsentieren" tn="represent" fr="991" fa="i" />
-  <verb in="reservieren" tn="reserve" fr="983" fa="i" />
-  <verb in="retten" tn="save, rescue" fr="327" fa="w" />
-  <verb in="richten" tn="direct, judge" fr="170" fa="w" />
-  <verb in="r^ie^chen" tn="smell" fr="740" ag="schließen" fa="s" />
-  <verb in="rollen" tn="roll" fr="581" fa="w" />
-  <verb in="r^u^fen" tn="call" fr="178" ag="rufen" fa="s" />
-  <verb in="ruhen" tn="rest" fr="777" fa="w" />
-  <verb in="rühren" tn="stir, touch" fr="867" fa="w" />
-  <verb in="rücken" tn="move" fr="466" fa="w" />
-  <verb in="runden" tn="round" fr="825" fa="w" />
-  <verb in="rutschen" tn="slide, slip" ay="s" fr="946" fa="w" />
-  <verb in="r^a^ten" tn="advise, guess" fr="583" ag="halten" fa="s" />
-  <verb in="rechtfertigen" tn="justify" fr="598" fa="w" />
+  <verb in="reinigen" tn="clean" fr="495" fa="w" />
+  <verb in="reisen" tn="travel" fr="355" fa="w" />
+  <verb in="r^eit^en" tn="ride" fr="950" ag="schneiden" fa="s" />
+  <verb in="r^eiß^en" tn="tear, rip" fr="525" ag="reißen" fa="s" />
+  <verb in="r^e^nnen" tn="run, race" ay="s" fr="734" ag="kennen" fa="m" />
+  <verb in="reparieren" tn="repair" fr="830" fa="i" />
+  <verb in="repräsentieren" tn="represent" fr="979" fa="i" />
+  <verb in="reservieren" tn="reserve" fr="972" fa="i" />
+  <verb in="retten" tn="save, rescue" fr="324" fa="w" />
+  <verb in="richten" tn="direct, judge" fr="169" fa="w" />
+  <verb in="r^ie^chen" tn="smell" fr="730" ag="schließen" fa="s" />
+  <verb in="rollen" tn="roll" fr="573" fa="w" />
+  <verb in="rücken" tn="move" fr="460" fa="w" />
+  <verb in="r^u^fen" tn="call" fr="177" ag="rufen" fa="s" />
+  <verb in="ruhen" tn="rest" fr="766" fa="w" />
+  <verb in="rühren" tn="stir, touch" fr="856" fa="w" />
+  <verb in="runden" tn="round" fr="814" fa="w" />
+  <verb in="rutschen" tn="slide, slip" ay="s" fr="935" fa="w" />
   <verb in="sagen" tn="say, tell" fr="16" fa="w" />
-  <verb in="sammeln" tn="collect" fr="207" fa="w" />
+  <verb in="sammeln" tn="collect" fr="206" fa="w" />
+  <verb in="schaden" tn="harm, damage" fr="606" fa="w" />
   <verb in="schaffen" tn="manage, accomplish" fr="47" fa="w" />
+  <verb in="schalten" tn="switch" fr="518" fa="w" />
+  <verb in="schätzen" tn="estimate, appreciate" fr="309" fa="w" />
   <verb in="schauen" tn="look" fr="91" fa="w" />
-  <verb in="schätzen" tn="estimate, appreciate" fr="312" fa="w" />
-  <verb in="schaden" tn="harm, damage" fr="615" fa="w" />
-  <verb in="schalten" tn="switch" fr="524" fa="w" />
-  <verb in="scheitern" tn="fail" ay="s" fr="480" fa="w" />
-  <verb in="sch^eid^en" tn="divorce, separate" ay="s" fr="905" ag="bleiben" fa="s" />
+  <verb in="sch^eid^en" tn="divorce, separate" ay="s" fr="894" ag="bleiben" fa="s" />
   <verb in="sch^ei^nen" tn="seem, shine" fr="78" ag="heißen" fa="s" />
-  <verb in="schenken" tn="give as gift" fr="370" fa="w" />
-  <verb in="sch^ie^ben" tn="push, slide" fr="497" ag="bieten" fa="s" />
-  <verb in="sch^ie^ßen" tn="shoot" fr="447" ag="schließen" fa="s" />
-  <verb in="schicken" tn="send" fr="221" fa="w" />
-  <verb in="schildern" tn="describe, depict" fr="693" fa="w" />
-  <verb in="schl^a^fen" tn="sleep" fr="361" ag="schlafen" fa="s" />
-  <verb in="schl^a^gen" tn="hit, beat" fr="161" ag="schlagen" fa="s" />
+  <verb in="scheitern" tn="fail" ay="s" fr="474" fa="w" />
+  <verb in="schenken" tn="give as gift" fr="365" fa="w" />
+  <verb in="schicken" tn="send" fr="220" fa="w" />
+  <verb in="sch^ie^ben" tn="push, slide" fr="491" ag="bieten" fa="s" />
+  <verb in="sch^ie^ßen" tn="shoot" fr="441" ag="schließen" fa="s" />
+  <verb in="schildern" tn="describe, depict" fr="684" fa="w" />
+  <verb in="schl^a^fen" tn="sleep" fr="357" ag="schlafen" fa="s" />
+  <verb in="schl^a^gen" tn="hit, beat" fr="160" ag="schlagen" fa="s" />
   <verb in="schl^ie^ßen" tn="close" fr="97" ag="schließen" fa="s" />
-  <verb in="schmecken" tn="taste" fr="391" fa="w" />
-  <verb in="schn^eid^en" tn="cut" fr="346" ag="schneiden" fa="s" />
-  <verb in="schonen" tn="spare, protect" fr="996" fa="w" />
+  <verb in="schmecken" tn="taste" fr="386" fa="w" />
+  <verb in="schn^eid^en" tn="cut" fr="342" ag="schneiden" fa="s" />
+  <verb in="schonen" tn="spare, protect" fr="984" fa="w" />
   <verb in="schr^ei^ben" tn="write" fr="34" ag="bleiben" fa="s" />
-  <verb in="schr^ei^en" tn="scream, shout" fr="749" ag="schreien" fa="s" />
-  <verb in="schulen" tn="train, school" fr="704" fa="w" />
-  <verb in="schütteln" tn="shake" fr="944" fa="w" />
-  <verb in="schützen" tn="protect" fr="144" fa="w" />
-  <verb in="schw^eig^en" tn="be silent" fr="838" ag="steigen" fa="s" />
-  <verb in="schw^imm^en" tn="swim" ay="s" fr="753" ag="singen" fa="s" />
+  <verb in="schr^ei^en" tn="scream, shout" fr="738" ag="schreien" fa="s" />
+  <verb in="schulen" tn="train, school" fr="694" fa="w" />
+  <verb in="schütteln" tn="shake" fr="933" fa="w" />
+  <verb in="schützen" tn="protect" fr="143" fa="w" />
+  <verb in="schw^eig^en" tn="be silent" fr="827" ag="steigen" fa="s" />
+  <verb in="schw^imm^en" tn="swim" ay="s" fr="742" ag="singen" fa="s" />
   <verb in="s^e^hen" tn="see" fr="15" ag="sehen" fa="s" />
   <verb in="^sei^n" tn="be" ay="s" fr="1" ag="sein" fa="s" />
-  <verb in="senden" tn="send, broadcast" fr="294" fa="w" />
-  <verb in="senken" tn="lower" fr="491" fa="w" />
-  <verb in="servieren" tn="serve" fr="690" fa="i" />
+  <verb in="senden" tn="send, broadcast" fr="291" fa="w" />
+  <verb in="senken" tn="lower" fr="485" fa="w" />
+  <verb in="servieren" tn="serve" fr="681" fa="i" />
   <verb in="setzen" tn="set, put" fr="32" fa="w" />
-  <verb in="sichern" tn="secure" fr="205" fa="w" />
-  <verb in="sicherstellen" tn="ensure" fr="404" fa="w" />
-  <verb in="siegen" tn="win, triumph" fr="879" fa="w" />
-  <verb in="s^i^ngen" tn="sing" fr="354" ag="singen" fa="s" />
-  <verb in="s^i^nken" tn="sink, decrease" ay="s" fr="429" ag="singen" fa="s" />
+  <verb in="sichern" tn="secure" fr="204" fa="w" />
+  <verb in="sicherstellen" tn="ensure" fr="398" fa="w" />
+  <verb in="siegen" tn="win, triumph" fr="868" fa="w" />
+  <verb in="s^i^ngen" tn="sing" fr="350" ag="singen" fa="s" />
+  <verb in="s^i^nken" tn="sink, decrease" ay="s" fr="423" ag="singen" fa="s" />
   <verb in="s^itz^en" tn="sit" fr="135" ag="sitzen" fa="s" />
   <verb in="sollen" tn="should, ought, be obligated, shall" fr="7" fa="w" />
   <verb in="sorgen" tn="worry, care" fr="70" fa="w" />
-  <verb in="sortieren" tn="sort" fr="958" fa="i" />
-  <verb in="sparen" tn="save" fr="233" fa="w" />
-  <verb in="sperren" tn="block, lock" fr="587" fa="w" />
-  <verb in="spenden" tn="donate" fr="664" fa="w" />
-  <verb in="spezialisieren" tn="specialize" fr="766" fa="i" />
-  <verb in="spiegeln" tn="mirror, reflect" fr="641" fa="w" />
-  <verb in="speichern" tn="save, store" fr="265" fa="w" />
+  <verb in="sortieren" tn="sort" fr="947" fa="i" />
+  <verb in="sparen" tn="save" fr="231" fa="w" />
+  <verb in="speichern" tn="save, store" fr="263" fa="w" />
+  <verb in="spenden" tn="donate" fr="655" fa="w" />
+  <verb in="sperren" tn="block, lock" fr="579" fa="w" />
+  <verb in="spezialisieren" tn="specialize" fr="755" fa="i" />
+  <verb in="spiegeln" tn="mirror, reflect" fr="632" fa="w" />
   <verb in="spielen" tn="play" fr="35" fa="w" />
   <verb in="spr^e^chen" tn="speak" fr="42" ag="sprechen" fa="s" />
-  <verb in="spr^i^ngen" tn="jump" ay="s" fr="424" ag="singen" fa="s" />
-  <verb in="spüren" tn="feel, sense" fr="315" fa="w" />
-  <verb in="stammen" tn="originate, stem from" fr="210" fa="w" />
-  <verb in="stärken" tn="strengthen" fr="274" fa="w" />
+  <verb in="spr^i^ngen" tn="jump" ay="s" fr="418" ag="singen" fa="s" />
+  <verb in="spüren" tn="feel, sense" fr="312" fa="w" />
+  <verb in="stammen" tn="originate, stem from" fr="209" fa="w" />
+  <verb in="stärken" tn="strengthen" fr="272" fa="w" />
   <verb in="starten" tn="start" fr="93" fa="w" />
-  <verb in="statt+f^i^nden" tn="take place" ay="s" fr="200" ag="finden" fa="s" />
-  <verb in="stecken" tn="stick, put" fr="208" fa="w" />
-  <verb in="st^e^chen" tn="sting, stab" fr="973" ag="sprechen" fa="s" />
-  <verb in="st^e^hlen" tn="steal" fr="909" ag="empfehlen" fa="s" />
+  <verb in="statt+f^i^nden" tn="take place" ay="s" fr="199" ag="finden" fa="s" />
+  <verb in="st^e^chen" tn="sting, stab" fr="962" ag="sprechen" fa="s" />
+  <verb in="stecken" tn="stick, put" fr="207" fa="w" />
   <verb in="st^eh^en" tn="stand" fr="14" ag="stehen" fa="s" />
-  <verb in="steigern" tn="increase" fr="362" fa="w" />
+  <verb in="st^e^hlen" tn="steal" fr="898" ag="empfehlen" fa="s" />
   <verb in="st^ei^gen" tn="rise, climb" ay="s" fr="124" ag="steigen" fa="s" />
+  <verb in="steigern" tn="increase" fr="358" fa="w" />
   <verb in="stellen" tn="put, place, set" fr="17" fa="w" />
-  <verb in="steuern" tn="steer, control" fr="409" fa="w" />
-  <verb in="st^e^rben" tn="die" ay="s" fr="186" ag="sterben" fa="s" />
-  <verb in="stimmen" tn="vote, be correct" fr="163" fa="w" />
-  <verb in="stören" tn="disturb" fr="377" fa="w" />
-  <verb in="stoppen" tn="stop" fr="604" fa="w" />
-  <verb in="st^o^ßen" tn="push, bump" fr="310" ag="stoßen" fa="s" />
-  <verb in="strahlen" tn="radiate, beam" fr="866" fa="w" />
-  <verb in="streben" tn="strive, aspire" fr="933" fa="w" />
-  <verb in="str^eit^en" tn="argue, fight" fr="821" ag="schneiden" fa="s" />
-  <verb in="str^eich^en" tn="paint, cancel" fr="559" ag="streichen" fa="s" />
-  <verb in="studieren" tn="study" fr="353" fa="i" />
-  <verb in="stürzen" tn="fall, plunge" ay="s" fr="558" fa="w" />
-  <verb in="stützen" tn="support, prop" fr="622" fa="w" />
+  <verb in="st^e^rben" tn="die" ay="s" fr="185" ag="sterben" fa="s" />
+  <verb in="steuern" tn="steer, control" fr="403" fa="w" />
+  <verb in="stimmen" tn="vote, be correct" fr="162" fa="w" />
+  <verb in="stoppen" tn="stop" fr="596" fa="w" />
+  <verb in="stören" tn="disturb" fr="372" fa="w" />
+  <verb in="st^o^ßen" tn="push, bump" fr="307" ag="stoßen" fa="s" />
+  <verb in="strahlen" tn="radiate, beam" fr="855" fa="w" />
+  <verb in="streben" tn="strive, aspire" fr="922" fa="w" />
+  <verb in="str^eich^en" tn="paint, cancel" fr="552" ag="streichen" fa="s" />
+  <verb in="str^eit^en" tn="argue, fight" fr="810" ag="schneiden" fa="s" />
+  <verb in="studieren" tn="study" fr="349" fa="i" />
+  <verb in="stürzen" tn="fall, plunge" ay="s" fr="551" fa="w" />
+  <verb in="stützen" tn="support, prop" fr="613" fa="w" />
   <verb in="suchen" tn="search, look for" fr="41" fa="w" />
-  <verb in="teil+n^ehm^en" tn="participate" fr="261" ag="nehmen" fa="s" />
-  <verb in="teilen" tn="share, divide" fr="151" fa="w" />
-  <verb in="thematisieren" tn="address, make topic" fr="850" fa="i" />
-  <verb in="testen" tn="test" fr="239" fa="w" />
-  <verb in="tanzen" tn="dance" fr="632" fa="w" />
-  <verb in="tätigen" tn="make, carry out" fr="1000" fa="w" />
-  <verb in="tauchen" tn="dive, dip" fr="431" fa="w" />
-  <verb in="tauschen" tn="exchange, swap" fr="571" fa="w" />
-  <verb in="tippen" tn="type, tap" fr="929" fa="w" />
-  <verb in="töten" tn="kill" fr="430" fa="w" />
-  <verb in="trainieren" tn="train" fr="461" fa="i" />
-  <verb in="transportieren" tn="transport" fr="592" fa="i" />
+  <verb in="tanzen" tn="dance" fr="623" fa="w" />
+  <verb in="tätigen" tn="make, carry out" fr="988" fa="w" />
+  <verb in="tauchen" tn="dive, dip" fr="425" fa="w" />
+  <verb in="tauschen" tn="exchange, swap" fr="563" fa="w" />
+  <verb in="teilen" tn="share, divide" fr="150" fa="w" />
+  <verb in="teil+n^ehm^en" tn="participate" fr="259" ag="nehmen" fa="s" />
+  <verb in="testen" tn="test" fr="237" fa="w" />
+  <verb in="thematisieren" tn="address, make topic" fr="839" fa="i" />
+  <verb in="tippen" tn="type, tap" fr="918" fa="w" />
+  <verb in="töten" tn="kill" fr="424" fa="w" />
   <verb in="tr^a^gen" tn="carry, wear" fr="57" ag="tragen" fa="s" />
-  <verb in="trauen" tn="trust, dare" fr="674" fa="w" />
-  <verb in="träumen" tn="dream" fr="629" fa="w" />
-  <verb in="tr^ei^ben" tn="drive, do" fr="323" ag="bleiben" fa="s" />
+  <verb in="trainieren" tn="train" fr="455" fa="i" />
+  <verb in="transportieren" tn="transport" fr="584" fa="i" />
+  <verb in="trauen" tn="trust, dare" fr="665" fa="w" />
+  <verb in="träumen" tn="dream" fr="620" fa="w" />
   <verb in="tr^eff^en" tn="meet" fr="72" ag="treffen" fa="s" />
-  <verb in="trennen" tn="separate" fr="349" fa="w" />
+  <verb in="tr^ei^ben" tn="drive, do" fr="320" ag="bleiben" fa="s" />
+  <verb in="trennen" tn="separate" fr="345" fa="w" />
   <verb in="tr^et^en" tn="step, kick" fr="99" ag="treten" fa="s" />
-  <verb in="tr^i^nken" tn="drink" fr="308" ag="singen" fa="s" />
-  <verb in="trocknen" tn="dry" fr="861" fa="w" />
+  <verb in="tr^i^nken" tn="drink" fr="305" ag="singen" fa="s" />
+  <verb in="trocknen" tn="dry" fr="850" fa="w" />
   <verb in="t^u^n" tn="do" fr="31" ag="tun" fa="s" />
-  <verb in="über*arbeiten" tn="revise, overwork" fr="962" fa="w" />
-  <verb in="über*g^e^ben" tn="hand over" fr="513" ag="geben" fa="s" />
-  <verb in="über*g^eh^en" tn="skip, go over to" ay="s" fr="964" ag="gehen" fa="s" />
-  <verb in="über*l^a^ssen" tn="leave to, abandon" fr="575" ag="lassen" fa="s" />
-  <verb in="über*leben" tn="survive" fr="602" fa="w" />
-  <verb in="über*legen" tn="consider, think about" fr="326" fa="w" />
+  <verb in="üben" tn="practice" fr="414" fa="w" />
+  <verb in="über*arbeiten" tn="revise, overwork" fr="951" fa="w" />
+  <verb in="über*g^e^ben" tn="hand over" fr="507" ag="geben" fa="s" />
+  <verb in="über*g^eh^en" tn="skip, go over to" ay="s" fr="953" ag="gehen" fa="s" />
+  <verb in="über*l^a^ssen" tn="leave to, abandon" fr="567" ag="lassen" fa="s" />
+  <verb in="über*leben" tn="survive" fr="594" fa="w" />
+  <verb in="über*legen" tn="consider, think about" fr="323" fa="w" />
+  <verb in="über*mitteln" tn="transmit, convey" fr="696" fa="w" />
   <verb in="über*n^ehm^en" tn="take over" fr="87" ag="nehmen" fa="s" />
-  <verb in="über*mitteln" tn="transmit, convey" fr="706" fa="w" />
-  <verb in="über*prüfen" tn="check, verify" fr="304" fa="w" />
-  <verb in="über*raschen" tn="surprise" fr="443" fa="w" />
-  <verb in="über*reichen" tn="present, hand over" fr="917" fa="w" />
-  <verb in="über*schr^eit^en" tn="exceed, cross" fr="567" ag="schreiten" fa="s" />
-  <verb in="über*setzen" tn="translate" fr="564" fa="w" />
-  <verb in="über*s^e^hen" tn="overlook" fr="788" ag="sehen" fa="s" />
-  <verb in="über*st^eh^en" tn="survive, withstand" fr="904" ag="stehen" fa="s" />
-  <verb in="über*tr^a^gen" tn="transfer, transmit" fr="285" ag="tragen" fa="s" />
-  <verb in="über*tr^eff^en" tn="surpass, exceed" fr="976" ag="treffen" fa="s" />
-  <verb in="über*wachen" tn="monitor, supervise" fr="721" fa="w" />
-  <verb in="überzeugen" tn="convince" fr="173" fa="w" />
-  <verb in="über*w^i^nden" tn="overcome" fr="548" ag="finden" fa="s" />
-  <verb in="üben" tn="practice" fr="420" fa="w" />
-  <verb in="um+bauen" tn="rebuild, convert" fr="921" fa="w" />
-  <verb in="umfassen" tn="include, comprise" fr="241" fa="w" />
-  <verb in="um*g^e^ben" tn="surround" fr="701" ag="geben" fa="s" />
-  <verb in="um+g^eh^en" tn="deal with, handle" fr="344" ag="gehen" fa="s" />
-  <verb in="umsetzen" tn="implement" fr="187" fa="w" />
-  <verb in="um+stellen" tn="rearrange, switch" fr="844" fa="w" />
-  <verb in="um+wandeln" tn="convert, transform" fr="779" fa="w" />
-  <verb in="unter*br^e^chen" tn="interrupt" fr="737" ag="sprechen" fa="s" />
-  <verb in="unter*br^i^ngen" tn="accommodate, house" fr="655" ag="bringen" fa="s" />
-  <verb in="unter*h^a^lten" tn="entertain, maintain" fr="523" ag="halten" fa="s" />
-  <verb in="unter*l^ie^gen" tn="be subject to" fr="468" ag="liegen" fa="s" />
-  <verb in="unter*n^ehm^en" tn="undertake" fr="441" ag="nehmen" fa="s" />
-  <verb in="unter*richten" tn="teach, instruct" fr="691" fa="w" />
-  <verb in="unter*suchen" tn="examine" fr="269" fa="w" />
-  <verb in="unter*schr^ei^ben" tn="sign" fr="805" ag="bleiben" fa="s" />
-  <verb in="unter*str^eich^en" tn="underline, emphasize" fr="694" ag="streichen" fa="s" />
-  <verb in="unter*stellen" tn="subordinate, shelter" fr="935" fa="w" />
+  <verb in="über*prüfen" tn="check, verify" fr="301" fa="w" />
+  <verb in="über*raschen" tn="surprise" fr="437" fa="w" />
+  <verb in="über*reichen" tn="present, hand over" fr="906" fa="w" />
+  <verb in="über*schr^eit^en" tn="exceed, cross" fr="559" ag="schreiten" fa="s" />
+  <verb in="über*s^e^hen" tn="overlook" fr="777" ag="sehen" fa="s" />
+  <verb in="über*setzen" tn="translate" fr="556" fa="w" />
+  <verb in="über*st^eh^en" tn="survive, withstand" fr="893" ag="stehen" fa="s" />
+  <verb in="über*tr^a^gen" tn="transfer, transmit" fr="282" ag="tragen" fa="s" />
+  <verb in="über*tr^eff^en" tn="surpass, exceed" fr="965" ag="treffen" fa="s" />
+  <verb in="über*wachen" tn="monitor, supervise" fr="711" fa="w" />
+  <verb in="über*w^i^nden" tn="overcome" fr="542" ag="finden" fa="s" />
+  <verb in="überzeugen" tn="convince" fr="172" fa="w" />
+  <verb in="um+bauen" tn="rebuild, convert" fr="910" fa="w" />
+  <verb in="umfassen" tn="include, comprise" fr="239" fa="w" />
+  <verb in="um*g^e^ben" tn="surround" fr="691" ag="geben" fa="s" />
+  <verb in="um+g^eh^en" tn="deal with, handle" fr="340" ag="gehen" fa="s" />
+  <verb in="umsetzen" tn="implement" fr="186" fa="w" />
+  <verb in="um+stellen" tn="rearrange, switch" fr="833" fa="w" />
+  <verb in="um+wandeln" tn="convert, transform" fr="768" fa="w" />
+  <verb in="unter*br^e^chen" tn="interrupt" fr="727" ag="sprechen" fa="s" />
+  <verb in="unter*br^i^ngen" tn="accommodate, house" fr="646" ag="bringen" fa="s" />
+  <verb in="unter*h^a^lten" tn="entertain, maintain" fr="517" ag="halten" fa="s" />
+  <verb in="unter*l^ie^gen" tn="be subject to" fr="462" ag="liegen" fa="s" />
+  <verb in="unter*n^ehm^en" tn="undertake" fr="435" ag="nehmen" fa="s" />
+  <verb in="unter*richten" tn="teach, instruct" fr="682" fa="w" />
+  <verb in="unter*sch^ei^den" tn="distinguish" fr="197" ag="bleiben" fa="s" />
+  <verb in="unter*schr^ei^ben" tn="sign" fr="794" ag="bleiben" fa="s" />
+  <verb in="unter*stellen" tn="subordinate, shelter" fr="924" fa="w" />
+  <verb in="unter*str^eich^en" tn="underline, emphasize" fr="685" ag="streichen" fa="s" />
   <verb in="unter*stützen" tn="support" fr="60" fa="w" />
-  <verb in="unter*sch^ei^den" tn="distinguish" fr="198" ag="bleiben" fa="s" />
-  <verb in="unter*zeichnen" tn="sign" fr="876" fa="w" />
-  <verb in="unter*z^ieh^en" tn="undergo, subject" fr="986" ag="ziehen" fa="s" />
-  <verb in="verändern" tn="change" fr="164" fa="w" />
-  <verb in="ver*abschieden" tn="say goodbye, pass" fr="488" fa="w" />
-  <verb in="ver*anlassen" tn="cause, arrange" fr="840" fa="w" />
-  <verb in="ver*ankern" tn="anchor" fr="874" fa="w" />
-  <verb in="ver*anstalten" tn="organize, hold" fr="545" fa="w" />
-  <verb in="ver*arbeiten" tn="process" fr="355" fa="w" />
-  <verb in="variieren" tn="vary" fr="754" fa="i" />
-  <verb in="ver*bauen" tn="build in, block" fr="755" fa="w" />
-  <verb in="ver*b^e^rgen" tn="hide, conceal" fr="621" ag="sprechen" fa="s" />
-  <verb in="ver*bessern" tn="improve" fr="171" fa="w" />
+  <verb in="unter*suchen" tn="examine" fr="267" fa="w" />
+  <verb in="unter*zeichnen" tn="sign" fr="865" fa="w" />
+  <verb in="unter*z^ieh^en" tn="undergo, subject" fr="974" ag="ziehen" fa="s" />
+  <verb in="variieren" tn="vary" fr="743" fa="i" />
+  <verb in="ver*abschieden" tn="say goodbye, pass" fr="482" fa="w" />
+  <verb in="verändern" tn="change" fr="163" fa="w" />
+  <verb in="ver*ankern" tn="anchor" fr="863" fa="w" />
+  <verb in="ver*anlassen" tn="cause, arrange" fr="829" fa="w" />
+  <verb in="ver*anstalten" tn="organize, hold" fr="539" fa="w" />
+  <verb in="ver*arbeiten" tn="process" fr="351" fa="w" />
+  <verb in="ver*bauen" tn="build in, block" fr="744" fa="w" />
+  <verb in="ver*b^e^rgen" tn="hide, conceal" fr="612" ag="sprechen" fa="s" />
+  <verb in="ver*bessern" tn="improve" fr="170" fa="w" />
+  <verb in="ver*b^ie^ten" tn="forbid" fr="395" ag="bieten" fa="s" />
   <verb in="ver*b^i^nden" tn="connect" fr="102" ag="finden" fa="s" />
-  <verb in="ver*bl^ei^ben" tn="remain" ay="s" fr="854" ag="bleiben" fa="s" />
-  <verb in="ver*brauchen" tn="consume, use up" fr="763" fa="w" />
-  <verb in="ver*breiten" tn="spread" fr="394" fa="w" />
-  <verb in="ver*br^e^nnen" tn="burn" fr="862" ag="kennen" fa="m" />
-  <verb in="ver*br^ing^en" tn="spend (time)" fr="380" ag="bringen" fa="m" />
-  <verb in="vereinbaren" tn="agree, arrange" fr="436" fa="w" />
-  <verb in="ver*einfachen" tn="simplify" fr="887" fa="w" />
-  <verb in="ver*einen" tn="unite" fr="551" fa="w" />
-  <verb in="ver*danken" tn="owe, be indebted" fr="781" fa="w" />
-  <verb in="ver*deutlichen" tn="clarify, illustrate" fr="795" fa="w" />
-  <verb in="verdienen" tn="earn, deserve" fr="245" fa="w" />
-  <verb in="ver*folgen" tn="pursue, persecute" fr="244" fa="w" />
-  <verb in="ver*fassen" tn="write, compose" fr="561" fa="w" />
+  <verb in="ver*bl^ei^ben" tn="remain" ay="s" fr="843" ag="bleiben" fa="s" />
+  <verb in="ver*brauchen" tn="consume, use up" fr="752" fa="w" />
+  <verb in="ver*breiten" tn="spread" fr="388" fa="w" />
+  <verb in="ver*br^e^nnen" tn="burn" fr="851" ag="kennen" fa="m" />
+  <verb in="ver*br^ing^en" tn="spend (time)" fr="375" ag="bringen" fa="m" />
+  <verb in="ver*danken" tn="owe, be indebted" fr="770" fa="w" />
+  <verb in="ver*deutlichen" tn="clarify, illustrate" fr="784" fa="w" />
+  <verb in="verdienen" tn="earn, deserve" fr="243" fa="w" />
+  <verb in="vereinbaren" tn="agree, arrange" fr="430" fa="w" />
+  <verb in="ver*einen" tn="unite" fr="545" fa="w" />
+  <verb in="ver*einfachen" tn="simplify" fr="876" fa="w" />
+  <verb in="ver*fassen" tn="write, compose" fr="554" fa="w" />
+  <verb in="ver*folgen" tn="pursue, persecute" fr="242" fa="w" />
   <verb in="ver*fügen" tn="have at disposal" fr="130" fa="w" />
-  <verb in="ver*g^e^ben" tn="forgive, award" fr="393" ag="geben" fa="s" />
-  <verb in="ver*g^e^ssen" tn="forget" fr="183" ag="geben" fa="s" />
-  <verb in="ver*g^eh^en" tn="pass, fade" ay="s" fr="639" ag="gehen" fa="s" />
-  <verb in="ver*gl^ei^chen" tn="compare" fr="267" ag="bleiben" fa="s" />
-  <verb in="ver*größern" tn="enlarge, increase" fr="814" fa="w" />
-  <verb in="ver*handeln" tn="negotiate" fr="943" fa="w" />
-  <verb in="ver*h^a^lten" tn="behave" fr="489" ag="halten" fa="s" />
-  <verb in="ver*heiraten" tn="marry (someone)" fr="938" fa="w" />
-  <verb in="ver*hindern" tn="prevent" fr="177" fa="w" />
-  <verb in="ver*kaufen" tn="sell" fr="150" fa="w" />
-  <verb in="ver*knüpfen" tn="link, connect" fr="713" fa="w" />
-  <verb in="ver*künden" tn="announce, proclaim" fr="700" fa="w" />
-  <verb in="ver*kürzen" tn="shorten, reduce" fr="898" fa="w" />
-  <verb in="ver*l^a^ssen" tn="leave" fr="153" ag="lassen" fa="s" />
-  <verb in="verlangen" tn="demand, require" fr="262" fa="w" />
-  <verb in="ver*längern" tn="extend, prolong" fr="519" fa="w" />
-  <verb in="ver*legen" tn="move, publish" fr="574" fa="w" />
-  <verb in="ver*l^au^fen" tn="proceed, get lost" ay="s" fr="399" ag="laufen" fa="s" />
-  <verb in="ver*l^ei^hen" tn="lend, award" fr="316" ag="bleiben" fa="s" />
-  <verb in="verletzen" tn="injure, violate" fr="376" fa="w" />
-  <verb in="ver*lieben" tn="fall in love" fr="891" fa="w" />
+  <verb in="ver*g^e^ben" tn="forgive, award" fr="387" ag="geben" fa="s" />
+  <verb in="ver*g^eh^en" tn="pass, fade" ay="s" fr="630" ag="gehen" fa="s" />
+  <verb in="ver*g^e^ssen" tn="forget" fr="182" ag="geben" fa="s" />
+  <verb in="ver*gl^ei^chen" tn="compare" fr="265" ag="bleiben" fa="s" />
+  <verb in="ver*größern" tn="enlarge, increase" fr="803" fa="w" />
+  <verb in="ver*h^a^lten" tn="behave" fr="483" ag="halten" fa="s" />
+  <verb in="ver*handeln" tn="negotiate" fr="932" fa="w" />
+  <verb in="ver*heiraten" tn="marry (someone)" fr="927" fa="w" />
+  <verb in="ver*hindern" tn="prevent" fr="176" fa="w" />
+  <verb in="ver*kaufen" tn="sell" fr="149" fa="w" />
+  <verb in="ver*knüpfen" tn="link, connect" fr="703" fa="w" />
+  <verb in="ver*künden" tn="announce, proclaim" fr="690" fa="w" />
+  <verb in="ver*kürzen" tn="shorten, reduce" fr="887" fa="w" />
+  <verb in="verlangen" tn="demand, require" fr="260" fa="w" />
+  <verb in="ver*längern" tn="extend, prolong" fr="513" fa="w" />
+  <verb in="ver*l^a^ssen" tn="leave" fr="152" ag="lassen" fa="s" />
+  <verb in="ver*l^au^fen" tn="proceed, get lost" ay="s" fr="393" ag="laufen" fa="s" />
+  <verb in="ver*legen" tn="move, publish" fr="566" fa="w" />
+  <verb in="ver*l^ei^hen" tn="lend, award" fr="313" ag="bleiben" fa="s" />
+  <verb in="verletzen" tn="injure, violate" fr="371" fa="w" />
+  <verb in="ver*lieben" tn="fall in love" fr="880" fa="w" />
   <verb in="ver*l^ie^ren" tn="lose" fr="95" ag="verlieren" fa="s" />
-  <verb in="ver*m^ei^den" tn="avoid" fr="214" ag="bleiben" fa="s" />
-  <verb in="ver*missen" tn="miss" fr="782" fa="w" />
-  <verb in="vermitteln" tn="convey, mediate" fr="225" fa="w" />
-  <verb in="ver*m^ög^en" tn="be able to" fr="709" ag="mögen" fa="m" />
-  <verb in="ver*muten" tn="suspect, assume" fr="419" fa="w" />
-  <verb in="vernichten" tn="destroy, annihilate" fr="831" fa="w" />
+  <verb in="ver*m^ei^den" tn="avoid" fr="213" ag="bleiben" fa="s" />
+  <verb in="ver*missen" tn="miss" fr="771" fa="w" />
+  <verb in="vermitteln" tn="convey, mediate" fr="224" fa="w" />
+  <verb in="ver*m^ög^en" tn="be able to" fr="699" ag="mögen" fa="m" />
+  <verb in="ver*muten" tn="suspect, assume" fr="413" fa="w" />
+  <verb in="vernichten" tn="destroy, annihilate" fr="820" fa="w" />
   <verb in="ver*öffentlichen" tn="publish" fr="132" fa="w" />
-  <verb in="verpflichten" tn="obligate" fr="298" fa="w" />
-  <verb in="ver*passen" tn="miss" fr="503" fa="w" />
-  <verb in="ver*r^a^ten" tn="betray, reveal" fr="460" ag="halten" fa="s" />
-  <verb in="ver*ringern" tn="reduce, decrease" fr="573" fa="w" />
-  <verb in="ver*sammeln" tn="assemble, gather" fr="869" fa="w" />
-  <verb in="ver*sch^ie^ben" tn="postpone, shift" fr="462" ag="bieten" fa="s" />
-  <verb in="ver*schenken" tn="give away" fr="981" fa="w" />
-  <verb in="ver*schicken" tn="send, ship" fr="892" fa="w" />
-  <verb in="ver*schl^ie^ßen" tn="lock, close" fr="893" ag="schließen" fa="s" />
-  <verb in="ver*schw^i^nden" tn="disappear" ay="s" fr="284" ag="finden" fa="s" />
-  <verb in="versorgen" tn="supply, provide" fr="366" fa="w" />
-  <verb in="ver*st^o^ßen" tn="violate, expel" fr="824" ag="stoßen" fa="s" />
-  <verb in="ver*s^e^hen" tn="equip, make mistake" fr="482" ag="sehen" fa="s" />
-  <verb in="ver*setzen" tn="transfer, move" fr="580" fa="w" />
-  <verb in="ver*sichern" tn="insure, assure" fr="679" fa="w" />
-  <verb in="ver*senden" tn="send, dispatch" fr="746" fa="w" />
-  <verb in="ver*spr^e^chen" tn="promise" fr="320" ag="sprechen" fa="s" />
-  <verb in="ver*stärken" tn="strengthen, reinforce" fr="490" fa="w" />
-  <verb in="ver*stecken" tn="hide" fr="541" fa="w" />
-  <verb in="ver*st^e^rben" tn="pass away" ay="s" fr="835" ag="sterben" fa="s" />
+  <verb in="ver*passen" tn="miss" fr="497" fa="w" />
+  <verb in="verpflichten" tn="obligate" fr="295" fa="w" />
+  <verb in="ver*r^a^ten" tn="betray, reveal" fr="454" ag="halten" fa="s" />
+  <verb in="ver*ringern" tn="reduce, decrease" fr="565" fa="w" />
+  <verb in="ver*sammeln" tn="assemble, gather" fr="858" fa="w" />
+  <verb in="ver*schaffen" tn="procure, obtain" fr="532" fa="w" />
+  <verb in="ver*schenken" tn="give away" fr="970" fa="w" />
+  <verb in="ver*schicken" tn="send, ship" fr="881" fa="w" />
+  <verb in="ver*sch^ie^ben" tn="postpone, shift" fr="456" ag="bieten" fa="s" />
+  <verb in="ver*schl^ie^ßen" tn="lock, close" fr="882" ag="schließen" fa="s" />
+  <verb in="ver*schw^i^nden" tn="disappear" ay="s" fr="281" ag="finden" fa="s" />
+  <verb in="ver*s^e^hen" tn="equip, make mistake" fr="476" ag="sehen" fa="s" />
+  <verb in="ver*senden" tn="send, dispatch" fr="735" fa="w" />
+  <verb in="ver*setzen" tn="transfer, move" fr="572" fa="w" />
+  <verb in="ver*sichern" tn="insure, assure" fr="670" fa="w" />
+  <verb in="versorgen" tn="supply, provide" fr="361" fa="w" />
+  <verb in="ver*spr^e^chen" tn="promise" fr="317" ag="sprechen" fa="s" />
+  <verb in="ver*stärken" tn="strengthen, reinforce" fr="484" fa="w" />
+  <verb in="ver*stecken" tn="hide" fr="535" fa="w" />
   <verb in="ver*st^eh^en" tn="understand" fr="64" ag="stehen" fa="s" />
+  <verb in="ver*st^e^rben" tn="pass away" ay="s" fr="824" ag="sterben" fa="s" />
+  <verb in="ver*st^o^ßen" tn="violate, expel" fr="813" ag="stoßen" fa="s" />
   <verb in="ver*suchen" tn="try, attempt" fr="68" fa="w" />
-  <verb in="ver*teilen" tn="distribute" fr="283" fa="w" />
-  <verb in="ver*teidigen" tn="defend" fr="577" fa="w" />
-  <verb in="ver*tiefen" tn="deepen, intensify" fr="842" fa="w" />
-  <verb in="ver*tr^a^gen" tn="tolerate, stand" fr="918" ag="tragen" fa="s" />
-  <verb in="ver*tr^ei^ben" tn="drive out, distribute" fr="638" ag="bleiben" fa="s" />
-  <verb in="ver*tr^et^en" tn="represent" fr="235" ag="treten" fa="s" />
-  <verb in="ver*trauen" tn="trust" fr="536" fa="w" />
-  <verb in="ver*urteilen" tn="condemn, sentence" fr="562" fa="w" />
-  <verb in="ver*walten" tn="manage, administer" fr="590" fa="w" />
-  <verb in="ver*wandeln" tn="transform" fr="509" fa="w" />
-  <verb in="ver*ursachen" tn="cause" fr="337" fa="w" />
-  <verb in="ver*b^ie^ten" tn="forbid" fr="401" ag="bieten" fa="s" />
+  <verb in="ver*teidigen" tn="defend" fr="569" fa="w" />
+  <verb in="ver*teilen" tn="distribute" fr="280" fa="w" />
+  <verb in="ver*tiefen" tn="deepen, intensify" fr="831" fa="w" />
+  <verb in="ver*tr^a^gen" tn="tolerate, stand" fr="907" ag="tragen" fa="s" />
+  <verb in="ver*trauen" tn="trust" fr="530" fa="w" />
+  <verb in="ver*tr^ei^ben" tn="drive out, distribute" fr="629" ag="bleiben" fa="s" />
+  <verb in="ver*tr^et^en" tn="represent" fr="233" ag="treten" fa="s" />
+  <verb in="ver*ursachen" tn="cause" fr="334" fa="w" />
+  <verb in="ver*urteilen" tn="condemn, sentence" fr="555" fa="w" />
+  <verb in="ver*walten" tn="manage, administer" fr="582" fa="w" />
+  <verb in="ver*wandeln" tn="transform" fr="503" fa="w" />
+  <verb in="ver*weigern" tn="refuse, deny" fr="754" fa="w" />
+  <verb in="ver*w^ei^sen" tn="refer, expel" fr="384" ag="weisen" fa="s" />
   <verb in="verwenden" tn="use, employ" fr="50" fa="w" />
-  <verb in="ver*weigern" tn="refuse, deny" fr="765" fa="w" />
-  <verb in="ver*w^ei^sen" tn="refer, expel" fr="389" ag="weisen" fa="s" />
-  <verb in="ver*wirklichen" tn="realize, implement" fr="787" fa="w" />
-  <verb in="ver*wöhnen" tn="spoil, pamper" fr="913" fa="w" />
-  <verb in="ver*zeichnen" tn="record, show" fr="617" fa="w" />
-  <verb in="verzichten" tn="renounce, do without" fr="242" fa="w" />
-  <verb in="voll*z^ieh^en" tn="carry out, perform" fr="808" ag="ziehen" fa="s" />
-  <verb in="vor+an+tr^ei^ben" tn="advance, push forward" fr="828" ag="bleiben" fa="s" />
-  <verb in="vor+aus+setzen" tn="presuppose, require" fr="848" fa="w" />
-  <verb in="vor+bereiten" tn="prepare" fr="278" fa="w" />
-  <verb in="vor+beugen" tn="prevent, lean forward" fr="975" fa="w" />
-  <verb in="vor+g^e^ben" tn="pretend, specify" fr="956" ag="geben" fa="s" />
-  <verb in="vor+g^eh^en" tn="proceed, take action" ay="s" fr="692" ag="gehen" fa="s" />
-  <verb in="vor+k^om^men" tn="occur, seem" ay="s" fr="508" ag="kommen" fa="s" />
-  <verb in="vor+legen" tn="present, submit" fr="522" fa="w" />
-  <verb in="vor+l^ie^gen" tn="be present, exist" fr="385" ag="liegen" fa="s" />
-  <verb in="vor+n^ehm^en" tn="carry out, undertake" fr="276" ag="nehmen" fa="s" />
-  <verb in="vor+s^e^hen" tn="provide for, plan" fr="402" ag="sehen" fa="s" />
-  <verb in="vor+schl^a^gen" tn="suggest" fr="671" ag="schlagen" fa="s" />
-  <verb in="vor+schr^ei^ben" tn="prescribe, dictate" fr="994" ag="bleiben" fa="s" />
+  <verb in="ver*wirklichen" tn="realize, implement" fr="776" fa="w" />
+  <verb in="ver*wöhnen" tn="spoil, pamper" fr="902" fa="w" />
+  <verb in="ver*zeichnen" tn="record, show" fr="608" fa="w" />
+  <verb in="verzichten" tn="renounce, do without" fr="240" fa="w" />
+  <verb in="voll*z^ieh^en" tn="carry out, perform" fr="797" ag="ziehen" fa="s" />
+  <verb in="vor+an+tr^ei^ben" tn="advance, push forward" fr="817" ag="bleiben" fa="s" />
+  <verb in="vor+aus+setzen" tn="presuppose, require" fr="837" fa="w" />
+  <verb in="vor+bereiten" tn="prepare" fr="275" fa="w" />
+  <verb in="vor+beugen" tn="prevent, lean forward" fr="964" fa="w" />
+  <verb in="vor+g^e^ben" tn="pretend, specify" fr="945" ag="geben" fa="s" />
+  <verb in="vor+g^eh^en" tn="proceed, take action" ay="s" fr="683" ag="gehen" fa="s" />
+  <verb in="vor+k^om^men" tn="occur, seem" ay="s" fr="502" ag="kommen" fa="s" />
+  <verb in="vor+legen" tn="present, submit" fr="516" fa="w" />
+  <verb in="vor+l^ie^gen" tn="be present, exist" fr="380" ag="liegen" fa="s" />
+  <verb in="vor+n^ehm^en" tn="carry out, undertake" fr="274" ag="nehmen" fa="s" />
+  <verb in="vor+schl^a^gen" tn="suggest" fr="662" ag="schlagen" fa="s" />
+  <verb in="vor+schr^ei^ben" tn="prescribe, dictate" fr="982" ag="bleiben" fa="s" />
+  <verb in="vor+s^e^hen" tn="provide for, plan" fr="396" ag="sehen" fa="s" />
   <verb in="vorstellen" tn="introduce, imagine" fr="115" fa="w" />
-  <verb in="w^a^chsen" tn="grow" ay="s" fr="175" ag="wachsen" fa="s" />
-  <verb in="wagen" tn="dare, risk" fr="504" fa="w" />
-  <verb in="währen" tn="last" fr="877" fa="w" />
+  <verb in="w^a^chsen" tn="grow" ay="s" fr="174" ag="wachsen" fa="s" />
+  <verb in="wagen" tn="dare, risk" fr="498" fa="w" />
   <verb in="wählen" tn="choose, elect" fr="86" fa="w" />
-  <verb in="wandeln" tn="change, walk" fr="794" fa="w" />
-  <verb in="wandern" tn="hike, migrate" ay="s" fr="479" fa="w" />
-  <verb in="warnen" tn="warn" fr="492" fa="w" />
-  <verb in="w^a^schen" tn="wash" fr="546" ag="wachsen" fa="s" />
-  <verb in="wahr+n^ehm^en" tn="perceive" fr="351" ag="nehmen" fa="s" />
+  <verb in="währen" tn="last" fr="866" fa="w" />
+  <verb in="wahr+n^ehm^en" tn="perceive" fr="347" ag="nehmen" fa="s" />
+  <verb in="wandeln" tn="change, walk" fr="783" fa="w" />
+  <verb in="wandern" tn="hike, migrate" ay="s" fr="473" fa="w" />
+  <verb in="warnen" tn="warn" fr="486" fa="w" />
   <verb in="warten" tn="wait" fr="118" fa="w" />
-  <verb in="wechseln" tn="change, switch" fr="215" fa="w" />
-  <verb in="wecken" tn="wake, arouse" fr="557" fa="w" />
-  <verb in="wehren" tn="defend, resist" fr="783" fa="w" />
-  <verb in="w^eich^en" tn="yield, give way" ay="s" fr="811" ag="streichen" fa="s" />
-  <verb in="weinen" tn="cry" fr="860" fa="w" />
-  <verb in="w^ei^sen" tn="point, show" fr="184" ag="weisen" fa="s" />
-  <verb in="weißen" tn="whitewash" fr="666" fa="w" />
-  <verb in="weiter+entwickeln" tn="develop further" fr="625" fa="w" />
-  <verb in="weiter+g^e^ben" tn="pass on" fr="637" ag="geben" fa="s" />
-  <verb in="weiter+g^eh^en" tn="continue, go on" ay="s" fr="764" ag="gehen" fa="s" />
-  <verb in="weiter+leiten" tn="forward, pass on" fr="959" fa="w" />
-  <verb in="weiter+l^e^sen" tn="continue reading" fr="453" ag="sehen" fa="s" />
-  <verb in="wieder*holen" tn="repeat" fr="474" fa="w" />
-  <verb in="wieder+g^e^ben" tn="reproduce, return" fr="966" ag="geben" fa="s" />
-  <verb in="wenden" tn="turn" fr="222" fa="w" />
-  <verb in="w^e^rben" tn="advertise, recruit" fr="668" ag="sterben" fa="s" />
+  <verb in="w^a^schen" tn="wash" fr="540" ag="wachsen" fa="s" />
+  <verb in="wechseln" tn="change, switch" fr="214" fa="w" />
+  <verb in="wecken" tn="wake, arouse" fr="550" fa="w" />
+  <verb in="wehren" tn="defend, resist" fr="772" fa="w" />
+  <verb in="w^eich^en" tn="yield, give way" ay="s" fr="800" ag="streichen" fa="s" />
+  <verb in="weinen" tn="cry" fr="849" fa="w" />
+  <verb in="w^ei^sen" tn="point, show" fr="183" ag="weisen" fa="s" />
+  <verb in="weiter+entwickeln" tn="develop further" fr="616" fa="w" />
+  <verb in="weiter+g^e^ben" tn="pass on" fr="628" ag="geben" fa="s" />
+  <verb in="weiter+g^eh^en" tn="continue, go on" ay="s" fr="753" ag="gehen" fa="s" />
+  <verb in="weiter+leiten" tn="forward, pass on" fr="948" fa="w" />
+  <verb in="weiter+l^e^sen" tn="continue reading" fr="447" ag="sehen" fa="s" />
+  <verb in="weißen" tn="whitewash" fr="657" fa="w" />
+  <verb in="wenden" tn="turn" fr="221" fa="w" />
+  <verb in="w^e^rben" tn="advertise, recruit" fr="659" ag="sterben" fa="s" />
   <verb in="w^e^rden" tn="become" ay="s" fr="2" ag="werden" fa="s" />
-  <verb in="werten" tn="evaluate, rate" fr="778" fa="w" />
-  <verb in="w^e^rfen" tn="throw" fr="212" ag="werfen" fa="s" />
-  <verb in="wider*spr^e^chen" tn="contradict" fr="696" ag="sprechen" fa="s" />
-  <verb in="widmen" tn="dedicate" fr="348" fa="w" />
-  <verb in="w^ie^gen" tn="weigh" fr="870" ag="fliegen" fa="s" />
+  <verb in="w^e^rfen" tn="throw" fr="211" ag="werfen" fa="s" />
+  <verb in="werten" tn="evaluate, rate" fr="767" fa="w" />
+  <verb in="wider*spr^e^chen" tn="contradict" fr="687" ag="sprechen" fa="s" />
+  <verb in="widmen" tn="dedicate" fr="344" fa="w" />
+  <verb in="wieder+g^e^ben" tn="reproduce, return" fr="955" ag="geben" fa="s" />
+  <verb in="wieder*holen" tn="repeat" fr="468" fa="w" />
+  <verb in="w^ie^gen" tn="weigh" fr="859" ag="fliegen" fa="s" />
   <verb in="wirken" tn="have an effect, work" fr="88" fa="w" />
   <verb in="w^iss^en" tn="know" fr="25" ag="wissen" fa="m" />
-  <verb in="wohnen" tn="live, reside" fr="234" fa="w" />
+  <verb in="wohnen" tn="live, reside" fr="232" fa="w" />
   <verb in="w^oll^en" tn="want" fr="13" ag="wollen" fa="m" />
-  <verb in="wundern" tn="wonder, surprise" fr="611" fa="w" />
+  <verb in="wundern" tn="wonder, surprise" fr="602" fa="w" />
   <verb in="wünschen" tn="wish" fr="108" fa="w" />
-  <verb in="würdigen" tn="appreciate, honor" fr="830" fa="w" />
-  <verb in="zahlen" tn="pay" fr="197" fa="w" />
+  <verb in="würdigen" tn="appreciate, honor" fr="819" fa="w" />
   <verb in="zählen" tn="count" fr="116" fa="w" />
-  <verb in="zaubern" tn="conjure, do magic" fr="941" fa="w" />
-  <verb in="zeichnen" tn="draw" fr="252" fa="w" />
+  <verb in="zahlen" tn="pay" fr="196" fa="w" />
+  <verb in="zaubern" tn="conjure, do magic" fr="930" fa="w" />
+  <verb in="zeichnen" tn="draw" fr="250" fa="w" />
   <verb in="zeigen" tn="show" fr="21" fa="w" />
-  <verb in="zeugen" tn="testify, father" fr="903" fa="w" />
-  <verb in="zielen" tn="aim" fr="775" fa="w" />
-  <verb in="zitieren" tn="quote, cite" fr="612" fa="i" />
-  <verb in="zerstören" tn="destroy" fr="378" fa="w" />
+  <verb in="zerstören" tn="destroy" fr="373" fa="w" />
+  <verb in="zeugen" tn="testify, father" fr="892" fa="w" />
   <verb in="z^ieh^en" tn="pull, move" fr="53" ag="ziehen" fa="s" />
-  <verb in="zu+bereiten" tn="prepare (food)" fr="760" fa="w" />
-  <verb in="zu+g^e^ben" tn="admit" fr="793" ag="geben" fa="s" />
-  <verb in="zu+gr^eif^en" tn="access, seize" fr="723" ag="greifen" fa="s" />
-  <verb in="zu+k^om^men" tn="come to, befit" ay="s" fr="684" ag="kommen" fa="s" />
-  <verb in="zu+l^a^ssen" tn="allow, admit" fr="375" ag="lassen" fa="s" />
-  <verb in="zu+legen" tn="add, gain" fr="883" fa="w" />
-  <verb in="zu+n^ehm^en" tn="increase, gain weight" fr="762" ag="nehmen" fa="s" />
-  <verb in="zu+ordnen" tn="assign, classify" fr="535" fa="w" />
-  <verb in="zurück+führen" tn="trace back, return" fr="680" fa="w" />
-  <verb in="zurück+gr^eif^en" tn="fall back on" fr="739" ag="greifen" fa="s" />
-  <verb in="zurück+kehren" tn="return" ay="s" fr="569" fa="w" />
-  <verb in="zurück+z^ieh^en" tn="withdraw, pull back" fr="875" ag="ziehen" fa="s" />
-  <verb in="zusammen+arbeiten" tn="collaborate, cooperate" fr="772" fa="w" />
-  <verb in="zusammen+fassen" tn="summarize" fr="609" fa="w" />
-  <verb in="zusammen+stellen" tn="compile, put together" fr="576" fa="w" />
-  <verb in="zu+stimmen" tn="agree, consent" fr="660" fa="w" />
-  <verb in="zw^i^ngen" tn="force" fr="426" ag="singen" fa="s" />
+  <verb in="zielen" tn="aim" fr="764" fa="w" />
+  <verb in="zitieren" tn="quote, cite" fr="603" fa="i" />
+  <verb in="zu+bereiten" tn="prepare (food)" fr="749" fa="w" />
+  <verb in="zu+g^e^ben" tn="admit" fr="782" ag="geben" fa="s" />
+  <verb in="zu+gr^eif^en" tn="access, seize" fr="713" ag="greifen" fa="s" />
+  <verb in="zu+k^om^men" tn="come to, befit" ay="s" fr="675" ag="kommen" fa="s" />
+  <verb in="zu+l^a^ssen" tn="allow, admit" fr="370" ag="lassen" fa="s" />
+  <verb in="zu+legen" tn="add, gain" fr="872" fa="w" />
+  <verb in="zu+n^ehm^en" tn="increase, gain weight" fr="751" ag="nehmen" fa="s" />
+  <verb in="zu+ordnen" tn="assign, classify" fr="529" fa="w" />
+  <verb in="zurück+führen" tn="trace back, return" fr="671" fa="w" />
+  <verb in="zurück+gr^eif^en" tn="fall back on" fr="729" ag="greifen" fa="s" />
+  <verb in="zurück+kehren" tn="return" ay="s" fr="561" fa="w" />
+  <verb in="zurück+z^ieh^en" tn="withdraw, pull back" fr="864" ag="ziehen" fa="s" />
+  <verb in="zusammen+arbeiten" tn="collaborate, cooperate" fr="761" fa="w" />
+  <verb in="zusammen+fassen" tn="summarize" fr="600" fa="w" />
+  <verb in="zusammen+stellen" tn="compile, put together" fr="568" fa="w" />
+  <verb in="zu+stimmen" tn="agree, consent" fr="651" fa="w" />
+  <verb in="zw^i^ngen" tn="force" fr="420" ag="singen" fa="s" />
 </verbs>

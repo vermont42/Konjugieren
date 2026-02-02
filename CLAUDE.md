@@ -160,6 +160,9 @@ Konjugieren/
 │   ├── GetterSetter.swift      # Protocol for key-value storage abstraction
 │   ├── GetterSetterReal.swift  # UserDefaults implementation of GetterSetter
 │   ├── GetterSetterFake.swift  # In-memory dictionary implementation for tests
+│   ├── FatalError.swift        # Protocol for testable fatal error handling
+│   ├── FatalErrorReal.swift    # Production implementation (calls Swift.fatalError)
+│   ├── FatalErrorSpy.swift     # Test implementation (captures error messages)
 │   ├── GameCenter.swift        # Protocol for Game Center operations
 │   ├── GameCenterReal.swift    # Real GKLocalPlayer authentication and scores
 │   ├── GameCenterDummy.swift   # No-op implementation for tests/simulator
@@ -167,7 +170,6 @@ Konjugieren/
 │   ├── SoundPlayerReal.swift   # AVAudioPlayer implementation with debouncing
 │   ├── SoundPlayerDummy.swift  # No-op implementation for tests
 │   ├── TimeFormatter.swift     # Formats elapsed seconds as h:mm:ss
-│   ├── Fonts.swift             # Font constants for consistent typography
 │   ├── Layout.swift            # Spacing constants (8pt, 16pt, 24pt)
 │   ├── Modifiers.swift         # Custom ViewModifiers (headingLabel, funButton, etc.)
 │   ├── StringExtensions.swift  # Rich text markup parsing to RichTextBlock/TextSegment
@@ -190,6 +192,7 @@ KonjugierenTests/
 │   ├── ConjugatorTests.swift   # Comprehensive conjugation tests (~50 test functions)
 │   └── QuizTests.swift         # Quiz logic and scoring tests
 └── Utils/
+    ├── StringExtensionsTests.swift # Rich text parsing and error handling tests
     └── TimeFormatterTests.swift # Time formatting utility tests
 ```
 
@@ -397,6 +400,50 @@ Defines vowel/consonant changes for strong and mixed verbs:
 ```xml
 <ag e="sein" a="bin*,a1s|bist*,a2s|ist*,a3s|..." />
 ```
+
+### XML Validation with FatalError Protocol
+
+The XML parsers (`VerbParser.swift` and `AblautGroupParser.swift`) use an injectable `FatalError` protocol for validation failures. This enables testing while maintaining crash-early behavior in production.
+
+**The Pattern:**
+```swift
+protocol FatalError {
+  func fatalError(_ message: String)
+}
+
+struct FatalErrorReal: FatalError {
+  func fatalError(_ message: String) {
+    Swift.fatalError(message)  // Crashes in production
+  }
+}
+
+class FatalErrorSpy: FatalError {
+  private(set) var messages: [String] = []
+
+  func fatalError(_ message: String) {
+    messages.append(message)  // Captures for testing
+  }
+}
+```
+
+**Usage in Parsers:**
+- Injected via `World.fatalError` dependency
+- Production uses `FatalErrorReal` (crashes on invalid XML)
+- Tests use `FatalErrorSpy` (captures error messages for verification)
+
+**Rationale:**
+- XML files are **developer-controlled data**, not user input
+- Validation errors indicate bugs that must be fixed before shipping
+- Crash-early behavior prevents silent data corruption
+- Protocol injection enables comprehensive unit testing of error conditions
+
+**Common Validation Checks:**
+- Required attributes (infinitiv, translation, family, frequency, exemplar)
+- Valid enum codes (family: s/m/w/i, auxiliary: s/h)
+- Ablaut marker rules (^^ count, placement, and consistency with family)
+- Pattern format correctness in AblautGroups.xml
+
+**Important:** Do not change the production implementation to use throwing errors or optional returns. The crash-early behavior is intentional and ensures data integrity.
 
 ## The Ablaut System
 

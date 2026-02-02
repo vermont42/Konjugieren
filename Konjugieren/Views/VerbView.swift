@@ -37,6 +37,21 @@ struct VerbView: View {
             Label("#\(verb.frequency)", systemImage: verb.frequencyIcon)
           }
           .font(.subheadline)
+
+          if verb.prefix != .none || verb.ablautGroup != nil {
+            HStack(spacing: 16) {
+              if case .separable = verb.prefix {
+                Label(L.BrowseableFamily.separable, systemImage: "arrow.left.arrow.right")
+              } else if case .inseparable = verb.prefix {
+                Label(L.BrowseableFamily.inseparable, systemImage: "link")
+              }
+
+              if let ablautGroup = verb.ablautGroup {
+                Label(ablautGroup, systemImage: "figure.and.child.holdinghands")
+              }
+            }
+            .font(.subheadline)
+          }
         }
         .padding(.horizontal)
 

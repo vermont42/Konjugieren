@@ -33,6 +33,15 @@ struct Verb: Identifiable, Hashable, CustomStringConvertible {
     }
   }
 
+  var ablautGroup: String? {
+    switch family {
+    case .strong(let group, _, _), .mixed(let group, _, _):
+      return group
+    case .weak, .ieren:
+      return nil
+    }
+  }
+
   static func endingIsValid(infinitiv: String) -> Bool {
     ["en", "rn", "ln", "in", "un"].contains(String(infinitiv.suffix(2)))
   }

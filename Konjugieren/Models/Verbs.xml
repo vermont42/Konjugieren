@@ -134,7 +134,7 @@
   <verb in="aus+suchen" tn="choose, select" fr="736" fa="w" ic="wave" />
   <verb in="aus+tauschen" tn="exchange" fr="431" fa="w" ic="2" />
   <verb in="aus+tr^a^gen" tn="deliver, hold" fr="956" ag="tragen" fa="s" ic="handball" />
-  <verb in="aus+üben" tn="practice, exert" fr="564" fa="w" ic="skating" />
+  <verb in="aus+üben" tn="practice, exert" fr="564" fa="w" ic="roll.runningpace" />
   <verb in="auswählen" tn="select" fr="315" fa="w" ic="wave" />
   <verb in="aus+w^ei^sen" tn="identify, show" fr="931" ag="weisen" fa="s" ic="arms.open" />
   <verb in="aus+werten" tn="evaluate, analyze" fr="840" fa="w" ic="flexibility" />
@@ -547,7 +547,7 @@
   <verb in="kommentieren" tn="comment" fr="668" fa="i" ic="wave" />
   <verb in="kommunizieren" tn="communicate" fr="627" fa="i" ic="wave" />
   <verb in="konfrontieren" tn="confront" fr="741" fa="i" ic="walk.arrival" />
-  <verb in="k^önn^en" tn="can, be able to" fr="4" ag="können" fa="m" ic="strengthtraining.traditional" />
+  <verb in="k^önn^en" tn="can, be able to" fr="4" ag="können" fa="m" ic="roll" />
   <verb in="kontaktieren" tn="contact" fr="578" fa="i" ic="2" />
   <verb in="kontrollieren" tn="control, check" fr="415" fa="i" ic="walk.arrival" />
   <verb in="konzentrieren" tn="concentrate" fr="362" fa="i" ic="archery" />

@@ -41,7 +41,6 @@ struct FamilyRowView: View {
           .tableText()
         Text(family.shortDescription)
           .tableSubtext()
-          .lineLimit(2)
       }
 
       Spacer()

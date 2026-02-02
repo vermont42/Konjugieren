@@ -4,12 +4,6 @@
     "" : {
 
     },
-    "\"%@\"" : {
-
-    },
-    "*%@" : {
-
-    },
     "#%lld" : {
 
     },
@@ -94,6 +88,9 @@
       }
     },
     "%lld" : {
+
+    },
+    "• %@" : {
 
     },
     "🏴󠁧󠁢󠁥󠁮󠁧󠁿" : {
@@ -559,7 +556,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "~Inseparable-prefix~ verbs have prefixes that never detach from the verb stem. English equivalents include \"unfriend\" (un- never separates) or \"overcome\" (over- stays attached).\n\nThe eight inseparable prefixes are ~be-~, ~emp-~, ~ent-~, ~er-~, ~ge-~, ~miss-~, ~ver-~, and ~zer-~. Each carries a distinct meaning that modifies the base verb. For example, ~ver-~ often indicates completion or error: ~stehen~ (stand) → ~verstehen~ (understand).\n\nInseparable verbs form the ~Perfektpartizip~ without adding ~ge-~, since the prefix occupies that position. So ~verstehen~ becomes ~verstanden~, not ~geverstanden~.\n\nIn the table that follows, 🏴󠁧󠁢󠁥󠁮󠁧󠁿 represents English meaning, 🐎 represents Proto-Indo-European meaning, and * indicates a scholarly reconstruction."
+            "value" : "~Inseparable-prefix~ verbs have prefixes that never detach from the verb stem. English equivalents include \"unfriend\" (un- never separates) or \"overcome\" (over- stays attached).\n\nThe eight inseparable prefixes are ~be-~, ~emp-~, ~ent-~, ~er-~, ~ge-~, ~miss-~, ~ver-~, and ~zer-~. Each carries a distinct meaning that modifies the base verb. For example, ~ver-~ often indicates completion or error: ~stehen~ (stand) → ~verstehen~ (understand).\n\nInseparable verbs form the ~Perfektpartizip~ without adding ~ge-~, since the prefix occupies that position. So ~verstehen~ becomes ~verstanden~, not ~geverstanden~.\n\nIn the table that follows, 🏴󠁧󠁢󠁥󠁮󠁧󠁿 precedes the English meaning of a German prefix; 🐎 precedes the Proto-Indo-European root of that prefix and the root's meaning; and * precedes the scholarly reconstruction."
           }
         }
       }
@@ -589,7 +586,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "~Separable-prefix~ verbs have prefixes that detach from the verb in main clauses and move to the end of the sentence. English phrasal verbs work similarly: \"pick up\" → \"I pick the phone up\" or \"come in\" → \"Please come in\".\n\nIn German: ~ankommen~ (arrive) → ~Ich komme morgen an~ (I arrive tomorrow). The prefix ~an-~ moves to the end. In subordinate clauses, the prefix stays attached: ~...weil ich morgen ankomme~.\n\nSeparable verbs form the ~Perfektpartizip~ by inserting ~ge-~ between the prefix and stem: ~ankommen~ → ~angekommen~. This mirrors how the prefix separates in speech.\n\nIn the table that follows, 🏴󠁧󠁢󠁥󠁮󠁧󠁿 represents English meaning, 🐎 represents Proto-Indo-European meaning, and * indicates a scholarly reconstruction."
+            "value" : "~Separable-prefix~ verbs have prefixes that detach from the verb in main clauses and move to the end of the sentence. English phrasal verbs work similarly: \"pick up\" → \"I pick the phone up\" or \"come in\" → \"Please come in\".\n\nIn German: ~ankommen~ (arrive) → ~Ich komme morgen an~ (I arrive tomorrow). The prefix ~an-~ moves to the end. In subordinate clauses, the prefix stays attached: ~...weil ich morgen ankomme~.\n\nSeparable verbs form the ~Perfektpartizip~ by inserting ~ge-~ between the prefix and stem: ~ankommen~ → ~angekommen~. This mirrors how the prefix separates in speech.\n\nIn the table that follows, 🏴󠁧󠁢󠁥󠁮󠁧󠁿 precedes the English meaning of a German prefix; 🐎 precedes the Proto-Indo-European root of that prefix and the root's meaning; and * precedes the scholarly reconstruction."
           }
         }
       }

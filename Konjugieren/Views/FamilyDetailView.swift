@@ -82,10 +82,10 @@ struct PrefixHeaderView: View {
 
       HStack(spacing: 4) {
         Text("🐎")
-        Text("*\(prefix.pie.hasPrefix("*") ? String(prefix.pie.dropFirst()) : prefix.pie)")
+        Text(prefix.pie)
           .foregroundStyle(.customYellow)
           .italic()
-        Text("\"\(prefix.pieMeaning)\"")
+        Text("• \(prefix.pieMeaning)")
           .foregroundStyle(.customForeground)
       }
       .font(.subheadline)

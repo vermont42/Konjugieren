@@ -11,14 +11,16 @@ class World {
   var settings: Settings
   var gameCenter: GameCenter
   var soundPlayer: SoundPlayer
+  var fatalError: FatalError
   var verb: Verb?
   var family: String?
   var info: Info?
 
-  init(settings: Settings, gameCenter: GameCenter, soundPlayer: SoundPlayer) {
+  init(settings: Settings, gameCenter: GameCenter, soundPlayer: SoundPlayer, fatalError: FatalError) {
     self.settings = settings
     self.gameCenter = gameCenter
     self.soundPlayer = soundPlayer
+    self.fatalError = fatalError
   }
 
   static func chooseWorld() -> World {
@@ -36,17 +38,17 @@ class World {
 
   static let device: World = {
     let settings = Settings(getterSetter: GetterSetterReal())
-    return World(settings: settings, gameCenter: GameCenterReal(), soundPlayer: SoundPlayerReal())
+    return World(settings: settings, gameCenter: GameCenterReal(), soundPlayer: SoundPlayerReal(), fatalError: FatalErrorReal())
   }()
 
   static let simulator: World = {
     let settings = Settings(getterSetter: GetterSetterReal())
-    return World(settings: settings, gameCenter: GameCenterReal(), soundPlayer: SoundPlayerReal())
+    return World(settings: settings, gameCenter: GameCenterReal(), soundPlayer: SoundPlayerReal(), fatalError: FatalErrorReal())
   }()
 
   static let unitTest: World = {
     let settings = Settings(getterSetter: GetterSetterFake())
-    return World(settings: settings, gameCenter: GameCenterDummy(), soundPlayer: SoundPlayerDummy())
+    return World(settings: settings, gameCenter: GameCenterDummy(), soundPlayer: SoundPlayerDummy(), fatalError: FatalErrorSpy())
   }()
 
   func handleURL(_ url: URL) {

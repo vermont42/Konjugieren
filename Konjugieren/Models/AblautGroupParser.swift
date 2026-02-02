@@ -31,13 +31,13 @@ class AblautGroupParser: NSObject, XMLParserDelegate {
       if let exemplar = attributeDict["e"] {
         currentExemplar = exemplar
       } else {
-        fatalError("No exemplar specified.")
+        Current.fatalError.fatalError("No exemplar specified.")
       }
 
       if let ablauts = attributeDict["a"] {
         currentAblauts = ablauts
       } else {
-        fatalError("No ablauts specified.")
+        Current.fatalError.fatalError("No ablauts specified.")
       }
     }
   }

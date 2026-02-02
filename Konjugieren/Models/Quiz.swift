@@ -112,15 +112,15 @@ class Quiz {
 
     var items: [QuizItem] = []
 
-    items.append(makeQuizItem(verb: allVerbs.randomElement()!, conjugationgroup: .präsenspartizip))
+    items.append(makeQuizItem(verb: allVerbs.randomElement() ?? allVerbs[0], conjugationgroup: .präsenspartizip))
 
     for _ in 0..<2 {
-      items.append(makeQuizItem(verb: allVerbs.randomElement()!, conjugationgroup: .perfektpartizip))
+      items.append(makeQuizItem(verb: allVerbs.randomElement() ?? allVerbs[0], conjugationgroup: .perfektpartizip))
     }
 
     let remainingCount = Quiz.questionCount - 3
     for _ in 0..<remainingCount {
-      let verb = allVerbs.randomElement()!
+      let verb = allVerbs.randomElement() ?? allVerbs[0]
       let conjugationgroup = randomNonPartizipConjugationgroup()
       items.append(makeQuizItem(verb: verb, conjugationgroup: conjugationgroup))
     }
@@ -161,15 +161,15 @@ class Quiz {
       options.append { .futurKonjunktivII(self.randomPersonNumber()) }
     }
 
-    return options.randomElement()!()
+    return options.randomElement()?() ?? .präsensIndicativ(.firstSingular)
   }
 
   private func randomPersonNumber() -> PersonNumber {
-    PersonNumber.allCases.randomElement()!
+    PersonNumber.allCases.randomElement() ?? .firstSingular
   }
 
   private func randomImperativPersonNumber() -> PersonNumber {
-    PersonNumber.imperativPersonNumbers.randomElement()!
+    PersonNumber.imperativPersonNumbers.randomElement() ?? .secondSingular
   }
 
   private func startTimer() {

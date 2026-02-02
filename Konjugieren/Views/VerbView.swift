@@ -113,7 +113,7 @@ struct VerbView: View {
         return ConjugationRow(pronoun: "ihr", form: form)
       case .firstPlural, .thirdPlural:
         return ConjugationRow(pronoun: nil, form: form)
-      default:
+      case .firstSingular, .thirdSingular:
         return ConjugationRow(pronoun: personNumber.pronoun, form: form)
       }
     }

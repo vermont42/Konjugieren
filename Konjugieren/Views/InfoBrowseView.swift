@@ -41,7 +41,6 @@ struct InfoBrowseView: View {
         isPresented: $isPresentingInfo,
         onDismiss: {
           Current.info = nil
-          isPresentingInfo = false
         },
         content: {
           Current.info.map {
@@ -53,7 +52,6 @@ struct InfoBrowseView: View {
         isPresented: $isPresentingVerb,
         onDismiss: {
           Current.verb = nil
-          isPresentingVerb = false
         },
         content: {
           Current.verb.map {

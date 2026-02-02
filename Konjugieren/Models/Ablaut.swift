@@ -10,7 +10,7 @@ struct Ablaut: Hashable {
     let separator = ","
     let components = xmlString.components(separatedBy: separator)
     if components.count < 2 {
-      fatalError("Ablaut xmlString \(xmlString) lacked sufficient comma-separated components.")
+      Current.fatalError.fatalError("Ablaut xmlString \(xmlString) lacked sufficient comma-separated components.")
     }
     lettersToUse = components[0]
     appliesTo = []
@@ -95,7 +95,7 @@ struct Ablaut: Hashable {
           appliesTo.append(.imperativ($0))
         }
       default:
-        fatalError("Unrecognized Conjugationgroup \(conjugationgroup) was encountered.")
+        Current.fatalError.fatalError("Unrecognized Conjugationgroup \(conjugationgroup) was encountered.")
       }
     }
   }

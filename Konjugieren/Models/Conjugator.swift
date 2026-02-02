@@ -7,7 +7,8 @@ enum Conjugator {
     case .success(let conjugation):
       return conjugation
     case .failure(let error):
-      fatalError("Conjugation of \(infinitiv) for conjugationgroup \(conjugationgroup) resulted in error \(error).")
+      Current.fatalError.fatalError("Conjugation of \(infinitiv) for conjugationgroup \(conjugationgroup) resulted in error \(error).")
+      return ""
     }
   }
 

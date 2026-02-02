@@ -52,19 +52,19 @@ class VerbParser: NSObject, XMLParserDelegate {
           self.currentVerb = currentVerb
         }
       } else {
-        fatalError("No infinitive specified.")
+        Current.fatalError.fatalError("No infinitive specified.")
       }
 
       if let translation = attributeDict["tn"] {
         currentTranslation = translation
       } else {
-        fatalError("No translation specified.")
+        Current.fatalError.fatalError("No translation specified.")
       }
 
       if let family = attributeDict["fa"] {
         currentFamily = family
       } else {
-        fatalError("No family specified.")
+        Current.fatalError.fatalError("No family specified.")
       }
 
       if let ablautGroup = attributeDict["ag"] {
@@ -81,7 +81,7 @@ class VerbParser: NSObject, XMLParserDelegate {
       {
         currentFrequency = frequencyInt
       } else {
-        fatalError("No frequency specified.")
+        Current.fatalError.fatalError("No frequency specified.")
       }
 
       if let iconSuffix = attributeDict["ic"] {
@@ -96,7 +96,8 @@ class VerbParser: NSObject, XMLParserDelegate {
 
       if let currentAuxiliary = currentAuxiliary {
         guard let computedAuxiliary = Auxiliary(rawValue: currentAuxiliary) else {
-          fatalError("Invalid Auxiliary \(currentAuxiliary).")
+          Current.fatalError.fatalError("Invalid Auxiliary \(currentAuxiliary).")
+          return
         }
         auxiliary = computedAuxiliary
       } else {
@@ -104,21 +105,21 @@ class VerbParser: NSObject, XMLParserDelegate {
       }
 
       if ["w", "i"].contains(currentFamily) && currentAblautGroup != "" {
-        fatalError("Ablaut group \(currentAblautGroup) was provided for weak or ieren verb \(currentVerb).")
+        Current.fatalError.fatalError("Ablaut group \(currentAblautGroup) was provided for weak or ieren verb \(currentVerb).")
       }
       if ["s", "m"].contains(currentFamily) && currentAblautGroup == "" {
-        fatalError("No ablaut group was provided for strong or mixed verb \(currentVerb).")
+        Current.fatalError.fatalError("No ablaut group was provided for strong or mixed verb \(currentVerb).")
       }
 
       let caretCount = currentVerb.filter { $0 == "^" }.count
       if caretCount != 0 && caretCount != 2 {
-        fatalError("Verb \(currentVerb) has \(caretCount) carets but must have 0 or 2.")
+        Current.fatalError.fatalError("Verb \(currentVerb) has \(caretCount) carets but must have 0 or 2.")
       }
       if ["w", "i"].contains(currentFamily) && caretCount > 0 {
-        fatalError("Verb \(currentVerb) has carets but is weak or ieren.")
+        Current.fatalError.fatalError("Verb \(currentVerb) has carets but is weak or ieren.")
       }
       if ["s", "m"].contains(currentFamily) && caretCount != 2 {
-        fatalError("Strong or mixed verb \(currentVerb) must have exactly 2 carets.")
+        Current.fatalError.fatalError("Strong or mixed verb \(currentVerb) must have exactly 2 carets.")
       }
 
       if caretCount == 2 {
@@ -145,9 +146,11 @@ class VerbParser: NSObject, XMLParserDelegate {
       case "s":
         family = .strong(ablautGroup: currentAblautGroup, ablautStartIndex: currentAblautStartIndex, ablautEndIndex: currentAblautEndIndex)
       case "":
-        fatalError("No family was provided for \(currentVerb).")
+        Current.fatalError.fatalError("No family was provided for \(currentVerb).")
+        return
       default:
-        fatalError("Unrecognized family \(currentFamily) was provided for \(currentVerb).")
+        Current.fatalError.fatalError("Unrecognized family \(currentFamily) was provided for \(currentVerb).")
+        return
       }
 
       let frequencyIcon = currentIconSuffix.isEmpty ? "figure" : "figure.\(currentIconSuffix)"

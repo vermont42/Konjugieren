@@ -74,6 +74,10 @@ extension String {
       blocks.append(.body(segments))
     }
 
+    if inSubheading {
+      Current.fatalError.fatalError("Unterminated delimiter: `")
+    }
+
     return blocks
   }
 
@@ -158,6 +162,16 @@ extension String {
 
     if !currentText.isEmpty {
       segments.append(.plain(currentText))
+    }
+
+    if inBold {
+      Current.fatalError.fatalError("Unterminated delimiter: ~")
+    }
+    if inLink {
+      Current.fatalError.fatalError("Unterminated delimiter: %")
+    }
+    if inConjugation {
+      Current.fatalError.fatalError("Unterminated delimiter: $")
     }
 
     return segments

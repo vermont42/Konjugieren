@@ -75,7 +75,7 @@ struct PrefixHeaderView: View {
 
       HStack(spacing: 4) {
         Text("🏴󠁧󠁢󠁥󠁮󠁧󠁿")
-        Text(prefix.meaning)
+        Text(prefix.englishMeaning)
           .foregroundStyle(.customForeground)
       }
       .font(.subheadline)

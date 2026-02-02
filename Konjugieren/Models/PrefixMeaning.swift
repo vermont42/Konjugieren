@@ -2,40 +2,40 @@
 
 struct PrefixMeaning: Identifiable {
   let prefix: String
-  let meaning: String
+  let englishMeaning: String
   let pie: String
   let pieMeaning: String
 
   var id: String { prefix }
 
   static let separablePrefixes: [PrefixMeaning] = [
-    PrefixMeaning(prefix: "ab-", meaning: L.PrefixMeaning.ab, pie: "*h₂epó", pieMeaning: "off, away"),
-    PrefixMeaning(prefix: "an-", meaning: L.PrefixMeaning.an, pie: "*h₂en", pieMeaning: "on, onto"),
-    PrefixMeaning(prefix: "auf-", meaning: L.PrefixMeaning.auf, pie: "*upó", pieMeaning: "up, from below"),
-    PrefixMeaning(prefix: "aus-", meaning: L.PrefixMeaning.aus, pie: "*úd", pieMeaning: "upwards, away, out, outward"),
-    PrefixMeaning(prefix: "bei-", meaning: L.PrefixMeaning.bei, pie: "*h₁epi", pieMeaning: "on, at, near"),
-    PrefixMeaning(prefix: "ein-", meaning: L.PrefixMeaning.ein, pie: "*h₁én", pieMeaning: "in"),
-    PrefixMeaning(prefix: "fest-", meaning: L.PrefixMeaning.fest, pie: "*pastV", pieMeaning: "solid, stable"),
-    PrefixMeaning(prefix: "fort-", meaning: L.PrefixMeaning.fort, pie: "*per", pieMeaning: "to cross; across, before, in front"),
-    PrefixMeaning(prefix: "her-", meaning: L.PrefixMeaning.her, pie: "*ḱís", pieMeaning: "this (here)"),
-    PrefixMeaning(prefix: "hin-", meaning: L.PrefixMeaning.hin, pie: "*ḱís", pieMeaning: "this (here)"),
-    PrefixMeaning(prefix: "hoch-", meaning: L.PrefixMeaning.hoch, pie: "*kewk", pieMeaning: "to bend; crooked"),
-    PrefixMeaning(prefix: "mit-", meaning: L.PrefixMeaning.mit, pie: "*me", pieMeaning: "in the middle of, near, by, around, with"),
-    PrefixMeaning(prefix: "nach-", meaning: L.PrefixMeaning.nach, pie: "*h₂neḱ", pieMeaning: "to reach, attain"),
-    PrefixMeaning(prefix: "um-", meaning: L.PrefixMeaning.um, pie: "*h₂m̥bʰi", pieMeaning: "around, on either side of, about"),
-    PrefixMeaning(prefix: "vor-", meaning: L.PrefixMeaning.vor, pie: "*preh₂", pieMeaning: "before, in front"),
-    PrefixMeaning(prefix: "zu-", meaning: L.PrefixMeaning.zu, pie: "*doh₁", pieMeaning: "to"),
-    PrefixMeaning(prefix: "zurück-", meaning: L.PrefixMeaning.zurueck, pie: "*doh₁ + *(s)krewk", pieMeaning: "to + heap, hill; back, spine"),
-    PrefixMeaning(prefix: "zusammen-", meaning: L.PrefixMeaning.zusammen, pie: "*doh₁ + *sem", pieMeaning: "to + together, one")
+    PrefixMeaning(prefix: "ab-", englishMeaning: "off, away, down", pie: "*h₂epó", pieMeaning: L.PIEMeaning.ab),
+    PrefixMeaning(prefix: "an-", englishMeaning: "at, on, to", pie: "*h₂en", pieMeaning: L.PIEMeaning.an),
+    PrefixMeaning(prefix: "auf-", englishMeaning: "up, open, on", pie: "*upó", pieMeaning: L.PIEMeaning.auf),
+    PrefixMeaning(prefix: "aus-", englishMeaning: "out, from, off", pie: "*úd", pieMeaning: L.PIEMeaning.aus),
+    PrefixMeaning(prefix: "bei-", englishMeaning: "with, near, alongside", pie: "*h₁epi", pieMeaning: L.PIEMeaning.bei),
+    PrefixMeaning(prefix: "ein-", englishMeaning: "in, into", pie: "*h₁én", pieMeaning: L.PIEMeaning.ein),
+    PrefixMeaning(prefix: "fest-", englishMeaning: "firm, fixed, tight", pie: "*pastV", pieMeaning: L.PIEMeaning.fest),
+    PrefixMeaning(prefix: "fort-", englishMeaning: "away, onward, continuing", pie: "*per", pieMeaning: L.PIEMeaning.fort),
+    PrefixMeaning(prefix: "her-", englishMeaning: "toward speaker, hither", pie: "*ḱís", pieMeaning: L.PIEMeaning.her),
+    PrefixMeaning(prefix: "hin-", englishMeaning: "away from speaker, thither", pie: "*ḱís", pieMeaning: L.PIEMeaning.hin),
+    PrefixMeaning(prefix: "hoch-", englishMeaning: "up, high", pie: "*kewk", pieMeaning: L.PIEMeaning.hoch),
+    PrefixMeaning(prefix: "mit-", englishMeaning: "along, with, co-", pie: "*me", pieMeaning: L.PIEMeaning.mit),
+    PrefixMeaning(prefix: "nach-", englishMeaning: "after, following, re-", pie: "*h₂neḱ", pieMeaning: L.PIEMeaning.nach),
+    PrefixMeaning(prefix: "um-", englishMeaning: "around, over, re-", pie: "*h₂m̥bʰi", pieMeaning: L.PIEMeaning.um),
+    PrefixMeaning(prefix: "vor-", englishMeaning: "forward, before, pre-", pie: "*preh₂", pieMeaning: L.PIEMeaning.vor),
+    PrefixMeaning(prefix: "zu-", englishMeaning: "to, toward, closed", pie: "*doh₁", pieMeaning: L.PIEMeaning.zu),
+    PrefixMeaning(prefix: "zurück-", englishMeaning: "back, returning", pie: "*doh₁ + *(s)krewk", pieMeaning: L.PIEMeaning.zurueck),
+    PrefixMeaning(prefix: "zusammen-", englishMeaning: "together, combined", pie: "*doh₁ + *sem", pieMeaning: L.PIEMeaning.zusammen)
   ]
 
   static let inseparablePrefixes: [PrefixMeaning] = [
-    PrefixMeaning(prefix: "be-", meaning: L.PrefixMeaning.be, pie: "*h₁epi", pieMeaning: "on, at, near"),
-    PrefixMeaning(prefix: "emp-", meaning: L.PrefixMeaning.emp, pie: "*h₂ent-", pieMeaning: "face, forehead, front"),
-    PrefixMeaning(prefix: "ent-", meaning: L.PrefixMeaning.ent, pie: "*h₂ent-", pieMeaning: "face, forehead, front"),
-    PrefixMeaning(prefix: "er-", meaning: L.PrefixMeaning.er, pie: "*úd", pieMeaning: "upwards, away, out, outward"),
-    PrefixMeaning(prefix: "ge-", meaning: L.PrefixMeaning.ge, pie: "*ḱóm", pieMeaning: "beside, near, by, with"),
-    PrefixMeaning(prefix: "ver-", meaning: L.PrefixMeaning.ver, pie: "*per", pieMeaning: "before, in front, first"),
-    PrefixMeaning(prefix: "zer-", meaning: L.PrefixMeaning.zer, pie: "*dwís", pieMeaning: "twice, doubly, in two")
+    PrefixMeaning(prefix: "be-", englishMeaning: "makes verb transitive", pie: "*h₁epi", pieMeaning: L.PIEMeaning.be),
+    PrefixMeaning(prefix: "emp-", englishMeaning: "variant of ent- (receiving)", pie: "*h₂ent-", pieMeaning: L.PIEMeaning.emp),
+    PrefixMeaning(prefix: "ent-", englishMeaning: "away, un-, de-", pie: "*h₂ent-", pieMeaning: L.PIEMeaning.ent),
+    PrefixMeaning(prefix: "er-", englishMeaning: "achievement, completion", pie: "*úd", pieMeaning: L.PIEMeaning.er),
+    PrefixMeaning(prefix: "ge-", englishMeaning: "collective, completion (various)", pie: "*ḱóm", pieMeaning: L.PIEMeaning.ge),
+    PrefixMeaning(prefix: "ver-", englishMeaning: "away, wrongly, completion", pie: "*per", pieMeaning: L.PIEMeaning.ver),
+    PrefixMeaning(prefix: "zer-", englishMeaning: "to pieces, apart", pie: "*dwís", pieMeaning: L.PIEMeaning.zer)
   ]
 }

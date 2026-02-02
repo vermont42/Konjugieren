@@ -151,105 +151,105 @@ enum L {
     }
   }
 
-  enum PrefixMeaning {
+  enum PIEMeaning {
     static var ab: String {
-      String(localized: "PrefixMeaning.ab")
+      String(localized: "PIEMeaning.ab")
     }
 
     static var an: String {
-      String(localized: "PrefixMeaning.an")
+      String(localized: "PIEMeaning.an")
     }
 
     static var auf: String {
-      String(localized: "PrefixMeaning.auf")
+      String(localized: "PIEMeaning.auf")
     }
 
     static var aus: String {
-      String(localized: "PrefixMeaning.aus")
+      String(localized: "PIEMeaning.aus")
     }
 
     static var bei: String {
-      String(localized: "PrefixMeaning.bei")
-    }
-
-    static var ein: String {
-      String(localized: "PrefixMeaning.ein")
-    }
-
-    static var fest: String {
-      String(localized: "PrefixMeaning.fest")
-    }
-
-    static var fort: String {
-      String(localized: "PrefixMeaning.fort")
-    }
-
-    static var her: String {
-      String(localized: "PrefixMeaning.her")
-    }
-
-    static var hin: String {
-      String(localized: "PrefixMeaning.hin")
-    }
-
-    static var hoch: String {
-      String(localized: "PrefixMeaning.hoch")
-    }
-
-    static var mit: String {
-      String(localized: "PrefixMeaning.mit")
-    }
-
-    static var nach: String {
-      String(localized: "PrefixMeaning.nach")
-    }
-
-    static var um: String {
-      String(localized: "PrefixMeaning.um")
-    }
-
-    static var vor: String {
-      String(localized: "PrefixMeaning.vor")
-    }
-
-    static var zu: String {
-      String(localized: "PrefixMeaning.zu")
-    }
-
-    static var zurueck: String {
-      String(localized: "PrefixMeaning.zurueck")
-    }
-
-    static var zusammen: String {
-      String(localized: "PrefixMeaning.zusammen")
+      String(localized: "PIEMeaning.bei")
     }
 
     static var be: String {
-      String(localized: "PrefixMeaning.be")
+      String(localized: "PIEMeaning.be")
+    }
+
+    static var ein: String {
+      String(localized: "PIEMeaning.ein")
     }
 
     static var emp: String {
-      String(localized: "PrefixMeaning.emp")
+      String(localized: "PIEMeaning.emp")
     }
 
     static var ent: String {
-      String(localized: "PrefixMeaning.ent")
+      String(localized: "PIEMeaning.ent")
     }
 
     static var er: String {
-      String(localized: "PrefixMeaning.er")
+      String(localized: "PIEMeaning.er")
+    }
+
+    static var fest: String {
+      String(localized: "PIEMeaning.fest")
+    }
+
+    static var fort: String {
+      String(localized: "PIEMeaning.fort")
     }
 
     static var ge: String {
-      String(localized: "PrefixMeaning.ge")
+      String(localized: "PIEMeaning.ge")
+    }
+
+    static var her: String {
+      String(localized: "PIEMeaning.her")
+    }
+
+    static var hin: String {
+      String(localized: "PIEMeaning.hin")
+    }
+
+    static var hoch: String {
+      String(localized: "PIEMeaning.hoch")
+    }
+
+    static var mit: String {
+      String(localized: "PIEMeaning.mit")
+    }
+
+    static var nach: String {
+      String(localized: "PIEMeaning.nach")
+    }
+
+    static var um: String {
+      String(localized: "PIEMeaning.um")
     }
 
     static var ver: String {
-      String(localized: "PrefixMeaning.ver")
+      String(localized: "PIEMeaning.ver")
+    }
+
+    static var vor: String {
+      String(localized: "PIEMeaning.vor")
     }
 
     static var zer: String {
-      String(localized: "PrefixMeaning.zer")
+      String(localized: "PIEMeaning.zer")
+    }
+
+    static var zu: String {
+      String(localized: "PIEMeaning.zu")
+    }
+
+    static var zurueck: String {
+      String(localized: "PIEMeaning.zurueck")
+    }
+
+    static var zusammen: String {
+      String(localized: "PIEMeaning.zusammen")
     }
   }
 

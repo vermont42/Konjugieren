@@ -559,7 +559,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "~Inseparable-prefix~ verbs have prefixes that never detach from the verb stem. English equivalents include \"unfriend\" (un- never separates) or \"overcome\" (over- stays attached).\n\nThe eight inseparable prefixes are ~be-~, ~emp-~, ~ent-~, ~er-~, ~ge-~, ~miss-~, ~ver-~, and ~zer-~. Each carries a distinct meaning that modifies the base verb. For example, ~ver-~ often indicates completion or error: ~stehen~ (stand) → ~verstehen~ (understand).\n\nInseparable verbs form the ~Perfektpartizip~ without adding ~ge-~, since the prefix occupies that position. So ~verstehen~ becomes ~verstanden~, not ~geverstanden~."
+            "value" : "~Inseparable-prefix~ verbs have prefixes that never detach from the verb stem. English equivalents include \"unfriend\" (un- never separates) or \"overcome\" (over- stays attached).\n\nThe eight inseparable prefixes are ~be-~, ~emp-~, ~ent-~, ~er-~, ~ge-~, ~miss-~, ~ver-~, and ~zer-~. Each carries a distinct meaning that modifies the base verb. For example, ~ver-~ often indicates completion or error: ~stehen~ (stand) → ~verstehen~ (understand).\n\nInseparable verbs form the ~Perfektpartizip~ without adding ~ge-~, since the prefix occupies that position. So ~verstehen~ becomes ~verstanden~, not ~geverstanden~.\n\nIn the table that follows, 🏴󠁧󠁢󠁥󠁮󠁧󠁿 represents English meaning, 🐎 represents Proto-Indo-European meaning, and * indicates a scholarly reconstruction."
           }
         }
       }
@@ -589,7 +589,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "~Separable-prefix~ verbs have prefixes that detach from the verb in main clauses and move to the end of the sentence. English phrasal verbs work similarly: \"pick up\" → \"I pick the phone up\" or \"come in\" → \"Please come in\".\n\nIn German: ~ankommen~ (arrive) → ~Ich komme morgen an~ (I arrive tomorrow). The prefix ~an-~ moves to the end. In subordinate clauses, the prefix stays attached: ~...weil ich morgen ankomme~.\n\nSeparable verbs form the ~Perfektpartizip~ by inserting ~ge-~ between the prefix and stem: ~ankommen~ → ~angekommen~. This mirrors how the prefix separates in speech."
+            "value" : "~Separable-prefix~ verbs have prefixes that detach from the verb in main clauses and move to the end of the sentence. English phrasal verbs work similarly: \"pick up\" → \"I pick the phone up\" or \"come in\" → \"Please come in\".\n\nIn German: ~ankommen~ (arrive) → ~Ich komme morgen an~ (I arrive tomorrow). The prefix ~an-~ moves to the end. In subordinate clauses, the prefix stays attached: ~...weil ich morgen ankomme~.\n\nSeparable verbs form the ~Perfektpartizip~ by inserting ~ge-~ between the prefix and stem: ~ankommen~ → ~angekommen~. This mirrors how the prefix separates in speech.\n\nIn the table that follows, 🏴󠁧󠁢󠁥󠁮󠁧󠁿 represents English meaning, 🐎 represents Proto-Indo-European meaning, and * indicates a scholarly reconstruction."
           }
         }
       }
@@ -1490,285 +1490,402 @@
         }
       }
     },
-    "PrefixMeaning.ab" : {
+    "PIEMeaning.ab" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "weg, fort"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "off, away, down"
+            "value" : "off, away"
           }
         }
       }
     },
-    "PrefixMeaning.an" : {
+    "PIEMeaning.an" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "auf, darauf"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "at, on, to"
+            "value" : "on, onto"
           }
         }
       }
     },
-    "PrefixMeaning.auf" : {
+    "PIEMeaning.auf" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "aufwärts, von unten"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "up, open, on"
+            "value" : "up, from below"
           }
         }
       }
     },
-    "PrefixMeaning.aus" : {
+    "PIEMeaning.aus" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "aufwärts, weg, hinaus"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "out, from, off"
+            "value" : "upwards, away, out, outward"
           }
         }
       }
     },
-    "PrefixMeaning.be" : {
+    "PIEMeaning.be" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "auf, bei, nahe"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "makes verb transitive"
+            "value" : "on, at, near"
           }
         }
       }
     },
-    "PrefixMeaning.bei" : {
+    "PIEMeaning.bei" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "auf, bei, nahe"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "with, near, alongside"
+            "value" : "on, at, near"
           }
         }
       }
     },
-    "PrefixMeaning.ein" : {
+    "PIEMeaning.ein" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "hinein"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "in, into"
+            "value" : "in"
           }
         }
       }
     },
-    "PrefixMeaning.emp" : {
+    "PIEMeaning.emp" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gesicht, Stirn, Vorderseite"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "variant of ent- (receiving)"
+            "value" : "face, forehead, front"
           }
         }
       }
     },
-    "PrefixMeaning.ent" : {
+    "PIEMeaning.ent" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gesicht, Stirn, Vorderseite"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "away, un-, de-"
+            "value" : "face, forehead, front"
           }
         }
       }
     },
-    "PrefixMeaning.er" : {
+    "PIEMeaning.er" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "aufwärts, weg, hinaus"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "achievement, completion"
+            "value" : "upwards, away, out, outward"
           }
         }
       }
     },
-    "PrefixMeaning.fest" : {
+    "PIEMeaning.fest" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "fest, stabil"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "firm, fixed, tight"
+            "value" : "solid, stable"
           }
         }
       }
     },
-    "PrefixMeaning.fort" : {
+    "PIEMeaning.fort" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "überqueren; quer, vor, vorne"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "away, onward, continuing"
+            "value" : "to cross; across, before, in front"
           }
         }
       }
     },
-    "PrefixMeaning.ge" : {
+    "PIEMeaning.ge" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "neben, nahe, bei, mit"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "collective, completion (various)"
+            "value" : "beside, near, by, with"
           }
         }
       }
     },
-    "PrefixMeaning.her" : {
+    "PIEMeaning.her" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dies (hier)"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "toward speaker, hither"
+            "value" : "this (here)"
           }
         }
       }
     },
-    "PrefixMeaning.hin" : {
+    "PIEMeaning.hin" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dies (hier)"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "away from speaker, thither"
+            "value" : "this (here)"
           }
         }
       }
     },
-    "PrefixMeaning.hoch" : {
+    "PIEMeaning.hoch" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "biegen; krumm"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "up, high"
+            "value" : "to bend; crooked"
           }
         }
       }
     },
-    "PrefixMeaning.los" : {
-      "extractionState" : "stale",
+    "PIEMeaning.mit" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "in der Mitte von, nahe, bei, um, mit"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "loose, starting, off"
+            "value" : "in the middle of, near, by, around, with"
           }
         }
       }
     },
-    "PrefixMeaning.miss" : {
-      "extractionState" : "stale",
+    "PIEMeaning.nach" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "erreichen, erlangen"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "wrongly, mis-"
+            "value" : "to reach, attain"
           }
         }
       }
     },
-    "PrefixMeaning.mit" : {
+    "PIEMeaning.um" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "herum, auf beiden Seiten von, ungefähr"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "along, with, co-"
+            "value" : "around, on either side of, about"
           }
         }
       }
     },
-    "PrefixMeaning.nach" : {
+    "PIEMeaning.ver" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "vor, vorne, zuerst"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "after, following, re-"
+            "value" : "before, in front, first"
           }
         }
       }
     },
-    "PrefixMeaning.um" : {
+    "PIEMeaning.vor" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "vor, vorne"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "around, over, re-"
+            "value" : "before, in front"
           }
         }
       }
     },
-    "PrefixMeaning.ver" : {
+    "PIEMeaning.zer" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "zweimal, doppelt, entzwei"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "away, wrongly, completion"
+            "value" : "twice, doubly, in two"
           }
         }
       }
     },
-    "PrefixMeaning.vor" : {
+    "PIEMeaning.zu" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "zu"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "forward, before, pre-"
+            "value" : "to"
           }
         }
       }
     },
-    "PrefixMeaning.weg" : {
-      "extractionState" : "stale",
+    "PIEMeaning.zurueck" : {
       "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "zu + Haufen, Hügel; Rücken"
+          }
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "away, gone"
+            "value" : "to + heap, hill; back, spine"
           }
         }
       }
     },
-    "PrefixMeaning.zer" : {
+    "PIEMeaning.zusammen" : {
       "localizations" : {
-        "en" : {
+        "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "to pieces, apart"
+            "value" : "zu + zusammen, eins"
           }
-        }
-      }
-    },
-    "PrefixMeaning.zu" : {
-      "localizations" : {
+        },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "to, toward, closed"
-          }
-        }
-      }
-    },
-    "PrefixMeaning.zurueck" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "back, returning"
-          }
-        }
-      }
-    },
-    "PrefixMeaning.zusammen" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "together, combined"
+            "value" : "to + together, one"
           }
         }
       }

@@ -3,9 +3,6 @@
 import SwiftUI
 
 struct InfoBrowseView: View {
-  @State private var isPresentingInfo = false
-  @State private var isPresentingVerb = false
-
   var body: some View {
     NavigationStack {
       ScrollView {
@@ -23,42 +20,12 @@ struct InfoBrowseView: View {
         }
       }
       .navigationTitle(L.Navigation.info)
-      .onChange(of: Current.info) { _, newInfo in
-        if newInfo == nil {
-          isPresentingInfo = false
-        } else {
-          isPresentingInfo = true
-        }
+      .sheet(item: Binding(get: { Current.info }, set: { Current.info = $0 })) { info in
+        InfoView(info: info, shouldShowInfoHeading: true)
       }
-      .onChange(of: Current.verb) { _, newVerb in
-        if newVerb == nil {
-          isPresentingVerb = false
-        } else {
-          isPresentingVerb = true
-        }
+      .sheet(item: Binding(get: { Current.verb }, set: { Current.verb = $0 })) { verb in
+        VerbView(verb: verb)
       }
-      .sheet(
-        isPresented: $isPresentingInfo,
-        onDismiss: {
-          Current.info = nil
-        },
-        content: {
-          Current.info.map {
-            InfoView(info: $0, shouldShowInfoHeading: true)
-          }
-        }
-      )
-      .sheet(
-        isPresented: $isPresentingVerb,
-        onDismiss: {
-          Current.verb = nil
-        },
-        content: {
-          Current.verb.map {
-            VerbView(verb: $0)
-          }
-        }
-      )
     }
   }
 }

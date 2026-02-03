@@ -2,7 +2,8 @@
 
 import Foundation
 
-struct Info: Hashable {
+struct Info: Hashable, Identifiable {
+  var id: String { heading }
   let heading: String
   let richTextBlocks: [RichTextBlock]
   let alwaysUsesGermanPronunciation: Bool

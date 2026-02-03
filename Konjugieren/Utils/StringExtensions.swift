@@ -121,7 +121,7 @@ extension String {
           if content.hasPrefix("http") {
             urlString = content
           } else {
-            urlString = content.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) ?? content
+            urlString = content.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? content
           }
           if let url = URL(string: urlString) {
             segments.append(.link(text: content, url: url))

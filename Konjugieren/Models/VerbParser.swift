@@ -52,13 +52,13 @@ class VerbParser: NSObject, XMLParserDelegate {
           self.currentVerb = currentVerb
         }
       } else {
-        Current.fatalError.fatalError("No infinitive specified.")
+        Current.fatalError.fatalError("No infinitive specified for verb at position \(Verb.verbs.count + 1).")
       }
 
       if let translation = attributeDict["tn"] {
         currentTranslation = translation
       } else {
-        Current.fatalError.fatalError("No translation specified.")
+        Current.fatalError.fatalError("No translation specified for verb '\(currentVerb)'.")
       }
 
       if let family = attributeDict["fa"] {
@@ -81,7 +81,7 @@ class VerbParser: NSObject, XMLParserDelegate {
       {
         currentFrequency = frequencyInt
       } else {
-        Current.fatalError.fatalError("No frequency specified.")
+        Current.fatalError.fatalError("No frequency specified for verb '\(currentVerb)'.")
       }
 
       if let iconSuffix = attributeDict["ic"] {

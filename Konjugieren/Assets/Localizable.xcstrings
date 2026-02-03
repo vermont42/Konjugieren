@@ -99,6 +99,666 @@
     "🐎" : {
 
     },
+    "AblautGroupInfo.beginnen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The i→a→o pattern: $begInnen$ → $begAnn$ → $begOnnen$. Related to gewinnen and gelingen."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.bieten" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The ie→o pattern: $bIEten$ → $bOt$ → $gebOten$. Shared by fliegen, schließen, verlieren, and more."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.bitten" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vowel plus consonant change: $bITTen$ → $bAT$ → $gebETen$. The doubled -tt- reduces in past forms."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.bleiben" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The ei→ie pattern throughout: $blEIben$ → $blIEb$ → $geblIEben$. A large, consistent family."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.bringen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A Rückumlaut verb: $brINGen$ → $brACHte$ → $gebrACHt$. The -ng- transforms to -ch- in past forms."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.dürfen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modal verb: $dARf$, $dARfst$ (Präsens), $dUrfte$ (Präteritum). No umlaut in singular present."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.empfehlen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Like sprechen: e→ie (Präsens 2s/3s), e→a (Präteritum), e→o (Perfektpartizip). $empfIEhlt$, $empfAhl$, $empfOhlen$."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.erscheinen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Like bleiben: ei→ie throughout. $erschEInen$ → $erschIEn$ → $erschIEnen$."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.essen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Highly irregular: $Isst$, $Aß$, $gegEssen$. The participle retains -ge- despite starting with a vowel."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.fahren" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The a→ä→u pattern: $fAhren$ → $fÄhrst$ → $fUhr$. Umlaut in Präsens 2s/3s, back vowel in Präteritum."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.fallen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pattern with umlaut and consonant: $fALLen$ → $fÄLLt$ → $fIEL$. The -ll- reduces to -l- in past tenses."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.fangen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The a→ä→i pattern: $fAngen$ → $fÄngst$ → $fIng$. Umlaut in Präsens, fronted vowel in Präteritum."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.finden" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The i→a→u pattern: $fInden$ → $fAnd$ → $gefUnden$. Shared by binden and verschwinden."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.fliegen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Like bieten: ie→o pattern. $flIEgen$ → $flOg$ → $geflOgen$."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.gebären" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unique pattern: $gebÄren$ → $gebIERt$ → $gebAR$ → $gebORen$. Four distinct vowels across conjugations."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.geben" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The largest group (19 verbs): e→i (Präsens 2s/3s), e→a (Präteritum). Includes lesen, sehen, vergessen."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.gehen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suppletive verb: $gEHen$ → $gING$ → $gegANGen$. The past forms derive from a different Germanic root."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.gelingen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Like singen: i→a→u pattern. $gelIngen$ → $gelAng$ → $gelUngen$. Uses sein as auxiliary."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.gelten" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Complex pattern: e→i (Präsens 2s/3s), e→a (Präteritum), e→o (Perfektpartizip). $gIlt$, $gAlt$, $gegOlten$."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.gewinnen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Like beginnen: i→a→o pattern. $gewInnen$ → $gewAnn$ → $gewOnnen$."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.greifen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consonant doubling: $greIFen$ → $grIFF$ → $gegrIFFen$. The -f- doubles in past forms."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.haben" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Essential auxiliary: $hAst$, $hAt$ (Präsens), $hATte$ (Präteritum). Irregular throughout but highly frequent."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.halten" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Umlaut plus ie: $hAlten$ → $hÄltst$ → $hIElt$. The past tense ie is distinctive."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.heben" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Like bieten: e→o pattern. $hEben$ → $hOb$ → $gehOben$."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.heißen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The ei→ie pattern: $heIßen$ → $hIEß$ → $gehEIßen$. Participle returns to original vowel."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.kennen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mixed verb: $kEnnen$ → $kAnnte$ → $gekAnnt$. Vowel change with weak -te/-t endings."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.kommen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simple o→a pattern: $kOmmen$ → $kAm$ → $gekOmmen$. High-frequency verb with many prefixed forms."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.können" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modal verb: $kAnn$, $kAnnst$ (Präsens), $kOnnte$ (Präteritum). No umlaut in singular present."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.laden" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Like fahren: a→ä→u pattern. $lAden$ → $lÄdst$ → $lUd$. Includes einladen."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.lassen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Umlaut plus ie: $lAssen$ → $lÄsst$ → $lIEß$. The -ss- appears in present, -ß- in past."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.laufen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diphthong to ie: $lAUfen$ → $lÄUfst$ → $lIEf$. The au→äu umlaut in Präsens 2s/3s."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.liegen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The ie→a→e pattern: $lIEgen$ → $lAg$ → $gelEgen$. Unusual participle vowel."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.mögen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modal verb: $mAG$, $mAGst$ (Präsens), $mOCHte$ (Präteritum). The g→ch change in past forms."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.müssen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modal verb: $mUsS$, $mUssT$ (Präsens), $mUsste$ (Präteritum). No umlaut throughout."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.nehmen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Complex pattern: $nEHmen$ → $nIMMt$ → $nAHM$ → $genOMMen$. Four distinct forms with consonant changes."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.reißen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consonant change: $reIßen$ → $rISS$ → $gerISSen$. The -ß- becomes -ss- in past forms."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.rufen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simple u→ie pattern: $rUfen$ → $rIEf$ → $gerUfen$. Participle returns to original vowel."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.schaffen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Strong \"create\": $schAFFen$ → $schUF$ → $geschAFFen$. Weak schaffen (\"manage\") is regular."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.schlafen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Umlaut plus ie: $schlAfen$ → $schlÄfst$ → $schlIEf$. Like halten and lassen."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.schlagen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Like fahren: a→ä→u pattern. $schlAgen$ → $schlÄgst$ → $schlUg$."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.schließen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Like bieten: ie→o pattern. $schlIEßen$ → $schlOss$ → $geschlOssen$."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.schneiden" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Like leiden: eid→itt. $schnEIDen$ → $schnITT$ → $geschnITTen$. Consonant doubles in past."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.schreien" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Contracted participle: $schrEIen$ → $schrIE$ → $geschrIEn$. The -en contracts to -n."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.schreiten" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Like schneiden: eit→itt. $schrEITen$ → $schrITT$ → $geschrITTen$."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.sehen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Like geben: e→ie (Präsens 2s/3s), e→a (Präteritum). $sIEht$, $sAh$, $gesEhen$."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.sein" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The ultimate suppletive verb. Combines two Proto-Germanic roots: *beuną (→$BIN$, $BIst$, $Ist$) and *wesaną (→sein, $WAR$, $geWEsen$)."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.singen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The classic i→a→u series: $sIngen$ → $sAng$ → $gesUngen$. English \"sing, sang, sung\" is nearly identical."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.sitzen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The i→a→e pattern: $sItzen$ → $sAß$ → $gesEssen$. Related to English \"sit, sat\"."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.sprechen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Classic pattern: e→i (Präsens 2s/3s), e→a (Präteritum), e→o (Perfektpartizip). $sprIcht$, $sprAch$, $gesprOchen$."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.stehen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suppletive-like: $stEHen$ → $stAND$ → $gestANDen$. The past forms use a different root."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.steigen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Like bleiben: ei→ie throughout. $stEIgen$ → $stIEg$ → $gestIEgen$."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.sterben" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Like sprechen: e→i (Präsens 2s/3s), e→a (Präteritum), e→o (Perfektpartizip). $stIrbt$, $stArb$, $gestOrben$."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.stoßen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Umlaut plus ie: $stOßen$ → $stÖßt$ → $stIEß$. Like halten and lassen."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.streichen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Like greifen: ei→i with consonant. $strEICHen$ → $strICH$ → $gestrICHen$."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.tragen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Like fahren: a→ä→u pattern. $trAgen$ → $trÄgst$ → $trUg$."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.treffen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Complex consonants: $trEFFen$ → $trIFFt$ → $trAF$ → $getrOFFen$. The -ff- changes throughout."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.treten" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Like bitten: vowel plus consonant. $trETen$ → $trITTst$ → $trAT$ → $geTRETen$."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.tun" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Highly irregular: $tUn$ → $tAT$ → $getAn$. One of German's oldest verbs with unique conjugation."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.verlieren" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Like bieten: ie→o pattern. $verlIEren$ → $verlOr$ → $verlOren$."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.wachsen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Like fahren: a→ä→u pattern. $wAchsen$ → $wÄchst$ → $wUchs$. Uses sein as auxiliary."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.weisen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Like bleiben: ei→ie throughout. $wEIsen$ → $wIEs$ → $gewIEsen$."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.werden" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Essential auxiliary: $wIrst$, $wIrD$ (Präsens), $wUrde$ (Präteritum), $gewOrden$. Used for future and passive."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.werfen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Like sprechen: e→i (Präsens 2s/3s), e→a (Präteritum), e→o (Perfektpartizip). $wIrft$, $wArf$, $gewOrfen$."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.wissen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modal-like verb: $wEIß$, $wEIßt$ (Präsens), $wUsste$ (Präteritum). Irregular singular present."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.wollen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modal verb: $wIlL$, $wIllst$ (Präsens). Irregular singular present, regular past."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.ziehen" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Consonant change: $zIEHen$ → $zOG$ → $gezOGen$. The -h- becomes -g- in past forms."
+          }
+        }
+      }
+    },
     "AudioFeedback.disable" : {
       "localizations" : {
         "de" : {
@@ -127,6 +787,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Enable"
+          }
+        }
+      }
+    },
+    "BrowseableFamily.ablaut" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ablaut"
           }
         }
       }
@@ -471,6 +1141,16 @@
         }
       }
     },
+    "FamilyBrowse.ablautShort" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vowel changes that signal tense in strong verbs."
+          }
+        }
+      }
+    },
     "FamilyBrowse.ierenShort" : {
       "localizations" : {
         "en" : {
@@ -537,6 +1217,16 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Regular verbs with -te past and -t participle. The most common pattern."
+          }
+        }
+      }
+    },
+    "FamilyDetail.ablautLong" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "~Ablaut~ (from German ~ab-~ \"off\" + ~Laut~ \"sound\") is the systematic vowel change inherited from Proto-Indo-European that distinguishes tenses in strong verbs. English preserves this pattern in verbs like ~sing, sang, sung~ and ~drive, drove, driven~.\n\nGerman has sixty-six distinct ablaut patterns, ranging from single verbs like ~sein~ (whose forms fuse two Proto-Germanic roots) to large families like ~geben~ with nineteen member verbs. Patterns include:\n\n🇩🇪 ~Simple vowel changes~: $sIngen$ → $sAng$ → $gesUngen$\n\n🇩🇪 ~Consonant changes~: $brIngen$ → $brAchte$ → $gebrAcht$ (the -ng- transforms to -ch-)\n\n🇩🇪 ~Suppletion~: ~sein~ combines two Proto-Germanic roots—*beuną (\"to become\") yielded ~bin~, ~bist~, ~ist~, while *wesaną (\"to be, dwell\") gave ~sein~, ~war~, ~gewesen~. Every Germanic language inherited this same suppletive paradigm.\n\nTap any group header to see its member verbs."
           }
         }
       }
@@ -968,7 +1658,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "`About`The ~Perfekt Konjunktiv I~ is German's primary conjugationgroup for reporting past events in indirect speech. While the Präsens Konjunktiv I reports what someone says or thinks in the present, the Perfekt Konjunktiv I reports what someone said ~happened~—completed actions viewed through the lens of reported speech.\n\nThis compound conjugationgroup combines:\n\n🇩🇪 The auxiliary verb (~haben~ or ~sein~) in Konjunktiv I conjugation\n🇩🇪 The ~Perfektpartizip~ (past participle) of the main verb\n\nThe result: \"Er sagte, er ~habe~ das Buch gelesen\" (He said he had read the book) or \"Sie berichtete, sie ~sei~ nach Berlin gefahren\" (She reported that she had gone to Berlin).\n\nThe Perfekt Konjunktiv I appears primarily in formal writing—journalism, academic prose, legal documents, and literary narration—where German maintains a careful distinction between what the writer asserts directly and what the writer reports others as having said.`Conjugation`The Perfekt Konjunktiv I is built from two components: the Konjunktiv I conjugation of the auxiliary and the Perfektpartizip.`Konjunktiv I Conjugations of Haben`The auxiliary ~haben~ in Konjunktiv I:\n\n🇩🇪 ich ~habe~ (I have — identical to indicative)\n🇩🇪 du ~habest~ (you have)\n🇩🇪 er/sie/es ~habe~ (he/she/it has)\n🇩🇪 wir ~haben~ (we have — identical to indicative)\n🇩🇪 ihr ~habet~ (you all have)\n🇩🇪 sie/Sie ~haben~ (they/you formal have — identical to indicative)\n\nNote that 1s, 1p, and 3p are identical to the indicative. In these cases, speakers often substitute Konjunktiv II conjugations (~hätte~) or the ~würde~ construction to maintain the subjunctive distinction.`Konjunktiv I Conjugations of sein`The auxiliary ~sein~ in Konjunktiv I:\n\n🇩🇪 ich ~sei~ (I be)\n🇩🇪 du ~seist~ / ~seiest~ (you be)\n🇩🇪 er/sie/es ~sei~ (he/she/it be)\n🇩🇪 wir ~seien~ (we be)\n🇩🇪 ihr ~seiet~ (you all be)\n🇩🇪 sie/Sie ~seien~ (they/you formal be)\n\nThe ~sein~ conjugations are all distinct from the indicative, making them unambiguous markers of reported speech.`Complete Examples by Verb Family``Weak Verbs`\n🇩🇪 machen → Er sagte, er ~habe~ das ~gemacht~. (He said he had done that.)\n🇩🇪 sagen → Sie berichtete, sie ~habe~ nichts ~gesagt~. (She reported she had said nothing.)\n🇩🇪 arbeiten → Man behauptete, er ~habe~ hart ~gearbeitet~. (It was claimed he had worked hard.)`Strong Verbs`\n🇩🇪 sehen → Er erklärte, er ~habe~ sie ~gesehen~. (He explained he had seen her.)\n🇩🇪 kommen → Sie sagte, er ~sei~ spät ~gekommen~. (She said he had come late.)\n🇩🇪 gehen → Der Zeuge sagte, sie ~sei~ ~gegangen~. (The witness said she had left.)\n🇩🇪 nehmen → Er behauptete, er ~habe~ nichts ~genommen~. (He claimed he had taken nothing.)`Mixed Verbs`\n🇩🇪 bringen → Sie erzählte, er ~habe~ Blumen ~gebracht~. (She told that he had brought flowers.)\n🇩🇪 denken → Er sagte, er ~habe~ daran ~gedacht~. (He said he had thought of it.)\n🇩🇪 wissen → Sie meinte, sie ~habe~ es nicht ~gewusst~. (She said she hadn't known it.)`The Third-Person Dominance`In practice, the Perfekt Konjunktiv I appears overwhelmingly in the third person. This makes sense: indirect speech reports what ~others~ said, and those others are typically \"he,\" \"she,\" or \"they.\"\n\nThe most common conjugations you will encounter are:\n\n🇩🇪 er/sie ~habe~ + Perfektpartizip\n🇩🇪 er/sie ~sei~ + Perfektpartizip\n🇩🇪 sie (plural) ~hätten~ + Perfektpartizip (Konjunktiv II substitution)\n🇩🇪 sie (plural) ~seien~ + Perfektpartizip\n\nFirst-person conjugations (~ich habe~, ~wir haben~) are rare because they are identical to the indicative—and because one typically uses the indicative to report one's own past actions directly.`When Konjunktiv II Substitutes`When Konjunktiv I conjugations are identical to the indicative, German substitutes Konjunktiv II to preserve the reported-speech signal:\n\n🇩🇪 Indicative identical: \"Sie sagten, sie ~haben~ es gemacht.\" (ambiguous—did the writer or the speakers assert this?)\n🇩🇪 With substitution: \"Sie sagten, sie ~hätten~ es gemacht.\" (clear reported speech)\n\nSimilarly:\n🇩🇪 \"Ich sagte, ich ~habe~ ihn gesehen.\" → often becomes \"Ich sagte, ich ~hätte~ ihn gesehen.\"\n\nThis substitution is grammatically correct and extremely common in both speech and writing.`Usage in Journalism and Formal Writing`The Perfekt Konjunktiv I is a hallmark of German journalistic style. Newspapers use it to report statements without endorsing their truth:\n\n🇩🇪 \"Der Minister erklärte, die Regierung ~habe~ alle notwendigen Maßnahmen ~ergriffen~.\" = \"The minister stated that the government had taken all necessary measures.\"\n\n🇩🇪 \"Die Polizei teilte mit, der Verdächtige ~sei~ am Tatort ~gewesen~.\" = \"The police reported that the suspect had been at the crime scene.\"\n\n🇩🇪 \"Laut Augenzeugen ~habe~ das Fahrzeug eine rote Ampel ~überfahren~.\" = \"According to eyewitnesses, the vehicle had run a red light.\"\n\nThe Konjunktiv I signals: \"This is what they said—I am not personally vouching for its accuracy.\" This distancing function is crucial in objective reporting.`Differences from English`English and German handle reported speech quite differently:\n\n🇩🇪 ~Verb-conjugation marking~: German marks reported speech on the verb itself (~habe~ vs. ~hat~). English relies on word order and context, with no dedicated reported-speech verb conjugations.\n🇩🇪 ~Tense shifting~: English typically \"backshifts\" reported speech: \"He said he ~had done~ it\" (past perfect for a simple past original). German maintains the original tense relationship but changes the mood: \"Er sagte, er ~habe~ es ~getan~\" (Perfekt Konjunktiv I).\n🇩🇪 ~Frequency~: The German Konjunktiv I system is fully productive in formal registers. English has no equivalent; the subjunctive (\"He insisted that she ~be~ present\") is limited and declining.\n🇩🇪 ~Ambiguity avoidance~: German's substitution of Konjunktiv II when Konjunktiv I is ambiguous has no English parallel—English simply tolerates the ambiguity.`Historical Development`The Konjunktiv I descends from the Proto-Germanic optative, which expressed wishes and possibilities. In Old High German (c. 750–1050), the subjunctive was used broadly—for wishes, commands, possibilities, and reported speech.\n\nThe ~Tatian~ translation (c. 830 AD) shows early examples of the subjunctive in reported speech contexts, though the distinction between Konjunktiv I and II had not yet fully crystallized.\n\nBy Middle High German (c. 1050–1350), the subjunctive had begun specializing: Konjunktiv I for reported speech and wishes, Konjunktiv II for counterfactuals. This specialization intensified in Early New High German, and by the 18th century, the modern system was largely in place.\n\nThe Perfekt Konjunktiv I—combining subjunctive auxiliary with past participle—developed as German needed a way to report ~past~ events in indirect speech, paralleling the rise of compound tenses generally.`Literary Examples`The Perfekt Konjunktiv I appears throughout German literature, especially in narrative passages that report characters' thoughts and statements.`Goethe — The Sorrows of Young Werther (1774)`\"Es hieß, sie ~sei~ mit Herrn Schmidt auf die Wiese hinausgegangen.\" = \"It was said she had gone out to the meadow with Mr. Schmidt.\"\n\nGoethe uses ~sei gegangen~ (Perfekt Konjunktiv I with ~sein~) to report what \"was said\"—the narrator conveys village gossip without asserting its truth. The subjunctive maintains narrative distance.\n\n\"Er sagte, das ~sei~ sehr übel von Lotten ~gewesen~.\" = \"He said that was very bad of Lotte.\"\n\nHere ~sei gewesen~ (Perfekt Konjunktiv I of ~sein~ itself) reports Albert's judgment about Lotte. The narrator attributes the opinion to Albert rather than endorsing it directly.`Kafka — The Trial (1925)`\"Man ~habe~ den Ausweg dieser rasch aufeinanderfolgenden Untersuchungen gewählt.\" = \"They said they had chosen this approach of rapidly successive examinations.\"\n\nKafka's bureaucratic world is full of reported speech—characters constantly reference what \"they\" have said or decided. The Konjunktiv I (~habe gewählt~) signals that K. is reporting the court's claimed reasoning, not asserting it as fact.\n\n\"Die Waschfrau schwieg, als ~habe~ sie nichts ~gehört~.\" = \"The washerwoman was silent, as if she had heard nothing.\"\n\nThis comparative construction (~als habe~) uses Konjunktiv I to create a hypothetical comparison—she acted as though she had heard nothing.`Mann — Death in Venice (1912)`\"Ein Kritiker schrieb, daß sein Held 'die Konzeption einer intellektuellen Männlichkeit' ~sei~.\" = \"A critic wrote that his hero was 'the conception of an intellectual masculinity.'\"\n\nMann uses Konjunktiv I to report critical assessments of Aschenbach's literary characters. The subjunctive distances Mann from the critic's interpretation while accurately conveying it.`Why the Perfekt Konjunktiv I Matters`The Perfekt Konjunktiv I is essential for:\n\n🇩🇪 ~Reading German journalism~: News articles use it constantly to report statements, accusations, and claims without editorial endorsement.\n🇩🇪 ~Academic writing~: Scholarly prose employs it to cite sources and report others' arguments.\n🇩🇪 ~Literary analysis~: Recognizing Konjunktiv I helps readers distinguish a narrator's voice from reported character speech.\n🇩🇪 ~Formal communication~: Legal, diplomatic, and official documents rely on it for precision.\n\nWhile the Perfekt Konjunktiv I may seem advanced, understanding it unlocks a vast domain of formal German prose. It is the grammatical tool that lets German maintain—with a single verb conjugation—the crucial distinction between \"this happened\" and \"someone said this happened.\""
+            "value" : "`About`The ~Perfekt Konjunktiv I~ is German's primary conjugationgroup for reporting past events in indirect speech. While the Präsens Konjunktiv I reports what someone says or thinks in the present, the Perfekt Konjunktiv I reports what someone said ~happened~—completed actions viewed through the lens of reported speech.\n\nThis compound conjugationgroup combines:\n\n🇩🇪 The auxiliary verb (~haben~ or ~sein~) in Konjunktiv I conjugation\n🇩🇪 The ~Perfektpartizip~ (past participle) of the main verb\n\nThe result: \"Er sagte, er ~habe~ das Buch gelesen\" (He said he had read the book) or \"Sie berichtete, sie ~sei~ nach Berlin gefahren\" (She reported that she had gone to Berlin).\n\nThe Perfekt Konjunktiv I appears primarily in formal writing—journalism, academic prose, legal documents, and literary narration—where German maintains a careful distinction between what the writer asserts directly and what the writer reports others as having said.`Conjugation`The Perfekt Konjunktiv I is built from two components: the Konjunktiv I conjugation of the auxiliary and the Perfektpartizip.`Konjunktiv I Conjugations of Haben`The conjugations of the auxiliary ~haben~ in Konjunktiv I follow:\n\n🇩🇪 ich ~habe~ (I have — identical to indicative)\n🇩🇪 du ~habest~ (you have)\n🇩🇪 er/sie/es ~habe~ (he/she/it has)\n🇩🇪 wir ~haben~ (we have — identical to indicative)\n🇩🇪 ihr ~habet~ (you all have)\n🇩🇪 sie/Sie ~haben~ (they/you formal have — identical to indicative)\n\nNote that the 1s, 1p, and 3p conjugations are identical to those of Präsens Indikativ. For those person-number combinations, speakers often substitute Konjunktiv II conjugations (~hätte~) or the ~würde~ construction to convey the reported-speech nuance.`Konjunktiv I Conjugations of Sein`The conjugations of the auxiliary ~sein~ in Konjunktiv I follow:\n\n🇩🇪 ich ~sei~ (I be)\n🇩🇪 du ~seist~ / ~seiest~ (you be)\n🇩🇪 er/sie/es ~sei~ (he/she/it be)\n🇩🇪 wir ~seien~ (we be)\n🇩🇪 ihr ~seiet~ (you all be)\n🇩🇪 sie/Sie ~seien~ (they/you formal be)\n\nThe ~sein~ conjugations are all distinct from those of Präsens Indikativ, making them unambiguous markers of reported speech.`Complete Examples by Verb Family``Weak Verbs`🇩🇪 machen → Er sagte, er ~habe~ das ~gemacht~. (He said he had done that.)\n🇩🇪 sagen → Sie berichtete, sie ~habe~ nichts ~gesagt~. (She reported she had said nothing.)\n🇩🇪 arbeiten → Man behauptete, er ~habe~ hart ~gearbeitet~. (It was claimed he had worked hard.)`Strong Verbs`🇩🇪 sehen → Er erklärte, er ~habe~ sie ~gesehen~. (He explained he had seen her.)\n🇩🇪 kommen → Sie sagte, er ~sei~ spät ~gekommen~. (She said he had come late.)\n🇩🇪 gehen → Der Zeuge sagte, sie ~sei~ ~gegangen~. (The witness said she had left.)\n🇩🇪 nehmen → Er behauptete, er ~habe~ nichts ~genommen~. (He claimed he had taken nothing.)`Mixed Verbs`🇩🇪 bringen → Sie erzählte, er ~habe~ Blumen ~gebracht~. (She told that he had $brOUGHt$ flowers.)\n🇩🇪 denken → Er sagte, er ~habe~ daran ~gedacht~. (He said he had $thOUGHt$ of it.)\n🇩🇪 wissen → Sie meinte, sie ~habe~ es nicht ~gewusst~. (She said she hadn't known it.)`The Third-Person Dominance`In practice, the Perfekt Konjunktiv I appears overwhelmingly in the third person. This makes sense: indirect speech reports what ~others~ said, and those others are typically \"he,\" \"she,\" or \"they.\"\n\nThe most common conjugations you will encounter are:\n\n🇩🇪 er/sie ~habe~ + Perfektpartizip\n🇩🇪 er/sie ~sei~ + Perfektpartizip\n🇩🇪 sie (plural) ~hätten~ + Perfektpartizip (Konjunktiv II substitution)\n🇩🇪 sie (plural) ~seien~ + Perfektpartizip\n\nFirst-person conjugations (~ich habe~, ~wir haben~) are rare because they are identical to the indicative—and because one typically uses the indicative to report one's own past actions directly.`When Konjunktiv II Substitutes`When Konjunktiv I conjugations are identical to the indicative, German substitutes Konjunktiv II to preserve the reported-speech nuance:\n\n🇩🇪 Indicative identical: \"Sie sagten, sie ~haben~ es gemacht.\" (ambiguous—did the writer or the speakers assert this?)\n🇩🇪 With substitution: \"Sie sagten, sie ~hätten~ es gemacht.\" (clear reported speech)\n\nSimilarly:\n🇩🇪 \"Ich sagte, ich ~habe~ ihn gesehen.\" → often becomes \"Ich sagte, ich ~hätte~ ihn gesehen.\"\n\nThis substitution is grammatically correct and extremely common in both speech and writing.`Usage in Journalism and Formal Writing`The Perfekt Konjunktiv I is a hallmark of German journalistic style. Newspapers use it to report statements without endorsing their truth:\n\n🇩🇪 \"Der Minister erklärte, die Regierung ~habe~ alle notwendigen Maßnahmen ~ergriffen~.\" = \"The minister stated that the government had taken all necessary measures.\"\n\n🇩🇪 \"Die Polizei teilte mit, der Verdächtige ~sei~ am Tatort ~gewesen~.\" = \"The police reported that the suspect had been at the crime scene.\"\n\n🇩🇪 \"Laut Augenzeugen ~habe~ das Fahrzeug eine rote Ampel ~überfahren~.\" = \"According to eyewitnesses, the vehicle had run a red light.\"\n\nThe Konjunktiv I signals: \"This is what they said. I am not personally vouching for accuracy.\" This distancing function is crucial in objective reporting.`Differences from English`English and German handle reported speech quite differently:\n\n🇩🇪/🏴󠁧󠁢󠁥󠁮󠁧󠁿 ~Verb-conjugation marking~: German marks reported speech on the verb itself (~habe~ vs. ~hat~). English relies on word order and context, with no dedicated reported-speech verb conjugations.\n🇩🇪/🏴󠁧󠁢󠁥󠁮󠁧󠁿 ~Tense shifting~: English typically \"backshifts\" reported speech: \"He said he ~had done~ it\" (past perfect for a simple past original). German maintains the original tense relationship but changes the mood: \"Er sagte, er ~habe~ es ~getan~\" (Perfekt Konjunktiv I).\n🇩🇪/🏴󠁧󠁢󠁥󠁮󠁧󠁿 ~Frequency~: The German Konjunktiv I system is fully productive in formal registers. English has no equivalent; the subjunctive (\"He insisted that she ~be~ present\") is rarely used, is declining in use, and serves other purposes when used, for example to convey obligation.\n🇩🇪/🏴󠁧󠁢󠁥󠁮󠁧󠁿 ~Ambiguity avoidance~: German's substitution of Konjunktiv II when Konjunktiv I is ambiguous has no English parallel. Perhaps reflecting less reverence, on average, for precision, English speakers usually just accept the ambiguity.`Historical Development`The Konjunktiv I descends from the Proto-Germanic optative, which expressed wishes and possibilities. In Old High German (c. 750–1050), the subjunctive was used broadly—for wishes, commands, possibilities, and reported speech.\n\nThe ~Tatian~ translation (c. 830 AD) shows early examples of the subjunctive in reported speech contexts, though the distinction between Konjunktiv I and II had not yet fully crystallized.\n\nBy Middle High German (c. 1050–1350), the subjunctive had begun specializing: Konjunktiv I for reported speech and wishes, Konjunktiv II for counterfactuals. This specialization intensified in Early New High German, and by the 18th century, the modern system was largely in place.\n\nThe Perfekt Konjunktiv I—combining subjunctive auxiliary with past participle—developed as German needed a way to report ~past~ events in indirect speech, paralleling the rise of compound tenses generally across the Western European Sprachbund.`Literary Examples`The Perfekt Konjunktiv I appears throughout German literature, especially in narrative passages that report characters' thoughts and statements.`Goethe — The Sorrows of Young Werther (1774)`\"Es hieß, sie ~sei~ mit Herrn Schmidt auf die Wiese hinausgegangen.\" = \"It was said she had gone out to the meadow with Mr. Schmidt.\"\n\nGoethe uses ~sei gegangen~ (Perfekt Konjunktiv I with ~sein~) to report what \"was said\"—the narrator conveys village gossip without asserting its truth. The subjunctive maintains narrative distance.\n\n\"Er sagte, das ~sei~ sehr übel von Lotten ~gewesen~.\" = \"He said that was very bad of Lotte.\"\n\nHere ~sei gewesen~ (Perfekt Konjunktiv I of ~sein~ itself) reports Albert's judgment about Lotte. The narrator attributes the opinion to Albert rather than endorsing it directly.`Kafka — The Trial (1925)`\"Man ~habe~ den Ausweg dieser rasch aufeinanderfolgenden Untersuchungen gewählt.\" = \"They said they had chosen this approach of rapidly successive examinations.\"\n\nKafka's bureaucratic world is full of reported speech—characters constantly reference what \"they\" have said or decided. The Konjunktiv I (~habe gewählt~) signals that K. is reporting the court's claimed reasoning, not asserting it as fact.\n\n\"Die Waschfrau schwieg, als ~habe~ sie nichts ~gehört~.\" = \"The washerwoman was silent, as if she had heard nothing.\"\n\nThis comparative construction (~als habe~) uses Konjunktiv I to create a hypothetical comparison—she acted as though she had heard nothing.`Mann — Death in Venice (1912)`\"Ein Kritiker schrieb, daß sein Held 'die Konzeption einer intellektuellen Männlichkeit' ~sei~.\" = \"A critic wrote that his hero was 'the conception of an intellectual masculinity.'\"\n\nMann uses Konjunktiv I to report critical assessments of Aschenbach's literary characters. The subjunctive distances Mann from the critic's interpretation while accurately conveying it.`Why the Perfekt Konjunktiv I Matters`The Perfekt Konjunktiv I is essential for:\n\n🗞️ ~Reading German journalism~: News articles use it constantly to report statements, accusations, and claims without editorial endorsement.\n🎓 ~Academic writing~: Scholarly prose employs it to cite sources and report others' arguments.\n🪶 ~Literary analysis~: Recognizing Konjunktiv I helps readers distinguish a narrator's voice from reported character speech.\n📣 ~Formal communication~: Legal, diplomatic, and official documents rely on it for precision.\n\nWhile the Perfekt Konjunktiv I may seem advanced, understanding it unlocks a vast domain of formal German prose. It is the grammatical tool that lets German maintain—with a single verb conjugation—the crucial distinction between \"this happened\" and \"someone said this happened.\""
           }
         }
       }
@@ -1128,7 +1818,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "`About`The ~Präsens Konjunktiv I~ (present subjunctive) is German's conjugationgroup of reported speech—the one journalists use to signal \"someone said this, but I'm not vouching for it\". While English has largely abandoned its subjunctive (surviving mainly in fossils like \"if I ~were~ you\" or \"I suggest he ~go~\"), German maintains a vigorous subjunctive system, and Konjunktiv I is its present-tense manifestation.\n\nThe Konjunktiv I serves several functions:\n\n🇩🇪 ~Indirect Speech~: Reporting what someone said without committing to its truth. \"Er sagte, er ~sei~ krank.\" = \"He said he was sick.\" (The speaker isn't confirming whether he actually is sick.)\n🇩🇪 ~Wishes and Demands~: Expressing hopes or exhortations. \"Es ~lebe~ der König!\" = \"Long live the King!\"\n🇩🇪 ~Instructions and Recipes~: Formal instructions in the third person. \"Man ~nehme~ drei Eier.\" = \"One takes three eggs.\" (recipe style)\n🇩🇪 ~Third-Person Imperatives~: Commands directed at third parties. \"~Seien~ Sie vorsichtig!\" = \"Be careful!\" (formal)\n\nUnlike the Konjunktiv II, which expresses hypothetical or counterfactual situations, Konjunktiv I maintains a connection to reality—it reports or requests rather than imagines. This distinction makes it essential for formal German, particularly in journalism, academic writing, and legal texts.\n\nFor English speakers, the closest equivalent is the rare subjunctive in clauses like \"I demand that he ~leave~\" or \"It is essential that she ~be~ present\". But where English uses subjunctive sparingly, German deploys Konjunktiv I systematically throughout its formal registers.`Conjugation`The Präsens Konjunktiv I is remarkably regular. For ~all verb families~—strong, weak, mixed, and -ieren—conjugation follows the same simple pattern: ~infinitive stem + Konjunktiv I endings~.\n\nThe endings are:\n\n🇩🇪 ich: ~-e~\n🇩🇪 du: ~-est~\n🇩🇪 er/sie/es: ~-e~\n🇩🇪 wir: ~-en~\n🇩🇪 ihr: ~-et~\n🇩🇪 sie/Sie: ~-en~\n\nNotice that 1s and 3s share the same ending (~-e~), as do 1p and 3p (~-en~). This symmetry is characteristic of the subjunctive.`Weak Verbs`🇩🇪 ~machen~ (make/do):\n• ich mach~e~ • du mach~est~ • er/sie/es mach~e~\n• wir mach~en~ • ihr mach~et~ • sie/Sie mach~en~\n\n🇩🇪 ~spielen~ (play):\n• ich spiel~e~ • du spiel~est~ • er/sie/es spiel~e~\n• wir spiel~en~ • ihr spiel~et~ • sie/Sie spiel~en~\n\n🇩🇪 ~arbeiten~ (work):\n• ich arbeit~e~ • du arbeit~est~ • er/sie/es arbeit~e~\n• wir arbeit~en~ • ihr arbeit~et~ • sie/Sie arbeit~en~`Strong Verbs`Strong verbs follow the ~same pattern~—no ablaut occurs in Konjunktiv I. The infinitive stem remains unchanged:\n\n🇩🇪 ~singen~ (sing):\n• ich sing~e~ • du sing~est~ • er/sie/es sing~e~\n• wir sing~en~ • ihr sing~et~ • sie/Sie sing~en~\n\n🇩🇪 ~geben~ (give):\n• ich geb~e~ • du geb~est~ • er/sie/es geb~e~\n• wir geb~en~ • ihr geb~et~ • sie/Sie geb~en~\n\n🇩🇪 ~sehen~ (see):\n• ich seh~e~ • du seh~est~ • er/sie/es seh~e~\n• wir seh~en~ • ihr seh~et~ • sie/Sie seh~en~\n\n🇩🇪 ~fahren~ (drive):\n• ich fahr~e~ • du fahr~est~ • er/sie/es fahr~e~\n• wir fahr~en~ • ihr fahr~et~ • sie/Sie fahr~en~\n\nThis is a key point: strong verbs that show ablaut in Präsens Indikativ (du ~fährst~, er ~gibt~, sie ~sieht~) have ~no~ ablaut in Konjunktiv I. The subjunctive is conjugated using the pure infinitive stem.`Mixed Verbs`Mixed verbs also follow the regular pattern:\n\n🇩🇪 ~bringen~ (bring):\n• ich bring~e~ • du bring~est~ • er/sie/es bring~e~\n• wir bring~en~ • ihr bring~et~ • sie/Sie bring~en~\n\n🇩🇪 ~denken~ (think):\n• ich denk~e~ • du denk~est~ • er/sie/es denk~e~\n• wir denk~en~ • ihr denk~et~ • sie/Sie denk~en~`-Ieren Verbs`🇩🇪 ~studieren~ (study):\n• ich studier~e~ • du studier~est~ • er/sie/es studier~e~\n• wir studier~en~ • ihr studier~et~ • sie/Sie studier~en~`Haben and Werden`These common verbs follow the regular pattern:\n\n🇩🇪 ~haben~ (have):\n• ich hab~e~ • du hab~est~ • er/sie/es hab~e~\n• wir hab~en~ • ihr hab~et~ • sie/Sie hab~en~\n\n🇩🇪 ~werden~ (become):\n• ich werd~e~ • du werd~est~ • er/sie/es werd~e~\n• wir werd~en~ • ihr werd~et~ • sie/Sie werd~en~`Sein: The Essential Exception`The verb ~sein~ (be) is the only verb with truly distinctive Konjunktiv I conjugations:\n\n🇩🇪 ~sein~ (to be):\n• ich $seI$ • du $seIst$ • er/sie/es $seI$\n• wir $seIen$ • ihr $seIet$ • sie/Sie $seIen$\n\nThese conjugations are unmistakably subjunctive—they cannot be confused with any indicative conjugation. This clarity makes ~sein~ the most frequently used Präsens Konjunktiv I verb in actual practice. When Germans use indirect speech, they often restructure sentences to include ~sein~, precisely because its subjunctive is unambiguous.`The Identity Problem`Here lies the central challenge of Präsens Konjunktiv I: for most verbs, many Präsens Konjunktiv I conjugations are ~identical~ to Präsens Indikativ conjugations.\n\nCompare ~machen~'s Präsens Indikativ and Präsens Konjunktiv I conjugations:\n\n🇩🇪 ich mach~e~, mach~e~\n🇩🇪 du machst, mach~est~\n🇩🇪 er/sie/es macht, mach~e~\n🇩🇪 wir mach~en~, mach~en~\n🇩🇪 ihr macht, mach~et~\n🇩🇪 sie/Sie mach~en~, mach~en~\n\nThe 1s, 1p, and 3p are ~identical~ in both moods. Only in ~du~, ~er/sie/es~, and ~ihr~ do the conjugations differ.\n\nThis creates a problem: if the Präsens Konjunktiv I conjugation is identical to the Präsens Indikativ conjugation, how does the reader or listener know the speaker is using subjunctive?\n\nThe solution: ~substitute Präteritum Konjunktiv II~ when Präsens Konjunktiv I would be ambiguous.\n\nFor example:\n\n🇩🇪 Ambiguous: \"Sie sagten, sie ~haben~ kein Geld.\" (Präsens Konjunktiv I = Präsens Indikativ)\n🇩🇪 Clear: \"Sie sagten, sie ~hätten~ kein Geld.\" (Präteritum Konjunktiv II substituted)\n\nBoth mean \"They said they have no money,\" but the second version clearly signals indirect speech.\n\nThis substitution rule explains why ~sein~ dominates Präsens Konjunktiv I usage: its conjugations ($seI$, $seIst$, $seIen$, $seIet$) are never identical to those of the Präsens Indikativ (~bin~, ~bist~, ~ist~, ~sind~, ~seid~, ~sind~), so substitution is never needed.`Uses of Präsens Konjunktiv I:``Indirect Speech (Indirekte Rede)`The primary function of Präsens Konjunktiv I is reporting what someone else said, wrote, or thought—without the speaker vouching for its accuracy:\n\n🇩🇪 Direct: Der Minister sagte: \"Die Wirtschaft ~wächst~.\" = The minister said, \"The economy ~is growing~.\"\n🇩🇪 Indirect: Der Minister sagte, die Wirtschaft ~wachse~. = The minister said the economy ~was growing~.\n\n🇩🇪 Direct: Sie behauptete: \"Ich ~bin~ unschuldig.\" = She claimed, \"I ~am~ innocent.\"\n🇩🇪 Indirect: Sie behauptete, sie $seI$ unschuldig. = She claimed she ~was~ innocent.\n\nThe Präsens Konjunktiv I signals reportage—the speaker is conveying information secondhand. In journalism, this is crucial: it allows reporters to present claims without endorsing them.\n\nEnglish typically uses past tense for indirect speech (\"said\" , \"was growing\"). German maintains the original tense but shifts to subjunctive mood.`Wishes, Exhortations, and Set Phrases`Konjunktiv I appears in formal wishes and exclamations:\n\n🇩🇪 \"Es ~lebe~ der König!\" = \"Long ~live~ the King!\"\n🇩🇪 \"Gott ~sei~ Dank!\" = \"Thank God!\" (literally: \"God ~be~ thanked!\")\n🇩🇪 \"~Seien~ Sie herzlich willkommen!\" = \"~Be~ warmly welcome!\" (You are most welcome!)\n🇩🇪 \"Das ~sei~ ferne!\" = \"Far ~be~ it!\" (Heaven forbid!)\n🇩🇪 \"~Möge~ er in Frieden ruhen.\" = \"~May~ he rest in peace.\"\n\nThese expressions often survive as set phrases even among speakers who rarely use Präsens Konjunktiv I otherwise.`Recipes and Formal Instructions`Traditional German recipes use Konjunktiv I for an impersonal, authoritative tone:\n\n🇩🇪 \"Man ~nehme~ drei Eier und ~schlage~ sie schaumig.\" = \"One ~takes~ three eggs and ~beats~ them until fluffy.\"\n🇩🇪 \"Man ~füge~ das Mehl langsam ~hinzu~.\" = \"One ~adds~ the flour slowly.\"\n\nThis style—sometimes called the \"recipe subjunctive\"—gives instructions a timeless, formal quality. Modern recipes often use Imperativ or Infinitiv instead, but the Präsens Konjunktiv I style persists in traditional cookbooks.`Third-Person Imperatives`German uses Präsens Konjunktiv I for commands directed at third parties or in formal address:\n\n🇩🇪 \"~Seien~ Sie so freundlich!\" = \"~Be~ so kind!\" (formal imperative)\n🇩🇪 \"Man ~beachte~ die Hinweisschilder.\" = \"One should ~observe~ the signs.\"\n🇩🇪 \"Der Angeklagte ~trete~ vor!\" = \"Let the defendant ~step~ forward!\"\n\nThe formal imperative with ~Sie~ always uses Präsens Konjunktiv I: ~Seien~ Sie, ~gehen~ Sie, ~nehmen~ Sie.`Mathematical and Scientific Writing`In formal mathematical proofs and scientific texts, Präsens Konjunktiv I establishes definitions and hypothetical constructions:\n\n🇩🇪 \"~Sei~ n eine natürliche Zahl.\" = \"~Let~ n ~be~ a natural number.\"\n🇩🇪 \"~Seien~ A und B zwei Mengen.\" = \"~Let~ A and B ~be~ two sets.\"\n\nThis usage parallels the English \"let\" construction but uses subjunctive morphology.`Präsens Konjunktiv I in Journalism`German journalism relies heavily on Präsens Konjunktiv I to report statements without endorsing them. A typical news article might read:\n\n\"Der Präsident erklärte, er $seI$ zuversichtlich. Die Verhandlungen ~verliefen~ planmäßig, und man ~erwarte~ eine baldige Einigung. Kritiker ~meinten~ jedoch, die Regierung ~unterschätze~ die Schwierigkeiten.\"\n\n= \"The president declared he $WAS$ confident. The negotiations were proceeding as planned, and they expected an agreement soon. Critics, however, felt the government was underestimating the difficulties.\"\n\nEvery verb in Präsens Konjunktiv I signals: \"This is what was said, not necessarily what is true.\" This grammatical precision allows German journalism to maintain a clear distinction between reported claims and established facts—a distinction English must convey through phrasing (\"allegedly,\" \"according to\") rather than verb morphology.`Differences from English`The English subjunctive is rarely deployed. Where German uses Präsens Konjunktiv I systematically, English has only scattered remnants.`The \"Mandative\" Subjunctive`English preserves subjunctive after verbs of demanding, suggesting, and insisting:\n\n🏴󠁧󠁢󠁥󠁮󠁧󠁿 English: \"I insist that he ~leave~ immediately.\"\n🇩🇪 German: \"Ich bestehe darauf, dass er sofort ~gehe~.\"\n\nBoth languages use subjunctive here, but this usage is much rarer in English and often replaced by \"should\" (British) or indicative (informal).`Indirect Speech`English uses past tenses, not subjunctive:\n\n🏴󠁧󠁢󠁥󠁮󠁧󠁿 English: \"She said she ~was~ tired.\" (indicative, past tense)\n🇩🇪 German: \"Sie sagte, sie $seI$ müde.\" (subjunctive, present tense)\n\nGerman maintains the original tense but marks the shift to reported speech through mood. English shifts the tense but maintains indicative mood.`Wishes and Exhortations`English has fossilized phrases (\"Long ~live~ the Queen,\" \"God ~bless~ you\"), but German productively coins such expressions with Präsens Konjunktiv I.`Literary Examples`Präsens Konjunktiv I appears throughout German literature, particularly in passages of reported speech, formal address, and authorial reflection.`Goethe — The Sorrows of Young Werther (1774)`\"Er bat mich, ich möchte ihm verzeihen, er $seI$ sehr müde und $habe$ schlecht geschlafen.\" = \"He asked me to forgive him; he was very tired and had slept badly.\"\n\nGoethe uses $seI$ and $habe$ (Präsens Konjunktiv I of ~sein~ and ~haben~) to report the character's excuses. The subjunctive signals that Werther is conveying someone else's words, not asserting facts himself.\n\n\"Man sagt, er $seI$ ein sehr geschickter Mann, aber ich verstehe nicht viel von seinem Fach.\" = \"They say he $Is$ a very skillful man, but I don't understand much of his field.\"\n\nThe impersonal \"man sagt\" (they say) triggers Präsens Konjunktiv I: $seI$ marks the statement as hearsay rather than the narrator's own judgment.`Mann — Death in Venice (1912)`\"Man sagte, er $seI$ aus seinem Schlafe nicht wieder erwacht; und er sagte das Richtige, denn sein Schlaf war tief genug $geWESen$.\" = \"They said he had not awakened from his sleep; and one $spOke$ truly, for his sleep $haD$ been deep enough.\"\n\nMann deploys $seI$ to report what \"they said\" about Aschenbach's death, then pivots to authorial commentary (\"und er sagte das Richtige\"). The shift from subjunctive reportage to indicative assertion underscores the narrator's authority.\n\n\"Der Arzt versicherte, es $seI$ nichts von Bedeutung.\" = \"The doctor assured him it $WAS$ nothing of significance.\"\n\nThe doctor's reassurance is reported in Präsens Konjunktiv I ($seI$), allowing Mann to present the diagnosis without the narrator endorsing its accuracy—an ironic distance, given the story's trajectory.`Kafka — The Trial (1925)`\"Der Aufseher erklärte, er ~habe~ nur mitzuteilen, daß K. verhaftet $seI$.\" = \"The inspector explained that he only had to inform K. that he $WAS$ under arrest.\"\n\nKafka layers Präsens Konjunktiv I conjugations: ~habe~ reports what the inspector explained, and ~sei~ reports the content of that explanation. This embedding of reported speech within reported speech is characteristic of legal and bureaucratic German—fitting for Kafka's nightmarish bureaucracies.\n\n\"K. fragte, wessen er beschuldigt $seI$. Die Wächter antworteten, das ~wisse~ man nicht.\" = \"K. asked what he $WAS$ accused of. The guards answered that they did not know.\"\n\nBoth ~sei~ and ~wisse~ are Präsens Konjunktiv I conjugations, signaling indirect questions and answers. Kafka's prose maintains this subjunctive register throughout, reinforcing the characters' epistemic uncertainty—no one can state facts directly in K.'s world.`Historical Note`The German Präsens Konjunktiv I descends from the Proto-Indo-European ~optative mood~, which expressed wishes, possibilities, and uncertain assertions. The Proto-Indo-European optative was marked by a characteristic suffix *~-yeh₁-~ / *~-ih₁-~ that appears across the Indo-European family.\n\nIn Proto-Germanic, the optative merged with the subjunctive, retaining optative functions (wishes, exhortations) alongside subjunctive functions (uncertainty, reported speech) in a single mood. The Germanic subjunctive was marked by the vowel ~-i-~ in its endings, which eventually simplified to the ~-e-~ we see in modern German Präsens Konjunktiv I.\n\nOld High German preserved a robust subjunctive system. The ~Tatian~ translation (c. 830 AD) uses subjunctive for indirect speech, much as modern German does:\n\n\"Her $quAd$, thaz her sîn sun ~sî~.\" = \"He $quOth$ that he ~was~ his son.\"\n\nHere ~sî~ is the Old High German subjunctive of ~sîn~ (be), the direct ancestor of modern ~sei~.\n\nThe ~Hildebrandslied~ (c. 830 AD) contains subjunctive wishes:\n\n\"Wêttu, irmingot, obana ab hevane, dat du nêo dana halt mit sus sippan man dinc ni ~gileitôs~.\" = \"Know, great god above in heaven, that you never ~let~ (such) a thing happen with so close a kinsman.\"\n\nThe verb ~gileitôs~ is subjunctive, expressing a desperate wish or prayer.\n\nOver centuries, the two German subjunctives (Konjunktiv I and Konjunktiv II) developed increasingly distinct functions. Konjunktiv I specialized in reported speech and formal wishes, while Konjunktiv II took over hypothetical and counterfactual meanings. This functional split—still evolving in Middle High German—is now firmly established in the modern language.`Konjunktiv I vs. Konjunktiv II`Understanding when to use Konjunktiv I versus Konjunktiv II (specifically, Präteritum Konjunktiv II) is crucial:\n\n🇩🇪 ~Konjunktiv I~: Indirect speech, wishes, formal commands, recipes. Reports reality as perceived by someone else.\n🇩🇪 ~Konjunktiv II~: Hypotheticals, counterfactuals, polite requests, unreal conditions. Describes situations contrary to fact or uncertain.\n\nWhen Präsens Konjunktiv I conjugations are identical to those of Präsens Indikativ, substitute Präteritum Konjunktiv II:\n\n🇩🇪 Indirekte Rede: \"Er sagte, sie ~haben~ / ~hätten~ recht.\" (They said they $WERE$ right.)\n   — If the speaker is \"sie\" (3rd plural), ~haben~ = Präsens Indikativ = Präsens Konjunktiv I, so ~hätten~ (Präteritum Konjunktiv II) is preferred for clarity.\n\n🇩🇪 But with ~sein~: \"Er sagte, sie $seIen$ müde.\" (They said they $WERE$ tired.)\n   — $seIen$ is unambiguously Präsens Konjunktiv I, so no substitution is needed.\n\nIn practice, this means ~sein~ carries much of the Präsens Konjunktiv I workload, while other verbs often appear in Präteritum Konjunktiv II in indirect speech.`Why the Präsens Konjunktiv I Matters`The Präsens Konjunktiv I is the grammatical backbone of formal German discourse. Without it, journalism would lose its ability to report claims without endorsing them. Academic writing would lack its precise apparatus for attributing statements to sources. Legal texts would blur the line between assertion and allegation.\n\nFor learners, the Präsens Konjunktiv I may seem archaic or overly formal—and in casual conversation, it largely is. But reading any serious German text—a newspaper, a novel, a scientific paper—requires recognizing Präsens Konjunktiv I conjugations and understanding their function.\n\nThe good news: formation is regular. Every verb (except ~sein~) follows the same pattern: infinitive stem + ~-e~, ~-est~, ~-e~, ~-en~, ~-et~, ~-en~. There is no ablaut, no family-specific variation, no unpredictable irregularity.\n\nLearn to recognize $seI$, $seIen$, $seIst$, and $seIet$—the unmistakable subjunctive conjugations of ~sein~—and you will understand most Präsens Konjunktiv I passages you encounter. These four conjugations are the signposts that tell you: \"This is reported speech. Someone said this. The writer is not vouching for its truth.\"\n\nMaster the Präsens Konjunktiv I, and you gain access to the full register of formal German—the language of Goethe's narrators, Kafka's bureaucrats, and the journalists who report the news with grammatical precision."
+            "value" : "`About`The ~Präsens Konjunktiv I~ (present subjunctive) is German's conjugationgroup of reported speech—the one journalists use to signal \"someone said this, but I'm not vouching for it\". While English has largely abandoned its subjunctive (surviving mainly in fossils like \"if I ~were~ you\" or \"I suggest he ~go~\"), German maintains a vigorous subjunctive system, and Präsens Konjunktiv I is its present-tense manifestation.\n\nThe Konjunktiv I serves several functions:\n\n🇩🇪 ~Indirect Speech~: Reporting what someone said without committing to its truth. \"Er sagte, er ~sei~ krank.\" = \"He said he was sick.\" (The speaker isn't confirming whether he actually is sick.)\n🇩🇪 ~Wishes and Demands~: Expressing hopes or exhortations. \"Es ~lebe~ der König!\" = \"Long live the King!\"\n🇩🇪 ~Instructions and Recipes~: Formal instructions in the third person. \"Man ~nehme~ drei Eier.\" = \"One takes three eggs.\" (recipe style)\n🇩🇪 ~Third-Person Imperatives~: Commands directed at third parties. \"~Seien~ Sie vorsichtig!\" = \"Be careful!\" (formal)\n\nUnlike the Konjunktiv II, which expresses hypothetical or counterfactual situations, Konjunktiv I maintains a connection to reality—it reports or requests rather than imagines. This distinction makes it essential for formal German, particularly in journalism, academic writing, and legal texts.\n\nFor English speakers, the closest equivalent is the rare subjunctive in clauses like \"I demand that he ~leave~\" or \"It is essential that she ~be~ present\". But where English uses subjunctive sparingly, German deploys Konjunktiv I systematically throughout its formal registers.`Conjugation`The Präsens Konjunktiv I is remarkably regular. For ~all verb families~—strong, weak, mixed, and -ieren—conjugation follows the same simple pattern: ~infinitive stem + Konjunktiv I endings~.\n\nThe endings are:\n\n🇩🇪 ich: ~-e~\n🇩🇪 du: ~-est~\n🇩🇪 er/sie/es: ~-e~\n🇩🇪 wir: ~-en~\n🇩🇪 ihr: ~-et~\n🇩🇪 sie/Sie: ~-en~\n\nNotice that 1s and 3s share the same ending (~-e~), as do 1p and 3p (~-en~). This symmetry is characteristic of the subjunctive.`Weak Verbs`🇩🇪 ~machen~ (make/do):\n• ich mach~e~ • du mach~est~ • er/sie/es mach~e~\n• wir mach~en~ • ihr mach~et~ • sie/Sie mach~en~\n\n🇩🇪 ~spielen~ (play):\n• ich spiel~e~ • du spiel~est~ • er/sie/es spiel~e~\n• wir spiel~en~ • ihr spiel~et~ • sie/Sie spiel~en~\n\n🇩🇪 ~arbeiten~ (work):\n• ich arbeit~e~ • du arbeit~est~ • er/sie/es arbeit~e~\n• wir arbeit~en~ • ihr arbeit~et~ • sie/Sie arbeit~en~`Strong Verbs`Strong verbs follow the ~same pattern~—no ablaut occurs in Konjunktiv I. The infinitive stem remains unchanged:\n\n🇩🇪 ~singen~ (sing):\n• ich sing~e~ • du sing~est~ • er/sie/es sing~e~\n• wir sing~en~ • ihr sing~et~ • sie/Sie sing~en~\n\n🇩🇪 ~geben~ (give):\n• ich geb~e~ • du geb~est~ • er/sie/es geb~e~\n• wir geb~en~ • ihr geb~et~ • sie/Sie geb~en~\n\n🇩🇪 ~sehen~ (see):\n• ich seh~e~ • du seh~est~ • er/sie/es seh~e~\n• wir seh~en~ • ihr seh~et~ • sie/Sie seh~en~\n\n🇩🇪 ~fahren~ (drive):\n• ich fahr~e~ • du fahr~est~ • er/sie/es fahr~e~\n• wir fahr~en~ • ihr fahr~et~ • sie/Sie fahr~en~\n\nThis is a key point: strong verbs that show ablaut in Präsens Indikativ (du ~fährst~, er ~gibt~, sie ~sieht~) have ~no~ ablaut in Konjunktiv I. The subjunctive is conjugated using the pure infinitive stem.`Mixed Verbs`Mixed verbs also follow the regular pattern:\n\n🇩🇪 ~bringen~ (bring):\n• ich bring~e~ • du bring~est~ • er/sie/es bring~e~\n• wir bring~en~ • ihr bring~et~ • sie/Sie bring~en~\n\n🇩🇪 ~denken~ (think):\n• ich denk~e~ • du denk~est~ • er/sie/es denk~e~\n• wir denk~en~ • ihr denk~et~ • sie/Sie denk~en~`-Ieren Verbs`🇩🇪 ~studieren~ (study):\n• ich studier~e~ • du studier~est~ • er/sie/es studier~e~\n• wir studier~en~ • ihr studier~et~ • sie/Sie studier~en~`Haben and Werden`These common verbs follow the regular pattern:\n\n🇩🇪 ~haben~ (have):\n• ich hab~e~ • du hab~est~ • er/sie/es hab~e~\n• wir hab~en~ • ihr hab~et~ • sie/Sie hab~en~\n\n🇩🇪 ~werden~ (become):\n• ich werd~e~ • du werd~est~ • er/sie/es werd~e~\n• wir werd~en~ • ihr werd~et~ • sie/Sie werd~en~`Sein: The Essential Exception`The verb ~sein~ (be) is the only verb with truly distinctive Konjunktiv I conjugations:\n\n🇩🇪 ~sein~ (to be):\n• ich $seI$ • du $seIst$ • er/sie/es $seI$\n• wir $seIen$ • ihr $seIet$ • sie/Sie $seIen$\n\nThese conjugations are unmistakably subjunctive—they cannot be confused with any indicative conjugation. This clarity makes ~sein~ the most frequently used Präsens Konjunktiv I verb in actual practice. When Germans use indirect speech, they often restructure sentences to include ~sein~, precisely because its subjunctive is unambiguous.`The Identity Problem`Here lies the central challenge of Präsens Konjunktiv I: for most verbs, many Präsens Konjunktiv I conjugations are ~identical~ to Präsens Indikativ conjugations.\n\nCompare ~machen~'s Präsens Indikativ and Präsens Konjunktiv I conjugations:\n\n🇩🇪 ich mach~e~, mach~e~\n🇩🇪 du machst, mach~est~\n🇩🇪 er/sie/es macht, mach~e~\n🇩🇪 wir mach~en~, mach~en~\n🇩🇪 ihr macht, mach~et~\n🇩🇪 sie/Sie mach~en~, mach~en~\n\nThe 1s, 1p, and 3p are ~identical~ in both moods. Only in ~du~, ~er/sie/es~, and ~ihr~ do the conjugations differ.\n\nThis creates a problem: if the Präsens Konjunktiv I conjugation is identical to the Präsens Indikativ conjugation, how does the reader or listener know the speaker is using subjunctive?\n\nThe solution: ~substitute Präteritum Konjunktiv II~ when Präsens Konjunktiv I would be ambiguous.\n\nFor example:\n\n🇩🇪 Ambiguous: \"Sie sagten, sie ~haben~ kein Geld.\" (Präsens Konjunktiv I = Präsens Indikativ)\n🇩🇪 Clear: \"Sie sagten, sie ~hätten~ kein Geld.\" (Präteritum Konjunktiv II substituted)\n\nBoth mean \"They said they have no money,\" but the second version clearly signals indirect speech.\n\nThis substitution rule explains why ~sein~ dominates Präsens Konjunktiv I usage: its conjugations ($seI$, $seIst$, $seIen$, $seIet$) are never identical to those of the Präsens Indikativ (~bin~, ~bist~, ~ist~, ~sind~, ~seid~, ~sind~), so substitution is never needed.`Uses of Präsens Konjunktiv I:``Indirect Speech (Indirekte Rede)`The primary function of Präsens Konjunktiv I is reporting what someone else said, wrote, or thought—without the speaker vouching for its accuracy:\n\n🇩🇪 Direct: Der Minister sagte: \"Die Wirtschaft ~wächst~.\" = The minister said, \"The economy ~is growing~.\"\n🇩🇪 Indirect: Der Minister sagte, die Wirtschaft ~wachse~. = The minister said the economy ~was growing~.\n\n🇩🇪 Direct: Sie behauptete: \"Ich ~bin~ unschuldig.\" = She claimed, \"I ~am~ innocent.\"\n🇩🇪 Indirect: Sie behauptete, sie $seI$ unschuldig. = She claimed she ~was~ innocent.\n\nThe Präsens Konjunktiv I signals reportage—the speaker is conveying information secondhand. In journalism, this is crucial: it allows reporters to present claims without endorsing them.\n\nEnglish typically uses past tense for indirect speech (\"said\" , \"was growing\"). German maintains the original tense but shifts to subjunctive mood.`Wishes, Exhortations, and Set Phrases`Konjunktiv I appears in formal wishes and exclamations:\n\n🇩🇪 \"Es ~lebe~ der König!\" = \"Long ~live~ the King!\"\n🇩🇪 \"Gott ~sei~ Dank!\" = \"Thank God!\" (literally: \"God ~be~ thanked!\")\n🇩🇪 \"~Seien~ Sie herzlich willkommen!\" = \"~Be~ warmly welcome!\" (You are most welcome!)\n🇩🇪 \"Das ~sei~ ferne!\" = \"Far ~be~ it!\" (Heaven forbid!)\n🇩🇪 \"~Möge~ er in Frieden ruhen.\" = \"~May~ he rest in peace.\"\n\nThese expressions often survive as set phrases even among speakers who rarely use Präsens Konjunktiv I otherwise.`Recipes and Formal Instructions`Traditional German recipes use Konjunktiv I for an impersonal, authoritative tone:\n\n🇩🇪 \"Man ~nehme~ drei Eier und ~schlage~ sie schaumig.\" = \"One ~takes~ three eggs and ~beats~ them until fluffy.\"\n🇩🇪 \"Man ~füge~ das Mehl langsam ~hinzu~.\" = \"One ~adds~ the flour slowly.\"\n\nThis style—sometimes called the \"recipe subjunctive\"—gives instructions a timeless, formal quality. Modern recipes often use Imperativ or Infinitiv instead, but the Präsens Konjunktiv I style persists in traditional cookbooks.`Third-Person Imperatives`German uses Präsens Konjunktiv I for commands directed at third parties or in formal address:\n\n🇩🇪 \"~Seien~ Sie so freundlich!\" = \"~Be~ so kind!\" (formal imperative)\n🇩🇪 \"Man ~beachte~ die Hinweisschilder.\" = \"One should ~observe~ the signs.\"\n🇩🇪 \"Der Angeklagte ~trete~ vor!\" = \"Let the defendant ~step~ forward!\"\n\nThe formal imperative with ~Sie~ always uses Präsens Konjunktiv I: ~Seien~ Sie, ~gehen~ Sie, ~nehmen~ Sie.`Mathematical and Scientific Writing`In formal mathematical proofs and scientific texts, Präsens Konjunktiv I establishes definitions and hypothetical constructions:\n\n🇩🇪 \"~Sei~ n eine natürliche Zahl.\" = \"~Let~ n ~be~ a natural number.\"\n🇩🇪 \"~Seien~ A und B zwei Mengen.\" = \"~Let~ A and B ~be~ two sets.\"\n\nThis usage parallels the English \"let\" construction but uses subjunctive morphology.`Präsens Konjunktiv I in Journalism`German journalism relies heavily on Präsens Konjunktiv I to report statements without endorsing them. A typical news article might read:\n\n\"Der Präsident erklärte, er $seI$ zuversichtlich. Die Verhandlungen ~verliefen~ planmäßig, und man ~erwarte~ eine baldige Einigung. Kritiker ~meinten~ jedoch, die Regierung ~unterschätze~ die Schwierigkeiten.\"\n\n= \"The president declared he $WAS$ confident. The negotiations were proceeding as planned, and they expected an agreement soon. Critics, however, felt the government was underestimating the difficulties.\"\n\nEvery verb in Präsens Konjunktiv I signals: \"This is what was said, not necessarily what is true.\" This grammatical precision allows German journalism to maintain a clear distinction between reported claims and established facts—a distinction English must convey through phrasing (\"allegedly,\" \"according to\") rather than verb morphology.`Differences from English`The English subjunctive is rarely deployed. Where German uses Präsens Konjunktiv I systematically, English has only scattered remnants.`The \"Mandative\" Subjunctive`English preserves subjunctive after verbs of demanding, suggesting, and insisting:\n\n🏴󠁧󠁢󠁥󠁮󠁧󠁿 English: \"I insist that he ~leave~ immediately.\"\n🇩🇪 German: \"Ich bestehe darauf, dass er sofort ~gehe~.\"\n\nBoth languages use subjunctive here, but this usage is much rarer in English and often replaced by \"should\" (British) or indicative (informal).`Indirect Speech`English uses past tenses, not subjunctive:\n\n🏴󠁧󠁢󠁥󠁮󠁧󠁿 English: \"She said she ~was~ tired.\" (indicative, past tense)\n🇩🇪 German: \"Sie sagte, sie $seI$ müde.\" (subjunctive, present tense)\n\nGerman maintains the original tense but marks the shift to reported speech through mood. English shifts the tense but maintains indicative mood.`Wishes and Exhortations`English has fossilized phrases (\"Long ~live~ the Queen,\" \"God ~bless~ you\"), but German productively coins such expressions with Präsens Konjunktiv I.`Literary Examples`Präsens Konjunktiv I appears throughout German literature, particularly in passages of reported speech, formal address, and authorial reflection.`Goethe — The Sorrows of Young Werther (1774)`\"Er bat mich, ich möchte ihm verzeihen, er $seI$ sehr müde und $habe$ schlecht geschlafen.\" = \"He asked me to forgive him; he was very tired and had slept badly.\"\n\nGoethe uses $seI$ and $habe$ (Präsens Konjunktiv I of ~sein~ and ~haben~) to report the character's excuses. The subjunctive signals that Werther is conveying someone else's words, not asserting facts himself.\n\n\"Man sagt, er $seI$ ein sehr geschickter Mann, aber ich verstehe nicht viel von seinem Fach.\" = \"They say he $Is$ a very skillful man, but I don't understand much of his field.\"\n\nThe impersonal \"man sagt\" (they say) triggers Präsens Konjunktiv I: $seI$ marks the statement as hearsay rather than the narrator's own judgment.`Mann — Death in Venice (1912)`\"Man sagte, er $seI$ aus seinem Schlafe nicht wieder erwacht; und er sagte das Richtige, denn sein Schlaf war tief genug $geWESen$.\" = \"They said he had not awakened from his sleep; and one $spOke$ truly, for his sleep $haD$ been deep enough.\"\n\nMann deploys $seI$ to report what \"they said\" about Aschenbach's death, then pivots to authorial commentary (\"und er sagte das Richtige\"). The shift from subjunctive reportage to indicative assertion underscores the narrator's authority.\n\n\"Der Arzt versicherte, es $seI$ nichts von Bedeutung.\" = \"The doctor assured him it $WAS$ nothing of significance.\"\n\nThe doctor's reassurance is reported in Präsens Konjunktiv I ($seI$), allowing Mann to present the diagnosis without the narrator endorsing its accuracy—an ironic distance, given the story's trajectory.`Kafka — The Trial (1925)`\"Der Aufseher erklärte, er ~habe~ nur mitzuteilen, daß K. verhaftet $seI$.\" = \"The inspector explained that he only had to inform K. that he $WAS$ under arrest.\"\n\nKafka layers Präsens Konjunktiv I conjugations: ~habe~ reports what the inspector explained, and ~sei~ reports the content of that explanation. This embedding of reported speech within reported speech is characteristic of legal and bureaucratic German—fitting for Kafka's nightmarish bureaucracies.\n\n\"K. fragte, wessen er beschuldigt $seI$. Die Wächter antworteten, das ~wisse~ man nicht.\" = \"K. asked what he $WAS$ accused of. The guards answered that they did not know.\"\n\nBoth ~sei~ and ~wisse~ are Präsens Konjunktiv I conjugations, signaling indirect questions and answers. Kafka's prose maintains this subjunctive register throughout, reinforcing the characters' epistemic uncertainty—no one can state facts directly in K.'s world.`Historical Note`The German Präsens Konjunktiv I descends from the Proto-Indo-European ~optative mood~, which expressed wishes, possibilities, and uncertain assertions. The Proto-Indo-European optative was marked by a characteristic suffix *~-yeh₁-~ / *~-ih₁-~ that appears across the Indo-European family.\n\nIn Proto-Germanic, the optative merged with the subjunctive, retaining optative functions (wishes, exhortations) alongside subjunctive functions (uncertainty, reported speech) in a single mood. The Germanic subjunctive was marked by the vowel ~-i-~ in its endings, which eventually simplified to the ~-e-~ we see in modern German Präsens Konjunktiv I.\n\nOld High German preserved a robust subjunctive system. The ~Tatian~ translation (c. 830 AD) uses subjunctive for indirect speech, much as modern German does:\n\n\"Her $quAd$, thaz her sîn sun ~sî~.\" = \"He $quOth$ that he ~was~ his son.\"\n\nHere ~sî~ is the Old High German subjunctive of ~sîn~ (be), the direct ancestor of modern ~sei~.\n\nThe ~Hildebrandslied~ (c. 830 AD) contains subjunctive wishes:\n\n\"Wêttu, irmingot, obana ab hevane, dat du nêo dana halt mit sus sippan man dinc ni ~gileitôs~.\" = \"Know, great god above in heaven, that you never ~let~ (such) a thing happen with so close a kinsman.\"\n\nThe verb ~gileitôs~ is subjunctive, expressing a desperate wish or prayer.\n\nOver centuries, the two German subjunctives (Konjunktiv I and Konjunktiv II) developed increasingly distinct functions. Konjunktiv I specialized in reported speech and formal wishes, while Konjunktiv II took over hypothetical and counterfactual meanings. This functional split—still evolving in Middle High German—is now firmly established in the modern language.`Konjunktiv I vs. Konjunktiv II`Understanding when to use Konjunktiv I versus Konjunktiv II (specifically, Präteritum Konjunktiv II) is crucial:\n\n🇩🇪 ~Konjunktiv I~: Indirect speech, wishes, formal commands, recipes. Reports reality as perceived by someone else.\n🇩🇪 ~Konjunktiv II~: Hypotheticals, counterfactuals, polite requests, unreal conditions. Describes situations contrary to fact or uncertain.\n\nWhen Präsens Konjunktiv I conjugations are identical to those of Präsens Indikativ, substitute Präteritum Konjunktiv II:\n\n🇩🇪 Indirekte Rede: \"Er sagte, sie ~haben~ / ~hätten~ recht.\" (They said they $WERE$ right.)\n   — If the speaker is \"sie\" (3rd plural), ~haben~ = Präsens Indikativ = Präsens Konjunktiv I, so ~hätten~ (Präteritum Konjunktiv II) is preferred for clarity.\n\n🇩🇪 But with ~sein~: \"Er sagte, sie $seIen$ müde.\" (They said they $WERE$ tired.)\n   — $seIen$ is unambiguously Präsens Konjunktiv I, so no substitution is needed.\n\nIn practice, this means ~sein~ carries much of the Präsens Konjunktiv I workload, while other verbs often appear in Präteritum Konjunktiv II in indirect speech.`Why the Präsens Konjunktiv I Matters`The Präsens Konjunktiv I is the grammatical backbone of formal German discourse. Without it, journalism would lose its ability to report claims without endorsing them. Academic writing would lack its precise apparatus for attributing statements to sources. Legal texts would blur the line between assertion and allegation.\n\nFor learners, the Präsens Konjunktiv I may seem archaic or overly formal—and in casual conversation, it largely is. But reading any serious German text—a newspaper, a novel, a scientific paper—requires recognizing Präsens Konjunktiv I conjugations and understanding their function.\n\nThe good news: formation is regular. Every verb (except ~sein~) follows the same pattern: infinitive stem + ~-e~, ~-est~, ~-e~, ~-en~, ~-et~, ~-en~. There is no ablaut, no family-specific variation, no unpredictable irregularity.\n\nLearn to recognize $seI$, $seIen$, $seIst$, and $seIet$—the unmistakable subjunctive conjugations of ~sein~—and you will understand most Präsens Konjunktiv I passages you encounter. These four conjugations are the signposts that tell you: \"This is reported speech. Someone said this. The writer is not vouching for its truth.\"\n\nMaster the Präsens Konjunktiv I, and you gain access to the full register of formal German—the language of Goethe's narrators, Kafka's bureaucrats, and the journalists who report the news with grammatical precision."
           }
         }
       }

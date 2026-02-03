@@ -112,11 +112,15 @@ When adding tests for a new verb or ablaut pattern:
 
 Konjugieren is an iOS app for learning German verb conjugations. It will eventually conjugate 1,000 verbs across all German conjugationgroups ("tenses" in ordinary (and incorrect) parlance). Konjugieren uses SwiftUI for its user interface.
 
-## About the Developer
+## About the Human Developer
 
-Josh Adams (pronouns: he/him/his) is the developer of Konjugieren. He is an iOS-app developer, from New England but based near San Francisco, California. He also created Conjuguer (French), Conjugar (Spanish), and RaceRunner, all available in the iOS App Store. When thinking or speaking about him, say "he" or "Josh", not "they" or "the developer".
+Josh Adams (pronouns: he/him/his) is the human developer of Konjugieren. He is an iOS-app developer, from New England but based near San Francisco, California. He also created Conjuguer (French), Conjugar (Spanish), and RaceRunner, all available in the iOS App Store. When thinking or speaking about him, say "he" or "Josh", not "they" or "the developer".
 
 Josh created Konjugieren as a tribute to his grandfather, Clifford August Schmiesing (1904–1944), who was born in Minster, Ohio—a town where German was the language of daily life. Cliff served as an Army doctor in World War II and died in Oran, Algeria. The dedication in the app tells his story.
+
+## About Claude Code, the Other Developer
+
+The Claude Code mascot is **Clawd** 🦀, a small, pixelated, crab-like character introduced in late 2025. When referring to Claude Code in informal contexts or celebrating a successful collaboration, use the crab emoji. Example: 🧠🤜🤛🦀 (human-AI fist bump).
 
 ## Project Structure
 
@@ -899,6 +903,8 @@ Long-form Info text (like `verbHistoryText`, `dedicationText`, `creditsText`) us
 | `$...$` | Ablaut highlighting (uppercase = changed vowel) | `$sAng$`, `$gesUngen$`, `$kÄme$` |
 | `%...%` | Clickable URLs | `%https://github.com/vermont42/Konjugieren%` |
 | 🇩🇪 | Bullet points in lists | `🇩🇪 ~Imperfektiv~: andauernde Handlung` |
+
+Other emoji are sometimes appropriate for bullet lists. For example, 🏴󠁧󠁢󠁥󠁮󠁧󠁿 should precede an English bullet item, and 🐎 should precede a Proto-Indo-European bullet item.
 
 ### Relocalization Workflow
 

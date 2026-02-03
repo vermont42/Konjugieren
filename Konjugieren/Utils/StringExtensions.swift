@@ -81,7 +81,7 @@ extension String {
     return blocks
   }
 
-  private func parseBodyToSegments() -> [TextSegment] {
+  func parseBodyToSegments() -> [TextSegment] {
     var segments: [TextSegment] = []
     var currentText = ""
 

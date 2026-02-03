@@ -7,6 +7,7 @@ enum BrowseableFamily: String, CaseIterable, Identifiable {
   case ieren
   case separable
   case inseparable
+  case ablaut
 
   var id: String { rawValue }
 
@@ -24,6 +25,8 @@ enum BrowseableFamily: String, CaseIterable, Identifiable {
       return L.BrowseableFamily.separable
     case .inseparable:
       return L.BrowseableFamily.inseparable
+    case .ablaut:
+      return L.BrowseableFamily.ablaut
     }
   }
 
@@ -41,6 +44,8 @@ enum BrowseableFamily: String, CaseIterable, Identifiable {
       return L.FamilyBrowse.separableShort
     case .inseparable:
       return L.FamilyBrowse.inseparableShort
+    case .ablaut:
+      return L.FamilyBrowse.ablautShort
     }
   }
 
@@ -58,6 +63,8 @@ enum BrowseableFamily: String, CaseIterable, Identifiable {
       return L.FamilyDetail.separableLong
     case .inseparable:
       return L.FamilyDetail.inseparableLong
+    case .ablaut:
+      return L.FamilyDetail.ablautLong
     }
   }
 
@@ -103,6 +110,8 @@ enum BrowseableFamily: String, CaseIterable, Identifiable {
           return true
         }
         return false
+      case .ablaut:
+        return verb.ablautGroup != nil
       }
     }
   }
@@ -144,6 +153,17 @@ enum BrowseableFamily: String, CaseIterable, Identifiable {
       return "arrow.left.arrow.right"
     case .inseparable:
       return "link"
+    case .ablaut:
+      return "waveform.path"
     }
+  }
+
+  var hasAblautList: Bool {
+    self == .ablaut
+  }
+
+  var ablautGroups: [AblautGroupInfo] {
+    guard hasAblautList else { return [] }
+    return AblautGroupInfo.sortedAlphabetically
   }
 }

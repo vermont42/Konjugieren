@@ -2,6 +2,7 @@
 
 import Foundation
 import Observation
+import UIKit
 
 @MainActor
 @Observable
@@ -58,6 +59,26 @@ class Settings {
   static let searchScopeKey = "searchScope"
   static let searchScopeDefault: SearchScope = .infinitiveOnly
 
+  var appIcon: AppIcon = appIconDefault {
+    didSet {
+      if appIcon != oldValue {
+        getterSetter.set(key: Settings.appIconKey, value: "\(appIcon)")
+        setAppIcon(appIcon)
+      }
+    }
+  }
+  static let appIconKey = "appIcon"
+  static let appIconDefault: AppIcon = .hat
+
+  private func setAppIcon(_ icon: AppIcon) {
+    guard UIApplication.shared.supportsAlternateIcons else { return }
+    UIApplication.shared.setAlternateIconName(icon.alternateIconName) { error in
+      if let error {
+        print("Failed to set icon: \(error.localizedDescription)")
+      }
+    }
+  }
+
   init(getterSetter: GetterSetter) {
     self.getterSetter = getterSetter
     if let conjugationgroupLangString = getterSetter.get(key: Settings.conjugationgroupLangKey) {
@@ -88,6 +109,12 @@ class Settings {
       searchScope = SearchScope(rawValue: searchScopeString) ?? Settings.searchScopeDefault
     } else {
       getterSetter.set(key: Settings.searchScopeKey, value: "\(searchScope)")
+    }
+
+    if let appIconString = getterSetter.get(key: Settings.appIconKey) {
+      appIcon = AppIcon(rawValue: appIconString) ?? Settings.appIconDefault
+    } else {
+      getterSetter.set(key: Settings.appIconKey, value: "\(appIcon)")
     }
   }
 }

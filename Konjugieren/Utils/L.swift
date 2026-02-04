@@ -741,6 +741,14 @@ enum L {
     static var searchScopeDescription: String {
       String(localized: "Settings.searchScopeDescription")
     }
+
+    static var appIconHeading: String {
+      String(localized: "Settings.appIconHeading")
+    }
+
+    static var appIconDescription: String {
+      String(localized: "Settings.appIconDescription")
+    }
   }
 
   enum Conjugationgroup {
@@ -842,6 +850,20 @@ enum L {
 
     static var disable: String {
       String(localized: "AudioFeedback.disable")
+    }
+  }
+
+  enum AppIcon {
+    static var hat: String {
+      String(localized: "AppIcon.hat")
+    }
+
+    static var pretzel: String {
+      String(localized: "AppIcon.pretzel")
+    }
+
+    static var bundestag: String {
+      String(localized: "AppIcon.bundestag")
     }
   }
 

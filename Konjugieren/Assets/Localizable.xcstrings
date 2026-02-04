@@ -791,6 +791,54 @@
         }
       }
     },
+    "AppIcon.bundestag" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bundestag"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bundestag"
+          }
+        }
+      }
+    },
+    "AppIcon.hat" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hut"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hat"
+          }
+        }
+      }
+    },
+    "AppIcon.pretzel" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Brezel"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pretzel"
+          }
+        }
+      }
+    },
     "BrowseableFamily.ablaut" : {
       "localizations" : {
         "en" : {
@@ -2925,6 +2973,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Audio Feedback"
+          }
+        }
+      }
+    },
+    "Settings.appIconDescription" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Einstellung bestimmt das Symbol, das auf Ihrem Home-Bildschirm angezeigt wird."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This setting determines the icon displayed on your Home Screen."
+          }
+        }
+      }
+    },
+    "Settings.appIconHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App-Symbol"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "App Icon"
           }
         }
       }

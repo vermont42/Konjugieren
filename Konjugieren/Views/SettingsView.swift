@@ -88,6 +88,21 @@ struct SettingsView: View {
 
             Spacer(minLength: Layout.tripleDefaultSpacing)
 
+            Text(L.Settings.appIconHeading)
+              .subheadingLabel()
+
+            Picker("", selection: $settings.appIcon) {
+              ForEach(AppIcon.allCases, id: \.self) { appIcon in
+                Text(appIcon.localizedAppIcon).tag(appIcon)
+              }
+            }
+            .segmentedPicker()
+
+            Text(L.Settings.appIconDescription)
+              .settingsLabel()
+
+            Spacer(minLength: Layout.tripleDefaultSpacing)
+
             if Current.gameCenter.isAuthenticated {
               Button(L.GameCenter.viewLeaderboard) {
                 Current.gameCenter.showLeaderboard()

@@ -11,7 +11,7 @@ struct MainTabView: View {
         VerbBrowseView()
       }
 
-      Tab(L.Navigation.families, systemImage: "key.fill") {
+      Tab(L.Navigation.families, systemImage: "figure.and.child.holdinghands") {
         FamilyBrowseView()
       }
 

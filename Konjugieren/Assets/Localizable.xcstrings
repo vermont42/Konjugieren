@@ -759,38 +759,6 @@
         }
       }
     },
-    "AudioFeedback.disable" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Deaktivieren"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Disable"
-          }
-        }
-      }
-    },
-    "AudioFeedback.enable" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aktivieren"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enable"
-          }
-        }
-      }
-    },
     "AppIcon.bundestag" : {
       "localizations" : {
         "de" : {
@@ -835,6 +803,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pretzel"
+          }
+        }
+      }
+    },
+    "AudioFeedback.disable" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deaktivieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Disable"
+          }
+        }
+      }
+    },
+    "AudioFeedback.enable" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aktivieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enable"
           }
         }
       }
@@ -1578,7 +1578,7 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "`About`The ~Futur Konjunktiv I~ is German's conjugationgroup for reporting future events in indirect speech. While the Präsens Konjunktiv I reports what someone says is happening now, and the Perfekt Konjunktiv I reports what someone said happened, the Futur Konjunktiv I reports what someone says ~will happen~—future events viewed through the lens of reported speech.\n\nThis compound conjugationgroup combines:\n\n🇩🇪 The auxiliary verb ~werden~ in Konjunktiv I conjugation\n🇩🇪 The ~infinitive~ of the main verb\n\nThe result: \"Er sagte, er ~werde~ morgen ~kommen~\" (He said he would come tomorrow) or \"Sie berichtete, es ~werde~ regnen\" (She reported that it would rain).\n\nLike other Konjunktiv I conjugations, the Futur Konjunktiv I appears primarily in formal writing—journalism, academic prose, and literary narration—where German carefully distinguishes between what the writer predicts directly and what the writer reports others as predicting.`Formation`The Futur Konjunktiv I combines the Konjunktiv I of ~werden~ with the main verb's infinitive.`Konjunktiv I Conjugations of Werden`\n🇩🇪 ich ~werde~ (I will — identical to indicative)\n🇩🇪 du ~werdest~ (you will)\n🇩🇪 er/sie/es ~werde~ (he/she/it will)\n🇩🇪 wir ~werden~ (we will — identical to indicative)\n🇩🇪 ihr ~werdet~ (you all will — identical to indicative)\n🇩🇪 sie/Sie ~werden~ (they/you-formal will — identical to indicative)\n\nThe distinctive conjugations are ~werde~ (1s/3s) and ~werdest~ (2s). The plurals are identical to the indicative, which sometimes triggers substitution with ~würde~ conjugations.`Complete Examples`\n🇩🇪 Er sagte, er ~werde~ das Buch ~lesen~. (He said he would read the book.)\n🇩🇪 Sie berichtete, sie ~werde~ morgen ~ankommen~. (She reported she would arrive tomorrow.)\n🇩🇪 Der Minister erklärte, die Regierung ~werde~ handeln. (The minister declared the government would act.)\n🇩🇪 Man teilte mit, es ~werde~ Änderungen ~geben~. (It was announced there would be changes.)\n🇩🇪 Er versprach, er ~werde~ es nie ~vergessen~. (He promised he would never forget it.)`The Third-Person Dominance`As with other Konjunktiv I conjugations, the Futur Konjunktiv I appears overwhelmingly in the third person. Indirect speech typically reports what ~others~ said about the future:\n\n🇩🇪 er/sie ~werde~ + infinitive\n🇩🇪 sie (plural) ~würden~ + infinitive (Konjunktiv II substitution)\n\nFirst-person conjugations are rare because they are identical to the indicative—and because speakers typically use the indicative to state their own future intentions directly.`When Konjunktiv II Substitutes`When Konjunktiv I conjugations are identical to the indicative, German substitutes Konjunktiv II (~würde~) to preserve the reported-speech signal:\n\n🇩🇪 Ambiguous: \"Sie sagten, sie ~werden~ kommen.\" (Did the writer or the speakers assert this?)\n🇩🇪 Clear: \"Sie sagten, sie ~würden~ kommen.\" (Unambiguous reported speech)\n\nThis substitution is grammatically correct and extremely common, especially in the first person and all plural conjugations.`Futur Konjunktiv I vs. Futur Indikativ`Compare these sentences:\n\n🇩🇪 ~Indicative~: \"Der Sprecher sagt, das Wetter ~wird~ besser.\" — The writer endorses this as likely true.\n🇩🇪 ~Konjunktiv I~: \"Der Sprecher sagt, das Wetter ~werde~ besser.\" — The writer reports the speaker's prediction without endorsing it.\n\nThe Konjunktiv I signals: \"This is what they say will happen—I am not personally vouching for it.\" This distancing function is crucial in objective reporting.`Usage in Journalism and Formal Writing`The Futur Konjunktiv I is a hallmark of German journalistic style when reporting predictions, plans, and promises:\n\n🇩🇪 \"Der Kanzler kündigte an, die Regierung ~werde~ neue Maßnahmen ~ergreifen~.\" = \"The Chancellor announced that the government would take new measures.\"\n\n🇩🇪 \"Laut Experten ~werde~ die Wirtschaft im nächsten Jahr ~wachsen~.\" = \"According to experts, the economy will grow next year.\"\n\n🇩🇪 \"Die Firma teilte mit, sie ~werde~ 500 neue Stellen ~schaffen~.\" = \"The company announced it would create 500 new positions.\"\n\n🇩🇪 \"Der Wetterdienst prognostizierte, es ~werde~ am Wochenende ~schneien~.\" = \"The weather service predicted it would snow on the weekend.\"\n\nThe Konjunktiv I maintains journalistic neutrality—the reporter conveys the prediction without endorsing its accuracy.`Differences from English`English handles reported future statements differently:\n\n🇩🇪 ~Verb-conjugation marking~: German marks reported speech on the verb itself (~werde~ vs. ~wird~). English relies on context and sometimes \"backshifts\" will to would: \"He said he ~would~ come.\"\n🇩🇪 ~Ambiguity~: English \"He said he would come\" is ambiguous—it could report \"I will come\" or express a conditional. German ~werde kommen~ unambiguously marks reported future.\n🇩🇪 ~Formality~: German Konjunktiv I is fully productive in formal registers. English has no equivalent dedicated conjugation for reported future.\n🇩🇪 ~Substitution~: German's würde substitution when Konjunktiv I matches indicative has no English parallel.`Relationship to Other Conjugationgroups`The Futur Konjunktiv I relates to several other conjugationgroups:\n\n🇩🇪 ~Präsens Konjunktiv I~: Reports present states in indirect speech. \"Er sagt, er ~sei~ müde.\"\n🇩🇪 ~Perfekt Konjunktiv I~: Reports past events in indirect speech. \"Er sagte, er ~habe~ das ~gemacht~.\"\n🇩🇪 ~Futur Konjunktiv I~: Reports future events in indirect speech. \"Er sagt, er ~werde~ ~kommen~.\"\n🇩🇪 ~Futur Indikativ~: States future events directly. \"Er ~wird~ ~kommen~.\"\n🇩🇪 ~Futur Konjunktiv II~: Expresses hypothetical future. \"Er ~würde~ ~kommen~, wenn...\"\n\nThe Konjunktiv I system provides a complete temporal framework for indirect speech—past, present, and future.`Literary Examples`The Futur Konjunktiv I appears in German literature when characters' predictions, promises, or expectations are reported.`Goethe — The Sorrows of Young Werther (1774)`\"Du bist so gut, meiner Mutter zu sagen, daß ich ihr Geschäft bestens betreiben und ihr ehstens Nachricht davon ~geben werde~.\" = \"Be so good as to tell my mother that I shall attend to her business as well as I can, and shall write to her about it soon.\"\n\nWerther asks Wilhelm to relay a message—a promise about future action. The ~werde geben~ conveys reported future: what Wilhelm should say Werther ~will do~.\n\n\"Es ~werde~ alles ~gut gehen~.\" = \"All will go on well.\"\n\nA reported assurance about the future—someone's prediction conveyed through subjunctive distance.`Kafka — The Trial (1925)`\"Man setze voraus, daß er damit einverstanden sei; wollte er einen andern Termin wünschen, so ~würde~ man ihm, so gut es ginge, ~entgegenkommen~.\" = \"They assumed he would agree; should he wish a different time, they would accommodate him as best they could.\"\n\nKafka's bureaucratic world is full of reported arrangements. The court's message uses subjunctive conjugations to convey what \"they\" predict and promise—accommodation if K. requests a different time.\n\n\"Sie ~werden~ noch ~einsehn~, wie wahr das alles ist.\" = \"You will yet see how true all this is.\"\n\nThe guard's prediction to K. uses the indicative ~werden~, showing the guard's confident assertion rather than distanced reportage.`Mann — Death in Venice (1912)`\"Er sagte sich, daß er Venedig nie wieder ~sehen solle~, daß dies ein Abschied für immer ~sei~.\" = \"He told himself that he should never see Venice again, that this was a farewell forever.\"\n\nAschenbach's inner speech is reported using Konjunktiv I conjugations. The ~solle~ (Konjunktiv I of ~sollen~) and ~sei~ convey his own predictions to himself—what he believes ~will~ be the case.`Why the Futur Konjunktiv I Matters`The Futur Konjunktiv I is essential for:\n\n🇩🇪 ~Reading German journalism~: News articles use it constantly to report promises, predictions, and announcements without editorial endorsement.\n🇩🇪 ~Academic writing~: Scholarly prose employs it to cite predictions and forecasts from sources.\n🇩🇪 ~Formal announcements~: Official communications use it for attributed future statements.\n🇩🇪 ~Literary narration~: Authors use it to report characters' expectations and intentions.\n\nWhile less common than its present and perfect counterparts, the Futur Konjunktiv I completes the Konjunktiv I system—giving German a dedicated conjugationgroup for every temporal dimension of reported speech. Understanding it unlocks the full expressive range of formal German prose."
+            "value" : "`About`The ~Futur Konjunktiv I~ is German's conjugationgroup for reporting future events in indirect speech. While the Präsens Konjunktiv I reports what someone says is happening now, and the Perfekt Konjunktiv I reports what someone said happened, the Futur Konjunktiv I reports what someone says ~will happen~—future events viewed through the lens of reported speech.\n\nThis compound conjugationgroup combines:\n\n🇩🇪 The auxiliary verb ~werden~ in Präsens Konjunktiv I conjugation\n🇩🇪 The ~infinitive~ of the main verb\n\nThe result: \"Er sagte, er ~werde~ morgen ~kommen~\" (He said he would come tomorrow) or \"Sie berichtete, es ~werde~ regnen\" (She reported that it would rain).\n\nLike other Konjunktiv I conjugations, the Futur Konjunktiv I appears primarily in formal writing—journalism, academic prose, and literary narration—where German carefully distinguishes between what the writer predicts directly and what the writer reports others as predicting.`Conjugation`The Futur Konjunktiv I combines the Präsens Konjunktiv I of ~werden~ with the main verb's infinitive.`Präsens Konjunktiv I Conjugations of Werden`🇩🇪 ich ~werde~ (I will — identical to indicative)\n🇩🇪 du ~werdest~ (you will)\n🇩🇪 er/sie/es ~werde~ (he/she/it will)\n🇩🇪 wir ~werden~ (we will — identical to indicative)\n🇩🇪 ihr ~werdet~ (you all will — identical to indicative)\n🇩🇪 sie/Sie ~werden~ (they/you-formal will — identical to indicative)\n\nThe distinctive conjugations are ~werde~ (1s/3s) and ~werdest~ (2s). The plurals are identical to the indicative, which sometimes triggers substitution with ~würde~ conjugations.`Complete Examples`🇩🇪 Er sagte, er ~werde~ das Buch ~lesen~. (He said he would read the book.)\n🇩🇪 Sie berichtete, sie ~werde~ morgen ~ankommen~. (She reported she would arrive tomorrow.)\n🇩🇪 Der Minister erklärte, die Regierung ~werde~ handeln. (The minister declared the government would act.)\n🇩🇪 Man teilte mit, es ~werde~ Änderungen ~geben~. (It was announced there would be changes.)\n🇩🇪 Er versprach, er ~werde~ es nie ~vergessen~. (He promised he would never forget it.)`The Third-Person Dominance`As with other Konjunktiv I conjugations, the Futur Konjunktiv I appears overwhelmingly in the third person. Indirect speech typically reports what ~others~ said about the future:\n\n🇩🇪 er/sie ~werde~ + infinitive\n🇩🇪 sie (plural) ~würden~ + infinitive (Konjunktiv II substitution)\n\nFirst-person conjugations are rare because they are identical to the indicative—and because speakers typically use the indicative to state their own future intentions directly.`When Präteritum Konjunktiv II Substitutes`When Präsens Konjunktiv I conjugations are identical to the indicative, German substitutes Präteritum Konjunktiv II (~würde~) to preserve the reported-speech signal:\n\n🇩🇪 Ambiguous: \"Sie sagten, sie ~werden~ kommen.\" (Did the writer or the speakers assert this?)\n🇩🇪 Clear: \"Sie sagten, sie ~würden~ kommen.\" (Unambiguous reported speech)\n\nThis substitution is grammatically correct and extremely common, especially in the first person and all plural conjugations.`Futur Konjunktiv I vs. Futur Indikativ`Compare these sentences:\n\n🇩🇪 ~Indicative~: \"Der Sprecher sagt, das Wetter ~wird~ besser.\" — The writer endorses this as likely true.\n🇩🇪 ~Konjunktiv I~: \"Der Sprecher sagt, das Wetter ~werde~ besser.\" — The writer reports the speaker's prediction without endorsing it.\n\nThe Futur Konjunktiv I signals: \"This is what they say will happen—I am not personally vouching for it.\" This distancing function is crucial in objective reporting.`Usage in Journalism and Formal Writing`The Futur Konjunktiv I is a hallmark of German journalistic style when reporting predictions, plans, and promises:\n\n🇩🇪 \"Der Kanzler kündigte an, die Regierung ~werde~ neue Maßnahmen ~ergreifen~.\" = \"The Chancellor announced that the government would take new measures.\"\n\n🇩🇪 \"Laut Experten ~werde~ die Wirtschaft im nächsten Jahr ~wachsen~.\" = \"According to experts, the economy will grow next year.\"\n\n🇩🇪 \"Die Firma teilte mit, sie ~werde~ 500 neue Stellen ~schaffen~.\" = \"The company announced it would create 500 new positions.\"\n\n🇩🇪 \"Der Wetterdienst prognostizierte, es ~werde~ am Wochenende ~schneien~.\" = \"The weather service predicted it would snow on the weekend.\"\n\nThe Futur Konjunktiv I maintains journalistic neutrality—the reporter conveys the prediction without endorsing its accuracy.`Differences from English`English handles reported future statements differently:\n\n🇩🇪/🏴󠁧󠁢󠁥󠁮󠁧󠁿 ~Verb-conjugation marking~: German marks reported speech on the verb itself (~werde~ vs. ~wird~). English relies on context and sometimes \"backshifts\" will to would: \"He said he ~would~ come.\"\n🇩🇪/🏴󠁧󠁢󠁥󠁮󠁧󠁿 ~Ambiguity~: English \"He said he would come\" is ambiguous—it could report \"I will come\" or express a conditional. German ~werde kommen~ unambiguously marks reported future.\n🇩🇪/🏴󠁧󠁢󠁥󠁮󠁧󠁿 ~Formality~: German Futur Konjunktiv I is fully productive in formal registers. English has no equivalent dedicated conjugation for reported future.\n🇩🇪/🏴󠁧󠁢󠁥󠁮󠁧󠁿 ~Substitution~: German's $wÜrde$ substitution when Futur Konjunktiv I matches Präsens Indikativ has no English parallel.`Relationship to Other Conjugationgroups`The Futur Konjunktiv I relates to several other conjugationgroups:\n\n🇩🇪 ~Präsens Konjunktiv I~: Reports present states in indirect speech. \"Er sagt, er ~sei~ müde.\"\n🇩🇪 ~Perfekt Konjunktiv I~: Reports past events in indirect speech. \"Er sagte, er ~habe~ das ~gemacht~.\"\n🇩🇪 ~Futur Konjunktiv I~: Reports future events in indirect speech. \"Er sagt, er ~werde~ ~kommen~.\"\n🇩🇪 ~Futur Indikativ~: States future events directly. \"Er ~wird~ ~kommen~.\"\n🇩🇪 ~Futur Konjunktiv II~: Expresses hypothetical future. \"Er ~würde~ ~kommen~, wenn...\"\n\nThe Konjunktiv I system provides a complete temporal framework for indirect speech—past, present, and future.`Literary Examples`The Futur Konjunktiv I appears in German literature when characters' predictions, promises, or expectations are reported.`Goethe — The Sorrows of Young Werther (1774)`\"Du bist so gut, meiner Mutter zu sagen, daß ich ihr Geschäft bestens betreiben und ihr ehstens Nachricht davon ~geben werde~.\" = \"Be so good as to tell my mother that I shall attend to her business as well as I can, and shall write to her about it soon.\"\n\nWerther asks Wilhelm to relay a message—a promise about future action. The ~werde geben~ conveys reported future: what Wilhelm should say Werther ~will do~.\n\n\"Es ~werde~ alles ~gut gehen~.\" = \"All will go on well.\"\n\nA reported assurance about the future—someone's prediction conveyed through subjunctive distance.`Kafka — The Trial (1925)`\"Man setze voraus, daß er damit einverstanden sei; wollte er einen andern Termin wünschen, so ~würde~ man ihm, so gut es ginge, ~entgegenkommen~.\" = \"They assumed he would agree; should he wish a different time, they would accommodate him as best they could.\"\n\nKafka's bureaucratic world is full of reported arrangements. The court's message uses subjunctive conjugations to convey what \"they\" predict and promise—accommodation if K. requests a different time.\n\n\"Sie ~werden~ noch ~einsehn~, wie wahr das alles ist.\" = \"You will yet see how true all this is.\"\n\nThe guard's prediction to K. uses the indicative ~werden~, showing the guard's confident assertion rather than distanced reportage.`Mann — Death in Venice (1912)`\"Denn der Verliebte besorgte nichts, als daß Tadzio abreisen könnte und erkannte nicht ohne Entsetzen, daß er nicht mehr zu leben ~wissen werde~, wenn das geschähe.\" = \"For in his infatuation he cared about nothing but the possibility of Tadzio's leaving, and he realized with something like terror that he would not know how to go on living if this occurred.\"\n\nMann reports Aschenbach's inner realization through Futur Konjunktiv I. The ~wissen werde~ (Futur Konjunktiv I of ~wissen~) conveys what Aschenbach recognizes ~will~ be true—that without Tadzio, he will not know how to go on living. The narrator's Konjunktiv I distances this as reported inner thought rather than narrative assertion.`Why the Futur Konjunktiv I Matters`The Futur Konjunktiv I is essential for:\n\n🇩🇪 ~Reading German journalism~: News articles use it constantly to report promises, predictions, and announcements without editorial endorsement.\n🇩🇪 ~Academic writing~: Scholarly prose employs it to cite predictions and forecasts from sources.\n🇩🇪 ~Formal announcements~: Official communications use it for attributed future statements.\n🇩🇪 ~Literary narration~: Authors use it to report characters' expectations and intentions.\n\nWhile less common than its present and past counterparts, the Futur Konjunktiv I completes the Konjunktiv I system—giving German a dedicated conjugationgroup for every temporal dimension of reported speech. Understanding it unlocks the full expressive range of formal German prose."
           }
         }
       }
@@ -2945,38 +2945,6 @@
         }
       }
     },
-    "Settings.audioFeedbackDescription" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Diese Einstellung aktiviert Audio-Feedback während der Quizze."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "This setting enables audio feedback during quizzes."
-          }
-        }
-      }
-    },
-    "Settings.audioFeedbackHeading" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Audio-Feedback"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Audio Feedback"
-          }
-        }
-      }
-    },
     "Settings.appIconDescription" : {
       "localizations" : {
         "de" : {
@@ -3005,6 +2973,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "App Icon"
+          }
+        }
+      }
+    },
+    "Settings.audioFeedbackDescription" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Einstellung aktiviert Audio-Feedback während der Quizze."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This setting enables audio feedback during quizzes."
+          }
+        }
+      }
+    },
+    "Settings.audioFeedbackHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Audio-Feedback"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Audio Feedback"
           }
         }
       }

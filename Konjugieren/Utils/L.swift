@@ -952,4 +952,90 @@ enum L {
       String(localized: "GameCenter.viewLeaderboard")
     }
   }
+
+  enum Onboarding {
+    static var conjugationgroupBody: String {
+      String(localized: "Onboarding.conjugationgroupBody")
+    }
+
+    static var conjugationgroupButtonTitle: String {
+      String(localized: "Onboarding.conjugationgroupButtonTitle")
+    }
+
+    static var conjugationgroupHeading: String {
+      String(localized: "Onboarding.conjugationgroupHeading")
+    }
+
+    static var dismiss: String {
+      String(localized: "Onboarding.dismiss")
+    }
+
+    static var skip: String {
+      String(localized: "Onboarding.skip")
+    }
+
+    static var getStarted: String {
+      String(localized: "Onboarding.getStarted")
+    }
+
+    static var showOnboarding: String {
+      String(localized: "Onboarding.showOnboarding")
+    }
+
+    static var welcomeTitle: String {
+      String(localized: "Onboarding.welcomeTitle")
+    }
+
+    static var welcomeBody: String {
+      String(localized: "Onboarding.welcomeBody")
+    }
+
+    static var browseTitle: String {
+      String(localized: "Onboarding.browseTitle")
+    }
+
+    static var browseBody: String {
+      String(localized: "Onboarding.browseBody")
+    }
+
+    static var quizTitle: String {
+      String(localized: "Onboarding.quizTitle")
+    }
+
+    static var quizBody: String {
+      String(localized: "Onboarding.quizBody")
+    }
+
+    static var learnTitle: String {
+      String(localized: "Onboarding.learnTitle")
+    }
+
+    static var learnBody: String {
+      String(localized: "Onboarding.learnBody")
+    }
+
+    static var familiesTitle: String {
+      String(localized: "Onboarding.familiesTitle")
+    }
+
+    static var familiesBody: String {
+      String(localized: "Onboarding.familiesBody")
+    }
+
+    static var browseVerbsButton: String {
+      String(localized: "Onboarding.browseVerbsButton")
+    }
+
+    static var exploreFamiliesButton: String {
+      String(localized: "Onboarding.exploreFamiliesButton")
+    }
+
+    static var startQuizButton: String {
+      String(localized: "Onboarding.startQuizButton")
+    }
+
+    static var readArticlesButton: String {
+      String(localized: "Onboarding.readArticlesButton")
+    }
+  }
 }

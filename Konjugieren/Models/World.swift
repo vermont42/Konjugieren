@@ -15,6 +15,7 @@ class World {
   var verb: Verb?
   var family: String?
   var info: Info?
+  var selectedTab: TabSelection = .verbs
 
   init(settings: Settings, gameCenter: GameCenter, soundPlayer: SoundPlayer, fatalError: FatalError) {
     self.settings = settings

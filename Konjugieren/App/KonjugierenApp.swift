@@ -7,6 +7,16 @@ struct KonjugierenApp: App {
     WindowGroup {
       MainTabView()
         .onOpenURL(perform: Current.handleURL(_:))
+        .fullScreenCover(isPresented: Binding(
+          get: { !Current.settings.hasSeenOnboarding },
+          set: { newValue in
+            if !newValue {
+              Current.settings.hasSeenOnboarding = true
+            }
+          }
+        )) {
+          OnboardingView()
+        }
     }
   }
 

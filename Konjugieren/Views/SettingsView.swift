@@ -3,6 +3,8 @@
 import SwiftUI
 
 struct SettingsView: View {
+  @State private var showingOnboarding = false
+
   var body: some View {
     @Bindable var settings = Current.settings
 
@@ -111,6 +113,14 @@ struct SettingsView: View {
               .frame(maxWidth: .infinity)
               .padding(.top, Layout.defaultSpacing)
             }
+
+            Button(L.Onboarding.showOnboarding) {
+              showingOnboarding = true
+            }
+            .funButton()
+            .frame(maxWidth: .infinity)
+            .padding(.top, Layout.defaultSpacing)
+            .padding(.bottom, Layout.doubleDefaultSpacing)
           }
         }
         .onAppear {
@@ -118,6 +128,9 @@ struct SettingsView: View {
         }
       }
       .navigationTitle(L.Navigation.settings)
+      .fullScreenCover(isPresented: $showingOnboarding) {
+        OnboardingView(isReshow: true)
+      }
     }
   }
 }

@@ -70,6 +70,16 @@ class Settings {
   static let appIconKey = "appIcon"
   static let appIconDefault: AppIcon = .hat
 
+  var hasSeenOnboarding: Bool = hasSeenOnboardingDefault {
+    didSet {
+      if hasSeenOnboarding != oldValue {
+        getterSetter.set(key: Settings.hasSeenOnboardingKey, value: "\(hasSeenOnboarding)")
+      }
+    }
+  }
+  static let hasSeenOnboardingKey = "hasSeenOnboarding"
+  static let hasSeenOnboardingDefault: Bool = false
+
   private func setAppIcon(_ icon: AppIcon) {
     guard UIApplication.shared.supportsAlternateIcons else { return }
     UIApplication.shared.setAlternateIconName(icon.alternateIconName) { error in
@@ -115,6 +125,12 @@ class Settings {
       appIcon = AppIcon(rawValue: appIconString) ?? Settings.appIconDefault
     } else {
       getterSetter.set(key: Settings.appIconKey, value: "\(appIcon)")
+    }
+
+    if let hasSeenOnboardingString = getterSetter.get(key: Settings.hasSeenOnboardingKey) {
+      hasSeenOnboarding = (hasSeenOnboardingString == "true")
+    } else {
+      getterSetter.set(key: Settings.hasSeenOnboardingKey, value: "\(hasSeenOnboarding)")
     }
   }
 }

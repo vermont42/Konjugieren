@@ -2225,6 +2225,216 @@
         }
       }
     },
+    "Onboarding.browseBody" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Explore 988 strong, weak, mixed, and -ieren verbs. Tap any verb to see its full conjugation table with ablaut changes and other irregularities highlighted. Sort verbs by frequency of use for study purposes."
+          }
+        }
+      }
+    },
+    "Onboarding.browseTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Browse 988 German Verbs"
+          }
+        }
+      }
+    },
+    "Onboarding.browseVerbsButton" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Browse Verbs"
+          }
+        }
+      }
+    },
+    "Onboarding.conjugationgroupBody" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "People often use the word ~tense~ to describe groups of related conjugations like German’s ~Präsens Indikativ~ and English’s ~present indicative~, but \"tense\" refers only to time: present, past, or future. These groups of conjugations actually encode tense, mood, and sometimes voice, all at once. No single English word captures this concept.\n\nThe phrase \"a set of conjugations for a verb, encoding tense, mood, and voice\" is accurate but far too verbose for repeated use. Josh Adams, the developer of Konjugieren, borrowed a technique from software development: when you need to refer to something verbose repeatedly, you give it a descriptive-but-pithy name. Thus ~conjugationgroup~ was born—a neologism that combines familiar English words to promote succinctness without sacrificing clarity."
+          }
+        }
+      }
+    },
+    "Onboarding.conjugationgroupButtonTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What is a conjugationgroup?"
+          }
+        }
+      }
+    },
+    "Onboarding.conjugationgroupHeading" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What Is a Conjugationgroup?"
+          }
+        }
+      }
+    },
+    "Onboarding.dismiss" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dismiss"
+          }
+        }
+      }
+    },
+    "Onboarding.exploreFamiliesButton" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Explore Families"
+          }
+        }
+      }
+    },
+    "Onboarding.familiesBody" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Discover the four verb families—strong, weak, mixed, and -ieren—each with distinct conjugation patterns. Understanding families helps you predict how unfamiliar verbs behave. Learn how separable and inseparable verbs behave across conjugationgroups. Use knowledge of prefix meaning and etymology to guess meanings of unfamiliar verbs."
+          }
+        }
+      }
+    },
+    "Onboarding.familiesTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Explore Verb Families"
+          }
+        }
+      }
+    },
+    "Onboarding.getStarted" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Get Started"
+          }
+        }
+      }
+    },
+    "Onboarding.learnBody" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Read comprehensive treatises on fourteen German conjugation groups, with examples from Goethe, Kafka, and Mann, plus a 5,000-year history of the German verb."
+          }
+        }
+      }
+    },
+    "Onboarding.learnTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deep-Dive Articles"
+          }
+        }
+      }
+    },
+    "Onboarding.quizBody" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Take timed quizzes, earn points, and compete on the Game Center leaderboard. Choose regular or ridiculous difficulty. The latter includes conjugationgroups that are rarely seen outside formal or academic writing. The reward for ridiculous difficulty is great: double the score."
+          }
+        }
+      }
+    },
+    "Onboarding.quizTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Test Your Knowledge"
+          }
+        }
+      }
+    },
+    "Onboarding.readArticlesButton" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Read Articles"
+          }
+        }
+      }
+    },
+    "Onboarding.showOnboarding" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Onboarding"
+          }
+        }
+      }
+    },
+    "Onboarding.skip" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skip"
+          }
+        }
+      }
+    },
+    "Onboarding.startQuizButton" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Take a Quiz"
+          }
+        }
+      }
+    },
+    "Onboarding.welcomeBody" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konjugieren helps you learn and practice German verb conjugations across every conjugationgroup."
+          }
+        }
+      }
+    },
+    "Onboarding.welcomeTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Master German-Verb Conjugation"
+          }
+        }
+      }
+    },
     "PIEMeaning.ab" : {
       "localizations" : {
         "de" : {

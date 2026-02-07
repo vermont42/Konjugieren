@@ -46,9 +46,11 @@ extension String {
     var blocks: [RichTextBlock] = []
     var currentText = ""
     var inSubheading = false
+    var justClosedSubheading = false
 
     for char in processedString {
       if char == String.subheadingSeparator {
+        justClosedSubheading = false
         if inSubheading {
           let trimmed = currentText.trimmingCharacters(in: .whitespacesAndNewlines)
           if !trimmed.isEmpty {
@@ -56,6 +58,7 @@ extension String {
           }
           currentText = ""
           inSubheading = false
+          justClosedSubheading = true
         } else {
           if !currentText.isEmpty {
             let segments = currentText.parseBodyToSegments()
@@ -65,6 +68,12 @@ extension String {
           inSubheading = true
         }
       } else {
+        if justClosedSubheading {
+          justClosedSubheading = false
+          if char == "\n" {
+            continue
+          }
+        }
         currentText.append(char)
       }
     }

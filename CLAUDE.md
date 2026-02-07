@@ -881,6 +881,30 @@ JSON-based string catalog supporting multiple languages. Each key maps to transl
 }
 ```
 
+### Editing Localizable.xcstrings Safely
+
+The Edit tool operates on **rendered text**, not raw JSON. This means the JSON escape sequence `\"` appears as a plain `"` in Edit's view. Consequently, any edit that adds, removes, or changes an ASCII double quote (`"`, U+0022) inside a JSON string value silently produces an unescaped `"` in the raw file, breaking JSON syntax.
+
+**Safe quote types:** Unicode curly quotes (`"` `"` `„`) need no JSON escaping and can be edited freely with the Edit tool.
+
+**The rule:** When an edit to a `.xcstrings` string value involves adding, removing, or changing ASCII `"` (U+0022) characters, use Python via Bash to perform the replacement on the raw file content — not the Edit tool. For example:
+
+```bash
+python3 -c "
+import pathlib, re
+p = pathlib.Path('Konjugieren/Assets/Localizable.xcstrings')
+t = p.read_text()
+t = t.replace('old escaped content', 'new escaped content')
+p.write_text(t)
+"
+```
+
+**Validation:** After every `.xcstrings` edit (regardless of tool used), validate JSON integrity before building:
+
+```bash
+python3 -c "import json; json.load(open('Konjugieren/Assets/Localizable.xcstrings'))"
+```
+
 ### Adding New Localized Strings
 
 1. Add the accessor to `L.swift` in the appropriate enum

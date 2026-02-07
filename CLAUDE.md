@@ -905,6 +905,13 @@ p.write_text(t)
 python3 -c "import json; json.load(open('Konjugieren/Assets/Localizable.xcstrings'))"
 ```
 
+### Searching Within Localizable.xcstrings
+
+Each localization value in `Localizable.xcstrings` occupies a single very long JSON line. Grep matches against these lines are truncated to `[Omitted long matching line]`, making Grep results useless for inspecting content. Instead:
+
+1. **To find which key contains a phrase:** Use Grep to get the line number, then use Read with an offset to view that line.
+2. **To find and replace text:** Use Python via Bash. Use a unique nearby string as an anchor to target the correct language section (e.g., a German word like `könnte bedeuten` to distinguish `de` from `en`).
+
 ### Adding New Localized Strings
 
 1. Add the accessor to `L.swift` in the appropriate enum

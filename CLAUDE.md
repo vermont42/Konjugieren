@@ -208,7 +208,7 @@ Code should be well-written and therefore self-explanatory. Explanatory and MARK
 * TODOs
 * Hacks or workarounds
 
-When reviewing code, do not flag these two types of comments.
+When reviewing code, do not flag these types of comments.
 
 ## English Writing Conventions
 

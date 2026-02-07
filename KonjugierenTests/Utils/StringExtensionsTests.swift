@@ -35,6 +35,61 @@ struct StringExtensionsTests {
     #expect(blocks[2] == .subheading("Second"))
   }
 
+  // MARK: - Subheading Trailing Newline Tests
+
+  @Test func subheadingTrailingNewlineConsumed() {
+    let input = "`Heading`\\nBody text."
+    let blocks = input.richTextBlocks
+    #expect(blocks.count == 2)
+    #expect(blocks[0] == .subheading("Heading"))
+    if case .body(let segments) = blocks[1] {
+      #expect(segments.count == 1)
+      if case .plain(let text) = segments[0] {
+        #expect(text == "Body text.")
+      }
+    }
+  }
+
+  @Test func subheadingDoubleNewlinePreservesOne() {
+    let input = "`Heading`\\n\\nBody text."
+    let blocks = input.richTextBlocks
+    #expect(blocks.count == 2)
+    #expect(blocks[0] == .subheading("Heading"))
+    if case .body(let segments) = blocks[1] {
+      #expect(segments.count == 1)
+      if case .plain(let text) = segments[0] {
+        #expect(text == "\nBody text.")
+      }
+    }
+  }
+
+  @Test func subheadingNoNewlineUnchanged() {
+    let input = "`Heading`Body text."
+    let blocks = input.richTextBlocks
+    #expect(blocks.count == 2)
+    #expect(blocks[0] == .subheading("Heading"))
+    if case .body(let segments) = blocks[1] {
+      #expect(segments.count == 1)
+      if case .plain(let text) = segments[0] {
+        #expect(text == "Body text.")
+      }
+    }
+  }
+
+  @Test func consecutiveSubheadingsWithNewlines() {
+    let input = "`First`\\n`Second`\\nBody."
+    let blocks = input.richTextBlocks
+    #expect(blocks.count == 3)
+    #expect(blocks[0] == .subheading("First"))
+    #expect(blocks[1] == .subheading("Second"))
+    if case .body(let segments) = blocks[2] {
+      #expect(segments.count == 1)
+      if case .plain(let text) = segments[0] {
+        #expect(text == "Body.")
+      }
+    }
+  }
+
   // MARK: - Bold Delimiter Tests
 
   @Test func boldParsing() {

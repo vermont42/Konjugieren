@@ -22,7 +22,7 @@ Under the hood, **Konjugieren** features a domain-specific ablaut engine that mo
 
 | Family | Info List | Verb History | Dedication |
 | --- | --- | --- | --- |
-| ![](Images/family.png) | ![](Images/infoList.png) | ![](Images/history.png) | ![](Images/dedication.png) |
+| ![](Images/family.png) | ![](Images/InfoList.png) | ![](Images/history.png) | ![](Images/dedication.png) |
 
 ### Why Konjugieren?
 

@@ -1,4 +1,5 @@
 ---
+name: commit-and-push
 allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git commit:*), Bash(git push:*), Bash(git branch:*), Bash(git diff:*), Bash(git log:*)
 description: Stage all changes, commit with a message, and push to remote
 argument-hint: [commit message]

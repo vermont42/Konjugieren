@@ -62,6 +62,7 @@ class Quiz {
     shouldShowResults = false
     startTimer()
     Current.soundPlayer.play(Sound.randomGun)
+    Current.analytics.signal(name: .startQuiz)
   }
 
   func submitAnswer(_ answer: String) {
@@ -94,6 +95,7 @@ class Quiz {
   }
 
   func quit() {
+    let questionNumber = currentIndex + 1
     stopTimer()
     isInProgress = false
     currentIndex = 0
@@ -104,6 +106,10 @@ class Quiz {
     lastCorrectAnswer = nil
     questions = []
     Current.soundPlayer.play(Sound.randomSadTrombone)
+    Current.analytics.signal(name: .quitQuiz, parameters: [
+      ParameterKey.difficulty.rawValue: "\(difficultyUsed)",
+      ParameterKey.questionNumber.rawValue: "\(questionNumber)"
+    ])
   }
 
   private func generateQuestions() -> [QuizItem] {
@@ -190,6 +196,9 @@ class Quiz {
     isInProgress = false
     shouldShowResults = true
     Current.soundPlayer.play(Sound.randomApplause, shouldDebounce: false)
+    Current.analytics.signal(name: .completeQuiz, parameters: [
+      ParameterKey.difficulty.rawValue: "\(difficultyUsed)"
+    ])
 
     Task {
       await Current.gameCenter.submitScore(finalScore)

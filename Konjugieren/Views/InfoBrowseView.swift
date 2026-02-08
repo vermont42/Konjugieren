@@ -21,6 +21,7 @@ struct InfoBrowseView: View {
           }
         }
       }
+      .onAppear { Current.analytics.signal(name: .viewInfoBrowseView) }
       .navigationTitle(L.Navigation.info)
       .sheet(item: $world.info) { info in
         InfoView(info: info, shouldShowInfoHeading: true)

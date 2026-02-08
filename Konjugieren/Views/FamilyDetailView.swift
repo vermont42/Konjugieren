@@ -38,6 +38,7 @@ struct FamilyDetailView: View {
       }
       .navigationBarTitleDisplayMode(.inline)
     }
+    .onAppear { Current.analytics.signal(name: .viewFamilyDetailView) }
   }
 }
 

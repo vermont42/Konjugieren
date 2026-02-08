@@ -108,6 +108,7 @@ struct SettingsView: View {
             if Current.gameCenter.isAuthenticated {
               Button(L.GameCenter.viewLeaderboard) {
                 Current.gameCenter.showLeaderboard()
+                Current.analytics.signal(name: .tapViewLeaderboard)
               }
               .funButton()
               .frame(maxWidth: .infinity)
@@ -116,6 +117,7 @@ struct SettingsView: View {
 
             Button(L.Onboarding.showOnboarding) {
               showingOnboarding = true
+              Current.analytics.signal(name: .tapShowOnboarding)
             }
             .funButton()
             .frame(maxWidth: .infinity)
@@ -124,7 +126,7 @@ struct SettingsView: View {
           }
         }
         .onAppear {
-          // TODO: Fire analytic and fetch ratings.
+          Current.analytics.signal(name: .viewSettingsView)
         }
       }
       .navigationTitle(L.Navigation.settings)

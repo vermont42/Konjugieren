@@ -1,7 +1,6 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
 import SwiftUI
-import TelemetryDeck
 
 struct KonjugierenApp: App {
   var body: some Scene {
@@ -24,6 +23,6 @@ struct KonjugierenApp: App {
   init() {
     Current.soundPlayer.setup()
     Current.gameCenter.authenticate()
-    TelemetryDeck.initialize(config: .init(appID: ""))
+    Current.analytics.initialize(appID: "")
   }
 }

@@ -329,6 +329,60 @@ struct QuizTests {
     #expect(englishName.contains("Present") || englishName.contains("Indicative"))
   }
 
+  @Test func startQuizFiresAnalytics() {
+    let spy = Current.analytics as! AnalyticsSpy
+    let initialCount = spy.signalNames.count
+    let quiz = Quiz(timerInterval: 0.001)
+    quiz.start()
+
+    #expect(spy.signalNames.dropFirst(initialCount).contains(.startQuiz))
+
+    quiz.quit()
+  }
+
+  @Test func quitQuizFiresAnalytics() {
+    let spy = Current.analytics as! AnalyticsSpy
+    let quiz = Quiz(timerInterval: 0.001)
+    Current.settings.quizDifficulty = .regular
+    quiz.start()
+
+    quiz.submitAnswer(quiz.questions[0].correctAnswer)
+    let initialCount = spy.signalNames.count
+    quiz.quit()
+
+    let newNames = Array(spy.signalNames.dropFirst(initialCount))
+    let newParams = Array(spy.signalParameters.dropFirst(initialCount))
+    #expect(newNames.contains(.quitQuiz))
+
+    if let quitIndex = newNames.firstIndex(of: .quitQuiz) {
+      let params = newParams[quitIndex]
+      #expect(params[ParameterKey.difficulty.rawValue] == "regular")
+      #expect(params[ParameterKey.questionNumber.rawValue] == "2")
+    }
+  }
+
+  @Test func completeQuizFiresAnalytics() {
+    let spy = Current.analytics as! AnalyticsSpy
+    let quiz = Quiz(timerInterval: 0.001)
+    Current.settings.quizDifficulty = .ridiculous
+    defer { Current.settings.quizDifficulty = .regular }
+    quiz.start()
+
+    let initialCount = spy.signalNames.count
+    for i in 0..<Quiz.questionCount {
+      quiz.submitAnswer(quiz.questions[i].correctAnswer)
+    }
+
+    let newNames = Array(spy.signalNames.dropFirst(initialCount))
+    let newParams = Array(spy.signalParameters.dropFirst(initialCount))
+    #expect(newNames.contains(.completeQuiz))
+
+    if let completeIndex = newNames.firstIndex(of: .completeQuiz) {
+      let params = newParams[completeIndex]
+      #expect(params[ParameterKey.difficulty.rawValue] == "ridiculous")
+    }
+  }
+
   @Test func quizConstants() {
     #expect(Quiz.questionCount == 30)
     #expect(Quiz.pointsPerCorrect == 10)

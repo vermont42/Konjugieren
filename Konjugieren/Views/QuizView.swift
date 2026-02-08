@@ -1,6 +1,5 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
-import TelemetryDeck
 import SwiftUI
 
 struct QuizView: View {
@@ -44,7 +43,6 @@ struct QuizView: View {
             } else if !quiz.shouldShowResults {
               Button(L.Quiz.start) {
                 quiz.start()
-                TelemetryDeck.signal("start.quiz")
               }
               .onAppear {
                 self.currentAnimationAmount = initialAnimationAmount - animationModifier
@@ -61,6 +59,7 @@ struct QuizView: View {
           .padding(.bottom, Layout.tripleDefaultSpacing)
         }
       }
+      .onAppear { Current.analytics.signal(name: .viewQuizView) }
       .navigationTitle(L.Navigation.quiz)
     }
     .sheet(isPresented: $quiz.shouldShowResults) {

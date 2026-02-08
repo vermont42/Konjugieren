@@ -12,16 +12,18 @@ class World {
   var gameCenter: GameCenter
   var soundPlayer: SoundPlayer
   var fatalError: FatalError
+  var analytics: Analytics
   var verb: Verb?
   var family: String?
   var info: Info?
   var selectedTab: TabSelection = .verbs
 
-  init(settings: Settings, gameCenter: GameCenter, soundPlayer: SoundPlayer, fatalError: FatalError) {
+  init(settings: Settings, gameCenter: GameCenter, soundPlayer: SoundPlayer, fatalError: FatalError, analytics: Analytics) {
     self.settings = settings
     self.gameCenter = gameCenter
     self.soundPlayer = soundPlayer
     self.fatalError = fatalError
+    self.analytics = analytics
   }
 
   static func chooseWorld() -> World {
@@ -39,17 +41,17 @@ class World {
 
   static let device: World = {
     let settings = Settings(getterSetter: GetterSetterReal())
-    return World(settings: settings, gameCenter: GameCenterReal(), soundPlayer: SoundPlayerReal(), fatalError: FatalErrorReal())
+    return World(settings: settings, gameCenter: GameCenterReal(), soundPlayer: SoundPlayerReal(), fatalError: FatalErrorReal(), analytics: AnalyticsReal())
   }()
 
   static let simulator: World = {
     let settings = Settings(getterSetter: GetterSetterReal())
-    return World(settings: settings, gameCenter: GameCenterReal(), soundPlayer: SoundPlayerReal(), fatalError: FatalErrorReal())
+    return World(settings: settings, gameCenter: GameCenterReal(), soundPlayer: SoundPlayerReal(), fatalError: FatalErrorReal(), analytics: AnalyticsReal())
   }()
 
   static let unitTest: World = {
     let settings = Settings(getterSetter: GetterSetterFake())
-    return World(settings: settings, gameCenter: GameCenterDummy(), soundPlayer: SoundPlayerDummy(), fatalError: FatalErrorSpy())
+    return World(settings: settings, gameCenter: GameCenterDummy(), soundPlayer: SoundPlayerDummy(), fatalError: FatalErrorSpy(), analytics: AnalyticsSpy())
   }()
 
   func handleURL(_ url: URL) {

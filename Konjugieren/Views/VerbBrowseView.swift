@@ -60,6 +60,7 @@ struct VerbBrowseView: View {
         .pickerStyle(.segmented)
         .padding()
       }
+      .onAppear { Current.analytics.signal(name: .viewVerbBrowseView) }
       .navigationTitle(L.Navigation.verbs)
       .navigationDestination(for: Verb.self) { verb in
         VerbView(verb: verb)

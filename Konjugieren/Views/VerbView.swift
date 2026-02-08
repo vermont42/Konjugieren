@@ -96,6 +96,7 @@ struct VerbView: View {
       }
       .padding(.vertical)
     }
+    .onAppear { Current.analytics.signal(name: .viewVerbView) }
     .navigationTitle(verb.infinitiv)
     .navigationBarTitleDisplayMode(.inline)
   }

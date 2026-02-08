@@ -18,6 +18,7 @@ struct FamilyBrowseView: View {
           }
         }
       }
+      .onAppear { Current.analytics.signal(name: .viewFamilyBrowseView) }
       .navigationTitle(L.Navigation.families)
       .navigationDestination(for: BrowseableFamily.self) { family in
         FamilyDetailView(family: family)

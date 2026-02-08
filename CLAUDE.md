@@ -22,6 +22,15 @@ xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren -destination 'plat
 
 > **`-only-testing:` format for Swift Testing:** The path is `Target/Suite/method()`. Do not include filesystem subdirectories (`Models/`, `Utils/`), and always append `()` to method names. Omitting either causes xcodebuild to silently run zero tests.
 
+### Secrets Configuration
+
+The TelemetryDeck app ID is stored in `Konjugieren/Secrets.xcconfig`, which is gitignored. To set up a fresh clone:
+
+1. Copy `Konjugieren/Secrets.example.xcconfig` to `Konjugieren/Secrets.xcconfig`
+2. Fill in the `TELEMETRY_DECK_APP_ID` value
+
+If the app ID is empty (or `Secrets.xcconfig` is missing), analytics silently disables — the app builds and runs normally without it.
+
 ## Test Suite
 
 The project uses Swift Testing (`import Testing`) for unit tests. Tests are located in `KonjugierenTests/`.

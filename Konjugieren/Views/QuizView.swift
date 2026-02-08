@@ -5,6 +5,7 @@ import SwiftUI
 
 struct QuizView: View {
   @Environment(Quiz.self) var quiz
+  @Environment(\.accessibilityReduceMotion) private var reduceMotion
   @State private var userInput = ""
   @FocusState private var isTextFieldFocused: Bool
   private var settings: Settings { Current.settings }
@@ -52,7 +53,7 @@ struct QuizView: View {
                 self.currentAnimationAmount = initialAnimationAmount
               }
               .scaleEffect(currentAnimationAmount)
-              .animation(.linear(duration: animationDuration), value: currentAnimationAmount)
+              .animation(reduceMotion ? nil : .linear(duration: animationDuration), value: currentAnimationAmount)
               .funButton()
             }
             Spacer()
@@ -138,9 +139,50 @@ struct QuizView: View {
     let spaceAttr = AttributedString(" ")
     result.append(spaceAttr)
 
-    var valueAttr = AttributedString(mixedCaseValue)
-    valueAttr.foregroundColor = Color.customForeground
-    result.append(valueAttr)
+    let chars = Array(mixedCaseValue)
+
+    func isFormalSieStart(at index: Int) -> Bool {
+      guard index + 2 < chars.count,
+            chars[index] == "S",
+            chars[index + 1] == "i",
+            chars[index + 2] == "e",
+            index == 0 || chars[index - 1] == " " else {
+        return false
+      }
+      return index + 3 >= chars.count || !chars[index + 3].isLetter
+    }
+
+    var currentRun = ""
+    var currentIsIrregular: Bool? = nil
+
+    for (index, char) in chars.enumerated() {
+      let isPartOfSie = isFormalSieStart(at: index) ||
+                        (index > 0 && isFormalSieStart(at: index - 1)) ||
+                        (index > 1 && isFormalSieStart(at: index - 2))
+
+      let isRegular = char.isLowercase || !char.isLetter || isPartOfSie
+      let canonicalChar = isPartOfSie ? String(char) : char.lowercased()
+      let isIrregular = !isRegular
+
+      if currentIsIrregular == nil {
+        currentIsIrregular = isIrregular
+        currentRun = canonicalChar
+      } else if isIrregular == currentIsIrregular {
+        currentRun += canonicalChar
+      } else {
+        var part = AttributedString(currentRun)
+        part.foregroundColor = currentIsIrregular == true ? .customRed : .customYellow
+        result.append(part)
+        currentRun = canonicalChar
+        currentIsIrregular = isIrregular
+      }
+    }
+
+    if !currentRun.isEmpty {
+      var part = AttributedString(currentRun)
+      part.foregroundColor = currentIsIrregular == true ? .customRed : .customYellow
+      result.append(part)
+    }
 
     return result
   }

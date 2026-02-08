@@ -984,6 +984,15 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "wollen", conjugationgroup: .perfektpartizip, expected: "gewollt")
   }
 
+  @Test func weakVerbsWithTStems() {
+    // arbeiten: Präsens Indikativ 3s should get epenthetic "e" → "arbeitet" not "arbeitt"
+    expectConjugation(infinitiv: "arbeiten", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "arbeitet")
+    // arbeiten: Präsens Indikativ 2p
+    expectConjugation(infinitiv: "arbeiten", conjugationgroup: .präsensIndicativ(.secondPlural), expected: "arbeitet")
+    // kosten: Präsens Indikativ 3s
+    expectConjugation(infinitiv: "kosten", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "kostet")
+  }
+
   private func expectConjugation(infinitiv: String, conjugationgroup: Conjugationgroup, expected: String) {
     let result = Conjugator.conjugate(infinitiv: infinitiv, conjugationgroup: conjugationgroup)
     switch result {

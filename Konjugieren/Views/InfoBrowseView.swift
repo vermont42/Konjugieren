@@ -3,6 +3,8 @@
 import SwiftUI
 
 struct InfoBrowseView: View {
+  @Bindable var world = Current
+
   var body: some View {
     NavigationStack {
       ScrollView {
@@ -20,10 +22,10 @@ struct InfoBrowseView: View {
         }
       }
       .navigationTitle(L.Navigation.info)
-      .sheet(item: Binding(get: { Current.info }, set: { Current.info = $0 })) { info in
+      .sheet(item: $world.info) { info in
         InfoView(info: info, shouldShowInfoHeading: true)
       }
-      .sheet(item: Binding(get: { Current.verb }, set: { Current.verb = $0 })) { verb in
+      .sheet(item: $world.verb) { verb in
         VerbView(verb: verb)
       }
     }

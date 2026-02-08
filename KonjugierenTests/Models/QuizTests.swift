@@ -222,13 +222,13 @@ struct QuizTests {
   @Test func finalScoreRidiculousDifficultyDoubles() {
     let quiz = Quiz(timerInterval: 0.001)
     Current.settings.quizDifficulty = .ridiculous
+    defer { Current.settings.quizDifficulty = .regular }
     quiz.start()
 
     quiz.submitAnswer(quiz.questions[0].correctAnswer)
     #expect(quiz.finalScore == Quiz.pointsPerCorrect * 2)
 
     quiz.quit()
-    Current.settings.quizDifficulty = .regular
   }
 
   @Test func timerIncrementsElapsedSeconds() {

@@ -4,7 +4,6 @@ import SwiftUI
 
 struct ResultsView: View {
   let quiz: Quiz
-  @Environment(\.dismiss) private var dismiss
   private var settings: Settings { Current.settings }
 
   var body: some View {

@@ -25,6 +25,7 @@ struct InfoView: View {
             .fixedSize(horizontal: false, vertical: true)
             .frame(maxWidth: .infinity, alignment: .center)
             .padding(.bottom, 8)
+            .accessibilityAddTraits(.isHeader)
 
           if let imageInfo = info.imageInfo {
             Image(imageInfo.filename)
@@ -34,12 +35,6 @@ struct InfoView: View {
               .frame(maxWidth: .infinity)
               .accessibilityLabel(imageInfo.accessibilityLabel)
               .padding(.bottom, 16)
-          }
-
-          if shouldShowInfoHeading {
-            Text(info.heading)
-              .headingLabel()
-            Spacer()
           }
 
           RichTextView(blocks: info.richTextBlocks)

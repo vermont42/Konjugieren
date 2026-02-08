@@ -25,13 +25,6 @@ extension String {
   static var linkSeparator: Character { "%" }
   static var conjugationSeparator: Character { "$" }
 
-  func replaceFirstOccurence(of oldSubstring: String, with newSubstring: String) -> String {
-    if let range = self.range(of: oldSubstring) {
-      return self.replacingCharacters(in: range, with: newSubstring)
-    }
-    return self
-  }
-
   func trimmingLeadingNewlines() -> String {
     var result = self
     while result.hasPrefix("\n") {

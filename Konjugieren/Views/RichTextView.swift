@@ -11,7 +11,7 @@ struct RichTextView: View {
         switch block {
         case .subheading(let text):
           Text(text)
-            .font(.system(size: 18, weight: .bold))
+            .font(.headline)
             .foregroundStyle(Color.customYellow)
             .frame(maxWidth: .infinity)
             .multilineTextAlignment(.center)

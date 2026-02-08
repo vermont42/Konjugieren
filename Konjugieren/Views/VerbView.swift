@@ -28,6 +28,12 @@ struct VerbView: View {
     ScrollView {
       LazyVStack(alignment: .leading, spacing: 24) {
         VStack(alignment: .leading, spacing: 8) {
+          Text(verb.infinitiv)
+            .font(.largeTitle)
+            .fontWeight(.bold)
+            .minimumScaleFactor(0.5)
+            .lineLimit(1)
+
           Text(verb.translation)
             .font(.title2)
 
@@ -91,7 +97,7 @@ struct VerbView: View {
       .padding(.vertical)
     }
     .navigationTitle(verb.infinitiv)
-    .navigationBarTitleDisplayMode(.large)
+    .navigationBarTitleDisplayMode(.inline)
   }
 
   private func conjugate(_ group: Conjugationgroup) -> String {

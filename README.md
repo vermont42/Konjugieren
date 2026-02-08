@@ -28,7 +28,7 @@ Under the hood, **Konjugieren** features a domain-specific ablaut engine that mo
 
 Josh Adams created **Konjugieren** as a tribute to his grandfather, [Clifford August Schmiesing](https://www.findagrave.com/memorial/56382498/clifford-august-schmiesing) (1904–1944), an Army doctor who grew up speaking German in Minster, Ohio and died serving in World War II. The app's dedication tells his story.
 
-**Konjugieren** is also an experiment in human-AI collaboration. Josh is developing the entire app with [Claude Code](https://www.youtube.com/watch?v=AJpK3YTTKZ4)—not as a crutch, but as a deliberate productivity multiplier. He could write every line manually (and has, in [two](https://apps.apple.com/us/app/conjuguer/id1588624373) [prior](https://itunes.apple.com/us/app/conjugar/id1236500467?mt=8) conjugation apps), but Claude Code enables him to ship faster while maintaining the same architectural standards.
+**Konjugieren** is also an experiment in human-AI collaboration. Josh is developing the entire app with [Claude Code](https://www.youtube.com/watch?v=AJpK3YTTKZ4)—not as a crutch, but as a deliberate productivity multiplier. He could write every line manually (and has, in [two](https://apps.apple.com/us/app/conjuguer/id1588624373) [prior](https://itunes.apple.com/us/app/conjugar/id1236500467?mt=8) conjugation apps), but Claude Code enables him to ship faster, with more features, while maintaining the same architectural standards.
 
 ### Architecture
 

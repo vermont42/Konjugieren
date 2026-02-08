@@ -3,6 +3,7 @@
 import GameKit
 import Observation
 
+@MainActor
 @Observable
 class GameCenterReal: GameCenter {
   static let leaderboardID = "Leaderboard"

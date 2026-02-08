@@ -5,6 +5,7 @@ import SwiftUI
 struct OnboardingView: View {
   let isReshow: Bool
   @Environment(\.dismiss) private var dismiss
+  @Environment(\.accessibilityReduceMotion) private var reduceMotion
   @State private var currentPage = 0
   @State private var getStartedOffset: CGFloat = 100
   @State private var getStartedOpacity: Double = 0
@@ -101,7 +102,7 @@ struct OnboardingView: View {
     }
     .onChange(of: currentPage) { oldValue, newValue in
       if newValue == OnboardingView.lastPage {
-        withAnimation(OnboardingView.entranceAnimation) {
+        withAnimation(reduceMotion ? nil : OnboardingView.entranceAnimation) {
           getStartedOffset = 0
           getStartedOpacity = 1
         }
@@ -137,6 +138,7 @@ private struct OnboardingPageView: View {
   let onNavigate: () -> Void
   let animateContent: Bool
 
+  @Environment(\.accessibilityReduceMotion) private var reduceMotion
   @State private var showingSheet = false
   @State private var contentOffset: CGFloat = 100
   @State private var contentOpacity: Double = 0
@@ -178,7 +180,7 @@ private struct OnboardingPageView: View {
         .foregroundStyle(.customForeground)
 
       Text(bodyText)
-        .font(.system(size: 16))
+        .font(.callout)
         .foregroundStyle(.customForeground)
         .multilineTextAlignment(.center)
         .padding(.horizontal, Layout.tripleDefaultSpacing)
@@ -207,7 +209,7 @@ private struct OnboardingPageView: View {
     .opacity(animateContent ? contentOpacity : 1)
     .onAppear {
       if animateContent {
-        withAnimation(OnboardingView.entranceAnimation) {
+        withAnimation(reduceMotion ? nil : OnboardingView.entranceAnimation) {
           contentOffset = 0
           contentOpacity = 1
         }

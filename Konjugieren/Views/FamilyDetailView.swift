@@ -104,17 +104,17 @@ struct PrefixVerbRow: View {
     HStack {
       VStack(alignment: .leading, spacing: 2) {
         Text(verb.infinitiv)
-          .font(.system(size: 16))
+          .font(.callout)
           .foregroundStyle(.customYellow)
         Text(verb.translation)
-          .font(.system(size: 14))
+          .font(.footnote)
           .foregroundStyle(.customForeground)
       }
 
       Spacer()
 
       Text(verb.family.displayName)
-        .font(.system(size: 14))
+        .font(.footnote)
         .foregroundStyle(.secondary)
 
       Image(systemName: "chevron.right")
@@ -142,10 +142,10 @@ struct VerbListSection: View {
             HStack {
               VStack(alignment: .leading, spacing: 2) {
                 Text(verb.infinitiv)
-                  .font(.system(size: 16))
+                  .font(.callout)
                   .foregroundStyle(.customYellow)
                 Text(verb.translation)
-                  .font(.system(size: 14))
+                  .font(.footnote)
                   .foregroundStyle(.customForeground)
               }
 
@@ -203,13 +203,14 @@ struct AblautGroupSection: View {
   let group: AblautGroupInfo
   let isExpanded: Bool
   let onToggle: () -> Void
+  @Environment(\.accessibilityReduceMotion) private var reduceMotion
 
   var body: some View {
     VStack(alignment: .leading, spacing: 0) {
       AblautGroupHeader(group: group, isExpanded: isExpanded)
         .contentShape(Rectangle())
         .onTapGesture {
-          withAnimation(.easeInOut(duration: 0.2)) {
+          withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.2)) {
             onToggle()
           }
         }
@@ -268,10 +269,10 @@ struct AblautVerbRow: View {
     HStack {
       VStack(alignment: .leading, spacing: 2) {
         Text(verb.infinitiv)
-          .font(.system(size: 16))
+          .font(.callout)
           .foregroundStyle(.customYellow)
         Text(verb.translation)
-          .font(.system(size: 14))
+          .font(.footnote)
           .foregroundStyle(.customForeground)
       }
       .padding(.leading, 16)
@@ -279,7 +280,7 @@ struct AblautVerbRow: View {
       Spacer()
 
       Text(verb.family.displayName)
-        .font(.system(size: 14))
+        .font(.footnote)
         .foregroundStyle(.secondary)
 
       Image(systemName: "chevron.right")

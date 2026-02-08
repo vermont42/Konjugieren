@@ -255,13 +255,28 @@ enum Conjugator {
       return "t"
     }
 
-    if ending == "t" && lastChar == "t" {
+    if ending == "t" && lastChar == "t", case .strong = family {
       return ""
     }
 
-    if ["t", "d"].contains(lastChar) {
+    let needsEpentheticE: Bool = {
+      if ["t", "d"].contains(lastChar) {
+        return true
+      }
+      if ["m", "n"].contains(lastChar) {
+        let chars = Array(stamm)
+        if chars.count >= 2 {
+          let penultimate = String(chars[chars.count - 2]).lowercased()
+          let isExempt = ["l", "r"].contains(penultimate) || "aeiouäöü".contains(penultimate)
+          return !isExempt
+        }
+      }
+      return false
+    }()
+
+    if needsEpentheticE {
       switch family {
-      case .weak, .mixed, .ieren:
+      case .weak, .ieren:
         switch conjugationgroup {
         case .präteritumIndicativ, .präteritumKonjunktivII:
           if ["te", "test", "ten", "tet"].contains(ending) {
@@ -277,7 +292,7 @@ enum Conjugator {
         default:
           break
         }
-      case .strong:
+      case .strong, .mixed:
         break
       }
     }

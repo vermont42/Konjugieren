@@ -147,7 +147,7 @@ class Quiz {
 
     options.append { .präsensIndicativ(self.randomPersonNumber()) }
     options.append { .perfektIndikativ(self.randomPersonNumber()) }
-    options.append { .futurIndikativ(self.randomImperativPersonNumber()) }
+    options.append { .futurIndikativ(self.randomPersonNumber()) }
     options.append { .imperativ(self.randomImperativPersonNumber()) }
 
     if difficultyUsed == .ridiculous {

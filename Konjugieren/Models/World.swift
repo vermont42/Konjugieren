@@ -3,7 +3,7 @@
 import Observation
 import SwiftUI
 
-var Current = World.chooseWorld()
+@MainActor var Current = World.chooseWorld()
 
 @MainActor
 @Observable

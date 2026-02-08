@@ -808,7 +808,7 @@
   <verb in="um+stellen" tn="rearrange, switch" fr="833" fa="w" ic="walk.arrival" />
   <verb in="um+wandeln" tn="convert, transform" fr="768" fa="w" ic="stairs" />
   <verb in="unter*br^e^chen" tn="interrupt" fr="727" ag="sprechen" fa="s" ic="boxing" />
-  <verb in="unter*br^i^ngen" tn="accommodate, house" fr="646" ag="bringen" fa="s" ic="strengthtraining.traditional" />
+  <verb in="unter*br^ing^en" tn="accommodate, house" fr="646" ag="bringen" fa="m" ic="strengthtraining.traditional" />
   <verb in="unter*h^a^lten" tn="entertain, maintain" fr="517" ag="halten" fa="s" ic="walk" />
   <verb in="unter*l^ie^gen" tn="be subject to" fr="462" ag="liegen" fa="s" ic="flexibility" />
   <verb in="unter*n^ehm^en" tn="undertake" fr="435" ag="nehmen" fa="s" ic="handball" />

@@ -5,15 +5,27 @@ import Foundation
 struct Verb: Identifiable, Hashable, CustomStringConvertible {
   static var verbs: [String: Verb] = [:]
   static let minVerbLength = 3
+  private static var cachedAlpha: [Verb]?
+  private static var cachedFreq: [Verb]?
 
   static var verbsSortedAlphabetically: [Verb] {
-    Array(verbs.values).sorted {
+    if let cachedAlpha {
+      return cachedAlpha
+    }
+    let sorted = Array(verbs.values).sorted {
       $0.infinitiv.compare($1.infinitiv, locale: Locale(identifier: "de")) == .orderedAscending
     }
+    cachedAlpha = sorted
+    return sorted
   }
 
   static var verbsSortedByFrequency: [Verb] {
-    Array(verbs.values).sorted { $0.frequency < $1.frequency }
+    if let cachedFreq {
+      return cachedFreq
+    }
+    let sorted = Array(verbs.values).sorted { $0.frequency < $1.frequency }
+    cachedFreq = sorted
+    return sorted
   }
 
   let id = UUID()

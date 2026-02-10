@@ -6,6 +6,7 @@ struct VerbBrowseView: View {
   @State private var sortOrder: SortOrder = .frequency
   @State private var sortedVerbs: [Verb] = Verb.verbsSortedByFrequency
   @State private var searchText: String = ""
+  @Environment(\.horizontalSizeClass) private var sizeClass
 
   private var settings: Settings { Current.settings }
 
@@ -27,15 +28,27 @@ struct VerbBrowseView: View {
       VStack(spacing: 0) {
         ScrollViewReader { proxy in
           ScrollView {
-            LazyVStack(spacing: 0) {
-              ForEach(filteredVerbs) { verb in
-                NavigationLink(value: verb) {
-                  VerbRowView(verb: verb)
+            if sizeClass == .regular {
+              LazyVGrid(columns: [GridItem(.adaptive(minimum: Layout.verbGridMinimum))], spacing: 0) {
+                ForEach(filteredVerbs) { verb in
+                  NavigationLink(value: verb) {
+                    VerbGridCell(verb: verb)
+                  }
+                  .buttonStyle(.plain)
                 }
-                .buttonStyle(.plain)
+              }
+              .padding(.horizontal)
+            } else {
+              LazyVStack(spacing: 0) {
+                ForEach(filteredVerbs) { verb in
+                  NavigationLink(value: verb) {
+                    VerbRowView(verb: verb)
+                  }
+                  .buttonStyle(.plain)
 
-                Divider()
-                  .padding(.leading)
+                  Divider()
+                    .padding(.leading)
+                }
               }
             }
           }
@@ -101,6 +114,26 @@ struct VerbRowView: View {
     .contentShape(Rectangle())
     .padding(.horizontal)
     .padding(.vertical, 12)
+  }
+}
+
+private struct VerbGridCell: View {
+  let verb: Verb
+
+  var body: some View {
+    VStack(alignment: .leading, spacing: 4) {
+      Text(verb.infinitiv)
+        .tableText()
+      Text(verb.translation)
+        .tableSubtext()
+      Text(verb.family.displayName)
+        .font(.caption)
+        .foregroundStyle(.secondary)
+    }
+    .padding(.horizontal)
+    .padding(.vertical, 12)
+    .frame(maxWidth: .infinity, alignment: .leading)
+    .contentShape(Rectangle())
   }
 }
 

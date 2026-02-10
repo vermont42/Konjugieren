@@ -4,6 +4,7 @@ import SwiftUI
 
 struct VerbView: View {
   let verb: Verb
+  @Environment(\.horizontalSizeClass) private var sizeClass
   private var settings: Settings { Current.settings }
 
   private func displayName(for group: Conjugationgroup) -> String {
@@ -63,42 +64,54 @@ struct VerbView: View {
 
         Divider()
 
-        VStack(alignment: .leading, spacing: 20) {
-          ConjugationSectionView(
-            title: displayName(for: .perfektpartizip),
-            conjugations: [conjugate(.perfektpartizip)]
-          )
-
-          ConjugationSectionView(
-            title: displayName(for: .präsenspartizip),
-            conjugations: [conjugate(.präsenspartizip)]
-          )
-
-          conjugationSection(for: Conjugationgroup.präsensIndicativ)
-          conjugationSection(for: Conjugationgroup.präteritumIndicativ)
-          conjugationSection(for: Conjugationgroup.präsensKonjunktivI)
-          conjugationSection(for: Conjugationgroup.präteritumKonjunktivII)
-
-          ConjugationSectionView(
-            title: displayName(for: .imperativ(.secondSingular)),
-            conjugations: imperativConjugations()
-          )
-
-          conjugationSection(for: Conjugationgroup.perfektIndikativ)
-          conjugationSection(for: Conjugationgroup.perfektKonjunktivI)
-          conjugationSection(for: Conjugationgroup.plusquamperfektIndikativ)
-          conjugationSection(for: Conjugationgroup.plusquamperfektKonjunktivII)
-          conjugationSection(for: Conjugationgroup.futurIndikativ)
-          conjugationSection(for: Conjugationgroup.futurKonjunktivI)
-          conjugationSection(for: Conjugationgroup.futurKonjunktivII)
+        if sizeClass == .regular {
+          LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], alignment: .leading, spacing: 20) {
+            conjugationSections
+          }
+          .padding(.horizontal)
+        } else {
+          VStack(alignment: .leading, spacing: 20) {
+            conjugationSections
+          }
+          .padding(.horizontal)
         }
-        .padding(.horizontal)
       }
       .padding(.vertical)
     }
     .onAppear { Current.analytics.signal(name: .viewVerbView) }
     .navigationTitle(verb.infinitiv)
     .navigationBarTitleDisplayMode(.inline)
+  }
+
+  @ViewBuilder
+  private var conjugationSections: some View {
+    ConjugationSectionView(
+      title: displayName(for: .perfektpartizip),
+      conjugations: [conjugate(.perfektpartizip)]
+    )
+
+    ConjugationSectionView(
+      title: displayName(for: .präsenspartizip),
+      conjugations: [conjugate(.präsenspartizip)]
+    )
+
+    conjugationSection(for: Conjugationgroup.präsensIndicativ)
+    conjugationSection(for: Conjugationgroup.präteritumIndicativ)
+    conjugationSection(for: Conjugationgroup.präsensKonjunktivI)
+    conjugationSection(for: Conjugationgroup.präteritumKonjunktivII)
+
+    ConjugationSectionView(
+      title: displayName(for: .imperativ(.secondSingular)),
+      conjugations: imperativConjugations()
+    )
+
+    conjugationSection(for: Conjugationgroup.perfektIndikativ)
+    conjugationSection(for: Conjugationgroup.perfektKonjunktivI)
+    conjugationSection(for: Conjugationgroup.plusquamperfektIndikativ)
+    conjugationSection(for: Conjugationgroup.plusquamperfektKonjunktivII)
+    conjugationSection(for: Conjugationgroup.futurIndikativ)
+    conjugationSection(for: Conjugationgroup.futurKonjunktivI)
+    conjugationSection(for: Conjugationgroup.futurKonjunktivII)
   }
 
   private func conjugate(_ group: Conjugationgroup) -> String {

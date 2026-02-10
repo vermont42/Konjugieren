@@ -44,19 +44,31 @@ struct FamilyDetailView: View {
 
 struct PrefixGroupedVerbList: View {
   let family: BrowseableFamily
+  @Environment(\.horizontalSizeClass) private var sizeClass
 
   var body: some View {
     VStack(alignment: .leading, spacing: 0) {
       ForEach(family.verbsByPrefix, id: \.prefix.id) { group in
         PrefixHeaderView(prefix: group.prefix)
 
-        ForEach(group.verbs) { verb in
-          NavigationLink(value: verb) {
-            PrefixVerbRow(verb: verb)
+        if sizeClass == .regular {
+          LazyVGrid(columns: [GridItem(.adaptive(minimum: Layout.verbGridMinimum))], spacing: 0) {
+            ForEach(group.verbs) { verb in
+              NavigationLink(value: verb) {
+                PrefixVerbRow(verb: verb)
+              }
+              .buttonStyle(.plain)
+            }
           }
-          .buttonStyle(.plain)
+        } else {
+          ForEach(group.verbs) { verb in
+            NavigationLink(value: verb) {
+              PrefixVerbRow(verb: verb)
+            }
+            .buttonStyle(.plain)
 
-          Divider()
+            Divider()
+          }
         }
       }
     }
@@ -129,6 +141,7 @@ struct PrefixVerbRow: View {
 
 struct VerbListSection: View {
   let verbs: [Verb]
+  @Environment(\.horizontalSizeClass) private var sizeClass
 
   var body: some View {
     VStack(alignment: .leading, spacing: 8) {
@@ -137,31 +150,59 @@ struct VerbListSection: View {
         .foregroundStyle(.customYellow)
         .padding(.top, 24)
 
-      LazyVStack(spacing: 0) {
-        ForEach(verbs) { verb in
-          NavigationLink(value: verb) {
-            HStack {
-              VStack(alignment: .leading, spacing: 2) {
-                Text(verb.infinitiv)
-                  .font(.callout)
-                  .foregroundStyle(.customYellow)
-                Text(verb.translation)
-                  .font(.footnote)
-                  .foregroundStyle(.customForeground)
+      if sizeClass == .regular {
+        LazyVGrid(columns: [GridItem(.adaptive(minimum: Layout.verbGridMinimum))], spacing: 0) {
+          ForEach(verbs) { verb in
+            NavigationLink(value: verb) {
+              HStack {
+                VStack(alignment: .leading, spacing: 2) {
+                  Text(verb.infinitiv)
+                    .font(.callout)
+                    .foregroundStyle(.customYellow)
+                  Text(verb.translation)
+                    .font(.footnote)
+                    .foregroundStyle(.customForeground)
+                }
+
+                Spacer()
+
+                Image(systemName: "chevron.right")
+                  .font(.caption)
+                  .foregroundStyle(.secondary)
               }
-
-              Spacer()
-
-              Image(systemName: "chevron.right")
-                .font(.caption)
-                .foregroundStyle(.secondary)
+              .padding(.vertical, 8)
+              .contentShape(Rectangle())
             }
-            .padding(.vertical, 8)
-            .contentShape(Rectangle())
+            .buttonStyle(.plain)
           }
-          .buttonStyle(.plain)
+        }
+      } else {
+        LazyVStack(spacing: 0) {
+          ForEach(verbs) { verb in
+            NavigationLink(value: verb) {
+              HStack {
+                VStack(alignment: .leading, spacing: 2) {
+                  Text(verb.infinitiv)
+                    .font(.callout)
+                    .foregroundStyle(.customYellow)
+                  Text(verb.translation)
+                    .font(.footnote)
+                    .foregroundStyle(.customForeground)
+                }
 
-          Divider()
+                Spacer()
+
+                Image(systemName: "chevron.right")
+                  .font(.caption)
+                  .foregroundStyle(.secondary)
+              }
+              .padding(.vertical, 8)
+              .contentShape(Rectangle())
+            }
+            .buttonStyle(.plain)
+
+            Divider()
+          }
         }
       }
     }
@@ -205,6 +246,7 @@ struct AblautGroupSection: View {
   let isExpanded: Bool
   let onToggle: () -> Void
   @Environment(\.accessibilityReduceMotion) private var reduceMotion
+  @Environment(\.horizontalSizeClass) private var sizeClass
 
   var body: some View {
     VStack(alignment: .leading, spacing: 0) {
@@ -217,14 +259,25 @@ struct AblautGroupSection: View {
         }
 
       if isExpanded {
-        ForEach(group.verbs) { verb in
-          NavigationLink(value: verb) {
-            AblautVerbRow(verb: verb)
+        if sizeClass == .regular {
+          LazyVGrid(columns: [GridItem(.adaptive(minimum: Layout.verbGridMinimum))], spacing: 0) {
+            ForEach(group.verbs) { verb in
+              NavigationLink(value: verb) {
+                AblautVerbRow(verb: verb)
+              }
+              .buttonStyle(.plain)
+            }
           }
-          .buttonStyle(.plain)
+        } else {
+          ForEach(group.verbs) { verb in
+            NavigationLink(value: verb) {
+              AblautVerbRow(verb: verb)
+            }
+            .buttonStyle(.plain)
 
-          Divider()
-            .padding(.leading, 16)
+            Divider()
+              .padding(.leading, 16)
+          }
         }
       }
 

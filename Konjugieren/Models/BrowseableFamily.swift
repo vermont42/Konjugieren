@@ -158,6 +158,29 @@ enum BrowseableFamily: String, CaseIterable, Identifiable {
     }
   }
 
+  var representativeInfinitiv: String {
+    switch self {
+    case .strong:
+      return "singen"
+    case .weak:
+      return "machen"
+    case .mixed:
+      return "denken"
+    case .ieren:
+      return "studieren"
+    case .separable:
+      return "ankommen"
+    case .inseparable:
+      return "verstehen"
+    case .ablaut:
+      return "sehen"
+    }
+  }
+
+  var topVerbs: [Verb] {
+    verbs.sorted { $0.frequency < $1.frequency }.prefix(3).map { $0 }
+  }
+
   var hasAblautList: Bool {
     self == .ablaut
   }

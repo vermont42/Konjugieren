@@ -4,6 +4,17 @@ import SwiftUI
 
 struct FamilyBrowseView: View {
   @Environment(\.horizontalSizeClass) private var sizeClass
+  @State private var decorations = DecorationImage.allCases.shuffled()
+  @State private var gridWidth: CGFloat = 0
+
+  private var fillerCount: Int {
+    guard gridWidth > 0 else { return 0 }
+    let spacing = Layout.doubleDefaultSpacing
+    let minimum = Layout.showcaseCardGridMinimum
+    let columnCount = max(1, Int((gridWidth + spacing) / (minimum + spacing)))
+    let itemCount = BrowseableFamily.allCases.count
+    return (columnCount - (itemCount % columnCount)) % columnCount
+  }
 
   var body: some View {
     NavigationStack {
@@ -16,8 +27,17 @@ struct FamilyBrowseView: View {
               }
               .buttonStyle(.plain)
             }
+
+            ForEach(decorations.prefix(fillerCount)) { decoration in
+              DecorationImageCard(decoration: decoration)
+            }
           }
           .padding(.horizontal)
+          .onGeometryChange(for: CGFloat.self) { proxy in
+            proxy.size.width
+          } action: { newWidth in
+            gridWidth = newWidth
+          }
         } else {
           LazyVStack(spacing: 0) {
             ForEach(BrowseableFamily.allCases) { family in
@@ -74,8 +94,6 @@ private struct FamilyShowcaseCard: View {
   let family: BrowseableFamily
   private var settings: Settings { Current.settings }
 
-  private static let previewPersonNumbers: [PersonNumber] = [.firstSingular, .secondSingular, .thirdSingular]
-
   private var conjugationgroupLabel: String {
     let group = Conjugationgroup.präsensIndicativ(.firstSingular)
     switch settings.conjugationgroupLang {
@@ -111,9 +129,16 @@ private struct FamilyShowcaseCard: View {
         .font(.caption)
         .foregroundStyle(.secondary)
 
-      VStack(alignment: .leading, spacing: 4) {
-        ForEach(Self.previewPersonNumbers, id: \.self) { personNumber in
-          conjugationRow(personNumber: personNumber)
+      HStack(alignment: .top, spacing: Layout.doubleDefaultSpacing) {
+        VStack(alignment: .leading, spacing: 4) {
+          ForEach(PersonNumber.allCases.prefix(3), id: \.self) { personNumber in
+            conjugationRow(personNumber: personNumber)
+          }
+        }
+        VStack(alignment: .leading, spacing: 4) {
+          ForEach(PersonNumber.allCases.suffix(3), id: \.self) { personNumber in
+            conjugationRow(personNumber: personNumber)
+          }
         }
       }
 
@@ -155,6 +180,28 @@ private struct FamilyShowcaseCard: View {
       Text(mixedCaseString: conjugation)
         .font(.callout)
     }
+  }
+}
+
+private enum DecorationImage: String, CaseIterable, Identifiable {
+  case hat = "Hat"
+  case bundestag = "Bundestag"
+  case pretzel = "Pretzel"
+  var id: String { rawValue }
+}
+
+private struct DecorationImageCard: View {
+  let decoration: DecorationImage
+
+  var body: some View {
+    Image(decoration.rawValue)
+      .resizable()
+      .scaledToFit()
+      .padding(Layout.tripleDefaultSpacing)
+      .frame(maxWidth: .infinity, maxHeight: .infinity)
+      .background(Color.white.opacity(0.05))
+      .clipShape(RoundedRectangle(cornerRadius: 12))
+      .accessibilityHidden(true)
   }
 }
 

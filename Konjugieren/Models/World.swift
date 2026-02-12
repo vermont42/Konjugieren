@@ -11,6 +11,7 @@ class World {
   var settings: Settings
   var gameCenter: GameCenter
   var soundPlayer: SoundPlayer
+  var utterer: Utterer
   var fatalError: FatalError
   var analytics: Analytics
   var verb: Verb?
@@ -18,10 +19,11 @@ class World {
   var info: Info?
   var selectedTab: TabSelection = .verbs
 
-  init(settings: Settings, gameCenter: GameCenter, soundPlayer: SoundPlayer, fatalError: FatalError, analytics: Analytics) {
+  init(settings: Settings, gameCenter: GameCenter, soundPlayer: SoundPlayer, utterer: Utterer, fatalError: FatalError, analytics: Analytics) {
     self.settings = settings
     self.gameCenter = gameCenter
     self.soundPlayer = soundPlayer
+    self.utterer = utterer
     self.fatalError = fatalError
     self.analytics = analytics
   }
@@ -41,17 +43,17 @@ class World {
 
   static let device: World = {
     let settings = Settings(getterSetter: GetterSetterReal())
-    return World(settings: settings, gameCenter: GameCenterReal(), soundPlayer: SoundPlayerReal(), fatalError: FatalErrorReal(), analytics: AnalyticsReal())
+    return World(settings: settings, gameCenter: GameCenterReal(), soundPlayer: SoundPlayerReal(), utterer: UttererReal(), fatalError: FatalErrorReal(), analytics: AnalyticsReal())
   }()
 
   static let simulator: World = {
     let settings = Settings(getterSetter: GetterSetterReal())
-    return World(settings: settings, gameCenter: GameCenterReal(), soundPlayer: SoundPlayerReal(), fatalError: FatalErrorReal(), analytics: AnalyticsReal())
+    return World(settings: settings, gameCenter: GameCenterReal(), soundPlayer: SoundPlayerReal(), utterer: UttererReal(), fatalError: FatalErrorReal(), analytics: AnalyticsReal())
   }()
 
   static let unitTest: World = {
     let settings = Settings(getterSetter: GetterSetterFake())
-    return World(settings: settings, gameCenter: GameCenterDummy(), soundPlayer: SoundPlayerDummy(), fatalError: FatalErrorSpy(), analytics: AnalyticsSpy())
+    return World(settings: settings, gameCenter: GameCenterDummy(), soundPlayer: SoundPlayerDummy(), utterer: UttererDummy(), fatalError: FatalErrorSpy(), analytics: AnalyticsSpy())
   }()
 
   func handleURL(_ url: URL) {

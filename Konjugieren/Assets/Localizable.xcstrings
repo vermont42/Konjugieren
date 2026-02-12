@@ -1,9 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "" : {
-
-    },
     "#%lld" : {
 
     },
@@ -1151,6 +1148,118 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Consonant change: $zIEHen$ → $zOG$ → $gezOGen$. The -h- becomes -g- in past-tense conjugations."
+          }
+        }
+      }
+    },
+    "Accessibility.areIrregular" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sind unregelmäßig"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "are irregular"
+          }
+        }
+      }
+    },
+    "Accessibility.isIrregular" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ist unregelmäßig"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "is irregular"
+          }
+        }
+      }
+    },
+    "Accessibility.leaderboardHint" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öffnet die Game-Center-Bestenliste"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opens Game Center leaderboard"
+          }
+        }
+      }
+    },
+    "Accessibility.quizQuitHint" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beendet das aktuelle Quiz, ohne Ergebnisse zu speichern"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stops the current quiz without saving results"
+          }
+        }
+      }
+    },
+    "Accessibility.quizStartHint" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Startet ein Quiz mit 30 Fragen auf Zeit"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starts a timed quiz with 30 questions"
+          }
+        }
+      }
+    },
+    "Accessibility.quizTextFieldHint" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deutsche Konjugation eingeben, dann Return drücken"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter the German conjugation, then press return"
+          }
+        }
+      }
+    },
+    "Accessibility.showOnboardingHint" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeigt die Einführungsbildschirme erneut an"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shows the introductory onboarding screens again"
           }
         }
       }

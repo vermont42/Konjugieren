@@ -246,6 +246,7 @@ private struct OnboardingInfoSheet: View {
             .fixedSize(horizontal: false, vertical: true)
             .frame(maxWidth: .infinity, alignment: .center)
             .padding(.bottom, Layout.defaultSpacing)
+            .accessibilityAddTraits(.isHeader)
 
           RichTextView(blocks: bodyText.richTextBlocks)
             .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)

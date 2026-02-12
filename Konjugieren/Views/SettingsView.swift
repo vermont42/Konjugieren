@@ -18,7 +18,7 @@ struct SettingsView: View {
             Text(L.Settings.conjugationgroupLangHeading)
               .subheadingLabel()
 
-            Picker("", selection: $settings.conjugationgroupLang) {
+            Picker(L.Settings.conjugationgroupLangHeading, selection: $settings.conjugationgroupLang) {
               ForEach(ConjugationgroupLang.allCases, id: \.self) { conjugationgroupLang in
                 Text(conjugationgroupLang.localizedConjugationgroupLang).tag(conjugationgroupLang)
               }
@@ -33,7 +33,7 @@ struct SettingsView: View {
             Text(L.Settings.thirdPersonPronounGenderHeading)
               .subheadingLabel()
 
-            Picker("", selection: $settings.thirdPersonPronounGender) {
+            Picker(L.Settings.thirdPersonPronounGenderHeading, selection: $settings.thirdPersonPronounGender) {
               ForEach(ThirdPersonPronounGender.allCases, id: \.self) { thirdPersonPronounGender in
                 Text(thirdPersonPronounGender.localizedThirdPersonPronounGender).tag(thirdPersonPronounGender)
               }
@@ -48,7 +48,7 @@ struct SettingsView: View {
             Text(L.Settings.quizDifficultyHeading)
               .subheadingLabel()
 
-            Picker("", selection: $settings.quizDifficulty) {
+            Picker(L.Settings.quizDifficultyHeading, selection: $settings.quizDifficulty) {
               ForEach(QuizDifficulty.allCases, id: \.self) { quizDifficulty in
                 Text(quizDifficulty.localizedQuizDifficulty).tag(quizDifficulty)
               }
@@ -63,7 +63,7 @@ struct SettingsView: View {
             Text(L.Settings.audioFeedbackHeading)
               .subheadingLabel()
 
-            Picker("", selection: $settings.audioFeedback) {
+            Picker(L.Settings.audioFeedbackHeading, selection: $settings.audioFeedback) {
               ForEach(AudioFeedback.allCases, id: \.self) { audioFeedback in
                 Text(audioFeedback.localizedAudioFeedback).tag(audioFeedback)
               }
@@ -78,7 +78,7 @@ struct SettingsView: View {
             Text(L.Settings.searchScopeHeading)
               .subheadingLabel()
 
-            Picker("", selection: $settings.searchScope) {
+            Picker(L.Settings.searchScopeHeading, selection: $settings.searchScope) {
               ForEach(SearchScope.allCases, id: \.self) { searchScope in
                 Text(searchScope.localizedSearchScope).tag(searchScope)
               }
@@ -93,7 +93,7 @@ struct SettingsView: View {
             Text(L.Settings.appIconHeading)
               .subheadingLabel()
 
-            Picker("", selection: $settings.appIcon) {
+            Picker(L.Settings.appIconHeading, selection: $settings.appIcon) {
               ForEach(AppIcon.allCases, id: \.self) { appIcon in
                 Text(appIcon.localizedAppIcon).tag(appIcon)
               }
@@ -113,6 +113,7 @@ struct SettingsView: View {
               .funButton()
               .frame(maxWidth: .infinity)
               .padding(.top, Layout.defaultSpacing)
+              .accessibilityHint(L.Accessibility.leaderboardHint)
             }
 
             Button(L.Onboarding.showOnboarding) {
@@ -123,6 +124,7 @@ struct SettingsView: View {
             .frame(maxWidth: .infinity)
             .padding(.top, Layout.defaultSpacing)
             .padding(.bottom, Layout.doubleDefaultSpacing)
+            .accessibilityHint(L.Accessibility.showOnboardingHint)
           }
         }
         .onAppear {

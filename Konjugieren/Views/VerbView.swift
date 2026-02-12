@@ -34,9 +34,12 @@ struct VerbView: View {
             .fontWeight(.bold)
             .minimumScaleFactor(0.5)
             .lineLimit(1)
+            .accessibilityAddTraits(.isHeader)
+            .germanPronunciation()
 
           Text(verb.translation)
             .font(.title2)
+            .englishPronunciation()
 
           HStack(spacing: 16) {
             Label(verb.family.displayName, systemImage: "tag")
@@ -44,6 +47,7 @@ struct VerbView: View {
             Label("#\(verb.frequency)", systemImage: verb.frequencyIcon)
           }
           .font(.subheadline)
+          .accessibilityElement(children: .combine)
 
           if verb.prefix != .none || verb.ablautGroup != nil {
             HStack(spacing: 16) {
@@ -148,6 +152,14 @@ struct ConjugationRow: Identifiable {
     "\(pronoun ?? ""):\(form)"
   }
 
+  var accessibilityDescription: String {
+    let formLabel = MixedCaseAccessibility.accessibilityLabel(for: form)
+    if let pronoun {
+      return "\(pronoun) \(formLabel)"
+    }
+    return formLabel
+  }
+
   init(pronoun: String? = nil, form: String) {
     self.pronoun = pronoun
     self.form = form
@@ -173,6 +185,7 @@ struct ConjugationSectionView: View {
       Text(title)
         .font(.headline)
         .foregroundStyle(.primary)
+        .accessibilityAddTraits(.isHeader)
 
       VStack(alignment: .leading, spacing: 4) {
         ForEach(conjugations) { row in
@@ -186,6 +199,8 @@ struct ConjugationSectionView: View {
             Text(mixedCaseString: row.form)
           }
           .font(.body)
+          .accessibilityElement(children: .combine)
+          .accessibilityLabel(row.accessibilityDescription)
         }
       }
       .padding(.leading, 8)

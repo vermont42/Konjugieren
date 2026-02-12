@@ -1,6 +1,7 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
 import Foundation
+import UIKit
 
 @MainActor
 @Observable
@@ -63,6 +64,7 @@ class Quiz {
     startTimer()
     Current.soundPlayer.play(Sound.randomGun)
     Current.analytics.signal(name: .startQuiz)
+    announceQuestion()
   }
 
   func submitAnswer(_ answer: String) {
@@ -81,16 +83,20 @@ class Quiz {
       lastIncorrectAnswer = nil
       lastCorrectAnswer = nil
       Current.soundPlayer.play(.chime)
+      announceAnswerResult(correct: true)
     } else {
       lastIncorrectAnswer = answer
       lastCorrectAnswer = questions[currentIndex].correctAnswer
       Current.soundPlayer.play(.buzz)
+      announceAnswerResult(correct: false, correctAnswer: questions[currentIndex].correctAnswer)
     }
 
     currentIndex += 1
 
     if currentIndex >= Quiz.questionCount {
       finishQuiz()
+    } else {
+      announceQuestion()
     }
   }
 
@@ -199,9 +205,44 @@ class Quiz {
     Current.analytics.signal(name: .completeQuiz, parameters: [
       ParameterKey.difficulty.rawValue: "\(difficultyUsed)"
     ])
+    announceQuizCompletion()
 
     Task {
       await Current.gameCenter.submitScore(finalScore)
+    }
+  }
+
+  private func announceQuestion() {
+    guard UIAccessibility.isVoiceOverRunning, let question = currentQuestion else { return }
+    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+      Current.utterer.utter(question.verb.infinitiv)
+      DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+        Current.utterer.utter(question.verb.translation, localeString: "en-US")
+      }
+    }
+  }
+
+  private func announceAnswerResult(correct: Bool, correctAnswer: String? = nil) {
+    guard UIAccessibility.isVoiceOverRunning else { return }
+    let announcement: String
+    if correct {
+      announcement = "Correct"
+    } else if let correctAnswer {
+      let label = MixedCaseAccessibility.accessibilityLabel(for: correctAnswer)
+      announcement = "Incorrect. \(label)"
+    } else {
+      announcement = "Incorrect"
+    }
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+      UIAccessibility.post(notification: .announcement, argument: announcement)
+    }
+  }
+
+  private func announceQuizCompletion() {
+    guard UIAccessibility.isVoiceOverRunning else { return }
+    let announcement = "\(L.Quiz.results). \(L.Quiz.score) \(finalScore). \(L.Quiz.correct) \(correctCount) / \(Quiz.questionCount)."
+    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+      UIAccessibility.post(notification: .announcement, argument: announcement)
     }
   }
 

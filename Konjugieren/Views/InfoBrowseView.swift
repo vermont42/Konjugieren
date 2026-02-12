@@ -60,6 +60,7 @@ struct InfoRowView: View {
     }
     .padding(.horizontal)
     .padding(.vertical, 12)
+    .accessibilityElement(children: .combine)
   }
 
   private func formattedPreviewText() -> some View {

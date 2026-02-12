@@ -7,6 +7,7 @@ struct QuizView: View {
   @Environment(\.accessibilityReduceMotion) private var reduceMotion
   @State private var userInput = ""
   @FocusState private var isTextFieldFocused: Bool
+  @AccessibilityFocusState private var isTextFieldA11yFocused: Bool
   private var settings: Settings { Current.settings }
   @State private var currentAnimationAmount = 2.5
   private let initialAnimationAmount = 2.5
@@ -40,6 +41,7 @@ struct QuizView: View {
                 quiz.quit()
               }
               .funButton()
+              .accessibilityHint(L.Accessibility.quizQuitHint)
             } else if !quiz.shouldShowResults {
               Button(L.Quiz.start) {
                 quiz.start()
@@ -53,6 +55,7 @@ struct QuizView: View {
               .scaleEffect(currentAnimationAmount)
               .animation(reduceMotion ? nil : .linear(duration: animationDuration), value: currentAnimationAmount)
               .funButton()
+              .accessibilityHint(L.Accessibility.quizStartHint)
             }
             Spacer()
           }
@@ -68,6 +71,7 @@ struct QuizView: View {
     .onChange(of: quiz.currentIndex) {
       userInput = ""
       isTextFieldFocused = true
+      isTextFieldA11yFocused = true
     }
   }
 
@@ -75,9 +79,11 @@ struct QuizView: View {
   private func quizContent(question: QuizItem) -> some View {
     VStack(alignment: .leading, spacing: Layout.defaultSpacing) {
       Text(labeledText(label: L.Quiz.verb, value: question.verb.infinitiv))
+        .germanPronunciation()
 
       Text(labeledText(label: L.Quiz.translation, value: question.verb.translation))
         .fixedSize(horizontal: false, vertical: true)
+        .englishPronunciation()
 
       if let pronoun = question.pronoun {
         Text(labeledText(label: L.Quiz.pronoun, value: pronoun))
@@ -98,6 +104,7 @@ struct QuizView: View {
         Text(labeledText(label: L.Quiz.lastAnswer, value: lastIncorrect, valueColor: .customYellow))
 
         Text(labeledTextWithMixedCase(label: L.Quiz.correctAnswer, mixedCaseValue: lastCorrect))
+          .accessibilityLabel("\(L.Quiz.correctAnswer) \(MixedCaseAccessibility.accessibilityLabel(for: lastCorrect))")
       }
 
       TextField(L.Quiz.conjugation, text: $userInput)
@@ -105,6 +112,8 @@ struct QuizView: View {
         .textInputAutocapitalization(.never)
         .autocorrectionDisabled()
         .focused($isTextFieldFocused)
+        .accessibilityFocused($isTextFieldA11yFocused)
+        .accessibilityHint(L.Accessibility.quizTextFieldHint)
         .onSubmit {
           guard !userInput.isEmpty else { return }
           quiz.submitAnswer(userInput)

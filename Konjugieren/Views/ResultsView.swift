@@ -17,6 +17,7 @@ struct ResultsView: View {
         Text(L.Quiz.results)
           .subheadingLabel()
           .padding(.horizontal, Layout.doubleDefaultSpacing)
+          .accessibilityAddTraits(.isHeader)
 
         VStack(alignment: .leading, spacing: Layout.defaultSpacing) {
           Text("\(L.Quiz.score) \(quiz.finalScore)")
@@ -26,6 +27,7 @@ struct ResultsView: View {
         }
         .padding(.horizontal, Layout.doubleDefaultSpacing)
         .padding(.top, Layout.doubleDefaultSpacing)
+        .accessibilityElement(children: .combine)
 
         if Current.gameCenter.isAuthenticated {
           Button(L.GameCenter.viewLeaderboard) {
@@ -34,6 +36,7 @@ struct ResultsView: View {
           .funButton()
           .frame(maxWidth: .infinity)
           .padding(.top, Layout.defaultSpacing)
+          .accessibilityHint(L.Accessibility.leaderboardHint)
         }
 
         List {
@@ -52,6 +55,21 @@ struct ResultsView: View {
 
   @ViewBuilder
   private func resultRow(for question: QuizItem) -> some View {
+    let correctLabel = MixedCaseAccessibility.accessibilityLabel(for: question.correctAnswer)
+    let status = question.isCorrect == true ? "" : " \u{2717}"
+    let a11yLabel: String = {
+      var parts = [question.verb.infinitiv + status]
+      parts.append(question.displayName(lang: settings.conjugationgroupLang))
+      if let pronoun = question.pronoun {
+        parts.append(pronoun)
+      }
+      parts.append(correctLabel)
+      if question.isCorrect == false, let userAnswer = question.userAnswer {
+        parts.append(userAnswer)
+      }
+      return parts.joined(separator: ", ")
+    }()
+
     VStack(alignment: .center, spacing: 4) {
       if question.isCorrect == false {
         Text("\(question.verb.infinitiv) \u{2717}")
@@ -71,6 +89,8 @@ struct ResultsView: View {
       }
     }
     .frame(maxWidth: .infinity)
+    .accessibilityElement(children: .combine)
+    .accessibilityLabel(a11yLabel)
   }
 }
 

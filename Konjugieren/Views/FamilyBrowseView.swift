@@ -87,6 +87,7 @@ struct FamilyRowView: View {
     .contentShape(Rectangle())
     .padding(.horizontal)
     .padding(.vertical, 12)
+    .accessibilityElement(children: .combine)
   }
 }
 
@@ -159,6 +160,7 @@ private struct FamilyShowcaseCard: View {
     .background(Color.white.opacity(0.05))
     .clipShape(RoundedRectangle(cornerRadius: 12))
     .contentShape(Rectangle())
+    .accessibilityElement(children: .combine)
   }
 
   private func conjugationRow(personNumber: PersonNumber) -> some View {

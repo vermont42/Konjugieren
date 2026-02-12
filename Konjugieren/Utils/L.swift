@@ -3,6 +3,36 @@
 import Foundation
 
 enum L {
+  enum Accessibility {
+    static var isIrregular: String {
+      String(localized: "Accessibility.isIrregular")
+    }
+
+    static var areIrregular: String {
+      String(localized: "Accessibility.areIrregular")
+    }
+
+    static var quizTextFieldHint: String {
+      String(localized: "Accessibility.quizTextFieldHint")
+    }
+
+    static var quizStartHint: String {
+      String(localized: "Accessibility.quizStartHint")
+    }
+
+    static var quizQuitHint: String {
+      String(localized: "Accessibility.quizQuitHint")
+    }
+
+    static var leaderboardHint: String {
+      String(localized: "Accessibility.leaderboardHint")
+    }
+
+    static var showOnboardingHint: String {
+      String(localized: "Accessibility.showOnboardingHint")
+    }
+  }
+
   enum Navigation {
     static var verbs: String {
       String(localized: "Navigation.verbs")

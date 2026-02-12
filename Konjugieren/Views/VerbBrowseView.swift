@@ -100,8 +100,10 @@ struct VerbRowView: View {
       VStack(alignment: .leading, spacing: 4) {
         Text(verb.infinitiv)
           .tableText()
+          .germanPronunciation()
         Text(verb.translation)
           .tableSubtext()
+          .englishPronunciation()
       }
 
       Spacer()
@@ -114,6 +116,7 @@ struct VerbRowView: View {
     .contentShape(Rectangle())
     .padding(.horizontal)
     .padding(.vertical, 12)
+    .accessibilityElement(children: .combine)
   }
 }
 
@@ -124,8 +127,10 @@ private struct VerbGridCell: View {
     VStack(alignment: .leading, spacing: 4) {
       Text(verb.infinitiv)
         .tableText()
+        .germanPronunciation()
       Text(verb.translation)
         .tableSubtext()
+        .englishPronunciation()
       Text(verb.family.displayName)
         .font(.caption)
         .foregroundStyle(.secondary)
@@ -134,6 +139,7 @@ private struct VerbGridCell: View {
     .padding(.vertical, 12)
     .frame(maxWidth: .infinity, alignment: .leading)
     .contentShape(Rectangle())
+    .accessibilityElement(children: .combine)
   }
 }
 

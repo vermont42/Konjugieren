@@ -15,6 +15,7 @@ struct RichTextView: View {
             .foregroundStyle(Color.customYellow)
             .frame(maxWidth: .infinity)
             .multilineTextAlignment(.center)
+            .accessibilityAddTraits(.isHeader)
 
         case .body(let segments):
           BodyTextView(segments: segments)

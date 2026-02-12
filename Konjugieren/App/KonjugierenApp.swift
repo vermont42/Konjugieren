@@ -22,6 +22,7 @@ struct KonjugierenApp: App {
 
   init() {
     Current.soundPlayer.setup()
+    Current.utterer.setup()
     Current.gameCenter.authenticate()
     let appID = Bundle.main.infoDictionary?["TelemetryDeckAppID"] as? String ?? ""
     Current.analytics.initialize(appID: appID)

@@ -22,6 +22,8 @@ struct FamilyDetailView: View {
           }
           .frame(maxWidth: .infinity, alignment: .center)
           .padding(.bottom, 16)
+          .accessibilityElement(children: .combine)
+          .accessibilityAddTraits(.isHeader)
 
           RichTextView(blocks: family.longDescription.richTextBlocks)
             .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
@@ -87,6 +89,7 @@ struct PrefixHeaderView: View {
       Text(prefix.prefix)
         .font(.title2.bold())
         .foregroundStyle(.customYellow)
+        .accessibilityAddTraits(.isHeader)
 
       HStack(spacing: 4) {
         Text("🏴󠁧󠁢󠁥󠁮󠁧󠁿")
@@ -149,6 +152,7 @@ struct VerbListSection: View {
         .font(.title2.bold())
         .foregroundStyle(.customYellow)
         .padding(.top, 24)
+        .accessibilityAddTraits(.isHeader)
 
       if sizeClass == .regular {
         LazyVGrid(columns: [GridItem(.adaptive(minimum: Layout.verbGridMinimum))], spacing: 0) {
@@ -252,6 +256,7 @@ struct AblautGroupSection: View {
     VStack(alignment: .leading, spacing: 0) {
       AblautGroupHeader(group: group, isExpanded: isExpanded)
         .contentShape(Rectangle())
+        .accessibilityAddTraits(.isButton)
         .onTapGesture {
           withAnimation(reduceMotion ? nil : .easeInOut(duration: 0.2)) {
             onToggle()
@@ -296,6 +301,7 @@ struct AblautGroupHeader: View {
         Text(group.exemplar)
           .font(.title2.bold())
           .foregroundStyle(.customYellow)
+          .accessibilityAddTraits(.isHeader)
 
         Spacer()
 
@@ -306,6 +312,7 @@ struct AblautGroupHeader: View {
         Image(systemName: isExpanded ? "chevron.down" : "chevron.right")
           .font(.caption)
           .foregroundStyle(.secondary)
+          .accessibilityHidden(true)
       }
 
       BodyTextView(segments: group.description.parseBodyToSegments())
@@ -313,6 +320,7 @@ struct AblautGroupHeader: View {
         .fixedSize(horizontal: false, vertical: true)
     }
     .padding(.vertical, 12)
+    .accessibilityElement(children: .combine)
   }
 }
 

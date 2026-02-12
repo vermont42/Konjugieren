@@ -50,6 +50,7 @@ private struct SubheadingLabel: ViewModifier {
       .font(.title3.bold())
       .foregroundStyle(.customYellow)
       .padding(.horizontal, Layout.doubleDefaultSpacing)
+      .accessibilityAddTraits(.isHeader)
   }
 }
 

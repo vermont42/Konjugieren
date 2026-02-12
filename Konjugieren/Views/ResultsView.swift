@@ -55,42 +55,34 @@ struct ResultsView: View {
 
   @ViewBuilder
   private func resultRow(for question: QuizItem) -> some View {
-    let correctLabel = MixedCaseAccessibility.accessibilityLabel(for: question.correctAnswer)
-    let status = question.isCorrect == true ? "" : " \u{2717}"
-    let a11yLabel: String = {
-      var parts = [question.verb.infinitiv + status]
-      parts.append(question.displayName(lang: settings.conjugationgroupLang))
-      if let pronoun = question.pronoun {
-        parts.append(pronoun)
-      }
-      parts.append(correctLabel)
-      if question.isCorrect == false, let userAnswer = question.userAnswer {
-        parts.append(userAnswer)
-      }
-      return parts.joined(separator: ", ")
-    }()
+    let titleIsGerman = settings.conjugationgroupLang == .german
 
     VStack(alignment: .center, spacing: 4) {
-      if question.isCorrect == false {
-        Text("\(question.verb.infinitiv) \u{2717}")
-      } else {
-        Text(question.verb.infinitiv)
+      Group {
+        if question.isCorrect == false {
+          Text(verbatim: "\(question.verb.infinitiv) \u{2717}")
+        } else {
+          Text(verbatim: question.verb.infinitiv)
+        }
       }
+      .germanPronunciation()
 
-      Text("\(question.displayName(lang: settings.conjugationgroupLang)) - \(question.pronoun ?? "")")
+      Text(verbatim: "\(question.displayName(lang: settings.conjugationgroupLang)) - \(question.pronoun ?? "")")
         .font(.caption)
         .foregroundStyle(.secondary)
+        .germanPronunciation(forReal: titleIsGerman)
 
       Text(mixedCaseString: question.correctAnswer)
+        .germanPronunciation()
+        .accessibilityLabel(Text(verbatim: MixedCaseAccessibility.accessibilityLabel(for: question.correctAnswer)))
 
       if question.isCorrect == false, let userAnswer = question.userAnswer {
-        Text(userAnswer)
+        Text(verbatim: userAnswer)
           .foregroundStyle(.customRed)
+          .germanPronunciation()
       }
     }
     .frame(maxWidth: .infinity)
-    .accessibilityElement(children: .combine)
-    .accessibilityLabel(a11yLabel)
   }
 }
 

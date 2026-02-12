@@ -219,3 +219,29 @@ extension String {
     return .conjugation(parts)
   }
 }
+
+extension [TextSegment] {
+  var plainText: String {
+    map { segment in
+      switch segment {
+      case .plain(let text):
+        return text
+      case .bold(let text):
+        return text
+      case .link(let text, _):
+        return text
+      case .conjugation(let parts):
+        return parts.map {
+          switch $0 {
+          case .regular(let text):
+            return text
+          case .irregular(let text):
+            return text
+          }
+        }
+        .joined()
+      }
+    }
+    .joined()
+  }
+}

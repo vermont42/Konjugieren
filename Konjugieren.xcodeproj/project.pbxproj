@@ -25,7 +25,7 @@
 		033FC2852EF3161C00F9EE04 /* Konjugieren.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Konjugieren.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		033FC2922EF3161D00F9EE04 /* KonjugierenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KonjugierenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		03C47DCC2F25BFFE0086AF63 /* GameCenterResources.gamekit */ = {isa = PBXFileReference; lastKnownFileType = wrapper; path = GameCenterResources.gamekit; sourceTree = "<group>"; };
-		03F5A1012F52E0010086AF63 /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = "Konjugieren/Secrets.xcconfig"; sourceTree = "<group>"; };
+		03F5A1012F52E0010086AF63 /* Konjugieren/Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Konjugieren/Secrets.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -82,7 +82,7 @@
 				033FC2872EF3161C00F9EE04 /* Konjugieren */,
 				033FC2952EF3161D00F9EE04 /* KonjugierenTests */,
 				033FC2862EF3161C00F9EE04 /* Products */,
-				03F5A1012F52E0010086AF63 /* Secrets.xcconfig */,
+				03F5A1012F52E0010086AF63 /* Konjugieren/Secrets.xcconfig */,
 			);
 			sourceTree = "<group>";
 		};
@@ -233,7 +233,7 @@
 /* Begin XCBuildConfiguration section */
 		033FC2A42EF3161D00F9EE04 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 03F5A1012F52E0010086AF63 /* Secrets.xcconfig */;
+			baseConfigurationReference = 03F5A1012F52E0010086AF63 /* Konjugieren/Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
@@ -299,7 +299,7 @@
 		};
 		033FC2A52EF3161D00F9EE04 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 03F5A1012F52E0010086AF63 /* Secrets.xcconfig */;
+			baseConfigurationReference = 03F5A1012F52E0010086AF63 /* Konjugieren/Secrets.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;

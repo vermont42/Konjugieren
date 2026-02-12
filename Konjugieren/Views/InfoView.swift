@@ -26,6 +26,7 @@ struct InfoView: View {
             .frame(maxWidth: .infinity, alignment: .center)
             .padding(.bottom, 8)
             .accessibilityAddTraits(.isHeader)
+            .germanPronunciation(forReal: info.alwaysUsesGermanPronunciation)
 
           if let imageInfo = info.imageInfo {
             Image(imageInfo.filename)

@@ -16,9 +16,14 @@ struct VerbView: View {
     }
   }
 
+  private var titleIsGerman: Bool {
+    settings.conjugationgroupLang == .german
+  }
+
   private func conjugationSection(for groupBuilder: (PersonNumber) -> Conjugationgroup) -> ConjugationSectionView {
     ConjugationSectionView(
       title: displayName(for: groupBuilder(.firstSingular)),
+      titleIsGerman: titleIsGerman,
       conjugations: PersonNumber.allCases.map { pn in
         ConjugationRow(pronoun: pn.pronoun, form: conjugate(groupBuilder(pn)))
       }
@@ -43,11 +48,19 @@ struct VerbView: View {
 
           HStack(spacing: 16) {
             Label(verb.family.displayName, systemImage: "tag")
-            Label(verb.auxiliary.verb, systemImage: "arrow.triangle.branch")
+              .accessibilityLabel(Text(verbatim: verb.family.displayName))
+              .englishPronunciation()
+            Label {
+              Text(verbatim: verb.auxiliary.verb)
+            } icon: {
+              Image(systemName: "arrow.triangle.branch")
+            }
+            .accessibilityLabel(Text(verbatim: verb.auxiliary.verb))
+            .germanPronunciation()
             Label("#\(verb.frequency)", systemImage: verb.frequencyIcon)
+              .accessibilityLabel(Text(verbatim: "#\(verb.frequency)"))
           }
           .font(.subheadline)
-          .accessibilityElement(children: .combine)
 
           if verb.prefix != .none || verb.ablautGroup != nil {
             HStack(spacing: 16) {
@@ -59,6 +72,8 @@ struct VerbView: View {
 
               if let ablautGroup = verb.ablautGroup {
                 Label(ablautGroup, systemImage: "figure.and.child.holdinghands")
+                  .accessibilityLabel(Text(verbatim: ablautGroup))
+                  .germanPronunciation()
               }
             }
             .font(.subheadline)
@@ -91,11 +106,13 @@ struct VerbView: View {
   private var conjugationSections: some View {
     ConjugationSectionView(
       title: displayName(for: .perfektpartizip),
+      titleIsGerman: titleIsGerman,
       conjugations: [conjugate(.perfektpartizip)]
     )
 
     ConjugationSectionView(
       title: displayName(for: .präsenspartizip),
+      titleIsGerman: titleIsGerman,
       conjugations: [conjugate(.präsenspartizip)]
     )
 
@@ -106,6 +123,7 @@ struct VerbView: View {
 
     ConjugationSectionView(
       title: displayName(for: .imperativ(.secondSingular)),
+      titleIsGerman: titleIsGerman,
       conjugations: imperativConjugations()
     )
 
@@ -168,15 +186,18 @@ struct ConjugationRow: Identifiable {
 
 struct ConjugationSectionView: View {
   let title: String
+  let titleIsGerman: Bool
   let conjugations: [ConjugationRow]
 
-  init(title: String, conjugations: [String]) {
+  init(title: String, titleIsGerman: Bool = true, conjugations: [String]) {
     self.title = title
+    self.titleIsGerman = titleIsGerman
     self.conjugations = conjugations.map { ConjugationRow(form: $0) }
   }
 
-  init(title: String, conjugations: [ConjugationRow]) {
+  init(title: String, titleIsGerman: Bool = true, conjugations: [ConjugationRow]) {
     self.title = title
+    self.titleIsGerman = titleIsGerman
     self.conjugations = conjugations
   }
 
@@ -186,12 +207,13 @@ struct ConjugationSectionView: View {
         .font(.headline)
         .foregroundStyle(.primary)
         .accessibilityAddTraits(.isHeader)
+        .germanPronunciation(forReal: titleIsGerman)
 
       VStack(alignment: .leading, spacing: 4) {
         ForEach(conjugations) { row in
           HStack(spacing: 8) {
             if let pronoun = row.pronoun {
-              Text(pronoun)
+              Text(verbatim: pronoun)
                 .foregroundStyle(.secondary)
                 .frame(width: 30, alignment: .leading)
             }
@@ -200,10 +222,11 @@ struct ConjugationSectionView: View {
           }
           .font(.body)
           .accessibilityElement(children: .combine)
-          .accessibilityLabel(row.accessibilityDescription)
+          .accessibilityLabel(Text(verbatim: row.accessibilityDescription))
         }
       }
       .padding(.leading, 8)
+      .germanPronunciation()
     }
   }
 }

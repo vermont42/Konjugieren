@@ -5,6 +5,7 @@
 
     },
     "%@ - %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -69,6 +70,7 @@
       }
     },
     "%@ ✗" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

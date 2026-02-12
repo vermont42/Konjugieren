@@ -4,17 +4,14 @@ import SwiftUI
 
 struct InfoBrowseView: View {
   @Bindable var world = Current
+  @State private var navigationPath = NavigationPath()
 
   var body: some View {
-    NavigationStack {
+    NavigationStack(path: $navigationPath) {
       ScrollView {
         LazyVStack(spacing: 0) {
           ForEach(Info.infos, id: \.heading) { info in
-            NavigationLink(destination: InfoView(info: info)) {
-              InfoRowView(info: info)
-            }
-            .buttonStyle(.plain)
-            .germanPronunciation(forReal: info.alwaysUsesGermanPronunciation)
+            InfoRowView(info: info) { navigationPath.append(info) }
 
             Divider()
               .padding(.leading)
@@ -23,6 +20,9 @@ struct InfoBrowseView: View {
       }
       .onAppear { Current.analytics.signal(name: .viewInfoBrowseView) }
       .navigationTitle(L.Navigation.info)
+      .navigationDestination(for: Info.self) { info in
+        InfoView(info: info)
+      }
       .sheet(item: $world.info) { info in
         InfoView(info: info, shouldShowInfoHeading: true)
       }
@@ -35,15 +35,22 @@ struct InfoBrowseView: View {
 
 struct InfoRowView: View {
   let info: Info
+  let navigate: () -> Void
 
   var body: some View {
     HStack(alignment: .top) {
       VStack(alignment: .leading, spacing: info.hasPreview ? 4 : 0) {
         Text(info.heading)
           .tableText()
+          .germanPronunciation(forReal: info.alwaysUsesGermanPronunciation)
+          .accessibilityAddTraits(.isButton)
+          .accessibilityAction { navigate() }
         if info.hasPreview {
           formattedPreviewText()
             .lineLimit(2)
+            .englishPronunciation()
+            .accessibilityAddTraits(.isButton)
+            .accessibilityAction { navigate() }
         }
       }
 
@@ -56,11 +63,14 @@ struct InfoRowView: View {
           .frame(width: 60, height: 60)
           .clipShape(RoundedRectangle(cornerRadius: 8))
           .accessibilityLabel(imageInfo.accessibilityLabel)
+          .accessibilityAddTraits(.isButton)
+          .accessibilityAction { navigate() }
       }
     }
     .padding(.horizontal)
     .padding(.vertical, 12)
-    .accessibilityElement(children: .combine)
+    .contentShape(Rectangle())
+    .onTapGesture { navigate() }
   }
 
   private func formattedPreviewText() -> some View {

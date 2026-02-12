@@ -6,6 +6,7 @@ struct VerbBrowseView: View {
   @State private var sortOrder: SortOrder = .frequency
   @State private var sortedVerbs: [Verb] = Verb.verbsSortedByFrequency
   @State private var searchText: String = ""
+  @State private var navigationPath = NavigationPath()
   @Environment(\.horizontalSizeClass) private var sizeClass
 
   private var settings: Settings { Current.settings }
@@ -24,27 +25,21 @@ struct VerbBrowseView: View {
   }
 
   var body: some View {
-    NavigationStack {
+    NavigationStack(path: $navigationPath) {
       VStack(spacing: 0) {
         ScrollViewReader { proxy in
           ScrollView {
             if sizeClass == .regular {
               LazyVGrid(columns: [GridItem(.adaptive(minimum: Layout.verbGridMinimum))], spacing: 0) {
                 ForEach(filteredVerbs) { verb in
-                  NavigationLink(value: verb) {
-                    VerbGridCell(verb: verb)
-                  }
-                  .buttonStyle(.plain)
+                  VerbGridCell(verb: verb) { navigationPath.append(verb) }
                 }
               }
               .padding(.horizontal)
             } else {
               LazyVStack(spacing: 0) {
                 ForEach(filteredVerbs) { verb in
-                  NavigationLink(value: verb) {
-                    VerbRowView(verb: verb)
-                  }
-                  .buttonStyle(.plain)
+                  VerbRowView(verb: verb) { navigationPath.append(verb) }
 
                   Divider()
                     .padding(.leading)
@@ -94,52 +89,67 @@ struct VerbBrowseView: View {
 
 struct VerbRowView: View {
   let verb: Verb
+  let navigate: () -> Void
 
   var body: some View {
     HStack {
       VStack(alignment: .leading, spacing: 4) {
-        Text(verb.infinitiv)
+        Text(verbatim: verb.infinitiv)
           .tableText()
           .germanPronunciation()
-        Text(verb.translation)
+          .accessibilityAddTraits(.isButton)
+          .accessibilityAction { navigate() }
+        Text(verbatim: verb.translation)
           .tableSubtext()
           .englishPronunciation()
+          .accessibilityAddTraits(.isButton)
+          .accessibilityAction { navigate() }
       }
 
       Spacer()
 
-      Text(verb.family.displayName)
+      Text(verbatim: verb.family.displayName)
         .font(.caption)
         .foregroundStyle(.secondary)
-
+        .englishPronunciation()
+        .accessibilityAddTraits(.isButton)
+        .accessibilityAction { navigate() }
     }
     .contentShape(Rectangle())
     .padding(.horizontal)
     .padding(.vertical, 12)
-    .accessibilityElement(children: .combine)
+    .onTapGesture { navigate() }
   }
 }
 
 private struct VerbGridCell: View {
   let verb: Verb
+  let navigate: () -> Void
 
   var body: some View {
     VStack(alignment: .leading, spacing: 4) {
-      Text(verb.infinitiv)
+      Text(verbatim: verb.infinitiv)
         .tableText()
         .germanPronunciation()
-      Text(verb.translation)
+        .accessibilityAddTraits(.isButton)
+        .accessibilityAction { navigate() }
+      Text(verbatim: verb.translation)
         .tableSubtext()
         .englishPronunciation()
-      Text(verb.family.displayName)
+        .accessibilityAddTraits(.isButton)
+        .accessibilityAction { navigate() }
+      Text(verbatim: verb.family.displayName)
         .font(.caption)
         .foregroundStyle(.secondary)
+        .englishPronunciation()
+        .accessibilityAddTraits(.isButton)
+        .accessibilityAction { navigate() }
     }
     .padding(.horizontal)
     .padding(.vertical, 12)
     .frame(maxWidth: .infinity, alignment: .leading)
     .contentShape(Rectangle())
-    .accessibilityElement(children: .combine)
+    .onTapGesture { navigate() }
   }
 }
 

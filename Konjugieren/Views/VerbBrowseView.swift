@@ -97,12 +97,14 @@ struct VerbRowView: View {
         Text(verbatim: verb.infinitiv)
           .tableText()
           .germanPronunciation()
-          .accessibilityAddTraits(.isButton)
+          .accessibilityAddTraits(UserLocale.isGerman ? .isButton : [])
+          .accessibilityRemoveTraits(UserLocale.isGerman ? [] : .isButton)
           .accessibilityAction { navigate() }
         Text(verbatim: verb.translation)
           .tableSubtext()
           .englishPronunciation()
-          .accessibilityAddTraits(.isButton)
+          .accessibilityAddTraits(UserLocale.isEnglish ? .isButton : [])
+          .accessibilityRemoveTraits(UserLocale.isEnglish ? [] : .isButton)
           .accessibilityAction { navigate() }
       }
 
@@ -111,7 +113,6 @@ struct VerbRowView: View {
       Text(verbatim: verb.family.displayName)
         .font(.caption)
         .foregroundStyle(.secondary)
-        .englishPronunciation()
         .accessibilityAddTraits(.isButton)
         .accessibilityAction { navigate() }
     }
@@ -131,17 +132,18 @@ private struct VerbGridCell: View {
       Text(verbatim: verb.infinitiv)
         .tableText()
         .germanPronunciation()
-        .accessibilityAddTraits(.isButton)
+        .accessibilityAddTraits(UserLocale.isGerman ? .isButton : [])
+        .accessibilityRemoveTraits(UserLocale.isGerman ? [] : .isButton)
         .accessibilityAction { navigate() }
       Text(verbatim: verb.translation)
         .tableSubtext()
         .englishPronunciation()
-        .accessibilityAddTraits(.isButton)
+        .accessibilityAddTraits(UserLocale.isEnglish ? .isButton : [])
+        .accessibilityRemoveTraits(UserLocale.isEnglish ? [] : .isButton)
         .accessibilityAction { navigate() }
       Text(verbatim: verb.family.displayName)
         .font(.caption)
         .foregroundStyle(.secondary)
-        .englishPronunciation()
         .accessibilityAddTraits(.isButton)
         .accessibilityAction { navigate() }
     }

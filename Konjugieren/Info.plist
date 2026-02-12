@@ -20,33 +20,6 @@
 	<string>$(CURRENT_PROJECT_VERSION)</string>
 	<key>CFBundleSpokenName</key>
 	<string>cone you gear en</string>
-	<key>CFBundleIcons</key>
-	<dict>
-		<key>CFBundlePrimaryIcon</key>
-		<dict>
-			<key>CFBundleIconFiles</key>
-			<array>
-				<string>AppIcon</string>
-			</array>
-		</dict>
-		<key>CFBundleAlternateIcons</key>
-		<dict>
-			<key>Pretzel</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>PretzelIcon</string>
-				</array>
-			</dict>
-			<key>Bundestag</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>BundestagIcon</string>
-				</array>
-			</dict>
-		</dict>
-	</dict>
 	<key>TelemetryDeckAppID</key>
 	<string>$(TELEMETRY_DECK_APP_ID)</string>
 	<key>UIApplicationSceneManifest</key>

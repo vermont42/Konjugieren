@@ -6,6 +6,7 @@ struct FamilyBrowseView: View {
   @Environment(\.horizontalSizeClass) private var sizeClass
   @State private var decorations = DecorationImage.allCases.shuffled()
   @State private var gridWidth: CGFloat = 0
+  @State private var navigationPath = NavigationPath()
 
   private var fillerCount: Int {
     guard gridWidth > 0 else { return 0 }
@@ -17,7 +18,7 @@ struct FamilyBrowseView: View {
   }
 
   var body: some View {
-    NavigationStack {
+    NavigationStack(path: $navigationPath) {
       ScrollView {
         if sizeClass == .regular {
           LazyVGrid(columns: [GridItem(.adaptive(minimum: Layout.showcaseCardGridMinimum))], spacing: Layout.doubleDefaultSpacing) {
@@ -55,7 +56,10 @@ struct FamilyBrowseView: View {
       .onAppear { Current.analytics.signal(name: .viewFamilyBrowseView) }
       .navigationTitle(L.Navigation.families)
       .navigationDestination(for: BrowseableFamily.self) { family in
-        FamilyDetailView(family: family)
+        FamilyDetailView(family: family) { verb in navigationPath.append(verb) }
+      }
+      .navigationDestination(for: Verb.self) { verb in
+        VerbView(verb: verb)
       }
     }
   }

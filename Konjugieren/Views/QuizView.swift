@@ -82,11 +82,10 @@ struct QuizView: View {
         Text(L.Quiz.verb + " ")
           .foregroundStyle(.customYellow)
           .fixedSize(horizontal: true, vertical: false)
-          .englishPronunciation()
         Text(verbatim: question.verb.infinitiv)
           .foregroundStyle(.customForeground)
           .germanPronunciation()
-      }
+}
 
       HStack(alignment: .top, spacing: 0) {
         Text(L.Quiz.translation + " ")
@@ -103,7 +102,6 @@ struct QuizView: View {
           Text(L.Quiz.pronoun + " ")
             .foregroundStyle(.customYellow)
             .fixedSize(horizontal: true, vertical: false)
-            .englishPronunciation()
           Text(verbatim: pronoun)
             .foregroundStyle(.customForeground)
             .germanPronunciation()
@@ -114,7 +112,6 @@ struct QuizView: View {
         Text(L.Quiz.conjugationgroup + " ")
           .foregroundStyle(.customYellow)
           .fixedSize(horizontal: true, vertical: false)
-          .englishPronunciation()
         Text(verbatim: question.displayName(lang: settings.conjugationgroupLang))
           .foregroundStyle(.customForeground)
           .fixedSize(horizontal: false, vertical: true)
@@ -123,21 +120,17 @@ struct QuizView: View {
 
       HStack {
         Text(labeledText(label: L.Quiz.progress, value: quiz.progressText))
-          .englishPronunciation()
         Spacer()
         Text(labeledText(label: L.Quiz.score, value: "\(quiz.score)"))
-          .englishPronunciation()
       }
 
       Text(labeledText(label: L.Quiz.elapsed, value: quiz.elapsedText))
-        .englishPronunciation()
 
       if let lastIncorrect = quiz.lastIncorrectAnswer, let lastCorrect = quiz.lastCorrectAnswer {
         HStack(alignment: .top, spacing: 0) {
           Text(L.Quiz.lastAnswer + " ")
             .foregroundStyle(.customYellow)
             .fixedSize(horizontal: true, vertical: false)
-            .englishPronunciation()
           Text(verbatim: lastIncorrect)
             .foregroundStyle(.customYellow)
             .germanPronunciation()
@@ -147,7 +140,6 @@ struct QuizView: View {
           Text(L.Quiz.correctAnswer + " ")
             .foregroundStyle(.customYellow)
             .fixedSize(horizontal: true, vertical: false)
-            .englishPronunciation()
           Text(mixedCaseString: lastCorrect)
             .germanPronunciation()
             .accessibilityLabel(Text(verbatim: MixedCaseAccessibility.accessibilityLabel(for: lastCorrect)))

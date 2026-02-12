@@ -39,7 +39,7 @@ struct VerbView: View {
             .fontWeight(.bold)
             .minimumScaleFactor(0.5)
             .lineLimit(1)
-            .accessibilityAddTraits(.isHeader)
+            .accessibilityAddTraits(UserLocale.isGerman ? .isHeader : [])
             .germanPronunciation()
 
           Text(verb.translation)

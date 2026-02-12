@@ -4,6 +4,7 @@ import SwiftUI
 
 struct FamilyDetailView: View {
   let family: BrowseableFamily
+  let navigateToVerb: (Verb) -> Void
 
   var body: some View {
     ZStack {
@@ -24,16 +25,17 @@ struct FamilyDetailView: View {
           .padding(.bottom, 16)
           .accessibilityElement(children: .combine)
           .accessibilityAddTraits(.isHeader)
+          .germanPronunciation(forReal: UserLocale.isGerman)
 
           RichTextView(blocks: family.longDescription.richTextBlocks)
             .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
 
           if family.hasPrefixList {
-            PrefixGroupedVerbList(family: family)
+            PrefixGroupedVerbList(family: family, navigateToVerb: navigateToVerb)
           } else if family.hasAblautList {
-            AblautGroupedVerbList(family: family)
+            AblautGroupedVerbList(family: family, navigateToVerb: navigateToVerb)
           } else {
-            VerbListSection(verbs: family.verbs)
+            VerbListSection(verbs: family.verbs, navigateToVerb: navigateToVerb)
           }
         }
         .padding(.horizontal, Layout.doubleDefaultSpacing)
@@ -46,6 +48,7 @@ struct FamilyDetailView: View {
 
 struct PrefixGroupedVerbList: View {
   let family: BrowseableFamily
+  let navigateToVerb: (Verb) -> Void
   @Environment(\.horizontalSizeClass) private var sizeClass
 
   var body: some View {
@@ -56,18 +59,12 @@ struct PrefixGroupedVerbList: View {
         if sizeClass == .regular {
           LazyVGrid(columns: [GridItem(.adaptive(minimum: Layout.verbGridMinimum))], spacing: 0) {
             ForEach(group.verbs) { verb in
-              NavigationLink(value: verb) {
-                PrefixVerbRow(verb: verb)
-              }
-              .buttonStyle(.plain)
+              PrefixVerbRow(verb: verb) { navigateToVerb(verb) }
             }
           }
         } else {
           ForEach(group.verbs) { verb in
-            NavigationLink(value: verb) {
-              PrefixVerbRow(verb: verb)
-            }
-            .buttonStyle(.plain)
+            PrefixVerbRow(verb: verb) { navigateToVerb(verb) }
 
             Divider()
           }
@@ -75,9 +72,6 @@ struct PrefixGroupedVerbList: View {
       }
     }
     .padding(.top, 24)
-    .navigationDestination(for: Verb.self) { verb in
-      VerbView(verb: verb)
-    }
   }
 }
 
@@ -115,6 +109,7 @@ struct PrefixHeaderView: View {
 
 struct PrefixVerbRow: View {
   let verb: Verb
+  let navigate: () -> Void
 
   var body: some View {
     HStack {
@@ -122,9 +117,17 @@ struct PrefixVerbRow: View {
         Text(verb.infinitiv)
           .font(.callout)
           .foregroundStyle(.customYellow)
+          .germanPronunciation()
+          .accessibilityAddTraits(UserLocale.isGerman ? .isButton : [])
+          .accessibilityRemoveTraits(UserLocale.isGerman ? [] : .isButton)
+          .accessibilityAction { navigate() }
         Text(verb.translation)
           .font(.footnote)
           .foregroundStyle(.customForeground)
+          .englishPronunciation()
+          .accessibilityAddTraits(UserLocale.isEnglish ? .isButton : [])
+          .accessibilityRemoveTraits(UserLocale.isEnglish ? [] : .isButton)
+          .accessibilityAction { navigate() }
       }
 
       Spacer()
@@ -136,14 +139,17 @@ struct PrefixVerbRow: View {
       Image(systemName: "chevron.right")
         .font(.caption)
         .foregroundStyle(.secondary)
+        .accessibilityHidden(true)
     }
     .padding(.vertical, 8)
     .contentShape(Rectangle())
+    .onTapGesture { navigate() }
   }
 }
 
 struct VerbListSection: View {
   let verbs: [Verb]
+  let navigateToVerb: (Verb) -> Void
   @Environment(\.horizontalSizeClass) private var sizeClass
 
   var body: some View {
@@ -157,67 +163,56 @@ struct VerbListSection: View {
       if sizeClass == .regular {
         LazyVGrid(columns: [GridItem(.adaptive(minimum: Layout.verbGridMinimum))], spacing: 0) {
           ForEach(verbs) { verb in
-            NavigationLink(value: verb) {
-              HStack {
-                VStack(alignment: .leading, spacing: 2) {
-                  Text(verb.infinitiv)
-                    .font(.callout)
-                    .foregroundStyle(.customYellow)
-                  Text(verb.translation)
-                    .font(.footnote)
-                    .foregroundStyle(.customForeground)
-                }
-
-                Spacer()
-
-                Image(systemName: "chevron.right")
-                  .font(.caption)
-                  .foregroundStyle(.secondary)
-              }
-              .padding(.vertical, 8)
-              .contentShape(Rectangle())
-            }
-            .buttonStyle(.plain)
+            verbRow(verb: verb)
           }
         }
       } else {
         LazyVStack(spacing: 0) {
           ForEach(verbs) { verb in
-            NavigationLink(value: verb) {
-              HStack {
-                VStack(alignment: .leading, spacing: 2) {
-                  Text(verb.infinitiv)
-                    .font(.callout)
-                    .foregroundStyle(.customYellow)
-                  Text(verb.translation)
-                    .font(.footnote)
-                    .foregroundStyle(.customForeground)
-                }
-
-                Spacer()
-
-                Image(systemName: "chevron.right")
-                  .font(.caption)
-                  .foregroundStyle(.secondary)
-              }
-              .padding(.vertical, 8)
-              .contentShape(Rectangle())
-            }
-            .buttonStyle(.plain)
+            verbRow(verb: verb)
 
             Divider()
           }
         }
       }
     }
-    .navigationDestination(for: Verb.self) { verb in
-      VerbView(verb: verb)
+  }
+
+  private func verbRow(verb: Verb) -> some View {
+    HStack {
+      VStack(alignment: .leading, spacing: 2) {
+        Text(verb.infinitiv)
+          .font(.callout)
+          .foregroundStyle(.customYellow)
+          .germanPronunciation()
+          .accessibilityAddTraits(UserLocale.isGerman ? .isButton : [])
+          .accessibilityRemoveTraits(UserLocale.isGerman ? [] : .isButton)
+          .accessibilityAction { navigateToVerb(verb) }
+        Text(verb.translation)
+          .font(.footnote)
+          .foregroundStyle(.customForeground)
+          .englishPronunciation()
+          .accessibilityAddTraits(UserLocale.isEnglish ? .isButton : [])
+          .accessibilityRemoveTraits(UserLocale.isEnglish ? [] : .isButton)
+          .accessibilityAction { navigateToVerb(verb) }
+      }
+
+      Spacer()
+
+      Image(systemName: "chevron.right")
+        .font(.caption)
+        .foregroundStyle(.secondary)
+        .accessibilityHidden(true)
     }
+    .padding(.vertical, 8)
+    .contentShape(Rectangle())
+    .onTapGesture { navigateToVerb(verb) }
   }
 }
 
 struct AblautGroupedVerbList: View {
   let family: BrowseableFamily
+  let navigateToVerb: (Verb) -> Void
   @State private var expandedGroups: Set<String> = []
 
   var body: some View {
@@ -233,15 +228,13 @@ struct AblautGroupedVerbList: View {
               } else {
                 expandedGroups.insert(group.exemplar)
               }
-            }
+            },
+            navigateToVerb: navigateToVerb
           )
         }
       }
     }
     .padding(.top, 24)
-    .navigationDestination(for: Verb.self) { verb in
-      VerbView(verb: verb)
-    }
   }
 }
 
@@ -249,6 +242,7 @@ struct AblautGroupSection: View {
   let group: AblautGroupInfo
   let isExpanded: Bool
   let onToggle: () -> Void
+  let navigateToVerb: (Verb) -> Void
   @Environment(\.accessibilityReduceMotion) private var reduceMotion
   @Environment(\.horizontalSizeClass) private var sizeClass
 
@@ -267,18 +261,12 @@ struct AblautGroupSection: View {
         if sizeClass == .regular {
           LazyVGrid(columns: [GridItem(.adaptive(minimum: Layout.verbGridMinimum))], spacing: 0) {
             ForEach(group.verbs) { verb in
-              NavigationLink(value: verb) {
-                AblautVerbRow(verb: verb)
-              }
-              .buttonStyle(.plain)
+              AblautVerbRow(verb: verb) { navigateToVerb(verb) }
             }
           }
         } else {
           ForEach(group.verbs) { verb in
-            NavigationLink(value: verb) {
-              AblautVerbRow(verb: verb)
-            }
-            .buttonStyle(.plain)
+            AblautVerbRow(verb: verb) { navigateToVerb(verb) }
 
             Divider()
               .padding(.leading, 16)
@@ -326,6 +314,7 @@ struct AblautGroupHeader: View {
 
 struct AblautVerbRow: View {
   let verb: Verb
+  let navigate: () -> Void
 
   var body: some View {
     HStack {
@@ -333,9 +322,17 @@ struct AblautVerbRow: View {
         Text(verb.infinitiv)
           .font(.callout)
           .foregroundStyle(.customYellow)
+          .germanPronunciation()
+          .accessibilityAddTraits(UserLocale.isGerman ? .isButton : [])
+          .accessibilityRemoveTraits(UserLocale.isGerman ? [] : .isButton)
+          .accessibilityAction { navigate() }
         Text(verb.translation)
           .font(.footnote)
           .foregroundStyle(.customForeground)
+          .englishPronunciation()
+          .accessibilityAddTraits(UserLocale.isEnglish ? .isButton : [])
+          .accessibilityRemoveTraits(UserLocale.isEnglish ? [] : .isButton)
+          .accessibilityAction { navigate() }
       }
       .padding(.leading, 16)
 
@@ -348,14 +345,20 @@ struct AblautVerbRow: View {
       Image(systemName: "chevron.right")
         .font(.caption)
         .foregroundStyle(.secondary)
+        .accessibilityHidden(true)
     }
     .padding(.vertical, 8)
     .contentShape(Rectangle())
+    .onTapGesture { navigate() }
   }
 }
 
 #Preview {
-  NavigationStack {
-    FamilyDetailView(family: .separable)
+  @Previewable @State var navigationPath = NavigationPath()
+  NavigationStack(path: $navigationPath) {
+    FamilyDetailView(family: .separable) { verb in navigationPath.append(verb) }
+      .navigationDestination(for: Verb.self) { verb in
+        VerbView(verb: verb)
+      }
   }
 }

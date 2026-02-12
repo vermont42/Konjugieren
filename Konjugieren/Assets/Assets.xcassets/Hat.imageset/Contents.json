@@ -3,6 +3,16 @@
     {
       "filename" : "Hat.png",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "Hat-light.png",
+      "idiom" : "universal"
     }
   ],
   "info" : {

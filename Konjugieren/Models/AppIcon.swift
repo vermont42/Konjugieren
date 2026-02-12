@@ -21,9 +21,9 @@ enum AppIcon: String, CaseIterable {
     case .hat:
       return nil
     case .pretzel:
-      return "Pretzel"
+      return "PretzelIcon"
     case .bundestag:
-      return "Bundestag"
+      return "BundestagIcon"
     }
   }
 }

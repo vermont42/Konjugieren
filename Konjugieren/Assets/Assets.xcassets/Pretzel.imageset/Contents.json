@@ -3,6 +3,16 @@
     {
       "filename" : "Pretzel.png",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "Pretzel-light.png",
+      "idiom" : "universal"
     }
   ],
   "info" : {

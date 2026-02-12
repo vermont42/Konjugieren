@@ -37,18 +37,22 @@ struct InfoRowView: View {
   let info: Info
   let navigate: () -> Void
 
+  private var showHeadingButtonTrait: Bool {
+    !info.alwaysUsesGermanPronunciation || UserLocale.isGerman
+  }
+
   var body: some View {
     HStack(alignment: .top) {
       VStack(alignment: .leading, spacing: info.hasPreview ? 4 : 0) {
         Text(info.heading)
           .tableText()
           .germanPronunciation(forReal: info.alwaysUsesGermanPronunciation)
-          .accessibilityAddTraits(.isButton)
+          .accessibilityAddTraits(showHeadingButtonTrait ? .isButton : [])
+          .accessibilityRemoveTraits(showHeadingButtonTrait ? [] : .isButton)
           .accessibilityAction { navigate() }
         if info.hasPreview {
           formattedPreviewText()
             .lineLimit(2)
-            .englishPronunciation()
             .accessibilityAddTraits(.isButton)
             .accessibilityAction { navigate() }
         }

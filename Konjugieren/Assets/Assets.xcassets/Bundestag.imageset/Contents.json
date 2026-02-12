@@ -3,6 +3,16 @@
     {
       "filename" : "Bundestag.png",
       "idiom" : "universal"
+    },
+    {
+      "appearances" : [
+        {
+          "appearance" : "luminosity",
+          "value" : "light"
+        }
+      ],
+      "filename" : "Bundestag-light.png",
+      "idiom" : "universal"
     }
   ],
   "info" : {

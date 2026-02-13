@@ -178,7 +178,7 @@ enum Conjugationgroup: Hashable {
         return "en"
       }
     case .perfektIndikativ, .perfektKonjunktivI, .plusquamperfektIndikativ, .plusquamperfektKonjunktivII, .futurIndikativ, .futurKonjunktivI, .futurKonjunktivII:
-      Current.fatalError.fatalError("ending() was called for a compound tense. This is a logic error.")
+      Current.fatalError.fatalError("ending() was called for compound tense \(self.germanDisplayName). This is a logic error.")
       return ""
     }
   }

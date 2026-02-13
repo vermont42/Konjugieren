@@ -12,7 +12,7 @@ class UttererReal: Utterer {
     do {
       try session.setCategory(.playback, options: .mixWithOthers)
     } catch {}
-    utter("", localeString: Self.germanLocaleString)
+    utter("", localeString: UttererLocale.german)
   }
 
   func utter(_ text: String, localeString: String) {

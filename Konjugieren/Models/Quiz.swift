@@ -217,7 +217,7 @@ class Quiz {
     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
       Current.utterer.utter(question.verb.infinitiv)
       DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-        Current.utterer.utter(question.verb.translation, localeString: "en-US")
+        Current.utterer.utter(question.verb.translation, localeString: UttererLocale.english)
       }
     }
   }

@@ -118,7 +118,7 @@ private struct GermanPronunciation: ViewModifier {
   func body(content: Content) -> some View {
     if forReal {
       content
-        .environment(\.locale, .init(identifier: "de-DE"))
+        .environment(\.locale, .init(identifier: UttererLocale.german))
     } else {
       content
     }
@@ -128,6 +128,6 @@ private struct GermanPronunciation: ViewModifier {
 private struct EnglishPronunciation: ViewModifier {
   func body(content: Content) -> some View {
     content
-      .environment(\.locale, .init(identifier: "en-US"))
+      .environment(\.locale, .init(identifier: UttererLocale.english))
   }
 }

@@ -6,10 +6,12 @@ protocol Utterer {
 }
 
 extension Utterer {
-  static var germanLocaleString: String { "de-DE" }
-  static var englishLocaleString: String { "en-US" }
-
   func utter(_ text: String) {
-    utter(text, localeString: Self.germanLocaleString)
+    utter(text, localeString: UttererLocale.german)
   }
+}
+
+enum UttererLocale {
+  static let german = "de-DE"
+  static let english = "en-US"
 }

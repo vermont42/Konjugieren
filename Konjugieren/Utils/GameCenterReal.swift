@@ -15,7 +15,8 @@ class GameCenterReal: GameCenter {
 
   func authenticate() {
     GKLocalPlayer.local.authenticateHandler = { [weak self] _, error in
-      guard error == nil else {
+      if let error {
+        gameCenterLogger.warning("Unable to authenticate GameCenter: \(error.localizedDescription)")
         return
       }
 

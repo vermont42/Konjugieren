@@ -42,10 +42,10 @@ struct Ablaut: Hashable {
         } else if let personNumber = Self.personNumberCodes[suffix] {
           appliesTo.append(constructor(personNumber))
         } else {
-          Current.fatalError.fatalError("Unrecognized Conjugationgroup \(code) was encountered.")
+          Current.fatalError.fatalError("Unrecognized conjugationgroup \(code) was encountered.")
         }
       } else {
-        Current.fatalError.fatalError("Unrecognized Conjugationgroup \(code) was encountered.")
+        Current.fatalError.fatalError("Unrecognized conjugationgroup \(code) was encountered.")
       }
     }
   }

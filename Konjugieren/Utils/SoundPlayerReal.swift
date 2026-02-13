@@ -1,6 +1,9 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
 import AVFoundation
+import os
+
+private let soundLogger = KonjugierenLogger.logger(category: "Sound")
 
 class SoundPlayerReal: SoundPlayer {
   private var sounds: [String: AVAudioPlayer] = [:]
@@ -11,7 +14,9 @@ class SoundPlayerReal: SoundPlayer {
     let session = AVAudioSession.sharedInstance()
     do {
       try session.setCategory(.playback, options: .mixWithOthers)
-    } catch {}
+    } catch {
+      soundLogger.warning("Failed to set audio session category: \(error.localizedDescription)")
+    }
 
     play(.silence) // https://forums.developer.apple.com/thread/23160
   }

@@ -3,12 +3,12 @@
 import Foundation
 
 struct Verb: Identifiable, Hashable, CustomStringConvertible {
-  static var verbs: [String: Verb] = [:]
+  @MainActor static var verbs: [String: Verb] = [:]
   static let minVerbLength = 3
-  private static var cachedAlpha: [Verb]?
-  private static var cachedFreq: [Verb]?
+  @MainActor private static var cachedAlpha: [Verb]?
+  @MainActor private static var cachedFreq: [Verb]?
 
-  static var verbsSortedAlphabetically: [Verb] {
+  @MainActor static var verbsSortedAlphabetically: [Verb] {
     if let cachedAlpha {
       return cachedAlpha
     }
@@ -19,7 +19,7 @@ struct Verb: Identifiable, Hashable, CustomStringConvertible {
     return sorted
   }
 
-  static var verbsSortedByFrequency: [Verb] {
+  @MainActor static var verbsSortedByFrequency: [Verb] {
     if let cachedFreq {
       return cachedFreq
     }

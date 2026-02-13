@@ -215,7 +215,7 @@ struct ConjugationSectionView: View {
             if let pronoun = row.pronoun {
               Text(verbatim: pronoun)
                 .foregroundStyle(.secondary)
-                .frame(width: 30, alignment: .leading)
+                .frame(width: Layout.pronounColumnWidth, alignment: .leading)
             }
 
             Text(mixedCaseString: row.form)

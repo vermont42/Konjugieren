@@ -182,7 +182,7 @@ private struct FamilyShowcaseCard: View {
       Text(personNumber.pronoun)
         .font(.caption)
         .foregroundStyle(.secondary)
-        .frame(width: 28, alignment: .leading)
+        .frame(width: Layout.pronounColumnWidth, alignment: .leading)
       Text(mixedCaseString: conjugation)
         .font(.callout)
     }

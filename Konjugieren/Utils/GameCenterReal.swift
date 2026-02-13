@@ -2,6 +2,9 @@
 
 import GameKit
 import Observation
+import os
+
+private let gameCenterLogger = KonjugierenLogger.logger(category: "GameCenter")
 
 @MainActor
 @Observable
@@ -30,7 +33,9 @@ class GameCenterReal: GameCenter {
         player: GKLocalPlayer.local,
         leaderboardIDs: [Self.leaderboardID]
       )
-    } catch {}
+    } catch {
+      gameCenterLogger.warning("Failed to submit score: \(error.localizedDescription)")
+    }
   }
 
   func showLeaderboard() {

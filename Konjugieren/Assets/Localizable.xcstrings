@@ -2756,6 +2756,22 @@
         }
       }
     },
+    "Navigation.dismiss" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schlie\u00dfen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dismiss"
+          }
+        }
+      }
+    },
     "Navigation.families" : {
       "localizations" : {
         "de" : {

@@ -24,10 +24,28 @@ struct InfoBrowseView: View {
         InfoView(info: info)
       }
       .sheet(item: $world.info) { info in
-        InfoView(info: info, shouldShowInfoHeading: true)
+        NavigationStack {
+          InfoView(info: info, shouldShowInfoHeading: true)
+            .toolbar {
+              ToolbarItem(placement: .cancellationAction) {
+                Button(L.Navigation.dismiss) {
+                  Current.info = nil
+                }
+              }
+            }
+        }
       }
       .sheet(item: $world.verb) { verb in
-        VerbView(verb: verb)
+        NavigationStack {
+          VerbView(verb: verb)
+            .toolbar {
+              ToolbarItem(placement: .cancellationAction) {
+                Button(L.Navigation.dismiss) {
+                  Current.verb = nil
+                }
+              }
+            }
+        }
       }
     }
   }

@@ -3,7 +3,7 @@
 import Foundation
 
 struct AblautGroup: Hashable, CustomStringConvertible {
-  static var ablautGroups: [String: AblautGroup] = [:]
+  @MainActor static var ablautGroups: [String: AblautGroup] = [:]
   let exemplar: String
   var ablauts: [Conjugationgroup: String] = [:]
 

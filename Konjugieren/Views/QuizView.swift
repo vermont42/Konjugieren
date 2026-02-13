@@ -153,6 +153,7 @@ struct QuizView: View {
         .focused($isTextFieldFocused)
         .accessibilityFocused($isTextFieldA11yFocused)
         .accessibilityHint(L.Accessibility.quizTextFieldHint)
+        .submitLabel(.go)
         .onSubmit {
           guard !userInput.isEmpty else { return }
           quiz.submitAnswer(userInput)

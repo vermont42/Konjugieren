@@ -2,7 +2,10 @@
 
 import Foundation
 import Observation
+import os
 import UIKit
+
+nonisolated private let settingsLogger = KonjugierenLogger.logger(category: "Settings")
 
 @MainActor
 @Observable
@@ -84,53 +87,33 @@ class Settings {
     guard UIApplication.shared.supportsAlternateIcons else { return }
     UIApplication.shared.setAlternateIconName(icon.alternateIconName) { error in
       if let error {
-        print("Failed to set icon: \(error.localizedDescription)")
+        settingsLogger.warning("Failed to set icon: \(error.localizedDescription)")
       }
     }
   }
 
   init(getterSetter: GetterSetter) {
     self.getterSetter = getterSetter
-    if let conjugationgroupLangString = getterSetter.get(key: Settings.conjugationgroupLangKey) {
-      conjugationgroupLang = ConjugationgroupLang(rawValue: conjugationgroupLangString) ?? Settings.conjugationgroupLangDefault
-    } else {
-      getterSetter.set(key: Settings.conjugationgroupLangKey, value: "\(conjugationgroupLang)")
-    }
-
-    if let thirdPersonPronounGenderString = getterSetter.get(key: Settings.thirdPersonPronounGenderKey) {
-      thirdPersonPronounGender = ThirdPersonPronounGender(rawValue: thirdPersonPronounGenderString) ?? Settings.thirdPersonPronounGenderDefault
-    } else {
-      getterSetter.set(key: Settings.thirdPersonPronounGenderKey, value: "\(thirdPersonPronounGender)")
-    }
-
-    if let quizDifficultyString = getterSetter.get(key: Settings.quizDifficultyKey) {
-      quizDifficulty = QuizDifficulty(rawValue: quizDifficultyString) ?? Settings.quizDifficultyDefault
-    } else {
-      getterSetter.set(key: Settings.quizDifficultyKey, value: "\(quizDifficulty)")
-    }
-
-    if let audioFeedbackString = getterSetter.get(key: Settings.audioFeedbackKey) {
-      audioFeedback = AudioFeedback(rawValue: audioFeedbackString) ?? Settings.audioFeedbackDefault
-    } else {
-      getterSetter.set(key: Settings.audioFeedbackKey, value: "\(audioFeedback)")
-    }
-
-    if let searchScopeString = getterSetter.get(key: Settings.searchScopeKey) {
-      searchScope = SearchScope(rawValue: searchScopeString) ?? Settings.searchScopeDefault
-    } else {
-      getterSetter.set(key: Settings.searchScopeKey, value: "\(searchScope)")
-    }
-
-    if let appIconString = getterSetter.get(key: Settings.appIconKey) {
-      appIcon = AppIcon(rawValue: appIconString) ?? Settings.appIconDefault
-    } else {
-      getterSetter.set(key: Settings.appIconKey, value: "\(appIcon)")
-    }
+    conjugationgroupLang = restore(key: Settings.conjugationgroupLangKey, default: Settings.conjugationgroupLangDefault)
+    thirdPersonPronounGender = restore(key: Settings.thirdPersonPronounGenderKey, default: Settings.thirdPersonPronounGenderDefault)
+    quizDifficulty = restore(key: Settings.quizDifficultyKey, default: Settings.quizDifficultyDefault)
+    audioFeedback = restore(key: Settings.audioFeedbackKey, default: Settings.audioFeedbackDefault)
+    searchScope = restore(key: Settings.searchScopeKey, default: Settings.searchScopeDefault)
+    appIcon = restore(key: Settings.appIconKey, default: Settings.appIconDefault)
 
     if let hasSeenOnboardingString = getterSetter.get(key: Settings.hasSeenOnboardingKey) {
       hasSeenOnboarding = (hasSeenOnboardingString == "true")
     } else {
       getterSetter.set(key: Settings.hasSeenOnboardingKey, value: "\(hasSeenOnboarding)")
+    }
+  }
+
+  private func restore<T: RawRepresentable>(key: String, default defaultValue: T) -> T where T.RawValue == String {
+    if let stored = getterSetter.get(key: key) {
+      return T(rawValue: stored) ?? defaultValue
+    } else {
+      getterSetter.set(key: key, value: "\(defaultValue)")
+      return defaultValue
     }
   }
 }

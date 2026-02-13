@@ -57,6 +57,10 @@ enum L {
     static var verb: String {
       String(localized: "Navigation.verb")
     }
+
+    static var dismiss: String {
+      String(localized: "Navigation.dismiss")
+    }
   }
 
   enum Testing {

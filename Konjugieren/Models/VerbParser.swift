@@ -165,16 +165,20 @@ class VerbParser: NSObject, XMLParserDelegate {
         frequencyIcon: frequencyIcon
       )
 
-      currentVerb = ""
-      currentTranslation = ""
-      currentFamily = ""
-      currentAuxiliary = nil
-      currentFrequency = 0
-      currentAblautGroup = ""
-      currentAblautStartIndex = 0
-      currentAblautEndIndex = 0
-      currentPrefix = .none
-      currentIconSuffix = ""
+      resetState()
     }
+  }
+
+  private func resetState() {
+    currentVerb = ""
+    currentTranslation = ""
+    currentFamily = ""
+    currentAuxiliary = nil
+    currentFrequency = 0
+    currentAblautGroup = ""
+    currentAblautStartIndex = 0
+    currentAblautEndIndex = 0
+    currentPrefix = .none
+    currentIconSuffix = ""
   }
 }

@@ -211,6 +211,13 @@ KonjugierenTests/
     └── TimeFormatterTests.swift # Time formatting utility tests
 ```
 
+## Xcode Project Organization: Folders, Not Groups
+
+This project uses **folder references** (the modern Xcode default) rather than the legacy flat-group structure. The filesystem directory hierarchy *is* the project hierarchy — Xcode mirrors it automatically. Consequences:
+
+- **Adding a file** to the correct filesystem directory is sufficient. There is no need to manually edit `Konjugieren.xcodeproj/project.pbxproj` to register new files.
+- **Do not** use `PBXGroup`/`PBXFileReference` manipulation scripts or worry about stale `.pbxproj` entries when creating or moving files.
+
 ## Comments
 
 Code should be well-written and therefore self-explanatory. Explanatory and MARK comments result in clutter and increased maintenance burden. Only use comments for the following purposes:

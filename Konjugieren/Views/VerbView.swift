@@ -41,10 +41,12 @@ struct VerbView: View {
             .lineLimit(1)
             .accessibilityAddTraits(UserLocale.isGerman ? .isHeader : [])
             .germanPronunciation()
+            .speakOnTap(verb.infinitiv)
 
           Text(verb.translation)
             .font(.title2)
             .englishPronunciation()
+            .speakOnTap(verb.translation, localeString: UttererLocale.english)
 
           HStack(spacing: 16) {
             Label(verb.family.displayName, systemImage: "tag")
@@ -74,6 +76,7 @@ struct VerbView: View {
                 Label(ablautGroup, systemImage: "figure.and.child.holdinghands")
                   .accessibilityLabel(Text(verbatim: ablautGroup))
                   .germanPronunciation()
+                  .speakOnTap(ablautGroup)
               }
             }
             .font(.subheadline)
@@ -178,6 +181,14 @@ struct ConjugationRow: Identifiable {
     return formLabel
   }
 
+  var speechText: String {
+    let spokenForm = form.lowercased()
+    if let pronoun {
+      return "\(pronoun) \(spokenForm)"
+    }
+    return spokenForm
+  }
+
   init(pronoun: String? = nil, form: String) {
     self.pronoun = pronoun
     self.form = form
@@ -223,6 +234,7 @@ struct ConjugationSectionView: View {
           .font(.body)
           .accessibilityElement(children: .combine)
           .accessibilityLabel(Text(verbatim: row.accessibilityDescription))
+          .speakOnTap(row.speechText)
         }
       }
       .padding(.leading, 8)

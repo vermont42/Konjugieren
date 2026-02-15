@@ -1,6 +1,7 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
 import SwiftUI
+import UIKit
 
 extension View {
   func subheadingLabel() -> some View {
@@ -41,6 +42,10 @@ extension View {
 
   func englishPronunciation() -> some View {
     modifier(EnglishPronunciation())
+  }
+
+  func speakOnTap(_ text: String, localeString: String = UttererLocale.german) -> some View {
+    modifier(SpeakOnTap(text: text, localeString: localeString))
   }
 }
 
@@ -129,5 +134,18 @@ private struct EnglishPronunciation: ViewModifier {
   func body(content: Content) -> some View {
     content
       .environment(\.locale, .init(identifier: UttererLocale.english))
+  }
+}
+
+private struct SpeakOnTap: ViewModifier {
+  let text: String
+  let localeString: String
+
+  func body(content: Content) -> some View {
+    content
+      .onTapGesture {
+        guard !UIAccessibility.isVoiceOverRunning else { return }
+        Current.utterer.utter(text, localeString: localeString)
+      }
   }
 }

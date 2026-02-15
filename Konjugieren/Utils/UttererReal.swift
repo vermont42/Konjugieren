@@ -20,6 +20,7 @@ class UttererReal: Utterer {
     utterance.rate = rate
     utterance.voice = AVSpeechSynthesisVoice(language: localeString)
     utterance.pitchMultiplier = pitchMultiplier
+    synth.stopSpeaking(at: .immediate)
     synth.speak(utterance)
     Current.soundPlayer.play(.silence)
   }

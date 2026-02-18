@@ -4,8 +4,13 @@ import Foundation
 import Testing
 @testable import Konjugieren
 
+@Suite(.serialized)
 @MainActor
 struct QuizTests {
+  init() {
+    Current.settings.quizDifficulty = .regular
+  }
+
   @Test func initialState() {
     let quiz = Quiz()
     #expect(quiz.isInProgress == false)
@@ -222,7 +227,6 @@ struct QuizTests {
   @Test func finalScoreRidiculousDifficultyDoubles() {
     let quiz = Quiz(timerInterval: 0.001)
     Current.settings.quizDifficulty = .ridiculous
-    defer { Current.settings.quizDifficulty = .regular }
     quiz.start()
 
     quiz.submitAnswer(quiz.questions[0].correctAnswer)
@@ -365,7 +369,6 @@ struct QuizTests {
     let spy = Current.analytics as! AnalyticsSpy
     let quiz = Quiz(timerInterval: 0.001)
     Current.settings.quizDifficulty = .ridiculous
-    defer { Current.settings.quizDifficulty = .regular }
     quiz.start()
 
     let initialCount = spy.signalNames.count

@@ -3,6 +3,8 @@
 import Testing
 @testable import Konjugieren
 
+@Suite("Conjugator")
+@MainActor
 struct ConjugatorTests {
   @Test func perfektpartizip() {
     // Weak verb

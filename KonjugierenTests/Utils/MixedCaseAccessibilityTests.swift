@@ -1,51 +1,20 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
+import Foundation
 import Testing
 @testable import Konjugieren
 
+@Suite("MixedCaseAccessibility")
 struct MixedCaseAccessibilityTests {
-  @Test func noIrregularLetters() {
-    let result = MixedCaseAccessibility.accessibilityLabel(for: "machte")
-    #expect(result == "machte")
-  }
-
-  @Test func singleIrregularLetter() {
-    let result = MixedCaseAccessibility.accessibilityLabel(for: "sAng")
-    #expect(result == "sang, a is irregular")
-  }
-
-  @Test func multipleIrregularLetters() {
-    let result = MixedCaseAccessibility.accessibilityLabel(for: "BIN")
-    #expect(result == "bin, b i n are irregular")
-  }
-
-  @Test func compoundFormWithIrregular() {
-    let result = MixedCaseAccessibility.accessibilityLabel(for: "hat geSUNGen")
-    #expect(result == "hat gesungen, s u n g are irregular")
-  }
-
-  @Test func formalSieNotIrregular() {
-    let result = MixedCaseAccessibility.accessibilityLabel(for: "Sie machen")
-    #expect(result == "Sie machen")
-  }
-
-  @Test func formalSieAtEndNotIrregular() {
-    let result = MixedCaseAccessibility.accessibilityLabel(for: "machen Sie")
-    #expect(result == "machen Sie")
-  }
-
-  @Test func mixedWithSie() {
-    let result = MixedCaseAccessibility.accessibilityLabel(for: "Sie sAng")
-    #expect(result == "Sie sang, a is irregular")
-  }
-
-  @Test func allLowercase() {
-    let result = MixedCaseAccessibility.accessibilityLabel(for: "gehen")
-    #expect(result == "gehen")
-  }
-
-  @Test func singleCharIrregular() {
-    let result = MixedCaseAccessibility.accessibilityLabel(for: "wEIsS")
-    #expect(result == "weiss, e i s are irregular")
+  @Test("Generates correct accessibility labels", arguments: zip(
+    ["machte", "sAng", "BIN", "hat geSUNGen", "Sie machen", "machen Sie", "Sie sAng", "gehen", "wEIsS"],
+    ["machte", "sang, a is irregular", "bin, b i n are irregular", "hat gesungen, s u n g are irregular", "Sie machen", "machen Sie", "Sie sang, a is irregular", "gehen", "weiss, e i s are irregular"]
+  ))
+  func accessibilityLabel(input: String, expected: String) throws {
+    try #require(
+      Locale.current.language.languageCode == .english,
+      "Simulator locale must be English. Change it in Settings → General → Language & Region."
+    )
+    #expect(MixedCaseAccessibility.accessibilityLabel(for: input) == expected)
   }
 }

@@ -3,6 +3,7 @@
 import Testing
 @testable import Konjugieren
 
+@Suite("Settings", .serialized)
 @MainActor
 struct SettingsTests {
   @Test func defaultValues() {

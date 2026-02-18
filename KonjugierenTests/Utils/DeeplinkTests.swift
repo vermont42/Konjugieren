@@ -4,8 +4,15 @@ import Foundation
 import Testing
 @testable import Konjugieren
 
+@Suite("Deeplinks", .serialized)
 @MainActor
 struct DeeplinkTests {
+  init() {
+    Current.verb = nil
+    Current.family = nil
+    Current.info = nil
+  }
+
   @Test func isDeeplink() {
     let valid = URL(string: "konjugieren://verb/machen")!
     #expect(valid.isDeeplink == true)
@@ -31,8 +38,6 @@ struct DeeplinkTests {
     #expect(Current.verb?.infinitiv == "machen")
     #expect(Current.family == nil)
     #expect(Current.info == nil)
-
-    Current.verb = nil
   }
 
   @Test func handleURLVerbDeeplinkUnknownVerb() {
@@ -47,8 +52,6 @@ struct DeeplinkTests {
     #expect(Current.info != nil)
     #expect(Current.info?.heading == Info.infos[0].heading)
     #expect(Current.verb == nil)
-
-    Current.info = nil
   }
 
   @Test func handleURLInfoDeeplinkOutOfBounds() {
@@ -63,8 +66,6 @@ struct DeeplinkTests {
     #expect(Current.family == "strong")
     #expect(Current.verb == nil)
     #expect(Current.info == nil)
-
-    Current.family = nil
   }
 
   @Test func handleURLInvalidScheme() {
@@ -92,7 +93,5 @@ struct DeeplinkTests {
     Current.handleURL(infoURL)
     #expect(Current.verb == nil)
     #expect(Current.info != nil)
-
-    Current.info = nil
   }
 }

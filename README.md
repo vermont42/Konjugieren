@@ -34,6 +34,10 @@ The collaboration goes beyond speed. Claude Code added TelemetryDeck analytics i
 
 ### Architecture
 
+![Konjugieren architecture map](Images/architecture.png)
+
+*Five layers — App Entry, Views, Models, Data, and Infrastructure — connected by four relationship types: data flow (solid blue), navigation (dashed green), dependency injection (dotted gray), and cross-cutting concerns (dashed orange). The Conjugator engine sits at the center of the Models layer, fed by Verb and AblautGroup data from XML, and providing conjugation results upward to VerbView and the Quiz system.*
+
 **Protocol-oriented dependency injection** — [`World.swift`](Konjugieren/Models/World.swift) is a lightweight DI container that injects six dependencies (`Settings`, `GameCenter`, `SoundPlayer`, `Utterer`, `FatalError`, `Analytics`), each defined as a protocol with Real, Dummy, Spy, or Fake implementations. This enables full testability with zero third-party frameworks: production code crashes early on invalid data via `FatalErrorReal`, while tests capture those errors with `FatalErrorSpy`.
 
 **Ablaut engine** — German strong verbs undergo vowel and consonant changes (_ablaut_) that differ by conjugationgroup. The engine uses region-based substring replacement: each verb's [XML definition](Konjugieren/Models/Verbs.xml) marks the mutable region with `^` delimiters, and [ablaut-group definitions](Konjugieren/Models/AblautGroups.xml) (66 patterns) specify replacements per conjugationgroup. A full-override syntax (`*` suffix) handles highly irregular verbs like _sein_ and _haben_. [`Conjugator.swift`](Konjugieren/Models/Conjugator.swift) applies these rules at runtime.

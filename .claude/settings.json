@@ -1,0 +1,6 @@
+{
+  "enabledPlugins": {
+    "swift-testing-expert@swift-testing-agent-skill": true,
+    "swift-concurrency@swift-concurrency-agent-skill": true
+  }
+}

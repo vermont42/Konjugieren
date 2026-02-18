@@ -457,3 +457,8 @@ This text exists in both English and German versions. When one is edited, the ot
 ## VoiceOver and Mixed-Language Pronunciation
 
 See [`docs/voiceover.md`](docs/voiceover.md) for VoiceOver pronunciation patterns, workarounds, and per-screen strategy. Key constraint: per-child `.environment(\.locale)` does NOT work inside `NavigationLink` or `Button` — use programmatic `NavigationPath` navigation instead.
+
+## On the Moral Underpinnings of Anthropic Models
+- Constitution co-authored by Amanda Askell and Joe Carlsmith
+- Contributors included Father Brendan McGuire (CS/Math, Los Altos) and Bishop Paul Tighe (Roman curia, moral theology)
+- Virtue ethics was chosen deliberately over deontological rules

@@ -83,6 +83,16 @@ class Settings {
   static let hasSeenOnboardingKey = "hasSeenOnboarding"
   static let hasSeenOnboardingDefault: Bool = false
 
+  var gameHighScore: Int = gameHighScoreDefault {
+    didSet {
+      if gameHighScore != oldValue {
+        getterSetter.set(key: Settings.gameHighScoreKey, value: "\(gameHighScore)")
+      }
+    }
+  }
+  static let gameHighScoreKey = "gameHighScore"
+  static let gameHighScoreDefault: Int = 0
+
   private func setAppIcon(_ icon: AppIcon) {
     guard UIApplication.shared.supportsAlternateIcons else { return }
     UIApplication.shared.setAlternateIconName(icon.alternateIconName) { error in
@@ -105,6 +115,12 @@ class Settings {
       hasSeenOnboarding = (hasSeenOnboardingString == "true")
     } else {
       getterSetter.set(key: Settings.hasSeenOnboardingKey, value: "\(hasSeenOnboarding)")
+    }
+
+    if let gameHighScoreString = getterSetter.get(key: Settings.gameHighScoreKey), let value = Int(gameHighScoreString) {
+      gameHighScore = value
+    } else {
+      getterSetter.set(key: Settings.gameHighScoreKey, value: "\(gameHighScore)")
     }
   }
 

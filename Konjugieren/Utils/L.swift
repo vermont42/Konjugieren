@@ -977,6 +977,44 @@ enum L {
     }
   }
 
+  enum Game {
+    static var playGame: String {
+      String(localized: "Game.playGame")
+    }
+
+    static var score: String {
+      String(localized: "Game.score")
+    }
+
+    static var health: String {
+      String(localized: "Game.health")
+    }
+
+    static var gameOver: String {
+      String(localized: "Game.gameOver")
+    }
+
+    static var youWin: String {
+      String(localized: "Game.youWin")
+    }
+
+    static var newHighScore: String {
+      String(localized: "Game.newHighScore")
+    }
+
+    static var finalScore: String {
+      String(localized: "Game.finalScore")
+    }
+
+    static var tapToPlayAgain: String {
+      String(localized: "Game.tapToPlayAgain")
+    }
+
+    static var quit: String {
+      String(localized: "Game.quit")
+    }
+  }
+
   enum GameCenter {
     static var leaderboard: String {
       String(localized: "GameCenter.leaderboard")

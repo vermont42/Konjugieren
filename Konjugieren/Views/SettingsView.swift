@@ -4,6 +4,7 @@ import SwiftUI
 
 struct SettingsView: View {
   @State private var showingOnboarding = false
+  @State private var showingGame = false
 
   var body: some View {
     @Bindable var settings = Current.settings
@@ -123,8 +124,16 @@ struct SettingsView: View {
             .funButton()
             .frame(maxWidth: .infinity)
             .padding(.top, Layout.defaultSpacing)
-            .padding(.bottom, Layout.doubleDefaultSpacing)
             .accessibilityHint(L.Accessibility.showOnboardingHint)
+
+            Button(L.Game.playGame) {
+              showingGame = true
+              Current.analytics.signal(name: .tapPlayGame)
+            }
+            .funButton()
+            .frame(maxWidth: .infinity)
+            .padding(.top, Layout.defaultSpacing)
+            .padding(.bottom, Layout.doubleDefaultSpacing)
           }
         }
         .onAppear {
@@ -134,6 +143,9 @@ struct SettingsView: View {
       .navigationTitle(L.Navigation.settings)
       .fullScreenCover(isPresented: $showingOnboarding) {
         OnboardingView(isReshow: true)
+      }
+      .fullScreenCover(isPresented: $showingGame) {
+        GameView()
       }
     }
   }

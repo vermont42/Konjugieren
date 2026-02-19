@@ -12,6 +12,7 @@ enum Sound: String {
   case sadTrombone2
   case sadTrombone3
   case sadTrombone4
+  case neigh
   case silence
 
   private static let guns: [Sound] = [.gun1, .gun2]

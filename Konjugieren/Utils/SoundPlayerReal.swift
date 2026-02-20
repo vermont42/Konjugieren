@@ -9,6 +9,8 @@ class SoundPlayerReal: SoundPlayer {
   private var sounds: [String: AVAudioPlayer] = [:]
   private let soundExtension = "mp3"
   private var instantOfLastPlay: TimeInterval = 0.0
+  private var musicPlayer: AVAudioPlayer?
+  private static let musicVolume: Float = 0.15
 
   func setup() {
     let session = AVAudioSession.sharedInstance()
@@ -19,6 +21,23 @@ class SoundPlayerReal: SoundPlayer {
     }
 
     play(.silence) // https://forums.developer.apple.com/thread/23160
+  }
+
+  func startMusic() {
+    if Current.settings.audioFeedback == .disable { return }
+    if musicPlayer == nil {
+      if let url = Bundle.main.url(forResource: "beethoven", withExtension: soundExtension) {
+        musicPlayer = try? AVAudioPlayer(contentsOf: url)
+        musicPlayer?.numberOfLoops = -1
+        musicPlayer?.volume = Self.musicVolume
+      }
+    }
+    musicPlayer?.currentTime = 0
+    musicPlayer?.play()
+  }
+
+  func stopMusic() {
+    musicPlayer?.stop()
   }
 
   func play(_ sound: Sound, shouldDebounce: Bool) {

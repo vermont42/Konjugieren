@@ -126,7 +126,7 @@ class GameState {
   private static let cols = 6
   private static let enemySpacingX: CGFloat = 45
   private static let enemySpacingY: CGFloat = 40
-  private static let playerBulletSpeed: CGFloat = 450
+  private static let playerBulletSpeed: CGFloat = 700
   private static let enemyBulletSpeed: CGFloat = 300
   private static let playerSize: CGFloat = 40
   private static let enemySize: CGFloat = 30
@@ -154,7 +154,7 @@ class GameState {
   private static let shieldDuration: CGFloat = 3.0
   private static let rapidFireDuration: CGFloat = 5.0
   private static let rapidFireInterval: CGFloat = 0.3
-  private static let diveInterval: CGFloat = 12.0
+  private static let diveInterval: CGFloat = 24.0
   private static let diveDuration: CGFloat = 6.0
   private static let diveDepthFactor: CGFloat = 0.7
   private static let diveWidthAmplitude: CGFloat = 80
@@ -223,6 +223,7 @@ class GameState {
     }
 
     startMotion()
+    Current.soundPlayer.startMusic()
     Current.analytics.signal(name: .startGame)
   }
 
@@ -269,11 +270,15 @@ class GameState {
     if motionManager.isAccelerometerActive {
       motionManager.stopAccelerometerUpdates()
     }
+    Current.soundPlayer.stopMusic()
   }
 
   func resumeMotion() {
     lastUpdateTime = nil
     startMotion()
+    if phase == .playing {
+      Current.soundPlayer.startMusic()
+    }
   }
 
   func restartGame() {
@@ -530,7 +535,7 @@ class GameState {
         hatchlings.remove(at: idx)
         playerBullet = nil
         score += Self.hatchlingScore
-        Current.soundPlayer.play(.buzz, shouldDebounce: false)
+        Current.soundPlayer.play(.chime, shouldDebounce: false)
         haptic(.medium)
       }
     }
@@ -546,7 +551,7 @@ class GameState {
           enemies[i].isAlive = false
           playerBullet = nil
           score += wasDiving ? Self.scorePerKill * Self.diveScoreMultiplier : Self.scorePerKill
-          Current.soundPlayer.play(.buzz, shouldDebounce: false)
+          Current.soundPlayer.play(.chime, shouldDebounce: false)
           haptic(.medium)
           if Double.random(in: 0...1) < Self.powerUpDropChance {
             let kind = PowerUpKind.allCases.randomElement() ?? .bratwurst
@@ -567,7 +572,7 @@ class GameState {
         zigzagger = nil
         playerBullet = nil
         score += Self.scorePerKill
-        Current.soundPlayer.play(.buzz, shouldDebounce: false)
+        Current.soundPlayer.play(.chime, shouldDebounce: false)
         haptic(.medium)
       }
     }
@@ -582,7 +587,7 @@ class GameState {
         if !shieldActive {
           playerHealth -= Self.healthLossPerHit
         }
-        Current.soundPlayer.play(.buzz, shouldDebounce: false)
+        Current.soundPlayer.play(.chime, shouldDebounce: false)
         haptic(.heavy)
       }
     }
@@ -597,7 +602,7 @@ class GameState {
         if !shieldActive {
           playerHealth -= Self.healthLossPerHit
         }
-        Current.soundPlayer.play(.buzz, shouldDebounce: false)
+        Current.soundPlayer.play(.chime, shouldDebounce: false)
         haptic(.heavy)
       }
     }
@@ -612,7 +617,7 @@ class GameState {
         if !shieldActive {
           playerHealth -= Self.healthLossPerHit
         }
-        Current.soundPlayer.play(.buzz, shouldDebounce: false)
+        Current.soundPlayer.play(.chime, shouldDebounce: false)
         haptic(.heavy)
       }
     }
@@ -678,7 +683,7 @@ class GameState {
         if !shieldActive {
           playerHealth -= Self.healthLossPerHit
         }
-        Current.soundPlayer.play(.buzz, shouldDebounce: false)
+        Current.soundPlayer.play(.chime, shouldDebounce: false)
         haptic(.heavy)
         return true
       }
@@ -713,6 +718,7 @@ class GameState {
 
     if aliveEnemies.isEmpty {
       phase = .won
+      Current.soundPlayer.stopMusic()
       Current.soundPlayer.play(.randomApplause, shouldDebounce: false)
       persistHighScore()
       Current.analytics.signal(name: .winGame)
@@ -721,6 +727,7 @@ class GameState {
 
     if playerHealth <= 0 {
       phase = .lost
+      Current.soundPlayer.stopMusic()
       Current.soundPlayer.play(.randomSadTrombone, shouldDebounce: false)
       persistHighScore()
       Current.analytics.signal(name: .loseGame)
@@ -730,6 +737,7 @@ class GameState {
     let bottomThreshold = playerY - Self.playerSize
     for enemy in aliveEnemies where !enemy.isDiving && enemy.y >= bottomThreshold {
       phase = .lost
+      Current.soundPlayer.stopMusic()
       Current.soundPlayer.play(.randomSadTrombone, shouldDebounce: false)
       persistHighScore()
       Current.analytics.signal(name: .loseGame)

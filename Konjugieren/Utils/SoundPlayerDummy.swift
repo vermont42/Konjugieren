@@ -3,4 +3,6 @@
 class SoundPlayerDummy: SoundPlayer {
   func setup() {}
   func play(_ sound: Sound, shouldDebounce: Bool) {}
+  func startMusic() {}
+  func stopMusic() {}
 }

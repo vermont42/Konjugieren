@@ -4,6 +4,8 @@
 protocol SoundPlayer {
   func setup()
   func play(_ sound: Sound, shouldDebounce: Bool)
+  func startMusic()
+  func stopMusic()
 }
 
 extension SoundPlayer {

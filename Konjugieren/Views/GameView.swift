@@ -17,84 +17,95 @@ struct GameView: View {
 
           hud
 
-          ForEach(gameState.enemies.filter(\.isAlive)) { enemy in
-            Image(enemy.imageName)
+          if gameState.phase == .playing {
+            ForEach(gameState.enemies.filter(\.isAlive)) { enemy in
+              Image(enemy.imageName)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 30, height: 30)
+                .scaleEffect(enemy.isDiving ? 1.3 : 1.0)
+                .position(
+                  x: enemy.isDiving ? enemy.x : enemy.x + gameState.sineOffset(forRow: enemy.row),
+                  y: enemy.y
+                )
+            }
+
+            if let bullet = gameState.playerBullet {
+              Text("🇩🇪")
+                .font(.system(size: 20))
+                .position(x: bullet.x, y: bullet.y)
+            }
+
+            if let bullet = gameState.enemyBullet {
+              Text("🏴󠁧󠁢󠁥󠁮󠁧󠁿")
+                .font(.system(size: 20))
+                .position(x: bullet.x, y: bullet.y)
+            }
+
+            if let zigzagger = gameState.zigzagger {
+              Text(zigzagger.emoji)
+                .font(.system(size: 40))
+                .scaleEffect(x: zigzagger.movingRight ? -1 : 1, y: 1)
+                .position(x: zigzagger.x, y: zigzagger.y)
+            }
+
+            ForEach(gameState.coins) { coin in
+              Text("🪙")
+                .font(.system(size: 25))
+                .position(x: coin.x, y: coin.y)
+            }
+
+            ForEach(gameState.powerUps) { powerUp in
+              Text(powerUp.kind.emoji)
+                .font(.system(size: 30))
+                .position(x: powerUp.x, y: powerUp.y)
+            }
+
+            ForEach(gameState.eggs) { egg in
+              Text("🥚")
+                .font(.system(size: 25))
+                .position(x: egg.x, y: egg.y)
+            }
+
+            ForEach(gameState.hatchlings) { hatchling in
+              Text("🐣")
+                .font(.system(size: 25))
+                .position(x: hatchling.x, y: hatchling.y)
+            }
+
+            if let side = gameState.portalSide {
+              Image(systemName: "arrow.down")
+                .font(.system(size: 28, weight: .bold))
+                .foregroundStyle(.customYellow)
+                .position(
+                  x: side == .left ? 30 : gameState.screenWidth - 30,
+                  y: gameState.playerY - 40 + 6 * sin(gameState.sineTime * 4)
+                )
+            }
+
+            Image("Pretzel")
               .resizable()
               .scaledToFit()
-              .frame(width: 30, height: 30)
-              .scaleEffect(enemy.isDiving ? 1.3 : 1.0)
-              .position(
-                x: enemy.isDiving ? enemy.x : enemy.x + gameState.sineOffset(forRow: enemy.row),
-                y: enemy.y
-              )
-          }
-
-          if let bullet = gameState.playerBullet {
-            Text("🇩🇪")
-              .font(.system(size: 20))
-              .position(x: bullet.x, y: bullet.y)
-          }
-
-          if let bullet = gameState.enemyBullet {
-            Text("🏴󠁧󠁢󠁥󠁮󠁧󠁿")
-              .font(.system(size: 20))
-              .position(x: bullet.x, y: bullet.y)
-          }
-
-          if let zigzagger = gameState.zigzagger {
-            Text(zigzagger.emoji)
-              .font(.system(size: 40))
-              .scaleEffect(x: zigzagger.movingRight ? -1 : 1, y: 1)
-              .position(x: zigzagger.x, y: zigzagger.y)
-          }
-
-          ForEach(gameState.coins) { coin in
-            Text("🪙")
-              .font(.system(size: 25))
-              .position(x: coin.x, y: coin.y)
-          }
-
-          ForEach(gameState.powerUps) { powerUp in
-            Text(powerUp.kind.emoji)
-              .font(.system(size: 30))
-              .position(x: powerUp.x, y: powerUp.y)
-          }
-
-          ForEach(gameState.eggs) { egg in
-            Text("🥚")
-              .font(.system(size: 25))
-              .position(x: egg.x, y: egg.y)
-          }
-
-          ForEach(gameState.hatchlings) { hatchling in
-            Text("🐣")
-              .font(.system(size: 25))
-              .position(x: hatchling.x, y: hatchling.y)
-          }
-
-          Image("Pretzel")
-            .resizable()
-            .scaledToFit()
-            .frame(width: 40, height: 40)
-            .opacity(max(0.1, gameState.playerHealth))
-            .overlay {
-              if gameState.shieldActive {
-                Circle()
-                  .stroke(.cyan, lineWidth: 3)
-                  .frame(width: 50, height: 50)
-                  .opacity(0.6 + 0.4 * sin(gameState.sineTime * 3))
+              .frame(width: 40, height: 40)
+              .opacity(max(0.1, gameState.playerHealth))
+              .overlay {
+                if gameState.shieldActive {
+                  Circle()
+                    .stroke(.cyan, lineWidth: 3)
+                    .frame(width: 50, height: 50)
+                    .opacity(0.6 + 0.4 * sin(gameState.sineTime * 3))
+                }
               }
-            }
-            .position(x: gameState.playerX, y: gameState.playerY)
-
-          if gameState.phase != .playing {
+              .position(x: gameState.playerX, y: gameState.playerY)
+          } else {
             gameOverOverlay
           }
+
         }
-        .onTapGesture {
+        .onTapGesture(coordinateSpace: .local) { _ in
           if gameState.phase == .playing {
             gameState.playerFire()
-          } else {
+          } else if gameState.canRestart {
             gameState.restartGame()
           }
         }
@@ -117,6 +128,7 @@ struct GameView: View {
       }
     }
     .statusBarHidden()
+    .preferredColorScheme(.dark)
   }
 
   private var healthColor: Color {

@@ -85,6 +85,11 @@ enum GamePhase {
   case lost
 }
 
+enum PortalSide {
+  case left
+  case right
+}
+
 @MainActor
 @Observable
 class GameState {
@@ -102,10 +107,12 @@ class GameState {
   var rapidFireActive: Bool = false
   var eggs: [Egg] = []
   var hatchlings: [Hatchling] = []
+  var portalSide: PortalSide?
   var score: Int = 0
   var highScore: Int = 0
   var finalScore: Int = 0
   var startTime: Date = .now
+  var gameOverTime: Date?
   var enemyDirection: CGFloat = 1
   var enemySpeed: CGFloat = 21
   var sineTime: Double = 0
@@ -151,7 +158,7 @@ class GameState {
   private static let powerUpFallSpeed: CGFloat = 200
   private static let powerUpSize: CGFloat = 30
   private static let healthRestoreAmount: CGFloat = 0.334
-  private static let shieldDuration: CGFloat = 3.0
+  private static let shieldDuration: CGFloat = 6.0
   private static let rapidFireDuration: CGFloat = 5.0
   private static let rapidFireInterval: CGFloat = 0.3
   private static let diveInterval: CGFloat = 24.0
@@ -169,6 +176,7 @@ class GameState {
   private static let hatchlingSize: CGFloat = 25
   private static let hatchlingSpeed: CGFloat = 250
   private static let hatchlingScore: Int = 150
+  private static let gameOverCooldown: TimeInterval = 2.0
   private static let zigzaggerKinds: [(emoji: String, sound: Sound)] = [
     ("🐎", .horse), ("🐖", .pig), ("🐑", .sheep), ("🐐", .goat), ("🐄", .cow)
   ]
@@ -200,6 +208,8 @@ class GameState {
     diveTimer = 0
     eggs = []
     hatchlings = []
+    portalSide = nil
+    gameOverTime = nil
     startTime = .now
     lastUpdateTime = nil
 
@@ -285,6 +295,12 @@ class GameState {
     startGame(screenWidth: screenWidth, screenHeight: screenHeight, topInset: topInset)
   }
 
+  var canRestart: Bool {
+    guard let gameOverTime else { return false }
+    return Date.now.timeIntervalSince(gameOverTime) >= Self.gameOverCooldown
+  }
+
+
   // MARK: - Private
 
   private func startMotion() {
@@ -303,6 +319,25 @@ class GameState {
     if abs(tilt) > Self.accelerometerThreshold {
       playerX += CGFloat(tilt) * Self.accelerometerSensitivity * dt
       playerX = max(Self.playerSize / 2, min(screenWidth - Self.playerSize / 2, playerX))
+    }
+
+    if let side = portalSide {
+      switch side {
+      case .left:
+        if playerX <= Self.playerSize / 2 + 5 {
+          playerX = screenWidth - Self.playerSize / 2
+          portalSide = nil
+          hatchlings.removeAll()
+          haptic(.medium)
+        }
+      case .right:
+        if playerX >= screenWidth - Self.playerSize / 2 - 5 {
+          playerX = Self.playerSize / 2
+          portalSide = nil
+          hatchlings.removeAll()
+          haptic(.medium)
+        }
+      }
     }
   }
 
@@ -515,13 +550,28 @@ class GameState {
     }
 
     hatchlings.append(contentsOf: newHatchlings)
+
+    if !newHatchlings.isEmpty && portalSide == nil {
+      if let firstHatchling = newHatchlings.first {
+        if firstHatchling.x > playerX {
+          portalSide = .left
+        } else if firstHatchling.x < playerX {
+          portalSide = .right
+        } else {
+          portalSide = Bool.random() ? .left : .right
+        }
+      }
+    }
   }
 
   private func updateHatchlings(dt: CGFloat) {
     for i in hatchlings.indices {
       let dx = playerX - hatchlings[i].x
-      let direction: CGFloat = dx > 0 ? 1 : -1
-      hatchlings[i].x += direction * Self.hatchlingSpeed * dt
+      let dy = playerY - hatchlings[i].y
+      let distance = hypot(dx, dy)
+      guard distance > 1 else { continue }
+      hatchlings[i].x += (dx / distance) * Self.hatchlingSpeed * dt
+      hatchlings[i].y += (dy / distance) * Self.hatchlingSpeed * dt
     }
   }
 
@@ -586,6 +636,7 @@ class GameState {
         enemyBullet = nil
         if !shieldActive {
           playerHealth -= Self.healthLossPerHit
+          portalSide = nil
         }
         Current.soundPlayer.play(.chime, shouldDebounce: false)
         haptic(.heavy)
@@ -601,6 +652,7 @@ class GameState {
         enemies[i].isAlive = false
         if !shieldActive {
           playerHealth -= Self.healthLossPerHit
+          portalSide = nil
         }
         Current.soundPlayer.play(.chime, shouldDebounce: false)
         haptic(.heavy)
@@ -616,6 +668,7 @@ class GameState {
         zigzagger = nil
         if !shieldActive {
           playerHealth -= Self.healthLossPerHit
+          portalSide = nil
         }
         Current.soundPlayer.play(.chime, shouldDebounce: false)
         haptic(.heavy)
@@ -682,6 +735,7 @@ class GameState {
       ) {
         if !shieldActive {
           playerHealth -= Self.healthLossPerHit
+          portalSide = nil
         }
         Current.soundPlayer.play(.chime, shouldDebounce: false)
         haptic(.heavy)
@@ -718,6 +772,8 @@ class GameState {
 
     if aliveEnemies.isEmpty {
       phase = .won
+      portalSide = nil
+      gameOverTime = .now
       Current.soundPlayer.stopMusic()
       Current.soundPlayer.play(.randomApplause, shouldDebounce: false)
       persistHighScore()
@@ -727,6 +783,8 @@ class GameState {
 
     if playerHealth <= 0 {
       phase = .lost
+      portalSide = nil
+      gameOverTime = .now
       Current.soundPlayer.stopMusic()
       Current.soundPlayer.play(.randomSadTrombone, shouldDebounce: false)
       persistHighScore()
@@ -737,6 +795,8 @@ class GameState {
     let bottomThreshold = playerY - Self.playerSize
     for enemy in aliveEnemies where !enemy.isDiving && enemy.y >= bottomThreshold {
       phase = .lost
+      portalSide = nil
+      gameOverTime = .now
       Current.soundPlayer.stopMusic()
       Current.soundPlayer.play(.randomSadTrombone, shouldDebounce: false)
       persistHighScore()

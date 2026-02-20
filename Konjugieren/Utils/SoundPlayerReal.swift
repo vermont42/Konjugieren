@@ -10,7 +10,9 @@ class SoundPlayerReal: SoundPlayer {
   private let soundExtension = "mp3"
   private var instantOfLastPlay: TimeInterval = 0.0
   private var musicPlayer: AVAudioPlayer?
+  private var savedMusicTime: TimeInterval?
   private static let musicVolume: Float = 0.15
+  private static let musicFadeDuration: TimeInterval = 2.0
 
   func setup() {
     let session = AVAudioSession.sharedInstance()
@@ -29,14 +31,24 @@ class SoundPlayerReal: SoundPlayer {
       if let url = Bundle.main.url(forResource: "beethoven", withExtension: soundExtension) {
         musicPlayer = try? AVAudioPlayer(contentsOf: url)
         musicPlayer?.numberOfLoops = -1
-        musicPlayer?.volume = Self.musicVolume
       }
     }
-    musicPlayer?.currentTime = 0
-    musicPlayer?.play()
+    guard let player = musicPlayer else { return }
+    if let saved = savedMusicTime {
+      player.currentTime = saved
+      savedMusicTime = nil
+    } else {
+      player.currentTime = TimeInterval.random(in: 0..<player.duration)
+    }
+    player.volume = 0
+    player.play()
+    player.setVolume(Self.musicVolume, fadeDuration: Self.musicFadeDuration)
   }
 
   func stopMusic() {
+    if let player = musicPlayer, player.isPlaying {
+      savedMusicTime = player.currentTime
+    }
     musicPlayer?.stop()
   }
 

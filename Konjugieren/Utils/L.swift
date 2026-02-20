@@ -718,6 +718,14 @@ enum L {
       String(localized: "Info.futurKonjunktivIIText")
     }
 
+    static var gameHeading: String {
+      String(localized: "Info.gameHeading")
+    }
+
+    static var gameText: String {
+      String(localized: "Info.gameText")
+    }
+
     static var creditsHeading: String {
       String(localized: "Info.creditsHeading")
     }

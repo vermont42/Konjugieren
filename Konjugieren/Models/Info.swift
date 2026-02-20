@@ -37,6 +37,7 @@ struct Info: Hashable, Identifiable {
     Info(heading: L.Info.futurIndikativHeading, text: L.Info.futurIndikativText, alwaysUsesGermanPronunciation: true),
     Info(heading: L.Info.futurKonjunktivIHeading, text: L.Info.futurKonjunktivIText, alwaysUsesGermanPronunciation: true),
     Info(heading: L.Info.futurKonjunktivIIHeading, text: L.Info.futurKonjunktivIIText, alwaysUsesGermanPronunciation: true),
+    Info(heading: L.Info.gameHeading, text: L.Info.gameText),
     Info(heading: L.Info.creditsHeading, text: L.Info.creditsText, imageInfo: ImageInfo(filename: "JoshAdams", accessibilityLabel: L.ImageInfo.joshAdams)),
   ]
 

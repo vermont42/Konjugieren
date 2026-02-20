@@ -12,7 +12,12 @@ enum Sound: String {
   case sadTrombone2
   case sadTrombone3
   case sadTrombone4
-  case neigh
+  case horse
+  case pig
+  case sheep
+  case goat
+  case cow
+  case coin
   case silence
 
   private static let guns: [Sound] = [.gun1, .gun2]

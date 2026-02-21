@@ -1002,8 +1002,12 @@ enum L {
       String(localized: "Game.gameOver")
     }
 
-    static var youWin: String {
-      String(localized: "Game.youWin")
+    static var wave: String {
+      String(localized: "Game.wave")
+    }
+
+    static var waveScore: String {
+      String(localized: "Game.waveScore")
     }
 
     static var newHighScore: String {

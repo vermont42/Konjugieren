@@ -12,7 +12,7 @@ enum AnalyticsName: String {
   case startGame = "start.game"
   case startQuiz = "start.quiz"
   case tapPlayGame = "tap.playGame"
-  case winGame = "win.game"
+  case completeWave = "complete.wave"
   case tapShowOnboarding = "tap.showOnboarding"
   case tapViewLeaderboard = "tap.viewLeaderboard"
   case viewFamilyBrowseView = "view.FamilyBrowseView"

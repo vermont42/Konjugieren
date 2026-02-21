@@ -19,6 +19,8 @@ enum Sound: String {
   case cow
   case coin
   case silence
+  case playerHit, enemyDestroyed, shieldActivate, soccerKick
+  case ghostSpooky, magicActivate, chomp, sizzle, eggCrack, rapidFire
 
   private static let guns: [Sound] = [.gun1, .gun2]
   private static let applauses: [Sound] = [.applause1, .applause2, .applause3]

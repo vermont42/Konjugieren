@@ -17,13 +17,16 @@ struct GameView: View {
 
           hud
 
-          if gameState.phase == .playing {
+          if gameState.phase == .playing || gameState.phase == .waveComplete {
             ForEach(gameState.enemies.filter(\.isAlive)) { enemy in
               Image(enemy.imageName)
                 .resizable()
                 .scaledToFit()
                 .frame(width: 30, height: 30)
-                .scaleEffect(enemy.isDiving ? 1.3 : 1.0)
+                .scaleEffect(
+                  x: gameState.enemyDirection * (enemy.isDiving ? 1.3 : 1.0) * (enemy.imageName == "Hat" ? -1 : 1),
+                  y: enemy.isDiving ? 1.3 : 1.0
+                )
                 .position(
                   x: enemy.isDiving ? enemy.x : enemy.x + gameState.sineOffset(forRow: enemy.row),
                   y: enemy.y
@@ -73,6 +76,46 @@ struct GameView: View {
                 .position(x: hatchling.x, y: hatchling.y)
             }
 
+            if let ball = gameState.fussball {
+              Text("⚽")
+                .font(.system(size: 30))
+                .position(x: ball.x, y: ball.y)
+            }
+
+            ForEach(gameState.wurstChains) { chain in
+              ForEach(chain.segments) { seg in
+                Text("🌭")
+                  .font(.system(size: 30))
+                  .position(x: seg.x, y: seg.y)
+              }
+            }
+
+            ForEach(gameState.pretzelObstacles) { pretzel in
+              Text("🥨")
+                .font(.system(size: 30))
+                .opacity(pretzel.hitsRemaining == 1 ? 0.5 : 1.0)
+                .position(x: pretzel.x, y: pretzel.y)
+            }
+
+            ForEach(gameState.goldenDots) { dot in
+              Image(systemName: "circle.fill")
+                .font(.system(size: 12))
+                .foregroundStyle(.customYellow)
+                .position(x: dot.x, y: dot.y)
+            }
+
+            ForEach(gameState.ghosts) { ghost in
+              Text(ghost.phase == .fleeing ? "😱" : ghost.phase == .devoured ? "💨" : "👻")
+                .font(.system(size: 35))
+                .position(x: ghost.x, y: ghost.y)
+            }
+
+            if let kugel = gameState.kristallkugel {
+              Text("🔮")
+                .font(.system(size: 25))
+                .position(x: kugel.x, y: kugel.y)
+            }
+
             if let side = gameState.portalSide {
               Image(systemName: "arrow.down")
                 .font(.system(size: 28, weight: .bold))
@@ -97,6 +140,10 @@ struct GameView: View {
                 }
               }
               .position(x: gameState.playerX, y: gameState.playerY)
+
+            if gameState.phase == .waveComplete {
+              waveCompleteOverlay
+            }
           } else {
             gameOverOverlay
           }
@@ -105,17 +152,22 @@ struct GameView: View {
         .onTapGesture(coordinateSpace: .local) { _ in
           if gameState.phase == .playing {
             gameState.playerFire()
-          } else if gameState.canRestart {
+          } else if gameState.phase == .lost && gameState.canRestart {
             gameState.restartGame()
           }
         }
       }
       .onAppear {
+        AppDelegate.orientationLock = .portrait
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
+          windowScene.requestGeometryUpdate(.iOS(interfaceOrientations: .portrait))
+        }
         gameState.startGame(screenWidth: geometry.size.width, screenHeight: geometry.size.height, topInset: geometry.safeAreaInsets.top)
       }
     }
     .onDisappear {
       gameState.stopMotion()
+      AppDelegate.orientationLock = .allButUpsideDown
     }
     .onChange(of: scenePhase) { _, newPhase in
       switch newPhase {
@@ -155,10 +207,17 @@ struct GameView: View {
 
         Spacer()
 
-        Text("\(L.Game.score) \(gameState.score)")
-          .font(.caption)
-          .bold()
-          .foregroundStyle(.customYellow)
+        VStack(spacing: 2) {
+          Text("\(L.Game.score) \(gameState.score)")
+            .font(.caption)
+            .bold()
+            .foregroundStyle(.customYellow)
+
+          Text("\(L.Game.wave) \(gameState.wave)")
+            .font(.caption)
+            .bold()
+            .foregroundStyle(.customYellow)
+        }
 
         Spacer()
 
@@ -166,10 +225,48 @@ struct GameView: View {
           .font(.caption)
           .bold()
           .foregroundStyle(healthColor)
+
+        if gameState.geisterjagdActive {
+          Image(systemName: "wand.and.stars.inverse")
+            .font(.caption)
+            .foregroundStyle(.customYellow)
+            .opacity(0.6 + 0.4 * sin(gameState.sineTime * 4))
+        }
       }
       .padding(.horizontal)
 
       Spacer()
+    }
+  }
+
+  private var waveCompleteOverlay: some View {
+    ZStack {
+      Color.black.opacity(0.5)
+        .ignoresSafeArea()
+
+      waveCompleteParticles
+
+      Text("\(L.Game.waveScore) \(gameState.lastWaveScore)")
+        .font(.title)
+        .bold()
+        .foregroundStyle(.customYellow)
+    }
+  }
+
+  private var waveCompleteParticles: some View {
+    TimelineView(.animation) { timeline in
+      let time = timeline.date.timeIntervalSince1970
+      Canvas { context, size in
+        for i in 0..<40 {
+          let seed = Double(i) * 137.508
+          let baseX = (seed.truncatingRemainder(dividingBy: 1.0) + Double(i) * 0.025).truncatingRemainder(dividingBy: 1.0) * size.width
+          let baseY = (seed * 0.618).truncatingRemainder(dividingBy: 1.0) * size.height
+          let floatOffset = sin(time * 1.5 + seed) * 20
+          let radius = 3.0 + (seed * 0.3).truncatingRemainder(dividingBy: 5.0)
+          let rect = CGRect(x: baseX - radius, y: baseY + floatOffset - radius, width: radius * 2, height: radius * 2)
+          context.fill(Path(ellipseIn: rect), with: .color(i.isMultiple(of: 2) ? .customRed : .customYellow))
+        }
+      }
     }
   }
 
@@ -179,10 +276,10 @@ struct GameView: View {
         .ignoresSafeArea()
 
       VStack(spacing: 20) {
-        Text(gameState.phase == .won ? L.Game.youWin : L.Game.gameOver)
+        Text(L.Game.gameOver)
           .font(.largeTitle)
           .bold()
-          .foregroundStyle(gameState.phase == .won ? .green : .customRed)
+          .foregroundStyle(.customRed)
 
         Text("\(L.Game.finalScore) \(gameState.finalScore)")
           .font(.title2)

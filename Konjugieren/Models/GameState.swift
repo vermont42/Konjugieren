@@ -81,13 +81,77 @@ struct Hatchling: Identifiable {
 
 enum GamePhase {
   case playing
-  case won
+  case waveComplete
   case lost
 }
 
 enum PortalSide {
   case left
   case right
+}
+
+enum SpecialMechanic: CaseIterable {
+  case bratwurstkette
+  case fussball
+  case geisterstunde
+}
+
+struct Fussball: Identifiable {
+  let id = UUID()
+  var x: CGFloat
+  var y: CGFloat
+  var velocityX: CGFloat
+  var velocityY: CGFloat
+  var remainingTime: CGFloat
+  var bounceCount: Int = 0
+}
+
+struct WurstSegment: Identifiable {
+  let id = UUID()
+  var x: CGFloat
+  var y: CGFloat
+}
+
+struct WurstChain: Identifiable {
+  let id = UUID()
+  var segments: [WurstSegment]
+  var movingRight: Bool
+  var speed: CGFloat
+}
+
+struct PretzelObstacle: Identifiable {
+  let id = UUID()
+  var x: CGFloat
+  var y: CGFloat
+  var hitsRemaining: Int = 2
+}
+
+enum GhostPhase {
+  case descending
+  case pursuing
+  case fleeing
+  case devoured
+  case exiting
+}
+
+struct Ghost: Identifiable {
+  let id = UUID()
+  var x: CGFloat
+  var y: CGFloat
+  var phase: GhostPhase = .descending
+  var dotTimer: CGFloat = 0
+}
+
+struct GoldenDot: Identifiable {
+  let id = UUID()
+  var x: CGFloat
+  var y: CGFloat
+}
+
+struct Kristallkugel: Identifiable {
+  let id = UUID()
+  var x: CGFloat
+  var y: CGFloat
 }
 
 @MainActor
@@ -108,9 +172,20 @@ class GameState {
   var eggs: [Egg] = []
   var hatchlings: [Hatchling] = []
   var portalSide: PortalSide?
+  var activeMechanic: SpecialMechanic?
+  var fussball: Fussball?
+  var wurstChains: [WurstChain] = []
+  var pretzelObstacles: [PretzelObstacle] = []
+  var ghosts: [Ghost] = []
+  var goldenDots: [GoldenDot] = []
+  var kristallkugel: Kristallkugel?
+  var geisterjagdActive: Bool = false
   var score: Int = 0
   var highScore: Int = 0
   var finalScore: Int = 0
+  var wave: Int = 1
+  var lastWaveScore: Int = 0
+  var waveCompleteTime: Date?
   var startTime: Date = .now
   var gameOverTime: Date?
   var enemyDirection: CGFloat = 1
@@ -120,8 +195,13 @@ class GameState {
   var screenHeight: CGFloat = 0
 
   private var topInset: CGFloat = 0
+  private var scoreAtWaveStart: Int = 0
   private var zigzaggerSpawnTimer: CGFloat = 0
   private var zigzaggerBag: [(emoji: String, sound: Sound)] = []
+  private var mechanicSpawnTimer: CGFloat = 0
+  private var mechanicBag: [SpecialMechanic] = []
+  private var geisterjagdTimer: CGFloat = 0
+  private var kristallkugelSpawnCount: Int = 0
   private var shieldTimer: CGFloat = 0
   private var rapidFireTimer: CGFloat = 0
   private var rapidFireCooldown: CGFloat = 0
@@ -177,10 +257,46 @@ class GameState {
   private static let hatchlingSpeed: CGFloat = 250
   private static let hatchlingScore: Int = 150
   private static let gameOverCooldown: TimeInterval = 2.0
+  private static let waveCompleteDuration: TimeInterval = 3.0
+  private static let waveSpeedScaling: CGFloat = 1.02
   private static let zigzaggerKinds: [(emoji: String, sound: Sound)] = [
     ("🐎", .horse), ("🐖", .pig), ("🐑", .sheep), ("🐐", .goat), ("🐄", .cow)
   ]
   private static let enemyImages = ["Hat", "Bundestag", "Stein", "Dachshund", "Clock", "Nutcracker"]
+
+  private static let mechanicSpawnInterval: CGFloat = 27.0
+  private static let initialMechanicDelay: CGFloat = 15.0
+
+  private static let fussballSize: CGFloat = 30
+  private static let fussballBaseSpeed: CGFloat = 200
+  private static let fussballDuration: CGFloat = 15.0
+  private static let fussballSpeedUpPerBounce: CGFloat = 1.08
+  private static let fussballEnemyKillScore: Int = 100
+
+  private static let wurstSegmentCount: Int = 5
+  private static let wurstSegmentSize: CGFloat = 30
+  private static let wurstSegmentSpacing: CGFloat = 35
+  private static let wurstBaseSpeed: CGFloat = 120
+  private static let wurstDescentStep: CGFloat = 35
+  private static let wurstPlayerRowSpeedMultiplier: CGFloat = 1.8
+  private static let wurstSegmentScore: Int = 75
+  private static let pretzelObstacleSize: CGFloat = 30
+
+  private static let ghostCount: ClosedRange<Int> = 2...3
+  private static let ghostSize: CGFloat = 35
+  private static let ghostDescentSpeed: CGFloat = 80
+  private static let ghostPursuitSpeed: CGFloat = 150
+  private static let ghostFleeSpeed: CGFloat = 100
+  private static let ghostExitSpeed: CGFloat = 200
+  private static let ghostDevourScore: Int = 300
+  private static let ghostExitScore: Int = 50
+  private static let dotSize: CGFloat = 24
+  private static let dotScore: Int = 25
+  private static let dotDropInterval: CGFloat = 0.3
+  private static let kristallkugelSize: CGFloat = 25
+  private static let kristallkugelMaxSpawns = 3
+  private static let kristallkugelThresholds: [CGFloat] = [0.25, 0.50, 0.75]
+  private static let geisterjagdDuration: CGFloat = 5.0
 
   func startGame(screenWidth: CGFloat, screenHeight: CGFloat, topInset: CGFloat) {
     self.screenWidth = screenWidth
@@ -189,6 +305,10 @@ class GameState {
 
     phase = .playing
     score = 0
+    wave = 1
+    lastWaveScore = 0
+    scoreAtWaveStart = 0
+    waveCompleteTime = nil
     playerHealth = 1.0
     enemyDirection = 1
     enemySpeed = 21
@@ -209,6 +329,18 @@ class GameState {
     eggs = []
     hatchlings = []
     portalSide = nil
+    activeMechanic = nil
+    mechanicSpawnTimer = 0
+    mechanicBag = []
+    fussball = nil
+    wurstChains = []
+    pretzelObstacles = []
+    ghosts = []
+    goldenDots = []
+    kristallkugel = nil
+    geisterjagdActive = false
+    geisterjagdTimer = 0
+    kristallkugelSpawnCount = 0
     gameOverTime = nil
     startTime = .now
     lastUpdateTime = nil
@@ -238,6 +370,14 @@ class GameState {
   }
 
   func update(currentTime: Date) {
+    if phase == .waveComplete {
+      if let wct = waveCompleteTime,
+         currentTime.timeIntervalSince(wct) >= Self.waveCompleteDuration {
+        startNextWave()
+      }
+      return
+    }
+
     guard phase == .playing else { return }
 
     let dt: CGFloat
@@ -259,6 +399,10 @@ class GameState {
     updatePowerUps(dt: dt)
     updateEggs(dt: dt)
     updateHatchlings(dt: dt)
+    updateSpecialMechanic(dt: dt)
+    updateFussball(dt: dt)
+    updateWurstChains(dt: dt)
+    updateGhosts(dt: dt)
     checkCollisions()
     attemptEnemyFire()
     checkGameOver()
@@ -286,7 +430,7 @@ class GameState {
   func resumeMotion() {
     lastUpdateTime = nil
     startMotion()
-    if phase == .playing {
+    if phase == .playing || phase == .waveComplete {
       Current.soundPlayer.startMusic()
     }
   }
@@ -302,6 +446,60 @@ class GameState {
 
 
   // MARK: - Private
+
+  private func startNextWave() {
+    wave += 1
+    scoreAtWaveStart = score
+
+    playerBullet = nil
+    enemyBullet = nil
+    zigzagger = nil
+    coins = []
+    powerUps = []
+    shieldActive = false
+    rapidFireActive = false
+    shieldTimer = 0
+    rapidFireTimer = 0
+    rapidFireCooldown = 0
+    eggs = []
+    hatchlings = []
+    fussball = nil
+    wurstChains = []
+    pretzelObstacles = []
+    ghosts = []
+    goldenDots = []
+    kristallkugel = nil
+    geisterjagdActive = false
+    geisterjagdTimer = 0
+    kristallkugelSpawnCount = 0
+    activeMechanic = nil
+    mechanicSpawnTimer = 0
+    zigzaggerSpawnTimer = 0
+    diveTimer = 0
+
+    playerHealth = min(1.0, playerHealth + Self.healthRestoreAmount)
+    enemySpeed = 21 * pow(Self.waveSpeedScaling, CGFloat(wave - 1))
+    enemyDirection = 1
+    sineTime = 0
+    waveCompleteTime = nil
+    lastUpdateTime = nil
+
+    enemies = []
+    let gridWidth = CGFloat(Self.cols - 1) * Self.enemySpacingX
+    let startX = (screenWidth - gridWidth) / 2
+    let startY = topInset + 40
+    for row in 0..<Self.rows {
+      for col in 0..<Self.cols {
+        let x = startX + CGFloat(col) * Self.enemySpacingX
+        let y = startY + CGFloat(row) * Self.enemySpacingY
+        let imageName = Self.enemyImages[row % Self.enemyImages.count]
+        enemies.append(Enemy(row: row, col: col, x: x, y: y, imageName: imageName))
+      }
+    }
+
+    phase = .playing
+    Current.analytics.signal(name: .completeWave)
+  }
 
   private func startMotion() {
     guard motionManager.isAccelerometerAvailable, !motionManager.isAccelerometerActive else { return }
@@ -362,6 +560,7 @@ class GameState {
           enemies[i].homeY += Self.enemySpacingY / 2
         } else {
           enemies[i].y += Self.enemySpacingY / 2
+          enemies[i].x = max(Self.enemySize / 2, min(screenWidth - Self.enemySize / 2, enemies[i].x))
         }
       }
       enemySpeed /= Self.speedUpFactor
@@ -517,7 +716,7 @@ class GameState {
       rapidFireCooldown -= dt
       if rapidFireCooldown <= 0 && playerBullet == nil {
         playerBullet = Bullet(x: playerX, y: playerY - Self.playerSize / 2, isPlayerBullet: true)
-        Current.soundPlayer.play(.chime, shouldDebounce: false)
+        Current.soundPlayer.play(.rapidFire, shouldDebounce: false)
         rapidFireCooldown = Self.rapidFireInterval
       }
     }
@@ -534,7 +733,7 @@ class GameState {
 
       if e.age >= Self.eggHatchTime {
         newHatchlings.append(Hatchling(x: e.x, y: e.y))
-        Current.soundPlayer.play(.chime, shouldDebounce: false)
+        Current.soundPlayer.play(.eggCrack, shouldDebounce: false)
         return nil
       }
 
@@ -575,6 +774,220 @@ class GameState {
     }
   }
 
+  private func updateSpecialMechanic(dt: CGFloat) {
+    guard activeMechanic == nil else { return }
+    let threshold = mechanicBag.isEmpty && mechanicSpawnTimer == 0
+      ? Self.initialMechanicDelay
+      : Self.mechanicSpawnInterval
+    mechanicSpawnTimer += dt
+    guard mechanicSpawnTimer >= threshold else { return }
+    mechanicSpawnTimer = 0
+    if mechanicBag.isEmpty {
+      mechanicBag = SpecialMechanic.allCases.shuffled()
+    }
+    let mechanic = mechanicBag.removeLast()
+    activeMechanic = mechanic
+    switch mechanic {
+    case .fussball:
+      Current.soundPlayer.play(.soccerKick, shouldDebounce: false)
+      spawnFussball()
+    case .bratwurstkette:
+      Current.soundPlayer.play(.sizzle, shouldDebounce: false)
+      spawnBratwurstkette()
+    case .geisterstunde:
+      Current.soundPlayer.play(.ghostSpooky, shouldDebounce: false)
+      spawnGeisterstunde()
+    }
+  }
+
+  private func spawnFussball() {
+    let angle = CGFloat.random(in: 0.3...0.8) * (Bool.random() ? 1 : -1)
+    fussball = Fussball(
+      x: screenWidth / 2,
+      y: topInset + 50,
+      velocityX: Self.fussballBaseSpeed * angle,
+      velocityY: Self.fussballBaseSpeed * abs(1 - abs(angle)),
+      remainingTime: Self.fussballDuration
+    )
+  }
+
+  private func updateFussball(dt: CGFloat) {
+    guard var ball = fussball else { return }
+    ball.remainingTime -= dt
+    if ball.remainingTime <= 0 {
+      fussball = nil
+      if activeMechanic == .fussball {
+        activeMechanic = nil
+      }
+      return
+    }
+    ball.x += ball.velocityX * dt
+    ball.y += ball.velocityY * dt
+    let half = Self.fussballSize / 2
+    if ball.x <= half {
+      ball.x = half
+      ball.velocityX = abs(ball.velocityX) * Self.fussballSpeedUpPerBounce
+      ball.velocityY *= Self.fussballSpeedUpPerBounce
+      ball.bounceCount += 1
+      Current.soundPlayer.play(.soccerKick, shouldDebounce: true)
+    } else if ball.x >= screenWidth - half {
+      ball.x = screenWidth - half
+      ball.velocityX = -abs(ball.velocityX) * Self.fussballSpeedUpPerBounce
+      ball.velocityY *= Self.fussballSpeedUpPerBounce
+      ball.bounceCount += 1
+      Current.soundPlayer.play(.soccerKick, shouldDebounce: true)
+    }
+    if ball.y <= topInset + half {
+      ball.y = topInset + half
+      ball.velocityY = abs(ball.velocityY) * Self.fussballSpeedUpPerBounce
+      ball.velocityX *= Self.fussballSpeedUpPerBounce
+      ball.bounceCount += 1
+      Current.soundPlayer.play(.soccerKick, shouldDebounce: true)
+    } else if ball.y >= screenHeight - half {
+      ball.y = screenHeight - half
+      ball.velocityY = -abs(ball.velocityY) * Self.fussballSpeedUpPerBounce
+      ball.velocityX *= Self.fussballSpeedUpPerBounce
+      ball.bounceCount += 1
+      Current.soundPlayer.play(.soccerKick, shouldDebounce: true)
+    }
+    fussball = ball
+  }
+
+  private func spawnBratwurstkette() {
+    var segments: [WurstSegment] = []
+    let startX = (screenWidth - CGFloat(Self.wurstSegmentCount - 1) * Self.wurstSegmentSpacing) / 2
+    let startY = topInset + 30
+    for i in 0..<Self.wurstSegmentCount {
+      segments.append(WurstSegment(x: startX + CGFloat(i) * Self.wurstSegmentSpacing, y: startY))
+    }
+    wurstChains = [WurstChain(segments: segments, movingRight: Bool.random(), speed: Self.wurstBaseSpeed)]
+  }
+
+  private func updateWurstChains(dt: CGFloat) {
+    guard !wurstChains.isEmpty else { return }
+    var chainsToRemove: [UUID] = []
+    for i in wurstChains.indices {
+      let nearPlayer = wurstChains[i].segments.contains { abs($0.y - playerY) < 100 }
+      let speed = nearPlayer
+        ? wurstChains[i].speed * Self.wurstPlayerRowSpeedMultiplier
+        : wurstChains[i].speed
+      let dx = speed * dt * (wurstChains[i].movingRight ? 1 : -1)
+      var hitEdge = false
+      for j in wurstChains[i].segments.indices {
+        wurstChains[i].segments[j].x += dx
+        let half = Self.wurstSegmentSize / 2
+        if wurstChains[i].segments[j].x <= half || wurstChains[i].segments[j].x >= screenWidth - half {
+          hitEdge = true
+        }
+      }
+      if hitEdge {
+        wurstChains[i].movingRight.toggle()
+        for j in wurstChains[i].segments.indices {
+          wurstChains[i].segments[j].y += Self.wurstDescentStep
+        }
+      }
+      if wurstChains[i].segments.allSatisfy({ $0.y > screenHeight + Self.wurstSegmentSize }) {
+        chainsToRemove.append(wurstChains[i].id)
+      }
+    }
+    wurstChains.removeAll { chain in chainsToRemove.contains(chain.id) }
+    if wurstChains.isEmpty && activeMechanic == .bratwurstkette {
+      activeMechanic = nil
+    }
+  }
+
+  private func spawnGeisterstunde() {
+    let count = Int.random(in: Self.ghostCount)
+    ghosts = (0..<count).map { i in
+      let spacing = screenWidth / CGFloat(count + 1)
+      return Ghost(x: spacing * CGFloat(i + 1), y: topInset + 20)
+    }
+    goldenDots = []
+    kristallkugel = nil
+    geisterjagdActive = false
+    geisterjagdTimer = 0
+    kristallkugelSpawnCount = 0
+  }
+
+  private func updateGhosts(dt: CGFloat) {
+    guard !ghosts.isEmpty || geisterjagdActive else { return }
+
+    if geisterjagdActive {
+      geisterjagdTimer -= dt
+      if geisterjagdTimer <= 0 {
+        geisterjagdActive = false
+        geisterjagdTimer = 0
+        for i in ghosts.indices {
+          if ghosts[i].phase == .fleeing {
+            ghosts[i].phase = .exiting
+            score += Self.ghostExitScore
+          }
+        }
+      }
+    }
+
+    let descentStart = topInset + 20
+    let descentRange = playerY - descentStart
+    var dotsToAdd: [GoldenDot] = []
+
+    for i in ghosts.indices {
+      switch ghosts[i].phase {
+      case .descending:
+        ghosts[i].y += Self.ghostDescentSpeed * dt
+        ghosts[i].dotTimer += dt
+        if ghosts[i].dotTimer >= Self.dotDropInterval {
+          dotsToAdd.append(GoldenDot(x: ghosts[i].x, y: ghosts[i].y))
+          ghosts[i].dotTimer = 0
+        }
+        if kristallkugel == nil && kristallkugelSpawnCount < Self.kristallkugelMaxSpawns {
+          let threshold = descentStart + descentRange * Self.kristallkugelThresholds[kristallkugelSpawnCount]
+          if ghosts[i].y >= threshold {
+            kristallkugel = Kristallkugel(x: ghosts[i].x, y: ghosts[i].y)
+            kristallkugelSpawnCount += 1
+          }
+        }
+        if ghosts[i].y >= playerY {
+          ghosts[i].phase = .pursuing
+        }
+      case .pursuing:
+        if kristallkugel == nil && kristallkugelSpawnCount < Self.kristallkugelMaxSpawns {
+          kristallkugel = Kristallkugel(x: ghosts[i].x, y: (topInset + ghosts[i].y) / 2)
+          kristallkugelSpawnCount += 1
+        }
+        let dx = playerX - ghosts[i].x
+        let direction: CGFloat = dx > 0 ? 1 : -1
+        ghosts[i].x += direction * Self.ghostPursuitSpeed * dt
+      case .fleeing:
+        let dx = ghosts[i].x - playerX
+        let direction: CGFloat = dx > 0 ? 1 : -1
+        ghosts[i].x += direction * Self.ghostFleeSpeed * dt
+        ghosts[i].x = max(Self.ghostSize / 2, min(screenWidth - Self.ghostSize / 2, ghosts[i].x))
+      case .devoured:
+        ghosts[i].dotTimer += dt
+      case .exiting:
+        ghosts[i].y -= Self.ghostExitSpeed * dt
+      }
+    }
+
+    goldenDots.append(contentsOf: dotsToAdd)
+    ghosts.removeAll { ghost in
+      switch ghost.phase {
+      case .devoured:
+        return ghost.dotTimer >= 0.3
+      case .exiting:
+        return ghost.y < -Self.ghostSize
+      default:
+        return false
+      }
+    }
+
+    if ghosts.isEmpty && !geisterjagdActive && activeMechanic == .geisterstunde {
+      activeMechanic = nil
+      goldenDots = []
+      kristallkugel = nil
+    }
+  }
+
   private func checkCollisions() {
     // 1. Player bullet vs hatchlings
     if let bullet = playerBullet {
@@ -585,7 +998,7 @@ class GameState {
         hatchlings.remove(at: idx)
         playerBullet = nil
         score += Self.hatchlingScore
-        Current.soundPlayer.play(.chime, shouldDebounce: false)
+        Current.soundPlayer.play(.enemyDestroyed, shouldDebounce: false)
         haptic(.medium)
       }
     }
@@ -601,7 +1014,7 @@ class GameState {
           enemies[i].isAlive = false
           playerBullet = nil
           score += wasDiving ? Self.scorePerKill * Self.diveScoreMultiplier : Self.scorePerKill
-          Current.soundPlayer.play(.chime, shouldDebounce: false)
+          Current.soundPlayer.play(.enemyDestroyed, shouldDebounce: false)
           haptic(.medium)
           if Double.random(in: 0...1) < Self.powerUpDropChance {
             let kind = PowerUpKind.allCases.randomElement() ?? .bratwurst
@@ -638,7 +1051,7 @@ class GameState {
           playerHealth -= Self.healthLossPerHit
           portalSide = nil
         }
-        Current.soundPlayer.play(.chime, shouldDebounce: false)
+        Current.soundPlayer.play(.playerHit, shouldDebounce: false)
         haptic(.heavy)
       }
     }
@@ -654,7 +1067,7 @@ class GameState {
           playerHealth -= Self.healthLossPerHit
           portalSide = nil
         }
-        Current.soundPlayer.play(.chime, shouldDebounce: false)
+        Current.soundPlayer.play(.playerHit, shouldDebounce: false)
         haptic(.heavy)
       }
     }
@@ -670,7 +1083,7 @@ class GameState {
           playerHealth -= Self.healthLossPerHit
           portalSide = nil
         }
-        Current.soundPlayer.play(.chime, shouldDebounce: false)
+        Current.soundPlayer.play(.playerHit, shouldDebounce: false)
         haptic(.heavy)
       }
     }
@@ -698,15 +1111,17 @@ class GameState {
         switch powerUp.kind {
         case .bratwurst:
           playerHealth = min(1.0, playerHealth + Self.healthRestoreAmount)
+          Current.soundPlayer.play(.coin, shouldDebounce: false)
         case .bier:
           shieldActive = true
           shieldTimer = Self.shieldDuration
+          Current.soundPlayer.play(.shieldActivate, shouldDebounce: false)
         case .kartoffel:
           rapidFireActive = true
           rapidFireTimer = Self.rapidFireDuration
           rapidFireCooldown = 0
+          Current.soundPlayer.play(.rapidFire, shouldDebounce: false)
         }
-        Current.soundPlayer.play(.coin, shouldDebounce: false)
         haptic(.light)
         return true
       }
@@ -737,11 +1152,232 @@ class GameState {
           playerHealth -= Self.healthLossPerHit
           portalSide = nil
         }
-        Current.soundPlayer.play(.chime, shouldDebounce: false)
+        Current.soundPlayer.play(.playerHit, shouldDebounce: false)
         haptic(.heavy)
         return true
       }
       return false
+    }
+
+    // 11. Player bullet vs wurst segments (chain split + pretzel spawn)
+    if let bullet = playerBullet {
+      var consumed = false
+      for chainIdx in wurstChains.indices.reversed() {
+        for segIdx in wurstChains[chainIdx].segments.indices {
+          let seg = wurstChains[chainIdx].segments[segIdx]
+          if rectsIntersect(
+            ax: bullet.x, ay: bullet.y, aSize: Self.bulletSize,
+            bx: seg.x, by: seg.y, bSize: Self.wurstSegmentSize
+          ) {
+            score += Self.wurstSegmentScore
+            playerBullet = nil
+            consumed = true
+            Current.soundPlayer.play(.enemyDestroyed, shouldDebounce: false)
+            haptic(.medium)
+            pretzelObstacles.append(PretzelObstacle(x: seg.x, y: seg.y))
+            let chain = wurstChains[chainIdx]
+            var newChains: [WurstChain] = []
+            if segIdx > 0 {
+              let leftSegments = Array(chain.segments[0..<segIdx])
+              newChains.append(WurstChain(segments: leftSegments, movingRight: chain.movingRight, speed: chain.speed))
+            }
+            if segIdx < chain.segments.count - 1 {
+              let rightSegments = Array(chain.segments[(segIdx + 1)...])
+              newChains.append(WurstChain(segments: rightSegments, movingRight: chain.movingRight, speed: chain.speed))
+            }
+            wurstChains.remove(at: chainIdx)
+            wurstChains.append(contentsOf: newChains)
+            break
+          }
+        }
+        if consumed {
+          break
+        }
+      }
+    }
+
+    // 12. Player bullet vs pretzel obstacles
+    if let bullet = playerBullet {
+      if let idx = pretzelObstacles.firstIndex(where: { p in
+        rectsIntersect(ax: bullet.x, ay: bullet.y, aSize: Self.bulletSize,
+                       bx: p.x, by: p.y, bSize: Self.pretzelObstacleSize)
+      }) {
+        playerBullet = nil
+        pretzelObstacles[idx].hitsRemaining -= 1
+        Current.soundPlayer.play(.chime, shouldDebounce: false)
+        haptic(.light)
+        if pretzelObstacles[idx].hitsRemaining <= 0 {
+          pretzelObstacles.remove(at: idx)
+        }
+      }
+    }
+
+    // 13. Enemy bullet vs pretzel obstacles
+    if let bullet = enemyBullet {
+      if let idx = pretzelObstacles.firstIndex(where: { p in
+        rectsIntersect(ax: bullet.x, ay: bullet.y, aSize: Self.bulletSize,
+                       bx: p.x, by: p.y, bSize: Self.pretzelObstacleSize)
+      }) {
+        enemyBullet = nil
+        pretzelObstacles[idx].hitsRemaining -= 1
+        Current.soundPlayer.play(.chime, shouldDebounce: false)
+        if pretzelObstacles[idx].hitsRemaining <= 0 {
+          pretzelObstacles.remove(at: idx)
+        }
+      }
+    }
+
+    // 14. Wurst segment vs player (shield check)
+    for chain in wurstChains {
+      for seg in chain.segments {
+        if rectsIntersect(
+          ax: seg.x, ay: seg.y, aSize: Self.wurstSegmentSize,
+          bx: playerX, by: playerY, bSize: Self.playerSize
+        ) {
+          if !shieldActive {
+            playerHealth -= Self.healthLossPerHit
+            portalSide = nil
+          }
+          Current.soundPlayer.play(.playerHit, shouldDebounce: false)
+          haptic(.heavy)
+        }
+      }
+    }
+
+    // 15. Fussball vs enemies
+    if var ball = fussball {
+      for i in enemies.indices where enemies[i].isAlive {
+        if rectsIntersect(
+          ax: ball.x, ay: ball.y, aSize: Self.fussballSize,
+          bx: enemies[i].x, by: enemies[i].y, bSize: Self.enemySize
+        ) {
+          enemies[i].isAlive = false
+          score += Self.fussballEnemyKillScore
+          Current.soundPlayer.play(.enemyDestroyed, shouldDebounce: false)
+          haptic(.medium)
+          ball.velocityY = -ball.velocityY
+          if Double.random(in: 0...1) < Self.powerUpDropChance {
+            let kind = PowerUpKind.allCases.randomElement() ?? .bratwurst
+            powerUps.append(PowerUp(x: enemies[i].x, y: enemies[i].y, kind: kind))
+          }
+        }
+      }
+      fussball = ball
+    }
+
+    // 16. Fussball vs player (shield check)
+    if let ball = fussball {
+      if rectsIntersect(
+        ax: ball.x, ay: ball.y, aSize: Self.fussballSize,
+        bx: playerX, by: playerY, bSize: Self.playerSize
+      ) {
+        if !shieldActive {
+          playerHealth -= Self.healthLossPerHit
+          portalSide = nil
+        }
+        fussball?.velocityY = -abs(ball.velocityY)
+        Current.soundPlayer.play(.playerHit, shouldDebounce: false)
+        haptic(.heavy)
+      }
+    }
+
+    // 17. Player bullet vs fussball (deflect)
+    if var ball = fussball, let bullet = playerBullet {
+      if rectsIntersect(
+        ax: bullet.x, ay: bullet.y, aSize: Self.bulletSize,
+        bx: ball.x, by: ball.y, bSize: Self.fussballSize
+      ) {
+        playerBullet = nil
+        ball.velocityY = -abs(ball.velocityY)
+        ball.velocityX += CGFloat.random(in: -80...80)
+        Current.soundPlayer.play(.soccerKick, shouldDebounce: false)
+        haptic(.medium)
+        fussball = ball
+      }
+    }
+
+    // 18. Fussball vs pretzel obstacles
+    if var ball = fussball {
+      for i in pretzelObstacles.indices.reversed() {
+        if rectsIntersect(
+          ax: ball.x, ay: ball.y, aSize: Self.fussballSize,
+          bx: pretzelObstacles[i].x, by: pretzelObstacles[i].y, bSize: Self.pretzelObstacleSize
+        ) {
+          ball.velocityY = -ball.velocityY
+          pretzelObstacles[i].hitsRemaining -= 1
+          if pretzelObstacles[i].hitsRemaining <= 0 {
+            pretzelObstacles.remove(at: i)
+          }
+          Current.soundPlayer.play(.soccerKick, shouldDebounce: false)
+        }
+      }
+      fussball = ball
+    }
+
+    // 19. Player bullet vs Kristallkugel (trigger Geisterjagd)
+    if let bullet = playerBullet, let kugel = kristallkugel {
+      if rectsIntersect(
+        ax: bullet.x, ay: bullet.y, aSize: Self.bulletSize,
+        bx: kugel.x, by: kugel.y, bSize: Self.kristallkugelSize
+      ) {
+        playerBullet = nil
+        kristallkugel = nil
+        geisterjagdActive = true
+        geisterjagdTimer = Self.geisterjagdDuration
+        Current.soundPlayer.play(.magicActivate, shouldDebounce: false)
+        haptic(.medium)
+        for i in ghosts.indices {
+          if ghosts[i].phase == .pursuing || ghosts[i].phase == .descending {
+            ghosts[i].phase = .fleeing
+          }
+        }
+      }
+    }
+
+    // 20. Player bullet vs golden dots (bullet passes through)
+    if let bullet = playerBullet {
+      var hitDot = false
+      goldenDots.removeAll { dot in
+        if rectsIntersect(ax: bullet.x, ay: bullet.y, aSize: Self.bulletSize,
+                          bx: dot.x, by: dot.y, bSize: Self.dotSize) {
+          score += Self.dotScore
+          hitDot = true
+          return true
+        }
+        return false
+      }
+      if hitDot {
+        Current.soundPlayer.play(.coin, shouldDebounce: false)
+        haptic(.light)
+      }
+    }
+
+    // 21. Ghost vs player
+    for i in ghosts.indices {
+      guard rectsIntersect(
+        ax: ghosts[i].x, ay: ghosts[i].y, aSize: Self.ghostSize,
+        bx: playerX, by: playerY, bSize: Self.playerSize
+      ) else {
+        continue
+      }
+      switch ghosts[i].phase {
+      case .pursuing:
+        if !shieldActive {
+          playerHealth -= Self.healthLossPerHit
+          portalSide = nil
+        }
+        ghosts[i].phase = .exiting
+        Current.soundPlayer.play(.playerHit, shouldDebounce: false)
+        haptic(.heavy)
+      case .fleeing:
+        ghosts[i].phase = .devoured
+        ghosts[i].dotTimer = 0
+        score += Self.ghostDevourScore
+        Current.soundPlayer.play(.chomp, shouldDebounce: false)
+        haptic(.medium)
+      default:
+        break
+      }
     }
   }
 
@@ -771,13 +1407,11 @@ class GameState {
     let aliveEnemies = enemies.filter(\.isAlive)
 
     if aliveEnemies.isEmpty {
-      phase = .won
+      phase = .waveComplete
       portalSide = nil
-      gameOverTime = .now
-      Current.soundPlayer.stopMusic()
+      lastWaveScore = score - scoreAtWaveStart
+      waveCompleteTime = .now
       Current.soundPlayer.play(.randomApplause, shouldDebounce: false)
-      persistHighScore()
-      Current.analytics.signal(name: .winGame)
       return
     }
 

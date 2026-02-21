@@ -1,8 +1,8 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
 enum SortOrder: String, CaseIterable {
-  case frequency
   case alphabetical
+  case frequency
 
   var displayName: String {
     switch self {

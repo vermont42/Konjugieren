@@ -1,13 +1,13 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
 enum BrowseableFamily: String, CaseIterable, Identifiable {
+  case ablaut
+  case ieren
+  case inseparable
+  case mixed
+  case separable
   case strong
   case weak
-  case mixed
-  case ieren
-  case separable
-  case inseparable
-  case ablaut
 
   var id: String { rawValue }
 

@@ -1,9 +1,9 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
 enum AppIcon: String, CaseIterable {
+  case bundestag
   case hat
   case pretzel
-  case bundestag
 
   var localizedAppIcon: String {
     switch self {

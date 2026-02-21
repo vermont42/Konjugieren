@@ -7,12 +7,12 @@ enum ParameterKey: String {
 
 enum AnalyticsName: String {
   case completeQuiz = "complete.quiz"
+  case completeWave = "complete.wave"
   case loseGame = "lose.game"
   case quitQuiz = "quit.quiz"
   case startGame = "start.game"
   case startQuiz = "start.quiz"
   case tapPlayGame = "tap.playGame"
-  case completeWave = "complete.wave"
   case tapShowOnboarding = "tap.showOnboarding"
   case tapViewLeaderboard = "tap.viewLeaderboard"
   case viewFamilyBrowseView = "view.FamilyBrowseView"

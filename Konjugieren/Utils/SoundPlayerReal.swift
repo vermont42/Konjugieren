@@ -52,7 +52,7 @@ class SoundPlayerReal: SoundPlayer {
     musicPlayer?.stop()
   }
 
-  func play(_ sound: Sound, shouldDebounce: Bool) {
+  func play(_ sound: Sound, shouldDebounce: Bool, volume: Float) {
     if Current.settings.audioFeedback == .disable {
       return
     }
@@ -66,6 +66,7 @@ class SoundPlayerReal: SoundPlayer {
     let instantOfCurrentPlay = Date().timeIntervalSince1970
     let minSoundInterval: TimeInterval = 1.0
     if !shouldDebounce || (instantOfCurrentPlay - instantOfLastPlay > minSoundInterval) {
+      sounds[sound.rawValue]?.volume = volume
       sounds[sound.rawValue]?.play()
       instantOfLastPlay = instantOfCurrentPlay
     }

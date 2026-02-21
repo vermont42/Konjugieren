@@ -42,8 +42,8 @@ struct Coin: Identifiable {
 }
 
 enum PowerUpKind: CaseIterable {
-  case bratwurst
   case bier
+  case bratwurst
   case kartoffel
 
   var emoji: String {
@@ -77,6 +77,20 @@ struct Hatchling: Identifiable {
   let id = UUID()
   var x: CGFloat
   var y: CGFloat
+}
+
+struct DeathEffect: Identifiable {
+  static let duration: CGFloat = 0.3
+  static let particleCount = 8
+
+  let id = UUID()
+  let x: CGFloat
+  let y: CGFloat
+  let imageName: String
+  let useRed: Bool
+  var age: CGFloat = 0
+
+  var progress: CGFloat { min(age / Self.duration, 1.0) }
 }
 
 enum GamePhase {
@@ -124,6 +138,7 @@ struct PretzelObstacle: Identifiable {
   var x: CGFloat
   var y: CGFloat
   var hitsRemaining: Int = 2
+  var opacity: CGFloat = 1.0
 }
 
 enum GhostPhase {
@@ -179,6 +194,7 @@ class GameState {
   var ghosts: [Ghost] = []
   var goldenDots: [GoldenDot] = []
   var kristallkugel: Kristallkugel?
+  var deathEffects: [DeathEffect] = []
   var geisterjagdActive: Bool = false
   var score: Int = 0
   var highScore: Int = 0
@@ -205,6 +221,7 @@ class GameState {
   private var shieldTimer: CGFloat = 0
   private var rapidFireTimer: CGFloat = 0
   private var rapidFireCooldown: CGFloat = 0
+  private var rapidFireSound: Sound = .longFire1
   private var diveTimer: CGFloat = 0
   private let motionManager = CMMotionManager()
   private var lastUpdateTime: Date?
@@ -218,8 +235,8 @@ class GameState {
   private static let playerSize: CGFloat = 40
   private static let enemySize: CGFloat = 30
   private static let bulletSize: CGFloat = 20
-  private static let accelerometerThreshold: Double = 0.02
-  private static let accelerometerSensitivity: CGFloat = 800
+  private static let tiltThreshold: Double = 0.02
+  private static let tiltSensitivity: CGFloat = 800
   private static let healthLossPerHit: CGFloat = 0.334
   private static let enemyFireChance: Double = 0.02
   private static let speedUpFactor: CGFloat = 0.95
@@ -325,6 +342,7 @@ class GameState {
     shieldTimer = 0
     rapidFireTimer = 0
     rapidFireCooldown = 0
+    rapidFireSound = .longFire1
     diveTimer = 0
     eggs = []
     hatchlings = []
@@ -338,6 +356,7 @@ class GameState {
     ghosts = []
     goldenDots = []
     kristallkugel = nil
+    deathEffects = []
     geisterjagdActive = false
     geisterjagdTimer = 0
     kristallkugelSpawnCount = 0
@@ -402,7 +421,9 @@ class GameState {
     updateSpecialMechanic(dt: dt)
     updateFussball(dt: dt)
     updateWurstChains(dt: dt)
+    updatePretzelOpacities(dt: dt)
     updateGhosts(dt: dt)
+    updateDeathEffects(dt: dt)
     checkCollisions()
     attemptEnemyFire()
     checkGameOver()
@@ -411,7 +432,7 @@ class GameState {
   func playerFire() {
     guard phase == .playing, playerBullet == nil else { return }
     playerBullet = Bullet(x: playerX, y: playerY - Self.playerSize / 2, isPlayerBullet: true)
-    Current.soundPlayer.play(.chime, shouldDebounce: false)
+    Current.soundPlayer.play(.pop, shouldDebounce: false)
   }
 
   func computeFinalScore() -> Int {
@@ -421,8 +442,8 @@ class GameState {
   }
 
   func stopMotion() {
-    if motionManager.isAccelerometerActive {
-      motionManager.stopAccelerometerUpdates()
+    if motionManager.isDeviceMotionActive {
+      motionManager.stopDeviceMotionUpdates()
     }
     Current.soundPlayer.stopMusic()
   }
@@ -461,6 +482,7 @@ class GameState {
     shieldTimer = 0
     rapidFireTimer = 0
     rapidFireCooldown = 0
+    rapidFireSound = .longFire1
     eggs = []
     hatchlings = []
     fussball = nil
@@ -469,6 +491,7 @@ class GameState {
     ghosts = []
     goldenDots = []
     kristallkugel = nil
+    deathEffects = []
     geisterjagdActive = false
     geisterjagdTimer = 0
     kristallkugelSpawnCount = 0
@@ -502,9 +525,9 @@ class GameState {
   }
 
   private func startMotion() {
-    guard motionManager.isAccelerometerAvailable, !motionManager.isAccelerometerActive else { return }
-    motionManager.accelerometerUpdateInterval = 1.0 / 60.0
-    motionManager.startAccelerometerUpdates()
+    guard motionManager.isDeviceMotionAvailable, !motionManager.isDeviceMotionActive else { return }
+    motionManager.deviceMotionUpdateInterval = 1.0 / 60.0
+    motionManager.startDeviceMotionUpdates()
   }
 
   private func haptic(_ style: UIImpactFeedbackGenerator.FeedbackStyle) {
@@ -512,10 +535,10 @@ class GameState {
   }
 
   private func updatePlayerPosition(dt: CGFloat) {
-    guard let data = motionManager.accelerometerData else { return }
-    let tilt = data.acceleration.x
-    if abs(tilt) > Self.accelerometerThreshold {
-      playerX += CGFloat(tilt) * Self.accelerometerSensitivity * dt
+    guard let data = motionManager.deviceMotion else { return }
+    let tilt = data.gravity.x
+    if abs(tilt) > Self.tiltThreshold {
+      playerX += CGFloat(tilt) * Self.tiltSensitivity * dt
       playerX = max(Self.playerSize / 2, min(screenWidth - Self.playerSize / 2, playerX))
     }
 
@@ -716,7 +739,7 @@ class GameState {
       rapidFireCooldown -= dt
       if rapidFireCooldown <= 0 && playerBullet == nil {
         playerBullet = Bullet(x: playerX, y: playerY - Self.playerSize / 2, isPlayerBullet: true)
-        Current.soundPlayer.play(.rapidFire, shouldDebounce: false)
+        Current.soundPlayer.play(rapidFireSound, shouldDebounce: false, volume: 0.5)
         rapidFireCooldown = Self.rapidFireInterval
       }
     }
@@ -884,6 +907,8 @@ class GameState {
         wurstChains[i].movingRight.toggle()
         for j in wurstChains[i].segments.indices {
           wurstChains[i].segments[j].y += Self.wurstDescentStep
+          let half = Self.wurstSegmentSize / 2
+          wurstChains[i].segments[j].x = max(half, min(screenWidth - half, wurstChains[i].segments[j].x))
         }
       }
       if wurstChains[i].segments.allSatisfy({ $0.y > screenHeight + Self.wurstSegmentSize }) {
@@ -894,6 +919,24 @@ class GameState {
     if wurstChains.isEmpty && activeMechanic == .bratwurstkette {
       activeMechanic = nil
     }
+  }
+
+  private func updatePretzelOpacities(dt: CGFloat) {
+    let fadeSpeed: CGFloat = 3.0
+    for i in pretzelObstacles.indices {
+      let target: CGFloat = switch pretzelObstacles[i].hitsRemaining {
+      case 2:
+        1.0
+      case 1:
+        0.5
+      default:
+        0.0
+      }
+      if pretzelObstacles[i].opacity > target {
+        pretzelObstacles[i].opacity = max(target, pretzelObstacles[i].opacity - fadeSpeed * dt)
+      }
+    }
+    pretzelObstacles.removeAll { $0.opacity <= 0 }
   }
 
   private func spawnGeisterstunde() {
@@ -988,6 +1031,13 @@ class GameState {
     }
   }
 
+  private func updateDeathEffects(dt: CGFloat) {
+    for i in deathEffects.indices {
+      deathEffects[i].age += dt
+    }
+    deathEffects.removeAll { $0.progress >= 1.0 }
+  }
+
   private func checkCollisions() {
     // 1. Player bullet vs hatchlings
     if let bullet = playerBullet {
@@ -998,7 +1048,7 @@ class GameState {
         hatchlings.remove(at: idx)
         playerBullet = nil
         score += Self.hatchlingScore
-        Current.soundPlayer.play(.enemyDestroyed, shouldDebounce: false)
+        Current.soundPlayer.play(.pop, shouldDebounce: false)
         haptic(.medium)
       }
     }
@@ -1011,10 +1061,11 @@ class GameState {
           bx: enemies[i].x, by: enemies[i].y, bSize: Self.enemySize
         ) {
           let wasDiving = enemies[i].isDiving
+          deathEffects.append(DeathEffect(x: enemies[i].x, y: enemies[i].y, imageName: enemies[i].imageName, useRed: Bool.random()))
           enemies[i].isAlive = false
           playerBullet = nil
           score += wasDiving ? Self.scorePerKill * Self.diveScoreMultiplier : Self.scorePerKill
-          Current.soundPlayer.play(.enemyDestroyed, shouldDebounce: false)
+          Current.soundPlayer.play(.pop, shouldDebounce: false)
           haptic(.medium)
           if Double.random(in: 0...1) < Self.powerUpDropChance {
             let kind = PowerUpKind.allCases.randomElement() ?? .bratwurst
@@ -1062,6 +1113,7 @@ class GameState {
         ax: enemies[i].x, ay: enemies[i].y, aSize: Self.enemySize,
         bx: playerX, by: playerY, bSize: Self.playerSize
       ) {
+        deathEffects.append(DeathEffect(x: enemies[i].x, y: enemies[i].y, imageName: enemies[i].imageName, useRed: Bool.random()))
         enemies[i].isAlive = false
         if !shieldActive {
           playerHealth -= Self.healthLossPerHit
@@ -1120,7 +1172,8 @@ class GameState {
           rapidFireActive = true
           rapidFireTimer = Self.rapidFireDuration
           rapidFireCooldown = 0
-          Current.soundPlayer.play(.rapidFire, shouldDebounce: false)
+          rapidFireSound = .randomLongFire
+          Current.soundPlayer.play(rapidFireSound, shouldDebounce: false, volume: 0.5)
         }
         haptic(.light)
         return true
@@ -1172,7 +1225,7 @@ class GameState {
             score += Self.wurstSegmentScore
             playerBullet = nil
             consumed = true
-            Current.soundPlayer.play(.enemyDestroyed, shouldDebounce: false)
+            Current.soundPlayer.play(.pop, shouldDebounce: false)
             haptic(.medium)
             pretzelObstacles.append(PretzelObstacle(x: seg.x, y: seg.y))
             let chain = wurstChains[chainIdx]
@@ -1199,31 +1252,25 @@ class GameState {
     // 12. Player bullet vs pretzel obstacles
     if let bullet = playerBullet {
       if let idx = pretzelObstacles.firstIndex(where: { p in
-        rectsIntersect(ax: bullet.x, ay: bullet.y, aSize: Self.bulletSize,
+        p.hitsRemaining > 0 && rectsIntersect(ax: bullet.x, ay: bullet.y, aSize: Self.bulletSize,
                        bx: p.x, by: p.y, bSize: Self.pretzelObstacleSize)
       }) {
         playerBullet = nil
         pretzelObstacles[idx].hitsRemaining -= 1
         Current.soundPlayer.play(.chime, shouldDebounce: false)
         haptic(.light)
-        if pretzelObstacles[idx].hitsRemaining <= 0 {
-          pretzelObstacles.remove(at: idx)
-        }
       }
     }
 
     // 13. Enemy bullet vs pretzel obstacles
     if let bullet = enemyBullet {
       if let idx = pretzelObstacles.firstIndex(where: { p in
-        rectsIntersect(ax: bullet.x, ay: bullet.y, aSize: Self.bulletSize,
+        p.hitsRemaining > 0 && rectsIntersect(ax: bullet.x, ay: bullet.y, aSize: Self.bulletSize,
                        bx: p.x, by: p.y, bSize: Self.pretzelObstacleSize)
       }) {
         enemyBullet = nil
         pretzelObstacles[idx].hitsRemaining -= 1
         Current.soundPlayer.play(.chime, shouldDebounce: false)
-        if pretzelObstacles[idx].hitsRemaining <= 0 {
-          pretzelObstacles.remove(at: idx)
-        }
       }
     }
 
@@ -1251,9 +1298,10 @@ class GameState {
           ax: ball.x, ay: ball.y, aSize: Self.fussballSize,
           bx: enemies[i].x, by: enemies[i].y, bSize: Self.enemySize
         ) {
+          deathEffects.append(DeathEffect(x: enemies[i].x, y: enemies[i].y, imageName: enemies[i].imageName, useRed: Bool.random()))
           enemies[i].isAlive = false
           score += Self.fussballEnemyKillScore
-          Current.soundPlayer.play(.enemyDestroyed, shouldDebounce: false)
+          Current.soundPlayer.play(.pop, shouldDebounce: false)
           haptic(.medium)
           ball.velocityY = -ball.velocityY
           if Double.random(in: 0...1) < Self.powerUpDropChance {
@@ -1299,15 +1347,13 @@ class GameState {
     // 18. Fussball vs pretzel obstacles
     if var ball = fussball {
       for i in pretzelObstacles.indices.reversed() {
+        guard pretzelObstacles[i].hitsRemaining > 0 else { continue }
         if rectsIntersect(
           ax: ball.x, ay: ball.y, aSize: Self.fussballSize,
           bx: pretzelObstacles[i].x, by: pretzelObstacles[i].y, bSize: Self.pretzelObstacleSize
         ) {
           ball.velocityY = -ball.velocityY
           pretzelObstacles[i].hitsRemaining -= 1
-          if pretzelObstacles[i].hitsRemaining <= 0 {
-            pretzelObstacles.remove(at: i)
-          }
           Current.soundPlayer.play(.soccerKick, shouldDebounce: false)
         }
       }

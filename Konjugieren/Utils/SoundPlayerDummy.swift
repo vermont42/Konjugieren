@@ -2,7 +2,7 @@
 
 class SoundPlayerDummy: SoundPlayer {
   func setup() {}
-  func play(_ sound: Sound, shouldDebounce: Bool) {}
+  func play(_ sound: Sound, shouldDebounce: Bool, volume: Float) {}
   func startMusic() {}
   func stopMusic() {}
 }

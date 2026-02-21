@@ -3,20 +3,20 @@
 import SwiftUI
 
 enum RichTextBlock: Hashable {
-  case subheading(String)
   case body([TextSegment])
+  case subheading(String)
 }
 
 enum ConjugationPart: Hashable {
-  case regular(String)
   case irregular(String)
+  case regular(String)
 }
 
 enum TextSegment: Hashable {
-  case plain(String)
   case bold(String)
-  case link(text: String, url: URL)
   case conjugation([ConjugationPart])
+  case link(text: String, url: URL)
+  case plain(String)
 }
 
 extension String {

@@ -1,8 +1,8 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
 enum SearchScope: String, CaseIterable {
-  case infinitiveOnly
   case infinitiveAndTranslation
+  case infinitiveOnly
 
   var localizedSearchScope: String {
     switch self {

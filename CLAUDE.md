@@ -213,6 +213,29 @@ case .optionB: return L.Setting.optionB
 }
 ```
 
+### One Enum Case Per Line
+
+Declare each enum case on its own line. Do not combine multiple cases with commas.
+
+```swift
+// Prefer this
+enum Foo {
+  case qux
+  case baz
+}
+
+// Avoid this
+enum Foo {
+  case qux, baz
+}
+```
+
+### Alphabetize Enum Cases
+
+Declare enum cases in alphabetical order. This makes it easy to find cases in large enums and ensures a consistent ordering convention.
+
+Exceptions: Enums whose case order carries semantic meaning (lifecycle states, linguistic conventions, UI display order) may retain their natural ordering. Add a comment like `// Semantic ordering: <reason>` above such enums.
+
 ## Terminology
 
 See [`docs/terminology.md`](docs/terminology.md) for conjugationgroup definitions, tense/mood/voice distinctions, and the full conjugationgroup table. Key rule: avoid using "tense" to describe conjugationgroups.

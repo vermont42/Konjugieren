@@ -3,13 +3,17 @@
 @MainActor
 protocol SoundPlayer {
   func setup()
-  func play(_ sound: Sound, shouldDebounce: Bool)
+  func play(_ sound: Sound, shouldDebounce: Bool, volume: Float)
   func startMusic()
   func stopMusic()
 }
 
 extension SoundPlayer {
   func play(_ sound: Sound) {
-    play(sound, shouldDebounce: true)
+    play(sound, shouldDebounce: true, volume: 1.0)
+  }
+
+  func play(_ sound: Sound, shouldDebounce: Bool) {
+    play(sound, shouldDebounce: shouldDebounce, volume: 1.0)
   }
 }

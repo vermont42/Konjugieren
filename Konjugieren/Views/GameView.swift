@@ -33,6 +33,32 @@ struct GameView: View {
                 )
             }
 
+            ForEach(gameState.deathEffects) { effect in
+              let scale = 1.0 - effect.progress
+              let opacity = Double(scale)
+
+              Image(effect.imageName)
+                .resizable()
+                .scaledToFit()
+                .frame(width: 30, height: 30)
+                .scaleEffect(scale)
+                .opacity(opacity)
+                .position(x: effect.x, y: effect.y)
+
+              ForEach(0..<DeathEffect.particleCount, id: \.self) { i in
+                let angle = Double(i) * (.pi * 2.0 / Double(DeathEffect.particleCount))
+                let radius = CGFloat(effect.progress) * 25
+                Circle()
+                  .fill(effect.useRed ? Color.customRed : Color.customYellow)
+                  .frame(width: 6 * scale, height: 6 * scale)
+                  .opacity(opacity)
+                  .position(
+                    x: effect.x + CGFloat(cos(angle)) * radius,
+                    y: effect.y + CGFloat(sin(angle)) * radius
+                  )
+              }
+            }
+
             if let bullet = gameState.playerBullet {
               Text("🇩🇪")
                 .font(.system(size: 20))
@@ -59,9 +85,18 @@ struct GameView: View {
             }
 
             ForEach(gameState.powerUps) { powerUp in
-              Text(powerUp.kind.emoji)
-                .font(.system(size: 30))
-                .position(x: powerUp.x, y: powerUp.y)
+              Group {
+                if powerUp.kind == .bratwurst {
+                  Image("BratwurstPowerUp")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(width: 30, height: 30)
+                } else {
+                  Text(powerUp.kind.emoji)
+                    .font(.system(size: 30))
+                }
+              }
+              .position(x: powerUp.x, y: powerUp.y)
             }
 
             ForEach(gameState.eggs) { egg in
@@ -84,8 +119,10 @@ struct GameView: View {
 
             ForEach(gameState.wurstChains) { chain in
               ForEach(chain.segments) { seg in
-                Text("🌭")
-                  .font(.system(size: 30))
+                Image("BratwurstChain")
+                  .resizable()
+                  .scaledToFit()
+                  .frame(width: 30, height: 30)
                   .position(x: seg.x, y: seg.y)
               }
             }
@@ -93,7 +130,7 @@ struct GameView: View {
             ForEach(gameState.pretzelObstacles) { pretzel in
               Text("🥨")
                 .font(.system(size: 30))
-                .opacity(pretzel.hitsRemaining == 1 ? 0.5 : 1.0)
+                .opacity(pretzel.opacity)
                 .position(x: pretzel.x, y: pretzel.y)
             }
 

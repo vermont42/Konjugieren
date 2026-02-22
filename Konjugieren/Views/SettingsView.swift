@@ -6,6 +6,13 @@ struct SettingsView: View {
   @State private var showingOnboarding = false
   @State private var showingGame = false
 
+  private var playGameDescription: String {
+    if Current.settings.gameHighScore > 0 {
+      return L.Game.playGameDescription + " " + L.Game.highScoreChallenge(score: Current.settings.gameHighScore)
+    }
+    return L.Game.playGameDescription
+  }
+
   var body: some View {
     @Bindable var settings = Current.settings
 
@@ -160,7 +167,7 @@ struct SettingsView: View {
             .funButton()
             .frame(maxWidth: .infinity)
 
-            Text(L.Game.playGameDescription)
+            Text(playGameDescription)
               .settingsLabel()
               .padding(.bottom, Layout.doubleDefaultSpacing)
           }

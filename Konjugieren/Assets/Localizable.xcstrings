@@ -2044,6 +2044,22 @@
         }
       }
     },
+    "Game.highScoreChallenge %lld": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Versuche, deinen Highscore von %lld zu schlagen."
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Try to beat your high score of %lld."
+          }
+        }
+      }
+    },
     "Game.newHighScore": {
       "localizations": {
         "de": {

@@ -994,6 +994,10 @@ enum L {
       String(localized: "Game.playGameDescription")
     }
 
+    static func highScoreChallenge(score: Int) -> String {
+      String(localized: "Game.highScoreChallenge \(score)")
+    }
+
     static var score: String {
       String(localized: "Game.score")
     }

@@ -106,6 +106,25 @@ struct SettingsView: View {
 
             Spacer(minLength: Layout.tripleDefaultSpacing)
 
+            GeometryReader { geometry in
+              let dotDiameter: CGFloat = 6
+              let dotSpacing: CGFloat = 4
+              let availableWidth = geometry.size.width - 2 * Layout.doubleDefaultSpacing
+              let dotCount = Int(availableWidth / (dotDiameter + dotSpacing))
+              HStack(spacing: dotSpacing) {
+                ForEach(0..<dotCount, id: \.self) { index in
+                  Circle()
+                    .fill(index.isMultiple(of: 2) ? Color.customRed : Color.customYellow)
+                    .frame(width: dotDiameter, height: dotDiameter)
+                }
+              }
+              .frame(maxWidth: .infinity)
+              .padding(.horizontal, Layout.doubleDefaultSpacing)
+            }
+            .frame(height: 6)
+
+            Spacer(minLength: Layout.tripleDefaultSpacing)
+
             if Current.gameCenter.isAuthenticated {
               Button(L.GameCenter.viewLeaderboard) {
                 Current.gameCenter.showLeaderboard()
@@ -113,8 +132,12 @@ struct SettingsView: View {
               }
               .funButton()
               .frame(maxWidth: .infinity)
-              .padding(.top, Layout.defaultSpacing)
               .accessibilityHint(L.Accessibility.leaderboardHint)
+
+              Text(L.GameCenter.viewLeaderboardDescription)
+                .settingsLabel()
+
+              Spacer(minLength: Layout.tripleDefaultSpacing)
             }
 
             Button(L.Onboarding.showOnboarding) {
@@ -123,8 +146,12 @@ struct SettingsView: View {
             }
             .funButton()
             .frame(maxWidth: .infinity)
-            .padding(.top, Layout.defaultSpacing)
             .accessibilityHint(L.Accessibility.showOnboardingHint)
+
+            Text(L.Onboarding.showOnboardingDescription)
+              .settingsLabel()
+
+            Spacer(minLength: Layout.tripleDefaultSpacing)
 
             Button(L.Game.playGame) {
               showingGame = true
@@ -132,8 +159,10 @@ struct SettingsView: View {
             }
             .funButton()
             .frame(maxWidth: .infinity)
-            .padding(.top, Layout.defaultSpacing)
-            .padding(.bottom, Layout.doubleDefaultSpacing)
+
+            Text(L.Game.playGameDescription)
+              .settingsLabel()
+              .padding(.bottom, Layout.doubleDefaultSpacing)
           }
         }
         .onAppear {

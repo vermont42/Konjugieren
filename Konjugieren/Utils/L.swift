@@ -990,6 +990,10 @@ enum L {
       String(localized: "Game.playGame")
     }
 
+    static var playGameDescription: String {
+      String(localized: "Game.playGameDescription")
+    }
+
     static var score: String {
       String(localized: "Game.score")
     }
@@ -1035,6 +1039,10 @@ enum L {
     static var viewLeaderboard: String {
       String(localized: "GameCenter.viewLeaderboard")
     }
+
+    static var viewLeaderboardDescription: String {
+      String(localized: "GameCenter.viewLeaderboardDescription")
+    }
   }
 
   enum Onboarding {
@@ -1064,6 +1072,10 @@ enum L {
 
     static var showOnboarding: String {
       String(localized: "Onboarding.showOnboarding")
+    }
+
+    static var showOnboardingDescription: String {
+      String(localized: "Onboarding.showOnboardingDescription")
     }
 
     static var welcomeTitle: String {

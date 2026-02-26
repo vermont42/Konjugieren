@@ -531,6 +531,7 @@ class GameState {
   }
 
   private func haptic(_ style: UIImpactFeedbackGenerator.FeedbackStyle) {
+    guard Current.settings.audioFeedback == .enable else { return }
     UIImpactFeedbackGenerator(style: style).impactOccurred()
   }
 

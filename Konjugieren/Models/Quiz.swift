@@ -63,6 +63,7 @@ class Quiz {
     shouldShowResults = false
     startTimer()
     Current.soundPlayer.play(Sound.randomGun)
+    HapticPlayer.playMediumImpact()
     Current.analytics.signal(name: .startQuiz)
     announceQuestion()
   }
@@ -83,11 +84,13 @@ class Quiz {
       lastIncorrectAnswer = nil
       lastCorrectAnswer = nil
       Current.soundPlayer.play(.chime)
+      HapticPlayer.playSuccess()
       announceAnswerResult(correct: true)
     } else {
       lastIncorrectAnswer = answer
       lastCorrectAnswer = questions[currentIndex].correctAnswer
       Current.soundPlayer.play(.buzz)
+      HapticPlayer.playError()
       announceAnswerResult(correct: false, correctAnswer: questions[currentIndex].correctAnswer)
     }
 
@@ -202,6 +205,7 @@ class Quiz {
     isInProgress = false
     shouldShowResults = true
     Current.soundPlayer.play(Sound.randomApplause, shouldDebounce: false)
+    HapticPlayer.playSuccess()
     Current.analytics.signal(name: .completeQuiz, parameters: [
       ParameterKey.difficulty.rawValue: "\(difficultyUsed)"
     ])

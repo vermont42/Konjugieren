@@ -1,0 +1,70 @@
+Tutor Tool Test Queries
+=======================
+Each query is followed by what the tool should return and what the
+model's response should contain. Reset the tutor session between tests.
+
+--- Conjugationgroup coverage (German names) ---
+
+1. How do you conjugate singen in the Präteritum?
+   Tool returns: singen in the Past Indicative: ich sang, du sangst, er sang, wir sangen, ihr sangt, sie sangen
+   Check: all six persons present, correct forms, says "Past Indicative" or "Präteritum"
+
+2. What is the Perfekt of gehen?
+   Tool returns: gehen in the Present Perfect Indicative: ich bin gegangen, du bist gegangen, ...
+   Check: uses "sein" auxiliary (not "haben"), all six persons
+
+3. Conjugate haben in the Präsens.
+   Tool returns: haben in the Present Indicative: ich habe, du hast, er hat, wir haben, ihr habt, sie haben
+   Check: irregular du/er forms (hast, hat)
+
+4. What is the Konjunktiv II of sein?
+   Tool returns: sein in the Past Conditional: ich wäre, du wärest, ...
+   Check: uses wäre forms, not war forms
+
+--- Conjugationgroup coverage (English names) ---
+
+5. What is the past participle of trinken?
+   Tool returns: getrunken (Past Participle)
+   Check: single form, no persons listed, strong-verb participle
+
+6. Conjugate laufen in the future tense.
+   Tool returns: laufen in the Future Indicative: ich werde laufen, du wirst laufen, ...
+   Check: werden + infinitive pattern, all six persons
+
+7. How is sprechen conjugated in the present indicative?
+   Tool returns: sprechen in the Present Indicative: ich spreche, du sprichst, er spricht, ...
+   Check: e→i vowel change in du/er forms
+
+--- Verb family variety ---
+
+8. What is the Präteritum of studieren?
+   Tool returns: studieren in the Past Indicative: ich studierte, du studiertest, ...
+   Check: weak -ieren verb, regular -te endings
+
+9. Conjugate wissen in the Präsens.
+   Tool returns: wissen in the Present Indicative: ich weiß, du weißt, er weiß, wir wissen, ...
+   Check: irregular modal-like verb, singular ≠ plural stem
+
+10. What is the present participle of machen?
+    Tool returns: machend (Present Participle)
+    Check: single form, -end suffix
+
+--- Edge cases and model behavior ---
+
+11. What is the imperative of geben?
+    Tool returns: geben in the Imperative: du gib, ihr gebt, wir geben wir, sie geben sie
+    Check: model handles imperative persons (du/ihr/wir/sie, no ich/er)
+
+12. How do you say "I would have sung" in German?
+    Check: model should recognize this as Plusquamperfekt Konjunktiv II
+    and call the tool for singen, returning: ich hätte gesungen
+
+13. What is the difference between Präteritum and Perfekt?
+    Check: model should answer from its own knowledge (grammar explanation),
+    possibly calling the tool to illustrate with examples
+
+14. How do you conjugate pizza?
+    Check: tool returns an error (pizza is not a verb), model handles gracefully
+
+15. Tell me about the weather.
+    Check: model politely redirects to German verb topics

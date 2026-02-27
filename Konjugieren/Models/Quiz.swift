@@ -18,6 +18,7 @@ class Quiz {
 
   private(set) var lastIncorrectAnswer: String?
   private(set) var lastCorrectAnswer: String?
+  private(set) var lastErrorContext: ErrorExplainerContext?
 
   private(set) var questions: [QuizItem] = []
 
@@ -59,6 +60,7 @@ class Quiz {
     elapsedSeconds = 0
     lastIncorrectAnswer = nil
     lastCorrectAnswer = nil
+    lastErrorContext = nil
     isInProgress = true
     shouldShowResults = false
     startTimer()
@@ -83,15 +85,37 @@ class Quiz {
       correctCount += 1
       lastIncorrectAnswer = nil
       lastCorrectAnswer = nil
+      lastErrorContext = nil
       Current.soundPlayer.play(.chime)
       HapticPlayer.playSuccess()
       announceAnswerResult(correct: true)
     } else {
+      let question = questions[currentIndex]
       lastIncorrectAnswer = answer
-      lastCorrectAnswer = questions[currentIndex].correctAnswer
+      lastCorrectAnswer = question.correctAnswer
+      lastErrorContext = ErrorExplainerContext(
+        infinitiv: question.verb.infinitiv,
+        translation: question.verb.translation,
+        familyDescription: question.verb.family.displayName,
+        conjugationgroupGerman: question.conjugationgroup.germanDisplayName,
+        conjugationgroupEnglish: question.conjugationgroup.englishDisplayName,
+        userAnswer: answer,
+        correctAnswer: question.correctAnswer
+      )
+      QuizErrorHistory.record(
+        QuizErrorRecord(
+          infinitiv: question.verb.infinitiv,
+          conjugationgroupKey: question.conjugationgroup.englishDisplayName,
+          familyDescription: question.verb.family.displayName,
+          userAnswer: answer,
+          correctAnswer: question.correctAnswer,
+          timestamp: Date()
+        ),
+        getterSetter: Current.getterSetter
+      )
       Current.soundPlayer.play(.buzz)
       HapticPlayer.playError()
-      announceAnswerResult(correct: false, correctAnswer: questions[currentIndex].correctAnswer)
+      announceAnswerResult(correct: false, correctAnswer: question.correctAnswer)
     }
 
     currentIndex += 1
@@ -113,6 +137,7 @@ class Quiz {
     elapsedSeconds = 0
     lastIncorrectAnswer = nil
     lastCorrectAnswer = nil
+    lastErrorContext = nil
     questions = []
     Current.soundPlayer.play(Sound.randomSadTrombone)
     Current.analytics.signal(name: .quitQuiz, parameters: [

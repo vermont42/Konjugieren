@@ -121,8 +121,8 @@ The Info system provides educational content about German verb conjugation, the 
 
 | File | Purpose |
 |------|---------|
-| `Info.swift` | Model defining articles with heading, rich text, and optional image |
-| `ImageInfo.swift` | Pairs image filename with accessibility label |
+| `Info.swift` | Model defining articles with heading, rich text, and required media |
+| `InfoMedia.swift` | Enum: `.photo` (filename + accessibility label) or `.sfSymbol` (system name) |
 | `InfoBrowseView.swift` | List of all Info articles with previews |
 | `InfoView.swift` | Detail view rendering a single article |
 | `RichTextView.swift` | Renders `RichTextBlock` content with styling |

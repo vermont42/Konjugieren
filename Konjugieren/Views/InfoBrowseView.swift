@@ -10,16 +10,28 @@ struct InfoBrowseView: View {
     NavigationStack(path: $navigationPath) {
       ScrollView {
         LazyVStack(spacing: 0) {
-          ForEach(Info.infos, id: \.heading) { info in
+          ForEach(Array(Info.infos.enumerated()), id: \.element.heading) { index, info in
             InfoRowView(info: info) { navigationPath.append(info) }
 
             Divider()
               .padding(.leading)
+
+            if index == 0, Current.languageModelService.isAvailable {
+              TutorRowView { navigationPath.append("tutor") }
+
+              Divider()
+                .padding(.leading)
+            }
           }
         }
       }
       .onAppear { Current.analytics.signal(name: .viewInfoBrowseView) }
       .navigationTitle(L.Navigation.info)
+      .navigationDestination(for: String.self) { destination in
+        if destination == "tutor" {
+          TutorView()
+        }
+      }
       .navigationDestination(for: Info.self) { info in
         InfoView(info: info)
       }
@@ -78,15 +90,21 @@ struct InfoRowView: View {
 
       Spacer()
 
-      if let imageInfo = info.imageInfo {
-        Image(imageInfo.filename)
+      switch info.media {
+      case .photo(let filename, let accessibilityLabel):
+        Image(filename)
           .resizable()
           .aspectRatio(contentMode: .fit)
           .frame(width: 60, height: 60)
           .clipShape(RoundedRectangle(cornerRadius: 8))
-          .accessibilityLabel(imageInfo.accessibilityLabel)
+          .accessibilityLabel(accessibilityLabel)
           .accessibilityAddTraits(.isButton)
           .accessibilityAction { navigate() }
+      case .sfSymbol(let name):
+        Image(systemName: name)
+          .font(.title)
+          .foregroundStyle(.customYellow)
+          .accessibilityHidden(true)
       }
     }
     .padding(.horizontal)
@@ -128,6 +146,39 @@ struct InfoRowView: View {
     return Text(result)
       .font(.subheadline)
       .foregroundStyle(.customForeground)
+  }
+}
+
+struct TutorRowView: View {
+  let navigate: () -> Void
+
+  var body: some View {
+    HStack(alignment: .top) {
+      VStack(alignment: .leading, spacing: 4) {
+        Text(L.Tutor.heading)
+          .tableText()
+          .accessibilityAddTraits(.isButton)
+          .accessibilityAction { navigate() }
+
+        Text(L.Tutor.description)
+          .font(.subheadline)
+          .foregroundStyle(.customForeground)
+          .lineLimit(2)
+          .accessibilityAddTraits(.isButton)
+          .accessibilityAction { navigate() }
+      }
+
+      Spacer()
+
+      Image(systemName: "brain.head.profile.fill")
+        .font(.title)
+        .foregroundStyle(.customYellow)
+        .accessibilityHidden(true)
+    }
+    .padding(.horizontal)
+    .padding(.vertical, 12)
+    .contentShape(Rectangle())
+    .onTapGesture { navigate() }
   }
 }
 

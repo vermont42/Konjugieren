@@ -3,6 +3,7 @@
 import SwiftUI
 
 struct SettingsView: View {
+  @State private var hasChatHistory = false
   @State private var showingOnboarding = false
   @State private var showingGame = false
 
@@ -169,11 +170,28 @@ struct SettingsView: View {
 
             Text(playGameDescription)
               .settingsLabel()
-              .padding(.bottom, Layout.doubleDefaultSpacing)
+
+            if Current.languageModelService.isAvailable, hasChatHistory {
+              Spacer(minLength: Layout.tripleDefaultSpacing)
+
+              Button(L.Tutor.deleteChatHistory) {
+                TutorChatHistory.clear(getterSetter: Current.getterSetter)
+                hasChatHistory = false
+                Current.analytics.signal(name: .tapDeleteChatHistory)
+              }
+              .funButton()
+              .frame(maxWidth: .infinity)
+
+              Text(L.Tutor.deleteChatHistoryDescription)
+                .settingsLabel()
+            }
+
+            Spacer(minLength: Layout.doubleDefaultSpacing)
           }
         }
         .onAppear {
           Current.analytics.signal(name: .viewSettingsView)
+          hasChatHistory = !TutorChatHistory.isEmpty(getterSetter: Current.getterSetter)
         }
       }
       .navigationTitle(L.Navigation.settings)

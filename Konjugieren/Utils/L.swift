@@ -909,6 +909,64 @@ enum L {
     }
   }
 
+  enum Tutor {
+    static var deleteChatHistory: String {
+      String(localized: "Tutor.deleteChatHistory")
+    }
+
+    static var deleteChatHistoryDescription: String {
+      String(localized: "Tutor.deleteChatHistoryDescription")
+    }
+
+    static var description: String {
+      String(localized: "Tutor.description")
+    }
+
+    static var getSampleQuery: String {
+      String(localized: "Tutor.getSampleQuery")
+    }
+
+    static var getSampleQueryDescription: String {
+      String(localized: "Tutor.getSampleQueryDescription")
+    }
+
+    static var getSuggestions: String {
+      String(localized: "Tutor.getSuggestions")
+    }
+
+    static var heading: String {
+      String(localized: "Tutor.heading")
+    }
+
+    static var inputPlaceholder: String {
+      String(localized: "Tutor.inputPlaceholder")
+    }
+
+    static var loading: String {
+      String(localized: "Tutor.loading")
+    }
+
+    static var poweredBy: String {
+      String(localized: "Tutor.poweredBy")
+    }
+
+    static var practiceRecommendations: String {
+      String(localized: "Tutor.practiceRecommendations")
+    }
+
+    static var practiceRecommendationsDescription: String {
+      String(localized: "Tutor.practiceRecommendationsDescription")
+    }
+
+    static var send: String {
+      String(localized: "Tutor.send")
+    }
+
+    static var unavailable: String {
+      String(localized: "Tutor.unavailable")
+    }
+  }
+
   enum Quiz {
     static var start: String {
       String(localized: "Quiz.start")
@@ -1046,6 +1104,32 @@ enum L {
 
     static var viewLeaderboardDescription: String {
       String(localized: "GameCenter.viewLeaderboardDescription")
+    }
+  }
+
+  enum ErrorExplainer {
+    static var explanation: String {
+      String(localized: "ErrorExplainer.explanation")
+    }
+
+    static var loading: String {
+      String(localized: "ErrorExplainer.loading")
+    }
+
+    static var mnemonic: String {
+      String(localized: "ErrorExplainer.mnemonic")
+    }
+
+    static var retry: String {
+      String(localized: "ErrorExplainer.retry")
+    }
+
+    static var rule: String {
+      String(localized: "ErrorExplainer.rule")
+    }
+
+    static var whyWrong: String {
+      String(localized: "ErrorExplainer.whyWrong")
     }
   }
 

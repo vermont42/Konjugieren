@@ -144,6 +144,11 @@ struct QuizView: View {
             .germanPronunciation()
             .accessibilityLabel(Text(verbatim: MixedCaseAccessibility.accessibilityLabel(for: lastCorrect)))
         }
+
+        if let errorContext = quiz.lastErrorContext,
+           Current.languageModelService.isAvailable {
+          ErrorExplainerView(context: errorContext)
+        }
       }
 
       TextField(L.Quiz.conjugation, text: $userInput)

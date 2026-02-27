@@ -29,7 +29,7 @@ Konjugieren/
 │   ├── Conjugator.swift        # Core conjugation logic for all conjugationgroups
 │   ├── ConjugatorError.swift   # Error enum for conjugation failures
 │   ├── Family.swift            # Verb families (strong/weak/mixed/ieren)
-│   ├── ImageInfo.swift         # Struct pairing image filename with accessibility label
+│   ├── InfoMedia.swift         # Enum: .photo or .sfSymbol media for Info rows
 │   ├── Info.swift              # Info article model with rich text and images
 │   ├── PersonNumber.swift      # 1s, 2s, 3s, 1p, 2p, 3p with localized pronouns
 │   ├── Prefix.swift            # Separable/inseparable prefix enum

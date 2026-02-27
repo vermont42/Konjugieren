@@ -46,6 +46,18 @@ The collaboration goes beyond speed. Claude Code added TelemetryDeck analytics i
 
 **@Observable reactive state** — The app uses Swift's modern [Observation](https://developer.apple.com/documentation/observation) framework throughout (`@Observable` on `World`, `Quiz`, `Settings`), with no Combine or third-party reactive dependencies.
 
+**Conjugation Tutor (Apple Intelligence)** — An on-device conversational tutor powered by Apple's [Foundation Models](https://developer.apple.com/documentation/foundationmodels) framework. The [`LanguageModelService`](Konjugieren/Models/LanguageModelService.swift) protocol abstracts the AI layer behind the same DI pattern as the rest of the app, with [`LanguageModelServiceReal`](Konjugieren/Models/LanguageModelServiceReal.swift) running on iOS 26+ and a [`LanguageModelServiceDummy`](Konjugieren/Models/LanguageModelServiceDummy.swift) keeping the app functional on older devices. The real implementation manages a stateful `LanguageModelSession` and exposes three capabilities: interactive chat, quiz-error explanation, and personalized practice recommendations.
+
+The centerpiece is [`ConjugationTool`](Konjugieren/Models/LanguageModelServiceReal.swift), a Foundation Models `Tool` conformance that lets the on-device model look up real conjugations from the app's 988-verb engine instead of hallucinating them. The tool's `@Generable` schema was iteratively refined across 10+ rounds (documented in [`on-device-tool-design.md`](docs/on-device-tool-design.md)) to minimize what the model must decide: the model specifies only a verb and conjugationgroup; the tool handles all six grammatical persons in a single call, parses both German and English conjugationgroup names with ordered-specificity fuzzy matching, and strips ablaut markup from the output. A call-count circuit breaker (max 3 retries per message, 15 per session) prevents infinite tool-call loops. The retry system detects 15+ refusal patterns and recreates the session on failure.
+
+[`QuizErrorHistory`](Konjugieren/Models/QuizErrorHistory.swift) aggregates the user's quiz mistakes by conjugationgroup, and the tutor's practice-recommendation engine feeds this data to the model to surface the user's weakest areas. [`TutorChatHistory`](Konjugieren/Models/TutorChatHistory.swift) persists conversations to UserDefaults with a 200-message ring buffer, so context survives app restarts.
+
+**Retro arcade game (pure SwiftUI)** — A German-themed arcade shooter built entirely with SwiftUI and Core Motion—no SpriteKit, no UIKit, no game engine. [`GameState.swift`](Konjugieren/Models/GameState.swift) (1,500 lines) drives a `TimelineView(.animation)` game loop with frame-rate-independent delta-time physics, while `CMMotionManager` at 60 Hz translates device tilt into player movement.
+
+The game manages 11 entity types as value-semantic structs: enemies in a 6×6 grid with parabolic dive-bombing paths, zigzagging animal emoji that drop coins, gravity-affected eggs that hatch into player-seeking hatchlings, bouncing soccer balls with momentum transfer, five-segment bratwurst chains that split when hit and spawn destructible pretzel obstacles, and multi-phase ghosts with a five-state AI (descending → pursuing → fleeing → devoured → exiting). Three special mechanics rotate on a randomized 27-second interval: Fussball, Bratwurstkette, and Geisterstunde (ghost hunt, triggered by shooting a crystal ball).
+
+The collision system handles 21 distinct interaction types with asymmetric behaviors—a soccer ball bounces off enemies but kills them, shields absorb hits but expire, and a portal mechanic teleports the player across the screen to escape hatchling swarms. Infinite waves scale difficulty exponentially (`enemySpeed = 21 × pow(1.02, wave − 1)`), and the final-score formula (`score × (health + 1) − elapsed seconds`) rewards aggressive, high-health play. Three power-up types (health, shield, rapid-fire) drop from defeated enemies at a 15% rate. The game includes 34 sound effects, context-sensitive haptic feedback, and particle-burst death animations—all rendered in SwiftUI with `Canvas` and standard views.
+
 ### Accessibility
 
 Konjugieren is fully accessible to VoiceOver users. The implementation spans five new files and modifications to fourteen existing views, using four distinct accessibility strategies:
@@ -62,7 +74,9 @@ Konjugieren is fully accessible to VoiceOver users. The implementation spans fiv
 
 ### Technology Stack
 
-- **SwiftUI** — Declarative UI with custom `ViewModifier`s and `TabView` navigation
+- **SwiftUI** — Declarative UI with custom `ViewModifier`s, `TabView` navigation, `TimelineView` game loop, and `Canvas` particle effects
+- **Foundation Models** — On-device Apple Intelligence integration with `SystemLanguageModel`, `LanguageModelSession`, `Tool` protocol, and `@Generable` schemas
+- **Core Motion** — 60 Hz gyroscope input for arcade-game tilt controls via `CMMotionManager`
 - **Swift Testing** — Modern test framework (`@Test`, `#expect`) with 95 test functions
 - **Game Center** — Global leaderboard for quiz scores via `GKAccessPoint`
 - **XMLParser** — Streaming parser for verb and ablaut-group data (988 verbs, 66 patterns)

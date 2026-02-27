@@ -28,13 +28,21 @@ struct InfoView: View {
             .accessibilityAddTraits(.isHeader)
             .germanPronunciation(forReal: info.alwaysUsesGermanPronunciation)
 
-          if let imageInfo = info.imageInfo {
-            Image(imageInfo.filename)
+          switch info.media {
+          case .photo(let filename, let accessibilityLabel):
+            Image(filename)
               .resizable()
               .aspectRatio(contentMode: .fit)
               .frame(width: 270)
               .frame(maxWidth: .infinity)
-              .accessibilityLabel(imageInfo.accessibilityLabel)
+              .accessibilityLabel(accessibilityLabel)
+              .padding(.bottom, 16)
+          case .sfSymbol(let name):
+            Image(systemName: name)
+              .font(.system(size: 60))
+              .foregroundStyle(.customYellow)
+              .frame(maxWidth: .infinity)
+              .accessibilityHidden(true)
               .padding(.bottom, 16)
           }
 

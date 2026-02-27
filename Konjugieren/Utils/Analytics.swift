@@ -12,7 +12,10 @@ enum AnalyticsName: String {
   case quitQuiz = "quit.quiz"
   case startGame = "start.game"
   case startQuiz = "start.quiz"
+  case tapDeleteChatHistory = "tap.deleteChatHistory"
+  case tapExplainError = "tap.explainError"
   case tapPlayGame = "tap.playGame"
+  case tapSendTutorMessage = "tap.sendTutorMessage"
   case tapShowOnboarding = "tap.showOnboarding"
   case tapViewLeaderboard = "tap.viewLeaderboard"
   case viewFamilyBrowseView = "view.FamilyBrowseView"
@@ -21,6 +24,7 @@ enum AnalyticsName: String {
   case viewInfoView = "view.InfoView"
   case viewQuizView = "view.QuizView"
   case viewSettingsView = "view.SettingsView"
+  case viewTutorView = "view.TutorView"
   case viewVerbBrowseView = "view.VerbBrowseView"
   case viewVerbView = "view.VerbView"
 }

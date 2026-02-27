@@ -349,6 +349,10 @@ Setting descriptions in `Localizable.xcstrings` should begin with "This setting 
 
 See [`docs/feature-architecture.md`](docs/feature-architecture.md) for architecture details on the Quiz, Game Center, Info, and Deeplink systems.
 
+## On-Device Tool Design
+
+See [`docs/on-device-tool-design.md`](docs/on-device-tool-design.md) for lessons learned from implementing Foundation Models `Tool` conformances. Key rule: minimize what the model must decide — push complexity into tool code, not the tool schema.
+
 ## Localization System
 
 The app uses a two-part localization system:

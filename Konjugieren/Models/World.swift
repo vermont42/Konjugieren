@@ -10,6 +10,8 @@ import SwiftUI
 class World {
   var settings: Settings
   var gameCenter: GameCenter
+  let getterSetter: GetterSetter
+  var languageModelService: LanguageModelService
   var soundPlayer: SoundPlayer
   var utterer: Utterer
   var fatalError: FatalError
@@ -19,9 +21,11 @@ class World {
   var info: Info?
   var selectedTab: TabSelection = .verbs
 
-  init(settings: Settings, gameCenter: GameCenter, soundPlayer: SoundPlayer, utterer: Utterer, fatalError: FatalError, analytics: Analytics) {
+  init(settings: Settings, gameCenter: GameCenter, getterSetter: GetterSetter, languageModelService: LanguageModelService, soundPlayer: SoundPlayer, utterer: Utterer, fatalError: FatalError, analytics: Analytics) {
     self.settings = settings
     self.gameCenter = gameCenter
+    self.getterSetter = getterSetter
+    self.languageModelService = languageModelService
     self.soundPlayer = soundPlayer
     self.utterer = utterer
     self.fatalError = fatalError
@@ -42,18 +46,35 @@ class World {
   }
 
   static let device: World = {
-    let settings = Settings(getterSetter: GetterSetterReal())
-    return World(settings: settings, gameCenter: GameCenterReal(), soundPlayer: SoundPlayerReal(), utterer: UttererReal(), fatalError: FatalErrorReal(), analytics: AnalyticsReal())
+    let getterSetter = GetterSetterReal()
+    let settings = Settings(getterSetter: getterSetter)
+    let languageModelService: LanguageModelService = {
+      if #available(iOS 26, *) {
+        return LanguageModelServiceReal()
+      } else {
+        return LanguageModelServiceDummy()
+      }
+    }()
+    return World(settings: settings, gameCenter: GameCenterReal(), getterSetter: getterSetter, languageModelService: languageModelService, soundPlayer: SoundPlayerReal(), utterer: UttererReal(), fatalError: FatalErrorReal(), analytics: AnalyticsReal())
   }()
 
   static let simulator: World = {
-    let settings = Settings(getterSetter: GetterSetterReal())
-    return World(settings: settings, gameCenter: GameCenterReal(), soundPlayer: SoundPlayerReal(), utterer: UttererReal(), fatalError: FatalErrorReal(), analytics: AnalyticsReal())
+    let getterSetter = GetterSetterReal()
+    let settings = Settings(getterSetter: getterSetter)
+    let languageModelService: LanguageModelService = {
+      if #available(iOS 26, *) {
+        return LanguageModelServiceReal()
+      } else {
+        return LanguageModelServiceDummy()
+      }
+    }()
+    return World(settings: settings, gameCenter: GameCenterReal(), getterSetter: getterSetter, languageModelService: languageModelService, soundPlayer: SoundPlayerReal(), utterer: UttererReal(), fatalError: FatalErrorReal(), analytics: AnalyticsReal())
   }()
 
   static let unitTest: World = {
-    let settings = Settings(getterSetter: GetterSetterFake())
-    return World(settings: settings, gameCenter: GameCenterDummy(), soundPlayer: SoundPlayerDummy(), utterer: UttererDummy(), fatalError: FatalErrorSpy(), analytics: AnalyticsSpy())
+    let getterSetter = GetterSetterFake()
+    let settings = Settings(getterSetter: getterSetter)
+    return World(settings: settings, gameCenter: GameCenterDummy(), getterSetter: getterSetter, languageModelService: LanguageModelServiceDummy(), soundPlayer: SoundPlayerDummy(), utterer: UttererDummy(), fatalError: FatalErrorSpy(), analytics: AnalyticsSpy())
   }()
 
   func handleURL(_ url: URL) {

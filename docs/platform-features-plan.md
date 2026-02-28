@@ -135,7 +135,7 @@ The recommendations draw from Apple's official featuring criteria, Design Award 
 
 ---
 
-### 10. NSUserActivity / Handoff
+### 10. NSUserActivity / Handoff - DONE
 
 **Why it matters:** Lets users start studying on one device and continue on another. The existing deep-link scheme (`konjugieren://`) provides the foundation; `NSUserActivity` extends it to cross-device continuity.
 

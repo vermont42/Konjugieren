@@ -94,4 +94,50 @@ struct DeeplinkTests {
     #expect(Current.verb == nil)
     #expect(Current.info != nil)
   }
+
+  @Test func handleUserActivityValidVerb() {
+    let activity = NSUserActivity(activityType: World.viewVerbActivityType)
+    activity.userInfo = ["infinitiv": "machen"]
+    Current.handleUserActivity(activity)
+    #expect(Current.verb?.infinitiv == "machen")
+  }
+
+  @Test func handleUserActivityUnknownVerb() {
+    let activity = NSUserActivity(activityType: World.viewVerbActivityType)
+    activity.userInfo = ["infinitiv": "nonexistent"]
+    Current.handleUserActivity(activity)
+    #expect(Current.verb == nil)
+  }
+
+  @Test func handleUserActivityMissingInfinitiv() {
+    let activity = NSUserActivity(activityType: World.viewVerbActivityType)
+    activity.userInfo = [:]
+    Current.handleUserActivity(activity)
+    #expect(Current.verb == nil)
+    #expect(Current.family == nil)
+    #expect(Current.info == nil)
+  }
+
+  @Test func handleUserActivityWrongType() {
+    let activity = NSUserActivity(activityType: "com.example.wrongType")
+    activity.userInfo = ["infinitiv": "machen"]
+    Current.handleUserActivity(activity)
+    #expect(Current.verb == nil)
+  }
+
+  @Test func handleUserActivityClearsPreviousState() {
+    Current.verb = Verb.verbs["machen"]
+    Current.family = "strong"
+    Current.info = Info.infos[0]
+    #expect(Current.verb != nil)
+    #expect(Current.family != nil)
+    #expect(Current.info != nil)
+
+    let activity = NSUserActivity(activityType: World.viewVerbActivityType)
+    activity.userInfo = ["infinitiv": "gehen"]
+    Current.handleUserActivity(activity)
+    #expect(Current.verb?.infinitiv == "gehen")
+    #expect(Current.family == nil)
+    #expect(Current.info == nil)
+  }
 }

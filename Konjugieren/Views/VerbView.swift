@@ -103,6 +103,11 @@ struct VerbView: View {
     .onAppear { Current.analytics.signal(name: .viewVerbView) }
     .navigationTitle(verb.infinitiv)
     .navigationBarTitleDisplayMode(.inline)
+    .userActivity(World.viewVerbActivityType) { activity in
+      activity.title = verb.infinitiv
+      activity.isEligibleForHandoff = true
+      activity.userInfo = ["infinitiv": verb.infinitiv]
+    }
   }
 
   @ViewBuilder

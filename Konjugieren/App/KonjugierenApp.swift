@@ -21,6 +21,9 @@ struct KonjugierenApp: App {
     WindowGroup {
       MainTabView()
         .onOpenURL(perform: Current.handleURL(_:))
+        .onContinueUserActivity(World.viewVerbActivityType) { userActivity in
+          Current.handleUserActivity(userActivity)
+        }
         .fullScreenCover(isPresented: Binding(
           get: { !Current.settings.hasSeenOnboarding },
           set: { newValue in

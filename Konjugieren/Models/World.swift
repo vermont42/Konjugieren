@@ -77,6 +77,21 @@ class World {
     return World(settings: settings, gameCenter: GameCenterDummy(), getterSetter: getterSetter, languageModelService: LanguageModelServiceDummy(), soundPlayer: SoundPlayerDummy(), utterer: UttererDummy(), fatalError: FatalErrorSpy(), analytics: AnalyticsSpy())
   }()
 
+  static let viewVerbActivityType = "biz.joshadams.Konjugieren.viewVerb"
+
+  func handleUserActivity(_ userActivity: NSUserActivity) {
+    guard
+      userActivity.activityType == Self.viewVerbActivityType,
+      let infinitiv = userActivity.userInfo?["infinitiv"] as? String
+    else {
+      return
+    }
+    verb = nil
+    family = nil
+    info = nil
+    verb = Verb.verbs[infinitiv]
+  }
+
   func handleURL(_ url: URL) {
     guard
       url.isDeeplink,

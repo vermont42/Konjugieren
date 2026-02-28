@@ -127,7 +127,7 @@ The recommendations draw from Apple's official featuring criteria, Design Award 
 
 ---
 
-### 9. Liquid Glass (iOS 26)
+### 9. Liquid Glass (iOS 26) - DONE
 
 **Why it matters:** The biggest visual redesign since iOS 7. SwiftUI apps compiled with the iOS 26 SDK get Liquid Glass styling on navigation bars, tab bars, and toolbars largely for free. Actively embracing it (rather than fighting it) signals platform alignment.
 

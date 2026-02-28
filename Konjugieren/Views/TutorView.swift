@@ -77,6 +77,16 @@ struct TutorView: View {
             }
             .padding(Layout.doubleDefaultSpacing)
           }
+          .safeAreaInset(edge: .bottom) {
+            if showingHint {
+              Text(L.Tutor.inputPlaceholder)
+                .font(.footnote)
+                .foregroundStyle(.secondary)
+                .frame(maxWidth: .infinity, alignment: .center)
+                .padding(.vertical, Layout.defaultSpacing)
+                .background(Color.customBackground.opacity(0.8))
+            }
+          }
           .onChange(of: messages.count) {
             if hasLoadedHistory, let lastMessage = messages.last {
               withAnimation {
@@ -84,14 +94,6 @@ struct TutorView: View {
               }
             }
           }
-        }
-
-        if showingHint {
-          Text(L.Tutor.inputPlaceholder)
-            .font(.footnote)
-            .foregroundStyle(.secondary)
-            .frame(maxWidth: .infinity, alignment: .center)
-            .padding(.top, Layout.defaultSpacing)
         }
 
         Rectangle()

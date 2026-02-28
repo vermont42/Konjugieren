@@ -236,6 +236,49 @@ Declare enum cases in alphabetical order. This makes it easy to find cases in la
 
 Exceptions: Enums whose case order carries semantic meaning (lifecycle states, linguistic conventions, UI display order) may retain their natural ordering. Add a comment like `// Semantic ordering: <reason>` above such enums.
 
+## Swift 6 and Default Main-Actor Isolation
+
+The project uses **Swift 6** (`SWIFT_VERSION = 6.0`) with **`SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor`** (an Xcode 26 / Swift 6.2 setting). This means every type in the app module defaults to `@MainActor` unless explicitly opted out. Key consequences:
+
+### Pure Functions Need `nonisolated`
+
+Static or instance methods that perform pure computation (no UI, no `@MainActor`-isolated dependencies) must be marked `nonisolated`. Otherwise, nonisolated callers (including test code) cannot invoke them.
+
+```swift
+enum TimeFormatter {
+  // Pure math — explicitly nonisolated
+  nonisolated static func formatIntTime(_ time: Int) -> String { ... }
+}
+```
+
+### Nonisolated Protocol Conformances
+
+Some protocols (e.g., TipKit's `Tip`) declare their properties as `nonisolated`. Because `L.*` accessors use `String(localized:)` (which is `@MainActor` via `Bundle.main`), you cannot call `L.*` from nonisolated protocol properties. Instead, use `LocalizedStringKey` string literals:
+
+```swift
+// Correct — string literal becomes LocalizedStringKey, resolved at render time
+var title: Text { Text("Tips.tryQuizTitle") }
+
+// Wrong — L.Tips.tryQuizTitle is @MainActor, but Tip.title is nonisolated
+var title: Text { Text(L.Tips.tryQuizTitle) }
+```
+
+### Test Suites Need `@MainActor`
+
+Test suites that call into `@MainActor`-isolated app code must be annotated `@MainActor`. In Swift Testing, **`@MainActor` does not propagate to nested `@Suite` structs** — each nested struct needs its own annotation:
+
+```swift
+@MainActor
+@Suite("Outer")
+struct OuterTests {
+  @MainActor  // Required — not inherited from parent
+  @Suite("Inner")
+  struct InnerTests {
+    @Test func example() { ... }
+  }
+}
+```
+
 ## Terminology
 
 See [`docs/terminology.md`](docs/terminology.md) for conjugationgroup definitions, tense/mood/voice distinctions, and the full conjugationgroup table. Key rule: avoid using "tense" to describe conjugationgroups.

@@ -1,6 +1,7 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
 import Foundation
+import TipKit
 import UIKit
 
 @MainActor
@@ -235,6 +236,7 @@ class Quiz {
       ParameterKey.difficulty.rawValue: "\(difficultyUsed)"
     ])
     announceQuizCompletion()
+    ChangeDifficultyTip.quizCompleted.sendDonation()
 
     Task {
       await Current.gameCenter.submitScore(finalScore)

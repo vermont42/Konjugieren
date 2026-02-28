@@ -3,7 +3,7 @@
 import Foundation
 
 enum TimeFormatter {
-  static func formatIntTime(_ time: Int) -> String {
+  nonisolated static func formatIntTime(_ time: Int) -> String {
     guard time >= 0 else { return "0" }
 
     let hours = time / 3600

@@ -1,6 +1,7 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
 import SwiftUI
+import TipKit
 import UIKit
 
 class AppDelegate: NSObject, UIApplicationDelegate {
@@ -39,5 +40,6 @@ struct KonjugierenApp: App {
     Current.gameCenter.authenticate()
     let appID = Bundle.main.infoDictionary?["TelemetryDeckAppID"] as? String ?? ""
     Current.analytics.initialize(appID: appID)
+    try? Tips.configure()
   }
 }

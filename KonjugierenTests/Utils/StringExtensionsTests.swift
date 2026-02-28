@@ -4,8 +4,10 @@ import Foundation
 @testable import Konjugieren
 import Testing
 
+@MainActor
 @Suite("StringExtensions")
 struct StringExtensionsTests {
+  @MainActor
   @Suite("Subheading Parsing")
   struct SubheadingParsing {
     @Test func subheadingParsing() {
@@ -90,6 +92,7 @@ struct StringExtensionsTests {
     }
   }
 
+  @MainActor
   @Suite("Bold Parsing")
   struct BoldParsing {
     @Test func boldParsing() {
@@ -127,6 +130,7 @@ struct StringExtensionsTests {
     }
   }
 
+  @MainActor
   @Suite("Link Parsing")
   struct LinkParsing {
     @Test func linkParsing() {
@@ -157,6 +161,7 @@ struct StringExtensionsTests {
     }
   }
 
+  @MainActor
   @Suite("Conjugation Parsing")
   struct ConjugationParsing {
     @Test func conjugationParsing() {
@@ -215,6 +220,7 @@ struct StringExtensionsTests {
     }
   }
 
+  @MainActor
   @Suite("Plain Text")
   struct PlainText {
     @Test func plainTextOnly() {
@@ -234,6 +240,7 @@ struct StringExtensionsTests {
     }
   }
 
+  @MainActor
   @Suite("Combined Markup")
   struct CombinedMarkup {
     @Test func combinedMarkup() {

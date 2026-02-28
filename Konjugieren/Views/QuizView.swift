@@ -1,6 +1,7 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
 import SwiftUI
+import TipKit
 
 struct QuizView: View {
   @Environment(Quiz.self) var quiz
@@ -62,7 +63,10 @@ struct QuizView: View {
           .padding(.bottom, Layout.tripleDefaultSpacing)
         }
       }
-      .onAppear { Current.analytics.signal(name: .viewQuizView) }
+      .onAppear {
+        Current.analytics.signal(name: .viewQuizView)
+        TryQuizTip().invalidate(reason: .actionPerformed)
+      }
       .navigationTitle(L.Navigation.quiz)
     }
     .sheet(isPresented: $quiz.shouldShowResults) {

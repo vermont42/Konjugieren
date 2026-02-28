@@ -1,11 +1,14 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
 import SwiftUI
+import TipKit
 
 struct SettingsView: View {
   @State private var hasChatHistory = false
   @State private var showingOnboarding = false
   @State private var showingGame = false
+  private let changeDifficultyTip = ChangeDifficultyTip()
+  private let playGameTip = PlayGameTip()
 
   private var playGameDescription: String {
     if Current.settings.gameHighScore > 0 {
@@ -56,6 +59,7 @@ struct SettingsView: View {
 
             Text(L.Settings.quizDifficultyHeading)
               .subheadingLabel()
+              .popoverTip(changeDifficultyTip)
 
             Picker(L.Settings.quizDifficultyHeading, selection: $settings.quizDifficulty) {
               ForEach(QuizDifficulty.allCases, id: \.self) { quizDifficulty in
@@ -163,10 +167,12 @@ struct SettingsView: View {
 
             Button(L.Game.playGame) {
               showingGame = true
+              playGameTip.invalidate(reason: .actionPerformed)
               Current.analytics.signal(name: .tapPlayGame)
             }
             .funButton()
             .frame(maxWidth: .infinity)
+            .popoverTip(playGameTip)
 
             Text(playGameDescription)
               .settingsLabel()
@@ -192,6 +198,9 @@ struct SettingsView: View {
         .onAppear {
           Current.analytics.signal(name: .viewSettingsView)
           hasChatHistory = !TutorChatHistory.isEmpty(getterSetter: Current.getterSetter)
+        }
+        .onChange(of: settings.quizDifficulty) {
+          changeDifficultyTip.invalidate(reason: .actionPerformed)
         }
       }
       .navigationTitle(L.Navigation.settings)

@@ -1,6 +1,7 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
 import SwiftUI
+import TipKit
 
 struct VerbBrowseView: View {
   @State private var sortOrder: SortOrder = .frequency
@@ -8,6 +9,7 @@ struct VerbBrowseView: View {
   @State private var searchText: String = ""
   @State private var navigationPath = NavigationPath()
   @Environment(\.horizontalSizeClass) private var sizeClass
+  private let tryQuizTip = TryQuizTip()
 
   private var settings: Settings { Current.settings }
 
@@ -29,6 +31,9 @@ struct VerbBrowseView: View {
       VStack(spacing: 0) {
         ScrollViewReader { proxy in
           ScrollView {
+            TipView(tryQuizTip)
+              .padding(.horizontal)
+
             if sizeClass == .regular {
               LazyVGrid(columns: [GridItem(.adaptive(minimum: Layout.verbGridMinimum))], spacing: 0) {
                 ForEach(filteredVerbs) { verb in

@@ -1,9 +1,11 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
 import SwiftUI
+import TipKit
 
 struct FamilyBrowseView: View {
   @Environment(\.horizontalSizeClass) private var sizeClass
+  private let exploreFamiliesTip = ExploreFamiliesTip()
   @State private var decorations = DecorationImage.allCases.shuffled()
   @State private var gridWidth: CGFloat = 0
   @State private var navigationPath = NavigationPath()
@@ -20,6 +22,9 @@ struct FamilyBrowseView: View {
   var body: some View {
     NavigationStack(path: $navigationPath) {
       ScrollView {
+        TipView(exploreFamiliesTip)
+          .padding(.horizontal)
+
         if sizeClass == .regular {
           LazyVGrid(columns: [GridItem(.adaptive(minimum: Layout.showcaseCardGridMinimum))], spacing: Layout.doubleDefaultSpacing) {
             ForEach(BrowseableFamily.allCases) { family in

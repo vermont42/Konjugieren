@@ -4,6 +4,7 @@ import Foundation
 import Testing
 @testable import Konjugieren
 
+@MainActor
 @Suite("MixedCaseAccessibility")
 struct MixedCaseAccessibilityTests {
   @Test("Generates correct accessibility labels", arguments: zip(

@@ -1,6 +1,7 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
 import SwiftUI
+import TipKit
 
 struct FamilyDetailView: View {
   let family: BrowseableFamily
@@ -42,7 +43,10 @@ struct FamilyDetailView: View {
       }
       .navigationBarTitleDisplayMode(.inline)
     }
-    .onAppear { Current.analytics.signal(name: .viewFamilyDetailView) }
+    .onAppear {
+      Current.analytics.signal(name: .viewFamilyDetailView)
+      ExploreFamiliesTip().invalidate(reason: .actionPerformed)
+    }
   }
 }
 

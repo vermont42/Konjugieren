@@ -84,7 +84,7 @@ The recommendations draw from Apple's official featuring criteria, Design Award 
 
 ---
 
-### 6. TipKit (iOS 17+)
+### 6. TipKit (iOS 17+) - DONE
 
 **Why it matters:** Apple's native feature-discovery framework. Low implementation effort, high polish signal. Shows contextual tips that educate users about features they haven't discovered yet.
 

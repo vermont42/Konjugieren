@@ -15,6 +15,7 @@ struct ErrorExplainerView: View {
       Button {
         if !isExpanded {
           isExpanded = true
+          Current.soundPlayer.play(.pop)
           fetchExplanation()
         } else {
           isExpanded = false
@@ -77,6 +78,7 @@ struct ErrorExplainerView: View {
       do {
         let result = try await Current.languageModelService.explainError(context: context)
         explanation = result
+        Current.soundPlayer.play(.pop)
       } catch {
         hasFailed = true
       }

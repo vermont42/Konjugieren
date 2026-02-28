@@ -184,6 +184,7 @@ struct TutorTestView: View {
         isError: true,
         retryCount: 0
       ))
+      Current.soundPlayer.play(.pop)
       return
     }
 
@@ -201,6 +202,7 @@ struct TutorTestView: View {
           isError: false,
           retryCount: retryCount
         ))
+        Current.soundPlayer.play(.pop)
       } catch {
         let retryCount = Current.languageModelService.lastRetryCount
         results.append(TutorTestResult(
@@ -210,6 +212,7 @@ struct TutorTestView: View {
           isError: true,
           retryCount: retryCount
         ))
+        Current.soundPlayer.play(.pop)
       }
     }
 
@@ -227,6 +230,7 @@ struct TutorTestView: View {
           isError: false,
           retryCount: 0
         ))
+        Current.soundPlayer.play(.pop)
       } catch {
         results.append(TutorTestResult(
           index: testNumber,
@@ -235,6 +239,7 @@ struct TutorTestView: View {
           isError: true,
           retryCount: 0
         ))
+        Current.soundPlayer.play(.pop)
       }
     }
 
@@ -251,6 +256,7 @@ struct TutorTestView: View {
         isError: false,
         retryCount: 0
       ))
+      Current.soundPlayer.play(.pop)
     } catch {
       results.append(TutorTestResult(
         index: practiceTestNumber,
@@ -259,6 +265,7 @@ struct TutorTestView: View {
         isError: true,
         retryCount: 0
       ))
+      Current.soundPlayer.play(.pop)
     }
 
     isRunning = false

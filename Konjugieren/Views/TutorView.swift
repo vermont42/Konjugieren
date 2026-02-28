@@ -13,6 +13,7 @@ struct TutorView: View {
   @State private var showingSampleQueries = false
   @State private var showingHint = true
   @State private var hasQuizHistory = false
+  @State private var hasLoadedHistory = false
   @FocusState private var isInputFocused: Bool
 
   private static let suggestions = [
@@ -77,15 +78,13 @@ struct TutorView: View {
             .padding(Layout.doubleDefaultSpacing)
           }
           .onChange(of: messages.count) {
-            if let lastMessage = messages.last {
+            if hasLoadedHistory, let lastMessage = messages.last {
               withAnimation {
                 proxy.scrollTo(lastMessage.id, anchor: .bottom)
               }
             }
           }
         }
-
-        Divider()
 
         if showingHint {
           Text(L.Tutor.inputPlaceholder)
@@ -94,6 +93,11 @@ struct TutorView: View {
             .frame(maxWidth: .infinity, alignment: .center)
             .padding(.top, Layout.defaultSpacing)
         }
+
+        Rectangle()
+          .fill(Color.customYellow)
+          .frame(height: 1)
+          .padding(.horizontal, Layout.doubleDefaultSpacing)
 
         inputBar
       }
@@ -121,6 +125,9 @@ struct TutorView: View {
       Current.analytics.signal(name: .viewTutorView)
       messages = TutorChatHistory.load(getterSetter: Current.getterSetter)
       hasQuizHistory = !QuizErrorHistory.load(getterSetter: Current.getterSetter).isEmpty
+    }
+    .task {
+      hasLoadedHistory = true
     }
     .onDisappear {
       Current.languageModelService.resetTutorSession()
@@ -295,6 +302,7 @@ struct TutorView: View {
     messages.append(userMessage)
     inputText = ""
     isGenerating = true
+    Current.soundPlayer.play(.pop)
     Current.analytics.signal(name: .tapSendTutorMessage)
     saveMessages()
 
@@ -303,9 +311,11 @@ struct TutorView: View {
         let response = try await Current.languageModelService.sendTutorMessage(trimmed)
         let assistantMessage = TutorMessage(role: .assistant, content: response)
         messages.append(assistantMessage)
+        Current.soundPlayer.play(.pop)
       } catch {
         let errorMessage = TutorMessage(role: .assistant, content: L.Tutor.unavailable)
         messages.append(errorMessage)
+        Current.soundPlayer.play(.pop)
       }
       isGenerating = false
       saveMessages()
@@ -328,6 +338,7 @@ struct TutorView: View {
     Task {
       do {
         recommendation = try await Current.languageModelService.recommendPractice(aggregatedErrors: aggregated)
+        Current.soundPlayer.play(.pop)
       } catch {
         // Silently fail — recommendations are supplementary
       }

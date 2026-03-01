@@ -236,6 +236,10 @@ Declare enum cases in alphabetical order. This makes it easy to find cases in la
 
 Exceptions: Enums whose case order carries semantic meaning (lifecycle states, linguistic conventions, UI display order) may retain their natural ordering. Add a comment like `// Semantic ordering: <reason>` above such enums.
 
+### @ViewBuilder Has No Child Limit
+
+The old 10-child `@ViewBuilder` limit was removed in Swift 5.9 via variadic generics. Do not wrap children in `Group {}` to work around a limit that no longer exists.
+
 ## Swift 6 and Default Main-Actor Isolation
 
 The project uses **Swift 6** (`SWIFT_VERSION = 6.0`) with **`SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor`** (an Xcode 26 / Swift 6.2 setting). This means every type in the app module defaults to `@MainActor` unless explicitly opted out. Key consequences:
@@ -282,6 +286,10 @@ struct OuterTests {
 ## Terminology
 
 See [`docs/terminology.md`](docs/terminology.md) for conjugationgroup definitions, tense/mood/voice distinctions, and the full conjugationgroup table. Key rule: avoid using "tense" to describe conjugationgroups.
+
+### Prefer "Conjugation" Over "Form"
+
+When referring to a specific inflected verb in English text, use "conjugation" rather than "form." Example: "every conjugation of every verb," not "every form of every verb."
 
 ## Writing Conjugationgroup Articles
 

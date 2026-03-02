@@ -2,9 +2,9 @@
 
 ## Progress
 
-**Next verb index: 201** ← 0-based index into `docs/frequencies.txt` (988 verbs total).
+**Next verb index: 301** ← 0-based index into `docs/frequencies.txt` (988 verbs total).
 
-**BATCH SIZE: 100**
+**BATCH SIZE: 50**
 
 ## Task
 
@@ -77,14 +77,37 @@ Give each subagent the following prompt, substituting the verb-specific section.
 > | `raumfahrtstrategie-2023-de.txt` | Raumfahrtstrategie (2023) |
 > | `raumordnungsbericht-2021-de.txt` | Raumordnungsbericht (2021) |
 > | `bufi-kurzfassung-2024-de.txt` | BuFI Kurzfassung (2024) |
+> | `digitale-strategie-2025-de.txt` | Digitale Strategie (2025) |
+> | `ki-strategie-2020-de.txt` | KI-Strategie (2020) |
+>
+> **Technology fallback:** If the verb isn't found in any `corpus/modern/` or `corpus/government/` file, search `corpus/technology/` files next. These BSI guides and Wikipedia articles contain technology verbs like *installieren*, *speichern*, *klicken*, *aktualisieren*, *verschlüsseln*, *testen*, *deaktivieren*, etc.
+>
+> | File | Source display name |
+> |------|-------------------|
+> | `bsi-passwoerter-2024-de.txt` | BSI — Sichere Passwörter erstellen |
+> | `bsi-accountschutz-de.txt` | BSI — Accountschutz |
+> | `bsi-benutzerkonten-de.txt` | BSI — Benutzerkonten einrichten |
+> | `bsi-basisschutz-computer-de.txt` | BSI — Basisschutz für Computer |
+> | `bsi-router-wlan-vpn-de.txt` | BSI — Router, WLAN und VPN |
+> | `bsi-grundschutz-software-tests-2023-de.txt` | BSI — Software-Tests und -Freigaben (2023) |
+> | `bsi-grundschutz-patch-management-2023-de.txt` | BSI — Patch- und Änderungsmanagement (2023) |
+> | `bsi-grundschutz-datensicherung-2023-de.txt` | BSI — Datensicherungskonzept (2023) |
+> | `wiki-hilfe-bearbeiten-de.txt` | Wikipedia — Hilfe:Bearbeiten |
+> | `wiki-hilfe-dateien-de.txt` | Wikipedia — Hilfe:Dateien |
+> | `wiki-datensicherung-de.txt` | Wikipedia — Datensicherung |
+> | `wiki-softwaretest-de.txt` | Wikipedia — Softwaretest |
+> | `wiki-installation-de.txt` | Wikipedia — Installation (Software) |
+> | `wiki-verschluesselung-de.txt` | Wikipedia — Verschlüsselung |
+> | `wiki-firewall-de.txt` | Wikipedia — Firewall |
 >
 > ## How to Search
 >
 > 1. **Start with your preferred source** (specified in the verb section above). Use Grep to search that file first for likely conjugated forms. Cast a wide net — include stem variations, prefixes, and participles. For separable-prefix verbs, also search for the separated particle pattern (e.g., grep for both "absichern" and "sichert.*ab" and "abgesichert").
 > 2. If you find a good sentence in the preferred source, use it. If not (the verb doesn't appear, or only appears in bland/fragmentary contexts), try other `corpus/modern/` files in any order until you find a good sentence.
 > 3. **Government fallback:** If the verb isn't found in any `corpus/modern/` file, search `corpus/government/` files next. Government reports use modern administrative German and cover verbs like *funktionieren*, *erstellen*, *planen*, *informieren*, *präsentieren*, and *umsetzen* that rarely appear in the literary corpus.
-> 4. **Line wraps:** Corpus files wrap at ~70 characters. A sentence often spans 2–3 lines. After finding a match with Grep, always use Read with offset/limit (or Grep with `-C 3`) to see surrounding lines and reconstruct the full sentence.
-> 5. Select the best sentence according to the quality criteria below.
+> 4. **Technology fallback:** If the verb isn't found in any `corpus/modern/` or `corpus/government/` file, search `corpus/technology/` files next. BSI guides and Wikipedia articles cover technology verbs like *installieren*, *speichern*, *klicken*, *aktualisieren*, *verschlüsseln*, *testen*, *deaktivieren*, etc.
+> 5. **Line wraps:** Corpus files wrap at ~70 characters. A sentence often spans 2–3 lines. After finding a match with Grep, always use Read with offset/limit (or Grep with `-C 3`) to see surrounding lines and reconstruct the full sentence.
+> 6. Select the best sentence according to the quality criteria below.
 >
 > ## Sentence Quality Criteria
 >
@@ -157,3 +180,29 @@ The top 30 verbs (indices 0–29) also need a `"medieval"` sub-key with an Old H
 - After merging, verify every German sentence against the corpus before updating the master file.
 - Always update the "Next verb index" in this file after successfully updating `ExampleSentences.json`.
 - If a verification fails (sentence not found in corpus), exclude that verb from the master file and note it in the summary. It can be retried in a future run.
+
+## Lessons Learned
+
+### Heredoc and PYEOF quoting hazards
+
+German typographic quotation marks (`„` U+201E, `"` U+201C, `"` U+201D, `»` U+00BB, `«` U+00AB) visually resemble ASCII `"` (U+0022) but are distinct Unicode characters. When constructing JSON data containing German sentences:
+
+1. **Never use `cat > file << 'EOF'` heredocs to write JSON** that contains German dialogue. The typographic quotes `"` and `"` are indistinguishable from JSON delimiters in many contexts, causing `JSONDecodeError`.
+2. **Never embed German sentences in Python `<< 'PYEOF'` heredocs as string literals.** The closing `"` (U+201C) at the end of a German quotation immediately followed by `"` (ASCII, JSON) confuses the parser.
+3. **Use Python `\uXXXX` escapes** when constructing sentences with typographic quotes: `\u201e` for `„`, `\u201c` for `"`, `\u00bb` for `»`, `\u00ab` for `«`, `\u00df` for `ß`, `\u00e4` for `ä`, etc.
+4. **Preferred pattern:** Write a Python script to a file with `Write`, then run it with `Bash`. This avoids all heredoc quoting issues. Example:
+   ```python
+   # Write to /tmp/merge.py, then run: python3 /tmp/merge.py
+   def add(verb, de_sent, de_src, en_sent, en_src):
+       new["de"][verb] = {"sentence": de_sent, "source": de_src}
+       new["en"][verb] = {"sentence": en_sent, "source": en_src}
+   add("st\u00e4rken", "\u201eBring ihm die Suppe,\u201c sagte er.", "Kafka \u2014 Der Proce\u00df", ...)
+   ```
+5. **Source name normalization** is essential. Subagents return variant source names (e.g., "Grimm, Aschenputtel" vs. "Grimm — Märchen", "Nietzsche, Also sprach Zarathustra (1883)" vs. "Nietzsche — Also sprach Zarathustra"). Build a comprehensive normalization map covering both German and English name variants.
+
+### Context window management
+
+Processing 100 verbs in a single session risks hitting the context limit before writing results to disk. Mitigation strategies:
+- **Write intermediate results** to a temp JSON file after each batch of 10 agents returns, not just at the end.
+- **If the session is continued** after compaction, extract prior results from the old transcript at `~/.claude/projects/.../SESSION_ID.jsonl` using regex. Agent results appear in `<result>...</result>` tags. Sentences with escaped quotes (`\"`) inside the JSON require special handling — search for each verb individually rather than using a single regex.
+- The transcript is JSONL with nested JSON escaping. Typographic quotes survive fine, but sentences containing `\"` (escaped ASCII quotes within JSON strings) break simple extraction regexes. Use per-verb block extraction (find the block, print its tail) instead.

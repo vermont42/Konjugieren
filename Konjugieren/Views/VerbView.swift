@@ -97,6 +97,45 @@ struct VerbView: View {
           }
           .padding(.horizontal)
         }
+
+        if let etymologyText = Etymology.text(for: verb.infinitiv) {
+          Divider()
+          VStack(alignment: .leading, spacing: 8) {
+            Text(L.VerbView.etymologyHeading)
+              .font(.headline)
+              .foregroundStyle(.primary)
+              .accessibilityAddTraits(.isHeader)
+              .foregroundStyle(.customYellow)
+            RichTextView(blocks: etymologyText.richTextBlocks)
+          }
+          .padding(.horizontal)
+        }
+
+        if let pair = ExampleSentences.pair(for: verb.infinitiv) {
+          Divider()
+          VStack(alignment: .leading, spacing: 8) {
+            Text(L.VerbView.exampleSentenceHeading)
+              .font(.headline)
+              .foregroundStyle(.primary)
+              .accessibilityAddTraits(.isHeader)
+              .foregroundStyle(.customYellow)
+
+            Text(pair.german.sentence)
+              .font(.body)
+              .italic()
+              .germanPronunciation()
+
+            Text(pair.english.sentence)
+              .font(.body)
+              .italic()
+              .englishPronunciation()
+
+            Text("— \(pair.german.source)")
+              .font(.caption)
+              .foregroundStyle(.secondary)
+          }
+          .padding(.horizontal)
+        }
       }
       .padding(.vertical)
     }
@@ -142,41 +181,6 @@ struct VerbView: View {
     conjugationSection(for: Conjugationgroup.futurIndikativ)
     conjugationSection(for: Conjugationgroup.futurKonjunktivI)
     conjugationSection(for: Conjugationgroup.futurKonjunktivII)
-
-    if let etymologyText = Etymology.text(for: verb.infinitiv) {
-      Divider()
-      VStack(alignment: .leading, spacing: 8) {
-        Text(L.VerbView.etymologyHeading)
-          .font(.headline)
-          .foregroundStyle(.primary)
-          .accessibilityAddTraits(.isHeader)
-        RichTextView(blocks: etymologyText.richTextBlocks)
-      }
-    }
-
-    if let pair = ExampleSentences.pair(for: verb.infinitiv) {
-      Divider()
-      VStack(alignment: .leading, spacing: 8) {
-        Text(L.VerbView.exampleSentenceHeading)
-          .font(.headline)
-          .foregroundStyle(.primary)
-          .accessibilityAddTraits(.isHeader)
-
-        Text(pair.german.sentence)
-          .font(.body)
-          .italic()
-          .germanPronunciation()
-
-        Text(pair.english.sentence)
-          .font(.body)
-          .italic()
-          .englishPronunciation()
-
-        Text("— \(pair.german.source)")
-          .font(.caption)
-          .foregroundStyle(.secondary)
-      }
-    }
   }
 
   private func conjugate(_ group: Conjugationgroup) -> String {

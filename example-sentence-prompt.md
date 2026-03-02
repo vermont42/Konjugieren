@@ -2,7 +2,7 @@
 
 ## Progress
 
-**Next verb index: 301** ← 0-based index into `docs/frequencies.txt` (988 verbs total).
+**Next verb index: 351** ← 0-based index into `docs/frequencies.txt` (988 verbs total).
 
 **BATCH SIZE: 50**
 

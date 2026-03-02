@@ -32,7 +32,7 @@ struct VerbView: View {
 
   var body: some View {
     ScrollView {
-      LazyVStack(alignment: .leading, spacing: 24) {
+      VStack(alignment: .leading, spacing: 24) {
         VStack(alignment: .leading, spacing: 8) {
           Text(verb.infinitiv)
             .font(.largeTitle)

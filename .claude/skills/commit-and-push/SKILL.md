@@ -22,7 +22,7 @@ Recent commits (for style reference):
 
 1. Stage all changes with `git add .`
 2. Create a commit with the message: $ARGUMENTS
-   - If no message is provided, analyze the changes and create an appropriate descriptive message
+   - If no message is provided, analyze ALL staged changes (via `git diff --cached` or, before staging, `git diff`) and create an appropriate descriptive message covering everything being committed — not just changes from the current conversation
    - Follow the commit message style shown in recent commits above
 3. Push to the remote repository with `git push`
 

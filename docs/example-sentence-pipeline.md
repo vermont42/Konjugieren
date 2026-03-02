@@ -21,6 +21,18 @@ The corpus lives in the gitignored `corpus/` directory. See `corpus/README.md` f
 | `goethe-werther-de.txt` | 133K | 1774 | Epistolary style |
 | `weimar-verfassung-de.txt` | 77K | 1919 | Legal/constitutional German |
 
+### Government Sources (fallback for modern/technical verbs)
+
+| File | Chars | Year | Notes |
+|------|-------|------|-------|
+| `berufsbildungsbericht-2024-de.txt` | 558K | 2024 | Vocational training report |
+| `bundesverkehrswegeplan-2030-de.txt` | 522K | 2016 | Transport infrastructure plan |
+| `raumordnungsbericht-2021-de.txt` | 456K | 2021 | Spatial planning report |
+| `raumfahrtstrategie-2023-de.txt` | 138K | 2023 | Federal space strategy |
+| `bufi-kurzfassung-2024-de.txt` | 112K | 2024 | Research & innovation summary |
+
+These files live in `corpus/government/`. Search them only if the verb isn't found in any literary source above. They use modern administrative German and cover verbs like *funktionieren*, *erstellen*, *planen*, *informieren*, *präsentieren*, and *umsetzen*.
+
 ### English Sources (for parallel translations)
 
 Each German source has an English counterpart (except Luther Bible and Westphalia-de). These can provide translation context but the subagent should produce its own faithful translations.
@@ -113,6 +125,11 @@ Follows `Etymologies.json` structure — keyed by language, then by verb infinit
 | `grundgesetz` | Grundgesetz (1949) |
 | `westphalia` | Westfälischer Friede (1648) |
 | `weimar-verfassung` | Weimarer Verfassung (1919) |
+| `berufsbildungsbericht-2024` | Berufsbildungsbericht (2024) |
+| `bundesverkehrswegeplan-2030` | Bundesverkehrswegeplan (2030) |
+| `raumfahrtstrategie-2023` | Raumfahrtstrategie (2023) |
+| `raumordnungsbericht-2021` | Raumordnungsbericht (2021) |
+| `bufi-kurzfassung-2024` | BuFI Kurzfassung (2024) |
 
 ## Extraction Workflow
 

@@ -100,6 +100,10 @@
       "sentence": "Als die Wasserstraße sich wendete, erschien des Rialto prächtig gespannter Marmorbogen.",
       "source": "Mann — Der Tod in Venedig"
     },
+    "erstellen": {
+      "sentence": "Aufbauend auf den Ergebnissen des Gutachtens wird derzeit das Luftverkehrskonzept erstellt.",
+      "source": "Bundesverkehrswegeplan (2030)"
+    },
     "erwarten": {
       "sentence": "Eines Tages — niemand erwartet es — nimmt irgendein Richter den Akt aufmerksam in die Hand.",
       "source": "Kafka — Der Proceß"
@@ -127,6 +131,10 @@
     "freuen": {
       "sentence": "Aber ich will mich freuen des HERRN und fröhlich sein in Gott, meinem Heil.",
       "source": "Luther — Bibel"
+    },
+    "funktionieren": {
+      "sentence": "Um unter den extremen Bedingungen des Weltraums zuverlässig zu funktionieren, benötigt Weltraumforschung häufig Hightech an der Grenze des technisch Machbaren.",
+      "source": "Raumfahrtstrategie (2023)"
     },
     "führen": {
       "sentence": "Er weidet mich auf grüner Aue und führet mich zum frischen Wasser.",
@@ -179,6 +187,10 @@
     "hören": {
       "sentence": "Ich höre mit Vergnügen, dass unsre Sonne in rascher Bewegung gegen das Sternbild des Herkules hin begriffen ist: und ich hoffe, dass der Mensch auf dieser Erde es darin der Sonne gleich thut.",
       "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
+    "informieren": {
+      "sentence": "Die Zukunftszentren informieren, beraten und qualifizieren in der Transformation der Arbeitswelt.",
+      "source": "Berufsbildungsbericht (2024)"
     },
     "kaufen": {
       "sentence": "„Schön,\" sagte K., „ich kaufe es.\"",
@@ -255,6 +267,14 @@
     "passen": {
       "sentence": "Die Luft dünn und rein, die Gefahr nahe und der Geist voll einer fröhlichen Bosheit: so passt es gut zu einander.",
       "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "planen": {
+      "sentence": "Eine begleitende internationale Konferenz zu Weltraumressourcen ist für das Jahr 2024 geplant.",
+      "source": "Raumfahrtstrategie (2023)"
+    },
+    "präsentieren": {
+      "sentence": "Im Berufsorientierungsangebot „Ausbildungsbotschafter“ präsentieren Auszubildende auf Augenhöhe ihren Beruf und sich selbst in Schulklassen.",
+      "source": "Berufsbildungsbericht (2024)"
     },
     "sagen": {
       "sentence": "\"Das habe ich gethan\" sagt mein Gedächtniss. Das kann ich nicht gethan haben - sagt mein Stolz und bleibt unerbittlich. Endlich - giebt das Gedächtniss nach.",
@@ -335,6 +355,10 @@
     "tun": {
       "sentence": "Jemand mußte Josef K. verleumdet haben, denn ohne daß er etwas Böses getan hätte, wurde er eines Morgens verhaftet.",
       "source": "Kafka — Der Proceß"
+    },
+    "umsetzen": {
+      "sentence": "Programme mit kurzer Laufzeit sind gerade für strukturschwache Regionen kaum zeitgerecht umzusetzen.",
+      "source": "Raumordnungsbericht (2021)"
     },
     "unterstützen": {
       "sentence": "Aschenbach verließ am Stege die Gondel, unterstützt von jenem Alten, der an jedem Landungsplatze Venedigs mit seinem Enterhaken zur Stelle ist.",
@@ -494,6 +518,10 @@
       "sentence": "As the waterway turned, the Rialto's magnificently arched marble bridge appeared.",
       "source": "Mann — Der Tod in Venedig"
     },
+    "erstellen": {
+      "sentence": "Building on the results of the expert report, the aviation strategy is currently being prepared.",
+      "source": "Bundesverkehrswegeplan (2030)"
+    },
     "erwarten": {
       "sentence": "One day — nobody expects it — some judge picks up the file attentively.",
       "source": "Kafka — Der Proceß"
@@ -521,6 +549,10 @@
     "freuen": {
       "sentence": "But I will rejoice in the Lord and be joyful in God, my salvation.",
       "source": "Luther — Bibel"
+    },
+    "funktionieren": {
+      "sentence": "To function reliably under the extreme conditions of outer space, space research frequently requires high technology at the very limits of what is technically feasible.",
+      "source": "Raumfahrtstrategie (2023)"
     },
     "führen": {
       "sentence": "He makes me lie down in green pastures and leads me beside still waters.",
@@ -573,6 +605,10 @@
     "hören": {
       "sentence": "I hear with pleasure that our sun is moving rapidly towards the constellation Hercules: and I hope that the human being on this earth will do as the sun does.",
       "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
+    "informieren": {
+      "sentence": "The Future Centers inform, advise, and upskill workers in the transformation of the working world.",
+      "source": "Berufsbildungsbericht (2024)"
     },
     "kaufen": {
       "sentence": "\"Beautiful,\" said K., \"I'll buy it.\"",
@@ -649,6 +685,14 @@
     "passen": {
       "sentence": "The air thin and pure, danger near, and the spirit full of a cheerful malice: these things suit one another well.",
       "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "planen": {
+      "sentence": "An accompanying international conference on space resources is planned for the year 2024.",
+      "source": "Raumfahrtstrategie (2023)"
+    },
+    "präsentieren": {
+      "sentence": "In the career-orientation program “Training Ambassadors,” apprentices present their profession and themselves as equals in school classrooms.",
+      "source": "Berufsbildungsbericht (2024)"
     },
     "sagen": {
       "sentence": "“I did that,” says my memory. I cannot have done that — says my pride, and remains inexorable. In the end — memory yields.",
@@ -729,6 +773,10 @@
     "tun": {
       "sentence": "Someone must have slandered Josef K., for without having done anything wrong, he was arrested one morning.",
       "source": "Kafka — Der Proceß"
+    },
+    "umsetzen": {
+      "sentence": "Programs with short durations are nearly impossible for structurally weak regions to implement on time.",
+      "source": "Raumordnungsbericht (2021)"
     },
     "unterstützen": {
       "sentence": "Aschenbach left the gondola at the landing stage, supported by that old man who stands ready with his boathook at every quay in Venice.",

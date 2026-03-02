@@ -1,0 +1,790 @@
+{
+  "de": {
+    "arbeiten": {
+      "sentence": "Es hatte ein armer Mann zwölf Kinder und mußte Tag und Nacht arbeiten, damit er ihnen nur Brot geben konnte.",
+      "source": "Grimm — Märchen"
+    },
+    "bedeuten": {
+      "sentence": "Weißt du, was das bedeutet? Das bedeutet, daß du einfach gestrichen wirst.",
+      "source": "Kafka — Der Proceß"
+    },
+    "befinden": {
+      "sentence": "K. hielt sich eng neben dem Geistlichen, ohne in der Finsternis zu wissen, wo er sich befand.",
+      "source": "Kafka — Der Proceß"
+    },
+    "beginnen": {
+      "sentence": "In jedem Nu beginnt das Sein; um jedes Hier rollt sich die Kugel Dort.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "bekommen": {
+      "sentence": "Heute habe ich den Brief bekommen und bin natürlich sofort hergefahren.",
+      "source": "Kafka — Der Proceß"
+    },
+    "bestehen": {
+      "sentence": "Es besteht keine Staatskirche.",
+      "source": "Grundgesetz (1949)"
+    },
+    "bieten": {
+      "sentence": "Als ob ein voller Apfel sich meiner Hand böte, ein reifer Goldapfel, mit kühl-sanfter sammtener Haut — so bot sich mir die Welt.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "bilden": {
+      "sentence": "Er sann, er träumte, langsam bildeten seine Lippen einen Namen.",
+      "source": "Mann — Der Tod in Venedig"
+    },
+    "bleiben": {
+      "sentence": "Er schwieg und blieb.",
+      "source": "Mann — Der Tod in Venedig"
+    },
+    "brauchen": {
+      "sentence": "Wer siebene auf einen Streich trifft, braucht sich vor zweien nicht zu fürchten.",
+      "source": "Grimm — Märchen"
+    },
+    "bringen": {
+      "sentence": "Die stillsten Worte sind es, welche den Sturm bringen.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "denken": {
+      "sentence": "\"Unser Nächster ist nicht unser Nachbar, sondern dessen Nachbar\" - so denkt jedes Volk.",
+      "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
+    "dürfen": {
+      "sentence": "Manchem Menschen darfst du nicht die Hand geben, sondern nur die Tatze: und ich will, dass deine Tatze auch Krallen habe.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "einsetzen": {
+      "sentence": "Aber ich habe meinen König eingesetzt auf meinem heiligen Berg Zion.",
+      "source": "Luther — Bibel"
+    },
+    "empfehlen": {
+      "sentence": "Ein Obsthändler, der seine Waren zu den Fenstern hinauf empfahl, hätte, ebenso unaufmerksam wie K., mit seinem Karren diesen fast niedergeworfen.",
+      "source": "Kafka — Der Proceß"
+    },
+    "enthalten": {
+      "sentence": "Die Geschichte enthält über den Einlaß im Gesetz zwei wichtige Erklärungen des Türhüters, eine am Anfang, eine am Ende.",
+      "source": "Kafka — Der Proceß"
+    },
+    "entscheiden": {
+      "sentence": "Bei Stimmengleichheit entscheidet die Stimme des Vorsitzenden.",
+      "source": "Weimarer Verfassung (1919)"
+    },
+    "entstehen": {
+      "sentence": "Der Krieg mehrentheils auß widerwärtiger Religion entstanden.",
+      "source": "Westfälischer Friede (1648)"
+    },
+    "entwickeln": {
+      "sentence": "Der Deutsche selbst ist nicht, er wird, er «entwickelt sich».",
+      "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
+    "erfolgen": {
+      "sentence": "Eine Enteignung darf nur durch Gesetz oder auf Grund eines Gesetzes erfolgen, das Art und Ausmaß der Entschädigung regelt.",
+      "source": "Grundgesetz (1949)"
+    },
+    "erhalten": {
+      "sentence": "Jeder Schüler erhält bei Beendigung der Schulpflicht einen Abdruck der Verfassung.",
+      "source": "Weimarer Verfassung (1919)"
+    },
+    "erkennen": {
+      "sentence": "Wir werden uns finden, unter allen Gestalten werden wir uns erkennen.",
+      "source": "Goethe — Die Leiden des jungen Werthers"
+    },
+    "erklären": {
+      "sentence": "„Soll ich Ihnen das Wesen der Verschleppung erklären?\"",
+      "source": "Kafka — Der Proceß"
+    },
+    "erreichen": {
+      "sentence": "Der Weg führte ihn auf einen Berg, und als er den höchsten Gipfel erreicht hatte, so saß da ein gewaltiger Riese und schaute sich ganz gemächlich um.",
+      "source": "Grimm — Märchen"
+    },
+    "erscheinen": {
+      "sentence": "Als die Wasserstraße sich wendete, erschien des Rialto prächtig gespannter Marmorbogen.",
+      "source": "Mann — Der Tod in Venedig"
+    },
+    "erwarten": {
+      "sentence": "Eines Tages — niemand erwartet es — nimmt irgendein Richter den Akt aufmerksam in die Hand.",
+      "source": "Kafka — Der Proceß"
+    },
+    "fahren": {
+      "sentence": "„Wir fahren jetzt zum Advokaten Huld,\" sagte er, „er war mein Schulkollege.\"",
+      "source": "Kafka — Der Proceß"
+    },
+    "fallen": {
+      "sentence": "Kauft man nicht zwei Sperlinge um einen Pfennig? Dennoch fällt deren keiner auf die Erde ohne euren Vater.",
+      "source": "Luther — Bibel"
+    },
+    "finden": {
+      "sentence": "Ich kehre in mich selbst zurück, und finde eine Welt!",
+      "source": "Goethe — Die Leiden des jungen Werthers"
+    },
+    "folgen": {
+      "sentence": "„Dann folge auch niemandem sonst,\" sagte der Advokat.",
+      "source": "Kafka — Der Proceß"
+    },
+    "fragen": {
+      "sentence": "„Was ist Liebe? Was ist Schöpfung? Was ist Sehnsucht? Was ist Stern\"—so fragt der letzte Mensch und blinzelt.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "freuen": {
+      "sentence": "Aber ich will mich freuen des HERRN und fröhlich sein in Gott, meinem Heil.",
+      "source": "Luther — Bibel"
+    },
+    "führen": {
+      "sentence": "Er weidet mich auf grüner Aue und führet mich zum frischen Wasser.",
+      "source": "Luther — Bibel"
+    },
+    "geben": {
+      "sentence": "Vornehmer ist's, sich Unrecht zu geben als Recht zu behalten, sonderlich wenn man Recht hat.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "gehen": {
+      "sentence": "Die Staatsgewalt geht vom Volke aus.",
+      "source": "Weimarer Verfassung (1919)"
+    },
+    "gehören": {
+      "sentence": "„Ich gehöre also zum Gericht,\" sagte der Geistliche.",
+      "source": "Kafka — Der Proceß"
+    },
+    "gelten": {
+      "sentence": "Die Verachtung, die er früher für den Prozeß gehabt hatte, galt nicht mehr.",
+      "source": "Kafka — Der Proceß"
+    },
+    "gewinnen": {
+      "sentence": "Die grossen Epochen unsres Lebens liegen dort, wo wir den Muth gewinnen, unser Böses als unser Bestes umzutaufen.",
+      "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
+    "glauben": {
+      "sentence": "Es war einmal ein König, der war krank, und niemand glaubte, daß er mit dem Leben davon käme.",
+      "source": "Grimm — Märchen"
+    },
+    "haben": {
+      "sentence": "Sie bleiben, mein Herr; Sie haben keine Furcht vor dem Übel.",
+      "source": "Mann — Der Tod in Venedig"
+    },
+    "halten": {
+      "sentence": "„Nein,\" sagte der Geistliche, „man muß nicht alles für wahr halten, man muß es nur für notwendig halten.\"",
+      "source": "Kafka — Der Proceß"
+    },
+    "handeln": {
+      "sentence": "Zweifel daran, ob es richtig war, so zu handeln, waren zwar nicht auszurotten, aber die Überzeugung von der Notwendigkeit dessen überwog.",
+      "source": "Kafka — Der Proceß"
+    },
+    "heißen": {
+      "sentence": "Zwar liebt Eros, heißt es, den Müßiggang, und für solchen nur ist er geschaffen.",
+      "source": "Mann — Der Tod in Venedig"
+    },
+    "helfen": {
+      "sentence": "Arzt, hilf dir selber: so hilfst du auch deinem Kranken noch.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "hören": {
+      "sentence": "Ich höre mit Vergnügen, dass unsre Sonne in rascher Bewegung gegen das Sternbild des Herkules hin begriffen ist: und ich hoffe, dass der Mensch auf dieser Erde es darin der Sonne gleich thut.",
+      "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
+    "kaufen": {
+      "sentence": "„Schön,\" sagte K., „ich kaufe es.\"",
+      "source": "Kafka — Der Proceß"
+    },
+    "kennen": {
+      "sentence": "Das Beste, was man ist, kennt man nicht, - kann man nicht kennen.",
+      "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
+    "kommen": {
+      "sentence": "Es nimmt dich auf, wenn du kommst, und es entläßt dich, wenn du gehst.",
+      "source": "Kafka — Der Proceß"
+    },
+    "können": {
+      "sentence": "Das können wir nicht in die schwarze Erde versenken.",
+      "source": "Grimm — Märchen"
+    },
+    "lassen": {
+      "sentence": "Der Türhüter gibt ihm einen Schemel und läßt ihn seitwärts von der Tür sich niedersetzen.",
+      "source": "Kafka — Der Proceß"
+    },
+    "laufen": {
+      "sentence": "Ein Philosoph: ach, ein Wesen, das oft von sich davon läuft, oft vor sich Furcht hat, — aber zu neugierig ist, um nicht immer wieder zu sich zu kommen...",
+      "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
+    "leben": {
+      "sentence": "Die Logik ist zwar unerschütterlich, aber einem Menschen, der leben will, widersteht sie nicht.",
+      "source": "Kafka — Der Proceß"
+    },
+    "legen": {
+      "sentence": "\"Die Erkenntniss um ihrer selbst willen\" - das ist der letzte Fallstrick, den die Moral legt: damit verwickelt man sich noch einmal völlig in sie.",
+      "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
+    "lernen": {
+      "sentence": "Es ist eine Feinheit, dass Gott griechisch lernte, als er Schriftsteller werden wollte - und dass er es nicht besser lernte.",
+      "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
+    "lesen": {
+      "sentence": "Ich lese in ihren schwarzen Augen wahre Teilnehmung an mir und meinem Schicksal.",
+      "source": "Goethe — Die Leiden des jungen Werthers"
+    },
+    "liegen": {
+      "sentence": "Gerne liege ich hier, wo die Kinder spielen, an der zerbrochnen Mauer, unter Disteln und rothen Mohnblumen.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "machen": {
+      "sentence": "Ein wenig Gift ab und zu: das macht angenehme Träume.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "meinen": {
+      "sentence": "Manchmal meinte ich zu lügen, und siehe! da erst traf ich—die Wahrheit.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "mögen": {
+      "sentence": "Ich mag eure kalte Gerechtigkeit nicht; und aus dem Auge eurer Richter blickt mir immer der Henker und sein kaltes Eisen.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "müssen": {
+      "sentence": "Zuletzt muss man Alles selber thun, um selber Einiges zu wissen: das heisst, man hat viel zu thun!",
+      "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
+    "nehmen": {
+      "sentence": "Wenn man dem Bucklichten seinen Buckel nimmt, so nimmt man ihm seinen Geist—also lehrt das Volk.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "nennen": {
+      "sentence": "Er zählt die Sterne und nennt sie alle mit Namen.",
+      "source": "Luther — Bibel"
+    },
+    "nutzen": {
+      "sentence": "Hast du aber einen leidenden Freund, so sei seinem Leiden eine Ruhestätte, doch gleichsam ein hartes Bett, ein Feldbett: so wirst du ihm am besten nützen.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "passen": {
+      "sentence": "Die Luft dünn und rein, die Gefahr nahe und der Geist voll einer fröhlichen Bosheit: so passt es gut zu einander.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "sagen": {
+      "sentence": "\"Das habe ich gethan\" sagt mein Gedächtniss. Das kann ich nicht gethan haben - sagt mein Stolz und bleibt unerbittlich. Endlich - giebt das Gedächtniss nach.",
+      "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
+    "schaffen": {
+      "sentence": "Am Anfang schuf Gott Himmel und Erde.",
+      "source": "Luther — Bibel"
+    },
+    "schauen": {
+      "sentence": "In dein Auge schaute ich jüngst, oh Leben!",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "scheinen": {
+      "sentence": "Da schien der Mond ganz helle, und die weißen Kieselsteine, die vor dem Hause lagen, glänzten wie lauter Batzen.",
+      "source": "Grimm — Märchen"
+    },
+    "schließen": {
+      "sentence": "Angestrahlt von der Pracht des Gottes saß der Einsam-Wache, er schloß die Augen und ließ von der Glorie seine Lider küssen.",
+      "source": "Mann — Der Tod in Venedig"
+    },
+    "schreiben": {
+      "sentence": "Von allem Geschriebenen liebe ich nur Das, was Einer mit seinem Blute schreibt.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "sehen": {
+      "sentence": "Jetzt bin ich leicht, jetzt fliege ich, jetzt sehe ich mich unter mir, jetzt tanzt ein Gott durch mich.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "sein": {
+      "sentence": "Ich bin so glücklich, mein Bester, so ganz in dem Gefühle von ruhigem Dasein versunken, daß meine Kunst darunter leidet.",
+      "source": "Goethe — Die Leiden des jungen Werthers"
+    },
+    "setzen": {
+      "sentence": "Leicht eingehüllt gegen die Schauer der Frühe setzte er sich ans offene Fenster, den Aufgang der Sonne zu erwarten.",
+      "source": "Mann — Der Tod in Venedig"
+    },
+    "sollen": {
+      "sentence": "Im Schweiße deines Angesichts sollst du dein Brot essen, bis daß du wieder zu Erde werdest, davon du genommen bist. Denn du bist Erde und sollst zu Erde werden.",
+      "source": "Luther — Bibel"
+    },
+    "sorgen": {
+      "sentence": "Es soll ihm gut gehen, und ich will für es sorgen wie eine Mutter.",
+      "source": "Grimm — Märchen"
+    },
+    "spielen": {
+      "sentence": "Wo nicht Liebe oder Hass mitspielt, spielt das Weib mittelmässig.",
+      "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
+    "sprechen": {
+      "sentence": "Und das Reden und Raunen begann wieder: der Gondolier sprach zwischen den Zähnen mit sich selbst.",
+      "source": "Mann — Der Tod in Venedig"
+    },
+    "stehen": {
+      "sentence": "Joringel konnte sich nicht regen; er stand da wie ein Stein, konnte nicht weinen, nicht reden, nicht Hand noch Fuß regen.",
+      "source": "Grimm — Märchen"
+    },
+    "stellen": {
+      "sentence": "Sie stellen meinem Gang Netze und drücken meine Seele nieder; sie graben vor mir eine Grube, und fallen selbst hinein.",
+      "source": "Luther — Bibel"
+    },
+    "suchen": {
+      "sentence": "„Dann bist du der, den ich suche,\" sagte der Geistliche.",
+      "source": "Kafka — Der Proceß"
+    },
+    "tragen": {
+      "sentence": "Der Bundeskanzler bestimmt die Richtlinien der Politik und trägt dafür die Verantwortung.",
+      "source": "Grundgesetz (1949)"
+    },
+    "treffen": {
+      "sentence": "So allein wächst der Mensch in die Höhe, wo der Blitz ihn trifft und zerbricht: hoch genug für den Blitz!",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "treten": {
+      "sentence": "Das deutsche Volk hat durch seine Nationalversammlung diese Verfassung beschlossen und verabschiedet. Sie tritt mit dem Tage ihrer Verkündung in Kraft.",
+      "source": "Weimarer Verfassung (1919)"
+    },
+    "tun": {
+      "sentence": "Jemand mußte Josef K. verleumdet haben, denn ohne daß er etwas Böses getan hätte, wurde er eines Morgens verhaftet.",
+      "source": "Kafka — Der Proceß"
+    },
+    "unterstützen": {
+      "sentence": "Aschenbach verließ am Stege die Gondel, unterstützt von jenem Alten, der an jedem Landungsplatze Venedigs mit seinem Enterhaken zur Stelle ist.",
+      "source": "Mann — Der Tod in Venedig"
+    },
+    "verlieren": {
+      "sentence": "Und verloren sei uns der Tag, wo nicht Ein Mal getanzt wurde!",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "verstehen": {
+      "sentence": "Es ist nicht leicht möglich, fremdes Blut zu verstehen: ich hasse die lesenden Müssiggänger.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "versuchen": {
+      "sentence": "Wenn es dich so lockt, versuche es doch trotz meines Verbotes hineinzugehn.",
+      "source": "Kafka — Der Proceß"
+    },
+    "verwenden": {
+      "sentence": "Der Mann, der sich für seine Reise mit vielem ausgerüstet hat, verwendet alles und sei es noch so wertvoll, um den Türhüter zu bestechen.",
+      "source": "Kafka — Der Proceß"
+    },
+    "werden": {
+      "sentence": "Aus den paar Minuten, um die Sie gebeten haben, ist nun eine halbe Stunde und mehr geworden.",
+      "source": "Kafka — Der Proceß"
+    },
+    "wirken": {
+      "sentence": "Kaum hatte sie den Kamm in die Haare gesteckt, als das Gift darin wirkte und das Mädchen ohne Besinnung niederfiel.",
+      "source": "Grimm — Märchen"
+    },
+    "wissen": {
+      "sentence": "Wer den Weg zu seinem Ideale nicht zu finden weiss, lebt leichtsinniger und frecher, als der Mensch ohne Ideal.",
+      "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
+    "wollen": {
+      "sentence": "Er will es und will es nicht.",
+      "source": "Mann — Der Tod in Venedig"
+    },
+    "wählen": {
+      "sentence": "Der Bundestag wählt seinen Präsidenten, dessen Stellvertreter und die Schriftführer.",
+      "source": "Grundgesetz (1949)"
+    },
+    "zeigen": {
+      "sentence": "Seht! Ich zeige euch den letzten Menschen.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "ziehen": {
+      "sentence": "Da sprang das Pferd mit einmal auf und zog den Löwen mit sich fort.",
+      "source": "Grimm — Märchen"
+    },
+    "ändern": {
+      "sentence": "„Bloße Legenden ändern meine Meinung nicht,\" sagte K.",
+      "source": "Kafka — Der Proceß"
+    },
+    "übernehmen": {
+      "sentence": "„Sei nicht übereilt,\" sagte der Geistliche, „übernimm nicht die fremde Meinung ungeprüft.\"",
+      "source": "Kafka — Der Proceß"
+    }
+  },
+  "en": {
+    "arbeiten": {
+      "sentence": "A poor man had twelve children and had to work day and night just to give them bread.",
+      "source": "Grimm — Märchen"
+    },
+    "bedeuten": {
+      "sentence": "Do you know what that means? It means that you will simply be struck off.",
+      "source": "Kafka — Der Proceß"
+    },
+    "befinden": {
+      "sentence": "K. kept close beside the priest, without knowing in the darkness where he was.",
+      "source": "Kafka — Der Proceß"
+    },
+    "beginnen": {
+      "sentence": "In every moment, Being begins; around every Here rolls the sphere of There.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "bekommen": {
+      "sentence": "Today I received the letter and naturally came here at once.",
+      "source": "Kafka — Der Proceß"
+    },
+    "bestehen": {
+      "sentence": "There exists no state church.",
+      "source": "Grundgesetz (1949)"
+    },
+    "bieten": {
+      "sentence": "As if a full apple offered itself to my hand, a ripe golden apple with cool, soft, velvety skin — thus the world offered itself to me.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "bilden": {
+      "sentence": "He mused, he dreamed; slowly his lips formed a name.",
+      "source": "Mann — Der Tod in Venedig"
+    },
+    "bleiben": {
+      "sentence": "He said nothing and stayed.",
+      "source": "Mann — Der Tod in Venedig"
+    },
+    "brauchen": {
+      "sentence": "He who strikes down seven at one blow need not fear two.",
+      "source": "Grimm — Märchen"
+    },
+    "bringen": {
+      "sentence": "It is the stillest words that bring the storm.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "denken": {
+      "sentence": "\"Our neighbor is not our nearest, but our nearest's neighbor\" — so thinks every nation.",
+      "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
+    "dürfen": {
+      "sentence": "To many a person you must not offer your hand, but only your paw: and I want your paw to have claws as well.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "einsetzen": {
+      "sentence": "But I have set my king upon my holy hill of Zion.",
+      "source": "Luther — Bibel"
+    },
+    "empfehlen": {
+      "sentence": "A fruit vendor, hawking his wares up to the windows, would have knocked him down with his cart, just as inattentive as K. himself.",
+      "source": "Kafka — Der Proceß"
+    },
+    "enthalten": {
+      "sentence": "The story contains two important statements by the doorkeeper about admission to the law, one at the beginning, one at the end.",
+      "source": "Kafka — Der Proceß"
+    },
+    "entscheiden": {
+      "sentence": "In the event of a tie, the chairman's vote decides.",
+      "source": "Weimarer Verfassung (1919)"
+    },
+    "entstehen": {
+      "sentence": "The war arose mostly from religious disagreement.",
+      "source": "Westfälischer Friede (1648)"
+    },
+    "entwickeln": {
+      "sentence": "The German himself is not, he becomes, he \"develops.\"",
+      "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
+    "erfolgen": {
+      "sentence": "An expropriation may only be carried out by or pursuant to a law that determines the nature and extent of compensation.",
+      "source": "Grundgesetz (1949)"
+    },
+    "erhalten": {
+      "sentence": "Every student receives a copy of the constitution upon completion of compulsory schooling.",
+      "source": "Weimarer Verfassung (1919)"
+    },
+    "erkennen": {
+      "sentence": "We shall find each other, in every shape we shall recognize each other.",
+      "source": "Goethe — Die Leiden des jungen Werthers"
+    },
+    "erklären": {
+      "sentence": "\"Shall I explain the nature of the postponement to you?\"",
+      "source": "Kafka — Der Proceß"
+    },
+    "erreichen": {
+      "sentence": "The path led him up a mountain, and when he had reached the highest peak, there sat a mighty giant, gazing about quite leisurely.",
+      "source": "Grimm — Märchen"
+    },
+    "erscheinen": {
+      "sentence": "As the waterway turned, the Rialto's magnificently arched marble bridge appeared.",
+      "source": "Mann — Der Tod in Venedig"
+    },
+    "erwarten": {
+      "sentence": "One day — nobody expects it — some judge picks up the file attentively.",
+      "source": "Kafka — Der Proceß"
+    },
+    "fahren": {
+      "sentence": "\"We are going to the lawyer Huld now,\" he said, \"he was my schoolmate.\"",
+      "source": "Kafka — Der Proceß"
+    },
+    "fallen": {
+      "sentence": "Are not two sparrows sold for a penny? Yet not one of them falls to the ground without your Father.",
+      "source": "Luther — Bibel"
+    },
+    "finden": {
+      "sentence": "I return into myself and find a whole world!",
+      "source": "Goethe — Die Leiden des jungen Werthers"
+    },
+    "folgen": {
+      "sentence": "\"Then follow no one else,\" said the lawyer.",
+      "source": "Kafka — Der Proceß"
+    },
+    "fragen": {
+      "sentence": "\"What is love? What is creation? What is longing? What is a star?\"—thus asks the last man, and blinks.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "freuen": {
+      "sentence": "But I will rejoice in the Lord and be joyful in God, my salvation.",
+      "source": "Luther — Bibel"
+    },
+    "führen": {
+      "sentence": "He makes me lie down in green pastures and leads me beside still waters.",
+      "source": "Luther — Bibel"
+    },
+    "geben": {
+      "sentence": "It is nobler to declare oneself wrong than to insist on being right, especially when one is right.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "gehen": {
+      "sentence": "Sovereign power emanates from the people.",
+      "source": "Weimarer Verfassung (1919)"
+    },
+    "gehören": {
+      "sentence": "\"So I belong to the court,\" said the chaplain.",
+      "source": "Kafka — Der Proceß"
+    },
+    "gelten": {
+      "sentence": "The contempt he had formerly felt for the trial no longer held.",
+      "source": "Kafka — Der Proceß"
+    },
+    "gewinnen": {
+      "sentence": "The great epochs of our lives lie where we gain the courage to rechristen our evil as what is best in us.",
+      "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
+    "glauben": {
+      "sentence": "Once upon a time there was a king who was ill, and nobody believed that he would survive.",
+      "source": "Grimm — Märchen"
+    },
+    "haben": {
+      "sentence": "You are staying, sir; you have no fear of the affliction.",
+      "source": "Mann — Der Tod in Venedig"
+    },
+    "halten": {
+      "sentence": "\"No,\" said the chaplain, \"one need not hold everything to be true, one need only hold it to be necessary.\"",
+      "source": "Kafka — Der Proceß"
+    },
+    "handeln": {
+      "sentence": "Doubts as to whether it was right to act in this way could not be eradicated, but the conviction of its necessity prevailed.",
+      "source": "Kafka — Der Proceß"
+    },
+    "heißen": {
+      "sentence": "Eros, it is said, loves idleness, and is made for idleness alone.",
+      "source": "Mann — Der Tod in Venedig"
+    },
+    "helfen": {
+      "sentence": "Physician, heal thyself: for thus you also best help your patient.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "hören": {
+      "sentence": "I hear with pleasure that our sun is moving rapidly towards the constellation Hercules: and I hope that the human being on this earth will do as the sun does.",
+      "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
+    "kaufen": {
+      "sentence": "\"Beautiful,\" said K., \"I'll buy it.\"",
+      "source": "Kafka — Der Proceß"
+    },
+    "kennen": {
+      "sentence": "The best of what one is, one does not know — cannot know.",
+      "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
+    "kommen": {
+      "sentence": "It receives you when you come and releases you when you go.",
+      "source": "Kafka — Der Proceß"
+    },
+    "können": {
+      "sentence": "We cannot lower her into the black earth.",
+      "source": "Grimm — Märchen"
+    },
+    "lassen": {
+      "sentence": "The doorkeeper gives him a stool and lets him sit down to one side of the door.",
+      "source": "Kafka — Der Proceß"
+    },
+    "laufen": {
+      "sentence": "A philosopher: ah, a being that often runs away from itself, often fears itself — but is too curious not to keep coming back to itself...",
+      "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
+    "leben": {
+      "sentence": "Logic is indeed unshakable, but it cannot withstand a person who wants to live.",
+      "source": "Kafka — Der Proceß"
+    },
+    "legen": {
+      "sentence": "\"Knowledge for its own sake\" — that is the last snare that morality lays: with it, one becomes completely entangled in it once more.",
+      "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
+    "lernen": {
+      "sentence": "It is a nicety that God learned Greek when he wanted to become a writer — and that he did not learn it better.",
+      "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
+    "lesen": {
+      "sentence": "I read in her dark eyes a true sympathy for me and my fate.",
+      "source": "Goethe — Die Leiden des jungen Werthers"
+    },
+    "liegen": {
+      "sentence": "Gladly I lie here where the children play, by the crumbling wall, among thistles and red poppies.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "machen": {
+      "sentence": "A little poison now and then: that makes for pleasant dreams.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "meinen": {
+      "sentence": "Sometimes I meant to lie, and behold! only then did I hit upon—the truth.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "mögen": {
+      "sentence": "I do not like your cold justice; and from the eyes of your judges there always gazes the executioner and his cold iron.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "müssen": {
+      "sentence": "In the end one must do everything oneself in order to know a few things oneself: which means one has much to do!",
+      "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
+    "nehmen": {
+      "sentence": "If you take the hunchback’s hump from him, you take his spirit as well — so teaches the people.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "nennen": {
+      "sentence": "He counts the stars and calls them all by name.",
+      "source": "Luther — Bibel"
+    },
+    "nutzen": {
+      "sentence": "But if you have a suffering friend, be a resting place for his suffering, yet like a hard bed, a field cot: thus you will serve him best.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "passen": {
+      "sentence": "The air thin and pure, danger near, and the spirit full of a cheerful malice: these things suit one another well.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "sagen": {
+      "sentence": "“I did that,” says my memory. I cannot have done that — says my pride, and remains inexorable. In the end — memory yields.",
+      "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
+    "schaffen": {
+      "sentence": "In the beginning, God created heaven and earth.",
+      "source": "Luther — Bibel"
+    },
+    "schauen": {
+      "sentence": "Of late did I gaze into thine eye, O Life!",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "scheinen": {
+      "sentence": "The moon shone bright, and the white pebbles that lay before the house glittered like silver coins.",
+      "source": "Grimm — Märchen"
+    },
+    "schließen": {
+      "sentence": "Bathed in the splendor of the god, the solitary watcher sat; he closed his eyes and let the glory kiss his lids.",
+      "source": "Mann — Der Tod in Venedig"
+    },
+    "schreiben": {
+      "sentence": "Of all that is written, I love only that which one writes with his blood.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "sehen": {
+      "sentence": "Now I am light, now I fly, now I see myself beneath me, now a god dances through me.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "sein": {
+      "sentence": "I am so happy, my dear friend, so utterly absorbed in the feeling of peaceful existence, that my art suffers for it.",
+      "source": "Goethe — Die Leiden des jungen Werthers"
+    },
+    "setzen": {
+      "sentence": "Lightly wrapped against the shivers of early morning, he sat down at the open window to await the rising of the sun.",
+      "source": "Mann — Der Tod in Venedig"
+    },
+    "sollen": {
+      "sentence": "In the sweat of your face shall you eat your bread, until you return to the earth from which you were taken. For you are dust, and to dust you shall return.",
+      "source": "Luther — Bibel"
+    },
+    "sorgen": {
+      "sentence": "It shall be well with the child, and I will care for it like a mother.",
+      "source": "Grimm — Märchen"
+    },
+    "spielen": {
+      "sentence": "Where neither love nor hate is in play, woman acts indifferently.",
+      "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
+    "sprechen": {
+      "sentence": "And the talking and murmuring began again: the gondolier spoke between his teeth to himself.",
+      "source": "Mann — Der Tod in Venedig"
+    },
+    "stehen": {
+      "sentence": "Joringel could not move; he stood there like a stone, unable to weep, unable to speak, unable to stir hand or foot.",
+      "source": "Grimm — Märchen"
+    },
+    "stellen": {
+      "sentence": "They set nets in my path and press my soul down; they dig a pit before me, and fall into it themselves.",
+      "source": "Luther — Bibel"
+    },
+    "suchen": {
+      "sentence": "\"Then you are the one I seek,\" said the priest.",
+      "source": "Kafka — Der Proceß"
+    },
+    "tragen": {
+      "sentence": "The Federal Chancellor determines the guidelines of policy and bears responsibility for them.",
+      "source": "Grundgesetz (1949)"
+    },
+    "treffen": {
+      "sentence": "Only thus does man grow into the height where the lightning strikes and shatters him: high enough for the lightning!",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "treten": {
+      "sentence": "The German people, through their National Assembly, have resolved and adopted this constitution. It enters into force on the day of its promulgation.",
+      "source": "Weimarer Verfassung (1919)"
+    },
+    "tun": {
+      "sentence": "Someone must have slandered Josef K., for without having done anything wrong, he was arrested one morning.",
+      "source": "Kafka — Der Proceß"
+    },
+    "unterstützen": {
+      "sentence": "Aschenbach left the gondola at the landing stage, supported by that old man who stands ready with his boathook at every quay in Venice.",
+      "source": "Mann — Der Tod in Venedig"
+    },
+    "verlieren": {
+      "sentence": "And lost to us be the day on which we did not dance at least once!",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "verstehen": {
+      "sentence": "It is not easily possible to understand the blood of another: I hate the reading idlers.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "versuchen": {
+      "sentence": "If it tempts you so much, try to go in despite my prohibition.",
+      "source": "Kafka — Der Proceß"
+    },
+    "verwenden": {
+      "sentence": "The man, who has equipped himself with much for his journey, uses everything, no matter how valuable, to bribe the doorkeeper.",
+      "source": "Kafka — Der Proceß"
+    },
+    "werden": {
+      "sentence": "The few minutes you asked for have now become half an hour and more.",
+      "source": "Kafka — Der Proceß"
+    },
+    "wirken": {
+      "sentence": "Hardly had she put the comb in her hair than the poison in it took effect, and the girl fell down senseless.",
+      "source": "Grimm — Märchen"
+    },
+    "wissen": {
+      "sentence": "Whoever does not know how to find the way to his ideal lives more recklessly and impudently than the man without an ideal.",
+      "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
+    "wollen": {
+      "sentence": "He wants it and does not want it.",
+      "source": "Mann — Der Tod in Venedig"
+    },
+    "wählen": {
+      "sentence": "The Bundestag elects its President, his deputies, and its secretaries.",
+      "source": "Grundgesetz (1949)"
+    },
+    "zeigen": {
+      "sentence": "Behold! I show you the last man.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "ziehen": {
+      "sentence": "Then the horse sprang up all at once and dragged the lion away with it.",
+      "source": "Grimm — Märchen"
+    },
+    "ändern": {
+      "sentence": "\"Mere legends do not change my opinion,\" said K.",
+      "source": "Kafka — Der Proceß"
+    },
+    "übernehmen": {
+      "sentence": "\"Don't be too hasty,\" said the priest. \"Don't take on someone else's opinion without examining it.\"",
+      "source": "Kafka — Der Proceß"
+    }
+  }
+}

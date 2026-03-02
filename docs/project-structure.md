@@ -26,6 +26,10 @@ Konjugieren/
 │   ├── BrowseableFamily.swift  # Enum of browseable family categories for FamilyBrowseView
 │   ├── Conjugationgroup.swift  # Enum of all conjugationgroups with endings
 │   ├── ConjugationgroupLang.swift  # Setting enum: german/english display
+│   ├── Etymologies.json        # Bundled verb etymologies keyed by language and infinitive
+│   ├── Etymology.swift         # Lazy-loading etymology lookup by infinitive
+│   ├── ExampleSentence.swift   # Lazy-loading literary example sentence lookup by infinitive
+│   ├── ExampleSentences.json   # Bundled literary example sentences keyed by language and infinitive
 │   ├── Conjugator.swift        # Core conjugation logic for all conjugationgroups
 │   ├── ConjugatorError.swift   # Error enum for conjugation failures
 │   ├── Family.swift            # Verb families (strong/weak/mixed/ieren)

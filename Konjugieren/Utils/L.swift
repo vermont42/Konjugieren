@@ -1133,6 +1133,16 @@ enum L {
     }
   }
 
+  enum VerbView {
+    static var etymologyHeading: String {
+      String(localized: "VerbView.etymologyHeading")
+    }
+
+    static var exampleSentenceHeading: String {
+      String(localized: "VerbView.exampleSentenceHeading")
+    }
+  }
+
   enum Onboarding {
     static var conjugationgroupBody: String {
       String(localized: "Onboarding.conjugationgroupBody")

@@ -3,6 +3,7 @@
 import SwiftUI
 import TipKit
 import UIKit
+import WidgetKit
 
 class AppDelegate: NSObject, UIApplicationDelegate {
   static var orientationLock: UIInterfaceOrientationMask = .allButUpsideDown
@@ -17,6 +18,8 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 
 struct KonjugierenApp: App {
   @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
+  @Environment(\.scenePhase) private var scenePhase
+
   var body: some Scene {
     WindowGroup {
       MainTabView()
@@ -34,6 +37,16 @@ struct KonjugierenApp: App {
         )) {
           OnboardingView()
         }
+        .onChange(of: scenePhase) {
+          if scenePhase == .active {
+            WidgetSnapshotWriter.writeSnapshot()
+            WidgetCenter.shared.reloadAllTimelines()
+          }
+        }
+        .onChange(of: Current.settings.thirdPersonPronounGender) {
+          WidgetSnapshotWriter.writeSnapshot()
+          WidgetCenter.shared.reloadAllTimelines()
+        }
     }
   }
 
@@ -44,5 +57,6 @@ struct KonjugierenApp: App {
     let appID = Bundle.main.infoDictionary?["TelemetryDeckAppID"] as? String ?? ""
     Current.analytics.initialize(appID: appID)
     try? Tips.configure()
+    WidgetSnapshotWriter.writeSnapshot()
   }
 }

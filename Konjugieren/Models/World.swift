@@ -90,6 +90,9 @@ class World {
     family = nil
     info = nil
     verb = Verb.verbs[infinitiv]
+    if verb != nil {
+      selectedTab = .verbs
+    }
   }
 
   func handleURL(_ url: URL) {
@@ -107,6 +110,9 @@ class World {
     switch url.host {
     case URL.verbHost:
       verb = Verb.verbs[url.pathComponents[1]]
+      if verb != nil {
+        selectedTab = .verbs
+      }
     case URL.familyHost:
       family = url.pathComponents[1]
     case URL.infoHost:

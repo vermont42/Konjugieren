@@ -47,18 +47,6 @@ struct InfoBrowseView: View {
             }
         }
       }
-      .sheet(item: $world.verb) { verb in
-        NavigationStack {
-          VerbView(verb: verb)
-            .toolbar {
-              ToolbarItem(placement: .cancellationAction) {
-                Button(L.Navigation.dismiss) {
-                  Current.verb = nil
-                }
-              }
-            }
-        }
-      }
     }
   }
 }

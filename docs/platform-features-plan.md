@@ -41,13 +41,14 @@ The recommendations draw from Apple's official featuring criteria, Design Award 
 
 ---
 
-### 3. Home Screen & Lock Screen Widgets (iOS 14+ / iOS 16+)
+### 3. Home Screen & Lock Screen Widgets (iOS 14+ / iOS 16+) - DONE
 
 **Why it matters:** Widgets keep your app visible between sessions. Language-learning widgets (verb of the day, practice reminders) have proven popular in the category. Apple features widget-rich apps frequently.
 
 **Concrete features for Konjugieren:**
 - **"Verb des Tages" widget (small/medium):** Shows a daily verb with one highlighted conjugation and ablaut markup.
 - **Medium widget:** A verb with its full Präsens paradigm (ich/du/er/wir/ihr/sie).
+- **Large widget:** A verb with its full Präsens paradigm (ich/du/er/wir/ihr/sie). Also, etymology and example use.
 - **Lock Screen accessory widget:** Compact daily-verb reminder (verb + translation).
 - **Interactive widget (iOS 17+):** A mini-quiz question directly on the Home Screen — tap the correct conjugation without opening the app.
 

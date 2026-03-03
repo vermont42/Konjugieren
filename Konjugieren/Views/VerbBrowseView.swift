@@ -4,6 +4,7 @@ import SwiftUI
 import TipKit
 
 struct VerbBrowseView: View {
+  @Bindable var world = Current
   @State private var sortOrder: SortOrder = .frequency
   @State private var sortedVerbs: [Verb] = Verb.verbsSortedByFrequency
   @State private var searchText: String = ""
@@ -79,6 +80,13 @@ struct VerbBrowseView: View {
         VerbView(verb: verb)
       }
       .searchable(text: $searchText, prompt: L.VerbBrowse.searchPrompt)
+      .onChange(of: world.verb) {
+        if let verb = world.verb {
+          navigationPath = NavigationPath()
+          navigationPath.append(verb)
+          world.verb = nil
+        }
+      }
     }
   }
 

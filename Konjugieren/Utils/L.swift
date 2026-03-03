@@ -1232,4 +1232,26 @@ enum L {
       String(localized: "Onboarding.readArticlesButton")
     }
   }
+
+  enum Widget {
+    static var conjugate: String {
+      String(localized: "Widget.conjugate")
+    }
+
+    static var correct: String {
+      String(localized: "Widget.correct")
+    }
+
+    static var incorrect: String {
+      String(localized: "Widget.incorrect")
+    }
+
+    static var nextVerb: String {
+      String(localized: "Widget.nextVerb")
+    }
+
+    static var etymology: String {
+      String(localized: "Widget.etymology")
+    }
+  }
 }

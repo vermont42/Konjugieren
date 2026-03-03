@@ -2,6 +2,7 @@
 name: implement
 description: Analyze a task file and plan its implementation
 argument-hint: <filename>
+disable-model-invocation: true
 ---
 
 # Implement a Task

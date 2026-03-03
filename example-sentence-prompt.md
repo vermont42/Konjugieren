@@ -167,6 +167,7 @@ For each verb, construct the VERB SECTION by describing the verb and its key con
    ```
 6. Print a summary table: verb | source | first 60 chars of German sentence | verified/not-found/failed-verification.
 7. **Update this file**: Change the "Next verb number" at the top of this file to current + (number of verbs processed). Also update the verb list under "## Task" to show the next batch of verbs from `docs/frequencies.txt`. If the new number > 988, note that extraction is complete.
+8. **Integrate into the app bundle**: Invoke the `/integrate` skill to merge the updated `ExampleSentences.json` into the app's bundled data.
 
 ## Medieval Examples (deferred)
 

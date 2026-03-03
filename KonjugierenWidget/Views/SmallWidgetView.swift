@@ -28,30 +28,26 @@ struct SmallWidgetView: View {
 
       Spacer()
 
-      if let thirdPerson = snapshot.präsensParadigm.first(where: { $0.pronoun != "ich" && $0.pronoun != "du" && $0.pronoun != "wir" && $0.pronoun != "ihr" && $0.pronoun != "sie" }) {
-        HStack(spacing: 2) {
-          Text(thirdPerson.pronoun)
-            .font(.subheadline)
-            .foregroundStyle(.secondary)
-          Text(widgetMixedCase: thirdPerson.mixedCaseForm)
-            .font(.subheadline)
-            .fontWeight(.semibold)
-        }
-      } else if let first = snapshot.präsensParadigm.first {
-        HStack(spacing: 2) {
-          Text(first.pronoun)
-            .font(.subheadline)
-            .foregroundStyle(.secondary)
-          Text(widgetMixedCase: first.mixedCaseForm)
-            .font(.subheadline)
-            .fontWeight(.semibold)
-        }
+      if let ich = snapshot.präsensParadigm.first {
+        conjugationRow(ich)
       }
-
-      Text(snapshot.familyDisplay)
-        .font(.caption2)
-        .foregroundStyle(.secondary)
+      if let sie = snapshot.präsensParadigm.last {
+        conjugationRow(sie)
+      }
     }
     .widgetURL(URL(string: "konjugieren://verb/\(snapshot.infinitiv)"))
+  }
+
+  private func conjugationRow(_ conjugation: WidgetConjugation) -> some View {
+    HStack(spacing: 2) {
+      Text(conjugation.pronoun)
+        .font(.subheadline)
+        .foregroundStyle(.secondary)
+      Text(widgetMixedCase: conjugation.mixedCaseForm)
+        .font(.subheadline)
+        .fontWeight(.semibold)
+    }
+    .lineLimit(1)
+    .minimumScaleFactor(0.4)
   }
 }

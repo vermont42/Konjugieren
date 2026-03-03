@@ -17,6 +17,19 @@ struct WidgetYellowColor: View {
 }
 
 extension Text {
+  init(widgetEtymology etymologyString: String) {
+    var attributedString = AttributedString()
+    let segments = etymologyString.components(separatedBy: "~")
+    for (index, segment) in segments.enumerated() {
+      var part = AttributedString(segment)
+      if index % 2 == 1 {
+        part.inlinePresentationIntent = .stronglyEmphasized
+      }
+      attributedString.append(part)
+    }
+    self.init(attributedString)
+  }
+
   init(widgetMixedCase mixedCaseString: String) {
     enum ColorParsingState {
       case notStarted

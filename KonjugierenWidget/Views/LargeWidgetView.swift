@@ -64,7 +64,7 @@ struct LargeWidgetView: View {
 
       if let etymology = snapshot.etymologySnippet {
         Divider()
-        Text(etymology)
+        Text(widgetEtymology: etymology)
           .font(.caption2)
           .foregroundStyle(.secondary)
       }

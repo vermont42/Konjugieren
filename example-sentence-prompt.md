@@ -2,13 +2,13 @@
 
 ## Progress
 
-**Next verb index: 446** ← 0-based index into `docs/frequencies.txt` (988 verbs total).
+**Next verb number: 597** ← matches the number in column 1 of `docs/frequencies.txt` (988 verbs total). For example, 597 means the line that starts with `597`.
 
-**BATCH SIZE: 100**
+**BATCH SIZE: 50**
 
 ## Task
 
-Read `docs/frequencies.txt` and take the next [BATCH SIZE] verbs starting at the index above (or fewer if near the end of the file). Find one excellent example sentence for each verb from the literary corpus in `corpus/modern/`. Use parallel subagents — one per verb — then merge their results into the master `ExampleSentences.json`.
+Read `docs/frequencies.txt` and take the next [BATCH SIZE] verbs starting at the verb number above (or fewer if near the end of the file). Find one excellent example sentence for each verb from the literary corpus in `corpus/modern/`. Use parallel subagents — one per verb — then merge their results into the master `ExampleSentences.json`.
 
 ## Architecture
 
@@ -16,10 +16,10 @@ Launch up to 10 `general-purpose` subagents **in parallel** (in a single message
 
 ### Source rotation
 
-To ensure source diversity, assign each subagent a **preferred source** using the verb's index modulo 10:
+To ensure source diversity, assign each subagent a **preferred source** using the verb's number (from column 1 of `frequencies.txt`) modulo 10:
 
-| Index mod 10 | Preferred source file |
-|-------------|----------------------|
+| Number mod 10 | Preferred source file |
+|--------------|----------------------|
 | 0 | `goethe-werther-de.txt` |
 | 1 | `kafka-prozess-de.txt` |
 | 2 | `mann-venedig-de.txt` |
@@ -166,7 +166,7 @@ For each verb, construct the VERB SECTION by describing the verb and its key con
    "
    ```
 6. Print a summary table: verb | source | first 60 chars of German sentence | verified/not-found/failed-verification.
-7. **Update this file**: Change the "Next verb index" at the top of this file to current + (number of verbs processed). Also update the verb list under "## Task" to show the next batch of verbs from `docs/frequencies.txt`. If the new index ≥ 988, note that extraction is complete.
+7. **Update this file**: Change the "Next verb number" at the top of this file to current + (number of verbs processed). Also update the verb list under "## Task" to show the next batch of verbs from `docs/frequencies.txt`. If the new number > 988, note that extraction is complete.
 
 ## Medieval Examples (deferred)
 
@@ -178,7 +178,7 @@ The top 30 verbs (indices 0–29) also need a `"medieval"` sub-key with an Old H
 - Each subagent prompt must be fully self-contained — paste all corpus info and criteria into each one.
 - Do not search the corpus yourself — delegate all searching to the subagents.
 - After merging, verify every German sentence against the corpus before updating the master file.
-- Always update the "Next verb index" in this file after successfully updating `ExampleSentences.json`.
+- Always update the "Next verb number" in this file after successfully updating `ExampleSentences.json`.
 - If a verification fails (sentence not found in corpus), exclude that verb from the master file and note it in the summary. It can be retried in a future run.
 
 ## Lessons Learned

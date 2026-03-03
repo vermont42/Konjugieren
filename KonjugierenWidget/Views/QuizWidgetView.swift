@@ -5,7 +5,6 @@ import WidgetKit
 
 struct QuizWidgetView: View {
   let entry: QuizEntry
-  @Environment(\.widgetFamily) var family
 
   private var quiz: WidgetQuizQuestion {
     entry.snapshot.quizQuestion
@@ -36,21 +35,14 @@ struct QuizWidgetView: View {
             .foregroundStyle(.secondary)
         }
       }
+      .lineLimit(1)
+      .minimumScaleFactor(0.4)
 
       Spacer(minLength: 0)
 
-      let allAnswers = shuffledAnswers
-      if family == .systemMedium {
-        HStack(spacing: 6) {
-          ForEach(allAnswers, id: \.self) { answer in
-            answerButton(answer: answer)
-          }
-        }
-      } else {
-        VStack(spacing: 2) {
-          ForEach(allAnswers, id: \.self) { answer in
-            answerButton(answer: answer)
-          }
+      VStack(spacing: 2) {
+        ForEach(shuffledAnswers, id: \.self) { answer in
+          answerButton(answer: answer)
         }
       }
     }
@@ -81,6 +73,8 @@ struct QuizWidgetView: View {
       Text(answer)
         .font(.caption2)
         .fontWeight(.medium)
+        .lineLimit(1)
+        .minimumScaleFactor(0.4)
         .frame(maxWidth: .infinity)
         .padding(.vertical, 4)
         .background(.fill.quaternary, in: Capsule())

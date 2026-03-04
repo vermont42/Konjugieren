@@ -12,7 +12,7 @@ Konjugieren
 
 **Konjugieren** is an iOS app for learning German-verb conjugations. It conjugates 988 verbs—strong, weak, mixed, and _-ieren_—across all 14 German [conjugationgroups](https://www.linkedin.com/posts/racecondition_i-have-written-elsewhere-about-how-my-experience-activity-7404189320758280192-tiAL), from Präsens Indikativ to Plusquamperfekt Konjunktiv II. The app is fully localized in English and German.
 
-Under the hood, **Konjugieren** features a domain-specific ablaut engine that models the vowel and consonant changes of German strong verbs, a hand-written rich-text parser, protocol-oriented dependency injection, and a comprehensive [Swift Testing](https://developer.apple.com/xcode/swift-testing/) suite with 95 tests across 1,800+ lines.
+Under the hood, **Konjugieren** features a domain-specific ablaut engine that models the vowel and consonant changes of German strong verbs, a hand-written rich-text parser, protocol-oriented dependency injection, and a comprehensive [Swift Testing](https://developer.apple.com/xcode/swift-testing/) suite with 113 tests across 1,800+ lines.
 
 ### Screenshots
 
@@ -23,6 +23,10 @@ Under the hood, **Konjugieren** features a domain-specific ablaut engine that mo
 | Family | Info List | Verb History | Dedication |
 | --- | --- | --- | --- |
 | ![](Images/family.png) | ![](Images/InfoList.png) | ![](Images/history.png) | ![](Images/dedication.png) |
+
+| Etymology/Use | Widgets | Arcade Game | Conjugation Tutor |
+| --- | --- | --- | --- |
+| ![](Images/etym.png) | ![](Images/widgets.png) | ![](Images/game.png) | ![](Images/tutor.png) |
 
 ### Why Konjugieren?
 
@@ -58,6 +62,14 @@ The game manages 11 entity types as value-semantic structs: enemies in a 6×6 gr
 
 The collision system handles 21 distinct interaction types with asymmetric behaviors—a soccer ball bounces off enemies but kills them, shields absorb hits but expire, and a portal mechanic teleports the player across the screen to escape hatchling swarms. Infinite waves scale difficulty exponentially (`enemySpeed = 21 × pow(1.02, wave − 1)`), and the final-score formula (`score × (health + 1) − elapsed seconds`) rewards aggressive, high-health play. Three power-up types (health, shield, rapid-fire) drop from defeated enemies at a 15% rate. The game includes 34 sound effects, context-sensitive haptic feedback, and particle-burst death animations—all rendered in SwiftUI with `Canvas` and standard views.
 
+**WidgetKit** — Two widgets share data through an App Group container:
+
+**Verb des Tages** displays the day's verb across five sizes: three home-screen sizes (small, medium, large) and two lock-screen / watchOS-complication sizes (accessoryRectangular, accessoryInline). The small widget shows the infinitive plus ich/sie Präsens conjugations; the medium adds the full six-person paradigm in two columns; the large adds a Perfekt Partizip line, example sentence with source attribution, and an etymology snippet (truncated to 450 characters at a sentence boundary, main-verb bullet first). A forward button on all sizes triggers NextVerbIntent to cycle verbs without opening the app.
+
+**Conjugation Quiz** offers small and medium home-screen sizes with a four-option multiple-choice question. Answers are submitted via AnswerQuizIntent — a WidgetKit AppIntent that validates the selection, persists the result to the shared UserDefaults container, and reloads the timeline to show a ✓/✗ result view. Answer options are deterministically shuffled using a SeededRNG (XORShift) keyed on the question ID, ensuring the same ordering survives widget reloads.
+
+**Data pipeline** — [`WidgetSnapshotWriter`](Konjugieren/Utils/WidgetSnapshotWriter.swift) (app side) selects the day's verb with `(daysSinceReference + debugOffset) × 127 % eligibleVerbs.count`, generates all six Präsens conjugations via `Conjugator`, assembles wrong quiz answers deterministically, and writes a `WidgetSnapshot` JSON to the shared App Group container. [`SnapshotReader`](KonjugierenWidget/SnapshotReader.swift) (widget side) reads that file; on failure it falls back silently to a placeholder (gehen). The same mixed-case ablaut highlighting used in the main app — yellow for regular portions, red for ablaut-changed letters — is replicated in `WidgetAblautText.swift` using `AttributedString`, with `@Environment(\.colorScheme)` threaded through to switch between dark-mode gold (#FFCE00) and light-mode olive (#665300).
+
 ### Accessibility
 
 Konjugieren is fully accessible to VoiceOver users. The implementation spans five new files and modifications to fourteen existing views, using four distinct accessibility strategies:
@@ -77,8 +89,9 @@ Konjugieren is fully accessible to VoiceOver users. The implementation spans fiv
 - **SwiftUI** — Declarative UI with custom `ViewModifier`s, `TabView` navigation, `TimelineView` game loop, and `Canvas` particle effects
 - **Foundation Models** — On-device Apple Intelligence integration with `SystemLanguageModel`, `LanguageModelSession`, `Tool` protocol, and `@Generable` schemas
 - **Core Motion** — 60 Hz gyroscope input for arcade-game tilt controls via `CMMotionManager`
-- **Swift Testing** — Modern test framework (`@Test`, `#expect`) with 95 test functions
+- **Swift Testing** — Modern test framework (`@Test`, `#expect`) with 113 test functions
 - **Game Center** — Global leaderboard for quiz scores via `GKAccessPoint`
+- **WidgetKit** — Two widgets (Verb des Tages, Conjugation Quiz) across five sizes, with AppIntents for interactive quiz answers and verb cycling without launching the app
 - **XMLParser** — Streaming parser for verb and ablaut-group data (988 verbs, 66 patterns)
 - **Custom URL scheme** — `konjugieren://` deeplinks for inter-article and verb navigation
 - **Localization** — Full EN/DE support via `.xcstrings` string catalogs
@@ -86,7 +99,7 @@ Konjugieren is fully accessible to VoiceOver users. The implementation spans fiv
 
 ### Testing
 
-The test suite spans **1,800+ lines** across five files, with **95 test functions** covering conjugation logic, quiz state management, rich-text parsing, and time formatting.
+The test suite spans **1,800+ lines** across five files, with **113 test functions** covering conjugation logic, quiz state management, rich-text parsing, and time formatting.
 
 The conjugation tests use a **mixed-case convention** to verify ablaut highlighting: lowercase letters represent unchanged portions, and UPPERCASE letters mark ablaut-changed regions. For example, `"sAng"` asserts that _singen_'s Präteritum changes "i" to "a" and the UI will highlight that change. This convention makes it immediately visible when a test expectation involves an ablaut transformation.
 

@@ -5,6 +5,7 @@ import WidgetKit
 
 struct MediumWidgetView: View {
   let snapshot: WidgetSnapshot
+  @Environment(\.colorScheme) private var colorScheme
 
   var body: some View {
     VStack(alignment: .leading, spacing: 4) {
@@ -32,7 +33,7 @@ struct MediumWidgetView: View {
                 .font(.caption)
                 .foregroundStyle(.secondary)
                 .frame(width: 24, alignment: .trailing)
-              Text(widgetMixedCase: conjugation.mixedCaseForm)
+              Text(widgetMixedCase: conjugation.mixedCaseForm, colorScheme: colorScheme)
                 .font(.caption)
                 .fontWeight(.medium)
             }
@@ -46,7 +47,7 @@ struct MediumWidgetView: View {
                 .font(.caption)
                 .foregroundStyle(.secondary)
                 .frame(width: 24, alignment: .trailing)
-              Text(widgetMixedCase: conjugation.mixedCaseForm)
+              Text(widgetMixedCase: conjugation.mixedCaseForm, colorScheme: colorScheme)
                 .font(.caption)
                 .fontWeight(.medium)
             }

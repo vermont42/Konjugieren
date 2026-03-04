@@ -5,6 +5,7 @@ import WidgetKit
 
 struct LargeWidgetView: View {
   let snapshot: WidgetSnapshot
+  @Environment(\.colorScheme) private var colorScheme
 
   var body: some View {
     VStack(alignment: .leading, spacing: 4) {
@@ -30,7 +31,7 @@ struct LargeWidgetView: View {
         Text(snapshot.auxiliary)
         Text("·")
         Text("pp:")
-        Text(widgetMixedCase: snapshot.perfektpartizip)
+        Text(widgetMixedCase: snapshot.perfektpartizip, colorScheme: colorScheme)
           .fontWeight(.medium)
       }
       .font(.caption2)
@@ -80,7 +81,7 @@ struct LargeWidgetView: View {
         .font(.caption2)
         .foregroundStyle(.secondary)
         .frame(width: 20, alignment: .trailing)
-      Text(widgetMixedCase: conjugation.mixedCaseForm)
+      Text(widgetMixedCase: conjugation.mixedCaseForm, colorScheme: colorScheme)
         .font(.caption)
         .fontWeight(.medium)
         .lineLimit(1)

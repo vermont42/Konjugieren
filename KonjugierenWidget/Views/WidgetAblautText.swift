@@ -9,13 +9,6 @@ private let widgetYellowLight = Color(red: 0x66 / 255.0, green: 0x53 / 255.0, bl
 private let widgetYellowDark = Color(red: 0xFF / 255.0, green: 0xCE / 255.0, blue: 0x00 / 255.0)
 private let widgetRed = Color(red: 0xDD / 255.0, green: 0x00 / 255.0, blue: 0x00 / 255.0)
 
-struct WidgetYellowColor: View {
-  @Environment(\.colorScheme) private var colorScheme
-  var body: some View {
-    Rectangle().foregroundStyle(colorScheme == .dark ? widgetYellowDark : widgetYellowLight)
-  }
-}
-
 extension Text {
   init(widgetEtymology etymologyString: String) {
     var attributedString = AttributedString()
@@ -30,13 +23,14 @@ extension Text {
     self.init(attributedString)
   }
 
-  init(widgetMixedCase mixedCaseString: String) {
+  init(widgetMixedCase mixedCaseString: String, colorScheme: ColorScheme) {
     enum ColorParsingState {
       case notStarted
       case inRegularPart
       case inIrregularPart
     }
 
+    let widgetYellow = colorScheme == .dark ? widgetYellowDark : widgetYellowLight
     var attributedString = AttributedString()
     var state = ColorParsingState.notStarted
     var currentRegularPart = ""
@@ -76,7 +70,7 @@ extension Text {
           currentRegularPart += canonicalChar
         } else {
           var part = AttributedString(currentRegularPart)
-          part.foregroundColor = widgetYellowLight
+          part.foregroundColor = widgetYellow
           attributedString.append(part)
           currentRegularPart = ""
           currentIrregularPart = canonicalChar
@@ -97,7 +91,7 @@ extension Text {
     }
 
     var regularPart = AttributedString(currentRegularPart)
-    regularPart.foregroundColor = widgetYellowLight
+    regularPart.foregroundColor = widgetYellow
     attributedString.append(regularPart)
 
     var irregularPart = AttributedString(currentIrregularPart)

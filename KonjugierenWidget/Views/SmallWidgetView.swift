@@ -5,6 +5,7 @@ import WidgetKit
 
 struct SmallWidgetView: View {
   let snapshot: WidgetSnapshot
+  @Environment(\.colorScheme) private var colorScheme
 
   var body: some View {
     VStack(alignment: .leading, spacing: 4) {
@@ -43,7 +44,7 @@ struct SmallWidgetView: View {
       Text(conjugation.pronoun)
         .font(.subheadline)
         .foregroundStyle(.secondary)
-      Text(widgetMixedCase: conjugation.mixedCaseForm)
+      Text(widgetMixedCase: conjugation.mixedCaseForm, colorScheme: colorScheme)
         .font(.subheadline)
         .fontWeight(.semibold)
     }

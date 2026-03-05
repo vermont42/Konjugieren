@@ -25,8 +25,10 @@ enum QuizErrorHistory {
   }
 
   static func load(getterSetter: GetterSetter) -> [QuizErrorRecord] {
-    guard let jsonString = getterSetter.get(key: storageKey),
-          let data = jsonString.data(using: .utf8) else {
+    guard
+      let jsonString = getterSetter.get(key: storageKey),
+      let data = jsonString.data(using: .utf8)
+    else {
       return []
     }
     return (try? JSONDecoder().decode([QuizErrorRecord].self, from: data)) ?? []
@@ -48,8 +50,10 @@ enum QuizErrorHistory {
   }
 
   private static func save(_ records: [QuizErrorRecord], getterSetter: GetterSetter) {
-    guard let data = try? JSONEncoder().encode(records),
-          let jsonString = String(data: data, encoding: .utf8) else {
+    guard
+      let data = try? JSONEncoder().encode(records),
+      let jsonString = String(data: data, encoding: .utf8)
+    else {
       return
     }
     getterSetter.set(key: storageKey, value: jsonString)

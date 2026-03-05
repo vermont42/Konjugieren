@@ -17,11 +17,12 @@ enum ExampleSentences {
 
   @MainActor private static func loadIfNeeded() {
     guard pairs == nil else { return }
-    guard let url = Bundle.main.url(forResource: "ExampleSentences", withExtension: "json"),
-          let data = try? Data(contentsOf: url),
-          let file = try? JSONDecoder().decode([String: [String: ExampleSentence]].self, from: data),
-          let de = file["de"],
-          let en = file["en"]
+    guard
+      let url = Bundle.main.url(forResource: "ExampleSentences", withExtension: "json"),
+      let data = try? Data(contentsOf: url),
+      let file = try? JSONDecoder().decode([String: [String: ExampleSentence]].self, from: data),
+      let de = file["de"],
+      let en = file["en"]
     else {
       pairs = [:]
       return

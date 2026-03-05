@@ -7,9 +7,10 @@ enum Etymology {
 
   @MainActor private static func loadIfNeeded() {
     guard etymologies == nil else { return }
-    guard let url = Bundle.main.url(forResource: "Etymologies", withExtension: "json"),
-          let data = try? Data(contentsOf: url),
-          let file = try? JSONDecoder().decode([String: [String: String]].self, from: data)
+    guard
+      let url = Bundle.main.url(forResource: "Etymologies", withExtension: "json"),
+      let data = try? Data(contentsOf: url),
+      let file = try? JSONDecoder().decode([String: [String: String]].self, from: data)
     else {
       etymologies = [:]
       return

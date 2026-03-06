@@ -2,7 +2,7 @@
 
 ## Progress
 
-**Next verb number: 597** ← matches the number in column 1 of `docs/frequencies.txt` (988 verbs total). For example, 597 means the line that starts with `597`.
+**Next verb number: 697** ← matches the number in column 1 of `docs/frequencies.txt` (988 verbs total). For example, 597 means the line that starts with `597`.
 
 **BATCH SIZE: 50**
 
@@ -201,9 +201,19 @@ German typographic quotation marks (`„` U+201E, `"` U+201C, `"` U+201D, `»` U
    ```
 5. **Source name normalization** is essential. Subagents return variant source names (e.g., "Grimm, Aschenputtel" vs. "Grimm — Märchen", "Nietzsche, Also sprach Zarathustra (1883)" vs. "Nietzsche — Also sprach Zarathustra"). Build a comprehensive normalization map covering both German and English name variants.
 
+### Sentence text reconstruction after verification
+
+A grep match confirms the verb exists in the claimed source file, but does NOT guarantee the subagent's surrounding sentence text is correct. Subagents frequently introduce subtle word-level errors — wrong nouns, different prepositional phrases, or an entirely different sentence for the same verb (e.g., a subagent returned "Gartenpforte" but the corpus has "Gartenterrasse"; "steinralte" instead of "steinalte"; a wholly different `einreichen` sentence than what's in Kafka). After a grep verification succeeds:
+
+1. Use `Read` with the matched line number (± 3 lines of context) to get the exact corpus text.
+2. Reconstruct the full sentence from the corpus, not from the subagent's output.
+3. Use the corpus text verbatim in the merge script.
+
+This is especially important when writing the Python merge script — always go back to the corpus for the definitive wording.
+
 ### Context window management
 
-Processing 100 verbs in a single session risks hitting the context limit before writing results to disk. Mitigation strategies:
+Processing 50 verbs in a single session risks hitting the context limit before writing results to disk. Mitigation strategies:
 - **Write intermediate results** to a temp JSON file after each batch of 10 agents returns, not just at the end.
 - **If the session is continued** after compaction, extract prior results from the old transcript at `~/.claude/projects/.../SESSION_ID.jsonl` using regex. Agent results appear in `<result>...</result>` tags. Sentences with escaped quotes (`\"`) inside the JSON require special handling — search for each verb individually rather than using a single regex.
 - The transcript is JSONL with nested JSON escaping. Typographic quotes survive fine, but sentences containing `\"` (escaped ASCII quotes within JSON strings) break simple extraction regexes. Use per-verb block extraction (find the block, print its tail) instead.

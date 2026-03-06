@@ -10,3 +10,8 @@ Verbs from `docs/frequencies.txt` not found in any corpus source file are listed
 | 447 | weiterlesen | Modern compound verb (to continue reading) absent from all literary, government, and technology corpus files |
 | 459 | einbauen | Modern technical/construction verb (to install/build in) not found in any corpus file |
 | 478 | kritisieren | Verb (to criticize) not found in any literary, government, or technology corpus file |
+| 648 | ignorieren | Modern loanword (to ignore) absent from all literary, government, and technology corpus files |
+| 654 | montieren | Technical verb (to assemble/mount) not found in any corpus file |
+| 657 | weißen | Archaic/dialectal verb (to whitewash) absent from all corpus files |
+| 668 | kommentieren | Modern media/journalistic verb (to comment) not found in any corpus file |
+| 677 | fotografieren | Modern loanword (to photograph) absent from all literary, government, and technology corpus files |

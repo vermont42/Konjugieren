@@ -15,3 +15,4 @@ Verbs from `docs/frequencies.txt` not found in any corpus source file are listed
 | 657 | weißen | Archaic/dialectal verb (to whitewash) absent from all corpus files |
 | 668 | kommentieren | Modern media/journalistic verb (to comment) not found in any corpus file |
 | 677 | fotografieren | Modern loanword (to photograph) absent from all literary, government, and technology corpus files |
+| 747 | posten | Modern internet loanword (to post online) absent from all literary, government, and technology corpus files |

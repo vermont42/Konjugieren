@@ -2,7 +2,7 @@
 
 ## Progress
 
-**Next verb number: 697** ← matches the number in column 1 of `docs/frequencies.txt` (988 verbs total). For example, 597 means the line that starts with `597`.
+**Next verb number: 767** ← matches the number in column 1 of `docs/frequencies.txt` (988 verbs total). For example, 42 means the line that starts with `42`.
 
 **BATCH SIZE: 50**
 
@@ -151,7 +151,7 @@ For each verb, construct the VERB SECTION by describing the verb and its key con
 1. Parse the JSON fragment from each subagent's response. The subagent may include extra text around the JSON — extract the JSON object.
 2. Merge the fragments into a combined object with `"de"` and `"en"` keys, each containing the new verb entries.
 3. If any subagent returned `notFound`, note the gap in the summary, do not add an entry to the JSON, and **append the verb to `docs/missing_verbs.md`** (preserving the existing table format).
-4. **Verify** each German sentence actually exists in the corpus: use Grep to confirm a unique multi-word substring (not the full sentence) appears in the claimed source file. Full-sentence matching is unreliable because corpus lines wrap at ~70 characters, and `goethe-werther-de.txt` uses double spaces between sentences (e.g., `leidet.  Ich`), which won't match a single-space version.
+4. **Verify** each German sentence actually exists in the corpus: use Grep to confirm a unique multi-word substring (not the full sentence) appears in the claimed source file. Full-sentence matching is unreliable because corpus lines wrap at ~70 characters, and `goethe-werther-de.txt` uses double spaces between sentences (e.g., `leidet.  Ich`), which won't match a single-space version. **Keep grep substrings under ~50 characters** so they fit on a single wrapped line. If a longer substring fails, retry with a shorter one from the same sentence — the failure almost always means the substring spans a line break, not that the sentence is fabricated.
 5. **Update the master file**: Read the existing `ExampleSentences.json` at the project root (create it if it doesn't exist). Merge the new verb entries into the existing `"de"` and `"en"` objects — do not overwrite existing entries. Write the updated file back with pretty-printed JSON (2-space indent, keys sorted alphabetically within each language object). Use Python for the merge to ensure correctness:
    ```
    python3 -c "

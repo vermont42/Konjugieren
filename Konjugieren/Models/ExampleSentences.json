@@ -52,9 +52,17 @@
       "sentence": "Hackerinnen und Hacker können fremde Netzwerke für das Abrufen oder Teilen illegaler Inhalte oder für Angriffe auf andere Internetnutzer missbrauchen.",
       "source": "BSI — Router, WLAN und VPN"
     },
+    "absagen": {
+      "sentence": "Er saß dort, der Meister, der würdig gewordene Künstler, der Autor des »Elenden«, der in so vorbildlich reiner Form dem Zigeunertum und der trüben Tiefe abgesagt, dem Abgrunde die Sympathie gekündigt und das Verworfene verworfen hatte.",
+      "source": "Mann — Der Tod in Venedig"
+    },
     "abschließen": {
       "sentence": "Dann schlossen sie die Tür ab und liefen davon.",
       "source": "Grimm — Märchen"
+    },
+    "abschneiden": {
+      "sentence": "Wenn du dein Land einerntest, sollst du nicht alles bis an die Enden umher abschneiden, auch nicht alles genau aufsammeln.",
+      "source": "Luther — Bibel"
     },
     "absehen": {
       "sentence": "Selbst, wenn du es auf meine Barschaft abgesehen hast und mich hinterrücks mit einem Ruderschlage ins Haus des Aides schickst, wirst du mich gut gefahren haben.",
@@ -75,6 +83,10 @@
     "abwarten": {
       "sentence": "Man muss dazu schon die Ankunft einer neuen Gattung von Philosophen abwarten.",
       "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
+    "abziehen": {
+      "sentence": "Die Venezianer unterdessen hatten geendigt und zogen ab.",
+      "source": "Mann — Der Tod in Venedig"
     },
     "achten": {
       "sentence": "Eines Tages ging er, ohne auf Weg und Steg zu achten, immer ins Feld hinein und gelangte endlich in einen Wald.",
@@ -128,6 +140,10 @@
       "sentence": "Und oft greift man an und macht sich einen Feind, um zu verbergen, dass man angreifbar ist.",
       "source": "Nietzsche — Also sprach Zarathustra"
     },
+    "anhalten": {
+      "sentence": "Der Reiter, der das gehört hatte, hielt an und rief: »Ei, Hans, warum laufst du auch zu Fuß?«",
+      "source": "Grimm — Märchen"
+    },
     "ankommen": {
       "sentence": "So kam man denn an, geschaukelt vom Kielwasser eines zur Stadt fahrenden Dampfers.",
       "source": "Mann — Der Tod in Venedig"
@@ -164,6 +180,10 @@
       "sentence": "Bestehen Zweifel oder Meinungsverschiedenheiten darüber, ob eine landesrechtliche Vorschrift mit dem Reichsrecht vereinbar ist, so kann die zuständige Reichs- oder Landeszentralbehörde nach näherer Vorschrift eines Reichsgesetzes die Entscheidung eines obersten Gerichtshofs des Reichs anrufen.",
       "source": "Weimarer Verfassung (1919)"
     },
+    "ansagen": {
+      "sentence": "Und Esther sagte ihm nicht an ihr Volk und ihre Freundschaft; denn Mardochai hatte ihr geboten, sie sollte es nicht ansagen.",
+      "source": "Luther — Bibel"
+    },
     "anschauen": {
       "sentence": "„Kann ich mir die Bücher anschauen,“ fragte K., nicht aus besonderer Neugierde, sondern nur um nicht vollständig nutzlos hier gewesen zu sein.",
       "source": "Kafka — Der Proceß"
@@ -183,6 +203,14 @@
     "ansprechen": {
       "sentence": "„Ich will weder hierbleiben noch von Ihnen angesprochen werden, solange Sie sich mir nicht vorstellen.“",
       "source": "Kafka — Der Proceß"
+    },
+    "anstellen": {
+      "sentence": "Ich bin zum Prügeln angestellt, also prügle ich.",
+      "source": "Kafka — Der Proceß"
+    },
+    "anstreben": {
+      "sentence": "Die Bundesregierung strebt ein nationales Weltraumgesetz an, das u. a. zur Nachhaltigkeit von Weltraumaktivitäten beitragen wird, indem es ein Genehmigungserfordernis für und die Überwachung von Weltraumaktivitäten vorsieht.",
+      "source": "Raumfahrtstrategie (2023)"
     },
     "antreten": {
       "sentence": "Und ich trat an den Sand des Meeres und sah ein Tier aus dem Meer steigen, das hatte sieben Häupter und zehn Hörner und auf seinen Hörnern zehn Kronen und auf seinen Häuptern Namen der Lästerung.",
@@ -216,6 +244,10 @@
       "sentence": "Denn sie wollen nicht achten auf das Tun des HERRN noch auf die Werke seiner Hände; darum wird er sie zerbrechen und nicht aufbauen.",
       "source": "Luther — Bibel"
     },
+    "aufbewahren": {
+      "sentence": "Sie mochten jetzt, wenn sie wollten, zusehn, wie er zu einem Wandschränkchen ging, in dem er einen guten Schnaps aufbewahrte.",
+      "source": "Kafka — Der Proceß"
+    },
     "auffallen": {
       "sentence": "K. wäre auch diese kleine Kanzel gewiß nicht aufgefallen, wenn nicht oben eine Lampe befestigt gewesen wäre, wie man sie kurz vor einer Predigt bereitzustellen pflegt.",
       "source": "Kafka — Der Proceß"
@@ -231,6 +263,10 @@
     "aufgeben": {
       "sentence": "Simson aber sprach zu ihnen: Ich will euch ein Rätsel aufgeben.",
       "source": "Luther — Bibel"
+    },
+    "aufgreifen": {
+      "sentence": "Unter dem Stichwort „AzubiGhosting“ wird das inzwischen weitverbreitete Phänomen aufgegriffen, trotz einer vertraglichen Bindung ohne Absage die Ausbildung nicht anzutreten.",
+      "source": "Berufsbildungsbericht (2024)"
     },
     "aufhalten": {
       "sentence": "Sie haben ja selbst gesehn, wie lange ich jetzt aufgehalten wurde.",
@@ -252,6 +288,10 @@
       "sentence": "Es nimmt dich auf, wenn du kommst, und es entläßt dich, wenn du gehst.",
       "source": "Kafka — Der Proceß"
     },
+    "aufpassen": {
+      "sentence": "Da Sie auf alle Worte aufpassen, füge ich hinzu: ich zwinge Sie nicht in die Bank zu gehn, ich hatte nur angenommen, daß Sie es wollen.",
+      "source": "Kafka — Der Proceß"
+    },
     "aufrufen": {
       "sentence": "Die Vorstellung, einem Verbrecher in die Hände gefallen zu sein, streifte träumerisch Aschenbachs Sinn,--unvermögend, seine Gedanken zu tätiger Abwehr aufzurufen.",
       "source": "Mann — Der Tod in Venedig"
@@ -260,13 +300,29 @@
       "sentence": "Helden und Ehrenhafte möchte er um sich aufstellen, der neue Götze!",
       "source": "Nietzsche — Also sprach Zarathustra"
     },
+    "aufsuchen": {
+      "sentence": "Du mußt deinen Vater aufsuchen, wenn du mit dem Goldesel kommst, so wird er seinen Zorn vergessen und dich gut aufnehmen.",
+      "source": "Grimm — Märchen"
+    },
     "auftauchen": {
       "sentence": "Er erging sich nach Tische, sehr unruhig über ihren Verbleib, in Abendanzug und Strohhut vor dem Hotel, zu Füßen der Terrasse, als er plötzlich die nonnenähnlichen Schwestern mit der Erzieherin und vier Schritte hinter ihnen Tadzio im Lichte der Bogenlampen auftauchen sah.",
       "source": "Mann — Der Tod in Venedig"
     },
+    "aufteilen": {
+      "sentence": "Bei einer Blockverschlüsselung hingegen wird der Klartext vorab in Blöcke einer bestimmten Größe aufgeteilt.",
+      "source": "Wikipedia — Verschlüsselung"
+    },
+    "auftragen": {
+      "sentence": "Da ward gutes Essen aufgetragen, Milch und Pfannekuchen mit Zucker, Äpfel und Nüsse.",
+      "source": "Grimm — Märchen"
+    },
     "auftreten": {
       "sentence": "Alle, die vor diesem Gericht als Advokaten auftreten, sind im Grunde nur Winkeladvokaten.",
       "source": "Kafka — Der Proceß"
+    },
+    "aufwachsen": {
+      "sentence": "Und Gott der HERR ließ aufwachsen aus der Erde allerlei Bäume, lustig anzusehen und gut zu essen, und den Baum des Lebens mitten im Garten und den Baum der Erkenntnis des Guten und Bösen.",
+      "source": "Luther — Bibel"
     },
     "aufweisen": {
       "sentence": "Mit dem Aufbau eines Nationalen Forschungskonsortiums für KI wurde bereits der Grundstein für ein international beachtetes Forschungsnetzwerk gelegt, das besonders durch die Verbindung verschiedener Forschungsbereiche ein großes Entwicklungspotenzial aufweist.",
@@ -316,6 +372,10 @@
       "sentence": "Wer ist wie der Weise, und wer kann die Dinge auslegen?",
       "source": "Luther — Bibel"
     },
+    "ausliefern": {
+      "sentence": "Er war ihnen ausgeliefert, ließen sie ihn los, so mußte er hinfallen wie ein Brett.",
+      "source": "Kafka — Der Proceß"
+    },
     "auslösen": {
       "sentence": "Da ist die Kraft zu wollen seit langem zurückgelegt und aufgespeichert, da wartet der Wille - ungewiss, ob als Wille der Verneinung oder der Bejahung - in bedrohlicher Weise darauf, ausgelöst zu werden, um den Physikern von heute ihr Leibwort abzuborgen.",
       "source": "Nietzsche — Jenseits von Gut und Böse"
@@ -334,6 +394,10 @@
     },
     "ausrichten": {
       "sentence": "„Soll ich ihr etwas ausrichten?“",
+      "source": "Kafka — Der Proceß"
+    },
+    "ausschalten": {
+      "sentence": "Man will die Verteidigung möglichst ausschalten, alles soll auf den Angeklagten selbst gestellt sein.",
       "source": "Kafka — Der Proceß"
     },
     "ausschließen": {
@@ -367,6 +431,10 @@
     "austauschen": {
       "sentence": "Angreifende können die auf dem Router installierte Firmware austauschen oder mit Malware infizieren.",
       "source": "BSI — Router, WLAN und VPN"
+    },
+    "auswerten": {
+      "sentence": "Nur jedes fünfte Unternehmen wertet Social Media Daten aus.",
+      "source": "Digitale Strategie (2025)"
     },
     "auswirken": {
       "sentence": "Dieses Plus wirkt sich dann entsprechend auf das Gesamtergebnis aus.",
@@ -464,9 +532,17 @@
       "sentence": "K. hielt sich eng neben dem Geistlichen, ohne in der Finsternis zu wissen, wo er sich befand.",
       "source": "Kafka — Der Proceß"
     },
+    "befragen": {
+      "sentence": "Und als sie daheim den Spiegel befragte: »Spieglein, Spieglein an der Wand, wer ist die Schönste im ganzen Land?«",
+      "source": "Grimm — Märchen"
+    },
     "befreien": {
       "sentence": "Wollen befreit: das ist die wahre Lehre von Wille und Freiheit—so lehrt sie euch Zarathustra.",
       "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "befördern": {
+      "sentence": "Zur Kriegführung bestimmte Waffen dürfen nur mit Genehmigung der Bundesregierung hergestellt, befördert und in Verkehr gebracht werden.",
+      "source": "Grundgesetz (1949)"
     },
     "befürchten": {
       "sentence": "Insbesondere von den drei Beamten war nichts zu befürchten, sie waren wieder in die große Beamtenschaft der Bank versenkt, es war keine Veränderung an ihnen zu bemerken.",
@@ -620,6 +696,10 @@
       "sentence": "Fast Alles, was wir „höhere Cultur“ nennen, beruht auf der Vergeistigung und Vertiefung der Grausamkeit — dies ist mein Satz.",
       "source": "Nietzsche — Jenseits von Gut und Böse"
     },
+    "beruhigen": {
+      "sentence": "„Das kann mich nicht beruhigen,“ rief der Onkel, „Josef, lieber Josef, denke an dich, an deine Verwandten, an unsern guten Namen.“",
+      "source": "Kafka — Der Proceß"
+    },
     "berücksichtigen": {
       "sentence": "Und würde man etwa in der Bank bei der Beurteilung seiner Arbeit seine besondere Lage berücksichtigen?",
       "source": "Kafka — Der Proceß"
@@ -663,6 +743,10 @@
     "besichtigen": {
       "sentence": "Wie, wenn er ein Fremder gewesen wäre, der nur die Kirche besichtigen wollte?",
       "source": "Kafka — Der Proceß"
+    },
+    "besiegen": {
+      "sentence": "Die Schnellen besiegen die Langsamen.",
+      "source": "Digitale Strategie (2025)"
     },
     "besitzen": {
       "sentence": "Selig sind die Sanftmütigen; denn sie werden das Erdreich besitzen.",
@@ -768,6 +852,10 @@
       "sentence": "Man rief einander über die Gasse zu, ein solcher Zuruf bewirkte gerade über K. ein großes Gelächter.",
       "source": "Kafka — Der Proceß"
     },
+    "bewundern": {
+      "sentence": "Es giebt eine Unschuld der Bewunderung: Der hat sie, dem es noch nicht in den Sinn gekommen ist, auch er könne einmal bewundert werden.",
+      "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
     "bewältigen": {
       "sentence": "Der Vierziger hatte, ermattet von den Strapazen und Wechselfällen der eigentlichen Arbeit, alltäglich eine Post zu bewältigen, die Wertzeichen aus aller Herren Ländern trug.",
       "source": "Mann — Der Tod in Venedig"
@@ -807,6 +895,10 @@
     "blicken": {
       "sentence": "Und wenn du lange in einen Abgrund blickst, blickt der Abgrund auch in dich hinein.",
       "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
+    "blockieren": {
+      "sentence": "Der Netzwerkzugriff von anderen Anwendungen auf das Internet wird blockiert.",
+      "source": "Wikipedia — Firewall"
     },
     "brauchen": {
       "sentence": "Wer siebene auf einen Streich trifft, braucht sich vor zweien nicht zu fürchten.",
@@ -924,6 +1016,10 @@
       "sentence": "Die Gesetzesvorlagen werden von der Reichsregierung oder aus der Mitte des Reichstags eingebracht.",
       "source": "Weimarer Verfassung (1919)"
     },
+    "einfallen": {
+      "sentence": "Es fiel natürlich niemandem ein, jetzt hierherzukommen.",
+      "source": "Kafka — Der Proceß"
+    },
     "einfügen": {
       "sentence": "Falls du eine Datei umbenannt haben möchtest, kannst du die Vorlage:Datei umbenennen mit „Vorgeschlagener Dateiname.ext“ und einer Begründung auf der Dateibeschreibungsseite einfügen.",
       "source": "Wikipedia — Hilfe:Dateien"
@@ -944,6 +1040,14 @@
       "sentence": "Er hielt ein, kriegte angst und bang und sann dem Ding nach.",
       "source": "Grimm — Märchen"
     },
+    "einholen": {
+      "sentence": "Er war schon in das Zimmer des Advokaten eingetreten, als ihn Leni einholte.",
+      "source": "Kafka — Der Proceß"
+    },
+    "einigen": {
+      "sentence": "„Wir haben uns schon geeinigt,“ sagte K.",
+      "source": "Kafka — Der Proceß"
+    },
     "einkaufen": {
       "sentence": "Als aber der Fremde in die Tasche griff, zwei Goldstücke herausholte und sagte, er sollte nur etwas Gutes für ihn einkaufen, so machte er große Augen, lief und suchte das Beste, das er auftreiben konnte.",
       "source": "Grimm — Märchen"
@@ -951,6 +1055,10 @@
     "einladen": {
       "sentence": "Ihr ladet euch einen Zeugen ein, wenn ihr von euch gut reden wollt.",
       "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "einlassen": {
+      "sentence": "K. schickte sofort die Diener aus dem Zimmer mit der Weisung, niemand einzulassen.",
+      "source": "Kafka — Der Proceß"
     },
     "einlegen": {
       "sentence": "Und es kam eine arme Witwe und legte zwei Scherflein ein; die machen einen Heller.",
@@ -992,9 +1100,17 @@
       "sentence": "Aber ich habe meinen König eingesetzt auf meinem heiligen Berg Zion.",
       "source": "Luther — Bibel"
     },
+    "einsteigen": {
+      "sentence": "Niemand von euch will in den Todes-Nachen einsteigen! Wieso wollt ihr dann Welt-Müde sein!",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
     "einstellen": {
       "sentence": "Sogar Gesellschaft stellte sich ein, ein Boot mit musikalischen Wegelagerern, Männern und Weibern, die zur Guitarre, zur Mandoline sangen, aufdringlich Bord an Bord mit der Gondel fuhren und die Stille über den Wassern mit ihrer gewinnsüchtigen Fremdenpoesie erfüllten.",
       "source": "Mann — Der Tod in Venedig"
+    },
+    "einstufen": {
+      "sentence": "87,4 Prozent dieser Städte haben die Landesplanungen als Teil eines Mittelzentrums oder höher eingestuft.",
+      "source": "Raumordnungsbericht (2021)"
     },
     "eintragen": {
       "sentence": "Im Öffentlichen Dienst werden nicht nur spezielle Berufe für den Öffentlichen Dienst, sondern auch Berufe, die bei den Industrie- und Handelskammern oder Handwerkskammern eingetragen werden, und Berufe des Gesundheitswesens ausgebildet.",
@@ -1003,6 +1119,10 @@
     "eintreten": {
       "sentence": "Der Mann überlegt und fragt dann, ob er also später werde eintreten dürfen.",
       "source": "Kafka — Der Proceß"
+    },
+    "einziehen": {
+      "sentence": "Machet die Tore weit und die Türen in der Welt hoch, daß der König der Ehren einziehe!",
+      "source": "Luther — Bibel"
     },
     "empfangen": {
       "sentence": "Und noch desselben Tages empfing eine respektvoll erschütterte Welt die Nachricht von seinem Tode.",
@@ -1040,8 +1160,20 @@
       "sentence": "Dann stand er vollends auf und entfernte sich langsam.",
       "source": "Mann — Der Tod in Venedig"
     },
+    "entgehen": {
+      "sentence": "Sie suchten abermals ihn zu greifen; aber er entging ihnen aus ihren Händen.",
+      "source": "Luther — Bibel"
+    },
     "enthalten": {
       "sentence": "Die Geschichte enthält über den Einlaß im Gesetz zwei wichtige Erklärungen des Türhüters, eine am Anfang, eine am Ende.",
+      "source": "Kafka — Der Proceß"
+    },
+    "entlassen": {
+      "sentence": "Es nimmt dich auf, wenn du kommst, und es entläßt dich, wenn du gehst.",
+      "source": "Kafka — Der Proceß"
+    },
+    "entlasten": {
+      "sentence": "Er dachte hiebei an nichts Bestimmtes, sondern handelte nur in dem Gefühl, daß er sich so verhalten müßte, wenn er einmal die große Eingabe fertiggestellt hätte, die ihn gänzlich entlasten sollte.",
       "source": "Kafka — Der Proceß"
     },
     "entnehmen": {
@@ -1067,6 +1199,10 @@
     "entstehen": {
       "sentence": "Der Krieg mehrentheils auß widerwärtiger Religion entstanden.",
       "source": "Westfälischer Friede (1648)"
+    },
+    "enttäuschen": {
+      "sentence": "Enttäuscht nahm K. den Brief und steckte ihn in die Tasche.",
+      "source": "Kafka — Der Proceß"
     },
     "entwerfen": {
       "sentence": "Und er nahm sie von ihren Händen und entwarf's mit einem Griffel und machte ein gegossenes Kalb.",
@@ -1140,6 +1276,10 @@
       "sentence": "Dürfte sich der Philosoph nicht über die Gläubigkeit an die Grammatik erheben?",
       "source": "Nietzsche — Jenseits von Gut und Böse"
     },
+    "erholen": {
+      "sentence": "Ruhe dich hier aus: diese Stelle ist gastfreundlich für Jedermann, — erhole dich!",
+      "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
     "erhöhen": {
       "sentence": "Der HERR macht arm und macht reich; er erniedrigt und erhöht.",
       "source": "Luther — Bibel"
@@ -1196,6 +1336,10 @@
       "sentence": "Dabei ist der Umfang der Ausgaben unter Berücksichtigung einer mehrjährigen Finanzplanung zu ermitteln.",
       "source": "Grundgesetz (1949)"
     },
+    "ernennen": {
+      "sentence": "Der Bundeskanzler ernennt einen Bundesminister zu seinem Stellvertreter.",
+      "source": "Grundgesetz (1949)"
+    },
     "erneuern": {
       "sentence": "Bringe uns, HERR, wieder zu dir, daß wir wieder heimkommen; erneuere unsre Tage wie vor alters!",
       "source": "Luther — Bibel"
@@ -1212,6 +1356,10 @@
       "sentence": "Der Bund errichtet eine Währungs- und Notenbank als Bundesbank.",
       "source": "Grundgesetz (1949)"
     },
+    "erschaffen": {
+      "sentence": "Hat er nicht die Welt erschaffen nach seinem Bilde, nämlich so dumm als möglich?",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
     "erscheinen": {
       "sentence": "Als die Wasserstraße sich wendete, erschien des Rialto prächtig gespannter Marmorbogen.",
       "source": "Mann — Der Tod in Venedig"
@@ -1219,6 +1367,10 @@
     "erschließen": {
       "sentence": "Aus- und Neubauvorhaben können außerdem städtebauliche Potenziale erschließen.",
       "source": "Bundesverkehrswegeplan (2030)"
+    },
+    "erschweren": {
+      "sentence": "Eine stark abnehmende Bevölkerungszahl erschwert es Regionen, ihre Wettbewerbsfähigkeit zu erhalten und zu stärken.",
+      "source": "Raumordnungsbericht (2021)"
     },
     "ersetzen": {
       "sentence": "Für die Fälle aber, wo man der Führer und Leithammel nicht entrathen zu können glaubt, macht man heute Versuche über Versuche, durch Zusammen-Addiren kluger Heerdenmenschen die Befehlshaber zu ersetzen: dieses Ursprungs sind zum Beispiel alle repräsentativen Verfassungen.",
@@ -1380,6 +1532,10 @@
       "sentence": "Aber ich will mich freuen des HERRN und fröhlich sein in Gott, meinem Heil.",
       "source": "Luther — Bibel"
     },
+    "fungieren": {
+      "sentence": "Die Pandemie fungiert als Katalysator für die wirtschaftliche Transformation.",
+      "source": "Raumordnungsbericht (2021)"
+    },
     "funktionieren": {
       "sentence": "Um unter den extremen Bedingungen des Weltraums zuverlässig zu funktionieren, benötigt Weltraumforschung häufig Hightech an der Grenze des technisch Machbaren.",
       "source": "Raumfahrtstrategie (2023)"
@@ -1448,6 +1604,10 @@
       "sentence": "Oder er gelangt zu spät hinauf, dann, wenn seine beste Zeit und Kraft schon vorüber ist.",
       "source": "Nietzsche — Jenseits von Gut und Böse"
     },
+    "geleiten": {
+      "sentence": "Wer will mich führen in die feste Stadt? Wer geleitet mich bis nach Edom?",
+      "source": "Luther — Bibel"
+    },
     "gelingen": {
       "sentence": "Die mußt du noch in dieser Nacht verspinnen: gelingt dir's aber, so sollst du meine Gemahlin werden.",
       "source": "Grimm — Märchen"
@@ -1455,6 +1615,10 @@
     "gelten": {
       "sentence": "Die Verachtung, die er früher für den Prozeß gehabt hatte, galt nicht mehr.",
       "source": "Kafka — Der Proceß"
+    },
+    "genehmigen": {
+      "sentence": "Der Reichskanzler führt den Vorsitz in der Reichsregierung und leitet ihre Geschäfte nach einer Geschäftsordnung, die von der Reichsregierung beschlossen und vom Reichspräsidenten genehmigt wird.",
+      "source": "Weimarer Verfassung (1919)"
     },
     "generieren": {
       "sentence": "Dieser wird automatisch generiert, ohne dass der Nutzer es bemerkt.",
@@ -1532,6 +1696,10 @@
       "sentence": "Sie bleiben, mein Herr; Sie haben keine Furcht vor dem Übel.",
       "source": "Mann — Der Tod in Venedig"
     },
+    "haften": {
+      "sentence": "An den Straßenecken hafteten gedruckte Anschläge, durch welche die Bevölkerung wegen gewisser Erkrankungen des gastrischen Systems, die bei dieser Witterung an der Tagesordnung seien, vor dem Genusse von Austern und Muscheln, auch vor dem Wasser der Kanäle stadtväterlich gewarnt wurde.",
+      "source": "Mann — Der Tod in Venedig"
+    },
     "halten": {
       "sentence": "„Nein,\" sagte der Geistliche, „man muß nicht alles für wahr halten, man muß es nur für notwendig halten.\"",
       "source": "Kafka — Der Proceß"
@@ -1540,9 +1708,21 @@
       "sentence": "Zweifel daran, ob es richtig war, so zu handeln, waren zwar nicht auszurotten, aber die Überzeugung von der Notwendigkeit dessen überwog.",
       "source": "Kafka — Der Proceß"
     },
+    "hassen": {
+      "sentence": "Man hasst nicht, so lange man noch gering schätzt, sondern erst, wenn man gleich oder höher schätzt.",
+      "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
+    "hauen": {
+      "sentence": "Die Weisheit baute ihr Haus und hieb sieben Säulen.",
+      "source": "Luther — Bibel"
+    },
     "heben": {
       "sentence": "Da kam die Sintflut vierzig Tage auf Erden, und die Wasser wuchsen und hoben den Kasten auf und trugen ihn empor über die Erde.",
       "source": "Luther — Bibel"
+    },
+    "heilen": {
+      "sentence": "Es ist wahr, wenn meine Krankheit zu heilen wäre, so würden diese Menschen es tun.",
+      "source": "Goethe — Die Leiden des jungen Werthers"
     },
     "heiraten": {
       "sentence": "»Was soll ich tun? Das Heiraten ist eine Freude und ist auch eine Qual.«",
@@ -1556,9 +1736,21 @@
       "sentence": "Arzt, hilf dir selber: so hilfst du auch deinem Kranken noch.",
       "source": "Nietzsche — Also sprach Zarathustra"
     },
+    "heranziehen": {
+      "sentence": "Ein Mahlbursche, der glücklicherweise da stand und sie bemerkte, zog sie mit einem Haken heran und meinte, große Schätze zu finden.",
+      "source": "Grimm — Märchen"
+    },
     "herausfinden": {
       "sentence": "Die Kinder müssen fort, wir wollen sie tiefer in den Wald hineinführen, damit sie den Weg nicht wieder herausfinden; es ist sonst keine Rettung für uns.",
       "source": "Grimm — Märchen"
+    },
+    "herausgeben": {
+      "sentence": "Finde ich die rechten Leute, so soll mir der König noch die Schätze des ganzen Landes herausgeben.",
+      "source": "Grimm — Märchen"
+    },
+    "herausstellen": {
+      "sentence": "Allmählich hat sich mir herausgestellt, was jede grosse Philosophie bisher war: nämlich das Selbstbekenntnis ihres Urhebers und eine Art ungewollter und unvermerkter mémoires.",
+      "source": "Nietzsche — Jenseits von Gut und Böse"
     },
     "herrschen": {
       "sentence": "K. lebte doch in einem Rechtsstaat, überall herrschte Friede, alle Gesetze bestanden aufrecht, wer wagte ihn in seiner Wohnung zu überfallen?",
@@ -1574,6 +1766,10 @@
     },
     "hervorheben": {
       "sentence": "Verdächtig aber blieben die unaufhörlich hervorgehobenen persönlichen Beziehungen zu den Beamten.",
+      "source": "Kafka — Der Proceß"
+    },
+    "hervorrufen": {
+      "sentence": "Wieder erschienen die Augen, man konnte sie jetzt fast für traurig halten, vielleicht war das aber auch nur eine Täuschung, hervorgerufen durch die offene Gasflamme, die nahe über den Köpfen stark zischend brannte, aber wenig Licht gab.",
       "source": "Kafka — Der Proceß"
     },
     "hinterlassen": {
@@ -1632,6 +1828,10 @@
       "sentence": "Derzeit investieren deutsche Unternehmen nur 14 Prozent ihres jährlichen Forschungsetats in die industrielle Anwendung digitaler Technologien.",
       "source": "Digitale Strategie (2025)"
     },
+    "jagen": {
+      "sentence": "Dort standen die zwei Wächter und jagten ihn, als wäre das selbstverständlich, wieder in sein Zimmer zurück.",
+      "source": "Kafka — Der Proceß"
+    },
     "kaufen": {
       "sentence": "„Schön,\" sagte K., „ich kaufe es.\"",
       "source": "Kafka — Der Proceß"
@@ -1652,9 +1852,17 @@
       "sentence": "Es kennzeichnet die Deutschen, dass bei ihnen die Frage „was ist deutsch?“ niemals ausstirbt.",
       "source": "Nietzsche — Jenseits von Gut und Böse"
     },
+    "klagen": {
+      "sentence": "Er klagt ja nur zum Schein.",
+      "source": "Kafka — Der Proceß"
+    },
     "kleben": {
       "sentence": "Das glatt und fest an den Kopf geklebte Haar ließ die Gesichter nonnenhaft leer und nichtssagend erscheinen.",
       "source": "Mann — Der Tod in Venedig"
+    },
+    "klettern": {
+      "sentence": "Seht sie klettern, diese geschwinden Affen! Sie klettern über einander hinweg und zerren sich also in den Schlamm und die Tiefe.",
+      "source": "Nietzsche — Also sprach Zarathustra"
     },
     "klicken": {
       "sentence": "Wenn du die Bearbeitung abbrechen möchtest, klicke auf das X-Symbol auf der linken Seite.",
@@ -1667,6 +1875,10 @@
     "klären": {
       "sentence": "Als Bewerberin/Bewerber für Berufsausbildungsstellen zählen diejenigen bei Agenturen für Arbeit oder Jobcentern gemeldeten Personen, die im Berichtsjahr eine Ausbildung in einem anerkannten Ausbildungsberuf wünschten und deren Eignung dafür geklärt ist.",
       "source": "Berufsbildungsbericht (2024)"
+    },
+    "knüpfen": {
+      "sentence": "Und sie knüpfte das rote Seil ins Fenster.",
+      "source": "Luther — Bibel"
     },
     "kochen": {
       "sentence": "Ich bin Zarathustra, der Gottlose: ich koche mir noch jeden Zufall in meinem Topfe.",
@@ -1816,6 +2028,10 @@
       "sentence": "Gerne liege ich hier, wo die Kinder spielen, an der zerbrochnen Mauer, unter Disteln und rothen Mohnblumen.",
       "source": "Nietzsche — Also sprach Zarathustra"
     },
+    "loben": {
+      "sentence": "Juda, du bist’s; dich werden deine Brüder loben.",
+      "source": "Luther — Bibel"
+    },
     "locken": {
       "sentence": "Nicht an einer Wissenschaft hängen bleiben: und locke sie Einen mit den kostbarsten, anscheinend gerade uns aufgesparten Funden.",
       "source": "Nietzsche — Jenseits von Gut und Böse"
@@ -1823,6 +2039,10 @@
     "lohnen": {
       "sentence": "Auch ist er so ehrlich und hat Lotten in meiner Gegenwart noch nicht ein einzigmal geküßt. Das lohn' ihm Gott!",
       "source": "Goethe — Die Leiden des jungen Werthers"
+    },
+    "lächeln": {
+      "sentence": "»Du darfst so nicht lächeln! Höre, man darf so niemandem lächeln!«",
+      "source": "Mann — Der Tod in Venedig"
     },
     "löschen": {
       "sentence": "Dein Fuss selber löschte hinter dir den Weg aus, und über ihm steht geschrieben: Unmöglichkeit.",
@@ -1904,6 +2124,18 @@
       "sentence": "Der Mann horchte, legte die Axt eine Weile nieder und dachte nach, was das wohl zu bedeuten hätte.",
       "source": "Grimm — Märchen"
     },
+    "nachfragen": {
+      "sentence": "Und da sie suchten und nachfragten, ward gesagt: Gideon, der Sohn des Joas, hat das getan.",
+      "source": "Luther — Bibel"
+    },
+    "nachgehen": {
+      "sentence": "K. ging ihnen langsam nach, er sah ein, daß das die erste zweifellose Niederlage war, die er von diesen Leuten erfahren hatte.",
+      "source": "Kafka — Der Proceß"
+    },
+    "nachlesen": {
+      "sentence": "Was übriggeblieben ist von Israel, das muß nachgelesen werden wie am Weinstock.",
+      "source": "Luther — Bibel"
+    },
     "nachvollziehen": {
       "sentence": "Wenn Sie nicht wollen, dass andere Nutzer Ihre virtuellen Reisen nachvollziehen können, sollten Sie diesen Verlauf löschen.",
       "source": "BSI — Benutzerkonten einrichten"
@@ -1936,9 +2168,21 @@
       "sentence": "Unterdessen nähert sich das Dampfboot dem Bahnhof, und Schmerz und Ratlosigkeit steigen bis zur Verwirrung.",
       "source": "Mann — Der Tod in Venedig"
     },
+    "nützen": {
+      "sentence": "Hast du aber einen leidenden Freund, so sei seinem Leiden eine Ruhestätte, doch gleichsam ein hartes Bett, ein Feldbett: so wirst du ihm am besten nützen.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "offenbaren": {
+      "sentence": "Wer geduldig ist, der ist weise; wer aber ungeduldig ist, der offenbart seine Torheit.",
+      "source": "Luther — Bibel"
+    },
     "optimieren": {
       "sentence": "Mit KI-gestützten Logistiksystemen werden Kapazitäten so optimiert, dass die Umwelt von unnötigem Leerverkehr effektiv entlastet wird.",
       "source": "KI-Strategie (2020)"
+    },
+    "ordnen": {
+      "sentence": "Jede Religionsgesellschaft ordnet und verwaltet ihre Angelegenheiten selbständig innerhalb der Schranken des für alle geltenden Gesetzes.",
+      "source": "Grundgesetz (1949)"
     },
     "organisieren": {
       "sentence": "Von diesen Anstrengungen dürfte man nicht ablassen, alles müßte organisiert und überwacht werden, das Gericht sollte einmal auf einen Angeklagten stoßen, der sein Recht zu wahren verstand.",
@@ -1959,6 +2203,10 @@
     "passieren": {
       "sentence": "Als K. an einem der nächsten Abende den Korridor passierte, der sein Bureau von der Haupttreppe trennte, hörte er hinter einer Tür Seufzer ausstoßen.",
       "source": "Kafka — Der Proceß"
+    },
+    "pflanzen": {
+      "sentence": "Und Gott der HERR pflanzte einen Garten in Eden gegen Morgen und setzte den Menschen hinein, den er gemacht hatte.",
+      "source": "Luther — Bibel"
     },
     "pflegen": {
       "sentence": "Wo das Volk isst und trinkt, selbst wo es verehrt, da pflegt es zu stinken.",
@@ -1996,6 +2244,14 @@
       "sentence": "Diess Alles schaute Zarathustra mit grosser Verwunderung; dann prüfte er jeden Einzelnen seiner Gäste mit leutseliger Neugierde, las ihre Seelen ab und wunderte sich von Neuem.",
       "source": "Nietzsche — Also sprach Zarathustra"
     },
+    "punkten": {
+      "sentence": "Zugleich kann sie Unternehmen eine bessere Ausgangsposition bei der Suche nach Fachkräften bieten, mit stärker motivierten Beschäftigten punkten und eine bessere Vereinbarkeit von Beruf und Familie ermöglichen.",
+      "source": "Raumordnungsbericht (2021)"
+    },
+    "qualifizieren": {
+      "sentence": "Deutschland braucht viele und gut qualifizierte Fachkräfte – für mehr Klimaschutz, für die Gestaltung des digitalen Wandels und für kluge Lösungen in einer immer älter werdenden Gesellschaft.",
+      "source": "Berufsbildungsbericht (2024)"
+    },
     "raten": {
       "sentence": "„Und nun rate ich Ihnen,“ fügte er hinzu, „in Ihr Zimmer zu gehn, sich ruhig zu verhalten und darauf zu warten, was über Sie verfügt werden wird.“",
       "source": "Kafka — Der Proceß"
@@ -2024,9 +2280,17 @@
       "sentence": "Die Schaffung international geltender Regeln und Maßnahmen, die eine friedliche und nachhaltige Nutzung des Weltraums erlauben, Gefahren für Raumfahrtaktivitäten reduzieren und ein Wettrüsten im All verhindern, bleibt ein zentrales Ziel der Bundesregierung.",
       "source": "Raumfahrtstrategie (2023)"
     },
+    "reflektieren": {
+      "sentence": "Digitale Technologie sollte nicht pauschal abgewehrt werden, sondern offen und reflektiert zum Kernbestandteil eines auf Selbstbestimmung angelegten Bildungsauftrags werden.",
+      "source": "Digitale Strategie (2025)"
+    },
     "regeln": {
       "sentence": "Ein Bundesgesetz regelt die Verfassung und das Verfahren des Bundesverfassungsgerichts.",
       "source": "Grundgesetz (1949)"
+    },
+    "regen": {
+      "sentence": "Und der Wind legte sich, und auf den Bäumen vor dem Schloß regte sich kein Blättchen mehr.",
+      "source": "Grimm — Märchen"
     },
     "registrieren": {
       "sentence": "Sie müssen beim System registriert werden, das heißt auf eine vom System definierte Weise bekannt gemacht werden.",
@@ -2076,6 +2340,10 @@
       "sentence": "Sei nicht schnellen Gemütes zu zürnen; denn Zorn ruht im Herzen eines Narren.",
       "source": "Luther — Bibel"
     },
+    "runden": {
+      "sentence": "Alle Zahlen wurden auf ein Vielfaches von 100 gerundet.",
+      "source": "Berufsbildungsbericht (2024)"
+    },
     "räumen": {
       "sentence": "Ich habe das Haus geräumt und für die Kamele auch Raum gemacht.",
       "source": "Luther — Bibel"
@@ -2083,6 +2351,10 @@
     "rücken": {
       "sentence": "Der Zeiger rückte, die Uhr meines Lebens holte Athem — nie hörte ich solche Stille um mich: also dass mein Herz erschrak.",
       "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "rühren": {
+      "sentence": "Und ihm träumte; und siehe, eine Leiter stand auf der Erde, die rührte mit der Spitze an den Himmel, und siehe, die Engel Gottes stiegen daran auf und nieder.",
+      "source": "Luther — Bibel"
     },
     "sagen": {
       "sentence": "\"Das habe ich gethan\" sagt mein Gedächtniss. Das kann ich nicht gethan haben - sagt mein Stolz und bleibt unerbittlich. Endlich - giebt das Gedächtniss nach.",
@@ -2106,6 +2378,10 @@
     },
     "schauen": {
       "sentence": "In dein Auge schaute ich jüngst, oh Leben!",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "scheiden": {
+      "sentence": "Alles scheidet, Alles grüsst sich wieder; ewig bleibt sich treu der Ring des Seins.",
       "source": "Nietzsche — Also sprach Zarathustra"
     },
     "scheinen": {
@@ -2168,6 +2444,10 @@
       "sentence": "Ziel ist es, die unmittelbaren Bezugspersonen von eingewanderten jungen Menschen bzw. von den jungen Nachkommen Eingewanderter am Übergang Schule – Berufsausbildung als Ratgeberinnen und Ratgeber zu schulen und zu stärken.",
       "source": "Berufsbildungsbericht (2024)"
     },
+    "schweigen": {
+      "sentence": "Alle Begier schweigt in ihrer Gegenwart.",
+      "source": "Goethe — Die Leiden des jungen Werthers"
+    },
     "schwimmen": {
       "sentence": "Noch schwamm ein vergehender Stern im Wesenlosen.",
       "source": "Mann — Der Tod in Venedig"
@@ -2211,6 +2491,10 @@
     "sicherstellen": {
       "sentence": "Der Vollzug der Weisung ist durch die obersten Landesbehörden sicherzustellen.",
       "source": "Grundgesetz (1949)"
+    },
+    "siegen": {
+      "sentence": "Und wenn Mose seine Hand emporhielt, siegte Israel; wenn er aber seine Hand niederließ, siegte Amalek.",
+      "source": "Luther — Bibel"
     },
     "singen": {
       "sentence": "Wenn mich etwas neckt und mich verdrießlich machen will, spring' ich auf und sing' ein paar Contretänze den Garten auf und ab, gleich ist's weg.",
@@ -2288,6 +2572,10 @@
       "sentence": "Joringel konnte sich nicht regen; er stand da wie ein Stein, konnte nicht weinen, nicht reden, nicht Hand noch Fuß regen.",
       "source": "Grimm — Märchen"
     },
+    "stehlen": {
+      "sentence": "Wie kannst du es wagen, in meinen Garten zu steigen und wie ein Dieb mir meine Rapunzeln zu stehlen? Das soll dir schlecht bekommen.",
+      "source": "Grimm — Märchen"
+    },
     "steigen": {
       "sentence": "Es stieg die enge Wendeltreppe hinauf und gelangte zu einer kleinen Türe.",
       "source": "Grimm — Märchen"
@@ -2323,6 +2611,10 @@
     "streichen": {
       "sentence": "Andere ruderten in kleinen rot und blau gestrichenen Booten ohne Kiel und kenterten lachend.",
       "source": "Mann — Der Tod in Venedig"
+    },
+    "streiten": {
+      "sentence": "Und ihr sagt mir, Freunde, dass nicht zu streiten sei über Geschmack und Schmecken?",
+      "source": "Nietzsche — Also sprach Zarathustra"
     },
     "studieren": {
       "sentence": "Er studierte Schiffsverbindungen, er blickte suchend umher, und auf einmal, zugleich überraschend und selbstverständlich, stand ihm sein Ziel vor Augen.",
@@ -2372,6 +2664,10 @@
       "sentence": "Software kann an unterschiedlichen Stellen ihres Lebenszyklus getestet werden.",
       "source": "BSI — Software-Tests und -Freigaben (2023)"
     },
+    "thematisieren": {
+      "sentence": "Das Leitbild könnte aber ihre besonderen Bedürfnisse in weiteren Handlungsansätzen stärker thematisieren.",
+      "source": "Raumordnungsbericht (2021)"
+    },
     "tragen": {
       "sentence": "Der Bundeskanzler bestimmt die Richtlinien der Politik und trägt dafür die Verantwortung.",
       "source": "Grundgesetz (1949)"
@@ -2408,6 +2704,10 @@
       "sentence": "Aber ich lebe in meinem eignen Lichte, ich trinke die Flammen in mich zurück, die aus mir brechen.",
       "source": "Nietzsche — Also sprach Zarathustra"
     },
+    "trocknen": {
+      "sentence": "Er trocknete mit K.s Rock sein von Tränen ganz überlaufenes Gesicht.",
+      "source": "Kafka — Der Proceß"
+    },
     "träumen": {
       "sentence": "Endlich träumte er einmal des Nachts, er fände eine blutrote Blume, in deren Mitte eine schöne große Perle war.",
       "source": "Grimm — Märchen"
@@ -2435,6 +2735,10 @@
     "umsetzen": {
       "sentence": "Programme mit kurzer Laufzeit sind gerade für strukturschwache Regionen kaum zeitgerecht umzusetzen.",
       "source": "Raumordnungsbericht (2021)"
+    },
+    "umstellen": {
+      "sentence": "Er stellte die Mannschaft rings um die Räuber herum.",
+      "source": "Grimm — Märchen"
     },
     "umwandeln": {
       "sentence": "Das Sondervermögen Deutsche Bundespost wird nach Maßgabe eines Bundesgesetzes in Unternehmen privater Rechtsform umgewandelt.",
@@ -2484,6 +2788,10 @@
       "sentence": "Jeder Fall wird für sich untersucht, es ist ja das sorgfältigste Gericht.",
       "source": "Kafka — Der Proceß"
     },
+    "unterzeichnen": {
+      "sentence": "Der Antrag auf Erhebung der Anklage muß von mindestens hundert Mitgliedern des Reichstags unterzeichnet sein und bedarf der Zustimmung der für Verfassungsänderungen vorgeschriebenen Mehrheit.",
+      "source": "Weimarer Verfassung (1919)"
+    },
     "variieren": {
       "sentence": "Die Betrachtungszeiträume der Indikatoren variieren je nach Karte.",
       "source": "Raumordnungsbericht (2021)"
@@ -2491,6 +2799,14 @@
     "verabschieden": {
       "sentence": "Damit ist es für heute genug und wir können uns verabschieden, allerdings nur vorläufig.",
       "source": "Kafka — Der Proceß"
+    },
+    "verankern": {
+      "sentence": "Die Stärkung der Wettbewerbsfähigkeit ist in allen Landesentwicklungsplänen als wichtiges Ziel verankert.",
+      "source": "Raumordnungsbericht (2021)"
+    },
+    "veranlassen": {
+      "sentence": "Über den Haushaltsplan, über Abgabengesetze und Besoldungsordnungen kann nur der Reichspräsident einen Volksentscheid veranlassen.",
+      "source": "Weimarer Verfassung (1919)"
     },
     "veranstalten": {
       "sentence": "Dazu veranstaltet die Bundesregierung im Jahr 2025 einen Tag der deutschen Raumfahrt.",
@@ -2516,6 +2832,10 @@
       "sentence": "Denn er verletzt und verbindet; er zerschlägt und seine Hand heilt.",
       "source": "Luther — Bibel"
     },
+    "verbleiben": {
+      "sentence": "Für private Schulen, die nicht als Ersatz für öffentliche Schulen dienen, verbleibt es bei dem geltenden Recht.",
+      "source": "Weimarer Verfassung (1919)"
+    },
     "verbrauchen": {
       "sentence": "Mitunter auch kommt der Weckruf zu spät, jener Zufall, der die \"Erlaubniss\" zum Handeln giebt, - dann, wenn bereits die beste Jugend und Kraft zum Handeln durch Stillsitzen verbraucht ist.",
       "source": "Nietzsche — Jenseits von Gut und Böse"
@@ -2523,6 +2843,10 @@
     "verbreiten": {
       "sentence": "Jeder hat das Recht, seine Meinung in Wort, Schrift und Bild frei zu äußern und zu verbreiten und sich aus allgemein zugänglichen Quellen ungehindert zu unterrichten.",
       "source": "Grundgesetz (1949)"
+    },
+    "verbrennen": {
+      "sentence": "Hu! da fing sie an zu heulen, ganz grauselig; aber Gretel lief fort, und die gottlose Hexe mußte elendiglich verbrennen.",
+      "source": "Grimm — Märchen"
     },
     "verbringen": {
       "sentence": "Er verbrachte zwei Stunden auf seinem Zimmer und fuhr am Nachmittag mit dem Vaporetto über die faulriechende Lagune nach Venedig.",
@@ -2547,6 +2871,10 @@
     "vereinen": {
       "sentence": "Im Menschen ist Geschöpf und Schöpfer vereint.",
       "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
+    "vereinfachen": {
+      "sentence": "„Meine Unschuld vereinfacht die Sache nicht,“ sagte K.",
+      "source": "Kafka — Der Proceß"
     },
     "verfassen": {
       "sentence": "Im ersten Jahr Belsazers, des Königs zu Babel, hatte Daniel einen Traum und Gesichte auf seinem Bett; und er schrieb den Traum auf und verfaßte ihn also.",
@@ -2576,6 +2904,10 @@
       "sentence": "Immer horcht das Selbst und sucht: es vergleicht, bezwingt, erobert, zerstört.",
       "source": "Nietzsche — Also sprach Zarathustra"
     },
+    "vergrößern": {
+      "sentence": "Unten entschloß sich K., die Uhr in der Hand, ein Automobil zu nehmen, um die schon halbstündige Verspätung nicht unnötig zu vergrößern.",
+      "source": "Kafka — Der Proceß"
+    },
     "verhalten": {
       "sentence": "So verhält sich kein unschuldig Angeklagter, der noch bei Kräften ist.",
       "source": "Kafka — Der Proceß"
@@ -2595,6 +2927,10 @@
     "verkünden": {
       "sentence": "—verkünden sollen sie einst noch mit Flammen-Zungen: Er kommt, er ist nahe, der grosse Mittag!",
       "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "verkürzen": {
+      "sentence": "Er demütigt auf dem Wege meine Kraft; er verkürzt meine Tage.",
+      "source": "Luther — Bibel"
     },
     "verlangen": {
       "sentence": "Der Reichstag und seine Ausschüsse können die Anwesenheit des Reichskanzlers und jedes Reichsministers verlangen.",
@@ -2619,6 +2955,10 @@
     "verletzen": {
       "sentence": "Wer aber an mir sündigt, der verletzt seine Seele. Alle, die mich hassen, lieben den Tod.",
       "source": "Luther — Bibel"
+    },
+    "verlieben": {
+      "sentence": "Nehmen Sie sich in acht, daß Sie sich nicht verlieben!",
+      "source": "Goethe — Die Leiden des jungen Werthers"
     },
     "verlieren": {
       "sentence": "Und verloren sei uns der Tag, wo nicht Ein Mal getanzt wurde!",
@@ -2648,6 +2988,10 @@
       "sentence": "Aber sagt, meine Brüder, was vermag noch das Kind, das auch der Löwe nicht vermochte?",
       "source": "Nietzsche — Also sprach Zarathustra"
     },
+    "vernichten": {
+      "sentence": "Immer vernichtet, wer ein Schöpfer sein muss.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
     "verpassen": {
       "sentence": "Die Zahl der unbekannt Verbliebenen ist zwar gesunken, dennoch besteht für fast jede fünfte Bewerberin/jeden fünften Bewerber die Gefahr, den Einstieg ins Berufsleben zu verpassen.",
       "source": "Berufsbildungsbericht (2024)"
@@ -2664,13 +3008,25 @@
       "sentence": "Nach der Menge der Jahre sollst du den Kauf steigern, und nach der wenigen der Jahre sollst du den Kauf verringern; denn er soll dir’s, nach dem es tragen mag, verkaufen.",
       "source": "Luther — Bibel"
     },
+    "versammeln": {
+      "sentence": "Alle Deutschen haben das Recht, sich ohne Anmeldung oder Erlaubnis friedlich und ohne Waffen zu versammeln.",
+      "source": "Grundgesetz (1949)"
+    },
     "verschaffen": {
       "sentence": "Ich hoffe, ich werde Ihnen einen Träger verschaffen können, der gleich mit Ihnen gehen wird.",
       "source": "Kafka — Der Proceß"
     },
+    "verschicken": {
+      "sentence": "Wer möchte schon gerne, dass Fremde unter dem eigenen Namen E-Mails verschicken oder teure Waren im Internet ersteigern können?",
+      "source": "BSI — Sichere Passwörter erstellen"
+    },
     "verschieben": {
       "sentence": "Ihre gegenseitigen Besprechungen dessen, was ich vorbringe, bitte ich Sie für späterhin zu verschieben, denn ich habe keine Zeit und werde bald weggehn.",
       "source": "Kafka — Der Proceß"
+    },
+    "verschließen": {
+      "sentence": "Die Frau hatte die Tür verschlossen, und Hänsel konnte nicht hinaus.",
+      "source": "Grimm — Märchen"
     },
     "verschwinden": {
       "sentence": "Die Königstochter folgte ihr mit den Augen nach, aber die Kugel verschwand, und der Brunnen war tief, so tief, daß man keinen Grund sah.",
@@ -2708,6 +3064,14 @@
       "sentence": "Es ist nicht leicht möglich, fremdes Blut zu verstehen: ich hasse die lesenden Müssiggänger.",
       "source": "Nietzsche — Also sprach Zarathustra"
     },
+    "versterben": {
+      "sentence": "Wirst du denn unter den Toten Wunder tun, oder werden die Verstorbenen aufstehen und dir danken?",
+      "source": "Luther — Bibel"
+    },
+    "verstoßen": {
+      "sentence": "Als der Schneider das hörte, stutzte er und sah wohl, daß er seine drei Söhne ohne Ursache verstoßen hatte.",
+      "source": "Grimm — Märchen"
+    },
     "verstärken": {
       "sentence": "Durch die offene Tür zu K.s Zimmer sah man, wie sich draußen der Schneefall sehr verstärkt hatte.",
       "source": "Kafka — Der Proceß"
@@ -2723,6 +3087,14 @@
     "verteilen": {
       "sentence": "Das sprach der Mann, weil er nicht wußte, wie weislich Gott Reichtum und Armut verteilt.",
       "source": "Grimm — Märchen"
+    },
+    "vertiefen": {
+      "sentence": "Auf den Spuren des Schönen hatte Aschenbach sich eines Nachmittags in das innere Gewirr der kranken Stadt vertieft.",
+      "source": "Mann — Der Tod in Venedig"
+    },
+    "vertragen": {
+      "sentence": "Sie verträgt alles, sie glaubet alles, sie hoffet alles, sie duldet alles.",
+      "source": "Luther — Bibel"
     },
     "vertrauen": {
       "sentence": "Es ist gut, auf den HERRN zu vertrauen, und nicht sich verlassen auf Menschen.",
@@ -2768,6 +3140,10 @@
       "sentence": "Bund, Länder und Gemeinden, Unternehmen und Verbände müssen gemeinsam Strategien entwickeln, um Gigabitnetze in Deutschland zu verwirklichen.",
       "source": "Digitale Strategie (2025)"
     },
+    "verwöhnen": {
+      "sentence": "„Ich kann schon gehn,“ sagte er deshalb und stand, durch das bequeme Sitzen verwöhnt, zitternd auf.",
+      "source": "Kafka — Der Proceß"
+    },
     "verzeichnen": {
       "sentence": "Darum ist von ihm gesandt diese Hand und diese Schrift, die da verzeichnet steht.",
       "source": "Luther — Bibel"
@@ -2783,6 +3159,18 @@
     "veröffentlichen": {
       "sentence": "Die abschließenden Entscheidungen des Gerichtes werden nicht veröffentlicht, sie sind nicht einmal den Richtern zugänglich.",
       "source": "Kafka — Der Proceß"
+    },
+    "vollziehen": {
+      "sentence": "Aschenbach erwartete täglich Tadzios Auftreten, und zuweilen tat er, als sei er beschäftigt, wenn es sich vollzog, und ließ den Schönen scheinbar unbeachtet vorübergehen.",
+      "source": "Mann — Der Tod in Venedig"
+    },
+    "vorantreiben": {
+      "sentence": "Durch die Anwendung der KI in der Primärproduktion von Biomasse wird sie ebenfalls die Umsetzung der Nationalen Bioökonomiestrategie vorantreiben.",
+      "source": "KI-Strategie (2020)"
+    },
+    "voraussetzen": {
+      "sentence": "Die Gewährung der Hilfen setzt einen vollständigen Abbau der Finanzierungsdefizite bis zum Jahresende 2020 voraus.",
+      "source": "Grundgesetz (1949)"
     },
     "vorbereiten": {
       "sentence": "Ich liebe Den, welcher arbeitet und erfindet, dass er dem Übermenschen das Haus baue und zu ihm Erde, Thier und Pflanze vorbereite: denn so will er seinen Untergang.",
@@ -2864,6 +3252,14 @@
       "sentence": "Denn die Schwüle wehrte der Eßlust, und die Vorstellung drängte sich auf, daß die Speisen mit Ansteckungsstoffen vergiftet seien.",
       "source": "Mann — Der Tod in Venedig"
     },
+    "weichen": {
+      "sentence": "„Wie?“ fragte K., wich mit dem Kopf zur Seite und sah den Maler an.",
+      "source": "Kafka — Der Proceß"
+    },
+    "weinen": {
+      "sentence": "Ich weine über meine goldene Kugel, die mir in den Brunnen hinabgefallen ist.",
+      "source": "Grimm — Märchen"
+    },
     "weisen": {
       "sentence": "Eine Schulterbewegung wies ihn zurück.",
       "source": "Mann — Der Tod in Venedig"
@@ -2912,6 +3308,10 @@
       "sentence": "Eine solche Verspätung darf sich aber nicht mehr wiederholen.",
       "source": "Kafka — Der Proceß"
     },
+    "wiegen": {
+      "sentence": "Tekel, das ist: man hat dich in einer Waage gewogen und zu leicht gefunden.",
+      "source": "Luther — Bibel"
+    },
     "wirken": {
       "sentence": "Kaum hatte sie den Kamm in die Haare gesteckt, als das Gift darin wirkte und das Mädchen ohne Besinnung niederfiel.",
       "source": "Grimm — Märchen"
@@ -2936,9 +3336,17 @@
       "sentence": "Der Bundestag wählt seinen Präsidenten, dessen Stellvertreter und die Schriftführer.",
       "source": "Grundgesetz (1949)"
     },
+    "währen": {
+      "sentence": "Denn Gut währt nicht ewiglich, und die Krone währt nicht für und für.",
+      "source": "Luther — Bibel"
+    },
     "wünschen": {
       "sentence": "Wie irgend ein Liebender wünschte er, zu gefallen und empfand bittere Angst, daß es nicht möglich sein möchte.",
       "source": "Mann — Der Tod in Venedig"
+    },
+    "würdigen": {
+      "sentence": "Den Wert eines solchen Besuches kann eigentlich nur der Eingeweihte würdigen, welcher weiß, wie der liebe Kanzleidirektor mit Arbeit überhäuft ist.",
+      "source": "Kafka — Der Proceß"
     },
     "zahlen": {
       "sentence": "»Ich zahl dir's, sobald das Eichenlaub abfällt, dann komm, dein Geld ist schon gezählt.«",
@@ -2954,6 +3362,10 @@
     },
     "zerstören": {
       "sentence": "Immer horcht das Selbst und sucht: es vergleicht, bezwingt, erobert, zerstört.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "zeugen": {
+      "sentence": "Und die Blindheit des Blinden und sein Suchen und Tappen soll noch von der Macht der Sonne zeugen, in die er schaute,—wusstet ihr das schon?",
       "source": "Nietzsche — Also sprach Zarathustra"
     },
     "ziehen": {
@@ -2988,6 +3400,10 @@
       "sentence": "Das Briefgeheimnis sowie das Post-, Telegraphen- und Fernsprechgeheimnis sind unverletzlich. Ausnahmen können nur durch Reichsgesetz zugelassen werden.",
       "source": "Weimarer Verfassung (1919)"
     },
+    "zulegen": {
+      "sentence": "«Ich will dir die achtzehn Jahre des Esels zulegen,» sagte Gott.",
+      "source": "Grimm — Märchen"
+    },
     "zunehmen": {
       "sentence": "Aber der Gerechte wird seinen Weg behalten; und wer reine Hände hat, wird an Stärke zunehmen.",
       "source": "Luther — Bibel"
@@ -3007,6 +3423,10 @@
     "zurückkehren": {
       "sentence": "Als er von dieser Reise mit wütenden Kopfschmerzen zurückkehrte, erfuhr er, daß er dazu bestimmt sei, am nächsten Tag den italienischen Geschäftsfreund zu begleiten.",
       "source": "Kafka — Der Proceß"
+    },
+    "zurückziehen": {
+      "sentence": "Ich ziehe zurück wie vom Feuer, und eine geheime Kraft zieht mich wieder vorwärts.",
+      "source": "Goethe — Die Leiden des jungen Werthers"
     },
     "zusammenarbeiten": {
       "sentence": "Zur Förderung digitaler Bildung und zur Verbesserung der digitalen Infrastruktur im Bildungsbereich müssen Bund und Länder stärker als bisher zusammenarbeiten.",
@@ -3035,6 +3455,10 @@
     "ändern": {
       "sentence": "„Bloße Legenden ändern meine Meinung nicht,\" sagte K.",
       "source": "Kafka — Der Proceß"
+    },
+    "ärgern": {
+      "sentence": "Er ärgerte sich an der Gasthofsitte, den Abreisenden vorzeitig aus dem Hause zu schaffen und bedeutete dem Portier, daß er in Ruhe zu frühstücken wünsche.",
+      "source": "Mann — Der Tod in Venedig"
     },
     "äußern": {
       "sentence": "Es war sehr schwül, und die Frauenzimmer äußerten ihre Besorgnis wegen eines Gewitters, das sich in weißgrauen, dumpfichten Wölkchen rings am Horizonte zusammenzuziehen schien.",
@@ -3080,6 +3504,10 @@
       "sentence": "Als sie beim Heimweg wieder auf die Heide kamen, überraschten sie den Zwerg, der auf einem reinlichen Plätzchen seinen Sack mit Edelsteinen ausgeschüttet und nicht gedacht hatte, daß so spät noch jemand daherkommen würde.",
       "source": "Grimm — Märchen"
     },
+    "überreichen": {
+      "sentence": "Kaminer überreichte den Hut und K. mußte sich, wie dies übrigens auch öfters in der Bank nötig war, ausdrücklich sagen, daß Kaminers Lächeln nicht Absicht war, ja daß er überhaupt absichtlich nicht lächeln konnte.",
+      "source": "Kafka — Der Proceß"
+    },
     "überschreiten": {
       "sentence": "Aus irgend einem Grunde wandte er sich um, bevor er die Schwelle überschritt, und da niemand sonst mehr in der Halle sich aufhielt, begegneten seine eigentümlich dämmergrauen Augen denen Aschenbachs, der, seine Zeitung auf den Knien, in Anschauung versunken, der Gruppe nachblickte.",
       "source": "Mann — Der Tod in Venedig"
@@ -3091,6 +3519,10 @@
     "übersetzen": {
       "sentence": "Hätte man dieses Benehmen in Worte übersetzt, so wären es grobe Beschimpfungen gewesen.",
       "source": "Kafka — Der Proceß"
+    },
+    "überstehen": {
+      "sentence": "Das war eine Nacht! Wilhelm! Nun überstehe ich alles.",
+      "source": "Goethe — Die Leiden des jungen Werthers"
     },
     "übertragen": {
       "sentence": "Wenn der Türhüter aber getäuscht ist, dann muß sich seine Täuschung notwendig auf den Mann übertragen.",
@@ -3162,9 +3594,17 @@
       "sentence": "Hackers can misuse other people’s networks for retrieving or sharing illegal content or for attacks on other internet users.",
       "source": "BSI — Router, WLAN und VPN"
     },
+    "absagen": {
+      "sentence": "There he sat, the master, the artist who had attained dignity, the author of “The Wretch,” who in such exemplarily pure form had renounced bohemianism and the murky depths, had repudiated the abyss and rejected the reprobate.",
+      "source": "Mann — Der Tod in Venedig"
+    },
     "abschließen": {
       "sentence": "Then they shut the door and ran away.",
       "source": "Grimm — Märchen"
+    },
+    "abschneiden": {
+      "sentence": "When you harvest your land, you shall not cut off everything to the very edges, nor shall you gather up every last bit.",
+      "source": "Luther — Bibel"
     },
     "absehen": {
       "sentence": "Even if you have your eye on my cash and send me to the house of Hades from behind with a stroke of your oar, you will have ferried me well.",
@@ -3185,6 +3625,10 @@
     "abwarten": {
       "sentence": "One must first await the arrival of a new species of philosophers.",
       "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
+    "abziehen": {
+      "sentence": "The Venetians meanwhile had finished and withdrew.",
+      "source": "Mann — Der Tod in Venedig"
     },
     "achten": {
       "sentence": "One day, without heeding road or path, he walked on and on into the fields and finally came to a forest.",
@@ -3238,6 +3682,10 @@
       "sentence": "And often one attacks and makes oneself an enemy in order to conceal that one is vulnerable.",
       "source": "Nietzsche — Also sprach Zarathustra"
     },
+    "anhalten": {
+      "sentence": "The rider, who had heard this, stopped and called out: “Well, Hans, why are you going on foot?”",
+      "source": "Grimm — Märchen"
+    },
     "ankommen": {
       "sentence": "So they arrived, tossed in the wake of a steamer plying towards the city.",
       "source": "Mann — Der Tod in Venedig"
@@ -3274,6 +3722,10 @@
       "sentence": "If there are doubts or differences of opinion as to whether a state legal provision is compatible with Reich law, the competent Reich or state central authority may, pursuant to a more detailed provision of a Reich statute, invoke the decision of a supreme court of the Reich.",
       "source": "Weimarer Verfassung (1919)"
     },
+    "ansagen": {
+      "sentence": "And Esther did not declare to him her people or her kindred, for Mordecai had commanded her that she should not declare it.",
+      "source": "Luther — Bibel"
+    },
     "anschauen": {
       "sentence": "“Can I look at the books?” asked K., not out of particular curiosity, but only so as not to have been here completely in vain.",
       "source": "Kafka — Der Proceß"
@@ -3293,6 +3745,14 @@
     "ansprechen": {
       "sentence": "“I want neither to stay here nor to be addressed by you, so long as you do not introduce yourself to me.”",
       "source": "Kafka — Der Proceß"
+    },
+    "anstellen": {
+      "sentence": "I am employed to flog, so I flog.",
+      "source": "Kafka — Der Proceß"
+    },
+    "anstreben": {
+      "sentence": "The federal government is striving for a national space law that will contribute to the sustainability of space activities by requiring authorization for and oversight of space activities.",
+      "source": "Raumfahrtstrategie (2023)"
     },
     "antreten": {
       "sentence": "And I stepped onto the sand of the sea and saw a beast rise out of the sea, which had seven heads and ten horns and on its horns ten crowns and on its heads names of blasphemy.",
@@ -3326,6 +3786,10 @@
       "sentence": "For they regard not the works of the Lord nor the deeds of his hands; therefore he shall destroy them and not build them up.",
       "source": "Luther — Bibel"
     },
+    "aufbewahren": {
+      "sentence": "They could now, if they wished, watch as he went to a small wall cabinet in which he kept a good schnapps.",
+      "source": "Kafka — Der Proceß"
+    },
     "auffallen": {
       "sentence": "And K. would certainly not have noticed this little pulpit if there had not been a lamp fastened above it, which usually meant there was a sermon about to be given.",
       "source": "Kafka — Der Proceß"
@@ -3341,6 +3805,10 @@
     "aufgeben": {
       "sentence": "But Samson said to them: I will put a riddle to you.",
       "source": "Luther — Bibel"
+    },
+    "aufgreifen": {
+      "sentence": "Under the keyword ‘AzubiGhosting,’ the now-widespread phenomenon of not showing up for an apprenticeship despite a contractual commitment and without canceling is taken up.",
+      "source": "Berufsbildungsbericht (2024)"
     },
     "aufhalten": {
       "sentence": "You have seen yourself how long I have just been held up.",
@@ -3362,6 +3830,10 @@
       "sentence": "It receives you when you come, and it releases you when you go.",
       "source": "Kafka — Der Proceß"
     },
+    "aufpassen": {
+      "sentence": "Since you pay attention to every word, let me add: I am not forcing you to go to the bank; I had only assumed that you wanted to.",
+      "source": "Kafka — Der Proceß"
+    },
     "aufrufen": {
       "sentence": "The idea of having fallen into the hands of a criminal dreamily grazed Aschenbach’s mind,--unable to summon his thoughts to active resistance.",
       "source": "Mann — Der Tod in Venedig"
@@ -3370,13 +3842,29 @@
       "sentence": "Heroes and men of honor he would set up around himself, the new idol!",
       "source": "Nietzsche — Also sprach Zarathustra"
     },
+    "aufsuchen": {
+      "sentence": "You must seek out your father—when you arrive with the gold-donkey, he will forget his anger and welcome you.",
+      "source": "Grimm — Märchen"
+    },
     "auftauchen": {
       "sentence": "After dinner, very uneasy about their absence, in evening dress and straw hat, he strolled in front of the hotel at the foot of the terrace, when suddenly he saw the nun-like sisters with their governess, and four steps behind them Tadzio emerging in the light of the arc lamps.",
       "source": "Mann — Der Tod in Venedig"
     },
+    "aufteilen": {
+      "sentence": "With block encryption, by contrast, the plaintext is divided up beforehand into blocks of a specific size.",
+      "source": "Wikipedia — Verschlüsselung"
+    },
+    "auftragen": {
+      "sentence": "Then good food was served: milk and pancakes with sugar, apples and nuts.",
+      "source": "Grimm — Märchen"
+    },
     "auftreten": {
       "sentence": "All who appear before this court as advocates are basically nothing but shyster lawyers.",
       "source": "Kafka — Der Proceß"
+    },
+    "aufwachsen": {
+      "sentence": "And God the LORD made all manner of trees grow up out of the earth, pleasant to look upon and good to eat, and the tree of life in the midst of the garden and the tree of the knowledge of good and evil.",
+      "source": "Luther — Bibel"
     },
     "aufweisen": {
       "sentence": "With the establishment of a National Research Consortium for AI, the foundation has already been laid for an internationally recognized research network that, through the combination of various research areas, exhibits great development potential.",
@@ -3426,6 +3914,10 @@
       "sentence": "Who is like the wise man? And who knows the interpretation of a thing?",
       "source": "Luther — Bibel"
     },
+    "ausliefern": {
+      "sentence": "He was at their mercy; if they let him go, he would have to fall down like a plank.",
+      "source": "Kafka — Der Proceß"
+    },
     "auslösen": {
       "sentence": "There the strength of will has long been stored up and accumulated; there the will waits—uncertain whether as a will of negation or of affirmation—in a threatening manner to be triggered, to borrow a favorite word from today’s physicists.",
       "source": "Nietzsche — Jenseits von Gut und Böse"
@@ -3444,6 +3936,10 @@
     },
     "ausrichten": {
       "sentence": "“Shall I pass something on to her?”",
+      "source": "Kafka — Der Proceß"
+    },
+    "ausschalten": {
+      "sentence": "They want to eliminate the defense as much as possible; everything is to rest on the accused himself.",
       "source": "Kafka — Der Proceß"
     },
     "ausschließen": {
@@ -3477,6 +3973,10 @@
     "austauschen": {
       "sentence": "Attackers can swap out the firmware installed on the router or infect it with malware.",
       "source": "BSI — Router, WLAN und VPN"
+    },
+    "auswerten": {
+      "sentence": "Only one in five companies evaluates social-media data.",
+      "source": "Digitale Strategie (2025)"
     },
     "auswirken": {
       "sentence": "This increase then has a corresponding effect on the overall result.",
@@ -3574,9 +4074,17 @@
       "sentence": "K. kept close beside the priest, without knowing in the darkness where he was.",
       "source": "Kafka — Der Proceß"
     },
+    "befragen": {
+      "sentence": "And when she consulted the mirror at home: “Mirror, mirror on the wall, who is the fairest in all the land?”",
+      "source": "Grimm — Märchen"
+    },
     "befreien": {
       "sentence": "Willing liberates: that is the true teaching of will and freedom—thus Zarathustra teaches it to you.",
       "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "befördern": {
+      "sentence": "Weapons designed for warfare may only be manufactured, transported, and marketed with the permission of the Federal Government.",
+      "source": "Grundgesetz (1949)"
     },
     "befürchten": {
       "sentence": "There was nothing in particular to be feared from the three officials; they had been absorbed back into the large staff of the bank, and no change could be noticed in them.",
@@ -3730,6 +4238,10 @@
       "sentence": "Nearly everything we call ‘higher culture’ rests upon the spiritualization and deepening of cruelty — that is my proposition.",
       "source": "Nietzsche — Jenseits von Gut und Böse"
     },
+    "beruhigen": {
+      "sentence": "“That cannot reassure me,” cried the uncle, “Josef, dear Josef, think of yourself, of your relatives, of our good name.”",
+      "source": "Kafka — Der Proceß"
+    },
     "berücksichtigen": {
       "sentence": "And would anyone at the bank take his special situation into account when evaluating his work?",
       "source": "Kafka — Der Proceß"
@@ -3773,6 +4285,10 @@
     "besichtigen": {
       "sentence": "What if he had been a stranger who only wanted to visit the church?",
       "source": "Kafka — Der Proceß"
+    },
+    "besiegen": {
+      "sentence": "The fast defeat the slow.",
+      "source": "Digitale Strategie (2025)"
     },
     "besitzen": {
       "sentence": "Blessed are the meek; for they shall possess the earth.",
@@ -3878,6 +4394,10 @@
       "sentence": "People called out to one another across the street, and one such call brought about great laughter right above K.",
       "source": "Kafka — Der Proceß"
     },
+    "bewundern": {
+      "sentence": "There is an innocence of admiration: he has it to whom it has not yet occurred that he, too, might one day be admired.",
+      "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
     "bewältigen": {
       "sentence": "The forty-year-old, exhausted by the toils and vicissitudes of his actual work, had daily to manage a correspondence that bore postage stamps from every corner of the world.",
       "source": "Mann — Der Tod in Venedig"
@@ -3917,6 +4437,10 @@
     "blicken": {
       "sentence": "And when you gaze long into an abyss, the abyss also gazes into you.",
       "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
+    "blockieren": {
+      "sentence": "Network access from other applications to the Internet is blocked.",
+      "source": "Wikipedia — Firewall"
     },
     "brauchen": {
       "sentence": "He who strikes down seven at one blow need not fear two.",
@@ -4034,6 +4558,10 @@
       "sentence": "Bills shall be introduced by the National Ministry, or by members of the Reichstag.",
       "source": "Weimarer Verfassung (1919)"
     },
+    "einfallen": {
+      "sentence": "It naturally occurred to no one to come here now.",
+      "source": "Kafka — Der Proceß"
+    },
     "einfügen": {
       "sentence": "If you would like a file to be renamed, you can insert the template Datei:Umbenennen with “Proposed filename.ext” and a reason on the file’s description page.",
       "source": "Wikipedia — Hilfe:Dateien"
@@ -4054,6 +4582,14 @@
       "sentence": "He stopped, and felt afraid and alarmed, and pondered over the circumstance.",
       "source": "Grimm — Märchen"
     },
+    "einholen": {
+      "sentence": "He had already entered the lawyer’s room when Leni caught up with him.",
+      "source": "Kafka — Der Proceß"
+    },
+    "einigen": {
+      "sentence": "“We have already come to an agreement,” said K.",
+      "source": "Kafka — Der Proceß"
+    },
     "einkaufen": {
       "sentence": "But when the stranger reached into his pocket, pulled out two gold pieces, and said he should just buy something good for him, the innkeeper opened his eyes wide, ran off, and sought the best he could find.",
       "source": "Grimm — Märchen"
@@ -4061,6 +4597,10 @@
     "einladen": {
       "sentence": "You invite a witness for yourselves when you want to speak well of yourselves.",
       "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "einlassen": {
+      "sentence": "K. immediately sent the servants out of the room with the instruction to let no one in.",
+      "source": "Kafka — Der Proceß"
     },
     "einlegen": {
       "sentence": "And a poor widow came and put in two mites, which make a farthing.",
@@ -4102,9 +4642,17 @@
       "sentence": "But I have set my king upon my holy hill of Zion.",
       "source": "Luther — Bibel"
     },
+    "einsteigen": {
+      "sentence": "None of you wants to board the death-barque! Why then do you want to be world-weary!",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
     "einstellen": {
       "sentence": "Company even arrived — a boat full of musical highwaymen, men and women who sang to the guitar and mandolin, pushing intrusively alongside the gondola and filling the silence over the waters with their mercenary poetry for strangers.",
       "source": "Mann — Der Tod in Venedig"
+    },
+    "einstufen": {
+      "sentence": "87.4 percent of these cities have been classified by the state planning authorities as part of a medium-level center or higher.",
+      "source": "Raumordnungsbericht (2021)"
     },
     "eintragen": {
       "sentence": "In the public sector, not only occupations specific to the public sector are trained, but also occupations that are registered with the chambers of industry and commerce or chambers of skilled trades, as well as healthcare occupations.",
@@ -4113,6 +4661,10 @@
     "eintreten": {
       "sentence": "The man considers and then asks whether he will be allowed to enter later.",
       "source": "Kafka — Der Proceß"
+    },
+    "einziehen": {
+      "sentence": "Lift up your heads, O ye gates, and be ye lifted up, ye everlasting doors, that the King of Glory may enter in!",
+      "source": "Luther — Bibel"
     },
     "empfangen": {
       "sentence": "And on that same day a respectfully shocked world received the news of his death.",
@@ -4150,8 +4702,20 @@
       "sentence": "Then he stood up completely, and moved slowly away.",
       "source": "Mann — Der Tod in Venedig"
     },
+    "entgehen": {
+      "sentence": "They sought again to seize him, but he escaped from their hands.",
+      "source": "Luther — Bibel"
+    },
     "enthalten": {
       "sentence": "The story contains two important statements by the doorkeeper about admission to the law, one at the beginning, one at the end.",
+      "source": "Kafka — Der Proceß"
+    },
+    "entlassen": {
+      "sentence": "It receives you when you come, and it dismisses you when you go.",
+      "source": "Kafka — Der Proceß"
+    },
+    "entlasten": {
+      "sentence": "He wasn’t thinking of anything specific but acted only with the feeling that this was how he would have to behave once he had completed the great petition that was to completely exonerate him.",
       "source": "Kafka — Der Proceß"
     },
     "entnehmen": {
@@ -4177,6 +4741,10 @@
     "entstehen": {
       "sentence": "The war arose mostly from religious disagreement.",
       "source": "Westfälischer Friede (1648)"
+    },
+    "enttäuschen": {
+      "sentence": "Disappointed, K. took the letter and put it in his pocket.",
+      "source": "Kafka — Der Proceß"
     },
     "entwerfen": {
       "sentence": "And he received them from their hands and fashioned it with a graving tool, and made it a molten calf.",
@@ -4250,6 +4818,10 @@
       "sentence": "Might the philosopher not rise above faith in grammar?",
       "source": "Nietzsche — Jenseits von Gut und Böse"
     },
+    "erholen": {
+      "sentence": "Rest here: this place is hospitable for everyone — recover yourself!",
+      "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
     "erhöhen": {
       "sentence": "The LORD makes poor and makes rich; he brings low and exalts.",
       "source": "Luther — Bibel"
@@ -4306,6 +4878,10 @@
       "sentence": "In this context, the scope of expenditures is to be determined with due regard for multi-year financial planning.",
       "source": "Grundgesetz (1949)"
     },
+    "ernennen": {
+      "sentence": "The Federal Chancellor appoints a Federal Minister as his deputy.",
+      "source": "Grundgesetz (1949)"
+    },
     "erneuern": {
       "sentence": "Bring us back to you, LORD, that we may return; renew our days as of old!",
       "source": "Luther — Bibel"
@@ -4322,6 +4898,10 @@
       "sentence": "The Federation establishes a currency and note-issuing bank as the Bundesbank.",
       "source": "Grundgesetz (1949)"
     },
+    "erschaffen": {
+      "sentence": "Did he not create the world in his own image, namely as stupid as possible?",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
     "erscheinen": {
       "sentence": "As the waterway turned, the Rialto's magnificently arched marble bridge appeared.",
       "source": "Mann — Der Tod in Venedig"
@@ -4329,6 +4909,10 @@
     "erschließen": {
       "sentence": "Expansion and new construction projects can also unlock urban development potential.",
       "source": "Bundesverkehrswegeplan (2030)"
+    },
+    "erschweren": {
+      "sentence": "A sharply declining population makes it harder for regions to maintain and strengthen their competitiveness.",
+      "source": "Raumordnungsbericht (2021)"
     },
     "ersetzen": {
       "sentence": "But for those cases where one believes one cannot do without leaders and bellwethers, one today makes attempt after attempt to replace commanders by adding up clever herd-people: of this origin are, for example, all representative constitutions.",
@@ -4490,6 +5074,10 @@
       "sentence": "But I will rejoice in the Lord and be joyful in God, my salvation.",
       "source": "Luther — Bibel"
     },
+    "fungieren": {
+      "sentence": "The pandemic functions as a catalyst for economic transformation.",
+      "source": "Raumordnungsbericht (2021)"
+    },
     "funktionieren": {
       "sentence": "To function reliably under the extreme conditions of outer space, space research frequently requires high technology at the very limits of what is technically feasible.",
       "source": "Raumfahrtstrategie (2023)"
@@ -4558,6 +5146,10 @@
       "sentence": "Or he reaches the heights too late, when his best years and strength are already past.",
       "source": "Nietzsche — Jenseits von Gut und Böse"
     },
+    "geleiten": {
+      "sentence": "Who will bring me into the fortified city? Who will lead me to Edom?",
+      "source": "Luther — Bibel"
+    },
     "gelingen": {
       "sentence": "You must spin all this into gold tonight: but if you succeed, you shall become my queen.",
       "source": "Grimm — Märchen"
@@ -4565,6 +5157,10 @@
     "gelten": {
       "sentence": "The contempt he had formerly felt for the trial no longer held.",
       "source": "Kafka — Der Proceß"
+    },
+    "genehmigen": {
+      "sentence": "The Reich Chancellor presides over the Reich Government and conducts its affairs according to rules of procedure adopted by the Reich Government and approved by the Reich President.",
+      "source": "Weimarer Verfassung (1919)"
     },
     "generieren": {
       "sentence": "It is generated automatically without the user noticing.",
@@ -4642,6 +5238,10 @@
       "sentence": "You are staying, sir; you have no fear of the affliction.",
       "source": "Mann — Der Tod in Venedig"
     },
+    "haften": {
+      "sentence": "On the street corners were posted printed notices paternally warning the populace, on account of certain gastric ailments common in this weather, against the consumption of oysters and mussels and also against the water of the canals.",
+      "source": "Mann — Der Tod in Venedig"
+    },
     "halten": {
       "sentence": "\"No,\" said the chaplain, \"one need not hold everything to be true, one need only hold it to be necessary.\"",
       "source": "Kafka — Der Proceß"
@@ -4650,9 +5250,21 @@
       "sentence": "Doubts as to whether it was right to act in this way could not be eradicated, but the conviction of its necessity prevailed.",
       "source": "Kafka — Der Proceß"
     },
+    "hassen": {
+      "sentence": "One does not hate as long as one still has low regard, but only when one regards as equal or higher.",
+      "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
+    "hauen": {
+      "sentence": "Wisdom built her house and hewed seven pillars.",
+      "source": "Luther — Bibel"
+    },
     "heben": {
       "sentence": "Then the Flood came upon the earth for forty days, and the waters swelled and lifted the ark up and bore it high above the earth.",
       "source": "Luther — Bibel"
+    },
+    "heilen": {
+      "sentence": "It is true, if my illness could be healed, these people would do it.",
+      "source": "Goethe — Die Leiden des jungen Werthers"
     },
     "heiraten": {
       "sentence": "What am I to do? Marrying is a joy and it is also a torment.",
@@ -4666,9 +5278,21 @@
       "sentence": "Physician, heal thyself: for thus you also best help your patient.",
       "source": "Nietzsche — Also sprach Zarathustra"
     },
+    "heranziehen": {
+      "sentence": "A mill boy, who fortunately was standing there and noticed it, drew it toward him with a hook and expected to find great treasures.",
+      "source": "Grimm — Märchen"
+    },
     "herausfinden": {
       "sentence": "The children must go; we will lead them deeper into the forest so that they cannot find the way out again; otherwise there is no salvation for us.",
       "source": "Grimm — Märchen"
+    },
+    "herausgeben": {
+      "sentence": "If I find the right people, the King will have to hand over to me the treasures of the entire land.",
+      "source": "Grimm — Märchen"
+    },
+    "herausstellen": {
+      "sentence": "Gradually it has become apparent to me what every great philosophy so far has been: namely, the personal confession of its author and a kind of involuntary and unperceived mémoires.",
+      "source": "Nietzsche — Jenseits von Gut und Böse"
     },
     "herrschen": {
       "sentence": "K. was living in a free country, after all; everywhere peace reigned, all laws were upheld — who dared accost him in his own home?",
@@ -4684,6 +5308,10 @@
     },
     "hervorheben": {
       "sentence": "But the ceaselessly emphasized personal connections to the officials remained suspicious.",
+      "source": "Kafka — Der Proceß"
+    },
+    "hervorrufen": {
+      "sentence": "The eyes appeared again; one could almost take them for sad now, but perhaps that was only an illusion, evoked by the open gas flame that hissed loudly close above their heads but gave off little light.",
       "source": "Kafka — Der Proceß"
     },
     "hinterlassen": {
@@ -4742,6 +5370,10 @@
       "sentence": "Currently, German companies invest only 14 percent of their annual research budget in the industrial application of digital technologies.",
       "source": "Digitale Strategie (2025)"
     },
+    "jagen": {
+      "sentence": "The two warders stood there and chased him, as if it were a matter of course, back into his room.",
+      "source": "Kafka — Der Proceß"
+    },
     "kaufen": {
       "sentence": "\"Beautiful,\" said K., \"I'll buy it.\"",
       "source": "Kafka — Der Proceß"
@@ -4762,9 +5394,17 @@
       "sentence": "It characterizes the Germans that among them the question ‘what is German?’ never dies out.",
       "source": "Nietzsche — Jenseits von Gut und Böse"
     },
+    "klagen": {
+      "sentence": "He only complains for show.",
+      "source": "Kafka — Der Proceß"
+    },
     "kleben": {
       "sentence": "The hair, smoothly and firmly plastered to the head, made the faces appear nun-like, vacant, and expressionless.",
       "source": "Mann — Der Tod in Venedig"
+    },
+    "klettern": {
+      "sentence": "See them climb, these nimble apes! They climb over one another and thus drag each other into the mud and the depths.",
+      "source": "Nietzsche — Also sprach Zarathustra"
     },
     "klicken": {
       "sentence": "If you want to cancel the edit, click on the X icon on the left side.",
@@ -4777,6 +5417,10 @@
     "klären": {
       "sentence": "Applicants for vocational training positions are those persons registered with employment agencies or job centers who wished for training in a recognized occupation during the reporting year and whose suitability for it has been clarified.",
       "source": "Berufsbildungsbericht (2024)"
+    },
+    "knüpfen": {
+      "sentence": "And she knotted the red cord in the window.",
+      "source": "Luther — Bibel"
     },
     "kochen": {
       "sentence": "I am Zarathustra, the godless: I cook every chance occurrence in my pot.",
@@ -4926,6 +5570,10 @@
       "sentence": "Gladly I lie here where the children play, by the crumbling wall, among thistles and red poppies.",
       "source": "Nietzsche — Also sprach Zarathustra"
     },
+    "loben": {
+      "sentence": "Judah, it is you; your brothers will praise you.",
+      "source": "Luther — Bibel"
+    },
     "locken": {
       "sentence": "Do not remain attached to a single science: let it lure you with its most precious and seemingly reserved finds.",
       "source": "Nietzsche — Jenseits von Gut und Böse"
@@ -4933,6 +5581,10 @@
     "lohnen": {
       "sentence": "He is so honest, too, and has not once kissed Lotte in my presence. May God reward him for that!",
       "source": "Goethe — Die Leiden des jungen Werthers"
+    },
+    "lächeln": {
+      "sentence": "“You must not smile like that! Listen, one must not smile at anyone like that!”",
+      "source": "Mann — Der Tod in Venedig"
     },
     "löschen": {
       "sentence": "Your foot itself erased the path behind you, and above it is written: Impossibility.",
@@ -5014,6 +5666,18 @@
       "sentence": "The man listened, set his axe down for a while, and thought about what that could possibly mean.",
       "source": "Grimm — Märchen"
     },
+    "nachfragen": {
+      "sentence": "And when they searched and inquired, it was said: Gideon, the son of Joash, has done this.",
+      "source": "Luther — Bibel"
+    },
+    "nachgehen": {
+      "sentence": "K. slowly followed them; he realized that this was the first unquestionable defeat he had suffered at the hands of these people.",
+      "source": "Kafka — Der Proceß"
+    },
+    "nachlesen": {
+      "sentence": "What is left of Israel must be gleaned like a vine.",
+      "source": "Luther — Bibel"
+    },
     "nachvollziehen": {
       "sentence": "If you do not want other users to be able to trace your virtual journeys, you should delete your browsing history.",
       "source": "BSI — Benutzerkonten einrichten"
@@ -5046,9 +5710,21 @@
       "sentence": "Meanwhile, the steamboat approaches the station, and pain and helplessness mount to the point of confusion.",
       "source": "Mann — Der Tod in Venedig"
     },
+    "nützen": {
+      "sentence": "But if you have a suffering friend, be a resting place for his suffering, yet like a hard bed, a field cot: thus you will be of most use to him.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "offenbaren": {
+      "sentence": "He who is patient is wise; but he who is impatient reveals his folly.",
+      "source": "Luther — Bibel"
+    },
     "optimieren": {
       "sentence": "With AI-supported logistics systems, capacities are optimized so that the environment is effectively relieved of unnecessary empty-vehicle traffic.",
       "source": "KI-Strategie (2020)"
+    },
+    "ordnen": {
+      "sentence": "Every religious society orders and administers its affairs independently within the limits of the law that applies to all.",
+      "source": "Grundgesetz (1949)"
     },
     "organisieren": {
       "sentence": "One must not relent from these efforts; everything would have to be organized and supervised — for once, the court should encounter a defendant who knew how to defend his rights.",
@@ -5069,6 +5745,10 @@
     "passieren": {
       "sentence": "When K. passed through the corridor one of the next evenings, the one separating his office from the main staircase, he heard sighs coming from behind a door.",
       "source": "Kafka — Der Proceß"
+    },
+    "pflanzen": {
+      "sentence": "And God the LORD planted a garden in Eden, toward the east, and placed the man therein whom He had made.",
+      "source": "Luther — Bibel"
     },
     "pflegen": {
       "sentence": "Where the rabble eats and drinks, even where it worships, there it tends to stink.",
@@ -5106,6 +5786,14 @@
       "sentence": "Zarathustra beheld all this with great astonishment; then he examined each one of his guests with genial curiosity, read their souls, and marveled anew.",
       "source": "Nietzsche — Also sprach Zarathustra"
     },
+    "punkten": {
+      "sentence": "It can also offer companies a better position in the search for skilled workers, score with more highly motivated employees, and enable a better work-life balance.",
+      "source": "Raumordnungsbericht (2021)"
+    },
+    "qualifizieren": {
+      "sentence": "Germany needs many well-qualified skilled workers — for more climate protection, for shaping the digital transformation, and for smart solutions in an ever-aging society.",
+      "source": "Berufsbildungsbericht (2024)"
+    },
     "raten": {
       "sentence": "\"And now I advise you,\" he added, \"to go to your room, to keep quiet, and to wait for what will be decided about you.\"",
       "source": "Kafka — Der Proceß"
@@ -5134,9 +5822,17 @@
       "sentence": "The creation of internationally binding rules and measures that permit a peaceful and sustainable use of outer space, reduce dangers for space activities, and prevent an arms race in space remains a central goal of the Federal Government.",
       "source": "Raumfahrtstrategie (2023)"
     },
+    "reflektieren": {
+      "sentence": "Digital technology should not be rejected wholesale but rather openly and reflectively become a core component of a self-determination-oriented educational mission.",
+      "source": "Digitale Strategie (2025)"
+    },
     "regeln": {
       "sentence": "A federal law regulates the constitution and procedure of the Federal Constitutional Court.",
       "source": "Grundgesetz (1949)"
+    },
+    "regen": {
+      "sentence": "And the wind died down, and on the trees before the castle not a single leaf stirred anymore.",
+      "source": "Grimm — Märchen"
     },
     "registrieren": {
       "sentence": "They must be registered with the system, that is, made known in a manner defined by the system.",
@@ -5186,6 +5882,10 @@
       "sentence": "Be not hasty in thy spirit to be angry; for anger rests in the heart of a fool.",
       "source": "Luther — Bibel"
     },
+    "runden": {
+      "sentence": "All figures were rounded to a multiple of 100.",
+      "source": "Berufsbildungsbericht (2024)"
+    },
     "räumen": {
       "sentence": "I have cleared the house and made room for the camels as well.",
       "source": "Luther — Bibel"
@@ -5193,6 +5893,10 @@
     "rücken": {
       "sentence": "The hand moved, the clock of my life drew breath — never had I heard such stillness around me: so that my heart was terrified.",
       "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "rühren": {
+      "sentence": "And he dreamed; and behold, a ladder stood upon the earth, and it touched with its tip the heavens, and behold, the angels of God were ascending and descending on it.",
+      "source": "Luther — Bibel"
     },
     "sagen": {
       "sentence": "“I did that,” says my memory. I cannot have done that — says my pride, and remains inexorable. In the end — memory yields.",
@@ -5216,6 +5920,10 @@
     },
     "schauen": {
       "sentence": "Of late did I gaze into thine eye, O Life!",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "scheiden": {
+      "sentence": "Everything parts, everything greets itself anew; the ring of being remains eternally faithful to itself.",
       "source": "Nietzsche — Also sprach Zarathustra"
     },
     "scheinen": {
@@ -5278,6 +5986,10 @@
       "sentence": "The goal is to train and strengthen the immediate reference persons of young immigrants and the young descendants of immigrants at the school-to-vocational-training transition as advisors and counselors.",
       "source": "Berufsbildungsbericht (2024)"
     },
+    "schweigen": {
+      "sentence": "All desire falls silent in her presence.",
+      "source": "Goethe — Die Leiden des jungen Werthers"
+    },
     "schwimmen": {
       "sentence": "A fading star still swam in the void.",
       "source": "Mann — Der Tod in Venedig"
@@ -5321,6 +6033,10 @@
     "sicherstellen": {
       "sentence": "Enforcement of the directive is to be ensured by the highest state authorities.",
       "source": "Grundgesetz (1949)"
+    },
+    "siegen": {
+      "sentence": "And when Moses held up his hand, Israel was victorious; but when he let his hand down, Amalek was victorious.",
+      "source": "Luther — Bibel"
     },
     "singen": {
       "sentence": "When something vexes me and threatens to make me cross, I jump up and sing a few contradances up and down the garden, and straight away it's gone.",
@@ -5398,6 +6114,10 @@
       "sentence": "Joringel could not move; he stood there like a stone, unable to weep, unable to speak, unable to stir hand or foot.",
       "source": "Grimm — Märchen"
     },
+    "stehlen": {
+      "sentence": "How dare you climb into my garden and steal my rapunzel like a thief? You shall pay dearly for this.",
+      "source": "Grimm — Märchen"
+    },
     "steigen": {
       "sentence": "She climbed the narrow spiral staircase and reached a small door.",
       "source": "Grimm — Märchen"
@@ -5433,6 +6153,10 @@
     "streichen": {
       "sentence": "Others rowed in small boats painted red and blue, keel-less, and capsized laughing.",
       "source": "Mann — Der Tod in Venedig"
+    },
+    "streiten": {
+      "sentence": "And you tell me, friends, that there is no disputing over taste and tasting?",
+      "source": "Nietzsche — Also sprach Zarathustra"
     },
     "studieren": {
       "sentence": "He studied shipping connections, he looked around searchingly, and all at once, at once surprising and self-evident, his destination stood before his eyes.",
@@ -5482,6 +6206,10 @@
       "sentence": "Software can be tested at different stages of its lifecycle.",
       "source": "BSI — Software-Tests und -Freigaben (2023)"
     },
+    "thematisieren": {
+      "sentence": "The guiding framework could, however, address their special needs more strongly in further courses of action.",
+      "source": "Raumordnungsbericht (2021)"
+    },
     "tragen": {
       "sentence": "The Federal Chancellor determines the guidelines of policy and bears responsibility for them.",
       "source": "Grundgesetz (1949)"
@@ -5518,6 +6246,10 @@
       "sentence": "But I live in my own light; I drink the flames back into myself that break forth from me.",
       "source": "Nietzsche — Also sprach Zarathustra"
     },
+    "trocknen": {
+      "sentence": "He dried his face, completely awash with tears, on K.’s coat.",
+      "source": "Kafka — Der Proceß"
+    },
     "träumen": {
       "sentence": "At last he dreamed one night that he found a blood-red flower in the center of which lay a beautiful great pearl.",
       "source": "Grimm — Märchen"
@@ -5545,6 +6277,10 @@
     "umsetzen": {
       "sentence": "Programs with short durations are nearly impossible for structurally weak regions to implement on time.",
       "source": "Raumordnungsbericht (2021)"
+    },
+    "umstellen": {
+      "sentence": "He positioned the soldiers in a ring around the robbers.",
+      "source": "Grimm — Märchen"
     },
     "umwandeln": {
       "sentence": "The special asset Deutsche Bundespost shall be transformed into enterprises under private law pursuant to a federal statute.",
@@ -5594,6 +6330,10 @@
       "sentence": "Each case is examined on its own merits — it is, after all, the most meticulous court.",
       "source": "Kafka — Der Proceß"
     },
+    "unterzeichnen": {
+      "sentence": "The motion to bring charges must be signed by at least one hundred members of the Reichstag and requires the approval of the majority prescribed for constitutional amendments.",
+      "source": "Weimarer Verfassung (1919)"
+    },
     "variieren": {
       "sentence": "The observation periods of the indicators vary depending on the map.",
       "source": "Raumordnungsbericht (2021)"
@@ -5601,6 +6341,14 @@
     "verabschieden": {
       "sentence": "That’s enough for one day and we can take our leave of each other, for the time being at least.",
       "source": "Kafka — Der Proceß"
+    },
+    "verankern": {
+      "sentence": "The strengthening of competitiveness is enshrined as an important goal in all state-development plans.",
+      "source": "Raumordnungsbericht (2021)"
+    },
+    "veranlassen": {
+      "sentence": "Regarding the budget, tax laws, and salary regulations, only the Reich President can initiate a referendum.",
+      "source": "Weimarer Verfassung (1919)"
     },
     "veranstalten": {
       "sentence": "To this end, the Federal Government is organizing a German Space Day in 2025.",
@@ -5626,6 +6374,10 @@
       "sentence": "For he wounds and binds up; he shatters, and his hand heals.",
       "source": "Luther — Bibel"
     },
+    "verbleiben": {
+      "sentence": "For private schools that do not serve as substitutes for public schools, the existing law remains in effect.",
+      "source": "Weimarer Verfassung (1919)"
+    },
     "verbrauchen": {
       "sentence": "Sometimes the wake-up call comes too late, that chance event that grants “permission” to act — when the best youth and strength for action have already been consumed by sitting still.",
       "source": "Nietzsche — Jenseits von Gut und Böse"
@@ -5633,6 +6385,10 @@
     "verbreiten": {
       "sentence": "Everyone has the right to freely express and disseminate their opinion in speech, writing, and image and to inform themselves without hindrance from generally accessible sources.",
       "source": "Grundgesetz (1949)"
+    },
+    "verbrennen": {
+      "sentence": "Ugh! She began to howl, quite dreadfully; but Gretel ran away, and the godless witch had to burn miserably.",
+      "source": "Grimm — Märchen"
     },
     "verbringen": {
       "sentence": "He spent two hours in his room and traveled in the afternoon by vaporetto across the foul-smelling lagoon to Venice.",
@@ -5657,6 +6413,10 @@
     "vereinen": {
       "sentence": "In man, creature and creator are united.",
       "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
+    "vereinfachen": {
+      "sentence": "“My innocence does not simplify the matter,” said K.",
+      "source": "Kafka — Der Proceß"
     },
     "verfassen": {
       "sentence": "In the first year of Belshazzar, king of Babylon, Daniel had a dream and visions upon his bed; and he wrote the dream down and composed it thus.",
@@ -5686,6 +6446,10 @@
       "sentence": "The Self always listens and seeks: it compares, conquers, captures, destroys.",
       "source": "Nietzsche — Also sprach Zarathustra"
     },
+    "vergrößern": {
+      "sentence": "Downstairs, K. resolved, watch in hand, to take an automobile so as not to needlessly increase the already half-hour delay.",
+      "source": "Kafka — Der Proceß"
+    },
     "verhalten": {
       "sentence": "That’s not how an innocent man behaves when he’s accused of something, not if he’s still got any strength in him.",
       "source": "Kafka — Der Proceß"
@@ -5705,6 +6469,10 @@
     "verkünden": {
       "sentence": "—they shall one day proclaim with tongues of flame: He cometh, he is nigh, the great noontide!",
       "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "verkürzen": {
+      "sentence": "He weakened my strength along the way; he shortened my days.",
+      "source": "Luther — Bibel"
     },
     "verlangen": {
       "sentence": "The Reichstag and its committees may demand the presence of the Reich Chancellor and every Reich Minister.",
@@ -5729,6 +6497,10 @@
     "verletzen": {
       "sentence": "But whoever sins against me injures his own soul. All who hate me love death.",
       "source": "Luther — Bibel"
+    },
+    "verlieben": {
+      "sentence": "Take care that you do not fall in love!",
+      "source": "Goethe — Die Leiden des jungen Werthers"
     },
     "verlieren": {
       "sentence": "And lost to us be the day on which we did not dance at least once!",
@@ -5758,6 +6530,10 @@
       "sentence": "But tell me, my brothers, what can the child do that even the lion could not?",
       "source": "Nietzsche — Also sprach Zarathustra"
     },
+    "vernichten": {
+      "sentence": "Whoever must be a creator always destroys.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
     "verpassen": {
       "sentence": "The number of those who remain unaccounted for has indeed decreased, yet nearly one in five applicants still faces the danger of missing their entry into working life.",
       "source": "Berufsbildungsbericht (2024)"
@@ -5774,13 +6550,25 @@
       "sentence": "According to the number of years you shall increase the price, and according to the fewness of the years you shall reduce the price, for it is the number of harvests that he sells to you.",
       "source": "Luther — Bibel"
     },
+    "versammeln": {
+      "sentence": "All Germans have the right to assemble peacefully and without weapons, without prior registration or permission.",
+      "source": "Grundgesetz (1949)"
+    },
     "verschaffen": {
       "sentence": "I hope I will be able to procure a porter for you who will go with you right away.",
       "source": "Kafka — Der Proceß"
     },
+    "verschicken": {
+      "sentence": "Who would want strangers to send emails under their name or bid on expensive goods on the internet?",
+      "source": "BSI — Sichere Passwörter erstellen"
+    },
     "verschieben": {
       "sentence": "I ask you to postpone your mutual discussions of what I put forward until later, for I have no time and will soon be leaving.",
       "source": "Kafka — Der Proceß"
+    },
+    "verschließen": {
+      "sentence": "The woman had locked the door, and Hänsel could not get out.",
+      "source": "Grimm — Märchen"
     },
     "verschwinden": {
       "sentence": "The princess followed it with her eyes, but the ball vanished, and the well was deep, so deep that one could not see the bottom.",
@@ -5818,6 +6606,14 @@
       "sentence": "It is not easily possible to understand the blood of another: I hate the reading idlers.",
       "source": "Nietzsche — Also sprach Zarathustra"
     },
+    "versterben": {
+      "sentence": "Will you then do wonders among the dead, or will the deceased rise up and give you thanks?",
+      "source": "Luther — Bibel"
+    },
+    "verstoßen": {
+      "sentence": "When the tailor heard that, he was taken aback and saw clearly that he had cast out his three sons without cause.",
+      "source": "Grimm — Märchen"
+    },
     "verstärken": {
       "sentence": "Through the open door to K.’s room, one could see that the snowfall outside had greatly intensified.",
       "source": "Kafka — Der Proceß"
@@ -5833,6 +6629,14 @@
     "verteilen": {
       "sentence": "Thus spoke the man, for he did not know how wisely God distributes wealth and poverty.",
       "source": "Grimm — Märchen"
+    },
+    "vertiefen": {
+      "sentence": "On the trail of the Beautiful One, Aschenbach had one afternoon lost himself in the inner labyrinth of the sick city.",
+      "source": "Mann — Der Tod in Venedig"
+    },
+    "vertragen": {
+      "sentence": "It bears all things, believes all things, hopes all things, endures all things.",
+      "source": "Luther — Bibel"
     },
     "vertrauen": {
       "sentence": "It is good to trust in the LORD, and not to put confidence in men.",
@@ -5878,6 +6682,10 @@
       "sentence": "The federal government, states and municipalities, businesses and associations must jointly develop strategies to make gigabit networks a reality in Germany.",
       "source": "Digitale Strategie (2025)"
     },
+    "verwöhnen": {
+      "sentence": "“I can walk,” he said, and stood up trembling, spoiled by the comfortable sitting.",
+      "source": "Kafka — Der Proceß"
+    },
     "verzeichnen": {
       "sentence": "Therefore the hand was sent from him, and this writing was inscribed.",
       "source": "Luther — Bibel"
@@ -5893,6 +6701,18 @@
     "veröffentlichen": {
       "sentence": "The final decisions of the court are not published; they are not even accessible to the judges.",
       "source": "Kafka — Der Proceß"
+    },
+    "vollziehen": {
+      "sentence": "Aschenbach awaited Tadzio’s appearance daily, and sometimes he acted as though he were busy when it took place, letting the beautiful boy pass seemingly unnoticed.",
+      "source": "Mann — Der Tod in Venedig"
+    },
+    "vorantreiben": {
+      "sentence": "Through the application of AI in the primary production of biomass, it will also advance the implementation of the National Bioeconomy Strategy.",
+      "source": "KI-Strategie (2020)"
+    },
+    "voraussetzen": {
+      "sentence": "The granting of aid presupposes a complete elimination of fiscal deficits by the end of 2020.",
+      "source": "Grundgesetz (1949)"
     },
     "vorbereiten": {
       "sentence": "I love him who works and invents, that he may build the house for the overman and prepare for him earth, animal, and plant: for thus he wills his own downfall.",
@@ -5974,6 +6794,14 @@
       "sentence": "For the sultry air stifled the appetite, and the thought forced itself upon him that the food was poisoned with contagion.",
       "source": "Mann — Der Tod in Venedig"
     },
+    "weichen": {
+      "sentence": "“What?” asked K., recoiling with his head to the side, and looked at the painter.",
+      "source": "Kafka — Der Proceß"
+    },
+    "weinen": {
+      "sentence": "I am weeping over my golden ball, which has fallen into the well.",
+      "source": "Grimm — Märchen"
+    },
     "weisen": {
       "sentence": "A shrug dismissed him.",
       "source": "Mann — Der Tod in Venedig"
@@ -6022,6 +6850,10 @@
       "sentence": "But such a delay must not be repeated.",
       "source": "Kafka — Der Proceß"
     },
+    "wiegen": {
+      "sentence": "Tekel, that is: you have been weighed in a balance and found too light.",
+      "source": "Luther — Bibel"
+    },
     "wirken": {
       "sentence": "Hardly had she put the comb in her hair than the poison in it took effect, and the girl fell down senseless.",
       "source": "Grimm — Märchen"
@@ -6046,9 +6878,17 @@
       "sentence": "The Bundestag elects its President, his deputies, and its secretaries.",
       "source": "Grundgesetz (1949)"
     },
+    "währen": {
+      "sentence": "For riches do not last forever, and the crown endures not from generation to generation.",
+      "source": "Luther — Bibel"
+    },
     "wünschen": {
       "sentence": "Like any lover, he wished to please and felt bitter dread that it might not be possible.",
       "source": "Mann — Der Tod in Venedig"
+    },
+    "würdigen": {
+      "sentence": "Only the initiate can truly appreciate the value of such a visit, knowing how the dear chief clerk is overwhelmed with work.",
+      "source": "Kafka — Der Proceß"
     },
     "zahlen": {
       "sentence": "\"I'll pay you as soon as the oak leaves fall; then come, your money is already counted.\"",
@@ -6064,6 +6904,10 @@
     },
     "zerstören": {
       "sentence": "The Self always listens and seeks: it compares, conquers, captures, destroys.",
+      "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "zeugen": {
+      "sentence": "And the blindness of the blind one, and his seeking and groping, shall yet testify to the power of the sun into which he gazed—did you know that already?",
       "source": "Nietzsche — Also sprach Zarathustra"
     },
     "ziehen": {
@@ -6098,6 +6942,10 @@
       "sentence": "The secrecy of letters, as well as the secrecy of the post, telegraph, and telephone, are inviolable. Exceptions can only be permitted by imperial law.",
       "source": "Weimarer Verfassung (1919)"
     },
+    "zulegen": {
+      "sentence": "“I will add the eighteen years of the donkey to yours,” said God.",
+      "source": "Grimm — Märchen"
+    },
     "zunehmen": {
       "sentence": "But the righteous will hold to his way, and he who has clean hands will increase in strength.",
       "source": "Luther — Bibel"
@@ -6117,6 +6965,10 @@
     "zurückkehren": {
       "sentence": "When he returned from this trip with raging headaches, he learned that he had been designated to accompany the Italian business associate the next day.",
       "source": "Kafka — Der Proceß"
+    },
+    "zurückziehen": {
+      "sentence": "I withdraw as if from fire, and a secret force draws me forward again.",
+      "source": "Goethe — Die Leiden des jungen Werthers"
     },
     "zusammenarbeiten": {
       "sentence": "To promote digital education and improve digital infrastructure in the education sector, the federal and state governments must collaborate more closely than before.",
@@ -6145,6 +6997,10 @@
     "ändern": {
       "sentence": "\"Mere legends do not change my opinion,\" said K.",
       "source": "Kafka — Der Proceß"
+    },
+    "ärgern": {
+      "sentence": "He was annoyed by the hotel custom of hustling departing guests out of the house prematurely and informed the porter that he wished to breakfast in peace.",
+      "source": "Mann — Der Tod in Venedig"
     },
     "äußern": {
       "sentence": "It was very sultry, and the ladies expressed their concern about a thunderstorm that seemed to be gathering in pale-gray, oppressive little clouds all around the horizon.",
@@ -6190,6 +7046,10 @@
       "sentence": "When they came back across the heath on their way home, they surprised the dwarf, who had emptied his sack of gems on a tidy little spot and had not thought that anyone would come by so late.",
       "source": "Grimm — Märchen"
     },
+    "überreichen": {
+      "sentence": "Kaminer handed over the hat, and K. had to expressly remind himself—as was often necessary at the bank too—that Kaminer’s smile was not intentional, indeed that he was altogether incapable of smiling intentionally.",
+      "source": "Kafka — Der Proceß"
+    },
     "überschreiten": {
       "sentence": "For some reason he turned around before he crossed the threshold, and since no one else remained in the hall, his peculiarly twilight-gray eyes met those of Aschenbach, who, his newspaper on his knees, lost in contemplation, had been gazing after the group.",
       "source": "Mann — Der Tod in Venedig"
@@ -6201,6 +7061,10 @@
     "übersetzen": {
       "sentence": "Had one translated this behavior into words, they would have been coarse insults.",
       "source": "Kafka — Der Proceß"
+    },
+    "überstehen": {
+      "sentence": "What a night that was! Wilhelm! Now I can endure anything.",
+      "source": "Goethe — Die Leiden des jungen Werthers"
     },
     "übertragen": {
       "sentence": "But if the doorkeeper is deceived, then his deception must necessarily transfer itself to the man.",

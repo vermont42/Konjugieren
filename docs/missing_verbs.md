@@ -18,3 +18,10 @@ Verbs from `docs/frequencies.txt` not found in any corpus source file are listed
 | 747 | posten | Modern internet loanword (to post online) absent from all literary, government, and technology corpus files |
 | 769 | basteln | Everyday verb (to do crafts/tinker) absent from all literary, government, and technology corpus files |
 | 779 | beeindrucken | Verb (to impress) and all conjugated forms absent from all literary, government, and technology corpus files |
+| 821 | gratulieren | Verb (to congratulate) not found in any conjugated form across all literary, government, and technology corpus files |
+| 830 | reparieren | Verb (to repair) not found in any conjugated form across all literary, government, and technology corpus files |
+| 855 | strahlen | No conjugated forms found; all matches were compound nouns (Sonnenstrahl, Blitzstrahlen) or prefixed verbs (bestrahlt, angestrahlt) |
+| 883 | kreieren | Modern loanword (to create/design) absent from all literary, government, and technology corpus files |
+| 888 | abstellen | Verb (to turn off/put down) not found in any conjugated form; only related but distinct words found (angestellt, hinabstellen) |
+| 896 | nerven | Colloquial modern verb (to annoy) absent from all literary, government, and technology corpus files |
+| 910 | umbauen | Modern technical verb (to rebuild/renovate); only the noun Umbau found in government reports, no conjugated verb forms |

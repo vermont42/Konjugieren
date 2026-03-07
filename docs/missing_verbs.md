@@ -27,3 +27,7 @@ Verbs from `docs/frequencies.txt` not found in any corpus source file are listed
 | 910 | umbauen | Modern technical verb (to rebuild/renovate); only the noun Umbau found in government reports, no conjugated verb forms |
 | 918 | tippen | Modern colloquial verb (to tap/type/bet) absent from all literary, government, and technology corpus files |
 | 949 | filmen | Modern verb (to film/shoot video) absent from all literary, government, and technology corpus files |
+| 973 | ähneln | Verb does not appear in any conjugated form; only the related adjective ähnlich found |
+| 975 | fixieren | Verb (to fix/fixate) not found in any conjugated form across all literary, government, and technology corpus files |
+| 980 | entsorgen | Modern verb (to dispose of); only the noun Entsorgung found, no conjugated verb forms |
+| 985 | kürzen | Unprefixed verb (to shorten) not found; only prefixed forms (verkürzen, abkürzen) and derived nouns found |

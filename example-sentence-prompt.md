@@ -2,7 +2,7 @@
 
 ## Progress
 
-**Next verb number: 952** ← matches the number in column 1 of `docs/frequencies.txt` (988 verbs total). For example, 42 means the line that starts with `42`.
+**Next verb number: 989** ← matches the number in column 1 of `docs/frequencies.txt` (988 verbs total). **EXTRACTION COMPLETE** — all 988 verbs have been processed.
 
 **BATCH SIZE: 36**
 

@@ -25,3 +25,5 @@ Verbs from `docs/frequencies.txt` not found in any corpus source file are listed
 | 888 | abstellen | Verb (to turn off/put down) not found in any conjugated form; only related but distinct words found (angestellt, hinabstellen) |
 | 896 | nerven | Colloquial modern verb (to annoy) absent from all literary, government, and technology corpus files |
 | 910 | umbauen | Modern technical verb (to rebuild/renovate); only the noun Umbau found in government reports, no conjugated verb forms |
+| 918 | tippen | Modern colloquial verb (to tap/type/bet) absent from all literary, government, and technology corpus files |
+| 949 | filmen | Modern verb (to film/shoot video) absent from all literary, government, and technology corpus files |

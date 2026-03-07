@@ -2,9 +2,9 @@
 
 ## Progress
 
-**Next verb number: 912** ← matches the number in column 1 of `docs/frequencies.txt` (988 verbs total). For example, 42 means the line that starts with `42`.
+**Next verb number: 952** ← matches the number in column 1 of `docs/frequencies.txt` (988 verbs total). For example, 42 means the line that starts with `42`.
 
-**BATCH SIZE: 20**
+**BATCH SIZE: 36**
 
 ## Task
 

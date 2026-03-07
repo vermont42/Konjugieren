@@ -80,6 +80,10 @@
       "sentence": "Die Möglichkeit, eine duale Berufsausbildung in Teilzeit zu absolvieren, wurde 2005 im BBiG gesetzlich verankert.",
       "source": "Berufsbildungsbericht (2024)"
     },
+    "abstellen": {
+      "sentence": "Bei der Flutkatastrophe 2021 war es aus meiner Sicht besonders tragisch, dass einige Menschen in den Keller gegangen sind, um Strom abzustellen oder um noch irgendwelche Gegenstände zu holen.",
+      "source": "Bundestag — Plenarprotokoll 20/207"
+    },
     "abstimmen": {
       "sentence": "Zwischen dem Antrage und der Abstimmung müssen achtundvierzig Stunden liegen.",
       "source": "Grundgesetz (1949)"
@@ -512,6 +516,10 @@
       "sentence": "Das HugoTM robotergestützte Chirurgie-System basiert z. B. auf einer vom DLR lizenzierten Technologie, die das DLR-Institut für Robotik und Mechatronik für den Einsatz im Weltraum entwickelt hat, um Roboter von der Erde auf der Internationalen Raumstation fernzusteuern.",
       "source": "Raumfahrtstrategie (2023)"
     },
+    "basteln": {
+      "sentence": "Die Kinder bastelten den ganzen Nachmittag Laternen für den Martinsumzug.",
+      "source": "Opus 4.6"
+    },
     "bauen": {
       "sentence": "Alles bricht, Alles wird neu gefügt; ewig baut sich das gleiche Haus des Seins.",
       "source": "Nietzsche — Also sprach Zarathustra"
@@ -559,6 +567,10 @@
     "bedürfen": {
       "sentence": "Ich bin meiner Weisheit überdrüssig, wie die Biene, die des Honigs zu viel gesammelt hat, ich bedarf der Hände, die sich ausstrecken.",
       "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "beeindrucken": {
+      "sentence": "Diese Demonstrationen haben mich tief beeindruckt.",
+      "source": "Bundestag — Plenarprotokoll 20/210"
     },
     "beeinflussen": {
       "sentence": "Ich lasse mich sonst zu leicht beeinflussen und vergesse meinen Dienst.",
@@ -715,6 +727,10 @@
     "benutzen": {
       "sentence": "Sie können den Vaporetto nicht benutzen, mein Herr.",
       "source": "Mann — Der Tod in Venedig"
+    },
+    "benötigen": {
+      "sentence": "Die Zahlen sprechen für sich: Deutschland benötigt jährlich rund 400 000 zusätzliche Fachkräfte, um die Lücken zu schließen.",
+      "source": "Bundestag — Plenarprotokoll 20/207"
     },
     "beobachten": {
       "sentence": "Während der vielen Jahre beobachtet der Mann den Türhüter fast ununterbrochen.",
@@ -988,6 +1004,10 @@
       "sentence": "Die stillsten Worte sind es, welche den Sturm bringen.",
       "source": "Nietzsche — Also sprach Zarathustra"
     },
+    "buchen": {
+      "sentence": "Wir haben die Reise so spät gebucht, dass nur noch ein einziges Zimmer frei war.",
+      "source": "Opus 4.6"
+    },
     "danken": {
       "sentence": "Ich muß fort! Ich danke dir, Wilhelm, daß du meinen wankenden Entschluß bestimmt hast.",
       "source": "Goethe — Die Leiden des jungen Werthers"
@@ -1091,6 +1111,10 @@
     "eignen": {
       "sentence": "Sie war vielleicht geeignet, einmal nach der Pensionierung den kindisch gewordenen Geist zu beschäftigen und ihm zu helfen, die langen Tage hinzubringen.",
       "source": "Kafka — Der Proceß"
+    },
+    "einbauen": {
+      "sentence": "Ich möchte eine neue, klimafreundliche Heizung (als Einzelmaßnahme) einbauen.",
+      "source": "KfW — Energieeffizient sanieren"
     },
     "einbeziehen": {
       "sentence": "Je früher die direkt oder indirekt betroffenen Gruppen oder Institutionen einbezogen werden, desto besser können sie ihre Kenntnisse, Erfahrungen und Bedürfnisse in den Prozess einspeisen.",
@@ -1284,6 +1308,10 @@
       "sentence": "„Ich bin vor allen entschuldigt, die mich kennen,“ sagte die Frau.",
       "source": "Kafka — Der Proceß"
     },
+    "entsorgen": {
+      "sentence": "Wer alte Medikamente im Hausmüll entsorgt, riskiert, dass sie in falsche Hände geraten.",
+      "source": "Opus 4.6"
+    },
     "entspannen": {
       "sentence": "Nur dieser Ort verzauberte ihn, entspannte sein Wollen, machte ihn glücklich.",
       "source": "Mann — Der Tod in Venedig"
@@ -1443,6 +1471,10 @@
     "ermitteln": {
       "sentence": "Dabei ist der Umfang der Ausgaben unter Berücksichtigung einer mehrjährigen Finanzplanung zu ermitteln.",
       "source": "Grundgesetz (1949)"
+    },
+    "ermöglichen": {
+      "sentence": "Wir wollen Menschen nicht belehren, sondern wir möchten ihnen ein selbstbestimmtes Leben ermöglichen.",
+      "source": "Bundestag — Plenarprotokoll 20/207"
     },
     "ernennen": {
       "sentence": "Der Bundeskanzler ernennt einen Bundesminister zu seinem Stellvertreter.",
@@ -1608,6 +1640,10 @@
       "sentence": "Er blieb erstaunt stehn und horchte noch einmal auf, um festzustellen, ob er sich nicht irrte — es wurde ein Weilchen still, dann waren es aber doch wieder Seufzer.",
       "source": "Kafka — Der Proceß"
     },
+    "filmen": {
+      "sentence": "Herr Habeck selbst kam sogar zweimal bestens gelaunt in den Raum, hat sich zweimal hingesetzt und sich dabei filmen lassen, wie er bestens gelaunt in den Ausschuss kommt, weil jeder Journalist ein Bild davon kriegen sollte.",
+      "source": "Bundestag — Plenarprotokoll 20/210"
+    },
     "finanzieren": {
       "sentence": "Damit folgen wir dem Grundsatz: Schiene finanziert Schiene.",
       "source": "Bundesverkehrswegeplan (2030)"
@@ -1615,6 +1651,10 @@
     "finden": {
       "sentence": "Ich kehre in mich selbst zurück, und finde eine Welt!",
       "source": "Goethe — Die Leiden des jungen Werthers"
+    },
+    "fixieren": {
+      "sentence": "Der Falke fixierte seine Beute aus großer Höhe, bevor er im Sturzflug herabschoss.",
+      "source": "Opus 4.6"
     },
     "fliegen": {
       "sentence": "Der Vogel, froh über seine Freiheit, stieg auf, flog fort und kam nicht wieder.",
@@ -1647,6 +1687,10 @@
     "fortsetzen": {
       "sentence": "Die Mittelmässigen allein haben Aussicht, sich fortzusetzen, sich fortzupflanzen, - sie sind die Menschen der Zukunft, die einzig überlebenden.",
       "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
+    "fotografieren": {
+      "sentence": "Sie fotografiert nicht! Sie filmt!",
+      "source": "Bundestag — Plenarprotokoll 20/207"
     },
     "fragen": {
       "sentence": "„Was ist Liebe? Was ist Schöpfung? Was ist Sehnsucht? Was ist Stern\"—so fragt der letzte Mensch und blinzelt.",
@@ -1820,6 +1864,10 @@
       "sentence": "Das im Mondlicht glänzende und zitternde Wasser teilte sich um eine kleine Insel, auf der wie zusammengedrängt Laubmassen von Bäumen und Sträuchern sich aufhäuften.",
       "source": "Kafka — Der Proceß"
     },
+    "gratulieren": {
+      "sentence": "Ich wollte ihm eigentlich noch zu seinem gestrigen Geburtstag gratulieren, jetzt ist er weg.",
+      "source": "Bundestag — Plenarprotokoll 20/214"
+    },
     "greifen": {
       "sentence": "Wut ergriff ihn, Verblendung, betäubende Wollust, und seine Seele begehrte, sich anzuschließen dem Reigen des Gottes.",
       "source": "Mann — Der Tod in Venedig"
@@ -1940,6 +1988,10 @@
       "sentence": "Man lege sie einfach zu den Akten und weise darauf hin, daß vorläufig die Einvernahme und Beobachtung des Angeklagten wichtiger sei, als alles Geschriebene.",
       "source": "Kafka — Der Proceß"
     },
+    "hinzufügen": {
+      "sentence": "Ich will ein Zweites hinzufügen, auch wenn diese Wahrheit möglicherweise auch gerade am heutigen Tag etwas unbequem ist: Wir müssen gemeinsam neue Antworten geben auf die voranschreitenden Herausforderungen der Alterung unserer Gesellschaft.",
+      "source": "Bundestag — Plenarprotokoll 20/214"
+    },
     "hochladen": {
       "sentence": "Wenn du eine Grafik mit Text erzeugst, dann lade auch eine Version ohne Text hoch.",
       "source": "Wikipedia — Hilfe:Dateien"
@@ -1963,6 +2015,10 @@
     "identifizieren": {
       "sentence": "Rechtliche Barrieren und sonstige Hindernisse für den grenzüberschreitenden E-Commerce müssen identifiziert und beseitigt werden.",
       "source": "Digitale Strategie (2025)"
+    },
+    "ignorieren": {
+      "sentence": "Sie können dort auch einstellen, dass Suchmaschinen Ihr Profil ignorieren.",
+      "source": "BSI — Soziale Medien sicher nutzen"
     },
     "informieren": {
       "sentence": "Die Zukunftszentren informieren, beraten und qualifizieren in der Transformation der Arbeitswelt.",
@@ -2020,6 +2076,10 @@
       "sentence": "Er klagt ja nur zum Schein.",
       "source": "Kafka — Der Proceß"
     },
+    "klappen": {
+      "sentence": "Wir wollten es halt unbedingt, und wenn man etwas unbedingt will, dann kann das auch klappen.",
+      "source": "Bundestag — Plenarprotokoll 20/210"
+    },
     "kleben": {
       "sentence": "Das glatt und fest an den Kopf geklebte Haar ließ die Gesichter nonnenhaft leer und nichtssagend erscheinen.",
       "source": "Mann — Der Tod in Venedig"
@@ -2048,9 +2108,17 @@
       "sentence": "Ich bin Zarathustra, der Gottlose: ich koche mir noch jeden Zufall in meinem Topfe.",
       "source": "Nietzsche — Also sprach Zarathustra"
     },
+    "kombinieren": {
+      "sentence": "Heizungsanlagen sparen besonders viel Energie, wenn sie mit einer Solaranlage zur Warmwasserbereitung und Heizungsunterstützung kombiniert werden.",
+      "source": "KfW — Energieeffizient sanieren"
+    },
     "kommen": {
       "sentence": "Es nimmt dich auf, wenn du kommst, und es entläßt dich, wenn du gehst.",
       "source": "Kafka — Der Proceß"
+    },
+    "kommentieren": {
+      "sentence": "Die Ministerin weigerte sich, die Gerüchte zu kommentieren, und verließ wortlos den Saal.",
+      "source": "Opus 4.6"
     },
     "kommunizieren": {
       "sentence": "Wenn Mensch zu Maschine oder Maschine zu Maschine kommuniziert, entstehen neue Wertschöpfungspotenziale.",
@@ -2088,9 +2156,17 @@
       "sentence": "Ich will ihn nicht verlassen und will ihm mit Treue dienen, wenn's auch mein Leben kostet.",
       "source": "Grimm — Märchen"
     },
+    "kreieren": {
+      "sentence": "Aus wenigen Zutaten kreierte die Köchin ein Gericht, das alle Gäste überraschte.",
+      "source": "Opus 4.6"
+    },
     "kriegen": {
       "sentence": "Aber die auf den HERRN harren, kriegen neue Kraft, daß sie auffahren mit Flügeln wie Adler, daß sie laufen und nicht matt werden, daß sie wandeln und nicht müde werden.",
       "source": "Luther — Bibel"
+    },
+    "kritisieren": {
+      "sentence": "Sie kritisieren immer wieder Investitionen in die Zukunftsindustrien wie die Halbleiterindustrie oder die Batterieproduktion.",
+      "source": "Bundestag — Plenarprotokoll 20/207"
     },
     "kämpfen": {
       "sentence": "Und wenn da einmal Wahrheit zum Siege kam, so fragt euch mit gutem Misstrauen: „welch starker Irrthum hat für sie gekämpft?“",
@@ -2107,6 +2183,10 @@
     "kündigen": {
       "sentence": "Er säumte nicht, den irrigen Aufenthalt zu kündigen.",
       "source": "Mann — Der Tod in Venedig"
+    },
+    "kürzen": {
+      "sentence": "Wenn wir aber unbegrenzt in Aufrüstung investieren und gleichzeitig in Bereichen wie Bildung, Soziales, Entwicklung und Stärkung der Zivilgesellschaft kürzen, ist das Gift für unsere demokratische Gesellschaft.",
+      "source": "Bundestag — Plenarprotokoll 20/214"
     },
     "lachen": {
       "sentence": "Aber der im Himmel wohnt, lacht ihrer, und der HERR spottet ihrer.",
@@ -2276,6 +2356,10 @@
       "sentence": "Es ist leider nicht sehr viel, was ich Ihnen mitteilen kann.",
       "source": "Kafka — Der Proceß"
     },
+    "montieren": {
+      "sentence": "Im Satteldach wird die Dämmung zwischen, auf oder unter die bestehende Tragkonstruktion (Sparren) montiert.",
+      "source": "KfW — Energetische Sanierung"
+    },
     "motivieren": {
       "sentence": "Durch niedrigschwellige Ansprache „auf Augenhöhe“ und arbeitsplatzbezogene Beratung motivieren Weiterbildungsmentorinnen und Weiterbildungsmentoren Kolleginnen und Kollegen insbesondere mit negativen Bildungserfahrungen oder niedrigeren Qualifikationen, sich weiterzubilden.",
       "source": "Berufsbildungsbericht (2024)"
@@ -2323,6 +2407,10 @@
     "nennen": {
       "sentence": "Er zählt die Sterne und nennt sie alle mit Namen.",
       "source": "Luther — Bibel"
+    },
+    "nerven": {
+      "sentence": "Genauso nervt mich als Polizeigewerkschafter die Debatte über die Kennzeichnungspflicht.",
+      "source": "Bundestag — Plenarprotokoll 20/207"
     },
     "notieren": {
       "sentence": "Der junge Mann tat, als bemerke er nichts davon, hörte ruhig K.s Aufträge bis zu Ende an, notierte sich auch einiges und ging.",
@@ -2395,6 +2483,10 @@
     "positionieren": {
       "sentence": "Die Bundesregierung positioniert Wasserstoff als wichtigen Baustein für die Dekarbonisierung energieintensiver Industrien sowie zur Sektorkopplung zwischen Industrie, Verkehr, Wärmeversorgung und Elektrizität.",
       "source": "BuFI Kurzfassung (2024)"
+    },
+    "posten": {
+      "sentence": "Achten Sie auch darauf, dass Sie Rechte Dritter nicht durch das Posten von Bildern, Texten oder Videos verletzen.",
+      "source": "BSI — Soziale Medien sicher nutzen"
     },
     "probieren": {
       "sentence": "Der Sohn nahm die Axt und trug sie in die Stadt zu einem Goldschmied, der probierte sie, legte sie auf die Wage und sprach: »Sie ist vierhundert Taler wert, so viel habe ich nicht bar.«",
@@ -2507,6 +2599,10 @@
     "rennen": {
       "sentence": "Und Mancher von ihnen geht vorwärts und blickt dabei zurück, mit versteiftem Nacken: dem renne ich gern wider den Leib.",
       "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "reparieren": {
+      "sentence": "Gäbe es mehr und günstigere Reparaturangebote, verfügbare Ersatzteile und verständliche Anleitungen, würden sich viel mehr Menschen dafür entscheiden, ihre Geräte reparieren zu lassen oder selber zum Werkzeug zu greifen.",
+      "source": "BMUKN — Recht auf Reparatur"
     },
     "repräsentieren": {
       "sentence": "Zehn Jahre später hatte er gelernt, von seinem Schreibtische aus zu repräsentieren, seinen Ruhm zu verwalten in einem Briefsatz, der kurz sein mußte.",
@@ -2776,6 +2872,10 @@
       "sentence": "Woher kam und stammte der Hauch, der auf einmal so sanft und bedeutend, höherer Einflüsterung gleich, Schläfe und Ohr umspielte?",
       "source": "Mann — Der Tod in Venedig"
     },
+    "starten": {
+      "sentence": "Ich möchte starten mit einem Dank an meine Kolleginnen und Kollegen aus den demokratischen Fraktionen.",
+      "source": "Bundestag — Plenarprotokoll 20/210"
+    },
     "stattfinden": {
       "sentence": "Sollte jetzt etwa eine Predigt stattfinden? In der leeren Kirche?",
       "source": "Kafka — Der Proceß"
@@ -2827,6 +2927,10 @@
     "stoßen": {
       "sentence": "Aber an K.s Gurgel legten sich die Hände des einen Herrn, während der andere das Messer ihm ins Herz stieß und zweimal dort drehte.",
       "source": "Kafka — Der Proceß"
+    },
+    "strahlen": {
+      "sentence": "Nach der bestandenen Prüfung strahlte sie über das ganze Gesicht.",
+      "source": "Opus 4.6"
     },
     "streben": {
       "sentence": "„Alle streben doch nach dem Gesetz,“ sagt der Mann, „wieso kommt es, daß in den vielen Jahren niemand außer mir Einlaß verlangt hat.“",
@@ -2892,6 +2996,10 @@
       "sentence": "Das Leitbild könnte aber ihre besonderen Bedürfnisse in weiteren Handlungsansätzen stärker thematisieren.",
       "source": "Raumordnungsbericht (2021)"
     },
+    "tippen": {
+      "sentence": "Er tippte so schnell auf der Tastatur, dass seine Finger über die Tasten zu fliegen schienen.",
+      "source": "Opus 4.6"
+    },
     "tragen": {
       "sentence": "Der Bundeskanzler bestimmt die Richtlinien der Politik und trägt dafür die Verantwortung.",
       "source": "Grundgesetz (1949)"
@@ -2947,6 +3055,10 @@
     "töten": {
       "sentence": "Nicht durch Zorn, sondern durch Lachen tödtet man.",
       "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "umbauen": {
+      "sentence": "Und ich möchte mich bei den Handwerkerinnen und Handwerkern bedanken, die ab jetzt gleich anfangen, diesen Saal für die konstituierende Sitzung umzubauen, in Überstunden und am Wochenende.",
+      "source": "Bundestag — Plenarprotokoll 20/214"
     },
     "umfassen": {
       "sentence": "Konnt' ich nicht vor ihr das ganze wunderbare Gefühl entwickeln, mit dem mein Herz die Natur umfaßt?",
@@ -3047,6 +3159,10 @@
     "veranstalten": {
       "sentence": "Dazu veranstaltet die Bundesregierung im Jahr 2025 einen Tag der deutschen Raumfahrt.",
       "source": "Raumfahrtstrategie (2023)"
+    },
+    "verarbeiten": {
+      "sentence": "Das ist ein längst überfälliger Schritt, mit dem wir als Staat anerkennen, dass es nach Fehlgeburten Schutz braucht, um den Verlust verarbeiten zu können, dass es Zeit braucht, um körperlich und seelisch zu heilen.",
+      "source": "Bundestag — Plenarprotokoll 20/210"
     },
     "verbauen": {
       "sentence": "Er hat mich verbaut und mich mit Galle und Mühe umgeben.",
@@ -3540,6 +3656,14 @@
       "sentence": "Er wird von den Ländern auf der Grundlage eines orts- und wirtschaftsbezogenen Schlüssels an ihre Gemeinden weitergeleitet.",
       "source": "Grundgesetz (1949)"
     },
+    "weiterlesen": {
+      "sentence": "Das Buch war so spannend, dass sie nicht aufhören konnte und bis zum Morgengrauen weiterlas.",
+      "source": "Opus 4.6"
+    },
+    "weißen": {
+      "sentence": "Jeden Frühling weißten sie die Mauern des alten Bauernhofs, bis er in der Sonne leuchtete.",
+      "source": "Opus 4.6"
+    },
     "wenden": {
       "sentence": "Aber durch Dunst und Gefunkel sah Aschenbach, wie der Schöne dort vorn den Kopf wandte, ihn suchte und ihn erblickte.",
       "source": "Mann — Der Tod in Venedig"
@@ -3724,6 +3848,10 @@
       "sentence": "Siehe gen Himmel und zähle die Sterne; kannst du sie zählen?",
       "source": "Luther — Bibel"
     },
+    "ähneln": {
+      "sentence": "Die beiden Schwestern ähneln einander so sehr, dass selbst ihre Eltern sie verwechseln.",
+      "source": "Opus 4.6"
+    },
     "ändern": {
       "sentence": "„Bloße Legenden ändern meine Meinung nicht,\" sagte K.",
       "source": "Kafka — Der Proceß"
@@ -3905,6 +4033,10 @@
     "absolvieren": {
       "sentence": "The option of completing a dual vocational training program part-time was legally established in the BBiG in 2005.",
       "source": "Berufsbildungsbericht (2024)"
+    },
+    "abstellen": {
+      "sentence": "During the 2021 flood disaster, it was, from my point of view, particularly tragic that some people went down to the basement to turn off the electricity or to retrieve some belongings.",
+      "source": "Bundestag — Plenarprotokoll 20/207"
     },
     "abstimmen": {
       "sentence": "Forty-eight hours must elapse between the motion and the vote.",
@@ -4338,6 +4470,10 @@
       "sentence": "The HugoTM robot-assisted surgery system is based, for example, on a technology licensed from DLR that the DLR Institute of Robotics and Mechatronics developed for use in space in order to remotely control robots on the International Space Station from Earth.",
       "source": "Raumfahrtstrategie (2023)"
     },
+    "basteln": {
+      "sentence": "The children spent the whole afternoon crafting lanterns for the St. Martin’s Day procession.",
+      "source": "Opus 4.6"
+    },
     "bauen": {
       "sentence": "Everything breaks, everything is joined anew; eternally the same house of Being builds itself.",
       "source": "Nietzsche — Also sprach Zarathustra"
@@ -4385,6 +4521,10 @@
     "bedürfen": {
       "sentence": "I am weary of my wisdom, like the bee that has gathered too much honey; I require the hands that reach out.",
       "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "beeindrucken": {
+      "sentence": "These demonstrations deeply impressed me.",
+      "source": "Bundestag — Plenarprotokoll 20/210"
     },
     "beeinflussen": {
       "sentence": "Otherwise I let myself be influenced too easily and forget my duty.",
@@ -4541,6 +4681,10 @@
     "benutzen": {
       "sentence": "You cannot use the vaporetto, sir.",
       "source": "Mann — Der Tod in Venedig"
+    },
+    "benötigen": {
+      "sentence": "The numbers speak for themselves: Germany needs roughly 400,000 additional skilled workers each year to close the gaps.",
+      "source": "Bundestag — Plenarprotokoll 20/207"
     },
     "beobachten": {
       "sentence": "During the many years, the man observes the doorkeeper almost without interruption.",
@@ -4814,6 +4958,10 @@
       "sentence": "It is the stillest words that bring the storm.",
       "source": "Nietzsche — Also sprach Zarathustra"
     },
+    "buchen": {
+      "sentence": "We booked the trip so late that only a single room was still available.",
+      "source": "Opus 4.6"
+    },
     "danken": {
       "sentence": "I must leave! I thank you, Wilhelm, for having resolved my wavering decision.",
       "source": "Goethe — Die Leiden des jungen Werthers"
@@ -4917,6 +5065,10 @@
     "eignen": {
       "sentence": "It was perhaps suitable for keeping the childishly enfeebled mind occupied after retirement and helping it while away the long days.",
       "source": "Kafka — Der Proceß"
+    },
+    "einbauen": {
+      "sentence": "I would like to install a new, climate-friendly heating system (as a standalone measure).",
+      "source": "KfW — Energieeffizient sanieren"
     },
     "einbeziehen": {
       "sentence": "The earlier that directly or indirectly affected groups or institutions are involved, the better they can contribute their knowledge, experience, and needs to the process.",
@@ -5110,6 +5262,10 @@
       "sentence": "“I am excused before everyone who knows me,” said the woman.",
       "source": "Kafka — Der Proceß"
     },
+    "entsorgen": {
+      "sentence": "Anyone who disposes of old medications in the household trash risks them falling into the wrong hands.",
+      "source": "Opus 4.6"
+    },
     "entspannen": {
       "sentence": "Only this place enchanted him, relaxed his will, and made him happy.",
       "source": "Mann — Der Tod in Venedig"
@@ -5269,6 +5425,10 @@
     "ermitteln": {
       "sentence": "In this context, the scope of expenditures is to be determined with due regard for multi-year financial planning.",
       "source": "Grundgesetz (1949)"
+    },
+    "ermöglichen": {
+      "sentence": "We do not want to lecture people; rather, we want to enable them to live self-determined lives.",
+      "source": "Bundestag — Plenarprotokoll 20/207"
     },
     "ernennen": {
       "sentence": "The Federal Chancellor appoints a Federal Minister as his deputy.",
@@ -5434,6 +5594,10 @@
       "sentence": "He stopped in astonishment and listened once more to determine whether he was mistaken — it was quiet for a little while, but then there were sighs again.",
       "source": "Kafka — Der Proceß"
     },
+    "filmen": {
+      "sentence": "Mr. Habeck himself came into the room twice in the best of moods, sat down twice, and had himself filmed arriving cheerfully at the committee, because every journalist was supposed to get a shot of it.",
+      "source": "Bundestag — Plenarprotokoll 20/210"
+    },
     "finanzieren": {
       "sentence": "In this we follow the principle: rail finances rail.",
       "source": "Bundesverkehrswegeplan (2030)"
@@ -5441,6 +5605,10 @@
     "finden": {
       "sentence": "I return into myself and find a whole world!",
       "source": "Goethe — Die Leiden des jungen Werthers"
+    },
+    "fixieren": {
+      "sentence": "The falcon fixed its gaze on the prey from a great height before plunging into a dive.",
+      "source": "Opus 4.6"
     },
     "fliegen": {
       "sentence": "The bird, happy about its freedom, rose up, flew away, and never came back.",
@@ -5473,6 +5641,10 @@
     "fortsetzen": {
       "sentence": "The mediocre alone have the prospect of continuing, of propagating themselves — they are the people of the future, the only survivors.",
       "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
+    "fotografieren": {
+      "sentence": "She’s not taking photos! She’s filming!",
+      "source": "Bundestag — Plenarprotokoll 20/207"
     },
     "fragen": {
       "sentence": "\"What is love? What is creation? What is longing? What is a star?\"—thus asks the last man, and blinks.",
@@ -5646,6 +5818,10 @@
       "sentence": "The water, gleaming and trembling in the moonlight, parted around a small island on which, as if crowded together, masses of foliage from trees and bushes were heaped up.",
       "source": "Kafka — Der Proceß"
     },
+    "gratulieren": {
+      "sentence": "I actually wanted to congratulate him on his birthday yesterday, but now he’s gone.",
+      "source": "Bundestag — Plenarprotokoll 20/214"
+    },
     "greifen": {
       "sentence": "Rage seized him, delusion, numbing lust, and his soul craved to join the round-dance of the god.",
       "source": "Mann — Der Tod in Venedig"
@@ -5766,6 +5942,10 @@
       "sentence": "They simply filed the documents and pointed out that for the time being, the interrogation and observation of the accused were more important than anything written.",
       "source": "Kafka — Der Proceß"
     },
+    "hinzufügen": {
+      "sentence": "I want to add a second point, even if this truth may be somewhat uncomfortable today: we must find new answers together to the advancing challenges of our aging society.",
+      "source": "Bundestag — Plenarprotokoll 20/214"
+    },
     "hochladen": {
       "sentence": "If you create a graphic with text, then also upload a version without text.",
       "source": "Wikipedia — Hilfe:Dateien"
@@ -5789,6 +5969,10 @@
     "identifizieren": {
       "sentence": "Legal barriers and other obstacles to cross-border e-commerce must be identified and eliminated.",
       "source": "Digitale Strategie (2025)"
+    },
+    "ignorieren": {
+      "sentence": "You can also set it so that search engines ignore your profile.",
+      "source": "BSI — Soziale Medien sicher nutzen"
     },
     "informieren": {
       "sentence": "The Future Centers inform, advise, and upskill workers in the transformation of the working world.",
@@ -5846,6 +6030,10 @@
       "sentence": "He only complains for show.",
       "source": "Kafka — Der Proceß"
     },
+    "klappen": {
+      "sentence": "We really wanted it, and if you really want something, it can work out.",
+      "source": "Bundestag — Plenarprotokoll 20/210"
+    },
     "kleben": {
       "sentence": "The hair, smoothly and firmly plastered to the head, made the faces appear nun-like, vacant, and expressionless.",
       "source": "Mann — Der Tod in Venedig"
@@ -5874,9 +6062,17 @@
       "sentence": "I am Zarathustra, the godless: I cook every chance occurrence in my pot.",
       "source": "Nietzsche — Also sprach Zarathustra"
     },
+    "kombinieren": {
+      "sentence": "Heating systems save especially large amounts of energy when they are combined with a solar system for hot-water preparation and heating support.",
+      "source": "KfW — Energieeffizient sanieren"
+    },
     "kommen": {
       "sentence": "It receives you when you come and releases you when you go.",
       "source": "Kafka — Der Proceß"
+    },
+    "kommentieren": {
+      "sentence": "The minister refused to comment on the rumors and left the hall without a word.",
+      "source": "Opus 4.6"
     },
     "kommunizieren": {
       "sentence": "When man communicates with machine, or machine with machine, new value-creation potentials emerge.",
@@ -5914,9 +6110,17 @@
       "sentence": "I will not abandon him and will serve him faithfully, even if it costs me my life.",
       "source": "Grimm — Märchen"
     },
+    "kreieren": {
+      "sentence": "From just a few ingredients, the chef created a dish that surprised all the guests.",
+      "source": "Opus 4.6"
+    },
     "kriegen": {
       "sentence": "But they that wait upon the Lord shall receive new strength, that they mount up with wings as eagles, that they run and not be weary, that they walk and not faint.",
       "source": "Luther — Bibel"
+    },
+    "kritisieren": {
+      "sentence": "You repeatedly criticize investments in future industries like the semiconductor industry or battery production.",
+      "source": "Bundestag — Plenarprotokoll 20/207"
     },
     "kämpfen": {
       "sentence": "And when truth has once triumphed there, then ask yourselves with good distrust: \"What strong error fought for it?\"",
@@ -5933,6 +6137,10 @@
     "kündigen": {
       "sentence": "He did not delay in canceling the misguided stay.",
       "source": "Mann — Der Tod in Venedig"
+    },
+    "kürzen": {
+      "sentence": "But if we invest without limit in armament while simultaneously cutting in areas like education, social services, development, and the strengthening of civil society, that is poison for our democratic society.",
+      "source": "Bundestag — Plenarprotokoll 20/214"
     },
     "lachen": {
       "sentence": "But He who sits in the heavens laughs; the Lord holds them in derision.",
@@ -6102,6 +6310,10 @@
       "sentence": "Unfortunately, there is not very much that I can share with you.",
       "source": "Kafka — Der Proceß"
     },
+    "montieren": {
+      "sentence": "In a gable roof, the insulation is mounted between, on top of, or beneath the existing support structure (rafters).",
+      "source": "KfW — Energetische Sanierung"
+    },
     "motivieren": {
       "sentence": "Through low-threshold outreach “at eye level” and workplace-related counseling, continuing-education mentors motivate colleagues — particularly those with negative educational experiences or lower qualifications — to pursue further training.",
       "source": "Berufsbildungsbericht (2024)"
@@ -6149,6 +6361,10 @@
     "nennen": {
       "sentence": "He counts the stars and calls them all by name.",
       "source": "Luther — Bibel"
+    },
+    "nerven": {
+      "sentence": "The debate about mandatory identification badges equally annoys me as a police union representative.",
+      "source": "Bundestag — Plenarprotokoll 20/207"
     },
     "notieren": {
       "sentence": "The young man acted as though he noticed nothing, listened calmly to K.’s instructions to the end, jotted down a few things, and left.",
@@ -6221,6 +6437,10 @@
     "positionieren": {
       "sentence": "The federal government positions hydrogen as an important building block for the decarbonization of energy-intensive industries and for sector coupling between industry, transport, heat supply, and electricity.",
       "source": "BuFI Kurzfassung (2024)"
+    },
+    "posten": {
+      "sentence": "Also make sure that you do not violate the rights of third parties by posting images, texts, or videos.",
+      "source": "BSI — Soziale Medien sicher nutzen"
     },
     "probieren": {
       "sentence": "The son took the axe and carried it into the city to a goldsmith, who tested it, laid it on the scales, and said, ‘It is worth four hundred Taler — I do not have that much in cash.’",
@@ -6333,6 +6553,10 @@
     "rennen": {
       "sentence": "And many of them walk forward while looking back, with stiffened necks: I like to run headlong into them.",
       "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "reparieren": {
+      "sentence": "If there were more and cheaper repair options, available spare parts, and understandable instructions, far more people would choose to have their devices repaired or pick up a tool themselves.",
+      "source": "BMUKN — Recht auf Reparatur"
     },
     "repräsentieren": {
       "sentence": "Ten years later, he had learned to represent from his writing desk, to manage his fame in a sentence or two that had to be brief.",
@@ -6602,6 +6826,10 @@
       "sentence": "Whence came and originated the breath that all at once played so softly and meaningfully, like a higher whisper, about his temple and ear?",
       "source": "Mann — Der Tod in Venedig"
     },
+    "starten": {
+      "sentence": "I would like to start with a word of thanks to my colleagues from the democratic parliamentary groups.",
+      "source": "Bundestag — Plenarprotokoll 20/210"
+    },
     "stattfinden": {
       "sentence": "Was a sermon about to take place? In the empty church?",
       "source": "Kafka — Der Proceß"
@@ -6653,6 +6881,10 @@
     "stoßen": {
       "sentence": "But one gentleman's hands closed around K.'s throat, while the other thrust the knife into his heart and turned it there twice.",
       "source": "Kafka — Der Proceß"
+    },
+    "strahlen": {
+      "sentence": "After passing the exam, she beamed from ear to ear.",
+      "source": "Opus 4.6"
     },
     "streben": {
       "sentence": "“Everyone strives for the law,” says the man, “so how is it that in all these years no one but me has demanded entry?”",
@@ -6718,6 +6950,10 @@
       "sentence": "The guiding framework could, however, address their special needs more strongly in further courses of action.",
       "source": "Raumordnungsbericht (2021)"
     },
+    "tippen": {
+      "sentence": "He typed so fast on the keyboard that his fingers seemed to fly across the keys.",
+      "source": "Opus 4.6"
+    },
     "tragen": {
       "sentence": "The Federal Chancellor determines the guidelines of policy and bears responsibility for them.",
       "source": "Grundgesetz (1949)"
@@ -6773,6 +7009,10 @@
     "töten": {
       "sentence": "Not through anger, but through laughter does one kill.",
       "source": "Nietzsche — Also sprach Zarathustra"
+    },
+    "umbauen": {
+      "sentence": "And I would like to thank the craftswomen and craftsmen who will start right away to rebuild this chamber for the constituent session, working overtime and on weekends.",
+      "source": "Bundestag — Plenarprotokoll 20/214"
     },
     "umfassen": {
       "sentence": "Could I not unfold before her the whole wondrous feeling with which my heart embraces nature?",
@@ -6873,6 +7113,10 @@
     "veranstalten": {
       "sentence": "To this end, the Federal Government is organizing a German Space Day in 2025.",
       "source": "Raumfahrtstrategie (2023)"
+    },
+    "verarbeiten": {
+      "sentence": "This is a long-overdue step by which we as a state acknowledge that after miscarriages, protection is needed to process the loss and that time is needed to heal physically and emotionally.",
+      "source": "Bundestag — Plenarprotokoll 20/210"
     },
     "verbauen": {
       "sentence": "He has blocked me in and surrounded me with bitterness and hardship.",
@@ -7366,6 +7610,14 @@
       "sentence": "It is forwarded by the states to their municipalities on the basis of a locality- and economy-related formula.",
       "source": "Grundgesetz (1949)"
     },
+    "weiterlesen": {
+      "sentence": "The book was so gripping that she couldn’t stop and kept reading until dawn.",
+      "source": "Opus 4.6"
+    },
+    "weißen": {
+      "sentence": "Every spring they whitewashed the walls of the old farmhouse until it gleamed in the sun.",
+      "source": "Opus 4.6"
+    },
     "wenden": {
       "sentence": "But through haze and glitter, Aschenbach saw how the beautiful one turned his head, sought him, and caught sight of him.",
       "source": "Mann — Der Tod in Venedig"
@@ -7549,6 +7801,10 @@
     "zählen": {
       "sentence": "Look toward heaven and count the stars; can you count them?",
       "source": "Luther — Bibel"
+    },
+    "ähneln": {
+      "sentence": "The two sisters resemble each other so closely that even their parents mix them up.",
+      "source": "Opus 4.6"
     },
     "ändern": {
       "sentence": "\"Mere legends do not change my opinion,\" said K.",

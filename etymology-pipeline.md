@@ -2,7 +2,7 @@
 
 ## Progress
 
-**Next verb: bestehen**
+**Next verb: denken**
 
 **BATCH SIZE: 50**
 
@@ -169,16 +169,20 @@ These lessons are carried over from the example-sentence pipeline:
 
 ## Lessons Learned
 
-### Run 1 (abnehmen → anstreben, 50 verbs)
+- **Tilde-wrapped phrases get dropped during restructuring.** Subagents sometimes restructure sentences and lose or add tilde markup. Common patterns: replacing `~phrase~` with `„phrase"` (German quotes), adding extra `~an~` markers around separable-prefix particles, or absorbing small tilde-wrapped words like `~to~` into natural prose. The subagent prompt now includes explicit instructions that tilde count must match.
 
-1. **Tilde-wrapped phrases get dropped during restructuring.** The most common error (3/50 verbs) was subagents restructuring sentences and losing or adding tilde markup. Examples:
-   - `anstellen`: EN had `~jemanden anstellen~`, `~das Wasser anstellen~`, `~sich anstellen~` (×2). The DE replaced these with `„jemanden anstellen"` (German quotes) instead of keeping tilde markup — losing 8 tildes.
-   - `anpassen`: DE added extra `~an~` markers around separable-prefix particles that the EN didn't mark — gaining 4 tildes.
-   - `ansagen`: EN had `~to~` as a tilde-wrapped directional word. DE absorbed it into natural prose — losing 2 tildes.
-   - **Fix applied to prompt:** Added explicit instruction that tilde count must match, with examples of common failure patterns.
+- **Translators sometimes add tildes to words not marked in the English.** Examples: `~-urg~` (a suffix fragment), `~fine arts~` (an English phrase). The tilde-count verification in the merge script catches these before they enter `Etymologies.json`.
 
-2. **Subagent output files are JSONL transcripts, not raw JSON.** The `.output` files contain one JSON object per line (agent transcript format). The translation lives in the `message.content[0].text` field of the `type: "assistant"` line. A brace-matching JSON extractor will pick up transcript metadata objects instead.
+- **Subagent output files are JSONL transcripts, not raw JSON.** The `.output` files contain one JSON object per line (agent transcript format). The translation lives in the `message.content[0].text` field of the `type: "assistant"` line. A brace-matching JSON extractor will pick up transcript metadata objects instead.
 
-3. **German typographic quotes in JSON.** Subagents sometimes produce ASCII `"` (U+0022) where `"` (U+201C) was intended as a German closing quote. This breaks JSON parsing. Fix: regex-replace `„...ASCII"` → `„...\u201c` before `json.loads()`.
+- **German typographic quotes in JSON.** Subagents sometimes produce ASCII `"` (U+0022) where `"` (U+201C) was intended as a German closing quote. This breaks JSON parsing. Fix: regex-replace `„...ASCII"` → `„...\u201c` before `json.loads()`.
 
-4. **Batching 5 verbs per subagent works well.** 10 parallel agents × 5 verbs each completed in ~30–45 seconds. All 50 translations returned successfully on the first attempt.
+- **Never use the Write tool for intermediate JSON files.** The Write tool writes content literally — it doesn't JSON-escape internal `"` characters. Always use Python's `json.dumps()` to write intermediate JSON:
+   ```python
+   import json, pathlib
+   data = {"verb": "translation text..."}
+   pathlib.Path('/tmp/de_group_N.json').write_text(json.dumps(data, ensure_ascii=False))
+   ```
+   If group files are already broken, they can be repaired by using the known verb names as delimiters to split the raw text and rebuild valid JSON via `json.dumps()`.
+
+- **Batching 5 verbs per subagent works well.** 10 parallel agents × 5 verbs each completes in ~30–45 seconds.

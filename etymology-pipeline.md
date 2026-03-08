@@ -2,7 +2,7 @@
 
 ## Progress
 
-**Next verb: ausschalten**
+**Next verb: begründen**
 
 **BATCH SIZE: 50**
 

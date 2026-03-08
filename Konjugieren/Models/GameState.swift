@@ -3,7 +3,7 @@
 import CoreMotion
 import SwiftUI
 
-struct Enemy: Identifiable {
+struct Enemy: Identifiable, Codable {
   let id = UUID()
   let row: Int
   let col: Int
@@ -19,14 +19,14 @@ struct Enemy: Identifiable {
   var homeY: CGFloat = 0
 }
 
-struct Bullet: Identifiable {
+struct Bullet: Identifiable, Codable {
   let id = UUID()
   var x: CGFloat
   var y: CGFloat
   let isPlayerBullet: Bool
 }
 
-struct Zigzagger {
+struct Zigzagger: Codable {
   var x: CGFloat
   var y: CGFloat
   var movingRight: Bool
@@ -35,13 +35,13 @@ struct Zigzagger {
   var coinTimer: CGFloat = 0
 }
 
-struct Coin: Identifiable {
+struct Coin: Identifiable, Codable {
   let id = UUID()
   var x: CGFloat
   var y: CGFloat
 }
 
-enum PowerUpKind: CaseIterable {
+enum PowerUpKind: String, CaseIterable, Codable {
   case bier
   case bratwurst
   case kartoffel
@@ -58,14 +58,14 @@ enum PowerUpKind: CaseIterable {
   }
 }
 
-struct PowerUp: Identifiable {
+struct PowerUp: Identifiable, Codable {
   let id = UUID()
   var x: CGFloat
   var y: CGFloat
   let kind: PowerUpKind
 }
 
-struct Egg: Identifiable {
+struct Egg: Identifiable, Codable {
   let id = UUID()
   var x: CGFloat
   var y: CGFloat
@@ -73,7 +73,7 @@ struct Egg: Identifiable {
   var age: CGFloat = 0
 }
 
-struct Hatchling: Identifiable {
+struct Hatchling: Identifiable, Codable {
   let id = UUID()
   var x: CGFloat
   var y: CGFloat
@@ -93,24 +93,24 @@ struct DeathEffect: Identifiable {
   var progress: CGFloat { min(age / Self.duration, 1.0) }
 }
 
-enum GamePhase {
+enum GamePhase: String, Codable {
   case playing
   case waveComplete
   case lost
 }
 
-enum PortalSide {
+enum PortalSide: String, Codable {
   case left
   case right
 }
 
-enum SpecialMechanic: CaseIterable {
+enum SpecialMechanic: String, CaseIterable, Codable {
   case bratwurstkette
   case fussball
   case geisterstunde
 }
 
-struct Fussball: Identifiable {
+struct Fussball: Identifiable, Codable {
   let id = UUID()
   var x: CGFloat
   var y: CGFloat
@@ -120,20 +120,20 @@ struct Fussball: Identifiable {
   var bounceCount: Int = 0
 }
 
-struct WurstSegment: Identifiable {
+struct WurstSegment: Identifiable, Codable {
   let id = UUID()
   var x: CGFloat
   var y: CGFloat
 }
 
-struct WurstChain: Identifiable {
+struct WurstChain: Identifiable, Codable {
   let id = UUID()
   var segments: [WurstSegment]
   var movingRight: Bool
   var speed: CGFloat
 }
 
-struct PretzelObstacle: Identifiable {
+struct PretzelObstacle: Identifiable, Codable {
   let id = UUID()
   var x: CGFloat
   var y: CGFloat
@@ -141,7 +141,7 @@ struct PretzelObstacle: Identifiable {
   var opacity: CGFloat = 1.0
 }
 
-enum GhostPhase {
+enum GhostPhase: String, Codable {
   case descending
   case pursuing
   case fleeing
@@ -149,7 +149,7 @@ enum GhostPhase {
   case exiting
 }
 
-struct Ghost: Identifiable {
+struct Ghost: Identifiable, Codable {
   let id = UUID()
   var x: CGFloat
   var y: CGFloat
@@ -157,16 +157,95 @@ struct Ghost: Identifiable {
   var dotTimer: CGFloat = 0
 }
 
-struct GoldenDot: Identifiable {
+struct GoldenDot: Identifiable, Codable {
   let id = UUID()
   var x: CGFloat
   var y: CGFloat
 }
 
-struct Kristallkugel: Identifiable {
+struct Kristallkugel: Identifiable, Codable {
   let id = UUID()
   var x: CGFloat
   var y: CGFloat
+}
+
+struct GameStateSnapshot: Codable {
+  let savedScreenWidth: CGFloat
+  let savedScreenHeight: CGFloat
+  let topInset: CGFloat
+
+  let phase: GamePhase
+  let playerXFraction: CGFloat
+  let playerYFraction: CGFloat
+  let playerHealth: CGFloat
+  let enemies: [Enemy]
+  let playerBullet: Bullet?
+  let enemyBullet: Bullet?
+  let zigzagger: Zigzagger?
+  let coins: [Coin]
+  let powerUps: [PowerUp]
+  let shieldActive: Bool
+  let rapidFireActive: Bool
+  let eggs: [Egg]
+  let hatchlings: [Hatchling]
+  let portalSide: PortalSide?
+  let activeMechanic: SpecialMechanic?
+  let fussball: Fussball?
+  let wurstChains: [WurstChain]
+  let pretzelObstacles: [PretzelObstacle]
+  let ghosts: [Ghost]
+  let goldenDots: [GoldenDot]
+  let kristallkugel: Kristallkugel?
+  let geisterjagdActive: Bool
+  let score: Int
+  let highScore: Int
+  let wave: Int
+  let lastWaveScore: Int
+  let enemyDirection: CGFloat
+  let enemySpeed: CGFloat
+  let sineTime: Double
+
+  let scoreAtWaveStart: Int
+  let zigzaggerSpawnTimer: CGFloat
+  let mechanicSpawnTimer: CGFloat
+  let geisterjagdTimer: CGFloat
+  let kristallkugelSpawnCount: Int
+  let shieldTimer: CGFloat
+  let rapidFireTimer: CGFloat
+  let rapidFireCooldown: CGFloat
+  let rapidFireSound: Sound
+  let diveTimer: CGFloat
+
+  let elapsedBeforePause: TimeInterval
+  let elapsedWaveComplete: TimeInterval?
+}
+
+enum SavedGame {
+  static let storageKey = "savedGameState"
+
+  static func save(_ snapshot: GameStateSnapshot, getterSetter: GetterSetter) {
+    guard
+      let data = try? JSONEncoder().encode(snapshot),
+      let jsonString = String(data: data, encoding: .utf8)
+    else {
+      return
+    }
+    getterSetter.set(key: storageKey, value: jsonString)
+  }
+
+  static func load(getterSetter: GetterSetter) -> GameStateSnapshot? {
+    guard
+      let jsonString = getterSetter.get(key: storageKey),
+      let data = jsonString.data(using: .utf8)
+    else {
+      return nil
+    }
+    return try? JSONDecoder().decode(GameStateSnapshot.self, from: data)
+  }
+
+  static func clear(getterSetter: GetterSetter) {
+    getterSetter.set(key: storageKey, value: "")
+  }
 }
 
 @MainActor
@@ -237,7 +316,7 @@ class GameState {
   private static let bulletSize: CGFloat = 20
   private static let tiltThreshold: Double = 0.02
   private static let tiltSensitivity: CGFloat = 800
-  private static let healthLossPerHit: CGFloat = 0.334
+  private static let healthLossPerHit: CGFloat = 0.25
   private static let enemyFireChance: Double = 0.02
   private static let speedUpFactor: CGFloat = 0.95
   private static let sineAmplitude: CGFloat = 8
@@ -254,7 +333,7 @@ class GameState {
   private static let powerUpDropChance: Double = 0.15
   private static let powerUpFallSpeed: CGFloat = 200
   private static let powerUpSize: CGFloat = 30
-  private static let healthRestoreAmount: CGFloat = 0.334
+  private static let healthRestoreAmount: CGFloat = 0.25
   private static let shieldDuration: CGFloat = 6.0
   private static let rapidFireDuration: CGFloat = 5.0
   private static let rapidFireInterval: CGFloat = 0.3
@@ -293,7 +372,7 @@ class GameState {
   private static let wurstSegmentCount: Int = 5
   private static let wurstSegmentSize: CGFloat = 30
   private static let wurstSegmentSpacing: CGFloat = 35
-  private static let wurstBaseSpeed: CGFloat = 120
+  private static let wurstBaseSpeed: CGFloat = 240
   private static let wurstDescentStep: CGFloat = 35
   private static let wurstPlayerRowSpeedMultiplier: CGFloat = 1.8
   private static let wurstSegmentScore: Int = 75
@@ -301,7 +380,7 @@ class GameState {
 
   private static let ghostCount: ClosedRange<Int> = 2...3
   private static let ghostSize: CGFloat = 35
-  private static let ghostDescentSpeed: CGFloat = 80
+  private static let ghostDescentSpeed: CGFloat = 48
   private static let ghostPursuitSpeed: CGFloat = 150
   private static let ghostFleeSpeed: CGFloat = 100
   private static let ghostExitSpeed: CGFloat = 200
@@ -457,7 +536,189 @@ class GameState {
   }
 
   func restartGame() {
+    SavedGame.clear(getterSetter: Current.getterSetter)
     startGame(screenWidth: screenWidth, screenHeight: screenHeight, topInset: topInset)
+  }
+
+  func makeSnapshot() -> GameStateSnapshot {
+    let elapsed = Date.now.timeIntervalSince(startTime)
+    let elapsedWC: TimeInterval? = if let wct = waveCompleteTime {
+      Date.now.timeIntervalSince(wct)
+    } else {
+      nil
+    }
+    return GameStateSnapshot(
+      savedScreenWidth: screenWidth,
+      savedScreenHeight: screenHeight,
+      topInset: topInset,
+      phase: phase,
+      playerXFraction: screenWidth > 0 ? playerX / screenWidth : 0.5,
+      playerYFraction: screenHeight > 0 ? playerY / screenHeight : 0.9,
+      playerHealth: playerHealth,
+      enemies: enemies,
+      playerBullet: playerBullet,
+      enemyBullet: enemyBullet,
+      zigzagger: zigzagger,
+      coins: coins,
+      powerUps: powerUps,
+      shieldActive: shieldActive,
+      rapidFireActive: rapidFireActive,
+      eggs: eggs,
+      hatchlings: hatchlings,
+      portalSide: portalSide,
+      activeMechanic: activeMechanic,
+      fussball: fussball,
+      wurstChains: wurstChains,
+      pretzelObstacles: pretzelObstacles,
+      ghosts: ghosts,
+      goldenDots: goldenDots,
+      kristallkugel: kristallkugel,
+      geisterjagdActive: geisterjagdActive,
+      score: score,
+      highScore: highScore,
+      wave: wave,
+      lastWaveScore: lastWaveScore,
+      enemyDirection: enemyDirection,
+      enemySpeed: enemySpeed,
+      sineTime: sineTime,
+      scoreAtWaveStart: scoreAtWaveStart,
+      zigzaggerSpawnTimer: zigzaggerSpawnTimer,
+      mechanicSpawnTimer: mechanicSpawnTimer,
+      geisterjagdTimer: geisterjagdTimer,
+      kristallkugelSpawnCount: kristallkugelSpawnCount,
+      shieldTimer: shieldTimer,
+      rapidFireTimer: rapidFireTimer,
+      rapidFireCooldown: rapidFireCooldown,
+      rapidFireSound: rapidFireSound,
+      diveTimer: diveTimer,
+      elapsedBeforePause: elapsed,
+      elapsedWaveComplete: elapsedWC
+    )
+  }
+
+  func restoreGame(from snapshot: GameStateSnapshot, screenWidth: CGFloat, screenHeight: CGFloat, topInset: CGFloat) {
+    self.screenWidth = screenWidth
+    self.screenHeight = screenHeight
+    self.topInset = topInset
+
+    let scaleX = screenWidth / snapshot.savedScreenWidth
+    let scaleY = screenHeight / snapshot.savedScreenHeight
+
+    phase = snapshot.phase
+    playerX = snapshot.playerXFraction * screenWidth
+    playerY = snapshot.playerYFraction * screenHeight
+    playerHealth = snapshot.playerHealth
+
+    enemies = snapshot.enemies.map { e in
+      var scaled = e
+      scaled.x *= scaleX
+      scaled.y *= scaleY
+      scaled.diveStartX *= scaleX
+      scaled.diveStartY *= scaleY
+      scaled.homeX *= scaleX
+      scaled.homeY *= scaleY
+      return scaled
+    }
+
+    playerBullet = snapshot.playerBullet.map { b in
+      Bullet(x: b.x * scaleX, y: b.y * scaleY, isPlayerBullet: b.isPlayerBullet)
+    }
+    enemyBullet = snapshot.enemyBullet.map { b in
+      Bullet(x: b.x * scaleX, y: b.y * scaleY, isPlayerBullet: b.isPlayerBullet)
+    }
+    zigzagger = snapshot.zigzagger.map { z in
+      var scaled = z
+      scaled.x *= scaleX
+      scaled.y *= scaleY
+      return scaled
+    }
+    coins = snapshot.coins.map { c in
+      Coin(x: c.x * scaleX, y: c.y * scaleY)
+    }
+    powerUps = snapshot.powerUps.map { p in
+      PowerUp(x: p.x * scaleX, y: p.y * scaleY, kind: p.kind)
+    }
+    shieldActive = snapshot.shieldActive
+    rapidFireActive = snapshot.rapidFireActive
+    eggs = snapshot.eggs.map { e in
+      var scaled = e
+      scaled.x *= scaleX
+      scaled.y *= scaleY
+      return scaled
+    }
+    hatchlings = snapshot.hatchlings.map { h in
+      Hatchling(x: h.x * scaleX, y: h.y * scaleY)
+    }
+    portalSide = snapshot.portalSide
+    activeMechanic = snapshot.activeMechanic
+    fussball = snapshot.fussball.map { f in
+      var scaled = f
+      scaled.x *= scaleX
+      scaled.y *= scaleY
+      scaled.velocityX *= scaleX
+      scaled.velocityY *= scaleY
+      return scaled
+    }
+    wurstChains = snapshot.wurstChains.map { chain in
+      var scaled = chain
+      scaled.segments = chain.segments.map { s in
+        WurstSegment(x: s.x * scaleX, y: s.y * scaleY)
+      }
+      return scaled
+    }
+    pretzelObstacles = snapshot.pretzelObstacles.map { p in
+      var scaled = p
+      scaled.x *= scaleX
+      scaled.y *= scaleY
+      return scaled
+    }
+    ghosts = snapshot.ghosts.map { g in
+      var scaled = g
+      scaled.x *= scaleX
+      scaled.y *= scaleY
+      return scaled
+    }
+    goldenDots = snapshot.goldenDots.map { d in
+      GoldenDot(x: d.x * scaleX, y: d.y * scaleY)
+    }
+    kristallkugel = snapshot.kristallkugel.map { k in
+      Kristallkugel(x: k.x * scaleX, y: k.y * scaleY)
+    }
+    geisterjagdActive = snapshot.geisterjagdActive
+    score = snapshot.score
+    highScore = snapshot.highScore
+    wave = snapshot.wave
+    lastWaveScore = snapshot.lastWaveScore
+    enemyDirection = snapshot.enemyDirection
+    enemySpeed = snapshot.enemySpeed
+    sineTime = snapshot.sineTime
+
+    scoreAtWaveStart = snapshot.scoreAtWaveStart
+    zigzaggerSpawnTimer = snapshot.zigzaggerSpawnTimer
+    mechanicSpawnTimer = snapshot.mechanicSpawnTimer
+    geisterjagdTimer = snapshot.geisterjagdTimer
+    kristallkugelSpawnCount = snapshot.kristallkugelSpawnCount
+    shieldTimer = snapshot.shieldTimer
+    rapidFireTimer = snapshot.rapidFireTimer
+    rapidFireCooldown = snapshot.rapidFireCooldown
+    rapidFireSound = snapshot.rapidFireSound
+    diveTimer = snapshot.diveTimer
+
+    deathEffects = []
+    zigzaggerBag = []
+    mechanicBag = []
+    gameOverTime = nil
+
+    startTime = Date.now.addingTimeInterval(-snapshot.elapsedBeforePause)
+    if let elapsedWC = snapshot.elapsedWaveComplete {
+      waveCompleteTime = Date.now.addingTimeInterval(-elapsedWC)
+    } else {
+      waveCompleteTime = nil
+    }
+
+    lastUpdateTime = nil
+    startMotion()
+    Current.soundPlayer.startMusic()
   }
 
   var canRestart: Bool {
@@ -1466,6 +1727,7 @@ class GameState {
       phase = .lost
       portalSide = nil
       gameOverTime = .now
+      SavedGame.clear(getterSetter: Current.getterSetter)
       Current.soundPlayer.stopMusic()
       Current.soundPlayer.play(.randomSadTrombone, shouldDebounce: false)
       persistHighScore()
@@ -1478,6 +1740,7 @@ class GameState {
       phase = .lost
       portalSide = nil
       gameOverTime = .now
+      SavedGame.clear(getterSetter: Current.getterSetter)
       Current.soundPlayer.stopMusic()
       Current.soundPlayer.play(.randomSadTrombone, shouldDebounce: false)
       persistHighScore()

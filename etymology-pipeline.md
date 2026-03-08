@@ -2,9 +2,9 @@
 
 ## Progress
 
-**Next verb: denken**
+**Next verb: erlauben**
 
-**BATCH SIZE: 50**
+**BATCH SIZE: 100**
 
 ## Task
 
@@ -12,21 +12,21 @@ Read `Konjugieren/Models/Etymologies.json`, take the next BATCH SIZE verbs (alph
 
 ## Architecture
 
-Launch up to 10 `general-purpose` subagents **in parallel** (in a single message with multiple Agent tool calls). Each subagent receives ONE verb's English etymology and returns a German translation as a JSON fragment. After all return, verify and merge the fragments into `Etymologies.json`.
+Launch 5 `general-purpose` subagents **in parallel** (in a single message with multiple Agent tool calls). Each subagent receives 20 verbs' English etymologies and returns German translations as a JSON fragment. After all return, verify and merge the fragments into `Etymologies.json`. This 5×20 split reduces context consumption compared to 10×10, lowering the risk of context compaction mid-batch.
 
 ### Subagent prompt template
 
-Give each subagent the following prompt, substituting the VERB SECTION. The subagent prompt must be **self-contained** — include all translation rules inline, since the subagent cannot see this file.
+Give each subagent the following prompt, substituting the VERB SECTIONS. Each subagent receives ~20 verbs. The prompt must be **self-contained** — include all translation rules inline, since the subagent cannot see this file.
 
 ---
 
 **Begin subagent prompt (copy fully for each verb, substituting VERB SECTION):**
 
-> You are translating a German-verb etymology from English into German. Do NOT write any files. Return ONLY the JSON result at the end.
+> You are translating German-verb etymologies from English into German. Do NOT write any files. Return ONLY the JSON result at the end.
 >
-> ## Your Verb
+> ## Your Verbs
 >
-> VERB SECTION (see below)
+> VERB SECTIONS (see below — multiple verbs separated by `---`)
 >
 > ## What to Translate
 >
@@ -81,7 +81,7 @@ Give each subagent the following prompt, substituting the VERB SECTION. The suba
 >
 > Return ONLY a JSON object in this exact format (no markdown fencing, no extra text):
 >
-> {"INFINITIVE": "GERMAN ETYMOLOGY TEXT"}
+> {"verb1": "GERMAN ETYMOLOGY TEXT", "verb2": "GERMAN ETYMOLOGY TEXT", ...}
 >
 > **JSON and special characters:** German typographic quotes (`„` U+201E, `"` U+201C) and special letters (`ä`, `ö`, `ü`, `ß`) are safe to include directly in JSON string values — they are distinct from the ASCII `"` (U+0022) used as JSON delimiters. Do NOT escape them as `\uXXXX` in your output; write them as literal characters.
 
@@ -91,13 +91,24 @@ Give each subagent the following prompt, substituting the VERB SECTION. The suba
 
 ### Verb-specific sections
 
-For each verb, construct the VERB SECTION like this:
+For each subagent, construct the VERB SECTIONS by concatenating ~20 verb blocks separated by `---`:
 
 ```
 **Verb:** abbauen
 **English etymology to translate:**
 
 [Paste the full English etymology text here, verbatim]
+
+---
+
+**Verb:** abbilden
+**English etymology to translate:**
+
+[Paste the full English etymology text here, verbatim]
+
+---
+
+[...repeat for all ~20 verbs in this group...]
 ```
 
 ## After Subagents Return
@@ -161,8 +172,8 @@ These lessons are carried over from the example-sentence pipeline:
 
 ## Important
 
-- Launch all subagents in a **single message** (parallel Agent tool calls). If the runtime processes them sequentially despite parallel invocation, batch into groups of 3–4 per message as a practical compromise to reduce round trips.
-- Each subagent prompt must be fully self-contained — paste all translation rules and the English etymology into each one.
+- Launch all 5 subagents in a **single message** (parallel Agent tool calls). If the runtime limits tool calls per message, batch into 2–3 messages.
+- Each subagent prompt must be fully self-contained — paste all translation rules and all ~20 English etymologies into each one.
 - Do not translate etymologies yourself — delegate all translation to the subagents.
 - After merging, verify tilde counts match between English and German for every verb before writing.
 - Always update the "Next verb" in this file after successfully updating `Etymologies.json`.
@@ -185,4 +196,4 @@ These lessons are carried over from the example-sentence pipeline:
    ```
    If group files are already broken, they can be repaired by using the known verb names as delimiters to split the raw text and rebuild valid JSON via `json.dumps()`.
 
-- **Batching 5 verbs per subagent works well.** 10 parallel agents × 5 verbs each completes in ~30–45 seconds.
+- **5 subagents × 20 verbs is the sweet spot.** The earlier 10×10 split consumed too much context (10 prompt reads + 10 agent launches + 10 results), risking compaction mid-batch. 5×20 halves the context overhead while keeping the same batch size of 100. If compaction does happen, agent task output files at `/private/tmp/claude-501/.../tasks/*.output` persist on disk and can be mined to recover results — the translation JSON lives in the assistant text block of the JSONL transcript.

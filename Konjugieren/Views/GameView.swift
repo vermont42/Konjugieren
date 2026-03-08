@@ -199,7 +199,12 @@ struct GameView: View {
         if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
           windowScene.requestGeometryUpdate(.iOS(interfaceOrientations: .portrait))
         }
-        gameState.startGame(screenWidth: geometry.size.width, screenHeight: geometry.size.height, topInset: geometry.safeAreaInsets.top)
+        if let snapshot = SavedGame.load(getterSetter: Current.getterSetter) {
+          gameState.restoreGame(from: snapshot, screenWidth: geometry.size.width, screenHeight: geometry.size.height, topInset: geometry.safeAreaInsets.top)
+          SavedGame.clear(getterSetter: Current.getterSetter)
+        } else {
+          gameState.startGame(screenWidth: geometry.size.width, screenHeight: geometry.size.height, topInset: geometry.safeAreaInsets.top)
+        }
       }
     }
     .onDisappear {
@@ -211,6 +216,10 @@ struct GameView: View {
       case .active:
         gameState.resumeMotion()
       case .inactive, .background:
+        if gameState.phase == .playing || gameState.phase == .waveComplete {
+          let snapshot = gameState.makeSnapshot()
+          SavedGame.save(snapshot, getterSetter: Current.getterSetter)
+        }
         gameState.stopMotion()
       @unknown default:
         break
@@ -222,9 +231,9 @@ struct GameView: View {
 
   private var healthColor: Color {
     let percent = Int(gameState.playerHealth * 100)
-    if percent > 66 {
+    if percent > 50 {
       return .green
-    } else if percent > 33 {
+    } else if percent > 25 {
       return .customYellow
     } else {
       return .customRed
@@ -235,9 +244,22 @@ struct GameView: View {
     VStack {
       HStack {
         Button {
+          SavedGame.clear(getterSetter: Current.getterSetter)
+          gameState.stopMotion()
           dismiss()
         } label: {
           Image(systemName: "xmark.circle.fill")
+            .font(.title2)
+            .foregroundStyle(.customRed)
+        }
+
+        Button {
+          let snapshot = gameState.makeSnapshot()
+          SavedGame.save(snapshot, getterSetter: Current.getterSetter)
+          gameState.stopMotion()
+          dismiss()
+        } label: {
+          Image(systemName: "pause.circle.fill")
             .font(.title2)
             .foregroundStyle(.customYellow)
         }

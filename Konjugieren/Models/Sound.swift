@@ -1,6 +1,6 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
-enum Sound: String {
+enum Sound: String, Codable {
   case applause1
   case applause2
   case applause3

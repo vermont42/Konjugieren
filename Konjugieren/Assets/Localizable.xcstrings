@@ -20,6 +20,9 @@
         }
       }
     },
+    "%@" : {
+
+    },
     "%@ - %@" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1453,6 +1456,15 @@
         }
       }
     },
+    "Conjugate a Verb" : {
+
+    },
+    "Conjugates a German verb in the selected conjugationgroup." : {
+
+    },
+    "Conjugationgroup" : {
+
+    },
     "Conjugationgroup.futurIndikativ" : {
       "localizations" : {
         "de" : {
@@ -2151,6 +2163,15 @@
         }
       }
     },
+    "Future Conditional" : {
+
+    },
+    "Future Indicative" : {
+
+    },
+    "Future Subjunctive" : {
+
+    },
     "Game.finalScore" : {
       "localizations" : {
         "de" : {
@@ -2422,6 +2443,9 @@
           }
         }
       }
+    },
+    "Imperative" : {
+
     },
     "Info.creditsHeading" : {
       "localizations" : {
@@ -3679,6 +3703,21 @@
     "Open Random Verb" : {
 
     },
+    "Open Verb" : {
+
+    },
+    "Opens a specific verb in Konjugieren." : {
+
+    },
+    "Past Conditional" : {
+
+    },
+    "Past Indicative" : {
+
+    },
+    "Past Participle" : {
+
+    },
     "PIEMeaning.ab" : {
       "localizations" : {
         "de" : {
@@ -4079,6 +4118,27 @@
         }
       }
     },
+    "Pluperfect Conditional" : {
+
+    },
+    "Pluperfect Indicative" : {
+
+    },
+    "Present Indicative" : {
+
+    },
+    "Present Participle" : {
+
+    },
+    "Present Perfect Indicative" : {
+
+    },
+    "Present Perfect Subjunctive" : {
+
+    },
+    "Present Subjunctive" : {
+
+    },
     "Quiz.conjugation" : {
       "localizations" : {
         "de" : {
@@ -4367,6 +4427,9 @@
         }
       }
     },
+    "Random Verb" : {
+
+    },
     "Running test %lld of %lld…" : {
       "localizations" : {
         "en" : {
@@ -4600,6 +4663,9 @@
           }
         }
       }
+    },
+    "Start Quiz" : {
+
     },
     "Testing.runningUnitTests" : {
       "localizations" : {
@@ -5019,6 +5085,9 @@
           }
         }
       }
+    },
+    "Verb" : {
+
     },
     "VerbBrowse.alphabetical" : {
       "localizations" : {

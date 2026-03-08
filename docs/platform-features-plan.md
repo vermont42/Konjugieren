@@ -25,7 +25,7 @@ The recommendations draw from Apple's official featuring criteria, Design Award 
 
 ---
 
-### 2. App Intents / Siri / Spotlight Integration (iOS 16+)
+### 2. App Intents / Siri / Spotlight Integration (iOS 16+) - DONE
 
 **Why it matters:** Apple has invested in App Intents across three consecutive WWDCs (2023–2025). It enables Siri, Spotlight, Shortcuts, and Action button integration — all from one framework. Educational apps with App Intents stand out because few adopt them.
 
@@ -59,7 +59,7 @@ The recommendations draw from Apple's official featuring criteria, Design Award 
 
 ## Tier 2: High Impact
 
-### 4. Control Center Controls (iOS 18+)
+### 4. Control Center Controls (iOS 18+) - DONE
 
 **Why it matters:** Under-adopted by educational apps, making it a differentiator. Lets users launch app actions from Control Center, the Lock Screen, or the Action button.
 

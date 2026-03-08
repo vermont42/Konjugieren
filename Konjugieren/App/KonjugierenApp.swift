@@ -1,5 +1,7 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
+import AppIntents
+import CoreSpotlight
 import SwiftUI
 import TipKit
 import UIKit
@@ -26,6 +28,16 @@ struct KonjugierenApp: App {
         .onOpenURL(perform: Current.handleURL(_:))
         .onContinueUserActivity(World.viewVerbActivityType) { userActivity in
           Current.handleUserActivity(userActivity)
+        }
+        .onContinueUserActivity(CSSearchableItemActionType) { userActivity in
+          if
+            let rawIdentifier = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String
+          {
+            let infinitiv = rawIdentifier.replacingOccurrences(of: "VerbEntity/", with: "")
+            if let url = URL(string: "konjugieren://verb/\(infinitiv)") {
+              Current.handleURL(url)
+            }
+          }
         }
         .fullScreenCover(isPresented: Binding(
           get: { !Current.settings.hasSeenOnboarding },
@@ -65,5 +77,10 @@ struct KonjugierenApp: App {
     Current.analytics.initialize(appID: appID)
     try? Tips.configure()
     WidgetSnapshotWriter.writeSnapshot()
+    KonjugierenShortcuts.updateAppShortcutParameters()
+    Task {
+      let entities = await VerbEntityQuery().allEntities()
+      try? await CSSearchableIndex.default().indexAppEntities(entities)
+    }
   }
 }

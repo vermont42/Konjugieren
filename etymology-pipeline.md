@@ -2,9 +2,9 @@
 
 ## Progress
 
-**Next verb: erlauben**
+**Next verb: filmen**
 
-**BATCH SIZE: 100**
+**BATCH SIZE: 50**
 
 ## Task
 

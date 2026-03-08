@@ -110,10 +110,17 @@ class World {
 
     switch url.host {
     case URL.verbHost:
-      verb = Verb.verbs[url.pathComponents[1]]
+      let target = url.pathComponents[1]
+      if target == "random" {
+        verb = Array(Verb.verbs.values).randomElement()
+      } else {
+        verb = Verb.verbs[target]
+      }
       if verb != nil {
         selectedTab = .verbs
       }
+    case URL.quizHost:
+      selectedTab = .quiz
     case URL.familyHost:
       family = url.pathComponents[1]
     case URL.infoHost:

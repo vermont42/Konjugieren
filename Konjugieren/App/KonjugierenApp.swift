@@ -39,6 +39,13 @@ struct KonjugierenApp: App {
         }
         .onChange(of: scenePhase) {
           if scenePhase == .active {
+            if
+              let deeplink = WidgetConstants.sharedDefaults?.string(forKey: WidgetConstants.pendingDeeplinkKey),
+              let url = URL(string: deeplink)
+            {
+              WidgetConstants.sharedDefaults?.removeObject(forKey: WidgetConstants.pendingDeeplinkKey)
+              Current.handleURL(url)
+            }
             WidgetSnapshotWriter.writeSnapshot()
             WidgetCenter.shared.reloadAllTimelines()
           }

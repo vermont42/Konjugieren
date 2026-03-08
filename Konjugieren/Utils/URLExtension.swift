@@ -12,6 +12,7 @@ extension URL {
   }
 
   static let konjugierenURLPrefix = "konjugieren://"
+  static let quizHost = "quiz"
   static let verbHost = "verb"
   static let familyHost = "family"
   static let infoHost = "info"

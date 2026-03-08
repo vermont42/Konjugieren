@@ -125,6 +125,32 @@ struct DeeplinkTests {
     #expect(Current.verb == nil)
   }
 
+  @Test func handleURLQuizDeeplink() {
+    let url = URL(string: "konjugieren://quiz/start")!
+    Current.handleURL(url)
+    #expect(Current.selectedTab == .quiz)
+    #expect(Current.verb == nil)
+    #expect(Current.family == nil)
+    #expect(Current.info == nil)
+  }
+
+  @Test func handleURLRandomVerbDeeplink() {
+    let url = URL(string: "konjugieren://verb/random")!
+    Current.handleURL(url)
+    #expect(Current.verb != nil)
+    #expect(Current.selectedTab == .verbs)
+  }
+
+  @Test func handleURLRandomVerbDeeplinkIsDifferent() {
+    var infinitivs: Set<String> = []
+    for _ in 0..<20 {
+      let url = URL(string: "konjugieren://verb/random")!
+      Current.handleURL(url)
+      if let v = Current.verb { infinitivs.insert(v.infinitiv) }
+    }
+    #expect(infinitivs.count > 1)
+  }
+
   @Test func handleUserActivityClearsPreviousState() {
     Current.verb = Verb.verbs["machen"]
     Current.family = "strong"

@@ -29,6 +29,20 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		3E7D80FDFED273606F4C76FF /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				8B24F98B098D2F129A31E399 /* KonjugierenWidgetExtension.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		033FC2852EF3161C00F9EE04 /* Konjugieren.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Konjugieren.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		033FC2922EF3161D00F9EE04 /* KonjugierenTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KonjugierenTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -51,7 +65,6 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				Info.plist,
-				KonjugierenWidget.entitlements,
 			);
 			target = F8FD0BA84A167FE482ED4A92 /* KonjugierenWidgetExtension */;
 		};
@@ -71,17 +84,17 @@
 			path = KonjugierenTests;
 			sourceTree = "<group>";
 		};
+		31CE692EDFCE0B5ECDC4C1DD /* Shared */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Shared;
+			sourceTree = "<group>";
+		};
 		640CA4B8601EE8D9224ECDE3 /* KonjugierenWidget */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			exceptions = (
 				3D74C3035DF4A6F8F1F2F416 /* Exceptions for "KonjugierenWidget" folder in "KonjugierenWidgetExtension" target */,
 			);
 			path = KonjugierenWidget;
-			sourceTree = "<group>";
-		};
-		31CE692EDFCE0B5ECDC4C1DD /* Shared */ = {
-			isa = PBXFileSystemSynchronizedRootGroup;
-			path = Shared;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -200,8 +213,8 @@
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				640CA4B8601EE8D9224ECDE3 /* KonjugierenWidget */,
 				31CE692EDFCE0B5ECDC4C1DD /* Shared */,
+				640CA4B8601EE8D9224ECDE3 /* KonjugierenWidget */,
 			);
 			name = KonjugierenWidgetExtension;
 			packageProductDependencies = (
@@ -318,20 +331,6 @@
 			targetProxy = 698E3B36A45C17FF134EEE52 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		3E7D80FDFED273606F4C76FF /* Embed Foundation Extensions */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 13;
-			files = (
-				8B24F98B098D2F129A31E399 /* KonjugierenWidgetExtension.appex in Embed Foundation Extensions */,
-			);
-			name = "Embed Foundation Extensions";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
 		033FC2A42EF3161D00F9EE04 /* Debug */ = {
@@ -565,34 +564,6 @@
 			};
 			name = Release;
 		};
-		C8C8050EED40EF171CC2784D /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
-				CODE_SIGN_ENTITLEMENTS = KonjugierenWidget/KonjugierenWidget.entitlements;
-				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = V3L2PL4QC9;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = KonjugierenWidget/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = KonjugierenWidget;
-				INFOPLIST_KEY_NSHumanReadableCopyright = "";
-				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@executable_path/../../Frameworks",
-				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = biz.joshadams.Konjugieren.Widget;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SKIP_INSTALL = YES;
-				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_VERSION = 6.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
 		638B34FA781359331A3ED13A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -620,6 +591,34 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
+		};
+		C8C8050EED40EF171CC2784D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CODE_SIGN_ENTITLEMENTS = KonjugierenWidget/KonjugierenWidget.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = V3L2PL4QC9;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = KonjugierenWidget/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = KonjugierenWidget;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 26.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = biz.joshadams.Konjugieren.Widget;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 6.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
 		};
 /* End XCBuildConfiguration section */
 

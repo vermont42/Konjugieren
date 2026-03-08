@@ -9,6 +9,7 @@ enum WidgetConstants {
   static let quizAnsweredKey = "widgetQuizAnswered"
   static let quizCorrectKey = "widgetQuizCorrect"
   static let quizQuestionIDKey = "widgetQuizQuestionID"
+  static let pendingDeeplinkKey = "widgetPendingDeeplink"
 
   static var sharedContainerURL: URL? {
     FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroupID)

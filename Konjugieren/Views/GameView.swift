@@ -209,6 +209,7 @@ struct GameView: View {
     }
     .onDisappear {
       gameState.stopMotion()
+      gameState.quitGame()
       AppDelegate.orientationLock = .allButUpsideDown
     }
     .onChange(of: scenePhase) { _, newPhase in

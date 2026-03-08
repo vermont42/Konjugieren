@@ -78,6 +78,7 @@ struct KonjugierenApp: App {
     try? Tips.configure()
     WidgetSnapshotWriter.writeSnapshot()
     KonjugierenShortcuts.updateAppShortcutParameters()
+    LiveActivityManager.endAllActivities()
     Task {
       let entities = await VerbEntityQuery().allEntities()
       try? await CSSearchableIndex.default().indexAppEntities(entities)

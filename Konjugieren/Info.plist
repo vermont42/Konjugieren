@@ -50,6 +50,8 @@
 	</array>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
+	<key>NSSupportsLiveActivities</key>
+	<true/>
 	<key>NSUserActivityTypes</key>
 	<array>
 		<string>biz.joshadams.Konjugieren.viewVerb</string>

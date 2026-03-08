@@ -1,5 +1,6 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
+import ActivityKit
 import CoreMotion
 import SwiftUI
 
@@ -304,6 +305,9 @@ class GameState {
   private var diveTimer: CGFloat = 0
   private let motionManager = CMMotionManager()
   private var lastUpdateTime: Date?
+  private var liveActivity: Activity<GameActivityAttributes>?
+  private var lastActivityUpdateTime: Date?
+  private static let activityUpdateInterval: TimeInterval = 2.0
 
   private static let rows = 6
   private static let cols = 6
@@ -463,6 +467,8 @@ class GameState {
     }
 
     startMotion()
+    liveActivity = LiveActivityManager.startGameActivity()
+    lastActivityUpdateTime = nil
     Current.soundPlayer.startMusic()
     Current.analytics.signal(name: .startGame)
   }
@@ -505,6 +511,7 @@ class GameState {
     updateDeathEffects(dt: dt)
     checkCollisions()
     attemptEnemyFire()
+    updateLiveActivity(currentTime: currentTime)
     checkGameOver()
   }
 
@@ -536,8 +543,13 @@ class GameState {
   }
 
   func restartGame() {
+    endLiveActivity()
     SavedGame.clear(getterSetter: Current.getterSetter)
     startGame(screenWidth: screenWidth, screenHeight: screenHeight, topInset: topInset)
+  }
+
+  func quitGame() {
+    endLiveActivity()
   }
 
   func makeSnapshot() -> GameStateSnapshot {
@@ -1710,6 +1722,46 @@ class GameState {
     }
   }
 
+  private func updateLiveActivity(currentTime: Date) {
+    guard let liveActivity else { return }
+    if let last = lastActivityUpdateTime,
+       currentTime.timeIntervalSince(last) < Self.activityUpdateInterval {
+      return
+    }
+    lastActivityUpdateTime = currentTime
+    let state = GameActivityAttributes.ContentState(
+      wave: wave,
+      score: score,
+      healthFraction: Double(playerHealth),
+      phase: phase.rawValue
+    )
+    LiveActivityManager.updateGameActivity(liveActivity, state: state)
+  }
+
+  private func forceLiveActivityUpdate() {
+    guard let liveActivity else { return }
+    lastActivityUpdateTime = .now
+    let state = GameActivityAttributes.ContentState(
+      wave: wave,
+      score: score,
+      healthFraction: Double(playerHealth),
+      phase: phase.rawValue
+    )
+    LiveActivityManager.updateGameActivity(liveActivity, state: state)
+  }
+
+  private func endLiveActivity() {
+    guard let liveActivity else { return }
+    let finalState = GameActivityAttributes.ContentState(
+      wave: wave,
+      score: score,
+      healthFraction: Double(playerHealth),
+      phase: phase.rawValue
+    )
+    LiveActivityManager.endGameActivity(liveActivity, finalState: finalState)
+    self.liveActivity = nil
+  }
+
   private func checkGameOver() {
     guard !enemies.isEmpty else { return }
     let aliveEnemies = enemies.filter(\.isAlive)
@@ -1719,6 +1771,7 @@ class GameState {
       portalSide = nil
       lastWaveScore = score - scoreAtWaveStart
       waveCompleteTime = .now
+      forceLiveActivityUpdate()
       Current.soundPlayer.play(.randomApplause, shouldDebounce: false)
       return
     }
@@ -1731,6 +1784,7 @@ class GameState {
       Current.soundPlayer.stopMusic()
       Current.soundPlayer.play(.randomSadTrombone, shouldDebounce: false)
       persistHighScore()
+      endLiveActivity()
       Current.analytics.signal(name: .loseGame)
       return
     }
@@ -1744,6 +1798,7 @@ class GameState {
       Current.soundPlayer.stopMusic()
       Current.soundPlayer.play(.randomSadTrombone, shouldDebounce: false)
       persistHighScore()
+      endLiveActivity()
       Current.analytics.signal(name: .loseGame)
       return
     }

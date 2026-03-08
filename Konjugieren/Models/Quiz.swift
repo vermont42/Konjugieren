@@ -1,5 +1,6 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
+import ActivityKit
 import Foundation
 import TipKit
 import UIKit
@@ -26,6 +27,7 @@ class Quiz {
   private var timer: Timer?
   private var difficultyUsed: QuizDifficulty = .regular
   private var timerInterval: TimeInterval = 1.0
+  private var liveActivity: Activity<QuizActivityAttributes>?
 
   var currentQuestion: QuizItem? {
     guard isInProgress, currentIndex < questions.count else { return nil }
@@ -38,6 +40,12 @@ class Quiz {
 
   var elapsedText: String {
     TimeFormatter.formatIntTime(elapsedSeconds)
+  }
+
+  var elapsedTimeLiveActivity: String {
+    let minutes = elapsedSeconds / 60
+    let seconds = elapsedSeconds % 60
+    return String(format: "%d:%02d", minutes, seconds)
   }
 
   var finalScore: Int {
@@ -65,6 +73,10 @@ class Quiz {
     isInProgress = true
     shouldShowResults = false
     startTimer()
+    liveActivity = LiveActivityManager.startQuizActivity(
+      difficulty: difficultyUsed.localizedQuizDifficulty,
+      totalQuestions: Quiz.questionCount
+    )
     Current.soundPlayer.play(Sound.randomGun)
     HapticPlayer.playMediumImpact()
     Current.analytics.signal(name: .startQuiz)
@@ -121,6 +133,17 @@ class Quiz {
 
     currentIndex += 1
 
+    if let liveActivity {
+      let state = QuizActivityAttributes.ContentState(
+        currentQuestion: min(currentIndex + 1, Quiz.questionCount),
+        score: score,
+        correctCount: correctCount,
+        elapsedTime: elapsedTimeLiveActivity,
+        isFinished: false
+      )
+      LiveActivityManager.updateQuizActivity(liveActivity, state: state)
+    }
+
     if currentIndex >= Quiz.questionCount {
       finishQuiz()
     } else {
@@ -132,6 +155,17 @@ class Quiz {
     let questionNumber = currentIndex + 1
     stopTimer()
     isInProgress = false
+    if let liveActivity {
+      let finalState = QuizActivityAttributes.ContentState(
+        currentQuestion: currentIndex + 1,
+        score: score,
+        correctCount: correctCount,
+        elapsedTime: elapsedTimeLiveActivity,
+        isFinished: false
+      )
+      LiveActivityManager.endQuizActivity(liveActivity, finalState: finalState)
+      self.liveActivity = nil
+    }
     currentIndex = 0
     score = 0
     correctCount = 0
@@ -216,9 +250,23 @@ class Quiz {
   private func startTimer() {
     timer = Timer.scheduledTimer(withTimeInterval: timerInterval, repeats: true) { [weak self] _ in
       MainActor.assumeIsolated {
-        self?.elapsedSeconds += 1
+        guard let self else { return }
+        self.elapsedSeconds += 1
+        self.updateLiveActivityTime()
       }
     }
+  }
+
+  private func updateLiveActivityTime() {
+    guard let liveActivity else { return }
+    let state = QuizActivityAttributes.ContentState(
+      currentQuestion: min(currentIndex + 1, Quiz.questionCount),
+      score: score,
+      correctCount: correctCount,
+      elapsedTime: elapsedTimeLiveActivity,
+      isFinished: false
+    )
+    LiveActivityManager.updateQuizActivity(liveActivity, state: state)
   }
 
   private func stopTimer() {
@@ -226,10 +274,32 @@ class Quiz {
     timer = nil
   }
 
+  func pauseTimer() {
+    guard isInProgress else { return }
+    timer?.invalidate()
+    timer = nil
+  }
+
+  func resumeTimer() {
+    guard isInProgress, timer == nil else { return }
+    startTimer()
+  }
+
   private func finishQuiz() {
     stopTimer()
     isInProgress = false
     shouldShowResults = true
+    if let liveActivity {
+      let finalState = QuizActivityAttributes.ContentState(
+        currentQuestion: Quiz.questionCount,
+        score: score,
+        correctCount: correctCount,
+        elapsedTime: elapsedTimeLiveActivity,
+        isFinished: true
+      )
+      LiveActivityManager.endQuizActivity(liveActivity, finalState: finalState)
+      self.liveActivity = nil
+    }
     Current.soundPlayer.play(Sound.randomApplause, shouldDebounce: false)
     HapticPlayer.playSuccess()
     Current.analytics.signal(name: .completeQuiz, parameters: [

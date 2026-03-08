@@ -10,5 +10,7 @@ struct KonjugierenWidgetBundle: WidgetBundle {
     QuizWidget()
     RandomVerbControl()
     VerbDesTagesWidget()
+    QuizLiveActivity()
+    GameLiveActivity()
   }
 }

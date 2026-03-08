@@ -72,7 +72,7 @@ The recommendations draw from Apple's official featuring criteria, Design Award 
 
 ---
 
-### 5. Live Activities / Dynamic Island (iOS 16.1+)
+### 5. Live Activities / Dynamic Island (iOS 16.1+) - DONE
 
 **Why it matters:** Provides at-a-glance information on the Lock Screen and Dynamic Island during active sessions.
 

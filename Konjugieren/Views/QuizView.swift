@@ -6,6 +6,7 @@ import TipKit
 struct QuizView: View {
   @Environment(Quiz.self) var quiz
   @Environment(\.accessibilityReduceMotion) private var reduceMotion
+  @Environment(\.scenePhase) private var scenePhase
   @State private var userInput = ""
   @FocusState private var isTextFieldFocused: Bool
   @AccessibilityFocusState private var isTextFieldA11yFocused: Bool
@@ -76,6 +77,16 @@ struct QuizView: View {
       userInput = ""
       isTextFieldFocused = true
       isTextFieldA11yFocused = true
+    }
+    .onChange(of: scenePhase) { _, newPhase in
+      switch newPhase {
+      case .active:
+        quiz.resumeTimer()
+      case .inactive, .background:
+        quiz.pauseTimer()
+      @unknown default:
+        break
+      }
     }
   }
 

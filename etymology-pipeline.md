@@ -2,7 +2,7 @@
 
 ## Progress
 
-**Next verb: begründen**
+**Next verb: bestehen**
 
 **BATCH SIZE: 50**
 

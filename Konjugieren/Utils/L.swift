@@ -1144,6 +1144,14 @@ enum L {
   }
 
   enum Onboarding {
+    static var aiBody: String {
+      String(localized: "Onboarding.aiBody")
+    }
+
+    static var aiTitle: String {
+      String(localized: "Onboarding.aiTitle")
+    }
+
     static var conjugationgroupBody: String {
       String(localized: "Onboarding.conjugationgroupBody")
     }
@@ -1226,6 +1234,10 @@ enum L {
 
     static var startQuizButton: String {
       String(localized: "Onboarding.startQuizButton")
+    }
+
+    static var meetTutorButton: String {
+      String(localized: "Onboarding.meetTutorButton")
     }
 
     static var readArticlesButton: String {

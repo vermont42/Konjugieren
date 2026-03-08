@@ -5087,6 +5087,54 @@
           }
         }
       }
+    },
+    "Onboarding.aiBody": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konjugieren harnesses Apple Intelligence to supercharge your learning. Chat with your personal Conjugation Tutor, get instant explanations when you miss a quiz question, and receive tailored practice recommendations based on your progress."
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Konjugieren nutzt Apple Intelligence, um dein Lernen auf ein neues Level zu heben. Chatte mit deinem persönlichen Konjugationstutor, erhalte sofortige Erklärungen bei falschen Quizantworten und bekomme maßgeschneiderte Übungsempfehlungen basierend auf deinem Fortschritt."
+          }
+        }
+      }
+    },
+    "Onboarding.aiTitle": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Your AI-Powered Tutor"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Dein KI-gestützter Tutor"
+          }
+        }
+      }
+    },
+    "Onboarding.meetTutorButton": {
+      "localizations": {
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Meet the Tutor"
+          }
+        },
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Den Tutor kennenlernen"
+          }
+        }
+      }
     }
   },
   "version": "1.1"

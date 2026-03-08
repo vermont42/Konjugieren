@@ -20,6 +20,7 @@ class World {
   var family: String?
   var info: Info?
   var selectedTab: TabSelection = .verbs
+  var shouldNavigateToTutor = false
 
   init(settings: Settings, gameCenter: GameCenter, getterSetter: GetterSetter, languageModelService: LanguageModelService, soundPlayer: SoundPlayer, utterer: Utterer, fatalError: FatalError, analytics: Analytics) {
     self.settings = settings

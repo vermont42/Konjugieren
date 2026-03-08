@@ -35,6 +35,12 @@ struct InfoBrowseView: View {
       .navigationDestination(for: Info.self) { info in
         InfoView(info: info)
       }
+      .task(id: world.shouldNavigateToTutor) {
+        guard world.shouldNavigateToTutor else { return }
+        try? await Task.sleep(for: .milliseconds(500))
+        world.shouldNavigateToTutor = false
+        navigationPath.append("tutor")
+      }
       .sheet(item: $world.info) { info in
         NavigationStack {
           InfoView(info: info, shouldShowInfoHeading: true)

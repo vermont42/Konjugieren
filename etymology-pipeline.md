@@ -2,7 +2,7 @@
 
 ## Progress
 
-**Next verb: filmen**
+**Next verb: gewährleisten**
 
 **BATCH SIZE: 50**
 

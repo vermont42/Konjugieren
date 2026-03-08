@@ -4009,7 +4009,7 @@ The etymology reveals that marriage in Germanic society was fundamentally a hous
 
 ### heißen
 
-From Middle High German ~heiȥen~, from Old High German ~heiȥan~, from Proto-West Germanic *~haitan~, from Proto-Germanic *~haitaną~, tentatively from PIE *~ḱeyd-~ ("to call"). The original sense was "to command, order" (still preserved in the construction ~jemanden etwas heißen~), with the meaning "to be called, be named" developing from the passive use: "to be called (something)" became the dominant sense. Cognate with Bavarian ~haßn~, ~hoaßn~, Yiddish ~heysn~, Dutch ~heten~, Low German ~heten~, ~heiten~, Old Norse ~heita~, Gothic ~haitan~. Compare also English ~hest~, ~behest~.
+From Middle High German ~heiȥen~, from Old High German ~heiȥan~, from Proto-West Germanic *~haitan~, from Proto-Germanic *~haitaną~, tentatively from PIE *~ḱeyd-~ ("to call"). The original sense was "to command, order" (still preserved in the construction ~jemanden etwas heißen~), with the meaning "to be called, be named" developing from the passive use: "to be called (something)" became the dominant sense. Cognate with Bavarian ~haßn~, ~hoaßn~, Yiddish ~heysn~, Dutch ~heten~, Low German ~heten~, ~heiten~, Old Norse ~heita~, Gothic ~haitan~. The most direct English cognate is the archaic verb ~hight~ ("called, named"), from Old English ~hātan~, which survives in Spenser and other early-modern poets (~a goodly knight, hight George~). Like ~heißen~, it froze in the passive sense "to be called." Compare also English ~hest~, ~behest~, which preserve the original "command" meaning.
 
 ### helfen
 

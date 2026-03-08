@@ -2,7 +2,7 @@
 
 ## Progress
 
-**Next verb: gewährleisten**
+**Next verb: investieren**
 
 **BATCH SIZE: 50**
 

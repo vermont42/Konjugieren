@@ -2,9 +2,7 @@
 
 ## Progress
 
-**Next verb: rauchen**
-
-**BATCH SIZE: 60**
+**COMPLETE — all 989 verbs translated.**
 
 ## Task
 

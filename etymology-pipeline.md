@@ -2,7 +2,7 @@
 
 ## Progress
 
-**Next verb: investieren**
+**Next verb: spezialisieren**
 
 **BATCH SIZE: 50**
 

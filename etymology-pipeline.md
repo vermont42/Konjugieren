@@ -2,7 +2,7 @@
 
 ## Progress
 
-**Next verb: lächeln**
+**Next verb: rauchen**
 
 **BATCH SIZE: 60**
 

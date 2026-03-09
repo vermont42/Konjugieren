@@ -2,7 +2,7 @@
 
 ## Progress
 
-**Next verb: verkünden**
+**Next verb: lächeln**
 
 **BATCH SIZE: 60**
 
@@ -113,62 +113,136 @@ For each subagent, construct the VERB SECTIONS by concatenating ~20 verb blocks 
 
 ## After Subagents Return
 
-1. **Parse** the JSON fragment from each subagent's response. The subagent may include extra text around the JSON — extract the JSON object.
-2. **Verify markup preservation**: For each translation, count the number of `~` characters in the English original and the German translation. They MUST match. Also spot-check that reconstructed forms (anything starting with `*~`) appear unchanged.
-3. **Merge into Etymologies.json**: Use Python via Bash to read the existing file, add a `"de"` key (or merge into existing `"de"`), and write back. Use the merge script pattern below.
-4. **Validate JSON** after every write.
-5. Print a summary table: verb | first 60 chars of German translation | tilde count match (Y/N)
-6. **Update this file**: Change "Next verb" to the next unprocessed verb alphabetically. If all 989 verbs are done, note that translation is complete.
+### Step 1: Extract translations from subagent JSONL transcripts
 
-### Merge script pattern
-
-Write a Python script to `/tmp/merge_etymologies.py`, then run it:
+Do NOT try to parse the subagent response text directly — it may contain German typographic closing quotes (`"` U+201C) rendered as ASCII `"` (U+0022), which breaks `json.loads()`. Instead, use this extraction script that fixes the quotes before parsing:
 
 ```python
-import json
-import pathlib
+python3 << 'ENDPY'
+import json, pathlib, re
+
+OPEN_Q  = "\u201e"  # „
+CLOSE_Q = "\u201c"  # "
+
+def fix_german_quotes(text):
+    """Replace ASCII " used as German closing quote after „ with proper U+201C."""
+    return re.sub(
+        OPEN_Q + r'([^' + CLOSE_Q + OPEN_Q + r'"]{1,80})"',
+        lambda m: OPEN_Q + m.group(1) + CLOSE_Q,
+        text
+    )
+
+base = pathlib.Path(
+    "/Users/josh/.claude/projects/-Users-josh-Desktop-workspace-Konjugieren"
+)
+# Find the current session directory (most recent conversation JSONL)
+# Subagent IDs come from the Agent tool results — substitute them below.
+session = "SESSION_ID"  # e.g. "ebf85cc7-704a-4fb5-bf16-c88458f0b180"
+agents = [
+    ("agent-AGENT_ID_1.jsonl", "/tmp/de_group_1.json"),
+    ("agent-AGENT_ID_2.jsonl", "/tmp/de_group_2.json"),
+    ("agent-AGENT_ID_3.jsonl", "/tmp/de_group_3.json"),
+]
+
+for agent_file, out_file in agents:
+    p = base / session / "subagents" / agent_file
+    for line in p.read_text().splitlines():
+        try:
+            obj = json.loads(line)
+        except:
+            continue
+        if obj.get("type") != "assistant":
+            continue
+        for block in obj.get("message", {}).get("content", []):
+            if block.get("type") != "text":
+                continue
+            text = block["text"].strip()
+            # Skip past any preamble before the JSON object
+            json_start = text.find('{')
+            if json_start == -1:
+                continue
+            text = text[json_start:]
+            fixed = fix_german_quotes(text)
+            try:
+                data = json.loads(fixed)
+                pathlib.Path(out_file).write_text(json.dumps(data, ensure_ascii=False))
+                print(f"{agent_file}: {len(data)} verbs -> {out_file}")
+            except json.JSONDecodeError as e:
+                print(f"{agent_file}: FAILED: {e}")
+                pos = e.pos if hasattr(e, 'pos') else 0
+                print(f"  Context: ...{fixed[max(0,pos-60):pos+60]}...")
+ENDPY
+```
+
+This script reads the JSONL transcript files that persist on disk even after context compaction. Substitute the session ID and agent IDs from the current run.
+
+### Step 2: Verify tilde counts
+
+For each verb, count `~` in the EN original and DE translation. They MUST match. Also spot-check that reconstructed forms (`*~...~`) appear unchanged.
+
+### Step 3: Fix tilde mismatches
+
+Common mismatch pattern: subagents tilde-wrap English cognates that appear in untilded prose. For example, EN says `to "drive" progress` (no tildes) but DE produces `den Fortschritt ~drive~ forward` (tildes added). Fix by removing the spurious tildes.
+
+### Step 4: Merge into Etymologies.json
+
+Load the temp group JSON files and merge:
+
+```python
+python3 << 'ENDPY'
+import json, pathlib
 
 p = pathlib.Path('Konjugieren/Models/Etymologies.json')
 data = json.loads(p.read_text())
 
-# Initialize "de" key if it doesn't exist
+g1 = json.load(open('/tmp/de_group_1.json'))
+g2 = json.load(open('/tmp/de_group_2.json'))
+g3 = json.load(open('/tmp/de_group_3.json'))
+new_translations = {**g1, **g2, **g3}
+
 if 'de' not in data:
     data['de'] = {}
 
-# New translations from this batch
-new_translations = {
-    # "abbauen": "German translation text here...",
-}
-
-# Merge new translations
 data['de'].update(new_translations)
 
-# Sort keys within each language object
 for lang in data:
     data[lang] = dict(sorted(data[lang].items()))
-
-# Sort top-level keys so "de" comes before "en"
 data = dict(sorted(data.items()))
 
 p.write_text(json.dumps(data, indent=2, ensure_ascii=False) + '\n')
-print("Merged successfully.")
+print(f"Merged {len(new_translations)} translations. Total DE: {len(data['de'])}")
+ENDPY
 ```
 
-Then validate:
+### Step 5: Validate JSON
 
 ```bash
 python3 -c "import json; json.load(open('Konjugieren/Models/Etymologies.json')); print('Valid JSON')"
 ```
 
+### Step 6: Print summary and update pipeline
+
+Print a summary table: verb | first 60 chars of German translation | tilde count match (Y/N).
+
+### Step 7: Update "Next verb"
+
+Compute the next verb by finding the **first remaining untranslated verb alphabetically** — do NOT simply take the verb after the last one in this batch, since earlier gaps may exist from skipped or failed verbs:
+
+```python
+python3 -c "
+import json, pathlib
+d = json.loads(pathlib.Path('Konjugieren/Models/Etymologies.json').read_text())
+remaining = sorted(set(d['en']) - set(d['de']))
+print(f'Remaining: {len(remaining)}, next: {remaining[0] if remaining else \"DONE\"}')"
+```
+
+If all 989 verbs are done, note that translation is complete.
+
 ## JSON Munging Advice
 
-These lessons are carried over from the example-sentence pipeline:
-
-1. **Never use `cat > file << 'EOF'` heredocs** to write JSON containing German text. Typographic quotes (`„"`) are visually similar to ASCII `"` and cause parse errors.
-2. **Never embed German text in Python heredocs (`<< 'PYEOF'`)**. The closing `"` (U+201C) next to an ASCII `"` confuses the parser.
-3. **Use `\uXXXX` escapes** in Python string literals when constructing sentences with typographic quotes: `\u201e` for `„`, `\u201c` for `"`, `\u00bb` for `»`, `\u00ab` for `«`.
-4. **Preferred pattern:** Write a Python script to a file with the Write tool, then run it with Bash. This avoids all heredoc quoting issues.
-5. **Validate JSON** after every write: `python3 -c "import json; json.load(open('Konjugieren/Models/Etymologies.json'))"`
+1. **Never put German translation text in shell heredocs or inline Python dicts.** Typographic quotes (`„"`) are visually similar to ASCII `"` and cause parse errors in both shell and Python contexts. The `\uXXXX` escape workaround is fragile and error-prone.
+2. **Preferred pattern:** Extract translations from subagent JSONL transcripts on disk (see Step 1 above). The `json.loads()` call happens in Python, where the German-quote fixer handles the only known failure mode. This keeps German text out of shell entirely.
+3. **Validate JSON** after every write: `python3 -c "import json; json.load(open('Konjugieren/Models/Etymologies.json'))"`
 
 ## Important
 
@@ -186,7 +260,7 @@ These lessons are carried over from the example-sentence pipeline:
 
 - **Subagent output files are JSONL transcripts, not raw JSON.** The `.output` files contain one JSON object per line (agent transcript format). The translation lives in the `message.content[0].text` field of the `type: "assistant"` line. A brace-matching JSON extractor will pick up transcript metadata objects instead.
 
-- **German typographic quotes in JSON.** Subagents sometimes produce ASCII `"` (U+0022) where `"` (U+201C) was intended as a German closing quote. This breaks JSON parsing. Fix: regex-replace `„...ASCII"` → `„...\u201c` before `json.loads()`.
+- **German typographic quotes in JSON.** Subagents sometimes produce ASCII `"` (U+0022) where `"` (U+201C) was intended as a German closing quote. This breaks JSON parsing. Fix: regex-replace `„...ASCII"` → `„...\u201c` before `json.loads()`. The extraction script in "After Subagents Return → Step 1" handles this automatically — always use it rather than trying to parse subagent output directly.
 
 - **Never use the Write tool for intermediate JSON files.** The Write tool writes content literally — it doesn't JSON-escape internal `"` characters. Always use Python's `json.dumps()` to write intermediate JSON:
    ```python
@@ -196,4 +270,10 @@ These lessons are carried over from the example-sentence pipeline:
    ```
    If group files are already broken, they can be repaired by using the known verb names as delimiters to split the raw text and rebuild valid JSON via `json.dumps()`.
 
-- **5 subagents × 20 verbs is the sweet spot.** The earlier 10×10 split consumed too much context (10 prompt reads + 10 agent launches + 10 results), risking compaction mid-batch. 5×20 halves the context overhead while keeping the same batch size of 100. If compaction does happen, agent task output files at `/private/tmp/claude-501/.../tasks/*.output` persist on disk and can be mined to recover results — the translation JSON lives in the assistant text block of the JSONL transcript.
+- **Never embed German translation text in Python heredocs or inline dicts.** Even with `python3 << 'ENDPY'`, constructing Python dicts with German text as inline string literals fails because typographic quotes and `\u` sequences interact badly with the heredoc parser. Instead, always extract translations from the subagent JSONL transcripts on disk using the Step 1 script — this avoids touching the text in any shell context.
+
+- **3–5 subagents × 20 verbs works well.** 3×20 (batch of 60) uses less context than 5×20 (batch of 100) and still completes in reasonable time. Either split is fine depending on how many verbs remain. The earlier 10×10 split consumed too much context (10 prompt reads + 10 agent launches + 10 results), risking compaction mid-batch. If compaction does happen, agent task output files at `/private/tmp/claude-501/.../tasks/*.output` persist on disk and can be mined to recover results — the extraction script in Step 1 does exactly this.
+
+- **Tilde mismatches on English cognates in prose.** The most common mismatch pattern is subagents tilde-wrapping English cognate words that appear in un-tilded prose. Example: EN says `to "drive" progress forward` (no tildes — the word is in regular quotes or unquoted) but DE produces `den Fortschritt ~drive~ forward` (spurious tildes added). Fix: remove the `~` delimiters from the affected word, leaving the word itself intact. Check the EN original to confirm the word is indeed untilded there.
+
+- **"Next verb" means first remaining, not next after batch.** Verbs are not necessarily translated in strict alphabetical order — earlier batches may have gaps. After each batch, always compute the next verb by diffing EN and DE keys, not by assuming the verb after the last one in the batch.

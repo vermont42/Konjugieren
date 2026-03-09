@@ -2,9 +2,9 @@
 
 ## Progress
 
-**Next verb: spezialisieren**
+**Next verb: tun**
 
-**BATCH SIZE: 50**
+**BATCH SIZE: 60**
 
 ## Task
 

@@ -2,7 +2,7 @@
 
 ## Progress
 
-**Next verb: tun**
+**Next verb: verkünden**
 
 **BATCH SIZE: 60**
 

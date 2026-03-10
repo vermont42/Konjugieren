@@ -43,7 +43,7 @@ struct InfoBrowseView: View {
       }
       .sheet(item: $world.info) { info in
         NavigationStack {
-          InfoView(info: info, shouldShowInfoHeading: true)
+          InfoView(info: info)
             .toolbar {
               ToolbarItem(placement: .cancellationAction) {
                 Button(L.Navigation.dismiss) {

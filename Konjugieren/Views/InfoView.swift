@@ -4,12 +4,6 @@ import SwiftUI
 
 struct InfoView: View {
   let info: Info
-  let shouldShowInfoHeading: Bool
-
-  init(info: Info, shouldShowInfoHeading: Bool = false) {
-    self.info = info
-    self.shouldShowInfoHeading = shouldShowInfoHeading
-  }
 
   var body: some View {
     ZStack {

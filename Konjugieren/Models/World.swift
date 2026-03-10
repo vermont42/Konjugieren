@@ -1,7 +1,7 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
 import Observation
-import SwiftUI
+import UIKit
 
 @MainActor var Current = World.chooseWorld()
 
@@ -39,27 +39,14 @@ class World {
     if isRunningUnitTests {
       return World.unitTest
     } else {
-      return World.simulator
+      return World.real
     }
 #else
-    return World.device
+    return World.real
 #endif
   }
 
-  static let device: World = {
-    let getterSetter = GetterSetterReal()
-    let settings = Settings(getterSetter: getterSetter)
-    let languageModelService: LanguageModelService = {
-      if #available(iOS 26, *) {
-        return LanguageModelServiceReal()
-      } else {
-        return LanguageModelServiceDummy()
-      }
-    }()
-    return World(settings: settings, gameCenter: GameCenterReal(), getterSetter: getterSetter, languageModelService: languageModelService, soundPlayer: SoundPlayerReal(), utterer: UttererReal(), fatalError: FatalErrorReal(), analytics: AnalyticsReal())
-  }()
-
-  static let simulator: World = {
+  static let real: World = {
     let getterSetter = GetterSetterReal()
     let settings = Settings(getterSetter: getterSetter)
     let languageModelService: LanguageModelService = {

@@ -126,10 +126,6 @@ enum L {
   }
 
   enum FamilyBrowse {
-    static var viewVerbs: String {
-      String(localized: "FamilyBrowse.viewVerbs")
-    }
-
     static var strongShort: String {
       String(localized: "FamilyBrowse.strongShort")
     }
@@ -162,10 +158,6 @@ enum L {
   enum FamilyDetail {
     static var verbsHeading: String {
       String(localized: "FamilyDetail.verbsHeading")
-    }
-
-    static var prefixesHeading: String {
-      String(localized: "FamilyDetail.prefixesHeading")
     }
 
     static var strongLong: String {
@@ -793,64 +785,6 @@ enum L {
     }
   }
 
-  enum Conjugationgroup {
-    static var perfektpartizip: String {
-      String(localized: "Conjugationgroup.perfektpartizip")
-    }
-
-    static var präsenspartizip: String {
-      String(localized: "Conjugationgroup.präsenspartizip")
-    }
-
-    static var präsensIndicativ: String {
-      String(localized: "Conjugationgroup.präsensIndicativ")
-    }
-
-    static var präsensKonjunktivI: String {
-      String(localized: "Conjugationgroup.präsensKonjunktivI")
-    }
-
-    static var präteritumIndicativ: String {
-      String(localized: "Conjugationgroup.präteritumIndicativ")
-    }
-
-    static var präteritumKonjunktivII: String {
-      String(localized: "Conjugationgroup.präteritumKonjunktivII")
-    }
-
-    static var imperativ: String {
-      String(localized: "Conjugationgroup.imperativ")
-    }
-
-    static var perfektIndikativ: String {
-      String(localized: "Conjugationgroup.perfektIndikativ")
-    }
-
-    static var perfektKonjunktivI: String {
-      String(localized: "Conjugationgroup.perfektKonjunktivI")
-    }
-
-    static var plusquamperfektIndikativ: String {
-      String(localized: "Conjugationgroup.plusquamperfektIndikativ")
-    }
-
-    static var plusquamperfektKonjunktivII: String {
-      String(localized: "Conjugationgroup.plusquamperfektKonjunktivII")
-    }
-
-    static var futurIndikativ: String {
-      String(localized: "Conjugationgroup.futurIndikativ")
-    }
-
-    static var futurKonjunktivI: String {
-      String(localized: "Conjugationgroup.futurKonjunktivI")
-    }
-
-    static var futurKonjunktivII: String {
-      String(localized: "Conjugationgroup.futurKonjunktivII")
-    }
-  }
-
   enum ConjugationgroupLang {
     static var english: String {
       String(localized: "ConjugationgroupLang.english")
@@ -1245,25 +1179,4 @@ enum L {
     }
   }
 
-  enum Widget {
-    static var conjugate: String {
-      String(localized: "Widget.conjugate")
-    }
-
-    static var correct: String {
-      String(localized: "Widget.correct")
-    }
-
-    static var incorrect: String {
-      String(localized: "Widget.incorrect")
-    }
-
-    static var nextVerb: String {
-      String(localized: "Widget.nextVerb")
-    }
-
-    static var etymology: String {
-      String(localized: "Widget.etymology")
-    }
-  }
 }

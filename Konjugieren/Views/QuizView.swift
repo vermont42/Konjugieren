@@ -100,7 +100,7 @@ struct QuizView: View {
         Text(verbatim: question.verb.infinitiv)
           .foregroundStyle(.customForeground)
           .germanPronunciation()
-}
+      }
 
       HStack(alignment: .top, spacing: 0) {
         Text(L.Quiz.translation + " ")

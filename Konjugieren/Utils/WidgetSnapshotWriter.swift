@@ -189,7 +189,7 @@ enum WidgetSnapshotWriter {
       }
     }
 
-    // Pad with Perfekt Partizip if we still need more
+    // Pad with Perfektpartizip if we still need more
     while candidates.count < 3 {
       let fallback = Conjugator.conjugate(infinitiv: verb.infinitiv, conjugationgroup: .perfektpartizip)
       if case .success(let form) = fallback, form.lowercased() != correctAnswer.lowercased(), !candidates.contains(form.lowercased()) {

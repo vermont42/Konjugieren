@@ -22,9 +22,9 @@ enum Conjugationgroup: Hashable {
   var germanDisplayName: String {
     switch self {
     case .präsenspartizip:
-      return "Präsens Partizip"
+      return "Präsenspartizip"
     case .perfektpartizip:
-      return "Perfekt Partizip"
+      return "Perfektpartizip"
     case .präsensIndicativ:
       return "Präsens Indikativ"
     case .präsensKonjunktivI:

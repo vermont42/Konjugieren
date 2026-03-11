@@ -348,7 +348,7 @@ def build_verb_flowables(verb: dict) -> list:
         source_parts = []
         if ex["de"].get("source"):
             source_parts.append(ex["de"]["source"])
-        if ex["en"].get("source"):
+        if ex["en"].get("source") and ex["en"]["source"] != ex["de"].get("source"):
             source_parts.append(ex["en"]["source"])
         if source_parts:
             elements.append(

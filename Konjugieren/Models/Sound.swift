@@ -4,6 +4,8 @@ enum Sound: String, Codable {
   case applause1
   case applause2
   case applause3
+  case brainConvert
+  case brainLockOn
   case buzz
   case chime
   case chomp
@@ -22,6 +24,7 @@ enum Sound: String, Codable {
   case pig
   case playerHit
   case pop
+  case robotWeapon
   case sadTrombone1
   case sadTrombone2
   case sadTrombone3

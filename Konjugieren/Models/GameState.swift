@@ -25,6 +25,7 @@ struct Bullet: Identifiable, Codable {
   var x: CGFloat
   var y: CGFloat
   let isPlayerBullet: Bool
+  var useRed: Bool = false
 }
 
 struct Zigzagger: Codable {
@@ -109,6 +110,41 @@ enum SpecialMechanic: String, CaseIterable, Codable {
   case bratwurstkette
   case fussball
   case geisterstunde
+  case robot
+}
+
+enum BrainPhase: String, Codable {
+  case ascending
+  case lockedOn
+  case converting
+}
+
+struct RobotBrain: Codable {
+  var x: CGFloat
+  var y: CGFloat
+  var movingRight: Bool
+  var phase: BrainPhase = .ascending
+  var hitsRemaining: Int = 3
+  var targetEnemyIndex: Int?
+  var lockOnTimer: CGFloat = 0
+  var showBolt: Bool = false
+}
+
+struct RobotMinion: Codable {
+  var x: CGFloat
+  var y: CGFloat
+  var homeX: CGFloat
+  var homeY: CGFloat
+  var hasLeftArm: Bool = true
+  var hasRightArm: Bool = true
+  var isDiving: Bool = false
+  var diveProgress: CGFloat = 0
+  var diveStartX: CGFloat = 0
+  var diveStartY: CGFloat = 0
+  var divePauseTimer: CGFloat = 0
+  var originalEnemyImageName: String
+
+  var isArmed: Bool { hasLeftArm || hasRightArm }
 }
 
 struct Fussball: Identifiable, Codable {
@@ -197,6 +233,9 @@ struct GameStateSnapshot: Codable {
   let ghosts: [Ghost]
   let goldenDots: [GoldenDot]
   let kristallkugel: Kristallkugel?
+  let robotBrain: RobotBrain?
+  let robotMinion: RobotMinion?
+  let robotBulletUseRed: Bool
   let geisterjagdActive: Bool
   let score: Int
   let highScore: Int
@@ -274,6 +313,9 @@ class GameState {
   var ghosts: [Ghost] = []
   var goldenDots: [GoldenDot] = []
   var kristallkugel: Kristallkugel?
+  var robotBrain: RobotBrain?
+  var robotMinion: RobotMinion?
+  var robotBulletUseRed: Bool = false
   var deathEffects: [DeathEffect] = []
   var geisterjagdActive: Bool = false
   var score: Int = 0
@@ -398,6 +440,21 @@ class GameState {
   private static let kristallkugelThresholds: [CGFloat] = [0.25, 0.50, 0.75]
   private static let geisterjagdDuration: CGFloat = 5.0
 
+  private static let brainSize: CGFloat = 30
+  private static let brainSpeed: CGFloat = 468
+  private static let brainAscentSpeed: CGFloat = 40
+  private static let brainScore: Int = 150
+  private static let robotMinionSize: CGFloat = 30
+  private static let armHitZone: CGFloat = 12
+  private static let robotMinionScore: Int = 150
+  private static let robotDiveDuration: CGFloat = 6.0
+  private static let robotDiveDepthFactor: CGFloat = 0.7
+  private static let robotDiveWidthAmplitude: CGFloat = 80
+  private static let robotDivePause: CGFloat = 2.0
+  static let boltAppearDelay: CGFloat = 1.0
+  static let conversionDelay: CGFloat = 2.0
+  private static let robotBulletSpeedMultiplier: CGFloat = 2.0
+
   func startGame(screenWidth: CGFloat, screenHeight: CGFloat, topInset: CGFloat) {
     self.screenWidth = screenWidth
     self.screenHeight = screenHeight
@@ -439,6 +496,8 @@ class GameState {
     ghosts = []
     goldenDots = []
     kristallkugel = nil
+    robotBrain = nil
+    robotMinion = nil
     deathEffects = []
     geisterjagdActive = false
     geisterjagdTimer = 0
@@ -504,6 +563,7 @@ class GameState {
     updateEggs(dt: dt)
     updateHatchlings(dt: dt)
     updateSpecialMechanic(dt: dt)
+    updateRobot(dt: dt)
     updateFussball(dt: dt)
     updateWurstChains(dt: dt)
     updatePretzelOpacities(dt: dt)
@@ -517,8 +577,13 @@ class GameState {
 
   func playerFire() {
     guard phase == .playing, playerBullet == nil else { return }
-    playerBullet = Bullet(x: playerX, y: playerY - Self.playerSize / 2, isPlayerBullet: true)
-    Current.soundPlayer.play(.pop, shouldDebounce: false)
+    var bullet = Bullet(x: playerX, y: playerY - Self.playerSize / 2, isPlayerBullet: true)
+    if isRobotActive {
+      bullet.useRed = robotBulletUseRed
+      robotBulletUseRed.toggle()
+    }
+    playerBullet = bullet
+    Current.soundPlayer.play(isRobotActive ? .robotWeapon : .pop, shouldDebounce: false)
   }
 
   func computeFinalScore() -> Int {
@@ -585,6 +650,9 @@ class GameState {
       ghosts: ghosts,
       goldenDots: goldenDots,
       kristallkugel: kristallkugel,
+      robotBrain: robotBrain,
+      robotMinion: robotMinion,
+      robotBulletUseRed: robotBulletUseRed,
       geisterjagdActive: geisterjagdActive,
       score: score,
       highScore: highScore,
@@ -633,10 +701,10 @@ class GameState {
     }
 
     playerBullet = snapshot.playerBullet.map { b in
-      Bullet(x: b.x * scaleX, y: b.y * scaleY, isPlayerBullet: b.isPlayerBullet)
+      Bullet(x: b.x * scaleX, y: b.y * scaleY, isPlayerBullet: b.isPlayerBullet, useRed: b.useRed)
     }
     enemyBullet = snapshot.enemyBullet.map { b in
-      Bullet(x: b.x * scaleX, y: b.y * scaleY, isPlayerBullet: b.isPlayerBullet)
+      Bullet(x: b.x * scaleX, y: b.y * scaleY, isPlayerBullet: b.isPlayerBullet, useRed: b.useRed)
     }
     zigzagger = snapshot.zigzagger.map { z in
       var scaled = z
@@ -696,6 +764,23 @@ class GameState {
     kristallkugel = snapshot.kristallkugel.map { k in
       Kristallkugel(x: k.x * scaleX, y: k.y * scaleY)
     }
+    robotBrain = snapshot.robotBrain.map { b in
+      var scaled = b
+      scaled.x *= scaleX
+      scaled.y *= scaleY
+      return scaled
+    }
+    robotMinion = snapshot.robotMinion.map { m in
+      var scaled = m
+      scaled.x *= scaleX
+      scaled.y *= scaleY
+      scaled.homeX *= scaleX
+      scaled.homeY *= scaleY
+      scaled.diveStartX *= scaleX
+      scaled.diveStartY *= scaleY
+      return scaled
+    }
+    robotBulletUseRed = snapshot.robotBulletUseRed
     geisterjagdActive = snapshot.geisterjagdActive
     score = snapshot.score
     highScore = snapshot.highScore
@@ -738,6 +823,10 @@ class GameState {
     return Date.now.timeIntervalSince(gameOverTime) >= Self.gameOverCooldown
   }
 
+  var isRobotActive: Bool {
+    robotBrain != nil || robotMinion != nil
+  }
+
 
   // MARK: - Private
 
@@ -764,6 +853,8 @@ class GameState {
     ghosts = []
     goldenDots = []
     kristallkugel = nil
+    robotBrain = nil
+    robotMinion = nil
     deathEffects = []
     geisterjagdActive = false
     geisterjagdTimer = 0
@@ -906,8 +997,11 @@ class GameState {
   }
 
   private func updateBullets(dt: CGFloat) {
+    let bulletSpeed = isRobotActive
+      ? Self.playerBulletSpeed * Self.robotBulletSpeedMultiplier
+      : Self.playerBulletSpeed
     if var bullet = playerBullet {
-      bullet.y -= Self.playerBulletSpeed * dt
+      bullet.y -= bulletSpeed * dt
       if bullet.y < -Self.bulletSize {
         playerBullet = nil
       } else {
@@ -1094,6 +1188,9 @@ class GameState {
     case .geisterstunde:
       Current.soundPlayer.play(.ghostSpooky, shouldDebounce: false)
       spawnGeisterstunde()
+    case .robot:
+      Current.soundPlayer.play(.brainLockOn, shouldDebounce: false)
+      spawnRobot()
     }
   }
 
@@ -1303,6 +1400,130 @@ class GameState {
       goldenDots = []
       kristallkugel = nil
     }
+  }
+
+  private func spawnRobot() {
+    robotBrain = RobotBrain(
+      x: screenWidth / 2,
+      y: playerY - 30,
+      movingRight: Bool.random()
+    )
+  }
+
+  private func updateRobot(dt: CGFloat) {
+    updateRobotBrain(dt: dt)
+    updateRobotMinion(dt: dt)
+  }
+
+  private func updateRobotBrain(dt: CGFloat) {
+    guard var brain = robotBrain else { return }
+
+    switch brain.phase {
+    case .ascending:
+      let dx = Self.brainSpeed * dt * (brain.movingRight ? 1 : -1)
+      brain.x += dx
+      brain.y -= Self.brainAscentSpeed * dt
+      let half = Self.brainSize / 2
+      if brain.x <= half || brain.x >= screenWidth - half {
+        brain.x = max(half, min(screenWidth - half, brain.x))
+        brain.movingRight.toggle()
+      }
+
+      let topAliveEnemies = enemies.indices.filter { enemies[$0].isAlive && !enemies[$0].isDiving }
+      if !topAliveEnemies.isEmpty {
+        let topRow = topAliveEnemies.map { enemies[$0].row }.min() ?? 0
+        let topRowEnemies = topAliveEnemies.filter { enemies[$0].row == topRow }
+        let closestIdx = topRowEnemies.min(by: { abs(enemies[$0].x - brain.x) < abs(enemies[$1].x - brain.x) })
+        if let targetIdx = closestIdx {
+          let targetY = enemies[targetIdx].y - 40
+          if brain.y <= targetY {
+            brain.phase = .lockedOn
+            brain.targetEnemyIndex = targetIdx
+            brain.lockOnTimer = 0
+            Current.soundPlayer.play(.brainLockOn, shouldDebounce: false)
+          }
+        }
+      }
+
+      if brain.y < topInset - 50 {
+        robotBrain = nil
+        if activeMechanic == .robot {
+          activeMechanic = nil
+        }
+        return
+      }
+
+    case .lockedOn:
+      brain.lockOnTimer += dt
+      if let targetIdx = brain.targetEnemyIndex, targetIdx < enemies.count, enemies[targetIdx].isAlive {
+        brain.x = enemies[targetIdx].x
+        brain.y = enemies[targetIdx].y - 40
+      }
+
+      if brain.lockOnTimer >= Self.boltAppearDelay {
+        brain.showBolt = true
+      }
+
+      if brain.lockOnTimer >= Self.boltAppearDelay + Self.conversionDelay {
+        brain.phase = .converting
+      }
+
+    case .converting:
+      if let targetIdx = brain.targetEnemyIndex, targetIdx < enemies.count, enemies[targetIdx].isAlive {
+        let enemy = enemies[targetIdx]
+        let midX = (brain.x + enemy.x) / 2
+        let midY = (brain.y + enemy.y) / 2
+        deathEffects.append(DeathEffect(x: midX, y: midY, imageName: enemy.imageName, useRed: Bool.random()))
+        Current.soundPlayer.play(.brainConvert, shouldDebounce: false)
+        haptic(.heavy)
+
+        robotMinion = RobotMinion(
+          x: enemy.x,
+          y: enemy.y,
+          homeX: enemy.x,
+          homeY: enemy.y,
+          originalEnemyImageName: enemy.imageName
+        )
+        enemies[targetIdx].isAlive = false
+      }
+      robotBrain = nil
+      return
+    }
+
+    robotBrain = brain
+  }
+
+  private func updateRobotMinion(dt: CGFloat) {
+    guard var minion = robotMinion else { return }
+
+    if minion.isDiving {
+      minion.diveProgress += dt / Self.robotDiveDuration
+      if minion.diveProgress >= 1.0 {
+        minion.x = minion.homeX
+        minion.y = minion.homeY
+        minion.isDiving = false
+        minion.diveProgress = 0
+        minion.divePauseTimer = 0
+      } else {
+        let t = minion.diveProgress
+        let depth = screenHeight * Self.robotDiveDepthFactor
+        let baselineY = minion.diveStartY * (1 - t) + minion.homeY * t
+        let diveOffset = 4 * depth * t * (1 - t)
+        minion.y = baselineY + diveOffset
+        minion.x = minion.homeX + Self.robotDiveWidthAmplitude * CGFloat(sin(Double(t) * .pi * 4))
+      }
+    } else {
+      minion.divePauseTimer += dt
+      if minion.divePauseTimer >= Self.robotDivePause {
+        minion.isDiving = true
+        minion.diveProgress = 0
+        minion.diveStartX = minion.x
+        minion.diveStartY = minion.y
+        Current.soundPlayer.play(.brainLockOn, shouldDebounce: false)
+      }
+    }
+
+    robotMinion = minion
   }
 
   private func updateDeathEffects(dt: CGFloat) {
@@ -1697,6 +1918,98 @@ class GameState {
         haptic(.medium)
       default:
         break
+      }
+    }
+
+    // 22. Player bullet vs robot brain (3 hits)
+    if let bullet = playerBullet, var brain = robotBrain {
+      if rectsIntersect(
+        ax: bullet.x, ay: bullet.y, aSize: Self.bulletSize,
+        bx: brain.x, by: brain.y, bSize: Self.brainSize
+      ) {
+        playerBullet = nil
+        brain.hitsRemaining -= 1
+        if brain.hitsRemaining <= 0 {
+          let imageName = brain.targetEnemyIndex.flatMap { idx in
+            idx < enemies.count ? enemies[idx].imageName : nil
+          } ?? "Hat"
+          deathEffects.append(DeathEffect(x: brain.x, y: brain.y, imageName: imageName, useRed: Bool.random()))
+          score += Self.brainScore
+          robotBrain = nil
+          if activeMechanic == .robot && robotMinion == nil {
+            activeMechanic = nil
+          }
+        } else {
+          robotBrain = brain
+        }
+        Current.soundPlayer.play(.pop, shouldDebounce: false)
+        haptic(.medium)
+      }
+    }
+
+    // 23. Player bullet vs robot minion (arm-targeted hits)
+    if let bullet = playerBullet, var minion = robotMinion {
+      if rectsIntersect(
+        ax: bullet.x, ay: bullet.y, aSize: Self.bulletSize,
+        bx: minion.x, by: minion.y, bSize: Self.robotMinionSize
+      ) {
+        playerBullet = nil
+        let offset = bullet.x - minion.x
+        let hitLeft = offset < -Self.armHitZone && minion.hasLeftArm
+        let hitRight = offset > Self.armHitZone && minion.hasRightArm
+
+        let destroyed: Bool
+        if hitLeft {
+          minion.hasLeftArm = false
+          destroyed = false
+        } else if hitRight {
+          minion.hasRightArm = false
+          destroyed = false
+        } else if !minion.isArmed {
+          destroyed = true
+        } else if minion.hasLeftArm && minion.hasRightArm {
+          if Bool.random() {
+            minion.hasLeftArm = false
+          } else {
+            minion.hasRightArm = false
+          }
+          destroyed = false
+        } else {
+          if minion.hasLeftArm {
+            minion.hasLeftArm = false
+          } else {
+            minion.hasRightArm = false
+          }
+          destroyed = false
+        }
+
+        deathEffects.append(DeathEffect(x: minion.x, y: minion.y, imageName: minion.originalEnemyImageName, useRed: Bool.random()))
+        if destroyed {
+          score += Self.robotMinionScore
+          robotMinion = nil
+          if activeMechanic == .robot && robotBrain == nil {
+            activeMechanic = nil
+          }
+        } else {
+          robotMinion = minion
+        }
+        Current.soundPlayer.play(.pop, shouldDebounce: false)
+        haptic(.medium)
+      }
+    }
+
+    // 24. Robot minion vs player (when diving, shield check)
+    if let minion = robotMinion, minion.isDiving {
+      if rectsIntersect(
+        ax: minion.x, ay: minion.y, aSize: Self.robotMinionSize,
+        bx: playerX, by: playerY, bSize: Self.playerSize
+      ) {
+        if !shieldActive {
+          playerHealth -= Self.healthLossPerHit
+          portalSide = nil
+        }
+        Current.soundPlayer.play(.playerHit, shouldDebounce: false)
+        haptic(.heavy)
       }
     }
   }

@@ -60,9 +60,16 @@ struct GameView: View {
             }
 
             if let bullet = gameState.playerBullet {
-              Text("🇩🇪")
-                .font(.system(size: 20))
-                .position(x: bullet.x, y: bullet.y)
+              if gameState.isRobotActive {
+                Rectangle()
+                  .fill(bullet.useRed ? Color.customRed : Color.customYellow)
+                  .frame(width: 2, height: 12)
+                  .position(x: bullet.x, y: bullet.y)
+              } else {
+                Text("🇩🇪")
+                  .font(.system(size: 20))
+                  .position(x: bullet.x, y: bullet.y)
+              }
             }
 
             if let bullet = gameState.enemyBullet {
@@ -151,6 +158,44 @@ struct GameView: View {
               Text("🔮")
                 .font(.system(size: 25))
                 .position(x: kugel.x, y: kugel.y)
+            }
+
+            if let brain = gameState.robotBrain {
+              Text("🧠")
+                .font(.system(size: 30))
+                .opacity(Double(brain.hitsRemaining) * 0.2 + 0.4)
+                .scaleEffect(x: brain.movingRight ? -1 : 1, y: 1)
+                .position(x: brain.x, y: brain.y)
+
+              if brain.showBolt,
+                 let targetIdx = brain.targetEnemyIndex,
+                 targetIdx < gameState.enemies.count {
+                let enemy = gameState.enemies[targetIdx]
+                let boltAlpha = min(1.0, max(0.0,
+                  Double(brain.lockOnTimer - GameState.boltAppearDelay) / Double(GameState.conversionDelay)))
+                Text("⚡")
+                  .font(.system(size: 20))
+                  .opacity(boltAlpha)
+                  .position(x: (brain.x + enemy.x) / 2, y: (brain.y + enemy.y) / 2)
+              }
+            }
+
+            if let minion = gameState.robotMinion {
+              HStack(spacing: -2) {
+                if minion.hasLeftArm {
+                  Text("🦾")
+                    .font(.system(size: 20))
+                }
+                Text("🤖")
+                  .font(.system(size: 30))
+                if minion.hasRightArm {
+                  Text("🦾")
+                    .font(.system(size: 20))
+                    .scaleEffect(x: -1, y: 1)
+                }
+              }
+              .scaleEffect(minion.isDiving ? 1.3 : 1.0)
+              .position(x: minion.x, y: minion.y)
             }
 
             if let side = gameState.portalSide {

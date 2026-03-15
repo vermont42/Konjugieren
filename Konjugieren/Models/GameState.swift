@@ -5,7 +5,7 @@ import CoreMotion
 import SwiftUI
 
 struct Enemy: Identifiable, Codable {
-  let id = UUID()
+  var id = UUID()
   let row: Int
   let col: Int
   var x: CGFloat
@@ -21,7 +21,7 @@ struct Enemy: Identifiable, Codable {
 }
 
 struct Bullet: Identifiable, Codable {
-  let id = UUID()
+  var id = UUID()
   var x: CGFloat
   var y: CGFloat
   let isPlayerBullet: Bool
@@ -38,7 +38,7 @@ struct Zigzagger: Codable {
 }
 
 struct Coin: Identifiable, Codable {
-  let id = UUID()
+  var id = UUID()
   var x: CGFloat
   var y: CGFloat
 }
@@ -61,14 +61,14 @@ enum PowerUpKind: String, CaseIterable, Codable {
 }
 
 struct PowerUp: Identifiable, Codable {
-  let id = UUID()
+  var id = UUID()
   var x: CGFloat
   var y: CGFloat
   let kind: PowerUpKind
 }
 
 struct Egg: Identifiable, Codable {
-  let id = UUID()
+  var id = UUID()
   var x: CGFloat
   var y: CGFloat
   var velocityY: CGFloat
@@ -76,7 +76,7 @@ struct Egg: Identifiable, Codable {
 }
 
 struct Hatchling: Identifiable, Codable {
-  let id = UUID()
+  var id = UUID()
   var x: CGFloat
   var y: CGFloat
 }
@@ -148,7 +148,7 @@ struct RobotMinion: Codable {
 }
 
 struct Fussball: Identifiable, Codable {
-  let id = UUID()
+  var id = UUID()
   var x: CGFloat
   var y: CGFloat
   var velocityX: CGFloat
@@ -158,20 +158,20 @@ struct Fussball: Identifiable, Codable {
 }
 
 struct WurstSegment: Identifiable, Codable {
-  let id = UUID()
+  var id = UUID()
   var x: CGFloat
   var y: CGFloat
 }
 
 struct WurstChain: Identifiable, Codable {
-  let id = UUID()
+  var id = UUID()
   var segments: [WurstSegment]
   var movingRight: Bool
   var speed: CGFloat
 }
 
 struct PretzelObstacle: Identifiable, Codable {
-  let id = UUID()
+  var id = UUID()
   var x: CGFloat
   var y: CGFloat
   var hitsRemaining: Int = 2
@@ -187,7 +187,7 @@ enum GhostPhase: String, Codable {
 }
 
 struct Ghost: Identifiable, Codable {
-  let id = UUID()
+  var id = UUID()
   var x: CGFloat
   var y: CGFloat
   var phase: GhostPhase = .descending
@@ -195,13 +195,13 @@ struct Ghost: Identifiable, Codable {
 }
 
 struct GoldenDot: Identifiable, Codable {
-  let id = UUID()
+  var id = UUID()
   var x: CGFloat
   var y: CGFloat
 }
 
 struct Kristallkugel: Identifiable, Codable {
-  let id = UUID()
+  var id = UUID()
   var x: CGFloat
   var y: CGFloat
 }

@@ -1,6 +1,6 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
-enum Family: Hashable, CustomStringConvertible {
+enum Family: Hashable {
   case strong(ablautGroup: String, ablautStartIndex: Int, ablautEndIndex: Int)
   case mixed(ablautGroup: String, ablautStartIndex: Int, ablautEndIndex: Int)
   case weak
@@ -25,19 +25,6 @@ enum Family: Hashable, CustomStringConvertible {
       return L.Family.weak
     case .ieren:
       return L.Family.ieren
-    }
-  }
-
-  var description: String {
-    switch self {
-    case .strong(ablautGroup: let ablautGroup, ablautStartIndex: let ablautStartIndex, ablautEndIndex: let ablautEndIndex):
-      return "strong: \(ablautGroup), \(ablautStartIndex), \(ablautEndIndex)"
-    case .mixed(ablautGroup: let ablautGroup, ablautStartIndex: let ablautStartIndex, ablautEndIndex: let ablautEndIndex):
-      return "mixed: \(ablautGroup), \(ablautStartIndex), \(ablautEndIndex)"
-    case .weak:
-      return "weak"
-    case .ieren:
-      return "ieren"
     }
   }
 }

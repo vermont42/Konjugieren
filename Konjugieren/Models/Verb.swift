@@ -2,7 +2,7 @@
 
 import Foundation
 
-struct Verb: Identifiable, Hashable, CustomStringConvertible {
+struct Verb: Identifiable, Hashable {
   @MainActor static var verbs: [String: Verb] = [:]
   static let minVerbLength = 3
   @MainActor private static var cachedAlpha: [Verb]?
@@ -56,17 +56,5 @@ struct Verb: Identifiable, Hashable, CustomStringConvertible {
 
   static func endingIsValid(infinitiv: String) -> Bool {
     ["en", "rn", "ln", "in", "un"].contains(String(infinitiv.suffix(2)))
-  }
-
-  var description: String {
-    var output = infinitiv
-    output += " " + translation
-    output += " " + auxiliary.verb
-    output += " " + family.description
-    output += " " + "\(frequency)"
-    if prefix != .none {
-      output.append(" " + prefix.description)
-    }
-    return output
   }
 }

@@ -2,7 +2,7 @@
 
 import Foundation
 
-struct AblautGroup: Hashable, CustomStringConvertible {
+struct AblautGroup: Hashable {
   @MainActor static var ablautGroups: [String: AblautGroup] = [:]
   let exemplar: String
   var ablauts: [Conjugationgroup: String] = [:]
@@ -20,9 +20,5 @@ struct AblautGroup: Hashable, CustomStringConvertible {
         ablauts[conjugationgroup] = ablaut.lettersToUse
       }
     }
-  }
-
-  var description: String {
-    exemplar + " \(ablauts.count) ablauts"
   }
 }

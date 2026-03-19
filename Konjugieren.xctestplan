@@ -1,0 +1,30 @@
+{
+  "configurations" : [
+    {
+      "id" : "D79B0DE1-A169-4BB6-9BC2-F37E01485C07",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "performanceAntipatternCheckerEnabled" : true,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Konjugieren.xcodeproj",
+      "identifier" : "033FC2842EF3161C00F9EE04",
+      "name" : "Konjugieren"
+    }
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Konjugieren.xcodeproj",
+        "identifier" : "033FC2912EF3161D00F9EE04",
+        "name" : "KonjugierenTests"
+      }
+    }
+  ],
+  "version" : 1
+}

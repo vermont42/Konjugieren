@@ -187,6 +187,6 @@ enum BrowseableFamily: String, CaseIterable, Identifiable {
 
   var ablautGroups: [AblautGroupInfo] {
     guard hasAblautList else { return [] }
-    return AblautGroupInfo.sortedAlphabetically
+    return AblautGroupInfo.allGroups
   }
 }

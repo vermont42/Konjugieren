@@ -1,41 +1,54 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
+import Foundation
+
 struct PrefixMeaning: Identifiable {
   let prefix: String
   let englishMeaning: String
   let pie: String
-  let pieMeaning: String
 
   var id: String { prefix }
 
-  static let separablePrefixes: [PrefixMeaning] = [
-    PrefixMeaning(prefix: "ab-", englishMeaning: "off, away, down", pie: "*h₂epó", pieMeaning: L.PIEMeaning.ab),
-    PrefixMeaning(prefix: "an-", englishMeaning: "at, on, to", pie: "*h₂en", pieMeaning: L.PIEMeaning.an),
-    PrefixMeaning(prefix: "auf-", englishMeaning: "up, open, on", pie: "*upó", pieMeaning: L.PIEMeaning.auf),
-    PrefixMeaning(prefix: "aus-", englishMeaning: "out, from, off", pie: "*úd", pieMeaning: L.PIEMeaning.aus),
-    PrefixMeaning(prefix: "bei-", englishMeaning: "with, near, alongside", pie: "*h₁epi", pieMeaning: L.PIEMeaning.bei),
-    PrefixMeaning(prefix: "ein-", englishMeaning: "in, into", pie: "*h₁én", pieMeaning: L.PIEMeaning.ein),
-    PrefixMeaning(prefix: "fest-", englishMeaning: "firm, fixed, tight", pie: "*pastV", pieMeaning: L.PIEMeaning.fest),
-    PrefixMeaning(prefix: "fort-", englishMeaning: "away, onward, continuing", pie: "*per", pieMeaning: L.PIEMeaning.fort),
-    PrefixMeaning(prefix: "her-", englishMeaning: "toward speaker, hither", pie: "*ḱís", pieMeaning: L.PIEMeaning.her),
-    PrefixMeaning(prefix: "hin-", englishMeaning: "away from speaker, thither", pie: "*ḱís", pieMeaning: L.PIEMeaning.hin),
-    PrefixMeaning(prefix: "hoch-", englishMeaning: "up, high", pie: "*kewk", pieMeaning: L.PIEMeaning.hoch),
-    PrefixMeaning(prefix: "mit-", englishMeaning: "along, with, co-", pie: "*me", pieMeaning: L.PIEMeaning.mit),
-    PrefixMeaning(prefix: "nach-", englishMeaning: "after, following, re-", pie: "*h₂neḱ", pieMeaning: L.PIEMeaning.nach),
-    PrefixMeaning(prefix: "um-", englishMeaning: "around, over, re-", pie: "*h₂m̥bʰi", pieMeaning: L.PIEMeaning.um),
-    PrefixMeaning(prefix: "vor-", englishMeaning: "forward, before, pre-", pie: "*preh₂", pieMeaning: L.PIEMeaning.vor),
-    PrefixMeaning(prefix: "zu-", englishMeaning: "to, toward, closed", pie: "*doh₁", pieMeaning: L.PIEMeaning.zu),
-    PrefixMeaning(prefix: "zurück-", englishMeaning: "back, returning", pie: "*doh₁ + *(s)krewk", pieMeaning: L.PIEMeaning.zurueck),
-    PrefixMeaning(prefix: "zusammen-", englishMeaning: "together, combined", pie: "*doh₁ + *sem", pieMeaning: L.PIEMeaning.zusammen)
+  var pieMeaning: String {
+    let key = String(prefix.dropLast())
+    return NSLocalizedString("PIEMeaning.\(key)", comment: "")
+  }
+
+  private static let separableData: [(String, String, String)] = [
+    ("ab-", "off, away, down", "*h₂epó"),
+    ("an-", "at, on, to", "*h₂en"),
+    ("auf-", "up, open, on", "*upó"),
+    ("aus-", "out, from, off", "*úd"),
+    ("bei-", "with, near, alongside", "*h₁epi"),
+    ("ein-", "in, into", "*h₁én"),
+    ("fest-", "firm, fixed, tight", "*pastV"),
+    ("fort-", "away, onward, continuing", "*per"),
+    ("her-", "toward speaker, hither", "*ḱís"),
+    ("hin-", "away from speaker, thither", "*ḱís"),
+    ("hoch-", "up, high", "*kewk"),
+    ("mit-", "along, with, co-", "*me"),
+    ("nach-", "after, following, re-", "*h₂neḱ"),
+    ("um-", "around, over, re-", "*h₂m̥bʰi"),
+    ("vor-", "forward, before, pre-", "*preh₂"),
+    ("zu-", "to, toward, closed", "*doh₁"),
+    ("zurück-", "back, returning", "*doh₁ + *(s)krewk"),
+    ("zusammen-", "together, combined", "*doh₁ + *sem")
   ]
 
-  static let inseparablePrefixes: [PrefixMeaning] = [
-    PrefixMeaning(prefix: "be-", englishMeaning: "makes verb transitive", pie: "*h₁epi", pieMeaning: L.PIEMeaning.be),
-    PrefixMeaning(prefix: "emp-", englishMeaning: "variant of ent- (receiving)", pie: "*h₂ent-", pieMeaning: L.PIEMeaning.emp),
-    PrefixMeaning(prefix: "ent-", englishMeaning: "away, un-, de-", pie: "*h₂ent-", pieMeaning: L.PIEMeaning.ent),
-    PrefixMeaning(prefix: "er-", englishMeaning: "achievement, completion", pie: "*úd", pieMeaning: L.PIEMeaning.er),
-    PrefixMeaning(prefix: "ge-", englishMeaning: "collective, completion (various)", pie: "*ḱóm", pieMeaning: L.PIEMeaning.ge),
-    PrefixMeaning(prefix: "ver-", englishMeaning: "away, wrongly, completion", pie: "*per", pieMeaning: L.PIEMeaning.ver),
-    PrefixMeaning(prefix: "zer-", englishMeaning: "to pieces, apart", pie: "*dwís", pieMeaning: L.PIEMeaning.zer)
+  private static let inseparableData: [(String, String, String)] = [
+    ("be-", "makes verb transitive", "*h₁epi"),
+    ("emp-", "variant of ent- (receiving)", "*h₂ent-"),
+    ("ent-", "away, un-, de-", "*h₂ent-"),
+    ("er-", "achievement, completion", "*úd"),
+    ("ge-", "collective, completion (various)", "*ḱóm"),
+    ("ver-", "away, wrongly, completion", "*per"),
+    ("zer-", "to pieces, apart", "*dwís")
   ]
+
+  private static func fromData(_ data: [(String, String, String)]) -> [PrefixMeaning] {
+    data.map { PrefixMeaning(prefix: $0.0, englishMeaning: $0.1, pie: $0.2) }
+  }
+
+  static let separablePrefixes: [PrefixMeaning] = fromData(separableData)
+  static let inseparablePrefixes: [PrefixMeaning] = fromData(inseparableData)
 }

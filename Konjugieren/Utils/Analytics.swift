@@ -6,27 +6,27 @@ enum ParameterKey: String {
 }
 
 enum AnalyticsName: String {
-  case completeQuiz = "complete.quiz"
-  case completeWave = "complete.wave"
-  case loseGame = "lose.game"
-  case quitQuiz = "quit.quiz"
-  case startGame = "start.game"
-  case startQuiz = "start.quiz"
-  case tapDeleteChatHistory = "tap.deleteChatHistory"
-  case tapExplainError = "tap.explainError"
-  case tapPlayGame = "tap.playGame"
-  case tapSendTutorMessage = "tap.sendTutorMessage"
-  case tapShowOnboarding = "tap.showOnboarding"
-  case tapViewLeaderboard = "tap.viewLeaderboard"
-  case viewFamilyBrowseView = "view.FamilyBrowseView"
-  case viewFamilyDetailView = "view.FamilyDetailView"
-  case viewInfoBrowseView = "view.InfoBrowseView"
-  case viewInfoView = "view.InfoView"
-  case viewQuizView = "view.QuizView"
-  case viewSettingsView = "view.SettingsView"
-  case viewTutorView = "view.TutorView"
-  case viewVerbBrowseView = "view.VerbBrowseView"
-  case viewVerbView = "view.VerbView"
+  case completeQuiz
+  case completeWave
+  case loseGame
+  case quitQuiz
+  case startGame
+  case startQuiz
+  case tapDeleteChatHistory
+  case tapExplainError
+  case tapPlayGame
+  case tapSendTutorMessage
+  case tapShowOnboarding
+  case tapViewLeaderboard
+  case viewFamilyBrowseView
+  case viewFamilyDetailView
+  case viewInfoBrowseView
+  case viewInfoView
+  case viewQuizView
+  case viewSettingsView
+  case viewTutorView
+  case viewVerbBrowseView
+  case viewVerbView
 }
 
 protocol Analytics {

@@ -15,6 +15,7 @@ enum AnalyticsName: String {
   case tapDeleteChatHistory
   case tapExplainError
   case tapPlayGame
+  case tapRateOrReview
   case tapSendTutorMessage
   case tapShowOnboarding
   case tapViewLeaderboard

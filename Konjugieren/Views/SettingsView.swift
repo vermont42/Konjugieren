@@ -5,6 +5,7 @@ import TipKit
 
 struct SettingsView: View {
   @State private var hasChatHistory = false
+  @State private var rateReviewDescription = ""
   @State private var showingOnboarding = false
   @State private var showingGame = false
   private let changeDifficultyTip = ChangeDifficultyTip()
@@ -192,6 +193,20 @@ struct SettingsView: View {
                 .settingsLabel()
             }
 
+            Spacer(minLength: Layout.tripleDefaultSpacing)
+
+            Button(L.Settings.rateOrReview) {
+              UIApplication.shared.open(RatingsFetcher.reviewURL)
+              Current.analytics.signal(name: .tapRateOrReview)
+            }
+            .funButton()
+            .frame(maxWidth: .infinity)
+
+            if !rateReviewDescription.isEmpty {
+              Text(rateReviewDescription)
+                .settingsLabel()
+            }
+
             Spacer(minLength: Layout.doubleDefaultSpacing)
           }
         }
@@ -201,6 +216,11 @@ struct SettingsView: View {
         }
         .onChange(of: settings.quizDifficulty) {
           changeDifficultyTip.invalidate(reason: .actionPerformed)
+        }
+        .task {
+          if let description = await RatingsFetcher.fetchRatingsDescription(session: Current.session) {
+            rateReviewDescription = description
+          }
         }
       }
       .navigationTitle(L.Navigation.settings)

@@ -33,6 +33,20 @@ enum L {
     }
   }
 
+  enum RatingsFetcher {
+    static var noRating: String {
+      String(localized: "RatingsFetcher.noRating")
+    }
+
+    static var oneRating: String {
+      String(localized: "RatingsFetcher.oneRating")
+    }
+
+    static func multipleRatings(count: Int) -> String {
+      String(localized: "RatingsFetcher.multipleRatings \(count)")
+    }
+  }
+
   enum Navigation {
     static var verbs: String {
       String(localized: "Navigation.verbs")
@@ -414,6 +428,10 @@ enum L {
 
     static var appIconDescription: String {
       String(localized: "Settings.appIconDescription")
+    }
+
+    static var rateOrReview: String {
+      String(localized: "Settings.rateOrReview")
     }
   }
 

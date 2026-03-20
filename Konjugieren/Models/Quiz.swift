@@ -311,6 +311,7 @@ class Quiz {
     Task {
       await Current.gameCenter.submitScore(finalScore)
     }
+    Current.reviewPrompter.promptableActionHappened()
   }
 
   private func announceQuestion() {

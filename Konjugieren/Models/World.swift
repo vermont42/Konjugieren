@@ -12,6 +12,7 @@ class World {
   var gameCenter: GameCenter
   let getterSetter: GetterSetter
   var languageModelService: LanguageModelService
+  var reviewPrompter: ReviewPrompter
   var soundPlayer: SoundPlayer
   var utterer: Utterer
   var fatalError: FatalError
@@ -23,11 +24,12 @@ class World {
   var selectedTab: TabSelection = .verbs
   var shouldNavigateToTutor = false
 
-  init(settings: Settings, gameCenter: GameCenter, getterSetter: GetterSetter, languageModelService: LanguageModelService, soundPlayer: SoundPlayer, utterer: Utterer, fatalError: FatalError, analytics: Analytics, session: URLSession) {
+  init(settings: Settings, gameCenter: GameCenter, getterSetter: GetterSetter, languageModelService: LanguageModelService, reviewPrompter: ReviewPrompter, soundPlayer: SoundPlayer, utterer: Utterer, fatalError: FatalError, analytics: Analytics, session: URLSession) {
     self.settings = settings
     self.gameCenter = gameCenter
     self.getterSetter = getterSetter
     self.languageModelService = languageModelService
+    self.reviewPrompter = reviewPrompter
     self.soundPlayer = soundPlayer
     self.utterer = utterer
     self.fatalError = fatalError
@@ -58,13 +60,13 @@ class World {
         return LanguageModelServiceDummy()
       }
     }()
-    return World(settings: settings, gameCenter: GameCenterReal(), getterSetter: getterSetter, languageModelService: languageModelService, soundPlayer: SoundPlayerReal(), utterer: UttererReal(), fatalError: FatalErrorReal(), analytics: AnalyticsReal(), session: .shared)
+    return World(settings: settings, gameCenter: GameCenterReal(), getterSetter: getterSetter, languageModelService: languageModelService, reviewPrompter: ReviewPrompterReal(settings: settings), soundPlayer: SoundPlayerReal(), utterer: UttererReal(), fatalError: FatalErrorReal(), analytics: AnalyticsReal(), session: .shared)
   }()
 
   static let unitTest: World = {
     let getterSetter = GetterSetterFake()
     let settings = Settings(getterSetter: getterSetter)
-    return World(settings: settings, gameCenter: GameCenterDummy(), getterSetter: getterSetter, languageModelService: LanguageModelServiceDummy(), soundPlayer: SoundPlayerDummy(), utterer: UttererDummy(), fatalError: FatalErrorSpy(), analytics: AnalyticsSpy(), session: .stubSession(ratingsCount: 1))
+    return World(settings: settings, gameCenter: GameCenterDummy(), getterSetter: getterSetter, languageModelService: LanguageModelServiceDummy(), reviewPrompter: ReviewPrompterDummy(), soundPlayer: SoundPlayerDummy(), utterer: UttererDummy(), fatalError: FatalErrorSpy(), analytics: AnalyticsSpy(), session: .stubSession(ratingsCount: 1))
   }()
 
   static let viewVerbActivityType = "biz.joshadams.Konjugieren.viewVerb"

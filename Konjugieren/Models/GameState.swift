@@ -2120,8 +2120,12 @@ class GameState {
   private func persistHighScore() {
     finalScore = computeFinalScore()
     if finalScore > highScore {
+      let isFirstGame = highScore == 0
       highScore = finalScore
       Current.settings.gameHighScore = finalScore
+      if !isFirstGame {
+        Current.reviewPrompter.promptableActionHappened()
+      }
     }
   }
 

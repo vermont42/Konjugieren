@@ -74,7 +74,10 @@ struct VerbBrowseView: View {
         .pickerStyle(.segmented)
         .padding()
       }
-      .onAppear { Current.analytics.signal(name: .viewVerbBrowseView) }
+      .onAppear {
+        Current.analytics.signal(name: .viewVerbBrowseView)
+        Current.reviewPrompter.promptableActionHappened()
+      }
       .navigationTitle(L.Navigation.verbs)
       .navigationDestination(for: Verb.self) { verb in
         VerbView(verb: verb)

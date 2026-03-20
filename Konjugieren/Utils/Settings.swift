@@ -93,6 +93,28 @@ class Settings {
   static let gameHighScoreKey = "gameHighScore"
   static let gameHighScoreDefault: Int = 0
 
+  var promptActionCount: Int = promptActionCountDefault {
+    didSet {
+      if promptActionCount != oldValue {
+        getterSetter.set(key: Settings.promptActionCountKey, value: "\(promptActionCount)")
+      }
+    }
+  }
+  static let promptActionCountKey = "promptActionCount"
+  static let promptActionCountDefault: Int = 0
+
+  var lastReviewPromptDate: Date? = lastReviewPromptDateDefault {
+    didSet {
+      if lastReviewPromptDate != oldValue {
+        if let date = lastReviewPromptDate {
+          getterSetter.set(key: Settings.lastReviewPromptDateKey, value: "\(date.timeIntervalSince1970)")
+        }
+      }
+    }
+  }
+  static let lastReviewPromptDateKey = "lastReviewPromptDate"
+  static let lastReviewPromptDateDefault: Date? = nil
+
   private func setAppIcon(_ icon: AppIcon) {
     guard UIApplication.shared.supportsAlternateIcons else { return }
     UIApplication.shared.setAlternateIconName(icon.alternateIconName) { error in
@@ -121,6 +143,16 @@ class Settings {
       gameHighScore = value
     } else {
       getterSetter.set(key: Settings.gameHighScoreKey, value: "\(gameHighScore)")
+    }
+
+    if let promptActionCountString = getterSetter.get(key: Settings.promptActionCountKey), let value = Int(promptActionCountString) {
+      promptActionCount = value
+    } else {
+      getterSetter.set(key: Settings.promptActionCountKey, value: "\(promptActionCount)")
+    }
+
+    if let lastReviewPromptDateString = getterSetter.get(key: Settings.lastReviewPromptDateKey), let interval = Double(lastReviewPromptDateString) {
+      lastReviewPromptDate = Date(timeIntervalSince1970: interval)
     }
   }
 

@@ -140,12 +140,20 @@ private struct EnglishPronunciation: ViewModifier {
 private struct SpeakOnTap: ViewModifier {
   let text: String
   let localeString: String
+  @State private var isSpeaking = false
 
   func body(content: Content) -> some View {
     content
+      .background(Color.customYellow.opacity(isSpeaking ? 0.15 : 0))
+      .animation(.easeOut(duration: 0.15), value: isSpeaking)
       .onTapGesture {
         guard !UIAccessibility.isVoiceOverRunning else { return }
         Current.utterer.utter(text, localeString: localeString)
+        isSpeaking = true
+        Task { @MainActor in
+          try? await Task.sleep(for: .milliseconds(300))
+          isSpeaking = false
+        }
       }
   }
 }

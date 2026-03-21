@@ -37,6 +37,7 @@ struct VerbView: View {
           Text(verb.infinitiv)
             .font(.largeTitle)
             .fontWeight(.bold)
+            .fontDesign(.serif)
             .minimumScaleFactor(0.5)
             .lineLimit(1)
             .accessibilityAddTraits(UserLocale.isGerman ? .isHeader : [])
@@ -45,38 +46,51 @@ struct VerbView: View {
 
           Text(verb.translation)
             .font(.title2)
+            .fontDesign(.serif)
             .englishPronunciation()
             .speakOnTap(verb.translation, localeString: UttererLocale.english)
 
-          HStack(spacing: 16) {
-            Label(verb.family.displayName, systemImage: "tag")
-              .accessibilityLabel(Text(verbatim: verb.family.displayName))
-              .englishPronunciation()
-            Label {
-              Text(verbatim: verb.auxiliary.verb)
-            } icon: {
-              Image(systemName: "arrow.triangle.branch")
+          HStack(spacing: 8) {
+            metadataPill {
+              Label(verb.family.displayName, systemImage: "tag")
+                .accessibilityLabel(Text(verbatim: verb.family.displayName))
+                .englishPronunciation()
             }
-            .accessibilityLabel(Text(verbatim: verb.auxiliary.verb))
-            .germanPronunciation()
-            Label("#\(verb.frequency)", systemImage: verb.frequencyIcon)
-              .accessibilityLabel(Text(verbatim: "#\(verb.frequency)"))
+            metadataPill {
+              Label {
+                Text(verbatim: verb.auxiliary.verb)
+              } icon: {
+                Image(systemName: "arrow.triangle.branch")
+              }
+              .accessibilityLabel(Text(verbatim: verb.auxiliary.verb))
+              .germanPronunciation()
+            }
+            metadataPill {
+              Label("#\(verb.frequency)", systemImage: verb.frequencyIcon)
+                .accessibilityLabel(Text(verbatim: "#\(verb.frequency)"))
+            }
           }
           .font(.subheadline)
 
           if verb.prefix != .none || verb.ablautGroup != nil {
-            HStack(spacing: 16) {
+            HStack(spacing: 8) {
               if case .separable = verb.prefix {
-                Label(L.BrowseableFamily.separable, systemImage: "arrow.left.arrow.right")
+                metadataPill {
+                  Label(L.BrowseableFamily.separable, systemImage: "arrow.left.arrow.right")
+                }
               } else if case .inseparable = verb.prefix {
-                Label(L.BrowseableFamily.inseparable, systemImage: "link")
+                metadataPill {
+                  Label(L.BrowseableFamily.inseparable, systemImage: "link")
+                }
               }
 
               if let ablautGroup = verb.ablautGroup {
-                Label(ablautGroup, systemImage: "figure.and.child.holdinghands")
-                  .accessibilityLabel(Text(verbatim: ablautGroup))
-                  .germanPronunciation()
-                  .speakOnTap(ablautGroup)
+                metadataPill {
+                  Label(ablautGroup, systemImage: "figure.and.child.holdinghands")
+                    .accessibilityLabel(Text(verbatim: ablautGroup))
+                    .germanPronunciation()
+                    .speakOnTap(ablautGroup)
+                }
               }
             }
             .font(.subheadline)
@@ -183,6 +197,14 @@ struct VerbView: View {
     conjugationSection(for: Conjugationgroup.futurKonjunktivII)
   }
 
+  private func metadataPill<Content: View>(@ViewBuilder content: () -> Content) -> some View {
+    content()
+      .padding(.horizontal, 8)
+      .padding(.vertical, 4)
+      .background(Color.customYellow.opacity(0.08))
+      .clipShape(Capsule())
+  }
+
   private func conjugate(_ group: Conjugationgroup) -> String {
     switch Conjugator.conjugate(infinitiv: verb.infinitiv, conjugationgroup: group) {
     case .success(let form):
@@ -259,7 +281,8 @@ struct ConjugationSectionView: View {
   var body: some View {
     VStack(alignment: .leading, spacing: 8) {
       Text(title)
-        .font(.headline)
+        .font(.subheadline.smallCaps().weight(.semibold))
+        .fontDesign(.serif)
         .foregroundStyle(.primary)
         .accessibilityAddTraits(.isHeader)
         .germanPronunciation(forReal: titleIsGerman)
@@ -283,6 +306,15 @@ struct ConjugationSectionView: View {
       }
       .padding(.leading, 8)
       .germanPronunciation()
+    }
+    .padding()
+    .background(Color(.secondarySystemBackground).opacity(0.5))
+    .clipShape(RoundedRectangle(cornerRadius: 12))
+    .overlay(alignment: .leading) {
+      Rectangle()
+        .fill(.customYellow.opacity(0.3))
+        .frame(width: 2)
+        .clipShape(RoundedRectangle(cornerRadius: 1))
     }
   }
 }

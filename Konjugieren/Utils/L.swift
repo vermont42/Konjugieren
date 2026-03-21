@@ -95,6 +95,14 @@ enum L {
     static var searchPrompt: String {
       String(localized: "VerbBrowse.searchPrompt")
     }
+
+    static var noVerbsFound: String {
+      String(localized: "VerbBrowse.noVerbsFound")
+    }
+
+    static func verbCount(_ count: Int) -> String {
+      String(localized: "VerbBrowse.verbCount.\(count)")
+    }
   }
 
   enum SearchScope {

@@ -114,6 +114,7 @@ struct OnboardingView: View {
         }
       }
     }
+    .sensoryFeedback(.impact(weight: .light), trigger: currentPage)
     .onChange(of: currentPage) { oldValue, newValue in
       if newValue == lastPageTag {
         withAnimation(reduceMotion ? nil : OnboardingView.entranceAnimation) {
@@ -157,6 +158,7 @@ private struct OnboardingPageView: View {
   @State private var showingSheet = false
   @State private var contentOffset: CGFloat = 100
   @State private var contentOpacity: Double = 0
+  @State private var bounceValue = 0
 
   init(
     symbolName: String,
@@ -189,6 +191,7 @@ private struct OnboardingPageView: View {
       Image(systemName: symbolName)
         .font(.system(size: 80))
         .foregroundStyle(.customYellow)
+        .symbolEffect(.bounce, value: bounceValue)
 
       Text(title)
         .headingLabel()
@@ -229,6 +232,7 @@ private struct OnboardingPageView: View {
     .offset(y: animateContent ? contentOffset : 0)
     .opacity(animateContent ? contentOpacity : 1)
     .onAppear {
+      bounceValue += 1
       if animateContent {
         withAnimation(reduceMotion ? nil : OnboardingView.entranceAnimation) {
           contentOffset = 0

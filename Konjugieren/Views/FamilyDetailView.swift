@@ -301,9 +301,11 @@ struct AblautGroupHeader: View {
           .font(.subheadline)
           .foregroundStyle(.secondary)
 
-        Image(systemName: isExpanded ? "chevron.down" : "chevron.right")
+        Image(systemName: "chevron.right")
           .font(.caption)
           .foregroundStyle(.secondary)
+          .rotationEffect(.degrees(isExpanded ? 90 : 0))
+          .animation(.easeInOut(duration: 0.2), value: isExpanded)
           .accessibilityHidden(true)
       }
 

@@ -35,26 +35,40 @@ struct VerbBrowseView: View {
             TipView(tryQuizTip)
               .padding(.horizontal)
 
-            if sizeClass == .regular {
-              LazyVGrid(columns: [GridItem(.adaptive(minimum: Layout.verbGridMinimum))], spacing: 0) {
-                ForEach(filteredVerbs) { verb in
-                  VerbGridCell(verb: verb) { navigationPath.append(verb) }
-                }
-              }
-              .padding(.horizontal)
+            if filteredVerbs.isEmpty {
+              ContentUnavailableView(L.VerbBrowse.noVerbsFound, systemImage: "magnifyingglass")
             } else {
-              LazyVStack(spacing: 0) {
-                ForEach(filteredVerbs) { verb in
-                  VerbRowView(verb: verb) { navigationPath.append(verb) }
+              Text(L.VerbBrowse.verbCount(filteredVerbs.count))
+                .font(.caption.smallCaps())
+                .foregroundStyle(.secondary)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal)
+                .padding(.top, Layout.defaultSpacing)
 
-                  Divider()
-                    .padding(.leading)
+              if sizeClass == .regular {
+                LazyVGrid(columns: [GridItem(.adaptive(minimum: Layout.verbGridMinimum))], spacing: 0) {
+                  ForEach(filteredVerbs) { verb in
+                    VerbGridCell(verb: verb) { navigationPath.append(verb) }
+                  }
+                }
+                .padding(.horizontal)
+              } else {
+                LazyVStack(spacing: 0) {
+                  ForEach(Array(filteredVerbs.enumerated()), id: \.element.id) { index, verb in
+                    VerbRowView(verb: verb) { navigationPath.append(verb) }
+                      .background(index.isMultiple(of: 2) ? Color.clear : Color.customYellow.opacity(0.03))
+
+                    Divider()
+                      .padding(.leading)
+                  }
                 }
               }
             }
           }
           .onChange(of: sortOrder) {
-            updateSortedVerbs()
+            withAnimation(.easeInOut(duration: 0.3)) {
+              updateSortedVerbs()
+            }
             Task { @MainActor in
               if let firstVerb = sortedVerbs.first {
                 proxy.scrollTo(firstVerb.id, anchor: .top)
@@ -74,6 +88,7 @@ struct VerbBrowseView: View {
         .pickerStyle(.segmented)
         .padding()
       }
+      .sensoryFeedback(.selection, trigger: sortOrder)
       .onAppear {
         Current.analytics.signal(name: .viewVerbBrowseView)
         Current.reviewPrompter.promptableActionHappened()
@@ -139,12 +154,20 @@ struct VerbRowView: View {
 
       Spacer()
 
-      verbFamilyText(verb: verb, navigate: navigate)
+      VStack(alignment: .trailing, spacing: 4) {
+        verbFamilyText(verb: verb, navigate: navigate)
+        Text("#\(verb.frequency)")
+          .font(.caption.monospacedDigit())
+          .foregroundStyle(.secondary)
+      }
     }
     .contentShape(Rectangle())
     .padding(.horizontal)
     .padding(.vertical, 12)
     .onTapGesture { navigate() }
+    .scrollTransition(.animated) { content, phase in
+      content.opacity(1 - abs(phase.value) * 0.15)
+    }
   }
 }
 

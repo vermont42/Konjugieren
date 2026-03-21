@@ -14,6 +14,7 @@ struct InfoView: View {
         VStack(alignment: .leading, spacing: 0) {
           Text(info.heading)
             .font(.largeTitle.bold())
+            .fontDesign(.serif)
             .foregroundStyle(.customYellow)
             .multilineTextAlignment(.center)
             .fixedSize(horizontal: false, vertical: true)
@@ -30,18 +31,31 @@ struct InfoView: View {
               .frame(width: 270)
               .frame(maxWidth: .infinity)
               .accessibilityLabel(accessibilityLabel)
-              .padding(.bottom, 16)
+              .scrollTransition { content, phase in
+                content.scaleEffect(1 + phase.value * 0.05)
+              }
+              .padding(.bottom, 4)
           case .sfSymbol(let name):
             Image(systemName: name)
               .font(.system(size: 60))
               .foregroundStyle(.customYellow)
               .frame(maxWidth: .infinity)
               .accessibilityHidden(true)
-              .padding(.bottom, 16)
+              .padding(.bottom, 4)
           }
 
+          HStack(spacing: 6) {
+            Circle().fill(.black).frame(width: 4, height: 4)
+            Circle().fill(.customRed).frame(width: 4, height: 4)
+            Circle().fill(.customYellow).frame(width: 4, height: 4)
+          }
+          .frame(maxWidth: .infinity)
+          .padding(.bottom, 12)
+          .accessibilityHidden(true)
+
           RichTextView(blocks: info.richTextBlocks)
-            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+            .frame(minWidth: 0, maxWidth: 680, alignment: .leading)
+            .frame(maxWidth: .infinity, alignment: .leading)
         }
         .padding(.leading, Layout.doubleDefaultSpacing)
         .padding(.trailing, Layout.doubleDefaultSpacing)

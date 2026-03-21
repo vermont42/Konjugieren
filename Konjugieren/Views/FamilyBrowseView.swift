@@ -97,6 +97,9 @@ struct FamilyRowView: View {
     .padding(.horizontal)
     .padding(.vertical, 12)
     .accessibilityElement(children: .combine)
+    .scrollTransition(.animated) { content, phase in
+      content.opacity(1 - abs(phase.value) * 0.15)
+    }
   }
 }
 
@@ -159,14 +162,14 @@ private struct FamilyShowcaseCard: View {
             .foregroundStyle(.customYellow)
             .padding(.horizontal, Layout.defaultSpacing)
             .padding(.vertical, 4)
-            .background(Color.white.opacity(0.08))
+            .background(Color.customYellow.opacity(0.08))
             .clipShape(Capsule())
         }
       }
     }
     .padding()
     .frame(maxWidth: .infinity, alignment: .leading)
-    .background(Color.white.opacity(0.05))
+    .background(LinearGradient(colors: [.customYellow.opacity(0.05), .clear], startPoint: .topLeading, endPoint: .bottomTrailing))
     .clipShape(RoundedRectangle(cornerRadius: 12))
     .contentShape(Rectangle())
     .accessibilityElement(children: .combine)
@@ -210,7 +213,7 @@ private struct DecorationImageCard: View {
       .scaledToFit()
       .padding(Layout.tripleDefaultSpacing)
       .frame(maxWidth: .infinity, maxHeight: .infinity)
-      .background(Color.white.opacity(0.05))
+      .background(LinearGradient(colors: [.customYellow.opacity(0.05), .clear], startPoint: .topLeading, endPoint: .bottomTrailing))
       .clipShape(RoundedRectangle(cornerRadius: 12))
       .accessibilityHidden(true)
   }

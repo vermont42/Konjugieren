@@ -73,6 +73,12 @@ struct TutorView: View {
               ForEach(messages) { message in
                 messageBubble(message)
                   .id(message.id)
+                  .transition(.move(edge: .bottom).combined(with: .opacity))
+              }
+
+              if isGenerating {
+                typingIndicator
+                  .id("typing")
               }
             }
             .padding(Layout.doubleDefaultSpacing)
@@ -246,6 +252,31 @@ struct TutorView: View {
     }
   }
 
+  private var typingIndicator: some View {
+    HStack {
+      HStack(spacing: 4) {
+        ForEach(0..<3, id: \.self) { index in
+          Circle()
+            .fill(Color.secondary)
+            .frame(width: 6, height: 6)
+            .opacity(0.5)
+            .phaseAnimator([false, true], trigger: isGenerating) { content, phase in
+              content.offset(y: phase ? -4 : 0)
+            } animation: { _ in
+              .easeInOut(duration: 0.4).delay(Double(index) * 0.15)
+            }
+        }
+      }
+      .padding(Layout.defaultSpacing + 4)
+      .background(
+        RoundedRectangle(cornerRadius: 12)
+          .fill(Color(.secondarySystemBackground))
+          .shadow(radius: 1)
+      )
+      Spacer(minLength: 60)
+    }
+  }
+
   private func messageBubble(_ message: TutorMessage) -> some View {
     HStack {
       if message.role == .user {
@@ -257,7 +288,7 @@ struct TutorView: View {
         .padding(Layout.defaultSpacing + 4)
         .background(
           RoundedRectangle(cornerRadius: 12)
-            .fill(message.role == .user ? Color.accentColor : Color.customBackground)
+            .fill(message.role == .user ? Color.accentColor : Color(.secondarySystemBackground))
             .shadow(radius: 1)
         )
         .fixedSize(horizontal: false, vertical: true)

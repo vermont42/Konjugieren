@@ -26,201 +26,182 @@ struct SettingsView: View {
         Color.customBackground
           .ignoresSafeArea()
 
-        VStack(alignment: .leading) {
-          ScrollView(.vertical) {
-            Text(L.Settings.conjugationgroupLangHeading)
-              .subheadingLabel()
+        ScrollView(.vertical) {
+          VStack(alignment: .leading, spacing: Layout.doubleDefaultSpacing) {
+            settingsCard {
+              settingSection(
+                heading: L.Settings.conjugationgroupLangHeading,
+                description: L.Settings.conjugationgroupLangDescription
+              ) {
+                Picker(L.Settings.conjugationgroupLangHeading, selection: $settings.conjugationgroupLang) {
+                  ForEach(ConjugationgroupLang.allCases, id: \.self) { conjugationgroupLang in
+                    Text(conjugationgroupLang.localizedConjugationgroupLang).tag(conjugationgroupLang)
+                  }
+                }
+                .pickerStyle(.segmented)
+              }
 
-            Picker(L.Settings.conjugationgroupLangHeading, selection: $settings.conjugationgroupLang) {
-              ForEach(ConjugationgroupLang.allCases, id: \.self) { conjugationgroupLang in
-                Text(conjugationgroupLang.localizedConjugationgroupLang).tag(conjugationgroupLang)
+              gradientDivider
+
+              settingSection(
+                heading: L.Settings.thirdPersonPronounGenderHeading,
+                description: L.Settings.thirdPersonPronounGenderDescription
+              ) {
+                Picker(L.Settings.thirdPersonPronounGenderHeading, selection: $settings.thirdPersonPronounGender) {
+                  ForEach(ThirdPersonPronounGender.allCases, id: \.self) { thirdPersonPronounGender in
+                    Text(thirdPersonPronounGender.localizedThirdPersonPronounGender).tag(thirdPersonPronounGender)
+                  }
+                }
+                .pickerStyle(.segmented)
+              }
+
+              gradientDivider
+
+              settingSection(
+                heading: L.Settings.searchScopeHeading,
+                description: L.Settings.searchScopeDescription
+              ) {
+                Picker(L.Settings.searchScopeHeading, selection: $settings.searchScope) {
+                  ForEach(SearchScope.allCases, id: \.self) { searchScope in
+                    Text(searchScope.localizedSearchScope).tag(searchScope)
+                  }
+                }
+                .pickerStyle(.segmented)
               }
             }
-            .segmentedPicker()
 
-            Text(L.Settings.conjugationgroupLangDescription)
-              .settingsLabel()
+            settingsCard {
+              settingSection(
+                heading: L.Settings.quizDifficultyHeading,
+                description: L.Settings.quizDifficultyDescription,
+                tip: changeDifficultyTip
+              ) {
+                Picker(L.Settings.quizDifficultyHeading, selection: $settings.quizDifficulty) {
+                  ForEach(QuizDifficulty.allCases, id: \.self) { quizDifficulty in
+                    Text(quizDifficulty.localizedQuizDifficulty).tag(quizDifficulty)
+                  }
+                }
+                .pickerStyle(.segmented)
+              }
 
-            Spacer(minLength: Layout.tripleDefaultSpacing)
+              gradientDivider
 
-            Text(L.Settings.thirdPersonPronounGenderHeading)
-              .subheadingLabel()
-
-            Picker(L.Settings.thirdPersonPronounGenderHeading, selection: $settings.thirdPersonPronounGender) {
-              ForEach(ThirdPersonPronounGender.allCases, id: \.self) { thirdPersonPronounGender in
-                Text(thirdPersonPronounGender.localizedThirdPersonPronounGender).tag(thirdPersonPronounGender)
+              settingSection(
+                heading: L.Settings.audioFeedbackHeading,
+                description: L.Settings.audioFeedbackDescription
+              ) {
+                Picker(L.Settings.audioFeedbackHeading, selection: $settings.audioFeedback) {
+                  ForEach(AudioFeedback.allCases, id: \.self) { audioFeedback in
+                    Text(audioFeedback.localizedAudioFeedback).tag(audioFeedback)
+                  }
+                }
+                .pickerStyle(.segmented)
               }
             }
-            .segmentedPicker()
 
-            Text(L.Settings.thirdPersonPronounGenderDescription)
-              .settingsLabel()
-
-            Spacer(minLength: Layout.tripleDefaultSpacing)
-
-            Text(L.Settings.quizDifficultyHeading)
-              .subheadingLabel()
-              .popoverTip(changeDifficultyTip)
-
-            Picker(L.Settings.quizDifficultyHeading, selection: $settings.quizDifficulty) {
-              ForEach(QuizDifficulty.allCases, id: \.self) { quizDifficulty in
-                Text(quizDifficulty.localizedQuizDifficulty).tag(quizDifficulty)
+            settingsCard {
+              settingSection(
+                heading: L.Settings.appIconHeading,
+                description: L.Settings.appIconDescription
+              ) {
+                Picker(L.Settings.appIconHeading, selection: $settings.appIcon) {
+                  ForEach(AppIcon.allCases, id: \.self) { appIcon in
+                    Text(appIcon.localizedAppIcon).tag(appIcon)
+                  }
+                }
+                .pickerStyle(.segmented)
               }
             }
-            .segmentedPicker()
 
-            Text(L.Settings.quizDifficultyDescription)
-              .settingsLabel()
+            settingsCard {
+              VStack(spacing: Layout.doubleDefaultSpacing) {
+                if Current.gameCenter.isAuthenticated {
+                  Button(L.GameCenter.viewLeaderboard) {
+                    Current.gameCenter.showLeaderboard()
+                    Current.analytics.signal(name: .tapViewLeaderboard)
+                  }
+                  .funButton()
+                  .frame(maxWidth: .infinity)
+                  .accessibilityHint(L.Accessibility.leaderboardHint)
 
-            Spacer(minLength: Layout.tripleDefaultSpacing)
+                  Text(L.GameCenter.viewLeaderboardDescription)
+                    .font(.callout)
+                    .foregroundStyle(.customForeground)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                }
 
-            Text(L.Settings.audioFeedbackHeading)
-              .subheadingLabel()
+                Button(L.Onboarding.showOnboarding) {
+                  showingOnboarding = true
+                  Current.analytics.signal(name: .tapShowOnboarding)
+                }
+                .funButton()
+                .frame(maxWidth: .infinity)
+                .accessibilityHint(L.Accessibility.showOnboardingHint)
 
-            Picker(L.Settings.audioFeedbackHeading, selection: $settings.audioFeedback) {
-              ForEach(AudioFeedback.allCases, id: \.self) { audioFeedback in
-                Text(audioFeedback.localizedAudioFeedback).tag(audioFeedback)
-              }
-            }
-            .segmentedPicker()
+                Text(L.Onboarding.showOnboardingDescription)
+                  .font(.callout)
+                  .foregroundStyle(.customForeground)
+                  .frame(maxWidth: .infinity, alignment: .leading)
 
-            Text(L.Settings.audioFeedbackDescription)
-              .settingsLabel()
+                Button(L.Game.playGame) {
+                  showingGame = true
+                  playGameTip.invalidate(reason: .actionPerformed)
+                  Current.analytics.signal(name: .tapPlayGame)
+                }
+                .funButton()
+                .frame(maxWidth: .infinity)
+                .popoverTip(playGameTip)
 
-            Spacer(minLength: Layout.tripleDefaultSpacing)
+                Text(playGameDescription)
+                  .font(.callout)
+                  .foregroundStyle(.customForeground)
+                  .frame(maxWidth: .infinity, alignment: .leading)
 
-            Text(L.Settings.searchScopeHeading)
-              .subheadingLabel()
+                if Current.languageModelService.isAvailable, hasChatHistory {
+                  Button(L.Tutor.deleteChatHistory) {
+                    TutorChatHistory.clear(getterSetter: Current.getterSetter)
+                    hasChatHistory = false
+                    Current.analytics.signal(name: .tapDeleteChatHistory)
+                  }
+                  .funButton()
+                  .frame(maxWidth: .infinity)
 
-            Picker(L.Settings.searchScopeHeading, selection: $settings.searchScope) {
-              ForEach(SearchScope.allCases, id: \.self) { searchScope in
-                Text(searchScope.localizedSearchScope).tag(searchScope)
-              }
-            }
-            .segmentedPicker()
+                  Text(L.Tutor.deleteChatHistoryDescription)
+                    .font(.callout)
+                    .foregroundStyle(.customForeground)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                }
 
-            Text(L.Settings.searchScopeDescription)
-              .settingsLabel()
+                Button(L.Settings.rateOrReview) {
+                  UIApplication.shared.open(RatingsFetcher.reviewURL)
+                  Current.analytics.signal(name: .tapRateOrReview)
+                }
+                .funButton()
+                .frame(maxWidth: .infinity)
 
-            Spacer(minLength: Layout.tripleDefaultSpacing)
-
-            Text(L.Settings.appIconHeading)
-              .subheadingLabel()
-
-            Picker(L.Settings.appIconHeading, selection: $settings.appIcon) {
-              ForEach(AppIcon.allCases, id: \.self) { appIcon in
-                Text(appIcon.localizedAppIcon).tag(appIcon)
-              }
-            }
-            .segmentedPicker()
-
-            Text(L.Settings.appIconDescription)
-              .settingsLabel()
-
-            Spacer(minLength: Layout.tripleDefaultSpacing)
-
-            GeometryReader { geometry in
-              let dotDiameter: CGFloat = 6
-              let dotSpacing: CGFloat = 4
-              let availableWidth = geometry.size.width - 2 * Layout.doubleDefaultSpacing
-              let dotCount = Int(availableWidth / (dotDiameter + dotSpacing))
-              HStack(spacing: dotSpacing) {
-                ForEach(0..<dotCount, id: \.self) { index in
-                  Circle()
-                    .fill(index.isMultiple(of: 2) ? Color.customRed : Color.customYellow)
-                    .frame(width: dotDiameter, height: dotDiameter)
+                if !rateReviewDescription.isEmpty {
+                  Text(rateReviewDescription)
+                    .font(.callout)
+                    .foregroundStyle(.customForeground)
+                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
               }
-              .frame(maxWidth: .infinity)
-              .padding(.horizontal, Layout.doubleDefaultSpacing)
             }
-            .frame(height: 6)
-
-            Spacer(minLength: Layout.tripleDefaultSpacing)
-
-            if Current.gameCenter.isAuthenticated {
-              Button(L.GameCenter.viewLeaderboard) {
-                Current.gameCenter.showLeaderboard()
-                Current.analytics.signal(name: .tapViewLeaderboard)
-              }
-              .funButton()
-              .frame(maxWidth: .infinity)
-              .accessibilityHint(L.Accessibility.leaderboardHint)
-
-              Text(L.GameCenter.viewLeaderboardDescription)
-                .settingsLabel()
-
-              Spacer(minLength: Layout.tripleDefaultSpacing)
-            }
-
-            Button(L.Onboarding.showOnboarding) {
-              showingOnboarding = true
-              Current.analytics.signal(name: .tapShowOnboarding)
-            }
-            .funButton()
-            .frame(maxWidth: .infinity)
-            .accessibilityHint(L.Accessibility.showOnboardingHint)
-
-            Text(L.Onboarding.showOnboardingDescription)
-              .settingsLabel()
-
-            Spacer(minLength: Layout.tripleDefaultSpacing)
-
-            Button(L.Game.playGame) {
-              showingGame = true
-              playGameTip.invalidate(reason: .actionPerformed)
-              Current.analytics.signal(name: .tapPlayGame)
-            }
-            .funButton()
-            .frame(maxWidth: .infinity)
-            .popoverTip(playGameTip)
-
-            Text(playGameDescription)
-              .settingsLabel()
-
-            if Current.languageModelService.isAvailable, hasChatHistory {
-              Spacer(minLength: Layout.tripleDefaultSpacing)
-
-              Button(L.Tutor.deleteChatHistory) {
-                TutorChatHistory.clear(getterSetter: Current.getterSetter)
-                hasChatHistory = false
-                Current.analytics.signal(name: .tapDeleteChatHistory)
-              }
-              .funButton()
-              .frame(maxWidth: .infinity)
-
-              Text(L.Tutor.deleteChatHistoryDescription)
-                .settingsLabel()
-            }
-
-            Spacer(minLength: Layout.tripleDefaultSpacing)
-
-            Button(L.Settings.rateOrReview) {
-              UIApplication.shared.open(RatingsFetcher.reviewURL)
-              Current.analytics.signal(name: .tapRateOrReview)
-            }
-            .funButton()
-            .frame(maxWidth: .infinity)
-
-            if !rateReviewDescription.isEmpty {
-              Text(rateReviewDescription)
-                .settingsLabel()
-            }
-
-            Spacer(minLength: Layout.doubleDefaultSpacing)
           }
+          .padding(.horizontal, Layout.doubleDefaultSpacing)
+          .padding(.bottom, Layout.doubleDefaultSpacing)
         }
-        .onAppear {
-          Current.analytics.signal(name: .viewSettingsView)
-          hasChatHistory = !TutorChatHistory.isEmpty(getterSetter: Current.getterSetter)
-        }
-        .onChange(of: settings.quizDifficulty) {
-          changeDifficultyTip.invalidate(reason: .actionPerformed)
-        }
-        .task {
-          if let description = await RatingsFetcher.fetchRatingsDescription(session: Current.session) {
-            rateReviewDescription = description
-          }
+      }
+      .onAppear {
+        Current.analytics.signal(name: .viewSettingsView)
+        hasChatHistory = !TutorChatHistory.isEmpty(getterSetter: Current.getterSetter)
+      }
+      .onChange(of: settings.quizDifficulty) {
+        changeDifficultyTip.invalidate(reason: .actionPerformed)
+      }
+      .task {
+        if let description = await RatingsFetcher.fetchRatingsDescription(session: Current.session) {
+          rateReviewDescription = description
         }
       }
       .navigationTitle(L.Navigation.settings)
@@ -231,5 +212,54 @@ struct SettingsView: View {
         GameView()
       }
     }
+  }
+
+  private func settingsCard<Content: View>(@ViewBuilder content: () -> Content) -> some View {
+    VStack(alignment: .leading, spacing: Layout.doubleDefaultSpacing) {
+      content()
+    }
+    .padding(Layout.doubleDefaultSpacing)
+    .background(Color(.secondarySystemBackground).opacity(0.5))
+    .clipShape(RoundedRectangle(cornerRadius: 12))
+  }
+
+  private func settingSection<Picker: View>(
+    heading: String,
+    description: String,
+    tip: (any Tip)? = nil,
+    @ViewBuilder picker: () -> Picker
+  ) -> some View {
+    VStack(alignment: .leading, spacing: Layout.defaultSpacing) {
+      if let tip {
+        Text(heading)
+          .font(.title3.bold())
+          .foregroundStyle(.customYellow)
+          .accessibilityAddTraits(.isHeader)
+          .popoverTip(tip)
+      } else {
+        Text(heading)
+          .font(.title3.bold())
+          .foregroundStyle(.customYellow)
+          .accessibilityAddTraits(.isHeader)
+      }
+
+      picker()
+
+      Text(description)
+        .font(.callout)
+        .foregroundStyle(.customForeground)
+    }
+  }
+
+  private var gradientDivider: some View {
+    Rectangle()
+      .fill(
+        LinearGradient(
+          colors: [.clear, .customYellow.opacity(0.3), .clear],
+          startPoint: .leading,
+          endPoint: .trailing
+        )
+      )
+      .frame(height: 1)
   }
 }

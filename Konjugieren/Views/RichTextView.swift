@@ -30,6 +30,7 @@ struct BodyTextView: View {
 
   var body: some View {
     Text(buildAttributedString())
+      .lineSpacing(4)
   }
 
   private func buildAttributedString() -> AttributedString {

@@ -171,6 +171,8 @@ struct TutorRowView: View {
     }
     .padding(.horizontal)
     .padding(.vertical, 12)
+    .background(Color.customYellow.opacity(0.05))
+    .clipShape(RoundedRectangle(cornerRadius: 12))
     .contentShape(Rectangle())
     .onTapGesture { navigate() }
   }

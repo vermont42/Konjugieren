@@ -37,6 +37,9 @@ struct VerbBrowseView: View {
 
             if filteredVerbs.isEmpty {
               ContentUnavailableView(L.VerbBrowse.noVerbsFound, systemImage: "magnifyingglass")
+                .onAppear {
+                  Current.soundPlayer.play(.randomSadTrombone)
+                }
             } else {
               Text(L.VerbBrowse.verbCount(filteredVerbs.count))
                 .font(.caption.smallCaps())

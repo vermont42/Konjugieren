@@ -10,7 +10,7 @@ Konjugieren
 | --- | --- | --- |
 | ![](Images/Hat.png) | ![](Images/Bundestag.png) | ![](Images/Pretzel.png) |
 
-**Konjugieren** is an iOS app for learning German-verb conjugations. It conjugates 988 verbs—strong, weak, mixed, and _-ieren_—across all 14 German [conjugationgroups](https://www.linkedin.com/posts/racecondition_i-have-written-elsewhere-about-how-my-experience-activity-7404189320758280192-tiAL), from Präsens Indikativ to Plusquamperfekt Konjunktiv II. The app is fully localized in English and German.
+**Konjugieren** is an iOS app for learning German-verb conjugations. It conjugates 990 verbs—strong, weak, mixed, and _-ieren_—across all 14 German [conjugationgroups](https://www.linkedin.com/posts/racecondition_i-have-written-elsewhere-about-how-my-experience-activity-7404189320758280192-tiAL), from Präsens Indikativ to Plusquamperfekt Konjunktiv II. The app is fully localized in English and German.
 
 Under the hood, **Konjugieren** features a domain-specific ablaut engine that models the vowel and consonant changes of German strong verbs, a hand-written rich-text parser, protocol-oriented dependency injection, and a comprehensive [Swift Testing](https://developer.apple.com/xcode/swift-testing/) suite with 113 tests across 1,800+ lines.
 

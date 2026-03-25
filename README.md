@@ -14,6 +14,10 @@ Konjugieren
 
 Under the hood, **Konjugieren** features a domain-specific ablaut engine that models the vowel and consonant changes of German strong verbs, a hand-written rich-text parser, protocol-oriented dependency injection, and a comprehensive [Swift Testing](https://developer.apple.com/xcode/swift-testing/) suite with 113 tests across 1,800+ lines.
 
+**Konjugieren** is available for free download in the iOS App Store™. Tap the button below to install.
+
+[![Install](Images/apple.png)](https://apps.apple.com/us/app/konjugieren/id6758258747)
+
 ### Screenshots
 
 | Verb List | Verb | Quiz | Family List |

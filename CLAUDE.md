@@ -37,32 +37,7 @@ The project uses Swift Testing (`import Testing`) for unit tests. Tests are loca
 
 ### ConjugatorTests Structure
 
-`ConjugatorTests.swift` is the primary test file, containing ~50 test functions organized by conjugationgroup and feature:
-
-| Test Function | Coverage |
-|---------------|----------|
-| `perfektpartizip()` | Past participle for all verb families |
-| `präsenspartizip()` | Present participle |
-| `präsensIndicativ()` | Present tense, including sein/haben |
-| `präsensKonjunktivI()` | Present subjunctive |
-| `präteritumIndicativ()` | Simple past |
-| `präteritumKonjunktivII()` | Past conditional |
-| `perfektIndikativ()` | Present perfect |
-| `perfektKonjunktivI()` | Present perfect subjunctive |
-| `plusquamperfektIndikativ()` | Pluperfect |
-| `plusquamperfektKonjunktivII()` | Pluperfect conditional |
-| `futurIndikativ()` | Future tense |
-| `futurKonjunktivI()` | Future subjunctive |
-| `futurKonjunktivII()` | Future conditional |
-| `imperativ()` | Imperative mood |
-| `werden()` | The irregular verb werden |
-| `tun()` | The irregular verb tun |
-| `modalVerbs()` | Modal verbs: mögen, wissen, wollen |
-| `newAblautGroups()` | Tests for ablaut patterns |
-| `newAblautGroupsPhase2()` | Additional ablaut patterns |
-| `newVerbs()` | Tests for newly added verbs |
-| `schreienAblaut()` | Contracted participle pattern |
-| `schaffenAblaut()` | The schaffen/erschaffen pattern |
+`ConjugatorTests.swift` is a critical test file for conjugations, containing ~50 test functions organized by conjugationgroup and feature.
 
 ### The expectConjugation Helper
 
@@ -136,6 +111,8 @@ The Claude Code mascot is **Clawd** 🦀, a small, pixelated, crab-like characte
 ## Project Structure
 
 See [`docs/project-structure.md`](docs/project-structure.md) for the full annotated directory tree.
+
+**Cache maintenance:** When you add, remove, or rename a source file, update `docs/project-structure.md` to match. This doc is a cache — future contexts rely on it to orient quickly, so staleness has a real cost.
 
 ## Xcode Project Organization: Folders, Not Groups
 
@@ -234,7 +211,7 @@ enum Foo {
 
 Declare enum cases in alphabetical order. This makes it easy to find cases in large enums and ensures a consistent ordering convention.
 
-Exceptions: Enums whose case order carries semantic meaning (lifecycle states, linguistic conventions, UI display order) may retain their natural ordering. Add a comment like `// Semantic ordering: <reason>` above such enums.
+Exception: Enums whose case order carries semantic meaning (lifecycle states, linguistic conventions, UI display order) may retain their natural ordering. Add a comment like `// Semantic ordering: <reason>` above such enums.
 
 ### @ViewBuilder Has No Child Limit
 
@@ -342,12 +319,18 @@ Settings are managed by `Settings.swift`, an `@Observable` class that persists t
 
 ### Current Settings
 
-| Setting | Enum | Default | Description |
-|---------|------|---------|-------------|
+| Setting | Enum / Type | Default | Description |
+|---------|-------------|---------|-------------|
 | `conjugationgroupLang` | `ConjugationgroupLang` | `.german` | Display conjugationgroup names in German or English |
 | `thirdPersonPronounGender` | `ThirdPersonPronounGender` | `.er` | Which 3rd-person-singular pronoun to show (er/sie/es) |
 | `quizDifficulty` | `QuizDifficulty` | `.regular` | Quiz difficulty level |
 | `audioFeedback` | `AudioFeedback` | `.enable` | Enable/disable sound effects |
+| `searchScope` | `SearchScope` | `.infinitiveOnly` | Search by infinitive only or also by translation |
+| `appIcon` | `AppIcon` | `.hat` | Alternate app icon (hat/pretzel/bundestag) |
+| `hasSeenOnboarding` | `Bool` | `false` | Whether the user has completed onboarding |
+| `gameHighScore` | `Int` | `0` | Highest score achieved in the game |
+| `promptActionCount` | `Int` | `0` | Action count for review-prompt eligibility |
+| `lastReviewPromptDate` | `Date?` | `nil` | When the user was last prompted to review |
 
 ### Adding a New Setting
 
@@ -519,18 +502,6 @@ When the English version of a long text is edited, the German version must be re
    - Reconstructed PIE forms: `*bʰer-`, `*e-`, `*dō-`
    - Latin scholarly terms used in context: ~Germani~, ~comitatus~, ~limes~, ~kurgans~
 4. **Match heading structure** exactly between languages
-
-### The verbHistoryText
-
-The `Info.verbHistoryText` entry is an extensive (~3,000 word) educational essay tracing the German verb system from:
-- The formation of the Solar System (supernova-forged elements)
-- Human migration out of Africa to the Pontic-Caspian steppe
-- The Yamnaya people and Proto-Indo-European language
-- PIE verb system and ablaut
-- Germanic migrations and the Battle of Teutoburg Forest
-- Evolution through Old High German to modern German
-
-This text exists in both English and German versions. When one is edited, the other requires careful relocalization preserving all markup and technical content.
 
 ## VoiceOver and Mixed-Language Pronunciation
 

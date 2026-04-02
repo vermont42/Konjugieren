@@ -27,7 +27,7 @@ Konjugieren/
 │   ├── AblautGroupInfo.swift   # Identifiable struct with localized ablaut-group descriptions
 │   ├── AblautGroupParser.swift # XMLParser delegate that parses AblautGroups.xml
 │   ├── AblautGroups.xml        # ~40 ablaut pattern definitions
-│   ├── AppIcon.swift           # Alternate app-icon enum (hat/pretzel/bundestag)
+│   ├── AppIcon.swift           # Alternate app-icon enum (bratwurst/hat/pretzel/bundestag)
 │   ├── AudioFeedback.swift     # Setting enum: enable/disable sound effects
 │   ├── Auxiliary.swift         # haben/sein auxiliary verb enum
 │   ├── BrowseableFamily.swift  # Enum of browseable family categories for FamilyBrowseView

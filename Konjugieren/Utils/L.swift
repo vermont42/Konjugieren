@@ -488,6 +488,10 @@ enum L {
   }
 
   enum AppIcon {
+    static var bratwurst: String {
+      String(localized: "AppIcon.bratwurst")
+    }
+
     static var hat: String {
       String(localized: "AppIcon.hat")
     }

@@ -1328,6 +1328,22 @@
       }
     },
     "All %lld tests complete.": {},
+    "AppIcon.bratwurst": {
+      "localizations": {
+        "de": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bratwurst"
+          }
+        },
+        "en": {
+          "stringUnit": {
+            "state": "translated",
+            "value": "Bratwurst"
+          }
+        }
+      }
+    },
     "AppIcon.bundestag": {
       "localizations": {
         "de": {

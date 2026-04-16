@@ -490,6 +490,8 @@ Long-form Info text (like `verbHistoryText`, `dedicationText`, `creditsText`) us
 
 Other emoji are sometimes appropriate for bullet lists. For example, 🏴󠁧󠁢󠁥󠁮󠁧󠁿 should precede an English bullet item, and 🐎 should precede a Proto-Indo-European bullet item.
 
+**Headings concatenate directly — no preceding newline.** `RichTextView` adds its own top/bottom spacing around backtick-delimited headings. Inserting `\n` or `\n\n` before a heading produces a visible extra blank line in the rendered view on top of the parser's built-in margin. Match the surrounding convention: sections run `"…end of paragraph.\`Next Heading\`\nFirst line…"` with no whitespace before the opening backtick. Before inserting a new section into a long-form Info text, scan the existing headings with `re.finditer(r'\`[^\`]+\`', value)` in Python to confirm the article's convention, since raw JSON hides the rendered spacing.
+
 ### Relocalization Workflow
 
 When the English version of a long text is edited, the German version must be relocalized:

@@ -36,11 +36,11 @@ struct ResultsView: View {
             .accessibilityLabel(Text(verbatim: "\(L.Quiz.score) \(quiz.finalScore)"))
 
           HStack(spacing: Layout.doubleDefaultSpacing) {
-            Text(labeledText(label: L.Quiz.correct, value: "\(quiz.correctCount) / \(Quiz.questionCount)"))
+            Text(label: L.Quiz.correct, value: "\(quiz.correctCount) / \(Quiz.questionCount)")
               .font(.caption.monospacedDigit())
-            Text(labeledText(label: quiz.difficultyText, value: L.Quiz.difficulty))
+            Text(label: quiz.difficultyText, value: L.Quiz.difficulty)
               .font(.caption)
-            Text(labeledText(label: L.Quiz.time, value: TimeFormatter.formatIntTime(quiz.elapsedSeconds)))
+            Text(label: L.Quiz.time, value: TimeFormatter.formatIntTime(quiz.elapsedSeconds))
               .font(.caption.monospacedDigit())
           }
           .accessibilityElement(children: .combine)
@@ -85,15 +85,13 @@ struct ResultsView: View {
   private func resultRow(for question: QuizItem) -> some View {
     let titleIsGerman = settings.conjugationgroupLang == .german
 
+    let infinitivDisplay = question.isCorrect == false
+      ? "\(question.verb.infinitiv) \u{2717}"
+      : question.verb.infinitiv
+
     VStack(alignment: .center, spacing: 4) {
-      Group {
-        if question.isCorrect == false {
-          Text(verbatim: "\(question.verb.infinitiv) \u{2717}")
-        } else {
-          Text(verbatim: question.verb.infinitiv)
-        }
-      }
-      .germanPronunciation()
+      Text(verbatim: infinitivDisplay)
+        .germanPronunciation()
 
       Text(verbatim: "\(question.displayName(lang: settings.conjugationgroupLang)) - \(question.pronoun ?? "")")
         .font(.caption)
@@ -113,19 +111,6 @@ struct ResultsView: View {
     .frame(maxWidth: .infinity)
   }
 
-  private func labeledText(label: String, value: String) -> AttributedString {
-    var result = AttributedString()
-
-    var labelAttr = AttributedString(label + " ")
-    labelAttr.foregroundColor = Color.customYellow
-    result.append(labelAttr)
-
-    var valueAttr = AttributedString(value)
-    valueAttr.foregroundColor = Color.customForeground
-    result.append(valueAttr)
-
-    return result
-  }
 }
 
 #Preview {

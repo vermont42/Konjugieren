@@ -92,18 +92,8 @@ struct GameView: View {
             }
 
             ForEach(gameState.powerUps) { powerUp in
-              Group {
-                if powerUp.kind == .bratwurst {
-                  Image("BratwurstPowerUp")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 30, height: 30)
-                } else {
-                  Text(powerUp.kind.emoji)
-                    .font(.system(size: 30))
-                }
-              }
-              .position(x: powerUp.x, y: powerUp.y)
+              powerUpContent(powerUp)
+                .position(x: powerUp.x, y: powerUp.y)
             }
 
             ForEach(gameState.eggs) { egg in
@@ -273,6 +263,19 @@ struct GameView: View {
     }
     .statusBarHidden()
     .preferredColorScheme(.dark)
+  }
+
+  @ViewBuilder
+  private func powerUpContent(_ powerUp: PowerUp) -> some View {
+    if powerUp.kind == .bratwurst {
+      Image("BratwurstPowerUp")
+        .resizable()
+        .scaledToFit()
+        .frame(width: 30, height: 30)
+    } else {
+      Text(powerUp.kind.emoji)
+        .font(.system(size: 30))
+    }
   }
 
   private var healthColor: Color {

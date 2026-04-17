@@ -148,67 +148,35 @@ struct TutorView: View {
   }
 
   private var sampleQueriesSheet: some View {
-    NavigationStack {
-      ZStack {
-        Color.customBackground
-          .ignoresSafeArea()
-
-        ScrollView {
-          VStack(spacing: Layout.defaultSpacing) {
-            ForEach(Self.suggestions, id: \.self) { suggestion in
-              Button {
-                inputText = suggestion
-                isInputFocused = true
-                showingSampleQueries = false
-              } label: {
-                Text(suggestion)
-                  .fixedSize(horizontal: false, vertical: true)
-              }
-              .font(.subheadline)
-              .foregroundStyle(.customYellow)
-              .padding(.horizontal, Layout.defaultSpacing + 4)
-              .padding(.vertical, Layout.defaultSpacing / 2)
-              .background(
-                Capsule()
-                  .strokeBorder(Color.customYellow.opacity(0.4))
-              )
-            }
-          }
-          .padding(Layout.doubleDefaultSpacing)
-        }
-      }
-      .navigationTitle(L.Tutor.getSampleQuery)
-      .navigationBarTitleDisplayMode(.inline)
-      .toolbar {
-        ToolbarItem(placement: .cancellationAction) {
-          Button(L.Navigation.dismiss) {
+    TutorSheet(title: L.Tutor.getSampleQuery, dismiss: { showingSampleQueries = false }) {
+      VStack(spacing: Layout.defaultSpacing) {
+        ForEach(Self.suggestions, id: \.self) { suggestion in
+          Button {
+            inputText = suggestion
+            isInputFocused = true
             showingSampleQueries = false
+          } label: {
+            Text(suggestion)
+              .fixedSize(horizontal: false, vertical: true)
           }
+          .font(.subheadline)
+          .foregroundStyle(.customYellow)
+          .padding(.horizontal, Layout.defaultSpacing + 4)
+          .padding(.vertical, Layout.defaultSpacing / 2)
+          .background(
+            Capsule()
+              .strokeBorder(Color.customYellow.opacity(0.4))
+          )
         }
       }
+      .padding(Layout.doubleDefaultSpacing)
     }
   }
 
   private var recommendationsSheet: some View {
-    NavigationStack {
-      ZStack {
-        Color.customBackground
-          .ignoresSafeArea()
-
-        ScrollView {
-          recommendationContent
-            .padding(Layout.doubleDefaultSpacing)
-        }
-      }
-      .navigationTitle(L.Tutor.practiceRecommendations)
-      .navigationBarTitleDisplayMode(.inline)
-      .toolbar {
-        ToolbarItem(placement: .cancellationAction) {
-          Button(L.Navigation.dismiss) {
-            showingRecommendations = false
-          }
-        }
-      }
+    TutorSheet(title: L.Tutor.practiceRecommendations, dismiss: { showingRecommendations = false }) {
+      recommendationContent
+        .padding(Layout.doubleDefaultSpacing)
     }
     .onAppear {
       loadRecommendations()
@@ -425,4 +393,32 @@ struct FlowLayout: SwiftUI.Layout {
 private struct FlowLayoutResult {
   let size: CGSize
   let positions: [CGPoint]
+}
+
+private struct TutorSheet<Content: View>: View {
+  let title: String
+  let dismiss: () -> Void
+  @ViewBuilder let content: () -> Content
+
+  var body: some View {
+    NavigationStack {
+      ZStack {
+        Color.customBackground
+          .ignoresSafeArea()
+
+        ScrollView {
+          content()
+        }
+      }
+      .navigationTitle(title)
+      .navigationBarTitleDisplayMode(.inline)
+      .toolbar {
+        ToolbarItem(placement: .cancellationAction) {
+          Button(L.Navigation.dismiss) {
+            dismiss()
+          }
+        }
+      }
+    }
+  }
 }

@@ -3,6 +3,20 @@
 import SwiftUI
 
 extension Text {
+  init(label: String, value: String) {
+    var result = AttributedString()
+
+    var labelAttr = AttributedString(label + " ")
+    labelAttr.foregroundColor = Color.customYellow
+    result.append(labelAttr)
+
+    var valueAttr = AttributedString(value)
+    valueAttr.foregroundColor = Color.customForeground
+    result.append(valueAttr)
+
+    self.init(result)
+  }
+
   init(mixedCaseString: String) {
     enum ColorParsingState {
       case notStarted

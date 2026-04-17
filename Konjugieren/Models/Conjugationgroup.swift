@@ -123,16 +123,7 @@ enum Conjugationgroup: Hashable {
           return "t"
         }
       case .weak, .mixed, .ieren:
-        switch personNumber {
-        case .firstSingular, .thirdSingular:
-          return "te"
-        case .secondSingular:
-          return "test"
-        case .firstPlural, .thirdPlural:
-          return "ten"
-        case .secondPlural:
-          return "tet"
-        }
+        return Conjugationgroup.weakPräteritumEnding(personNumber: personNumber)
       }
     case .präteritumKonjunktivII(let personNumber):
       switch family {
@@ -148,16 +139,7 @@ enum Conjugationgroup: Hashable {
           return "et"
         }
       case .weak, .mixed, .ieren:
-        switch personNumber {
-        case .firstSingular, .thirdSingular:
-          return "te"
-        case .secondSingular:
-          return "test"
-        case .firstPlural, .thirdPlural:
-          return "ten"
-        case .secondPlural:
-          return "tet"
-        }
+        return Conjugationgroup.weakPräteritumEnding(personNumber: personNumber)
       }
     case .perfektpartizip:
       switch family {
@@ -180,6 +162,19 @@ enum Conjugationgroup: Hashable {
     case .perfektIndikativ, .perfektKonjunktivI, .plusquamperfektIndikativ, .plusquamperfektKonjunktivII, .futurIndikativ, .futurKonjunktivI, .futurKonjunktivII:
       Current.fatalError.fatalError("ending() was called for compound tense \(self.germanDisplayName). This is a logic error.")
       return ""
+    }
+  }
+
+  private static func weakPräteritumEnding(personNumber: PersonNumber) -> String {
+    switch personNumber {
+    case .firstSingular, .thirdSingular:
+      return "te"
+    case .secondSingular:
+      return "test"
+    case .firstPlural, .thirdPlural:
+      return "ten"
+    case .secondPlural:
+      return "tet"
     }
   }
 }

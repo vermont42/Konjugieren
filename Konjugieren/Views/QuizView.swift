@@ -123,13 +123,13 @@ struct QuizView: View {
         }
 
         HStack {
-          Text(labeledText(label: L.Quiz.progress, value: quiz.progressText))
+          Text(label: L.Quiz.progress, value: quiz.progressText)
             .font(.caption.monospacedDigit())
           Spacer()
-          Text(labeledText(label: L.Quiz.score, value: "\(quiz.score)"))
+          Text(label: L.Quiz.score, value: "\(quiz.score)")
             .font(.caption.monospacedDigit())
           Spacer()
-          Text(labeledText(label: L.Quiz.elapsed, value: quiz.elapsedText))
+          Text(label: L.Quiz.elapsed, value: quiz.elapsedText)
             .font(.caption.monospacedDigit())
         }
 
@@ -231,19 +231,6 @@ struct QuizView: View {
     }
   }
 
-  private func labeledText(label: String, value: String) -> AttributedString {
-    var result = AttributedString()
-
-    var labelAttr = AttributedString(label + " ")
-    labelAttr.foregroundColor = Color.customYellow
-    result.append(labelAttr)
-
-    var valueAttr = AttributedString(value)
-    valueAttr.foregroundColor = Color.customForeground
-    result.append(valueAttr)
-
-    return result
-  }
 }
 
 #Preview {

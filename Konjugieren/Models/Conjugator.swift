@@ -27,23 +27,15 @@ enum Conjugator {
 
     switch conjugationgroup {
     case .präsensIndicativ, .präsensKonjunktivI, .präteritumIndicativ, .präteritumKonjunktivII:
-      let stamm = verb.stamm
-      let ending = conjugationgroup.ending(family: verb.family)
-      let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: conjugationgroup)
-      if isFullOverride {
-        return .success(newStamm)
-      }
-      let adjustedEnding = adjustEndingForPhonology(stamm: newStamm, ending: ending, family: verb.family, conjugationgroup: conjugationgroup)
-      return .success(newStamm + adjustedEnding)
+      return conjugateSimpleTense(verb: verb, conjugationgroup: conjugationgroup)
 
     case .perfektpartizip:
-      let stamm = verb.stamm
-      let ending = conjugationgroup.ending(family: verb.family)
-      let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: conjugationgroup)
+      let (newStamm, isFullOverride) = applyAblaut(stamm: verb.stamm, verb: verb, conjugationgroup: conjugationgroup)
       if isFullOverride {
         return .success(newStamm)
       }
-      let adjustedEnding = adjustPerfektpartizipEnding(stamm: newStamm, ending: ending, family: verb.family)
+      let rawEnding = conjugationgroup.ending(family: verb.family)
+      let adjustedEnding = adjustPerfektpartizipEnding(stamm: newStamm, ending: rawEnding, family: verb.family)
       switch verb.family {
       case .strong, .mixed, .weak:
         return .success(perfektpartizipWithGeAndPrefix(verb: verb, stamm: newStamm, ending: adjustedEnding))
@@ -52,9 +44,7 @@ enum Conjugator {
       }
 
     case .präsenspartizip:
-      let stamm = verb.stamm
-      let ending = conjugationgroup.ending(family: verb.family)
-      return .success(stamm + ending)
+      return .success(verb.stamm + conjugationgroup.ending(family: verb.family))
 
     case .imperativ(let personNumber):
       return conjugateImperativ(verb: verb, personNumber: personNumber)
@@ -80,6 +70,16 @@ enum Conjugator {
     case .futurKonjunktivII(let personNumber):
       return conjugateCompoundTense(verb: verb, infinitiv: infinitiv, auxiliaryInfinitiv: "werden", auxiliaryGroup: .präteritumKonjunktivII(personNumber), useInfinitivAsSecondPart: true)
     }
+  }
+
+  private static func conjugateSimpleTense(verb: Verb, conjugationgroup: Conjugationgroup) -> Result<String, ConjugatorError> {
+    let (newStamm, isFullOverride) = applyAblaut(stamm: verb.stamm, verb: verb, conjugationgroup: conjugationgroup)
+    if isFullOverride {
+      return .success(newStamm)
+    }
+    let rawEnding = conjugationgroup.ending(family: verb.family)
+    let adjustedEnding = adjustEndingForPhonology(stamm: newStamm, ending: rawEnding, family: verb.family, conjugationgroup: conjugationgroup)
+    return .success(newStamm + adjustedEnding)
   }
 
   private static func conjugateCompoundTense(

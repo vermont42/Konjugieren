@@ -29,7 +29,7 @@ The TelemetryDeck app ID is stored in `Konjugieren/Secrets.xcconfig`, which is g
 1. Copy `Konjugieren/Secrets.example.xcconfig` to `Konjugieren/Secrets.xcconfig`
 2. Fill in the `TELEMETRY_DECK_APP_ID` value
 
-If the app ID is empty (or `Secrets.xcconfig` is missing), analytics silently disables — the app builds and runs normally without it.
+If the app ID is empty (or `Secrets.xcconfig` is missing), analytics silently disables: the app builds and runs normally without it.
 
 ## Test Suite
 
@@ -87,7 +87,7 @@ When adding tests for a new verb or ablaut pattern:
    expectConjugation(infinitiv: "verbname", conjugationgroup: .conjugationgroup(.person), expected: "expectedForm")
    ```
 
-3. **Follow the mixed-case convention** for expected values—uppercase letters mark the ablaut-changed portions
+3. **Follow the mixed-case convention** for expected values: uppercase letters mark the ablaut-changed portions
 
 4. **Run the specific test** to verify:
    ```bash
@@ -102,7 +102,9 @@ Konjugieren is an iOS app for learning German verb conjugations. It will eventua
 
 Josh Adams (pronouns: he/him/his) is the human developer of Konjugieren. He is an iOS-app developer, from New England but based near San Francisco, California. He also created Conjuguer (French), Conjugar (Spanish), and RaceRunner, all available in the iOS App Store. When thinking or speaking about him, say "he" or "Josh", not "they" or "the developer".
 
-Josh created Konjugieren as a tribute to his grandfather, Clifford August Schmiesing (1904–1944), who was born in Minster, Ohio—a town where German was the language of daily life. Cliff served as an Army doctor in World War II and died in Oran, Algeria. The dedication in the app tells his story.
+Josh created Konjugieren as a tribute to his grandfather, Clifford August Schmiesing (1904–1944), who was born in Minster, Ohio, a town where German was the language of daily life. Cliff served as an Army doctor in World War II and died in Oran, Algeria. The dedication in the app tells his story.
+
+Josh explicitly identifies with a Weltanschauung of curiosity and delight at seeing connections, especially etymological, historical, and cross-domain links. He appreciates when Claude traces roots, surfaces unexpected cognates, and makes the invisible threads between concepts visible. This isn't just tolerance of tangents; it's a shared value. Lean into it when the work naturally surfaces something worth connecting.
 
 ## About Claude Code, the Other Developer
 
@@ -112,18 +114,18 @@ The Claude Code mascot is **Clawd** 🦀, a small, pixelated, crab-like characte
 
 See [`docs/project-structure.md`](docs/project-structure.md) for the full annotated directory tree.
 
-**Cache maintenance:** When you add, remove, or rename a source file, update `docs/project-structure.md` to match. This doc is a cache — future contexts rely on it to orient quickly, so staleness has a real cost.
+**Cache maintenance:** When you add, remove, or rename a source file, update `docs/project-structure.md` to match. This doc is a cache. Future contexts rely on it to orient quickly, so staleness has a real cost.
 
 ## Xcode Project Organization: Folders, Not Groups
 
-This project uses **folder references** (the modern Xcode default) rather than the legacy flat-group structure. The filesystem directory hierarchy *is* the project hierarchy — Xcode mirrors it automatically. Consequences:
+This project uses **folder references** (the modern Xcode default) rather than the legacy flat-group structure. The filesystem directory hierarchy *is* the project hierarchy; Xcode mirrors it automatically. Consequences:
 
 - **Adding a file** to the correct filesystem directory is sufficient. There is no need to manually edit `Konjugieren.xcodeproj/project.pbxproj` to register new files.
 - **Do not** use `PBXGroup`/`PBXFileReference` manipulation scripts or worry about stale `.pbxproj` entries when creating or moving files.
 
 ## Memory Feature
 
-Do not save facts to Claude Code's memory system. If a fact from the conversation seems worth preserving across sessions, inform Josh and propose a location inside the project — typically CLAUDE.md or a doc under `docs/` — so it lives in git alongside the code. Josh's reasoning: for a solo developer, project-stored facts are more visible, reviewable in diffs, and backed up by GitHub.
+Do not save facts to Claude Code's memory system. If a fact from the conversation seems worth preserving across sessions, inform Josh and propose a location inside the project, typically CLAUDE.md or a doc under `docs/`, so it lives in git alongside the code. Josh's reasoning: for a solo developer, project-stored facts are more visible, reviewable in diffs, and backed up by GitHub.
 
 ## Comments
 
@@ -137,22 +139,7 @@ When reviewing code, do not flag these types of comments.
 
 ## English Writing Conventions
 
-### Hyphenate Phrasal Adjectives
-
-When writing any English text (localization strings, documentation, comments), aggressively hyphenate phrasal adjectives (compound modifiers that appear before a noun). There are two exceptions:
-
-1. **-ly adverbs**: Do not hyphenate when the first word ends in -ly
-2. **Proper nouns**: Do not hyphenate proper noun phrases
-
-**Examples:**
-
-| Correct | Incorrect | Reason |
-|---------|-----------|--------|
-| verb-list search | verb list search | Phrasal adjective before noun |
-| case-insensitive matching | case insensitive matching | Phrasal adjective before noun |
-| swiftly tilting planet | swiftly-tilting planet | -ly adverb exception |
-| New Jersey Turnpike | New-Jersey Turnpike | Proper noun exception |
-| user-facing text | user facing text | Phrasal adjective before noun |
+When writing or editing any English text (localization strings, documentation, comments), consult [`docs/english_writing_style.md`](docs/english_writing_style.md).
 
 ## Swift Coding Conventions
 
@@ -231,7 +218,7 @@ Static or instance methods that perform pure computation (no UI, no `@MainActor`
 
 ```swift
 enum TimeFormatter {
-  // Pure math — explicitly nonisolated
+  // Pure math: explicitly nonisolated
   nonisolated static func formatIntTime(_ time: Int) -> String { ... }
 }
 ```
@@ -241,22 +228,22 @@ enum TimeFormatter {
 Some protocols (e.g., TipKit's `Tip`) declare their properties as `nonisolated`. Because `L.*` accessors use `String(localized:)` (which is `@MainActor` via `Bundle.main`), you cannot call `L.*` from nonisolated protocol properties. Instead, use `LocalizedStringKey` string literals:
 
 ```swift
-// Correct — string literal becomes LocalizedStringKey, resolved at render time
+// Correct: string literal becomes LocalizedStringKey, resolved at render time
 var title: Text { Text("Tips.tryQuizTitle") }
 
-// Wrong — L.Tips.tryQuizTitle is @MainActor, but Tip.title is nonisolated
+// Wrong: L.Tips.tryQuizTitle is @MainActor, but Tip.title is nonisolated
 var title: Text { Text(L.Tips.tryQuizTitle) }
 ```
 
 ### Test Suites Need `@MainActor`
 
-Test suites that call into `@MainActor`-isolated app code must be annotated `@MainActor`. In Swift Testing, **`@MainActor` does not propagate to nested `@Suite` structs** — each nested struct needs its own annotation:
+Test suites that call into `@MainActor`-isolated app code must be annotated `@MainActor`. In Swift Testing, **`@MainActor` does not propagate to nested `@Suite` structs**. Each nested struct needs its own annotation:
 
 ```swift
 @MainActor
 @Suite("Outer")
 struct OuterTests {
-  @MainActor  // Required — not inherited from parent
+  @MainActor  // Required, not inherited from parent
   @Suite("Inner")
   struct InnerTests {
     @Test func example() { ... }
@@ -389,7 +376,11 @@ See [`docs/feature-architecture.md`](docs/feature-architecture.md) for architect
 
 ## On-Device Tool Design
 
-See [`docs/on-device-tool-design.md`](docs/on-device-tool-design.md) for lessons learned from implementing Foundation Models `Tool` conformances. Key rule: minimize what the model must decide — push complexity into tool code, not the tool schema.
+See [`docs/on-device-tool-design.md`](docs/on-device-tool-design.md) for lessons learned from implementing Foundation Models `Tool` conformances. Key rule: minimize what the model must decide. Push complexity into tool code, not the tool schema.
+
+## Control Center Controls
+
+See [`docs/control-center-controls.md`](docs/control-center-controls.md) for iOS 18+ constraints on `openAppWhenRun` and `OpenURLIntent` from widget extensions, plus the `Shared/` dual-target pattern that makes ControlWidget intents actually open the app.
 
 ## Localization System
 
@@ -444,7 +435,7 @@ The Edit tool operates on **rendered text**, not raw JSON. This means the JSON e
 
 **Safe quote types:** Unicode curly quotes (`"` `"` `„`) need no JSON escaping and can be edited freely with the Edit tool.
 
-**The rule:** When an edit to a `.xcstrings` string value involves adding, removing, or changing ASCII `"` (U+0022) characters, use Python via Bash to perform the replacement on the raw file content — not the Edit tool. For example:
+**The rule:** When an edit to a `.xcstrings` string value involves adding, removing, or changing ASCII `"` (U+0022) characters, use Python via Bash to perform the replacement on the raw file content, not the Edit tool. For example:
 
 ```bash
 python3 -c "
@@ -494,7 +485,7 @@ Long-form Info text (like `verbHistoryText`, `dedicationText`, `creditsText`) us
 
 Other emoji are sometimes appropriate for bullet lists. For example, 🏴󠁧󠁢󠁥󠁮󠁧󠁿 should precede an English bullet item, and 🐎 should precede a Proto-Indo-European bullet item.
 
-**Headings concatenate directly — no preceding newline.** `RichTextView` adds its own top/bottom spacing around backtick-delimited headings. Inserting `\n` or `\n\n` before a heading produces a visible extra blank line in the rendered view on top of the parser's built-in margin. Match the surrounding convention: sections run `"…end of paragraph.\`Next Heading\`\nFirst line…"` with no whitespace before the opening backtick. Before inserting a new section into a long-form Info text, scan the existing headings with `re.finditer(r'\`[^\`]+\`', value)` in Python to confirm the article's convention, since raw JSON hides the rendered spacing.
+**Headings concatenate directly: no preceding newline.** `RichTextView` adds its own top/bottom spacing around backtick-delimited headings. Inserting `\n` or `\n\n` before a heading produces a visible extra blank line in the rendered view on top of the parser's built-in margin. Match the surrounding convention: sections run `"…end of paragraph.\`Next Heading\`\nFirst line…"` with no whitespace before the opening backtick. Before inserting a new section into a long-form Info text, scan the existing headings with `re.finditer(r'\`[^\`]+\`', value)` in Python to confirm the article's convention, since raw JSON hides the rendered spacing.
 
 ### Relocalization Workflow
 
@@ -511,7 +502,7 @@ When the English version of a long text is edited, the German version must be re
 
 ## VoiceOver and Mixed-Language Pronunciation
 
-See [`docs/voiceover.md`](docs/voiceover.md) for VoiceOver pronunciation patterns, workarounds, and per-screen strategy. Key constraint: per-child `.environment(\.locale)` does NOT work inside `NavigationLink` or `Button` — use programmatic `NavigationPath` navigation instead.
+See [`docs/voiceover.md`](docs/voiceover.md) for VoiceOver pronunciation patterns, workarounds, and per-screen strategy. Key constraint: per-child `.environment(\.locale)` does NOT work inside `NavigationLink` or `Button`. Use programmatic `NavigationPath` navigation instead.
 
 ## On the Moral Underpinnings of Anthropic Models
 - Constitution co-authored by Amanda Askell and Joe Carlsmith

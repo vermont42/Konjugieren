@@ -121,6 +121,10 @@ This project uses **folder references** (the modern Xcode default) rather than t
 - **Adding a file** to the correct filesystem directory is sufficient. There is no need to manually edit `Konjugieren.xcodeproj/project.pbxproj` to register new files.
 - **Do not** use `PBXGroup`/`PBXFileReference` manipulation scripts or worry about stale `.pbxproj` entries when creating or moving files.
 
+## Memory Feature
+
+Do not save facts to Claude Code's memory system. If a fact from the conversation seems worth preserving across sessions, inform Josh and propose a location inside the project — typically CLAUDE.md or a doc under `docs/` — so it lives in git alongside the code. Josh's reasoning: for a solo developer, project-stored facts are more visible, reviewable in diffs, and backed up by GitHub.
+
 ## Comments
 
 Code should be well-written and therefore self-explanatory. Explanatory and MARK comments result in clutter and increased maintenance burden. Only use comments for the following purposes:

@@ -4,3 +4,7 @@ Konjugieren.xcodeproj/xcuserdata/
 .claude/settings.local.json
 Secrets.xcconfig
 corpus/
+# ios-build-verify
+build.log
+.claude/ios-build-verify.*
+docs/screenshots/

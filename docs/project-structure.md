@@ -188,6 +188,7 @@ docs/
 ├── terminology.md             # Conjugationgroup definitions, tense/mood/voice distinctions
 ├── tutor-test-queries.txt     # Test queries for the AI tutor
 ├── ui-audit.md                # UI audit notes and findings
+├── vanilla_build_and_test.md  # Raw xcodebuild commands for opting out of the ios-build-verify dependency
 └── voiceover.md               # VoiceOver pronunciation patterns and per-screen strategy
 
 scripts/

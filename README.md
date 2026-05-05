@@ -125,6 +125,10 @@ xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren \
   -parallel-testing-enabled NO test
 ```
 
+When working with [Claude Code](https://www.youtube.com/watch?v=AJpK3YTTKZ4), Konjugieren's `CLAUDE.md` depends on the [`ios-build-verify`](https://github.com/vermont42/ios-build-verify) Claude Code plugin, which Josh developed to address frustrations he experienced building Konjugieren. The plugin bundles `xcodebuild` + `xcbeautify` for builds and `AXe`-driven simulator operations (launch, tap, screenshot, audit) for verification, all behind named scripts driven by a per-project config.
+
+Developers who prefer not to take on the `ios-build-verify` dependency can follow the instructions in [`docs/vanilla_build_and_test.md`](docs/vanilla_build_and_test.md) to replace it with raw `xcodebuild` commands.
+
 ### Related Projects
 
 - [**Conjuguer**](https://apps.apple.com/us/app/conjuguer/id1588624373) — French-verb conjugation app (iOS)

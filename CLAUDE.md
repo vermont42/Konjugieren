@@ -4,23 +4,35 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Build and Test Commands
 
-This is an Xcode project. Use the following commands:
+This project uses the [`ios-build-verify`](https://github.com/vermont42/ios-build-verify) Claude Code skill for build and test. The scripts pipe `xcodebuild` through `xcbeautify` for concise output and tee raw output to `build.log` as a fallback. Per-project config lives in `.claude/ios-build-verify.config.sh` (gitignored).
+
+Future Claude Code sessions in this project resolve the skill via plugin metadata and invoke `build_app.sh` / `run_tests.sh` by name. For terminal use, `--only-testing "Target/Suite/method()"` filters to a single test (Swift Testing requires the trailing `()` on method names — omitting them silently runs zero tests).
+
+The skill also provides a verify half (launch the app, tap by accessibility identifier, screenshot, audit views). See its `SKILL.md` for the full operation surface.
+
+### Verification configuration
+
+| Setting | Value | Notes |
+|---|---|---|
+| `FIRST_SCREEN_ID` | `verb_browse_anchor` | On the verb-count `Text` in `VerbBrowseView.swift`. `launch_app.sh` polls for this identifier to confirm the app rendered. |
+| `ONBOARDING_DISMISS_LABEL` | `Skip` | `launch_app.sh` interleaves a Skip-tap during wait-for-render so onboarding auto-dismisses. |
+| `MAIN_TABS_COORDS` | per-project (5 tabs) | Calibrated via `measure_tab_pill.sh` (Pillow centroid detection); the shipped 3-tab defaults don't fit. Re-measure if tab-bar geometry changes. |
+
+### App-specific friction: review-prompt UserDefaults accumulation
+
+Konjugieren shows a custom "Enjoying Konjugieren?" review prompt gated by `promptActionCount` and `lastReviewPromptDate` cooldowns (see `Settings.swift`). On a simulator with accumulated UserDefaults — typical after exploratory testing — the prompt fires on launch and gates the AXTree, and `launch_app.sh` exits 5 with the modal-gating hint pointing at SKILL.md "Modal AXTree gating". Recovery: tap "Not Now" once (cooldown blocks subsequent prompts) or `xcrun simctl uninstall <UDID> biz.joshadams.Konjugieren` for a clean reset.
+
+### Diagnostic fallback (raw xcodebuild)
+
+When `xcbeautify`'s lossy filter drops an early-stage error or you need raw `xcodebuild` output:
 
 ```bash
-# Build the app
 xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren -destination 'platform=iOS Simulator,name=iPhone 17' build
 
-# Run all tests (disable parallel testing to avoid simulator flakiness)
-xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren -destination 'platform=iOS Simulator,name=iPhone 17' -parallel-testing-enabled NO test
-
-# Run a single test suite
-xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren -destination 'platform=iOS Simulator,name=iPhone 17' -parallel-testing-enabled NO test -only-testing:KonjugierenTests/ConjugatorTests
-
-# Run a single test method
-xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren -destination 'platform=iOS Simulator,name=iPhone 17' -parallel-testing-enabled NO test -only-testing:KonjugierenTests/ConjugatorTests/perfektpartizip()
+xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren -destination 'platform=iOS Simulator,name=iPhone 17' -parallel-testing-enabled NO test -only-testing:KonjugierenTests/ConjugatorTests/perfektpartizip\(\)
 ```
 
-> **`-only-testing:` format for Swift Testing:** The path is `Target/Suite/method()`. Do not include filesystem subdirectories (`Models/`, `Utils/`), and always append `()` to method names. Omitting either causes xcodebuild to silently run zero tests.
+`build.log` (gitignored) preserves raw output from the last skill-script invocation; `grep -B2 -A20 'error:' build.log` is the deepest fallback for surfacing errors.
 
 ### Secrets Configuration
 

@@ -47,6 +47,7 @@ struct VerbBrowseView: View {
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .padding(.horizontal)
                 .padding(.top, Layout.defaultSpacing)
+                .accessibilityIdentifier("verb_browse_anchor")
 
               if sizeClass == .regular {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: Layout.verbGridMinimum))], spacing: 0) {

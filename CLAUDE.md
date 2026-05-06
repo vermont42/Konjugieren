@@ -157,6 +157,10 @@ When reviewing code, do not flag these types of comments.
 
 When writing or editing any English text (localization strings, documentation, comments), consult [`docs/english_writing_style.md`](docs/english_writing_style.md).
 
+## Grep on long-line files
+
+See [`docs/grep-gotchas.md`](docs/grep-gotchas.md) for a silent-truncation failure mode that bites `grep` on long-line files (Markdown paragraphs, `Localizable.xcstrings` values, anything with lines exceeding ~250 characters). Key rule: when `grep -n` returns no match for a string you have reason to believe is in the file, verify with `grep -c` first — the asymmetry between counts that work and content that vanishes is the bug signal.
+
 ## Swift Coding Conventions
 
 ### Avoid Force-Unwrapping

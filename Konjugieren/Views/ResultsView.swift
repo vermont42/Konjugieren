@@ -46,9 +46,7 @@ struct ResultsView: View {
           .accessibilityElement(children: .combine)
         }
         .frame(maxWidth: .infinity)
-        .padding(Layout.doubleDefaultSpacing)
-        .background(Color(.secondarySystemBackground).opacity(0.5))
-        .clipShape(RoundedRectangle(cornerRadius: 12))
+        .konjCard()
         .padding(.horizontal, Layout.doubleDefaultSpacing)
         .padding(.top, Layout.tripleDefaultSpacing)
 

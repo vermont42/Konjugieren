@@ -55,6 +55,10 @@ extension View {
   func konjCardWithAccentBar(_ color: Color = .customYellow) -> some View {
     modifier(KonjCardWithAccentBar(color: color))
   }
+
+  func konjCardRim() -> some View {
+    modifier(KonjCardRim())
+  }
 }
 
 private struct SubheadingLabel: ViewModifier {
@@ -191,5 +195,15 @@ private struct KonjCardWithAccentBar: ViewModifier {
           .frame(width: 2)
           .clipShape(RoundedRectangle(cornerRadius: 1))
       }
+  }
+}
+
+private struct KonjCardRim: ViewModifier {
+  func body(content: Content) -> some View {
+    content
+      .overlay(
+        RoundedRectangle(cornerRadius: 12)
+          .strokeBorder(Color.customCardBorder, lineWidth: 1)
+      )
   }
 }

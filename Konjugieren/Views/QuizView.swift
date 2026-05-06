@@ -217,14 +217,10 @@ struct QuizView: View {
             }
           }
       }
-      .padding(Layout.doubleDefaultSpacing)
-      .background(
-        RoundedRectangle(cornerRadius: 16)
-          .fill(Color(.secondarySystemBackground))
-          .overlay(
-            RoundedRectangle(cornerRadius: 16)
-              .strokeBorder(showIncorrectFlash && !reduceMotion ? Color.customRed.opacity(0.5) : Color.clear, lineWidth: 2)
-          )
+      .konjCard()
+      .overlay(
+        RoundedRectangle(cornerRadius: 12)
+          .strokeBorder(showIncorrectFlash && !reduceMotion ? Color.customRed.opacity(0.5) : Color.clear, lineWidth: 2)
       )
       .padding(.horizontal, Layout.doubleDefaultSpacing)
       .padding(.top, Layout.doubleDefaultSpacing)

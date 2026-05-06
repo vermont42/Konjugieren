@@ -14,7 +14,7 @@ This document, Round Two, was produced afterward by combining `ios-design-agent-
 
 Future sessions should not re-suggest these — they are already in place:
 
-- **Cards**: `Color(.secondarySystemBackground)` rounded-rectangle backgrounds wrap `ConjugationSectionView` (in `VerbView.swift`), Settings groups (in `SettingsView.swift`'s `settingsCard` helper), the Quiz active card (in `QuizView.swift`'s `quizContent`), the Results stats card (in `ResultsView.swift`), and the Tutor row (in `InfoBrowseView.swift`'s `TutorRowView`).
+- **Cards**: rounded-rectangle backgrounds wrap `ConjugationSectionView` (in `VerbView.swift`), Settings groups (in `SettingsView.swift`'s `settingsCard` helper), the Quiz active card (in `QuizView.swift`'s `quizContent`), the Results stats card (in `ResultsView.swift`), and the Tutor row (in `InfoBrowseView.swift`'s `TutorRowView`). Round Two added the `konjCard()` / `konjCardWithAccentBar()` / `konjCardRim()` modifier suite (#A) backed by the `customCardBackground` and `customCardBorder` named assets (#19, #20); all five sites use them.
 - **Typographic differentiation via SF Pro design axes**: VerbView title at `.fontDesign(.serif)`; conjugation section headings at `.subheadline.smallCaps().weight(.semibold).fontDesign(.serif)`; ResultsView score at `design: .rounded`; stats counters at `.monospacedDigit()`; verb-count banner in VerbBrowseView at `.font(.caption.smallCaps())`.
 - **Motion / sensory feedback**: `.sensoryFeedback(.success/.error/.selection/.impact)` in QuizView, VerbBrowseView, OnboardingView. `.symbolEffect(.pulse.byLayer)` on the Quiz Start button. `.symbolEffect(.bounce, value:)` on each onboarding page's SF Symbol. `.contentTransition(.numericText())` animating the Results score from 0. `.scrollTransition` fading verb rows and parallax-scaling Info photos. Four-keyframe shake animation on incorrect quiz answer; scale + opacity check on correct.
 - **Empty states / counts**: `ContentUnavailableView` in `VerbBrowseView.swift` for empty search; alternating row tints (3% yellow); `#N` frequency rank.
@@ -43,7 +43,8 @@ Defined in `Assets.xcassets`:
 - `customRed` — German-flag red. Semantic: ablaut (irregular vowel changes), error states, destructive actions.
 - `customBackground` — pure black in dark mode, pure white in light. The flat canvas the entire app sits on.
 - `customForeground` — readable text on `customBackground`.
-- (System-derived) `Color(.secondarySystemBackground)` is the established card surface.
+- `customCardBackground` — surface for grouped content (Round Two #19). Matches `Color(.secondarySystemBackground)` semantic values: `#1C1C1E` dark / `#F2F2F7` light.
+- `customCardBorder` — `customYellow` at 0.08 opacity baked in (Round Two #20). Used by `konjCard()` and `konjCardRim()` for the warm rim overlay.
 
 Spacing constants in `Utils/Layout.swift`:
 
@@ -66,6 +67,9 @@ Custom modifiers in `Utils/Modifiers.swift`:
 - `germanPronunciation(forReal:)` — sets `\.locale` to the German `UttererLocale` so VoiceOver pronounces text in German.
 - `englishPronunciation()` — same for English.
 - `speakOnTap(_:)` — adds tap-to-speak with a 300ms 15%-opacity yellow flash (see `SpeakOnTap` private struct).
+- `konjCard()` — full card surface (Round Two #A): `.padding()` + `customCardBackground` + clip to 12pt rounded rectangle + `customCardBorder` rim overlay.
+- `konjCardWithAccentBar(_:)` — `konjCard()` plus a 2pt yellow leading-edge accent bar. Used by `ConjugationSectionView`.
+- `konjCardRim()` — just the `customCardBorder` overlay (no padding, background, or clip). For sites that need the rim while keeping their own background or padding.
 
 ### Screenshots referenced
 
@@ -125,9 +129,9 @@ App-specific: a custom "Enjoying Konjugieren?" review prompt can fire on launch 
 
 ### Areas for growth (this audit's focus)
 
-1. **Card-treatment inconsistency**: `Color(.secondarySystemBackground)` appears at full opacity in `QuizView` but `.opacity(0.5)` in `VerbView` / `SettingsView` / `ResultsView`. Two visual languages for "card" within one app.
-2. **Cards without elevation**: no shadows, no borders. On a pure-black background, fill-only cards have no depth dimension.
-3. **One real rendering bug**: `[?]` glyph fallback on inline emoji in long-form `BrowseableFamily` descriptions.
+1. ~~**Card-treatment inconsistency**: `Color(.secondarySystemBackground)` appears at full opacity in `QuizView` but `.opacity(0.5)` in `VerbView` / `SettingsView` / `ResultsView`. Two visual languages for "card" within one app.~~ *Done — see #2.*
+2. ~~**Cards without elevation**: no shadows, no borders. On a pure-black background, fill-only cards have no depth dimension.~~ *Done — see #3.*
+3. ~~**One real rendering bug**: `[?]` glyph fallback on inline emoji in long-form `BrowseableFamily` descriptions.~~ *Done — see #1.*
 4. **Quiz screen still leaves ~60% of vertical space empty** below the question card.
 5. **VerbView's etymology and example-sentence sections are bare** while the conjugation sections above them are carded — visual rhythm breaks halfway down.
 6. **SettingsView action-button card is undifferentiated** — four identical `funButton` calls stacked together.
@@ -223,6 +227,8 @@ Full architecture and instructions for adding new affected emoji: `docs/emoji-as
 
 ### 2. Cross-cutting: Unify card opacity
 
+**Status:** Resolved 2026-05-06. See "Resolution" block at the end of this section.
+
 **Files:**
 - `Konjugieren/Views/QuizView.swift:223` — full opacity: `Color(.secondarySystemBackground)`.
 - `Konjugieren/Views/VerbView.swift:311` — half opacity: `Color(.secondarySystemBackground).opacity(0.5)`.
@@ -237,7 +243,25 @@ Full architecture and instructions for adding new affected emoji: `docs/emoji-as
 
 **Independent of:** all other suggestions.
 
+**Resolution (2026-05-06):**
+
+All four card sites adopted the `konjCard()` / `konjCardWithAccentBar()` modifiers from #A, dropping `.opacity(0.5)` in the process. Site-by-site:
+
+- `VerbView.swift` `ConjugationSectionView` — replaced ad-hoc `.padding+.background+.clipShape+.overlay(accent bar)` with `.konjCardWithAccentBar()`.
+- `SettingsView.swift` `settingsCard` helper — replaced `.padding+.background+.clipShape` with `.konjCard()`.
+- `ResultsView.swift` score card — same as above; `.frame(maxWidth: .infinity)` preserved before `.konjCard()`.
+- `QuizView.swift` quiz active card — adopted `.konjCard()`; conditional incorrect-flash `strokeBorder` overlay layered on top so it co-exists with the warm rim.
+
+Two side effects worth noting:
+
+1. Quiz card corner radius normalized from 16 to 12, joining the rest of the app's consensus (the modifier hardcodes 12).
+2. #15 (Audio Feedback inactive segment contrast) resolves as a side effect — the audit predicted the contrast issue would clear once `.opacity(0.5)` was dropped everywhere.
+
+Visual confirmation: `docs/screenshots/20260506-090229-verb-detail-sein-rim.png`, `docs/screenshots/20260506-090310-settings-top-rim.png`, `docs/screenshots/20260506-090350-quiz-active-rim.png`.
+
 ### 3. Cross-cutting: Add subtle elevation to cards
+
+**Status:** Resolved 2026-05-06. See "Resolution" block at the end of this section.
 
 **Files:** every site listed in #2, plus `InfoBrowseView.swift:174` (TutorRowView background) and `FamilyDetailView.swift` (after #11 below).
 
@@ -257,6 +281,20 @@ This gives cards a subtle warm edge that aligns with the German-flag color syste
 **Light-mode consideration:** `customBackground` is white in light mode. A 0.08-opacity yellow stroke on white is faint but visible. If light-mode contrast becomes a concern, switch to `Color(.separator)` for the stroke color, which adapts to appearance.
 
 **Depends on:** #2 (so the visual is consistent).
+
+**Resolution (2026-05-06):**
+
+Achieved as a side effect of #2 — `konjCard()` already wraps the `customCardBorder` overlay per #A, so adopting `konjCard()` for opacity unification gave each site the rim in the same move. Five sites now carry the rim:
+
+- `VerbView.swift` `ConjugationSectionView` (via `konjCardWithAccentBar()`)
+- `SettingsView.swift` `settingsCard` helper (via `konjCard()`)
+- `ResultsView.swift` score card (via `konjCard()`)
+- `QuizView.swift` quiz active card (via `konjCard()`)
+- `InfoBrowseView.swift` `TutorRowView` — keeps its intentional `Color.customYellow.opacity(0.05)` tint background (the row's identity, not a default card surface) and gains the rim via `.konjCardRim()`, the third modifier in #A's suite. The result: same background-tint identity as before, plus the warm rim.
+
+`FamilyDetailView.swift` is not yet a card site (depends on #11). When #11 lands, its wrapper should adopt `konjCard()` and gain the rim for free.
+
+Visual confirmation: same screenshots as #2. The rim is most visible on the larger Settings cards and least visible on the small per-conjugation cards in VerbView — same `customCardBorder` color, same 1pt width, but visual weight scales with the card's perimeter.
 
 ### 4. Quiz: Reclaim the empty bottom 60%
 
@@ -343,20 +381,12 @@ if let etymologyText = Etymology.text(for: verb.infinitiv) {
       .foregroundStyle(.customYellow)
     RichTextView(blocks: etymologyText.richTextBlocks)
   }
-  .padding()
-  .background(Color(.secondarySystemBackground))   // or via #2's named asset
-  .clipShape(RoundedRectangle(cornerRadius: 12))
-  .overlay(alignment: .leading) {
-    Rectangle()
-      .fill(.customYellow.opacity(0.3))
-      .frame(width: 2)
-      .clipShape(RoundedRectangle(cornerRadius: 1))
-  }
+  .konjCardWithAccentBar()
   .padding(.horizontal)
 }
 ```
 
-Same wrapper for the example-sentences section. Note the heading style change to match conjugation section headings (`.subheadline.smallCaps().weight(.semibold).fontDesign(.serif)`) — this also unifies typography across sections within a single VerbView.
+Same wrapper for the example-sentences section. Note the heading style change to match conjugation section headings (`.subheadline.smallCaps().weight(.semibold).fontDesign(.serif)`) — this also unifies typography across sections within a single VerbView. The `.konjCardWithAccentBar()` modifier is from #A's suite (shipped) and replaces what was, in the original audit, an explicit `.padding+.background+.clipShape+.overlay(accent bar)` chain.
 
 **Depends on:** #2 cleanup is recommended first so the same asset name is used everywhere. Independent if shipping immediately at full opacity.
 
@@ -497,9 +527,9 @@ Ditto for the `Pronoun:` line at `QuizView.swift:104-113` — both could use SF 
 
 **Problem:** The long-form `RichTextView` description at the top of every family detail sits naked on the black background between the centered title and the verb list. Cards everywhere else in the app; not here.
 
-**Fix:** apply the same wrapper as #6. Requires deciding whether the `RichTextView` should also have a 2pt accent bar (consistency argues yes; restraint argues no since family-detail prose is already framed as the page's focal content).
+**Fix:** apply `.konjCard()` (or `.konjCardWithAccentBar()` if matching `ConjugationSectionView`'s accent treatment is desired). The choice is the 2pt yellow leading-edge accent bar — consistency with VerbView's per-section cards argues yes; restraint argues no, since family-detail prose is already framed as the page's focal content.
 
-Recommended: card without accent bar (the `BrowseableFamily.systemImageName` icon at the top is the focal element).
+Recommended: `.konjCard()` (no accent bar — the `BrowseableFamily.systemImageName` icon at the top is the focal element).
 
 ### 12. VerbView: Differentiate metadata pills
 
@@ -585,6 +615,8 @@ Text(verb.infinitiv)
 **Verify:** test with `auseinandersetzen`, `zusammenarbeiten`, and other long verbs that the title still looks reasonable on the smallest supported device width (iPhone SE if still supported, otherwise iPhone 15 base).
 
 ### 15. SettingsView: Audio Feedback inactive segment contrast
+
+**Status:** Resolved 2026-05-06 as a side effect of #2 (dropping `.opacity(0.5)` everywhere gave the segmented picker enough background contrast to make inactive segments legible).
 
 **Screen:** `Konjugieren/Views/SettingsView.swift:93-99`.
 
@@ -688,6 +720,8 @@ The current behavior animates the list and scrolls to the first verb on sort cha
 
 ### 19. Cross-cutting: Define `customCardBackground` named asset
 
+**Status:** Resolved in commit `92d5043`. Color values shipped: `#F2F2F7` light / `#1C1C1E` dark — matches `Color(.secondarySystemBackground)` semantic values. Adopted by `konjCard()`'s background; per-site `Color(.secondarySystemBackground).opacity(0.5)` references replaced via the #2 migration (2026-05-06).
+
 Many surfaces use `Color(.secondarySystemBackground).opacity(0.5)` (or full). Defining a named color asset (`customCardBackground` and optionally `customCardBackgroundSubtle`) gives a single source of truth and lets you tune card opacity in one place. Foundation for #2.
 
 Implementation:
@@ -696,6 +730,8 @@ Implementation:
 2. Replace every site listed in #2 with `Color.customCardBackground`.
 
 ### 20. Cross-cutting: Define `customCardBorder`
+
+**Status:** Resolved in commit `92d5043`. Color value baked into the asset: `customYellow` RGB at alpha 0.080 (`#665300` light / `#FFCE00` dark, both at 8% opacity). Used by `konjCard()` and `konjCardRim()` for the warm-rim overlay.
 
 Same pattern: a single named color for the subtle yellow-tinted card rim if #3's stroke approach is adopted. Color value: `customYellow` at 0.08 opacity baked in.
 
@@ -747,6 +783,8 @@ iOS 26's floating tab pill uses a system material. Konjugieren's `customRed` `.t
 
 ### A. Card-elevation modifier suite
 
+**Status:** Resolved 2026-05-06 (commit `92d5043` for the API; #2/#3 resolutions on the same day for the migration). See "Resolution" block at the end of this section.
+
 Instead of every site re-deciding card opacity, shadow, and border, ship one set of view modifiers in `Utils/Modifiers.swift`:
 
 ```swift
@@ -778,6 +816,18 @@ extension View {
 Collapses the inconsistencies (#2, #3) and makes shadow / border decisions globally tunable.
 
 **When this lands:** implement #2 and #3 by adopting `konjCard()` everywhere. Convert `ConjugationSectionView`'s ad-hoc card setup to `konjCardWithAccentBar()`.
+
+**Resolution (commit `92d5043` + 2026-05-06):**
+
+Shipped in `Konjugieren/Utils/Modifiers.swift`: `KonjCard` (lines 169-180) and `KonjCardWithAccentBar` (lines 182-195) with the public `View` extensions at lines 51-57. Both use the `customCardBackground` (#19) and `customCardBorder` (#20) named color assets, also added in commit `92d5043`.
+
+The recommended snippet shipped verbatim, plus a third modifier `konjCardRim()` for sites that want the rim without surrendering their background or padding. The suite is **opt-in, not enforced** — callers pick from three modifiers based on which parts they want to delegate:
+
+- `konjCard()` — full padding + `customCardBackground` + clip + rim. The default.
+- `konjCardWithAccentBar(_:)` — same as `konjCard()` plus the 2pt yellow leading-edge accent. Used by `ConjugationSectionView`.
+- `konjCardRim()` — just the rim overlay. The caller keeps its own padding, background, and clip. Used by `InfoBrowseView`'s `TutorRowView` to preserve its `Color.customYellow.opacity(0.05)` tint background (the row's identity).
+
+Migration of all five card call sites to use these modifiers landed 2026-05-06; see the #2 and #3 Resolution blocks for the per-site diff and visual confirmation.
 
 ### B. Color semantics documentation
 
@@ -812,9 +862,9 @@ If this audit's #1 fix lands by replacing inline tag sequences with regional-ind
 | `Konjugieren/Views/ResultsView.swift` | Score-card / list divider (#17) |
 | `Konjugieren/Views/MainTabView.swift` | Tab haptic (#9) |
 | `Konjugieren/Views/InfoBrowseView.swift` | Tutor icon emphasis (#21) |
-| `Konjugieren/Utils/Modifiers.swift` | Card-elevation modifiers (cross-cutting #A); GradientDivider lift (#17) |
+| `Konjugieren/Utils/Modifiers.swift` | Card-elevation modifiers (#A — done); GradientDivider lift (#17) |
 | `Konjugieren/Utils/Layout.swift` | Possibly card-corner-radius constant if standardizing |
-| `Konjugieren/Assets/Assets.xcassets` | New color assets `customCardBackground`, `customCardBorder` (#19, #20) |
+| `Konjugieren/Assets/Assets.xcassets` | Color assets `customCardBackground`, `customCardBorder` (#19, #20 — done) |
 
 ---
 
@@ -837,10 +887,10 @@ Since this is an audit (no code changes were made by this document itself), each
 
 If implementing more than one suggestion, this order minimizes rework:
 
-1. **#19 + #20** (color assets) — establishes naming.
-2. **#A** (card modifiers in `Modifiers.swift`) — establishes API.
-3. **#2 + #3** (apply unified card treatment everywhere) — uses #A.
-4. **#1** (fix `[?]` glyph bug) — independent, can ship anytime.
+1. ~~**#19 + #20** (color assets) — establishes naming.~~ *Done in commit `92d5043`.*
+2. ~~**#A** (card modifiers in `Modifiers.swift`) — establishes API.~~ *Done in commit `92d5043`.*
+3. ~~**#2 + #3** (apply unified card treatment everywhere) — uses #A.~~ *Done 2026-05-06.*
+4. ~~**#1** (fix `[?]` glyph bug) — independent, can ship anytime.~~ *Done 2026-05-05.*
 5. **#6 + #11** (card-wrap remaining sections) — uses #A.
 6. **#13** (subheading treatment) — affects all rich-text screens; do once #6/#11 land so the visual context is consistent.
 7. **#4 / #5 / #22 / #10** (Quiz polish) — independent of card system.

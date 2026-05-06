@@ -218,9 +218,7 @@ struct SettingsView: View {
     VStack(alignment: .leading, spacing: Layout.doubleDefaultSpacing) {
       content()
     }
-    .padding(Layout.doubleDefaultSpacing)
-    .background(Color(.secondarySystemBackground).opacity(0.5))
-    .clipShape(RoundedRectangle(cornerRadius: 12))
+    .konjCard()
   }
 
   private func settingSection<Picker: View>(

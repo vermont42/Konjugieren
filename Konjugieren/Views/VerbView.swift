@@ -307,15 +307,7 @@ struct ConjugationSectionView: View {
       .padding(.leading, 8)
       .germanPronunciation()
     }
-    .padding()
-    .background(Color(.secondarySystemBackground).opacity(0.5))
-    .clipShape(RoundedRectangle(cornerRadius: 12))
-    .overlay(alignment: .leading) {
-      Rectangle()
-        .fill(.customYellow.opacity(0.3))
-        .frame(width: 2)
-        .clipShape(RoundedRectangle(cornerRadius: 1))
-    }
+    .konjCardWithAccentBar()
   }
 }
 

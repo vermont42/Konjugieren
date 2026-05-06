@@ -660,6 +660,8 @@ The post-#1 inline emoji fix (England flag + horse glyphs) renders correctly ins
 
 ### 12. VerbView: Differentiate metadata pills
 
+**Status:** Resolved 2026-05-06. See "Resolution" block at the end of this section.
+
 **Screen:** `Konjugieren/Views/VerbView.swift:53-97`, `VerbView.swift:200-206` (`metadataPill` helper).
 
 **Problem:** Family pill, Auxiliary pill, Frequency pill, Separable / Inseparable pill, Ablaut pill — all use identical `Color.customYellow.opacity(0.08)` background. Same color = same meaning, but these mean different things. The German-flag color system already encodes meaning elsewhere (yellow = regular, red = ablaut); the metadata pills are not exploiting it.
@@ -687,6 +689,43 @@ metadataPill(tint: .customYellow) { /* ablaut group — keep yellow but add a th
 The choice is which pills get red. Auxiliary and prefix-affixation are the most "structural" — both affect sentence-level construction beyond the verb form itself. Frequency and family are descriptive metadata. Ablaut group is a visual exception worth marking.
 
 **Independent of:** all other suggestions.
+
+**Resolution (2026-05-06):**
+
+`VerbView.swift:204-218` — `metadataPill` helper generalized to accept `tint: Color = .customYellow` and `bordered: Bool = false`, with the bordered branch emitting `Capsule().strokeBorder(tint.opacity(0.4), lineWidth: 1.5)`. Two deviations from the audit's snippet:
+
+1. **Border specification: 1.5pt at 40% opacity instead of 1pt at 30%.** The audit's `.strokeBorder(.customYellow.opacity(0.3))` (1pt default) reads too faintly against the 0.08-fill backdrop in light-or-dark mode. Per Q2 in the followup, started at 1.5pt/40% — landed visibly distinct from un-bordered yellow without competing with red pills. No iteration needed.
+2. **`@ViewBuilder` overlay form.** The audit's snippet was `.overlay(Capsule().strokeBorder(...))` (non-builder), which would always evaluate the Capsule even when `bordered: false`. Switched to `.overlay { if bordered { ... } }` so the empty branch produces an `EmptyView` and is free at the un-bordered call sites. Functionally equivalent at the call sites that need a border; idiomatic SwiftUI elsewhere.
+
+`VerbView.swift:53-97` — six pill call sites updated per the D1 mapping (yellow = descriptive, red = structural):
+
+- Line 54 (Family): `tint: .customYellow` — descriptive.
+- Line 59 (Auxiliary): `tint: .customRed` — structural; controls Perfekt construction with `sein`/`haben`.
+- Line 68 (Frequency): `tint: .customYellow` — descriptive.
+- Line 78 (Separable): `tint: .customRed` — structural; affects word order.
+- Line 82 (Inseparable): `tint: .customRed` — structural; affects word order.
+- Line 88 (Ablaut): `tint: .customYellow, bordered: true` — descriptive but visually exceptional; the border distinguishes it from family/frequency.
+
+Audit said "five pill call sites" — in the source there are six, because Separable and Inseparable are mutually exclusive at runtime but live as two separate `if` branches. Both go red.
+
+D1/D2/D3 ratification (per Q1–Q5 in `docs/ui-audit-2-next-session-followup.md`, an ephemeral working-memory file the cleanup convention says to delete after the batch lands): D1 audit mapping ratified. D2 border started at 1.5pt/40% (no iteration). D3 amended for #14 (see below).
+
+**Q5 customRed-coexistence assessment (post-implementation):** the new structural-pill red and the existing mixed-case-letters red (rendered via `Text(mixedCaseString:)` at `VerbView.swift:303` → `TextExtension.swift:75/91`) are spatially separated by the `Divider` between the metadata block (lines 53-97) and the conjugation grid (lines 109-113 / 172-202). At the all-5-pill exemplar `ankommen`, the post-batch screenshot (`docs/screenshots/20260506-141709-post12-ankommen-default.png`) shows red `sein` and red `Separable` above the divider; the conjugation rows below show no red because the present-tense forms don't trigger ablaut. At `werden` (`docs/screenshots/20260506-141502-post12-werden-default.png`), red `sein` is above the divider and red ablaut letters in `geworden` and `wirst` are below — visually coherent rather than competing, since both reds carry the same semantic weight ("structural impact" / "irregular structural mutation").
+
+Visual confirmation:
+
+- **Pre-batch baselines** (uniform yellow pills): `docs/screenshots/20260506-140402-pre12-werden-default.png` (4 pills), `docs/screenshots/20260506-140518-pre12-machen-default.png` (3 pills, no second HStack), `docs/screenshots/20260506-140721-pre12-befinden-default.png` (5 pills, inseparable+ablaut), `docs/screenshots/20260506-140839-pre12-ankommen-default.png` (5 pills, separable+ablaut).
+- **Post-batch** (differentiated): `docs/screenshots/20260506-141502-post12-werden-default.png`, `docs/screenshots/20260506-141553-post12-machen-default.png`, `docs/screenshots/20260506-141631-post12-befinden-default.png`, `docs/screenshots/20260506-141709-post12-ankommen-default.png`.
+- **AX3 differentiation check**: `docs/screenshots/20260506-141021-pre14-werden-AX3.png` (pre — uniform yellow), `docs/screenshots/20260506-142020-post14-werden-AX3.png` (post — red sein, bordered ablaut). Confirms the differentiation reads at accessibility size too, despite the existing per-pill word-wrap that already crowds the row.
+
+**Smoke checks:**
+
+- `machen` (no prefix, no ablaut): the conditional second HStack at lines 75-97 does not render — only Family / Auxiliary / Frequency pills shown. Pre and post screenshots both confirm.
+- Audit-doc claim that `aufstehen` was the all-5-pill exemplar — `aufstehen` is **not in the corpus**. The followup corrected to `ankommen` (`an+k^om^men`, fr=253), which is in the corpus and was used here.
+
+Build and tests: `Build Succeeded`; `Test run with 122 tests in 17 suites passed after 26.400 seconds`. No regressions.
+
+**No accessibility regressions:** existing `.accessibilityLabel(Text(verbatim: ...))` calls on the Auxiliary, Frequency, and Ablaut pills (which override the SF-Symbol-default reading) are preserved unchanged. Tint and border are purely presentational and don't affect VoiceOver.
 
 ### 13. InfoView: Subheading visual treatment
 
@@ -741,6 +780,8 @@ The existing `SubheadingLabel` ViewModifier in `Modifiers.swift:64-72` (used by 
 
 ### 14. VerbView: Long infinitives wrap rather than scale-down
 
+**Status:** Resolved 2026-05-06 with caveats. See "Resolution" block at the end of this section — the audit's stated default-size visible-wrap goal was **not achieved** for the current corpus, but the change is shipped as-is on the strength of an AX-size win and zero default-size regression.
+
 **Screen:** `Konjugieren/Views/VerbView.swift:41-42`.
 
 ```swift
@@ -763,6 +804,42 @@ Text(verb.infinitiv)
 ```
 
 **Verify:** test with `auseinandersetzen`, `zusammenarbeiten`, and other long verbs that the title still looks reasonable on the smallest supported device width (iPhone SE if still supported, otherwise iPhone 15 base).
+
+**Resolution (2026-05-06):**
+
+`VerbView.swift:42` — `.lineLimit(1)` removed. `.minimumScaleFactor(0.5)` at line 41 **retained** as an accessibility-size safety net, per Q1's amended D3 in the followup. The audit's "drop both" lean was superseded after surfacing dynamic-type behavior: at AX1–AX5, `.largeTitle` scales up dramatically and even short verbs can overflow iPhone width; SwiftUI doesn't break a single token across lines via word-wrapping alone, so without `.minimumScaleFactor` the AX-size result would be horizontal overflow / clipping rather than wrap.
+
+**Empirical finding from post-batch screenshots — the audit's default-size assumption was incorrect:**
+
+SwiftUI's text-fitting algorithm appears to prefer scale-down (within `.minimumScaleFactor` bounds) over wrap. Wrap with locale-aware German hyphenation only triggers when even max scale-down can't fit one line. Concrete observations using `auseinandersetzen` (the corpus's longest infinitive at 19 stored chars / 17 displayed chars):
+
+| Size | Behavior | Screenshot |
+|---|---|---|
+| Default (large) pre-batch | Single line, scaled to ~0.85x via `.minimumScaleFactor(0.5)` | `20260506-140917-pre14-auseinandersetzen-default.png` |
+| Default (large) post-batch | Single line, scaled to ~0.85x — **identical to pre-batch** | `20260506-141823-post14-auseinandersetzen-default.png` |
+| AX3 pre-batch | Single line, scaled to ~0.5x (max scale-down) | `20260506-141103-pre14-auseinandersetzen-AX3.png` |
+| AX3 post-batch | **Two lines, full `.largeTitle`, hyphenated as `auseinander-/setzen`** | `20260506-142059-post14-auseinandersetzen-AX3.png` |
+
+At default size, removing `.lineLimit(1)` had **zero visible effect** on the canonical long verb. SwiftUI absorbs the slight overflow via `.minimumScaleFactor` before falling back to wrap. At AX3, the natural width vastly exceeds the available width and even max scale-down can't fit, so SwiftUI cleanly wraps with German hyphenation at the compound boundary `auseinander-setzen` — which is exactly the audit's stated intent, just not at the size the audit was looking at.
+
+**Why this is shipped as-is rather than iterated:**
+
+The change is well-scoped: it removes a redundant constraint when `.minimumScaleFactor` is the actual fitting mechanism. There is no regression at any size. The AX-size hyphenation win is real and was previously suppressed by `.lineLimit(1)`. No other corpus verb is longer than `auseinandersetzen`, so the default-size scale-down behavior is the same for every realistic case in the app.
+
+**Options for future iteration if Josh wants visible default-size wrap:**
+
+1. **Tighten `.minimumScaleFactor`** (e.g., `0.85`) to force wrap at default size for verbs that currently scale below 85%. Side effect: borderline verbs that previously got minor scale-down now wrap; need to verify the visual at 12-15 character verbs.
+2. **Remove `.minimumScaleFactor` entirely.** Default and AX both rely on wrap; single-token unbreakable cases would overflow / truncate, which doesn't apply to German verbs (all wrap-eligible at compound boundaries) but loses the safety net for any future text that isn't a German infinitive.
+3. **Apply a manual line-break at compound boundaries.** Verbs.xml already encodes prefix boundaries via `+` and `*`. A `displayInfinitive(withSoftBreak:)` accessor could insert `\u{200B}` (zero-width space) at the prefix boundary to give SwiftUI a break opportunity at default size. Touches Verb-rendering surfaces beyond VerbView.
+
+This batch ships option (0) — the change-as-spec'd. The above options are documented for a future audit cycle if visible default-size wrap becomes a stated goal again.
+
+**Smoke checks:**
+
+- Short verb at AX3 (`werden`, 6 chars): full `.largeTitle`, no scale or wrap. Pre and post screenshots match (`20260506-141021-pre14-werden-AX3.png`, `20260506-142020-post14-werden-AX3.png`). Confirms `.minimumScaleFactor` is dormant when not needed and the wrap behavior is reserved for the genuine overflow case.
+- Default-size short verbs (`werden`, `machen`, `befinden`, `ankommen`): unchanged. Visual confirmation in #12's screenshot inventory.
+
+Build and tests: `Build Succeeded`; `Test run with 122 tests in 17 suites passed after 26.400 seconds`. No regressions.
 
 ### 15. SettingsView: Audio Feedback inactive segment contrast
 
@@ -1055,5 +1132,5 @@ If implementing more than one suggestion, this order minimizes rework:
 6. ~~**#13** (subheading treatment) — affects all rich-text screens; do once #6/#11 land so the visual context is consistent.~~ *Done 2026-05-06.*
 7. ~~**#4 / #5 / #22 / #10** (Quiz polish) — independent of card system.~~ *Done 2026-05-06.*
 8. ~~**#7 / #8(a)** (Settings polish) — independent.~~ *Done 2026-05-06. #8(b) deferred.*
-9. **~~#9~~ / #14 / #16 / #17 / #21** — small independent items. *#9 done 2026-05-06.*
+9. **~~#9~~ / ~~#14~~ / #16 / #17 / #21** — small independent items. *#9 done 2026-05-06. #14 done 2026-05-06.*
 10. Skip / defer **#23 / #24** unless explicit user feedback motivates them.

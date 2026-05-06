@@ -39,7 +39,6 @@ struct VerbView: View {
             .fontWeight(.bold)
             .fontDesign(.serif)
             .minimumScaleFactor(0.5)
-            .lineLimit(1)
             .accessibilityAddTraits(UserLocale.isGerman ? .isHeader : [])
             .germanPronunciation()
             .speakOnTap(verb.infinitiv)
@@ -51,12 +50,12 @@ struct VerbView: View {
             .speakOnTap(verb.translation, localeString: UttererLocale.english)
 
           HStack(spacing: 8) {
-            metadataPill {
+            metadataPill(tint: .customYellow) {
               Label(verb.family.displayName, systemImage: "tag")
                 .accessibilityLabel(Text(verbatim: verb.family.displayName))
                 .englishPronunciation()
             }
-            metadataPill {
+            metadataPill(tint: .customRed) {
               Label {
                 Text(verbatim: verb.auxiliary.verb)
               } icon: {
@@ -65,7 +64,7 @@ struct VerbView: View {
               .accessibilityLabel(Text(verbatim: verb.auxiliary.verb))
               .germanPronunciation()
             }
-            metadataPill {
+            metadataPill(tint: .customYellow) {
               Label("#\(verb.frequency)", systemImage: verb.frequencyIcon)
                 .accessibilityLabel(Text(verbatim: "#\(verb.frequency)"))
             }
@@ -75,17 +74,17 @@ struct VerbView: View {
           if verb.prefix != .none || verb.ablautGroup != nil {
             HStack(spacing: 8) {
               if case .separable = verb.prefix {
-                metadataPill {
+                metadataPill(tint: .customRed) {
                   Label(L.BrowseableFamily.separable, systemImage: "arrow.left.arrow.right")
                 }
               } else if case .inseparable = verb.prefix {
-                metadataPill {
+                metadataPill(tint: .customRed) {
                   Label(L.BrowseableFamily.inseparable, systemImage: "link")
                 }
               }
 
               if let ablautGroup = verb.ablautGroup {
-                metadataPill {
+                metadataPill(tint: .customYellow, bordered: true) {
                   Label(ablautGroup, systemImage: "figure.and.child.holdinghands")
                     .accessibilityLabel(Text(verbatim: ablautGroup))
                     .germanPronunciation()
@@ -201,11 +200,20 @@ struct VerbView: View {
     conjugationSection(for: Conjugationgroup.futurKonjunktivII)
   }
 
-  private func metadataPill<Content: View>(@ViewBuilder content: () -> Content) -> some View {
+  private func metadataPill<Content: View>(
+    tint: Color = .customYellow,
+    bordered: Bool = false,
+    @ViewBuilder content: () -> Content
+  ) -> some View {
     content()
       .padding(.horizontal, 8)
       .padding(.vertical, 4)
-      .background(Color.customYellow.opacity(0.08))
+      .background(tint.opacity(0.08))
+      .overlay {
+        if bordered {
+          Capsule().strokeBorder(tint.opacity(0.4), lineWidth: 1.5)
+        }
+      }
       .clipShape(Capsule())
   }
 

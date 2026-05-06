@@ -168,6 +168,7 @@ docs/
 ├── adding-verbs.md            # Verb-addition guide: XML formats, ablaut system, lessons learned
 ├── bratwurst-icon-prompts.md  # Prompts used to generate bratwurst-themed app icons
 ├── conjugationgroupText.md    # Template and guidelines for conjugationgroup articles
+├── emoji-assets.md            # Why some emoji ship as PNG assets (iOS 26 emoji-rendering workaround)
 ├── etymologies.md             # Etymology pipeline documentation
 ├── example-sentence-pipeline.md   # Pipeline for generating literary example sentences
 ├── example-sentence-prompt.md     # Prompt template for example sentence generation
@@ -187,12 +188,14 @@ docs/
 ├── sound-replacement-prompts.md    # Prompts used to generate replacement sound effects
 ├── terminology.md             # Conjugationgroup definitions, tense/mood/voice distinctions
 ├── tutor-test-queries.txt     # Test queries for the AI tutor
-├── ui-audit.md                # UI audit notes and findings
+├── ui-audit.md                # UI audit notes and findings (Round One; implemented in commit 657bb4f)
+├── ui-audit-2.md              # UI audit Round Two — post-657bb4f suggestions; self-contained for future implementation sessions
 ├── vanilla_build_and_test.md  # Raw xcodebuild commands for opting out of the ios-build-verify dependency
 └── voiceover.md               # VoiceOver pronunciation patterns and per-screen strategy
 
 scripts/
-└── generate_verb_pdf.py       # Generates PDF verb conjugation tables
+├── generate_verb_pdf.py       # Generates PDF verb conjugation tables
+└── render_emoji.swift         # Renders emoji glyphs to PNG assets in Assets.xcassets (workaround for iOS 26 emoji-rendering bug; see docs/emoji-assets.md)
 
 corpus/                        # German text corpus for example sentence sourcing
 ├── README.md

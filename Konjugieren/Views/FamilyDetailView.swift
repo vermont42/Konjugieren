@@ -90,14 +90,14 @@ struct PrefixHeaderView: View {
         .accessibilityAddTraits(.isHeader)
 
       HStack(spacing: 4) {
-        Text("🏴󠁧󠁢󠁥󠁮󠁧󠁿")
+        Text("\(Image("EmojiEnglandFlag").renderingMode(.original))")
         Text(prefix.englishMeaning)
           .foregroundStyle(.customForeground)
       }
       .font(.subheadline)
 
       HStack(spacing: 4) {
-        Text("🐎")
+        Text("\(Image("EmojiHorse").renderingMode(.original))")
         Text(prefix.pie)
           .foregroundStyle(.customYellow)
           .italic()

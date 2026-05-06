@@ -15,6 +15,7 @@ enum ConjugationPart: Hashable {
 enum TextSegment: Hashable {
   case bold(String)
   case conjugation([ConjugationPart])
+  case emoji(String)
   case link(text: String, url: URL)
   case plain(String)
 }
@@ -24,6 +25,7 @@ extension String {
   static var boldSeparator: Character { "~" }
   static var linkSeparator: Character { "%" }
   static var conjugationSeparator: Character { "$" }
+  static var emojiSeparator: Character { "^" }
 
   func trimmingLeadingNewlines() -> String {
     var result = self
@@ -90,6 +92,7 @@ extension String {
     var inBold = false
     var inLink = false
     var inConjugation = false
+    var inEmoji = false
     var markupStart = self.startIndex
 
     for index in self.indices {
@@ -157,7 +160,24 @@ extension String {
           inConjugation = true
           markupStart = index
         }
-      } else if !inBold && !inLink && !inConjugation {
+      } else if char == String.emojiSeparator {
+        if inEmoji {
+          let content = String(self[self.index(after: markupStart)..<index])
+          if !currentText.isEmpty {
+            segments.append(.plain(currentText))
+            currentText = ""
+          }
+          segments.append(.emoji(content))
+          inEmoji = false
+        } else {
+          if !currentText.isEmpty {
+            segments.append(.plain(currentText))
+            currentText = ""
+          }
+          inEmoji = true
+          markupStart = index
+        }
+      } else if !inBold && !inLink && !inConjugation && !inEmoji {
         currentText.append(char)
       }
     }
@@ -174,6 +194,9 @@ extension String {
     }
     if inConjugation {
       Current.fatalError.fatalError("Unterminated delimiter: $")
+    }
+    if inEmoji {
+      Current.fatalError.fatalError("Unterminated delimiter: ^")
     }
 
     return segments
@@ -227,6 +250,8 @@ extension [TextSegment] {
       case .plain(let text):
         return text
       case .bold(let text):
+        return text
+      case .emoji(let text):
         return text
       case .link(let text, _):
         return text

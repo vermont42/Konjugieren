@@ -108,38 +108,40 @@ struct InfoRowView: View {
   }
 
   private func formattedPreviewText() -> some View {
-    var result = AttributedString()
-
-    for segment in info.previewSegments {
-      switch segment {
-      case .plain(let text):
-        result.append(AttributedString(text))
-
-      case .bold(let text):
-        var attributed = AttributedString(text)
-        attributed.inlinePresentationIntent = .stronglyEmphasized
-        result.append(attributed)
-
-      case .link(let text, _):
-        result.append(AttributedString(text))
-
-      case .conjugation(let parts):
-        for part in parts {
-          switch part {
-          case .regular(let text):
-            result.append(AttributedString(text))
-          case .irregular(let text):
-            var irregularAttr = AttributedString(text)
-            irregularAttr.foregroundColor = Color.customRed
-            result.append(irregularAttr)
-          }
-        }
-      }
-    }
-
-    return Text(result)
+    info.previewSegments.reduce(Text(verbatim: "")) { $0 + previewText(for: $1) }
       .font(.subheadline)
       .foregroundStyle(.customForeground)
+  }
+
+  private func previewText(for segment: TextSegment) -> Text {
+    switch segment {
+    case .emoji(let content):
+      if let assetName = EmojiAsset.assetName(for: content) {
+        return Text("\(Image(assetName).renderingMode(.original))")
+      }
+      return Text(verbatim: content)
+    case .plain(let text):
+      return Text(AttributedString(text))
+    case .bold(let text):
+      var attributed = AttributedString(text)
+      attributed.inlinePresentationIntent = .stronglyEmphasized
+      return Text(attributed)
+    case .link(let text, _):
+      return Text(AttributedString(text))
+    case .conjugation(let parts):
+      var result = AttributedString()
+      for part in parts {
+        switch part {
+        case .regular(let text):
+          result.append(AttributedString(text))
+        case .irregular(let text):
+          var irregularAttr = AttributedString(text)
+          irregularAttr.foregroundColor = Color.customRed
+          result.append(irregularAttr)
+        }
+      }
+      return Text(result)
+    }
   }
 }
 

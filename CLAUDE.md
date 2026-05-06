@@ -22,6 +22,10 @@ The skill also provides a verify half (launch the app, tap by accessibility iden
 
 Konjugieren shows a custom "Enjoying Konjugieren?" review prompt gated by `promptActionCount` and `lastReviewPromptDate` cooldowns (see `Settings.swift`). On a simulator with accumulated UserDefaults — typical after exploratory testing — the prompt fires on launch and gates the AXTree, and `launch_app.sh` exits 5 with the modal-gating hint pointing at SKILL.md "Modal AXTree gating". Recovery: tap "Not Now" once (cooldown blocks subsequent prompts) or `xcrun simctl uninstall <UDID> biz.joshadams.Konjugieren` for a clean reset.
 
+### App-specific friction: Apple Intelligence Tutor host-eligibility on iOS 26.3+
+
+The Tutor row in `InfoBrowseView`, the `ErrorExplainerView` card in `QuizView`, and the Tutor page in `OnboardingView` are all gated on `Current.languageModelService.isAvailable`. The simulator delegates `SystemLanguageModel(guardrails:).availability` resolution to the host Mac via the `os-eligibility-domain.change.greymatter` gate. Earlier iOS 26.x simulator runtimes were permissive enough that Intel-Mac hosts could exercise these surfaces; iOS 26.3.1 tightened the gate, and Intel-Mac hosts now resolve to `.unavailable(.deviceNotEligible)`. The failure is silent — gated UI simply doesn't render, with no console error. Verify Tutor / ErrorExplainer / onboarding-Tutor flows on a real Apple-Intelligence-capable iPhone or an Apple Silicon Mac on macOS 26+. UI screenshots taken on this Intel host should not be used to evaluate any Tutor-gated surface.
+
 ### Diagnostic fallback (raw xcodebuild)
 
 When `xcbeautify`'s lossy filter drops an early-stage error or you need raw `xcodebuild` output:

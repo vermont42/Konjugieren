@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This project uses the [`ios-build-verify`](https://github.com/vermont42/ios-build-verify) Claude Code skill for build and test. The scripts pipe `xcodebuild` through `xcbeautify` for concise output and tee raw output to `build.log` as a fallback. Per-project config lives in `.claude/ios-build-verify.config.sh` (gitignored).
 
-Future Claude Code sessions in this project resolve the skill via plugin metadata and invoke `build_app.sh` / `run_tests.sh` by name. For terminal use, `--only-testing "Target/Suite/method()"` filters to a single test (Swift Testing requires the trailing `()` on method names — omitting them silently runs zero tests).
+Future Claude Code sessions invoke `build_app.sh` / `run_tests.sh` via the skill's `scripts/` directory. The plugin-marketplace install location includes a version segment that rotates on each release bump; resolve it once per session with `export IBV_SCRIPTS=$(dirname "$(find ~/.claude -path '*ios-build-verify*' -name build_app.sh 2>/dev/null | head -1)")`, then invoke as `"$IBV_SCRIPTS/build_app.sh"`. See SKILL.md's "Resolving the script path" section for the full convention. For terminal use, `--only-testing "Target/Suite/method()"` filters to a single test (Swift Testing requires the trailing `()` on method names — omitting them silently runs zero tests).
 
 The skill also provides a verify half (launch the app, tap by accessibility identifier, screenshot, audit views). See its `SKILL.md` for the full operation surface.
 

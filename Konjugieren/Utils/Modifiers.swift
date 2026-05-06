@@ -47,6 +47,14 @@ extension View {
   func speakOnTap(_ text: String, localeString: String = UttererLocale.german) -> some View {
     modifier(SpeakOnTap(text: text, localeString: localeString))
   }
+
+  func konjCard() -> some View {
+    modifier(KonjCard())
+  }
+
+  func konjCardWithAccentBar(_ color: Color = .customYellow) -> some View {
+    modifier(KonjCardWithAccentBar(color: color))
+  }
 }
 
 private struct SubheadingLabel: ViewModifier {
@@ -154,6 +162,34 @@ private struct SpeakOnTap: ViewModifier {
           try? await Task.sleep(for: .milliseconds(300))
           isSpeaking = false
         }
+      }
+  }
+}
+
+private struct KonjCard: ViewModifier {
+  func body(content: Content) -> some View {
+    content
+      .padding()
+      .background(Color.customCardBackground)
+      .clipShape(RoundedRectangle(cornerRadius: 12))
+      .overlay(
+        RoundedRectangle(cornerRadius: 12)
+          .strokeBorder(Color.customCardBorder, lineWidth: 1)
+      )
+  }
+}
+
+private struct KonjCardWithAccentBar: ViewModifier {
+  let color: Color
+
+  func body(content: Content) -> some View {
+    content
+      .konjCard()
+      .overlay(alignment: .leading) {
+        Rectangle()
+          .fill(color.opacity(0.3))
+          .frame(width: 2)
+          .clipShape(RoundedRectangle(cornerRadius: 1))
       }
   }
 }

@@ -92,11 +92,16 @@ All under `docs/screenshots/`, captured 2026-05-05:
 `ios-build-verify` is configured in `.claude/ios-build-verify.config.sh` (gitignored). Operations used in this audit:
 
 ```bash
+# Resolve the skill's scripts/ directory once per session. Plugin-marketplace
+# install location includes a version segment that rotates on release bumps;
+# see SKILL.md "Resolving the script path" for the full convention.
+export IBV_SCRIPTS=$(dirname "$(find ~/.claude -path '*ios-build-verify*' -name build_app.sh 2>/dev/null | head -1)")
+
 # Build (pipes xcodebuild through xcbeautify; tees raw to build.log).
-bash ~/.claude/plugins/cache/ios-build-verify/.../scripts/build_app.sh
+"$IBV_SCRIPTS/build_app.sh"
 
 # Launch — polls FIRST_SCREEN_ID=verb_browse_anchor and auto-taps Skip on onboarding.
-bash ~/.claude/plugins/cache/ios-build-verify/.../scripts/launch_app.sh
+"$IBV_SCRIPTS/launch_app.sh"
 
 # Verify operations: tap_id / tap_label / tap_xy / tap_tab / screenshot / describe-ui.
 # axe is the underlying tool; run `axe describe-ui --udid <UDID>` to see the AXTree.
@@ -186,8 +191,8 @@ c. **Localize the inline references away.** Restructure the prose so it does not
 
 ```bash
 python3 -c "import json; json.load(open('Konjugieren/Assets/Localizable.xcstrings'))"
-bash ~/.claude/plugins/cache/ios-build-verify/.../scripts/build_app.sh
-bash ~/.claude/plugins/cache/ios-build-verify/.../scripts/launch_app.sh
+"$IBV_SCRIPTS/build_app.sh"   # IBV_SCRIPTS set per "Driving the simulator" section above
+"$IBV_SCRIPTS/launch_app.sh"
 # Tap Families tab, tap Separable, scroll to the prose paragraph, screenshot.
 ```
 
@@ -824,7 +829,7 @@ Since this is an audit (no code changes were made by this document itself), each
    ```bash
    python3 -c "import json; json.load(open('Konjugieren/Assets/Localizable.xcstrings'))"
    ```
-5. **Test suite**: `bash ~/.claude/plugins/cache/ios-build-verify/.../scripts/run_tests.sh`. None of the suggestions touch test-coverable logic, but the test suite should pass cleanly post-change.
+5. **Test suite**: `"$IBV_SCRIPTS/run_tests.sh"` (set `IBV_SCRIPTS` per the "Driving the simulator" section above). None of the suggestions touch test-coverable logic, but the test suite should pass cleanly post-change.
 
 ---
 

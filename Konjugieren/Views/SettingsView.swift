@@ -104,21 +104,52 @@ struct SettingsView: View {
                 heading: L.Settings.appIconHeading,
                 description: L.Settings.appIconDescription
               ) {
-                Picker(L.Settings.appIconHeading, selection: $settings.appIcon) {
+                LazyVGrid(
+                  columns: Array(
+                    repeating: GridItem(.flexible(), spacing: Layout.defaultSpacing),
+                    count: 4
+                  ),
+                  spacing: Layout.defaultSpacing
+                ) {
                   ForEach(AppIcon.allCases, id: \.self) { appIcon in
-                    Text(appIcon.localizedAppIcon).tag(appIcon)
+                    Button {
+                      settings.appIcon = appIcon
+                    } label: {
+                      VStack(spacing: 4) {
+                        Image(appIcon.previewAssetName)
+                          .resizable()
+                          .aspectRatio(1, contentMode: .fit)
+                          .frame(width: 60, height: 60)
+                          .clipShape(RoundedRectangle(cornerRadius: 14, style: .continuous))
+                          .overlay(
+                            RoundedRectangle(cornerRadius: 14, style: .continuous)
+                              .strokeBorder(
+                                settings.appIcon == appIcon ? Color.customYellow : Color.clear,
+                                lineWidth: 3
+                              )
+                          )
+                          .accessibilityHidden(true)
+                        Text(appIcon.localizedAppIcon)
+                          .font(.caption2)
+                          .foregroundStyle(.customForeground)
+                      }
+                    }
+                    .buttonStyle(.plain)
+                    .accessibilityAddTraits(settings.appIcon == appIcon ? .isSelected : [])
                   }
                 }
-                .pickerStyle(.segmented)
+                .sensoryFeedback(.selection, trigger: settings.appIcon)
               }
             }
 
             settingsCard {
               VStack(spacing: Layout.doubleDefaultSpacing) {
                 if Current.gameCenter.isAuthenticated {
-                  Button(L.GameCenter.viewLeaderboard) {
+                  Button {
                     Current.gameCenter.showLeaderboard()
                     Current.analytics.signal(name: .tapViewLeaderboard)
+                  } label: {
+                    Label(L.GameCenter.viewLeaderboard, systemImage: "trophy.fill")
                   }
                   .funButton()
                   .frame(maxWidth: .infinity)
@@ -130,9 +161,11 @@ struct SettingsView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
 
-                Button(L.Onboarding.showOnboarding) {
+                Button {
                   showingOnboarding = true
                   Current.analytics.signal(name: .tapShowOnboarding)
+                } label: {
+                  Label(L.Onboarding.showOnboarding, systemImage: "questionmark.circle.fill")
                 }
                 .funButton()
                 .frame(maxWidth: .infinity)
@@ -143,10 +176,12 @@ struct SettingsView: View {
                   .foregroundStyle(.customForeground)
                   .frame(maxWidth: .infinity, alignment: .leading)
 
-                Button(L.Game.playGame) {
+                Button {
                   showingGame = true
                   playGameTip.invalidate(reason: .actionPerformed)
                   Current.analytics.signal(name: .tapPlayGame)
+                } label: {
+                  Label(L.Game.playGame, systemImage: "gamecontroller.fill")
                 }
                 .funButton()
                 .frame(maxWidth: .infinity)
@@ -158,10 +193,12 @@ struct SettingsView: View {
                   .frame(maxWidth: .infinity, alignment: .leading)
 
                 if Current.languageModelService.isAvailable, hasChatHistory {
-                  Button(L.Tutor.deleteChatHistory) {
+                  Button {
                     TutorChatHistory.clear(getterSetter: Current.getterSetter)
                     hasChatHistory = false
                     Current.analytics.signal(name: .tapDeleteChatHistory)
+                  } label: {
+                    Label(L.Tutor.deleteChatHistory, systemImage: "trash")
                   }
                   .funButton()
                   .frame(maxWidth: .infinity)
@@ -172,9 +209,11 @@ struct SettingsView: View {
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
 
-                Button(L.Settings.rateOrReview) {
+                Button {
                   UIApplication.shared.open(RatingsFetcher.reviewURL)
                   Current.analytics.signal(name: .tapRateOrReview)
+                } label: {
+                  Label(L.Settings.rateOrReview, systemImage: "star.fill")
                 }
                 .funButton()
                 .frame(maxWidth: .infinity)

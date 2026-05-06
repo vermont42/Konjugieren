@@ -437,6 +437,8 @@ Visual confirmation:
 
 ### 7. Settings: App Icon picker — replace text segments with previews
 
+**Status:** Resolved 2026-05-06. See "Resolution" block at the end of this section.
+
 **Screen:** `Konjugieren/Views/SettingsView.swift:103-114`.
 
 **Visual proof:** `docs/screenshots/20260505-104427-settings-scrolled1.png`. Four-segment `.segmented` `Picker` with text labels Bratwurst / Bundestag / Hat / Pretzel — labels are very tight at iPhone width.
@@ -478,7 +480,31 @@ ls Konjugieren/Assets/Assets.xcassets/AppIcon.appiconset
 ls Konjugieren/Assets/Assets.xcassets | grep -i icon
 ```
 
+**Resolution (2026-05-06):**
+
+`AppIcon.swift` — added `previewAssetName: String` mapping each enum case to its preview imageset: `.bratwurst → "BratwurstIconPreview"`, `.bundestag → "Bundestag"`, `.hat → "Hat"`, `.pretzel → "Pretzel"`. Drive-by per CLAUDE.md's "Alphabetize Enum Cases" rule: the existing `localizedAppIcon` and `alternateIconName` switches were also alphabetized in the same edit. Both had been declared in non-alphabetical order (`bratwurst → hat → pretzel → bundestag`) since the file's inception, even though the enum cases at lines 3-7 were already alphabetical. Three switches in one file now share consistent ordering.
+
+`SettingsView.swift:102-141` — replaced the App Icon segmented `Picker` with a `LazyVGrid` of four selectable `Button`s. Layout uses `Array(repeating: GridItem(.flexible(), spacing: Layout.defaultSpacing), count: 4)` for a fixed 4-column row — predictable across iPhone and iPad and matches the icon count exactly — instead of the audit's `[GridItem(.adaptive(minimum: 72))]`, which would have packed 8+ columns at iPad widths. Each cell is a `VStack` containing `Image(appIcon.previewAssetName).resizable().aspectRatio(1, contentMode: .fit).frame(width: 60, height: 60)` clipped via `RoundedRectangle(cornerRadius: 14, style: .continuous)` — the `.continuous` style matches iOS's actual app-icon squircle curvature better than the default rounded rect — with a 3pt `customYellow` stroke overlay when selected (`Color.clear` when not, so layout doesn't shift on selection change), and a `.font(.caption2)` Text caption beneath. The Button uses `.buttonStyle(.plain)` to suppress the system's default tinted-pill chrome — visual identity comes from the thumbnail itself.
+
+Accessibility: `.accessibilityHidden(true)` on the `Image` (the Text caption is the spoken label, avoiding double-announcement) and `.accessibilityAddTraits(settings.appIcon == appIcon ? .isSelected : [])` on the Button. The standard iOS-localized "selected" announcement is used, which avoided introducing any new localized strings to the catalog.
+
+`.sensoryFeedback(.selection, trigger: settings.appIcon)` is applied to the LazyVGrid, mirroring the precedent set by #9's tab-change haptic on `MainTabView`.
+
+The audit's snippet at lines 449-470 was directionally correct but had two implementation gaps that surfaced during shipping: (1) it omitted `.buttonStyle(.plain)`, which would have allowed the system's default Button tint to fight with the thumbnail visual; (2) it didn't specify a corner-radius style, leaving the default non-`.continuous` rounded rect that reads less iOS-native than `.continuous` does. Future audits in this file should default to `.continuous` for any rounded shape meant to evoke a real iOS surface.
+
+The icon-swap side effect remains transparent: `Settings.appIcon.didSet` in `Settings.swift:118-125` already calls `setAppIcon(_:)` which invokes `UIApplication.setAlternateIconName(_:)`. The new Buttons mutate `settings.appIcon` exactly as the old Picker did, so no extra `.onChange` plumbing was needed. Note that the icon swap is only visible after backgrounding the app — the in-app picker doesn't show the home-screen icon change, so verification of the swap itself requires a manual home-screen check.
+
+**Bug-and-fix during shipping:** the initial implementation pointed `previewAssetName` for `.bratwurst` at the existing `BratwurstBroetchen.imageset` (the only bratwurst-themed imageset in `Assets.xcassets` at the time). Post-implementation visual verification revealed the bratwurst thumbnail rendered as a bright white squircle with the bratwurst illustration in the middle — visually broken against the dark Settings card. Pixel sampling on `BratwurstBroetchen.png` (512×512 RGBA) confirmed the root cause: corner pixels at `(248, 254, 251)` with alpha=255 throughout — a fully opaque cream/white background baked into the source image, with no `-light` luminosity variant. The other three preview imagesets (`Hat`, `Bundestag`, `Pretzel`) all ship paired light/dark variants with corner pixels at `(0,0,0)` for dark and `~(240,240,225)` for light, so they integrate properly with the surrounding card in either appearance mode. `BratwurstBroetchen` was a single-asset orphan with no other consumers in the codebase (verified by grep). The fix: a new `BratwurstIconPreview.imageset` was created by copying the actual `BratwurstIcon.appiconset` artwork (`BratwurstIcon.png` + `BratwurstIcon-light.png`, both 1024×1024 with corner pixels matching the established `(0,0,0)` / `(237,233,224)` pattern) into the new imageset with a `Contents.json` declaring the `appearance: luminosity, value: light` variant per the `Hat.imageset` template. The orphaned `BratwurstBroetchen.imageset` was deleted, and `previewAssetName` for `.bratwurst` was updated to return `"BratwurstIconPreview"`. **Generalizable lesson:** when adopting an existing asset for a new role (especially as a thumbnail with adjacency to a designed surface), verify pixel-level properties first — opacity, corner color, presence of luminosity variants — rather than trusting that an imageset with a thematically-matching name will visually integrate. The fix path also tightened the design contract: the bratwurst preview now uses the actual app-icon artwork, so the picker thumbnail and the resulting home-screen icon are visually identical (a stronger truth-telling than the original decorative-asset approach).
+
+Visual confirmation:
+
+- Pre-batch baseline: `docs/screenshots/20260506-130327-appicon-picker-baseline.png` — text-segmented Picker with cramped Bratwurst / Bundestag / Hat / Pretzel labels.
+- Post-batch (initial, before bratwurst-fix): `docs/screenshots/20260506-130719-appicon-picker-post.png` — 4-thumbnail LazyVGrid with the Hat icon selected; bratwurst thumbnail visibly broken with white background.
+- Post-bratwurst-fix: `docs/screenshots/20260506-132841-appicon-picker-bratwurst-fix.png` — same 4-thumbnail LazyVGrid, bratwurst thumbnail now integrating cleanly with the dark card via the proper appiconset-derived imagery.
+
 ### 8. Settings: Differentiate the four action buttons
+
+**Status:** Resolved 2026-05-06 (item (a) only; (b) deferred). See "Resolution" block at the end of this section.
 
 **Screen:** `Konjugieren/Views/SettingsView.swift:116-189`.
 
@@ -515,6 +541,31 @@ b. **Group thematically into two cards** — split the single action card at `Se
 Two cards aligns the action group with the structural card pattern of the rest of `SettingsView`.
 
 **Independent of:** all other suggestions, though combines well with #7's iconography pattern.
+
+**Resolution (2026-05-06):**
+
+Shipped (a) only — the per-button SF Symbol `Label` swap. (b), the thematic card split, was deferred to a future batch on the rationale that with the chassis already unified by `funButton()`, (b) becomes a thematic-grouping question rather than a visual-rhythm one. The post-(a) screenshot is therefore the right evidence base for any future card-split decision; reasoning about empty-card edge cases (Game Center unauthenticated; Apple Intelligence host-eligibility on Intel-Mac hosts) without concrete visual input wastes design budget. The audit's confirmation-dialog and `.tint(.customRed)` notes for Delete Chat History were also deferred — they're destructive-action UX, not differentiation, and the audit's #8 strict scope is differentiation. Mixing them in would have required three new localized strings and a `Common.cancel` entry (no `enum Common` exists in `L.swift` today, so a whole new enum bucket).
+
+**Code-level finding worth recording for future audits:** `funButton()` at `Modifiers.swift:100-107` already applies `.tint(.customRed)` (full styling: `.foregroundStyle(.customYellow) + .buttonStyle(.bordered) + .tint(.customRed)`). Every action button in Settings is therefore already red-tinted with yellow text. The audit's "tint Delete Chat History red" note can't differentiate via tint — they're all red. SF Symbols inside `Label`s inherit the foreground style and render yellow on the red bordered chassis. Differentiation in this batch comes from the symbol choice alone (e.g., `trash` is iconographically destructive); chassis-level differentiation would require a more invasive change (per-button tint override, or a destructive-role variant of `funButton()`) and is the natural follow-up if Delete Chat History needs more visual prominence.
+
+`SettingsView.swift` — five buttons converted from `Button(text) { action }` to `Button { action } label: { Label(text, systemImage: ...) }`:
+
+- View Leaderboard → `trophy.fill` (line 152)
+- Show Onboarding → `questionmark.circle.fill` (line 168)
+- Play Game → `gamecontroller.fill` (line 184)
+- Delete Chat History → `trash` (line 201)
+- Rate or Review → `star.fill` (line 216)
+
+All existing per-button modifiers preserved exactly: `.funButton()`, `.frame(maxWidth: .infinity)`, `.accessibilityHint(...)` on View Leaderboard and Show Onboarding (the only two with hints today; the other three are unhinted and remain so to keep this batch tight to the icon-swap scope), `.popoverTip(playGameTip)` on Play Game. `funButton()` itself was not modified; the chassis stays unified across all five buttons.
+
+No new localized strings were introduced. SF Symbol names are pure-ASCII identifiers and don't go through `Localizable.xcstrings` — so the JSON-edit hazard from CLAUDE.md doesn't apply to this batch.
+
+Visual confirmation:
+
+- Pre-batch baseline: `docs/screenshots/20260506-130327-appicon-picker-baseline.png` (the same frame captures both #7 and #8 baselines: cards 3 + 4 visible together) — three text-only Buttons (Show Onboarding, Play Game, Rate or Review), no leading symbols.
+- Post-batch: `docs/screenshots/20260506-130719-appicon-picker-post.png` — same three buttons now with leading SF Symbols (questionmark.circle.fill, gamecontroller.fill, star.fill), funButton chassis untouched, yellow-symbol-on-red-pill aesthetic preserved.
+
+**Apple-Intelligence host-eligibility caveat** (per CLAUDE.md): the Delete Chat History button is gated on `Current.languageModelService.isAvailable`. On the Intel-Mac development host running iOS 26.3.1+ the gate fails silently and the button doesn't render; the `trash` symbol assignment can only be visually verified on Apple-Silicon Mac hosts or a real Apple-Intelligence-capable iPhone. Game Center authentication was likewise off in the verification simulator — View Leaderboard's `trophy.fill` is also unverified visually. Both buttons compile cleanly per `build_app.sh`; verification of their iconography is reduced to "code matches the spec, build clean."
 
 ---
 
@@ -1003,6 +1054,6 @@ If implementing more than one suggestion, this order minimizes rework:
 5. ~~**#6 + #11** (card-wrap remaining sections) — uses #A.~~ *Done 2026-05-06.*
 6. ~~**#13** (subheading treatment) — affects all rich-text screens; do once #6/#11 land so the visual context is consistent.~~ *Done 2026-05-06.*
 7. ~~**#4 / #5 / #22 / #10** (Quiz polish) — independent of card system.~~ *Done 2026-05-06.*
-8. **#7 / #8** (Settings polish) — independent.
+8. ~~**#7 / #8(a)** (Settings polish) — independent.~~ *Done 2026-05-06. #8(b) deferred.*
 9. **~~#9~~ / #14 / #16 / #17 / #21** — small independent items. *#9 done 2026-05-06.*
 10. Skip / defer **#23 / #24** unless explicit user feedback motivates them.

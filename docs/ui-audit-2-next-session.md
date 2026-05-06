@@ -1,233 +1,199 @@
-# Next session: UI audit Round Two — Settings polish (#7 + #8)
+# Next session: UI audit Round Two — VerbView polish (#12 + #14)
 
 ## TL;DR
 
-Implement two items from `docs/ui-audit-2.md`, both in `Konjugieren/Views/SettingsView.swift` (plus `AppIcon.swift`, `Localizable.xcstrings`, possibly `L.swift`):
+Implement two items from `docs/ui-audit-2.md`, both in `Konjugieren/Views/VerbView.swift`:
 
-- **#7** — replace the App Icon segmented Picker (`SettingsView.swift:102-114`) with a `LazyVGrid` of selectable thumbnails.
-- **#8** — differentiate the action buttons (`SettingsView.swift:116-189`): add SF Symbol labels, optionally split the single actions card into two thematic cards.
+- **#12** — Differentiate the metadata pills by tint, extending the existing German-flag color system (yellow = descriptive, red = structural) into VerbView's pill row. Mechanical change once tints are decided.
+- **#14** — Drop `.lineLimit(1)` (and likely `.minimumScaleFactor(0.5)`) on the verb-infinitive title so long verbs like `auseinandersetzen` wrap into the available canvas instead of shrinking to half-size.
 
-Self-contained, single-screen scope. The Quiz-polish batch (#4 / #5 / #10 / #22) shipped 2026-05-06 — this batch starts from a clean main.
+Self-contained, single-file scope. The Settings polish batch (#7 / #8a, plus a bratwurst-thumbnail bug fix) shipped 2026-05-06 — this batch starts from a clean main.
 
 After completion, update `docs/ui-audit-2.md` per the conventions of earlier resolved sections (Status line, Resolution block, strikethrough in implementation-order list).
 
 ## Read first
 
-- **`docs/ui-audit-2.md`** — sections #7 (lines ~407-447) and #8 (lines ~451-486). Resolution blocks of recently shipped sections (especially #4 with the bug-and-fix paragraph) describe the conventions to match.
-- **`CLAUDE.md`** — build/test commands, the `IBV_SCRIPTS` resolution pattern, Swift coding rules (alphabetize enum cases, no force-unwraps in production), the `.xcstrings` Edit-tool hazard around ASCII double quotes.
-- **`Konjugieren/Views/SettingsView.swift`** — entire file. The two batch items live in adjacent cards and one helper (`settingsCard`).
-- **`Konjugieren/Models/AppIcon.swift`** — current AppIcon enum + `alternateIconName` mapping. New `previewAssetName` property gets added here for #7.
-- **`Konjugieren/Utils/Settings.swift:118-125`** — `setAppIcon(_:)` and the `didSet` wiring; confirms the new thumbnail Buttons need no extra side-effect plumbing.
+- `docs/ui-audit-2.md` — sections #12 and #14. Resolution blocks of recently shipped sections (especially #4, #7, #8) describe the conventions to match. The Settings-polish #7 Resolution has a "Bug-and-fix during shipping" paragraph that's a useful template for any post-implementation discoveries.
+- `CLAUDE.md` (root) and `Konjugieren/CLAUDE.md` — build/test commands, the `IBV_SCRIPTS` resolution pattern, Swift coding rules (alphabetize enum cases, no force-unwraps in production), the `.xcstrings` Edit-tool hazard around ASCII double quotes.
+- `Konjugieren/Views/VerbView.swift` — entire file. Both batch items live in the top region (lines ~33-98) plus the helper at lines 204-210.
 
-## Pre-flight findings (already verified)
+## Pre-flight findings (verified 2026-05-06)
 
-- **Preview imagesets all exist** in `Konjugieren/Assets/Assets.xcassets`: `Hat.imageset`, `Bundestag.imageset`, `Pretzel.imageset`, `BratwurstBroetchen.imageset`. **Note the asymmetry:** `bratwurst` maps to `BratwurstBroetchen`, not `Bratwurst`. The new `AppIcon.previewAssetName` property must reflect that.
-- **Icon-swap side effect already wired**: `Settings.appIcon.didSet` calls `setAppIcon(_:)` which calls `UIApplication.setAlternateIconName(icon.alternateIconName)`. Replacing the Picker with Buttons that mutate `settings.appIcon` is transparent — no additional `.onChange` modifier needed.
-- **funButton() pattern**: `Modifiers.swift:23` defines `func funButton() -> some View { modifier(FunButton()) }`. The modifier is applied to a `Button`'s body. SwiftUI's `Button` accepts any View as label, so `Button { ... } label: { Label(text, systemImage: "trophy.fill") }.funButton()` will work — visual confirmation needed for icon tint and sizing.
-- **Action card has UP TO 5 buttons**, two conditional:
-  - View Leaderboard — conditional on `Current.gameCenter.isAuthenticated`.
-  - Show Onboarding — always.
-  - Play Game — always.
-  - Delete Chat History — conditional on `Current.languageModelService.isAvailable && hasChatHistory`.
-  - Rate or Review — always.
-
-  The audit says "four"; in practice there can be 3, 4, or 5. The split-into-two-cards plan needs to handle the empty-card edge case (e.g., if Game Center isn't authenticated, the "Game Center" card becomes Play Game alone).
+- **`metadataPill` helper lives at `VerbView.swift:204-210`** (the audit doc says 200-206; minor line drift, no semantic change).
+- **Five pill call sites** total, across two HStacks:
+  - Lines 53-72 (always-rendered HStack): Family, Auxiliary, Frequency.
+  - Lines 75-97 (conditional HStack, only renders if `verb.prefix != .none || verb.ablautGroup != nil`): Separable / Inseparable (mutually exclusive), Ablaut.
+- **Each pill already uses `Label(text, systemImage:)`** form. The audit's pill-content snippet pattern is already in place for the labels themselves; #12 only mutates the *background tint* + adds an optional border, not the label structure.
+- **All pill backgrounds today use `Color.customYellow.opacity(0.08)`** (line 208) — the uniform tint that #12 is breaking up.
+- **Long-infinitive typography at `VerbView.swift:37-45`**, with `.minimumScaleFactor(0.5)` at line 41 and `.lineLimit(1)` at line 42 (audit's references are accurate).
+- **No existing tests** cover the pill-tint or title-typography behavior. View-layer changes don't typically warrant new tests; expect `122/122 in 17 suites` to hold post-batch.
+- **Color tokens available**: `.customYellow`, `.customRed`, `.customForeground`, `.customCardBackground`, `.customCardBorder`. The German-flag system uses yellow + red as the two semantic tints; black is the canvas. No `customGold`, `customAmber`, etc. — don't invent new tones.
 
 ## Recommended sequence
 
-1. **#7 first** — the higher-payoff visual change. Self-contained; replaces one card's contents. Independent of #8.
-2. **#8 next** — touches the adjacent card. Two sub-options (a) Label icons and (b) split into two cards. Decide both with Josh before starting; (a) is verbatim-shippable, (b) requires layout judgment around empty-card states.
-3. **Build, test, screenshot, audit-doc updates, surface for commit approval.**
+1. **Surface decisions D1–D3 to Josh before coding.** All three are design-judgment calls that can't be settled by reading code. Once ratified, both items are mechanical.
+2. **#12 first** — the substantive item. Generalize the helper, update five call sites.
+3. **#14 second** — 1-2 line cleanup. Worth pairing because the long-infinitive wrap visually depends on the title space the user sees alongside the pills; visual sanity-check works better post-#12.
+4. **Build clean → tests green → screenshots → audit-doc updates → surface for commit approval.**
 
-If Josh wants to defer #8(b), ship #7 + #8(a) and note (b) as a follow-up. (a) and (b) are independent within #8 — (a) is a per-button modifier change, (b) is a structural card split.
+## Decisions to ratify with Josh before coding
+
+### D1. Per-pill tint assignments (#12)
+
+Audit recommendation:
+
+| Pill | Tint | Rationale |
+|---|---|---|
+| Family | `customYellow` | Descriptive metadata |
+| Auxiliary | `customRed` | Structural — controls Perfekt construction with `sein`/`haben` |
+| Frequency | `customYellow` | Descriptive metadata |
+| Separable / Inseparable | `customRed` | Structural — affects word order, especially in subordinate clauses |
+| Ablaut | `customYellow` with optional thin yellow border overlay | Visual exception worth marking |
+
+The logic: **red tint = "this affects sentence structure beyond the verb itself"; yellow tint = "descriptive metadata about the verb."** The German-flag colors map naturally — red is the high-attention ribbon, suited to the structural-impact tag.
+
+**Lean: ratify the audit's mapping.** Alternative: invert (red = irregular/exception, yellow = regular/expected) — would put Ablaut and Auxiliary-sein on red, but breaks the structural/descriptive grammar. The audit's split feels more linguistically coherent.
+
+### D2. Ablaut pill: border overlay or no border?
+
+Audit suggests adding a thin yellow border to the ablaut pill specifically (`Capsule().strokeBorder(.customYellow.opacity(0.3))`), so it's distinguishable from Family and Frequency despite the same tint. Decision: add the border (more differentiation), or skip it (cleaner)?
+
+**Lean: add.** The ablaut pill carries higher information density than family or frequency (it's a learning hook — points at the ablaut pattern the verb belongs to, which the user can study), and the audit's "ablaut group is a visual exception worth marking" reasoning is sound.
+
+### D3. For #14: drop only `.lineLimit(1)`, or also `.minimumScaleFactor(0.5)`?
+
+Once `.lineLimit(1)` is removed, `.minimumScaleFactor(0.5)` becomes effectively dead code: SwiftUI will wrap rather than scale. The remaining edge case is a single word longer than the line — `.minimumScaleFactor` would still scale that. For German verb infinitives, the longest realistic case (`auseinandersetzen` at 17 characters, `unterscheiden` at 13) fits at `.largeTitle` on iPhone width.
+
+**Lean: drop both.** Cleaner, avoids dead code, and removes the subtle visual scale-down that triggers for borderline-long verbs.
 
 ## Per-item handoff notes
 
-### #7 — App Icon thumbnail picker
+### #12 — VerbView metadata pill differentiation
 
-The audit's snippet at `docs/ui-audit-2.md:417-438` gestures at the right shape but glosses over a few details. Concrete implementation plan:
-
-**1. Add `previewAssetName` to `AppIcon`** (`AppIcon.swift`):
+**1. Generalize the helper at `VerbView.swift:204-210`:**
 
 ```swift
-var previewAssetName: String {
-  switch self {
-  case .bratwurst:
-    return "BratwurstBroetchen"
-  case .bundestag:
-    return "Bundestag"
-  case .hat:
-    return "Hat"
-  case .pretzel:
-    return "Pretzel"
-  }
-}
-```
-
-Per CLAUDE.md, alphabetize enum cases in switch (cases are already alphabetized in the enum declaration; mirror that order). Note: existing `localizedAppIcon` switch at `AppIcon.swift:9-20` is *not* in alphabetical order (bratwurst, hat, pretzel, bundestag) — that's a pre-existing inconsistency. Fix it in the same PR for free, or leave it (low-stakes; flag in the Resolution block either way).
-
-**2. Replace the App Icon Picker** at `SettingsView.swift:102-114`. The audit's snippet's `LazyVGrid(columns: [GridItem(.adaptive(minimum: 72))], spacing: 12)` works, but verify:
-
-- **Selection ring color**: `Color.customYellow` (matches the German-flag system).
-- **Thumbnail clipping**: `.clipShape(RoundedRectangle(cornerRadius: 14))` — match iOS's app-icon corner curve as closely as possible. iOS 26 actual rounded-rect-superellipse "squircle" has more curvature than `RoundedRectangle`; if the visual reads off, use `.continuousCornerRadius` or check `RoundedRectangle(cornerRadius: 14, style: .continuous)`.
-- **Caption typography**: `.font(.caption2)` is fine; matches existing button-description text.
-- **Tap target**: the whole VStack (image + caption) is the Button's label, so the entire pill is tappable.
-- **Sensory feedback**: `.sensoryFeedback(.selection, trigger: settings.appIcon)` is net-new — no precedent for app-icon-switching haptic in the project. Reasonable.
-
-**3. Accessibility:**
-
-- The Image inside the Button's label should be `.accessibilityHidden(true)` (or use `Label(...)` which handles this) so VoiceOver doesn't double-announce. The Text caption already provides the spoken label.
-- Each Button needs the selected state communicated. Add `.accessibilityValue(settings.appIcon == icon ? L.Accessibility.selected : "")` or use `.accessibilityAddTraits(.isSelected)` on the selected Button. **New localizable string** `Accessibility.selected` may be needed (`"Selected"` / `"Ausgewählt"`).
-
-**4. Visual considerations:**
-
-- iPhone 14 (smallest device, 390pt logical width) at `Layout.doubleDefaultSpacing × 2 = ~32pt` outer padding + card internal padding gives ~330pt for the LazyVGrid. With `GridItem(.adaptive(minimum: 72))`, that fits 4 across (72 × 4 = 288pt + 3 × ~12pt spacing = 324pt). Should look balanced as a 1×4 row at iPhone 14, possibly 2×2 if the grid wraps. Verify visually.
-- iPad: the `.adaptive(minimum: 72)` will pack 8+ columns at iPad widths. Acceptable, but if the row stretches absurdly wide it's worth capping at 4 columns: `[GridItem(.adaptive(minimum: 72, maximum: 100))]` or a fixed `[GridItem(.flexible(), count: 4)]`.
-
-### #8 — Action button differentiation
-
-Two sub-options that compose:
-
-**(a) Add SF Symbols via `Label`.** Verbatim per the audit's snippet at `docs/ui-audit-2.md:461-470`. Symbol mapping the audit recommends:
-
-| Button | SF Symbol |
-|---|---|
-| View Leaderboard | `trophy.fill` |
-| Show Onboarding | `questionmark.circle.fill` |
-| Play Game | `gamecontroller.fill` |
-| Rate or Review | `star.fill` |
-| Delete Chat History | `trash` |
-
-Apply per-button:
-
-```swift
-Button {
-  Current.gameCenter.showLeaderboard()
-  Current.analytics.signal(name: .tapViewLeaderboard)
-} label: {
-  Label(L.GameCenter.viewLeaderboard, systemImage: "trophy.fill")
-}
-.funButton()
-.frame(maxWidth: .infinity)
-.accessibilityHint(L.Accessibility.leaderboardHint)
-```
-
-`funButton()` already styles the Button's label container; Label inside should pick up the existing yellow-foreground tint. Visual check: SF Symbol color matches the Text label's color (both yellow). If the symbol reads too prominent, scale it down via `.imageScale(.small)` on the Label.
-
-**Delete Chat History** is the destructive action. The audit suggests `.tint(.customRed)` and a confirmation dialog. Currently at `SettingsView.swift:160-173` it deletes immediately. Adding `.confirmationDialog` is additive:
-
-```swift
-@State private var showingDeleteChatHistoryConfirmation = false
-
-Button {
-  showingDeleteChatHistoryConfirmation = true
-} label: {
-  Label(L.Tutor.deleteChatHistory, systemImage: "trash")
-}
-.funButton()
-.frame(maxWidth: .infinity)
-.confirmationDialog(
-  L.Tutor.deleteChatHistoryConfirmTitle,
-  isPresented: $showingDeleteChatHistoryConfirmation,
-  titleVisibility: .visible
-) {
-  Button(L.Tutor.deleteChatHistoryConfirmButton, role: .destructive) {
-    TutorChatHistory.clear(getterSetter: Current.getterSetter)
-    hasChatHistory = false
-    Current.analytics.signal(name: .tapDeleteChatHistory)
-  }
-  Button(L.Common.cancel, role: .cancel) { }
-}
-```
-
-Three new localized strings: `Tutor.deleteChatHistoryConfirmTitle`, `Tutor.deleteChatHistoryConfirmButton`, possibly `Common.cancel` (check if it already exists — iOS auto-localizes "Cancel" via `Button(role: .cancel)` if you pass `Text("Cancel")`, but explicit localization is safer).
-
-**(b) Group thematically into two cards.** Two cards with explicit conditional handling:
-
-```swift
-// Game Center card — only renders if there's at least one button to show.
-if Current.gameCenter.isAuthenticated || true {  // Play Game is always present
-  settingsCard {
-    if Current.gameCenter.isAuthenticated {
-      // View Leaderboard button + description
+private func metadataPill<Content: View>(
+  tint: Color = .customYellow,
+  bordered: Bool = false,
+  @ViewBuilder content: () -> Content
+) -> some View {
+  content()
+    .padding(.horizontal, 8)
+    .padding(.vertical, 4)
+    .background(tint.opacity(0.08))
+    .overlay {
+      if bordered {
+        Capsule().strokeBorder(tint.opacity(0.3))
+      }
     }
-    // Play Game button + description
-  }
-}
-
-// Help & feedback card — also always has at least one button (Show Onboarding, Rate or Review).
-settingsCard {
-  // Show Onboarding button + description
-  if Current.languageModelService.isAvailable && hasChatHistory {
-    // Delete Chat History button + description
-  }
-  // Rate or Review button + description
+    .clipShape(Capsule())
 }
 ```
 
-Edge cases:
+The default-parameter pattern preserves call-site backward compatibility — any future call site that omits `tint:` just gets yellow, any that omits `bordered:` just gets no border. The conditional in `.overlay {}` uses the `@ViewBuilder` form so the empty-branch case compiles cleanly (vs the audit's snippet which used a non-builder `.overlay(...)`).
 
-- Game Center NOT authenticated → "Game Center" card has only Play Game. Visually OK; Play Game IS Game Center adjacent (a personal-best gameplay loop).
-- Apple Intelligence unavailable / no chat history → "Help & feedback" card omits Delete Chat History. The card still has Show Onboarding + Rate or Review. Fine.
+**2. Update the five call sites per D1+D2** (assuming the audit's defaults are ratified):
 
-**Card labels**: do the new cards get explicit headings ("Game Center", "Help & feedback") or stay unlabeled like the other settingsCards in the file? **Decision needed.** Current settingsCards have section headings INSIDE (`settingSection(heading:...)`) but no card-level title. Adding card-level titles for these two would be a small new convention — visual choice, not a correctness issue. If yes, two new localized strings: `Settings.gameCenterCardHeading`, `Settings.helpAndFeedbackCardHeading`.
+```swift
+// Line 54: Family — descriptive
+metadataPill(tint: .customYellow) {
+  Label(verb.family.displayName, systemImage: "tag")...
+}
+
+// Line 59: Auxiliary — structural
+metadataPill(tint: .customRed) {
+  Label { Text(verbatim: verb.auxiliary.verb) } icon: { Image(systemName: "arrow.triangle.branch") }...
+}
+
+// Line 68: Frequency — descriptive
+metadataPill(tint: .customYellow) {
+  Label("#\(verb.frequency)", systemImage: verb.frequencyIcon)...
+}
+
+// Lines 78, 82: Separable / Inseparable — structural
+metadataPill(tint: .customRed) {
+  Label(L.BrowseableFamily.separable, systemImage: "arrow.left.arrow.right")
+}
+metadataPill(tint: .customRed) {
+  Label(L.BrowseableFamily.inseparable, systemImage: "link")
+}
+
+// Line 88: Ablaut — exceptional, with border
+metadataPill(tint: .customYellow, bordered: true) {
+  Label(ablautGroup, systemImage: "figure.and.child.holdinghands")...
+}
+```
+
+**3. Accessibility:** no changes needed. The Label provides the standard text label; tint and border are purely presentational and don't affect VoiceOver. The existing `.accessibilityLabel(...)` calls on the Auxiliary, Frequency, and Ablaut pills (used to override the SF-Symbol-default reading) stay as-is.
+
+### #14 — Long infinitive wrap
+
+At `VerbView.swift:37-45`, remove lines 41 and 42:
+
+```swift
+Text(verb.infinitiv)
+  .font(.largeTitle)
+  .fontWeight(.bold)
+  .fontDesign(.serif)
+  // .minimumScaleFactor(0.5)  ← remove (per D3 lean: drop both)
+  // .lineLimit(1)              ← remove
+  .accessibilityAddTraits(UserLocale.isGerman ? .isHeader : [])
+  .germanPronunciation()
+  .speakOnTap(verb.infinitiv)
+```
+
+Visual verification with long verbs: `auseinandersetzen`, `zusammenarbeiten`, `unterscheiden`. Confirm the title wraps cleanly at iPhone width without overflowing the card-internal padding.
 
 ## Verification
 
-Per the audit's "Verification" section and matching post-#13/#11 conventions:
+Per the audit's "Verification" section and matching post-#7/#8(a) conventions:
 
 1. **Build clean**: `"$IBV_SCRIPTS/build_app.sh"`. (Resolve `IBV_SCRIPTS` once per session per CLAUDE.md.)
-2. **Tests stay green**: `"$IBV_SCRIPTS/run_tests.sh"`. Last known good: 122/122 in 17 suites. This batch is unlikely to add tests (view-layer changes, no new model API), so 122/122 holds.
-3. **Visual screenshots** under `docs/screenshots/` (gitignored) — pre/post pairs:
-   - **Pre-batch baseline**: refresh on current main before any code changes. Tap Settings → scroll to App Icon picker → screenshot.
-   - **Post-#7**: same screen, showing the LazyVGrid of thumbnails with one selected (yellow ring).
-   - **Post-#8**: scroll to actions; if (a) only, screenshot the action buttons with SF Symbols; if (a) + (b), screenshot both new cards in sequence.
-4. **JSON integrity** if `Localizable.xcstrings` was edited:
-   ```bash
-   python3 -c "import json; json.load(open('Konjugieren/Assets/Localizable.xcstrings'))"
-   ```
-5. **Manual verification on simulator**:
-   - Tap each thumbnail; confirm the app icon switches (visible after backgrounding the app and viewing the home screen, since `setAlternateIconName` updates the launcher icon — the in-app picker doesn't show the change directly).
-   - Tap each action button; confirm each fires its action correctly (leaderboard sheet opens, onboarding shows, game launches, rate URL opens, chat history confirmation dialog appears).
-   - VoiceOver pass: navigate the thumbnail grid and confirm each Button announces its localized name and selected state cleanly.
+2. **Tests stay green**: `"$IBV_SCRIPTS/run_tests.sh"`. Last known good: 122/122 in 17 suites. This batch is unlikely to add tests (view-layer changes, no new model API), so 122/122 should hold.
+3. **Visual screenshots** under `docs/screenshots/` — pre/post pairs:
+   - **Pre-batch baseline #1** (pill exemplar): pick a verb that exercises *all five* pill types in one view — for example `aufstehen` (auxiliary `sein`, separable prefix, ablaut group). Tap into VerbView from VerbBrowse → screenshot the top region showing the pill row.
+   - **Pre-batch baseline #2** (long-infinitive exemplar): navigate to `auseinandersetzen` (or similar long verb) → screenshot.
+   - **Post-batch versions of both**: same two views post-#12+#14.
+4. **Manual simulator checks**:
+   - For #12: verify all 5 pill types render in their assigned tints. Test verb combinations: a `sein`-auxiliary verb, a `haben`-auxiliary verb, a separable-prefix verb, an inseparable-prefix verb, a verb with an ablaut group, and a verb with none of the optional pills (the conditional second HStack should not render at all).
+   - For #14: confirm long-infinitive wrap (no scale-down). Test on iPhone 17 (the IBV-configured simulator).
 
-Apple-Intelligence caveat: the Delete Chat History button is gated on `Current.languageModelService.isAvailable`. On Intel-Mac hosts running iOS 26.3.1+, this gate fails silently (per CLAUDE.md). The button won't render. State this in the Resolution block so future-Josh doesn't wonder why the screenshot is missing the row.
+The Apple-Intelligence host-eligibility caveat (per CLAUDE.md) **does not apply** to this batch — VerbView has no Tutor-gated surfaces. Visual verification on the Intel-Mac dev host is fully meaningful here.
 
 ## Updates to `docs/ui-audit-2.md` after completion
 
-For each item that ships, match the convention used by earlier resolved sections (#1, #2, #3, #4, #5, #6, #9, #10, #11, #13, #15, #19, #20, #22, #A):
+For each shipped item, match the convention used by earlier resolved sections (#1, #2, #3, #4, #5, #6, #7, #8, #9, #10, #11, #13, #15, #19, #20, #22, #A):
 
 1. **Add `**Status:** Resolved YYYY-MM-DD. See "Resolution" block at the end of this section.`** immediately after the section's `### N.` heading.
-2. **Add `**Resolution (YYYY-MM-DD):**`** block at the end of the section, including: file/line diff summary, side-effects worth recording, visual-confirmation screenshot paths, and any audit-snippet deviations (likely: the `BratwurstBroetchen` asset-name asymmetry, the empty-card edge cases, any decisions on card labels and sub-option (b)).
-3. **Strikethrough** the implementation-order line. Find the Settings-polish line via:
-   ```bash
-   grep -n "Settings polish" docs/ui-audit-2.md
-   ```
-   It's currently `8. **#7 / #8** (Settings polish) — independent.` (around line 952 — line numbers drift as Resolution blocks are added; grep is the source of truth).
+2. **Add `**Resolution (YYYY-MM-DD):**`** block at the end of the section, including: file/line diff summary, the D1/D2/D3 decisions made, side-effects worth recording, visual-confirmation screenshot paths, and any audit-snippet deviations (likely candidates: the `@ViewBuilder` overlay form vs the audit's non-builder snippet; any tint-mapping deviations from the audit's defaults).
+3. **Strikethrough** the implementation-order line(s). #14 lives on line ~1007: `9. **~~#9~~ / #14 / #16 / #17 / #21** — small independent items. *#9 done 2026-05-06.*`. After #14 ships:
 
-   If both items ship: `8. ~~**#7 / #8** (Settings polish) — independent.~~ *Done YYYY-MM-DD.*`
+   `9. **~~#9~~ / ~~#14~~ / #16 / #17 / #21** — small independent items. *#9 done 2026-05-06. #14 done YYYY-MM-DD.*`
 
-   If only #7 ships: leave the line, add a per-item tail.
+   #12 isn't in the line-9 list — it's a Medium Priority item without its own implementation-order entry. Find its mention via `grep -n '#12' docs/ui-audit-2.md` if you want to add a "done" marker; otherwise the Status line on the section itself is sufficient signal.
 
-The audit doc is load-bearing for future sessions. After the edits, a future Claude session reading it cold should immediately see which Settings items are done and where to find the resolution context.
+The audit doc is load-bearing for future sessions. After the edits, a future Claude session reading it cold should immediately see which VerbView items are done and where to find the resolution context.
 
 ## What's next after this batch
 
-The remaining audit items are independent — choice-of-focus, not dependency:
+The remaining audit items, all independent of each other:
 
-- **VerbView polish**: #12 (metadata pill differentiation — leverages the German-flag color system semantically), #14 (long-infinitive wrap — small).
-- **Small independents**: #16 (onboarding page-1 layout), #17 (Results score-card divider), #21 (Tutor icon emphasis).
+- **#16 (OnboardingView)**: reclaim empty space on page 1. Two sub-options — Spacer cap vs decorative gradient. Design-judgment-heavy single-screen item.
+- **#17 (ResultsView)**: insert the gradient-divider pattern between score card and per-question list. Includes a small refactor — lift `gradientDivider` from `SettingsView`'s private property into a shared `GradientDivider` View in `Modifiers.swift`. Touches 3 files.
+- **#21 (InfoBrowseView)**: pulse the Tutor-row brain icon. 2-line change, but **can't be visually verified on Intel-Mac hosts** (Apple Intelligence host-eligibility gate fails silently). Best paired with another item that *can* be verified, OR shipped with the verification caveat in the Resolution block.
 
-The implementation-order list at `docs/ui-audit-2.md` (Implementation order section) names #14, #16, #17, #21 as small independents — any of them is a reasonable next batch or palate cleanser. #12 is design-judgment work and a good standalone session.
+A reasonable next batch after VerbView polish: **#17 + #21** as a "small cross-cutting cleanup" pair (the ResultsView change is verifiable; #21 ships with the host-eligibility caveat). Or **#16 alone** as a focused Onboarding session.
 
 After this batch surfaces the choice to Josh, overwrite this `docs/ui-audit-2-next-session.md` with the next handoff or delete it if no batch is queued.
 
 ## Don't
 
 - **Don't touch the Game or Dedication screens** (off-limits per Round One; see Constraints in the audit).
-- **Don't ship #8(b) without surfacing card-label decisions to Josh.** The audit's "Card 1: Game Center / Card 2: Help & feedback" framing implies titled cards, but existing `settingsCard` instances have no card-level headings. Two new localized strings would be needed, plus a convention shift. Decide explicitly before implementing.
-- **Don't replace `funButton()` for individual buttons.** The styling consistency across all action buttons matters; (a) adds Labels INSIDE existing `funButton()`-styled Buttons. Don't accidentally drop the modifier.
-- **Don't expand scope.** While editing `SettingsView.swift`, the file has many other polishable surfaces (the gradientDivider, the section heading typography, the description Text styling). Resist. This batch is scoped to two items.
-- **Don't drop accessibility traits or hints when restructuring.** Each existing button has `.accessibilityHint(...)` — preserve them when wrapping in Label or moving cards.
+- **Don't ship D1/D2/D3 decisions without ratification.** Surface them first. The lean recommendations are well-reasoned but not prescriptive.
+- **Don't expand the per-pill tint vocabulary beyond `customYellow` and `customRed`.** The German-flag color system in this app uses these two tints exclusively for semantic differentiation. Adding `customGold` or other variants for "yet another semantic distinction" is out of scope and would need its own audit cycle.
+- **Don't change the pill icons.** #12 is about background tint; the SF Symbol assignments stay as-is.
+- **Don't drop accessibility labels or hints when restructuring pill labels.** Each pill that has `.accessibilityLabel(Text(verbatim: ...))` today (Auxiliary, Frequency, Ablaut) keeps it.
+- **Don't expand scope.** While editing `VerbView.swift`, the file has many other polishable surfaces (the etymology card, the example sentence card, the divider styling, the conjugation-section typography). Resist. This batch is scoped to two items.
 - **Don't commit without asking Josh.** Standard project rule (CLAUDE.md).
-- **Delete this file** (`docs/ui-audit-2-next-session.md`) once the batch lands, OR overwrite it with a fresh handoff. The file is ephemeral.
+- **Delete this file** (`docs/ui-audit-2-next-session.md`) once the batch lands, OR overwrite it with a fresh handoff for the next batch (#17+#21 or #16). The file is ephemeral working memory between sessions.

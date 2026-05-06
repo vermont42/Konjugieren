@@ -595,6 +595,8 @@ The choice is which pills get red. Auxiliary and prefix-affixation are the most 
 
 ### 13. InfoView: Subheading visual treatment
 
+**Status:** Resolved 2026-05-06. See "Resolution" block at the end of this section.
+
 **Screen:** `Konjugieren/Views/RichTextView.swift:13-18` (the `.subheading` case in the body builder).
 
 **Problem:** Subheadings (backtick-delimited in the `Localizable.xcstrings` markup, parsed by `Utils/StringExtensions.swift`) render as `.headline` yellow centered. They blend with body text size-wise and look generic.
@@ -620,6 +622,27 @@ case .subheading(let text):
 Three changes: serif design (matches article title), leading alignment (replaces center), small red dot (echoes the German-flag tricolor ornament between title and body).
 
 **Caveat:** changing `RichTextView`'s subheading rendering affects every place rich-text is rendered — InfoView (article body), FamilyDetailView (long descriptions), OnboardingInfoSheet (the "What is a conjugationgroup?" sheet body), VerbView (etymology if #6 lands and uses RichTextView). All currently render subheadings the same way; the visual unification is desirable.
+
+**Resolution (2026-05-06):**
+
+`RichTextView.swift:12-24` — `case .subheading` rewritten per the audit's snippet, with one deviation: `HStack(alignment: .center)` instead of `.firstTextBaseline`. `.firstTextBaseline` puts a 4-pt circle's bottom on the text's baseline, placing the dot in the descender region (where commas and periods sit) rather than alongside the heading text. `.center` puts the dot at the line-box midline, which for `.title3.bold()` lands near the heading's optical center — the section-marker bullet the audit gestures at.
+
+The serif `.title3.bold()` heading text matches `InfoView.swift:17`'s article-title typography, giving long-form prose a coherent typographic register (serif title → serif subheadings → sans-serif body for readability).
+
+Visual confirmation:
+
+- Pre-#13 baselines: `docs/screenshots/20260505-104259-info-history-detail.png` (top of "A History of the German Verb System") and `docs/screenshots/20260505-104313-info-history-scrolled.png` (article-body scroll).
+- Post-#13: `docs/screenshots/20260506-104716-info-history-detail-post13.png` shows "From Stardust to Speech" leading-aligned with the red-dot ornament; `docs/screenshots/20260506-104845-info-history-scrolled-post13.png` shows "The Yamnaya and Proto-Indo-European" the same way.
+
+Side-effect verification across non-InfoView surfaces — all unaffected because no current data triggers `case .subheading` outside InfoView:
+
+- `FamilyDetailView` long descriptions (`.konjCard()`-wrapped post-#11): no visual change. All seven `FamilyDetail.*Long` keys contain zero backtick subheadings.
+- `OnboardingInfoSheet` body: no visual change. `Onboarding.conjugationgroupBody` contains zero backtick subheadings.
+- `VerbView` etymology cards (`.konjCardWithAccentBar()` post-#6): no visual change. `Etymologies.json` contains zero backtick subheadings across all 990 entries.
+
+If a future etymology adds backtick subheadings inside `VerbView`'s carded etymology section, eyeball the result for visual crowding (yellow accent bar + yellow heading + red dot all competing) and adjust if needed — e.g., parameterize the dot color on a `subheadingStyle` enum, or omit the dot inside cards.
+
+The existing `SubheadingLabel` ViewModifier in `Modifiers.swift:64-72` (used by `SettingsView` and elsewhere for non-RichTextView labels) keeps its sans-serif design intentionally — long-form prose subheadings (serif + dot, post-#13) and UI-label subheadings (sans-serif + no dot) serve different visual jobs.
 
 ### 14. VerbView: Long infinitives wrap rather than scale-down
 
@@ -924,7 +947,7 @@ If implementing more than one suggestion, this order minimizes rework:
 3. ~~**#2 + #3** (apply unified card treatment everywhere) — uses #A.~~ *Done 2026-05-06.*
 4. ~~**#1** (fix `[?]` glyph bug) — independent, can ship anytime.~~ *Done 2026-05-05.*
 5. ~~**#6 + #11** (card-wrap remaining sections) — uses #A.~~ *Done 2026-05-06.*
-6. **#13** (subheading treatment) — affects all rich-text screens; do once #6/#11 land so the visual context is consistent.
+6. ~~**#13** (subheading treatment) — affects all rich-text screens; do once #6/#11 land so the visual context is consistent.~~ *Done 2026-05-06.*
 7. **#4 / #5 / #22 / #10** (Quiz polish) — independent of card system.
 8. **#7 / #8** (Settings polish) — independent.
 9. **~~#9~~ / #14 / #16 / #17 / #21** — small independent items. *#9 done 2026-05-06.*

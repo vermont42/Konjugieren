@@ -10,12 +10,18 @@ struct RichTextView: View {
       ForEach(blocks, id: \.self) { block in
         switch block {
         case .subheading(let text):
-          Text(text)
-            .font(.headline)
-            .foregroundStyle(Color.customYellow)
-            .frame(maxWidth: .infinity)
-            .multilineTextAlignment(.center)
-            .accessibilityAddTraits(.isHeader)
+          HStack(alignment: .center, spacing: 8) {
+            Circle()
+              .fill(Color.customRed)
+              .frame(width: 4, height: 4)
+            Text(text)
+              .font(.title3.bold())
+              .fontDesign(.serif)
+              .foregroundStyle(Color.customYellow)
+              .accessibilityAddTraits(.isHeader)
+          }
+          .padding(.top, 8)
+          .frame(maxWidth: .infinity, alignment: .leading)
 
         case .body(let segments):
           BodyTextView(segments: segments)

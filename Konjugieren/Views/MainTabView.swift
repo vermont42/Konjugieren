@@ -30,5 +30,6 @@ struct MainTabView: View {
       }
     }
     .tint(.customRed)
+    .sensoryFeedback(.selection, trigger: world.selectedTab)
   }
 }

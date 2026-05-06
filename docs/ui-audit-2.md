@@ -133,7 +133,7 @@ App-specific: a custom "Enjoying Konjugieren?" review prompt can fire on launch 
 2. ~~**Cards without elevation**: no shadows, no borders. On a pure-black background, fill-only cards have no depth dimension.~~ *Done — see #3.*
 3. ~~**One real rendering bug**: `[?]` glyph fallback on inline emoji in long-form `BrowseableFamily` descriptions.~~ *Done — see #1.*
 4. **Quiz screen still leaves ~60% of vertical space empty** below the question card.
-5. **VerbView's etymology and example-sentence sections are bare** while the conjugation sections above them are carded — visual rhythm breaks halfway down.
+5. ~~**VerbView's etymology and example-sentence sections are bare** while the conjugation sections above them are carded — visual rhythm breaks halfway down.~~ *Done — see #6.*
 6. **SettingsView action-button card is undifferentiated** — four identical `funButton` calls stacked together.
 
 ---
@@ -361,6 +361,8 @@ ProgressView(value: Double(quiz.currentIndex), total: Double(Quiz.questionCount)
 
 ### 6. VerbView: Wrap etymology and example-sentence sections in cards
 
+**Status:** Resolved 2026-05-06. See "Resolution" block at the end of this section.
+
 **Screen:** `Konjugieren/Views/VerbView.swift:115-152`.
 
 **Visual proof:** `docs/screenshots/20260505-105900-verbs-tab.png` shows etymology body text on the flat canvas with no card frame, immediately below carded conjugation sections.
@@ -389,6 +391,17 @@ if let etymologyText = Etymology.text(for: verb.infinitiv) {
 Same wrapper for the example-sentences section. Note the heading style change to match conjugation section headings (`.subheadline.smallCaps().weight(.semibold).fontDesign(.serif)`) — this also unifies typography across sections within a single VerbView. The `.konjCardWithAccentBar()` modifier is from #A's suite (shipped) and replaces what was, in the original audit, an explicit `.padding+.background+.clipShape+.overlay(accent bar)` chain.
 
 **Depends on:** #2 cleanup is recommended first so the same asset name is used everywhere. Independent if shipping immediately at full opacity.
+
+**Resolution (2026-05-06):**
+
+Both etymology (`VerbView.swift:115-127`) and example-sentences (`VerbView.swift:129-154`) sections wrapped with `.konjCardWithAccentBar()` from #A's modifier suite, replacing the prior bare `.padding(.horizontal)` framing. The `.padding(.horizontal)` is preserved as the outer modifier so each card sits within the screen-edge gutters.
+
+Heading typography updated in both sections from `.font(.headline)` to `.font(.subheadline.smallCaps().weight(.semibold)).fontDesign(.serif)`, matching the heading style of `ConjugationSectionView` (line 284-285). This unifies typography across every section heading within `VerbView` — etymology, example sentences, and per-conjugation cards now all share the same small-caps serif treatment. The double `.foregroundStyle(.primary)` → `.foregroundStyle(.customYellow)` chain at the etymology and example-sentence call sites is preserved verbatim per the audit's recommended snippet (the second wins; keeping both minimizes the diff at the existing site).
+
+Visual confirmation:
+
+- `docs/screenshots/20260506-101245-sein-etymology-post6.png` — Futur Konjunktiv II conjugation card above; the new Etymology card below with matching accent bar and small-caps serif heading.
+- `docs/screenshots/20260506-101339-sein-example-sentences-post6.png` — etymology body trailing into the new Example Sentence card.
 
 ### 7. Settings: App Icon picker — replace text segments with previews
 
@@ -477,6 +490,8 @@ Two cards aligns the action group with the structural card pattern of the rest o
 
 ### 9. Cross-cutting: Sensory feedback on tab change
 
+**Status:** Resolved 2026-05-06. See "Resolution" block at the end of this section.
+
 **Screen:** `Konjugieren/Views/MainTabView.swift:9-31`.
 
 **Problem:** No haptic when switching tabs. The rest of the app generously uses `.sensoryFeedback`; the root navigation surface should too.
@@ -492,6 +507,10 @@ TabView(selection: $world.selectedTab) {
 ```
 
 One line. Independent of all other suggestions.
+
+**Resolution (2026-05-06):**
+
+`MainTabView.swift:33` — added `.sensoryFeedback(.selection, trigger: world.selectedTab)` directly after `.tint(.customRed)`. Verified by build; haptics aren't visually testable on the simulator, so the verification reduces to "code matches the recommendation, build clean."
 
 ### 10. Quiz: Reconsider "Conjgroup:" label
 
@@ -523,6 +542,8 @@ Ditto for the `Pronoun:` line at `QuizView.swift:104-113` — both could use SF 
 
 ### 11. FamilyDetailView: Wrap long description in a card
 
+**Status:** Resolved 2026-05-06. See "Resolution" block at the end of this section.
+
 **Screen:** `Konjugieren/Views/FamilyDetailView.swift:31-32`.
 
 **Problem:** The long-form `RichTextView` description at the top of every family detail sits naked on the black background between the centered title and the verb list. Cards everywhere else in the app; not here.
@@ -530,6 +551,17 @@ Ditto for the `Pronoun:` line at `QuizView.swift:104-113` — both could use SF 
 **Fix:** apply `.konjCard()` (or `.konjCardWithAccentBar()` if matching `ConjugationSectionView`'s accent treatment is desired). The choice is the 2pt yellow leading-edge accent bar — consistency with VerbView's per-section cards argues yes; restraint argues no, since family-detail prose is already framed as the page's focal content.
 
 Recommended: `.konjCard()` (no accent bar — the `BrowseableFamily.systemImageName` icon at the top is the focal element).
+
+**Resolution (2026-05-06):**
+
+`FamilyDetailView.swift:31-34` — long-description `RichTextView` wrapped with `.konjCard()` per the audit's recommendation (no accent bar). Confirmed visually: with the centered "Separable" title + `arrow.left.arrow.right` icon as the page's focal element, the bare `konjCard()` rim provides separation from the verb list below without competing with the icon-title pair above. The `customCardBackground` and `customCardBorder` (the rim) come along automatically via the modifier suite from #A.
+
+Visual confirmation:
+
+- Pre-#11 baseline: `docs/screenshots/20260506-100741-separable-detail-pre11.png` — description sits flat on the canvas, running directly into the "ab-" prefix header.
+- Post-#11: `docs/screenshots/20260506-101406-separable-detail-post11.png` — description framed in a card with internal padding; the verb list is pushed below the fold.
+
+The post-#1 inline emoji fix (England flag + horse glyphs) renders correctly inside the carded prose, confirming the wrapping doesn't disturb the `^...^` markup pipeline.
 
 ### 12. VerbView: Differentiate metadata pills
 
@@ -891,9 +923,9 @@ If implementing more than one suggestion, this order minimizes rework:
 2. ~~**#A** (card modifiers in `Modifiers.swift`) — establishes API.~~ *Done in commit `92d5043`.*
 3. ~~**#2 + #3** (apply unified card treatment everywhere) — uses #A.~~ *Done 2026-05-06.*
 4. ~~**#1** (fix `[?]` glyph bug) — independent, can ship anytime.~~ *Done 2026-05-05.*
-5. **#6 + #11** (card-wrap remaining sections) — uses #A.
+5. ~~**#6 + #11** (card-wrap remaining sections) — uses #A.~~ *Done 2026-05-06.*
 6. **#13** (subheading treatment) — affects all rich-text screens; do once #6/#11 land so the visual context is consistent.
 7. **#4 / #5 / #22 / #10** (Quiz polish) — independent of card system.
 8. **#7 / #8** (Settings polish) — independent.
-9. **#9 / #14 / #16 / #17 / #21** — small independent items.
+9. **~~#9~~ / #14 / #16 / #17 / #21** — small independent items. *#9 done 2026-05-06.*
 10. Skip / defer **#23 / #24** unless explicit user feedback motivates them.

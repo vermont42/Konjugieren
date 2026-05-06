@@ -30,6 +30,7 @@ struct FamilyDetailView: View {
 
           RichTextView(blocks: family.longDescription.richTextBlocks)
             .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+            .konjCard()
 
           if family.hasPrefixList {
             PrefixGroupedVerbList(family: family, navigateToVerb: navigateToVerb)

@@ -116,12 +116,14 @@ struct VerbView: View {
           Divider()
           VStack(alignment: .leading, spacing: 8) {
             Text(L.VerbView.etymologyHeading)
-              .font(.headline)
+              .font(.subheadline.smallCaps().weight(.semibold))
+              .fontDesign(.serif)
               .foregroundStyle(.primary)
               .accessibilityAddTraits(.isHeader)
               .foregroundStyle(.customYellow)
             RichTextView(blocks: etymologyText.richTextBlocks)
           }
+          .konjCardWithAccentBar()
           .padding(.horizontal)
         }
 
@@ -129,7 +131,8 @@ struct VerbView: View {
           Divider()
           VStack(alignment: .leading, spacing: 8) {
             Text(L.VerbView.exampleSentenceHeading)
-              .font(.headline)
+              .font(.subheadline.smallCaps().weight(.semibold))
+              .fontDesign(.serif)
               .foregroundStyle(.primary)
               .accessibilityAddTraits(.isHeader)
               .foregroundStyle(.customYellow)
@@ -148,6 +151,7 @@ struct VerbView: View {
               .font(.caption)
               .foregroundStyle(.secondary)
           }
+          .konjCardWithAccentBar()
           .padding(.horizontal)
         }
       }

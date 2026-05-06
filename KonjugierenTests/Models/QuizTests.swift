@@ -390,4 +390,50 @@ struct QuizTests {
     #expect(Quiz.questionCount == 30)
     #expect(Quiz.pointsPerCorrect == 10)
   }
+
+  @Test func quizItemStateIsUnansweredBeforeSubmit() {
+    let quiz = Quiz(timerInterval: 0.001)
+    quiz.start()
+
+    for i in 0..<Quiz.questionCount {
+      #expect(quiz.questions[i].state == .unanswered)
+    }
+
+    quiz.quit()
+  }
+
+  @Test func quizItemStateIsCorrectAfterCorrectAnswer() {
+    let quiz = Quiz(timerInterval: 0.001)
+    quiz.start()
+
+    let correctAnswer = quiz.questions[0].correctAnswer
+    quiz.submitAnswer(correctAnswer)
+
+    #expect(quiz.questions[0].state == .correct)
+    #expect(quiz.questions[1].state == .unanswered)
+
+    quiz.quit()
+  }
+
+  @Test func quizItemStateIsIncorrectAfterIncorrectAnswer() {
+    let quiz = Quiz(timerInterval: 0.001)
+    quiz.start()
+
+    quiz.submitAnswer("definitelywrong")
+
+    #expect(quiz.questions[0].state == .incorrect)
+    #expect(quiz.questions[1].state == .unanswered)
+
+    quiz.quit()
+  }
+
+  @Test func quitClearsAllQuestionsAndStates() {
+    let quiz = Quiz(timerInterval: 0.001)
+    quiz.start()
+    quiz.submitAnswer(quiz.questions[0].correctAnswer)
+    quiz.submitAnswer("wrong")
+    quiz.quit()
+
+    #expect(quiz.questions.isEmpty)
+  }
 }

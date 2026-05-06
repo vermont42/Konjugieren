@@ -298,6 +298,8 @@ Visual confirmation: same screenshots as #2. The rim is most visible on the larg
 
 ### 4. Quiz: Reclaim the empty bottom 60%
 
+**Status:** Resolved 2026-05-06. See "Resolution" block at the end of this section.
+
 **Screen:** `Konjugieren/Views/QuizView.swift:88-232` (the `quizContent` `@ViewBuilder`).
 
 **Visual proof:** `docs/screenshots/20260505-105500-quiz-active.png`. The card occupies the top quarter; the rest is black up to the tab pill.
@@ -333,7 +335,31 @@ c. **Show a glanceable conjugation reference card.** Once the user submits any a
 
 **Independent of:** all other suggestions.
 
+**Resolution (2026-05-06):**
+
+Shipped (a) — the question-queue dot row. (b) and (c) deferred to Round Three.
+
+`Quiz.swift:358-374` — added `QuizItem.State` enum (`.correct` / `.incorrect` / `.unanswered`) with a computed `state` property derived from the existing `isCorrect: Bool?`. The audit's `quiz.stateForQuestion(at:)` call simplified to `quiz.questions[i].state` since `Quiz.questions` is already `private(set)` and readable from the view — no new method on `Quiz` needed.
+
+`QuizView.swift:223-246` — dot row as the second child of the outer VStack in `quizContent`, with `Layout.doubleDefaultSpacing` separating it from the card. Each dot is `Image(systemName: "circle.fill")` (not `Circle()`, since `.symbolEffect(.pulse)` only animates SF Symbols — the audit's snippet would have been a no-op as written). The current dot scales to 1.4× and pulses via `.symbolEffect(.pulse.byLayer, options: reduceMotion ? .nonRepeating : .repeating, isActive: i == quiz.currentIndex)`, matching the start-button pulse pattern at `QuizView.swift:40`. State transitions get `.animation(.spring(duration: 0.3), value: quiz.questions[i].isCorrect)`. Color mapping lives in a private `extension QuizItem.State` at `QuizView.swift:252-263`: correct → `.customYellow`, incorrect → `.customRed`, unanswered → `.gray.opacity(0.4)`. The current dot intentionally stays dim gray — its identity comes from scale + pulse, not a fourth color.
+
+Combined VoiceOver label via `.accessibilityElement(children: .ignore)` + new `L.Accessibility.quizDotRow(current:total:correct:incorrect:remaining:)` (added to `L.swift:35-37` and `Localizable.xcstrings`, both `de` and `en`, with positional `%n$lld` substitutions). One glanceable announcement instead of 30 per-dot rotor stops.
+
+Tests added at `QuizTests.swift:395-440`: `quizItemStateIsUnansweredBeforeSubmit`, `quizItemStateIsCorrectAfterCorrectAnswer`, `quizItemStateIsIncorrectAfterIncorrectAnswer`, `quitClearsAllQuestionsAndStates`. Suite count 122/122 in 17 suites (118 baseline + 4).
+
+Layout sanity: `30 × 8pt + 29 × 4pt = 356pt`; iPhone 14 (smallest device given the iOS 26.0 deployment floor) has ~358pt usable width inside `Layout.doubleDefaultSpacing × 2` horizontal padding. Tight by 2pt but no overflow. If a future device surfaces claustrophobia, swap the dot row body to `ViewThatFits` with primary `(8pt, 4pt)` and fallback `(6pt, 3pt)` — three lines of code.
+
+**Bug-and-fix during shipping:** the initial implementation followed the audit's snippet form, `ForEach(0..<Quiz.questionCount, id: \.self) { i in ... quiz.questions[i] ... }`. This crashed with `Fatal error: Index out of range` on the first tap of the Quit toolbar button (or sometimes the second tap, on real iPhone hardware where keyboard-dismiss steals the first tap): `Quiz.quit()` sets `questions = []` (`Quiz.swift:176`), but the constant-range `ForEach` still tried to iterate 30 times and access `quiz.questions[i]`. Although the parent `if quiz.isInProgress, let question = quiz.currentQuestion` should fail and prevent `quizContent` from being called once `isInProgress == false`, SwiftUI's `@Observable` invalidation can re-evaluate child closures one more time during transition unmount or between sibling property mutations within `quit()`. The fix switched the dot row to `ForEach(Array(quiz.questions.enumerated()), id: \.element.id) { index, item in ... }` — iteration count is now coupled to the actual collection, so an empty `questions` array produces zero dot renders instead of 30 out-of-bounds accesses. **Generalizable lesson:** when iterating with `ForEach` over a mutable `@Observable` collection, bind iteration to the collection itself (or its `.indices`), never to a presumed-stable constant range. The audit's recommended snippet had this fragility built in; future audits should flag it. Live repro of the crash captured at `docs/screenshots/20260506-122952-repro-after-first-quit.png` (app crashed to home screen with the Live Activity pill still visible because `quit()` aborted mid-mutation); post-fix verification at `docs/screenshots/20260506-123247-repro-fix-after-quit.png` (clean transition back to the Start screen with no Live Activity pill, indicating `quit()` completed cleanly).
+
+Visual confirmation:
+
+- Pre-batch baseline (post-#13, pre-Quiz-polish): `docs/screenshots/20260506-120810-quiz-active-pre-batch.png` — empty bottom 60%, "Conjgroup:" label, thin yellow ProgressView line.
+- Post-batch fresh quiz state: `docs/screenshots/20260506-121611-quiz-active-post-batch-fresh.png` — dot row visible below the card with all-gray dots, current dot subtly larger from the 1.4× scale.
+- Post-batch mid-quiz mixed states: `docs/screenshots/20260506-121728-quiz-after-q1.png` — yellow correct dot at position 1, red incorrect dot at position 2, pulsing larger gray current dot at position 3, 27 dim-gray upcoming dots. Also confirms #5's absorption (no ProgressView at top of card) and #10's full-word "Conjugationgroup:" label.
+
 ### 5. Quiz: Progress bar visibility
+
+**Status:** Resolved 2026-05-06 (absorbed into #4(a)). See "Resolution" block at the end of this section.
 
 **Screen:** `Konjugieren/Views/QuizView.swift:91-92`.
 
@@ -358,6 +384,12 @@ ProgressView(value: Double(quiz.currentIndex), total: Double(Quiz.questionCount)
 **Alternative:** if implementing #4(a) above, drop the progress bar entirely — the dot row replaces it with richer information.
 
 **Depends on:** none. Independent of #4 unless the dot-row replacement is chosen, in which case skip this.
+
+**Resolution (2026-05-06):**
+
+Absorbed into #4(a)'s dot row, per the audit's own alternative recommendation. The audit's standalone snippet (track-and-fill `ProgressView` styling) was not implemented because the dot row encodes the same progress with richer per-question feedback, and shipping both would have been visual redundancy.
+
+`QuizView.swift:91-92` (the original `ProgressView`) and the `progressText` cell at the former `QuizView.swift:126` were both deleted. The stats row inside the card is now just `Score` and `Elapsed` — the dot row provides the progress dimension visually. See #4's Resolution block for the dot-row implementation, the screenshots, and the test additions.
 
 ### 6. VerbView: Wrap etymology and example-sentence sections in cards
 
@@ -514,6 +546,8 @@ One line. Independent of all other suggestions.
 
 ### 10. Quiz: Reconsider "Conjgroup:" label
 
+**Status:** Resolved 2026-05-06. See "Resolution" block at the end of this section.
+
 **Screen:** `Konjugieren/Views/QuizView.swift:116`. Renders `L.Quiz.conjugationgroup` from `Localizable.xcstrings`.
 
 **Visual proof:** `docs/screenshots/20260505-105500-quiz-active.png` shows "Conjgroup: Imperativ".
@@ -539,6 +573,16 @@ HStack(alignment: .top, spacing: 4) {
 Ditto for the `Pronoun:` line at `QuizView.swift:104-113` — both could use SF Symbols (`person` for pronoun, `textformat.abc` for conjugation group).
 
 **Recommended:** (a) is the lowest-cost fix; (b) is the higher-design-payoff fix.
+
+**Resolution (2026-05-06):**
+
+Shipped (a) — the value edit. Both locales updated in `Localizable.xcstrings`'s `Quiz.conjugationgroup` entry: `en` from `"Conjgroup:"` to `"Conjugationgroup:"`; `de` from `"Conjgroup:"` to `"Konjugationsgruppe:"`. Both locales were stuck on the awkward English coinage — German had never been properly localized — so this batch fixed both rather than just the English half.
+
+Wrap-check on iPhone 17 (the simulator) at `"Conjugationgroup: Imperativ"` width: clean single line inside the card. The longest German conjugationgroup name is `Plusquamperfekt Konjunktiv II` (only emitted at `.ridiculous` difficulty), giving a worst-case label of `"Konjugationsgruppe: Plusquamperfekt Konjunktiv II"` — ~50 characters at body font. Length math fits ~370pt of card-internal width on iPhone 14 / 17, but a visual check on a Plusquamperfekt-class question is worth doing in normal usage (not blocked on it; the underlying `.fixedSize(horizontal: true, vertical: false)` on the label `Text` plus `.fixedSize(horizontal: false, vertical: true)` on the value `Text` already wraps the value cleanly across lines if needed).
+
+JSON integrity validated post-edit (`python3 -c "import json; json.load(open('Konjugieren/Assets/Localizable.xcstrings'))"` returned cleanly). The replacement was performed via Python per CLAUDE.md's xcstrings-editing rule, even though no ASCII double quotes were affected — the surrounding JSON syntax made it the safer tool.
+
+Visual confirmation: the post-batch screenshots cited in #4's Resolution block both render the new full-word label clearly. Pre-batch baseline at `docs/screenshots/20260506-120810-quiz-active-pre-batch.png` shows the old "Conjgroup:" for direct comparison.
 
 ### 11. FamilyDetailView: Wrap long description in a card
 
@@ -810,6 +854,8 @@ Respects `accessibilityReduceMotion` automatically (symbol effects honor this pr
 
 ### 22. QuizView: Speak-on-tap for the verb infinitive
 
+**Status:** Resolved 2026-05-06. See "Resolution" block at the end of this section.
+
 **Screen:** `Konjugieren/Views/QuizView.swift:94-97`.
 
 The verb infinitive `mitteilen` is shown but not tappable for pronunciation. Elsewhere in the app (`VerbView.swift:46`), every verb gets `.speakOnTap()`. Reinforces phonetic learning during quiz; consistent.
@@ -823,6 +869,14 @@ Text(verbatim: question.verb.infinitiv)
   .germanPronunciation()
   .speakOnTap(question.verb.infinitiv)
 ```
+
+**Resolution (2026-05-06):**
+
+Shipped verbatim per the audit's snippet. `QuizView.swift:95` — `.speakOnTap(question.verb.infinitiv)` added after `.germanPronunciation()` on the infinitive `Text`. The default locale (`UttererLocale.german` per `Modifiers.swift:47`) is correct here — verb infinitives are German.
+
+Pattern matches existing `.speakOnTap` call sites elsewhere in the app: `VerbView.swift:45` (verb infinitive), `VerbView.swift:51` (translation, English locale), `VerbView.swift:92` (ablaut group), `VerbView.swift:308` (conjugation row). The Quiz now joins the consistent surface where every printed verb is tappable to hear it.
+
+VoiceOver behavior: the existing `.germanPronunciation()` modifier shapes the VoiceOver pronunciation hint. Adding `.speakOnTap` layers a tap action on top; the modifier doesn't override the accessibility label or trait. A manual VoiceOver pass on this surface is recommended at the next polish-batch boundary, but build clean + manual tap-fires-audio check is the verification scope per Round Two's followup.
 
 ### 23. Cross-cutting: Material backgrounds for the floating tab pill
 
@@ -948,7 +1002,7 @@ If implementing more than one suggestion, this order minimizes rework:
 4. ~~**#1** (fix `[?]` glyph bug) — independent, can ship anytime.~~ *Done 2026-05-05.*
 5. ~~**#6 + #11** (card-wrap remaining sections) — uses #A.~~ *Done 2026-05-06.*
 6. ~~**#13** (subheading treatment) — affects all rich-text screens; do once #6/#11 land so the visual context is consistent.~~ *Done 2026-05-06.*
-7. **#4 / #5 / #22 / #10** (Quiz polish) — independent of card system.
+7. ~~**#4 / #5 / #22 / #10** (Quiz polish) — independent of card system.~~ *Done 2026-05-06.*
 8. **#7 / #8** (Settings polish) — independent.
 9. **~~#9~~ / #14 / #16 / #17 / #21** — small independent items. *#9 done 2026-05-06.*
 10. Skip / defer **#23 / #24** unless explicit user feedback motivates them.

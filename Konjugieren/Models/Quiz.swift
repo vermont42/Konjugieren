@@ -355,12 +355,23 @@ class Quiz {
 }
 
 struct QuizItem: Identifiable {
+  enum State {
+    case correct
+    case incorrect
+    case unanswered
+  }
+
   let id = UUID()
   let verb: Verb
   let conjugationgroup: Conjugationgroup
   let correctAnswer: String
   var userAnswer: String?
   var isCorrect: Bool?
+
+  var state: State {
+    guard let isCorrect else { return .unanswered }
+    return isCorrect ? .correct : .incorrect
+  }
 
   var pronoun: String? {
     switch conjugationgroup {

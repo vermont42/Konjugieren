@@ -88,13 +88,11 @@ struct QuizView: View {
   private func quizContent(question: QuizItem) -> some View {
     VStack(spacing: Layout.doubleDefaultSpacing) {
       VStack(alignment: .leading, spacing: Layout.defaultSpacing) {
-        ProgressView(value: Double(quiz.currentIndex), total: Double(Quiz.questionCount))
-          .tint(.customYellow)
-
         Text(verbatim: question.verb.infinitiv)
           .font(.title.bold())
           .foregroundStyle(.customForeground)
           .germanPronunciation()
+          .speakOnTap(question.verb.infinitiv)
 
         Text(verbatim: question.verb.translation)
           .font(.subheadline)
@@ -123,9 +121,6 @@ struct QuizView: View {
         }
 
         HStack {
-          Text(label: L.Quiz.progress, value: quiz.progressText)
-            .font(.caption.monospacedDigit())
-          Spacer()
           Text(label: L.Quiz.score, value: "\(quiz.score)")
             .font(.caption.monospacedDigit())
           Spacer()
@@ -224,9 +219,47 @@ struct QuizView: View {
       )
       .padding(.horizontal, Layout.doubleDefaultSpacing)
       .padding(.top, Layout.doubleDefaultSpacing)
+
+      HStack(spacing: 4) {
+        ForEach(Array(quiz.questions.enumerated()), id: \.element.id) { index, item in
+          Image(systemName: "circle.fill")
+            .font(.system(size: 8))
+            .frame(width: 8, height: 8)
+            .foregroundStyle(item.state.dotColor)
+            .scaleEffect(index == quiz.currentIndex ? 1.4 : 1.0)
+            .symbolEffect(
+              .pulse.byLayer,
+              options: reduceMotion ? .nonRepeating : .repeating,
+              isActive: index == quiz.currentIndex
+            )
+            .animation(.spring(duration: 0.3), value: item.isCorrect)
+        }
+      }
+      .padding(.horizontal, Layout.doubleDefaultSpacing)
+      .accessibilityElement(children: .ignore)
+      .accessibilityLabel(L.Accessibility.quizDotRow(
+        current: quiz.currentIndex + 1,
+        total: Quiz.questionCount,
+        correct: quiz.questions.filter { $0.state == .correct }.count,
+        incorrect: quiz.questions.filter { $0.state == .incorrect }.count,
+        remaining: Quiz.questionCount - quiz.currentIndex - 1
+      ))
     }
   }
 
+}
+
+private extension QuizItem.State {
+  var dotColor: Color {
+    switch self {
+    case .correct:
+      return .customYellow
+    case .incorrect:
+      return .customRed
+    case .unanswered:
+      return .gray.opacity(0.4)
+    }
+  }
 }
 
 #Preview {

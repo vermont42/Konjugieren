@@ -31,6 +31,10 @@ enum L {
     static var showOnboardingHint: String {
       String(localized: "Accessibility.showOnboardingHint")
     }
+
+    static func quizDotRow(current: Int, total: Int, correct: Int, incorrect: Int, remaining: Int) -> String {
+      String(localized: "Accessibility.quizDotRow \(current) \(total) \(correct) \(incorrect) \(remaining)")
+    }
   }
 
   enum RatingsFetcher {

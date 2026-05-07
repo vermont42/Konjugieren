@@ -41,7 +41,7 @@ struct SettingsView: View {
                 .pickerStyle(.segmented)
               }
 
-              gradientDivider
+              GradientDivider()
 
               settingSection(
                 heading: L.Settings.thirdPersonPronounGenderHeading,
@@ -55,7 +55,7 @@ struct SettingsView: View {
                 .pickerStyle(.segmented)
               }
 
-              gradientDivider
+              GradientDivider()
 
               settingSection(
                 heading: L.Settings.searchScopeHeading,
@@ -84,7 +84,7 @@ struct SettingsView: View {
                 .pickerStyle(.segmented)
               }
 
-              gradientDivider
+              GradientDivider()
 
               settingSection(
                 heading: L.Settings.audioFeedbackHeading,
@@ -286,17 +286,5 @@ struct SettingsView: View {
         .font(.callout)
         .foregroundStyle(.customForeground)
     }
-  }
-
-  private var gradientDivider: some View {
-    Rectangle()
-      .fill(
-        LinearGradient(
-          colors: [.clear, .customYellow.opacity(0.3), .clear],
-          startPoint: .leading,
-          endPoint: .trailing
-        )
-      )
-      .frame(height: 1)
   }
 }

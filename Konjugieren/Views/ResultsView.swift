@@ -60,6 +60,10 @@ struct ResultsView: View {
           .accessibilityHint(L.Accessibility.leaderboardHint)
         }
 
+        GradientDivider()
+          .padding(.horizontal, Layout.doubleDefaultSpacing)
+          .padding(.top, Layout.defaultSpacing)
+
         List {
           ForEach(quiz.questions) { question in
             resultRow(for: question)

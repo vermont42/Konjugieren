@@ -167,8 +167,9 @@ struct TutorRowView: View {
       Spacer()
 
       Image(systemName: "brain.head.profile.fill")
-        .font(.title)
+        .font(.largeTitle)
         .foregroundStyle(.customYellow)
+        .symbolEffect(.pulse, options: .repeating)
         .accessibilityHidden(true)
     }
     .padding(.horizontal)

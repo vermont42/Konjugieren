@@ -901,6 +901,8 @@ Adds a subtle warm glow to the upper region without disturbing layout.
 
 ### 17. ResultsView: Score-card / list divider
 
+**Status:** Resolved 2026-05-06. See "Resolution" block at the end of this section.
+
 **Screen:** `Konjugieren/Views/ResultsView.swift:65-72`.
 
 **Problem:** The score card and the list of per-question results sit directly adjacent with no visual transition. The eye has nothing to mark "summary above; per-item below."
@@ -933,6 +935,31 @@ GradientDivider()
 
 Dedupe with `SettingsView`'s `gradientDivider` private computed property.
 
+**Resolution (2026-05-06):**
+
+Shipped per the audit's snippet, with one architectural override surfaced via the next-session handoff cycle: `GradientDivider` lives in its own file at `Konjugieren/Utils/GradientDivider.swift`, not in `Konjugieren/Utils/Modifiers.swift` as this section originally prescribed. Rationale: `Modifiers.swift` is dedicated to view-extension methods plus private `ViewModifier` structs; a non-private file-scope `struct GradientDivider: View` is neither, and lumping it in would muddy the file's filename-intent. The override was surfaced via `docs/ui-audit-2-followup.md` (since deleted per the cleanup convention).
+
+Decisions ratified before coding (D1–D3):
+
+- **D1.** Default `color: Color = .customYellow`. All four call sites (3 in `SettingsView`, 1 in `ResultsView`) omit the parameter and rely on the default.
+- **D2.** Divider sits *below* the optional GameCenter button and *above* the per-question `List` in `ResultsView` (option B). When the GC button is absent — e.g., in a non-GC-authenticated test run — the divider sits directly under the score card. Either way, the divider's job (separating summary above from per-item below) is coherent.
+- **D3.** Full dedupe (D3a). `SettingsView`'s private `gradientDivider` computed property was removed; the three call sites at the original lines 44, 58, 87 were migrated to `GradientDivider()`.
+
+File diff:
+
+- New file: `Konjugieren/Utils/GradientDivider.swift` (17 lines).
+- `Konjugieren/Views/SettingsView.swift`: removed private property (12 lines deleted); 3 call-site renames `gradientDivider` → `GradientDivider()`.
+- `Konjugieren/Views/ResultsView.swift`: 4 lines added between the GC button block and the `List`.
+
+Build clean (`build_app.sh`). Tests green: 122/122 in 17 suites — view-layer changes had zero test impact, as expected.
+
+Visual confirmation:
+
+- SettingsView regression check (D3a): `docs/screenshots/20260506-184004-settings-pre-batch-top.png` ↔ `docs/screenshots/20260506-184814-settings-post-batch-top.png` (card 1, two dividers); `docs/screenshots/20260506-184104-settings-pre-batch-scrolled.png` ↔ `docs/screenshots/20260506-184831-settings-post-batch-scrolled.png` (card 2, one divider). All three dividers pixel-identical pre/post — the migration to the shared component is visually transparent.
+- ResultsView post-batch: `docs/screenshots/20260506-185228-results-post-batch-divider.png` — the new gradient divider is visible between the score card and the per-question list.
+- ResultsView pre-batch baseline: existing `docs/screenshots/20260505-104123-quiz-results.png` (ResultsView's last commit was `117bce5`, predating that screenshot — the existing image is a valid pre-#17 reference).
+- AX3 spot-check: `docs/screenshots/20260506-185312-results-post-batch-ax3.png` — divider scales sensibly at `accessibility-extra-large` content size; no layout regression in the parent VStack. Content size reset to `large` after the spot-check.
+
 ---
 
 ## Low Priority (polish pass)
@@ -964,6 +991,8 @@ Same pattern: a single named color for the subtle yellow-tinted card rim if #3's
 
 ### 21. InfoBrowseView: Distinct iconography for Tutor row
 
+**Status:** Resolved 2026-05-06 with caveats. See Resolution block — visual verification pending real-device confirmation.
+
 **Screen:** `Konjugieren/Views/InfoBrowseView.swift:167`.
 
 The Tutor row uses `brain.head.profile.fill` at `.title` size with yellow tint. The yellow card-tint background helps differentiate, but the icon weight could too — Tutor is the most novel feature in the app and can afford a moment of life.
@@ -979,6 +1008,18 @@ Image(systemName: "brain.head.profile.fill")
 ```
 
 Respects `accessibilityReduceMotion` automatically (symbol effects honor this preference).
+
+**Resolution (2026-05-06):**
+
+Shipped per the audit's snippet at `Konjugieren/Views/InfoBrowseView.swift:170-172`: `.font(.title)` → `.font(.largeTitle)`; `.symbolEffect(.pulse, options: .repeating)` inserted between `.foregroundStyle(.customYellow)` and `.accessibilityHidden(true)`.
+
+D4: shipped with caveat (D4a). Verified by code inspection on the Intel-Mac dev host; visual confirmation pending real-device verification on the next App Store build (Josh verifies on his iPhone).
+
+Verification limitation: Apple Intelligence host-eligibility silently suppresses the InfoBrowseView Tutor row on Intel-Mac dev hosts (per `CLAUDE.md`'s host-eligibility caveat). The row simply does not render — there is no console error, no fallback UI, just absence. Pre/post visual screenshots are not meaningful on this hardware. The change was paired with #17 in this batch precisely because the verification overhead is asymmetric: #17 carries the visual confirmation burden; #21 rides along on build-clean + test-green + code-inspection.
+
+Build clean. Tests green: 122/122 in 17 suites.
+
+`.symbolEffect(.pulse, options: .repeating)` automatically respects `accessibilityReduceMotion` per SwiftUI's documented behavior — no manual gating needed.
 
 ### 22. QuizView: Speak-on-tap for the verb infinitive
 
@@ -1132,5 +1173,5 @@ If implementing more than one suggestion, this order minimizes rework:
 6. ~~**#13** (subheading treatment) — affects all rich-text screens; do once #6/#11 land so the visual context is consistent.~~ *Done 2026-05-06.*
 7. ~~**#4 / #5 / #22 / #10** (Quiz polish) — independent of card system.~~ *Done 2026-05-06.*
 8. ~~**#7 / #8(a)** (Settings polish) — independent.~~ *Done 2026-05-06. #8(b) deferred.*
-9. **~~#9~~ / ~~#14~~ / #16 / #17 / #21** — small independent items. *#9 done 2026-05-06. #14 done 2026-05-06.*
+9. **~~#9~~ / ~~#14~~ / #16 / ~~#17~~ / ~~#21~~** — small independent items. *#9 done 2026-05-06. #14 done 2026-05-06. #17 done 2026-05-06. #21 done 2026-05-06.*
 10. Skip / defer **#23 / #24** unless explicit user feedback motivates them.

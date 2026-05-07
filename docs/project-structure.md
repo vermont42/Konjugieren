@@ -76,6 +76,7 @@ Konjugieren/
 │   ├── GetterSetter.swift      # Protocol for key-value storage abstraction
 │   ├── GetterSetterFake.swift  # In-memory dictionary implementation for tests
 │   ├── GetterSetterReal.swift  # UserDefaults implementation of GetterSetter
+│   ├── GradientDivider.swift   # Shared gradient divider used by SettingsView and ResultsView
 │   ├── HapticPlayer.swift      # Haptic feedback methods respecting audio-feedback setting
 │   ├── KonjugierenLogger.swift # os.Logger factory with app subsystem
 │   ├── L.swift                 # Type-safe localization string accessors

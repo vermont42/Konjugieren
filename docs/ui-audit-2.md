@@ -857,6 +857,8 @@ Build and tests: `Build Succeeded`; `Test run with 122 tests in 17 suites passed
 
 ### 16. OnboardingView: Reclaim empty space on page 1
 
+**Status:** Resolved 2026-05-06. See "Resolution" block at the end of this section.
+
 **Screen:** `Konjugieren/Views/OnboardingView.swift:188-231` (`OnboardingPageView.body`).
 
 **Visual proof:** `docs/screenshots/20260505-104459-onboarding-1.png`. The mug icon + title + body + button content occupies the bottom half. Top ~1100pt is pure black on a tall iPhone.
@@ -898,6 +900,40 @@ b. **Add a decorative gradient in the upper canvas:**
 Adds a subtle warm glow to the upper region without disturbing layout.
 
 **Recommended:** (a) for layout improvement; (b) optionally on top.
+
+**Resolution (2026-05-06):**
+
+Shipped both fix candidates with two snippet-level overrides on (b) and one consistency fix beyond the audit's scope. Q2 in the questions doc surfaced that the audit's literal pairing of `endPoint: .center` with `.frame(height: 300)` would have produced a visible fade only over the upper 150pt of canvas — past `.center`, LinearGradient holds the endpoint color, leaving the lower 150pt of the frame fully clear. Q2 ratified `endPoint: .bottom` instead, spreading the fade across the full 300pt and matching the audit's narrative description ("upper third"). The audit's `.background(...)` modifier was also adapted to a sibling-in-ZStack pattern (parent-level placement per D2) with `ZStack(alignment: .top)` to top-anchor the gradient.
+
+After the initial post-batch screenshot, real-iPhone visual feedback from Josh revealed that the audit's `customYellow.opacity(0.08)` was too subtle to register as decoration on OLED — present in the pixel buffer (top-row pixel ≈ (20, 16, 0)) but below most viewers' casual perception threshold. **Opacity bumped to `0.20`** (top-row pixel now ≈ (50, 40, 0) — clearly perceptible warm cast); see "Visual confirmation" below for the full pixel sample. The audit's recommendation appears to have been calibrated by visual judgement rather than empirical pixel measurement on the target hardware.
+
+Beyond the audit's two items, **the title `Text` at `OnboardingPageView` was given `.multilineTextAlignment(.center)`** to match the body text's alignment. The original code only set this modifier on the body; on phones or accessibility sizes where the title wraps to multiple lines, lines were left-aligned within the title's bounding box, producing a visible inconsistency against the centered body text. Single-line rendering at default size on tall iPhones masked this latent bug; Josh's iPhone surfaced it, and AX3 verification reproduces it. The fix is local to OnboardingPageView (one line added) rather than a change to the shared `headingLabel()` modifier — broadening that modifier's behavior would re-align headings throughout the app, which may not be desired in all contexts.
+
+Decisions ratified before coding (D1–D4, Q1–Q2) and post-batch feedback:
+
+- **D1.** Cap leading `Spacer()` at `.frame(maxHeight: 100)` (audit literal).
+- **D2.** Parent-level gradient placement in `OnboardingView`'s ZStack — cleaner than per-page; ambient-tint feel matches system onboarding flows.
+- **D3.** Gradient `.frame(height: 300)` (audit literal) — combined with Q2 override below.
+- **D4.** Page 0 + spot-check page (D4b ratified). Spot-check page screenshot **blocked by iOS 26 SwiftUI `TabView(.page)` gesture-injection wall** (`ios-build-verify` SKILL.md "Common first-real-app friction" item 7) — the same wall the May 5 OnboardingView batch hit. Falling back to D4a (page 0 + AX3). `OnboardingPageView` is the shared per-page subview, so layout uniformity follows from the structure — a visual spot-check on a second page would have duplicated page 0's appearance.
+- **Q1.** Top-anchoring via `ZStack(alignment: .top)` (Option A). Verified the inner VStack already fills its container via `TabView.tabViewStyle(.page)`, so re-aligning ZStack children to top does not shift the VStack.
+- **Q2.** Gradient `endPoint: .bottom` (Option C) — **overrides** the audit's `.center`. Visible fade now spans the full 300pt of upper canvas, matching the audit's "upper third" narrative.
+- **Post-batch (opacity).** Opacity bumped from audit's `0.08` to `0.20` after real-iPhone feedback showed the audit value was below perception threshold on OLED. Empirical: top-row pixel went from (20, 16, 0) to (50, 40, 0).
+- **Post-batch (title alignment).** `.multilineTextAlignment(.center)` added to the title `Text` to match the body text's alignment when the title wraps. Local to `OnboardingPageView`; not propagated to the shared `headingLabel()` modifier.
+
+**Side effects to record**: the (a) Spacer cap and the post-batch title-alignment fix both apply to all `OnboardingPageView` pages (5 on this Intel-Mac dev host, 6 on Apple-Intelligence-eligible hosts), not just page 1. This is the intended uniform treatment — `OnboardingPageView` is the shared per-page subview, and the audit's "page 1" framing was a representative reference, not a scope restriction.
+
+File diff:
+
+- `Konjugieren/Views/OnboardingView.swift`: at `OnboardingView.body` — gradient block + `alignment: .top` parameter (~12 net lines added); at `OnboardingPageView.body` — `.frame(maxHeight: 100)` added to the leading `Spacer()` (1 line) and `.multilineTextAlignment(.center)` added to the title `Text` (1 line).
+
+Build clean (`build_app.sh`). Tests green: 122/122 in 17 suites — view-layer changes had zero test impact, as expected.
+
+Visual confirmation:
+
+- Page 0 pre-batch baseline: existing `docs/screenshots/20260505-104459-onboarding-1.png` (predates #16; OnboardingView untouched since).
+- Page 0 post-batch (default size): `docs/screenshots/20260506-222224-onboarding-page0-post-batch-v4.png` — gradient clearly present as a warm yellow wash in the upper third of the canvas; mug icon now anchored at ~30% from top instead of ~50% (Spacer cap working as intended). Pixel sampling at the post-bump 0.20 opacity: top-row (50, 40, 0), fading to (32, 26, 0) at 20%, (17, 14, 0) at 30%, (0, 0, 0) by 50% — confirms expected fade profile.
+- Page 0 post-batch (AX3): `docs/screenshots/20260506-222249-onboarding-page0-post-batch-ax3-v4.png` — content size `accessibility-extra-large`. Title wraps to two lines, both centered (post-batch alignment fix verified). Layout otherwise sensible: body fills available space with a slight last-line truncation ("across…" instead of "…across every conjugationgroup.") — whether this is pre-existing AX3 behavior or a regression introduced by the cap was not isolatable on this verification path. Worth a follow-up real-iPhone spot-check; flagging for completeness, not as a blocker. Content size reset to `large` after the spot-check.
+- D4b spot-check page screenshot blocked by the gesture wall noted in D4 above.
 
 ### 17. ResultsView: Score-card / list divider
 
@@ -991,7 +1027,7 @@ Same pattern: a single named color for the subtle yellow-tinted card rim if #3's
 
 ### 21. InfoBrowseView: Distinct iconography for Tutor row
 
-**Status:** Resolved 2026-05-06 with caveats. See Resolution block — visual verification pending real-device confirmation.
+**Status:** Resolved 2026-05-06. See "Resolution" block at the end of this section.
 
 **Screen:** `Konjugieren/Views/InfoBrowseView.swift:167`.
 
@@ -1013,9 +1049,9 @@ Respects `accessibilityReduceMotion` automatically (symbol effects honor this pr
 
 Shipped per the audit's snippet at `Konjugieren/Views/InfoBrowseView.swift:170-172`: `.font(.title)` → `.font(.largeTitle)`; `.symbolEffect(.pulse, options: .repeating)` inserted between `.foregroundStyle(.customYellow)` and `.accessibilityHidden(true)`.
 
-D4: shipped with caveat (D4a). Verified by code inspection on the Intel-Mac dev host; visual confirmation pending real-device verification on the next App Store build (Josh verifies on his iPhone).
+D4: shipped with code-inspection caveat (D4a) on the Intel-Mac dev host; real-iPhone visual verification subsequently confirmed by Josh — the brain icon's `.largeTitle` size and continuous `.pulse` animation render as intended on Apple-Intelligence-eligible hardware.
 
-Verification limitation: Apple Intelligence host-eligibility silently suppresses the InfoBrowseView Tutor row on Intel-Mac dev hosts (per `CLAUDE.md`'s host-eligibility caveat). The row simply does not render — there is no console error, no fallback UI, just absence. Pre/post visual screenshots are not meaningful on this hardware. The change was paired with #17 in this batch precisely because the verification overhead is asymmetric: #17 carries the visual confirmation burden; #21 rides along on build-clean + test-green + code-inspection.
+Verification context: Apple Intelligence host-eligibility silently suppresses the InfoBrowseView Tutor row on Intel-Mac dev hosts (per `CLAUDE.md`'s host-eligibility caveat) — the row simply does not render, with no console error or fallback UI. Pre/post visual screenshots on this hardware were not meaningful, which is why the change was paired with #17 (fully verifiable on the dev host) and the visual confirmation was deferred to Josh's real-iPhone check. That post-merge verification has now closed the loop; "shipped with caveat" is retired.
 
 Build clean. Tests green: 122/122 in 17 suites.
 
@@ -1054,6 +1090,31 @@ iOS 26's floating tab pill uses a system material. Konjugieren's `customRed` `.t
 ### 24. SettingsView: Section-header divider variety
 
 `gradientDivider` is used identically throughout `SettingsView`. Varying divider color subtly per card (yellow in Display, red in Quiz, neutral gray in Actions) is bordering on over-design. Listed for completeness; not recommended.
+
+### 25. Highlight the AI Tutor as a banner feature
+
+**Screen:** Cross-cutting — `Konjugieren/Views/OnboardingView.swift` (the page-4 brain icon, gated on `Current.languageModelService.isAvailable`), `Konjugieren/Views/InfoBrowseView.swift` (the Tutor row at lines 169-173 post-#21), and a possible new `MeetTutorTip` in `Konjugieren/Models/KonjugierenTips.swift`.
+
+**Problem:** The AI Tutor is the most novel feature in the app, but it's discoverable only via two surfaces:
+
+- The Tutor row in `InfoBrowseView` (now pulsating per #21), which sits as one row among the Info articles.
+- The dedicated Tutor page in `OnboardingView` (page 4, gated on AI availability), seen once per user — and not at all by users who skipped onboarding or pre-dated the feature.
+
+A returning user on an Apple-Intelligence-eligible device can easily miss the feature. Returning users on ineligible devices won't see it regardless, which is correct — but the absence of visible promotion to eligible users is a discoverability gap worth addressing.
+
+**Fix candidates** (cumulative — they compose):
+
+a. **Extend the pulse to the `OnboardingView` Tutor page icon.** Currently the shared `OnboardingPageView` renders all icons with a one-shot `.symbolEffect(.bounce, value: bounceValue)` on appear (per `OnboardingView.swift:191-194`). Add a `pulsing: Bool = false` parameter so only the Tutor page (already gated on AI availability) gets `.symbolEffect(.pulse, options: .repeating)` layered alongside the bounce. Two Tutor entry points, one consistent visual signature — continuity between the AI tutor's onboarding introduction and its post-onboarding home in `InfoBrowseView`.
+
+b. **`MeetTutorTip` via TipKit.** The project already ships TipKit (`ChangeDifficultyTip`, `PlayGameTip` in `Konjugieren/Models/KonjugierenTips.swift`). Add a `MeetTutorTip` that fires on the Tutor row in `InfoBrowseView` once per user, gated on AI availability. Self-dismissing pop-tart with a tagline like "Try the AI Tutor — ask questions in plain language." First-time discoverability for returning users; auto-cleans up after first interaction. Naming and copy land in `Localizable.xcstrings` under `Tips.meetTutor*` keys.
+
+c. **Hero banner card at the top of `InfoBrowseView`.** Promote the Tutor row from "just another row" to a full-width hero card with a larger icon, dedicated tagline, and a "Try it" affordance. Reshapes `InfoBrowseView`'s information architecture so the Tutor visually dominates the screen for AI-eligible users; falls back to the current row layout for ineligible users. Most invasive option; biggest discoverability gain. Warrants design exploration before implementation.
+
+**Verification gap (Apple Intelligence host-eligibility):** same caveat as #21. The Tutor surface silently does not render on Intel-Mac dev hosts (per `CLAUDE.md`'s host-eligibility note). Real-iPhone or Apple-Silicon-Mac access required for visual confirmation. Code inspection alone is insufficient for any banner / hero-card layout work.
+
+**Recommended:** ship (a) and (b) together as a paired batch — both are low-cost, compose cleanly, and reinforce each other's signal. Defer (c) to its own design cycle. Sub-option (a) is a natural ride-along with #16's `OnboardingView` work since it touches the same file.
+
+**Origin:** suggested 2026-05-06 after #21 shipped, in conversation following Josh's "banner feature like this deserves highlighting" reaction to the brain-pulse animation.
 
 ---
 
@@ -1173,5 +1234,6 @@ If implementing more than one suggestion, this order minimizes rework:
 6. ~~**#13** (subheading treatment) — affects all rich-text screens; do once #6/#11 land so the visual context is consistent.~~ *Done 2026-05-06.*
 7. ~~**#4 / #5 / #22 / #10** (Quiz polish) — independent of card system.~~ *Done 2026-05-06.*
 8. ~~**#7 / #8(a)** (Settings polish) — independent.~~ *Done 2026-05-06. #8(b) deferred.*
-9. **~~#9~~ / ~~#14~~ / #16 / ~~#17~~ / ~~#21~~** — small independent items. *#9 done 2026-05-06. #14 done 2026-05-06. #17 done 2026-05-06. #21 done 2026-05-06.*
+9. **~~#9~~ / ~~#14~~ / ~~#16~~ / ~~#17~~ / ~~#21~~** — small independent items. *#9 done 2026-05-06. #14 done 2026-05-06. #16 done 2026-05-06. #17 done 2026-05-06. #21 done 2026-05-06.*
 10. Skip / defer **#23 / #24** unless explicit user feedback motivates them.
+11. **#25** — Tutor feature highlighting (extends #21). Sub-option (a) is a natural ride-along with #16's `OnboardingView` work; (b) is a small standalone TipKit addition; (c) is a bigger `InfoBrowseView` redesign for a future cycle.

@@ -20,9 +20,19 @@ struct OnboardingView: View {
   }
 
   var body: some View {
-    ZStack {
+    ZStack(alignment: .top) {
       Color.customBackground
         .ignoresSafeArea()
+
+      LinearGradient(
+        colors: [.customYellow.opacity(0.20), .clear],
+        startPoint: .top,
+        endPoint: .bottom
+      )
+      .frame(height: 300)
+      .frame(maxWidth: .infinity)
+      .allowsHitTesting(false)
+      .accessibilityHidden(true)
 
       VStack {
         HStack {
@@ -187,6 +197,7 @@ private struct OnboardingPageView: View {
   var body: some View {
     VStack(spacing: Layout.doubleDefaultSpacing) {
       Spacer()
+        .frame(maxHeight: 100)
 
       Image(systemName: symbolName)
         .font(.system(size: 80))
@@ -196,6 +207,7 @@ private struct OnboardingPageView: View {
       Text(title)
         .headingLabel()
         .foregroundStyle(.customForeground)
+        .multilineTextAlignment(.center)
 
       Text(bodyText)
         .font(.callout)

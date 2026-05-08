@@ -182,6 +182,14 @@ class Quiz {
   }
 
   private func generateQuestions() -> [QuizItem] {
+    #if DEBUG
+    if UserDefaults.standard.string(forKey: "KONJUGIEREN_QUIZ_FIXTURE") == "screenshot" {
+      let items = generateScreenshotFixture()
+      exportFixtureAnswers(items)
+      return items
+    }
+    #endif
+
     let allVerbs = Array(Verb.verbs.values)
     guard !allVerbs.isEmpty else { return [] }
 
@@ -246,6 +254,64 @@ class Quiz {
   private func randomImperativPersonNumber() -> PersonNumber {
     PersonNumber.imperativPersonNumbers.randomElement() ?? .secondSingular
   }
+
+  #if DEBUG
+  private func generateScreenshotFixture() -> [QuizItem] {
+    let plan: [(infinitiv: String, group: Conjugationgroup)] = [
+      ("machen", .präsensIndicativ(.firstSingular)),
+      ("haben", .präsensIndicativ(.thirdSingular)),
+      ("sein", .perfektIndikativ(.firstSingular)),
+      ("werden", .futurIndikativ(.thirdSingular)),
+      ("gehen", .perfektpartizip),
+      ("kommen", .perfektpartizip),
+      ("lesen", .präsenspartizip),
+      ("sprechen", .präsensIndicativ(.secondSingular)),
+      ("singen", .präteritumIndicativ(.firstSingular)),
+      ("denken", .präteritumIndicativ(.firstSingular)),
+      ("sehen", .präsensIndicativ(.thirdSingular)),
+      ("essen", .perfektIndikativ(.firstSingular)),
+      ("trinken", .präteritumIndicativ(.firstSingular)),
+      ("fahren", .präsensIndicativ(.thirdSingular)),
+      ("laufen", .präsensIndicativ(.thirdSingular)),
+      ("geben", .präsensIndicativ(.firstSingular)),
+      ("nehmen", .präsensIndicativ(.firstSingular)),
+      ("finden", .perfektIndikativ(.thirdSingular)),
+      ("helfen", .imperativ(.secondSingular)),
+      ("geben", .imperativ(.secondSingular)),
+      ("studieren", .perfektIndikativ(.firstSingular)),
+      ("verstehen", .präsensIndicativ(.firstSingular)),
+      ("bringen", .präteritumIndicativ(.firstSingular)),
+      ("wissen", .präsensIndicativ(.firstSingular)),
+      ("können", .präsensIndicativ(.firstSingular)),
+      ("müssen", .präsensIndicativ(.firstSingular)),
+      ("wollen", .präsensIndicativ(.firstSingular)),
+      ("schreiben", .präteritumIndicativ(.firstSingular)),
+      ("bleiben", .perfektIndikativ(.thirdSingular)),
+      ("ankommen", .präsensIndicativ(.thirdSingular))
+    ]
+    return plan.map { spec in
+      guard let verb = Verb.verbs[spec.infinitiv] else {
+        preconditionFailure("Screenshot fixture references missing verb: \(spec.infinitiv)")
+      }
+      return makeQuizItem(verb: verb, conjugationgroup: spec.group)
+    }
+  }
+
+  private func exportFixtureAnswers(_ items: [QuizItem]) {
+    let payload = items.map { item -> [String: String] in
+      [
+        "infinitiv": item.verb.infinitiv,
+        "group": "\(item.conjugationgroup)",
+        "answer": item.correctAnswer
+      ]
+    }
+    guard let data = try? JSONSerialization.data(withJSONObject: payload, options: .prettyPrinted),
+          let docs = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first else {
+      return
+    }
+    try? data.write(to: docs.appendingPathComponent("screenshot_fixture_answers.json"))
+  }
+  #endif
 
   private func startTimer() {
     timer = Timer.scheduledTimer(withTimeInterval: timerInterval, repeats: true) { [weak self] _ in

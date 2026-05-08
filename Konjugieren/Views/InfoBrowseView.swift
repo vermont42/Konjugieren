@@ -105,10 +105,11 @@ struct InfoRowView: View {
     .padding(.vertical, 12)
     .contentShape(Rectangle())
     .onTapGesture { navigate() }
+    .accessibilityIdentifier("info_row_\(info.stableKey)")
   }
 
   private func formattedPreviewText() -> some View {
-    info.previewSegments.reduce(Text(verbatim: "")) { $0 + previewText(for: $1) }
+    info.previewSegments.reduce(Text(verbatim: "")) { Text("\($0)\(previewText(for: $1))") }
       .font(.subheadline)
       .foregroundStyle(.customForeground)
   }

@@ -32,6 +32,7 @@ struct FamilyBrowseView: View {
                 FamilyShowcaseCard(family: family)
               }
               .buttonStyle(.plain)
+              .accessibilityIdentifier("family_row_\(family.rawValue)")
             }
 
             ForEach(decorations.prefix(fillerCount)) { decoration in
@@ -51,6 +52,7 @@ struct FamilyBrowseView: View {
                 FamilyRowView(family: family)
               }
               .buttonStyle(.plain)
+              .accessibilityIdentifier("family_row_\(family.rawValue)")
 
               Divider()
                 .padding(.leading)

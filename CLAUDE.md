@@ -201,6 +201,20 @@ case .optionB: return L.Setting.optionB
 }
 ```
 
+### Single Space After Commas
+
+Use a single space after each comma in argument lists. Do not column-align argument names with extra padding — alignment churns diffs unnecessarily when a name changes.
+
+```swift
+// Prefer this
+Info(stableKey: "dedication", heading: L.Info.dedicationHeading)
+Info(stableKey: "verb_history", heading: L.Info.verbHistoryHeading)
+
+// Avoid this
+Info(stableKey: "dedication",   heading: L.Info.dedicationHeading)
+Info(stableKey: "verb_history", heading: L.Info.verbHistoryHeading)
+```
+
 ### One Enum Case Per Line
 
 Declare each enum case on its own line. Do not combine multiple cases with commas.

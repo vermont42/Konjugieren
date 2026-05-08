@@ -169,6 +169,7 @@ struct VerbRowView: View {
     .padding(.horizontal)
     .padding(.vertical, 12)
     .onTapGesture { navigate() }
+    .accessibilityIdentifier("verb_row_\(verb.infinitiv)")
     .scrollTransition(.animated) { content, phase in
       content.opacity(1 - abs(phase.value) * 0.15)
     }
@@ -189,6 +190,7 @@ private struct VerbGridCell: View {
     .frame(maxWidth: .infinity, alignment: .leading)
     .contentShape(Rectangle())
     .onTapGesture { navigate() }
+    .accessibilityIdentifier("verb_row_\(verb.infinitiv)")
   }
 }
 

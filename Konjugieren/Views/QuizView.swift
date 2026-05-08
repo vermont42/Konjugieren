@@ -41,6 +41,7 @@ struct QuizView: View {
             }
             .funButton()
             .accessibilityHint(L.Accessibility.quizStartHint)
+            .accessibilityIdentifier("quiz_start_button")
 
             Spacer()
           }
@@ -171,6 +172,7 @@ struct QuizView: View {
           .focused($isTextFieldFocused)
           .accessibilityFocused($isTextFieldA11yFocused)
           .accessibilityHint(L.Accessibility.quizTextFieldHint)
+          .accessibilityIdentifier("quiz_answer_field")
           .submitLabel(.go)
           .offset(x: shakeOffset)
           .onSubmit {

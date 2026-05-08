@@ -47,6 +47,10 @@ The TelemetryDeck app ID is stored in `Konjugieren/Secrets.xcconfig`, which is g
 
 If the app ID is empty (or `Secrets.xcconfig` is missing), analytics silently disables: the app builds and runs normally without it.
 
+### App Store Screenshot Workflow
+
+The 36 App Store screenshots are captured by `scripts/take_screenshots.sh`. See [`docs/screenshot-playbook.md`](docs/screenshot-playbook.md) for setup, the driver flag surface, and recovery guidance.
+
 ## Test Suite
 
 The project uses Swift Testing (`import Testing`) for unit tests. Tests are located in `KonjugierenTests/`.

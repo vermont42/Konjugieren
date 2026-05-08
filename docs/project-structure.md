@@ -186,6 +186,7 @@ docs/
 ├── post-release-features.md   # Post-release feature backlog
 ├── project-structure.md       # This file — annotated directory tree
 ├── query-rewriting-exploration.md  # Query rewriting research for tutor feature
+├── screenshot-playbook.md        # App Store screenshot workflow: prerequisites, driver flags, the 12 workarounds, recovery guidance
 ├── sound-replacement-prompts.md    # Prompts used to generate replacement sound effects
 ├── terminology.md             # Conjugationgroup definitions, tense/mood/voice distinctions
 ├── tutor-test-queries.txt     # Test queries for the AI tutor
@@ -197,7 +198,7 @@ docs/
 scripts/
 ├── generate_verb_pdf.py       # Generates PDF verb conjugation tables
 ├── render_emoji.swift         # Renders emoji glyphs to PNG assets in Assets.xcassets (workaround for iOS 26 emoji-rendering bug; see docs/emoji-assets.md)
-└── take_screenshots.sh        # Drives ios-build-verify + axe/simctl through 36 App Store screenshots (9 views × 2 langs × 2 devices); see docs/screenshot-automation-step3-handoff.md
+└── take_screenshots.sh        # Drives ios-build-verify + axe/simctl through 36 App Store screenshots (9 views × 2 langs × 2 devices); see docs/screenshot-playbook.md
 
 corpus/                        # German text corpus for example sentence sourcing
 ├── README.md

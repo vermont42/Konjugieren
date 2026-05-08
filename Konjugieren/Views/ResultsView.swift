@@ -34,6 +34,7 @@ struct ResultsView: View {
             .foregroundStyle(scoreColor)
             .contentTransition(.numericText())
             .accessibilityLabel(Text(verbatim: "\(L.Quiz.score) \(quiz.finalScore)"))
+            .accessibilityIdentifier("results_score")
 
           HStack(spacing: Layout.doubleDefaultSpacing) {
             Text(label: L.Quiz.correct, value: "\(quiz.correctCount) / \(Quiz.questionCount)")

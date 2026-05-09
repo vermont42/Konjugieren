@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 # Drive ios-build-verify (and axe/simctl directly) through the 36 App Store
-# screenshots described in docs/ScreenshotPlan.md.
+# screenshots described in docs/screenshot-plan.md.
 #
 # Usage:
 #   scripts/take_screenshots.sh  # all 36

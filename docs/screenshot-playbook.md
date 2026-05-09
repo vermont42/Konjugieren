@@ -4,7 +4,7 @@ Captures App Store screenshots for Konjugieren via `scripts/take_screenshots.sh`
 
 ## Scope
 
-App Store screenshots only — 9 views × 2 languages × 2 devices = 36 PNGs. Not a general-purpose iOS screenshot framework. The capture spec lives in [`docs/ScreenshotPlan.md`](ScreenshotPlan.md).
+App Store screenshots only — 9 views × 2 languages × 2 devices = 36 PNGs. Not a general-purpose iOS screenshot framework. The capture spec lives in [`docs/screenshot-plan.md`](screenshot-plan.md).
 
 ## Prerequisites
 
@@ -193,7 +193,7 @@ Visual review will surface bad cells. Re-run any single one via the `--device` /
 
 ## Maintenance Triggers
 
-- **New conjugationgroup or family.** If the change alters which 9 views ship as App Store screenshots, update [`docs/ScreenshotPlan.md`](ScreenshotPlan.md) first; the driver's `VIEWS` array follows.
+- **New conjugationgroup or family.** If the change alters which 9 views ship as App Store screenshots, update [`docs/screenshot-plan.md`](screenshot-plan.md) first; the driver's `VIEWS` array follows.
 - **New device size class.** Add the device-class label to `DEVICES`, add a UDID arm to `udid_for()`, calibrate `tab_coords_for()` (top vs. bottom tab bar — iPad's regular size class uses a top segmented bar at y=54; iPhone's is a bottom pill bar at y=899.3), and verify the per-view scroll values still apply.
 - **`axe` upstream fix for the iPad `--id` `typeMismatch` bug.** If a future `axe` release fixes the bug, `tap_id` can be simplified back to `axe tap --id` directly. The driver's `tap_id_first` is currently always-on; after upstream fix it can become iPad-only or be removed.
 

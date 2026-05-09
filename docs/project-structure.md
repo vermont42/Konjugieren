@@ -168,14 +168,20 @@ KonjugierenTests/
 docs/
 ├── adding-verbs.md            # Verb-addition guide: XML formats, ablaut system, lessons learned
 ├── bratwurst-icon-prompts.md  # Prompts used to generate bratwurst-themed app icons
+├── bug-report-gitcommitsha.md  # Bug report draft: Claude Code `plugin update` doesn't refresh `gitCommitSha` in `installed_plugins.json`
+├── bug-report-grep-silent-truncation.md  # Bug report draft (filed as anthropics/claude-code #56751): long-line `grep` matches silently disappear from Bash tool output
+├── claude-code-skill-recommendations.md  # Curated third-party Claude Code skills worth installing for Konjugieren work
 ├── conjugationgroupText.md    # Template and guidelines for conjugationgroup articles
+├── control-center-controls.md  # iOS 18+ ControlWidget constraints on `openAppWhenRun`/`OpenURLIntent` and the Shared/ dual-target pattern
 ├── emoji-assets.md            # Why some emoji ship as PNG assets (iOS 26 emoji-rendering workaround)
+├── english_writing_style.md   # English writing conventions consulted by Claude when editing localization strings, docs, and comments
 ├── etymologies.md             # Etymology pipeline documentation
 ├── example-sentence-pipeline.md   # Pipeline for generating literary example sentences
 ├── example-sentence-prompt.md     # Prompt template for example sentence generation
 ├── example-sentence-sources.md    # Source texts for example sentences
 ├── feature-architecture.md    # Architecture details: Quiz, Game Center, Info, Deeplink systems
 ├── frequencies.txt            # Verb frequency data
+├── grep-gotchas.md            # Silent-truncation failure mode that bites `grep` on long-line files (xcstrings, Markdown); detection via `grep -c`
 ├── line-counts-howto.md       # How to generate line count reports
 ├── line-counts.md             # Line count report for the project
 ├── linkedin-launch-post.txt   # LinkedIn post for app launch
@@ -188,12 +194,15 @@ docs/
 ├── project-structure.md       # This file — annotated directory tree
 ├── query-rewriting-exploration.md  # Query rewriting research for tutor feature
 ├── regenerate-verbs-pdf-prompt.md  # Self-contained session prompt for regenerating konjugieren-verbs.pdf
+├── screenshot-plan.md            # App Store screenshot capture spec: 9 view categories × light/dark × English/German across iPhone 6.9" and iPad 13"
 ├── screenshot-playbook.md        # App Store screenshot workflow: prerequisites, driver flags, the 12 workarounds, recovery guidance
+├── screenshots/                  # Captured App Store screenshots produced by `scripts/take_screenshots.sh` (gitignored)
 ├── sound-replacement-prompts.md    # Prompts used to generate replacement sound effects
 ├── terminology.md             # Conjugationgroup definitions, tense/mood/voice distinctions
 ├── tutor-test-queries.txt     # Test queries for the AI tutor
 ├── ui-audit.md                # UI audit notes and findings (Round One; implemented in commit 657bb4f)
 ├── ui-audit-2.md              # UI audit Round Two — post-657bb4f suggestions; self-contained for future implementation sessions
+├── ui-audit-2-next-session.md # Next-session brief for OnboardingView page-1 layout work from UI audit Round Two #16
 ├── vanilla_build_and_test.md  # Raw xcodebuild commands for opting out of the ios-build-verify dependency
 └── voiceover.md               # VoiceOver pronunciation patterns and per-screen strategy
 

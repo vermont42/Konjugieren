@@ -416,7 +416,7 @@ def build_title_page(verb_count: int) -> list:
         alignment=1,
         textColor=COLOR_BLACK,
     )
-    elements.append(Paragraph(f"{verb_count} German Verbs", subtitle_style))
+    elements.append(Paragraph("Nearly 1,000 German Verbs", subtitle_style))
     # Push author line to the bottom
     elements.append(Spacer(1, 3.0 * inch))
     author_style = ParagraphStyle(
@@ -427,7 +427,7 @@ def build_title_page(verb_count: int) -> list:
         alignment=1,
         textColor=COLOR_BLACK,
     )
-    elements.append(Paragraph("Josh Adams and Claude Code", author_style))
+    elements.append(Paragraph("Josh Adams", author_style))
     elements.append(PageBreak())
     return elements
 

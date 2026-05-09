@@ -828,6 +828,10 @@
       "sentence": "Die Schnellen besiegen die Langsamen.",
       "source": "Digitale Strategie (2025)"
     },
+    "besingen": {
+      "sentence": "Und sie alle erkannten sich wieder in seinem Werk, sie fanden sich bestätigt, erhoben, besungen darin, sie wußten ihm Dank, sie verkündeten seinen Namen.",
+      "source": "Mann — Der Tod in Venedig"
+    },
     "besitzen": {
       "sentence": "Selig sind die Sanftmütigen; denn sie werden das Erdreich besitzen.",
       "source": "Luther — Bibel"
@@ -2128,6 +2132,10 @@
       "sentence": "Auch das Bildungssystem selbst ist mit einem zunehmenden Fachkräftemangel konfrontiert.",
       "source": "Berufsbildungsbericht (2024)"
     },
+    "konjugieren": {
+      "sentence": "Wer deutsche Verben konjugieren will, muss sich nicht nur Endungen merken, sondern auch Ablautreihen, Hilfsverben und trennbare Präfixe.",
+      "source": "Konjugieren (2025)"
+    },
     "kontaktieren": {
       "sentence": "Enthält der Browser eine entsprechende Sicherheitslücke, so kann der kontaktierte Internetserver auf diesen PC zugreifen.",
       "source": "Wikipedia — Firewall"
@@ -2143,10 +2151,6 @@
     "konzipieren": {
       "sentence": "Einfache externe Firewalls sind nicht oder nur sehr bedingt dazu in der Lage, eine Schadsoftware davon abzuhalten, von sich aus eine Verbindung zum Internet herzustellen, denn sie wurden – im Unterschied zu den meisten Personal-Firewalls – für eine solche Aufgabe nicht konzipiert.",
       "source": "Wikipedia — Firewall"
-    },
-    "konjugieren": {
-      "sentence": "Wer deutsche Verben konjugieren will, muss sich nicht nur Endungen merken, sondern auch Ablautreihen, Hilfsverben und trennbare Präfixe.",
-      "source": "Konjugieren (2025)"
     },
     "kopieren": {
       "sentence": "Da bis in die 1980er Jahre noch im Wesentlichen mit Daten auf Disketten gearbeitet wurde, konnten diese recht einfach kopiert werden.",
@@ -4786,6 +4790,10 @@
       "sentence": "The fast defeat the slow.",
       "source": "Digitale Strategie (2025)"
     },
+    "besingen": {
+      "sentence": "And they all recognized themselves in his work, found themselves confirmed, exalted, celebrated in song there; they were grateful to him; they proclaimed his name.",
+      "source": "Mann — Der Tod in Venedig"
+    },
     "besitzen": {
       "sentence": "Blessed are the meek; for they shall possess the earth.",
       "source": "Luther — Bibel"
@@ -6086,6 +6094,10 @@
       "sentence": "The education system itself is also confronted with a growing shortage of skilled workers.",
       "source": "Berufsbildungsbericht (2024)"
     },
+    "konjugieren": {
+      "sentence": "Anyone who wants to conjugate German verbs must remember not just endings but also ablaut series, auxiliary verbs, and separable prefixes.",
+      "source": "Konjugieren (2025)"
+    },
     "kontaktieren": {
       "sentence": "If the browser contains a corresponding security vulnerability, the contacted internet server can access this PC.",
       "source": "Wikipedia — Firewall"
@@ -6101,10 +6113,6 @@
     "konzipieren": {
       "sentence": "Simple external firewalls are not, or only to a very limited extent, capable of preventing malware from establishing an internet connection on its own, for they were — in contrast to most personal firewalls — not designed for such a task.",
       "source": "Wikipedia — Firewall"
-    },
-    "konjugieren": {
-      "sentence": "Anyone who wants to conjugate German verbs must remember not just endings but also ablaut series, auxiliary verbs, and separable prefixes.",
-      "source": "Konjugieren (2025)"
     },
     "kopieren": {
       "sentence": "Since work was still done essentially with data on floppy disks into the 1980s, these could be copied quite easily.",

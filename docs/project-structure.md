@@ -180,12 +180,14 @@ docs/
 ├── line-counts.md             # Line count report for the project
 ├── linkedin-launch-post.txt   # LinkedIn post for app launch
 ├── Localization.md            # Localization workflow documentation
+├── nomination.md              # App Store featuring nomination — Description, Helpful Details, and Supplemental Materials slots
 ├── on-device-tool-design.md   # Lessons from implementing Foundation Models Tool conformances
 ├── pdf.md                     # PDF export documentation
 ├── platform-features-plan.md  # Plan for platform-specific features
 ├── post-release-features.md   # Post-release feature backlog
 ├── project-structure.md       # This file — annotated directory tree
 ├── query-rewriting-exploration.md  # Query rewriting research for tutor feature
+├── regenerate-verbs-pdf-prompt.md  # Self-contained session prompt for regenerating konjugieren-verbs.pdf
 ├── screenshot-playbook.md        # App Store screenshot workflow: prerequisites, driver flags, the 12 workarounds, recovery guidance
 ├── sound-replacement-prompts.md    # Prompts used to generate replacement sound effects
 ├── terminology.md             # Conjugationgroup definitions, tense/mood/voice distinctions

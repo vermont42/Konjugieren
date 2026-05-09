@@ -1,6 +1,6 @@
 # Example-Sentence Extraction Pipeline
 
-This document describes how to extract example sentences from the literary corpus in `corpus/` for all 988 verbs. The output is `ExampleSentences.json`, following the same structure as `Etymologies.json`.
+This document describes how to extract example sentences from the literary corpus in `corpus/` for all 990 verbs. The output is `ExampleSentences.json`, following the same structure as `Etymologies.json`.
 
 ## Corpus Overview
 

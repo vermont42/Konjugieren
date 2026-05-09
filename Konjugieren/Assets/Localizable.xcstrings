@@ -84,6 +84,7 @@
       }
     },
     "%@%@" : {
+      "shouldTranslate" : false,
       "localizations" : {
         "en" : {
           "stringUnit" : {

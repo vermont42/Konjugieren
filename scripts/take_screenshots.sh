@@ -3,15 +3,15 @@
 # screenshots described in docs/ScreenshotPlan.md.
 #
 # Usage:
-#   scripts/take_screenshots.sh                                # all 36
-#   scripts/take_screenshots.sh --device "iPhone 17 Pro Max"   # 18
-#   scripts/take_screenshots.sh --lang de                      # 18
-#   scripts/take_screenshots.sh --view family_browse           # 4
-#   scripts/take_screenshots.sh --device "iPhone 17 Pro Max" \
-#                               --lang de --view quiz_results  # 1
+#   scripts/take_screenshots.sh  # all 36
+#   scripts/take_screenshots.sh --device "iPhone 17 Pro Max"  # 18
+#   scripts/take_screenshots.sh --lang de  # 18
+#   scripts/take_screenshots.sh --view family_browse  # 4
+#   scripts/take_screenshots.sh --device "iPhone 17 Pro Max" --lang de --view quiz_results  # 1
 #
-# Calibration values, decisions, and per-view nav recipes live in
-# docs/screenshot-automation-step3-handoff.md and supporting docs.
+# See docs/screenshot-playbook.md for setup, recovery guidance, and a
+# cross-referenced workarounds index. Calibration values and per-view nav
+# functions are inline below.
 #
 # Compatible with macOS bash 3.2 (system default): uses case-statement lookup
 # functions instead of associative arrays.

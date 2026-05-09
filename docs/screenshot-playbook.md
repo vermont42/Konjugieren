@@ -20,12 +20,11 @@ App Store screenshots only — 9 views × 2 languages × 2 devices = 36 PNGs. No
 ## Quick Start
 
 ```bash
-scripts/take_screenshots.sh                                          # all 36 (~30-45 min)
-scripts/take_screenshots.sh --device "iPhone 17 Pro Max"             # 18 (one device)
-scripts/take_screenshots.sh --lang de                                # 18 (German only)
-scripts/take_screenshots.sh --view family_browse                     # 4 (one view, both devices/langs)
-scripts/take_screenshots.sh --device "iPhone 17 Pro Max" \
-                            --lang de --view quiz_results            # exactly 1 cell
+scripts/take_screenshots.sh  # all 36 (~30-45 min)
+scripts/take_screenshots.sh --device "iPhone 17 Pro Max"  # 18 (one device)
+scripts/take_screenshots.sh --lang de  # 18 (German only)
+scripts/take_screenshots.sh --view family_browse  # 4 (one view, both devices/langs)
+scripts/take_screenshots.sh --device "iPhone 17 Pro Max" --lang de --view quiz_results  # exactly 1 cell
 ```
 
 The `--device` value is the device-class label (with parens), not the simulator's display name. UDIDs are hardcoded in `udid_for()`; the driver bypasses `_resolve_udid.sh` entirely.

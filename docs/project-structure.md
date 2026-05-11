@@ -189,6 +189,7 @@ docs/
 ├── nomination.md              # App Store featuring nomination — Description, Helpful Details, and Supplemental Materials slots
 ├── on-device-tool-design.md   # Lessons from implementing Foundation Models Tool conformances
 ├── pdf.md                     # PDF export documentation
+├── peterborough-chronicle-reading-list.md  # Reading list for the Peterborough Chronicle and the Old-to-Middle English transition
 ├── platform-features-plan.md  # Plan for platform-specific features
 ├── post-release-features.md   # Post-release feature backlog
 ├── project-structure.md       # This file — annotated directory tree
@@ -204,6 +205,7 @@ docs/
 ├── ui-audit-2.md              # UI audit Round Two — post-657bb4f suggestions; self-contained for future implementation sessions
 ├── ui-audit-2-next-session.md # Next-session brief for OnboardingView page-1 layout work from UI audit Round Two #16
 ├── vanilla_build_and_test.md  # Raw xcodebuild commands for opting out of the ios-build-verify dependency
+├── video_script.md            # App Store preview script with bilingual captions and 30-second timing math
 └── voiceover.md               # VoiceOver pronunciation patterns and per-screen strategy
 
 scripts/

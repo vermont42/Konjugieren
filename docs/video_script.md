@@ -2,7 +2,9 @@ Script and Playbook for iOS App Store Previews
 
 Ensure that videos are exactualy 34 seconds *without* transitions. Inserting half-second transitions between clips will shrink length down to 30 seconds, the limit.
 
-STATUS: In progress. Clips for English iPhone have been recorded, and that video has been reedited. Recording and editing for English iPad, German iPhone, and German iPad have not been started.
+STATUS: German and English iPhone videos are done.
+
+TODO: Record clip 5 on iPad, German and English. Insert into German and English iPad videos. Adjust lengths of both. Add transitions and music.
 
 First Clip
 Starts out at top of VerbBrowse view. Sort by frequency. Slowly scroll down for five seconds.

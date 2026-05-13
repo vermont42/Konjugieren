@@ -4,6 +4,7 @@
 import argparse
 import json
 import re
+import tempfile
 from pathlib import Path
 
 from reportlab.lib.pagesizes import letter
@@ -12,16 +13,17 @@ from reportlab.lib.units import inch
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.ttfonts import TTFont
 from reportlab.platypus import (
-    SimpleDocTemplate,
-    Paragraph,
-    Spacer,
+    BaseDocTemplate,
+    Flowable,
+    Frame,
+    FrameBreak,
     HRFlowable,
     KeepTogether,
-    PageBreak,
     NextPageTemplate,
+    PageBreak,
     PageTemplate,
-    Frame,
-    BaseDocTemplate,
+    Paragraph,
+    Spacer,
 )
 
 # --- Font Registration ---
@@ -234,7 +236,7 @@ def parse_etymology_markup(text: str) -> str:
     text = re.sub(r"~([^~]+)~", r"<i>\1</i>", text)
 
     # -- → em-dash
-    text = text.replace("--", "\u2014")
+    text = text.replace("--", "—")
 
     # %url% → plain text
     text = re.sub(r"%([^%]+)%", r"\1", text)
@@ -292,7 +294,7 @@ def build_verb_flowables(verb: dict) -> list:
     if verb.get("ablautGroup"):
         meta_parts.append(verb["ablautGroup"])
     elements.append(
-        Paragraph(escape_xml(" \u00b7 ".join(meta_parts)), STYLE_METADATA)
+        Paragraph(escape_xml(" · ".join(meta_parts)), STYLE_METADATA)
     )
 
     # Thin rule
@@ -305,7 +307,7 @@ def build_verb_flowables(verb: dict) -> list:
     perfekt_pp = mixed_case_to_xml(conj["perfektpartizip"])
     präsens_pp = mixed_case_to_xml(conj["präsenspartizip"])
     partizip_xml = (
-        f'<b>Perfektpartizip / Pr\u00e4senspartizip:</b> '
+        f'<b>Perfektpartizip / Präsenspartizip:</b> '
         f'{perfekt_pp}'
         f'<font color="{COLOR_BLACK}"> / </font>'
         f'{präsens_pp}'
@@ -358,15 +360,6 @@ def build_verb_flowables(verb: dict) -> list:
     return elements
 
 
-def add_page_number(canvas, doc):
-    """Draw centered page number at bottom of each page."""
-    canvas.saveState()
-    canvas.setFont("TNR", 10)
-    page_num = str(doc.page)
-    canvas.drawCentredString(letter[0] / 2, 0.5 * inch, page_num)
-    canvas.restoreState()
-
-
 def build_verb_flowables_grouped(verb: dict) -> list:
     """Build flowables for a verb, using KeepTogether for the conjugation block.
 
@@ -376,27 +369,28 @@ def build_verb_flowables_grouped(verb: dict) -> list:
     """
     all_flowables = build_verb_flowables(verb)
 
-    # Find the split point: after the last conjugation line, before Etymology
+    # Find the split point: after the last conjugation line, before Etymology.
     # The etymology section starts with a Spacer after the conjugation lines.
     # We look for the second HRFlowable (the one before Etymology).
     hr_indices = [i for i, f in enumerate(all_flowables) if isinstance(f, HRFlowable)]
 
     if len(hr_indices) >= 2:
-        # Split before the second HR (which precedes Etymology)
         split = hr_indices[1]
         conjugation_block = all_flowables[:split]
         remainder = all_flowables[split:]
         return [KeepTogether(conjugation_block)] + remainder
     else:
-        # No etymology — keep everything together
         return [KeepTogether(all_flowables)]
 
 
 def build_title_page(verb_count: int) -> list:
-    """Build flowables for the Fraktur title page."""
+    """Build flowables for the Fraktur title page.
+
+    Note: no trailing PageBreak. The caller is responsible for the transition
+    to the next page template via NextPageTemplate + PageBreak.
+    """
     fraktur_font = "Fraktur" if FRAKTUR_PATH.exists() else "TNR-Bold"
     elements = []
-    # Vertical centering: push title down ~3.5 inches
     elements.append(Spacer(1, 3.0 * inch))
     title_style = ParagraphStyle(
         "title",
@@ -417,7 +411,6 @@ def build_title_page(verb_count: int) -> list:
         textColor=COLOR_BLACK,
     )
     elements.append(Paragraph("Nearly 1,000 German Verbs", subtitle_style))
-    # Push author line to the bottom
     elements.append(Spacer(1, 3.0 * inch))
     author_style = ParagraphStyle(
         "author",
@@ -428,21 +421,18 @@ def build_title_page(verb_count: int) -> list:
         textColor=COLOR_BLACK,
     )
     elements.append(Paragraph("Josh Adams", author_style))
-    elements.append(PageBreak())
     return elements
 
 
-def build_index_pages(verbs: list, index_start_page: int) -> list:
-    """Build a multi-column index of verbs with page numbers.
+def build_index_flowables(verbs: list) -> list:
+    """Build flowables for the index.
 
-    Each verb gets one page (plus possible overflow), so we do a two-pass build:
-    first pass without index to learn actual page numbers, then rebuild with index.
-    We use a simpler approach: since the index itself takes pages, we estimate
-    the index page count, then compute verb page numbers accordingly.
+    The "Index" heading goes into the heading frame at the top of the first
+    index page. FrameBreak then moves layout into the first column frame.
+    Entries flow column-by-column (col0 → col1 → col2 → next page), filling
+    each page before moving on.
     """
-    # We'll use a 3-column layout via a single paragraph with tab-like spacing
-    elements = []
-    index_heading = ParagraphStyle(
+    index_heading_style = ParagraphStyle(
         "indexHeading",
         fontName="TNR-Bold",
         fontSize=22,
@@ -451,9 +441,7 @@ def build_index_pages(verbs: list, index_start_page: int) -> list:
         textColor=COLOR_BLACK,
         spaceAfter=12,
     )
-    elements.append(Paragraph("Index", index_heading))
-
-    index_entry = ParagraphStyle(
+    index_entry_style = ParagraphStyle(
         "indexEntry",
         fontName="TNR",
         fontSize=9,
@@ -461,48 +449,187 @@ def build_index_pages(verbs: list, index_start_page: int) -> list:
         textColor=COLOR_BLACK,
     )
 
-    # Build entries as a simple list: verb .... page
-    # Page numbers will be filled in by the caller after a two-pass build
-    entries = []
+    elements = []
+    elements.append(Paragraph("Index", index_heading_style))
+    elements.append(FrameBreak())
+
     for verb in verbs:
-        infinitiv = escape_xml(verb["infinitiv"])
-        entries.append((infinitiv, verb.get("_page_number", 0)))
+        name = escape_xml(verb["infinitiv"])
+        page = verb.get("_page_number", 0)
+        elements.append(
+            Paragraph(
+                f'{name} <font color="{COLOR_GRAY}">... {page}</font>',
+                index_entry_style,
+            )
+        )
 
-    # Arrange in 3 columns using a table-like approach with Paragraphs
+    return elements
+
+
+def add_page_number(canvas, doc):
+    """Draw centered page number at bottom of each page."""
+    canvas.saveState()
+    canvas.setFont("TNR", 10)
+    page_num = str(doc.page)
+    canvas.drawCentredString(letter[0] / 2, 0.5 * inch, page_num)
+    canvas.restoreState()
+
+
+def no_page_number(canvas, doc):
+    """No-op page-decoration callback for the title page."""
+    pass
+
+
+class VerbPageTracker:
+    """Captures the page on which each verb starts during pass 1."""
+
+    def __init__(self):
+        self.page_numbers: dict[int, int] = {}
+
+
+class VerbMarker(Flowable):
+    """Zero-size flowable that records the page on which it is drawn.
+
+    Placed immediately before a verb's flowables, it captures the verb's
+    starting page during pass 1 so the index in pass 2 can reference it.
+    """
+
+    width = 0
+    height = 0
+
+    def __init__(self, verb_idx: int, tracker: VerbPageTracker):
+        super().__init__()
+        self.verb_idx = verb_idx
+        self.tracker = tracker
+
+    def draw(self):
+        self.tracker.page_numbers[self.verb_idx] = self.canv.getPageNumber()
+
+
+def make_doc(output_path: str) -> BaseDocTemplate:
+    """Build a BaseDocTemplate with title, index, and verb page templates.
+
+    Templates:
+      title       — single frame, no page number (page 1 only)
+      indexFirst  — heading frame on top + 3 column frames below
+                    (autoNextPageTemplate=indexCont)
+      indexCont   — 3 column frames spanning full content height
+      verb        — single frame, with page number
+    """
+    doc = BaseDocTemplate(
+        output_path,
+        pagesize=letter,
+        leftMargin=0.75 * inch,
+        rightMargin=0.75 * inch,
+        topMargin=0.8 * inch,
+        bottomMargin=0.8 * inch,
+    )
+
+    content_width = doc.width
+    content_height = doc.height
+
+    def make_single_frame(frame_id: str) -> Frame:
+        return Frame(
+            doc.leftMargin,
+            doc.bottomMargin,
+            content_width,
+            content_height,
+            id=frame_id,
+            leftPadding=0,
+            rightPadding=0,
+            topPadding=0,
+            bottomPadding=0,
+        )
+
     col_count = 3
-    col_width = 2.1 * inch
-    rows_per_col = (len(entries) + col_count - 1) // col_count
+    col_gap = 0.15 * inch
+    col_width = (content_width - col_gap * (col_count - 1)) / col_count
 
-    from reportlab.platypus import Table, TableStyle
-    from reportlab.lib import colors
-
-    # Build column data
-    table_data = []
-    for row_idx in range(rows_per_col):
-        row = []
-        for col_idx in range(col_count):
-            entry_idx = col_idx * rows_per_col + row_idx
-            if entry_idx < len(entries):
-                name, page = entries[entry_idx]
-                cell = Paragraph(
-                    f'{name} <font color="{COLOR_GRAY}">{"." * 3} {page}</font>',
-                    index_entry,
+    def make_column_frames(y_bottom: float, height: float, suffix: str) -> list[Frame]:
+        frames = []
+        for i in range(col_count):
+            x = doc.leftMargin + i * (col_width + col_gap)
+            frames.append(
+                Frame(
+                    x,
+                    y_bottom,
+                    col_width,
+                    height,
+                    id=f"col{i}{suffix}",
+                    leftPadding=2,
+                    rightPadding=2,
+                    topPadding=0,
+                    bottomPadding=0,
                 )
-                row.append(cell)
-            else:
-                row.append("")
-        table_data.append(row)
+            )
+        return frames
 
-    table = Table(table_data, colWidths=[col_width] * col_count)
-    table.setStyle(TableStyle([
-        ("VALIGN", (0, 0), (-1, -1), "TOP"),
-        ("LEFTPADDING", (0, 0), (-1, -1), 2),
-        ("RIGHTPADDING", (0, 0), (-1, -1), 2),
-        ("TOPPADDING", (0, 0), (-1, -1), 0),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 0),
-    ]))
-    elements.append(table)
+    heading_height = 0.7 * inch
+    index_first_frames = [
+        Frame(
+            doc.leftMargin,
+            doc.bottomMargin + content_height - heading_height,
+            content_width,
+            heading_height,
+            id="indexHeading",
+            leftPadding=0,
+            rightPadding=0,
+            topPadding=0,
+            bottomPadding=0,
+        ),
+    ] + make_column_frames(
+        doc.bottomMargin, content_height - heading_height, "_first"
+    )
+
+    index_cont_frames = make_column_frames(doc.bottomMargin, content_height, "_cont")
+
+    doc.addPageTemplates(
+        [
+            PageTemplate(
+                id="title", frames=[make_single_frame("titleMain")], onPage=no_page_number
+            ),
+            PageTemplate(
+                id="indexFirst",
+                frames=index_first_frames,
+                onPage=add_page_number,
+                autoNextPageTemplate="indexCont",
+            ),
+            PageTemplate(
+                id="indexCont", frames=index_cont_frames, onPage=add_page_number
+            ),
+            PageTemplate(
+                id="verb", frames=[make_single_frame("verbMain")], onPage=add_page_number
+            ),
+        ]
+    )
+    return doc
+
+
+def build_all_flowables(verbs: list, tracker: VerbPageTracker | None = None) -> list:
+    """Build the complete flowable sequence: title, index, then per-verb pages.
+
+    If ``tracker`` is provided, a ``VerbMarker`` is inserted before each verb's
+    flowables to capture its starting page number.
+    """
+    verb_count = len(verbs)
+    elements: list = []
+
+    elements.extend(build_title_page(verb_count))
+
+    elements.append(NextPageTemplate("indexFirst"))
     elements.append(PageBreak())
+    elements.extend(build_index_flowables(verbs))
+
+    elements.append(NextPageTemplate("verb"))
+    elements.append(PageBreak())
+
+    for i, verb in enumerate(verbs):
+        if tracker is not None:
+            elements.append(VerbMarker(i, tracker))
+        elements.extend(build_verb_flowables_grouped(verb))
+        if i < verb_count - 1:
+            elements.append(PageBreak())
+
     return elements
 
 
@@ -511,7 +638,15 @@ def generate_pdf(
     output_path: str = "/tmp/konjugieren-verbs.pdf",
     count: int = 0,
 ):
-    """Read exported JSON and generate the PDF."""
+    """Read exported JSON and generate the PDF.
+
+    Two-pass build:
+      Pass 1: real index entries with placeholder page numbers (0); a
+              ``VerbPageTracker`` records each verb's starting page. Because
+              entry text fits on one line regardless of digit count, pagination
+              in pass 1 matches pass 2 exactly.
+      Pass 2: real page numbers from pass 1 substituted into the index.
+    """
     with open(input_path, "r", encoding="utf-8") as f:
         verbs = json.load(f)
 
@@ -521,131 +656,26 @@ def generate_pdf(
     verb_count = len(verbs)
     print(f"Generating PDF for {verb_count} verb(s) from {input_path}")
 
-    doc = SimpleDocTemplate(
-        output_path,
-        pagesize=letter,
-        leftMargin=0.75 * inch,
-        rightMargin=0.75 * inch,
-        topMargin=0.8 * inch,
-        bottomMargin=0.8 * inch,
-    )
-
-    # Two-pass approach:
-    # Pass 1: build without index to measure how many pages the index takes,
-    #          and learn each verb's starting page.
-    # Pass 2: rebuild with correct page numbers in the index.
-
-    # First, estimate index page count. ~50 entries per column, 3 columns = ~150 per page.
-    entries_per_page = 150
-    estimated_index_pages = max(1, (verb_count + entries_per_page - 1) // entries_per_page)
-    # Title page = page 1, index starts at page 2
-    # Verbs start after title + index pages
-    verb_start_page = 1 + estimated_index_pages + 1  # +1 for title page
-
-    # Pass 1: build verb content to learn actual page numbers per verb
-    # We use a tracking doc template to record page numbers
-    class PageTracker(SimpleDocTemplate):
-        def __init__(self, *args, **kwargs):
-            super().__init__(*args, **kwargs)
-            self.verb_pages = {}
-            self._current_verb_idx = -1
-
-        def afterPage(self):
-            super().afterPage()
-
-    # For simplicity, assign page numbers based on the assumption that each
-    # verb starts on a new page (due to PageBreak between verbs).
-    # We'll do a single-pass build and track pages via a custom canvas callback.
-    verb_page_map = {}
-
-    class VerbPageTracker:
-        def __init__(self):
-            self.verb_indices = []  # (flowable_index, verb_index) markers
-            self.page_numbers = {}  # verb_index -> page_number
+    for verb in verbs:
+        verb["_page_number"] = 0
 
     tracker = VerbPageTracker()
-
-    from reportlab.platypus import Flowable
-
-    class VerbMarker(Flowable):
-        """Zero-size flowable that records which page a verb starts on."""
-        width = 0
-        height = 0
-
-        def __init__(self, verb_idx):
-            super().__init__()
-            self.verb_idx = verb_idx
-
-        def draw(self):
-            tracker.page_numbers[self.verb_idx] = self.canv.getPageNumber()
-
-    # Build elements with markers
-    elements = []
-    # Title page (page 1, no page number)
-    elements.extend(build_title_page(verb_count))
-    # Placeholder index (will be rebuilt in pass 2)
-    # Skip index in pass 1 — just add blank pages as spacer
-    for _ in range(estimated_index_pages):
-        elements.append(Spacer(1, 1))
-        elements.append(PageBreak())
-
-    for i, verb in enumerate(verbs):
-        elements.append(VerbMarker(i))
-        elements.extend(build_verb_flowables_grouped(verb))
-        if i < verb_count - 1:
-            elements.append(PageBreak())
-
-    def no_page_number(canvas, doc):
-        pass
-
-    def add_page_number_offset(canvas, doc):
-        """Draw page number, not counting the title page."""
-        add_page_number(canvas, doc)
-
-    # Pass 1 build (to /dev/null-like temp file)
-    import tempfile
     with tempfile.NamedTemporaryFile(suffix=".pdf", delete=False) as tmp:
         tmp_path = tmp.name
-
-    doc_pass1 = SimpleDocTemplate(
-        tmp_path,
-        pagesize=letter,
-        leftMargin=0.75 * inch,
-        rightMargin=0.75 * inch,
-        topMargin=0.8 * inch,
-        bottomMargin=0.8 * inch,
-    )
-    doc_pass1.build(elements, onFirstPage=no_page_number, onLaterPages=add_page_number)
+    pass1_doc = make_doc(tmp_path)
+    pass1_doc.build(build_all_flowables(verbs, tracker=tracker))
     Path(tmp_path).unlink(missing_ok=True)
 
-    # Now tracker.page_numbers has {verb_idx: actual_page_number}
-    # Assign page numbers to verbs
     for i, verb in enumerate(verbs):
         verb["_page_number"] = tracker.page_numbers.get(i, 0)
 
-    # Pass 2: rebuild with correct index
-    elements2 = []
-    elements2.extend(build_title_page(verb_count))
-    elements2.extend(build_index_pages(verbs, 2))
-    for i, verb in enumerate(verbs):
-        elements2.extend(build_verb_flowables_grouped(verb))
-        if i < verb_count - 1:
-            elements2.append(PageBreak())
+    final_doc = make_doc(output_path)
+    final_doc.build(build_all_flowables(verbs))
 
-    doc2 = SimpleDocTemplate(
-        output_path,
-        pagesize=letter,
-        leftMargin=0.75 * inch,
-        rightMargin=0.75 * inch,
-        topMargin=0.8 * inch,
-        bottomMargin=0.8 * inch,
-    )
-    doc2.build(elements2, onFirstPage=no_page_number, onLaterPages=add_page_number)
-    # Clean up temp keys
     for verb in verbs:
         verb.pop("_page_number", None)
 
-    print(f"Generated PDF: {output_path} ({verb_count} verb(s), {doc2.page} page(s))")
+    print(f"Generated PDF: {output_path} ({verb_count} verb(s), {final_doc.page} page(s))")
 
 
 if __name__ == "__main__":

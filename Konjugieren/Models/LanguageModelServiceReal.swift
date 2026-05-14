@@ -88,7 +88,9 @@ class LanguageModelServiceReal: LanguageModelService {
     Grammar concept questions are welcome. If the user asks about \
     grammar concepts like ablaut, tense differences, or verb families, \
     answer directly and helpfully without calling the tool. \
-    Only redirect questions that have nothing to do with German language.
+    Only redirect questions that have nothing to do with German language. \
+    When you redirect or refuse to answer, begin your response with the literal prefix "[Hinweis]" including the square brackets, so the app can detect the redirect. \
+    Use this prefix only for redirects and refusals, never for normal explanations or grammar notes.
     """
 
   private static let practiceInstructions = """
@@ -195,12 +197,8 @@ class LanguageModelServiceReal: LanguageModelService {
 
     lastRetryCount = maxRetries
     tutorSession = LanguageModelSession(model: model, tools: [ConjugationTool()], instructions: Self.tutorInstructions)
-    if let refusal = lastRefusalResponse {
-      let trimmed = refusal.trimmingCharacters(in: .whitespacesAndNewlines)
-      if trimmed.count < 10 {
-        return "I wasn't able to answer that question. Please try rephrasing or ask a different question."
-      }
-      return refusal
+    if lastRefusalResponse != nil {
+      return L.Tutor.unableToAnswer
     }
     throw lastError ?? LanguageModelServiceError.sessionUnavailable
   }
@@ -211,7 +209,9 @@ class LanguageModelServiceReal: LanguageModelService {
 
   private static func isLikelyRefusal(_ response: String) -> Bool {
     let lowercased = response.lowercased()
-    return lowercased.contains("can't assist")
+    // Primary marker injected by tutorInstructions; language-specific stems below are defense in depth.
+    return lowercased.contains("[hinweis]")
+      || lowercased.contains("can't assist")
       || lowercased.contains("cannot assist")
       || lowercased.contains("can't help")
       || lowercased.contains("cannot help")

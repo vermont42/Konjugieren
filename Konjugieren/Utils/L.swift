@@ -578,6 +578,10 @@ enum L {
       String(localized: "Tutor.send")
     }
 
+    static var unableToAnswer: String {
+      String(localized: "Tutor.unableToAnswer")
+    }
+
     static var unavailable: String {
       String(localized: "Tutor.unavailable")
     }

@@ -5082,6 +5082,22 @@
         }
       }
     },
+    "Tutor.unableToAnswer" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Frage konnte ich leider nicht beantworten. Bitte formuliere sie um oder stelle eine andere Frage."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I wasn't able to answer that question. Please try rephrasing or ask a different question."
+          }
+        }
+      }
+    },
     "Tutor.unavailable" : {
       "localizations" : {
         "de" : {

@@ -11,10 +11,54 @@ nonisolated private let lmsLogger = KonjugierenLogger.logger(category: "Language
 
 @available(iOS 26, *)
 @MainActor
+@Observable
 class LanguageModelServiceReal: LanguageModelService {
   private let model = SystemLanguageModel(guardrails: .permissiveContentTransformations)
 
   private var tutorSession: LanguageModelSession?
+
+  private(set) var isAvailable: Bool
+  private(set) var unavailabilityReason: LanguageModelUnavailability?
+
+  init() {
+    let snapshot = Self.snapshot(of: model.availability)
+    self.isAvailable = snapshot.isAvailable
+    self.unavailabilityReason = snapshot.reason
+    Task { [weak self] in
+      while !Task.isCancelled {
+        try? await Task.sleep(for: .seconds(5))
+        guard let self else { return }
+        self.refreshAvailability()
+      }
+    }
+  }
+
+  private func refreshAvailability() {
+    let snapshot = Self.snapshot(of: model.availability)
+    if snapshot.isAvailable != isAvailable {
+      isAvailable = snapshot.isAvailable
+    }
+    if snapshot.reason != unavailabilityReason {
+      unavailabilityReason = snapshot.reason
+    }
+  }
+
+  private static func snapshot(of availability: SystemLanguageModel.Availability) -> (isAvailable: Bool, reason: LanguageModelUnavailability?) {
+    switch availability {
+    case .available:
+      return (true, nil)
+    case .unavailable(.appleIntelligenceNotEnabled):
+      return (false, .appleIntelligenceNotEnabled)
+    case .unavailable(.deviceNotEligible):
+      return (false, .deviceNotEligible)
+    case .unavailable(.modelNotReady):
+      return (false, .modelNotReady)
+    case .unavailable:
+      return (false, .unknown)
+    @unknown default:
+      return (false, .unknown)
+    }
+  }
 
   private static let errorExplainerInstructions = """
     You are a German grammar tutor. Explain conjugation errors briefly. \
@@ -56,27 +100,6 @@ class LanguageModelServiceReal: LanguageModelService {
     """
 
   var lastRetryCount = 0
-
-  var isAvailable: Bool {
-    model.availability == .available
-  }
-
-  var unavailabilityReason: LanguageModelUnavailability? {
-    switch model.availability {
-    case .available:
-      return nil
-    case .unavailable(.appleIntelligenceNotEnabled):
-      return .appleIntelligenceNotEnabled
-    case .unavailable(.deviceNotEligible):
-      return .deviceNotEligible
-    case .unavailable(.modelNotReady):
-      return .modelNotReady
-    case .unavailable:
-      return .unknown
-    @unknown default:
-      return .unknown
-    }
-  }
 
   func explainError(context: ErrorExplainerContext) async throws -> ErrorExplanation {
     let session = LanguageModelSession(model: model, instructions: Self.errorExplainerInstructions)
@@ -215,6 +238,16 @@ class LanguageModelServiceReal: LanguageModelService {
       || lowercased.contains("cannot do that")
       || lowercased.contains("can't continue")
       || lowercased.contains("cannot continue")
+      // German redirects
+      || lowercased.contains("ich kann dir nicht sagen")
+      || lowercased.contains("ich kann dir keine")
+      || lowercased.contains("ich kann keine")
+      || lowercased.contains("keine prognosen")
+      || lowercased.contains("keine persönlich")
+      || lowercased.contains("ich bin ein ki,")
+      || lowercased.contains("ich bin eine ki,")
+      || lowercased.contains("ich bin ein sprachmodell")
+      || lowercased.contains("auf deinem handy")
   }
 
   func resetTutorSession() {

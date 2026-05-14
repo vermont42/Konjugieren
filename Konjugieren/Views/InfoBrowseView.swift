@@ -16,11 +16,18 @@ struct InfoBrowseView: View {
             Divider()
               .padding(.leading)
 
-            if index == 0, Current.languageModelService.isAvailable {
-              TutorRowView { navigationPath.append("tutor") }
+            if index == 0 {
+              if Current.languageModelService.isAvailable {
+                TutorRowView { navigationPath.append("tutor") }
 
-              Divider()
-                .padding(.leading)
+                Divider()
+                  .padding(.leading)
+              } else if let reason = Current.languageModelService.unavailabilityReason {
+                TutorUnavailableRowView(reason: reason)
+
+                Divider()
+                  .padding(.leading)
+              }
             }
           }
         }
@@ -180,6 +187,76 @@ struct TutorRowView: View {
     .konjCardRim()
     .contentShape(Rectangle())
     .onTapGesture { navigate() }
+  }
+}
+
+struct TutorUnavailableRowView: View {
+  let reason: LanguageModelUnavailability
+
+  var body: some View {
+    HStack(alignment: .top) {
+      VStack(alignment: .leading, spacing: 4) {
+        Text(L.Tutor.heading)
+          .tableText()
+
+        Text(reasonText)
+          .font(.subheadline)
+          .foregroundStyle(.customForeground)
+          .fixedSize(horizontal: false, vertical: true)
+      }
+
+      Spacer()
+
+      iconView
+        .font(.largeTitle)
+        .foregroundStyle(.customYellow.opacity(0.6))
+        .accessibilityHidden(true)
+    }
+    .padding(.horizontal)
+    .padding(.vertical, 12)
+    .background(Color.customYellow.opacity(0.05))
+    .clipShape(RoundedRectangle(cornerRadius: 12))
+    .konjCardRim()
+    .contentShape(Rectangle())
+    .onTapGesture { handleTap() }
+    .accessibilityElement(children: .combine)
+    .accessibilityAddTraits(isActionable ? .isButton : [])
+  }
+
+  private var reasonText: String {
+    switch reason {
+    case .appleIntelligenceNotEnabled:
+      return L.Tutor.reasonAppleIntelligenceOff
+    case .deviceNotEligible:
+      return L.Tutor.reasonDeviceNotEligible
+    case .modelNotReady:
+      return L.Tutor.reasonModelNotReady
+    case .unknown:
+      return L.Tutor.reasonUnknown
+    }
+  }
+
+  @ViewBuilder
+  private var iconView: some View {
+    switch reason {
+    case .appleIntelligenceNotEnabled:
+      Image(systemName: "gear.badge.questionmark")
+    case .deviceNotEligible:
+      Image(systemName: "exclamationmark.circle")
+    case .modelNotReady:
+      Image(systemName: "arrow.down.circle.dotted")
+    case .unknown:
+      Image(systemName: "questionmark.circle")
+    }
+  }
+
+  private var isActionable: Bool {
+    reason == .appleIntelligenceNotEnabled
+  }
+
+  private func handleTap() {
+    guard isActionable, let url = URL(string: UIApplication.openSettingsURLString) else { return }
+    UIApplication.shared.open(url)
   }
 }
 

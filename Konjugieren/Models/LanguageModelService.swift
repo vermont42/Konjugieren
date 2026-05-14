@@ -2,7 +2,7 @@
 
 import Foundation
 
-enum LanguageModelUnavailability {
+enum LanguageModelUnavailability: Equatable {
   case appleIntelligenceNotEnabled
   case deviceNotEligible
   case modelNotReady

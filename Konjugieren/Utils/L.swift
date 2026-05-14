@@ -558,6 +558,22 @@ enum L {
       String(localized: "Tutor.practiceRecommendationsDescription")
     }
 
+    static var reasonAppleIntelligenceOff: String {
+      String(localized: "Tutor.reasonAppleIntelligenceOff")
+    }
+
+    static var reasonDeviceNotEligible: String {
+      String(localized: "Tutor.reasonDeviceNotEligible")
+    }
+
+    static var reasonModelNotReady: String {
+      String(localized: "Tutor.reasonModelNotReady")
+    }
+
+    static var reasonUnknown: String {
+      String(localized: "Tutor.reasonUnknown")
+    }
+
     static var send: String {
       String(localized: "Tutor.send")
     }

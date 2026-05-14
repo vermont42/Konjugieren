@@ -18,7 +18,7 @@ struct TutorTestView: View {
 
   @Environment(\.dismiss) private var dismiss
 
-  private static let queries = [
+  private static let englishQueries = [
     "How do you conjugate singen in the Präteritum?",
     "What is the Perfekt of gehen?",
     "Conjugate haben in the Präsens.",
@@ -50,6 +50,43 @@ struct TutorTestView: View {
     "Conjugate dürfen in the Futur.",
     "What does ablaut mean?"
   ]
+
+  private static let germanQueries = [
+    "Wie konjugiert man singen im Präteritum?",
+    "Was ist das Perfekt von gehen?",
+    "Konjugiere haben im Präsens.",
+    "Was ist der Konjunktiv II von sein?",
+    "Was ist das Partizip II von trinken?",
+    "Konjugiere laufen im Futur.",
+    "Wie wird sprechen im Präsens Indikativ konjugiert?",
+    "Was ist das Präteritum von studieren?",
+    "Konjugiere wissen im Präsens.",
+    "Was ist das Partizip I von machen?",
+    "Was ist der Imperativ von geben?",
+    "Wie sagt man \"I would have sung\" auf Deutsch?",
+    "Was ist der Unterschied zwischen Präteritum und Perfekt?",
+    "Wie konjugiert man pizza?",
+    "Erzähl mir vom Wetter.",
+    "Was ist der Konjunktiv I von kommen?",
+    "Konjugiere schreiben im Plusquamperfekt.",
+    "Was ist das Perfekt Konjunktiv I von fahren?",
+    "Was ist der Futur Konjunktiv I von nehmen?",
+    "Was ist der Futur Konjunktiv II von finden?",
+    "Wie konjugiert man tragen in der Vergangenheit?",
+    "Konjugiere essen im Präsens.",
+    "Was ist das Perfekt von werden?",
+    "Was ist der Konjunktiv II von können?",
+    "Was ist das Partizip II von lesen?",
+    "Was ist der Imperativ von helfen?",
+    "Konjugiere bleiben im Plusquamperfekt Konjunktiv II.",
+    "Was ist das Partizip I von schlafen?",
+    "Konjugiere dürfen im Futur.",
+    "Was bedeutet Ablaut?"
+  ]
+
+  private static var queries: [String] {
+    Locale.current.language.languageCode?.identifier == "de" ? germanQueries : englishQueries
+  }
 
   private static let errorExplainerContexts = [
     ErrorExplainerContext(

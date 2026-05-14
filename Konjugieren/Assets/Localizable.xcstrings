@@ -84,7 +84,6 @@
       }
     },
     "%@%@" : {
-      "shouldTranslate" : false,
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -92,7 +91,8 @@
             "value" : "%1$@%2$@"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "%lld" : {
 
@@ -4998,6 +4998,70 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "View personalized practice suggestions based on your quiz history."
+          }
+        }
+      }
+    },
+    "Tutor.reasonAppleIntelligenceOff" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Intelligence ist deaktiviert. Tippe, um die Einstellungen zu öffnen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Intelligence is off. Tap to open Settings."
+          }
+        }
+      }
+    },
+    "Tutor.reasonDeviceNotEligible" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Intelligence ist auf diesem Gerät nicht verfügbar."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Intelligence isn’t available on this device."
+          }
+        }
+      }
+    },
+    "Tutor.reasonModelNotReady" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Intelligence wird vorbereitet. Dies kann einige Minuten dauern."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apple Intelligence is preparing. This may take a few minutes."
+          }
+        }
+      }
+    },
+    "Tutor.reasonUnknown" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Der Tutor ist nicht verfügbar."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The Tutor is unavailable."
           }
         }
       }

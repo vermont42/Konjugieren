@@ -5,6 +5,8 @@ import SwiftUI
 struct InfoView: View {
   let info: Info
 
+  @Environment(\.horizontalSizeClass) private var horizontalSizeClass
+
   var body: some View {
     ZStack {
       Color.customBackground
@@ -54,7 +56,7 @@ struct InfoView: View {
           .accessibilityHidden(true)
 
           RichTextView(blocks: info.richTextBlocks)
-            .frame(minWidth: 0, maxWidth: 680, alignment: .leading)
+            .frame(minWidth: 0, maxWidth: horizontalSizeClass == .regular ? .infinity : 680, alignment: .leading)
             .frame(maxWidth: .infinity, alignment: .leading)
         }
         .padding(.leading, Layout.doubleDefaultSpacing)

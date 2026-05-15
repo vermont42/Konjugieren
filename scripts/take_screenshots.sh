@@ -361,6 +361,12 @@ nav_quiz_mid() {
 
 nav_info_browse() {
   tap_tab info
+  # iPad's segmented tab can finish its highlight animation before the underlying
+  # NavigationStack swaps content — without this poll, the screenshot captures
+  # VerbBrowseView with the Info tab visually highlighted (race observed on
+  # iPad+de+info_browse in particular). Anchoring on the first info row gates
+  # the screenshot until the list is actually rendered.
+  verify_screen_loaded info_row_dedication
   swipe_up_pts "$(scroll_info_browse_for "$DEVICE")"
 }
 

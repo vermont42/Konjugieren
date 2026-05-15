@@ -1557,7 +1557,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Konjugiert ein deutsches Verb in der ausgewählten Konjugationsgruppe."
+            "value" : "Konjugiert ein deutsches Verb in der ausgewählten Conjugationgroup."
           }
         }
       }
@@ -1567,7 +1567,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Konjugationsgruppe"
+            "value" : "Conjugationgroup"
           }
         }
       }
@@ -4030,7 +4030,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Konjugationsgruppe:"
+            "value" : "Conjugationgroup:"
           }
         },
         "en" : {
@@ -4684,7 +4684,7 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Probiere die Schwierigkeit Absurd für eine größere Herausforderung mit mehr Konjugationsgruppen."
+            "value" : "Probiere die Schwierigkeit Absurd für eine größere Herausforderung mit mehr Conjugationgroups."
           }
         },
         "en" : {
@@ -5039,13 +5039,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Apple Intelligence wird vorbereitet. Dies kann einige Minuten dauern."
+            "value" : "Apple Intelligence wird eingerichtet. Dies kann einige Minuten dauern."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Apple Intelligence is preparing. This may take a few minutes."
+            "value" : "Apple Intelligence is being configured. This may take a few minutes."
           }
         }
       }

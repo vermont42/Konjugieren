@@ -52,6 +52,39 @@ done
 
 `ls -t` orders by modification time; the timestamp embedded in the filename matches mtime to the second, so the two ordering schemes agree.
 
+### Per-Release Upload Bundles
+
+App Store Connect's upload dialog takes one (device × locale) at a time and orders screenshots alphabetically by filename. The descriptive `latest/` names — useful as an archive — get in the way at upload time. For each release, project `latest/` into a numbered bundle:
+
+```
+docs/screenshots/version_<N>/
+├── iPhone_English/{1..9}.png
+├── iPhone_German/{1..9}.png
+├── iPad_English/{1..9}.png
+└── iPad_German/{1..9}.png
+```
+
+`<N>` increments per release (`version_2`, `version_3`, …). The row number is the `#` column in the "Per-View Navigation Recipes" table below (1 = VerbBrowseView … 9 = SettingsView). To regenerate after a re-shoot:
+
+```bash
+cd docs/screenshots && \
+mkdir -p version_<N>/iPhone_English version_<N>/iPhone_German \
+         version_<N>/iPad_English  version_<N>/iPad_German && \
+for src in latest/*.png; do
+  rest="${src##*/}"; base="${rest#????????-??????-}"; base="${base%.png}"
+  [[ "$base" =~ ^(iPhone-17-Pro-Max|iPad-Pro-13-inch-\(M4\))-(en|de)-(.+)$ ]] || continue
+  case "${BASH_REMATCH[3]}" in
+    verb_browse) n=1 ;; verb_view) n=2 ;; family_browse) n=3 ;; family_detail) n=4 ;;
+    quiz_mid) n=5 ;; info_browse) n=6 ;; info_view) n=7 ;; quiz_results) n=8 ;; settings) n=9 ;;
+  esac
+  case "${BASH_REMATCH[1]}" in iPhone-17-Pro-Max) d=iPhone ;; *) d=iPad ;; esac
+  case "${BASH_REMATCH[2]}" in en) l=English ;; de) l=German ;; esac
+  cp "$src" "version_<N>/${d}_${l}/${n}.png"
+done
+```
+
+`latest/` stays untouched as the timestamped archive; `version_<N>/` is a regenerable projection — re-running the snippet after a re-shoot produces the same 36 files. If the playbook table ever reorders, edit only the inner `case` block.
+
 ## Simulator Setup
 
 The driver targets two specific simulators; both UDIDs are hardcoded in `udid_for()`. To recreate either after `simctl erase` or `simctl delete unavailable` removes them:
@@ -141,7 +174,7 @@ The driver depends on these app-side touchpoints. Renaming any one silently brea
 | `verb_browse_anchor` identifier | `wait_for_render` polls for it after every launch | `Konjugieren/Views/VerbBrowseView.swift` |
 | `verb_row_<infinitiv>` identifiers | `tap_id_first verb_row_werden` for screen 2 | same file |
 | `family_row_<rawValue>` identifiers | `tap_id_first family_row_strong` for screen 4 | `Konjugieren/Views/FamilyBrowseView.swift` |
-| `info_row_<stableKey>` identifiers | `tap_id_first info_row_praesens_indikativ` for screen 7 | `Konjugieren/Views/InfoBrowseView.swift` |
+| `info_row_<stableKey>` identifiers | `verify_screen_loaded info_row_dedication` (screen 6 settle); `tap_id_first info_row_praesens_indikativ` (screen 7) | `Konjugieren/Views/InfoBrowseView.swift` |
 | `quiz_start_button`, `quiz_answer_field` identifiers | quiz nav for screens 5 and 8 | `Konjugieren/Views/QuizView.swift` |
 | `results_score` identifier | `verify_screen_loaded results_score` after the 30-answer loop | `Konjugieren/Views/ResultsView.swift` |
 

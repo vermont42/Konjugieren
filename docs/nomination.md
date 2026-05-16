@@ -36,16 +36,16 @@ Bilingual VoiceOver is hand-engineered: each UI element carries its own pronunci
 
 Replace each placeholder with the live URL once the asset is hosted on racecondition.software (or, for TestFlight, the public join link).
 
-1. **`konjugieren-verbs.pdf`** — *URL TBD (racecondition.software)*
-   ~1,018-page printed reference. Every verb gets a full page: complete conjugation tables, etymology through Middle High German, Old High German, Proto-West Germanic, and Proto-Indo-European, plus a literary citation (Mann, Goethe, Luther, Grimm, et al.).
+1. **`konjugieren-verbs.pdf`** — https://racecondition.software/konjugieren-verbs.pdf
+   1005-page printed reference. Every verb gets a full page: complete conjugation tables, etymology through Middle High German, Old High German, Proto-West Germanic, and Proto-Indo-European, plus a literary citation (Mann, Goethe, Luther, Grimm, et al.).
 
 2. **FM tutor screen recording** — *URL TBD*
    15–30 second walkthrough of the on-device Foundation Models tutor explaining a conjugation error and drilling a weak form.
 
-3. **Before/after iPhone UI gallery** — *URL TBD*
+3. **Before/after iPhone UI gallery** — https://racecondition.software/konjugieren-ui-gallery/#iphone
    Side-by-side comparison of the launch-era UI vs. the May 2026 card-elevation overhaul.
 
-4. **Before/after iPad UI gallery** — *URL TBD*
+4. **Before/after iPad UI gallery** — https://racecondition.software/konjugieren-ui-gallery/#ipad
    iPad equivalent of the iPhone gallery.
 
 5. **TestFlight build link** — *URL TBD*

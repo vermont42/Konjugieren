@@ -10,6 +10,20 @@ The abstraction is already in place. `LanguageModelService` is a protocol (`Konj
 
 Adding a third conformance (`LanguageModelServiceAnthropic`) requires no caller-side changes. Every site that already gates on `Current.languageModelService.isAvailable` — `QuizView.swift:163` (ErrorExplainerView), the Tutor row in `InfoBrowseView`, the Tutor page in `OnboardingView` — will work unmodified. The protocol does the right thing.
 
+## Currently disabled in 1.0
+
+As of the 2026-05-17 release, two of `LanguageModelService`'s three on-device surfaces ship *dark* — the underlying protocol methods remain wired through, but the UI entry points are commented out behind `TODO: 1.0-disabled surface` markers. The cloud tier described in this memo is the path to re-enabling them.
+
+| Surface | UI entry point | Why disabled |
+|---|---|---|
+| `explainError` | `ErrorExplainerView` card in `QuizView.swift` | FM confidently hallucinates fake grammar rules even on canonical strong verbs. For `singen` / Präteritum 1.P.Sg., the model produced "-en changes to -t before adding -e" — a weak-verb rule applied to the textbook Klasse III strong verb. The structured Explanation / Rule / Memory Aid headings make fabricated rules read as ground truth, and the card has no chat-style affordance for the user to push back. |
+| `recommendPractice` | "Get Suggestions" button in `TutorView.swift` | The model free-associates from English tense labels ("Past Indicative" → "errors in recalling past events suggest practice on past tense structures") rather than diagnosing actual German grammar gaps. Input grounding is too thin: the model receives aggregated counts keyed on conjugationgroup names with no underlying verbs or specific mistake patterns attached. Even cloud Claude would produce slop from this input shape — re-enabling requires *both* a better model **and** richer input (top-N missed verbs with their wrong/right pairs, not just counts). |
+| `sendTutorMessage` | `TutorView` chat field | **Ships live in 1.0.** Free-form chat tolerates model uncertainty better than structured surfaces — users can push back. This is also the App Store nomination demo surface (see `docs/tutor-recording.md`). |
+
+**Restoration path.** `grep -rn "TODO: 1.0-disabled surface" Konjugieren/` locates the comment-outs. Both should re-light in the same change that introduces `HybridLanguageModelService` (per the next section). `recommendPractice` additionally needs the input-shape revision described above — re-enabling it without enriching the input would reproduce the same hallucination class on the cloud model.
+
+**App Store metadata.** The 1.0 listing must be revised to remove mentions of `ErrorExplainerView` and on-device practice recommendations. When the cloud tier ships, metadata must be revised back in lockstep with the rollout — otherwise the App Store listing will reference surfaces the user can't see.
+
 ## Recommended dispatch shape: hybrid, not exclusive
 
 Don't replace Foundation Models with Anthropic for paid users — *augment* it. The right user experience is:

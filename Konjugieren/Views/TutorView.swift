@@ -44,16 +44,21 @@ struct TutorView: View {
         ScrollViewReader { proxy in
           ScrollView {
             VStack(alignment: .leading, spacing: Layout.doubleDefaultSpacing) {
-              if hasQuizHistory {
-                Button(L.Tutor.getSuggestions) {
-                  showingRecommendations = true
-                }
-                .funButton()
-                .frame(maxWidth: .infinity)
-
-                Text(L.Tutor.practiceRecommendationsDescription)
-                  .settingsLabel()
-              }
+              // TODO: 1.0-disabled surface — recommendPractice hallucinates from
+              // tense labels (e.g., "Past Indicative" → "errors in recalling past
+              // events"). See "Currently disabled in 1.0" in docs/cloud-llm-tier.md.
+              // Restore when HybridLanguageModelService ships AND the input shape
+              // is enriched with concrete missed verbs, not just aggregated counts.
+              // if hasQuizHistory {
+              //   Button(L.Tutor.getSuggestions) {
+              //     showingRecommendations = true
+              //   }
+              //   .funButton()
+              //   .frame(maxWidth: .infinity)
+              //
+              //   Text(L.Tutor.practiceRecommendationsDescription)
+              //     .settingsLabel()
+              // }
 
               Button(L.Tutor.getSampleQuery) {
                 showingSampleQueries = true

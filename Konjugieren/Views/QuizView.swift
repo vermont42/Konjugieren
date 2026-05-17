@@ -159,11 +159,15 @@ struct QuizView: View {
               .accessibilityLabel(Text(verbatim: MixedCaseAccessibility.accessibilityLabel(for: lastCorrect)))
           }
 
-          if let errorContext = quiz.lastErrorContext,
-             Current.languageModelService.isAvailable {
-            ErrorExplainerView(context: errorContext)
-              .id(errorContext)
-          }
+          // TODO: 1.0-disabled surface — FM hallucinates fake grammar rules
+          // (e.g., singen Präteritum → "-en changes to -t"). See "Currently
+          // disabled in 1.0" in docs/cloud-llm-tier.md. Restore when
+          // HybridLanguageModelService ships.
+          // if let errorContext = quiz.lastErrorContext,
+          //    Current.languageModelService.isAvailable {
+          //   ErrorExplainerView(context: errorContext)
+          //     .id(errorContext)
+          // }
         }
 
         TextField(L.Quiz.conjugation, text: $userInput)

@@ -48,5 +48,26 @@ Replace each placeholder with the live URL once the asset is hosted on racecondi
 4. **Before/after iPad UI gallery** — https://racecondition.software/konjugieren-ui-gallery/#ipad
    iPad equivalent of the iPhone gallery.
 
-5. **TestFlight build link** — *URL TBD*
+5. **TestFlight build link** — *URL pending Beta App Review approval (see Submission Status below)*
    Optional; explicitly recommended in Apple's nomination docs for pre-release nominations.
+
+---
+
+## Submission Status (as of 2026-05-17)
+
+Konjugieren 1.2 (build 2) is uploaded to App Store Connect. Description, Helpful Details, screenshots, and App Preview videos are finalized in both English and German locales. Test Information is complete.
+
+Two parallel reviews are in Apple's queue:
+
+- **App Store Review** (submitted via Distribution tab): 1–5 days typical. When approved, the build enters "Pending Developer Release" because the release setting is "Manually release this version" — visibility stays under developer control.
+- **Beta App Review** (auto-submitted when build 1.2 (2) was assigned to the External TestFlight group "Public"): 24–48 hours typical. When approved, the Public Link toggle in the group's Settings tab becomes functional and generates the shareable TestFlight URL needed for supplemental #5.
+
+## Next Steps
+
+1. **Wait for Beta App Review approval** (~1–2 days). The External group's build status will change from "Waiting for Review" to something like "Ready to Test"; an email arrives at the Feedback Email address registered in Test Information.
+2. **Enable the Public Link**: App Store Connect → TestFlight → Public group → Settings tab → toggle Enable Public Link. The URL is generated immediately.
+3. **Paste the URL into supplemental #5 above**, replacing the *URL pending…* placeholder.
+4. **Submit the editorial nomination** via App Store Connect's nomination form, using the five supplemental URLs above (1005-page PDF, Tutor screen recording, iPhone gallery, iPad gallery, TestFlight Public Link).
+5. **Wait for App Store Review approval** (1–5 days, running in parallel with Beta App Review). When approved, the build sits in "Pending Developer Release" — fully reviewed but not publicly visible.
+6. **Hold the approved build for ~3 weeks** to let Apple's editorial review window play out (per the nomination spec's "Submit ≥ 3 weeks before the scheduled public release" guideline at the top of this doc).
+7. **Manually release** when the editorial window has closed: App Store Connect → version 1.2 page → "Release this version" button. Konjugieren 1.2 goes public at that moment.

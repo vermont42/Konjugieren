@@ -162,6 +162,7 @@ struct QuizView: View {
           if let errorContext = quiz.lastErrorContext,
              Current.languageModelService.isAvailable {
             ErrorExplainerView(context: errorContext)
+              .id(errorContext)
           }
         }
 

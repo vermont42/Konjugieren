@@ -9,7 +9,7 @@ enum LanguageModelUnavailability: Equatable {
   case unknown
 }
 
-struct ErrorExplainerContext {
+struct ErrorExplainerContext: Hashable {
   let infinitiv: String
   let translation: String
   let familyDescription: String

@@ -171,6 +171,7 @@ docs/
 ├── bug-report-gitcommitsha.md  # Bug report draft: Claude Code `plugin update` doesn't refresh `gitCommitSha` in `installed_plugins.json`
 ├── bug-report-grep-silent-truncation.md  # Bug report draft (filed as anthropics/claude-code #56751): long-line `grep` matches silently disappear from Bash tool output
 ├── claude-code-skill-recommendations.md  # Curated third-party Claude Code skills worth installing for Konjugieren work
+├── code-audit.md              # Full-codebase audit (June 2026): bugs, duplication, dead code, smells, test gaps, phased implementation order
 ├── conjugationgroupText.md    # Template and guidelines for conjugationgroup articles
 ├── control-center-controls.md  # iOS 18+ ControlWidget constraints on `openAppWhenRun`/`OpenURLIntent` and the Shared/ dual-target pattern
 ├── emoji-assets.md            # Why some emoji ship as PNG assets (iOS 26 emoji-rendering workaround)

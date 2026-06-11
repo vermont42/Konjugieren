@@ -2,6 +2,16 @@
 
 **Tracking issue:** [anthropics/claude-code #56751](https://github.com/anthropics/claude-code/issues/56751). The report draft from which this was filed lives at `docs/bug-report-grep-silent-truncation.md`.
 
+> **Resolved on this machine, 2026-06-11.** Root cause found: the Bash tool's `grep` was
+> not `/usr/bin/grep` — Claude Code's shell snapshot shadowed `grep`/`find`/`rg` with
+> functions that re-exec the Claude binary as embedded ugrep/bfs/ripgrep, and long matched
+> lines were dropped in that pipeline (related: anthropics/claude-code#62642, #65166; full
+> analysis in `~/Desktop/claude-code-bug-report.md`). After de-shadowing (real ripgrep
+> installed; `--allowedTools Grep,Glob` launch flag; global PreToolUse hook running
+> `unset -f grep find rg`), matched lines of 300/1,000/5,000 characters render intact.
+> Everything below is retained as history and as the recovery recipe should the symptom
+> ever recur.
+
 ## The failure mode
 
 When the Bash tool runs `grep` on a file with long lines, matches whose displayed line exceeds an internal rendering threshold (~250 columns observed) are **silently** omitted from the rendered output. No truncation marker, no error — just nothing where a match should appear. `grep` itself found the match; the agent doesn't see it.

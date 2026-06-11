@@ -163,7 +163,7 @@ When writing or editing any English text (localization strings, documentation, c
 
 ## Grep on long-line files
 
-See [`docs/grep-gotchas.md`](docs/grep-gotchas.md) for a silent-truncation failure mode that bites `grep` on long-line files (Markdown paragraphs, `Localizable.xcstrings` values, anything with lines exceeding ~250 characters). Key rule: when `grep -n` returns no match for a string you have reason to believe is in the file, verify with `grep -c` first — the asymmetry between counts that work and content that vanishes is the bug signal.
+Historical gotcha, resolved 2026-06-11: `grep -n` matches on long-line files (anything past ~250 characters) used to vanish silently from Bash-tool output (tracking issue anthropics/claude-code#56751). Root cause: the Bash tool's `grep` was secretly Claude Code's embedded ugrep via shell-snapshot shadowing — de-shadowed machine-wide; matched lines of 300/1,000/5,000 characters now render intact. History and recovery recipe: [`docs/grep-gotchas.md`](docs/grep-gotchas.md). If silent vanishing ever recurs, the diagnostic still applies: `grep -c` count > 0 while `grep -n` shows nothing means output is being hidden — verify via `Read` with offset, and never treat grep silence as absence. (Separate and still real: the **Grep tool** truncates long matched lines to `[Omitted long matching line]` — see "Searching Within Localizable.xcstrings" below.)
 
 ## Swift Coding Conventions
 

@@ -207,7 +207,9 @@ docs/
 ├── ui-audit-2-next-session.md # Next-session brief for OnboardingView page-1 layout work from UI audit Round Two #16
 ├── vanilla_build_and_test.md  # Raw xcodebuild commands for opting out of the ios-build-verify dependency
 ├── video_script.md            # App Store preview script with bilingual captions and 30-second timing math
-└── voiceover.md               # VoiceOver pronunciation patterns and per-screen strategy
+├── voiceover.md               # VoiceOver pronunciation patterns and per-screen strategy
+├── wwdc2026-platforms-sotu.md  # WWDC2026 Platforms State of the Union announcements relevant to Konjugieren; reshapes the cloud-llm-tier decision
+└── wwdc2026-platforms-sotu-transcript.txt  # Verbatim WWDC2026 session-102 transcript (Apple copyrighted; gitignored)
 
 scripts/
 ├── generate_verb_pdf.py       # Generates PDF verb conjugation tables

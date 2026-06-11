@@ -69,3 +69,29 @@ Konjugieren 1.2 (build 2) is uploaded to App Store Connect. Description, Helpful
 1. **Wait for App Store Review approval** (1–5 days from upload). When approved, the build sits in "Pending Developer Release" — fully reviewed but not publicly visible.
 2. **Hold the approved build until 2026-06-11**. Apple's editorial review window plays out during this period; no developer action is required.
 3. **Manually release on 2026-06-11**: App Store Connect → version 1.2 page → "Release this version" button. Konjugieren 1.2 goes public at that moment.
+
+---
+
+## WWDC2026 Editorial Angle (for the next nomination)
+
+The 1.2 nomination above is submitted and locked. This section is for the *next* nomination cycle. It captures how WWDC2026 strengthens Konjugieren's editorial case. See `docs/wwdc2026-platforms-sotu.md` for the full analysis.
+
+**Apple keeps choosing language and education apps as Foundation Models exemplars.** The WWDC2026 Platforms State of the Union cited "educational apps like CellWalk" as a Foundation Models showcase; the WWDC2025 cycle showcased Grammo, a grammar-learning app (see `docs/platform-features-plan.md`). Konjugieren is a German-conjugation app whose Tutor already runs on the on-device Foundation Models framework, which places it squarely in the category Apple repeatedly spotlights. The 1.2 Description and Supplemental #2 (the Tutor screen recording) already lead with this; the next nomination should keep it front and center.
+
+**The on-device-AI story is honest and grounded, which editorial review rewards.** Konjugieren's Tutor is not freeform chat: it calls the same Conjugator engine the quiz uses (already stated in Helpful Details), so its conjugations are computed, not guessed. "Privacy-preserving on-device intelligence, grounded in a real conjugation engine" is a clean, defensible editorial line.
+
+### Forward-looking hooks (require adopting the 27-era APIs)
+
+None of these ship in 1.2. They become available on the fall iOS 27 releases, and several require an Apple-silicon Mac to build (see the WWDC report, section 5). Each would strengthen a future nomination. Adopt first, then nominate the version that ships them; do not nominate on the promise.
+
+- **Private Cloud Compute, at no cloud cost.** Re-lighting the two AI surfaces that ship dark in 1.0 (`explainError`, `recommendPractice`; see `docs/cloud-llm-tier.md`) through Apple's free Private Cloud Compute model would let the nomination claim frontier-level AI with Apple-grade privacy and no third-party data sharing. Strong, and uniquely on-brand for Apple's own infrastructure.
+- **Image input plus on-device Vision OCR.** Photograph German text in the wild, extract it, then conjugate or explain it. A novel, demoable feature that connects the app to real-world German, and a screenshot-friendly one for the Supplemental Materials.
+- **Dynamic Profiles and the Evaluations framework.** Less user-visible, but they signal serious, current adoption of the newest framework surface, which editorial and developer-relations reviewers notice.
+
+### Timing
+
+Apple's editorial appetite for apps demonstrating a new framework is highest around the release of that framework. A nomination for the version that adopts the 27-era Foundation Models capabilities, submitted in the window around the fall releases, aligns with that appetite. Keep the ≥ 3-week editorial lead-time rule (top of this doc) in mind when scheduling.
+
+### Honest caveat
+
+A nomination should describe only what ships in the nominated build. The strongest AI surfaces are dark in 1.0 for good reason: on-device hallucination on the long tail (see `docs/cloud-llm-tier.md`). Until they re-light, lean the AI pitch on the on-device Tutor that ships live, plus the App Intents / Siri / Spotlight integration and the VoiceOver work, all of which are real today.

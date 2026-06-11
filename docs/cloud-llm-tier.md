@@ -1,5 +1,9 @@
 # Cloud LLM Tier — Konjugieren+ via Anthropic API
 
+> **WWDC2026 update (2026-06-11):** Re-evaluate this memo before implementing. The WWDC2026 Foundation Models changes (see `docs/wwdc2026-platforms-sotu.md`) most likely supersede the *quality* rationale below. Apple now offers its frontier-scale model on Private Cloud Compute at no cloud cost for developers under two million downloads, inside the same Foundation Models framework Konjugieren already uses. That path can re-light the dark `explainError` and `recommendPractice` surfaces with no backend, no StoreKit, and no API key, and with a lighter privacy-disclosure burden, since data stays in Apple's infrastructure rather than going to a third party. The likely first move is to route the dark surfaces to Private Cloud Compute, not to build the Anthropic backend described here.
+>
+> What survives as a reason to still consider Claude is not quality but *voice and control*: a Claude-specific persona (the etymology-loving Volkshochschule teacher in "System prompts: rewrite, don't port"), a long-form "deep dive" surface, or behavior Apple's model does not offer. If a paid tier proceeds, frame its value that way. The third-party path is also simpler on the client side now: Claude is callable through the same framework via the Language Model protocol, with guided generation and native tool calling, though it still needs the key-hosting proxy described in "Why a backend proxy is non-negotiable".
+
 A design memo for a future paid tier that swaps the on-device Foundation Models backend for an Anthropic-API-backed one. The motivation is quality: the on-device model is competent for high-frequency grammar but hallucinates confidently on the long tail (see the "third declension" / "Future Indicative changes -en to -en" failure on `beseitigen` captured during the 2026-05-17 recording session). A cloud LLM closes that gap for users willing to pay.
 
 This is a design memo, not an implementation plan. No code changes proposed yet. Defer until interview season ends.
@@ -239,6 +243,7 @@ Foundation Models stays as the free-tier backend permanently; this is not a depr
 
 ## Related docs
 
+- `wwdc2026-platforms-sotu.md`: the WWDC2026 analysis that may supersede this memo's quality rationale; see the update note at the top of this file.
 - `feature-architecture.md` — the World/DI shape this would plug into.
 - `on-device-tool-design.md` — design principles for the existing on-device path. Useful background for why cloud is *different*: cloud LLMs handle multi-parameter tools and verbose schemas natively, where on-device cannot. The on-device tool design choices do not need to carry over.
 - `post-release-features.md` — list of post-1.0 ideas. Add a one-line pointer to this memo from there if/when this gets greenlit.

@@ -8,3 +8,5 @@ corpus/
 build.log
 .claude/ios-build-verify.*
 docs/screenshots/
+# WWDC transcript (Apple copyrighted; archived locally for reference only)
+docs/wwdc2026-platforms-sotu-transcript.txt

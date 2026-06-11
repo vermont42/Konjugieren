@@ -209,7 +209,11 @@ docs/
 ├── video_script.md            # App Store preview script with bilingual captions and 30-second timing math
 ├── voiceover.md               # VoiceOver pronunciation patterns and per-screen strategy
 ├── wwdc2026-platforms-sotu.md  # WWDC2026 Platforms State of the Union announcements relevant to Konjugieren; reshapes the cloud-llm-tier decision
-└── wwdc2026-platforms-sotu-transcript.txt  # Verbatim WWDC2026 session-102 transcript (Apple copyrighted; gitignored)
+├── wwdc2026-platforms-sotu-transcript.txt  # Verbatim WWDC2026 session-102 transcript (Apple copyrighted; gitignored)
+├── wwdc2026-whats-new-in-swift.md  # WWDC2026 "What's New in Swift" (session 262) announcements relevant to Konjugieren; gated by the Apple-silicon/Xcode-27 toolchain move
+├── wwdc2026-whats-new-in-swift-transcript.txt  # Verbatim WWDC2026 session-262 transcript (Apple copyrighted; gitignored)
+├── wwdc2026-whats-new-swiftui.md  # WWDC2026 "What's new in SwiftUI" announcements relevant to Konjugieren; SwiftUI companion to the Platforms SOTU report
+└── wwdc2026-whats-new-swiftui-transcript.txt  # Verbatim WWDC2026 session-269 transcript (Apple copyrighted; gitignored)
 
 scripts/
 ├── generate_verb_pdf.py       # Generates PDF verb conjugation tables

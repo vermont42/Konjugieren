@@ -96,6 +96,8 @@ For a German-learning app this is the most interesting genuinely new capability.
 
 ## 3. SwiftUI: free performance, plus three interaction APIs worth adopting
 
+> **Deeper dive:** the dedicated "What's new in SwiftUI" session (269) is analyzed in [`docs/wwdc2026-whats-new-swiftui.md`](wwdc2026-whats-new-swiftui.md), which names each API and checks it against Konjugieren's code (e.g. it verifies the app is safe from the new `@State`-macro source-break, and that AsyncImage caching has zero impact here because there is no `AsyncImage`). This section is the altitude summary; that report is the detail.
+
 Konjugieren is a SwiftUI app, so the "rebuild and it is faster" improvements arrive at no cost when Josh builds against the 27 SDK:
 
 - **Lazy `@State`.** "SwiftUI now only initializes state objects when they're first loaded", because state "was converted from a dynamic property to a macro." Free win.
@@ -160,6 +162,8 @@ Icon Composer gained multi-layer Liquid Glass design with selectable refraction.
 ---
 
 ## 7. Swift 6.4: quality-of-life that fits this codebase
+
+> **Deeper dive:** the dedicated "What's New in Swift" session (262) is analyzed in [`docs/wwdc2026-whats-new-in-swift.md`](wwdc2026-whats-new-in-swift.md), which covers Swift 6.3 and 6.4 in full and checks each change against Konjugieren's code (e.g. it identifies the "per-region warning control" below as the new `@diagnose` attribute, maps the Swift Testing improvements onto the existing 10-file test suite, and shows that the verified Intel / Xcode 26.3 toolchain puts every item behind the same Apple-silicon gate as §5). This section is the altitude summary; that report is the detail.
 
 Konjugieren uses Swift 6 with `SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor`. Swift 6.4 brings several conveniences that touch this project:
 

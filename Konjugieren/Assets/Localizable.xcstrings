@@ -23,23 +23,6 @@
     "%@" : {
 
     },
-    "%@ %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@ %2$@"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@ %2$@"
-          }
-        }
-      }
-    },
     "%@ %lld" : {
       "localizations" : {
         "de" : {
@@ -52,23 +35,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@ %2$lld"
-          }
-        }
-      }
-    },
-    "%@ %lld / %lld" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@ %2$lld / %3$lld"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@ %2$lld / %3$lld"
           }
         }
       }
@@ -3544,28 +3510,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Master German-Verb Conjugation"
-          }
-        }
-      }
-    },
-    "Open Quiz" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Quiz öffnen"
-          }
-        }
-      }
-    },
-    "Open Random Verb" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Zufälliges Verb öffnen"
           }
         }
       }

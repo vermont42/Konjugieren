@@ -4,7 +4,7 @@ import AppIntents
 import WidgetKit
 
 struct NextVerbIntent: AppIntent {
-  static let title: LocalizedStringResource = "Next Verb"
+  static let title = LocalizedStringResource("Intent.nextVerbTitle")
 
   func perform() async throws -> some IntentResult {
     guard let defaults = WidgetConstants.sharedDefaults else {

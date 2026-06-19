@@ -3,7 +3,7 @@
 import AppIntents
 
 struct OpenQuizIntent: AppIntent {
-  static let title: LocalizedStringResource = "Open Quiz"
+  static let title = LocalizedStringResource("Intent.openQuizTitle")
   static let openAppWhenRun = true
 
   func perform() async throws -> some IntentResult {

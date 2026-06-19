@@ -55,7 +55,7 @@ struct QuizWidgetView: View {
         .font(.largeTitle)
         .foregroundStyle(entry.wasCorrect ? .green : .red)
 
-      Text(entry.wasCorrect ? "Correct!" : "Incorrect")
+      Text(entry.wasCorrect ? WidgetL.Quiz.correct : WidgetL.Quiz.incorrect)
         .font(.headline)
 
       if !entry.wasCorrect {

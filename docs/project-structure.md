@@ -127,12 +127,14 @@ KonjugierenWidget/
 ├── Info.plist                  # Widget extension configuration
 ├── KonjugierenWidget.entitlements  # Widget entitlements (App Groups)
 ├── KonjugierenWidgetBundle.swift   # Widget bundle combining all widgets and live activities
+├── Localizable.xcstrings       # Widget-target string catalog (en/de); resolved against the widget bundle
 ├── NextVerbIntent.swift        # AppIntent for advancing to the next verb in the widget
 ├── QuickQuizControl.swift      # Control Center button launching the quiz
 ├── QuizWidget.swift            # Timeline-based widget for daily quiz questions
 ├── RandomVerbControl.swift     # Control Center button opening a random verb
 ├── SnapshotReader.swift        # Reads WidgetSnapshot from shared container with fallback
 ├── VerbDesTagesWidget.swift    # Timeline-based widget displaying the daily verb
+├── WidgetL.swift               # Type-safe localization accessors for the widget target (mirrors L)
 └── Views/
     ├── AccessoryWidgetView.swift   # Lock screen accessory widget views
     ├── GameLiveActivityView.swift  # Live activity showing game state (waves, score, health)

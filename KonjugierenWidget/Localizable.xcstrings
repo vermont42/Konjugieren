@@ -1,0 +1,373 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "— %@" : {
+
+    },
+    "·" : {
+
+    },
+    "(%@)" : {
+
+    },
+    "%@ — %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ — %2$@"
+          }
+        }
+      }
+    },
+    "%@ %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@"
+          }
+        }
+      }
+    },
+    "%lld" : {
+
+    },
+    "%lld / %lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld / %2$lld"
+          }
+        }
+      }
+    },
+    "%lld/%lld" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld/%2$lld"
+          }
+        }
+      }
+    },
+    "Game.over" : {
+      "comment" : "Headline shown on the game Live Activity when the run ends.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Spiel vorbei"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Game Over"
+          }
+        }
+      }
+    },
+    "Game.wave %lld" : {
+      "comment" : "Game wave label with the wave number, e.g. \"Wave 3\". %lld is the wave number.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welle %lld"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wave %lld"
+          }
+        }
+      }
+    },
+    "Intent.answerQuizQuestionID" : {
+      "comment" : "Parameter name for the quiz question identifier (Shortcuts editor).",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fragen-ID"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Question ID"
+          }
+        }
+      }
+    },
+    "Intent.answerQuizSelectedAnswer" : {
+      "comment" : "Parameter name for the chosen quiz answer (Shortcuts editor).",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ausgewählte Antwort"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Selected Answer"
+          }
+        }
+      }
+    },
+    "Intent.answerQuizTitle" : {
+      "comment" : "Title of the AppIntent that records a tapped quiz answer (shown in Shortcuts/Siri).",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quiz beantworten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Answer Quiz"
+          }
+        }
+      }
+    },
+    "Intent.nextVerbTitle" : {
+      "comment" : "Title of the AppIntent that advances the Verb des Tages widget (shown in Shortcuts/Siri).",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nächstes Verb"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Next Verb"
+          }
+        }
+      }
+    },
+    "Intent.openQuizTitle" : {
+      "comment" : "Title of the shared AppIntent that opens the quiz (Quick Quiz control; shown in Shortcuts/Siri).",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quiz öffnen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Quiz"
+          }
+        }
+      }
+    },
+    "Intent.openRandomVerbTitle" : {
+      "comment" : "Title of the shared AppIntent that opens a random verb (Random Verb control; shown in Shortcuts/Siri).",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zufallsverb öffnen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Random Verb"
+          }
+        }
+      }
+    },
+    "Konjugieren Quiz" : {
+
+    },
+    "pp:" : {
+
+    },
+    "QuickQuiz.description" : {
+      "comment" : "Control Center gallery description for the Quick Quiz control.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das Konjugationsquiz starten."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Launch the conjugation quiz."
+          }
+        }
+      }
+    },
+    "QuickQuiz.name" : {
+      "comment" : "Display name of the Quick Quiz control (Control Center / Action button).",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schnelles Quiz"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quick Quiz"
+          }
+        }
+      }
+    },
+    "Quiz.configDescription" : {
+      "comment" : "Widget gallery description for the Conjugation Quiz widget.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teste deine Kenntnisse der deutschen Verbkonjugation."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Test your German verb conjugation skills."
+          }
+        }
+      }
+    },
+    "Quiz.configDisplayName" : {
+      "comment" : "Widget gallery display name for the Conjugation Quiz widget.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konjugationsquiz"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conjugation Quiz"
+          }
+        }
+      }
+    },
+    "Quiz.correct" : {
+      "comment" : "Shown in the quiz widget after the user taps the correct answer.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Richtig!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Correct!"
+          }
+        }
+      }
+    },
+    "Quiz.incorrect" : {
+      "comment" : "Shown in the quiz widget after the user taps a wrong answer.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Falsch"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Incorrect"
+          }
+        }
+      }
+    },
+    "RandomVerb.description" : {
+      "comment" : "Control Center gallery description for the Random Verb control.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein zufälliges deutsches Verb öffnen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open a random German verb."
+          }
+        }
+      }
+    },
+    "RandomVerb.name" : {
+      "comment" : "Display name of the Random Verb control (Control Center / Action button).",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zufallsverb"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Random Verb"
+          }
+        }
+      }
+    },
+    "VerbDesTages.configDescription" : {
+      "comment" : "Widget gallery description for the Verb des Tages widget.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein tägliches deutsches Verb mit Konjugationen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A daily German verb with conjugations."
+          }
+        }
+      }
+    },
+    "VerbDesTages.configDisplayName" : {
+      "comment" : "Widget gallery display name for the Verb des Tages widget. German keeps the branded title; English reads \"Verb of the Day\".",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verb des Tages"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verb of the Day"
+          }
+        }
+      }
+    },
+    "W%lld" : {
+
+    }
+  },
+  "version" : "1.0"
+}

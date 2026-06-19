@@ -4,12 +4,12 @@ import AppIntents
 import WidgetKit
 
 struct AnswerQuizIntent: AppIntent {
-  static let title: LocalizedStringResource = "Answer Quiz"
+  static let title = LocalizedStringResource("Intent.answerQuizTitle")
 
-  @Parameter(title: "Selected Answer")
+  @Parameter(title: LocalizedStringResource("Intent.answerQuizSelectedAnswer"))
   var selectedAnswer: String
 
-  @Parameter(title: "Question ID")
+  @Parameter(title: LocalizedStringResource("Intent.answerQuizQuestionID"))
   var questionID: String
 
   init() {}

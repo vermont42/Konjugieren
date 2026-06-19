@@ -7,10 +7,14 @@ struct QuickQuizControl: ControlWidget {
   var body: some ControlWidgetConfiguration {
     StaticControlConfiguration(kind: "QuickQuizControl") {
       ControlWidgetButton(action: OpenQuizIntent()) {
-        Label("Quick Quiz", systemImage: "pencil.circle.fill")
+        Label {
+          Text(WidgetL.QuickQuiz.name)
+        } icon: {
+          Image(systemName: "pencil.circle.fill")
+        }
       }
     }
-    .displayName("Quick Quiz")
-    .description("Launch the conjugation quiz.")
+    .displayName(WidgetL.QuickQuiz.name)
+    .description(WidgetL.QuickQuiz.controlDescription)
   }
 }

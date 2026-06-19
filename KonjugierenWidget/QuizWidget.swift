@@ -49,8 +49,8 @@ struct QuizWidget: Widget {
       QuizWidgetView(entry: entry)
         .containerBackground(.fill.tertiary, for: .widget)
     }
-    .configurationDisplayName("Conjugation Quiz")
-    .description("Test your German verb conjugation skills.")
+    .configurationDisplayName(WidgetL.Quiz.configDisplayName)
+    .description(WidgetL.Quiz.configDescription)
     .supportedFamilies([.systemSmall, .systemMedium])
   }
 }

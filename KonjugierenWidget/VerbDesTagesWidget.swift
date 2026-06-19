@@ -36,8 +36,8 @@ struct VerbDesTagesWidget: Widget {
       VerbDesTagesWidgetEntryView(entry: entry)
         .containerBackground(.fill.tertiary, for: .widget)
     }
-    .configurationDisplayName("Verb des Tages")
-    .description("A daily German verb with conjugations.")
+    .configurationDisplayName(WidgetL.VerbDesTages.configDisplayName)
+    .description(WidgetL.VerbDesTages.configDescription)
     .supportedFamilies([.systemSmall, .systemMedium, .systemLarge, .accessoryRectangular, .accessoryInline])
   }
 }

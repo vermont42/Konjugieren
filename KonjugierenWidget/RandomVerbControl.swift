@@ -7,10 +7,14 @@ struct RandomVerbControl: ControlWidget {
   var body: some ControlWidgetConfiguration {
     StaticControlConfiguration(kind: "RandomVerbControl") {
       ControlWidgetButton(action: OpenRandomVerbIntent()) {
-        Label("Random Verb", systemImage: "shuffle")
+        Label {
+          Text(WidgetL.RandomVerb.name)
+        } icon: {
+          Image(systemName: "shuffle")
+        }
       }
     }
-    .displayName("Random Verb")
-    .description("Open a random German verb.")
+    .displayName(WidgetL.RandomVerb.name)
+    .description(WidgetL.RandomVerb.controlDescription)
   }
 }

@@ -3002,6 +3002,40 @@
         }
       }
     },
+    "Intent.openQuizTitle" : {
+      "comment" : "Title of the shared AppIntent that opens the quiz (Quick Quiz control; shown in Shortcuts/Siri).",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quiz öffnen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Quiz"
+          }
+        }
+      }
+    },
+    "Intent.openRandomVerbTitle" : {
+      "comment" : "Title of the shared AppIntent that opens a random verb (Random Verb control; shown in Shortcuts/Siri).",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zufallsverb öffnen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Random Verb"
+          }
+        }
+      }
+    },
     "Navigation.dismiss" : {
       "localizations" : {
         "de" : {
@@ -3515,6 +3549,7 @@
       }
     },
     "Open Quiz" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {
@@ -3525,6 +3560,7 @@
       }
     },
     "Open Random Verb" : {
+      "extractionState" : "stale",
       "localizations" : {
         "de" : {
           "stringUnit" : {

@@ -3,7 +3,7 @@
 import AppIntents
 
 struct OpenRandomVerbIntent: AppIntent {
-  static let title: LocalizedStringResource = "Open Random Verb"
+  static let title = LocalizedStringResource("Intent.openRandomVerbTitle")
   static let openAppWhenRun = true
 
   func perform() async throws -> some IntentResult {

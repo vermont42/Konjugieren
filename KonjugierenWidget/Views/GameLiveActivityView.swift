@@ -11,7 +11,7 @@ struct GameLiveActivity: Widget {
     } dynamicIsland: { context in
       DynamicIsland {
         DynamicIslandExpandedRegion(.leading) {
-          Label("Wave \(context.state.wave)", systemImage: "wind")
+          Label(WidgetL.Game.wave(context.state.wave), systemImage: "wind")
             .font(.headline)
         }
         DynamicIslandExpandedRegion(.trailing) {
@@ -47,10 +47,10 @@ private struct GameLockScreenView: View {
   var body: some View {
     HStack {
       VStack(alignment: .leading, spacing: 8) {
-        Text(isGameOver ? "Game Over" : "Konjugieren")
+        Text(isGameOver ? WidgetL.Game.over : "Konjugieren")
           .font(.headline)
 
-        Text("Wave \(context.state.wave)")
+        Text(WidgetL.Game.wave(context.state.wave))
           .font(.subheadline)
           .foregroundStyle(.secondary)
       }

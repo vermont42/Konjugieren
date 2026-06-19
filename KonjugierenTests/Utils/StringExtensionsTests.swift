@@ -134,7 +134,7 @@ struct StringExtensionsTests {
   @Suite("Link Parsing")
   struct LinkParsing {
     @Test func linkParsing() {
-      let input = "%https://example.com%"
+      let input = "‡https://example.com‡"
       let blocks = input.richTextBlocks
       #expect(blocks.count == 1)
       if case .body(let segments) = blocks[0] {
@@ -147,7 +147,7 @@ struct StringExtensionsTests {
     }
 
     @Test func linkInContext() {
-      let input = "Visit %https://apple.com% for more."
+      let input = "Visit ‡https://apple.com‡ for more."
       let blocks = input.richTextBlocks
       #expect(blocks.count == 1)
       if case .body(let segments) = blocks[0] {
@@ -271,7 +271,7 @@ struct StringExtensionsTests {
     }
 
     @Test func allMarkupTypes() {
-      let input = "`Header` Visit ~Apple~ at %https://apple.com% to see $wIrd$."
+      let input = "`Header` Visit ~Apple~ at ‡https://apple.com‡ to see $wIrd$."
       let blocks = input.richTextBlocks
       #expect(blocks.count == 2)
       #expect(blocks[0] == .subheading("Header"))
@@ -298,8 +298,8 @@ struct StringExtensionsTests {
   @MainActor
   struct UnterminatedDelimiters {
     @Test("Records fatal error", arguments: zip(
-      ["`Unclosed heading", "~unclosed bold", "%https://unclosed.com", "$sAng"],
-      ["`", "~", "%", "$"]
+      ["`Unclosed heading", "~unclosed bold", "‡https://unclosed.com", "$sAng"],
+      ["`", "~", "‡", "$"]
     ))
     func unterminatedDelimiter(input: String, delimiter: String) {
       let spy = FatalErrorSpy()

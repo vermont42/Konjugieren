@@ -23,7 +23,7 @@ enum TextSegment: Hashable {
 extension String {
   static var subheadingSeparator: Character { "`" }
   static var boldSeparator: Character { "~" }
-  static var linkSeparator: Character { "%" }
+  static var linkSeparator: Character { "‡" }
   static var conjugationSeparator: Character { "$" }
   static var emojiSeparator: Character { "^" }
 
@@ -190,7 +190,7 @@ extension String {
       Current.fatalError.fatalError("Unterminated delimiter: ~")
     }
     if inLink {
-      Current.fatalError.fatalError("Unterminated delimiter: %")
+      Current.fatalError.fatalError("Unterminated delimiter: ‡")
     }
     if inConjugation {
       Current.fatalError.fatalError("Unterminated delimiter: $")

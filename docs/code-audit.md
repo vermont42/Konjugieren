@@ -389,12 +389,12 @@ Each phase is independently shippable and ordered so that earlier phases shrink 
 5. ✅ ResultsView difficulty stat (#10).
 6. ✅ `#if DEBUG` around TutorTestView access (#11).
 
-### Phase 2: Game-behavior fixes (need on-device play-testing as verification)
+### Phase 2: Game-behavior fixes (need on-device play-testing as verification) — ✅ DONE
 
-1. Bullet identity/`useRed` fix (#4): two-line change, visually verifiable in robot mode.
-2. Frame-rate-independent enemy fire (#6): retune `enemyFireChance` as a per-second rate.
-3. Mechanic-spawn first-delay flag (#7), including the snapshot field.
-4. Decide on the Game Center sign-in controller (#12).
+1. ✅ Bullet identity/`useRed` fix (#4): two-line change, visually verifiable in robot mode.
+2. ✅ Frame-rate-independent enemy fire (#6): retune `enemyFireChance` as a per-second rate.
+3. ✅ Mechanic-spawn first-delay flag (#7), including the snapshot field.
+4. ✅ Decide on the Game Center sign-in controller (#12): present the GameKit-supplied controller.
 
 ### Phase 3: Dead-code removal (zero-risk, shrinks later refactors)
 

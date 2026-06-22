@@ -248,6 +248,7 @@ struct GameStateSnapshot: Codable {
   let scoreAtWaveStart: Int
   let zigzaggerSpawnTimer: CGFloat
   let mechanicSpawnTimer: CGFloat
+  let hasSpawnedFirstMechanic: Bool
   let geisterjagdTimer: CGFloat
   let kristallkugelSpawnCount: Int
   let shieldTimer: CGFloat
@@ -337,6 +338,7 @@ class GameState {
   private var zigzaggerSpawnTimer: CGFloat = 0
   private var zigzaggerBag: [(emoji: String, sound: Sound)] = []
   private var mechanicSpawnTimer: CGFloat = 0
+  private var hasSpawnedFirstMechanic = false
   private var mechanicBag: [SpecialMechanic] = []
   private var geisterjagdTimer: CGFloat = 0
   private var kristallkugelSpawnCount: Int = 0
@@ -363,7 +365,7 @@ class GameState {
   private static let tiltThreshold: Double = 0.02
   private static let tiltSensitivity: CGFloat = 800
   private static let healthLossPerHit: CGFloat = 0.25
-  private static let enemyFireChance: Double = 0.02
+  private static let enemyFiresPerSecond: Double = 1.2
   private static let speedUpFactor: CGFloat = 0.95
   private static let sineAmplitude: CGFloat = 8
   private static let sineFrequency: Double = 2.0
@@ -489,6 +491,7 @@ class GameState {
     portalSide = nil
     activeMechanic = nil
     mechanicSpawnTimer = 0
+    hasSpawnedFirstMechanic = false
     mechanicBag = []
     fussball = nil
     wurstChains = []
@@ -570,7 +573,7 @@ class GameState {
     updateGhosts(dt: dt)
     updateDeathEffects(dt: dt)
     checkCollisions()
-    attemptEnemyFire()
+    attemptEnemyFire(dt: dt)
     updateLiveActivity(currentTime: currentTime)
     checkGameOver()
   }
@@ -664,6 +667,7 @@ class GameState {
       scoreAtWaveStart: scoreAtWaveStart,
       zigzaggerSpawnTimer: zigzaggerSpawnTimer,
       mechanicSpawnTimer: mechanicSpawnTimer,
+      hasSpawnedFirstMechanic: hasSpawnedFirstMechanic,
       geisterjagdTimer: geisterjagdTimer,
       kristallkugelSpawnCount: kristallkugelSpawnCount,
       shieldTimer: shieldTimer,
@@ -793,6 +797,7 @@ class GameState {
     scoreAtWaveStart = snapshot.scoreAtWaveStart
     zigzaggerSpawnTimer = snapshot.zigzaggerSpawnTimer
     mechanicSpawnTimer = snapshot.mechanicSpawnTimer
+    hasSpawnedFirstMechanic = snapshot.hasSpawnedFirstMechanic
     geisterjagdTimer = snapshot.geisterjagdTimer
     kristallkugelSpawnCount = snapshot.kristallkugelSpawnCount
     shieldTimer = snapshot.shieldTimer
@@ -1005,7 +1010,7 @@ class GameState {
       if bullet.y < -Self.bulletSize {
         playerBullet = nil
       } else {
-        playerBullet = Bullet(x: bullet.x, y: bullet.y, isPlayerBullet: true)
+        playerBullet = bullet
       }
     }
 
@@ -1014,7 +1019,7 @@ class GameState {
       if bullet.y > screenHeight + Self.bulletSize {
         enemyBullet = nil
       } else {
-        enemyBullet = Bullet(x: bullet.x, y: bullet.y, isPlayerBullet: false)
+        enemyBullet = bullet
       }
     }
   }
@@ -1167,12 +1172,13 @@ class GameState {
 
   private func updateSpecialMechanic(dt: CGFloat) {
     guard activeMechanic == nil else { return }
-    let threshold = mechanicBag.isEmpty && mechanicSpawnTimer == 0
-      ? Self.initialMechanicDelay
-      : Self.mechanicSpawnInterval
+    let threshold = hasSpawnedFirstMechanic
+      ? Self.mechanicSpawnInterval
+      : Self.initialMechanicDelay
     mechanicSpawnTimer += dt
     guard mechanicSpawnTimer >= threshold else { return }
     mechanicSpawnTimer = 0
+    hasSpawnedFirstMechanic = true
     if mechanicBag.isEmpty {
       mechanicBag = SpecialMechanic.allCases.shuffled()
     }
@@ -2023,12 +2029,12 @@ class GameState {
       && ay + aHalf > by - bHalf
   }
 
-  private func attemptEnemyFire() {
+  private func attemptEnemyFire(dt: CGFloat) {
     guard enemyBullet == nil else { return }
     let aliveEnemies = enemies.filter { $0.isAlive && !$0.isDiving }
     guard !aliveEnemies.isEmpty else { return }
 
-    if Double.random(in: 0...1) < Self.enemyFireChance {
+    if Double.random(in: 0...1) < Self.enemyFiresPerSecond * Double(dt) {
       let shooter = aliveEnemies.randomElement() ?? aliveEnemies[0]
       enemyBullet = Bullet(x: shooter.x, y: shooter.y + Self.enemySize / 2, isPlayerBullet: false)
       Current.soundPlayer.play(.chime, shouldDebounce: false)

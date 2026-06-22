@@ -40,7 +40,15 @@ Konjugieren/
 │   ├── ExampleSentence.swift   # Lazy-loading literary example sentence lookup by infinitive
 │   ├── ExampleSentences.json   # Bundled literary example sentences keyed by language and infinitive
 │   ├── Family.swift            # Verb families (strong/weak/mixed/ieren)
-│   ├── GameState.swift         # Enemy and Bullet structures for game mechanics
+│   ├── Game/
+│   │   ├── GameModels.swift            # Entity structs/enums (Enemy, Bullet, Ghost, RobotBrain, etc.)
+│   │   ├── GameSnapshot.swift          # GameStateSnapshot + SavedGame persistence
+│   │   ├── GameState.swift             # @Observable core loop: player, enemies, bullets, waves, life cycle
+│   │   ├── GameState+Bratwurstkette.swift  # Wurst-chain mechanic (spawn/update + pretzel obstacles)
+│   │   ├── GameState+Collisions.swift  # checkCollisions decomposed into per-pair named methods
+│   │   ├── GameState+Fussball.swift    # Bouncing-football mechanic (spawn/update)
+│   │   ├── GameState+Geisterstunde.swift  # Ghost-hunt mechanic (spawn/update)
+│   │   └── GameState+Robot.swift       # Robot brain/minion mechanic (spawn/update)
 │   ├── Info.swift              # Info article model with rich text and images
 │   ├── InfoMedia.swift         # Enum: .photo or .sfSymbol media for Info rows
 │   ├── KonjugierenTips.swift   # TipKit tips (e.g., change-difficulty hint)

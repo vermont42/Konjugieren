@@ -412,12 +412,12 @@ Each phase is independently shippable and ordered so that earlier phases shrink 
 6. ✅ Settings `restore` overloads plus the CLAUDE.md recipe update (#36): added `Bool`, `Int`, and `Date?` overloads.
 7. ✅ Audio-layer robustness nits (#15).
 
-### Phase 5: GameState restructuring (largest single change; do alone on a clean tree)
+### Phase 5: GameState restructuring (largest single change; do alone on a clean tree) — ✅ DONE
 
-1. Split GameState.swift into the file layout sketched in #31.
-2. Extract `resetWaveState()`, `spawnEnemyGrid()`, `loseGame()` (#16).
-3. Decompose `checkCollisions()` into named methods; remove `MARK` and numbered comments (#31).
-4. Consider the GameView `onChange`-driven tick (#34) while the game files are open.
+1. ✅ Split GameState.swift into the file layout sketched in #31: `Models/Game/` now holds `GameModels.swift` (entity structs/enums), `GameSnapshot.swift` (`GameStateSnapshot` + `SavedGame`), the core `GameState.swift`, and four per-mechanic extensions (`GameState+Robot.swift`, `GameState+Geisterstunde.swift`, `GameState+Bratwurstkette.swift`, `GameState+Fussball.swift`), plus `GameState+Collisions.swift`. (Because Swift `private` is file-scoped, the stored properties and static constants the extensions reach had to relax from `private` to internal; the genuinely core-only infrastructure — `motionManager`, `lastUpdateTime`, `liveActivity`, the wave/bag/timer scratch state — stayed `private`.)
+2. ✅ Extract `resetWaveState()`, `spawnEnemyGrid()`, `loseGame()` (#16): `startGame` and `startNextWave` now share `resetWaveState()` (the common transient-state reset) and `spawnEnemyGrid()`, each adding only its own specifics; `checkGameOver`'s two byte-identical lose blocks collapsed to `loseGame()`.
+3. ✅ Decompose `checkCollisions()` into named methods; remove `MARK` and numbered comments (#31): the 24 numbered blocks became 24 `collide…`/`collect…` methods called in order from `checkCollisions()`, so collision ordering stays visible in one place. The `// MARK: - Private` and numbered comments are gone.
+4. ✅ GameView `onChange`-driven tick (#34): `gameState.update(currentTime:)` moved out of the `TimelineView` body into `.onChange(of: timeline.date)`, leaving the render closure pure.
 
 ### Phase 6: Mechanical naming and identity sweep (large diff, no logic; isolate in its own commit)
 

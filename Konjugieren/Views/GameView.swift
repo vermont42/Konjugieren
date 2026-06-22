@@ -10,8 +10,6 @@ struct GameView: View {
   var body: some View {
     GeometryReader { geometry in
       TimelineView(.animation) { timeline in
-        let _ = gameState.update(currentTime: timeline.date)
-
         ZStack {
           Color.black.ignoresSafeArea()
 
@@ -227,6 +225,9 @@ struct GameView: View {
           } else if gameState.phase == .lost && gameState.canRestart {
             gameState.restartGame()
           }
+        }
+        .onChange(of: timeline.date) { _, newDate in
+          gameState.update(currentTime: newDate)
         }
       }
       .onAppear {

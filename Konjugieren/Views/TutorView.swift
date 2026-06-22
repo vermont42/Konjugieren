@@ -8,7 +8,9 @@ struct TutorView: View {
   @State private var isGenerating = false
   @State private var recommendation: PracticeRecommendation?
   @State private var isLoadingRecommendation = false
+#if DEBUG
   @State private var showingTests = false
+#endif
   @State private var showingRecommendations = false
   @State private var showingSampleQueries = false
   @State private var showingHint = true
@@ -118,16 +120,23 @@ struct TutorView: View {
     .navigationBarTitleDisplayMode(.inline)
     .toolbar {
       ToolbarItem(placement: .principal) {
+#if DEBUG
         Text(L.Tutor.heading)
           .font(.headline)
           .onTapGesture(count: 3) {
             showingTests = true
           }
+#else
+        Text(L.Tutor.heading)
+          .font(.headline)
+#endif
       }
     }
+#if DEBUG
     .sheet(isPresented: $showingTests) {
       TutorTestView()
     }
+#endif
     .sheet(isPresented: $showingRecommendations) {
       recommendationsSheet
     }

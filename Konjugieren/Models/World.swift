@@ -117,7 +117,7 @@ class World {
     case URL.infoHost:
       if
         let infoIndex = Int(url.pathComponents[1]),
-        infoIndex < Info.infos.count
+        Info.infos.indices.contains(infoIndex)
       {
         info = Info.infos[infoIndex]
       }

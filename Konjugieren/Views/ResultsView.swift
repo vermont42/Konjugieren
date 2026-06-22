@@ -39,7 +39,7 @@ struct ResultsView: View {
           HStack(spacing: Layout.doubleDefaultSpacing) {
             Text(label: L.Quiz.correct, value: "\(quiz.correctCount) / \(Quiz.questionCount)")
               .font(.caption.monospacedDigit())
-            Text(label: quiz.difficultyText, value: L.Quiz.difficulty)
+            Text(label: L.Quiz.difficulty, value: quiz.difficultyText)
               .font(.caption)
             Text(label: L.Quiz.time, value: TimeFormatter.formatIntTime(quiz.elapsedSeconds))
               .font(.caption.monospacedDigit())

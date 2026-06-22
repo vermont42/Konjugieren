@@ -380,14 +380,14 @@ The Conjugator suite is exemplary in breadth (about 1,000 lines across all conju
 
 Each phase is independently shippable and ordered so that earlier phases shrink the surface area of later ones. Within a phase, items are independent unless noted.
 
-### Phase 1: User-facing bug fixes (small, high value, patch-release material)
+### Phase 1: User-facing bug fixes (small, high value, patch-release material) — ✅ DONE
 
-1. Deeplink negative-index crash (#1): one-line guard change plus a `DeeplinkTests` case.
-2. Accessory-widget "sie" filter (#2).
-3. Hardcoded English VoiceOver announcements (#3): a Localizable.xcstrings addition.
-4. Widget staleness on conjugationgroup-language change (#5), widget duplicate wrong answers (#8), and `questionID` date (#9): one `WidgetSnapshotWriter`/`KonjugierenApp` pass.
-5. ResultsView difficulty stat (#10).
-6. `#if DEBUG` around TutorTestView access (#11).
+1. ✅ Deeplink negative-index crash (#1): one-line guard change plus a `DeeplinkTests` case.
+2. ✅ Accessory-widget "sie" filter (#2).
+3. ✅ Hardcoded English VoiceOver announcements (#3): a Localizable.xcstrings addition.
+4. ✅ Widget staleness on conjugationgroup-language change (#5), widget duplicate wrong answers (#8), and `questionID` date (#9): one `WidgetSnapshotWriter`/`KonjugierenApp` pass.
+5. ✅ ResultsView difficulty stat (#10).
+6. ✅ `#if DEBUG` around TutorTestView access (#11).
 
 ### Phase 2: Game-behavior fixes (need on-device play-testing as verification)
 

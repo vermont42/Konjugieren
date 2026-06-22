@@ -17,6 +17,12 @@ struct WidgetSnapshot: Codable, Equatable {
   let quizQuestion: WidgetQuizQuestion
   let dateString: String
   let debugOffset: Int
+
+  // präsensParadigm is written in PersonNumber.allCases order (fs/ss/ts/fp/sp/tp),
+  // so the third-person-singular row is always at index 2.
+  var thirdSingularConjugation: WidgetConjugation? {
+    präsensParadigm.indices.contains(2) ? präsensParadigm[2] : nil
+  }
 }
 
 struct WidgetConjugation: Codable, Equatable {

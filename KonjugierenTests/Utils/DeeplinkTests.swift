@@ -60,6 +60,12 @@ struct DeeplinkTests {
     #expect(Current.info == nil)
   }
 
+  @Test func handleURLInfoDeeplinkNegativeIndex() {
+    let url = URL(string: "konjugieren://info/-1")!
+    Current.handleURL(url)
+    #expect(Current.info == nil)
+  }
+
   @Test func handleURLFamilyDeeplink() {
     let url = URL(string: "konjugieren://family/strong")!
     Current.handleURL(url)

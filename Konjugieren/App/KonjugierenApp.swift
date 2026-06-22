@@ -66,6 +66,10 @@ struct KonjugierenApp: App {
           WidgetSnapshotWriter.writeSnapshot()
           WidgetCenter.shared.reloadAllTimelines()
         }
+        .onChange(of: Current.settings.conjugationgroupLang) {
+          WidgetSnapshotWriter.writeSnapshot()
+          WidgetCenter.shared.reloadAllTimelines()
+        }
     }
   }
 

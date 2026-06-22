@@ -651,6 +651,14 @@ enum L {
     static var time: String {
       String(localized: "Quiz.time")
     }
+
+    static var announceCorrect: String {
+      String(localized: "Quiz.announceCorrect")
+    }
+
+    static var announceIncorrect: String {
+      String(localized: "Quiz.announceIncorrect")
+    }
   }
 
   enum ImageInfo {

@@ -394,12 +394,12 @@ class Quiz {
     guard UIAccessibility.isVoiceOverRunning else { return }
     let announcement: String
     if correct {
-      announcement = "Correct"
+      announcement = L.Quiz.announceCorrect
     } else if let correctAnswer {
       let label = MixedCaseAccessibility.accessibilityLabel(for: correctAnswer)
-      announcement = "Incorrect. \(label)"
+      announcement = "\(L.Quiz.announceIncorrect) \(label)"
     } else {
-      announcement = "Incorrect"
+      announcement = L.Quiz.announceIncorrect
     }
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
       UIAccessibility.post(notification: .announcement, argument: announcement)

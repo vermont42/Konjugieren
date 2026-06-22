@@ -144,7 +144,7 @@ enum WidgetSnapshotWriter {
       pronoun: pronoun,
       correctAnswer: correctAnswer.lowercased(),
       wrongAnswers: wrongAnswers,
-      questionID: "\(dateString(for: Date()))-\(verb.infinitiv)"
+      questionID: "\(dateString(for: date))-\(verb.infinitiv)"
     )
   }
 
@@ -195,7 +195,7 @@ enum WidgetSnapshotWriter {
       if case .success(let form) = fallback, form.lowercased() != correctAnswer.lowercased(), !candidates.contains(form.lowercased()) {
         candidates.append(form.lowercased())
       } else {
-        candidates.append(correctAnswer.lowercased() + "x")
+        candidates.append(correctAnswer.lowercased() + String(repeating: "x", count: 3 - candidates.count))
       }
     }
 

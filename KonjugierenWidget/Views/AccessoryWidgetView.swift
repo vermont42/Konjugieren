@@ -14,7 +14,7 @@ struct AccessoryRectangularView: View {
       Text(snapshot.translation)
         .font(.caption)
         .lineLimit(1)
-      if let thirdPerson = snapshot.präsensParadigm.first(where: { $0.pronoun != "ich" && $0.pronoun != "du" && $0.pronoun != "wir" && $0.pronoun != "ihr" && $0.pronoun != "sie" }) {
+      if let thirdPerson = snapshot.thirdSingularConjugation {
         Text("\(thirdPerson.pronoun) \(thirdPerson.mixedCaseForm.lowercased())")
           .font(.caption2)
       }

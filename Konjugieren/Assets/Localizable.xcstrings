@@ -4058,13 +4058,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Schwierigkeit"
+            "value" : "Schwierigkeit:"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Difficulty"
+            "value" : "Difficulty:"
           }
         }
       }
@@ -4193,6 +4193,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Start"
+          }
+        }
+      }
+    },
+    "Quiz.announceCorrect" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Richtig"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Correct"
+          }
+        }
+      }
+    },
+    "Quiz.announceIncorrect" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Falsch."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Incorrect."
           }
         }
       }

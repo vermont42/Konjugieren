@@ -108,30 +108,12 @@ enum WidgetSnapshotWriter {
     case .präsensIndicativ(let pn), .perfektIndikativ(let pn), .futurIndikativ(let pn):
       pronoun = pn.pronounWithSieDisambiguation
     case .imperativ(let pn):
-      switch pn {
-      case .secondSingular:
-        pronoun = "du"
-      case .secondPlural:
-        pronoun = "ihr"
-      case .firstPlural:
-        pronoun = "wir"
-      case .thirdPlural:
-        pronoun = "Sie"
-      default:
-        pronoun = nil
-      }
+      pronoun = pn.imperativPronoun
     default:
       pronoun = nil
     }
 
-    let lang = Current.settings.conjugationgroupLang
-    let displayName: String
-    switch lang {
-    case .german:
-      displayName = conjugationgroup.germanDisplayName
-    case .english:
-      displayName = conjugationgroup.englishDisplayName
-    }
+    let displayName = conjugationgroup.displayName(lang: Current.settings.conjugationgroupLang)
 
     return WidgetQuizQuestion(
       infinitiv: verb.infinitiv,

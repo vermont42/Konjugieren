@@ -71,6 +71,12 @@ class World {
 
   static let viewVerbActivityType = "biz.joshadams.Konjugieren.viewVerb"
 
+  private func clearDeeplinkTargets() {
+    verb = nil
+    family = nil
+    info = nil
+  }
+
   func handleUserActivity(_ userActivity: NSUserActivity) {
     guard
       userActivity.activityType == Self.viewVerbActivityType,
@@ -78,9 +84,7 @@ class World {
     else {
       return
     }
-    verb = nil
-    family = nil
-    info = nil
+    clearDeeplinkTargets()
     verb = Verb.verbs[infinitiv]
     if verb != nil {
       selectedTab = .verbs
@@ -95,9 +99,7 @@ class World {
       return
     }
 
-    verb = nil
-    family = nil
-    info = nil
+    clearDeeplinkTargets()
 
     switch url.host {
     case URL.verbHost:

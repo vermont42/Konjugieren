@@ -63,19 +63,17 @@ class Quiz {
   func start() {
     difficultyUsed = Current.settings.quizDifficulty
     questions = generateQuestions()
-    currentIndex = 0
-    score = 0
-    correctCount = 0
-    elapsedSeconds = 0
-    lastIncorrectAnswer = nil
-    lastCorrectAnswer = nil
-    lastErrorContext = nil
+    resetProgressState()
     isInProgress = true
     shouldShowResults = false
     startTimer()
-    liveActivity = LiveActivityManager.startQuizActivity(
+    let attributes = QuizActivityAttributes(
       difficulty: difficultyUsed.localizedQuizDifficulty,
       totalQuestions: Quiz.questionCount
+    )
+    liveActivity = LiveActivityManager.start(
+      attributes: attributes,
+      initialState: makeContentState(isFinished: false)
     )
     Current.soundPlayer.play(Sound.randomGun)
     HapticPlayer.playMediumImpact()
@@ -134,14 +132,7 @@ class Quiz {
     currentIndex += 1
 
     if let liveActivity {
-      let state = QuizActivityAttributes.ContentState(
-        currentQuestion: min(currentIndex + 1, Quiz.questionCount),
-        score: score,
-        correctCount: correctCount,
-        elapsedTime: elapsedTimeLiveActivity,
-        isFinished: false
-      )
-      LiveActivityManager.updateQuizActivity(liveActivity, state: state)
+      LiveActivityManager.update(liveActivity, state: makeContentState(isFinished: false))
     }
 
     if currentIndex >= Quiz.questionCount {
@@ -156,16 +147,19 @@ class Quiz {
     stopTimer()
     isInProgress = false
     if let liveActivity {
-      let finalState = QuizActivityAttributes.ContentState(
-        currentQuestion: currentIndex + 1,
-        score: score,
-        correctCount: correctCount,
-        elapsedTime: elapsedTimeLiveActivity,
-        isFinished: false
-      )
-      LiveActivityManager.endQuizActivity(liveActivity, finalState: finalState)
+      LiveActivityManager.end(liveActivity, finalState: makeContentState(isFinished: false))
       self.liveActivity = nil
     }
+    resetProgressState()
+    questions = []
+    Current.soundPlayer.play(Sound.randomSadTrombone)
+    Current.analytics.signal(name: .quitQuiz, parameters: [
+      ParameterKey.difficulty.rawValue: "\(difficultyUsed)",
+      ParameterKey.questionNumber.rawValue: "\(questionNumber)"
+    ])
+  }
+
+  private func resetProgressState() {
     currentIndex = 0
     score = 0
     correctCount = 0
@@ -173,12 +167,6 @@ class Quiz {
     lastIncorrectAnswer = nil
     lastCorrectAnswer = nil
     lastErrorContext = nil
-    questions = []
-    Current.soundPlayer.play(Sound.randomSadTrombone)
-    Current.analytics.signal(name: .quitQuiz, parameters: [
-      ParameterKey.difficulty.rawValue: "\(difficultyUsed)",
-      ParameterKey.questionNumber.rawValue: "\(questionNumber)"
-    ])
   }
 
   private func generateQuestions() -> [QuizItem] {
@@ -325,14 +313,17 @@ class Quiz {
 
   private func updateLiveActivityTime() {
     guard let liveActivity else { return }
-    let state = QuizActivityAttributes.ContentState(
+    LiveActivityManager.update(liveActivity, state: makeContentState(isFinished: false))
+  }
+
+  private func makeContentState(isFinished: Bool) -> QuizActivityAttributes.ContentState {
+    QuizActivityAttributes.ContentState(
       currentQuestion: min(currentIndex + 1, Quiz.questionCount),
       score: score,
       correctCount: correctCount,
       elapsedTime: elapsedTimeLiveActivity,
-      isFinished: false
+      isFinished: isFinished
     )
-    LiveActivityManager.updateQuizActivity(liveActivity, state: state)
   }
 
   private func stopTimer() {
@@ -356,14 +347,7 @@ class Quiz {
     isInProgress = false
     shouldShowResults = true
     if let liveActivity {
-      let finalState = QuizActivityAttributes.ContentState(
-        currentQuestion: Quiz.questionCount,
-        score: score,
-        correctCount: correctCount,
-        elapsedTime: elapsedTimeLiveActivity,
-        isFinished: true
-      )
-      LiveActivityManager.endQuizActivity(liveActivity, finalState: finalState)
+      LiveActivityManager.end(liveActivity, finalState: makeContentState(isFinished: true))
       self.liveActivity = nil
     }
     Current.soundPlayer.play(Sound.randomApplause, shouldDebounce: false)
@@ -450,27 +434,11 @@ struct QuizItem: Identifiable {
          .futurIndikativ(let pn), .futurKonjunktivI(let pn), .futurKonjunktivII(let pn):
       return pn.pronounWithSieDisambiguation
     case .imperativ(let pn):
-      switch pn {
-      case .secondSingular:
-        return "du"
-      case .secondPlural:
-        return "ihr"
-      case .firstPlural:
-        return "wir"
-      case .thirdPlural:
-        return "Sie"
-      default:
-        return nil
-      }
+      return pn.imperativPronoun
     }
   }
 
   func displayName(lang: ConjugationgroupLang) -> String {
-    switch lang {
-    case .german:
-      return conjugationgroup.germanDisplayName
-    case .english:
-      return conjugationgroup.englishDisplayName
-    }
+    conjugationgroup.displayName(lang: lang)
   }
 }

@@ -85,6 +85,15 @@ enum Conjugationgroup: Hashable {
     }
   }
 
+  func displayName(lang: ConjugationgroupLang) -> String {
+    switch lang {
+    case .german:
+      return germanDisplayName
+    case .english:
+      return englishDisplayName
+    }
+  }
+
   func ending(family: Family) -> String {
     switch self {
     case .präsensIndicativ(let personNumber):

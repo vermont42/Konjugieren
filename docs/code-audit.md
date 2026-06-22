@@ -402,15 +402,15 @@ Each phase is independently shippable and ordered so that earlier phases shrink 
 2. ✅ Prune unused `WidgetSnapshot` fields (#29): removed `frequency`, `exampleEnglish`, `dateString`, `debugOffset` from the struct, the writer, and the reader placeholder. (The function-parameter `debugOffset` and the static `dateString(for:)` helper, both still used, are unaffected.)
 3. ✅ Fold in the one-liners (#40) and the VerbParser message fix plus duplicate-key hardening (#14).
 
-### Phase 4: Consolidation refactors (DRY; behavior-preserving; run the full test suite between items)
+### Phase 4: Consolidation refactors (DRY; behavior-preserving; run the full test suite between items) — ✅ DONE
 
-1. `Conjugationgroup.displayName(lang:)` (#17) and `PersonNumber.imperativPronoun` (#18): these two remove the most widespread logic duplication.
-2. `GetterSetter` Codable helpers (#19).
-3. Generic `LiveActivityManager` plus `Quiz.makeContentState` (#20).
-4. Shared mixed-case segmentation for app and widget (#21).
-5. SettingsView and QuizView view-helper extractions (#22, #23), `HapticPlayer.playImpact` (#24), `World.clearDeeplinkTargets` (#25), Quiz reset dedupe (#16, Quiz portion).
-6. Settings `restore` overloads plus the CLAUDE.md recipe update (#36).
-7. Audio-layer robustness nits (#15).
+1. ✅ `Conjugationgroup.displayName(lang:)` (#17) and `PersonNumber.imperativPronoun` (#18): these two remove the most widespread logic duplication. (`imperativPronoun` collapsed the `QuizItem.pronoun` and `WidgetSnapshotWriter` switches; `VerbView.imperativConjugations` was deliberately left alone because it maps `firstPlural`/`thirdPlural` to a nil pronoun, not "wir"/"Sie".)
+2. ✅ `GetterSetter` Codable helpers (#19): `setCodable`/`getCodable` now back `SavedGame`, `QuizErrorHistory`, and `TutorChatHistory`.
+3. ✅ Generic `LiveActivityManager` plus `Quiz.makeContentState` (#20): `start`/`update`/`end` are generic over `ActivityAttributes`; the five quiz `ContentState` constructions collapse to `makeContentState(isFinished:)`.
+4. ✅ Shared mixed-case segmentation for app and widget (#21): the state machine moved to `Shared/MixedCaseSegmenter.swift`; per-target color application stayed thin. (Moving the colors themselves into a shared asset catalog — the audit's secondary suggestion — was deferred to avoid changing the widget's rendered color values.)
+5. ✅ SettingsView and QuizView view-helper extractions (#22, #23), `HapticPlayer.playImpact` (#24), `World.clearDeeplinkTargets` (#25), Quiz reset dedupe (#16, Quiz portion).
+6. ✅ Settings `restore` overloads plus the CLAUDE.md recipe update (#36): added `Bool`, `Int`, and `Date?` overloads.
+7. ✅ Audio-layer robustness nits (#15).
 
 ### Phase 5: GameState restructuring (largest single change; do alone on a clean tree)
 

@@ -38,7 +38,7 @@ class SoundPlayerReal: SoundPlayer {
       player.currentTime = saved
       savedMusicTime = nil
     } else {
-      player.currentTime = TimeInterval.random(in: 0..<player.duration)
+      player.currentTime = player.duration > 0 ? TimeInterval.random(in: 0..<player.duration) : 0
     }
     player.volume = 0
     player.play()
@@ -59,7 +59,11 @@ class SoundPlayerReal: SoundPlayer {
 
     if sounds[sound.rawValue] == nil {
       if let audioURL = Bundle.main.url(forResource: sound.rawValue, withExtension: soundExtension) {
-        try? sounds[sound.rawValue] = AVAudioPlayer.init(contentsOf: audioURL)
+        do {
+          sounds[sound.rawValue] = try AVAudioPlayer(contentsOf: audioURL)
+        } catch {
+          soundLogger.warning("Failed to load sound \(sound.rawValue): \(error.localizedDescription)")
+        }
       }
     }
 

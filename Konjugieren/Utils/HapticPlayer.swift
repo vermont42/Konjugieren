@@ -14,7 +14,11 @@ enum HapticPlayer {
   }
 
   static func playMediumImpact() {
+    playImpact(.medium)
+  }
+
+  static func playImpact(_ style: UIImpactFeedbackGenerator.FeedbackStyle) {
     guard Current.settings.audioFeedback == .enable else { return }
-    UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+    UIImpactFeedbackGenerator(style: style).impactOccurred()
   }
 }

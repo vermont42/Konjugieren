@@ -147,6 +147,7 @@ KonjugierenWidget/
 
 Shared/
 ├── GameActivityAttributes.swift    # ActivityKit model for game live activity
+├── MixedCaseSegmenter.swift        # Pure ablaut segmentation shared by app and widget highlighting
 ├── OpenQuizIntent.swift            # Shared intent to open quiz via deeplink
 ├── OpenRandomVerbIntent.swift      # Shared intent to open random verb via deeplink
 ├── QuizActivityAttributes.swift    # ActivityKit model for quiz live activity

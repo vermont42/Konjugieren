@@ -8,12 +8,7 @@ struct VerbView: View {
   private var settings: Settings { Current.settings }
 
   private func displayName(for group: Conjugationgroup) -> String {
-    switch settings.conjugationgroupLang {
-    case .german:
-      return group.germanDisplayName
-    case .english:
-      return group.englishDisplayName
-    }
+    group.displayName(lang: settings.conjugationgroupLang)
   }
 
   private var titleIsGerman: Bool {

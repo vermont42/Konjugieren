@@ -145,84 +145,57 @@ struct SettingsView: View {
             settingsCard {
               VStack(spacing: Layout.doubleDefaultSpacing) {
                 if Current.gameCenter.isAuthenticated {
-                  Button {
+                  settingsAction(
+                    title: L.GameCenter.viewLeaderboard,
+                    systemImage: "trophy.fill",
+                    description: L.GameCenter.viewLeaderboardDescription,
+                    accessibilityHint: L.Accessibility.leaderboardHint
+                  ) {
                     Current.gameCenter.showLeaderboard()
                     Current.analytics.signal(name: .tapViewLeaderboard)
-                  } label: {
-                    Label(L.GameCenter.viewLeaderboard, systemImage: "trophy.fill")
                   }
-                  .funButton()
-                  .frame(maxWidth: .infinity)
-                  .accessibilityHint(L.Accessibility.leaderboardHint)
-
-                  Text(L.GameCenter.viewLeaderboardDescription)
-                    .font(.callout)
-                    .foregroundStyle(.customForeground)
-                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
 
-                Button {
+                settingsAction(
+                  title: L.Onboarding.showOnboarding,
+                  systemImage: "questionmark.circle.fill",
+                  description: L.Onboarding.showOnboardingDescription,
+                  accessibilityHint: L.Accessibility.showOnboardingHint
+                ) {
                   showingOnboarding = true
                   Current.analytics.signal(name: .tapShowOnboarding)
-                } label: {
-                  Label(L.Onboarding.showOnboarding, systemImage: "questionmark.circle.fill")
                 }
-                .funButton()
-                .frame(maxWidth: .infinity)
-                .accessibilityHint(L.Accessibility.showOnboardingHint)
 
-                Text(L.Onboarding.showOnboardingDescription)
-                  .font(.callout)
-                  .foregroundStyle(.customForeground)
-                  .frame(maxWidth: .infinity, alignment: .leading)
-
-                Button {
+                settingsAction(
+                  title: L.Game.playGame,
+                  systemImage: "gamecontroller.fill",
+                  description: playGameDescription,
+                  tip: playGameTip
+                ) {
                   showingGame = true
                   playGameTip.invalidate(reason: .actionPerformed)
                   Current.analytics.signal(name: .tapPlayGame)
-                } label: {
-                  Label(L.Game.playGame, systemImage: "gamecontroller.fill")
                 }
-                .funButton()
-                .frame(maxWidth: .infinity)
-                .popoverTip(playGameTip)
-
-                Text(playGameDescription)
-                  .font(.callout)
-                  .foregroundStyle(.customForeground)
-                  .frame(maxWidth: .infinity, alignment: .leading)
 
                 if Current.languageModelService.isAvailable, hasChatHistory {
-                  Button {
+                  settingsAction(
+                    title: L.Tutor.deleteChatHistory,
+                    systemImage: "trash",
+                    description: L.Tutor.deleteChatHistoryDescription
+                  ) {
                     TutorChatHistory.clear(getterSetter: Current.getterSetter)
                     hasChatHistory = false
                     Current.analytics.signal(name: .tapDeleteChatHistory)
-                  } label: {
-                    Label(L.Tutor.deleteChatHistory, systemImage: "trash")
                   }
-                  .funButton()
-                  .frame(maxWidth: .infinity)
-
-                  Text(L.Tutor.deleteChatHistoryDescription)
-                    .font(.callout)
-                    .foregroundStyle(.customForeground)
-                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
 
-                Button {
+                settingsAction(
+                  title: L.Settings.rateOrReview,
+                  systemImage: "star.fill",
+                  description: rateReviewDescription
+                ) {
                   UIApplication.shared.open(RatingsFetcher.reviewURL)
                   Current.analytics.signal(name: .tapRateOrReview)
-                } label: {
-                  Label(L.Settings.rateOrReview, systemImage: "star.fill")
-                }
-                .funButton()
-                .frame(maxWidth: .infinity)
-
-                if !rateReviewDescription.isEmpty {
-                  Text(rateReviewDescription)
-                    .font(.callout)
-                    .foregroundStyle(.customForeground)
-                    .frame(maxWidth: .infinity, alignment: .leading)
                 }
               }
             }
@@ -267,17 +240,14 @@ struct SettingsView: View {
     @ViewBuilder picker: () -> Picker
   ) -> some View {
     VStack(alignment: .leading, spacing: Layout.defaultSpacing) {
+      let styledHeading = Text(heading)
+        .font(.title3.bold())
+        .foregroundStyle(.customYellow)
+        .accessibilityAddTraits(.isHeader)
       if let tip {
-        Text(heading)
-          .font(.title3.bold())
-          .foregroundStyle(.customYellow)
-          .accessibilityAddTraits(.isHeader)
-          .popoverTip(tip)
+        styledHeading.popoverTip(tip)
       } else {
-        Text(heading)
-          .font(.title3.bold())
-          .foregroundStyle(.customYellow)
-          .accessibilityAddTraits(.isHeader)
+        styledHeading
       }
 
       picker()
@@ -285,6 +255,43 @@ struct SettingsView: View {
       Text(description)
         .font(.callout)
         .foregroundStyle(.customForeground)
+    }
+  }
+
+  @ViewBuilder
+  private func settingsAction(
+    title: String,
+    systemImage: String,
+    description: String,
+    accessibilityHint: String? = nil,
+    tip: (any Tip)? = nil,
+    action: @escaping () -> Void
+  ) -> some View {
+    Button(action: action) {
+      Label(title, systemImage: systemImage)
+    }
+    .funButton()
+    .frame(maxWidth: .infinity)
+    .settingsActionDecoration(hint: accessibilityHint, tip: tip)
+
+    if !description.isEmpty {
+      Text(description)
+        .font(.callout)
+        .foregroundStyle(.customForeground)
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+  }
+}
+
+private extension View {
+  @ViewBuilder
+  func settingsActionDecoration(hint: String?, tip: (any Tip)?) -> some View {
+    if let hint {
+      accessibilityHint(hint)
+    } else if let tip {
+      popoverTip(tip)
+    } else {
+      self
     }
   }
 }

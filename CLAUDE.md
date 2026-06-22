@@ -423,13 +423,17 @@ var mySetting: MySetting = mySettingDefault {
 static let mySettingKey = "mySetting"
 static let mySettingDefault: MySetting = .optionA
 
-// In init(), add:
-if let mySettingString = getterSetter.get(key: Settings.mySettingKey) {
-  mySetting = MySetting(rawValue: mySettingString) ?? Settings.mySettingDefault
-} else {
-  getterSetter.set(key: Settings.mySettingKey, value: "\(mySetting)")
-}
+// In init(), add one line — the generic `restore` overload handles the
+// load-or-seed dance for any `RawRepresentable` (String raw value) setting:
+mySetting = restore(key: Settings.mySettingKey, default: Settings.mySettingDefault)
 ```
+
+`restore` is overloaded for the common storage shapes, so the same one-line call works for non-enum settings too:
+
+- `RawRepresentable` (String raw value) — enums like `MySetting` above.
+- `Bool` — e.g. `hasSeenOnboarding`.
+- `Int` — e.g. `gameHighScore`, `promptActionCount`.
+- `Date?` — `restore(key:)` (no default; returns `nil` and writes nothing when absent), e.g. `lastReviewPromptDate`.
 
 3. **Add localization strings** to `L.swift` and `Localizable.xcstrings`
 

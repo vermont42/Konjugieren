@@ -101,20 +101,14 @@ struct QuizView: View {
           .englishPronunciation()
 
         if let pronoun = question.pronoun {
-          HStack(alignment: .top, spacing: 0) {
-            Text(L.Quiz.pronoun + " ")
-              .foregroundStyle(.customYellow)
-              .fixedSize(horizontal: true, vertical: false)
+          labeledRow(L.Quiz.pronoun) {
             Text(verbatim: pronoun)
               .foregroundStyle(.customForeground)
               .germanPronunciation()
           }
         }
 
-        HStack(alignment: .top, spacing: 0) {
-          Text(L.Quiz.conjugationgroup + " ")
-            .foregroundStyle(.customYellow)
-            .fixedSize(horizontal: true, vertical: false)
+        labeledRow(L.Quiz.conjugationgroup) {
           Text(verbatim: question.displayName(lang: settings.conjugationgroupLang))
             .foregroundStyle(.customForeground)
             .fixedSize(horizontal: false, vertical: true)
@@ -141,19 +135,13 @@ struct QuizView: View {
         }
 
         if let lastIncorrect = quiz.lastIncorrectAnswer, let lastCorrect = quiz.lastCorrectAnswer {
-          HStack(alignment: .top, spacing: 0) {
-            Text(L.Quiz.lastAnswer + " ")
-              .foregroundStyle(.customYellow)
-              .fixedSize(horizontal: true, vertical: false)
+          labeledRow(L.Quiz.lastAnswer) {
             Text(verbatim: lastIncorrect)
               .foregroundStyle(.customRed)
               .germanPronunciation()
           }
 
-          HStack(alignment: .top, spacing: 0) {
-            Text(L.Quiz.correctAnswer + " ")
-              .foregroundStyle(.customYellow)
-              .fixedSize(horizontal: true, vertical: false)
+          labeledRow(L.Quiz.correctAnswer) {
             Text(mixedCaseString: lastCorrect)
               .germanPronunciation()
               .accessibilityLabel(Text(verbatim: MixedCaseAccessibility.accessibilityLabel(for: lastCorrect)))
@@ -254,6 +242,15 @@ struct QuizView: View {
     }
   }
 
+  @ViewBuilder
+  private func labeledRow<Value: View>(_ label: String, @ViewBuilder value: () -> Value) -> some View {
+    HStack(alignment: .top, spacing: 0) {
+      Text(label + " ")
+        .foregroundStyle(.customYellow)
+        .fixedSize(horizontal: true, vertical: false)
+      value()
+    }
+  }
 }
 
 private extension QuizItem.State {

@@ -7,15 +7,11 @@ enum TutorChatHistory {
   static let maxMessages = 200
 
   static func save(_ messages: [TutorMessage], getterSetter: GetterSetter) {
-    guard let data = try? JSONEncoder().encode(messages),
-          let jsonString = String(data: data, encoding: .utf8) else { return }
-    getterSetter.set(key: storageKey, value: jsonString)
+    getterSetter.setCodable(key: storageKey, value: messages)
   }
 
   static func load(getterSetter: GetterSetter) -> [TutorMessage] {
-    guard let jsonString = getterSetter.get(key: storageKey),
-          let data = jsonString.data(using: .utf8) else { return [] }
-    return (try? JSONDecoder().decode([TutorMessage].self, from: data)) ?? []
+    getterSetter.getCodable(key: storageKey) ?? []
   }
 
   static func clear(getterSetter: GetterSetter) {

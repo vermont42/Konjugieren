@@ -4,23 +4,12 @@ import ActivityKit
 import Foundation
 
 enum LiveActivityManager {
-  static func startQuizActivity(
-    difficulty: String,
-    totalQuestions: Int
-  ) -> Activity<QuizActivityAttributes>? {
+  static func start<Attributes: ActivityAttributes>(
+    attributes: Attributes,
+    initialState: Attributes.ContentState
+  ) -> Activity<Attributes>? {
     guard ActivityAuthorizationInfo().areActivitiesEnabled else { return nil }
 
-    let attributes = QuizActivityAttributes(
-      difficulty: difficulty,
-      totalQuestions: totalQuestions
-    )
-    let initialState = QuizActivityAttributes.ContentState(
-      currentQuestion: 1,
-      score: 0,
-      correctCount: 0,
-      elapsedTime: "0:00",
-      isFinished: false
-    )
     let content = ActivityContent(state: initialState, staleDate: nil)
 
     do {
@@ -30,9 +19,9 @@ enum LiveActivityManager {
     }
   }
 
-  static func updateQuizActivity(
-    _ activity: Activity<QuizActivityAttributes>,
-    state: QuizActivityAttributes.ContentState
+  static func update<Attributes: ActivityAttributes>(
+    _ activity: Activity<Attributes>,
+    state: Attributes.ContentState
   ) {
     let content = ActivityContent(state: state, staleDate: nil)
     Task { @MainActor in
@@ -40,48 +29,9 @@ enum LiveActivityManager {
     }
   }
 
-  static func endQuizActivity(
-    _ activity: Activity<QuizActivityAttributes>,
-    finalState: QuizActivityAttributes.ContentState
-  ) {
-    let content = ActivityContent(state: finalState, staleDate: nil)
-    Task { @MainActor in
-      await activity.end(content, dismissalPolicy: .immediate)
-    }
-  }
-
-  static func startGameActivity() -> Activity<GameActivityAttributes>? {
-    guard ActivityAuthorizationInfo().areActivitiesEnabled else { return nil }
-
-    let attributes = GameActivityAttributes()
-    let initialState = GameActivityAttributes.ContentState(
-      wave: 1,
-      score: 0,
-      healthFraction: 1.0,
-      phase: "playing"
-    )
-    let content = ActivityContent(state: initialState, staleDate: nil)
-
-    do {
-      return try Activity.request(attributes: attributes, content: content, pushType: nil)
-    } catch {
-      return nil
-    }
-  }
-
-  static func updateGameActivity(
-    _ activity: Activity<GameActivityAttributes>,
-    state: GameActivityAttributes.ContentState
-  ) {
-    let content = ActivityContent(state: state, staleDate: nil)
-    Task { @MainActor in
-      await activity.update(content)
-    }
-  }
-
-  static func endGameActivity(
-    _ activity: Activity<GameActivityAttributes>,
-    finalState: GameActivityAttributes.ContentState
+  static func end<Attributes: ActivityAttributes>(
+    _ activity: Activity<Attributes>,
+    finalState: Attributes.ContentState
   ) {
     let content = ActivityContent(state: finalState, staleDate: nil)
     Task { @MainActor in

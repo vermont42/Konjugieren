@@ -132,28 +132,10 @@ class Settings {
     audioFeedback = restore(key: Settings.audioFeedbackKey, default: Settings.audioFeedbackDefault)
     searchScope = restore(key: Settings.searchScopeKey, default: Settings.searchScopeDefault)
     appIcon = restore(key: Settings.appIconKey, default: Settings.appIconDefault)
-
-    if let hasSeenOnboardingString = getterSetter.get(key: Settings.hasSeenOnboardingKey) {
-      hasSeenOnboarding = (hasSeenOnboardingString == "true")
-    } else {
-      getterSetter.set(key: Settings.hasSeenOnboardingKey, value: "\(hasSeenOnboarding)")
-    }
-
-    if let gameHighScoreString = getterSetter.get(key: Settings.gameHighScoreKey), let value = Int(gameHighScoreString) {
-      gameHighScore = value
-    } else {
-      getterSetter.set(key: Settings.gameHighScoreKey, value: "\(gameHighScore)")
-    }
-
-    if let promptActionCountString = getterSetter.get(key: Settings.promptActionCountKey), let value = Int(promptActionCountString) {
-      promptActionCount = value
-    } else {
-      getterSetter.set(key: Settings.promptActionCountKey, value: "\(promptActionCount)")
-    }
-
-    if let lastReviewPromptDateString = getterSetter.get(key: Settings.lastReviewPromptDateKey), let interval = Double(lastReviewPromptDateString) {
-      lastReviewPromptDate = Date(timeIntervalSince1970: interval)
-    }
+    hasSeenOnboarding = restore(key: Settings.hasSeenOnboardingKey, default: Settings.hasSeenOnboardingDefault)
+    gameHighScore = restore(key: Settings.gameHighScoreKey, default: Settings.gameHighScoreDefault)
+    promptActionCount = restore(key: Settings.promptActionCountKey, default: Settings.promptActionCountDefault)
+    lastReviewPromptDate = restore(key: Settings.lastReviewPromptDateKey)
   }
 
   private func restore<T: RawRepresentable>(key: String, default defaultValue: T) -> T where T.RawValue == String {
@@ -163,5 +145,30 @@ class Settings {
       getterSetter.set(key: key, value: "\(defaultValue)")
       return defaultValue
     }
+  }
+
+  private func restore(key: String, default defaultValue: Bool) -> Bool {
+    if let stored = getterSetter.get(key: key) {
+      return stored == "true"
+    } else {
+      getterSetter.set(key: key, value: "\(defaultValue)")
+      return defaultValue
+    }
+  }
+
+  private func restore(key: String, default defaultValue: Int) -> Int {
+    if let stored = getterSetter.get(key: key), let value = Int(stored) {
+      return value
+    } else {
+      getterSetter.set(key: key, value: "\(defaultValue)")
+      return defaultValue
+    }
+  }
+
+  private func restore(key: String) -> Date? {
+    guard let stored = getterSetter.get(key: key), let interval = Double(stored) else {
+      return nil
+    }
+    return Date(timeIntervalSince1970: interval)
   }
 }

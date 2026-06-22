@@ -265,23 +265,11 @@ enum SavedGame {
   static let storageKey = "savedGameState"
 
   static func save(_ snapshot: GameStateSnapshot, getterSetter: GetterSetter) {
-    guard
-      let data = try? JSONEncoder().encode(snapshot),
-      let jsonString = String(data: data, encoding: .utf8)
-    else {
-      return
-    }
-    getterSetter.set(key: storageKey, value: jsonString)
+    getterSetter.setCodable(key: storageKey, value: snapshot)
   }
 
   static func load(getterSetter: GetterSetter) -> GameStateSnapshot? {
-    guard
-      let jsonString = getterSetter.get(key: storageKey),
-      let data = jsonString.data(using: .utf8)
-    else {
-      return nil
-    }
-    return try? JSONDecoder().decode(GameStateSnapshot.self, from: data)
+    getterSetter.getCodable(key: storageKey)
   }
 
   static func clear(getterSetter: GetterSetter) {
@@ -529,7 +517,15 @@ class GameState {
     }
 
     startMotion()
-    liveActivity = LiveActivityManager.startGameActivity()
+    liveActivity = LiveActivityManager.start(
+      attributes: GameActivityAttributes(),
+      initialState: GameActivityAttributes.ContentState(
+        wave: 1,
+        score: 0,
+        healthFraction: 1.0,
+        phase: "playing"
+      )
+    )
     lastActivityUpdateTime = nil
     Current.soundPlayer.startMusic()
     Current.analytics.signal(name: .startGame)
@@ -899,11 +895,6 @@ class GameState {
     motionManager.startDeviceMotionUpdates()
   }
 
-  private func haptic(_ style: UIImpactFeedbackGenerator.FeedbackStyle) {
-    guard Current.settings.audioFeedback == .enable else { return }
-    UIImpactFeedbackGenerator(style: style).impactOccurred()
-  }
-
   private func updatePlayerPosition(dt: CGFloat) {
     guard let data = motionManager.deviceMotion else { return }
     let tilt = data.gravity.x
@@ -919,14 +910,14 @@ class GameState {
           playerX = screenWidth - Self.playerSize / 2
           portalSide = nil
           hatchlings.removeAll()
-          haptic(.medium)
+          HapticPlayer.playImpact(.medium)
         }
       case .right:
         if playerX >= screenWidth - Self.playerSize / 2 - 5 {
           playerX = Self.playerSize / 2
           portalSide = nil
           hatchlings.removeAll()
-          haptic(.medium)
+          HapticPlayer.playImpact(.medium)
         }
       }
     }
@@ -1481,7 +1472,7 @@ class GameState {
         let midY = (brain.y + enemy.y) / 2
         deathEffects.append(DeathEffect(x: midX, y: midY, imageName: enemy.imageName, useRed: Bool.random()))
         Current.soundPlayer.play(.brainConvert, shouldDebounce: false)
-        haptic(.heavy)
+        HapticPlayer.playImpact(.heavy)
 
         robotMinion = RobotMinion(
           x: enemy.x,
@@ -1550,7 +1541,7 @@ class GameState {
         playerBullet = nil
         score += Self.hatchlingScore
         Current.soundPlayer.play(.pop, shouldDebounce: false)
-        haptic(.medium)
+        HapticPlayer.playImpact(.medium)
       }
     }
 
@@ -1567,7 +1558,7 @@ class GameState {
           playerBullet = nil
           score += wasDiving ? Self.scorePerKill * Self.diveScoreMultiplier : Self.scorePerKill
           Current.soundPlayer.play(.pop, shouldDebounce: false)
-          haptic(.medium)
+          HapticPlayer.playImpact(.medium)
           if Double.random(in: 0...1) < Self.powerUpDropChance {
             let kind = PowerUpKind.allCases.randomElement() ?? .bratwurst
             powerUps.append(PowerUp(x: enemies[i].x, y: enemies[i].y, kind: kind))
@@ -1588,7 +1579,7 @@ class GameState {
         playerBullet = nil
         score += Self.scorePerKill
         Current.soundPlayer.play(.chime, shouldDebounce: false)
-        haptic(.medium)
+        HapticPlayer.playImpact(.medium)
       }
     }
 
@@ -1604,7 +1595,7 @@ class GameState {
           portalSide = nil
         }
         Current.soundPlayer.play(.playerHit, shouldDebounce: false)
-        haptic(.heavy)
+        HapticPlayer.playImpact(.heavy)
       }
     }
 
@@ -1621,7 +1612,7 @@ class GameState {
           portalSide = nil
         }
         Current.soundPlayer.play(.playerHit, shouldDebounce: false)
-        haptic(.heavy)
+        HapticPlayer.playImpact(.heavy)
       }
     }
 
@@ -1637,7 +1628,7 @@ class GameState {
           portalSide = nil
         }
         Current.soundPlayer.play(.playerHit, shouldDebounce: false)
-        haptic(.heavy)
+        HapticPlayer.playImpact(.heavy)
       }
     }
 
@@ -1649,7 +1640,7 @@ class GameState {
       ) {
         score += Self.coinScore
         Current.soundPlayer.play(.coin, shouldDebounce: false)
-        haptic(.light)
+        HapticPlayer.playImpact(.light)
         return true
       }
       return false
@@ -1676,7 +1667,7 @@ class GameState {
           rapidFireSound = .randomLongFire
           Current.soundPlayer.play(rapidFireSound, shouldDebounce: false, volume: 0.5)
         }
-        haptic(.light)
+        HapticPlayer.playImpact(.light)
         return true
       }
       return false
@@ -1690,7 +1681,7 @@ class GameState {
       ) {
         score += Self.eggScore
         Current.soundPlayer.play(.coin, shouldDebounce: false)
-        haptic(.light)
+        HapticPlayer.playImpact(.light)
         return true
       }
       return false
@@ -1707,7 +1698,7 @@ class GameState {
           portalSide = nil
         }
         Current.soundPlayer.play(.playerHit, shouldDebounce: false)
-        haptic(.heavy)
+        HapticPlayer.playImpact(.heavy)
         return true
       }
       return false
@@ -1727,7 +1718,7 @@ class GameState {
             playerBullet = nil
             consumed = true
             Current.soundPlayer.play(.pop, shouldDebounce: false)
-            haptic(.medium)
+            HapticPlayer.playImpact(.medium)
             pretzelObstacles.append(PretzelObstacle(x: seg.x, y: seg.y))
             let chain = wurstChains[chainIdx]
             var newChains: [WurstChain] = []
@@ -1759,7 +1750,7 @@ class GameState {
         playerBullet = nil
         pretzelObstacles[idx].hitsRemaining -= 1
         Current.soundPlayer.play(.chime, shouldDebounce: false)
-        haptic(.light)
+        HapticPlayer.playImpact(.light)
       }
     }
 
@@ -1787,7 +1778,7 @@ class GameState {
             portalSide = nil
           }
           Current.soundPlayer.play(.playerHit, shouldDebounce: false)
-          haptic(.heavy)
+          HapticPlayer.playImpact(.heavy)
         }
       }
     }
@@ -1803,7 +1794,7 @@ class GameState {
           enemies[i].isAlive = false
           score += Self.fussballEnemyKillScore
           Current.soundPlayer.play(.pop, shouldDebounce: false)
-          haptic(.medium)
+          HapticPlayer.playImpact(.medium)
           ball.velocityY = -ball.velocityY
           if Double.random(in: 0...1) < Self.powerUpDropChance {
             let kind = PowerUpKind.allCases.randomElement() ?? .bratwurst
@@ -1826,7 +1817,7 @@ class GameState {
         }
         fussball?.velocityY = -abs(ball.velocityY)
         Current.soundPlayer.play(.playerHit, shouldDebounce: false)
-        haptic(.heavy)
+        HapticPlayer.playImpact(.heavy)
       }
     }
 
@@ -1840,7 +1831,7 @@ class GameState {
         ball.velocityY = -abs(ball.velocityY)
         ball.velocityX += CGFloat.random(in: -80...80)
         Current.soundPlayer.play(.soccerKick, shouldDebounce: false)
-        haptic(.medium)
+        HapticPlayer.playImpact(.medium)
         fussball = ball
       }
     }
@@ -1872,7 +1863,7 @@ class GameState {
         geisterjagdActive = true
         geisterjagdTimer = Self.geisterjagdDuration
         Current.soundPlayer.play(.magicActivate, shouldDebounce: false)
-        haptic(.medium)
+        HapticPlayer.playImpact(.medium)
         for i in ghosts.indices {
           if ghosts[i].phase == .pursuing || ghosts[i].phase == .descending {
             ghosts[i].phase = .fleeing
@@ -1895,7 +1886,7 @@ class GameState {
       }
       if hitDot {
         Current.soundPlayer.play(.coin, shouldDebounce: false)
-        haptic(.light)
+        HapticPlayer.playImpact(.light)
       }
     }
 
@@ -1915,13 +1906,13 @@ class GameState {
         }
         ghosts[i].phase = .exiting
         Current.soundPlayer.play(.playerHit, shouldDebounce: false)
-        haptic(.heavy)
+        HapticPlayer.playImpact(.heavy)
       case .fleeing:
         ghosts[i].phase = .devoured
         ghosts[i].dotTimer = 0
         score += Self.ghostDevourScore
         Current.soundPlayer.play(.chomp, shouldDebounce: false)
-        haptic(.medium)
+        HapticPlayer.playImpact(.medium)
       default:
         break
       }
@@ -1949,7 +1940,7 @@ class GameState {
           robotBrain = brain
         }
         Current.soundPlayer.play(.pop, shouldDebounce: false)
-        haptic(.medium)
+        HapticPlayer.playImpact(.medium)
       }
     }
 
@@ -2000,7 +1991,7 @@ class GameState {
           robotMinion = minion
         }
         Current.soundPlayer.play(.pop, shouldDebounce: false)
-        haptic(.medium)
+        HapticPlayer.playImpact(.medium)
       }
     }
 
@@ -2015,7 +2006,7 @@ class GameState {
           portalSide = nil
         }
         Current.soundPlayer.play(.playerHit, shouldDebounce: false)
-        haptic(.heavy)
+        HapticPlayer.playImpact(.heavy)
       }
     }
   }
@@ -2054,7 +2045,7 @@ class GameState {
       healthFraction: Double(playerHealth),
       phase: phase.rawValue
     )
-    LiveActivityManager.updateGameActivity(liveActivity, state: state)
+    LiveActivityManager.update(liveActivity, state: state)
   }
 
   private func forceLiveActivityUpdate() {
@@ -2066,7 +2057,7 @@ class GameState {
       healthFraction: Double(playerHealth),
       phase: phase.rawValue
     )
-    LiveActivityManager.updateGameActivity(liveActivity, state: state)
+    LiveActivityManager.update(liveActivity, state: state)
   }
 
   private func endLiveActivity() {
@@ -2077,7 +2068,7 @@ class GameState {
       healthFraction: Double(playerHealth),
       phase: phase.rawValue
     )
-    LiveActivityManager.endGameActivity(liveActivity, finalState: finalState)
+    LiveActivityManager.end(liveActivity, finalState: finalState)
     self.liveActivity = nil
   }
 

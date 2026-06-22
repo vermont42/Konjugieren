@@ -110,13 +110,7 @@ private struct FamilyShowcaseCard: View {
   private var settings: Settings { Current.settings }
 
   private var conjugationgroupLabel: String {
-    let group = Conjugationgroup.präsensIndicativ(.firstSingular)
-    switch settings.conjugationgroupLang {
-    case .german:
-      return group.germanDisplayName
-    case .english:
-      return group.englishDisplayName
-    }
+    Conjugationgroup.präsensIndicativ(.firstSingular).displayName(lang: settings.conjugationgroupLang)
   }
 
   var body: some View {

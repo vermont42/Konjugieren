@@ -27,6 +27,21 @@ enum PersonNumber: String, CaseIterable {
     }
   }
 
+  var imperativPronoun: String? {
+    switch self {
+    case .secondSingular:
+      return "du"
+    case .secondPlural:
+      return "ihr"
+    case .firstPlural:
+      return "wir"
+    case .thirdPlural:
+      return "Sie"
+    case .firstSingular, .thirdSingular:
+      return nil
+    }
+  }
+
   var pronounWithSieDisambiguation: String {
     let base = pronoun
     guard base == "sie" else { return base }

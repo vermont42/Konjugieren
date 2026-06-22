@@ -16,10 +16,6 @@ extension View {
     modifier(HeadingLabel())
   }
 
-  func segmentedPicker() -> some View {
-    modifier(SegmentedPicker())
-  }
-
   func funButton() -> some View {
     modifier(FunButton())
   }
@@ -30,10 +26,6 @@ extension View {
 
   func tableSubtext() -> some View {
     modifier(TableSubtext())
-  }
-
-  func buttonLabel() -> some View {
-    modifier(ButtonLabel())
   }
 
   func germanPronunciation(forReal: Bool = true) -> some View {
@@ -89,14 +81,6 @@ private struct HeadingLabel: ViewModifier {
   }
 }
 
-private struct SegmentedPicker: ViewModifier {
-  func body(content: Content) -> some View {
-    content
-      .pickerStyle(.segmented)
-      .padding(.horizontal, Layout.doubleDefaultSpacing)
-  }
-}
-
 private struct FunButton: ViewModifier {
   func body(content: Content) -> some View {
     content
@@ -119,13 +103,6 @@ private struct TableSubtext: ViewModifier {
     content
       .font(.subheadline)
       .foregroundStyle(.customForeground)
-  }
-}
-
-private struct ButtonLabel: ViewModifier {
-  func body(content: Content) -> some View {
-    content
-      .font(.title3.bold())
   }
 }
 

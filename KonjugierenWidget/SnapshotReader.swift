@@ -19,7 +19,6 @@ enum SnapshotReader {
       translation: "go, walk",
       familyDisplay: "strong",
       auxiliary: "sein",
-      frequency: 1,
       präsensParadigm: [
         WidgetConjugation(pronoun: "ich", mixedCaseForm: "gehe"),
         WidgetConjugation(pronoun: "du", mixedCaseForm: "gEHst"),
@@ -31,7 +30,6 @@ enum SnapshotReader {
       perfektpartizip: "gegAngen",
       etymologySnippet: "From Old High German gan, gangan.",
       exampleGerman: "Er geht jeden Morgen zur Arbeit.",
-      exampleEnglish: "He goes to work every morning.",
       exampleSource: "Example",
       quizQuestion: WidgetQuizQuestion(
         infinitiv: "gehen",
@@ -40,9 +38,7 @@ enum SnapshotReader {
         correctAnswer: "gehe",
         wrongAnswers: ["geht", "gehen", "gehst"],
         questionID: "placeholder"
-      ),
-      dateString: "2026-01-01",
-      debugOffset: 0
+      )
     )
   }
 }

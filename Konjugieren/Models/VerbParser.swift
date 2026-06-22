@@ -52,7 +52,7 @@ class VerbParser: NSObject, XMLParserDelegate {
           self.currentVerb = currentVerb
         }
       } else {
-        Current.fatalError.fatalError("No infinitive specified for verb at position \(Verb.verbs.count + 1).")
+        Current.fatalError.fatalError("No infinitive specified for verb at position \(verbs.count + 1).")
       }
 
       if let translation = attributeDict["tn"] {
@@ -154,6 +154,10 @@ class VerbParser: NSObject, XMLParserDelegate {
       }
 
       let frequencyIcon = currentIconSuffix.isEmpty ? "figure" : "figure.\(currentIconSuffix)"
+
+      if verbs[currentVerb] != nil {
+        Current.fatalError.fatalError("Duplicate verb '\(currentVerb)' in Verbs.xml.")
+      }
 
       verbs[currentVerb] = Verb(
         infinitiv: currentVerb,

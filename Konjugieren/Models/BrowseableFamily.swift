@@ -178,7 +178,7 @@ enum BrowseableFamily: String, CaseIterable, Identifiable {
   }
 
   var topVerbs: [Verb] {
-    verbs.sorted { $0.frequency < $1.frequency }.prefix(3).map { $0 }
+    Array(verbs.sorted { $0.frequency < $1.frequency }.prefix(3))
   }
 
   var hasAblautList: Bool {

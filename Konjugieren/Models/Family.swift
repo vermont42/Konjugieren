@@ -6,15 +6,6 @@ enum Family: Hashable {
   case weak
   case ieren
 
-  var pastParticiplePrefix: String {
-    switch self {
-    case .strong, .mixed, .weak:
-      return "ge"
-    case .ieren:
-      return ""
-    }
-  }
-
   var displayName: String {
     switch self {
     case .strong:

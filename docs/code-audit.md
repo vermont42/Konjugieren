@@ -396,11 +396,11 @@ Each phase is independently shippable and ordered so that earlier phases shrink 
 3. ✅ Mechanic-spawn first-delay flag (#7), including the snapshot field.
 4. ✅ Decide on the Game Center sign-in controller (#12): present the GameKit-supplied controller.
 
-### Phase 3: Dead-code removal (zero-risk, shrinks later refactors)
+### Phase 3: Dead-code removal (zero-risk, shrinks later refactors) — ✅ DONE
 
-1. Delete `FlowLayout` (#26), `segmentedPicker()`/`buttonLabel()` (#27), `pastParticiplePrefix` (#28).
-2. Prune or document unused `WidgetSnapshot` fields (#29).
-3. Fold in the one-liners (#40) and the VerbParser message fix (#14).
+1. ✅ Delete `FlowLayout` (#26), `segmentedPicker()`/`buttonLabel()` (#27), `pastParticiplePrefix` (#28).
+2. ✅ Prune unused `WidgetSnapshot` fields (#29): removed `frequency`, `exampleEnglish`, `dateString`, `debugOffset` from the struct, the writer, and the reader placeholder. (The function-parameter `debugOffset` and the static `dateString(for:)` helper, both still used, are unaffected.)
+3. ✅ Fold in the one-liners (#40) and the VerbParser message fix plus duplicate-key hardening (#14).
 
 ### Phase 4: Consolidation refactors (DRY; behavior-preserving; run the full test suite between items)
 

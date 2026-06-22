@@ -591,7 +591,7 @@ class GameState {
 
   func computeFinalScore() -> Int {
     let elapsed = Date.now.timeIntervalSince(startTime)
-    let raw = Float(score) * (Float(playerHealth) + 1.0) - Float(elapsed)
+    let raw = Double(score) * (Double(playerHealth) + 1.0) - Double(elapsed)
     return max(0, Int(raw))
   }
 

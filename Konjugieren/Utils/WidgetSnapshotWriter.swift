@@ -34,23 +34,18 @@ enum WidgetSnapshotWriter {
     let etymology = Etymology.text(for: verb.infinitiv)
     let truncatedEtymology = etymology.map { truncateToSentenceBoundary($0, maxLength: 450) }
     let quiz = generateQuizQuestion(verb: verb, date: date, debugOffset: debugOffset)
-    let dateString = Self.dateString(for: date)
 
     return WidgetSnapshot(
       infinitiv: verb.infinitiv,
       translation: verb.translation,
       familyDisplay: verb.family.displayName,
       auxiliary: verb.auxiliary.verb,
-      frequency: verb.frequency,
       präsensParadigm: paradigm,
       perfektpartizip: partizipString,
       etymologySnippet: truncatedEtymology,
       exampleGerman: examplePair?.german.sentence,
-      exampleEnglish: examplePair?.english.sentence,
       exampleSource: examplePair?.german.source,
-      quizQuestion: quiz,
-      dateString: dateString,
-      debugOffset: debugOffset
+      quizQuestion: quiz
     )
   }
 

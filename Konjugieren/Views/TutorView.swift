@@ -362,53 +362,6 @@ struct TutorView: View {
   }
 }
 
-struct FlowLayout: SwiftUI.Layout {
-  let spacing: CGFloat
-
-  func sizeThatFits(proposal: ProposedViewSize, subviews: SwiftUI.Layout.Subviews, cache: inout ()) -> CGSize {
-    let result = arrangeSubviews(proposal: proposal, subviews: subviews)
-    return result.size
-  }
-
-  func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: SwiftUI.Layout.Subviews, cache: inout ()) {
-    let result = arrangeSubviews(proposal: proposal, subviews: subviews)
-    for (index, subview) in subviews.enumerated() {
-      let point = result.positions[index]
-      subview.place(at: CGPoint(x: bounds.minX + point.x, y: bounds.minY + point.y), proposal: .unspecified)
-    }
-  }
-
-  private func arrangeSubviews(proposal: ProposedViewSize, subviews: SwiftUI.Layout.Subviews) -> FlowLayoutResult {
-    let maxWidth = proposal.width ?? .infinity
-    var positions: [CGPoint] = []
-    var x: CGFloat = 0
-    var y: CGFloat = 0
-    var rowHeight: CGFloat = 0
-
-    for subview in subviews {
-      let size = subview.sizeThatFits(.unspecified)
-      if x + size.width > maxWidth && x > 0 {
-        x = 0
-        y += rowHeight + spacing
-        rowHeight = 0
-      }
-      positions.append(CGPoint(x: x, y: y))
-      rowHeight = max(rowHeight, size.height)
-      x += size.width + spacing
-    }
-
-    return FlowLayoutResult(
-      size: CGSize(width: maxWidth, height: y + rowHeight),
-      positions: positions
-    )
-  }
-}
-
-private struct FlowLayoutResult {
-  let size: CGSize
-  let positions: [CGPoint]
-}
-
 private struct TutorSheet<Content: View>: View {
   let title: String
   let dismiss: () -> Void

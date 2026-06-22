@@ -26,7 +26,7 @@ class Quiz {
 
   private var timer: Timer?
   private var difficultyUsed: QuizDifficulty = .regular
-  private var timerInterval: TimeInterval = 1.0
+  private let timerInterval: TimeInterval
   private var liveActivity: Activity<QuizActivityAttributes>?
 
   var currentQuestion: QuizItem? {

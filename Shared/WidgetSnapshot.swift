@@ -7,16 +7,12 @@ struct WidgetSnapshot: Codable, Equatable {
   let translation: String
   let familyDisplay: String
   let auxiliary: String
-  let frequency: Int
   let präsensParadigm: [WidgetConjugation]
   let perfektpartizip: String
   let etymologySnippet: String?
   let exampleGerman: String?
-  let exampleEnglish: String?
   let exampleSource: String?
   let quizQuestion: WidgetQuizQuestion
-  let dateString: String
-  let debugOffset: Int
 
   // präsensParadigm is written in PersonNumber.allCases order (fs/ss/ts/fp/sp/tp),
   // so the third-person-singular row is always at index 2.

@@ -57,7 +57,7 @@ The project uses Swift Testing (`import Testing`) for unit tests. Tests are loca
 
 ### ConjugatorTests Structure
 
-`ConjugatorTests.swift` is a critical test file for conjugations, containing ~50 test functions organized by conjugationgroup and feature.
+`ConjugatorTests.swift` is a critical test file for conjugations, containing ~25 test functions organized by conjugationgroup and feature.
 
 ### The expectConjugation Helper
 
@@ -318,23 +318,32 @@ See [`docs/adding-verbs.md`](docs/adding-verbs.md) for the complete verb-additio
 The app uses a simple dependency injection pattern via `Models/World.swift`:
 
 ```swift
-var Current = World.chooseWorld()
+@MainActor var Current = World.chooseWorld()
 
 @MainActor
 @Observable
 class World {
   var settings: Settings
   var gameCenter: GameCenter
+  let getterSetter: GetterSetter
+  var languageModelService: LanguageModelService
+  var reviewPrompter: ReviewPrompter
   var soundPlayer: SoundPlayer
+  var utterer: Utterer
+  var fatalError: FatalError
+  var analytics: Analytics
+  var session: URLSession
   var verb: Verb?       // For deeplink navigation
   var family: String?   // For deeplink navigation
   var info: Info?       // For deeplink navigation
+  var selectedTab: TabSelection = .verbs
+  var shouldNavigateToTutor = false
 }
 ```
 
 `World.chooseWorld()` selects the appropriate configuration:
-- **Device/Simulator**: Uses `GetterSetterReal`, `GameCenterReal`, `SoundPlayerReal`
-- **Unit Tests**: Uses `GetterSetterFake`, `GameCenterDummy`, `SoundPlayerDummy`
+- **Device/Simulator**: Uses the `*Real` implementations — `GetterSetterReal`, `GameCenterReal`, `SoundPlayerReal`, `ReviewPrompterReal`, `UttererReal`, `FatalErrorReal`, `AnalyticsReal`, and `LanguageModelServiceReal` (on iOS 26+, else `LanguageModelServiceDummy`).
+- **Unit Tests**: Uses the fakes/dummies/spies — `GetterSetterFake`, `GameCenterDummy`, `SoundPlayerDummy`, `ReviewPrompterDummy`, `UttererDummy`, `LanguageModelServiceDummy`, `FatalErrorSpy`, `AnalyticsSpy`.
 
 Access dependencies anywhere using syntax like `Current.settings`. This pattern enables:
 - Easy mocking in tests (swap `Current` with a test-configured `World`)
@@ -518,7 +527,8 @@ Long-form Info text (like `verbHistoryText`, `dedicationText`, `creditsText`) us
 | `` ` `` | Section headings (rendered larger/styled) | `` `Von Sternenstaub zur Sprache` `` |
 | `~` | Bold/emphasis | `~Homo sapiens~`, `~ablaut~` |
 | `$...$` | Ablaut highlighting (uppercase = changed vowel) | `$sAng$`, `$gesUngen$`, `$kÄme$` |
-| `%...%` | Clickable URLs | `%https://github.com/vermont42/Konjugieren%` |
+| `‡...‡` | Clickable URLs | `‡https://github.com/vermont42/Konjugieren‡` |
+| `^...^` | Emoji rendered via a custom image asset (falls back to the literal glyph) | `^🏴󠁧󠁢󠁥󠁮󠁧󠁿^`, `^🐎^` |
 | 🇩🇪 | Bullet points in lists | `🇩🇪 ~Imperfektiv~: andauernde Handlung` |
 
 Other emoji are sometimes appropriate for bullet lists. For example, 🏴󠁧󠁢󠁥󠁮󠁧󠁿 should precede an English bullet item, and 🐎 should precede a Proto-Indo-European bullet item.
@@ -537,6 +547,35 @@ When the English version of a long text is edited, the German version must be re
    - Reconstructed PIE forms: `*bʰer-`, `*e-`, `*dō-`
    - Latin scholarly terms used in context: ~Germani~, ~comitatus~, ~limes~, ~kurgans~
 4. **Match heading structure** exactly between languages
+
+### Widget Localization (WidgetL)
+
+The `KonjugierenWidget` extension ships as its own `.appex` bundle with its **own** string catalog, `KonjugierenWidget/Localizable.xcstrings` — separate from the app's `Konjugieren/Assets/Localizable.xcstrings`. Widget user-facing strings (gallery names/descriptions, Control Center labels, Live Activity "Wave"/"Game Over", quiz "Correct!"/"Incorrect") route through `WidgetL` (`KonjugierenWidget/WidgetL.swift`), the widget's analogue to the app's `L`. Catalog keys follow `L`'s `Group.member` convention.
+
+`WidgetL` exposes **two accessor styles**, dictated by isolation and the type the call site needs:
+
+```swift
+enum WidgetL {
+  enum Game {
+    static var over: String { String(localized: "Game.over") }          // @MainActor SwiftUI / WidgetConfiguration
+    static func wave(_ number: Int) -> String { String(localized: "Game.wave \(number)") }
+  }
+
+  enum QuickQuiz {
+    nonisolated static var name: LocalizedStringResource {              // nonisolated control modifiers
+      LocalizedStringResource("QuickQuiz.name")
+    }
+  }
+}
+```
+
+- **`String` via `String(localized:)`** for `@MainActor` SwiftUI / `WidgetConfiguration` strings (mirrors `L`).
+- **`nonisolated` `LocalizedStringResource`** accessors for the Control Center modifiers that require that type in a nonisolated context.
+
+Two important exceptions where strings **cannot** route through `WidgetL` and stay inline against the same catalog keys:
+
+1. **AppIntent titles and `@Parameter(title:)`** — `appintentsmetadataprocessor` parses source statically and requires a string literal or a direct `LocalizedStringResource(...)` initializer call, not an accessor. These four sites are inline by necessity.
+2. **`Shared/` intents (`OpenQuizIntent`, `OpenRandomVerbIntent`)** — `Shared/` compiles into **both** the app and widget targets, and `LocalizedStringResource` resolves against whichever bundle runs. Their keys therefore live in **both** `Localizable.xcstrings` catalogs.
 
 ## VoiceOver and Mixed-Language Pronunciation
 

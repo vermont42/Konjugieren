@@ -2,6 +2,8 @@
 
 A full-codebase review covering bugs, duplication, dead code, code smells, and test-coverage gaps. Conducted June 9, 2026, on `main` at commit 00ce51a. Every finding below was verified against the cited source lines; line numbers refer to that commit. Findings are ordered from most impactful to least within each section, and the sections themselves run from most impactful (bugs) to least (test coverage). A suggested implementation order, grouped into phases, appears at the bottom.
 
+**Status: complete.** All seven phases were remediated and landed on `main`, ending at commit 24d453c (Phase 7). Every finding (#1–#44) is resolved or consciously dispositioned; each phase's per-item notes and the lone withdrawn finding (the intentional German seasoning in `RatingsFetcher.swift`) are recorded below. The full test suite stands at 145 tests across 20 suites, all passing.
+
 Areas inspected and found clean, for the record: `Conjugator` logic (including phonological-ending adjustment and separable-prefix handling), the `World` dependency-injection pattern, `VerbParser` caret/index math, the rich-text parser's unterminated-delimiter detection, `Modifiers.swift` structure, and the absence of `try!`, `as!`, force-unwraps, and `print` calls in production code.
 
 ## Bugs

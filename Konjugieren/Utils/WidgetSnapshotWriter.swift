@@ -65,7 +65,7 @@ enum WidgetSnapshotWriter {
 
   @MainActor private static func präsensParadigm(for infinitiv: String) -> [WidgetConjugation] {
     PersonNumber.allCases.map { pn in
-      let result = Conjugator.conjugate(infinitiv: infinitiv, conjugationgroup: .präsensIndicativ(pn))
+      let result = Conjugator.conjugate(infinitiv: infinitiv, conjugationgroup: .präsensIndikativ(pn))
       let form: String
       switch result {
       case .success(let value):
@@ -105,7 +105,7 @@ enum WidgetSnapshotWriter {
     switch conjugationgroup {
     case .perfektpartizip, .präsenspartizip:
       pronoun = nil
-    case .präsensIndicativ(let pn), .perfektIndikativ(let pn), .futurIndikativ(let pn):
+    case .präsensIndikativ(let pn), .perfektIndikativ(let pn), .futurIndikativ(let pn):
       pronoun = pn.pronounWithSieDisambiguation
     case .imperativ(let pn):
       pronoun = pn.imperativPronoun
@@ -185,7 +185,7 @@ enum WidgetSnapshotWriter {
     let pnIndex = abs(seed) % persons.count
     let impIndex = abs(seed) % imperativPersons.count
     return [
-      .präsensIndicativ(persons[pnIndex]),
+      .präsensIndikativ(persons[pnIndex]),
       .perfektIndikativ(persons[(pnIndex + 1) % persons.count]),
       .futurIndikativ(persons[(pnIndex + 2) % persons.count]),
       .imperativ(imperativPersons[impIndex])
@@ -194,8 +194,8 @@ enum WidgetSnapshotWriter {
 
   private static func swapPerson(_ conjugationgroup: Conjugationgroup, to personNumber: PersonNumber) -> Conjugationgroup? {
     switch conjugationgroup {
-    case .präsensIndicativ:
-      return .präsensIndicativ(personNumber)
+    case .präsensIndikativ:
+      return .präsensIndikativ(personNumber)
     case .perfektIndikativ:
       return .perfektIndikativ(personNumber)
     case .futurIndikativ:

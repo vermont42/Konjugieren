@@ -3,7 +3,7 @@
 import Foundation
 
 struct Info: Hashable, Identifiable {
-  var id: String { heading }
+  var id: String { stableKey }
   let stableKey: String
   let heading: String
   let richTextBlocks: [RichTextBlock]

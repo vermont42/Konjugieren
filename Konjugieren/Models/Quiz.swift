@@ -216,14 +216,14 @@ class Quiz {
   private func randomNonPartizipConjugationgroup() -> Conjugationgroup {
     var options: [() -> Conjugationgroup] = []
 
-    options.append { .präsensIndicativ(self.randomPersonNumber()) }
+    options.append { .präsensIndikativ(self.randomPersonNumber()) }
     options.append { .perfektIndikativ(self.randomPersonNumber()) }
     options.append { .futurIndikativ(self.randomPersonNumber()) }
     options.append { .imperativ(self.randomImperativPersonNumber()) }
 
     if difficultyUsed == .ridiculous {
       options.append { .präsensKonjunktivI(self.randomPersonNumber()) }
-      options.append { .präteritumIndicativ(self.randomPersonNumber()) }
+      options.append { .präteritumIndikativ(self.randomPersonNumber()) }
       options.append { .präteritumKonjunktivII(self.randomPersonNumber()) }
       options.append { .perfektKonjunktivI(self.randomPersonNumber()) }
       options.append { .plusquamperfektIndikativ(self.randomPersonNumber()) }
@@ -232,7 +232,7 @@ class Quiz {
       options.append { .futurKonjunktivII(self.randomPersonNumber()) }
     }
 
-    return options.randomElement()?() ?? .präsensIndicativ(.firstSingular)
+    return options.randomElement()?() ?? .präsensIndikativ(.firstSingular)
   }
 
   private func randomPersonNumber() -> PersonNumber {
@@ -246,36 +246,36 @@ class Quiz {
   #if DEBUG
   private func generateScreenshotFixture() -> [QuizItem] {
     let plan: [(infinitiv: String, group: Conjugationgroup)] = [
-      ("machen", .präsensIndicativ(.firstSingular)),
-      ("haben", .präsensIndicativ(.thirdSingular)),
+      ("machen", .präsensIndikativ(.firstSingular)),
+      ("haben", .präsensIndikativ(.thirdSingular)),
       ("sein", .perfektIndikativ(.firstSingular)),
       ("werden", .futurIndikativ(.thirdSingular)),
       ("gehen", .perfektpartizip),
       ("kommen", .perfektpartizip),
       ("lesen", .präsenspartizip),
-      ("sprechen", .präsensIndicativ(.secondSingular)),
-      ("singen", .präteritumIndicativ(.firstSingular)),
-      ("denken", .präteritumIndicativ(.firstSingular)),
-      ("sehen", .präsensIndicativ(.thirdSingular)),
+      ("sprechen", .präsensIndikativ(.secondSingular)),
+      ("singen", .präteritumIndikativ(.firstSingular)),
+      ("denken", .präteritumIndikativ(.firstSingular)),
+      ("sehen", .präsensIndikativ(.thirdSingular)),
       ("essen", .perfektIndikativ(.firstSingular)),
-      ("trinken", .präteritumIndicativ(.firstSingular)),
-      ("fahren", .präsensIndicativ(.thirdSingular)),
-      ("laufen", .präsensIndicativ(.thirdSingular)),
-      ("geben", .präsensIndicativ(.firstSingular)),
-      ("nehmen", .präsensIndicativ(.firstSingular)),
+      ("trinken", .präteritumIndikativ(.firstSingular)),
+      ("fahren", .präsensIndikativ(.thirdSingular)),
+      ("laufen", .präsensIndikativ(.thirdSingular)),
+      ("geben", .präsensIndikativ(.firstSingular)),
+      ("nehmen", .präsensIndikativ(.firstSingular)),
       ("finden", .perfektIndikativ(.thirdSingular)),
       ("helfen", .imperativ(.secondSingular)),
       ("geben", .imperativ(.secondSingular)),
       ("studieren", .perfektIndikativ(.firstSingular)),
-      ("verstehen", .präsensIndicativ(.firstSingular)),
-      ("bringen", .präteritumIndicativ(.firstSingular)),
-      ("wissen", .präsensIndicativ(.firstSingular)),
-      ("können", .präsensIndicativ(.firstSingular)),
-      ("müssen", .präsensIndicativ(.firstSingular)),
-      ("wollen", .präsensIndicativ(.firstSingular)),
-      ("schreiben", .präteritumIndicativ(.firstSingular)),
+      ("verstehen", .präsensIndikativ(.firstSingular)),
+      ("bringen", .präteritumIndikativ(.firstSingular)),
+      ("wissen", .präsensIndikativ(.firstSingular)),
+      ("können", .präsensIndikativ(.firstSingular)),
+      ("müssen", .präsensIndikativ(.firstSingular)),
+      ("wollen", .präsensIndikativ(.firstSingular)),
+      ("schreiben", .präteritumIndikativ(.firstSingular)),
       ("bleiben", .perfektIndikativ(.thirdSingular)),
-      ("ankommen", .präsensIndicativ(.thirdSingular))
+      ("ankommen", .präsensIndikativ(.thirdSingular))
     ]
     return plan.map { spec in
       guard let verb = Verb.verbs[spec.infinitiv] else {
@@ -427,8 +427,8 @@ struct QuizItem: Identifiable {
     switch conjugationgroup {
     case .präsenspartizip, .perfektpartizip:
       return nil
-    case .präsensIndicativ(let pn), .präsensKonjunktivI(let pn),
-         .präteritumIndicativ(let pn), .präteritumKonjunktivII(let pn),
+    case .präsensIndikativ(let pn), .präsensKonjunktivI(let pn),
+         .präteritumIndikativ(let pn), .präteritumKonjunktivII(let pn),
          .perfektIndikativ(let pn), .perfektKonjunktivI(let pn),
          .plusquamperfektIndikativ(let pn), .plusquamperfektKonjunktivII(let pn),
          .futurIndikativ(let pn), .futurKonjunktivI(let pn), .futurKonjunktivII(let pn):

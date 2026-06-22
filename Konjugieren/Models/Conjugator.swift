@@ -26,7 +26,7 @@ enum Conjugator {
     }
 
     switch conjugationgroup {
-    case .präsensIndicativ, .präsensKonjunktivI, .präteritumIndicativ, .präteritumKonjunktivII:
+    case .präsensIndikativ, .präsensKonjunktivI, .präteritumIndikativ, .präteritumKonjunktivII:
       return conjugateSimpleTense(verb: verb, conjugationgroup: conjugationgroup)
 
     case .perfektpartizip:
@@ -50,19 +50,19 @@ enum Conjugator {
       return conjugateImperativ(verb: verb, personNumber: personNumber)
 
     case .perfektIndikativ(let personNumber):
-      return conjugateCompoundTense(verb: verb, infinitiv: infinitiv, auxiliaryInfinitiv: verb.auxiliary.verb, auxiliaryGroup: .präsensIndicativ(personNumber))
+      return conjugateCompoundTense(verb: verb, infinitiv: infinitiv, auxiliaryInfinitiv: verb.auxiliary.verb, auxiliaryGroup: .präsensIndikativ(personNumber))
 
     case .perfektKonjunktivI(let personNumber):
       return conjugateCompoundTense(verb: verb, infinitiv: infinitiv, auxiliaryInfinitiv: verb.auxiliary.verb, auxiliaryGroup: .präsensKonjunktivI(personNumber))
 
     case .plusquamperfektIndikativ(let personNumber):
-      return conjugateCompoundTense(verb: verb, infinitiv: infinitiv, auxiliaryInfinitiv: verb.auxiliary.verb, auxiliaryGroup: .präteritumIndicativ(personNumber))
+      return conjugateCompoundTense(verb: verb, infinitiv: infinitiv, auxiliaryInfinitiv: verb.auxiliary.verb, auxiliaryGroup: .präteritumIndikativ(personNumber))
 
     case .plusquamperfektKonjunktivII(let personNumber):
       return conjugateCompoundTense(verb: verb, infinitiv: infinitiv, auxiliaryInfinitiv: verb.auxiliary.verb, auxiliaryGroup: .präteritumKonjunktivII(personNumber))
 
     case .futurIndikativ(let personNumber):
-      return conjugateCompoundTense(verb: verb, infinitiv: infinitiv, auxiliaryInfinitiv: "werden", auxiliaryGroup: .präsensIndicativ(personNumber), useInfinitivAsSecondPart: true)
+      return conjugateCompoundTense(verb: verb, infinitiv: infinitiv, auxiliaryInfinitiv: "werden", auxiliaryGroup: .präsensIndikativ(personNumber), useInfinitivAsSecondPart: true)
 
     case .futurKonjunktivI(let personNumber):
       return conjugateCompoundTense(verb: verb, infinitiv: infinitiv, auxiliaryInfinitiv: "werden", auxiliaryGroup: .präsensKonjunktivI(personNumber), useInfinitivAsSecondPart: true)
@@ -155,7 +155,7 @@ enum Conjugator {
     .mixed(ablautGroup: let ablautKey, ablautStartIndex: let ablautStartIndex, ablautEndIndex: let ablautEndIndex):
       if
         let ablautGroup = AblautGroup.ablautGroups[ablautKey],
-        let ablaut = ablautGroup.ablauts[.präsensIndicativ(.secondSingular)]
+        let ablaut = ablautGroup.ablauts[.präsensIndikativ(.secondSingular)]
       {
         if ablaut.hasSuffix("*") {
           return stamm
@@ -278,11 +278,11 @@ enum Conjugator {
       switch family {
       case .weak, .ieren:
         switch conjugationgroup {
-        case .präteritumIndicativ, .präteritumKonjunktivII:
+        case .präteritumIndikativ, .präteritumKonjunktivII:
           if ["te", "test", "ten", "tet"].contains(ending) {
             return "e" + ending
           }
-        case .präsensIndicativ(let pn), .präsensKonjunktivI(let pn):
+        case .präsensIndikativ(let pn), .präsensKonjunktivI(let pn):
           if pn == .secondSingular && ending == "st" {
             return "est"
           }

@@ -270,7 +270,7 @@ struct QuizTests {
     let verb = Verb.verbs["machen"]!
     let item = QuizItem(
       verb: verb,
-      conjugationgroup: .präsensIndicativ(.firstSingular),
+      conjugationgroup: .präsensIndikativ(.firstSingular),
       correctAnswer: "mache"
     )
 
@@ -313,7 +313,7 @@ struct QuizTests {
     let verb = Verb.verbs["machen"]!
     let item = QuizItem(
       verb: verb,
-      conjugationgroup: .präsensIndicativ(.firstSingular),
+      conjugationgroup: .präsensIndikativ(.firstSingular),
       correctAnswer: "mache"
     )
 
@@ -325,7 +325,7 @@ struct QuizTests {
     let verb = Verb.verbs["machen"]!
     let item = QuizItem(
       verb: verb,
-      conjugationgroup: .präsensIndicativ(.firstSingular),
+      conjugationgroup: .präsensIndikativ(.firstSingular),
       correctAnswer: "mache"
     )
 

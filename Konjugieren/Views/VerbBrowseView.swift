@@ -83,7 +83,7 @@ struct VerbBrowseView: View {
 
         Divider()
 
-        Picker(L.VerbBrowse.alphabetical, selection: $sortOrder) {
+        Picker(L.VerbBrowse.sortOrder, selection: $sortOrder) {
           ForEach(SortOrder.allCases, id: \.self) { order in
             Text(order.displayName)
               .tag(order)

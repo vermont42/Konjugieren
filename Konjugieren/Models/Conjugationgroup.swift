@@ -4,9 +4,9 @@ enum Conjugationgroup: Hashable {
   case perfektpartizip
   case präsenspartizip
 
-  case präsensIndicativ(_ personNumber: PersonNumber)
+  case präsensIndikativ(_ personNumber: PersonNumber)
   case präsensKonjunktivI(_ personNumber: PersonNumber)
-  case präteritumIndicativ(_ personNumber: PersonNumber)
+  case präteritumIndikativ(_ personNumber: PersonNumber)
   case präteritumKonjunktivII(_ personNumber: PersonNumber)
   case imperativ(_ personNumber: PersonNumber)
 
@@ -25,11 +25,11 @@ enum Conjugationgroup: Hashable {
       return "Präsenspartizip"
     case .perfektpartizip:
       return "Perfektpartizip"
-    case .präsensIndicativ:
+    case .präsensIndikativ:
       return "Präsens Indikativ"
     case .präsensKonjunktivI:
       return "Präsens Konjunktiv I"
-    case .präteritumIndicativ:
+    case .präteritumIndikativ:
       return "Präteritum Indikativ"
     case .präteritumKonjunktivII:
       return "Präteritum Konjunktiv II"
@@ -58,11 +58,11 @@ enum Conjugationgroup: Hashable {
       return "Present Participle"
     case .perfektpartizip:
       return "Past Participle"
-    case .präsensIndicativ:
+    case .präsensIndikativ:
       return "Present Indicative"
     case .präsensKonjunktivI:
       return "Present Subjunctive"
-    case .präteritumIndicativ:
+    case .präteritumIndikativ:
       return "Past Indicative"
     case .präteritumKonjunktivII:
       return "Past Conditional"
@@ -96,7 +96,7 @@ enum Conjugationgroup: Hashable {
 
   func ending(family: Family) -> String {
     switch self {
-    case .präsensIndicativ(let personNumber):
+    case .präsensIndikativ(let personNumber):
       switch personNumber {
       case .firstSingular:
         return "e"
@@ -118,7 +118,7 @@ enum Conjugationgroup: Hashable {
       case .secondPlural:
         return "et"
       }
-    case .präteritumIndicativ(let personNumber):
+    case .präteritumIndikativ(let personNumber):
       switch family {
       case .strong:
         switch personNumber {

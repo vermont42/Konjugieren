@@ -375,13 +375,13 @@ struct ConjugationTool: Tool {
       return .präsensKonjunktivI(personNumber)
     }
     if lowercasedName.contains("present indicative") || lowercasedName.contains("präsens indikativ") {
-      return .präsensIndicativ(personNumber)
+      return .präsensIndikativ(personNumber)
     }
     if lowercasedName.contains("past conditional") || lowercasedName.contains("präteritum konjunktiv") {
       return .präteritumKonjunktivII(personNumber)
     }
     if lowercasedName.contains("past indicative") || lowercasedName.contains("präteritum") {
-      return .präteritumIndicativ(personNumber)
+      return .präteritumIndikativ(personNumber)
     }
     if lowercasedName.contains("future conditional") || lowercasedName.contains("futur konjunktiv ii") {
       return .futurKonjunktivII(personNumber)
@@ -416,10 +416,10 @@ struct ConjugationTool: Tool {
       return .futurIndikativ(personNumber)
     }
     if lowercasedName == "präsens" || lowercasedName == "present" {
-      return .präsensIndicativ(personNumber)
+      return .präsensIndikativ(personNumber)
     }
     if lowercasedName == "präteritum" || lowercasedName == "past" {
-      return .präteritumIndicativ(personNumber)
+      return .präteritumIndikativ(personNumber)
     }
 
     return nil

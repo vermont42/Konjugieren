@@ -11,8 +11,8 @@ struct VerbExportTests {
 
   // Conjugationgroup factories in VerbView display order (excluding partizipien)
   private static let conjugationgroupFactories: [(String, (PersonNumber) -> Conjugationgroup)] = [
-    ("präsensIndicativ", Conjugationgroup.präsensIndicativ),
-    ("präteritumIndicativ", Conjugationgroup.präteritumIndicativ),
+    ("präsensIndikativ", Conjugationgroup.präsensIndikativ),
+    ("präteritumIndikativ", Conjugationgroup.präteritumIndikativ),
     ("präsensKonjunktivI", Conjugationgroup.präsensKonjunktivI),
     ("präteritumKonjunktivII", Conjugationgroup.präteritumKonjunktivII),
     ("imperativ", Conjugationgroup.imperativ),

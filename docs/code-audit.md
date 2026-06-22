@@ -419,11 +419,11 @@ Each phase is independently shippable and ordered so that earlier phases shrink 
 3. ✅ Decompose `checkCollisions()` into named methods; remove `MARK` and numbered comments (#31): the 24 numbered blocks became 24 `collide…`/`collect…` methods called in order from `checkCollisions()`, so collision ordering stays visible in one place. The `// MARK: - Private` and numbered comments are gone.
 4. ✅ GameView `onChange`-driven tick (#34): `gameState.update(currentTime:)` moved out of the `TimelineView` body into `.onChange(of: timeline.date)`, leaving the render closure pure.
 
-### Phase 6: Mechanical naming and identity sweep (large diff, no logic; isolate in its own commit)
+### Phase 6: Mechanical naming and identity sweep (large diff, no logic; isolate in its own commit) — ✅ DONE
 
-1. Rename `präsensIndicativ` → `präsensIndikativ` and `präteritumIndicativ` → `präteritumIndikativ` (#32).
-2. `Verb.id`/`Info.id` stable identities (#33).
-3. VerbBrowseView picker label key (#37).
+1. ✅ Rename `präsensIndicativ` → `präsensIndikativ` and `präteritumIndicativ` → `präteritumIndikativ` (#32): the two `Conjugationgroup` cases (and their ~300 references across source, tests, the `VerbExportTests`/`generate_verb_pdf.py` export keys, and the CLAUDE.md examples) now use the German k. The parallel `SiriConjugationgroup` was renamed too, but because it is a `String`-backed `AppEnum` whose rawValue is the identifier persisted in user-saved Shortcuts, the two renamed cases **pin their rawValues to the legacy c-spelling** (`case präsensIndikativ = "präsensIndicativ"`): the case name you type is now consistent with `Conjugationgroup`, while existing Shortcuts keep resolving. A comment documents the pinning.
+2. ✅ `Verb.id`/`Info.id` stable identities (#33): `Verb.id` is now `var id: String { infinitiv }` (was a per-parse `UUID()`), so identity and synthesized `Hashable` are stable across launches; `Info.id` is now `stableKey` (was the language-dependent `heading`).
+3. ✅ VerbBrowseView picker label key (#37): added `L.VerbBrowse.sortOrder` ("Sort Order"/"Sortierreihenfolge"); the picker now labels the control rather than reusing the `alphabetical` option string.
 
 ### Phase 7: Test additions (any time, but most valuable before Phases 5 and 6 land)
 

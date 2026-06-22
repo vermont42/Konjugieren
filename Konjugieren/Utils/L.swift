@@ -96,6 +96,10 @@ enum L {
       String(localized: "VerbBrowse.frequency")
     }
 
+    static var sortOrder: String {
+      String(localized: "VerbBrowse.sortOrder")
+    }
+
     static var searchPrompt: String {
       String(localized: "VerbBrowse.searchPrompt")
     }

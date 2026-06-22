@@ -2,12 +2,16 @@
 
 import AppIntents
 
+// präsensIndikativ/präteritumIndikativ pin their rawValues to the legacy "c" spelling: this is a
+// String-backed AppEnum, so the rawValue is the identifier persisted in user-saved Shortcuts.
+// Keeping the case names in sync with Conjugationgroup's "k" spelling while preserving the old
+// rawValues avoids orphaning existing Shortcuts.
 enum SiriConjugationgroup: String, AppEnum {
   case perfektpartizip
   case präsenspartizip
-  case präsensIndicativ
+  case präsensIndikativ = "präsensIndicativ"
   case präsensKonjunktivI
-  case präteritumIndicativ
+  case präteritumIndikativ = "präteritumIndicativ"
   case präteritumKonjunktivII
   case imperativ
   case perfektIndikativ
@@ -23,9 +27,9 @@ enum SiriConjugationgroup: String, AppEnum {
   static let caseDisplayRepresentations: [SiriConjugationgroup: DisplayRepresentation] = [
     .perfektpartizip: "Past Participle",
     .präsenspartizip: "Present Participle",
-    .präsensIndicativ: "Present Indicative",
+    .präsensIndikativ: "Present Indicative",
     .präsensKonjunktivI: "Present Subjunctive",
-    .präteritumIndicativ: "Past Indicative",
+    .präteritumIndikativ: "Past Indicative",
     .präteritumKonjunktivII: "Past Conditional",
     .imperativ: "Imperative",
     .perfektIndikativ: "Present Perfect Indicative",
@@ -43,12 +47,12 @@ enum SiriConjugationgroup: String, AppEnum {
       return [.perfektpartizip]
     case .präsenspartizip:
       return [.präsenspartizip]
-    case .präsensIndicativ:
-      return PersonNumber.allCases.map { .präsensIndicativ($0) }
+    case .präsensIndikativ:
+      return PersonNumber.allCases.map { .präsensIndikativ($0) }
     case .präsensKonjunktivI:
       return PersonNumber.allCases.map { .präsensKonjunktivI($0) }
-    case .präteritumIndicativ:
-      return PersonNumber.allCases.map { .präteritumIndicativ($0) }
+    case .präteritumIndikativ:
+      return PersonNumber.allCases.map { .präteritumIndikativ($0) }
     case .präteritumKonjunktivII:
       return PersonNumber.allCases.map { .präteritumKonjunktivII($0) }
     case .imperativ:

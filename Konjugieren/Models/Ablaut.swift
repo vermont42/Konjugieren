@@ -7,8 +7,8 @@ struct Ablaut: Hashable {
   var appliesTo: [Conjugationgroup]
 
   private static let groupConstructors: [Character: (PersonNumber) -> Conjugationgroup] = [
-    "a": Conjugationgroup.präsensIndicativ,
-    "b": Conjugationgroup.präteritumIndicativ,
+    "a": Conjugationgroup.präsensIndikativ,
+    "b": Conjugationgroup.präteritumIndikativ,
     "c": Conjugationgroup.präsensKonjunktivI,
     "d": Conjugationgroup.präteritumKonjunktivII,
     "i": Conjugationgroup.imperativ,

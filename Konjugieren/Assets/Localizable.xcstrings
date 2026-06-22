@@ -5161,6 +5161,22 @@
         }
       }
     },
+    "VerbBrowse.sortOrder" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sortierreihenfolge"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sort Order"
+          }
+        }
+      }
+    },
     "VerbBrowse.noVerbsFound" : {
       "localizations" : {
         "de" : {

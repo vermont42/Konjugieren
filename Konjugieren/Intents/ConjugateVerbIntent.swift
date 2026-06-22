@@ -49,9 +49,9 @@ private extension Conjugationgroup {
     switch self {
     case .perfektpartizip, .präsenspartizip:
       return nil
-    case .präsensIndicativ(let pn),
+    case .präsensIndikativ(let pn),
          .präsensKonjunktivI(let pn),
-         .präteritumIndicativ(let pn),
+         .präteritumIndikativ(let pn),
          .präteritumKonjunktivII(let pn),
          .imperativ(let pn),
          .perfektIndikativ(let pn),

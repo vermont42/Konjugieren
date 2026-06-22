@@ -175,8 +175,8 @@ struct VerbView: View {
       conjugations: [conjugate(.präsenspartizip)]
     )
 
-    conjugationSection(for: Conjugationgroup.präsensIndicativ)
-    conjugationSection(for: Conjugationgroup.präteritumIndicativ)
+    conjugationSection(for: Conjugationgroup.präsensIndikativ)
+    conjugationSection(for: Conjugationgroup.präteritumIndikativ)
     conjugationSection(for: Conjugationgroup.präsensKonjunktivI)
     conjugationSection(for: Conjugationgroup.präteritumKonjunktivII)
 

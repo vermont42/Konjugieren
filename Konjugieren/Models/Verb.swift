@@ -28,7 +28,7 @@ struct Verb: Identifiable, Hashable {
     return sorted
   }
 
-  let id = UUID()
+  var id: String { infinitiv }
   let infinitiv: String
   let translation: String
   let family: Family

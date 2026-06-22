@@ -122,8 +122,8 @@ STYLE_SOURCE = ParagraphStyle(
 # --- Conjugationgroup display order and labels ---
 
 CONJUGATIONGROUP_ORDER = [
-    ("präsensIndicativ", "Präsens Indikativ"),
-    ("präteritumIndicativ", "Präteritum Indikativ"),
+    ("präsensIndikativ", "Präsens Indikativ"),
+    ("präteritumIndikativ", "Präteritum Indikativ"),
     ("präsensKonjunktivI", "Präsens Konjunktiv I"),
     ("präteritumKonjunktivII", "Präteritum Konjunktiv II"),
     ("imperativ", "Imperativ"),

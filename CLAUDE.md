@@ -102,13 +102,13 @@ Test expected values use mixed case to indicate ablaut changes:
 Examples:
 ```swift
 // Strong verb singen: i→a in Präteritum
-expectConjugation(infinitiv: "singen", conjugationgroup: .präteritumIndicativ(.firstSingular), expected: "sAng")
+expectConjugation(infinitiv: "singen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "sAng")
 
 // Modal verb wissen: irregular Präsens
-expectConjugation(infinitiv: "wissen", conjugationgroup: .präsensIndicativ(.firstSingular), expected: "wEIsS")
+expectConjugation(infinitiv: "wissen", conjugationgroup: .präsensIndikativ(.firstSingular), expected: "wEIsS")
 
 // Irregular sein: highly irregular forms
-expectConjugation(infinitiv: "sein", conjugationgroup: .präsensIndicativ(.firstSingular), expected: "BIN")
+expectConjugation(infinitiv: "sein", conjugationgroup: .präsensIndikativ(.firstSingular), expected: "BIN")
 ```
 
 This convention helps verify that `Conjugator` correctly identifies and marks ablaut regions for UI highlighting.

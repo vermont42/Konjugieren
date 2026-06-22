@@ -110,7 +110,7 @@ private struct FamilyShowcaseCard: View {
   private var settings: Settings { Current.settings }
 
   private var conjugationgroupLabel: String {
-    Conjugationgroup.präsensIndicativ(.firstSingular).displayName(lang: settings.conjugationgroupLang)
+    Conjugationgroup.präsensIndikativ(.firstSingular).displayName(lang: settings.conjugationgroupLang)
   }
 
   var body: some View {
@@ -173,7 +173,7 @@ private struct FamilyShowcaseCard: View {
 
   private func conjugationRow(personNumber: PersonNumber) -> some View {
     let infinitiv = family.representativeInfinitiv
-    let result = Conjugator.conjugate(infinitiv: infinitiv, conjugationgroup: .präsensIndicativ(personNumber))
+    let result = Conjugator.conjugate(infinitiv: infinitiv, conjugationgroup: .präsensIndikativ(personNumber))
     let conjugation: String
     switch result {
     case .success(let value):

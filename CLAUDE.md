@@ -55,6 +55,17 @@ The 36 App Store screenshots are captured by `scripts/take_screenshots.sh`. See 
 
 The project uses Swift Testing (`import Testing`) for unit tests. Tests are located in `KonjugierenTests/`.
 
+A few conventions that apply across the suite:
+
+- `import Testing` does **not** re-export Foundation transitively. A test file that uses `URL`, `Date`, `JSONEncoder`, or any other Foundation string/date API must `import Foundation` itself.
+- Prefer `@Test(arguments:)` (optionally with `zip`) when test cases differ only in their input values, so each case reports independently and the body stays single-assertion. `TimeFormatterTests`, `MixedCaseAccessibilityTests`, and parts of `StringExtensionsTests` already follow this.
+
+### Parallel execution and `@Suite(.serialized)`
+
+- Swift Testing runs suites and tests **in parallel by default**.
+- A suite that mutates shared global state — the `@MainActor var Current` world, or any `static` — must be `@Suite(.serialized)` so its tests don't race each other. That's why `SettingsTests`, `DeeplinkTests`, `QuizTests`, `QuizErrorHistoryTests`, and the `Unterminated Delimiters` sub-suite of `StringExtensionsTests` are serialized: each one swaps out parts of `Current` (e.g. `Current.fatalError = spy`) or touches UserDefaults-backed state.
+- There is no `setUp`/`tearDown`. Do per-test setup in the suite `init` or in a helper called at the top of each `@Test`. Note: on a `struct` with no stored properties, a parameterless `init()` used only for side-effecting reset can trip SwiftLint's `unneeded_synthesized_initializer` — prefer an explicit reset helper if that rule is enabled here.
+
 ### ConjugatorTests Structure
 
 `ConjugatorTests.swift` is a critical test file for conjugations, containing ~25 test functions organized by conjugationgroup and feature.
@@ -64,16 +75,23 @@ The project uses Swift Testing (`import Testing`) for unit tests. Tests are loca
 All conjugation tests use a private helper function:
 
 ```swift
-private func expectConjugation(infinitiv: String, conjugationgroup: Conjugationgroup, expected: String) {
+private func expectConjugation(
+  infinitiv: String,
+  conjugationgroup: Conjugationgroup,
+  expected: String,
+  sourceLocation: SourceLocation = #_sourceLocation
+) {
   let result = Conjugator.conjugate(infinitiv: infinitiv, conjugationgroup: conjugationgroup)
   switch result {
   case .success(let conjugation):
-    #expect(conjugation == expected, "Expected \(infinitiv) → \(expected), got \(conjugation)")
+    #expect(conjugation == expected, "Expected \(infinitiv) → \(expected), got \(conjugation)", sourceLocation: sourceLocation)
   case .failure(let err):
-    Issue.record("Failed to conjugate \(infinitiv): \(err)")
+    Issue.record("Failed to conjugate \(infinitiv): \(err)", sourceLocation: sourceLocation)
   }
 }
 ```
+
+The helper forwards `sourceLocation: SourceLocation = #_sourceLocation` to both `#expect` and `Issue.record`. Because `#_sourceLocation` resolves at each call site, a failing assertion reports the `expectConjugation(...)` line that actually failed rather than the helper's internal line — without that, every one of the ~hundreds of assertions funneled through this helper would collapse to a single line, making a red test impossible to locate without bisecting. Any new shared assertion helper must do the same.
 
 ### Mixed-Case Convention in Test Expectations
 
@@ -288,6 +306,10 @@ struct OuterTests {
   }
 }
 ```
+
+A suite also needs `@MainActor` when it merely **compares two app values inside `#expect` whose `Equatable` conformance is main-actor-isolated** — no "call into app code" required. A non-`@MainActor` suite doing `#expect(parsedSegments == [...])` on isolated model types (e.g. the `StringExtensions` markup enums) hits:
+
+> `main actor-isolated conformance of '…' to 'Equatable' cannot be used in nonisolated context`
 
 ## Terminology
 

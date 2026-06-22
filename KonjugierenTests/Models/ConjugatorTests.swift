@@ -995,13 +995,18 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "kosten", conjugationgroup: .präsensIndicativ(.thirdSingular), expected: "kostet")
   }
 
-  private func expectConjugation(infinitiv: String, conjugationgroup: Conjugationgroup, expected: String) {
+  private func expectConjugation(
+    infinitiv: String,
+    conjugationgroup: Conjugationgroup,
+    expected: String,
+    sourceLocation: SourceLocation = #_sourceLocation
+  ) {
     let result = Conjugator.conjugate(infinitiv: infinitiv, conjugationgroup: conjugationgroup)
     switch result {
     case .success(let conjugation):
-      #expect(conjugation == expected, "Expected \(infinitiv) → \(expected), got \(conjugation)")
+      #expect(conjugation == expected, "Expected \(infinitiv) → \(expected), got \(conjugation)", sourceLocation: sourceLocation)
     case .failure(let err):
-      Issue.record("Failed to conjugate \(infinitiv): \(err)")
+      Issue.record("Failed to conjugate \(infinitiv): \(err)", sourceLocation: sourceLocation)
     }
   }
 }

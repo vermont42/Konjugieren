@@ -164,9 +164,12 @@ Shared/
 
 KonjugierenTests/
 ├── Models/
-│   ├── ConjugatorTests.swift   # Comprehensive conjugation tests (~50 test functions)
+│   ├── ConjugationgroupTests.swift # Conjugationgroup.ending(family:) ending-table tests
+│   ├── ConjugatorTests.swift   # Comprehensive conjugation tests (~50 test functions), incl. error paths
+│   ├── PersonNumberTests.swift # Pronoun and sie-disambiguation tests
 │   ├── QuizErrorHistoryTests.swift # Quiz error persistence tests
-│   └── QuizTests.swift         # Quiz logic and scoring tests
+│   ├── QuizTests.swift         # Quiz logic, scoring, and timer pause/resume tests
+│   └── VerbTests.swift         # Verb.stamm and endingIsValid tests
 └── Utils/
     ├── DeeplinkTests.swift     # Deeplink URL parsing and handling tests
     ├── MixedCaseAccessibilityTests.swift  # VoiceOver label generation tests

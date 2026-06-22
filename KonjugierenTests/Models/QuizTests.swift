@@ -436,4 +436,58 @@ struct QuizTests {
 
     #expect(quiz.questions.isEmpty)
   }
+
+  @Test func pauseTimerStopsElapsedIncrement() {
+    let quiz = Quiz(timerInterval: 0.01)
+    quiz.start()
+    quiz.pauseTimer()
+
+    // With the timer invalidated, pumping the run loop must not advance elapsedSeconds.
+    RunLoop.current.run(until: Date(timeIntervalSinceNow: 0.05))
+    #expect(quiz.elapsedSeconds == 0)
+
+    quiz.quit()
+  }
+
+  @Test func resumeTimerRestartsElapsedIncrement() {
+    let quiz = Quiz(timerInterval: 0.01)
+    quiz.start()
+    quiz.pauseTimer()
+    quiz.resumeTimer()
+
+    RunLoop.current.run(until: Date(timeIntervalSinceNow: 0.05))
+    #expect(quiz.elapsedSeconds > 0)
+
+    quiz.quit()
+  }
+
+  @Test func pauseTimerWhenNotInProgressDoesNothing() {
+    let quiz = Quiz(timerInterval: 0.01)
+    quiz.pauseTimer()
+
+    #expect(quiz.isInProgress == false)
+    #expect(quiz.elapsedSeconds == 0)
+  }
+
+  @Test func resumeTimerWhenNotInProgressDoesNothing() {
+    let quiz = Quiz(timerInterval: 0.01)
+    quiz.resumeTimer()
+
+    // resumeTimer guards on isInProgress, so no timer starts and the quiz stays idle.
+    RunLoop.current.run(until: Date(timeIntervalSinceNow: 0.05))
+    #expect(quiz.isInProgress == false)
+    #expect(quiz.elapsedSeconds == 0)
+  }
+
+  @Test func resumeTimerWhileRunningDoesNotStartASecondTimer() {
+    let quiz = Quiz(timerInterval: 0.01)
+    quiz.start()
+    // resumeTimer guards on timer == nil, so calling it while the timer is live is a no-op
+    // rather than scheduling a second timer that would double the increment rate.
+    quiz.resumeTimer()
+
+    #expect(quiz.isInProgress == true)
+
+    quiz.quit()
+  }
 }

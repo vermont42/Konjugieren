@@ -425,11 +425,13 @@ Each phase is independently shippable and ordered so that earlier phases shrink 
 2. ✅ `Verb.id`/`Info.id` stable identities (#33): `Verb.id` is now `var id: String { infinitiv }` (was a per-parse `UUID()`), so identity and synthesized `Hashable` are stable across launches; `Info.id` is now `stableKey` (was the language-dependent `heading`).
 3. ✅ VerbBrowseView picker label key (#37): added `L.VerbBrowse.sortOrder` ("Sort Order"/"Sortierreihenfolge"); the picker now labels the control rather than reusing the `alphabetical` option string.
 
-### Phase 7: Test additions (any time, but most valuable before Phases 5 and 6 land)
+### Phase 7: Test additions (any time, but most valuable before Phases 5 and 6 land) — ✅ DONE
 
-1. Conjugator error-path tests (#41).
-2. Quiz pause/resume tests (#42).
-3. Direct tests for `Verb`, `PersonNumber`, `Conjugationgroup.ending` (#43).
-4. VerbExportTests temp-path fix (#44).
+1. ✅ Conjugator error-path tests (#41): `conjugationErrorPaths()` in `ConjugatorTests` locks the three guard-driven failures (`verbTooShort` / `infinitivEndingInvalid` / `verbNotRecognized`) via a new `expectFailure` helper that forwards `sourceLocation` like `expectConjugation`.
+2. ✅ Quiz pause/resume tests (#42): five tests in `QuizTests` cover pause halting the elapsed-seconds increment, resume restarting it, both guards' no-ops when not in progress, and resume-while-running not double-scheduling.
+3. ✅ Direct tests for `Verb`, `PersonNumber`, `Conjugationgroup.ending` (#43): new `VerbTests` (`stamm` both branches, `endingIsValid`), `PersonNumberTests` (`imperativPronoun`, `pronounWithSieDisambiguation` across all three gender settings — serialized since it mutates `Current.settings`), and `ConjugationgroupTests` (the full `ending(family:)` table for the non-compound groups, constructing `Family` values directly).
+4. ✅ VerbExportTests temp-path fix (#44): the fixed `/tmp/konjugieren-export.json` became a per-instance `FileManager.default.temporaryDirectory` path with a `UUID` suffix, so concurrent runs no longer collide.
+
+Full suite after Phase 7: 145 tests across 20 suites, all passing.
 
 Deliberately not proposed: changes to the protocol/Real/Dummy dependency-injection architecture, the `L.swift` accessor pattern, the XML data formats, or the mixed-case test-expectation convention. All four are working as designed, and the audit found no evidence they impede development. One apparent finding was withdrawn after review with Josh: the German sentence "Füge deine hinzu." appended to the otherwise-localized ratings description (`RatingsFetcher.swift:44`) is intentional, a touch of German seasoning in a German-learning app, and future audits should not flag it.

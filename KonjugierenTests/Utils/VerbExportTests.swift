@@ -7,7 +7,9 @@ import Testing
 @Suite("VerbExport")
 @MainActor
 struct VerbExportTests {
-  private static let outputPath = "/tmp/konjugieren-export.json"
+  // A per-instance unique path so parallel or concurrent test runs do not collide.
+  private let outputURL = FileManager.default.temporaryDirectory
+    .appendingPathComponent("konjugieren-export-\(UUID().uuidString).json")
 
   // Conjugationgroup factories in VerbView display order (excluding partizipien)
   private static let conjugationgroupFactories: [(String, (PersonNumber) -> Conjugationgroup)] = [
@@ -142,7 +144,7 @@ struct VerbExportTests {
     let encoder = JSONEncoder()
     encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
     let data = try encoder.encode(verbs)
-    try data.write(to: URL(fileURLWithPath: Self.outputPath))
+    try data.write(to: outputURL)
   }
 }
 

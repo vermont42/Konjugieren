@@ -995,6 +995,13 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "kosten", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "kostet")
   }
 
+  @Test func conjugationErrorPaths() {
+    // The three guards run in order: length, then ending validity, then recognition.
+    expectFailure(infinitiv: "ab", expectedError: .verbTooShort)
+    expectFailure(infinitiv: "xyzzy", expectedError: .infinitivEndingInvalid)
+    expectFailure(infinitiv: "blorfen", expectedError: .verbNotRecognized)
+  }
+
   private func expectConjugation(
     infinitiv: String,
     conjugationgroup: Conjugationgroup,
@@ -1007,6 +1014,21 @@ struct ConjugatorTests {
       #expect(conjugation == expected, "Expected \(infinitiv) → \(expected), got \(conjugation)", sourceLocation: sourceLocation)
     case .failure(let err):
       Issue.record("Failed to conjugate \(infinitiv): \(err)", sourceLocation: sourceLocation)
+    }
+  }
+
+  private func expectFailure(
+    infinitiv: String,
+    expectedError: ConjugatorError,
+    sourceLocation: SourceLocation = #_sourceLocation
+  ) {
+    // The conjugationgroup is irrelevant: all three guards run before the group switch.
+    let result = Conjugator.conjugate(infinitiv: infinitiv, conjugationgroup: .perfektpartizip)
+    switch result {
+    case .success(let conjugation):
+      Issue.record("Expected \(infinitiv) to fail with \(expectedError), got \(conjugation)", sourceLocation: sourceLocation)
+    case .failure(let err):
+      #expect(err == expectedError, "Expected \(infinitiv) to fail with \(expectedError), got \(err)", sourceLocation: sourceLocation)
     }
   }
 }

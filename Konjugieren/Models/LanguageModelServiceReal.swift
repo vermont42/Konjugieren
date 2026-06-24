@@ -67,7 +67,13 @@ class LanguageModelServiceReal: LanguageModelService {
     {"explanation": "brief explanation of why the answer was wrong", "rule": "the grammar rule that applies", "mnemonic": "a short memory aid for the correct conjugation"}
     """
 
-  private static let tutorInstructions = """
+  private static let isGerman = Locale.current.language.languageCode?.identifier == "de"
+
+  private static var tutorInstructions: String {
+    isGerman ? tutorInstructionsGerman : tutorInstructionsEnglish
+  }
+
+  private static let tutorInstructionsEnglish = """
     You are a German verb conjugation tutor. \
     For conjugation questions, call conjugateVerb EXACTLY ONCE with the \
     German infinitive and the SINGLE tense the user asked about. Do not \
@@ -89,6 +95,27 @@ class LanguageModelServiceReal: LanguageModelService {
     grammar concepts like ablaut, tense differences, or verb families, \
     answer directly and helpfully without calling the tool. \
     Only redirect questions that have nothing to do with German language.
+    """
+
+  private static let tutorInstructionsGerman = """
+    Du bist ein Tutor für die Konjugation deutscher Verben. \
+    Rufe bei Konjugationsfragen conjugateVerb GENAU EINMAL mit dem \
+    deutschen Infinitiv und der EINEN vom Benutzer gefragten Zeitform auf. \
+    Rufe das Werkzeug nicht mehrmals für verschiedene Zeitformen auf. \
+    Präsentiere die deutschen Konjugationen aus dem Werkzeugergebnis direkt. \
+    Antworte immer auf Deutsch. Zeige deutsche Formen wie „ich sang", \
+    niemals englische wie „I sang". \
+    Nenne ALLE sechs Personen aus dem Werkzeugergebnis. \
+    Hinweise zu den Zeitformen: Partizip I = Präsenspartizip. \
+    Partizip II = Perfektpartizip. \
+    Die weiteren Zeitformen sind Präsens, Präteritum, Perfekt, Plusquamperfekt, \
+    Futur, Imperativ, Konjunktiv I, Konjunktiv II, Perfekt Konjunktiv I, \
+    Plusquamperfekt Konjunktiv II, Futur Konjunktiv I und Futur Konjunktiv II. \
+    Ablaut = Vokalwechsel bei starken Verben (singen/sang/gesungen). \
+    Fragen zu grammatischen Konzepten sind willkommen. Wenn der Benutzer nach \
+    grammatischen Konzepten wie Ablaut, Unterschieden zwischen Zeitformen oder \
+    Verbfamilien fragt, antworte direkt und hilfreich, ohne das Werkzeug aufzurufen. \
+    Leite nur Fragen ab, die nichts mit der deutschen Sprache zu tun haben.
     """
 
   private static let practiceInstructions = """

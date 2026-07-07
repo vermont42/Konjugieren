@@ -2,6 +2,10 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Pending Work: Code-Review Remediation
+
+The July 2026 full-codebase review produced [`docs/code-review-recommendations.md`](docs/code-review-recommendations.md): seventeen ranked findings with a six-phase implementation sequence at the bottom. None of the phases has been implemented yet. When Josh asks to work on remediation, start from that file's "Suggested Implementation Sequence"; the phases are independently shippable, and earlier phases are ordered by impact per unit of risk. As phases land, mark them complete in that doc the way `docs/code-audit.md` marks its phases (✅ per item, plus a status line in the intro). Delete this section when all six phases are complete.
+
 ## Build and Test Commands
 
 This project uses the [`ios-build-verify`](https://github.com/vermont42/ios-build-verify) Claude Code skill for build and test. The scripts pipe `xcodebuild` through `xcbeautify` for concise output and tee raw output to `build.log` as a fallback. Per-project config lives in `.claude/ios-build-verify.config.sh` (gitignored).

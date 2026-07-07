@@ -186,6 +186,7 @@ docs/
 ├── bug-report-grep-silent-truncation.md  # Bug report draft (filed as anthropics/claude-code #56751): long-line `grep` matches silently disappear from Bash tool output
 ├── claude-code-skill-recommendations.md  # Curated third-party Claude Code skills worth installing for Konjugieren work
 ├── code-audit.md              # Full-codebase audit (June 2026): bugs, duplication, dead code, smells, test gaps, phased implementation order
+├── code-review-recommendations.md  # Second full-codebase review (July 2026): ranked recommendations across game, widget, deeplink, and concurrency findings, with a phased implementation sequence
 ├── conjugationgroupText.md    # Template and guidelines for conjugationgroup articles
 ├── control-center-controls.md  # iOS 18+ ControlWidget constraints on `openAppWhenRun`/`OpenURLIntent` and the Shared/ dual-target pattern
 ├── emoji-assets.md            # Why some emoji ship as PNG assets (iOS 26 emoji-rendering workaround)

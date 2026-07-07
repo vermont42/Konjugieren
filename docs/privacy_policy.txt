@@ -1,0 +1,203 @@
+PRIVACY POLICY FOR KONJUGIEREN
+
+Effective Date: February 12, 2025
+Developer: Josh Adams
+
+
+1. INTRODUCTION
+
+Konjugieren is an iOS app for learning German verb conjugations. This privacy policy explains what information the app collects, how that information is used, and what choices you have.
+
+
+2. INFORMATION WE COLLECT
+
+Konjugieren collects anonymized usage analytics to help improve the app. These analytics record:
+
+- Which screens you visit (verb browser, quiz, family browser, info articles, settings)
+- Quiz lifecycle events (starting, quitting, or completing a quiz)
+- Quiz difficulty level (regular or ridiculous) when you quit or complete a quiz
+- How far you progressed in a quiz if you quit early (question number reached)
+
+That is all. The app does not record your quiz answers, your scores, the verbs you look up, or any text you type.
+
+
+3. HOW WE USE THIS INFORMATION
+
+Anonymized analytics help us understand which features are engaging and where the app can be improved. For example, if most users quit quizzes early, that suggests the quiz experience needs work.
+
+
+4. TELEMETRYDECK AND ANONYMIZATION
+
+Analytics are processed by TelemetryDeck, a privacy-focused analytics provider based in Germany.
+
+TelemetryDeck uses a two-stage hashing process to ensure anonymity:
+
+- On your device, any identifiers are salted and hashed before leaving the app.
+- On TelemetryDeck's servers, the already-hashed data is hashed again.
+
+This means neither the developer nor TelemetryDeck can reconstruct original user identifiers or trace analytics data back to any individual.
+
+TelemetryDeck is GDPR compliant, does not use third-party cookies, and encrypts all data in transit with SSL/TLS.
+
+For more information, visit TelemetryDeck's privacy page:
+https://telemetrydeck.com/privacy/
+
+
+5. WHAT WE DO NOT COLLECT
+
+Konjugieren does not collect:
+
+- Names, email addresses, or other personal identifiers
+- Location data
+- Device identifiers that can be traced back to you
+- Advertising identifiers (the app contains no advertising)
+- Quiz answers, scores, or any text you type
+- Photos, contacts, or other on-device data
+- Browsing history or data from other apps
+
+
+6. GAME CENTER
+
+Konjugieren integrates with Apple Game Center for quiz leaderboards. When you submit a score, Game Center handles that data according to Apple's privacy policy. The developer does not have access to your Game Center identity or personal information through this integration.
+
+Apple's privacy policy is available at:
+https://www.apple.com/legal/privacy/
+
+
+7. THIRD-PARTY SERVICES
+
+The app uses two third-party services:
+
+TelemetryDeck (anonymized analytics)
+Privacy policy: https://telemetrydeck.com/privacy/
+
+Apple Game Center (leaderboards)
+Privacy policy: https://www.apple.com/legal/privacy/
+
+
+8. CHILDREN'S PRIVACY
+
+Konjugieren does not knowingly collect personal information from children under 13 (as defined by the U.S. Children's Online Privacy Protection Act) or under 16 (as defined by the EU General Data Protection Regulation). Because the app collects only anonymized, non-personal analytics, no age-identifiable data is stored.
+
+
+9. DATA RETENTION
+
+Anonymized analytics data is retained by TelemetryDeck in accordance with their data-retention policy. Because the data is anonymized and cannot be linked to individual users, deletion requests for specific users cannot be fulfilled -- there is nothing to delete.
+
+
+10. CHANGES TO THIS POLICY
+
+If this privacy policy changes, the updated version will be posted with a new effective date. Continued use of the app after changes are posted constitutes acceptance of the revised policy.
+
+
+11. CONTACT
+
+If you have questions about this privacy policy, contact:
+
+Josh Adams
+vermontcoder@gmail.com
+
+
+────────────────────────────────────────────────────
+DEUTSCHE ÜBERSETZUNG / GERMAN TRANSLATION
+────────────────────────────────────────────────────
+
+
+DATENSCHUTZRICHTLINIE FÜR KONJUGIEREN
+
+Datum des Inkrafttretens: 12. Februar 2025
+Entwickler: Josh Adams
+
+
+1. EINLEITUNG
+
+Konjugieren ist eine iOS-App zum Erlernen deutscher Verbkonjugationen. Diese Datenschutzrichtlinie erläutert, welche Informationen die App erhebt, wie diese Informationen verwendet werden und welche Wahlmöglichkeiten Sie haben.
+
+
+2. WELCHE INFORMATIONEN WIR ERHEBEN
+
+Konjugieren erhebt anonymisierte Nutzungsanalysen, um die App zu verbessern. Diese Analysen erfassen:
+
+- Welche Bildschirme Sie besuchen (Verbbrowser, Quiz, Familienbrowser, Infoartikel, Einstellungen)
+- Quiz-Lebenszyklus-Ereignisse (Starten, Abbrechen oder Abschließen eines Quiz)
+- Quiz-Schwierigkeitsgrad (normal oder absurd) beim Abbrechen oder Abschließen eines Quiz
+- Ihren Fortschritt in einem Quiz, falls Sie es vorzeitig abbrechen (erreichte Fragennummer)
+
+Das ist alles. Die App zeichnet weder Ihre Quizantworten noch Ihre Ergebnisse, die von Ihnen nachgeschlagenen Verben oder eingegebenen Texte auf.
+
+
+3. WIE WIR DIESE INFORMATIONEN VERWENDEN
+
+Anonymisierte Analysen helfen uns zu verstehen, welche Funktionen ansprechend sind und wo die App verbessert werden kann. Wenn beispielsweise die meisten Benutzer ein Quiz vorzeitig abbrechen, deutet dies darauf hin, dass das Quiz-Erlebnis überarbeitet werden muss.
+
+
+4. TELEMETRYDECK UND ANONYMISIERUNG
+
+Die Analysen werden von TelemetryDeck verarbeitet, einem datenschutzorientierten Analyseanbieter mit Sitz in Deutschland.
+
+TelemetryDeck verwendet ein zweistufiges Hashverfahren zur Gewährleistung der Anonymität:
+
+- Auf Ihrem Gerät werden alle Kennungen vor dem Verlassen der App mit einem Salt versehen und gehasht.
+- Auf den Servern von TelemetryDeck werden die bereits gehashten Daten erneut gehasht.
+
+Das bedeutet, dass weder der Entwickler noch TelemetryDeck ursprüngliche Benutzerkennungen rekonstruieren oder Analysedaten einer einzelnen Person zuordnen können.
+
+TelemetryDeck ist DSGVO-konform, verwendet keine Drittanbieter-Cookies und verschlüsselt alle Daten während der Übertragung mit SSL/TLS.
+
+Weitere Informationen finden Sie auf der Datenschutzseite von TelemetryDeck:
+https://telemetrydeck.com/privacy/
+
+
+5. WAS WIR NICHT ERHEBEN
+
+Konjugieren erhebt keine:
+
+- Namen, E-Mail-Adressen oder andere persönliche Kennungen
+- Standortdaten
+- Gerätekennungen, die auf Sie zurückgeführt werden können
+- Werbekennungen (die App enthält keine Werbung)
+- Quizantworten, Ergebnisse oder eingegebene Texte
+- Fotos, Kontakte oder andere Daten auf Ihrem Gerät
+- Browserverlauf oder Daten anderer Apps
+
+
+6. GAME CENTER
+
+Konjugieren ist mit Apple Game Center für Quiz-Bestenlisten integriert. Wenn Sie ein Ergebnis einreichen, verarbeitet Game Center diese Daten gemäß der Datenschutzrichtlinie von Apple. Der Entwickler hat über diese Integration keinen Zugriff auf Ihre Game-Center-Identität oder persönliche Informationen.
+
+Die Datenschutzrichtlinie von Apple finden Sie unter:
+https://www.apple.com/legal/privacy/
+
+
+7. DRITTANBIETERDIENSTE
+
+Die App verwendet zwei Drittanbieterdienste:
+
+TelemetryDeck (anonymisierte Analysen)
+Datenschutzrichtlinie: https://telemetrydeck.com/privacy/
+
+Apple Game Center (Bestenlisten)
+Datenschutzrichtlinie: https://www.apple.com/legal/privacy/
+
+
+8. DATENSCHUTZ FÜR KINDER
+
+Konjugieren erhebt wissentlich keine personenbezogenen Daten von Kindern unter 13 Jahren (gemäß dem US-amerikanischen Children's Online Privacy Protection Act) oder unter 16 Jahren (gemäß der Datenschutz-Grundverordnung der EU). Da die App ausschließlich anonymisierte, nicht personenbezogene Analysen erhebt, werden keine altersidentifizierbaren Daten gespeichert.
+
+
+9. DATENSPEICHERUNG
+
+Anonymisierte Analysedaten werden von TelemetryDeck gemäß deren Datenspeicherungsrichtlinie aufbewahrt. Da die Daten anonymisiert sind und nicht mit einzelnen Benutzern verknüpft werden können, können Löschanfragen für bestimmte Benutzer nicht erfüllt werden – es gibt nichts zu löschen.
+
+
+10. ÄNDERUNGEN DIESER RICHTLINIE
+
+Falls diese Datenschutzrichtlinie geändert wird, wird die aktualisierte Fassung mit einem neuen Datum des Inkrafttretens veröffentlicht. Die fortgesetzte Nutzung der App nach Veröffentlichung von Änderungen gilt als Zustimmung zur überarbeiteten Richtlinie.
+
+
+11. KONTAKT
+
+Bei Fragen zu dieser Datenschutzrichtlinie wenden Sie sich an:
+
+Josh Adams
+vermontcoder@gmail.com

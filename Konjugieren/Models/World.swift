@@ -101,13 +101,17 @@ class World {
     case URL.quizHost:
       selectedTab = .quiz
     case URL.familyHost:
-      family = url.pathComponents[1]
+      if BrowseableFamily(rawValue: url.pathComponents[1]) != nil {
+        family = url.pathComponents[1]
+        selectedTab = .families
+      }
     case URL.infoHost:
       if
         let infoIndex = Int(url.pathComponents[1]),
         Info.infos.indices.contains(infoIndex)
       {
         info = Info.infos[infoIndex]
+        selectedTab = .info
       }
     default:
       return

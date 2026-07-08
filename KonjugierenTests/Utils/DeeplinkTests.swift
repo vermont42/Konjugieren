@@ -11,6 +11,7 @@ struct DeeplinkTests {
     Current.verb = nil
     Current.family = nil
     Current.info = nil
+    Current.selectedTab = .settings
   }
 
   @Test func isDeeplink() {
@@ -51,6 +52,7 @@ struct DeeplinkTests {
     Current.handleURL(url)
     #expect(Current.info != nil)
     #expect(Current.info?.heading == Info.infos[0].heading)
+    #expect(Current.selectedTab == .info)
     #expect(Current.verb == nil)
   }
 
@@ -58,6 +60,7 @@ struct DeeplinkTests {
     let url = URL(string: "konjugieren://info/99999")!
     Current.handleURL(url)
     #expect(Current.info == nil)
+    #expect(Current.selectedTab == .settings)
   }
 
   @Test func handleURLInfoDeeplinkNegativeIndex() {
@@ -70,8 +73,16 @@ struct DeeplinkTests {
     let url = URL(string: "konjugieren://family/strong")!
     Current.handleURL(url)
     #expect(Current.family == "strong")
+    #expect(Current.selectedTab == .families)
     #expect(Current.verb == nil)
     #expect(Current.info == nil)
+  }
+
+  @Test func handleURLFamilyDeeplinkUnknownFamily() {
+    let url = URL(string: "konjugieren://family/nonexistent")!
+    Current.handleURL(url)
+    #expect(Current.family == nil)
+    #expect(Current.selectedTab == .settings)
   }
 
   @Test func handleURLInvalidScheme() {

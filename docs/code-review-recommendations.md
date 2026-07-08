@@ -8,7 +8,7 @@ A second full-codebase review, conducted July 7, 2026, on `main` at commit c6794
 
 Findings are ranked highest impact to lowest. An implementation sequence appears at the bottom.
 
-**Status: Phases 1–2 complete.** Phase 1 (zero-risk hygiene: findings 7, 11, 12, and the finding-17 batch) and Phase 2 (game correctness: findings 1, 4, 16) have landed on `main`. Phases 3–6 remain. The full test suite stands at 156 tests across 24 suites, all passing, with a zero-warning build.
+**Status: Phases 1–3 complete.** Phase 1 (zero-risk hygiene: findings 7, 11, 12, and the finding-17 batch), Phase 2 (game correctness: findings 1, 4, 16), and Phase 3 (deeplink completion: finding 3) have landed on `main`. Phases 4–6 remain. The full test suite stands at 157 tests across 24 suites, all passing, with a zero-warning build.
 
 ---
 
@@ -220,9 +220,12 @@ Each phase is independently shippable. Earlier phases are ordered by impact per 
 
 **Note for on-device play-testing:** the simulator cannot exercise tilt controls, so confirm the invulnerability window feels right during real contact (wurst sweep, fussball bounce, diving robot minion) and that 0.75 s is neither too forgiving nor too punishing.
 
-### Phase 3: Deeplink completion (small, user-facing)
+### Phase 3: Deeplink completion (small, user-facing) — ✅ DONE
 
-1. Tab switching for info, and a wired-or-deleted decision for family (finding 3), with `DeeplinkTests` extended to cover `selectedTab`.
+1. ✅ Tab switching for info and family, and a wired (not deleted) decision for family (finding 3), with `DeeplinkTests` extended to cover `selectedTab`.
+   - ✅ `handleURL` now sets `selectedTab = .info` when a valid info index resolves, and `selectedTab = .families` when the family name resolves to a `BrowseableFamily`. Both switches are gated on valid input, mirroring the verb branch, so a bogus `info/99999` or `family/xyz` link leaves the frontmost tab alone.
+   - ✅ The family deeplink is now consumed: `FamilyBrowseView` gained a `@Bindable var world = Current` and a `navigateToDeeplinkedFamily()` helper — mapping `world.family` through `BrowseableFamily(rawValue:)`, resetting `navigationPath`, appending the family, and clearing `world.family` — called from **both** `.onChange(of: world.family)` and `.onAppear`. The `.onAppear` is load-bearing: because Families is not the default tab, a cold-launch deeplink mounts the view with `world.family` already set, and `.onChange` alone would miss that initial value (the same lazy-`TabView`-instantiation trap finding 3 describes for the info sheet).
+   - ✅ `DeeplinkTests` now resets `selectedTab = .settings` in `init` (a neutral baseline no deeplink targets, so each assertion proves a real transition), asserts `.info`/`.families` on the valid info/family cases, and adds `handleURLFamilyDeeplinkUnknownFamily` (unknown family leaves `family` nil and the tab unchanged). 157 tests across 24 suites pass.
 
 ### Phase 4: Widget freshness (the largest change; do alone on a clean tree)
 

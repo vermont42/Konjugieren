@@ -4,6 +4,7 @@ import SwiftUI
 import TipKit
 
 struct FamilyBrowseView: View {
+  @Bindable var world = Current
   @Environment(\.horizontalSizeClass) private var sizeClass
   private let exploreFamiliesTip = ExploreFamiliesTip()
   @State private var decorations = DecorationImage.allCases.shuffled()
@@ -68,7 +69,16 @@ struct FamilyBrowseView: View {
       .navigationDestination(for: Verb.self) { verb in
         VerbView(verb: verb)
       }
+      .onAppear { navigateToDeeplinkedFamily() }
+      .onChange(of: world.family) { navigateToDeeplinkedFamily() }
     }
+  }
+
+  private func navigateToDeeplinkedFamily() {
+    guard let name = world.family, let family = BrowseableFamily(rawValue: name) else { return }
+    navigationPath = NavigationPath()
+    navigationPath.append(family)
+    world.family = nil
   }
 }
 

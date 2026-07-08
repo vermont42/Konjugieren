@@ -43,9 +43,7 @@ class Quiz {
   }
 
   var elapsedTimeLiveActivity: String {
-    let minutes = elapsedSeconds / 60
-    let seconds = elapsedSeconds % 60
-    return String(format: "%d:%02d", minutes, seconds)
+    TimeFormatter.formatMinutesSeconds(elapsedSeconds)
   }
 
   var finalScore: Int {

@@ -22,7 +22,23 @@ class SoundPlayerReal: SoundPlayer {
       soundLogger.warning("Failed to set audio session category: \(error.localizedDescription)")
     }
 
+    preloadSounds()
     play(.silence) // https://forums.developer.apple.com/thread/23160
+  }
+
+  private func preloadSounds() {
+    for sound in Sound.allCases where sounds[sound.rawValue] == nil {
+      guard let audioURL = Bundle.main.url(forResource: sound.rawValue, withExtension: soundExtension) else {
+        continue
+      }
+      do {
+        let player = try AVAudioPlayer(contentsOf: audioURL)
+        player.prepareToPlay()
+        sounds[sound.rawValue] = player
+      } catch {
+        soundLogger.warning("Failed to preload sound \(sound.rawValue): \(error.localizedDescription)")
+      }
+    }
   }
 
   func startMusic() {

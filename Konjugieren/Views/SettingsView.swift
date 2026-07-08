@@ -286,7 +286,10 @@ struct SettingsView: View {
 private extension View {
   @ViewBuilder
   func settingsActionDecoration(hint: String?, tip: (any Tip)?) -> some View {
-    if let hint {
+    if let hint, let tip {
+      accessibilityHint(hint)
+        .popoverTip(tip)
+    } else if let hint {
       accessibilityHint(hint)
     } else if let tip {
       popoverTip(tip)

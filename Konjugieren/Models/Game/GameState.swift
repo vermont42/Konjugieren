@@ -37,6 +37,7 @@ class GameState {
   var score: Int = 0
   var highScore: Int = 0
   var finalScore: Int = 0
+  var achievedNewHighScore: Bool = false
   var wave: Int = 1
   var lastWaveScore: Int = 0
   var waveCompleteTime: Date?
@@ -189,6 +190,7 @@ class GameState {
     mechanicBag = []
     hasSpawnedFirstMechanic = false
     gameOverTime = nil
+    achievedNewHighScore = false
     startTime = .now
 
     resetWaveState()
@@ -987,6 +989,7 @@ class GameState {
     if finalScore > highScore {
       let isFirstGame = highScore == 0
       highScore = finalScore
+      achievedNewHighScore = true
       Current.settings.gameHighScore = finalScore
       if !isFirstGame {
         Current.reviewPrompter.promptableActionHappened()

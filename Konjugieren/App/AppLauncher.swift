@@ -4,13 +4,13 @@ import SwiftUI
 
 @main
 enum AppLauncher {
-  static func main() throws {
+  static func main() {
     Verb.verbs = VerbParser().parse()
     AblautGroup.ablautGroups = AblautGroupParser().parse()
-    if NSClassFromString("XCTestCase") == nil {
-      KonjugierenApp.main()
-    } else {
+    if World.isRunningUnitTests {
       TestApp.main()
+    } else {
+      KonjugierenApp.main()
     }
   }
 }

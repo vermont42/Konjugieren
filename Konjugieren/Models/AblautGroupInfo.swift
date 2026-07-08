@@ -8,7 +8,7 @@ struct AblautGroupInfo: Identifiable {
   var id: String { exemplar }
 
   var description: String {
-    NSLocalizedString("AblautGroupInfo.\(exemplar)", comment: "")
+    String(localized: String.LocalizationValue(stringLiteral: "AblautGroupInfo.\(exemplar)"))
   }
 
   var verbs: [Verb] {

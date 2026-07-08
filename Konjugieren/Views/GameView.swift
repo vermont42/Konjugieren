@@ -394,7 +394,7 @@ struct GameView: View {
           .font(.title2)
           .foregroundStyle(.customYellow)
 
-        if gameState.finalScore >= gameState.highScore && gameState.highScore > 0 {
+        if gameState.achievedNewHighScore {
           Text("\(L.Game.newHighScore) \(gameState.highScore)")
             .font(.headline)
             .foregroundStyle(.green)

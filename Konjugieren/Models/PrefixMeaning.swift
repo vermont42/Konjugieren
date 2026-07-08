@@ -11,7 +11,7 @@ struct PrefixMeaning: Identifiable {
 
   var pieMeaning: String {
     let key = String(prefix.dropLast())
-    return NSLocalizedString("PIEMeaning.\(key)", comment: "")
+    return String(localized: String.LocalizationValue(stringLiteral: "PIEMeaning.\(key)"))
   }
 
   private static let separableData: [(String, String, String)] = [

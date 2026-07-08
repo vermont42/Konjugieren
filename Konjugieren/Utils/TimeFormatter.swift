@@ -18,4 +18,12 @@ enum TimeFormatter {
       return "\(seconds)"
     }
   }
+
+  nonisolated static func formatMinutesSeconds(_ time: Int) -> String {
+    guard time >= 0 else { return "0:00" }
+
+    let minutes = time / 60
+    let seconds = time % 60
+    return String(format: "%d:%02d", minutes, seconds)
+  }
 }

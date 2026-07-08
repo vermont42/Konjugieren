@@ -35,7 +35,7 @@ struct BodyTextView: View {
   let segments: [TextSegment]
 
   var body: some View {
-    segments.reduce(Text(verbatim: "")) { $0 + text(for: $1) }
+    segments.reduce(Text(verbatim: "")) { Text("\($0)\(text(for: $1))") }
       .lineSpacing(4)
   }
 

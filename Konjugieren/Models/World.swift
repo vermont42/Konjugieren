@@ -37,30 +37,16 @@ class World {
     self.session = session
   }
 
+  nonisolated static let isRunningUnitTests = NSClassFromString("XCTestCase") != nil
+
   static func chooseWorld() -> World {
-#if targetEnvironment(simulator)
-    let isRunningUnitTests = NSClassFromString("XCTest") != nil
-    if isRunningUnitTests {
-      return World.unitTest
-    } else {
-      return World.real
-    }
-#else
-    return World.real
-#endif
+    isRunningUnitTests ? World.unitTest : World.real
   }
 
   static let real: World = {
     let getterSetter = GetterSetterReal()
     let settings = Settings(getterSetter: getterSetter)
-    let languageModelService: LanguageModelService = {
-      if #available(iOS 26, *) {
-        return LanguageModelServiceReal()
-      } else {
-        return LanguageModelServiceDummy()
-      }
-    }()
-    return World(settings: settings, gameCenter: GameCenterReal(), getterSetter: getterSetter, languageModelService: languageModelService, reviewPrompter: ReviewPrompterReal(settings: settings), soundPlayer: SoundPlayerReal(), utterer: UttererReal(), fatalError: FatalErrorReal(), analytics: AnalyticsReal(), session: .shared)
+    return World(settings: settings, gameCenter: GameCenterReal(), getterSetter: getterSetter, languageModelService: LanguageModelServiceReal(), reviewPrompter: ReviewPrompterReal(settings: settings), soundPlayer: SoundPlayerReal(), utterer: UttererReal(), fatalError: FatalErrorReal(), analytics: AnalyticsReal(), session: .shared)
   }()
 
   static let unitTest: World = {

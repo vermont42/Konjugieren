@@ -15,7 +15,7 @@ enum TutorChatHistory {
   }
 
   static func clear(getterSetter: GetterSetter) {
-    getterSetter.set(key: storageKey, value: "")
+    getterSetter.remove(key: storageKey)
   }
 
   static func isEmpty(getterSetter: GetterSetter) -> Bool {

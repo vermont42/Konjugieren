@@ -60,7 +60,6 @@ protocol LanguageModelService {
   var unavailabilityReason: LanguageModelUnavailability? { get }
   func explainError(context: ErrorExplainerContext) async throws -> ErrorExplanation
   func recommendPractice(aggregatedErrors: String) async throws -> PracticeRecommendation
-  var lastRetryCount: Int { get }
   func sendTutorMessage(_ message: String) async throws -> String
   func resetTutorSession()
 }

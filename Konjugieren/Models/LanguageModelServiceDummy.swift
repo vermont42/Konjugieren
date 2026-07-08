@@ -2,7 +2,6 @@
 
 @MainActor
 class LanguageModelServiceDummy: LanguageModelService {
-  var lastRetryCount: Int { 0 }
   var isAvailable: Bool { false }
   var unavailabilityReason: LanguageModelUnavailability? { .deviceNotEligible }
 

@@ -15,7 +15,6 @@ struct QuizView: View {
   @State private var showCorrectCheck = false
   @State private var showIncorrectFlash = false
   @State private var lastSubmittedCorrectCount = 0
-  @State private var lastSubmittedIndex = 0
 
   var body: some View {
     @Bindable var quiz = quiz

@@ -6,11 +6,21 @@ enum RatingsFetcher {
   nonisolated static let iTunesID = "6758258747"
 
   nonisolated static var iTunesURL: URL {
-    URL(string: "https://itunes.apple.com/lookup?id=\(iTunesID)")!
+    var components = URLComponents()
+    components.scheme = "https"
+    components.host = "itunes.apple.com"
+    components.path = "/lookup"
+    components.queryItems = [URLQueryItem(name: "id", value: iTunesID)]
+    return components.url ?? URL(filePath: "/")
   }
 
   nonisolated static var reviewURL: URL {
-    URL(string: "https://itunes.apple.com/app/id\(iTunesID)?action=write-review")!
+    var components = URLComponents()
+    components.scheme = "https"
+    components.host = "itunes.apple.com"
+    components.path = "/app/id\(iTunesID)"
+    components.queryItems = [URLQueryItem(name: "action", value: "write-review")]
+    return components.url ?? URL(filePath: "/")
   }
 
   static func fetchRatingsDescription(session: URLSession) async -> String? {

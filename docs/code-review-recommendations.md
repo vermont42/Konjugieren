@@ -8,6 +8,8 @@ A second full-codebase review, conducted July 7, 2026, on `main` at commit c6794
 
 Findings are ranked highest impact to lowest. An implementation sequence appears at the bottom.
 
+**Status: Phase 1 complete** (zero-risk hygiene: findings 7, 11, 12, and the finding-17 batch), landed on `main`. Phases 2–6 remain. The full test suite stands at 145 tests across 20 suites, all passing, with a zero-warning build.
+
 ---
 
 ## 1. Game: player damage applies every frame during sustained contact
@@ -192,12 +194,23 @@ For the record, this review examined and found no issues in: the `Conjugator` en
 
 Each phase is independently shippable. Earlier phases are ordered by impact per unit of risk; the widget phase is last among the feature phases because it is the largest single change.
 
-### Phase 1: Zero-risk hygiene (one sitting)
+### Phase 1: Zero-risk hygiene (one sitting) — ✅ DONE
 
-1. `Text` interpolation in `RichTextView` (finding 7): restores the zero-warning build.
-2. The finding-17 batch, minus any item Josh dispositions differently.
-3. Vestigial availability scaffolding and the `throws` on `AppLauncher.main()` (finding 12).
-4. Unify the test-environment probe (finding 11).
+1. ✅ `Text` interpolation in `RichTextView` (finding 7): `reduce` now folds with `Text("\($0)\(text(for: $1))")`; build is back to zero warnings.
+2. ✅ The finding-17 batch:
+   - ✅ Deleted the dead `lastSubmittedIndex` `@State` (`QuizView`).
+   - ✅ `InfoBrowseView` `ForEach` now keys by `\.element.id` (stable `Info.id`), not `\.element.heading`.
+   - ✅ `RatingsFetcher.iTunesURL`/`reviewURL` rebuilt via `URLComponents` (nil-coalesced, no force-unwrap), per Josh's choice; byte-identical to the old literals. `stubData`'s `data(using:)!` left as test-support (convention exempts test code).
+   - ✅ `Settings` `Bool` restore now falls back to the default on non-`"true"/"false"` storage; the `RawRepresentable` seed writes `defaultValue.rawValue` rather than `"\(defaultValue)"`.
+   - ✅ Added `GetterSetter.remove(key:)` (UserDefaults `removeObject`; dictionary removal in the fake) and switched `SavedGame.clear`/`TutorChatHistory.clear` off the `""` tombstone.
+   - ✅ `settingsActionDecoration` now applies hint **and** tip when both are present.
+   - ✅ Game-over "New High Score" banner gates on a new `GameState.achievedNewHighScore` flag (set in the strict-`>` persist branch, reset in `startGame`), so an exact tie no longer shows it.
+   - ✅ `SoundPlayerReal.setup()` preloads and `prepareToPlay()`s all sounds (made `Sound` `CaseIterable`), moving the first-play decode hitch to launch.
+   - ✅ Added `TimeFormatter.formatMinutesSeconds(_:)`; `Quiz.elapsedTimeLiveActivity` consumes it.
+   - ✅ `AblautGroupInfo`/`PrefixMeaning` dynamic-key lookups now use `String(localized: String.LocalizationValue(stringLiteral:))` instead of `NSLocalizedString`.
+   - ✅ Moved `lastRetryCount` out of the `LanguageModelService` protocol (and the dummy); `TutorTestView` reads it via an `as? LanguageModelServiceReal` cast.
+3. ✅ Vestigial availability scaffolding and the `throws` on `AppLauncher.main()` (finding 12): dropped `#if canImport(FoundationModels)`, the `@available(iOS 26, *)` on `LanguageModelServiceReal`/`ConjugationTool`, the always-true `if #available` in `World.real`, and `main()`'s unused `throws`.
+4. ✅ Unify the test-environment probe (finding 11): one `nonisolated static let World.isRunningUnitTests = NSClassFromString("XCTestCase") != nil`, consulted by both `chooseWorld()` and `AppLauncher`, with the `targetEnvironment(simulator)` gate removed.
 
 ### Phase 2: Game correctness (verify by on-device play-testing)
 

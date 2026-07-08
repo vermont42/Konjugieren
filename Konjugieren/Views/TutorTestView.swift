@@ -231,7 +231,7 @@ struct TutorTestView: View {
       Current.languageModelService.resetTutorSession()
       do {
         let response = try await Current.languageModelService.sendTutorMessage(query)
-        let retryCount = Current.languageModelService.lastRetryCount
+        let retryCount = (Current.languageModelService as? LanguageModelServiceReal)?.lastRetryCount ?? 0
         results.append(TutorTestResult(
           index: index + 1,
           query: query,
@@ -241,7 +241,7 @@ struct TutorTestView: View {
         ))
         Current.soundPlayer.play(.pop)
       } catch {
-        let retryCount = Current.languageModelService.lastRetryCount
+        let retryCount = (Current.languageModelService as? LanguageModelServiceReal)?.lastRetryCount ?? 0
         results.append(TutorTestResult(
           index: index + 1,
           query: query,

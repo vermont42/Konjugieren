@@ -5,6 +5,7 @@ import Foundation
 protocol GetterSetter {
   func get(key: String) -> String?
   func set(key: String, value: String)
+  func remove(key: String)
 }
 
 extension GetterSetter {

@@ -10,7 +10,7 @@ struct InfoBrowseView: View {
     NavigationStack(path: $navigationPath) {
       ScrollView {
         LazyVStack(spacing: 0) {
-          ForEach(Array(Info.infos.enumerated()), id: \.element.heading) { index, info in
+          ForEach(Array(Info.infos.enumerated()), id: \.element.id) { index, info in
             InfoRowView(info: info) { navigationPath.append(info) }
 
             Divider()

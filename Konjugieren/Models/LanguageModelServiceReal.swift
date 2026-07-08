@@ -1,15 +1,11 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
 import Foundation
-import os
-
-#if canImport(FoundationModels)
 import FoundationModels
-#endif
+import os
 
 nonisolated private let lmsLogger = KonjugierenLogger.logger(category: "LanguageModelService")
 
-@available(iOS 26, *)
 @MainActor
 @Observable
 class LanguageModelServiceReal: LanguageModelService {
@@ -278,7 +274,6 @@ class LanguageModelServiceReal: LanguageModelService {
   }
 }
 
-@available(iOS 26, *)
 struct ConjugationTool: Tool {
   let name = "conjugateVerb"
   let description = "Look up a German verb conjugation"

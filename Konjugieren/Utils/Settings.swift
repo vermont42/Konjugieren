@@ -142,14 +142,21 @@ class Settings {
     if let stored = getterSetter.get(key: key) {
       return T(rawValue: stored) ?? defaultValue
     } else {
-      getterSetter.set(key: key, value: "\(defaultValue)")
+      getterSetter.set(key: key, value: defaultValue.rawValue)
       return defaultValue
     }
   }
 
   private func restore(key: String, default defaultValue: Bool) -> Bool {
     if let stored = getterSetter.get(key: key) {
-      return stored == "true"
+      switch stored {
+      case "true":
+        return true
+      case "false":
+        return false
+      default:
+        return defaultValue
+      }
     } else {
       getterSetter.set(key: key, value: "\(defaultValue)")
       return defaultValue

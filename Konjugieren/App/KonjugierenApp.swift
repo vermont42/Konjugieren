@@ -60,6 +60,7 @@ struct KonjugierenApp: App {
             }
             WidgetSnapshotWriter.writeSnapshot()
             WidgetCenter.shared.reloadAllTimelines()
+            Current.languageModelService.refreshAvailability()
           }
         }
         .onChange(of: Current.settings.thirdPersonPronounGender) {

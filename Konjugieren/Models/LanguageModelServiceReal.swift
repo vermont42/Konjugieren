@@ -20,16 +20,12 @@ class LanguageModelServiceReal: LanguageModelService {
     let snapshot = Self.snapshot(of: model.availability)
     self.isAvailable = snapshot.isAvailable
     self.unavailabilityReason = snapshot.reason
-    Task { [weak self] in
-      while !Task.isCancelled {
-        try? await Task.sleep(for: .seconds(5))
-        guard let self else { return }
-        self.refreshAvailability()
-      }
-    }
   }
 
-  private func refreshAvailability() {
+  // Re-read model availability on demand (the app calls this when the scene becomes
+  // active) instead of a fixed forever-poll, which woke the process every 5s for the
+  // service's whole lifetime even when the tutor was never opened.
+  func refreshAvailability() {
     let snapshot = Self.snapshot(of: model.availability)
     if snapshot.isAvailable != isAvailable {
       isAvailable = snapshot.isAvailable

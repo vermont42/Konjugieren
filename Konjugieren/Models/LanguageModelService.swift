@@ -58,6 +58,7 @@ struct TutorMessage: Codable, Identifiable, Sendable {
 protocol LanguageModelService {
   var isAvailable: Bool { get }
   var unavailabilityReason: LanguageModelUnavailability? { get }
+  func refreshAvailability()
   func explainError(context: ErrorExplainerContext) async throws -> ErrorExplanation
   func recommendPractice(aggregatedErrors: String) async throws -> PracticeRecommendation
   func sendTutorMessage(_ message: String) async throws -> String

@@ -5,6 +5,8 @@ class LanguageModelServiceDummy: LanguageModelService {
   var isAvailable: Bool { false }
   var unavailabilityReason: LanguageModelUnavailability? { .deviceNotEligible }
 
+  func refreshAvailability() {}
+
   func explainError(context: ErrorExplainerContext) async throws -> ErrorExplanation {
     ErrorExplanation(explanation: "", rule: "", mnemonic: "")
   }

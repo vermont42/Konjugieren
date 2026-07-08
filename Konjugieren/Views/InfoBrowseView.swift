@@ -32,7 +32,10 @@ struct InfoBrowseView: View {
           }
         }
       }
-      .onAppear { Current.analytics.signal(name: .viewInfoBrowseView) }
+      .onAppear {
+        Current.analytics.signal(name: .viewInfoBrowseView)
+        Current.languageModelService.refreshAvailability()
+      }
       .navigationTitle(L.Navigation.info)
       .navigationDestination(for: String.self) { destination in
         if destination == "tutor" {

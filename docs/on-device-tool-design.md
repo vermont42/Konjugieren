@@ -200,19 +200,25 @@ The on-device model can enter infinite tool-calling loops, requesting the same c
 **Fix:** Add a call counter with a circuit breaker. Reset the counter before each retry attempt:
 
 ```swift
-nonisolated(unsafe) private static var callCount = 0
+@MainActor private static var callCount = 0
 private static let maxCallsPerSession = 15
 
 func call(arguments: Arguments) async throws -> String {
-  Self.callCount += 1
-  if Self.callCount > Self.maxCallsPerSession {
+  // Tool.call is nonisolated; hop to the main actor to touch the counter (and to
+  // run the @MainActor Conjugator) so callCount lives in a single isolation domain.
+  await Self.performLookup(...)
+}
+
+@MainActor private static func performLookup(...) -> String {
+  callCount += 1
+  if callCount > maxCallsPerSession {
     return "Limit reached. Respond with the conjugations you already have."
   }
   // ... normal tool logic
 }
 ```
 
-The `nonisolated(unsafe)` annotation is acceptable because tool calls are sequential within a session.
+An earlier version annotated `callCount` `nonisolated(unsafe)` on the reasoning that tool calls are sequential within a session. That is true in practice but leaves an unsynchronized static reachable from two isolation domains (`Tool.call` is nonisolated; the reset runs on the main actor) — a standing race invitation the compiler was explicitly told to ignore. Because the counter is only ever read alongside the `@MainActor` conjugation lookup, moving both onto the main actor removes the annotation without adding a lock (code-review finding 8).
 
 ## False-Positive Refusal Detection
 

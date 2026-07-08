@@ -199,11 +199,12 @@ class LanguageModelServiceReal: LanguageModelService {
         let response = try await session.respond(to: message)
         let cleaned = Self.stripMarkdown(response.content)
         let trimmed = cleaned.trimmingCharacters(in: .whitespacesAndNewlines)
-        if !trimmed.isEmpty && !Self.isLikelyRefusal(cleaned) {
+        let matchedPhrase = trimmed.isEmpty ? nil : Self.refusalPhrase(in: cleaned)
+        if !trimmed.isEmpty && matchedPhrase == nil {
           lastRetryCount = attempt
           return cleaned
         }
-        let reason = trimmed.isEmpty ? "empty response" : "likely refusal"
+        let reason = trimmed.isEmpty ? "empty response" : "likely refusal (matched \"\(matchedPhrase ?? "")\")"
         lmsLogger.info("Detected \(reason) on attempt \(attempt + 1), retrying")
         lastRefusalResponse = cleaned
       } catch {
@@ -224,45 +225,55 @@ class LanguageModelServiceReal: LanguageModelService {
     text.replacingOccurrences(of: "**", with: "")
   }
 
-  private static func isLikelyRefusal(_ response: String) -> Bool {
+  nonisolated private static let refusalPhrases = [
+    "can't assist",
+    "cannot assist",
+    "can't help",
+    "cannot help",
+    "ethical guidelines",
+    "what's your next question",
+    "away from the task at hand",
+    "unable to assist",
+    "unable to provide",
+    "no more data at my disposal",
+    "not what i was programmed",
+    "inappropriate content",
+    "cannot answer",
+    "can't answer",
+    "cannot provide",
+    "cannot fulfill",
+    "can't fulfill",
+    "unable to fulfill",
+    "outside of the scope",
+    "outside the scope",
+    "no response to this",
+    "i have no response",
+    "can't do that",
+    "cannot do that",
+    "can't continue",
+    "cannot continue",
+    // German redirects
+    "ich kann dir nicht sagen",
+    "ich kann dir keine",
+    "ich kann keine",
+    "keine prognosen",
+    "keine persönlich",
+    "ich bin ein ki,",
+    "ich bin eine ki,",
+    "ich bin ein sprachmodell",
+    "auf deinem handy",
+  ]
+
+  // Returns the refusal phrase that matched, or nil if the response is not a refusal.
+  // "null" is matched exactly rather than as a substring: it is the German word for
+  // zero, so a legitimate German answer containing "null" (or English "nullify") must
+  // not be discarded. The exact match still catches the model emitting a literal JSON null.
+  nonisolated static func refusalPhrase(in response: String) -> String? {
     let lowercased = response.lowercased()
-    return lowercased.contains("can't assist")
-      || lowercased.contains("cannot assist")
-      || lowercased.contains("can't help")
-      || lowercased.contains("cannot help")
-      || lowercased.contains("ethical guidelines")
-      || lowercased.contains("what's your next question")
-      || lowercased.contains("null")
-      || lowercased.contains("away from the task at hand")
-      || lowercased.contains("unable to assist")
-      || lowercased.contains("unable to provide")
-      || lowercased.contains("no more data at my disposal")
-      || lowercased.contains("not what i was programmed")
-      || lowercased.contains("inappropriate content")
-      || lowercased.contains("cannot answer")
-      || lowercased.contains("can't answer")
-      || lowercased.contains("cannot provide")
-      || lowercased.contains("cannot fulfill")
-      || lowercased.contains("can't fulfill")
-      || lowercased.contains("unable to fulfill")
-      || lowercased.contains("outside of the scope")
-      || lowercased.contains("outside the scope")
-      || lowercased.contains("no response to this")
-      || lowercased.contains("i have no response")
-      || lowercased.contains("can't do that")
-      || lowercased.contains("cannot do that")
-      || lowercased.contains("can't continue")
-      || lowercased.contains("cannot continue")
-      // German redirects
-      || lowercased.contains("ich kann dir nicht sagen")
-      || lowercased.contains("ich kann dir keine")
-      || lowercased.contains("ich kann keine")
-      || lowercased.contains("keine prognosen")
-      || lowercased.contains("keine persönlich")
-      || lowercased.contains("ich bin ein ki,")
-      || lowercased.contains("ich bin eine ki,")
-      || lowercased.contains("ich bin ein sprachmodell")
-      || lowercased.contains("auf deinem handy")
+    if lowercased.trimmingCharacters(in: .whitespacesAndNewlines) == "null" {
+      return "null"
+    }
+    return refusalPhrases.first { lowercased.contains($0) }
   }
 
   func resetTutorSession() {
@@ -274,10 +285,10 @@ struct ConjugationTool: Tool {
   let name = "conjugateVerb"
   let description = "Look up a German verb conjugation"
 
-  nonisolated(unsafe) private static var callCount = 0
+  @MainActor private static var callCount = 0
   private static let maxCallsPerSession = 3
 
-  static func resetCallCount() {
+  @MainActor static func resetCallCount() {
     callCount = 0
   }
 
@@ -296,20 +307,25 @@ struct ConjugationTool: Tool {
   }
 
   func call(arguments: Arguments) async throws -> String {
-    Self.callCount += 1
-    if Self.callCount > Self.maxCallsPerSession {
-      lmsLogger.warning("Tool call limit reached (\(Self.maxCallsPerSession))")
+    await Self.performLookup(infinitiv: arguments.infinitiv, conjugationgroupName: arguments.conjugationgroup)
+  }
+
+  // Tool.call is nonisolated, but Conjugator.conjugate and englishDisplayName
+  // are @MainActor (via SWIFT_DEFAULT_ACTOR_ISOLATION). Counting also lives here so
+  // callCount is touched only from the main actor, never across isolation domains.
+  @MainActor private static func performLookup(infinitiv: String, conjugationgroupName: String) -> String {
+    callCount += 1
+    if callCount > maxCallsPerSession {
+      lmsLogger.warning("Tool call limit reached (\(maxCallsPerSession))")
       return "Limit reached. Respond with the conjugations you already have."
     }
-    lmsLogger.info("Tool call: infinitiv=\(arguments.infinitiv) conjugationgroup=\(arguments.conjugationgroup)")
-    let result = await Self.performLookup(infinitiv: arguments.infinitiv, conjugationgroupName: arguments.conjugationgroup)
+    lmsLogger.info("Tool call: infinitiv=\(infinitiv) conjugationgroup=\(conjugationgroupName)")
+    let result = conjugate(infinitiv: infinitiv, conjugationgroupName: conjugationgroupName)
     lmsLogger.info("Tool result: \(result)")
     return result
   }
 
-  // Tool.call is nonisolated, but Conjugator.conjugate and englishDisplayName
-  // are @MainActor (via SWIFT_DEFAULT_ACTOR_ISOLATION). This helper bridges the gap.
-  @MainActor private static func performLookup(infinitiv: String, conjugationgroupName: String) -> String {
+  @MainActor private static func conjugate(infinitiv: String, conjugationgroupName: String) -> String {
     if let conjugationgroup = buildConjugationgroup(name: conjugationgroupName, personNumber: nil) {
       let result = Conjugator.conjugate(infinitiv: infinitiv, conjugationgroup: conjugationgroup)
       switch result {

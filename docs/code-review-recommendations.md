@@ -8,7 +8,7 @@ A second full-codebase review, conducted July 7, 2026, on `main` at commit c6794
 
 Findings are ranked highest impact to lowest. An implementation sequence appears at the bottom.
 
-**Status: Phases 1–4 complete.** Phase 1 (zero-risk hygiene: findings 7, 11, 12, and the finding-17 batch), Phase 2 (game correctness: findings 1, 4, 16), Phase 3 (deeplink completion: finding 3), and Phase 4 (widget freshness: findings 2, 6, 15) have landed on `main`. Phases 5–6 remain. The full test suite stands at 170 tests across 26 suites, all passing, with a zero-warning build.
+**Status: Phases 1–5 complete** (finding 13 deferred by design). Phase 1 (zero-risk hygiene: findings 7, 11, 12, and the finding-17 batch), Phase 2 (game correctness: findings 1, 4, 16), Phase 3 (deeplink completion: finding 3), Phase 4 (widget freshness: findings 2, 6, 15), and Phase 5 (tutor and concurrency: findings 8, 9, 10; finding 13 deferred until the disabled surfaces return) have landed on `main`. Phase 6 remains. The full test suite stands at 173 tests across 27 suites, all passing, with a zero-warning build.
 
 ---
 
@@ -234,12 +234,12 @@ Each phase is independently shippable. Earlier phases are ordered by impact per 
 3. ✅ The finding-15 folds: dropped the `KonjugierenApp.init()` snapshot write (the `.active` scene-phase write covers launch); pinned all writer day arithmetic and the `dateString` formatter to `WidgetConstants.gregorianCalendar` (`Calendar(identifier: .gregorian)` + `Locale("en_US_POSIX")`); guarded `LargeWidgetView`'s `präsensParadigm[row]`/`[row + 3]` indexing behind a `count >= 6` check. `WidgetSnapshotTests.date(_:)` pins the same calendar/locale.
 4. ⏳ **On-device verification still owed:** confirm a real midnight rollover advances the verb/quiz with the app killed, and that tapping Next Verb pages while the app is not foregrounded. The paging math, bundle generation, and round-trip are covered by unit tests, but WidgetKit's timeline scheduling can't be exercised in the simulator harness.
 
-### Phase 5: Tutor and concurrency cleanups
+### Phase 5: Tutor and concurrency cleanups — ✅ DONE (finding 13 deferred by design)
 
-1. Remove `nonisolated(unsafe)` from `ConjugationTool` by counting on the main actor (finding 8).
-2. Replace availability polling with edge-driven refresh (finding 9).
-3. Fix the "null" refusal match and add refusal-phrase logging (finding 10).
-4. When the disabled surfaces return: structured generation via `@Generable` (finding 13).
+1. ✅ Removed `nonisolated(unsafe)` from `ConjugationTool` (finding 8): `callCount` and `resetCallCount()` are now `@MainActor`, and `call` (which satisfies the nonisolated `Tool.call` requirement) `await`s a single `@MainActor performLookup` that counts, checks the limit, logs, and delegates the pure conjugation to a new `conjugate(...)` helper. The counter is now touched from one isolation domain only, so the `nonisolated(unsafe)` annotation and the compiler's silenced data-race objection are both gone, with no lock added. `docs/on-device-tool-design.md`'s "Tool-Call Loops" section was updated off the old pattern.
+2. ✅ Replaced availability polling with edge-driven refresh (finding 9): landed earlier in commit `e3a7369`. The never-cancelled 5-second `Task` poll is gone from `init()`; `refreshAvailability()` re-reads `model.availability` on demand and is called on scene activation (`KonjugierenApp`) and Info-tab appearance (`InfoBrowseView`).
+3. ✅ Fixed the "null" refusal match and added refusal-phrase logging (finding 10): `isLikelyRefusal(_:) -> Bool` became `refusalPhrase(in:) -> String?`, matching an array of phrases and returning which one tripped. "null" now matches **exactly** on the trimmed response (catching a literal JSON null) instead of as a substring, so legitimate German answers containing *null* (zero) — or English "nullify" — are no longer discarded. `sendTutorMessage` logs the matched phrase (`likely refusal (matched "…")`). New `RefusalDetectionTests` suite (13 cases) locks the "null" false-positive fix, bare-`null` detection, and a sample of genuine refusals.
+4. ⏳ **Deferred by design:** structured generation via `@Generable` (finding 13) is scoped to whichever session re-enables the disabled `explainError`/`recommendPractice` surfaces; both remain off in 1.0, so there is nothing to migrate yet.
 
 ### Phase 6: Rendering and layout polish
 

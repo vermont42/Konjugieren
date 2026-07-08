@@ -171,6 +171,7 @@ KonjugierenTests/
 │   ├── PersonNumberTests.swift # Pronoun and sie-disambiguation tests
 │   ├── QuizErrorHistoryTests.swift # Quiz error persistence tests
 │   ├── QuizTests.swift         # Quiz logic, scoring, and timer pause/resume tests
+│   ├── RefusalDetectionTests.swift # Tutor refusal-phrase detection, incl. the "null" exact-match false-positive guard
 │   └── VerbTests.swift         # Verb.stamm and endingIsValid tests
 └── Utils/
     ├── DeeplinkTests.swift     # Deeplink URL parsing and handling tests

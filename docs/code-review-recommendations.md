@@ -8,7 +8,7 @@ A second full-codebase review, conducted July 7, 2026, on `main` at commit c6794
 
 Findings are ranked highest impact to lowest. An implementation sequence appears at the bottom.
 
-**Status: Phases 1–3 complete.** Phase 1 (zero-risk hygiene: findings 7, 11, 12, and the finding-17 batch), Phase 2 (game correctness: findings 1, 4, 16), and Phase 3 (deeplink completion: finding 3) have landed on `main`. Phases 4–6 remain. The full test suite stands at 157 tests across 24 suites, all passing, with a zero-warning build.
+**Status: Phases 1–4 complete.** Phase 1 (zero-risk hygiene: findings 7, 11, 12, and the finding-17 batch), Phase 2 (game correctness: findings 1, 4, 16), Phase 3 (deeplink completion: finding 3), and Phase 4 (widget freshness: findings 2, 6, 15) have landed on `main`. Phases 5–6 remain. The full test suite stands at 170 tests across 26 suites, all passing, with a zero-warning build.
 
 ---
 
@@ -227,12 +227,12 @@ Each phase is independently shippable. Earlier phases are ordered by impact per 
    - ✅ The family deeplink is now consumed: `FamilyBrowseView` gained a `@Bindable var world = Current` and a `navigateToDeeplinkedFamily()` helper — mapping `world.family` through `BrowseableFamily(rawValue:)`, resetting `navigationPath`, appending the family, and clearing `world.family` — called from **both** `.onChange(of: world.family)` and `.onAppear`. The `.onAppear` is load-bearing: because Families is not the default tab, a cold-launch deeplink mounts the view with `world.family` already set, and `.onChange` alone would miss that initial value (the same lazy-`TabView`-instantiation trap finding 3 describes for the info sheet).
    - ✅ `DeeplinkTests` now resets `selectedTab = .settings` in `init` (a neutral baseline no deeplink targets, so each assertion proves a real transition), asserts `.info`/`.families` on the valid info/family cases, and adds `handleURLFamilyDeeplinkUnknownFamily` (unknown family leaves `family` nil and the tab unchanged). 157 tests across 24 suites pass.
 
-### Phase 4: Widget freshness (the largest change; do alone on a clean tree)
+### Phase 4: Widget freshness (the largest change; do alone on a clean tree) — ✅ DONE
 
-1. Multi-day snapshot array, per-day timeline entries, and a paging `NextVerbIntent` (finding 2).
-2. Stable answer-shuffle seed plus its unit test (finding 6).
-3. The finding-15 folds: single launch write, pinned calendar and locale, guarded paradigm indexing.
-4. Verify with a simulated date rollover and a Next Verb tap with the app killed.
+1. ✅ Multi-day snapshot array, per-day timeline entries, and a paging `NextVerbIntent` (finding 2). The app now writes a `WidgetSnapshotBundle` — `WidgetConstants.snapshotDayCount` (10) daily snapshots anchored at the current day — instead of a single snapshot. `WidgetSnapshotWriter.generateBundle(startDate:)` loops the already-deterministic `generateSnapshot(date:)` over the next N days. Both providers turn each cached day into its own timeline entry, dated at that day's local midnight, so WidgetKit advances the content at midnight with no app launch (up to 10 days of runway before the bundle goes stale). `NextVerbIntent` no longer resets quiz state (the per-day `questionID` self-invalidates it); it just increments the page offset and reloads, and the providers apply that wrap-around offset **widget-side** via `WidgetSnapshotBundle.pagedSnapshotIndices(pageOffset:)` — so the button now visibly pages without the app ever running. `AnswerQuizIntent` grades against the exact question the user saw by looking it up in the bundle by `questionID` (`SnapshotReader.snapshot(forQuestionID:)`), not by assuming today's.
+2. ✅ Stable answer-shuffle seed plus its unit test (finding 6). `SeededRNG` and the shuffle moved to `Shared/WidgetQuizShuffle.swift` as `WidgetQuizQuestion.shuffledAnswers`, seeded by `stableSeed(for:)` — an FNV-1a fold over the `questionID` UTF-8 bytes, replacing the per-process-randomized `Hasher`. `WidgetAnswerShuffleTests` locks the process-independence with a golden seed constant plus order-stability and content checks.
+3. ✅ The finding-15 folds: dropped the `KonjugierenApp.init()` snapshot write (the `.active` scene-phase write covers launch); pinned all writer day arithmetic and the `dateString` formatter to `WidgetConstants.gregorianCalendar` (`Calendar(identifier: .gregorian)` + `Locale("en_US_POSIX")`); guarded `LargeWidgetView`'s `präsensParadigm[row]`/`[row + 3]` indexing behind a `count >= 6` check. `WidgetSnapshotTests.date(_:)` pins the same calendar/locale.
+4. ⏳ **On-device verification still owed:** confirm a real midnight rollover advances the verb/quiz with the app killed, and that tapping Next Verb pages while the app is not foregrounded. The paging math, bundle generation, and round-trip are covered by unit tests, but WidgetKit's timeline scheduling can't be exercised in the simulator harness.
 
 ### Phase 5: Tutor and concurrency cleanups
 

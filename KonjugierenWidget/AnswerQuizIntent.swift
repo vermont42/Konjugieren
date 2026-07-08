@@ -24,7 +24,7 @@ struct AnswerQuizIntent: AppIntent {
       return .result()
     }
 
-    guard let snapshot = SnapshotReader.read() else {
+    guard let snapshot = SnapshotReader.snapshot(forQuestionID: questionID) else {
       return .result()
     }
 

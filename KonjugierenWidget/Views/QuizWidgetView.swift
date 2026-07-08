@@ -41,7 +41,7 @@ struct QuizWidgetView: View {
       Spacer(minLength: 0)
 
       VStack(spacing: 2) {
-        ForEach(shuffledAnswers, id: \.self) { answer in
+        ForEach(quiz.shuffledAnswers, id: \.self) { answer in
           answerButton(answer: answer)
         }
       }
@@ -80,33 +80,5 @@ struct QuizWidgetView: View {
         .background(.fill.quaternary, in: Capsule())
     }
     .buttonStyle(.plain)
-  }
-
-  private var shuffledAnswers: [String] {
-    var answers = quiz.wrongAnswers
-    answers.append(quiz.correctAnswer)
-    // Deterministic shuffle based on questionID
-    var hasher = Hasher()
-    hasher.combine(quiz.questionID)
-    let seed = hasher.finalize()
-    var rng = SeededRNG(seed: UInt64(bitPattern: Int64(seed)))
-    answers.shuffle(using: &rng)
-    return answers
-  }
-}
-
-private struct SeededRNG: RandomNumberGenerator {
-  var state: UInt64
-
-  init(seed: UInt64) {
-    state = seed
-  }
-
-  mutating func next() -> UInt64 {
-    state &+= 0x9E3779B97F4A7C15
-    var z = state
-    z = (z ^ (z >> 30)) &* 0xBF58476D1CE4E5B9
-    z = (z ^ (z >> 27)) &* 0x94D049BB133111EB
-    return z ^ (z >> 31)
   }
 }

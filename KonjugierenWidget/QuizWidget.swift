@@ -16,19 +16,23 @@ struct QuizProvider: TimelineProvider {
   }
 
   func getSnapshot(in context: Context, completion: @escaping (QuizEntry) -> Void) {
-    let snapshot = SnapshotReader.read() ?? SnapshotReader.placeholder
+    let now = Date()
+    let snapshot = SnapshotReader.currentSnapshot(now: now, pageOffset: pageOffset)
     let (isAnswered, wasCorrect) = readQuizState(snapshot: snapshot)
-    completion(QuizEntry(date: Date(), snapshot: snapshot, isAnswered: isAnswered, wasCorrect: wasCorrect))
+    completion(QuizEntry(date: now, snapshot: snapshot, isAnswered: isAnswered, wasCorrect: wasCorrect))
   }
 
   func getTimeline(in context: Context, completion: @escaping (Timeline<QuizEntry>) -> Void) {
-    let snapshot = SnapshotReader.read() ?? SnapshotReader.placeholder
-    let (isAnswered, wasCorrect) = readQuizState(snapshot: snapshot)
-    let entry = QuizEntry(date: Date(), snapshot: snapshot, isAnswered: isAnswered, wasCorrect: wasCorrect)
+    let entries = SnapshotReader.dailyEntries(now: Date(), pageOffset: pageOffset).map { pair in
+      let (isAnswered, wasCorrect) = readQuizState(snapshot: pair.snapshot)
+      return QuizEntry(date: pair.date, snapshot: pair.snapshot, isAnswered: isAnswered, wasCorrect: wasCorrect)
+    }
+    let refreshDate = (entries.last?.date ?? Date()).addingTimeInterval(86400)
+    completion(Timeline(entries: entries, policy: .after(refreshDate)))
+  }
 
-    let nextMidnight = Calendar.current.startOfDay(for: Date()).addingTimeInterval(86400)
-    let timeline = Timeline(entries: [entry], policy: .after(nextMidnight))
-    completion(timeline)
+  private var pageOffset: Int {
+    WidgetConstants.sharedDefaults?.integer(forKey: WidgetConstants.debugOffsetKey) ?? 0
   }
 
   private func readQuizState(snapshot: WidgetSnapshot) -> (isAnswered: Bool, wasCorrect: Bool) {

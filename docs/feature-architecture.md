@@ -289,25 +289,30 @@ The app provides home screen, lock screen, and Control Center widgets via a sepa
 | File | Purpose |
 |------|---------|
 | `KonjugierenWidgetBundle.swift` | Widget bundle entry point combining all widgets and live activities |
-| `VerbDesTagesWidget.swift` | Daily verb widget with timeline refreshing at midnight |
-| `QuizWidget.swift` | Daily quiz question widget with interactive answer buttons |
-| `SnapshotReader.swift` | Reads `WidgetSnapshot` from shared App Group container |
-| `WidgetSnapshotWriter.swift` | App-side: generates and writes snapshots to shared container |
-| `WidgetSnapshot.swift` | Data model for serialized widget state (verb + quiz question) |
-| `WidgetConstants.swift` | Shared App Group ID, storage keys, and file paths |
+| `VerbDesTagesWidget.swift` | Daily verb widget; emits one timeline entry per cached day so the verb advances at midnight with no app launch |
+| `QuizWidget.swift` | Daily quiz question widget with interactive answer buttons; per-day entries, each grading its own question ID |
+| `SnapshotReader.swift` | Reads the `WidgetSnapshotBundle` from shared App Group container; derives per-day entries with the page offset |
+| `WidgetSnapshotWriter.swift` | App-side: generates and writes an N-day snapshot bundle to shared container |
+| `WidgetSnapshot.swift` | Data models for serialized widget state (verb + quiz question); `WidgetSnapshotBundle` holds the N-day array + base date and the paging math |
+| `WidgetQuizShuffle.swift` | Process-stable (FNV-1a seeded) answer shuffle, shared by widget and tests |
+| `WidgetConstants.swift` | Shared App Group ID, storage keys, file paths, day count, and the pinned Gregorian/POSIX calendar |
 
 ### Data Flow
 
-The app and widget extension communicate via an App Group shared container:
+The app and widget extension communicate via an App Group shared container. Because the widget extension bundles only `Shared/` and `KonjugierenWidget/` — no `Conjugator`, `Verbs.xml`, or `WidgetSnapshotWriter` — it can only read what the app last wrote. The app therefore writes a **bundle of `WidgetConstants.snapshotDayCount` daily snapshots** (anchored at the current day), giving the widget up to that many days of runway before it goes stale. The providers turn each cached day into its own timeline entry, dated at that day's local midnight, so WidgetKit advances the content at midnight without an app launch. `NextVerbIntent` pages by incrementing a wrap-around offset that the providers apply when selecting each day's snapshot.
 
 ```
 App (WidgetSnapshotWriter)
-    → writes WidgetSnapshot JSON to shared container
+    → writes WidgetSnapshotBundle JSON (N daily snapshots) to shared container
     → calls WidgetCenter.shared.reloadAllTimelines()
 
 Widget (SnapshotReader)
-    → reads WidgetSnapshot from shared container
+    → reads WidgetSnapshotBundle from shared container
+    → emits one entry per cached day (page offset applied), dated at each midnight
     → falls back to placeholder if unavailable
+
+NextVerbIntent
+    → increments the page offset in shared defaults, reloads timelines
 ```
 
 ### Verb des Tages Widget

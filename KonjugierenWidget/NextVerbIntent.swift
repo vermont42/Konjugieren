@@ -14,11 +14,6 @@ struct NextVerbIntent: AppIntent {
     let currentOffset = defaults.integer(forKey: WidgetConstants.debugOffsetKey)
     defaults.set(currentOffset + 1, forKey: WidgetConstants.debugOffsetKey)
 
-    // Reset quiz state for new verb
-    defaults.set(false, forKey: WidgetConstants.quizAnsweredKey)
-    defaults.set(false, forKey: WidgetConstants.quizCorrectKey)
-    defaults.removeObject(forKey: WidgetConstants.quizQuestionIDKey)
-
     WidgetCenter.shared.reloadAllTimelines()
     return .result()
   }

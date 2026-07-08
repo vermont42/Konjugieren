@@ -3,23 +3,36 @@
 import Foundation
 
 enum WidgetSnapshotWriter {
+  private static let calendar = WidgetConstants.gregorianCalendar
+
   private static let referenceDate: Date = {
-    Calendar.current.date(from: DateComponents(year: 2025, month: 1, day: 1)) ?? Date()
+    calendar.date(from: DateComponents(year: 2025, month: 1, day: 1)) ?? Date()
   }()
 
   @MainActor static func writeSnapshot() {
-    guard let snapshot = generateSnapshot() else { return }
+    guard let bundle = generateBundle() else { return }
     guard let url = WidgetConstants.snapshotURL else { return }
-    guard let data = try? JSONEncoder().encode(snapshot) else { return }
+    guard let data = try? JSONEncoder().encode(bundle) else { return }
     try? data.write(to: url, options: .atomic)
+  }
+
+  @MainActor static func generateBundle(startDate: Date = Date()) -> WidgetSnapshotBundle? {
+    let baseDay = calendar.startOfDay(for: startDate)
+    var snapshots: [WidgetSnapshot] = []
+    for dayOffset in 0..<WidgetConstants.snapshotDayCount {
+      guard let day = calendar.date(byAdding: .day, value: dayOffset, to: baseDay) else { continue }
+      guard let snapshot = generateSnapshot(date: day) else { return nil }
+      snapshots.append(snapshot)
+    }
+    guard !snapshots.isEmpty else { return nil }
+    return WidgetSnapshotBundle(baseDate: baseDay, snapshots: snapshots)
   }
 
   @MainActor static func generateSnapshot(date: Date = Date()) -> WidgetSnapshot? {
     let eligible = eligibleVerbs()
     guard !eligible.isEmpty else { return nil }
 
-    let debugOffset = WidgetConstants.sharedDefaults?.integer(forKey: WidgetConstants.debugOffsetKey) ?? 0
-    let verb = verbOfTheDay(from: eligible, date: date, debugOffset: debugOffset)
+    let verb = verbOfTheDay(from: eligible, date: date, debugOffset: 0)
     let paradigm = präsensParadigm(for: verb.infinitiv)
     let partizip = Conjugator.conjugate(infinitiv: verb.infinitiv, conjugationgroup: .perfektpartizip)
     let partizipString: String
@@ -33,7 +46,7 @@ enum WidgetSnapshotWriter {
     let examplePair = ExampleSentences.pair(for: verb.infinitiv)
     let etymology = Etymology.text(for: verb.infinitiv)
     let truncatedEtymology = etymology.map { truncateToSentenceBoundary($0, maxLength: 450) }
-    let quiz = generateQuizQuestion(verb: verb, date: date, debugOffset: debugOffset)
+    let quiz = generateQuizQuestion(verb: verb, date: date, debugOffset: 0)
 
     return WidgetSnapshot(
       infinitiv: verb.infinitiv,
@@ -56,7 +69,7 @@ enum WidgetSnapshotWriter {
   }
 
   @MainActor static func verbOfTheDay(from eligible: [Verb], date: Date, debugOffset: Int) -> Verb {
-    let daysSinceReference = Calendar.current.dateComponents([.day], from: referenceDate, to: date).day ?? 0
+    let daysSinceReference = calendar.dateComponents([.day], from: referenceDate, to: date).day ?? 0
     let index = abs((daysSinceReference + debugOffset) * 127) % eligible.count
     return eligible[index]
   }
@@ -80,7 +93,7 @@ enum WidgetSnapshotWriter {
   // MARK: - Quiz Question Generation
 
   @MainActor private static func generateQuizQuestion(verb: Verb, date: Date, debugOffset: Int) -> WidgetQuizQuestion {
-    let seed = abs((Calendar.current.dateComponents([.day], from: referenceDate, to: date).day ?? 0) + debugOffset)
+    let seed = abs((calendar.dateComponents([.day], from: referenceDate, to: date).day ?? 0) + debugOffset)
     let conjugationgroupOptions = regularConjugationgroups(seed: seed)
     let conjugationgroupIndex = (seed * 31) % conjugationgroupOptions.count
     let conjugationgroup = conjugationgroupOptions[conjugationgroupIndex]
@@ -221,6 +234,8 @@ enum WidgetSnapshotWriter {
 
   static func dateString(for date: Date) -> String {
     let formatter = DateFormatter()
+    formatter.calendar = WidgetConstants.gregorianCalendar
+    formatter.locale = Locale(identifier: "en_US_POSIX")
     formatter.dateFormat = "yyyy-MM-dd"
     return formatter.string(from: date)
   }

@@ -11,6 +11,14 @@ enum WidgetConstants {
   static let quizQuestionIDKey = "widgetQuizQuestionID"
   static let pendingDeeplinkKey = "widgetPendingDeeplink"
 
+  static let snapshotDayCount = 10
+
+  static let gregorianCalendar: Calendar = {
+    var calendar = Calendar(identifier: .gregorian)
+    calendar.locale = Locale(identifier: "en_US_POSIX")
+    return calendar
+  }()
+
   static var sharedContainerURL: URL? {
     FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: appGroupID)
   }

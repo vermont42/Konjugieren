@@ -14,17 +14,20 @@ struct VerbDesTagesProvider: TimelineProvider {
   }
 
   func getSnapshot(in context: Context, completion: @escaping (VerbDesTagesEntry) -> Void) {
-    let snapshot = SnapshotReader.read() ?? SnapshotReader.placeholder
-    completion(VerbDesTagesEntry(date: Date(), snapshot: snapshot))
+    let now = Date()
+    let snapshot = SnapshotReader.currentSnapshot(now: now, pageOffset: pageOffset)
+    completion(VerbDesTagesEntry(date: now, snapshot: snapshot))
   }
 
   func getTimeline(in context: Context, completion: @escaping (Timeline<VerbDesTagesEntry>) -> Void) {
-    let snapshot = SnapshotReader.read() ?? SnapshotReader.placeholder
-    let entry = VerbDesTagesEntry(date: Date(), snapshot: snapshot)
+    let entries = SnapshotReader.dailyEntries(now: Date(), pageOffset: pageOffset)
+      .map { VerbDesTagesEntry(date: $0.date, snapshot: $0.snapshot) }
+    let refreshDate = (entries.last?.date ?? Date()).addingTimeInterval(86400)
+    completion(Timeline(entries: entries, policy: .after(refreshDate)))
+  }
 
-    let nextMidnight = Calendar.current.startOfDay(for: Date()).addingTimeInterval(86400)
-    let timeline = Timeline(entries: [entry], policy: .after(nextMidnight))
-    completion(timeline)
+  private var pageOffset: Int {
+    WidgetConstants.sharedDefaults?.integer(forKey: WidgetConstants.debugOffsetKey) ?? 0
   }
 }
 

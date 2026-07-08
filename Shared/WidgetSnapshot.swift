@@ -2,6 +2,21 @@
 
 import Foundation
 
+struct WidgetSnapshotBundle: Codable, Equatable {
+  let baseDate: Date
+  let snapshots: [WidgetSnapshot]
+
+  // For each cached day (index = days since baseDate), the snapshot index to show.
+  // The page offset advances the verb on a Next tap and wraps around the cached range.
+  func pagedSnapshotIndices(pageOffset: Int) -> [Int] {
+    let count = snapshots.count
+    guard count > 0 else { return [] }
+    return (0..<count).map { dayOffset in
+      (((dayOffset + pageOffset) % count) + count) % count
+    }
+  }
+}
+
 struct WidgetSnapshot: Codable, Equatable {
   let infinitiv: String
   let translation: String

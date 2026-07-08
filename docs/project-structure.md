@@ -140,7 +140,7 @@ KonjugierenWidget/
 ├── QuickQuizControl.swift      # Control Center button launching the quiz
 ├── QuizWidget.swift            # Timeline-based widget for daily quiz questions
 ├── RandomVerbControl.swift     # Control Center button opening a random verb
-├── SnapshotReader.swift        # Reads WidgetSnapshot from shared container with fallback
+├── SnapshotReader.swift        # Reads the multi-day WidgetSnapshotBundle from shared container; emits per-day timeline entries with page offset
 ├── VerbDesTagesWidget.swift    # Timeline-based widget displaying the daily verb
 ├── WidgetL.swift               # Type-safe localization accessors for the widget target (mirrors L)
 └── Views/
@@ -159,8 +159,9 @@ Shared/
 ├── OpenQuizIntent.swift            # Shared intent to open quiz via deeplink
 ├── OpenRandomVerbIntent.swift      # Shared intent to open random verb via deeplink
 ├── QuizActivityAttributes.swift    # ActivityKit model for quiz live activity
-├── WidgetConstants.swift           # Constants for widget app-group container and storage keys
-└── WidgetSnapshot.swift            # Data models for serialized widget state
+├── WidgetConstants.swift           # Constants for widget app-group container, storage keys, day count, and pinned Gregorian calendar
+├── WidgetQuizShuffle.swift         # Process-stable (FNV-1a seeded) answer shuffle + SeededRNG, shared by widget and tests
+└── WidgetSnapshot.swift            # Data models for serialized widget state, incl. WidgetSnapshotBundle (N-day array)
 
 KonjugierenTests/
 ├── Models/
@@ -178,7 +179,7 @@ KonjugierenTests/
     ├── StringExtensionsTests.swift  # Rich text parsing and error handling tests
     ├── TimeFormatterTests.swift     # Time formatting utility tests
     ├── VerbExportTests.swift        # Verb data JSON export tests
-    └── WidgetSnapshotTests.swift    # Widget snapshot generation and determinism tests
+    └── WidgetSnapshotTests.swift    # Widget snapshot/bundle generation, per-day paging math, and process-stable answer-shuffle tests
 
 docs/
 ├── adding-verbs.md            # Verb-addition guide: XML formats, ablaut system, lessons learned

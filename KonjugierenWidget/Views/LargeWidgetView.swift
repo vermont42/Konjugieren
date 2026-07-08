@@ -39,11 +39,13 @@ struct LargeWidgetView: View {
 
       Divider()
 
-      Grid(alignment: .leading, horizontalSpacing: 12, verticalSpacing: 1) {
-        ForEach(0..<3, id: \.self) { row in
-          GridRow {
-            conjugationCell(snapshot.präsensParadigm[row])
-            conjugationCell(snapshot.präsensParadigm[row + 3])
+      if snapshot.präsensParadigm.count >= 6 {
+        Grid(alignment: .leading, horizontalSpacing: 12, verticalSpacing: 1) {
+          ForEach(0..<3, id: \.self) { row in
+            GridRow {
+              conjugationCell(snapshot.präsensParadigm[row])
+              conjugationCell(snapshot.präsensParadigm[row + 3])
+            }
           }
         }
       }

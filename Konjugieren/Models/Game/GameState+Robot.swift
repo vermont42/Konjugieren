@@ -88,6 +88,9 @@ extension GameState {
         enemies[targetIdx].isAlive = false
       }
       robotBrain = nil
+      if activeMechanic == .robot && robotMinion == nil {
+        activeMechanic = nil
+      }
       return
     }
 

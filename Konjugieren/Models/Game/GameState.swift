@@ -56,6 +56,7 @@ class GameState {
   var rapidFireTimer: CGFloat = 0
   var rapidFireCooldown: CGFloat = 0
   var rapidFireSound: Sound = .longFire1
+  var damageCooldown: CGFloat = 0
 
   private var scoreAtWaveStart: Int = 0
   private var zigzaggerSpawnTimer: CGFloat = 0
@@ -82,6 +83,7 @@ class GameState {
   static let tiltThreshold: Double = 0.02
   static let tiltSensitivity: CGFloat = 800
   static let healthLossPerHit: CGFloat = 0.25
+  static let damageInvulnerability: CGFloat = 0.75
   static let enemyFiresPerSecond: Double = 1.2
   static let speedUpFactor: CGFloat = 0.95
   static let sineAmplitude: CGFloat = 8
@@ -238,6 +240,10 @@ class GameState {
 
     guard dt > 0, dt < 1 else { return }
 
+    if damageCooldown > 0 {
+      damageCooldown = max(0, damageCooldown - dt)
+    }
+
     updatePlayerPosition(dt: dt)
     updateEnemies(dt: dt)
     updateDivers(dt: dt)
@@ -356,6 +362,7 @@ class GameState {
       rapidFireTimer: rapidFireTimer,
       rapidFireCooldown: rapidFireCooldown,
       rapidFireSound: rapidFireSound,
+      damageCooldown: damageCooldown,
       diveTimer: diveTimer,
       elapsedBeforePause: elapsed,
       elapsedWaveComplete: elapsedWC
@@ -486,6 +493,7 @@ class GameState {
     rapidFireTimer = snapshot.rapidFireTimer
     rapidFireCooldown = snapshot.rapidFireCooldown
     rapidFireSound = snapshot.rapidFireSound
+    damageCooldown = snapshot.damageCooldown
     diveTimer = snapshot.diveTimer
 
     deathEffects = []
@@ -531,6 +539,7 @@ class GameState {
     rapidFireTimer = 0
     rapidFireCooldown = 0
     rapidFireSound = .longFire1
+    damageCooldown = 0
     diveTimer = 0
     eggs = []
     hatchlings = []

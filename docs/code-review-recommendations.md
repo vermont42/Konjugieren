@@ -8,7 +8,7 @@ A second full-codebase review, conducted July 7, 2026, on `main` at commit c6794
 
 Findings are ranked highest impact to lowest. An implementation sequence appears at the bottom.
 
-**Status: Phase 1 complete** (zero-risk hygiene: findings 7, 11, 12, and the finding-17 batch), landed on `main`. Phases 2–6 remain. The full test suite stands at 145 tests across 20 suites, all passing, with a zero-warning build.
+**Status: Phases 1–2 complete.** Phase 1 (zero-risk hygiene: findings 7, 11, 12, and the finding-17 batch) and Phase 2 (game correctness: findings 1, 4, 16) have landed on `main`. Phases 3–6 remain. The full test suite stands at 156 tests across 24 suites, all passing, with a zero-warning build.
 
 ---
 
@@ -212,11 +212,13 @@ Each phase is independently shippable. Earlier phases are ordered by impact per 
 3. ✅ Vestigial availability scaffolding and the `throws` on `AppLauncher.main()` (finding 12): dropped `#if canImport(FoundationModels)`, the `@available(iOS 26, *)` on `LanguageModelServiceReal`/`ConjugationTool`, the always-true `if #available` in `World.real`, and `main()`'s unused `throws`.
 4. ✅ Unify the test-environment probe (finding 11): one `nonisolated static let World.isRunningUnitTests = NSClassFromString("XCTestCase") != nil`, consulted by both `chooseWorld()` and `AppLauncher`, with the `targetEnvironment(simulator)` gate removed.
 
-### Phase 2: Game correctness (verify by on-device play-testing)
+### Phase 2: Game correctness (verify by on-device play-testing) — ✅ DONE
 
-1. `damagePlayer()` with an invulnerability window (finding 1); tune the window length by feel.
-2. Clear `activeMechanic` in the dead-target conversion path (finding 4).
-3. Stand up `GameStateTests` with regression tests for both (finding 16); this is the moment the suite pays for itself.
+1. ✅ `damagePlayer()` with an invulnerability window (finding 1): one helper on `GameState+Collisions` now holds the shared damage block (health, portal reset, `.playerHit` sound, heavy haptic), gated on a new `damageCooldown` counted down in `update(currentTime:)` and reset in `resetWaveState()`. All eight per-collision copies were deleted, so the wurst/fussball/robot-minion per-frame damage-and-spam bug is fixed at every site. Window is `GameState.damageInvulnerability = 0.75`; tune by feel on device. The cooldown persists in `GameStateSnapshot`.
+2. ✅ Clear `activeMechanic` in the dead-target conversion path (finding 4): the `.converting` branch in `updateRobotBrain` now runs `if activeMechanic == .robot && robotMinion == nil { activeMechanic = nil }` after nilling the brain, mirroring the collision handlers, so a player who shoots the locked-on target no longer wedges the mechanic for the rest of the wave.
+3. ✅ Stood up `GameStateTests` (finding 16): 11 tests across four suites — `DamageInvulnerability` (first-hit damage arms the cooldown, second hit during the window is ignored, damage resumes once cleared, `update` counts the cooldown down, shielded hits still arm it but lose no health), `RobotMechanic` (dead-target conversion clears `activeMechanic`; live-target conversion keeps it and spawns a minion), `GameOverAndWaves` (health depletion → `.lost`, clearing enemies → `.waveComplete`, and advance to wave 2 after the wave-complete duration), plus a snapshot round-trip for `damageCooldown`.
+
+**Note for on-device play-testing:** the simulator cannot exercise tilt controls, so confirm the invulnerability window feels right during real contact (wurst sweep, fussball bounce, diving robot minion) and that 0.75 s is neither too forgiving nor too punishing.
 
 ### Phase 3: Deeplink completion (small, user-facing)
 

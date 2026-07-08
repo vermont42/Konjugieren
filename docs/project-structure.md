@@ -166,6 +166,7 @@ KonjugierenTests/
 ├── Models/
 │   ├── ConjugationgroupTests.swift # Conjugationgroup.ending(family:) ending-table tests
 │   ├── ConjugatorTests.swift   # Comprehensive conjugation tests (~50 test functions), incl. error paths
+│   ├── GameStateTests.swift    # Game-logic tests: damage invulnerability, robot-mechanic clearing, game-over/wave transitions, snapshot round-trip
 │   ├── PersonNumberTests.swift # Pronoun and sie-disambiguation tests
 │   ├── QuizErrorHistoryTests.swift # Quiz error persistence tests
 │   ├── QuizTests.swift         # Quiz logic, scoring, and timer pause/resume tests

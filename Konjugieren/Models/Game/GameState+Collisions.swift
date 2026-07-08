@@ -3,6 +3,17 @@
 import SwiftUI
 
 extension GameState {
+  func damagePlayer() {
+    guard damageCooldown <= 0 else { return }
+    if !shieldActive {
+      playerHealth -= Self.healthLossPerHit
+      portalSide = nil
+    }
+    damageCooldown = Self.damageInvulnerability
+    Current.soundPlayer.play(.playerHit, shouldDebounce: false)
+    HapticPlayer.playImpact(.heavy)
+  }
+
   func checkCollisions() {
     collidePlayerBulletWithHatchlings()
     collidePlayerBulletWithEnemies()
@@ -92,12 +103,7 @@ extension GameState {
         bx: playerX, by: playerY, bSize: Self.playerSize
       ) {
         enemyBullet = nil
-        if !shieldActive {
-          playerHealth -= Self.healthLossPerHit
-          portalSide = nil
-        }
-        Current.soundPlayer.play(.playerHit, shouldDebounce: false)
-        HapticPlayer.playImpact(.heavy)
+        damagePlayer()
       }
     }
   }
@@ -110,12 +116,7 @@ extension GameState {
       ) {
         deathEffects.append(DeathEffect(x: enemies[i].x, y: enemies[i].y, imageName: enemies[i].imageName, useRed: Bool.random()))
         enemies[i].isAlive = false
-        if !shieldActive {
-          playerHealth -= Self.healthLossPerHit
-          portalSide = nil
-        }
-        Current.soundPlayer.play(.playerHit, shouldDebounce: false)
-        HapticPlayer.playImpact(.heavy)
+        damagePlayer()
       }
     }
   }
@@ -127,12 +128,7 @@ extension GameState {
         bx: playerX, by: playerY, bSize: Self.playerSize
       ) {
         zigzagger = nil
-        if !shieldActive {
-          playerHealth -= Self.healthLossPerHit
-          portalSide = nil
-        }
-        Current.soundPlayer.play(.playerHit, shouldDebounce: false)
-        HapticPlayer.playImpact(.heavy)
+        damagePlayer()
       }
     }
   }
@@ -201,12 +197,7 @@ extension GameState {
         ax: hatchling.x, ay: hatchling.y, aSize: Self.hatchlingSize,
         bx: playerX, by: playerY, bSize: Self.playerSize
       ) {
-        if !shieldActive {
-          playerHealth -= Self.healthLossPerHit
-          portalSide = nil
-        }
-        Current.soundPlayer.play(.playerHit, shouldDebounce: false)
-        HapticPlayer.playImpact(.heavy)
+        damagePlayer()
         return true
       }
       return false
@@ -285,12 +276,7 @@ extension GameState {
           ax: seg.x, ay: seg.y, aSize: Self.wurstSegmentSize,
           bx: playerX, by: playerY, bSize: Self.playerSize
         ) {
-          if !shieldActive {
-            playerHealth -= Self.healthLossPerHit
-            portalSide = nil
-          }
-          Current.soundPlayer.play(.playerHit, shouldDebounce: false)
-          HapticPlayer.playImpact(.heavy)
+          damagePlayer()
         }
       }
     }
@@ -325,13 +311,8 @@ extension GameState {
         ax: ball.x, ay: ball.y, aSize: Self.fussballSize,
         bx: playerX, by: playerY, bSize: Self.playerSize
       ) {
-        if !shieldActive {
-          playerHealth -= Self.healthLossPerHit
-          portalSide = nil
-        }
         fussball?.velocityY = -abs(ball.velocityY)
-        Current.soundPlayer.play(.playerHit, shouldDebounce: false)
-        HapticPlayer.playImpact(.heavy)
+        damagePlayer()
       }
     }
   }
@@ -419,13 +400,8 @@ extension GameState {
       }
       switch ghosts[i].phase {
       case .pursuing:
-        if !shieldActive {
-          playerHealth -= Self.healthLossPerHit
-          portalSide = nil
-        }
         ghosts[i].phase = .exiting
-        Current.soundPlayer.play(.playerHit, shouldDebounce: false)
-        HapticPlayer.playImpact(.heavy)
+        damagePlayer()
       case .fleeing:
         ghosts[i].phase = .devoured
         ghosts[i].dotTimer = 0
@@ -523,12 +499,7 @@ extension GameState {
         ax: minion.x, ay: minion.y, aSize: Self.robotMinionSize,
         bx: playerX, by: playerY, bSize: Self.playerSize
       ) {
-        if !shieldActive {
-          playerHealth -= Self.healthLossPerHit
-          portalSide = nil
-        }
-        Current.soundPlayer.play(.playerHit, shouldDebounce: false)
-        HapticPlayer.playImpact(.heavy)
+        damagePlayer()
       }
     }
   }

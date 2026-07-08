@@ -51,6 +51,7 @@ struct GameStateSnapshot: Codable {
   let rapidFireTimer: CGFloat
   let rapidFireCooldown: CGFloat
   let rapidFireSound: Sound
+  let damageCooldown: CGFloat
   let diveTimer: CGFloat
 
   let elapsedBeforePause: TimeInterval

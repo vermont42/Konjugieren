@@ -18,7 +18,11 @@ struct TutorView: View {
   @State private var hasLoadedHistory = false
   @FocusState private var isInputFocused: Bool
 
-  private static let suggestions = [
+  private static var isGerman: Bool {
+    Locale.current.language.languageCode?.identifier == "de"
+  }
+
+  private static let englishSuggestions = [
     "Conjugate singen in the Präteritum.",
     "What is the Konjunktiv II of sein?",
     "What is the past participle of trinken?",
@@ -36,6 +40,29 @@ struct TutorView: View {
     "Conjugate essen in the Plusquamperfekt.",
     "How do you say \u{2018}they would carry\u{2019} in German?"
   ]
+
+  private static let germanSuggestions = [
+    "Konjugiere singen im Präteritum.",
+    "Was ist der Konjunktiv II von sein?",
+    "Was ist das Partizip II von trinken?",
+    "Konjugiere laufen im Futur.",
+    "Was ist der Imperativ von helfen?",
+    "Wie sagt man \u{201E}ich hätte gesungen\u{201C} auf Deutsch?",
+    "Was ist das Perfekt von gehen?",
+    "Konjugiere sprechen im Präsens.",
+    "Wie sagt man \u{201E}wir hatten geschrieben\u{201C} auf Deutsch?",
+    "Was ist der Konjunktiv I von geben?",
+    "Konjugiere anfangen im Perfekt.",
+    "Wie lauten alle Präsens-Formen von wissen?",
+    "Wie konjugiert man können im Präteritum?",
+    "Was ist das Futur von nehmen?",
+    "Konjugiere essen im Plusquamperfekt.",
+    "Wie sagt man \u{201E}sie würden tragen\u{201C} auf Deutsch?"
+  ]
+
+  private static var suggestions: [String] {
+    isGerman ? germanSuggestions : englishSuggestions
+  }
 
   var body: some View {
     ZStack {

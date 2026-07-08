@@ -176,6 +176,7 @@ KonjugierenTests/
 └── Utils/
     ├── DeeplinkTests.swift     # Deeplink URL parsing and handling tests
     ├── MixedCaseAccessibilityTests.swift  # VoiceOver label generation tests
+    ├── MixedCaseSegmenterTests.swift  # Ablaut segmentation tests (empty/all-regular/all-irregular/formal Sie)
     ├── SettingsTests.swift     # Settings persistence and default-value tests
     ├── StringExtensionsTests.swift  # Rich text parsing and error handling tests
     ├── TimeFormatterTests.swift     # Time formatting utility tests

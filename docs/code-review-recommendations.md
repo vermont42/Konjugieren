@@ -8,7 +8,7 @@ A second full-codebase review, conducted July 7, 2026, on `main` at commit c6794
 
 Findings are ranked highest impact to lowest. An implementation sequence appears at the bottom.
 
-**Status: Phases 1–5 complete** (finding 13 deferred by design). Phase 1 (zero-risk hygiene: findings 7, 11, 12, and the finding-17 batch), Phase 2 (game correctness: findings 1, 4, 16), Phase 3 (deeplink completion: finding 3), Phase 4 (widget freshness: findings 2, 6, 15), and Phase 5 (tutor and concurrency: findings 8, 9, 10; finding 13 deferred until the disabled surfaces return) have landed on `main`. Phase 6 remains. The full test suite stands at 173 tests across 27 suites, all passing, with a zero-warning build.
+**Status: All six phases complete** (finding 13 deferred by design). Phase 1 (zero-risk hygiene: findings 7, 11, 12, and the finding-17 batch), Phase 2 (game correctness: findings 1, 4, 16), Phase 3 (deeplink completion: finding 3), Phase 4 (widget freshness: findings 2, 6, 15), Phase 5 (tutor and concurrency: findings 8, 9, 10; finding 13 deferred until the disabled surfaces return), and Phase 6 (rendering and layout polish: findings 5, 14) have landed on `main`. The full test suite stands at 175 tests across 28 suites, all passing, with a zero-warning build.
 
 ---
 
@@ -241,7 +241,11 @@ Each phase is independently shippable. Earlier phases are ordered by impact per 
 3. ✅ Fixed the "null" refusal match and added refusal-phrase logging (finding 10): `isLikelyRefusal(_:) -> Bool` became `refusalPhrase(in:) -> String?`, matching an array of phrases and returning which one tripped. "null" now matches **exactly** on the trimmed response (catching a literal JSON null) instead of as a substring, so legitimate German answers containing *null* (zero) — or English "nullify" — are no longer discarded. `sendTutorMessage` logs the matched phrase (`likely refusal (matched "…")`). New `RefusalDetectionTests` suite (13 cases) locks the "null" false-positive fix, bare-`null` detection, and a sample of genuine refusals.
 4. ⏳ **Deferred by design:** structured generation via `@Generable` (finding 13) is scoped to whichever session re-enables the disabled `explainError`/`recommendPractice` surfaces; both remain off in 1.0, so there is nothing to migrate yet.
 
-### Phase 6: Rendering and layout polish
+### Phase 6: Rendering and layout polish — ✅ DONE
 
-1. InfoView reading-width cap, verified on iPad in both orientations (finding 5).
-2. Segmenter empty-segment guard, accessibility-label unification, and first segmenter tests (finding 14).
+1. ✅ InfoView reading-width cap (finding 5): the inverted ternary is gone. `RichTextView`'s first `.frame` now caps at `maxWidth: 680` unconditionally — the cap is inert on every compact (iPhone) width and now correctly bites on regular (iPad) width, restoring the documented 680-pt reading column. The formerly load-bearing `@Environment(\.horizontalSizeClass)` was removed as now-unused. ⏳ **Still owed:** visual confirmation on an iPad simulator in both orientations (this Intel host builds and tests but the reading-column geometry should be eyeballed on iPad).
+2. ✅ Segmenter empty-segment guard, accessibility-label unification, and first segmenter tests (finding 14):
+   - ✅ `MixedCaseSegmenter.segments(for:)`'s epilogue now guards both trailing appends with `!isEmpty`, so no conjugation carries a phantom empty tail segment (and `""` yields `[]` rather than two empties).
+   - ✅ `MixedCaseAccessibility.accessibilityLabel(for:)` was rebuilt on `MixedCaseSegmenter.segments(for:)` output — `lowercasedWord` from the joined segment texts, `irregularLetters` from the characters of the irregular runs — deleting the third copy of the formal-Sie detection rule (`isFormalSieStart` plus the three-index membership test). The existing 9-case `MixedCaseAccessibilityTests` still passes unchanged, proving byte-identical behavior.
+   - ✅ New `MixedCaseSegmenterTests` (`@MainActor`, since `Segment`'s properties are main-actor-isolated under default isolation): an 8-case parameterized test covering empty string, all-regular, all-irregular, and formal Sie at start/middle/end, plus a phantom-empty-segment guard test.
+   - Full suite: 175 tests across 28 suites, zero-warning build.

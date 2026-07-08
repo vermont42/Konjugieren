@@ -68,8 +68,12 @@ enum MixedCaseSegmenter {
       }
     }
 
-    result.append(Segment(text: currentRegularPart, isIrregular: false))
-    result.append(Segment(text: currentIrregularPart, isIrregular: true))
+    if !currentRegularPart.isEmpty {
+      result.append(Segment(text: currentRegularPart, isIrregular: false))
+    }
+    if !currentIrregularPart.isEmpty {
+      result.append(Segment(text: currentIrregularPart, isIrregular: true))
+    }
 
     return result
   }

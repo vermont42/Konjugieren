@@ -199,6 +199,8 @@ struct SettingsView: View {
                 }
               }
             }
+
+            aboutFooter
           }
           .padding(.horizontal, Layout.doubleDefaultSpacing)
           .padding(.bottom, Layout.doubleDefaultSpacing)
@@ -224,6 +226,34 @@ struct SettingsView: View {
         GameView()
       }
     }
+  }
+
+  private var aboutFooter: some View {
+    VStack(spacing: Layout.defaultSpacing / 2) {
+      Text(verbatim: "Konjugieren")
+        .font(.headline)
+        .fontDesign(.serif)
+        .foregroundStyle(.customYellow)
+      if let version = Self.versionString {
+        Text(verbatim: version)
+          .font(.caption.monospacedDigit())
+          .foregroundStyle(.secondary)
+      }
+    }
+    .frame(maxWidth: .infinity)
+    .padding(.top, Layout.defaultSpacing)
+    .accessibilityElement(children: .combine)
+  }
+
+  private static var versionString: String? {
+    let info = Bundle.main.infoDictionary
+    guard let short = info?["CFBundleShortVersionString"] as? String else {
+      return nil
+    }
+    if let build = info?["CFBundleVersion"] as? String {
+      return "v\(short) (\(build))"
+    }
+    return "v\(short)"
   }
 
   private func settingsCard<Content: View>(@ViewBuilder content: () -> Content) -> some View {

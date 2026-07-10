@@ -42,11 +42,9 @@ struct VerbExportTests {
   private func exportVerb(_ verb: Verb) -> ExportedVerb {
     var conjugations: [String: AnyCodable] = [:]
 
-    // Partizipien
     conjugations["perfektpartizip"] = AnyCodable(conjugate(verb: verb, group: .perfektpartizip))
     conjugations["präsenspartizip"] = AnyCodable(conjugate(verb: verb, group: .präsenspartizip))
 
-    // All other conjugationgroups
     for (key, factory) in Self.conjugationgroupFactories {
       if key == "imperativ" {
         let rows = PersonNumber.imperativPersonNumbers.map { pn -> ExportedImperativRow in
@@ -70,10 +68,8 @@ struct VerbExportTests {
       }
     }
 
-    // Etymology (English)
     let etymology = loadEtymology(for: verb.infinitiv, language: "en")
 
-    // Example sentences
     let pair = ExampleSentences.pair(for: verb.infinitiv)
     let exampleSentences: ExportedExampleSentences? = pair.map {
       ExportedExampleSentences(
@@ -82,7 +78,6 @@ struct VerbExportTests {
       )
     }
 
-    // Prefix
     let (prefixType, prefixValue): (String, String?) = switch verb.prefix {
     case .separable(let p):
       ("separable", p)
@@ -92,7 +87,6 @@ struct VerbExportTests {
       ("none", nil)
     }
 
-    // Family
     let familyName: String = switch verb.family {
     case .strong:
       "strong"
@@ -147,8 +141,6 @@ struct VerbExportTests {
     try data.write(to: outputURL)
   }
 }
-
-// MARK: - Encodable Structs
 
 private struct ExportedVerb: Encodable {
   let infinitiv: String

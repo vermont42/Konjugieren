@@ -62,8 +62,6 @@ enum WidgetSnapshotWriter {
     )
   }
 
-  // MARK: - Verb Selection
-
   @MainActor static func eligibleVerbs() -> [Verb] {
     Verb.verbsSortedAlphabetically.filter { ExampleSentences.pair(for: $0.infinitiv) != nil }
   }
@@ -73,8 +71,6 @@ enum WidgetSnapshotWriter {
     let index = abs((daysSinceReference + debugOffset) * 127) % eligible.count
     return eligible[index]
   }
-
-  // MARK: - Conjugation Paradigm
 
   @MainActor private static func präsensParadigm(for infinitiv: String) -> [WidgetConjugation] {
     PersonNumber.allCases.map { pn in
@@ -89,8 +85,6 @@ enum WidgetSnapshotWriter {
       return WidgetConjugation(pronoun: pn.pronoun, mixedCaseForm: form)
     }
   }
-
-  // MARK: - Quiz Question Generation
 
   @MainActor private static func generateQuizQuestion(verb: Verb, date: Date, debugOffset: Int) -> WidgetQuizQuestion {
     let seed = abs((calendar.dateComponents([.day], from: referenceDate, to: date).day ?? 0) + debugOffset)
@@ -220,8 +214,6 @@ enum WidgetSnapshotWriter {
       return nil
     }
   }
-
-  // MARK: - Utilities
 
   private static func truncateToSentenceBoundary(_ text: String, maxLength: Int) -> String {
     guard text.count > maxLength else { return text }

@@ -2,6 +2,16 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+## Work journal (blog notes)
+
+As you complete chunks of work in this repo, append a note to `docs/blog_notes.md`,
+creating the file if it doesn't exist. Give each entry a `##` heading that includes the
+date — `## <Title> (YYYY-MM-DD)` — with newest entries at the bottom. Write narrative
+for a future reader (what was tried, what failed, why decisions changed), not a bare
+changelog: Josh may eventually generate blog posts from these notes, and future Claude
+sessions rely on them as dated project memory — when older docs conflict, the journal
+shows which truth is current.
+
 ## Build and Test Commands
 
 This project uses the [`ios-build-verify`](https://github.com/vermont42/ios-build-verify) Claude Code skill for build and test. The scripts pipe `xcodebuild` through `xcbeautify` for concise output and tee raw output to `build.log` as a fallback. Per-project config lives in `.claude/ios-build-verify.config.sh` (gitignored).

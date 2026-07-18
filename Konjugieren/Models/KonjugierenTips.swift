@@ -3,6 +3,17 @@
 import SwiftUI
 import TipKit
 
+enum TutorDisplay {
+  // Workaround: the tutor needs Apple Intelligence, which does not resolve as available on the
+  // screenshot host (see CLAUDE.md on the iOS 26.3+ host-eligibility gate), so InfoBrowseView
+  // renders a reason row there — "Apple Intelligence isn't available on this device." That is
+  // honest on a device but reads as a defect in a store listing, so the info_browse shots hide
+  // it. Ordinarily true; set false before an App Store screenshot sweep, then restore. Only the
+  // reason row is suppressed: when the model is available the section still renders
+  // TutorRowView, so this switch cannot hide a working feature.
+  static let tutorUnavailableRowEnabled = true
+}
+
 struct ChangeDifficultyTip: Tip {
   static let quizCompleted = Event(id: "quizCompleted")
 

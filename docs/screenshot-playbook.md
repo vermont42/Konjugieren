@@ -25,6 +25,27 @@ App Store screenshots only — 9 views × 2 languages × 2 devices = 36 PNGs. No
   ```
 - macOS Accessibility permission granted to `osascript`. System Settings → Privacy & Security → Accessibility → add `/usr/bin/osascript`. The driver depends on this for the soft-keyboard Cmd+K toggle (workaround #6).
 - Two named simulators (see "Simulator Setup" below). Their UDIDs are hardcoded in the driver's `udid_for()`.
+- `TutorDisplay.tutorUnavailableRowEnabled` set to `false` (see the next section). Restore it to `true` when the sweep finishes.
+
+## Disable the tutor row first (then restore)
+
+`TutorDisplay.tutorUnavailableRowEnabled` in `Konjugieren/Models/KonjugierenTips.swift` is ordinarily `true`. **Set it to `false` before running the driver and restore it to `true` afterward.** It is a compile-time constant and the driver builds once at start, so it must be flipped *before* launch — flipping it mid-sweep does nothing. (Contrast the `KONJUGIEREN_QUIZ_FIXTURE` flag, which is deliberately runtime because the driver toggles it per-cell.)
+
+| Switch | Effect when `false` | What you get if you forget |
+|---|---|---|
+| `TutorDisplay.tutorUnavailableRowEnabled` | `InfoBrowseView` drops the tutor **unavailability reason row**. Only that row: when the model *is* available the section still renders `TutorRowView`, so the switch cannot hide a working feature. | Both `info_browse` shots carry an "Apple Intelligence…" status row where a feature should be. |
+
+```bash
+# before the sweep
+sed -i '' 's/static let tutorUnavailableRowEnabled = true/static let tutorUnavailableRowEnabled = false/' \
+  Konjugieren/Models/KonjugierenTips.swift
+
+# after the sweep — restore
+sed -i '' 's/static let tutorUnavailableRowEnabled = false/static let tutorUnavailableRowEnabled = true/' \
+  Konjugieren/Models/KonjugierenTips.swift
+
+git diff --stat Konjugieren/Models/KonjugierenTips.swift   # must be empty when you are done
+```
 
 ## Quick Start
 
@@ -208,6 +229,9 @@ Compact reference. The driver's inline comments hold the full WHY for each — c
 12. **Lang-agnostic StoreKit dismiss** (`take_screenshots.sh::dismiss_review_prompt`)
     *Symptom:* StoreKit prompt button labels are system-localized (`Not Now` / `Nicht jetzt`); the modal also has a single-button and a post-star-tap two-button state. *Fix:* vertical sweep of `describe-ui --point` at a known x-center, tap the bottommost `AXButton` found.
 
+13. **Tutor unavailability row in `info_browse`** (`Konjugieren/Models/KonjugierenTips.swift::TutorDisplay`)
+    *Symptom:* the screenshot host can't resolve Apple Intelligence as available (CLAUDE.md's iOS 26.3+ host-eligibility gate), so `InfoBrowseView` substitutes `TutorUnavailableRowView` for `TutorRowView` and both `info_browse` shots ship a status row reading "Apple Intelligence is being configured…" or "…isn't available on this device." Honest on a device, reads as a defect in a store listing. *Fix:* set the compile-time `TutorDisplay.tutorUnavailableRowEnabled` to `false` before the sweep, restore after (see *Disable the tutor row first*). The guard is on the `else if` branch only, so it can never suppress a working tutor. Observed reason on this host is `.modelNotReady`, not the `.deviceNotEligible` one might expect — both take the same branch, so the switch covers either.
+
 ## Per-View Navigation Recipes
 
 > **Tab coordinates are unverified since 2026-07-18.** The sibling app Conjugar re-measured its
@@ -254,6 +278,7 @@ The driver depends on these app-side touchpoints. Renaming any one silently brea
 | `info_row_<stableKey>` identifiers | `verify_screen_loaded info_row_dedication` (screen 6 settle); `tap_id_first info_row_praesens_indikativ` (screen 7) | `Konjugieren/Views/InfoBrowseView.swift` |
 | `quiz_start_button`, `quiz_answer_field` identifiers | quiz nav for screens 5 and 8 | `Konjugieren/Views/QuizView.swift` |
 | `results_score` identifier | `verify_screen_loaded results_score` after the 30-answer loop | `Konjugieren/Views/ResultsView.swift` |
+| `TutorDisplay.tutorUnavailableRowEnabled` | Operator flips it `false` pre-sweep to keep the tutor status row out of `info_browse`; the `sed` recipes match the declaration text verbatim | `Konjugieren/Models/KonjugierenTips.swift` |
 
 These were added in the Step-1 prep commits (`70850b3` and `66216b3`); see `git log` if you need historical context.
 
@@ -310,6 +335,6 @@ Visual review will surface bad cells. Re-run any single one via the `--device` /
 ## Known Gotchas
 
 - **TipKit popovers may surface mid-sweep.** Specifically, the "Try the Quiz" tip can render on `verb_browse` depending on TipKit eligibility. The driver doesn't suppress these — visual review the captured PNG before upload.
-- **Apple Intelligence Tutor surfaces are gated on Intel-Mac hosts.** Per CLAUDE.md, the Tutor row in InfoBrowseView, the `ErrorExplainerView` card in QuizView, and the Tutor page in OnboardingView don't render on Intel-Mac simulators with iOS 26.3+. None of the 9 target screenshot views are Tutor-gated, so this doesn't affect the sweep — but be aware if the spec ever adds a Tutor-adjacent screen.
+- **Apple Intelligence Tutor surfaces are gated on Intel-Mac hosts, and this *does* affect the sweep.** Per CLAUDE.md, the Tutor row in InfoBrowseView, the `ErrorExplainerView` card in QuizView, and the Tutor page in OnboardingView don't render as live features on Intel-Mac simulators with iOS 26.3+. `info_browse` is one of the 9 target views, and `InfoBrowseView` doesn't simply omit the tutor when the model is unavailable — it substitutes `TutorUnavailableRowView`, which states the reason ("Apple Intelligence is being configured…" / "…isn't available on this device."). So both `info_browse` shots carry that row unless `TutorDisplay.tutorUnavailableRowEnabled` is set `false` (see *Disable the tutor row first* above). An earlier revision of this playbook claimed no target view was Tutor-gated; that was wrong.
 - **Review-prompt cooldown is per-install.** `disable_review_prompt` pre-seeds `lastReviewPromptDate` for in-run prompts, but a manual screenshot capture of the StoreKit modal would still require uninstalling/reinstalling first.
 - **iPad first-boot is ~70s on a fresh sim.** Data-migration plugins (keychain, gestalt, MobileSafari, locationd, preferences) initialize on first boot. Subsequent boots are ~22s. The driver's `WAIT_FOR_RENDER_BUDGET_S=20` accommodates the post-launch render poll, but the `xcrun simctl bootstatus -b` step itself can block for ~70s during that initial boot. Don't kill the sweep thinking it's hung — `bootstatus -b` is doing the right thing.

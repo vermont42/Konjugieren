@@ -22,7 +22,8 @@ struct InfoBrowseView: View {
 
                 Divider()
                   .padding(.leading)
-              } else if let reason = Current.languageModelService.unavailabilityReason {
+              } else if let reason = Current.languageModelService.unavailabilityReason,
+                        TutorDisplay.tutorUnavailableRowEnabled {
                 TutorUnavailableRowView(reason: reason)
 
                 Divider()

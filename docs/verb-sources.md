@@ -1,0 +1,194 @@
+# Sources for Additional Verbs
+
+Research findings on expanding Konjugieren's verb corpus beyond the current 990. All counts, sizes, and frequencies in this document were measured live on 2026-07-18 against the cited APIs; reproduction recipes appear at the end.
+
+## Context
+
+Konjugieren ships 990 verbs (583 weak, 294 strong, 30 mixed, 83 -ieren), the survivors of data cleansing on a frequency-of-use list. The sibling apps Conjuguer (~6,200 verbs) and Conjugar (~4,800) were fed by the "Made Simple(r)" books; no comparable German book is in hand, so the path to parity runs through open data.
+
+A new verb needs everything `Verbs.xml` encodes: infinitive with prefix and ablaut markers (`in`), a short English translation (`tn`), family (`fa`), frequency rank (`fr`), an ablaut group (`ag`) for strong and mixed verbs, and auxiliary (`ay`). Each verb ideally also gains entries in `Etymologies.json` and `ExampleSentences.json`. The sources below are therefore rated not just on verb count but on whether glosses, etymologies, and full conjugation tables travel with the verbs in the same pass, so that nothing must be recrawled later.
+
+## Headline numbers
+
+| Source | German verbs | Glosses | Etymologies | Conjugations | License |
+|---|---|---|---|---|---|
+| English Wiktionary | 10,407 lemmas | English, labeled | Rich; PIE roots and English cognates | `{{de-conj}}` template (compact code) | CC BY-SA 4.0 |
+| German Wiktionary | 14,530 entries | German; English under Übersetzungen | Herkunft prose | Principal parts inline; full tables on Flexion pages | CC BY-SA 4.0 |
+| kaikki.org (wiktextract) | Both editions, pre-extracted JSON | Yes | Yes, as expanded text | Yes, as expanded tables | CC BY-SA 4.0 |
+| Wikidata lexemes | 20,421 verb lexemes | Sparse | No | Partial (forms statements) | CC0 |
+| verbformen.de (Netzverb) | Largest dedicated inventory; count not verified this session | German | No | Yes | CC BY-SA 4.0 (stated on site) |
+| de.wikipedia, Liste starker Verben | 186 strong bases; 569 including listed derivatives | Commentary only | No | Four principal parts | CC BY-SA 4.0 |
+
+## Coverage check: why the diffs can be trusted
+
+Both Wiktionaries were diffed against the current 990. German Wiktionary contains all 990. English Wiktionary contains 989, everything except weiterlesen. Both sources strictly contain the existing corpus, so a set difference against either is a genuine candidate list, not an artifact of divergent coverage.
+
+## English Wiktionary
+
+- `Category:German verbs` holds 10,407 lemma entries. A further 64,267 pages sit in `Category:German verb forms`; these single-conjugation entries are useless as a lemma source but usable for validating generated conjugations.
+- 1,048 titles are multiword idioms and phrases ("abwarten und Tee trinken", "Alarm schlagen"). After filtering to single-word, infinitive-shaped titles, 9,335 remain, of which **8,346 are not in Konjugieren**.
+- Glosses are English and carry grammatical labels (transitive, intransitive, figurative), which map directly onto `tn` and onto sense filtering.
+- Etymologies are templated inheritance chains through Middle High German, Old High German, Proto-West-Germanic, and Proto-Germanic, frequently ending in a PIE root and explicit English cognates. Example, dreschen: from MHG *dreschen*, OHG *dreskan*, Proto-Germanic *\*þreskaną*; "Compare... English thresh".
+- Conjugations are encoded in the `{{de-conj}}` template argument rather than written out. `bersten<birst-#barst,geborsten,bärste.sein>` encodes the Präsens stem change, Präteritum, Perfektpartizip, Konjunktiv II, and the sein auxiliary in one string. Consequence: raw wikitext requires template expansion (or a parser for the compact code, whose grammar is small); kaikki has already done the expansion.
+- Access: the `categorymembers` API pages through the whole category at 500 titles per request; the full lemma list took 21 requests, about a minute. Full dumps and kaikki (below) avoid even that.
+
+## German Wiktionary
+
+- `Kategorie:Verb (Deutsch)`: 14,530 entries; 14,447 single-word; **13,457 not in Konjugieren**. The surplus over English Wiktionary is mostly rarer derived verbs.
+- Each entry carries a `{{Deutsch Verb Übersicht}}` box with principal parts and Hilfsverb, by itself sufficient for family and ablaut-group classification. The `Flexion:` namespace holds every conjugation and is already the app's manual reference per `adding-verbs.md`.
+- Glosses are German; English equivalents arrive via the Übersetzungen section. Herkunft is German prose, a good cross-check on the English etymologies.
+- The sieden box surfaced a modeling wrinkle directly in the data: parallel strong and weak paradigms (sott/gesotten beside siedete/gesiedet), both listed as valid.
+
+## kaikki.org: the recommended extraction path
+
+Tatu Ylonen's wiktextract project publishes machine-readable extractions of both Wiktionary editions, regularly refreshed. Template expansion, gloss extraction, and etymology text are already done, so a single download satisfies the requirement that glosses and etymologies travel with the verbs, with no recrawling.
+
+| File | Size |
+|---|---|
+| `kaikki.org/dictionary/German/kaikki.org-dictionary-German.jsonl` | 1,015.9 MB |
+| `kaikki.org/dictionary/German/pos-verb/kaikki.org-dictionary-German-by-pos-verb.jsonl` | 293.9 MB |
+| `kaikki.org/dewiktionary/Deutsch/kaikki.org-dictionary-Deutsch.jsonl` (German edition) | 3.1 GB |
+| German-edition verb subset, linked from `kaikki.org/dewiktionary/Deutsch/pos-verb/` | 1.1 GB |
+
+Each JSONL line is one word: `word`, `pos`, `senses[].glosses`, `etymology_text` (plain prose, templates resolved), and `forms[]` tagged by person, number, mood, and auxiliary. The 293.9 MB verb-only file is the right starting artifact.
+
+## The candidate pool
+
+- **In both Wiktionaries but not in Konjugieren: 6,980 verbs.** Agreement between two independently edited dictionaries screens out typos, protologisms, and single-editor whims.
+- **2,406** of the 6,980 are prefixed or compound derivatives of a verb Konjugieren already conjugates (anklagen from klagen, anheben from heben). Their families and ablaut groups already exist; they ride the current Conjugator nearly for free.
+- **4,574** are new stems, most of them weak.
+
+## The strong-verb gap
+
+The app's identity is ablaut, and the strong inventory, unlike the weak one, is finite and completable. de.wikipedia's "Liste starker Verben (deutsche Sprache)" organizes New High German strong verbs by historical Ablautklasse in `{{Verb Zelle}}` template rows. Extracting the bolded verbs yields 186 base strong verbs. Konjugieren has 99 of them and is **missing 87**; counting the bolded prefixed derivatives on the same rows, 569 verbs, 424 missing.
+
+| Ablautklasse | Pattern | Bases | Missing | Notable absentees |
+|---|---|---|---|---|
+| 1 | ei – i(e) – i(e) | 44 | 26 | beißen, gleiten, kneifen, leihen, meiden, pfeifen, preisen, reiben |
+| 2 | äu/eu – o – o | 27 | 14 | frieren, lügen, saufen, saugen, sieden, trügen, verdrießen |
+| 3 | i – a/o/u – o/u | 50 | 29 | bersten, dreschen, fechten, flechten, glimmen, melken, ringen, rinnen |
+| 4 | i(e)/ö – a/o – o | 18 | 8 | befehlen, gären, scheren, verhehlen, weben, wägen |
+| 5 | i(e) – a – e | 13 | 1 | genesen |
+| 6 | ä/e/ö – u/a/o – a/o | 13 | 2 | graben, schwören |
+| 7 | former reduplicating verbs | 21 | 7 | blasen, braten, mahlen, salzen, spalten |
+
+Caveat: the list is deliberately exhaustive and reaches into the attic (kiesen, brinnen, eischen, kröschen are archaic or regional). An editorial pass should decide how deep to go; the pedagogical core is perhaps 60 of the 87.
+
+## Everyday verbs that turn out to be missing
+
+The original frequency list's 990-verb cutoff left surprising holes. DWDS corpus frequencies (lemma hits in the 53.2-billion-token aggregate corpus) for verbs absent from Konjugieren:
+
+| Verb | Meaning | DWDS hits |
+|---|---|---|
+| beißen | bite | 438,145 |
+| meiden | avoid | 393,619 |
+| leihen | lend, borrow | 359,969 |
+| schmelzen | melt | 342,276 |
+| blasen | blow | 338,893 |
+| lügen | lie (tell untruths) | 311,367 |
+| graben | dig | 279,890 |
+| braten | roast, fry | 234,099 |
+| frieren | freeze | 189,683 |
+| befehlen | command | 180,870 |
+| kriechen | creep, crawl | 159,430 |
+
+A telling inversion: the frequency list favored derived verbs over their bases. vermeiden made the cut while meiden did not; verleihen is supported, leihen is not. And braten is the verb behind Bratwurst, the app's own icon and game mechanic, yet it cannot currently be conjugated.
+
+## Thirteen finds
+
+A sampler of missing verbs whose stories suit this app, with DWDS hits for scale:
+
+| Verb | Gloss | DWDS hits | Why it delights |
+|---|---|---|---|
+| gedeihen | thrive | 286,547 | Cognate with the obsolete English verb *thee* ("So mote it thee!"); its old participle survives as the adjective *gediegen* |
+| schwören | swear | 282,581 | English *swear*; an *answer* was originally *and-swaru*, a swearing-back |
+| spinnen | spin | 170,464 | English *spin*; a spider is literally the spinner; colloquial German added "Du spinnst!" |
+| mahlen | grind | 164,159 | PIE *\*melh₂-*: English *meal* (the ground kind), *molar*, and *Mühle*; weak Präteritum *mahlte* but strong participle *gemahlen* |
+| genesen | recover | 158,328 | PIE *\*nes-*, "return home safely": the root of Greek *nóstos* and therefore *nostalgia*; recovery as homecoming |
+| dreschen | thresh | 62,103 | Direct cognate of *thresh*; a threshold is where one threshed |
+| melken | milk | 50,171 | PIE *\*h₂melǵ-*: English *milk*, Latin *mulgēre*, and *emulsion*, that which has been milked out |
+| bersten | burst | 26,380 | English *burst* with the r on the other side of the vowel (Old English *berstan*): metathesis in action |
+| sieden | boil, seethe | 19,878 | Cognate of *seethe*; English *sodden* is the fossilized strong participle, parallel to *gesotten*; English lost the strong verb, German kept it |
+| verdrießen | vex | 14,109 | From Proto-Germanic *\*þreutaną* "to weary", the root family of English *threat*; its participle thrives in *Politikverdrossenheit* |
+| kiesen | choose (archaic) | 12,428 | The direct cognate of English *choose*, alive mainly in its participle *gekoren* |
+| wringen | wring | 4,602 | A Low German loan embedded in the strong system; kin to *ringen* and *würgen* as well as English *wring* |
+| küren | elect (to an honor) | 439,640 | Originally weak, it borrowed the strong past *kor/gekoren* from its sibling kiesen; the same root gives *Walküre*, chooser of the slain, and *Kurfürst*, the electing prince; sports journalism keeps it frequent ("zum Sieger gekürt") |
+
+The last row is the frequency surprise of the investigation: küren out-polls even beißen in the DWDS corpus.
+
+## Modeling wrinkles the extraction must handle
+
+1. **Dual paradigms.** sieden, küren, weben, and gären each have parallel strong and weak conjugation sets, both current. The model supports one paradigm per verb; either pick house style per verb or extend the model.
+2. **Variant principal parts.** spinnen (spann beside archaic sponn), schwören (schwor beside archaic schwur), melken (milkt/melkt, molk/melkte).
+3. **Dual auxiliaries.** schmelzen takes sein intransitively and haben transitively; `ay` is single-valued.
+4. **Weak Präteritum with strong participle.** mahlen, salzen, spalten (mahlte, gemahlen). Neither the current mixed family (vowel change plus weak endings) nor the weak family fits; a new family or ablaut-group full overrides (the `*` suffix mechanism) would cover them.
+5. **Multiword lemmas.** 1,048 English-Wiktionary titles are idioms and phrases; the model is single-word infinitives, so filter them out.
+6. **Soft-redirect senses.** mahlen's second English-Wiktionary sense is "obsolete spelling of malen"; sense-level filtering must keep such cruft out of `tn`.
+7. **Separable/inseparable homographs.** The pool contains verbs with both readings (the classic umfahren problem); the model encodes exactly one reading per verb.
+
+## Automatic family classification, with verification for free
+
+Classification need not be manual at 6,000-verb scale:
+
+1. For each candidate, hypothesize weak, then -ieren, then every existing ablaut group, with each viable `^` marking of the stem.
+2. Generate all conjugations with `Conjugator`.
+3. Compare against the Wiktionary conjugation table (kaikki `forms`). An exact match confirms family, group, and marking simultaneously; the mismatch queue is precisely the set of verbs needing a new ablaut group or human judgment.
+
+This inverts the manual checklist in `adding-verbs.md` into search plus verification, and every imported verb arrives with an externally sourced expected-conjugation set, ready to be spot-sampled into `ConjugatorTests`.
+
+For `fr`, the DWDS frequency API (no authentication; see recipes) returns lemma hits against a 53.2-billion-token corpus and worked for every verb tried. Leipzig Wortschatz, SUBTLEX-DE, and DeReWo also exist but carry research-oriented licenses that would need review; DWDS-derived ranks with a Credits mention are cleaner.
+
+## Other sources considered
+
+- **Wikidata lexemes**: 20,421 German verb lexemes, CC0, queryable by SPARQL. Conjugation statements are decent, English glosses sparse. Best as a CC0 fallback or cross-check, not the primary source.
+- **verbformen.de (Netzverb)**: the largest dedicated German-verb site; homepage and download page state CC BY-SA 4.0. Worth a follow-up look at its downloadable lists; its verb-count claim was not verified this session.
+- **DWDS**: not a verb list, but the cleanest frequency source (see above).
+- **Duden, PONS, dict.cc, printed "501 German Verbs"**: proprietary, personal-use-only, or too small; rejected.
+
+## Licensing
+
+Wiktionary and Wikipedia text is CC BY-SA 4.0. Deriving the verb database from them requires attribution (the Credits Info article is the natural home) and ShareAlike on the derived data files. Konjugieren's data files are already public on GitHub, so ShareAlike is satisfiable without ceremony. If ShareAlike ever becomes unwanted, Wikidata's CC0 lexemes are the fallback, with comparable verb coverage but much thinner glosses and no etymologies.
+
+## Recommended next steps
+
+1. **Done (2026-07-18).** Download `kaikki.org-dictionary-German-by-pos-verb.jsonl` (293.9 MB): now at `verbdata/kaikki.org-dictionary-German-by-pos-verb.jsonl` (gitignored), all 87,343 records validated, SHA-256 pinned. Provenance, integrity stats, and the re-download recipe live in `verbdata/README.md`. Filtering to single-word lemmas folds into the step-2 pipeline.
+2. Build the classify-and-verify pipeline against `Conjugator`.
+3. First tranche: the 87 missing strong bases plus their common derivatives. "Every German strong verb" is a completable, marketable milestone for an ablaut-centric app.
+4. Second tranche: the 2,406 prefixed derivatives of already-supported verbs.
+5. Then new weak stems in DWDS-frequency order until taste says stop; 6,000+ verbs are reachable from the 6,980-verb both-Wiktionaries pool alone.
+6. Feed `etymology_text` into the existing `Etymologies.json` pipeline; kaikki removes the need for the Chrome-based per-page extraction described in `docs/etymologies.md` for new verbs.
+7. On expansion, update the CLAUDE.md sentence promising "1,000 verbs", and decide whether `fr` stays list-based or is re-derived from DWDS for all verbs.
+
+## Reproduction recipes
+
+```bash
+UA="KonjugierenVerbResearch/1.0 (contact: <email>)"
+
+# Category sizes
+curl -sG -A "$UA" "https://en.wiktionary.org/w/api.php" \
+  --data-urlencode "action=query" --data-urlencode "prop=categoryinfo" \
+  --data-urlencode "titles=Category:German verbs" --data-urlencode "format=json"
+
+# Full member list (loop cmcontinue until absent; ~21 requests for en, ~30 for de)
+curl -sG -A "$UA" "https://en.wiktionary.org/w/api.php" \
+  --data-urlencode "action=query" --data-urlencode "list=categorymembers" \
+  --data-urlencode "cmtitle=Category:German verbs" --data-urlencode "cmnamespace=0" \
+  --data-urlencode "cmlimit=500" --data-urlencode "format=json"
+
+# German Wiktionary: same recipe with cmtitle="Kategorie:Verb (Deutsch)"
+
+# Per-verb wikitext (glosses, etymology, {{de-conj}} / Übersicht)
+curl -sG -A "$UA" "https://en.wiktionary.org/w/api.php" \
+  --data-urlencode "action=parse" --data-urlencode "page=bersten" \
+  --data-urlencode "prop=wikitext" --data-urlencode "format=json"
+
+# DWDS lemma frequency
+curl -sG -A "$UA" "https://www.dwds.de/api/frequency/" --data-urlencode "q=gedeihen"
+
+# Wikidata: count of German verb lexemes (CC0)
+curl -sG -A "$UA" "https://query.wikidata.org/sparql" --data-urlencode "format=json" \
+  --data-urlencode "query=SELECT (COUNT(DISTINCT ?l) AS ?verbs) WHERE { ?l dct:language wd:Q188 ; wikibase:lexicalCategory wd:Q24905 . }"
+
+# Strong-verb inventory: de.wikipedia "Liste starker Verben (deutsche Sprache)",
+# action=parse&prop=wikitext, then extract bolded verbs from {{Verb Zelle|...}} rows
+```

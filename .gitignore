@@ -12,3 +12,5 @@ docs/screenshots/
 docs/wwdc2026-platforms-sotu-transcript.txt
 docs/wwdc2026-whats-new-in-swift-transcript.txt
 docs/wwdc2026-whats-new-swiftui-transcript.txt
+# kaikki.org Wiktionary extraction (~294 MB; re-download recipe in verbdata/README.md)
+verbdata/*.jsonl

@@ -185,6 +185,7 @@ KonjugierenTests/
 
 docs/
 ├── adding-verbs.md            # Verb-addition guide: XML formats, ablaut system, lessons learned
+├── blog_notes.md              # Work journal: dated narrative notes for future blog posts and session memory
 ├── bratwurst-icon-prompts.md  # Prompts used to generate bratwurst-themed app icons
 ├── bug-report-gitcommitsha.md  # Bug report draft: Claude Code `plugin update` doesn't refresh `gitCommitSha` in `installed_plugins.json`
 ├── bug-report-grep-silent-truncation.md  # Bug report draft (filed as anthropics/claude-code #56751): long-line `grep` matches silently disappear from Bash tool output
@@ -225,6 +226,7 @@ docs/
 ├── ui-audit-2.md              # UI audit Round Two — post-657bb4f suggestions; self-contained for future implementation sessions
 ├── ui-audit-2-next-session.md # Next-session brief for OnboardingView page-1 layout work from UI audit Round Two #16
 ├── vanilla_build_and_test.md  # Raw xcodebuild commands for opting out of the ios-build-verify dependency
+├── verb-sources.md            # Verb-corpus expansion research (2026-07): Wiktionary/kaikki/Wikidata/DWDS measurements, licenses, extraction pipeline
 ├── video_script.md            # App Store preview script with bilingual captions and 30-second timing math
 ├── voiceover.md               # VoiceOver pronunciation patterns and per-screen strategy
 ├── wwdc2026-platforms-sotu.md  # WWDC2026 Platforms State of the Union announcements relevant to Konjugieren; reshapes the cloud-llm-tier decision
@@ -246,6 +248,10 @@ corpus/                        # German text corpus for example sentence sourcin
 ├── medieval/                  # Old High German texts (Hildebrandslied, Tatian, etc.)
 ├── modern/                    # Modern German literature and legal texts
 └── technology/                # BSI security guides and technical Wikipedia articles
+
+verbdata/                      # Wiktionary-extraction data for verb-corpus expansion (see docs/verb-sources.md)
+├── README.md                  # Provenance, integrity stats, and re-download recipe for the kaikki JSONL
+└── kaikki.org-dictionary-German-by-pos-verb.jsonl  # 294 MB kaikki.org German-verb extraction (gitignored)
 
 GameCenterResources.gamekit/   # Game Center leaderboard configuration and images
 

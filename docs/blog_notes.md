@@ -1,0 +1,17 @@
+# Blog Notes
+
+Work journal for Konjugieren. Newest entries at the bottom. Narrative over changelog: what was tried, what failed, why decisions changed.
+
+## Verb-corpus expansion research: measuring the Wiktionary option (2026-07-18)
+
+Josh asked (via `prompts/more_verbs.md`) where thousands of additional verbs could come from, given that the sibling apps got their 6,200 and 4,800 verbs from the "Made Simple(r)" books and no German equivalent is in hand. The session turned out to need no browser automation at all: both Wiktionaries, Wikipedia, Wikidata, and DWDS all answered to plain `curl` against their APIs from the Bash tool.
+
+The first move that paid off was a containment check before any diffing: German Wiktionary contains all 990 current verbs and English Wiktionary contains 989 (all but weiterlesen), so set differences against them are real candidate lists rather than coverage noise. The headline numbers: English Wiktionary has 10,407 German verb lemmas (8,346 not in Konjugieren), German Wiktionary has 14,530 (13,457 missing), and 6,980 verbs appear in both Wiktionaries while missing from the app. Of those, 2,406 are prefixed or compound derivatives of verbs the app already conjugates.
+
+One false start worth remembering: the de.wikipedia "Liste starker Verben (deutsche Sprache)" looked like wikitables, and a first extraction pass over `|`-prefixed rows found zero verbs. The page actually builds its rows with `{{Verb Zelle|'''verb'''|...}}` templates, so the extraction had to target bolded tokens inside those templates. Once fixed, the list yielded 186 base strong verbs, of which Konjugieren is missing 87, including everyday ones: beißen, frieren, graben, befehlen, lügen, blasen, braten. A telling inversion emerged: the original frequency list admitted vermeiden and verleihen while excluding meiden and leihen. DWDS frequency checks (their no-auth API worked beautifully) showed the missing bases are common: beißen has 438k corpus hits. The comedy prize goes to küren, which out-polls beißen thanks to sports journalism's "zum Sieger gekürt".
+
+The recommended extraction path is kaikki.org's wiktextract JSONL rather than any crawling: a 293.9 MB verbs-only file carries glosses, expanded conjugation tables, and `etymology_text` in one download, which satisfies the requirement that glosses and etymologies travel with the verbs. Classification can be automated by inverting the manual checklist: hypothesize each family and existing ablaut group, conjugate with `Conjugator`, and accept whatever exactly matches the Wiktionary table; mismatches are precisely the verbs needing new ablaut groups. Modeling wrinkles the data surfaced: dual strong/weak paradigms (sieden: sott/gesotten beside siedete/gesiedet), dual auxiliaries (schmelzen), and the weak-Präteritum-strong-participle class (mahlen, salzen, spalten) that fits no current family.
+
+Findings, licensing analysis (everything usable is CC BY-SA 4.0 except Wikidata's CC0), and a phased plan landed in `docs/verb-sources.md`. No app code changed.
+
+Later the same day, step 1 went from plan to done: the 294 MB kaikki verb file now lives in `verbdata/` at the repo root, deliberately outside `Konjugieren/` because that directory's Xcode folder references would have swept a data file into the app target. The JSONL is gitignored while a tracked README pins provenance and a SHA-256. A full-parse validation counted 87,343 records: 76,503 conjugation entries, 10,840 lemmas, 9,759 single-word lemmas, and 8,736 verbs not yet in the app.

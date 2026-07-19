@@ -793,3 +793,69 @@ Validation: the migration's report matched the prior session's measurements exac
 43 places, `fällen` the largest at 575, `weiterlesen` 447 → 975. Getting the same three numbers
 from an independent rerun is what confirmed the migration read the same data the same way. 201
 tests pass, and the classify-and-verify at-odds count held at 8.
+
+## Turning a detection recipe into a gate (2026-07-19)
+
+The `fr` → `hi` refactor left an uncomfortable asymmetry. The shipped rank is now derived from
+DWDS hit counts, and the note explaining how those counts get silently corrupted was excellent
+prose sitting in a docstring — which is to say, a thing a future session has to read, believe, and
+act on. The eight bad counts of the morning were found because someone happened to run the
+detection recipe. Nothing made them run it.
+
+So the recipe is now enforced. Three observations made this much cheaper than expected.
+
+The first is that the signal was already there. Every row in `dwds-frequencies.json` carries
+`dwds_lemma`, the lemma DWDS decided the query was about. The script has been recording it since
+the beginning and has never once looked at it. The fix is not to gather new evidence but to act on
+evidence already in hand.
+
+The second is that the check can be *strict*. Post-repair, exactly three of 990 rows have
+`dwds_lemma != lemma`, and all three are orthographic variants: `reißen`→`reissen`,
+`erschweren`→`erschwern`, `kreieren`→`kreiern`. Zero false positives means the gate can refuse to
+write rather than print a warning, and that distinction is the whole point — a warning in a
+7,700-lemma run is a line nobody reads. The two variants are encoded as rules (ß↔ss, and the
+dropped *e* before final *-n*) rather than as a list of three lemmas, so an imported verb of the
+same shape passes without anyone extending an allowlist.
+
+The third is the check I did not expect to be able to build. DWDS returns the *lemma's* total, not
+the queried form's, so two genuinely verbal forms of one verb return byte-identical counts. That
+makes probe agreement a real invariant, and disagreement catches collisions no allowlist could
+anticipate. Supply `regen` the probes `regt` and `rege` and the gate reports
+`regt->regen=527307, rege->rege=803503` and refuses the row.
+
+Verification went further than planned, and twice it was worth it.
+
+Re-querying the eight bare infinitives live: all eight refused, and the first four counts came back
+matching the values recorded in the docstring to the digit — 23,421,973 for `rund`, 18,062,655 for
+`gleich`. The defect is still live upstream. Then the same eight with probes: all eight passed and
+reproduced the shipped repaired counts exactly, via second probes I chose independently of whatever
+the morning's repair used. Two different routes to the same eight numbers is about as good as
+end-to-end evidence gets here.
+
+The two surprises both came from tests that did not do what I predicted.
+
+I tried to demonstrate the collision check using the case the docstring names — `weißen`'s Präsens
+2s *weißt* is also *wissen*'s — and the gate passed it. Not a bug: DWDS lemmatizes the string
+`weißt` to `weißen`, hits 615,024, the same as `geweißt`. The probes genuinely agreed. So the
+a-priori concern that sent the morning's repair to a participle does not actually reproduce at this
+endpoint, which is worth knowing before anyone treats "avoid Präsens forms" as a hard rule. The
+underlying advice still stands — a participle is a safer default — but for `weißen` specifically
+the collision is hypothetical. I had to construct a real one (`rege`) to exercise the path.
+
+And when I did, the gate caught it and reported the wrong reason: "fetch failed after retries." A
+disagreement leaves `hits` unset, and `classify` tested `hits is None` before it looked at anything
+else, so a probe collision was indistinguishable from a network timeout. The row was correctly
+refused and the diagnostic would have sent the next session to debug DNS. Fixed by carrying the
+disagreement in its own field and testing it first. A gate that fails for the right reason but says
+the wrong thing is only half-built, and the only way to find that is to watch it fail on purpose.
+
+`--check FILE` audits an existing snapshot without touching the network, which is how the 990 and
+the reconstructed pre-repair eight are regression-tested: 0 suspect and 8 suspect respectively.
+Verification is on by default; `--no-verify` opts out. That default is the load-bearing decision.
+An opt-in flag is exactly what a naive bulk re-fetch omits, and a naive bulk re-fetch is the entire
+threat model.
+
+Still open, and now the sharp edge: generating probes for an import. Kaikki's `forms[]` already
+carries `perfektpartizip` and `präsensIndikativ.ts` for every candidate, so this needs no
+`Conjugator` round-trip — a correction to the docstring's own suggestion. That belongs to the
+import step, where the candidate data is in hand.

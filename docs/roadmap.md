@@ -132,11 +132,14 @@ Small things the pipeline surfaced that no plan currently owns. None blocks the 
 - **Two verbs are editorially ambiguous** — *helfen* (Wiktionary's *hülfe* against the shipped
   *hälfe*) and *verstoßen* (the shipped Präsens umlaut *du verstößt* against a table without it).
   Both need a human to pick, not more code.
-- **`fetch_dwds_frequencies.py` queries bare infinitives**, which silently resolves a verb that
-  is also an adjective or noun to the wrong word — *runden* scored as *rund*. Eight such verbs
-  were found and repaired on 2026-07-19, but the script is unchanged, so a bulk re-fetch would
-  reintroduce it across thousands. The fix is to query an inflected form and verify the returned
-  lemma; the failure mode and detection recipe are documented at the top of that script.
+- **A bulk DWDS fetch still needs probe generation.** Querying a bare infinitive silently
+  resolves a verb that is also an adjective or noun to the wrong word — *runden* scored as
+  *rund*. Eight such verbs were found and repaired on 2026-07-19, and the script now **refuses to
+  write** a contaminated row rather than warning about it (verified live against all eight). What
+  remains is generating the probes themselves for an import, which belongs to the import step:
+  kaikki's `forms[]` carries `perfektpartizip` and `präsensIndikativ.ts` for every candidate, so
+  no `Conjugator` round-trip is needed. Supply two probes per lemma and the gate cross-checks
+  them against each other.
 - **747 incoming verbs are blocked on the prefix inventory**, not on grammar. Their first element
   — *acht*, *abhanden* — is not a prefix any shipping verb uses, so no hypothesis proposes
   separating it. Widening the inventory belongs to the import step. The summary used to file these

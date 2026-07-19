@@ -375,10 +375,17 @@ is case-sensitive, `Fällen` is a separate entry resolving to the noun `Fall`, a
 unambiguous `fällte` returns the same count, so its 5.7M is genuine idiom (*eine Entscheidung
 fällen*) and not contamination.
 
-The failure mode, the probe technique, and a detection recipe to re-run after any future fetch
-are documented at the top of `fetch_dwds_frequencies.py`. That script still queries bare
-infinitives, so **a bulk re-fetch will reintroduce this across thousands of verbs** unless it
-generates probe forms first.
+The failure mode and the probe technique are documented at the top of
+`fetch_dwds_frequencies.py`. What used to be a detection *recipe* there — prose a future session
+had to read and act on — is now **an enforced gate**: the script classifies every row before
+writing anything, and one suspect row aborts the run with a nonzero exit and no output file.
+Verification is on by default, `--no-verify` opts out, and `--check FILE` audits an existing
+snapshot without touching the network. Confirmed 2026-07-19 by re-querying the eight bare
+infinitives live: all eight were refused, and the same eight passed when given probes,
+reproducing the shipped counts exactly. The script still queries a bare infinitive when no probe
+is supplied, so **a bulk import must generate probes** — from kaikki's `forms[]`, which carries
+`perfektpartizip` and `präsensIndikativ.ts` for every candidate — but a naive re-fetch now fails
+loudly instead of silently.
 
 **Two traps in the call sites, one of them silent.** The section above names `VerbParser`,
 `Verb.verbsSortedByFrequency`, and `VerbExportTests`. Checked on 2026-07-19, that list is

@@ -105,6 +105,7 @@ struct VerbExportTests {
       ablautGroup: verb.ablautGroup,
       auxiliary: verb.auxiliary.verb,
       frequency: verb.frequency,
+      hits: verb.hits,
       prefix: prefixType,
       prefixValue: prefixValue,
       conjugations: conjugations,
@@ -148,7 +149,10 @@ private struct ExportedVerb: Encodable {
   let family: String
   let ablautGroup: String?
   let auxiliary: String
+  /// Dense corpus rank, 1 = most common. `hits` is the raw DWDS count it is derived from;
+  /// both ship because a consumer re-ranking a subset needs the count, not the rank.
   let frequency: Int
+  let hits: Int
   let prefix: String
   let prefixValue: String?
   let conjugations: [String: AnyCodable]

@@ -299,6 +299,7 @@ Also unresolved, and deliberately so: 249 verified incoming verbs are dual-auxil
 interim policy in `prompts/dual_auxiliary.md` governs; the pipeline records `ay` from kaikki's
 primary reading and sets a flag rather than deciding.
 
-`fr` and `ic` are untouched. `fr` is blocked pending BBAW's reply about DWDS, and `ic` has no
-external source at all — it is 40-odd SF Symbol suffixes chosen by taste, and it is
-`#REQUIRED` in the DTD. Budget a decision per imported verb.
+`hi` and `ic` are untouched. `hi` — the raw DWDS hit count that replaced the `fr` rank on
+2026-07-19 — is blocked pending BBAW's reply about bulk querying, and `ic` has no external
+source at all: it is 40-odd SF Symbol suffixes chosen by taste, and it is `#REQUIRED` in the
+DTD. Budget a decision per imported verb.

@@ -521,6 +521,7 @@ private final class Classifier {
   private func install(word: String, family: Family, prefixes: [Prefix]) {
     Verb.verbs[word] = Verb(
       infinitiv: word,
+      hits: 0,
       frequency: 0,
       frequencyIcon: "figure",
       readings: [

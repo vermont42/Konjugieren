@@ -30,7 +30,16 @@ struct Verb: Identifiable, Hashable {
 
   var id: String { infinitiv }
   let infinitiv: String
+
+  /// Raw DWDS corpus hits, as stored in `Verbs.xml`. Ordering by this is *least* common
+  /// first, the opposite of `frequency`, so prefer `frequency` anywhere order matters.
+  let hits: Int
+
+  /// Dense rank over the whole corpus, 1 being the most common verb. Derived from `hits`
+  /// by `VerbParser` at parse time rather than stored, so adding a verb does not renumber
+  /// every incumbent. This is the number the UI renders as `#168`.
   let frequency: Int
+
   let frequencyIcon: String
 
   /// Ordered, never empty. Most verbs have exactly one; a verb whose meaning splits the
@@ -68,6 +77,10 @@ struct Verb: Identifiable, Hashable {
   /// standard value, so that Conjugator and the classify-and-verify oracle stay region-free.
   func regionalAuxiliary(in region: Region) -> Auxiliary {
     primaryReading.regionalAuxiliary(in: region)
+  }
+
+  func withFrequency(_ frequency: Int) -> Verb {
+    Verb(infinitiv: infinitiv, hits: hits, frequency: frequency, frequencyIcon: frequencyIcon, readings: readings)
   }
 
   static func endingIsValid(infinitiv: String) -> Bool {

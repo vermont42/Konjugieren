@@ -10,7 +10,7 @@ class VerbParser: NSObject, XMLParserDelegate {
 
   private var currentVerb = ""
   private var currentMarkedInfinitiv = ""
-  private var currentFrequency = 0
+  private var currentHits = 0
   private var currentIconSuffix = ""
   private var currentReadings: [Reading] = []
 
@@ -28,7 +28,30 @@ class VerbParser: NSObject, XMLParserDelegate {
 
   func parse() -> [String: Verb] {
     parser?.parse()
-    return verbs
+    return Self.ranked(verbs)
+  }
+
+  /// Assigns each verb its dense frequency rank, 1 being the most common.
+  ///
+  /// `Verbs.xml` stores raw DWDS hit counts because a rank is a property of the corpus
+  /// rather than of the verb: were ranks stored, adding one verb would renumber every
+  /// verb below it, turning a one-line change into a 990-line diff. Deriving the rank
+  /// here costs one sort per launch and keeps the file additive.
+  ///
+  /// The sort is descending by hits, so that the rank counts the same direction the
+  /// hand-maintained ranks did and every existing ascending sort on `frequency` still
+  /// means most-common-first. Ties break on the infinitive to keep the order total; the
+  /// shipping corpus has none, but an imported tranche may.
+  private static func ranked(_ verbs: [String: Verb]) -> [String: Verb] {
+    let ordered = verbs.values.sorted {
+      $0.hits == $1.hits ? $0.infinitiv < $1.infinitiv : $0.hits > $1.hits
+    }
+    var ranked: [String: Verb] = [:]
+    ranked.reserveCapacity(ordered.count)
+    for (index, verb) in ordered.enumerated() {
+      ranked[verb.infinitiv] = verb.withFrequency(index + 1)
+    }
+    return ranked
   }
 
   func parser(_ parser: XMLParser, didStartElement elementName: String, namespaceURI: String?, qualifiedName qName: String?, attributes attributeDict: [String: String]) {
@@ -51,12 +74,12 @@ class VerbParser: NSObject, XMLParserDelegate {
     currentVerb = Self.strippedInfinitiv(markedInfinitiv)
 
     if
-      let frequency = attributeDict["fr"],
-      let frequencyInt = Int(frequency)
+      let hits = attributeDict["hi"],
+      let hitsInt = Int(hits)
     {
-      currentFrequency = frequencyInt
+      currentHits = hitsInt
     } else {
-      Current.fatalError.fatalError("No frequency specified for verb '\(currentVerb)'.")
+      Current.fatalError.fatalError("No hit count specified for verb '\(currentVerb)'.")
     }
 
     if let iconSuffix = attributeDict["ic"] {
@@ -163,7 +186,10 @@ class VerbParser: NSObject, XMLParserDelegate {
 
     verbs[currentVerb] = Verb(
       infinitiv: currentVerb,
-      frequency: currentFrequency,
+      hits: currentHits,
+      // Filled in by `ranked` once every verb is parsed, since a rank cannot be known
+      // until the whole corpus is.
+      frequency: 0,
       frequencyIcon: currentIconSuffix.isEmpty ? "figure" : "figure.\(currentIconSuffix)",
       readings: currentReadings
     )
@@ -174,7 +200,7 @@ class VerbParser: NSObject, XMLParserDelegate {
   private func resetState() {
     currentVerb = ""
     currentMarkedInfinitiv = ""
-    currentFrequency = 0
+    currentHits = 0
     currentIconSuffix = ""
     currentReadings = []
   }

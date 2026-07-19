@@ -16,8 +16,8 @@ completes.
 | 3 | Fix what it found in the shipping corpus | [`verb-classification.md`](verb-classification.md) | ✅ 2026-07-19 | — |
 | 4 | Regional variety support | [`../prompts/regional_variation.md`](../prompts/regional_variation.md) | ✅ 2026-07-19 | — |
 | 5 | Dual auxiliaries + double-prefix grammar | [`../prompts/dual_auxiliary.md`](../prompts/dual_auxiliary.md) | ✅ 2026-07-19 | step 4 ✅ |
-| 6 | Refactor `fr`: store hits, derive rank | [`verb-sources.md`](verb-sources.md) § "Step 4 in detail" | ⬜ next | — |
-| 7 | Import tranche 1: strong bases | [`verb-sources.md`](verb-sources.md) § step 5 | ⬜ | steps 4–6 |
+| 6 | Refactor `fr`: store hits, derive rank | [`verb-sources.md`](verb-sources.md) § "Step 4 in detail" | ✅ 2026-07-19 | — |
+| 7 | Import tranche 1: strong bases | [`verb-sources.md`](verb-sources.md) § step 5 | ⬜ next | steps 4–6 ✅ |
 | 8 | Import tranche 2: prefixed derivatives | [`verb-sources.md`](verb-sources.md) § step 6 | ⬜ | step 5's grammar |
 | 9 | Import tranche 3: weak stems by frequency | [`verb-sources.md`](verb-sources.md) § step 7 | 🚧 blocked | **BBAW reply** |
 | 10 | Etymologies, then the docs sweep | [`verb-sources.md`](verb-sources.md) §§ 8–9 | ⬜ | step 7 |
@@ -67,12 +67,6 @@ Each of these is enough to start. The prompts are written to be self-contained.
 > already run; it has, on 2026-07-19. Read "Regional before dual-auxiliary" below first: it
 > records the exact post-step-4 state of the `ay` attribute and the three `ay="r"` verbs you must
 > not disturb.
-
-**Step 6 — the `fr` refactor**
-
-> Please implement the "Step 4 in detail: store hits, derive rank" section of
-> `docs/verb-sources.md`, whose "Preconditions" note lists what was verified on 2026-07-19 so
-> you need not re-derive it.
 
 **Steps 7 onward — the import**
 
@@ -169,3 +163,4 @@ Small things the pipeline surfaced that no plan currently owns. None blocks the 
 | Regional + dual-auxiliary planning | `b725ee3` | The prompts for steps 4 and 5 |
 | Regional variety support | `95206ef` | Region setting, ß/ss transform (incl. displayed infinitives + search normalization), 3 regional-auxiliary verbs, dual-flag pill, Duden Info article; at-odds count held at 14 |
 | Dual auxiliaries + double-prefix grammar | — | Nested `<reading>` model across all 990 verbs, repeated prefix markers, 38 verbs given a second reading, reading picker in `VerbView`, reading-aware quiz. Fixed 7 double-prefix verbs, *hängen*, and 67 verbs whose broken encoding the old metric hid; 14 → 8 at odds |
+| `fr` → `hi`: store hits, derive rank | — | `Verbs.xml` stores raw DWDS counts; `VerbParser` derives the 1..n rank at parse time. `fr` retired from the DTD so a stale writer fails the build. Ranks moved a median of 43 places; at-odds held at 8 |

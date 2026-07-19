@@ -743,3 +743,53 @@ prefixes, which after this pass would have sent the next session to rewrite code
 correct. The summarizer now distinguishes the two by where Wiktionary puts its own *ge-*: absent
 entirely means a real double prefix, infixed means an unrecognized particle. **747 verbs are
 waiting on a wider prefix inventory**, which belongs to the import step, not here.
+
+## Retire the rank, store the count (2026-07-19)
+
+The `fr` attribute in `Verbs.xml` held a dense rank, 1 through 990, hand-maintained. It reads
+naturally — `fr="8"` for *machen* says "eighth most common verb" — and it is exactly the wrong
+thing to store, because a rank is a property of the corpus rather than of the verb. Inserting one
+verb at position 400 renumbers the 590 below it. The corpus is about to grow by thousands, so the
+choice was between a stream of 990-line diffs that no reviewer can read and a one-line addition.
+
+The refactor itself was small: `Verbs.xml` now carries `hi`, the raw DWDS hit count, and
+`VerbParser.ranked` sorts by it descending after parsing and assigns 1..n. What made the session
+short was that the prior session had left three notes attached to the plan, and all three paid off.
+
+The first was a list of preconditions "verified by measurement, not by reading" — `fr` really is
+dense over 1..990, the DWDS snapshot really does cover all 990 with no ties. Re-checking those took
+one Python invocation instead of an afternoon, and they all still held.
+
+The second was a warning about eight bad hit counts. The DWDS frequency endpoint lemmatizes
+whatever you hand it and takes no part-of-speech parameter, so `runden` resolves to the adjective
+*rund* and comes back with 23.4M hits instead of the verb's 517K. Nothing marks the answer as
+wrong; the count is real, it just belongs to a different word. Deriving rank from it would have put
+*runden* 25th of 990 and nobody would have noticed. Those eight had already been repaired by
+re-querying an unambiguously verbal form, so the migration inherited clean data — but the note also
+says the fetch script is *unchanged*, so a bulk re-fetch reintroduces the defect across thousands
+of verbs. That is now the loudest item in the roadmap's known-gaps list.
+
+The third note was the useful one, because it corrected the plan it was attached to. The plan named
+three call sites; the note said the list was incomplete in two ways. `fr` is *rendered*, not only
+sorted by — `VerbBrowseView` and `VerbView` both print `#\(verb.frequency)`, which would have
+become `#516850`. And every sort site sorts ascending, which means most-common-first for a rank and
+*least*-common-first for a hit count, and one of those sites — `BrowseableFamily.topVerbs`, the
+three-exemplar picker on the family screens — was not in the plan's list at all. Left alone, each
+family screen would have quietly showcased its three rarest verbs, and no test would have failed.
+
+The note's own recommendation resolved both at once: keep `Verb.frequency` as the derived rank and
+give the raw count a different name. `Verb.hits` is new; `frequency` means what it always meant. No
+call site changed. That is the whole argument for the shape of this refactor — the four sorts and
+two renders are correct because the name they read still denotes a rank.
+
+Two things were added beyond the plan. The DTD retires `fr` rather than repurposing it, so a stale
+tool writing a rank into the file fails the `xmllint --valid` build phase instead of passing as a
+plausible small number — the failure mode the eight bad counts taught, applied to the schema. And
+`VerbTests` gained three assertions, one of which is that more hits means a lower rank. The plan's
+own note observed that no test asserted the ordering; leaving that true after making the ordering
+derived seemed like the wrong kind of thrift.
+
+Validation: the migration's report matched the prior session's measurements exactly — median shift
+43 places, `fällen` the largest at 575, `weiterlesen` 447 → 975. Getting the same three numbers
+from an independent rerun is what confirmed the migration read the same data the same way. 201
+tests pass, and the classify-and-verify at-odds count held at 8.

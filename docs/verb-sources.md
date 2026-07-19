@@ -322,7 +322,16 @@ proceed anyway, rank the tranche by a provisional source and mark it for re-deri
 
 ### Step 4 in detail: store hits, derive rank
 
-`fr` is currently a dense unique rank from 1 to 990, stored per verb. That means every tranche
+**Executed 2026-07-19.** `Verbs.xml` now carries `hi`, the raw DWDS hit count, and `fr` is gone
+from the DTD, so a stale tool writing a rank fails `xmllint --valid` rather than passing as a
+plausible small number. `VerbParser.ranked` derives the dense 1..n rank after parsing;
+`Verb.hits` is the count and `Verb.frequency` stays the rank, which left all four sort sites and
+both render sites correct without edits. Three tests in `VerbTests` now assert the rank is dense
+and that more hits means a lower rank — the ordering guard the section below notes was missing.
+The at-odds count held at 8. Everything below is the reasoning that produced this, kept because
+the traps it records apply again at the next fetch.
+
+`fr` was a dense unique rank from 1 to 990, stored per verb. That means every tranche
 of new verbs rewrites the `fr` of all incumbents, which is a large useless diff and an
 invitation to error. Storing raw frequency and computing the rank at parse time makes adding a
 verb a one-line change. The refactor touches `VerbParser`, `Verb.verbsSortedByFrequency`, and

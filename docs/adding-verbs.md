@@ -9,7 +9,7 @@ This guide covers the complete workflow for adding verbs to Konjugieren, includi
 Defines verbs with their properties. Each `<verb>` holds one or more `<reading>` children:
 
 ```xml
-<verb in="an+k^om^men" fr="255" ic="walk.arrival">
+<verb in="an+k^om^men" hi="2941218" ic="walk.arrival">
   <reading tn="arrive" fa="s" ag="kommen" ay="s" />
 </verb>
 ```
@@ -20,13 +20,26 @@ the ones that can vary between senses of the same verb.
 | Element | Attribute | Meaning | Required |
 |---|---|---|---|
 | `verb` | `in` | Infinitive with markers (see below) | Yes |
-| `verb` | `fr` | Frequency rank (lower = more common) | Yes |
+| `verb` | `hi` | Raw DWDS corpus hit count (higher = more common) | Yes |
 | `verb` | `ic` | Frequency-icon suffix | Yes |
 | `reading` | `tn` | Translation | Yes |
 | `reading` | `fa` | Family: `s`=strong, `m`=mixed, `w`=weak, `i`=ieren | Yes |
 | `reading` | `ag` | Ablaut group name (required for strong/mixed) | Conditional |
 | `reading` | `ay` | Auxiliary: `s`=sein, `h`=haben (default), `r`=regionally conditioned | No |
 | `reading` | `in` | Overrides the verb's `in` for this sense only | No |
+
+**`hi` holds a hit count, not a rank.** The `#255` a verb screen displays is a dense rank over
+the whole corpus, but it is *derived* — `VerbParser.ranked` sorts every verb by `hi` descending
+after parsing and assigns 1..n. Storing the rank instead, which is what the retired `fr`
+attribute did, made the rank a property of the file rather than of the corpus: inserting one
+verb renumbered every verb below it, so a one-verb change arrived as a 990-line diff. Get the
+count from `verbdata/dwds-frequencies.json`, and if the verb is not in there, read the header of
+`verbdata/fetch_dwds_frequencies.py` before querying DWDS — a bare infinitive that is also an
+adjective or noun silently returns the *other* word's count, and nothing in the response says so.
+
+`Verb` exposes both: `hits` is the raw count, `frequency` the derived rank. Sort and display on
+`frequency`. Ordering by `hits` ascending is least-common-first, the reverse of what every call
+site means.
 
 **Infinitive markers:**
 - `+` separates a separable prefix (e.g., `an+kommen` → ankommen)
@@ -137,7 +150,7 @@ class FatalErrorSpy: FatalError {
 - Protocol injection enables comprehensive unit testing of error conditions
 
 **Common Validation Checks:**
-- Required attributes (infinitiv, translation, family, frequency, exemplar)
+- Required attributes (infinitiv, translation, family, hit count, exemplar)
 - Valid enum codes (family: s/m/w/i, auxiliary: s/h)
 - Ablaut marker rules (^^ count, placement, and consistency with family)
 - Pattern format correctness in AblautGroups.xml
@@ -213,15 +226,21 @@ vowel length. If a verb's spelling looks odd, check which side of the reform it 
 Simply add to Verbs.xml without ablaut markers:
 
 ```xml
-<verb in="machen" tn="make, do" fr="8" fa="w" />
-<verb in="studieren" tn="study" fr="353" fa="i" />
+<verb in="machen" hi="67161366" ic="strengthtraining.traditional">
+  <reading tn="make, do" fa="w" />
+</verb>
+<verb in="studieren" hi="2173332" ic="flexibility">
+  <reading tn="study" fa="i" />
+</verb>
 ```
 
 ### Strong or Mixed Verb
 
 1. **Add to Verbs.xml** with ablaut markers and group reference:
    ```xml
-   <verb in="s^i^ngen" tn="sing" fr="354" ag="singen" fa="s" />
+   <verb in="s^i^ngen" hi="2904260" ic="wave">
+     <reading tn="sing" fa="s" ag="singen" />
+   </verb>
    ```
 
 2. **Add ablaut group to AblautGroups.xml** (if new pattern):

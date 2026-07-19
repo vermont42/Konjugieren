@@ -859,3 +859,40 @@ Still open, and now the sharp edge: generating probes for an import. Kaikki's `f
 carries `perfektpartizip` and `präsensIndikativ.ts` for every candidate, so this needs no
 `Conjugator` round-trip — a correction to the docstring's own suggestion. That belongs to the
 import step, where the candidate data is in hand.
+
+## A doc-consistency pass, and the stale number that mattered (2026-07-19)
+
+Checking whether roadmap step 8 was still correct turned up one wrong gate and, more usefully,
+a stale figure in a position where staleness does real damage.
+
+Step 8 imports the 2,406 prefixed derivatives, and both files said it was gated on the
+double-prefix grammar. That grammar shipped with step 5, so the gate is satisfied — but the
+interesting part is that the blocker did not disappear, it *moved*, and got bigger. Only 145
+incoming verbs still need the double-prefix grammar. **747** are blocked on something else
+entirely: their first element (*acht*, *abhanden*) is not a prefix any shipping verb uses, so no
+hypothesis ever proposes separating it. The roadmap's known-gaps section already recorded this;
+the step-8 row and `verb-sources.md`'s step 6 had not caught up. Both now say the live blocker is
+the prefix inventory, and that widening it belongs to the tranche rather than being a prerequisite
+somebody else owns.
+
+The worse find was in `verb-sources.md`: "The corpus now stands at **14 verbs at odds, 99.0%
+verified**, and that number is the regression test for every step below." Two problems. The count
+is 8 now, not 14 — but more dangerously, 14 was measured under the *old, looser* metric. A session
+told to baseline against that sentence would take 14 as its floor and conclude a regression to 13
+was progress, when the real floor is 8 under a stricter definition that counts 67 verbs the old
+metric hid. Both numbers are now correct, and the paragraph carries the same do-not-compare warning
+the roadmap does, because that sentence is the one a fresh session actually acts on.
+
+Two more were my own misses from the `fr` → `hi` sweep earlier the same day: the Context paragraph
+still listed "frequency rank (`fr`)" among what a new verb needs, and the DTD table — the one this
+document calls "the authoritative list of what a verb carries" — still had an `fr` row. I had
+updated the DTD in `Verbs.xml` itself and the build enforces it, so neither would have caused a
+broken build; they would just have told the next reader to write an attribute that fails
+validation. Worth noting that the thing which caught them was grepping for the *old* name rather
+than re-reading what I had changed. Checking your own diff finds what you touched; grepping for
+the retired name finds what you missed.
+
+Also marked steps 3 and 4 of "Recommended next steps" as done, since both had run and were still
+written in the future tense, and renamed the "`fr` is blocked" section to "`hi` is blocked". The
+remaining `fr` mentions are all inside the section that documents the refactor's own reasoning,
+where the old name is the subject rather than a live instruction.

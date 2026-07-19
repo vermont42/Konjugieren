@@ -8,7 +8,7 @@ Source counts, sizes, and frequencies were measured live on 2026-07-18 against t
 
 Konjugieren ships 990 verbs (582 weak, 295 strong, 30 mixed, 83 -ieren), the survivors of data cleansing on a frequency-of-use list. The sibling apps Conjuguer (~6,200 verbs) and Conjugar (~4,800) were fed by the "Made Simple(r)" books; no comparable German book is in hand, so the path to parity runs through open data.
 
-A new verb needs everything `Verbs.xml` encodes: infinitive with prefix and ablaut markers (`in`), a short English translation (`tn`), family (`fa`), frequency rank (`fr`), a frequency-icon suffix (`ic`), an ablaut group (`ag`) for strong and mixed verbs, and auxiliary (`ay`). The file's DOCTYPE is the authoritative list; see the handoff section at the end. Each verb ideally also gains entries in `Etymologies.json` and `ExampleSentences.json`. The sources below are therefore rated not just on verb count but on whether glosses, etymologies, and full conjugation tables travel with the verbs in the same pass, so that nothing must be recrawled later.
+A new verb needs everything `Verbs.xml` encodes: infinitive with prefix and ablaut markers (`in`), a short English translation (`tn`), family (`fa`), raw DWDS hit count (`hi`), a frequency-icon suffix (`ic`), an ablaut group (`ag`) for strong and mixed verbs, and auxiliary (`ay`). The file's DOCTYPE is the authoritative list; see the handoff section at the end. Each verb ideally also gains entries in `Etymologies.json` and `ExampleSentences.json`. The sources below are therefore rated not just on verb count but on whether glosses, etymologies, and full conjugation tables travel with the verbs in the same pass, so that nothing must be recrawled later.
 
 ## Headline numbers
 
@@ -138,7 +138,7 @@ Classification need not be manual at 6,000-verb scale:
 
 This inverts the manual checklist in `adding-verbs.md` into search plus verification, and every imported verb arrives with an externally sourced expected-conjugation set, ready to be spot-sampled into `ConjugatorTests`.
 
-For `fr`, the DWDS frequency API (no authentication; see recipes) returns lemma hits against a 53.2-billion-token corpus and worked for every verb tried.
+For `hi`, the DWDS frequency API (no authentication; see recipes) returns lemma hits against a 53.2-billion-token corpus and worked for every verb tried.
 
 **Correction (2026-07-19): the licensing sentence that stood here was wrong.** It claimed DWDS-derived ranks "with a Credits mention are cleaner" than Leipzig Wortschatz, SUBTLEX-DE, or DeReWo. Reading the actual terms at `dwds.de/d/nutzungsbedingungen` reverses that judgment. Two sentences govern:
 
@@ -146,7 +146,7 @@ For `fr`, the DWDS frequency API (no authentication; see recipes) returns lemma 
 
 > Jegliche Nutzung der Inhalte des DWDS, einschließlich jedoch nicht beschränkt auf automatisierte Abfragen und Auswertungen (Crawlen, Parsen, Text- und Data-Mining), sofern nicht über § 60d UrhG zulässig, ist nur mit ausdrücklicher Genehmigung gestattet.
 
-§ 44b UrhG is Germany's general text-and-data-mining exception, and rights holders may reserve it for non-research uses; BBAW has done so explicitly. § 60d is the *scientific research* TDM exception, available to non-commercial research organizations — which a shipping App Store app is not. So bulk-querying the frequency API to populate `fr` across the corpus, and shipping the derived ranks, requires written permission (`dwds@bbaw.de`), regardless of attribution. Quoting a handful of frequencies in a design document, as this file does, stays inside the citation allowance ("Der Umfang darf den üblicher Zitate nicht überschreiten") given a Quellenangabe.
+§ 44b UrhG is Germany's general text-and-data-mining exception, and rights holders may reserve it for non-research uses; BBAW has done so explicitly. § 60d is the *scientific research* TDM exception, available to non-commercial research organizations — which a shipping App Store app is not. So bulk-querying the frequency API to populate `hi` across the corpus, and shipping the derived ranks, requires written permission (`dwds@bbaw.de`), regardless of attribution. Quoting a handful of frequencies in a design document, as this file does, stays inside the citation allowance ("Der Umfang darf den üblicher Zitate nicht überschreiten") given a Quellenangabe.
 
 The practical path is to ask: BBAW is an academic academy, Konjugieren is free and educational, and a Credits attribution costs them nothing. But ask before building on it. See `verbdata/README.md` for the snapshot taken on 2026-07-19 and the fallbacks if the answer is no.
 
@@ -166,21 +166,21 @@ Wiktionary and Wikipedia text is CC BY-SA 4.0. Deriving the verb database from t
 1. **Done (2026-07-18).** Download `kaikki.org-dictionary-German-by-pos-verb.jsonl` (293.9 MB): now at `verbdata/kaikki.org-dictionary-German-by-pos-verb.jsonl` (gitignored), all 87,343 records validated, SHA-256 pinned. Provenance, integrity stats, and the re-download recipe live in `verbdata/README.md`. Filtering to single-word lemmas folds into the step-2 pipeline.
 2. **Done (2026-07-19).** The classify-and-verify pipeline is built and has run repeatedly: `verbdata/build_candidates.py` → `KonjugierenTests/Utils/VerbClassificationTests.swift` → `verbdata/summarize_classification.py`. Design, invocation, and findings are in [`verb-classification.md`](verb-classification.md). **6,857 of 8,232 incoming verbs (83.3%) are classified and externally verified**, including 42 of the 44 named missing strong verbs — the two holdouts, *mahlen* and *spalten*, are wrinkle 4 above — weak Präteritum with strong participle, which the model still cannot express.
 
-   Its first run also found that **354 of the 985 shipping verbs disagreed with Wiktionary**. Those defects were fixed the same day, in `Conjugator` (the epenthetic -e and the -ern/-eln endings) and in the data (the ß/ss alternation and eleven mis-marked prefixes). The corpus now stands at **14 verbs at odds, 99.0% verified**, and that number is the regression test for every step below: re-run the three stages after any change, and it should never rise.
+   Its first run also found that **354 of the 985 shipping verbs disagreed with Wiktionary**. Those defects were fixed the same day, in `Conjugator` (the epenthetic -e and the -ern/-eln endings) and in the data (the ß/ss alternation and eleven mis-marked prefixes). The corpus now stands at **8 verbs at odds, 99.7% verified**, and that number is the regression test for every step below: re-run the three stages after any change, and it should never rise. **Do not compare that 8 to figures in older prose.** The metric was tightened on 2026-07-19 to count a verb whose shipped encoding failed even when the classifier could rescue it with an ablaut group that already ships; under the old, looser metric the same corpus reads 6, and it read 6 while 67 verbs were quietly broken.
 
-3. **Model passes, before any import.** Two enhancements reshape `Verbs.xml`, `VerbParser`, and `Verb`, and both are cheaper to do before the corpus grows than after.
+3. **Done (2026-07-19).** Model passes, before any import. Two enhancements reshape `Verbs.xml`, `VerbParser`, and `Verb`, and both are cheaper to do before the corpus grows than after.
    1. [`../prompts/regional_variation.md`](../prompts/regional_variation.md) — variation by **standard variety**: a Region setting, Swiss ß/ss rendering, and the Austrian/Swiss auxiliary of *stehen*, *sitzen*, *liegen*. It also dedupes the 98 incoming Swiss spellings, which would otherwise import as duplicate verbs.
    2. [`../prompts/dual_auxiliary.md`](../prompts/dual_auxiliary.md) — variation by **meaning**: the `<reading>` model, covering 48 shipping and 418 incoming dual-auxiliary verbs. **This pass also carries the double-prefix grammar**, without which the 1,186 incoming verbs needing a separable prefix over an already-prefixed base (*angehören*, *aufbewahren*) cannot be expressed at all. That is the single largest blocker to the import, and it is invisible from this list unless you read that prompt.
 
    Order matters: regional first, then dual-auxiliary. Both write into `ay` with different theories of what it means.
 
-4. **Refactor `fr`: store hits, derive rank.** See the section near the end of this document. `fr` is a dense 1–990 rank, so every tranche of new verbs rewrites the `fr` of all incumbents — a large useless diff and an invitation to error. Independent of the DWDS licensing question, and it wants to land before the corpus grows.
+4. **Done (2026-07-19).** Refactored `fr` into `hi`: `Verbs.xml` stores the raw DWDS hit count and `VerbParser` derives the dense rank at parse time, so adding a verb no longer renumbers every incumbent. `fr` is retired from the DTD. See the section near the end of this document.
 
 5. First tranche: the 87 missing strong bases plus their common derivatives. "Every German strong verb" is a completable, marketable milestone for an ablaut-centric app.
 
-6. Second tranche: the 2,406 prefixed derivatives of already-supported verbs. **Gated on the double-prefix grammar from step 3.2.**
+6. Second tranche: the 2,406 prefixed derivatives of already-supported verbs. The double-prefix grammar that used to gate this **shipped on 2026-07-19**, and only 145 incoming verbs still need it. The live blocker is different and larger: **747 verbs whose first element is not a prefix any shipping verb uses** (*acht*, *abhanden*), so no hypothesis proposes separating it. Widening the prefix inventory is part of this tranche, not a prerequisite someone else owns.
 
-7. Then new weak stems in DWDS-frequency order until taste says stop; 6,000+ verbs are reachable from the 6,980-verb both-Wiktionaries pool alone. **Gated on a reply from BBAW** — see "`fr` is blocked" below and [`dwds-permission-email.md`](dwds-permission-email.md). Steps 5 and 6 are unaffected, since they are defined by membership rather than by frequency order; only this long tail needs a ranking. If no reply arrives, rank by a provisional source and mark it for re-derivation.
+7. Then new weak stems in DWDS-frequency order until taste says stop; 6,000+ verbs are reachable from the 6,980-verb both-Wiktionaries pool alone. **Gated on a reply from BBAW** — see "`hi` is blocked" below and [`dwds-permission-email.md`](dwds-permission-email.md). Steps 5 and 6 are unaffected, since they are defined by membership rather than by frequency order; only this long tail needs a ranking. If no reply arrives, rank by a provisional source and mark it for re-derivation.
 
 8. Feed `etymology_text` into the existing `Etymologies.json` pipeline; kaikki removes the need for the Chrome-based per-page extraction described in `docs/etymologies.md` for new verbs. 5,979 verified incoming verbs carry one.
 
@@ -276,7 +276,7 @@ The declaration, which is the authoritative list of what a verb carries:
 | `in` | `CDATA #REQUIRED` | infinitive with `+`, `*`, `^` markers |
 | `tn` | `CDATA #REQUIRED` | short English translation |
 | `fa` | `(w\|s\|m\|i) #REQUIRED` | family: weak, strong, mixed, -ieren |
-| `fr` | `CDATA #REQUIRED` | frequency rank |
+| `hi` | `CDATA #REQUIRED` | raw DWDS hit count; the displayed rank is derived from it at parse time |
 | `ic` | `CDATA #REQUIRED` | frequency-icon suffix, e.g. `cooldown`, `walk.arrival` |
 | `ag` | `CDATA #IMPLIED` | ablaut group; present on exactly the 325 strong and mixed verbs |
 | `ay` | `(h\|s) #IMPLIED` | auxiliary; only ever `s` in practice, absence meaning haben. Single-valued, which is a known shortcoming: see below |
@@ -307,7 +307,7 @@ The one point worth repeating, because the build enforces it rather than the pro
 declares `ay (h|s)`, and a combined value such as `"hs"` will fail validation. That rejection
 is intentional, not an obstacle to route around.
 
-### `fr` is blocked, and re-querying DWDS is the wrong move
+### `hi` is blocked, and re-querying DWDS is the wrong move
 
 A permission request went to `dwds@bbaw.de` on 2026-07-19; see
 [`dwds-permission-email.md`](dwds-permission-email.md). Until BBAW replies, **do not query the

@@ -202,3 +202,88 @@ curl -sG -A "$UA" "https://query.wikidata.org/sparql" --data-urlencode "format=j
 # Strong-verb inventory: de.wikipedia "Liste starker Verben (deutsche Sprache)",
 # action=parse&prop=wikitext, then extract bolded verbs from {{Verb Zelle|...}} rows
 ```
+
+## Handoff for step 2 (written 2026-07-19)
+
+Facts a fresh session needs that are not established above. Each one was verified on the date
+in the heading.
+
+### `Conjugator` cannot conjugate a verb it has never heard of
+
+This is the central constraint on the classify-and-verify design sketched above, and the
+sketch does not mention it. `Conjugator.conjugate(infinitiv:conjugationgroup:)` resolves the
+verb by dictionary lookup:
+
+```swift
+guard let verb = Verb.verbs[infinitiv] else {
+  return .failure(.verbNotRecognized)
+}
+```
+
+So a candidate cannot be conjugated until it exists in `Verb.verbs`. The hypothesize-and-test
+loop must therefore **insert a synthetic `Verb` into `Verb.verbs` for each hypothesis**, then
+conjugate, then compare against kaikki's `forms[]`. `Verb.verbs` is a `@MainActor static var`
+dictionary, so this is a plain assignment; remember to remove or overwrite between hypotheses.
+`Verb.init` needs `infinitiv`, `translation`, `family`, `auxiliary`, `frequency`, `prefix`,
+and `frequencyIcon`, so the hypothesis has to supply placeholder values for the fields it is
+not testing.
+
+Two consequences for where the pipeline lives. `Conjugator` is **not** `nonisolated`, and the
+project sets `SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor`, so every call site must be
+`@MainActor`. And driving app code over a large input set already has a precedent in this
+repo: `KonjugierenTests/Utils/VerbExportTests.swift` is a `@MainActor` `@Suite` that walks all
+990 verbs, conjugates each across twelve conjugationgroups, and writes JSON to a temp path.
+Step 2 wants that same shape, a test-target harness rather than a standalone script, because a
+standalone script cannot reach `@testable import Konjugieren`.
+
+### Strip `[+*^]`, not `[+^]`, from the `in` attribute
+
+`Verbs.xml` marks infinitives with three characters: `+` separable prefix, `*` inseparable
+prefix, `^` ablaut region. An extraction that strips only `+` and `^` leaves 305 verbs looking
+like `be*achten`. This already caused one silent failure, described in `verbdata/README.md`:
+the DWDS API answers such junk with a well-formed zero rather than an error, so the run
+reported complete success while a third of the corpus was garbage. Use `re.sub(r'[+*^]', '', …)`.
+
+### A new verb needs `ic`, which the "what a new verb needs" list above omits
+
+The list in the Context section names `in`, `tn`, `fa`, `fr`, `ag`, and `ay`. It leaves out
+`ic`, the frequency-icon suffix, which all 990 current verbs carry (`ic="cooldown"`,
+`ic="walk.arrival"`, and so on). `VerbParser` treats it as optional and falls back to a bare
+`"figure"`, so omitting it produces no error, no test failure, and a visibly inconsistent verb
+list. Budget an `ic` decision per imported verb.
+
+Note also that the `Verbs.xml` DOCTYPE is already stale: its `ATTLIST` declares `in`, `tn`,
+`fa`, `fr`, and `ay`, but neither `ag` nor `ic`, both of which are in active use. `XMLParser`
+does not validate against it, so nothing complains. Do not treat the DOCTYPE as the schema.
+
+By contrast `ay` genuinely is optional and rare: 63 of 990 verbs set it.
+
+### `fr` is blocked, and re-querying DWDS is the wrong move
+
+A permission request went to `dwds@bbaw.de` on 2026-07-19; see
+[`dwds-permission-email.md`](dwds-permission-email.md). Until BBAW replies, **do not query the
+DWDS frequency API in bulk**, which is the specific activity their § 44b reservation covers.
+A 990-lemma snapshot already exists at `verbdata/dwds-frequencies.json`, gitignored, and
+`verbdata/fetch_dwds_frequencies.py` regenerates it if permission arrives.
+
+This does not block step 2. It blocks assigning `fr` to newly imported verbs, which is a
+step-3 concern. If step 3 needs to proceed before a reply, rank the new tranche by a
+provisional source and mark it for later re-derivation.
+
+### Recommendation not yet implemented: store hits, derive rank
+
+`fr` is currently a dense unique rank from 1 to 990, stored per verb. That means every tranche
+of new verbs rewrites the `fr` of all incumbents, which is a large useless diff and an
+invitation to error. Storing raw frequency and computing the rank at parse time makes adding a
+verb a one-line change. The refactor touches `VerbParser`, `Verb.verbsSortedByFrequency`, and
+`VerbExportTests`, and it wants to land before the corpus grows, not after. It is independent
+of the DWDS licensing question, since the argument is about diff churn rather than data
+source.
+
+### Verify counts, do not trust them
+
+Three documents in this repo claimed 989 verbs well after the corpus reached 990, and
+`docs/description.md` shipped that number to the App Store. The stale copies were all prose
+that no code consumed. `Konjugieren/Models/Verbs.xml` is the single source of truth; check
+coverage by set difference rather than by comparing to a number written in a document. See the
+recipe at the top of `etymology-pipeline.md`.

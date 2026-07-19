@@ -40,7 +40,7 @@ struct KonjugierenApp: App {
           }
         }
         .fullScreenCover(isPresented: Binding(
-          get: { !Current.settings.hasSeenOnboarding },
+          get: { OnboardingDisplay.onboardingEnabled && !Current.settings.hasSeenOnboarding },
           set: { newValue in
             if !newValue {
               Current.settings.hasSeenOnboarding = true
@@ -80,7 +80,9 @@ struct KonjugierenApp: App {
     Current.gameCenter.authenticate()
     let appID = Bundle.main.infoDictionary?["TelemetryDeckAppID"] as? String ?? ""
     Current.analytics.initialize(appID: appID)
-    try? Tips.configure()
+    if TipDisplay.tipsEnabled {
+      try? Tips.configure()
+    }
     KonjugierenShortcuts.updateAppShortcutParameters()
     LiveActivityManager.endAllActivities()
     Task {

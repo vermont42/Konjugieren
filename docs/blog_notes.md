@@ -1185,3 +1185,129 @@ asserted no verb carried `hp` and whose comment said, in advance, that a tranche
 DWDS was blocked would break it and that updating it should be a deliberate act. It broke exactly
 as designed. It now pins the provisional population at 78 and the measured one at 990, so the
 next tranche of estimates has to come here and say so rather than sliding in under a `> 0`.
+
+## Tranche 2, and the bug that was hiding in the fix for tranche 1 (2026-07-19)
+
+Step 8: the prefixed derivatives. 2,303 verbs in, corpus 1,068 → **3,371**, at-odds held at 8.
+Three things are worth writing down, and only one of them is the import.
+
+### The prefix inventory was never the problem
+
+The plan said 747 incoming verbs were blocked because their first element — *weg*, *nieder*,
+*tot*, *acht* — is not a prefix any shipping verb uses, and that widening the inventory was part
+of this step. Which invited the obvious implementation: curate a list of German separable
+particles and paste it in.
+
+Two things argued against that. First, the tail is long and heterogeneous — 203 distinct heads,
+and past the first thirty they stop being particles at all. *blaumachen*, *eislaufen*,
+*bauchreden*, *kaputtmachen*: German's separable slot takes adjectives and nouns as happily as
+adverbs, and *teilnehmen* has been in the app since the beginning without anyone noticing it is
+a noun sitting in a prefix. "Prefix inventory" is the wrong name for the thing; it is a
+separable-first-constituent inventory, and it is open class.
+
+Second, and decisively: the evidence was already in the data. German puts the participle's *ge-*
+**after** a separable first element. *angekommen*, *weggelaufen*, *achtgegeben*. So wherever
+Wiktionary writes a *ge-* somewhere other than the front, the text before it *names* the
+element. The classifier does not need an inventory; it needs to read.
+
+That turned out to be about fifteen lines. Every occurrence of "ge" is tried rather than just
+the first, so a head that itself starts with *ge-* is still found (*gegengehalten* yields
+*gegen* only at the second). Over-generation costs nothing, because every hypothesis still has
+to reproduce the entire conjugation table before it is accepted — the same property that makes
+the whole pipeline safe to be sloppy inside.
+
+Queue: 747 → 28. Incoming verification: 84.4% → **94.6%**. Shipping code: unchanged, because
+`Prefix` has always held an arbitrary string; the constraint was never in the model, only in
+what the classifier thought to propose.
+
+### Writing the guard found the bug it was guarding against
+
+The tranche-2 importer inserts verbs into the middle of a sorted file, so I gave it the same
+three preconditions tranche 1 had — no duplicate key, no duplicate hit count, file already
+sorted — and then thought about the insertion order more carefully than I had the first time.
+Inserting back-to-front keeps earlier indices valid, but repeated `insert()` at *one* index
+reverses that batch, so verbs sharing an anchor have to go in descending key order to come out
+ascending.
+
+Tranche 1 did not do that. Checking it: 14 violations. *glimmen* before *gleiten*, *kneipen*
+before *kneifen*, *saugen* before *saufen* — every one a pair of new verbs that had landed at
+the same anchor. Committed and shipped six commits earlier.
+
+Nothing caught it because nothing was looking. `Verb.verbs` is a dictionary, so file order
+survives nowhere in the parsed model, and every test reads the model. The new test reads the raw
+XML out of the bundle instead. It asserts non-decreasing rather than sorted, because folding
+umlauts makes *drücken*/*drucken* and *zählen*/*zahlen* tie and the file breaks those ties the
+opposite way from a naive sort — which is itself a fact I only know because tranche 1's guard
+rejected the file and made me go find out why.
+
+There is a pattern here worth naming. Both of tranche 1's real defects — the ß-folding and this
+— were found by writing a *check*, not by writing the code. The check is where you have to state
+what you believe, and stating it is what makes it falsifiable.
+
+### Scale broke the doctrine, and the fix was to say so
+
+Tranche 1 made four editorial decisions per verb, by hand, 78 times. At 2,303 the same doctrine
+is a lie: nobody places 2,300 hit counts "between the real counts of comparable shipping verbs"
+and means it. What would actually happen is a formula wearing the costume of judgment.
+
+So both became rules, stated in the importer's header so a reader can disagree with them. `ic`
+is inherited from the base verb. `hi` is the base's count times a ratio — and the ratio is
+*measured*, not chosen: the corpus already ships 446 derivative/base pairs where both counts are
+real DWDS, which is a calibration set that says what fraction of its base's frequency a real
+German derivative actually has. Median 0.167, and the per-prefix spread is legible enough to be
+reassuring: the inseparable prefixes that build lexicalized everyday verbs run high (*be-* 0.37,
+*er-* 0.41, *ver-* 0.31) and the directional particles that build specific ones run low
+(*weiter-* 0.04, *über-* 0.05, *vor-* 0.06). That is a real linguistic fact falling out of a
+sanity check.
+
+Then it produced nonsense, and the nonsense was instructive. Used raw, the rule put 796 of the
+2,303 inside the corpus's top 500, and put *gehaben* — archaic, reflexive, thoroughly dead —
+fourth overall, above *gehen*. Not a tuning problem. The ratio is a median over derivatives
+lexicalized enough to have reached a top-990 frequency list, so applying it to obscure ones
+inflates every single one. A derivative's frequency is not a function of its base's; it is a
+fact about the world that the base does not contain.
+
+The repair came from noticing a second measured fact pointing the other way: **every verb in
+this tranche was absent from the frequency-ordered list that produced the original 990.** That
+is evidence — not proof, since the list demonstrably had holes, which is the entire reason
+tranche 1 existed — that these verbs sit below the measured corpus rather than scattered through
+its top half. So estimates are clamped to the count of the 900th real verb.
+
+I tried rescaling the whole tranche onto that band first, geometrically, and it was worse in a
+way I would not have predicted: spreading 2,300 verbs evenly across the range discards the
+magnitude the ratio actually measured, and sent *vermieten* — which every German renter says
+weekly — to the rare tail. Clamping leaves every plausible estimate exactly where the
+measurement put it and compresses only the half already known to be inflated. Half the tranche
+is clamped, which is a blunt thing to have to report, and it is reported: the importer prints
+the count.
+
+What the number claims is now sayable in one sentence: no more common than the 900th measured
+verb, and roughly this common relative to the rest of the tranche. `hp="y"` says the rest.
+
+### What was left out
+
+182 derivatives need an ablaut group that does not ship, and step 8 added **none**. Tranche 1
+added five, each looked at individually; adding 182 by machine is precisely how a `Conjugator`
+gap becomes permanent data, which is the argument `verb-classification.md` makes and which this
+project has already paid for once. Most will collapse onto shipping groups once their regions
+are rewritten to the house convention — that is what turned 13 into 5 in tranche 1 — so the
+residue should be small, and it is now step 8b rather than a silent omission.
+
+Four filters ran before import, and they matter more than their size: 34 verbs whose kaikki
+"gloss" is a pointer to another entry ("clipping of herumfahren") rather than a translation, 11
+pre-1996 or archaic spellings (*beybringen*), 2 Swiss ss-forms of a verb already present with ß,
+and 36 whose gloss left nothing usable after normalization.
+
+That normalizer deserves a note, because it is the part that ships straight to users. kaikki's
+glosses are lexicographic prose — "(semelfactive, intransitive) to breathe again" — and the
+corpus's own style is "reduce, dismantle". Stripping labels and parentheticals, taking the first
+sense group, dropping the infinitival *to*, and capping at 42 characters gets most of the way.
+The one rule I would not bend: never truncate mid-token. The classifier's own shortener cuts at
+60 characters and had been producing "travel, to get around, to get out (news, gossip, rumours,
+et" — which, had it shipped, would have looked to a user exactly like corruption, because that
+is what it is.
+
+Most come through well: *approach*, *checkmate*, *reprint*, *predominate*, *crawl through*. Some
+come through thin — *untergehen* as a bare "set", *verkochen* as "vaporize, forwall". Spot-reading
+2,303 of them is the highest-value review left, and it is recorded as such rather than declared
+done.

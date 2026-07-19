@@ -26,7 +26,7 @@ Konjugieren/
 │   ├── AblautGroup.swift       # Named collection of ablauts for a verb pattern
 │   ├── AblautGroupInfo.swift   # Identifiable struct with localized ablaut-group descriptions
 │   ├── AblautGroupParser.swift # XMLParser delegate that parses AblautGroups.xml
-│   ├── AblautGroups.xml        # 67 ablaut pattern definitions
+│   ├── AblautGroups.xml        # 73 ablaut pattern definitions
 │   ├── AppIcon.swift           # Alternate app-icon enum (bratwurst/hat/pretzel/bundestag)
 │   ├── AudioFeedback.swift     # Setting enum: enable/disable sound effects
 │   ├── Auxiliary.swift         # haben/sein auxiliary verb enum
@@ -71,7 +71,7 @@ Konjugieren/
 │   ├── Reading.swift           # One sense of a verb: gloss, family, auxiliary, prefixes
 │   ├── Verb.swift              # Lemma: frequency, icon, and an ordered list of readings
 │   ├── VerbParser.swift        # XMLParser delegate for Verbs.xml, incl. the `in` marker grammar
-│   ├── Verbs.xml               # 1,068 verb definitions with markers and metadata
+│   ├── Verbs.xml               # 3,371 verb definitions with markers and metadata
 │   └── World.swift             # @Observable DI container with environment selection
 ├── Utils/
 │   ├── Analytics.swift         # Analytics protocol, event names, and parameter keys
@@ -263,6 +263,8 @@ verbdata/                      # Verb-corpus-expansion data (see docs/verb-sourc
 ├── summarize_classification.py # Classify-and-verify stage C: classification.json → a Markdown summary grouped by cause
 ├── add_readings.py            # One-shot migration that gave every verb a <reading> child (roadmap step 5)
 ├── import_tranche1.py         # One-shot import of the 78 missing strong bases (roadmap step 7); the decision table is the artifact
+├── import_tranche2.py         # Rule-driven import of 2,303 prefixed derivatives (roadmap step 8); hi derived from each base
+├── tranche2-dual-auxiliary.txt # 176 imported verbs shipping one reading of two; worklist for the dual-auxiliary pass
 ├── dwds-frequencies.json      # 990-lemma DWDS frequency snapshot (gitignored pending BBAW permission)
 ├── candidates.json            # 9,217 normalized candidate conjugation tables (gitignored, regenerable)
 ├── classification.json        # Per-verb classification results (gitignored, regenerable)

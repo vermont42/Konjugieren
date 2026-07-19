@@ -150,7 +150,7 @@ When adding tests for a new verb or ablaut pattern:
 
 ## Architecture Overview
 
-Konjugieren is an iOS app for learning German verb conjugations. It conjugates 1,068 verbs across all German conjugationgroups ("tenses" in ordinary (and incorrect) parlance), and the corpus is still growing — see [`docs/roadmap.md`](docs/roadmap.md). Konjugieren uses SwiftUI for its user interface.
+Konjugieren is an iOS app for learning German verb conjugations. It conjugates 3,371 verbs across all German conjugationgroups ("tenses" in ordinary (and incorrect) parlance), and the corpus is still growing — see [`docs/roadmap.md`](docs/roadmap.md). Konjugieren uses SwiftUI for its user interface.
 
 ## About the Human Developer
 

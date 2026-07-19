@@ -18,15 +18,16 @@ completes.
 | 5 | Dual auxiliaries + double-prefix grammar | [`../prompts/dual_auxiliary.md`](../prompts/dual_auxiliary.md) | ✅ 2026-07-19 | step 4 ✅ |
 | 6 | Refactor `fr`: store hits, derive rank | [`verb-sources.md`](verb-sources.md) § "Step 4 in detail" | ✅ 2026-07-19 | — |
 | 7 | Import tranche 1: strong bases | [`verb-sources.md`](verb-sources.md) § step 5 | ✅ 2026-07-19 | steps 4–6 ✅; `hi` policy decided |
-| 8 | Import tranche 2: prefixed derivatives | [`verb-sources.md`](verb-sources.md) § step 6 | ⬜ next | step 5 ✅; needs a wider prefix inventory |
+| 8 | Import tranche 2: prefixed derivatives | [`verb-sources.md`](verb-sources.md) § step 6 | ✅ 2026-07-19 | step 5 ✅; prefix inventory widened |
+| 8b | Clear the tranche-2 deferrals | this file, § "The tranche-2 deferrals" | ⬜ next | step 8 ✅ |
 | 9 | Import tranche 3: weak stems by frequency | [`verb-sources.md`](verb-sources.md) § step 7 | 🚧 blocked | **BBAW reply**; fetch needs probes |
 | 10 | Etymologies, then the docs sweep | [`verb-sources.md`](verb-sources.md) §§ 8–9 | ⬜ | step 7 ✅ |
 
 ## The one check that runs through all of it
 
 Every step from 4 onward is verified the same way. The classify-and-verify pipeline compares the
-app against Wiktionary for 1,063 shipping verbs, and the corpus currently stands at **8 verbs at
-odds, 99.7% verified**.
+app against Wiktionary for 3,366 shipping verbs, and the corpus currently stands at **8 verbs at
+odds, 99.9% verified**.
 
 **The metric changed on 2026-07-19 and is now stricter, so do not compare it to older figures.**
 It used to count only verbs the classifier could not verify at all, plus verbs whose repair needed
@@ -68,60 +69,57 @@ Each of these is enough to start. The prompts are written to be self-contained.
 > records the exact post-step-4 state of the `ay` attribute and the three `ay="r"` verbs you must
 > not disturb.
 
-**Step 8 — import tranche 2, the prefixed derivatives**
+**Step 8b — clear the tranche-2 deferrals**
 
-> Please execute step 6 of the "Recommended next steps" in `docs/verb-sources.md` — the second
-> import tranche, the prefixed derivatives of verbs the app already conjugates. Start at
-> `docs/roadmap.md`; steps 1–7 are done and step 8 is this one.
+Step 8 imported 2,303 verbs by rule and deliberately left four groups behind, each needing
+judgment a bulk pass could not supply. They are listed in "The tranche-2 deferrals" below.
+
+> Please clear the tranche-2 deferrals recorded in `docs/roadmap.md` § "The tranche-2
+> deferrals". Steps 1–8 are done; this is the cleanup pass that step 8 could not do by rule.
 >
 > **Baseline the classify-and-verify pipeline before you touch anything.** The recipe is in
 > roadmap.md § "The one check that runs through all of it". The at-odds count is **8** and must
-> never rise. Re-run it after each batch, not just at the end — an import can regress a shipping
-> verb through a shared ablaut group.
+> never rise.
 >
-> **Do not trust the verb counts in the prose.** Step 7 re-derived the "87 missing strong bases"
-> and got 82; the prose was stale. Re-derive by set difference against
-> `Konjugieren/Models/Verbs.xml`, the only source of truth; the recipe is in `verb-sources.md`'s
-> "Verify counts, do not trust them" section. Note the derivative population also moved: the 2,406
-> figure was computed against the old 990-verb corpus, and step 7 added 78 bases whose own
-> derivatives now fall to this tranche. `docs/frequencies.txt` is generated — rerun
-> `python3 verbdata/generate_frequencies_txt.py` after adding verbs, `--check` for drift.
+> Read `verbdata/import_tranche2.py`'s header first. It states every rule step 8 applied and
+> why, including the two that are the most arguable — that `hi` is derived from the base rather
+> than measured, and that `tn` is normalized from kaikki rather than written. Both are worth
+> re-examining while clearing the deferrals, because both are visible to users.
 >
-> Read `docs/adding-verbs.md` first, and read `verbdata/import_tranche1.py`'s header second: it is
-> the worked example of this exact task, and it records four things that cost step 7 real time —
-> the region-widening convention that collapses proposed ablaut groups into shipping ones, why
-> `sort_key` must not fold ß to ss, why some list members ship weak, and how the provisional `hi`
-> estimates were placed.
->
-> Four things to budget per verb, none of which the pipeline decides for you:
->
-> - **`hi`** — a raw DWDS count, and you cannot invent one. Bulk querying is blocked pending BBAW;
->   **Josh decided on 2026-07-19 to use provisional counts**, so do not query DWDS. Read
->   "Provisional hit counts: the `hp` attribute" in `verb-sources.md`, mark every estimate
->   `hp="y"`, and place each one between the real `hi` values of shipping verbs you judge
->   comparable — not at round numbers, which land the verb wherever that happens to fall. Do
->   **not** consult Leipzig, even informally: it was evaluated and rejected, and its API data is
->   CC BY-NC, so an estimate informed by it is still derived from it. `VerbTests` pins the
->   provisional count at exactly 78, so a new tranche of estimates must update that expectation
->   deliberately.
-> - **`ic`** — `#REQUIRED`, 40 distinct SF Symbol suffixes in use, chosen by taste.
-> - **Auxiliary** — the interim policy is in `prompts/dual_auxiliary.md` § "Interim policy". Read
->   it; do not re-derive it. The DTD takes `h|s|r` and a combined `"hs"` fails validation
->   intentionally. Note the pipeline **cannot** check auxiliaries — it never compares a compound
->   tense — so a wrong `ay` will not move the at-odds count. Guard new ones with `ConjugatorTests`
->   cases on `perfektIndikativ`, as `strongBasesTranche1Auxiliaries` does.
-> - **Ablaut group** — 73 ship today. A derivative almost always inherits its base's group, so
->   this tranche should need far fewer new ones than step 7's five.
->
-> Do **not** mark prefixed derivatives regional (`ay="r"`). That attribute is owned by exactly
-> three verbs — *stehen*, *sitzen*, *liegen* — and their derivatives have lexicalized away from the
-> positional sense (*bestehen* = to pass, not to be standing). See "Why this order" below.
->
-> The live blocker for this tranche is the **prefix inventory**: 747 incoming verbs have a first
-> element no shipping verb uses as a prefix (*acht*, *abhanden*), so no hypothesis proposes
-> separating it. Widening the inventory is part of this step, not a prerequisite someone else owns.
+> The largest item is the **182 derivatives needing an ablaut group that does not ship**. Step 7
+> added five groups by hand and step 8 added none, on the reasoning that adding 182 mechanically
+> is how a `Conjugator` workaround becomes permanent data. Many of the 182 will collapse onto a
+> shipping group once the ablaut region is rewritten to the house convention — that is what
+> turned 13 proposed groups into 5 in step 7, and `docs/adding-verbs.md` § "Widen the region
+> before you propose a new group" records the technique. Expect the residue to be small.
 >
 > Commit directly to `main`, and append a narrative entry to `docs/blog_notes.md` as you go.
+
+## The tranche-2 deferrals
+
+Four groups step 8 left behind, in rough order of size. None blocks step 9.
+
+- **182 derivatives need an ablaut group that does not ship.** Deferred on the sequencing
+  argument in `verb-classification.md`: a mechanically added group can encode a `Conjugator`
+  gap rather than an ablaut, and 182 of them would be 182 pieces of permanent data. Rewriting
+  each proposal to the house region convention first should collapse most of them onto groups
+  that already ship.
+- **176 imported verbs are dual-auxiliary and ship one reading.** `verbdata/tranche2-dual-auxiliary.txt`
+  is the worklist, written by the import. The `<reading>` model can express both; what the bulk
+  pass could not do is decide which sense pairs with which auxiliary, 176 times. The interim
+  policy in `prompts/dual_auxiliary.md` governs until then, and the pipeline cannot see the
+  error, since it never compares a compound tense.
+- **36 verbs lost their translation to normalization**, and 34 more had a gloss that pointed at
+  another entry ("clipping of herumfahren") rather than translating. Both sets are recoverable
+  by hand from kaikki's later glosses.
+- **28 verbs still fail the prefix check.** The residue after the inventory fix: mostly noun and
+  adjective compounds whose participle gives no usable evidence (*arschkriechen*, *bauchreden*).
+
+Worth a separate look, because it is user-visible rather than merely absent: **2,303 translations
+were normalized from kaikki glosses, not written.** Spot-reading them is the highest-value review
+left. Most read well ("approach", "checkmate", "reprint"), but the source is lexicographic prose
+and some come through thin — *untergehen* glossed as bare "set", *verkochen* as "vaporize,
+forwall". `normalize_translation` in `verbdata/import_tranche2.py` is where the rules live.
 
 ## Why this order
 
@@ -221,11 +219,16 @@ Small things the pipeline surfaced that no plan currently owns. None blocks the 
   kaikki's `forms[]` carries `perfektpartizip` and `präsensIndikativ.ts` for every candidate, so
   no `Conjugator` round-trip is needed. Supply two probes per lemma and the gate cross-checks
   them against each other.
-- **747 incoming verbs are blocked on the prefix inventory**, not on grammar. Their first element
-  — *acht*, *abhanden* — is not a prefix any shipping verb uses, so no hypothesis proposes
-  separating it. Widening the inventory belongs to the import step. The summary used to file these
-  under "double prefix", which is no longer true after step 5 and would send a session to rewrite
-  correct code.
+- ~~**747 incoming verbs are blocked on the prefix inventory.**~~ **Fixed 2026-07-19**, in the
+  classifier, during step 8. The inventory was derived from the prefixes 1,068 shipping verbs
+  happened to use, so nothing proposed separating *weg*, *nieder*, *tot* or *acht*. But the
+  evidence was already in the data: German infixes the participle's *ge-* **after** a separable
+  first element, so wherever Wiktionary writes *ge-* somewhere other than the front, the text
+  before it names the element. Reading the head off each participle needs no inventory and no
+  maintenance, and it generalizes past particles to the adjective and noun compounds that behave
+  identically — *kaputtgemacht*, *achtgegeben*, *eisgelaufen*. The queue fell 747 → 28 and
+  incoming verification rose 84.4% → 94.6%. `Prefix` already carried an arbitrary string, so no
+  shipping code changed.
 - **Three modals resist the pipeline** — *sollen*, *bedürfen*, *vermögen* use full-override
   ablaut groups the classifier cannot derive. Probably correct as shipped; unverified.
 - **Everything in `prompts/` is now executed** and carries a status line saying so.
@@ -249,3 +252,5 @@ Small things the pipeline surfaced that no plan currently owns. None blocks the 
 | Dual auxiliaries + double-prefix grammar | — | Nested `<reading>` model across all 990 verbs, repeated prefix markers, 38 verbs given a second reading, reading picker in `VerbView`, reading-aware quiz. Fixed 7 double-prefix verbs, *hängen*, and 67 verbs whose broken encoding the old metric hid; 14 → 8 at odds |
 | `fr` → `hi`: store hits, derive rank | — | `Verbs.xml` stores raw DWDS counts; `VerbParser` derives the 1..n rank at parse time. `fr` retired from the DTD so a stale writer fails the build. Ranks moved a median of 43 places; at-odds held at 8 |
 | Import tranche 1: strong bases | — | 78 verbs (61 strong, 17 weak) and 5 ablaut groups, taking the corpus from 990 to **1,068**. Re-deriving the missing-base list gave 82, not the 87 the prose claimed. Rewriting the classifier's region-minimal proposals to the house convention collapsed 13 proposed groups into 5. All 78 verify against Wiktionary with their shipped encoding; at-odds held at 8. Every `hi` is provisional (`hp="y"`) |
+| Prefix inventory widened | — | The classifier now reads the separable head off Wiktionary's own participle instead of off a shipping-verb inventory, since German infixes the participle's *ge-* after a separable first element. Incoming verification 84.4% → **94.6%**; the prefix-gap queue collapsed 747 → 28, and adjective and noun compounds (*kaputtmachen*, *achtgeben*) became expressible |
+| Import tranche 2: prefixed derivatives | — | 2,303 verbs, corpus 1,068 → **3,371**, no new ablaut groups. `hi` derived from each base by a ratio measured off the corpus's own 446 real derivative/base pairs, clamped to the rank-900 count; `ic` inherited from the base; `tn` normalized from kaikki. All 2,303 verify with their shipped encoding; at-odds held at 8 |

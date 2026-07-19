@@ -41,12 +41,41 @@ and the global median otherwise.
 This is still an estimate and still wrong in individual cases -- 52 of the 448 real
 derivatives are MORE common than their base (*bekommen* beats *kommen*), which no ratio
 captures. What it is not is invented: it is the corpus's own measured behaviour applied to
-verbs whose counts we are not allowed to query yet. Every row carries hp="y" and re-querying
-with probes when BBAW replies replaces the lot.
+verbs whose counts we are not allowed to query yet.
 
 Bases that are themselves provisional (tranche 1's 78) are excluded from the calibration,
 though a derivative may still be built on one -- an estimate on an estimate, which is worth
 knowing when the real counts land.
+
+THE RATIO SETS THE ORDER; A SECOND FACT SETS THE RANGE
+------------------------------------------------------
+Used raw, the ratio puts 796 of these 2,300 verbs inside the top 500 of the measured corpus,
+and puts the archaic *gehaben* fourth overall -- above *gehen*. That is not a tuning problem.
+The ratio is a median over derivatives that are attested and lexicalized enough to have made
+a top-990 frequency list, so applying it to obscure derivatives inflates every one of them.
+A derivative's frequency is simply not a function of its base's.
+
+But there is a second measured fact available, and it points the other way: **every verb in
+this tranche was absent from the frequency-ordered list that produced the original 990.**
+That list was built from real frequency data, so absence from it is evidence -- not proof,
+since it demonstrably had holes (it took *vermeiden* and left *meiden*), but evidence that
+these verbs sit below the measured corpus rather than scattered through its top half.
+
+So the two facts are used for the two different things each actually supports:
+
+  the ratio  ->  the ORDER of the tranche within itself. *zurueckgeben* above *nachdrucken*
+                 is real information, and it comes from measured German.
+  the absence ->  the RANGE the whole tranche occupies: below the 900th real verb.
+
+So each estimate is the ratio applied to the base, then clamped to the ceiling. Clamping and
+not rescaling: mapping the whole tranche evenly across the band was tried and throws away the
+magnitude the ratio actually measured, which sent *vermieten* to the rare tail. Clamping
+leaves every plausible estimate untouched and compresses only the third that the ratio
+inflated past the ceiling, which then sit just under it in ratio order.
+
+What the resulting number claims is exactly this much: "no more common than the 900th measured
+verb, and roughly this common relative to the rest of the tranche." It does not claim to be a
+hit count, which is what `hp="y"` says out loud.
 
 WHAT IS EXCLUDED, AND WHY
 -------------------------
@@ -92,6 +121,10 @@ DUAL_WORKLIST = REPO / "verbdata" / "tranche2-dual-auxiliary.txt"
 
 GLOBAL_RATIO = 0.174
 MIN_PAIRS_FOR_PER_PREFIX_RATIO = 5
+
+# The ceiling the estimates are clamped to: the count of the 900th real verb, so no guessed
+# derivative claims to outrank all but a hundred measured ones.
+CEILING_REAL_RANK = 900
 
 # A gloss of this shape points at another entry instead of translating the verb.
 METADATA_GLOSS = re.compile(
@@ -287,11 +320,22 @@ def main() -> int:
             "base": base,
         })
 
-    # De-collide. The derived rank must be a strict total order, and a ratio applied to a
-    # shared base produces exact ties routinely. Nudging down by one keeps the intended
-    # neighbourhood while making the value unique; sorting first makes it deterministic.
-    taken = set(hits.values())
+    # Clamp rather than rescale; see "THE RATIO SETS THE ORDER" above. Rescaling the whole
+    # tranche onto the band was tried first and is worse: spreading 2,300 verbs evenly across
+    # it discards the magnitude the ratio actually measured, and sent *vermieten* — an
+    # everyday verb — to the rare tail. Clamping keeps every plausible estimate exactly as
+    # measured and compresses only the ones already known to be inflated, which then sit just
+    # under the ceiling in ratio order.
+    real_counts = sorted((int(v.get("hi")) for v in root if not v.get("hp")), reverse=True)
+    ceiling = real_counts[min(CEILING_REAL_RANK, len(real_counts)) - 1]
     rows.sort(key=lambda row: (-row["hi"], row["in"]))
+    clamped = sum(1 for row in rows if row["hi"] > ceiling)
+    for row in rows:
+        row["hi"] = min(row["hi"], ceiling)
+
+    # The derived rank must be a strict total order, and clamping guarantees ties. Walking
+    # down to the next free integer preserves the descending order the rows are already in.
+    taken = set(hits.values())
     for row in rows:
         while row["hi"] in taken:
             row["hi"] -= 1
@@ -301,6 +345,7 @@ def main() -> int:
 
     print(f"calibration: {pairs} real derivative/base pairs, global median {global_ratio:.3f}, "
           f"{len(ratios)} per-prefix ratios")
+    print(f"clamped to the rank-{CEILING_REAL_RANK} ceiling ({ceiling:,}): {clamped} of {len(rows)}")
     print(f"{len(rows)} verbs to insert")
     print(f"  by family: {dict(collections.Counter(row['fa'] for row in rows))}")
     print(f"  taking sein: {sum(1 for row in rows if row['ay'] == 's')}")

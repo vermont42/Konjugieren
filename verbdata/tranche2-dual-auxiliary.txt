@@ -1,0 +1,176 @@
+abbiegen	h	turn, turn off
+abbrennen	h	set fire to, destroy by fire
+abfahren	h	depart, leave
+abfliegen	h	take off, fly away
+abhauen	h	cut off
+abliegen	h	be far away
+abrollen	h	roll off
+abrücken	h	move away
+abschieben	s	deport
+abstehen	h	stick out
+abtreiben	h	go/be sent off course
+abtrocknen	h	make dry, e.g. by wiping with a towel
+anbrechen	h	start, commence, kick off
+anbrennen	h	get burnt
+anfahren	h	start moving
+anliegen	h	lie close, touch, fit
+anscheißen	h	bawl out, chew out, bollock
+anspringen	h	jump at, pounce
+anstehen	h	stand in a queue
+antanzen	s	approach or arrive dancing
+antreiben	h	drive
+aufbiegen	h	bend up, bend open
+aufbrechen	h	break open, through
+aufeinanderliegen	h	lie on top of each other
+auflaufen	h	collide with
+aufrauchen	h	rise, appear
+aufschießen	h	shoot open
+aufschmelzen	h	melt
+aufstehen	h	get up
+auftreiben	h	bloat
+ausbleichen	s	bleach something
+ausbrennen	h	burn out
+auseinanderbrechen	h	burst, break apart
+auseinanderstreben	h	diverge
+ausfahren	h	go out
+ausklingen	h	synonym of verklingen
+ausrauchen	h	smoke out
+ausrollen	h	roll out, unroll
+ausscheiden	h	secrete
+ausschlagen	h	knock out
+ausstehen	h	stand, endure
+austreiben	h	drive out
+austrocknen	h	dry out
+austräumen	h	stop dreaming
+auswachsen	h	right or correct itself
+ausziehen	h	move out, vacate
+behängen	h	hang, drape
+beiliegen	h	accompany
+beistehen	h	assist
+blankziehen	h	draw
+brachliegen	h	be fallow, empty, unused
+dabeistehen	h	stand by
+dafürstehen	h	vouch
+daliegen	h	lie there
+darniederliegen	h	be sick
+darüberliegen	h	overlay or cover
+dastehen	h	stand there
+drauflosfahren	h	hit the road without a chosen destination
+draufstehen	h	stand on
+durchbrechen	h	break something in two
+durchbrennen	h	continue to burn
+durchdrehen	h	freak out, snap, panic
+durchhängen	h	sag
+durchklingen	h	sound through, come through
+durchkriechen	h	crawl through
+durchschlagen	h	break through
+durchstechen	h	prick, puncture, pierce
+durchziehen	h	pass
+einbiegen	h	turn
+einbrennen	h	burn in
+einfahren	h	drive in
+einlaufen	s	run in
+einrollen	h	roll in
+einschießen	h	break by shooting
+eintauchen	s	plunge
+eintreiben	h	drive in
+emporstreben	h	strive to a height, aim to a height
+entgegenstehen	h	prevent, be an obstacle
+entgegenstreben	h	strive towards a certain direction
+entlangfahren	h	drive along
+entrücken	h	translate, rapture
+entzweibrechen	h	break in two
+entzweireißen	h	rip in two
+erbrechen	h	vomit
+ergehen	s	forms the perfect with sein
+erstehen	h	buy
+erstinken	h	become stinky
+erweichen	h	weaken, soften
+festbacken	h	firmly cake, stick together
+festfahren	h	get stuck
+feststehen	h	stand firm
+fortbestehen	h	linger, survive
+fortfahren	h	drive away, drive off
+fortziehen	h	pull away
+gegenüberstehen	h	face, stand face-to-face with
+geradestehen	h	take responsibility
+herabstürzen	h	cascade
+herauffahren	h	drive up
+herausbrechen	h	burst out
+herumfahren	h	drive around
+herumfliegen	h	fly around
+herumstehen	h	stand around
+herunterbrechen	h	break off and fall
+herunterfahren	h	drive down
+herunterziehen	h	pull down
+herziehen	h	move here
+hineinziehen	h	pull in, drag in
+hinfahren	h	give a ride
+hinrücken	h	move away
+hinunterziehen	h	pull down
+hinziehen	h	move
+hochfahren	h	drive upwards/northwards
+losbrechen	h	break off
+losschießen	h	open fire
+mitfahren	h	drive with
+mitfolgen	h	follow along
+mitziehen	h	keep pace, keep up
+nachschieben	s	push from behind
+nachstehen	h	be inferior
+nahestehen	h	have a close connection to
+niederbrechen	h	demolish, tear down
+niederschießen	h	shoot down
+offenstehen	h	stay open
+richtigliegen	h	be right
+rumstehen	h	stand around idly
+rückdrehen	h	back
+rückwärtsfahren	h	reverse
+schiefliegen	h	be wrong
+stillstehen	h	stand still
+strammstehen	h	stand at attention
+umbrechen	h	wrap
+umdrehen	h	twist, turn, turn around
+umeinanderstehen	h	synonym of herumstehen
+umkehren	h	turn around
+umlaufen	h	run around something
+umstürzen	s	fall over
+umtreiben	h	drive around
+umwenden	h	turn over
+umziehen	h	move
+unterlaufen	h	circumvent, undermine
+verlauten	h	announce
+verrauchen	s	disappear
+verschießen	h	shoot off
+verschleißen	h	wear out, chafe, abrade
+verwachsen	s	overgrow, become overgrown
+vorfahren	h	drive up
+vorschießen	h	advance
+vorstoßen	h	advance
+vorziehen	h	pull to the front
+wegbrechen	h	break off
+wegfahren	h	drive away, drive off
+wegfliegen	h	fly away
+wegtreiben	h	drive away
+wegziehen	h	pull away
+weiterfahren	h	continue driving
+weiterziehen	h	move on
+zerbrechen	h	break into pieces, shatter, snap
+zerreißen	h	rip, tear
+zerschmelzen	h	fully melt
+zertreiben	h	drive apart
+zufügen	h	cause
+zukehren	h	turn something
+zuklappen	h	flip shut
+zulaufen	h	walk to
+zurückliegen	h	trail, lag behind
+zurückschieben	h	push/move something back
+zurückstehen	h	stand further back, stand behind
+zusammenschlagen	h	beat up, rough up
+zusammenstoßen	h	collide
+zusammenstreben	h	converge
+zusammenziehen	h	shorten, contract
+zustehen	h	be entitled
+zustreben	h	head to, make for
+zutreiben	h	drive
+übereinanderliegen	h	lie on top of each other
+überschießen	h	shoot something over something

@@ -30,6 +30,7 @@
   <ag e="gewinnen" a="A,bA|Ä,dA|O,pp" />
   <ag e="haben" a="A,a2s,a3s|hATte*,b1s,b3s|hATtest*,b2s|hATten*,b1p,b3p|hATtet*,b2p|hÄTte*,d1s,d3s|hÄTtest*,d2s|hÄTten*,d1p,d3p|hÄTtet*,d2p" />
   <ag e="halten" a="Ä,a2s,a3s|IE,bA,dA" />
+  <ag e="hängen" a="I,bA,dA|A,pp" />
   <ag e="heben" a="O,bA,pp|Ö,dA" />
   <ag e="heißen" a="IE,bA,dA" />
   <ag e="kennen" a="A,bA,pp" />

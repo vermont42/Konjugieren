@@ -15,8 +15,8 @@ completes.
 | 2 | Build the classify-and-verify pipeline | [`verb-classification.md`](verb-classification.md) | ✅ 2026-07-19 | — |
 | 3 | Fix what it found in the shipping corpus | [`verb-classification.md`](verb-classification.md) | ✅ 2026-07-19 | — |
 | 4 | Regional variety support | [`../prompts/regional_variation.md`](../prompts/regional_variation.md) | ✅ 2026-07-19 | — |
-| 5 | Dual auxiliaries + double-prefix grammar | [`../prompts/dual_auxiliary.md`](../prompts/dual_auxiliary.md) | ⬜ next | step 4 ✅ |
-| 6 | Refactor `fr`: store hits, derive rank | [`verb-sources.md`](verb-sources.md) § "Step 4 in detail" | ⬜ | — |
+| 5 | Dual auxiliaries + double-prefix grammar | [`../prompts/dual_auxiliary.md`](../prompts/dual_auxiliary.md) | ✅ 2026-07-19 | step 4 ✅ |
+| 6 | Refactor `fr`: store hits, derive rank | [`verb-sources.md`](verb-sources.md) § "Step 4 in detail" | ⬜ next | — |
 | 7 | Import tranche 1: strong bases | [`verb-sources.md`](verb-sources.md) § step 5 | ⬜ | steps 4–6 |
 | 8 | Import tranche 2: prefixed derivatives | [`verb-sources.md`](verb-sources.md) § step 6 | ⬜ | step 5's grammar |
 | 9 | Import tranche 3: weak stems by frequency | [`verb-sources.md`](verb-sources.md) § step 7 | 🚧 blocked | **BBAW reply** |
@@ -25,8 +25,15 @@ completes.
 ## The one check that runs through all of it
 
 Every step from 4 onward is verified the same way. The classify-and-verify pipeline compares the
-app against Wiktionary for 985 shipping verbs, and the corpus currently stands at **14 verbs at
-odds, 99.0% verified**.
+app against Wiktionary for 985 shipping verbs, and the corpus currently stands at **8 verbs at
+odds, 99.7% verified**.
+
+**The metric changed on 2026-07-19 and is now stricter, so do not compare it to older figures.**
+It used to count only verbs the classifier could not verify at all, plus verbs whose repair needed
+an ablaut group that does not ship. It missed a third and larger category: a verb whose shipped
+encoding failed but which the classifier rescued using a group that *already* ships was reported
+verified while the app conjugated it wrongly. That hid 67 broken verbs, all now fixed. The
+`shippedEncodingFailed` flag on each classification is what closed the gap.
 
 ```bash
 python3 verbdata/build_candidates.py --include-existing
@@ -64,7 +71,8 @@ Each of these is enough to start. The prompts are written to be self-contained.
 **Step 6 — the `fr` refactor**
 
 > Please implement the "Step 4 in detail: store hits, derive rank" section of
-> `docs/verb-sources.md`.
+> `docs/verb-sources.md`, whose "Preconditions" note lists what was verified on 2026-07-19 so
+> you need not re-derive it.
 
 **Steps 7 onward — the import**
 
@@ -124,13 +132,25 @@ Small things the pipeline surfaced that no plan currently owns. None blocks the 
 - **`mahlen` and `spalten`** — weak Präteritum with strong participle (*mahlte*, but
   *gemahlen*). Neither the mixed family nor the weak family fits. Wrinkle 4 in
   `verb-sources.md`; needs a new family or a full-override ablaut group.
-- **Four ablaut groups are wrong** — *hängen*, *schaffen*, *schreien*, *vergleichen* verify only
-  via a group that does not ship. *hängen* is really a `dual_auxiliary.md` class-4 verb; the
-  other three are unexamined.
+- **Three ablaut groups are wrong** — *schaffen*, *schreien*, *vergleichen* verify only via a
+  group that does not ship, and remain unexamined. *hängen* was the fourth and is fixed: it was a
+  `dual_auxiliary.md` class-4 verb and now ships two readings.
+- **Two verbs are editorially ambiguous** — *helfen* (Wiktionary's *hülfe* against the shipped
+  *hälfe*) and *verstoßen* (the shipped Präsens umlaut *du verstößt* against a table without it).
+  Both need a human to pick, not more code.
+- **`fetch_dwds_frequencies.py` queries bare infinitives**, which silently resolves a verb that
+  is also an adjective or noun to the wrong word — *runden* scored as *rund*. Eight such verbs
+  were found and repaired on 2026-07-19, but the script is unchanged, so a bulk re-fetch would
+  reintroduce it across thousands. The fix is to query an inflected form and verify the returned
+  lemma; the failure mode and detection recipe are documented at the top of that script.
+- **747 incoming verbs are blocked on the prefix inventory**, not on grammar. Their first element
+  — *acht*, *abhanden* — is not a prefix any shipping verb uses, so no hypothesis proposes
+  separating it. Widening the inventory belongs to the import step. The summary used to file these
+  under "double prefix", which is no longer true after step 5 and would send a session to rewrite
+  correct code.
 - **Three modals resist the pipeline** — *sollen*, *bedürfen*, *vermögen* use full-override
   ablaut groups the classifier cannot derive. Probably correct as shipped; unverified.
-- **Everything in `prompts/` except step 5 is already executed** and now carries a status line
-  saying so. Only `dual_auxiliary.md` is outstanding.
+- **Everything in `prompts/` is now executed** and carries a status line saying so.
 - **Swiss infinitive display beyond `VerbView`** — the ß→ss transform now covers displayed
   infinitives (headline, nav title, browse rows, quiz prompt, results, family cards) and search
   normalizes both sides. Widget snapshots and the Tutor still emit conjugations only; neither
@@ -148,3 +168,4 @@ Small things the pipeline surfaced that no plan currently owns. None blocks the 
 | Prefix markers | `1ae08da` | 25 → 14 |
 | Regional + dual-auxiliary planning | `b725ee3` | The prompts for steps 4 and 5 |
 | Regional variety support | `95206ef` | Region setting, ß/ss transform (incl. displayed infinitives + search normalization), 3 regional-auxiliary verbs, dual-flag pill, Duden Info article; at-odds count held at 14 |
+| Dual auxiliaries + double-prefix grammar | — | Nested `<reading>` model across all 990 verbs, repeated prefix markers, 38 verbs given a second reading, reading picker in `VerbView`, reading-aware quiz. Fixed 7 double-prefix verbs, *hängen*, and 67 verbs whose broken encoding the old metric hid; 14 → 8 at odds |

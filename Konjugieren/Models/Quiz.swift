@@ -103,7 +103,7 @@ class Quiz {
       lastCorrectAnswer = question.correctAnswer
       lastErrorContext = ErrorExplainerContext(
         infinitiv: question.verb.infinitiv,
-        translation: question.verb.translation,
+        translation: question.translation,
         familyDescription: question.verb.family.displayName,
         conjugationgroupGerman: question.conjugationgroup.germanDisplayName,
         conjugationgroupEnglish: question.conjugationgroup.englishDisplayName,
@@ -199,6 +199,11 @@ class Quiz {
   }
 
   private func makeQuizItem(verb: Verb, conjugationgroup: Conjugationgroup) -> QuizItem {
+    // A question asks about exactly one reading, and the prompt shows that reading's gloss,
+    // so a two-reading verb has one right answer rather than two. Without this, hängen in
+    // the Präteritum would accept hing and hängte indistinguishably and teach neither.
+    let readingIndex = verb.readings.indices.randomElement() ?? 0
+
     // The region setting governs presentation and never marks a learner wrong: a user who
     // types a correct conjugation from another standard variety has answered correctly.
     // Only the canonical answer, shown in results and error history, follows the setting.
@@ -206,18 +211,21 @@ class Quiz {
       RegionalConjugator.conjugateUnsafely(
         infinitiv: verb.infinitiv,
         conjugationgroup: conjugationgroup,
-        region: region
+        region: region,
+        readingIndex: readingIndex
       ).lowercased()
     })
     let correctAnswer = RegionalConjugator.conjugateUnsafely(
       infinitiv: verb.infinitiv,
-      conjugationgroup: conjugationgroup
+      conjugationgroup: conjugationgroup,
+      readingIndex: readingIndex
     )
     return QuizItem(
       verb: verb,
       conjugationgroup: conjugationgroup,
       correctAnswer: correctAnswer,
-      acceptableAnswers: acceptableAnswers
+      acceptableAnswers: acceptableAnswers,
+      readingIndex: readingIndex
     )
   }
 
@@ -377,7 +385,7 @@ class Quiz {
     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
       Current.utterer.utter(question.verb.infinitiv)
       DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
-        Current.utterer.utter(question.verb.translation, localeString: UttererLocale.english)
+        Current.utterer.utter(question.translation, localeString: UttererLocale.english)
       }
     }
   }
@@ -428,18 +436,30 @@ struct QuizItem: Identifiable {
   /// Every standard variety's spelling of this conjugation, lowercased. Answers are graded
   /// against this set, so no variety is ever marked wrong.
   let acceptableAnswers: Set<String>
+  /// Which of the verb's readings this question asks about. The prompt shows this reading's
+  /// gloss, so the learner knows whether hängen here means "be suspended" or "suspend
+  /// something" — the two inflect differently.
+  let readingIndex: Int
   var userAnswer: String?
   var isCorrect: Bool?
+
+  /// The gloss to show with the prompt. Always the asked reading's, which for a
+  /// single-reading verb is exactly the verb's translation as before.
+  var translation: String {
+    (verb.reading(at: readingIndex) ?? verb.primaryReading).translation
+  }
 
   init(
     verb: Verb,
     conjugationgroup: Conjugationgroup,
     correctAnswer: String,
-    acceptableAnswers: Set<String>? = nil
+    acceptableAnswers: Set<String>? = nil,
+    readingIndex: Int = 0
   ) {
     self.verb = verb
     self.conjugationgroup = conjugationgroup
     self.correctAnswer = correctAnswer
+    self.readingIndex = readingIndex
     // The canonical answer is always acceptable, so a caller that knows of no other variety
     // still grades correctly.
     self.acceptableAnswers = acceptableAnswers ?? [correctAnswer.lowercased()]

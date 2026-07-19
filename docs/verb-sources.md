@@ -330,6 +330,69 @@ verb a one-line change. The refactor touches `VerbParser`, `Verb.verbsSortedByFr
 of the DWDS licensing question, since the argument is about diff churn rather than data
 source.
 
+**Preconditions, verified 2026-07-19 at the end of step 5.** Confirmed by measurement, not by
+reading, so a fresh session can start without re-deriving them:
+
+- `fr` really is dense and unique over 1..990. Step 5 reshaped `Verbs.xml` but changed no `fr`
+  value and no verb key.
+- `verbdata/dwds-frequencies.json` has a hit count for **all 990** shipping verbs, with **no
+  ties** among them, so the derived rank is a strict total order and needs no tiebreak policy.
+- `fr` stays on `<verb>`, not on `<reading>`, so the reading model added in step 5 does not
+  interact with this refactor. See "Readings" in `adding-verbs.md`.
+
+**The eight bad hit counts are fixed. Read this anyway before re-fetching.** `fr` itself is
+hand-maintained and was never affected; the defect was in `verbdata/dwds-frequencies.json`,
+which is the source step 6 switches to.
+
+The DWDS frequency endpoint lemmatizes whatever it is given and takes no part-of-speech
+parameter, so eight infinitives resolved to a homographic adjective or noun and returned that
+word's count instead: `runden`→`rund` (23.4M), `gleichen`→`gleich` (18.1M), `lauten`→`laut`,
+`weißen`→`weiß`, `achten`→`acht`, `tätigen`→`tätig`, `regen`→`rege`, and `einigen`, which
+returned a tab-joined multi-lemma and scored zero. Nothing in the response marks these as
+wrong — the count is real, it is just a different word's — and deriving rank from them would
+have put `runden` 25th of 990.
+
+All eight were re-queried on 2026-07-19 using an unambiguously verbal inflected form, with the
+returned lemma verified against the verb. Their rows now carry a `probe` field naming the form
+used. After the repair, no verb resolves to a mismatched lemma except three harmless variant
+spellings (`reißen`→`reissen`, `erschweren`→`erschwern`, `kreieren`→`kreiern`, all shifting
+fewer than 45 places), and no verb scores zero.
+
+Post-repair, `fr` and the derived rank disagree by a median of 43 places, with the largest
+legitimate shifts in the long tail where the hand-assigned ranks were always guesswork —
+`weiterlesen` drops from 447 to 975 on 425K hits, which is the refactor doing its job rather
+than a defect. `fällen` has the single largest shift (+575) and was checked specifically: DWDS
+is case-sensitive, `Fällen` is a separate entry resolving to the noun `Fall`, and the
+unambiguous `fällte` returns the same count, so its 5.7M is genuine idiom (*eine Entscheidung
+fällen*) and not contamination.
+
+The failure mode, the probe technique, and a detection recipe to re-run after any future fetch
+are documented at the top of `fetch_dwds_frequencies.py`. That script still queries bare
+infinitives, so **a bulk re-fetch will reintroduce this across thousands of verbs** unless it
+generates probe forms first.
+
+**Two traps in the call sites, one of them silent.** The section above names `VerbParser`,
+`Verb.verbsSortedByFrequency`, and `VerbExportTests`. Checked on 2026-07-19, that list is
+incomplete in a way worth knowing before starting:
+
+- **`fr` is rendered, not just sorted by.** `VerbBrowseView` prints `#\(verb.frequency)` and
+  `VerbView` uses the same value as the accessibility label of its `#168` pill. If `fr` starts
+  holding raw hits, those render `#516850`. The derived rank has to be reachable from `Verb`,
+  not merely used for ordering.
+- **The sort direction inverts.** Every site sorts ascending — `$0.frequency < $1.frequency` —
+  which means *most common first* for a rank and *least common first* for a hit count. Both
+  `Verb.verbsSortedByFrequency` and `BrowseableFamily`'s three-exemplar picker do this, and the
+  second is not in the section's list. Left alone, the family screens would quietly showcase the
+  three rarest verbs in each family. No test asserts the ordering, so nothing would fail.
+
+Keeping `Verb.frequency` as the derived rank and giving the raw count a different name avoids
+both, and leaves every existing call site correct.
+
+Note also that `VerbParser` was substantially rewritten in step 5 — it now parses nested
+`<reading>` elements and an `in` grammar that admits repeated prefix markers. `fr` is still read
+exactly once, in `startVerb`, so the guidance above holds; the file simply no longer looks like
+it did when this section was written.
+
 ### Verify counts, do not trust them
 
 Three documents in this repo claimed 989 verbs well after the corpus reached 990, and

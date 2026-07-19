@@ -83,3 +83,36 @@ The `.fixedSize` on the label prevents the wrapping problem where `HStack` would
 | QuizView (English-only lines) | Single `Text` with `.englishPronunciation()` | Progress, Score, Elapsed are all English |
 | InfoBrowseView | Programmatic `NavigationPath` | German heading and English preview as separate elements |
 | ResultsView | Per-element `.germanPronunciation()` | Not inside NavigationLink, so per-element locale works directly |
+| VerbView (reading picker) | `.englishPronunciation()` on the container, nothing else | Every button is an English gloss, so a uniform locale is correct; see the warning below about container-level accessibility |
+
+## The reading picker: why it is not a Picker, and why it carries no container label
+
+`VerbView` switches between a verb's readings with plain capsule `Button`s in a `ViewThatFits`,
+not a segmented `Picker`. Two separate defects drove that, both found by inspection rather than
+by reasoning:
+
+- **`UISegmentedControl` truncates.** Segments are single-line with no multiline option, and
+  these labels are glosses of arbitrary length. *antreten*'s "take up (office), begin (a
+  journey)" lost half of itself, which defeats the point of naming the readings.
+- **It exposed no segments.** `axe describe-ui` reported the control as an `AXTabGroup` with a
+  null `AXLabel` and no children, so `tap_label.sh` could not reach it and neither, plausibly,
+  could VoiceOver. A user who cannot select a reading cannot reach the second paradigm at all.
+
+Both are fixed: the capsules wrap, and each button appears in the accessibility tree under its
+own gloss with `.isSelected`, so `tap_label.sh "hang, suspend something"` works.
+
+**Do not add accessibility modifiers to the container.** This was gotten wrong twice, in two
+different shapes, and both collapsed the control into a single element:
+
+```swift
+// Wrong: a label on the container REPLACES the segments' own labels.
+Picker(...) { ... }.accessibilityLabel(Text(L.VerbView.readingPickerLabel))
+
+// Also wrong: .contain plus a label still flattens — the tree showed one element, "Meaning".
+ViewThatFits { ... }
+  .accessibilityElement(children: .contain)
+  .accessibilityLabel(Text(L.VerbView.readingPickerLabel))
+```
+
+The buttons name themselves by their glosses, which is what a VoiceOver user actually needs.
+Naming the group costs the ability to tell the readings apart, and that trade is never worth it.

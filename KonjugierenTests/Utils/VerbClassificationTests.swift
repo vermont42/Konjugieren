@@ -84,6 +84,19 @@ private struct Classification: Encodable {
   let kaikkiClass: String?
   let slotsChecked: Int
   let mismatches: [String]
+  /// True when the verb ships today but Verbs.xml's own encoding of it did not reproduce
+  /// Wiktionary's table, even though some other hypothesis did.
+  ///
+  /// Without this the at-odds count silently undercounts. `ablautGroupIsNew` catches only a
+  /// verb whose repair needs a group that does not ship; a verb repairable with a group that
+  /// *does* ship — beschreiben, scheinen, schwimmen — was reported "verified" while the app
+  /// went on conjugating it wrongly.
+  let shippedEncodingFailed: Bool
+  /// How many readings the verb ships with. A verb with more than one cannot be judged by
+  /// `shippedEncodingFailed` alone: the classifier tests only the primary reading, against a
+  /// Wiktionary table that aggregates every sense, so a verb whose table happens to describe
+  /// the *second* reading registers as a failure that is not one.
+  let readingCount: Int
 }
 
 // MARK: - Classifier
@@ -111,13 +124,15 @@ private final class Classifier {
     var separable: Set<String> = []
     var inseparable: Set<String> = []
     for verb in originalVerbs.values {
-      switch verb.prefix {
-      case .separable(let prefix):
-        separable.insert(prefix)
-      case .inseparable(let prefix):
-        inseparable.insert(prefix)
-      case .none:
-        break
+      for prefix in verb.primaryReading.prefixes {
+        switch prefix {
+        case .separable(let value):
+          separable.insert(value)
+        case .inseparable(let value):
+          inseparable.insert(value)
+        case .none:
+          break
+        }
       }
     }
     // Longest first, so "vorbei" is tried before "vor".
@@ -136,6 +151,7 @@ private final class Classifier {
     let translation = candidate.glosses.first.map(Self.shortened)
 
     var best: (mismatches: [String], checked: Int) = ([], .max)
+    var shippedEncodingFailed = false
 
     // For a verb that already ships, the encoding in Verbs.xml is the hypothesis that
     // matters. Testing it first keeps the search from reporting an equivalent-but-
@@ -143,13 +159,13 @@ private final class Classifier {
     // one were wrong.
     if candidate.alreadyShipping, let shipped = originalVerbs[candidate.word] {
       Verb.verbs[candidate.word] = shipped
-      let mismatches = verify(word: candidate.word, prefix: shipped.prefix, expectations: expectations)
+      let mismatches = verify(word: candidate.word, prefixes: shipped.primaryReading.prefixes, expectations: expectations)
       if mismatches.isEmpty {
         return Classification(
           word: candidate.word,
           alreadyShipping: true,
           status: "verified",
-          markedInfinitiv: Self.marked(word: candidate.word, prefix: shipped.prefix, region: nil),
+          markedInfinitiv: Self.marked(word: candidate.word, prefixes: shipped.primaryReading.prefixes, region: nil),
           family: Self.familyCode(shipped.family),
           ablautGroup: shipped.ablautGroup,
           ablautGroupIsNew: false,
@@ -160,14 +176,17 @@ private final class Classifier {
           hasEtymology: candidate.hasEtymology,
           kaikkiClass: candidate.verbClass,
           slotsChecked: expectations.count,
-          mismatches: []
+          mismatches: [],
+          shippedEncodingFailed: false,
+          readingCount: shipped.readings.count
         )
       }
       record(mismatches, count: expectations.count, into: &best)
+      shippedEncodingFailed = true
     }
 
-    for prefix in prefixHypotheses(for: candidate) {
-      if let solution = solve(candidate: candidate, prefix: prefix, expectations: expectations, best: &best) {
+    for prefixes in prefixHypotheses(for: candidate) {
+      if let solution = solve(candidate: candidate, prefixes: prefixes, expectations: expectations, best: &best) {
         return Classification(
           word: candidate.word,
           alreadyShipping: candidate.alreadyShipping,
@@ -183,7 +202,9 @@ private final class Classifier {
           hasEtymology: candidate.hasEtymology,
           kaikkiClass: candidate.verbClass,
           slotsChecked: expectations.count,
-          mismatches: []
+          mismatches: [],
+          shippedEncodingFailed: shippedEncodingFailed,
+          readingCount: originalVerbs[candidate.word]?.readings.count ?? 1
         )
       }
     }
@@ -203,7 +224,9 @@ private final class Classifier {
       hasEtymology: candidate.hasEtymology,
       kaikkiClass: candidate.verbClass,
       slotsChecked: expectations.count,
-      mismatches: best.checked == .max ? ["no hypothesis produced a conjugation"] : Array(best.mismatches.prefix(6))
+      mismatches: best.checked == .max ? ["no hypothesis produced a conjugation"] : Array(best.mismatches.prefix(6)),
+      shippedEncodingFailed: shippedEncodingFailed,
+      readingCount: originalVerbs[candidate.word]?.readings.count ?? 1
     )
   }
 
@@ -219,7 +242,7 @@ private final class Classifier {
 
   private func solve(
     candidate: Candidate,
-    prefix: Prefix,
+    prefixes: [Prefix],
     expectations: [(group: Conjugationgroup, slot: String, forms: [String])],
     best: inout (mismatches: [String], checked: Int)
   ) -> Solution? {
@@ -231,11 +254,11 @@ private final class Classifier {
       : [(.weak, "w")]
 
     for (family, code) in regularFamilies {
-      install(word: word, family: family, prefix: prefix)
-      let mismatches = verify(word: word, prefix: prefix, expectations: expectations)
+      install(word: word, family: family, prefixes: prefixes)
+      let mismatches = verify(word: word, prefixes: prefixes, expectations: expectations)
       if mismatches.isEmpty {
         return Solution(
-          markedInfinitiv: Self.marked(word: word, prefix: prefix, region: nil),
+          markedInfinitiv: Self.marked(word: word, prefixes: prefixes, region: nil),
           familyCode: code,
           ablautGroupName: nil,
           ablautGroupIsNew: false,
@@ -246,7 +269,7 @@ private final class Classifier {
     }
 
     let stammLength = word.hasSuffix("en") ? word.count - 2 : word.count - 1
-    let prefixLength = Self.length(of: prefix)
+    let prefixLength = prefixes.totalLength
     guard stammLength > prefixLength else { return nil }
 
     // Shortest regions first, so k^om^men beats k^omm^en when both verify.
@@ -256,7 +279,7 @@ private final class Classifier {
       for region in regions {
         guard let derived = derive(
           word: word,
-          prefix: prefix,
+          prefixes: prefixes,
           familyKind: familyKind,
           region: region,
           expectations: expectations
@@ -267,7 +290,7 @@ private final class Classifier {
         let minimized = minimize(
           ablauts: derived,
           word: word,
-          prefix: prefix,
+          prefixes: prefixes,
           familyKind: familyKind,
           region: region,
           expectations: expectations
@@ -289,7 +312,7 @@ private final class Classifier {
           .sorted { $0.key < $1.key }
           .first { $0.value.mapValues { $0.lowercased() } == normalized }
         return Solution(
-          markedInfinitiv: Self.marked(word: word, prefix: prefix, region: region),
+          markedInfinitiv: Self.marked(word: word, prefixes: prefixes, region: region),
           familyCode: code,
           ablautGroupName: match?.key ?? word,
           ablautGroupIsNew: match == nil,
@@ -326,7 +349,7 @@ private final class Classifier {
   /// to the suffixes of the expected form.
   private func derive(
     word: String,
-    prefix: Prefix,
+    prefixes: [Prefix],
     familyKind: FamilyKind,
     region: Range<Int>,
     expectations: [(group: Conjugationgroup, slot: String, forms: [String])]
@@ -335,9 +358,9 @@ private final class Classifier {
     var ablauts: [Conjugationgroup: String] = [:]
 
     for expectation in expectations {
-      let accepted = Self.accepted(expectation: expectation, prefix: prefix)
+      let accepted = Self.accepted(expectation: expectation, prefixes: prefixes)
 
-      install(word: word, family: family, prefix: prefix)
+      install(word: word, family: family, prefixes: prefixes)
       installAblauts(ablauts)
       if case .success(let produced) = Conjugator.conjugate(infinitiv: word, conjugationgroup: expectation.group),
          accepted.contains(produced.lowercased()) {
@@ -360,7 +383,7 @@ private final class Classifier {
         group: expectation.group,
         word: word,
         family: family,
-        prefix: prefix,
+        prefixes: prefixes,
         siblings: ablauts
       ) else {
         return nil
@@ -370,9 +393,9 @@ private final class Classifier {
 
     guard !ablauts.isEmpty else { return nil }
 
-    install(word: word, family: family, prefix: prefix)
+    install(word: word, family: family, prefixes: prefixes)
     installAblauts(ablauts)
-    guard verify(word: word, prefix: prefix, expectations: expectations).isEmpty else { return nil }
+    guard verify(word: word, prefixes: prefixes, expectations: expectations).isEmpty else { return nil }
     return ablauts
   }
 
@@ -384,7 +407,7 @@ private final class Classifier {
     group: Conjugationgroup,
     word: String,
     family: Family,
-    prefix: Prefix,
+    prefixes: [Prefix],
     siblings: [Conjugationgroup: String]
   ) -> String? {
     for expected in accepted.sorted() {
@@ -395,7 +418,7 @@ private final class Classifier {
         let replacement = String(rest.prefix(length)).uppercased()
         var trial = siblings
         trial[group] = replacement
-        install(word: word, family: family, prefix: prefix)
+        install(word: word, family: family, prefixes: prefixes)
         installAblauts(trial)
         if case .success(let produced) = Conjugator.conjugate(infinitiv: word, conjugationgroup: group),
            accepted.contains(produced.lowercased()) {
@@ -412,7 +435,7 @@ private final class Classifier {
   private func minimize(
     ablauts: [Conjugationgroup: String],
     word: String,
-    prefix: Prefix,
+    prefixes: [Prefix],
     familyKind: FamilyKind,
     region: Range<Int>,
     expectations: [(group: Conjugationgroup, slot: String, forms: [String])]
@@ -422,20 +445,20 @@ private final class Classifier {
       var trial = minimized
       trial.removeValue(forKey: key)
       guard !trial.isEmpty else { continue }
-      install(word: word, family: familyKind.family(group: Self.syntheticGroupKey, region: region), prefix: prefix)
+      install(word: word, family: familyKind.family(group: Self.syntheticGroupKey, region: region), prefixes: prefixes)
       installAblauts(trial)
-      if verify(word: word, prefix: prefix, expectations: expectations).isEmpty {
+      if verify(word: word, prefixes: prefixes, expectations: expectations).isEmpty {
         minimized = trial
       }
     }
-    install(word: word, family: familyKind.family(group: Self.syntheticGroupKey, region: region), prefix: prefix)
+    install(word: word, family: familyKind.family(group: Self.syntheticGroupKey, region: region), prefixes: prefixes)
     installAblauts(minimized)
     return minimized
   }
 
   private func verify(
     word: String,
-    prefix: Prefix,
+    prefixes: [Prefix],
     expectations: [(group: Conjugationgroup, slot: String, forms: [String])]
   ) -> [String] {
     var mismatches: [String] = []
@@ -444,7 +467,7 @@ private final class Classifier {
         mismatches.append("\(expectation.slot): conjugation failed")
         continue
       }
-      let accepted = Self.accepted(expectation: expectation, prefix: prefix)
+      let accepted = Self.accepted(expectation: expectation, prefixes: prefixes)
       if !accepted.contains(produced.lowercased()) {
         mismatches.append("\(expectation.slot): expected \(expectation.forms.joined(separator: "/")), got \(produced)")
       }
@@ -462,12 +485,13 @@ private final class Classifier {
   /// standard German (beiß / beiße), so it is allowed either way.
   private static func accepted(
     expectation: (group: Conjugationgroup, slot: String, forms: [String]),
-    prefix: Prefix
+    prefixes: [Prefix]
   ) -> Set<String> {
     var accepted: Set<String> = []
+    let particle = prefixes.separableRun
     for form in expectation.forms {
       var spellings = [form]
-      if case .separable(let particle) = prefix {
+      if !particle.isEmpty {
         let suffix = " " + particle
         if form.hasSuffix(suffix) {
           spellings.append(particle + form.dropLast(suffix.count))
@@ -494,16 +518,21 @@ private final class Classifier {
 
   // MARK: World mutation
 
-  private func install(word: String, family: Family, prefix: Prefix) {
+  private func install(word: String, family: Family, prefixes: [Prefix]) {
     Verb.verbs[word] = Verb(
       infinitiv: word,
-      translation: "",
-      family: family,
-      auxiliary: .haben,
       frequency: 0,
-      prefix: prefix,
       frequencyIcon: "figure",
-      auxiliaryIsRegional: false
+      readings: [
+        Reading(
+          infinitiv: word,
+          translation: "",
+          family: family,
+          auxiliary: .haben,
+          prefixes: prefixes,
+          auxiliaryIsRegional: false
+        )
+      ]
     )
   }
 
@@ -515,9 +544,9 @@ private final class Classifier {
 
   // MARK: Prefixes
 
-  private func prefixHypotheses(for candidate: Candidate) -> [Prefix] {
+  private func prefixHypotheses(for candidate: Candidate) -> [[Prefix]] {
     let word = candidate.word
-    var hypotheses: [Prefix] = []
+    var hypotheses: [[Prefix]] = []
 
     // The Perfektpartizip usually decides separability — an+ge+kommen against
     // ver+standen — but Wiktionary omits the ge on some doubly prefixed verbs, so a
@@ -525,17 +554,36 @@ private final class Classifier {
     let participles = candidate.forms["perfektpartizip"] ?? []
     let split = Set(candidate.forms.values.flatMap { $0 }.compactMap { $0.split(separator: " ").last.map(String.init) })
 
+    var separableHeads: [String] = []
     for prefix in separablePrefixes where word.hasPrefix(prefix) && word.count - prefix.count >= Verb.minVerbLength {
       if participles.contains(where: { $0.hasPrefix(prefix + "ge") }) || split.contains(prefix) {
-        hypotheses.append(.separable(prefix))
+        hypotheses.append([.separable(prefix)])
+        separableHeads.append(prefix)
+      } else if split.contains(prefix) == false && participles.contains(where: { $0.hasPrefix(prefix) && !$0.hasPrefix(prefix + "ge") }) {
+        // No ge after the particle is itself the signature of a separable prefix sitting
+        // on an already-prefixed base — abbekommen, not abgebekommen. It is not evidence
+        // of a single separable prefix, so it seeds only the two-prefix hypotheses below.
+        separableHeads.append(prefix)
       }
     }
     for prefix in inseparablePrefixes where word.hasPrefix(prefix) && word.count - prefix.count >= Verb.minVerbLength {
       if participles.contains(where: { !$0.hasPrefix("ge") || word.hasPrefix("ge") }) {
-        hypotheses.append(.inseparable(prefix))
+        hypotheses.append([.inseparable(prefix)])
       }
     }
-    hypotheses.append(.none)
+
+    // A separable prefix over an inseparable one: an+ge*hören, ab+be*kommen. The
+    // participle keeps no ge because the prefix against the stem is inseparable, which
+    // is precisely why a single-prefix hypothesis can never reproduce these. 1,036
+    // incoming verbs have this shape.
+    for head in separableHeads {
+      let rest = String(word.dropFirst(head.count))
+      for inner in inseparablePrefixes where rest.hasPrefix(inner) && rest.count - inner.count >= Verb.minVerbLength {
+        hypotheses.append([.separable(head), .inseparable(inner)])
+      }
+    }
+
+    hypotheses.append([])
     return hypotheses
   }
 
@@ -549,15 +597,6 @@ private final class Classifier {
       return "w"
     case .ieren:
       return "i"
-    }
-  }
-
-  private static func length(of prefix: Prefix) -> Int {
-    switch prefix {
-    case .separable(let value), .inseparable(let value):
-      return value.count
-    case .none:
-      return 0
     }
   }
 
@@ -634,19 +673,26 @@ private final class Classifier {
     return regions
   }
 
-  private static func marked(word: String, prefix: Prefix, region: Range<Int>?) -> String {
+  private static func marked(word: String, prefixes: [Prefix], region: Range<Int>?) -> String {
     var characters = Array(word)
     if let region {
       characters.insert("^", at: region.upperBound)
       characters.insert("^", at: region.lowerBound)
     }
-    switch prefix {
-    case .separable(let value):
-      characters.insert("+", at: value.count)
-    case .inseparable(let value):
-      characters.insert("*", at: value.count)
-    case .none:
-      break
+    // Right to left, so that inserting the inner marker does not shift the offset the
+    // outer one is measured against: an+ge*hören.
+    var offset = prefixes.totalLength
+    for prefix in prefixes.reversed() {
+      switch prefix {
+      case .separable(let value):
+        characters.insert("+", at: offset)
+        offset -= value.count
+      case .inseparable(let value):
+        characters.insert("*", at: offset)
+        offset -= value.count
+      case .none:
+        break
+      }
     }
     return String(characters)
   }

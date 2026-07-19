@@ -884,14 +884,15 @@ struct ConjugatorTests {
     infinitiv: String,
     conjugationgroup: Conjugationgroup,
     expected: String,
+    readingIndex: Int = 0,
     sourceLocation: SourceLocation = #_sourceLocation
   ) {
-    let result = Conjugator.conjugate(infinitiv: infinitiv, conjugationgroup: conjugationgroup)
+    let result = Conjugator.conjugate(infinitiv: infinitiv, conjugationgroup: conjugationgroup, readingIndex: readingIndex)
     switch result {
     case .success(let conjugation):
-      #expect(conjugation == expected, "Expected \(infinitiv) → \(expected), got \(conjugation)", sourceLocation: sourceLocation)
+      #expect(conjugation == expected, "Expected \(infinitiv) reading \(readingIndex) → \(expected), got \(conjugation)", sourceLocation: sourceLocation)
     case .failure(let err):
-      Issue.record("Failed to conjugate \(infinitiv): \(err)", sourceLocation: sourceLocation)
+      Issue.record("Failed to conjugate \(infinitiv) reading \(readingIndex): \(err)", sourceLocation: sourceLocation)
     }
   }
 
@@ -930,13 +931,134 @@ struct ConjugatorTests {
     #expect(try! result.get() == "habe gemacht")
   }
 
+  // A separable prefix sitting on an already-prefixed base. The ge- of the Perfektpartizip
+  // goes immediately before the base stem and only when the prefix against that stem is
+  // separable, so all of these suppress it. Before the grammar admitted a second marker
+  // these were written with one, and Conjugator produced angegehört and aufgebewahrt.
+  @Test func doublePrefixes() {
+    expectConjugation(infinitiv: "angehören", conjugationgroup: .perfektpartizip, expected: "angehört")
+    expectConjugation(infinitiv: "aufbewahren", conjugationgroup: .perfektpartizip, expected: "aufbewahrt")
+    expectConjugation(infinitiv: "vorbereiten", conjugationgroup: .perfektpartizip, expected: "vorbereitet")
+    expectConjugation(infinitiv: "zubereiten", conjugationgroup: .perfektpartizip, expected: "zubereitet")
+    expectConjugation(infinitiv: "weiterentwickeln", conjugationgroup: .perfektpartizip, expected: "weiterentwickelt")
+
+    // The ablaut region belongs to the base, not to the inner prefix: einbezog, not einbOGzieh.
+    expectConjugation(infinitiv: "einbeziehen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "einbezOG")
+    expectConjugation(infinitiv: "einbeziehen", conjugationgroup: .perfektpartizip, expected: "einbezOGen")
+
+    // Only the outer separable prefix detaches; the inseparable one stays put.
+    expectConjugation(infinitiv: "nachvollziehen", conjugationgroup: .imperativ(.secondPlural), expected: "vollzieht nach")
+    expectConjugation(infinitiv: "nachvollziehen", conjugationgroup: .perfektpartizip, expected: "nachvollzOGen")
+  }
+
+  // hängen is the type case for readings that inflect differently: strong and intransitive
+  // in the first, weak and transitive in the second. Wiktionary gives the strong preterite
+  // as hing and tags hang nonstandard, so hing is what these pin.
+  @Test func hängenReadings() {
+    expectConjugation(infinitiv: "hängen", conjugationgroup: .präsensIndikativ(.firstSingular), expected: "hänge")
+    expectConjugation(infinitiv: "hängen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "hIng")
+    expectConjugation(infinitiv: "hängen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "hInge")
+    expectConjugation(infinitiv: "hängen", conjugationgroup: .perfektpartizip, expected: "gehAngen")
+    expectConjugation(infinitiv: "hängen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "habe gehAngen")
+
+    expectConjugation(infinitiv: "hängen", conjugationgroup: .präsensIndikativ(.firstSingular), expected: "hänge", readingIndex: 1)
+    expectConjugation(infinitiv: "hängen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "hängte", readingIndex: 1)
+    expectConjugation(infinitiv: "hängen", conjugationgroup: .perfektpartizip, expected: "gehängt", readingIndex: 1)
+    expectConjugation(infinitiv: "hängen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "habe gehängt", readingIndex: 1)
+  }
+
+  // Class 1: the readings share a paradigm and differ only in auxiliary and gloss.
+  // Das Eis ist geschmolzen against ich habe das Eis geschmolzen, here on brechen.
+  @Test func transitivityAlternationReadings() {
+    expectConjugation(infinitiv: "brechen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt gebrOchen")
+    expectConjugation(infinitiv: "brechen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "IST gebrOchen", readingIndex: 1)
+
+    expectConjugation(infinitiv: "fahren", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt gefahren")
+    expectConjugation(infinitiv: "fahren", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "IST gefahren", readingIndex: 1)
+
+    // The Präteritum is shared, so only the compound tenses may diverge.
+    expectConjugation(infinitiv: "fahren", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "fUhr")
+    expectConjugation(infinitiv: "fahren", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "fUhr", readingIndex: 1)
+  }
+
+  // Class 2: schwimmen takes sein toward a destination and haben for the activity itself.
+  @Test func motionReadings() {
+    expectConjugation(infinitiv: "schwimmen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "BIN geschwOmmen")
+    expectConjugation(infinitiv: "schwimmen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "habe geschwOmmen", readingIndex: 1)
+  }
+
+  // Class 5: the readings differ in the `in` attribute itself. über*setzen "translate" is
+  // inseparable, so its participle takes no ge-; über+setzen "ferry across" is separable and
+  // infixes one, and takes sein. Both spellings must still resolve on the plain infinitive.
+  @Test func separabilityHomographReadings() {
+    expectConjugation(infinitiv: "übersetzen", conjugationgroup: .perfektpartizip, expected: "übersetzt")
+    expectConjugation(infinitiv: "übersetzen", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "übersetzt")
+    expectConjugation(infinitiv: "übersetzen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt übersetzt")
+
+    expectConjugation(infinitiv: "übersetzen", conjugationgroup: .perfektpartizip, expected: "übergesetzt", readingIndex: 1)
+    expectConjugation(infinitiv: "übersetzen", conjugationgroup: .imperativ(.secondPlural), expected: "setzt über", readingIndex: 1)
+    expectConjugation(infinitiv: "übersetzen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "IST übergesetzt", readingIndex: 1)
+  }
+
+  // Class 4 again, and class 5 at once: weichen's "yield" reading is strong (wich, gewichen)
+  // while "soak" is a separate weak verb (weichte, geweicht). The weak reading respells `in`
+  // to drop the ablaut region, which a weak family may not carry.
+  @Test func weichenReadings() {
+    expectConjugation(infinitiv: "weichen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "wICH")
+    expectConjugation(infinitiv: "weichen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "IST gewICHen")
+
+    expectConjugation(infinitiv: "weichen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "weichte", readingIndex: 1)
+    expectConjugation(infinitiv: "weichen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt geweicht", readingIndex: 1)
+  }
+
+  // Four verbs whose shipped encoding was wrong in a way the classify-and-verify pipeline
+  // reported as verified: when the shipped hypothesis failed, the classifier went on to find
+  // a different *already-shipping* ablaut group that worked, and the at-odds count only
+  // flagged verbs needing a group that does not ship. Every expectation here is Wiktionary's.
+  @Test func encodingsTheOracleUsedToHide() {
+    // Shipped weak, so the app produced "beschreibt" and "hat beschreibt".
+    expectConjugation(infinitiv: "beschreiben", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "beschrIEb")
+    expectConjugation(infinitiv: "beschreiben", conjugationgroup: .perfektpartizip, expected: "beschrIEben")
+
+    // Shipped the heißen group, which carries no participle ablaut: "gescheint".
+    expectConjugation(infinitiv: "scheinen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "schIEn")
+    expectConjugation(infinitiv: "scheinen", conjugationgroup: .perfektpartizip, expected: "geschIEnen")
+
+    // Ablaut region spanned "imm" with the singen group: "schwA" and "geschwUen".
+    expectConjugation(infinitiv: "schwimmen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "schwAmm")
+    expectConjugation(infinitiv: "schwimmen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "schwÄmme")
+    expectConjugation(infinitiv: "schwimmen", conjugationgroup: .perfektpartizip, expected: "geschwOmmen")
+
+    // bewegen is class 4: weak "move" beside strong "induce, prompt".
+    expectConjugation(infinitiv: "bewegen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "bewegte")
+    expectConjugation(infinitiv: "bewegen", conjugationgroup: .perfektpartizip, expected: "bewegt")
+    expectConjugation(infinitiv: "bewegen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "bewOg", readingIndex: 1)
+    expectConjugation(infinitiv: "bewegen", conjugationgroup: .perfektpartizip, expected: "bewOgen", readingIndex: 1)
+  }
+
+  // Every reading of a verb must resolve to the same dictionary key, so that Verb.verbs and
+  // Conjugator keep looking verbs up by the plain infinitive.
+  @Test func everyReadingResolvesToItsVerbsKey() {
+    for (key, verb) in Verb.verbs {
+      for reading in verb.readings {
+        #expect(reading.infinitiv == key, "Reading of \(key) resolves to \(reading.infinitiv)")
+      }
+      #expect(!verb.readings.isEmpty, "\(key) has no readings")
+    }
+  }
+
+  @Test func readingIndexOutOfRange() {
+    expectFailure(infinitiv: "machen", expectedError: .readingNotRecognized, readingIndex: 1)
+  }
+
   private func expectFailure(
     infinitiv: String,
     expectedError: ConjugatorError,
+    readingIndex: Int = 0,
     sourceLocation: SourceLocation = #_sourceLocation
   ) {
-    // The conjugationgroup is irrelevant: all three guards run before the group switch.
-    let result = Conjugator.conjugate(infinitiv: infinitiv, conjugationgroup: .perfektpartizip)
+    // The conjugationgroup is irrelevant: every guard runs before the group switch.
+    let result = Conjugator.conjugate(infinitiv: infinitiv, conjugationgroup: .perfektpartizip, readingIndex: readingIndex)
     switch result {
     case .success(let conjugation):
       Issue.record("Expected \(infinitiv) to fail with \(expectedError), got \(conjugation)", sourceLocation: sourceLocation)

@@ -4,6 +4,7 @@ enum ConjugatorError: String, Error {
   case conjugationFailed
   case infinitivEndingInvalid
   case personNumberNotSupported
+  case readingNotRecognized
   case verbNotRecognized
   case verbTooShort
 }

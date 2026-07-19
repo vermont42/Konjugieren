@@ -17,10 +17,15 @@ enum Conjugator {
   // compares against Wiktionary, and every ConjugatorTests expectation is written in the
   // German standard, so its output must never depend on a user setting. Callers that want a
   // regional reading pass the auxiliary explicitly; see RegionalConjugator.
+  //
+  // `readingIndex` selects among a verb's readings, which may differ in auxiliary, family,
+  // and prefix all at once — hängen inflects strong when intransitive and weak when
+  // transitive. It defaults to the primary reading, so existing call sites are unaffected.
   static func conjugate(
     infinitiv: String,
     conjugationgroup: Conjugationgroup,
-    auxiliary: Auxiliary? = nil
+    auxiliary: Auxiliary? = nil,
+    readingIndex: Int = 0
   ) -> Result<String, ConjugatorError> {
     guard infinitiv.count >= Verb.minVerbLength else {
       return .failure(.verbTooShort)
@@ -34,72 +39,77 @@ enum Conjugator {
       return .failure(.verbNotRecognized)
     }
 
+    guard verb.readings.indices.contains(readingIndex) else {
+      return .failure(.readingNotRecognized)
+    }
+    let reading = verb.readings[readingIndex]
+
     switch conjugationgroup {
     case .präsensIndikativ, .präsensKonjunktivI, .präteritumIndikativ, .präteritumKonjunktivII:
-      return conjugateSimpleTense(verb: verb, conjugationgroup: conjugationgroup)
+      return conjugateSimpleTense(reading: reading, conjugationgroup: conjugationgroup)
 
     case .perfektpartizip:
-      let (newStamm, isFullOverride) = applyAblaut(stamm: verb.stamm, verb: verb, conjugationgroup: conjugationgroup)
+      let (newStamm, isFullOverride) = applyAblaut(stamm: reading.stamm, reading: reading, conjugationgroup: conjugationgroup)
       if isFullOverride {
         return .success(newStamm)
       }
-      let rawEnding = conjugationgroup.ending(family: verb.family)
-      let adjustedEnding = adjustPerfektpartizipEnding(stamm: newStamm, ending: rawEnding, family: verb.family)
-      switch verb.family {
+      let rawEnding = conjugationgroup.ending(family: reading.family)
+      let adjustedEnding = adjustPerfektpartizipEnding(stamm: newStamm, ending: rawEnding, family: reading.family)
+      switch reading.family {
       case .strong, .mixed, .weak:
-        return .success(perfektpartizipWithGeAndPrefix(verb: verb, stamm: newStamm, ending: adjustedEnding))
+        return .success(perfektpartizipWithGeAndPrefix(reading: reading, stamm: newStamm, ending: adjustedEnding))
       case .ieren:
         return .success(newStamm + adjustedEnding)
       }
 
     case .präsenspartizip:
-      return .success(verb.stamm + (hasSyllabicStamm(verb: verb) ? "nd" : "end"))
+      return .success(reading.stamm + (hasSyllabicStamm(reading: reading) ? "nd" : "end"))
 
     case .imperativ(let personNumber):
-      return conjugateImperativ(verb: verb, personNumber: personNumber)
+      return conjugateImperativ(reading: reading, personNumber: personNumber)
 
     case .perfektIndikativ(let personNumber):
-      return conjugateCompoundTense(verb: verb, infinitiv: infinitiv, auxiliaryInfinitiv: (auxiliary ?? verb.auxiliary).verb, auxiliaryGroup: .präsensIndikativ(personNumber))
+      return conjugateCompoundTense(infinitiv: infinitiv, readingIndex: readingIndex, auxiliaryInfinitiv: (auxiliary ?? reading.auxiliary).verb, auxiliaryGroup: .präsensIndikativ(personNumber))
 
     case .perfektKonjunktivI(let personNumber):
-      return conjugateCompoundTense(verb: verb, infinitiv: infinitiv, auxiliaryInfinitiv: (auxiliary ?? verb.auxiliary).verb, auxiliaryGroup: .präsensKonjunktivI(personNumber))
+      return conjugateCompoundTense(infinitiv: infinitiv, readingIndex: readingIndex, auxiliaryInfinitiv: (auxiliary ?? reading.auxiliary).verb, auxiliaryGroup: .präsensKonjunktivI(personNumber))
 
     case .plusquamperfektIndikativ(let personNumber):
-      return conjugateCompoundTense(verb: verb, infinitiv: infinitiv, auxiliaryInfinitiv: (auxiliary ?? verb.auxiliary).verb, auxiliaryGroup: .präteritumIndikativ(personNumber))
+      return conjugateCompoundTense(infinitiv: infinitiv, readingIndex: readingIndex, auxiliaryInfinitiv: (auxiliary ?? reading.auxiliary).verb, auxiliaryGroup: .präteritumIndikativ(personNumber))
 
     case .plusquamperfektKonjunktivII(let personNumber):
-      return conjugateCompoundTense(verb: verb, infinitiv: infinitiv, auxiliaryInfinitiv: (auxiliary ?? verb.auxiliary).verb, auxiliaryGroup: .präteritumKonjunktivII(personNumber))
+      return conjugateCompoundTense(infinitiv: infinitiv, readingIndex: readingIndex, auxiliaryInfinitiv: (auxiliary ?? reading.auxiliary).verb, auxiliaryGroup: .präteritumKonjunktivII(personNumber))
 
     case .futurIndikativ(let personNumber):
-      return conjugateCompoundTense(verb: verb, infinitiv: infinitiv, auxiliaryInfinitiv: "werden", auxiliaryGroup: .präsensIndikativ(personNumber), useInfinitivAsSecondPart: true)
+      return conjugateCompoundTense(infinitiv: infinitiv, readingIndex: readingIndex, auxiliaryInfinitiv: "werden", auxiliaryGroup: .präsensIndikativ(personNumber), useInfinitivAsSecondPart: true)
 
     case .futurKonjunktivI(let personNumber):
-      return conjugateCompoundTense(verb: verb, infinitiv: infinitiv, auxiliaryInfinitiv: "werden", auxiliaryGroup: .präsensKonjunktivI(personNumber), useInfinitivAsSecondPart: true)
+      return conjugateCompoundTense(infinitiv: infinitiv, readingIndex: readingIndex, auxiliaryInfinitiv: "werden", auxiliaryGroup: .präsensKonjunktivI(personNumber), useInfinitivAsSecondPart: true)
 
     case .futurKonjunktivII(let personNumber):
-      return conjugateCompoundTense(verb: verb, infinitiv: infinitiv, auxiliaryInfinitiv: "werden", auxiliaryGroup: .präteritumKonjunktivII(personNumber), useInfinitivAsSecondPart: true)
+      return conjugateCompoundTense(infinitiv: infinitiv, readingIndex: readingIndex, auxiliaryInfinitiv: "werden", auxiliaryGroup: .präteritumKonjunktivII(personNumber), useInfinitivAsSecondPart: true)
     }
   }
 
-  private static func conjugateSimpleTense(verb: Verb, conjugationgroup: Conjugationgroup) -> Result<String, ConjugatorError> {
-    let (newStamm, isFullOverride) = applyAblaut(stamm: verb.stamm, verb: verb, conjugationgroup: conjugationgroup)
+  private static func conjugateSimpleTense(reading: Reading, conjugationgroup: Conjugationgroup) -> Result<String, ConjugatorError> {
+    let (newStamm, isFullOverride) = applyAblaut(stamm: reading.stamm, reading: reading, conjugationgroup: conjugationgroup)
     if isFullOverride {
       return .success(newStamm)
     }
-    let rawEnding = conjugationgroup.ending(family: verb.family)
+    let rawEnding = conjugationgroup.ending(family: reading.family)
     let adjustedEnding = adjustEndingForPhonology(
       stamm: newStamm,
       ending: rawEnding,
-      verb: verb,
+      reading: reading,
       conjugationgroup: conjugationgroup,
-      stammIsAblauted: newStamm != verb.stamm
+      stammIsAblauted: newStamm != reading.stamm
     )
     return .success(newStamm + adjustedEnding)
   }
 
   private static func conjugateCompoundTense(
-    verb: Verb,
     infinitiv: String,
+    readingIndex: Int,
     auxiliaryInfinitiv: String,
     auxiliaryGroup: Conjugationgroup,
     useInfinitivAsSecondPart: Bool = false
@@ -110,7 +120,10 @@ enum Conjugator {
     if useInfinitivAsSecondPart {
       secondPartResult = .success(infinitiv)
     } else {
-      secondPartResult = conjugate(infinitiv: infinitiv, conjugationgroup: .perfektpartizip)
+      // The participle must come from the same reading as the auxiliary, since a verb
+      // whose readings differ in family also differs in participle: hängen is gehangen
+      // intransitive but gehängt transitive.
+      secondPartResult = conjugate(infinitiv: infinitiv, conjugationgroup: .perfektpartizip, readingIndex: readingIndex)
     }
 
     switch (auxiliaryResult, secondPartResult) {
@@ -121,49 +134,49 @@ enum Conjugator {
     }
   }
 
-  private static func conjugateImperativ(verb: Verb, personNumber: PersonNumber) -> Result<String, ConjugatorError> {
-    let stamm = verb.stamm
+  private static func conjugateImperativ(reading: Reading, personNumber: PersonNumber) -> Result<String, ConjugatorError> {
+    let stamm = reading.stamm
 
     switch personNumber {
     case .secondSingular:
-      let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: .imperativ(.secondSingular))
+      let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, reading: reading, conjugationgroup: .imperativ(.secondSingular))
       if isFullOverride {
-        return .success(withSeparablePrefix(verb: verb, form: newStamm))
+        return .success(withSeparablePrefix(reading: reading, form: newStamm))
       }
 
-      let imperativStamm = newStamm != stamm ? newStamm : applyEToIStemChange(stamm: stamm, verb: verb)
+      let imperativStamm = newStamm != stamm ? newStamm : applyEToIStemChange(stamm: stamm, reading: reading)
 
       // A strong verb that changes its stem here keeps the bare imperative — gilt, sieh,
       // nimm — while an unchanged stem takes the epenthetic -e: arbeite, atme, finde.
       let needsE = imperativStamm == stamm && needsEpentheticE(stamm: imperativStamm)
       let form = needsE ? imperativStamm + "e" : imperativStamm
-      return .success(withSeparablePrefix(verb: verb, form: form))
+      return .success(withSeparablePrefix(reading: reading, form: form))
 
     case .secondPlural:
-      let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: .imperativ(.secondPlural))
+      let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, reading: reading, conjugationgroup: .imperativ(.secondPlural))
       if isFullOverride {
-        return .success(withSeparablePrefix(verb: verb, form: newStamm))
+        return .success(withSeparablePrefix(reading: reading, form: newStamm))
       }
       let ending = needsEpentheticE(stamm: newStamm) ? "et" : "t"
-      return .success(withSeparablePrefix(verb: verb, form: newStamm + ending))
+      return .success(withSeparablePrefix(reading: reading, form: newStamm + ending))
 
     case .firstPlural, .thirdPlural:
       let pronoun = personNumber == .firstPlural ? "wir" : "Sie"
-      let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: .imperativ(personNumber))
+      let (newStamm, isFullOverride) = applyAblaut(stamm: stamm, reading: reading, conjugationgroup: .imperativ(personNumber))
       if isFullOverride {
-        return .success(withSeparablePrefixAndPronoun(verb: verb, form: newStamm, pronoun: pronoun))
+        return .success(withSeparablePrefixAndPronoun(reading: reading, form: newStamm, pronoun: pronoun))
       }
-      let (konjStamm, konjOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: .präsensKonjunktivI(personNumber))
-      let form = konjOverride ? konjStamm : konjStamm + pluralEnding(verb: verb)
-      return .success(withSeparablePrefixAndPronoun(verb: verb, form: form, pronoun: pronoun))
+      let (konjStamm, konjOverride) = applyAblaut(stamm: stamm, reading: reading, conjugationgroup: .präsensKonjunktivI(personNumber))
+      let form = konjOverride ? konjStamm : konjStamm + pluralEnding(reading: reading)
+      return .success(withSeparablePrefixAndPronoun(reading: reading, form: form, pronoun: pronoun))
 
     case .firstSingular, .thirdSingular:
       return .failure(.personNumberNotSupported)
     }
   }
 
-  private static func applyEToIStemChange(stamm: String, verb: Verb) -> String {
-    switch verb.family {
+  private static func applyEToIStemChange(stamm: String, reading: Reading) -> String {
+    switch reading.family {
     case .strong(ablautGroup: let ablautKey, ablautStartIndex: let ablautStartIndex, ablautEndIndex: let ablautEndIndex),
     .mixed(ablautGroup: let ablautKey, ablautStartIndex: let ablautStartIndex, ablautEndIndex: let ablautEndIndex):
       if
@@ -190,28 +203,24 @@ enum Conjugator {
     }
   }
 
-  private static func withSeparablePrefix(verb: Verb, form: String) -> String {
-    switch verb.prefix {
-    case .separable(let prefix):
-      let prefixlessForm = String(form.dropFirst(prefix.count))
-      return prefixlessForm + " " + prefix
-    case .inseparable, .none:
+  private static func withSeparablePrefix(reading: Reading, form: String) -> String {
+    let run = reading.prefixes.separableRun
+    guard !run.isEmpty else {
       return form
     }
+    return String(form.dropFirst(run.count)) + " " + run
   }
 
-  private static func withSeparablePrefixAndPronoun(verb: Verb, form: String, pronoun: String) -> String {
-    switch verb.prefix {
-    case .separable(let prefix):
-      let prefixlessForm = String(form.dropFirst(prefix.count))
-      return prefixlessForm + " " + pronoun + " " + prefix
-    case .inseparable, .none:
+  private static func withSeparablePrefixAndPronoun(reading: Reading, form: String, pronoun: String) -> String {
+    let run = reading.prefixes.separableRun
+    guard !run.isEmpty else {
       return form + " " + pronoun
     }
+    return String(form.dropFirst(run.count)) + " " + pronoun + " " + run
   }
 
-  private static func applyAblaut(stamm: String, verb: Verb, conjugationgroup: Conjugationgroup) -> (stamm: String, isFullOverride: Bool) {
-    switch verb.family {
+  private static func applyAblaut(stamm: String, reading: Reading, conjugationgroup: Conjugationgroup) -> (stamm: String, isFullOverride: Bool) {
+    switch reading.family {
     case .strong(ablautGroup: let ablautKey, ablautStartIndex: let ablautStartIndex, ablautEndIndex: let ablautEndIndex),
     .mixed(ablautGroup: let ablautKey, ablautStartIndex: let ablautStartIndex, ablautEndIndex: let ablautEndIndex):
       if
@@ -235,16 +244,15 @@ enum Conjugator {
     }
   }
 
-  private static func perfektpartizipWithGeAndPrefix(verb: Verb, stamm: String, ending: String) -> String {
-    switch verb.prefix {
-    case .separable(let prefix):
-      let prefixlessStamm = String(stamm.dropFirst(prefix.count))
-      return prefix + "ge" + prefixlessStamm + ending
-    case .inseparable:
-      return stamm + ending
-    case .none:
-      return "ge" + stamm + ending
-    }
+  // The ge- of the Perfektpartizip sits immediately before the base stem, behind every
+  // prefix, and appears only when the prefix closest to that stem is separable or absent.
+  // That is why an+ge*hören gives angehört while ab+bauen gives abgebaut: both open with a
+  // separable prefix, but only the first has an inseparable one against the stem.
+  private static func perfektpartizipWithGeAndPrefix(reading: Reading, stamm: String, ending: String) -> String {
+    let prefixes = reading.prefixes
+    let head = String(stamm.prefix(prefixes.totalLength))
+    let base = String(stamm.dropFirst(prefixes.totalLength))
+    return head + (prefixes.takesGe ? "ge" : "") + base + ending
   }
 
   private static func adjustPerfektpartizipEnding(stamm: String, ending: String, family: Family) -> String {
@@ -297,23 +305,23 @@ enum Conjugator {
   // plural ending reduces to -n and its Präsenspartizip to -nd: wir ändern, ändernd.
   // The test is on the infinitive rather than the stem because verheeren's stem also
   // ends in er, and because tun and sein end in -n without the syllable: wir taten.
-  private static func hasSyllabicStamm(verb: Verb) -> Bool {
-    verb.infinitiv.hasSuffix("ern") || verb.infinitiv.hasSuffix("eln")
+  private static func hasSyllabicStamm(reading: Reading) -> Bool {
+    reading.infinitiv.hasSuffix("ern") || reading.infinitiv.hasSuffix("eln")
   }
 
-  private static func pluralEnding(verb: Verb) -> String {
-    hasSyllabicStamm(verb: verb) ? "n" : "en"
+  private static func pluralEnding(reading: Reading) -> String {
+    hasSyllabicStamm(reading: reading) ? "n" : "en"
   }
 
   private static func adjustEndingForPhonology(
     stamm: String,
     ending: String,
-    verb: Verb,
+    reading: Reading,
     conjugationgroup: Conjugationgroup,
     stammIsAblauted: Bool
   ) -> String {
     if ending == "en" {
-      return pluralEnding(verb: verb)
+      return pluralEnding(reading: reading)
     }
 
     let lastChar = stamm.last.map { String($0).lowercased() } ?? ""
@@ -325,7 +333,7 @@ enum Conjugator {
     // The endingless Präsens 3s survives only in strong verbs that change their stem
     // there: er hält, er tritt. An unablauted stem takes the ordinary ending, and a
     // t-final one takes the epenthetic -e below: ihr haltet, er findet.
-    if case .präsensIndikativ = conjugationgroup, ending == "t", lastChar == "t", stammIsAblauted, case .strong = verb.family {
+    if case .präsensIndikativ = conjugationgroup, ending == "t", lastChar == "t", stammIsAblauted, case .strong = reading.family {
       return ""
     }
 
@@ -333,7 +341,7 @@ enum Conjugator {
       return ending
     }
 
-    switch verb.family {
+    switch reading.family {
     case .weak, .ieren:
       switch conjugationgroup {
       case .präteritumIndikativ, .präteritumKonjunktivII:

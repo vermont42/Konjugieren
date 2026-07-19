@@ -5,7 +5,15 @@ import SwiftUI
 struct VerbView: View {
   let verb: Verb
   @Environment(\.horizontalSizeClass) private var sizeClass
+  @State private var readingIndex = 0
   private var settings: Settings { Current.settings }
+
+  /// The reading the screen is currently showing. Every piece of metadata below — family,
+  /// auxiliary, prefix, ablaut group — belongs to the reading rather than to the verb,
+  /// because hängen is strong in one reading and weak in the other.
+  private var reading: Reading {
+    verb.reading(at: readingIndex) ?? verb.primaryReading
+  }
 
   private func displayName(for group: Conjugationgroup) -> String {
     group.displayName(lang: settings.conjugationgroupLang)
@@ -38,16 +46,22 @@ struct VerbView: View {
             .germanPronunciation()
             .speakOnTap(verb.infinitiv.inUserRegion)
 
-          Text(verb.translation)
-            .font(.title2)
-            .fontDesign(.serif)
-            .englishPronunciation()
-            .speakOnTap(verb.translation, localeString: UttererLocale.english)
+          // The picker's segments already carry the glosses, so a separate translation line
+          // would print the selected one twice.
+          if verb.hasMultipleReadings {
+            readingPicker
+          } else {
+            Text(reading.translation)
+              .font(.title2)
+              .fontDesign(.serif)
+              .englishPronunciation()
+              .speakOnTap(reading.translation, localeString: UttererLocale.english)
+          }
 
           HStack(spacing: 8) {
             metadataPill(tint: .customYellow) {
-              Label(verb.family.displayName, systemImage: "tag")
-                .accessibilityLabel(Text(verbatim: verb.family.displayName))
+              Label(reading.family.displayName, systemImage: "tag")
+                .accessibilityLabel(Text(verbatim: reading.family.displayName))
                 .englishPronunciation()
             }
             metadataPill(tint: .customRed) {
@@ -66,26 +80,26 @@ struct VerbView: View {
           }
           .font(.subheadline)
 
-          if verb.auxiliaryIsRegional {
+          if reading.auxiliaryIsRegional {
             Text(L.Region.southernNote(example: southernAuxiliaryExample))
               .font(.caption)
               .foregroundStyle(.secondary)
               .germanPronunciation(forReal: UserLocale.isGerman)
           }
 
-          if verb.prefix != .none || verb.ablautGroup != nil {
+          if reading.prefix != .none || reading.ablautGroup != nil {
             HStack(spacing: 8) {
-              if case .separable = verb.prefix {
+              if case .separable = reading.prefix {
                 metadataPill(tint: .customRed) {
                   Label(L.BrowseableFamily.separable, systemImage: "arrow.left.arrow.right")
                 }
-              } else if case .inseparable = verb.prefix {
+              } else if case .inseparable = reading.prefix {
                 metadataPill(tint: .customRed) {
                   Label(L.BrowseableFamily.inseparable, systemImage: "link")
                 }
               }
 
-              if let ablautGroup = verb.ablautGroup {
+              if let ablautGroup = reading.ablautGroup {
                 metadataPill(tint: .customYellow, bordered: true) {
                   Label(ablautGroup.inUserRegion, systemImage: "figure.and.child.holdinghands")
                     .accessibilityLabel(Text(verbatim: ablautGroup.inUserRegion))
@@ -168,6 +182,63 @@ struct VerbView: View {
     }
   }
 
+  // A verb whose readings differ in meaning shows one conjugation table at a time, because
+  // the readings genuinely inflect differently and showing both at once would invite reading
+  // a row from the wrong paradigm.
+  //
+  // Deliberately not a segmented Picker, for two reasons found by inspection. UISegmentedControl
+  // renders every segment on one line and truncates the overflow, and these labels are glosses
+  // of arbitrary length — antreten's "take up (office), begin (a journey)" lost half of itself,
+  // which defeats the point of naming the readings at all. It also exposed itself to VoiceOver
+  // as an AXTabGroup with no children, so the segments could not be reached by label.
+  //
+  // Capsules sit side by side while they fit on one line each and stack full-width when they do
+  // not, so a long gloss wraps instead of truncating. ViewThatFits chooses by measuring the
+  // single-line variant, which is why that one pins .lineLimit(1).
+  //
+  // Nothing accessibility-related belongs on the container. Both a label on the Picker this
+  // replaced and an .accessibilityElement(children: .contain) plus .accessibilityLabel here
+  // collapsed the whole control into one element named "Meaning", leaving VoiceOver no way to
+  // tell the readings apart — the exact failure the control exists to avoid. The buttons name
+  // themselves by their glosses and carry .isSelected, which is what a user needs.
+  private var readingPicker: some View {
+    ViewThatFits(in: .horizontal) {
+      HStack(spacing: 8) {
+        readingButtons(lineLimit: 1)
+      }
+      VStack(alignment: .leading, spacing: 8) {
+        readingButtons(lineLimit: nil)
+      }
+    }
+    .englishPronunciation()
+  }
+
+  @ViewBuilder
+  private func readingButtons(lineLimit: Int?) -> some View {
+    ForEach(Array(verb.readings.enumerated()), id: \.offset) { index, reading in
+      let isSelected = index == readingIndex
+      Button {
+        readingIndex = index
+      } label: {
+        Text(verbatim: reading.translation)
+          .font(.subheadline)
+          .lineLimit(lineLimit)
+          .multilineTextAlignment(.leading)
+          .fixedSize(horizontal: false, vertical: true)
+          .foregroundStyle(isSelected ? Color.customBackground : .primary)
+          .padding(.horizontal, 12)
+          .padding(.vertical, 6)
+          .background(isSelected ? Color.customYellow : Color.customYellow.opacity(0.08))
+          .clipShape(Capsule())
+          .overlay {
+            Capsule().strokeBorder(Color.customYellow.opacity(isSelected ? 0 : 0.4), lineWidth: 1.5)
+          }
+      }
+      .buttonStyle(.plain)
+      .accessibilityAddTraits(isSelected ? [.isButton, .isSelected] : .isButton)
+    }
+  }
+
   @ViewBuilder
   private var conjugationSections: some View {
     ConjugationSectionView(
@@ -206,19 +277,19 @@ struct VerbView: View {
   // that a user learns the other exists rather than seeing only whichever the setting picked.
   // The setting still decides which auxiliary the conjugation table and the quiz use.
   private var auxiliaryPillText: String {
-    guard verb.auxiliaryIsRegional else {
-      return verb.auxiliary.verb
+    guard reading.auxiliaryIsRegional else {
+      return reading.auxiliary.verb
     }
     let north = Region.north
     let south: [Region] = [.austria, .switzerland]
     let southFlags = south.map(\.flag).joined()
-    return "\(verb.regionalAuxiliary(in: north).verb) \(north.flag)  ·  \(verb.regionalAuxiliary(in: .austria).verb) \(southFlags)"
+    return "\(reading.regionalAuxiliary(in: north).verb) \(north.flag)  ·  \(reading.regionalAuxiliary(in: .austria).verb) \(southFlags)"
   }
 
   // VoiceOver must not read the flags as "flag of Germany, flag of Austria" mid-verb, so the
   // spoken label names the varieties instead of showing the glyphs.
   private var auxiliaryAccessibilityLabel: String {
-    verb.auxiliaryIsRegional ? L.Region.auxiliaryVariesLabel : verb.auxiliary.verb
+    reading.auxiliaryIsRegional ? L.Region.auxiliaryVariesLabel : reading.auxiliary.verb
   }
 
   // A concrete example of the sein-Perfekt for the southern-German note, e.g. "ist gestanden".
@@ -228,7 +299,8 @@ struct VerbView: View {
     RegionalConjugator.conjugateUnsafely(
       infinitiv: verb.infinitiv,
       conjugationgroup: .perfektIndikativ(.thirdSingular),
-      region: .austria
+      region: .austria,
+      readingIndex: readingIndex
     ).lowercased()
   }
 
@@ -250,7 +322,7 @@ struct VerbView: View {
   }
 
   private func conjugate(_ group: Conjugationgroup) -> String {
-    switch RegionalConjugator.conjugate(infinitiv: verb.infinitiv, conjugationgroup: group) {
+    switch RegionalConjugator.conjugate(infinitiv: verb.infinitiv, conjugationgroup: group, readingIndex: readingIndex) {
     case .success(let form):
       return form
     case .failure:
@@ -359,13 +431,18 @@ struct ConjugationSectionView: View {
   NavigationStack {
     VerbView(verb: Verb(
       infinitiv: "gehen",
-      translation: "go",
-      family: .strong(ablautGroup: "gehen", ablautStartIndex: 0, ablautEndIndex: 2),
-      auxiliary: .sein,
       frequency: 10,
-      prefix: .none,
       frequencyIcon: "figure.walk",
-      auxiliaryIsRegional: false
+      readings: [
+        Reading(
+          infinitiv: "gehen",
+          translation: "go",
+          family: .strong(ablautGroup: "gehen", ablautStartIndex: 0, ablautEndIndex: 2),
+          auxiliary: .sein,
+          prefixes: [],
+          auxiliaryIsRegional: false
+        )
+      ]
     ))
   }
 }

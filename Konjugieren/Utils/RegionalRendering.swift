@@ -35,13 +35,18 @@ enum RegionalConjugator {
   static func conjugate(
     infinitiv: String,
     conjugationgroup: Conjugationgroup,
-    region: Region = Current.settings.region
+    region: Region = Current.settings.region,
+    readingIndex: Int = 0
   ) -> Result<String, ConjugatorError> {
-    let auxiliary = Verb.verbs[infinitiv]?.regionalAuxiliary(in: region)
+    // The auxiliary is read off the selected reading rather than the verb, because the two
+    // kinds of auxiliary variation compose: schmelzen picks its auxiliary by meaning, and a
+    // regionally conditioned verb picks its own by where the speaker lives.
+    let auxiliary = Verb.verbs[infinitiv]?.reading(at: readingIndex)?.regionalAuxiliary(in: region)
     let result = Conjugator.conjugate(
       infinitiv: infinitiv,
       conjugationgroup: conjugationgroup,
-      auxiliary: auxiliary
+      auxiliary: auxiliary,
+      readingIndex: readingIndex
     )
     switch result {
     case .success(let conjugation):
@@ -54,9 +59,10 @@ enum RegionalConjugator {
   static func conjugateUnsafely(
     infinitiv: String,
     conjugationgroup: Conjugationgroup,
-    region: Region = Current.settings.region
+    region: Region = Current.settings.region,
+    readingIndex: Int = 0
   ) -> String {
-    switch conjugate(infinitiv: infinitiv, conjugationgroup: conjugationgroup, region: region) {
+    switch conjugate(infinitiv: infinitiv, conjugationgroup: conjugationgroup, region: region, readingIndex: readingIndex) {
     case .success(let conjugation):
       return conjugation
     case .failure(let error):

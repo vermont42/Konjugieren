@@ -600,3 +600,146 @@ sitzen shows ist gesessen and liegen ist gelegen, and it is forced to a sein-wri
 northern user, who is exactly the one reading the note, sees the form the note is describing. 
 
 And because new code is cheap, Josh asked for a full Info article on the Duden, slotted just above the Game entry: Konrad Duden the Gymnasium headmaster, the 1880 dictionary, the 1901 Berlin conference, the 1955–1996 official-arbiter era and the Rat für deutsche Rechtschreibung that superseded it, the Webster eponym parallel, and a three-references coda noting that the Österreichisches Wörterbuch controls in Austria while Switzerland keeps no dictionary of its own and follows the Duden, ß-lessly. It closes by pointing back at the very regional note that prompted it.
+
+## Readings, double prefixes, and the metric that was lying (2026-07-19)
+
+Step 5 of the roadmap: `prompts/dual_auxiliary.md`, the pass that lets one verb carry more than
+one meaning. The model was already decided — nested `<reading>` elements, Josh's call the same
+day — so this was a build, not a design. It did not stay that way, because the thing the pass
+needed most turned out to be a bug in how we were measuring ourselves.
+
+### The cheap half
+
+The mechanical part went exactly as the prompt predicted. `Verbs.xml` grew a `<reading>` wrapper
+around every one of its 990 verbs, with `in`, `fr`, and `ic` staying on `verb` and `tn`, `fa`,
+`ag`, `ay` moving inside. The migration script changed no attribute *value*, and the proof is
+that the whole test suite stayed green across it: every `ConjugatorTests` expectation, all of
+them written before readings existed, still held. `Verb` kept `translation`, `family`,
+`auxiliary`, and `prefix` as computed properties returning the primary reading, so of the dozens
+of call sites across views, widgets, intents, and the game, exactly two needed touching — the
+two that build a `Verb` literally.
+
+The one Swift trap worth recording: `Prefix` has a case named `none`, so `switch prefixes.last`
+binds `.none` to `Optional.none` and the compiler cheerfully accepts a switch that means
+something else entirely. Unwrap first, then switch.
+
+### The half that actually paid
+
+The prompt said to do the double-prefix grammar in the same migration, on the reasoning that
+`reading` gains its own `in` and you only get to define that grammar once. That was right, and
+it undersold it. Before the pipeline ran a single new verb, widening `in` to admit repeated
+markers — `an+ge*hören`, `nach+voll*ziehen`, `auf+be*wahren` — fixed **7 of the 10 shipping verbs
+that disagreed with Wiktionary**. The app had been producing *angegehört*, *aufgebewahrt*,
+*zugebereitet*. The fix is one predicate: *ge-* sits immediately before the base stem and appears
+only when the prefix touching that stem is separable or absent. That replaces a three-case switch
+with a test on the last element of a list, and it is why `ab+bauen` keeps its *ge-* while
+`an+ge*hören` does not, even though both open with a separable prefix.
+
+Then `hängen`, the class-4 verb the prompt names, went to two readings — strong *hing/gehangen*
+intransitive, weak *hängte/gehängt* transitive — and the count went to 6. Down from 14.
+
+### The metric was lying, and it took writing a test to notice
+
+Here is the part worth remembering. Writing `ConjugatorTests` cases for the new readings, I
+asserted `schwimmen`'s participle and got `geschwUen`. Not a mixed-case mistake — a genuinely
+broken conjugation, in a verb the pipeline had been calling **verified** all along.
+
+The cause is in how `classify()` works. It tries the shipped encoding first, and if that fails it
+keeps going through other hypotheses. If one of *those* succeeds, the verb is reported verified.
+The at-odds count then added only the verbs whose repair needed an ablaut group that does not
+ship — which caught `hängen`, `schaffen`, `schreien`, `vergleichen`, and nothing else. A verb the
+classifier could rescue using a group that *already ships* looked perfect from the outside while
+the app conjugated it wrongly.
+
+Adding a `shippedEncodingFailed` flag turned the light on. **67 shipping verbs.** Most were
+missing a prefix marker outright, and the app was really, verifiably emitting *geanlegt*,
+*gebeantwortet*, *gebegrüßt*, *geanzeigt*. I probed six of them through `Conjugator` directly
+before believing it. Others were subtler: `beschreiben` shipped as a weak verb, so *hat
+beschreibt*; `scheinen` carried the `heißen` group, which has no participle ablaut, so
+*gescheint*; `schweigen`'s ablaut region spanned `eig` instead of the diphthong, so *schwIEen*;
+`einigen` shipped as `ein+igen` and `ernten` as `er*nten`, neither of which has a prefix at all.
+
+All 67 are fixed. Three genuine separable/inseparable homographs fell out of the same list and
+became two-reading verbs — `umgehen`, `umstellen`, and `unterstellen`, the last of which
+`dual_auxiliary.md` had predicted by name.
+
+The lesson generalizes past this repo: a verification harness that retries on failure will report
+success unless you separately record *which* hypothesis won. The retry is what makes it useful for
+classifying new verbs and exactly what made it useless as a regression test.
+
+### What the pipeline still cannot tell you
+
+Worth stating plainly, because it is counterintuitive for a pass whose headline is auxiliaries:
+`VerbClassificationTests` compares only the simple tenses, the two participles, and the Imperativ.
+It never checks a compound tense. **The auxiliary is invisible to it.** Every `ay` value in the
+corpus could be wrong and the at-odds count would not move.
+
+So the 38 verbs that gained a second reading here — the `haben`/`sein` alternations of `brechen`,
+`fahren`, `schwimmen`, `treten`, `übersetzen` and the rest — are editorial work, sourced from
+kaikki's per-sense glosses but assigned by the ordinary rules (intransitive change of state and
+directional motion take sein; transitive and atelic activity take haben). kaikki cannot do it
+mechanically: it tags nearly every one of these `haben`, `sein`, **and** `haben or sein` at once,
+because a Wiktionary table aggregates every sense of the lemma. These are guarded by
+`ConjugatorTests` cases on `perfektIndikativ`, and by nothing else.
+
+That aggregation also bites the metric from the other side. A two-reading verb whose Wiktionary
+table happens to describe the *second* reading now registers as an encoding failure that is not
+one, so the summarizer records `readingCount` and excludes them, naming them instead.
+
+### The UI
+
+Josh chose a picker over stacked sections: one conjugation table at a time, switched by gloss.
+Showing both at once would have invited reading a row from the wrong paradigm, which is the failure
+mode the whole feature exists to prevent. The control carries the glosses, so the separate
+translation line is suppressed when a verb has more than one — otherwise the selected gloss prints
+twice. Every piece of metadata below it follows the selection, which matters more than it sounds:
+switching `hängen`'s reading flips the family pill from Strong to Weak and makes the ablaut-group
+pill disappear, because the weak reading genuinely has no group.
+
+The quiz picks one reading per question and shows that reading's gloss, so `hängen` in the
+Präteritum has one right answer rather than two. Accepting both was tempting and wrong: it would
+never mark a learner wrong and would teach neither paradigm.
+
+It shipped first as a segmented `Picker`, and Josh caught the problem on device within minutes:
+*antreten*'s second gloss, "take up (office), begin (a journey)", truncated to "take up (office),
+begin (…". `UISegmentedControl` renders every segment on one line and offers no multiline option,
+which makes it simply the wrong container for text of arbitrary length. It is now capsule `Button`s
+inside a `ViewThatFits` — side by side while each fits on one line, stacked full-width when not, so
+a long gloss wraps instead of truncating.
+
+That change fixed the accessibility problem for free, which is the tidiest thing that happened all
+day. The segmented picker had exposed itself as an `AXTabGroup` with a null label and no children,
+so its segments could not be reached by label at all and verification had to tap coordinates. Real
+buttons appear in the tree under their own glosses, and `tap_label.sh "hang, suspend something"`
+now works.
+
+Worth recording what *not* to do, because I got it wrong twice in two different shapes. Putting
+`.accessibilityLabel` on the `Picker` made things strictly worse — a label on a container replaces
+its children's labels. Replacing the picker and then reaching for
+`.accessibilityElement(children: .contain)` plus `.accessibilityLabel` flattened it again, and the
+tree showed exactly one element named "Meaning". The buttons name themselves by their glosses;
+naming the group costs the ability to tell the readings apart, which is the whole point.
+
+### Numbers
+
+Shipping corpus: **14 verbs at odds with Wiktionary → 8**, but the two numbers are not measuring
+the same thing, and that is the point. Under the old, permissive metric the corpus would now read
+**6**, and it would have read 6 before this pass too while 67 verbs were quietly broken. Under the
+new metric the starting position was not 14 but 81.
+
+What is left is three modals that resist the pipeline (`sollen`, `bedürfen`, `vermögen`), three
+verbs needing ablaut groups that do not ship (`schaffen`, `schreien`, `vergleichen`), and two
+genuinely ambiguous ones: `helfen`, where Wiktionary wants the `sterben` group's *hülfe* over the
+shipped `sprechen` group's *hälfe*, and `verstoßen`, where the shipped encoding has the Präsens
+umlaut (*du verstößt*) and Wiktionary's table does not. Both want a human. Separately, four
+two-reading verbs (`bewegen`, `scheiden`, `umstellen`, `unterstellen`) are excluded and named by
+the summarizer as the artifact described above.
+
+Incoming: 6,857 → 6,958 verified. Smaller than hoped, and worth being precise about why. The
+double-prefix bucket in the summary fell from 1,036 to 145, but most of that mass moved rather than
+resolved: those verbs' first element (`acht`, `abhanden`) simply is not in the shipped prefix
+inventory, so no hypothesis ever proposed separating it. The old label called all of them double
+prefixes, which after this pass would have sent the next session to rewrite code that is already
+correct. The summarizer now distinguishes the two by where Wiktionary puts its own *ge-*: absent
+entirely means a real double prefix, infixed means an unrecognized particle. **747 verbs are
+waiting on a wider prefix inventory**, which belongs to the import step, not here.

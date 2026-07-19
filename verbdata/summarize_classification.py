@@ -19,6 +19,7 @@ DEFAULT_OUT = REPO / "verbdata" / "classification-summary.md"
 MISMATCH = re.compile(r"^(?P<slot>[^:]+): expected (?P<expected>.*), got (?P<got>.+)$")
 
 DOUBLE_PREFIX = "Perfektpartizip: double prefix (separable over inseparable) is unrepresentable"
+UNKNOWN_PARTICLE = "First element is not in the shipped prefix inventory, so no hypothesis separates it"
 ERN_ELN_FINITE = "-ern/-eln: Präsens 1p/3p and Konjunktiv I 1p/3p take -n, not -en"
 ERN_ELN_PARTICIPLE = "-ern/-eln: Präsenspartizip takes -nd, not -end"
 IMPERATIV_2P = "Imperativ 2p: missing epenthetic -e after a d/t stem"
@@ -62,6 +63,21 @@ def cause(entry):
     is tested first. It is identified by shape rather than by regex over the whole
     line — Conjugator prepending a ge- that Wiktionary does not have is the signature,
     and matching "got ge…" alone would sweep in every ordinary Perfektpartizip miss.
+
+    That signature alone is ambiguous, though, and was silently conflating two causes
+    until the double-prefix grammar landed on 2026-07-19. Both end with Conjugator
+    emitting a leading ge-, but for opposite reasons, and where Wiktionary puts its own
+    ge- tells them apart:
+
+      no ge at all in the expected form   angehört      the prefix against the stem is
+                                                        inseparable — a real double prefix
+      ge infixed in the expected form     achtgegeben   the first element separates but is
+                                                        not in the inventory, so every
+                                                        hypothesis was rejected and the
+                                                        no-prefix fallback prepended ge-
+
+    The second is a gap in the prefix inventory, not in the grammar, and calling it a
+    double prefix would send the next session to rewrite code that is already correct.
     """
     if entry["mismatches"] == ["no hypothesis produced a conjugation"]:
         return "No hypothesis produced a conjugation"
@@ -73,8 +89,11 @@ def cause(entry):
         if mismatch["slot"] != "perfektpartizip":
             continue
         expected = mismatch["expected"].split("/")
-        if mismatch["got"].startswith("ge") and not any(form.startswith("ge") for form in expected):
-            return DOUBLE_PREFIX
+        if not mismatch["got"].startswith("ge") or any(form.startswith("ge") for form in expected):
+            continue
+        if any("ge" in form[1:] for form in expected):
+            return UNKNOWN_PARTICLE
+        return DOUBLE_PREFIX
 
     for mismatch in parsed:
         if re.search(r"(er|el)en$", mismatch["got"]) and mismatch["slot"].endswith(("fp", "tp")):
@@ -167,15 +186,44 @@ def main():
                "Wiktionary today. That number is a bug count, not a pipeline score.")
     out.append("")
 
-    regrouped = [entry for entry in verified(shipping) if entry["ablautGroupIsNew"]]
+    # A shipping verb can be at odds with Wiktionary in three ways, and only the first is
+    # obvious. Counting just the first two undercounted for months: see the note below.
+    # A verb with more than one reading is excluded: the classifier tests only the primary
+    # reading, against a Wiktionary table that aggregates every sense, so a verb whose table
+    # describes the second reading fails for a reason that is not a defect.
+    multi_reading = [entry for entry in verified(shipping)
+                     if entry.get("shippedEncodingFailed") and entry.get("readingCount", 1) > 1]
+    miscounted = [entry for entry in verified(shipping)
+                  if entry.get("shippedEncodingFailed") and entry.get("readingCount", 1) == 1]
+    regrouped = [entry for entry in miscounted if entry["ablautGroupIsNew"]]
+    rescued = [entry for entry in miscounted if not entry["ablautGroupIsNew"]]
     strong_shipping = [entry for entry in verified(shipping) if entry.get("family") in {"s", "m"}]
-    out.append(f"A quieter defect: {len(regrouped)} of the {len(strong_shipping)} shipping strong "
-               f"and mixed verbs verified only by proposing an ablaut group that does not ship, "
-               f"which means the group they do ship with is wrong. Total shipping verbs at odds "
-               f"with Wiktionary: {len(shipping) - len(verified(shipping)) + len(regrouped)}.")
+    at_odds = len(shipping) - len(verified(shipping)) + len(miscounted)
+
+    out.append(f"A quieter defect: {len(miscounted)} shipping verbs verified only after the "
+               f"classifier abandoned the encoding in Verbs.xml and found a different one, "
+               f"which means the encoding they ship with is wrong. Of those, {len(regrouped)} "
+               f"of the {len(strong_shipping)} shipping strong and mixed verbs need an ablaut "
+               f"group that does not ship, and {len(rescued)} are repairable with a group that "
+               f"already does. Total shipping verbs at odds with Wiktionary: {at_odds}.")
     out.append("")
-    out.append("Examples: " + ", ".join(entry["word"] for entry in regrouped[:8]) + ".")
+    out.append("The second kind used to be invisible. Until 2026-07-19 this count added only "
+               "the verbs needing a *new* ablaut group, so a verb the classifier could rescue "
+               "with an existing one — beschreiben shipped weak, scheinen without its "
+               "participle ablaut, schwimmen with its region spanning a whole consonant "
+               "cluster — was reported verified while the app went on conjugating it wrongly. "
+               "The `shippedEncodingFailed` flag now catches both.")
     out.append("")
+    if miscounted:
+        out.append("Examples: " + ", ".join(entry["word"] for entry in miscounted[:8]) + ".")
+        out.append("")
+    if multi_reading:
+        out.append(f"Excluded from that count: {len(multi_reading)} verbs with more than one "
+                   f"reading ({', '.join(entry['word'] for entry in multi_reading)}). The "
+                   f"classifier tests only the primary reading against a table that aggregates "
+                   f"every sense, so these fail for a reason that is not a defect. Judge them "
+                   f"by hand, or by the ConjugatorTests cases that pin each reading.")
+        out.append("")
 
     out.append("## Incoming verbs by family")
     out.append("")

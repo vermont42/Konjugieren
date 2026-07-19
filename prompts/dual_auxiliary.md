@@ -2,6 +2,30 @@
 
 ## Status
 
+**Executed 2026-07-19.** See `docs/blog_notes.md` for what changed during execution. Three
+things went differently from the plan below, all worth knowing before reading it:
+
+1. **The double-prefix grammar was the larger win, not the auxiliaries.** Widening `in` to
+   admit repeated markers fixed 7 of the 10 shipping verbs at odds with Wiktionary before a
+   single reading was added. The plan treated it as a rider; it was the main event.
+2. **The regression oracle was undercounting, and this pass found it.** `classify()` retries
+   on failure, so a verb whose shipped encoding was wrong but which some other hypothesis
+   could reproduce was reported *verified*. That hid **67 broken shipping verbs** — the app
+   was emitting *geanlegt*, *gebeantwortet*, *gebegrüßt*. All are fixed, and a
+   `shippedEncodingFailed` flag now closes the gap. The at-odds figures quoted below predate
+   this and are not comparable to current ones.
+3. **The pipeline cannot check an auxiliary at all.** Its expectations cover only the simple
+   tenses, the participles, and the Imperativ — never a compound tense. The plan's instruction
+   to verify this pass against the at-odds count does not work for the `ay` attribute;
+   `ConjugatorTests` cases on `perfektIndikativ` are the only guard.
+
+38 verbs gained a second reading rather than the planned 48. The difference is verbs kaikki
+reports as dual-auxiliary for reasons that are not a sense split — *anfangen*, *anstreben*,
+*auftauchen*, *bekommen*, *belaufen*, *streben*, *vorliegen*, *wandern* — which take one
+auxiliary in ordinary usage and were left single-reading deliberately.
+
+Original plan follows.
+
 **Do this before importing verbs.** Reversed 2026-07-19, having previously been deferred.
 
 The original reasoning was that this pass must not block the corpus expansion in

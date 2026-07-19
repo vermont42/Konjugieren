@@ -30,41 +30,44 @@ struct Verb: Identifiable, Hashable {
 
   var id: String { infinitiv }
   let infinitiv: String
-  let translation: String
-  let family: Family
-  let auxiliary: Auxiliary
   let frequency: Int
-  let prefix: Prefix
   let frequencyIcon: String
 
-  /// True for the handful of verbs whose Perfekt auxiliary depends on where the speaker
-  /// lives rather than on what the verb means: stehen, sitzen, liegen and their prefixed
-  /// derivatives take haben in the northern standard and sein in Austria and Switzerland.
-  /// Verbs whose auxiliary varies by meaning are a separate problem; see
-  /// `prompts/dual_auxiliary.md`.
-  let auxiliaryIsRegional: Bool
+  /// Ordered, never empty. Most verbs have exactly one; a verb whose meaning splits the
+  /// auxiliary, the paradigm, or the prefix has more. See `Reading`.
+  let readings: [Reading]
+
+  /// The reading that answers for the verb wherever a single answer is required — the
+  /// browse list, the widget, deeplinks, and anything else with room for one gloss.
+  var primaryReading: Reading {
+    readings.first ?? Reading(
+      infinitiv: infinitiv,
+      translation: "",
+      family: .weak,
+      auxiliary: .haben,
+      prefixes: [],
+      auxiliaryIsRegional: false
+    )
+  }
+
+  var hasMultipleReadings: Bool { readings.count > 1 }
+
+  func reading(at index: Int) -> Reading? {
+    readings.indices.contains(index) ? readings[index] : nil
+  }
+
+  var translation: String { primaryReading.translation }
+  var family: Family { primaryReading.family }
+  var auxiliary: Auxiliary { primaryReading.auxiliary }
+  var prefix: Prefix { primaryReading.prefix }
+  var auxiliaryIsRegional: Bool { primaryReading.auxiliaryIsRegional }
+  var stamm: String { primaryReading.stamm }
+  var ablautGroup: String? { primaryReading.ablautGroup }
 
   /// The auxiliary a speaker of `region` uses. `auxiliary` itself always holds the northern
   /// standard value, so that Conjugator and the classify-and-verify oracle stay region-free.
   func regionalAuxiliary(in region: Region) -> Auxiliary {
-    auxiliaryIsRegional ? region.regionalAuxiliary : auxiliary
-  }
-
-  var stamm: String {
-    if infinitiv.hasSuffix("en") {
-      return String(infinitiv.dropLast(2))
-    } else {
-      return String(infinitiv.dropLast())
-    }
-  }
-
-  var ablautGroup: String? {
-    switch family {
-    case .strong(let group, _, _), .mixed(let group, _, _):
-      return group
-    case .weak, .ieren:
-      return nil
-    }
+    primaryReading.regionalAuxiliary(in: region)
   }
 
   static func endingIsValid(infinitiv: String) -> Bool {

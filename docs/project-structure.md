@@ -56,7 +56,7 @@ Konjugieren/
 │   ├── LanguageModelServiceDummy.swift # No-op stub for tests/unsupported devices
 │   ├── LanguageModelServiceReal.swift  # FoundationModels implementation for AI tutoring
 │   ├── PersonNumber.swift      # 1s, 2s, 3s, 1p, 2p, 3p with localized pronouns
-│   ├── Prefix.swift            # Separable/inseparable prefix enum
+│   ├── Prefix.swift            # Separable/inseparable prefix enum ([Prefix] helpers live in Reading.swift)
 │   ├── PrefixMeaning.swift     # Prefix meanings with PIE etymologies
 │   ├── Quiz.swift              # @Observable quiz state: questions, timer, scoring
 │   ├── QuizDifficulty.swift    # Setting enum: regular vs ridiculous
@@ -68,8 +68,9 @@ Konjugieren/
 │   ├── TabSelection.swift      # TabView selection enum for programmatic tab switching
 │   ├── ThirdPersonPronounGender.swift  # Setting enum: er/sie/es preference
 │   ├── TutorChatHistory.swift  # Persistence for chat messages with the AI tutor
-│   ├── Verb.swift              # Verb model with stamm/ablaut-region computation
-│   ├── VerbParser.swift        # XMLParser delegate that parses Verbs.xml
+│   ├── Reading.swift           # One sense of a verb: gloss, family, auxiliary, prefixes
+│   ├── Verb.swift              # Lemma: frequency, icon, and an ordered list of readings
+│   ├── VerbParser.swift        # XMLParser delegate for Verbs.xml, incl. the `in` marker grammar
 │   ├── Verbs.xml               # 990 verb definitions with markers and metadata
 │   └── World.swift             # @Observable DI container with environment selection
 ├── Utils/

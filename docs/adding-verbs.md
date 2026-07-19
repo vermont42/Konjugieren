@@ -6,25 +6,70 @@ This guide covers the complete workflow for adding verbs to Konjugieren, includi
 
 ### Verbs.xml
 
-Defines verbs with their properties:
+Defines verbs with their properties. Each `<verb>` holds one or more `<reading>` children:
 
 ```xml
-<verb in="an+k^om^men" tn="arrive" ay="s" fr="255" ag="kommen" fa="s" />
+<verb in="an+k^om^men" fr="255" ic="walk.arrival">
+  <reading tn="arrive" fa="s" ag="kommen" ay="s" />
+</verb>
 ```
 
-| Attribute | Meaning | Required |
-|-----------|---------|----------|
-| `in` | Infinitive with markers (see below) | Yes |
-| `tn` | Translation | Yes |
-| `fa` | Family: `s`=strong, `m`=mixed, `w`=weak, `i`=ieren | Yes |
-| `fr` | Frequency rank (lower = more common) | Yes |
-| `ag` | Ablaut group name (required for strong/mixed) | Conditional |
-| `ay` | Auxiliary: `s`=sein, `h`=haben (default: haben) | No |
+Attributes on `verb` describe the lemma. Attributes on `reading` describe one sense, and are
+the ones that can vary between senses of the same verb.
+
+| Element | Attribute | Meaning | Required |
+|---|---|---|---|
+| `verb` | `in` | Infinitive with markers (see below) | Yes |
+| `verb` | `fr` | Frequency rank (lower = more common) | Yes |
+| `verb` | `ic` | Frequency-icon suffix | Yes |
+| `reading` | `tn` | Translation | Yes |
+| `reading` | `fa` | Family: `s`=strong, `m`=mixed, `w`=weak, `i`=ieren | Yes |
+| `reading` | `ag` | Ablaut group name (required for strong/mixed) | Conditional |
+| `reading` | `ay` | Auxiliary: `s`=sein, `h`=haben (default), `r`=regionally conditioned | No |
+| `reading` | `in` | Overrides the verb's `in` for this sense only | No |
 
 **Infinitive markers:**
 - `+` separates a separable prefix (e.g., `an+kommen` → ankommen)
 - `*` separates an inseparable prefix (e.g., `ver*stehen` → verstehen)
 - `^` marks ablaut region boundaries (e.g., `k^om^men` → ablaut region is "om")
+
+Markers may repeat, so a separable prefix can sit on an already-prefixed base:
+`an+ge*hören`, `nach+voll*ziehen`, `auf+be*wahren`. This matters because the *ge-* of the
+Perfektpartizip goes immediately before the base stem and only when the prefix touching that
+stem is separable or absent — so `ab+bauen` gives *abgebaut* but `an+ge*hören` gives
+*angehört*, not *angegehört*. Writing such a verb with a single marker is the defect that
+made seven shipping verbs disagree with Wiktionary until 2026-07-19.
+
+### Readings: when a verb needs more than one
+
+A German verb often differs across senses in more than the auxiliary, so the unit that varies
+is the reading. Add a second `<reading>` when a verb splits in any of these ways:
+
+| What differs | Example | How |
+|---|---|---|
+| Auxiliary and gloss only | *brechen*: break something (haben) / break apart (sein) | second `reading` with `ay="s"` |
+| The whole paradigm | *hängen*: strong *hing/gehangen* / weak *hängte/gehängt* | second `reading` with its own `fa`, `ag`, and `in` for the carets |
+| Prefix separability | *übersetzen*: `über*setzen` translate / `über+setzen` ferry across | second `reading` with its own `in` |
+
+Two rules govern reading-level `in`:
+
+- **It must strip to the same key as its parent.** `über*setzen` and `über+setzen` both strip
+  to `übersetzen`, which is what `Verb.verbs` and `Conjugator` resolve on. `VerbParser` calls
+  `fatalError` on a reading that strips to anything else, because that would create a verb
+  nothing could reach.
+- **The first reading is primary.** It drives the browse list, the widget, deeplinks, and
+  anything else with room for one answer, and `Verb.translation`, `.family`, `.auxiliary`, and
+  `.prefix` all return it.
+
+**Do not use a second reading for regional variation.** *stehen*, *sitzen*, and *liegen* take
+haben in the northern standard and sein in Austria and Switzerland, which is a difference in
+where the speaker lives, not in what the verb means. Two readings would tell every user both
+forms are available to them personally. Those verbs use `ay="r"`; see `prompts/regional_variation.md`.
+
+**The pipeline cannot check the auxiliary.** `VerbClassificationTests` compares only the
+simple tenses, the two participles, and the Imperativ against Wiktionary — never a compound
+tense — so `ay` is invisible to it. A wrong auxiliary will not move the at-odds count. Guard
+new auxiliaries with `ConjugatorTests` cases on `perfektIndikativ`.
 
 ### AblautGroups.xml
 
@@ -243,6 +288,20 @@ Verbs that naturally begin with "ge-" must use the inseparable prefix marker (`g
 ```
 
 Affected verbs include: gewinnen, gelingen, genießen, gebären, geschehen, gefallen, gelangen, geraten.
+
+The same reasoning extends one level out. When a separable prefix sits on top of such a verb,
+both markers are needed, because the inseparable one is what suppresses the *ge-*:
+
+```xml
+<!-- Wrong: produces "angegehört" -->
+<verb in="an+gehören" ...>
+
+<!-- Correct: produces "angehört" -->
+<verb in="an+ge*hören" ...>
+```
+
+This is not special to a `ge-` base — any inseparable prefix behaves the same way, which is
+why `auf+be*wahren` gives *aufbewahrt* and `weiter+ent*wickeln` gives *weiterentwickelt*.
 
 ### Common Ablaut Patterns for Reuse
 

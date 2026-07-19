@@ -94,7 +94,7 @@ struct QuizView: View {
           .germanPronunciation()
           .speakOnTap(question.verb.infinitiv.inUserRegion)
 
-        Text(verbatim: question.verb.translation)
+        Text(verbatim: question.translation)
           .font(.subheadline)
           .foregroundStyle(.secondary)
           .englishPronunciation()

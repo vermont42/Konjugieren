@@ -10,6 +10,46 @@ With no --lemmas, the infinitives are read from Konjugieren/Models/Verbs.xml
 The DWDS frequency endpoint is unauthenticated but occasionally returns an empty
 body; each lemma is retried up to three times with backoff before being recorded
 as a failure.
+
+## The infinitive is not a safe query, and a wrong answer looks like a right one
+
+The endpoint lemmatizes whatever it is given and returns *that* lemma's count. It takes
+no part-of-speech parameter — DDC syntax such as `runden with $p=VVINF` returns nulls —
+so an infinitive that is also an adjective or noun form silently resolves to the wrong
+word. Measured on 2026-07-19, eight of the 990 shipping verbs did exactly that:
+
+    runden   -> rund   (adj. "round")      23,421,973 hits, versus 516,850 for the verb
+    gleichen -> gleich (adj. "same")       18,062,655           828,309
+    lauten   -> laut   (adj. "loud")       12,046,082         3,183,195
+    weißen   -> weiß   (adj. "white")       4,262,331           615,024
+
+Nothing about the response says it is wrong; the hit count is real, it is just a
+different word's. Deriving rank from those would have put `runden` 25th of 990.
+
+**The fix: query an unambiguously verbal inflected form, then verify the lemma that comes
+back.** The endpoint lemmatizes `rundet`, `rundete`, and `gerundet` all to `runden` and
+returns the verb's own 516,850. The response's `lemma` field is the check — if it does not
+equal the verb you asked about, the answer is about something else and must be discarded.
+Rows repaired this way carry a `probe` field naming the form used, so the fix is reproducible.
+
+Choose the probe with care, because inflected forms collide too: `weißen`'s Präsens 2s
+*weißt* is also *wissen*'s, so its participle *geweißt* was used instead. A Präteritum or
+participle is usually safer than a Präsens form.
+
+Two things this is NOT, both checked before concluding. DWDS is case-sensitive, so a noun
+plural does not leak in — `Fällen` is a separate entry resolving to `Fall`, and `fällte`
+returns the same count as `fällen`, meaning the verb's 5.7M is genuine idiom (*eine
+Entscheidung fällen*) rather than contamination. And a `dwds_lemma` that merely differs in
+spelling is fine: `reißen`->`reissen`, `erschweren`->`erschwern`, `kreieren`->`kreiern` are
+variant orthography, and all three shift rank by fewer than 45 places.
+
+**Detection recipe, worth re-running after any fetch:** flag every row where `dwds_lemma`
+differs from `lemma`, plus every row with zero hits, then read the survivors by eye. A match
+that is a bare adjective or noun stem is the signature. That recipe found all eight; a
+ninth suspect, `fällen`, was cleared by the case-sensitivity check above.
+
+This script does not yet generate probe forms automatically. A bulk re-fetch should do so —
+`Conjugator` can produce them — rather than trusting infinitives.
 """
 
 import argparse

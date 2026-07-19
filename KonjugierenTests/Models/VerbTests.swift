@@ -44,13 +44,19 @@ struct VerbTests {
     }
   }
 
-  @Test func everyShippingHitCountIsMeasuredNotProvisional() {
-    // Documents the state the `hp` attribute was introduced in, on 2026-07-19: all 990 counts
-    // come from DWDS. A tranche imported while bulk querying is blocked will make this fail,
-    // which is the point — updating it should be a deliberate act, not a silent drift. Replace
-    // the expectation with the tranche's size and say where the estimates came from.
+  @Test func onlyTheStrongBasesTrancheHasProvisionalHitCounts() {
+    // The `hp` attribute shipped on 2026-07-19 with no verb carrying it: all 990 counts came
+    // from DWDS. The strong-bases tranche (docs/roadmap.md step 7) added 78 verbs while bulk
+    // querying was still blocked pending BBAW, so each of those carries an editorial estimate
+    // placed between the real counts of comparable shipping verbs — see the header of
+    // verbdata/import_tranche1.py. When permission arrives, re-query with probes, replace the
+    // counts, drop `hp`, and this expectation goes back to zero.
+    //
+    // Pinning the exact number, not merely an upper bound, is the point: a later tranche that
+    // ships estimates has to come here and say so.
     let provisional = Verb.verbs.values.filter(\.hitsAreProvisional).map(\.infinitiv).sorted()
-    #expect(provisional.isEmpty, "provisional hit counts: \(provisional)")
+    #expect(provisional.count == 78, "provisional hit counts: \(provisional)")
+    #expect(Verb.verbs.count - provisional.count == 990, "measured hit counts drifted from the original corpus")
   }
 
   @Test func theMostFrequentVerbIsRankedFirst() {

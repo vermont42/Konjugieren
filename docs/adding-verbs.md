@@ -263,6 +263,8 @@ Both XML files must maintain alphabetical order:
 
 - **Verbs.xml**: Sort by the German verb name, ignoring prefix markers (`+`, `*`) and ablaut markers (`^`). For example, `an+k^om^men` sorts as "ankommen" and `g^e^lten` sorts as "gelten". Umlauts sort as their base vowels (ä≈a, ö≈o, ü≈u).
 
+  **ß is not folded to ss.** It sorts where its code point puts it, after every ASCII letter, which is why the file reads *reiten* then *reißen* and *weiterlesen* then *weißen*. Measured against the shipping file on 2026-07-19, folding ß to ss produces three order violations and leaving it alone produces none. Folding umlauts does create ties — *drücken* and *drucken*, *zählen* and *zahlen* — and the file breaks them the opposite way from a naive sort, so the invariant to check is that the folded keys are *non-decreasing*, not that the file equals its own sort.
+
 - **AblautGroups.xml**: Sort by the exemplar verb name (`e` attribute).
 
 ## Verb Families
@@ -336,7 +338,13 @@ Many verbs share ablaut patterns. When adding a new strong verb, first check if 
 | fahren | tragen, schlagen, laden, wachsen | a→ä (Präs 2s/3s), a→u (Prät), a→ü (Konj II) |
 | schließen | fliegen, bieten, verlieren, heben, genießen | ie/e→o (Prät, PP), ie/e→ö (Konj II) |
 | halten | lassen, fallen, schlafen, laufen, rufen, heißen | Various, often a→ä (Präs) + ie (Prät) |
-| schneiden | leiden | eid→itt (all past forms) |
+| schneiden | leiden, reiten, streiten, gleiten, schreiten | eid/eit→itt (all past forms) |
+| greifen | kneifen, pfeifen, schleifen | eif→iff (all past forms) |
+| streichen | weichen, gleichen, schleichen | eich→ich (all past forms) |
+| heben | verlieren, schwören, weben, gären, glimmen, klimmen, scheren, wägen, saugen, lügen, trügen | vowel→o (Prät, PP), →ö (Konj II) |
+| schmelzen | dreschen, fechten, flechten, melken, schwellen | e→i (Präs 2s/3s), e→o (Prät, PP), e→ö (Konj II) |
+
+**Widen the region before you propose a new group.** A pattern that looks new is often a shipping pattern seen through too narrow an ablaut region. *kneifen* can be written `kn^ei^fen` with the replacement `IF`, splitting the doubled f across the region boundary — that conjugates correctly, but it needs a group of its own. Written the way this corpus writes *greifen*, `kn^eif^en` with `IFF`, it reuses `greifen` and adds nothing. The rule is the same one the ß/ss section states: the region has to be wide enough to spell every consonant that changes with the vowel. Applying it to the step-7 tranche turned thirteen proposed groups into five.
 
 ### Verbs That Use "sein" as Auxiliary
 

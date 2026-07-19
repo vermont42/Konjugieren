@@ -8,6 +8,7 @@
 
 <ablautGroups>
   <ag e="beginnen" a="A,bA|Ä,dA|O,pp" />
+  <ag e="bersten" a="IR,a2s|IRS,a3s|ARST,bA|ÄRST,dA|IRST,i2s|ORST,pp" />
   <ag e="bieten" a="O,bA,pp|Ö,dA" />
   <ag e="bitten" a="AT,bA|ÄT,dA|ET,pp" />
   <ag e="bleiben" a="IE,bA,dA,pp" />
@@ -46,15 +47,19 @@
   <ag e="nehmen" a="IMM,a2s,a3s|AHM,bA|ÄHM,dA|OMM,pp" />
   <ag e="rufen" a="IE,bA,dA" />
   <ag e="reißen" a="ISS,bA,dA,pp" />
+  <ag e="saufen" a="ÄUF,a2s,a3s|OFF,bA,pp|ÖFF,dA" />
   <ag e="schaffen" a="UF,bA|ÜF,dA" />
+  <ag e="schinden" a="U,bA,pp|Ü,dA" />
   <ag e="schlagen" a="Ä,a2s,a3s|U,bA|Ü,dA" />
   <ag e="schlafen" a="Ä,a2s,a3s|IE,bA,dA" />
   <ag e="schließen" a="OSS,bA,pp|ÖSS,dA" />
+  <ag e="schmelzen" a="I,a2s,a3s|O,bA,pp|Ö,dA" />
   <ag e="schreien" a="IE,bA,dA|geschrIEn*,pp" />
   <ag e="schreiten" a="ITT,bA,dA,pp" />
   <ag e="schneiden" a="ITT,bA,dA,pp" />
   <ag e="sehen" a="IE,a2s,a3s|A,bA|Ä,dA" />
   <ag e="sein" a="BIN*,a1s|BIst*,a2s|IST*,a3s|sIND*,a1p,a3p|seiD*,a2p|WAR,bA|seI*,c1s,c3s,i2s|seIst*,c2s|WÄR,dA|WES,pp|seiD*,i2p" />
+  <ag e="sieden" a="OTT,bA,pp|ÖTT,dA" />
   <ag e="singen" a="A,bA|Ä,dA|U,pp" />
   <ag e="sitzen" a="Aẞ,bA|Äẞ,dA|ESS,pp" />
   <ag e="sprechen" a="I,a2s,a3s|A,bA|Ä,dA|O,pp" />

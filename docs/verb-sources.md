@@ -64,6 +64,8 @@ Each JSONL line is one word: `word`, `pos`, `senses[].glosses`, `etymology_text`
 
 The app's identity is ablaut, and the strong inventory, unlike the weak one, is finite and completable. de.wikipedia's "Liste starker Verben (deutsche Sprache)" organizes New High German strong verbs by historical Ablautklasse in `{{Verb Zelle}}` template rows. Extracting the bolded verbs yields 186 base strong verbs. Konjugieren has 99 of them and is **missing 87**; counting the bolded prefixed derivatives on the same rows, 569 verbs, 424 missing.
 
+**Corrected 2026-07-19, when step 5 below actually ran: the missing count is 82, not 87.** Re-deriving it by set difference against `Verbs.xml` — the recipe in "Verify counts, do not trust them" at the end of this file — gives 180 distinct bases from 187 template rows and 82 absent from the app. The seven rows that yield no plain bolded base are the bracketed ones the list marks as non-standard (*schneen*, *kiesen*, *quillen*, *schallen*, *schröcken*, *stecken*) plus *sein*, which ships. The table below was not re-derived per Ablautklasse and its per-class figures should be treated the same way: as a sketch, not a count.
+
 | Ablautklasse | Pattern | Bases | Missing | Notable absentees |
 |---|---|---|---|---|
 | 1 | ei – i(e) – i(e) | 44 | 26 | beißen, gleiten, kneifen, leihen, meiden, pfeifen, preisen, reiben |
@@ -176,7 +178,11 @@ Wiktionary and Wikipedia text is CC BY-SA 4.0. Deriving the verb database from t
 
 4. **Done (2026-07-19).** Refactored `fr` into `hi`: `Verbs.xml` stores the raw DWDS hit count and `VerbParser` derives the dense rank at parse time, so adding a verb no longer renumbers every incumbent. `fr` is retired from the DTD. See the section near the end of this document.
 
-5. First tranche: the 87 missing strong bases plus their common derivatives. "Every German strong verb" is a completable, marketable milestone for an ablaut-centric app.
+5. **Done (2026-07-19).** First tranche: the missing strong bases. 82 were missing, not 87; 78 shipped, taking the corpus from 990 verbs to **1,068** and the ablaut inventory from 68 groups to 73. The import script and its decision table are `verbdata/import_tranche1.py`, whose header records the reasoning. Four were deferred with reasons: *mahlen* and *spalten* (wrinkle 4, and kaikki lists only their strong participle, so nothing verifies), and *speien* (verifies only via a group that splits the Präteritum by person — the signature of a `Conjugator` gap, and importing it is exactly what the sequencing argument in `verb-classification.md` forbids). All 78 verify against Wiktionary with the encoding they ship with, and the at-odds count held at 8.
+
+   Two findings worth carrying into the next tranche. The classifier minimizes for the *shortest* ablaut region, which puts a doubled consonant across the region boundary (`kn^ei^fen` + `IF`); rewriting each proposal to this corpus's convention — the region wide enough to carry the whole consonant change, `kn^eif^en` + `IFF` — collapsed thirteen proposed new groups into five, because the reworded region matched a group that already shipped. And because kaikki's `forms[]` lists *both* paradigms of a dual-paradigm verb, and the classifier accepts any listed alternative, either paradigm verifies: the strong/weak choice for *melken*, *weben*, *sieden*, *flechten*, *gären*, *glimmen*, *bellen*, *triefen* is editorial, not mechanical. The rule applied was to ship strong only where the strong paradigm is current standard German.
+
+   Prefixed derivatives of these new bases were **not** imported; they belong to step 6, and re-running `build_candidates.py` brings them into scope there.
 
 6. Second tranche: the 2,406 prefixed derivatives of already-supported verbs. The double-prefix grammar that used to gate this **shipped on 2026-07-19**, and only 145 incoming verbs still need it. The live blocker is different and larger: **747 verbs whose first element is not a prefix any shipping verb uses** (*acht*, *abhanden*), so no hypothesis proposes separating it. Widening the prefix inventory is part of this tranche, not a prerequisite someone else owns.
 

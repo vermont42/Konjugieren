@@ -71,7 +71,7 @@ Konjugieren/
 │   ├── Reading.swift           # One sense of a verb: gloss, family, auxiliary, prefixes
 │   ├── Verb.swift              # Lemma: frequency, icon, and an ordered list of readings
 │   ├── VerbParser.swift        # XMLParser delegate for Verbs.xml, incl. the `in` marker grammar
-│   ├── Verbs.xml               # 990 verb definitions with markers and metadata
+│   ├── Verbs.xml               # 1,068 verb definitions with markers and metadata
 │   └── World.swift             # @Observable DI container with environment selection
 ├── Utils/
 │   ├── Analytics.swift         # Analytics protocol, event names, and parameter keys
@@ -261,6 +261,8 @@ verbdata/                      # Verb-corpus-expansion data (see docs/verb-sourc
 ├── fetch_dwds_frequencies.py  # Fetches DWDS lemma frequencies; --lemmas FILE overrides the Verbs.xml corpus
 ├── build_candidates.py        # Classify-and-verify stage A: kaikki JSONL → candidates.json (see docs/verb-classification.md)
 ├── summarize_classification.py # Classify-and-verify stage C: classification.json → a Markdown summary grouped by cause
+├── add_readings.py            # One-shot migration that gave every verb a <reading> child (roadmap step 5)
+├── import_tranche1.py         # One-shot import of the 78 missing strong bases (roadmap step 7); the decision table is the artifact
 ├── dwds-frequencies.json      # 990-lemma DWDS frequency snapshot (gitignored pending BBAW permission)
 ├── candidates.json            # 9,217 normalized candidate conjugation tables (gitignored, regenerable)
 ├── classification.json        # Per-verb classification results (gitignored, regenerable)

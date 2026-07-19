@@ -1060,3 +1060,128 @@ approximate, because the rank is derived globally and a misplaced new verb shift
 That is a real regression in data quality, accepted deliberately and marked in the data so it can
 be found and undone. Which is the difference between this and the old `fr`: that was also
 guesswork, but nothing recorded which numbers were guesses, so there was nothing to come back to.
+
+## The strong bases land: 990 verbs become 1,068 (2026-07-19)
+
+Step 7, the first import tranche. The plan said 87 missing strong bases. Re-deriving the list
+gave 82, which is the third time this repo has caught a verb count that no code consumed and
+nobody had rechecked. The roadmap's own instruction — do not trust the prose, do the set
+difference — paid for itself in the first ten minutes.
+
+The extraction is worth describing because the failure mode was quiet. de.wikipedia's *Liste
+starker Verben* encodes each verb family as a `{{Verb Zelle}}` row whose first bolded argument is
+the base and whose later bolded arguments are derivatives. 187 rows, but only 180 yield a plain
+bolded base: seven wrap the head in square brackets, the list's own marking for a verb that has
+left the standard language (*schneen*, *kiesen*, *quillen*, *schallen*, *schröcken*, *stecken*)
+plus *sein*, which the app has had since the beginning. A regex that ignored the brackets would
+have imported the attic without noticing it was the attic.
+
+### The classifier was right and its answer was still wrong
+
+The pipeline had already verified 78 of the 82 against Wiktionary, so the encodings arrived for
+free. Except they did not, quite. For *kneifen* the classifier proposed `kn^ei^fen` with the
+replacement `IF`, which conjugates to *kniff* by putting the second f outside the ablaut region
+and letting the stem supply it. That is correct. It is also not how this corpus is written: the
+shipping *greifen* is `gr^eif^en` with `IFF`, the whole consonant change inside the region.
+
+The classifier minimizes for the shortest region that works, and the shortest region that works
+is frequently not the one that matches an existing group. Rewriting all thirteen proposals to the
+house convention collapsed them to five, because eight of them turned out to *be* groups that
+already ship — `greifen` for the -eif- verbs, `schneiden` for *gleiten* and *schreiten*,
+`streichen` for *schleichen*, and `heben`, which quietly fits eleven of the new bases across four
+different vowels. `heben` is o in the Präteritum and participle and ö in Konjunktiv II, and that
+is exactly *schwören*, *weben*, *gären*, *glimmen*, *scheren*, *wägen*, *saugen*, *lügen*,
+*trügen*, *klimmen*, and the dialectal *krauchen*.
+
+This is the same lesson the ß/ss pass learned in March-of-the-same-day form: the ablaut region
+has to be wide enough to spell everything that changes. A region that stops at the vowel can
+always be made to work by pushing the consonant into the stem, and the result is a group nobody
+else can share.
+
+### Where the pipeline stops being an oracle
+
+kaikki lists *both* paradigms of a dual-paradigm verb — *melken* carries `melkte` beside `molk`,
+`gemolken` beside `gemelkt` — and the classifier accepts any listed alternative as a match. Two
+consequences, one convenient and one not.
+
+The convenient one: shipping the strong paradigm for such a verb does not raise the at-odds
+count, because the strong form is right there in the table. The inconvenient one: neither does
+shipping the weak paradigm. The pipeline verifies both and therefore decides nothing. It reported
+*flechten*, *melken*, *weben*, *sieden*, *gären*, and *glimmen* as weak purely because weak is the
+first hypothesis it tries and it succeeded.
+
+So the choice was editorial, and the rule adopted was: ship strong only where the strong paradigm
+is current standard German. *melken/gemolken*, *flechten/geflochten*, *weben/gewoben*,
+*sieden/gesotten*, *gären/gegoren*, *glimmen/geglommen*, *dingen/gedungen* ship strong.
+*bellen/gebollen*, *schnauben/geschnoben*, *triefen/getroffen*, *bleichen/geblichen* ship weak,
+because Duden marks those strong forms veraltet and an app that teaches ablaut has no business
+presenting a dead paradigm as live. Seventeen of the 78 ship weak for this reason or because they
+were never strong in the first place.
+
+*bellen* is the one that took longest to let go of. Its strong forms are real — *boll*,
+*gebollen*, *bölle*, and kaikki even offers *ball* — and there is something appealing about a
+barking dog conjugating like *helfen*. But nobody has said *der Hund boll* since roughly Goethe.
+
+### What was left out, and the bug hiding behind one of them
+
+*mahlen* and *spalten* stayed out, as expected: wrinkle 4, weak Präteritum with strong
+participle, which no family expresses. The pipeline confirmed the diagnosis by failing on exactly
+one slot each. Interestingly *salzen* looks identical — *salzte* but *gesalzen* — and shipped
+anyway, because kaikki also lists the weak *gesalzt*, so the weak encoding verifies. Wrinkle 4 is
+therefore narrower than the doc implies: it bites only when the strong participle is the *only*
+participle.
+
+*speien* was the deliberate one. It verifies, but only via
+`I,b1p,b3p,dA,pp|IE,b1s,b2p,b2s,b3s` — a group that splits the Präteritum by person, which
+`verb-classification.md` names as the signature of a `Conjugator` gap smuggled into an ablaut
+group, and whose sequencing argument says in as many words not to import such a thing.
+
+Chasing it down: a strong verb whose stem ends in a vowel takes -n, not -en, in the 1p and 3p.
+*wir spien*, not *wir spieen*. `Conjugator` has no such rule, so the only lever the pipeline has
+is to vary the ablaut by person. And this is not hypothetical — shipping *schreien* carries the
+identical workaround as a full override (`geschrIEn*,pp`) and is one of the three ablaut groups
+already known to be wrong. It is the same shape as the `-ern`/`-eln` rule `hasSyllabicStamm`
+already implements, which suggests the fix is small. Fixing it would repair *schreien*, drop the
+at-odds count from 8 to 7, and let *speien* in on a clean `IE,bA,dA,pp`. Recorded as its own gap
+rather than done here, because an import tranche is the wrong place to change the engine — which
+is, after all, the entire argument for doing steps 2 and 3 before this one.
+
+### Housekeeping that turned into a finding
+
+The insertion script guards three invariants before writing: no duplicate key, no duplicate hit
+count, and the file already sorted. The sortedness guard failed immediately, and the reason was
+mine: `adding-verbs.md` says umlauts fold to their base vowels, and I folded ß to ss by analogy.
+Measured against the actual file, folding produces three violations and not folding produces
+none — U+00DF sorts after every ASCII letter, which is why the corpus reads *reiten* then
+*reißen*. Then the corrected version failed too, on *drücken*/*drucken* and *zählen*/*zahlen*:
+folding umlauts creates genuine ties, and the file breaks them the opposite way from a naive
+sort. The invariant is that the folded keys are non-decreasing, not that the file equals its own
+sorted self. Both facts are now in `adding-verbs.md`, since neither is recoverable by reading the
+code that depends on them.
+
+### The numbers
+
+78 verbs in, 61 strong and 17 weak, 5 new ablaut groups (`bersten`, `saufen`, `schmelzen`,
+`schinden`, `sieden`), corpus 990 → **1,068**. Every one of the 78 verifies against Wiktionary
+with the encoding it ships with — not with a rescued alternative, which is the distinction the
+`shippedEncodingFailed` flag exists to draw. **The at-odds count held at 8.** All 205 tests pass,
+including three new `ConjugatorTests` functions: the new groups, the reuses, and the auxiliaries.
+
+That last one matters more than its size suggests. The pipeline never compares a compound tense,
+so `ay` is invisible to it and a wrong auxiliary cannot move the at-odds count. Fourteen of these
+verbs take *sein* and nothing but a hand-written `perfektIndikativ` expectation would ever catch
+it if they did not.
+
+Every `hi` is provisional, marked `hp="y"`, placed between the real counts of shipping verbs
+judged comparable. One temptation declined: `verb-sources.md` quotes real measured DWDS counts for
+about twenty of these verbs, and it would have been easy to use them. But the argument the repo
+already made against glancing at Leipzig applies unchanged — an estimate informed by a
+measurement is derived from it — and those figures sit in that document under a citation
+allowance, which is a narrower permission than shipping them in the app's data. So they went
+unused, and the tranche stays uniformly provisional and uniformly re-queryable.
+
+`VerbTests` had a tripwire waiting: `everyShippingHitCountIsMeasuredNotProvisional`, which
+asserted no verb carried `hp` and whose comment said, in advance, that a tranche imported while
+DWDS was blocked would break it and that updating it should be a deliberate act. It broke exactly
+as designed. It now pins the provisional population at 78 and the measured one at 990, so the
+next tranche of estimates has to come here and say so rather than sliding in under a `> 0`.

@@ -1051,6 +1051,112 @@ struct ConjugatorTests {
     expectFailure(infinitiv: "machen", expectedError: .readingNotRecognized, readingIndex: 1)
   }
 
+  // The five ablaut groups added by the strong-bases tranche (docs/roadmap.md step 7).
+  @Test func strongBasesTranche1NewAblautGroups() {
+    // bersten is defective in the Präsens: du birst and er birst are the same word built
+    // two different ways, so the group replaces the region differently in 2s and 3s.
+    expectConjugation(infinitiv: "bersten", conjugationgroup: .präsensIndikativ(.secondSingular), expected: "bIRst")
+    expectConjugation(infinitiv: "bersten", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "bIRSt")
+    expectConjugation(infinitiv: "bersten", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "bARST")
+    expectConjugation(infinitiv: "bersten", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "bÄRSTe")
+    expectConjugation(infinitiv: "bersten", conjugationgroup: .perfektpartizip, expected: "gebORSTen")
+
+    expectConjugation(infinitiv: "saufen", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "sÄUFt")
+    expectConjugation(infinitiv: "saufen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "sOFF")
+    expectConjugation(infinitiv: "saufen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "sÖFFe")
+    expectConjugation(infinitiv: "saufen", conjugationgroup: .perfektpartizip, expected: "gesOFFen")
+
+    expectConjugation(infinitiv: "schinden", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "schUnd")
+    expectConjugation(infinitiv: "schinden", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "schÜnde")
+    expectConjugation(infinitiv: "schinden", conjugationgroup: .perfektpartizip, expected: "geschUnden")
+
+    // sieden carries the d → tt inside its ablaut region, the same widening the ß/ss
+    // alternation needed: a region stopping at the vowel cannot spell gesotten.
+    expectConjugation(infinitiv: "sieden", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "siedet")
+    expectConjugation(infinitiv: "sieden", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "sOTT")
+    expectConjugation(infinitiv: "sieden", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "sÖTTe")
+    expectConjugation(infinitiv: "sieden", conjugationgroup: .perfektpartizip, expected: "gesOTTen")
+
+    // The schmelzen group serves five verbs; each is pinned so a later edit to the group
+    // cannot fix one and break the others silently.
+    expectConjugation(infinitiv: "schmelzen", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "schmIlzt")
+    expectConjugation(infinitiv: "schmelzen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "schmOlz")
+    expectConjugation(infinitiv: "schmelzen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "schmÖlze")
+    expectConjugation(infinitiv: "schmelzen", conjugationgroup: .perfektpartizip, expected: "geschmOlzen")
+    expectConjugation(infinitiv: "dreschen", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "drIscht")
+    expectConjugation(infinitiv: "dreschen", conjugationgroup: .perfektpartizip, expected: "gedrOschen")
+    expectConjugation(infinitiv: "fechten", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "fIcht")
+    expectConjugation(infinitiv: "fechten", conjugationgroup: .perfektpartizip, expected: "gefOchten")
+    expectConjugation(infinitiv: "flechten", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "flIcht")
+    expectConjugation(infinitiv: "flechten", conjugationgroup: .perfektpartizip, expected: "geflOchten")
+    expectConjugation(infinitiv: "melken", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "mIlkt")
+    expectConjugation(infinitiv: "melken", conjugationgroup: .perfektpartizip, expected: "gemOlken")
+    expectConjugation(infinitiv: "schwellen", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "schwIllt")
+    expectConjugation(infinitiv: "schwellen", conjugationgroup: .perfektpartizip, expected: "geschwOllen")
+  }
+
+  // The classifier's proposed region was always the shortest one that worked, which put a
+  // doubled consonant across the region boundary (kn^ei^fen + IF). Widening the region to
+  // the house convention lets each of these reuse a group that already shipped.
+  @Test func strongBasesTranche1ReuseExistingGroups() {
+    expectConjugation(infinitiv: "kneifen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "knIFF")
+    expectConjugation(infinitiv: "kneifen", conjugationgroup: .perfektpartizip, expected: "geknIFFen")
+    expectConjugation(infinitiv: "pfeifen", conjugationgroup: .perfektpartizip, expected: "gepfIFFen")
+    expectConjugation(infinitiv: "gleiten", conjugationgroup: .perfektpartizip, expected: "geglITTen")
+    expectConjugation(infinitiv: "schreiten", conjugationgroup: .perfektpartizip, expected: "geschrITTen")
+    expectConjugation(infinitiv: "schleichen", conjugationgroup: .perfektpartizip, expected: "geschlICHen")
+    expectConjugation(infinitiv: "beißen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "bISS")
+    expectConjugation(infinitiv: "beißen", conjugationgroup: .perfektpartizip, expected: "gebISSen")
+    expectConjugation(infinitiv: "verdrießen", conjugationgroup: .perfektpartizip, expected: "verdrOSSen")
+
+    // The heben group (o in the Präteritum and participle, ö in Konjunktiv II) turns out
+    // to fit eleven of the missing bases, across four different ablaut regions.
+    expectConjugation(infinitiv: "schwören", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "schwOr")
+    expectConjugation(infinitiv: "schwören", conjugationgroup: .perfektpartizip, expected: "geschwOren")
+    expectConjugation(infinitiv: "weben", conjugationgroup: .perfektpartizip, expected: "gewOben")
+    expectConjugation(infinitiv: "gären", conjugationgroup: .perfektpartizip, expected: "gegOren")
+    expectConjugation(infinitiv: "glimmen", conjugationgroup: .perfektpartizip, expected: "geglOmmen")
+    expectConjugation(infinitiv: "lügen", conjugationgroup: .perfektpartizip, expected: "gelOgen")
+
+    // A ge- base needs the inseparable marker or the participle grows a second ge-.
+    expectConjugation(infinitiv: "gedeihen", conjugationgroup: .perfektpartizip, expected: "gedIEhen")
+    expectConjugation(infinitiv: "genesen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "genAs")
+    expectConjugation(infinitiv: "genesen", conjugationgroup: .perfektpartizip, expected: "genesen")
+
+    expectConjugation(infinitiv: "graben", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "grÄbt")
+    expectConjugation(infinitiv: "graben", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "grUb")
+    expectConjugation(infinitiv: "blasen", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "blÄst")
+    expectConjugation(infinitiv: "blasen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "blIEs")
+    expectConjugation(infinitiv: "braten", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "brÄt")
+    expectConjugation(infinitiv: "befehlen", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "befIEhlt")
+    expectConjugation(infinitiv: "befehlen", conjugationgroup: .perfektpartizip, expected: "befOhlen")
+  }
+
+  // The classify-and-verify pipeline never compares a compound tense, so a wrong `ay` is
+  // invisible to it and cannot move the at-odds count. These are the only guard the
+  // tranche's auxiliaries have.
+  @Test func strongBasesTranche1Auxiliaries() {
+    expectConjugation(infinitiv: "gedeihen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "BIN gedIEhen")
+    expectConjugation(infinitiv: "gleiten", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "BIN geglITTen")
+    expectConjugation(infinitiv: "schleichen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "BIN geschlICHen")
+    expectConjugation(infinitiv: "schreiten", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "BIN geschrITTen")
+    expectConjugation(infinitiv: "kriechen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "BIN gekrOchen")
+    expectConjugation(infinitiv: "sprießen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "BIN gesprOSSen")
+    expectConjugation(infinitiv: "rinnen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "BIN gerOnnen")
+    expectConjugation(infinitiv: "schwinden", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "BIN geschwUnden")
+    expectConjugation(infinitiv: "klimmen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "BIN geklOmmen")
+    expectConjugation(infinitiv: "genesen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "BIN genesen")
+    expectConjugation(infinitiv: "bersten", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "BIN gebORSTen")
+    expectConjugation(infinitiv: "schwellen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "BIN geschwOllen")
+    expectConjugation(infinitiv: "zerschellen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "BIN zerschellt")
+
+    // haben, for contrast: schmelzen is dual-auxiliary and ships the transitive reading,
+    // and graben and melken take haben outright.
+    expectConjugation(infinitiv: "schmelzen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "habe geschmOlzen")
+    expectConjugation(infinitiv: "graben", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "habe gegraben")
+    expectConjugation(infinitiv: "melken", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "habe gemOlken")
+  }
+
   private func expectFailure(
     infinitiv: String,
     expectedError: ConjugatorError,

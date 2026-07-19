@@ -2,13 +2,13 @@
 
 ## English
 
-Master German verb conjugations with 990 verbs across all conjugationgroups—the definitive reference and quiz app for German learners.
+Master German verb conjugations with 1,068 verbs across all conjugationgroups—the definitive reference and quiz app for German learners.
 
 FEATURES
 
 Complete Conjugation Reference
 
-Browse and search 990 German verbs with full conjugations across fifteen conjugationgroups:
+Browse and search 1,068 German verbs with full conjugations across fifteen conjugationgroups:
 • Simple: Präsens Indikativ, Präteritum Indikativ, Imperativ
 • Konjunktiv: Präsens Konjunktiv I, Präteritum Konjunktiv II
 • Compound: Perfekt, Plusquamperfekt, Futur (Indikativ, Konjunktiv I, Konjunktiv II)
@@ -79,13 +79,13 @@ Though Ryan never truly knew her father, Cliff's love for his family has echoed 
 
 ## German
 
-Meistern Sie die deutsche Verbkonjugation mit 990 Verben in allen Konjugationsgruppen — die definitive Referenz- und Quiz-App für Deutschlernende.
+Meistern Sie die deutsche Verbkonjugation mit 1.068 Verben in allen Konjugationsgruppen — die definitive Referenz- und Quiz-App für Deutschlernende.
 
 FUNKTIONEN
 
 Vollständige Konjugationsreferenz
 
-Durchsuchen Sie 990 deutsche Verben mit vollständigen Konjugationen in fünfzehn Konjugationsgruppen:
+Durchsuchen Sie 1.068 deutsche Verben mit vollständigen Konjugationen in fünfzehn Konjugationsgruppen:
 • Einfach: Präsens, Präteritum, Imperativ
 • Konjunktiv: Präsens und Präteritum (I und II)
 • Zusammengesetzt: Perfekt, Plusquamperfekt, Futur (Indikativ, Konjunktiv I, II)

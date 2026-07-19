@@ -25,3 +25,7 @@ verbdata/classification.json
 # candidates.json that keeps every Wiktionary record per lemma, so it is just as large.
 verbdata/readings.json
 verbdata/classification-summary.md
+
+# Python bytecode from the verbdata/ scripts
+__pycache__/
+*.pyc

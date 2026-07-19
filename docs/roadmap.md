@@ -147,4 +147,4 @@ Small things the pipeline surfaced that no plan currently owns. None blocks the 
 | ß/ss orthography | `1ae08da` | 51 → 25; 20 test expectations corrected |
 | Prefix markers | `1ae08da` | 25 → 14 |
 | Regional + dual-auxiliary planning | `b725ee3` | The prompts for steps 4 and 5 |
-| Regional variety support | (uncommitted; this pass) | Region setting, ß/ss transform (incl. displayed infinitives + search normalization), 3 regional-auxiliary verbs, dual-flag pill, Duden Info article; at-odds count held at 14 |
+| Regional variety support | `95206ef` | Region setting, ß/ss transform (incl. displayed infinitives + search normalization), 3 regional-auxiliary verbs, dual-flag pill, Duden Info article; at-odds count held at 14 |

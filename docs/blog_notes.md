@@ -45,3 +45,101 @@ Verification turned up a false negative worth recording. Tapping "Show Onboardin
 The documentation half repeated yesterday's lesson almost exactly. Yesterday's fix was a playbook gotcha falsely claiming no sweep view was Tutor-gated. Today's is its twin, three bullets away: "TipKit popovers may surface mid-sweep… The driver doesn't suppress these — visual review the captured PNG before upload." True when written, false the moment `tipsEnabled` landed, and it would have told the next operator that manual review was their only option. Two stale claims of the same shape in one document suggests the failure mode isn't carelessness but structure: this playbook describes capabilities the code has, so every capability added ages a sentence somewhere in it. The Don't-Break-These table now lists all three switches plus the `Tips.configure()` call site, which at least makes the coupling greppable.
 
 One deliberate non-removal: the driver's Skip-label interleave during `wait_for_render` (workarounds #2 and #11) stays, demoted to a safety net. It costs nothing when the cover never appears — the poll simply finds no Skip button — and it covers the operator who forgets the switch. But the playbook now says plainly which is the reliable mechanism: the interleave races presentation timing, the switch does not.
+
+## Deleting the Orientation Hack: Portrait-Only iPhone, Proportional Fleet, Rotating iPad (2026-07-19)
+
+Konjugieren used to support Landscape Left and Right on iPhone, which the game could never
+tolerate — the pretzel-vs-Oktoberfest shooter is portrait by construction. The workaround
+was a UIKit escape hatch: an `AppDelegate` whose sole job was to host a mutable
+`orientationLock` static, which `GameView` flipped to `.portrait` in `onAppear`, restored to
+`.allButUpsideDown` in `onDisappear`, and enforced with a `requestGeometryUpdate` call to
+force the live rotation. Josh disliked it, correctly. It was a global mutable made necessary
+by a plist that promised more than the app could deliver.
+
+Josh changed the iPhone plist to Portrait only, which retires the need for the lock
+entirely. iPad keeps all four orientations, because on iPad an app that refuses to rotate
+reads as broken. That reframes the problem: the game no longer needs to *prevent* rotation,
+it needs to *survive* it.
+
+Deleting the hack was the easy part — the whole `AppDelegate` and its
+`@UIApplicationDelegateAdaptor` went with it, since orientation was all it did. The
+interesting work was the two bugs the screenshot Josh supplied was demonstrating at once.
+The fleet was bunched into a narrow column *and* centered at ~72% of the screen width. The
+bunching is the obvious one: `enemySpacingX` was a hardcoded 45 points, tuned on a 393-point
+iPhone, so on an 820-point iPad the six columns huddled in the middle third. The off-center
+placement was the subtler one, and it was the rotation bug wearing a disguise —
+`screenWidth` is captured once in `onAppear` and never revisited, so a board laid out at
+landscape width and then displayed in portrait puts its center where the old center was.
+
+**Proportional beats conditional.** The literal request was 3× spacing on iPad. Modeling it
+showed that on an 820-point iPad portrait screen, 135-point spacing puts the fleet's outer
+edge within ~57 points of each wall, which would shrink Space Invaders' side-to-side march
+to a twitch and fire the descend-on-wall-contact rule almost immediately. The alternative:
+express spacing as a fraction of screen width, calibrated so the iPhone is unchanged *by
+construction*. The fleet already spanned 57.3% of an iPhone's width, so
+`enemyGridWidthFraction = 0.573` reproduces 45 points on a phone, yields ~94 on iPad
+portrait, and ~135 in landscape — the requested 3×, arrived at without an idiom check.
+Measured on the simulator, landscape spacing came out at exactly 135.2. The rule also covers
+Stage Manager and Split View widths, which a hardcoded `UIDevice.current.userInterfaceIdiom`
+branch never would.
+
+**The rotation handler already existed, in pieces.** Conjugar solves this with
+`.onChange(of: geo.size) { gameState.reconfigure(...) }`, re-dealing the level geometry. That
+is right for a platformer whose level is static scenery, and wrong here: re-dealing mid-wave
+would resurrect enemies the player already shot. But `GameState` already contained the right
+algorithm under a different name. `restoreGame(from:screenWidth:...)` — the pause/resume
+path — scales every entity's coordinates by width and height ratios, because resuming on a
+different screen size is the same problem as rotating. It just did the scaling inline, in
+sixteen near-identical `.map` closures over the snapshot.
+
+Extracting those into a `scaleGeometry(scaleX:scaleY:)` that mutates the live entities let
+`restoreGame` become plain assignment plus one call, and gave `reflow` — the new
+`onChange(of: geometry.size)` handler — the whole behavior for free. Net effect: about sixty
+lines of duplication removed while adding a feature. A satisfying shape, and one worth
+looking for: when a new requirement feels like it needs an algorithm you already wrote for a
+different-sounding reason, the two reasons are probably the same reason.
+
+A near-miss worth recording. The first instinct was to implement `reflow` as literally
+`restoreGame(from: makeSnapshot(), ...)`, which reads beautifully and is wrong. `restoreGame`
+also clears `gameOverTime`, restarts the music, and resets the mechanic-shuffle bags — so
+rotating the iPad on the Game Over screen would have set `gameOverTime` to nil while `phase`
+stayed `.lost`, making `canRestart` permanently false and the "tap to play again" prompt a
+lie. Reusing a function because its *main* effect is what you want smuggles in its *other*
+effects. Extracting the pure part was the only safe reuse.
+
+**CoreMotion does not rotate with your interface.** Supporting iPad landscape exposed a
+control bug that had been latent: `updatePlayerPosition` read `data.gravity.x` raw, and
+`CMDeviceMotion.gravity` is expressed in the *device* reference frame, which is fixed to the
+hardware. In portrait, device-X runs across the screen and steering works. In landscape,
+device-X runs vertically down the screen, so tilting left and right does nothing and pitching
+the iPad forward and back slides the pretzel sideways. Shipping landscape support without
+fixing this would have shipped an unplayable orientation — silently, since nothing errors.
+The fix projects gravity onto the screen's horizontal axis per `interfaceOrientation`
+(`+x` portrait, `−x` upside down, `+y`/`−y` in the two landscapes). Note
+`UIWindowScene.interfaceOrientation` is deprecated in iOS 26; `effectiveGeometry.interfaceOrientation`
+is the replacement, and with a 26.0 deployment target no availability check is needed.
+
+The landscape *signs* are the one thing simulator verification cannot settle — an Intel Mac
+host has no accelerometer to feed the simulator, and the classic
+`UIInterfaceOrientationLandscapeLeft == UIDeviceOrientationLandscapeRight` inversion makes
+this exactly the kind of thing that is easy to reason confidently and wrongly about. The
+mapping was derived from the device axes rather than recalled, and flagged for on-device
+confirmation. If steering is inverted in one landscape orientation, both landscape cases are
+wrong together and swapping the two lines fixes it.
+
+Everything else was verified on an iPad Air 11-inch simulator: portrait lays out centered
+with the wider spacing, a rotation to landscape reflows to 135-point spacing with no entity
+lost, and a pause/resume round trip through the refactored `restoreGame` came back with
+score 1,650, health 75%, the fleet's holes where enemies had died, two mid-dive attackers,
+and a Bratwurstkette intact. Two incidental notes for future simulator work: `xcrun simctl
+io screenshot` returns the *unrotated* framebuffer, so a landscape iPad screenshot arrives
+portrait-shaped and must be transposed before it can be read — check `describe-ui`'s root
+frame, not the PNG dimensions, to learn whether rotation actually happened. And `xcrun
+simctl ui` has no `orientation` verb; rotation has to be driven through the Simulator's
+Device menu via AppleScript.
+
+One vertical compromise remains, deliberately. Because `reflow` scales Y by the height ratio,
+a portrait-to-landscape rotation compresses the six enemy rows from 40-point spacing to about
+28, so the fleet reads tighter in landscape than a fresh landscape start would. Keeping Y
+absolute instead would risk pushing bottom-anchored entities off a shorter screen, which is
+the worse failure. Left proportional pending Josh's eyeball on real hardware.

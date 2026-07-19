@@ -4,22 +4,9 @@ import AppIntents
 import CoreSpotlight
 import SwiftUI
 import TipKit
-import UIKit
 import WidgetKit
 
-class AppDelegate: NSObject, UIApplicationDelegate {
-  static var orientationLock: UIInterfaceOrientationMask = .allButUpsideDown
-
-  func application(
-    _ application: UIApplication,
-    supportedInterfaceOrientationsFor window: UIWindow?
-  ) -> UIInterfaceOrientationMask {
-    Self.orientationLock
-  }
-}
-
 struct KonjugierenApp: App {
-  @UIApplicationDelegateAdaptor(AppDelegate.self) var delegate
   @Environment(\.scenePhase) private var scenePhase
 
   var body: some Scene {

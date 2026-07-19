@@ -231,10 +231,6 @@ struct GameView: View {
         }
       }
       .onAppear {
-        AppDelegate.orientationLock = .portrait
-        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
-          windowScene.requestGeometryUpdate(.iOS(interfaceOrientations: .portrait))
-        }
         if let snapshot = SavedGame.load(getterSetter: Current.getterSetter) {
           gameState.restoreGame(from: snapshot, screenWidth: geometry.size.width, screenHeight: geometry.size.height, topInset: geometry.safeAreaInsets.top)
           SavedGame.clear(getterSetter: Current.getterSetter)
@@ -242,11 +238,13 @@ struct GameView: View {
           gameState.startGame(screenWidth: geometry.size.width, screenHeight: geometry.size.height, topInset: geometry.safeAreaInsets.top)
         }
       }
+      .onChange(of: geometry.size) {
+        gameState.reflow(screenWidth: geometry.size.width, screenHeight: geometry.size.height, topInset: geometry.safeAreaInsets.top)
+      }
     }
     .onDisappear {
       gameState.stopMotion()
       gameState.quitGame()
-      AppDelegate.orientationLock = .allButUpsideDown
     }
     .onChange(of: scenePhase) { _, newPhase in
       switch newPhase {

@@ -73,7 +73,7 @@ class GameState {
 
   static let rows = 6
   static let cols = 6
-  static let enemySpacingX: CGFloat = 45
+  static let enemyGridWidthFraction: CGFloat = 0.573
   static let enemySpacingY: CGFloat = 40
   static let playerBulletSpeed: CGFloat = 700
   static let enemyBulletSpeed: CGFloat = 300
@@ -382,97 +382,27 @@ class GameState {
     playerY = snapshot.playerYFraction * screenHeight
     playerHealth = snapshot.playerHealth
 
-    enemies = snapshot.enemies.map { e in
-      var scaled = e
-      scaled.x *= scaleX
-      scaled.y *= scaleY
-      scaled.diveStartX *= scaleX
-      scaled.diveStartY *= scaleY
-      scaled.homeX *= scaleX
-      scaled.homeY *= scaleY
-      return scaled
-    }
-
-    playerBullet = snapshot.playerBullet.map { b in
-      Bullet(x: b.x * scaleX, y: b.y * scaleY, isPlayerBullet: b.isPlayerBullet, useRed: b.useRed)
-    }
-    enemyBullet = snapshot.enemyBullet.map { b in
-      Bullet(x: b.x * scaleX, y: b.y * scaleY, isPlayerBullet: b.isPlayerBullet, useRed: b.useRed)
-    }
-    zigzagger = snapshot.zigzagger.map { z in
-      var scaled = z
-      scaled.x *= scaleX
-      scaled.y *= scaleY
-      return scaled
-    }
-    coins = snapshot.coins.map { c in
-      Coin(x: c.x * scaleX, y: c.y * scaleY)
-    }
-    powerUps = snapshot.powerUps.map { p in
-      PowerUp(x: p.x * scaleX, y: p.y * scaleY, kind: p.kind)
-    }
+    enemies = snapshot.enemies
+    playerBullet = snapshot.playerBullet
+    enemyBullet = snapshot.enemyBullet
+    zigzagger = snapshot.zigzagger
+    coins = snapshot.coins
+    powerUps = snapshot.powerUps
     shieldActive = snapshot.shieldActive
     rapidFireActive = snapshot.rapidFireActive
-    eggs = snapshot.eggs.map { e in
-      var scaled = e
-      scaled.x *= scaleX
-      scaled.y *= scaleY
-      return scaled
-    }
-    hatchlings = snapshot.hatchlings.map { h in
-      Hatchling(x: h.x * scaleX, y: h.y * scaleY)
-    }
+    eggs = snapshot.eggs
+    hatchlings = snapshot.hatchlings
     portalSide = snapshot.portalSide
     activeMechanic = snapshot.activeMechanic
-    fussball = snapshot.fussball.map { f in
-      var scaled = f
-      scaled.x *= scaleX
-      scaled.y *= scaleY
-      scaled.velocityX *= scaleX
-      scaled.velocityY *= scaleY
-      return scaled
-    }
-    wurstChains = snapshot.wurstChains.map { chain in
-      var scaled = chain
-      scaled.segments = chain.segments.map { s in
-        WurstSegment(x: s.x * scaleX, y: s.y * scaleY)
-      }
-      return scaled
-    }
-    pretzelObstacles = snapshot.pretzelObstacles.map { p in
-      var scaled = p
-      scaled.x *= scaleX
-      scaled.y *= scaleY
-      return scaled
-    }
-    ghosts = snapshot.ghosts.map { g in
-      var scaled = g
-      scaled.x *= scaleX
-      scaled.y *= scaleY
-      return scaled
-    }
-    goldenDots = snapshot.goldenDots.map { d in
-      GoldenDot(x: d.x * scaleX, y: d.y * scaleY)
-    }
-    kristallkugel = snapshot.kristallkugel.map { k in
-      Kristallkugel(x: k.x * scaleX, y: k.y * scaleY)
-    }
-    robotBrain = snapshot.robotBrain.map { b in
-      var scaled = b
-      scaled.x *= scaleX
-      scaled.y *= scaleY
-      return scaled
-    }
-    robotMinion = snapshot.robotMinion.map { m in
-      var scaled = m
-      scaled.x *= scaleX
-      scaled.y *= scaleY
-      scaled.homeX *= scaleX
-      scaled.homeY *= scaleY
-      scaled.diveStartX *= scaleX
-      scaled.diveStartY *= scaleY
-      return scaled
-    }
+    fussball = snapshot.fussball
+    wurstChains = snapshot.wurstChains
+    pretzelObstacles = snapshot.pretzelObstacles
+    ghosts = snapshot.ghosts
+    goldenDots = snapshot.goldenDots
+    kristallkugel = snapshot.kristallkugel
+    robotBrain = snapshot.robotBrain
+    robotMinion = snapshot.robotMinion
+    scaleGeometry(scaleX: scaleX, scaleY: scaleY)
     robotBulletUseRed = snapshot.robotBulletUseRed
     geisterjagdActive = snapshot.geisterjagdActive
     score = snapshot.score
@@ -511,6 +441,83 @@ class GameState {
     lastUpdateTime = nil
     startMotion()
     Current.soundPlayer.startMusic()
+  }
+
+  func reflow(screenWidth newWidth: CGFloat, screenHeight newHeight: CGFloat, topInset newTopInset: CGFloat) {
+    guard screenWidth > 0, screenHeight > 0, newWidth > 0, newHeight > 0 else { return }
+    let scaleX = newWidth / screenWidth
+    let scaleY = newHeight / screenHeight
+    screenWidth = newWidth
+    screenHeight = newHeight
+    topInset = newTopInset
+    playerX *= scaleX
+    playerY *= scaleY
+    scaleGeometry(scaleX: scaleX, scaleY: scaleY)
+  }
+
+  private func scaleGeometry(scaleX: CGFloat, scaleY: CGFloat) {
+    for i in enemies.indices {
+      enemies[i].x *= scaleX
+      enemies[i].y *= scaleY
+      enemies[i].diveStartX *= scaleX
+      enemies[i].diveStartY *= scaleY
+      enemies[i].homeX *= scaleX
+      enemies[i].homeY *= scaleY
+    }
+    playerBullet?.x *= scaleX
+    playerBullet?.y *= scaleY
+    enemyBullet?.x *= scaleX
+    enemyBullet?.y *= scaleY
+    zigzagger?.x *= scaleX
+    zigzagger?.y *= scaleY
+    for i in coins.indices {
+      coins[i].x *= scaleX
+      coins[i].y *= scaleY
+    }
+    for i in powerUps.indices {
+      powerUps[i].x *= scaleX
+      powerUps[i].y *= scaleY
+    }
+    for i in eggs.indices {
+      eggs[i].x *= scaleX
+      eggs[i].y *= scaleY
+    }
+    for i in hatchlings.indices {
+      hatchlings[i].x *= scaleX
+      hatchlings[i].y *= scaleY
+    }
+    fussball?.x *= scaleX
+    fussball?.y *= scaleY
+    fussball?.velocityX *= scaleX
+    fussball?.velocityY *= scaleY
+    for i in wurstChains.indices {
+      for j in wurstChains[i].segments.indices {
+        wurstChains[i].segments[j].x *= scaleX
+        wurstChains[i].segments[j].y *= scaleY
+      }
+    }
+    for i in pretzelObstacles.indices {
+      pretzelObstacles[i].x *= scaleX
+      pretzelObstacles[i].y *= scaleY
+    }
+    for i in ghosts.indices {
+      ghosts[i].x *= scaleX
+      ghosts[i].y *= scaleY
+    }
+    for i in goldenDots.indices {
+      goldenDots[i].x *= scaleX
+      goldenDots[i].y *= scaleY
+    }
+    kristallkugel?.x *= scaleX
+    kristallkugel?.y *= scaleY
+    robotBrain?.x *= scaleX
+    robotBrain?.y *= scaleY
+    robotMinion?.x *= scaleX
+    robotMinion?.y *= scaleY
+    robotMinion?.homeX *= scaleX
+    robotMinion?.homeY *= scaleY
+    robotMinion?.diveStartX *= scaleX
+    robotMinion?.diveStartY *= scaleY
   }
 
   var canRestart: Bool {
@@ -564,14 +571,18 @@ class GameState {
     lastUpdateTime = nil
   }
 
+  var enemySpacingX: CGFloat {
+    screenWidth * Self.enemyGridWidthFraction / CGFloat(Self.cols - 1)
+  }
+
   private func spawnEnemyGrid() {
     enemies = []
-    let gridWidth = CGFloat(Self.cols - 1) * Self.enemySpacingX
+    let gridWidth = CGFloat(Self.cols - 1) * enemySpacingX
     let startX = (screenWidth - gridWidth) / 2
     let startY = topInset + 40
     for row in 0..<Self.rows {
       for col in 0..<Self.cols {
-        let x = startX + CGFloat(col) * Self.enemySpacingX
+        let x = startX + CGFloat(col) * enemySpacingX
         let y = startY + CGFloat(row) * Self.enemySpacingY
         let imageName = Self.enemyImages[row % Self.enemyImages.count]
         enemies.append(Enemy(row: row, col: col, x: x, y: y, imageName: imageName))
@@ -600,9 +611,25 @@ class GameState {
     motionManager.startDeviceMotionUpdates()
   }
 
+  private var interfaceOrientation: UIInterfaceOrientation {
+    let scenes = UIApplication.shared.connectedScenes.compactMap { $0 as? UIWindowScene }
+    let scene = scenes.first { $0.activationState == .foregroundActive } ?? scenes.first
+    return scene?.effectiveGeometry.interfaceOrientation ?? .portrait
+  }
+
   private func updatePlayerPosition(dt: CGFloat) {
-    guard let data = motionManager.deviceMotion else { return }
-    let tilt = data.gravity.x
+    guard let gravity = motionManager.deviceMotion?.gravity else { return }
+    let tilt: Double
+    switch interfaceOrientation {
+    case .landscapeLeft:
+      tilt = gravity.y
+    case .landscapeRight:
+      tilt = -gravity.y
+    case .portraitUpsideDown:
+      tilt = -gravity.x
+    default:
+      tilt = gravity.x
+    }
     if abs(tilt) > Self.tiltThreshold {
       playerX += CGFloat(tilt) * Self.tiltSensitivity * dt
       playerX = max(Self.playerSize / 2, min(screenWidth - Self.playerSize / 2, playerX))

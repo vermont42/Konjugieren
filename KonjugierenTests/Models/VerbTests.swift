@@ -1,11 +1,41 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
+import Foundation
 import Testing
 @testable import Konjugieren
 
 @MainActor
 @Suite("Verb")
 struct VerbTests {
+  // Nothing checked this until 2026-07-19, and the strong-bases tranche shipped 14 verbs out
+  // of order because of it: the import script inserted back-to-front without accounting for
+  // repeated insert() at one index reversing the batch, so verbs sharing an anchor came out
+  // as glimmen before gleiten. Verb.verbs is a dictionary, so file order survives nowhere in
+  // the parsed model — the raw XML is the only place this can be checked.
+  @Test func verbsXMLIsAlphabeticallyOrdered() throws {
+    let url = try #require(Bundle(for: VerbParser.self).url(forResource: "Verbs", withExtension: "xml"))
+    let text = try String(contentsOf: url, encoding: .utf8)
+
+    let pattern = try NSRegularExpression(pattern: "<verb in=\"([^\"]+)\"")
+    let range = NSRange(text.startIndex..., in: text)
+    let keys = pattern.matches(in: text, range: range).compactMap { match -> String? in
+      guard let matched = Range(match.range(at: 1), in: text) else { return nil }
+      // The documented collation: prefix and ablaut markers ignored, umlauts folded to their
+      // base vowel, sharp s left where its code point falls. See docs/adding-verbs.md.
+      var folded = String(text[matched]).replacingOccurrences(of: "[+*^]", with: "", options: .regularExpression).lowercased()
+      for (umlaut, base) in [("ä", "a"), ("ö", "o"), ("ü", "u")] {
+        folded = folded.replacingOccurrences(of: umlaut, with: base)
+      }
+      return folded
+    }
+
+    #expect(keys.count == Verb.verbs.count)
+    // Non-decreasing rather than strictly sorted: folding makes drücken/drucken and
+    // zählen/zahlen tie, and the file breaks those ties the opposite way from a naive sort.
+    for (earlier, later) in zip(keys, keys.dropFirst()) {
+      #expect(earlier <= later, "Verbs.xml is out of order: \(earlier) precedes \(later)")
+    }
+  }
   @Test func stammDropsEnSuffix() {
     #expect(Verb.verbs["machen"]?.stamm == "mach")
     #expect(Verb.verbs["singen"]?.stamm == "sing")

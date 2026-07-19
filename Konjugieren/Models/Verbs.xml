@@ -1489,11 +1489,11 @@
   <verb in="gl^eich^en" hi="828309" ic="mind.and.body">
     <reading tn="resemble, equal" fa="s" ag="streichen" />
   </verb>
-  <verb in="gl^i^mmen" hi="46700" hp="y" ic="flexibility">
-    <reading tn="glow, smoulder" fa="s" ag="heben" />
-  </verb>
   <verb in="gl^eit^en" hi="332600" hp="y" ic="skating">
     <reading tn="glide, slide" fa="s" ag="schneiden" ay="s" />
+  </verb>
+  <verb in="gl^i^mmen" hi="46700" hp="y" ic="flexibility">
+    <reading tn="glow, smoulder" fa="s" ag="heben" />
   </verb>
   <verb in="gönnen" hi="745044" ic="arms.open">
     <reading tn="grant, not begrudge" fa="w" />
@@ -1680,20 +1680,20 @@
   <verb in="klicken" hi="1787314" ic="flexibility">
     <reading tn="click" fa="w" />
   </verb>
-  <verb in="kl^i^mmen" hi="4300" hp="y" ic="climbing">
-    <reading tn="clamber, climb" fa="s" ag="heben" ay="s" />
-  </verb>
   <verb in="klieben" hi="5100" hp="y" ic="strengthtraining.traditional">
     <reading tn="cleave (regional)" fa="w" />
+  </verb>
+  <verb in="kl^i^mmen" hi="4300" hp="y" ic="climbing">
+    <reading tn="clamber, climb" fa="s" ag="heben" ay="s" />
   </verb>
   <verb in="kl^i^ngen" hi="3260212" ic="cooldown">
     <reading tn="sound" fa="s" ag="singen" />
   </verb>
-  <verb in="kneipen" hi="8700" hp="y" ic="boxing">
-    <reading tn="pinch (dialectal)" fa="w" />
-  </verb>
   <verb in="kn^eif^en" hi="252400" hp="y" ic="boxing">
     <reading tn="pinch" fa="s" ag="greifen" />
+  </verb>
+  <verb in="kneipen" hi="8700" hp="y" ic="boxing">
+    <reading tn="pinch (dialectal)" fa="w" />
   </verb>
   <verb in="knüpfen" hi="688391" ic="2.and.child.holdinghands">
     <reading tn="tie, establish" fa="w" />
@@ -1749,11 +1749,11 @@
   <verb in="kreieren" hi="539870" ic="walk.arrival">
     <reading tn="create" fa="i" />
   </verb>
-  <verb in="kr^ie^chen" hi="372400" hp="y" ic="climbing">
-    <reading tn="crawl, creep" fa="s" ag="bieten" ay="s" />
-  </verb>
   <verb in="kreißen" hi="9400" hp="y" ic="mind.and.body">
     <reading tn="be in labor" fa="w" />
+  </verb>
+  <verb in="kr^ie^chen" hi="372400" hp="y" ic="climbing">
+    <reading tn="crawl, creep" fa="s" ag="bieten" ay="s" />
   </verb>
   <verb in="kriegen" hi="1318060" ic="handball">
     <reading tn="get" fa="w" />
@@ -2132,11 +2132,11 @@
   <verb in="r^ie^chen" hi="715148" ic="mind.and.body">
     <reading tn="smell" fa="s" ag="bieten" />
   </verb>
-  <verb in="r^i^nnen" hi="76400" hp="y" ic="pool.swim">
-    <reading tn="flow, trickle" fa="s" ag="beginnen" ay="s" />
-  </verb>
   <verb in="r^i^ngen" hi="452900" hp="y" ic="wrestling">
     <reading tn="wrestle, struggle" fa="s" ag="finden" />
+  </verb>
+  <verb in="r^i^nnen" hi="76400" hp="y" ic="pool.swim">
+    <reading tn="flow, trickle" fa="s" ag="beginnen" ay="s" />
   </verb>
   <verb in="rollen" hi="970947" ic="roll">
     <reading tn="roll (something)" fa="w" />
@@ -2170,11 +2170,11 @@
   <verb in="sammeln" hi="3792525" ic="handball">
     <reading tn="collect" fa="w" />
   </verb>
-  <verb in="s^au^gen" hi="351800" hp="y" ic="cooldown">
-    <reading tn="suck" fa="s" ag="heben" />
-  </verb>
   <verb in="s^auf^en" hi="302100" hp="y" ic="cooldown">
     <reading tn="booze, drink (of animals)" fa="s" ag="saufen" />
+  </verb>
+  <verb in="s^au^gen" hi="351800" hp="y" ic="cooldown">
+    <reading tn="suck" fa="s" ag="heben" />
   </verb>
   <verb in="schaden" hi="957615" ic="boxing">
     <reading tn="harm, damage" fa="w" />
@@ -2204,11 +2204,11 @@
   <verb in="scheitern" hi="2565556" ic="fall">
     <reading tn="fail" fa="w" ay="s" />
   </verb>
-  <verb in="sch^e^lten" hi="66500" hp="y" ic="wave">
-    <reading tn="scold, chide" fa="s" ag="sprechen" />
-  </verb>
   <verb in="sch^eiß^en" hi="121500" hp="y" ic="cooldown">
     <reading tn="shit" fa="s" ag="reißen" />
+  </verb>
+  <verb in="sch^e^lten" hi="66500" hp="y" ic="wave">
+    <reading tn="scold, chide" fa="s" ag="sprechen" />
   </verb>
   <verb in="schenken" hi="1939634" ic="arms.open">
     <reading tn="give as gift" fa="w" />
@@ -2238,14 +2238,14 @@
   <verb in="schl^a^gen" hi="6143878" ic="boxing">
     <reading tn="hit, beat" fa="s" ag="schlagen" />
   </verb>
-  <verb in="schl^eiß^en" hi="7300" hp="y" ic="cooldown">
-    <reading tn="strip, wear away" fa="s" ag="reißen" />
+  <verb in="schl^eich^en" hi="352600" hp="y" ic="walk.motion">
+    <reading tn="creep, sneak" fa="s" ag="streichen" ay="s" />
   </verb>
   <verb in="schl^eif^en" hi="291200" hp="y" ic="strengthtraining.traditional">
     <reading tn="grind, sharpen" fa="s" ag="greifen" />
   </verb>
-  <verb in="schl^eich^en" hi="352600" hp="y" ic="walk.motion">
-    <reading tn="creep, sneak" fa="s" ag="streichen" ay="s" />
+  <verb in="schl^eiß^en" hi="7300" hp="y" ic="cooldown">
+    <reading tn="strip, wear away" fa="s" ag="reißen" />
   </verb>
   <verb in="schl^ieß^en" hi="8161487" ic="flexibility">
     <reading tn="close" fa="s" ag="schließen" />
@@ -2256,14 +2256,14 @@
   <verb in="schmecken" hi="1756774" ic="cooldown">
     <reading tn="taste" fa="w" />
   </verb>
+  <verb in="schm^eiß^en" hi="381700" hp="y" ic="handball">
+    <reading tn="throw, chuck" fa="s" ag="reißen" />
+  </verb>
   <verb in="schm^e^lzen" hi="422600" hp="y" ic="skiing.downhill">
     <reading tn="melt" fa="s" ag="schmelzen" />
   </verb>
   <verb in="schnauben" hi="91300" hp="y" ic="highintensity.intervaltraining">
     <reading tn="snort" fa="w" />
-  </verb>
-  <verb in="schm^eiß^en" hi="381700" hp="y" ic="handball">
-    <reading tn="throw, chuck" fa="s" ag="reißen" />
   </verb>
   <verb in="schn^eid^en" hi="1954508" ic="fencing">
     <reading tn="cut" fa="s" ag="schneiden" />
@@ -2302,14 +2302,14 @@
     <reading tn="swim (to a destination)" fa="s" ag="beginnen" ay="s" />
     <reading tn="swim (as an activity)" fa="s" ag="beginnen" />
   </verb>
-  <verb in="schw^ö^ren" hi="423500" hp="y" ic="stand">
-    <reading tn="swear, vow" fa="s" ag="heben" />
+  <verb in="schw^i^nden" hi="281900" hp="y" ic="cooldown">
+    <reading tn="dwindle, fade" fa="s" ag="finden" ay="s" />
   </verb>
   <verb in="schw^i^ngen" hi="404600" hp="y" ic="jumprope">
     <reading tn="swing, vibrate" fa="s" ag="finden" />
   </verb>
-  <verb in="schw^i^nden" hi="281900" hp="y" ic="cooldown">
-    <reading tn="dwindle, fade" fa="s" ag="finden" ay="s" />
+  <verb in="schw^ö^ren" hi="423500" hp="y" ic="stand">
+    <reading tn="swear, vow" fa="s" ag="heben" />
   </verb>
   <verb in="s^e^hen" hi="45406212" ic="mind.and.body">
     <reading tn="see" fa="s" ag="sehen" />
@@ -3143,11 +3143,11 @@
   <verb in="w^ie^gen" hi="744083" ic="barre">
     <reading tn="weigh" fa="s" ag="fliegen" />
   </verb>
-  <verb in="winken" hi="421400" hp="y" ic="wave">
-    <reading tn="wave, beckon" fa="w" />
-  </verb>
   <verb in="w^i^nden" hi="131800" hp="y" ic="roll">
     <reading tn="wind, twist" fa="s" ag="finden" />
+  </verb>
+  <verb in="winken" hi="421400" hp="y" ic="wave">
+    <reading tn="wave, beckon" fa="w" />
   </verb>
   <verb in="wirken" hi="6758212" ic="strengthtraining.traditional">
     <reading tn="have an effect, work" fa="w" />
@@ -3188,11 +3188,11 @@
   <verb in="zeigen" hi="27939720" ic="walk.arrival">
     <reading tn="show" fa="w" />
   </verb>
-  <verb in="zer*schellen" hi="36200" hp="y" ic="fall">
-    <reading tn="be dashed to pieces" fa="w" ay="s" />
-  </verb>
   <verb in="z^ei^hen" hi="41900" hp="y" ic="handball">
     <reading tn="accuse, impute" fa="s" ag="bleiben" />
+  </verb>
+  <verb in="zer*schellen" hi="36200" hp="y" ic="fall">
+    <reading tn="be dashed to pieces" fa="w" ay="s" />
   </verb>
   <verb in="zer*stören" hi="1722970" ic="boxing">
     <reading tn="destroy" fa="w" />

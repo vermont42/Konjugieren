@@ -556,8 +556,36 @@ private final class Classifier {
     let participles = candidate.forms["perfektpartizip"] ?? []
     let split = Set(candidate.forms.values.flatMap { $0 }.compactMap { $0.split(separator: " ").last.map(String.init) })
 
+    // The shipped inventory only knows the prefixes 1,068 verbs happen to use, which left
+    // 747 incoming verbs unclassifiable: nothing proposed separating the first element of
+    // wegllaufen, niederschreiben, totschlagen or achtgeben, so every hypothesis failed and
+    // the no-prefix fallback produced *geachtgeben* for *achtgegeben*.
+    //
+    // But the evidence for "this element separates" is sitting in the data: German infixes
+    // the participle's ge- *after* a separable first element, so wherever Wiktionary writes
+    // ge- somewhere other than the front, the text before it names the element. Reading the
+    // head off each participle needs no inventory and no maintenance, and it generalizes
+    // past particles to the adjective and noun compounds that behave identically —
+    // kaputtgemacht, eisgelaufen, achtgegeben. A wrong guess costs nothing: every hypothesis
+    // still has to reproduce the entire table before it is accepted.
+    //
+    // Every occurrence of "ge" is tried, not just the first, so that a head which itself
+    // begins with ge- is still found: gegengehalten yields "gegen" only at the second.
+    var discoveredHeads: [String] = []
+    for participle in participles {
+      let characters = Array(participle)
+      for index in 1..<max(1, characters.count - 1) where characters[index] == "g" && characters[index + 1] == "e" {
+        let head = String(characters[0..<index])
+        if word.hasPrefix(head), word.count - head.count >= Verb.minVerbLength {
+          discoveredHeads.append(head)
+        }
+      }
+    }
+    // Inventory first: a well-attested prefix should win over a coincidence of spelling.
+    let separableCandidates = separablePrefixes + discoveredHeads.filter { !separablePrefixes.contains($0) }
+
     var separableHeads: [String] = []
-    for prefix in separablePrefixes where word.hasPrefix(prefix) && word.count - prefix.count >= Verb.minVerbLength {
+    for prefix in separableCandidates where word.hasPrefix(prefix) && word.count - prefix.count >= Verb.minVerbLength {
       if participles.contains(where: { $0.hasPrefix(prefix + "ge") }) || split.contains(prefix) {
         hypotheses.append([.separable(prefix)])
         separableHeads.append(prefix)

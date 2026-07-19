@@ -1039,3 +1039,24 @@ and the generator reported `1 of 990`, set the value to `hp="maybe"` and confirm
 rejected it as "not among the enumerated set", then reverted. A test that has never been seen to
 fail is not yet a test; it is a claim no code checks, which is exactly the thing being guarded
 against.
+
+## Provisional counts, decided (2026-07-19)
+
+Josh chose provisional counts over waiting for BBAW or querying the 87-verb tranche. Recorded in
+the roadmap as a decision rather than an option, so step 7 inherits it instead of re-opening it —
+the point of writing a handoff is that the next session does not redo the deliberation.
+
+One note went in that is less obvious than it looks. Having rejected Leipzig on licensing, there
+is an inviting next thought: we cannot *ship* their numbers, but we could glance at them to place
+our own estimates. That does not work. An estimate informed by their measurements is derived from
+them, and a human retyping the figure in between does not launder it. The rejection was never only
+that the numbers are bad — they are, badly enough to lose on the merits alone — but that they are
+not ours to use commercially. So the note names what the legitimate inputs are instead: register
+and semantics, Wiktionary labels like *archaic* and *regional*, the licensed texts already in
+`corpus/`, and the real DWDS values of shipping verbs to place estimates between.
+
+Worth being honest about what this costs. Displayed ranks across the whole corpus become
+approximate, because the rank is derived globally and a misplaced new verb shifts its neighbours.
+That is a real regression in data quality, accepted deliberately and marked in the data so it can
+be found and undone. Which is the difference between this and the old `fr`: that was also
+guesswork, but nothing recorded which numbers were guesses, so there was nothing to come back to.

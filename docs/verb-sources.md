@@ -398,6 +398,11 @@ Rules:
   question mark in the UI would be noise.
 - **Clearing it is one line per verb.** When permission arrives, re-query with probes, replace
   `hi`, drop `hp`. This is the whole reason step 6 stored counts instead of ranks.
+- **Do not consult a rejected source informally.** Leipzig's numbers are CC BY-NC, and an estimate
+  "informed by" them is still derived from them — a human retyping the figure in between does not
+  launder it. Legitimate inputs are the verb's register and semantics, Wiktionary/kaikki labels
+  such as *archaic* or *regional*, the licensed texts in `corpus/`, and the real `hi` values of
+  shipping verbs.
 
 `verbdata/generate_frequencies_txt.py` reports how many verbs carry `hp`, so the provisional
 population is visible on every regeneration rather than discoverable only by grep.

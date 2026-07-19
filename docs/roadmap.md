@@ -17,7 +17,7 @@ completes.
 | 4 | Regional variety support | [`../prompts/regional_variation.md`](../prompts/regional_variation.md) | ✅ 2026-07-19 | — |
 | 5 | Dual auxiliaries + double-prefix grammar | [`../prompts/dual_auxiliary.md`](../prompts/dual_auxiliary.md) | ✅ 2026-07-19 | step 4 ✅ |
 | 6 | Refactor `fr`: store hits, derive rank | [`verb-sources.md`](verb-sources.md) § "Step 4 in detail" | ✅ 2026-07-19 | — |
-| 7 | Import tranche 1: strong bases | [`verb-sources.md`](verb-sources.md) § step 5 | ⬜ next | steps 4–6 ✅; needs an `hi` policy |
+| 7 | Import tranche 1: strong bases | [`verb-sources.md`](verb-sources.md) § step 5 | ⬜ next | steps 4–6 ✅; `hi` policy decided |
 | 8 | Import tranche 2: prefixed derivatives | [`verb-sources.md`](verb-sources.md) § step 6 | ⬜ | step 5 ✅; needs a wider prefix inventory |
 | 9 | Import tranche 3: weak stems by frequency | [`verb-sources.md`](verb-sources.md) § step 7 | 🚧 blocked | **BBAW reply**; fetch needs probes |
 | 10 | Etymologies, then the docs sweep | [`verb-sources.md`](verb-sources.md) §§ 8–9 | ⬜ | step 7 |
@@ -70,7 +70,7 @@ Each of these is enough to start. The prompts are written to be self-contained.
 
 **Step 7 — import tranche 1, the strong bases**
 
-Decide the `hi` policy before handing this over; see "The blocked one" below.
+The `hi` policy is decided — provisional counts, marked `hp="y"`. See "The blocked one" below.
 
 > Please execute step 5 of the "Recommended next steps" in `docs/verb-sources.md` — the first
 > import tranche, the missing strong bases plus their common derivatives. Start at
@@ -98,14 +98,12 @@ Decide the `hi` policy before handing this over; see "The blocked one" below.
 > Four things to budget per verb, none of which the pipeline decides for you:
 >
 > - **`hi`** — a raw DWDS count, and you cannot invent one. Bulk querying is blocked pending BBAW;
->   follow whatever policy Josh set when handing you this task, and if none was set, ask before
->   fetching. If the answer is provisional counts, read "Provisional hit counts: the `hp`
->   attribute" in `verb-sources.md` and mark every estimate with `hp="y"` — place each estimate
->   between the real counts of verbs you judge it comparable to, rather than picking round
->   numbers. Do **not** reach for Leipzig; it was evaluated and rejected on 2026-07-19, and the
->   section above that one says why. If real counts are authorised,
->   `verbdata/fetch_dwds_frequencies.py` refuses contaminated rows but needs probes: supply two
->   per lemma from kaikki's `forms[]` (`perfektpartizip`, `präsensIndikativ.ts`).
+>   **Josh decided on 2026-07-19 to use provisional counts**, so do not query DWDS for this
+>   tranche. Read "Provisional hit counts: the `hp` attribute" in `verb-sources.md`, mark every
+>   estimate `hp="y"`, and place each one between the real `hi` values of shipping verbs you judge
+>   comparable — not at round numbers, which land the verb wherever that happens to fall. Do
+>   **not** consult Leipzig, even informally: it was evaluated and rejected, and its API data is
+>   CC BY-NC, so an estimate informed by it is still derived from it.
 > - **`ic`** — `#REQUIRED`, 40 distinct SF Symbol suffixes in use, chosen by taste.
 > - **Auxiliary** — the interim policy is in `prompts/dual_auxiliary.md` § "Interim policy". Read
 >   it; do not re-derive it. The DTD takes `h|s|r` and a combined `"hs"` fails validation
@@ -175,19 +173,25 @@ membership — the strong bases, the prefixed derivatives — not by frequency o
 and holds a raw DWDS count, which cannot be assigned by judgment the way the old `fr` rank could.
 Every imported verb therefore needs either a real count or an explicitly provisional one.
 
-Decide this before starting step 7. Three options, and the choice is Josh's:
+**Decided 2026-07-19: import with provisional counts.** Josh chose this over waiting for BBAW
+(unbounded) and over querying just the tranche (~174 requests, a § 44b judgment call nobody here
+is qualified to make). Imported verbs get an `hi` placed by editorial judgment and marked
+`hp="y"`; when permission arrives, re-query with probes, replace `hi`, drop `hp`. Step 6 stored
+counts rather than ranks precisely so that cleanup is one line per verb.
 
-- **Wait for BBAW.** Cleanest, and unbounded in time.
-- **Query just the tranche.** ~87 lemmas, ~174 requests with two probes each. Whether that is
-  citation-scale or the § 44b commercial use BBAW reserved is a judgment call, not a technical one.
-- **Import with provisional counts**, placed by editorial judgment and marked `hp="y"` in the
-  XML. The refactor makes this cheap — a provisional `hi` is one number per verb, and replacing
-  it later is a one-line change rather than a renumber — though the corpus's displayed ranks stay
-  approximate until real counts land, since the rank is derived globally. **Leipzig Corpora was
-  evaluated as a source for this on 2026-07-19 and rejected**: its API data is CC BY-NC, it is
-  1,000× smaller than DWDS, 17 of the 87 strong bases are absent from it entirely, and it measures
-  word forms rather than lemmas. See "Leipzig Corpora Collection was evaluated as a substitute and
-  rejected" in `verb-sources.md`.
+The cost, stated plainly: the corpus's displayed ranks are approximate until real counts land,
+because the rank is derived globally and a misplaced new verb shifts its neighbours.
+
+Two constraints on how estimates are formed:
+
+- **Place them against real counts, not in the abstract.** Pick shipping verbs you judge
+  comparable and take a value between their `hi` values. Round numbers like `100000` land the verb
+  wherever that happens to fall, which is not a judgment about anything.
+- **Do not consult Leipzig's numbers, even informally.** It was evaluated and rejected on
+  2026-07-19 — see `verb-sources.md` — and its API data is CC BY-NC. An estimate "informed by"
+  their measurements is still derived from them; the fact that a human retypes the number in
+  between does not change that. The rejection is not merely that the numbers are bad, though they
+  are; it is that they are not ours to ship.
 
 ## Known gaps that are nobody's step yet
 

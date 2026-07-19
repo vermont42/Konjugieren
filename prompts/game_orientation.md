@@ -1,3 +1,6 @@
+**Status:** ✅ executed in `bbdb8ec` — the orientation hack was replaced by a size-driven
+reflow. Kept for the rationale.
+
 Historically, Konjugieren's supported iPhone orientations were Portrait, Landscape Left, and Landscape Right. This was problematic for the game, which essentially must run in Protrait only. The solution we came up with, which I dislike, was to use a UIKit hack/wrapper to block rotation for the game but not other screens.
 
 I have changed Konjugieren's supported iPhone orientations to Portrait only.

@@ -1,5 +1,10 @@
 # Sweep low-value comments (declutter to CLAUDE.md's comment policy)
 
+**Status:** ✅ executed in `3f7b8fd`. Kept for the rationale; not outstanding work.
+Note that `CLAUDE.md`'s comment policy has since been relaxed for scripts, harnesses,
+and test tooling — see its "Comments" section before applying this to `verbdata/` or
+`KonjugierenTests/Utils/`.
+
 ## Why this exists
 
 Konjugieren's sibling app Conjugar recently ran a comment-only sweep

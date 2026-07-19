@@ -1,6 +1,7 @@
 # Plan: Tutor-Row Kill Switch for Screenshots
 
-**Status:** proposed, not implemented.
+**Status:** ✅ implemented and shipped in `7dd7b88`. Kept for the rationale; the plan
+below describes what was built, not outstanding work.
 **Ported from:** Conjugar, where this shipped 2026-07-18 as `TutorDisplay.tutorUnavailableRowEnabled`.
 **Estimated size:** ~20 lines of app code, plus playbook and journal prose.
 

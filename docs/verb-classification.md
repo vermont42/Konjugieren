@@ -9,9 +9,9 @@ The headline result was not the incoming verbs. It was that **354 of the 985 ver
 already shipped disagreed with Wiktionary**, collapsing into a handful of causes. The pipeline
 was built to import verbs and its first useful act was to audit the ones already here.
 
-Those `Conjugator` defects were fixed the same day, and the count is now **51**. The sections
-below record the audit as it stood before the fix, then what changed. Re-running all three
-stages is the regression test.
+Those defects were fixed the same day — in `Conjugator`, and then in the data — and the count
+is now **14**. The sections below record the audit as it stood before each fix, then what
+changed. Re-running all three stages is the regression test.
 
 ## Running it
 
@@ -49,7 +49,7 @@ disagreement is a defect rather than an unknown.
 
 ## How a hypothesis is tested
 
-The obvious design — try all 66 ablaut groups against all contiguous stem regions for all
+The obvious design — try every shipped ablaut group against all contiguous stem regions for all
 9,217 verbs — is tens of millions of conjugation batches. The pipeline does something cheaper
 and more exact: it **derives** the ablaut rather than searching for it.
 
@@ -62,7 +62,7 @@ and more exact: it **derives** the ablaut rather than searching for it.
 4. Minimize: drop every entry the `Conjugator` can already infer, chiefly the e→i Imperativ
    stem change it derives from the Präsens 2s ablaut. Without this step no derived group would
    ever equal a shipped one.
-5. Compare the minimized group against all 66 shipped groups. Equal means reuse the exemplar's
+5. Compare the minimized group against every shipped group. Equal means reuse the exemplar's
    name; otherwise propose a new group.
 
 Step 3 is the subtle one. The first draft read the replacement straight off the probe by
@@ -121,7 +121,7 @@ The double-prefix cluster is a model limitation rather than a bug in the code. `
 one prefix, so *angehören* (separable *an* over inseparable *ge*) cannot be written; it ships
 as `an+gehören` and produces `angegehört`.
 
-## What it found in the incoming pool
+## What it found in the incoming pool (before the fix)
 
 | Population | Candidates | Verified |
 |---|---|---|
@@ -164,14 +164,17 @@ existing `ConjugatorTests` expectation was touched.
   test is on the infinitive, not the stem: *verheeren*'s stem also ends in `er`, and *tun* and
   *sein* end in `-n` without the syllable (*wir taten*, *seien wir*).
 
+Figures below span the whole day — the epenthetic-e and -ern/-eln fixes in this section,
+plus the ß/ss and prefix-marker passes recorded further down.
+
 | Measure | Before | After |
 |---|---|---|
-| Shipping verbs at odds with Wiktionary | 354 | 51 |
-| Shipping verification rate | 76.0% | 96.4% |
-| Incoming verification rate | 58.5% | 81.3% |
-| Incoming verbs classified | 4,812 | 6,696 |
-| Incoming needing a new ablaut group | 346 | 234 |
-| Distinct new patterns proposed | 52 | 35 |
+| Shipping verbs at odds with Wiktionary | 354 | 14 |
+| Shipping verification rate | 76.0% | 99.0% |
+| Incoming verification rate | 58.5% | 83.3% |
+| Incoming verbs classified | 4,812 | 6,857 |
+| Incoming needing a new ablaut group | 346 | 213 |
+| Distinct new patterns proposed | 52 | 34 |
 
 The last three rows are the point of the sequencing argument below: the same run now proposes
 fewer and simpler groups, because it no longer has to smuggle a missing `-e` into them.

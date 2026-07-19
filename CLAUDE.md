@@ -370,6 +370,11 @@ When asked to create a new conjugationgroup article (e.g., "Please create präse
 
 See [`docs/adding-verbs.md`](docs/adding-verbs.md) for the complete verb-addition guide, including XML formats, the ablaut system, verb families, and lessons learned.
 
+**Expanding the corpus is a sequenced, multi-session project. Start at
+[`docs/roadmap.md`](docs/roadmap.md)**, which gives the order, what gates what, and the prompt to
+hand a fresh session for each step. Do not start importing verbs without reading it: two model
+passes must land first, and the order between them matters.
+
 ## Dependency Injection
 
 The app uses a simple dependency injection pattern via `Models/World.swift`:

@@ -1,10 +1,12 @@
 # Sources for Additional Verbs
 
-Research findings on expanding Konjugieren's verb corpus beyond the current 990. All counts, sizes, and frequencies in this document were measured live on 2026-07-18 against the cited APIs; reproduction recipes appear at the end.
+Research findings on expanding Konjugieren's verb corpus beyond the current 990.
+
+Source counts, sizes, and frequencies were measured live on 2026-07-18 against the cited APIs; reproduction recipes appear at the end. Classification and coverage figures — anything about how many candidate verbs are verified, or how many shipping verbs disagree with Wiktionary — come from the pipeline in [`verb-classification.md`](verb-classification.md) and were last refreshed 2026-07-19. Both are pinned to a kaikki snapshot that refreshes upstream, so re-derive rather than trust; see "Verify counts, do not trust them" at the end.
 
 ## Context
 
-Konjugieren ships 990 verbs (583 weak, 294 strong, 30 mixed, 83 -ieren), the survivors of data cleansing on a frequency-of-use list. The sibling apps Conjuguer (~6,200 verbs) and Conjugar (~4,800) were fed by the "Made Simple(r)" books; no comparable German book is in hand, so the path to parity runs through open data.
+Konjugieren ships 990 verbs (582 weak, 295 strong, 30 mixed, 83 -ieren), the survivors of data cleansing on a frequency-of-use list. The sibling apps Conjuguer (~6,200 verbs) and Conjugar (~4,800) were fed by the "Made Simple(r)" books; no comparable German book is in hand, so the path to parity runs through open data.
 
 A new verb needs everything `Verbs.xml` encodes: infinitive with prefix and ablaut markers (`in`), a short English translation (`tn`), family (`fa`), frequency rank (`fr`), a frequency-icon suffix (`ic`), an ablaut group (`ag`) for strong and mixed verbs, and auxiliary (`ay`). The file's DOCTYPE is the authoritative list; see the handoff section at the end. Each verb ideally also gains entries in `Etymologies.json` and `ExampleSentences.json`. The sources below are therefore rated not just on verb count but on whether glosses, etymologies, and full conjugation tables travel with the verbs in the same pass, so that nothing must be recrawled later.
 
@@ -162,12 +164,27 @@ Wiktionary and Wikipedia text is CC BY-SA 4.0. Deriving the verb database from t
 ## Recommended next steps
 
 1. **Done (2026-07-18).** Download `kaikki.org-dictionary-German-by-pos-verb.jsonl` (293.9 MB): now at `verbdata/kaikki.org-dictionary-German-by-pos-verb.jsonl` (gitignored), all 87,343 records validated, SHA-256 pinned. Provenance, integrity stats, and the re-download recipe live in `verbdata/README.md`. Filtering to single-word lemmas folds into the step-2 pipeline.
-2. **Done (2026-07-19).** The classify-and-verify pipeline is built and has had its first full run: `verbdata/build_candidates.py` → `KonjugierenTests/Utils/VerbClassificationTests.swift` → `verbdata/summarize_classification.py`. Design, invocation, and findings are in [`verb-classification.md`](verb-classification.md). 4,812 of 8,232 incoming verbs classified and externally verified, including 42 of the 44 named missing strong verbs. **It also found that 354 of the 985 shipping verbs disagree with Wiktionary**, in a handful of `Conjugator` clusters — chiefly the epenthetic -e and the -ern/-eln endings. Those fixes should land *before* any import: the pipeline currently works around them inside proposed ablaut groups, and importing first would bake the workarounds into hundreds of verbs.
-3. First tranche: the 87 missing strong bases plus their common derivatives. "Every German strong verb" is a completable, marketable milestone for an ablaut-centric app.
-4. Second tranche: the 2,406 prefixed derivatives of already-supported verbs.
-5. Then new weak stems in DWDS-frequency order until taste says stop; 6,000+ verbs are reachable from the 6,980-verb both-Wiktionaries pool alone.
-6. Feed `etymology_text` into the existing `Etymologies.json` pipeline; kaikki removes the need for the Chrome-based per-page extraction described in `docs/etymologies.md` for new verbs.
-7. On expansion, update the CLAUDE.md sentence promising "1,000 verbs", and decide whether `fr` stays list-based or is re-derived from DWDS for all verbs.
+2. **Done (2026-07-19).** The classify-and-verify pipeline is built and has run repeatedly: `verbdata/build_candidates.py` → `KonjugierenTests/Utils/VerbClassificationTests.swift` → `verbdata/summarize_classification.py`. Design, invocation, and findings are in [`verb-classification.md`](verb-classification.md). **6,857 of 8,232 incoming verbs (83.3%) are classified and externally verified**, including 42 of the 44 named missing strong verbs — the two holdouts, *mahlen* and *spalten*, are wrinkle 4 above — weak Präteritum with strong participle, which the model still cannot express.
+
+   Its first run also found that **354 of the 985 shipping verbs disagreed with Wiktionary**. Those defects were fixed the same day, in `Conjugator` (the epenthetic -e and the -ern/-eln endings) and in the data (the ß/ss alternation and eleven mis-marked prefixes). The corpus now stands at **14 verbs at odds, 99.0% verified**, and that number is the regression test for every step below: re-run the three stages after any change, and it should never rise.
+
+3. **Model passes, before any import.** Two enhancements reshape `Verbs.xml`, `VerbParser`, and `Verb`, and both are cheaper to do before the corpus grows than after.
+   1. [`../prompts/regional_variation.md`](../prompts/regional_variation.md) — variation by **standard variety**: a Region setting, Swiss ß/ss rendering, and the Austrian/Swiss auxiliary of *stehen*, *sitzen*, *liegen*. It also dedupes the 98 incoming Swiss spellings, which would otherwise import as duplicate verbs.
+   2. [`../prompts/dual_auxiliary.md`](../prompts/dual_auxiliary.md) — variation by **meaning**: the `<reading>` model, covering 48 shipping and 418 incoming dual-auxiliary verbs. **This pass also carries the double-prefix grammar**, without which the 1,186 incoming verbs needing a separable prefix over an already-prefixed base (*angehören*, *aufbewahren*) cannot be expressed at all. That is the single largest blocker to the import, and it is invisible from this list unless you read that prompt.
+
+   Order matters: regional first, then dual-auxiliary. Both write into `ay` with different theories of what it means.
+
+4. **Refactor `fr`: store hits, derive rank.** See the section near the end of this document. `fr` is a dense 1–990 rank, so every tranche of new verbs rewrites the `fr` of all incumbents — a large useless diff and an invitation to error. Independent of the DWDS licensing question, and it wants to land before the corpus grows.
+
+5. First tranche: the 87 missing strong bases plus their common derivatives. "Every German strong verb" is a completable, marketable milestone for an ablaut-centric app.
+
+6. Second tranche: the 2,406 prefixed derivatives of already-supported verbs. **Gated on the double-prefix grammar from step 3.2.**
+
+7. Then new weak stems in DWDS-frequency order until taste says stop; 6,000+ verbs are reachable from the 6,980-verb both-Wiktionaries pool alone. **Gated on a reply from BBAW** — see "`fr` is blocked" below and [`dwds-permission-email.md`](dwds-permission-email.md). Steps 5 and 6 are unaffected, since they are defined by membership rather than by frequency order; only this long tail needs a ranking. If no reply arrives, rank by a provisional source and mark it for re-derivation.
+
+8. Feed `etymology_text` into the existing `Etymologies.json` pipeline; kaikki removes the need for the Chrome-based per-page extraction described in `docs/etymologies.md` for new verbs. 5,979 verified incoming verbs carry one.
+
+9. On expansion, update the CLAUDE.md sentence promising "1,000 verbs", and `docs/description.md`, which has shipped a stale count to the App Store before.
 
 ## Reproduction recipes
 
@@ -203,7 +220,7 @@ curl -sG -A "$UA" "https://query.wikidata.org/sparql" --data-urlencode "format=j
 # action=parse&prop=wikitext, then extract bolded verbs from {{Verb Zelle|...}} rows
 ```
 
-## Handoff for step 2 (written 2026-07-19)
+## Handoff for the pipeline work (written 2026-07-19, when it was step 2)
 
 Facts a fresh session needs that are not established above. Each one was verified on the date
 in the heading.
@@ -261,7 +278,7 @@ The declaration, which is the authoritative list of what a verb carries:
 | `fa` | `(w\|s\|m\|i) #REQUIRED` | family: weak, strong, mixed, -ieren |
 | `fr` | `CDATA #REQUIRED` | frequency rank |
 | `ic` | `CDATA #REQUIRED` | frequency-icon suffix, e.g. `cooldown`, `walk.arrival` |
-| `ag` | `CDATA #IMPLIED` | ablaut group; present on exactly the 324 strong and mixed verbs |
+| `ag` | `CDATA #IMPLIED` | ablaut group; present on exactly the 325 strong and mixed verbs |
 | `ay` | `(h\|s) #IMPLIED` | auxiliary; only ever `s` in practice, absence meaning haben. Single-valued, which is a known shortcoming: see below |
 
 Two traps the DTD now catches that it previously could not. `ic` is required and every one of
@@ -298,11 +315,12 @@ DWDS frequency API in bulk**, which is the specific activity their § 44b reserv
 A 990-lemma snapshot already exists at `verbdata/dwds-frequencies.json`, gitignored, and
 `verbdata/fetch_dwds_frequencies.py` regenerates it if permission arrives.
 
-This does not block step 2. It blocks assigning `fr` to newly imported verbs, which is a
-step-3 concern. If step 3 needs to proceed before a reply, rank the new tranche by a
-provisional source and mark it for later re-derivation.
+This does not block the import as such. It blocks **step 7** — ranking the weak long tail by
+frequency. Steps 5 and 6, the strong bases and the prefixed derivatives, are defined by
+membership rather than by frequency order and can proceed without a reply. If step 7 must
+proceed anyway, rank the tranche by a provisional source and mark it for re-derivation.
 
-### Recommendation not yet implemented: store hits, derive rank
+### Step 4 in detail: store hits, derive rank
 
 `fr` is currently a dense unique rank from 1 to 990, stored per verb. That means every tranche
 of new verbs rewrites the `fr` of all incumbents, which is a large useless diff and an

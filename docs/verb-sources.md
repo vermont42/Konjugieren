@@ -120,7 +120,7 @@ The last row is the frequency surprise of the investigation: küren out-polls ev
 
 1. **Dual paradigms.** sieden, küren, weben, and gären each have parallel strong and weak conjugation sets, both current. The model supports one paradigm per verb; either pick house style per verb or extend the model.
 2. **Variant principal parts.** spinnen (spann beside archaic sponn), schwören (schwor beside archaic schwur), melken (milkt/melkt, molk/melkte).
-3. **Dual auxiliaries.** schmelzen takes sein intransitively and haben transitively; `ay` is single-valued.
+3. **Dual auxiliaries.** schmelzen takes sein intransitively and haben transitively; `ay` is single-valued. Measured against kaikki, 469 single-word lemmas are dual-auxiliary: **51 already ship in Konjugieren** with one reading silently wrong, and 418 are in the incoming pool. The full analysis, the five classes involved, and the deferred work plan are in [`../prompts/dual_auxiliary.md`](../prompts/dual_auxiliary.md); its interim policy governs until that pass runs.
 4. **Weak Präteritum with strong participle.** mahlen, salzen, spalten (mahlte, gemahlen). Neither the current mixed family (vowel change plus weak endings) nor the weak family fits; a new family or ablaut-group full overrides (the `*` suffix mechanism) would cover them.
 5. **Multiword lemmas.** 1,048 English-Wiktionary titles are idioms and phrases; the model is single-word infinitives, so filter them out.
 6. **Soft-redirect senses.** mahlen's second English-Wiktionary sense is "obsolete spelling of malen"; sense-level filtering must keep such cruft out of `tn`.

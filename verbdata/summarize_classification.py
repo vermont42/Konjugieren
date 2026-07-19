@@ -25,7 +25,18 @@ IMPERATIV_2P = "Imperativ 2p: missing epenthetic -e after a d/t stem"
 SPURIOUS_E = "Spurious epenthetic -e where German has none"
 MISSING_E = "Missing epenthetic -e outside the Imperativ"
 
-VARIANT_SPELLING = re.compile(r"ey|ss(?:en|eln|ern)$")
+ARCHAIC_SPELLING = re.compile(r"ey")
+
+
+def swiss_spelling(word, verified_words):
+    """Whether word is the Swiss spelling of a verb also present with ß.
+
+    Swiss Standard German does not use ß at all — it is a current national standard,
+    not an obsolete spelling, and the two forms are the same verb. Shipping both would
+    duplicate the lemma; the alternation belongs in rendering, not in the corpus.
+    """
+    return "ss" in word and word.replace("ß", "ss") == word and any(
+        other != word and other.replace("ß", "ss") == word for other in verified_words)
 
 
 def epenthetic(expected_forms, got):
@@ -211,7 +222,9 @@ def main():
                "mean the encoding is idiomatic, nor that Wiktionary's table was the only one.")
     out.append("")
     dual = [entry for entry in verified(incoming) if entry["dualAuxiliary"]]
-    variants = [entry for entry in verified(incoming) if VARIANT_SPELLING.search(entry["word"])]
+    verified_words = {entry["word"] for entry in verified(entries)}
+    archaic = [entry for entry in verified(incoming) if ARCHAIC_SPELLING.search(entry["word"])]
+    swiss = [entry for entry in verified(incoming) if swiss_spelling(entry["word"], verified_words)]
     disagree = [entry for entry in verified(entries) if family_disagrees(entry)]
     contrived = [entry for entry in verified(incoming) if person_split(entry.get("proposedAblautPattern"))]
     out.append(table([
@@ -220,7 +233,9 @@ def main():
          "second paradigm this run never saw", len(disagree), ", ".join(e["word"] for e in disagree[:6])],
         ["Proposed group varies by person inside a past tense, so it is probably encoding "
          "an ending rather than ablaut", len(contrived), ", ".join(e["word"] for e in contrived[:4])],
-        ["Obsolete or Swiss spelling (ey-, -ss- for -ß-)", len(variants), ", ".join(e["word"] for e in variants[:4])],
+        ["Swiss Standard German spelling of a verb already present with ß — the same "
+         "verb, not a second one. Do not import both.", len(swiss), ", ".join(e["word"] for e in swiss[:4])],
+        ["Archaic spelling (ey-)", len(archaic), ", ".join(e["word"] for e in archaic[:4])],
         ["Carries an etymology from kaikki", sum(1 for e in verified(incoming) if e["hasEtymology"]), ""],
     ], ["Flag", "Verbs", "Examples"]))
     out.append("")

@@ -11,6 +11,7 @@ Stage B (KonjugierenTests/Utils/VerbClassificationTests.swift) consumes that fil
 """
 
 import argparse
+import collections
 import json
 import pathlib
 import re
@@ -132,6 +133,13 @@ def main():
     parser.add_argument("--include-existing", action="store_true",
                         help="Also emit the 990 verbs already in Verbs.xml, as a regression oracle.")
     parser.add_argument("--limit", type=int, default=0, help="Emit at most N candidates (smoke tests).")
+    parser.add_argument("--all-records", action="store_true",
+                        help="Emit every Wiktionary record per lemma, not just the first. Wiktionary "
+                             "splits separable/inseparable homographs across Etymology sections, so the "
+                             "default single-record view drops one reading of übersetzen, durchbrechen, "
+                             "umfahren and ~200 others. Required for the dual-auxiliary pass; see "
+                             "prompts/dual_auxiliary.md. Records gain a 'recordIndex' field, and the "
+                             "classifier keys on 'word', so do not feed this file to Stage B unmodified.")
     args = parser.parse_args()
 
     if not KAIKKI.exists():
@@ -140,6 +148,7 @@ def main():
     existing = current_infinitives()
     candidates = []
     seen = set()
+    record_index = collections.Counter()
     stats = {"records": 0, "lemmas": 0, "multiword": 0, "already_shipping": 0, "duplicate": 0, "no_table": 0}
 
     with KAIKKI.open() as handle:
@@ -156,9 +165,10 @@ def main():
             if word in existing and not args.include_existing:
                 stats["already_shipping"] += 1
                 continue
-            if word in seen:
-                # Wiktionary splits homographs across Etymology sections; the first
-                # record wins and the collision is reported in the report's notes.
+            # Wiktionary splits homographs across Etymology sections. By default the
+            # first record wins, because Stage B keys on the infinitive and cannot hold
+            # two readings of one verb. --all-records keeps them for the pass that can.
+            if word in seen and not args.all_records:
                 stats["duplicate"] += 1
                 continue
             candidate = extract(record)
@@ -166,6 +176,8 @@ def main():
                 stats["no_table"] += 1
                 continue
             candidate["alreadyShipping"] = word in existing
+            candidate["recordIndex"] = record_index[word]
+            record_index[word] += 1
             seen.add(word)
             candidates.append(candidate)
             if args.limit and len(candidates) >= args.limit:

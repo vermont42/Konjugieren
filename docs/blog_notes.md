@@ -896,3 +896,45 @@ Also marked steps 3 and 4 of "Recommended next steps" as done, since both had ru
 written in the future tense, and renamed the "`fr` is blocked" section to "`hi` is blocked". The
 remaining `fr` mentions are all inside the section that documents the refactor's own reasoning,
 where the old name is the subject rather than a live instruction.
+
+## Writing the step-7 prompt, and what writing it exposed (2026-07-19)
+
+Josh asked what to hand a fresh session for the first import tranche. Writing that prompt turned
+out to be a better audit of the docs than reading them, because a prompt has to be *actionable* —
+every pointer in it gets followed, every number gets used — and three of them did not survive
+the attempt.
+
+The first is the one that matters. Both `roadmap.md` and `verb-sources.md` said steps 7 and 8
+could proceed without a reply from BBAW, because those tranches are defined by membership rather
+than by frequency order. That was true this morning and is not true this afternoon, and the thing
+that changed it was my own refactor. `fr` was a rank, and a human could assign one by judgment —
+slot the new verb in around 400 and move on. `hi` is a raw DWDS hit count, it is `#REQUIRED`, and
+it cannot be invented. So an import of 87 strong bases now needs 87 real counts, and bulk querying
+is exactly what the § 44b reservation covers.
+
+This is worth dwelling on, because the refactor was right and still moved a blocker. The old design
+let the corpus grow on made-up numbers; the honesty of the new one is that a number you cannot
+source is a number you have to decide about. The decision is Josh's — wait, query just the tranche,
+or import provisional counts marked for re-derivation — so the roadmap now states it as an open
+choice with the tradeoffs, rather than continuing to claim the step is unblocked.
+
+The second: `verb-sources.md` ends with a section titled "Verify counts, do not trust them," whose
+closing line is "See the recipe at the top of `etymology-pipeline.md`." There is no
+`etymology-pipeline.md` in this repo and, as far as I can tell, never has been. A warning about
+stale documentation, pointing at a file that does not exist. I inlined the three-line recipe
+instead, which is short enough that it should have been inline from the start — a pointer to
+something that small is all risk and no benefit.
+
+The third: `docs/frequencies.txt` lists "all 988 verbs sorted by frequency rank," and
+`docs/etymologies.md` recommends handing it to subagents as a lemma list so they need not parse
+`Verbs.xml`. It is wrong about the count (990) and now wrong in kind, since ranks are derived
+rather than stored. That is precisely the "convenient cached copy that drifts" pattern this repo
+has paid for repeatedly, so it is filed as a known gap: regenerate or delete, but do not hand it
+to a session as truth.
+
+The prompt itself leans on a technique worth naming. Two of its lines are "do not trust the verb
+counts in the prose" and "any example you remember is wrong." Both target the same failure mode: a
+fresh session arrives with confident priors drawn from documents that were accurate when written.
+Generic advice to be careful does not help, because the session does not know which of its beliefs
+are the stale ones. Naming the specific memories to distrust — the 87-versus-44 discrepancy, the
+pre-reading-model XML examples — is what makes the warning usable.

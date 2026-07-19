@@ -17,7 +17,7 @@ completes.
 | 4 | Regional variety support | [`../prompts/regional_variation.md`](../prompts/regional_variation.md) | ✅ 2026-07-19 | — |
 | 5 | Dual auxiliaries + double-prefix grammar | [`../prompts/dual_auxiliary.md`](../prompts/dual_auxiliary.md) | ✅ 2026-07-19 | step 4 ✅ |
 | 6 | Refactor `fr`: store hits, derive rank | [`verb-sources.md`](verb-sources.md) § "Step 4 in detail" | ✅ 2026-07-19 | — |
-| 7 | Import tranche 1: strong bases | [`verb-sources.md`](verb-sources.md) § step 5 | ⬜ next | steps 4–6 ✅ |
+| 7 | Import tranche 1: strong bases | [`verb-sources.md`](verb-sources.md) § step 5 | ⬜ next | steps 4–6 ✅; needs an `hi` policy |
 | 8 | Import tranche 2: prefixed derivatives | [`verb-sources.md`](verb-sources.md) § step 6 | ⬜ | step 5 ✅; needs a wider prefix inventory |
 | 9 | Import tranche 3: weak stems by frequency | [`verb-sources.md`](verb-sources.md) § step 7 | 🚧 blocked | **BBAW reply**; fetch needs probes |
 | 10 | Etymologies, then the docs sweep | [`verb-sources.md`](verb-sources.md) §§ 8–9 | ⬜ | step 7 |
@@ -68,10 +68,57 @@ Each of these is enough to start. The prompts are written to be self-contained.
 > records the exact post-step-4 state of the `ay` attribute and the three `ay="r"` verbs you must
 > not disturb.
 
-**Steps 7 onward — the import**
+**Step 7 — import tranche 1, the strong bases**
 
-> Please execute step 5 of the "Recommended next steps" in `docs/verb-sources.md`, using the
-> pipeline described in `docs/verb-classification.md`.
+Decide the `hi` policy before handing this over; see "The blocked one" below.
+
+> Please execute step 5 of the "Recommended next steps" in `docs/verb-sources.md` — the first
+> import tranche, the missing strong bases plus their common derivatives. Start at
+> `docs/roadmap.md`; steps 1–6 are done and step 7 is this one.
+>
+> **Baseline the classify-and-verify pipeline before you touch anything.** The recipe is in
+> roadmap.md § "The one check that runs through all of it". The at-odds count is **8** and must
+> never rise. Re-run it after each batch, not just at the end — a tranche import can regress a
+> shipping verb through a shared ablaut group.
+>
+> **Do not trust the verb counts in the prose.** `verb-sources.md` says 87 missing strong bases
+> in one place and "44 named" in another; those are different populations and at least one is
+> stale. Re-derive by set difference against `Konjugieren/Models/Verbs.xml`, the only source of
+> truth; the recipe is in that file's "Verify counts, do not trust them" section. `docs/frequencies.txt`
+> is stale twice over — 988 verbs, and ranks that are now derived — so do not use it as a lemma list.
+>
+> Read `docs/adding-verbs.md` first: the XML format changed twice on 2026-07-19 and any example
+> you remember is wrong. Each `<verb>` now holds one or more `<reading>` children; `fr` is retired
+> and `hi` holds a raw DWDS hit count, with the displayed rank derived at parse time. A **Validate
+> Verbs.xml** build phase runs `xmllint --valid`, so a malformed verb fails the build with a
+> file-and-line diagnostic rather than shipping silently.
+>
+> Four things to budget per verb, none of which the pipeline decides for you:
+>
+> - **`hi`** — a raw DWDS count, and you cannot invent one. Bulk querying is blocked pending BBAW;
+>   follow whatever policy Josh set when handing you this task, and if none was set, ask before
+>   fetching. `verbdata/fetch_dwds_frequencies.py` refuses contaminated rows but needs probes:
+>   supply two per lemma from kaikki's `forms[]` (`perfektpartizip`, `präsensIndikativ.ts`).
+> - **`ic`** — `#REQUIRED`, 40 distinct SF Symbol suffixes in use, chosen by taste.
+> - **Auxiliary** — the interim policy is in `prompts/dual_auxiliary.md` § "Interim policy". Read
+>   it; do not re-derive it. The DTD takes `h|s|r` and a combined `"hs"` fails validation
+>   intentionally. Note the pipeline **cannot** check auxiliaries — it never compares a compound
+>   tense — so a wrong `ay` will not move the at-odds count. Guard new ones with `ConjugatorTests`
+>   cases on `perfektIndikativ`.
+> - **Ablaut group** — 68 ship today. The classifier proposes new ones, and strong bases are
+>   exactly the population most likely to need them. New groups go in `AblautGroups.xml`.
+>
+> Do **not** mark prefixed derivatives regional (`ay="r"`). That attribute is owned by exactly
+> three verbs — *stehen*, *sitzen*, *liegen* — and their derivatives have lexicalized away from the
+> positional sense (*bestehen* = to pass, not to be standing). See "Why this order" below.
+>
+> Two known gaps that bite in this tranche specifically. *mahlen* and *spalten* are weak Präteritum
+> with strong participle, which neither family expresses — they need a new family or a full-override
+> ablaut group, and are wrinkle 4 in `verb-sources.md`. And the de.wikipedia list is deliberately
+> exhaustive, reaching into the attic (*kiesen*, *brinnen*, *eischen*): an editorial pass should
+> decide how deep to go, and the pedagogical core is perhaps 60 of the 87.
+>
+> Commit directly to `main`, and append a narrative entry to `docs/blog_notes.md` as you go.
 
 ## Why this order
 
@@ -115,9 +162,22 @@ frequency source. BBAW reserves § 44b UrhG, so bulk querying and shipping deriv
 written permission. The request went to `dwds@bbaw.de` on 2026-07-19; see
 [`dwds-permission-email.md`](dwds-permission-email.md).
 
-**This blocks only step 9.** Steps 7 and 8 are defined by membership — the strong bases, the
-prefixed derivatives — not by frequency order, so the import can start without a reply. If none
-arrives, rank that tranche by a provisional source and mark it for re-derivation.
+**It blocks step 9 outright, and now touches steps 7 and 8 too.** Those two are defined by
+membership — the strong bases, the prefixed derivatives — not by frequency order, so their
+*selection* needs no reply. But step 6 changed what an import must supply: `hi` is `#REQUIRED`
+and holds a raw DWDS count, which cannot be assigned by judgment the way the old `fr` rank could.
+Every imported verb therefore needs either a real count or an explicitly provisional one.
+
+Decide this before starting step 7. Three options, and the choice is Josh's:
+
+- **Wait for BBAW.** Cleanest, and unbounded in time.
+- **Query just the tranche.** ~87 lemmas, ~174 requests with two probes each. Whether that is
+  citation-scale or the § 44b commercial use BBAW reserved is a judgment call, not a technical one.
+- **Import with provisional counts** from a permissive source (Leipzig Corpora is CC BY), marked
+  for re-derivation. The refactor makes this cheaper than it would have been — a provisional `hi`
+  is one number per verb, and replacing it later is a one-line change rather than a renumber — but
+  the whole corpus's displayed ranks stay provisional until real counts land, since the rank is
+  derived globally.
 
 ## Known gaps that are nobody's step yet
 
@@ -147,6 +207,10 @@ Small things the pipeline surfaced that no plan currently owns. None blocks the 
   correct code.
 - **Three modals resist the pipeline** — *sollen*, *bedürfen*, *vermögen* use full-override
   ablaut groups the classifier cannot derive. Probably correct as shipped; unverified.
+- **`docs/frequencies.txt` is stale twice over** — it lists 988 verbs (the corpus is 990) and
+  calls its numbers frequency ranks, which are now derived from `hi` rather than stored. It is
+  referenced by `docs/etymologies.md` as a lemma list for subagent work. Regenerate it from
+  `Verbs.xml` or delete it; do not hand it to a session as a source of truth.
 - **Everything in `prompts/` is now executed** and carries a status line saying so.
 - **Swiss infinitive display beyond `VerbView`** — the ß→ss transform now covers displayed
   infinitives (headline, nav title, browse rows, quiz prompt, results, family cards) and search

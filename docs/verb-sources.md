@@ -414,5 +414,14 @@ it did when this section was written.
 Three documents in this repo claimed 989 verbs well after the corpus reached 990, and
 `docs/description.md` shipped that number to the App Store. The stale copies were all prose
 that no code consumed. `Konjugieren/Models/Verbs.xml` is the single source of truth; check
-coverage by set difference rather than by comparing to a number written in a document. See the
-recipe at the top of `etymology-pipeline.md`.
+coverage by set difference rather than by comparing to a number written in a document.
+
+This section used to point at a recipe in `etymology-pipeline.md`, a file that does not exist,
+which is the failure it warns about wearing its own clothes. The recipe, inlined so it cannot
+rot again:
+
+```python
+import re, xml.etree.ElementTree as ET
+shipping = {re.sub(r'[+*^]', '', v.get('in')) for v in ET.parse('Konjugieren/Models/Verbs.xml').getroot()}
+print(len(shipping), sorted(candidates - shipping)[:20])
+```

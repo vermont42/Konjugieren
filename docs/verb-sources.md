@@ -162,7 +162,7 @@ Wiktionary and Wikipedia text is CC BY-SA 4.0. Deriving the verb database from t
 ## Recommended next steps
 
 1. **Done (2026-07-18).** Download `kaikki.org-dictionary-German-by-pos-verb.jsonl` (293.9 MB): now at `verbdata/kaikki.org-dictionary-German-by-pos-verb.jsonl` (gitignored), all 87,343 records validated, SHA-256 pinned. Provenance, integrity stats, and the re-download recipe live in `verbdata/README.md`. Filtering to single-word lemmas folds into the step-2 pipeline.
-2. Build the classify-and-verify pipeline against `Conjugator`.
+2. **Done (2026-07-19).** The classify-and-verify pipeline is built and has had its first full run: `verbdata/build_candidates.py` → `KonjugierenTests/Utils/VerbClassificationTests.swift` → `verbdata/summarize_classification.py`. Design, invocation, and findings are in [`verb-classification.md`](verb-classification.md). 4,812 of 8,232 incoming verbs classified and externally verified, including 42 of the 44 named missing strong verbs. **It also found that 354 of the 985 shipping verbs disagree with Wiktionary**, in a handful of `Conjugator` clusters — chiefly the epenthetic -e and the -ern/-eln endings. Those fixes should land *before* any import: the pipeline currently works around them inside proposed ablaut groups, and importing first would bake the workarounds into hundreds of verbs.
 3. First tranche: the 87 missing strong bases plus their common derivatives. "Every German strong verb" is a completable, marketable milestone for an ablaut-centric app.
 4. Second tranche: the 2,406 prefixed derivatives of already-supported verbs.
 5. Then new weak stems in DWDS-frequency order until taste says stop; 6,000+ verbs are reachable from the 6,980-verb both-Wiktionaries pool alone.

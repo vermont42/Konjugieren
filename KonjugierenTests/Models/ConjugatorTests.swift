@@ -56,8 +56,8 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "sehen", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "sIEht")
     expectConjugation(infinitiv: "sehen", conjugationgroup: .präsensIndikativ(.firstPlural), expected: "sehen")
 
-    expectConjugation(infinitiv: "lassen", conjugationgroup: .präsensIndikativ(.secondSingular), expected: "lÄssEst")
-    expectConjugation(infinitiv: "lassen", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "lÄsst")
+    expectConjugation(infinitiv: "lassen", conjugationgroup: .präsensIndikativ(.secondSingular), expected: "lÄSSt")
+    expectConjugation(infinitiv: "lassen", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "lÄSSt")
 
     expectConjugation(infinitiv: "sein", conjugationgroup: .präsensIndikativ(.firstSingular), expected: "BIN")
     expectConjugation(infinitiv: "sein", conjugationgroup: .präsensIndikativ(.secondSingular), expected: "BIst")
@@ -343,9 +343,9 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "treffen", conjugationgroup: .perfektpartizip, expected: "getrOFFen")
 
     // Note: German spelling would convert ß→ss after short vowel, but conjugator preserves consonant
-    expectConjugation(infinitiv: "schließen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "schlOß")
-    expectConjugation(infinitiv: "schließen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "schlÖße")
-    expectConjugation(infinitiv: "schließen", conjugationgroup: .perfektpartizip, expected: "geschlOßen")
+    expectConjugation(infinitiv: "schließen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "schlOSS")
+    expectConjugation(infinitiv: "schließen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "schlÖSSe")
+    expectConjugation(infinitiv: "schließen", conjugationgroup: .perfektpartizip, expected: "geschlOSSen")
 
     expectConjugation(infinitiv: "heißen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "hIEß")
     expectConjugation(infinitiv: "heißen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "hIEße")
@@ -422,9 +422,9 @@ struct ConjugatorTests {
 
     // Note: genießen uses schließen pattern, ge- is inseparable prefix (no double ge-)
     // German spelling would convert ß→ss after short vowel, but conjugator preserves consonant
-    expectConjugation(infinitiv: "genießen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "genOß")
-    expectConjugation(infinitiv: "genießen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "genÖße")
-    expectConjugation(infinitiv: "genießen", conjugationgroup: .perfektpartizip, expected: "genOßen")
+    expectConjugation(infinitiv: "genießen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "genOSS")
+    expectConjugation(infinitiv: "genießen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "genÖSSe")
+    expectConjugation(infinitiv: "genießen", conjugationgroup: .perfektpartizip, expected: "genOSSen")
 
     expectConjugation(infinitiv: "bitten", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "bAT")
     expectConjugation(infinitiv: "bitten", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "bÄTe")
@@ -432,10 +432,10 @@ struct ConjugatorTests {
 
     // Note: German spelling ß/ss rules not automatically applied by conjugator
     // Perfektpartizip "gegessen" uses full override due to irregular form
-    expectConjugation(infinitiv: "essen", conjugationgroup: .präsensIndikativ(.secondSingular), expected: "Isst")
-    expectConjugation(infinitiv: "essen", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "Isst")
-    expectConjugation(infinitiv: "essen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "Ass")
-    expectConjugation(infinitiv: "essen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "Ässe")
+    expectConjugation(infinitiv: "essen", conjugationgroup: .präsensIndikativ(.secondSingular), expected: "ISSt")
+    expectConjugation(infinitiv: "essen", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "ISSt")
+    expectConjugation(infinitiv: "essen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "Aẞ")
+    expectConjugation(infinitiv: "essen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "Äẞe")
     expectConjugation(infinitiv: "essen", conjugationgroup: .perfektpartizip, expected: "gegEssen")
 
     expectConjugation(infinitiv: "sterben", conjugationgroup: .präsensIndikativ(.secondSingular), expected: "stIrbst")
@@ -445,9 +445,9 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "sterben", conjugationgroup: .perfektpartizip, expected: "gestOrben")
 
     // Note: German spelling ß/ss rules not automatically applied by conjugator
-    expectConjugation(infinitiv: "vergessen", conjugationgroup: .präsensIndikativ(.secondSingular), expected: "vergIsst")
-    expectConjugation(infinitiv: "vergessen", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "vergIsst")
-    expectConjugation(infinitiv: "vergessen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "vergAss")
+    expectConjugation(infinitiv: "vergessen", conjugationgroup: .präsensIndikativ(.secondSingular), expected: "vergISSt")
+    expectConjugation(infinitiv: "vergessen", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "vergISSt")
+    expectConjugation(infinitiv: "vergessen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "vergAẞ")
     expectConjugation(infinitiv: "vergessen", conjugationgroup: .perfektpartizip, expected: "vergessen")
 
     expectConjugation(infinitiv: "erfahren", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "erfÄhrt")
@@ -699,8 +699,8 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "brechen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "brAch")
     expectConjugation(infinitiv: "brechen", conjugationgroup: .perfektpartizip, expected: "gebrOchen")
 
-    expectConjugation(infinitiv: "messen", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "mIsst")
-    expectConjugation(infinitiv: "messen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "mAss")
+    expectConjugation(infinitiv: "messen", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "mISSt")
+    expectConjugation(infinitiv: "messen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "mAẞ")
     expectConjugation(infinitiv: "messen", conjugationgroup: .perfektpartizip, expected: "gemessen")
   }
 
@@ -787,9 +787,9 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "mögen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "mÖCHte")
     expectConjugation(infinitiv: "mögen", conjugationgroup: .perfektpartizip, expected: "gemOCHt")
 
-    expectConjugation(infinitiv: "wissen", conjugationgroup: .präsensIndikativ(.firstSingular), expected: "wEIsS")
-    expectConjugation(infinitiv: "wissen", conjugationgroup: .präsensIndikativ(.secondSingular), expected: "wEISst")
-    expectConjugation(infinitiv: "wissen", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "wEIsS")
+    expectConjugation(infinitiv: "wissen", conjugationgroup: .präsensIndikativ(.firstSingular), expected: "wEIẞ")
+    expectConjugation(infinitiv: "wissen", conjugationgroup: .präsensIndikativ(.secondSingular), expected: "wEIẞt")
+    expectConjugation(infinitiv: "wissen", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "wEIẞ")
     expectConjugation(infinitiv: "wissen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "wUSSte")
     expectConjugation(infinitiv: "wissen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "wÜSSte")
     expectConjugation(infinitiv: "wissen", conjugationgroup: .perfektpartizip, expected: "gewUSSt")
@@ -806,6 +806,71 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "arbeiten", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "arbeitet")
     expectConjugation(infinitiv: "arbeiten", conjugationgroup: .präsensIndikativ(.secondPlural), expected: "arbeitet")
     expectConjugation(infinitiv: "kosten", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "kostet")
+  }
+
+  // Every expectation below is Wiktionary's, via the classify-and-verify pipeline in
+  // docs/verb-classification.md, not the engine's own output.
+
+  @Test func epentheticEInImperativ() {
+    expectConjugation(infinitiv: "arbeiten", conjugationgroup: .imperativ(.secondPlural), expected: "arbeitet")
+    expectConjugation(infinitiv: "arbeiten", conjugationgroup: .imperativ(.secondSingular), expected: "arbeite")
+    expectConjugation(infinitiv: "halten", conjugationgroup: .imperativ(.secondPlural), expected: "haltet")
+    expectConjugation(infinitiv: "atmen", conjugationgroup: .imperativ(.secondSingular), expected: "atme")
+    expectConjugation(infinitiv: "atmen", conjugationgroup: .imperativ(.secondPlural), expected: "atmet")
+    // A strong verb that changes its stem keeps the bare imperative.
+    expectConjugation(infinitiv: "gelten", conjugationgroup: .imperativ(.secondSingular), expected: "gIlt")
+    expectConjugation(infinitiv: "ändern", conjugationgroup: .imperativ(.secondPlural), expected: "ändert")
+  }
+
+  @Test func epentheticEInStrongAndMixedVerbs() {
+    // An unablauted d/t stem takes the -e: du findest, er findet, ihr fandet.
+    expectConjugation(infinitiv: "finden", conjugationgroup: .präsensIndikativ(.secondSingular), expected: "findest")
+    expectConjugation(infinitiv: "finden", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "findet")
+    expectConjugation(infinitiv: "finden", conjugationgroup: .präteritumIndikativ(.secondSingular), expected: "fAndest")
+    expectConjugation(infinitiv: "finden", conjugationgroup: .präteritumIndikativ(.secondPlural), expected: "fAndet")
+    // An ablauted one keeps the endingless 3s: er hält, but ihr haltet.
+    expectConjugation(infinitiv: "halten", conjugationgroup: .präsensIndikativ(.secondSingular), expected: "hÄltst")
+    expectConjugation(infinitiv: "halten", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "hÄlt")
+    expectConjugation(infinitiv: "halten", conjugationgroup: .präsensIndikativ(.secondPlural), expected: "haltet")
+    expectConjugation(infinitiv: "halten", conjugationgroup: .präteritumIndikativ(.secondPlural), expected: "hIEltet")
+    // Mixed: the Präsens takes the -e, the Präteritum and Partizip do not.
+    expectConjugation(infinitiv: "senden", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "sendet")
+  }
+
+  @Test func epentheticEIsNotOverapplied() {
+    // A doubled consonant closes the syllable on its own: stimmte, not stimmete.
+    expectConjugation(infinitiv: "stimmen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "stimmte")
+    expectConjugation(infinitiv: "stimmen", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "stimmt")
+    // A Dehnungs-h lengthens the vowel rather than closing the syllable: ahnte, wohnte.
+    expectConjugation(infinitiv: "ahnen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "ahnte")
+    expectConjugation(infinitiv: "wohnen", conjugationgroup: .präsensIndikativ(.secondSingular), expected: "wohnst")
+    expectConjugation(infinitiv: "lehnen", conjugationgroup: .perfektpartizip, expected: "gelehnt")
+    // The h of rechnen and zeichnen is half of ch, a real cluster, and does take one.
+    expectConjugation(infinitiv: "rechnen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "rechnete")
+    expectConjugation(infinitiv: "zeichnen", conjugationgroup: .präsensIndikativ(.secondSingular), expected: "zeichnest")
+    expectConjugation(infinitiv: "öffnen", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "öffnet")
+  }
+
+  @Test func epentheticEInPerfektpartizip() {
+    expectConjugation(infinitiv: "atmen", conjugationgroup: .perfektpartizip, expected: "geatmet")
+    expectConjugation(infinitiv: "rechnen", conjugationgroup: .perfektpartizip, expected: "gerechnet")
+    expectConjugation(infinitiv: "trocknen", conjugationgroup: .perfektpartizip, expected: "getrocknet")
+    expectConjugation(infinitiv: "ordnen", conjugationgroup: .perfektpartizip, expected: "geordnet")
+    expectConjugation(infinitiv: "ahnen", conjugationgroup: .perfektpartizip, expected: "geahnt")
+    expectConjugation(infinitiv: "stimmen", conjugationgroup: .perfektpartizip, expected: "gestimmt")
+  }
+
+  @Test func syllabicStammVerbs() {
+    // An -ern or -eln stem already carries the e: wir ändern, not wir änderen.
+    expectConjugation(infinitiv: "ändern", conjugationgroup: .präsensIndikativ(.firstPlural), expected: "ändern")
+    expectConjugation(infinitiv: "ändern", conjugationgroup: .präsensIndikativ(.thirdPlural), expected: "ändern")
+    expectConjugation(infinitiv: "ändern", conjugationgroup: .präsensKonjunktivI(.firstPlural), expected: "ändern")
+    expectConjugation(infinitiv: "ändern", conjugationgroup: .präsenspartizip, expected: "ändernd")
+    expectConjugation(infinitiv: "wandern", conjugationgroup: .präsensIndikativ(.thirdPlural), expected: "wandern")
+    // tun and sein end in -n without the syllable, so they keep -en.
+    expectConjugation(infinitiv: "tun", conjugationgroup: .präteritumIndikativ(.firstPlural), expected: "tATen")
+    expectConjugation(infinitiv: "tun", conjugationgroup: .präsenspartizip, expected: "tuend")
+    expectConjugation(infinitiv: "sein", conjugationgroup: .präsensKonjunktivI(.firstPlural), expected: "seien")
   }
 
   @Test func conjugationErrorPaths() {

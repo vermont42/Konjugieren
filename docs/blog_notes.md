@@ -256,3 +256,257 @@ a caret under the offending element, and `build_app.sh` exited 65. A first attem
 this read the exit status of a `tail` at the end of a pipeline rather than of the build, and
 reported 0. Worth remembering: `$?` after a pipeline is the last command's, and the shape of
 that mistake is exactly the one that lets a decorative check pass for a real one.
+
+## The importer that audited the corpus it was meant to grow (2026-07-19)
+
+Step 2 of `verb-sources.md` was "build the classify-and-verify pipeline against `Conjugator`."
+The premise from step 1 was that classification need not be manual at 6,000-verb scale:
+hypothesize an encoding, generate all conjugations, compare against Wiktionary's table, and an
+exact match confirms family, ablaut group, region, and prefix at once. That premise held. What
+it produced first, though, was not new verbs. It was a bug report about the 990 already here.
+
+The first design decision was where the thing lives. `Conjugator.conjugate` resolves verbs
+through `Verb.verbs`, so a candidate cannot be conjugated until it has been inserted into that
+dictionary, and only `@testable import Konjugieren` reaches it. So the harness is a test suite,
+gated on an environment variable because it mutates `Verb.verbs` and `AblautGroup.ablautGroups`
+while every other suite reads them. `xcodebuild` forwards host environment variables to the
+test process only under a `TEST_RUNNER_` prefix, which took a minute to remember.
+
+The interesting engineering was in how a hypothesis gets tested. Brute force over 66 ablaut
+groups × every stem region × 9,217 verbs is tens of millions of batches, so the pipeline
+derives the ablaut instead of searching for it: probe `Conjugator` with a sentinel replacement
+to see where the region lands, then read the required replacement off Wiktionary's form. That
+first draft was wrong, and wrong in an instructive way. I aligned both the head and the tail of
+the probe output, which assumes the ending is independent of the replacement. It is not:
+*beißen*'s Präsens 2s is `beißt`, not `beißst`, because `adjustEndingForPhonology` collapses
+`st` after a sibilant. Every strong verb with an s-final stem died silently. The fix was to
+trust only the head and *search* the suffixes of the expected form, confirming each candidate
+by re-conjugating. Slower per slot, immune to every phonological rule `Conjugator` has or will
+have, and it keeps the oracle and the implementation the same object — no ending logic is
+duplicated in the pipeline at all.
+
+Two more corrections came from reading the shipped data rather than reasoning about it.
+Replacements in `AblautGroups.xml` are uppercase, because uppercase is the app's ablaut
+highlighting convention — so comparison had to go case-insensitive, and every derived group had
+been failing to match its shipped twin for that reason alone. And Wiktionary lists a separable
+verb's finite forms both joined and split, `abbeiße` beside `beiße ab`, which made the
+normalization I had written mostly unnecessary.
+
+Then the calibration idea, which is the part I would keep. The candidate file includes the 985
+shipping verbs alongside the 8,232 incoming ones. They cost nothing to classify, and for them
+the right answer is already in `Verbs.xml` — so a shipping verb that fails to verify is a
+defect rather than an unknown. 236 failed. Grouped by cause they collapse into five clusters,
+and four of the five are one phenomenon: the epenthetic -e, which `Conjugator` implements only
+for the Präsens and Präteritum of weak verbs. The Imperativ never calls the adjustment at all,
+so the app says `arbeitt` for *arbeitet*; strong and mixed fall through a `break`; and the
+exemption list misses doubled consonants (`stimmete`) and the Dehnungs-h (`ahnete`). Pleasing
+that this is the same repair English makes in *wanted* and *needed* but not *walked* — a dental
+cluster both languages refuse to pronounce, fixed the same way on both sides of the North Sea.
+
+The quietest finding took another hour to see. *finden* showed as verified, which seemed fine
+until I noticed `ablautGroupIsNew: true` on a verb that ships with a group. The pipeline had
+reproduced Wiktionary's table by *proposing a different group* than the one in the file —
+because the shipped `A,bA|Ä,dA|U,pp` produces *du findst*. 118 of the 304 shipping strong and
+mixed verbs verified that way. So the real disagreement count is 354 of 985, not 236, and the
+flag that reveals it is one boolean nobody would think to look at.
+
+That reframed the recommendation entirely. The 52 proposed ablaut groups are all verified, but
+145 of them are verified *by working around* the epenthetic-e gaps — smuggling the missing `-e`
+into the ablaut region, which is why the proposed group for *binden* is five clauses long where
+the shipped `finden` group is three. Import first and those workarounds become permanent data
+in hundreds of verbs, and fixing `Conjugator` later breaks every one. Fix `Conjugator` first
+and the same run proposes the small idiomatic groups instead. The shipping-corpus failure count
+is the regression test: it should fall from 354 toward zero.
+
+Two smaller pleasures. 42 of the 44 missing strong verbs named in `verb-sources.md` classified
+automatically, *graben* reusing *fahren* with no new group needed. And the two that failed were
+*mahlen* and *spalten* — precisely wrinkle 4 of that document, weak Präteritum with strong
+participle. The pipeline rediscovered the documented gap without being told it existed, which
+is about the best evidence available that the verification is real and not a tautology.
+
+Where it stops short: verified means `Conjugator` reproduced Wiktionary's table, not that the
+encoding is idiomatic, not that Wiktionary's table was the only one. 17 verbs verified into a
+family contradicting Wiktionary's own class tag — *melken*, *gären*, *sieden*, *pflegen* — which
+is wrinkle 1's dual-paradigm problem showing up as a cheap cross-check nobody designed. The
+summary flags them rather than guessing.
+
+## Fixing the epenthetic -e, and not laundering it into the tests (2026-07-19)
+
+The classification run had left a bug report: 354 of 985 shipping verbs conjugated differently
+from Wiktionary, in five clusters. Josh asked for the fix. It came to about sixty lines in
+`Conjugator.swift`, and the interesting part was not writing them but deciding what the rule
+actually is.
+
+Four of the five clusters were one phenomenon, the epenthetic -e, implemented only for the
+Präsens and Präteritum of weak verbs. Extending it meant answering three questions the original
+code had finessed.
+
+**Which m/n stems take it?** The old exemption was "preceded by l, r, or a vowel", which misses
+*stimmen* → `stimmete` and *ahnen* → `ahnete`. Adding m and n handles the doubled consonants.
+The h is the subtle one, because it cuts both ways: *rechnen* and *zeichnen* take the -e while
+*ahnen*, *wohnen*, and *lehnen* do not. The difference is that the first pair's h is half of
+`ch`, a real consonant, and the second group's is a Dehnungs-h, a silent length mark on the
+vowel before it. So the test is on the letter before the h: vowel means exempt. Three lines,
+and it separates *gewöhnte* from *trocknete* correctly across the whole corpus.
+
+**When does a strong verb take it?** German says *er findet* but *er hält*, and both stems end
+in t. The generalization is that strong verbs which change their stem in the Präsens kept the
+older endingless 3s, and the ones that do not change take the ordinary ending. That maps onto
+something `conjugateSimpleTense` already knows — whether `applyAblaut` returned a different
+stem — so the fix was to thread a `stammIsAblauted` flag through. It turned out to fix a second
+bug for free: the existing t-dropping rule was firing for *ihr haltet* as well as *er hält*,
+because it tested only the letter and the family. Gating both on the same flag made the pair
+fall out correctly.
+
+**Where does it stop?** Mixed verbs. *senden* takes the -e in the Präsens (*du sendest*) but
+not in the Präteritum or the Partizip (*sandte*, *gesandt*), because the mixed -te attaches to
+the ablauted stem directly. Excluding `.mixed` from those two is a no-op on today's corpus,
+since *senden* and *wenden* actually ship as weak, but it is the right rule for the imports.
+
+The -ern/-eln cluster was simpler and still had a trap. My first rule was "if the infinitive
+does not end in -en, the plural ending is -n", reasoning that the stem already carries the e.
+Eighteen tests went red immediately: *sein* and *tun* end in -n too, and their stems are `sei`
+and `tu`, with no e to carry. The predicate had to be `-ern`/`-eln` specifically. Keying on the
+stem instead would have been wrong in the other direction, since *verheeren*'s stem also ends
+in `er`. Two failure modes, one on each side, and the tests caught both in one run.
+
+Then Josh relayed a warning from a prior session that is worth writing down: when fixing an
+engine turns a shipped test red, the reflex is to edit the expectation until it is green, which
+launders the bug into a documented invariant. The mixed-case convention makes this especially
+easy, because changing a capital letter in an expected string feels like formatting rather than
+a claim about German.
+
+Worth checking rather than promising. `git diff` on `ConjugatorTests.swift` was empty — the
+eighteen failures had been fixed in the engine, which is where the bug was. But the warning
+prompted a better question: are there expectations that encode a defect and are green *now*?
+Intersecting the 96 verbs the tests assert against the 51 that still disagree with Wiktionary
+gave nine, and they turned out to be one systematic issue. `ConjugatorTests` asserts `"Ass"` for
+*essen*'s Präteritum, `"schlOß"` for *schließen*, and `"wEIsS"` for *wissen*. German writes
+*aß*, *schloss*, and *weiß*. The suite has been documenting a ß/ss defect as intended behavior,
+in both directions at once — ß where ss belongs and ss where ß belongs — because the rule
+depends on whether the ablauted vowel is long, and nothing in the model knows vowel length.
+
+That one is data rather than code: the sibilant has to move inside the ablaut region so each
+group can spell it per vowel, which is exactly what the pipeline already proposes
+(`schl^ieß^en` with `OSS`). I left it for Josh, flagged in `verb-classification.md` with the
+explicit note that fixing it *will* turn those tests red and that Wiktionary should win.
+
+The five new test functions I did add were written from the oracle rather than from the engine.
+All five passed on the first run without a single adjustment, which is the only real evidence
+that a regression test is testing German and not testing the code that produced it.
+
+Numbers, since the whole point was that the pipeline measures itself: shipping verbs at odds
+with Wiktionary 354 → 51, shipping verification 76.0% → 96.4%, incoming 58.5% → 81.3%. The
+prediction that mattered also held — the same run now needs 234 new ablaut groups instead of
+346, drawn from 35 distinct patterns instead of 52, because it no longer has to smuggle a
+missing -e into them. That is the argument for fixing the engine before importing, and it is
+now a measurement rather than an argument.
+
+## The ß that was right in 1991 (2026-07-19)
+
+The last cluster from the classification audit was the ß/ss alternation, and it was the only
+one where the app was wrong in two opposite directions simultaneously. *schließen* conjugated to
+`schloß`; *essen* conjugated to `ass`. German writes ß after a long vowel or diphthong and ss
+after a short one, so *schloss* (short o) and *aß* (long a) are both correct and the app had
+each backwards.
+
+Josh mentioned, while I was working, that he studied German casually as a teenager about
+thirty-five years ago and has had little contact with it since. That detail explains half the
+bug and is the more interesting half. Pre-1996 orthography used ß at the end of any syllable
+regardless of vowel length — *daß*, *muß*, *schloß*, *Fluß* were all correct — and the 1996
+reform retied it to vowel length. So `schloß` is not an error so much as a fossil: it was the
+right spelling when Josh learned it. The `ass` cases are simply wrong under either system,
+which is what makes the mixture diagnostic rather than embarrassing. (French, which Josh knows
+far better, had its own *rectifications orthographiques* in 1990; they were so weakly adopted
+that a French app would have no equivalent stratum to find.)
+
+`Conjugator` needed no change. Vowel length is a property of the ablauted vowel, which is
+precisely what an ablaut group encodes, so the sibilant had to move inside the ablaut region:
+`^ess^en` rather than `^e^ssen`, `schl^ieß^en` rather than `schl^ie^ßen`. A region that stops
+at the vowel simply cannot express the alternation.
+
+One small decision took a detour. Replacements are uppercase by the app's highlighting
+convention, and ß has no everyday capital. Writing `Aß` would work, but `RichTextView` decides
+what to highlight with `char.isUppercase` and then lowercases everything for display, so the ß
+would render correctly and highlight incorrectly, splitting one ablaut into two visual runs.
+The capital sharp s `ẞ` (U+1E9E) solves it exactly: `isUppercase` is true, `lowercased()` is
+`ß`, so `Aẞ` displays as "aß" with both letters marked. Verified in a one-line `swift -e`
+before committing to it across six groups.
+
+Widening the regions exposed three groups that had been quietly serving verbs on opposite sides
+of the alternation. *riechen* sat in the *schließen* group despite having no sibilant at all,
+and moved to *bieten*, whose pattern is character-for-character identical. *messen* and
+*vergessen* sat in *geben*. And *fressen* sat in *essen*, which carries `gegEssen*` as a full
+override for the participle — so the app had been conjugating *fressen* to *gegessen*. That one
+was invisible to the ß work and would have stayed invisible; it fell out of having to look at
+the group membership at all. The *lassen* group, meanwhile, lost two full overrides outright:
+with the region correctly placed at `l^ass^en`, *lässt* and *ließ* come out of the ordinary
+machinery and the special cases become unnecessary.
+
+Then the part Josh had specifically warned about. Twenty `ConjugatorTests` expectations went
+red, because they had been documenting the defect: `expected: "Ass"`, `"schlOß"`, `"wEIsS"`. The
+temptation is to treat these as formatting and update them until green. What made it safe was
+having the oracle: each new value was checked against Wiktionary's table *before* being written
+into the test file, and the edit was applied by line number so nothing else could drift. Six of
+the twenty turned out to be casing-only — `Isst` → `ISSt` — where the rendered word was already
+right and only the highlighted span widened. Those six are exactly the ones that would have
+been rubber-stamped without checking.
+
+Shipping verbs at odds with Wiktionary: 51 → 25. Across the day, 354 → 25. What is left is
+mostly one modeling gap rather than a pile of bugs: fifteen of the twenty-one remaining
+failures are verbs like *angehören* and *kennenlernen* that need a separable prefix over an
+already-prefixed base, which the single-`Prefix` model cannot express. Three are modal full
+overrides the pipeline cannot derive and probably never should. Three are ordinary data slips
+that the audit surfaced for free — *zerstören* and *unterstellen* are missing their inseparable
+marker, *ausprobieren* its separable one.
+
+## The three data slips that were ten, and one that wasn't a slip (2026-07-19)
+
+I had ended the previous pass by offering Josh "a five-minute fix" on three stray data errors:
+*zerstören* and *unterstellen* missing an inseparable-prefix marker, *ausprobieren* missing a
+separable one. He said yes. Both halves of my characterization turned out to be wrong, which is
+worth recording because the error was avoidable and the check that caught it was cheap.
+
+I had derived the three by eyeballing the classification queue and sorting failures by their
+mismatch text. Before editing anything I actually looked at the entries, and the picture
+changed. *unterstellen* is not a slip at all: it ships as inseparable, which is right for the
+*allege, subordinate* reading (*unterstellt*), and Wiktionary's table simply showed the other
+reading, *place underneath* (*untergestellt*). That is wrinkle 7, the separable/inseparable
+homograph, and no marker changes it — it needs two readings, which the model cannot hold.
+Meanwhile seven more verbs I had filed under "double prefix, unfixable" turned out to be
+ordinary marking errors.
+
+The interesting group was four verbs whose `in` value carried **two** prefix markers:
+`vor+aus+setzen`, `aus+einander+setzen`, `vor+an+treiben`, `nach+voll+ziehen`. `VerbParser`
+splits on the first separator and uses `components[0]`, then strips the rest, so
+`vor+aus+setzen` had been parsed as prefix *vor* over stem *aussetz* and produced
+`vorgeaussetzt`. The correct marking names the whole prefix as one unit — `voraus+setzen` — and
+the fix is a character deletion. What makes this a class rather than four typos is that nothing
+could have caught it: the XML is well-formed, the DTD is satisfied, the family is right, and
+the output is a plausible German-looking word. It needed an external oracle. I added a guard so
+the parser now refuses a second marker instead of silently honoring the first.
+
+Two more were wrong about something other than the marker. *unterbringen* shipped as
+inseparable and produced *unterbracht* where German has *untergebracht*. And *besitzen* shipped
+as a **weak** verb, conjugating to *besitzte* and *besitzt* instead of *besaß* and *besessen* —
+a strong verb hiding in the weak family, which is the most invisible defect class this corpus
+has, since nothing about such an entry is malformed. It was sitting one line away from
+*s^itz^en*, correctly marked strong with the *sitzen* group, for who knows how long.
+
+*nachvollziehen* was the one that would not resolve cleanly. It is genuinely double-prefixed:
+separable *nach* over inseparable *voll*. Marking it `nachvoll*z^ieh^en` gets the participle
+right (*nachvollzogen*) and therefore all twenty-five compound-tense forms, at the cost of the
+two Imperativ forms, which now read *nachvollzieht* instead of *vollzieht nach*. The previous
+marking had the trade exactly inverted. I took the twenty-five and wrote down that it is a
+trade rather than a fix, because the temptation with a verb like this is to keep fiddling until
+the queue is empty and quietly land somewhere worse.
+
+Shipping corpus: 25 verbs at odds → 14, or 99.0% verified. Across the day, 354 → 14. The ten
+that remain are five true double-prefix verbs, three modal full overrides the pipeline cannot
+derive and probably never should, *nachvollziehen*'s two Imperativ forms, and *einbeziehen*,
+which needs both a prefix decision and a relocated ablaut region.
+
+The lesson I want to keep is not about prefixes. It is that "three quick data slips" was a
+guess dressed as an inventory, and the thing that corrected it was spending two minutes reading
+the actual rows before touching them. The oracle had the right answer the whole time; I had
+just summarized it carelessly on the way out the door.

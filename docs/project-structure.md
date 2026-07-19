@@ -251,9 +251,14 @@ corpus/                        # German text corpus for example sentence sourcin
 └── technology/                # BSI security guides and technical Wikipedia articles
 
 verbdata/                      # Verb-corpus-expansion data (see docs/verb-sources.md)
-├── README.md                  # Provenance, integrity stats, and re-download recipes for both data files
+├── README.md                  # Provenance, integrity stats, and re-download recipes for the data files
 ├── fetch_dwds_frequencies.py  # Fetches DWDS lemma frequencies; --lemmas FILE overrides the Verbs.xml corpus
+├── build_candidates.py        # Classify-and-verify stage A: kaikki JSONL → candidates.json (see docs/verb-classification.md)
+├── summarize_classification.py # Classify-and-verify stage C: classification.json → a Markdown summary grouped by cause
 ├── dwds-frequencies.json      # 990-lemma DWDS frequency snapshot (gitignored pending BBAW permission)
+├── candidates.json            # 9,217 normalized candidate conjugation tables (gitignored, regenerable)
+├── classification.json        # Per-verb classification results (gitignored, regenerable)
+├── classification-summary.md  # Rendered summary of the above (gitignored, regenerable)
 └── kaikki.org-dictionary-German-by-pos-verb.jsonl  # 294 MB kaikki.org German-verb extraction (gitignored)
 
 GameCenterResources.gamekit/   # Game Center leaderboard configuration and images

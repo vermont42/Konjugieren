@@ -32,6 +32,25 @@ curl -C - -A "Konjugieren verb research (contact: <email>)" \
   "https://kaikki.org/dictionary/German/pos-verb/kaikki.org-dictionary-German-by-pos-verb.jsonl"
 ```
 
+## The classify-and-verify pipeline
+
+Three scripts and one test suite turn the snapshot above into classified verbs. Full design
+and findings: [`docs/verb-classification.md`](../docs/verb-classification.md).
+
+| File | Role | Tracked |
+|---|---|---|
+| `build_candidates.py` | Stage A: kaikki JSONL → `candidates.json`, one normalized conjugation table per single-word lemma | yes |
+| `candidates.json` | 9,217 candidates, 14.5 MB, ~6 s to rebuild | no |
+| `../KonjugierenTests/Utils/VerbClassificationTests.swift` | Stage B: drives `Conjugator` over every candidate, searching for the `Verbs.xml` encoding that reproduces Wiktionary's table | yes |
+| `classification.json` | Per-verb results, ~40 s to rebuild | no |
+| `summarize_classification.py` | Stage C: renders the queue grouped by cause | yes |
+| `classification-summary.md` | The rendered report | no |
+
+Pass `--include-existing` to `build_candidates.py` (the default invocation does) so the 985
+shipping verbs stay in the candidate set. For those the correct answer is already in
+`Verbs.xml`, which turns them into a regression oracle: a shipping verb that fails to verify is
+a defect, not an unknown. The first run found 354 such verbs.
+
 ## dwds-frequencies.json
 
 | Fact | Value |

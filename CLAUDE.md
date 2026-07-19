@@ -177,13 +177,38 @@ Do not save facts to Claude Code's memory system. If a fact from the conversatio
 
 ## Comments
 
+### Shipping code
+
 Code should be well-written and therefore self-explanatory. Explanatory and MARK comments result in clutter and increased maintenance burden. Only use comments for the following purposes:
 
 * File headers
 * TODOs
 * Hacks or workarounds
+* A non-obvious *why* that the code cannot state — a linguistic rule, an Apple-framework
+  constraint, or a decision whose alternatives look equally reasonable from the call site.
+  `Conjugator.needsEpentheticE` is the model: the code says which letters trigger the rule,
+  and the comment says why a Dehnungs-h does not.
 
 When reviewing code, do not flag these types of comments.
+
+### Scripts, harnesses, and one-off tooling
+
+`verbdata/*.py`, `scripts/*`, and test-target harnesses such as
+`KonjugierenTests/Utils/VerbClassificationTests.swift` are held to a **more permissive**
+standard. Comment them generously.
+
+The reason is that such a file's correctness usually rests on facts outside itself — the shape
+of an external dataset, a quirk of `xcodebuild`, an orthographic convention in `AblautGroups.xml`
+— and those facts are not recoverable by reading the code. A future session that cannot see the
+reasoning will re-derive it wrongly, which has already happened in this repo. Prefer:
+
+* A file-header block stating what the file consumes, what it produces, and how to run it.
+* A note at each decision that encodes an external fact, especially one discovered by debugging.
+  "Only the probe's head is trustworthy, because the ending depends on the replacement's final
+  letter" is worth more than the four lines it describes.
+* Docstrings and `///` on non-obvious helpers, even private ones.
+
+Do not extend this permission to shipping app code under `Konjugieren/`.
 
 ## English Writing Conventions
 

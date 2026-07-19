@@ -8,8 +8,8 @@ import Testing
 @Suite("MixedCaseAccessibility")
 struct MixedCaseAccessibilityTests {
   @Test("Generates correct accessibility labels", arguments: zip(
-    ["machte", "sAng", "BIN", "hat geSUNGen", "Sie machen", "machen Sie", "Sie sAng", "gehen", "wEIsS"],
-    ["machte", "sang, a is irregular", "bin, b i n are irregular", "hat gesungen, s u n g are irregular", "Sie machen", "machen Sie", "Sie sang, a is irregular", "gehen", "weiss, e i s are irregular"]
+    ["machte", "sAng", "BIN", "hat geSUNGen", "Sie machen", "machen Sie", "Sie sAng", "gehen", "wEIẞ"],
+    ["machte", "sang, a is irregular", "bin, b i n are irregular", "hat gesungen, s u n g are irregular", "Sie machen", "machen Sie", "Sie sang, a is irregular", "gehen", "weiß, e i ß are irregular"]
   ))
   func accessibilityLabel(input: String, expected: String) throws {
     try #require(

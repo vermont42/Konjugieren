@@ -44,7 +44,7 @@ enum Conjugator {
       }
 
     case .präsenspartizip:
-      return .success(verb.stamm + conjugationgroup.ending(family: verb.family))
+      return .success(verb.stamm + (hasSyllabicStamm(verb: verb) ? "nd" : "end"))
 
     case .imperativ(let personNumber):
       return conjugateImperativ(verb: verb, personNumber: personNumber)
@@ -78,7 +78,13 @@ enum Conjugator {
       return .success(newStamm)
     }
     let rawEnding = conjugationgroup.ending(family: verb.family)
-    let adjustedEnding = adjustEndingForPhonology(stamm: newStamm, ending: rawEnding, family: verb.family, conjugationgroup: conjugationgroup)
+    let adjustedEnding = adjustEndingForPhonology(
+      stamm: newStamm,
+      ending: rawEnding,
+      verb: verb,
+      conjugationgroup: conjugationgroup,
+      stammIsAblauted: newStamm != verb.stamm
+    )
     return .success(newStamm + adjustedEnding)
   }
 
@@ -116,14 +122,11 @@ enum Conjugator {
         return .success(withSeparablePrefix(verb: verb, form: newStamm))
       }
 
-      let imperativStamm: String
-      if newStamm != stamm {
-        imperativStamm = newStamm
-      } else {
-        imperativStamm = applyEToIStemChange(stamm: stamm, verb: verb)
-      }
+      let imperativStamm = newStamm != stamm ? newStamm : applyEToIStemChange(stamm: stamm, verb: verb)
 
-      let needsE = imperativStamm.hasSuffix("d") || imperativStamm.hasSuffix("t")
+      // A strong verb that changes its stem here keeps the bare imperative — gilt, sieh,
+      // nimm — while an unchanged stem takes the epenthetic -e: arbeite, atme, finde.
+      let needsE = imperativStamm == stamm && needsEpentheticE(stamm: imperativStamm)
       let form = needsE ? imperativStamm + "e" : imperativStamm
       return .success(withSeparablePrefix(verb: verb, form: form))
 
@@ -132,7 +135,8 @@ enum Conjugator {
       if isFullOverride {
         return .success(withSeparablePrefix(verb: verb, form: newStamm))
       }
-      return .success(withSeparablePrefix(verb: verb, form: newStamm + "t"))
+      let ending = needsEpentheticE(stamm: newStamm) ? "et" : "t"
+      return .success(withSeparablePrefix(verb: verb, form: newStamm + ending))
 
     case .firstPlural, .thirdPlural:
       let pronoun = personNumber == .firstPlural ? "wir" : "Sie"
@@ -141,7 +145,7 @@ enum Conjugator {
         return .success(withSeparablePrefixAndPronoun(verb: verb, form: newStamm, pronoun: pronoun))
       }
       let (konjStamm, konjOverride) = applyAblaut(stamm: stamm, verb: verb, conjugationgroup: .präsensKonjunktivI(personNumber))
-      let form = konjOverride ? konjStamm : konjStamm + "en"
+      let form = konjOverride ? konjStamm : konjStamm + pluralEnding(verb: verb)
       return .success(withSeparablePrefixAndPronoun(verb: verb, form: form, pronoun: pronoun))
 
     case .firstSingular, .thirdSingular:
@@ -235,65 +239,136 @@ enum Conjugator {
   }
 
   private static func adjustPerfektpartizipEnding(stamm: String, ending: String, family: Family) -> String {
-    guard ending == "t" else { return ending }
-    let lastChar = stamm.last.map { String($0).lowercased() } ?? ""
-    if ["t", "d"].contains(lastChar) {
-      switch family {
-      case .weak, .mixed, .ieren:
-        return "et"
-      case .strong:
-        return ending
-      }
+    guard ending == "t", needsEpentheticE(stamm: stamm) else {
+      return ending
     }
-    return ending
+    switch family {
+    case .weak, .ieren:
+      return "et"
+    // gesandt, gewandt, gebrannt: the mixed participle attaches -t to the ablauted
+    // stem directly, exactly as its Präteritum attaches -te.
+    case .mixed, .strong:
+      return ending
+    }
   }
 
-  private static func adjustEndingForPhonology(stamm: String, ending: String, family: Family, conjugationgroup: Conjugationgroup) -> String {
+  private static let vowels: Set<Character> = ["a", "e", "i", "o", "u", "ä", "ö", "ü"]
+
+  private static func needsEpentheticE(stamm: String) -> Bool {
+    let characters = Array(stamm.lowercased())
+    guard let last = characters.last else {
+      return false
+    }
+
+    if ["t", "d"].contains(last) {
+      return true
+    }
+
+    guard ["m", "n"].contains(last), characters.count >= 2 else {
+      return false
+    }
+
+    let penultimate = characters[characters.count - 2]
+    if ["l", "r", "m", "n"].contains(penultimate) || vowels.contains(penultimate) {
+      return false
+    }
+
+    // A silent Dehnungs-h lengthens the vowel before it rather than closing the
+    // syllable, so ahnen and wohnen behave like vowel stems and take no -e. The h of
+    // rechnen and zeichnen is half of ch, a real cluster, and does take one.
+    if penultimate == "h" {
+      let beforeH = characters.count >= 3 ? characters[characters.count - 3] : " "
+      return !vowels.contains(beforeH)
+    }
+
+    return true
+  }
+
+  // An -ern or -eln stem ends in a syllabic er/el that already supplies the e, so its
+  // plural ending reduces to -n and its Präsenspartizip to -nd: wir ändern, ändernd.
+  // The test is on the infinitive rather than the stem because verheeren's stem also
+  // ends in er, and because tun and sein end in -n without the syllable: wir taten.
+  private static func hasSyllabicStamm(verb: Verb) -> Bool {
+    verb.infinitiv.hasSuffix("ern") || verb.infinitiv.hasSuffix("eln")
+  }
+
+  private static func pluralEnding(verb: Verb) -> String {
+    hasSyllabicStamm(verb: verb) ? "n" : "en"
+  }
+
+  private static func adjustEndingForPhonology(
+    stamm: String,
+    ending: String,
+    verb: Verb,
+    conjugationgroup: Conjugationgroup,
+    stammIsAblauted: Bool
+  ) -> String {
+    if ending == "en" {
+      return pluralEnding(verb: verb)
+    }
+
     let lastChar = stamm.last.map { String($0).lowercased() } ?? ""
 
     if ending == "st" && ["s", "ß", "x", "z"].contains(lastChar) {
       return "t"
     }
 
-    if ending == "t" && lastChar == "t", case .strong = family {
+    // The endingless Präsens 3s survives only in strong verbs that change their stem
+    // there: er hält, er tritt. An unablauted stem takes the ordinary ending, and a
+    // t-final one takes the epenthetic -e below: ihr haltet, er findet.
+    if case .präsensIndikativ = conjugationgroup, ending == "t", lastChar == "t", stammIsAblauted, case .strong = verb.family {
       return ""
     }
 
-    let needsEpentheticE: Bool = {
-      if ["t", "d"].contains(lastChar) {
-        return true
-      }
-      if ["m", "n"].contains(lastChar) {
-        let chars = Array(stamm)
-        if chars.count >= 2 {
-          let penultimate = String(chars[chars.count - 2]).lowercased()
-          let isExempt = ["l", "r"].contains(penultimate) || "aeiouäöü".contains(penultimate)
-          return !isExempt
-        }
-      }
-      return false
-    }()
+    guard needsEpentheticE(stamm: stamm) else {
+      return ending
+    }
 
-    if needsEpentheticE {
-      switch family {
-      case .weak, .ieren:
-        switch conjugationgroup {
-        case .präteritumIndikativ, .präteritumKonjunktivII:
-          if ["te", "test", "ten", "tet"].contains(ending) {
-            return "e" + ending
-          }
-        case .präsensIndikativ(let pn), .präsensKonjunktivI(let pn):
-          if pn == .secondSingular && ending == "st" {
-            return "est"
-          }
-          if [.thirdSingular, .secondPlural].contains(pn) && ending == "t" {
-            return "et"
-          }
-        default:
-          break
+    switch verb.family {
+    case .weak, .ieren:
+      switch conjugationgroup {
+      case .präteritumIndikativ, .präteritumKonjunktivII:
+        if ["te", "test", "ten", "tet"].contains(ending) {
+          return "e" + ending
         }
-      case .strong, .mixed:
+      case .präsensIndikativ(let personNumber):
+        if personNumber == .secondSingular && ending == "st" {
+          return "est"
+        }
+        if [.thirdSingular, .secondPlural].contains(personNumber) && ending == "t" {
+          return "et"
+        }
+      default:
         break
+      }
+    case .strong:
+      let applies: Bool
+      switch conjugationgroup {
+      case .präsensIndikativ:
+        applies = !stammIsAblauted
+      case .präteritumIndikativ:
+        applies = true
+      default:
+        applies = false
+      }
+      if applies {
+        if ending == "st" {
+          return "est"
+        }
+        if ending == "t" {
+          return "et"
+        }
+      }
+    case .mixed:
+      // du sendest but sandte: the mixed Präteritum attaches -te to the ablauted stem
+      // directly, so only the Präsens takes an epenthetic -e.
+      if case .präsensIndikativ = conjugationgroup, !stammIsAblauted {
+        if ending == "st" {
+          return "est"
+        }
+        if ending == "t" {
+          return "et"
+        }
       }
     }
 

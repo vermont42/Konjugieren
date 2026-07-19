@@ -17,3 +17,8 @@ verbdata/*.jsonl
 # DWDS frequency snapshot: BBAW reserves § 44b UrhG and bars redistribution
 # without permission. Untracked pending a reply from dwds@bbaw.de.
 verbdata/dwds-frequencies.json
+# Classify-and-verify pipeline outputs: large, derived, and regenerable in ~45
+# seconds from the scripts beside them. See docs/verb-classification.md.
+verbdata/candidates.json
+verbdata/classification.json
+verbdata/classification-summary.md

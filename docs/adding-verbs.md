@@ -116,6 +116,37 @@ German strong and mixed verbs undergo vowel and other changes (ablaut) in differ
   - Präteritum: replace "e" with "a" → "sah" + endings
   - Konjunktiv II: replace "e" with "ä" → "säh" + endings
 
+### The ß/ss Alternation Belongs Inside the Ablaut Region
+
+German writes **ß after a long vowel or diphthong** and **ss after a short one**. Ablaut changes
+vowel length, so the sibilant changes with it:
+
+| Verb | Präsens | Präteritum | Perfektpartizip |
+|------|---------|-----------|-----------------|
+| essen | i**ss**t (short) | a**ß** (long) | gege**ss**en |
+| schließen | schlie**ß**t (long) | schlo**ss** (short) | geschlo**ss**en |
+
+The sibilant must therefore sit **inside** the ablaut region so each replacement can spell it.
+Mark `^ess^en`, not `^e^ssen`; `schl^ieß^en`, not `schl^ie^ßen`. A region that stops at the
+vowel cannot express the alternation, and the result is a plausible-looking wrong spelling —
+`schloß` or `ass` — that no test will catch unless someone checks it against a dictionary.
+
+Write a replacement's ß as the **capital sharp s, `ẞ` (U+1E9E)**, not `ß`:
+
+```xml
+<ag e="messen" a="ISS,a2s,a3s|Aẞ,bA|Äẞ,dA" />
+```
+
+`RichTextView` lowercases every character for display and uses uppercase only to select the
+ablaut highlight, so `Aẞ` renders as "aß" with both letters marked as changed. A lowercase `ß`
+would render identically but leave the sibilant unhighlighted, splitting one ablaut into two
+visual runs.
+
+This was wrong across 20 verbs until 2026-07-19, in both directions at once. Pre-1996
+orthography used ß at the end of any syllable regardless of vowel length, so `schloß` and `daß`
+were correct when much of this app's reference material was written; the 1996 reform tied ß to
+vowel length. If a verb's spelling looks odd, check which side of the reform it comes from.
+
 ## Adding a New Verb
 
 ### Weak or -ieren Verb (Regular)

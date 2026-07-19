@@ -40,6 +40,14 @@ class VerbParser: NSObject, XMLParserDelegate {
         self.currentVerb = currentVerb
         let separableSeparator = "+"
         let inseparableSeparator = "*"
+
+        // Only the first marker is honored, so vor+aus+setzen silently parsed as
+        // prefix "vor" and produced vorgeaussetzt. Write voraus+setzen instead.
+        let markerCount = currentVerb.filter { $0 == "+" || $0 == "*" }.count
+        if markerCount > 1 {
+          Current.fatalError.fatalError("Verb '\(currentVerb)' has \(markerCount) prefix markers but must have 0 or 1.")
+        }
+
         if currentVerb.contains(separableSeparator) {
           let components = currentVerb.components(separatedBy: separableSeparator)
           currentPrefix = .separable(components[0])

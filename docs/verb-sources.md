@@ -315,10 +315,92 @@ DWDS frequency API in bulk**, which is the specific activity their § 44b reserv
 A 990-lemma snapshot already exists at `verbdata/dwds-frequencies.json`, gitignored, and
 `verbdata/fetch_dwds_frequencies.py` regenerates it if permission arrives.
 
-This does not block the import as such. It blocks **step 7** — ranking the weak long tail by
-frequency. Steps 5 and 6, the strong bases and the prefixed derivatives, are defined by
-membership rather than by frequency order and can proceed without a reply. If step 7 must
-proceed anyway, rank the tranche by a provisional source and mark it for re-derivation.
+This blocks step 7 outright — ranking the weak long tail by frequency. It also touches steps 5
+and 6 in a way that was not true before the `fr` refactor. Those tranches are defined by
+membership, so their *selection* needs no reply, but `hi` is `#REQUIRED` and holds a measured
+count. The old `fr` was a rank a human could assign by judgment; a hit count cannot be invented,
+because you cannot eyeball whether 500,000 is common. Every imported verb therefore needs either
+a real count or an explicitly provisional one. See "Provisional hit counts" below.
+
+### Leipzig Corpora Collection was evaluated as a substitute and rejected
+
+Checked 2026-07-19, so nobody spends another afternoon on it. Leipzig (Wortschatz, Universität
+Leipzig) is the obvious alternative German frequency source and fails on four independent grounds,
+any one of which is disqualifying.
+
+**The licence splits, and the half we would use is the wrong half.** Their
+[Terms of Usage](https://wortschatz.uni-leipzig.de/en/usage) put "the data and applications
+provided by the project" under **CC BY-NC**, stating that "commercial use of the data are
+prohibited without the written consent of the project management" — that covers the web-service
+API. Separately, "the text corpora offered for download are made available under the Creative
+Commons licence CC BY." So the API numbers cannot ship in a paid App Store app for the same
+reason DWDS's cannot, while the downloadable corpora legitimately could underpin counts you
+compute yourself. Querying the API is itself fine: the terms prohibit automated queries "except
+via our web services", and the web service is the sanctioned channel. It is *shipping the
+derived values* that is not.
+
+**It is 1,000× too small.** The largest German corpus, `deu_news_2012_3M`, holds 50.7 million
+tokens against DWDS's 53.2 billion.
+
+**17 of the 87 missing strong bases are absent entirely**, returning 404: brinnen,
+dahinkriechen, eischen, hangen, keifen, klieben, klimmen, kneipen, kreißen, kröschen, schleißen,
+schneen, schröcken, schwären, **sieden**, spleißen, wringen. Many that are present sit at counts
+of 1 to 6, which is noise rather than frequency. News and web text under-represents exactly the
+archaic strong verbs this tranche is made of.
+
+**It measures word forms, not lemmas.** `machen` is 24,992 in Leipzig — occurrences of the
+literal string — against 67,161,366 in DWDS, which is the lemma across all inflections. Measured
+against the DWDS snapshot on an 83-verb sample spread evenly across the rank range, Spearman
+ρ = 0.876, with a worst displacement of 57 places *within the sample*, roughly 680 places at
+full-corpus scale.
+
+The worst outlier is worth naming: **`gleichen`**, one of the eight homographs repaired earlier
+the same day, because the string also inflects the adjective *gleich*. Leipzig reproduces the
+contamination, and the gate in `fetch_dwds_frequencies.py` cannot catch it — that check compares
+the returned lemma against the one asked for, and Leipzig returns only the word you queried, so
+the comparison is a tautology.
+
+The general lesson, which applies to the next candidate source too: any corpus good enough to
+substitute for DWDS is likely restricted for the same reason DWDS is, because the counts *are*
+the asset. The productive question is not which free source to find, but whether a
+membership-defined tranche needs measured frequency at all.
+
+### Provisional hit counts: the `hp` attribute
+
+For a tranche that cannot get real counts, a hand-assigned `hi` placed by editorial judgment
+beats a precise-looking number that is wrong for reasons no check can detect. That is what the
+old `fr` always was; the only change is the unit.
+
+The risk is not the guess. It is that a provisional value silently becomes permanent, which is a
+failure this repo has already paid for. So provisional counts are marked in the data:
+
+```xml
+<verb in="s^ie^den" hi="19878" hp="y" ic="flame">
+  <reading tn="boil, seethe" fa="s" ag="sieden" />
+</verb>
+```
+
+| Attribute | Declared | Meaning |
+|---|---|---|
+| `hp` | `(y) #IMPLIED` | present means `hi` is an editorial estimate, not a measured DWDS count |
+
+Absence means the count is real, mirroring how `ay`'s absence means haben. The DTD admits only
+`y`, so a typo fails `xmllint --valid` rather than silently reading as "real".
+
+Rules:
+
+- **`hp` changes no behaviour.** The rank derives from `hi` exactly as before. The flag is
+  provenance, and `VerbParser` exposes it as `Verb.hitsAreProvisional`.
+- **Place the estimate, do not invent it.** Pick a neighbourhood by judgment — "about as common
+  as *gedeihen*" — and take a value between its neighbours' real counts. That way the derived
+  rank lands where you meant, which a round number like 100000 will not.
+- **Nothing renders it.** A displayed `#847` is no less useful for being an estimate, and a
+  question mark in the UI would be noise.
+- **Clearing it is one line per verb.** When permission arrives, re-query with probes, replace
+  `hi`, drop `hp`. This is the whole reason step 6 stored counts instead of ranks.
+
+`verbdata/generate_frequencies_txt.py` reports how many verbs carry `hp`, so the provisional
+population is visible on every regeneration rather than discoverable only by grep.
 
 ### Step 4 in detail: store hits, derive rank
 

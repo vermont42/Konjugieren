@@ -4,6 +4,7 @@
     <!ELEMENT verb (reading+)>
     <!ATTLIST verb in CDATA #REQUIRED>
     <!ATTLIST verb hi CDATA #REQUIRED>
+    <!ATTLIST verb hp (y) #IMPLIED>
     <!ATTLIST verb ic CDATA #REQUIRED>
     <!ELEMENT reading EMPTY>
     <!ATTLIST reading in CDATA #IMPLIED>

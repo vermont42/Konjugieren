@@ -522,6 +522,7 @@ private final class Classifier {
     Verb.verbs[word] = Verb(
       infinitiv: word,
       hits: 0,
+      hitsAreProvisional: false,
       frequency: 0,
       frequencyIcon: "figure",
       readings: [

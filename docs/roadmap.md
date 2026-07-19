@@ -99,8 +99,13 @@ Decide the `hi` policy before handing this over; see "The blocked one" below.
 >
 > - **`hi`** — a raw DWDS count, and you cannot invent one. Bulk querying is blocked pending BBAW;
 >   follow whatever policy Josh set when handing you this task, and if none was set, ask before
->   fetching. `verbdata/fetch_dwds_frequencies.py` refuses contaminated rows but needs probes:
->   supply two per lemma from kaikki's `forms[]` (`perfektpartizip`, `präsensIndikativ.ts`).
+>   fetching. If the answer is provisional counts, read "Provisional hit counts: the `hp`
+>   attribute" in `verb-sources.md` and mark every estimate with `hp="y"` — place each estimate
+>   between the real counts of verbs you judge it comparable to, rather than picking round
+>   numbers. Do **not** reach for Leipzig; it was evaluated and rejected on 2026-07-19, and the
+>   section above that one says why. If real counts are authorised,
+>   `verbdata/fetch_dwds_frequencies.py` refuses contaminated rows but needs probes: supply two
+>   per lemma from kaikki's `forms[]` (`perfektpartizip`, `präsensIndikativ.ts`).
 > - **`ic`** — `#REQUIRED`, 40 distinct SF Symbol suffixes in use, chosen by taste.
 > - **Auxiliary** — the interim policy is in `prompts/dual_auxiliary.md` § "Interim policy". Read
 >   it; do not re-derive it. The DTD takes `h|s|r` and a combined `"hs"` fails validation
@@ -175,11 +180,14 @@ Decide this before starting step 7. Three options, and the choice is Josh's:
 - **Wait for BBAW.** Cleanest, and unbounded in time.
 - **Query just the tranche.** ~87 lemmas, ~174 requests with two probes each. Whether that is
   citation-scale or the § 44b commercial use BBAW reserved is a judgment call, not a technical one.
-- **Import with provisional counts** from a permissive source (Leipzig Corpora is CC BY), marked
-  for re-derivation. The refactor makes this cheaper than it would have been — a provisional `hi`
-  is one number per verb, and replacing it later is a one-line change rather than a renumber — but
-  the whole corpus's displayed ranks stay provisional until real counts land, since the rank is
-  derived globally.
+- **Import with provisional counts**, placed by editorial judgment and marked `hp="y"` in the
+  XML. The refactor makes this cheap — a provisional `hi` is one number per verb, and replacing
+  it later is a one-line change rather than a renumber — though the corpus's displayed ranks stay
+  approximate until real counts land, since the rank is derived globally. **Leipzig Corpora was
+  evaluated as a source for this on 2026-07-19 and rejected**: its API data is CC BY-NC, it is
+  1,000× smaller than DWDS, 17 of the 87 strong bases are absent from it entirely, and it measures
+  word forms rather than lemmas. See "Leipzig Corpora Collection was evaluated as a substitute and
+  rejected" in `verb-sources.md`.
 
 ## Known gaps that are nobody's step yet
 

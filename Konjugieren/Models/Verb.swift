@@ -35,6 +35,12 @@ struct Verb: Identifiable, Hashable {
   /// first, the opposite of `frequency`, so prefer `frequency` anywhere order matters.
   let hits: Int
 
+  /// True when `hits` is an editorial estimate rather than a measured DWDS count, because
+  /// the verb was imported while bulk querying was blocked. Affects nothing the user sees —
+  /// the rank derives from `hits` either way — and exists so the provisional population
+  /// stays findable rather than quietly becoming permanent. See `hp` in `verb-sources.md`.
+  let hitsAreProvisional: Bool
+
   /// Dense rank over the whole corpus, 1 being the most common verb. Derived from `hits`
   /// by `VerbParser` at parse time rather than stored, so adding a verb does not renumber
   /// every incumbent. This is the number the UI renders as `#168`.
@@ -80,7 +86,14 @@ struct Verb: Identifiable, Hashable {
   }
 
   func withFrequency(_ frequency: Int) -> Verb {
-    Verb(infinitiv: infinitiv, hits: hits, frequency: frequency, frequencyIcon: frequencyIcon, readings: readings)
+    Verb(
+      infinitiv: infinitiv,
+      hits: hits,
+      hitsAreProvisional: hitsAreProvisional,
+      frequency: frequency,
+      frequencyIcon: frequencyIcon,
+      readings: readings
+    )
   }
 
   static func endingIsValid(infinitiv: String) -> Bool {

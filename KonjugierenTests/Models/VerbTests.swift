@@ -44,6 +44,15 @@ struct VerbTests {
     }
   }
 
+  @Test func everyShippingHitCountIsMeasuredNotProvisional() {
+    // Documents the state the `hp` attribute was introduced in, on 2026-07-19: all 990 counts
+    // come from DWDS. A tranche imported while bulk querying is blocked will make this fail,
+    // which is the point — updating it should be a deliberate act, not a silent drift. Replace
+    // the expectation with the tranche's size and say where the estimates came from.
+    let provisional = Verb.verbs.values.filter(\.hitsAreProvisional).map(\.infinitiv).sorted()
+    #expect(provisional.isEmpty, "provisional hit counts: \(provisional)")
+  }
+
   @Test func theMostFrequentVerbIsRankedFirst() {
     let mostHits = Verb.verbs.values.max { $0.hits < $1.hits }
     #expect(mostHits?.frequency == 1)

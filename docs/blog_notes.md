@@ -979,3 +979,63 @@ The pattern across today is consistent enough to name. Every one of these — th
 document making a claim that no code checked. The ones that got caught were caught by executing
 the claim: following the link, running the recipe, grepping for the key. Reading them found
 nothing, because they all read fine.
+
+## Leipzig, and marking a guess as a guess (2026-07-19)
+
+The `hi` refactor left the import needing hit counts it cannot get, so the obvious move was to
+find another German frequency source. Leipzig Corpora Collection is the obvious candidate, and I
+suggested it — describing it as CC BY, from memory, which turned out to be wrong in the direction
+that matters.
+
+Their terms split the licence in two. "The data and applications provided by the project" are
+CC BY-**NC**, with commercial use prohibited without written consent, and that covers the web
+service API. Separately, "the text corpora offered for download are made available under the
+Creative Commons licence CC BY." So the numbers I had actually been querying are the
+non-commercial half. Konjugieren is a paid app, so shipping ranks derived from them is barred for
+the same reason DWDS is. My queries themselves were fine — the terms permit automated access
+"except via our web services", and the web service is the sanctioned channel — but the derived
+values cannot ship.
+
+Reading that page needed Josh's browser. The site sits behind Anubis, a proof-of-work gate aimed
+at mass scrapers, and my plain HTTP fetches got the challenge page instead of the terms. Claude in
+Chrome renders in a real browser, which satisfies the challenge as designed rather than evading
+it, and the point of the visit was to read a licence in order to obey it. That felt like the
+distinction worth drawing: one page view, user-directed, in service of compliance.
+
+Three technical findings killed Leipzig independently of the licence, so it would have lost
+anyway. It holds 50.7M tokens against DWDS's 53.2 **billion**. Seventeen of the 87 missing strong
+bases return 404 outright, *sieden* among them, and many that resolve sit at counts of one to six.
+And it reports word forms rather than lemmas — `machen` is 24,992 there against 67,161,366 in
+DWDS — which on an 83-verb spread sample gives ρ = 0.876 against the DWDS ranking, with a worst
+displacement of 57 places inside the sample, roughly 680 at full-corpus scale.
+
+The worst outlier was `gleichen`, one of the eight homographs repaired that morning, because the
+string also inflects the adjective *gleich*. Leipzig reproduces the contamination — and the gate
+built earlier that day cannot catch it, because that check compares the returned lemma against the
+one asked for, and Leipzig returns only the word you queried. The comparison is a tautology. Not
+merely unprotected: structurally unprotectable.
+
+The general shape is worth keeping. Any corpus good enough to replace DWDS is likely restricted
+for the same reason DWDS is, because the counts *are* the asset. So the useful question was never
+which free source to find; it was whether a membership-defined tranche needs measured frequency at
+all. It does not. An honest editorial estimate beats a precise-looking number that is wrong for
+reasons nothing can detect.
+
+Which leaves the real risk, which is not the guess but the guess quietly becoming permanent. Hence
+`hp="y"` on `<verb>`: present means the count is an estimate, absent means it is measured, and the
+DTD admits only `y` so a typo fails the build rather than reading as "real". It changes no
+behaviour — the rank derives from `hi` either way — and exists purely so the provisional
+population stays findable.
+
+I implemented it rather than leaving it specified, and the reason is this same day's evidence.
+Twice today I found a document describing something no code checked: the `etymology-pipeline.md`
+pointer to a file that never existed, and Phase 4 of the example-sentence pipeline, complete with
+a schema rule and a validation step, whose `medieval` key appears nowhere in the data. A spec for
+`hp` sitting in `verb-sources.md` until step 7 is that pattern with the ink still wet.
+
+And having written a test for it, the test passed immediately — which proves nothing, since no
+verb carries `hp`. So I marked *singen* provisional, confirmed the test failed with `["singen"]`
+and the generator reported `1 of 990`, set the value to `hp="maybe"` and confirmed xmllint
+rejected it as "not among the enumerated set", then reverted. A test that has never been seen to
+fail is not yet a test; it is a claim no code checks, which is exactly the thing being guarded
+against.

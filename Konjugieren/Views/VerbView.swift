@@ -432,6 +432,7 @@ struct ConjugationSectionView: View {
     VerbView(verb: Verb(
       infinitiv: "gehen",
       hits: 10_000_000,
+      hitsAreProvisional: false,
       frequency: 10,
       frequencyIcon: "figure.walk",
       readings: [

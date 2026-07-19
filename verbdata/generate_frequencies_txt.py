@@ -29,16 +29,23 @@ XML = REPO / "Konjugieren/Models/Verbs.xml"
 OUT = REPO / "docs/frequencies.txt"
 
 
-def ranked_lemmas() -> list[str]:
-    """Every shipping infinitive, most common first. Mirrors `VerbParser.ranked`."""
-    verbs = []
+def ranked_lemmas() -> tuple[list[str], list[str]]:
+    """Every shipping infinitive most common first, plus those with provisional counts.
+
+    Mirrors `VerbParser.ranked`. The provisional list is reported rather than filtered:
+    an `hp` verb ranks by its estimate exactly like any other, and the caller surfaces the
+    population so it stays visible instead of only being discoverable by grep.
+    """
+    verbs, provisional = [], []
     for verb in ET.parse(XML).getroot():
         # Strip all three markers: `+` separable, `*` inseparable, `^` ablaut region.
         # Stripping only `+` and `^` leaves 305 verbs looking like `be*achten`.
         lemma = re.sub(r"[+*^]", "", verb.get("in"))
         verbs.append((lemma, int(verb.get("hi"))))
+        if verb.get("hp") is not None:
+            provisional.append(lemma)
     verbs.sort(key=lambda pair: (-pair[1], pair[0]))
-    return [lemma for lemma, _ in verbs]
+    return [lemma for lemma, _ in verbs], sorted(provisional)
 
 
 def render(lemmas: list[str]) -> str:
@@ -50,7 +57,15 @@ def main() -> int:
     parser.add_argument("--check", action="store_true", help="exit nonzero if the file is stale; write nothing")
     args = parser.parse_args()
 
-    expected = render(ranked_lemmas())
+    lemmas, provisional = ranked_lemmas()
+    expected = render(lemmas)
+
+    if provisional:
+        print(
+            f"note: {len(provisional)} of {len(lemmas)} hit counts are provisional (hp): "
+            + ", ".join(provisional),
+            file=sys.stderr,
+        )
 
     if args.check:
         actual = OUT.read_text() if OUT.exists() else ""

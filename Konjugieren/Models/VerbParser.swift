@@ -11,6 +11,7 @@ class VerbParser: NSObject, XMLParserDelegate {
   private var currentVerb = ""
   private var currentMarkedInfinitiv = ""
   private var currentHits = 0
+  private var currentHitsAreProvisional = false
   private var currentIconSuffix = ""
   private var currentReadings: [Reading] = []
 
@@ -81,6 +82,10 @@ class VerbParser: NSObject, XMLParserDelegate {
     } else {
       Current.fatalError.fatalError("No hit count specified for verb '\(currentVerb)'.")
     }
+
+    // The DTD admits only "y", so presence is the whole signal; absence means the count is a
+    // measured DWDS value, mirroring how an absent `ay` means haben.
+    currentHitsAreProvisional = attributeDict["hp"] != nil
 
     if let iconSuffix = attributeDict["ic"] {
       currentIconSuffix = iconSuffix
@@ -187,6 +192,7 @@ class VerbParser: NSObject, XMLParserDelegate {
     verbs[currentVerb] = Verb(
       infinitiv: currentVerb,
       hits: currentHits,
+      hitsAreProvisional: currentHitsAreProvisional,
       // Filled in by `ranked` once every verb is parsed, since a rank cannot be known
       // until the whole corpus is.
       frequency: 0,
@@ -201,6 +207,7 @@ class VerbParser: NSObject, XMLParserDelegate {
     currentVerb = ""
     currentMarkedInfinitiv = ""
     currentHits = 0
+    currentHitsAreProvisional = false
     currentIconSuffix = ""
     currentReadings = []
   }

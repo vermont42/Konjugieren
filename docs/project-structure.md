@@ -194,6 +194,7 @@ docs/
 ├── code-review-recommendations.md  # Second full-codebase review (July 2026): ranked recommendations across game, widget, deeplink, and concurrency findings, with a phased implementation sequence
 ├── conjugationgroupText.md    # Template and guidelines for conjugationgroup articles
 ├── control-center-controls.md  # iOS 18+ ControlWidget constraints on `openAppWhenRun`/`OpenURLIntent` and the Shared/ dual-target pattern
+├── dwds-permission-email.md   # Draft permission request to dwds@bbaw.de for frequency-API use (§ 44b UrhG reservation)
 ├── emoji-assets.md            # Why some emoji ship as PNG assets (iOS 26 emoji-rendering workaround)
 ├── english_writing_style.md   # English writing conventions consulted by Claude when editing localization strings, docs, and comments
 ├── etymologies.md             # Etymology pipeline documentation
@@ -249,8 +250,10 @@ corpus/                        # German text corpus for example sentence sourcin
 ├── modern/                    # Modern German literature and legal texts
 └── technology/                # BSI security guides and technical Wikipedia articles
 
-verbdata/                      # Wiktionary-extraction data for verb-corpus expansion (see docs/verb-sources.md)
-├── README.md                  # Provenance, integrity stats, and re-download recipe for the kaikki JSONL
+verbdata/                      # Verb-corpus-expansion data (see docs/verb-sources.md)
+├── README.md                  # Provenance, integrity stats, and re-download recipes for both data files
+├── fetch_dwds_frequencies.py  # Fetches DWDS lemma frequencies; --lemmas FILE overrides the Verbs.xml corpus
+├── dwds-frequencies.json      # 990-lemma DWDS frequency snapshot (gitignored pending BBAW permission)
 └── kaikki.org-dictionary-German-by-pos-verb.jsonl  # 294 MB kaikki.org German-verb extraction (gitignored)
 
 GameCenterResources.gamekit/   # Game Center leaderboard configuration and images

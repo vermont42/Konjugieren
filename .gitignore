@@ -14,3 +14,6 @@ docs/wwdc2026-whats-new-in-swift-transcript.txt
 docs/wwdc2026-whats-new-swiftui-transcript.txt
 # kaikki.org Wiktionary extraction (~294 MB; re-download recipe in verbdata/README.md)
 verbdata/*.jsonl
+# DWDS frequency snapshot: BBAW reserves § 44b UrhG and bars redistribution
+# without permission. Untracked pending a reply from dwds@bbaw.de.
+verbdata/dwds-frequencies.json

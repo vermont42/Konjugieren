@@ -2,7 +2,7 @@
 
 ## English
 
-Master German verb conjugations with 989 verbs across all conjugationgroups—the definitive reference and quiz app for German learners.
+Master German verb conjugations with 990 verbs across all conjugationgroups—the definitive reference and quiz app for German learners.
 
 FEATURES
 
@@ -75,7 +75,7 @@ Cliff was born in Minster, Ohio—a town where German was the language of daily 
 
 When America entered World War II, Cliff served as an Army doctor, treating soldiers wounded in North Africa, Sicily, and Southern Italy. He died in Oran, Algeria, on January 21, 1944. Josh's mother, Ryan, was just fourteen months old.
 
-Though Ryan never truly knew her father, Cliff's love for his family has echoed through the generations. Konjugieren honors Cliff and the language he and his ancestors spoke—German.Master German verb conjugations with 989 verbs across all conjugationgroups—the definitive reference and quiz app for German learners.
+Though Ryan never truly knew her father, Cliff's love for his family has echoed through the generations. Konjugieren honors Cliff and the language he and his ancestors spoke—German.
 
 ## German
 

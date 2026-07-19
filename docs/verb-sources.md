@@ -136,7 +136,17 @@ Classification need not be manual at 6,000-verb scale:
 
 This inverts the manual checklist in `adding-verbs.md` into search plus verification, and every imported verb arrives with an externally sourced expected-conjugation set, ready to be spot-sampled into `ConjugatorTests`.
 
-For `fr`, the DWDS frequency API (no authentication; see recipes) returns lemma hits against a 53.2-billion-token corpus and worked for every verb tried. Leipzig Wortschatz, SUBTLEX-DE, and DeReWo also exist but carry research-oriented licenses that would need review; DWDS-derived ranks with a Credits mention are cleaner.
+For `fr`, the DWDS frequency API (no authentication; see recipes) returns lemma hits against a 53.2-billion-token corpus and worked for every verb tried.
+
+**Correction (2026-07-19): the licensing sentence that stood here was wrong.** It claimed DWDS-derived ranks "with a Credits mention are cleaner" than Leipzig Wortschatz, SUBTLEX-DE, or DeReWo. Reading the actual terms at `dwds.de/d/nutzungsbedingungen` reverses that judgment. Two sentences govern:
+
+> Die Berlin-Brandenburgische Akademie der Wissenschaften (BBAW) behält sich das Recht an der Nutzung der Daten gemäß § 44b UrhG vor.
+
+> Jegliche Nutzung der Inhalte des DWDS, einschließlich jedoch nicht beschränkt auf automatisierte Abfragen und Auswertungen (Crawlen, Parsen, Text- und Data-Mining), sofern nicht über § 60d UrhG zulässig, ist nur mit ausdrücklicher Genehmigung gestattet.
+
+§ 44b UrhG is Germany's general text-and-data-mining exception, and rights holders may reserve it for non-research uses; BBAW has done so explicitly. § 60d is the *scientific research* TDM exception, available to non-commercial research organizations — which a shipping App Store app is not. So bulk-querying the frequency API to populate `fr` across the corpus, and shipping the derived ranks, requires written permission (`dwds@bbaw.de`), regardless of attribution. Quoting a handful of frequencies in a design document, as this file does, stays inside the citation allowance ("Der Umfang darf den üblicher Zitate nicht überschreiten") given a Quellenangabe.
+
+The practical path is to ask: BBAW is an academic academy, Konjugieren is free and educational, and a Credits attribution costs them nothing. But ask before building on it. See `verbdata/README.md` for the snapshot taken on 2026-07-19 and the fallbacks if the answer is no.
 
 ## Other sources considered
 

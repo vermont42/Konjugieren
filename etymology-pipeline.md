@@ -2,7 +2,19 @@
 
 ## Progress
 
-**COMPLETE — all 989 verbs translated.**
+**COMPLETE — every verb in `Verbs.xml` is translated.** Verified 2026-07-19: `Etymologies.json` holds 990 entries under both `"en"` and `"de"`, exactly matching the 990 verbs in `Verbs.xml`, with no missing and no orphaned keys.
+
+Do not restate the verb count here. `Verbs.xml` is the single source of truth, and this file previously claimed 989 long after the corpus reached 990. Check coverage instead of trusting a number in prose:
+
+```bash
+python3 -c "
+import json, re
+verbs = {re.sub(r'[+*^]','',m) for m in re.findall(r'in=\"([^\"]+)\"', open('Konjugieren/Models/Verbs.xml').read())}
+d = json.load(open('Konjugieren/Models/Etymologies.json'))
+for lang, section in d.items():
+    print(lang, 'missing:', sorted(verbs - set(section)), 'orphaned:', sorted(set(section) - verbs))
+"
+```
 
 ## Task
 
@@ -234,7 +246,7 @@ remaining = sorted(set(d['en']) - set(d['de']))
 print(f'Remaining: {len(remaining)}, next: {remaining[0] if remaining else \"DONE\"}')"
 ```
 
-If all 989 verbs are done, note that translation is complete.
+If `remaining` is empty, note that translation is complete. Compare against that computed set, never against a verb count written down here.
 
 ## JSON Munging Advice
 

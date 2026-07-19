@@ -4,6 +4,8 @@
 
 The term "conjugationgroup" was invented for this project because no existing term adequately described the concept. A conjugationgroup with more than one member, like Präsens Indikativ, combines tense, mood, and voice to identify a specific set of verb forms. The conjugationgroups with one member are Infinitiv (infinitive), Perfektpartizip (past participle), and Präsenspartizip (present participle). When translating conjugationgroup to German, use the word "Conjugationgroup", plural "Conjugationgroups". By analogy with Gruppe, Conjugationgroup is a feminine noun.
 
+The plural is settled, and settled the way it is on purpose: Josh consulted Stephan Schaffrath, a native speaker, who confirmed that German loanwords do take -s plurals. So the declension splits, and the split is the point. Gender is assigned by analogy to a native near-synonym, giving *die* Conjugationgroup after *die* Gruppe, while the plural stays the Anglicism's own -s rather than following Gruppe to *Gruppen*. This is ordinary behavior for an unassimilated English borrowing in German (*die Teams*, *die Storys*), not an inconsistency. "Conjugationgroupen" is **not** the correct form; if a future session or document proposes it, this paragraph is the answer.
+
 ## Tense, Mood, and Voice
 
 In discourse about Indo-European languages, "tense" refers only to the time that an action occurs. German conjugationgroups have three tenses:

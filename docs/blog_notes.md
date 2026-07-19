@@ -143,3 +143,78 @@ a portrait-to-landscape rotation compresses the six enemy rows from 40-point spa
 28, so the fleet reads tighter in landscape than a fresh landscape start would. Keeping Y
 absolute instead would risk pushing bottom-anchored entities off a shorter screen, which is
 the worse failure. Left proportional pending Josh's eyeball on real hardware.
+
+## Asking whether DWDS should own the frequency column (2026-07-19)
+
+Picking up `docs/verb-sources.md` after step 1 (the kaikki snapshot), the question that had
+to be answered before steps 2 and 3 was deceptively small: where do new verbs get their `fr`
+rank? Today `fr` is a dense, unique 1–990 integer, rendered as a "#N" badge on `VerbView`
+and driving the default browse sort. Adding even the 87 missing strong bases forces the
+issue, because appending beißen at #991 — behind tätigen — would be visibly absurd to anyone
+who speaks German.
+
+So: re-derive everything from DWDS? I fetched all 990 lemmas from the frequency API to find
+out, and the answer split cleanly into a data question and a licensing question, which
+turned out to have opposite signs.
+
+The data question came out well. Spearman between the existing ranks and DWDS-derived ranks
+is 0.932 — the original list, whose provenance the repo never recorded (the commit message
+is just "add complete verb etymologies and frequency list"), is not wrong. But the median
+verb still shifts 45 places and 215 shift more than 100, so the two orderings are genuinely
+different documents, and only one of them is reproducible.
+
+Two traps surfaced, both now written up in `verbdata/README.md`. The first was mine: the
+`in` attribute in `Verbs.xml` carries three markers, `+` and `*` and `^`, and my extractor
+stripped only `+` and `^`. All 305 inseparable-prefix verbs went out as `be*achten` — and
+the API answered with a well-formed zero rather than an error, so the first full run looked
+like a success while a third of the corpus was silently garbage. Only the biggest-movers
+table, in which the bottom of the ranking was suspiciously full of ordinary verbs, gave it
+away. The second trap is DWDS's own: it lemmatizes the query, so a verb whose infinitive is
+a homograph of another lemma's inflected form resolves to the wrong lemma. runden lands on
+the adjective *rund* and reports 23.4 million hits, which would have installed it at rank
+25. Ten of 990 do this, and comparing the returned `dwds_lemma` against the asked lemma
+catches all ten for free. The one it cannot catch is sein, which outpolls haben two to one
+because the possessive pronoun shares its spelling and its lemma; harmless here only because
+sein is rank 1 regardless.
+
+The licensing question is where the day turned. `verb-sources.md` had asserted that
+DWDS-derived ranks "with a Credits mention are cleaner" than Leipzig or SUBTLEX-DE or
+DeReWo. Reading the actual Nutzungsbedingungen reverses that: BBAW explicitly reserves its
+§ 44b UrhG rights — that is the German TDM exception, which rights holders may opt out of
+for non-research use — and requires written permission for automated querying not covered by
+§ 60d, the exception reserved to non-commercial *research organizations*. A shipping App
+Store app is not one. Quoting a dozen frequencies in a design doc is fine under the citation
+allowance; deriving the app's whole frequency column and shipping it is not. I had already
+run the fetch twice by the time I read this, which is the wrong order to do things in, and
+the snapshot is now gitignored pending an email to dwds@bbaw.de. The correction is recorded
+in `verb-sources.md` rather than quietly patched, since future sessions read that file as
+settled fact.
+
+The engineering recommendation that falls out is independent of who wins the license: store
+raw hits in the XML and derive the rank at parse time, rather than storing the rank. A stored
+dense rank means every tranche of new verbs rewrites the `fr` of all 990 incumbents — a
+useless diff and an invitation to error — whereas a derived rank makes adding a verb a
+one-line change. That refactor touches `VerbParser`, `Verb`, and `VerbExportTests`, and it
+should land before the corpus grows, not after.
+
+## Drafting the DWDS permission request (2026-07-19)
+
+Wrote `docs/dwds-permission-email.md`, an English request to `dwds@bbaw.de` for permission to
+derive the app's frequency ranking from their API.
+
+Two judgment calls are baked into the draft, both worth revisiting before it goes out. The
+first is disclosure: the email admits that the 990-lemma snapshot has already been fetched.
+The alternative was to ask in the abstract, which would have been technically honest and
+practically evasive, since the requests are in BBAW's logs either way. The second is the
+public-repository problem. Shipping the ranks inside a compiled app is one thing; publishing
+them in a GitHub repo is redistribution, and burying that in a footnote would be the kind of
+omission that turns a yes into a retracted yes. The draft raises it in its own paragraph and
+offers to drop the hit counts, or to walk away, if that is what it takes.
+
+The email also asks BBAW to specify the attribution wording rather than proposing one and
+hoping. That was not originally a courtesy: `dwds.de/d/zitieren` renders its citation
+templates in JavaScript, so the house style was simply unreadable from a curl. Turning the
+gap into a question improved the email.
+
+Everything is still gated on the reply. Step 2 of `verb-sources.md`, the classify-and-verify
+pipeline against `Conjugator`, needs only the CC-BY-SA kaikki data and can proceed meanwhile.

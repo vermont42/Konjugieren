@@ -60,6 +60,7 @@ Konjugieren/
 │   ├── PrefixMeaning.swift     # Prefix meanings with PIE etymologies
 │   ├── Quiz.swift              # @Observable quiz state: questions, timer, scoring
 │   ├── QuizDifficulty.swift    # Setting enum: regular vs ridiculous
+│   ├── Region.swift            # Setting enum: the three standard varieties (north/austria/switzerland)
 │   ├── QuizErrorHistory.swift  # Persistence for recent quiz errors (up to 200)
 │   ├── SearchScope.swift       # Setting enum: infinitive-only vs. infinitive-and-translation search
 │   ├── SortOrder.swift         # Enum for verb list sorting (alphabetical/frequency)
@@ -93,6 +94,7 @@ Konjugieren/
 │   ├── MixedCaseAccessibility.swift  # VoiceOver labels for mixed-case ablaut strings
 │   ├── Modifiers.swift         # Custom ViewModifiers (headingLabel, funButton, etc.)
 │   ├── RatingsFetcher.swift    # Fetches app ratings from iTunes API
+│   ├── RegionalRendering.swift # ß→ss display transform + RegionalConjugator (region-aware wrapper over the region-free Conjugator)
 │   ├── ReviewPrompter.swift    # Protocol for review-prompting behavior
 │   ├── ReviewPrompterDummy.swift   # No-op stub for tests
 │   ├── ReviewPrompterReal.swift    # Real implementation prompting reviews at intervals

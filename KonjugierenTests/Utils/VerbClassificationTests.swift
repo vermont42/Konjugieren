@@ -502,7 +502,8 @@ private final class Classifier {
       auxiliary: .haben,
       frequency: 0,
       prefix: prefix,
-      frequencyIcon: "figure"
+      frequencyIcon: "figure",
+      auxiliaryIsRegional: false
     )
   }
 

@@ -14,8 +14,8 @@ completes.
 | 1 | Get the Wiktionary snapshot | [`verb-sources.md`](verb-sources.md) | ✅ 2026-07-18 | — |
 | 2 | Build the classify-and-verify pipeline | [`verb-classification.md`](verb-classification.md) | ✅ 2026-07-19 | — |
 | 3 | Fix what it found in the shipping corpus | [`verb-classification.md`](verb-classification.md) | ✅ 2026-07-19 | — |
-| 4 | Regional variety support | [`../prompts/regional_variation.md`](../prompts/regional_variation.md) | ⬜ next | — |
-| 5 | Dual auxiliaries + double-prefix grammar | [`../prompts/dual_auxiliary.md`](../prompts/dual_auxiliary.md) | ⬜ | step 4 |
+| 4 | Regional variety support | [`../prompts/regional_variation.md`](../prompts/regional_variation.md) | ✅ 2026-07-19 | — |
+| 5 | Dual auxiliaries + double-prefix grammar | [`../prompts/dual_auxiliary.md`](../prompts/dual_auxiliary.md) | ⬜ next | step 4 ✅ |
 | 6 | Refactor `fr`: store hits, derive rank | [`verb-sources.md`](verb-sources.md) § "Step 4 in detail" | ⬜ | — |
 | 7 | Import tranche 1: strong bases | [`verb-sources.md`](verb-sources.md) § step 5 | ⬜ | steps 4–6 |
 | 8 | Import tranche 2: prefixed derivatives | [`verb-sources.md`](verb-sources.md) § step 6 | ⬜ | step 5's grammar |
@@ -57,7 +57,9 @@ Each of these is enough to start. The prompts are written to be self-contained.
 **Step 5 — dual auxiliaries**
 
 > Please execute `prompts/dual_auxiliary.md`. It assumes `prompts/regional_variation.md` has
-> already run; confirm that before starting.
+> already run; it has, on 2026-07-19. Read "Regional before dual-auxiliary" below first: it
+> records the exact post-step-4 state of the `ay` attribute and the three `ay="r"` verbs you must
+> not disturb.
 
 **Step 6 — the `fr` refactor**
 
@@ -87,6 +89,23 @@ of what it means — variation by *where the speaker lives* versus variation by 
 means*. Running them in the other order means migrating the same attribute twice, with the
 second pass having to undo the first's assumptions.
 
+Step 4 has now run, so the state a step-5 session inherits is concrete, and worth reading before
+touching `Verbs.xml`:
+
+- `ay` legally takes `h|s|r`; the DTD was widened. `r` means "regionally conditioned" and is
+  owned by exactly three verbs: *stehen*, *sitzen*, *liegen*. `VerbParser` maps `ay="r"` to a
+  `Verb.auxiliaryIsRegional` flag and leaves the stored auxiliary at `haben`, which is what keeps
+  `Conjugator` region-free.
+- Those three prefixed derivatives (*bestehen*, *verstehen*, *besitzen*, *entstehen*, …) were
+  deliberately **not** marked regional. They have lexicalized away from the positional sense that
+  takes southern *sein* (*bestehen* = to pass, not to be standing), so step 5 should treat them on
+  their own merits, not by analogy to the base.
+- Step 4 added `Conjugator.conjugate(…, auxiliary: Auxiliary? = nil)` and a `RegionalConjugator`
+  display wrapper precisely so a per-reading auxiliary can be expressed without making `Conjugator`
+  itself region- or reading-aware. Step 5's dual-auxiliary readings should **reuse** that seam, not
+  reinvent it, and must leave the three `ay="r"` verbs alone — their alternation is regional, not
+  by meaning.
+
 ## The blocked one
 
 Step 9 needs frequency ranks for thousands of weak verbs, and DWDS is the only good German
@@ -110,8 +129,12 @@ Small things the pipeline surfaced that no plan currently owns. None blocks the 
   other three are unexamined.
 - **Three modals resist the pipeline** — *sollen*, *bedürfen*, *vermögen* use full-override
   ablaut groups the classifier cannot derive. Probably correct as shipped; unverified.
-- **Everything in `prompts/` except steps 4 and 5 is already executed** and now carries a
-  status line saying so. Only `regional_variation.md` and `dual_auxiliary.md` are outstanding.
+- **Everything in `prompts/` except step 5 is already executed** and now carries a status line
+  saying so. Only `dual_auxiliary.md` is outstanding.
+- **Swiss infinitive display beyond `VerbView`** — the ß→ss transform now covers displayed
+  infinitives (headline, nav title, browse rows, quiz prompt, results, family cards) and search
+  normalizes both sides. Widget snapshots and the Tutor still emit conjugations only; neither
+  displays a bare infinitive today, but a future surface that does needs the same treatment.
 
 ## Done, for the record
 
@@ -124,3 +147,4 @@ Small things the pipeline surfaced that no plan currently owns. None blocks the 
 | ß/ss orthography | `1ae08da` | 51 → 25; 20 test expectations corrected |
 | Prefix markers | `1ae08da` | 25 → 14 |
 | Regional + dual-auxiliary planning | `b725ee3` | The prompts for steps 4 and 5 |
+| Regional variety support | (uncommitted; this pass) | Region setting, ß/ss transform (incl. displayed infinitives + search normalization), 3 regional-auxiliary verbs, dual-flag pill, Duden Info article; at-odds count held at 14 |

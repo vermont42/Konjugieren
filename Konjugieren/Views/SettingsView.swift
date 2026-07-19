@@ -58,6 +58,20 @@ struct SettingsView: View {
               GradientDivider()
 
               settingSection(
+                heading: L.Settings.regionHeading,
+                description: L.Settings.regionDescription
+              ) {
+                Picker(L.Settings.regionHeading, selection: $settings.region) {
+                  ForEach(Region.allCases, id: \.self) { region in
+                    Text(region.localizedRegion).tag(region)
+                  }
+                }
+                .pickerStyle(.segmented)
+              }
+
+              GradientDivider()
+
+              settingSection(
                 heading: L.Settings.searchScopeHeading,
                 description: L.Settings.searchScopeDescription
               ) {

@@ -89,8 +89,8 @@ struct ResultsView: View {
     let titleIsGerman = settings.conjugationgroupLang == .german
 
     let infinitivDisplay = question.isCorrect == false
-      ? "\(question.verb.infinitiv) \u{2717}"
-      : question.verb.infinitiv
+      ? "\(question.verb.infinitiv.inUserRegion) \u{2717}"
+      : question.verb.infinitiv.inUserRegion
 
     VStack(alignment: .center, spacing: 4) {
       Text(verbatim: infinitivDisplay)

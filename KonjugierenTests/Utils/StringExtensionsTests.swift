@@ -294,6 +294,53 @@ struct StringExtensionsTests {
     }
   }
 
+  @MainActor
+  @Suite("Regional Orthography")
+  struct RegionalOrthography {
+    @Test("Swiss German writes ss for ß", arguments: zip(
+      ["schloß", "grüßen", "heißt", "gehen"],
+      ["schloss", "grüssen", "heisst", "gehen"]
+    ))
+    func swissDropsSharpS(input: String, expected: String) {
+      #expect(input.inRegion(.switzerland) == expected)
+    }
+
+    @Test("The ß-writing varieties leave conjugations alone", arguments: [Region.north, .austria])
+    func sharpSVarietiesAreUnchanged(region: Region) {
+      #expect("schlOß".inRegion(region) == "schlOß")
+    }
+
+    // Ablaut replacements spell the sibilant with the capital sharp s ẞ so that mixed-case
+    // highlighting covers it. Mapping ẞ to SS rather than ss keeps both characters uppercase,
+    // which is what stops the highlighted run from splitting in two.
+    @Test func capitalSharpSSurvivesAsOneIrregularRun() {
+      let swiss = "schlOẞ".inRegion(.switzerland)
+      #expect(swiss == "schlOSS")
+
+      let segments = MixedCaseSegmenter.segments(for: swiss)
+      #expect(segments.count == 2)
+      #expect(segments.filter(\.isIrregular).count == 1)
+      #expect(segments[0].text == "schl")
+      #expect(segments[1].text == "oss")
+    }
+
+    // A Swiss user sees "schliessen" and types it; the corpus stores "schließen".
+    @Test("Search normalization makes the two spellings compare equal")
+    func sharpSNormalizationMatchesAcrossVarieties() {
+      #expect("schließen".sharpSNormalized == "schliessen".sharpSNormalized)
+      #expect("schließen".sharpSNormalized == "schliessen")
+      #expect("gehen".sharpSNormalized == "gehen")
+    }
+
+    @Test("Region seeds from the device locale", arguments: zip(
+      ["de_AT", "de_CH", "de_DE", "en_US"],
+      [Region.austria, .switzerland, .north, .north]
+    ))
+    func seededFromLocale(identifier: String, expected: Region) {
+      #expect(Region.seeded(from: Locale(identifier: identifier)) == expected)
+    }
+  }
+
   @Suite("Unterminated Delimiters", .serialized)
   @MainActor
   struct UnterminatedDelimiters {

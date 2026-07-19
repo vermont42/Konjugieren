@@ -327,7 +327,7 @@ struct ConjugationTool: Tool {
 
   @MainActor private static func conjugate(infinitiv: String, conjugationgroupName: String) -> String {
     if let conjugationgroup = buildConjugationgroup(name: conjugationgroupName, personNumber: nil) {
-      let result = Conjugator.conjugate(infinitiv: infinitiv, conjugationgroup: conjugationgroup)
+      let result = RegionalConjugator.conjugate(infinitiv: infinitiv, conjugationgroup: conjugationgroup)
       switch result {
       case .success(let conjugation):
         return "\(conjugation.lowercased()) (\(conjugationgroup.englishDisplayName))"
@@ -343,7 +343,7 @@ struct ConjugationTool: Tool {
       guard let conjugationgroup = buildConjugationgroup(name: conjugationgroupName, personNumber: personNumber) else {
         continue
       }
-      let result = Conjugator.conjugate(infinitiv: infinitiv, conjugationgroup: conjugationgroup)
+      let result = RegionalConjugator.conjugate(infinitiv: infinitiv, conjugationgroup: conjugationgroup)
       if case .success(let conjugation) = result {
         if imperativ {
           lines.append(conjugation.lowercased())

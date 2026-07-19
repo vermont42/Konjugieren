@@ -29,14 +29,14 @@ struct VerbView: View {
     ScrollView {
       VStack(alignment: .leading, spacing: 24) {
         VStack(alignment: .leading, spacing: 8) {
-          Text(verb.infinitiv)
+          Text(verb.infinitiv.inUserRegion)
             .font(.largeTitle)
             .fontWeight(.bold)
             .fontDesign(.serif)
             .minimumScaleFactor(0.5)
             .accessibilityAddTraits(UserLocale.isGerman ? .isHeader : [])
             .germanPronunciation()
-            .speakOnTap(verb.infinitiv)
+            .speakOnTap(verb.infinitiv.inUserRegion)
 
           Text(verb.translation)
             .font(.title2)
@@ -52,11 +52,11 @@ struct VerbView: View {
             }
             metadataPill(tint: .customRed) {
               Label {
-                Text(verbatim: verb.auxiliary.verb)
+                Text(verbatim: auxiliaryPillText)
               } icon: {
                 Image(systemName: "arrow.triangle.branch")
               }
-              .accessibilityLabel(Text(verbatim: verb.auxiliary.verb))
+              .accessibilityLabel(Text(verbatim: auxiliaryAccessibilityLabel))
               .germanPronunciation()
             }
             metadataPill(tint: .customYellow) {
@@ -65,6 +65,13 @@ struct VerbView: View {
             }
           }
           .font(.subheadline)
+
+          if verb.auxiliaryIsRegional {
+            Text(L.Region.southernNote(example: southernAuxiliaryExample))
+              .font(.caption)
+              .foregroundStyle(.secondary)
+              .germanPronunciation(forReal: UserLocale.isGerman)
+          }
 
           if verb.prefix != .none || verb.ablautGroup != nil {
             HStack(spacing: 8) {
@@ -80,10 +87,10 @@ struct VerbView: View {
 
               if let ablautGroup = verb.ablautGroup {
                 metadataPill(tint: .customYellow, bordered: true) {
-                  Label(ablautGroup, systemImage: "figure.and.child.holdinghands")
-                    .accessibilityLabel(Text(verbatim: ablautGroup))
+                  Label(ablautGroup.inUserRegion, systemImage: "figure.and.child.holdinghands")
+                    .accessibilityLabel(Text(verbatim: ablautGroup.inUserRegion))
                     .germanPronunciation()
-                    .speakOnTap(ablautGroup)
+                    .speakOnTap(ablautGroup.inUserRegion)
                 }
               }
             }
@@ -152,7 +159,7 @@ struct VerbView: View {
       .padding(.vertical)
     }
     .onAppear { Current.analytics.signal(name: .viewVerbView) }
-    .navigationTitle(verb.infinitiv)
+    .navigationTitle(verb.infinitiv.inUserRegion)
     .navigationBarTitleDisplayMode(.inline)
     .userActivity(World.viewVerbActivityType) { activity in
       activity.title = verb.infinitiv
@@ -195,6 +202,36 @@ struct VerbView: View {
     conjugationSection(for: Conjugationgroup.futurKonjunktivII)
   }
 
+  // A verb whose auxiliary is regionally conditioned shows both forms with their flags, so
+  // that a user learns the other exists rather than seeing only whichever the setting picked.
+  // The setting still decides which auxiliary the conjugation table and the quiz use.
+  private var auxiliaryPillText: String {
+    guard verb.auxiliaryIsRegional else {
+      return verb.auxiliary.verb
+    }
+    let north = Region.north
+    let south: [Region] = [.austria, .switzerland]
+    let southFlags = south.map(\.flag).joined()
+    return "\(verb.regionalAuxiliary(in: north).verb) \(north.flag)  ·  \(verb.regionalAuxiliary(in: .austria).verb) \(southFlags)"
+  }
+
+  // VoiceOver must not read the flags as "flag of Germany, flag of Austria" mid-verb, so the
+  // spoken label names the varieties instead of showing the glyphs.
+  private var auxiliaryAccessibilityLabel: String {
+    verb.auxiliaryIsRegional ? L.Region.auxiliaryVariesLabel : verb.auxiliary.verb
+  }
+
+  // A concrete example of the sein-Perfekt for the southern-German note, e.g. "ist gestanden".
+  // Forced to a sein-writing region so the example shows sein regardless of the user's setting;
+  // the northern user reading this is precisely the one who needs to see what the other form is.
+  private var southernAuxiliaryExample: String {
+    RegionalConjugator.conjugateUnsafely(
+      infinitiv: verb.infinitiv,
+      conjugationgroup: .perfektIndikativ(.thirdSingular),
+      region: .austria
+    ).lowercased()
+  }
+
   private func metadataPill<Content: View>(
     tint: Color = .customYellow,
     bordered: Bool = false,
@@ -213,7 +250,7 @@ struct VerbView: View {
   }
 
   private func conjugate(_ group: Conjugationgroup) -> String {
-    switch Conjugator.conjugate(infinitiv: verb.infinitiv, conjugationgroup: group) {
+    switch RegionalConjugator.conjugate(infinitiv: verb.infinitiv, conjugationgroup: group) {
     case .success(let form):
       return form
     case .failure:
@@ -327,7 +364,8 @@ struct ConjugationSectionView: View {
       auxiliary: .sein,
       frequency: 10,
       prefix: .none,
-      frequencyIcon: "figure.walk"
+      frequencyIcon: "figure.walk",
+      auxiliaryIsRegional: false
     ))
   }
 }

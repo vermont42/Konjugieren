@@ -83,8 +83,7 @@ class Quiz {
     guard isInProgress, currentIndex < questions.count else { return }
 
     let trimmedAnswer = answer.trimmingCharacters(in: .whitespaces).lowercased()
-    let correctAnswer = questions[currentIndex].correctAnswer.lowercased()
-    let isCorrect = trimmedAnswer == correctAnswer
+    let isCorrect = questions[currentIndex].acceptableAnswers.contains(trimmedAnswer)
 
     questions[currentIndex].userAnswer = answer
     questions[currentIndex].isCorrect = isCorrect
@@ -200,14 +199,25 @@ class Quiz {
   }
 
   private func makeQuizItem(verb: Verb, conjugationgroup: Conjugationgroup) -> QuizItem {
-    let correctAnswer = Conjugator.conjugateUnsafely(
+    // The region setting governs presentation and never marks a learner wrong: a user who
+    // types a correct conjugation from another standard variety has answered correctly.
+    // Only the canonical answer, shown in results and error history, follows the setting.
+    let acceptableAnswers = Set(Region.allCases.map { region in
+      RegionalConjugator.conjugateUnsafely(
+        infinitiv: verb.infinitiv,
+        conjugationgroup: conjugationgroup,
+        region: region
+      ).lowercased()
+    })
+    let correctAnswer = RegionalConjugator.conjugateUnsafely(
       infinitiv: verb.infinitiv,
       conjugationgroup: conjugationgroup
     )
     return QuizItem(
       verb: verb,
       conjugationgroup: conjugationgroup,
-      correctAnswer: correctAnswer
+      correctAnswer: correctAnswer,
+      acceptableAnswers: acceptableAnswers
     )
   }
 
@@ -412,9 +422,28 @@ struct QuizItem: Identifiable {
   let id = UUID()
   let verb: Verb
   let conjugationgroup: Conjugationgroup
+  /// The single answer shown to the user, in the variety the region setting selects. This is
+  /// what reaches results, `QuizErrorHistory`, telemetry, and the VoiceOver readout.
   let correctAnswer: String
+  /// Every standard variety's spelling of this conjugation, lowercased. Answers are graded
+  /// against this set, so no variety is ever marked wrong.
+  let acceptableAnswers: Set<String>
   var userAnswer: String?
   var isCorrect: Bool?
+
+  init(
+    verb: Verb,
+    conjugationgroup: Conjugationgroup,
+    correctAnswer: String,
+    acceptableAnswers: Set<String>? = nil
+  ) {
+    self.verb = verb
+    self.conjugationgroup = conjugationgroup
+    self.correctAnswer = correctAnswer
+    // The canonical answer is always acceptable, so a caller that knows of no other variety
+    // still grades correctly.
+    self.acceptableAnswers = acceptableAnswers ?? [correctAnswer.lowercased()]
+  }
 
   var state: State {
     guard let isCorrect else { return .unanswered }

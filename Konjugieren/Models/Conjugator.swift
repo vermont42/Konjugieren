@@ -12,7 +12,16 @@ enum Conjugator {
     }
   }
 
-  static func conjugate(infinitiv: String, conjugationgroup: Conjugationgroup) -> Result<String, ConjugatorError> {
+  // The `auxiliary` parameter exists so that regional variation can be expressed without
+  // making this type region-aware. Conjugator is the oracle the classify-and-verify pipeline
+  // compares against Wiktionary, and every ConjugatorTests expectation is written in the
+  // German standard, so its output must never depend on a user setting. Callers that want a
+  // regional reading pass the auxiliary explicitly; see RegionalConjugator.
+  static func conjugate(
+    infinitiv: String,
+    conjugationgroup: Conjugationgroup,
+    auxiliary: Auxiliary? = nil
+  ) -> Result<String, ConjugatorError> {
     guard infinitiv.count >= Verb.minVerbLength else {
       return .failure(.verbTooShort)
     }
@@ -50,16 +59,16 @@ enum Conjugator {
       return conjugateImperativ(verb: verb, personNumber: personNumber)
 
     case .perfektIndikativ(let personNumber):
-      return conjugateCompoundTense(verb: verb, infinitiv: infinitiv, auxiliaryInfinitiv: verb.auxiliary.verb, auxiliaryGroup: .präsensIndikativ(personNumber))
+      return conjugateCompoundTense(verb: verb, infinitiv: infinitiv, auxiliaryInfinitiv: (auxiliary ?? verb.auxiliary).verb, auxiliaryGroup: .präsensIndikativ(personNumber))
 
     case .perfektKonjunktivI(let personNumber):
-      return conjugateCompoundTense(verb: verb, infinitiv: infinitiv, auxiliaryInfinitiv: verb.auxiliary.verb, auxiliaryGroup: .präsensKonjunktivI(personNumber))
+      return conjugateCompoundTense(verb: verb, infinitiv: infinitiv, auxiliaryInfinitiv: (auxiliary ?? verb.auxiliary).verb, auxiliaryGroup: .präsensKonjunktivI(personNumber))
 
     case .plusquamperfektIndikativ(let personNumber):
-      return conjugateCompoundTense(verb: verb, infinitiv: infinitiv, auxiliaryInfinitiv: verb.auxiliary.verb, auxiliaryGroup: .präteritumIndikativ(personNumber))
+      return conjugateCompoundTense(verb: verb, infinitiv: infinitiv, auxiliaryInfinitiv: (auxiliary ?? verb.auxiliary).verb, auxiliaryGroup: .präteritumIndikativ(personNumber))
 
     case .plusquamperfektKonjunktivII(let personNumber):
-      return conjugateCompoundTense(verb: verb, infinitiv: infinitiv, auxiliaryInfinitiv: verb.auxiliary.verb, auxiliaryGroup: .präteritumKonjunktivII(personNumber))
+      return conjugateCompoundTense(verb: verb, infinitiv: infinitiv, auxiliaryInfinitiv: (auxiliary ?? verb.auxiliary).verb, auxiliaryGroup: .präteritumKonjunktivII(personNumber))
 
     case .futurIndikativ(let personNumber):
       return conjugateCompoundTense(verb: verb, infinitiv: infinitiv, auxiliaryInfinitiv: "werden", auxiliaryGroup: .präsensIndikativ(personNumber), useInfinitivAsSecondPart: true)

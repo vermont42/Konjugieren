@@ -121,7 +121,7 @@ struct VerbRow: View {
   var body: some View {
     HStack {
       VStack(alignment: .leading, spacing: 2) {
-        Text(verb.infinitiv)
+        Text(verb.infinitiv.inUserRegion)
           .font(.callout)
           .foregroundStyle(.customYellow)
           .germanPronunciation()

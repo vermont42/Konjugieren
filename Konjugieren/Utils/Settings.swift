@@ -32,6 +32,16 @@ class Settings {
   static let thirdPersonPronounGenderKey = "thirdPersonPronounGender"
   static let thirdPersonPronounGenderDefault: ThirdPersonPronounGender = .er
 
+  var region: Region = regionDefault {
+    didSet {
+      if region != oldValue {
+        getterSetter.set(key: Settings.regionKey, value: "\(region)")
+      }
+    }
+  }
+  static let regionKey = "region"
+  static let regionDefault: Region = .north
+
   var quizDifficulty: QuizDifficulty = quizDifficultyDefault {
     didSet {
       if quizDifficulty != oldValue {
@@ -128,6 +138,7 @@ class Settings {
     self.getterSetter = getterSetter
     conjugationgroupLang = restore(key: Settings.conjugationgroupLangKey, default: Settings.conjugationgroupLangDefault)
     thirdPersonPronounGender = restore(key: Settings.thirdPersonPronounGenderKey, default: Settings.thirdPersonPronounGenderDefault)
+    region = restore(key: Settings.regionKey, default: Region.seeded(from: Locale.current))
     quizDifficulty = restore(key: Settings.quizDifficultyKey, default: Settings.quizDifficultyDefault)
     audioFeedback = restore(key: Settings.audioFeedbackKey, default: Settings.audioFeedbackDefault)
     searchScope = restore(key: Settings.searchScopeKey, default: Settings.searchScopeDefault)

@@ -423,6 +423,7 @@ Settings are managed by `Settings.swift`, an `@Observable` class that persists t
 |---------|-------------|---------|-------------|
 | `conjugationgroupLang` | `ConjugationgroupLang` | `.german` | Display conjugationgroup names in German or English |
 | `thirdPersonPronounGender` | `ThirdPersonPronounGender` | `.er` | Which 3rd-person-singular pronoun to show (er/sie/es) |
+| `region` | `Region` | `.north`, seeded from locale | Which standard variety of German to show (north/austria/switzerland) |
 | `quizDifficulty` | `QuizDifficulty` | `.regular` | Quiz difficulty level |
 | `audioFeedback` | `AudioFeedback` | `.enable` | Enable/disable sound effects |
 | `searchScope` | `SearchScope` | `.infinitiveOnly` | Search by infinitive only or also by translation |

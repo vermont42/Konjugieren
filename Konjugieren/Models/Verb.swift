@@ -37,6 +37,19 @@ struct Verb: Identifiable, Hashable {
   let prefix: Prefix
   let frequencyIcon: String
 
+  /// True for the handful of verbs whose Perfekt auxiliary depends on where the speaker
+  /// lives rather than on what the verb means: stehen, sitzen, liegen and their prefixed
+  /// derivatives take haben in the northern standard and sein in Austria and Switzerland.
+  /// Verbs whose auxiliary varies by meaning are a separate problem; see
+  /// `prompts/dual_auxiliary.md`.
+  let auxiliaryIsRegional: Bool
+
+  /// The auxiliary a speaker of `region` uses. `auxiliary` itself always holds the northern
+  /// standard value, so that Conjugator and the classify-and-verify oracle stay region-free.
+  func regionalAuxiliary(in region: Region) -> Auxiliary {
+    auxiliaryIsRegional ? region.regionalAuxiliary : auxiliary
+  }
+
   var stamm: String {
     if infinitiv.hasSuffix("en") {
       return String(infinitiv.dropLast(2))

@@ -101,8 +101,12 @@ class VerbParser: NSObject, XMLParserDelegate {
   func parser(_ parser: XMLParser, didEndElement elementName: String, namespaceURI: String?, qualifiedName qName: String?) {
     if elementName == verbTag {
       let auxiliary: Auxiliary
+      // ay="r" marks an auxiliary that varies by region rather than a third auxiliary verb.
+      // The stored value stays haben, the northern standard, so that Conjugator and the
+      // classify-and-verify oracle see exactly what they saw before this attribute existed.
+      let auxiliaryIsRegional = currentAuxiliary == "r"
 
-      if let currentAuxiliary = currentAuxiliary {
+      if let currentAuxiliary, !auxiliaryIsRegional {
         guard let computedAuxiliary = Auxiliary(rawValue: currentAuxiliary) else {
           Current.fatalError.fatalError("Invalid Auxiliary \(currentAuxiliary).")
           return
@@ -174,7 +178,8 @@ class VerbParser: NSObject, XMLParserDelegate {
         auxiliary: auxiliary,
         frequency: currentFrequency,
         prefix: currentPrefix,
-        frequencyIcon: frequencyIcon
+        frequencyIcon: frequencyIcon,
+        auxiliaryIsRegional: auxiliaryIsRegional
       )
 
       resetState()

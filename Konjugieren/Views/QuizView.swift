@@ -88,11 +88,11 @@ struct QuizView: View {
   private func quizContent(question: QuizItem) -> some View {
     VStack(spacing: Layout.doubleDefaultSpacing) {
       VStack(alignment: .leading, spacing: Layout.defaultSpacing) {
-        Text(verbatim: question.verb.infinitiv)
+        Text(verbatim: question.verb.infinitiv.inUserRegion)
           .font(.title.bold())
           .foregroundStyle(.customForeground)
           .germanPronunciation()
-          .speakOnTap(question.verb.infinitiv)
+          .speakOnTap(question.verb.infinitiv.inUserRegion)
 
         Text(verbatim: question.verb.translation)
           .font(.subheadline)

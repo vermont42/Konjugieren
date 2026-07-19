@@ -510,3 +510,93 @@ The lesson I want to keep is not about prefixes. It is that "three quick data sl
 guess dressed as an inventory, and the thing that corrected it was spending two minutes reading
 the actual rows before touching them. The oracle had the right answer the whole time; I had
 just summarized it carelessly on the way out the door.
+
+## Three Standard Germans, and the One Place the Oracle Cannot Help (2026-07-19)
+
+German is pluricentric: German, Austrian, and Swiss are three codified standards, not one
+standard plus two accents. Konjugieren had been quietly shipping only the northern one. This
+pass added a `Region` setting and made two facts follow it, which turned out to be two very
+different engineering problems wearing the same hat.
+
+The easy one is orthography. Swiss Standard German abolished ß in the 1970s: every ß is written
+ss, no exceptions, no dependence on vowel length. That is a pure display transform, and the only
+subtlety is the uppercase half. Ablaut replacements spell the sibilant with the capital sharp s
+`ẞ` so the mixed-case highlighting covers it, so the transform maps `ẞ` to `SS` rather than
+`ss`. Keeping both output characters uppercase is what stops `MixedCaseSegmenter` from splitting
+one highlighted run into two. There is now a test asserting exactly that, because the failure
+mode is invisible in a diff and obvious only in a screenshot.
+
+The hard one is the auxiliary, and it collided head-on with the constraint the plan called
+load-bearing: `Conjugator` must stay region-free, because it is the oracle the classify-and-verify
+pipeline compares against Wiktionary for 985 verbs, and every `ConjugatorTests` expectation is
+written in the German standard. But `Conjugator` reads `verb.auxiliary` internally to build the
+compound tenses, so a region-sensitive `Verb.auxiliary` would have made the oracle vary by user
+setting without anyone noticing until the numbers moved.
+
+The plan's suggestion was to handle it at the display layer alongside the ß transform. I did not
+take that route. Rewriting "habe gestanden" into "bin gestanden" as a string operation means
+pattern-matching eleven inflected forms of *haben* across six persons and four moods, and getting
+it wrong produces plausible German that no test catches. Instead `Conjugator.conjugate` gained
+`auxiliary: Auxiliary? = nil`. It still has no idea what a `Region` is; the parameter is purely
+linguistic, the default preserves byte-identical behavior for the oracle and the whole test
+suite, and a new `RegionalConjugator` wrapper is the only thing that knows about the setting.
+I think this honors the constraint rather than bending it, but it is a deviation from the letter
+of the plan and worth naming as one.
+
+Curating the verb list is where the pass earned its keep, and it went exactly as the plan warned.
+kaikki reports *stehen*, *sitzen*, and *liegen* as a bare "haben or sein" with no tags. It reports
+*unterliegen*, *überstehen*, and *vorliegen* identically. Three of those six are regional and
+three are not, and the snapshot cannot tell you which. German Wiktionary's lemma pages can:
+*stehen* carries "Das Hilfsverb sein wird vor allem in Süddeutschland, der Schweiz und Österreich
+verwendet", *sitzen* says "im oberdeutschen Sprachraum", *liegen* says "nur im oberdeutschen
+Bereich". The other three each fail for a different reason. *unterliegen* alternates by meaning
+(*sein* for "be defeated", *haben* for "be subject to"), which is `dual_auxiliary.md`'s territory.
+*überstehen* alternates only in its separable "protrude" sense, while the app ships the
+inseparable "survive". *vorliegen* alternates with no regional note at all. *hocken* looked
+promising until the regional label turned out to sit on a sense rather than on the auxiliary,
+which is the same trap one level down. Final list: the canonical three, exactly as every reference
+grammar says, and not one verb added by analogy.
+
+Two things the screenshots caught that no test would have. First, the flags in the settings picker
+rendered as tofu, which sent me to `docs/emoji-assets.md` and the standing 2026-05-09 decision:
+🇩🇪 is broken in the simulator and fine on Josh's physical iPhone, and the workaround was
+deliberately deferred until an Apple Silicon machine. Josh confirmed this again mid-session. So
+the tofu was a red herring, but the *truncation* it caused was not: "🇩🇪 North / Standard" does
+not fit a third of a segmented control. The flags came out of the picker and stayed in the
+`VerbView` auxiliary pill, where they do real work distinguishing "hat 🇩🇪" from "ist 🇦🇹🇨🇭".
+
+Second, and this is the one I would have shipped wrong: in Swiss mode the conjugation table read
+*schliesse, schliesst, schliessen* while the headline above it still said **schließen**. The plan
+scoped the transform to the six `Conjugator` call sites, and an infinitive is not a conjugation,
+so it fell straight through the gap. It looked like a rendering bug. Josh's call was to transform
+displayed infinitives too, which meant the headline, nav title, browse rows, quiz prompt, results
+rows, and family cards, plus normalizing both sides of verb search so a Swiss user typing
+"schliessen" still finds the verb stored as "schließen". Lookup keys, `Verb.verbs`, and deeplinks
+all stay on ß; only what a human reads changes.
+
+The regression check that mattered: 14 verbs at odds, 99.0% verified, before and after. That
+number was supposed to be completely unmoved by this pass, and any movement would have meant
+region-sensitivity had leaked into the engine. It did not move.
+
+Still open: the auxiliary pill's layout is unverified on real hardware. In the simulator each flag
+renders as two tofu boxes instead of one glyph, which roughly doubles the pill's width and wraps
+it to three lines. That is probably a simulator artifact, but "probably" is not "verified", and
+Josh is building to his iPhone to settle it. If it wraps there too, the pill wants its own row.
+
+### On-device review, same day
+
+Josh built to his iPhone and two of the three open questions closed immediately. The flags render
+correctly on device (the simulator tofu is the known 2026-05-09 bug), and the auxiliary pill fits
+on one row: `haben 🇩🇪 · sein 🇦🇹🇨🇭`. No separate row needed.
+
+Two refinements came out of it. The settings picker's `North / Standard` truncated to
+`North / Stan…`; since flags render on device, it became `North 🇩🇪` (`Nord 🇩🇪` in German), which
+keeps the word carrying the meaning with the flag alongside, exactly as the plan wanted. For consistency the other two segments then went flag-only, 🇦🇹 and 🇨🇭; North keeps its word because 🇩🇪 alone would read as Deutschland, which the design deliberately avoids. And the
+southern-German note said "Duden labels this form southern German, Austrian, and Swiss", where
+"this form" had no antecedent on screen. Josh asked, reasonably, what "the form" was. It is the
+use of sein, so the note now names it and shows an example: "Duden labels the Perfekt with sein
+(ist gestanden) southern German, Austrian, and Swiss." The example is conjugated per-verb, so
+sitzen shows ist gesessen and liegen ist gelegen, and it is forced to a sein-writing region so the
+northern user, who is exactly the one reading the note, sees the form the note is describing. 
+
+And because new code is cheap, Josh asked for a full Info article on the Duden, slotted just above the Game entry: Konrad Duden the Gymnasium headmaster, the 1880 dictionary, the 1901 Berlin conference, the 1955–1996 official-arbiter era and the Rat für deutsche Rechtschreibung that superseded it, the Webster eponym parallel, and a three-references coda noting that the Österreichisches Wörterbuch controls in Austria while Switzerland keeps no dictionary of its own and follows the Duden, ß-lessly. It closes by pointing back at the very regional note that prompted it.

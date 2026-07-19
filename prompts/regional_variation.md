@@ -2,6 +2,17 @@
 
 ## Status
 
+**Executed 2026-07-19.** See `docs/blog_notes.md` for what changed during execution. Two
+deviations from the plan below, both deliberate: `Conjugator.conjugate` gained an
+`auxiliary: Auxiliary? = nil` parameter rather than the auxiliary swap happening as a string
+transform (it still knows nothing of `Region`, and the default keeps the oracle byte-identical);
+and the flags were dropped from the settings picker, where they truncated the labels, while
+staying in the `VerbView` auxiliary pill. Scope also grew once, by Josh's decision: displayed
+infinitives are transformed too, not only conjugations, with verb search normalized on both
+sides so the two spellings still match.
+
+Original plan follows.
+
 **Planned, not started.** Decided by Josh on 2026-07-19. Do this **before**
 [`dual_auxiliary.md`](dual_auxiliary.md), which assumes it has already run: that pass covers
 the ~469 verbs whose auxiliary varies by *meaning*, and it explicitly hands the handful that

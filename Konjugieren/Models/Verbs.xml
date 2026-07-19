@@ -8,7 +8,7 @@
     <!ATTLIST verb fr CDATA #REQUIRED>
     <!ATTLIST verb ic CDATA #REQUIRED>
     <!ATTLIST verb ag CDATA #IMPLIED>
-    <!ATTLIST verb ay (h|s) #IMPLIED>
+    <!ATTLIST verb ay (h|s|r) #IMPLIED>
 ]>
 
 <verbs>
@@ -586,7 +586,7 @@
   <verb in="leuchten" tn="shine, glow" fr="728" fa="w" ic="highintensity.intervaltraining" />
   <verb in="lieben" tn="love" fr="138" fa="w" ic="arms.open" />
   <verb in="liefern" tn="deliver" fr="131" fa="w" ic="handball" />
-  <verb in="l^ie^gen" tn="lie, be situated" fr="19" ag="liegen" fa="s" ic="cooldown" />
+  <verb in="l^ie^gen" tn="lie, be situated" ay="r" fr="19" ag="liegen" fa="s" ic="cooldown" />
   <verb in="loben" tn="praise" fr="798" fa="w" ic="wave" />
   <verb in="locken" tn="lure, entice" fr="625" fa="w" ic="skating" />
   <verb in="lohnen" tn="be worth it" fr="241" fa="w" ic="flexibility" />
@@ -722,7 +722,7 @@
   <verb in="siegen" tn="win, triumph" fr="868" fa="w" ic="arms.open" />
   <verb in="s^i^ngen" tn="sing" fr="350" ag="singen" fa="s" ic="wave" />
   <verb in="s^i^nken" tn="sink, decrease" ay="s" fr="423" ag="singen" fa="s" ic="cooldown" />
-  <verb in="s^itz^en" tn="sit" fr="135" ag="sitzen" fa="s" ic="seated.side.left" />
+  <verb in="s^itz^en" tn="sit" ay="r" fr="135" ag="sitzen" fa="s" ic="seated.side.left" />
   <verb in="sollen" tn="should, ought, be obligated, shall" fr="7" fa="w" ic="walk.arrival" />
   <verb in="sorgen" tn="worry, care" fr="70" fa="w" ic="seated.side.left.steeringwheel" />
   <verb in="sortieren" tn="sort" fr="947" fa="i" ic="flexibility" />
@@ -742,7 +742,7 @@
   <verb in="statt+f^i^nden" tn="take place" ay="s" fr="199" ag="finden" fa="s" ic="handball" />
   <verb in="st^e^chen" tn="sting, stab" fr="962" ag="sprechen" fa="s" ic="flexibility" />
   <verb in="stecken" tn="stick, put" fr="207" fa="w" ic="indoor.rowing" />
-  <verb in="st^eh^en" tn="stand" fr="14" ag="stehen" fa="s" ic="stand" />
+  <verb in="st^eh^en" tn="stand" ay="r" fr="14" ag="stehen" fa="s" ic="stand" />
   <verb in="st^e^hlen" tn="steal" fr="898" ag="empfehlen" fa="s" ic="run" />
   <verb in="st^ei^gen" tn="rise, climb" ay="s" fr="124" ag="steigen" fa="s" ic="stairs" />
   <verb in="steigern" tn="increase" fr="358" fa="w" ic="stairs" />

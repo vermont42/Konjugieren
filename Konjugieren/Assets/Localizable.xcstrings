@@ -4,6 +4,150 @@
     "" : {
 
     },
+    "Info.dudenText" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "`Das steht so im Duden`In Deutschland ist der ~Duden~ nicht bloß ein Wörterbuch. Er ist ~das~ Wörterbuch, so wie ~Webster~ es in den Vereinigten Staaten ist. Einen Streit über die Rechtschreibung beenden Deutsche mit einem einzigen Satz: „Das steht so im Duden.“ Ein deutsches Kind begegnet dem Duden in der Schule und behält die Gewohnheit ein Leben lang. Wenn diese App anmerkt, dass eine Form süddeutsch, österreichisch und schweizerisch ist, dann nimmt der Duden diese Kennzeichnung vor.`Konrad Duden`Das Buch trägt den Namen eines Mannes. ~Konrad Duden~ (1829 bis 1911) war Direktor eines Gymnasiums, zunächst in Schleswig und später in Bad Hersfeld. 1880 veröffentlichte er das ~Vollständige Orthographische Wörterbuch der deutschen Sprache~. Es verbreitete sich aus eigener Kraft, ein Klassenzimmer nach dem anderen.`Die offizielle Instanz`1901 erklärte die Orthographische Konferenz in Berlin Dudens System für das gesamte Deutsche Reich für verbindlich. Von 1955 bis zur Rechtschreibreform von 1996 war der Duden die ~offizielle~ Instanz für Zweifelsfälle in Westdeutschland: Wo der Duden und der gesunde Menschenverstand uneins waren, gewann der Duden. Die offizielle Zuständigkeit liegt heute beim ~Rat für deutsche Rechtschreibung~, doch der Duden bleibt das Nachschlagewerk, zu dem Deutsche tatsächlich greifen. Wie bei ~Webster~ wurde der Nachname eines Schullehrers zum Gattungsnamen für die Instanz selbst.`Drei Standards, drei Nachschlagewerke`Das Deutsche ist ~plurizentrisch~: Es hat drei nationale Standards, nicht einen Standard und eine Handvoll Dialekte. Jedes pflegt sein eigenes Nachschlagewerk.\n\n🇩🇪 ~Duden~: das Nachschlagewerk für den deutschen Standard und die Quelle der regionalen Hinweise dieser App.\n🇦🇹 ~Österreichisches Wörterbuch~: erstmals 1951 erschienen, ~ist es in Österreich maßgeblich~ und das Nachschlagewerk, das österreichische Schulen verwenden.\n🇨🇭 ~Schweiz~: führt kein eigenes offizielles Wörterbuch und zieht den Duden heran, der auch die auffälligste Schweizer Regel verzeichnet: Die Schweiz hat den Buchstaben ~ß~ vor Jahrzehnten abgeschafft und schreibt überall ~ss~."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "`The Nation’s Dictionary`In Germany, the ~Duden~ is not merely a dictionary. It is ~the~ dictionary, much as ~Webster~ is in the United States. Germans settle a spelling argument with a single sentence, \"Das steht so im Duden\", meaning \"that is how it stands in the Duden\". A German child meets the Duden in school and keeps the habit for life. When this app notes that a form is southern German, Austrian, and Swiss, it is the Duden doing the labeling.`Konrad Duden`The book is named for a man. ~Konrad Duden~ (1829 to 1911) was the headmaster of a Gymnasium, a German secondary school, first in Schleswig and later in Bad Hersfeld. In 1880 he published the ~Vollständiges Orthographisches Wörterbuch der deutschen Sprache~, the \"Complete Orthographic Dictionary of the German Language\". It spread on its own merits, one classroom at a time.`The Official Arbiter`In 1901, the Orthographic Conference in Berlin made Duden’s system binding across the German Empire. From 1955 until the spelling reform of 1996, the Duden was the ~official~ authority for doubtful cases in West Germany: where the Duden and common sense disagreed, the Duden won. Official authority now rests with the ~Rat für deutsche Rechtschreibung~, the Council for German Orthography, but the Duden remains the reference Germans actually reach for. As with ~Webster~, a schoolteacher’s surname became a common noun for the authority itself.`Three Standards, Three References`German is ~pluricentric~: it has three national standards, not one standard and a scattering of dialects. Each keeps its own reference.\n\n🇩🇪 ~Duden~: the reference for the German standard, and the source of this app’s regional notes.\n🇦🇹 ~Österreichisches Wörterbuch~: the \"Austrian Dictionary\", first published in 1951, ~controls in Austria~ and is the reference Austrian schools use.\n🇨🇭 ~Switzerland~: keeps no single official dictionary and consults the Duden, which also records the most visible Swiss rule: Switzerland abolished the letter ~ß~ decades ago and writes ~ss~ everywhere."
+          }
+        }
+      }
+    },
+    "Info.dudenHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Duden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Duden"
+          }
+        }
+      }
+    },
+    "Settings.regionHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regionale Variante"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Regional Variety"
+          }
+        }
+      }
+    },
+    "Settings.regionDescription" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Einstellung bestimmt, welche Standardvariante des Deutschen die App anzeigt. Bundesdeutsch, österreichisch und schweizerisch sind allesamt kodifizierte Standards, keine Dialekte."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This setting determines which standard variety of German the app shows. German, Austrian, and Swiss are all codified standards, not dialects."
+          }
+        }
+      }
+    },
+    "Region.switzerland" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🇨🇭"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🇨🇭"
+          }
+        }
+      }
+    },
+    "Region.southernNote %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Duden kennzeichnet das Perfekt mit sein (%@) als „süddeutsch, österreichisch und schweizerisch“."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Duden labels the Perfekt with sein (%@) southern German, Austrian, and Swiss."
+          }
+        }
+      }
+    },
+    "Region.north" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nord 🇩🇪"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "North 🇩🇪"
+          }
+        }
+      }
+    },
+    "Region.auxiliaryVariesLabel" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "haben im norddeutschen Standard; sein in Österreich und der Schweiz"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "haben in the northern standard; sein in Austria and Switzerland"
+          }
+        }
+      }
+    },
+    "Region.austria" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🇦🇹"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🇦🇹"
+          }
+        }
+      }
+    },
     "— %@" : {
 
     },

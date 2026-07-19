@@ -163,7 +163,7 @@ private struct FamilyShowcaseCard: View {
 
       HStack(spacing: Layout.defaultSpacing) {
         ForEach(family.topVerbs) { verb in
-          Text(verb.infinitiv)
+          Text(verb.infinitiv.inUserRegion)
             .font(.caption)
             .foregroundStyle(.customYellow)
             .padding(.horizontal, Layout.defaultSpacing)
@@ -183,7 +183,7 @@ private struct FamilyShowcaseCard: View {
 
   private func conjugationRow(personNumber: PersonNumber) -> some View {
     let infinitiv = family.representativeInfinitiv
-    let result = Conjugator.conjugate(infinitiv: infinitiv, conjugationgroup: .präsensIndikativ(personNumber))
+    let result = RegionalConjugator.conjugate(infinitiv: infinitiv, conjugationgroup: .präsensIndikativ(personNumber))
     let conjugation: String
     switch result {
     case .success(let value):

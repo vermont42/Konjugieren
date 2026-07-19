@@ -895,6 +895,41 @@ struct ConjugatorTests {
     }
   }
 
+  // stehen, sitzen, and liegen take haben in the northern standard and sein in Austria and
+  // Switzerland. Conjugator itself must stay region-free, because it is the oracle the
+  // classify-and-verify pipeline compares against Wiktionary, so the regional reading comes
+  // from RegionalConjugator and an explicitly passed region.
+  // Conjugator takes no region and reads no setting, so there is nothing to vary: this pins
+  // the northern-standard reading that the oracle and every other expectation depend on.
+  @Test func conjugatorIsRegionFree() {
+    expectConjugation(infinitiv: "stehen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "habe gestANDen")
+    expectConjugation(infinitiv: "sitzen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "habe gesESSen")
+    expectConjugation(infinitiv: "liegen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "habe gelEgen")
+  }
+
+  @Test("Regional auxiliary follows the region", arguments: zip(
+    [Region.north, .austria, .switzerland],
+    ["habe gestANDen", "BIN gestANDen", "BIN gestANDen"]
+  ))
+  func regionalAuxiliary(region: Region, expected: String) {
+    let result = RegionalConjugator.conjugate(
+      infinitiv: "stehen",
+      conjugationgroup: .perfektIndikativ(.firstSingular),
+      region: region
+    )
+    #expect(try! result.get() == expected)
+  }
+
+  @Test("A verb without a regional auxiliary is untouched", arguments: [Region.north, .austria, .switzerland])
+  func nonRegionalAuxiliaryIsStable(region: Region) {
+    let result = RegionalConjugator.conjugate(
+      infinitiv: "machen",
+      conjugationgroup: .perfektIndikativ(.firstSingular),
+      region: region
+    )
+    #expect(try! result.get() == "habe gemacht")
+  }
+
   private func expectFailure(
     infinitiv: String,
     expectedError: ConjugatorError,

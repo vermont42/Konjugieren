@@ -16,8 +16,12 @@ struct VerbBrowseView: View {
 
   private var filteredVerbs: [Verb] {
     guard !searchText.isEmpty else { return sortedVerbs }
+    // Swiss users see and therefore type ss where the corpus stores ß, so both sides are
+    // normalized to ss before matching. This runs regardless of region: a northern user who
+    // types "schliessen" should find schließen too.
+    let normalizedSearch = searchText.sharpSNormalized
     return sortedVerbs.filter { verb in
-      if verb.infinitiv.localizedCaseInsensitiveContains(searchText) {
+      if verb.infinitiv.sharpSNormalized.localizedCaseInsensitiveContains(normalizedSearch) {
         return true
       }
       if settings.searchScope == .infinitiveAndTranslation {
@@ -124,7 +128,7 @@ struct VerbBrowseView: View {
 
 @ViewBuilder
 private func verbNameTexts(verb: Verb, navigate: @escaping () -> Void) -> some View {
-  Text(verbatim: verb.infinitiv)
+  Text(verbatim: verb.infinitiv.inUserRegion)
     .tableText()
     .germanPronunciation()
     .accessibilityAddTraits(UserLocale.isGerman ? .isButton : [])

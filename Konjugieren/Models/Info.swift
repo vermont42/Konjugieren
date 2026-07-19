@@ -39,6 +39,7 @@ struct Info: Hashable, Identifiable {
     Info(stableKey: "futur_indikativ", heading: L.Info.futurIndikativHeading, text: L.Info.futurIndikativText, alwaysUsesGermanPronunciation: true, media: .sfSymbol(name: "forward.fill")),
     Info(stableKey: "futur_konjunktiv_i", heading: L.Info.futurKonjunktivIHeading, text: L.Info.futurKonjunktivIText, alwaysUsesGermanPronunciation: true, media: .sfSymbol(name: "forward.circle.fill")),
     Info(stableKey: "futur_konjunktiv_ii", heading: L.Info.futurKonjunktivIIHeading, text: L.Info.futurKonjunktivIIText, alwaysUsesGermanPronunciation: true, media: .sfSymbol(name: "forward.end.fill")),
+    Info(stableKey: "duden", heading: L.Info.dudenHeading, text: L.Info.dudenText, media: .sfSymbol(name: "books.vertical.fill")),
     Info(stableKey: "game", heading: L.Info.gameHeading, text: L.Info.gameText, media: .sfSymbol(name: "gamecontroller.fill")),
     Info(stableKey: "credits", heading: L.Info.creditsHeading, text: L.Info.creditsText, media: .photo(filename: "JoshAdams", accessibilityLabel: L.ImageInfo.joshAdams)),
   ]

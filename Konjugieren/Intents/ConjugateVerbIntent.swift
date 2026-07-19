@@ -18,7 +18,7 @@ struct ConjugateVerbIntent: AppIntent {
       var lines: [String] = []
 
       for group in groups {
-        let result = Conjugator.conjugate(infinitiv: verb.id, conjugationgroup: group)
+        let result = RegionalConjugator.conjugate(infinitiv: verb.id, conjugationgroup: group)
         switch result {
         case .success(let conjugation):
           let cleaned = conjugation.lowercased()

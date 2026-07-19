@@ -142,6 +142,20 @@ ablaut highlight, so `Aẞ` renders as "aß" with both letters marked as changed
 would render identically but leave the sibilant unhighlighted, splitting one ablaut into two
 visual runs.
 
+**Swiss spelling is a display concern, not a data one.** Swiss Standard German abolished ß in
+the 1970s and writes ss everywhere, without exception. Do **not** store a second Swiss spelling
+of a verb, and do not import one: `abfliessen` and `abfließen` are the same verb, and
+`verbdata/classification-summary.md` flags roughly 98 such incoming duplicates. `Verbs.xml`
+always holds the ß spelling; `String.inRegion(_:)` in `Konjugieren/Utils/RegionalRendering.swift`
+rewrites ß→ss and ẞ→SS at render time when the region setting is `.switzerland`. Mapping the
+capital sharp s to `SS` rather than `ss` is what keeps the ablaut highlight a single run, which
+is the same reason the replacement spells it `ẞ` in the first place.
+
+For the same reason, `Conjugator` takes no region and must stay that way: it is the oracle the
+classify-and-verify pipeline compares against Wiktionary. Where a regional reading is wanted,
+call `RegionalConjugator` instead, which passes an explicit auxiliary down and applies the
+orthography transform on the way out. See `prompts/regional_variation.md`.
+
 This was wrong across 20 verbs until 2026-07-19, in both directions at once. Pre-1996
 orthography used ß at the end of any syllable regardless of vowel length, so `schloß` and `daß`
 were correct when much of this app's reference material was written; the 1996 reform tied ß to

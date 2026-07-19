@@ -372,6 +372,14 @@ enum L {
       String(localized: "Info.futurKonjunktivIIText")
     }
 
+    static var dudenHeading: String {
+      String(localized: "Info.dudenHeading")
+    }
+
+    static var dudenText: String {
+      String(localized: "Info.dudenText")
+    }
+
     static var gameHeading: String {
       String(localized: "Info.gameHeading")
     }
@@ -438,6 +446,14 @@ enum L {
       String(localized: "Settings.searchScopeDescription")
     }
 
+    static var regionHeading: String {
+      String(localized: "Settings.regionHeading")
+    }
+
+    static var regionDescription: String {
+      String(localized: "Settings.regionDescription")
+    }
+
     static var appIconHeading: String {
       String(localized: "Settings.appIconHeading")
     }
@@ -458,6 +474,28 @@ enum L {
 
     static var german: String {
       String(localized: "ConjugationgroupLang.german")
+    }
+  }
+
+  enum Region {
+    static var north: String {
+      String(localized: "Region.north")
+    }
+
+    static var austria: String {
+      String(localized: "Region.austria")
+    }
+
+    static var switzerland: String {
+      String(localized: "Region.switzerland")
+    }
+
+    static func southernNote(example: String) -> String {
+      String(localized: "Region.southernNote \(example)")
+    }
+
+    static var auxiliaryVariesLabel: String {
+      String(localized: "Region.auxiliaryVariesLabel")
     }
   }
 

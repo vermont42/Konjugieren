@@ -34,7 +34,7 @@ enum WidgetSnapshotWriter {
 
     let verb = verbOfTheDay(from: eligible, date: date, debugOffset: 0)
     let paradigm = präsensParadigm(for: verb.infinitiv)
-    let partizip = Conjugator.conjugate(infinitiv: verb.infinitiv, conjugationgroup: .perfektpartizip)
+    let partizip = RegionalConjugator.conjugate(infinitiv: verb.infinitiv, conjugationgroup: .perfektpartizip)
     let partizipString: String
     switch partizip {
     case .success(let value):
@@ -74,7 +74,7 @@ enum WidgetSnapshotWriter {
 
   @MainActor private static func präsensParadigm(for infinitiv: String) -> [WidgetConjugation] {
     PersonNumber.allCases.map { pn in
-      let result = Conjugator.conjugate(infinitiv: infinitiv, conjugationgroup: .präsensIndikativ(pn))
+      let result = RegionalConjugator.conjugate(infinitiv: infinitiv, conjugationgroup: .präsensIndikativ(pn))
       let form: String
       switch result {
       case .success(let value):
@@ -92,7 +92,7 @@ enum WidgetSnapshotWriter {
     let conjugationgroupIndex = (seed * 31) % conjugationgroupOptions.count
     let conjugationgroup = conjugationgroupOptions[conjugationgroupIndex]
 
-    let correctResult = Conjugator.conjugate(infinitiv: verb.infinitiv, conjugationgroup: conjugationgroup)
+    let correctResult = RegionalConjugator.conjugate(infinitiv: verb.infinitiv, conjugationgroup: conjugationgroup)
     let correctAnswer: String
     switch correctResult {
     case .success(let value):
@@ -145,7 +145,7 @@ enum WidgetSnapshotWriter {
     for pn in allPersonNumbers {
       let altGroup = swapPerson(correctConjugationgroup, to: pn)
       guard let altGroup else { continue }
-      let result = Conjugator.conjugate(infinitiv: verb.infinitiv, conjugationgroup: altGroup)
+      let result = RegionalConjugator.conjugate(infinitiv: verb.infinitiv, conjugationgroup: altGroup)
       if case .success(let form) = result, form.lowercased() != correctAnswer.lowercased() {
         candidates.append(form.lowercased())
         break
@@ -156,7 +156,7 @@ enum WidgetSnapshotWriter {
     let regularGroups = regularConjugationgroups(seed: seed + 7)
     for group in regularGroups {
       if group == correctConjugationgroup { continue }
-      let result = Conjugator.conjugate(infinitiv: verb.infinitiv, conjugationgroup: group)
+      let result = RegionalConjugator.conjugate(infinitiv: verb.infinitiv, conjugationgroup: group)
       if case .success(let form) = result, form.lowercased() != correctAnswer.lowercased(), !candidates.contains(form.lowercased()) {
         candidates.append(form.lowercased())
         break
@@ -166,7 +166,7 @@ enum WidgetSnapshotWriter {
     // Wrong 3: another person/conjugationgroup combo
     let otherGroups = regularConjugationgroups(seed: seed + 13)
     for group in otherGroups {
-      let result = Conjugator.conjugate(infinitiv: verb.infinitiv, conjugationgroup: group)
+      let result = RegionalConjugator.conjugate(infinitiv: verb.infinitiv, conjugationgroup: group)
       if case .success(let form) = result, form.lowercased() != correctAnswer.lowercased(), !candidates.contains(form.lowercased()) {
         candidates.append(form.lowercased())
         break
@@ -175,7 +175,7 @@ enum WidgetSnapshotWriter {
 
     // Pad with Perfektpartizip if we still need more
     while candidates.count < 3 {
-      let fallback = Conjugator.conjugate(infinitiv: verb.infinitiv, conjugationgroup: .perfektpartizip)
+      let fallback = RegionalConjugator.conjugate(infinitiv: verb.infinitiv, conjugationgroup: .perfektpartizip)
       if case .success(let form) = fallback, form.lowercased() != correctAnswer.lowercased(), !candidates.contains(form.lowercased()) {
         candidates.append(form.lowercased())
       } else {

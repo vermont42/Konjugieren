@@ -262,7 +262,7 @@ The declaration, which is the authoritative list of what a verb carries:
 | `fr` | `CDATA #REQUIRED` | frequency rank |
 | `ic` | `CDATA #REQUIRED` | frequency-icon suffix, e.g. `cooldown`, `walk.arrival` |
 | `ag` | `CDATA #IMPLIED` | ablaut group; present on exactly the 324 strong and mixed verbs |
-| `ay` | `(h\|s) #IMPLIED` | auxiliary; only ever `s` in practice, absence meaning haben |
+| `ay` | `(h\|s) #IMPLIED` | auxiliary; only ever `s` in practice, absence meaning haben. Single-valued, which is a known shortcoming: see below |
 
 Two traps the DTD now catches that it previously could not. `ic` is required and every one of
 the 990 verbs carries it, but `VerbParser` falls back to a bare `"figure"` when it is absent,
@@ -273,6 +273,22 @@ and its `fatalError`.
 
 Budget an `ic` decision per imported verb; 40 distinct values are in use. `ay` is genuinely
 optional and rare, 63 of 990.
+
+### Dual-auxiliary verbs are a known shortcoming with a standing interim policy
+
+You will hit these during import: 469 single-word lemmas take sein in one reading and haben
+in another, of which **418 are in the incoming pool** and 51 already ship with one reading
+silently wrong. `ay` holds one value, so importing them naively bakes in the same error 418
+more times.
+
+**The rules live in [`../prompts/dual_auxiliary.md`](../prompts/dual_auxiliary.md), in its
+"Interim policy" section. Read it before importing, and do not restate it here.** That file
+is the single source; a copy in this document would drift from it, which is the failure this
+repo has already paid for twice.
+
+The one point worth repeating, because the build enforces it rather than the prose: the DTD
+declares `ay (h|s)`, and a combined value such as `"hs"` will fail validation. That rejection
+is intentional, not an obstacle to route around.
 
 ### `fr` is blocked, and re-querying DWDS is the wrong move
 

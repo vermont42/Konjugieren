@@ -155,6 +155,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 033FC2A62EF3161D00F9EE04 /* Build configuration list for PBXNativeTarget "Konjugieren" */;
 			buildPhases = (
+				0A1B2C3D4E5F60718293A4B5 /* Validate Verbs.xml */,
 				033FC2812EF3161C00F9EE04 /* Sources */,
 				033FC2822EF3161C00F9EE04 /* Frameworks */,
 				033FC2832EF3161C00F9EE04 /* Resources */,
@@ -294,6 +295,25 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		0A1B2C3D4E5F60718293A4B5 /* Validate Verbs.xml */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Konjugieren/Models/Verbs.xml",
+			);
+			name = "Validate Verbs.xml";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Verbs.xml.validated",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if ! command -v xmllint >/dev/null 2>&1; then\n  echo \"warning: xmllint not found; skipped Verbs.xml DTD validation\"\n  exit 0\nfi\nif ! diagnostics=$(xmllint --valid --noout \"$SCRIPT_INPUT_FILE_0\" 2>&1); then\n  echo \"$diagnostics\" | sed -E 's/^([^:]+):([0-9]+): .*error : /\\1:\\2: error: /'\n  exit 1\nfi\ntouch \"$SCRIPT_OUTPUT_FILE_0\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		033FC2812EF3161C00F9EE04 /* Sources */ = {

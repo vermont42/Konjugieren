@@ -218,3 +218,41 @@ gap into a question improved the email.
 
 Everything is still gated on the reply. Step 2 of `verb-sources.md`, the classify-and-verify
 pipeline against `Conjugator`, needs only the CC-BY-SA kaikki data and can proceed meanwhile.
+
+## Giving the Verbs.xml DOCTYPE teeth (2026-07-19)
+
+The DOCTYPE in `Verbs.xml` had been quietly wrong for a long time. It declared `in`, `tn`,
+`fa`, `fr`, and `ay`, but not `ag` (324 verbs) or `ic` (all 990), typed `fa` as free-form
+CDATA, and declared `<!ELEMENT verb (verb*)>`, permitting nested verbs that have never
+existed. `XMLParser` does not validate against internal subsets, so nothing ever complained.
+
+That is the same failure that produced the three stale 989s earlier in the day, with one
+aggravating difference: a DTD *looks* machine-checked. Prose that nothing executes is at least
+honestly prose. A schema that nothing validates is a comment wearing a costume.
+
+Repairing the declaration was easy. The interesting part was deciding what the corrected DTD
+should say, because the data answered questions the old one had ducked. `ag` turned out to sit
+on exactly the 294 strong plus 30 mixed verbs and on zero weak or -ieren verbs, so `#IMPLIED`
+is right and the correlation is perfect. `fa` has a closed set of four values, so it became an
+enumeration rather than CDATA, which means a typo'd family code now fails validation instead
+of reaching `VerbParser`'s `default:` branch and its `fatalError`. `ay` appears only as `s` in
+the data, but `Auxiliary` declares `haben = "h"` alongside `sein = "s"`, so the enumeration
+had to permit both; writing `(s)` would have described the current data while forbidding a
+legitimate value. Schema-from-data is a trap when the model is wider than the sample.
+
+Then the follow-through, which is the whole point: a **Validate Verbs.xml** run-script phase
+placed ahead of Sources in the Konjugieren target, so a bad verb fails the build. Josh asked
+what it costs, which is the right question to ask before agreeing to a check that runs
+forever. Measured directly, `xmllint --valid` on the 80 KB file takes 10.1 ms mean over 50
+runs, and a bare `/bin/sh -c true` takes 8.2 ms of that, so the validation proper is about
+2 ms and the rest is process spawn. With `inputPaths` and `outputPaths` declared, Xcode skips
+the phase entirely when `Verbs.xml` has not changed, which is nearly every build. Against a
+6.2 s no-op build, the worst case is roughly 0.2 percent.
+
+Verifying it was worth the extra step. The first check only proved the build still succeeded,
+which proves nothing about a validator. Injecting a verb missing `ic` produced
+`Verbs.xml:1005: error: Element verb does not carry attribute ic`, rendered by xcbeautify with
+a caret under the offending element, and `build_app.sh` exited 65. A first attempt to confirm
+this read the exit status of a `tail` at the end of a pipeline rather than of the build, and
+reported 0. Worth remembering: `$?` after a pipeline is the last command's, and the shape of
+that mistake is exactly the one that lets a decorative check pass for a real one.

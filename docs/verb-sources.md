@@ -6,7 +6,7 @@ Research findings on expanding Konjugieren's verb corpus beyond the current 990.
 
 Konjugieren ships 990 verbs (583 weak, 294 strong, 30 mixed, 83 -ieren), the survivors of data cleansing on a frequency-of-use list. The sibling apps Conjuguer (~6,200 verbs) and Conjugar (~4,800) were fed by the "Made Simple(r)" books; no comparable German book is in hand, so the path to parity runs through open data.
 
-A new verb needs everything `Verbs.xml` encodes: infinitive with prefix and ablaut markers (`in`), a short English translation (`tn`), family (`fa`), frequency rank (`fr`), an ablaut group (`ag`) for strong and mixed verbs, and auxiliary (`ay`). Each verb ideally also gains entries in `Etymologies.json` and `ExampleSentences.json`. The sources below are therefore rated not just on verb count but on whether glosses, etymologies, and full conjugation tables travel with the verbs in the same pass, so that nothing must be recrawled later.
+A new verb needs everything `Verbs.xml` encodes: infinitive with prefix and ablaut markers (`in`), a short English translation (`tn`), family (`fa`), frequency rank (`fr`), a frequency-icon suffix (`ic`), an ablaut group (`ag`) for strong and mixed verbs, and auxiliary (`ay`). The file's DOCTYPE is the authoritative list; see the handoff section at the end. Each verb ideally also gains entries in `Etymologies.json` and `ExampleSentences.json`. The sources below are therefore rated not just on verb count but on whether glosses, etymologies, and full conjugation tables travel with the verbs in the same pass, so that nothing must be recrawled later.
 
 ## Headline numbers
 
@@ -244,19 +244,35 @@ like `be*achten`. This already caused one silent failure, described in `verbdata
 the DWDS API answers such junk with a well-formed zero rather than an error, so the run
 reported complete success while a third of the corpus was garbage. Use `re.sub(r'[+*^]', '', …)`.
 
-### A new verb needs `ic`, which the "what a new verb needs" list above omits
+### The DOCTYPE is now the schema, and the build enforces it
 
-The list in the Context section names `in`, `tn`, `fa`, `fr`, `ag`, and `ay`. It leaves out
-`ic`, the frequency-icon suffix, which all 990 current verbs carry (`ic="cooldown"`,
-`ic="walk.arrival"`, and so on). `VerbParser` treats it as optional and falls back to a bare
-`"figure"`, so omitting it produces no error, no test failure, and a visibly inconsistent verb
-list. Budget an `ic` decision per imported verb.
+Corrected 2026-07-19. This section previously warned that the `Verbs.xml` DOCTYPE was stale
+and should not be treated as the schema. Both halves of that are now obsolete. The internal
+subset was repaired and a **Validate Verbs.xml** build phase now runs `xmllint --valid` ahead
+of compilation in the Konjugieren target, so a malformed verb fails the build with a
+file-and-line diagnostic rather than shipping silently.
 
-Note also that the `Verbs.xml` DOCTYPE is already stale: its `ATTLIST` declares `in`, `tn`,
-`fa`, `fr`, and `ay`, but neither `ag` nor `ic`, both of which are in active use. `XMLParser`
-does not validate against it, so nothing complains. Do not treat the DOCTYPE as the schema.
+The declaration, which is the authoritative list of what a verb carries:
 
-By contrast `ay` genuinely is optional and rare: 63 of 990 verbs set it.
+| Attribute | Declared | Meaning |
+|---|---|---|
+| `in` | `CDATA #REQUIRED` | infinitive with `+`, `*`, `^` markers |
+| `tn` | `CDATA #REQUIRED` | short English translation |
+| `fa` | `(w\|s\|m\|i) #REQUIRED` | family: weak, strong, mixed, -ieren |
+| `fr` | `CDATA #REQUIRED` | frequency rank |
+| `ic` | `CDATA #REQUIRED` | frequency-icon suffix, e.g. `cooldown`, `walk.arrival` |
+| `ag` | `CDATA #IMPLIED` | ablaut group; present on exactly the 324 strong and mixed verbs |
+| `ay` | `(h\|s) #IMPLIED` | auxiliary; only ever `s` in practice, absence meaning haben |
+
+Two traps the DTD now catches that it previously could not. `ic` is required and every one of
+the 990 verbs carries it, but `VerbParser` falls back to a bare `"figure"` when it is absent,
+so before the build phase an omission produced no error, no test failure, and a silently
+inconsistent verb list. And `fa` is now an enumeration rather than free-form `CDATA`, so a
+typo in the family code fails the build instead of reaching `VerbParser`'s `default:` branch
+and its `fatalError`.
+
+Budget an `ic` decision per imported verb; 40 distinct values are in use. `ay` is genuinely
+optional and rare, 63 of 990.
 
 ### `fr` is blocked, and re-querying DWDS is the wrong move
 

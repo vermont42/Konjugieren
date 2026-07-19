@@ -1,12 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE verbs [
     <!ELEMENT verbs (verb+)>
-    <!ELEMENT verb (verb*)>
+    <!ELEMENT verb EMPTY>
     <!ATTLIST verb in CDATA #REQUIRED>
     <!ATTLIST verb tn CDATA #REQUIRED>
-    <!ATTLIST verb fa CDATA #REQUIRED>
+    <!ATTLIST verb fa (w|s|m|i) #REQUIRED>
     <!ATTLIST verb fr CDATA #REQUIRED>
-    <!ATTLIST verb ay CDATA #IMPLIED>
+    <!ATTLIST verb ic CDATA #REQUIRED>
+    <!ATTLIST verb ag CDATA #IMPLIED>
+    <!ATTLIST verb ay (h|s) #IMPLIED>
 ]>
 
 <verbs>

@@ -256,6 +256,7 @@ corpus/                        # German text corpus for example sentence sourcin
 └── technology/                # BSI security guides and technical Wikipedia articles
 
 verbdata/                      # Verb-corpus-expansion data (see docs/verb-sources.md)
+│   generate_frequencies_txt.py  # Regenerates docs/frequencies.txt from Verbs.xml (--check for drift)
 ├── README.md                  # Provenance, integrity stats, and re-download recipes for the data files
 ├── fetch_dwds_frequencies.py  # Fetches DWDS lemma frequencies; --lemmas FILE overrides the Verbs.xml corpus
 ├── build_candidates.py        # Classify-and-verify stage A: kaikki JSONL → candidates.json (see docs/verb-classification.md)

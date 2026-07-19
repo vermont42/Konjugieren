@@ -4,7 +4,9 @@ Etymologies sourced from [English Wiktionary](https://en.wiktionary.org/) for us
 
 ## Verb Frequency List
 
-[`docs/frequencies.txt`](frequencies.txt) lists all 988 verbs sorted by frequency rank (`1 sein` … `988 tätigen`), one per line. Use this file to assign verb ranges to subagents — e.g., "look up etymologies for verbs 1–100" — without parsing `Verbs.xml`.
+[`docs/frequencies.txt`](frequencies.txt) lists all 990 verbs sorted by frequency rank (`1 sein` … `990 konjugieren`), one per line. Use this file to assign verb ranges to subagents — e.g., "look up etymologies for verbs 1–100" — without parsing `Verbs.xml`.
+
+It is generated, not hand-maintained: `python3 verbdata/generate_frequencies_txt.py` rebuilds it from `Verbs.xml`, and `--check` reports whether it has drifted. Regenerate after any change to the corpus. The rank is derived from the `hi` hit count at parse time, so it moves when hit counts change, not only when verbs are added.
 
 ## Wiktionary Extraction Technique
 

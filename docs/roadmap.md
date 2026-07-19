@@ -84,8 +84,10 @@ Decide the `hi` policy before handing this over; see "The blocked one" below.
 > **Do not trust the verb counts in the prose.** `verb-sources.md` says 87 missing strong bases
 > in one place and "44 named" in another; those are different populations and at least one is
 > stale. Re-derive by set difference against `Konjugieren/Models/Verbs.xml`, the only source of
-> truth; the recipe is in that file's "Verify counts, do not trust them" section. `docs/frequencies.txt`
-> is stale twice over — 988 verbs, and ranks that are now derived — so do not use it as a lemma list.
+> truth; the recipe is in that file's "Verify counts, do not trust them" section.
+> `docs/frequencies.txt` is a generated lemma list in rank order and is current as of 2026-07-19;
+> rerun `python3 verbdata/generate_frequencies_txt.py` after adding verbs, and `--check` to see
+> whether it has drifted.
 >
 > Read `docs/adding-verbs.md` first: the XML format changed twice on 2026-07-19 and any example
 > you remember is wrong. Each `<verb>` now holds one or more `<reading>` children; `fr` is retired
@@ -207,10 +209,6 @@ Small things the pipeline surfaced that no plan currently owns. None blocks the 
   correct code.
 - **Three modals resist the pipeline** — *sollen*, *bedürfen*, *vermögen* use full-override
   ablaut groups the classifier cannot derive. Probably correct as shipped; unverified.
-- **`docs/frequencies.txt` is stale twice over** — it lists 988 verbs (the corpus is 990) and
-  calls its numbers frequency ranks, which are now derived from `hi` rather than stored. It is
-  referenced by `docs/etymologies.md` as a lemma list for subagent work. Regenerate it from
-  `Verbs.xml` or delete it; do not hand it to a session as a source of truth.
 - **Everything in `prompts/` is now executed** and carries a status line saying so.
 - **Swiss infinitive display beyond `VerbView`** — the ß→ss transform now covers displayed
   infinitives (headline, nav title, browse rows, quiz prompt, results, family cards) and search

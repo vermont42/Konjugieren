@@ -938,3 +938,44 @@ fresh session arrives with confident priors drawn from documents that were accur
 Generic advice to be careful does not help, because the session does not know which of its beliefs
 are the stale ones. Naming the specific memories to distrust — the 87-versus-44 discrepancy, the
 pre-reading-model XML examples — is what makes the warning usable.
+
+## Regenerating frequencies.txt, and the phase that never landed (2026-07-19)
+
+`docs/frequencies.txt` was filed as a known gap earlier today: 988 verbs against a corpus of 990,
+and numbers it called frequency ranks after ranks stopped being stored. Josh asked for it to be
+regenerated. The interesting part was what checking its consumers turned up before overwriting it.
+
+The two missing verbs were *besingen* and *konjugieren* — the app's namesake absent from its own
+frequency list, and now, by derived rank, the single rarest verb in the corpus at 990 of 990. Both
+already had full `Etymologies.json` and `ExampleSentences.json` entries, so adding them does not
+break the pipeline's "every verb in frequencies.txt must have an entry" invariant. It repairs it:
+that check has been silently under-verifying by two.
+
+It is a generator now rather than a hand-maintained file, with `--check` to report drift. A file
+that drifted this way twice should not depend on anyone remembering to update it. The generator
+mirrors `VerbParser.ranked` deliberately, and the docstring says so, because a silent divergence
+would make "verb 400" mean different things depending on whether you asked Swift or Python.
+
+That claim is worth verifying rather than asserting, so I ran the export harness, pulled the
+990-verb JSON out of the simulator's tmp directory, and compared its Swift-computed `frequency`
+against the file's column 1. Zero mismatches across 990, and zero ties in the hit counts — which
+matters, because with no ties the ordering is determined by `hi` alone and the two implementations
+cannot diverge on tiebreak even in principle.
+
+Reordering did move things, and one looked alarming. The top 30 changed membership: *erhalten* and
+*bekommen* dropped out, *setzen* and *spielen* came in. The example-sentence pipeline keys its
+`medieval` sub-key off "the top 30 verbs" and hardcodes the old list, so this looked like a real
+break — until I checked the data. **No verb in `ExampleSentences.json` has a `medieval` key at
+all.** The string does not appear in the file. Phase 4 of that pipeline was designed, documented
+with a schema rule and a validation step, and never run, or run and never merged.
+
+So the reshuffle broke nothing, because nothing consumed the ordering. But the pipeline doc has
+been describing an output shape its own data does not have, and a future session running Phase 4
+would have used a verb list frozen against ranks that no longer exist. Both are now noted in place
+rather than left as a trap.
+
+The pattern across today is consistent enough to name. Every one of these — the dead
+`etymology-pipeline.md` pointer, the 14-at-odds baseline, this file, the medieval phase — was a
+document making a claim that no code checked. The ones that got caught were caught by executing
+the claim: following the link, running the recipe, grepping for the key. Reading them found
+nothing, because they all read fine.

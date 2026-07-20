@@ -51,6 +51,54 @@ shipping verbs stay in the candidate set. For those the correct answer is alread
 `Verbs.xml`, which turns them into a regression oracle: a shipping verb that fails to verify is
 a defect, not an unknown. The first run found 354 such verbs.
 
+## The etymology reuse files
+
+Phase 3 of [`prompts/uses_etymologies.md`](../prompts/uses_etymologies.md). Three lookup tables
+that let a Phase 4 subagent *compose* a compound verb's etymology from parts instead of
+re-deriving one, keyed so it can look up rather than search.
+
+| File | Key | Value | Tracked |
+|---|---|---|---|
+| `roots.json` | final root infinitive | markup-ready string | yes |
+| `prefixes-inseparable.json` | bare prefix (`ver`, not `ver-`) | `{chain, senses, occurrences}` | yes |
+| `prefixes-separable.json` | bare particle (`ab`, `tot`, `preis`) | `{chain, senses, occurrences}` | yes |
+| `build_reuse_files.py` | — | seeds the above from existing entries, emits the gap worklist | yes |
+| `merge_reuse_files.py` | — | folds authored shards in; `--validate-only` re-checks | yes |
+
+All three carry `{"de": {...}, "en": {...}}`, language first — the same shape as
+`Konjugieren/Models/Etymologies.json`, and the same trap: reading them verb-first silently
+reports zero coverage.
+
+**Why prefixes get an object and roots get a string.** A root bullet in the existing corpus is
+reusable whole. A prefix bullet is not: it welds a genealogy that is identical across every
+compound to a final sentence glossing what the prefix contributes *to that compound*. Only the
+genealogy is `chain`; `senses` holds the range of contributions, so a composed etymology can
+pick the one that fits rather than repeating a single frozen gloss across 189 *ver-* verbs.
+
+**These are not build products.** The seed is re-derivable by re-running
+`build_reuse_files.py`, but most of the content is authored scholarship — 73 root etymologies
+and 246 prefix entries in two languages — which a regeneration would not reproduce. Merging
+never overwrites an existing key for that reason.
+
+**Validate after any hand-edit:** `python3 verbdata/merge_reuse_files.py --validate-only`. It
+checks entry coverage against `Verbs.xml`, tilde balance, asterisk placement on reconstructed
+forms, the four `RichTextView` markers that must not appear, cross-language quote style, and
+de/en key and sense-list parity. Every check is there because the defect it catches was
+actually observed during the authoring pass.
+
+### Two defects in shipping data that this pass surfaced
+
+Both were found by copying `Etymologies.json` content forward, and both are repaired on write
+into the reuse files by the `sanitize` helper in each script. **Neither is fixed in
+`Konjugieren/Models/Etymologies.json` itself**, which is shipping app content:
+
+- **A literal `\n`** in 49 German entries, and zero English ones. The English side of the same
+  entries carries real newlines, so the intent is unambiguous; the German renders two visible
+  characters where a paragraph break belongs.
+- **U+0137 `ķ` for U+1E31 `ḱ`**, in 36 places. At body-text size a Latvian k-cedilla and the
+  PIE palatal are nearly identical, which is presumably how it survived review. In a
+  reconstructed etymon it is a different sound.
+
 ## dwds-frequencies.json
 
 | Fact | Value |

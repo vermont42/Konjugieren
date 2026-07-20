@@ -1,6 +1,6 @@
 # Etymology-and-Example-Use Pipeline
 
-**Status: designed 2026-07-20.** Phases 0, 1, and 2 are done; phases 3 through 5 are not.
+**Status: designed 2026-07-20.** Phases 0 through 3 are done; phases 4 and 5 are not.
 
 Fill the 2,582 verbs that have neither an etymology nor an example sentence, in one pass, by
 moving the expensive work off the LLM and reusing what the corpus already knows.
@@ -277,7 +277,7 @@ looking for it in a fresh clone. The **script**, however, is now tracked: `.giti
 explicit negation for `corpus/working/*.py`, because everything in the list above is knowledge that
 a fresh clone would otherwise lose.
 
-### Phase 3 — Build the three reuse files, by parsing not generating
+### Phase 3 — Build the three reuse files, by parsing not generating ✅ done 2026-07-20
 
 - `verbdata/roots.json` — root → etymology. **Seed by parsing the 990 existing entries**, whose
   bullet structure (`- ~meiden~: From MHG…`) is regular. 303 of the 382 needed roots fall out for
@@ -293,6 +293,67 @@ plus the semantic contribution. Extract *ver-* once from `vermeiden` and it serv
 
 Format: a flat JSON object keyed by root or prefix, value being the markup-ready text. Flat and
 keyed, so a subagent can look up rather than search.
+
+**As built.** Two tracked scripts and three tracked data files:
+
+```bash
+python3 verbdata/build_reuse_files.py --gaps /tmp/reuse_gaps.json   # seed + worklist
+python3 verbdata/merge_reuse_files.py --shards <dir>                # fold in authored shards
+python3 verbdata/merge_reuse_files.py --validate-only               # re-check at any time
+```
+
+The seeding half confirmed the plan's arithmetic exactly. The authoring half was 73 roots and
+246 prefixes across 21 subagent shards, each writing its own file — Conjugar's interruptible
+pattern, and it paid off: shard reports could be read as they landed rather than at the end.
+
+Eight things shaped the result, and Phase 4 should know them.
+
+- **The value shapes differ between roots and prefixes, deliberately.** A root's entry is a
+  flat string, reusable as a bullet whole. A prefix's is `{chain, senses, occurrences}`,
+  because a prefix bullet in the existing corpus is two things welded together: a genealogy
+  identical across every compound, and a final sentence glossing what the prefix does *in this
+  compound*. Freezing one arbitrary gloss would have made all 189 *ver-* verbs read alike.
+  Phase 4 composes: chain verbatim, plus the sense that fits the compound at hand.
+- **Six roots existed only inside other verbs' bullets** — *leihen*, *meiden*, *schreiten*,
+  *schwinden*, *winden*, *zeihen*. Their etymologies had been shipping for months as
+  sub-clauses of *verleihen*, *vermeiden*, and the rest, without ever being entries. This is
+  the reuse thesis in miniature.
+- **Seventy-three roots needed authoring, and they are almost all strong verbs**, plus seven
+  **cranberry morphemes** — bound roots that are not verbs of modern German at all and survive
+  only inside one compound: *brinnen* (verbrennen), *deihen* (gedeihen), *derben* (verderben),
+  *drießen* (verdrießen), *nesen* (genesen), *kreißen*, *zeihen*. Their entries say so plainly
+  rather than presenting them as usable.
+- **Two `in` attributes are double-prefixed but singly marked**: `be*mitleiden` and
+  `ver*anschlagen`. Both compounds are wholly inseparable, so marking the inner *mit*/*an* as
+  separable would misstate their syntax — the encoding is right and the last-marker rule is
+  what is approximate. They are authored as composed roots. `Verbs.xml` was not touched, and
+  the at-odds count did not move.
+- **The separable side is not 233 prefixes.** It is roughly forty true particles, ninety
+  transparent deictic compounds (*herunter* = *her-* + *unter*; the toward-speaker /
+  away-from-speaker opposition of *her-*/*hin-* is the single most useful fact in the
+  inventory), some sixty adjectives in resultative frames (*totschlagen* = beat until dead),
+  a dozen incorporated nouns (*teilnehmen*, *preisgeben*), and a residue of frozen phrases
+  (*abhanden* = "ab + Handen", the old dative plural of *Hand*). Depth belongs on the atoms;
+  the compounds get three clauses and a pointer.
+- **Harvested chains had to be corrected, not merely normalized.** Beyond the expected drift
+  in abbreviation and diacritic, several shipping chains were wrong on substance: *hoch*'s PIE
+  gloss was misstated in both harvested variants (the root means "to elevate"), *auseinander*
+  derived the *-ein-* from the preposition *in* rather than from *ein* "one", and *wahr*
+  covered only the adjective — but the corpus verb is *wahrnehmen*, whose first element is the
+  unrelated noun OHG *wara* "heed", the root behind English *aware*. Reused verbatim, that
+  last one would have mis-derived the commoner verb.
+- **Two defects in shipping data surfaced by being copied.** 49 German entries in
+  `Etymologies.json` carry a literal `\n` where the English side has a real newline, and 36
+  places have U+0137 `ķ` (a Latvian k-cedilla) standing for U+1E31 `ḱ`, the PIE palatal. Both
+  are repaired on write into the reuse files, by `sanitize` in each script; neither is fixed
+  in `Etymologies.json`, which is shipping app content. **That fix is still outstanding.**
+- **The validator is the durable artifact, not the merge.** `--validate-only` re-checks tilde
+  balance, asterisk placement, the four parser-significant markers, cross-language quote
+  style, de/en key and sense-list parity, and both defects above. Every check exists because
+  the defect it catches was actually observed. Run it after any hand-edit.
+
+`verbdata/` is tracked, so unlike `corpus/` these three files are not build products: the seed
+is re-derivable but the authored scholarship is not.
 
 ### Phase 4 — Mine, sharded, with capped concurrency
 

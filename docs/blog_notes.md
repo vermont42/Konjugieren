@@ -2424,3 +2424,76 @@ exactly 1,663 verbs, because all 14 were redundant fallbacks for verbs already c
 Worth generalizing: the guard against a *wrong language* and the guard against a *wrong citation*
 are different guards. `tatian.txt` passes the language test at 8.7% German and should — it really
 is mostly German. It fails on provenance instead. Conflating the two would have let it through.
+
+## Phase 3: paying once for scholarship that was already in the file (2026-07-20)
+
+The premise of this phase was that `Etymologies.json` already contains most of what the 2,582
+etymology-less verbs need, decomposed and waiting. It does, and the arithmetic came out exactly
+as designed: of 382 distinct final roots, 303 have their own top-level entry and 6 more exist
+only as bullets inside other verbs' compounds. That left 73 to author instead of 382.
+
+Those six are the nicest confirmation of the thesis. *meiden*, *leihen*, *schreiten*,
+*schwinden*, *winden*, *zeihen* — each has been shipping in the app for months as a sub-clause
+of *vermeiden*, *verleihen*, and so on, fully researched, without ever existing as an entry.
+Parsing them out cost a regex.
+
+**Where the design changed.** The phase spec said the value should be "the markup-ready text,"
+flat, for both roots and prefixes. That is right for roots and wrong for prefixes, and the
+reason only becomes visible once you read fifty prefix bullets side by side: a prefix bullet is
+two things welded together. There is a genealogy — MHG *ver-*, OHG *fir-*, PGmc \**fra-*, PIE
+\**per* — that is identical in all 95 places *ver-* appears, and then a final sentence saying
+what the prefix does *in this compound*. Freezing one of those 95 glosses into the file would
+make every *ver-* verb in the app read the same. So prefixes carry `{chain, senses}`, and Phase
+4 composes: chain verbatim, plus whichever sense fits. Roots stayed flat strings.
+
+**The separable side is not a prefix inventory.** It is 233 entries, and the count is
+misleading. Perhaps forty are true particles. Ninety are transparent deictic compounds where
+the only fact worth stating is the composition and the *her-*/*hin-* orientation — inventing a
+separate PIE chain for *herunter* would be fabrication dressed as scholarship. Sixty-odd are
+ordinary adjectives in resultative frames (*totschlagen* = beat until dead). A dozen are
+incorporated nouns. The residue is fossils: *abhanden* is "ab + Handen", the old dative plural
+of *Hand*, and saying so *is* the entry. Getting the depth allocation right — atoms deep,
+compounds shallow — mattered more than any individual etymology.
+
+**Harvested chains needed correcting, not just normalizing.** I expected drift in abbreviation
+and diacritic and got it. I did not expect the shipping chains to be wrong on substance, and
+several were. *hoch*'s PIE gloss was misstated in both harvested variants. *auseinander*
+derived its *-ein-* from the preposition *in* rather than from *ein* "one". Worst, the *wahr*
+material covered only the adjective — but the corpus verb is *wahrnehmen*, whose first element
+is a different word entirely: the old feminine noun OHG *wara* "heed, attention", the root
+behind English *aware* and *beware*. Reused verbatim across every *wahr-* compound, that would
+have confidently mis-derived the commoner verb. The lesson is that "already in the corpus" and
+"correct" are independent properties, and the reuse thesis only saves work on the first.
+
+Several subagents corrected my own briefing the same way, with sources: *anheim* is a
+directional accusative, not a dative; *entzwei* is *in zwei* respelled under the influence of
+*ent-* rather than a real *ent-* prefix; *hintan* is *hin* + *dan* reanalyzed as *hint* + *an*;
+and the *preis* of *preisgeben* is Old French *prise* "capture, booty" — the source of *Prise*
+and of English naval *prize* — not *pretium* "price", which is the homophone it was later
+conflated with. I had asserted the *pretium* line in the shard prompt. Being wrong in a
+briefing that twenty agents read is a good argument for asking them to check rather than comply.
+
+**Two defects in shipping data surfaced by being copied forward.** 49 German entries carry a
+literal `\n` where the English side has a real newline — it renders as two visible characters.
+And 36 places have U+0137 `ķ`, a Latvian k-cedilla, where U+1E31 `ḱ`, the PIE palatal, belongs;
+at body-text size they are nearly identical, which is presumably how it survived review. Both
+are repaired on write into the reuse files. **Neither is fixed in `Etymologies.json`**, which
+is shipping app content and Josh's call. That fix is outstanding.
+
+The interesting structural point about those two: I only found them because the validator I
+wrote for *new* content was pointed at *copied* content as well. A validator scoped to "things
+the subagents wrote" would have passed cleanly and shipped both defects onward, multiplied by
+however many compounds reuse each root.
+
+**Two encoding facts worth carrying forward.** `be*mitleiden` and `ver*anschlagen` are
+double-prefixed but mark only their outer boundary — correctly, since both compounds are wholly
+inseparable and marking the inner *mit*/*an* separable would misstate their syntax. So the
+last-marker rule reports *mitleiden* and *anschlagen* as roots. They are authored as composed
+roots rather than "fixed" in `Verbs.xml`, and the at-odds count did not move.
+
+And the 73 authored roots turned out to be almost entirely strong verbs, including seven
+cranberry morphemes — bound roots that are not verbs of modern German at all: *brinnen*
+(verbrennen), *deihen* (gedeihen), *derben* (verderben), *drießen* (verdrießen), *nesen*
+(genesen), *kreißen*, *zeihen*. The corpus's own `in` attributes exhumed them. *nesen* is the
+one to remember: it survives only in *genesen*, from PIE \**nes-* "to return home safely" — the
+root that also gives Greek *nóstos*, so *Genesung* and *nostalgia* rest on the same idea.

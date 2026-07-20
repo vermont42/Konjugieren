@@ -1,0 +1,274 @@
+{
+  "de": {
+    "be": {
+      "chain": "Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~.",
+      "senses": [
+        "macht ein intransitives Verb transitiv und richtet die Handlung auf ein Objekt",
+        "hebt das, was das Grundverb mit einer Präposition regiert, zum Akkusativobjekt",
+        "drückt aus, dass etwas auf eine Fläche aufgebracht oder diese bedeckt wird",
+        "bildet aus einem Substantiv oder Adjektiv ein Verb mit der Bedeutung, damit zu versehen oder dazu zu machen",
+        "verleiht der Grundhandlung Gründlichkeit oder Vollständigkeit"
+      ],
+      "occurrences": 144
+    },
+    "emp": {
+      "chain": "Eine Variante von ~ent-~, aus Mhd. ~ent-~, aus Ahd. ~int-~, aus Proto-Westgermanisch *~and-~, aus Urgermanisch *~anda-~ („gegen, entgegen, weg“), aus PIE *~h₂ent-~ („Gesicht, Stirn, Vorderseite“). Die Form ~emp-~ entstand durch Assimilation vor den Labialen ~f~ und ~pf~ und lebt in nur drei Verben fort: ~empfangen~, ~empfehlen~ und ~empfinden~.",
+      "senses": [
+        "ist die lautlich bedingte Form von ~ent-~ vor ~f~ und ~pf~",
+        "drückt das Empfangen oder Aufnehmen von etwas aus, das einem entgegenkommt",
+        "bewahrt den älteren Sinn von ~ent-~ als Entgegentreten oder Zubewegen"
+      ],
+      "occurrences": 1
+    },
+    "ent": {
+      "chain": "Aus Mhd. ~ent-~, aus Ahd. ~int-~, ~ant-~, aus Proto-Westgermanisch *~and-~, aus Urgermanisch *~anda-~ („gegen, entgegen, weg“), aus PIE *~h₂ent-~ („Gesicht, Stirn, Vorderseite“). Verwandt mit Englisch ~answer~, dessen erstes Glied dasselbe Morphem ist.",
+      "senses": [
+        "kehrt die Grundhandlung um oder macht sie rückgängig",
+        "drückt Entfernung, Wegnahme oder Trennung aus",
+        "drückt Freisetzung, Entkommen oder Loslösung aus",
+        "kennzeichnet den Beginn oder das Entstehen von etwas",
+        "bewahrt den älteren Sinn des Präfixes von Entgegentreten oder Zubewegen"
+      ],
+      "occurrences": 58
+    },
+    "er": {
+      "chain": "Aus Mhd. ~er-~, aus Ahd. ~ir-~, ~ar-~, aus Proto-Westgermanisch *~uʀ-~, aus Urgermanisch *~uz-~ („heraus, auf“), aus PIE *~ud~ („aufwärts, hinaus, weg“). Dublette des betonten Präfixes ~ur-~.",
+      "senses": [
+        "kennzeichnet das erfolgreiche Erreichen oder die Vollendung der Grundhandlung",
+        "kennzeichnet den Eintritt in einen Zustand statt den Zustand selbst",
+        "drückt aus, dass etwas mittels der Grundhandlung erlangt wird",
+        "bewahrt den älteren räumlichen Sinn des Präfixes von Aufwärts- oder Herausbewegung",
+        "führt die Grundhandlung zu einem tödlichen Ende",
+        "bildet aus einem Adjektiv ein Verb mit der Bedeutung, in diesen Zustand zu bringen"
+      ],
+      "occurrences": 87
+    },
+    "ge": {
+      "chain": "Aus Mhd. ~ge-~, aus Ahd. ~gi-~, ~ga-~, aus Proto-Westgermanisch *~ga-~, aus Urgermanisch *~ga-~ („zusammen, mit“), aus PIE *~ḱóm~ („neben, nahe, bei, mit“). Dasselbe Präfix bildet das Perfektpartizip und, als Substantivpräfix, Kollektiva wie ~Gebirge~ und ~Gebrüder~.",
+      "senses": [
+        "drückt Kollektivität aus — etwas gemeinsam oder mit anderen tun",
+        "kennzeichnet Vollendung oder das Erreichen eines Ergebnisses, die alte perfektive Kraft des Präfixes",
+        "verleiht der Grundhandlung Gründlichkeit",
+        "ist semantisch nicht mehr unterscheidbar und mit dem Grundverb verschmolzen"
+      ],
+      "occurrences": 20
+    },
+    "hinter": {
+      "chain": "Aus Mhd. ~hinter~, aus Ahd. ~hintar~, aus Proto-Westgermanisch *~hindar~, aus Urgermanisch *~hinder~ („hinter“), einer Komparativbildung zu PIE *~ḱi-~ („dies, hier“). Dieselbe deiktische Wurzel ergibt Deutsch ~hier~ und ~heute~ sowie Englisch ~here~ und ~hence~.",
+      "senses": [
+        "drückt Lage oder Bewegung hinter etwas aus",
+        "drückt aus, dass etwas hinter sich zurückgelassen wird",
+        "drückt aus, hinter die Oberfläche von etwas zu gelangen, daher Prüfung oder Täuschung"
+      ],
+      "occurrences": 4
+    },
+    "um": {
+      "chain": "Aus Mhd. ~umbe~, ~um(b)-~, aus Ahd. ~umbi~, aus Proto-Westgermanisch *~umbi~, aus Urgermanisch *~umbi~ („herum“), aus PIE *~h₂m̥bʰi~ („herum, auf beiden Seiten“). Verwandt mit Lateinisch ~ambi-~ und Altgriechisch ~amphí-~, woraus Englisch ~ambiguous~ und ~amphitheater~.",
+      "senses": [
+        "vermittelt als untrennbares Präfix das Umgeben oder Umschließen von etwas",
+        "vermittelt als untrennbares Präfix das Umgehen oder Vermeiden von etwas",
+        "vermittelt als trennbares Präfix Umdrehen oder Umstellen",
+        "vermittelt als trennbares Präfix Umwandlung — etwas in eine andere Form bringen"
+      ],
+      "occurrences": 11
+    },
+    "unter": {
+      "chain": "Aus Mhd. ~under-~, aus Ahd. ~untar-~, aus Proto-Westgermanisch *~under~, aus Urgermanisch *~under~ („unter, zwischen, unter mehreren“), aus PIE *~n̥dʰér~ („unter, unterhalb“), mit dem PIE *~h₁n̥ter~ („zwischen, unter mehreren“) im Germanischen zusammenfiel. Verwandt mit Englisch ~under~ und, über die zweite Wurzel, mit Lateinisch ~inter~.",
+      "senses": [
+        "drückt die wörtliche Lage unterhalb von etwas aus",
+        "drückt Unterwerfung oder Unterordnung unter eine Autorität aus",
+        "drückt Stützung oder Unterhaltung von unten aus",
+        "drückt ein Dazwischen oder Inmitten aus, aus der damit verschmolzenen Wurzel für „zwischen“",
+        "drückt Unterbrechung aus — das Hineinschneiden in einen laufenden Vorgang"
+      ],
+      "occurrences": 24
+    },
+    "ver": {
+      "chain": "Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen.",
+      "senses": [
+        "verstärkt das Grundverb oder führt seine Handlung zur Vollendung",
+        "kennzeichnet die Handlung als falsch, fehlgeleitet oder misslungen",
+        "drückt Verbrauchen, Aufzehren oder Aufbrauchen aus",
+        "drückt Entfernung oder Wegbewegung aus, aus dem älteren räumlichen Sinn des Präfixes",
+        "kehrt die Grundhandlung um oder negiert sie",
+        "bildet aus einem Substantiv oder Adjektiv ein Verb mit der Bedeutung, etwas dazu zu machen"
+      ],
+      "occurrences": 189
+    },
+    "voll": {
+      "chain": "Vom Adjektiv ~voll~, aus Mhd. ~vol~, aus Ahd. ~fol~, aus Proto-Westgermanisch *~full~, aus Urgermanisch *~fullaz~ („voll“), aus PIE *~plh₁nós~ („voll“), zur Wurzel *~pleh₁-~ („füllen“). Verwandt mit Englisch ~full~ und, über dieselbe Wurzel, Lateinisch ~plēnus~, woraus Englisch ~plenty~ und ~replenish~.",
+      "senses": [
+        "vermittelt als untrennbares Präfix das vollständige Zuendeführen einer Handlung",
+        "drückt den förmlichen Vollzug oder das Zustandebringen einer Handlung aus",
+        "behält als trennbares Präfix den wörtlichen adjektivischen Sinn des Vollfüllens bei"
+      ],
+      "occurrences": 3
+    },
+    "wider": {
+      "chain": "Aus Mhd. ~wider-~, aus Ahd. ~widar~, aus Proto-Westgermanisch *~wiþr~, aus Urgermanisch *~wiþrą~ („gegen, zurück“), einer Komparativbildung zu PIE *~wi~ („auseinander, entzwei“). Verwandt mit Englisch ~with~, das „gegen“ bedeutete, bevor es „bei“ bedeutete — ein Sinn, der in ~withstand~ und ~withhold~ fortlebt.",
+      "senses": [
+        "drückt Widerstand, Gegensatz oder Widerspruch aus",
+        "drückt eine Rückbewegung aus, wie bei etwas Zurückkehrendem oder Zurückgeworfenem",
+        "ist vom gleichlautenden ~wieder~ („erneut“) zu unterscheiden, von dem es orthographisch erst in der Neuzeit geschieden wurde"
+      ],
+      "occurrences": 7
+    },
+    "zer": {
+      "chain": "Aus Mhd. ~zer-~, aus Ahd. ~zi-~, ~za-~, ~zir-~, aus Proto-Westgermanisch *~ti-~, aus Urgermanisch *~te-~ („auseinander, entzwei“), aus PIE *~dwís~ („zweimal, entzwei“). Verwandt mit Altenglisch ~tō-~ („auseinander“), dem Präfix von ~tōbrecan~ („zerbrechen“), und mit Lateinisch ~dis-~.",
+      "senses": [
+        "drückt Zerbrechen, Zersplittern oder Auseinanderfallen aus",
+        "drückt vollständige Zerstörung oder Vernichtung aus",
+        "drückt Zerstreuung aus — ein Auseinandergehen oder Auflösen in alle Richtungen"
+      ],
+      "occurrences": 35
+    },
+    "über": {
+      "chain": "Aus Mhd. ~über~, aus Ahd. ~ubar~, ~ubiri~, aus Proto-Westgermanisch *~ubar~, aus Urgermanisch *~uber~, aus PIE *~upéri~ („über, oberhalb“). Verwandt mit Englisch ~over~, Lateinisch ~super~ und Altgriechisch ~hupér~, der Quelle des ~hyper-~ englischer Gelehrtenwörter.",
+      "senses": [
+        "drückt Bewegung über eine Grenze hinweg aus",
+        "drückt Übertragung oder Übergabe an jemanden aus",
+        "drückt aus, dass etwas gründlich durchgegangen oder vollständig überzogen wird",
+        "drückt Übermaß aus — etwas zu sehr oder über eine Grenze hinaus tun",
+        "drückt Übergehen, Auslassen oder Übersehen aus",
+        "drückt Autorität oder Überblick von oben herab aus"
+      ],
+      "occurrences": 49
+    }
+  },
+  "en": {
+    "be": {
+      "chain": "From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~.",
+      "senses": [
+        "makes an intransitive verb transitive, directing the action at an object",
+        "promotes what the base verb governs with a preposition to a direct object",
+        "conveys applying something over a surface or covering it",
+        "derives a verb from a noun or adjective, meaning to furnish with or make into that",
+        "adds thoroughness or completeness to the base action"
+      ],
+      "occurrences": 144
+    },
+    "emp": {
+      "chain": "A variant of ~ent-~, from MHG ~ent-~, from OHG ~int-~, from Proto-West Germanic *~and-~, from Proto-Germanic *~anda-~ (\"against, facing, away\"), from PIE *~h₂ent-~ (\"face, forehead, front\"). The form ~emp-~ arose by assimilation before the labials ~f~ and ~pf~, and survives in only three verbs: ~empfangen~, ~empfehlen~ and ~empfinden~.",
+      "senses": [
+        "is the phonologically conditioned form of ~ent-~ before ~f~ and ~pf~",
+        "conveys receiving or taking in something directed at one",
+        "preserves the older sense of ~ent-~ as facing or moving toward"
+      ],
+      "occurrences": 1
+    },
+    "ent": {
+      "chain": "From MHG ~ent-~, from OHG ~int-~, ~ant-~, from Proto-West Germanic *~and-~, from Proto-Germanic *~anda-~ (\"against, facing, away\"), from PIE *~h₂ent-~ (\"face, forehead, front\"). Cognate with English ~answer~, whose first element is the same morpheme.",
+      "senses": [
+        "reverses or undoes the base action",
+        "conveys removal, taking away, or separation",
+        "conveys release, escape, or getting free",
+        "marks the beginning or emergence of something",
+        "preserves the prefix's older sense of facing or moving toward"
+      ],
+      "occurrences": 58
+    },
+    "er": {
+      "chain": "From MHG ~er-~, from OHG ~ir-~, ~ar-~, from Proto-West Germanic *~uʀ-~, from Proto-Germanic *~uz-~ (\"out, up\"), from PIE *~ud~ (\"up, out, away\"). Doublet of the stressed prefix ~ur-~.",
+      "senses": [
+        "marks the successful achievement or completion of the base action",
+        "marks the onset of a state rather than the state itself",
+        "conveys obtaining or acquiring something by means of the base action",
+        "preserves the prefix's older spatial sense of upward or outward motion",
+        "carries the base action to a fatal end",
+        "derives a verb from an adjective, meaning to bring into that state"
+      ],
+      "occurrences": 87
+    },
+    "ge": {
+      "chain": "From MHG ~ge-~, from OHG ~gi-~, ~ga-~, from Proto-West Germanic *~ga-~, from Proto-Germanic *~ga-~ (\"together, with\"), from PIE *~ḱóm~ (\"beside, near, by, with\"). The same prefix that forms the Perfektpartizip and, as a noun prefix, collectives like ~Gebirge~ and ~Gebrüder~.",
+      "senses": [
+        "conveys collectivity — doing something together or with others",
+        "marks completion or arrival at a result, the prefix's old perfective force",
+        "adds thoroughness to the base action",
+        "is no longer semantically distinct, having fused with the base verb"
+      ],
+      "occurrences": 20
+    },
+    "hinter": {
+      "chain": "From MHG ~hinter~, from OHG ~hintar~, from Proto-West Germanic *~hindar~, from Proto-Germanic *~hinder~ (\"behind\"), a comparative formation on PIE *~ḱi-~ (\"this, here\"). The same deictic root gives German ~hier~ and ~heute~ and English ~here~ and ~hence~.",
+      "senses": [
+        "conveys position or motion behind something",
+        "conveys leaving something behind one",
+        "conveys getting behind the surface of something, hence scrutiny or deception"
+      ],
+      "occurrences": 4
+    },
+    "um": {
+      "chain": "From MHG ~umbe~, ~um(b)-~, from OHG ~umbi~, from Proto-West Germanic *~umbi~, from Proto-Germanic *~umbi~ (\"around\"), from PIE *~h₂m̥bʰi~ (\"around, on both sides\"). Cognate with Latin ~ambi-~ and Ancient Greek ~amphí-~, whence English ~ambiguous~ and ~amphitheater~.",
+      "senses": [
+        "as an inseparable prefix, conveys surrounding or encircling something",
+        "as an inseparable prefix, conveys going around or circumventing something",
+        "as a separable prefix, conveys turning around or repositioning",
+        "as a separable prefix, conveys transformation — changing something into another form"
+      ],
+      "occurrences": 11
+    },
+    "unter": {
+      "chain": "From MHG ~under-~, from OHG ~untar-~, from Proto-West Germanic *~under~, from Proto-Germanic *~under~ (\"under, between, among\"), from PIE *~n̥dʰér~ (\"under, beneath\"), with which PIE *~h₁n̥ter~ (\"between, among\") merged in Germanic. Cognate with English ~under~ and, through the second root, with Latin ~inter~.",
+      "senses": [
+        "conveys literal position beneath something",
+        "conveys subjection or subordination to an authority",
+        "conveys support or sustenance from below",
+        "conveys being between or among, from the merged root meaning \"between\"",
+        "conveys interruption — cutting into an action already under way"
+      ],
+      "occurrences": 24
+    },
+    "ver": {
+      "chain": "From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German.",
+      "senses": [
+        "intensifies the base verb or carries its action through to completion",
+        "marks the action as going wrong, astray, or amiss",
+        "conveys using up, consuming, or wearing away",
+        "conveys removal or motion away, from the prefix's older spatial sense",
+        "reverses or negates the base action",
+        "derives a verb from a noun or adjective, meaning to make something into that"
+      ],
+      "occurrences": 189
+    },
+    "voll": {
+      "chain": "From the adjective ~voll~, from MHG ~vol~, from OHG ~fol~, from Proto-West Germanic *~full~, from Proto-Germanic *~fullaz~ (\"full\"), from PIE *~plh₁nós~ (\"full\"), from the root *~pleh₁-~ (\"to fill\"). Cognate with English ~full~ and, through the same root, Latin ~plēnus~, whence English ~plenty~ and ~replenish~.",
+      "senses": [
+        "as an inseparable prefix, conveys carrying an action through to full completion",
+        "conveys the formal execution or accomplishment of an act",
+        "as a separable prefix, keeps the literal adjectival sense of filling something full"
+      ],
+      "occurrences": 3
+    },
+    "wider": {
+      "chain": "From MHG ~wider-~, from OHG ~widar~, from Proto-West Germanic *~wiþr~, from Proto-Germanic *~wiþrą~ (\"against, back\"), a comparative formation on PIE *~wi~ (\"apart, in two\"). Cognate with English ~with~, which meant \"against\" before it meant \"alongside\" — a sense preserved in ~withstand~ and ~withhold~.",
+      "senses": [
+        "conveys opposition, resistance, or contradiction",
+        "conveys a motion back, as of something returning or reflected",
+        "is distinct from the homophone ~wieder~ (\"again\"), from which it was not separated in spelling until the modern period"
+      ],
+      "occurrences": 7
+    },
+    "zer": {
+      "chain": "From MHG ~zer-~, from OHG ~zi-~, ~za-~, ~zir-~, from Proto-West Germanic *~ti-~, from Proto-Germanic *~te-~ (\"apart, asunder\"), from PIE *~dwís~ (\"twice, in two\"). Cognate with Old English ~tō-~ (\"apart\"), the prefix of ~tōbrecan~ (\"to break to pieces\"), and with Latin ~dis-~.",
+      "senses": [
+        "conveys breaking apart, shattering, or falling to pieces",
+        "conveys complete destruction or ruin",
+        "conveys dispersal — scattering or dissolving in every direction"
+      ],
+      "occurrences": 35
+    },
+    "über": {
+      "chain": "From MHG ~über~, from OHG ~ubar~, ~ubiri~, from Proto-West Germanic *~ubar~, from Proto-Germanic *~uber~, from PIE *~upéri~ (\"over, above\"). Cognate with English ~over~, Latin ~super~ and Ancient Greek ~hupér~, source of the ~hyper-~ of English learned words.",
+      "senses": [
+        "conveys motion across or over a boundary",
+        "conveys transfer or handing over to someone",
+        "conveys going over something thoroughly or covering it completely",
+        "conveys excess — doing something too much or past a limit",
+        "conveys passing over, skipping, or overlooking",
+        "conveys authority or vantage from above"
+      ],
+      "occurrences": 49
+    }
+  }
+}

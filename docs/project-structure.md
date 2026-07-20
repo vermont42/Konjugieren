@@ -252,13 +252,16 @@ scripts/
 ├── render_emoji.swift         # Renders emoji glyphs to PNG assets in Assets.xcassets (workaround for iOS 26 emoji-rendering bug; see docs/emoji-assets.md)
 └── take_screenshots.sh        # Drives ios-build-verify + axe/simctl through 36 App Store screenshots (9 views × 2 langs × 2 devices); see docs/screenshot-playbook.md
 
-corpus/                        # German text corpus for example sentence sourcing
+corpus/                        # German text corpus for example sentence sourcing (gitignored,
+│                              # except corpus/working/*.py — see .gitignore for why)
 ├── README.md
 ├── government/                # Federal government reports and policy documents
 ├── government2/               # Additional government publications
 ├── medieval/                  # Old High German texts (Hildebrandslied, Tatian, etc.)
 ├── modern/                    # Modern German literature and legal texts
-└── technology/                # BSI security guides and technical Wikipedia articles
+├── technology/                # BSI security guides and technical Wikipedia articles
+└── working/                   # Pipeline scripts and their build products
+    └── build_corpus_index.py  # Phase 2 of prompts/uses_etymologies.md: indexes the corpus into per-verb candidate sentences using forms.json. Sentence-wise (not line-wise) matching, Satzklammer split-particle rule, two-column PDF recovery, English translations excluded
 
 verbdata/                      # Verb-corpus-expansion data (see docs/verb-sources.md)
 │   generate_frequencies_txt.py  # Regenerates docs/frequencies.txt from Verbs.xml (--check for drift)

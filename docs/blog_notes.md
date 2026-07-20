@@ -2254,3 +2254,125 @@ code consumed went stale within minutes of a change, and twice that the checker 
 a commit did not.
 
 Next: Phase 2, the corpus index.
+
+## The corpus index, and four things German does that Spanish does not (2026-07-20)
+
+Phase 2 of `prompts/uses_etymologies.md`: turn ~6.5 MB of German text into a per-verb list of
+pre-found candidate sentences, so that the Phase 4 subagents never read the corpus wholesale.
+Conjugar had already built this shape for Spanish, and the port started as a genuine port — same
+constants, same tier priority, same round-robin merge with a rotating lead work so the first
+candidate a subagent sees is not always Luther. All of that survived unchanged.
+
+Everything else was German.
+
+### The English translations are a minefield
+
+`corpus/modern/` ships each work twice, German and English. Ten common English words are also
+German verb forms in `forms.json`: *war* → sein, *will* → wollen, *hat* → haben, *sang* → singen,
+*band* → binden, *sank*, *fall*, *rang*, *fang*, *sing*. Indexing `kafka-prozess-en.txt` would
+have attested German verbs from English prose, and the snippets would have looked plausible right
+up until they shipped. Conjugar never had to think about this because its corpus was monolingual.
+Skipping `*-en.txt` was the first line of German-specific code.
+
+### The line is the wrong unit
+
+Conjugar scanned one physical line at a time, which is fine when every candidate is a single
+token. German splits separable prefixes in main clauses — *anfangen* surfaces as "er **fängt** neu
+**an**" — so the particle has to be sought somewhere else in the sentence. And these sources are
+hard-wrapped: Kafka at ~68 characters, the government PDFs at ~43. A German sentence runs well
+past 100 characters, so it spans two to four physical lines and the particle is routinely not on
+the verb's line at all.
+
+So the reader had to be rebuilt: reflow each blank-line paragraph into running prose, split it
+into sentences (with a German abbreviation guard, because the legal texts are wall-to-wall "Art. 5
+Abs. 2"), and match sentence-wise. The grammar problem propagated all the way down into the I/O
+layer, which was not obvious from the phase spec.
+
+### "Particle later in the same sentence" is 70% wrong
+
+The spec said to match a split form when the finite stem appears and the particle occurs later in
+the same sentence. Implemented literally, it worked — and sampling ten of its results found three
+correct. *fortwerfen* got "warf ich alles Andere fort" and *armmachen* got "ich mache dich arm",
+both perfect. But *wegtreten* got "trat beiseite, ging aber nicht weg", where the *weg* plainly
+belongs to *ging*, and *volllaufen* got "liefen sie voll Zorn und Wut hinaus", where *voll* is an
+adjective governing the noun after it.
+
+The failures had one shape. German brackets a separable verb around its clause — the *Satzklammer*
+— with the finite verb opening the bracket and the particle closing it, and a bracket never spans
+a comma. "Same sentence" was simply the wrong scope; "same clause, and closing it" is the
+grammatically correct one. Two constraints followed directly, and sampling the result surfaced two
+more: the particle must not be capitalized (*setzte den Kleinen auf einen Acker am Weg* matched
+*wegsetzen*, because tokens are lowercased before lookup and `Weg` is a noun), and no intervening
+verb may claim the same particle (*gräbt eine Grube und deckt sie nicht zu* is *zudecken*, not
+*zugraben* — when two verbs can claim one particle, the nearer one wins).
+
+Precision went from roughly 3-in-10 to roughly 11-in-12. Split-only coverage fell by a factor of
+five, which is the right trade: a wrong candidate costs a subagent more than a missing one, since
+it invites a confidently wrong sentence into the app. A pleasant side effect — verbs with
+*contiguous* evidence went **up**, because the bogus split hits had been consuming the per-document
+cap and crowding out real matches later in the same file.
+
+This also collapsed a planned second pass. The spec contemplated a separate "split-form rescue"
+for zero-hit verbs; ranking split candidates below contiguous ones in a single pass does the same
+job, since a verb with good contiguous hits never sees one.
+
+### The Plenarprotokolle were two columns pretending to be prose
+
+Two thirds of the candidates from the three Bundestag transcripts were garbage, in a way that only
+showed up by reading them: "Doch ich würde Ich sage Danke an alle, die mich konstruktiv begleitet
+noch weiter gehen". `pdftotext -layout` had preserved the two-column page faithfully — one
+physical line holds a fragment of the left column, padding, then a fragment of the right — and
+reflowing that as prose splices unrelated sentences together.
+
+These files are the corpus's only source of natural spoken German, which is exactly what the
+modern colloquial verbs in the queue need, so recovering them beat dropping them. The gutter is
+found per page as the column offset that is blank on most lines, and the page is read down the
+left column and then down the right. Garbled snippets fell by ~88% and the yield from those files
+went *up*. Detection is geometric rather than by filename, so a future two-column source works
+without a code change.
+
+### `doc:line` was wrong twice, in ways nothing would have caught
+
+Phase 4 tells each subagent to re-open the source at `doc:line` to get a clean sentence, so the
+citation has to actually land. Auditing 400 candidates, 273 failed.
+
+Two independent bugs. The reported line was the *paragraph's* first line, not the sentence's — 15
+lines off inside one Luther paragraph. And line numbers were counted after the Gutenberg header
+was stripped, shifting every citation in Kafka by the 24 lines that header occupies. Both are
+invisible unless you check, because a candidate with a wrong line number still has a perfectly
+good snippet sitting right next to it; the subagent would simply have re-opened the wrong passage
+and either used the snippet anyway or quietly rejected a real verb.
+
+Carrying physical line numbers through the reflow and pointing at the matched verb itself fixed
+both: ~99% of 600 resolve. Every sampled residual turned out to be a *correct* citation my
+verifier could not reproduce — a word healed across a line break ("hingu-/cken"), or a soft hyphen
+sitting inside the word in the raw file (`ent\xadgegenwirken`). The verifier was wrong, not the
+index. Worth remembering that a check can fail for the same reason the thing it checks succeeds.
+
+### One packaging problem
+
+`corpus/` is gitignored, and the phase spec puts the script at `corpus/working/`. So the finished
+indexer was invisible to git — `git status` was clean with the whole thing sitting untracked. A
+fresh clone would have gotten no indexer and none of the knowledge above, which may be exactly how
+Conjugar's pipeline ended up needing to be recovered by reading that repo rather than by reading
+its docs.
+
+`.gitignore` now carries a negation for `corpus/working/*.py`. Git does not descend into an
+excluded directory, so each path component has to be re-included before the final rule can match —
+`corpus/*`, then `!corpus/working/`, then `corpus/working/*`, then `!corpus/working/*.py`. The
+texts stay ignored because they are licensed sources; the JSON stays ignored because it is a
+build product; the code is neither.
+
+### Result
+
+47 documents, ~153,000 sentences, ~10,600 candidates for ~2,650 verbs, in about twenty seconds.
+About 64% of the target verbs have at least one candidate. The ~920 with none go to Phase 5, and
+that number is large enough that corpus expansion, not authoring, is the right response — the tail
+is dominated by everyday separable verbs (*abbuchen*, *abtrocknen*, *abrechnen*) that Goethe and
+the Grundgesetz had no occasion to use.
+
+`Verbs.xml` was not touched, which the pipeline doc asks to be confirmed rather than assumed:
+`git status` shows it unmodified, so the at-odds count cannot have moved.
+
+Next: Phase 3, the three reuse files — and the good news there is that 303 of the 382 roots can be
+parsed out of etymologies the app already ships, leaving 79 to author.

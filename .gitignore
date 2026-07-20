@@ -3,7 +3,16 @@ Konjugieren.xcodeproj/project.xcworkspace/xcuserdata/
 Konjugieren.xcodeproj/xcuserdata/
 .claude/settings.local.json
 Secrets.xcconfig
-corpus/
+# The corpus texts are licensed sources and its JSON is a regenerable build product, so both stay
+# ignored — but not the pipeline scripts that live beside them. Without the negations below,
+# `corpus/working/build_corpus_index.py` is untracked and a fresh clone loses the German-specific
+# rules encoded in it (Satzklammer particle matching, two-column PDF recovery, excluding the
+# English translations) with no way to recover them. Git does not descend into an excluded
+# directory, so each path component has to be re-included before the final rule can match.
+corpus/*
+!corpus/working/
+corpus/working/*
+!corpus/working/*.py
 # ios-build-verify
 build.log
 .claude/ios-build-verify.*

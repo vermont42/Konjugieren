@@ -1,6 +1,6 @@
 # Etymology-and-Example-Use Pipeline
 
-**Status: designed 2026-07-20.** Phases 0 and 1 are done; phases 2 through 5 are not.
+**Status: designed 2026-07-20.** Phases 0, 1, and 2 are done; phases 3 through 5 are not.
 
 Fill the 2,582 verbs that have neither an etymology nor an example sentence, in one pass, by
 moving the expensive work off the LLM and reusing what the corpus already knows.
@@ -187,7 +187,7 @@ by its own infinitive, and no entry where `contiguous` disagrees with the presen
 Re-derive rather than trusting those numbers. `corpus/` is gitignored, so `forms.json` is a build
 product: regenerate it rather than looking for it in a fresh clone.
 
-### Phase 2 — Build the corpus index
+### Phase 2 — Build the corpus index ✅ done 2026-07-20
 
 `corpus/working/build_corpus_index.py`, consuming `forms.json` and `corpus/{modern,government,
 technology,medieval}/`. One tokenizing pass per document. Emit `corpus/working/corpus_index.json`
@@ -205,6 +205,62 @@ merge that balances the lead candidate across sources.
 Add, for German: skip capitalized mid-sentence tokens unless the verb is genuinely capitalized at
 sentence start, and record `contiguous` on each candidate so the subagent knows what it is looking
 at. Strip Gutenberg boilerplate first (recipe in `docs/example-sentence-pipeline.md`).
+
+**As built.** `corpus/working/build_corpus_index.py`, run in about twenty seconds:
+
+```bash
+python3 corpus/working/build_corpus_index.py
+```
+
+Each candidate carries `doc`, `line`, `token`, `text`, `contiguous`, `source` (a ready-to-use
+citation string, so subagents need not infer one from a filename), and `particle` on split forms.
+Conjugar's constants and its round-robin rotating-lead merge survived the port unchanged. Six
+things shaped the rest, and Phase 4 should know them.
+
+- **The English translations had to be excluded.** `corpus/modern/` ships each work in German
+  *and* English, and ten common English words are German verb forms in `forms.json` — *war*→sein,
+  *will*→wollen, *hat*→haben, *sang*→singen, *band*→binden among them. Indexing `*-en.txt` attests
+  German verbs from English prose. This is a trap Conjugar never had, because its corpus was
+  monolingual.
+- **Matching is sentence-wise, not line-wise, and that is forced.** Conjugar scanned a line at a
+  time. German cannot: the sources are hard-wrapped (Kafka ~68 chars, the government PDFs ~43), so
+  a typical sentence spans two to four physical lines, and a stranded particle is routinely on a
+  different line from its verb. Documents are reflowed into paragraphs, then split into sentences.
+- **The split-form rule is the Satzklammer, not proximity.** The phase spec above says "requires
+  the particle later in the same sentence". That was measured at roughly **70% false** — in "trat
+  beiseite, ging aber nicht weg" the *weg* belongs to *ging*. Four constraints fixed it: no clause
+  boundary between verb and particle, the particle closes its clause, the particle is not
+  capitalized (*am Weg* is a noun), and no intervening verb claims the same particle (*gräbt eine
+  Grube und deckt sie nicht zu* is *zudecken*). Precision went to roughly 11 in 12 sampled, and
+  split-only coverage fell by a factor of five — the right trade, since a bad candidate costs a
+  subagent more than a missing one. This subsumes the separate "split-form rescue" pass; there is
+  no second pass.
+- **The Bundestag Plenarprotokolle needed de-columnizing.** `pdftotext -layout` preserves two
+  columns as side-by-side text, so reading a line as prose splices unrelated sentences together.
+  Two thirds of the candidates from those three files were garbage. The gutter is now detected per
+  page by geometry and each column read in order, which cut garbled snippets by ~88% and *raised*
+  the yield from those files. They are the corpus's only natural spoken German, so recovering them
+  mattered more than dropping them would have cost.
+- **`doc:line` is verified, and was wrong twice.** Phase 4 tells subagents to re-open the source at
+  `doc:line`, so this has to hold. It first pointed at the *paragraph* start (15 lines off inside a
+  Luther paragraph) and was additionally shifted by however many lines the Gutenberg header
+  occupied (24, in Kafka). Physical line numbers are now carried through the reflow and point at
+  the matched verb itself; a 600-candidate audit resolves ~99%, and every sampled residual was a
+  correct citation the *verifier* could not reconstruct, not a bad one.
+- **Line-break hyphens are healed, which buys recall as well as legibility.** A wrapped
+  "ab-/geholt" tokenizes as `ab` + `geholt` and never matches `abgeholt`. Suspended hyphens in
+  coordinations (*Ein- und Ausgang*) are left alone.
+
+Measured on the 2026-07-20 corpus: 47 documents, ~153,000 sentences, ~10,600 candidates for ~2,650
+verbs, and about **64% of the target verbs covered** — roughly 1,530 with contiguous evidence, some
+130 on split forms alone, and about 920 with nothing. Re-derive rather than trusting those numbers;
+the script reports all of them. The zero-candidate list is Phase 5's input, and it is large enough
+that corpus expansion, not authoring, is the right response.
+
+`corpus/` is gitignored, so `corpus_index.json` is a build product — regenerate it rather than
+looking for it in a fresh clone. The **script**, however, is now tracked: `.gitignore` carries an
+explicit negation for `corpus/working/*.py`, because everything in the list above is knowledge that
+a fresh clone would otherwise lose.
 
 ### Phase 3 — Build the three reuse files, by parsing not generating
 

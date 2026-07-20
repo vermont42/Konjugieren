@@ -178,12 +178,14 @@ KonjugierenTests/
 │   ├── RefusalDetectionTests.swift # Tutor refusal-phrase detection, incl. the "null" exact-match false-positive guard
 │   └── VerbTests.swift         # Verb.stamm and endingIsValid tests
 └── Utils/
+    ├── CorpusFormsDumpTests.swift  # Harness: drives Conjugator over every verb to emit corpus/working/forms.json (form → lemma, with separable-prefix split forms). Gated on TEST_RUNNER_KONJUGIEREN_FORMS_OUT
     ├── DeeplinkTests.swift     # Deeplink URL parsing and handling tests
     ├── MixedCaseAccessibilityTests.swift  # VoiceOver label generation tests
     ├── MixedCaseSegmenterTests.swift  # Ablaut segmentation tests (empty/all-regular/all-irregular/formal Sie)
     ├── SettingsTests.swift     # Settings persistence and default-value tests
     ├── StringExtensionsTests.swift  # Rich text parsing and error handling tests
     ├── TimeFormatterTests.swift     # Time formatting utility tests
+    ├── VerbClassificationTests.swift  # Harness: stage B of classify-and-verify, searching for the Verbs.xml encoding that reproduces Wiktionary. Gated on TEST_RUNNER_KONJUGIEREN_CLASSIFY_IN
     ├── VerbExportTests.swift        # Verb data JSON export tests
     └── WidgetSnapshotTests.swift    # Widget snapshot/bundle generation, per-day paging math, and process-stable answer-shuffle tests
 

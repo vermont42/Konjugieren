@@ -2167,3 +2167,90 @@ change. It was green again within a minute. Writing the checker took an hour; it
 itself twice in one day.
 
 At-odds held at 7; 210 tests pass.
+
+## Phase 1 of the etymology-and-example pipeline: a form→lemma map, and the particle problem (2026-07-20)
+
+Phase 1 of `prompts/uses_etymologies.md` is one file:
+`KonjugierenTests/Utils/CorpusFormsDumpTests.swift`. It drives `Conjugator` over every verb and
+every reading and writes `corpus/working/forms.json`, so that Phase 2's indexer can match corpus
+tokens deterministically instead of making 2,582 subagents each search 6.5 MB of German prose.
+That is the Conjugar trick, copied on purpose: move the expensive part off the LLM, and leave the
+model only the select-and-translate judgment it is actually good at.
+
+Writing it took twenty minutes. Reading `Conjugator.swift` first took longer, and was the whole
+job, because three things about its output are invisible from the call site and each one would
+have produced a plausible-looking, silently wrong index.
+
+**Conjugations come back mixed case.** `applyAblaut` splices the replacement region in from
+`AblautGroups.xml` in uppercase, so `singen`'s Präteritum is literally `sAng`. That casing is
+highlighting metadata for the UI, not orthography. An indexer that took it at face value would
+match nothing, and would do so quietly — a zero-hit verb looks exactly like a verb the corpus
+doesn't attest.
+
+**Only the Imperativ splits a separable prefix.** This is the interesting one. The design doc
+already flagged that German strands the particle at clause end — *er fängt neu an* — and that
+Conjugar's whole-token exact match therefore scores zero on the most common written form of
+three-quarters of the target verbs. What the doc could not know without reading the code is that
+*the app has never needed the split form either*. `conjugateSimpleTense` returns `stamm + ending`
+with the prefix still attached, giving `anfängt`, because a paradigm cell is not a clause and has
+nowhere to strand anything. `withSeparablePrefix` — the one function that does the splitting — is
+reached only from `conjugateImperativ`. So the split forms are not harvestable from the engine;
+they are synthesized here, by dropping the separable run off each contiguous finite form.
+
+That synthesis needed a guard I did not anticipate. An ablaut group may fully override the stem
+via the trailing-`*` convention, and a full override replaces the stem outright, prefix and all.
+Dropping a fixed character count from such a form would emit a mangled token that would then
+match nothing while looking like a real entry. The fix is a `hasPrefix` test before slicing —
+cheap, and the kind of thing that is obvious once stated and invisible until it bites.
+
+**Compound conjugationgroups had to be skipped.** The phase text says "every conjugationgroup ×
+every person," and following it literally is wrong. `conjugateCompoundTense` returns
+`auxiliary + " " + secondPart`, where the second part is either the Perfektpartizip or the bare
+infinitive — both of which the harness already emits directly. Walking the compound groups adds
+no form for the verb itself, and maps `habe` and `werde` onto all 3,572 verbs. `habe` attests
+*haben*, and *haben* emits it from its own Präsens. A false attestation in a form→lemma map is
+worse than a missing one, because the subagent downstream has no way to tell.
+
+**The reading walk paid off in a way I expected only half of.** Iterating every reading rather
+than the primary is obviously right for *hängen*, which is `hing` intransitive and `hängte`
+transitive; both attest the lemma. What I did not predict is that it is the *only* thing that
+produces split forms for the four separability doublets — *übersetzen*, *überstehen*, *umgehen*,
+*unterstellen*. Their `in` attribute carries `*`, not `+`, because the primary sense is
+inseparable; the separable sense ("ferry across", "protrude", "make a detour", "take shelter")
+lives in a secondary `<reading>` with its own respelled `in`. The count caught it: 2,193 verbs in
+`Verbs.xml` have a `+`, but 2,197 lemmas ended up with split forms. Chasing that discrepancy of
+four was how I confirmed the walk was doing real work rather than duplicating it. A cross-check
+that comes out *almost* right is worth more than one that comes out exactly right, because only
+the first one tells you something.
+
+### Two pieces of harness friction, both silent
+
+The first run reported `Test Succeeded` and executed zero tests. `-only-testing` takes the
+**struct name**, `CorpusFormsDumpTests`, not the `@Suite` display name `CorpusFormsDump`. A
+non-matching filter is not an error. The neighboring failure mode is the same shape: xcodebuild
+forwards a host variable into the simulator only under the name `TEST_RUNNER_<NAME>`, so setting
+the bare `KONJUGIEREN_FORMS_OUT` leaves `.enabled(if:)` false and the gated suite skips —
+green, silent, nothing written. `docs/verb-classification.md` records the prefix rule; the
+struct-name rule is now in the pipeline doc next to it.
+
+Both are worth stating plainly because they share a property: the harness reports success. A
+gated, filtered, file-writing test can fail in three different ways that all look identical from
+the terminal, and the only reliable check is whether the output file exists and has plausible
+contents.
+
+### Result
+
+~50,000 distinct forms, ~77,000 entries, about two seconds. Every one of the 3,572 verbs is
+reachable by its own infinitive, no entry disagrees with itself about `contiguous` versus
+`particle`, and no key is capitalized or contains a space. `corpus/` is gitignored, so
+`forms.json` is a build product rather than a checked-in artifact.
+
+`Verbs.xml` was not touched, which the pipeline doc asks to be confirmed rather than assumed:
+`git status` shows it unmodified, so the at-odds count cannot have moved and there was nothing to
+re-measure. `scripts/check_docs.py` earned its keep again — the new `@Test` took the suite from
+210 to 211 and it flagged all three stale claims in `README.md` within seconds of the change,
+including the file count that went from eighteen to nineteen. That is twice now that a number no
+code consumed went stale within minutes of a change, and twice that the checker caught it before
+a commit did not.
+
+Next: Phase 2, the corpus index.

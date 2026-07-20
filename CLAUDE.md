@@ -22,7 +22,7 @@ branch, don't.
 
 This project uses the [`ios-build-verify`](https://github.com/vermont42/ios-build-verify) Claude Code skill for build and test. The scripts pipe `xcodebuild` through `xcbeautify` for concise output and tee raw output to `build.log` as a fallback. Per-project config lives in `.claude/ios-build-verify.config.sh` (gitignored).
 
-Future Claude Code sessions invoke `build_app.sh` / `run_tests.sh` via the skill's `scripts/` directory. Resolve the path once per session against the **marketplace clone** — `export IBV_SCRIPTS=$(dirname "$(find ~/.claude/plugins/marketplaces -path '*ios-build-verify*' -name build_app.sh 2>/dev/null | head -1)")` — then invoke as `"$IBV_SCRIPTS/build_app.sh"`. Scoping `find` to `marketplaces/` (not all of `~/.claude`) is deliberate: the marketplace clone is a single git checkout that `claude plugin marketplace update` pulls to the latest release, so it has no version segment and yields exactly one match. The broader `~/.claude` glob also reaches the per-version `cache/ios-build-verify/<version>/` directories — which are shared across Josh's other apps (Calculator3, Conjuguer) and can pin older releases — so an unsorted `head -1` there could nondeterministically resolve to a stale version. See SKILL.md's "Resolving the script path" section for the full convention. For terminal use, `--only-testing "Target/Suite/method()"` filters to a single test (Swift Testing requires the trailing `()` on method names — omitting them silently runs zero tests).
+Future Claude Code sessions invoke `build_app.sh` / `run_tests.sh` via the skill's `scripts/` directory. Resolve the path once per session against the **marketplace clone** — `export IBV_SCRIPTS=$(dirname "$(find ~/.claude/plugins/marketplaces -path '*ios-build-verify*' -name build_app.sh 2>/dev/null | head -1)")` — then invoke as `"$IBV_SCRIPTS/build_app.sh"`. Scoping `find` to `marketplaces/` (not all of `~/.claude`) is deliberate: the marketplace clone is a single git checkout that `claude plugin marketplace update` pulls to the latest release, so it has no version segment and yields exactly one match. The broader `~/.claude` glob also reaches the per-version `cache/ios-build-verify/<version>/` directories — which are shared across Josh's other apps (Calculator3, Conjuguer) and can pin older releases — so an unsorted `head -1` there could nondeterministically resolve to a stale version. See SKILL.md's "Resolving the script path" section for the full convention. For terminal use, `--only-testing "Target/Suite/method()"` filters to a single test. Two ways to write that path run zero tests and still report `Test Succeeded`: omitting the trailing `()` that Swift Testing requires on method names, and writing the `@Suite` display name where the path wants the **struct** name. `ConjugatorTests` is annotated `@Suite("Conjugator")`, and the filter wants `KonjugierenTests/ConjugatorTests/…` — the annotation is a display label, not an address. A filter that matches nothing is not an error, so read the run's test count rather than its exit status.
 
 The skill also provides a verify half (launch the app, tap by accessibility identifier, screenshot, audit views). See its `SKILL.md` for the full operation surface.
 
@@ -81,6 +81,29 @@ A few conventions that apply across the suite:
 - Swift Testing runs suites and tests **in parallel by default**.
 - A suite that mutates shared global state — the `@MainActor var Current` world, or any `static` — must be `@Suite(.serialized)` so its tests don't race each other. That's why `SettingsTests`, `DeeplinkTests`, `QuizTests`, `QuizErrorHistoryTests`, and the `Unterminated Delimiters` sub-suite of `StringExtensionsTests` are serialized: each one swaps out parts of `Current` (e.g. `Current.fatalError = spy`) or touches UserDefaults-backed state.
 - There is no `setUp`/`tearDown`. Do per-test setup in the suite `init` or in a helper called at the top of each `@Test`. Note: on a `struct` with no stored properties, a parameterless `init()` used only for side-effecting reset can trip SwiftLint's `unneeded_synthesized_initializer` — prefer an explicit reset helper if that rule is enabled here.
+
+### Environment-gated harnesses
+
+Some suites in `KonjugierenTests/Utils/` are not tests but harnesses: they drive app code over the
+whole corpus and write a file. `VerbClassificationTests` (classify-and-verify, see
+[`docs/verb-classification.md`](docs/verb-classification.md)) and `CorpusFormsDumpTests`
+(form → lemma map, see [`prompts/uses_etymologies.md`](prompts/uses_etymologies.md)) are the
+current two. Both take an output path from the environment and are gated with
+`.enabled(if: ProcessInfo.processInfo.environment["KONJUGIEREN_…"] != nil)`, so an ordinary
+`run_tests.sh` neither writes files nor pays their cost. Follow that convention for new ones.
+
+**`xcodebuild` forwards a host environment variable into the simulator only when it is named
+`TEST_RUNNER_<NAME>`**, stripping the prefix on the way in. Setting the bare name leaves the gate
+false and the suite skips — green, silent, nothing written:
+
+```bash
+TEST_RUNNER_KONJUGIEREN_FORMS_OUT="$PWD/corpus/working/forms.json" \
+xcodebuild … -only-testing:KonjugierenTests/CorpusFormsDumpTests
+```
+
+This is the third way a test run reports success while doing nothing, alongside the two
+`--only-testing` path mistakes above. For any gated, filtered, file-writing suite, the check that
+actually settles it is whether the output file exists and holds plausible contents.
 
 ### ConjugatorTests Structure
 

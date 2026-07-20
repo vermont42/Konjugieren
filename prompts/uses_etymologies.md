@@ -1,6 +1,6 @@
 # Etymology-and-Example-Use Pipeline
 
-**Status: designed 2026-07-20, not yet executed.** Phase 0 is done; phases 1 through 5 are not.
+**Status: designed 2026-07-20.** Phases 0 and 1 are done; phases 2 through 5 are not.
 
 Fill the 2,582 verbs that have neither an etymology nor an example sentence, in one pass, by
 moving the expensive work off the LLM and reusing what the corpus already knows.
@@ -130,7 +130,7 @@ correctly strong. kaikki extracts the garbage faithfully. The classifier then hy
 matches exactly, and reports the verb verified. **"Verified" means "agrees with Wiktionary", not
 "correct".** The same caution applies to `etymology_text`.
 
-### Phase 1 — Dump every conjugation to a form→lemma map
+### Phase 1 — Dump every conjugation to a form→lemma map ✅ done 2026-07-20
 
 Add `KonjugierenTests/Utils/CorpusFormsDumpTests.swift`, modeled on the existing
 `VerbExportTests.swift`, which already walks every verb across twelve conjugationgroups and writes
@@ -151,6 +151,41 @@ subagent, exactly as Conjugar did with *fue* → `ir`/`ser`.
 
 Follow the existing convention for such harnesses: gate on an environment variable so the suite
 does not write files in ordinary runs.
+
+**As built.** `KonjugierenTests/Utils/CorpusFormsDumpTests.swift`, run in about two seconds:
+
+```bash
+TEST_RUNNER_KONJUGIEREN_FORMS_OUT="$PWD/corpus/working/forms.json" \
+xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren \
+  -destination 'platform=iOS Simulator,name=iPhone 17' -parallel-testing-enabled NO test \
+  -only-testing:KonjugierenTests/CorpusFormsDumpTests
+```
+
+`-only-testing` takes the **struct name**, not the `@Suite` display name. Getting that wrong
+selects nothing and xcodebuild reports success — the same silent-skip shape as forgetting the
+`TEST_RUNNER_` prefix, which is what actually forwards the variable into the simulator.
+
+Four things about `Conjugator` shaped the harness, and Phase 2 should know them:
+
+- **Output is mixed case by design.** `applyAblaut` splices the replacement region from
+  `AblautGroups.xml` in uppercase, so `singen`'s Präteritum comes back `sAng`. Every key and
+  particle is lowercased on the way in; the indexer must lowercase corpus tokens to match.
+- **Only the Imperativ splits a separable prefix.** `conjugateSimpleTense` returns the prefix
+  still attached (`anfängt`), because a paradigm cell has no clause to strand a particle in. The
+  `contiguous: false` entries are therefore *synthesized* by dropping the separable run, guarded
+  by a `hasPrefix` test so that a full-stem ablaut override (the trailing `*`) cannot be sliced.
+- **Compound conjugationgroups are skipped deliberately.** They return `auxiliary + " " + part`,
+  where the part is the Perfektpartizip or the bare infinitive, both already emitted. Walking them
+  would map `habe` onto every verb in the corpus, which is a false attestation.
+- **Every reading is walked, not just the primary.** This is not redundancy: it is what yields
+  both `hing` and `hängte` for *hängen*, and it is the only thing that produces split forms for
+  the four separability doublets — *übersetzen*, *überstehen*, *umgehen*, *unterstellen* — whose
+  separable sense lives in a secondary reading and whose `in` attribute carries no `+`.
+
+Measured on the 2026-07-20 corpus: ~50,000 distinct forms, ~77,000 entries, every verb reachable
+by its own infinitive, and no entry where `contiguous` disagrees with the presence of `particle`.
+Re-derive rather than trusting those numbers. `corpus/` is gitignored, so `forms.json` is a build
+product: regenerate it rather than looking for it in a fresh clone.
 
 ### Phase 2 — Build the corpus index
 

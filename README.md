@@ -12,7 +12,7 @@ Konjugieren
 
 **Konjugieren** is an iOS app for learning German-verb conjugations. It conjugates 3,572 verbs—strong, weak, mixed, and _-ieren_—across all 14 German [conjugationgroups](https://www.linkedin.com/posts/racecondition_i-have-written-elsewhere-about-how-my-experience-activity-7404189320758280192-tiAL), from Präsens Indikativ to Plusquamperfekt Konjunktiv II. The app is fully localized in English and German.
 
-Under the hood, **Konjugieren** features a domain-specific ablaut engine that models the vowel and consonant changes of German strong verbs, a hand-written rich-text parser, protocol-oriented dependency injection, and a comprehensive [Swift Testing](https://developer.apple.com/xcode/swift-testing/) suite with 210 tests across 1,800+ lines.
+Under the hood, **Konjugieren** features a domain-specific ablaut engine that models the vowel and consonant changes of German strong verbs, a hand-written rich-text parser, protocol-oriented dependency injection, and a comprehensive [Swift Testing](https://developer.apple.com/xcode/swift-testing/) suite with 211 tests across 1,800+ lines.
 
 **Konjugieren** is available for free download in the iOS App Store™. Tap the button below to install.
 
@@ -93,7 +93,7 @@ Konjugieren is fully accessible to VoiceOver users. The implementation spans fiv
 - **SwiftUI** — Declarative UI with custom `ViewModifier`s, `TabView` navigation, `TimelineView` game loop, and `Canvas` particle effects
 - **Foundation Models** — On-device Apple Intelligence integration with `SystemLanguageModel`, `LanguageModelSession`, `Tool` protocol, and `@Generable` schemas
 - **Core Motion** — 60 Hz gyroscope input for arcade-game tilt controls via `CMMotionManager`
-- **Swift Testing** — Modern test framework (`@Test`, `#expect`) with 210 test functions
+- **Swift Testing** — Modern test framework (`@Test`, `#expect`) with 211 test functions
 - **Game Center** — Global leaderboard for quiz scores via `GKAccessPoint`
 - **WidgetKit** — Two widgets (Verb des Tages, Conjugation Quiz) across five sizes, with AppIntents for interactive quiz answers and verb cycling without launching the app
 - **XMLParser** — Streaming parser for verb and ablaut-group data (3,572 verbs, 72 patterns)
@@ -103,7 +103,7 @@ Konjugieren is fully accessible to VoiceOver users. The implementation spans fiv
 
 ### Testing
 
-The test suite spans **1,800+ lines** across eighteen files, with **210 test functions** covering conjugation logic, quiz state management, rich-text parsing, and time formatting.
+The test suite spans **1,800+ lines** across nineteen files, with **211 test functions** covering conjugation logic, quiz state management, rich-text parsing, and time formatting.
 
 The conjugation tests use a **mixed-case convention** to verify ablaut highlighting: lowercase letters represent unchanged portions, and UPPERCASE letters mark ablaut-changed regions. For example, `"sAng"` asserts that _singen_'s Präteritum changes "i" to "a" and the UI will highlight that change. This convention makes it immediately visible when a test expectation involves an ablaut transformation.
 

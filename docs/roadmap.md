@@ -17,11 +17,37 @@ completes.
 | 4 | Regional variety support | [`../prompts/regional_variation.md`](../prompts/regional_variation.md) | ✅ 2026-07-19 | — |
 | 5 | Dual auxiliaries + double-prefix grammar | [`../prompts/dual_auxiliary.md`](../prompts/dual_auxiliary.md) | ✅ 2026-07-19 | step 4 ✅ |
 | 6 | Refactor `fr`: store hits, derive rank | [`verb-sources.md`](verb-sources.md) § "Step 4 in detail" | ✅ 2026-07-19 | — |
-| 7 | Import tranche 1: strong bases | [`verb-sources.md`](verb-sources.md) § step 5 | ✅ 2026-07-19 | steps 4–6 ✅; `hi` policy decided |
-| 8 | Import tranche 2: prefixed derivatives | [`verb-sources.md`](verb-sources.md) § step 6 | ✅ 2026-07-19 | step 5 ✅; prefix inventory widened |
+| 7 | Import tranche 1: strong bases | [`verb-sources.md`](verb-sources.md) next-steps item 5 | ✅ 2026-07-19 | steps 4–6 ✅; `hi` policy decided |
+| 8 | Import tranche 2: prefixed derivatives | [`verb-sources.md`](verb-sources.md) next-steps item 6 | ✅ 2026-07-19 | step 5 ✅; prefix inventory widened |
 | 8b | Clear the tranche-2 deferrals | this file, § "The tranche-2 deferrals" | ✅ 2026-07-19 | step 8 ✅ |
-| 9 | Import tranche 3: weak stems by frequency | [`verb-sources.md`](verb-sources.md) § step 7 | 🚧 blocked | **BBAW reply**; fetch needs probes |
-| 10 | Etymologies, then the docs sweep | [`verb-sources.md`](verb-sources.md) §§ 8–9 | ⬜ | step 7 ✅ |
+| 9 | Import tranche 3: weak stems by frequency | [`verb-sources.md`](verb-sources.md) next-steps item 7 | 🚧 blocked | **BBAW reply**; fetch needs probes |
+| 10 | Etymologies, then the docs sweep | [`verb-sources.md`](verb-sources.md) next-steps items 8 and 9 | ⬜ | step 7 ✅ |
+
+### These step numbers are not `verb-sources.md`'s numbers
+
+The Where column points into that file's numbered "Recommended next steps" list, and from step 6
+onward the two numberings are offset by one. The collision is worth stating outright because it
+lands on the two items most likely to be discussed together: **roadmap step 9** is the blocked
+tranche-3 import, while **`verb-sources.md` item 9** is the docs sweep, which is part of roadmap
+step 10 and is not blocked by anything.
+
+| roadmap step | `verb-sources.md` item | What |
+|---|---|---|
+| 1 | 1 | Get the kaikki snapshot |
+| 2, 3 | 2 | Build the pipeline, then fix what it found |
+| 4, 5 | 3 | The two model passes, in that order |
+| 6 | 4 | `fr` → `hi` |
+| 7 | 5 | Tranche 1: strong bases |
+| 8 | 6 | Tranche 2: prefixed derivatives |
+| 8b | — | Clear the tranche-2 deferrals |
+| 9 | 7 | Tranche 3: weak stems by frequency |
+| 10 | 8, 9 | Etymologies, then the docs sweep |
+
+The offset is not a mistake in either file. The roadmap splits some of `verb-sources.md`'s items
+because they gate each other — its steps 4 and 5 are one item there, and their *order* is the
+whole point — and 8b has no counterpart at all, having been discovered only once step 8 ran.
+`verb-sources.md` is the source for what each item requires; this file is the source for the order
+and the gating. Where they disagree on *how*, that file wins.
 
 ## The one check that runs through all of it
 

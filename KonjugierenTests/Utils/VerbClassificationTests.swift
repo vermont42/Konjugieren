@@ -272,8 +272,18 @@ private final class Classifier {
     let prefixLength = prefixes.totalLength
     guard stammLength > prefixLength else { return nil }
 
-    // Shortest regions first, so k^om^men beats k^omm^en when both verify.
+    // Shortest regions first, so k^om^men beats k^omm^en when neither matches anything.
     let regions = Self.regions(in: word, from: prefixLength, to: stammLength)
+
+    // But shortest-first is only the tiebreak, because a verb usually admits several regions
+    // that all reproduce Wiktionary's table, and the narrowest is the one least likely to match
+    // a shipping group: beissen verifies as b^ei^ssen with the replacement I, while the corpus
+    // writes reißen as r^eiss^en with ISS, splitting no consonant off its vowel. Returning on
+    // the first region that verified therefore proposed a brand-new group for a pattern that
+    // already ships, 183 times over. Keep looking, and prefer reuse over minimality; the
+    // full-table verification below is what makes that safe, since a region only reaches this
+    // comparison once it is known to conjugate the whole verb correctly.
+    var fallback: Solution?
 
     for (familyKind, code) in [(FamilyKind.strong, "s"), (FamilyKind.mixed, "m")] {
       for region in regions {
@@ -308,20 +318,34 @@ private final class Classifier {
         }
 
         let normalized = minimized.mapValues { $0.lowercased() }
-        let match = shippedAblautGroups
-          .sorted { $0.key < $1.key }
-          .first { $0.value.mapValues { $0.lowercased() } == normalized }
-        return Solution(
+        let sortedGroups = shippedAblautGroups.sorted { $0.key < $1.key }
+        // A replacement equal to the region it replaces spells no new letters; it exists only
+        // to mark the region for the mixed-case highlighting convention. treten carries one --
+        // getrETen has the same et as treten -- and `minimize` correctly drops it from a
+        // proposal, since removing it still reproduces Wiktionary. That asymmetry alone kept
+        // 20 derivatives of treten from matching a group they conjugate identically to. Ignore
+        // such entries when comparing, and the derivative inherits the family's highlighting
+        // rather than proposing a group that differs from it in nothing a reader would see.
+        let regionText = original.lowercased()
+        let match = sortedGroups.first { $0.value.mapValues { $0.lowercased() } == normalized }
+          ?? sortedGroups.first {
+            $0.value.mapValues { $0.lowercased() }.filter { $0.value != regionText } == normalized
+          }
+        let solution = Solution(
           markedInfinitiv: Self.marked(word: word, prefixes: prefixes, region: region),
           familyCode: code,
           ablautGroupName: match?.key ?? word,
           ablautGroupIsNew: match == nil,
           pattern: Self.pattern(from: minimized)
         )
+        if match != nil {
+          return solution
+        }
+        fallback = fallback ?? solution
       }
     }
 
-    return nil
+    return fallback
   }
 
   private enum FamilyKind {
@@ -596,8 +620,18 @@ private final class Classifier {
         separableHeads.append(prefix)
       }
     }
+    // An inseparable prefix is exactly what suppresses the participle's ge-, so a participle
+    // that shows ge- *in front of the candidate prefix* refutes the hypothesis: gebebt rules
+    // be- out of beben, and gegeigt rules ge- out of geigen. Testing only for a leading ge-
+    // is not enough, because a verb whose prefix genuinely is ge- also starts its participle
+    // with one — gehören, gehört. The old escape hatch for that case read `word.hasPrefix("ge")`,
+    // which is true of every ge-initial word and so admitted geigen, geifern and geisseln as
+    // ge*-verbs; each then needed a fabricated pp-only ablaut to put the swallowed ge- back.
+    // Comparing against ge- plus the prefix separates the two and survives ablaut, which the
+    // stem itself does not: gewinnen's participle is gewonnen, sharing only its ge- with the
+    // infinitive.
     for prefix in inseparablePrefixes where word.hasPrefix(prefix) && word.count - prefix.count >= Verb.minVerbLength {
-      if participles.contains(where: { !$0.hasPrefix("ge") || word.hasPrefix("ge") }) {
+      if participles.contains(where: { !$0.hasPrefix("ge" + prefix) }) {
         hypotheses.append([.inseparable(prefix)])
       }
     }

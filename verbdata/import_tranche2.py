@@ -128,17 +128,56 @@ MIN_PAIRS_FOR_PER_PREFIX_RATIO = 5
 CEILING_REAL_RANK = 900
 
 # A gloss of this shape points at another entry instead of translating the verb.
+# Matching `form of` and `spelling of` outright, rather than enumerating the qualifiers that
+# precede them, because the enumeration kept losing: "archaic or dialectal form of kneifen"
+# names two qualifiers where the list anticipated one, and shipped as a translation reading
+# "archaic or dialectal form of kneifen". Whatever adjective kaikki reaches for, a gloss saying
+# the entry is a *form of* something else is pointing, not translating.
 METADATA_GLOSS = re.compile(
-    r"\b(clipping|alternative form|alternative spelling|obsolete spelling|obsolete form"
-    r"|archaic form|archaic spelling|misspelling|dated form|dated spelling|superseded"
-    r"|synonym of|abbreviation|nonstandard form|rare form|eye dialect) of\b",
+    r"\b(form|spelling|clipping|misspelling|abbreviation|synonym|eye dialect) of\b",
     re.IGNORECASE,
 )
 
 # Pre-1996 and archaic orthography. `bey-` for `bei-`, `auss-`/`aussen-` for `aus-`.
 ARCHAIC_SPELLING = re.compile(r"^(bey|auß|thu|thei)", re.IGNORECASE)
 
+# The other kind of 1996 casualty, which no spelling of the word betrays: a compound the reform
+# split into two words. radfahren became Rad fahren, spazierengehen became spazieren gehen. The
+# app conjugates single words, so the post-reform spelling is not a verb it can hold, and the
+# pre-reform one should no more ship than beybringen. kaikki says so in the gloss outright,
+# which is the only place the evidence lives -- ARCHAIC_SPELLING reads the lemma and sees
+# nothing wrong with radfahren.
+REFORM_CASUALTY = re.compile(
+    r"formerly standard spelling of|deprecated in the spelling reform", re.IGNORECASE
+)
+
 TRANSLATION_MAX = 42
+
+# Verbs kaikki defines only by describing them. "to break something by saving too much money on
+# maintenance" is a correct account of kaputtsparen and useless as a `tn`: there is no short
+# English equivalent to extract, because English has no such verb. No normalizing rule can
+# invent one, so these fifteen are written by hand -- the one place in this importer where a
+# translation is authored rather than derived, which is why they are listed here in the open
+# rather than buried in a data file. Step 8 deferred all fifteen; each was checked against the
+# full kaikki entry, and several are idioms whose English is nothing like the German
+# (hochschlafen is exactly "sleep one's way up").
+HAND_TRANSLATIONS = {
+    "abtippen": "type up, transcribe",
+    "abtrinken": "drink down a little",
+    "anfüttern": "bait, win over with gifts",
+    "anheimgeben": "leave to someone's discretion",
+    "durchfragen": "ask one's way through",
+    "festfragen": "corner with questions",
+    "freitesten": "test out of restrictions",
+    "hochschlafen": "sleep one's way up",
+    "kaputtsparen": "ruin by cost-cutting",
+    "krankfeiern": "skip work feigning illness",
+    "leerrauchen": "smoke the whole supply",
+    "nachleisten": "perform belatedly",
+    "reinfeiern": "celebrate into the day",
+    "vorleisten": "perform in advance",
+    "übereignen": "transfer ownership",
+}
 
 
 def bare(marked: str) -> str:
@@ -171,33 +210,93 @@ def base_of(marked: str) -> str:
 def normalize_translation(glosses: list[str]) -> str | None:
     """Turn a kaikki gloss into something that reads like the corpus's own `tn` values.
 
-    Shipping translations are short, lowercase, and free of grammatical apparatus:
-    "reduce, dismantle", "break off, cancel", "arrive". kaikki's glosses are lexicographic
-    prose with labels, parentheticals, and multiple senses -- "(semelfactive, intransitive)
-    to breathe again", "travel, to get around, to get out (news, gossip, rumours, etc.)".
+    Tries each gloss in order and returns the first that yields something usable, skipping
+    the ones that point at another entry instead of translating.
 
-    Returns None when nothing usable survives, which the caller treats as an exclusion
-    rather than shipping an empty string.
+    Step 8 read only `glosses[0]` and deferred the verb when that one gloss produced nothing.
+    That discarded 71 verbs whose *later* glosses translate them perfectly well, because
+    kaikki's first gloss is often not a definition at all. Three shapes account for nearly
+    all of them: a bare grammatical header ("[auxiliary haben]", "[with gegen (+ accusative)
+    ...]:"), which reduces to the empty string; a long descriptive definition that overruns
+    TRANSLATION_MAX ("to transcribe from one source by the help of keys into another medium")
+    while a later sense is short and idiomatic; and a pointer ("clipping of heranhalten")
+    followed by the actual translation. Falling through costs nothing -- a gloss that
+    normalizes to a good short translation is a good short translation whatever its index --
+    and it is what the roadmap meant by "recoverable by hand from kaikki's later glosses".
+
+    Returns None only when *no* gloss yields anything, which the caller treats as an
+    exclusion rather than shipping an empty string.
 
     The one rule worth stating: this never truncates mid-token. The classifier's own
     `shortened` cuts at 60 characters and produced "...rumours, et", which is precisely the
     kind of thing that reaches a user and looks like corruption.
     """
+    for gloss in glosses:
+        if METADATA_GLOSS.search(gloss):
+            continue
+        translation = normalize_one_gloss(gloss)
+        if translation:
+            return translation
+    return None
+
+
+def step8_normalize_translation(glosses: list[str]) -> str | None:
+    """Reproduce step 8's translation rule exactly. Used as a fingerprint, never to write.
+
+    `--retranslate` has to rewrite the translations this importer generated without touching the
+    ones step 7 wrote by hand, and nothing in Verbs.xml distinguishes them: both tranches carry
+    hp="y", which marks a provisional *count*, not a generated translation. Filtering on that
+    alone proposed replacing tranche 1's careful "lend, borrow" for leihen with a bare "borrow",
+    and "spoil, ruin" for verderben with the flatly wrong "deprive of, rob of".
+
+    So the test is not which tranche a verb came from but whether the old rule reproduces what it
+    ships: if it does, the value is machine-generated and this importer owns it; if it does not,
+    a human wrote it and it stays. That needs no marker in the data and cannot drift out of date,
+    because it asks the question directly.
+    """
     if not glosses:
         return None
     text = glosses[0]
-
-    # Leading label groups: "(semelfactive, intransitive) to breathe again".
     text = re.sub(r"^\s*\([^)]*\)\s*", "", text)
-    # Any remaining parenthetical or bracketed aside.
     text = re.sub(r"\([^)]*\)", " ", text)
     text = re.sub(r"\[[^\]]*\]", " ", text)
-    # Only the first sense group; a semicolon in kaikki separates genuinely distinct senses.
     text = text.split(";")[0]
     text = re.sub(r"\s+", " ", text).strip(" ,.;:")
 
     senses = []
     for sense in text.split(","):
+        sense = re.sub(r"^to\s+", "", sense.strip()).strip(" ,.;:")
+        if sense and sense not in senses:
+            senses.append(sense)
+    if not senses or len(senses[0]) > TRANSLATION_MAX:
+        return None
+    result = senses[0]
+    for sense in senses[1:]:
+        if len(result) + 2 + len(sense) > TRANSLATION_MAX:
+            break
+        result += ", " + sense
+    return result.lower()
+
+
+def normalize_one_gloss(text: str) -> str | None:
+    """Reduce a single kaikki gloss to a `tn` value, or None if nothing usable survives."""
+    # Leading label groups: "(semelfactive, intransitive) to breathe again".
+    text = re.sub(r"^\s*\([^)]*\)\s*", "", text)
+    # Any remaining parenthetical or bracketed aside.
+    text = re.sub(r"\([^)]*\)", " ", text)
+    text = re.sub(r"\[[^\]]*\]", " ", text)
+    # A semicolon inside one kaikki gloss separates near-synonyms, not distinct senses -- those
+    # get their own gloss in the list. Step 8 assumed the opposite and kept only the text before
+    # the first semicolon, which threw away the better half of the definition and, worse, kept
+    # whichever synonym kaikki happened to list first: aufbleiben ("to wake; to stay awake; to
+    # stay up") shipped as "wake", which is not what aufbleiben means. Treating the semicolon
+    # like the comma feeds every synonym to the fits-in-TRANSLATION_MAX loop below, so the
+    # translation reads "wake, stay awake, stay up" and the sense survives even when the first
+    # word alone would have misled.
+    text = re.sub(r"\s+", " ", text).strip(" ,.;:")
+
+    senses = []
+    for sense in re.split(r"[;,]", text):
         sense = sense.strip()
         sense = re.sub(r"^to\s+", "", sense)
         sense = sense.strip(" ,.;:")
@@ -262,34 +361,95 @@ def write_worklists(dual_auxiliary: list[str], deferred: list[str]) -> None:
     These are SNAPSHOTS, and the two age differently. Re-running after the import recomputes
     the deferred list against the new corpus, which is what step 8b wants -- it is the current
     state. But the dual-auxiliary list cannot be recomputed at all once its verbs ship, because
-    the classifier then skips them: it is a historical record of what tranche 2 chose. Hence
-    the empty guard, which exists because the first re-run silently truncated the 176-verb file
-    to nothing.
+    the classifier then skips them: it is a cumulative record of every verb any tranche shipped
+    with one reading of two.
+
+    So it is written as a UNION, never a replacement. It used to be replaced, guarded only
+    against an empty result -- which held exactly as long as re-runs produced nothing. Step 8b's
+    first re-run produced 17 rows, all of them verbs this pass newly unblocked, and overwrote
+    176 rows of history with them. Non-empty is not the same as complete, and only the union
+    keeps a partial re-run from being indistinguishable from a fresh one.
     """
-    for path, header, rows in (
-        (DUAL_WORKLIST,
-         "# Imported by tranche 2 with one reading of two; see prompts/dual_auxiliary.md.\n"
-         "# Historical: cannot be regenerated once these verbs ship.\n"
-         "# verb\tkaikki primary auxiliary\ttranslation as shipped\n",
-         dual_auxiliary),
-        (DEFERRED_WORKLIST,
-         "# Verified by the pipeline but NOT imported, and why. Recomputed on every run.\n"
-         "# See docs/roadmap.md, \"The tranche-2 deferrals\".\n"
-         "# verb\treason\n",
-         deferred),
-    ):
-        if not rows and path.exists():
-            print(f"keeping {path.relative_to(REPO)}: this run produced no rows, "
-                  f"which would truncate an existing worklist")
+    existing = []
+    if DUAL_WORKLIST.exists():
+        existing = [line for line in DUAL_WORKLIST.read_text().splitlines()
+                    if line and not line.startswith("#")]
+    merged = sorted(set(existing) | set(dual_auxiliary))
+    DUAL_WORKLIST.write_text(
+        "# Imported with one reading of two; see prompts/dual_auxiliary.md.\n"
+        "# Historical and cumulative: rows are only ever added, because a verb that has shipped\n"
+        "# is skipped by the classifier and can never be rediscovered.\n"
+        "# verb\tkaikki primary auxiliary\ttranslation as shipped\n"
+        + "\n".join(merged) + "\n"
+    )
+    print(f"wrote {DUAL_WORKLIST.relative_to(REPO)} "
+          f"({len(merged)} rows, {len(merged) - len(existing)} new)")
+
+    DEFERRED_WORKLIST.write_text(
+        "# Verified by the pipeline but NOT imported, and why. Recomputed on every run.\n"
+        "# See docs/roadmap.md, \"The tranche-2 deferrals\".\n"
+        "# verb\treason\n"
+        + "\n".join(sorted(deferred)) + "\n"
+    )
+    print(f"wrote {DEFERRED_WORKLIST.relative_to(REPO)} ({len(deferred)} rows)")
+
+
+def retranslate(verbs_text: str, glosses: dict[str, list[str]], check: bool) -> int:
+    """Re-run the current translation rules over the translations this importer already shipped.
+
+    Only over those. `step8_normalize_translation` decides ownership; see its docstring for why
+    that is a fingerprint rather than a tranche membership test.
+
+    Rewrites the `tn` attribute in place by line, never by parsing and re-serializing. Verbs.xml
+    is 8,000-odd hand-maintained lines and ElementTree does not preserve their formatting, so a
+    round-trip would rewrite every one of them to change 139 -- the same trap CLAUDE.md documents
+    for Localizable.xcstrings, and `git diff --stat` is the same check: insertions and deletions
+    should be equal and small.
+    """
+    lines = verbs_text.splitlines(keepends=True)
+    changes, word = [], None
+    for i, line in enumerate(lines):
+        if match := re.match(r'\s*<verb in="([^"]+)"', line):
+            # hp="y" is the necessary condition and the fingerprint is the sufficient one, and
+            # both are needed. hp alone sweeps in tranche 1's hand-written translations; the
+            # fingerprint alone sweeps in the original 990, where a translation short enough to
+            # be obvious is one the rule reproduces by coincidence. wollen ships a hand-written
+            # "want" that the rule also derives, and the rewrite would have made it
+            # "want, wish, desire, demand" -- longer, and worse for a modal.
+            word = bare(match.group(1)) if 'hp="y"' in line else None
             continue
-        path.write_text(header + "\n".join(sorted(rows)) + "\n")
-        print(f"wrote {path.relative_to(REPO)} ({len(rows)} rows)")
+        current = re.search(r'tn="([^"]*)"', line)
+        if not (word and current):
+            continue
+        candidate_glosses = glosses.get(word, [])
+        # A verb with several readings has a translation per reading, and the importer only ever
+        # generated single-reading verbs, so the fingerprint fails on all of them anyway.
+        if step8_normalize_translation(candidate_glosses) != current.group(1):
+            continue
+        replacement = HAND_TRANSLATIONS.get(word) or normalize_translation(candidate_glosses)
+        if not replacement or replacement == current.group(1):
+            continue
+        changes.append((i, word, current.group(1), replacement))
+        lines[i] = line.replace(f'tn="{current.group(1)}"', f'tn="{replacement}"', 1)
+
+    for _, word, before, after in changes:
+        print(f"  {word:24} {before!r} -> {after!r}")
+    print(f"{len(changes)} translations {'would change' if check else 'rewritten'}")
+    if not check:
+        VERBS_XML.write_text("".join(lines))
+        print(f"wrote {VERBS_XML.relative_to(REPO)}")
+    return 0
 
 
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--check", action="store_true", help="report, write nothing")
     parser.add_argument("--sample", type=int, default=0, help="print N normalized rows")
+    parser.add_argument(
+        "--retranslate",
+        action="store_true",
+        help="rewrite already-shipped translations this importer generated, and exit",
+    )
     args = parser.parse_args()
 
     verbs_text = VERBS_XML.read_text()
@@ -305,6 +465,9 @@ def main() -> int:
     classifications = json.loads(CLASSIFICATION.read_text())["classifications"]
     glosses = {c["word"]: c.get("glosses", []) for c in json.loads(CANDIDATES.read_text())["candidates"]}
     every_candidate = {c["word"] for c in classifications}
+
+    if args.retranslate:
+        return retranslate(verbs_text, glosses, check=args.check)
 
     rejected = collections.Counter()
     deferred = []
@@ -332,7 +495,9 @@ def main() -> int:
             rejected["needs an ablaut group that does not ship"] += 1
             deferred.append(f"{word}\tneeds an ablaut group that does not ship")
             continue
-        if ARCHAIC_SPELLING.match(word):
+        if ARCHAIC_SPELLING.match(word) or any(
+            REFORM_CASUALTY.search(g) for g in glosses.get(word, [])
+        ):
             rejected["archaic or pre-1996 orthography"] += 1
             deferred.append(f"{word}\tarchaic or pre-1996 orthography")
             continue
@@ -342,14 +507,18 @@ def main() -> int:
             deferred.append(f"{word}\tSwiss ss-spelling of a verb written with ß")
             continue
         candidate_glosses = glosses.get(word, [])
-        if candidate_glosses and METADATA_GLOSS.search(candidate_glosses[0]):
-            rejected["gloss points at another entry rather than translating"] += 1
-            deferred.append(f"{word}\tgloss points at another entry rather than translating")
-            continue
-        translation = normalize_translation(candidate_glosses)
+        translation = HAND_TRANSLATIONS.get(word) or normalize_translation(candidate_glosses)
         if not translation:
-            rejected["no usable translation survived normalization"] += 1
-            deferred.append(f"{word}\tno usable translation survived normalization")
+            # Both reasons are still worth telling apart in the worklist. A verb every one of
+            # whose glosses points elsewhere ("alternative form of benutzen") is a duplicate of
+            # an entry already in the corpus and should stay out; one whose glosses merely
+            # defeated the normalizer is a gap that better rules could close.
+            if candidate_glosses and all(METADATA_GLOSS.search(g) for g in candidate_glosses):
+                reason = "every gloss points at another entry rather than translating"
+            else:
+                reason = "no usable translation survived normalization"
+            rejected[reason] += 1
+            deferred.append(f"{word}\t{reason}")
             continue
 
         head = head_of(marked)

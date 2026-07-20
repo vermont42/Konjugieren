@@ -1,3 +1,7 @@
+# Imported with one reading of two; see prompts/dual_auxiliary.md.
+# Historical and cumulative: rows are only ever added, because a verb that has shipped
+# is skipped by the classifier and can never be rediscovered.
+# verb	kaikki primary auxiliary	translation as shipped
 abbiegen	h	turn, turn off
 abbrennen	h	set fire to, destroy by fire
 abfahren	h	depart, leave
@@ -7,14 +11,20 @@ abliegen	h	be far away
 abrollen	h	roll off
 abrücken	h	move away
 abschieben	s	deport
+abschreiten	h	pace or stride along
 abstehen	h	stick out
+abstreichen	s	wipe off, scrape off
 abtreiben	h	go/be sent off course
+abtreten	h	kick away
 abtrocknen	h	make dry, e.g. by wiping with a towel
 anbrechen	h	start, commence, kick off
 anbrennen	h	get burnt
 anfahren	h	start moving
+anfallen	h	set upon, attack suddenly
 anliegen	h	lie close, touch, fit
+anrennen	h	run at, attack
 anscheißen	h	bawl out, chew out, bollock
+anschleichen	h	sneak up on
 anspringen	h	jump at, pounce
 anstehen	h	stand in a queue
 antanzen	s	approach or arrive dancing
@@ -28,6 +38,7 @@ aufschießen	h	shoot open
 aufschmelzen	h	melt
 aufstehen	h	get up
 auftreiben	h	bloat
+aufziehen	h	wind up
 ausbleichen	s	bleach something
 ausbrennen	h	burn out
 auseinanderbrechen	h	burst, break apart
@@ -35,6 +46,7 @@ auseinanderstreben	h	diverge
 ausfahren	h	go out
 ausklingen	h	synonym of verklingen
 ausrauchen	h	smoke out
+ausreiten	h	go for a ride on a horse
 ausrollen	h	roll out, unroll
 ausscheiden	h	secrete
 ausschlagen	h	knock out
@@ -97,6 +109,7 @@ geradestehen	h	take responsibility
 herabstürzen	h	cascade
 herauffahren	h	drive up
 herausbrechen	h	burst out
+heraustreten	h	emerge
 herumfahren	h	drive around
 herumfliegen	h	fly around
 herumstehen	h	stand around
@@ -110,6 +123,7 @@ hinrücken	h	move away
 hinunterziehen	h	pull down
 hinziehen	h	move
 hochfahren	h	drive upwards/northwards
+kürzertreten	h	economize
 losbrechen	h	break off
 losschießen	h	open fire
 mitfahren	h	drive with
@@ -140,8 +154,10 @@ umziehen	h	move
 unterlaufen	h	circumvent, undermine
 verlauten	h	announce
 verrauchen	s	disappear
+versaufen	h	spend on drinking
 verschießen	h	shoot off
 verschleißen	h	wear out, chafe, abrade
+verstreichen	h	pass, elapse, expire
 verwachsen	s	overgrow, become overgrown
 vorfahren	h	drive up
 vorschießen	h	advance
@@ -151,6 +167,7 @@ wegbrechen	h	break off
 wegfahren	h	drive away, drive off
 wegfliegen	h	fly away
 wegtreiben	h	drive away
+wegtreten	h	dismiss
 wegziehen	h	pull away
 weiterfahren	h	continue driving
 weiterziehen	h	move on
@@ -162,9 +179,11 @@ zufügen	h	cause
 zukehren	h	turn something
 zuklappen	h	flip shut
 zulaufen	h	walk to
+zureiten	h	ride towards someone or something
 zurückliegen	h	trail, lag behind
 zurückschieben	h	push/move something back
 zurückstehen	h	stand further back, stand behind
+zurücktreten	h	step back
 zusammenschlagen	h	beat up, rough up
 zusammenstoßen	h	collide
 zusammenstreben	h	converge
@@ -172,5 +191,7 @@ zusammenziehen	h	shorten, contract
 zustehen	h	be entitled
 zustreben	h	head to, make for
 zutreiben	h	drive
+zutreten	h	kick
 übereinanderliegen	h	lie on top of each other
 überschießen	h	shoot something over something
+übertreten	s	join, convert to

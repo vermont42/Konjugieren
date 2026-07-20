@@ -1,72 +1,18 @@
 # Verified by the pipeline but NOT imported, and why. Recomputed on every run.
 # See docs/roadmap.md, "The tranche-2 deferrals".
 # verb	reason
-abfallen	needs an ablaut group that does not ship
-abgleichen	needs an ablaut group that does not ship
-abmischen	no usable translation survived normalization
-abpassen	no usable translation survived normalization
-abpfeifen	needs an ablaut group that does not ship
-absaufen	needs an ablaut group that does not ship
 abscheren	needs an ablaut group that does not ship
-abschleifen	needs an ablaut group that does not ship
-abschreiten	needs an ablaut group that does not ship
-abschwören	needs an ablaut group that does not ship
-abstreichen	needs an ablaut group that does not ship
-abstreiten	needs an ablaut group that does not ship
-abtippen	no usable translation survived normalization
-abtreten	needs an ablaut group that does not ship
-abtrinken	no usable translation survived normalization
-abweichen	needs an ablaut group that does not ship
-achthaben	needs an ablaut group that does not ship
-anbetreffen	needs an ablaut group that does not ship
-anfallen	needs an ablaut group that does not ship
-anfüttern	no usable translation survived normalization
-angleichen	needs an ablaut group that does not ship
-anhaben	needs an ablaut group that does not ship
-anheimfallen	needs an ablaut group that does not ship
-anheimgeben	no usable translation survived normalization
-anpfeifen	needs an ablaut group that does not ship
-anrennen	no usable translation survived normalization
-ansaufen	needs an ablaut group that does not ship
-anschleichen	needs an ablaut group that does not ship
 anschreien	needs an ablaut group that does not ship
-anstreichen	needs an ablaut group that does not ship
-antreffen	needs an ablaut group that does not ship
 aufbraten	needs an ablaut group that does not ship
-aufhaben	needs an ablaut group that does not ship
-aufreiten	needs an ablaut group that does not ship
 aufschreien	needs an ablaut group that does not ship
-auftreffen	needs an ablaut group that does not ship
-aufziehen	no usable translation survived normalization
-auseinanderfallen	needs an ablaut group that does not ship
-auseinandernehmen	needs an ablaut group that does not ship
-ausfassen	no usable translation survived normalization
-ausgleiten	needs an ablaut group that does not ship
-ausgreifen	needs an ablaut group that does not ship
-ausnehmen	needs an ablaut group that does not ship
-ausnützen	gloss points at another entry rather than translating
-ausreiten	needs an ablaut group that does not ship
-ausschleichen	needs an ablaut group that does not ship
-ausschreiten	needs an ablaut group that does not ship
-austreten	needs an ablaut group that does not ship
-ausweichen	needs an ablaut group that does not ship
+ausnützen	every gloss points at another entry rather than translating
 außbauen	archaic or pre-1996 orthography
 außbilden	archaic or pre-1996 orthography
 außbrechen	archaic or pre-1996 orthography
 außlegen	archaic or pre-1996 orthography
-befallen	needs an ablaut group that does not ship
-begleichen	needs an ablaut group that does not ship
-behaben	needs an ablaut group that does not ship
-beitreten	needs an ablaut group that does not ship
 beklimmen	needs an ablaut group that does not ship
-benehmen	needs an ablaut group that does not ship
-benützen	gloss points at another entry rather than translating
-besaufen	needs an ablaut group that does not ship
-beschallen	no usable translation survived normalization
-beschreiten	needs an ablaut group that does not ship
-beschwören	needs an ablaut group that does not ship
-bestehenbleiben	gloss points at another entry rather than translating
-bestreichen	needs an ablaut group that does not ship
+benützen	every gloss points at another entry rather than translating
+bestehenbleiben	every gloss points at another entry rather than translating
 bevorstehen	needs an ablaut group that does not ship
 beybringen	archaic or pre-1996 orthography
 beyfügen	archaic or pre-1996 orthography
@@ -75,196 +21,61 @@ beylegen	archaic or pre-1996 orthography
 beyspringen	archaic or pre-1996 orthography
 beystehen	archaic or pre-1996 orthography
 beytragen	archaic or pre-1996 orthography
-beytreten	needs an ablaut group that does not ship
+beytreten	archaic or pre-1996 orthography
 breitschlagen	needs an ablaut group that does not ship
-breittreten	needs an ablaut group that does not ship
-dabeihaben	needs an ablaut group that does not ship
-dahaben	needs an ablaut group that does not ship
-draufhaben	needs an ablaut group that does not ship
-durchfallen	needs an ablaut group that does not ship
-durchfragen	no usable translation survived normalization
-durchgreifen	needs an ablaut group that does not ship
-durchnehmen	needs an ablaut group that does not ship
-durchstreichen	needs an ablaut group that does not ship
-einbegreifen	needs an ablaut group that does not ship
-eingreifen	needs an ablaut group that does not ship
-einherschreiten	needs an ablaut group that does not ship
-einlesen	no usable translation survived normalization
-einschleichen	needs an ablaut group that does not ship
-einschreiten	needs an ablaut group that does not ship
-einschwören	needs an ablaut group that does not ship
-eintreffen	needs an ablaut group that does not ship
-einvernehmen	needs an ablaut group that does not ship
-entgegenkommen	no usable translation survived normalization
-entgegennehmen	needs an ablaut group that does not ship
-entgleiten	needs an ablaut group that does not ship
-entweichen	needs an ablaut group that does not ship
-ersaufen	needs an ablaut group that does not ship
-erschleichen	needs an ablaut group that does not ship
-erstreiten	needs an ablaut group that does not ship
-feilhaben	needs an ablaut group that does not ship
-festfragen	no usable translation survived normalization
-festnehmen	needs an ablaut group that does not ship
-festtreten	needs an ablaut group that does not ship
 festwachsen	needs an ablaut group that does not ship
-fortnehmen	needs an ablaut group that does not ship
-fortschreiten	needs an ablaut group that does not ship
-freihaben	needs an ablaut group that does not ship
 freikommen	needs an ablaut group that does not ship
-freinehmen	needs an ablaut group that does not ship
-freitesten	no usable translation survived normalization
 gebrechen	needs an ablaut group that does not ship
-gernhaben	needs an ablaut group that does not ship
 grossschreiben	Swiss ss-spelling of a verb written with ß
 gutgehen	needs an ablaut group that does not ship
-herantreten	needs an ablaut group that does not ship
-heraufbeschwören	needs an ablaut group that does not ship
-heraufgehen	gloss points at another entry rather than translating
-herausgreifen	needs an ablaut group that does not ship
-herausnehmen	needs an ablaut group that does not ship
+heraufgehen	every gloss points at another entry rather than translating
 herausschreien	needs an ablaut group that does not ship
-herausstreichen	needs an ablaut group that does not ship
-heraustreten	needs an ablaut group that does not ship
-hereinfallen	needs an ablaut group that does not ship
-herfallen	needs an ablaut group that does not ship
-herunterfallen	needs an ablaut group that does not ship
-heruntergehen	gloss points at another entry rather than translating
-hervortreten	needs an ablaut group that does not ship
-hinfallen	needs an ablaut group that does not ship
-hinterherpfeifen	needs an ablaut group that does not ship
-hinzutreten	needs an ablaut group that does not ship
-hochnehmen	needs an ablaut group that does not ship
-hochrechnen	no usable translation survived normalization
-hochschlafen	no usable translation survived normalization
-innehaben	needs an ablaut group that does not ship
+heruntergehen	every gloss points at another entry rather than translating
 kahlscheren	needs an ablaut group that does not ship
-kaputtsparen	no usable translation survived normalization
-krankfeiern	no usable translation survived normalization
-krummmachen	gloss points at another entry rather than translating
-kürzertreten	needs an ablaut group that does not ship
-leerrauchen	no usable translation survived normalization
-leichtfallen	needs an ablaut group that does not ship
-liebhaben	needs an ablaut group that does not ship
-liegenbleiben	gloss points at another entry rather than translating
-lostreten	needs an ablaut group that does not ship
-malnehmen	needs an ablaut group that does not ship
-maschineschreiben	no usable translation survived normalization
+krummmachen	every gloss points at another entry rather than translating
+liebhaben	every gloss points at another entry rather than translating
+liegenbleiben	every gloss points at another entry rather than translating
+maschineschreiben	archaic or pre-1996 orthography
 masshalten	Swiss ss-spelling of a verb written with ß
-massnehmen	needs an ablaut group that does not ship
-maßnehmen	needs an ablaut group that does not ship
-mitzeichnen	no usable translation survived normalization
-nachempfinden	no usable translation survived normalization
-nachleisten	no usable translation survived normalization
-nachnehmen	needs an ablaut group that does not ship
-nachpfeifen	needs an ablaut group that does not ship
-nachtreten	needs an ablaut group that does not ship
-niederfallen	needs an ablaut group that does not ship
+massnehmen	Swiss ss-spelling of a verb written with ß
 niederschreien	needs an ablaut group that does not ship
-nähertreten	needs an ablaut group that does not ship
-probefahren	no usable translation survived normalization
-radfahren	no usable translation survived normalization
-rangehen	gloss points at another entry rather than translating
-ranhalten	gloss points at another entry rather than translating
-rankommen	gloss points at another entry rather than translating
-raufhalten	gloss points at another entry rather than translating
-rausbekommen	gloss points at another entry rather than translating
-rausfinden	gloss points at another entry rather than translating
-raushalten	gloss points at another entry rather than translating
-rausholen	gloss points at another entry rather than translating
-rauswaschen	gloss points at another entry rather than translating
-rauswerfen	gloss points at another entry rather than translating
-reinfallen	needs an ablaut group that does not ship
-reinfeiern	no usable translation survived normalization
-reinlegen	gloss points at another entry rather than translating
-reinziehen	gloss points at another entry rather than translating
-rumfahren	gloss points at another entry rather than translating
-rumhängen	gloss points at another entry rather than translating
-rumkriegen	gloss points at another entry rather than translating
-rummachen	gloss points at another entry rather than translating
-rumschmeißen	gloss points at another entry rather than translating
-rumspringen	gloss points at another entry rather than translating
-runterfallen	needs an ablaut group that does not ship
-runterholen	gloss points at another entry rather than translating
-runterkommen	gloss points at another entry rather than translating
-runtermachen	gloss points at another entry rather than translating
-runterstellen	gloss points at another entry rather than translating
-rüberkommen	gloss points at another entry rather than translating
-satthaben	needs an ablaut group that does not ship
+probefahren	archaic or pre-1996 orthography
+radfahren	archaic or pre-1996 orthography
+rangehen	every gloss points at another entry rather than translating
+rankommen	every gloss points at another entry rather than translating
+rausbekommen	every gloss points at another entry rather than translating
+rausfinden	every gloss points at another entry rather than translating
+rausholen	every gloss points at another entry rather than translating
+rauswaschen	every gloss points at another entry rather than translating
+rauswerfen	every gloss points at another entry rather than translating
+reinlegen	every gloss points at another entry rather than translating
+rumfahren	every gloss points at another entry rather than translating
+rumhängen	every gloss points at another entry rather than translating
+rumkriegen	every gloss points at another entry rather than translating
+rumspringen	every gloss points at another entry rather than translating
+runterfallen	every gloss points at another entry rather than translating
+runterholen	every gloss points at another entry rather than translating
+runtermachen	every gloss points at another entry rather than translating
+runterstellen	every gloss points at another entry rather than translating
+rüberkommen	every gloss points at another entry rather than translating
 schiefgehen	needs an ablaut group that does not ship
-schönsaufen	needs an ablaut group that does not ship
-sitzenbleiben	gloss points at another entry rather than translating
-spazierengehen	no usable translation survived normalization
-statthaben	needs an ablaut group that does not ship
-teilhaben	needs an ablaut group that does not ship
-theilhaben	needs an ablaut group that does not ship
-theilnehmen	needs an ablaut group that does not ship
-totsaufen	needs an ablaut group that does not ship
-umfallen	needs an ablaut group that does not ship
-umhaben	needs an ablaut group that does not ship
-umstreiten	needs an ablaut group that does not ship
-umtreten	needs an ablaut group that does not ship
+sitzenbleiben	every gloss points at another entry rather than translating
+spazierengehen	archaic or pre-1996 orthography
+theilhaben	archaic or pre-1996 orthography
+theilnehmen	archaic or pre-1996 orthography
 unterbleiben	needs an ablaut group that does not ship
-unterschreiten	needs an ablaut group that does not ship
 verbacken	needs an ablaut group that does not ship
-verfallen	needs an ablaut group that does not ship
-vergreifen	needs an ablaut group that does not ship
-verkneifen	needs an ablaut group that does not ship
-verlernen	no usable translation survived normalization
-vernehmen	needs an ablaut group that does not ship
-verpfeifen	needs an ablaut group that does not ship
 verrinnen	needs an ablaut group that does not ship
-versaufen	needs an ablaut group that does not ship
-verschwören	needs an ablaut group that does not ship
-verstreichen	needs an ablaut group that does not ship
 verwringen	needs an ablaut group that does not ship
-voranschreiten	needs an ablaut group that does not ship
-voraushaben	needs an ablaut group that does not ship
-vorbauen	no usable translation survived normalization
-vorgreifen	needs an ablaut group that does not ship
-vorhaben	needs an ablaut group that does not ship
-vorleisten	no usable translation survived normalization
-vorliebnehmen	needs an ablaut group that does not ship
 vortrinken	needs an ablaut group that does not ship
-vorwegnehmen	needs an ablaut group that does not ship
-wachliegen	gloss points at another entry rather than translating
-wegfallen	needs an ablaut group that does not ship
-wegnehmen	needs an ablaut group that does not ship
-wegrauchen	no usable translation survived normalization
-wegtreten	needs an ablaut group that does not ship
-weiterbestehen	gloss points at another entry rather than translating
+wachliegen	every gloss points at another entry rather than translating
+weiterbestehen	every gloss points at another entry rather than translating
 widerfahren	needs an ablaut group that does not ship
-wiederhaben	needs an ablaut group that does not ship
-wiederspiegeln	gloss points at another entry rather than translating
+wiederspiegeln	every gloss points at another entry rather than translating
 wundernehmen	needs an ablaut group that does not ship
-zerfallen	needs an ablaut group that does not ship
-zerstreiten	needs an ablaut group that does not ship
-zertreten	needs an ablaut group that does not ship
 zubleiben	needs an ablaut group that does not ship
-zufallen	needs an ablaut group that does not ship
-zugrunderichten	gloss points at another entry rather than translating
-zuhaben	needs an ablaut group that does not ship
-zureiten	needs an ablaut group that does not ship
+zugrunderichten	every gloss points at another entry rather than translating
 zurückfahren	needs an ablaut group that does not ship
-zurückfallen	needs an ablaut group that does not ship
-zurückhaben	needs an ablaut group that does not ship
-zurücknehmen	needs an ablaut group that does not ship
-zurücktreten	needs an ablaut group that does not ship
-zurückweichen	needs an ablaut group that does not ship
-zusammenfallen	needs an ablaut group that does not ship
+zurückhaben	every gloss points at another entry rather than translating
 zusammenhelfen	needs an ablaut group that does not ship
-zusammenkneifen	needs an ablaut group that does not ship
-zusammennehmen	needs an ablaut group that does not ship
-zusammentreffen	needs an ablaut group that does not ship
-zuschlagen	no usable translation survived normalization
-zutreten	needs an ablaut group that does not ship
 ähnlichsehen	needs an ablaut group that does not ship
-übelnehmen	needs an ablaut group that does not ship
-übereignen	no usable translation survived normalization
-übereintreffen	needs an ablaut group that does not ship
-überfallen	needs an ablaut group that does not ship
-überfordern	no usable translation survived normalization
-übergreifen	needs an ablaut group that does not ship
-überhandnehmen	needs an ablaut group that does not ship
-überordnen	no usable translation survived normalization
-übertreten	needs an ablaut group that does not ship
-übrighaben	needs an ablaut group that does not ship

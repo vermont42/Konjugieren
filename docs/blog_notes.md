@@ -1395,3 +1395,118 @@ exist because a rendering bug there is invisible until someone scrolls to exactl
 
 Corpus untouched, so the classify-and-verify pipeline was deliberately skipped: nothing in this
 pass can move the at-odds count of 8. 210 tests pass.
+
+## Clearing the tranche-2 deferrals, and four bugs that were hiding as data (2026-07-19)
+
+Step 8 imported 2,315 prefixed derivatives and deliberately left four groups behind, the largest
+being **182 verbs needing an ablaut group that does not ship**. The roadmap's guess was that most
+would collapse onto shipping groups once each proposal was rewritten to the house region
+convention, the way thirteen proposed groups became five in step 7. That guess was right about the
+outcome and wrong about the work: it reads like 182 hand edits, and it was one preference in the
+classifier.
+
+**The narrowest region wins, and it is the one least likely to match anything.** `solve` enumerates
+candidate ablaut regions shortest-first and returned on the first that reproduced Wiktionary's
+table. Nothing about that is wrong — the encoding it picks conjugates correctly. But a verb usually
+admits several regions that all verify, and the narrow one is precisely the one no shipping group
+uses: *abbeissen* verifies as `b^ei^ssen` with the replacement `I`, while the corpus writes
+*reißen* as `r^eiss^en` with `ISS`, splitting no consonant off its vowel. The comment above the
+loop said "shortest regions first, so `k^om^men` beats `k^omm^en` when both verify", which is a
+statement about canonical form, and the early `return` quietly turned it into a statement about
+group reuse. Keeping the search going and preferring a region whose group already ships took the
+count from 233 to 89 in a single run. The verification is what makes that safe: a region only
+reaches the comparison once it conjugates the whole verb, so choosing between two encodings is
+never a choice about correctness, only about how much permanent data the corpus carries.
+
+Then the residue got interesting, because three of the four remaining clusters were not ablaut
+problems at all.
+
+**`GEI,pp`, five verbs.** *geigen*, *geifern*, *geisseln* were being classified as `ge*`-prefixed
+verbs with an ablaut that fires only in the participle. That is a fabricated ablaut doing a
+prefix's job: with `ge-` treated as inseparable, `Conjugator` suppresses the participle's own
+`ge-` and emits *geigt*, so the classifier invented a replacement to put the swallowed syllable
+back. The guard was `!participle.hasPrefix("ge") || word.hasPrefix("ge")`, whose second clause is
+true of every `ge`-initial word. The discriminator that actually works compares against `ge` *plus
+the prefix*: *gegeigt* starts with `gege`, so *geigen*'s `ge-` is stem; *gehört* does not, so
+*gehören*'s `ge-` is prefix. My first attempt tested the participle against the word's stem
+instead, which is right for *gehören* and breaks *gewinnen* — ablaut means *gewonnen* shares only
+its `ge-` with the infinitive. Worth remembering that any test on a strong verb's participle has
+to survive the stem changing underneath it.
+
+**`A,a2s,a3s|AT,bA|ÄT,dA`, twenty-three verbs, all derivatives of *haben*.** *haben*'s shipping
+ablaut group was nine full-word overrides — `hATte*`, `hATtest*`, `hÄTte*` and so on — spelling
+out by hand exactly what the mixed family derives from three replacements. An override bakes in
+the literal word, so *anhaben* and *aufhaben* could not reuse a single one of them, and each
+wanted a private group describing the pattern *haben* was already using the long way. Rewrote it
+to `A,a2s,a3s|AT,bA|ÄT,dA`. This is the change I was most nervous about, since *haben* is the
+auxiliary in every compound conjugation the app produces, so the evidence had to be more than my
+reasoning: the pipeline verifies *haben* against all 28 of Wiktionary's slots, and the full suite
+of 210 tests exercises the compound forms.
+
+**`IT,a2s,a3s|A,bA|Ä,dA`, twenty verbs, all derivatives of *treten*.** These were blocked by
+something subtler and, I think, more interesting. *treten*'s group carries `ET,pp` — a replacement
+identical to the region it replaces. It spells no new letters; it exists only so the highlighting
+convention marks the participle, and `ConjugatorTests` pins `getrETen` on purpose. `minimize`
+drops such an entry from a *proposal*, correctly, because removing it still reproduces Wiktionary.
+So the proposal and the shipping group differed in nothing a reader would ever see, and compared
+unequal. The first fix I reached for was deleting `ET,pp`, which would have been me changing a
+deliberate editorial convention because it was inconvenient for my matcher. Ignoring identity
+replacements during comparison instead leaves the shipping group and its test alone, and the
+derivatives inherit the family's highlighting — which is what you want anyway, since
+*abgetrETen* beside *getrETen* is the consistent outcome.
+
+189 verbs imported. Corpus 3,383 → **3,572**. At-odds held at 8 through every pass.
+
+**The translations were worse than "thin", and the comment said why.** The roadmap flagged
+spot-reading the ~2,300 machine-normalized translations as the highest-value review left. Sampling
+twenty at random reads fine. Sorting by length does not: 131 were a single bare word, and
+*aufbleiben* was shipping as **"wake"**. Its gloss is "to wake; to stay awake; to stay up", and
+`normalize_translation` did `text.split(";")[0]` under a comment asserting that "a semicolon in
+kaikki separates genuinely distinct senses." It does not — it separates near-synonyms, and
+genuinely distinct senses get their own gloss in the list. So the rule discarded the better half of
+every such definition and kept whichever synonym happened to be listed first, which for
+*aufbleiben* was the one wrong one. Treating `;` like `,` fixed 106 shipped translations, all but
+one strictly additive.
+
+Rewriting shipped data needed a way to touch only what the importer generated, and nothing in
+`Verbs.xml` marks that: `hp="y"` marks a provisional *count*, and both tranches carry it. Filtering
+on it alone proposed replacing tranche 1's hand-written "lend, borrow" for *leihen* with a bare
+"borrow", and "spoil, ruin" for *verderben* with the flatly wrong "deprive of, rob of". So I added
+a fingerprint — keep step 8's exact rule around and ask whether it reproduces what ships — which
+needs no marker and cannot drift. That alone was not enough either: it sweeps in the original 990,
+because a translation short enough to be obvious is one any rule reproduces by coincidence, and
+*wollen*'s hand-written "want" would have become "want, wish, desire, demand". Both conditions
+together are exactly right. Two filters, each individually wrong in opposite directions, is a shape
+worth recognizing.
+
+**I destroyed a file and got it back.** `--check` is documented as writing nothing but the
+worklists, and running it rewrote `tranche2-dual-auxiliary.txt` — the historical record of 176
+verbs shipped with one reading of two — down to the 17 rows this pass happened to produce. The
+guard existed and was the wrong guard: it refused to write an *empty* result, having learned that
+lesson once, and 17 is not empty. Non-empty is not the same as complete. It is tracked in git, so
+`git checkout` restored it; the file is now written as a union, rows only ever added, which is what
+"historical and cumulative" should have meant in code and not just in a comment.
+
+**A stale cache read the same number twice.** After importing, I re-ran the classifier and got
+3,378 already-shipping verbs — the pre-import figure — and did it again before looking properly.
+`alreadyShipping` is computed by `build_candidates.py` and baked into `candidates.json`; the
+classifier does not read it from `Verbs.xml`. So skipping the rebuild step silently measures the
+at-odds count over the old population, which is the one number this whole sequence is not allowed
+to get wrong. The importer caught it before I did, with "classification.json is probably stale" —
+a warning someone wrote for exactly this and which I am glad was there. The roadmap now says why
+the recipe starts where it starts.
+
+What is left of the deferrals is 78 rows, and 52 of them are exclusions that should stay: 31
+duplicate spellings pointing at entries already in the corpus, 18 pre-1996 spellings (four of them
+compounds the reform split into two words, which only the gloss reveals — *radfahren* looks
+perfectly modern), and 3 Swiss ss-forms. The real remainder is 26 verbs needing a new ablaut group,
+and the largest cluster of those is 8 verbs waiting on the *schreien* rule already in "Known gaps":
+a strong verb whose stem ends in a vowel takes `-n`, not `-en`. One missing rule, nine verbs.
+
+One test failed at the end, and it failed on purpose. `onlyImportedTranchesHaveProvisionalHitCounts`
+pins the exact number of verbs carrying an estimated frequency — `78 + 2315` — rather than an upper
+bound, under a comment saying the point is that "a later tranche that ships estimates has to come
+here and say so." So it did, with `(provisional → 2582) == (78 + 2315 → 2393)`, and the fix was to
+go and say so. Pinning an exact count is usually a brittle-test smell; here the brittleness *is*
+the mechanism, because the thing being guarded is that nobody quietly grows the estimated
+population while the DWDS permission request is still outstanding.

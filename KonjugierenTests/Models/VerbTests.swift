@@ -77,22 +77,27 @@ struct VerbTests {
 
   @Test func onlyImportedTranchesHaveProvisionalHitCounts() {
     // The `hp` attribute shipped on 2026-07-19 with no verb carrying it: all 990 counts came
-    // from DWDS. Two tranches have since been imported while bulk querying was still blocked
-    // pending BBAW — 78 strong bases (roadmap step 7) and 2,315 prefixed derivatives (step 8)
-    // — so 2,393 verbs carry an estimate rather than a measurement. The derivative tranche was
-    // run to a fixpoint: importing it made 12 more derivatives classifiable, because a
-    // double-prefix verb needs its inner base to ship before anything proposes separating it.
+    // from DWDS. Three tranches have since been imported while bulk querying was still blocked
+    // pending BBAW — 78 strong bases (roadmap step 7), 2,315 prefixed derivatives (step 8), and
+    // 189 more derivatives that step 8 had deferred (step 8b) — so 2,582 verbs carry an estimate
+    // rather than a measurement. Each tranche is run to a fixpoint: importing one makes further
+    // derivatives classifiable, because a double-prefix verb needs its inner base to ship before
+    // anything proposes separating it.
     //
-    // The two tranches were estimated by different rules, both documented:
-    // verbdata/import_tranche1.py placed each count by hand between comparable shipping verbs,
-    // and verbdata/import_tranche2.py derives each from its base by a ratio measured off the
-    // corpus's own real counts.
+    // Step 8b's 189 were not a new rule for estimating counts but a new supply of verbs to
+    // estimate: almost all of them had been blocked on needing an ablaut group that does not
+    // ship, and the classifier now prefers a region whose group already ships over the shortest
+    // region that verifies. They use step 8's ratio, so there are two estimation rules, not three.
+    //
+    // The rules are both documented: verbdata/import_tranche1.py placed each count by hand
+    // between comparable shipping verbs, and verbdata/import_tranche2.py derives each from its
+    // base by a ratio measured off the corpus's own real counts.
     //
     // When permission arrives, re-query with probes, replace the counts, drop `hp`, and this
     // expectation goes back to zero. Pinning the exact numbers, not merely an upper bound, is
     // the point: a later tranche that ships estimates has to come here and say so.
     let provisional = Verb.verbs.values.filter(\.hitsAreProvisional).count
-    #expect(provisional == 78 + 2315)
+    #expect(provisional == 78 + 2315 + 189)
     #expect(Verb.verbs.count - provisional == 990, "measured hit counts drifted from the original corpus")
   }
 

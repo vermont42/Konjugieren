@@ -15,7 +15,7 @@ Inputs
     by the `CorpusFormsDumpTests` Swift harness driving the app's own Conjugator over all verbs ×
     conjugationgroups × persons. Exact whole-token matching against this map handles irregular
     stems (hing/hängte) and avoids substring false positives.
-  - corpus/{modern,government,government2,technology,medieval}/*.txt
+  - corpus/{modern,government,government2,technology}/*.txt
 
 Output
   - corpus/working/corpus_index.json : { "<infinitive>": [ {doc, line, token, text, …}, … ] }
@@ -76,14 +76,19 @@ SNIPPET_WIDTH = 200
 # Tier priority: literature → government → technology, as in Conjugar. `modern/` is this corpus's
 # literature tier (it also holds the constitutional texts, which read as literature-adjacent legal
 # prose). `government2` is the batch-2 government sources and shares the government bucket.
-# `medieval` is Old High German and sorts last: it is included so a verb attested nowhere else can
-# still surface something, but OHG orthography means it will rarely match a modern form.
+#
+# `corpus/medieval/` is deliberately NOT indexed here. It yielded 14 candidates out of ~10,600, and
+# inspecting all 14 showed most were not usable text: some were lines of scholarly glossary
+# ("rıtun (rītan) — ritten (Eng: rode) → NHD reiten"), and others were modern encyclopedia prose
+# *about* the manuscript that would have shipped under a "(ca. 830)" citation — fluent German that
+# passes review while attributing a 2010s Wikipedia sentence to a ninth-century poem. Those files
+# mix primary text, translation, and commentary, so citing them needs a policy this indexer does
+# not have. Conjugar reached the same conclusion and built its medieval pass as a separate program.
 TIERS = (
     ("modern", "literature"),
     ("government", "government"),
     ("government2", "government"),
     ("technology", "technology"),
-    ("medieval", "medieval"),
 )
 
 # Unicode-aware word tokens: runs of letters only, so digits/punctuation separate. ß and umlauts
@@ -187,6 +192,39 @@ def source_name(name):
     return SOURCE_NAMES.get(best, stem)
 
 
+# German function words with no English homograph, used to tell a source's language from its
+# content. Words like `in`, `was`, `will`, `hat`, `man`, `die` are excluded precisely because they
+# are the collision cases: a detector built from those calls Nietzsche's "Was in uns will
+# eigentlich zur Wahrheit?" English.
+GERMAN_MARKERS = frozenset("""
+und nicht ist ich sich auch werden oder aber wird dass daß eine einem einen für über durch sind
+haben kann noch schon wenn wie nur bei aus vom zur zum dem den des ihre seine diese
+""".split())
+# Measured across every file in the corpus: the English translations score 0.00–0.04% and the
+# German sources 9.27% (Westphalia, whose 17th-century spelling is the floor) to 22%. Three percent
+# sits two orders of magnitude above the English maximum with ample room below the German minimum.
+MIN_GERMAN_SHARE = 0.03
+LANGUAGE_SAMPLE = 200_000
+
+
+def is_german(abspath):
+    """Whether a source is German, judged by content rather than by filename.
+
+    The corpus ships each literary work in German and English, and ten common English words are
+    German verb forms in forms.json — war→sein, will→wollen, hat→haben, sang→singen, band→binden
+    among them — so an English file indexes as spurious attestations of German verbs. The `-en.txt`
+    naming convention identifies today's translations, but a convention is not a guarantee, and
+    nothing would report the mistake: bad candidates would simply appear, in fluent English, under
+    a German citation.
+    """
+    with open(abspath, encoding="utf-8", errors="replace") as handle:
+        sample = handle.read(LANGUAGE_SAMPLE)
+    words = [word.lower() for word in TOKEN_RE.findall(sample)]
+    if len(words) < 50:
+        return False
+    return sum(1 for word in words if word in GERMAN_MARKERS) / len(words) >= MIN_GERMAN_SHARE
+
+
 def ordered_docs():
     """(tier, work, relpath, abspath) for every German source, in tier priority order.
 
@@ -200,7 +238,10 @@ def ordered_docs():
             continue
         for name in sorted(os.listdir(tier_dir)):
             # GERMAN 1: the parallel English translations are not evidence of German usage.
-            if not name.endswith(".txt") or name.endswith("-en.txt"):
+            if not name.endswith(".txt"):
+                continue
+            path = os.path.join(tier_dir, name)
+            if not is_german(path):
                 continue
             stem = name[:-4]
             work = stem if tier == "literature" else tier
@@ -487,9 +528,9 @@ def scan_sentence(sentence, forms):
     return found
 
 
-def merge_balanced(by_work, lit_works, gov, tech, med, rank):
+def merge_balanced(by_work, lit_works, gov, tech, rank):
     """Round-robin the per-work literature lists from a verb-specific rotated lead, then top up
-    from government, technology, and finally medieval."""
+    from government and finally technology."""
     if lit_works:
         rotation = rank % len(lit_works)
         order = lit_works[rotation:] + lit_works[:rotation]
@@ -502,7 +543,7 @@ def merge_balanced(by_work, lit_works, gov, tech, med, rank):
         if queue:
             out.append(queue.pop(0))
         position += 1
-    for fallback in (gov, tech, med):
+    for fallback in (gov, tech):
         if len(out) < MAX_OCCURRENCES:
             out.extend(fallback[: MAX_OCCURRENCES - len(out)])
     return out
@@ -576,7 +617,6 @@ def main():
             [w for w in lit_works if w in by_work],
             by_work.get("government", []),
             by_work.get("technology", []),
-            by_work.get("medieval", []),
             rank,
         )
         merged.sort(key=lambda c: c["_rank"])

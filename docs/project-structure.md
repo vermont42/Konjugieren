@@ -257,7 +257,7 @@ corpus/                        # German text corpus for example sentence sourcin
 ├── README.md
 ├── government/                # Federal government reports and policy documents
 ├── government2/               # Additional government publications
-├── medieval/                  # Old High German texts (Hildebrandslied, Tatian, etc.)
+├── medieval/                  # Old High German texts (Hildebrandslied, Tatian, etc.). NOT indexed by build_corpus_index.py: these files mix primary text, translation, and modern commentary, so citing them needs a policy the indexer lacks
 ├── modern/                    # Modern German literature and legal texts
 ├── technology/                # BSI security guides and technical Wikipedia articles
 └── working/                   # Pipeline scripts and their build products

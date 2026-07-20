@@ -217,11 +217,26 @@ citation string, so subagents need not infer one from a filename), and `particle
 Conjugar's constants and its round-robin rotating-lead merge survived the port unchanged. Six
 things shaped the rest, and Phase 4 should know them.
 
-- **The English translations had to be excluded.** `corpus/modern/` ships each work in German
-  *and* English, and ten common English words are German verb forms in `forms.json` — *war*→sein,
-  *will*→wollen, *hat*→haben, *sang*→singen, *band*→binden among them. Indexing `*-en.txt` attests
-  German verbs from English prose. This is a trap Conjugar never had, because its corpus was
-  monolingual.
+- **The English translations had to be excluded, by content not by filename.** `corpus/modern/`
+  ships each work in German *and* English, and ten common English words are German verb forms in
+  `forms.json` — *war*→sein, *will*→wollen, *hat*→haben, *sang*→singen, *band*→binden among them.
+  A file is admitted only if at least 3% of its tokens are German function words with no English
+  homograph. Measured across the corpus, the English files score 0.00–0.04% and the German ones
+  9.27% (Westphalia's 17th-century spelling is the floor) to 22%, so the cut is not close. Judging
+  by the `-en.txt` suffix also worked, but a naming convention is not a guarantee and nothing
+  would report the mistake: the bad candidates would simply appear, in fluent English, under a
+  German citation. This is a trap Conjugar never had, because its corpus was monolingual.
+- **The medieval tier is not indexed.** It produced 14 candidates out of ~10,600, and inspecting
+  all 14 found most unusable: lines of scholarly glossary ("rıtun (rītan) — ritten (Eng: rode) →
+  NHD reiten"), and — worse — modern encyclopedia prose *about* the manuscript that would ship
+  under a "(ca. 830)" citation. Fluent German attributing a 2010s Wikipedia sentence to a
+  ninth-century poem passes review in a way an English false positive never would. Those files mix
+  primary text, translation, and commentary, so citing them needs a policy this indexer does not
+  have; Conjugar built its medieval pass as a separate program for the same reason. Dropping the
+  tier cost nothing measurable — every one of those candidates was a redundant fallback for a verb
+  already covered elsewhere. The `medieval` sub-key contemplated in
+  `docs/example-sentence-pipeline.md` § Phase 4 remains a separate, unstarted job needing OHG
+  judgment rather than token matching.
 - **Matching is sentence-wise, not line-wise, and that is forced.** Conjugar scanned a line at a
   time. German cannot: the sources are hard-wrapped (Kafka ~68 chars, the government PDFs ~43), so
   a typical sentence spans two to four physical lines, and a stranded particle is routinely on a
@@ -251,7 +266,7 @@ things shaped the rest, and Phase 4 should know them.
   "ab-/geholt" tokenizes as `ab` + `geholt` and never matches `abgeholt`. Suspended hyphens in
   coordinations (*Ein- und Ausgang*) are left alone.
 
-Measured on the 2026-07-20 corpus: 47 documents, ~153,000 sentences, ~10,600 candidates for ~2,650
+Measured on the 2026-07-20 corpus: 44 documents, ~153,000 sentences, ~10,600 candidates for ~2,650
 verbs, and about **64% of the target verbs covered** — roughly 1,530 with contiguous evidence, some
 130 on split forms alone, and about 920 with nothing. Re-derive rather than trusting those numbers;
 the script reports all of them. The zero-candidate list is Phase 5's input, and it is large enough

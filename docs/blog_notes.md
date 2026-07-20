@@ -2376,3 +2376,51 @@ the Grundgesetz had no occasion to use.
 
 Next: Phase 3, the three reuse files — and the good news there is that 303 of the 382 roots can be
 parsed out of etymologies the app already ships, leaving 79 to author.
+
+## Two guards, one of which I had built backwards (2026-07-20)
+
+Josh asked, reasonably, whether the corpus should be pruned of English — he was worried about
+exactly the *will* / *hat* collisions that motivated the exclusion rule in the first place. The
+short answer was no: the indexer already skipped `*-en.txt`, and auditing all ~10,600 candidates
+for English-looking text turned up two suspects, both false alarms.
+
+The better of the two false alarms is worth recording. My detector flagged Nietzsche's "Was in uns
+will eigentlich ‚zur Wahrheit'?" as English, because *was*, *in*, and *will* are all English words.
+The check I wrote to catch German/English homograph confusion was itself defeated by German/English
+homograph confusion. The fix was to build the language test only from German function words that
+have **no** English homograph — *und*, *nicht*, *ist*, *sich*, *durch* — rather than from whatever
+came to mind first.
+
+That test then replaced the filename rule outright. Measured across every file: the English
+translations score 0.00–0.04% German markers, the German sources 9.27% (Westphalia, whose
+17th-century spelling is the floor) to 22%. Nothing lands between, so a 3% threshold is two orders
+of magnitude clear of English with room to spare below German. The decisive check was copying
+`kafka-prozess-en.txt` to a file named `kafka-prozess-de.txt` and confirming it is still rejected —
+otherwise the "content check" is just the filename rule wearing a costume. `-en.txt` was a fine
+convention; it just wasn't an enforceable one, and a violation would have produced fluent English
+sentences under German citations with nothing to report the error.
+
+### The thing I found while answering a different question
+
+Chasing the English question turned up a worse problem next door. The medieval tier contributed 14
+candidates, and reading all 14 — a small enough number that there was no excuse not to — showed
+most were not usable text. Some were scholarly glossary lines: "rıtun (rītan) — ritten (Eng: rode)
+→ NHD reiten". Others were modern encyclopedia prose *about* the manuscript: "Die Übersetzung wurde
+um das Jahr 830 im Kloster Fulda unter der Leitung von Hrabanus Maurus angefertigt."
+
+That second kind is the dangerous one, and it is dangerous in the opposite way from the English
+risk. It is fluent, correct, idiomatic German. It would sail through Phase 4 review. And its
+`source` field said **"Althochdeutscher Tatian (ca. 830)"** — so the app would have attributed a
+sentence written by a Wikipedia editor in the 2010s to a ninth-century manuscript. An English false
+positive announces itself; a false citation does not.
+
+The root cause is that `corpus/medieval/` files are not texts but *editions*: primary text,
+modern translation, and scholarly apparatus interleaved in one file. Deciding which spans are
+citable is a policy the indexer does not have and should not acquire — which is presumably why
+Conjugar built its medieval pass as a separate program with its own attachment policy, a detail
+that read as incidental until now. The tier is dropped, at zero measurable cost: coverage stayed at
+exactly 1,663 verbs, because all 14 were redundant fallbacks for verbs already covered.
+
+Worth generalizing: the guard against a *wrong language* and the guard against a *wrong citation*
+are different guards. `tatian.txt` passes the language test at 8.7% German and should — it really
+is mostly German. It fails on provenance instead. Conflating the two would have let it through.

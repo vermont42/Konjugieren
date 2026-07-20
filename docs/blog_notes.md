@@ -1311,3 +1311,39 @@ Most come through well: *approach*, *checkmate*, *reprint*, *predominate*, *craw
 come through thin — *untergehen* as a bare "set", *verkochen* as "vaporize, forwall". Spot-reading
 2,303 of them is the highest-value review left, and it is recorded as such rather than declared
 done.
+
+## Auditing the handoff, and three things it was missing (2026-07-19)
+
+Josh asked whether step 8b was safe to hand to a fresh session. The useful way to answer that
+is not to reassure but to go look, because the question is really "is what you know written
+down, or is it only in your context?" Three things were only in my context.
+
+**The importer had no independent duplicate guard.** Tranche 1's script refused to run if any
+verb it was about to insert already shipped. Tranche 2's relied instead on the `alreadyShipping`
+flag inside `classification.json` — which is gitignored and regenerable. A fresh session that
+ran the importer against a classification generated *before* the tranche landed would have
+silently re-inserted all 2,303 verbs. `Verbs.xml` is the only source of truth for what ships,
+and the check now reads it.
+
+**The 182 deferrals existed nowhere on disk.** I had written the dual-auxiliary worklist to a
+tracked file and left the ablaut-group deferrals as a number in a document, while describing
+both as "recorded". A count is not a worklist. Both are now files, and writing the second one
+surfaced the more interesting half of the problem: the two lists age differently. The deferred
+list is recomputed on every run and therefore always describes the current corpus, which is what
+8b wants. The dual-auxiliary list *cannot* be recomputed, because once those verbs ship the
+classifier skips them — it is a historical record of what tranche 2 chose. I found that out by
+running `--check` and watching the 176-verb file truncate itself to zero. There is now a guard
+against writing an empty worklist over a full one, which exists for exactly one reason.
+
+**The import needed a fixpoint, not a pass.** The same `--check` that ate the worklist reported
+12 verbs still to insert. Not duplicates — genuinely new: a double-prefix verb like
+*hineinversetzen* needs its inner base *versetzen* to ship before anything can propose splitting
+the outer element, and *versetzen* had only just arrived. So the tranche was cascading, and
+stopping after one pass would have left work on the floor that nothing would have gone looking
+for. Second pass took the 12, third returned nothing. 3,371 → **3,383**, at-odds still 8.
+
+The general shape is worth keeping. Everything I found came from asking what a reader with no
+memory of this session would have on disk, and the answer differed from what I had written down
+in three places — one a latent data-corruption bug, one a missing artifact, one an unfinished
+job. None would have been found by re-reading my own summary, because the summary was written by
+the same context that was wrong.

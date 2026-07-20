@@ -71,7 +71,7 @@ Konjugieren/
 │   ├── Reading.swift           # One sense of a verb: gloss, family, auxiliary, prefixes
 │   ├── Verb.swift              # Lemma: frequency, icon, and an ordered list of readings
 │   ├── VerbParser.swift        # XMLParser delegate for Verbs.xml, incl. the `in` marker grammar
-│   ├── Verbs.xml               # 3,371 verb definitions with markers and metadata
+│   ├── Verbs.xml               # 3,383 verb definitions with markers and metadata
 │   └── World.swift             # @Observable DI container with environment selection
 ├── Utils/
 │   ├── Analytics.swift         # Analytics protocol, event names, and parameter keys

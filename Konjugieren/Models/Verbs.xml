@@ -2263,6 +2263,9 @@
   <verb in="be*merken" hi="1463508" ic="skating">
     <reading tn="notice" fa="w" />
   </verb>
+  <verb in="be*mitleiden" hi="169025" hp="y" ic="mind.and.body">
+    <reading tn="pity" fa="w" />
+  </verb>
   <verb in="be*mühen" hi="1589372" ic="fall">
     <reading tn="endeavor, make effort" fa="w" />
   </verb>
@@ -4277,6 +4280,9 @@
   <verb in="f^e^chten" hi="181300" hp="y" ic="fencing">
     <reading tn="fence, fight" fa="s" ag="schmelzen" />
   </verb>
+  <verb in="fehl+be*setzen" hi="573141" hp="y" ic="seated.side.left">
+    <reading tn="miscast" fa="w" />
+  </verb>
   <verb in="fehlen" hi="7713392" ic="wave">
     <reading tn="be missing, lack" fa="w" />
   </verb>
@@ -4734,6 +4740,9 @@
   </verb>
   <verb in="glauben" hi="8514168" ic="yoga">
     <reading tn="believe" fa="w" />
+  </verb>
+  <verb in="gleich+be*handeln" hi="573139" hp="y" ic="2">
+    <reading tn="treat equally" fa="w" />
   </verb>
   <verb in="gl^eich^en" hi="828309" ic="mind.and.body">
     <reading tn="resemble, equal" fa="s" ag="streichen" />
@@ -5366,6 +5375,9 @@
   </verb>
   <verb in="hinein+stecken" hi="573223" hp="y" ic="indoor.rowing">
     <reading tn="insert, plug in" fa="w" />
+  </verb>
+  <verb in="hinein+ver*setzen" hi="573140" hp="y" ic="seated.side.left">
+    <reading tn="put oneself in someone's shoes" fa="w" />
   </verb>
   <verb in="hinein+z^ieh^en" hi="573758" hp="y" ic="indoor.rowing">
     <reading tn="pull in, drag in" fa="s" ag="ziehen" />
@@ -6759,12 +6771,18 @@
   <verb in="rüber+machen" hi="574226" hp="y" ic="strengthtraining.traditional">
     <reading tn="travel to a place in another country" fa="w" />
   </verb>
+  <verb in="rück+be*s^i^nnen" hi="14505" hp="y" ic="mind.and.body">
+    <reading tn="think back, remember, remind oneself" fa="s" ag="beginnen" />
+  </verb>
   <verb in="rück+drehen" hi="573171" hp="y" ic="socialdance">
     <reading tn="back" fa="w" />
   </verb>
   <verb in="rücken" hi="2089981" ic="hiking">
     <reading tn="move (something) over" fa="w" />
     <reading tn="move over, shift" fa="w" ay="s" />
+  </verb>
+  <verb in="rück+über*w^ei^sen" hi="573136" hp="y" ic="archery">
+    <reading tn="transfer back, wire back" fa="s" ag="bleiben" />
   </verb>
   <verb in="rückwärts+f^a^hren" hi="573672" hp="y" ic="seated.side.left.steeringwheel">
     <reading tn="reverse" fa="s" ag="fahren" />
@@ -7991,6 +8009,9 @@
   <verb in="ver*anlassen" hi="648558" ic="walk.arrival">
     <reading tn="cause, arrange" fa="w" />
   </verb>
+  <verb in="ver*anschlagen" hi="175860" hp="y" ic="boxing">
+    <reading tn="estimate" fa="w" />
+  </verb>
   <verb in="ver*anstalten" hi="2079196" ic="walk.arrival">
     <reading tn="organize, hold" fa="w" />
   </verb>
@@ -8914,6 +8935,12 @@
   <verb in="vor+hängen" hi="240813" hp="y" ic="flexibility">
     <reading tn="hang in front of" fa="w" />
   </verb>
+  <verb in="vorher+be*rechnen" hi="573138" hp="y" ic="barre">
+    <reading tn="precalculate" fa="w" />
+  </verb>
+  <verb in="vorher+be*stimmen" hi="573137" hp="y" ic="wave">
+    <reading tn="predetermine" fa="w" />
+  </verb>
   <verb in="vorher+g^eh^en" hi="574162" hp="y" ic="walk">
     <reading tn="precede" fa="s" ag="gehen" ay="s" />
   </verb>
@@ -9097,6 +9124,12 @@
   <verb in="wecken" hi="1252039" ic="stand">
     <reading tn="wake, arouse" fa="w" />
   </verb>
+  <verb in="weg+be*fördern" hi="573135" hp="y" ic="stairs">
+    <reading tn="move something away or out of the way" fa="w" />
+  </verb>
+  <verb in="weg+be*geben" hi="573142" hp="y" ic="arms.open">
+    <reading tn="leave" fa="w" />
+  </verb>
   <verb in="weg+bl^ei^ben" hi="574049" hp="y" ic="seated.side.left">
     <reading tn="stay away" fa="s" ag="bleiben" ay="s" />
   </verb>
@@ -9117,6 +9150,9 @@
   </verb>
   <verb in="weg+drücken" hi="441291" hp="y" ic="strengthtraining.traditional">
     <reading tn="push away" fa="w" />
+  </verb>
+  <verb in="weg+er*klären" hi="383151" hp="y" ic="yoga">
+    <reading tn="explain away" fa="w" />
   </verb>
   <verb in="weg+f^a^hren" hi="573668" hp="y" ic="seated.side.left.steeringwheel">
     <reading tn="drive away, drive off" fa="s" ag="fahren" />

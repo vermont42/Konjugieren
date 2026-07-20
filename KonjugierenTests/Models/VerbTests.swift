@@ -36,6 +36,7 @@ struct VerbTests {
       #expect(earlier <= later, "Verbs.xml is out of order: \(earlier) precedes \(later)")
     }
   }
+
   @Test func stammDropsEnSuffix() {
     #expect(Verb.verbs["machen"]?.stamm == "mach")
     #expect(Verb.verbs["singen"]?.stamm == "sing")
@@ -77,17 +78,21 @@ struct VerbTests {
   @Test func onlyImportedTranchesHaveProvisionalHitCounts() {
     // The `hp` attribute shipped on 2026-07-19 with no verb carrying it: all 990 counts came
     // from DWDS. Two tranches have since been imported while bulk querying was still blocked
-    // pending BBAW — 78 strong bases (roadmap step 7) and 2,303 prefixed derivatives (step 8)
-    // — so 2,381 verbs carry an estimate rather than a measurement. The two tranches were
-    // estimated by different rules, both documented: verbdata/import_tranche1.py placed each
-    // count by hand between comparable shipping verbs, and verbdata/import_tranche2.py
-    // derives each from its base by a ratio measured off the corpus's own real counts.
+    // pending BBAW — 78 strong bases (roadmap step 7) and 2,315 prefixed derivatives (step 8)
+    // — so 2,393 verbs carry an estimate rather than a measurement. The derivative tranche was
+    // run to a fixpoint: importing it made 12 more derivatives classifiable, because a
+    // double-prefix verb needs its inner base to ship before anything proposes separating it.
+    //
+    // The two tranches were estimated by different rules, both documented:
+    // verbdata/import_tranche1.py placed each count by hand between comparable shipping verbs,
+    // and verbdata/import_tranche2.py derives each from its base by a ratio measured off the
+    // corpus's own real counts.
     //
     // When permission arrives, re-query with probes, replace the counts, drop `hp`, and this
     // expectation goes back to zero. Pinning the exact numbers, not merely an upper bound, is
     // the point: a later tranche that ships estimates has to come here and say so.
     let provisional = Verb.verbs.values.filter(\.hitsAreProvisional).count
-    #expect(provisional == 78 + 2303)
+    #expect(provisional == 78 + 2315)
     #expect(Verb.verbs.count - provisional == 990, "measured hit counts drifted from the original corpus")
   }
 

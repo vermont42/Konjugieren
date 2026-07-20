@@ -184,7 +184,7 @@ Wiktionary and Wikipedia text is CC BY-SA 4.0. Deriving the verb database from t
 
    Prefixed derivatives of these new bases were **not** imported; they belong to step 6, and re-running `build_candidates.py` brings them into scope there.
 
-6. **Done (2026-07-19).** Second tranche: the prefixed derivatives of already-supported verbs. 2,303 shipped, taking the corpus from 1,068 to **3,371**, with no new ablaut groups. The importer and every rule it applies are `verbdata/import_tranche2.py`.
+6. **Done (2026-07-19).** Second tranche: the prefixed derivatives of already-supported verbs. 2,315 shipped, taking the corpus from 1,068 to **3,383**, with no new ablaut groups. The importer and every rule it applies are `verbdata/import_tranche2.py`.
 
    The prefix-inventory blocker was cleared first, and the fix was smaller and more general than "widen the inventory". The classifier had been deriving its inventory from the prefixes shipping verbs happened to use; it now reads the separable head off Wiktionary's own participle, since German infixes the *ge-* after a separable first element. That needs no inventory to maintain and it generalizes to the adjective and noun compounds the model could always express but nothing ever proposed — *kaputtmachen*, *achtgeben*, *eislaufen*. Incoming verification went 84.4% → 94.6% and the prefix queue fell 747 → 28.
 

@@ -26,7 +26,7 @@ completes.
 ## The one check that runs through all of it
 
 Every step from 4 onward is verified the same way. The classify-and-verify pipeline compares the
-app against Wiktionary for 3,366 shipping verbs, and the corpus currently stands at **8 verbs at
+app against Wiktionary for 3,378 shipping verbs, and the corpus currently stands at **8 verbs at
 odds, 99.9% verified**.
 
 **The metric changed on 2026-07-19 and is now stricter, so do not compare it to older figures.**
@@ -105,7 +105,10 @@ Four groups step 8 left behind, in rough order of size. None blocks step 9.
   each proposal to the house region convention first should collapse most of them onto groups
   that already ship.
 - **176 imported verbs are dual-auxiliary and ship one reading.** `verbdata/tranche2-dual-auxiliary.txt`
-  is the worklist, written by the import. The `<reading>` model can express both; what the bulk
+  is the worklist, written by the import. It is a **historical** record and cannot be
+  regenerated: once those verbs ship, the classifier skips them and a re-run produces nothing.
+  The importer refuses to overwrite it with an empty result, which it learned by doing exactly
+  that once. The `<reading>` model can express both; what the bulk
   pass could not do is decide which sense pairs with which auxiliary, 176 times. The interim
   policy in `prompts/dual_auxiliary.md` governs until then, and the pipeline cannot see the
   error, since it never compares a compound tense.
@@ -114,6 +117,17 @@ Four groups step 8 left behind, in rough order of size. None blocks step 9.
   by hand from kaikki's later glosses.
 - **28 verbs still fail the prefix check.** The residue after the inventory fix: mostly noun and
   adjective compounds whose participle gives no usable evidence (*arschkriechen*, *bauchreden*).
+
+`verbdata/tranche2-deferred.txt` lists the first, third and fourth groups verb by verb, with the
+reason on each line. Unlike the dual-auxiliary list it is **recomputed on every run**, so it
+always describes the current corpus rather than the state at import time — which is what step 8b
+wants. Regenerate it with `python3 verbdata/import_tranche2.py --check`, which writes nothing
+else.
+
+Note that the importer must be run to a **fixpoint**, not once. Tranche 2's first pass made 12
+further derivatives classifiable, because a double-prefix verb such as *hineinversetzen* needs
+its inner base (*versetzen*) to ship before any hypothesis proposes separating the outer element.
+Those 12 were imported in a second pass and a third returned nothing, which is where it stands.
 
 Worth a separate look, because it is user-visible rather than merely absent: **2,303 translations
 were normalized from kaikki glosses, not written.** Spot-reading them is the highest-value review
@@ -253,4 +267,4 @@ Small things the pipeline surfaced that no plan currently owns. None blocks the 
 | `fr` → `hi`: store hits, derive rank | — | `Verbs.xml` stores raw DWDS counts; `VerbParser` derives the 1..n rank at parse time. `fr` retired from the DTD so a stale writer fails the build. Ranks moved a median of 43 places; at-odds held at 8 |
 | Import tranche 1: strong bases | — | 78 verbs (61 strong, 17 weak) and 5 ablaut groups, taking the corpus from 990 to **1,068**. Re-deriving the missing-base list gave 82, not the 87 the prose claimed. Rewriting the classifier's region-minimal proposals to the house convention collapsed 13 proposed groups into 5. All 78 verify against Wiktionary with their shipped encoding; at-odds held at 8. Every `hi` is provisional (`hp="y"`) |
 | Prefix inventory widened | — | The classifier now reads the separable head off Wiktionary's own participle instead of off a shipping-verb inventory, since German infixes the participle's *ge-* after a separable first element. Incoming verification 84.4% → **94.6%**; the prefix-gap queue collapsed 747 → 28, and adjective and noun compounds (*kaputtmachen*, *achtgeben*) became expressible |
-| Import tranche 2: prefixed derivatives | — | 2,303 verbs, corpus 1,068 → **3,371**, no new ablaut groups. `hi` derived from each base by a ratio measured off the corpus's own 446 real derivative/base pairs, clamped to the rank-900 count; `ic` inherited from the base; `tn` normalized from kaikki. All 2,303 verify with their shipped encoding; at-odds held at 8 |
+| Import tranche 2: prefixed derivatives | — | 2,315 verbs, corpus 1,068 → **3,383**, no new ablaut groups. `hi` derived from each base by a ratio measured off the corpus's own 446 real derivative/base pairs, clamped to the rank-900 count; `ic` inherited from the base; `tn` normalized from kaikki. All 2,315 verify with their shipped encoding; at-odds held at 8 |

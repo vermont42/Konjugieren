@@ -118,6 +118,7 @@ VERBS_XML = REPO / "Konjugieren" / "Models" / "Verbs.xml"
 CLASSIFICATION = REPO / "verbdata" / "classification.json"
 CANDIDATES = REPO / "verbdata" / "candidates.json"
 DUAL_WORKLIST = REPO / "verbdata" / "tranche2-dual-auxiliary.txt"
+DEFERRED_WORKLIST = REPO / "verbdata" / "tranche2-deferred.txt"
 
 GLOBAL_RATIO = 0.174
 MIN_PAIRS_FOR_PER_PREFIX_RATIO = 5
@@ -251,6 +252,40 @@ def measure_ratios(verbs_root) -> dict[str, float]:
     return ratios
 
 
+def write_worklists(dual_auxiliary: list[str], deferred: list[str]) -> None:
+    """Persist both deferral lists as tracked files.
+
+    classification.json is gitignored, so anything left only in it is invisible to the next
+    session -- and regenerating it needs the 294 MB kaikki snapshot, which is also gitignored.
+    A deferral that exists only as a count in a document is not a worklist.
+
+    These are SNAPSHOTS, and the two age differently. Re-running after the import recomputes
+    the deferred list against the new corpus, which is what step 8b wants -- it is the current
+    state. But the dual-auxiliary list cannot be recomputed at all once its verbs ship, because
+    the classifier then skips them: it is a historical record of what tranche 2 chose. Hence
+    the empty guard, which exists because the first re-run silently truncated the 176-verb file
+    to nothing.
+    """
+    for path, header, rows in (
+        (DUAL_WORKLIST,
+         "# Imported by tranche 2 with one reading of two; see prompts/dual_auxiliary.md.\n"
+         "# Historical: cannot be regenerated once these verbs ship.\n"
+         "# verb\tkaikki primary auxiliary\ttranslation as shipped\n",
+         dual_auxiliary),
+        (DEFERRED_WORKLIST,
+         "# Verified by the pipeline but NOT imported, and why. Recomputed on every run.\n"
+         "# See docs/roadmap.md, \"The tranche-2 deferrals\".\n"
+         "# verb\treason\n",
+         deferred),
+    ):
+        if not rows and path.exists():
+            print(f"keeping {path.relative_to(REPO)}: this run produced no rows, "
+                  f"which would truncate an existing worklist")
+            continue
+        path.write_text(header + "\n".join(sorted(rows)) + "\n")
+        print(f"wrote {path.relative_to(REPO)} ({len(rows)} rows)")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--check", action="store_true", help="report, write nothing")
@@ -272,7 +307,9 @@ def main() -> int:
     every_candidate = {c["word"] for c in classifications}
 
     rejected = collections.Counter()
+    deferred = []
     dual_auxiliary = []
+    already_shipping = []
     rows = []
     for entry in classifications:
         if entry["alreadyShipping"] or entry["status"] != "verified":
@@ -283,24 +320,36 @@ def main() -> int:
         word, base = entry["word"], base_of(marked)
         if base not in shipping or base == word:
             continue
+        # Do not trust `alreadyShipping` alone to prevent a double import. It is a field in
+        # classification.json, which is gitignored and regenerable, so running this script
+        # against a copy generated BEFORE the tranche landed would re-insert all of it.
+        # Verbs.xml is the only source of truth for what ships.
+        if word in shipping:
+            already_shipping.append(word)
+            continue
 
         if entry.get("ablautGroupIsNew"):
             rejected["needs an ablaut group that does not ship"] += 1
+            deferred.append(f"{word}\tneeds an ablaut group that does not ship")
             continue
         if ARCHAIC_SPELLING.match(word):
             rejected["archaic or pre-1996 orthography"] += 1
+            deferred.append(f"{word}\tarchaic or pre-1996 orthography")
             continue
         sharp_s_twin = word.replace("ss", "ß")
         if sharp_s_twin != word and sharp_s_twin in every_candidate:
             rejected["Swiss ss-spelling of a verb written with ß"] += 1
+            deferred.append(f"{word}\tSwiss ss-spelling of a verb written with ß")
             continue
         candidate_glosses = glosses.get(word, [])
         if candidate_glosses and METADATA_GLOSS.search(candidate_glosses[0]):
             rejected["gloss points at another entry rather than translating"] += 1
+            deferred.append(f"{word}\tgloss points at another entry rather than translating")
             continue
         translation = normalize_translation(candidate_glosses)
         if not translation:
             rejected["no usable translation survived normalization"] += 1
+            deferred.append(f"{word}\tno usable translation survived normalization")
             continue
 
         head = head_of(marked)
@@ -352,6 +401,10 @@ def main() -> int:
     print(f"  dual-auxiliary, shipping one reading: {len(dual_auxiliary)}")
     for reason, count in rejected.most_common():
         print(f"  rejected {count:5}  {reason}")
+    if already_shipping:
+        print(f"\n{len(already_shipping)} candidates already ship and were skipped "
+              f"(e.g. {', '.join(already_shipping[:5])}).")
+        print("classification.json is probably stale; regenerate it before trusting this run.")
 
     if args.sample:
         print(f"\n--- {args.sample} sample rows ---")
@@ -361,8 +414,7 @@ def main() -> int:
                   f'tn="{row["tn"]}" fa={row["fa"]} ag={row["ag"]} ay={row["ay"]}  (base {row["base"]})')
 
     if args.check:
-        DUAL_WORKLIST.write_text("\n".join(sorted(dual_auxiliary)) + "\n")
-        print(f"\nwrote {DUAL_WORKLIST.relative_to(REPO)} ({len(dual_auxiliary)} verbs)")
+        write_worklists(dual_auxiliary, deferred)
         return 0
 
     keys = [sort_key(v.get("in")) for v in root]
@@ -397,8 +449,8 @@ def main() -> int:
     for at, _, element in sorted(insertions, key=lambda triple: (triple[0], triple[1]), reverse=True):
         lines.insert(at, element)
     VERBS_XML.write_text("".join(lines))
-    DUAL_WORKLIST.write_text("\n".join(sorted(dual_auxiliary)) + "\n")
-    print(f"wrote {VERBS_XML.relative_to(REPO)} and {DUAL_WORKLIST.relative_to(REPO)}")
+    write_worklists(dual_auxiliary, deferred)
+    print(f"wrote {VERBS_XML.relative_to(REPO)}")
     return 0
 
 

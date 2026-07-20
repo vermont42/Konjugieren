@@ -61,7 +61,7 @@ re-deriving one, keyed so it can look up rather than search.
 |---|---|---|---|
 | `roots.json` | final root infinitive | markup-ready string | yes |
 | `prefixes-inseparable.json` | bare prefix (`ver`, not `ver-`) | `{chain, senses, occurrences}` | yes |
-| `prefixes-separable.json` | bare particle (`ab`, `tot`, `preis`) | `{chain, senses, occurrences}` | yes |
+| `prefixes-separable.json` | bare particle (`ab`, `tot`, `preis`) | `{kind, chain, senses, occurrences}` | yes |
 | `build_reuse_files.py` | — | seeds the above from existing entries, emits the gap worklist | yes |
 | `merge_reuse_files.py` | — | folds authored shards in; `--validate-only` re-checks | yes |
 
@@ -74,6 +74,38 @@ reusable whole. A prefix bullet is not: it welds a genealogy that is identical a
 compound to a final sentence glossing what the prefix contributes *to that compound*. Only the
 genealogy is `chain`; `senses` holds the range of contributions, so a composed etymology can
 pick the one that fits rather than repeating a single frozen gloss across 189 *ver-* verbs.
+
+### `kind`, and why the entry count misleads
+
+German's separable prefixes are an **open class**, so `prefixes-separable.json` is not a list
+of 233 prefixes. Each entry records one of seven kinds, since a composing subagent treats them
+differently. Derive the tally rather than quoting one:
+
+```bash
+python3 -c "import json,collections; d=json.load(open('verbdata/prefixes-separable.json'))['en']; \
+print(collections.Counter(v['kind'] for v in d.values()))"
+```
+
+| kind | what it is |
+|---|---|
+| `particle` | an old preposition or adverb grammaticalized into a separable prefix |
+| `deictic` | a *her-*/*hin-*/*da(r)-*/*-einander* compound, including colloquial contractions |
+| `adjective` | an adjective in a resultative frame — *totschlagen* is to beat until dead |
+| `adverb` | a free modern adverb, neither a deictic compound nor resultative |
+| `noun` | a noun incorporated as object or adverbial — *teilnehmen*, *preisgeben* |
+| `verb` | a verb used as a particle — *stehenbleiben*, *steckenbleiben* |
+| `fossil` | strictly bound: not a free word of modern German at all |
+
+**Count entries and count occurrences and you get opposite pictures.** Adjectives are the
+largest class by entry and nearly the smallest by use; a couple of dozen true particles account
+for over half of all separable-prefix occurrences. Quoting either number alone misrepresents
+the work: the first overstates how much grammar is involved, the second understates how much
+authoring the long tail demanded.
+
+The kinds are **synchronic, not etymological**. *weg* and *beiseite* are frozen prepositional
+phrases by origin — *weg* is MHG *enwec* from OHG *in weg* — but free adverbs today, and they
+are filed as adverbs because that is the reading a composing subagent needs. Their histories
+are in their `chain`.
 
 **These are not build products.** The seed is re-derivable by re-running
 `build_reuse_files.py`, but most of the content is authored scholarship — 73 root etymologies

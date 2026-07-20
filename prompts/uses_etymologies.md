@@ -328,13 +328,33 @@ Eight things shaped the result, and Phase 4 should know them.
   separable would misstate their syntax — the encoding is right and the last-marker rule is
   what is approximate. They are authored as composed roots. `Verbs.xml` was not touched, and
   the at-odds count did not move.
-- **The separable side is not 233 prefixes.** It is roughly forty true particles, ninety
-  transparent deictic compounds (*herunter* = *her-* + *unter*; the toward-speaker /
-  away-from-speaker opposition of *her-*/*hin-* is the single most useful fact in the
-  inventory), some sixty adjectives in resultative frames (*totschlagen* = beat until dead),
-  a dozen incorporated nouns (*teilnehmen*, *preisgeben*), and a residue of frozen phrases
-  (*abhanden* = "ab + Handen", the old dative plural of *Hand*). Depth belongs on the atoms;
-  the compounds get three clauses and a pointer.
+- **The separable side is not 233 prefixes**, and each entry records which of seven kinds it
+  actually is, in a `kind` field, because Phase 4 composes differently for each. Measured on
+  the 2026-07-20 corpus — re-derive rather than trusting these:
+
+  | kind | entries | occurrences | |
+  |---|---|---|---|
+  | particle | 23 | 1,100 | old preposition grammaticalized: *ab-*, *an-*, *auf-* |
+  | deictic | 74 | 459 | *her-*/*hin-*/*da(r)-* compounds and their contractions |
+  | adjective | 84 | 228 | resultative frame: *totschlagen* = beat until dead |
+  | adverb | 9 | 83 | free modern adverb: *weg-*, *weiter-*, *gern-* |
+  | fossil | 27 | 65 | strictly bound: *abhanden* = "ab + Handen", old dative plural |
+  | noun | 14 | 30 | incorporated: *teilnehmen*, *preisgeben* |
+  | verb | 2 | 2 | *stehenbleiben*, *steckenbleiben* |
+
+  **The two columns tell opposite stories, and that is the point.** By entry count the class
+  is dominated by adjectives; by occurrence count 23 true particles carry 56% of all
+  separable-prefix uses while 84 adjectives carry 12%. Either number alone misleads: "233
+  separable prefixes" overstates how much grammar is involved, and "23 real particles"
+  understates how much authoring the tail demanded. Depth therefore went on the atoms —
+  *herunter* is *her-* + *unter* and gets three clauses and a pointer, while *her-* and
+  *hin-* get full entries, since the toward-speaker / away-from-speaker opposition is the
+  single most useful fact in the inventory.
+
+  The kinds are **synchronic, not etymological**, and that distinction was contested during
+  classification. *weg* and *beiseite* are frozen prepositional phrases historically — *weg*
+  is MHG *enwec*, from OHG *in weg* — but they are free adverbs of modern German, and a
+  composing subagent needs the modern reading. Their histories live in their `chain`.
 - **Harvested chains had to be corrected, not merely normalized.** Beyond the expected drift
   in abbreviation and diacritic, several shipping chains were wrong on substance: *hoch*'s PIE
   gloss was misstated in both harvested variants (the root means "to elevate"), *auseinander*

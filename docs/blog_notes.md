@@ -2497,3 +2497,41 @@ cranberry morphemes — bound roots that are not verbs of modern German at all: 
 (genesen), *kreißen*, *zeihen*. The corpus's own `in` attributes exhumed them. *nesen* is the
 one to remember: it survives only in *genesen*, from PIE \**nes-* "to return home safely" — the
 root that also gives Greek *nóstos*, so *Genesung* and *nostalgia* rest on the same idea.
+
+## Correcting a count I had estimated rather than derived (2026-07-20)
+
+The Phase 3 entry above says the separable side is "perhaps forty true particles, ninety
+transparent deictic compounds, sixty-odd adjectives, a dozen incorporated nouns." Josh asked
+for the real number. Every one of those figures was eyeballed from having read the shards, and
+the two largest were wrong in opposite directions: there are 23 true particles, not forty, and
+84 adjectives, not sixty.
+
+Rather than swap in better guesses, the taxonomy is now a `kind` field on every entry and the
+counts are derived from the file. That also serves Phase 4, which composes differently for a
+grammaticalized preposition than for an adjective in a resultative frame.
+
+Classifying it surfaced a flaw in the taxonomy I had written. My six kinds had no bucket for
+free adverbs, so *gern*, *wohl*, *weiter*, *recht*, *quer*, *weg* and *irre* were being forced
+into "adjective" or "fossil" against my own boundary rule ("prefer fossil when the word no
+longer exists free"). All of them are perfectly free words. The classifying subagent flagged
+*irre* as "the single sharpest conflict in the set" and was right to. Adding a seventh kind
+fixed it, and forced a useful decision: **the kinds are synchronic, not etymological.** *weg*
+and *beiseite* are frozen prepositional phrases by origin — *weg* is MHG *enwec* from OHG
+*in weg* — but they are ordinary adverbs today, and a subagent composing a compound needs the
+modern reading. The etymology is already in the `chain`; the `kind` should describe the word as
+it now is. Filing them as fossils would have been a fact about the tenth century masquerading
+as a fact about the grammar.
+
+The genuinely interesting result was not the corrected numbers but that **entry count and
+occurrence count tell opposite stories**. By entry, adjectives dominate: 84 of 233. By
+occurrence, they are nearly the smallest class — 228 of 1,967 — while 23 true particles carry
+1,100, over half. Each framing is misleading alone. "233 separable prefixes" makes the German
+sound far more grammaticalized than it is; "really only 23 particles" hides that the tail is
+where almost all the authoring went, because each of those 84 adjectives appears once or twice
+and still needed its own etymology.
+
+That is a general lesson about this pipeline, not a fact about prefixes. The whole design rests
+on paying once for what recurs, so the frequency distribution *is* the design input — and a
+count of distinct things is the wrong statistic for deciding where effort goes. It was the
+right statistic for the roots, where 382 distinct roots really did mean 382 lookups. It was the
+wrong one here.

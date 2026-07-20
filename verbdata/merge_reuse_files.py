@@ -64,6 +64,26 @@ FORBIDDEN = {"`": "section-heading marker", "$": "ablaut-highlight marker",
              "‡": "URL marker", "^": "custom-emoji marker"}
 K_CEDILLA = "ķ"  # U+0137, not the PIE palatal ḱ (U+1E31)
 
+# What a separable "prefix" actually is. German's separable prefixes are an open
+# class, so the 233 entries are not 233 prefixes — the label spans grammaticalized
+# prepositions, transparent deictic compounds, adjectives in resultative frames,
+# incorporated nouns, and frozen phrases. Phase 4 composes differently for each,
+# so the kind is recorded rather than inferred from the chain's wording.
+#
+# The distinction that matters most is synchronic, not etymological: `weg` and
+# `beiseite` are frozen phrases historically (MHG `enwec` < OHG `in weg`) but free
+# adverbs today, and the composing subagent needs the modern reading. Their
+# histories live in their `chain`.
+PARTICLE_KINDS = {
+    "particle",   # old preposition/adverb grammaticalized into a separable prefix
+    "deictic",    # her-/hin-/da(r)-/-einander compound, incl. colloquial contractions
+    "adjective",  # adjective in a resultative frame: totschlagen = beat until dead
+    "adverb",     # free modern adverb, neither deictic compound nor resultative
+    "noun",       # noun incorporated as object or adverbial: teilnehmen, preisgeben
+    "verb",       # a verb used as a particle: stehenbleiben, steckenbleiben
+    "fossil",     # strictly bound — not a free word of modern German at all
+}
+
 
 def load(path):
     return json.loads(path.read_text()) if path.exists() else {lang: {} for lang in LANGS}
@@ -182,6 +202,14 @@ def validate():
                     problems.append(f"{label}/{key} [{lang}]: chain does not end in a period")
                 if not entry.get("senses"):
                     problems.append(f"{label}/{key} [{lang}]: no senses")
+                if label == "prefixes-separable" and entry.get("kind") not in PARTICLE_KINDS:
+                    problems.append(f"{label}/{key} [{lang}]: kind {entry.get('kind')!r} "
+                                    f"is not one of {sorted(PARTICLE_KINDS)}")
+        for key in set(data["de"]) & set(data["en"]):
+            de, en = data["de"][key], data["en"][key]
+            if isinstance(de, dict) and de.get("kind") != en.get("kind"):
+                problems.append(f"{label}/{key}: de kind {de.get('kind')!r} != "
+                                f"en kind {en.get('kind')!r}")
         for key in set(data["de"]) & set(data["en"]):
             de, en = data["de"][key], data["en"][key]
             if isinstance(de, dict) and len(de.get("senses", [])) != len(en.get("senses", [])):

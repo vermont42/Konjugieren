@@ -2644,3 +2644,55 @@ was correct where it came from and silently wrong where it was reused — which 
 failure mode a reuse-everything pipeline should expect to have, and exactly the one none of its
 validators check for, because each value is individually valid. Reuse is only free when the
 shape transfers, and shape is invisible until something downstream is built on it.
+
+## Furniture, and the cost of a candidate you never see (2026-07-20)
+
+Two Phase 4 shards ran, and their reports kept mentioning debris: a speaker label at the head
+of a Bundestag quote, a Grundgesetz paragraph number, a heckle whose party name was split by a
+PDF line-hyphen into "GRÜ- NEN". The agents had quoted verbatim as instructed rather than
+silently editing German, and flagged it. Josh asked whether to strip it now.
+
+The answer is yes, and the reason is sharper than tidiness. **A rejected candidate is
+unrecoverable.** Nothing in the pipeline records which sentence a subagent passed over. So a
+later cleanup can only tidy the quotes that were *selected* — it can never resurrect the ones
+furniture caused to be rejected. Cleaning at index time raises yield; cleaning afterwards
+cannot. About a quarter of candidates carried something.
+
+Two mistakes on the way, both caught by measuring instead of assuming.
+
+**The regex I would have shipped decapitates German sentences.** A "speaker label" rule keyed on
+`^Name:` reported 428 hits. Sampling them showed most were ordinary sentences with a colon —
+"Deshalb: Nach der Ampel links abbiegen.", "Nur: Seit über zwei Jahren fließen jede Woche 2
+Milliarden Euro ab." Stripping on that pattern would have removed the first clause of hundreds
+of perfectly good quotes, and the results would have read fluently afterward, which is precisely
+what makes it the dangerous kind of bug. The genuine artifact turned out to be a speaker name
+followed by a two-column marker — `Michael Schrodi (A)` — so that is what the rule matches now.
+
+**The first implementation stripped blindly and then went looking for the verb.** It failed two
+ways at once: thirteen sentences were stripped past their own matched token, three of them to
+the empty string, and on long sentences `find()` located a *different* occurrence of the token,
+so the stored window jumped to an unrelated clause of the same sentence. Both failures produce
+text that looks fine. The fix is that the matched verb is now inviolable — no rule may cut into
+its position, and the offset is carried through the edits rather than rediscovered afterwards.
+The ~30 candidates that still carry furniture are exactly the ones where stripping would have
+reached the verb, and leaving them is correct: the subagent rejects them, which is a visible
+loss rather than a silent corruption.
+
+Scoping matters as much as the patterns. A leading integer is a verse number in the Luther bible
+and a plain numeral in a ministry report, so 1,689 of 1,711 are stripped and the remaining 22
+are left alone. Every rule names the documents it applies to.
+
+**The re-run measured the payoff.** Shard 001 went from 14 sentences to 16; shard 000 stayed at
+10 but replaced three contaminated quotes with clean ones. So roughly +4% yield and six quotes
+that would otherwise have shipped with a page number or a heckle attached. Both agents opened
+zero source files, and both independently verified their German against the candidate strings
+before finishing — one of them caught a stray soft hyphen (U+00AD) it had introduced into its own
+authored prose, which nothing else in the pipeline would have noticed.
+
+One judgment worth recording. *abfahren* has four candidates and all four are the token
+*abführen*, which is genuinely both the infinitive of *abführen* and the Konjunktiv II of
+*abfahren* (fahren → fuhr → führe). Both runs correctly returned a null sentence rather than
+quote a use of the wrong verb. The second run then did something better than refusing: it put
+the collision in the etymology, since *führen* is the causative of *fahren* and the homograph is
+genealogical rather than accidental. That is the shape of answer this pipeline is supposed to
+produce — the constraint became the content.

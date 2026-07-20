@@ -137,7 +137,7 @@ to 193 rows, 17 of them added by 8b's import — see below.
 ### What collapsed the 182, and why it was worth doing in the classifier
 
 Nearly all of them were a shipping group seen through an ablaut region one consonant too narrow —
-*abbeissen* proposed as `b^ei^ssen`/`I` where the corpus writes *reißen* as `r^eiss^en`/`ISS`. The
+*abbeissen* proposed as `b^ei^ssen`/`I` where the corpus writes *reißen* as `r^eiß^en`/`Iss`. The
 technique for spotting that is `adding-verbs.md` § "Widen the region before you propose a new
 group", but the fix belongs in `VerbClassificationTests.swift`, not in 182 hand edits: the
 classifier enumerated regions shortest-first and **returned on the first one that verified**, so

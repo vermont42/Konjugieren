@@ -8,24 +8,24 @@
 
 <ablautGroups>
   <ag e="beginnen" a="A,bA|Ä,dA|O,pp" />
-  <ag e="bersten" a="IR,a2s|IRS,a3s|ARST,bA|ÄRST,dA|IRST,i2s|ORST,pp" />
+  <ag e="bersten" a="Ir,a2s|Irs,a3s|Arst,bA|Ärst,dA|Irst,i2s|Orst,pp" />
   <ag e="bieten" a="O,bA,pp|Ö,dA" />
-  <ag e="bitten" a="AT,bA|ÄT,dA|ET,pp" />
+  <ag e="bitten" a="At,bA|Ät,dA|Et,pp" />
   <ag e="bleiben" a="IE,bA,dA,pp" />
   <ag e="bringen" a="ACH,bA,pp|ÄCH,dA" />
   <ag e="dürfen" a="darF*,a1s,a3s|dArfst*,a2s|Urf,bA,pp" />
   <ag e="empfehlen" a="IE,a2s,a3s|A,bA|Ä,dA|O,pp" />
-  <ag e="essen" a="ISS,a2s,a3s|Aẞ,bA|Äẞ,dA|gegEssen*,pp" />
+  <ag e="essen" a="Iss,a2s,a3s|Aẞ,bA|Äẞ,dA|gegEssen*,pp" />
   <ag e="erscheinen" a="IE,bA,dA,pp" />
   <ag e="fahren" a="Ä,a2s,a3s|U,bA|Ü,dA" />
-  <ag e="fallen" a="ÄLL,a2s,a3s|IEL,bA,dA" />
+  <ag e="fallen" a="Äll,a2s,a3s|IEl,bA,dA" />
   <ag e="fangen" a="Ä,a2s,a3s|I,bA,dA" />
   <ag e="finden" a="A,bA|Ä,dA|U,pp" />
   <ag e="fliegen" a="O,bA,pp|Ö,dA" />
   <ag e="geben" a="I,a2s,a3s|A,bA|Ä,dA" />
-  <ag e="gebären" a="IER,a2s,a3s|AR,bA|ÄR,dA|OR,pp" />
+  <ag e="gebären" a="IEr,a2s,a3s|Ar,bA|är,dA|Or,pp" />
   <ag e="gehen" a="ING,bA,dA|ANG,pp" />
-  <ag e="greifen" a="IFF,bA,dA,pp" />
+  <ag e="greifen" a="Iff,bA,dA,pp" />
   <ag e="gelingen" a="A,bA|Ä,dA|U,pp" />
   <ag e="gelten" a="I,a2s,a3s|A,b1s,b3s,b1p,b3p|gAltest*,b2s|gAltet*,b2p|Ö,dA|O,pp" />
   <ag e="gewinnen" a="A,bA|Ä,dA|O,pp" />
@@ -36,27 +36,27 @@
   <ag e="heißen" a="IE,bA,dA" />
   <ag e="kennen" a="A,bA,pp" />
   <ag e="kommen" a="A,bA|Ä,dA" />
-  <ag e="können" a="kAnn*,a1s,a3s|kAnnst*,a2s|ONN,bA,pp" />
+  <ag e="können" a="kAnn*,a1s,a3s|kAnnst*,a2s|Onn,bA,pp" />
   <ag e="laden" a="Ä,a2s,a3s|U,bA|Ü,dA" />
-  <ag e="lassen" a="ÄSS,a2s,a3s|IEẞ,bA,dA" />
+  <ag e="lassen" a="Äss,a2s,a3s|IEẞ,bA,dA" />
   <ag e="laufen" a="ÄU,a2s,a3s|IE,bA,dA" />
   <ag e="liegen" a="A,bA|Ä,dA|E,pp" />
-  <ag e="messen" a="ISS,a2s,a3s|Aẞ,bA|Äẞ,dA" />
+  <ag e="messen" a="Iss,a2s,a3s|Aẞ,bA|Äẞ,dA" />
   <ag e="mögen" a="mAG*,a1s,a3s|mAGst*,a2s|OCH,bA,pp|ÖCH,dA" />
   <ag e="müssen" a="mUsS*,a1s,a3s|mUssT*,a2s|Uss,bA,pp" />
-  <ag e="nehmen" a="IMM,a2s,a3s|AHM,bA|ÄHM,dA|OMM,pp" />
+  <ag e="nehmen" a="Imm,a2s,a3s|Ahm,bA|Ähm,dA|Omm,pp" />
   <ag e="rufen" a="IE,bA,dA" />
   <ag e="reißen" a="ISS,bA,dA,pp" />
-  <ag e="saufen" a="ÄUF,a2s,a3s|OFF,bA,pp|ÖFF,dA" />
-  <ag e="schaffen" a="UF,bA|ÜF,dA" />
+  <ag e="saufen" a="ÄUf,a2s,a3s|Off,bA,pp|Öff,dA" />
+  <ag e="schaffen" a="Uf,bA|Üf,dA" />
   <ag e="schinden" a="U,bA,pp|Ü,dA" />
   <ag e="schlagen" a="Ä,a2s,a3s|U,bA|Ü,dA" />
   <ag e="schlafen" a="Ä,a2s,a3s|IE,bA,dA" />
   <ag e="schließen" a="OSS,bA,pp|ÖSS,dA" />
   <ag e="schmelzen" a="I,a2s,a3s|O,bA,pp|Ö,dA" />
   <ag e="schreien" a="IE,bA,dA|geschrIEn*,pp" />
-  <ag e="schreiten" a="ITT,bA,dA,pp" />
-  <ag e="schneiden" a="ITT,bA,dA,pp" />
+  <ag e="schreiten" a="Itt,bA,dA,pp" />
+  <ag e="schneiden" a="Itt,bA,dA,pp" />
   <ag e="sehen" a="IE,a2s,a3s|A,bA|Ä,dA" />
   <ag e="sein" a="BIN*,a1s|BIst*,a2s|IST*,a3s|sIND*,a1p,a3p|seiD*,a2p|WAR,bA|seI*,c1s,c3s,i2s|seIst*,c2s|WÄR,dA|WES,pp|seiD*,i2p" />
   <ag e="sieden" a="OTT,bA,pp|ÖTT,dA" />
@@ -67,17 +67,17 @@
   <ag e="steigen" a="IE,bA,dA,pp" />
   <ag e="sterben" a="I,a2s,a3s|A,bA|Ü,dA|O,pp" />
   <ag e="stoßen" a="Ö,a2s,a3s|IE,bA,dA" />
-  <ag e="streichen" a="ICH,bA,dA,pp" />
+  <ag e="streichen" a="Ich,bA,dA,pp" />
   <ag e="tragen" a="Ä,a2s,a3s|U,bA|Ü,dA" />
-  <ag e="treffen" a="IFF,a2s,a3s|AF,bA|ÄF,dA|OFF,pp" />
-  <ag e="treten" a="ITT,a2s,a3s|AT,bA|ÄT,dA|ET,pp" />
+  <ag e="treffen" a="Iff,a2s,a3s|Af,bA|Äf,dA|Off,pp" />
+  <ag e="treten" a="Itt,a2s,a3s|At,bA|Ät,dA|et,pp" />
   <ag e="tun" a="tun*,a1p,a3p|AT,b1s,b3s,b1p,b3p|tATest*,b2s|tATet*,b2p|ÄT,dA|getAn*,pp" />
   <ag e="verlieren" a="O,bA,pp|Ö,dA" />
   <ag e="wachsen" a="Ä,a2s,a3s|U,bA|Ü,dA" />
   <ag e="weisen" a="IE,bA,dA,pp" />
   <ag e="werden" a="wIrst*,a2s|wIrD*,a3s|werdEt*,a2p|wUrdE*,b1s,b3s|wUrdEst*,b2s|wUrdEt*,b2p|U,b1p,b3p|Ü,dA|O,pp" />
   <ag e="werfen" a="I,a2s,a3s|A,bA|Ü,dA|O,pp" />
-  <ag e="wissen" a="wEIẞ*,a1s,a3s|wEIẞt*,a2s|USS,bA,pp|ÜSS,dA" />
+  <ag e="wissen" a="wEIẞ*,a1s,a3s|wEIẞt*,a2s|Uss,bA,pp|Üss,dA" />
   <ag e="wollen" a="wIlL*,a1s,a3s|wIllst*,a2s" />
   <ag e="ziehen" a="OG,bA,pp|ÖG,dA" />
 </ablautGroups>

@@ -89,7 +89,7 @@ new auxiliaries with `ConjugatorTests` cases on `perfektIndikativ`.
 Defines vowel/consonant changes for strong and mixed verbs:
 
 ```xml
-<ag e="sehen" a="ie,a2s,a3s|a,bA|ä,dA" />
+<ag e="sehen" a="IE,a2s,a3s|A,bA|Ä,dA" />
 ```
 
 | Attribute | Meaning |
@@ -110,7 +110,7 @@ Defines vowel/consonant changes for strong and mixed verbs:
 **Full override:** Append `*` to replacement to use it as the complete conjugated form, not adding the usual ending. This is used for highly irregular verbs like sein:
 
 ```xml
-<ag e="sein" a="bin*,a1s|bist*,a2s|ist*,a3s|..." />
+<ag e="sein" a="BIN*,a1s|BIst*,a2s|IST*,a3s|..." />
 ```
 
 ### XML Validation with FatalError Protocol
@@ -174,6 +174,51 @@ German strong and mixed verbs undergo vowel and other changes (ablaut) in differ
   - Präteritum: replace "e" with "a" → "sah" + endings
   - Konjunktiv II: replace "e" with "ä" → "säh" + endings
 
+### Region Width and Capitalization Are Independent Knobs
+
+These two properties of a group look like one thing and are not:
+
+- **The caret region** is the span of the stem `Conjugator.applyAblaut` replaces wholesale. Its
+  width is forced by mechanics: it must be wide enough to spell every character that changes,
+  and sometimes wider still (see *bersten* below).
+- **The capitalization of a replacement** independently drives the red highlight.
+  `StringExtensions.swift` tests `char.isUppercase` per character and `TextExtension.swift`
+  paints uppercase `.customRed`, lowercase `.customYellow`.
+
+The marking policy, settled 2026-07-20 after an audit of all 73 groups:
+
+> **Uppercase exactly the characters that differ from the region being replaced.** A trailing
+> consonant the replacement shares with the region stays lowercase. Consonant doubling or
+> undoubling counts as *unchanged*, because German doubling merely signals a short vowel and
+> is fully predictable once the vowel is marked. A shared trailing *vowel* stays uppercase: it
+> belongs to the nucleus, not the coda.
+
+So `n^ehm^en` takes `Ahm`, not `AHM` — *nahm* shows red on the a alone, because the *hm* never
+moved. `gr^eif^en` takes `Iff`: the doubling rides along with the marked vowel. But `l^auf^en`
+keeps `ÄU` and `s^e^hen` keeps `IE`, since those trailing letters are vowels. A real consonant
+*substitution* stays marked in full: `bringen` keeps `ACH` (ing→ach), `st^eh^en` keeps `AND`,
+`s^ied^en` keeps `OTT`.
+
+**A wide region does not license wide marking.** *bersten* is the case that forced the rule.
+Its Präsens is defective — *du birst* and *er birst* are the same word assembled two ways — and
+both swallow the stem's `-st`, so the region must span `erst`:
+
+```xml
+<verb in="b^erst^en" …>
+<ag e="bersten" a="Ir,a2s|Irs,a3s|Arst,bA|Ärst,dA|Irst,i2s|Orst,pp" />
+```
+
+Narrowing to `b^e^rsten` makes the 2s produce *birstst*. The `*` full-override escape hatch is
+closed too, because `zer*b^erst^en` shares the group and an override replaces the *entire*
+stamm, prefix included. The region has to stay wide; only the casing gets fixed.
+
+**One group, many region widths.** A group's replacement is applied against whatever region each
+member verb marks, and members need not agree. `schneiden` serves 16 verbs with region `eid` and
+23 with `eit`; `bieten` serves seven different widths. Where members disagree, the casing can only
+be right for the majority — `bieten`'s Konjunktiv II `Ö` correctly marks *böte* (ie→ö) while
+over-marking *schwöre* (ö→ö), and there is no way to express both. Prefer the reading that serves
+the most members, and don't "fix" a group by looking at one verb.
+
 ### The ß/ss Alternation Belongs Inside the Ablaut Region
 
 German writes **ß after a long vowel or diphthong** and **ss after a short one**. Ablaut changes
@@ -192,7 +237,7 @@ vowel cannot express the alternation, and the result is a plausible-looking wron
 Write a replacement's ß as the **capital sharp s, `ẞ` (U+1E9E)**, not `ß`:
 
 ```xml
-<ag e="messen" a="ISS,a2s,a3s|Aẞ,bA|Äẞ,dA" />
+<ag e="messen" a="Iss,a2s,a3s|Aẞ,bA|Äẞ,dA" />
 ```
 
 `RichTextView` lowercases every character for display and uses uppercase only to select the
@@ -344,7 +389,7 @@ Many verbs share ablaut patterns. When adding a new strong verb, first check if 
 | heben | verlieren, schwören, weben, gären, glimmen, klimmen, scheren, wägen, saugen, lügen, trügen | vowel→o (Prät, PP), →ö (Konj II) |
 | schmelzen | dreschen, fechten, flechten, melken, schwellen | e→i (Präs 2s/3s), e→o (Prät, PP), e→ö (Konj II) |
 
-**Widen the region before you propose a new group.** A pattern that looks new is often a shipping pattern seen through too narrow an ablaut region. *kneifen* can be written `kn^ei^fen` with the replacement `IF`, splitting the doubled f across the region boundary — that conjugates correctly, but it needs a group of its own. Written the way this corpus writes *greifen*, `kn^eif^en` with `IFF`, it reuses `greifen` and adds nothing. The rule is the same one the ß/ss section states: the region has to be wide enough to spell every consonant that changes with the vowel. Applying it to the step-7 tranche turned thirteen proposed groups into five.
+**Widen the region before you propose a new group.** A pattern that looks new is often a shipping pattern seen through too narrow an ablaut region. *kneifen* can be written `kn^ei^fen` with the replacement `IF`, splitting the doubled f across the region boundary — that conjugates correctly, but it needs a group of its own. Written the way this corpus writes *greifen*, `kn^eif^en` with `Iff`, it reuses `greifen` and adds nothing. The rule is the same one the ß/ss section states: the region has to be wide enough to spell every consonant that changes with the vowel. Applying it to the step-7 tranche turned thirteen proposed groups into five.
 
 ### Verbs That Use "sein" as Auxiliary
 

@@ -1510,3 +1510,112 @@ here and say so." So it did, with `(provisional → 2582) == (78 + 2315 → 2393
 go and say so. Pinning an exact count is usually a brittle-test smell; here the brittleness *is*
 the mechanism, because the thing being guarded is that nobody quietly grows the estimated
 population while the DWDS permission request is still outstanding.
+
+## bersten's red was too wide: caret span vs. capitalization (2026-07-20)
+
+Josh looked at bersten's VerbView and saw *barst*, *bärste*, and *geborsten* rendering with
+almost the entire word in red — `b` yellow, `arst` red. His hypothesis was that the carets in
+`b^erst^en` were misplaced and should be `b^e^rsten`, since only the vowel actually departs
+from expectation.
+
+The hypothesis was right about the symptom and wrong about the cause, and the distinction is
+worth writing down because it will recur.
+
+The carets and the capitalization are two independent knobs that this group happened to have
+set to the same width:
+
+- The carets mark the **span of the stem that gets textually replaced**. `VerbParser`
+  records start/end indices; `Conjugator.applyAblaut` does a literal `replaceSubrange`.
+- The capitalization of the replacement string marks **which characters render red**.
+  `StringExtensions.swift` tests `char.isUppercase` per character; `TextExtension.swift`
+  paints uppercase `.customRed` and lowercase `.customYellow`.
+
+bersten genuinely needs the wide span. Its Präsens is defective — *du birst* and *er birst*
+are the same word assembled two different ways — and both 2s and 3s swallow the stem's `-st`:
+the region `erst` becomes `ir` (plus the `-st` ending) or `irs` (plus the `-t` ending).
+Narrowing to `b^e^rsten` would make 2s produce **birstst**.
+
+The `*` full-override escape hatch that `werden` uses (`wIrst*,a2s`) is closed here:
+`zer*b^erst^en` shares the group, and `applyAblaut` returns an override as the *entire*
+stamm, prefix included, so *zerbirst* would come out as *birst*.
+
+So the fix was capitalization only — lowercase the unchanged tail of each replacement while
+leaving the replacement widths alone:
+
+    IR,a2s|IRS,a3s|ARST,bA|ÄRST,dA|IRST,i2s|ORST,pp
+    Ir,a2s|Irs,a3s|Arst,bA|Ärst,dA|Irst,i2s|Orst,pp
+
+`applyEToIStemChange` is unaffected: it already compares `ablaut.lowercased()`. Updated the
+six expectations in `ConjugatorTests` plus the `import_tranche1.py` source-of-truth entry
+(with a comment explaining why the span stays wide). All 45 ConjugatorTests pass.
+
+Open follow-up: bersten is not the only group whose replacement is uppercased across
+characters that did not change. `nehmen`'s `AHM` (region `ehm` → `ahm`; only the vowel moved)
+and `fallen`'s `ÄLL` are the same shape. Meanwhile bersten's own Ablautklasse-3 neighbors —
+sterben, werfen, schmelzen, dreschen — all use single-vowel regions and mark only the vowel,
+so the majority convention already matches Josh's instinct. Worth a sweep someday.
+
+## Auditing all 73 ablaut groups for over-marking (2026-07-20)
+
+Having fixed bersten, Josh asked whether the same over-marking was hiding elsewhere. It was —
+in 20 groups covering roughly 260 verbs.
+
+The audit needed a script, because the caret region lives on each *verb*, not on the group, so
+the same replacement is applied against whatever region each member happens to mark. A group
+can therefore be correctly cased for some members and wrong for others, and no amount of
+reading AblautGroups.xml alone reveals it.
+
+First attempt used `difflib.SequenceMatcher` to align region against replacement. It produced
+false positives that would have been actively destructive if applied: it claimed `streichen`'s
+`eich` → `ICH` was a no-op (because "ich" is a substring of "eich") and wanted it fully
+lowercased, which would have rendered *strich* as though nothing had changed. Same trap for
+`liegen`'s `ie` → `E`. The lesson is that opportunistic interior matching is the wrong model
+for ablaut: German puts the vowel nucleus at the head of the region and lets the consonant coda
+ride along, so the only alignment worth trusting is a **common suffix**, anchored at the right.
+
+The second pass used that, and tiered the results by confidence. Two policy questions fell out
+that the script could not settle, so they went to Josh:
+
+1. **Consonant doubling.** Is `eif` → `iff` (griff) a change worth marking, or is the doubling
+   predictable? Josh chose predictable — German doubling signals a short vowel, so once the
+   vowel is red the doubling carries no extra information. `IFF` → `Iff`.
+2. **No-op marks.** `treten`'s Perfektpartizip replaces `et` with `et` and `gebären`'s
+   Konjunktiv II replaces `är` with `är` — identical strings, rendered red. Josh chose to
+   lowercase them: *getreten* and *gebäre* genuinely match their stems, and saying so is honest.
+
+One refinement emerged while applying: a shared trailing **vowel** must stay uppercase, because
+it belongs to the nucleus rather than the coda. Without that carve-out the script wanted
+`laufen`'s `ÄU` → `Äu` and `sehen`'s `IE` → `Ie`, which is wrong — *läuft* and *sieht* change
+the whole diphthong.
+
+Two entries had to be reverted by hand after the bulk apply. `bieten` (94 verbs) and `heben`
+(16) each serve members with seven different region widths, and their Konjunktiv II `Ö` matched
+the region exactly for the handful whose stem vowel is already ö (*schwören* → *schwöre*). The
+script dutifully lowercased it — which would have un-marked *böte*, *flöge*, *zöge* and eighty
+others, where ie→ö is a real change. There is no way to express both in one group; majority
+wins, and the limitation is now written into adding-verbs.md.
+
+38 entries rewritten, minus those 2 reverts. 67 ConjugatorTests expectations followed.
+Those were regenerated from the test run's own output, which is normally how you launder a bug
+into a green suite — so the regeneration script hard-refuses any failure where the produced
+conjugation differs from its expectation by more than case. All 67 were case-only; all 210
+tests in 31 suites pass.
+
+The durable artifact is the new "Region Width and Capitalization Are Independent Knobs" section
+in docs/adding-verbs.md, stating the policy and the bersten counterexample. Without it the next
+tranche re-imports all-caps groups and the audit has to happen again. Also fixed two examples in
+that file that had drifted to all-lowercase (`sehen` as `ie,a2s...`, `sein` as `bin*`), which
+would have contradicted the policy paragraph sitting a few lines below them.
+
+Deliberately left marked: real consonant substitutions, where the coda genuinely changes
+identity rather than count — `bringen` `ACH` (ing→ach), `gehen` `ING`, `stehen` `AND`, `ziehen`
+`OG`, `sieden` `OTT`, `mögen` `OCH`, `essen`/`sitzen` `Aẞ`. And `haben`'s `A`/`AT`: the region
+`ab` loses its b entirely, so the deletion is invisible in the output and the uppercase head is
+the only signal left that *hast* is irregular.
+
+Visually confirmed on the simulator afterward via `konjugieren://verb/<infinitiv>` deeplinks —
+much cheaper than driving the browse list and search field. *bersten* renders geb**o**rsten /
+b**i**rst / b**a**rst; *nehmen* gives gen**o**mmen / n**i**mmt / n**a**hm; *treten* shows
+**getreten** entirely in yellow, which is the Tier-2 no-op case doing exactly what it should.
+*bieten* still marks geb**o**ten and b**o**t, confirming the hand-revert held and the audit
+script's false positive on that group didn't ship.

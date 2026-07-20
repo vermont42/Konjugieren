@@ -23,13 +23,13 @@ WHY THE ABLAUT REGIONS DIFFER FROM THE CLASSIFIER'S PROPOSAL
 The classifier minimizes for the *shortest* region, so it proposes `kn^ei^fen` with the
 replacement `IF`, splitting the doubled f across the region boundary ("kn" + "IF" + "f").
 That verifies, but it is not how this corpus is written: the shipping `greifen` is
-`gr^eif^en` with `IFF`, keeping the whole consonant change inside the region. Rewriting
+`gr^eif^en` with `Iff`, keeping the whole consonant change inside the region. Rewriting
 each proposal to the house convention collapsed thirteen proposed new groups into six,
 because the reworded region matches a group that already ships:
 
-    kneifen, pfeifen, schleifen   -> greifen    (IFF,bA,dA,pp)
-    gleiten, schreiten            -> schneiden  (ITT,bA,dA,pp)
-    schleichen                    -> streichen  (ICH,bA,dA,pp)
+    kneifen, pfeifen, schleifen   -> greifen    (Iff,bA,dA,pp)
+    gleiten, schreiten            -> schneiden  (Itt,bA,dA,pp)
+    schleichen                    -> streichen  (Ich,bA,dA,pp)
     schwoeren, gaeren, weben,     -> heben      (O,bA,pp|OE,dA)
       glimmen, klimmen, scheren,
       waegen, saugen, luegen,
@@ -101,8 +101,10 @@ NEW_ABLAUT_GROUPS = [
     # word built two different ways, so 2s and 3s need separate replacements -- the stem
     # supplies "bir" plus the -st ending in one and "birs" plus the -t ending in the other.
     # This is a genuine irregularity, not an epenthetic-e workaround smuggled into a group.
-    ("bersten", "IR,a2s|IRS,a3s|ARST,bA|ÄRST,dA|IRST,i2s|ORST,pp"),
-    ("saufen", "ÄUF,a2s,a3s|OFF,bA,pp|ÖFF,dA"),
+    # The region spans "erst" because 2s/3s replace the stem's -st, but only the vowel is
+    # capitalized: case drives the red highlighting independently of the replacement width.
+    ("bersten", "Ir,a2s|Irs,a3s|Arst,bA|Ärst,dA|Irst,i2s|Orst,pp"),
+    ("saufen", "ÄUf,a2s,a3s|Off,bA,pp|Öff,dA"),
     # Exemplar chosen as the most recognizable member; dreschen, fechten, flechten,
     # melken, and schwellen ride the same pattern.
     ("schmelzen", "I,a2s,a3s|O,bA,pp|Ö,dA"),

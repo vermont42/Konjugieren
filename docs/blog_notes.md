@@ -2793,3 +2793,115 @@ That last change is the one I would defend hardest. The reports have produced ev
 improvement to this pipeline so far, and the ask that elicits them was living in a prompt that
 each session composed from scratch — which is precisely the kind of thing that quietly drops out
 on the session where someone is in a hurry.
+
+## Phase 4 mining, shards 004–005: the furniture problem recurs, and a budget that only bought one wave (2026-07-20)
+
+A short session by design. The window opened at 88% consumed, and the protocol's own rule — stop
+with about five session points of headroom — made the arithmetic unambiguous: at roughly two
+points per shard, twelve points buys one wave of two, not three. So this entry records one wave,
+shards 004 and 005, and the reasoning for stopping rather than pressing.
+
+Regenerating the build products was uneventful, which is itself worth noting, because `corpus/`
+is gitignored and every fresh session pays this cost. The forms dump wrote 50,011 forms in about
+two seconds, the index rebuilt with zero unresolved morphemes, and the shard builder reported
+4/104 mined from nothing but which `.out.json` files existed on disk. That derived-progress design
+kept paying: no state had to survive the session boundary, and none did.
+
+Both shards validated on the first pass, and so did the four before them — 75 sentences and 75
+nulls across six shards, which lands exactly on the half-yield the earlier calibration predicted.
+Worth remembering that the validator re-checks *old* shards against *freshly rebuilt* candidate
+pools, so a green run here is also evidence that nothing in the regeneration shifted a pool out
+from under an already-mined quote. That failure has happened once, when the word-count sort key
+landed, and it is silent until the validator catches it.
+
+The substance of the session is in the two reports, which converged from opposite directions on
+the same finding: **extraction furniture is still surviving the corrupt-candidate filter, and it
+is now the most-reported friction in the pipeline.** Shard 005 hit orphan quotation marks glued to
+the front of otherwise-whole sentences (`« Der Teufel…`, `“ K. dachte…`, the splitter attaching
+the *previous* sentence's closing mark) and a Wikipedia list item with its `*` bullet intact.
+Shard 004 hit a Luther verse number sitting mid-sentence between two lowercase words
+(`…wäre; 24 aber es ist…`), a PDF space-split compound („Prognose zeitraum" for
+„Prognosezeitraum"), a two-column protocol whose committee names interleaved into the text, and a
+Bundestag fragment that began mid-sentence but escaped the lowercase-start rule by starting on a
+capitalized noun and ended on a comma.
+
+Two independent agents, no shared context, both spending real deliberation on the same class of
+defect. That is the third time this class has surfaced and the second time it has cost good
+candidates outright: the rule is quote-whole-or-reject, so a sentence that is perfect apart from
+an interpolated verse number leaves a subagent no good move. Every one of these is mechanically
+detectable, and each detector is a few lines in a place the indexer already does this work.
+
+The timing argument matters more than the fix. The phase doc already records that an indexer
+change can orphan an already-mined quote, because `merge_balanced` pops from per-work queues
+*after* sorting, so a new key changes which candidates survive `MAX_OCCURRENCES` rather than
+merely reordering them. The conclusion drawn then was that the pipeline is cheap to change before
+mining and expensive after. Six of 104 shards are mined. If that argument is ever going to be
+acted on, this is the cheapest moment it will ever have — and the alternative is 98 shards each
+paying the same tax and each recording the same hedge.
+
+Two smaller findings, both zero-risk because neither touches candidate ranking. First, a genuine
+rule collision the brief does not resolve: the markup convention says German prose uses „…“ and
+never ASCII quotes, but several corpus sentences quote speech with ASCII quotes, and
+exact-equality validation forbids normalizing them. Verbatim quotation already wins in fact — the
+validator only bans ASCII quotes in *etymology* text, not in a quoted sentence — but the brief
+never says so, which is an invitation for some future shard-runner to helpfully "fix" a quote and
+fail validation. Second, shard 005 argues the `ab-` sense inventory is missing two senses that a
+recurring family needs: a support/bracing sense (*abstützen*, *abstellen*, *abfangen*,
+*absichern*) and a reciprocal/relief sense (*abwechseln*, *ablösen*, *abtreten*). It reached for
+the escape hatch three times in 25 verbs, which is the hatch working but working too often. Shard
+004, notably, reported the same inventory as *well*-shaped for its verbs — the derivation sense
+fitting *abstammen* and the copying sense fitting *abschreiben* exactly. Both can be true; the
+inventory covers the core and frays at a specific edge.
+
+One report also raised a heuristic worth thinking about rather than acting on: `abtöten`'s only
+candidate was *töten* followed later in the clause by an `ab` stranded from a different separable
+verb (`tötete ihn und hieb ihm den Kopf damit ab`). The separable-particle window produces this
+systematically for any `ab+X` verb, independently of homography. `contiguous: false` already
+demotes these; whether an intervening finite verb should demote them further is a real question
+and a riskier change than the furniture filters, since it touches matching rather than cleanup.
+
+**Same day, later: the furniture fix landed.** Josh authorized spending the window's tail on it
+rather than banking it, which was the right call for the reason the entry above argues — six
+shards mined is as cheap as this change will ever be.
+
+Four detectors, each traceable to a specific report. Three drop and one strips. `no-terminal-punct`
+rejects text that ends without `.`, `!`, `?`, `…` or `:`, which is the complement of the existing
+lowercase-start rule: a fragment beginning on a capitalized noun sails past that rule, and German
+supplies capitalized nouns constantly. `verse-number` drops a Luther verse number sitting between
+clauses, which `LEADING_FURNITURE` catches only at the head and which cannot be stripped
+mid-sentence. `wiki-markup` drops MediaWiki list items and namespace links. And the orphan
+quotation mark became a *strip* rather than a drop, in `LEADING_FURNITURE`, since a mark followed
+by whitespace opened nothing — a real German opening mark hugs its word, `„Wort` — so removing it
+recovers a whole sentence instead of discarding one.
+
+The verse-number rule is the one I checked hardest before believing, because 896 drops out of
+2,075 Luther candidates looked like over-firing. It is safe for the same reason the lowercase rule
+is: German capitalizes every noun, so a bare integer followed by a *lowercase* word cannot head a
+quantity phrase. „24 Jahre“ and „12 Männer“ both survive; „24 aber“ and „3 und“ do not. That is
+now the third rule in the indexer leaning on German orthography for a defense that would be
+unavailable in English, which feels less like a coincidence than like the shape of the problem.
+
+Cost accounting, since this is the trade the decision rested on: 1,995 unusable candidates
+dropped, against 25 target verbs falling from one candidate to zero (1,627 → 1,602 with evidence).
+That loss is nominal rather than real — those verbs' only candidates were mechanically defective,
+so a subagent would have read them, rejected them, and returned null anyway. What actually changed
+is that nobody pays to deliberate about them.
+
+**And the predicted hazard fired, exactly once, exactly where predicted.** Re-validating the six
+mined shards against the rebuilt pools flagged `abscheiden`: its quoted Luther sentence was the
+one carrying the stray verse number, which the new rule now correctly drops. The subagent had
+flagged that very sentence as a hedge when it mined it. The repair followed the rule already
+written down — re-pick from the current pool and say so in `notes`, never carve an exception into
+the validator — and the re-pick came out `null`, because the sole surviving candidate is the
+Nietzsche attestation in precisely the right sense at 49 words, past the brief's 45-word ceiling
+for a last candidate. Losing a good sentence over four words stings, but the ceiling exists so
+that an unreadable quotation cannot ship, and overriding it quietly in the one case where it binds
+is how a ceiling stops meaning anything. Final state: 74 sentences, 76 nulls, validator green.
+
+Two brief edits came out of the reports as well. The markup section said German prose uses „…“ and
+never ASCII quotes, without saying that the rule governs *authored prose only* — while several
+corpus sentences punctuate speech with ASCII quotes and exact-equality validation forbids
+normalizing them. A future shard-runner following the letter of that rule would have "fixed" a
+quote and failed validation, so the brief now says verbatim always wins inside a quotation. And
+the brief's list of what the indexer catches was left accurate rather than allowed to understate
+the new filter — the same staleness failure this project keeps having to design against.

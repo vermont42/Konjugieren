@@ -109,7 +109,18 @@ PARTY_TAG = re.compile(
 )
 
 
-def is_defective(text):
+TERMINAL_PUNCT = (".", "!", "?", "…", ":")
+TRAILING_CLOSERS = "\"'»«“”„)]›‹’ "
+# A MediaWiki list item or namespace link that survived extraction as raw markup.
+WIKI_MARKUP = re.compile(
+    r"^\s*[*#:]+\s|"
+    r"\b(?:Hilfe|Datei|Kategorie|Vorlage|Wikipedia|Spezial|Diskussion|Portal|Benutzer):[A-ZÄÖÜ]"
+)
+# A verse number between a clause boundary and the lowercase word resuming the sentence.
+VERSE_NUMBER = re.compile(r"[;:,.]\s+\d{1,3}\s+[a-zäöüß]")
+
+
+def is_defective(text, rel="", truncated=False):
     """Name the mechanical defect in a candidate's text, or None if it is clean.
 
     These are the defects that make a candidate unusable *without judgment*, and every one of
@@ -138,6 +149,19 @@ def is_defective(text):
     - `leading-dash`: the text opens on a dash. Demoted, not dropped: Nietzsche writes
       continuation dashes that head what is nonetheless a complete sentence, so this is a
       presentational wart rather than damage.
+    - `no-terminal-punct`: the text stops without `.`, `!`, `?` or `…`, so the splitter cut it
+      short — a Bundestag fragment ending on a comma is the reported case. This escapes
+      `starts-lowercase` whenever the fragment happens to begin on a capitalized noun, which
+      German supplies constantly, so the two rules are complements rather than duplicates.
+      Skipped for `truncated` candidates, whose ellipsis is the snippet window's doing.
+    - `wiki-markup`: a MediaWiki list item or namespace link that reached the text as markup
+      (`* Hilfe:Unterseiten – …`). Unquotable, and not repairable by stripping, because the
+      content itself is a navigation stub rather than prose.
+    - `verse-number`: a Luther verse number sitting *inside* the sentence between clauses
+      (`…wäre; 24 aber es ist…`). The leading-number rule in `LEADING_FURNITURE` catches these
+      only at the head; mid-sentence they cannot be stripped, since edits below the head are
+      forbidden. Scoped to the Luther documents, where a bare integer between a clause boundary
+      and a lowercase word is unambiguously versification and never prose.
 
     Deliberately *not* filtered: candidates whose furniture would have to be stripped to reach
     the matched verb. Subagents reject those visibly, which is better than a silent edit --- see
@@ -168,6 +192,14 @@ def is_defective(text):
         return "gutter-hyphen"
     if re.search(r"\((?:A|B|C|D)\)", text):
         return "column-marker"
+    if WIKI_MARKUP.search(text):
+        return "wiki-markup"
+    if "luther-bible" in rel and VERSE_NUMBER.search(text):
+        return "verse-number"
+    # Closing marks and brackets trail legitimate terminal punctuation (`… gesagt.“`), so they
+    # come off before the test; otherwise every quoted sentence in Grimm reads as a fragment.
+    if not truncated and not text.rstrip().rstrip(TRAILING_CLOSERS).endswith(TERMINAL_PUNCT):
+        return "no-terminal-punct"
     return None
 
 
@@ -566,6 +598,11 @@ LEADING_FURNITURE = (
     # Page-header debris left by de-columnizing: a running page number before the speaker.
     (re.compile(r"^\d{4,6}\s+"), lambda rel: "plenarprotokoll" in rel),
     (re.compile(r"^\+\+\+[^+]*\+\+\+\s*"), lambda rel: True),
+    # An orphaned quotation mark the splitter carried over from the *previous* sentence
+    # (`« Der Teufel …`, `“ K. dachte …`). The whitespace is what identifies it: a real opening
+    # mark hugs its first word (`„Wort`), so a mark followed by a space opened nothing here.
+    # `„` is excluded deliberately — it is German's opening mark and never an orphan at the head.
+    (re.compile(r"^[«»“”]\s+"), lambda rel: True),
 )
 GUTENBERG_EMPHASIS = re.compile(r"_([^_\n]{1,60})_")
 
@@ -804,7 +841,7 @@ def main():
                     # Drop the mechanically unusable before a subagent pays to read it. The
                     # check runs on the stored text, after furniture stripping, because that is
                     # the string the subagent would actually have been asked to quote.
-                    defect = is_defective(text)
+                    defect = is_defective(text, rel, truncated)
                     if defect and defect not in DEMOTE_ONLY:
                         defective_skipped[defect] += 1
                         continue

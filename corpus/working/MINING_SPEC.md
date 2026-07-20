@@ -123,8 +123,9 @@ reads perfectly fluently afterward.
 this text to fit a length ceiling*. It does **not** certify that the upstream sentence splitter
 produced a whole sentence. The two are different guarantees, and earlier shard-runs rejected
 candidates that arrived flagged complete while ending mid-clause on a comma. The indexer now
-drops the mechanically detectable cases — text starting lowercase, severed by a column gutter,
-or carrying a stray `(A)`/`(B)` column marker — but it cannot catch every mis-split. If a
+drops the mechanically detectable cases — text starting lowercase, ending without terminal
+punctuation, severed by a column gutter, carrying a stray `(A)`/`(B)` column marker, a Luther
+verse number between clauses, or raw wiki markup — but it cannot catch every mis-split. If a
 candidate is plainly not a sentence, reject it and move on; the flag is not an instruction to
 quote something broken.
 
@@ -176,6 +177,11 @@ collects the nulls and Josh expands the corpus for them.
 
 Never use `` ` ``, `$…$`, `‡…‡`, or `^…^` — all four are meaningful to the app's parser.
 German prose uses `„…“` and never ASCII `"`. Bullets are `- ~morpheme~: …`, one per line.
+
+**These rules govern the prose you write, never the sentence you quote.** Some corpus sentences
+punctuate speech with ASCII `"`, and the validator compares your quoted German to the candidate
+by exact equality — so "correcting" those marks to `„…“` fails validation. Verbatim always wins:
+inside a quoted sentence, copy every character as it stands.
 Paragraph breaks are real newlines in the JSON string, never a literal backslash-n.
 
 ## Your output

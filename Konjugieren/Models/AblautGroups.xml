@@ -54,7 +54,7 @@
   <ag e="schlafen" a="Ä,a2s,a3s|IE,bA,dA" />
   <ag e="schließen" a="OSS,bA,pp|ÖSS,dA" />
   <ag e="schmelzen" a="I,a2s,a3s|O,bA,pp|Ö,dA" />
-  <ag e="schreien" a="IE,bA,dA|geschrIEn*,pp" />
+  <ag e="schreien" a="IE,bA,dA,pp" />
   <ag e="schreiten" a="Itt,bA,dA,pp" />
   <ag e="schneiden" a="Itt,bA,dA,pp" />
   <ag e="sehen" a="IE,a2s,a3s|A,bA|Ä,dA" />

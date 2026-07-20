@@ -764,9 +764,30 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "schreien", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "schreit")
     expectConjugation(infinitiv: "schreien", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "schrIE")
     expectConjugation(infinitiv: "schreien", conjugationgroup: .präteritumIndikativ(.thirdSingular), expected: "schrIE")
-    expectConjugation(infinitiv: "schreien", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "schrIEe")
+    // Changed 2026-07-20 from schrIEe. The stem already ends in -e and absorbs the ending's,
+    // so the Konjunktiv II singular is identical to the Präteritum. Both Wiktionary editions
+    // give this paradigm, de.wiktionary's Flexion page without alternatives or a "selten"
+    // marking, and schriee does not occur once in the 17 MB corpus.
+    expectConjugation(infinitiv: "schreien", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "schrIE")
+    expectConjugation(infinitiv: "schreien", conjugationgroup: .präteritumKonjunktivII(.secondSingular), expected: "schrIEst")
+    expectConjugation(infinitiv: "schreien", conjugationgroup: .präteritumKonjunktivII(.secondPlural), expected: "schrIEt")
     expectConjugation(infinitiv: "schreien", conjugationgroup: .perfektpartizip, expected: "geschrIEn")
     expectConjugation(infinitiv: "schreien", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "habe geschrIEn")
+
+    // A stem ending in -e absorbs the e of an -en ending: wir schrien, not schrieen.
+    // Both spellings were correct before the 1996 reform. Until 2026-07-20 Conjugator had
+    // no such rule: the participle above was hand-written into the ablaut group as a full
+    // override, which hid the defect there while leaving these plurals wrong.
+    expectConjugation(infinitiv: "schreien", conjugationgroup: .präteritumIndikativ(.firstPlural), expected: "schrIEn")
+    expectConjugation(infinitiv: "schreien", conjugationgroup: .präteritumIndikativ(.thirdPlural), expected: "schrIEn")
+    expectConjugation(infinitiv: "schreien", conjugationgroup: .präteritumIndikativ(.secondPlural), expected: "schrIEt")
+    expectConjugation(infinitiv: "schreien", conjugationgroup: .präteritumKonjunktivII(.firstPlural), expected: "schrIEn")
+
+    // The negative case, and the reason the rule tests the stem rather than the infinitive:
+    // schreien's Präsens stem is schrei, which takes the full ending. Keying off the
+    // infinitive, as hasSyllabicStamm does for -ern/-eln, would wrongly give wir schrein.
+    expectConjugation(infinitiv: "schreien", conjugationgroup: .präsensIndikativ(.firstPlural), expected: "schreien")
+    expectConjugation(infinitiv: "schreien", conjugationgroup: .präsenspartizip, expected: "schreiend")
   }
 
   @Test func schaffenAblaut() {

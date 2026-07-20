@@ -341,6 +341,37 @@ private final class Classifier {
         if match != nil {
           return solution
         }
+
+        // The derived pattern is not the only one that can work, so failing to match a shipping
+        // group is not proof that none reproduces the table. `derive` computes each slot's
+        // replacement by string arithmetic against the expected form, which makes it prefer the
+        // shortest replacement that lands: for anschreien it reads I from schrien, because
+        // schr + I + en spells it, and IE from schrie, where no ending follows. That split
+        // pattern verifies and matches nothing, so eight schreien derivatives proposed a new
+        // group -- while IE everywhere, the group schreien itself ships, verifies just as well
+        // now that Conjugator absorbs the ending-initial e (schrIE + en is schrIEn).
+        //
+        // So before giving up, try the shipping groups themselves against the full table. This
+        // runs only where the classifier would otherwise fabricate a group, which is a few dozen
+        // verbs per run rather than all 9,217, so the cost is not the 73-group scan it looks
+        // like. Verification is what makes preferring reuse safe here, exactly as it does above:
+        // a group is adopted only once it is known to conjugate the whole verb correctly.
+        for (name, ablauts) in sortedGroups {
+          install(word: word, family: familyKind.family(group: Self.syntheticGroupKey, region: region), prefixes: prefixes)
+          installAblauts(ablauts)
+          if verify(word: word, prefixes: prefixes, expectations: expectations).isEmpty {
+            return Solution(
+              markedInfinitiv: Self.marked(word: word, prefixes: prefixes, region: region),
+              familyCode: code,
+              ablautGroupName: name,
+              ablautGroupIsNew: false,
+              pattern: Self.pattern(from: ablauts)
+            )
+          }
+        }
+        install(word: word, family: familyKind.family(group: Self.syntheticGroupKey, region: region), prefixes: prefixes)
+        installAblauts(minimized)
+
         fallback = fallback ?? solution
       }
     }

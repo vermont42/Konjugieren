@@ -9028,8 +9028,8 @@
   <verb in="ver*schr^ei^ben" hi="574059" hp="y" ic="flexibility">
     <reading tn="prescribe" fa="s" ag="bleiben" />
   </verb>
-  <verb in="ver*schreien" hi="213772" hp="y" ic="wave">
-    <reading tn="decry" fa="w" />
+  <verb in="ver*schr^ei^en" hi="213772" hp="y" ic="wave">
+    <reading tn="decry" fa="s" ag="schreien" />
   </verb>
   <verb in="ver*schw^ei^gen" hi="230674" hp="y" ic="cooldown">
     <reading tn="conceal, fail to mention, keep quiet" fa="s" ag="bleiben" />

@@ -2,9 +2,7 @@
 # See docs/roadmap.md, "The tranche-2 deferrals".
 # verb	reason
 abscheren	needs an ablaut group that does not ship
-anschreien	needs an ablaut group that does not ship
 aufbraten	needs an ablaut group that does not ship
-aufschreien	needs an ablaut group that does not ship
 ausnützen	every gloss points at another entry rather than translating
 außbauen	archaic or pre-1996 orthography
 außbilden	archaic or pre-1996 orthography
@@ -13,7 +11,6 @@ außlegen	archaic or pre-1996 orthography
 beklimmen	needs an ablaut group that does not ship
 benützen	every gloss points at another entry rather than translating
 bestehenbleiben	every gloss points at another entry rather than translating
-bevorstehen	needs an ablaut group that does not ship
 beybringen	archaic or pre-1996 orthography
 beyfügen	archaic or pre-1996 orthography
 beygeben	archaic or pre-1996 orthography
@@ -23,13 +20,9 @@ beystehen	archaic or pre-1996 orthography
 beytragen	archaic or pre-1996 orthography
 beytreten	archaic or pre-1996 orthography
 breitschlagen	needs an ablaut group that does not ship
-festwachsen	needs an ablaut group that does not ship
 freikommen	needs an ablaut group that does not ship
-gebrechen	needs an ablaut group that does not ship
 grossschreiben	Swiss ss-spelling of a verb written with ß
-gutgehen	needs an ablaut group that does not ship
 heraufgehen	every gloss points at another entry rather than translating
-herausschreien	needs an ablaut group that does not ship
 heruntergehen	every gloss points at another entry rather than translating
 kahlscheren	needs an ablaut group that does not ship
 krummmachen	every gloss points at another entry rather than translating
@@ -38,7 +31,6 @@ liegenbleiben	every gloss points at another entry rather than translating
 maschineschreiben	archaic or pre-1996 orthography
 masshalten	Swiss ss-spelling of a verb written with ß
 massnehmen	Swiss ss-spelling of a verb written with ß
-niederschreien	needs an ablaut group that does not ship
 probefahren	archaic or pre-1996 orthography
 radfahren	archaic or pre-1996 orthography
 rangehen	every gloss points at another entry rather than translating
@@ -58,24 +50,17 @@ runterholen	every gloss points at another entry rather than translating
 runtermachen	every gloss points at another entry rather than translating
 runterstellen	every gloss points at another entry rather than translating
 rüberkommen	every gloss points at another entry rather than translating
-schiefgehen	needs an ablaut group that does not ship
 sitzenbleiben	every gloss points at another entry rather than translating
 spazierengehen	archaic or pre-1996 orthography
 theilhaben	archaic or pre-1996 orthography
 theilnehmen	archaic or pre-1996 orthography
-unterbleiben	needs an ablaut group that does not ship
 verbacken	needs an ablaut group that does not ship
-verrinnen	needs an ablaut group that does not ship
 verwringen	needs an ablaut group that does not ship
 vortrinken	needs an ablaut group that does not ship
 wachliegen	every gloss points at another entry rather than translating
 weiterbestehen	every gloss points at another entry rather than translating
-widerfahren	needs an ablaut group that does not ship
 wiederspiegeln	every gloss points at another entry rather than translating
-wundernehmen	needs an ablaut group that does not ship
-zubleiben	needs an ablaut group that does not ship
 zugrunderichten	every gloss points at another entry rather than translating
 zurückfahren	needs an ablaut group that does not ship
 zurückhaben	every gloss points at another entry rather than translating
 zusammenhelfen	needs an ablaut group that does not ship
-ähnlichsehen	needs an ablaut group that does not ship

@@ -59,6 +59,7 @@ ausziehen	h	move out, vacate
 behängen	h	hang, drape
 beiliegen	h	accompany
 beistehen	h	assist
+bevorstehen	h	be imminent, impend
 blankziehen	h	draw
 brachliegen	h	be fallow, empty, unused
 dabeistehen	h	stand by

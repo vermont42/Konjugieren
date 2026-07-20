@@ -1901,3 +1901,174 @@ mechanically distinguishable from *ringen*. The same trap is nearly free to dodg
 Design is in `prompts/uses_etymologies.md`. Concurrency is the tunable knob rather than shard size,
 per Josh: shards stay ~25 verbs so a resumed run has uniform units, and `MAX_CONCURRENT` starts at
 2 and rises toward whatever a five-hour window sustains.
+
+## The vowel-stem -n rule, and a fix that did not unblock what it was supposed to (2026-07-20)
+
+The roadmap called this "the highest-value `Conjugator` fix outstanding": a strong verb whose stem
+ends in a vowel takes `-n`, not `-en`. *wir schrien*, not *schrieen*. Nine verbs were said to be
+waiting on it. It took about fifteen lines, it works, and it unblocked none of them.
+
+### The rule
+
+A stem already ending in `-e` absorbs the `e` of an `-en` ending. Both doubled spellings were
+correct until the 1996 reform, which is why sources disagree: *geschrieen* became *geschrien*.
+
+Two details decided the implementation. First, the test is on the **stem**, not the infinitive.
+`hasSyllabicStamm`, the existing analogue for `-ern`/`-eln`, keys off the infinitive, and copying
+that would have been wrong here: *schreien*'s Präsens stem is *schrei*, which takes the full ending
+(*wir schreien*), while only its Präteritum stem *schrie* contracts. The negative case is now
+pinned in `ConjugatorTests` precisely because it is the one a future session would break.
+
+Second, the comparison has to be case-insensitive. This corpus marks ablaut regions in uppercase,
+so the ablauted stem reads `schrIE`, and `hasSuffix("e")` returns false on it. That would have been
+a silent no-op: every test still passing, the bug untouched.
+
+The payoff beyond the plural: *schreien*'s ablaut group could drop its full-override participle,
+`IE,bA,dA|geschrIEn*,pp` becoming `IE,bA,dA,pp`. An override spells out a literal word, so no
+derivative can reuse it — the same pathology that `haben`'s nine overrides had, cleared in step 8b.
+*verschreien*, deferred that morning for exactly this reason, was fixed onto the repaired group.
+
+### The part that did not work
+
+The eight blocked derivatives — *anschreien*, *anspeien*, *aufschreien* — still want a group that
+does not ship, and the run after the fix proposed the identical pattern as before:
+`I,b1p,b3p,dA,pp|IE,b1s,b2p,b2s,b3s`.
+
+Reading kaikki's actual table for *schreien* explains why, and the diagnosis in the roadmap was
+simply wrong. Wiktionary's Konjunktiv II is *schrie / schriest / schrie / schrien / schriet /
+schrien* — identical to the indicative, tagged *rare*. The app ships *schriee / schrieest / …*, the
+mechanical Präteritum-stem-plus-`-e` formation the grammars give.
+
+So that exotic pattern was never about the `-n` rule. Decode it: `I` applies to `dA`, all of
+Konjunktiv II, producing *schrI* + *e* = *schrie*. The whole contraption exists to remove one `-e-`
+from the Konjunktiv II. It is a workaround for an **editorial disagreement**, not for a missing
+engine rule, and no amount of `Conjugator` work will dissolve it. Somebody has to decide whether
+*ich schriee* or *ich schrie* is the Konjunktiv II of *schreien*, and then all nine verbs follow
+from that one answer.
+
+The roadmap now says so, and the tranche-2 deferral note that carried the wrong diagnosis was
+corrected rather than left to send the next session after the same phantom.
+
+### What the fix is worth anyway
+
+The 1p/3p Präteritum really was wrong and now is right, for *schreien* and every future derivative
+of it. One full override left the data. And the residual disagreement went from "three ablaut groups
+are wrong and remain unexamined" to a single named question with a yes/no answer. That last part is
+most of the value: the gap did not close, but it stopped being mysterious.
+
+At-odds held at 8 across the whole change; 210 tests pass.
+
+## Generalizing the rule dissolved the editorial question (2026-07-20)
+
+Continuing from the entry above, which ended by declaring the *schreien* residue an editorial call
+for Josh: is the Konjunktiv II *ich schriee* or *ich schrie*? He asked the right question back,
+which was whether one is more common, and answering it properly showed the question should never
+have been asked.
+
+### Measuring it, and the confound that nearly reversed the answer
+
+Only one of the two candidates is measurable. *Schrie* is also the indicative Präteritum, so
+counting the string says nothing about the subjunctive. *Schriee* is unambiguous. It occurs **zero
+times** in the 17 MB corpus; so do *schrieest* and *spiee*.
+
+The trap: *schrieen* occurs **59** times, which reads as support for the uncontracted forms. It is
+not. This corpus is overwhelmingly pre-1996 — Luther 1912, Goethe 1774, Grimm 1921, Nietzsche,
+Westphalia 1648 — and *schrieen* is the **old indicative plural spelling** of *schrien*. A corpus
+that predates the reform cannot adjudicate a post-reform orthography question, and the raw count
+points the wrong way if you forget that.
+
+The documentary evidence was one-sided: de.wiktionary's `Flexion:schreien` gives the contracted
+paradigm with no alternatives and no *selten* marking, English Wiktionary agrees, and kaikki shows
+*speien* running parallel with *spie*.
+
+### The question was a scoping bug wearing a costume
+
+The real finding is that *schrie* versus *schriee* is not a paradigm choice at all. It is the same
+orthographic rule from the previous entry, scoped one notch too narrowly. I had written it as "a
+stem ending in `-e` absorbs the `e` of an `-en` ending". The actual rule is "a stem ending in `-e`
+absorbs an **ending-initial** `e`":
+
+    schrie + e   -> schrie      (Konjunktiv II 1s/3s)
+    schrie + est -> schriest    (Konjunktiv II 2s)
+    schrie + et  -> schriet     (Konjunktiv II 2p)
+    schrie + en  -> schrien     (already handled)
+
+Independent confirmation that it is general and not a *schreien* special case: *ich knie*, not *ich
+kniee* — weak verb, present tense, same absorption. German does not write that `ee` across the
+boundary, in any tense or family.
+
+Generalizing turned one narrow conditional into a small helper returning the shortened ending, used
+at both call sites. Results: *schreien* now verifies against Wiktionary **with the encoding it
+ships**, `shippedEncodingFailed` false and `ablautGroupIsNew` false, where both had been true. The
+at-odds count went **8 → 7**. And the category "shipping strong or mixed verbs needing an ablaut
+group that does not ship" went from 1 to **0**, which had never been empty before.
+
+The general lesson is one this repo keeps relearning from the other direction: when a rule you just
+wrote leaves a residue that looks like a judgment call, suspect the rule's scope before accepting
+the judgment call. An editorial decision is a bad thing to spend when a missing case is what you
+actually have. I had already written the roadmap entry declaring it Josh's call, and it was wrong.
+
+### The eight are still blocked, for a third reason
+
+*anschreien*, *anspeien*, *aufschreien* and friends still propose the exotic
+`I,b1p,b3p,dA,pp|IE,b1s,b2p,b2s,b3s`, even though `IE,bA,dA,pp` — shipping as `ag="schreien"` —
+must now verify for them, their base having just verified with it.
+
+This is now a **classifier preference**, not an engine gap, and the diagnosis is precise. Step 8b
+taught the classifier to prefer a *region* whose group already ships, keeping shortest-region as
+the tiebreak. Both candidates here use the same region, `ei`, so the preference cannot discriminate
+and the tiebreak picks the exotic one. Extending 8b's preference from regions to whole *patterns*
+should finish it: when several verify, prefer one that already ships.
+
+That is three different diagnoses for the same eight verbs in one day — missing `-n` rule, then
+editorial disagreement, then classifier tiebreak — of which the first two were wrong. Each was
+written down confidently. Worth remembering next time a stated cause feels settled.
+
+## The third fix, and why the classifier could not see the answer (2026-07-20)
+
+The generalized absorption rule made *schreien* verify with the encoding it ships, but its eight
+derivatives went on proposing the same exotic group. Josh asked for the classifier fix too.
+
+The cause was not a tiebreak, which is what the previous entry predicted. It is in `derive`, which
+computes each slot's replacement by string arithmetic against Wiktionary's form and takes the
+shortest that lands. For *anschreien* it reads `I` from *schrien*, because *schr* + `I` + *en*
+spells it exactly, and `IE` from *schrie*, where no ending follows to absorb anything. The result
+is a pattern split by person that verifies perfectly and matches no shipping group. Meanwhile `IE`
+everywhere — the group *schreien* itself ships — verifies just as well now that the Conjugator
+absorbs the ending-initial e. The classifier never tried it, because it only ever compared its own
+derived pattern against the shipping list.
+
+So the fix generalizes step 8b's principle one notch: before fabricating a group, **try the
+shipping groups themselves against the full table**. That sounds expensive, a 73-group scan per
+verb, and it is not: it runs only in the branch where the classifier was about to invent a group,
+which is a few dozen verbs out of 9,217. Runtime went 34s to 38s.
+
+Results, none of which required touching data:
+
+- incoming verbs needing a new ablaut group: **37 → 18**
+- distinct proposed patterns: **23 → 14**
+- `tranche2-deferred.txt`'s ablaut-group category: **26 → 11**
+
+Four clusters collapsed and only one was the target. Besides the *schreien* eight, *gutgehen* and
+*schiefgehen*, *unterbleiben* and *zubleiben*, and *festwachsen* and *widerfahren* all turned out
+to be verbs whose correct group was already in the corpus and simply never attempted. The pattern
+of the whole day repeats: the blocker was not missing knowledge, it was a search that stopped early.
+
+### An artifact worth flagging rather than fixing
+
+The classifier now assigns the *schreien* family to `ag="bleiben"`, not `ag="schreien"`. With its
+full override gone, *schreien*'s group is byte-identical to *bleiben*'s, `IE,bA,dA,pp`, and the
+scan takes the alphabetically first among equals. *bleiben* carries 126 verbs; *schreien* carries 2.
+
+Merging them is the obvious tidy-up and was deliberately not done. Ablaut groups are **user-facing**:
+each has an `AblautGroupInfo.<name>` description with localized strings and a browsable entry, so
+retiring *schreien* deletes something a reader can see. That is Josh's call, not a data cleanup.
+
+### Three diagnoses, two wrong
+
+Worth recording plainly, since all three were written down with confidence on the same day. The
+eight verbs were blocked by, in order: a missing vowel-stem `-n` rule (real, but not the blocker),
+an editorial disagreement over Konjunktiv II (not real — a scoping bug in the rule I had just
+written), and a classifier that never tried the answer it already had (the actual cause). The first
+two are in the git history as corrected roadmap entries rather than quietly rewritten, because the
+sequence is the lesson: a confident diagnosis in this repo has been wrong twice in one afternoon.

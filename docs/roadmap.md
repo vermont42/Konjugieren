@@ -179,10 +179,12 @@ the choice between them is about which data the corpus has to carry.
 ### Still open
 
 - **26 verbs need a genuinely new ablaut group.** Mostly singletons now. The largest cluster is 8
-  verbs on `I,b1p,b3p,dA,pp|IE,b1s,b2p,b2s,b3s` — *anschreien*, *anspeien*, *aufschreien* — which
-  is the *schreien* problem already recorded under "Known gaps": a strong verb whose stem ends in
-  a vowel takes `-n`, not `-en`, and `Conjugator` has no such rule. Fix that rule and these 8 and
-  their base collapse together. The rest need judgment one verb at a time.
+  verbs on `I,b1p,b3p,dA,pp|IE,b1s,b2p,b2s,b3s` — *anschreien*, *anspeien*, *aufschreien*. That
+  was diagnosed as the missing vowel-stem `-n` rule. **Cleared 2026-07-20**, though it took three
+  fixes rather than one: the `-n` rule, then generalizing it to any ending-initial `e`, then
+  teaching the classifier to try shipping groups against the full table before inventing one. The
+  category fell from 26 verbs to **11**. See "Known gaps" below. The rest need judgment one verb
+  at a time.
 - **193 verbs are dual-auxiliary and ship one reading.** `verbdata/tranche2-dual-auxiliary.txt` is
   the worklist. It is **historical and cumulative** — once a verb ships the classifier skips it,
   so a row that leaves the file can never be rediscovered. It is now written as a union and rows
@@ -305,14 +307,52 @@ Small things the pipeline surfaced that no plan currently owns. None blocks the 
   diagnosis and left both out: kaikki lists *only* the strong participle for these two, so
   nothing verifies. *salzen* looks identical but kaikki also lists the weak *gesalzt*, so it
   verified weak and shipped weak.
-- **A strong verb whose stem ends in a vowel takes `-n`, not `-en`** — *wir schrien*, *wir
-  spien*. `Conjugator` has no such rule, so shipping *schreien* smuggles the repair into its
-  ablaut group as a full override (`geschrIEn*,pp`) and still gets the 1p/3p Präteritum wrong.
-  This is the same shape as the `-ern`/`-eln` rule `hasSyllabicStamm` already implements, and
-  fixing it would let *schreien* become a clean `IE,bA,dA,pp` and unblock *speien*, which step 7
-  deferred rather than import a second copy of the workaround. **This is now the highest-value
-  `Conjugator` fix outstanding**: step 8b left 26 verbs needing a new ablaut group, and 8 of them
-  are this same pattern (*anschreien*, *anspeien*, *aufschreien*, …). One missing rule, nine verbs.
+- ~~**A strong verb whose stem ends in a vowel takes `-n`, not `-en`.**~~ **Fixed 2026-07-20**
+  in `Conjugator.absorbsEnEnding`. A stem ending in `-e` absorbs the `e` of an `-en` ending:
+  *wir schrien*, not *schrieen*, and *geschrien*, not *geschrieen*. Both doubled forms were
+  correct before the 1996 reform, which is why sources disagree. The test is on the **stem**, not
+  the infinitive as `hasSyllabicStamm` does for `-ern`/`-eln`, because the `e` appears only after
+  ablaut: *schreien*'s Präsens stem is *schrei* and takes the full ending (*wir schreien*), while
+  its Präteritum stem is *schrie*. It is lowercased before testing, since an ablauted stem carries
+  its replacement in uppercase (`schrIE`). *schreien*'s group dropped its full-override participle
+  (`IE,bA,dA|geschrIEn*,pp` → `IE,bA,dA,pp`), and *verschreien* was fixed onto it.
+
+  **Generalized the same day, which is what actually settled it.** The first cut scoped the rule
+  to the `-en` ending, and *schreien* went on failing the oracle over its Konjunktiv II: Wiktionary
+  gives *schrie / schriest / schrie / schrien / schriet / schrien*, identical to the indicative,
+  while the app produced *schriee / schrieest / …*. That looked like an editorial disagreement and
+  was written up as one. It was not. It is the same orthographic rule scoped too narrowly: a stem
+  ending in `-e` absorbs an **ending-initial** `e`, not merely the `e` of `-en`. So *schrie* + *e*
+  is *schrie*, *schrie* + *est* is *schriest*. Generalizing it made *schreien* verify with the
+  encoding it ships, took the at-odds count from 8 to **7**, and emptied the "shipping strong verb
+  needing an ablaut group that does not ship" category, which had stood at 1.
+
+  Evidence for the contracted paradigm, since it changed a pinned test expectation: de.wiktionary's
+  `Flexion:schreien` gives it with no alternatives and no *selten* marking, English Wiktionary
+  agrees, kaikki shows *speien* parallel (*spie*), and *schriee* occurs zero times in the 17 MB
+  corpus. A weak verb shows the same absorption independently: *ich knie*, not *ich kniee*.
+
+  **The eight derivatives then needed a third fix, in the classifier.** Even with the rule
+  generalized they went on proposing `I,b1p,b3p,dA,pp|IE,b1s,b2p,b2s,b3s`, because `derive`
+  computes each slot's replacement by string arithmetic and takes the shortest that lands: `I`
+  from *schrien*, since *schr* + `I` + *en* spells it, but `IE` from *schrie*, where no ending
+  follows. That split verifies and matches nothing. Step 8b's preference could not discriminate,
+  since both candidates use the same region, `ei`.
+
+  The fix generalizes 8b's principle one step further: before fabricating a group, **try the
+  shipping groups themselves against the full table**. It runs only where the classifier would
+  otherwise invent one, a few dozen verbs per run rather than all 9,217, so it cost 4 seconds.
+  Incoming verbs needing a new group fell **37 → 18** and proposed patterns **23 → 14**;
+  `tranche2-deferred.txt`'s ablaut-group category fell **26 → 11**. Four clusters collapsed,
+  only one of which was the target: the *schreien* eight, plus *gutgehen*/*schiefgehen*,
+  *unterbleiben*/*zubleiben*, and *festwachsen*/*widerfahren*.
+
+  **One consequence to decide.** With the override gone, `schreien`'s group is byte-identical to
+  `bleiben`'s (`IE,bA,dA,pp`), and `bleiben` carries 126 verbs against `schreien`'s 2. The
+  classifier therefore assigns the family to `bleiben`, alphabetically first among equals. Merging
+  them would tidy the data but is **user-facing**: each group has an `AblautGroupInfo.<name>`
+  description and a browsable entry, so retiring `schreien` removes something a reader can see.
+  Left alone deliberately.
 - **Three ablaut groups are wrong** — *schaffen*, *schreien*, *vergleichen* verify only via a
   group that does not ship, and remain unexamined. *hängen* was the fourth and is fixed: it was a
   `dual_auxiliary.md` class-4 verb and now ships two readings.

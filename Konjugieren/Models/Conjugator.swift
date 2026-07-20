@@ -255,7 +255,32 @@ enum Conjugator {
     return head + (prefixes.takesGe ? "ge" : "") + base + ending
   }
 
+  // A stem already ending in -e absorbs an ending-initial e, because German does not write
+  // that ee across the boundary: schrie + en is schrien, schrie + est is schriest, and
+  // schrie + e is schrie, which makes the Konjunktiv II singular identical to the
+  // Präteritum. The doubled spellings were correct until the 1996 reform, which is why older
+  // sources disagree; the corpus in corpus/ is mostly pre-reform and writes schrieen for the
+  // plain indicative plural.
+  //
+  // The test is on the stem rather than the infinitive, unlike hasSyllabicStamm above,
+  // because the e appears only after ablaut: schreien's Präsens stem is schrei and takes the
+  // full ending (wir schreien), while its Präteritum stem is schrie (wir schrien). It is
+  // lowercased because an ablauted stem carries its replacement in uppercase, so the stem
+  // here reads schrIE and a case-sensitive test would silently never fire.
+  //
+  // The rule is general rather than a schreien special case, though schrie and spie are the
+  // only stems it reaches today: a weak verb shows it too, in ich knie rather than kniee.
+  private static func absorbingLeadingE(stamm: String, ending: String) -> String? {
+    guard ending.hasPrefix("e"), stamm.lowercased().hasSuffix("e") else {
+      return nil
+    }
+    return String(ending.dropFirst())
+  }
+
   private static func adjustPerfektpartizipEnding(stamm: String, ending: String, family: Family) -> String {
+    if let absorbed = absorbingLeadingE(stamm: stamm, ending: ending) {
+      return absorbed
+    }
     guard ending == "t", needsEpentheticE(stamm: stamm) else {
       return ending
     }
@@ -320,6 +345,10 @@ enum Conjugator {
     conjugationgroup: Conjugationgroup,
     stammIsAblauted: Bool
   ) -> String {
+    if let absorbed = absorbingLeadingE(stamm: stamm, ending: ending) {
+      return absorbed
+    }
+
     if ending == "en" {
       return pluralEnding(reading: reading)
     }

@@ -69,6 +69,14 @@ Each of these is enough to start. The prompts are written to be self-contained.
 > records the exact post-step-4 state of the `ay` attribute and the three `ay="r"` verbs you must
 > not disturb.
 
+**Prefix coverage in the Families tab** — independent of the sequence above; not gated on 8b.
+
+> Please execute `prompts/prefix_coverage.md`. It is self-contained. Step 3's design is already
+> decided and the rejected alternatives are recorded with reasons — inherit that choice rather
+> than re-opening it. Steps 1 and 2 are content work (prefix etymologies) and the judgment there
+> is yours. Write the coverage test before starting, not after: it fails by construction today,
+> and it is the only check that pins the defect.
+
 **Step 8b — clear the tranche-2 deferrals**
 
 Step 8 imported 2,303 verbs by rule and deliberately left four groups behind, each needing

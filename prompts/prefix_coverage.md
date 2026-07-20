@@ -1,5 +1,20 @@
 # Close the prefix-coverage gap in the Families tab
 
+## Where this sits
+
+Self-contained: you need nothing from `docs/roadmap.md` to do this work, and this pass is not
+gated on any step in it. But two references below will otherwise be opaque.
+
+**Steps 7 and 8** are the two verb-import tranches of that roadmap, both executed 2026-07-19.
+Step 7 added 78 missing strong base verbs; step 8 added 2,315 prefixed derivatives of verbs the
+app already conjugated. Together they took the corpus from 990 verbs to 3,383 — a 3.4× growth
+that is why a hand-curated list of 25 prefixes stopped being adequate. A **tranche** is one such
+import. **Step 8b** is the not-yet-done cleanup of what step 8 deferred, and it owns verb-data
+questions; this pass does not.
+
+The narrative of both imports, including why the prefix problem was noticed by eye rather than by
+a test, is in `docs/blog_notes.md` under the 2026-07-19 entries. You do not need to read it.
+
 ## Status
 
 **Not executed.** Written 2026-07-19, immediately after the step-8 import that caused most of
@@ -32,9 +47,13 @@ nobody would notice. The tranches added 760 uncovered separable verbs and 186 ne
 prefixes. The inseparable side gained 91 verbs but **zero** new prefixes, which is the single
 most useful fact in this document; see below.
 
-Re-derive rather than trusting these numbers, per the house rule. Read the prefix off the first
-`<reading>`'s `in` (falling back to the `<verb>`'s), strip `^`, and take the run before the first
-`+` or `*`.
+Re-derive rather than trusting these numbers. Prose counts in this repo go stale — three
+documents claimed 989 verbs well after the corpus reached 990, and one of them shipped that
+number to the App Store — so `Konjugieren/Models/Verbs.xml` is the only source of truth. The
+convention is `docs/verb-sources.md` § "Verify counts, do not trust them".
+
+To re-derive: read the prefix off the first `<reading>`'s `in` (falling back to the `<verb>`'s),
+strip `^`, and take the run before the first `+` or `*`.
 
 ## Why the two classes get different treatment
 
@@ -247,10 +266,13 @@ conventions in `CLAUDE.md`. It is the only new user-facing string in this step.
 - **A verb may appear in exactly one section.** Worth asserting alongside the count test, since
   the `.other` bucket is defined by exclusion and an off-by-one in the predicate would either
   duplicate or drop verbs without changing the total in an obvious way.
-- The classify-and-verify pipeline is **irrelevant here** — nothing in this pass touches
-  `Verbs.xml`, `Conjugator`, or an ablaut group. Do not spend the 90 seconds; the at-odds count
-  cannot move. Verify by screenshot instead: `scripts/take_screenshots.sh` and
-  `docs/screenshot-playbook.md`, or the skill's verify half against the Families tab.
+- **Skip the classify-and-verify pipeline.** That is the three-stage check every verb-data change
+  in this repo has to run (`docs/roadmap.md` § "The one check that runs through all of it"), and
+  it guards a count of shipping verbs that disagree with Wiktionary — currently 8. Nothing in this
+  pass touches `Verbs.xml`, `Conjugator`, or an ablaut group, so that count cannot move. Running
+  it anyway costs 90 seconds and teaches the habit of performing rituals that do not apply.
+  Verify by screenshot instead: `scripts/take_screenshots.sh` and `docs/screenshot-playbook.md`,
+  or the `ios-build-verify` skill's verify half against the Families tab.
 
 ## What this pass is not
 

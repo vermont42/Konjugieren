@@ -13,6 +13,10 @@ corpus/*
 !corpus/working/
 corpus/working/*
 !corpus/working/*.py
+# Same reasoning as the scripts: the mining spec is knowledge a fresh clone would
+# otherwise lose, and Phase 4 spans more than one session, so the subagents' brief
+# has to live in git rather than in a scratchpad.
+!corpus/working/*.md
 # ios-build-verify
 build.log
 .claude/ios-build-verify.*

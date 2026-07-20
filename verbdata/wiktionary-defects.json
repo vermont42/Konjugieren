@@ -123,5 +123,48 @@
       "authority": "de.wiktionary",
       "checked": "2026-07-20"
     }
+  ],
+  "_screen_of_incoming_pool": [
+    "Screened 2026-07-20, all 5,218 verified incoming verbs, for the auto-generated-weak-table",
+    "defect. Result: ONE genuine instance (rauswaschen, below). The incoming pool is far cleaner",
+    "than the shipping corpus was, where 11 of 38 candidates were defects.",
+    "",
+    "Method, and its limits, so a future session need not redo the dead ends:",
+    "  1. kaikki's own class tag is USELESS here. Zero weak-classified verbs carry a 'N strong'",
+    "     tag, because the tag comes from the strong template -- exactly what a corrupt page is",
+    "     missing. The corruption is invisible to the metadata that would flag it.",
+    "  2. Prefix + known-strong-base: of 1,998 prefixed incoming weak verbs, the base is a known",
+    "     strong verb for exactly 1 (rauswaschen). 493 bases were unknown to the corpus; resolving",
+    "     them against kaikki found only spalten, which is wrinkle 4, not corruption.",
+    "  3. de.wiktionary does NOT categorize verbs as strong or weak, so there is no category to",
+    "     intersect. Checked; the route does not exist.",
+    "  4. de.wikipedia's 'Liste starker Verben' works as a broad net: 566 bolded verb tokens,",
+    "     intersected against all 5,035 incoming weak/-ieren verbs, gave 21 hits. Most are expected,",
+    "     because the list bolds weak causatives beside their strong relatives -- traenken beside",
+    "     trinken, saeugen beside saugen, henken beside haengen. Arbitrating the genuine maybes",
+    "     against de.wiktionary cleared schrecken, abschrecken, aufschrecken, kreischen, heischen",
+    "     and zerspalten as correctly weak.",
+    "",
+    "The blind spot that remains: a BARE strong verb whose page is corrupt has no prefix and no",
+    "base to compare against, and would be caught only if it appears in the Wikipedia list. That",
+    "list is thorough for standard strong verbs, so coverage is good but not provable.",
+    "",
+    "Two findings that are NOT this defect, recorded so they are not rediscovered as one:",
+    "  - abspalten, aufspalten: de.wiktionary gives 'spaltete ab / abgespalten', weak Praeteritum",
+    "    with strong participle. That is wrinkle 4, the mahlen/spalten class the model cannot",
+    "    express. Same status as verglimmen in 'deferred' above.",
+    "  - lobpreisen: kaikki lists BOTH paradigms (lobpreiste/gelobpreist and lobpries/lobgepriesen),",
+    "    so the weak classification verified legitimately. Dual-paradigm verbs are an editorial",
+    "    choice at import, not a defect; see verb-sources.md step 5 on melken, weben, sieden."
+  ],
+  "incoming": [
+    {
+      "verb": "rauswaschen",
+      "wiktionary": "rauswaschte / rausgewascht",
+      "correct": "wusch raus / rausgewaschen",
+      "authority": "no de.wiktionary entry; base waschen is strong and the compound is transparent, identical to reinwaschen which was repaired the same day",
+      "checked": "2026-07-20",
+      "note": "NOT YET SHIPPING. Encode it strong on import (raus+w^a^schen, ag=wachsen); do not trust the kaikki table, which gives non-words."
+    }
   ]
 }

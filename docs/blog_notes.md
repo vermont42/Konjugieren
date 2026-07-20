@@ -2072,3 +2072,57 @@ an editorial disagreement over Konjunktiv II (not real — a scoping bug in the 
 written), and a classifier that never tried the answer it already had (the actual cause). The first
 two are in the git history as corrected roadmap entries rather than quietly rewritten, because the
 sequence is the lesson: a confident diagnosis in this repo has been wrong twice in one afternoon.
+
+## Screening the incoming pool, and three dead ends worth recording (2026-07-20)
+
+The morning's finding — English Wiktionary auto-generates weak conjugation tables for verb pages
+nobody supplied a strong template for — left an obvious worry: 11 of 38 shipping candidates were
+defects, and 5,218 verified incoming verbs had never been checked. Tranche 3 will verify against
+those same tables.
+
+The pool turns out to be nearly clean. **One genuine instance: *rauswaschen*.** kaikki gives it
+*rauswaschte / rausgewascht*, neither of which is German, while its base *waschen* is correctly
+strong — the identical shape to *reinwaschen*, repaired that morning. It is not yet shipping, so
+this is a note to the importer rather than a bug.
+
+### The dead ends, which are the useful part
+
+**kaikki's own class tag cannot flag this.** Of all incoming weak-classified verbs, exactly zero
+carry a `N strong` tag. That looked at first like evidence of cleanliness and is nothing of the
+kind: the tag is emitted by the strong template, which is precisely what a corrupt page lacks. The
+metadata that would identify the defect is missing for the same reason the defect exists. A signal
+absent from the corrupt population is not a signal.
+
+**de.wiktionary does not categorize verbs as strong or weak.** I expected a category to intersect,
+which would have made this a two-request screen. Checking the categories on *schreien* shows
+`Verb (Deutsch)` and `Verb untrennbar (Deutsch)` but nothing about ablaut. The route does not exist.
+
+**The prefix-and-base screen is narrow but decisive where it applies.** Of 1,998 prefixed incoming
+weak verbs, the base is a known strong verb for exactly one. 493 further bases were unknown to the
+corpus; resolving each against kaikki surfaced only *spalten*, which is wrinkle 4 rather than
+corruption.
+
+**de.wikipedia's "Liste starker Verben" is the broad net that worked.** 566 bolded verb tokens
+intersected against 5,035 incoming weak verbs gave 21 hits, most of them expected once you notice
+what the list is: it bolds weak *causatives* beside their strong relatives — *tränken* beside
+*trinken*, *säugen* beside *saugen*, *henken* beside *hängen*. Those are correctly weak. Arbitrating
+the genuine maybes against de.wiktionary cleared *schrecken*, *abschrecken*, *aufschrecken*,
+*kreischen*, *heischen* and *zerspalten*.
+
+### Two things that look like the defect and are not
+
+*abspalten* and *aufspalten*: de.wiktionary gives *spaltete ab / abgespalten*, weak Präteritum with
+strong participle. That is wrinkle 4, the *mahlen*/*spalten* class the model cannot express, and it
+now has company — *verglimmen* landed there this morning.
+
+*lobpreisen*: kaikki lists **both** paradigms, *lobpreiste/gelobpreist* and *lobpries/lobgepriesen*,
+so the weak classification verified legitimately. Dual-paradigm verbs are an editorial choice at
+import, exactly as tranche 1 recorded for *melken*, *weben* and *sieden*.
+
+### What remains uncovered, stated plainly
+
+A **bare** strong verb whose page is corrupt has no prefix and no base to compare against, and is
+caught only if the Wikipedia list happens to name it. That list is thorough for standard strong
+verbs, so coverage is good — but it is not provable, and saying "the pool is clean" would overclaim.
+The honest statement is that every avenue available without bulk-fetching de.wiktionary has been
+tried, and one verb came out.

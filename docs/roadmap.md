@@ -390,8 +390,18 @@ Small things the pipeline surfaced that no plan currently owns. None blocks the 
   independently edited. The triage discriminator: a weak derivative of a strong base is normally
   denominal or deadjectival (*umringen* from *Ring*, *bemitleiden* from *Mitleid*) and genuinely
   weak; a transparent prefix + strong verb compound encoded weak is the defect. Twenty-two of the
-  thirty-eight candidates were vindicated this way. **The 5,650 incoming verbs have never been
-  screened for this**, and the same generated tables are what tranche 3 will verify against.
+  thirty-eight candidates were vindicated this way.
+
+  **The incoming pool was screened the same day and is nearly clean: one instance,
+  *rauswaschen*, which is not yet shipping.** Method and dead ends are recorded in
+  `wiktionary-defects.json` under `_screen_of_incoming_pool`; two are worth knowing before
+  repeating the work. kaikki's own class tag cannot flag this, because the tag is emitted by the
+  strong template a corrupt page is missing, so the metadata that would identify the defect is
+  absent for the same reason the defect exists. And de.wiktionary does not categorize verbs as
+  strong or weak, so there is no category to intersect; de.wikipedia's "Liste starker Verben" is
+  the usable net, once you notice it bolds weak causatives beside their strong relatives
+  (*tränken* beside *trinken*). The residual blind spot: a **bare** strong verb with a corrupt
+  page has no prefix and no base to compare against, and is caught only if that list names it.
 - **Three modals resist the pipeline** — *sollen*, *bedürfen*, *vermögen* use full-override
   ablaut groups the classifier cannot derive. Probably correct as shipped; unverified.
 - ~~**`prompts/prefix_coverage.md` is written and not executed.**~~ **Executed 2026-07-19**,

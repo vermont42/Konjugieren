@@ -584,6 +584,13 @@ goes stale, and a stale count is worse than none because it reads as authoritati
 It is fenced rather than block-quoted so it can be copied as-is; the outer fence uses four
 backticks because the prompt contains a fenced block of its own.
 
+**It references the brief; it must never restate it.** An earlier version summarized the brief's
+rules for convenience — including that `truncated: false` "means `text` is the complete sentence"
+— and when the brief was corrected on 2026-07-20 the summary stayed behind as a divergent copy.
+A stale claim here is worse than one in the brief, because it arrives first in a fresh session
+and outranks the file it contradicts. Any sentence in this block that could instead be a pointer
+to `MINING_SPEC.md` should be one.
+
 ````
 Continue Phase 4 of `prompts/uses_etymologies.md` for Konjugieren. Read that file's Phase 4
 "As built" section first — it holds the resume protocol, the cost calibration, and the
@@ -603,11 +610,11 @@ python3 corpus/working/build_mining_shards.py
 ```
 
 Mine the remaining shards at concurrency 2, lowest number first, one subagent per shard.
-Point each subagent at `corpus/working/MINING_SPEC.md` and its own shard, and stress two
-things: everything it needs is joined into the shard, so it should open no other file
-(`truncated` is false for ~97% of candidates, meaning `text` is the complete sentence to
-quote verbatim); and root and prefix text is reused verbatim, with only the joining prose
-authored.
+Launch each with the per-shard prompt recorded in Phase 4's "As built" section, substituting
+the shard number — do not compose your own, and do not restate the brief's rules in it. The
+brief is `corpus/working/MINING_SPEC.md` and it is authoritative; anything a launch prompt
+says about `truncated`, about what is reused versus authored, or about candidate selection is
+a second copy that will drift out of date and then contradict it.
 
 Budget roughly 2 session points per shard. You cannot introspect usage — ask me to paste
 `~/Desktop/usage.png` before starting and every few waves, and label any figure you derive

@@ -434,6 +434,94 @@ def sentences(text):
     return parts
 
 
+# GERMAN: extraction furniture, stripped from the stored quotation.
+#
+# Roughly a quarter of candidates carried debris that is not part of the sentence at all: verse
+# numbers, legal paragraph numbers, plenary heckles, two-column page markers, Gutenberg emphasis
+# underscores. Phase 4 subagents were rejecting otherwise-good sentences over it, and a rejected
+# candidate is unrecoverable — nothing records which sentence was passed over — so cleaning here
+# raises yield in a way a later cleanup pass cannot.
+#
+# Every rule is scoped to the documents where the artifact is unambiguous, because the same
+# pattern is legitimate text elsewhere. A leading integer is a verse number in the Luther bible
+# and a plain numeral in a ministry report, so 1,689 of the 1,711 leading-number candidates are
+# stripped and the other 22 are left alone.
+#
+# Two lessons from measuring before writing these, both of which would have caused silent damage:
+#
+#   * A "speaker label" rule keyed on `^Name:` decapitates ordinary German. "Deshalb: Nach der
+#     Ampel links abbiegen." and "Nur: Seit über zwei Jahren…" both match, and neither is a
+#     label. The real artifact is a speaker name followed by a column marker — `Schrodi (A)` —
+#     so that is what the rule matches.
+#   * Only *leading* runs are stripped, never mid-sentence parentheticals. A heckle at the head
+#     precedes the sentence; one in the middle may be something the speaker said.
+#
+# The underscore rule is the sole exception to leading-only, because Gutenberg's `_word_` is
+# emphasis markup rather than content and would otherwise ship into the app as literal
+# underscores. It removes the delimiters and keeps the word.
+HECKLE = r"Beifall|Zuruf|Lachen|Heiterkeit|Widerspruch|Unruhe|Gegenruf|Zurufe"
+LEADING_FURNITURE = (
+    # (compiled pattern, predicate on the document's relative path)
+    (re.compile(r"^\d{1,3}\s+(?=[A-ZÄÖÜ])"), lambda rel: "luther-bible" in rel),
+    (re.compile(r"^\(\d+\)\s*"), lambda rel: "grundgesetz" in rel or "verfassung" in rel),
+    (re.compile(rf"^\((?:{HECKLE})[^)]*\)\s*"), lambda rel: "plenarprotokoll" in rel),
+    # A heckle with an attributed speaker: "(Filiz Polat [BÜNDNIS 90/DIE GRÜNEN]: Sagen Sie …)"
+    (re.compile(r"^\([^)]*\[[^\]]*\][^)]*\)\s*"), lambda rel: "plenarprotokoll" in rel),
+    # Speaker name immediately before a column marker, and the bare marker itself.
+    (re.compile(r"^[A-ZÄÖÜ][\wÄÖÜäöüß.\-]*(?:\s+[A-ZÄÖÜ][\wÄÖÜäöüß.\-]*){0,3}\s*\(\s*[A-D]\s*\)\s*"),
+     lambda rel: "plenarprotokoll" in rel),
+    (re.compile(r"^\(\s*[A-D]\s*\)\s*"), lambda rel: "plenarprotokoll" in rel),
+    # Page-header debris left by de-columnizing: a running page number before the speaker.
+    (re.compile(r"^\d{4,6}\s+"), lambda rel: "plenarprotokoll" in rel),
+    (re.compile(r"^\+\+\+[^+]*\+\+\+\s*"), lambda rel: True),
+)
+GUTENBERG_EMPHASIS = re.compile(r"_([^_\n]{1,60})_")
+
+
+def strip_furniture(sentence, rel, token_offset):
+    """
+    Remove extraction artifacts from a sentence before it is stored as a quotation.
+    Returns (cleaned_sentence, offset_of_the_matched_token_within_it).
+
+    Leading runs are stripped repeatedly until the text stops changing, since a single
+    sentence routinely carries several — a page number, then a speaker name, then a
+    column marker — before the speech itself begins.
+
+    **The matched token is inviolable, and the caller's offset is what protects it.**
+    A first version stripped blindly and then searched the result for the token, which
+    failed two ways at once: thirteen sentences were stripped past their own verb (three
+    of them to the empty string), and on long sentences `find` located a *different*
+    occurrence of the token, so the stored window jumped to an unrelated clause. Both
+    failures produced plausible-looking text, which is what makes them worth this much
+    care. Now no rule may cut into the token's position, and the offset is carried
+    through the edits rather than rediscovered.
+    """
+    if "/modern/" in rel or rel.startswith("modern/"):
+        # Mid-sentence edit, so the token's offset shifts by the delimiters removed ahead of it.
+        removed_before = sum(2 for match in GUTENBERG_EMPHASIS.finditer(sentence)
+                             if match.end() <= token_offset)
+        sentence = GUTENBERG_EMPHASIS.sub(r"\1", sentence)
+        token_offset -= removed_before
+
+    changed = True
+    while changed:
+        changed = False
+        for pattern, applies in LEADING_FURNITURE:
+            if not applies(rel):
+                continue
+            match = pattern.match(sentence)
+            # Refuse any strip that would reach the matched verb; leave the artifact
+            # rather than damage the attestation.
+            if not match or match.end() == 0 or match.end() > token_offset:
+                continue
+            sentence = sentence[match.end():]
+            token_offset -= match.end()
+            changed = True
+
+    lead = len(sentence) - len(sentence.lstrip())
+    return sentence.strip(), max(token_offset - lead, 0)
+
+
 def snippet(sentence, token_start, token):
     """
     Return (text, truncated). The sentence whole when it fits under MAX_QUOTE_CHARS,
@@ -611,7 +699,14 @@ def main():
                     if key in seen or len(seen) >= PER_DOC_CAP:
                         continue
                     seen.add(key)
-                    text, truncated = snippet(sentence, hit["offset"], hit["token"])
+                    # Furniture is stripped from the stored quotation only, after matching
+                    # and after `start_line`. Cleaning before the scan would shift every
+                    # offset and put `doc:line` on the wrong line; this way the matching
+                    # logic is untouched and only the presented text changes. The token is
+                    # re-located in the cleaned sentence, which matters solely for the ~3%
+                    # that are long enough to need centering.
+                    cleaned, where = strip_furniture(sentence, rel, hit["offset"])
+                    text, truncated = snippet(cleaned, where, hit["token"])
                     candidate = {
                         "doc": rel,
                         "line": start_line,

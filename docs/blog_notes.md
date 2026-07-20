@@ -2755,3 +2755,41 @@ advice for copying the quoted sentence by candidate index.
 Four shards mined, all passing the validator. The remaining hundred will run against an indexer
 that ranks by length, drops corrupt text, and demotes rather than discards a sentence caught
 inside a larger quotation.
+
+## The heckle that survived two filters (2026-07-20)
+
+A follow-up pass on the same day, tightening what the first one left. Re-reading the two shard
+reports against the filter I had just written turned up something worth recording: the specific
+candidate shard 002 had rejected — a Bundestag heckle, `– Kay Gottschalk [AfD]: Wie wär's denn,
+wenn ihr euren Schleuserskandal in NRW abklärt?` — was *still sitting at index 0* for *abklären*
+after the filter shipped. It starts with an en dash rather than a lowercase letter, and its
+square brackets are balanced, so none of the four tells touched it. Forty-one such candidates led
+their verb's list.
+
+That is a useful reminder that a filter built from a list of symptoms catches the symptoms and
+not the disease. The disease here is that parliamentary heckles are printed with their
+attribution inline, which makes them unquotable whole and untrimmable by rule — no amount of
+careful reading rescues one. Matching the party bracket directly drops 634 of them, and it is a
+deterministic kill rather than a judgment call, which is the test for whether something belongs
+in the indexer at all.
+
+The severity split earned itself a second time. A leading dash looked like the same kind of
+defect but is not: Nietzsche heads complete sentences with continuation dashes, so those demote
+rather than drop. Two independent cases now — quotation marks spanning sentences, and dashes
+heading them — suggest drop-versus-demote is the filter's organizing principle rather than a
+concession, and future tells should be classified that way from the start.
+
+Three brief changes came out of report findings I had not yet acted on. Roots that cover two
+homographs (*kehren* turn/sweep, *laden* load/invite, *löschen* extinguish/unload) ship both
+branches without saying which the compound descends from; the brief now tells subagents to pick
+using `family` and `translation` and to state the choice in the closer, since a strong/weak split
+usually separates the twins. Subagents are now told explicitly not to append to this file — one
+of them had noticed that `CLAUDE.md` asks contributors to journal their work and correctly
+flagged that concurrent shard agents doing so would corrupt it. And the friction ask itself moved
+out of the launch prompt and into the brief, which meant the launch prompt got short enough to
+write down; it now lives in the phase doc so no future session has to reconstruct it.
+
+That last change is the one I would defend hardest. The reports have produced every substantive
+improvement to this pipeline so far, and the ask that elicits them was living in a prompt that
+each session composed from scratch — which is precisely the kind of thing that quietly drops out
+on the session where someone is in a hurry.

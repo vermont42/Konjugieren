@@ -432,6 +432,26 @@ protocol, and it is why subagents write their own files rather than returning JS
 transcript: a shard that dies costs one shard. Re-running `build_mining_shards.py` regenerates
 inputs only and never touches outputs, so it is safe at any point, including mid-pass.
 
+**The per-shard launch prompt, so it is not re-derived every session.** MINING_SPEC now carries
+the friction ask and the write-no-other-file rule itself, so the launch prompt only has to point
+at the brief and name the shard. Substitute `<NNN>` twice:
+
+```
+You are mining one shard for Phase 4 of the Konjugieren etymology-and-example-sentence
+pipeline. Working directory: /Users/josh/Desktop/workspace/Konjugieren
+
+1. Read `corpus/working/MINING_SPEC.md` in full. It is your complete brief — follow it exactly.
+2. Your shard is `corpus/working/shards/mine_<NNN>.in.json`.
+3. Write `corpus/working/shards/mine_<NNN>.out.json`.
+
+Two points the brief makes that past runs still got wrong. Everything you need is joined into
+your shard, so open no other file — the corpus, `Verbs.xml`, and the kaikki JSONL are all off
+limits, and a candidate whose `truncated` is false carries the stored quotation in full. And
+root, chain, and sense text is spliced verbatim by script; only the lead sentence and the
+closer are yours to write. A validator checks your quoted German against the candidate strings
+by exact equality, so paraphrase, trimming, and retyping all fail it.
+```
+
 - **Concurrency 2, shard size 25.** Size stays fixed so a resumed run has uniform units and shard
   files stay comparable across runs; concurrency is the knob.
 

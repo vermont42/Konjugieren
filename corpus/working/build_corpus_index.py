@@ -100,7 +100,13 @@ TARGET_WORDS = (8, 30)
 
 # Defects that sort a candidate last instead of removing it. See `is_defective` for why an
 # unbalanced quotation mark is usually a sentence inside a longer quotation rather than damage.
-DEMOTE_ONLY = {"unbalanced"}
+DEMOTE_ONLY = {"unbalanced", "leading-dash"}
+
+# Party affiliations as the Bundestag protocols print them, inside square brackets after a
+# speaker's name. Their presence means the sentence is a heckle carrying its own attribution.
+PARTY_TAG = re.compile(
+    r"\[(?:SPD|CDU/CSU|CDU|CSU|AfD|FDP|GRÜNE|BÜNDNIS[^\]]*|DIE LINKE|LINKE|fraktionslos)\]"
+)
 
 
 def is_defective(text):
@@ -124,6 +130,14 @@ def is_defective(text):
       (`praxistauglicheren Strafver-` + `in den Ländern`). Fluent-looking and entirely wrong.
     - `column-marker`: a bare `(A)`/`(B)` column label from a two-column protocol landed inside
       the prose.
+    - `speaker-tag`: a Bundestag heckle printed with its own attribution inline
+      (`– Kay Gottschalk [AfD]: Wie wär's denn …`). The attribution cannot be quoted and cannot
+      be trimmed away, so the candidate is dead however carefully it is read. Caught by the
+      party bracket rather than by punctuation, because such a line is often otherwise
+      well-formed --- one led its verb's candidate list through two rounds of filtering.
+    - `leading-dash`: the text opens on a dash. Demoted, not dropped: Nietzsche writes
+      continuation dashes that head what is nonetheless a complete sentence, so this is a
+      presentational wart rather than damage.
 
     Deliberately *not* filtered: candidates whose furniture would have to be stripped to reach
     the matched verb. Subagents reject those visibly, which is better than a silent edit --- see
@@ -139,8 +153,12 @@ def is_defective(text):
     """
     if not text:
         return "empty"
+    if PARTY_TAG.search(text):
+        return "speaker-tag"
     if text[0].islower():
         return "starts-lowercase"
+    if re.match(r"[–—-]\s", text):
+        return "leading-dash"
     for opener, closer in (("(", ")"), ("„", "“")):
         if text.count(opener) != text.count(closer):
             return "unbalanced"

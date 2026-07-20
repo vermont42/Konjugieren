@@ -84,6 +84,16 @@ If the verb has **several readings** that differ in meaning or separability (`ü
 "translate" vs `über+setzen` "ferry across"), write one etymology covering both, and say which
 reading takes which separability. That contrast is usually the most interesting fact available.
 
+**When a root entry covers two homographs, `family` tells you which one you have.** Several
+roots are two verbs that fell together in modern spelling — *kehren* "turn" versus *kehren*
+"sweep", *laden* "load" versus *laden* "invite", *löschen* "extinguish" versus the Low German
+*löschen* "unload cargo". The root entry describes both branches without saying which your
+compound descends from, so pick using the reading's `family` (a strong/weak split usually
+separates the twins) together with its `translation`, and **state the choice in your closer** —
+that *abkehren* is "turn away" and not "sweep up" is exactly the observation the closer exists
+for. If `family` and `translation` disagree, or neither settles it, say so in `notes` rather
+than guessing; a confidently wrong branch is worse than a hedge.
+
 **Do not trust a decomposition because it looks like one.** *begleiten* is not *be-* +
 *gleiten*; it descends from MHG *geleiten*, which is why it is weak while *gleiten* is strong.
 The shard's decomposition comes from `Verbs.xml`'s markers and is reliable, but if the
@@ -187,5 +197,22 @@ Write **one file**, `corpus/working/shards/mine_<NNN>.out.json`, same number as 
   reason a sentence is missing.
 
 Validate that the file parses as JSON and that its key set equals your shard's verb list
-before you finish. Reply with a short report: verbs done, sentences found versus null, and
-anything you hedged or refused.
+before you finish.
+
+**Write no file but your own `.out.json`.** In particular, do not append to
+`docs/blog_notes.md`, even though the repo's `CLAUDE.md` asks contributors to journal their
+work. Shards run concurrently, and several agents appending to one file corrupt it. The journal
+entry for Phase 4 belongs to the orchestrator, which writes one entry per session covering every
+shard — your report is how your shard reaches it.
+
+Reply with a short report: verbs done, sentences found versus null, and anything you hedged or
+refused.
+
+**Report friction, not just status.** If you wanted a file your shard should have contained,
+rejected candidates for a reason that kept recurring, did expensive work that could have been
+precomputed, or worked around this brief rather than following it, say so concretely. If you
+think this brief is factually wrong about German morphology or etymology, say that and give your
+reasoning. Every substantive improvement to this pipeline so far came from a report of this kind
+rather than from anyone inspecting the code — the length ranking, the corrupt-candidate filter,
+and the correction to what `truncated` means were all found by subagents mining shards, and each
+cost seconds to fix and would otherwise have degraded every shard that followed.

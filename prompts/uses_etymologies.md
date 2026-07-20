@@ -434,6 +434,19 @@ inputs only and never touches outputs, so it is safe at any point, including mid
 
 - **Concurrency 2, shard size 25.** Size stays fixed so a resumed run has uniform units and shard
   files stay comparable across runs; concurrency is the knob.
+
+  **Keep it at 2, and disregard the design section's invitation above to raise it.** Josh's call,
+  2026-07-20, on the evidence of that day: three systemic problems surfaced during the first four
+  shard-runs — root entries sized as articles rather than bullets, subagents re-opening source
+  files the index could have supplied, and extraction furniture causing good candidates to be
+  rejected. Each was caught within a wave or two and cost seconds of CPU to fix.
+
+  Raising concurrency does not reduce total cost — it is ~2 session points per shard either way —
+  it only spends the window faster, which means more shards are already contaminated before a
+  systemic fault becomes visible. Wall-clock is not the binding constraint here; the window's
+  token budget is. So the throughput gained is nearly nothing and the price is a wider blast
+  radius. Raise it only once a full window has run without any pipeline change, which has not
+  yet happened.
 - **Cost, measured over four shard-runs:** ~99k subagent tokens and about **2 session points**
   per shard, roughly 6 minutes. The remaining 102 are therefore ~2 full five-hour windows and
   ~29% of a weekly budget. Calibration: ~45–50k subagent tokens per session point, from two

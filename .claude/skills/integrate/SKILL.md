@@ -6,6 +6,24 @@ description: Integrate new example sentences from the working ExampleSentences.j
 
 # Integrate Example Sentences
 
+## Scope, and what this skill does not yet cover
+
+This skill integrates **example sentences only**, from a single working file at the project root.
+That matches the pipeline described in `docs/example-sentence-pipeline.md`.
+
+It does **not** yet cover the etymology-and-example pipeline in
+[`prompts/uses_etymologies.md`](../../../prompts/uses_etymologies.md), whose Phase 4 emits both
+halves per verb across many shard files. When that pipeline reaches Phase 5, **widen this skill
+rather than writing a second merge path** — two routes into the same bundle is how a bundle
+drifts. Phase 5 of that document lists the three gaps to close; the one most likely to cause
+silent damage is the null-sentence case:
+
+> Phase 4 emits `"sentence": null` for a verb where no corpus candidate was a genuine verbal use.
+> That is a **successful** result carrying an etymology and no sentence — not a half-finished
+> record. Merging the etymology while writing no sentence entry is correct. Extending this
+> skill's existing "skip verbs that have only one language" rule to also skip these would
+> silently discard roughly a third of the etymologies.
+
 ## File Roles
 
 - **Working file:** `ExampleSentences.json` (project root) — pipeline output, gitignored
@@ -86,3 +104,10 @@ print(f'Valid JSON. {de} entries per language.')
 - Both `de` and `en` keys must exist for a verb to be integrated. Skip verbs that have only one language.
 - Keep bundled keys alphabetically sorted within each language object.
 - If the working file does not exist, inform the user and stop.
+- Confirm with `git diff --stat` that the bundled file shows insertions and **no deletions**. Step 2
+  rewrites the whole file, so deletions would mean existing entries were reformatted rather than
+  preserved. Verified 2026-07-20: `Konjugieren/Models/ExampleSentences.json` and
+  `Etymologies.json` both round-trip byte-for-byte through
+  `json.dumps(obj, indent=2, ensure_ascii=False) + "\n"`, so the rewrite is safe for these two
+  files. It is **not** safe for `Localizable.xcstrings`, which Xcode writes in its own format —
+  see `CLAUDE.md` § "Editing Localizable.xcstrings Safely".

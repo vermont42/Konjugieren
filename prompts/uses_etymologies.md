@@ -418,6 +418,31 @@ to `verbdata/no-corpus-example.txt` with the reason (no candidates at all, versu
 were all nominal). Josh will expand the corpus and re-mine those; authored sentences are a later,
 separate decision, and if they happen they must be flagged in Credits as the existing eleven are.
 
+**Extend `.claude/skills/integrate`; do not write a parallel merge.** That skill already exists and
+already encodes the rules this phase needs — diff working against bundled, add only missing verbs,
+never overwrite an existing entry, keep keys sorted per language, validate that `de` and `en` agree
+in count. Two integration routes into the same bundle is how a bundle drifts, so the work is to
+widen the skill rather than to write a second path beside it. Three gaps to close:
+
+- **It handles example sentences only.** Phase 4 emits an etymology *and* a sentence per verb, and
+  nothing currently merges the etymology half into `Etymologies.json`.
+- **It reads a single working file at the project root.** Phase 4 writes one file per shard, at
+  `corpus/working/shards/mine_<NNN>.out.json`, so an aggregation step has to come first — and it
+  should tolerate missing shards, since resuming an interrupted run means some are simply absent.
+- **Its skip rule needs a third case.** The skill skips a verb that has only one language. Phase 4
+  additionally emits `"sentence": null` for verbs where no candidate was a genuine verbal use,
+  which is a *successful* result carrying an etymology and no sentence. Merging that verb's
+  etymology while writing no sentence entry is the correct behavior; treating the null as a
+  half-finished record and skipping the verb entirely would silently drop about a third of the
+  etymologies.
+
+Checked 2026-07-20, so it does not need re-deriving: both bundled files round-trip **exactly**
+through `json.dumps(obj, indent=2, ensure_ascii=False) + "\n"`. The skill's rewrite-the-whole-file
+approach is therefore safe here and produces a diff containing only real changes. This is *not* the
+situation described in `CLAUDE.md` for `Localizable.xcstrings`, which Xcode writes in its own format
+and which a round trip reflows entirely. Verify with `git diff --stat` regardless: a correct
+integration shows insertions and no deletions.
+
 ## Traps
 
 - **Do not trust a decomposition because it looks like one.** *begleiten* is not *be-* + *gleiten*;

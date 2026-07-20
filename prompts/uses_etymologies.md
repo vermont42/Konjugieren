@@ -411,20 +411,26 @@ Each subagent is told:
 4. If no candidate is a genuine verbal use, return the verb with nulls and a note. **Do not invent
    a sentence.**
 
-**As built — in progress, 2026-07-20.** Shards 000 and 001 are done; 002 through 103 are not.
-The subagents' brief lives in [`corpus/working/MINING_SPEC.md`](../corpus/working/MINING_SPEC.md),
-which is tracked for exactly this reason. Rebuild the shards, then launch:
+**As built — started 2026-07-20, and resumable.** The subagents' brief lives in
+[`corpus/working/MINING_SPEC.md`](../corpus/working/MINING_SPEC.md), which is tracked for exactly
+this reason. The ready-to-paste prompt for a fresh session is under
+[§ Invocation](#resuming-phase-4-in-a-fresh-session).
+
+**Progress is not recorded here, deliberately.** `build_mining_shards.py` reports it, derived from
+which `.out.json` files exist:
 
 ```bash
-python3 corpus/working/build_mining_shards.py     # 104 shards, ~20 s, safe to re-run
-ls corpus/working/shards/mine_*.in.json | wc -l   # shards that exist
-ls corpus/working/shards/mine_*.out.json | wc -l  # shards already mined
+python3 corpus/working/build_mining_shards.py     # rebuilds inputs, then reports progress
 ```
+
+A count written into prose is stale the moment the next shard lands, and a stale count is worse
+than none because it reads as authoritative — the same failure this repo already has a
+`scripts/check_docs.py` to police in the cache files.
 
 **Resume by relaunching only the shards with no `.out.json`.** That is the whole recovery
 protocol, and it is why subagents write their own files rather than returning JSON through the
 transcript: a shard that dies costs one shard. Re-running `build_mining_shards.py` regenerates
-inputs only and never touches outputs.
+inputs only and never touches outputs, so it is safe at any point, including mid-pass.
 
 - **Concurrency 2, shard size 25.** Size stays fixed so a resumed run has uniform units and shard
   files stay comparable across runs; concurrency is the knob.
@@ -525,6 +531,46 @@ integration shows insertions and no deletions.
 ## Invocation
 
 > Please execute `prompts/uses_etymologies.md`, starting at phase 1. Phase 0 is done.
+
+### Resuming Phase 4 in a fresh session
+
+Paste the block below verbatim. It carries **no state**: which shards remain is derived from the
+filesystem by `build_mining_shards.py`, so the same text is correct on the first pass, the last
+pass, and every pass in between. Do not edit in a shard count — that is precisely the line that
+goes stale, and a stale count is worse than none because it reads as authoritative.
+
+> Continue Phase 4 of `prompts/uses_etymologies.md` for Konjugieren. Read that file's Phase 4
+> "As built" section first — it holds the resume protocol, the cost calibration, and the
+> validator to run before any shard counts as done.
+>
+> `corpus/` is gitignored, so regenerate the build products before anything else. The last
+> command prints how many shards are already mined and which remain; that output, not this
+> prompt, is the state:
+>
+> ```bash
+> TEST_RUNNER_KONJUGIEREN_FORMS_OUT="$PWD/corpus/working/forms.json" \
+> xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren \
+>   -destination 'platform=iOS Simulator,name=iPhone 17' -parallel-testing-enabled NO test \
+>   -only-testing:KonjugierenTests/CorpusFormsDumpTests
+> python3 corpus/working/build_corpus_index.py
+> python3 corpus/working/build_mining_shards.py
+> ```
+>
+> Mine the remaining shards at **concurrency 2**, lowest number first, one subagent per shard.
+> Point each subagent at `corpus/working/MINING_SPEC.md` and its own shard, and stress two
+> things: everything it needs is joined into the shard, so it should open no other file
+> (`truncated` is false for ~97% of candidates, meaning `text` is the complete sentence to quote
+> verbatim); and root and prefix text is reused verbatim, with only the joining prose authored.
+>
+> Budget roughly 2 session points per shard. You cannot introspect usage — ask me to paste
+> `~/Desktop/usage.png` before starting and every few waves, and label any figure you derive
+> from calibration as an estimate rather than a reading. Stop with about 5 points of headroom
+> instead of getting caught mid-wave.
+>
+> Run the Phase 4 validator before treating any shard as done; a subagent's self-report is not
+> evidence. Append to `docs/blog_notes.md` once at the end, not per shard. Do not merge anything
+> into `Konjugieren/Models/` — that is Phase 5, whose note says to widen
+> `.claude/skills/integrate` rather than write a parallel merge.
 
 Baseline the at-odds count before starting and re-check after
 (`docs/roadmap.md` § "The one check that runs through all of it"). Neither half of this pipeline

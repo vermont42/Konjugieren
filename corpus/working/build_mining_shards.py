@@ -187,6 +187,22 @@ def main():
     print(f"unresolved morphemes: {len(unresolved)} {sorted(unresolved)[:10]}")
     print(f"candidates joined: {counts['candidates']}")
 
+    # Progress is derived from the filesystem, never tracked in prose. A shard is done
+    # when its .out.json exists, which is also the resume rule — relaunch exactly the
+    # shards listed as remaining. Rebuilding inputs above never touches outputs, so this
+    # is safe to run at any point, including mid-pass.
+    done, todo = [], []
+    for number in range(shards):
+        (done if (OUT_DIR / f"mine_{number:03d}.out.json").exists() else todo).append(number)
+    print()
+    print(f"mined: {len(done)}/{shards} shards ({len(done) * args.size} verbs, approx)")
+    print(f"remaining: {len(todo)}")
+    if todo:
+        preview = " ".join(f"mine_{n:03d}" for n in todo[:8])
+        print(f"next: {preview}{' …' if len(todo) > 8 else ''}")
+    else:
+        print("Phase 4 is complete; proceed to Phase 5.")
+
 
 if __name__ == "__main__":
     main()

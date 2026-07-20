@@ -576,6 +576,21 @@ Run the Phase 4 validator before treating any shard as done; a subagent's self-r
 evidence. Append to `docs/blog_notes.md` once at the end, not per shard. Do not merge anything
 into `Konjugieren/Models/` — that is Phase 5, whose note says to widen
 `.claude/skills/integrate` rather than write a parallel merge.
+
+Read the subagent reports as evidence about the pipeline, not just as status about a shard,
+and propose improvements freely. Every significant fix so far came from a report mentioning
+friction rather than from anyone inspecting the code: root entries turned out to be articles
+where a bullet was wanted, subagents were re-opening source files to rebuild sentences the
+index already held, and extraction furniture was causing good candidates to be rejected. Each
+was a few seconds of CPU to fix and each was worth more than the shards it would otherwise
+have degraded.
+
+So watch for a subagent working around the brief, rejecting candidates for a reason that
+recurs, doing expensive work that could be precomputed, or asking for something the shard
+should already contain. When you see it, stop and propose a fix before spending another
+window — a change to the indexer or the brief is cheap, and re-mining is not. Pushback on the
+brief itself is welcome too: several agents have corrected it with sources and been right, so
+tell me when one does rather than quietly accepting or quietly overruling it.
 ````
 
 Baseline the at-odds count before starting and re-check after

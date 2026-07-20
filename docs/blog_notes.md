@@ -2535,3 +2535,66 @@ on paying once for what recurs, so the frequency distribution *is* the design in
 count of distinct things is the wrong statistic for deciding where effort goes. It was the
 right statistic for the roots, where 382 distinct roots really did mean 382 lookups. It was the
 wrong one here.
+
+## A sizing error found by using the thing (2026-07-20)
+
+Phase 4 began, two shards ran, and the output was correct and wrong at the same time.
+*abbinden*'s etymology contained the entire Sanskrit-*bandana* paragraph from *binden*'s
+article, because Phase 3 had told the mining subagents to reuse root text **verbatim** and the
+root text they were handed was an article.
+
+The numbers say it plainly. The 544 root bullets already shipping in the app run a median of
+239 characters. `roots.json` was running 969. A compound verb was inheriting a bullet four
+times house length, and paying for it twice — once when a subagent read it, once when it wrote
+it back out.
+
+The mistake was seeding `roots.json` entirely from the roots' **top-level article** form. For
+the 303 roots that are also app verbs, that form was sitting right there in `Etymologies.json`
+and copying it was free, which is exactly why it looked like the obvious move. It was free and
+it was the wrong shape. A root is cited two ways — as one bullet inside a compound, and as the
+whole article when the root is itself a simplex verb (71 of the targets are) — and one text
+cannot serve both.
+
+So every root now carries `{bullet, full}`, and the shard builder picks by use. Shards fell 31%,
+from a 74 KB median to 51 KB, which is 31% off the input side of all 102 remaining mining
+shards.
+
+Two things about the condensation pass are worth keeping.
+
+**The `full` field was a contract, and it held.** Eight subagents were told to pass `full`
+through byte-for-byte and condense only into `bullet`. The merge refused to write unless all 764
+`full` values compared equal to their inputs. They did, across all eight, with no exceptions —
+which is the check that makes "condense, do not rewrite" verifiable rather than aspirational.
+Without it the pass would have been a rewrite wearing a compression's clothes, and nobody would
+have known.
+
+**The bullets that stayed long are the ones that should have.** Median landed at 341 (en) rather
+than the house 239, and the overruns are almost all two-reading roots — *schleifen*, *scheren*,
+*kehren*, *laden*, *wiegen* — where a single spelling covers two verbs with separate origins and
+separate principal parts. Those cannot compress without losing a conjugation fact, which is the
+one thing this app exists to teach. The cranberry morphemes also cluster high, because each
+spends ninety-odd characters saying it is not a verb of modern German before its chain begins.
+One agent noticed that and pointed out that if the median ever has to come down further, that
+status sentence is the compressible part, not the etymology. That is the right instinct: know
+which of your bytes are load-bearing.
+
+Only one entry tripped the runaway check at 700 characters — *wiegen*, at 793 — and the fix was
+not to compress the etymology but to delete a clause duplicated in *wägen*'s entry, which
+already cross-references back. Redundancy across two entries reads as thoroughness inside
+either one.
+
+**The general shape, again.** This is the third time in two days that the bug has been a value
+that was correct for one purpose and reused for another: the root articles, right as articles
+and wrong as bullets; `MAX_OCCURRENCES = 5`, right for a verb whose forms are its own and wrong
+for one sharing forms with a commoner verb; the count of distinct separable prefixes, right for
+sizing the authoring and wrong for describing the grammar. The reuse thesis this whole pipeline
+rests on is that scholarship already paid for should not be paid for twice. The corollary is
+that reuse is only free when the *shape* transfers too, and shape is the thing nobody checks.
+
+Also logged, not yet acted on: 179 target verbs (11% of those with candidates) have every
+candidate drained by a homograph of a commoner verb. *abfahren*'s four candidates are all the
+token *abführen* — genuinely both the infinitive of *abführen* and the Konjunktiv II of
+*abfahren*, since *fahren* → *fuhr* → *führe*. `forms.json` is right to list both; the five-slot
+cap is what starves the rarer verb. This is Conjugar's *cocina*/*cocinar* problem, which Phase 2
+believed German capitalization had solved — it solves noun homographs and is silent about
+verb-on-verb ones. Phase 5's tail rescue is where it belongs.

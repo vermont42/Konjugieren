@@ -308,8 +308,9 @@ pattern, and it paid off: shard reports could be read as they landed rather than
 
 Eight things shaped the result, and Phase 4 should know them.
 
-- **The value shapes differ between roots and prefixes, deliberately.** A root's entry is a
-  flat string, reusable as a bullet whole. A prefix's is `{chain, senses, occurrences}`,
+- **The value shapes differ between roots and prefixes, deliberately.** A root's entry is
+  `{bullet, full}` — see the Phase 4 note below on why one text could not serve both jobs.
+  A prefix's is `{kind, chain, senses, occurrences}`,
   because a prefix bullet in the existing corpus is two things welded together: a genealogy
   identical across every compound, and a final sentence glossing what the prefix does *in this
   compound*. Freezing one arbitrary gloss would have made all 189 *ver-* verbs read alike.

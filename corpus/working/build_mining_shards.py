@@ -108,10 +108,20 @@ def build_reading(raw, attrib, morphemes, roots, insep, sep):
             }
         refs.append(key)
 
+    # A root entry carries both a condensed `bullet` and the long `full` article, and
+    # which one belongs in the shard depends on how the verb uses it. A prefixed verb
+    # cites the root as one bullet among several, so it wants `bullet` — shipping
+    # `full` there is what made `abbinden` drag in the whole Sanskrit `bandana`
+    # paragraph from `binden`'s article. A simplex verb *is* its root, so its
+    # etymology is the article itself, and it wants `full`.
     root_key = f"root:{root}"
-    if root_key not in morphemes:
-        morphemes[root_key] = {"morpheme": root, "de": roots["de"].get(root),
-                               "en": roots["en"].get(root)}
+    field = "bullet" if prefixes else "full"
+    entry = morphemes.setdefault(root_key, {"morpheme": root})
+    for lang in LANGS:
+        value = roots[lang].get(root) or {}
+        # A root needed both ways inside one shard gets both fields, which is rare
+        # and cheap; interning by key alone would otherwise drop the second reading.
+        entry.setdefault(lang, {})[field] = value.get(field)
 
     return {
         "in": raw,
@@ -161,7 +171,8 @@ def main():
             counts["with_candidates"] += bool(candidates)
             counts["candidates"] += len(candidates)
         for key, entry in morphemes.items():
-            if not entry["en"]:
+            if not entry["en"] or (isinstance(entry["en"], dict)
+                                   and not any(entry["en"].values())):
                 unresolved.add(key)
         path = OUT_DIR / f"mine_{number:03d}.in.json"
         path.write_text(json.dumps({"morphemes": morphemes, "verbs": verbs},

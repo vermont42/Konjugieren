@@ -59,7 +59,7 @@ re-deriving one, keyed so it can look up rather than search.
 
 | File | Key | Value | Tracked |
 |---|---|---|---|
-| `roots.json` | final root infinitive | markup-ready string | yes |
+| `roots.json` | final root infinitive | `{bullet, full}` per language | yes |
 | `prefixes-inseparable.json` | bare prefix (`ver`, not `ver-`) | `{chain, senses, occurrences}` | yes |
 | `prefixes-separable.json` | bare particle (`ab`, `tot`, `preis`) | `{kind, chain, senses, occurrences}` | yes |
 | `build_reuse_files.py` | — | seeds the above from existing entries, emits the gap worklist | yes |
@@ -69,11 +69,35 @@ All three carry `{"de": {...}, "en": {...}}`, language first — the same shape 
 `Konjugieren/Models/Etymologies.json`, and the same trap: reading them verb-first silently
 reports zero coverage.
 
-**Why prefixes get an object and roots get a string.** A root bullet in the existing corpus is
-reusable whole. A prefix bullet is not: it welds a genealogy that is identical across every
-compound to a final sentence glossing what the prefix contributes *to that compound*. Only the
-genealogy is `chain`; `senses` holds the range of contributions, so a composed etymology can
-pick the one that fits rather than repeating a single frozen gloss across 189 *ver-* verbs.
+**Why every value is an object.** A prefix bullet in the existing corpus welds a genealogy that
+is identical across every compound to a final sentence glossing what the prefix contributes *to
+that compound*. Only the genealogy is `chain`; `senses` holds the range of contributions, so a
+composed etymology can pick the one that fits rather than repeating a single frozen gloss across
+189 *ver-* verbs. Roots split for a different reason — length rather than variability — as the
+next section explains.
+
+### `bullet` and `full`, and why a root needs both
+
+A root is cited two different ways, and one text cannot serve both.
+
+Inside a **compound** it is one bullet among several — `- ~binden~: From MHG …` — and the 544
+root bullets already shipping in the app run a median of **239** characters. As a **simplex**
+verb's own entry it is the whole article, and those run a median near **900**.
+
+`roots.json` was first seeded entirely from the article form, which was a sizing error: it made
+`abbinden`'s etymology drag in the entire Sanskrit *bandana* paragraph from `binden`'s article.
+Every root now carries both fields, and `build_mining_shards.py` picks by use — `bullet` for a
+prefixed verb, `full` for one of the 71 simplex targets. Doing so cut the mining shards by 31%.
+
+Condensation preserved, deliberately: the full genealogical chain, the ablaut class with
+principal parts, one sentence of morphological insight, and three to five cognates. It cut the
+second paragraph and the cross-domain narrative — which are not lost, since `full` keeps them
+and, for roots that are also app verbs, `Etymologies.json` still ships them.
+
+Bullets legitimately exceed the house p90 when a root covers **two readings** with separate
+origins (*schleifen*, *scheren*, *kehren*, *laden*, *wiegen*) or when a cranberry morpheme must
+spend a sentence saying it is no longer a free verb before its chain begins. The validator flags
+only runaways, over 700 characters.
 
 ### `kind`, and why the entry count misleads
 

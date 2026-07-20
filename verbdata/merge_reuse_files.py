@@ -134,7 +134,8 @@ def texts_of(entry):
     """Every human-readable string in an entry, whatever its shape."""
     if isinstance(entry, str):
         return [entry]
-    return [entry.get("chain", "")] + list(entry.get("senses", []))
+    return ([entry.get("chain", ""), entry.get("bullet", ""), entry.get("full", "")]
+            + list(entry.get("senses", [])))
 
 
 def check_markup(where, lang, text, problems):
@@ -193,8 +194,26 @@ def validate():
             for key, entry in data[lang].items():
                 for text in texts_of(entry):
                     check_markup(f"{label}/{key}", lang, text, problems)
-                if isinstance(entry, str):
+                # Roots carry {bullet, full}: `bullet` is what gets composed into a
+                # compound's etymology, `full` the long article a simplex verb wants.
+                # Dispatch on the file rather than the value's type — roots stopped
+                # being bare strings once the two shapes converged.
+                if label == "roots":
+                    for field in ("bullet", "full"):
+                        if not entry.get(field):
+                            problems.append(f"{label}/{key} [{lang}]: missing {field}")
+                    # A bullet renders as a single list item, so an embedded newline
+                    # would split it in two.
+                    if "\n" in entry.get("bullet", ""):
+                        problems.append(f"{label}/{key} [{lang}]: newline inside bullet")
+                    # House root bullets run a median of 239 characters, p90 368.
+                    # Two-reading entries and strong verbs needing principal parts
+                    # legitimately exceed that, so this flags only runaways.
+                    if len(entry.get("bullet", "")) > 700:
+                        problems.append(f"{label}/{key} [{lang}]: bullet is "
+                                        f"{len(entry['bullet'])} chars — condense further")
                     continue
+
                 # A chain may legitimately end on a quoted gloss — `… means "past, by."`
                 # — so the sentence-final period is allowed to sit inside a closing
                 # quotation mark or parenthesis rather than at the very end.

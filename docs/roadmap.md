@@ -21,7 +21,8 @@ completes.
 | 8 | Import tranche 2: prefixed derivatives | [`verb-sources.md`](verb-sources.md) next-steps item 6 | ✅ 2026-07-19 | step 5 ✅; prefix inventory widened |
 | 8b | Clear the tranche-2 deferrals | this file, § "The tranche-2 deferrals" | ✅ 2026-07-19 | step 8 ✅ |
 | 9 | Import tranche 3: weak stems by frequency | [`verb-sources.md`](verb-sources.md) next-steps item 7 | 🚧 blocked | **BBAW reply**; fetch needs probes |
-| 10 | Etymologies, then the docs sweep | [`verb-sources.md`](verb-sources.md) next-steps items 8 and 9 | ⬜ | step 7 ✅ |
+| 10 | Etymologies **and example sentences**, in one pipeline | [`../prompts/uses_etymologies.md`](../prompts/uses_etymologies.md) | ⬜ designed 2026-07-20 | phase 0 ✅ |
+| 11 | The docs sweep | [`verb-sources.md`](verb-sources.md) next-steps item 9 | ⬜ | step 10 |
 
 **Step 10 is larger than it looks, and its own doc said otherwise.**
 [`etymology-pipeline.md`](etymology-pipeline.md) led with "COMPLETE — every verb in `Verbs.xml` is
@@ -35,8 +36,8 @@ asserts that heading against actual coverage, so it will go quiet on its own whe
 The Where column points into that file's numbered "Recommended next steps" list, and from step 6
 onward the two numberings are offset by one. The collision is worth stating outright because it
 lands on the two items most likely to be discussed together: **roadmap step 9** is the blocked
-tranche-3 import, while **`verb-sources.md` item 9** is the docs sweep, which is part of roadmap
-step 10 and is not blocked by anything.
+tranche-3 import, while **`verb-sources.md` item 9** is the docs sweep, which is roadmap
+step 11 and is not blocked by anything.
 
 | roadmap step | `verb-sources.md` item | What |
 |---|---|---|
@@ -48,7 +49,8 @@ step 10 and is not blocked by anything.
 | 8 | 6 | Tranche 2: prefixed derivatives |
 | 8b | — | Clear the tranche-2 deferrals |
 | 9 | 7 | Tranche 3: weak stems by frequency |
-| 10 | 8, 9 | Etymologies, then the docs sweep |
+| 10 | 8 | Etymologies **and example sentences**, one pipeline |
+| 11 | 9 | The docs sweep |
 
 The offset is not a mistake in either file. The roadmap splits some of `verb-sources.md`'s items
 because they gate each other — its steps 4 and 5 are one item there, and their *order* is the
@@ -88,7 +90,9 @@ xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren \
 python3 verbdata/summarize_classification.py
 ```
 
-Baseline it before starting a step, re-run it after. **It should never rise.** If it does,
+Baseline it before starting a step, re-run it after. **It should never rise.** The one legitimate
+exception is a verb added to `verbdata/wiktionary-defects.json`, where the app is right and
+Wiktionary is wrong; those are subtracted, so the reported number still must not rise. If it does,
 something regressed — find it before continuing.
 
 The 294 MB kaikki snapshot is gitignored; `verbdata/README.md` has the SHA-256 and the
@@ -333,6 +337,21 @@ Small things the pipeline surfaced that no plan currently owns. None blocks the 
   identically — *kaputtgemacht*, *achtgegeben*, *eisgelaufen*. The queue fell 747 → 28 and
   incoming verification rose 84.4% → 94.6%. `Prefix` already carried an arbitrary string, so no
   shipping code changed.
+- **Wiktionary auto-generates weak conjugation tables, and the pipeline cannot tell.** Found
+  2026-07-20. English Wiktionary emits a default *weak* table for any verb page nobody supplied a
+  strong template for, producing non-words: *angelest* for *anlesen*, *aufgewascht* for
+  *aufwaschen*, while the base entries (*lesen*, *waschen*) stay correctly strong. kaikki extracts
+  it faithfully, the classifier hypothesizes weak, the comparison matches exactly, and the verb
+  ships wrong with a clean bill of health. **"Verified" means "agrees with Wiktionary", not
+  "correct"**, and nothing inside the pipeline distinguishes the two. Eleven such verbs were
+  repaired and are listed in `verbdata/wiktionary-defects.json`, which
+  `summarize_classification.py` now subtracts from the at-odds count, since fixing them raises it.
+  Arbitration used **German** Wiktionary's `{{Deutsch Verb Übersicht}}` box, which is
+  independently edited. The triage discriminator: a weak derivative of a strong base is normally
+  denominal or deadjectival (*umringen* from *Ring*, *bemitleiden* from *Mitleid*) and genuinely
+  weak; a transparent prefix + strong verb compound encoded weak is the defect. Twenty-two of the
+  thirty-eight candidates were vindicated this way. **The 5,650 incoming verbs have never been
+  screened for this**, and the same generated tables are what tranche 3 will verify against.
 - **Three modals resist the pipeline** — *sollen*, *bedürfen*, *vermögen* use full-override
   ablaut groups the classifier cannot derive. Probably correct as shipped; unverified.
 - ~~**`prompts/prefix_coverage.md` is written and not executed.**~~ **Executed 2026-07-19**,

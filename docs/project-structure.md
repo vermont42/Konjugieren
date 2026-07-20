@@ -262,6 +262,7 @@ verbdata/                      # Verb-corpus-expansion data (see docs/verb-sourc
 │   generate_frequencies_txt.py  # Regenerates docs/frequencies.txt from Verbs.xml (--check for drift)
 ├── README.md                  # Provenance, integrity stats, and re-download recipes for the data files
 ├── fetch_dwds_frequencies.py  # Fetches DWDS lemma frequencies; --lemmas FILE overrides the Verbs.xml corpus
+├── wiktionary-defects.json    # Verbs where Konjugieren deliberately disagrees with English Wiktionary because Wiktionary is wrong (auto-generated weak tables); subtracted from the at-odds count by summarize_classification.py
 ├── build_candidates.py        # Classify-and-verify stage A: kaikki JSONL → candidates.json (see docs/verb-classification.md)
 ├── summarize_classification.py # Classify-and-verify stage C: classification.json → a Markdown summary grouped by cause
 ├── add_readings.py            # One-shot migration that gave every verb a <reading> child (roadmap step 5)

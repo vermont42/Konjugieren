@@ -195,10 +195,23 @@ def main():
                      if entry.get("shippedEncodingFailed") and entry.get("readingCount", 1) > 1]
     miscounted = [entry for entry in verified(shipping)
                   if entry.get("shippedEncodingFailed") and entry.get("readingCount", 1) == 1]
+    # Verbs where the app deliberately disagrees with Wiktionary because Wiktionary is wrong.
+    # Without this subtraction the gate punishes correctness: fixing such a verb raises the
+    # count, and the roadmap says the count must never rise. See wiktionary-defects.json for
+    # the failure mode (auto-generated weak tables on under-edited pages) and the evidence.
+    defects_path = pathlib.Path(__file__).with_name("wiktionary-defects.json")
+    known_wrong = set()
+    if defects_path.exists():
+        known_wrong = {d["verb"] for d in json.loads(defects_path.read_text())["defects"]}
+
     regrouped = [entry for entry in miscounted if entry["ablautGroupIsNew"]]
     rescued = [entry for entry in miscounted if not entry["ablautGroupIsNew"]]
     strong_shipping = [entry for entry in verified(shipping) if entry.get("family") in {"s", "m"}]
-    at_odds = len(shipping) - len(verified(shipping)) + len(miscounted)
+    at_odds_raw = len(shipping) - len(verified(shipping)) + len(miscounted)
+    deliberate = sum(1 for entry in miscounted if entry.get("word") in known_wrong)
+    deliberate += sum(1 for entry in shipping
+                      if entry not in verified(shipping) and entry.get("word") in known_wrong)
+    at_odds = at_odds_raw - deliberate
 
     out.append(f"A quieter defect: {len(miscounted)} shipping verbs verified only after the "
                f"classifier abandoned the encoding in Verbs.xml and found a different one, "
@@ -207,6 +220,16 @@ def main():
                f"group that does not ship, and {len(rescued)} are repairable with a group that "
                f"already does. Total shipping verbs at odds with Wiktionary: {at_odds}.")
     out.append("")
+    if deliberate:
+        out.append(f"That total excludes {deliberate} verbs listed in `wiktionary-defects.json`, "
+                   f"where the app is right and Wiktionary is wrong. English Wiktionary "
+                   f"auto-generates a default *weak* table for verb pages nobody has supplied a "
+                   f"strong template for, producing non-words like *angelest* and *aufgewascht* "
+                   f"while the base entries stay correctly strong. Each exclusion was arbitrated "
+                   f"against German Wiktionary, which is independently edited. Fixing such a "
+                   f"verb raises the raw count ({at_odds_raw}), so without this subtraction the "
+                   f"gate would punish the repair.")
+        out.append("")
     out.append("The second kind used to be invisible. Until 2026-07-19 this count added only "
                "the verbs needing a *new* ablaut group, so a verb the classifier could rescue "
                "with an existing one — beschreiben shipped weak, scheinen without its "

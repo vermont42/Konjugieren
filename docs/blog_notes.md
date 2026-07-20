@@ -1777,3 +1777,127 @@ Nothing here checks whether prose is *right*, only whether it is *consistent wit
 `check_docs.py` cannot tell that a decision has been superseded, that an explanation is confused,
 or that a recommendation stopped being good advice. It settles the mechanical subset. That subset
 turned out to contain nine live defects, one of which had reached the App Store.
+
+## Wiktionary invents conjugations, and "verified" stopped meaning "correct" (2026-07-20)
+
+Josh asked for one example of a verb whose prefixed form shipped in the original 990 while its bare
+base arrived later. Answering it properly turned up a hole in the foundation of the entire
+verb-import project.
+
+### The example, and the technique that found it
+
+Five verbs qualify: *vermeiden*/*meiden*, *verschwinden*/*schwinden*, *verleihen*/*leihen*,
+*überwinden*/*winden*, *überschreiten*/*schreiten*. All strong, all inseparable, all tranche 1.
+
+The technique matters more than the answer. Naive suffix matching returns 50 pairs, mostly
+nonsense: *bringen* as *b-* + *ringen*, *schreiben* as *sch-* + *reiben*. But `Verbs.xml` writes
+`ver*m^ei^den`, where `*` marks the inseparable prefix and **the base keeps its ablaut region
+verbatim**, so the remainder after the marker is character-for-character the standalone `m^ei^den`.
+Requiring exact remainder match cuts 50 to 5.
+
+It also answers, for free, the quirk Josh's prompt asked the pipeline to handle: it rejects
+`be*gleiten` against `gl^eit^en`, because *begleiten* descends from MHG *geleiten* rather than from
+*gleiten*, which is why it is weak while *gleiten* is strong. The encoding already knew. Nobody had
+asked it.
+
+### The near-miss scan, and what it exposed
+
+Scanning instead for *near* misses — base ships, but the two disagree on encoding — returned 66,
+of which 38 were verbs encoded weak whose base is strong. Spot-checking four against kaikki
+produced this:
+
+| Verb | Wiktionary says | Actual German |
+|---|---|---|
+| abgleiten | abgleitete / abgegleitet | glitt ab / abgeglitten |
+| anlesen | anleste / **angelest** | las an / angelesen |
+| aufwaschen | aufwaschte / **aufgewascht** | wusch auf / aufgewaschen |
+| auspfeifen | auspfeifte / ausgepfeift | pfiff aus / ausgepfiffen |
+
+*angelest* and *aufgewascht* are not German words. English Wiktionary **auto-generates a default
+weak conjugation table** for any verb page nobody supplied a strong template for. The base entries
+(*lesen*, *waschen*, *pfeifen*) are correctly strong; only the under-edited derivative pages are
+corrupt.
+
+Which means the importer did nothing wrong. It hypothesized weak, compared against Wiktionary's
+table, matched exactly, and shipped. The at-odds count held at 8 the entire time, because the app
+faithfully reproduces a corrupt source.
+
+**"Verified" means "agrees with Wiktionary", not "correct", and nothing inside the pipeline can
+tell the two apart.** That is the load-bearing assumption of steps 2 through 9, stated for the
+first time only now, in its negative form.
+
+### Arbitration, and a heuristic that broke on German word order
+
+kaikki could not adjudicate, being the corrupted source. German Wiktionary could: it is
+independently edited and its `{{Deutsch Verb Übersicht}}` box carries principal parts directly. 38
+API calls settled 34 of them.
+
+The first classification pass reported 12 defects and 14 "unclear". The unclear ones were an
+artifact: my weak-detector tested whether the Präteritum ended in *-te*, and German Wiktionary
+writes the *split* form. "hängte auf" ends in *auf*. Stripping the trailing particle before
+testing the stem resolved all ten cleanly, every one of them weak and correctly shipped.
+
+Final triage: **12 defects, 22 vindicated, 4 unknowable** (no German entry at all). The
+discriminator that explains the 22 is worth keeping: a weak derivative of a strong base is normally
+**denominal or deadjectival** — *umringen* from *Ring*, *bemitleiden* from *Mitleid*, *aufweichen*
+from *weich*, *veranschlagen* from *Anschlag*. A transparent prefix + strong verb compound encoded
+weak is the defect signature.
+
+Eleven were fixed by inheriting the base's encoding, which is just the tranche-2 rule. Two were
+deferred, and both land on gaps already in the roadmap: *verglimmen* is weak Präteritum with strong
+participle, the *mahlen*/*spalten* class the model cannot express; *verschreien* needs the
+vowel-stem *-n* rule, making it the ninth verb waiting on the single highest-value `Conjugator` fix
+outstanding.
+
+### The metric started punishing the repair
+
+Then the interesting part. Re-running the pipeline took the at-odds count from **8 to 17**, and the
+summary named my eleven fixes as the offenders. The roadmap says of that number, in bold, "it
+should never rise."
+
+But eleven of those seventeen are correct German disagreeing with a corrupt table. Left as prose,
+this is a trap with a fuse: a future session sees 17, reads the injunction, and reverts today's
+work to restore the number. That is precisely this morning's lesson wearing a different hat, so it
+got the same treatment. `verbdata/wiktionary-defects.json` records each verb, what Wiktionary
+claims, what is correct, and which authority settled it; `summarize_classification.py` subtracts
+them and reports the raw count alongside. Back to 8, with the divergence visible as data rather
+than as a paragraph asking to be believed.
+
+Adding a verb to that file is a claim that an outside source contradicts Wiktionary, and the schema
+demands you name it. It is not a mute button.
+
+**The 5,650 incoming verbs have never been screened for this**, and the same generated tables are
+what tranche 3 will verify against.
+
+### The pipeline Josh actually asked for
+
+The task underneath all this was designing a combined etymology-and-example-sentence pipeline for
+the 2,582 verbs that have neither. Two of his premises checked out exactly.
+
+Conjugar's index really exists and works as he remembered, though the load-bearing piece is not the
+index but the **form→lemma map** produced by driving the app's own conjugation engine over every
+verb (`CorpusFormsDumpTests.swift`, 52,166 forms), enabling exact whole-token matching that
+"handles irregular stems and avoids substring false positives". And the current Konjugieren
+pipeline documents its own inefficiency in writing: `example-sentence-pipeline.md` contemplates a
+pre-filter and declines it, because "the subagent can read files directly from `corpus/`".
+
+The measurement that justifies the whole redesign: of 2,582 missing verbs, 97% are prefixed, they
+reduce to **382 distinct roots**, and **303 of those roots already have an etymology** — shipping
+inside their prefixed relatives, since the existing entries decompose into bullets. So the
+etymology half is 79 new roots plus 2,582 cheap compositions, not 2,582 acts of scholarship. Josh's
+instinct was right by an order of magnitude more than he argued for.
+
+The one genuinely hard part has no Spanish analogue. **76% of the targets take a separable prefix,
+and German splits them in main clauses**: *anfangen* surfaces as "er fängt neu an", particle
+stranded at clause end. Whole-token matching scores zero on the commonest written form of
+three-quarters of the queue. The answer is to index only contiguous forms first (infinitive,
+*zu*-infinitive, participle, and every verb-final subordinate clause, all abundant in legal and
+literary German), then a split-form rescue pass for zero-hit verbs.
+
+German also gives something back. Conjugar's worst recurring bug was noun homographs draining
+candidate slots, needing an entire extra stage. German capitalizes nouns, so *das Ringen* is
+mechanically distinguishable from *ringen*. The same trap is nearly free to dodge here.
+
+Design is in `prompts/uses_etymologies.md`. Concurrency is the tunable knob rather than shard size,
+per Josh: shards stay ~25 verbs so a resumed run has uniform units, and `MAX_CONCURRENT` starts at
+2 and rises toward whatever a five-hour window sustains.

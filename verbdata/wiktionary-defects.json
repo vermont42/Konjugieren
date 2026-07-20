@@ -1,0 +1,48 @@
+{
+  "_comment": [
+    "Verbs where Konjugieren deliberately disagrees with English Wiktionary because Wiktionary",
+    "is wrong. Consumed by summarize_classification.py, which subtracts these from the",
+    "at-odds count and reports them separately.",
+    "",
+    "Why this file exists. The classify-and-verify pipeline treats agreement with Wiktionary as",
+    "ground truth, and the at-odds count is the repo's regression gate ('it should never rise').",
+    "That breaks down when Wiktionary itself is wrong: fixing such a verb RAISES the count, so a",
+    "future session reading only the number would revert the fix to restore it.",
+    "",
+    "The failure mode found on 2026-07-20: English Wiktionary auto-generates a default WEAK",
+    "conjugation table for verb pages no editor has supplied a strong template for. The tables",
+    "contain non-words -- 'angelest' for anlesen, 'aufgewascht' for aufwaschen -- while the base",
+    "entries (lesen, waschen) are correctly strong. kaikki faithfully extracts the garbage, the",
+    "classifier hypothesizes weak, the comparison matches exactly, and the verb ships wrong with",
+    "a clean bill of health. 'Verified' means 'agrees with Wiktionary', not 'correct'.",
+    "",
+    "Arbitration therefore cannot use kaikki. Each entry below was checked against GERMAN",
+    "Wiktionary's {{Deutsch Verb Uebersicht}} box, which is independently edited, via",
+    "  https://de.wiktionary.org/w/api.php?action=parse&page=<verb>&prop=wikitext&format=json",
+    "",
+    "Adding an entry is a claim that an outside source contradicts Wiktionary. Record that",
+    "source in 'authority'. Do not add a verb here to silence a number.",
+    "",
+    "Discriminator, for triage: a weak derivative of a strong base is normally denominal or",
+    "deadjectival (umringen from Ring, bemitleiden from Mitleid, aufweichen from weich), and",
+    "those are genuinely weak. A transparent prefix + strong verb compound encoded weak is the",
+    "defect signature."
+  ],
+  "defects": [
+    {"verb": "abgleiten", "wiktionary": "abgleitete / abgegleitet", "correct": "glitt ab / abgeglitten", "authority": "de.wiktionary", "checked": "2026-07-20"},
+    {"verb": "absaugen", "wiktionary": "absaugte / abgesaugt", "correct": "sog ab / abgesogen", "authority": "de.wiktionary", "checked": "2026-07-20"},
+    {"verb": "anlesen", "wiktionary": "anleste / angelest", "correct": "las an / angelesen", "authority": "de.wiktionary", "checked": "2026-07-20"},
+    {"verb": "aufwaschen", "wiktionary": "aufwaschte / aufgewascht", "correct": "wusch auf / aufgewaschen", "authority": "base verb waschen is strong and the compound is transparent; no de.wiktionary entry exists", "checked": "2026-07-20"},
+    {"verb": "auspfeifen", "wiktionary": "auspfeifte / ausgepfeift", "correct": "pfiff aus / ausgepfiffen", "authority": "de.wiktionary", "checked": "2026-07-20"},
+    {"verb": "einflechten", "wiktionary": "einflechtete / eingeflechtet", "correct": "flocht ein / eingeflochten", "authority": "de.wiktionary", "checked": "2026-07-20"},
+    {"verb": "entgelten", "wiktionary": "entgeltete / entgeltet", "correct": "entgalt / entgolten", "authority": "de.wiktionary", "checked": "2026-07-20"},
+    {"verb": "rauslassen", "wiktionary": "rauslasste / rausgelasst", "correct": "liess raus / rausgelassen", "authority": "de.wiktionary", "checked": "2026-07-20"},
+    {"verb": "reinwaschen", "wiktionary": "reinwaschte / reingewascht", "correct": "wusch rein / reingewaschen", "authority": "de.wiktionary", "checked": "2026-07-20"},
+    {"verb": "verweben", "wiktionary": "verwebte / verwebt", "correct": "verwob / verwoben", "authority": "de.wiktionary", "checked": "2026-07-20"},
+    {"verb": "wegbegeben", "wiktionary": "wegbegabte / weggebegabt", "correct": "begab weg / wegbegeben", "authority": "de.wiktionary", "checked": "2026-07-20"}
+  ],
+  "deferred": [
+    {"verb": "verglimmen", "correct": "verglimmte / verglommen", "reason": "Weak Praeteritum with strong participle -- wrinkle 4 in verb-sources.md, the mahlen/spalten class. Neither the weak nor the mixed family can express it. Left encoded weak, which is half right, until that model gap is closed.", "authority": "de.wiktionary", "checked": "2026-07-20"},
+    {"verb": "verschreien", "correct": "verschrie / verschrien", "reason": "A strong verb whose stem ends in a vowel takes -n, not -en. Conjugator has no such rule; schreien smuggles the repair into its ablaut group as a full override and still gets 1p/3p Praeteritum wrong. Adopting schreien's group would inherit that bug. This is the ninth verb waiting on the rule named in roadmap.md 'Known gaps'.", "authority": "de.wiktionary", "checked": "2026-07-20"}
+  ]
+}

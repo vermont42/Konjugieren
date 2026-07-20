@@ -262,6 +262,19 @@ things shaped the rest, and Phase 4 should know them.
   occupied (24, in Kafka). Physical line numbers are now carried through the reflow and point at
   the matched verb itself; a 600-candidate audit resolves ~99%, and every sampled residual was a
   correct citation the *verifier* could not reconstruct, not a bad one.
+- **Snippets became quotations, and the constant had to change with them.** Conjugar's
+  `SNIPPET_WIDTH = 200` sized a *preview* — enough text to judge whether a candidate was
+  relevant. Phase 4 uses the same field to *quote* the sentence into the app, and a preview may
+  be lossy where a quotation may not. At 200 characters 36% of candidates arrived truncated, so
+  the mining brief told every subagent to re-open the source at `doc:line` and rebuild the
+  sentence by hand; that reopen measured at roughly 45% of a shard's cost, and it put subagents
+  in the business of reassembling prose across the gutter of two-column PDF extractions. The
+  sentence was already computed in `snippet()` and then thrown away. `MAX_QUOTE_CHARS = 600`
+  stores it whole: truncation fell from 36% to 2.8% for an 8% increase in shard size. Each
+  candidate now also carries an explicit `truncated` flag rather than leaving it to be inferred
+  from a leading or trailing "…", because the Bundestag protocols use ellipses for
+  interruptions and a consumer guessing from the glyph would quote a fragment believing it
+  whole.
 - **Line-break hyphens are healed, which buys recall as well as legibility.** A wrapped
   "ab-/geholt" tokenizes as `ab` + `geholt` and never matches `abgeholt`. Suspended hyphens in
   coordinations (*Ein- und Ausgang*) are left alone.

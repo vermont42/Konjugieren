@@ -5,8 +5,12 @@ German and English. Your shard is self-contained: everything you need has been j
 
 **Do not read the corpus.** Do not read `Etymologies.json`, `Verbs.xml`, or the kaikki JSONL.
 Phase 2 exists precisely so you don't have to — the German corpus is ~6.5 MB and a subagent
-that searches it pays that cost for nothing. The one exception is step 3 below, where you
-re-open a single source file at a single line.
+that searches it pays that cost for nothing. The single narrow exception is step 3, and it
+applies to roughly 3% of candidates.
+
+**Expect to finish without opening any file but your own shard.** If you find yourself reading
+source texts for most of your verbs, re-read step 3 — you are paying for something you were
+already given.
 
 ## Your input
 
@@ -19,7 +23,7 @@ re-open a single source file at a single line.
                                "family": "w", "auxiliary": null,
                                "prefixes": ["separ:ab"], "root": "root:arbeiten" } ],
                "candidates": [ {"doc":…, "line":…, "token":…, "text":…,
-                                "contiguous":…, "source":…} ] } ] }
+                                "truncated":…, "contiguous":…, "source":…} ] } ] }
 ```
 
 Morphemes are **interned**: `prefixes` and `root` hold keys into the shard's `morphemes`
@@ -84,15 +88,30 @@ Candidates are already ranked and balanced across sources. Reject a candidate wh
 - it is a **different verb** that happens to share the form. Candidates are deliberately
   ambiguous: a form maps to several verbs and disambiguation was left to you.
 
-**3. Re-open the source at `doc:line` for one clean, complete sentence.**
+**3. Quote `text` as it stands. Do not re-open the source file unless `truncated` is true.**
 
-The `text` field is a ±200-character snippet and is often truncated mid-clause. Read the file
-around that line and take the whole sentence. `doc:line` points at the matched verb itself and
-resolves for about 99% of candidates; if it does not resolve, try the next candidate rather
-than quoting the snippet.
+Each candidate carries a `truncated` flag. When it is `false` — which is the case for about
+97% of candidates — `text` **is** the complete sentence as it appears in the source, and you
+should quote it verbatim. Opening the file to re-derive a sentence you were already handed
+wastes most of a shard's budget and is how a misquote gets manufactured: several of these
+sources are two-column PDF extractions, and reassembling prose across a column gutter by hand
+is error-prone in a way that reads perfectly fluently afterward.
+
+Trust the flag rather than the punctuation. A sentence may legitimately *contain* an ellipsis —
+the Bundestag protocols use them for interruptions — so a leading or trailing "…" is not
+evidence of truncation and its absence is not evidence of completeness.
+
+Only when `truncated` is true may you open the file at `doc:line` to recover the whole
+sentence. `doc:line` points at the matched verb itself. If it does not resolve, move to the
+next candidate rather than quoting a fragment.
 
 Keep the sentence a reasonable length for a phone screen — roughly 8 to 30 words. If the only
 clean sentence is a 60-word legal period, prefer the next candidate.
+
+**Never trim a sentence to hit that target.** Quote it whole or reject it. German puts the
+finite verb second and strands its particle at the clause end, so the target verb frequently
+sits in precisely the subordinate clause a length-trim would remove — this has already happened
+once in this pipeline, and the trimmed quote no longer contained the verb it was illustrating.
 
 **4. Translate it into natural English.** Not a gloss — real English prose that a learner would
 recognize as the same thought. Keep the target verb's sense visible in the translation.

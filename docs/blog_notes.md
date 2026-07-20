@@ -2598,3 +2598,49 @@ token *abführen* — genuinely both the infinitive of *abführen* and the Konju
 cap is what starves the rarer verb. This is Conjugar's *cocina*/*cocinar* problem, which Phase 2
 believed German capitalization had solved — it solves noun homographs and is silent about
 verb-on-verb ones. Phase 5's tail rescue is where it belongs.
+
+## The constant that was sized for a different job (2026-07-20)
+
+Before spending the ~9M tokens the remaining mining shards were projected to cost, one more
+look at where a shard's budget actually goes. The answer was not the etymologies or the
+candidates. It was that `MINING_SPEC.md` told every subagent to re-open the source file at
+`doc:line` and recover a clean sentence by hand — roughly twenty file reads per shard, plausibly
+45% of the measured 124.5k.
+
+And the sentence was already there. `build_corpus_index.py`'s `snippet()` computes the complete
+sentence and *then* truncates it to `SNIPPET_WIDTH = 200`. Only 36% were actually being cut, so
+for the other 64% a subagent was opening a file to reconstruct text it was already holding.
+
+`SNIPPET_WIDTH = 200` came over from Conjugar, where it was correct. A snippet there sized a
+**preview**: enough context for a reader to judge whether a candidate was relevant. Phase 4
+reuses the field to **quote** the sentence into the app. A preview may be lossy. A quotation may
+not. Nothing about the constant was wrong; it was answering a question nobody was asking
+anymore, and the reopen instruction in the spec was me papering over the mismatch instead of
+noticing it.
+
+`MAX_QUOTE_CHARS = 600` now stores the sentence whole. Truncation fell from 36% to 2.8% and
+shards grew 8%, from a 51 KB median to 55 KB. Twenty seconds of CPU, no model tokens.
+
+Two details worth keeping.
+
+**The flag is explicit, not inferred.** Each candidate carries `truncated: bool` rather than
+leaving a consumer to look for a leading or trailing "…". The Bundestag protocols use ellipses
+for interruptions, so the glyph is not evidence of truncation and its absence is not evidence of
+completeness. Inferring a data property from a formatting character is the kind of shortcut that
+works for months and then quotes a fragment as though it were a sentence.
+
+**The spec now says never to trim a quote to hit the length target** — quote whole or reject.
+That rule exists because a Phase 4 subagent already reported catching itself: it had shortened
+five quotes toward the 8–30-word target and in one case the trim removed the very clause holding
+the target verb. German puts the finite verb second and strands its particle at the clause end,
+so the illustrated verb frequently sits in exactly the subordinate clause a naive trim discards.
+The agent caught it and restored all five. The spec should not have depended on it catching it.
+
+**Fourth time, same shape.** Root articles: right as articles, wrong as bullets. `MAX_OCCURRENCES
+= 5`: right for a verb owning its forms, wrong for one sharing them with a commoner verb. The
+count of distinct separable prefixes: right for sizing the authoring, wrong for describing the
+grammar. `SNIPPET_WIDTH`: right for previewing, wrong for quoting. Every one was a value that
+was correct where it came from and silently wrong where it was reused — which is exactly the
+failure mode a reuse-everything pipeline should expect to have, and exactly the one none of its
+validators check for, because each value is individually valid. Reuse is only free when the
+shape transfers, and shape is invisible until something downstream is built on it.

@@ -7,8 +7,11 @@ the Phase 4 subagents only do the expensive *select + translate* judgment on a h
 pre-found sentences, instead of each one re-reading a ~6.5 MB corpus.
 
 Ported from Conjugar's `corpus/working/build_corpus_index.py`, keeping its constants
-(MAX_OCCURRENCES, PER_DOC_CAP, SNIPPET_WIDTH), its tier priority, and its round-robin merge with a
-per-verb rotating lead work. Four things had to change for German; each is marked GERMAN: below.
+(MAX_OCCURRENCES, PER_DOC_CAP), its tier priority, and its round-robin merge with a per-verb
+rotating lead work. Four things had to change for German; each is marked GERMAN: below.
+
+Conjugar's `SNIPPET_WIDTH = 200` did not survive. It sized a *preview*, and Phase 4 needs a
+*quotation*; see MAX_QUOTE_CHARS below for why that distinction cost about 45% of a mining shard.
 
 Inputs
   - corpus/working/forms.json : { "<surface form>": [{verb, contiguous, particle?}, …] }, written
@@ -69,9 +72,20 @@ OUT_JSON = os.path.join(HERE, "corpus_index.json")
 # Final distinct sentences kept per verb, and the per-document ceiling gathered before balancing.
 MAX_OCCURRENCES = 5
 PER_DOC_CAP = 4
-# Stored context width (chars). A sentence shorter than this is stored whole, which is the common
-# case and is what the subagent actually wants; longer ones are trimmed around the matched token.
-SNIPPET_WIDTH = 200
+# Stored quote width (chars). A sentence shorter than this is stored whole; longer ones are
+# trimmed around the matched token and flagged `truncated`.
+#
+# This was 200, inherited from Conjugar, where a snippet's job was to let a reader *judge* a
+# candidate's relevance. Phase 4 uses it for a different job — *quoting* the sentence into the
+# app — and a preview may be lossy where a quotation may not. At 200 chars, 36% of candidates
+# arrived truncated, so MINING_SPEC told every subagent to re-open the source file at `doc:line`
+# and recover the sentence by hand. That reopen was measured as roughly 45% of a mining shard's
+# cost, and it put the subagent in the business of reassembling sentences across two-column PDF
+# extractions, which is exactly where a misquote gets manufactured.
+#
+# The sentence was already computed here and then thrown away. Storing it whole costs about
+# 10 KB per shard and removes the reopen for all but the runaways.
+MAX_QUOTE_CHARS = 600
 
 # Tier priority: literature → government → technology, as in Conjugar. `modern/` is this corpus's
 # literature tier (it also holds the constitutional texts, which read as literature-adjacent legal
@@ -421,13 +435,22 @@ def sentences(text):
 
 
 def snippet(sentence, token_start, token):
-    """The sentence itself when it fits, else SNIPPET_WIDTH chars centered on the match."""
-    if len(sentence) <= SNIPPET_WIDTH:
-        return sentence
-    half = SNIPPET_WIDTH // 2
+    """
+    Return (text, truncated). The sentence whole when it fits under MAX_QUOTE_CHARS,
+    else MAX_QUOTE_CHARS centered on the match with ellipses.
+
+    `truncated` is reported explicitly rather than left to be inferred from a leading
+    or trailing "…", because a sentence can legitimately *contain* an ellipsis — the
+    Bundestag protocols use them for interruptions — and a consumer that guessed from
+    the glyph would quote a fragment believing it complete.
+    """
+    if len(sentence) <= MAX_QUOTE_CHARS:
+        return sentence, False
+    half = MAX_QUOTE_CHARS // 2
     lo = max(0, token_start - half)
     hi = min(len(sentence), token_start + len(token) + half)
-    return ("…" if lo > 0 else "") + sentence[lo:hi].strip() + ("…" if hi < len(sentence) else "")
+    text = ("…" if lo > 0 else "") + sentence[lo:hi].strip() + ("…" if hi < len(sentence) else "")
+    return text, True
 
 
 # Punctuation that closes a German clause. A Satzklammer never spans one of these.
@@ -588,11 +611,13 @@ def main():
                     if key in seen or len(seen) >= PER_DOC_CAP:
                         continue
                     seen.add(key)
+                    text, truncated = snippet(sentence, hit["offset"], hit["token"])
                     candidate = {
                         "doc": rel,
                         "line": start_line,
                         "token": hit["token"],
-                        "text": snippet(sentence, hit["offset"], hit["token"]),
+                        "text": text,
+                        "truncated": truncated,
                         "contiguous": hit["contiguous"],
                         "source": source_name(os.path.basename(rel)),
                         "_rank": hit["rank"],

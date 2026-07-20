@@ -576,9 +576,7 @@ python3 -c "import json; json.load(open('Konjugieren/Assets/Localizable.xcstring
 **Never round-trip the file through `json.load` + `json.dump`.** The rule above covers *replacing*
 text. When *adding* whole entries, the instinct is to parse the file, mutate the dict, and dump it
 back. Doing so rewrites all ~5,400 lines: Xcode writes `"key" : value` (space before the colon) and
-`json.dump` writes `"key": value`, so the whole file churns without a single value changing. The
-2026-07-19 prefix-coverage pass added 25 keys this way and produced 3,789 insertions against 3,440
-deletions before reverting.
+`json.dump` writes `"key": value`, so the whole file churns without a single value changing.
 
 Add entries as **raw text** instead, rendered in Xcode's exact format and spliced at an anchor:
 

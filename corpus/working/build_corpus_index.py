@@ -87,6 +87,80 @@ PER_DOC_CAP = 4
 # 10 KB per shard and removes the reopen for all but the runaways.
 MAX_QUOTE_CHARS = 600
 
+# The word band a quoted sentence should land in to read well on a phone screen. Candidates
+# inside the band sort ahead of those outside it, within their rank tier.
+#
+# Added 2026-07-20 after two shard-runs independently reported walking past one to three
+# candidates per verb on length alone. The cause is that `_rank` encodes only contiguous-vs-split,
+# so the round-robin merge hoists whatever each work offered first — and the literary sources
+# (Kafka, Mann, Nietzsche) offer periods. Measured over the whole index: the median candidate is
+# 25 words but the 90th percentile is 59, and for 402 verbs (15% of those with candidates) the
+# lead candidate ran past 45 words while a clean 8-30 word one sat below it.
+TARGET_WORDS = (8, 30)
+
+# Defects that sort a candidate last instead of removing it. See `is_defective` for why an
+# unbalanced quotation mark is usually a sentence inside a longer quotation rather than damage.
+DEMOTE_ONLY = {"unbalanced"}
+
+
+def is_defective(text):
+    """Name the mechanical defect in a candidate's text, or None if it is clean.
+
+    These are the defects that make a candidate unusable *without judgment*, and every one of
+    them was reported by a mining subagent as a recurring rejection before it was filtered here.
+    They are cheap to detect and expensive to leave in: a subagent pays to read the candidate,
+    reason about it, and reject it, and a tired one might not reject it.
+
+    Each tell corresponds to an upstream extraction failure the indexer cannot repair:
+
+    - `starts-lowercase`: the sentence splitter cut mid-sentence, so the quote has no Vorfeld
+      and cannot stand alone. Note this is safe *only* because German capitalizes all nouns and
+      every sentence's first word; the same rule would be wrong for English.
+    - `unbalanced`: an unclosed paren or quotation mark. In the Bundestag protocols this means a
+      speaker attribution was severed from its heckle, which is fatal; in Luther and Grimm it
+      usually means a complete sentence sits inside a longer quotation, which is not. Demoted
+      rather than dropped for that reason --- see the severity note below.
+    - `gutter-hyphen`: a word severed mid-token across a two-column PDF gutter
+      (`praxistauglicheren Strafver-` + `in den Ländern`). Fluent-looking and entirely wrong.
+    - `column-marker`: a bare `(A)`/`(B)` column label from a two-column protocol landed inside
+      the prose.
+
+    Deliberately *not* filtered: candidates whose furniture would have to be stripped to reach
+    the matched verb. Subagents reject those visibly, which is better than a silent edit --- see
+    Phase 4's note in `prompts/uses_etymologies.md`.
+
+    Severity matters, and `DEMOTE_ONLY` below says which defects merely sort last rather than
+    disqualify. `unbalanced` is not always damage: German quoted speech spans sentences freely
+    (`„Erstens dies. Zweitens das.“`), so the splitter hands back two complete sentences each
+    holding one half of the quotation marks. Luther and Grimm are saturated with such speech and
+    are two of the three largest lead sources, so hard-dropping every imbalance costs real
+    coverage for verbs attested only there. Demoting keeps them reachable when they are a verb's
+    only evidence, and the subagent can still reject one.
+    """
+    if not text:
+        return "empty"
+    if text[0].islower():
+        return "starts-lowercase"
+    for opener, closer in (("(", ")"), ("„", "“")):
+        if text.count(opener) != text.count(closer):
+            return "unbalanced"
+    if text.count('"') % 2:
+        return "unbalanced"
+    if re.search(r"[a-zäöüß]-\s+[a-zäöüß]", text):
+        return "gutter-hyphen"
+    if re.search(r"\((?:A|B|C|D)\)", text):
+        return "column-marker"
+    return None
+
+
+def length_tier(text):
+    """0 when the candidate sits in the phone-screen word band, 1 otherwise.
+
+    Used as a sort key *after* `_rank`, so it breaks ties within a tier and never promotes a
+    split-form candidate over a contiguous one.
+    """
+    return 0 if TARGET_WORDS[0] <= len(text.split()) <= TARGET_WORDS[1] else 1
+
 # Tier priority: literature → government → technology, as in Conjugar. `modern/` is this corpus's
 # literature tier (it also holds the constitutional texts, which read as literature-adjacent legal
 # prose). `government2` is the batch-2 government sources and shares the government bucket.
@@ -684,6 +758,8 @@ def main():
     raw = defaultdict(lambda: defaultdict(list))
     per_doc_seen = defaultdict(set)
     nominal_skipped = 0
+    defective_skipped = defaultdict(int)
+    defective_demoted = defaultdict(int)
     sentence_count = 0
 
     for _tier, work, rel, abspath in docs:
@@ -707,6 +783,15 @@ def main():
                     # that are long enough to need centering.
                     cleaned, where = strip_furniture(sentence, rel, hit["offset"])
                     text, truncated = snippet(cleaned, where, hit["token"])
+                    # Drop the mechanically unusable before a subagent pays to read it. The
+                    # check runs on the stored text, after furniture stripping, because that is
+                    # the string the subagent would actually have been asked to quote.
+                    defect = is_defective(text)
+                    if defect and defect not in DEMOTE_ONLY:
+                        defective_skipped[defect] += 1
+                        continue
+                    if defect:
+                        defective_demoted[defect] += 1
                     candidate = {
                         "doc": rel,
                         "line": start_line,
@@ -716,6 +801,7 @@ def main():
                         "contiguous": hit["contiguous"],
                         "source": source_name(os.path.basename(rel)),
                         "_rank": hit["rank"],
+                        "_demoted": 1 if defect else 0,
                     }
                     if not hit["contiguous"]:
                         candidate["particle"] = hit["particle"]
@@ -729,9 +815,10 @@ def main():
         by_work = raw.get(verb)
         if not by_work:
             continue
-        # Contiguous evidence first, then clause-final split forms, then the rest.
+        # Contiguous evidence first, then clause-final split forms, then the rest. Within a
+        # tier, a candidate that fits a phone screen sorts ahead of a 60-word literary period.
         for candidates in by_work.values():
-            candidates.sort(key=lambda c: c["_rank"])
+            candidates.sort(key=lambda c: (c["_rank"], c["_demoted"], length_tier(c["text"])))
         merged = merge_balanced(
             by_work,
             [w for w in lit_works if w in by_work],
@@ -739,9 +826,10 @@ def main():
             by_work.get("technology", []),
             rank,
         )
-        merged.sort(key=lambda c: c["_rank"])
+        merged.sort(key=lambda c: (c["_rank"], c["_demoted"], length_tier(c["text"])))
         for candidate in merged:
             candidate.pop("_rank", None)
+            candidate.pop("_demoted", None)
         if merged:
             index[verb] = merged
 
@@ -749,10 +837,10 @@ def main():
     with open(OUT_JSON, "w", encoding="utf-8") as handle:
         json.dump(out, handle, ensure_ascii=False, indent=1)
 
-    report(forms, docs, out, targets, sentence_count)
+    report(forms, docs, out, targets, sentence_count, defective_skipped, defective_demoted)
 
 
-def report(forms, docs, out, targets, sentence_count):
+def report(forms, docs, out, targets, sentence_count, defective_skipped=None, defective_demoted=None):
     covered_targets = [v for v in sorted(targets) if v in out]
     zero_targets = [v for v in sorted(targets) if v not in out]
     split_only = [v for v in covered_targets if not any(c["contiguous"] for c in out[v])]
@@ -761,6 +849,14 @@ def report(forms, docs, out, targets, sentence_count):
     print(f"sentences scanned         : {sentence_count}")
     print(f"forms.json forms          : {len(forms)}")
     print(f"verbs with >=1 candidate  : {len(out)}")
+    if defective_skipped:
+        total = sum(defective_skipped.values())
+        detail = ", ".join(f"{k} {v}" for k, v in sorted(defective_skipped.items(), key=lambda kv: -kv[1]))
+        print(f"defective candidates dropped: {total}  ({detail})")
+    if defective_demoted:
+        total = sum(defective_demoted.values())
+        detail = ", ".join(f"{k} {v}" for k, v in sorted(defective_demoted.items(), key=lambda kv: -kv[1]))
+        print(f"defective candidates demoted: {total}  ({detail})")
     print()
     print(f"TARGET verbs (no etymology): {len(targets)}")
     if targets:

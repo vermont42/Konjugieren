@@ -58,15 +58,27 @@ morpheme, then optionally a closing sentence.
 From MHG ~vermīden~, from OHG ~firmīdan~. Compound of ~ver-~ + ~meiden~:
 
 - ~meiden~: <the root entry, verbatim>
-- ~ver-~: <the prefix chain, verbatim> <one sentence, yours, on what it does here>
+- ~ver-~: <the prefix chain, verbatim> <the picked sense from `senses`, verbatim>
 
-<optional closing sentence on the compound's own semantics>
+<closing sentence, yours, on the compound's own semantics>
 ```
 
-What you write is the **joining prose**: the lead, the per-compound sense sentence after each
-prefix chain, and the optional closer. The chains and the root text are not yours to rewrite.
-Use the reading's `translation` to pick the sense that actually fits — for `abarbeiten`
-"work off", *ab-* is the separation sense, not the dismantling one.
+What you write is the **lead sentence and the closer**. Everything inside the bullets is
+reused: the root entry, the prefix chain, *and* the sense. The `senses` strings are finished
+prose written for exactly this slot — pick the index that fits and splice it unchanged. Use the
+reading's `translation` to pick: for `abarbeiten` "work off", *ab-* is the separation sense, not
+the dismantling one.
+
+Do **not** author a per-bullet sentence of your own on top of the spliced sense. An earlier
+version of this brief asked for one, which duplicated the closer's job and made the bullets
+drift in voice from shard to shard. Compound-specific meaning belongs in the closer, which is
+where the genuinely interesting observation usually goes — that *abkehren* is "turn away" and
+not "sweep up," or that *abschaffen*'s root merged a strong and a weak twin.
+
+**Splice by script, not by retyping.** Read the shard with `json.load`, pull the chain, root,
+and sense strings out of the `morphemes` table, and build your output with string concatenation.
+Retyping them by hand introduces a typo that the verbatim-reuse check will catch as a
+divergence, and hunting that typo costs more than writing the script did.
 
 If the verb has **several readings** that differ in meaning or separability (`über*setzen`
 "translate" vs `über+setzen` "ferry across"), write one etymology covering both, and say which
@@ -91,22 +103,42 @@ Candidates are already ranked and balanced across sources. Reject a candidate wh
 **3. Quote `text` as it stands. Do not re-open the source file unless `truncated` is true.**
 
 Each candidate carries a `truncated` flag. When it is `false` — which is the case for about
-97% of candidates — `text` **is** the complete sentence as it appears in the source, and you
-should quote it verbatim. Opening the file to re-derive a sentence you were already handed
-wastes most of a shard's budget and is how a misquote gets manufactured: several of these
-sources are two-column PDF extractions, and reassembling prose across a column gutter by hand
-is error-prone in a way that reads perfectly fluently afterward.
+97% of candidates — `text` is the stored quotation in full, and you should quote it verbatim.
+Opening the file to re-derive a sentence you were already handed wastes most of a shard's
+budget and is how a misquote gets manufactured: several of these sources are two-column PDF
+extractions, and reassembling prose across a column gutter by hand is error-prone in a way that
+reads perfectly fluently afterward.
 
-Trust the flag rather than the punctuation. A sentence may legitimately *contain* an ellipsis —
-the Bundestag protocols use them for interruptions — so a leading or trailing "…" is not
-evidence of truncation and its absence is not evidence of completeness.
+**Know precisely what the flag claims.** `truncated: false` means *the indexer did not clip
+this text to fit a length ceiling*. It does **not** certify that the upstream sentence splitter
+produced a whole sentence. The two are different guarantees, and earlier shard-runs rejected
+candidates that arrived flagged complete while ending mid-clause on a comma. The indexer now
+drops the mechanically detectable cases — text starting lowercase, severed by a column gutter,
+or carrying a stray `(A)`/`(B)` column marker — but it cannot catch every mis-split. If a
+candidate is plainly not a sentence, reject it and move on; the flag is not an instruction to
+quote something broken.
+
+Trust the flag over the punctuation *in one specific respect*: a sentence may legitimately
+*contain* an ellipsis — the Bundestag protocols use them for interruptions — so a leading or
+trailing "…" is not evidence of truncation and its absence is not evidence of completeness.
+
+Copy the chosen `text` and `source` into your output **programmatically, by candidate index**,
+for the same reason you splice the morphemes by script: a validator checks that your quoted
+German is exactly equal to some candidate's `text`, and a retyped quotation fails that check on
+a single character.
 
 Only when `truncated` is true may you open the file at `doc:line` to recover the whole
 sentence. `doc:line` points at the matched verb itself. If it does not resolve, move to the
 next candidate rather than quoting a fragment.
 
-Keep the sentence a reasonable length for a phone screen — roughly 8 to 30 words. If the only
-clean sentence is a 60-word legal period, prefer the next candidate.
+Keep the sentence a reasonable length for a phone screen — roughly 8 to 30 words. Candidates
+are now sorted so that ones inside that band come first within their rank tier, so the earliest
+genuine verbal use is usually also the right length.
+
+**When there is no next candidate, 45 words is the ceiling.** Past that, return `null` rather
+than quoting a period that will not fit a phone screen. A null is a productive result — Phase 5
+collects them and Josh expands the corpus — whereas an unreadable 62-word quotation ships. Below
+45, prefer the shorter candidate but do not reject a usable sentence for length alone.
 
 **Never trim a sentence to hit that target.** Quote it whole or reject it. German puts the
 finite verb second and strands its particle at the clause end, so the target verb frequently

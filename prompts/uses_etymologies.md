@@ -494,6 +494,15 @@ Three things a later pass should know:
 - **About 30 candidates still carry furniture**, the cases where stripping would have reached the
   matched verb. Subagents reject them, which is a visible loss rather than a silent edit. Do not
   "fix" this by loosening the protection.
+- **An indexer change can orphan an already-mined quote, so make indexer changes early.**
+  `merge_balanced` pops from per-work queues *after* they are sorted, so a new sort key changes
+  which candidates survive `MAX_OCCURRENCES` — not merely their order. When the word-count key
+  landed on 2026-07-20 it pushed shard 001's *abgehen* quote out of its own candidate pool, and
+  the validator flagged it as no longer verbatim although it had been verbatim when mined. The
+  repair is to re-pick from the current pool and say so in `notes`; do not carve an exception
+  into the validator, which is the one check proving a subagent quoted rather than paraphrased.
+  The general lesson is that the pipeline is cheap to change before mining and expensive after,
+  which is the argument for spending a window on reported friction rather than on more shards.
 
 ### Phase 5 — Aggregate, and report the gaps
 

@@ -2696,3 +2696,62 @@ quote a use of the wrong verb. The second run then did something better than ref
 the collision in the etymology, since *führen* is the causative of *fahren* and the homograph is
 genealogical rather than accidental. That is the shape of answer this pipeline is supposed to
 produce — the constraint became the content.
+
+## The subagents keep finding the indexer's bugs (2026-07-20)
+
+Two more mining shards, and then a stop — not because the window ran out, but because both
+subagents independently reported the same three problems, and the protocol says a recurring
+rejection reason is a reason to fix the pipeline rather than to mine another shard against it.
+
+The most interesting finding is that the brief was making a promise the code does not keep.
+MINING_SPEC told every subagent that `truncated: false` means `text` **is** the complete sentence
+as it appears in the source. What `snippet()` actually does is set the flag false whenever
+`len(sentence) <= MAX_QUOTE_CHARS` — that is, "I did not clip this to fit." Whether the thing was
+a sentence at all was settled upstream by the splitter, and when the splitter mis-splits, the
+fragment arrives wearing a completeness badge. One shard's `abliefern` candidate ended mid-clause
+on a comma; another's `abrücken` began lowercase with no Vorfeld. Both agents trusted the flag as
+instructed, then rejected the candidates on their own judgment, and both wrote up the gap. The
+flag was not lying so much as being read as a stronger claim than it makes, which is a failure of
+the brief rather than of the code.
+
+The second finding was that length was the dominant rejection reason and nobody had thought to
+rank on it. `_rank` encodes contiguous-versus-split and nothing else, so the round-robin merge
+hoists whatever each work offered first — and Kafka, Mann, and Nietzsche offer periods. Measuring
+it turned two anecdotes into a number: the median candidate is 25 words, the 90th percentile is
+59, and for a sixth of the verbs with candidates the lead ran past 45 words while a clean short
+one sat below it. A word-count term as a tiebreaker within the rank tier was a few lines.
+
+The third was mechanical damage reaching subagents: text severed mid-word across a two-column PDF
+gutter, bare `(A)`/`(B)` column markers landed in the prose, unclosed parens from Bundestag
+heckles whose speaker attribution had been cut away. Roughly one candidate in nine carried
+something detectable for free, and each one cost a subagent a read and a rejection.
+
+The near-miss worth recording is what happened when I filtered all four defect classes alike.
+Coverage dropped by about sixty verbs, and the reason was quotation marks: German quoted speech
+spans sentences freely, so `„Erstens dies. Zweitens das.“` splits into two complete sentences each
+holding one half of the marks. Luther and Grimm are saturated with quoted speech and are two of
+the three largest lead sources. Hard-dropping every imbalance was throwing away good sentences to
+catch severed heckles. Splitting the filter by severity — drop what is corrupt or fragmentary,
+merely demote what is unideal — recovered most of it, and the surviving losses are verbs whose
+only candidates were genuinely damaged, which a subagent would have nulled anyway.
+
+Re-ranking then orphaned an already-mined quote, which is a lesson about ordering rather than
+about ranking. `merge_balanced` pops from per-work queues after they are sorted, so a new sort key
+changes *which* candidates survive `MAX_OCCURRENCES`, not just their order. Shard 001's *abgehen*
+had quoted a 39-word Luther passage that the length key pushed out of the pool, and the validator
+correctly flagged it as no longer verbatim even though it had been verbatim when mined. I re-picked
+from the current pool — Ruth 4:14 attests the same "be lacking" sense in 27 words — and noted why
+in the entry. The general point is that indexer changes are not safe once mining is underway, which
+is an argument for spending a window on the pipeline before spending several on the corpus.
+
+Two smaller things. The `senses` field shipped five polished, drop-in sentences per prefix while
+the brief asked subagents to author a sense sentence themselves; both agents dutifully wrote their
+own. The redundancy was the bug — the brief already had a closer slot for compound-specific
+meaning — so the sense is now spliced verbatim and the closer carries the interesting observation.
+And one agent had spliced its root bullets by script rather than retyping them, precisely so the
+verbatim check could not fail on a typo; that technique is now in the brief, along with the same
+advice for copying the quoted sentence by candidate index.
+
+Four shards mined, all passing the validator. The remaining hundred will run against an indexer
+that ranks by length, drops corrupt text, and demotes rather than discards a sentence caught
+inside a larger quotation.

@@ -573,6 +573,42 @@ p.write_text(t)
 python3 -c "import json; json.load(open('Konjugieren/Assets/Localizable.xcstrings'))"
 ```
 
+**Never round-trip the file through `json.load` + `json.dump`.** The rule above covers *replacing*
+text. When *adding* whole entries, the instinct is to parse the file, mutate the dict, and dump it
+back. Doing so rewrites all ~5,400 lines: Xcode writes `"key" : value` (space before the colon) and
+`json.dump` writes `"key": value`, so the whole file churns without a single value changing. The
+2026-07-19 prefix-coverage pass added 25 keys this way and produced 3,789 insertions against 3,440
+deletions before reverting.
+
+Add entries as **raw text** instead, rendered in Xcode's exact format and spliced at an anchor:
+
+```python
+entry = (
+    '    "PIEMeaning.durch" : {\n'
+    '      "extractionState" : "manual",\n'
+    '      "localizations" : {\n'
+    '        "de" : {\n'
+    '          "stringUnit" : {\n'
+    '            "state" : "translated",\n'
+    '            "value" : "hinübergehen, durchqueren"\n'
+    '          }\n'
+    '        },\n'
+    '        "en" : { ... }\n'
+    '      }\n'
+    '    },\n'
+)
+anchor = '    "PIEMeaning.ein" : {'      # the key this one sorts before
+assert text.count(anchor) == 1           # never splice on an ambiguous anchor
+text = text.replace(anchor, entry + anchor)
+```
+
+Reading the file with `json.load` is always safe; only writing it back is not. Parsing to *read*
+existing values and emitting raw text to *write* is the combination that works.
+
+**`git diff --stat` is the check that catches this**, and it catches it in a way JSON validation
+cannot: the round-tripped file is perfectly valid JSON. A correct addition shows insertions and
+**zero deletions**. Any deletions mean existing entries were reformatted, so revert and retry.
+
 ### Searching Within Localizable.xcstrings
 
 Each localization value in `Localizable.xcstrings` occupies a single very long JSON line. Grep matches against these lines are truncated to `[Omitted long matching line]`, making Grep results useless for inspecting content. Instead:

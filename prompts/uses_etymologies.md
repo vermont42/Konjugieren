@@ -411,6 +411,71 @@ Each subagent is told:
 4. If no candidate is a genuine verbal use, return the verb with nulls and a note. **Do not invent
    a sentence.**
 
+**As built — in progress, 2026-07-20.** Shards 000 and 001 are done; 002 through 103 are not.
+The subagents' brief lives in [`corpus/working/MINING_SPEC.md`](../corpus/working/MINING_SPEC.md),
+which is tracked for exactly this reason. Rebuild the shards, then launch:
+
+```bash
+python3 corpus/working/build_mining_shards.py     # 104 shards, ~20 s, safe to re-run
+ls corpus/working/shards/mine_*.in.json | wc -l   # shards that exist
+ls corpus/working/shards/mine_*.out.json | wc -l  # shards already mined
+```
+
+**Resume by relaunching only the shards with no `.out.json`.** That is the whole recovery
+protocol, and it is why subagents write their own files rather than returning JSON through the
+transcript: a shard that dies costs one shard. Re-running `build_mining_shards.py` regenerates
+inputs only and never touches outputs.
+
+- **Concurrency 2, shard size 25.** Size stays fixed so a resumed run has uniform units and shard
+  files stay comparable across runs; concurrency is the knob.
+- **Cost, measured over four shard-runs:** ~99k subagent tokens and about **2 session points**
+  per shard, roughly 6 minutes. The remaining 102 are therefore ~2 full five-hour windows and
+  ~29% of a weekly budget. Calibration: ~45–50k subagent tokens per session point, from two
+  independent batches. Re-derive rather than trusting these.
+- **Yield runs near half.** Shards 000–001 gave 26 sentences and 24 nulls over 50 verbs. Most
+  nulls are verbs with no candidate at all (~36% of targets corpus-wide); the rest are honest
+  refusals. Every verb still gets an etymology, so a null is a half-result, not a failure.
+- **Validate before merging**, since agent self-reports are not evidence:
+
+```bash
+python3 - <<'PY'
+import json, glob, re
+for f in sorted(glob.glob('corpus/working/shards/mine_*.out.json')):
+    n = f.split('_')[-1].split('.')[0]
+    inp = {v['verb']: v['candidates'] for v in json.load(open(f.replace('.out', '.in')))['verbs']}
+    out = json.load(open(f))
+    assert set(out) == set(inp), f'{n}: key set differs from its shard'
+    for verb, entry in out.items():
+        for lang in ('de', 'en'):
+            text = entry['etymology'][lang]
+            assert text and text.count('~') % 2 == 0, f'{n}/{verb}/{lang}: tildes'
+            assert not any(m in text for m in '`$‡^'), f'{n}/{verb}/{lang}: reserved marker'
+            assert '\\n' not in text and '­' not in text, f'{n}/{verb}/{lang}: stray char'
+            if lang == 'de':
+                assert '"' not in text, f'{n}/{verb}: ASCII quote in German'
+        if entry['sentence']:
+            # The quote must be a candidate verbatim — no trimming, no reassembly.
+            assert any(c['text'] == entry['sentence']['de']['sentence'] for c in inp[verb]), \
+                f'{n}/{verb}: quoted sentence is not verbatim from a candidate'
+print('all mined shards pass')
+PY
+```
+
+Three things a later pass should know:
+
+- **The verbatim check above is the one that matters.** It is what proves a subagent quoted rather
+  than paraphrased, and it caught nothing only because the brief forbids trimming — an earlier run,
+  before that rule existed, trimmed five quotes and one of them lost the clause holding its verb.
+- **179 target verbs have every candidate drained by a homograph** — 11% of those with candidates.
+  *abfahren*'s four candidates are all the token *abführen*, genuinely both that verb's infinitive
+  and the Konjunktiv II of *abfahren* (*fahren* → *fuhr* → *führe*). `forms.json` is right to list
+  both; `MAX_OCCURRENCES = 5` is what starves the rarer verb. This is Conjugar's *cocina*/*cocinar*
+  problem, which the German-capitalization defense does not touch because it is verb-on-verb. A
+  tail rescue belongs in Phase 5.
+- **About 30 candidates still carry furniture**, the cases where stripping would have reached the
+  matched verb. Subagents reject them, which is a visible loss rather than a silent edit. Do not
+  "fix" this by loosening the protection.
+
 ### Phase 5 — Aggregate, and report the gaps
 
 Merge `mined_*.json` into `Etymologies.json` and `ExampleSentences.json`. Write the zero-hit verbs

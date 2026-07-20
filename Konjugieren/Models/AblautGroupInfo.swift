@@ -30,7 +30,7 @@ struct AblautGroupInfo: Identifiable {
     "laden", "lassen", "laufen", "liegen",
     "mögen", "müssen", "nehmen",
     "reißen", "rufen",
-    "schaffen", "schlafen", "schlagen", "schließen", "schneiden", "schreien", "schreiten",
+    "schaffen", "schlafen", "schlagen", "schließen", "schneiden", "schreiten",
     "sehen", "sein", "singen", "sitzen", "sprechen", "stehen", "steigen", "sterben", "stoßen", "streichen",
     "tragen", "treffen", "treten", "tun",
     "verlieren", "wachsen", "weisen", "werden", "werfen", "wissen", "wollen",

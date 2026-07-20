@@ -48,7 +48,7 @@ The collaboration goes beyond speed. Claude Code added TelemetryDeck analytics i
 
 **Protocol-oriented dependency injection** — [`World.swift`](Konjugieren/Models/World.swift) is a lightweight DI container that injects six dependencies (`Settings`, `GameCenter`, `SoundPlayer`, `Utterer`, `FatalError`, `Analytics`), each defined as a protocol with Real, Dummy, Spy, or Fake implementations. This enables full testability with zero third-party frameworks: production code crashes early on invalid data via `FatalErrorReal`, while tests capture those errors with `FatalErrorSpy`.
 
-**Ablaut engine** — German strong verbs undergo vowel and consonant changes (_ablaut_) that differ by conjugationgroup. The engine uses region-based substring replacement: each verb's [XML definition](Konjugieren/Models/Verbs.xml) marks the mutable region with `^` delimiters, and [ablaut-group definitions](Konjugieren/Models/AblautGroups.xml) (73 patterns) specify replacements per conjugationgroup. A full-override syntax (`*` suffix) handles highly irregular verbs like _sein_ and _haben_. [`Conjugator.swift`](Konjugieren/Models/Conjugator.swift) applies these rules at runtime.
+**Ablaut engine** — German strong verbs undergo vowel and consonant changes (_ablaut_) that differ by conjugationgroup. The engine uses region-based substring replacement: each verb's [XML definition](Konjugieren/Models/Verbs.xml) marks the mutable region with `^` delimiters, and [ablaut-group definitions](Konjugieren/Models/AblautGroups.xml) (72 patterns) specify replacements per conjugationgroup. A full-override syntax (`*` suffix) handles highly irregular verbs like _sein_ and _haben_. [`Conjugator.swift`](Konjugieren/Models/Conjugator.swift) applies these rules at runtime.
 
 **Rich-text parser** — A [hand-written state machine](Konjugieren/Utils/StringExtensions.swift) parses four markup syntaxes (backtick headings, tilde bold, dollar-sign ablaut highlighting, percent-delimited URLs) into a recursive `RichTextBlock`/`TextSegment` enum AST, rendered by [`RichTextView.swift`](Konjugieren/Views/RichTextView.swift). This powers the app's 3,000-word bilingual essay on German-verb history.
 
@@ -96,7 +96,7 @@ Konjugieren is fully accessible to VoiceOver users. The implementation spans fiv
 - **Swift Testing** — Modern test framework (`@Test`, `#expect`) with 210 test functions
 - **Game Center** — Global leaderboard for quiz scores via `GKAccessPoint`
 - **WidgetKit** — Two widgets (Verb des Tages, Conjugation Quiz) across five sizes, with AppIntents for interactive quiz answers and verb cycling without launching the app
-- **XMLParser** — Streaming parser for verb and ablaut-group data (3,572 verbs, 73 patterns)
+- **XMLParser** — Streaming parser for verb and ablaut-group data (3,572 verbs, 72 patterns)
 - **Custom URL scheme** — `konjugieren://` deeplinks for inter-article and verb navigation
 - **Localization** — Full EN/DE support via `.xcstrings` string catalogs
 - **Accessibility** — VoiceOver support with `AVSpeechSynthesizer`, `@AccessibilityFocusState`, `UIAccessibility.post`, and `CFBundleSpokenName`

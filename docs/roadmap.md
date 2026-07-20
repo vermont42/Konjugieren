@@ -61,7 +61,7 @@ and the gating. Where they disagree on *how*, that file wins.
 ## The one check that runs through all of it
 
 Every step from 4 onward is verified the same way. The classify-and-verify pipeline compares the
-app against Wiktionary for 3,567 shipping verbs, and the corpus currently stands at **8 verbs at
+app against Wiktionary for 3,567 shipping verbs, and the corpus currently stands at **7 verbs at
 odds, 99.9% verified**.
 
 **Rebuild `candidates.json` first, every time.** The recipe below starts with `build_candidates.py`
@@ -116,8 +116,8 @@ Each of these is enough to start. The prompts are written to be self-contained.
 **Prefix coverage in the Families tab** — executed 2026-07-19, commit `08a5e93`.
 
 **Step 8b — clear the tranche-2 deferrals** — done 2026-07-19. See "The tranche-2 deferrals" below
-for what it cleared, what it deliberately left excluded, and the 26 verbs still waiting on an
-ablaut group.
+for what it cleared, what it deliberately left excluded, and the 11 verbs still waiting on an
+ablaut group (was 26 until the classifier learned to try shipping groups on 2026-07-20).
 
 ## The tranche-2 deferrals
 
@@ -347,12 +347,18 @@ Small things the pipeline surfaced that no plan currently owns. None blocks the 
   only one of which was the target: the *schreien* eight, plus *gutgehen*/*schiefgehen*,
   *unterbleiben*/*zubleiben*, and *festwachsen*/*widerfahren*.
 
-  **One consequence to decide.** With the override gone, `schreien`'s group is byte-identical to
-  `bleiben`'s (`IE,bA,dA,pp`), and `bleiben` carries 126 verbs against `schreien`'s 2. The
-  classifier therefore assigns the family to `bleiben`, alphabetically first among equals. Merging
-  them would tidy the data but is **user-facing**: each group has an `AblautGroupInfo.<name>`
-  description and a browsable entry, so retiring `schreien` removes something a reader can see.
-  Left alone deliberately.
+  **The duplicate group was then merged.** With the override gone, `schreien`'s group was
+  byte-identical to `bleiben`'s (`IE,bA,dA,pp`), carrying 2 verbs against 126, and the classifier
+  had already started assigning the family to `bleiben` as alphabetically first among equals.
+  *schreien* and *verschreien* were repointed, the group retired, and the ablaut inventory went
+  **73 → 72**.
+
+  The merge was user-facing, so it was not a pure deletion. Each group has an
+  `AblautGroupInfo.<name>` description and a browsable entry in the Families tab, and *schreien*'s
+  taught something *bleiben*'s did not: "Contracted participle: $schrEIen$ → $schrIE$ →
+  $geschrIEn$. The -en contracts to -n." That sentence was folded into `bleiben`'s description in
+  both languages rather than dropped, since it explains the rule `absorbsLeadingE` implements.
+  Retiring a group is only safe when its teaching survives the move.
 - **Three ablaut groups are wrong** — *schaffen*, *schreien*, *vergleichen* verify only via a
   group that does not ship, and remain unexamined. *hängen* was the fourth and is fixed: it was a
   `dual_auxiliary.md` class-4 verb and now ships two readings.

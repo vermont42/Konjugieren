@@ -312,13 +312,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Das ei→ie-Muster durchgehend: $blEIben$ → $blIEb$ → $geblIEben$. Eine große, einheitliche Familie."
+            "value" : "Das ei→ie-Muster durchgehend: $blEIben$ → $blIEb$ → $geblIEben$. Eine große, einheitliche Familie. Endet der Stamm auf einen Vokal, verkürzt sich die Endung: $schrEIen$ → $schrIE$ → $geschrIEn$."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The ei→ie pattern throughout: $blEIben$ → $blIEb$ → $geblIEben$. A large, consistent family."
+            "value" : "The ei→ie pattern throughout: $blEIben$ → $blIEb$ → $geblIEben$. A large, consistent family. When the stem ends in a vowel, the ending contracts: $schrEIen$ → $schrIE$ → $geschrIEn$."
           }
         }
       }
@@ -965,23 +965,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Like leiden: eid→itt. $schnEIDen$ → $schnITT$ → $geschnITTen$. Consonant doubles in past."
-          }
-        }
-      }
-    },
-    "AblautGroupInfo.schreien" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Kontrahiertes Partizip: $schrEIen$ → $schrIE$ → $geschrIEn$. Das -en kontrahiert zu -n."
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Contracted participle: $schrEIen$ → $schrIE$ → $geschrIEn$. The -en contracts to -n."
           }
         }
       }

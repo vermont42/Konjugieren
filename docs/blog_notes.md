@@ -2126,3 +2126,44 @@ caught only if the Wikipedia list happens to name it. That list is thorough for 
 verbs, so coverage is good — but it is not provable, and saying "the pool is clean" would overclaim.
 The honest statement is that every avenue available without bulk-fetching de.wiktionary has been
 tried, and one verb came out.
+
+## Merging a duplicate ablaut group, and why it was not a deletion (2026-07-20)
+
+Once *schreien*'s full-override participle was retired, its ablaut group became byte-identical to
+*bleiben*'s: `IE,bA,dA,pp`. *bleiben* carried 126 verbs, *schreien* two, and the classifier had
+already begun assigning the whole *schreien* family to *bleiben*, alphabetically first among
+equals. Josh asked for the merge.
+
+The mechanical part was four coordinated edits: repoint *schreien* and *verschreien* to
+`ag="bleiben"`, delete the `<ag>` element, drop `"schreien"` from `AblautGroupInfo.exemplars`, and
+remove the orphaned `AblautGroupInfo.schreien` strings. The inventory went **73 → 72**.
+
+### The part that mattered
+
+Ablaut groups are not internal identifiers. Each has a localized description and a browsable entry
+in the Families tab, so retiring one deletes something a reader can see. And *schreien*'s
+description taught something *bleiben*'s did not:
+
+> Contracted participle: $schrEIen$ → $schrIE$ → $geschrIEn$. The -en contracts to -n.
+
+That is a lesson about exactly the rule `absorbsLeadingE` implements, and dropping it would have
+traded a small data tidy-up for a real loss of teaching in an app whose whole purpose is teaching.
+It was folded into *bleiben*'s description in both languages instead. The general rule, worth
+keeping: **retiring a group is only safe when its teaching survives the move.** A merge that is
+correct in the data can still be a regression in the product.
+
+### Two small confirmations
+
+Deleting an `.xcstrings` entry is the mirror of adding one, and the same discipline applies:
+brace-count from the key rather than round-tripping through `json.dump`, then read
+`git diff --stat`. It showed 2 insertions and 19 deletions — the two edited *bleiben* values, plus
+the 17-line removed entry — with no reformatting churn. For a deletion, deletions are expected; what
+would signal trouble is the count exceeding the entry's own size.
+
+And `scripts/check_docs.py`, written this morning, immediately caught what I would otherwise have
+missed: `README.md` claimed 73 ablaut patterns against the new 72, in two places. That is precisely
+the failure it exists for — a number in prose that no code consumed, stale within minutes of a data
+change. It was green again within a minute. Writing the checker took an hour; it has now paid for
+itself twice in one day.
+
+At-odds held at 7; 210 tests pass.

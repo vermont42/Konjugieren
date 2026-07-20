@@ -1347,3 +1347,51 @@ memory of this session would have on disk, and the answer differed from what I h
 in three places — one a latent data-corruption bug, one a missing artifact, one an unfinished
 job. None would have been found by re-reading my own summary, because the summary was written by
 the same context that was wrong.
+
+## Closing the Families-tab prefix-coverage gap (2026-07-19)
+
+The plan in `prompts/prefix_coverage.md` opened by telling me not to trust its own numbers, and
+that turned out to be the right instinct to inherit even though the numbers were fine. Re-deriving
+from `Verbs.xml` reproduced 790 uncovered separable verbs across 206 prefixes and 133 inseparable
+across 8, exactly. Cheap to check, and it meant every later decision rested on the corpus rather
+than on prose that had already been stale three times in this repo.
+
+**The test first, and it earned its place.** Written before any fix, the coverage assertion failed
+with `(listed → 1245) == (family.verbCount → 2035)` and `727 == 860`. That is the defect stated in
+one line: the card counts what the screen doesn't list. What I did not anticipate was the failure
+message. `#expect(Set(listed) == Set(family.verbs...))` interpolates *both* sets, so the first red
+run dumped 68KB of infinitives into the transcript. Rewrote it to report `missing.count` plus ten
+examples. A test whose failure output is unreadable is only half a test.
+
+**The inseparable half is the one that stays fixed.** Eight prefixes covered all 133 uncovered
+verbs, and after adding them that screen is at 100% with zero remainder. That is not a coincidence
+of this corpus: German's inseparable prefixes are a closed class, so any future tranche lands in a
+bucket that already exists. The separable slot is open class and always will be, which is why the
+other half needed a structural answer rather than a longer list.
+
+**Two things I got to write down that I enjoyed.** Five prefixes appear in *both* lists, and the
+stress is what distinguishes them: *ÜBERsetzen* (ferry across) beside *überSETZen* (translate).
+The English glosses now say so. And *wieder* and *wider* are the same word, split apart by
+orthographic convention in the 18th century, so they share a PIE root string in the data. `weg-`
+turned out to be the best story: *Weg* and English *way* are the same word from *\*wegʰ-* "to move,
+carry", which also gives Latin *vehere* and therefore *vehicle*. A prefix meaning "away" is
+literally "by the road".
+
+**The `.xcstrings` trap is worse than documented.** CLAUDE.md warns that the Edit tool breaks JSON
+escaping, so I went to Python. Python broke it differently: `json.dump` writes `"key": value` and
+Xcode writes `"key" : value`, so a load-modify-dump round trip rewrote all 5,400 lines
+(3,789 insertions, 3,440 deletions) without changing a single value. Reverted and rewrote only the
+contiguous `PIEMeaning.*` block as raw text, which landed as 425 insertions and 0 deletions. Worth
+adding to the file's lore: for `.xcstrings`, neither Edit nor `json.dump` is safe, and the diff
+stat is the check that tells you which mistake you just made.
+
+**Verification hit a wall and I stopped rather than fight it.** The Separable detail screen renders
+correctly and the curated `ab-` header survived the refactor, but the "Other Prefixes" section sits
+below 2,035 rows and the simulator's AXTree collapsed to a bare application node on a list that
+long. Taps and swipes stopped registering. Rather than keep retrying, I converted the risk the
+screenshot would have caught into an assertion that the heading resolves its catalog key, which is
+a better guard anyway: it runs every time instead of once. Two of the four tests in the new suite
+exist because a rendering bug there is invisible until someone scrolls to exactly the wrong place.
+
+Corpus untouched, so the classify-and-verify pipeline was deliberately skipped: nothing in this
+pass can move the at-odds count of 8. 210 tests pass.

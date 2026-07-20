@@ -190,6 +190,10 @@ enum L {
       String(localized: "FamilyDetail.verbsHeading")
     }
 
+    static var otherPrefixesHeading: String {
+      String(localized: "FamilyDetail.otherPrefixesHeading")
+    }
+
     static var strongLong: String {
       String(localized: "FamilyDetail.strongLong")
     }

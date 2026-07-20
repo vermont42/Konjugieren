@@ -58,8 +58,8 @@ struct PrefixGroupedVerbList: View {
 
   var body: some View {
     VStack(alignment: .leading, spacing: 0) {
-      ForEach(family.verbsByPrefix, id: \.prefix.id) { group in
-        PrefixHeaderView(prefix: group.prefix)
+      ForEach(family.verbsByPrefix, id: \.section.id) { group in
+        PrefixHeaderView(section: group.section)
 
         if sizeClass == .regular {
           LazyVGrid(columns: [GridItem(.adaptive(minimum: Layout.verbGridMinimum))], spacing: 0) {
@@ -81,6 +81,24 @@ struct PrefixGroupedVerbList: View {
 }
 
 struct PrefixHeaderView: View {
+  let section: PrefixSection
+
+  var body: some View {
+    switch section {
+    case .curated(let meaning):
+      CuratedPrefixHeaderView(prefix: meaning)
+    case .other:
+      Text(L.FamilyDetail.otherPrefixesHeading)
+        .font(.title2.bold())
+        .foregroundStyle(.customYellow)
+        .accessibilityAddTraits(.isHeader)
+        .padding(.top, 16)
+        .padding(.bottom, 8)
+    }
+  }
+}
+
+struct CuratedPrefixHeaderView: View {
   let prefix: PrefixMeaning
 
   var body: some View {

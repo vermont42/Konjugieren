@@ -58,6 +58,7 @@ Konjugieren/
 │   ├── PersonNumber.swift      # 1s, 2s, 3s, 1p, 2p, 3p with localized pronouns
 │   ├── Prefix.swift            # Separable/inseparable prefix enum ([Prefix] helpers live in Reading.swift)
 │   ├── PrefixMeaning.swift     # Prefix meanings with PIE etymologies
+│   ├── PrefixSection.swift     # Curated-vs-other heading for the prefix-grouped verb list
 │   ├── Quiz.swift              # @Observable quiz state: questions, timer, scoring
 │   ├── QuizDifficulty.swift    # Setting enum: regular vs ridiculous
 │   ├── Region.swift            # Setting enum: the three standard varieties (north/austria/switzerland)

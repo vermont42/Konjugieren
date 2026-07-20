@@ -120,23 +120,36 @@ enum BrowseableFamily: String, CaseIterable, Identifiable {
     verbs.count
   }
 
-  var verbsByPrefix: [(prefix: PrefixMeaning, verbs: [Verb])] {
+  var verbsByPrefix: [(section: PrefixSection, verbs: [Verb])] {
     guard hasPrefixList else { return [] }
 
-    return prefixes.compactMap { prefixMeaning in
+    let curated = Set(prefixes.map { String($0.prefix.dropLast()) })
+
+    var sections = prefixes.compactMap { prefixMeaning -> (section: PrefixSection, verbs: [Verb])? in
       let prefixString = String(prefixMeaning.prefix.dropLast())
-      let matchingVerbs = verbs.filter { verb in
-        switch verb.prefix {
-        case .separable(let p), .inseparable(let p):
-          return p == prefixString
-        case .none:
-          return false
-        }
-      }.sorted { $0.infinitiv < $1.infinitiv }
+      let matchingVerbs = verbs
+        .filter { $0.prefix.name == prefixString }
+        .sorted { $0.infinitiv < $1.infinitiv }
 
       guard !matchingVerbs.isEmpty else { return nil }
-      return (prefix: prefixMeaning, verbs: matchingVerbs)
+      return (section: .curated(prefixMeaning), verbs: matchingVerbs)
     }
+
+    // Everything the curated list misses, appended as one flat section rather than
+    // dropped. Until 2026-07-19 these verbs counted toward verbCount without appearing
+    // anywhere on the screen, so the Separable card said 2,035 and listed 1,245.
+    let uncurated = verbs
+      .filter { verb in
+        guard let name = verb.prefix.name else { return true }
+        return !curated.contains(name)
+      }
+      .sorted { $0.infinitiv < $1.infinitiv }
+
+    if !uncurated.isEmpty {
+      sections.append((section: .other, verbs: uncurated))
+    }
+
+    return sections
   }
 
   var systemImageName: String {

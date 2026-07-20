@@ -2060,6 +2060,23 @@
         }
       }
     },
+    "FamilyDetail.otherPrefixesHeading" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weitere Präfixe"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other Prefixes"
+          }
+        }
+      }
+    },
     "FamilyDetail.separableLong" : {
       "localizations" : {
         "de" : {
@@ -3789,6 +3806,40 @@
         }
       }
     },
+    "PIEMeaning.davon" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "das + weg, fort"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "that + off, away"
+          }
+        }
+      }
+    },
+    "PIEMeaning.durch" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "hinübergehen, durchqueren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "to cross over, pass through"
+          }
+        }
+      }
+    },
     "PIEMeaning.ein" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3823,6 +3874,23 @@
         }
       }
     },
+    "PIEMeaning.empor" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "tragen, heben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "to carry, bear"
+          }
+        }
+      }
+    },
     "PIEMeaning.ent" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3836,6 +3904,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "face, forehead, front"
+          }
+        }
+      }
+    },
+    "PIEMeaning.entgegen" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gesicht, Stirn, Vorderseite (das ent--Element)"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "face, forehead, front (the ent- element)"
           }
         }
       }
@@ -3891,6 +3976,23 @@
         }
       }
     },
+    "PIEMeaning.frei" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "lieben, freundlich sein"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "to love, be friendly"
+          }
+        }
+      }
+    },
     "PIEMeaning.ge" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3904,6 +4006,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "beside, near, by, with"
+          }
+        }
+      }
+    },
+    "PIEMeaning.heim" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heim, Dorf"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "home, village"
           }
         }
       }
@@ -3925,6 +4044,91 @@
         }
       }
     },
+    "PIEMeaning.heran" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dies (hier) + auf, darauf"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "this (here) + on, onto"
+          }
+        }
+      }
+    },
+    "PIEMeaning.heraus" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dies (hier) + aufwärts, hinaus"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "this (here) + upwards, out"
+          }
+        }
+      }
+    },
+    "PIEMeaning.herum" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dies (hier) + herum, ungefähr"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "this (here) + around, about"
+          }
+        }
+      }
+    },
+    "PIEMeaning.herunter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dies (hier) + unter, unterhalb"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "this (here) + under, below"
+          }
+        }
+      }
+    },
+    "PIEMeaning.hervor" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dies (hier) + vor, vorne"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "this (here) + before, in front"
+          }
+        }
+      }
+    },
     "PIEMeaning.hin" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3942,6 +4146,57 @@
         }
       }
     },
+    "PIEMeaning.hinaus" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dies (hier) + aufwärts, hinaus"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "this (here) + upwards, out"
+          }
+        }
+      }
+    },
+    "PIEMeaning.hinein" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dies (hier) + hinein"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "this (here) + in"
+          }
+        }
+      }
+    },
+    "PIEMeaning.hinter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "dies (hier), Komparativ"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "this (here), comparative"
+          }
+        }
+      }
+    },
     "PIEMeaning.hoch" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -3955,6 +4210,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "to bend; crooked"
+          }
+        }
+      }
+    },
+    "PIEMeaning.los" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "abschneiden, lösen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "to cut off, loosen"
           }
         }
       }
@@ -3993,6 +4265,57 @@
         }
       }
     },
+    "PIEMeaning.nieder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "nieder, hinab"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "down"
+          }
+        }
+      }
+    },
+    "PIEMeaning.tot" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sterben, vergehen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "to die, pass away"
+          }
+        }
+      }
+    },
+    "PIEMeaning.über" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "über, oberhalb"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "over, above"
+          }
+        }
+      }
+    },
     "PIEMeaning.um" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -4006,6 +4329,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "around, on either side of, about"
+          }
+        }
+      }
+    },
+    "PIEMeaning.unter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "unter, unterhalb"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "under, below"
           }
         }
       }
@@ -4027,6 +4367,23 @@
         }
       }
     },
+    "PIEMeaning.voll" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "voll, gefüllt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "full, filled"
+          }
+        }
+      }
+    },
     "PIEMeaning.vor" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -4040,6 +4397,91 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "before, in front"
+          }
+        }
+      }
+    },
+    "PIEMeaning.voraus" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "vor, vorne + hinaus"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "before, in front + out"
+          }
+        }
+      }
+    },
+    "PIEMeaning.weg" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "bewegen, tragen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "to move, carry"
+          }
+        }
+      }
+    },
+    "PIEMeaning.weiter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "auseinander, entzwei"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "apart, in two"
+          }
+        }
+      }
+    },
+    "PIEMeaning.wider" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "auseinander, getrennt (Komparativ)"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "apart, asunder (comparative)"
+          }
+        }
+      }
+    },
+    "PIEMeaning.wieder" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "auseinander, getrennt (Komparativ)"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "apart, asunder (comparative)"
           }
         }
       }

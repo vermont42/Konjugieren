@@ -12,7 +12,7 @@ This folder sits at the repo root deliberately: the `Konjugieren/` app directory
 | Downloaded | 2026-07-18 |
 | Size | 308,208,774 bytes (293.9 MB) |
 | SHA-256 | `76d5222ae6baa2a68e20536c9bfdbc538a10e0c6b7c7802bd3933aa3d61062cb` |
-| License | CC BY-SA 4.0 (Wiktionary text, machine-extracted by the wiktextract project / kaikki.org; attribution belongs in the Credits article if derived data ships) |
+| License | CC BY-SA 4.0 (Wiktionary text, machine-extracted by the wiktextract project / kaikki.org). Derived data ships as of tranche 1 (2026-07-19), so the attribution is live: see the `Verb Data` section of `Info.creditsText` in `Konjugieren/Assets/Localizable.xcstrings`, added 2026-07-20. It names Wiktionary and the license, states that the data was modified, links kaikki.org, and gives the Ylonen LREC citation kaikki requests. |
 | Records | 87,343, one JSON object per line; every line validated as parseable JSON on download day |
 | Form-of records | 76,503 (conjugations with their own Wiktionary pages; useful as a conjugation-to-lemma map) |
 | Lemma records | 10,840, of which 9,759 are single-word lemmas |

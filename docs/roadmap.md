@@ -265,6 +265,14 @@ counts rather than ranks precisely so that cleanup is one line per verb.
 The cost, stated plainly: the corpus's displayed ranks are approximate until real counts land,
 because the rank is derived globally and a misplaced new verb shifts its neighbours.
 
+**A DWDS credit line is also waiting on that reply.** Decided 2026-07-20: `creditsText` gained a
+`Verb Data` section crediting Wiktionary and kaikki.org, because CC BY-SA obliges it unilaterally
+and the derived data already ships. DWDS is deliberately *not* given a parallel section yet. Its
+terms would permit a citation with a Quellenangabe today, but the outstanding request may change
+both what the app may ship and how the credit should read, so writing one now would presume an
+answer. Do not add it as a tidiness pass; it lands with the reply, or with a decision that no
+reply is coming.
+
 Two constraints on how estimates are formed:
 
 - **Place them against real counts, not in the abstract.** Pick shipping verbs you judge

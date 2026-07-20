@@ -1619,3 +1619,57 @@ b**i**rst / b**a**rst; *nehmen* gives gen**o**mmen / n**i**mmt / n**a**hm; *tret
 **getreten** entirely in yellow, which is the Tier-2 no-op case doing exactly what it should.
 *bieten* still marks geb**o**ten and b**o**t, confirming the hand-revert held and the audit
 script's false positive on that group didn't ship.
+
+## Crediting kaikki.org, and the difference between influence and derivation (2026-07-20)
+
+Josh asked whether kaikki.org belonged in `creditsText`, given how much of the corpus expansion
+now rests on it. It did, and the reason is sharper than "we should be polite about our sources".
+
+The Credits article already named Wiktionary. But it named it in the `Etymologies and
+Translations` paragraph, where the claim is that the etymologies "draw on linguistic knowledge
+from Claude's training data, principally Wiktionary". That sentence describes *influence*: a
+model that read Wiktionary during training and later wrote prose informed by it. Nothing about
+that requires a license, and the paragraph correctly makes no license claim beyond naming
+CC BY-SA in passing.
+
+What changed on 2026-07-18 is categorically different. A 294 MB kaikki JSONL was downloaded,
+parsed, and turned into `candidates.json`; `VerbClassificationTests` then searched for the
+`Verbs.xml` encoding reproducing each Wiktionary conjugation table; tranches 1 and 2 shipped
+2,582 verbs whose `tn` glosses were normalized straight out of kaikki's `senses[].glosses`.
+That is a derivative work in the plain CC BY-SA sense, and it is in the app binary today. The
+credits had no sentence covering it.
+
+Interestingly, this was foreseen. `verbdata/README.md`'s License row has said since download day
+that "attribution belongs in the Credits article if derived data ships". The conditional simply
+went true two tranches ago and nobody re-read the row. That is the same failure mode this repo
+keeps paying for: a correct note whose trigger condition nobody re-evaluates. The row now states
+the obligation in the past tense and points at the string, so it can no longer sit there as a
+pending condition.
+
+The new `Verb Data` section discharges four CC BY-SA obligations explicitly, because attribution
+is not one thing: name the source (Wiktionary), name the license (CC BY-SA 4.0), indicate that
+the material was modified ("modified in the course of import"), and make the derivative
+available under the same license (the GitHub repo, already linked earlier in the article). It
+then adds the two things kaikki.org itself asks for, neither of which is legally compelled: a
+link to the site, and the citation to Tatu Ylonen's LREC 2022 paper, *Wiktextract: Wiktionary as
+Machine-Readable Structured Data*. Paying an academic citation in an iOS app's credits screen is
+mildly funny, but wiktextract is the reason the import was a weekend's work instead of a crawl,
+and Ylonen asked in one sentence.
+
+Mechanics worth remembering: the section was spliced with Python against the raw file rather
+than the Edit tool, per the `.xcstrings` rule, though in the end the text contains no ASCII
+double quote at all. Avoiding them was deliberate: the paper title is set in `~...~` emphasis
+rather than quotation marks, which sidesteps JSON escaping entirely and matches how the article
+already sets `Etymologisches Wörterbuch der deutschen Sprache`. `git diff --stat` shows 2
+insertions and 2 deletions, which is right here and would be wrong for an *added* entry: two
+existing long value lines were edited in place, not reformatted.
+
+A companion question came up and was settled the other way. The app displays a frequency rank for
+all 990 original verbs, derived from DWDS hit counts, and `creditsText` mentions DWDS only inside
+that same training-data paragraph. DWDS's terms do allow citation with a Quellenangabe, so a
+credit line could be written today. **Josh's call: leave it TBD pending a reply from BBAW, if one
+comes.** The asymmetry with kaikki is the point. Wiktionary's CC BY-SA obligation is unilateral
+and unambiguous, so there is nothing to wait for and the credit went in immediately. DWDS is an
+open request whose answer may change both what the app is permitted to ship and what the right
+wording is, and writing the credit first would quietly presume an outcome. The permission email
+went out 2026-07-19; see `docs/dwds-permission-email.md`.

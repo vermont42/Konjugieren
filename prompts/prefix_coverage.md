@@ -7,6 +7,11 @@ the gap. Nothing here is urgent — no verb is missing or wrong, and no test fai
 is that 923 verbs the app conjugates correctly cannot be reached by browsing prefixes, and the
 Families tab shows a count that its own detail screen contradicts.
 
+**Step 3's design is decided**, not open: one flat "other prefixes" section at the end. Josh
+locked it in on 2026-07-19 and the rejected alternatives are recorded with reasons, so that
+choice should be inherited rather than re-opened. Steps 1 and 2 are content work and the
+judgment there is still yours.
+
 ## The defect, measured
 
 `BrowseableFamily.verbsByPrefix` buckets verbs into the hand-curated list in
@@ -128,29 +133,76 @@ Notes on the content, since these are less uniform than the existing eighteen:
 
 ## Step 3 — stop hiding the remainder
 
-After steps 1 and 2 the separable tail is still several hundred verbs across ~180 prefixes, and
-no amount of further curation closes an open class. The listing must stop silently dropping
-them.
+**Decided 2026-07-19: one "other prefixes" section at the end of the list.** Josh chose this over
+the two alternatives below; do not re-open it.
 
-Three designs, in the order I would try them:
+After steps 1 and 2 the tail is **424 separable verbs across 184 prefixes**, of which 85 are
+singletons and only 24 have five or more verbs. Those numbers decide the section's shape.
 
-1. **An "other prefixes" group at the end of the list.** `verbsByPrefix` gains a final bucket
-   holding every verb whose prefix matched no `PrefixMeaning`, grouped and sorted by the prefix
-   string, with the prefix shown as a plain heading and no etymology block. Smallest change,
-   preserves the curated content as the primary experience, and the count stops lying.
-2. **Derive the prefix list from the corpus and attach meanings where they exist.** `PrefixMeaning`
-   becomes a lookup rather than the source of the list. More principled and it makes future
-   tranches self-integrating, but it means a heading with no meaning beneath it for ~180
-   prefixes, which may read as unfinished rather than as complete.
-3. **Leave the listing curated but fix the count.** Show the curated total on the family card
-   instead of `verbCount`. Cheapest, and it removes the contradiction — but it makes the omission
-   permanent and invisible, which is how this got here.
+**Render it as a single flat section, not 184 sub-headings.** One "Other prefixes" heading, then
+every verb in the tail listed alphabetically, using the same `VerbRow` as everywhere else. Giving
+each uncurated prefix its own heading — which is what the first draft of this plan proposed —
+would put 184 headings above a median of two verbs each, and turn the Separable screen into a
+wall of nearly-empty sections. The prefix is already legible in each row, because it is the first
+syllable of the infinitive: a reader scanning *wegkommen*, *wegbleiben*, *weglaufen* sees the
+grouping without being told.
 
-I would take (1). It is the only one that both tells the truth and keeps the curated etymologies
-feeling like the point of the screen.
+### The type problem, which is the actual work
 
-Whichever is chosen, **`verbCount` and the sum of the displayed buckets must agree**, and that
-belongs in a test rather than in a reviewer's memory.
+`verbsByPrefix` returns `[(prefix: PrefixMeaning, verbs: [Verb])]`, `FamilyDetailView` keys its
+`ForEach` on `\.prefix.id`, and `PrefixHeaderView` renders `englishMeaning`, `pie`, and
+`pieMeaning`. An uncurated prefix has none of those. So something has to give, and the choice
+matters:
+
+- **Do not** make `PrefixMeaning`'s fields optional. It is a content type; every curated entry
+  genuinely has all three, and optionality would spread `if let` through a view that is currently
+  clean.
+- **Do not** synthesize a `PrefixMeaning` with empty strings. That renders an England-flag row
+  with nothing after it.
+
+Introduce a heading type instead, and let the view switch on it:
+
+```swift
+enum PrefixSection: Identifiable {
+  case curated(PrefixMeaning)
+  case other                    // the tail, one section, no etymology
+
+  var id: String {
+    switch self {
+    case .curated(let meaning):
+      return meaning.id
+    case .other:
+      return "__other__"
+    }
+  }
+}
+```
+
+`verbsByPrefix` then returns `[(section: PrefixSection, verbs: [Verb])]`, with the curated
+sections first in their existing alphabetical order and `.other` appended last — and omitted
+entirely when empty, so the inseparable screen (which after step 1 has no tail) does not grow a
+stray heading. `PrefixHeaderView` switches: `.curated` renders exactly what it renders today,
+`.other` renders a localized "Other prefixes" title with the same `.title2.bold()`,
+`.customYellow`, and `.isHeader` treatment and no flag or horse rows.
+
+That title needs a new `L` accessor and a `Localizable.xcstrings` key in both languages, per the
+conventions in `CLAUDE.md`. It is the only new user-facing string in this step.
+
+### What this must satisfy
+
+`verbCount` and the sum of the displayed sections have to agree, for both `.separable` and
+`.inseparable`. That is the whole point of the step, and it belongs in a test — see Verification.
+
+### The alternatives, recorded so they are not re-litigated
+
+- **Derive the prefix list from the corpus and attach meanings where they exist.** More
+  principled, and future tranches would integrate themselves. Rejected because it yields ~180
+  headings with nothing beneath them, which reads as unfinished rather than as complete — the
+  same wall of empty sections that decided the flat-list question above.
+- **Leave the listing curated and just fix the count** by showing the curated total on the family
+  card. Cheapest, and it does remove the contradiction. Rejected because it makes the omission
+  permanent and invisible, which is precisely how this defect survived unnoticed until Josh
+  spotted it by eye.
 
 ## Facts you need that are not obvious from the code
 
@@ -183,12 +235,18 @@ belongs in a test rather than in a reviewer's memory.
 - `python3 -c "import json; json.load(open('Konjugieren/Assets/Localizable.xcstrings'))"` after
   every catalog edit.
 - Build and run the suite via the `ios-build-verify` skill; see `CLAUDE.md`.
-- **Add a test that the buckets and the count agree.** Something like: for `.separable` and
-  `.inseparable`, the sum of `verbsByPrefix` bucket sizes equals `verbCount`. Before step 3 that
-  test fails by construction, which is the point — write it first and let it drive the design.
-  A second test asserting every `PrefixMeaning` entry has a resolving `PIEMeaning.*` key (that
-  `String(localized:)` does not return the key itself) would have caught the whole class of
-  omission this pass is about.
+- **Write the coverage test first, before any of the three steps.** For `.separable` and
+  `.inseparable`, the sum of the displayed sections' verb counts must equal `verbCount`. It fails
+  by construction today — by 790 and 133 — and it is the only check that actually pins the defect
+  this pass exists to fix. Steps 1 and 2 will move it without closing it; step 3 closes it. Do not
+  write it last as a formality.
+- **Add a test that every `PrefixMeaning` entry resolves its `PIEMeaning.*` key**, i.e. that
+  `String(localized:)` does not hand back the key itself. Steps 1 and 2 add up to thirty entries
+  each needing a catalog key in two languages, and a missed one is invisible until someone opens
+  that exact section and reads `PIEMeaning.durch` in the UI.
+- **A verb may appear in exactly one section.** Worth asserting alongside the count test, since
+  the `.other` bucket is defined by exclusion and an off-by-one in the predicate would either
+  duplicate or drop verbs without changing the total in an obvious way.
 - The classify-and-verify pipeline is **irrelevant here** — nothing in this pass touches
   `Verbs.xml`, `Conjugator`, or an ablaut group. Do not spend the 90 seconds; the at-odds count
   cannot move. Verify by screenshot instead: `scripts/take_screenshots.sh` and

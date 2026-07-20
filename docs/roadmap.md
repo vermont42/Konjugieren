@@ -249,7 +249,8 @@ Small things the pipeline surfaced that no plan currently owns. None blocks the 
   into a hand-curated prefix list, so 923 verbs the app conjugates correctly cannot be reached
   by browsing, and the family card shows a count its own detail screen contradicts. Mostly
   caused by steps 7 and 8: the uncovered population was 72 verbs before them and is 923 now.
-  Everything else in `prompts/` is executed and carries a status line saying so.
+  Its step-3 design is decided (one flat "other prefixes" section); steps 1 and 2 are content
+  work. Everything else in `prompts/` is executed and carries a status line saying so.
 - **Swiss infinitive display beyond `VerbView`** — the ß→ss transform now covers displayed
   infinitives (headline, nav title, browse rows, quiz prompt, results, family cards) and search
   normalizes both sides. Widget snapshots and the Tutor still emit conjugations only; neither

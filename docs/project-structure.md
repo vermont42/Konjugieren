@@ -72,7 +72,7 @@ Konjugieren/
 │   ├── Reading.swift           # One sense of a verb: gloss, family, auxiliary, prefixes
 │   ├── Verb.swift              # Lemma: frequency, icon, and an ordered list of readings
 │   ├── VerbParser.swift        # XMLParser delegate for Verbs.xml, incl. the `in` marker grammar
-│   ├── Verbs.xml               # 3,383 verb definitions with markers and metadata
+│   ├── Verbs.xml               # 3,572 verb definitions with markers and metadata
 │   └── World.swift             # @Observable DI container with environment selection
 ├── Utils/
 │   ├── Analytics.swift         # Analytics protocol, event names, and parameter keys
@@ -202,6 +202,7 @@ docs/
 ├── emoji-assets.md            # Why some emoji ship as PNG assets (iOS 26 emoji-rendering workaround)
 ├── english_writing_style.md   # English writing conventions consulted by Claude when editing localization strings, docs, and comments
 ├── etymologies.md             # Etymology pipeline documentation
+├── etymology-pipeline.md      # Etymology *translation* pipeline: EN→DE batch workflow and coverage check. Lived at the repo root until 2026-07-20, where two sessions searching `docs/` failed to find it and one concluded it had never existed
 ├── example-sentence-pipeline.md   # Pipeline for generating literary example sentences
 ├── example-sentence-prompt.md     # Prompt template for example sentence generation
 ├── example-sentence-sources.md    # Source texts for example sentences
@@ -244,6 +245,7 @@ docs/
 └── wwdc2026-whats-new-swiftui-transcript.txt  # Verbatim WWDC2026 session-269 transcript (Apple copyrighted; gitignored)
 
 scripts/
+├── check_docs.py              # Asserts the checkable claims the docs make about themselves: corpus/ablaut/test counts in the four cache files, relative-link targets, roadmap commit hashes, the kaikki attribution invariant, and etymology completeness
 ├── generate_verb_pdf.py       # Generates PDF verb conjugation tables
 ├── render_emoji.swift         # Renders emoji glyphs to PNG assets in Assets.xcassets (workaround for iOS 26 emoji-rendering bug; see docs/emoji-assets.md)
 └── take_screenshots.sh        # Drives ios-build-verify + axe/simctl through 36 App Store screenshots (9 views × 2 langs × 2 devices); see docs/screenshot-playbook.md

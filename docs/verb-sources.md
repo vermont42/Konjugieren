@@ -515,9 +515,23 @@ Three documents in this repo claimed 989 verbs well after the corpus reached 990
 that no code consumed. `Konjugieren/Models/Verbs.xml` is the single source of truth; check
 coverage by set difference rather than by comparing to a number written in a document.
 
-This section used to point at a recipe in `etymology-pipeline.md`, a file that does not exist,
-which is the failure it warns about wearing its own clothes. The recipe, inlined so it cannot
-rot again:
+**This warning did not work, and on 2026-07-20 `scripts/check_docs.py` replaced it.** Prose
+telling a future session to verify is only as good as that session's decision to re-read it.
+Five days after this section was written, `description.md` was stale again (3,383 against 3,572,
+so it had shipped the App Store a wrong count twice), and so were `CLAUDE.md`,
+`project-structure.md`, and `README.md`, the last by 2,582 verbs. Run the script instead:
+
+```bash
+python3 scripts/check_docs.py
+```
+
+This section also used to point at a recipe in `etymology-pipeline.md`, calling it "a file that
+does not exist, which is the failure it warns about wearing its own clothes". The file existed
+the whole time, at the repo root instead of under `docs/`, which is where two sessions looked for
+it; one of them recorded in `blog_notes.md` that it "never has been" in the repo. It has been in
+git since commit `23076d0`. Moved to [`etymology-pipeline.md`](etymology-pipeline.md) on
+2026-07-20, so the location matches every other pipeline doc, and the sentence congratulating
+itself for catching a stale reference is retired. The recipe, inlined so it cannot rot again:
 
 ```python
 import re, xml.etree.ElementTree as ET

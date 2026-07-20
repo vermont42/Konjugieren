@@ -23,6 +23,13 @@ completes.
 | 9 | Import tranche 3: weak stems by frequency | [`verb-sources.md`](verb-sources.md) next-steps item 7 | 🚧 blocked | **BBAW reply**; fetch needs probes |
 | 10 | Etymologies, then the docs sweep | [`verb-sources.md`](verb-sources.md) next-steps items 8 and 9 | ⬜ | step 7 ✅ |
 
+**Step 10 is larger than it looks, and its own doc said otherwise.**
+[`etymology-pipeline.md`](etymology-pipeline.md) led with "COMPLETE — every verb in `Verbs.xml` is
+translated" until 2026-07-20. That was true on 2026-07-19 and false hours later: `Etymologies.json`
+holds 990 keys, the corpus holds 3,572, so **2,582 verbs have no etymology in either language**.
+The app's etymology surface therefore covers 28% of the corpus today. `scripts/check_docs.py` now
+asserts that heading against actual coverage, so it will go quiet on its own when step 10 lands.
+
 ### These step numbers are not `verb-sources.md`'s numbers
 
 The Where column points into that file's numbered "Recommended next steps" list, and from step 6

@@ -2,7 +2,11 @@
 
 ## Progress
 
-**COMPLETE — every verb in `Verbs.xml` is translated.** Verified 2026-07-19: `Etymologies.json` holds 990 entries under both `"en"` and `"de"`, exactly matching the 990 verbs in `Verbs.xml`, with no missing and no orphaned keys.
+**INCOMPLETE, and its own advice is why nobody noticed.** The translation half is done for every verb it covers: `Etymologies.json` holds 990 keys under both `"en"` and `"de"`, with none orphaned. But the corpus reached 3,572 verbs on 2026-07-19, so **2,582 verbs have no etymology at all**, in either language. The headline here read "COMPLETE — every verb in `Verbs.xml` is translated" until 2026-07-20, which was true when written and false within hours, because tranche 1 landed the same day.
+
+Supplying those etymologies is roadmap step 10, which feeds kaikki's `etymology_text` into this file's pipeline. 5,979 verified incoming verbs carry one, so the input exists; see [`verb-sources.md`](verb-sources.md) next-steps item 8. Until that runs, this document describes a workflow for translating etymologies that mostly do not yet exist.
+
+The irony is worth preserving rather than editing away. The paragraph below correctly warns against trusting a count in prose and supplies a coverage check that takes one second to run, and then the line above it asserted completeness on the strength of a count in prose. Writing the check down is not the same as running it, which is the whole argument for `scripts/check_docs.py`: it now asserts that this heading cannot claim completeness while coverage is short.
 
 Do not restate the verb count here. `Verbs.xml` is the single source of truth, and this file previously claimed 989 long after the corpus reached 990. Check coverage instead of trusting a number in prose:
 

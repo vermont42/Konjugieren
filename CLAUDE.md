@@ -150,7 +150,7 @@ When adding tests for a new verb or ablaut pattern:
 
 ## Architecture Overview
 
-Konjugieren is an iOS app for learning German verb conjugations. It conjugates 3,383 verbs across all German conjugationgroups ("tenses" in ordinary (and incorrect) parlance), and the corpus is still growing — see [`docs/roadmap.md`](docs/roadmap.md). Konjugieren uses SwiftUI for its user interface.
+Konjugieren is an iOS app for learning German verb conjugations. It conjugates 3,572 verbs across all German conjugationgroups ("tenses" in ordinary (and incorrect) parlance), and the corpus is still growing — see [`docs/roadmap.md`](docs/roadmap.md). Konjugieren uses SwiftUI for its user interface.
 
 ## About the Human Developer
 
@@ -169,6 +169,23 @@ The Claude Code mascot is **Clawd** 🦀, a small, pixelated, crab-like characte
 See [`docs/project-structure.md`](docs/project-structure.md) for the full annotated directory tree.
 
 **Cache maintenance:** When you add, remove, or rename a source file, update `docs/project-structure.md` to match. This doc is a cache. Future contexts rely on it to orient quickly, so staleness has a real cost.
+
+## Documentation Consistency: `scripts/check_docs.py`
+
+Run it after any change to the corpus, the test suite, or the docs:
+
+```bash
+python3 scripts/check_docs.py
+```
+
+It asserts the claims this repo's documentation makes that a machine can settle: corpus, ablaut-group, and test counts in the four cache files (`README.md`, `CLAUDE.md`, `docs/description.md`, `docs/project-structure.md`); every relative Markdown link resolving; commit hashes cited in `roadmap.md`; the CC BY-SA invariant that kaikki-derived verbs shipping implies `creditsText` crediting kaikki; and `etymology-pipeline.md` not claiming completeness while coverage is short.
+
+Two design rules govern extending it, and both were learned by getting them wrong on the first run:
+
+- **Caches assert, journals narrate.** Count checks are scoped by *file*, never repo-wide. `blog_notes.md` is supposed to say 990 in an entry written when the corpus held 990, and `roadmap.md` records "3,383 → 3,572" as history. Adding a file to `CACHE_FILES` is a promise that it makes no historical claims.
+- **A count is checkable only if its subject is unambiguous.** "3,572 verbs" is, because the app has one corpus. "~25 test functions" is not: it is scoped to `ConjugatorTests.swift`, and the checker skips lines naming a `.swift` file for exactly that reason.
+
+The script exists because prose asking to be re-read does not get re-read. `docs/verb-sources.md` § "Verify counts, do not trust them" asked politely for five days while four claim sites went stale, `docs/description.md` among them, which means the App Store shipped a wrong verb count twice.
 
 ## Xcode Project Organization: Folders, Not Groups
 

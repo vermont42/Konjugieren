@@ -1673,3 +1673,107 @@ and unambiguous, so there is nothing to wait for and the credit went in immediat
 open request whose answer may change both what the app is permitted to ship and what the right
 wording is, and writing the credit first would quietly presume an outcome. The permission email
 went out 2026-07-19; see `docs/dwds-permission-email.md`.
+
+## Markdown files get unit tests, and the first run found nine problems (2026-07-20)
+
+Josh, on being told that the "if derived data ships" note in `verbdata/README.md` had been an
+untested assertion for two tranches: "If only Markdown files had unit tests. :)"
+
+Some of them can be. The joke has a real answer, and running it embarrassed the repo.
+
+### The signal-to-noise problem, and the rule that solves it
+
+A naive `grep` for "N verbs" across the repo returns 60 hits, of which 55 are correct. That is the
+whole difficulty. `blog_notes.md` is *supposed* to say 990 in an entry written when the corpus held
+990; `roadmap.md` records "corpus 3,383 → 3,572" as history; `verb-sources.md` quotes Conjuguer's
+6,200 and a 9,217-candidate pool, neither of which is Konjugieren's corpus. A smarter regex does
+not fix this, because the sentences are grammatically identical.
+
+The discriminator is not in the text, it is in the file's *job*, and this repo already names that
+job in prose without ever making it mechanical. CLAUDE.md calls `project-structure.md` a cache.
+`roadmap.md` opens by calling itself one. `blog_notes.md` is dated project memory whose entire
+value is preserving what was true then. So: **caches assert, journals narrate**, and only caches
+get checked. `CACHE_FILES` in `scripts/check_docs.py` is four entries long, and adding a fifth is
+a promise that the file makes no historical claim about corpus size.
+
+### What the first run found
+
+Four stale counts, all in cache files, all wrong in the same direction:
+
+- `docs/description.md`, the **App Store copy**, said 3,383 against 3,572. That file is named in
+  `verb-sources.md` § "Verify counts, do not trust them" as the file that shipped a wrong count to
+  the App Store once already. It has now done so twice.
+- `CLAUDE.md` and `docs/project-structure.md`: 3,383.
+- `README.md`: 990 verbs and 988 verbs, the latter 2,582 behind. Also 66 ablaut patterns against
+  73, and 113 test functions against 210, in two places.
+- One broken link: README pointed at `Models/GameState.swift` after the file moved to
+  `Models/Game/`.
+
+The counts had been stale for two commits. The README figures had been stale for months.
+
+### The checker's own two bugs, which are the same bug
+
+The first run also produced five false positives, and both classes taught the same lesson: **a
+count is checkable only when its subject is unambiguous.**
+
+CLAUDE.md says `ConjugatorTests.swift` contains "~25 test functions" and `project-structure.md`
+says "~50". Both true, both about one file, both flagged against the suite-wide 210. "3,572 verbs"
+is safe because the app has exactly one corpus; "N tests" is not, because prose routinely scopes it.
+The fix is one rule: skip lines that name a `.swift` file, because naming the file *is* the scoping.
+
+The commit-hash check flagged five hashes, and every one was correct prose. `52e4d6f` is an
+ios-build-verify marketplace commit; `1f359d4` is Conjuguer's; `ee61032` and `c2e9632` are
+Conjugar's. Konjugieren's docs cite sibling-app commits routinely and nothing in the text marks
+them as foreign. So that check is scoped to `roadmap.md`, whose "Done, for the record" table is
+this repo's own provenance by construction.
+
+Both scopings are the same move as `CACHE_FILES`: decide *what a claim is about* before asserting it.
+
+### A checker that has never failed is an expensive `true`
+
+Every check was then negative-tested: perturb one file, confirm the exit code flips and the right
+check names the right problem, restore from an in-memory copy in a `finally`. Two of the five
+attempts were themselves instructive.
+
+The attribution test "passed" when it should have failed, because renaming one mention of kaikki
+left `https://kaikki.org/` and "Kaikki.org lives here" in place. The credit really was still
+there; my test was wrong, not the checker. Removing all six mentions produced the failure message
+that would have been showing throughout the day the credit was actually missing:
+`2582 verbs carry hp="y" (kaikki-derived), but Info.creditsText never names kaikki.org`.
+
+The etymology check fired on correct text, because I had written "**INCOMPLETE**" and a substring
+test for "COMPLETE" matches it, as does the paragraph quoting the old headline verbatim. The
+predicate has to match the *claim*, not the word: `^\*\*COMPLETE\b`, anchored to the bolded status
+line.
+
+### The find that justifies the whole exercise
+
+Josh then asked why `etymology-pipeline.md` sat at the repo root when
+`docs/example-sentence-pipeline.md` and friends live in `docs/`. Moving it turned up something
+much worse than a misplaced file.
+
+That document's headline read **"COMPLETE — every verb in `Verbs.xml` is translated"**, verified
+2026-07-19. `Etymologies.json` holds 990 keys. The corpus holds 3,572. **2,582 verbs have no
+etymology at all, in either language**, so the app's etymology surface covers 28% of the corpus
+and the doc claimed 100%. Tranche 1 landed the same day the claim was verified, and falsified it
+within hours.
+
+The detail that makes this the best possible argument for the script: two lines below that
+headline, the same file says *"Do not restate the verb count here. `Verbs.xml` is the single source
+of truth, and this file previously claimed 989 long after the corpus reached 990"*, and supplies a
+one-second coverage command. The warning was right, the recipe was right, the recipe disproves the
+headline directly above it, and nobody ran it. Writing the check down is not running the check.
+That gap is the entire thesis of `check_docs.py`, stated by accident, by a file that fell into it.
+
+The file also resolves a small mystery. `blog_notes.md` records a session concluding there is no
+`etymology-pipeline.md` in the repo "and, as far as I can tell, never has been". It has been in git
+since commit `23076d0`. It was at the root, and the sessions looking for it searched `docs/`. Two
+independent sessions failed to find a file that was one `ls` away, which is a better argument for
+Josh's consistency instinct than tidiness ever was.
+
+### What this does not do
+
+Nothing here checks whether prose is *right*, only whether it is *consistent with the data*.
+`check_docs.py` cannot tell that a decision has been superseded, that an explanation is confused,
+or that a recommendation stopped being good advice. It settles the mechanical subset. That subset
+turned out to contain nine live defects, one of which had reached the App Store.

@@ -10,9 +10,9 @@ Konjugieren
 | --- | --- | --- |
 | ![](Images/Hat.png) | ![](Images/Bundestag.png) | ![](Images/Pretzel.png) |
 
-**Konjugieren** is an iOS app for learning German-verb conjugations. It conjugates 990 verbs—strong, weak, mixed, and _-ieren_—across all 14 German [conjugationgroups](https://www.linkedin.com/posts/racecondition_i-have-written-elsewhere-about-how-my-experience-activity-7404189320758280192-tiAL), from Präsens Indikativ to Plusquamperfekt Konjunktiv II. The app is fully localized in English and German.
+**Konjugieren** is an iOS app for learning German-verb conjugations. It conjugates 3,572 verbs—strong, weak, mixed, and _-ieren_—across all 14 German [conjugationgroups](https://www.linkedin.com/posts/racecondition_i-have-written-elsewhere-about-how-my-experience-activity-7404189320758280192-tiAL), from Präsens Indikativ to Plusquamperfekt Konjunktiv II. The app is fully localized in English and German.
 
-Under the hood, **Konjugieren** features a domain-specific ablaut engine that models the vowel and consonant changes of German strong verbs, a hand-written rich-text parser, protocol-oriented dependency injection, and a comprehensive [Swift Testing](https://developer.apple.com/xcode/swift-testing/) suite with 113 tests across 1,800+ lines.
+Under the hood, **Konjugieren** features a domain-specific ablaut engine that models the vowel and consonant changes of German strong verbs, a hand-written rich-text parser, protocol-oriented dependency injection, and a comprehensive [Swift Testing](https://developer.apple.com/xcode/swift-testing/) suite with 210 tests across 1,800+ lines.
 
 **Konjugieren** is available for free download in the iOS App Store™. Tap the button below to install.
 
@@ -48,7 +48,7 @@ The collaboration goes beyond speed. Claude Code added TelemetryDeck analytics i
 
 **Protocol-oriented dependency injection** — [`World.swift`](Konjugieren/Models/World.swift) is a lightweight DI container that injects six dependencies (`Settings`, `GameCenter`, `SoundPlayer`, `Utterer`, `FatalError`, `Analytics`), each defined as a protocol with Real, Dummy, Spy, or Fake implementations. This enables full testability with zero third-party frameworks: production code crashes early on invalid data via `FatalErrorReal`, while tests capture those errors with `FatalErrorSpy`.
 
-**Ablaut engine** — German strong verbs undergo vowel and consonant changes (_ablaut_) that differ by conjugationgroup. The engine uses region-based substring replacement: each verb's [XML definition](Konjugieren/Models/Verbs.xml) marks the mutable region with `^` delimiters, and [ablaut-group definitions](Konjugieren/Models/AblautGroups.xml) (66 patterns) specify replacements per conjugationgroup. A full-override syntax (`*` suffix) handles highly irregular verbs like _sein_ and _haben_. [`Conjugator.swift`](Konjugieren/Models/Conjugator.swift) applies these rules at runtime.
+**Ablaut engine** — German strong verbs undergo vowel and consonant changes (_ablaut_) that differ by conjugationgroup. The engine uses region-based substring replacement: each verb's [XML definition](Konjugieren/Models/Verbs.xml) marks the mutable region with `^` delimiters, and [ablaut-group definitions](Konjugieren/Models/AblautGroups.xml) (73 patterns) specify replacements per conjugationgroup. A full-override syntax (`*` suffix) handles highly irregular verbs like _sein_ and _haben_. [`Conjugator.swift`](Konjugieren/Models/Conjugator.swift) applies these rules at runtime.
 
 **Rich-text parser** — A [hand-written state machine](Konjugieren/Utils/StringExtensions.swift) parses four markup syntaxes (backtick headings, tilde bold, dollar-sign ablaut highlighting, percent-delimited URLs) into a recursive `RichTextBlock`/`TextSegment` enum AST, rendered by [`RichTextView.swift`](Konjugieren/Views/RichTextView.swift). This powers the app's 3,000-word bilingual essay on German-verb history.
 
@@ -60,7 +60,7 @@ The centerpiece is [`ConjugationTool`](Konjugieren/Models/LanguageModelServiceRe
 
 [`QuizErrorHistory`](Konjugieren/Models/QuizErrorHistory.swift) aggregates the user's quiz mistakes by conjugationgroup, and the tutor's practice-recommendation engine feeds this data to the model to surface the user's weakest areas. [`TutorChatHistory`](Konjugieren/Models/TutorChatHistory.swift) persists conversations to UserDefaults with a 200-message ring buffer, so context survives app restarts.
 
-**Retro arcade game (pure SwiftUI)** — A German-themed arcade shooter built entirely with SwiftUI and Core Motion—no SpriteKit, no UIKit, no game engine. [`GameState.swift`](Konjugieren/Models/GameState.swift) (1,500 lines) drives a `TimelineView(.animation)` game loop with frame-rate-independent delta-time physics, while `CMMotionManager` at 60 Hz translates device tilt into player movement.
+**Retro arcade game (pure SwiftUI)** — A German-themed arcade shooter built entirely with SwiftUI and Core Motion—no SpriteKit, no UIKit, no game engine. [`GameState.swift`](Konjugieren/Models/Game/GameState.swift) (1,500 lines) drives a `TimelineView(.animation)` game loop with frame-rate-independent delta-time physics, while `CMMotionManager` at 60 Hz translates device tilt into player movement.
 
 The game manages 11 entity types as value-semantic structs: enemies in a 6×6 grid with parabolic dive-bombing paths, zigzagging animal emoji that drop coins, gravity-affected eggs that hatch into player-seeking hatchlings, bouncing soccer balls with momentum transfer, five-segment bratwurst chains that split when hit and spawn destructible pretzel obstacles, and multi-phase ghosts with a five-state AI (descending → pursuing → fleeing → devoured → exiting). Three special mechanics rotate on a randomized 27-second interval: Fussball, Bratwurstkette, and Geisterstunde (ghost hunt, triggered by shooting a crystal ball).
 
@@ -93,17 +93,17 @@ Konjugieren is fully accessible to VoiceOver users. The implementation spans fiv
 - **SwiftUI** — Declarative UI with custom `ViewModifier`s, `TabView` navigation, `TimelineView` game loop, and `Canvas` particle effects
 - **Foundation Models** — On-device Apple Intelligence integration with `SystemLanguageModel`, `LanguageModelSession`, `Tool` protocol, and `@Generable` schemas
 - **Core Motion** — 60 Hz gyroscope input for arcade-game tilt controls via `CMMotionManager`
-- **Swift Testing** — Modern test framework (`@Test`, `#expect`) with 113 test functions
+- **Swift Testing** — Modern test framework (`@Test`, `#expect`) with 210 test functions
 - **Game Center** — Global leaderboard for quiz scores via `GKAccessPoint`
 - **WidgetKit** — Two widgets (Verb des Tages, Conjugation Quiz) across five sizes, with AppIntents for interactive quiz answers and verb cycling without launching the app
-- **XMLParser** — Streaming parser for verb and ablaut-group data (988 verbs, 66 patterns)
+- **XMLParser** — Streaming parser for verb and ablaut-group data (3,572 verbs, 73 patterns)
 - **Custom URL scheme** — `konjugieren://` deeplinks for inter-article and verb navigation
 - **Localization** — Full EN/DE support via `.xcstrings` string catalogs
 - **Accessibility** — VoiceOver support with `AVSpeechSynthesizer`, `@AccessibilityFocusState`, `UIAccessibility.post`, and `CFBundleSpokenName`
 
 ### Testing
 
-The test suite spans **1,800+ lines** across five files, with **113 test functions** covering conjugation logic, quiz state management, rich-text parsing, and time formatting.
+The test suite spans **1,800+ lines** across eighteen files, with **210 test functions** covering conjugation logic, quiz state management, rich-text parsing, and time formatting.
 
 The conjugation tests use a **mixed-case convention** to verify ablaut highlighting: lowercase letters represent unchanged portions, and UPPERCASE letters mark ablaut-changed regions. For example, `"sAng"` asserts that _singen_'s Präteritum changes "i" to "a" and the UI will highlight that change. This convention makes it immediately visible when a test expectation involves an ablaut transformation.
 

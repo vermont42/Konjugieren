@@ -17,10 +17,15 @@ a test, is in `docs/blog_notes.md` under the 2026-07-19 entries. You do not need
 
 ## Status
 
-**Not executed.** Written 2026-07-19, immediately after the step-8 import that caused most of
-the gap. Nothing here is urgent — no verb is missing or wrong, and no test fails. What is wrong
-is that 923 verbs the app conjugates correctly cannot be reached by browsing prefixes, and the
-Families tab shows a count that its own detail screen contradicts.
+**Executed 2026-07-19**, in commit "Close the Families-tab prefix-coverage gap". All three steps
+landed as written: 8 inseparable prefixes (that screen is now 100% covered, 0 remainder), 22
+separable prefixes, and the flat "Other Prefixes" tail section carrying 424 verbs across 184
+prefixes. The measured numbers below all reproduced exactly. Four tests in
+`KonjugierenTests/Models/BrowseableFamilyTests.swift` now pin the invariant. See the 2026-07-19
+entry in `docs/blog_notes.md` for what the execution surfaced, notably an `.xcstrings` round-trip
+trap that neither the Edit tool nor `json.dump` avoids.
+
+The rest of this document is kept as the record of why the design is what it is.
 
 **Step 3's design is decided**, not open: one flat "other prefixes" section at the end. Josh
 locked it in on 2026-07-19 and the rejected alternatives are recorded with reasons, so that

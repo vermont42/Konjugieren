@@ -29,11 +29,6 @@
   <ag e="gelingen" a="A,bA|Ä,dA|U,pp" />
   <ag e="gelten" a="I,a2s,a3s|A,b1s,b3s,b1p,b3p|gAltest*,b2s|gAltet*,b2p|Ö,dA|O,pp" />
   <ag e="gewinnen" a="A,bA|Ä,dA|O,pp" />
-  <!-- The nine full-word overrides this once used spelled out by hand what the mixed family
-       already derives: with the region ab, AT gives the stem hat- that takes weak endings
-       (hatte, hattest, hatten, hattet) and ÄT gives hät-. Overrides bake in the literal word,
-       so no prefixed derivative could reuse them, and anhaben, aufhaben and 21 others each
-       wanted a private group describing exactly this pattern. -->
   <ag e="haben" a="A,a2s,a3s|AT,bA|ÄT,dA" />
   <ag e="halten" a="Ä,a2s,a3s|IE,bA,dA" />
   <ag e="hängen" a="I,bA,dA|A,pp" />

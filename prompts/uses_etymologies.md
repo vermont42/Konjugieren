@@ -539,38 +539,44 @@ filesystem by `build_mining_shards.py`, so the same text is correct on the first
 pass, and every pass in between. Do not edit in a shard count — that is precisely the line that
 goes stale, and a stale count is worse than none because it reads as authoritative.
 
-> Continue Phase 4 of `prompts/uses_etymologies.md` for Konjugieren. Read that file's Phase 4
-> "As built" section first — it holds the resume protocol, the cost calibration, and the
-> validator to run before any shard counts as done.
->
-> `corpus/` is gitignored, so regenerate the build products before anything else. The last
-> command prints how many shards are already mined and which remain; that output, not this
-> prompt, is the state:
->
-> ```bash
-> TEST_RUNNER_KONJUGIEREN_FORMS_OUT="$PWD/corpus/working/forms.json" \
-> xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren \
->   -destination 'platform=iOS Simulator,name=iPhone 17' -parallel-testing-enabled NO test \
->   -only-testing:KonjugierenTests/CorpusFormsDumpTests
-> python3 corpus/working/build_corpus_index.py
-> python3 corpus/working/build_mining_shards.py
-> ```
->
-> Mine the remaining shards at **concurrency 2**, lowest number first, one subagent per shard.
-> Point each subagent at `corpus/working/MINING_SPEC.md` and its own shard, and stress two
-> things: everything it needs is joined into the shard, so it should open no other file
-> (`truncated` is false for ~97% of candidates, meaning `text` is the complete sentence to quote
-> verbatim); and root and prefix text is reused verbatim, with only the joining prose authored.
->
-> Budget roughly 2 session points per shard. You cannot introspect usage — ask me to paste
-> `~/Desktop/usage.png` before starting and every few waves, and label any figure you derive
-> from calibration as an estimate rather than a reading. Stop with about 5 points of headroom
-> instead of getting caught mid-wave.
->
-> Run the Phase 4 validator before treating any shard as done; a subagent's self-report is not
-> evidence. Append to `docs/blog_notes.md` once at the end, not per shard. Do not merge anything
-> into `Konjugieren/Models/` — that is Phase 5, whose note says to widen
-> `.claude/skills/integrate` rather than write a parallel merge.
+It is fenced rather than block-quoted so it can be copied as-is; the outer fence uses four
+backticks because the prompt contains a fenced block of its own.
+
+````
+Continue Phase 4 of `prompts/uses_etymologies.md` for Konjugieren. Read that file's Phase 4
+"As built" section first — it holds the resume protocol, the cost calibration, and the
+validator to run before any shard counts as done.
+
+`corpus/` is gitignored, so regenerate the build products before anything else. The last
+command prints how many shards are already mined and which remain; that output, not this
+prompt, is the state:
+
+```bash
+TEST_RUNNER_KONJUGIEREN_FORMS_OUT="$PWD/corpus/working/forms.json" \
+xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren \
+  -destination 'platform=iOS Simulator,name=iPhone 17' -parallel-testing-enabled NO test \
+  -only-testing:KonjugierenTests/CorpusFormsDumpTests
+python3 corpus/working/build_corpus_index.py
+python3 corpus/working/build_mining_shards.py
+```
+
+Mine the remaining shards at concurrency 2, lowest number first, one subagent per shard.
+Point each subagent at `corpus/working/MINING_SPEC.md` and its own shard, and stress two
+things: everything it needs is joined into the shard, so it should open no other file
+(`truncated` is false for ~97% of candidates, meaning `text` is the complete sentence to
+quote verbatim); and root and prefix text is reused verbatim, with only the joining prose
+authored.
+
+Budget roughly 2 session points per shard. You cannot introspect usage — ask me to paste
+`~/Desktop/usage.png` before starting and every few waves, and label any figure you derive
+from calibration as an estimate rather than a reading. Stop with about 5 points of headroom
+instead of getting caught mid-wave.
+
+Run the Phase 4 validator before treating any shard as done; a subagent's self-report is not
+evidence. Append to `docs/blog_notes.md` once at the end, not per shard. Do not merge anything
+into `Konjugieren/Models/` — that is Phase 5, whose note says to widen
+`.claude/skills/integrate` rather than write a parallel merge.
+````
 
 Baseline the at-odds count before starting and re-check after
 (`docs/roadmap.md` § "The one check that runs through all of it"). Neither half of this pipeline

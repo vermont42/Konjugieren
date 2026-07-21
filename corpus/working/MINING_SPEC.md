@@ -121,6 +121,18 @@ decomposition is formal only and that the verb is denominal from the noun. Do no
 picking a sense you think fits the bullet better; the sense describes the compound, the closer
 reconciles it with the root.
 
+**Read the chain before writing the closer, because some chains have already written it.** Most
+chains are pure descent — Mhd., Ahd., Urgermanisch, PIE — and leave the compound's own semantics
+entirely to you. A minority run to three or four sentences and spend the extra ones on exactly
+the ground a closer would cover. `einher-`'s says that the particle is no longer used freely and
+that ~einhergehen~ moved from gait to abstract accompaniment; a closer on *einhergehen* that
+observes either has said nothing. `kaputt-`, `teil-`, `durch-`, and `dar-` are the same shape.
+When the chain has taken the obvious observation, find a different one — the reading's own
+sense against a sibling compound, the government it takes, why this base and not a synonym —
+or write a shorter closer. A brief accurate closing sentence beats a long one restating a
+bullet three lines above it. A shard-run on 2026-07-21 drafted, noticed, and rewrote two of
+these, and asked for the warning to be written down rather than re-derived per shard.
+
 **When two senses of one prefix both fit, the tie is broken by the base verb, not by the compound.**
 The standing case is `be-` senses 0 and 1, which describe the same operation for a large class of
 verbs — sense 0's own exemplar `besteigen` is *auf etwas steigen* → *etwas besteigen*, which is
@@ -221,6 +233,15 @@ Candidates are already ranked and balanced across sources. Reject a candidate wh
   the separable one strands its particle at the end. `durchbrechen` and `durchdringen` each lost
   three of five candidates this way in one shard, so expect it wherever the chain itself mentions
   a doublet. Reject and move on; it is not a homograph of a different lemma and not an indexer bug.
+- it carries a **word split by a stripped line-break hyphen** — *fach licher*, *nachvollzieh
+  barer*, *kontinuier lichen*. These come from PDF extraction: the source hyphenated across a
+  line break and the hyphen was removed without rejoining the halves. The tell is a standalone
+  lowercase fragment that is not a German word — *licher*, *barer*, *keit*, *ung* — immediately
+  after a token that ends mid-morpheme. There are four in the whole corpus, three of them from
+  the Bundesverkehrswegeplan, and none currently sits at rank 0, so this should cost you nothing;
+  it is listed because the failure mode that matters is not rejecting one but *not noticing* one
+  and shipping a broken word into the app. Do not rejoin the halves yourself — the quotation must
+  match the candidate string exactly, so a repaired quote fails the validator. Reject and move on.
 
 **Among candidates that are all genuine, prefer one attesting the sense the reading glosses.**
 Walk the candidates in order and take the earliest genuine verbal use *whose sense matches the

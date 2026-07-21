@@ -3387,3 +3387,57 @@ session does not re-derive it — the proposal is attractive enough that it will
 
 The general shape, which is the reusable part: the indexer's job is to be cheap and
 deterministic, and a distinction that needs syntax belongs to the reader rather than the filter.
+
+## Two shards, and a measurement that shrank a finding (2026-07-21)
+
+A short window by design — one wave of two shards, 033 and 034, taking Phase 4 from 33 mined
+shards to 35 of 104. Both passed the validator, as did all 35 together, and `Verbs.xml` came out
+byte-identical to the hash taken at the start.
+
+The build products from the morning's session were still on disk, so the `xcodebuild` forms dump
+was skipped rather than re-run. Worth writing down because the resume block opens by telling you
+to regenerate: the instruction is right for a fresh clone and wasteful inside a day. Checking the
+two files' timestamps first costs one `ls` and settles it.
+
+Both subagents independently reported that `ein-`'s six senses have a hole, and they reported
+different holes. Shard 033 wanted a **concessive** sense for *eingestehen* — letting something
+stand against oneself, which is not inward motion, insertion, enclosure, onset, familiarity, or
+collapse. Shard 034 wanted a **reductive** one for *einkochen*, where the volume shrinks; sense 5
+is explicitly about caving in, not reducing. Two agents, two shards, no contact between them,
+same morpheme. That is normally the strongest possible signal to stop and fix the inventory
+before spending another window.
+
+Measuring it is what changed the recommendation. `ein-` has 110 occurrences, of which 51 are
+still unmined, so the morpheme is very much ahead of us — but the two proposed senses reach only
+**three** unmined verbs (*einstehen*, *einwenden*, *einsparen*) and five already-mined ones. The
+110 was doing the persuading, and the 110 is not the relevant number. Both agents had already
+done the right thing: spliced the nearest sense and hedged in `notes`, which is what the brief
+asks for. So this is a quality improvement to make at leisure, not a stop-the-line fault. If it
+is made, it must be **append-only** — `sense-exemplars.json` is index-parallel, so inserting a
+sense mid-list would silently repoint every sense already chosen in 35 shards.
+
+The other report was PDF line-break hyphens stripped without rejoining: *fach licher*,
+*nachvollzieh barer*, both from the Bundesverkehrswegeplan. A scan for standalone German suffix
+fragments across all 9,939 candidates found **four**, in three verbs, and none at rank 0, so none
+cost a sentence. Not worth an indexer change — and the reason is sharper now than it was
+yesterday. `merge_balanced` pops from sorted queues, so any change to the candidate pool can
+orphan a quote already mined, and there are now 35 shards to orphan. The asymmetry that matters
+is the other direction, though: an agent rejecting a corrupt candidate is a visible loss, but an
+agent *not noticing* one ships `fach licher` into the app. So the fix went into MINING_SPEC's
+rejection list, which cannot orphan anything, rather than into the indexer — with the tell (a
+standalone *licher*, *barer*, *keit* after a token ending mid-morpheme) and an explicit ban on
+rejoining the halves, since a repaired quote is no longer verbatim and fails the validator.
+
+033's smaller request landed in the same edit. It had noticed that `einher-`'s chain already
+narrates both the loss of *einher* as a free word and the gait→accompaniment shift, so its first
+closers for *einhergehen* and *einherfahren* restated the bullet three lines above them; it
+rewrote both by hand and asked for a warning rather than re-deriving it per shard. Checking the
+chains showed this is a class, not a case: most are pure descent and leave the compound's
+semantics to the closer, but a dozen — `kaputt-`, `teil-`, `durch-`, `dar-` — run to four
+sentences and spend the extra ones on exactly that ground. The brief now says to read the chain
+first, and that a short accurate closer beats a long one paraphrasing a bullet.
+
+Same shape as the separability doublets the day before, and now twice in two days: a real defect,
+correctly reported, whose fix costs more than the defect once you count what a pool change does
+to work already done. The pipeline is cheap to change before mining and expensive after, and 35
+shards in, "after" has started.

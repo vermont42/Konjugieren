@@ -467,10 +467,28 @@ by exact equality, so paraphrase, trimming, and retyping all fail it.
   token budget is. So the throughput gained is nearly nothing and the price is a wider blast
   radius. Raise it only once a full window has run without any pipeline change, which has not
   yet happened.
-- **Cost, measured over four shard-runs:** ~99k subagent tokens and about **2 session points**
-  per shard, roughly 6 minutes. The remaining 102 are therefore ~2 full five-hour windows and
-  ~29% of a weekly budget. Calibration: ~45–50k subagent tokens per session point, from two
-  independent batches. Re-derive rather than trusting these.
+- **Cost, measured over ten shard-runs:** ~85–110k subagent tokens and about **2 session points**
+  per shard, roughly 5–6 minutes. Calibration: ~45–50k subagent tokens per session point, from
+  two independent batches. Re-derive rather than trusting these, and multiply by the shard count
+  `build_mining_shards.py` reports rather than by one written here — an earlier version of this
+  line said "the remaining 102", which was stale within a wave and is precisely the failure the
+  progress-is-not-recorded-here rule above exists to prevent.
+
+  **Pipeline work is the other half of the budget, and it is worth it.** The 2026-07-20 window
+  spent ~13 of 17 points on fixes rather than shards, against the ~200 it would have cost to
+  re-mine 100 shards contaminated by the defects those fixes removed.
+- **Three artifacts landed on 2026-07-20 that a resuming session should know exist**, all
+  tracked, all with their reasoning in their own docstrings:
+  - `verbdata/normalize_prefix_senses.py` — made every prefix sense a complete sentence, so the
+    brief's "splice verbatim" is literally executable. It was not: 45% were verb-initial
+    fragments, and every subagent had been inventing its own connective. Idempotent; re-run it
+    after editing any sense.
+  - `verbdata/sense-exemplars.json` — exemplar verbs per sense, index-parallel, for the
+    highest-traffic prefixes. Sense selection was the last underdetermined step. Extend it when a
+    run reports a gap; **check index parity against `senses` after editing**, since a short list
+    fails silently as "no hint configured".
+  - `corpus/working/repair_mined_connectives.py` — retrofits already-mined shards to the
+    canonical senses. Needed once; kept because a future sense edit would need it again.
 - **Yield runs near half.** Shards 000–001 gave 26 sentences and 24 nulls over 50 verbs. Most
   nulls are verbs with no candidate at all (~36% of targets corpus-wide); the rest are honest
   refusals. Every verb still gets an etymology, so a null is a half-result, not a failure.

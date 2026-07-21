@@ -109,7 +109,10 @@ PARTY_TAG = re.compile(
 )
 
 
-TERMINAL_PUNCT = (".", "!", "?", "…", ":")
+# A colon is deliberately absent: a sentence ending on one promises a continuation that the
+# quotation does not include, so it cannot stand alone in the app. Reported 2026-07-20 by a
+# shard-run whose only `abdrucken` candidate was an editorial header ending in a colon.
+TERMINAL_PUNCT = (".", "!", "?", "…")
 TRAILING_CLOSERS = "\"'»«“”„)]›‹’ "
 # A MediaWiki list item or namespace link that survived extraction as raw markup.
 WIKI_MARKUP = re.compile(
@@ -118,6 +121,18 @@ WIKI_MARKUP = re.compile(
 )
 # A verse number between a clause boundary and the lowercase word resuming the sentence.
 VERSE_NUMBER = re.compile(r"[;:,.]\s+\d{1,3}\s+[a-zäöüß]")
+# The same versification with no punctuation at all in front of it: `…Tannenholz 9 Meine
+# Knechte…`. Luther prose spells its numerals out, so a bare 1-3 digit integer between a word
+# and a capitalized word is versification rather than content.
+BARE_VERSE_NUMBER = re.compile(r"[a-zäöüß]\s+\d{1,3}\s+[A-ZÄÖÜ]")
+# Editorial apparatus in the constitutional texts, printed inline: `(+++ Nichtamtlicher …`.
+EDITORIAL_INSERT = re.compile(r"\+\+\+")
+# A suspended compound that lost the space after its hyphen (`Zedern-und Tannenholz` for
+# `Zedern- und Tannenholz`). The correct form is spaced, so the unspaced one is always damage.
+SUSPENDED_HYPHEN = re.compile(r"\w-(?:und|oder|bzw|noch)\b")
+# A two-column gutter splice, visible as a long run of interior spaces where the extractor
+# joined text across the gap: `in zwei Artikeln zur          sich auf Kandidaten einigen`.
+GUTTER_SPLICE = re.compile(r"\S {3,}\S")
 
 # Content that should not ship into a learner app even though it is mechanically perfect German.
 #
@@ -219,7 +234,7 @@ def is_defective(text, rel="", truncated=False):
         return "speaker-tag"
     if text[0].islower():
         return "starts-lowercase"
-    if re.match(r"[–—-]\s", text):
+    if re.match(r"(?:[–—-]\s|--)", text):
         return "leading-dash"
     for opener, closer in (("(", ")"), ("„", "“")):
         if text.count(opener) != text.count(closer):
@@ -232,8 +247,14 @@ def is_defective(text, rel="", truncated=False):
         return "column-marker"
     if WIKI_MARKUP.search(text):
         return "wiki-markup"
-    if "luther-bible" in rel and VERSE_NUMBER.search(text):
+    if "luther-bible" in rel and (VERSE_NUMBER.search(text) or BARE_VERSE_NUMBER.search(text)):
         return "verse-number"
+    if EDITORIAL_INSERT.search(text):
+        return "editorial-insert"
+    if SUSPENDED_HYPHEN.search(text):
+        return "suspended-hyphen"
+    if GUTTER_SPLICE.search(text):
+        return "gutter-splice"
     if rel and bucket_of(rel).startswith("government") and UNSUITABLE_CONTENT.search(text):
         return "unsuitable-content"
     # Closing marks and brackets trail legitimate terminal punctuation (`… gesagt.“`), so they
@@ -874,15 +895,30 @@ def merge_balanced(by_work, lit_works, gov, tech, rank):
         queues = [list(by_work.get(work, [])) for work in order]
     else:
         queues = []
+    # Identical text across two works is not two attestations. The Grundgesetz incorporates
+    # articles of the Weimarer Verfassung verbatim (GG Art. 140 takes in WRV Art. 136), so a verb
+    # occurring there arrives twice and spends two of its five slots saying the same thing.
+    # Reported 2026-07-20 by a shard-run that found `abhängen`'s first two candidates byte-equal.
+    seen = set()
+
+    def take(candidate):
+        if candidate["text"] in seen:
+            return False
+        seen.add(candidate["text"])
+        out.append(candidate)
+        return True
+
     out, position = [], 0
     while len(out) < MAX_OCCURRENCES and any(queues):
         queue = queues[position % len(queues)]
         if queue:
-            out.append(queue.pop(0))
+            take(queue.pop(0))
         position += 1
     for fallback in (gov, tech):
-        if len(out) < MAX_OCCURRENCES:
-            out.extend(fallback[: MAX_OCCURRENCES - len(out)])
+        for candidate in fallback:
+            if len(out) >= MAX_OCCURRENCES:
+                break
+            take(candidate)
     return out
 
 

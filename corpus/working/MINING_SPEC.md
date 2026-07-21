@@ -121,6 +121,23 @@ Candidates are already ranked and balanced across sources. Reject a candidate wh
 - it is a **different verb** that happens to share the form. Candidates are deliberately
   ambiguous: a form maps to several verbs and disambiguation was left to you.
 
+**A verb whose every candidate is a homograph is a known, accepted outcome — not an indexer
+bug.** Return nulls and say so; do not infer that the form→lemma map is broken. The map is
+built by running the app's own `Conjugator` over every verb, so it does not stem and cannot
+confuse two lemmas.
+
+`abfahren` is the standard example, and two shard-runs have now diagnosed it wrongly. All of its
+candidates are the token *abführen*, which looks like a different verb and partly is — but
+*abführen* is also the genuine Konjunktiv II plural of *abfahren* (*fahren* → *fuhr* → *führe*),
+so the map is right to list it. What starves the rarer reading is `MAX_OCCURRENCES = 5`: the
+commoner lemma fills every slot before the rarer one is reached. About 179 target verbs, 11% of
+those with candidates, lose their whole pool this way. A tail rescue is Phase 5's job.
+
+The tempting inference — that *führen* and *fahren* were collapsed by a stemmer — is wrong about
+this pipeline but right about the history: *führen* descends from Proto-Germanic \*`fōrijaną`,
+the causative of \*`faraną` "to travel," so it once meant "to make go." The pair really is one
+root, which is exactly why the coincidence is so convincing here.
+
 **3. Quote `text` as it stands. Do not re-open the source file unless `truncated` is true.**
 
 Each candidate carries a `truncated` flag. When it is `false` — which is the case for about

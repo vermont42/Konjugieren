@@ -100,6 +100,29 @@ it. One of them invented a tiebreak rule and noted that another shard would inve
 one. If your verb resembles none of the exemplars, say so in `notes` — a missing sense is a real
 finding, and two were added from exactly such a report.
 
+**When two senses of one prefix both fit, the tie is broken by the base verb, not by the compound.**
+The standing case is `be-` senses 0 and 1, which describe the same operation for a large class of
+verbs — sense 0's own exemplar `besteigen` is *auf etwas steigen* → *etwas besteigen*, which is
+sense 1's definition read literally. The test that separates them:
+
+- **Sense 1** when the base verb reaches that participant through a **lexically governed**
+  preposition or a dative — one that is fixed and has to be memorised. *antworten **auf***,
+  *sprechen **über***, *trauern **um***, *folgen* + dative. `be-` only changes its case.
+- **Sense 0** when the base verb reaches it through a **free spatial or directional** phrase chosen
+  for meaning, or does not reach it at all. *steigen auf/in/über*, *wohnen in/bei*, *atmen*,
+  *leben*. `be-` creates the object slot.
+
+Ask whether the preposition is predictable from the meaning. If it could be swapped for another and
+the sentence still works (*auf den Berg steigen*, *in den Keller steigen*), it is free, and the
+sense is 0. If only one preposition is possible (*auf eine Frage antworten*, never *über*), it is
+governed, and the sense is 1. This settles `bescheinen` (free — 0) and `belächeln` (governed — 1),
+which have identical surface shape and were being assigned inconsistently.
+
+Two shard-runs invented their own tiebreak here and each said another shard would invent a
+different one, which is the `abmelken`/`abladen` drift one level up. **The sense texts themselves
+are not being changed**: both are true of the verbs they already describe, and rewording them would
+strand 63 mined entries to help about five that remain.
+
 Exemplars are a picking aid only. They are never spliced into the prose and must not appear in
 your output — and that includes `notes`, not just the etymology.
 

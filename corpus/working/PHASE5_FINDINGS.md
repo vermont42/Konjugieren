@@ -81,11 +81,29 @@ The discriminating fact looks like **object type**: sense 0's exemplars (`bestei
 abstract or communicative content. If that is the intended split, saying so in the sense text would
 settle it permanently.
 
-**Not fixed in the 2026-07-20 window on purpose.** This is a sense *amendment*, not an addition, so
-it strands every mined entry that spliced either sense — and shards 022–026 are the `be-` block, so
-that is a large number caught at the end of a window rather than the start. Amend it early in a
-session, then re-anchor and re-validate, and verify the repair by searching for the old string
-rather than trusting `repair_mined_connectives.py`'s summary line (see § 5).
+**Resolved 2026-07-20 in the brief, not in the sense texts, and the reasoning is the point.** The
+first instinct was to reword both senses. Measuring first killed that: 39 mined entries carry sense
+0 and 24 carry sense 1, so rewording strands **63** — while only about **5** of the 33 pending `be-`
+verbs would ever face the choice, the rest being double-prefix compounds (`einbehalten`,
+`vorbestellen`, `herausbekommen`) where `be-` sits inside a lexicalised stem.
+
+Decisively, **the shipped text is not wrong**. "Makes an intransitive verb transitive" is true of
+*besteigen*; "promotes what the base verb governs with a preposition or dative" is true of
+*belächeln*. The overlap means a verb *could* have gone either way, not that any verb received a
+false statement. So this was never a defect in shipped prose — it was an ambiguity in the selection
+rule, which by definition only affects verbs not yet selected.
+
+`MINING_SPEC.md` now carries the decidable test: **governed preposition or dative → sense 1; free
+spatial or directional phrase, or no object at all → sense 0.** Ask whether the preposition could be
+swapped and the sentence still work (*auf den Berg steigen* / *in den Keller steigen* — free, so
+sense 0) or whether exactly one is possible (*auf eine Frage antworten*, never *über* — governed, so
+sense 1). It validates both exemplar sets as they stand and explains the inconsistent pairs:
+`bescheinen` (free, correctly 0) against `belächeln` (governed, correctly 1).
+
+**The general lesson, which § 3c should be read against:** an overlap between two senses is not the
+same defect as a wrong sense. The first is fixable in the brief for nothing; the second needs the
+text changed and every mined entry re-anchored. Establish which one you have before paying for the
+second.
 
 ## 3b. Unmatched delimiters in quoted sentences
 

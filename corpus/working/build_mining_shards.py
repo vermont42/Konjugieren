@@ -56,6 +56,29 @@ OUT_DIR = REPO / "corpus/working/shards"
 LANGS = ("de", "en")
 
 
+# Splits that the markers in Verbs.xml license but etymology forbids: the innermost
+# prefix and the remainder look like a compound and are not one. Keyed by
+# (prefix, apparent root) and merged back into a single atomic root.
+#
+# `be*fehlen` is the case that prompted this. `befehlen` is MHG *bevelhen*, OHG
+# *bifelahan*, from Proto-Germanic *felhaną "hide, entrust"; `fehlen` is an Old French
+# loan from *faillir*. They are unrelated, so routing `befehlen` to `root:fehlen` tells
+# a learner something false about both. This is the `be*gleiten` trap from the project
+# prompt's Traps section, which survives in Verbs.xml because the markers there record
+# *separability*, which is a fact about conjugation, not about descent.
+#
+# The reliable tell is a strong/weak mismatch: `befehlen` is `family="s"` (befiehlt,
+# befahl, befohlen) while `fehlen` is weak, exactly as `begleiten` is weak while
+# `gleiten` is strong. A shared root cannot inflect two ways. Check that before adding
+# an entry here, and confirm against kaikki's `etymology_text`.
+#
+# Verified not to belong here: `ver*fehlen` (genuinely ver- + fehlen, and weak like it)
+# and `emp*finden` (genuinely ent- + finden).
+FALSE_SPLITS = {
+    ("be", "fehlen"): "befehlen",
+}
+
+
 def strip_markers(form):
     return re.sub(r"[+*^]", "", form)
 
@@ -76,7 +99,13 @@ def decompose(raw):
             segment = ""
         else:
             segment = token
-    return prefixes, strip_markers(segment)
+    root = strip_markers(segment)
+    # Fold a false compound back together, innermost prefix first. Outer prefixes are
+    # untouched: `an+be*fehlen` becomes an- plus the atomic root `befehlen`.
+    if prefixes and (prefixes[-1][0], root) in FALSE_SPLITS:
+        root = FALSE_SPLITS[(prefixes[-1][0], root)]
+        prefixes = prefixes[:-1]
+    return prefixes, root
 
 
 def build_reading(raw, attrib, morphemes, roots, insep, sep):

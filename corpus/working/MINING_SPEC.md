@@ -69,6 +69,17 @@ prose written for exactly this slot — pick the index that fits and splice it u
 reading's `translation` to pick: for `abarbeiten` "work off", *ab-* is the separation sense, not
 the dismantling one.
 
+**Every sense is a complete sentence, so add no connective of your own.** It already carries
+its own subject — `~be-~ makes an intransitive verb transitive, …` — and concatenating it after
+the chain's final period needs nothing between them but a space. This is worth stating because
+it is the rule the pipeline has broken most often: senses used to come in two grammars, about
+half of them verb-initial fragments that could not be spliced as written, and every subagent
+independently invented a connective to bridge the gap. Eight shards ended up carrying four
+different ones ("Here it conveys…", "It promotes…", "Here the prefix conveys…", "The prefix
+conveys…"). The senses were normalized on 2026-07-20 so that no bridge is needed; if you find
+yourself wanting to write one, the sense is malformed and that is a finding to report, not a
+gap to paper over.
+
 Do **not** author a per-bullet sentence of your own on top of the spliced sense. An earlier
 version of this brief asked for one, which duplicated the closer's job and made the bullets
 drift in voice from shard to shard. Compound-specific meaning belongs in the closer, which is
@@ -146,10 +157,18 @@ Keep the sentence a reasonable length for a phone screen — roughly 8 to 30 wor
 are now sorted so that ones inside that band come first within their rank tier, so the earliest
 genuine verbal use is usually also the right length.
 
-**When there is no next candidate, 45 words is the ceiling.** Past that, return `null` rather
+**When there is no next candidate, 55 words is the ceiling.** Past that, return `null` rather
 than quoting a period that will not fit a phone screen. A null is a productive result — Phase 5
-collects them and Josh expands the corpus — whereas an unreadable 62-word quotation ships. Below
-45, prefer the shorter candidate but do not reject a usable sentence for length alone.
+collects them and Josh expands the corpus — whereas an unreadable 80-word quotation ships. Below
+55, prefer the shorter candidate but do not reject a usable sentence for length alone.
+
+The ceiling was 45 until 2026-07-20, when a shard-run reported nulling `anbetreffen` and
+`andrehen` — both sole candidates, both genuine verbal uses, both 53 words, both trapped in a
+single long Nietzsche or Kafka period. Losing a verb's only attestation to eight words of margin
+is the worse error, since a null ships nothing at all. The ceiling still exists, and still binds
+against the genuine runaways; it simply no longer sits just below where German literary prose
+naturally lands. This applies only when the candidate is the last one — a long sentence never
+beats a short one that is equally good.
 
 **Never trim a sentence to hit that target.** Quote it whole or reject it. German puts the
 finite verb second and strands its particle at the clause end, so the target verb frequently

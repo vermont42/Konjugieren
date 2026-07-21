@@ -119,6 +119,38 @@ WIKI_MARKUP = re.compile(
 # A verse number between a clause boundary and the lowercase word resuming the sentence.
 VERSE_NUMBER = re.compile(r"[;:,.]\s+\d{1,3}\s+[a-zäöüß]")
 
+# Content that should not ship into a learner app even though it is mechanically perfect German.
+#
+# Scoped to the government tier on purpose, and that scope is the whole design. Those documents
+# are contemporary parliamentary speech: the people named are alive, the attacks are partisan,
+# and a sentence advocating violence against a named official is not something Konjugieren should
+# print under a citation because it happened to contain `androhen`. The literary tier is exempt
+# because violence there is centuries old and is context rather than advocacy --- Luther's God
+# smites, Kafka's `Prozess` ends in an execution, and filtering those would gut the best source
+# of clean sentences the corpus has while protecting nobody.
+#
+# Added 2026-07-20 after a shard-run refused `androhen`'s sole candidate on these grounds and
+# argued, correctly, that the judgment should be made once here rather than re-made by taste in
+# each of 104 shards. A per-shard decision is not reproducible and not reviewable; this is both.
+#
+# Deliberately narrow: it targets explicit advocacy of physical harm, not political anger,
+# insult, or disagreement, all of which are ordinary parliamentary register and are a subagent's
+# call to make on readability grounds.
+UNSUITABLE_CONTENT = re.compile(
+    r"\b(?:ver)?prügel\w*|\bSchläge\b|\bzusammenschlag\w*|\bniederknüppel\w*"
+    r"|\berschieß\w*|\baufhäng\w*|\bvergas\w*|\berschlag\w*|\babstech\w*",
+    re.IGNORECASE,
+)
+
+# Works whose orthography predates modern spelling by enough to mislead a learner. The
+# Westphalian peace instruments (1648) print `Vhrkunden`, `Creditorn`, `restituirt` --- fluent
+# and quotable, but nobody should learn German from them. Demoted rather than dropped, since a
+# verb attested only there still deserves its one attestation, and a subagent can still reject it.
+#
+# Added 2026-07-20: a shard-run found the 1648 text leading `abzwingen`'s candidate list while
+# Kafka's eight-word "Das zwang ihm nun doch eine Antwort ab." sat two places below it.
+ARCHAIC_WORKS = {"westphalia-de"}
+
 
 def is_defective(text, rel="", truncated=False):
     """Name the mechanical defect in a candidate's text, or None if it is clean.
@@ -163,6 +195,12 @@ def is_defective(text, rel="", truncated=False):
       forbidden. Scoped to the Luther documents, where a bare integer between a clause boundary
       and a lowercase word is unambiguously versification and never prose.
 
+    - `unsuitable-content`: government-tier prose advocating physical harm, typically at a named
+      and living official. Not a mechanical defect but an editorial one, and the only entry here
+      that is about meaning rather than damage. It lives in this function anyway because the
+      alternative is 104 subagents each deciding it by taste. See `UNSUITABLE_CONTENT` for why
+      the literary tier is exempt.
+
     Deliberately *not* filtered: candidates whose furniture would have to be stripped to reach
     the matched verb. Subagents reject those visibly, which is better than a silent edit --- see
     Phase 4's note in `prompts/uses_etymologies.md`.
@@ -196,11 +234,70 @@ def is_defective(text, rel="", truncated=False):
         return "wiki-markup"
     if "luther-bible" in rel and VERSE_NUMBER.search(text):
         return "verse-number"
+    if rel and bucket_of(rel).startswith("government") and UNSUITABLE_CONTENT.search(text):
+        return "unsuitable-content"
     # Closing marks and brackets trail legitimate terminal punctuation (`… gesagt.“`), so they
     # come off before the test; otherwise every quoted sentence in Grimm reads as a fragment.
     if not truncated and not text.rstrip().rstrip(TRAILING_CLOSERS).endswith(TERMINAL_PUNCT):
         return "no-terminal-punct"
     return None
+
+
+# How often the corpus must attest a rejoined word before a candidate is thrown away over it.
+SEVERED_JOIN_MIN = 5
+
+
+def hyphenation_defect(text, counts, rel):
+    """Name a de-hyphenation defect in a candidate, or None.
+
+    Catches `split-word`: a word broken across a line whose hyphen did not survive extraction,
+    leaving two tokens (`Hauptschul abschluss`, `Bruttoinlands produkts`, `Leistungsfähig keit`).
+    Detected by rejoining a capitalized token with the lowercase one after it and asking whether
+    the corpus knows the result as a frequent word. These read fluently and are entirely wrong,
+    which is what makes them worth machine-detecting rather than leaving to a subagent's eye.
+
+    The corpus is its own dictionary here, which is what makes this cheap and self-maintaining:
+    no word list to ship, and the frequency table falls out of the pass the indexer already makes.
+
+    Scoped to the PDF-derived tiers, since the literary sources are clean transcriptions rather
+    than column extractions. Sentence-initial tokens are exempt because `Die selbe` legitimately
+    capitalizes at a sentence start while joining to a frequent word.
+
+    A SECOND RULE WAS TRIED HERE AND REMOVED --- do not re-add it without new evidence. The
+    remaining known defect is the *severed* word, where the head of the break was lost entirely
+    and only a tail survives: `… soll wieder tionäre abwerfen`, from `… Dividenden an Ak|tionäre`.
+    The obvious test is "a token that is near-absent from the corpus while being the ending of a
+    word that is common in it." Measured on 2026-07-20 it dropped 250 candidates at visibly poor
+    precision, taking clean sentences like "Haben Förderprogramme die erwünschten Wirkungen
+    gebracht?" with it.
+
+    The reason is structural and worth knowing before anyone tries again: German compounding
+    makes "is the ending of some frequent word" very nearly vacuous. Almost every German word is
+    the tail of some longer compound, so the test fires on ordinary vocabulary and the rarity
+    threshold cannot separate the cases. Detecting a severed head needs a real lexicon with
+    morpheme boundaries, not a frequency table --- and until then, a subagent rejecting the
+    occasional `tionäre` by eye is the cheaper error.
+    """
+    if bucket_of(rel) not in {"government", "government2", "technology"}:
+        return None
+    tokens = TOKEN_RE.findall(text)
+    for index, token in enumerate(tokens):
+        lowered = token.lower()
+        if index and token[0].isupper() and index + 1 < len(tokens):
+            nxt = tokens[index + 1]
+            if nxt[0].islower() and counts.get((lowered + nxt.lower()), 0) >= SEVERED_JOIN_MIN:
+                return "split-word"
+    return None
+
+
+def archaic_tier(candidate):
+    """0 for modern orthography, 1 for a work that predates modern spelling.
+
+    Sorts after `_rank` and `_demoted` but before `length_tier`, so a modern sentence of any
+    length outranks 1648 chancery German. Never removes: a verb attested only in the Westphalian
+    instruments keeps its one candidate.
+    """
+    return 1 if bucket_of(candidate["doc"]) in ARCHAIC_WORKS else 0
 
 
 def length_tier(text):
@@ -816,11 +913,17 @@ def main():
     defective_skipped = defaultdict(int)
     defective_demoted = defaultdict(int)
     sentence_count = 0
+    # The corpus doubles as the dictionary `hyphenation_defect` consults. Counted over every
+    # sentence in the pass below, then applied afterwards, since a candidate cannot be
+    # judged against a table that is still being filled.
+    token_counts = defaultdict(int)
 
     for _tier, work, rel, abspath in docs:
         for paragraph, marks in paragraphs(logical_lines(abspath)):
             for offset, sentence in sentences(paragraph):
                 sentence_count += 1
+                for word in TOKEN_RE.findall(sentence):
+                    token_counts[word.lower()] += 1
                 for verb, hit in scan_sentence(sentence, forms).items():
                     # The line holding the matched verb itself, not the sentence or paragraph
                     # start, so `doc:line` opens exactly on the attestation.
@@ -862,6 +965,17 @@ def main():
                         candidate["particle"] = hit["particle"]
                     raw[verb][work].append(candidate)
 
+    for works in raw.values():
+        for work, candidates in works.items():
+            kept = []
+            for candidate in candidates:
+                defect = hyphenation_defect(candidate["text"], token_counts, candidate["doc"])
+                if defect:
+                    defective_skipped[defect] += 1
+                else:
+                    kept.append(candidate)
+            works[work] = kept
+
     targets = target_verbs()
     all_verbs = sorted({entry["verb"] for entries in forms.values() for entry in entries})
 
@@ -873,7 +987,7 @@ def main():
         # Contiguous evidence first, then clause-final split forms, then the rest. Within a
         # tier, a candidate that fits a phone screen sorts ahead of a 60-word literary period.
         for candidates in by_work.values():
-            candidates.sort(key=lambda c: (c["_rank"], c["_demoted"], length_tier(c["text"])))
+            candidates.sort(key=lambda c: (c["_rank"], c["_demoted"], archaic_tier(c), length_tier(c["text"])))
         merged = merge_balanced(
             by_work,
             [w for w in lit_works if w in by_work],
@@ -881,7 +995,7 @@ def main():
             by_work.get("technology", []),
             rank,
         )
-        merged.sort(key=lambda c: (c["_rank"], c["_demoted"], length_tier(c["text"])))
+        merged.sort(key=lambda c: (c["_rank"], c["_demoted"], archaic_tier(c), length_tier(c["text"])))
         for candidate in merged:
             candidate.pop("_rank", None)
             candidate.pop("_demoted", None)

@@ -1,0 +1,328 @@
+{
+  "anbetreffen": {
+    "etymology": {
+      "de": "Doppelte Zusammensetzung: trennbares ~an-~ vor untrennbarem ~betreffen~, das selbst ~be-~ + ~treffen~ ist:\n\n- ~treffen~: Aus Mhd. ~treffen~, aus Ahd. ~treffan~, aus Proto-Westgermanisch *~drepan~, aus Urgermanisch *~drepaną~ („schlagen, stoßen, treffen“), aus PIE *~dʰrebʰ-~, *~dʰreb-~ („krachen, zermalmen, schlagen, töten“). Die hochdeutsche Lautverschiebung von *~dr-~ zu ~tr-~ verschleiert die Verwandtschaft mit Altenglisch ~drepan~ („schlagen“). Verwandt mit Altnordisch ~drepa~ („töten, schlagen“).\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ hebt das, was das Grundverb mit einer Präposition oder im Dativ regiert, zum Akkusativobjekt.\n- ~an-~: Aus Mhd. ~an(e)-~, aus Ahd. ~ana~, aus Proto-Westgermanisch *~ana~, aus Urgermanisch *~ana~ („auf, an“), aus PIE *~h₂en~ („auf, hinauf“). Verwandt mit Englisch ~on~, Niederländisch ~aan~, Gotisch ~ana~ und Griechisch ~aná~ („hinauf, hindurch“). Das Präfix drückt Annäherung und Ankunft aus — eine auf ein Ziel gerichtete Bewegung.\n\nDas Verb lebt fast nur noch in der festen Wendung ~was … anbetrifft~ fort, in der zwei Präfixschichten sagen, was ~betreffen~ schon sagt. Der urgermanische Sinn des Schlagens ist zur bloßen Zugehörigkeit abgeschliffen: Was eine Sache ~anbetrifft~, trifft sie nicht mehr, sondern geht sie nur noch an.",
+      "en": "A double compound: separable ~an-~ on inseparable ~betreffen~, itself ~be-~ + ~treffen~:\n\n- ~treffen~: From MHG ~treffen~, from OHG ~treffan~, from Proto-West Germanic *~drepan~, from Proto-Germanic *~drepaną~ (\"to strike, push, beat\"), from PIE *~dʰrebʰ-~, *~dʰreb-~ (\"to crack, crush, strike, kill\"). The High German consonant shift from *~dr-~ to ~tr-~ obscures the cognate relationship with Old English ~drepan~ (\"to strike\"). Cognate with Old Norse ~drepa~ (\"to kill, strike\").\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ promotes what the base verb governs with a preposition or in the dative to a direct object.\n- ~an-~: From MHG ~an(e)-~, from OHG ~ana~, from Proto-West Germanic *~ana~, from Proto-Germanic *~ana~ (\"on, at\"), from PIE *~h₂en~ (\"on, onto\"). Cognate with English ~on~, Dutch ~aan~, Gothic ~ana~, and Greek ~aná~ (\"up, throughout\"). The prefix conveys approach and arrival — motion directed toward a destination.\n\nThe verb survives almost only in the fixed formula ~was … anbetrifft~ (\"as far as … is concerned\"), where two layers of prefix say what ~betreffen~ already said. The Proto-Germanic sense of striking a blow has worn down to bare relevance: what a matter ~anbetrifft~ no longer strikes it, it merely pertains to it."
+    },
+    "sentence": null,
+    "notes": "Sole candidate (Nietzsche) runs 53 words, past the 45-word ceiling; no shorter candidate exists."
+  },
+  "anbinden": {
+    "etymology": {
+      "de": "Trennbare Zusammensetzung aus ~an-~ + ~binden~:\n\n- ~binden~: Aus Mhd. ~binden~, aus Ahd. ~bintan~, aus Proto-Westgermanisch *~bindan~, aus Urgermanisch *~bindaną~, aus PIE *~bʰendʰ-~ („binden, knüpfen“). Ein starkes Verb der Klasse III mit dem charakteristischen ~i~–~a~–~u~-Ablaut (~binden~, ~band~, ~gebunden~). Verwandt mit Englisch ~bind~, Niederländisch ~binden~, Gotisch ~bindan~.\n- ~an-~: Aus Mhd. ~an(e)-~, aus Ahd. ~ana~, aus Proto-Westgermanisch *~ana~, aus Urgermanisch *~ana~ („auf, an“), aus PIE *~h₂en~ („auf, hinauf“). Verwandt mit Englisch ~on~, Niederländisch ~aan~, Gotisch ~ana~ und Griechisch ~aná~ („hinauf, hindurch“). Das Präfix drückt Kontakt oder Befestigung aus — etwas an etwas anderem festmachen.\n\nDer wörtliche Sinn ist unversehrt — ein Pferd wird an den Pfosten gebunden —, und die Redewendung ~kurz angebunden~ („barsch, wortkarg“) bewahrt dasselbe Bild: Ein Tier an kurzem Strick hat wenig Spielraum.",
+      "en": "A separable compound of ~an-~ + ~binden~:\n\n- ~binden~: From MHG ~binden~, from OHG ~bintan~, from Proto-West Germanic *~bindan~, from Proto-Germanic *~bindaną~, from PIE *~bʰendʰ-~ (\"to bind, tie\"). A class III strong verb with the characteristic ~i~–~a~–~u~ ablaut (~binden~, ~band~, ~gebunden~). Cognate with English ~bind~, Dutch ~binden~, Gothic ~bindan~.\n- ~an-~: From MHG ~an(e)-~, from OHG ~ana~, from Proto-West Germanic *~ana~, from Proto-Germanic *~ana~ (\"on, at\"), from PIE *~h₂en~ (\"on, onto\"). Cognate with English ~on~, Dutch ~aan~, Gothic ~ana~, and Greek ~aná~ (\"up, throughout\"). The prefix conveys contact or attachment — fastening one thing onto another.\n\nThe literal sense is intact — a horse tied to a post — and the idiom ~kurz angebunden~ (\"curt, brusque\") keeps the same picture: an animal tethered on a short rope has little room to move."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Kannst du mit ihm spielen wie mit einem Vogel oder ihn für deine Dirnen anbinden?",
+        "source": "Luther — Bibel"
+      },
+      "en": {
+        "sentence": "Can you play with him as with a bird, or tie him up for your girls?",
+        "source": "Luther — Bibel"
+      }
+    },
+    "notes": null
+  },
+  "anblasen": {
+    "etymology": {
+      "de": "Trennbare Zusammensetzung aus ~an-~ + ~blasen~:\n\n- ~blasen~: Aus Mhd. ~blāsen~, aus Ahd. ~blāsan~, aus Proto-Westgermanisch *~blāsan~, aus Urgermanisch *~blēsaną~, aus PIE *~bʰleh₁-~ („blasen, schwellen“). Ein starkes Verb der Klasse VII, dessen redupliziertes Präteritum zu ~blies~ abgeschliffen ist (~blasen~, ~blies~, ~geblasen~). Verwandt mit Englisch ~blast~, Gotisch ~ufblēsan~, Altnordisch ~blása~.\n- ~an-~: Aus Mhd. ~an(e)-~, aus Ahd. ~ana~, aus Proto-Westgermanisch *~ana~, aus Urgermanisch *~ana~ („auf, an“), aus PIE *~h₂en~ („auf, hinauf“). Verwandt mit Englisch ~on~, Niederländisch ~aan~, Gotisch ~ana~ und Griechisch ~aná~ („hinauf, hindurch“). Das Präfix ist inchoativ: Es bezeichnet den Beginn einer Handlung, nicht ihren ganzen Verlauf.\n\nDas Präfix bezeichnet das Entfachen, nicht das Blasen: Man bläst die Glut an, bis das Feuer greift, und dasselbe ~an-~ eröffnet die Jagd, wenn das Horn angeblasen wird.",
+      "en": "A separable compound of ~an-~ + ~blasen~:\n\n- ~blasen~: From MHG ~blāsen~, from OHG ~blāsan~, from Proto-West Germanic *~blāsan~, from Proto-Germanic *~blēsaną~, from PIE *~bʰleh₁-~ (\"to blow, swell\"). A class VII strong verb, its reduplicated preterite worn down to ~blies~ (~blasen~, ~blies~, ~geblasen~). Cognate with English ~blast~, Gothic ~ufblēsan~, Old Norse ~blása~.\n- ~an-~: From MHG ~an(e)-~, from OHG ~ana~, from Proto-West Germanic *~ana~, from Proto-Germanic *~ana~ (\"on, at\"), from PIE *~h₂en~ (\"on, onto\"). Cognate with English ~on~, Dutch ~aan~, Gothic ~ana~, and Greek ~aná~ (\"up, throughout\"). The prefix is inchoative: it marks the beginning of an action rather than its whole course.\n\nWhat the prefix marks is the kindling, not the blowing: one blows at the embers until the fire takes, and the same ~an-~ opens a hunt when the horn is ~angeblasen~."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Es wird ihn ein Feuer verzehren, das nicht angeblasen ist; und wer übrig ist in seiner Hütte, dem wird's übel gehen.",
+        "source": "Luther — Bibel"
+      },
+      "en": {
+        "sentence": "A fire that no one has fanned will devour him, and whoever is left in his tent will fare badly.",
+        "source": "Luther — Bibel"
+      }
+    },
+    "notes": null
+  },
+  "anblicken": {
+    "etymology": {
+      "de": "Trennbare Zusammensetzung aus ~an-~ + ~blicken~:\n\n- ~blicken~: Aus Mhd. ~blicken~, aus Ahd. ~blicchen~, aus Proto-Westgermanisch *~blikk-~, aus Urgermanisch *~bliką~ / *~blikkaz~ („Schein, Erscheinung, Blick“), aus PIE *~bʰleyǵ-~ („scheinen, glänzen“) — ein ~Blick~ ist ein Lichtblitz, der zum gerichteten Sehen wurde. Verwandt mit Englisch ~bleach~ und ~blank~, Niederländisch ~blik~, Altenglisch ~blice~.\n- ~an-~: Aus Mhd. ~an(e)-~, aus Ahd. ~ana~, aus Proto-Westgermanisch *~ana~, aus Urgermanisch *~ana~ („auf, an“), aus PIE *~h₂en~ („auf, hinauf“). Verwandt mit Englisch ~on~, Niederländisch ~aan~, Gotisch ~ana~ und Griechisch ~aná~ („hinauf, hindurch“). Das Präfix richtet die Handlung auf einen Adressaten — jemanden ansprechen, ihm etwas darbieten oder ankündigen.\n\nDie alte Bedeutung der Wurzel macht die Zusammensetzung anschaulich: War ein ~Blick~ einst ein Lichtblitz, so heißt jemanden ~anblicken~, diesen Blitz auf ihn zu richten — ein Blick, geworfen wie ein Lichtschein.",
+      "en": "A separable compound of ~an-~ + ~blicken~:\n\n- ~blicken~: From MHG ~blicken~, from OHG ~blicchen~, from Proto-West Germanic *~blikk-~, from Proto-Germanic *~bliką~ / *~blikkaz~ (\"shine, appearance, look\"), from PIE *~bʰleyǵ-~ (\"to shine\") — a ~Blick~ is a flash of light turned into a directed gaze. Cognate with English ~bleach~ and ~blank~, Dutch ~blik~, Old English ~blice~.\n- ~an-~: From MHG ~an(e)-~, from OHG ~ana~, from Proto-West Germanic *~ana~, from Proto-Germanic *~ana~ (\"on, at\"), from PIE *~h₂en~ (\"on, onto\"). Cognate with English ~on~, Dutch ~aan~, Gothic ~ana~, and Greek ~aná~ (\"up, throughout\"). The prefix directs the action at an addressee — speaking, presenting, or announcing to someone.\n\nThe root's older meaning makes the compound vivid: if a ~Blick~ was once a flash of light, then to ~anblicken~ someone is to aim that flash at them — a gaze thrown the way a lantern is turned."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "K. durchlief beide Seitenschiffe, er traf nur ein altes Weib, das eingehüllt in ein warmes Tuch vor einem Marienbild kniete und es anblickte.",
+        "source": "Kafka — Der Proceß"
+      },
+      "en": {
+        "sentence": "K. hurried through both side aisles; he met only an old woman who, wrapped in a warm shawl, knelt before an image of the Virgin and gazed at it.",
+        "source": "Kafka — Der Proceß"
+      }
+    },
+    "notes": "Candidate 0 rejected: line-broken Zarathustra verse, not a self-standing sentence."
+  },
+  "anbraten": {
+    "etymology": {
+      "de": "Trennbare Zusammensetzung aus ~an-~ + ~braten~:\n\n- ~braten~: Aus Mhd. ~brāten~, aus Ahd. ~brātan~, aus Proto-Westgermanisch *~brādan~, aus Urgermanisch *~brēdaną~ („braten, rösten“), aus PIE *~bʰreh₁-~ („erhitzen, sieden, brennen“) — der Wurzel hinter ~brennen~ und Englisch ~brew~. Ein starkes Verb der Klasse VII (~braten~, ~briet~, ~gebraten~). Verwandt mit Englisch ~brawn~ (über Altfranzösisch entlehnt), Niederländisch ~braden~, Altenglisch ~brǣdan~.\n- ~an-~: Aus Mhd. ~an(e)-~, aus Ahd. ~ana~, aus Proto-Westgermanisch *~ana~, aus Urgermanisch *~ana~ („auf, an“), aus PIE *~h₂en~ („auf, hinauf“). Verwandt mit Englisch ~on~, Niederländisch ~aan~, Gotisch ~ana~ und Griechisch ~aná~ („hinauf, hindurch“). Das Präfix bezeichnet eine teilweise ausgeführte Handlung — etwas ein wenig tun, nicht ganz.\n\nDer Teilaspekt ist küchengenau: Fleisch ~anbraten~ heißt, es außen zu bräunen und innen roh zu lassen — das bewusste Gegenteil von ~durchbraten~.",
+      "en": "A separable compound of ~an-~ + ~braten~:\n\n- ~braten~: From MHG ~brāten~, from OHG ~brātan~, from Proto-West Germanic *~brādan~, from Proto-Germanic *~brēdaną~ (\"to roast\"), from PIE *~bʰreh₁-~ (\"to heat, boil, burn\") — the root behind ~brennen~ and English ~brew~. A class VII strong verb (~braten~, ~briet~, ~gebraten~). Cognate with English ~brawn~ (borrowed via Old French), Dutch ~braden~, Old English ~brǣdan~.\n- ~an-~: From MHG ~an(e)-~, from OHG ~ana~, from Proto-West Germanic *~ana~, from Proto-Germanic *~ana~ (\"on, at\"), from PIE *~h₂en~ (\"on, onto\"). Cognate with English ~on~, Dutch ~aan~, Gothic ~ana~, and Greek ~aná~ (\"up, throughout\"). The prefix marks a partial action — doing something a little, not all the way.\n\nThe partial sense is culinary precision: to ~anbraten~ meat is to brown the outside and leave the middle raw, the deliberate opposite of ~durchbraten~ (\"to cook through\")."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "anbrechen": {
+    "etymology": {
+      "de": "Trennbare Zusammensetzung aus ~an-~ + ~brechen~:\n\n- ~brechen~: Aus Mhd. ~brëchen~, aus Ahd. ~brëhhan~, aus Proto-Westgermanisch *~brekan~, aus Urgermanisch *~brekaną~, aus PIE *~bʰreg-~ („brechen“) — dasselbe Wort wie Englisch ~break~, nur durch die hochdeutsche Lautverschiebung getrennt. Dieselbe Wurzel liegt Lateinisch ~frangere~ zugrunde, woraus Englisch ~fracture~. Verwandt mit Niederländisch ~breken~, Dänisch ~brække~.\n- ~an-~: Aus Mhd. ~an(e)-~, aus Ahd. ~ana~, aus Proto-Westgermanisch *~ana~, aus Urgermanisch *~ana~ („auf, an“), aus PIE *~h₂en~ („auf, hinauf“). Verwandt mit Englisch ~on~, Niederländisch ~aan~, Gotisch ~ana~ und Griechisch ~aná~ („hinauf, hindurch“). Das Präfix ist inchoativ: Es bezeichnet den Beginn einer Handlung, nicht ihren ganzen Verlauf.\n\nIm Deutschen wie im Englischen bricht der Tag an, doch das Deutsche markiert den Beginn mit dem Präfix. Dasselbe ~an-~ ergibt den zweiten Sinn, das Anbrechen eines Unversehrten: Eine ~angebrochene Flasche~ ist eine, deren Siegel gebrochen ist, mehr nicht.",
+      "en": "A separable compound of ~an-~ + ~brechen~:\n\n- ~brechen~: From MHG ~brëchen~, from OHG ~brëhhan~, from Proto-West Germanic *~brekan~, from Proto-Germanic *~brekaną~, from PIE *~bʰreg-~ (\"to break\") — the same word as English ~break~, separated only by the High German consonant shift. The same root underlies Latin ~frangere~, whence English ~fracture~. Cognate with Dutch ~breken~, Danish ~brække~.\n- ~an-~: From MHG ~an(e)-~, from OHG ~ana~, from Proto-West Germanic *~ana~, from Proto-Germanic *~ana~ (\"on, at\"), from PIE *~h₂en~ (\"on, onto\"). Cognate with English ~on~, Dutch ~aan~, Gothic ~ana~, and Greek ~aná~ (\"up, throughout\"). The prefix is inchoative: it marks the beginning of an action rather than its whole course.\n\nGerman and English both let a day break, but German marks the onset with a prefix. The same ~an-~ gives the verb its other sense, broaching something intact: an ~angebrochene Flasche~ is a bottle whose seal has been broken, and no more than that."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Da rang ein Mann mit ihm, bis die Morgenröte anbrach.",
+        "source": "Luther — Bibel"
+      },
+      "en": {
+        "sentence": "Then a man wrestled with him until the dawn broke.",
+        "source": "Luther — Bibel"
+      }
+    },
+    "notes": null
+  },
+  "anbrennen": {
+    "etymology": {
+      "de": "Trennbare Zusammensetzung aus ~an-~ + ~brennen~:\n\n- ~brennen~: Aus Mhd. ~brennen~, einer Verschmelzung zweier althochdeutscher Verben: des transitiven ~brennan~ („in Brand setzen“), aus Proto-Westgermanisch *~brannijan~, und des intransitiven ~brinnan~, aus *~brinnan~, dessen Kausativ *~brannijan~ war. Das Intransitiv geht auf PIE *~bʰrewh₁-~ („sieden, brauen“) zurück, was ~brennen~ zum Vetter von Englisch ~brew~ macht. Ein Rückumlaut-Verb: ~ich brenne~, aber ~brannte~, ~gebrannt~. Verwandt mit Englisch ~burn~, Niederländisch ~branden~, Isländisch ~brenna~.\n- ~an-~: Aus Mhd. ~an(e)-~, aus Ahd. ~ana~, aus Proto-Westgermanisch *~ana~, aus Urgermanisch *~ana~ („auf, an“), aus PIE *~h₂en~ („auf, hinauf“). Verwandt mit Englisch ~on~, Niederländisch ~aan~, Gotisch ~ana~ und Griechisch ~aná~ („hinauf, hindurch“). Das Präfix ist inchoativ: Es bezeichnet den Beginn einer Handlung, nicht ihren ganzen Verlauf.\n\nDie beiden althochdeutschen Zwillinge der Wurzel entscheiden hier: ~anbrennen~ setzt das intransitive ~brinnan~ fort, es brennt also die Speise an und nicht der Koch sie — und ~nichts anbrennen lassen~ wurde zur Redensart für „keine Gelegenheit auslassen“.",
+      "en": "A separable compound of ~an-~ + ~brennen~:\n\n- ~brennen~: From MHG ~brennen~, a merger of two Old High German verbs: transitive ~brennan~ (\"to set on fire\"), from Proto-West Germanic *~brannijan~, and intransitive ~brinnan~, from *~brinnan~, of which *~brannijan~ was the causative. The intransitive is from PIE *~bʰrewh₁-~ (\"to boil, brew\"), making ~brennen~ a cousin of English ~brew~. A Rückumlaut verb: ~ich brenne~ but ~brannte~, ~gebrannt~. Cognate with English ~burn~, Dutch ~branden~, Icelandic ~brenna~.\n- ~an-~: From MHG ~an(e)-~, from OHG ~ana~, from Proto-West Germanic *~ana~, from Proto-Germanic *~ana~ (\"on, at\"), from PIE *~h₂en~ (\"on, onto\"). Cognate with English ~on~, Dutch ~aan~, Gothic ~ana~, and Greek ~aná~ (\"up, throughout\"). The prefix is inchoative: it marks the beginning of an action rather than its whole course.\n\nThe root's two Old High German twins settle the argument structure: ~anbrennen~ continues the intransitive ~brinnan~, so it is the food that starts to burn, not the cook who burns it — and ~nichts anbrennen lassen~ (\"to let nothing burn\") became an idiom for letting no opportunity slip."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Trage nur viel Holz her, zünde das Feuer an, daß das Fleisch gar werde, und würze es wohl, und die Knochenstücke sollen anbrennen.",
+        "source": "Luther — Bibel"
+      },
+      "en": {
+        "sentence": "Just bring plenty of wood, light the fire so the meat is cooked through, and season it well, and let the pieces of bone char.",
+        "source": "Luther — Bibel"
+      }
+    },
+    "notes": "Candidate 0 rejected: mis-split, opens mid-dialogue with stray leading dashes."
+  },
+  "andauern": {
+    "etymology": {
+      "de": "Trennbare Zusammensetzung aus ~an-~ + ~dauern~:\n\n- ~dauern~: Zwei getrennte Verben unter einer Schreibung. „andauern, fortbestehen“: aus Mhd. ~dūren~, entlehnt aus Mittelniederdeutsch ~dūren~, aus Lateinisch ~dūrō~, einem Denominativum von ~dūrus~ („hart, beständig“), aus Protoitalisch *~dūros~, aus PIE *~dweh₂-~ („lang, fern“); verwandt mit Niederländisch ~duren~, Englisch ~dure~. „Mitleid erregen“ (~er dauert mich~): aus Mhd. ~tūren~, einer Ablautvariante von ~tiure~ („lieb, teuer“), dem Vorfahren von ~teuer~ — somit dessen Dublette.\n- ~an-~: Aus Mhd. ~an(e)-~, aus Ahd. ~ana~, aus Proto-Westgermanisch *~ana~, aus Urgermanisch *~ana~ („auf, an“), aus PIE *~h₂en~ („auf, hinauf“). Verwandt mit Englisch ~on~, Niederländisch ~aan~, Gotisch ~ana~ und Griechisch ~aná~ („hinauf, hindurch“).\n\nDie Wurzel ist hier der ~dūrus~-Zwilling „andauern, fortbestehen“, nicht der ~teuer~-Zwilling „Mitleid erregen“ — die Bedeutung der Lesart entscheidet, welches der beiden Homographen fortgesetzt wird. Das ~an-~ ist hier durativ, nicht inchoativ: Es hält die Handlung in Gang, wie das Englische dasselbe Partikel in ~carry on~ bewahrt.",
+      "en": "A separable compound of ~an-~ + ~dauern~:\n\n- ~dauern~: Two separate verbs under one spelling. \"To last, endure\": from MHG ~dūren~, borrowed from Middle Low German ~dūren~, from Latin ~dūrō~, a denominative of ~dūrus~ (\"hard, lasting\"), from Proto-Italic *~dūros~, from PIE *~dweh₂-~ (\"long, far\"); cognate with Dutch ~duren~, English ~dure~. \"To cause pity\" (~er dauert mich~): from MHG ~tūren~, an ablaut variant of ~tiure~ (\"dear, costly\"), ancestor of ~teuer~ — thus a doublet of ~teuer~.\n- ~an-~: From MHG ~an(e)-~, from OHG ~ana~, from Proto-West Germanic *~ana~, from Proto-Germanic *~ana~ (\"on, at\"), from PIE *~h₂en~ (\"on, onto\"). Cognate with English ~on~, Dutch ~aan~, Gothic ~ana~, and Greek ~aná~ (\"up, throughout\").\n\nThe root here is the ~dūrus~ twin, \"to last, endure\", not the ~teuer~ twin that means \"to cause pity\" — the reading's meaning settles which of the two homographs the compound continues. The ~an-~ is durative rather than inchoative: it keeps the action going, much as English keeps the same particle in \"carry on\"."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Der russische Angriffskrieg Russlands auf die Ukraine dauert bereits über drei Jahre an.",
+        "source": "Bundestag — Plenarprotokoll 20/214"
+      },
+      "en": {
+        "sentence": "Russia's war of aggression against Ukraine has already been going on for more than three years.",
+        "source": "Bundestag — Plenarprotokoll 20/214"
+      }
+    },
+    "notes": "No listed ~an-~ sense covers the durative use, so the bullet gives the chain only and the closer states the contribution. Candidates 0 and 1 rejected: an unresolvable ~Sie~ and an adverbial ~andauernd~."
+  },
+  "andenken": {
+    "etymology": {
+      "de": "Trennbare Zusammensetzung aus ~an-~ + ~denken~:\n\n- ~denken~: Aus Mhd. ~denken~, aus Ahd. ~denken~, aus Proto-Westgermanisch *~þankijan~, aus Urgermanisch *~þankijaną~, aus PIE *~teng-~ („denken, fühlen“). Ein Verb mit gemischter Konjugation aus der Rückumlaut-Gruppe: ~dachte~ verbindet den Vokalwechsel ~e~ > ~a~ mit schwachem Dentalsuffix und ~k~ > ~ch~. Verwandt mit Englisch ~think~, Niederländisch ~denken~, Isländisch ~þekkja~.\n- ~an-~: Aus Mhd. ~an(e)-~, aus Ahd. ~ana~, aus Proto-Westgermanisch *~ana~, aus Urgermanisch *~ana~ („auf, an“), aus PIE *~h₂en~ („auf, hinauf“). Verwandt mit Englisch ~on~, Niederländisch ~aan~, Gotisch ~ana~ und Griechisch ~aná~ („hinauf, hindurch“). Das Präfix bezeichnet eine teilweise ausgeführte Handlung — etwas ein wenig tun, nicht ganz.\n\nDas heutige Deutsch kennt das Verb fast nur als Partizip der Amtssprache: Was ~angedacht~ ist, ist eben angedacht und nicht durchdacht — genau der Teilaspekt, den das Präfix beisteuert.",
+      "en": "A separable compound of ~an-~ + ~denken~:\n\n- ~denken~: From MHG ~denken~, from OHG ~denken~, from Proto-West Germanic *~þankijan~, from Proto-Germanic *~þankijaną~, from PIE *~teng-~ (\"to think, feel\"). A mixed-conjugation verb of the Rückumlaut cohort: ~dachte~ pairs the vowel change ~e~ > ~a~ with a weak dental suffix and ~k~ > ~ch~. Cognate with English ~think~, Dutch ~denken~, Icelandic ~þekkja~.\n- ~an-~: From MHG ~an(e)-~, from OHG ~ana~, from Proto-West Germanic *~ana~, from Proto-Germanic *~ana~ (\"on, at\"), from PIE *~h₂en~ (\"on, onto\"). Cognate with English ~on~, Dutch ~aan~, Gothic ~ana~, and Greek ~aná~ (\"up, throughout\"). The prefix marks a partial action — doing something a little, not all the way.\n\nModern German uses the verb almost only as a participle of official register: something ~angedacht~ has been thought at but not thought through, which is exactly the partial sense the prefix contributes."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Der Solidaritätszuschlag ist eine Abgabe, die zur Finanzierung einheitsbedingter Kosten angedacht war.",
+        "source": "Bundestag — Plenarprotokoll 20/207"
+      },
+      "en": {
+        "sentence": "The solidarity surcharge is a levy that was conceived to finance the costs of reunification.",
+        "source": "Bundestag — Plenarprotokoll 20/207"
+      }
+    },
+    "notes": null
+  },
+  "andeuten": {
+    "etymology": {
+      "de": "Trennbare Zusammensetzung aus ~an-~ + ~deuten~:\n\n- ~deuten~: Aus Mhd. ~diuten~, aus Ahd. ~diuten~, aus Proto-Westgermanisch *~þiudijan~, aus Urgermanisch *~þiudijaną~ („auslegen; hinweisen“), zu *~þeudō~ („Volk“), aus PIE *~tewtéh₂~ („Volk“) — ursprünglich „dem Volk verständlich machen“, dasselbe Wort, das ~deutsch~ ergibt. Verwandt mit Niederländisch ~duiden~, Isländisch ~þýða~, Schwedisch ~tyda~.\n- ~an-~: Aus Mhd. ~an(e)-~, aus Ahd. ~ana~, aus Proto-Westgermanisch *~ana~, aus Urgermanisch *~ana~ („auf, an“), aus PIE *~h₂en~ („auf, hinauf“). Verwandt mit Englisch ~on~, Niederländisch ~aan~, Gotisch ~ana~ und Griechisch ~aná~ („hinauf, hindurch“). Das Präfix bezeichnet eine teilweise ausgeführte Handlung — etwas ein wenig tun, nicht ganz.\n\nDie Wurzel bedeutete einst, etwas dem Volk verständlich zu machen — dasselbe Wort, das ~deutsch~ ergibt —, und das Präfix bricht auf halbem Wege ab: ~andeuten~ heißt, etwas gerade so verständlich zu machen, dass es aufgefangen werden kann, und nicht mehr.",
+      "en": "A separable compound of ~an-~ + ~deuten~:\n\n- ~deuten~: From MHG ~diuten~, from OHG ~diuten~, from Proto-West Germanic *~þiudijan~, from Proto-Germanic *~þiudijaną~ (\"to interpret; to point out\"), from *~þeudō~ (\"people\"), from PIE *~tewtéh₂~ (\"people\") — originally \"to make intelligible to the people,\" the same word that gives ~deutsch~. Cognate with Dutch ~duiden~, Icelandic ~þýða~, Swedish ~tyda~.\n- ~an-~: From MHG ~an(e)-~, from OHG ~ana~, from Proto-West Germanic *~ana~, from Proto-Germanic *~ana~ (\"on, at\"), from PIE *~h₂en~ (\"on, onto\"). Cognate with English ~on~, Dutch ~aan~, Gothic ~ana~, and Greek ~aná~ (\"up, throughout\"). The prefix marks a partial action — doing something a little, not all the way.\n\nThe root once meant making a thing intelligible to the people — the same word that gives ~deutsch~ — and the prefix stops it halfway: to ~andeuten~ is to make something just intelligible enough to be caught, and no more."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Wer mit den Augen winkt, denkt nichts Gutes; und wer mit den Lippen andeutet, vollbringt Böses.",
+        "source": "Luther — Bibel"
+      },
+      "en": {
+        "sentence": "He who winks with his eyes intends no good, and he who hints with his lips brings evil to pass.",
+        "source": "Luther — Bibel"
+      }
+    },
+    "notes": null
+  },
+  "andienen": {
+    "etymology": {
+      "de": "Trennbare Zusammensetzung aus ~an-~ + ~dienen~:\n\n- ~dienen~: Aus Mhd. ~dienen~, aus Ahd. ~dionōn~, aus Urgermanisch *~þewanōną~ („dienen“), einem Denominativum von *~þewaz~ („Diener, Knecht“), dessen weitere Herkunft unsicher ist — vielleicht PIE *~tekʷ-~ („laufen“), der Diener als „einer, der Botengänge läuft“. Verwandt mit Englisch ~thane~ (über das Substantiv), Niederländisch ~dienen~, Dänisch ~tjene~.\n- ~an-~: Aus Mhd. ~an(e)-~, aus Ahd. ~ana~, aus Proto-Westgermanisch *~ana~, aus Urgermanisch *~ana~ („auf, an“), aus PIE *~h₂en~ („auf, hinauf“). Verwandt mit Englisch ~on~, Niederländisch ~aan~, Gotisch ~ana~ und Griechisch ~aná~ („hinauf, hindurch“). Das Präfix richtet die Handlung auf einen Adressaten — jemanden ansprechen, ihm etwas darbieten oder ankündigen.\n\nDie Zusammensetzung bewahrt die Dienerhaltung der Wurzel: ~andienen~ heißt, jemandem etwas als Dienst darzubieten, und im Handels- und Versicherungsdeutsch ist die ~Andienung~ das förmliche Anbieten einer Ware. Umgangssprachlich ist aus dem Darbieten ein Aufdrängen geworden.",
+      "en": "A separable compound of ~an-~ + ~dienen~:\n\n- ~dienen~: From MHG ~dienen~, from OHG ~dionōn~, from Proto-Germanic *~þewanōną~ (\"to serve\"), a denominative of *~þewaz~ (\"servant, slave\"), of uncertain further origin — perhaps PIE *~tekʷ-~ (\"to run\"), the servant as \"one who runs errands.\" Cognate with English ~thane~ (via the noun), Dutch ~dienen~, Danish ~tjene~.\n- ~an-~: From MHG ~an(e)-~, from OHG ~ana~, from Proto-West Germanic *~ana~, from Proto-Germanic *~ana~ (\"on, at\"), from PIE *~h₂en~ (\"on, onto\"). Cognate with English ~on~, Dutch ~aan~, Gothic ~ana~, and Greek ~aná~ (\"up, throughout\"). The prefix directs the action at an addressee — speaking, presenting, or announcing to someone.\n\nThe compound keeps the servant's posture of the root: to ~andienen~ is to present something to someone as a service, and in commercial and insurance German the noun ~Andienung~ is the formal tender of goods. Colloquially the offering has soured into pressing something on a person who did not ask for it."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "andrehen": {
+    "etymology": {
+      "de": "Trennbare Zusammensetzung aus ~an-~ + ~drehen~:\n\n- ~drehen~: Aus Mhd. ~dræjen~, aus Ahd. ~drāen~, aus Proto-Westgermanisch *~þrāan~, aus Urgermanisch *~þrēaną~ („drehen, wenden“), aus PIE *~terh₁-~ („reiben, durch Drehen reiben, wenden“). Verwandt mit Englisch ~throw~ — ein echter Verwandter: Altenglisch ~þrāwan~ hieß „drehen“, ein Sinn, den „to throw a pot“ bewahrt — sowie Englisch ~thread~, Niederländisch ~draaien~.\n- ~an-~: Aus Mhd. ~an(e)-~, aus Ahd. ~ana~, aus Proto-Westgermanisch *~ana~, aus Urgermanisch *~ana~ („auf, an“), aus PIE *~h₂en~ („auf, hinauf“). Verwandt mit Englisch ~on~, Niederländisch ~aan~, Gotisch ~ana~ und Griechisch ~aná~ („hinauf, hindurch“). Das Präfix ist inchoativ: Es bezeichnet den Beginn einer Handlung, nicht ihren ganzen Verlauf.\n\nDie wörtliche Geste ist ein Knopf, der gedreht wird, bis der Strom fließt. Die Redewendung ~jemandem etwas andrehen~ nutzt ein anderes ~an-~, das auf eine Person gerichtete, und aus dem Drehen wird ein Betrug.",
+      "en": "A separable compound of ~an-~ + ~drehen~:\n\n- ~drehen~: From MHG ~dræjen~, from OHG ~drāen~, from Proto-West Germanic *~þrāan~, from Proto-Germanic *~þrēaną~ (\"to twist, turn\"), from PIE *~terh₁-~ (\"to rub, rub by twisting, turn\"). Cognate with English ~throw~ — a true cognate: Old English ~þrāwan~ meant \"to twist,\" a sense that \"throw a pot\" still keeps — plus English ~thread~, Dutch ~draaien~.\n- ~an-~: From MHG ~an(e)-~, from OHG ~ana~, from Proto-West Germanic *~ana~, from Proto-Germanic *~ana~ (\"on, at\"), from PIE *~h₂en~ (\"on, onto\"). Cognate with English ~on~, Dutch ~aan~, Gothic ~ana~, and Greek ~aná~ (\"up, throughout\"). The prefix is inchoative: it marks the beginning of an action rather than its whole course.\n\nThe literal gesture is a knob turned until the current flows. The idiom ~jemandem etwas andrehen~ (\"to palm something off on someone\") draws on a different ~an-~, the one aimed at a person, and the turning becomes a swindle."
+    },
+    "sentence": null,
+    "notes": "Sole candidate (Kafka) runs 53 words, past the 45-word ceiling."
+  },
+  "androhen": {
+    "etymology": {
+      "de": "Trennbare Zusammensetzung aus ~an-~ + ~drohen~:\n\n- ~drohen~: Aus Mhd. ~drōn~, ~drōwen~, aus Ahd. ~drouwen~, aus Proto-Westgermanisch *~þrauwijan~, aus Urgermanisch *~þraujaną~ („drohen“). Die archaische Variante ~dräuen~, mit Umlaut durch das ~j~, bewahrt das ältere Vokalmuster. Verwandt mit Altenglisch ~þrēagan~ („schelten, drohen“), Altsächsisch ~thrōian~, Mittelniederländisch ~drouwen~.\n- ~an-~: Aus Mhd. ~an(e)-~, aus Ahd. ~ana~, aus Proto-Westgermanisch *~ana~, aus Urgermanisch *~ana~ („auf, an“), aus PIE *~h₂en~ („auf, hinauf“). Verwandt mit Englisch ~on~, Niederländisch ~aan~, Gotisch ~ana~ und Griechisch ~aná~ („hinauf, hindurch“). Das Präfix richtet die Handlung auf einen Adressaten — jemanden ansprechen, ihm etwas darbieten oder ankündigen.\n\nBloßes ~drohen~ kann in der Luft hängen; ~androhen~ muss gerichtet sein und verlangt einen Dativ für den Bedrohten. Darum ist die Zusammensetzung das Wort der Rechtssprache: Ein Gericht droht eine Strafe an, ehe es sie verhängt.",
+      "en": "A separable compound of ~an-~ + ~drohen~:\n\n- ~drohen~: From MHG ~drōn~, ~drōwen~, from OHG ~drouwen~, from Proto-West Germanic *~þrauwijan~, from Proto-Germanic *~þraujaną~ (\"to threaten\"). The archaic variant ~dräuen~, with umlaut from the ~j~, preserves the older vowel pattern. Cognate with Old English ~þrēagan~ (\"to rebuke, threaten\"), Old Saxon ~thrōian~, Middle Dutch ~drouwen~.\n- ~an-~: From MHG ~an(e)-~, from OHG ~ana~, from Proto-West Germanic *~ana~, from Proto-Germanic *~ana~ (\"on, at\"), from PIE *~h₂en~ (\"on, onto\"). Cognate with English ~on~, Dutch ~aan~, Gothic ~ana~, and Greek ~aná~ (\"up, throughout\"). The prefix directs the action at an addressee — speaking, presenting, or announcing to someone.\n\nPlain ~drohen~ can hang in the air; ~androhen~ has to be aimed, and it takes a dative for the person threatened. That is why the compound belongs to legal register: a court ~droht~ a penalty ~an~ before it imposes one."
+    },
+    "sentence": null,
+    "notes": "Sole candidate is a polemical Bundestag passage that names a living official and recommends threatening critics with beatings — a genuine verbal use, but unsuitable content for a learner app. Flagged for Josh rather than shipped."
+  },
+  "andrücken": {
+    "etymology": {
+      "de": "Trennbare Zusammensetzung aus ~an-~ + ~drücken~:\n\n- ~drücken~: Aus Mhd. ~drücken~, aus Ahd. ~drucchen~, aus Proto-Westgermanisch *~þrukkijan~, aus Urgermanisch *~þrukkijaną~, aus PIE *~trewk-~ („auf etwas pressen und brechen“). ~drücken~ („pressen“) und ~drucken~ („drucken“) sind eine Dublette aus demselben althochdeutschen Verb. Verwandt mit Niederländisch ~drukken~, Altenglisch ~þryċċan~, Walisisch ~trychu~, Litauisch ~trū́kti~.\n- ~an-~: Aus Mhd. ~an(e)-~, aus Ahd. ~ana~, aus Proto-Westgermanisch *~ana~, aus Urgermanisch *~ana~ („auf, an“), aus PIE *~h₂en~ („auf, hinauf“). Verwandt mit Englisch ~on~, Niederländisch ~aan~, Gotisch ~ana~ und Griechisch ~aná~ („hinauf, hindurch“). Das Präfix drückt Kontakt oder Befestigung aus — etwas an etwas anderem festmachen.\n\nDas Präfix liefert die Fläche, gegen die gedrückt wird: ~andrücken~ heißt drücken, bis etwas hält, während ~eindrücken~ drückt, bis es eine Delle gibt, und ~zerdrücken~, bis es nachgibt.",
+      "en": "A separable compound of ~an-~ + ~drücken~:\n\n- ~drücken~: From MHG ~drücken~, from OHG ~drucchen~, from Proto-West Germanic *~þrukkijan~, from Proto-Germanic *~þrukkijaną~, from PIE *~trewk-~ (\"to press on and break\"). ~drücken~ (\"to press\") and ~drucken~ (\"to print\") are a doublet from the same Old High German verb. Cognate with Dutch ~drukken~, Old English ~þryċċan~, Welsh ~trychu~, Lithuanian ~trū́kti~.\n- ~an-~: From MHG ~an(e)-~, from OHG ~ana~, from Proto-West Germanic *~ana~, from Proto-Germanic *~ana~ (\"on, at\"), from PIE *~h₂en~ (\"on, onto\"). Cognate with English ~on~, Dutch ~aan~, Gothic ~ana~, and Greek ~aná~ (\"up, throughout\"). The prefix conveys contact or attachment — fastening one thing onto another.\n\nThe prefix supplies the surface the pressing is against: to ~andrücken~ is to press until the thing holds, where ~eindrücken~ presses until it dents and ~zerdrücken~ until it gives way."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "aneignen": {
+    "etymology": {
+      "de": "Trennbare Zusammensetzung aus ~an-~ + ~eignen~:\n\n- ~eignen~: Aus Mhd. ~eigenen~, aus Ahd. ~eiganen~, aus Urgermanisch *~aiginōną~, einem Denominativum zu *~aiganaz~ („besessen, eigen“), dem Partizip Perfekt von *~aiganą~ („besitzen“), aus PIE *~h₂eh₂óyḱe~, aus *~h₂eyḱ-~ („Fähigkeit, Besitz“). Ursprünglich „sich zu eigen machen“. Verwandt mit Englisch ~own~, Niederländisch ~eigen~, Schwedisch ~ägna~.\n- ~an-~: Aus Mhd. ~an(e)-~, aus Ahd. ~ana~, aus Proto-Westgermanisch *~ana~, aus Urgermanisch *~ana~ („auf, an“), aus PIE *~h₂en~ („auf, hinauf“). Verwandt mit Englisch ~on~, Niederländisch ~aan~, Gotisch ~ana~ und Griechisch ~aná~ („hinauf, hindurch“). Das Präfix drückt Kontakt oder Befestigung aus — etwas an etwas anderem festmachen.\n\nDas Verb ist stets reflexiv — ~sich etwas aneignen~ —, und im Reflexivum wirkt das Präfix: Die Sache wird an einen selbst geheftet. Da die Wurzel schon „sich zu eigen machen“ bedeutet, aus demselben germanischen Wort wie englisch ~own~, verstärkt die Zusammensetzung, statt Neues zu sagen.",
+      "en": "A separable compound of ~an-~ + ~eignen~:\n\n- ~eignen~: From MHG ~eigenen~, from OHG ~eiganen~, from Proto-Germanic *~aiginōną~, a denominative from *~aiganaz~ (\"owned, one's own\"), the past participle of *~aiganą~ (\"to possess\"), from PIE *~h₂eh₂óyḱe~, from *~h₂eyḱ-~ (\"ability, possession\"). Originally \"to make one's own.\" Cognate with English ~own~, Dutch ~eigen~, Swedish ~ägna~.\n- ~an-~: From MHG ~an(e)-~, from OHG ~ana~, from Proto-West Germanic *~ana~, from Proto-Germanic *~ana~ (\"on, at\"), from PIE *~h₂en~ (\"on, onto\"). Cognate with English ~on~, Dutch ~aan~, Gothic ~ana~, and Greek ~aná~ (\"up, throughout\"). The prefix conveys contact or attachment — fastening one thing onto another.\n\nThe verb is always reflexive — ~sich etwas aneignen~ — and the reflexive is where the prefix lands: the thing is fastened onto oneself. Since the root already means \"to make one's own\", from the same Germanic word as English ~own~, the compound intensifies rather than adds."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Wie sich doch der Direktor-Stellvertreter alles anzueignen verstand, was K. jetzt notgedrungen aufgeben mußte!",
+        "source": "Kafka — Der Proceß"
+      },
+      "en": {
+        "sentence": "How well the deputy manager knew how to appropriate everything that K. was now forced to give up!",
+        "source": "Kafka — Der Proceß"
+      }
+    },
+    "notes": null
+  },
+  "aneinanderhalten": {
+    "etymology": {
+      "de": "Trennbare Zusammensetzung aus ~aneinander-~ + ~halten~:\n\n- ~halten~: Aus Mhd. ~halten~, aus Ahd. ~haltan~, aus Proto-Westgermanisch *~haldan~, aus Urgermanisch *~haldaną~. Verwandt mit Englisch ~hold~, Niederländisch ~houden~, Niederdeutsch ~holden~, Dänisch ~holde~, Isländisch ~halda~, Schwedisch ~hålla~.\n- ~aneinander-~: Durchsichtig ~an~ („an, gegen“) + ~einander~, das reziproke Pronomen aus Mhd. ~ein ander~. Die Zusammensetzung ist reziprok, nicht deiktisch: Sie besagt, dass die Beteiligten aufeinander einwirken, wie in ~aneinandergeraten~ oder ~aneinanderreihen~. Siehe die Einträge zu ~an~ und zu der Parallelbildung ~durcheinander~. Das ~aneinander-~ eines an das andere — reziproker Kontakt.\n\nDas reziproke Element leistet, was kein einfaches Präfix könnte: Zwei Dinge werden gegeneinandergehalten, und es geht um den Vergleich, nicht um das Halten.",
+      "en": "A separable compound of ~aneinander-~ + ~halten~:\n\n- ~halten~: From MHG ~halten~, from OHG ~haltan~, from Proto-West Germanic *~haldan~, from Proto-Germanic *~haldaną~. Cognate with English ~hold~, Dutch ~houden~, Low German ~holden~, Danish ~holde~, Icelandic ~halda~, Swedish ~hålla~.\n- ~aneinander-~: Transparently ~an~ (\"at, on, against\") + ~einander~ (\"one another\"), the reciprocal pronoun from MHG ~ein ander~. The compound is reciprocal rather than deictic: it says that the participants act on each other, as in ~aneinandergeraten~ (\"to come to blows\") or ~aneinanderreihen~ (\"to string together\"). See the entries for ~an~ and for the parallel formation ~durcheinander~. Here ~aneinander-~ one against or onto another — reciprocal contact.\n\nThe reciprocal element does work no single prefix could: two things are held up against each other, and the point is the comparison rather than the holding."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "aneinanderschlagen": {
+    "etymology": {
+      "de": "Trennbare Zusammensetzung aus ~aneinander-~ + ~schlagen~:\n\n- ~schlagen~: Aus Mhd. ~slahen~, aus Ahd. ~slahan~, aus Proto-Westgermanisch *~slahan~, aus Urgermanisch *~slahaną~, aus PIE *~slak-~ („schlagen, treffen, werfen“), offenbar lautmalerischen Ursprungs. Das moderne ~-g-~ ist eine sekundäre Einfügung durch Analogie zu ~schlug~ und ~Schlag~ (Grammatischer Wechsel). Verwandt mit Englisch ~slay~ und ~slog~, Altenglisch ~slēan~, Niederländisch ~slaan~.\n- ~aneinander-~: Durchsichtig ~an~ („an, gegen“) + ~einander~, das reziproke Pronomen aus Mhd. ~ein ander~. Die Zusammensetzung ist reziprok, nicht deiktisch: Sie besagt, dass die Beteiligten aufeinander einwirken, wie in ~aneinandergeraten~ oder ~aneinanderreihen~. Siehe die Einträge zu ~an~ und zu der Parallelbildung ~durcheinander~. Das ~aneinander-~ eines an das andere — reziproker Kontakt.\n\nWeil ~aneinander~ reziprok ist, werden beide Gegenstände geschlagen und keiner ist das Ziel: Gläser schlägt man beim Anstoßen aneinander, und der lautmalerische Vorfahr *~slak-~ ist im Ergebnis noch zu hören.",
+      "en": "A separable compound of ~aneinander-~ + ~schlagen~:\n\n- ~schlagen~: From MHG ~slahen~, from OHG ~slahan~, from Proto-West Germanic *~slahan~, from Proto-Germanic *~slahaną~, from PIE *~slak-~ (\"to hit, strike, throw\"), apparently onomatopoeic. The modern ~-g-~ is a secondary insertion by analogy with ~schlug~ and the noun ~Schlag~ (Grammatischer Wechsel). Cognate with English ~slay~ and ~slog~, Old English ~slēan~, Dutch ~slaan~.\n- ~aneinander-~: Transparently ~an~ (\"at, on, against\") + ~einander~ (\"one another\"), the reciprocal pronoun from MHG ~ein ander~. The compound is reciprocal rather than deictic: it says that the participants act on each other, as in ~aneinandergeraten~ (\"to come to blows\") or ~aneinanderreihen~ (\"to string together\"). See the entries for ~an~ and for the parallel formation ~durcheinander~. Here ~aneinander-~ one against or onto another — reciprocal contact.\n\nBecause ~aneinander~ is reciprocal, both objects are struck and neither is the target: glasses are knocked ~aneinander~ in a toast, and the onomatopoeic ancestor *~slak-~ is still audible in the result."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "anerziehen": {
+    "etymology": {
+      "de": "Doppelte Zusammensetzung: trennbares ~an-~ vor untrennbarem ~erziehen~, das selbst ~er-~ + ~ziehen~ ist:\n\n- ~ziehen~: Aus Mhd. ~ziehen~, aus Ahd. ~ziohan~, aus proto-westgermanisch *~teuhan~, aus urgermanisch *~teuhaną~, aus PIE *~dewk-~ („ziehen, führen“). Ein starkes Verb der Klasse II. Verwandt mit gotisch ~tiuhan~, altenglisch ~tēon~, altnordisch ~toga~, westfriesisch ~tsjen~ und englisch ~tie~.\n- ~er-~: Aus Mhd. ~er-~, aus Ahd. ~ir-~, ~ar-~, aus Proto-Westgermanisch *~uʀ-~, aus Urgermanisch *~uz-~ („heraus, auf“), aus PIE *~ud~ („aufwärts, hinaus, weg“). Dublette des betonten Präfixes ~ur-~. Das ~er-~ bewahrt den älteren räumlichen Sinn des Präfixes von Aufwärts- oder Herausbewegung.\n- ~an-~: Aus Mhd. ~an(e)-~, aus Ahd. ~ana~, aus Proto-Westgermanisch *~ana~, aus Urgermanisch *~ana~ („auf, an“), aus PIE *~h₂en~ („auf, hinauf“). Verwandt mit Englisch ~on~, Niederländisch ~aan~, Gotisch ~ana~ und Griechisch ~aná~ („hinauf, hindurch“). Das Präfix drückt Kontakt oder Befestigung aus — etwas an etwas anderem festmachen.\n\n~erziehen~ ist ein Morphem für Morphem gebauter Zwilling des lateinischen ~ēdūcere~: ~er-~ aus *~uz-~ („heraus, auf“) vor einer Wurzel aus PIE *~dewk-~ — genau ~ex~ + ~dūcere~, dessen Wurzel dasselbe *~dewk-~ ist. Das äußere ~an-~ heftet das Ergebnis an eine Person: Was ~anerzogen~ ist, wurde in jemandem hochgezogen, bis es haftet — ein Zug, der gelehrt und nicht angeboren ist.",
+      "en": "A double compound: separable ~an-~ on inseparable ~erziehen~, itself ~er-~ + ~ziehen~:\n\n- ~ziehen~: From MHG ~ziehen~, from OHG ~ziohan~, from Proto-West Germanic *~teuhan~, from Proto-Germanic *~teuhaną~, from PIE *~dewk-~ (\"to pull, lead\"). A class II strong verb. Cognate with Gothic ~tiuhan~, Old English ~tēon~, Old Norse ~toga~, West Frisian ~tsjen~, and English ~tie~.\n- ~er-~: From MHG ~er-~, from OHG ~ir-~, ~ar-~, from Proto-West Germanic *~uʀ-~, from Proto-Germanic *~uz-~ (\"out, up\"), from PIE *~ud~ (\"up, out, away\"). Doublet of the stressed prefix ~ur-~. Here ~er-~ preserves the prefix's older spatial sense of upward or outward motion.\n- ~an-~: From MHG ~an(e)-~, from OHG ~ana~, from Proto-West Germanic *~ana~, from Proto-Germanic *~ana~ (\"on, at\"), from PIE *~h₂en~ (\"on, onto\"). Cognate with English ~on~, Dutch ~aan~, Gothic ~ana~, and Greek ~aná~ (\"up, throughout\"). The prefix conveys contact or attachment — fastening one thing onto another.\n\n~erziehen~ is a morpheme-for-morpheme twin of Latin ~ēdūcere~: ~er-~ from *~uz-~ (\"out, up\") over a root from PIE *~dewk-~ — precisely ~ex~ + ~dūcere~, whose root is that same *~dewk-~. The outer ~an-~ then fastens the result onto a person, so what is ~anerzogen~ has been drawn up in someone until it sticks — a trait taught rather than inborn."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "anfahren": {
+    "etymology": {
+      "de": "Trennbare Zusammensetzung aus ~an-~ + ~fahren~:\n\n- ~fahren~: Aus Mhd. ~varn~, aus Ahd. ~faran~, aus Proto-Westgermanisch *~faran~, aus Urgermanisch *~faraną~, aus PIE *~per-~ („Gehen, Durchgang“). Ein starkes Verb der Klasse VI, dessen alter Sinn „gehen, reisen“ sich auf Fahrzeuge verengte; das Kausativum ~führen~ (*~fōrijaną~) ist das transitive Gegenstück. Verwandt mit Englisch ~fare~, Niederländisch ~varen~, Dänisch ~fare~.\n- ~an-~: Aus Mhd. ~an(e)-~, aus Ahd. ~ana~, aus Proto-Westgermanisch *~ana~, aus Urgermanisch *~ana~ („auf, an“), aus PIE *~h₂en~ („auf, hinauf“). Verwandt mit Englisch ~on~, Niederländisch ~aan~, Gotisch ~ana~ und Griechisch ~aná~ („hinauf, hindurch“). Das Präfix ist inchoativ: Es bezeichnet den Beginn einer Handlung, nicht ihren ganzen Verlauf.\n\nEine Zusammensetzung trägt drei Fahrten: Ein Zug fährt an, wenn er sich in Bewegung setzt, eine Kutsche fährt am Tor an, wenn sie ankommt, und wer jemanden anfährt, herrscht ihn an — das feindliche ~an-~ von ~anfallen~, in ein Verb der Fortbewegung entlehnt.",
+      "en": "A separable compound of ~an-~ + ~fahren~:\n\n- ~fahren~: From MHG ~varn~, from OHG ~faran~, from Proto-West Germanic *~faran~, from Proto-Germanic *~faraną~, from PIE *~per-~ (\"going, passage\"). A class VI strong verb whose old sense \"to go, travel\" narrowed to vehicular travel; the causative ~führen~ (*~fōrijaną~) is its transitive counterpart. Cognate with English ~fare~, Dutch ~varen~, Danish ~fare~.\n- ~an-~: From MHG ~an(e)-~, from OHG ~ana~, from Proto-West Germanic *~ana~, from Proto-Germanic *~ana~ (\"on, at\"), from PIE *~h₂en~ (\"on, onto\"). Cognate with English ~on~, Dutch ~aan~, Gothic ~ana~, and Greek ~aná~ (\"up, throughout\"). The prefix is inchoative: it marks the beginning of an action rather than its whole course.\n\nOne compound carries three journeys: a train ~fährt an~ when it starts moving, a carriage ~fährt~ at the gate ~an~ when it arrives, and a person who ~fährt~ another ~an~ snaps at them — the hostile ~an-~ of ~anfallen~ borrowed into a verb of travel."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Die Sonne war noch eine Viertelstunde vom Gebirge, als wir vor dem Hoftore anfuhren.",
+        "source": "Goethe — Die Leiden des jungen Werthers"
+      },
+      "en": {
+        "sentence": "The sun was still a quarter of an hour above the mountains when we drove up to the courtyard gate.",
+        "source": "Goethe — Die Leiden des jungen Werthers"
+      }
+    },
+    "notes": "Quoted use is the arrival sense (\"pulled up at the gate\"), not the \"start moving\" reading. Candidates 0 and 3 are ~anführen~, a different verb; candidate 1 is a line-broken fragment."
+  },
+  "anfallen": {
+    "etymology": {
+      "de": "Trennbare Zusammensetzung aus ~an-~ + ~fallen~:\n\n- ~fallen~: Aus Mhd. ~vallen~, aus Ahd. ~fallan~, aus Proto-Westgermanisch *~fallan~, aus Urgermanisch *~fallaną~; der PIE-Ursprung ist unsicher, vorgeschlagen wird *~h₂peh₃lH-~ („wegfallen, zerstört werden“). Ein starkes Verb der Klasse VII, urgermanisch mit redupliziertem Präteritum; das schwache Kausativum ~fällen~ (*~fallijaną~) zeigt den Umlaut als Spur. Verwandt mit Englisch ~fall~, Niederländisch ~vallen~, Dänisch ~falde~.\n- ~an-~: Aus Mhd. ~an(e)-~, aus Ahd. ~ana~, aus Proto-Westgermanisch *~ana~, aus Urgermanisch *~ana~ („auf, an“), aus PIE *~h₂en~ („auf, hinauf“). Verwandt mit Englisch ~on~, Niederländisch ~aan~, Gotisch ~ana~ und Griechisch ~aná~ („hinauf, hindurch“). Das Präfix drückt Annäherung und Ankunft aus — eine auf ein Ziel gerichtete Bewegung.\n\nDer feindliche Sinn ist der alte — ein Tier oder ein Anfall fällt jemanden an —, doch das heutige Amtsdeutsch hat ihn stillschweigend gezähmt: ~anfallende Kosten~ sind Kosten, die anfallen, ohne anzugreifen.",
+      "en": "A separable compound of ~an-~ + ~fallen~:\n\n- ~fallen~: From MHG ~vallen~, from OHG ~fallan~, from Proto-West Germanic *~fallan~, from Proto-Germanic *~fallaną~; the PIE origin is uncertain, one proposal being *~h₂peh₃lH-~ (\"to fall away, be destroyed\"). A class VII strong verb, reduplicating in the Proto-Germanic past; the weak causative ~fällen~ (*~fallijaną~) shows the umlaut as its trace. Cognate with English ~fall~, Dutch ~vallen~, Danish ~falde~.\n- ~an-~: From MHG ~an(e)-~, from OHG ~ana~, from Proto-West Germanic *~ana~, from Proto-Germanic *~ana~ (\"on, at\"), from PIE *~h₂en~ (\"on, onto\"). Cognate with English ~on~, Dutch ~aan~, Gothic ~ana~, and Greek ~aná~ (\"up, throughout\"). The prefix conveys approach and arrival — motion directed toward a destination.\n\nThe hostile sense is the old one — a beast or a fit ~fällt~ someone ~an~ — but modern bureaucratic German has quietly domesticated it: ~anfallende Kosten~ are costs that accrue, expenses that fall upon you without attacking."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Mit diesen Worten sprang Zarathustra auf, aber nicht wie ein Geängstigter, der nach Luft sucht, sondern eher wie ein Seher und Sänger, welchen der Geist anfällt.",
+        "source": "Nietzsche — Also sprach Zarathustra"
+      },
+      "en": {
+        "sentence": "With these words Zarathustra sprang up, not like a frightened man gasping for air, but rather like a seer and a singer whom the spirit seizes.",
+        "source": "Nietzsche — Also sprach Zarathustra"
+      }
+    },
+    "notes": null
+  },
+  "anfassen": {
+    "etymology": {
+      "de": "Trennbare Zusammensetzung aus ~an-~ + ~fassen~:\n\n- ~fassen~: Aus Mhd. ~vazzen~, aus Ahd. ~fazzōn~, aus Proto-Westgermanisch *~fatōn~, aus Urgermanisch *~fatōną~ („halten, ergreifen“), einem schwachen Verb der Klasse 2, aus PIE *~pod-néh₂-ti~, aus *~pod-~ („holen“). Das Deutsche bewahrte den Sinn des Greifens und Haltens, das Englische den des Holens. Verwandt mit Englisch ~fetch~; dasselbe Wort steckt im Substantiv ~Fass~.\n- ~an-~: Aus Mhd. ~an(e)-~, aus Ahd. ~ana~, aus Proto-Westgermanisch *~ana~, aus Urgermanisch *~ana~ („auf, an“), aus PIE *~h₂en~ („auf, hinauf“). Verwandt mit Englisch ~on~, Niederländisch ~aan~, Gotisch ~ana~ und Griechisch ~aná~ („hinauf, hindurch“). Das Präfix drückt Kontakt oder Befestigung aus — etwas an etwas anderem festmachen.\n\nDas Deutsche bewahrte den Greifsinn der Wurzel, wo das Englische den des Holens nahm, und so ist ~anfassen~ nichts als der mit der Hand hergestellte Kontakt — und ~mit anfassen~ ist derselbe Griff, zur Hilfe geworden.",
+      "en": "A separable compound of ~an-~ + ~fassen~:\n\n- ~fassen~: From MHG ~vazzen~, from OHG ~fazzōn~, from Proto-West Germanic *~fatōn~, from Proto-Germanic *~fatōną~ (\"to hold, seize\"), a weak class 2 verb, from PIE *~pod-néh₂-ti~, from *~pod-~ (\"to fetch\"). German kept the sense of grasping and holding, English that of going to retrieve. Cognate with English ~fetch~; the noun ~Fass~ (\"barrel\") shares the root.\n- ~an-~: From MHG ~an(e)-~, from OHG ~ana~, from Proto-West Germanic *~ana~, from Proto-Germanic *~ana~ (\"on, at\"), from PIE *~h₂en~ (\"on, onto\"). Cognate with English ~on~, Dutch ~aan~, Gothic ~ana~, and Greek ~aná~ (\"up, throughout\"). The prefix conveys contact or attachment — fastening one thing onto another.\n\nGerman kept the root's grasping sense where English took the fetching one, so ~anfassen~ is contact made with the hand and nothing more — and ~mit anfassen~ (\"to lend a hand\") is that same grip turned into help."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Jede Hand erschrickt, die ihn anfasst!",
+        "source": "Nietzsche — Jenseits von Gut und Böse"
+      },
+      "en": {
+        "sentence": "Every hand that touches him recoils in fright!",
+        "source": "Nietzsche — Jenseits von Gut und Böse"
+      }
+    },
+    "notes": "Candidate 0 rejected as a partisan insult aimed at a named party; candidate 1 is corrupt across a column gutter. The chosen sentence is six words, just under the preferred band."
+  },
+  "anfechten": {
+    "etymology": {
+      "de": "Trennbare Zusammensetzung aus ~an-~ + ~fechten~:\n\n- ~fechten~: Aus Mhd. ~vëhten~ („kämpfen“), aus Ahd. ~fëhtan~, aus Proto-Westgermanisch *~fehtan~, aus Urgermanisch *~fehtaną~, vielleicht aus PIE *~peḱ-~ („rupfen, kämmen“), doch unsicher. Ein starkes Verb der Klasse III (~fechten~, ~focht~, ~gefochten~); das ~o~ des Präteritums stammt vom alten Pluralstamm (Ahd. ~fuhtum~). Verwandt mit Englisch ~fight~, Niederländisch ~vechten~, Dänisch ~fægte~.\n- ~an-~: Aus Mhd. ~an(e)-~, aus Ahd. ~ana~, aus Proto-Westgermanisch *~ana~, aus Urgermanisch *~ana~ („auf, an“), aus PIE *~h₂en~ („auf, hinauf“). Verwandt mit Englisch ~on~, Niederländisch ~aan~, Gotisch ~ana~ und Griechisch ~aná~ („hinauf, hindurch“). Das Präfix drückt Annäherung und Ankunft aus — eine auf ein Ziel gerichtete Bewegung.\n\nDie Zusammensetzung begann als tatsächlicher Angriff und endete im Gerichtssaal: Ein Urteil ~anfechten~ heißt, es anzugreifen. Luthers ~Anfechtung~, die Prüfung, die eine Seele befällt, bewahrt den älteren Sinn, und die Wurzel ist englisch ~fight~.",
+      "en": "A separable compound of ~an-~ + ~fechten~:\n\n- ~fechten~: From MHG ~vëhten~ (\"to fight\"), from OHG ~fëhtan~, from Proto-West Germanic *~fehtan~, from Proto-Germanic *~fehtaną~, perhaps from PIE *~peḱ-~ (\"to pluck, comb\"), though not securely. A class III strong verb (~fechten~, ~focht~, ~gefochten~); the ~o~ of the Präteritum comes from the old plural stem (OHG ~fuhtum~). Cognate with English ~fight~, Dutch ~vechten~, Danish ~fægte~.\n- ~an-~: From MHG ~an(e)-~, from OHG ~ana~, from Proto-West Germanic *~ana~, from Proto-Germanic *~ana~ (\"on, at\"), from PIE *~h₂en~ (\"on, onto\"). Cognate with English ~on~, Dutch ~aan~, Gothic ~ana~, and Greek ~aná~ (\"up, throughout\"). The prefix conveys approach and arrival — motion directed toward a destination.\n\nThe compound began as literal assault and ended up in the courtroom: to ~anfechten~ a judgment is to challenge it. Luther's ~Anfechtung~, the trial that assails a soul, preserves the older sense, and the root is English ~fight~."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Täglich fechten sie meine Worte an; all ihre Gedanken sind, daß sie mir Übel tun.",
+        "source": "Luther — Bibel"
+      },
+      "en": {
+        "sentence": "Daily they assail my words; all their thoughts are of how to do me harm.",
+        "source": "Luther — Bibel"
+      }
+    },
+    "notes": "Candidate 0 rejected: truncated 17th-century legal fragment beginning mid-word."
+  },
+  "anfordern": {
+    "etymology": {
+      "de": "Trennbare Zusammensetzung aus ~an-~ + ~fordern~:\n\n- ~fordern~: Aus Mhd. ~vodern~, ~vordern~, aus Ahd. ~fordarōn~, aus Proto-Westgermanisch *~forþ(a)rōn~, aus Urgermanisch *~furþą~, aus PIE *~pŕ̩-to-~, zu *~per-~ („vorwärts, durch“) — „vorwärtstreiben“ wurde zu „einen Anspruch vorbringen“. Nicht zu verwechseln mit dem umgelauteten ~fördern~ derselben Wurzel. Verwandt mit Englisch ~forth~, ~forward~ und ~further~, Niederländisch ~vorderen~.\n- ~an-~: Aus Mhd. ~an(e)-~, aus Ahd. ~ana~, aus Proto-Westgermanisch *~ana~, aus Urgermanisch *~ana~ („auf, an“), aus PIE *~h₂en~ („auf, hinauf“). Verwandt mit Englisch ~on~, Niederländisch ~aan~, Gotisch ~ana~ und Griechisch ~aná~ („hinauf, hindurch“). Das Präfix richtet die Handlung auf einen Adressaten — jemanden ansprechen, ihm etwas darbieten oder ankündigen.\n\nDie Wurzel bedeutete schon „einen Anspruch vorbringen“; ~an-~ richtet den Anspruch an jemanden, weshalb die Zusammensetzung das Wort der Anforderungsformulare ist. Bemerkenswert: ~fordern~ und ~fördern~ stammen aus derselben Wurzel, und nur ein Umlaut trennt Fordern von Fördern.",
+      "en": "A separable compound of ~an-~ + ~fordern~:\n\n- ~fordern~: From MHG ~vodern~, ~vordern~, from OHG ~fordarōn~, from Proto-West Germanic *~forþ(a)rōn~, from Proto-Germanic *~furþą~, from PIE *~pŕ̥-to-~, from *~per-~ (\"forward, through\") — \"to push forward\" became \"to advance a claim.\" Not to be confused with umlauted ~fördern~ from the same root. Cognate with English ~forth~, ~forward~ and ~further~, Dutch ~vorderen~.\n- ~an-~: From MHG ~an(e)-~, from OHG ~ana~, from Proto-West Germanic *~ana~, from Proto-Germanic *~ana~ (\"on, at\"), from PIE *~h₂en~ (\"on, onto\"). Cognate with English ~on~, Dutch ~aan~, Gothic ~ana~, and Greek ~aná~ (\"up, throughout\"). The prefix directs the action at an addressee — speaking, presenting, or announcing to someone.\n\nThe root already meant advancing a claim; ~an-~ addresses that claim to someone, which is why the compound is the word of requisition forms and dispatch rooms. Note that ~fordern~ (\"demand\") and ~fördern~ (\"promote\") come from one root, separated only by an umlaut."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "So wird der Zugriff auf das Quellsystem, das eine Kommunikation angefordert hat, weiter eingeschränkt.",
+        "source": "Wikipedia — Firewall"
+      },
+      "en": {
+        "sentence": "In this way, access to the source system that requested a communication is restricted further.",
+        "source": "Wikipedia — Firewall"
+      }
+    },
+    "notes": "Candidates 0 and 1 rejected: both open with a pronoun whose antecedent lies outside the snippet."
+  },
+  "anfragen": {
+    "etymology": {
+      "de": "Trennbare Zusammensetzung aus ~an-~ + ~fragen~:\n\n- ~fragen~: Aus Mhd. ~vrāgen~, aus Ahd. ~frāgēn~, ~frahēn~, aus Proto-Westgermanisch *~frāgēn~ (Denominativum zu *~frāgu~ „Frage“), aus Urgermanisch *~frēgō~ („Frage“), aus PIE *~preḱ-~ („fragen“), das auch Lateinisch ~precor~ und Sanskrit ~pṛcchāti~ ergab. Verwandt mit Englisch ~frain~ (veraltet), Niederländisch ~vragen~, Schwedisch ~fråga~, Isländisch ~fregna~.\n- ~an-~: Aus Mhd. ~an(e)-~, aus Ahd. ~ana~, aus Proto-Westgermanisch *~ana~, aus Urgermanisch *~ana~ („auf, an“), aus PIE *~h₂en~ („auf, hinauf“). Verwandt mit Englisch ~on~, Niederländisch ~aan~, Gotisch ~ana~ und Griechisch ~aná~ („hinauf, hindurch“). Das Präfix richtet die Handlung auf einen Adressaten — jemanden ansprechen, ihm etwas darbieten oder ankündigen.\n\nDie Zusammensetzung ist gerichtetes Fragen: Man stellt eine Frage, aber man fragt bei einer Person oder Behörde an. Im heutigen Deutsch ist das Substantiv ~Anfrage~ weit häufiger als das Verb, aus dem es stammt.",
+      "en": "A separable compound of ~an-~ + ~fragen~:\n\n- ~fragen~: From MHG ~vrāgen~, from OHG ~frāgēn~, ~frahēn~, from Proto-West Germanic *~frāgēn~ (a denominative from *~frāgu~, \"question\"), from Proto-Germanic *~frēgō~ (\"question\"), from PIE *~preḱ-~ (\"to ask\"), which also gave Latin ~precor~ and Sanskrit ~pṛcchāti~. Cognate with English ~frain~ (archaic), Dutch ~vragen~, Swedish ~fråga~, Icelandic ~fregna~.\n- ~an-~: From MHG ~an(e)-~, from OHG ~ana~, from Proto-West Germanic *~ana~, from Proto-Germanic *~ana~ (\"on, at\"), from PIE *~h₂en~ (\"on, onto\"). Cognate with English ~on~, Dutch ~aan~, Gothic ~ana~, and Greek ~aná~ (\"up, throughout\"). The prefix directs the action at an addressee — speaking, presenting, or announcing to someone.\n\nThe compound is addressed asking: one ~fragt~ a question but ~fragt~ at a person or an office ~an~. In modern German the deverbal noun ~Anfrage~ is far commoner than the verb it comes from."
+    },
+    "sentence": null,
+    "notes": "Sole candidate contains the noun ~Anfragen~, not the verb."
+  },
+  "anfügen": {
+    "etymology": {
+      "de": "Trennbare Zusammensetzung aus ~an-~ + ~fügen~:\n\n- ~fügen~: Aus Mhd. ~füegen~, ~fuogen~, aus Ahd. ~fuogen~, aus Proto-Westgermanisch *~fōgijan~, aus Urgermanisch *~fōgijaną~, aus PIE *~peh₂ḱ-~ („verbinden, befestigen“). Reflexiv ~sich fügen~ heißt „sich unterordnen“ — sich in die Ordnung des Schicksals einfügen. Verwandt mit Niederländisch ~voegen~ und dem veralteten Englisch ~fay~ („eng zusammenpassen“, aus Altenglisch ~fēgan~).\n- ~an-~: Aus Mhd. ~an(e)-~, aus Ahd. ~ana~, aus Proto-Westgermanisch *~ana~, aus Urgermanisch *~ana~ („auf, an“), aus PIE *~h₂en~ („auf, hinauf“). Verwandt mit Englisch ~on~, Niederländisch ~aan~, Gotisch ~ana~ und Griechisch ~aná~ („hinauf, hindurch“). Das Präfix drückt Kontakt oder Befestigung aus — etwas an etwas anderem festmachen.\n\nDie Wurzel ist das Wort des Fügens — ~fügen~ passt Teile zusammen —, und das Präfix sagt, wo: ~anfügen~ setzt hinten an, während ~einfügen~ einschiebt und ~zusammenfügen~ aus Teilen ein Ganzes macht.",
+      "en": "A separable compound of ~an-~ + ~fügen~:\n\n- ~fügen~: From MHG ~füegen~, ~fuogen~, from OHG ~fuogen~, from Proto-West Germanic *~fōgijan~, from Proto-Germanic *~fōgijaną~, from PIE *~peh₂ḱ-~ (\"to join, attach, fasten\"). Reflexive ~sich fügen~ means \"to submit\" — to join oneself to the arrangement of fate. Cognate with Dutch ~voegen~ and archaic English ~fay~ (\"to fit closely,\" from Old English ~fēgan~).\n- ~an-~: From MHG ~an(e)-~, from OHG ~ana~, from Proto-West Germanic *~ana~, from Proto-Germanic *~ana~ (\"on, at\"), from PIE *~h₂en~ (\"on, onto\"). Cognate with English ~on~, Dutch ~aan~, Gothic ~ana~, and Greek ~aná~ (\"up, throughout\"). The prefix conveys contact or attachment — fastening one thing onto another.\n\nThe root is the joinery word — ~fügen~ fits pieces together — and the prefix says where: ~anfügen~ attaches at the end, where ~einfügen~ inserts within and ~zusammenfügen~ makes a whole out of parts."
+    },
+    "sentence": null,
+    "notes": "Sole candidate is corrupt: text from two PDF columns interleaved with an applause marker."
+  }
+}

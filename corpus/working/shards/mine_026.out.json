@@ -1,0 +1,328 @@
+{
+  "besichern": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~sichern~:\n\n- ~sichern~: Ein denominatives Verb zum Adjektiv ~sicher~: Ahd. ~sihhurōn~ („rechtfertigen, verbürgen“), daraus Mhd. ~sichern~. ~Sicher~ selbst ist ein Lehnwort: aus Ahd. ~sihur~, aus Proto-Westgermanisch *~sikur~, aus Lateinisch ~sēcūrus~ („sorglos“), aus ~sē-~ („ohne“) + ~cūra~ („Sorge“); ~sē-~ aus PIE *~sue-~ („selbst, eigen“). Englisch ~secure~ und ~sure~ gehen auf dieselbe lateinische Wurzel zurück.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ bildet aus einem Substantiv oder Adjektiv ein Verb mit der Bedeutung, damit zu versehen oder dazu zu machen.\n\nDas Kompositum gehört der Bankensprache an: Ein Kredit ist ~besichert~, wenn Sicherheiten hinter ihm stehen, während bloßes ~sichern~ nur sagt, dass etwas sicher gemacht wurde. Reizvoll ist die Umkehrung, die darin liegt — das lateinische ~sēcūrus~ hieß „ohne Sorge“, und gerade die Sorgfalt ist es, die ein besicherter Kredit verlangt.",
+      "en": "An inseparable compound of ~be-~ + ~sichern~:\n\n- ~sichern~: A denominative verb from the adjective ~sicher~ (\"safe, secure\"): OHG ~sihhurōn~ (\"to justify, to vouch for\"), whence MHG ~sichern~. ~sicher~ is itself a loanword: from OHG ~sihur~, from Proto-West Germanic *~sikur~, from Latin ~sēcūrus~ (\"carefree\"), from ~sē-~ (\"without\") + ~cūra~ (\"care\"); ~sē-~ from PIE *~sue-~ (\"self, one's own\"). English ~secure~ and ~sure~ descend from the same Latin root.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ derives a verb from a noun or adjective, meaning to furnish with or make into that.\n\nThe compound belongs to banking German: a loan is ~besichert~ when collateral stands behind it, whereas plain ~sichern~ says only that something was made safe. There is a reversal buried in it — Latin ~sēcūrus~ meant \"free of care,\" and care is exactly what a collateralized loan demands."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "besinnen": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~sinnen~:\n\n- ~sinnen~: Aus Mhd. ~sinnen~, aus Ahd. ~sinnan~ („reisen; streben; denken“), aus Proto-Westgermanisch *~sinnan~, aus Urgermanisch *~sinnaną~, aus PIE *~sent-~ („sich richten auf, gehen; fühlen“). Ein starkes Verb der Klasse III (~sinnen~, ~sann~, ~gesonnen~). Dieselbe Wurzel ergab Lateinisch ~sentīre~, sodass ~Sinn~ und Englisch ~sense~ verwandt sind. Verwandt mit Altenglisch ~sinnan~ („nachsinnen“), Niederländisch ~zinnen~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ bildet ein Verb, das nur reflexiv gebraucht wird — die Handlung richtet sich auf den Handelnden selbst zurück und nie auf ein äußeres Objekt.\n\n~Sich besinnen~ heißt nicht einfach nachdenken, sondern zu sich selbst zurückkommen. Das Partizip ~besonnen~ hat sich als Adjektiv verselbständigt und beschreibt genau den Menschen, der das getan hat: den Bedächtigen, der innegehalten hat.",
+      "en": "An inseparable compound of ~be-~ + ~sinnen~:\n\n- ~sinnen~: From MHG ~sinnen~, from OHG ~sinnan~ (\"to travel; to strive for; to think\"), from Proto-West Germanic *~sinnan~, from Proto-Germanic *~sinnaną~, from PIE *~sent-~ (\"to head for, go; to feel\"). A class III strong verb (~sinnen~, ~sann~, ~gesonnen~). The same root gave Latin ~sentīre~, so ~Sinn~ and English ~sense~ are relatives. Cognate with Old English ~sinnan~ (\"to meditate on\"), Dutch ~zinnen~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ forms a verb used only reflexively — the action turns back on the one performing it and never reaches an outside object.\n\n~sich besinnen~ is not simply to think but to come back to oneself. The participle ~besonnen~ has broken away as an adjective and describes precisely the person who has done so: the level-headed one, who has paused."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Die Physiologen sollten sich besinnen, den Selbsterhaltungstrieb als kardinalen Trieb eines organischen Wesens anzusetzen.",
+        "source": "Nietzsche — Jenseits von Gut und Böse"
+      },
+      "en": {
+        "sentence": "Physiologists ought to think twice before positing the drive to self-preservation as the cardinal drive of an organic being.",
+        "source": "Nietzsche — Jenseits von Gut und Böse"
+      }
+    },
+    "notes": null
+  },
+  "bespringen": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~springen~:\n\n- ~springen~: Aus Ahd. ~springan~, aus Urgermanisch *~springaną~, aus PIE *~sprenǵʰ-~, einer nasalierten Form von *~sperǵʰ-~ („sich energisch bewegen, eilen, springen“). Ein starkes Verb der Klasse III (~springen~, ~sprang~, ~gesprungen~). Verwandt mit Englisch ~spring~, Niederländisch ~springen~, Dänisch ~springe~, Griechisch ~spérkhō~ („eilen“).\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ macht ein intransitives Verb transitiv und richtet die Handlung auf ein Objekt.\n\nDas Verb gehört der Tierzucht an und ist ein Euphemismus, in dem der körperliche Sprung noch sichtbar ist: Was das Grundverb als bloße Bewegung beschreibt, richtet das Kompositum auf das Tier, dem sie gilt.",
+      "en": "An inseparable compound of ~be-~ + ~springen~:\n\n- ~springen~: From OHG ~springan~, from Proto-Germanic *~springaną~, from PIE *~sprenǵʰ-~, a nasalized form of *~sperǵʰ-~ (\"to move energetically, to hasten, to spring\"). A class III strong verb (~springen~, ~sprang~, ~gesprungen~). Cognate with English ~spring~, Dutch ~springen~, Danish ~springe~, Greek ~spérkhō~ (\"to hasten\").\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ makes an intransitive verb transitive, directing the action at an object.\n\nThe verb belongs to animal husbandry and is a euphemism in which the physical leap is still visible: what the base verb describes as mere motion, the compound aims at the animal it is directed to."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "besserstellen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~besser~ + ~stellen~:\n\n- ~stellen~: Aus Mhd. ~stellen~, aus Ahd. ~stellen~, aus Proto-Westgermanisch *~stalljan~ („setzen, aufstellen“), aus PIE *~stel-~ („stellen, setzen“). Ein kausatives schwaches Verb — das transitive Gegenstück zu ~stehen~. Verwandt mit Englisch ~stell~ („platzieren, befestigen“), Niederländisch ~stellen~, Dänisch ~stille~, Jiddisch ~shteln~.\n- ~besser~: Aus ~besser~, dem suppletiven Komparativ zu ~gut~: Mhd. ~bezzer~, Ahd. ~bezziro~, aus Urgermanisch *~batizô~, einem Komparativ zur Wurzel *~bat-~ („gut, Vorteil“). Deutsch und Englisch erbten dieselbe Suppletion, ~gut~/~besser~/~best~ neben ~good~/~better~/~best~, bei der der Komparativ von einer anderen Wurzel stammt als der Positiv. Dieselbe Wurzel ergab ~Buße~ und ~büßen~ sowie Englisch ~boot~ im altertümlichen ~to boot~ („obendrein“): etwas besser machen und etwas büßen waren einst ein Gedanke. Die Bedeutung von ~besser~ ist hier der resultative Rahmen: etwas in einen besseren Zustand bringen (~besserstellen~).\n\n~Besserstellen~ gehört dem Verwaltungs- und Rechtsdeutsch an: Wer jemanden besserstellt, verschiebt ihn in eine günstigere Lage, meist eine finanzielle. Bemerkenswert ist der erste Baustein selbst — ein Komparativ, der zu einem Verbteil erstarrt ist, was im Deutschen selten vorkommt.",
+      "en": "A separable compound of ~besser~ + ~stellen~:\n\n- ~stellen~: From MHG ~stellen~, from OHG ~stellen~, from Proto-West Germanic *~stalljan~ (\"to put, position\"), from PIE *~stel-~ (\"to place, put\"). A causative weak verb — the transitive counterpart to ~stehen~ (\"to stand\"). Cognate with English ~stell~ (\"to place, fix\"), Dutch ~stellen~, Danish ~stille~, Yiddish ~shteln~.\n- ~besser~: From ~besser~, the suppletive comparative of ~gut~: MHG ~bezzer~, OHG ~bezziro~, from Proto-Germanic *~batizô~, a comparative to the root *~bat-~ (\"good, advantage\"). German and English inherited the same suppletion, ~gut~/~besser~/~best~ beside ~good~/~better~/~best~, in which the comparative comes from a different root than the positive. The root also gave German ~Buße~ (\"penance, amends\") and ~büßen~, and English ~boot~ in the archaic ~to boot~ (\"in addition\"): making something better and making amends were once one idea. The sense of ~besser~ here is the resultative frame: to bring something into a better condition (~besserstellen~).\n\n~besserstellen~ belongs to administrative and legal German: to ~besserstellen~ someone is to move them into a more favorable position, usually a financial one. The first element is the remarkable part — a comparative frozen into a verb, which German rarely does."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Wir planen deshalb in der Arbeitslosenversicherung keine Kürzungen, werden aber die langjährig Versicherten durch längere Auszahlungszeiten besserstellen und die Zahlungen für kurzzeitig Versicherte etwas beschneiden.",
+        "source": "Bundestag — Plenarprotokoll 20/210"
+      },
+      "en": {
+        "sentence": "We are therefore planning no cuts to unemployment insurance, but we will make the long-insured better off through longer payout periods and trim the payments for the briefly insured somewhat.",
+        "source": "Bundestag — Plenarprotokoll 20/210"
+      }
+    },
+    "notes": null
+  },
+  "bestärken": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~stärken~:\n\n- ~stärken~: Ein denominales Verb zum Adjektiv ~stark~ mit dem Verbalsuffix ~-en~, vererbt aus Mhd. ~sterken~ und Ahd. ~sterken~. ~Stark~ stammt aus Urgermanisch *~starkuz~ („steif, kräftig“), aus PIE *~(s)terg-~ („starr, steif“). Verwandt mit Englisch ~stark~, das die Nuance „steif“ bewahrte, und mit Englisch ~starch~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ verleiht der Grundhandlung Gründlichkeit oder Vollständigkeit.\n\nDer Unterschied zum Grundverb liegt im Objekt: ~stärken~ kräftigt einen Körper, eine Währung, eine Stellung; ~bestärken~ dagegen einen Menschen in dem, was er ohnehin vorhat. Was zunimmt, ist nicht Kraft, sondern Gewissheit.",
+      "en": "An inseparable compound of ~be-~ + ~stärken~:\n\n- ~stärken~: A denominal verb from the adjective ~stark~ (\"strong\") with the verbal suffix ~-en~, inherited from MHG ~sterken~ and OHG ~sterken~. ~Stark~ comes from Proto-Germanic *~starkuz~ (\"stiff, strong\"), from PIE *~(s)terg-~ (\"rigid, stiff\"). Cognate with English ~stark~, which kept the \"stiffness\" nuance, and with English ~starch~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ adds thoroughness or completeness to the base action.\n\nThe difference from the base verb lies in the object: ~stärken~ strengthens a body, a currency, a position, while ~bestärken~ strengthens a person in what they already intend. What grows is not force but conviction."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Das bestärkte mich in meinem Vorsatze, mich künftig allein an die Natur zu halten.",
+        "source": "Goethe — Die Leiden des jungen Werthers"
+      },
+      "en": {
+        "sentence": "That confirmed me in my resolve to keep henceforth to nature alone.",
+        "source": "Goethe — Die Leiden des jungen Werthers"
+      }
+    },
+    "notes": null
+  },
+  "bestechen": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~stechen~:\n\n- ~stechen~: Aus Mhd. ~stëchen~, aus Ahd. ~stëhhan~, aus Proto-Westgermanisch *~stekan~, aus Urgermanisch *~stekaną~ („stechen, piksen“), aus PIE *~(s)teg-~ („stechen, stoßen“). Verwandt mit Niederländisch ~steken~ („stechen, stacheln“), Altnordisch ~stinga~, Englisch ~stick~ (ursprünglich „stechen, durchbohren“).\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ verleiht der Grundhandlung Gründlichkeit oder Vollständigkeit.\n\nVom Stechen zum Bestechen führt ein weiter Weg. Älter ist das Stechen über eine ganze Fläche hin, etwa in Leder oder Stoff; daraus entwickelte sich das Zusetzen mit Geschenken, bis am Ende nur die Korruption übrig blieb. Das Adjektiv ~bestechend~ („blendend, überzeugend“) ging denselben Weg, blieb aber im Schmeichelhaften stehen.",
+      "en": "An inseparable compound of ~be-~ + ~stechen~:\n\n- ~stechen~: From MHG ~stëchen~, from OHG ~stëhhan~, from Proto-West Germanic *~stekan~, from Proto-Germanic *~stekaną~ (\"to stab, prick\"), from PIE *~(s)teg-~ (\"to stick, poke\"). Cognate with Dutch ~steken~ (\"to stab, sting\"), Old Norse ~stinga~, English ~stick~ (originally \"to stab, pierce\").\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ adds thoroughness or completeness to the base action.\n\nIt is a long road from ~stechen~ to ~bestechen~. Older is the pricking worked across a whole surface, in leather or cloth; from there came the working-over of a person with gifts, until only corruption was left. The adjective ~bestechend~ (\"striking, compelling\") travelled the same road but stopped at the flattering end of it."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Möglich ist allerdings auch, daß man in Hoffnung auf irgendeine größere Bestechung den Prozeß scheinbar weiterführen wird, ganz vergeblich, wie ich heute schon sagen kann, denn ich besteche niemanden.",
+        "source": "Kafka — Der Proceß"
+      },
+      "en": {
+        "sentence": "It is also possible, of course, that in the hope of some larger bribe they will carry the trial on for appearance's sake, quite in vain, as I can tell you already today, for I bribe no one.",
+        "source": "Kafka — Der Proceß"
+      }
+    },
+    "notes": "No be- sense fits cleanly: bestechen is lexicalized far from \"prick,\" and sense 4 (thoroughness) is the nearest of the six rather than a match."
+  },
+  "bestecken": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~stecken~:\n\n- ~stecken~: Das heutige ~stecken~ verschmilzt zwei Verben: das transitive schwache („etwas hineinstecken“) aus Mhd. ~stecken~, Ahd. ~steckōn~, einer Geminaten-Ableitung von ~stëhhan~ (dem Vorfahren von ~stechen~), und das starke intransitive (archaisch ~stak~/~gestocken~, „festsitzen“); die beiden fielen im Frühneuhochdeutschen zusammen. Beide aus Proto-Westgermanisch *~stekan~, aus Urgermanisch *~stikaną~, aus PIE *~(s)teyg-~ („scharf sein, stechen, antreiben“). Verwandt mit Englisch ~stick~ und ~steak~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ drückt aus, dass etwas auf eine Fläche aufgebracht oder diese bedeckt wird.\n\nDas Kompositum gehört dem schwachen, transitiven Zwilling an — Dinge in eine Fläche stecken —, nicht dem starken ~stecken~ des Festsitzens. Dasselbe Bild steckt im Substantiv ~Besteck~, ursprünglich das, was zusammen in einer Scheide steckte.",
+      "en": "An inseparable compound of ~be-~ + ~stecken~:\n\n- ~stecken~: Modern ~stecken~ merges two verbs: the transitive weak one (\"to put, stick something in\") from MHG ~stecken~, OHG ~steckōn~, a geminate derivative of ~stëhhan~ (the ancestor of ~stechen~), and the strong intransitive one (archaic ~stak~/~gestocken~, \"to be stuck\"); the two fused in Early Modern German. Both trace to Proto-West Germanic *~stekan~, from Proto-Germanic *~stikaną~, from PIE *~(s)teyg-~ (\"to be sharp, stab, goad\"). Cognate with English ~stick~ and ~steak~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ conveys applying something over a surface or covering it.\n\nThe compound belongs to the weak transitive twin — sticking things into a surface — not to the strong ~stecken~ of being lodged fast. The same image sits inside the noun ~Besteck~ (\"cutlery\"), originally the set of implements that were stuck together in one sheath."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Eine vielfältige Sandburg zur Rechten, von Kindern hergestellt, war rings mit kleinen Flaggen in den Farben aller Länder besteckt.",
+        "source": "Mann — Der Tod in Venedig"
+      },
+      "en": {
+        "sentence": "An elaborate sandcastle to the right, built by children, was stuck all around with little flags in the colors of every country.",
+        "source": "Mann — Der Tod in Venedig"
+      }
+    },
+    "notes": "family (weak) and translation disagree: the gloss \"get stuck\" points at the strong intransitive twin, the weak family at the transitive one. Etymology follows the weak transitive branch, which is what the quotation attests; the quotation therefore shows \"stud with\" rather than the glossed sense."
+  },
+  "bestehlen": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~stehlen~:\n\n- ~stehlen~: Aus Mhd. ~stëln~, aus Ahd. ~stelan~, aus Proto-Westgermanisch *~stelan~, aus Urgermanisch *~stelaną~ („stehlen“), aus PIE *~stel-~ („rauben, stehlen“). Ein gemeingermanisches Verb mit bemerkenswert beständiger Bedeutung. Verwandt mit Englisch ~steal~, Gotisch ~stilan~, Altnordisch ~stela~, Niederländisch ~stelen~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ hebt das, was das Grundverb mit einer Präposition oder im Dativ regiert, zum Akkusativobjekt.\n\nDas Verbpaar teilt sich die Rollen: ~stehlen~ nimmt die Sache ins Akkusativobjekt, ~bestehlen~ das Opfer. Man kann Geld stehlen und einen Menschen bestehlen, aber niemals umgekehrt.",
+      "en": "An inseparable compound of ~be-~ + ~stehlen~:\n\n- ~stehlen~: From MHG ~stëln~, from OHG ~stelan~, from Proto-West Germanic *~stelan~, from Proto-Germanic *~stelaną~ (\"to steal\"), from PIE *~stel-~ (\"to rob, steal\"). A common Germanic verb with remarkably consistent meaning. Cognate with English ~steal~, Gothic ~stilan~, Old Norse ~stela~, Dutch ~stelen~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ promotes what the base verb governs with a preposition or in the dative to a direct object.\n\nThe pair divides the roles: ~stehlen~ takes the thing as its direct object, ~bestehlen~ takes the victim. One can ~stehlen~ money and ~bestehlen~ a person, never the reverse."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Die habe ich denn ohne Widerrede genommen und mir den Überschuß wöchentlich aus der Losung geholt, da niemand vermutete, daß die Frau die Kasse bestehlen würde.",
+        "source": "Goethe — Die Leiden des jungen Werthers"
+      },
+      "en": {
+        "sentence": "So I took them without objection and drew the surplus for myself each week out of the takings, since no one suspected that the woman would rob the till.",
+        "source": "Goethe — Die Leiden des jungen Werthers"
+      }
+    },
+    "notes": null
+  },
+  "besteigen": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~steigen~:\n\n- ~steigen~: Aus Mhd. ~stîgen~, aus Ahd. ~stīgan~, aus Proto-Westgermanisch *~stīgan~, aus Urgermanisch *~stīganą~, aus PIE *~steygʰ-~ („gehen, steigen“). Ein starkes Verb der Klasse I (~steigen~, ~stieg~, ~gestiegen~); dieselbe Wurzel ergab Altgriechisch ~steíkhō~ („ich gehe“). Verwandt mit dem archaischen Englisch ~sty~ („klettern“), Niederländisch ~stijgen~, Gotisch ~steigan~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ macht ein intransitives Verb transitiv und richtet die Handlung auf ein Objekt.\n\nDas Kompositum verlangt ein Ziel, das erreicht wird: Man besteigt einen Berg, ein Pferd, einen Thron oder — wie bei Thomas Mann — eine Gondel, während das Grundverb nur die Richtung der Bewegung angibt.",
+      "en": "An inseparable compound of ~be-~ + ~steigen~:\n\n- ~steigen~: From MHG ~stîgen~, from OHG ~stīgan~, from Proto-West Germanic *~stīgan~, from Proto-Germanic *~stīganą~, from PIE *~steygʰ-~ (\"to walk, climb\"). A class I strong verb (~steigen~, ~stieg~, ~gestiegen~); the same root gave Ancient Greek ~steíkhō~ (\"I go\"). Cognate with archaic English ~sty~ (\"to climb\"), Dutch ~stijgen~, Gothic ~steigan~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ makes an intransitive verb transitive, directing the action at an object.\n\nThe compound demands a goal that is reached: one ~besteigt~ a mountain, a horse, a throne, or — as in Thomas Mann — a gondola, whereas the base verb states only the direction of the motion."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Wer hätte nicht einen flüchtigen Schauder, eine geheime Scheu und Beklommenheit zu bekämpfen gehabt, wenn es zum ersten Male oder nach langer Entwöhnung galt, eine venezianische Gondel zu besteigen?",
+        "source": "Mann — Der Tod in Venedig"
+      },
+      "en": {
+        "sentence": "Who has not had to fight down a fleeting shudder, a secret shyness and unease, when it came to boarding a Venetian gondola for the first time, or after long disuse?",
+        "source": "Mann — Der Tod in Venedig"
+      }
+    },
+    "notes": null
+  },
+  "besteuern": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~steuern~:\n\n- ~steuern~: Aus Mhd. ~stiuren~, aus Ahd. ~stiuren~, aus Proto-Westgermanisch *~stiurijan~, aus Urgermanisch *~stiurijaną~. Das Wurzelnomen ~Steuer~ trägt zwei Bedeutungen mit gemeinsamem Vorfahren: ~das Steuer~ („Ruder, Helm“) und ~die Steuer~ („Abgabe“, über „Stützpfosten“ und „Unterstützung“). ~Steuern~ heißt daher „lenken, navigieren, regeln“ und, archaisch oder schweizerisch, „eine Abgabe entrichten“. Verwandt mit Englisch ~steer~, Niederländisch ~stuur~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ bildet aus einem Substantiv oder Adjektiv ein Verb mit der Bedeutung, damit zu versehen oder dazu zu machen.\n\nDer Zweig ist hier eindeutig ~die Steuer~ („Abgabe“), nicht ~das Steuer~ („Ruder“). Beide gehen jedoch auf dasselbe Wort zurück, denn eine Steuer war ursprünglich eine Stütze — und wer besteuert, lenkt insofern doch, denn Steuern sind bis heute ein Mittel der Steuerung.",
+      "en": "An inseparable compound of ~be-~ + ~steuern~:\n\n- ~steuern~: From MHG ~stiuren~, from OHG ~stiuren~, from Proto-West Germanic *~stiurijan~, from Proto-Germanic *~stiurijaną~. The root noun ~Steuer~ carries two meanings sharing one ancestor: ~das Steuer~ (\"rudder, helm\") and ~die Steuer~ (\"tax,\" via \"supporting post\" and \"support\"). ~Steuern~ thus means both \"to steer, navigate, control\" and, in archaic or Swiss usage, \"to pay a tax.\" Cognate with English ~steer~, Dutch ~stuur~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ derives a verb from a noun or adjective, meaning to furnish with or make into that.\n\nThe branch here is unambiguously ~die Steuer~ (\"tax\"), not ~das Steuer~ (\"helm\"). Both nonetheless go back to one word, since a ~Steuer~ was originally a support — and so taxing does steer after all: taxes remain an instrument of control."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Wir wollen sie besteuern, meine Damen und Herren.",
+        "source": "Bundestag — Plenarprotokoll 20/207"
+      },
+      "en": {
+        "sentence": "We intend to tax them, ladies and gentlemen.",
+        "source": "Bundestag — Plenarprotokoll 20/207"
+      }
+    },
+    "notes": null
+  },
+  "bestoßen": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~stoßen~:\n\n- ~stoßen~: Aus Mhd. ~stōzen~, aus Ahd. ~stōzan~, aus Proto-Westgermanisch *~stautan~, aus Urgermanisch *~stautaną~, aus PIE *~stówd-e-ti~, einer o-Stufen-Intensivbildung zu *~(s)tewd-~ („schlagen, stoßen“); dieselbe Wurzel ergab Lateinisch ~tundere~ („schlagen, stampfen“). Verwandt mit dialektalem Englisch ~stot~ („abprallen“), Niederländisch ~stoten~, Altnordisch ~stauta~ und ~steyta~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ hebt das, was das Grundverb mit einer Präposition oder im Dativ regiert, zum Akkusativobjekt.\n\nDas Verb lebt im Handwerk: Bestoßen werden die Kanten eines Bretts, eines Buchdeckels, eines Möbelstücks. Anders als beim einzelnen Stoß des Grundverbs verteilt sich der Schaden über die ganze Kante, weshalb Antiquare abgenutzte Bände als ~bestoßen~ beschreiben.",
+      "en": "An inseparable compound of ~be-~ + ~stoßen~:\n\n- ~stoßen~: From MHG ~stōzen~, from OHG ~stōzan~, from Proto-West Germanic *~stautan~, from Proto-Germanic *~stautaną~, from PIE *~stówd-e-ti~, an o-grade intensive formation from *~(s)tewd-~ (\"to hit, push\"); the same root produced Latin ~tundere~ (\"to beat, pound\"). Cognate with dialectal English ~stot~ (\"to bounce, ricochet\"), Dutch ~stoten~, Old Norse ~stauta~ and ~steyta~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ promotes what the base verb governs with a preposition or in the dative to a direct object.\n\nThe verb lives in the crafts: what gets ~bestoßen~ is the edge of a board, a book cover, a piece of furniture. Unlike the single blow of the base verb, the damage is spread along the whole edge, which is why antiquarian booksellers describe worn volumes as ~bestoßen~."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "bestrahlen": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~strahlen~:\n\n- ~strahlen~: Ein denominales Verb des 16. Jahrhunderts zum Substantiv ~Strahl~ („Lichtstrahl“) mit dem Verbalsuffix ~-en~. ~Strahl~ aus Mhd. ~strāle~, aus Ahd. ~strāla~ („Pfeil“), aus Proto-Westgermanisch *~strālu~ („Pfeil“); die Bedeutung „Lichtstrahl“ entstand im 17. Jahrhundert metaphorisch aus dem geraden Flug des Pfeils. Verwandt mit Niederländisch ~straal~ und dem seltenen Englisch ~streal~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ macht ein intransitives Verb transitiv und richtet die Handlung auf ein Objekt.\n\nDie medizinische Bedeutung ist jung: Erst die Strahlentherapie des 20. Jahrhunderts machte aus dem Bescheinen ein Behandeln. Da ~Strahl~ ursprünglich „Pfeil“ hieß, wird ein bestrahlter Patient dem Wortsinn nach mit Lichtpfeilen beschossen.",
+      "en": "An inseparable compound of ~be-~ + ~strahlen~:\n\n- ~strahlen~: A 16th-century denominative verb from the noun ~Strahl~ (\"ray, beam\") with the verbal suffix ~-en~. ~Strahl~ traces to MHG ~strāle~, from OHG ~strāla~ (\"arrow\"), from Proto-West Germanic *~strālu~ (\"arrow\"); the sense \"ray of light\" arose in the 17th century as a metaphor from the arrow's straight flight. Cognate with Dutch ~straal~ and the rare English ~streal~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ makes an intransitive verb transitive, directing the action at an object.\n\nThe medical sense is young: only 20th-century radiation therapy turned shining-upon into treating. Since ~Strahl~ originally meant \"arrow,\" a patient under ~Bestrahlung~ is, by the word's own logic, being shot with arrows of light."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Ein Spielzeug sei das Weib, rein und fein, dem Edelsteine gleich, bestrahlt von den Tugenden einer Welt, welche noch nicht da ist.",
+        "source": "Nietzsche — Also sprach Zarathustra"
+      },
+      "en": {
+        "sentence": "Woman is a plaything, pure and fine, like a precious stone, irradiated by the virtues of a world that does not yet exist.",
+        "source": "Nietzsche — Also sprach Zarathustra"
+      }
+    },
+    "notes": "Sole candidate attests the literal \"shine upon\" sense rather than the glossed medical \"irradiate.\""
+  },
+  "bestreben": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~streben~:\n\n- ~streben~: Aus Mhd. ~strëben~, aus Ahd. ~strëbēn~, aus Proto-Westgermanisch *~stribēn~, aus Urgermanisch *~stribāną~ („streben, sich widersetzen“). Verwandt mit Niederländisch ~streven~ und Englisch ~strive~ (über Altfranzösisch ~estriver~, das seinerseits aus einer germanischen Quelle entlehnt wurde).\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ hebt das, was das Grundverb mit einer Präposition oder im Dativ regiert, zum Akkusativobjekt.\n\nDas finite Verb ist heute kaum noch gebräuchlich. Übrig sind das Partizip in ~bestrebt sein~ und das Substantiv ~das Bestreben~: Das Streben nach etwas wurde zum Zustand des Bestrebtseins, eine Bewegung, die zur Eigenschaft erstarrte.",
+      "en": "An inseparable compound of ~be-~ + ~streben~:\n\n- ~streben~: From MHG ~strëben~, from OHG ~strëbēn~, from Proto-West Germanic *~stribēn~, from Proto-Germanic *~stribāną~ (\"to strive, resist\"). Cognate with Dutch ~streven~ (\"to strive\") and English ~strive~ (via Old French ~estriver~, itself borrowed from a Germanic source).\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ promotes what the base verb governs with a preposition or in the dative to a direct object.\n\nThe finite verb is barely current today. What remains is the participle in ~bestrebt sein~ (\"to be eager to\") and the noun ~das Bestreben~ (\"endeavor\"): striving toward something became the state of being desirous of it, a motion frozen into a property."
+    },
+    "sentence": null,
+    "notes": "All four candidates are the lexicalized predicative adjective in \"bestrebt sein\" — gradable, hence adjectival, not a verbal use."
+  },
+  "bestreichen": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~streichen~:\n\n- ~streichen~: Aus Mhd. ~strīchen~, aus Ahd. ~strīhhan~, aus Proto-Westgermanisch *~strīkan~, aus Urgermanisch *~strīkaną~ („streichen, reiben“), aus PIE *~streyg-~ („streichen, reiben, drücken“). Ein starkes Verb der Klasse I. Verwandt mit Englisch ~strike~, Niederländisch ~strijken~ („bügeln, streichen“).\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ drückt aus, dass etwas auf eine Fläche aufgebracht oder diese bedeckt wird.\n\nDas Objekt ist die Fläche, nicht der Stoff: Man streicht Butter aufs Brot, aber bestreicht das Brot mit Butter. Militärisch lebt dasselbe Bild weiter, wenn Feuer ein Gelände bestreicht — auch dort wird eine Fläche flächendeckend erfasst.",
+      "en": "An inseparable compound of ~be-~ + ~streichen~:\n\n- ~streichen~: From MHG ~strīchen~, from OHG ~strīhhan~, from Proto-West Germanic *~strīkan~, from Proto-Germanic *~strīkaną~ (\"to stroke, to rub\"), from PIE *~streyg-~ (\"to stroke, rub, press\"). A class I strong verb. Cognate with English ~strike~, Dutch ~strijken~ (\"to iron, to stroke\").\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ conveys applying something over a surface or covering it.\n\nThe object is the surface, not the substance: one ~streicht~ butter onto bread but ~bestreicht~ the bread with butter. The same image survives in military usage, where fire ~bestreicht~ a stretch of ground — an area taken in across its whole extent."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Und sollt von seinem Blut nehmen und beide Pfosten der Tür und die obere Schwelle damit bestreichen an den Häusern, darin sie es essen.",
+        "source": "Luther — Bibel"
+      },
+      "en": {
+        "sentence": "And they shall take of its blood and coat both doorposts and the upper lintel with it, on the houses in which they eat it.",
+        "source": "Luther — Bibel"
+      }
+    },
+    "notes": null
+  },
+  "bestürzen": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~stürzen~:\n\n- ~stürzen~: Aus Mhd. ~stürzen~, aus Ahd. ~sturzen~, aus Proto-Westgermanisch *~sturtijan~ („hinunterfallen, stürzen“), letztlich ungesicherter Herkunft; möglicherweise aus PIE *~ster-~ („steif sein“) über eine dentale Erweiterung *~sterd-~, doch ist die Ableitung umstritten. Verwandt mit Englisch ~start~, einer Dublette aus derselben proto-westgermanischen Quelle, deren Bedeutungen radikal auseinandergingen.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ macht ein intransitives Verb transitiv und richtet die Handlung auf ein Objekt.\n\nDer Sturz des Grundverbs steckt noch darin: Wer bestürzt ist, wurde in Verwirrung gestürzt. Das Partizip hat sich als Adjektiv verselbständigt und das finite Verb fast verdrängt — man ist bestürzt, weit seltener bestürzt einen etwas.",
+      "en": "An inseparable compound of ~be-~ + ~stürzen~:\n\n- ~stürzen~: From MHG ~stürzen~, from OHG ~sturzen~, from Proto-West Germanic *~sturtijan~ (\"to fall down, tumble\"), of uncertain ultimate origin; possibly from PIE *~ster-~ (\"to be stiff\") via a dental extension *~sterd-~, though the derivation is debated. Cognate with English ~start~, a doublet from the same Proto-West Germanic source, from which the meanings have diverged radically.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ makes an intransitive verb transitive, directing the action at an object.\n\nThe fall of the base verb is still inside it: to be ~bestürzt~ is to have been plunged into confusion. The participle has broken away as an adjective and all but displaced the finite verb — one is ~bestürzt~ far more often than something ~bestürzt~ one."
+    },
+    "sentence": null,
+    "notes": "All five candidates are the predicative adjective \"bestürzt\" (one of them graded with \"sehr\"), not a verbal use."
+  },
+  "betätigen": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~tätigen~:\n\n- ~tätigen~: Abgeleitet vom Adjektiv ~tätig~, von ~Tat~, aus Mhd. ~tāt~, Ahd. ~tāt~, aus proto-westgermanisch *~dādi~, aus urgermanisch *~dēdiz~, aus PIE *~dʰéh₁-tis~ („ein Setzen, ein Tun“), auf der Wurzel *~dʰeh₁-~ („setzen, stellen, tun“), die auch ~tun~ ergibt. Gehört dem kaufmännischen und juristischen Register an. Verwandt mit englisch ~deed~, niederländisch ~daad~, dänisch ~dåd~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ bildet aus einem Substantiv oder Adjektiv ein Verb mit der Bedeutung, damit zu versehen oder dazu zu machen.\n\nDas Verb führt zwei Leben: Transitiv betätigt man einen Hebel, einen Schalter, eine Bremse; reflexiv betätigt man sich, ist also tätig. Auffällig ist die Aufteilung der Register — das Grundverb ~tätigen~ blieb im Kaufmännischen, das Kompositum wanderte in die Technik.",
+      "en": "An inseparable compound of ~be-~ + ~tätigen~:\n\n- ~tätigen~: Derived from the adjective ~tätig~ (\"active\"), from ~Tat~ (\"deed\"), from MHG ~tāt~, OHG ~tāt~, from Proto-West Germanic *~dādi~, from Proto-Germanic *~dēdiz~, from PIE *~dʰéh₁-tis~ (\"a placing, a doing\"), on the root *~dʰeh₁-~ (\"to put, place, do\"), which also gives ~tun~. Belongs to commercial and legal register. Cognate with English ~deed~, Dutch ~daad~, Danish ~dåd~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ derives a verb from a noun or adjective, meaning to furnish with or make into that.\n\nThe verb leads two lives: transitively one ~betätigt~ a lever, a switch, a brake; reflexively one ~betätigt sich~, that is, keeps active. The split of registers is striking — the base verb ~tätigen~ stayed in commerce while the compound moved into engineering."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "betrauen": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~trauen~:\n\n- ~trauen~: Aus Mhd. ~trūwen~, aus Ahd. ~trūwēn~, aus Proto-Westgermanisch *~trūwēn~, aus Urgermanisch *~trūwāną~ („vertrauen, glauben“), aus PIE *~deru-~ („fest, hart, solide sein“). Dieselbe Wurzel ergab ~treu~, ~Trost~ und ~Trauung~ („Hochzeitszeremonie“) sowie Englisch ~trust~, ~true~ und ~tree~. Verwandt mit Altnordisch ~traust~ („Zuversicht“).\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ hebt das, was das Grundverb mit einer Präposition oder im Dativ regiert, zum Akkusativobjekt.\n\nVom Vertrauen zum Amt: Man traut einem Menschen, aber betraut ihn mit einer Aufgabe — aus der Haltung wird ein Auftrag. Dieselbe Wurzel steckt in der ~Trauung~, bei der Vertrauen ebenfalls förmlich übertragen wird.",
+      "en": "An inseparable compound of ~be-~ + ~trauen~:\n\n- ~trauen~: From MHG ~trūwen~, from OHG ~trūwēn~, from Proto-West Germanic *~trūwēn~, from Proto-Germanic *~trūwāną~ (\"to trust, believe\"), from PIE *~deru-~ (\"to be firm, hard, solid\"). The same root gave ~treu~ (\"faithful\"), ~Trost~ (\"comfort\"), and ~Trauung~ (\"wedding ceremony\"), as well as English ~trust~, ~true~, and ~tree~. Cognate with Old Norse ~traust~ (\"confidence\").\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ promotes what the base verb governs with a preposition or in the dative to a direct object.\n\nFrom trust to office: one ~traut~ a person but ~betraut~ them with a task — a disposition turned into a commission. The same root sits in ~Trauung~ (\"wedding ceremony\"), where trust is likewise formally conferred."
+    },
+    "sentence": null,
+    "notes": "Candidate 0 is an attributive participle (\"die betraute Fachplanung\"); candidate 1 opens with an unbalanced protocol interjection and is mis-split. Nothing usable remained."
+  },
+  "betrinken": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~trinken~:\n\n- ~trinken~: Aus Mhd. ~trinken~, aus Ahd. ~trinkan~, aus Proto-Westgermanisch *~drinkan~, aus Urgermanisch *~drinkaną~; ein gesichertes außergermanisches Kognat wurde nicht identifiziert, sodass das Wort eine germanische Neubildung sein könnte. Verwandt mit Englisch ~drink~, getrennt nur durch die hochdeutsche Lautverschiebung, sowie Altnordisch ~drekka~ und Gotisch ~𐌳𐍂𐌹𐌲𐌺𐌰𐌽~ (drigkan).\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ bildet ein Verb, das nur reflexiv gebraucht wird — die Handlung richtet sich auf den Handelnden selbst zurück und nie auf ein äußeres Objekt.\n\nDas Verb ist streng reflexiv: Man kann sich betrinken, aber niemanden sonst. Das Partizip ~betrunken~ ist zum gewöhnlichen Adjektiv für den Zustand geworden, weshalb man ihm weit häufiger begegnet als dem Verb selbst.",
+      "en": "An inseparable compound of ~be-~ + ~trinken~:\n\n- ~trinken~: From MHG ~trinken~, from OHG ~trinkan~, from Proto-West Germanic *~drinkan~, from Proto-Germanic *~drinkaną~; no non-Germanic cognate has been securely identified, so the word may be a Germanic innovation. Cognate with English ~drink~, separated only by the High German consonant shift, as well as Old Norse ~drekka~ and Gothic ~𐌳𐍂𐌹𐌲𐌺𐌰𐌽~ (drigkan).\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ forms a verb used only reflexively — the action turns back on the one performing it and never reaches an outside object.\n\nThe verb is strictly reflexive: one can ~sich betrinken~ but no one else. The participle ~betrunken~ has become the ordinary adjective for the state, which is why one meets it far more often than the verb."
+    },
+    "sentence": null,
+    "notes": "Both candidates are the lexicalized adjective \"betrunken\" (one graded with \"kläglich\"), not a verbal use."
+  },
+  "betrügen": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~trügen~:\n\n- ~trügen~: Aus Mhd. ~triegen~, aus Ahd. ~triugan~, ~triogan~, aus Proto-Westgermanisch *~dreugan~, aus Urgermanisch *~dreuganą~ („täuschen“), aus PIE *~dʰrewgʰ-~ („täuschen, schädigen“). Ein starkes Verb der Klasse II (~trügen~, ~trog~, ~getrogen~); das ~ü~ stammt aus der Analogie zum reimenden ~lügen~, zu erwarten wäre ~triegen~. Verwandt mit Niederländisch ~bedriegen~, Sanskrit ~druhyati~ („zu schaden suchen“).\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ macht ein intransitives Verb transitiv und richtet die Handlung auf ein Objekt.\n\n~Trügen~ tut der Schein, ~betrügen~ tut ein Mensch: Das Präfix liefert das Opfer, das dem Grundverb fehlt. Wo ~trügen~ nur täuschende Erscheinung ist, verlangt ~betrügen~ eine Absicht und einen Geschädigten.",
+      "en": "An inseparable compound of ~be-~ + ~trügen~:\n\n- ~trügen~: From MHG ~triegen~, from OHG ~triugan~, ~triogan~, from Proto-West Germanic *~dreugan~, from Proto-Germanic *~dreuganą~ (\"to deceive\"), from PIE *~dʰrewgʰ-~ (\"to deceive, harm\"). A class II strong verb (~trügen~, ~trog~, ~getrogen~); the ~ü~ comes from analogy with the rhyming ~lügen~, the expected form being ~triegen~. Cognate with Dutch ~bedriegen~, Sanskrit ~druhyati~ (\"to seek to harm\").\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ makes an intransitive verb transitive, directing the action at an object.\n\nAppearances ~trügen~; people ~betrügen~. The prefix supplies the victim the base verb lacks: where ~trügen~ is merely misleading semblance, ~betrügen~ requires an intention and someone harmed."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Das Weib sprach: Die Schlange betrog mich also, daß ich aß.",
+        "source": "Luther — Bibel"
+      },
+      "en": {
+        "sentence": "The woman said: The serpent deceived me, and so I ate.",
+        "source": "Luther — Bibel"
+      }
+    },
+    "notes": null
+  },
+  "bewandern": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~wandern~:\n\n- ~wandern~: Aus Mhd. ~wandern~, aus Ahd. *~wantarōn~, aus proto-westgermanisch *~wandarōn~, gebildet aus *~wandōn~ („wenden“) mit dem Frequentativsuffix *~-rōn~ — nicht eine einzelne Reise, sondern wiederholtes Umherziehen —, aus urgermanisch *~wandōną~, aus PIE *~wendʰ-~ („drehen, winden“). Verwandt mit englisch ~wander~, dänisch ~vandre~, schwedisch ~vandra~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ macht ein intransitives Verb transitiv und richtet die Handlung auf ein Objekt.\n\nDas finite Verb ist selten, sein Partizip aber alltäglich: Wer in einem Fach ~bewandert~ ist, hat es dem Bild nach zu Fuß durchquert. Die Metapher passt zum Frequentativ im Grundverb, denn Kenntnis entsteht durch wiederholtes Begehen und nicht durch eine einzige Reise.",
+      "en": "An inseparable compound of ~be-~ + ~wandern~:\n\n- ~wandern~: From MHG ~wandern~, from OHG *~wantarōn~, from Proto-West Germanic *~wandarōn~, formed from *~wandōn~ (\"to turn\") with the frequentative suffix *~-rōn~ — not a single journey but repeated, meandering motion — from Proto-Germanic *~wandōną~, from PIE *~wendʰ-~ (\"to turn, to wind\"). Cognate with English ~wander~, Danish ~vandre~, Swedish ~vandra~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ makes an intransitive verb transitive, directing the action at an object.\n\nThe finite verb is rare, its participle everyday: someone ~bewandert~ in a subject has, by the image, crossed it on foot. The metaphor suits the frequentative inside the base verb, since expertise comes of walking a territory repeatedly, not of one journey."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "bewehren": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~wehren~:\n\n- ~wehren~: Aus Mhd. ~weren~, aus Ahd. ~werien~, aus proto-westgermanisch *~warjan~, aus urgermanisch *~warjaną~ („verteidigen, abwehren, schützen“), aus PIE *~wer-~ („schließen, bedecken, schützen“). Am häufigsten reflexiv: ~sich wehren~. Verwandt mit englisch ~weir~, ~ward~, ~guard~, niederländisch ~weren~, altnordisch ~verja~, gotisch ~warjan~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ bildet aus einem Substantiv oder Adjektiv ein Verb mit der Bedeutung, damit zu versehen oder dazu zu machen.\n\nWas das Präfix hinzufügt, ist die ~Wehr~ selbst. Am lebendigsten ist heute das Partizip: ~bewehrter~ Beton ist mit Stahl armiert, und eine ~bewehrte~ Mauer trägt ihre Verteidigung am Leib.",
+      "en": "An inseparable compound of ~be-~ + ~wehren~:\n\n- ~wehren~: From MHG ~weren~, from OHG ~werien~, from Proto-West Germanic *~warjan~, from Proto-Germanic *~warjaną~ (\"to defend, to ward off, to protect\"), from PIE *~wer-~ (\"to close, to cover, to protect\"). Most commonly used reflexively: ~sich wehren~ (\"to defend oneself\"). Cognate with English ~weir~, ~ward~, ~guard~, Dutch ~weren~, Old Norse ~verja~, Gothic ~warjan~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ derives a verb from a noun or adjective, meaning to furnish with or make into that.\n\nWhat the prefix supplies is the ~Wehr~ (\"defense\") itself. The participle is the living part today: ~bewehrter~ concrete is reinforced with steel, and a ~bewehrte~ wall wears its defenses on its body."
+    },
+    "sentence": null,
+    "notes": "Sole candidate is the gradable predicative participle in \"hellebardenartig bewehrt\" — an adjectival description of a boat's prow, not a verbal use — and 62 words of Mann besides."
+  },
+  "beweinen": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~weinen~:\n\n- ~weinen~: Aus Mhd. ~weinen~, aus Ahd. ~weinōn~ („weinen, klagen“), aus urgermanisch *~wainōną~ („klagen, weinen“), aus PIE *~wáy~ („weh!“), einem ursprünglichen Ausruf der Trauer. Verwandt mit ~Weh~ (aus urgermanisch *~waiwô~, derselben Ausrufswurzel), gotisch ~wainon~, altnordisch ~veina~, altenglisch ~wānian~, niederländisch ~wenen~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ hebt das, was das Grundverb mit einer Präposition oder im Dativ regiert, zum Akkusativobjekt.\n\nDer Gegenstand der Trauer rückt ins Akkusativobjekt: Man weint über einen Toten, aber beweint ihn. Das Kompositum gehört einer gehobenen, heute fast biblisch klingenden Schicht an, in der das Weinen jemandem gilt und nicht bloß geschieht.",
+      "en": "An inseparable compound of ~be-~ + ~weinen~:\n\n- ~weinen~: From MHG ~weinen~, from OHG ~weinōn~ (\"to cry, lament\"), from Proto-Germanic *~wainōną~ (\"to wail, weep\"), from PIE *~wáy~ (\"woe!\"), originally an exclamation of grief. Related to ~Weh~ (\"woe, pain\"), from Proto-Germanic *~waiwô~, from the same exclamatory root. Cognate with Gothic ~wainon~, Old Norse ~veina~, Old English ~wānian~, Dutch ~wenen~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ promotes what the base verb governs with a preposition or in the dative to a direct object.\n\nThe object of grief moves into the accusative: one weeps over a dead man, or one ~beweint~ him. The compound belongs to an elevated, now almost biblical register in which weeping is directed at someone rather than merely happening."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "»Sie sitzt droben in der Kammer, beweint ihren Jammer, beweint ihre große Not, daß der alte Herr Fuchs ist tot.",
+        "source": "Grimm — Märchen"
+      },
+      "en": {
+        "sentence": "She sits up there in the chamber, bewailing her sorrow, bewailing her great distress, that old Mister Fox is dead.",
+        "source": "Grimm — Märchen"
+      }
+    },
+    "notes": null
+  },
+  "bewenden": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~wenden~:\n\n- ~wenden~: Aus Mhd. ~wenden~, aus Ahd. ~wenten~, aus proto-westgermanisch *~wandijan~, aus urgermanisch *~wandijaną~ („wenden“), der Kausativbildung von *~windaną~ („winden, wickeln“), aus PIE *~wendʰ-~ („drehen, winden, flechten“). Gehört zur Rückumlaut-Gruppe (Präteritum ~wandte~, Partizip ~gewandt~) und besitzt ein doppeltes Präteritum: ~wandte~ für das Wenden des Selbst oder der Aufmerksamkeit, das regularisierte ~wendete~ für körperliche Drehbewegungen. Verwandt mit englisch ~wend~, armenisch ~gind~ („Ring“).\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ verleiht der Grundhandlung Gründlichkeit oder Vollständigkeit.\n\nDas Verb überlebt nur in einer Wendung: ~es dabei bewenden lassen~ heißt, eine Sache auf sich beruhen zu lassen. Die Drehung des Grundverbs ist darin zum Stillstand gekommen — ein Fossil, das außerhalb seines Satzes nicht mehr vorkommt.",
+      "en": "An inseparable compound of ~be-~ + ~wenden~:\n\n- ~wenden~: From MHG ~wenden~, from OHG ~wenten~, from Proto-West Germanic *~wandijan~, from Proto-Germanic *~wandijaną~ (\"to turn\"), the causative of *~windaną~ (\"to wind, wrap\"), from PIE *~wendʰ-~ (\"to turn, wind, braid\"). It belongs to the Rückumlaut cohort (preterite ~wandte~, participle ~gewandt~) and has a doubled preterite: ~wandte~ for turning the self or one's attention, the regularized ~wendete~ for physical turning. Cognate with English ~wend~, Armenian ~gind~ (\"ring\").\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ adds thoroughness or completeness to the base action.\n\nThe verb survives in a single idiom: ~es dabei bewenden lassen~ means to let a matter rest as it is. The turning of the base verb has come to a standstill inside it — a fossil that no longer occurs outside its one phrase."
+    },
+    "sentence": null,
+    "notes": "no candidates. The verb survives only in \"es dabei bewenden lassen,\" and none of the six be- senses fits it; sense 4 was taken as nearest rather than as a match."
+  },
+  "bewerfen": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~werfen~:\n\n- ~werfen~: Aus Mhd. ~wërfen~, aus Ahd. ~werfan~, aus proto-westgermanisch *~werpan~, aus urgermanisch *~werpaną~, aus PIE *~wergʷ-~ („biegen, drehen, verzerren“). Ein starkes Verb der Klasse III (~wirft~, ~warf~, ~geworfen~). Verwandt mit englisch ~warp~, niederländisch ~werpen~, altsächsisch ~werpan~, altnordisch ~verpa~, gotisch ~wairpan~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ drückt aus, dass etwas auf eine Fläche aufgebracht oder diese bedeckt wird.\n\nZwei Register teilen sich das Wort: Man bewirft einen Menschen mit Steinen und eine Wand mit Mörtel. Beides ist dasselbe Bild — eine Fläche durch Werfen überziehen —, weshalb Luthers Bauleute ein Haus bewerfen, wo wir heute verputzen.",
+      "en": "An inseparable compound of ~be-~ + ~werfen~:\n\n- ~werfen~: From MHG ~wërfen~, from OHG ~werfan~, from Proto-West Germanic *~werpan~, from Proto-Germanic *~werpaną~, from PIE *~wergʷ-~ (\"to bend, spin, warp\"). A class III strong verb (~wirft~, ~warf~, ~geworfen~). Cognate with English ~warp~, Dutch ~werpen~, Old Saxon ~werpan~, Old Norse ~verpa~, Gothic ~wairpan~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ conveys applying something over a surface or covering it.\n\nTwo registers share the word: one ~bewirft~ a person with stones and a wall with mortar. Both are the same image — covering a surface by throwing at it — which is why Luther's builders ~bewerfen~ a house where we would now say plaster."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Wo aber der Priester, wenn er hineingeht, sieht, daß dies Mal nicht weiter am Haus gefressen hat, nachdem das Haus beworfen ist, so soll er's rein sprechen; denn das Mal ist heil geworden.",
+        "source": "Luther — Bibel"
+      },
+      "en": {
+        "sentence": "But if the priest, on going in, sees that the mark has eaten no further into the house after the house has been plastered, then he shall pronounce it clean, for the mark is healed.",
+        "source": "Luther — Bibel"
+      }
+    },
+    "notes": "Candidate 0 rejected: it carries a Luther verse number (\"schütten 42 und\") between clauses, which the indexer is meant to drop. Candidate 1 taken at 33 words, since it was the last one."
+  },
+  "bewohnen": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~wohnen~:\n\n- ~wohnen~: Aus Mhd. ~wonen~, aus Ahd. ~wonēn~, aus proto-westgermanisch *~wunēn~, aus urgermanisch *~wunāną~, aus PIE *~wenh₁-~ („wünschen, lieben, streben“) — einen Ort zu bewohnen heißt, ihn genug zu lieben, um zu bleiben. Dieselbe Wurzel liegt ~Wonne~, ~wünschen~ und ~gewinnen~ zugrunde. Verwandt mit englisch ~wont~, niederländisch ~wonen~, gotisch ~wunan~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ macht ein intransitives Verb transitiv und richtet die Handlung auf ein Objekt.\n\n~Wohnen~ verlangt eine Präposition, ~bewohnen~ ein Objekt: Man wohnt in einem Haus und bewohnt es. Alltäglich ist vor allem das Partizip — Häuser sind ~bewohnt~ oder ~unbewohnt~ —, und der ~Bewohner~ stammt aus derselben Bildung.",
+      "en": "An inseparable compound of ~be-~ + ~wohnen~:\n\n- ~wohnen~: From MHG ~wonen~, from OHG ~wonēn~, from Proto-West Germanic *~wunēn~, from Proto-Germanic *~wunāną~, from PIE *~wenh₁-~ (\"to wish, love, strive for\") — to inhabit a place is to love it enough to remain. The same root underlies ~Wonne~ (\"bliss\"), ~wünschen~, and ~gewinnen~. Cognate with English ~wont~ (\"accustomed\"), Dutch ~wonen~, Gothic ~wunan~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ makes an intransitive verb transitive, directing the action at an object.\n\n~wohnen~ wants a preposition, ~bewohnen~ an object: one lives in a house, or one ~bewohnt~ it. The participle is the everyday form — houses are ~bewohnt~ or ~unbewohnt~ — and ~Bewohner~ (\"inhabitant\") comes of the same formation."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Sie werden Häuser bauen und bewohnen; sie werden Weinberge pflanzen und ihre Früchte essen.",
+        "source": "Luther — Bibel"
+      },
+      "en": {
+        "sentence": "They shall build houses and inhabit them; they shall plant vineyards and eat their fruit.",
+        "source": "Luther — Bibel"
+      }
+    },
+    "notes": null
+  }
+}

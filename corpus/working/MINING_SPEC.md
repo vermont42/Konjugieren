@@ -69,6 +69,24 @@ prose written for exactly this slot — pick the index that fits and splice it u
 reading's `translation` to pick: for `abarbeiten` "work off", *ab-* is the separation sense, not
 the dismantling one.
 
+**The lead sentence has a fixed form, so you never need to look at another shard to match it.**
+For a separable compound, German reads `Trennbares Kompositum aus ~auf-~ + ~reißen~:` and English
+reads `A separable compound of ~auf-~ + ~reißen~:`; for an inseparable one, substitute
+`Untrennbares Kompositum` / `An inseparable compound`. Note the asymmetry — German drops the
+article and English keeps it. That is not a slip: it is what the mined corpus already
+overwhelmingly does, and these two forms were chosen by counting the existing shards rather than
+by taste, so following them keeps new shards consistent with the ones already written.
+
+**Write the trailing hyphen only on a bound morpheme — that is, when the first element's `kind` is
+`prefix`.** `~auf-~` is right because *auf-* cannot stand alone in that use, but `besserstellen`
+takes `~besser~` with no hyphen, because *besser* is an ordinary free adjective and hyphenating it
+would claim otherwise. The same goes for noun and verb first elements. Check `kind` rather than
+guessing from the shape of the word. Where the compound also has an attested
+history of its own — the `vermeiden` example above — put that first and let the compound clause
+follow. A shard-run on 2026-07-20 opened a neighbouring `.out.json` purely to copy this phrasing,
+which is both a waste of its budget and a way for the house voice to drift by transcription; it is
+written here so the shard is genuinely self-sufficient.
+
 **Pick the sense by analogy, using `sense_exemplars`.** Where a morpheme carries that field, it
 is a list parallel by index to `senses`, holding two or three verbs that uncontroversially use
 each sense. Find the entry whose exemplars your verb most resembles and take that index. This is
@@ -83,7 +101,15 @@ one. If your verb resembles none of the exemplars, say so in `notes` — a missi
 finding, and two were added from exactly such a report.
 
 Exemplars are a picking aid only. They are never spliced into the prose and must not appear in
-your output.
+your output — and that includes `notes`, not just the etymology.
+
+**The rule bites in a way that is easy to miss.** Exemplars are ordinary German verbs, and some
+are exactly what a good closer would reach for: *ausschenken* is a natural thing to cite while
+writing about *ausbringen*. A shard-run on 2026-07-20 caught four such leaks in its own prose
+only by checking afterwards. So the constraint is narrower than "avoid these words" — it is
+**do not present an exemplar as evidence for the sense you picked**, which is what would make the
+selection aid look like an argument. Citing a cognate or a neighbouring compound on its own
+merits is fine, and a post-hoc scan of your output against the exemplar list is cheap insurance.
 
 **Every sense is a complete sentence, so add no connective of your own.** It already carries
 its own subject — `~be-~ makes an intransitive verb transitive, …` — and concatenating it after
@@ -132,10 +158,56 @@ Candidates are already ranked and balanced across sources. Reject a candidate wh
 
 - the token is a **nominalized infinitive** — *das Ringen*, *beim Abarbeiten*. German
   capitalizes nouns, so this is usually visible; the indexer already filters most, not all.
-- the token is a **participle used purely adjectivally** — *die abgearbeitete Liste*.
+- the token is a **participle used purely adjectivally** — *die abgearbeitete Liste*. This covers
+  the **predicative** case too, which is where whole pools disappear: *ist stark ausgeprägt* is an
+  adjective, not a passive. The test is gradability — if it takes a degree adverb (*stark*,
+  *gering*) or forms a comparative (*geringer ausgeprägt*), it has become an adjective, because
+  only adjectives compare. A *werden*-passive (*wurde ausgeprägt*) is a genuine verbal use; a
+  *sein*-Zustandspassiv that grades is not. `ausprägen` lost all five candidates this way, which
+  is the right outcome: shipping one would teach the adjective rather than the verb.
 - the snippet is **too fragmentary** to stand alone, or needs its antecedent to make sense.
 - it is a **different verb** that happens to share the form. Candidates are deliberately
   ambiguous: a form maps to several verbs and disambiguation was left to you.
+
+**Among candidates that are all genuine, prefer one attesting the sense the reading glosses.**
+Walk the candidates in order and take the earliest genuine verbal use *whose sense matches the
+reading's `translation`*; if none matches, fall back to the earliest genuine use and say so in
+`notes`. A different sense of the same lemma is never a rejection — it is a tiebreak, and it
+loses to every rejection criterion above.
+
+**Apply the three rules in this order, because two of them used to contradict each other.**
+
+1. **Reject** anything failing a criterion above. This always wins.
+2. **Sense.** Among survivors, prefer one attesting the glossed sense — but the sense tiebreak
+   **does not reach past a usable candidate to one of 40 words or more**. If the only sense-matching
+   candidate is a 61-word Kafka period and a 20-word candidate attests a neighbouring sense of the
+   same lemma, take the short one and note the mismatch.
+
+   *Forty is inclusive because the boundary was tested at exactly 40 within a day of being written:*
+   `bescheiden`'s only gloss-matching candidate is a 40-word Mann period, and "over 40" let the
+   tiebreak reach past a clean 12-word Luther candidate to ship it. German literary prose clusters
+   right at that length, so an exclusive bound is a bound that does not bind.
+3. **Length.** Among candidates equally genuine *and* equally sense-matching, prefer the one inside
+   the 8–30 word band. A 38-word rank-0 loses to a 20-word rank-1 when both attest the gloss.
+
+Otherwise do not reorder. Two shard-runs on 2026-07-20 hit rules 2 and 3 pulling opposite ways
+within an hour of the sense rule being added — `ausstoßen` (20-word "expel" against 61-word "emit")
+and `ausräumen` (38-word against 20-word, both matching) — and each resolved it sensibly but
+differently, which is the drift this brief exists to prevent. The precedence above is what they
+were each inventing.
+
+The rule earned its place on 2026-07-20, when three consecutive shards reported the same loss
+independently. `aufblasen`'s first candidate is Luther's smith blowing on coals; its second is
+Nietzsche's *Zuletzt platzt ein Frosch, der sich zu lange aufblies* — fourteen words, and an
+exact attestation of the gloss "inflate." Strict rank order shipped the smith. Both are real
+uses of the lemma, so no rejection criterion touched either, and each run invented and then
+recorded a different tiebreak — the signature of drift this brief exists to prevent.
+
+Note what this rule is *not*: it does not re-rank the pool, and it never reaches past a
+candidate it would otherwise have taken for any reason other than sense. Shards mined before
+this date followed strict rank order, so a handful of early verbs attest a sense other than
+their gloss. That is an accepted inconsistency, not a defect to repair — re-mining costs far
+more than it recovers.
 
 **A verb whose every candidate is a homograph is a known, accepted outcome — not an indexer
 bug.** Return nulls and say so; do not infer that the form→lemma map is broken. The map is
@@ -190,18 +262,28 @@ Keep the sentence a reasonable length for a phone screen — roughly 8 to 30 wor
 are now sorted so that ones inside that band come first within their rank tier, so the earliest
 genuine verbal use is usually also the right length.
 
-**When there is no next candidate, 55 words is the ceiling.** Past that, return `null` rather
+**When there is no next candidate, 65 words is the ceiling.** Past that, return `null` rather
 than quoting a period that will not fit a phone screen. A null is a productive result — Phase 5
 collects them and Josh expands the corpus — whereas an unreadable 80-word quotation ships. Below
-55, prefer the shorter candidate but do not reject a usable sentence for length alone.
+65, prefer the shorter candidate but do not reject a usable sentence for length alone.
 
 The ceiling was 45 until 2026-07-20, when a shard-run reported nulling `anbetreffen` and
 `andrehen` — both sole candidates, both genuine verbal uses, both 53 words, both trapped in a
 single long Nietzsche or Kafka period. Losing a verb's only attestation to eight words of margin
-is the worse error, since a null ships nothing at all. The ceiling still exists, and still binds
-against the genuine runaways; it simply no longer sits just below where German literary prose
-naturally lands. This applies only when the candidate is the last one — a long sentence never
-beats a short one that is equally good.
+is the worse error, since a null ships nothing at all. It was raised again, to 65, when the
+same complaint arrived at 57 words (`aufklingen`, Mann) — at which point the pool was measured
+rather than argued about: 22 verbs across the corpus have every candidate above 55 but at least
+one at 65 or below, and they were shipping nothing. The distribution has no cliff, so the number
+is a judgment about phone screens, not a natural boundary; 65 still nulls the genuine runaways,
+which in the shard that prompted the change ran 86 words. The ceiling still exists, and still
+binds; it simply no longer sits just below where German literary prose naturally lands. This
+applies only when the candidate is the last one — a long sentence never beats a short one that
+is equally good.
+
+**Raising this number is cheap and safe, which is why it has moved twice.** The ceiling is a rule
+in this brief, not a filter in the indexer, so changing it leaves every candidate pool byte-identical
+and cannot orphan a quotation an earlier shard already mined. Contrast the indexer's ranking and
+`MAX_OCCURRENCES`, where the same-looking edit invalidates mined work.
 
 **Never trim a sentence to hit that target.** Quote it whole or reject it. German puts the
 finite verb second and strands its particle at the clause end, so the target verb frequently

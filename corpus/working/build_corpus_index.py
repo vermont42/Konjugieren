@@ -115,12 +115,35 @@ PARTY_TAG = re.compile(
 TERMINAL_PUNCT = (".", "!", "?", "…")
 TRAILING_CLOSERS = "\"'»«“”„)]›‹’ "
 # A MediaWiki list item or namespace link that survived extraction as raw markup.
+#
+# The `={2,}` and `:[A-ZÄÖÜ]` alternatives were added on 2026-07-20 after three shard-runs
+# independently rejected candidates from `weimar-verfassung-de.txt` reading
+# `==== Artikel 112 ==== :Jeder Deutsche ist berechtigt…`. The original pattern missed both
+# halves: it anchored list markers at `^` (the heading pushes them mid-string) and knew nothing
+# of `=` headings at all. `auswandern` lost its only candidate this way, so the cost was verbs,
+# not just wasted rejection effort.
+#
+# Both alternatives are unanchored on purpose — a heading glued to the following sentence is
+# exactly the case that was slipping past. Measured over the whole 5,250-candidate pool before
+# landing: 51 matches, every one of them in that single Wikisource file, and none among the 317
+# sentences already mined. German prose does not contain `==`, and a colon bound directly to a
+# capital with no space is a wiki list marker rather than punctuation.
 WIKI_MARKUP = re.compile(
     r"^\s*[*#:]+\s|"
+    r"={2,}|"
+    r"(?:^|\s):[A-ZÄÖÜ]|"
     r"\b(?:Hilfe|Datei|Kategorie|Vorlage|Wikipedia|Spezial|Diskussion|Portal|Benutzer):[A-ZÄÖÜ]"
 )
-# A verse number between a clause boundary and the lowercase word resuming the sentence.
-VERSE_NUMBER = re.compile(r"[;:,.]\s+\d{1,3}\s+[a-zäöüß]")
+# A verse number between a clause boundary and the word resuming the sentence.
+#
+# The trailing class covers both cases on purpose. It was lowercase-only until 2026-07-20, which
+# left a gap neither pattern caught: `sprach: 24 Du Menschenkind` has punctuation *before* the
+# numeral (so BARE_VERSE_NUMBER, which wants a lowercase letter there, misses it) and a capital
+# *after* (so this pattern, wanting lowercase, missed it too). Luther's `sprach:` introducing
+# direct speech puts a capital after the colon constantly, so the gap was not a rare shape —
+# four shard-runs reported candidates falling through it before the cause was located.
+# 24 pending candidates matched when the fix landed, and none of the 347 sentences already mined.
+VERSE_NUMBER = re.compile(r"[;:,.]\s+\d{1,3}\s+[a-zäöüßA-ZÄÖÜ]")
 # The same versification with no punctuation at all in front of it: `…Tannenholz 9 Meine
 # Knechte…`. Luther prose spells its numerals out, so a bare 1-3 digit integer between a word
 # and a capitalized word is versification rather than content.

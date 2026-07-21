@@ -3082,3 +3082,154 @@ moved once today. Moving it twice in one session to rescue one verb is how a cei
 anything, so it stays, and Phase 5's null list can say whether Bundestag-length verbs are a real
 pattern. `abhandenkommen` is the case that will argue loudest: its sole candidate is 58 words, and
 since `abhanden-` survives in that one verb, it is the only attestation the corpus will ever hold.
+
+## The window that spent half itself on the pipeline, and measured every time (2026-07-20)
+
+Sixteen shards mined this window, 010 through 026, taking Phase 4 from 10 of 104 to 27. The other
+half of the window went on the pipeline, which is the same trade the previous entry defended. What
+changed is not the ratio but the method: every proposal this time was settled by measuring the
+candidate pool rather than by weighing anecdotes, and that turned out to reverse the answer about
+as often as it confirmed it.
+
+### The cost model that decided everything
+
+One distinction did more work than any other, and it is worth stating plainly because it is not
+obvious from inside a shard report: **a rule in `MINING_SPEC.md` is cheap to change and a filter in
+`build_corpus_index.py` is expensive.** Changing the brief leaves every candidate pool byte-identical,
+so nothing already mined can be orphaned. Changing the indexer re-ranks pools, and `merge_balanced`
+pops from per-work queues *after* sorting, so a new filter can push a quotation out of its own
+verb's pool — the failure that hit shard 001's `abgehen` in an earlier window.
+
+Three indexer changes were diagnosed correctly by subagents and **declined**:
+
+- **Stranded particles.** `ansuchen`'s candidate is Kafka's *fing sofort wieder zu suchen an*, where
+  the `an` belongs to *anfangen*. There is even an airtight fix — a separable verb infixes *zu*
+  (*anzusuchen*), so "zu suchen … an" can never be *ansuchen*. It matched 4 candidates in 5,250,
+  all in shards already mined. A correct diagnosis and a worthwhile remedy are different questions.
+- **Hyphen-severed extractions.** 15 of 5,250, and agents reject them reliably by hand, which the
+  brief prefers as a visible loss over a silent edit.
+- **Verse numbers, at first.** Declined on the reasoning that filtering rescues nothing, since the
+  starved verbs are null either way. That was true and it was answering the wrong question — see
+  below.
+
+Two were **taken**, and the test that licensed both was the same: apply the pattern to all 347
+mined quotations and confirm zero would be orphaned.
+
+- **Wiki markup.** `WIKI_MARKUP` anchored list markers at `^` and knew nothing of `=` headings, so
+  `==== Artikel 112 ==== :Jeder Deutsche…` sailed through. 51 matches, *every one* in
+  `weimar-verfassung-de.txt` — a pattern that fires in exactly one document is describing that
+  document's extraction damage, not German. `auswandern` had lost its only candidate to it, so the
+  cost had stopped being wasted effort and started being verbs.
+- **Verse numbers, on the second look.** Shard 018 noted the corrupt candidate was ranked *first*,
+  which reframes the exposure: not a missed rescue but a corrupt sentence silently shipping, since
+  verbatim-quoting a corrupt candidate passes every check the validator makes. Shard 024 then
+  located the actual gap: `VERSE_NUMBER` wanted lowercase after the numeral and `BARE_VERSE_NUMBER`
+  wanted lowercase before it, so `sprach: 24 Du Menschenkind` — punctuation before, capital after —
+  fell between them. Luther's `sprach:` introducing direct speech makes that shape common, which is
+  why four separate runs tripped over it.
+
+Both landed with all mined quotations intact. Zero-candidate verbs went 990 → 997: seven verbs
+converted from a silent hand-rejection to a visible zero, which is what the Phase 5 gap list wants.
+
+### The ceiling the last window declined to move
+
+That entry left the 55-word ceiling alone on the grounds that shard 003 wanted 65 and shard 002 said
+it never bound — genuinely conflicting anecdotes, and it had already moved once that day. The
+argument was sound and the evidence was the wrong kind. Measured across the pool, **22 verbs have
+every candidate above 55 and at least one at 65 or below**, and were shipping nothing at all. So it
+moved to 65. The distribution has no cliff, so the number is a judgment about phone screens rather
+than a natural boundary; 65 still nulls the genuine runaways, which in the shard that prompted it
+ran 86 words. Notably the previous entry predicted `abhandenkommen` would argue loudest at 58 words,
+and it was right — that class is exactly what the raise rescued.
+
+### Report-then-widen is structurally too late
+
+The session's most useful finding is about the feedback loop rather than any one defect. Shards are
+ordered alphabetically, so a prefix's shards run consecutively — which means by the time three
+agents have independently reported a missing sense, that prefix is nearly exhausted. `auf-` was
+widened from 5 senses to 10 after five shards reported gaps, and only 6 `auf-` verbs remained to
+benefit. `aus-`'s privative gap was reported at shard 020, with zero pending verbs left. The
+feedback arrives, by construction, just after it stops paying.
+
+So the loop was inverted: the pending verb list for a prefix is known in advance, so its sense
+coverage can be audited *before* its first shard runs. Three audits followed, covering 429 pending
+verbs for about five points:
+
+- **`be-`**, 5 → 6 senses. One gap survived: reflexiva tantum (*sich benehmen*, *sich besinnen*,
+  *sich behelfen*, *sich betrinken*), where sense 0 would have had an agent write "directs the
+  action at an object" for a verb that can never take one.
+- **`ver-`**, 6 → 8. Gradual cessation (*verklingen*, *versiegen*, *verkommen* — 19 pending) and
+  closing/covering (*verdecken*, *versperren* — 7).
+- **`ein-`**, 4 → 6. Habituation through practice (*einüben*, *einarbeiten*, *einleben* — 11) and
+  destructive collapse inward (*einstürzen*, *einreißen* — 7).
+
+**Auditing beat reporting on accuracy, not merely on timing.** Three `be-` groups looked like gaps
+and dissolved under one test. *beleben* and *bestürzen*: *leben* and *stürzen* are intransitive, so
+transitivizing them *is* sense 0. *bekochen* and *beliefern*: *für jemanden kochen* → *jemanden
+bekochen* *is* sense 1. *bekümmern* and *bezaubern*: denominal from *Kummer* and *Zauber*, which is
+sense 3. A shard meeting any one of these alone would plausibly have reported a gap, because the
+population is invisible from inside a single shard.
+
+The reverse also happened, and it is the more useful half. **Shard 022 caught what the audit
+missed**: German *be-* promotes **dative** objects too — *einem Rat folgen* → *einen Rat befolgen*,
+*jemandem gleichen* → *etwas begleichen*. The audit tested the prepositional pattern, found it
+covered, and never thought to check dative-governing bases; three verbs in one shard turned on it.
+Auditing sees the whole population but only along the axes you think to test. Shards hit cases
+instead of reasoning about them, which is a different and complementary kind of coverage.
+
+### Two things that would have gone wrong quietly
+
+**`repair_mined_connectives.py` can no-op without erroring.** The `be-` fix was a sense *amendment*
+rather than an addition, which is a different cost class: adding senses is free for mined work,
+editing one strands every entry that spliced it. Three had. The repair script reported "0 etymology
+texts rewritten" and its tail-anchoring simply never fired. That was caught only by checking for the
+old string directly afterward rather than trusting the summary line. Exact string replacement fixed
+all three. Anyone relying on that script should verify its output, not its report.
+
+**A defect scan that was mostly wrong.** Shard 023 flagged malformed sense strings, and a
+corpus-wide scan turned up 60 senses naming a target verb built on their own morpheme. Most are not
+defects: *abhanden*, *vonstatten*, *überhand*, *vorlieb*, *zugute*, and *brach* are cranberry
+morphemes, surviving in German only inside one or two fixed verbs. *abhanden* exists nowhere except
+*abhandenkommen*, so a sense reading "the fixed expression *abhandenkommen*" is not circular —
+naming the verb *is* the definition, because the particle has no independent life to describe. Two
+were genuine: `separ:beiseite` sense 2 stranded a bare modal after its colon, and `separ:bekannt`
+sense 1 was ungrammatical (`ist hier in die Öffentlichkeit: bekanntgeben, bekanntmachen`) *and*
+spliced into exactly the two verbs it named, so both etymologies cited themselves. Fixed and
+re-anchored.
+
+### Also landed
+
+Four more brief changes, all cheap, all from reports. A **rule-precedence block** (reject > sense >
+length), which existed because the sense-matching tiebreak added earlier in the window promptly
+collided with the 8–30 word band — two shards hit it within one wave and resolved it differently.
+The **predicative-participle boundary**: the brief covered only attributive *die abgearbeitete
+Liste*, so *ist stark ausgeprägt* was unaddressed; the test is gradability, since only adjectives
+compare. A **fixed lead-sentence form**, after a shard opened a neighbouring `.out.json` purely to
+copy the house voice — the German drops the article and the English keeps it, which was settled by
+counting 525 mined entries rather than by taste. And a tightened **exemplar-leak rule**, now scoped
+to `notes` as well as prose, after two shards caught themselves citing an exemplar as evidence for
+the sense they had picked.
+
+`corpus/working/PHASE5_FINDINGS.md` is new and tracked, force-added like `MINING_SPEC.md`. It exists
+because a question — "is stuff being recorded for the sweep?" — exposed that the cross-cutting
+findings lived only in the conversation. The per-verb hedges were always durable in each shard's
+`notes` (264 of them at the time), but the gloss defects, the declined fixes, and the starvation
+lists were one session boundary from vanishing. **The declined fixes were the most important thing
+to write down**: a future session reading only "these are real defects" would fix them, re-rank the
+pools, and orphan mined work.
+
+Three `Verbs.xml` glosses look like extraction damage rather than mistranslation, and they are in
+that file rather than fixed here, since `Verbs.xml` feeds the at-odds oracle: `ansinnen` glossed
+"designate" (it is "demand or expect of someone", the sense the noun *Ansinnen* keeps), `aufstören`
+glossed "pattern up" (it is "rouse"), and `ausfolgen` glossed "follow, accompany" (it is Austrian
+officialese for "hand over"). "Pattern up" is the tell — not a wrong translation so much as not a
+phrase.
+
+### The economics, again
+
+Sixteen shards at roughly two points each is about 32; the window ran to roughly 35 including the
+audits, the six brief fixes, three sense-inventory changes, two indexer fixes, and a validator pass
+after every one of them. Yield rose from the 53% baseline to 55% overall, with individual shards
+reaching 72%. Concurrency stayed at 2, and there is still no case for raising it: not one of this
+window's fixes came from inspecting code, and none was visible to the validator. They came from
+subagents mentioning that something was awkward.

@@ -4,10 +4,11 @@
       "chain": "Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~.",
       "senses": [
         "~be-~ macht ein intransitives Verb transitiv und richtet die Handlung auf ein Objekt.",
-        "~be-~ hebt das, was das Grundverb mit einer Präposition regiert, zum Akkusativobjekt.",
+        "~be-~ hebt das, was das Grundverb mit einer Präposition oder im Dativ regiert, zum Akkusativobjekt.",
         "~be-~ drückt aus, dass etwas auf eine Fläche aufgebracht oder diese bedeckt wird.",
         "~be-~ bildet aus einem Substantiv oder Adjektiv ein Verb mit der Bedeutung, damit zu versehen oder dazu zu machen.",
-        "~be-~ verleiht der Grundhandlung Gründlichkeit oder Vollständigkeit."
+        "~be-~ verleiht der Grundhandlung Gründlichkeit oder Vollständigkeit.",
+        "~be-~ bildet ein Verb, das nur reflexiv gebraucht wird — die Handlung richtet sich auf den Handelnden selbst zurück und nie auf ein äußeres Objekt."
       ],
       "occurrences": 144
     },
@@ -91,7 +92,9 @@
         "~ver-~ drückt Verbrauchen, Aufzehren oder Aufbrauchen aus.",
         "~ver-~ drückt Entfernung oder Wegbewegung aus, aus dem älteren räumlichen Sinn des Präfixes.",
         "~ver-~ kehrt die Grundhandlung um oder negiert sie.",
-        "~ver-~ bildet aus einem Substantiv oder Adjektiv ein Verb mit der Bedeutung, etwas dazu zu machen."
+        "~ver-~ bildet aus einem Substantiv oder Adjektiv ein Verb mit der Bedeutung, etwas dazu zu machen.",
+        "~ver-~ bezeichnet ein allmähliches Vergehen — der Vorgang läuft von selbst aus, bis nichts mehr von ihm übrig ist.",
+        "~ver-~ drückt Verschließen oder Verdecken aus — etwas wird zugemacht, versperrt oder den Blicken entzogen."
       ],
       "occurrences": 189
     },
@@ -140,10 +143,11 @@
       "chain": "From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~.",
       "senses": [
         "~be-~ makes an intransitive verb transitive, directing the action at an object.",
-        "~be-~ promotes what the base verb governs with a preposition to a direct object.",
+        "~be-~ promotes what the base verb governs with a preposition or in the dative to a direct object.",
         "~be-~ conveys applying something over a surface or covering it.",
         "~be-~ derives a verb from a noun or adjective, meaning to furnish with or make into that.",
-        "~be-~ adds thoroughness or completeness to the base action."
+        "~be-~ adds thoroughness or completeness to the base action.",
+        "~be-~ forms a verb used only reflexively — the action turns back on the one performing it and never reaches an outside object."
       ],
       "occurrences": 144
     },
@@ -227,7 +231,9 @@
         "~ver-~ conveys using up, consuming, or wearing away.",
         "~ver-~ conveys removal or motion away, from the prefix's older spatial sense.",
         "~ver-~ reverses or negates the base action.",
-        "~ver-~ derives a verb from a noun or adjective, meaning to make something into that."
+        "~ver-~ derives a verb from a noun or adjective, meaning to make something into that.",
+        "~ver-~ marks a gradual dying away — the process runs itself out until nothing of it remains.",
+        "~ver-~ conveys closing or covering — something is shut, blocked, or hidden from view."
       ],
       "occurrences": 189
     },

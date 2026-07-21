@@ -1,0 +1,355 @@
+{
+  "belachen": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~lachen~:\n\n- ~lachen~: Aus Mhd. ~lachen~, aus Ahd. ~lahhen~, aus Proto-Westgermanisch *~hlahhjan~, aus Urgermanisch *~hlahjaną~, aus PIE *~kleg-~ („schreien, tönen“). Der anlautende ~hl-~-Cluster wurde im Althochdeutschen zu ~l-~ vereinfacht. Verwandt mit Englisch ~laugh~, Niederländisch ~lachen~, Gotisch ~hlahjan~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ hebt das, was das Grundverb mit einer Präposition oder im Dativ regiert, zum Akkusativobjekt.\n\nAnders als ~auslachen~ muss ~belachen~ nicht spöttisch sein: Belacht wird, was mit Gelächter aufgenommen wird. Das Verb ist heute selten und literarisch und begegnet meist im Passiv.",
+      "en": "An inseparable compound of ~be-~ + ~lachen~:\n\n- ~lachen~: From MHG ~lachen~, from OHG ~lahhen~, from Proto-West Germanic *~hlahhjan~, from Proto-Germanic *~hlahjaną~, from PIE *~kleg-~ (\"to cry out, sound\"). The initial ~hl-~ cluster was simplified to ~l-~ in Old High German. Cognate with English ~laugh~, Dutch ~lachen~, Gothic ~hlahjan~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ promotes what the base verb governs with a preposition or in the dative to a direct object.\n\nUnlike ~auslachen~ (\"to mock\"), ~belachen~ need not be derisive: what is ~belacht~ is what has been met with laughter. The verb is now rare and literary, and turns up mostly in the passive."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Seine Kratzfüße, seine Kußhände wurden belacht, und er verdoppelte sie daher.",
+        "source": "Mann — Der Tod in Venedig"
+      },
+      "en": {
+        "sentence": "His scraping bows and his blown kisses were laughed at, and so he redoubled them.",
+        "source": "Mann — Der Tod in Venedig"
+      }
+    },
+    "notes": null
+  },
+  "beladen": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~laden~:\n\n- ~laden~: Zwei historisch verschiedene Verben unter einem Infinitiv. ~laden~ (stark, „beladen“): aus Mhd. ~laden~, aus Ahd. ~hladan~, aus Proto-Westgermanisch *~hlaþan~, aus Urgermanisch *~hlaþaną~, aus PIE *~kleh₂-~ („legen, ausbreiten“); verwandt mit Englisch ~lade~ und ~laden~, Litauisch ~klṓti~. ~laden~ (schwach, „einladen“): aus Mhd. ~laden~, aus Ahd. ~ladon~, aus Proto-Westgermanisch *~laþōn~, aus Urgermanisch *~laþōną~, von *~laþō~ („Einladung“), aus PIE *~h₂lot-eh₂~, einer nur im Germanischen und Anatolischen belegten Wurzel (Hethitisch ~halzai~).\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ drückt aus, dass etwas auf eine Fläche aufgebracht oder diese bedeckt wird.\n\nDie starke Konjugation (~belud~, ~beladen~) zeigt, welcher der beiden Zwillinge hier vorliegt: das starke ~laden~ „aufladen“, nicht das schwache ~laden~ „einladen“. Die Ladung rückt dabei in eine ~mit~-Phrase, und das Gefährt oder das Tier, das sie trägt, wird zum Akkusativobjekt.",
+      "en": "An inseparable compound of ~be-~ + ~laden~:\n\n- ~laden~: Two historically distinct verbs under one infinitive. ~laden~ (strong, \"to load\"): from MHG ~laden~, from OHG ~hladan~, from Proto-West Germanic *~hlaþan~, from Proto-Germanic *~hlaþaną~, from PIE *~kleh₂-~ (\"to put, lay out\"); cognate with English ~lade~ and ~laden~, Lithuanian ~klṓti~. ~laden~ (weak, \"to invite, summon\"): from MHG ~laden~, from OHG ~ladon~, from Proto-West Germanic *~laþōn~, from Proto-Germanic *~laþōną~, from *~laþō~ (\"invitation\"), from PIE *~h₂lot-eh₂~, a root found only in Germanic and Anatolian (Hittite ~halzai~).\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ conveys applying something over a surface or covering it.\n\nThe strong conjugation (~belud~, ~beladen~) shows which of the two twins is at work here: the strong ~laden~ \"to load,\" not the weak ~laden~ \"to invite.\" The cargo moves into a ~mit~-phrase, and the vehicle or animal carrying it becomes the direct object."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Da zerrissen sie ihre Kleider und belud ein jeglicher seinen Esel und zogen wieder in die Stadt.",
+        "source": "Luther — Bibel"
+      },
+      "en": {
+        "sentence": "Then they tore their clothes, and each man loaded his donkey, and they went back into the city.",
+        "source": "Luther — Bibel"
+      }
+    },
+    "notes": null
+  },
+  "belagern": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~lagern~:\n\n- ~lagern~: Abgeleitet vom Substantiv ~Lager~ („Lager, Vorrat, Warenlager“), aus Mhd. ~lëger~, aus Ahd. ~lëgar~, aus Proto-Westgermanisch *~legr~, aus Urgermanisch *~legrą~. Die moderne Form mit ~-a-~ ist ostmitteldeutscher Herkunft, beeinflusst von ~Lage~. Verwandt mit Englisch ~lair~, Niederländisch ~leger~, Dänisch ~lejr~, Schwedisch ~läger~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ macht ein intransitives Verb transitiv und richtet die Handlung auf ein Objekt.\n\nDas Bild ist wörtlich: Ein Heer schlägt sein ~Lager~ rings um eine Stadt auf, und aus dem intransitiven Lagern wird ein Belagern der Stadt selbst. Übertragen belagern heute auch Reporter ein Haus.",
+      "en": "An inseparable compound of ~be-~ + ~lagern~:\n\n- ~lagern~: Derived from the noun ~Lager~ (\"camp, store, warehouse\"), from MHG ~lëger~, from OHG ~lëgar~, from Proto-West Germanic *~legr~, from Proto-Germanic *~legrą~. The modern form with ~-a-~ is of East Central German origin, influenced by ~Lage~ (\"position\"). Cognate with English ~lair~, Dutch ~leger~, Danish ~lejr~, Swedish ~läger~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ makes an intransitive verb transitive, directing the action at an object.\n\nThe image is literal: an army pitches its ~Lager~ (\"camp\") around a town, and intransitive camping becomes a besieging of the town itself. Figuratively, reporters can now ~belagern~ a house."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Will sie aber nicht friedlich mit dir handeln und will mit dir kriegen, so belagere sie.",
+        "source": "Luther — Bibel"
+      },
+      "en": {
+        "sentence": "But if it will not deal peaceably with you and means to make war on you, then besiege it.",
+        "source": "Luther — Bibel"
+      }
+    },
+    "notes": null
+  },
+  "beleben": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~leben~:\n\n- ~leben~: Aus mhd. ~lëben~, aus ahd. ~lebēn~, aus proto-westgermanisch *~libbjan~, aus urgermanisch *~libjaną~, aus PIE *~leyp-~ („zurücklassen, haften, verweilen“). Die Entwicklung von „haften“ zu „am Leben bleiben“ verläuft parallel zu ~bleiben~. Verwandt mit englisch ~live~, niederländisch ~leven~, gotisch ~liban~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ macht ein intransitives Verb transitiv und richtet die Handlung auf ein Objekt.\n\nDas Verb deckt beides ab: einem Toten oder Erschöpften das Leben zurückgeben und einen Ort mit Betrieb füllen. Das Partizip ~belebt~ hat sich vom Verb gelöst und ist zum gewöhnlichen Adjektiv geworden — eine ~belebte~ Straße ist keine wiederbelebte.",
+      "en": "An inseparable compound of ~be-~ + ~leben~:\n\n- ~leben~: From MHG ~lëben~, from OHG ~lebēn~, from Proto-West Germanic *~libbjan~, from Proto-Germanic *~libjaną~, from PIE *~leyp-~ (\"to leave, cling, linger\"). The development from \"to cling\" to \"to remain alive\" parallels ~bleiben~ (\"to remain\"). Cognate with English ~live~, Dutch ~leven~, Gothic ~liban~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ makes an intransitive verb transitive, directing the action at an object.\n\nThe verb covers both senses: restoring life to the dead or exhausted, and filling a place with bustle. The participle ~belebt~ has broken away from the verb into an ordinary adjective — a ~belebte~ street is a busy one, not a resuscitated one."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Als wir in den mit zwei hohen Nußbäumen überschatteten Pfarrhof traten, saß der gute alte Mann auf einer Bank vor der Haustür, und da er Lotten sah, ward er wie neu belebt, vergaß seinen Knotenstock und wagte sich auf, ihr entgegen.",
+        "source": "Goethe — Die Leiden des jungen Werthers"
+      },
+      "en": {
+        "sentence": "When we stepped into the parsonage yard, shaded by two tall walnut trees, the good old man was sitting on a bench before the front door, and when he saw Lotte he was as if brought back to life, forgot his knotted stick, and ventured up to meet her.",
+        "source": "Goethe — Die Leiden des jungen Werthers"
+      }
+    },
+    "notes": "Candidates 0, 2 and 3 use ~belebt~/~belebten~ adjectivally (gradable: \"stark belebt\"); candidate 1 is the earliest genuine werden-passive, though at 41 words it is above the preferred band."
+  },
+  "belehnen": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~lehnen~:\n\n- ~lehnen~: Verschmelzung zweier Verben: mhd. ~linen~/~lenen~ (intransitiv), aus ahd. ~hlinēn~, aus proto-westgermanisch *~hlinēn~, aus urgermanisch *~hlināną~, aus PIE *~k̂ley-~ („lehnen, neigen“); und mhd. ~leinen~ (kausativ), aus ahd. ~hleinen~, aus urgermanisch *~hlainijaną~. Ein zweites, archaisches ~lehnen~ („leihen, borgen“), aus ahd. ~lēhanōn~, lebt nur in ~entlehnen~ und ~Lehnwort~ fort. Verwandt mit englisch ~lean~, lateinisch ~clīnō~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ hebt das, was das Grundverb mit einer Präposition oder im Dativ regiert, zum Akkusativobjekt.\n\nHier lebt der zweite, archaische Zweig fort: nicht das ~lehnen~ des Anlehnens, sondern das des Verleihens, das sonst nur noch in ~entlehnen~ und ~Lehnwort~ steckt. Der Lehnsherr belehnt den Vasallen — der Empfänger wird zum Akkusativobjekt, das Lehen selbst tritt in eine ~mit~-Phrase.",
+      "en": "An inseparable compound of ~be-~ + ~lehnen~:\n\n- ~lehnen~: A merger of two verbs: MHG ~linen~/~lenen~ (intransitive), from OHG ~hlinēn~, from Proto-West Germanic *~hlinēn~, from Proto-Germanic *~hlināną~, from PIE *~k̂ley-~ (\"to lean, incline\"); and MHG ~leinen~ (causative), from OHG ~hleinen~, from Proto-Germanic *~hlainijaną~. A second, archaic ~lehnen~ (\"to lend, borrow\"), from OHG ~lēhanōn~, survives only in ~entlehnen~ and ~Lehnwort~. Cognate with English ~lean~, Latin ~clīnō~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ promotes what the base verb governs with a preposition or in the dative to a direct object.\n\nThis is where the second, archaic branch survives: not the ~lehnen~ of leaning, but the one of lending, otherwise left only in ~entlehnen~ and ~Lehnwort~. A lord ~belehnt~ his vassal — the recipient becomes the direct object, while the fief itself moves into a ~mit~-phrase."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "belehren": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~lehren~:\n\n- ~lehren~: Aus mhd. ~lēren~, aus ahd. ~lēren~, aus proto-westgermanisch *~laiʀijan~, aus urgermanisch *~laizijaną~ („lehren“), einem Kausativum von *~lizaną~ („lernen“), aus PIE *~leys-~ („Spur, Furche, Fährte“): lehren heißt „jemanden dazu bringen, einer Spur zu folgen“. Verwandt mit niederländisch ~leren~, dänisch ~lære~, archaisch englisch ~lear~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ verleiht der Grundhandlung Gründlichkeit oder Vollständigkeit.\n\nWo ~lehren~ neutral ist, hat ~belehren~ im heutigen Gebrauch einen herablassenden Beiklang angenommen: Wer andere belehrt, weiß es besser. Neutral bleibt es nur noch in festen Wendungen der Amtssprache wie ~eines Besseren belehrt werden~.",
+      "en": "An inseparable compound of ~be-~ + ~lehren~:\n\n- ~lehren~: From MHG ~lēren~, from OHG ~lēren~, from Proto-West Germanic *~laiʀijan~, from Proto-Germanic *~laizijaną~ (\"to teach\"), a causative of *~lizaną~ (\"to learn\"), from PIE *~leys-~ (\"track, furrow, trail\"): to teach is \"to cause someone to follow a track.\" Cognate with Dutch ~leren~, Danish ~lære~, archaic English ~lear~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ adds thoroughness or completeness to the base action.\n\nWhere ~lehren~ is neutral, ~belehren~ has picked up a condescending note in modern use: to ~belehren~ someone is to know better than they do. It stays neutral only in set official phrases such as ~eines Besseren belehrt werden~ (\"to be set straight\")."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Und unter Artigkeiten und geistreich werbenden Scherzen belehrte Sokrates den Phaidros über Sehnsucht und Tugend.",
+        "source": "Mann — Der Tod in Venedig"
+      },
+      "en": {
+        "sentence": "And amid courtesies and witty, wooing jests, Socrates instructed Phaedrus about longing and virtue.",
+        "source": "Mann — Der Tod in Venedig"
+      }
+    },
+    "notes": null
+  },
+  "beleihen": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~leihen~:\n\n- ~leihen~: Aus mhd. ~līhen~, aus ahd. ~līhan~, aus proto-westgermanisch *~līhwan~, aus urgermanisch *~līhwaną~, aus PIE *~leykʷ-~ („zurücklassen“). Ein starkes Verb der Klasse I. Verwandt mit englisch ~loan~ (über altnordisch ~lán~, aus *~laihną~ von derselben Wurzel), niederländisch ~lenen~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ hebt das, was das Grundverb mit einer Präposition oder im Dativ regiert, zum Akkusativobjekt.\n\nAus dem Geld, das man ~auf~ ein Haus leiht, wird ein Haus, das man beleiht: Das Pfand selbst rückt in die Objektstelle. Die starke Konjugation der Klasse I (~belieh~, ~beliehen~) ist unverändert geerbt.",
+      "en": "An inseparable compound of ~be-~ + ~leihen~:\n\n- ~leihen~: From MHG ~līhen~, from OHG ~līhan~, from Proto-West Germanic *~līhwan~, from Proto-Germanic *~līhwaną~, from PIE *~leykʷ-~ (\"to leave behind\"). A class I strong verb. Cognate with English ~loan~ (via Old Norse ~lán~, from *~laihną~ of the same root), Dutch ~lenen~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ promotes what the base verb governs with a preposition or in the dative to a direct object.\n\nThe money one lends ~against~ a house becomes a house one ~beleiht~: the pledge itself moves into the object slot. The class I strong conjugation (~belieh~, ~beliehen~) is inherited unchanged."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "belieben": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~lieben~:\n\n- ~lieben~: Aus mhd. ~lieben~, einer Umbildung des selteneren mhd. ~liuben~ („lieb machen“), aus ahd. ~liuben~; Denominativum des Adjektivs ~lieb~, aus mhd. ~liep~, ahd. ~liob~, proto-westgermanisch *~leub~, urgermanisch *~leubaz~ („lieb, geliebt“), aus PIE *~lewbʰ-~ („begehren, lieben“). Englisch ~love~ stammt von der verwandten, aber anderen Wurzel *~lubō~. Verwandt mit englisch ~lief~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ bildet aus einem Substantiv oder Adjektiv ein Verb mit der Bedeutung, damit zu versehen oder dazu zu machen.\n\nDas Mittelhochdeutsche bildete daraus „lieb werden, gefallen“, und daher rührt die eigentümliche Konstruktion des heutigen Verbs: Nicht der Mensch liebt die Sache, sondern die Sache beliebt dem Menschen — ~wie es Ihnen beliebt~. Das Partizip ~beliebt~ „gern gesehen“ ist inzwischen weit gebräuchlicher als das Verb, aus dem es stammt.",
+      "en": "An inseparable compound of ~be-~ + ~lieben~:\n\n- ~lieben~: From MHG ~lieben~, an alteration of the rarer MHG ~liuben~ (\"to make dear\"), from OHG ~liuben~; denominative of the adjective ~lieb~, from MHG ~liep~, OHG ~liob~, Proto-West Germanic *~leub~, Proto-Germanic *~leubaz~ (\"dear, beloved\"), from PIE *~lewbʰ-~ (\"to desire, love\"). English ~love~ is from the related but distinct root *~lubō~. Cognate with English ~lief~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ derives a verb from a noun or adjective, meaning to furnish with or make into that.\n\nMiddle High German built from this a verb meaning \"to become dear, to please,\" and that is where the modern verb's peculiar construction comes from: the person does not love the thing, the thing pleases the person — ~wie es Ihnen beliebt~ (\"as you please\"). The participle ~beliebt~ \"popular\" is by now far commoner than the verb it came from."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Das ist falsch, es kann sich natürlich jeder „groß“ nennen, wenn es ihm beliebt, in diesem Fall aber entscheidet doch nur der Gerichtsgebrauch.",
+        "source": "Kafka — Der Proceß"
+      },
+      "en": {
+        "sentence": "That is wrong; anyone may of course call himself \"great\" if it pleases him, but in this case only the practice of the court decides.",
+        "source": "Kafka — Der Proceß"
+      }
+    },
+    "notes": null
+  },
+  "beliefern": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~liefern~:\n\n- ~liefern~: Aus mhd. ~lieveren~ (vor 1350 belegt), wahrscheinlich entlehnt über mittelniederländisch und mittelniederdeutsch ~lēveren~, aus altfranzösisch ~livrer~, aus lateinisch ~līberō~ („ich befreie, übergebe“), von ~līber~ („frei“). Das Wort gehörte zum Fachwortschatz der Hanse. Verwandt mit niederländisch ~leveren~, englisch ~deliver~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ hebt das, was das Grundverb mit einer Präposition oder im Dativ regiert, zum Akkusativobjekt.\n\nMan liefert Waren ~an~ einen Kunden, aber man beliefert den Kunden: Der Empfänger wird zum Objekt, die Ware tritt in eine ~mit~-Phrase. Das Wort gehört bis heute fast ausschließlich der Handelssprache an, in der schon sein Stamm zu Hause war.",
+      "en": "An inseparable compound of ~be-~ + ~liefern~:\n\n- ~liefern~: From MHG ~lieveren~ (attested before 1350), probably borrowed via Middle Dutch and Middle Low German ~lēveren~, from Old French ~livrer~, from Latin ~līberō~ (\"I free, release, deliver\"), from ~līber~ (\"free\"). The word belonged to the Hanseatic League's trade vocabulary. Cognate with Dutch ~leveren~, English ~deliver~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ promotes what the base verb governs with a preposition or in the dative to a direct object.\n\nOne delivers goods ~to~ a customer, but one ~beliefert~ the customer: the recipient becomes the object and the goods move into a ~mit~-phrase. The word still belongs almost entirely to the commercial register its root came from."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "bellen": {
+    "etymology": {
+      "de": "Aus Mhd. ~bellen~, aus Ahd. ~bellan~, aus Urgermanisch *~bellaną~ („schallen, brüllen“), wahrscheinlich aus einer PIE-Wurzel *~bʰelH-~ („tönen, heulen“), wobei diese Rekonstruktion nicht gesichert ist. Ursprünglich ein starkes Verb der Klasse III (Mhd. ~bellen~, ~bal~, ~gebollen~); im heutigen Deutsch wird es durchweg schwach konjugiert. Verwandt mit Altenglisch ~bellan~ („brüllen, dröhnen“) und Englisch ~bellow~. Englisch ~bell~ gehört zur selben Wurzel: die Glocke ist nach dem Lärm benannt, den sie macht.",
+      "en": "From MHG ~bellen~, from OHG ~bellan~, from Proto-Germanic *~bellaną~ (\"to resound, roar\"), probably from a PIE root *~bʰelH-~ (\"to sound, howl\"), though that reconstruction is not secure. Originally a class III strong verb (MHG ~bellen~, ~bal~, ~gebollen~); modern German conjugates it weak throughout. Cognate with Old English ~bellan~ (\"to bellow, roar\") and English ~bellow~. English ~bell~ belongs to the same root: the instrument is named for the noise it makes."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Hätte ihm dieser befohlen, unter das Bett wie in eine Hundehütte zu kriechen und von dort aus zu bellen, er hätte es mit Lust getan.",
+        "source": "Kafka — Der Proceß"
+      },
+      "en": {
+        "sentence": "Had the man ordered him to crawl under the bed as into a kennel and bark from there, he would have done it with delight.",
+        "source": "Kafka — Der Proceß"
+      }
+    },
+    "notes": null
+  },
+  "belügen": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~lügen~:\n\n- ~lügen~: Aus mhd. ~liegen~, aus ahd. ~liogan~, aus proto-westgermanisch *~leugan~, aus urgermanisch *~leuganą~, aus PIE *~lewgʰ-~ („lügen, falsch schwören“). Ein starkes Verb der Klasse II (~lügen~, ~log~, ~gelogen~); das ~ü~ ist spät und stammt aus dem Substantiv ~Lüge~, um den Zusammenfall mit ~liegen~ zu vermeiden. Verwandt mit englisch ~lie~, gotisch ~liugan~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ macht ein intransitives Verb transitiv und richtet die Handlung auf ein Objekt.\n\n~lügen~ hat kein Objekt — man lügt, und fertig. ~belügen~ liefert eines, und zwar immer einen Menschen: Man belügt jemanden, nie eine Lüge. Die starke Konjugation der Klasse II (~belog~, ~belogen~) bleibt erhalten, samt dem späten ~ü~.",
+      "en": "An inseparable compound of ~be-~ + ~lügen~:\n\n- ~lügen~: From MHG ~liegen~, from OHG ~liogan~, from Proto-West Germanic *~leugan~, from Proto-Germanic *~leuganą~, from PIE *~lewgʰ-~ (\"to lie, swear falsely\"). A class II strong verb (~lügen~, ~log~, ~gelogen~); the ~ü~ is late, taken from the noun ~Lüge~ to keep the verb from colliding with ~liegen~. Cognate with English ~lie~, Gothic ~liugan~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ makes an intransitive verb transitive, directing the action at an object.\n\n~lügen~ takes no object — one simply lies. ~belügen~ supplies one, and it is always a person: you ~belügen~ somebody, never a lie. The class II strong conjugation (~belog~, ~belogen~) survives intact, late ~ü~ and all."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Die Neigung, sich herabzusetzen, sich bestehlen, belügen und ausbeuten zu lassen, könnte die Scham eines Gottes unter Menschen sein.",
+        "source": "Nietzsche — Jenseits von Gut und Böse"
+      },
+      "en": {
+        "sentence": "The inclination to belittle oneself, to let oneself be robbed, lied to, and exploited, could be the shame of a god among men.",
+        "source": "Nietzsche — Jenseits von Gut und Böse"
+      }
+    },
+    "notes": null
+  },
+  "bemalen": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~malen~:\n\n- ~malen~: Aus mhd. ~mālen~, aus ahd. ~mālōn~, ~mālēn~, einem Denominativum vom Substantiv ~māl~ („Fleck, Zeichen“), aus proto-westgermanisch *~mālijan~, aus urgermanisch *~mēlijaną~, zu *~mēlą~, aus PIE *~melh₂-~ („dunkle Farbe“). Nicht zu verwechseln mit ~mahlen~ („zerkleinern“), das anderen Ursprungs ist. Verwandt mit niederländisch ~maal~, griechisch ~melas~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ drückt aus, dass etwas auf eine Fläche aufgebracht oder diese bedeckt wird.\n\nDer Unterschied liegt in der Objektwahl: ~malen~ nimmt das Bild zum Objekt, ~bemalen~ die Fläche, auf die es kommt, während die Farbe in eine ~mit~-Phrase rückt. Dass der Stamm auf ein Wort für „Fleck, Zeichen“ zurückgeht, passt gut zu einer Fläche, die man bedeckt.",
+      "en": "An inseparable compound of ~be-~ + ~malen~:\n\n- ~malen~: From MHG ~mālen~, from OHG ~mālōn~, ~mālēn~, a denominative of the noun ~māl~ (\"spot, mark\"), from Proto-West Germanic *~mālijan~, from Proto-Germanic *~mēlijaną~, from *~mēlą~, from PIE *~melh₂-~ (\"dark color\"). Not to be confused with ~mahlen~ (\"to grind\"), of separate origin. Cognate with Dutch ~maal~, Greek ~melas~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ conveys applying something over a surface or covering it.\n\nThe difference lies in what becomes the object: ~malen~ takes the picture, ~bemalen~ takes the surface it goes onto, while the paint moves into a ~mit~-phrase. That the root goes back to a word for \"spot, mark\" suits a verb about covering a surface."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Mit fünfzig Klexen bemalt an Gesicht und Gliedern: so sasset ihr da zu meinem Staunen, ihr Gegenwärtigen!",
+        "source": "Nietzsche — Also sprach Zarathustra"
+      },
+      "en": {
+        "sentence": "Painted with fifty blotches on face and limbs: so you sat there, to my astonishment, you men of the present!",
+        "source": "Nietzsche — Also sprach Zarathustra"
+      }
+    },
+    "notes": "Candidate 0 is a participial passive with an instrument phrase rather than a finite verb; candidate 1, the only finite use, runs 79 words and exceeds the 65-word ceiling."
+  },
+  "bemeistern": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~meistern~:\n\n- ~meistern~: Aus mhd. ~meisteren~, aus ahd. ~meistarōn~ („meistern, leiten“), vom Substantiv ~Meister~, aus ahd. ~meistar~, aus proto-westgermanisch *~maistar~, entlehnt aus lateinisch ~magister~ („Meister, Lehrer“), aus PIE *~meg-~ („groß“) über das Superlativsuffix *~-is-tero-~. ~Meister~ ist eine Dublette von ~Magister~ und ~Maestro~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ verleiht der Grundhandlung Gründlichkeit oder Vollständigkeit.\n\nHeute klingt das Wort altertümlich; ~beherrschen~ und das einfache ~meistern~ haben es fast verdrängt. In der älteren Literatur steht es gern reflexiv — ~sich bemeistern~ heißt, die eigene Fassung zu behalten — und regiert dabei mitunter den Genitiv.",
+      "en": "An inseparable compound of ~be-~ + ~meistern~:\n\n- ~meistern~: From MHG ~meisteren~, from OHG ~meistarōn~ (\"to master, direct\"), from the noun ~Meister~, from OHG ~meistar~, from Proto-West Germanic *~maistar~, borrowed from Latin ~magister~ (\"master, teacher\"), from PIE *~meg-~ (\"great\") via the superlative suffix *~-is-tero-~. ~Meister~ is a doublet of ~Magister~ and ~Maestro~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ adds thoroughness or completeness to the base action.\n\nThe word now sounds archaic; ~beherrschen~ and plain ~meistern~ have all but displaced it. In older literature it likes the reflexive — ~sich bemeistern~ is to keep one's composure — and there it sometimes governs the genitive."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "An dieser Stelle der Litanei aber konnte Zarathustra sich nicht länger bemeistern, schrie selber I-A, lauter noch als der Esel, und sprang mitten unter seine tollgewordenen Gäste.",
+        "source": "Nietzsche — Also sprach Zarathustra"
+      },
+      "en": {
+        "sentence": "At this point in the litany, however, Zarathustra could no longer master himself, brayed I-A himself, louder even than the donkey, and sprang into the midst of his guests, who had gone mad.",
+        "source": "Nietzsche — Also sprach Zarathustra"
+      }
+    },
+    "notes": null
+  },
+  "bemitleiden": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~mitleiden~:\n\n- ~mitleiden~: Aus ~mit-~ und ~leiden~; durchweg untrennbar und eine Lehnübersetzung von lateinisch ~compatī~, das seinerseits altgriechisch ~συμπαθεῖν~ (sympatheîn) nachbildet — dieselbe Kette, die englisch ~compassion~ und ~sympathy~ ergibt. Das Substantiv ~Mitleid~ ist weit gebräuchlicher als das vor allem literarische Verb. Zur Wurzel siehe ~leiden~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ hebt das, was das Grundverb mit einer Präposition oder im Dativ regiert, zum Akkusativobjekt.\n\nEin doppelt gebautes Wort: Auf das ohnehin schon zusammengesetzte ~mitleiden~ tritt noch ~be-~ und macht aus dem Menschen, ~mit~ dem man leidet, ein Akkusativobjekt. Damit ist das Verb gebrauchsfähig geworden, wo das nackte ~mitleiden~ literarisch geblieben ist.",
+      "en": "An inseparable compound of ~be-~ + ~mitleiden~:\n\n- ~mitleiden~: From ~mit-~ (\"with\") plus ~leiden~ (\"to suffer\"); wholly inseparable, and a calque of Latin ~compatī~, itself a calque of Ancient Greek ~συμπαθεῖν~ (sympatheîn) — the same chain that gives English ~compassion~ and ~sympathy~. The noun ~Mitleid~ is far commoner than the verb, which is chiefly literary. For the root, see ~leiden~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ promotes what the base verb governs with a preposition or in the dative to a direct object.\n\nA doubly built word: ~be-~ is added to the already compound ~mitleiden~ and turns the person one suffers ~with~ into a direct object. That is what made the verb usable, where bare ~mitleiden~ stayed literary."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Mögen sie mich bemitleiden und bemitseufzen ob meiner Frostbeulen: „am Eis der Erkenntniss erfriert er uns noch!",
+        "source": "Nietzsche — Also sprach Zarathustra"
+      },
+      "en": {
+        "sentence": "Let them pity me and sigh along with me over my chilblains: \"on the ice of knowledge he will yet freeze to death on us!",
+        "source": "Nietzsche — Also sprach Zarathustra"
+      }
+    },
+    "notes": "Sole candidate; its quotation is mis-split — the opening „ is never closed."
+  },
+  "benehmen": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~nehmen~:\n\n- ~nehmen~: Aus mhd. ~nëmen~, aus ahd. ~nëman~, aus proto-westgermanisch *~neman~, aus urgermanisch *~nemaną~, aus PIE *~nem-~ („sich seinen Anteil geben oder nehmen“). Ein starkes Verb der Klasse IV. Verwandt mit niederländisch ~nemen~, englisch ~nim~ („nehmen, stibitzen“), dänisch ~nemme~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ bildet ein Verb, das nur reflexiv gebraucht wird — die Handlung richtet sich auf den Handelnden selbst zurück und nie auf ein äußeres Objekt.\n\nDas ältere, nicht-reflexive ~benehmen~ „wegnehmen, entziehen“ ist bis auf Formeln der Rechtssprache untergegangen; übrig bleibt ~sich benehmen~. Wie sich daraus „sich aufführen“ entwickelte, sieht man an ~sich nehmen~ im Sinne von „sich geben, sich verhalten“ — dieselbe Wendung nach innen, die auch ~das Benehmen~ trägt.",
+      "en": "An inseparable compound of ~be-~ + ~nehmen~:\n\n- ~nehmen~: From MHG ~nëmen~, from OHG ~nëman~, from Proto-West Germanic *~neman~, from Proto-Germanic *~nemaną~, from PIE *~nem-~ (\"to give or take one's due\"). A class IV strong verb. Cognate with Dutch ~nemen~, English ~nim~ (\"to take, filch\"), Danish ~nemme~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ forms a verb used only reflexively — the action turns back on the one performing it and never reaches an outside object.\n\nThe older, non-reflexive ~benehmen~ \"to take away, deprive\" has died out except in legal formulas; what remains is ~sich benehmen~. How that became \"to conduct oneself\" is visible in ~sich nehmen~ in the sense \"to carry oneself\" — the same inward turn that also underlies the noun ~das Benehmen~ (\"manners\")."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "So frech er sich bei der Produktion benommen, so demütig zeigte er sich hier oben.",
+        "source": "Mann — Der Tod in Venedig"
+      },
+      "en": {
+        "sentence": "As brazenly as he had behaved during the performance, so humbly did he show himself up here.",
+        "source": "Mann — Der Tod in Venedig"
+      }
+    },
+    "notes": null
+  },
+  "bepflanzen": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~pflanzen~:\n\n- ~pflanzen~: Aus mhd. ~pflanzen~, aus ahd. ~pflanzōn~, einem denominalen Verb von ~pflanza~ („Pflanze“), entlehnt aus lateinisch ~planta~ („Setzling, Steckling“), das selbst ungewissen Ursprungs ist. Der Wandel von lateinisch ~pl-~ zu ~pfl-~ gehört zur hochdeutschen Lautverschiebung. Verwandt mit englisch ~plant~ (ohne Lautverschiebung), luxemburgisch ~Planz~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ drückt aus, dass etwas auf eine Fläche aufgebracht oder diese bedeckt wird.\n\nDas Objekt wechselt die Seite: Man pflanzt Rapunzeln, aber man bepflanzt das Beet — der Boden wird zum Objekt, die Pflanzen treten in eine ~mit~-Phrase. Der Anlaut ~pfl-~ verrät dabei das Alter der Entlehnung: Nur ein Wort, das schon vor der hochdeutschen Lautverschiebung im Deutschen war, konnte sie noch mitmachen.",
+      "en": "An inseparable compound of ~be-~ + ~pflanzen~:\n\n- ~pflanzen~: From MHG ~pflanzen~, from OHG ~pflanzōn~, a denominative verb from ~pflanza~ (\"plant\"), borrowed from Latin ~planta~ (\"a shoot, cutting\"), itself of uncertain origin. The change from Latin ~pl-~ to ~pfl-~ belongs to the High German consonant shift. Cognate with English ~plant~ (which shows no shift), Luxembourgish ~Planz~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ conveys applying something over a surface or covering it.\n\nThe object changes sides: one plants rampion, but one ~bepflanzt~ the bed — the ground becomes the object and the plants move into a ~mit~-phrase. The initial ~pfl-~ betrays how old the borrowing is: only a word already in German before the High German consonant shift could still undergo it."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Eines Tages stand die Frau an diesem Fenster und sah in den Garten hinab, da erblickte sie ein Beet, das mit den schönsten Rapunzeln bepflanzt war; und sie sahen so frisch und grün aus, daß sie lüstern ward und das größte Verlangen empfand von den Rapunzeln zu essen.",
+        "source": "Grimm — Märchen"
+      },
+      "en": {
+        "sentence": "One day the woman was standing at this window and looked down into the garden, when she caught sight of a bed planted with the finest rampion; and it looked so fresh and green that she grew covetous and felt the greatest longing to eat some of the rampion.",
+        "source": "Grimm — Märchen"
+      }
+    },
+    "notes": "Sole candidate: 48 words, and a Zustandspassiv rather than a finite active, but it carries the ~mit~-phrase that defines the verb."
+  },
+  "bereden": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~reden~:\n\n- ~reden~: Aus Mhd. ~reden~, aus Ahd. ~redōn~, ~rediōn~ („sprechen“), ein denominales Verb von ~reda~, ~redia~ („Rede, Wort, Meinung“), aus Urgermanisch *~raþjǭ~ („Rechenschaft, Rede“). Die gemeinsame PIE-Wurzel trug den Sinn geordneter, rechenschaftspflichtiger Rede. Verwandt mit lateinisch ~ratiō~ (woraus englisch ~ratio~, ~reason~), englisch ~rede~ („Rat“) und deutsch ~Rat~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ hebt das, was das Grundverb mit einer Präposition oder im Dativ regiert, zum Akkusativobjekt.\n\nZwei Lesarten teilen sich das Wort, je nachdem, was zum Objekt wird. ~etwas bereden~ ist „darüber reden“ und steht dem Grundverb nahe; ~jemanden bereden~ heißt dagegen „überreden“ — die ältere und in der Literatur weit häufigere Verwendung.",
+      "en": "An inseparable compound of ~be-~ + ~reden~:\n\n- ~reden~: From MHG ~reden~, from OHG ~redōn~, ~rediōn~ (\"to speak\"), a denominal verb from ~reda~, ~redia~ (\"speech, word, opinion\"), from Proto-Germanic *~raþjǭ~ (\"accountability, speech\"). The shared PIE root carried the sense of organized, accountable speech. Cognate with Latin ~ratiō~ (whence English ~ratio~, ~reason~), English ~rede~ (\"counsel\"), and German ~Rat~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ promotes what the base verb governs with a preposition or in the dative to a direct object.\n\nTwo readings share the word, depending on what becomes the object. ~etwas bereden~ is \"to talk something over\" and stays close to the base verb; ~jemanden bereden~, by contrast, means \"to talk someone round\" — the older sense, and much the commoner one in literature."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Weil sich der Zorn gelegt hatte, so ließ der Vater sich endlich bereden und ging mit ihm heim.",
+        "source": "Grimm — Märchen"
+      },
+      "en": {
+        "sentence": "Since his anger had subsided, the father finally let himself be talked round and went home with him.",
+        "source": "Grimm — Märchen"
+      }
+    },
+    "notes": "No candidate attests the glossed sense \"discuss\"; all four attest the \"persuade\" reading, so the earliest genuine use was taken."
+  },
+  "beregen": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~regen~:\n\n- ~regen~: Aus Mhd. ~regen~ („hervorstehen lassen, aufrichten, erregen, bewegen“), aus Urgermanisch *~hragjaną~ („aufrichten, wecken, anstacheln“); synchron das Kausativ von Mhd. ~ragen~ („hervorstehen, emporragen“). Das Verb bedeutet „rühren, bewegen, wecken“, ist mit dem Substantiv ~Regen~ nicht verwandt und begegnet meist reflexiv (~sich regen~).\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ macht ein intransitives Verb transitiv und richtet die Handlung auf ein Objekt.\n\nEin weitgehend ausgestorbenes Verb. Wo das Grundwort meist reflexiv bleibt (~sich regen~), richtet ~beregen~ die Bewegung auf ein äußeres Objekt. In der älteren Kanzleisprache entwickelte sich daraus die Bedeutung „erwähnen, zur Sprache bringen“, die im Partizip ~beregt~ „besagt“ fortlebte.",
+      "en": "An inseparable compound of ~be-~ + ~regen~:\n\n- ~regen~: From MHG ~regen~ (\"to make protrude, to erect, to excite, to move\"), from Proto-Germanic *~hragjaną~ (\"to make stand, wake up, incite\"); synchronically the causative of MHG ~ragen~ (\"to project, to tower\"). The verb means \"to stir, move, rouse\" — unrelated to the noun ~Regen~ (\"rain\") — and is most often reflexive (~sich regen~).\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ makes an intransitive verb transitive, directing the action at an object.\n\nA largely extinct verb. Where the base word usually stays reflexive (~sich regen~, \"to stir\"), ~beregen~ directs the motion at an outside object. In older chancery German this developed into \"to mention, to raise,\" a sense that survived in the participle ~beregt~ \"aforesaid.\""
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "beregnen": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~regnen~:\n\n- ~regnen~: Aus Mhd. ~regenen~, aus Ahd. ~reganōn~, ein Denominativ vom Substantiv ~regan~ („Regen“), aus Proto-Westgermanisch *~regn~, aus Urgermanisch *~regną~; der PIE-Ursprung ist unsicher, möglicherweise *~Hreǵʰ-~ („Wasser fließen lassen“). Das Verb ist unpersönlich (~es regnet~), eine aus dem Urgermanischen ererbte Konstruktion. Verwandt mit englisch ~rain~, niederländisch ~regenen~, schwedisch ~regna~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ drückt aus, dass etwas auf eine Fläche aufgebracht oder diese bedeckt wird.\n\nDas Grundverb hat kein echtes Subjekt und schon gar kein Objekt: ~es regnet~. ~beregnen~ verschafft ihm eines, nämlich die Fläche, auf die der Regen fällt. Modern gehört das Wort der Landwirtschaft — die ~Beregnungsanlage~ beregnet den Acker, wenn der Himmel es unterlässt.",
+      "en": "An inseparable compound of ~be-~ + ~regnen~:\n\n- ~regnen~: From MHG ~regenen~, from OHG ~reganōn~, a denominative from the noun ~regan~ (\"rain\"), from Proto-West Germanic *~regn~, from Proto-Germanic *~regną~; the PIE origin is uncertain, possibly *~Hreǵʰ-~ (\"to flow water\"). The verb is impersonal (~es regnet~), a construction inherited from Proto-Germanic. Cognate with English ~rain~, Dutch ~regenen~, Swedish ~regna~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ conveys applying something over a surface or covering it.\n\nThe base verb has no real subject and certainly no object: ~es regnet~ (\"it is raining\"). ~beregnen~ supplies one — the surface the rain falls on. In modern use the word belongs to agriculture: a ~Beregnungsanlage~ (\"sprinkler system\") waters the field when the sky declines to."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Auch habe ich den Regen über euch verhalten, da noch drei Monate waren bis zur Ernte; und ließ regnen über eine Stadt und auf die andere Stadt ließ ich nicht regnen; ein Acker ward beregnet, und der andere Acker, der nicht beregnet ward, verdorrte.",
+        "source": "Luther — Bibel"
+      },
+      "en": {
+        "sentence": "I also withheld the rain from you when there were still three months until the harvest; and I let it rain on one city, and on another city I let no rain fall; one field was rained upon, and the other field, which was not rained upon, withered.",
+        "source": "Luther — Bibel"
+      }
+    },
+    "notes": "Candidate 0 carries a Luther verse number (\"sprach: 24 Du Menschenkind\") between clauses and was rejected as a corrupt extraction."
+  },
+  "bereinigen": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~reinigen~:\n\n- ~reinigen~: Aus Mhd. ~reinegen~, ~reinigen~, ein Denominativ vom Adjektiv ~rein~ („rein, sauber“), das aus Mhd. ~reine~, Ahd. ~reini~, Proto-Westgermanisch *~hrainī~, Urgermanisch *~hrainiz~ stammt, aus PIE *~krey-~ („teilen, sieben, trennen“) — Reinheit ist, was nach dem Aussieben der Unreinheiten übrig bleibt. Verwandt mit niederländisch ~reinigen~, schwedisch ~ren~, isländisch ~hreinn~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ verleiht der Grundhandlung Gründlichkeit oder Vollständigkeit.\n\nAnders als ~reinigen~ ist ~bereinigen~ kaum je wörtlich gemeint: Bereinigt werden Streitfälle, Listen und Statistiken. Die Verwaltungssprache hat daraus die feste Fügung ~bereinigt um~ gemacht, mit der eine Zahl von einem Störeffekt freigerechnet wird — das Aussieben, das schon in der Wurzel steckt, angewandt auf Buchhaltung.",
+      "en": "An inseparable compound of ~be-~ + ~reinigen~:\n\n- ~reinigen~: From MHG ~reinegen~, ~reinigen~, a denominative from the adjective ~rein~ (\"pure, clean\"), which descends from MHG ~reine~, OHG ~reini~, Proto-West Germanic *~hrainī~, Proto-Germanic *~hrainiz~, from PIE *~krey-~ (\"to divide, sift, separate\") — purity being what remains once impurities are sifted away. Cognate with Dutch ~reinigen~, Swedish ~ren~, Icelandic ~hreinn~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ adds thoroughness or completeness to the base action.\n\nUnlike ~reinigen~, ~bereinigen~ is almost never meant literally: what gets ~bereinigt~ are disputes, lists, and statistics. Administrative German has hardened it into the phrase ~bereinigt um~, used to strip a distorting effect out of a figure — the sifting already present in the root, applied to bookkeeping."
+    },
+    "sentence": null,
+    "notes": "All five candidates rejected: 0, 2, 3 and 4 are adjectival ~bereinigt~/~bereinigte(n)~ (and 3 and 4 break off at \"vom 21.\"/\"vom 22.\"); candidate 1, the only verbal use, contains the PDF line-break artifact \"Bundeszuständig keit\"."
+  },
+  "bereisen": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~reisen~:\n\n- ~reisen~: Aus Mhd. ~reisen~ („zu einem Feldzug aufbrechen, reisen“), aus Ahd. ~reisōn~, aus Proto-Westgermanisch *~raisōn~, abgeleitet von einer Form verwandt mit Urgermanisch *~raizijaną~ („veranlassen aufzustehen“); die Wurzel *~rīsaną~ („aufstehen“) ergibt auch englisch ~rise~. Der Wandel von „aufbrechen“ zu „reisen“ verlief über den militärischen Kontext: eine ~Reise~ war zuerst ein Feldzug.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ macht ein intransitives Verb transitiv und richtet die Handlung auf ein Objekt.\n\nMan reist ~nach~ Italien, aber man bereist Italien: Das Ziel wird zum Objekt, und mit ihm ändert sich der Blick — ein bereistes Land ist eines, das man durchquert und kennengelernt hat, nicht bloß eines, auf das man zugefahren ist.",
+      "en": "An inseparable compound of ~be-~ + ~reisen~:\n\n- ~reisen~: From MHG ~reisen~ (\"to set out on a campaign, to travel\"), from OHG ~reisōn~, from Proto-West Germanic *~raisōn~, from a form akin to Proto-Germanic *~raizijaną~ (\"to cause to rise\"); the root *~rīsaną~ (\"to rise\") also gives English ~rise~. The shift from \"setting out\" to \"traveling\" ran through the military sense: a ~Reise~ was originally a campaign.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ makes an intransitive verb transitive, directing the action at an object.\n\nOne travels ~to~ Italy, but one ~bereist~ Italy: the destination becomes the object, and with it the perspective shifts — a country you have ~bereist~ is one you have crossed and come to know, not merely one you set out for."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "bereiterklären": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~bereit~ + ~er-~ + ~klären~:\n\n- ~klären~: Aus Mhd. ~klæren~, denominativ von ~klar~ („klar, hell“), das aus Mittelniederdeutsch oder Mittelniederländisch ~klār~ entlehnt wurde, aus Altfranzösisch ~cler~, aus Lateinisch ~clārus~ („hell, berühmt“). Englisch ~clear~ kam auf demselben Weg — Verwandte durch Entlehnung statt durch Erbfolge.\n- ~er-~: Aus Mhd. ~er-~, aus Ahd. ~ir-~, ~ar-~, aus Proto-Westgermanisch *~uʀ-~, aus Urgermanisch *~uz-~ („heraus, auf“), aus PIE *~ud~ („aufwärts, hinaus, weg“). Dublette des betonten Präfixes ~ur-~. ~er-~ bildet aus einem Adjektiv ein Verb mit der Bedeutung, in diesen Zustand zu bringen.\n- ~bereit~: Aus Mhd. ~bereite~, aus Ahd. ~bireiti~, aus Proto-Westgermanisch *~raidī~, aus Urgermanisch *~raidaz~ („bereit, geordnet, vorbereitet“), aus PIE *~h₂rey-~ („zählen, ordnen“). Verwandt mit Englisch ~ready~, Niederländisch ~bereid~, Gotisch ~garaiþs~ („geordnet“). Als Verbpartikel ist es resultativ: das Verb versetzt etwas in einen Zustand der Bereitschaft — ~bereitstellen~, ~bereithalten~. Die Bedeutung von ~bereit~ ist hier: in einen Zustand der Bereitschaft.\n\nDas Wort ist die Verfestigung einer Wendung: ~sich bereit erklären~, also erklären, dass man bereit sei. Es wird ausschließlich reflexiv gebraucht, und die Partikel trennt sich regelmäßig ab — ~er erklärt sich bereit~.",
+      "en": "A separable compound of ~bereit~ + ~er-~ + ~klären~:\n\n- ~klären~: From MHG ~klæren~, denominal from ~klar~ (\"clear, bright\"), borrowed from Middle Low German or Middle Dutch ~klār~, from Old French ~cler~, from Latin ~clārus~ (\"bright, renowned\"). English ~clear~ arrived by the same route — cousins by borrowing rather than inheritance.\n- ~er-~: From MHG ~er-~, from OHG ~ir-~, ~ar-~, from Proto-West Germanic *~uʀ-~, from Proto-Germanic *~uz-~ (\"out, up\"), from PIE *~ud~ (\"up, out, away\"). Doublet of the stressed prefix ~ur-~. ~er-~ derives a verb from an adjective, meaning to bring into that state.\n- ~bereit~: From MHG ~bereite~, from OHG ~bireiti~, from Proto-West Germanic *~raidī~, from Proto-Germanic *~raidaz~ (\"ready, arranged, prepared\"), from PIE *~h₂rey-~ (\"to count, order\"). Cognate with English ~ready~, Dutch ~bereid~, Gothic ~garaiþs~ (\"ordered\"). As a verbal particle it is resultative: the verb puts something into a state of readiness — ~bereitstellen~, ~bereithalten~. The sense of ~bereit~ here is: into a state of readiness.\n\nThe word is a phrase set hard: ~sich bereit erklären~, to declare oneself willing. It is used only reflexively, and the particle separates as a matter of course — ~er erklärt sich bereit~."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "bereithalten": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~bereit~ + ~halten~:\n\n- ~halten~: Aus Mhd. ~halten~, aus Ahd. ~haltan~, aus Proto-Westgermanisch *~haldan~, aus Urgermanisch *~haldaną~. Verwandt mit Englisch ~hold~, Niederländisch ~houden~, Niederdeutsch ~holden~, Dänisch ~holde~, Isländisch ~halda~, Schwedisch ~hålla~.\n- ~bereit~: Aus Mhd. ~bereite~, aus Ahd. ~bireiti~, aus Proto-Westgermanisch *~raidī~, aus Urgermanisch *~raidaz~ („bereit, geordnet, vorbereitet“), aus PIE *~h₂rey-~ („zählen, ordnen“). Verwandt mit Englisch ~ready~, Niederländisch ~bereid~, Gotisch ~garaiþs~ („geordnet“). Als Verbpartikel ist es resultativ: das Verb versetzt etwas in einen Zustand der Bereitschaft — ~bereitstellen~, ~bereithalten~. Die Bedeutung von ~bereit~ ist hier: verfügbar gehalten, zur Hand.\n\nDas Verb beschreibt keinen Vorgang, sondern eine Vorsorge: Was bereitgehalten wird, liegt ungenutzt da und wartet auf den Fall, dass es gebraucht wird. Als trennbare Bildung schiebt es die Partikel im Hauptsatz ans Ende — ~er hält Ersatzteile bereit~.",
+      "en": "A separable compound of ~bereit~ + ~halten~:\n\n- ~halten~: From MHG ~halten~, from OHG ~haltan~, from Proto-West Germanic *~haldan~, from Proto-Germanic *~haldaną~. Cognate with English ~hold~, Dutch ~houden~, Low German ~holden~, Danish ~holde~, Icelandic ~halda~, Swedish ~hålla~.\n- ~bereit~: From MHG ~bereite~, from OHG ~bireiti~, from Proto-West Germanic *~raidī~, from Proto-Germanic *~raidaz~ (\"ready, arranged, prepared\"), from PIE *~h₂rey-~ (\"to count, order\"). Cognate with English ~ready~, Dutch ~bereid~, Gothic ~garaiþs~ (\"ordered\"). As a verbal particle it is resultative: the verb puts something into a state of readiness — ~bereitstellen~, ~bereithalten~. The sense of ~bereit~ here is: held available, kept on hand.\n\nThe verb describes not an action but a provision: what is ~bereitgehalten~ sits unused, waiting against the moment it is needed. Being separable, it strands the particle at the end of a main clause — ~er hält Ersatzteile bereit~."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Seit März 2021 müssen Hersteller von Kühlschränken, Spülmaschinen, Waschmaschinen, Fernsehern und anderen elektrischen Großgeräten Ersatzteile teilweise bis zu 10 Jahre bereithalten.",
+        "source": "BMUKN — Recht auf Reparatur"
+      },
+      "en": {
+        "sentence": "Since March 2021, manufacturers of refrigerators, dishwashers, washing machines, televisions, and other large electrical appliances have had to keep spare parts on hand for as long as ten years in some cases.",
+        "source": "BMUKN — Recht auf Reparatur"
+      }
+    },
+    "notes": null
+  },
+  "bereitlegen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~bereit~ + ~legen~:\n\n- ~legen~: Aus mhd. ~legen~, aus ahd. ~leggen~, aus proto-westgermanisch *~laggjan~, aus urgermanisch *~lagjaną~, einer kausativen Ableitung von *~ligjaną~ („liegen“) mit dem Suffix *~-janą~, aus PIE *~logʰéyeti~. ~legen~ ist damit das Kausativum zu ~liegen~: „zum Liegen bringen“. Verwandt mit niederländisch ~leggen~, englisch ~lay~, dänisch ~lægge~.\n- ~bereit~: Aus Mhd. ~bereite~, aus Ahd. ~bireiti~, aus Proto-Westgermanisch *~raidī~, aus Urgermanisch *~raidaz~ („bereit, geordnet, vorbereitet“), aus PIE *~h₂rey-~ („zählen, ordnen“). Verwandt mit Englisch ~ready~, Niederländisch ~bereid~, Gotisch ~garaiþs~ („geordnet“). Als Verbpartikel ist es resultativ: das Verb versetzt etwas in einen Zustand der Bereitschaft — ~bereitstellen~, ~bereithalten~. Die Bedeutung von ~bereit~ ist hier: im Voraus zum Gebrauch vorbereitet.\n\nDer Unterschied zu ~bereithalten~ ist der zwischen Zustand und Handgriff: Bereitgelegt wird im Voraus, ein einziges Mal, damit später nicht gesucht werden muss. Weil ~legen~ das Kausativum zu ~liegen~ ist, heißt das Ganze wörtlich „dafür sorgen, dass etwas bereit liegt“.",
+      "en": "A separable compound of ~bereit~ + ~legen~:\n\n- ~legen~: From MHG ~legen~, from OHG ~leggen~, from Proto-West Germanic *~laggjan~, from Proto-Germanic *~lagjaną~, a causative of *~ligjaną~ (\"to lie\") with the suffix *~-janą~, from PIE *~logʰéyeti~. The verb is thus the causative partner of ~liegen~: to ~legen~ is to \"cause to lie,\" i.e., to lay. Cognate with Dutch ~leggen~, English ~lay~, Danish ~lægge~.\n- ~bereit~: From MHG ~bereite~, from OHG ~bireiti~, from Proto-West Germanic *~raidī~, from Proto-Germanic *~raidaz~ (\"ready, arranged, prepared\"), from PIE *~h₂rey-~ (\"to count, order\"). Cognate with English ~ready~, Dutch ~bereid~, Gothic ~garaiþs~ (\"ordered\"). As a verbal particle it is resultative: the verb puts something into a state of readiness — ~bereitstellen~, ~bereithalten~. The sense of ~bereit~ here is: prepared in advance for use.\n\nThe difference from ~bereithalten~ is the difference between a state and a gesture: laying something out is done once, in advance, so that nothing has to be hunted for later. Since ~legen~ is the causative of ~liegen~, the compound literally means \"to cause something to lie ready.\""
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "bereitstehen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~bereit~ + ~stehen~:\n\n- ~stehen~: Aus Mhd. ~stān~, ~stēn~, aus Ahd. ~stān~, ~stēn~, aus Proto-Westgermanisch *~stān~, aus Urgermanisch *~stāną~, aus PIE *~steh₂-~ („stehen“). Das ~-h-~ kam in Analogie zu ~sehen~ in die Schreibung; die Präteritumformen (~stand~, ~standen~) sind suppletiv, aus Proto-Westgermanisch *~standan~. Verwandt mit Niederländisch ~staan~, Englisch ~stand~, Dänisch ~stå~, Schwedisch ~stå~.\n- ~bereit~: Aus Mhd. ~bereite~, aus Ahd. ~bireiti~, aus Proto-Westgermanisch *~raidī~, aus Urgermanisch *~raidaz~ („bereit, geordnet, vorbereitet“), aus PIE *~h₂rey-~ („zählen, ordnen“). Verwandt mit Englisch ~ready~, Niederländisch ~bereid~, Gotisch ~garaiþs~ („geordnet“). Als Verbpartikel ist es resultativ: das Verb versetzt etwas in einen Zustand der Bereitschaft — ~bereitstellen~, ~bereithalten~. Die Bedeutung von ~bereit~ ist hier: verfügbar gehalten, zur Hand.\n\nDas Gegenstück zu ~bereithalten~ aus der Sicht der Sache selbst: Was jemand bereithält, steht bereit. Das Subjekt ist deshalb meist unbelebt — ein Wagen, ein Förderprogramm, eine Datenbank —, und vom Menschen gesagt bedeutet es, für andere einzustehen.",
+      "en": "A separable compound of ~bereit~ + ~stehen~:\n\n- ~stehen~: From MHG ~stān~, ~stēn~, from OHG ~stān~, ~stēn~, from Proto-West Germanic *~stān~, from Proto-Germanic *~stāną~, from PIE *~steh₂-~ (\"to stand\"). The ~-h-~ entered the spelling by analogy with ~sehen~; the past-tense conjugations (~stand~, ~standen~) are suppletive, from Proto-West Germanic *~standan~. Cognate with Dutch ~staan~, English ~stand~, Danish ~stå~, Swedish ~stå~.\n- ~bereit~: From MHG ~bereite~, from OHG ~bireiti~, from Proto-West Germanic *~raidī~, from Proto-Germanic *~raidaz~ (\"ready, arranged, prepared\"), from PIE *~h₂rey-~ (\"to count, order\"). Cognate with English ~ready~, Dutch ~bereid~, Gothic ~garaiþs~ (\"ordered\"). As a verbal particle it is resultative: the verb puts something into a state of readiness — ~bereitstellen~, ~bereithalten~. The sense of ~bereit~ here is: held available, kept on hand.\n\nThe counterpart of ~bereithalten~ seen from the thing's own side: what somebody keeps ready ~steht bereit~. The subject is therefore usually inanimate — a car, a funding program, a database — and said of a person it means standing by for others."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Herr Diaby, Sie haben immer bereitgestanden, wenn andere angegriffen worden sind, egal ob das die Synagoge zu Halle war, ob das kleine Vereine oder einzelne Menschen waren.",
+        "source": "Bundestag — Plenarprotokoll 20/207"
+      },
+      "en": {
+        "sentence": "Mr. Diaby, you have always stood ready when others were attacked, whether that was the synagogue in Halle, or small associations, or individual people.",
+        "source": "Bundestag — Plenarprotokoll 20/207"
+      }
+    },
+    "notes": null
+  }
+}

@@ -1,0 +1,346 @@
+{
+  "abscheiden": {
+    "etymology": {
+      "en": "A separable compound of ~ab-~ + ~scheiden~:\n\n- ~scheiden~: From MHG ~scheiden~, from OHG ~sceidan~, from Proto-West Germanic *~skaiþan~, from Proto-Germanic *~skaiþaną~, from PIE *~skeyt-~ (\"to cut, separate\"). Cognate with English ~shed~ (originally \"to separate\"), Dutch ~scheiden~, West Frisian ~skiede~, and Greek ~skhizein~ (\"to split,\" source of ~schism~).\n- ~ab-~: From MHG ~ab(e)-~, from OHG ~ab(a)-~, from Proto-West Germanic *~ab~, from Proto-Germanic *~ab~ (\"off, away\"), from PIE *~h₂epó~ (\"off, away\"). Cognate with English ~of~ and ~off~ — one Old English word that split in two — as well as Latin ~ab~ (\"from\") and Greek ~apó~. The prefix conveys separation or removal — taking something off or away.\n\nModern German keeps two distant descendants of one image: chemistry has a substance ~abscheiden~ out of a solution, while the older sense \"to be parted from the living\" survives in ~der Abgeschiedene~, the departed.",
+      "de": "Ein trennbares Kompositum aus ~ab-~ + ~scheiden~:\n\n- ~scheiden~: Aus Mhd. ~scheiden~, aus Ahd. ~sceidan~, aus Proto-Westgermanisch *~skaiþan~, aus Urgermanisch *~skaiþaną~, aus PIE *~skeyt-~ („schneiden, trennen“). Verwandt mit englisch ~shed~ (ursprünglich „trennen“), niederländisch ~scheiden~, westfriesisch ~skiede~ und griechisch ~skhizein~ („spalten“, Quelle von ~schism~).\n- ~ab-~: Aus Mhd. ~ab(e)-~, aus Ahd. ~ab(a)-~, aus Proto-Westgermanisch *~ab~, aus Urgermanisch *~ab~ („weg, fort“), aus PIE *~h₂epó~ („weg, fort“). Verwandt mit Englisch ~of~ und ~off~ — einem einzigen altenglischen Wort, das sich in zwei aufspaltete — sowie Lateinisch ~ab~ („von“) und Griechisch ~apó~. Das Präfix drückt Trennung oder Entfernung aus — etwas ab- oder wegnehmen.\n\nZwei weit auseinanderliegende Nachkommen desselben Bildes leben im heutigen Deutsch: Die Chemie lässt einen Stoff aus einer Lösung ~abscheiden~, während der ältere Sinn „von den Lebenden getrennt werden“ im ~Abgeschiedenen~ fortlebt."
+    },
+    "sentence": null,
+    "notes": "Quotation carries a stray Luther verse number (24) mid-sentence, an artifact of the source text; the attested sense is „hinscheiden“, to depart this life, not the chemical one. Re-picked 2026-07-20 after the indexer gained a mid-sentence verse-number filter. The originally quoted Luther sentence carried a stray verse number („…wäre; 24 aber es ist…“), was flagged as a hedge when mined, and is now correctly dropped from the pool. The sole remaining candidate is the Nietzsche attestation in exactly the right sense, but at 49 words it exceeds the brief's 45-word ceiling for a last candidate, so this returns null rather than shipping an over-long quotation."
+  },
+  "abschicken": {
+    "etymology": {
+      "en": "A separable compound of ~ab-~ + ~schicken~:\n\n- ~schicken~: From MHG ~schicken~ (\"to outfit oneself, fit in, arrange appropriately\"), from OHG *~skihhen~, from Proto-West Germanic *~skikkijan~, from Proto-Germanic *~skikkijaną~ (\"to order, send\"), the causative of the verb underlying MHG ~geschehen~ (\"to happen, rush\"). The sense \"to send\" grew from \"to make ready to go.\" Related to English ~chic~ (via French), ~geschickt~, and ~Schicksal~.\n- ~ab-~: From MHG ~ab(e)-~, from OHG ~ab(a)-~, from Proto-West Germanic *~ab~, from Proto-Germanic *~ab~ (\"off, away\"), from PIE *~h₂epó~ (\"off, away\"). Cognate with English ~of~ and ~off~ — one Old English word that split in two — as well as Latin ~ab~ (\"from\") and Greek ~apó~. The prefix conveys separation or removal — taking something off or away.\n\nPlain ~schicken~ says only that something is on its way; ~ab-~ fixes the point of departure, so ~abschicken~ is the moment the letter leaves the hand — which is why the writer is the ~Absender~, the one who sends it off, not merely the sender.",
+      "de": "Ein trennbares Kompositum aus ~ab-~ + ~schicken~:\n\n- ~schicken~: Aus Mhd. ~schicken~ („sich ausstatten, sich einfügen, passend einrichten“), aus Ahd. *~skihhen~, aus Proto-Westgermanisch *~skikkijan~, aus Urgermanisch *~skikkijaną~ („ordnen, schicken“), dem Kausativ des Verbs hinter Mhd. ~geschehen~ („geschehen, eilen“). Die Bedeutung „senden“ erwuchs aus „fertig machen zum Aufbruch“. Verwandt mit englisch ~chic~ (über das Französische), ~geschickt~ und ~Schicksal~.\n- ~ab-~: Aus Mhd. ~ab(e)-~, aus Ahd. ~ab(a)-~, aus Proto-Westgermanisch *~ab~, aus Urgermanisch *~ab~ („weg, fort“), aus PIE *~h₂epó~ („weg, fort“). Verwandt mit Englisch ~of~ und ~off~ — einem einzigen altenglischen Wort, das sich in zwei aufspaltete — sowie Lateinisch ~ab~ („von“) und Griechisch ~apó~. Das Präfix drückt Trennung oder Entfernung aus — etwas ab- oder wegnehmen.\n\nDas einfache ~schicken~ sagt nur, dass etwas unterwegs ist; ~ab-~ setzt den Ausgangspunkt fest. ~abschicken~ ist der Augenblick, in dem der Brief die Hand verlässt — daher heißt der Schreiber ~Absender~ und nicht bloß Sender."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Dem König gefiel der Rat, und er schickte einen von seinen Hofleuten an das Schneiderlein ab, der sollte ihm, wenn es aufgewacht wäre, Kriegsdienste anbieten.",
+        "source": "Grimm — Märchen"
+      },
+      "en": {
+        "sentence": "The king liked the advice, and he sent off one of his courtiers to the little tailor, who was to offer him military service once he had woken up.",
+        "source": "Grimm — Märchen"
+      }
+    },
+    "notes": null
+  },
+  "abschieben": {
+    "etymology": {
+      "en": "A separable compound of ~ab-~ + ~schieben~:\n\n- ~schieben~: From MHG ~schieben~, from OHG ~skioban~, from Proto-West Germanic *~skeuban~, from Proto-Germanic *~skeubaną~, from PIE *~skewbʰ-~ (\"to push, to shove, to thrust\"). A class II strong verb (~schieben~, ~schob~, ~geschoben~). Cognate with English ~shove~, Dutch ~schuiven~, Danish ~skubbe~.\n- ~ab-~: From MHG ~ab(e)-~, from OHG ~ab(a)-~, from Proto-West Germanic *~ab~, from Proto-Germanic *~ab~ (\"off, away\"), from PIE *~h₂epó~ (\"off, away\"). Cognate with English ~of~ and ~off~ — one Old English word that split in two — as well as Latin ~ab~ (\"from\") and Greek ~apó~. The prefix conveys separation or removal — taking something off or away.\n\nLiterally a shove away from oneself. Officialese narrowed it to deportation, while the figurative ~Verantwortung abschieben~, pushing responsibility onto someone else, preserves the older and wider image.",
+      "de": "Ein trennbares Kompositum aus ~ab-~ + ~schieben~:\n\n- ~schieben~: Aus Mhd. ~schieben~, aus Ahd. ~skioban~, aus Proto-Westgermanisch *~skeuban~, aus Urgermanisch *~skeubaną~, aus PIE *~skewbʰ-~ („schieben, stoßen, drängen“). Ein starkes Verb der Klasse II (~schieben~, ~schob~, ~geschoben~). Verwandt mit Englisch ~shove~, Niederländisch ~schuiven~, Dänisch ~skubbe~.\n- ~ab-~: Aus Mhd. ~ab(e)-~, aus Ahd. ~ab(a)-~, aus Proto-Westgermanisch *~ab~, aus Urgermanisch *~ab~ („weg, fort“), aus PIE *~h₂epó~ („weg, fort“). Verwandt mit Englisch ~of~ und ~off~ — einem einzigen altenglischen Wort, das sich in zwei aufspaltete — sowie Lateinisch ~ab~ („von“) und Griechisch ~apó~. Das Präfix drückt Trennung oder Entfernung aus — etwas ab- oder wegnehmen.\n\nWörtlich ist es ein Wegschieben von sich. Die Amtssprache hat es auf die Ausweisung verengt, doch das übertragene ~Verantwortung abschieben~ bewahrt das ältere, weitere Bild."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "– Sie wollen Kinder und Frauen in Kriegsgebiete abschieben.",
+        "source": "Bundestag — Plenarprotokoll 20/210"
+      },
+      "en": {
+        "sentence": "– You want to deport children and women into war zones.",
+        "source": "Bundestag — Plenarprotokoll 20/210"
+      }
+    },
+    "notes": null
+  },
+  "abschießen": {
+    "etymology": {
+      "en": "A separable compound of ~ab-~ + ~schießen~:\n\n- ~schießen~: From MHG ~schiezen~, from OHG ~sciozan~, from Proto-West Germanic *~skeotan~, from Proto-Germanic *~skeutaną~ (\"to shoot, to shove\"), possibly from PIE *~(s)kewd-~ (\"to throw, shoot, pursue\"). A class II strong verb (~schießen~, ~schoss~, ~geschossen~). Cognate with English ~shoot~, Dutch ~schieten~, Old Norse ~skjóta~.\n- ~ab-~: From MHG ~ab(e)-~, from OHG ~ab(a)-~, from Proto-West Germanic *~ab~, from Proto-Germanic *~ab~ (\"off, away\"), from PIE *~h₂epó~ (\"off, away\"). Cognate with English ~of~ and ~off~ — one Old English word that split in two — as well as Latin ~ab~ (\"from\") and Greek ~apó~. The prefix conveys separation or removal — taking something off or away.\n\n~abschießen~ covers both ends of the shot: the projectile leaving the weapon and the target brought down by it, so the ~ab-~ migrates from the bullet to whatever it hits. Figuratively one looses off a remark the same way.",
+      "de": "Ein trennbares Kompositum aus ~ab-~ + ~schießen~:\n\n- ~schießen~: Aus Mhd. ~schiezen~, aus Ahd. ~sciozan~, aus Proto-Westgermanisch *~skeotan~, aus Urgermanisch *~skeutaną~ („schießen, stoßen“), möglicherweise aus PIE *~(s)kewd-~ („werfen, schießen, verfolgen“). Ein starkes Verb der Klasse II (~schießen~, ~schoss~, ~geschossen~). Verwandt mit Englisch ~shoot~, Niederländisch ~schieten~, Altnordisch ~skjóta~.\n- ~ab-~: Aus Mhd. ~ab(e)-~, aus Ahd. ~ab(a)-~, aus Proto-Westgermanisch *~ab~, aus Urgermanisch *~ab~ („weg, fort“), aus PIE *~h₂epó~ („weg, fort“). Verwandt mit Englisch ~of~ und ~off~ — einem einzigen altenglischen Wort, das sich in zwei aufspaltete — sowie Lateinisch ~ab~ („von“) und Griechisch ~apó~. Das Präfix drückt Trennung oder Entfernung aus — etwas ab- oder wegnehmen.\n\n~abschießen~ deckt beide Enden des Schusses ab: das Geschoss, das die Waffe verlässt, und das Ziel, das dadurch herunterkommt — das ~ab-~ wandert gleichsam vom Geschoss zum Getroffenen. Übertragen feuert man eine Bemerkung ebenso ab."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Und das Letztere ist eigentlich die Bosheit, welche Epicur gegen Plato abschoss: ihn verdross die grossartige Manier, das Sich-in-Scene-Setzen, worauf sich Plato sammt seinen Schülern verstand, - worauf sich Epicur nicht verstand!",
+        "source": "Nietzsche — Jenseits von Gut und Böse"
+      },
+      "en": {
+        "sentence": "And the latter is really the malice that Epicurus loosed off at Plato: he was irritated by the grand manner, the staging of oneself, that Plato and his pupils were masters of — and that Epicurus was not.",
+        "source": "Nietzsche — Jenseits von Gut und Böse"
+      }
+    },
+    "notes": null
+  },
+  "abschinden": {
+    "etymology": {
+      "en": "A separable compound of ~ab-~ + ~schinden~:\n\n- ~schinden~: From MHG ~schinden~ (\"to flay, peel; torment\"), from OHG ~skinten~, a denominal verb on Proto-Germanic *~skinþą~ (\"hide, peel\"), from PIE *~(s)ken-~ (\"to split off\"), a nasal extension of *~sek-~ (\"to cut\"). Originally weak, it took on strong inflection in Middle High German by analogy with ~binden~ and ~finden~, and now runs as a class III strong verb (~schinden~, ~schund~, ~geschunden~). Cognate with Old Norse ~skinn~, English ~skin~.\n- ~ab-~: From MHG ~ab(e)-~, from OHG ~ab(a)-~, from Proto-West Germanic *~ab~, from Proto-Germanic *~ab~ (\"off, away\"), from PIE *~h₂epó~ (\"off, away\"). Cognate with English ~of~ and ~off~ — one Old English word that split in two — as well as Latin ~ab~ (\"from\") and Greek ~apó~. The prefix conveys separation or removal — taking something off or away.\n\nBecause the root already means stripping off the hide, ~ab-~ only makes the removal explicit. The everyday survivor is reflexive: ~sich abschinden~, to work oneself raw.",
+      "de": "Ein trennbares Kompositum aus ~ab-~ + ~schinden~:\n\n- ~schinden~: Aus Mhd. ~schinden~ („häuten, schälen; quälen“), aus Ahd. ~skinten~, einem denominalen Verb zu Urgermanisch *~skinþą~ („Haut, Schale“), aus PIE *~(s)ken-~ („abspalten“), einer Nasalerweiterung von *~sek-~ („schneiden“). Ursprünglich schwach, nahm es im Mittelhochdeutschen nach dem Vorbild von ~binden~ und ~finden~ starke Flexion an und gilt heute als starkes Verb der Klasse III (~schinden~, ~schund~, ~geschunden~). Verwandt mit Altnordisch ~skinn~, Englisch ~skin~.\n- ~ab-~: Aus Mhd. ~ab(e)-~, aus Ahd. ~ab(a)-~, aus Proto-Westgermanisch *~ab~, aus Urgermanisch *~ab~ („weg, fort“), aus PIE *~h₂epó~ („weg, fort“). Verwandt mit Englisch ~of~ und ~off~ — einem einzigen altenglischen Wort, das sich in zwei aufspaltete — sowie Lateinisch ~ab~ („von“) und Griechisch ~apó~. Das Präfix drückt Trennung oder Entfernung aus — etwas ab- oder wegnehmen.\n\nDa die Wurzel schon das Abziehen der Haut bezeichnet, macht ~ab-~ die Entfernung nur ausdrücklich. Alltäglich überlebt hat die reflexive Wendung ~sich abschinden~, sich wund arbeiten."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "abschlagen": {
+    "etymology": {
+      "en": "A separable compound of ~ab-~ + ~schlagen~:\n\n- ~schlagen~: From MHG ~slahen~, from OHG ~slahan~, from Proto-West Germanic *~slahan~, from Proto-Germanic *~slahaną~, from PIE *~slak-~ (\"to hit, strike, throw\"), apparently onomatopoeic. The modern ~-g-~ is a secondary insertion by analogy with ~schlug~ and the noun ~Schlag~ (Grammatischer Wechsel). Cognate with English ~slay~ and ~slog~, Old English ~slēan~, Dutch ~slaan~.\n- ~ab-~: From MHG ~ab(e)-~, from OHG ~ab(a)-~, from Proto-West Germanic *~ab~, from Proto-Germanic *~ab~ (\"off, away\"), from PIE *~h₂epó~ (\"off, away\"). Cognate with English ~of~ and ~off~ — one Old English word that split in two — as well as Latin ~ab~ (\"from\") and Greek ~apó~. The prefix conveys separation or removal — taking something off or away.\n\nBeside the blow that takes something off, ~abschlagen~ carries the everyday sense \"to refuse\": a request is struck away rather than taken up. Both readings are still live, which is why a head and a favour can equally be ~abgeschlagen~.",
+      "de": "Ein trennbares Kompositum aus ~ab-~ + ~schlagen~:\n\n- ~schlagen~: Aus Mhd. ~slahen~, aus Ahd. ~slahan~, aus Proto-Westgermanisch *~slahan~, aus Urgermanisch *~slahaną~, aus PIE *~slak-~ („schlagen, treffen, werfen“), offenbar lautmalerischen Ursprungs. Das moderne ~-g-~ ist eine sekundäre Einfügung durch Analogie zu ~schlug~ und ~Schlag~ (Grammatischer Wechsel). Verwandt mit Englisch ~slay~ und ~slog~, Altenglisch ~slēan~, Niederländisch ~slaan~.\n- ~ab-~: Aus Mhd. ~ab(e)-~, aus Ahd. ~ab(a)-~, aus Proto-Westgermanisch *~ab~, aus Urgermanisch *~ab~ („weg, fort“), aus PIE *~h₂epó~ („weg, fort“). Verwandt mit Englisch ~of~ und ~off~ — einem einzigen altenglischen Wort, das sich in zwei aufspaltete — sowie Lateinisch ~ab~ („von“) und Griechisch ~apó~. Das Präfix drückt Trennung oder Entfernung aus — etwas ab- oder wegnehmen.\n\nNeben dem Hieb, der etwas abtrennt, trägt ~abschlagen~ den alltäglichen Sinn „verweigern“: Eine Bitte wird weggeschlagen statt angenommen. Beide Lesarten sind lebendig — ~abgeschlagen~ werden können ein Haupt und eine Gefälligkeit."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Das Mädchen wußte nicht, was es tun sollte, endlich, auf vieles Zureden und weil sie ihm sagten, so etwas dürfte man nicht abschlagen, so willigte es ein.",
+        "source": "Grimm — Märchen"
+      },
+      "en": {
+        "sentence": "The girl did not know what to do; at last, after much urging, and because they told her one must not refuse such a thing, she consented.",
+        "source": "Grimm — Märchen"
+      }
+    },
+    "notes": "Sentence attests the „verweigern“ (refuse) sense rather than the corpus reading „cut off“."
+  },
+  "abschleifen": {
+    "etymology": {
+      "en": "A separable compound of ~ab-~ + ~schleifen~:\n\n- ~schleifen~: Two verbs share this spelling. The strong ~schleifen~ (\"to grind, whet, polish\") is from MHG ~slīfen~, OHG ~slīfan~, Proto-West Germanic *~slīpan~, Proto-Germanic *~slīpaną~ (\"to slide, to whet\"): class I, ~schleifen~, ~schliff~, ~geschliffen~, cognate with English ~slip~, Dutch ~slijpen~. The weak ~schleifen~ (\"to drag; to raze a fortress\") is from MHG ~sleifen~, from Proto-West Germanic *~slaipijan~ (\"to cause to slide\"), the causative of the first, and inflects ~schleifte~, ~geschleift~; a doublet of ~schleppen~, cognate with Dutch ~slepen~.\n- ~ab-~: From MHG ~ab(e)-~, from OHG ~ab(a)-~, from Proto-West Germanic *~ab~, from Proto-Germanic *~ab~ (\"off, away\"), from PIE *~h₂epó~ (\"off, away\"). Cognate with English ~of~ and ~off~ — one Old English word that split in two — as well as Latin ~ab~ (\"from\") and Greek ~apó~. The prefix conveys separation or removal — taking something off or away.\n\nThe parent here is the strong ~schleifen~ \"to grind, whet,\" not its weak twin \"to drag, to raze\" — the reading is strong, and the sense is abrasive. ~abschleifen~ takes material off a surface and, figuratively, wears the edges off a manner or a dialect.",
+      "de": "Ein trennbares Kompositum aus ~ab-~ + ~schleifen~:\n\n- ~schleifen~: Zwei Verben teilen sich diese Schreibung. Das starke ~schleifen~ („schärfen, wetzen, polieren“) kommt aus Mhd. ~slīfen~, Ahd. ~slīfan~, Proto-Westgermanisch *~slīpan~, Urgermanisch *~slīpaną~ („gleiten, wetzen“): Klasse I, ~schleifen~, ~schliff~, ~geschliffen~, verwandt mit Englisch ~slip~, Niederländisch ~slijpen~. Das schwache ~schleifen~ („schleppen; eine Festung schleifen“) kommt aus Mhd. ~sleifen~, aus Proto-Westgermanisch *~slaipijan~ („gleiten machen“), dem Kausativ des ersten, und flektiert ~schleifte~, ~geschleift~; eine Doublette zu ~schleppen~, verwandt mit Niederländisch ~slepen~.\n- ~ab-~: Aus Mhd. ~ab(e)-~, aus Ahd. ~ab(a)-~, aus Proto-Westgermanisch *~ab~, aus Urgermanisch *~ab~ („weg, fort“), aus PIE *~h₂epó~ („weg, fort“). Verwandt mit Englisch ~of~ und ~off~ — einem einzigen altenglischen Wort, das sich in zwei aufspaltete — sowie Lateinisch ~ab~ („von“) und Griechisch ~apó~. Das Präfix drückt Trennung oder Entfernung aus — etwas ab- oder wegnehmen.\n\nElternteil ist hier das starke ~schleifen~ „schärfen, wetzen“, nicht sein schwacher Zwilling „schleppen, schleifen“: Die Flexion ist stark, der Sinn abtragend. ~abschleifen~ nimmt Material von einer Oberfläche — und übertragen die Kanten von einer Manier oder einer Mundart."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "abschmecken": {
+    "etymology": {
+      "en": "A separable compound of ~ab-~ + ~schmecken~:\n\n- ~schmecken~: From MHG ~smecken~, from OHG ~smecchen~, from Proto-West Germanic *~smakkijan~ (\"to taste\"), from *~smakku~ (\"a taste\"). In southern and Austrian German ~schmecken~ also means \"to smell.\" Cognate with English ~smack~ (as in \"it smacks of\"), Dutch ~smaken~.\n- ~ab-~: From MHG ~ab(e)-~, from OHG ~ab(a)-~, from Proto-West Germanic *~ab~, from Proto-Germanic *~ab~ (\"off, away\"), from PIE *~h₂epó~ (\"off, away\"). Cognate with English ~of~ and ~off~ — one Old English word that split in two — as well as Latin ~ab~ (\"from\") and Greek ~apó~. The prefix marks completion or termination — carrying an action through to its end, or letting it expire.\n\n~abschmecken~ is not tasting for pleasure but tasting toward an end: the cook samples and seasons until nothing further is wanted, and the dish is finished.",
+      "de": "Ein trennbares Kompositum aus ~ab-~ + ~schmecken~:\n\n- ~schmecken~: Aus Mhd. ~smecken~, aus Ahd. ~smecchen~, aus Proto-Westgermanisch *~smakkijan~ („schmecken“), zu *~smakku~ („ein Geschmack“). Im süddeutschen und österreichischen Sprachraum bedeutet ~schmecken~ auch „riechen“. Verwandt mit Englisch ~smack~ (wie in „it smacks of“), Niederländisch ~smaken~.\n- ~ab-~: Aus Mhd. ~ab(e)-~, aus Ahd. ~ab(a)-~, aus Proto-Westgermanisch *~ab~, aus Urgermanisch *~ab~ („weg, fort“), aus PIE *~h₂epó~ („weg, fort“). Verwandt mit Englisch ~of~ und ~off~ — einem einzigen altenglischen Wort, das sich in zwei aufspaltete — sowie Lateinisch ~ab~ („von“) und Griechisch ~apó~. Das Präfix bezeichnet Vollendung oder Beendigung — eine Handlung zu Ende führen oder ablaufen lassen.\n\n~abschmecken~ ist kein Kosten zum Genuss, sondern ein Kosten zum Abschluss: Man probiert und würzt nach, bis nichts mehr fehlt und das Gericht fertig ist."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "abschreiben": {
+    "etymology": {
+      "en": "A separable compound of ~ab-~ + ~schreiben~:\n\n- ~schreiben~: From MHG ~schrīben~, from OHG ~scrīban~, from Proto-West Germanic *~skrīban~, from Proto-Germanic *~skrībaną~, an early borrowing from Latin ~scrībō~ (\"I write\"), from Proto-Italic *~skreiβō~, from PIE *~(s)kreybʰ-~ (\"to scratch, incise\"). Because the borrowing occurred in the Roman period, the verb was fully assimilated into the strong system (class I: ~schreiben~, ~schrieb~, ~geschrieben~). Cognate with Dutch ~schrijven~.\n- ~ab-~: From MHG ~ab(e)-~, from OHG ~ab(a)-~, from Proto-West Germanic *~ab~, from Proto-Germanic *~ab~ (\"off, away\"), from PIE *~h₂epó~ (\"off, away\"). Cognate with English ~of~ and ~off~ — one Old English word that split in two — as well as Latin ~ab~ (\"from\") and Greek ~apó~. The prefix conveys copying from a model — reproducing something by taking it off an original.\n\nOne verb serves the schoolroom and the ledger: ~abschreiben~ is copying from a model, and in accounting it is writing an asset down to nothing. A person given up on is ~abgeschrieben~.",
+      "de": "Ein trennbares Kompositum aus ~ab-~ + ~schreiben~:\n\n- ~schreiben~: Aus Mhd. ~schrīben~, aus Ahd. ~scrīban~, aus Proto-Westgermanisch *~skrīban~, aus Urgermanisch *~skrībaną~, eine frühe Entlehnung aus Lateinisch ~scrībō~ („ich schreibe“), aus Protoitalisch *~skreiβō~, aus PIE *~(s)kreybʰ-~ („kratzen, ritzen“). Da die Entlehnung in der Römerzeit erfolgte, wurde das Verb voll ins starke System eingegliedert (Klasse I: ~schreiben~, ~schrieb~, ~geschrieben~). Verwandt mit Niederländisch ~schrijven~.\n- ~ab-~: Aus Mhd. ~ab(e)-~, aus Ahd. ~ab(a)-~, aus Proto-Westgermanisch *~ab~, aus Urgermanisch *~ab~ („weg, fort“), aus PIE *~h₂epó~ („weg, fort“). Verwandt mit Englisch ~of~ und ~off~ — einem einzigen altenglischen Wort, das sich in zwei aufspaltete — sowie Lateinisch ~ab~ („von“) und Griechisch ~apó~. Das Präfix drückt das Abbilden nach einer Vorlage aus — etwas wiedergeben, indem man es vom Original abnimmt.\n\nDasselbe Verb dient der Schulbank und dem Kontobuch: ~abschreiben~ ist das Kopieren nach einer Vorlage und, kaufmännisch, das Herunterschreiben eines Wertes auf null. Wer aufgegeben wird, ist ~abgeschrieben~."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Ich habe heute eine Szene gehabt, die, rein abgeschrieben, die schönste Idylle von der Welt gäbe; doch was soll Dichtung, Szene und Idylle?",
+        "source": "Goethe — Die Leiden des jungen Werthers"
+      },
+      "en": {
+        "sentence": "Today I had a scene that, copied out fair, would make the loveliest idyll in the world; but what good are poetry, scene, and idyll?",
+        "source": "Goethe — Die Leiden des jungen Werthers"
+      }
+    },
+    "notes": null
+  },
+  "abschreiten": {
+    "etymology": {
+      "en": "A separable compound of ~ab-~ + ~schreiten~:\n\n- ~schreiten~: From MHG ~schrīten~, from OHG ~skrītan~, from Proto-West Germanic *~skrīþan~ (\"to step, stride\"), from Proto-Germanic *~skrīþaną~ (\"to walk, glide, crawl\"), from PIE *~(s)kreyt-~ (\"to stride\"), an extension of *~(s)krey-~ (\"to go about\"). Cognate with Lithuanian ~skrìsti~ (\"to rush, run\"), Latvian ~skrìet~ (\"to run, fly\"). Related to ~Schritt~ (\"step\").\n- ~ab-~: From MHG ~ab(e)-~, from OHG ~ab(a)-~, from Proto-West Germanic *~ab~, from Proto-Germanic *~ab~ (\"off, away\"), from PIE *~h₂epó~ (\"off, away\"). Cognate with English ~of~ and ~off~ — one Old English word that split in two — as well as Latin ~ab~ (\"from\") and Greek ~apó~. The prefix marks completion or termination — carrying an action through to its end, or letting it expire.\n\n~abschreiten~ measures ground with the body: one covers a stretch from end to end, whether to judge its length or, on parade, to review a line of troops.",
+      "de": "Ein trennbares Kompositum aus ~ab-~ + ~schreiten~:\n\n- ~schreiten~: Aus Mhd. ~schrīten~, aus Ahd. ~skrītan~, aus Proto-Westgermanisch *~skrīþan~ („schreiten“), aus Urgermanisch *~skrīþaną~ („gehen, gleiten, kriechen“), aus PIE *~(s)kreyt-~ („schreiten“), einer Erweiterung von *~(s)krey-~ („umhergehen“). Verwandt mit Litauisch ~skrìsti~ („eilen, rennen“), Lettisch ~skrìet~ („rennen, fliegen“) und mit ~Schritt~.\n- ~ab-~: Aus Mhd. ~ab(e)-~, aus Ahd. ~ab(a)-~, aus Proto-Westgermanisch *~ab~, aus Urgermanisch *~ab~ („weg, fort“), aus PIE *~h₂epó~ („weg, fort“). Verwandt mit Englisch ~of~ und ~off~ — einem einzigen altenglischen Wort, das sich in zwei aufspaltete — sowie Lateinisch ~ab~ („von“) und Griechisch ~apó~. Das Präfix bezeichnet Vollendung oder Beendigung — eine Handlung zu Ende führen oder ablaufen lassen.\n\n~abschreiten~ misst den Boden mit dem Körper: Man geht eine Strecke von einem Ende zum anderen ab, sei es um ihre Länge zu schätzen, sei es beim Abschreiten einer Front."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Dort stand er einen Augenblick, das Gesicht der Weite zugekehrt, und begann hierauf, die lange und schmale Strecke entblößten Grundes nach links hin langsam abzuschreiten.",
+        "source": "Mann — Der Tod in Venedig"
+      },
+      "en": {
+        "sentence": "There he stood a moment, his face turned toward the open expanse, and then began slowly to pace off the long, narrow strip of bare ground away to his left.",
+        "source": "Mann — Der Tod in Venedig"
+      }
+    },
+    "notes": null
+  },
+  "abschütteln": {
+    "etymology": {
+      "en": "A separable compound of ~ab-~ + ~schütteln~:\n\n- ~schütteln~: From MHG ~schütelen~, from OHG ~scutilōn~, an iterative formation from ~schütten~ (\"to pour, to shake\") marking repeated back-and-forth motion. ~schütten~ derives from OHG ~scuttēn~, from Proto-Germanic *~skudjaną~, perhaps from PIE *~(s)kewt-~ (\"to shake, jolt\"). Cognate with Dutch ~schudden~ (\"to shake\").\n- ~ab-~: From MHG ~ab(e)-~, from OHG ~ab(a)-~, from Proto-West Germanic *~ab~, from Proto-Germanic *~ab~ (\"off, away\"), from PIE *~h₂epó~ (\"off, away\"). Cognate with English ~of~ and ~off~ — one Old English word that split in two — as well as Latin ~ab~ (\"from\") and Greek ~apó~. The prefix conveys separation or removal — taking something off or away.\n\nThe shaking is the means and ~ab-~ the result: what is shaken must come off — dust, snow, or a pursuer.",
+      "de": "Ein trennbares Kompositum aus ~ab-~ + ~schütteln~:\n\n- ~schütteln~: Aus Mhd. ~schütelen~, aus Ahd. ~scutilōn~, einer iterativen Bildung zu ~schütten~ („gießen, schütten“), die wiederholte Hin-und-her-Bewegung anzeigt. ~schütten~ stammt aus Ahd. ~scuttēn~, aus Urgermanisch *~skudjaną~, vielleicht aus PIE *~(s)kewt-~ („schütteln, rütteln“). Verwandt mit Niederländisch ~schudden~ („schütteln“).\n- ~ab-~: Aus Mhd. ~ab(e)-~, aus Ahd. ~ab(a)-~, aus Proto-Westgermanisch *~ab~, aus Urgermanisch *~ab~ („weg, fort“), aus PIE *~h₂epó~ („weg, fort“). Verwandt mit Englisch ~of~ und ~off~ — einem einzigen altenglischen Wort, das sich in zwei aufspaltete — sowie Lateinisch ~ab~ („von“) und Griechisch ~apó~. Das Präfix drückt Trennung oder Entfernung aus — etwas ab- oder wegnehmen.\n\nDas Schütteln ist das Mittel, ~ab-~ das Ergebnis: Was geschüttelt wird, muss herunter — Staub, Schnee oder ein Verfolger."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Seine Versuche, den Lastenden abzuschütteln, waren krampfhaft, sie unterblieben auf Augenblicke ganz und wiederholten sich nur noch als ein Zucken.",
+        "source": "Mann — Der Tod in Venedig"
+      },
+      "en": {
+        "sentence": "His attempts to shake off the weight pressing on him were convulsive; for moments they stopped altogether and then returned only as a twitching.",
+        "source": "Mann — Der Tod in Venedig"
+      }
+    },
+    "notes": null
+  },
+  "abschwellen": {
+    "etymology": {
+      "en": "A separable compound of ~ab-~ + ~schwellen~:\n\n- ~schwellen~: From MHG ~swëllen~, from OHG ~swëllan~, from Proto-Germanic *~swellaną~ (\"to swell\"), perhaps from PIE *~swelH-~, though the root is not securely established. A class III strong verb (~schwellen~, ~schwoll~, ~geschwollen~), beside a weak causative ~schwellen~ (\"to make swell\") from Proto-Germanic *~swallijaną~. Cognate with English ~swell~, Dutch ~zwellen~, Old Norse ~svella~.\n- ~ab-~: From MHG ~ab(e)-~, from OHG ~ab(a)-~, from Proto-West Germanic *~ab~, from Proto-Germanic *~ab~ (\"off, away\"), from PIE *~h₂epó~ (\"off, away\"). Cognate with English ~of~ and ~off~ — one Old English word that split in two — as well as Latin ~ab~ (\"from\") and Greek ~apó~. The prefix conveys downward motion, often with a sense of dismantling or reduction.\n\nIt is the strong intransitive ~schwellen~ that takes ~ab-~, not its weak causative: a swelling goes down of its own accord, and the prefix reads as reduction rather than removal. A noise ~abschwillt~ in exactly the same way.",
+      "de": "Ein trennbares Kompositum aus ~ab-~ + ~schwellen~:\n\n- ~schwellen~: Aus Mhd. ~swëllen~, aus Ahd. ~swëllan~, aus Urgermanisch *~swellaną~ („schwellen“), vielleicht aus PIE *~swelH-~, doch ist die Wurzel nicht gesichert. Ein starkes Verb der Klasse III (~schwellen~, ~schwoll~, ~geschwollen~), daneben ein schwaches Kausativ ~schwellen~ („anschwellen lassen“) aus Urgermanisch *~swallijaną~. Verwandt mit Englisch ~swell~, Niederländisch ~zwellen~, Altnordisch ~svella~.\n- ~ab-~: Aus Mhd. ~ab(e)-~, aus Ahd. ~ab(a)-~, aus Proto-Westgermanisch *~ab~, aus Urgermanisch *~ab~ („weg, fort“), aus PIE *~h₂epó~ („weg, fort“). Verwandt mit Englisch ~of~ und ~off~ — einem einzigen altenglischen Wort, das sich in zwei aufspaltete — sowie Lateinisch ~ab~ („von“) und Griechisch ~apó~. Das Präfix drückt eine Abwärtsbewegung aus, oft mit dem Sinn von Abbau oder Verringerung.\n\nEs ist das starke, intransitive ~schwellen~, das ~ab-~ zu sich nimmt, nicht sein schwaches Kausativ: Eine Schwellung geht von selbst zurück, und das Präfix meint hier Verringerung, nicht Entfernung. Ebenso schwillt ein Lärm ab."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "abschwören": {
+    "etymology": {
+      "en": "A separable compound of ~ab-~ + ~schwören~:\n\n- ~schwören~: From MHG ~swern~, from OHG ~swerien~, from Proto-West Germanic *~swarjan~, from Proto-Germanic *~swarjaną~, from PIE *~swer-~ (\"to speak, to talk\"). A class VI strong verb (~schwören~, ~schwor~, ~geschworen~); the older Präteritum ~schwur~ is now archaic. Cognate with English ~swear~, Dutch ~zweren~, Danish ~sværge~.\n- ~ab-~: From MHG ~ab(e)-~, from OHG ~ab(a)-~, from Proto-West Germanic *~ab~, from Proto-Germanic *~ab~ (\"off, away\"), from PIE *~h₂epó~ (\"off, away\"). Cognate with English ~of~ and ~off~ — one Old English word that split in two — as well as Latin ~ab~ (\"from\") and Greek ~apó~. The prefix conveys separation or removal — taking something off or away.\n\nTo ~abschwören~ is to turn an oath against an earlier commitment: the swearing does not bind but severs. English ~forswear~ and ~abjure~ (Latin ~ab-~ + ~iurare~) build the identical compound out of identical parts.",
+      "de": "Ein trennbares Kompositum aus ~ab-~ + ~schwören~:\n\n- ~schwören~: Aus Mhd. ~swern~, aus Ahd. ~swerien~, aus Proto-Westgermanisch *~swarjan~, aus Urgermanisch *~swarjaną~, aus PIE *~swer-~ („sprechen, reden“). Ein starkes Verb der Klasse VI (~schwören~, ~schwor~, ~geschworen~); das ältere Präteritum ~schwur~ ist heute altertümlich. Verwandt mit Englisch ~swear~, Niederländisch ~zweren~, Dänisch ~sværge~.\n- ~ab-~: Aus Mhd. ~ab(e)-~, aus Ahd. ~ab(a)-~, aus Proto-Westgermanisch *~ab~, aus Urgermanisch *~ab~ („weg, fort“), aus PIE *~h₂epó~ („weg, fort“). Verwandt mit Englisch ~of~ und ~off~ — einem einzigen altenglischen Wort, das sich in zwei aufspaltete — sowie Lateinisch ~ab~ („von“) und Griechisch ~apó~. Das Präfix drückt Trennung oder Entfernung aus — etwas ab- oder wegnehmen.\n\nWer ~abschwört~, richtet den Eid gegen eine frühere Bindung: Der Schwur bindet nicht, er trennt. Englisch ~forswear~ und ~abjure~ (Lateinisch ~ab-~ + ~iurare~) bilden aus denselben Teilen genau dasselbe Kompositum."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "absenden": {
+    "etymology": {
+      "en": "A separable compound of ~ab-~ + ~senden~:\n\n- ~senden~: From MHG ~senden~, from OHG ~senten~, from Proto-West Germanic *~sandijan~, from Proto-Germanic *~sandijaną~, from PIE *~sont-eye-~, a causative of *~sent-~ (\"to walk, travel\") — originally \"to cause to go.\" It has a double Präteritum: ~sendete~ for broadcasting, ~sandte~ (a Rückumlaut form) for sending a letter. Cognate with English ~send~, Dutch ~zenden~, Gothic ~sandjan~.\n- ~ab-~: From MHG ~ab(e)-~, from OHG ~ab(a)-~, from Proto-West Germanic *~ab~, from Proto-Germanic *~ab~ (\"off, away\"), from PIE *~h₂epó~ (\"off, away\"). Cognate with English ~of~ and ~off~ — one Old English word that split in two — as well as Latin ~ab~ (\"from\") and Greek ~apó~. The prefix conveys separation or removal — taking something off or away.\n\n~absenden~ is the formal counterpart of ~abschicken~, at home on forms and in postal language, and it inherits the root's double Präteritum: ~absandte~ beside ~absendete~.",
+      "de": "Ein trennbares Kompositum aus ~ab-~ + ~senden~:\n\n- ~senden~: Aus Mhd. ~senden~, aus Ahd. ~senten~, aus Proto-Westgermanisch *~sandijan~, aus Urgermanisch *~sandijaną~, aus PIE *~sont-eye-~, einem Kausativ von *~sent-~ („gehen, reisen“) — ursprünglich „veranlassen zu gehen“. Doppeltes Präteritum: ~sendete~ für das Ausstrahlen, ~sandte~ (Rückumlaut-Form) für das Senden eines Briefes. Verwandt mit Englisch ~send~, Niederländisch ~zenden~, Gotisch ~sandjan~.\n- ~ab-~: Aus Mhd. ~ab(e)-~, aus Ahd. ~ab(a)-~, aus Proto-Westgermanisch *~ab~, aus Urgermanisch *~ab~ („weg, fort“), aus PIE *~h₂epó~ („weg, fort“). Verwandt mit Englisch ~of~ und ~off~ — einem einzigen altenglischen Wort, das sich in zwei aufspaltete — sowie Lateinisch ~ab~ („von“) und Griechisch ~apó~. Das Präfix drückt Trennung oder Entfernung aus — etwas ab- oder wegnehmen.\n\n~absenden~ ist die förmliche Entsprechung zu ~abschicken~, zu Hause auf Formularen und in der Postsprache; es erbt das doppelte Präteritum der Wurzel: ~absandte~ neben ~absendete~."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "absenken": {
+    "etymology": {
+      "en": "A separable compound of ~ab-~ + ~senken~:\n\n- ~senken~: From OHG ~senken~, from Proto-Germanic *~sankwijaną~, a causative of *~sinkwaną~ (\"to sink\"), from PIE *~sengʷ-~ (\"to sink, to fall\"). ~senken~ is thus the causative partner of ~sinken~: \"to cause to sink.\" The vowel alternation reflects the causative *~-jan-~ suffix, which triggered umlaut. Cognate with Gothic ~sagqjan~, Old Norse ~søkkva~.\n- ~ab-~: From MHG ~ab(e)-~, from OHG ~ab(a)-~, from Proto-West Germanic *~ab~, from Proto-Germanic *~ab~ (\"off, away\"), from PIE *~h₂epó~ (\"off, away\"). Cognate with English ~of~ and ~off~ — one Old English word that split in two — as well as Latin ~ab~ (\"from\") and Greek ~apó~. The prefix conveys downward motion, often with a sense of dismantling or reduction.\n\n~senken~ already lowers; ~ab-~ supplies the endpoint, so ~absenken~ is a controlled reduction to a target level — of a road bed, a temperature, or a budget line.",
+      "de": "Ein trennbares Kompositum aus ~ab-~ + ~senken~:\n\n- ~senken~: Aus Ahd. ~senken~, aus Urgermanisch *~sankwijaną~, einem Kausativ von *~sinkwaną~ („sinken“), aus PIE *~sengʷ-~ („sinken, fallen“). ~Senken~ ist somit das Kausativ zu ~sinken~: „zum Sinken bringen“. Der Vokalwechsel geht auf das Kausativsuffix *~-jan-~ zurück, das Umlaut auslöste. Verwandt mit Gotisch ~sagqjan~, Altnordisch ~søkkva~.\n- ~ab-~: Aus Mhd. ~ab(e)-~, aus Ahd. ~ab(a)-~, aus Proto-Westgermanisch *~ab~, aus Urgermanisch *~ab~ („weg, fort“), aus PIE *~h₂epó~ („weg, fort“). Verwandt mit Englisch ~of~ und ~off~ — einem einzigen altenglischen Wort, das sich in zwei aufspaltete — sowie Lateinisch ~ab~ („von“) und Griechisch ~apó~. Das Präfix drückt eine Abwärtsbewegung aus, oft mit dem Sinn von Abbau oder Verringerung.\n\n~senken~ senkt bereits; ~ab-~ fügt den Zielpunkt hinzu, sodass ~absenken~ eine gesteuerte Verringerung auf ein bestimmtes Niveau meint — einer Fahrbahn, einer Temperatur oder eines Haushaltspostens."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Sie haben gesagt: Wir werden das Wachstum absenken müssen.",
+        "source": "Bundestag — Plenarprotokoll 20/210"
+      },
+      "en": {
+        "sentence": "You said: we are going to have to lower growth.",
+        "source": "Bundestag — Plenarprotokoll 20/210"
+      }
+    },
+    "notes": null
+  },
+  "absinken": {
+    "etymology": {
+      "en": "A separable compound of ~ab-~ + ~sinken~:\n\n- ~sinken~: From MHG ~sinken~, from OHG ~sinkan~, from Proto-West Germanic *~sinkwan~, from Proto-Germanic *~sinkwaną~, from PIE *~sengʷ-~ (\"to sink, to drop\"). A class III strong verb (~sinken~, ~sank~, ~gesunken~); the weak causative ~senken~ is its transitive partner. Cognate with English ~sink~, Dutch ~zinken~, Danish ~synke~.\n- ~ab-~: From MHG ~ab(e)-~, from OHG ~ab(a)-~, from Proto-West Germanic *~ab~, from Proto-Germanic *~ab~ (\"off, away\"), from PIE *~h₂epó~ (\"off, away\"). Cognate with English ~of~ and ~off~ — one Old English word that split in two — as well as Latin ~ab~ (\"from\") and Greek ~apó~. The prefix conveys downward motion, often with a sense of dismantling or reduction.\n\nThe compound pair mirrors the root pair exactly: ~absinken~ is what a thing does by itself, ~absenken~ what someone does to it. In modern use the sinking is usually figurative — a level, a standard, a ranking slipping.",
+      "de": "Ein trennbares Kompositum aus ~ab-~ + ~sinken~:\n\n- ~sinken~: Aus Mhd. ~sinken~, aus Ahd. ~sinkan~, aus Proto-Westgermanisch *~sinkwan~, aus Urgermanisch *~sinkwaną~, aus PIE *~sengʷ-~ („sinken, fallen“). Ein starkes Verb der Klasse III (~sinken~, ~sank~, ~gesunken~); das schwache Kausativ ~senken~ ist sein transitives Gegenstück. Verwandt mit Englisch ~sink~, Niederländisch ~zinken~, Dänisch ~synke~.\n- ~ab-~: Aus Mhd. ~ab(e)-~, aus Ahd. ~ab(a)-~, aus Proto-Westgermanisch *~ab~, aus Urgermanisch *~ab~ („weg, fort“), aus PIE *~h₂epó~ („weg, fort“). Verwandt mit Englisch ~of~ und ~off~ — einem einzigen altenglischen Wort, das sich in zwei aufspaltete — sowie Lateinisch ~ab~ („von“) und Griechisch ~apó~. Das Präfix drückt eine Abwärtsbewegung aus, oft mit dem Sinn von Abbau oder Verringerung.\n\nDas Paar der Komposita spiegelt das Wurzelpaar genau: ~absinken~ tut eine Sache von selbst, ~absenken~ tut jemand mit ihr. Heute ist das Sinken meist übertragen gemeint — ein Niveau, ein Standard, ein Rang."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Die Erhaltungsbedarfsprognose verfolgt bei den Ingenieurbauwerken das Ziel, diese sogenannten Ertüchtigungsbauwerke im Prognose zeitraum vordringlich zu behandeln und den Zustand des restlichen Bauwerksbestandes nicht weiter absinken zu lassen.",
+        "source": "Bundesverkehrswegeplan (2030)"
+      },
+      "en": {
+        "sentence": "For engineering structures, the maintenance-needs forecast aims to give priority within the forecast period to these so-called upgrade structures and to keep the condition of the remaining stock from sinking any further.",
+        "source": "Bundesverkehrswegeplan (2030)"
+      }
+    },
+    "notes": "Quotation contains a source-side split compound („Prognose zeitraum“ for „Prognosezeitraum“), a PDF-extraction artifact left as-is for verbatim fidelity."
+  },
+  "abspeisen": {
+    "etymology": {
+      "en": "A separable compound of ~ab-~ + ~speisen~:\n\n- ~speisen~: From MHG ~spīsen~ (\"to feed\"), a denominative verb from MHG ~spīse~ (\"food\"), from Medieval Latin ~spēsa~, from Latin ~expēnsa~ (\"money paid out\"), from ~expendere~ (\"to weigh out, pay out\"). A weak verb throughout its history. Cognate with Dutch ~spijzen~; the same Latin source gave English ~expense~ and ~spend~.\n- ~ab-~: From MHG ~ab(e)-~, from OHG ~ab(a)-~, from Proto-West Germanic *~ab~, from Proto-Germanic *~ab~ (\"off, away\"), from PIE *~h₂epó~ (\"off, away\"). Cognate with English ~of~ and ~off~ — one Old English word that split in two — as well as Latin ~ab~ (\"from\") and Greek ~apó~. The prefix marks completion or termination — carrying an action through to its end, or letting it expire.\n\nThe literal act — feeding someone and thereby ending the meal — turned into a brush-off: to ~abspeisen~ a person is to serve up just enough to send them away, English \"to fob off.\"",
+      "de": "Ein trennbares Kompositum aus ~ab-~ + ~speisen~:\n\n- ~speisen~: Aus Mhd. ~spīsen~ („ernähren, speisen“), einem denominativen Verb zu Mhd. ~spīse~ („Speise“), aus Mittellateinisch ~spēsa~, aus Lateinisch ~expēnsa~ („ausgezahltes Geld“), zu ~expendere~ („abwägen, auszahlen“). Ein durchgehend schwaches Verb. Verwandt mit Niederländisch ~spijzen~; dieselbe lateinische Quelle ergab Englisch ~expense~ und ~spend~.\n- ~ab-~: Aus Mhd. ~ab(e)-~, aus Ahd. ~ab(a)-~, aus Proto-Westgermanisch *~ab~, aus Urgermanisch *~ab~ („weg, fort“), aus PIE *~h₂epó~ („weg, fort“). Verwandt mit Englisch ~of~ und ~off~ — einem einzigen altenglischen Wort, das sich in zwei aufspaltete — sowie Lateinisch ~ab~ („von“) und Griechisch ~apó~. Das Präfix bezeichnet Vollendung oder Beendigung — eine Handlung zu Ende führen oder ablaufen lassen.\n\nAus dem wörtlichen Vorgang — jemanden speisen und damit die Mahlzeit beenden — wurde eine Abfuhr: Wen man ~abspeist~, dem gibt man gerade genug, um ihn loszuwerden."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Du willst uns doch nicht mit Reden abspeisen?",
+        "source": "Nietzsche — Also sprach Zarathustra"
+      },
+      "en": {
+        "sentence": "Surely you do not mean to fob us off with speeches?",
+        "source": "Nietzsche — Also sprach Zarathustra"
+      }
+    },
+    "notes": null
+  },
+  "absperren": {
+    "etymology": {
+      "en": "A separable compound of ~ab-~ + ~sperren~:\n\n- ~sperren~: From MHG ~sperren~, from OHG ~sperran~, from Proto-West Germanic *~sparrijan~, from Proto-Germanic *~sparrijaną~ (\"to bar, to block\"), a denominative verb from *~sparrô~ (\"wooden beam, log\") — originally to bar a passage with a beam. Cognate with English ~spar~ (\"to bolt, bar\"; the noun for a wooden beam), Dutch ~sperren~.\n- ~ab-~: From MHG ~ab(e)-~, from OHG ~ab(a)-~, from Proto-West Germanic *~ab~, from Proto-Germanic *~ab~ (\"off, away\"), from PIE *~h₂epó~ (\"off, away\"). Cognate with English ~of~ and ~off~ — one Old English word that split in two — as well as Latin ~ab~ (\"from\") and Greek ~apó~. The prefix conveys separation or removal — taking something off or away.\n\nThe root's beam is still visible in the modern act: ~absperren~ shuts a street or a valve off from whatever lies beyond it. Austrian and Bavarian usage keeps the plainer sense of locking a door.",
+      "de": "Ein trennbares Kompositum aus ~ab-~ + ~sperren~:\n\n- ~sperren~: Aus Mhd. ~sperren~, aus Ahd. ~sperran~, aus Proto-Westgermanisch *~sparrijan~, aus Urgermanisch *~sparrijaną~ („verriegeln, versperren“), einem Denominativverb zu *~sparrô~ („Holzbalken, Sparren“) — ursprünglich einen Durchgang mit einem Balken versperren. Verwandt mit Englisch ~spar~ („verriegeln“; Substantiv für einen Holzbalken), Niederländisch ~sperren~.\n- ~ab-~: Aus Mhd. ~ab(e)-~, aus Ahd. ~ab(a)-~, aus Proto-Westgermanisch *~ab~, aus Urgermanisch *~ab~ („weg, fort“), aus PIE *~h₂epó~ („weg, fort“). Verwandt mit Englisch ~of~ und ~off~ — einem einzigen altenglischen Wort, das sich in zwei aufspaltete — sowie Lateinisch ~ab~ („von“) und Griechisch ~apó~. Das Präfix drückt Trennung oder Entfernung aus — etwas ab- oder wegnehmen.\n\nDer Balken der Wurzel ist im heutigen Gebrauch noch sichtbar: ~absperren~ trennt eine Straße oder ein Ventil von dem ab, was dahinterliegt. Österreichisch und bairisch bewahrt es den schlichteren Sinn „abschließen“."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Das Gefühl, hier von der Luft vollständig abgesperrt zu sein, verursachte ihm Schwindel.",
+        "source": "Kafka — Der Proceß"
+      },
+      "en": {
+        "sentence": "The feeling of being completely cut off from the air in there made him dizzy.",
+        "source": "Kafka — Der Proceß"
+      }
+    },
+    "notes": null
+  },
+  "abspielen": {
+    "etymology": {
+      "en": "A separable compound of ~ab-~ + ~spielen~:\n\n- ~spielen~: From MHG ~spil(e)n~, from OHG ~spilōn~, from Proto-West Germanic *~spilōn~, from Proto-Germanic *~spilōną~, a denominative verb from the noun *~spilą~ (\"play, game, dance\"); the pre-Germanic origin is uncertain. OHG ~spilōn~ was broader, covering dance and entertainment generally. Cognate with Dutch ~spelen~, Low German ~spelen~.\n- ~ab-~: From MHG ~ab(e)-~, from OHG ~ab(a)-~, from Proto-West Germanic *~ab~, from Proto-Germanic *~ab~ (\"off, away\"), from PIE *~h₂epó~ (\"off, away\"). Cognate with English ~of~ and ~off~ — one Old English word that split in two — as well as Latin ~ab~ (\"from\") and Greek ~apó~. The prefix marks completion or termination — carrying an action through to its end, or letting it expire.\n\nTo ~abspielen~ a recording is to let it run through to its end; reflexively, ~sich abspielen~ says the same of an event, which simply runs its course in front of onlookers.",
+      "de": "Ein trennbares Kompositum aus ~ab-~ + ~spielen~:\n\n- ~spielen~: Aus Mhd. ~spil(e)n~, aus Ahd. ~spilōn~, aus Proto-Westgermanisch *~spilōn~, aus Urgermanisch *~spilōną~, einem denominativen Verb zum Substantiv *~spilą~ („Spiel, Tanz“); der vorgermanische Ursprung ist ungewiss. Ahd. ~spilōn~ umfasste breiter auch Tanz und Unterhaltung. Verwandt mit Niederländisch ~spelen~, Niederdeutsch ~spelen~.\n- ~ab-~: Aus Mhd. ~ab(e)-~, aus Ahd. ~ab(a)-~, aus Proto-Westgermanisch *~ab~, aus Urgermanisch *~ab~ („weg, fort“), aus PIE *~h₂epó~ („weg, fort“). Verwandt mit Englisch ~of~ und ~off~ — einem einzigen altenglischen Wort, das sich in zwei aufspaltete — sowie Lateinisch ~ab~ („von“) und Griechisch ~apó~. Das Präfix bezeichnet Vollendung oder Beendigung — eine Handlung zu Ende führen oder ablaufen lassen.\n\nEine Aufnahme ~abspielen~ heißt, sie bis zum Ende laufen zu lassen; reflexiv sagt ~sich abspielen~ dasselbe von einem Ereignis, das vor Zuschauern schlicht seinen Lauf nimmt."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Er schien aufmerksam einen Vorgang zu beobachten, der sich vor ihm abspielte.",
+        "source": "Kafka — Der Proceß"
+      },
+      "en": {
+        "sentence": "He seemed to be watching intently some scene that was playing out in front of him.",
+        "source": "Kafka — Der Proceß"
+      }
+    },
+    "notes": null
+  },
+  "absprechen": {
+    "etymology": {
+      "en": "A separable compound of ~ab-~ + ~sprechen~:\n\n- ~sprechen~: From MHG ~sprëchen~, from OHG ~sprëhhan~, from Proto-West Germanic *~sprekan~, from Proto-Germanic *~sprekaną~, probably from PIE *~spregʰ-~ (\"to crackle\"). The sense developed from an onomatopoeic root meaning \"to crackle, make noise\" to \"to speak.\" Cognate with Dutch ~spreken~, English ~speak~.\n- ~ab-~: From MHG ~ab(e)-~, from OHG ~ab(a)-~, from Proto-West Germanic *~ab~, from Proto-Germanic *~ab~ (\"off, away\"), from PIE *~h₂epó~ (\"off, away\"). Cognate with English ~of~ and ~off~ — one Old English word that split in two — as well as Latin ~ab~ (\"from\") and Greek ~apó~. The prefix marks completion or termination — carrying an action through to its end, or letting it expire.\n\nTwo senses live side by side. Reflexive ~sich absprechen~ is talking a matter through until it is settled, while ~jemandem etwas absprechen~ takes the separative reading of ~ab-~ instead and denies a person some quality outright.",
+      "de": "Ein trennbares Kompositum aus ~ab-~ + ~sprechen~:\n\n- ~sprechen~: Aus Mhd. ~sprëchen~, aus Ahd. ~sprëhhan~, aus Proto-Westgermanisch *~sprekan~, aus Urgermanisch *~sprekaną~, wahrscheinlich aus PIE *~spregʰ-~ („knistern, prasseln“). Die Bedeutung entwickelte sich von einer lautmalerischen Wurzel für „Lärm machen“ zu „sprechen“. Verwandt mit Niederländisch ~spreken~, Englisch ~speak~.\n- ~ab-~: Aus Mhd. ~ab(e)-~, aus Ahd. ~ab(a)-~, aus Proto-Westgermanisch *~ab~, aus Urgermanisch *~ab~ („weg, fort“), aus PIE *~h₂epó~ („weg, fort“). Verwandt mit Englisch ~of~ und ~off~ — einem einzigen altenglischen Wort, das sich in zwei aufspaltete — sowie Lateinisch ~ab~ („von“) und Griechisch ~apó~. Das Präfix bezeichnet Vollendung oder Beendigung — eine Handlung zu Ende führen oder ablaufen lassen.\n\nZwei Bedeutungen stehen nebeneinander: Das reflexive ~sich absprechen~ redet eine Sache durch, bis sie geregelt ist, während ~jemandem etwas absprechen~ die trennende Lesart von ~ab-~ nutzt und einer Person eine Eigenschaft rundweg bestreitet."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Ich dachte am Anfang, der Gesetzentwurf wäre vielleicht mit der Union abgesprochen und er kommt noch durch, weil es so schlecht ist.",
+        "source": "Bundestag — Plenarprotokoll 20/207"
+      },
+      "en": {
+        "sentence": "At first I thought the bill might have been agreed with the Union and would still get through, because it is so bad.",
+        "source": "Bundestag — Plenarprotokoll 20/207"
+      }
+    },
+    "notes": null
+  },
+  "abspringen": {
+    "etymology": {
+      "en": "A separable compound of ~ab-~ + ~springen~:\n\n- ~springen~: From OHG ~springan~, from Proto-Germanic *~springaną~, from PIE *~sprenǵʰ-~, a nasalized form of *~sperǵʰ-~ (\"to move energetically, to hasten, to spring\"). A class III strong verb (~springen~, ~sprang~, ~gesprungen~). Cognate with English ~spring~, Dutch ~springen~, Danish ~springe~, Greek ~spérkhō~ (\"to hasten\").\n- ~ab-~: From MHG ~ab(e)-~, from OHG ~ab(a)-~, from Proto-West Germanic *~ab~, from Proto-Germanic *~ab~ (\"off, away\"), from PIE *~h₂epó~ (\"off, away\"). Cognate with English ~of~ and ~off~ — one Old English word that split in two — as well as Latin ~ab~ (\"from\") and Greek ~apó~. The prefix conveys separation or removal — taking something off or away.\n\nThe jump is literal for a parachutist and figurative for a customer who backs out; said of paint or plaster, ~abspringen~ is simply flaking off.",
+      "de": "Ein trennbares Kompositum aus ~ab-~ + ~springen~:\n\n- ~springen~: Aus Ahd. ~springan~, aus Urgermanisch *~springaną~, aus PIE *~sprenǵʰ-~, einer nasalierten Form von *~sperǵʰ-~ („sich energisch bewegen, eilen, springen“). Ein starkes Verb der Klasse III (~springen~, ~sprang~, ~gesprungen~). Verwandt mit Englisch ~spring~, Niederländisch ~springen~, Dänisch ~springe~, Griechisch ~spérkhō~ („eilen“).\n- ~ab-~: Aus Mhd. ~ab(e)-~, aus Ahd. ~ab(a)-~, aus Proto-Westgermanisch *~ab~, aus Urgermanisch *~ab~ („weg, fort“), aus PIE *~h₂epó~ („weg, fort“). Verwandt mit Englisch ~of~ und ~off~ — einem einzigen altenglischen Wort, das sich in zwei aufspaltete — sowie Lateinisch ~ab~ („von“) und Griechisch ~apó~. Das Präfix drückt Trennung oder Entfernung aus — etwas ab- oder wegnehmen.\n\nDer Sprung ist wörtlich beim Fallschirmspringer und übertragen beim Kunden, der abspringt; von Farbe oder Putz gesagt, heißt ~abspringen~ schlicht abplatzen."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Doch einmal und noch einmal krachte es auf dem Weg, und der Königssohn meinte immer, der Wagen bräche, und es waren doch nur die Bande, die vom Herzen des treuen Heinrich absprangen, weil sein Herr erlöst und glücklich war.",
+        "source": "Grimm — Märchen"
+      },
+      "en": {
+        "sentence": "Once, and then once more, something cracked along the road, and the prince kept thinking the carriage was breaking, but it was only the bands springing off faithful Heinrich's heart, because his master was released and happy.",
+        "source": "Grimm — Märchen"
+      }
+    },
+    "notes": null
+  },
+  "abstammen": {
+    "etymology": {
+      "en": "A separable compound of ~ab-~ + ~stammen~:\n\n- ~stammen~: A denominative verb from ~Stamm~ (\"trunk, stem, tribe, stock\") with the suffix ~-en~. ~Stamm~ derives from MHG ~stam~, OHG ~stam~, Proto-Germanic *~stamnaz~, *~stamniz~, from PIE *~steh₂-~ (\"to stand, stay\"). Cognate with English ~stem~, Dutch ~stam~, Danish ~stamme~.\n- ~ab-~: From MHG ~ab(e)-~, from OHG ~ab(a)-~, from Proto-West Germanic *~ab~, from Proto-Germanic *~ab~ (\"off, away\"), from PIE *~h₂epó~ (\"off, away\"). Cognate with English ~of~ and ~off~ — one Old English word that split in two — as well as Latin ~ab~ (\"from\") and Greek ~apó~. The prefix conveys derivation — leading something away from, or tracing it back to, a source.\n\n~abstammen~ makes the tree-image grammatical: a family, a word, or a species is traced back down the ~Stamm~ to its source, and the noun ~Abstammung~ serves genealogy and etymology alike.",
+      "de": "Ein trennbares Kompositum aus ~ab-~ + ~stammen~:\n\n- ~stammen~: Ein denominatives Verb zu ~Stamm~ („Baumstamm, Wortstamm, Volksstamm“) mit der Endung ~-en~. ~Stamm~ aus Mhd. ~stam~, Ahd. ~stam~, Urgermanisch *~stamnaz~, *~stamniz~, aus PIE *~steh₂-~ („stehen, bleiben“). Verwandt mit Englisch ~stem~, Niederländisch ~stam~, Dänisch ~stamme~.\n- ~ab-~: Aus Mhd. ~ab(e)-~, aus Ahd. ~ab(a)-~, aus Proto-Westgermanisch *~ab~, aus Urgermanisch *~ab~ („weg, fort“), aus PIE *~h₂epó~ („weg, fort“). Verwandt mit Englisch ~of~ und ~off~ — einem einzigen altenglischen Wort, das sich in zwei aufspaltete — sowie Lateinisch ~ab~ („von“) und Griechisch ~apó~. Das Präfix drückt Herleitung aus — etwas von einer Quelle wegführen oder auf sie zurückführen.\n\n~abstammen~ macht das Baumbild grammatisch: Eine Familie, ein Wort oder eine Art wird am ~Stamm~ hinab bis zur Quelle zurückverfolgt, und das Substantiv ~Abstammung~ dient der Genealogie wie der Etymologie."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "abstechen": {
+    "etymology": {
+      "en": "A separable compound of ~ab-~ + ~stechen~:\n\n- ~stechen~: From MHG ~stëchen~, from OHG ~stëhhan~, from Proto-West Germanic *~stekan~, from Proto-Germanic *~stekaną~ (\"to stab, prick\"), from PIE *~(s)teg-~ (\"to stick, poke\"). Cognate with Dutch ~steken~ (\"to stab, sting\"), Old Norse ~stinga~, English ~stick~ (originally \"to stab, pierce\").\n- ~ab-~: From MHG ~ab(e)-~, from OHG ~ab(a)-~, from Proto-West Germanic *~ab~, from Proto-Germanic *~ab~ (\"off, away\"), from PIE *~h₂epó~ (\"off, away\"). Cognate with English ~of~ and ~off~ — one Old English word that split in two — as well as Latin ~ab~ (\"from\") and Greek ~apó~. The prefix conveys separation or removal — taking something off or away.\n\nThe stab performs the separation: peat, turf, or an animal is cut away with a blade. The commonest modern use is the other one — ~gegen etwas abstechen~, to stand out sharply against a background, where the contrast cuts as the knife once did.",
+      "de": "Ein trennbares Kompositum aus ~ab-~ + ~stechen~:\n\n- ~stechen~: Aus Mhd. ~stëchen~, aus Ahd. ~stëhhan~, aus Proto-Westgermanisch *~stekan~, aus Urgermanisch *~stekaną~ („stechen, piksen“), aus PIE *~(s)teg-~ („stechen, stoßen“). Verwandt mit Niederländisch ~steken~ („stechen, stacheln“), Altnordisch ~stinga~, Englisch ~stick~ (ursprünglich „stechen, durchbohren“).\n- ~ab-~: Aus Mhd. ~ab(e)-~, aus Ahd. ~ab(a)-~, aus Proto-Westgermanisch *~ab~, aus Urgermanisch *~ab~ („weg, fort“), aus PIE *~h₂epó~ („weg, fort“). Verwandt mit Englisch ~of~ und ~off~ — einem einzigen altenglischen Wort, das sich in zwei aufspaltete — sowie Lateinisch ~ab~ („von“) und Griechisch ~apó~. Das Präfix drückt Trennung oder Entfernung aus — etwas ab- oder wegnehmen.\n\nDer Stich vollzieht die Trennung: Torf, Rasen oder ein Tier wird mit der Klinge abgetrennt. Häufiger ist heute die andere Verwendung — ~gegen etwas abstechen~, sich scharf von einem Hintergrund abheben, wo der Kontrast schneidet wie einst das Messer."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Und als gerade ein junger Frischling daher gesprungen kam, stach er ihn ab, nahm Lunge und Leber heraus und brachte sie als Wahrzeichen der Königin mit.",
+        "source": "Grimm — Märchen"
+      },
+      "en": {
+        "sentence": "And just as a young boar came bounding along, he stuck it, took out the lungs and liver, and brought them to the queen as proof.",
+        "source": "Grimm — Märchen"
+      }
+    },
+    "notes": "Sentence attests the „stechend töten“ (slaughter) sense; the corpus reading „cut off, carve out“ is the same branch."
+  },
+  "abstecken": {
+    "etymology": {
+      "en": "A separable compound of ~ab-~ + ~stecken~:\n\n- ~stecken~: Modern ~stecken~ merges two verbs: the transitive weak one (\"to put, stick something in\") from MHG ~stecken~, OHG ~steckōn~, a geminate derivative of ~stëhhan~ (the ancestor of ~stechen~), and the strong intransitive one (archaic ~stak~/~gestocken~, \"to be stuck\"); the two fused in Early Modern German. Both trace to Proto-West Germanic *~stekan~, from Proto-Germanic *~stikaną~, from PIE *~(s)teyg-~ (\"to be sharp, stab, goad\"). Cognate with English ~stick~ and ~steak~.\n- ~ab-~: From MHG ~ab(e)-~, from OHG ~ab(a)-~, from Proto-West Germanic *~ab~, from Proto-Germanic *~ab~ (\"off, away\"), from PIE *~h₂epó~ (\"off, away\"). Cognate with English ~of~ and ~off~ — one Old English word that split in two — as well as Latin ~ab~ (\"from\") and Greek ~apó~. The prefix conveys separation or removal — taking something off or away.\n\n~abstecken~ descends from the root's weak transitive branch, and surveyor and dressmaker do the same thing with it: one marks a boundary with stakes, the other pins a hem to length. In each case ~ab-~ sets the limit that divides inside from out.",
+      "de": "Ein trennbares Kompositum aus ~ab-~ + ~stecken~:\n\n- ~stecken~: Das heutige ~stecken~ verschmilzt zwei Verben: das transitive schwache („etwas hineinstecken“) aus Mhd. ~stecken~, Ahd. ~steckōn~, einer Geminaten-Ableitung von ~stëhhan~ (dem Vorfahren von ~stechen~), und das starke intransitive (archaisch ~stak~/~gestocken~, „festsitzen“); die beiden fielen im Frühneuhochdeutschen zusammen. Beide aus Proto-Westgermanisch *~stekan~, aus Urgermanisch *~stikaną~, aus PIE *~(s)teyg-~ („scharf sein, stechen, antreiben“). Verwandt mit Englisch ~stick~ und ~steak~.\n- ~ab-~: Aus Mhd. ~ab(e)-~, aus Ahd. ~ab(a)-~, aus Proto-Westgermanisch *~ab~, aus Urgermanisch *~ab~ („weg, fort“), aus PIE *~h₂epó~ („weg, fort“). Verwandt mit Englisch ~of~ und ~off~ — einem einzigen altenglischen Wort, das sich in zwei aufspaltete — sowie Lateinisch ~ab~ („von“) und Griechisch ~apó~. Das Präfix drückt Trennung oder Entfernung aus — etwas ab- oder wegnehmen.\n\n~abstecken~ geht auf den schwachen, transitiven Zweig der Wurzel zurück, und Vermesser wie Schneiderin tun damit dasselbe: Der eine markiert eine Grenze mit Pflöcken, die andere steckt einen Saum auf Länge. Jeweils setzt ~ab-~ die Grenze, die innen von außen scheidet."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Nachdem Claudia Roth die wesentlichen Punkte abgesteckt hat, hast du es noch mal ausgeführt.",
+        "source": "Bundestag — Plenarprotokoll 20/207"
+      },
+      "en": {
+        "sentence": "After Claudia Roth staked out the essential points, you spelled them out once more.",
+        "source": "Bundestag — Plenarprotokoll 20/207"
+      }
+    },
+    "notes": null
+  },
+  "abstehen": {
+    "etymology": {
+      "en": "A separable compound of ~ab-~ + ~stehen~:\n\n- ~stehen~: From MHG ~stān~, ~stēn~, from OHG ~stān~, ~stēn~, from Proto-West Germanic *~stān~, from Proto-Germanic *~stāną~, from PIE *~steh₂-~ (\"to stand\"). The ~-h-~ entered the spelling by analogy with ~sehen~; the past-tense conjugations (~stand~, ~standen~) are suppletive, from Proto-West Germanic *~standan~. Cognate with Dutch ~staan~, English ~stand~, Danish ~stå~, Swedish ~stå~.\n- ~ab-~: From MHG ~ab(e)-~, from OHG ~ab(a)-~, from Proto-West Germanic *~ab~, from Proto-Germanic *~ab~ (\"off, away\"), from PIE *~h₂epó~ (\"off, away\"). Cognate with English ~of~ and ~off~ — one Old English word that split in two — as well as Latin ~ab~ (\"from\") and Greek ~apó~. The prefix conveys separation or removal — taking something off or away.\n\nThe subject holds a distance instead of closing it: ears ~stehen~ ~ab~ from the head. The older legal use — ~von etwas abstehen~, to desist from a claim — is the same standing-away, applied to an intention rather than a body.",
+      "de": "Ein trennbares Kompositum aus ~ab-~ + ~stehen~:\n\n- ~stehen~: Aus Mhd. ~stān~, ~stēn~, aus Ahd. ~stān~, ~stēn~, aus Proto-Westgermanisch *~stān~, aus Urgermanisch *~stāną~, aus PIE *~steh₂-~ („stehen“). Das ~-h-~ kam in Analogie zu ~sehen~ in die Schreibung; die Präteritumformen (~stand~, ~standen~) sind suppletiv, aus Proto-Westgermanisch *~standan~. Verwandt mit Niederländisch ~staan~, Englisch ~stand~, Dänisch ~stå~, Schwedisch ~stå~.\n- ~ab-~: Aus Mhd. ~ab(e)-~, aus Ahd. ~ab(a)-~, aus Proto-Westgermanisch *~ab~, aus Urgermanisch *~ab~ („weg, fort“), aus PIE *~h₂epó~ („weg, fort“). Verwandt mit Englisch ~of~ und ~off~ — einem einzigen altenglischen Wort, das sich in zwei aufspaltete — sowie Lateinisch ~ab~ („von“) und Griechisch ~apó~. Das Präfix drückt Trennung oder Entfernung aus — etwas ab- oder wegnehmen.\n\nDas Subjekt hält Abstand, statt ihn zu schließen: Ohren ~stehen~ vom Kopf ~ab~. Der ältere, rechtssprachliche Gebrauch — ~von etwas abstehen~, von einem Anspruch ablassen — ist dasselbe Abseitsstehen, auf eine Absicht statt auf einen Körper angewandt."
+    },
+    "sentence": null,
+    "notes": "No usable candidate: the two Westphalian-Peace hits carry editorial brackets or are truncated 1648 orthography, and the third is a form of ~abblenden~."
+  }
+}

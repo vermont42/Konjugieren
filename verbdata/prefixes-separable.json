@@ -105,7 +105,12 @@
         "Das Präfix bedeutet „offen“ — eine Schließung rückgängig machen.",
         "Das Präfix drückt das Aufbringen auf eine Oberfläche aus.",
         "Das Präfix drückt das Aufbrauchen oder vollständige Verzehren aus.",
-        "Das Präfix drückt Entstehung aus — auftauchen, erscheinen oder plötzlich beginnen."
+        "Das Präfix drückt Entstehung aus — auftauchen, erscheinen oder plötzlich beginnen.",
+        "Das Präfix bezeichnet das Wiederherrichten oder Aufbereiten — etwas in einen frischen oder brauchbaren Zustand bringen.",
+        "Das Präfix bezeichnet das öffentliche Aufrufen oder Aufbieten — etwas ausrufen oder jemanden herbeirufen.",
+        "Das Präfix bezeichnet das Ausfindigmachen — etwas durch Suchen zum Vorschein bringen.",
+        "Das Präfix bezeichnet das Auftreffen auf eine Unterlage — eine Bewegung, die auf einer Fläche endet.",
+        "Das Präfix richtet die Aufmerksamkeit auf etwas — aufmerken, achtgeben oder hinhören."
       ],
       "occurrences": 108
     },
@@ -185,7 +190,7 @@
       "senses": [
         "~beiseite-~ bewegt das Objekt zur Seite, aus dem Weg.",
         "~beiseite-~ legt etwas für später beiseite oder entfernt es aus dem Blickfeld.",
-        "Die Bedeutung von ~beiseite-~ ist hier: kann das diskrete Verschwindenlassen von etwas andeuten."
+        "~beiseite-~ kann das diskrete Verschwindenlassen von etwas andeuten."
       ],
       "occurrences": 3
     },
@@ -194,7 +199,7 @@
       "chain": "Das Partizip Perfekt von ~bekennen~ (~be-~ + ~kennen~), längst ein gewöhnliches Adjektiv mit der Bedeutung „bekannt, vertraut“. ~Kennen~ geht auf Ahd. ~kennen~ zurück, aus Urgermanisch *~kannijaną~, einem Kausativ zu *~kunnaną~, aus PIE *~ǵneh₃-~ („wissen“) — der kausative Sinn „bekannt machen“, den ~kennen~ selbst verloren hat, ist also genau das, was ~bekanntgeben~ und ~bekanntmachen~ bewahren. Verwandt mit Niederländisch ~bekend~ und veraltetem Englisch ~beknown~.",
       "senses": [
         "Die Bedeutung von ~bekannt~ ist hier: bekannt, vertraut — der resultative Zustand.",
-        "Die Bedeutung von ~bekannt~ ist hier in die Öffentlichkeit: bekanntgeben, bekanntmachen."
+        "Die Bedeutung von ~bekannt~ ist hier: in die Öffentlichkeit gebracht, allgemein verbreitet."
       ],
       "occurrences": 2
     },
@@ -553,7 +558,9 @@
         "Das Präfix drückt eine Bewegung nach innen aus — in etwas hineingehen oder hineintun.",
         "Das Präfix drückt das Einfügen oder Eingliedern in eine größere Struktur oder Kategorie aus.",
         "Das Präfix drückt Einschließen oder Umschließen aus — etwas einsperren.",
-        "Das Präfix bezeichnet den Eintritt in einen Zustand, den Moment des Beginns."
+        "Das Präfix bezeichnet den Eintritt in einen Zustand, den Moment des Beginns.",
+        "Das Präfix bezeichnet das Vertrautwerden durch Übung — etwas wird durch Wiederholung geläufig oder jemand mit ihm vertraut.",
+        "Das Präfix bezeichnet ein zerstörendes Nachinnengeben — etwas wird eingedrückt oder bricht in sich zusammen."
       ],
       "occurrences": 110
     },
@@ -2381,7 +2388,12 @@
         "The prefix means \"open\" — undoing a closure.",
         "The prefix conveys applying something onto a surface.",
         "The prefix conveys using something up or consuming it entirely.",
-        "The prefix conveys emergence — arising, appearing, or beginning suddenly."
+        "The prefix conveys emergence — arising, appearing, or beginning suddenly.",
+        "The prefix marks reconditioning or working-up — bringing something into fresh or usable condition.",
+        "The prefix marks summoning or proclaiming publicly — calling something out or calling someone forth.",
+        "The prefix marks locating — bringing something to light by searching for it.",
+        "The prefix marks impact onto a surface — motion that ends against something solid.",
+        "The prefix directs attention onto something — noticing, minding, or listening out."
       ],
       "occurrences": 108
     },
@@ -2461,7 +2473,7 @@
       "senses": [
         "~beiseite-~ moves the object off to one side, out of the way.",
         "~beiseite-~ sets something aside for later, or removes it from view.",
-        "The sense of ~beiseite-~ here is: can imply making something disappear discreetly."
+        "~beiseite-~ can imply making something disappear discreetly."
       ],
       "occurrences": 3
     },
@@ -2470,7 +2482,7 @@
       "chain": "The past participle of ~bekennen~ (~be-~ + ~kennen~, \"to know\"), long since an ordinary adjective meaning \"known, familiar\". ~Kennen~ goes back to OHG ~kennen~, from Proto-Germanic *~kannijaną~, a causative of *~kunnaną~, from PIE *~ǵneh₃-~ (\"to know\") — so the causative sense \"to make known\" that ~kennen~ itself lost is exactly what ~bekanntgeben~ and ~bekanntmachen~ preserve. Cognate with Dutch ~bekend~ and archaic English ~beknown~.",
       "senses": [
         "The sense of ~bekannt~ here is: known, familiar — the resultative state.",
-        "The sense of ~bekannt~ here is into public knowledge: to announce, to make known."
+        "The sense of ~bekannt~ here is: brought into public knowledge, made generally known."
       ],
       "occurrences": 2
     },
@@ -2829,7 +2841,9 @@
         "The prefix conveys inward motion — going or putting into something.",
         "The prefix conveys inserting or incorporating something into a larger structure or category.",
         "The prefix conveys enclosing or containing — shutting something in.",
-        "The prefix marks the onset of a state, the moment of entering into it."
+        "The prefix marks the onset of a state, the moment of entering into it.",
+        "The prefix marks becoming familiar through practice — repetition makes something fluent, or someone at home in it.",
+        "The prefix marks destructive collapse inward — something is stove in or falls in on itself."
       ],
       "occurrences": 110
     },

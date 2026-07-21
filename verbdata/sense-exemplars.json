@@ -128,13 +128,43 @@
       "auftauchen",
       "aufblühen",
       "aufflammen"
+    ],
+    [
+      "aufwärmen",
+      "auffrischen",
+      "aufbereiten",
+      "aufpolieren"
+    ],
+    [
+      "aufbieten",
+      "aufrufen",
+      "auffordern"
+    ],
+    [
+      "auffinden",
+      "aufspüren",
+      "aufstöbern",
+      "auftreiben"
+    ],
+    [
+      "aufprallen",
+      "auftreffen",
+      "auflaufen",
+      "aufschlagen"
+    ],
+    [
+      "aufpassen",
+      "aufhorchen",
+      "aufmerken",
+      "aufsehen"
     ]
   ],
   "separ:aus": [
     [
       "ausgehen",
       "aussteigen",
-      "auswandern"
+      "auswandern",
+      "ausgraben"
     ],
     [
       "ausarbeiten",
@@ -177,6 +207,16 @@
       "einschlafen",
       "einfrieren",
       "einrosten"
+    ],
+    [
+      "eingewöhnen",
+      "einstudieren",
+      "einexerzieren"
+    ],
+    [
+      "einfallen",
+      "einknicken",
+      "einbeulen"
     ]
   ],
   "separ:zu": [
@@ -246,7 +286,9 @@
     [
       "verjagen",
       "vertreiben",
-      "verbannen"
+      "verbannen",
+      "verkaufen",
+      "verschenken"
     ],
     [
       "verlernen",
@@ -256,6 +298,16 @@
       "vergrößern",
       "verbilligen",
       "vergolden"
+    ],
+    [
+      "verblühen",
+      "verhallen",
+      "verglühen"
+    ],
+    [
+      "verbergen",
+      "verschließen",
+      "verstopfen"
     ]
   ],
   "insep:be": [
@@ -267,7 +319,9 @@
     [
       "beantworten",
       "besprechen",
-      "betrauern"
+      "betrauern",
+      "befolgen",
+      "begleichen"
     ],
     [
       "bedecken",
@@ -283,6 +337,11 @@
       "bearbeiten",
       "bedenken",
       "begutachten"
+    ],
+    [
+      "beeilen",
+      "bedanken",
+      "befinden"
     ]
   ],
   "insep:er": [

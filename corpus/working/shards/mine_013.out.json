@@ -1,0 +1,346 @@
+{
+  "auffliegen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~auf-~ + ~fliegen~:\n\n- ~fliegen~: Aus Mhd. ~vliegen~, aus Ahd. ~fliogan~, aus Proto-Westgermanisch *~fleugan~, aus Urgermanisch *~fleuganą~, aus PIE *~plewk-~ („fließen, fliegen“), einer Erweiterung von *~plew-~ („fließen, schweben, schwimmen“), die auch ~fließen~ ergab. Der Vokalgang *eu → Ahd. *io → Mhd. *ie ist typisch für starke Verben der Klasse II. Verwandt mit Englisch ~fly~, Niederländisch ~vliegen~, Dänisch ~flyve~.\n- ~auf-~: Aus Mhd. ~ūf~, aus Ahd. ~ūf~, aus Proto-Westgermanisch *~up~, aus Urgermanisch *~up~ („hinauf“), aus PIE *~upó~ („hinauf, von unten“). Dieselbe Präposition, vom anderen Ende her gesehen, ergab Lateinisch ~sub~ und Griechisch ~hypó~ („unter“) — eine Bewegung von unten liest sich als „hinauf“ oder „unter“, je nachdem, wo der Sprecher steht. Verwandt mit Englisch ~up~, Niederländisch ~op~. Das Präfix drückt eine Aufwärtsbewegung aus — aufsteigen, heben oder errichten.\n\nDas Kompositum bleibt in beide Richtungen anschaulich: Vögel fliegen auf, und im übertragenen Gebrauch fliegt auf, was verborgen bleiben sollte — ein Plan, ein Betrug, ein Doppelleben. Beide Male geht etwas jäh nach oben, das eben noch am Boden lag.",
+      "en": "A separable compound of ~auf-~ + ~fliegen~:\n\n- ~fliegen~: From MHG ~vliegen~, from OHG ~fliogan~, from Proto-West Germanic *~fleugan~, from Proto-Germanic *~fleuganą~, from PIE *~plewk-~ (\"to flow, fly\"), an extension of *~plew-~ (\"to flow, float, swim\") that also gave ~fließen~. The vowel path *eu to OHG *io to MHG *ie is characteristic of class II strong verbs. Cognate with English ~fly~, Dutch ~vliegen~, Danish ~flyve~.\n- ~auf-~: From MHG ~ūf~, from OHG ~ūf~, from Proto-West Germanic *~up~, from Proto-Germanic *~up~ (\"up\"), from PIE *~upó~ (\"up, from below\"). The same preposition, viewed from the other end, gave Latin ~sub~ and Greek ~hypó~ (\"under\") — motion from below reads as \"up\" or \"under\" depending on where the speaker stands. Cognate with English ~up~, Dutch ~op~. The prefix conveys upward motion — rising, lifting, or building up.\n\nThe compound stays vivid in both directions: birds fly up, and figuratively what flies up is whatever was meant to stay hidden — a plan, a fraud, a double life. Either way something that was lying still is suddenly airborne."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Darum, wie des Feuers Flamme Stroh verzehrt und die Lohe Stoppeln hinnimmt, also wird ihre Wurzel verfaulen und ihre Blüte auffliegen wie Staub.",
+        "source": "Luther — Bibel"
+      },
+      "en": {
+        "sentence": "Therefore, as a tongue of fire devours straw and the blaze consumes stubble, so their root shall rot and their blossom fly up like dust.",
+        "source": "Luther — Bibel"
+      }
+    },
+    "notes": null
+  },
+  "auffüllen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~auf-~ + ~füllen~:\n\n- ~füllen~: Aus Mhd. ~vüllen~, aus Ahd. ~fullen~, aus Proto-Westgermanisch *~fullijan~, aus Urgermanisch *~fullijaną~ („voll machen“), dem Kausativ zu *~fullaz~ („voll“), aus PIE *~pl̥h₁nós~ („voll“). Englisch ~fill~ und ~füllen~ sind exakte Kognaten, beide das Kausativ ihres Erbworts für „voll“. Verwandt mit Englisch ~fill~, Niederländisch ~vullen~, Dänisch ~fylde~, Schwedisch ~fylla~.\n- ~auf-~: Aus Mhd. ~ūf~, aus Ahd. ~ūf~, aus Proto-Westgermanisch *~up~, aus Urgermanisch *~up~ („hinauf“), aus PIE *~upó~ („hinauf, von unten“). Dieselbe Präposition, vom anderen Ende her gesehen, ergab Lateinisch ~sub~ und Griechisch ~hypó~ („unter“) — eine Bewegung von unten liest sich als „hinauf“ oder „unter“, je nachdem, wo der Sprecher steht. Verwandt mit Englisch ~up~, Niederländisch ~op~. Das Präfix drückt eine Aufwärtsbewegung aus — aufsteigen, heben oder errichten.\n\n~füllen~ allein sagt nur, dass etwas voll wird; ~auffüllen~ nennt zusätzlich den Stand, der erreicht werden soll — bis oben hin oder zurück auf den alten Füllstand. Deshalb füllt man Vorräte, Gasspeicher und Gläser auf, aber ein Loch nur zu.",
+      "en": "A separable compound of ~auf-~ + ~füllen~:\n\n- ~füllen~: From MHG ~vüllen~, from OHG ~fullen~, from Proto-West Germanic *~fullijan~, from Proto-Germanic *~fullijaną~ (\"to make full\"), the causative of *~fullaz~ (\"full\"), from PIE *~pl̥h₁nós~ (\"full\"). English ~fill~ and ~füllen~ are exact cognates, each the causative of its native word for \"full.\" Cognate with English ~fill~, Dutch ~vullen~, Danish ~fylde~, Swedish ~fylla~.\n- ~auf-~: From MHG ~ūf~, from OHG ~ūf~, from Proto-West Germanic *~up~, from Proto-Germanic *~up~ (\"up\"), from PIE *~upó~ (\"up, from below\"). The same preposition, viewed from the other end, gave Latin ~sub~ and Greek ~hypó~ (\"under\") — motion from below reads as \"up\" or \"under\" depending on where the speaker stands. Cognate with English ~up~, Dutch ~op~. The prefix conveys upward motion — rising, lifting, or building up.\n\n~füllen~ on its own says only that something becomes full; ~auffüllen~ names the level to be reached as well — up to the brim, or back to where it stood before. That is why stocks, gas reserves, and glasses are ~aufgefüllt~ while a hole is merely ~zugefüllt~."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Einige Verschlüsselungstools (wie TrueCrypt) speichern das Änderungs-Datum nicht ab und verändern die Größe der verschlüsselten Datei nicht (Containerdatei mit fixer Größe, oder Padding, um die Datei auf die gewünschte Fixgröße aufzufüllen).",
+        "source": "Wikipedia — Datensicherung"
+      },
+      "en": {
+        "sentence": "Some encryption tools (such as TrueCrypt) do not store the modification date and do not alter the size of the encrypted file (a container file of fixed size, or padding, to fill the file up to the desired fixed size).",
+        "source": "Wikipedia — Datensicherung"
+      }
+    },
+    "notes": "auf- here is completive („bis zum Sollstand“) and matches no sense exemplar exactly; took the upward/building-up sense as the nearest."
+  },
+  "aufgehen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~auf-~ + ~gehen~:\n\n- ~gehen~: Aus Mhd. ~gan~, ~gen~, aus Ahd. ~gan~, ~gen~, aus Proto-Westgermanisch *~gān~, aus Urgermanisch *~gāną~, aus PIE *~ǵʰeh₁-~ („weggehen“). Die Form ~gen~ ist bairischen Ursprungs; das ~-h-~ kam in Analogie zu ~sehen~ in die Schreibung. Verwandt mit Englisch ~go~, Niederländisch ~gaan~, Niederdeutsch ~gahn~, Schwedisch und Dänisch ~gå~.\n- ~auf-~: Aus Mhd. ~ūf~, aus Ahd. ~ūf~, aus Proto-Westgermanisch *~up~, aus Urgermanisch *~up~ („hinauf“), aus PIE *~upó~ („hinauf, von unten“). Dieselbe Präposition, vom anderen Ende her gesehen, ergab Lateinisch ~sub~ und Griechisch ~hypó~ („unter“) — eine Bewegung von unten liest sich als „hinauf“ oder „unter“, je nachdem, wo der Sprecher steht. Verwandt mit Englisch ~up~, Niederländisch ~op~. Das Präfix bedeutet „offen“ — eine Schließung rückgängig machen.\n\nDas Verb spannt sich von der Sonne, die aufgeht, über die Naht, die aufgeht, bis zur Rechnung, die aufgeht. Immer gibt etwas Geschlossenes nach oder tritt etwas Verborgenes hervor — und wem ein Licht aufgeht, dem geschieht beides zugleich.",
+      "en": "A separable compound of ~auf-~ + ~gehen~:\n\n- ~gehen~: From MHG ~gan~, ~gen~, from OHG ~gan~, ~gen~, from Proto-West Germanic *~gān~, from Proto-Germanic *~gāną~, from PIE *~ǵʰeh₁-~ (\"to leave\"). The form ~gen~ is of Bavarian origin; the ~-h-~ entered the spelling by analogy with ~sehen~. Cognate with English ~go~, Dutch ~gaan~, Low German ~gahn~, Swedish and Danish ~gå~.\n- ~auf-~: From MHG ~ūf~, from OHG ~ūf~, from Proto-West Germanic *~up~, from Proto-Germanic *~up~ (\"up\"), from PIE *~upó~ (\"up, from below\"). The same preposition, viewed from the other end, gave Latin ~sub~ and Greek ~hypó~ (\"under\") — motion from below reads as \"up\" or \"under\" depending on where the speaker stands. Cognate with English ~up~, Dutch ~op~. The prefix means \"open\" — undoing a closure.\n\nThe verb reaches from a sun that rises to a seam that comes undone to a sum that comes out even. In each case something closed gives way or something hidden emerges — and when a light ~geht~ someone ~auf~, both happen at once."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Und die Sonne war aufgegangen auf Erden, da Lot nach Zoar kam.",
+        "source": "Luther — Bibel"
+      },
+      "en": {
+        "sentence": "And the sun had risen upon the earth when Lot came to Zoar.",
+        "source": "Luther — Bibel"
+      }
+    },
+    "notes": null
+  },
+  "aufglänzen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~auf-~ + ~glänzen~:\n\n- ~glänzen~: Aus Mhd. ~glenzen~, aus Ahd. ~glanzen~, aus Urgermanisch *~glantaz~ („leuchtend, hell“), aus PIE *~gʰlond-o-~, zur Wurzel *~gʰlend-~ („leuchten, schimmern“). Das Verb gehört zum germanischen ~gl-~-Phonästhem der Lichtwörter — ~gleißen~, ~glimmen~, ~Glut~, ~Glas~. Verwandt mit Englisch ~gleam~, ~glitter~, ~glow~, ~glint~ und ~glisten~.\n- ~auf-~: Aus Mhd. ~ūf~, aus Ahd. ~ūf~, aus Proto-Westgermanisch *~up~, aus Urgermanisch *~up~ („hinauf“), aus PIE *~upó~ („hinauf, von unten“). Dieselbe Präposition, vom anderen Ende her gesehen, ergab Lateinisch ~sub~ und Griechisch ~hypó~ („unter“) — eine Bewegung von unten liest sich als „hinauf“ oder „unter“, je nachdem, wo der Sprecher steht. Verwandt mit Englisch ~up~, Niederländisch ~op~. Das Präfix drückt Entstehung aus — auftauchen, erscheinen oder plötzlich beginnen.\n\n~glänzen~ nennt einen Zustand, ~aufglänzen~ ein Ereignis: das kurze Aufblitzen, das im nächsten Augenblick schon vorüber ist. Das Präfix macht aus dem Dauerlicht einen Moment.",
+      "en": "A separable compound of ~auf-~ + ~glänzen~:\n\n- ~glänzen~: From MHG ~glenzen~, from OHG ~glanzen~, from Proto-Germanic *~glantaz~ (\"shining, bright\"), from PIE *~gʰlond-o-~, from the root *~gʰlend-~ (\"to shine, gleam\"). The verb belongs to the Germanic \"gl-\" phonestheme of light words — ~gleißen~, ~glimmen~, ~Glut~, ~Glas~. Cognate with English ~gleam~, ~glitter~, ~glow~, ~glint~ and ~glisten~.\n- ~auf-~: From MHG ~ūf~, from OHG ~ūf~, from Proto-West Germanic *~up~, from Proto-Germanic *~up~ (\"up\"), from PIE *~upó~ (\"up, from below\"). The same preposition, viewed from the other end, gave Latin ~sub~ and Greek ~hypó~ (\"under\") — motion from below reads as \"up\" or \"under\" depending on where the speaker stands. Cognate with English ~up~, Dutch ~op~. The prefix conveys emergence — arising, appearing, or beginning suddenly.\n\n~glänzen~ names a state; ~aufglänzen~ names an event — the brief flare that is over in the next moment. The prefix turns a standing light into an instant of one."
+    },
+    "sentence": null,
+    "notes": "Sole candidate is truncated and, at 86 words, far over the 55-word ceiling — a single Nietzsche period. No usable sentence."
+  },
+  "aufhaben": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~auf-~ + ~haben~:\n\n- ~haben~: Aus Mhd. ~haben~, aus Ahd. ~habēn~, aus Proto-Westgermanisch *~habbjan~, aus Urgermanisch *~habjaną~, aus PIE *~keh₂p-~ („greifen, ergreifen“). Trotz des Gleichklangs nicht mit Lateinisch ~habēō~ verwandt, wohl aber mit ~capiō~ („ich ergreife“) und mit Deutsch ~heben~. Verwandt mit Englisch ~have~, Niederländisch ~hebben~, Dänisch ~have~, Gotisch ~haban~.\n- ~auf-~: Aus Mhd. ~ūf~, aus Ahd. ~ūf~, aus Proto-Westgermanisch *~up~, aus Urgermanisch *~up~ („hinauf“), aus PIE *~upó~ („hinauf, von unten“). Dieselbe Präposition, vom anderen Ende her gesehen, ergab Lateinisch ~sub~ und Griechisch ~hypó~ („unter“) — eine Bewegung von unten liest sich als „hinauf“ oder „unter“, je nachdem, wo der Sprecher steht. Verwandt mit Englisch ~up~, Niederländisch ~op~. Das Präfix bedeutet „offen“ — eine Schließung rückgängig machen.\n\nDas Verb erbt zwei verschiedene ~auf-~: das von ~aufsetzen~, wenn jemand einen Hut aufhat, und das von ~aufmachen~, wenn ein Laden aufhat. Nur der Kontext entscheidet, ob etwas getragen wird oder offen steht.",
+      "en": "A separable compound of ~auf-~ + ~haben~:\n\n- ~haben~: From MHG ~haben~, from OHG ~habēn~, from Proto-West Germanic *~habbjan~, from Proto-Germanic *~habjaną~, from PIE *~keh₂p-~ (\"to grasp, seize\"). Despite the resemblance it is not related to Latin ~habēō~, but it is to ~capiō~ (\"I seize\") and to German ~heben~. Cognate with English ~have~, Dutch ~hebben~, Danish ~have~, Gothic ~haban~.\n- ~auf-~: From MHG ~ūf~, from OHG ~ūf~, from Proto-West Germanic *~up~, from Proto-Germanic *~up~ (\"up\"), from PIE *~upó~ (\"up, from below\"). The same preposition, viewed from the other end, gave Latin ~sub~ and Greek ~hypó~ (\"under\") — motion from below reads as \"up\" or \"under\" depending on where the speaker stands. Cognate with English ~up~, Dutch ~op~. The prefix means \"open\" — undoing a closure.\n\nThe verb inherits two different ~auf-~ prefixes: the one from ~aufsetzen~ when someone has a hat on, and the one from ~aufmachen~ when a shop is open. Only context decides whether something is being worn or standing open."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Da ging er mit, und gar nicht lang, so begegneten sie einem, der hatte ein Hütchen auf, hatte es aber ganz auf dem einen Ohre sitzen.",
+        "source": "Grimm — Märchen"
+      },
+      "en": {
+        "sentence": "So he came along, and it was not long before they met a man who had a little hat on, but wore it perched right over one ear.",
+        "source": "Grimm — Märchen"
+      }
+    },
+    "notes": null
+  },
+  "aufhängen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~auf-~ + ~hängen~:\n\n- ~hängen~: Die Verschmelzung dreier ahd. Verben: ~hāhan~ (stark, transitiv; Prät. ~hieng~, Part. ~gehangan~), aus Proto-Westgermanisch *~hą̄han~, aus Urgermanisch *~hanhaną~; ~hangēn~ (schwach, intransitiv); und das Kausativum ~hengen~, aus Proto-Westgermanisch *~hangijan~, aus Urgermanisch *~hangijaną~. Die Unterscheidung hält sich vor allem im Präteritum: intransitiv ~hing~/~gehangen~ gegenüber transitiv ~hängte~/~gehängt~. Verwandt mit Niederländisch ~hangen~, Englisch ~hang~.\n- ~auf-~: Aus Mhd. ~ūf~, aus Ahd. ~ūf~, aus Proto-Westgermanisch *~up~, aus Urgermanisch *~up~ („hinauf“), aus PIE *~upó~ („hinauf, von unten“). Dieselbe Präposition, vom anderen Ende her gesehen, ergab Lateinisch ~sub~ und Griechisch ~hypó~ („unter“) — eine Bewegung von unten liest sich als „hinauf“ oder „unter“, je nachdem, wo der Sprecher steht. Verwandt mit Englisch ~up~, Niederländisch ~op~. Das Präfix drückt eine Aufwärtsbewegung aus — aufsteigen, heben oder errichten.\n\nVon den drei in ~hängen~ zusammengeflossenen Verben zieht ~aufhängen~ das kausative: Es ist transitiv und schwach, ~hängte auf~ und ~aufgehängt~, während das intransitive ~hing~ dem Bild überlassen bleibt, das an der Wand hängt.",
+      "en": "A separable compound of ~auf-~ + ~hängen~:\n\n- ~hängen~: The merger of three OHG verbs: ~hāhan~ (strong, transitive; past ~hieng~, participle ~gehangan~), from Proto-West Germanic *~hą̄han~, from Proto-Germanic *~hanhaną~; ~hangēn~ (weak, intransitive); and the causative ~hengen~, from Proto-West Germanic *~hangijan~, from Proto-Germanic *~hangijaną~. The distinction is upheld chiefly in the past tense: intransitive ~hing~/~gehangen~ versus transitive ~hängte~/~gehängt~. Cognate with Dutch ~hangen~, English ~hang~.\n- ~auf-~: From MHG ~ūf~, from OHG ~ūf~, from Proto-West Germanic *~up~, from Proto-Germanic *~up~ (\"up\"), from PIE *~upó~ (\"up, from below\"). The same preposition, viewed from the other end, gave Latin ~sub~ and Greek ~hypó~ (\"under\") — motion from below reads as \"up\" or \"under\" depending on where the speaker stands. Cognate with English ~up~, Dutch ~op~. The prefix conveys upward motion — rising, lifting, or building up.\n\nOf the three verbs that fell together in ~hängen~, ~aufhängen~ takes the causative one: it is transitive and weak, ~hängte auf~ and ~aufgehängt~, while the intransitive ~hing~ is left to the picture that hangs on the wall."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Und sollst den goldenen Räucheraltar setzen vor die Lade des Zeugnisses und das Tuch in der Tür der Wohnung aufhängen.",
+        "source": "Luther — Bibel"
+      },
+      "en": {
+        "sentence": "And you shall set the golden altar of incense before the ark of the testimony, and hang the curtain in the door of the tabernacle.",
+        "source": "Luther — Bibel"
+      }
+    },
+    "notes": null
+  },
+  "aufhelfen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~auf-~ + ~helfen~:\n\n- ~helfen~: Aus Mhd. ~hëlfen~, aus Ahd. ~hëlfan~, aus Proto-Westgermanisch *~helpan~, aus Urgermanisch *~helpaną~, aus PIE *~ḱelb-~, *~ḱelp-~. Ein starkes Verb der Klasse III mit dem charakteristischen ~e~-~a~-~o~-Ablautmuster (~helfen~, ~half~, ~geholfen~). Verwandt mit Englisch ~help~, Niederländisch ~helpen~, Dänisch ~hjælpe~, Norwegisch ~hjelpe~.\n- ~auf-~: Aus Mhd. ~ūf~, aus Ahd. ~ūf~, aus Proto-Westgermanisch *~up~, aus Urgermanisch *~up~ („hinauf“), aus PIE *~upó~ („hinauf, von unten“). Dieselbe Präposition, vom anderen Ende her gesehen, ergab Lateinisch ~sub~ und Griechisch ~hypó~ („unter“) — eine Bewegung von unten liest sich als „hinauf“ oder „unter“, je nachdem, wo der Sprecher steht. Verwandt mit Englisch ~up~, Niederländisch ~op~. Das Präfix drückt eine Aufwärtsbewegung aus — aufsteigen, heben oder errichten.\n\n~helfen~ regiert den Dativ, und ~aufhelfen~ behält ihn: Man hilft ~jemandem~ auf, nicht ~jemanden~. Die Aufwärtsbewegung ist dabei noch ganz wörtlich — der Gestürzte kommt wieder auf die Beine.",
+      "en": "A separable compound of ~auf-~ + ~helfen~:\n\n- ~helfen~: From MHG ~hëlfen~, from OHG ~hëlfan~, from Proto-West Germanic *~helpan~, from Proto-Germanic *~helpaną~, from PIE *~ḱelb-~, *~ḱelp-~. A class III strong verb with the characteristic ~e~-~a~-~o~ ablaut pattern (~helfen~, ~half~, ~geholfen~). Cognate with English ~help~, Dutch ~helpen~, Danish ~hjælpe~, Norwegian ~hjelpe~.\n- ~auf-~: From MHG ~ūf~, from OHG ~ūf~, from Proto-West Germanic *~up~, from Proto-Germanic *~up~ (\"up\"), from PIE *~upó~ (\"up, from below\"). The same preposition, viewed from the other end, gave Latin ~sub~ and Greek ~hypó~ (\"under\") — motion from below reads as \"up\" or \"under\" depending on where the speaker stands. Cognate with English ~up~, Dutch ~op~. The prefix conveys upward motion — rising, lifting, or building up.\n\n~helfen~ governs the dative, and ~aufhelfen~ keeps it: one helps ~to~ someone up, not ~someone~ up. The upward motion is still wholly literal here — whoever has fallen is set back on their feet."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Wenn du deines Bruders Esel oder Ochsen siehst fallen auf dem Wege, so sollst du dich nicht von ihm entziehen, sondern sollst ihm aufhelfen.",
+        "source": "Luther — Bibel"
+      },
+      "en": {
+        "sentence": "If you see your brother's donkey or ox fall down on the road, you shall not turn away from him but shall help him get it up again.",
+        "source": "Luther — Bibel"
+      }
+    },
+    "notes": null
+  },
+  "aufholen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~auf-~ + ~holen~:\n\n- ~holen~: Aus Mhd. ~holen~, ~holn~, aus Ahd. ~holōn~, ~holēn~ („holen, herbeischaffen“), aus Proto-Westgermanisch *~holōn~, möglicherweise aus PIE *~kelh₁-~ („rufen, herbeirufen“) über „herbeirufen“ → „hingehen und holen“; die Verbindung ist unsicher. Verwandt mit Niederländisch ~halen~, Niederdeutsch ~halen~, Englisch ~haul~ (über das Französische).\n- ~auf-~: Aus Mhd. ~ūf~, aus Ahd. ~ūf~, aus Proto-Westgermanisch *~up~, aus Urgermanisch *~up~ („hinauf“), aus PIE *~upó~ („hinauf, von unten“). Dieselbe Präposition, vom anderen Ende her gesehen, ergab Lateinisch ~sub~ und Griechisch ~hypó~ („unter“) — eine Bewegung von unten liest sich als „hinauf“ oder „unter“, je nachdem, wo der Sprecher steht. Verwandt mit Englisch ~up~, Niederländisch ~op~. Das Präfix drückt eine Aufwärtsbewegung aus — aufsteigen, heben oder errichten.\n\nDer Ursprung ist seemännisch: Ein Tau wird aufgeholt, also nach oben eingeholt. Modern hat sich die Richtung von oben nach vorn gedreht — aufgeholt wird Rückstand, Zeit, verlorenes Wachstum.",
+      "en": "A separable compound of ~auf-~ + ~holen~:\n\n- ~holen~: From MHG ~holen~, ~holn~, from OHG ~holōn~, ~holēn~ (\"to fetch, get\"), from Proto-West Germanic *~holōn~, possibly from PIE *~kelh₁-~ (\"to call, summon\") via \"to summon\" → \"to go and fetch\"; the connection is uncertain. Cognate with Dutch ~halen~, Low German ~halen~, English ~haul~ (via French).\n- ~auf-~: From MHG ~ūf~, from OHG ~ūf~, from Proto-West Germanic *~up~, from Proto-Germanic *~up~ (\"up\"), from PIE *~upó~ (\"up, from below\"). The same preposition, viewed from the other end, gave Latin ~sub~ and Greek ~hypó~ (\"under\") — motion from below reads as \"up\" or \"under\" depending on where the speaker stands. Cognate with English ~up~, Dutch ~op~. The prefix conveys upward motion — rising, lifting, or building up.\n\nThe origin is nautical: a rope is ~aufgeholt~, hauled up. In modern use the direction has turned from upward to forward — what one makes up is lost ground, lost time, lost growth."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Die Einbrüche konnten aber bis September 2020 zumindest teilweise wieder aufgeholt werden.",
+        "source": "Raumordnungsbericht (2021)"
+      },
+      "en": {
+        "sentence": "The downturns, however, had at least partly been made up again by September 2020.",
+        "source": "Raumordnungsbericht (2021)"
+      }
+    },
+    "notes": "Sense picked as the literal nautical upward hauling; the modern figurative „Rückstand aufholen“ resembles no exemplar closely."
+  },
+  "aufklappen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~auf-~ + ~klappen~:\n\n- ~klappen~: Aus Mittelniederdeutsch ~klappen~, aus Altsächsisch *~klappōn~, aus Proto-Westgermanisch *~klappōn~, aus Urgermanisch *~klappōną~. Das Verb ist onomatopoetisch. Verwandt mit Englisch ~clap~, Niederländisch ~klappen~, Althochdeutsch ~klapfō~ („ein klatschendes Geräusch“); ebenfalls verwandt mit ~klaffen~ („offen stehen“).\n- ~auf-~: Aus Mhd. ~ūf~, aus Ahd. ~ūf~, aus Proto-Westgermanisch *~up~, aus Urgermanisch *~up~ („hinauf“), aus PIE *~upó~ („hinauf, von unten“). Dieselbe Präposition, vom anderen Ende her gesehen, ergab Lateinisch ~sub~ und Griechisch ~hypó~ („unter“) — eine Bewegung von unten liest sich als „hinauf“ oder „unter“, je nachdem, wo der Sprecher steht. Verwandt mit Englisch ~up~, Niederländisch ~op~. Das Präfix bedeutet „offen“ — eine Schließung rückgängig machen.\n\nDer lautmalende Stamm liefert das Geräusch mit: Was aufklappt, tut es hörbar. Deshalb passt das Verb auf Deckel, Bücher und Klappmesser, aber nicht auf eine Tür, die lautlos aufgeht.",
+      "en": "A separable compound of ~auf-~ + ~klappen~:\n\n- ~klappen~: From Middle Low German ~klappen~, from Old Saxon *~klappōn~, from Proto-West Germanic *~klappōn~, from Proto-Germanic *~klappōną~. The verb is onomatopoeic. Cognate with English ~clap~, Dutch ~klappen~, Old High German ~klapfō~ (\"a clapping sound\"); also related to ~klaffen~ (\"to gape\").\n- ~auf-~: From MHG ~ūf~, from OHG ~ūf~, from Proto-West Germanic *~up~, from Proto-Germanic *~up~ (\"up\"), from PIE *~upó~ (\"up, from below\"). The same preposition, viewed from the other end, gave Latin ~sub~ and Greek ~hypó~ (\"under\") — motion from below reads as \"up\" or \"under\" depending on where the speaker stands. Cognate with English ~up~, Dutch ~op~. The prefix means \"open\" — undoing a closure.\n\nThe onomatopoeic stem supplies the sound: whatever ~aufklappt~ does so audibly. That is why the verb fits lids, books, and folding knives, but not a door that swings open in silence."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "K. warf es so heftig weg, daß es aufklappte und mit zerdrückten Blättern ein Stück über den Boden schleifte.",
+        "source": "Kafka — Der Proceß"
+      },
+      "en": {
+        "sentence": "K. threw it away so violently that it flew open and slid some distance across the floor with its pages crumpled.",
+        "source": "Kafka — Der Proceß"
+      }
+    },
+    "notes": null
+  },
+  "aufkleben": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~auf-~ + ~kleben~:\n\n- ~kleben~: Aus Mhd. ~kleben~, aus Ahd. ~klebēn~ („haften“), aus Proto-Westgermanisch *~klibēn~, aus Urgermanisch *~klibēną~, aus PIE *~gleyb-~ („kleben, haften“) — eine Durativbildung zur starken Wurzel *~kleibēną~ („haften, klettern“). Verwandt mit Englisch ~cleave~ und ~climb~, Altnordisch ~klīfa~ („klettern“).\n- ~auf-~: Aus Mhd. ~ūf~, aus Ahd. ~ūf~, aus Proto-Westgermanisch *~up~, aus Urgermanisch *~up~ („hinauf“), aus PIE *~upó~ („hinauf, von unten“). Dieselbe Präposition, vom anderen Ende her gesehen, ergab Lateinisch ~sub~ und Griechisch ~hypó~ („unter“) — eine Bewegung von unten liest sich als „hinauf“ oder „unter“, je nachdem, wo der Sprecher steht. Verwandt mit Englisch ~up~, Niederländisch ~op~. Das Präfix drückt das Aufbringen auf eine Oberfläche aus.\n\n~kleben~ ist im Ursprung zuständlich — etwas haftet irgendwo. Das Präfix macht daraus eine Handlung mit Ziel: Die Marke kommt auf den Umschlag und bleibt dort.",
+      "en": "A separable compound of ~auf-~ + ~kleben~:\n\n- ~kleben~: From MHG ~kleben~, from OHG ~klebēn~ (\"to stick\"), from Proto-West Germanic *~klibēn~, from Proto-Germanic *~klibēną~, from PIE *~gleyb-~ (\"to stick, adhere\") — a durative formation from the strong root *~kleibēną~ (\"to adhere, to climb\"). Cognate with English ~cleave~ and ~climb~, Old Norse ~klīfa~ (\"to climb\").\n- ~auf-~: From MHG ~ūf~, from OHG ~ūf~, from Proto-West Germanic *~up~, from Proto-Germanic *~up~ (\"up\"), from PIE *~upó~ (\"up, from below\"). The same preposition, viewed from the other end, gave Latin ~sub~ and Greek ~hypó~ (\"under\") — motion from below reads as \"up\" or \"under\" depending on where the speaker stands. Cognate with English ~up~, Dutch ~op~. The prefix conveys applying something onto a surface.\n\n~kleben~ is stative at root — something adheres somewhere. The prefix turns it into an act with a target: the stamp goes onto the envelope and stays there."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "aufklingen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~auf-~ + ~klingen~:\n\n- ~klingen~: Aus Mhd. ~klingen~, aus Ahd. ~klingan~, aus Proto-Westgermanisch *~klingan~, aus Urgermanisch *~klinganą~, mit ziemlicher Sicherheit onomatopoetischen Ursprungs. Ein starkes Verb der Klasse III (~klingt~, ~klang~, ~geklungen~), dasselbe Muster wie ~singen~. Verwandt mit Englisch ~clink~ und ~clang~, Mittelniederländisch ~klinken~.\n- ~auf-~: Aus Mhd. ~ūf~, aus Ahd. ~ūf~, aus Proto-Westgermanisch *~up~, aus Urgermanisch *~up~ („hinauf“), aus PIE *~upó~ („hinauf, von unten“). Dieselbe Präposition, vom anderen Ende her gesehen, ergab Lateinisch ~sub~ und Griechisch ~hypó~ („unter“) — eine Bewegung von unten liest sich als „hinauf“ oder „unter“, je nachdem, wo der Sprecher steht. Verwandt mit Englisch ~up~, Niederländisch ~op~. Das Präfix drückt Entstehung aus — auftauchen, erscheinen oder plötzlich beginnen.\n\n~klingen~ beschreibt einen fortdauernden Klang, ~aufklingen~ seinen Einsatz — den Augenblick, in dem der Ton aus der Stille heraustritt. Das Präfix zielt hier nicht nach oben, sondern auf den Anfang.",
+      "en": "A separable compound of ~auf-~ + ~klingen~:\n\n- ~klingen~: From MHG ~klingen~, from OHG ~klingan~, from Proto-West Germanic *~klingan~, from Proto-Germanic *~klinganą~, almost certainly of onomatopoeic origin. A class III strong verb (~klingt~, ~klang~, ~geklungen~), the same pattern as ~singen~. Cognate with English ~clink~ and ~clang~, Middle Dutch ~klinken~.\n- ~auf-~: From MHG ~ūf~, from OHG ~ūf~, from Proto-West Germanic *~up~, from Proto-Germanic *~up~ (\"up\"), from PIE *~upó~ (\"up, from below\"). The same preposition, viewed from the other end, gave Latin ~sub~ and Greek ~hypó~ (\"under\") — motion from below reads as \"up\" or \"under\" depending on where the speaker stands. Cognate with English ~up~, Dutch ~op~. The prefix conveys emergence — arising, appearing, or beginning suddenly.\n\n~klingen~ describes a sound that lasts; ~aufklingen~ describes its onset — the moment the tone steps out of silence. The prefix here points not upward but at the beginning."
+    },
+    "sentence": null,
+    "notes": "Sole candidate is a genuine verbal use (Mann, „hier klang er auf“) but runs 57 words, just past the 55-word ceiling."
+  },
+  "aufknüpfen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~auf-~ + ~knüpfen~:\n\n- ~knüpfen~: Aus Mhd. ~knüpfen~, aus Ahd. ~knupfen~, ~chnuphan~, verwandt mit ~Knopf~, aus Mhd. ~knopf~, Ahd. ~knopf~, Urgermanisch *~knuppaz~ („Klumpen, Scholle, Knauf“). Das Wort gehört zum germanischen ~kn-~-Cluster für Klumpen und Knoten: ~Knoten~, ~Knochen~, ~Knauf~.\n- ~auf-~: Aus Mhd. ~ūf~, aus Ahd. ~ūf~, aus Proto-Westgermanisch *~up~, aus Urgermanisch *~up~ („hinauf“), aus PIE *~upó~ („hinauf, von unten“). Dieselbe Präposition, vom anderen Ende her gesehen, ergab Lateinisch ~sub~ und Griechisch ~hypó~ („unter“) — eine Bewegung von unten liest sich als „hinauf“ oder „unter“, je nachdem, wo der Sprecher steht. Verwandt mit Englisch ~up~, Niederländisch ~op~. Das Präfix drückt eine Aufwärtsbewegung aus — aufsteigen, heben oder errichten.\n\nDasselbe Präfix trägt hier zwei entgegengesetzte Lesarten: Einen Knoten knüpft man auf, wenn man ihn löst, einen Menschen knüpft man auf, wenn man ihn an den Balken hängt. Die Knotenwurzel bleibt in beiden Fällen sichtbar.",
+      "en": "A separable compound of ~auf-~ + ~knüpfen~:\n\n- ~knüpfen~: From MHG ~knüpfen~, from OHG ~knupfen~, ~chnuphan~, related to ~Knopf~ (\"button, knob\"), from MHG ~knopf~, OHG ~knopf~, Proto-Germanic *~knuppaz~ (\"lump, clod, knob\"). The word belongs to the Germanic ~kn-~ cluster for lumps and knots: ~Knoten~, ~Knochen~, ~Knauf~.\n- ~auf-~: From MHG ~ūf~, from OHG ~ūf~, from Proto-West Germanic *~up~, from Proto-Germanic *~up~ (\"up\"), from PIE *~upó~ (\"up, from below\"). The same preposition, viewed from the other end, gave Latin ~sub~ and Greek ~hypó~ (\"under\") — motion from below reads as \"up\" or \"under\" depending on where the speaker stands. Cognate with English ~up~, Dutch ~op~. The prefix conveys upward motion — rising, lifting, or building up.\n\nThe same prefix carries two opposite readings here: a knot is ~aufgeknüpft~ when it is undone, a person when they are strung up from a beam. The knot at the root of the word stays visible either way."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "aufkochen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~auf-~ + ~kochen~:\n\n- ~kochen~: Aus Mhd. ~kochen~, aus Ahd. ~kohhōn~, aus Proto-Westgermanisch *~kokōn~, entlehnt aus spätlateinisch ~cocō~, aus lateinisch ~coquō~ („ich koche, ich siede“), aus PIE *~pekʷ-~ („kochen, reifen“). Ein so frühes Lehnwort, dass es die hochdeutsche Lautverschiebung ~k~ → ~ch~ noch mitmachte. Verwandt mit Englisch ~cook~, Niederländisch ~koken~, Dänisch ~koge~.\n- ~auf-~: Aus Mhd. ~ūf~, aus Ahd. ~ūf~, aus Proto-Westgermanisch *~up~, aus Urgermanisch *~up~ („hinauf“), aus PIE *~upó~ („hinauf, von unten“). Dieselbe Präposition, vom anderen Ende her gesehen, ergab Lateinisch ~sub~ und Griechisch ~hypó~ („unter“) — eine Bewegung von unten liest sich als „hinauf“ oder „unter“, je nachdem, wo der Sprecher steht. Verwandt mit Englisch ~up~, Niederländisch ~op~. Das Präfix drückt eine Aufwärtsbewegung aus — aufsteigen, heben oder errichten.\n\nDas Verb nennt keinen Dauerzustand, sondern das einmalige Steigen: Die Flüssigkeit kommt zum Sieden und wird gleich wieder vom Feuer genommen. Dass ein so frühes Lehnwort aus dem Lateinischen deutsche Trennbarkeit annimmt, ist selbst bemerkenswert.",
+      "en": "A separable compound of ~auf-~ + ~kochen~:\n\n- ~kochen~: From MHG ~kochen~, from OHG ~kohhōn~, from Proto-West Germanic *~kokōn~, borrowed from Late Latin ~cocō~, from Latin ~coquō~ (\"I cook, I boil\"), from PIE *~pekʷ-~ (\"to cook, to ripen\"). A loan early enough to have undergone the High German shift of ~k~ to ~ch~. Cognate with English ~cook~, Dutch ~koken~, Danish ~koge~.\n- ~auf-~: From MHG ~ūf~, from OHG ~ūf~, from Proto-West Germanic *~up~, from Proto-Germanic *~up~ (\"up\"), from PIE *~upó~ (\"up, from below\"). The same preposition, viewed from the other end, gave Latin ~sub~ and Greek ~hypó~ (\"under\") — motion from below reads as \"up\" or \"under\" depending on where the speaker stands. Cognate with English ~up~, Dutch ~op~. The prefix conveys upward motion — rising, lifting, or building up.\n\nThe verb names no lasting state but a single rise: the liquid comes to the boil and is taken off the heat again at once. That a loanword this early from Latin should take on German separability is itself worth noting."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "aufkündigen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~auf-~ + ~kündigen~:\n\n- ~kündigen~: Aus Mhd. ~kündigen~ („bekanntmachen, ankündigen“), zum Adjektiv ~kündic~ (modern ~kundig~), aus Ahd. ~kundig~, aus Proto-Westgermanisch *~kunþīg~, aus Urgermanisch *~kunþaz~ („bekannt“), dem Partizip Perfekt von *~kunnaną~ („wissen, können“), aus PIE *~ǵneh₃-~ („wissen“). Die Bedeutung „einen Vertrag beenden“ wurde erst im 19. Jahrhundert Standard, gekürzt aus ~aufkündigen~.\n- ~auf-~: Aus Mhd. ~ūf~, aus Ahd. ~ūf~, aus Proto-Westgermanisch *~up~, aus Urgermanisch *~up~ („hinauf“), aus PIE *~upó~ („hinauf, von unten“). Dieselbe Präposition, vom anderen Ende her gesehen, ergab Lateinisch ~sub~ und Griechisch ~hypó~ („unter“) — eine Bewegung von unten liest sich als „hinauf“ oder „unter“, je nachdem, wo der Sprecher steht. Verwandt mit Englisch ~up~, Niederländisch ~op~. Das Präfix bedeutet „offen“ — eine Schließung rückgängig machen.\n\nDie Etymologie des Stammes hält hier eine Umkehrung bereit: Nicht ~aufkündigen~ ist aus ~kündigen~ gebildet, sondern das einfache ~kündigen~ wurde im 19. Jahrhundert daraus gekürzt. Dem längeren Verb blieben die gewichtigen Fälle — Bündnisse, Verträge, ein politischer Konsens.",
+      "en": "A separable compound of ~auf-~ + ~kündigen~:\n\n- ~kündigen~: From MHG ~kündigen~ (\"to make known, to announce\"), from the adjective ~kündic~ (modern ~kundig~), from OHG ~kundig~, from Proto-West Germanic *~kunþīg~, from Proto-Germanic *~kunþaz~ (\"known\"), the past participle of *~kunnaną~ (\"to know, be able\"), from PIE *~ǵneh₃-~ (\"to know\"). The sense \"to give notice\" became standard only in the 19th century, clipped from ~aufkündigen~.\n- ~auf-~: From MHG ~ūf~, from OHG ~ūf~, from Proto-West Germanic *~up~, from Proto-Germanic *~up~ (\"up\"), from PIE *~upó~ (\"up, from below\"). The same preposition, viewed from the other end, gave Latin ~sub~ and Greek ~hypó~ (\"under\") — motion from below reads as \"up\" or \"under\" depending on where the speaker stands. Cognate with English ~up~, Dutch ~op~. The prefix means \"open\" — undoing a closure.\n\nThe root's history holds a reversal here: ~aufkündigen~ was not built from ~kündigen~ — rather the simple ~kündigen~ was clipped out of it in the 19th century. The longer verb kept the weightier cases: alliances, treaties, a political consensus."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Doch genau diesen Konsens hat ausgerechnet die Partei Adenauers, nur zwei Stunden nach dem Gedenken an 80 Jahre Befreiung des Konzentrationslagers, aufgekündigt.",
+        "source": "Bundestag — Plenarprotokoll 20/210"
+      },
+      "en": {
+        "sentence": "Yet it was Adenauer's own party, of all parties, that renounced precisely this consensus, only two hours after the commemoration of eighty years since the liberation of the concentration camp.",
+        "source": "Bundestag — Plenarprotokoll 20/210"
+      }
+    },
+    "notes": "Sense 1 (undoing a closure) taken as the nearest fit for undoing a binding agreement; no exemplar covers the contractual use."
+  },
+  "auflachen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~auf-~ + ~lachen~:\n\n- ~lachen~: Aus Mhd. ~lachen~, aus Ahd. ~lahhen~, aus Proto-Westgermanisch *~hlahhjan~, aus Urgermanisch *~hlahjaną~, aus PIE *~kleg-~ („schreien, tönen“). Der anlautende ~hl-~-Cluster wurde im Althochdeutschen zu ~l-~ vereinfacht. Verwandt mit Englisch ~laugh~, Niederländisch ~lachen~, Gotisch ~hlahjan~.\n- ~auf-~: Aus Mhd. ~ūf~, aus Ahd. ~ūf~, aus Proto-Westgermanisch *~up~, aus Urgermanisch *~up~ („hinauf“), aus PIE *~upó~ („hinauf, von unten“). Dieselbe Präposition, vom anderen Ende her gesehen, ergab Lateinisch ~sub~ und Griechisch ~hypó~ („unter“) — eine Bewegung von unten liest sich als „hinauf“ oder „unter“, je nachdem, wo der Sprecher steht. Verwandt mit Englisch ~up~, Niederländisch ~op~. Das Präfix drückt Entstehung aus — auftauchen, erscheinen oder plötzlich beginnen.\n\n~lachen~ kann eine Weile dauern, ~auflachen~ nicht: Es bezeichnet den einen Ausbruch, das kurze, oft unwillkürliche Lachen, das aus der Stille hervorbricht und sofort wieder aufhört.",
+      "en": "A separable compound of ~auf-~ + ~lachen~:\n\n- ~lachen~: From MHG ~lachen~, from OHG ~lahhen~, from Proto-West Germanic *~hlahhjan~, from Proto-Germanic *~hlahjaną~, from PIE *~kleg-~ (\"to cry out, sound\"). The initial ~hl-~ cluster was simplified to ~l-~ in Old High German. Cognate with English ~laugh~, Dutch ~lachen~, Gothic ~hlahjan~.\n- ~auf-~: From MHG ~ūf~, from OHG ~ūf~, from Proto-West Germanic *~up~, from Proto-Germanic *~up~ (\"up\"), from PIE *~upó~ (\"up, from below\"). The same preposition, viewed from the other end, gave Latin ~sub~ and Greek ~hypó~ (\"under\") — motion from below reads as \"up\" or \"under\" depending on where the speaker stands. Cognate with English ~up~, Dutch ~op~. The prefix conveys emergence — arising, appearing, or beginning suddenly.\n\n~lachen~ can go on for a while; ~auflachen~ cannot. It names the single burst — the short, often involuntary laugh that breaks out of silence and stops again immediately."
+    },
+    "sentence": null,
+    "notes": "Sole candidate is a genuine verbal use (Kafka, „lachte öfters laut auf“) but runs 62 words, past the 55-word ceiling."
+  },
+  "aufladen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~auf-~ + ~laden~:\n\n- ~laden~: Zwei historisch verschiedene Verben unter einem Infinitiv. ~laden~ (stark, „beladen“): aus Mhd. ~laden~, aus Ahd. ~hladan~, aus Proto-Westgermanisch *~hlaþan~, aus Urgermanisch *~hlaþaną~, aus PIE *~kleh₂-~ („legen, ausbreiten“); verwandt mit Englisch ~lade~ und ~laden~, Litauisch ~klṓti~. ~laden~ (schwach, „einladen“): aus Mhd. ~laden~, aus Ahd. ~ladon~, aus Proto-Westgermanisch *~laþōn~, aus Urgermanisch *~laþōną~, von *~laþō~ („Einladung“), aus PIE *~h₂lot-eh₂~, einer nur im Germanischen und Anatolischen belegten Wurzel (Hethitisch ~halzai~).\n- ~auf-~: Aus Mhd. ~ūf~, aus Ahd. ~ūf~, aus Proto-Westgermanisch *~up~, aus Urgermanisch *~up~ („hinauf“), aus PIE *~upó~ („hinauf, von unten“). Dieselbe Präposition, vom anderen Ende her gesehen, ergab Lateinisch ~sub~ und Griechisch ~hypó~ („unter“) — eine Bewegung von unten liest sich als „hinauf“ oder „unter“, je nachdem, wo der Sprecher steht. Verwandt mit Englisch ~up~, Niederländisch ~op~. Das Präfix drückt das Aufbringen auf eine Oberfläche aus.\n\nVon den beiden ~laden~ unter einem Infinitiv gehört dieses zum starken „beladen“, nicht zum schwachen „einladen“ — daher ~lud auf~ und ~aufgeladen~. Dass heute auch Akkus aufgeladen werden, ist dasselbe Bild: Die Ladung kommt auf den Träger.",
+      "en": "A separable compound of ~auf-~ + ~laden~:\n\n- ~laden~: Two historically distinct verbs under one infinitive. ~laden~ (strong, \"to load\"): from MHG ~laden~, from OHG ~hladan~, from Proto-West Germanic *~hlaþan~, from Proto-Germanic *~hlaþaną~, from PIE *~kleh₂-~ (\"to put, lay out\"); cognate with English ~lade~ and ~laden~, Lithuanian ~klṓti~. ~laden~ (weak, \"to invite, summon\"): from MHG ~laden~, from OHG ~ladon~, from Proto-West Germanic *~laþōn~, from Proto-Germanic *~laþōną~, from *~laþō~ (\"invitation\"), from PIE *~h₂lot-eh₂~, a root found only in Germanic and Anatolian (Hittite ~halzai~).\n- ~auf-~: From MHG ~ūf~, from OHG ~ūf~, from Proto-West Germanic *~up~, from Proto-Germanic *~up~ (\"up\"), from PIE *~upó~ (\"up, from below\"). The same preposition, viewed from the other end, gave Latin ~sub~ and Greek ~hypó~ (\"under\") — motion from below reads as \"up\" or \"under\" depending on where the speaker stands. Cognate with English ~up~, Dutch ~op~. The prefix conveys applying something onto a surface.\n\nOf the two ~laden~ verbs sharing one infinitive, this one belongs to the strong \"to load,\" not the weak \"to invite\" — hence ~lud auf~ and ~aufgeladen~. That batteries are now ~aufgeladen~ too is the same image: the load goes onto its carrier."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Dem Kameele gleich kniet er nieder und lässt sich gut aufladen.",
+        "source": "Nietzsche — Also sprach Zarathustra"
+      },
+      "en": {
+        "sentence": "Like the camel he kneels down and lets himself be well loaded.",
+        "source": "Nietzsche — Also sprach Zarathustra"
+      }
+    },
+    "notes": null
+  },
+  "auflaufen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~auf-~ + ~laufen~:\n\n- ~laufen~: Aus Mhd. ~loufen~, aus Ahd. ~hloufan~, ~loufan~, aus Proto-Westgermanisch *~hlaupan~, aus Urgermanisch *~hlaupaną~. Ein starkes Verb der Klasse VII. Der anlautende ~hl-~-Cluster ging während der althochdeutschen Periode verloren. Verwandt mit Englisch ~leap~ und ~lope~, Niederländisch ~lopen~, Dänisch ~løbe~.\n- ~auf-~: Aus Mhd. ~ūf~, aus Ahd. ~ūf~, aus Proto-Westgermanisch *~up~, aus Urgermanisch *~up~ („hinauf“), aus PIE *~upó~ („hinauf, von unten“). Dieselbe Präposition, vom anderen Ende her gesehen, ergab Lateinisch ~sub~ und Griechisch ~hypó~ („unter“) — eine Bewegung von unten liest sich als „hinauf“ oder „unter“, je nachdem, wo der Sprecher steht. Verwandt mit Englisch ~up~, Niederländisch ~op~. Das Präfix drückt das Aufbringen auf eine Oberfläche aus.\n\nWörtlich läuft ein Schiff auf — auf Grund, auf eine Sandbank. Von der Vorstellung des Anhäufens am Hindernis führt der Weg zum übertragenen Gebrauch: Auch Schulden, Zinsen und Überstunden laufen auf.",
+      "en": "A separable compound of ~auf-~ + ~laufen~:\n\n- ~laufen~: From MHG ~loufen~, from OHG ~hloufan~, ~loufan~, from Proto-West Germanic *~hlaupan~, from Proto-Germanic *~hlaupaną~. A class VII strong verb. The initial ~hl-~ cluster was lost during the Old High German period. Cognate with English ~leap~ and ~lope~, Dutch ~lopen~, Danish ~løbe~.\n- ~auf-~: From MHG ~ūf~, from OHG ~ūf~, from Proto-West Germanic *~up~, from Proto-Germanic *~up~ (\"up\"), from PIE *~upó~ (\"up, from below\"). The same preposition, viewed from the other end, gave Latin ~sub~ and Greek ~hypó~ (\"under\") — motion from below reads as \"up\" or \"under\" depending on where the speaker stands. Cognate with English ~up~, Dutch ~op~. The prefix conveys applying something onto a surface.\n\nLiterally a ship ~läuft auf~ — runs onto ground, onto a sandbank. From the image of matter piling up against an obstacle comes the figurative use: debts, interest, and overtime ~laufen auf~ as well."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Da sind die Schulden inzwischen aufgelaufen, und das rächt sich jetzt bitterlich.",
+        "source": "Bundestag — Plenarprotokoll 20/210"
+      },
+      "en": {
+        "sentence": "That is where the debts have piled up in the meantime, and it is taking a bitter revenge now.",
+        "source": "Bundestag — Plenarprotokoll 20/210"
+      }
+    },
+    "notes": "No sense covers motion onto a contact surface (auflaufen „run aground“, aufprallen, aufschlagen); sense 2 is transitive application only. Took sense 2 as nearest — a sixth sense for contact-on-impact would be a real addition."
+  },
+  "auflegen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~auf-~ + ~legen~:\n\n- ~legen~: Aus mhd. ~legen~, aus ahd. ~leggen~, aus proto-westgermanisch *~laggjan~, aus urgermanisch *~lagjaną~, einer kausativen Ableitung von *~ligjaną~ („liegen“) mit dem Suffix *~-janą~, aus PIE *~logʰéyeti~. ~legen~ ist damit das Kausativum zu ~liegen~: „zum Liegen bringen“. Verwandt mit niederländisch ~leggen~, englisch ~lay~, dänisch ~lægge~.\n- ~auf-~: Aus Mhd. ~ūf~, aus Ahd. ~ūf~, aus Proto-Westgermanisch *~up~, aus Urgermanisch *~up~ („hinauf“), aus PIE *~upó~ („hinauf, von unten“). Dieselbe Präposition, vom anderen Ende her gesehen, ergab Lateinisch ~sub~ und Griechisch ~hypó~ („unter“) — eine Bewegung von unten liest sich als „hinauf“ oder „unter“, je nachdem, wo der Sprecher steht. Verwandt mit Englisch ~up~, Niederländisch ~op~. Das Präfix drückt das Aufbringen auf eine Oberfläche aus.\n\n~legen~ ist das Kausativ zu ~liegen~, und das Präfix nennt, worauf gelegt wird. Daraus wächst die übertragene Bedeutung „auferlegen“: Eine Last, eine Steuer, eine Buße kommt auf jemanden zu liegen.",
+      "en": "A separable compound of ~auf-~ + ~legen~:\n\n- ~legen~: From MHG ~legen~, from OHG ~leggen~, from Proto-West Germanic *~laggjan~, from Proto-Germanic *~lagjaną~, a causative of *~ligjaną~ (\"to lie\") with the suffix *~-janą~, from PIE *~logʰéyeti~. The verb is thus the causative partner of ~liegen~: to ~legen~ is to \"cause to lie,\" i.e., to lay. Cognate with Dutch ~leggen~, English ~lay~, Danish ~lægge~.\n- ~auf-~: From MHG ~ūf~, from OHG ~ūf~, from Proto-West Germanic *~up~, from Proto-Germanic *~up~ (\"up\"), from PIE *~upó~ (\"up, from below\"). The same preposition, viewed from the other end, gave Latin ~sub~ and Greek ~hypó~ (\"under\") — motion from below reads as \"up\" or \"under\" depending on where the speaker stands. Cognate with English ~up~, Dutch ~op~. The prefix conveys applying something onto a surface.\n\n~legen~ is the causative of ~liegen~, and the prefix names what a thing is laid on. Out of that grows the figurative sense \"to impose\": a burden, a tax, a penalty comes to rest on someone."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Wird man aber ein Lösegeld auf ihn legen, so soll er geben, sein Leben zu lösen, was man ihm auflegt.",
+        "source": "Luther — Bibel"
+      },
+      "en": {
+        "sentence": "But if a ransom is laid upon him, then he shall give, to redeem his life, whatever is imposed on him.",
+        "source": "Luther — Bibel"
+      }
+    },
+    "notes": null
+  },
+  "auflehnen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~auf-~ + ~lehnen~:\n\n- ~lehnen~: Verschmelzung zweier Verben: mhd. ~linen~/~lenen~ (intransitiv), aus ahd. ~hlinēn~, aus proto-westgermanisch *~hlinēn~, aus urgermanisch *~hlināną~, aus PIE *~k̂ley-~ („lehnen, neigen“); und mhd. ~leinen~ (kausativ), aus ahd. ~hleinen~, aus urgermanisch *~hlainijaną~. Ein zweites, archaisches ~lehnen~ („leihen, borgen“), aus ahd. ~lēhanōn~, lebt nur in ~entlehnen~ und ~Lehnwort~ fort. Verwandt mit englisch ~lean~, lateinisch ~clīnō~.\n- ~auf-~: Aus Mhd. ~ūf~, aus Ahd. ~ūf~, aus Proto-Westgermanisch *~up~, aus Urgermanisch *~up~ („hinauf“), aus PIE *~upó~ („hinauf, von unten“). Dieselbe Präposition, vom anderen Ende her gesehen, ergab Lateinisch ~sub~ und Griechisch ~hypó~ („unter“) — eine Bewegung von unten liest sich als „hinauf“ oder „unter“, je nachdem, wo der Sprecher steht. Verwandt mit Englisch ~up~, Niederländisch ~op~. Das Präfix drückt eine Aufwärtsbewegung aus — aufsteigen, heben oder errichten.\n\nDer Weg vom Anlehnen zum Aufbegehren führt über die Körperhaltung: Wer sich auflehnt, richtet sich aus der Ruhelage auf. Reflexiv und mit ~gegen~ oder ~wider~ verbunden, hat das Verb die wörtliche Bedeutung fast ganz an die übertragene abgegeben.",
+      "en": "A separable compound of ~auf-~ + ~lehnen~:\n\n- ~lehnen~: A merger of two verbs: MHG ~linen~/~lenen~ (intransitive), from OHG ~hlinēn~, from Proto-West Germanic *~hlinēn~, from Proto-Germanic *~hlināną~, from PIE *~k̂ley-~ (\"to lean, incline\"); and MHG ~leinen~ (causative), from OHG ~hleinen~, from Proto-Germanic *~hlainijaną~. A second, archaic ~lehnen~ (\"to lend, borrow\"), from OHG ~lēhanōn~, survives only in ~entlehnen~ and ~Lehnwort~. Cognate with English ~lean~, Latin ~clīnō~.\n- ~auf-~: From MHG ~ūf~, from OHG ~ūf~, from Proto-West Germanic *~up~, from Proto-Germanic *~up~ (\"up\"), from PIE *~upó~ (\"up, from below\"). The same preposition, viewed from the other end, gave Latin ~sub~ and Greek ~hypó~ (\"under\") — motion from below reads as \"up\" or \"under\" depending on where the speaker stands. Cognate with English ~up~, Dutch ~op~. The prefix conveys upward motion — rising, lifting, or building up.\n\nThe path from leaning to rebelling runs through posture: whoever ~sich auflehnt~ raises themselves out of a resting position. Reflexive and construed with ~gegen~ or ~wider~, the verb has surrendered nearly all of its literal sense to the figurative one."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Er ist niedergekniet und hat sich gelagert wie ein Löwe und wie eine Löwin; wer will sich wider ihn auflehnen?",
+        "source": "Luther — Bibel"
+      },
+      "en": {
+        "sentence": "He has knelt down and lain like a lion and like a lioness; who will rise up against him?",
+        "source": "Luther — Bibel"
+      }
+    },
+    "notes": null
+  },
+  "auflesen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~auf-~ + ~lesen~:\n\n- ~lesen~: Aus mhd. ~lësen~, aus ahd. ~lësan~, aus proto-westgermanisch *~lesan~, aus urgermanisch *~lesaną~ („sammeln“), aus PIE *~les-~ („sammeln“). Der Wandel von „sammeln“ zu „lesen“ — parallel zu lateinisch ~legō~ („ich sammle; ich lese“) — fasst Lesen als Zusammenlesen von Buchstaben. Verwandt mit niederländisch ~lezen~, englisch ~lease~ (archaisch).\n- ~auf-~: Aus Mhd. ~ūf~, aus Ahd. ~ūf~, aus Proto-Westgermanisch *~up~, aus Urgermanisch *~up~ („hinauf“), aus PIE *~upó~ („hinauf, von unten“). Dieselbe Präposition, vom anderen Ende her gesehen, ergab Lateinisch ~sub~ und Griechisch ~hypó~ („unter“) — eine Bewegung von unten liest sich als „hinauf“ oder „unter“, je nachdem, wo der Sprecher steht. Verwandt mit Englisch ~up~, Niederländisch ~op~. Das Präfix drückt eine Aufwärtsbewegung aus — aufsteigen, heben oder errichten.\n\nHier überlebt die ältere Bedeutung des Stammes ungebrochen: ~auflesen~ heißt sammeln, niemals lesen. Wer Ähren aufliest, tut genau das, was ~lesen~ ursprünglich hieß — und was die Weinlese im Namen führt.",
+      "en": "A separable compound of ~auf-~ + ~lesen~:\n\n- ~lesen~: From MHG ~lësen~, from OHG ~lësan~, from Proto-West Germanic *~lesan~, from Proto-Germanic *~lesaną~ (\"to gather\"), from PIE *~les-~ (\"to gather\"). The shift from \"to gather\" to \"to read\" — paralleled in Latin ~legō~ (\"I gather; I read\") — construes reading as gathering letters. Cognate with Dutch ~lezen~, English ~lease~ (archaic).\n- ~auf-~: From MHG ~ūf~, from OHG ~ūf~, from Proto-West Germanic *~up~, from Proto-Germanic *~up~ (\"up\"), from PIE *~upó~ (\"up, from below\"). The same preposition, viewed from the other end, gave Latin ~sub~ and Greek ~hypó~ (\"under\") — motion from below reads as \"up\" or \"under\" depending on where the speaker stands. Cognate with English ~up~, Dutch ~op~. The prefix conveys upward motion — rising, lifting, or building up.\n\nHere the stem's older meaning survives intact: ~auflesen~ means to gather, never to read. Whoever gleans ears of grain is doing exactly what ~lesen~ first meant — and what the ~Weinlese~, the grape harvest, still carries in its name."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Verächtlich dünkt ihr der immer Sorgende, Seufzende, Klägliche und wer auch die kleinsten Vortheile aufliest.",
+        "source": "Nietzsche — Also sprach Zarathustra"
+      },
+      "en": {
+        "sentence": "Contemptible to you seems the man forever worrying, sighing, complaining, and the one who picks up even the smallest advantages.",
+        "source": "Nietzsche — Also sprach Zarathustra"
+      }
+    },
+    "notes": null
+  },
+  "aufleuchten": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~auf-~ + ~leuchten~:\n\n- ~leuchten~: Aus ahd. ~liuhten~, aus proto-westgermanisch *~liuhtijan~, aus urgermanisch *~liuhtijaną~, einem faktitiven Verb zu *~leuhtą~ („Licht“) bzw. *~leuhtaz~ („hell“), aus PIE *~lewk-~ („hell, leuchten, sehen“). Verwandt mit mhd. ~liuhten~ und englisch ~light~; aus derselben Wurzel lateinisch ~lūx~ und griechisch ~leukos~ („weiß“).\n- ~auf-~: Aus Mhd. ~ūf~, aus Ahd. ~ūf~, aus Proto-Westgermanisch *~up~, aus Urgermanisch *~up~ („hinauf“), aus PIE *~upó~ („hinauf, von unten“). Dieselbe Präposition, vom anderen Ende her gesehen, ergab Lateinisch ~sub~ und Griechisch ~hypó~ („unter“) — eine Bewegung von unten liest sich als „hinauf“ oder „unter“, je nachdem, wo der Sprecher steht. Verwandt mit Englisch ~up~, Niederländisch ~op~. Das Präfix drückt Entstehung aus — auftauchen, erscheinen oder plötzlich beginnen.\n\n~leuchten~ ist faktitiv gebildet — Licht machen — und beschreibt einen Zustand. Das Präfix schneidet daraus einen Augenblick heraus: das plötzliche Aufblitzen, das ebenso in Augen wie an Warnlampen geschieht.",
+      "en": "A separable compound of ~auf-~ + ~leuchten~:\n\n- ~leuchten~: From OHG ~liuhten~, from Proto-West Germanic *~liuhtijan~, from Proto-Germanic *~liuhtijaną~, a factitive verb from *~leuhtą~ (\"light\") or *~leuhtaz~ (\"bright\"), from PIE *~lewk-~ (\"bright, to shine, to see\"). Cognate with MHG ~liuhten~ and English ~light~; from the same root, Latin ~lūx~ and Greek ~leukos~ (\"white\").\n- ~auf-~: From MHG ~ūf~, from OHG ~ūf~, from Proto-West Germanic *~up~, from Proto-Germanic *~up~ (\"up\"), from PIE *~upó~ (\"up, from below\"). The same preposition, viewed from the other end, gave Latin ~sub~ and Greek ~hypó~ (\"under\") — motion from below reads as \"up\" or \"under\" depending on where the speaker stands. Cognate with English ~up~, Dutch ~op~. The prefix conveys emergence — arising, appearing, or beginning suddenly.\n\n~leuchten~ is a factitive formation — to make light — and describes a state. The prefix cuts a single moment out of it: the sudden flash, which happens in eyes as readily as on warning lamps."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "aufmachen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~auf-~ + ~machen~:\n\n- ~machen~: Aus mhd. ~machen~, aus ahd. ~mahhōn~, aus proto-westgermanisch *~makōn~, aus PIE *~mag-~ („kneten, mischen, machen“). Verwandt mit niederländisch ~maken~, niederdeutsch ~maken~, englisch ~make~.\n- ~auf-~: Aus Mhd. ~ūf~, aus Ahd. ~ūf~, aus Proto-Westgermanisch *~up~, aus Urgermanisch *~up~ („hinauf“), aus PIE *~upó~ („hinauf, von unten“). Dieselbe Präposition, vom anderen Ende her gesehen, ergab Lateinisch ~sub~ und Griechisch ~hypó~ („unter“) — eine Bewegung von unten liest sich als „hinauf“ oder „unter“, je nachdem, wo der Sprecher steht. Verwandt mit Englisch ~up~, Niederländisch ~op~. Das Präfix bedeutet „offen“ — eine Schließung rückgängig machen.\n\nDer Stamm ist so allgemein wie möglich, sodass die ganze Bedeutung am Präfix hängt. Reflexiv verschiebt sie sich noch einmal: ~sich aufmachen~ heißt nicht sich öffnen, sondern aufbrechen.",
+      "en": "A separable compound of ~auf-~ + ~machen~:\n\n- ~machen~: From MHG ~machen~, from OHG ~mahhōn~, from Proto-West Germanic *~makōn~, from PIE *~mag-~ (\"to knead, mix, make\"). Cognate with Dutch ~maken~, Low German ~maken~, English ~make~.\n- ~auf-~: From MHG ~ūf~, from OHG ~ūf~, from Proto-West Germanic *~up~, from Proto-Germanic *~up~ (\"up\"), from PIE *~upó~ (\"up, from below\"). The same preposition, viewed from the other end, gave Latin ~sub~ and Greek ~hypó~ (\"under\") — motion from below reads as \"up\" or \"under\" depending on where the speaker stands. Cognate with English ~up~, Dutch ~op~. The prefix means \"open\" — undoing a closure.\n\nThe stem is as general as a verb can be, so the whole meaning rides on the prefix. Reflexively it shifts once more: ~sich aufmachen~ does not mean to open oneself but to set out."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Auf sein Klopfen wurde ihm gleich aufgemacht, und ohne sich weiter nach der bekannten Frau umzusehn, die bei der Tür stehen blieb, wollte er gleich ins Nebenzimmer.",
+        "source": "Kafka — Der Proceß"
+      },
+      "en": {
+        "sentence": "The door was opened to him at once when he knocked, and without looking again at the woman he knew, who stayed standing by the door, he wanted to go straight into the next room.",
+        "source": "Kafka — Der Proceß"
+      }
+    },
+    "notes": null
+  },
+  "aufmerken": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~auf-~ + ~merken~:\n\n- ~merken~: Aus mhd. ~merken~, aus ahd. ~merchen~, aus proto-westgermanisch *~markijan~, aus urgermanisch *~markijaną~ („markieren, bemerken“), einem denominalen Verb von *~marką~ („Zeichen, Mal“). Etwas zu bemerken heißt etymologisch, ein geistiges Zeichen darauf zu hinterlassen. Verwandt mit englisch ~mark~ (und ~remark~), isländisch ~merkja~.\n- ~auf-~: Aus Mhd. ~ūf~, aus Ahd. ~ūf~, aus Proto-Westgermanisch *~up~, aus Urgermanisch *~up~ („hinauf“), aus PIE *~upó~ („hinauf, von unten“). Dieselbe Präposition, vom anderen Ende her gesehen, ergab Lateinisch ~sub~ und Griechisch ~hypó~ („unter“) — eine Bewegung von unten liest sich als „hinauf“ oder „unter“, je nachdem, wo der Sprecher steht. Verwandt mit Englisch ~up~, Niederländisch ~op~. Das Präfix drückt eine Aufwärtsbewegung aus — aufsteigen, heben oder errichten.\n\nWörtlich heißt es, sein Merkzeichen auf etwas zu richten. Im heutigen Deutsch hat das Verb gegenüber ~aufpassen~ und ~bemerken~ Boden verloren und wirkt biblisch-gehoben; lebendig geblieben ist es im Adjektiv ~aufmerksam~ und im Substantiv ~Aufmerksamkeit~.",
+      "en": "A separable compound of ~auf-~ + ~merken~:\n\n- ~merken~: From MHG ~merken~, from OHG ~merchen~, from Proto-West Germanic *~markijan~, from Proto-Germanic *~markijaną~ (\"to mark, notice\"), a denominal verb from *~marką~ (\"mark, sign\"). To notice something is etymologically to leave a mental mark on it. Cognate with English ~mark~ (and ~remark~), Icelandic ~merkja~.\n- ~auf-~: From MHG ~ūf~, from OHG ~ūf~, from Proto-West Germanic *~up~, from Proto-Germanic *~up~ (\"up\"), from PIE *~upó~ (\"up, from below\"). The same preposition, viewed from the other end, gave Latin ~sub~ and Greek ~hypó~ (\"under\") — motion from below reads as \"up\" or \"under\" depending on where the speaker stands. Cognate with English ~up~, Dutch ~op~. The prefix conveys upward motion — rising, lifting, or building up.\n\nLiterally it is to set one's mark upon something. In present-day German the verb has lost ground to ~aufpassen~ and ~bemerken~ and sounds biblical and elevated; what stayed alive is the adjective ~aufmerksam~ and the noun ~Aufmerksamkeit~."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "So laß nun, mein Gott, deine Augen offen sein und deine Ohren aufmerken auf das Gebet an dieser Stätte.",
+        "source": "Luther — Bibel"
+      },
+      "en": {
+        "sentence": "Now let your eyes be open, my God, and let your ears attend to the prayer made in this place.",
+        "source": "Luther — Bibel"
+      }
+    },
+    "notes": "auf- here is the attention-directing prefix of aufpassen, aufhorchen, aufmerken, which no sense covers; took sense 0, since the Luther attestation is literally „die Ohren aufmerken“, ears pricked up."
+  },
+  "aufmischen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~auf-~ + ~mischen~:\n\n- ~mischen~: Aus mhd. ~mischen~, aus ahd. ~misken~, aus urgermanisch *~miskijaną~ („mischen“), aus PIE *~meyḱ-~ („mischen, kneten“), über das inchoative Präsens *~miḱ-sḱé-~. Verwandt mit englisch ~mix~, lateinisch ~misceō~, griechisch ~mísgo~, Sanskrit ~miśrá~ („gemischt“).\n- ~auf-~: Aus Mhd. ~ūf~, aus Ahd. ~ūf~, aus Proto-Westgermanisch *~up~, aus Urgermanisch *~up~ („hinauf“), aus PIE *~upó~ („hinauf, von unten“). Dieselbe Präposition, vom anderen Ende her gesehen, ergab Lateinisch ~sub~ und Griechisch ~hypó~ („unter“) — eine Bewegung von unten liest sich als „hinauf“ oder „unter“, je nachdem, wo der Sprecher steht. Verwandt mit Englisch ~up~, Niederländisch ~op~. Das Präfix drückt eine Aufwärtsbewegung aus — aufsteigen, heben oder errichten.\n\nBeim Mischen kommt nach oben, was unten lag — daher das Präfix. Umgangssprachlich hat sich das Bild verschärft: Wer einen Laden aufmischt, bringt nicht nur Unordnung hinein, sondern Streit.",
+      "en": "A separable compound of ~auf-~ + ~mischen~:\n\n- ~mischen~: From MHG ~mischen~, from OHG ~misken~, from Proto-Germanic *~miskijaną~ (\"to mix\"), from PIE *~meyḱ-~ (\"to mix, knead\"), via the inchoative present *~miḱ-sḱé-~. Cognate with English ~mix~, Latin ~misceō~, Greek ~mísgo~, Sanskrit ~miśrá~ (\"mixed\").\n- ~auf-~: From MHG ~ūf~, from OHG ~ūf~, from Proto-West Germanic *~up~, from Proto-Germanic *~up~ (\"up\"), from PIE *~upó~ (\"up, from below\"). The same preposition, viewed from the other end, gave Latin ~sub~ and Greek ~hypó~ (\"under\") — motion from below reads as \"up\" or \"under\" depending on where the speaker stands. Cognate with English ~up~, Dutch ~op~. The prefix conveys upward motion — rising, lifting, or building up.\n\nMixing brings up whatever was lying at the bottom — hence the prefix. In colloquial use the image has sharpened: to ~aufmischen~ a place is to bring it not merely disorder but a fight."
+    },
+    "sentence": null,
+    "notes": "no candidates; auf- as stirring-from-below matches no exemplar closely, sense 0 taken as nearest."
+  },
+  "aufnähen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~auf-~ + ~nähen~:\n\n- ~nähen~: Aus mhd. ~nāian~, ~næjen~, aus ahd. ~nājen~, ~nāian~, aus urgermanisch *~nēaną~ („nähen“), aus PIE *~(s)neh₁-~ („spinnen, nähen“), einer Wurzel mit optionalem anlautendem ~s-~ (~s-mobile~). Das Instrumentalnomen *~neh₁-dleh₂~ ergab über *~nēþlō~ ~Nadel~ und englisch ~needle~. Verwandt mit niederländisch ~naaien~, lateinisch ~nēre~ („spinnen“).\n- ~auf-~: Aus Mhd. ~ūf~, aus Ahd. ~ūf~, aus Proto-Westgermanisch *~up~, aus Urgermanisch *~up~ („hinauf“), aus PIE *~upó~ („hinauf, von unten“). Dieselbe Präposition, vom anderen Ende her gesehen, ergab Lateinisch ~sub~ und Griechisch ~hypó~ („unter“) — eine Bewegung von unten liest sich als „hinauf“ oder „unter“, je nachdem, wo der Sprecher steht. Verwandt mit Englisch ~up~, Niederländisch ~op~. Das Präfix drückt das Aufbringen auf eine Oberfläche aus.\n\nDas Präfix nennt die Fläche, auf die genäht wird, und unterscheidet das Verb von ~annähen~, das ein Teil an ein anderes fügt. Ein Aufnäher liegt sichtbar obenauf; ein angenähter Knopf sitzt in der Naht.",
+      "en": "A separable compound of ~auf-~ + ~nähen~:\n\n- ~nähen~: From MHG ~nāian~, ~næjen~, from OHG ~nājen~, ~nāian~, from Proto-Germanic *~nēaną~ (\"to sew\"), from PIE *~(s)neh₁-~ (\"to spin, to sew\"), a root with an optional initial ~s-~ (~s-mobile~). The instrument noun *~neh₁-dleh₂~ gave, via *~nēþlō~, both ~Nadel~ and English ~needle~. Cognate with Dutch ~naaien~, Latin ~nēre~ (\"to spin\").\n- ~auf-~: From MHG ~ūf~, from OHG ~ūf~, from Proto-West Germanic *~up~, from Proto-Germanic *~up~ (\"up\"), from PIE *~upó~ (\"up, from below\"). The same preposition, viewed from the other end, gave Latin ~sub~ and Greek ~hypó~ (\"under\") — motion from below reads as \"up\" or \"under\" depending on where the speaker stands. Cognate with English ~up~, Dutch ~op~. The prefix conveys applying something onto a surface.\n\nThe prefix names the surface sewn onto, and separates the verb from ~annähen~, which joins one piece to another. An ~Aufnäher~, a patch, sits visibly on top; a button that is ~angenäht~ sits in the seam."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "_comment": [
+    "Exemplar verbs per prefix sense, parallel by index to `senses` in prefixes-separable.json",
+    "and prefixes-inseparable.json. Consumed by corpus/working/build_mining_shards.py, which",
+    "joins them into each shard so a mining subagent picks a sense by analogy instead of by",
+    "judgment.",
+    "",
+    "WHY: sense selection was the one genuinely underdetermined step left in Phase 4. Two shard-",
+    "runs reported it independently on 2026-07-20 with the same complaint --- `abmelken` sits",
+    "between completion and drawing-out, `abladen` between separation and downward motion, and",
+    "the terse `translation` field does not settle it. One run wrote that it had invented a tie-",
+    "break rule and that 'another shard will resolve it differently', which is the signature of",
+    "the drift this pipeline keeps having to undo.",
+    "",
+    "Exemplars are deliberately NOT spliced into the shipped prose. They are a selection aid only,",
+    "so adding one never changes what a reader sees. They are also language-neutral, which is why",
+    "they live here rather than duplicated across the `de` and `en` halves of the reuse files ---",
+    "a duplicated list is a list that drifts.",
+    "",
+    "Pilot scope: the twelve highest-traffic prefixes, covering most prefix-slot occurrences.",
+    "Extend as later shards report ambiguity; an absent morpheme simply yields no hint."
+  ],
+
+  "separ:ab": [
+    ["abnehmen", "abschneiden", "abwaschen"],
+    ["absteigen", "abstürzen", "abkühlen"],
+    ["abschließen", "ablaufen", "abdienen"],
+    ["abschreiben", "abzeichnen", "abmalen"],
+    ["ableiten", "abstammen"],
+    ["abändern", "abweichen", "abirren"],
+    ["abhängen", "abfordern", "abfragen"]
+  ],
+  "separ:an": [
+    ["anbinden", "ankleben", "anschrauben"],
+    ["ankommen", "anreisen", "annähern"],
+    ["anfangen", "anbrechen", "anlaufen"],
+    ["anschneiden", "anbraten", "ansägen"],
+    ["ansprechen", "anreden", "ankündigen"],
+    ["andauern", "anhalten"]
+  ],
+  "separ:auf": [
+    ["aufsteigen", "aufheben", "aufbauen"],
+    ["aufmachen", "aufschließen", "aufknöpfen"],
+    ["auftragen", "aufkleben", "aufmalen"],
+    ["aufessen", "aufbrauchen", "austrinken"],
+    ["auftauchen", "aufblühen", "aufflammen"]
+  ],
+  "separ:aus": [
+    ["ausgehen", "aussteigen", "auswandern"],
+    ["ausarbeiten", "ausbilden", "ausschlafen"],
+    ["austrinken", "ausblasen", "auslöschen"],
+    ["austeilen", "ausgeben", "ausschenken"],
+    ["ausbreiten", "ausdehnen", "ausweiten"]
+  ],
+  "separ:ein": [
+    ["eintreten", "einsteigen", "eingießen"],
+    ["einfügen", "einbauen", "eingliedern"],
+    ["einschließen", "einsperren", "einkreisen"],
+    ["einschlafen", "einfrieren", "einrosten"]
+  ],
+  "separ:zu": [
+    ["zugehen", "zulaufen", "zueilen"],
+    ["zumachen", "zuschließen", "zuklappen"],
+    ["zunehmen", "zugeben", "zulegen"],
+    ["zuteilen", "zuweisen", "zuordnen"]
+  ],
+  "separ:nach": [
+    ["nachlaufen", "nachfolgen", "nacheilen"],
+    ["nachliefern", "nachreichen", "nachzahlen"],
+    ["nachmachen", "nachahmen", "nachsprechen"],
+    ["nachprüfen", "nachschlagen", "nachrechnen"],
+    ["nachgeben", "nachlassen"]
+  ],
+
+  "insep:ver": [
+    ["verbessern", "verstärken", "verschärfen"],
+    ["versprechen", "verlaufen", "verwechseln"],
+    ["verbrauchen", "verzehren", "verschwenden"],
+    ["verjagen", "vertreiben", "verbannen"],
+    ["verlernen", "verkennen"],
+    ["vergrößern", "verbilligen", "vergolden"]
+  ],
+  "insep:be": [
+    ["besteigen", "betreten", "bewohnen"],
+    ["beantworten", "besprechen", "betrauern"],
+    ["bedecken", "bemalen", "bestreuen"],
+    ["bewaffnen", "beflaggen", "benachrichtigen"],
+    ["bearbeiten", "bedenken", "begutachten"]
+  ],
+  "insep:er": [
+    ["erfüllen", "erledigen", "erreichen"],
+    ["erblühen", "erklingen", "erröten"],
+    ["erarbeiten", "erkämpfen", "erbetteln"],
+    ["erheben", "ersteigen"],
+    ["erschießen", "erschlagen", "erfrieren"],
+    ["ermöglichen", "erweitern", "erneuern"]
+  ],
+  "insep:ent": [
+    ["entladen", "entriegeln", "entkorken"],
+    ["entwaffnen", "enteignen", "entnehmen"],
+    ["entkommen", "entfliehen", "entweichen"],
+    ["entstehen", "entspringen", "entflammen"],
+    ["entgegnen", "entsprechen"]
+  ],
+  "insep:zer": [
+    ["zerbrechen", "zerreißen", "zerspringen"],
+    ["zerstören", "zertrümmern"],
+    ["zerstreuen", "zerfließen", "zergehen"]
+  ]
+}

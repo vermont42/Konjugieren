@@ -9,6 +9,7 @@ Consumes
     verbdata/roots.json                    — root → etymology
     verbdata/prefixes-inseparable.json     — prefix → {chain, senses}
     verbdata/prefixes-separable.json       — particle → {kind, chain, senses}
+    verbdata/sense-exemplars.json          — exemplar verbs per sense, a picking aid
 
 Produces
     corpus/working/shards/mine_<NNN>.in.json
@@ -52,6 +53,7 @@ INDEX = REPO / "corpus/working/corpus_index.json"
 ROOTS = REPO / "verbdata/roots.json"
 INSEP = REPO / "verbdata/prefixes-inseparable.json"
 SEP = REPO / "verbdata/prefixes-separable.json"
+EXEMPLARS = REPO / "verbdata/sense-exemplars.json"
 OUT_DIR = REPO / "corpus/working/shards"
 LANGS = ("de", "en")
 
@@ -108,7 +110,7 @@ def decompose(raw):
     return prefixes, root
 
 
-def build_reading(raw, attrib, morphemes, roots, insep, sep):
+def build_reading(raw, attrib, morphemes, roots, insep, sep, exemplars):
     """
     Join one reading against the three reuse files, interning each morpheme into
     the shard's shared `morphemes` table and referring to it by key.
@@ -135,6 +137,12 @@ def build_reading(raw, attrib, morphemes, roots, insep, sep):
                 "de": entry["de"],
                 "en": entry["en"],
             }
+            # Exemplar verbs per sense, parallel by index. A selection aid only: never
+            # spliced into the prose, so it cannot change what a reader sees. Present
+            # for the high-traffic prefixes; absent elsewhere, which simply means no
+            # hint rather than an error.
+            if key in exemplars:
+                morphemes[key]["sense_exemplars"] = exemplars[key]
         refs.append(key)
 
     # A root entry carries both a condensed `bullet` and the long `full` article, and
@@ -173,6 +181,9 @@ def main():
     roots = json.loads(ROOTS.read_text())
     insep = json.loads(INSEP.read_text())
     sep = json.loads(SEP.read_text())
+    # Keys prefixed with "_" are documentation, not data.
+    exemplars = {k: v for k, v in json.loads(EXEMPLARS.read_text()).items()
+                 if not k.startswith("_")}
 
     pending = [verb for verb in ET.parse(VERBS_XML).getroot()
                if strip_markers(verb.get("in")) not in done]
@@ -191,7 +202,7 @@ def main():
             raw = verb.get("in")
             infinitive = strip_markers(raw)
             readings = [build_reading(reading.get("in", raw), reading.attrib,
-                                      morphemes, roots, insep, sep)
+                                      morphemes, roots, insep, sep, exemplars)
                         for reading in verb]
             candidates = index.get(infinitive, [])
             verbs.append({"verb": infinitive, "readings": readings,

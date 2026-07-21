@@ -69,6 +69,22 @@ prose written for exactly this slot — pick the index that fits and splice it u
 reading's `translation` to pick: for `abarbeiten` "work off", *ab-* is the separation sense, not
 the dismantling one.
 
+**Pick the sense by analogy, using `sense_exemplars`.** Where a morpheme carries that field, it
+is a list parallel by index to `senses`, holding two or three verbs that uncontroversially use
+each sense. Find the entry whose exemplars your verb most resembles and take that index. This is
+the tiebreaker, and it outranks your own reading of the sense text, because the point is that
+every shard resolves the same ambiguity the same way.
+
+The field exists because sense selection was the last genuinely underdetermined step here: two
+shard-runs reported on 2026-07-20 that `abmelken` sits between completion and drawing-out, and
+`abladen` between separation and downward motion, with the terse `translation` unable to settle
+it. One of them invented a tiebreak rule and noted that another shard would invent a different
+one. If your verb resembles none of the exemplars, say so in `notes` — a missing sense is a real
+finding, and two were added from exactly such a report.
+
+Exemplars are a picking aid only. They are never spliced into the prose and must not appear in
+your output.
+
 **Every sense is a complete sentence, so add no connective of your own.** It already carries
 its own subject — `~be-~ makes an intransitive verb transitive, …` — and concatenating it after
 the chain's final period needs nothing between them but a space. This is worth stating because

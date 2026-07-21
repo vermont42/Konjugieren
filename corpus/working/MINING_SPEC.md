@@ -77,11 +77,18 @@ article and English keeps it. That is not a slip: it is what the mined corpus al
 overwhelmingly does, and these two forms were chosen by counting the existing shards rather than
 by taste, so following them keeps new shards consistent with the ones already written.
 
-**Write the trailing hyphen only on a bound morpheme — that is, when the first element's `kind` is
-`prefix`.** `~auf-~` is right because *auf-* cannot stand alone in that use, but `besserstellen`
-takes `~besser~` with no hyphen, because *besser* is an ordinary free adjective and hyphenating it
-would claim otherwise. The same goes for noun and verb first elements. Check `kind` rather than
-guessing from the shape of the word. Where the compound also has an attested
+**Write each morpheme exactly as its `display` field gives it, hyphen included.** Every morpheme
+entry carries one — `"display": "~auf-~"`, `"display": "~besser~"` — and it is the whole rule. Do
+not derive the hyphen from `kind`, from the shape of the word, or from what a neighbouring shard
+did.
+
+The field exists because the hyphen was the most-reported defect of 2026-07-21. The rule used to
+key on `kind == "prefix"`, which is the value the shard builder defaults to for the 13 inseparable
+prefixes and therefore says nothing about the 233 separable kinds; three shard-runs reported it
+unusable on the same morning and each inferred a different answer. The underlying distinction is
+bound versus free — *auf-* cannot stand alone in that use, while `besserstellen` takes `~besser~`
+because *besser* is an ordinary free adjective and hyphenating it would claim otherwise — but you
+no longer have to apply it, because `display` already has. Where the compound also has an attested
 history of its own — the `vermeiden` example above — put that first and let the compound clause
 follow. A shard-run on 2026-07-20 opened a neighbouring `.out.json` purely to copy this phrasing,
 which is both a waste of its budget and a way for the house voice to drift by transcription; it is
@@ -205,6 +212,15 @@ Candidates are already ranked and balanced across sources. Reject a candidate wh
 - the snippet is **too fragmentary** to stand alone, or needs its antecedent to make sense.
 - it is a **different verb** that happens to share the form. Candidates are deliberately
   ambiguous: a form maps to several verbs and disambiguation was left to you.
+- it is **the other half of a separability doublet** — the same lemma, but the reading your shard
+  did not ask for. *durchbrechen* is two verbs spelled alike: separable "break in two" and
+  inseparable "break through." The reading's `separability` field says which one you have, and the
+  indexer cannot tell them apart because the spelling is identical. The tells are syntactic and
+  reliable: an infinitive with `zu` shows it (*zu durchbrechen* is inseparable, *durchzubrechen*
+  separable), as does a participle (*durchbrochen* against *durchgebrochen*), and in a main clause
+  the separable one strands its particle at the end. `durchbrechen` and `durchdringen` each lost
+  three of five candidates this way in one shard, so expect it wherever the chain itself mentions
+  a doublet. Reject and move on; it is not a homograph of a different lemma and not an indexer bug.
 
 **Among candidates that are all genuine, prefer one attesting the sense the reading glosses.**
 Walk the candidates in order and take the earliest genuine verbal use *whose sense matches the

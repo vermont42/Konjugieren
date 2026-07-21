@@ -17,6 +17,17 @@ corpus/working/*
 # otherwise lose, and Phase 4 spans more than one session, so the subagents' brief
 # has to live in git rather than in a scratchpad.
 !corpus/working/*.md
+# Mined shard OUTPUT is authored scholarship and is not regenerable: an etymology composed
+# from the reuse files plus a sentence chosen and translated by hand. Shard INPUT is a pure
+# build product, rebuilt by `build_mining_shards.py` from `forms.json` and the reuse files,
+# so it stays ignored. Until 2026-07-21 there was no rule here at all and every session had
+# to `git add -f` its own outputs; 27 shards survived because someone remembered each time,
+# and six from that day's session were sitting untracked when it was noticed. Since the
+# resume protocol derives remaining work from which `.out.json` exist, a forgotten add does
+# not merely lose the scholarship — it silently reports the shard as unmined.
+!corpus/working/shards/
+corpus/working/shards/*
+!corpus/working/shards/*.out.json
 # ios-build-verify
 build.log
 .claude/ios-build-verify.*

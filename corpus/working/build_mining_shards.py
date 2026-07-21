@@ -110,6 +110,39 @@ def decompose(raw):
     return prefixes, root
 
 
+# Kinds whose morpheme is a free word of modern German, and so must NOT take the
+# trailing hyphen that marks a bound morpheme: hyphenating `besser` in
+# `besserstellen` would claim it cannot stand alone, which is false.
+FREE_WORD_KINDS = {"adjective", "noun", "verb"}
+
+
+def display_form(name, kind):
+    """
+    The exact string a subagent should write for this morpheme, hyphen included.
+
+    Precomputed because inferring it cost three shard-runs on 2026-07-21, each of
+    which reported the same defect: the brief keyed the rule on `kind == "prefix"`,
+    which is the default assigned above for the 13 inseparables and therefore says
+    nothing about the 233 separable kinds. Agents inferred their way around it and
+    disagreed — 36 hyphenated deictics against 11 bare, and the bare ones produced a
+    bullet reading `- ~dabei~:` directly above a spliced sense reading `~dabei-~
+    marks …`, contradicting itself one clause later.
+
+    The split is bound-versus-free, derived from the 29 shards mined before it was
+    precomputed and confirmed against each morpheme's own sense text:
+
+      hyphen  particle (537 mined uses, 0 bare), deictic (42 of 45 self-hyphenate),
+              fossil, adverb (8 of 9 self-hyphenate), and every inseparable
+      bare    adjective (76 self-bare, 0 self-hyphenated), noun, verb
+
+    `adverb` is the one that looks wrong and is not: the kind is defined as a free
+    modern adverb, but `beiseite`, `quer`, and `weiter` all write themselves
+    `~beiseite-~` in their own sense prose. A shard-run guessed bare from the
+    definition and would have been the fourth agent to invent a different answer.
+    """
+    return f"~{name}-~" if kind not in FREE_WORD_KINDS else f"~{name}~"
+
+
 def build_reading(raw, attrib, morphemes, roots, insep, sep, exemplars):
     """
     Join one reading against the three reuse files, interning each morpheme into
@@ -128,12 +161,14 @@ def build_reading(raw, attrib, morphemes, roots, insep, sep, exemplars):
         key = f"{separability[:5]}:{name}"
         if key not in morphemes:
             entry = {lang: table[lang].get(name) for lang in LANGS}
+            kind = (entry["en"] or {}).get("kind", "prefix")
             morphemes[key] = {
                 "morpheme": name,
                 "separability": separability,
                 # `kind` exists only on the separable side, where "prefix" spans
                 # everything from a grammaticalized preposition to an incorporated noun.
-                "kind": (entry["en"] or {}).get("kind", "prefix"),
+                "kind": kind,
+                "display": display_form(name, kind),
                 "de": entry["de"],
                 "en": entry["en"],
             }
@@ -153,7 +188,11 @@ def build_reading(raw, attrib, morphemes, roots, insep, sep, exemplars):
     # etymology is the article itself, and it wants `full`.
     root_key = f"root:{root}"
     field = "bullet" if prefixes else "full"
-    entry = morphemes.setdefault(root_key, {"morpheme": root})
+    # A root is always a free word, so it is written bare. It carries `display` anyway
+    # because the brief tells subagents the field is the whole rule, and a shard-run on
+    # 2026-07-21 correctly objected that roots lacked it — an exhaustive-sounding rule
+    # with a hole in the data is how the hyphen ambiguity arose in the first place.
+    entry = morphemes.setdefault(root_key, {"morpheme": root, "display": f"~{root}~"})
     for lang in LANGS:
         value = roots[lang].get(root) or {}
         # A root needed both ways inside one shard gets both fields, which is rare

@@ -2,7 +2,7 @@
 """Normalize prefix/particle `senses` to complete sentences, in place.
 
 Consumes and rewrites `verbdata/prefixes-inseparable.json` and
-`verbdata/prefixes-separable.json`. Run once; it is idempotent.
+`verbdata/prefixes-separable.json`. Idempotent: a second run is asserted to be a no-op (see main()).
 
     python3 verbdata/normalize_prefix_senses.py [--dry-run]
 
@@ -69,17 +69,18 @@ FILES = ("verbdata/prefixes-inseparable.json", "verbdata/prefixes-separable.json
 # Finite 3sg verbs that open a predicate sense. Curated from the full observed set;
 # see the module docstring for why -s/-t shape tests are not usable here.
 EN_VERBS = {
-    "adds", "brings", "carries", "conveys", "crosses", "denotes", "derives", "expresses",
-    "forms", "gives", "hands", "implies", "indicates", "intensifies", "intrudes", "is",
-    "keeps", "leads", "lends", "makes", "marks", "moves", "offers", "places", "positions",
-    "presents", "preserves", "promotes", "puts", "reduces", "reverses", "sets", "signals",
-    "stacks", "takes", "turns",
+    "adds", "brings", "carries", "conveys", "crosses", "denotes", "derives", "describes",
+    "expresses", "forms", "gives", "hands", "hardens", "implies", "indicates", "intensifies",
+    "intrudes", "is", "keeps", "leads", "lends", "makes", "marks", "means", "moves", "offers",
+    "places", "points", "positions", "presents", "preserves", "promotes", "puts", "reduces",
+    "refers", "reverses", "sets", "signals", "stacks", "stands", "survives", "takes", "turns",
 }
 DE_VERBS = {
-    "behält", "bewahrt", "bewegt", "bezeichnet", "bietet", "bildet", "bindet", "dringt",
-    "drückt", "führt", "hält", "hebt", "impliziert", "ist", "kehrt", "kennzeichnet",
-    "kreuzt", "legt", "macht", "platziert", "richtet", "stapelt", "steuert", "trägt",
-    "verleiht", "vermittelt", "verortet", "verstärkt", "versammelt", "überlässt",
+    "bedeutet", "behält", "beschreibt", "bewahrt", "bewegt", "bezeichnet", "bietet", "bildet",
+    "bindet", "deutet", "dringt", "drückt", "erzeugt", "führt", "gibt", "hält", "hebt",
+    "impliziert", "ist", "kehrt", "kennzeichnet", "kreuzt", "legt", "macht", "markiert",
+    "platziert", "richtet", "stapelt", "steht", "steuert", "trägt", "verleiht", "vermittelt",
+    "verortet", "verstärkt", "versammelt", "verweist", "wird", "überlässt",
 }
 
 # Morpheme kinds that are bound prefixes/particles, written with a trailing hyphen.
@@ -88,9 +89,56 @@ DE_VERBS = {
 HYPHENATED_KINDS = {"INSEPARABLE", "particle", "deictic", "adverb", "fossil"}
 
 
-def is_sentence(sense):
-    """True if the sense already stands as a complete sentence."""
-    return bool(sense[:1].isupper() and sense.rstrip().endswith("."))
+# Terminal punctuation, optionally followed by a closing quote. A sense may legitimately
+# end on a quoted gloss — `… "there, to that point."` — and testing for a bare final "."
+# reports those as unfinished, which is half of the 2026-07-21 corruption described above.
+TERMINAL = re.compile(r'[.!?][\"“”»]?$')
+
+
+def is_sentence(sense, lang):
+    """True if the sense already stands as a complete sentence.
+
+    Three things this must get right, each of which it got wrong before 2026-07-21:
+
+    * A sense opening with its own morpheme token (`~dahin-~ marks …`) is a sentence.
+      Testing `[:1].isupper()` says otherwise, because the first character is `~`.
+    * A sense closing on a quoted gloss (`… "out."`) is finished. Testing
+      `endswith(".")` says otherwise.
+    * A capitalized *verb-initial* fragment (`Bezeichnet die Bewegung …`, `Means "on it" …`)
+      is NOT a sentence, though it opens uppercase and closes on a period. German and
+      English both allow this shape, and it is exactly the fragment class this script
+      exists to repair, so accepting it silently is how 28 of them survived a run.
+    """
+    t = sense.strip()
+    if not TERMINAL.search(t):
+        return False
+    if t.startswith("~"):
+        return True
+    first = re.split(r"[\s,:;—]+", t)[0].lower().rstrip(".")
+    if first in (EN_VERBS if lang == "en" else DE_VERBS):
+        return False
+    return t[:1].isupper()
+
+
+def terminate(text):
+    """Append a period unless the text already ends in terminal punctuation.
+
+    Unconditionally appending is what turned `… "out."` into `… "out.".` across twelve
+    senses: the old code stripped a trailing "." (a no-op on a string ending in a quote)
+    and then added one back.
+    """
+    text = text.rstrip()
+    return text if TERMINAL.search(text) else f"{text}."
+
+
+def decapitalize(text):
+    """Lowercase a sentence-initial verb that is about to become mid-sentence.
+
+    Only ever applied to the `plain`/`fronted` branches, where `is_predicate` has already
+    matched the opening token against the finite-verb whitelist — so this cannot lowercase
+    a German noun, which would be the obvious way for it to go wrong.
+    """
+    return text[:1].lower() + text[1:] if text else text
 
 
 def is_predicate(sense, lang):
@@ -118,24 +166,27 @@ def is_predicate(sense, lang):
 
 def frame(sense, lang, morpheme, kind):
     """Return the sense as a complete sentence, or unchanged if it already is one."""
-    if is_sentence(sense):
+    if is_sentence(sense, lang):
         return sense
     token = f"~{morpheme}-~" if kind in HYPHENATED_KINDS else f"~{morpheme}~"
-    body = sense.strip().rstrip(".")
+    body = sense.strip()
     kind_of_predicate = is_predicate(sense, lang)
     if kind_of_predicate == "self":
         # Already opens with its own morpheme; it only lacks a terminal period.
-        return f"{body}."
+        return terminate(body)
     if kind_of_predicate == "plain":
-        return f"{token} {body}."
+        # The fragment's opening verb was sentence-initial and so is capitalized; behind
+        # an inserted subject it is mid-sentence. Leaving it produces "~rum-~ Trägt oft
+        # …", which is the `~raus-~ Marks …` defect this script itself shipped in 2026-07.
+        return terminate(f"{token} {decapitalize(body)}")
     if kind_of_predicate == "fronted":
         # "as an inseparable prefix, conveys …" needs the subject set off by a comma.
-        return f"{token}, {body}."
+        return terminate(f"{token}, {decapitalize(body)}")
     # A gloss. Bodies that already carry a colon take the frame without a second one.
     joiner = "" if ":" in body else ":"
     if lang == "en":
-        return f"The sense of {token} here is{joiner} {body}."
-    return f"Die Bedeutung von {token} ist hier{joiner} {body}."
+        return terminate(f"The sense of {token} here is{joiner} {body}")
+    return terminate(f"Die Bedeutung von {token} ist hier{joiner} {body}")
 
 
 def main():
@@ -158,6 +209,12 @@ def main():
                 out = []
                 for sense in senses:
                     framed = frame(sense, lang, morpheme, kind)
+                    # A second pass must be a no-op. Re-framing an already-framed sense is
+                    # what produced "The sense of ~her-~ here is The sense of ~her-~ here is:"
+                    # on 2026-07-21, so the property is asserted rather than trusted.
+                    assert frame(framed, lang, morpheme, kind) == framed, (
+                        f"not idempotent on {lang}/{morpheme}: {sense!r} -> {framed!r}"
+                    )
                     changed += framed != sense
                     kept += framed == sense
                     out.append(framed)

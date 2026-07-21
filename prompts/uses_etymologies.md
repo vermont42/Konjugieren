@@ -481,8 +481,14 @@ by exact equality, so paraphrase, trimming, and retyping all fail it.
   tracked, all with their reasoning in their own docstrings:
   - `verbdata/normalize_prefix_senses.py` — made every prefix sense a complete sentence, so the
     brief's "splice verbatim" is literally executable. It was not: 45% were verb-initial
-    fragments, and every subagent had been inventing its own connective. Idempotent; re-run it
-    after editing any sense.
+    fragments, and every subagent had been inventing its own connective. **Do not run it.** This
+    line used to read "Idempotent; re-run it after editing any sense," and that was tested on
+    2026-07-21 and is false in both halves. A second run re-adds a doubled terminal `.".` to
+    every sense ending in a quoted gloss, and double-prepends its own frame — *"The sense of
+    ~her-~ here is The sense of ~her-~ here is: …"*. It is the source of the 14 malformed senses
+    repaired that day, and it left 28 verb-initial fragments standing, which is the defect it
+    exists to remove. Repair senses by hand until the script is fixed, and validate with
+    `merge_reuse_files.py --validate-only`, which does catch these.
   - `verbdata/sense-exemplars.json` — exemplar verbs per sense, index-parallel, for the
     highest-traffic prefixes. Sense selection was the last underdetermined step. Extend it when a
     run reports a gap; **check index parity against `senses` after editing**, since a short list
@@ -532,6 +538,26 @@ Three things a later pass should know:
 - **About 30 candidates still carry furniture**, the cases where stripping would have reached the
   matched verb. Subagents reject them, which is a visible loss rather than a silent edit. Do not
   "fix" this by loosening the protection.
+- **Separability doublets cannot be filtered in the indexer, and this was measured rather than
+  assumed.** A shard-run on 2026-07-21 observed that the inseparable twin of `durchbrechen` cost it
+  a third of its candidate reading and proposed dropping the class mechanically — `zu durchX`
+  against `durchzuXen`, or an attached finite form in V2. It was implemented and measured, and the
+  precision is not there. A separable verb is *legitimately* contiguous in its infinitive,
+  zu-infinitive, participle, and any verb-final subordinate clause, and the last of those is not
+  mechanically separable from V2 without parsing: `das zulief`, `der teilhat`, and `die
+  hervorbricht` are all one constituent plus a contiguous verb, exactly like `Da durchstach ihn
+  sein Diener`. A first attempt at "attached, finite, not clause-final" dropped 78 candidates and
+  emptied 16 verbs' pools, about half of them real attestations in clauses that happened to be
+  followed by `und` or an em-dash. Narrowing to V2 cut that to 18 drops at **5 true twins** — 28%
+  precision — and the residue included genuine uses plus six `-nd` participles. Patching both
+  classes reaches roughly 60% precision for a net gain of about three correct drops corpus-wide,
+  while still deleting real attestations silently.
+
+  So the doublet stays a **subagent rejection**, with the tells written into MINING_SPEC's
+  rejection list instead. This is the same trade as the furniture rule directly above, and it is
+  worth stating twice: the indexer's job is to be cheap and deterministic, and where a
+  distinction needs syntax it belongs to the reader, not the filter. Do not re-attempt this
+  without a parser.
 - **An indexer change can orphan an already-mined quote, so make indexer changes early.**
   `merge_balanced` pops from per-work queues *after* they are sorted, so a new sort key changes
   which candidates survive `MAX_OCCURRENCES` — not merely their order. When the word-count key

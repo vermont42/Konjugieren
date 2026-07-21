@@ -3233,3 +3233,157 @@ after every one of them. Yield rose from the 53% baseline to 55% overall, with i
 reaching 72%. Concurrency stayed at 2, and there is still no case for raising it: not one of this
 window's fixes came from inspecting code, and none was visible to the validator. They came from
 subagents mentioning that something was awkward.
+
+## The normalizer was the arsonist (2026-07-21)
+
+Five shards mined this morning — 027 through 030 landed, 031 and 032 were still running when the
+window closed — taking the corpus from 27 to 31 of 104. But the shards were not the point. Three
+subagents independently reported the same defect within one hour, and chasing it turned up a script
+whose docstring told future sessions to run it and whose effect was to break the file.
+
+**Three agents, three different answers, one unusable rule.** The brief said to write a morpheme's
+trailing hyphen "when the first element's `kind` is `prefix`." Shard 028 pointed out that `prefix`
+is not one of the seven kinds its own table lists. Shard 030 said the same and proposed listing the
+free-word kinds instead. Shard 029 hit it too and resolved it the *opposite* way, writing deictics
+bare — which produced a bullet reading `- ~dazu~:` directly above a spliced sense reading `~dazu-~
+ist hier: …`, contradicting itself one clause later.
+
+The diagnosis neither agent reached is in `build_mining_shards.py`: `kind` defaults to `"prefix"`
+for the 13 inseparables, which have no `kind` field. So the rule was *literally correct for 13
+morphemes and silent about the other 233*. The mined corpus settled it — particle 537 hyphens to 0
+bare, adjective 0 to 18, deictic split 36/11 — and the deictic split resolves against evidence the
+agents had but did not use: every deictic's own sense text writes itself hyphenated. `adverb` looked
+like it should go bare, since the kind is defined as a free modern adverb, and it does not: 8 of 9
+adverb morphemes write `~beiseite-~`, `~quer-~`, `~weiter-~` in their own prose. An agent guessed
+bare from the definition and would have been the fourth different answer.
+
+The fix was not to reword the rule. It was to **precompute a `display` field** per morpheme and have
+the brief say: write the morpheme exactly as `display` gives it. Same move as the connective fix on
+2026-07-20 — delete the judgment rather than document it. A rule three agents each read differently
+is not a rule.
+
+**Then the normalizer.** Chasing a malformed sense string reported by 028 turned up 14 broken of
+1,418, all English: 12 with a doubled terminal `.".`, 6 with an uppercase word stranded after a
+spliced `~raus-~ Marks…`. Repaired by hand. Then 029 reported a *different* malformation and 030's
+`drauf` senses turned out to be verb-initial fragments — the exact class that
+`normalize_prefix_senses.py` was written on 2026-07-20 to eliminate, and whose entry in
+`uses_etymologies.md` says "Idempotent; re-run it after editing any sense."
+
+It is not idempotent, and it is not safe to re-run. Running it re-added every doubled `.".` and
+double-prepended its own template, producing *"The sense of ~her-~ here is The sense of ~her-~ here
+is: …"*. It fixed none of the 28 surviving fragments. **The script is the source of the defects it
+claims to repair**, and the documentation invites a future session to corrupt the file by following
+it. Reverted from a backup; the 28 fragments and 3 subjectless predicates were then repaired by
+hand, giving every sense the morpheme as its subject.
+
+That claim of idempotence had been sitting in the docs for a day, unexercised. It was only tested
+because a subagent complained about a sentence that would not parse.
+
+**Sense-inventory changes**, all from shard reports: `daran` gained a spatial-contact sense (028,
+via `daranhalten` — every sibling deictic had one and `daran` did not); `drauf` gained a
+non-compositional idiom sense (029, via `draufgehen`/`draufhaben`); `breit` sense 2 was split, because
+it read "flattened by pressure, and figuratively talked round (~breitschlagen~)" and was being
+offered for *breittreten* — a different verb. Exemplars never ship, but a verb named inside a sense
+does, so that bullet would have asserted something false. 30 stale splices across six already-mined
+shards were retrofitted to the repaired text.
+
+Also added to the brief, from 030: **separability doublets are a rejection class of their own.**
+`durchbrechen` is two verbs spelled alike, and 3 of its 5 candidates were the inseparable twin.
+"A different verb that happens to share the form" does not obviously cover the *same* lemma's other
+reading, so the tells are now written down — `zu durchbrechen` against `durchzubrechen`,
+`durchbrochen` against `durchgebrochen`.
+
+**Still open:** `sense_exemplars` covers 13 of 246 morphemes, half of all occurrences. Three reports
+landed in the uncovered half. An authoring pass over the top 15 by occurrence was in flight when the
+window closed. Auto-deriving exemplars from the example verbs already inside sense strings was
+tested and does not work — it nets 172 noisy occurrences, mostly the morpheme naming itself.
+`normalize_prefix_senses.py` needs either a fix or the retraction of its idempotence claim; until
+then it should not be run.
+
+### Addendum: the script had four bugs, not two (2026-07-21)
+
+Josh asked whether to fix or delete `normalize_prefix_senses.py`. Fixed, because the knowledge in
+it — the curated finite-verb whitelists, the subject-first frames, the reasoning about German
+verb-second order — is real and would have to be rebuilt. All four bugs were in one three-line
+function:
+
+```python
+return bool(sense[:1].isupper() and sense.rstrip().endswith("."))
+```
+
+Each half fails in a different direction. A sense opening with its own morpheme (`~dahin-~ marks
+…`) is not "uppercase", so an already-framed sense was misread as a fragment, routed to the
+`self` branch, and had a period appended to a string already ending `."` — the doubled terminal.
+A sense closing on a quoted gloss does not end with `.`, so it failed the terminal test and was
+re-framed — the double-prepend. And a capitalized verb-initial fragment (`Bezeichnet die Bewegung
+…`) passes *both* halves while being exactly the thing the script exists to repair, which is how
+28 of them survived. The whitelists were missing `bedeutet` and `means`, the opening words of the
+most common survivors.
+
+The fourth bug only appeared once the first three were fixed: reframing `Trägt oft einen
+abschätzigen Beiklang …` produced `~rum-~ Trägt oft …`, leaving the verb capitalized
+mid-sentence. That is the `~raus-~ Marks …` defect — so the script generated that class too, and
+would have regenerated it on the next run.
+
+Two guards now: `terminate()` appends a period only when terminal punctuation is absent, and
+`main()` **asserts** that reframing its own output is a no-op. Idempotence was a docstring claim
+for a day and was false; it is now checked on every sense of every run. Three consecutive runs
+rewrite 1, then 0, then 0 — and that single rewrite was a real fragment the hand-repair pass had
+missed, which is the argument for having fixed the script rather than deleting it.
+
+**`.gitignore` had no rule for mined shard output.** All 27 previously-mined `.out.json` were
+tracked; the six from this session were not, because each past session had `git add -f`'d its own
+by hand and this one had not yet. Mined output is authored scholarship and not regenerable, and
+the resume protocol derives remaining work from which `.out.json` exist — so a forgotten add does
+not merely lose the etymologies, it silently reports the shard as unmined and invites a re-mine.
+Now an explicit rule tracks `*.out.json` and keeps `*.in.json` ignored, since inputs are a pure
+build product.
+
+**Exemplar coverage went 13 → 28 morphemes**, 254 insertions and no deletions, index parity
+verified across the whole file. The authoring pass returned a structural finding worth more than
+the entries: three senses it could not exemplify (`hin` 2, `nieder` 2, `hoch` 2) are *register*
+observations sitting in lists whose other members are *semantic*. No verb can discriminate them,
+because they restate a neighbouring sense from a different stylistic angle — so a miner told to
+pick an index will sometimes land there, which is probably a source of the drift the shard reports
+keep describing. Such observations likely belong in `chain` prose, where `durch` already puts its
+separability-doublet note.
+
+**Still open, all from shard reports:** `durch-` lacks a temporal-extension sense (`durchmachen`,
+`durchfüttern`, `durchschlafen` — 031); `be-` lacks a lexicalized-opacity sense, reported
+independently by 027 (`bezeigen`) and 032 (`behalten`, `bekennen`, `bestellen`); `durchschauen`
+may be mismarked separable in `Verbs.xml` when its gloss is the inseparable meaning (031); and
+`durchspielen`'s `tn` carries a stray unbalanced paren (032). 032 also observes that the indexer
+could mechanically drop most inseparable-twin candidates — an accusative object with the prefix
+attached in V2, or `zu durchX` against `durchzuXen` — which cost that shard a third of its
+candidate reading. That one is an indexer change, so per the standing rule it should land before
+more shards, not after.
+
+### The doublet filter that was measured and rejected (2026-07-21)
+
+Shard 032 proposed that the indexer drop inseparable-twin candidates mechanically, since the
+class had cost it a third of its candidate reading. It is a good idea and it does not work, which
+took two implementations to establish.
+
+A separable verb is *legitimately* contiguous in four places: infinitive, zu-infinitive,
+participle, and any verb-final subordinate clause. The first three are mechanical; the fourth is
+not. Testing "attached, finite, and not clause-final" dropped 78 candidates and emptied 16 verbs'
+pools, and sampling showed about half were real — `daß es aufklappte und …` and `Schläge
+abzählte—ach!` are verb-final clauses that simply do not end in punctuation, and `die das
+miterlebt haben` is a participle with no `ge-` infix at all, because *erleben* has none.
+
+Narrowing to the V2 slot — the one position where a separable reading is ungrammatical rather
+than merely unattested — cut it to 18 drops, of which **5 were true twins**. The residue was six
+`-nd` participles and, worse, seven genuine attestations: `das zulief`, `der teilhat`, `die
+hervorbricht` are a relative pronoun plus a contiguous verb, which is indistinguishable from `Da
+durchstach ihn sein Diener` without knowing that the first word is a relative pronoun. One more
+was Kafka's `K.`, whose abbreviation period reads as a clause break and shifted the whole count.
+
+Both residual classes are patchable and it still isn't worth it: roughly 60% precision for a net
+gain of about three correct drops across the entire corpus, against silently deleting real
+attestations. That is the trade the indexer already refuses for extraction furniture, in a
+comment two functions up. Reverted; the tells went into MINING_SPEC's rejection list instead, so
+subagents reject the class visibly. The measurement is recorded in the phase spec so the next
+session does not re-derive it — the proposal is attractive enough that it will be made again.
+
+The general shape, which is the reusable part: the indexer's job is to be cheap and
+deterministic, and a distinction that needs syntax belongs to the reader rather than the filter.

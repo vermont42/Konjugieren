@@ -140,7 +140,7 @@
       "kind": "deictic",
       "chain": "Eine durchsichtige Zusammensetzung aus ~aus~ („aus, heraus“) und ~einander~ („einander“), selbst ~ein~ („eins“) + ~ander~ („anderer“) — wörtlich „aus einander heraus“, daher „auseinander, getrennt“. Das Englische bildet denselben Gedanken aus denselben Teilen in ~one another~ und ~asunder~.",
       "senses": [
-        "Bezeichnet die Trennung: Die Teile geraten voneinander weg (~auseinandernehmen~, ~auseinandergehen~).",
+        "~auseinander-~ bezeichnet die Trennung: Die Teile geraten voneinander weg (~auseinandernehmen~, ~auseinandergehen~).",
         "Von Menschen, die sich voneinander entfernen (~sich auseinanderleben~).",
         "Übertragen von einem Text oder Problem, das zerlegt und analysiert wird (~sich auseinandersetzen~)."
       ],
@@ -268,7 +268,8 @@
       "senses": [
         "Die Bedeutung von ~breit~ ist hier: breit, weit.",
         "Die Bedeutung von ~breit~ ist hier der resultative Rahmen: sich ausbreiten, sich breitmachen (~sich breitmachen~).",
-        "Die Bedeutung von ~breit~ ist hier: durch Druck flach gemacht, übertragen überredet (~breitschlagen~)."
+        "Die Bedeutung von ~breit~ ist hier: durch Druck flach gemacht.",
+        "Die Bedeutung von ~breit~ ist hier übertragen: jemanden durch beharrliches Zureden umstimmen (~breitschlagen~)."
       ],
       "occurrences": 1
     },
@@ -325,7 +326,7 @@
       "kind": "deictic",
       "chain": "Eine durchsichtige Zusammensetzung aus dem Demonstrativum ~da~ („dort“) und ~hin~ („dorthin, vom Sprecher weg“), also „an jenen Ort, dorthin“. Aus der räumlichen Bedeutung entwickelte das Deutsche eine zeitliche — was dahin ist, ist endgültig fort, weshalb ~dahin sein~ „verloren, vorbei“ heißt.",
       "senses": [
-        "Bezeichnet die Bewegung zu einem bereits genannten Ort, „dorthin, bis dahin“.",
+        "~dahin-~ bezeichnet die Bewegung zu einem bereits genannten Ort, „dorthin, bis dahin“.",
         "Zeitlich vom Vergehen und Verschwinden der Zeit (~dahingehen~, ~dahinschwinden~).",
         "Von langsamem Schwinden oder Dahintreiben ohne Ziel (~dahinsiechen~, ~dahinleben~)."
       ],
@@ -377,7 +378,8 @@
       "senses": [
         "~daran-~ bezeichnet das Objekt, auf das Anstrengung oder Aufmerksamkeit gerichtet wird.",
         "~daran-~ kennzeichnet das Herangehen an eine Aufgabe.",
-        "Die Bedeutung von ~daran-~ ist hier: wird umgangssprachlich zu ~dran~ verkürzt."
+        "~daran-~ wird umgangssprachlich zu ~dran~ verkürzt.",
+        "~daran-~ bezeichnet die räumliche Berührung mit der genannten Sache — etwas an sie heran oder an sie anlegend."
       ],
       "occurrences": 3
     },
@@ -485,9 +487,10 @@
       "kind": "deictic",
       "chain": "Umgangssprachliche Kurzform von ~darauf~, also dem Demonstrativum ~da~ („dort“) plus ~auf~, verbunden durch das Binde-~-r-~, das das Deutsche einfügt, sobald ~da~ vor einer vokalisch anlautenden Präposition steht (~darin~, ~darüber~, ~daran~). Es ist ein Pronominaladverb, steht also für „darauf, auf das“ und benennt keine Richtung.",
       "senses": [
-        "Bedeutet „darauf, auf es“ und verweist auf bereits Erwähntes zurück.",
+        "~drauf-~ bedeutet „darauf, auf es“ und verweist auf bereits Erwähntes zurück.",
         "Bei Verben des Aufpralls bezeichnet es das Schlagen von oben auf etwas (~draufschlagen~).",
-        "Gesprochen und umgangssprachlich im Register; die geschriebene Form ist ~darauf-~."
+        "Gesprochen und umgangssprachlich im Register; die geschriebene Form ist ~darauf-~.",
+        "~drauf-~ ist in einigen festen umgangssprachlichen Verben nicht mehr kompositionell: was ~draufgeht~, wird aufgebraucht oder zerstört, und was jemand ~draufhat~, beherrscht er."
       ],
       "occurrences": 8
     },
@@ -904,7 +907,7 @@
       "kind": "deictic",
       "chain": "Eine durchsichtige Zusammensetzung aus ~her-~ („hierher“, Bewegung zum Sprecher hin, aus Ahd. ~hera~, aus dem urgermanischen Demonstrativstamm *~hi-~, aus PIE *~ḱi-~ „dieser“) und ~ab~ („ab, herunter“), also „nach unten und zum Sprecher hin“ — die Bewegung von unten gesehen. Ihr Spiegelbild ist ~hinab~, derselbe Abstieg vom Sprecher weg.",
       "senses": [
-        "Bezeichnet die Abwärtsbewegung, ausgerichtet auf den Sprecher oder den Standpunkt unten.",
+        "~herab-~ bezeichnet die Abwärtsbewegung, ausgerichtet auf den Sprecher oder den Standpunkt unten.",
         "Übertragen von Herablassung und Geringschätzung (~herabsehen~, ~herabsetzen~)."
       ],
       "occurrences": 6
@@ -923,7 +926,7 @@
       "kind": "deictic",
       "chain": "Eine durchsichtige Zusammensetzung aus ~her-~ („hierher“, Bewegung zum Sprecher hin, aus Ahd. ~hera~, aus dem urgermanischen Demonstrativstamm *~hi-~, aus PIE *~ḱi-~ „dieser“) und ~auf~ („auf, hinauf“), also „nach oben und zum Sprecher hin“. Ihr Spiegelbild ist ~hinauf~, dieselbe Bewegung vom Sprecher weg.",
       "senses": [
-        "Bezeichnet die Aufwärtsbewegung, ausgerichtet auf den Sprecher oder den Betrachterstandpunkt.",
+        "~herauf-~ bezeichnet die Aufwärtsbewegung, ausgerichtet auf den Sprecher oder den Betrachterstandpunkt.",
         "Auch von Zeit und Wetter, die heranrücken (~heraufziehen~, von einem Gewitter)."
       ],
       "occurrences": 8
@@ -941,7 +944,7 @@
       "kind": "deictic",
       "chain": "Eine durchsichtige Zusammensetzung aus ~her-~ („hierher“, Bewegung zum Sprecher hin, aus Ahd. ~hera~, aus dem urgermanischen Demonstrativstamm *~hi-~, aus PIE *~ḱi-~ „dieser“) und ~bei~ („bei, nahe“), also „herbei, an diese Stelle“ — eine Bewegung, die in der Nähe des Sprechers endet. Anders als die übrigen ~her-~-Zusammensetzungen benennt sie keine Achse, nur die Ankunft am nahen Punkt.",
       "senses": [
-        "Bezeichnet die Bewegung bis zum Sprecher, „herbei, heran“.",
+        "~herbei-~ bezeichnet die Bewegung bis zum Sprecher, „herbei, heran“.",
         "Oft vom Herbeirufen oder Beschaffen, sodass etwas zur Hand ist (~herbeirufen~, ~herbeischaffen~)."
       ],
       "occurrences": 6
@@ -950,7 +953,7 @@
       "kind": "deictic",
       "chain": "Eine durchsichtige Zusammensetzung aus ~her-~ („hierher“, Bewegung zum Sprecher hin, aus Ahd. ~hera~, aus dem urgermanischen Demonstrativstamm *~hi-~, aus PIE *~ḱi-~ „dieser“) und ~ein~ („ein, hinein“), also „nach innen und zum Sprecher hin“ — die Bewegung dessen, der den Raum betritt, in dem man selbst steht. Ihr Spiegelbild ist ~hinein~, dieselbe Bewegung vom Sprecher weg.",
       "senses": [
-        "Bezeichnet die Bewegung nach innen, ausgerichtet auf den Sprecher.",
+        "~herein-~ bezeichnet die Bewegung nach innen, ausgerichtet auf den Sprecher.",
         "Übertragen vom Hineinziehen in eine meist unerwünschte Lage (~hereinlegen~, „übers Ohr hauen“)."
       ],
       "occurrences": 8
@@ -979,7 +982,7 @@
       "kind": "deictic",
       "chain": "Eine durchsichtige Zusammensetzung aus ~her-~ („hierher“, Bewegung zum Sprecher hin, aus Ahd. ~hera~, aus dem urgermanischen Demonstrativstamm *~hi-~, aus PIE *~ḱi-~ „dieser“) und ~vor~ („vor, vorn“, aus Ahd. ~fora~, aus PIE *~per-~ „vorwärts, vorn“), zusammen „hervor und zum Sprecher hin“ — hinter oder unter etwas heraus, ins Blickfeld.",
       "senses": [
-        "Bezeichnet das Heraustreten ins Blickfeld, „hervor, heraus aus“.",
+        "~hervor-~ bezeichnet das Heraustreten ins Blickfeld, „hervor, heraus aus“.",
         "Übertragen vom Herausragen oder Ins-Bewusstsein-Rücken (~hervorheben~, ~hervorragen~)."
       ],
       "occurrences": 8
@@ -1036,7 +1039,7 @@
       "kind": "deictic",
       "chain": "Eine durchsichtige Zusammensetzung aus ~hin-~ („dorthin“, Bewegung vom Sprecher weg) und ~auf~ („auf, hinauf“), also „nach oben und vom Sprecher weg“ — der Aufstieg von unten gesehen. Ihr Spiegelbild ist ~herauf~, derselbe Aufstieg zum Sprecher hin.",
       "senses": [
-        "Bezeichnet die Aufwärtsbewegung, vom Sprecher weg ausgerichtet.",
+        "~hinauf-~ bezeichnet die Aufwärtsbewegung, vom Sprecher weg ausgerichtet.",
         "Auch vom Hinaufsetzen einer Skala oder Strecke (~hinaufsetzen~, von Preisen)."
       ],
       "occurrences": 5
@@ -1095,7 +1098,7 @@
       "kind": "deictic",
       "chain": "Eine durchsichtige Zusammensetzung aus ~hin-~ („dorthin“, Bewegung vom Sprecher weg) und ~unter~ („unter, unterhalb“), also „nach unten und vom Sprecher weg“ — der Abstieg von oben gesehen. Ihr Spiegelbild ist ~herunter~, derselbe Abstieg zum Sprecher hin; das umgangssprachliche ~runter~ ersetzt beide.",
       "senses": [
-        "Bezeichnet die Abwärtsbewegung, vom Sprecher weg ausgerichtet.",
+        "~hinunter-~ bezeichnet die Abwärtsbewegung, vom Sprecher weg ausgerichtet.",
         "Beim Schlucken geht die Speise hinunter und weg (~hinunterschlucken~)."
       ],
       "occurrences": 6
@@ -1104,7 +1107,7 @@
       "kind": "deictic",
       "chain": "Eine durchsichtige Zusammensetzung aus ~hin-~ („dorthin“, Bewegung vom Sprecher weg) und ~weg~ („fort“), wobei die beiden Elemente einander verstärken: eine Bewegung fort und weg, ohne Rückkehr. Die Betonung unterscheidet die Partikel ~hinwég-~ vom Substantiv-Adverb ~Hínweg~ („der Weg dorthin“).",
       "senses": [
-        "Bezeichnet die Bewegung fort und weg, über etwas hinüber und vorbei.",
+        "~hinweg-~ bezeichnet die Bewegung fort und weg, über etwas hinüber und vorbei.",
         "Übertragen vom Übergehen und Beiseiteschieben eines Hindernisses oder Einwands (~sich hinwegsetzen~, ~hinwegtäuschen~)."
       ],
       "occurrences": 5
@@ -1498,7 +1501,7 @@
       "kind": "deictic",
       "chain": "Umgangssprachliche Kurzform von ~heraus~ („heraus, zum Sprecher hin“) und in der Alltagssprache ebenso von ~hinaus~ („hinaus, vom Sprecher weg“): Die verkürzte Form hat den deiktischen Gegensatz verloren, den die beiden Vollformen tragen. Die geschriebene Standardsprache verwendet ~heraus-~ oder ~hinaus-~.",
       "senses": [
-        "Bezeichnet die Bewegung nach außen, „heraus, hinaus“.",
+        "~raus-~ bezeichnet die Bewegung nach außen, „heraus, hinaus“.",
         "Deiktisch neutral, anders als die Vollformen, die sie ersetzt: Sie dient für die Bewegung sowohl zum Sprecher hin als auch von ihm weg.",
         "Gesprochen und umgangssprachlich im Register."
       ],
@@ -1546,8 +1549,8 @@
       "kind": "deictic",
       "chain": "Umgangssprachliche Kurzform von ~herum~ („herum, ringsum“), selbst ~her-~ + ~um~. Die Verkürzung bleibt auf die gesprochene Sprache und informelles Schreiben beschränkt; die standardsprachliche Zusammensetzung lautet ~herum-~.",
       "senses": [
-        "Bezeichnet die kreisende oder ziellose Bewegung, „herum, ringsum“.",
-        "Trägt oft einen abschätzigen Beiklang der Ziellosigkeit (~rumsitzen~, ~rumlaufen~).",
+        "~rum-~ bezeichnet die kreisende oder ziellose Bewegung, „herum, ringsum“.",
+        "~rum-~ trägt oft einen abschätzigen Beiklang der Ziellosigkeit (~rumsitzen~, ~rumlaufen~).",
         "Gesprochen und umgangssprachlich im Register."
       ],
       "occurrences": 6
@@ -1565,7 +1568,7 @@
       "kind": "deictic",
       "chain": "Umgangssprachliche Kurzform von ~herunter~ („herunter, zum Sprecher hin“) und in der Alltagssprache ebenso von ~hinunter~ („hinunter, vom Sprecher weg“), sodass die verkürzte Form beide Richtungen abdeckt, die die Vollformen unterscheiden. Die geschriebene Standardsprache verwendet ~herunter-~ oder ~hinunter-~.",
       "senses": [
-        "Bezeichnet die Bewegung nach unten, „herunter, hinunter“.",
+        "~runter-~ bezeichnet die Bewegung nach unten, „herunter, hinunter“.",
         "Deiktisch neutral, anders als die Vollformen, die sie ersetzt.",
         "Gesprochen und umgangssprachlich im Register."
       ],
@@ -1890,8 +1893,8 @@
       "kind": "deictic",
       "chain": "Eine durchsichtige Zusammensetzung aus ~vor~ („vor, vorn“, aus Ahd. ~fora~, aus PIE *~per-~) und ~an~ („an, auf“), zusammen „vorn und weiter drängend“, also „voran, vorwärts“. Vom bloßen ~vor-~ unterscheidet es sich durch den Sinn des fortgesetzten Fortschritts.",
       "senses": [
-        "Bezeichnet die Stellung an der Spitze, das Vorangehen (~vorangehen~).",
-        "Bezeichnet den Fortschritt, das Weiterkommen statt bloßen Vornseins (~vorankommen~, ~vorantreiben~)."
+        "~voran-~ bezeichnet die Stellung an der Spitze, das Vorangehen (~vorangehen~).",
+        "~voran-~ bezeichnet den Fortschritt, das Weiterkommen statt bloßen Vornseins (~vorankommen~, ~vorantreiben~)."
       ],
       "occurrences": 6
     },
@@ -1909,7 +1912,7 @@
       "kind": "deictic",
       "chain": "Eine durchsichtige Zusammensetzung aus ~vor~ („vor, vorn“) und ~bei~ („bei, nahe“): Etwas zieht vorn und dicht vorüber, daher „vorbei“. Wie ~dahin~ nahm es eine zeitliche Bedeutung an — ~vorbei~ allein heißt „aus, zu Ende“.",
       "senses": [
-        "Bezeichnet die Bewegung an etwas vorüber, ohne anzuhalten.",
+        "~vorbei-~ bezeichnet die Bewegung an etwas vorüber, ohne anzuhalten.",
         "Vom kurzen Besuch, vom Hereinschauen (~vorbeikommen~, ~vorbeischauen~).",
         "Vom Verfehlen eines Ziels, am Ziel vorbei statt hinein (~vorbeischießen~, ~vorbeireden~)."
       ],
@@ -2423,7 +2426,7 @@
       "kind": "deictic",
       "chain": "A transparent compound of ~aus~ (\"out\") and ~einander~ (\"one another\"), itself ~ein~ (\"one\") + ~ander~ (\"other\") — literally \"out of one another,\" hence \"apart, asunder.\" English builds the same idea from the same pieces in ~one another~ and ~asunder~.",
       "senses": [
-        "Marks separation: the parts end up away from each other (~auseinandernehmen~, ~auseinandergehen~).",
+        "~auseinander-~ marks separation: the parts end up away from each other (~auseinandernehmen~, ~auseinandergehen~).",
         "Of people, drifting or falling apart (~sich auseinanderleben~).",
         "Figuratively, of a text or a problem taken apart and analyzed (~sich auseinandersetzen~)."
       ],
@@ -2551,7 +2554,8 @@
       "senses": [
         "The sense of ~breit~ here is: broad, wide.",
         "The sense of ~breit~ here is the resultative frame: to spread out, to sprawl (~sich breitmachen~).",
-        "The sense of ~breit~ here is: flattened by pressure, and figuratively talked round (~breitschlagen~)."
+        "The sense of ~breit~ here is: flattened by pressure.",
+        "The sense of ~breit~ here is figurative: to talk someone round by persistent urging (~breitschlagen~)."
       ],
       "occurrences": 1
     },
@@ -2599,7 +2603,7 @@
       "chain": "The pronominal adverb ~da~ (\"there\") + ~her~ (\"toward the speaker\"), literally \"from there, hither.\" The deictic contrast that governs this whole group is that ~her-~ points toward the speaker and ~hin-~ away from the speaker. Alongside the spatial sense it carries a causal one, \"hence, therefore\"; in verbs such as ~daherkommen~ and ~daherreden~ the spatial reading dominates, often with a dismissive tinge.",
       "senses": [
         "The sense of ~daher-~ here is: motion from there toward the speaker.",
-        "The sense of ~daher-~ here is: often adds a dismissive or aimless tone to the action.",
+        "~daher-~ often adds a dismissive or aimless tone to the action.",
         "The sense of ~daher-~ here is: in its causal sense, \"hence, for that reason\"."
       ],
       "occurrences": 3
@@ -2608,7 +2612,7 @@
       "kind": "deictic",
       "chain": "A transparent compound of the demonstrative ~da~ (\"there\") and ~hin~ (\"thither, away from the speaker\"), so \"to that place, thither.\" From the spatial sense German developed a temporal one — what has gone thither is gone for good, which is why ~dahin sein~ means \"to be finished, lost, done for.\"",
       "senses": [
-        "~dahin-~ Marks motion toward a place already named, \"there, to that point.\".",
+        "~dahin-~ marks motion toward a place already named, \"there, to that point.\"",
         "Temporally, of time passing and being gone (~dahingehen~, ~dahinschwinden~).",
         "Of a slow wasting or drifting, with no goal in view (~dahinsiechen~, ~dahinleben~)."
       ],
@@ -2660,7 +2664,8 @@
       "senses": [
         "~daran-~ marks the object to which effort or attention is applied.",
         "~daran-~ marks the setting-about of a task.",
-        "~daran-~ reduces colloquially to ~dran~."
+        "~daran-~ reduces colloquially to ~dran~.",
+        "~daran-~ marks spatial contact with the thing referred to — holding or placing something up against it."
       ],
       "occurrences": 3
     },
@@ -2740,7 +2745,7 @@
       "senses": [
         "~dazwischen-~ intrudes into something already under way.",
         "~dazwischen-~ positions something in the space between two others.",
-        "The sense of ~dazwischen-~ here is: often implies interruption or interference."
+        "~dazwischen-~ often implies interruption or interference."
       ],
       "occurrences": 3
     },
@@ -2768,9 +2773,10 @@
       "kind": "deictic",
       "chain": "A colloquial contraction of ~darauf~, which is the demonstrative ~da~ (\"there\") plus ~auf~ (\"on\"), joined by the linking ~-r-~ that German inserts whenever ~da~ precedes a vowel-initial preposition (~darin~, ~darüber~, ~daran~). It is a pronominal adverb, standing in for \"on it, on that\" rather than naming a direction.",
       "senses": [
-        "Means \"on it, onto it,\" pointing back at something already mentioned.",
+        "~drauf-~ means \"on it, onto it,\" pointing back at something already mentioned.",
         "In verbs of impact it means striking down onto something (~draufschlagen~).",
-        "Spoken and informal in register; the written form is ~darauf-~."
+        "Spoken and informal in register; the written form is ~darauf-~.",
+        "~drauf-~ is no longer compositional in a few fixed colloquial verbs: what ~draufgeht~ is used up or destroyed, and what someone ~draufhat~ they have mastered."
       ],
       "occurrences": 8
     },
@@ -2871,7 +2877,7 @@
       "kind": "fossil",
       "chain": "A frozen prepositional phrase: from MHG ~enbor~, ~embor~, from ~in bor~ (\"into the height\"), with OHG ~bor~ (\"height, upper space\"), a noun belonging to Proto-Germanic *~beraną~ (\"to bear, carry, lift\"). The ~-nb-~ assimilated to ~-mp-~, as in ~Wimper~, and the phrase hardened into a single adverb. The height, in other words, is what has been lifted up: the same root as English ~bear~ and ~birth~.",
       "senses": [
-        "~empor-~ means upward motion, \"aloft, up on high.\".",
+        "~empor-~ means upward motion, \"aloft, up on high.\"",
         "It belongs to elevated and literary register; everyday German prefers ~hoch-~ or ~hinauf-~.",
         "Figuratively it marks rising in rank, standing, or fortune."
       ],
@@ -3178,7 +3184,7 @@
       "chain": "From MHG ~her~, from OHG ~hera~, belonging to the Germanic deictic stem *~hi-~ (\"this, here\"), from PIE *~ḱi-~ (\"this, here\") — the same stem that yields ~hier~ and ~heute~ (\"this day\"). Cognate with English ~here~ and, through the same demonstrative, English ~he~.",
       "senses": [
         "~her-~ marks motion toward the speaker — \"hither\" — and is the exact counterpart of ~hin-~, which marks motion away from the speaker. This opposition is the organizing fact of the whole deictic group.",
-        "The sense of ~her-~ here is: It can also point backward in time, meaning \"from then until now.\".",
+        "The sense of ~her-~ here is: It can also point backward in time, meaning \"from then until now.\"",
         "It is the first element of the compound particles ~heraus~, ~herein~, ~herunter~, ~herum~, ~heran~, ~herüber~, and of their colloquial contractions ~raus~, ~rein~, ~runter~, ~rum~, ~ran~, ~rüber~."
       ],
       "occurrences": 19
@@ -3187,7 +3193,7 @@
       "kind": "deictic",
       "chain": "A transparent compound of ~her-~ (\"hither,\" marking motion toward the speaker, from OHG ~hera~, from the Proto-Germanic deictic stem *~hi-~, from PIE *~ḱi-~ \"this\") and ~ab~ (\"off, down\"), so \"downward and toward the speaker\" — the motion seen from below. Its mirror image is ~hinab~, the same descent away from the speaker.",
       "senses": [
-        "Marks downward motion oriented toward the speaker or the vantage point below.",
+        "~herab-~ marks downward motion oriented toward the speaker or the vantage point below.",
         "Figuratively, of condescension or disparagement, looking down on someone (~herabsehen~, ~herabsetzen~)."
       ],
       "occurrences": 6
@@ -3206,7 +3212,7 @@
       "kind": "deictic",
       "chain": "A transparent compound of ~her-~ (\"hither,\" marking motion toward the speaker, from OHG ~hera~, from the Proto-Germanic deictic stem *~hi-~, from PIE *~ḱi-~ \"this\") and ~auf~ (\"up, onto\"), so \"upward and toward the speaker.\" Its mirror image is ~hinauf~, the same motion away from the speaker.",
       "senses": [
-        "Marks upward motion oriented toward the speaker or the vantage point.",
+        "~herauf-~ marks upward motion oriented toward the speaker or the vantage point.",
         "Also of time and weather moving in on one (~heraufziehen~, of a storm)."
       ],
       "occurrences": 8
@@ -3224,7 +3230,7 @@
       "kind": "deictic",
       "chain": "A transparent compound of ~her-~ (\"hither,\" marking motion toward the speaker, from OHG ~hera~, from the Proto-Germanic deictic stem *~hi-~, from PIE *~ḱi-~ \"this\") and ~bei~ (\"by, near\"), so \"hither, to this spot\" — motion that ends up close to the speaker. Unlike the other ~her-~ compounds it names no axis, only arrival at the near point.",
       "senses": [
-        "~herbei-~ Marks motion up to the speaker, \"over here, near.\".",
+        "~herbei-~ marks motion up to the speaker, \"over here, near.\"",
         "Often of summoning or fetching something so that it is at hand (~herbeirufen~, ~herbeischaffen~)."
       ],
       "occurrences": 6
@@ -3233,7 +3239,7 @@
       "kind": "deictic",
       "chain": "A transparent compound of ~her-~ (\"hither,\" marking motion toward the speaker, from OHG ~hera~, from the Proto-Germanic deictic stem *~hi-~, from PIE *~ḱi-~ \"this\") and ~ein~ (\"in, into\"), so \"inward and toward the speaker\" — the movement of someone entering the room one is standing in. Its mirror image is ~hinein~, the same motion away from the speaker.",
       "senses": [
-        "Marks inward motion oriented toward the speaker.",
+        "~herein-~ marks inward motion oriented toward the speaker.",
         "Figuratively, of drawing someone into a situation, often an unwelcome one (~hereinlegen~, \"to take in, to dupe\")."
       ],
       "occurrences": 8
@@ -3262,7 +3268,7 @@
       "kind": "deictic",
       "chain": "A transparent compound of ~her-~ (\"hither,\" marking motion toward the speaker, from OHG ~hera~, from the Proto-Germanic deictic stem *~hi-~, from PIE *~ḱi-~ \"this\") and ~vor~ (\"before, in front,\" from OHG ~fora~, from PIE *~per-~ \"forward, in front\"), together \"forth and toward the speaker\" — out from behind or beneath something, into view.",
       "senses": [
-        "~hervor-~ Marks emergence into view, \"forth, out from.\".",
+        "~hervor-~ marks emergence into view, \"forth, out from.\"",
         "Figuratively, of something standing out or being brought to notice (~hervorheben~, ~hervorragen~)."
       ],
       "occurrences": 8
@@ -3319,7 +3325,7 @@
       "kind": "deictic",
       "chain": "A transparent compound of ~hin-~ (\"thither,\" marking motion away from the speaker) and ~auf~ (\"up, onto\"), so \"upward and away from the speaker\" — the climb seen from the bottom. Its mirror image is ~herauf~, the same ascent toward the speaker.",
       "senses": [
-        "Marks upward motion oriented away from the speaker.",
+        "~hinauf-~ marks upward motion oriented away from the speaker.",
         "Also of extending a scale or a stretch upward (~hinaufsetzen~, of prices)."
       ],
       "occurrences": 5
@@ -3378,7 +3384,7 @@
       "kind": "deictic",
       "chain": "A transparent compound of ~hin-~ (\"thither,\" marking motion away from the speaker) and ~unter~ (\"under, below\"), so \"downward and away from the speaker\" — the descent seen from above. Its mirror image is ~herunter~, the same descent toward the speaker; colloquial ~runter~ replaces both.",
       "senses": [
-        "Marks downward motion oriented away from the speaker.",
+        "~hinunter-~ marks downward motion oriented away from the speaker.",
         "Of swallowing, the food goes down and away (~hinunterschlucken~)."
       ],
       "occurrences": 6
@@ -3387,7 +3393,7 @@
       "kind": "deictic",
       "chain": "A transparent compound of ~hin-~ (\"thither,\" marking motion away from the speaker) and ~weg~ (\"away\"), the two elements reinforcing each other: motion off and away, with no return implied. The stress distinguishes the particle ~hinwég-~ from the noun-derived adverb ~Hínweg~ (\"the way there\").",
       "senses": [
-        "Marks motion away and off, over and past something.",
+        "~hinweg-~ marks motion away and off, over and past something.",
         "Figuratively, of overriding or brushing aside an obstacle or an objection (~sich hinwegsetzen~, ~hinwegtäuschen~)."
       ],
       "occurrences": 5
@@ -3579,10 +3585,10 @@
       "kind": "particle",
       "chain": "From the adjective ~los~ (\"loose, free, unattached\"), from MHG ~lōs~, from OHG ~lōs~, from Proto-West Germanic *~laus~, from Proto-Germanic *~lausaz~, probably from PIE *~lewH-~ (\"to cut off, loosen\"). Cognate with English ~loose~ and Dutch ~los~. The German suffix ~-los~ and the English suffix ~-less~ are this same adjective, worn down into a bound ending.",
       "senses": [
-        "The sense of ~los-~ here is As a particle ~los-~ most often marks inception: ~loslaufen~ is not \"to run loose\" but \"to start running.\".",
+        "The sense of ~los-~ here is: as a particle ~los-~ most often marks inception: ~loslaufen~ is not \"to run loose\" but \"to start running.\"",
         "It also keeps its literal adjectival sense of releasing, loosening, or detaching something.",
         "It can mark separation from a fixed point, of a vehicle or a rope being let go.",
-        "The sense of ~los-~ here is As a bare imperative, ~los!~ survives on its own: \"go, get on with it.\"."
+        "The sense of ~los-~ here is: as a bare imperative, ~los!~ survives on its own: \"go, get on with it.\""
       ],
       "occurrences": 16
     },
@@ -3781,7 +3787,7 @@
       "kind": "deictic",
       "chain": "A colloquial contraction of ~heraus~ (\"out hither, out toward the speaker\"), and in everyday speech of ~hinaus~ (\"out thither\") as well: the reduced form has lost the deictic contrast that the two full forms carry. Written standard German uses the unreduced ~heraus-~ or ~hinaus-~.",
       "senses": [
-        "~raus-~ Marks outward motion, \"out.\".",
+        "~raus-~ marks outward motion, \"out.\"",
         "Deictically neutral, unlike the full forms it replaces: it serves for motion both toward and away from the speaker.",
         "Spoken and informal in register."
       ],
@@ -3829,7 +3835,7 @@
       "kind": "deictic",
       "chain": "A colloquial contraction of ~herum~ (\"around, about\"), itself ~her-~ + ~um~. The reduction is confined to speech and informal writing; the standard compound is ~herum-~.",
       "senses": [
-        "~rum-~ Marks circular or aimless motion, \"around, about.\".",
+        "~rum-~ marks circular or aimless motion, \"around, about.\"",
         "Often carries a dismissive tint of purposelessness (~rumsitzen~, ~rumlaufen~).",
         "Spoken and informal in register."
       ],
@@ -3848,7 +3854,7 @@
       "kind": "deictic",
       "chain": "A colloquial contraction of ~herunter~ (\"down hither\"), and in everyday speech of ~hinunter~ (\"down thither\") as well, so that the reduced form covers both directions the full forms distinguish. Written standard German uses ~herunter-~ or ~hinunter-~.",
       "senses": [
-        "~runter-~ Marks downward motion, \"down.\".",
+        "~runter-~ marks downward motion, \"down.\"",
         "Deictically neutral, unlike the full forms it replaces.",
         "Spoken and informal in register."
       ],
@@ -4086,7 +4092,7 @@
       "senses": [
         "In a resultative compound ~tot-~ names the end state: the action is carried on until the object is dead — ~totschlagen~ is to beat someone to death.",
         "It is very often hyperbolic rather than literal, as of laughing or working oneself to death.",
-        "The sense of ~tot~ here is: Applied to things it means \"deadened, silenced, put out of use.\"."
+        "The sense of ~tot~ here is: Applied to things it means \"deadened, silenced, put out of use.\""
       ],
       "occurrences": 13
     },
@@ -4173,8 +4179,8 @@
       "kind": "deictic",
       "chain": "A transparent compound of ~vor~ (\"before, in front,\" from OHG ~fora~, from PIE *~per-~) and ~an~ (\"on, at\"), together \"out in front and pressing on,\" hence \"ahead, forward, onward.\" It differs from bare ~vor-~ in adding the sense of continued progress.",
       "senses": [
-        "Marks position at the head of something, going first (~vorangehen~).",
-        "Marks progress, the thing advancing rather than merely being in front (~vorankommen~, ~vorantreiben~)."
+        "~voran-~ marks position at the head of something, going first (~vorangehen~).",
+        "~voran-~ marks progress, the thing advancing rather than merely being in front (~vorankommen~, ~vorantreiben~)."
       ],
       "occurrences": 6
     },
@@ -4184,7 +4190,7 @@
       "senses": [
         "~voraus-~ means going on ahead of others in space.",
         "More often it is temporal: doing something in advance, before the fact.",
-        "The sense of ~voraus-~ here is: In ~vorausgesetzt~ it has hardened into a fixed sense, \"presupposed, granted that.\"."
+        "The sense of ~voraus-~ here is: In ~vorausgesetzt~ it has hardened into a fixed sense, \"presupposed, granted that.\""
       ],
       "occurrences": 12
     },
@@ -4192,7 +4198,7 @@
       "kind": "deictic",
       "chain": "A transparent compound of ~vor~ (\"before, in front\") and ~bei~ (\"by, near\"): something passes in front of and close by, hence \"past, by.\" Like ~dahin~ it took on a temporal sense — ~vorbei~ alone means \"over, finished.\"",
       "senses": [
-        "Marks motion past something without stopping.",
+        "~vorbei-~ marks motion past something without stopping.",
         "Of a brief visit, dropping by (~vorbeikommen~, ~vorbeischauen~).",
         "Of missing a target, going past rather than into it (~vorbeischießen~, ~vorbeireden~)."
       ],

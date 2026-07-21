@@ -1,0 +1,319 @@
+{
+  "bezaubern": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~zaubern~:\n\n- ~zaubern~: Aus Mhd. ~zoubern~, aus Ahd. ~zouberōn~, ~zoubarōn~, aus proto-westgermanisch *~taubrōn~, aus urgermanisch *~taubrōną~, abgeleitet von *~taubrą~ („Magie, Zauberei“), das von unsicherer weiterer Herkunft ist, vielleicht zu *~tawjaną~ („machen, bereiten“). Verwandt mit englisch ~tiver~, niederländisch ~toveren~, altnordisch ~taufr~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ macht ein intransitives Verb transitiv und richtet die Handlung auf ein Objekt.\n\nDas Kompositum ist ursprünglich wörtlich zu nehmen — jemanden mit Zauber belegen —, und erst die Abschwächung vom Behexen zum Entzücken macht ~bezaubernd~ zu einem Kompliment.",
+      "en": "An inseparable compound of ~be-~ + ~zaubern~:\n\n- ~zaubern~: From MHG ~zoubern~, from OHG ~zouberōn~, ~zoubarōn~, from Proto-West Germanic *~taubrōn~, from Proto-Germanic *~taubrōną~, derived from *~taubrą~ (\"magic, sorcery\"), which is of uncertain further origin, perhaps linked to *~tawjaną~ (\"to make, prepare\"). Cognate with English ~tiver~, Dutch ~toveren~, Old Norse ~taufr~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ makes an intransitive verb transitive, directing the action at an object.\n\nThe compound was originally literal — to lay magic on someone — and only the weakening from bewitching to delighting turns ~bezaubernd~ into a compliment."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Es war aber ein Mann, mit Namen Simon, der zuvor in der Stadt Zauberei trieb und bezauberte das samaritische Volk und gab vor, er wäre etwas Großes.",
+        "source": "Luther — Bibel"
+      },
+      "en": {
+        "sentence": "But there was a man named Simon, who had previously practiced sorcery in the city and bewitched the Samaritan people, giving out that he was someone great.",
+        "source": "Luther — Bibel"
+      }
+    },
+    "notes": null
+  },
+  "bezeigen": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~zeigen~:\n\n- ~zeigen~: Aus Mhd. ~zeigen~, aus Ahd. ~zeigōn~, aus proto-westgermanisch *~taigōn~, möglicherweise aus urgermanisch *~taikōną~ (iterativ), einer Intensivableitung von Ahd. ~zīhan~ („beschuldigen“), letztlich aus PIE *~deyḱ-~ („hinweisen, zeigen“), woraus auch ~Zeichen~ und englisch ~teach~. Im Neuhochdeutschen absorbierte es das unverwandte Mhd. ~zöugen~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ verleiht der Grundhandlung Gründlichkeit oder Vollständigkeit.\n\n~bezeigen~ ist heute fast nur noch in gehobenen und reflexiven Wendungen lebendig, in denen man sich dankbar oder erkenntlich ~bezeigt~; sonst hat das schlichte ~zeigen~ es verdrängt. Trotz der Ähnlichkeit hat es mit ~bezeugen~ nichts gemein: dieses gehört zu PIE *~dewk-~ („ziehen“), jenes zu *~deyḱ-~ („hinweisen“).",
+      "en": "An inseparable compound of ~be-~ + ~zeigen~:\n\n- ~zeigen~: From MHG ~zeigen~, from OHG ~zeigōn~, from Proto-West Germanic *~taigōn~, possibly from Proto-Germanic *~taikōną~ (iterative), an intensive derivative of OHG ~zīhan~ (\"to accuse\"), ultimately from PIE *~deyḱ-~ (\"to point out, show\"), whence also ~Zeichen~ (\"sign\") and English ~teach~. In Modern German it absorbed the unrelated MHG ~zöugen~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ adds thoroughness or completeness to the base action.\n\n~bezeigen~ survives today mainly in elevated and reflexive turns of phrase, where one ~bezeigt~ oneself grateful or obliged; elsewhere plain ~zeigen~ has crowded it out. Despite the resemblance it shares nothing with ~bezeugen~: that verb belongs to PIE *~dewk-~ (\"to pull\"), this one to *~deyḱ-~ (\"to point out\")."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Am andern Morgen sprach die Frau: »Die kleinen Männer haben uns reich gemacht, wir müßten uns doch dankbar dafür bezeigen.",
+        "source": "Grimm — Märchen"
+      },
+      "en": {
+        "sentence": "The next morning the woman said: \"The little men have made us rich; we really ought to show our gratitude for it.\"",
+        "source": "Grimm — Märchen"
+      }
+    },
+    "notes": "sense 4 is the closest fit rather than a clean one — ~bezeigen~ intensifies an already transitive ~zeigen~ rather than adding an object, and no sense covers that squarely."
+  },
+  "bezeugen": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~zeugen~:\n\n- ~zeugen~: Aus Mhd. ~ziugen~, aus Ahd. ~giziugon~, von ~ziug~ („Ausrüstung, Gerät“), aus proto-westgermanisch *~teug~, urgermanisch *~teugą~, verwandt mit *~teuhaną~ („ziehen“), aus PIE *~dewk-~ („ziehen, führen“). Ursprünglich „hervorbringen mit Werkzeug“; daraus „zeugen“ und „bezeugen“. Verwandt mit englisch ~tug~, niederländisch ~tuig~, altnordisch ~tygi~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ hebt das, was das Grundverb mit einer Präposition oder im Dativ regiert, zum Akkusativobjekt.\n\nDas Grundverb regiert seinen Gegenstand mit ~von~ — man ~zeugt von~ etwas —, und die Präfigierung hebt ihn zum Akkusativobjekt: etwas ~bezeugen~. Dass die Wurzel „ziehen, mit Gerät hervorbringen“ meinte, passt zum Zeugen, der Beweise hervorbringt.",
+      "en": "An inseparable compound of ~be-~ + ~zeugen~:\n\n- ~zeugen~: From MHG ~ziugen~, from OHG ~giziugon~, from ~ziug~ (\"equipment, gear\"), from Proto-West Germanic *~teug~, Proto-Germanic *~teugą~, related to *~teuhaną~ (\"to pull\"), from PIE *~dewk-~ (\"to pull, lead\"). Originally \"to bring forth using tools\"; hence \"to beget\" and \"to testify.\" Cognate with English ~tug~, Dutch ~tuig~, Old Norse ~tygi~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ promotes what the base verb governs with a preposition or in the dative to a direct object.\n\nThe base verb reaches its object through ~von~ — one ~zeugt von~ something — and the prefixed verb takes that object directly: to ~bezeugen~ a thing. That the root meant pulling, or bringing forth with tools, suits a witness, who brings evidence forth."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Und dass ich so viel bezeuge, ist mir noch nicht genug.",
+        "source": "Nietzsche — Also sprach Zarathustra"
+      },
+      "en": {
+        "sentence": "And that I bear witness to so much is still not enough for me.",
+        "source": "Nietzsche — Also sprach Zarathustra"
+      }
+    },
+    "notes": null
+  },
+  "bezwingen": {
+    "etymology": {
+      "de": "Untrennbares Kompositum aus ~be-~ + ~zwingen~:\n\n- ~zwingen~: Aus Mhd. ~twingen~, aus Ahd. ~dwingan~, aus urgermanisch *~þwinganą~, *~þwinhaną~; die scheinbar dreifache Verschiebung ~þ~ → ~d~ → ~t~ → ~z~ ist regulär für Wörter mit Ahd. ~dw-~ und ~tw-~, vergleiche ~Zwerg~. Ein starkes Verb der Klasse III (~zwingen~, ~zwang~, ~gezwungen~). Verwandt mit niederländisch ~dwingen~, schwedisch ~tvinga~, isländisch ~þvinga~, englisch ~twinge~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ verleiht der Grundhandlung Gründlichkeit oder Vollständigkeit.\n\n~zwingen~ nötigt jemanden zu etwas; ~bezwingen~ führt die Nötigung zu Ende, sodass der Gegner, der Berg oder die eigene Regung wirklich unterliegt.",
+      "en": "An inseparable compound of ~be-~ + ~zwingen~:\n\n- ~zwingen~: From MHG ~twingen~, from OHG ~dwingan~, from Proto-Germanic *~þwinganą~, *~þwinhaną~; the apparent triple shift ~þ~ → ~d~ → ~t~ → ~z~ is regular for words with OHG ~dw-~ and ~tw-~, compare ~Zwerg~ (\"dwarf\"). A class III strong verb (~zwingen~, ~zwang~, ~gezwungen~). Cognate with Dutch ~dwingen~, Swedish ~tvinga~, Icelandic ~þvinga~, English ~twinge~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ adds thoroughness or completeness to the base action.\n\n~zwingen~ compels someone to do something; ~bezwingen~ carries the compulsion through, so that the opponent, the mountain, or one's own impulse actually gives way."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Immer horcht das Selbst und sucht: es vergleicht, bezwingt, erobert, zerstört.",
+        "source": "Nietzsche — Also sprach Zarathustra"
+      },
+      "en": {
+        "sentence": "The self is forever listening and searching: it compares, subdues, conquers, destroys.",
+        "source": "Nietzsche — Also sprach Zarathustra"
+      }
+    },
+    "notes": "candidate 0 rejected as too fragmentary — a verbless elliptical question needing its antecedent."
+  },
+  "blankziehen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~blank~ + ~ziehen~:\n\n- ~ziehen~: Aus Mhd. ~ziehen~, aus Ahd. ~ziohan~, aus proto-westgermanisch *~teuhan~, aus urgermanisch *~teuhaną~, aus PIE *~dewk-~ („ziehen, führen“). Ein starkes Verb der Klasse II. Verwandt mit gotisch ~tiuhan~, altenglisch ~tēon~, altnordisch ~toga~, westfriesisch ~tsjen~ und englisch ~tie~.\n- ~blank~: Aus dem Adjektiv ~blank~, Mhd. ~blanc~ („glänzend, weiß“), Ahd. ~blanc~, aus Urgermanisch *~blankaz~, aus PIE *~bʰleg-~ („glänzen, brennen“) — derselben Wurzel hinter Lateinisch ~flagrāre~ und, über die andere Hälfte ihres Sinnes, Englisch ~black~ („verbrannt“) und ~bleach~. Das germanische Wort wurde ins Romanische entlehnt als Französisch ~blanc~ und Italienisch ~bianco~, und das Englische holte sich ~blank~ aus dem Französischen zurück; ~blank~ und Englisch ~blank~ sind also ein Wort auf Rundreise. Verwandt mit Niederländisch ~blank~, Schwedisch ~blank~. Die Bedeutung von ~blank~ ist hier der resultative Rahmen: etwas in diesen Zustand reiben oder ziehen (~blankputzen~, ~blankziehen~).\n\nGemeint ist das Ziehen der Waffe aus der Scheide: erst blank, also unbedeckt und blinkend, ist die Klinge, wenn sie heraus ist. Heute steht der Ausdruck meist bildlich für einen offen ausgetragenen Streit.",
+      "en": "A separable compound of ~blank~ + ~ziehen~:\n\n- ~ziehen~: From MHG ~ziehen~, from OHG ~ziohan~, from Proto-West Germanic *~teuhan~, from Proto-Germanic *~teuhaną~, from PIE *~dewk-~ (\"to pull, lead\"). A class II strong verb. Cognate with Gothic ~tiuhan~, Old English ~tēon~, Old Norse ~toga~, West Frisian ~tsjen~, and English ~tie~.\n- ~blank~: From the adjective ~blank~ (\"shining, bare\"), MHG ~blanc~ (\"shining, white\"), OHG ~blanc~, from Proto-Germanic *~blankaz~, from PIE *~bʰleg-~ (\"to shine, burn\") — the same root behind Latin ~flagrāre~ and, by the other half of its sense, English ~black~ (\"burnt\") and ~bleach~. The Germanic word was borrowed into Romance as French ~blanc~ and Italian ~bianco~, and English then took ~blank~ back from French, so German ~blank~ and English ~blank~ are one word that made a round trip. Cognate with Dutch ~blank~, Swedish ~blank~. The sense of ~blank~ here is the resultative frame: to rub or draw something to that state (~blankputzen~, ~blankziehen~).\n\nThe reference is to drawing a weapon from its sheath: the blade is ~blank~, bare and gleaming, only once it is out. Today the expression is usually figurative, for a quarrel carried on in the open."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "blasen": {
+    "etymology": {
+      "de": "Aus Mhd. ~blāsen~, aus Ahd. ~blāsan~, aus Proto-Westgermanisch *~blāsan~, aus Urgermanisch *~blēsaną~, aus PIE *~bʰleh₁-~ („blasen, schwellen“). Ein starkes Verb der Klasse VII, dessen redupliziertes Präteritum längst zum modernen ~blies~ abgeschliffen ist (~blasen~, ~blies~, ~geblasen~). Verwandt mit Gotisch ~ufblēsan~ („aufblasen“), Altnordisch ~blása~, Schwedisch ~blåsa~, Englisch ~blast~. Dieselbe PIE-Wurzel ergab Lateinisch ~flāre~ („blasen“), was ~blasen~ zu einem entfernten Verwandten von Englisch ~inflate~ und ~flatulence~ macht.",
+      "en": "From MHG ~blāsen~, from OHG ~blāsan~, from Proto-West Germanic *~blāsan~, from Proto-Germanic *~blēsaną~, from PIE *~bʰleh₁-~ (\"to blow, swell\"). A class VII strong verb, with the reduplicated preterite of that class long since worn down to the modern ~blies~ (~blasen~, ~blies~, ~geblasen~). Cognate with Gothic ~ufblēsan~ (\"to puff up\"), Old Norse ~blása~, Swedish ~blåsa~, English ~blast~. The same PIE root produced Latin ~flāre~ (\"to blow\"), which makes ~blasen~ a distant relative of English ~inflate~ and ~flatulence~."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Endlich aber wurde es Nacht, und ein kalter Wind blies über den Einsamen.",
+        "source": "Nietzsche — Also sprach Zarathustra"
+      },
+      "en": {
+        "sentence": "At last, however, night came on, and a cold wind blew over the solitary man.",
+        "source": "Nietzsche — Also sprach Zarathustra"
+      }
+    },
+    "notes": "candidates 0 and 1 are ~anblasen~ and ~einblasen~, not the simplex."
+  },
+  "blaumachen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~blau~ + ~machen~:\n\n- ~machen~: Aus mhd. ~machen~, aus ahd. ~mahhōn~, aus proto-westgermanisch *~makōn~, aus PIE *~mag-~ („kneten, mischen, machen“). Verwandt mit niederländisch ~maken~, niederdeutsch ~maken~, englisch ~make~.\n- ~blau~: Aus dem Adjektiv ~blau~, Mhd. ~blā~, Ahd. ~blāo~, aus Urgermanisch *~blēwaz~, aus PIE *~bʰleh₁-wos~ — verwandt mit Lateinisch ~flāvus~ („goldgelb“), einer der schärferen Farbverschiebungen der Familie. Englisch ~blue~ ist dasselbe germanische Wort zurückentlehnt, aus Altfranzösisch ~bleu~, dieses aus dem Fränkischen. Der Sinn der Partikel in ~blaumachen~ ist umstritten: meist führt man sie auf den ~blauen Montag~ zurück, den nach der liturgischen Fastenfarbe benannten Montag vor Aschermittwoch und späteren arbeitsfreien Montag der Handwerker, während die volkstümliche Färbererklärung — das an der Luft oxidierende Waidblau, währenddessen der Färber müßig war — von der Sprachwissenschaft überwiegend abgelehnt wird; auch eine Herleitung aus rotwelsch ~lau~ („umsonst“) wurde vorgeschlagen. Die Bedeutung von ~blau~ ist hier: der Arbeit oder Schule fernbleiben, umstrittener Herkunft (~blaumachen~).\n\nUngewöhnlich ist, dass das Adjektiv hier keine Eigenschaft eines Objekts benennt — es wird nichts blau. Genau diese Undurchsichtigkeit ist der Grund, weshalb die Herkunft des Ausdrucks bis heute strittig ist.",
+      "en": "A separable compound of ~blau~ + ~machen~:\n\n- ~machen~: From MHG ~machen~, from OHG ~mahhōn~, from Proto-West Germanic *~makōn~, from PIE *~mag-~ (\"to knead, mix, make\"). Cognate with Dutch ~maken~, Low German ~maken~, English ~make~.\n- ~blau~: From the adjective ~blau~, MHG ~blā~, OHG ~blāo~, from Proto-Germanic *~blēwaz~, from PIE *~bʰleh₁-wos~ — cognate with Latin ~flāvus~ (\"golden yellow\"), one of the sharper color shifts in the family. English ~blue~ is the same Germanic word re-imported, borrowed from Old French ~bleu~, itself from Frankish. The particle's sense in ~blaumachen~ (\"to skip work\") is of disputed origin: it is usually traced to ~blauer Montag~, the Monday before Ash Wednesday named for the liturgical blue of Lent and later the artisans' unworked Monday, while the popular dyers' explanation — woad-dyed cloth oxidizing in the air while the dyer idled — is rejected by most linguists, and a derivation from Rotwelsch ~lau~ (\"for nothing\") has also been proposed. The sense of ~blau~ here is: to skip work or school, of disputed origin (~blaumachen~).\n\nWhat is unusual here is that the adjective names no property of anything — nothing turns blue. That opacity is exactly why the expression's origin is still disputed."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "bleichen": {
+    "etymology": {
+      "de": "Eine Verschmelzung zweier Verben: des starken intransitiven Mhd. ~blīchen~ („glänzen, erbleichen“), aus Ahd. ~blīhhan~, aus Proto-Westgermanisch *~blīkan~, aus Urgermanisch *~blīkaną~; und seines schwachen Kausativs Mhd. ~bleichen~ („bleich machen“), aus Ahd. ~bleihhen~, aus Urgermanisch *~blaikijaną~. Beide gehen auf PIE *~bʰleyg-~ („glänzen“) zurück. Im heutigen Deutsch wird ~bleichen~ schwach konjugiert, das alte starke Partizip ~geblichen~ hält sich nur noch am Rande. Verwandt mit Englisch ~bleach~ und ~bleak~, Niederländisch ~bleken~ und ~blijken~ („sich herausstellen“, noch im älteren Sinn des Ans-Licht-Kommens), Dänisch ~blege~; das Adjektiv ~bleich~ und das Substantiv ~Blech~ stammen aus derselben Wurzel.",
+      "en": "A merger of two verbs: the strong intransitive MHG ~blīchen~ (\"to shine, gleam, grow pale\"), from OHG ~blīhhan~, from Proto-West Germanic *~blīkan~, from Proto-Germanic *~blīkaną~; and its weak causative MHG ~bleichen~ (\"to make pale\"), from OHG ~bleihhen~, from Proto-Germanic *~blaikijaną~. Both go back to PIE *~bʰleyg-~ (\"to shine\"). Modern German conjugates ~bleichen~ weak, the old strong participle ~geblichen~ surviving only marginally. Cognate with English ~bleach~ and ~bleak~, Dutch ~bleken~ and ~blijken~ (\"to turn out, be evident,\" still holding the older sense of coming to light), Danish ~blege~; the adjective ~bleich~ and the noun ~Blech~ (\"sheet metal,\" the shiny stuff) are from the same root."
+    },
+    "sentence": null,
+    "notes": "all five candidates are the adjective ~bleich~, not the verb; no genuine verbal use in the pool."
+  },
+  "bloßlegen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~bloß~ + ~legen~:\n\n- ~legen~: Aus mhd. ~legen~, aus ahd. ~leggen~, aus proto-westgermanisch *~laggjan~, aus urgermanisch *~lagjaną~, einer kausativen Ableitung von *~ligjaną~ („liegen“) mit dem Suffix *~-janą~, aus PIE *~logʰéyeti~. ~legen~ ist damit das Kausativum zu ~liegen~: „zum Liegen bringen“. Verwandt mit niederländisch ~leggen~, englisch ~lay~, dänisch ~lægge~.\n- ~bloß~: Vom Adjektiv ~bloß~ („nackt, unbedeckt“), aus Mhd. ~blōȥ~, aus Ahd. ~blōz~, aus Proto-Westgermanisch *~blaut~, aus Urgermanisch *~blautaz~ („weich, schwach, nackt“); die weitere Herkunft ist unsicher, möglicherweise PIE *~bʰlew-~ („schwach“). Verwandt mit Niederländisch ~bloot~, Altnordisch ~blautr~ („weich, nass“), Schwedisch ~blott~ („bloß“), Dänisch ~blød~ („weich“); Englisch ~bloat~ wird gewöhnlich auf das altnordische Verwandte zurückgeführt. In Verben ist das Adjektiv resultativ: ~bloßlegen~ heißt etwas freilegen, ~bloßstellen~ jemanden entlarven. Die Bedeutung von ~bloß~ ist hier: freilegen, offenlegen.\n\n~legen~ ist das Kausativum zu ~liegen~, sodass ~bloßlegen~ wörtlich heißt, etwas ins Unbedeckte zu bringen — gebraucht von Ausgrabungen, von Leitungen und Nerven ebenso wie von Zusammenhängen, die man aufdeckt.",
+      "en": "A separable compound of ~bloß~ + ~legen~:\n\n- ~legen~: From MHG ~legen~, from OHG ~leggen~, from Proto-West Germanic *~laggjan~, from Proto-Germanic *~lagjaną~, a causative of *~ligjaną~ (\"to lie\") with the suffix *~-janą~, from PIE *~logʰéyeti~. The verb is thus the causative partner of ~liegen~: to ~legen~ is to \"cause to lie,\" i.e., to lay. Cognate with Dutch ~leggen~, English ~lay~, Danish ~lægge~.\n- ~bloß~: From the adjective ~bloß~ (\"bare, naked\"), from MHG ~blōȥ~, from OHG ~blōz~, from Proto-West Germanic *~blaut~, from Proto-Germanic *~blautaz~ (\"soft, weak, bare\"); the deeper origin is uncertain, possibly PIE *~bʰlew-~ (\"weak\"). Cognate with Dutch ~bloot~ (\"bare\"), Old Norse ~blautr~ (\"soft, wet\"), Swedish ~blott~ (\"merely\"), Danish ~blød~ (\"soft\"); English ~bloat~ is usually traced to the Old Norse relative. In verbs the adjective is resultative: ~bloßlegen~ is to lay something bare, ~bloßstellen~ to expose a person. The sense of ~bloß~ here is: to expose to view, to lay open.\n\n~legen~ is the causative of ~liegen~, so ~bloßlegen~ literally means bringing something into an uncovered state — used of excavations, of pipes and nerves, and equally of connections one uncovers."
+    },
+    "sentence": null,
+    "notes": "sole candidate is a 66-word Mann period, above the 65-word ceiling, and its ~bloßgelegt~ is an adjectival participle modifying ~diese~; rejected on both counts."
+  },
+  "bloßstellen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~bloß~ + ~stellen~:\n\n- ~stellen~: Aus Mhd. ~stellen~, aus Ahd. ~stellen~, aus Proto-Westgermanisch *~stalljan~ („setzen, aufstellen“), aus PIE *~stel-~ („stellen, setzen“). Ein kausatives schwaches Verb — das transitive Gegenstück zu ~stehen~. Verwandt mit Englisch ~stell~ („platzieren, befestigen“), Niederländisch ~stellen~, Dänisch ~stille~, Jiddisch ~shteln~.\n- ~bloß~: Vom Adjektiv ~bloß~ („nackt, unbedeckt“), aus Mhd. ~blōȥ~, aus Ahd. ~blōz~, aus Proto-Westgermanisch *~blaut~, aus Urgermanisch *~blautaz~ („weich, schwach, nackt“); die weitere Herkunft ist unsicher, möglicherweise PIE *~bʰlew-~ („schwach“). Verwandt mit Niederländisch ~bloot~, Altnordisch ~blautr~ („weich, nass“), Schwedisch ~blott~ („bloß“), Dänisch ~blød~ („weich“); Englisch ~bloat~ wird gewöhnlich auf das altnordische Verwandte zurückgeführt. In Verben ist das Adjektiv resultativ: ~bloßlegen~ heißt etwas freilegen, ~bloßstellen~ jemanden entlarven. Die Bedeutung von ~bloß~ ist hier: jemanden entlarven, kompromittieren.\n\n~stellen~ verhält sich zu ~stehen~ wie ~legen~ zu ~liegen~; das Bloßgestellte ist hier aber ein Mensch, und die Entblößung ist gesellschaftlich, nicht körperlich. Das trennt ~bloßstellen~ sauber von ~bloßlegen~, das Sachen freilegt.",
+      "en": "A separable compound of ~bloß~ + ~stellen~:\n\n- ~stellen~: From MHG ~stellen~, from OHG ~stellen~, from Proto-West Germanic *~stalljan~ (\"to put, position\"), from PIE *~stel-~ (\"to place, put\"). A causative weak verb — the transitive counterpart to ~stehen~ (\"to stand\"). Cognate with English ~stell~ (\"to place, fix\"), Dutch ~stellen~, Danish ~stille~, Yiddish ~shteln~.\n- ~bloß~: From the adjective ~bloß~ (\"bare, naked\"), from MHG ~blōȥ~, from OHG ~blōz~, from Proto-West Germanic *~blaut~, from Proto-Germanic *~blautaz~ (\"soft, weak, bare\"); the deeper origin is uncertain, possibly PIE *~bʰlew-~ (\"weak\"). Cognate with Dutch ~bloot~ (\"bare\"), Old Norse ~blautr~ (\"soft, wet\"), Swedish ~blott~ (\"merely\"), Danish ~blød~ (\"soft\"); English ~bloat~ is usually traced to the Old Norse relative. In verbs the adjective is resultative: ~bloßlegen~ is to lay something bare, ~bloßstellen~ to expose a person. The sense of ~bloß~ here is: to expose a person, to show them up.\n\n~stellen~ stands to ~stehen~ as ~legen~ does to ~liegen~; but what is laid bare here is a person, and the exposure is social rather than physical. That separates ~bloßstellen~ cleanly from ~bloßlegen~, which uncovers things."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Er war jung und roh gewesen mit der Zeit und, schlecht beraten von ihr, war er öffentlich gestrauchelt, hatte Mißgriffe getan, sich bloßgestellt, Verstöße gegen Takt und Besonnenheit begangen in Wort und Werk.",
+        "source": "Mann — Der Tod in Venedig"
+      },
+      "en": {
+        "sentence": "He had been young and raw with the times and, badly advised by them, he had stumbled in public, made blunders, exposed himself, offended against tact and discretion in word and work.",
+        "source": "Mann — Der Tod in Venedig"
+      }
+    },
+    "notes": null
+  },
+  "brachliegen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~brach~ + ~liegen~:\n\n- ~liegen~: Aus mhd. ~ligen~, aus ahd. ~ligen~ (aus älterem ~liggen~), aus proto-westgermanisch *~liggjan~, aus urgermanisch *~ligjaną~, aus PIE *~legʰ-~ („sich hinlegen“). Ein starkes Verb der Klasse V. Das schwache Kausativum ~legen~ ist über *~-janą~ aus derselben Wurzel gebildet (*~lagjaną~). Verwandt mit englisch ~lie~, niederländisch ~liggen~, gotisch ~ligan~.\n- ~brach~: Aus ~Brache~ / ~brach~, Ahd. ~brāhha~ („das Umbrechen, das erste Pflügen des Ackers“), ein Ablautsubstantiv zu Urgermanisch *~brekan~ — dem Verb, das heute ~brechen~ lautet. Brachland ist also wörtlich gebrochenes Land. Das Verb ~brachliegen~ erwuchs aus der mhd. Fügung ~in brāche ligen~, verlor im 16. Jahrhundert die Präposition und verschmolz im 19. Jahrhundert zu einem Wort. Dasselbe Substantiv benannte den Juni: ~Brachmonat~, den Monat, in dem die Brache gepflügt wurde. Die Bedeutung von ~brach~ ist hier: ungenutzt daliegend, von Begabung und Kapital ebenso wie von Land (~brachliegen~).\n\nDer landwirtschaftliche Sinn ist mit der Dreifelderwirtschaft zurückgetreten; heute liegen vor allem Begabungen, Kapital und Fabrikhallen brach.",
+      "en": "A separable compound of ~brach~ + ~liegen~:\n\n- ~liegen~: From MHG ~ligen~, from OHG ~ligen~ (from earlier ~liggen~), from Proto-West Germanic *~liggjan~, from Proto-Germanic *~ligjaną~, from PIE *~legʰ-~ (\"to lie down\"). A class V strong verb. The weak causative ~legen~ comes from the same root via *~-janą~ (*~lagjaną~). Cognate with English ~lie~, Dutch ~liggen~, Gothic ~ligan~.\n- ~brach~: From ~Brache~ / ~brach~ (\"fallow\"), OHG ~brāhha~ (\"the breaking up, the first plowing of a field\"), an ablaut noun to Proto-Germanic *~brekan~ — the verb that is modern ~brechen~. Fallow land is thus literally broken land. The verb ~brachliegen~ grew out of the MHG phrase ~in brāche ligen~, lost its preposition in the sixteenth century and fused into one word in the nineteenth. The same noun named June: ~Brachmonat~, the month the fallow was plowed. The sense of ~brach~ here is: unused, lying idle, of talent or capital as well as of land (~brachliegen~).\n\nThe agricultural sense receded along with the three-field system; today it is mainly talents, capital, and factory floors that lie fallow."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "braten": {
+    "etymology": {
+      "de": "Aus Mhd. ~brāten~, aus Ahd. ~brātan~, aus Proto-Westgermanisch *~brādan~, aus Urgermanisch *~brēdaną~ („braten, rösten“), aus PIE *~bʰreh₁-~ („erhitzen, sieden, brennen“) — der Wurzel hinter ~brennen~ und ~brühen~ ebenso wie hinter Englisch ~brew~ und ~broth~. Ein starkes Verb der Klasse VII (~braten~, ~briet~, ~gebraten~). Verwandt mit Niederländisch ~braden~, Altenglisch ~brǣdan~ („braten“), Altnordisch ~bráðr~. Englisch ~brawn~ („Muskel“) ist dasselbe germanische Wort auf dem langen Weg entlehnt: Fränkisch *~brādō~ („Braten, fleischiger Teil des Beins“) gelangte als ~braon~ ins Altfranzösische und von dort ins Englische.",
+      "en": "From MHG ~brāten~, from OHG ~brātan~, from Proto-West Germanic *~brādan~, from Proto-Germanic *~brēdaną~ (\"to roast\"), from PIE *~bʰreh₁-~ (\"to heat, boil, burn\") — the root behind ~brennen~ and ~brühen~ as well as English ~brew~ and ~broth~. A class VII strong verb (~braten~, ~briet~, ~gebraten~). Cognate with Dutch ~braden~, Old English ~brǣdan~ (\"to roast\"), Old Norse ~bráðr~. English ~brawn~ (\"muscle\") is the same Germanic word borrowed the long way round: Frankish *~brādō~ (\"roast meat, the fleshy part of the leg\") entered Old French as ~braon~ and passed from there into English."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Und wenn Gretel darin war, wollte sie den Ofen zumachen, und Gretel sollte darin braten, und dann wollte sie's auch aufessen.",
+        "source": "Grimm — Märchen"
+      },
+      "en": {
+        "sentence": "And once Gretel was inside, she meant to shut the oven, and Gretel was to roast in it, and then she would eat her up as well.",
+        "source": "Grimm — Märchen"
+      }
+    },
+    "notes": null
+  },
+  "breittreten": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~breit~ + ~treten~:\n\n- ~treten~: Aus Mhd. ~trëten~, aus Ahd. ~trëtan~, aus Proto-Westgermanisch *~tredan~, aus Urgermanisch *~trudaną~, aus einem möglichen vorgermanischen *~dret-~, vielleicht einer Erweiterung von PIE *~dr-~ („laufen“). Ein starkes Verb der Klasse V (~treten~, ~trat~, ~getreten~), wahrscheinlich zu einem Wurzelaorist mit alternierendem Vokalismus *~tred-~/*~trud-~. Verwandt mit Englisch ~tread~, Niederländisch ~treden~, Altnordisch ~troða~.\n- ~breit~: Aus dem Adjektiv ~breit~, Mhd. und Ahd. ~breit~, aus Proto-Westgermanisch *~braid~, aus Urgermanisch *~braidaz~ („breit“). Jenseits des Germanischen hat es keine gesicherte Etymologie, und die Handbücher lassen es unerklärt. Es ist dasselbe Wort wie Englisch ~broad~, das in ~breadth~ das alte Substantiv bewahrt. Verwandt mit Niederländisch ~breed~, Gotisch ~braiþs~, Schwedisch ~bred~. Die Bedeutung von ~breit~ ist hier: breit, weit.\n\nWörtlich tritt man etwas breit, bis es flach ist; übertragen zerredet man einen Sachverhalt, indem man ihn immer weiter auswalzt. Das Bild bleibt dasselbe, nur ist der Boden ein Gespräch.",
+      "en": "A separable compound of ~breit~ + ~treten~:\n\n- ~treten~: From MHG ~trëten~, from OHG ~trëtan~, from Proto-West Germanic *~tredan~, from Proto-Germanic *~trudaną~, from a possible pre-Germanic *~dret-~, perhaps an extension of PIE *~dr-~ (\"to run\"). A class V strong verb (~treten~, ~trat~, ~getreten~) whose Proto-Germanic root is probably a root aorist with alternating vocalism *~tred-~/*~trud-~. Cognate with English ~tread~, Dutch ~treden~, Old Norse ~troða~.\n- ~breit~: From the adjective ~breit~, MHG and OHG ~breit~, from Proto-West Germanic *~braid~, from Proto-Germanic *~braidaz~ (\"broad\"). Beyond Germanic it has no secure etymology, and the standard handbooks leave it unexplained. It is the same word as English ~broad~, which preserves the old noun in ~breadth~. Cognate with Dutch ~breed~, Gothic ~braiþs~, Swedish ~bred~. The sense of ~breit~ here is: broad, wide.\n\nLiterally one treads a thing broad until it lies flat; figuratively one flattens a topic by going over it again and again. The image stays the same; only the ground is a conversation."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "brinnen": {
+    "etymology": {
+      "de": "Kein selbständiges Verb des heutigen Deutsch. ~brinnen~ war das intransitive starke Verb „in Flammen stehen“: Mhd. ~brinnen~, Ahd. ~brinnan~, aus Proto-Westgermanisch *~brinnan~, aus Urgermanisch *~brinnaną~, aus PIE *~bʰrewh₁-~ („sieden, brauen“) — was es zu einem unerwarteten Vetter von Englisch ~brew~ und ~broth~ macht. Ein starkes Verb der Klasse III (~brinnen~, ~brann~, ~gebrunnen~), das im Deutschen nur noch in ~verbrennen~ fortlebt; sonst wurde es von ~brennen~ aufgesogen, das als sein transitives Kausativ *~brannijan~ („in Brand setzen“) begann. Das alte Intransitiv ist in Schwedisch ~brinna~ und Isländisch ~brenna~ noch ein lebendiges Verb, und Englisch ~burn~ setzt beide Hälften des Paares in einem einzigen Wort fort.",
+      "en": "Not an independent verb of modern German. ~brinnen~ was the intransitive strong verb \"to be on fire\": MHG ~brinnen~, OHG ~brinnan~, from Proto-West Germanic *~brinnan~, from Proto-Germanic *~brinnaną~, from PIE *~bʰrewh₁-~ (\"to boil, brew\") — which makes it an unexpected cousin of English ~brew~ and ~broth~. A class III strong verb (~brinnen~, ~brann~, ~gebrunnen~), it survives in German only inside ~verbrennen~; elsewhere it was absorbed by ~brennen~, which began as its transitive causative *~brannijan~ (\"to set on fire\"). The old intransitive is still a living verb in Swedish ~brinna~ and Icelandic ~brenna~, and English ~burn~ continues both halves of the pair in one word."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "dabeibleiben": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~dabei~ + ~bleiben~:\n\n- ~bleiben~: Aus Mhd. ~blīben~, ~belīben~, aus Ahd. ~bilīban~ („verbleiben“), aus Urgermanisch *~bilībaną~, einer Zusammensetzung aus *~bi-~ + *~lībaną~, aus PIE *~leyp-~ („kleben, haften“) — physisches Haften wurde zur Metapher für das Verweilen. Verwandt mit Niederländisch ~blijven~, Englisch ~belive~ („verbleiben, bleiben“).\n- ~dabei~: Das Pronominaladverb ~da~ („dort“) + ~bei~ („bei, an“), mit der Bedeutung „dabei, daneben, anwesend“. Es ist durchsichtig zusammengesetzt; siehe die Einträge zu ~da(r)-~ und ~bei~. In Verben wie ~dabeisein~ und ~dabeibleiben~ verortet es das Subjekt bei einem Geschehen, statt etwas zu bewegen. ~dabei-~ kennzeichnet fortgesetzte Teilnahme statt Bewegung.\n\nAnders als bei den räumlichen Verben dieser Gruppe geht es nicht um einen Ort, sondern um Beharren: Man bleibt bei einer Tätigkeit, einer Aussage oder einem Entschluss.",
+      "en": "A separable compound of ~dabei~ + ~bleiben~:\n\n- ~bleiben~: From MHG ~blīben~, ~belīben~, from OHG ~bilīban~ (\"to remain\"), from Proto-Germanic *~bilībaną~, a compound of *~bi-~ + *~lībaną~, from PIE *~leyp-~ (\"to stick, adhere\") — adhesion became a metaphor for staying in place. Cognate with Dutch ~blijven~, English ~belive~ (\"to remain, stay\").\n- ~dabei~: The pronominal adverb ~da~ (\"there\") + ~bei~ (\"by, at\"), meaning \"thereby, alongside it, present at it.\" It is transparently compositional; see the entries for ~da(r)-~ and ~bei~. In verbs such as ~dabeisein~ and ~dabeibleiben~ it locates the subject at an event rather than moving anything. ~dabei-~ marks continued attendance rather than motion.\n\nUnlike the spatial verbs in this group, this one is not about a place but about persistence: one sticks with an activity, a statement, or a decision."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Und es bleibt dabei, dass ich jetzt keine Zwischenfragen und Kurzinterventionen zulasse.",
+        "source": "Bundestag — Plenarprotokoll 20/210"
+      },
+      "en": {
+        "sentence": "And it stands that I am not taking any interposed questions or brief interventions now.",
+        "source": "Bundestag — Plenarprotokoll 20/210"
+      }
+    },
+    "notes": "candidate 1 (~Bleiben Sie dabei!~) rejected as too short to stand alone."
+  },
+  "dabeihaben": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~dabei~ + ~haben~:\n\n- ~haben~: Aus Mhd. ~haben~, aus Ahd. ~habēn~, aus Proto-Westgermanisch *~habbjan~, aus Urgermanisch *~habjaną~, aus PIE *~keh₂p-~ („greifen, ergreifen“). Trotz des Gleichklangs nicht mit Lateinisch ~habēō~ verwandt, wohl aber mit ~capiō~ („ich ergreife“) und mit Deutsch ~heben~. Verwandt mit Englisch ~have~, Niederländisch ~hebben~, Dänisch ~have~, Gotisch ~haban~.\n- ~dabei~: Das Pronominaladverb ~da~ („dort“) + ~bei~ („bei, an“), mit der Bedeutung „dabei, daneben, anwesend“. Es ist durchsichtig zusammengesetzt; siehe die Einträge zu ~da(r)-~ und ~bei~. In Verben wie ~dabeisein~ und ~dabeibleiben~ verortet es das Subjekt bei einem Geschehen, statt etwas zu bewegen. ~dabei-~ verortet das Subjekt am Ort des Geschehens, anwesend und beteiligt.\n\n~haben~ meinte ursprünglich „greifen“; in ~dabeihaben~ ist davon nur noch das Mitführen übrig — man hat etwas bei sich, nicht in der Hand.",
+      "en": "A separable compound of ~dabei~ + ~haben~:\n\n- ~haben~: From MHG ~haben~, from OHG ~habēn~, from Proto-West Germanic *~habbjan~, from Proto-Germanic *~habjaną~, from PIE *~keh₂p-~ (\"to grasp, seize\"). Despite the resemblance it is not related to Latin ~habēō~, but it is to ~capiō~ (\"I seize\") and to German ~heben~. Cognate with English ~have~, Dutch ~hebben~, Danish ~have~, Gothic ~haban~.\n- ~dabei~: The pronominal adverb ~da~ (\"there\") + ~bei~ (\"by, at\"), meaning \"thereby, alongside it, present at it.\" It is transparently compositional; see the entries for ~da(r)-~ and ~bei~. In verbs such as ~dabeisein~ and ~dabeibleiben~ it locates the subject at an event rather than moving anything. ~dabei-~ places the subject at the scene, present and participating.\n\n~haben~ originally meant to grasp; in ~dabeihaben~ only the carrying is left — one has a thing along, not in hand."
+    },
+    "sentence": null,
+    "notes": "sole candidate is not ~dabeihaben~: its ~dabei~ is a free adverbial with ~Schuld~ and its finite verb is plain ~haben~. No genuine use in the pool."
+  },
+  "dabeistehen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~dabei~ + ~stehen~:\n\n- ~stehen~: Aus Mhd. ~stān~, ~stēn~, aus Ahd. ~stān~, ~stēn~, aus Proto-Westgermanisch *~stān~, aus Urgermanisch *~stāną~, aus PIE *~steh₂-~ („stehen“). Das ~-h-~ kam in Analogie zu ~sehen~ in die Schreibung; die Präteritumformen (~stand~, ~standen~) sind suppletiv, aus Proto-Westgermanisch *~standan~. Verwandt mit Niederländisch ~staan~, Englisch ~stand~, Dänisch ~stå~, Schwedisch ~stå~.\n- ~dabei~: Das Pronominaladverb ~da~ („dort“) + ~bei~ („bei, an“), mit der Bedeutung „dabei, daneben, anwesend“. Es ist durchsichtig zusammengesetzt; siehe die Einträge zu ~da(r)-~ und ~bei~. In Verben wie ~dabeisein~ und ~dabeibleiben~ verortet es das Subjekt bei einem Geschehen, statt etwas zu bewegen. ~dabei-~ verortet das Subjekt am Ort des Geschehens, anwesend und beteiligt.\n\nDas Verb trägt einen Beiklang von Untätigkeit: Wer dabeisteht, greift gerade nicht ein — dieselbe Zurückhaltung, die im englischen ~bystander~ steckt.",
+      "en": "A separable compound of ~dabei~ + ~stehen~:\n\n- ~stehen~: From MHG ~stān~, ~stēn~, from OHG ~stān~, ~stēn~, from Proto-West Germanic *~stān~, from Proto-Germanic *~stāną~, from PIE *~steh₂-~ (\"to stand\"). The ~-h-~ entered the spelling by analogy with ~sehen~; the past-tense conjugations (~stand~, ~standen~) are suppletive, from Proto-West Germanic *~standan~. Cognate with Dutch ~staan~, English ~stand~, Danish ~stå~, Swedish ~stå~.\n- ~dabei~: The pronominal adverb ~da~ (\"there\") + ~bei~ (\"by, at\"), meaning \"thereby, alongside it, present at it.\" It is transparently compositional; see the entries for ~da(r)-~ and ~bei~. In verbs such as ~dabeisein~ and ~dabeibleiben~ it locates the subject at an event rather than moving anything. ~dabei-~ places the subject at the scene, present and participating.\n\nThe verb carries an overtone of inaction: whoever ~dabeisteht~ is precisely not intervening — the same reserve that sits inside English ~bystander~."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Der Onkel störte, indem er zuerst mit großen Augen und nervösem Lippenbeißen dabeistand, ohne allerdings zuzuhören, aber der Anschein dessen war schon störend genug.",
+        "source": "Kafka — Der Proceß"
+      },
+      "en": {
+        "sentence": "The uncle was a disturbance, standing by at first with wide eyes and nervously biting his lips, without actually listening, though even the appearance of it was disturbing enough.",
+        "source": "Kafka — Der Proceß"
+      }
+    },
+    "notes": null
+  },
+  "dableiben": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~da~ + ~bleiben~:\n\n- ~bleiben~: Aus Mhd. ~blīben~, ~belīben~, aus Ahd. ~bilīban~ („verbleiben“), aus Urgermanisch *~bilībaną~, einer Zusammensetzung aus *~bi-~ + *~lībaną~, aus PIE *~leyp-~ („kleben, haften“) — physisches Haften wurde zur Metapher für das Verweilen. Verwandt mit Niederländisch ~blijven~, Englisch ~belive~ („verbleiben, bleiben“).\n- ~da~: Das deiktische Adverb ~da~ („dort, dann“), aus Mhd. ~dā~, aus Ahd. ~dār~, aus Urgermanisch *~þar~, vom PIE-Demonstrativstamm *~to-~ — demselben Stamm hinter Englisch ~there~, ~that~ und ~the~. In Verbkomposita verweist es auf einen im Gespräch bereits eingeführten Ort oder Sachverhalt — ~dableiben~, ~dastehen~. Es ist die Basis der großen Familie der ~da(r)-~-Komposita (~dazu~, ~davon~, ~dahin~). Die Bedeutung von ~da-~ ist hier: an Ort und Stelle bleibend statt fortzugehen.\n\nDie Fügung ist beinahe tautologisch, denn ~bleiben~ heißt schon verweilen; das Partikel setzt den Ort hinzu. Reizvoll ist, dass in ~bleiben~ selbst ein verwachsenes *~bi-~ steckt — dasselbe Präfix, das als ~be-~ bis heute produktiv ist.",
+      "en": "A separable compound of ~da~ + ~bleiben~:\n\n- ~bleiben~: From MHG ~blīben~, ~belīben~, from OHG ~bilīban~ (\"to remain\"), from Proto-Germanic *~bilībaną~, a compound of *~bi-~ + *~lībaną~, from PIE *~leyp-~ (\"to stick, adhere\") — adhesion became a metaphor for staying in place. Cognate with Dutch ~blijven~, English ~belive~ (\"to remain, stay\").\n- ~da~: The deictic adverb ~da~ (\"there, then\"), from MHG ~dā~, from OHG ~dār~, from Proto-Germanic *~þar~, from the PIE demonstrative stem *~to-~ — the same stem behind English ~there~, ~that~, and ~the~. In verbal compounds it points at a place or situation already established in the discourse — ~dableiben~ (\"to stay put\"), ~dastehen~ (\"to stand there\"). It is the base of the large family of ~da(r)-~ compounds (~dazu~, ~davon~, ~dahin~). The sense of ~da-~ here is: remaining in place rather than departing.\n\nThe combination is nearly tautological, since ~bleiben~ already means to stay; the particle supplies the place. The pleasing part is that ~bleiben~ itself contains a fused *~bi-~ — the same prefix that is still productive as ~be-~."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Da aber der Mann aufstand und wollte ziehen, nötigte ihn sein Schwiegervater, daß er über Nacht dablieb.",
+        "source": "Luther — Bibel"
+      },
+      "en": {
+        "sentence": "But when the man rose and wanted to set out, his father-in-law pressed him to stay there overnight.",
+        "source": "Luther — Bibel"
+      }
+    },
+    "notes": null
+  },
+  "dafürhalten": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~dafür~ + ~halten~:\n\n- ~halten~: Aus Mhd. ~halten~, aus Ahd. ~haltan~, aus Proto-Westgermanisch *~haldan~, aus Urgermanisch *~haldaną~. Verwandt mit Englisch ~hold~, Niederländisch ~houden~, Niederdeutsch ~holden~, Dänisch ~holde~, Isländisch ~halda~, Schwedisch ~hålla~.\n- ~dafür~: Durchsichtig ~da~ („da, es“) + ~für~: ein Pronominaladverb, das für „für das“ steht, da das Deutsche die Verbindung aus Präposition und Personalpronomen meidet, wenn der Bezug keine Person ist. ~Da~ stammt aus Ahd. ~dār~, vom Demonstrativstamm, der auch ~der~ und ~das~ liefert, letztlich aus PIE *~tó-~. Als Verbzusatz trägt es den Sinn des Eintretens oder des Ersatzes: ~dafürhalten~ heißt der Meinung sein, und das substantivierte ~das Dafürhalten~ ist die Ansicht. Die Bedeutung von ~dafür-~ ist hier: dafür, für das — der pronominale Bezug.\n\nDas Verb lebt vor allem in der gehobenen Formel „ich halte dafür, dass …“, die Luthers Übersetzung bekannt gemacht hat. Englisch ~to hold that~ gebraucht dasselbe Verb im selben Sinn.",
+      "en": "A separable compound of ~dafür~ + ~halten~:\n\n- ~halten~: From MHG ~halten~, from OHG ~haltan~, from Proto-West Germanic *~haldan~, from Proto-Germanic *~haldaną~. Cognate with English ~hold~, Dutch ~houden~, Low German ~holden~, Danish ~holde~, Icelandic ~halda~, Swedish ~hålla~.\n- ~dafür~: Transparently ~da~ (\"there, it\") + ~für~ (\"for\"): a pronominal adverb standing in for \"for it, for that\", since German avoids a preposition plus personal pronoun when the referent is not a person. ~Da~ is from OHG ~dār~, from the demonstrative stem that also gives ~der~ and ~das~, ultimately PIE *~tó-~. As a verbal particle it carries the sense of advocacy or substitution: ~dafürhalten~ is to be of the opinion, and the nominalized ~das Dafürhalten~ is \"one's view\". The sense of ~dafür-~ here is: for it, for that — the pronominal referent.\n\nThe verb survives mainly in the elevated formula ~ich halte dafür, dass …~, which Luther's translation made familiar. English ~to hold that~ uses the same verb in the same sense."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "So halten wir nun dafür, daß der Mensch gerecht werde ohne des Gesetzes Werke, allein durch den Glauben.",
+        "source": "Luther — Bibel"
+      },
+      "en": {
+        "sentence": "So we hold that a person is justified without the works of the law, by faith alone.",
+        "source": "Luther — Bibel"
+      }
+    },
+    "notes": null
+  },
+  "dafürstehen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~dafür~ + ~stehen~:\n\n- ~stehen~: Aus Mhd. ~stān~, ~stēn~, aus Ahd. ~stān~, ~stēn~, aus Proto-Westgermanisch *~stān~, aus Urgermanisch *~stāną~, aus PIE *~steh₂-~ („stehen“). Das ~-h-~ kam in Analogie zu ~sehen~ in die Schreibung; die Präteritumformen (~stand~, ~standen~) sind suppletiv, aus Proto-Westgermanisch *~standan~. Verwandt mit Niederländisch ~staan~, Englisch ~stand~, Dänisch ~stå~, Schwedisch ~stå~.\n- ~dafür~: Durchsichtig ~da~ („da, es“) + ~für~: ein Pronominaladverb, das für „für das“ steht, da das Deutsche die Verbindung aus Präposition und Personalpronomen meidet, wenn der Bezug keine Person ist. ~Da~ stammt aus Ahd. ~dār~, vom Demonstrativstamm, der auch ~der~ und ~das~ liefert, letztlich aus PIE *~tó-~. Als Verbzusatz trägt es den Sinn des Eintretens oder des Ersatzes: ~dafürhalten~ heißt der Meinung sein, und das substantivierte ~das Dafürhalten~ ist die Ansicht. Die Bedeutung von ~dafür-~ ist hier: zugunsten von, für etwas eintretend.\n\nEigentlich heißt das Verb einstehen, bürgen — man steht dafür, dass etwas zutrifft. Im heutigen, besonders politischen Gebrauch verschiebt sich das zum Eintreten für eine Sache.",
+      "en": "A separable compound of ~dafür~ + ~stehen~:\n\n- ~stehen~: From MHG ~stān~, ~stēn~, from OHG ~stān~, ~stēn~, from Proto-West Germanic *~stān~, from Proto-Germanic *~stāną~, from PIE *~steh₂-~ (\"to stand\"). The ~-h-~ entered the spelling by analogy with ~sehen~; the past-tense conjugations (~stand~, ~standen~) are suppletive, from Proto-West Germanic *~standan~. Cognate with Dutch ~staan~, English ~stand~, Danish ~stå~, Swedish ~stå~.\n- ~dafür~: Transparently ~da~ (\"there, it\") + ~für~ (\"for\"): a pronominal adverb standing in for \"for it, for that\", since German avoids a preposition plus personal pronoun when the referent is not a person. ~Da~ is from OHG ~dār~, from the demonstrative stem that also gives ~der~ and ~das~, ultimately PIE *~tó-~. As a verbal particle it carries the sense of advocacy or substitution: ~dafürhalten~ is to be of the opinion, and the nominalized ~das Dafürhalten~ is \"one's view\". The sense of ~dafür-~ here is: in favor of, in support of something.\n\nStrictly the verb means to answer for something, to guarantee that it holds. In present-day usage, especially political usage, it shifts toward standing up for a cause."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Die Linke steht auch dafür, eine resiliente Demokratie zu schaffen.",
+        "source": "Bundestag — Plenarprotokoll 20/207"
+      },
+      "en": {
+        "sentence": "The Left, too, stands for creating a resilient democracy.",
+        "source": "Bundestag — Plenarprotokoll 20/207"
+      }
+    },
+    "notes": "every candidate attests the modern \"stand up for\" reading rather than the gloss's \"vouch\"; taken as the earliest genuine use."
+  },
+  "dagegenhalten": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~dagegen~ + ~halten~:\n\n- ~halten~: Aus Mhd. ~halten~, aus Ahd. ~haltan~, aus Proto-Westgermanisch *~haldan~, aus Urgermanisch *~haldaną~. Verwandt mit Englisch ~hold~, Niederländisch ~houden~, Niederdeutsch ~holden~, Dänisch ~holde~, Isländisch ~halda~, Schwedisch ~hålla~.\n- ~dagegen~: Durchsichtig ~da~ („da, es“) + ~gegen~, ein Pronominaladverb für „gegen das“. ~Gegen~ stammt aus Mhd. ~gegen~, Ahd. ~gegin~, ~gagan~ („entgegen, gegenüber“), aus Urgermanisch *~gagin~. Als Zusatz ist es entweder oppositionell (~dagegenhalten~, ~dagegenstimmen~) oder schlicht lokal (~dagegenlehnen~). Die Bedeutung von ~dagegen-~ ist hier: dagegen, im Gegensatz dazu.\n\nZwei Lesarten laufen nebeneinander her: das wörtliche Halten des einen Dings gegen das andere, etwa zum Vergleich, und das übertragene Entgegnen im Streitgespräch.",
+      "en": "A separable compound of ~dagegen~ + ~halten~:\n\n- ~halten~: From MHG ~halten~, from OHG ~haltan~, from Proto-West Germanic *~haldan~, from Proto-Germanic *~haldaną~. Cognate with English ~hold~, Dutch ~houden~, Low German ~holden~, Danish ~holde~, Icelandic ~halda~, Swedish ~hålla~.\n- ~dagegen~: Transparently ~da~ (\"there, it\") + ~gegen~ (\"against\"), a pronominal adverb for \"against it, against that\". ~Gegen~ is from MHG ~gegen~, OHG ~gegin~, ~gagan~ (\"toward, opposite\"), from Proto-Germanic *~gagin~. As a particle it is either oppositional (~dagegenhalten~, to counter; ~dagegenstimmen~, to vote against) or plainly locational (~dagegenlehnen~, to lean against it). The sense of ~dagegen-~ here is: against it, in opposition to it.\n\nTwo readings run alongside each other: the literal holding of one thing against another, for comparison, and the figurative countering of an argument."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "dagegenwirken": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~dagegen~ + ~wirken~:\n\n- ~wirken~: Aus Mhd. ~wirken~, aus Ahd. ~wirken~, aus proto-westgermanisch *~wirkijan~, aus urgermanisch *~wirkijaną~, von *~werką~ („Werk, Arbeit“), aus PIE *~wérǵom~, aus *~werǵ-~ („machen, arbeiten“). Früh verschmolz es mit dem dialektalen ~würken~ (aus Ahd. ~wurken~), das im 18. Jahrhundert aus der Schriftsprache verschwand. Verwandt mit englisch ~work~ und ~wrought~, niederländisch ~werken~.\n- ~dagegen~: Durchsichtig ~da~ („da, es“) + ~gegen~, ein Pronominaladverb für „gegen das“. ~Gegen~ stammt aus Mhd. ~gegen~, Ahd. ~gegin~, ~gagan~ („entgegen, gegenüber“), aus Urgermanisch *~gagin~. Als Zusatz ist es entweder oppositionell (~dagegenhalten~, ~dagegenstimmen~) oder schlicht lokal (~dagegenlehnen~). Die Bedeutung von ~dagegen-~ ist hier: dagegen, im Gegensatz dazu.\n\n~wirken~ meint nicht handeln, sondern Wirkung entfalten; ~dagegenwirken~ ist daher weniger ein Angriff als eine Gegenkraft, die einer Entwicklung entgegensteht.",
+      "en": "A separable compound of ~dagegen~ + ~wirken~:\n\n- ~wirken~: From MHG ~wirken~, from OHG ~wirken~, from Proto-West Germanic *~wirkijan~, from Proto-Germanic *~wirkijaną~, from *~werką~ (\"work\"), from PIE *~wérǵom~, from *~werǵ-~ (\"to make, work\"). Early on it merged with the dialectal ~würken~ (from OHG ~wurken~), which left the written language in the 18th century. Cognate with English ~work~ and ~wrought~, Dutch ~werken~.\n- ~dagegen~: Transparently ~da~ (\"there, it\") + ~gegen~ (\"against\"), a pronominal adverb for \"against it, against that\". ~Gegen~ is from MHG ~gegen~, OHG ~gegin~, ~gagan~ (\"toward, opposite\"), from Proto-Germanic *~gagin~. As a particle it is either oppositional (~dagegenhalten~, to counter; ~dagegenstimmen~, to vote against) or plainly locational (~dagegenlehnen~, to lean against it). The sense of ~dagegen-~ here is: against it, in opposition to it.\n\n~wirken~ means not to act but to take effect; ~dagegenwirken~ is therefore less an attack than a counterforce set against a development."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "dahaben": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~da~ + ~haben~:\n\n- ~haben~: Aus Mhd. ~haben~, aus Ahd. ~habēn~, aus Proto-Westgermanisch *~habbjan~, aus Urgermanisch *~habjaną~, aus PIE *~keh₂p-~ („greifen, ergreifen“). Trotz des Gleichklangs nicht mit Lateinisch ~habēō~ verwandt, wohl aber mit ~capiō~ („ich ergreife“) und mit Deutsch ~heben~. Verwandt mit Englisch ~have~, Niederländisch ~hebben~, Dänisch ~have~, Gotisch ~haban~.\n- ~da~: Das deiktische Adverb ~da~ („dort, dann“), aus Mhd. ~dā~, aus Ahd. ~dār~, aus Urgermanisch *~þar~, vom PIE-Demonstrativstamm *~to-~ — demselben Stamm hinter Englisch ~there~, ~that~ und ~the~. In Verbkomposita verweist es auf einen im Gespräch bereits eingeführten Ort oder Sachverhalt — ~dableiben~, ~dastehen~. Es ist die Basis der großen Familie der ~da(r)-~-Komposita (~dazu~, ~davon~, ~dahin~). Die Bedeutung von ~da-~ ist hier: anwesend, zur Stelle.\n\nUmgangssprachlich und fast nur mit Objekt gebraucht: Wer etwas dahat, hat es vorrätig oder zur Hand.",
+      "en": "A separable compound of ~da~ + ~haben~:\n\n- ~haben~: From MHG ~haben~, from OHG ~habēn~, from Proto-West Germanic *~habbjan~, from Proto-Germanic *~habjaną~, from PIE *~keh₂p-~ (\"to grasp, seize\"). Despite the resemblance it is not related to Latin ~habēō~, but it is to ~capiō~ (\"I seize\") and to German ~heben~. Cognate with English ~have~, Dutch ~hebben~, Danish ~have~, Gothic ~haban~.\n- ~da~: The deictic adverb ~da~ (\"there, then\"), from MHG ~dā~, from OHG ~dār~, from Proto-Germanic *~þar~, from the PIE demonstrative stem *~to-~ — the same stem behind English ~there~, ~that~, and ~the~. In verbal compounds it points at a place or situation already established in the discourse — ~dableiben~ (\"to stay put\"), ~dastehen~ (\"to stand there\"). It is the base of the large family of ~da(r)-~ compounds (~dazu~, ~davon~, ~dahin~). The sense of ~da-~ here is: present, on the spot.\n\nColloquial, and used almost only with an object: whoever ~dahat~ something has it in stock or on hand."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "daherkommen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~daher~ + ~kommen~:\n\n- ~kommen~: Aus Mhd. ~quemen~, ~komen~, ~kumen~, aus Ahd. ~queman~ (seltener ~cuman~, ~chuman~), aus Proto-Westgermanisch *~kweman~, aus Urgermanisch *~kwemaną~, aus PIE *~gʷem-~. Verwandt mit Englisch ~come~, Niederdeutsch ~kamen~, Niederländisch ~komen~, Dänisch ~komme~.\n- ~daher~: Das Pronominaladverb ~da~ („dort“) + ~her~ („auf den Sprecher zu“), wörtlich „von dort her“. Der deiktische Gegensatz, der diese ganze Gruppe bestimmt: ~her-~ weist zum Sprecher hin, ~hin-~ vom Sprecher weg. Neben der räumlichen trägt es eine kausale Bedeutung, „daher, deshalb“; in Verben wie ~daherkommen~ und ~daherreden~ überwiegt die räumliche Lesart, oft mit abschätzigem Beiklang. Die Bedeutung von ~daher-~ ist hier: Bewegung von dort auf den Sprecher zu.\n\nNeben der räumlichen Lesart des Herannahens hat sich umgangssprachlich eine wertende entwickelt: Was harmlos ~daherkommt~, wirkt bloß so.",
+      "en": "A separable compound of ~daher~ + ~kommen~:\n\n- ~kommen~: From MHG ~quemen~, ~komen~, ~kumen~, from OHG ~queman~ (rarer ~cuman~, ~chuman~), from Proto-West Germanic *~kweman~, from Proto-Germanic *~kwemaną~, from PIE *~gʷem-~. Cognate with English ~come~, Low German ~kamen~, Dutch ~komen~, Danish ~komme~.\n- ~daher~: The pronominal adverb ~da~ (\"there\") + ~her~ (\"toward the speaker\"), literally \"from there, hither.\" The deictic contrast that governs this whole group is that ~her-~ points toward the speaker and ~hin-~ away from the speaker. Alongside the spatial sense it carries a causal one, \"hence, therefore\"; in verbs such as ~daherkommen~ and ~daherreden~ the spatial reading dominates, often with a dismissive tinge. The sense of ~daher-~ here is: motion from there toward the speaker.\n\nAlongside the spatial reading of approaching, a judging one has developed colloquially: whatever ~daherkommt~ as harmless merely looks that way."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Hebt eure Augen auf und sehet, wie sie von Mitternacht daherkommen.",
+        "source": "Luther — Bibel"
+      },
+      "en": {
+        "sentence": "Lift up your eyes and see how they come from the north.",
+        "source": "Luther — Bibel"
+      }
+    },
+    "notes": null
+  },
+  "daherreden": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~daher~ + ~reden~:\n\n- ~reden~: Aus Mhd. ~reden~, aus Ahd. ~redōn~, ~rediōn~ („sprechen“), ein denominales Verb von ~reda~, ~redia~ („Rede, Wort, Meinung“), aus Urgermanisch *~raþjǭ~ („Rechenschaft, Rede“). Die gemeinsame PIE-Wurzel trug den Sinn geordneter, rechenschaftspflichtiger Rede. Verwandt mit lateinisch ~ratiō~ (woraus englisch ~ratio~, ~reason~), englisch ~rede~ („Rat“) und deutsch ~Rat~.\n- ~daher~: Das Pronominaladverb ~da~ („dort“) + ~her~ („auf den Sprecher zu“), wörtlich „von dort her“. Der deiktische Gegensatz, der diese ganze Gruppe bestimmt: ~her-~ weist zum Sprecher hin, ~hin-~ vom Sprecher weg. Neben der räumlichen trägt es eine kausale Bedeutung, „daher, deshalb“; in Verben wie ~daherkommen~ und ~daherreden~ überwiegt die räumliche Lesart, oft mit abschätzigem Beiklang. ~daher-~ verleiht der Handlung oft einen abschätzigen oder ziellosen Ton.\n\nHier trägt das Partikel nichts Räumliches mehr bei, sondern nur noch den abschätzigen Ton: ~daherreden~ ist Reden ohne Überlegung.",
+      "en": "A separable compound of ~daher~ + ~reden~:\n\n- ~reden~: From MHG ~reden~, from OHG ~redōn~, ~rediōn~ (\"to speak\"), a denominal verb from ~reda~, ~redia~ (\"speech, word, opinion\"), from Proto-Germanic *~raþjǭ~ (\"accountability, speech\"). The shared PIE root carried the sense of organized, accountable speech. Cognate with Latin ~ratiō~ (whence English ~ratio~, ~reason~), English ~rede~ (\"counsel\"), and German ~Rat~.\n- ~daher~: The pronominal adverb ~da~ (\"there\") + ~her~ (\"toward the speaker\"), literally \"from there, hither.\" The deictic contrast that governs this whole group is that ~her-~ points toward the speaker and ~hin-~ away from the speaker. Alongside the spatial sense it carries a causal one, \"hence, therefore\"; in verbs such as ~daherkommen~ and ~daherreden~ the spatial reading dominates, often with a dismissive tinge. ~daher-~ often adds a dismissive or aimless tone to the action.\n\nHere the particle contributes nothing spatial any more, only the dismissive tone: ~daherreden~ is talking without thinking."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  }
+}

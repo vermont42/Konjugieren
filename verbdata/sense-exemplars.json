@@ -17,94 +17,364 @@
     "they live here rather than duplicated across the `de` and `en` halves of the reuse files ---",
     "a duplicated list is a list that drifts.",
     "",
-    "Pilot scope: the twelve highest-traffic prefixes, covering most prefix-slot occurrences.",
+    "Scope: the highest-traffic prefixes, covering most prefix-slot occurrences.",
     "Extend as later shards report ambiguity; an absent morpheme simply yields no hint."
   ],
-
   "separ:ab": [
-    ["abnehmen", "abschneiden", "abwaschen"],
-    ["absteigen", "abstürzen", "abkühlen"],
-    ["abschließen", "ablaufen", "abdienen"],
-    ["abschreiben", "abzeichnen", "abmalen"],
-    ["ableiten", "abstammen"],
-    ["abändern", "abweichen", "abirren"],
-    ["abhängen", "abfordern", "abfragen"]
+    [
+      "abnehmen",
+      "abschneiden",
+      "abwaschen"
+    ],
+    [
+      "absteigen",
+      "abstürzen",
+      "abkühlen"
+    ],
+    [
+      "abschließen",
+      "ablaufen",
+      "abdienen"
+    ],
+    [
+      "abschreiben",
+      "abzeichnen",
+      "abmalen"
+    ],
+    [
+      "ableiten",
+      "abstammen"
+    ],
+    [
+      "abändern",
+      "abweichen",
+      "abirren"
+    ],
+    [
+      "abhängen",
+      "abfordern",
+      "abfragen"
+    ]
   ],
   "separ:an": [
-    ["anbinden", "ankleben", "anschrauben"],
-    ["ankommen", "anreisen", "annähern"],
-    ["anfangen", "anbrechen", "anlaufen"],
-    ["anschneiden", "anbraten", "ansägen"],
-    ["ansprechen", "anreden", "ankündigen"],
-    ["andauern", "anhalten"]
+    [
+      "anbinden",
+      "ankleben",
+      "anschrauben"
+    ],
+    [
+      "ankommen",
+      "anreisen",
+      "annähern"
+    ],
+    [
+      "anfangen",
+      "anbrechen",
+      "anlaufen"
+    ],
+    [
+      "anschneiden",
+      "anbraten",
+      "ansägen"
+    ],
+    [
+      "ansprechen",
+      "anlächeln",
+      "ansehen",
+      "anleiten"
+    ],
+    [
+      "andauern",
+      "anhalten"
+    ],
+    [
+      "anmischen",
+      "anrühren",
+      "ansetzen"
+    ],
+    [
+      "ansammeln",
+      "anhäufen",
+      "ankaufen"
+    ],
+    [
+      "ankämpfen",
+      "anrennen",
+      "anfechten"
+    ]
   ],
   "separ:auf": [
-    ["aufsteigen", "aufheben", "aufbauen"],
-    ["aufmachen", "aufschließen", "aufknöpfen"],
-    ["auftragen", "aufkleben", "aufmalen"],
-    ["aufessen", "aufbrauchen", "austrinken"],
-    ["auftauchen", "aufblühen", "aufflammen"]
+    [
+      "aufsteigen",
+      "aufheben",
+      "aufbauen"
+    ],
+    [
+      "aufmachen",
+      "aufschließen",
+      "aufknöpfen"
+    ],
+    [
+      "auftragen",
+      "aufkleben",
+      "aufmalen"
+    ],
+    [
+      "aufessen",
+      "aufbrauchen",
+      "austrinken"
+    ],
+    [
+      "auftauchen",
+      "aufblühen",
+      "aufflammen"
+    ]
   ],
   "separ:aus": [
-    ["ausgehen", "aussteigen", "auswandern"],
-    ["ausarbeiten", "ausbilden", "ausschlafen"],
-    ["austrinken", "ausblasen", "auslöschen"],
-    ["austeilen", "ausgeben", "ausschenken"],
-    ["ausbreiten", "ausdehnen", "ausweiten"]
+    [
+      "ausgehen",
+      "aussteigen",
+      "auswandern"
+    ],
+    [
+      "ausarbeiten",
+      "ausbilden",
+      "ausschlafen"
+    ],
+    [
+      "austrinken",
+      "ausblasen",
+      "auslöschen"
+    ],
+    [
+      "austeilen",
+      "ausgeben",
+      "ausschenken"
+    ],
+    [
+      "ausbreiten",
+      "ausdehnen",
+      "ausweiten"
+    ]
   ],
   "separ:ein": [
-    ["eintreten", "einsteigen", "eingießen"],
-    ["einfügen", "einbauen", "eingliedern"],
-    ["einschließen", "einsperren", "einkreisen"],
-    ["einschlafen", "einfrieren", "einrosten"]
+    [
+      "eintreten",
+      "einsteigen",
+      "eingießen"
+    ],
+    [
+      "einfügen",
+      "einbauen",
+      "eingliedern"
+    ],
+    [
+      "einschließen",
+      "einsperren",
+      "einkreisen"
+    ],
+    [
+      "einschlafen",
+      "einfrieren",
+      "einrosten"
+    ]
   ],
   "separ:zu": [
-    ["zugehen", "zulaufen", "zueilen"],
-    ["zumachen", "zuschließen", "zuklappen"],
-    ["zunehmen", "zugeben", "zulegen"],
-    ["zuteilen", "zuweisen", "zuordnen"]
+    [
+      "zugehen",
+      "zulaufen",
+      "zueilen"
+    ],
+    [
+      "zumachen",
+      "zuschließen",
+      "zuklappen"
+    ],
+    [
+      "zunehmen",
+      "zugeben",
+      "zulegen"
+    ],
+    [
+      "zuteilen",
+      "zuweisen",
+      "zuordnen"
+    ]
   ],
   "separ:nach": [
-    ["nachlaufen", "nachfolgen", "nacheilen"],
-    ["nachliefern", "nachreichen", "nachzahlen"],
-    ["nachmachen", "nachahmen", "nachsprechen"],
-    ["nachprüfen", "nachschlagen", "nachrechnen"],
-    ["nachgeben", "nachlassen"]
+    [
+      "nachlaufen",
+      "nachfolgen",
+      "nacheilen"
+    ],
+    [
+      "nachliefern",
+      "nachreichen",
+      "nachzahlen"
+    ],
+    [
+      "nachmachen",
+      "nachahmen",
+      "nachsprechen"
+    ],
+    [
+      "nachprüfen",
+      "nachschlagen",
+      "nachrechnen"
+    ],
+    [
+      "nachgeben",
+      "nachlassen"
+    ]
   ],
-
   "insep:ver": [
-    ["verbessern", "verstärken", "verschärfen"],
-    ["versprechen", "verlaufen", "verwechseln"],
-    ["verbrauchen", "verzehren", "verschwenden"],
-    ["verjagen", "vertreiben", "verbannen"],
-    ["verlernen", "verkennen"],
-    ["vergrößern", "verbilligen", "vergolden"]
+    [
+      "verbessern",
+      "verstärken",
+      "verschärfen"
+    ],
+    [
+      "versprechen",
+      "verlaufen",
+      "verwechseln"
+    ],
+    [
+      "verbrauchen",
+      "verzehren",
+      "verschwenden"
+    ],
+    [
+      "verjagen",
+      "vertreiben",
+      "verbannen"
+    ],
+    [
+      "verlernen",
+      "verkennen"
+    ],
+    [
+      "vergrößern",
+      "verbilligen",
+      "vergolden"
+    ]
   ],
   "insep:be": [
-    ["besteigen", "betreten", "bewohnen"],
-    ["beantworten", "besprechen", "betrauern"],
-    ["bedecken", "bemalen", "bestreuen"],
-    ["bewaffnen", "beflaggen", "benachrichtigen"],
-    ["bearbeiten", "bedenken", "begutachten"]
+    [
+      "besteigen",
+      "betreten",
+      "bewohnen"
+    ],
+    [
+      "beantworten",
+      "besprechen",
+      "betrauern"
+    ],
+    [
+      "bedecken",
+      "bemalen",
+      "bestreuen"
+    ],
+    [
+      "bewaffnen",
+      "beflaggen",
+      "benachrichtigen"
+    ],
+    [
+      "bearbeiten",
+      "bedenken",
+      "begutachten"
+    ]
   ],
   "insep:er": [
-    ["erfüllen", "erledigen", "erreichen"],
-    ["erblühen", "erklingen", "erröten"],
-    ["erarbeiten", "erkämpfen", "erbetteln"],
-    ["erheben", "ersteigen"],
-    ["erschießen", "erschlagen", "erfrieren"],
-    ["ermöglichen", "erweitern", "erneuern"]
+    [
+      "erfüllen",
+      "erledigen",
+      "erreichen"
+    ],
+    [
+      "erblühen",
+      "erklingen",
+      "erröten"
+    ],
+    [
+      "erarbeiten",
+      "erkämpfen",
+      "erbetteln"
+    ],
+    [
+      "erheben",
+      "ersteigen"
+    ],
+    [
+      "erschießen",
+      "erschlagen",
+      "erfrieren"
+    ],
+    [
+      "ermöglichen",
+      "erweitern",
+      "erneuern"
+    ]
   ],
   "insep:ent": [
-    ["entladen", "entriegeln", "entkorken"],
-    ["entwaffnen", "enteignen", "entnehmen"],
-    ["entkommen", "entfliehen", "entweichen"],
-    ["entstehen", "entspringen", "entflammen"],
-    ["entgegnen", "entsprechen"]
+    [
+      "entladen",
+      "entriegeln",
+      "entkorken"
+    ],
+    [
+      "entwaffnen",
+      "enteignen",
+      "entnehmen"
+    ],
+    [
+      "entkommen",
+      "entfliehen",
+      "entweichen"
+    ],
+    [
+      "entstehen",
+      "entspringen",
+      "entflammen"
+    ],
+    [
+      "entgegnen",
+      "entsprechen"
+    ]
   ],
   "insep:zer": [
-    ["zerbrechen", "zerreißen", "zerspringen"],
-    ["zerstören", "zertrümmern"],
-    ["zerstreuen", "zerfließen", "zergehen"]
+    [
+      "zerbrechen",
+      "zerreißen",
+      "zerspringen"
+    ],
+    [
+      "zerstören",
+      "zertrümmern"
+    ],
+    [
+      "zerstreuen",
+      "zerfließen",
+      "zergehen"
+    ]
+  ],
+  "insep:ge": [
+    [
+      "gerinnen",
+      "gefrieren"
+    ],
+    [
+      "geraten",
+      "gelingen"
+    ],
+    [
+      "gebrauchen",
+      "gedenken"
+    ],
+    [
+      "gehören",
+      "gefallen",
+      "geloben"
+    ]
   ]
 }

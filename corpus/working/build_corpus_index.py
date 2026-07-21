@@ -314,9 +314,16 @@ def hyphenation_defect(text, counts, rel):
 def archaic_tier(candidate):
     """0 for modern orthography, 1 for a work that predates modern spelling.
 
-    Sorts after `_rank` and `_demoted` but before `length_tier`, so a modern sentence of any
-    length outranks 1648 chancery German. Never removes: a verb attested only in the Westphalian
-    instruments keeps its one candidate.
+    Sorts *after* `length_tier`, which is the ordering that took two reports to get right. Placed
+    before it, as it was when first added on 2026-07-20, a modern candidate of any length outranked
+    an archaic one --- and `anrechnen` promptly led with a 50-word Nietzsche period while a clean
+    9-word sentence sat below it for being printed in 1648. Sorting length first fixes that and
+    still fixes the case this tier was added for, since `abzwingen`'s 8-word Kafka line is in band
+    too and wins the archaic tie-break within it.
+
+    Readability on a phone is the primary constraint; archaic orthography is a preference applied
+    within each length class. Never removes: a verb attested only in the Westphalian instruments
+    keeps its one candidate, and a subagent can still reject it.
     """
     return 1 if bucket_of(candidate["doc"]) in ARCHAIC_WORKS else 0
 
@@ -716,6 +723,10 @@ LEADING_FURNITURE = (
     # Page-header debris left by de-columnizing: a running page number before the speaker.
     (re.compile(r"^\d{4,6}\s+"), lambda rel: "plenarprotokoll" in rel),
     (re.compile(r"^\+\+\+[^+]*\+\+\+\s*"), lambda rel: True),
+    # A treaty article marker at the head of a sentence: "[Art. V, 17] Und nachdem …".
+    # Same class as the (A)/(B) column labels --- an apparatus reference the extractor left
+    # inline, quotable only by stripping it. Reported 2026-07-20 against `angeloben`.
+    (re.compile(r"^\[\s*Art\.[^\]]*\]\s*"), lambda rel: "westphalia" in rel),
     # An orphaned quotation mark the splitter carried over from the *previous* sentence
     # (`« Der Teufel …`, `“ K. dachte …`). The whitespace is what identifies it: a real opening
     # mark hugs its first word (`„Wort`), so a mark followed by a space opened nothing here.
@@ -1023,7 +1034,7 @@ def main():
         # Contiguous evidence first, then clause-final split forms, then the rest. Within a
         # tier, a candidate that fits a phone screen sorts ahead of a 60-word literary period.
         for candidates in by_work.values():
-            candidates.sort(key=lambda c: (c["_rank"], c["_demoted"], archaic_tier(c), length_tier(c["text"])))
+            candidates.sort(key=lambda c: (c["_rank"], c["_demoted"], length_tier(c["text"]), archaic_tier(c)))
         merged = merge_balanced(
             by_work,
             [w for w in lit_works if w in by_work],
@@ -1031,7 +1042,7 @@ def main():
             by_work.get("technology", []),
             rank,
         )
-        merged.sort(key=lambda c: (c["_rank"], c["_demoted"], archaic_tier(c), length_tier(c["text"])))
+        merged.sort(key=lambda c: (c["_rank"], c["_demoted"], length_tier(c["text"]), archaic_tier(c)))
         for candidate in merged:
             candidate.pop("_rank", None)
             candidate.pop("_demoted", None)

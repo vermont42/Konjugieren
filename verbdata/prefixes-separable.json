@@ -61,7 +61,10 @@
         "Das Präfix ist inchoativ: Es bezeichnet den Beginn einer Handlung, nicht ihren ganzen Verlauf.",
         "Das Präfix bezeichnet eine teilweise ausgeführte Handlung — etwas ein wenig tun, nicht ganz.",
         "Das Präfix richtet die Handlung auf einen Adressaten — jemanden ansprechen, ihm etwas darbieten oder ankündigen.",
-        "Das Präfix bezeichnet das Andauern einer Handlung oder eines Zustands über eine Zeitspanne hinweg."
+        "Das Präfix bezeichnet das Andauern einer Handlung oder eines Zustands über eine Zeitspanne hinweg.",
+        "Das Präfix bezeichnet das Herstellen durch Mischen oder Ansetzen — etwas durch die Grundhandlung erst entstehen lassen.",
+        "Das Präfix bezeichnet das Anhäufen oder Erwerben — einen Bestand vergrößern, bis er voll oder erworben ist.",
+        "Das Präfix richtet die Handlung gegen einen Widerstand, meist mit einer ~gegen~-Ergänzung."
       ],
       "occurrences": 119
     },
@@ -2334,7 +2337,10 @@
         "The prefix is inchoative: it marks the beginning of an action rather than its whole course.",
         "The prefix marks a partial action — doing something a little, not all the way.",
         "The prefix directs the action at an addressee — speaking, presenting, or announcing to someone.",
-        "The prefix marks an action or state continuing over a stretch of time."
+        "The prefix marks an action or state continuing over a stretch of time.",
+        "The prefix marks bringing something into being by mixing or preparing it — the base action produces the thing itself.",
+        "The prefix marks accumulation or acquisition — building up a holding until it is full or obtained.",
+        "The prefix directs the action against a resistance, usually alongside a ~gegen~ complement."
       ],
       "occurrences": 119
     },

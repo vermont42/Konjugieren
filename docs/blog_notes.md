@@ -2905,3 +2905,180 @@ normalizing them. A future shard-runner following the letter of that rule would 
 quote and failed validation, so the brief now says verbatim always wins inside a quotation. And
 the brief's list of what the indexer catches was left accurate rather than allowed to understate
 the new filter — the same staleness failure this project keeps having to design against.
+
+## The slot the brief could not describe (2026-07-20)
+
+Two mining subagents came back from shards 006 and 007 with the same complaint, worded
+differently enough that neither had copied the other. MINING_SPEC tells them to build each
+morpheme bullet as `<chain, verbatim> <sense, verbatim>`. Both said, politely, that this
+instruction cannot be executed — and both had quietly worked around it rather than stopping.
+
+They were right. Measured across the reuse files, 45% of prefix-slot occurrences carried senses
+that were not sentences at all but verb-initial fragments: `makes an intransitive verb
+transitive`, `hebt das, was das Grundverb mit einer Präposition regiert`. Spliced after the
+chain's final period exactly as instructed, that yields "…the preposition ~bei~. makes an
+intransitive verb transitive". So every subagent had invented a connective to bridge the gap, and
+eight shards had accumulated four different ones: "Here it conveys…", "It promotes…", "Here the
+prefix conveys…", "The prefix conveys…". Precisely the voice drift that verbatim-splicing exists
+to prevent, arriving through the one slot the design left underspecified.
+
+What makes this the most instructive bug of the project so far is that **every one of those
+shards passed the validator**. The validator checks tilde balance, reserved markers, and — the
+one that matters — that each quoted German sentence is byte-equal to a candidate. All mechanical
+properties. Whether a spliced sentence is grammatical is not mechanically checkable, so eight
+shards reported clean while drifting apart. The only detector was two independent agents
+noticing the same thing, which is an argument for reading subagent reports as instrument output
+rather than as status.
+
+**The fix was to change the data, not the brief.** The tempting move is to teach MINING_SPEC a
+framing rule: "splice verbatim, except prepend a subject when the sense is a fragment." That
+instruction is exactly as ambiguous as the situation that produced four connectives — it just
+moves the ambiguity somewhere it looks authoritative. Normalizing all 1,051 fragments into
+complete sentences makes "splice verbatim" *literally true*, and an instruction that says only
+that has nothing left to drift on.
+
+Framing had to be decided per *sense*, never per `kind`. That was the first thing I got wrong and
+caught only by measuring: I assumed the eight `kind` values would each be internally homogeneous,
+so a per-kind frame would do. Every single one is mixed — `fossil` holds both `marks something as
+passing into another's possession` (a predicate) and `gone from one's hands, mislaid, lost` (a
+gloss). Keying the frame off `kind` would have rebuilt the identical bug on each kind's minority
+class, and it would have looked like a principled design while doing it.
+
+The German frame is the part I'd have gotten wrong without the subagent's report. It puts the
+morpheme in subject position — `~be-~ macht ein intransitives Verb transitiv` — because German
+requires the finite verb second. "Hier macht ~be-~ …" would have meant reordering words *inside*
+the string being spliced, which is the one thing the design forbids. Shard 007's agent had worked
+this out on its own and said so, and its solution is the one now in the file.
+
+### Retrofitting eight shards, and four bugs found by refusing to skip the dry run
+
+The already-mined shards needed reconciling. `repair_mined_connectives.py` anchors on the *tail*
+of each canonical sense, since a subagent edited the front and spliced the rest verbatim, then
+replaces everything from the preceding sentence boundary through that tail. That span is exactly
+"whatever the agent invented" plus the sense.
+
+The dry run earned its keep four times over, and every failure was a case where the code looked
+obviously correct:
+
+- The sense of `heiß` is the single word `heiß`, and a substring search matched it inside
+  `heißt`; English `hot` matched inside `shot`. Eight of shard 000's etymologies would have been
+  mangled. Fixed by restricting each verb to the morphemes it actually decomposes into, plus
+  word-boundary anchoring — either guard alone is insufficient.
+- Treating `:` as a sentence boundary split senses that *contain* a colon (`Das Präfix ist
+  inchoativ: Es bezeichnet…`), so the repair would have reinserted a sense after its own opening
+  clause. Only the bullet's own `~morpheme~:` label is a boundary now.
+- Guarding with `if sense in text` was too coarse: "Here ~be-~ promotes…" *contains* the
+  canonical "~be-~ promotes…", so the guard skipped the very case being repaired. The occurrence
+  has to start at a sentence edge.
+- German abbreviations end in a period. `bzw.` read as a sentence end and put a span's left edge
+  mid-phrase.
+
+Eleven texts were rewritten, the script is idempotent, and the validator passed before and after.
+
+### The stratum underneath
+
+Measuring splice compliance to confirm the repair turned up something the repair could not touch.
+Shards 000–003 had **zero** spliced bullets and 214 authored ones; shards 004–007 were almost
+entirely spliced. Not drift — a regime change, sitting exactly where MINING_SPEC gained its "do
+not author a per-bullet sentence of your own on top of the spliced sense" rule. The first four
+shards were mined under the older brief and are a dated stratum, visible in the data to the shard.
+
+No mechanical repair applies, because there is no canonical sense in the text to re-anchor to;
+shard 000's `ab-` bullet is a genuinely different, genuinely good sentence. Josh chose to re-mine.
+All four came back with 0 authored bullets and **identical sentence yield** — 10/15, 16/9, 9/16,
+10/15, the same as the originals. 214 authored bullets became reused scholarship at no cost in
+coverage, for about 8 session points.
+
+### Two philological finds, pointing opposite ways
+
+Shard 006 caught `anbefehlen` routed to `root:fehlen`. It is the `begleiten` trap: `befehlen` is
+MHG *bevelhen*, OHG *bifelahan*, from Proto-Germanic \*`felhaną` "hide, entrust", while `fehlen`
+is an Old French loan from *faillir*. Unrelated. The tell is the same one that exposes
+`begleiten` — a strong/weak mismatch, since a shared root cannot inflect two ways — and that
+diagnostic, not the exception itself, is what went into the `FALSE_SPLITS` comment. The semantic
+path is lovely on its own: "hide, bury" → "place in another's keeping" → "command". To order
+something was first to put it into someone else's hands, which is why `empfehlen` and *seine
+Seele Gott befehlen* preserve the older layer.
+
+Shard 001 found the mirror image and got it wrong in a well-reasoned way. Every `abfahren`
+candidate came back as *abführen*, and it inferred a stemmer had collapsed `führen` into
+`fahren`. The pipeline does not stem — the form map is generated by running the app's own
+`Conjugator` — and *abführen* is the genuine Konjunktiv II plural of *abfahren*. But the instinct
+was sound: `führen` **is** Proto-Germanic \*`fōrijaną`, the causative of \*`faraną` "to travel",
+so it once meant "to make go". The two verbs are one root, which is exactly why the false
+inference was so persuasive. Two separate runs have now reached it, so it is documented in the
+brief with the history included — a bare prohibition invites re-derivation from agents good
+enough to reconstruct a plausible counter-argument and then trust it.
+
+So the day produced a matched pair: `befehlen`/`fehlen` look related and are not;
+`fahren`/`führen` look unrelated and are one root. The surface tells you nothing in either
+direction, which is the whole reason the `in` attribute and the `family` field have to do the work.
+
+### A rule tried and removed, which is worth more written down than deleted
+
+Reports named two PDF de-hyphenation defects: the *split* word (`Hauptschul abschluss`,
+`Leistungsfähig keit`) and the *severed* word, where the head is lost and only a tail survives
+(`… soll wieder tionäre abwerfen`, from `… Dividenden an Ak|tionäre`). Both seemed detectable by
+using the corpus as its own dictionary, which needs no word list and stays current for free.
+
+Split-word works: 512 caught, and the samples are unambiguous. Severed-word does not. The test —
+"a near-absent token that is the ending of a common word" — dropped 250 candidates at visibly bad
+precision, taking clean sentences like "Haben Förderprogramme die erwünschten Wirkungen gebracht?"
+with it. The reason is structural: **German compounding makes "is the ending of some frequent
+word" very nearly vacuous**, since almost every German word is the tail of some longer compound.
+The rarity threshold cannot separate the cases. Detecting a severed head needs a lexicon with
+morpheme boundaries, not a frequency table. That is now a do-not-retry note in the docstring,
+because the idea is attractive enough that someone will have it again — this is the fourth time
+the indexer has leaned on German orthography for a defense unavailable in English, and the first
+time German morphology has taken one away.
+
+### Everything else the reports bought
+
+Content filtering moved into the indexer. A run refused `androhen`'s sole candidate — genuine
+German, but it names a living official and recommends beating critics — and argued the judgment
+should be made once, centrally, rather than by taste in each of 104 shards. That is obviously
+right: a per-shard decision is neither reproducible nor reviewable. It is scoped to the government
+tier, since violence in Luther and Kafka is context rather than advocacy, and filtering the
+literary tier would gut the best source of clean sentences while protecting nobody.
+
+Five more extraction defects became regexes, each having cost a verb its only attestation: bare
+Luther verse numbers with no punctuation announcing them, inline editorial apparatus (`(+++
+Nichtamtlicher Hinweis:`), candidates ending on a colon, `Zedern-und` suspended compounds that
+lost their space, and gutter splices visible as long runs of interior spaces. Identical text
+across two works is no longer two attestations — the Grundgesetz incorporates Weimar articles
+verbatim, so `abhängen` was spending two of five slots on byte-identical text, which is also a
+nice accidental record of a constitutional transplant. Coverage cost: ten verbs, all of which had
+only corrupt candidates and would have become nulls after a subagent paid to read them.
+
+The last underdetermined step got closed too. Two runs independently reported that sense selection
+was a coin-flip at the margin — `abmelken` between completion and drawing-out, `abladen` between
+separation and downward motion — and one wrote that it had invented a tiebreak rule and that
+"another shard will resolve it differently". Same signature as the connective bug, caught earlier
+this time. `verbdata/sense-exemplars.json` now gives each sense two or three exemplar verbs,
+index-parallel, for the twelve highest-traffic prefixes; the brief says they outrank an agent's
+own reading of the sense text. They are language-neutral, so they live in one file rather than
+duplicated across `de` and `en` where they would drift, and they are never spliced into the prose,
+so a bad exemplar can only cause a mis-picked sense and never corrupt shipped text. Both runs also
+named senses that were simply missing, and four were added: durative `an-`, and `ab-` for
+deviation-from-prior-state and for naming the source an action proceeds from.
+
+### The economics, which are the actual argument
+
+This window absorbed two mined shards plus all of the above for 17 session points. The shards
+account for about four of those, so the pipeline work cost roughly thirteen — against the ~200 it
+would take to re-mine 100 contaminated shards, or the permanent seam of leaving them contaminated.
+
+That is the concrete case for the policy the phase spec already states and that I keep being
+tempted to hurry past: concurrency stays at 2, and reported friction gets spent on before more
+shards do. Every significant fix today came from a subagent mentioning something awkward, not from
+anyone inspecting the code. None of it was visible to the validator. Raising concurrency would not
+have produced a single additional insight; it would only have widened the blast radius of a
+defect that took two waves to become visible.
+
+One thing deliberately left alone: the 55-word ceiling. Shard 003 wants it raised to ~65, having
+lost `abordnen` at 61 words; shard 002 says it "never bound against anything usable" and caught
+Kafka periods of 67 to 84 cleanly. Genuinely conflicting evidence, and the ceiling had already
+moved once today. Moving it twice in one session to rescue one verb is how a ceiling stops meaning
+anything, so it stays, and Phase 5's null list can say whether Bundestag-length verbs are a real
+pattern. `abhandenkommen` is the case that will argue loudest: its sole candidate is 58 words, and
+since `abhanden-` survives in that one verb, it is the only attestation the corpus will ever hold.

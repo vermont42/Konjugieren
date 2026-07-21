@@ -100,6 +100,20 @@ it. One of them invented a tiebreak rule and noted that another shard would inve
 one. If your verb resembles none of the exemplars, say so in `notes` — a missing sense is a real
 finding, and two were added from exactly such a report.
 
+**A denominal sense on a verb root is normal, not a mismatch — but check that the bullet carries
+the noun.** Senses like `be-` 3 ("derives a verb from a noun or adjective") are regularly correct
+for a compound whose `root` is a *verb*, because the root is usually denominal itself and its entry
+says so: `besichern`'s bullet already reads "a denominative verb from the adjective ~sicher~", and
+`besteuern`'s already names ~die Steuer~. Read the rendered bullet before concluding the sense is
+wrong; the `root:` field alone will mislead you.
+
+Two cases do need your closer. When the root entry **omits** the noun — `bewehren`, whose ~wehren~
+bullet never mentions ~Wehr~ — name it there. When the root entry **contradicts** the derivation —
+`beringen`, whose ~ringen~ bullet says outright that it has nothing to do with ~Ring~ — say that the
+decomposition is formal only and that the verb is denominal from the noun. Do not solve either by
+picking a sense you think fits the bullet better; the sense describes the compound, the closer
+reconciles it with the root.
+
 **When two senses of one prefix both fit, the tie is broken by the base verb, not by the compound.**
 The standing case is `be-` senses 0 and 1, which describe the same operation for a large class of
 verbs — sense 0's own exemplar `besteigen` is *auf etwas steigen* → *etwas besteigen*, which is

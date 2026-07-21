@@ -116,15 +116,31 @@ Relevant: the app already has a `Unterminated Delimiters` sub-suite in `StringEx
 this case is anticipated on the parsing side. Confirm the rendered result before deciding anything;
 this may already be handled.
 
-## 3c. `be-` sense 3 claims a denominal base it often does not have
+## 3c. `be-` sense 3 and the denominal claim — investigated, and **not** a defect
 
-Its text says "derives a verb from a noun or adjective," but it keeps drawing compounds where `be-`
-attaches to an existing *verb* while meaning exactly "furnish with X": `besichern`, `besteuern`,
-`betätigen`, `bewehren` — four in a single shard, since shard 026 was 24/25 `be-`. Three have a noun
-in the background (*Sicherheit*, *die Steuer*, *Wehr*), so the pick is defensible each time, but the
-sense text slightly misdescribes every one of them. Rewording around "furnish with" *without* the
-denominal claim would fit the whole cluster. Same amendment-not-addition cost as § 3a — do it early
-in a session.
+Shard 026 reported that sense 3's "derives a verb from a noun or adjective" misdescribes
+`besichern`, `besteuern`, `betätigen`, and `bewehren`, which attach `be-` to an existing *verb*.
+Reading the **rendered bullets** rather than the `root:` field overturned that, and the correction
+is worth keeping because the same mistake is easy to repeat:
+
+| verb | what its root bullet already says |
+|---|---|
+| `beschulen` | "Derived from the noun ~Schule~" |
+| `besichern` | "A denominative verb from the adjective ~sicher~" |
+| `betätigen` | "Derived from the adjective ~tätig~" |
+| `besteuern` | "The root noun ~Steuer~ carries two meanings…" |
+
+The root is denominal itself and its entry says so, so sense 3 reads coherently straight after it.
+The `root: root:sichern` field looks like a verb and is what misled the report.
+
+**Rewording would have made things worse.** Dropping the denominal claim to accommodate these would
+degrade `bewaffnen` ← *Waffe*, `beflaggen* ← *Flagge*, and `benachrichtigen` ← *Nachricht*, where it
+is exactly right — a majority degraded for a minority the bullets already handle.
+
+Two cases are genuinely awkward and belong to the closer, which is now stated in `MINING_SPEC.md`:
+`bewehren`, whose ~wehren~ bullet never mentions ~Wehr~; and `beringen`, whose ~ringen~ bullet says
+outright that it has nothing to do with ~Ring~ (shard 026 already handled that one in its closer and
+notes). No sense text changed; nothing re-anchored.
 
 ## 3d. A third verse-number shape, still unfiltered
 

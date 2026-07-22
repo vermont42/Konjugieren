@@ -3441,3 +3441,81 @@ Same shape as the separability doublets the day before, and now twice in two day
 correctly reported, whose fix costs more than the defect once you count what a pool change does
 to work already done. The pipeline is cheap to change before mining and expensive after, and 35
 shards in, "after" has started.
+
+## The gap that wasn't a bug, the tail we authored anyway, and two clarifications the agents earned (2026-07-21)
+
+A long window. Phase 4 went from 35 mined shards to 51 of 104 — sixteen shards (035–050), all
+passing the validator, all still verbatim after a mid-session rebuild. But the shards were the
+smaller half of the work. The larger half was a sense-exemplar gap that a shard reported, that I
+twice misdiagnosed as a bug, and that ended in authoring the entire long tail of prefix exemplars.
+
+**The outage, and why it cost one shard.** Partway through, an Anthropic outage killed the 039 and
+040 subagents mid-response — one was about to write, one still reading. Neither had written its
+`.out.json`, so the resume protocol did the whole job: `build_mining_shards.py` still reported them
+unmined, and re-launching was the entire recovery. This is exactly the case the write-your-own-file
+design exists for. A dead shard cost one shard; nothing merged, nothing to unwind. The failed
+attempts did burn subagent tokens, so the window's arithmetic took a real hit even though the work
+was intact — worth remembering that a flaky API costs budget without costing correctness.
+
+**The gap, and the two false alarms.** Shard 044 reported that `fest`, `fern`, `fertig`, and `flach`
+carry multiple senses but no `sense_exemplars`, and framed it as the same `abmelken`/`abladen` drift
+the exemplar field was introduced to prevent. I went to measure how far it reached and twice
+reported a systemic gap — once even "possible pipeline bug" — because I read the exemplars at
+`morpheme.en.sense_exemplars`, where they are not. They are joined at the morpheme top level,
+`morpheme.sense_exemplars`, index-parallel to `en.senses`. `insep:ver`'s eight lists were present
+and correct the whole time; my scan reported every prefix as a gap. The only reason it did not turn
+into a wasted fix is the habit of confirming a surprising result against a known case — checking the
+one prefix a report had named as covered, before trusting a scan that said nothing was. The lesson
+is narrow and cheap: confirm the schema before scanning it, not after two contradictions.
+
+Corrected, the real picture was calm. Every high-traffic prefix — `ver-` (8 senses, 186 upcoming
+refs), `zu`, `nach`, `um`, `über`, `be`, `vor` — was already covered. The true gaps were the
+directional particles (`her-`, `herum-`, `heraus-`) and the adjective-resultatives (`fest`, `tot`,
+`frei`, `klein`), 155 prefixes but the largest only 19 refs, and semantically the transparent ones:
+`her-` is toward the speaker, `tot-` is "make dead," and an agent picks those from the translation
+without help. The prefix `fest` that started it was already fully mined, so fixing it would have
+helped only a re-mine of 044, which its defensible-and-noted picks did not warrant.
+
+**Authoring the tail anyway.** Josh chose the most thorough option: author the full tail. Four
+subagents took ~39 prefixes each, given the sense glosses in both languages and the corpus verbs
+that actually take each prefix, and returned index-parallel exemplar lists — 743 verbs across 155
+prefixes, parity checked independently against the live sense counts (a self-reported "parity OK" is
+not evidence, same as a shard's self-report). One semantic fix: `insep:emp`'s only corpus verb was
+`nachempfinden`, which is a `nach-` verb, so the batch parked it in the "receiving" sense; swapped
+for the real `emp-` verbs (`empfangen`/`empfehlen`/`empfinden`/`empören`). Integrated append-only
+into `sense-exemplars.json` — 28 keys to 183, existing entries byte-identical, per the prior entry's
+warning that this file is index-parallel and a mid-list insertion silently repoints every sense
+already chosen. Rebuilt, re-scanned: zero gaps. Re-validated all 45-then mined shards: no orphaned
+quotes, because exemplars are a morpheme hint and never touch candidate selection.
+
+The honest value is uneven, and the file's `_comment` now says so. The ~20 mid-frequency
+directional prefixes genuinely sharpen selection for the ~570 upcoming verb-slots that touch them;
+shard 045 immediately used the new `fort-` list to override a mismatched reading gloss, and 046
+called them "excellent." But a good number of the 155 are single-verb fossils — `standhalten`,
+`preisgeben`, `mobilmachen`, `heiligsprechen` — where the one real verb repeats across its senses
+and disambiguates nothing, because there is nothing to disambiguate. Harmless filler, documented so
+a future reader is not puzzled by the repeats.
+
+**Two clarifications the agents earned, both cheap, both append-only to the brief.** First: bullet
+order. The `vermeiden` template shows root-bullet first, prefix second — the reverse of the lead
+sentence, which names the prefix first — but that inversion lived only in the example, and an agent
+flagged it as driftable. Stated it outright, with the three-morpheme `einvernehmen` case. Second: an
+intransitive change-of-state verb's `ist`+participle (`die Erde ist gefroren`) is its *sein*-perfect
+and a genuine verbal use, not the Zustandspassiv the gradability rule tells you to reject. The rule
+already admitted it via its "that grades" qualifier, but agents hesitated because `ist gefroren`
+looks like the thing to reject; naming the case removed the hesitation, and shard 050 applied it
+cleanly the same wave.
+
+**Deferred, deliberately.** Shard 049 surfaced a real wrinkle in the exemplars I had just authored:
+`herabblicken` is listed under the figurative "look down on" sense, but its corpus reading is glossed
+literal, so exemplar and reading disagree. The agent chose coherence with the reading and hedged,
+which is right, but the brief says exemplars outrank the reading, and here that would have made the
+etymology contradict the shipped sentence. A precedence rule — "when the reading's translation names
+a different sense than the exemplar slot, prefer the reading and hedge" — would settle it, but it
+needs care, because the exemplars exist precisely because the terse translation often does *not*
+settle sense, so a blanket "reading wins" would undo their value. That is a next-session decision at
+a fresh budget, not a 91%-of-window edit. Left it for the resume note rather than half-solving it.
+
+Standing tally: 51 of 104 shards, 53 remaining, all contiguous from 051. The exemplar tail is a
+one-time asset that now sharpens every future window, which is the trade that justified spending
+this one on it rather than on the four extra shards the same budget would have bought.

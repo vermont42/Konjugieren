@@ -63,6 +63,13 @@ From MHG ~vermīden~, from OHG ~firmīdan~. Compound of ~ver-~ + ~meiden~:
 <closing sentence, yours, on the compound's own semantics>
 ```
 
+**Bullets run innermost-first: the root, then each prefix outward.** This is the *reverse* of the
+lead sentence, which names the outermost prefix first (`~ver-~ + ~meiden~`), so the two orders are
+deliberately opposite and the template above is the authority. For a three-morpheme compound like
+~einvernehmen~ (~ein-~ + ~ver-~ + ~nehmen~) that means ~nehmen~, then ~ver-~, then ~ein-~. The
+order was previously visible only by reading the `vermeiden` example; it is stated here so it is
+not re-inferred each run.
+
 What you write is the **lead sentence and the closer**. Everything inside the bullets is
 reused: the root entry, the prefix chain, *and* the sense. The `senses` strings are finished
 prose written for exactly this slot — pick the index that fits and splice it unchanged. Use the
@@ -220,7 +227,11 @@ Candidates are already ranked and balanced across sources. Reject a candidate wh
   *gering*) or forms a comparative (*geringer ausgeprägt*), it has become an adjective, because
   only adjectives compare. A *werden*-passive (*wurde ausgeprägt*) is a genuine verbal use; a
   *sein*-Zustandspassiv that grades is not. `ausprägen` lost all five candidates this way, which
-  is the right outcome: shipping one would teach the adjective rather than the verb.
+  is the right outcome: shipping one would teach the adjective rather than the verb. For an
+  intransitive change-of-state verb — whose perfect is built with *sein* — a bare `ist`+participle
+  (*die Erde ist gefroren*, *die Blume ist verblüht*) **is** that perfect and is a genuine verbal
+  use, not a Zustandspassiv. Apply the same gradability test: reject only if it grades (*ist stark
+  gefroren*).
 - the snippet is **too fragmentary** to stand alone, or needs its antecedent to make sense.
 - it is a **different verb** that happens to share the form. Candidates are deliberately
   ambiguous: a form maps to several verbs and disambiguation was left to you.

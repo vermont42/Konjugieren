@@ -1,0 +1,319 @@
+{
+ "herausbrechen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~heraus-~ + ~brechen~:\n\n- ~brechen~: Aus Mhd. ~brëchen~, aus Ahd. ~brëhhan~, aus Proto-Westgermanisch *~brekan~, aus Urgermanisch *~brekaną~, aus PIE *~bʰreg-~ („brechen“) — dasselbe Wort wie Englisch ~break~, nur durch die hochdeutsche Lautverschiebung getrennt. Dieselbe Wurzel liegt Lateinisch ~frangere~ zugrunde, woraus Englisch ~fracture~. Verwandt mit Niederländisch ~breken~, Dänisch ~brække~.\n- ~heraus-~: Durchsichtig zusammengesetzt aus ~her-~ („hierher, zum Sprecher hin“) und ~aus~, also „heraus zum Sprecher hin“ — das Spiegelbild von ~hinaus~, „hinaus vom Sprecher weg“. Dieser Gegensatz von her und hin ist die nützlichste Tatsache über die ganze deiktische Gruppe. Umgangssprachlich wird ~heraus~ zu ~raus~ verkürzt. Siehe die Einträge zu ~her-~ und ~aus-~. Die Partikel drückt eine Bewegung nach außen zum Sprecher hin aus.\n\nAls starkes, intransitives Verb mit ~sein~ beschreibt ~herausbrechen~ ein Sich-nach-außen-Brechen unter Druck — ein Geschwür, ein Geständnis, etwas Verborgenes, das plötzlich hervorbricht.",
+   "en": "A separable compound of ~heraus-~ + ~brechen~:\n\n- ~brechen~: From MHG ~brëchen~, from OHG ~brëhhan~, from Proto-West Germanic *~brekan~, from Proto-Germanic *~brekaną~, from PIE *~bʰreg-~ (\"to break\") — the same word as English ~break~, separated only by the High German consonant shift. The same root underlies Latin ~frangere~, whence English ~fracture~. Cognate with Dutch ~breken~, Danish ~brække~.\n- ~heraus-~: Transparently ~her-~ (\"hither, toward the speaker\") plus ~aus~ (\"out\"), hence \"out toward the speaker\" — the mirror of ~hinaus~, \"out away from the speaker.\" This her/hin opposition is the single most useful fact about the whole deictic group. Colloquial German contracts ~heraus~ to ~raus~. See the entries for ~her-~ and ~aus-~. The particle conveys outward motion toward the speaker.\n\nAs a strong intransitive taking ~sein~, ~herausbrechen~ describes something forcing its way out under pressure — an abscess, a confession, a hidden thing that suddenly erupts into the open."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Wie ein Geschwür ist die böse That: sie juckt und kratzt und bricht heraus,—sie redet ehrlich.",
+    "source": "Nietzsche — Also sprach Zarathustra"
+   },
+   "en": {
+    "sentence": "Like a boil is the evil deed: it itches and scratches and bursts out—it speaks honestly.",
+    "source": "Nietzsche — Also sprach Zarathustra"
+   }
+  },
+  "notes": null
+ },
+ "herausbringen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~heraus-~ + ~bringen~:\n\n- ~bringen~: Aus Mhd. ~bringen~, aus Ahd. ~bringan~, aus Proto-Westgermanisch *~bringan~, aus Urgermanisch *~bringaną~, wahrscheinlich aus vorgermanischem *~bʰrenk-~, einer Kompositwurzel aus PIE *~bʰer-~ („tragen“) + *~h₁nek-~ („bringen“). Mischkonjugation: ~brachte~ verbindet den Vokalwechsel ~i~ > ~a~ mit schwachem Dentalsuffix. Verwandt mit Englisch ~bring~, Niederländisch ~brengen~, Gotisch ~briggan~.\n- ~heraus-~: Durchsichtig zusammengesetzt aus ~her-~ („hierher, zum Sprecher hin“) und ~aus~, also „heraus zum Sprecher hin“ — das Spiegelbild von ~hinaus~, „hinaus vom Sprecher weg“. Dieser Gegensatz von her und hin ist die nützlichste Tatsache über die ganze deiktische Gruppe. Umgangssprachlich wird ~heraus~ zu ~raus~ verkürzt. Siehe die Einträge zu ~her-~ und ~aus-~. Die Partikel drückt das Herausbringen an die Öffentlichkeit aus — herausgeben, herausfinden, bekannt machen.\n\nIm modernen Gebrauch hat sich ~herausbringen~ auf das Veröffentlichen verengt — ein Buch, eine Platte, ein Produkt an die Öffentlichkeit gebracht —, während Luther es noch wörtlich für das Nach-außen-Bringen eines Gegenstands verwendet.",
+   "en": "A separable compound of ~heraus-~ + ~bringen~:\n\n- ~bringen~: From MHG ~bringen~, from OHG ~bringan~, from Proto-West Germanic *~bringan~, from Proto-Germanic *~bringaną~, probably from pre-Germanic *~bʰrenk-~, a compound root from PIE *~bʰer-~ (\"to carry\") + *~h₁nek-~ (\"to bring\"). Mixed conjugation: ~brachte~ pairs the vowel change ~i~ > ~a~ with a weak dental suffix. Cognate with English ~bring~, Dutch ~brengen~, Gothic ~briggan~.\n- ~heraus-~: Transparently ~her-~ (\"hither, toward the speaker\") plus ~aus~ (\"out\"), hence \"out toward the speaker\" — the mirror of ~hinaus~, \"out away from the speaker.\" This her/hin opposition is the single most useful fact about the whole deictic group. Colloquial German contracts ~heraus~ to ~raus~. See the entries for ~her-~ and ~aus-~. The particle conveys bringing something out into the open — publishing, discovering, or making public.\n\nIn modern use ~herausbringen~ has narrowed toward publishing or releasing — a book, a record, a product brought before the public — whereas Luther still uses it literally, for fetching a thing out."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Die Zauberer taten auch also mit ihrem Beschwören, daß sie Mücken herausbrächten, aber sie konnten nicht.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "The magicians too did the same with their enchantments, to bring forth gnats, but they could not.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": "Both Luther candidates attest only the literal 'bring out'; none attests the modern 'publish/issue' gloss, so the earliest genuine use was taken and the sense noted."
+ },
+ "herausdringen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~heraus-~ + ~dringen~:\n\n- ~dringen~: Aus Mhd. ~dringen~, aus Ahd. ~dringan~, aus Proto-Westgermanisch *~þringwan~, aus Urgermanisch *~þrinhwaną~, aus PIE *~trenkʷ-~ („schlagen, hauen, pressen“). Ein starkes Verb der Klasse III (~dringen~, ~drang~, ~gedrungen~); sein Kausativ ~drängen~ zeigt den erwarteten Umlaut. Verwandt mit dialektalem Englisch ~thring~ („pressen“) und Englisch ~throng~.\n- ~heraus-~: Durchsichtig zusammengesetzt aus ~her-~ („hierher, zum Sprecher hin“) und ~aus~, also „heraus zum Sprecher hin“ — das Spiegelbild von ~hinaus~, „hinaus vom Sprecher weg“. Dieser Gegensatz von her und hin ist die nützlichste Tatsache über die ganze deiktische Gruppe. Umgangssprachlich wird ~heraus~ zu ~raus~ verkürzt. Siehe die Einträge zu ~her-~ und ~aus-~. Die Partikel drückt eine Bewegung nach außen zum Sprecher hin aus.\n\n~herausdringen~ (stark, mit ~sein~) sagt man von Schall, Licht oder Flüssigkeit, die aus einem geschlossenen Raum nach außen dringt — ein Schrei durch die Wand, Rauch, der aus dem Feuer quillt.",
+   "en": "A separable compound of ~heraus-~ + ~dringen~:\n\n- ~dringen~: From MHG ~dringen~, from OHG ~dringan~, from Proto-West Germanic *~þringwan~, from Proto-Germanic *~þrinhwaną~, from PIE *~trenkʷ-~ (\"to beat, hew, press\"). A class III strong verb (~dringen~, ~drang~, ~gedrungen~); its causative ~drängen~ carries the expected umlaut. Cognate with dialectal English ~thring~ (\"to press\") and English ~throng~.\n- ~heraus-~: Transparently ~her-~ (\"hither, toward the speaker\") plus ~aus~ (\"out\"), hence \"out toward the speaker\" — the mirror of ~hinaus~, \"out away from the speaker.\" This her/hin opposition is the single most useful fact about the whole deictic group. Colloquial German contracts ~heraus~ to ~raus~. See the entries for ~her-~ and ~aus-~. The particle conveys outward motion toward the speaker.\n\n~herausdringen~ (strong, with ~sein~) is said of sound, light, or liquid that penetrates outward from an enclosed space — a cry heard through a wall, smoke leaking from a fire."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "herausfordern": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~heraus-~ + ~fordern~:\n\n- ~fordern~: Aus Mhd. ~vodern~, ~vordern~, aus Ahd. ~fordarōn~, aus Proto-Westgermanisch *~forþ(a)rōn~, aus Urgermanisch *~furþą~, aus PIE *~pŕ̩-to-~, zu *~per-~ („vorwärts, durch“) — „vorwärtstreiben“ wurde zu „einen Anspruch vorbringen“. Nicht zu verwechseln mit dem umgelauteten ~fördern~ derselben Wurzel. Verwandt mit Englisch ~forth~, ~forward~ und ~further~, Niederländisch ~vorderen~.\n- ~heraus-~: Durchsichtig zusammengesetzt aus ~her-~ („hierher, zum Sprecher hin“) und ~aus~, also „heraus zum Sprecher hin“ — das Spiegelbild von ~hinaus~, „hinaus vom Sprecher weg“. Dieser Gegensatz von her und hin ist die nützlichste Tatsache über die ganze deiktische Gruppe. Umgangssprachlich wird ~heraus~ zu ~raus~ verkürzt. Siehe die Einträge zu ~her-~ und ~aus-~. Die Partikel drückt eine Bewegung nach außen zum Sprecher hin aus.\n\n~herausfordern~ heißt wörtlich „jemanden herausrufen“ — einen Gegner hervorrufen, wie zum Duell —, woraus sich der heutige Sinn des Herausforderns und Provozierens entwickelt hat; das Grundverb ~fordern~ „verlangen“ liefert das Rufen, ~heraus-~ das Hervorlocken ins Offene.",
+   "en": "A separable compound of ~heraus-~ + ~fordern~:\n\n- ~fordern~: From MHG ~vodern~, ~vordern~, from OHG ~fordarōn~, from Proto-West Germanic *~forþ(a)rōn~, from Proto-Germanic *~furþą~, from PIE *~pŕ̥-to-~, from *~per-~ (\"forward, through\") — \"to push forward\" became \"to advance a claim.\" Not to be confused with umlauted ~fördern~ from the same root. Cognate with English ~forth~, ~forward~ and ~further~, Dutch ~vorderen~.\n- ~heraus-~: Transparently ~her-~ (\"hither, toward the speaker\") plus ~aus~ (\"out\"), hence \"out toward the speaker\" — the mirror of ~hinaus~, \"out away from the speaker.\" This her/hin opposition is the single most useful fact about the whole deictic group. Colloquial German contracts ~heraus~ to ~raus~. See the entries for ~her-~ and ~aus-~. The particle conveys outward motion toward the speaker.\n\n~herausfordern~ literally means \"to call someone out\" — to summon an opponent forth, as to a duel — and from that comes its modern sense of challenging or provoking; the base ~fordern~ \"to demand\" supplies the summons, ~heraus-~ the calling into the open."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Es giebt Bücher, welche für Seele und Gesundheit einen umgekehrten Werth haben, je nachdem die niedere Seele, die niedrigere Lebenskraft oder aber die höhere und gewaltigere sich ihrer bedienen: im ersten Falle sind es gefährliche, anbröckelnde, auflösende Bücher, im anderen Heroldsrufe, welche die Tapfersten zu ihrer Tapferkeit herausfordern.",
+    "source": "Nietzsche — Jenseits von Gut und Böse"
+   },
+   "en": {
+    "sentence": "There are books that have opposite value for soul and health, depending on whether the lower soul, the lower vitality, or the higher and mightier makes use of them: in the first case they are dangerous, crumbling, dissolving books, in the other heralds' calls that challenge the bravest to their bravery.",
+    "source": "Nietzsche — Jenseits von Gut und Böse"
+   }
+  },
+  "notes": "Verb resembles neither heraus- sense exemplar cleanly; it is a figurative 'call/summon forth,' assigned sense 0. Shorter candidates were adjectival (herausfordernd) or a grading Zustandspassiv (extrem herausgefordert) and were rejected; the two genuine uses are both ~48-word periods, so the earliest (Nietzsche) was taken."
+ },
+ "herausgehen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~heraus-~ + ~gehen~:\n\n- ~gehen~: Aus Mhd. ~gan~, ~gen~, aus Ahd. ~gan~, ~gen~, aus Proto-Westgermanisch *~gān~, aus Urgermanisch *~gāną~, aus PIE *~ǵʰeh₁-~ („weggehen“). Die Form ~gen~ ist bairischen Ursprungs; das ~-h-~ kam in Analogie zu ~sehen~ in die Schreibung. Verwandt mit Englisch ~go~, Niederländisch ~gaan~, Niederdeutsch ~gahn~, Schwedisch und Dänisch ~gå~.\n- ~heraus-~: Durchsichtig zusammengesetzt aus ~her-~ („hierher, zum Sprecher hin“) und ~aus~, also „heraus zum Sprecher hin“ — das Spiegelbild von ~hinaus~, „hinaus vom Sprecher weg“. Dieser Gegensatz von her und hin ist die nützlichste Tatsache über die ganze deiktische Gruppe. Umgangssprachlich wird ~heraus~ zu ~raus~ verkürzt. Siehe die Einträge zu ~her-~ und ~aus-~. Die Partikel drückt eine Bewegung nach außen zum Sprecher hin aus.\n\nÜber das wörtliche Ins-Freie-Treten hinaus zeigt die Wendung ~aus sich herausgehen~ „aus seiner Zurückhaltung heraustreten“ die übertragene Reichweite des Kompositums.",
+   "en": "A separable compound of ~heraus-~ + ~gehen~:\n\n- ~gehen~: From MHG ~gan~, ~gen~, from OHG ~gan~, ~gen~, from Proto-West Germanic *~gān~, from Proto-Germanic *~gāną~, from PIE *~ǵʰeh₁-~ (\"to leave\"). The form ~gen~ is of Bavarian origin; the ~-h-~ entered the spelling by analogy with ~sehen~. Cognate with English ~go~, Dutch ~gaan~, Low German ~gahn~, Swedish and Danish ~gå~.\n- ~heraus-~: Transparently ~her-~ (\"hither, toward the speaker\") plus ~aus~ (\"out\"), hence \"out toward the speaker\" — the mirror of ~hinaus~, \"out away from the speaker.\" This her/hin opposition is the single most useful fact about the whole deictic group. Colloquial German contracts ~heraus~ to ~raus~. See the entries for ~her-~ and ~aus-~. The particle conveys outward motion toward the speaker.\n\nBeyond the literal stepping outdoors, the idiom ~aus sich herausgehen~ \"to come out of one's shell\" shows the compound's reach into the figurative."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Die Lage an einem Hügel ist sehr interessant, und wenn man oben auf dem Fußpfade zum Dorf herausgeht, übersieht man auf einmal das ganze Tal.",
+    "source": "Goethe — Die Leiden des jungen Werthers"
+   },
+   "en": {
+    "sentence": "The situation on a hill is very interesting, and when you go out along the footpath up toward the village, you take in the whole valley at a single glance.",
+    "source": "Goethe — Die Leiden des jungen Werthers"
+   }
+  },
+  "notes": null
+ },
+ "herausgreifen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~heraus-~ + ~greifen~:\n\n- ~greifen~: Aus Mhd. ~grîfen~, aus Ahd. ~grīfan~, aus Proto-Westgermanisch *~grīpan~, aus Urgermanisch *~grīpaną~, aus PIE *~gʰreyb-~ („greifen, packen“). Ein starkes Verb der Klasse I (~greift~, ~griff~, ~gegriffen~), wie ~reiten~ und ~schneiden~. Verwandt mit Englisch ~gripe~, Niederländisch ~grijpen~, Niederdeutsch ~griepen~, Altnordisch ~gripa~.\n- ~heraus-~: Durchsichtig zusammengesetzt aus ~her-~ („hierher, zum Sprecher hin“) und ~aus~, also „heraus zum Sprecher hin“ — das Spiegelbild von ~hinaus~, „hinaus vom Sprecher weg“. Dieser Gegensatz von her und hin ist die nützlichste Tatsache über die ganze deiktische Gruppe. Umgangssprachlich wird ~heraus~ zu ~raus~ verkürzt. Siehe die Einträge zu ~her-~ und ~aus-~. Die Partikel drückt eine Bewegung nach außen zum Sprecher hin aus.\n\nAus dem körperlichen Hineingreifen und Fassen entsteht das abstrakte ~herausgreifen~ — einen Punkt oder ein Beispiel aus einer größeren Menge zur Betrachtung auswählen.",
+   "en": "A separable compound of ~heraus-~ + ~greifen~:\n\n- ~greifen~: From MHG ~grîfen~, from OHG ~grīfan~, from Proto-West Germanic *~grīpan~, from Proto-Germanic *~grīpaną~, from PIE *~gʰreyb-~ (\"to grab, grasp\"). A class I strong verb (~greift~, ~griff~, ~gegriffen~), like ~reiten~ and ~schneiden~. Cognate with English ~gripe~, Dutch ~grijpen~, Low German ~griepen~, Old Norse ~gripa~.\n- ~heraus-~: Transparently ~her-~ (\"hither, toward the speaker\") plus ~aus~ (\"out\"), hence \"out toward the speaker\" — the mirror of ~hinaus~, \"out away from the speaker.\" This her/hin opposition is the single most useful fact about the whole deictic group. Colloquial German contracts ~heraus~ to ~raus~. See the entries for ~her-~ and ~aus-~. The particle conveys outward motion toward the speaker.\n\nFrom physically reaching in and grasping comes the abstract ~herausgreifen~ — to single out one point or example from a larger set for attention."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Ich möchte einige wenige Punkte herausgreifen.",
+    "source": "Bundestag — Plenarprotokoll 20/210"
+   },
+   "en": {
+    "sentence": "I would like to single out a few points.",
+    "source": "Bundestag — Plenarprotokoll 20/210"
+   }
+  },
+  "notes": null
+ },
+ "heraushalten": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~heraus-~ + ~halten~:\n\n- ~halten~: Aus Mhd. ~halten~, aus Ahd. ~haltan~, aus Proto-Westgermanisch *~haldan~, aus Urgermanisch *~haldaną~. Verwandt mit Englisch ~hold~, Niederländisch ~houden~, Niederdeutsch ~holden~, Dänisch ~holde~, Isländisch ~halda~, Schwedisch ~hålla~.\n- ~heraus-~: Durchsichtig zusammengesetzt aus ~her-~ („hierher, zum Sprecher hin“) und ~aus~, also „heraus zum Sprecher hin“ — das Spiegelbild von ~hinaus~, „hinaus vom Sprecher weg“. Dieser Gegensatz von her und hin ist die nützlichste Tatsache über die ganze deiktische Gruppe. Umgangssprachlich wird ~heraus~ zu ~raus~ verkürzt. Siehe die Einträge zu ~her-~ und ~aus-~. Die Partikel drückt eine Bewegung nach außen zum Sprecher hin aus.\n\nMeist reflexiv — ~sich aus etwas heraushalten~, sich nicht einmischen —, daneben aber auch wörtlich, einen Gegenstand aus einem Fenster halten.",
+   "en": "A separable compound of ~heraus-~ + ~halten~:\n\n- ~halten~: From MHG ~halten~, from OHG ~haltan~, from Proto-West Germanic *~haldan~, from Proto-Germanic *~haldaną~. Cognate with English ~hold~, Dutch ~houden~, Low German ~holden~, Danish ~holde~, Icelandic ~halda~, Swedish ~hålla~.\n- ~heraus-~: Transparently ~her-~ (\"hither, toward the speaker\") plus ~aus~ (\"out\"), hence \"out toward the speaker\" — the mirror of ~hinaus~, \"out away from the speaker.\" This her/hin opposition is the single most useful fact about the whole deictic group. Colloquial German contracts ~heraus~ to ~raus~. See the entries for ~her-~ and ~aus-~. The particle conveys outward motion toward the speaker.\n\nMost often reflexive — ~sich aus etwas heraushalten~, to keep out of a matter, to stay uninvolved — though it also serves literally, holding an object out of a window."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Es gibt gute Gründe, warum sich der Staat aus der Lohnfindung heraushalten muss.",
+    "source": "Bundestag — Plenarprotokoll 20/207"
+   },
+   "en": {
+    "sentence": "There are good reasons why the state must keep out of wage-setting.",
+    "source": "Bundestag — Plenarprotokoll 20/207"
+   }
+  },
+  "notes": "Sole candidate attests the reflexive 'sich heraushalten aus' (keep out of), not the literal 'stick/hold out' of the gloss."
+ },
+ "herausheben": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~heraus-~ + ~heben~:\n\n- ~heben~: Aus Mhd. ~heben~, ~heven~, aus Ahd. ~heffen~, ~heven~, aus Proto-Westgermanisch *~habbjan~, aus Urgermanisch *~habjaną~, aus PIE *~keh₂p-~ („ergreifen, packen“). Ein starkes Verb der Klasse VI: Präteritum ~hob~ und Partizip ~gehoben~ setzen das starke Ablautparadigma fort. Verwandt mit Englisch ~heave~, Niederländisch ~heffen~, Dänisch ~hæve~.\n- ~heraus-~: Durchsichtig zusammengesetzt aus ~her-~ („hierher, zum Sprecher hin“) und ~aus~, also „heraus zum Sprecher hin“ — das Spiegelbild von ~hinaus~, „hinaus vom Sprecher weg“. Dieser Gegensatz von her und hin ist die nützlichste Tatsache über die ganze deiktische Gruppe. Umgangssprachlich wird ~heraus~ zu ~raus~ verkürzt. Siehe die Einträge zu ~her-~ und ~aus-~. Die Partikel drückt eine Bewegung nach außen zum Sprecher hin aus.\n\nWörtlich etwas herausheben; übertragen etwas hervorheben, es vor seinem Hintergrund abheben — der Sinn, in dem ein Gutachten einen Befund betont.",
+   "en": "A separable compound of ~heraus-~ + ~heben~:\n\n- ~heben~: From MHG ~heben~, ~heven~, from OHG ~heffen~, ~heven~, from Proto-West Germanic *~habbjan~, from Proto-Germanic *~habjaną~, from PIE *~keh₂p-~ (\"to seize, take hold of\"). A class VI strong verb: the past ~hob~ and participle ~gehoben~ continue the strong ablaut paradigm. Cognate with English ~heave~, Dutch ~heffen~, Danish ~hæve~.\n- ~heraus-~: Transparently ~her-~ (\"hither, toward the speaker\") plus ~aus~ (\"out\"), hence \"out toward the speaker\" — the mirror of ~hinaus~, \"out away from the speaker.\" This her/hin opposition is the single most useful fact about the whole deictic group. Colloquial German contracts ~heraus~ to ~raus~. See the entries for ~her-~ and ~aus-~. The particle conveys outward motion toward the speaker.\n\nLiterally to lift out; figuratively to single out for emphasis, to make one thing stand out against its background — the sense in which a report highlights a finding."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Die Bedeutsamkeit von Sozialen Innovationen als wesentliches Element zur Bewältigung gesellschaftlicher Herausforderungen – wie Klimawandel und demografische Alterung – wurde im EFIGutachten 2024 erneut herausgehoben.",
+    "source": "BuFI Kurzfassung (2024)"
+   },
+   "en": {
+    "sentence": "The significance of social innovations as an essential element in meeting societal challenges—such as climate change and demographic aging—was once again emphasized in the EFI report 2024.",
+    "source": "BuFI Kurzfassung (2024)"
+   }
+  },
+  "notes": "Both candidates are figurative 'emphasize/highlight' rather than the literal 'lift out' gloss; the shipped sentence carries the source's joined token 'EFIGutachten' (a lost hyphen in 'EFI-Gutachten'), quoted verbatim per brief."
+ },
+ "herausholen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~heraus-~ + ~holen~:\n\n- ~holen~: Aus Mhd. ~holen~, ~holn~, aus Ahd. ~holōn~, ~holēn~ („holen, herbeischaffen“), aus Proto-Westgermanisch *~holōn~, möglicherweise aus PIE *~kelh₁-~ („rufen, herbeirufen“) über „herbeirufen“ → „hingehen und holen“; die Verbindung ist unsicher. Verwandt mit Niederländisch ~halen~, Niederdeutsch ~halen~, Englisch ~haul~ (über das Französische).\n- ~heraus-~: Durchsichtig zusammengesetzt aus ~her-~ („hierher, zum Sprecher hin“) und ~aus~, also „heraus zum Sprecher hin“ — das Spiegelbild von ~hinaus~, „hinaus vom Sprecher weg“. Dieser Gegensatz von her und hin ist die nützlichste Tatsache über die ganze deiktische Gruppe. Umgangssprachlich wird ~heraus~ zu ~raus~ verkürzt. Siehe die Einträge zu ~her-~ und ~aus-~. Die Partikel drückt eine Bewegung nach außen zum Sprecher hin aus.\n\nÜber das Herausholen eines Gegenstands hinaus heißt ~herausholen~ oft, das Äußerste aus etwas zu gewinnen — ~das Beste herausholen~.",
+   "en": "A separable compound of ~heraus-~ + ~holen~:\n\n- ~holen~: From MHG ~holen~, ~holn~, from OHG ~holōn~, ~holēn~ (\"to fetch, get\"), from Proto-West Germanic *~holōn~, possibly from PIE *~kelh₁-~ (\"to call, summon\") via \"to summon\" → \"to go and fetch\"; the connection is uncertain. Cognate with Dutch ~halen~, Low German ~halen~, English ~haul~ (via French).\n- ~heraus-~: Transparently ~her-~ (\"hither, toward the speaker\") plus ~aus~ (\"out\"), hence \"out toward the speaker\" — the mirror of ~hinaus~, \"out away from the speaker.\" This her/hin opposition is the single most useful fact about the whole deictic group. Colloquial German contracts ~heraus~ to ~raus~. See the entries for ~her-~ and ~aus-~. The particle conveys outward motion toward the speaker.\n\nBeyond fetching an object out, ~herausholen~ commonly means to extract the most from something — ~das Beste herausholen~, to get the best out of a situation."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "„Es ist nichts geschehn,“ flüsterte sie, „ich habe nur einen Teller gegen die Mauer geworfen, um Sie herauszuholen.",
+    "source": "Kafka — Der Proceß"
+   },
+   "en": {
+    "sentence": "“Nothing has happened,” she whispered, “I only threw a plate against the wall to get you out.”",
+    "source": "Kafka — Der Proceß"
+   }
+  },
+  "notes": "Rank-0/1 Grimm candidates run 37 and 42 words; took the in-band Kafka candidate (index 2, ~19 words) attesting the same 'get out' gloss."
+ },
+ "herauskommen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~heraus-~ + ~kommen~:\n\n- ~kommen~: Aus Mhd. ~quemen~, ~komen~, ~kumen~, aus Ahd. ~queman~ (seltener ~cuman~, ~chuman~), aus Proto-Westgermanisch *~kweman~, aus Urgermanisch *~kwemaną~, aus PIE *~gʷem-~. Verwandt mit Englisch ~come~, Niederdeutsch ~kamen~, Niederländisch ~komen~, Dänisch ~komme~.\n- ~heraus-~: Durchsichtig zusammengesetzt aus ~her-~ („hierher, zum Sprecher hin“) und ~aus~, also „heraus zum Sprecher hin“ — das Spiegelbild von ~hinaus~, „hinaus vom Sprecher weg“. Dieser Gegensatz von her und hin ist die nützlichste Tatsache über die ganze deiktische Gruppe. Umgangssprachlich wird ~heraus~ zu ~raus~ verkürzt. Siehe die Einträge zu ~her-~ und ~aus-~. Die Partikel drückt eine Bewegung nach außen zum Sprecher hin aus.\n\nDas alltägliche ~herauskommen~ erstreckt sich auf Ergebnisse — ~dabei kommt nichts heraus~ —, der Sinn eines Resultats, das aus einem Vorgang hervorgeht.",
+   "en": "A separable compound of ~heraus-~ + ~kommen~:\n\n- ~kommen~: From MHG ~quemen~, ~komen~, ~kumen~, from OHG ~queman~ (rarer ~cuman~, ~chuman~), from Proto-West Germanic *~kweman~, from Proto-Germanic *~kwemaną~, from PIE *~gʷem-~. Cognate with English ~come~, Low German ~kamen~, Dutch ~komen~, Danish ~komme~.\n- ~heraus-~: Transparently ~her-~ (\"hither, toward the speaker\") plus ~aus~ (\"out\"), hence \"out toward the speaker\" — the mirror of ~hinaus~, \"out away from the speaker.\" This her/hin opposition is the single most useful fact about the whole deictic group. Colloquial German contracts ~heraus~ to ~raus~. See the entries for ~her-~ and ~aus-~. The particle conveys outward motion toward the speaker.\n\nThe everyday ~herauskommen~ extends to results and outcomes — ~dabei kommt nichts heraus~, \"nothing comes of it\" — the sense of a conclusion emerging from a process."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Schon viele wären wohl hinein, aber noch keiner wieder herausgekommen.",
+    "source": "Grimm — Märchen"
+   },
+   "en": {
+    "sentence": "Many, no doubt, had gone in, but not one had ever come out again.",
+    "source": "Grimm — Märchen"
+   }
+  },
+  "notes": null
+ },
+ "herauskriegen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~heraus-~ + ~kriegen~:\n\n- ~kriegen~: Aus Mhd. ~kriegen~ („Krieg führen, nach etwas streben“), einer Verbbildung von ~Krieg~, aus Ahd. ~krig~, aus Proto-Westgermanisch *~krīg~, dessen Herkunft umstritten ist. Der Sinn des Erlangens verdrängte den militärischen; umgangssprachlich heißt ~kriegen~ heute schlicht „bekommen“. Verwandt mit Niederländisch ~krijgen~ („bekommen“), Bairisch ~kriagn~.\n- ~heraus-~: Durchsichtig zusammengesetzt aus ~her-~ („hierher, zum Sprecher hin“) und ~aus~, also „heraus zum Sprecher hin“ — das Spiegelbild von ~hinaus~, „hinaus vom Sprecher weg“. Dieser Gegensatz von her und hin ist die nützlichste Tatsache über die ganze deiktische Gruppe. Umgangssprachlich wird ~heraus~ zu ~raus~ verkürzt. Siehe die Einträge zu ~her-~ und ~aus-~. Die Partikel drückt das Herausbringen an die Öffentlichkeit aus — herausgeben, herausfinden, bekannt machen.\n\nDas umgangssprachliche ~kriegen~ „bekommen“ verleiht ~herauskriegen~ den Sinn von „ermitteln, in Erfahrung bringen“ — einem Rätsel oder einer Person eine Antwort abgewinnen.",
+   "en": "A separable compound of ~heraus-~ + ~kriegen~:\n\n- ~kriegen~: From MHG ~kriegen~ (\"to war, to strive for\"), a verbalization of ~Krieg~ (\"war\"), from OHG ~krig~, from Proto-West Germanic *~krīg~, whose origin is debated. The \"obtaining\" sense overshadowed the military one; colloquial modern German ~kriegen~ simply means \"to get.\" Cognate with Dutch ~krijgen~ (\"to get\"), Bavarian ~kriagn~.\n- ~heraus-~: Transparently ~her-~ (\"hither, toward the speaker\") plus ~aus~ (\"out\"), hence \"out toward the speaker\" — the mirror of ~hinaus~, \"out away from the speaker.\" This her/hin opposition is the single most useful fact about the whole deictic group. Colloquial German contracts ~heraus~ to ~raus~. See the entries for ~her-~ and ~aus-~. The particle conveys bringing something out into the open — publishing, discovering, or making public.\n\nColloquial ~kriegen~ \"to get\" gives ~herauskriegen~ the sense of \"to work out, to ascertain\" — to get an answer out of a puzzle or a person."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "herauslösen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~heraus-~ + ~lösen~:\n\n- ~lösen~: Aus mhd. ~lœsen~, ~lōsen~, aus ahd. ~lōsen~, aus proto-westgermanisch *~lausijan~, aus urgermanisch *~lausijaną~, einem Kausativ von *~leusaną~ („verlieren, loslassen“), denominativ über *~lausaz~ („los, frei“), aus PIE *~lewh₁-~ („schneiden, trennen, lösen“). Verwandt mit englisch ~loose~ (über altnordisch ~lauss~), niederländisch ~lozen~.\n- ~heraus-~: Durchsichtig zusammengesetzt aus ~her-~ („hierher, zum Sprecher hin“) und ~aus~, also „heraus zum Sprecher hin“ — das Spiegelbild von ~hinaus~, „hinaus vom Sprecher weg“. Dieser Gegensatz von her und hin ist die nützlichste Tatsache über die ganze deiktische Gruppe. Umgangssprachlich wird ~heraus~ zu ~raus~ verkürzt. Siehe die Einträge zu ~her-~ und ~aus-~. Die Partikel drückt eine Bewegung nach außen zum Sprecher hin aus.\n\n~herauslösen~ heißt, einen Teil aus einem Ganzen zu lösen — ein Stoff, der aus einer Mischung gelöst wird, eine Stelle, die aus ihrem Zusammenhang gelöst wird.",
+   "en": "A separable compound of ~heraus-~ + ~lösen~:\n\n- ~lösen~: From MHG ~lœsen~, ~lōsen~, from OHG ~lōsen~, from Proto-West Germanic *~lausijan~, from Proto-Germanic *~lausijaną~, a causative of *~leusaną~ (\"to lose, let loose\"), denominative via *~lausaz~ (\"loose, free\"), from PIE *~lewh₁-~ (\"to cut, sever, loosen\"). Cognate with English ~loose~ (via Old Norse ~lauss~), Dutch ~lozen~.\n- ~heraus-~: Transparently ~her-~ (\"hither, toward the speaker\") plus ~aus~ (\"out\"), hence \"out toward the speaker\" — the mirror of ~hinaus~, \"out away from the speaker.\" This her/hin opposition is the single most useful fact about the whole deictic group. Colloquial German contracts ~heraus~ to ~raus~. See the entries for ~her-~ and ~aus-~. The particle conveys outward motion toward the speaker.\n\n~herauslösen~ is to detach or isolate a part from a whole — a substance dissolved out of a mixture, a passage lifted from its context."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "herausnehmen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~heraus-~ + ~nehmen~:\n\n- ~nehmen~: Aus mhd. ~nëmen~, aus ahd. ~nëman~, aus proto-westgermanisch *~neman~, aus urgermanisch *~nemaną~, aus PIE *~nem-~ („sich seinen Anteil geben oder nehmen“). Ein starkes Verb der Klasse IV. Verwandt mit niederländisch ~nemen~, englisch ~nim~ („nehmen, stibitzen“), dänisch ~nemme~.\n- ~heraus-~: Durchsichtig zusammengesetzt aus ~her-~ („hierher, zum Sprecher hin“) und ~aus~, also „heraus zum Sprecher hin“ — das Spiegelbild von ~hinaus~, „hinaus vom Sprecher weg“. Dieser Gegensatz von her und hin ist die nützlichste Tatsache über die ganze deiktische Gruppe. Umgangssprachlich wird ~heraus~ zu ~raus~ verkürzt. Siehe die Einträge zu ~her-~ und ~aus-~. Die Partikel drückt eine Bewegung nach außen zum Sprecher hin aus.\n\nÜber das wörtliche Herausnehmen hinaus bedeutet das reflexive ~sich etwas herausnehmen~, sich etwas anmaßen — wie in Nietzsches Ausruf ~Was nahmt ihr euch heraus!~",
+   "en": "A separable compound of ~heraus-~ + ~nehmen~:\n\n- ~nehmen~: From MHG ~nëmen~, from OHG ~nëman~, from Proto-West Germanic *~neman~, from Proto-Germanic *~nemaną~, from PIE *~nem-~ (\"to give or take one's due\"). A class IV strong verb. Cognate with Dutch ~nemen~, English ~nim~ (\"to take, filch\"), Danish ~nemme~.\n- ~heraus-~: Transparently ~her-~ (\"hither, toward the speaker\") plus ~aus~ (\"out\"), hence \"out toward the speaker\" — the mirror of ~hinaus~, \"out away from the speaker.\" This her/hin opposition is the single most useful fact about the whole deictic group. Colloquial German contracts ~heraus~ to ~raus~. See the entries for ~her-~ and ~aus-~. The particle conveys outward motion toward the speaker.\n\nBeyond literally taking something out, the reflexive ~sich etwas herausnehmen~ means to take a liberty, to presume — as in Nietzsche's exclamation ~Was nahmt ihr euch heraus!~"
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Die beiden Wanderer fanden eine Herberge und deckten sich auf dem Strohlager mit ihren Röcken zu, vergaßen aber wegen ihrer Müdigkeit die Kohlen zuvor herauszunehmen.",
+    "source": "Grimm — Märchen"
+   },
+   "en": {
+    "sentence": "The two wanderers found an inn and covered themselves with their coats on the straw bed, but in their weariness forgot to take the coals out first.",
+    "source": "Grimm — Märchen"
+   }
+  },
+  "notes": null
+ },
+ "herausreden": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~heraus-~ + ~reden~:\n\n- ~reden~: Aus Mhd. ~reden~, aus Ahd. ~redōn~, ~rediōn~ („sprechen“), ein denominales Verb von ~reda~, ~redia~ („Rede, Wort, Meinung“), aus Urgermanisch *~raþjǭ~ („Rechenschaft, Rede“). Die gemeinsame PIE-Wurzel trug den Sinn geordneter, rechenschaftspflichtiger Rede. Verwandt mit lateinisch ~ratiō~ (woraus englisch ~ratio~, ~reason~), englisch ~rede~ („Rat“) und deutsch ~Rat~.\n- ~heraus-~: Durchsichtig zusammengesetzt aus ~her-~ („hierher, zum Sprecher hin“) und ~aus~, also „heraus zum Sprecher hin“ — das Spiegelbild von ~hinaus~, „hinaus vom Sprecher weg“. Dieser Gegensatz von her und hin ist die nützlichste Tatsache über die ganze deiktische Gruppe. Umgangssprachlich wird ~heraus~ zu ~raus~ verkürzt. Siehe die Einträge zu ~her-~ und ~aus-~. Die Partikel drückt eine Bewegung nach außen zum Sprecher hin aus.\n\nReflexiv heißt ~sich herausreden~, sich mit Worten aus einer Lage zu winden, Ausflüchte zu machen — einer Anschuldigung durch Reden statt Handeln zu entgehen.",
+   "en": "A separable compound of ~heraus-~ + ~reden~:\n\n- ~reden~: From MHG ~reden~, from OHG ~redōn~, ~rediōn~ (\"to speak\"), a denominal verb from ~reda~, ~redia~ (\"speech, word, opinion\"), from Proto-Germanic *~raþjǭ~ (\"accountability, speech\"). The shared PIE root carried the sense of organized, accountable speech. Cognate with Latin ~ratiō~ (whence English ~ratio~, ~reason~), English ~rede~ (\"counsel\"), and German ~Rat~.\n- ~heraus-~: Transparently ~her-~ (\"hither, toward the speaker\") plus ~aus~ (\"out\"), hence \"out toward the speaker\" — the mirror of ~hinaus~, \"out away from the speaker.\" This her/hin opposition is the single most useful fact about the whole deictic group. Colloquial German contracts ~heraus~ to ~raus~. See the entries for ~her-~ and ~aus-~. The particle conveys outward motion toward the speaker.\n\nReflexive ~sich herausreden~ means to talk one's way out, to make excuses — to escape a charge or obligation by talking rather than acting."
+  },
+  "sentence": null,
+  "notes": "Sole candidate is 'reden ... vom Hause heraus' — plain reden with an adverbial 'heraus', not the separable verb herausreden — so no genuine attestation."
+ },
+ "herausreißen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~heraus-~ + ~reißen~:\n\n- ~reißen~: Aus Mhd. ~rīȥen~, aus Ahd. ~rīȥan~ („kratzen“), aus einer Verschmelzung zweier proto-westgermanischer Verben: *~wrītan~, aus Urgermanisch *~wrītaną~, aus PIE *~wer-~ („schneiden, kratzen, ritzen“), und *~hrītan~, aus Urgermanisch *~hrītaną~. Die Verschmelzung hinterließ ein ungewöhnlich breites Bedeutungsfeld; *~wrītaną~ ergab auch englisch ~write~, ursprünglich „kratzen, ritzen“. Verwandt mit niederländisch ~rijten~, niederdeutsch ~rieten~.\n- ~heraus-~: Durchsichtig zusammengesetzt aus ~her-~ („hierher, zum Sprecher hin“) und ~aus~, also „heraus zum Sprecher hin“ — das Spiegelbild von ~hinaus~, „hinaus vom Sprecher weg“. Dieser Gegensatz von her und hin ist die nützlichste Tatsache über die ganze deiktische Gruppe. Umgangssprachlich wird ~heraus~ zu ~raus~ verkürzt. Siehe die Einträge zu ~her-~ und ~aus-~. Die Partikel drückt eine Bewegung nach außen zum Sprecher hin aus.\n\nWörtlich herausreißen; übertragen heißt ~jemanden herausreißen~, jemanden aus Gefahr oder Not zu retten — der Sinn in Luthers Psalm.",
+   "en": "A separable compound of ~heraus-~ + ~reißen~:\n\n- ~reißen~: From MHG ~rīȥen~, from OHG ~rīȥan~ (\"to scratch\"), from a conflation of two Proto-West Germanic verbs: *~wrītan~, from Proto-Germanic *~wrītaną~, from PIE *~wer-~ (\"to cut, scratch, tear, sketch an outline\"), and *~hrītan~, from Proto-Germanic *~hrītaną~. The merger left an unusually broad semantic field, and *~wrītaną~ also gave English ~write~, originally \"to scratch, carve.\" Cognate with Dutch ~rijten~, Low German ~rieten~.\n- ~heraus-~: Transparently ~her-~ (\"hither, toward the speaker\") plus ~aus~ (\"out\"), hence \"out toward the speaker\" — the mirror of ~hinaus~, \"out away from the speaker.\" This her/hin opposition is the single most useful fact about the whole deictic group. Colloquial German contracts ~heraus~ to ~raus~. See the entries for ~her-~ and ~aus-~. The particle conveys outward motion toward the speaker.\n\nLiterally to tear out; figuratively, ~jemanden herausreißen~ is to rescue someone from danger or difficulty, the sense Luther's psalm gives it."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Er ruft mich an, so will ich ihn erhören; ich bin bei ihm in der Not; ich will ihn herausreißen und zu Ehren bringen.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "He calls upon me, so I will answer him; I am with him in trouble; I will pull him out and bring him to honor.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": null
+ },
+ "herausschaffen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~heraus-~ + ~schaffen~:\n\n- ~schaffen~: Zwei historisch verschiedene Verben sind unter einem Infinitiv zusammengefallen und unterscheiden sich nur durch ihre Konjugation. Das starke ~schaffen~ (~schuf~, ~geschaffen~, „erschaffen“) stammt aus Mhd. ~schaffen~, Ahd. ~scaffan~, einer Nebenform von ~skephen~, aus Proto-Westgermanisch *~skappjan~; das ~-f-~ wurde hauptsächlich vom Partizip ~giscaffan~ rückgebildet. Das schwache ~schaffen~ (~schaffte~, ~geschafft~, „bewältigen“) stammt aus Ahd. ~skaffōn~, aus Proto-Westgermanisch *~skapōn~, aus derselben Wurzel. Verwandt mit niederländisch ~scheppen~, englisch ~shape~.\n- ~heraus-~: Durchsichtig zusammengesetzt aus ~her-~ („hierher, zum Sprecher hin“) und ~aus~, also „heraus zum Sprecher hin“ — das Spiegelbild von ~hinaus~, „hinaus vom Sprecher weg“. Dieser Gegensatz von her und hin ist die nützlichste Tatsache über die ganze deiktische Gruppe. Umgangssprachlich wird ~heraus~ zu ~raus~ verkürzt. Siehe die Einträge zu ~her-~ und ~aus-~. Die Partikel drückt eine Bewegung nach außen zum Sprecher hin aus.\n\nAuf dem schwachen ~schaffen~ „bewältigen“ gebildet (Familie ~w~, nicht das starke ~schaffen~ „erschaffen“), heißt ~herausschaffen~, es zu schaffen, etwas oder jemanden aus einer schwierigen Lage herauszubefördern.",
+   "en": "A separable compound of ~heraus-~ + ~schaffen~:\n\n- ~schaffen~: Two historically distinct verbs have merged under a single infinitive, distinguished only by their conjugation. The strong ~schaffen~ (~schuf~, ~geschaffen~, \"to create\") descends from MHG ~schaffen~, OHG ~scaffan~, a byform of ~skephen~, from Proto-West Germanic *~skappjan~; the ~-f-~ was chiefly back-formed from the participle ~giscaffan~. The weak ~schaffen~ (~schaffte~, ~geschafft~, \"to manage, accomplish\") descends from OHG ~skaffōn~, from Proto-West Germanic *~skapōn~, from the same root. Cognate with Dutch ~scheppen~, English ~shape~.\n- ~heraus-~: Transparently ~her-~ (\"hither, toward the speaker\") plus ~aus~ (\"out\"), hence \"out toward the speaker\" — the mirror of ~hinaus~, \"out away from the speaker.\" This her/hin opposition is the single most useful fact about the whole deictic group. Colloquial German contracts ~heraus~ to ~raus~. See the entries for ~her-~ and ~aus-~. The particle conveys outward motion toward the speaker.\n\nBuilt on weak ~schaffen~ \"to manage, accomplish\" (family ~w~, not strong ~schaffen~ \"to create\"), ~herausschaffen~ means to succeed in getting something or someone out — to convey out of a difficult place."
+  },
+  "sentence": null,
+  "notes": "Root schaffen is two homographs; family 'w' (weak) selects the 'manage/accomplish' branch, stated in the closer. No candidates."
+ },
+ "herausschauen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~heraus-~ + ~schauen~:\n\n- ~schauen~: Aus Mhd. ~schouwen~, aus Ahd. ~scouwōn~, aus Urgermanisch *~skawwōną~ („blicken, sehen, beobachten“), aus PIE *~(s)kewh₁-~ („beachten, schauen, wahrnehmen“). Dieselbe Wurzel ergibt englisch ~show~; die germanischen Nachkommen teilen sich zwischen intransitivem „schauen“ und transitivem „sichtbar machen“. Das Verb ist charakteristisch für den süddeutschen, österreichischen und schweizerischen Sprachgebrauch. Verwandt mit englisch ~show~, niederländisch ~schouwen~.\n- ~heraus-~: Durchsichtig zusammengesetzt aus ~her-~ („hierher, zum Sprecher hin“) und ~aus~, also „heraus zum Sprecher hin“ — das Spiegelbild von ~hinaus~, „hinaus vom Sprecher weg“. Dieser Gegensatz von her und hin ist die nützlichste Tatsache über die ganze deiktische Gruppe. Umgangssprachlich wird ~heraus~ zu ~raus~ verkürzt. Siehe die Einträge zu ~her-~ und ~aus-~. Die Partikel drückt eine Bewegung nach außen zum Sprecher hin aus.\n\nDas süddeutsche ~schauen~ „blicken“ ergibt ~herausschauen~ „hinausblicken“ — aus einer Öffnung spähen, umgangssprachlich auch ~dabei schaut nichts heraus~, „es kommt nichts dabei heraus“.",
+   "en": "A separable compound of ~heraus-~ + ~schauen~:\n\n- ~schauen~: From MHG ~schouwen~, from OHG ~scouwōn~, from Proto-Germanic *~skawwōną~ (\"to look, see, watch\"), from PIE *~(s)kewh₁-~ (\"to heed, look, take note of\"). The same root gives English ~show~, the Germanic descendants dividing between intransitive \"to look\" and transitive \"to make visible.\" The verb is characteristic of southern German, Austrian, and Swiss usage. Cognate with English ~show~, Dutch ~schouwen~.\n- ~heraus-~: Transparently ~her-~ (\"hither, toward the speaker\") plus ~aus~ (\"out\"), hence \"out toward the speaker\" — the mirror of ~hinaus~, \"out away from the speaker.\" This her/hin opposition is the single most useful fact about the whole deictic group. Colloquial German contracts ~heraus~ to ~raus~. See the entries for ~her-~ and ~aus-~. The particle conveys outward motion toward the speaker.\n\nSouthern ~schauen~ \"to look\" gives ~herausschauen~ \"to look out\" — to peer out from an opening, and colloquially ~dabei schaut nichts heraus~, \"nothing comes of it.\""
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "herausschmecken": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~heraus-~ + ~schmecken~:\n\n- ~schmecken~: Aus Mhd. ~smecken~, aus Ahd. ~smecchen~, aus Proto-Westgermanisch *~smakkijan~ („schmecken“), zu *~smakku~ („ein Geschmack“). Im süddeutschen und österreichischen Sprachraum bedeutet ~schmecken~ auch „riechen“. Verwandt mit Englisch ~smack~ (wie in „it smacks of“), Niederländisch ~smaken~.\n- ~heraus-~: Durchsichtig zusammengesetzt aus ~her-~ („hierher, zum Sprecher hin“) und ~aus~, also „heraus zum Sprecher hin“ — das Spiegelbild von ~hinaus~, „hinaus vom Sprecher weg“. Dieser Gegensatz von her und hin ist die nützlichste Tatsache über die ganze deiktische Gruppe. Umgangssprachlich wird ~heraus~ zu ~raus~ verkürzt. Siehe die Einträge zu ~her-~ und ~aus-~. Die Partikel drückt das Herausbringen an die Öffentlichkeit aus — herausgeben, herausfinden, bekannt machen.\n\n~herausschmecken~ heißt, einen bestimmten Geschmack in einer Speise zu erkennen — eine einzelne Zutat aus dem Ganzen herauszuschmecken, ein wahrnehmendes Aufspüren.",
+   "en": "A separable compound of ~heraus-~ + ~schmecken~:\n\n- ~schmecken~: From MHG ~smecken~, from OHG ~smecchen~, from Proto-West Germanic *~smakkijan~ (\"to taste\"), from *~smakku~ (\"a taste\"). In southern and Austrian German ~schmecken~ also means \"to smell.\" Cognate with English ~smack~ (as in \"it smacks of\"), Dutch ~smaken~.\n- ~heraus-~: Transparently ~her-~ (\"hither, toward the speaker\") plus ~aus~ (\"out\"), hence \"out toward the speaker\" — the mirror of ~hinaus~, \"out away from the speaker.\" This her/hin opposition is the single most useful fact about the whole deictic group. Colloquial German contracts ~heraus~ to ~raus~. See the entries for ~her-~ and ~aus-~. The particle conveys bringing something out into the open — publishing, discovering, or making public.\n\n~herausschmecken~ is to detect a particular flavor within a dish — to taste out one ingredient from the whole, a perceptual discovering."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "herausschmeißen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~heraus-~ + ~schmeißen~:\n\n- ~schmeißen~: Aus Mhd. ~smīȥen~, aus Ahd. ~smīȥan~, aus Proto-Westgermanisch *~smītan~, aus Urgermanisch *~smītaną~, aus PIE *~smeyd-~. Ein starkes Verb der Klasse I (~schmeißen~, ~schmiss~, ~geschmissen~). Verwandt mit Englisch ~smite~, Niederländisch ~smijten~, Dänisch ~smide~, Gotisch ~bismeitan~ („bestreichen, salben“).\n- ~heraus-~: Durchsichtig zusammengesetzt aus ~her-~ („hierher, zum Sprecher hin“) und ~aus~, also „heraus zum Sprecher hin“ — das Spiegelbild von ~hinaus~, „hinaus vom Sprecher weg“. Dieser Gegensatz von her und hin ist die nützlichste Tatsache über die ganze deiktische Gruppe. Umgangssprachlich wird ~heraus~ zu ~raus~ verkürzt. Siehe die Einträge zu ~her-~ und ~aus-~. Die Partikel drückt eine Bewegung nach außen zum Sprecher hin aus.\n\nUmgangssprachlich und derb heißt ~herausschmeißen~, jemanden hinauszuwerfen — jemanden gewaltsam aus einem Ort oder Amt zu entfernen.",
+   "en": "A separable compound of ~heraus-~ + ~schmeißen~:\n\n- ~schmeißen~: From MHG ~smīȥen~, from OHG ~smīȥan~, from Proto-West Germanic *~smītan~, from Proto-Germanic *~smītaną~, from PIE *~smeyd-~. A class I strong verb (~schmeißen~, ~schmiss~, ~geschmissen~). Cognate with English ~smite~, Dutch ~smijten~, Danish ~smide~, Gothic ~bismeitan~ (\"to smear, to anoint\").\n- ~heraus-~: Transparently ~her-~ (\"hither, toward the speaker\") plus ~aus~ (\"out\"), hence \"out toward the speaker\" — the mirror of ~hinaus~, \"out away from the speaker.\" This her/hin opposition is the single most useful fact about the whole deictic group. Colloquial German contracts ~heraus~ to ~raus~. See the entries for ~her-~ and ~aus-~. The particle conveys outward motion toward the speaker.\n\nColloquial and blunt, ~herausschmeißen~ is to throw someone out — to eject forcibly from a place or a position."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "herausschneiden": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~heraus-~ + ~schneiden~:\n\n- ~schneiden~: Aus Mhd. ~snīden~, aus Ahd. ~snīdan~, aus Proto-Westgermanisch *~snīþan~ („schneiden“); eine gesicherte PIE-Wurzel fehlt, das Wort könnte eine germanische Neubildung sein. Ein starkes Verb der Klasse I (~schneiden~, ~schnitt~, ~geschnitten~). Verwandt mit archaisch Englisch ~snithe~ („schneiden“), Niederländisch ~snijden~, Isländisch ~sníða~.\n- ~heraus-~: Durchsichtig zusammengesetzt aus ~her-~ („hierher, zum Sprecher hin“) und ~aus~, also „heraus zum Sprecher hin“ — das Spiegelbild von ~hinaus~, „hinaus vom Sprecher weg“. Dieser Gegensatz von her und hin ist die nützlichste Tatsache über die ganze deiktische Gruppe. Umgangssprachlich wird ~heraus~ zu ~raus~ verkürzt. Siehe die Einträge zu ~her-~ und ~aus-~. Die Partikel drückt eine Bewegung nach außen zum Sprecher hin aus.\n\n~herausschneiden~ heißt, etwas herauszuschneiden — eine Form aus Stoff oder Papier, eine Szene aus einem Film, einen Tumor aus dem Gewebe.",
+   "en": "A separable compound of ~heraus-~ + ~schneiden~:\n\n- ~schneiden~: From MHG ~snīden~, from OHG ~snīdan~, from Proto-West Germanic *~snīþan~ (\"to cut\"); no secure PIE root has been established, and the word may be a Germanic innovation. A class I strong verb (~schneiden~, ~schnitt~, ~geschnitten~). Cognate with archaic English ~snithe~ (\"to cut\"), Dutch ~snijden~, Icelandic ~sníða~.\n- ~heraus-~: Transparently ~her-~ (\"hither, toward the speaker\") plus ~aus~ (\"out\"), hence \"out toward the speaker\" — the mirror of ~hinaus~, \"out away from the speaker.\" This her/hin opposition is the single most useful fact about the whole deictic group. Colloquial German contracts ~heraus~ to ~raus~. See the entries for ~her-~ and ~aus-~. The particle conveys outward motion toward the speaker.\n\n~herausschneiden~ is to cut something out — a shape from cloth or paper, a scene from a film, a tumor from tissue."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "herausschreiben": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~heraus-~ + ~schreiben~:\n\n- ~schreiben~: Aus Mhd. ~schrīben~, aus Ahd. ~scrīban~, aus Proto-Westgermanisch *~skrīban~, aus Urgermanisch *~skrībaną~, eine frühe Entlehnung aus Lateinisch ~scrībō~ („ich schreibe“), aus Protoitalisch *~skreiβō~, aus PIE *~(s)kreybʰ-~ („kratzen, ritzen“). Da die Entlehnung in der Römerzeit erfolgte, wurde das Verb voll ins starke System eingegliedert (Klasse I: ~schreiben~, ~schrieb~, ~geschrieben~). Verwandt mit Niederländisch ~schrijven~.\n- ~heraus-~: Durchsichtig zusammengesetzt aus ~her-~ („hierher, zum Sprecher hin“) und ~aus~, also „heraus zum Sprecher hin“ — das Spiegelbild von ~hinaus~, „hinaus vom Sprecher weg“. Dieser Gegensatz von her und hin ist die nützlichste Tatsache über die ganze deiktische Gruppe. Umgangssprachlich wird ~heraus~ zu ~raus~ verkürzt. Siehe die Einträge zu ~her-~ und ~aus-~. Die Partikel drückt eine Bewegung nach außen zum Sprecher hin aus.\n\n~herausschreiben~ heißt, schreibend zu entnehmen — ausgewählte Wörter oder Zahlen aus einer Quelle herausschreiben, wie Kafkas K. seltene Vokabeln aus dem Wörterbuch.",
+   "en": "A separable compound of ~heraus-~ + ~schreiben~:\n\n- ~schreiben~: From MHG ~schrīben~, from OHG ~scrīban~, from Proto-West Germanic *~skrīban~, from Proto-Germanic *~skrībaną~, an early borrowing from Latin ~scrībō~ (\"I write\"), from Proto-Italic *~skreiβō~, from PIE *~(s)kreybʰ-~ (\"to scratch, incise\"). Because the borrowing occurred in the Roman period, the verb was fully assimilated into the strong system (class I: ~schreiben~, ~schrieb~, ~geschrieben~). Cognate with Dutch ~schrijven~.\n- ~heraus-~: Transparently ~her-~ (\"hither, toward the speaker\") plus ~aus~ (\"out\"), hence \"out toward the speaker\" — the mirror of ~hinaus~, \"out away from the speaker.\" This her/hin opposition is the single most useful fact about the whole deictic group. Colloquial German contracts ~heraus~ to ~raus~. See the entries for ~her-~ and ~aus-~. The particle conveys outward motion toward the speaker.\n\n~herausschreiben~ is to copy or extract in writing — to write out selected words or figures from a source, as Kafka's K. copies rare vocabulary from the dictionary."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Die Zeit, die ihm noch freiblieb, verbrachte er damit, seltene Vokabeln, die er zur Führung im Dom benötigte, aus dem Wörterbuch herauszuschreiben.",
+    "source": "Kafka — Der Proceß"
+   },
+   "en": {
+    "sentence": "The time still left to him he spent writing out from the dictionary the rare words he needed for guiding in the cathedral.",
+    "source": "Kafka — Der Proceß"
+   }
+  },
+  "notes": null
+ },
+ "herausstechen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~heraus-~ + ~stechen~:\n\n- ~stechen~: Aus Mhd. ~stëchen~, aus Ahd. ~stëhhan~, aus Proto-Westgermanisch *~stekan~, aus Urgermanisch *~stekaną~ („stechen, piksen“), aus PIE *~(s)teg-~ („stechen, stoßen“). Verwandt mit Niederländisch ~steken~ („stechen, stacheln“), Altnordisch ~stinga~, Englisch ~stick~ (ursprünglich „stechen, durchbohren“).\n- ~heraus-~: Durchsichtig zusammengesetzt aus ~her-~ („hierher, zum Sprecher hin“) und ~aus~, also „heraus zum Sprecher hin“ — das Spiegelbild von ~hinaus~, „hinaus vom Sprecher weg“. Dieser Gegensatz von her und hin ist die nützlichste Tatsache über die ganze deiktische Gruppe. Umgangssprachlich wird ~heraus~ zu ~raus~ verkürzt. Siehe die Einträge zu ~her-~ und ~aus-~. Die Partikel drückt eine Bewegung nach außen zum Sprecher hin aus.\n\nAus dem wörtlichen Nach-außen-Stechen wird bei ~herausstechen~ das Auffallen — eine Farbe oder eine Begabung, die sich sichtbar von ihrer Umgebung abhebt.",
+   "en": "A separable compound of ~heraus-~ + ~stechen~:\n\n- ~stechen~: From MHG ~stëchen~, from OHG ~stëhhan~, from Proto-West Germanic *~stekan~, from Proto-Germanic *~stekaną~ (\"to stab, prick\"), from PIE *~(s)teg-~ (\"to stick, poke\"). Cognate with Dutch ~steken~ (\"to stab, sting\"), Old Norse ~stinga~, English ~stick~ (originally \"to stab, pierce\").\n- ~heraus-~: Transparently ~her-~ (\"hither, toward the speaker\") plus ~aus~ (\"out\"), hence \"out toward the speaker\" — the mirror of ~hinaus~, \"out away from the speaker.\" This her/hin opposition is the single most useful fact about the whole deictic group. Colloquial German contracts ~heraus~ to ~raus~. See the entries for ~her-~ and ~aus-~. The particle conveys outward motion toward the speaker.\n\nFrom literally pricking or piercing outward, ~herausstechen~ means to stand out, to be conspicuous — a color or a talent that catches the eye against its surroundings."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "herausstreichen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~heraus-~ + ~streichen~:\n\n- ~streichen~: Aus Mhd. ~strīchen~, aus Ahd. ~strīhhan~, aus Proto-Westgermanisch *~strīkan~, aus Urgermanisch *~strīkaną~ („streichen, reiben“), aus PIE *~streyg-~ („streichen, reiben, drücken“). Ein starkes Verb der Klasse I. Verwandt mit Englisch ~strike~, Niederländisch ~strijken~ („bügeln, streichen“).\n- ~heraus-~: Durchsichtig zusammengesetzt aus ~her-~ („hierher, zum Sprecher hin“) und ~aus~, also „heraus zum Sprecher hin“ — das Spiegelbild von ~hinaus~, „hinaus vom Sprecher weg“. Dieser Gegensatz von her und hin ist die nützlichste Tatsache über die ganze deiktische Gruppe. Umgangssprachlich wird ~heraus~ zu ~raus~ verkürzt. Siehe die Einträge zu ~her-~ und ~aus-~. Die Partikel drückt das Herausbringen an die Öffentlichkeit aus — herausgeben, herausfinden, bekannt machen.\n\nTrotz des Grundverbs ~streichen~ „streichen, tilgen“ heißt ~herausstreichen~ hervorheben und rühmen — einen Vorzug betonen und ihn dem Hörer nahebringen.",
+   "en": "A separable compound of ~heraus-~ + ~streichen~:\n\n- ~streichen~: From MHG ~strīchen~, from OHG ~strīhhan~, from Proto-West Germanic *~strīkan~, from Proto-Germanic *~strīkaną~ (\"to stroke, to rub\"), from PIE *~streyg-~ (\"to stroke, rub, press\"). A class I strong verb. Cognate with English ~strike~, Dutch ~strijken~ (\"to iron, to stroke\").\n- ~heraus-~: Transparently ~her-~ (\"hither, toward the speaker\") plus ~aus~ (\"out\"), hence \"out toward the speaker\" — the mirror of ~hinaus~, \"out away from the speaker.\" This her/hin opposition is the single most useful fact about the whole deictic group. Colloquial German contracts ~heraus~ to ~raus~. See the entries for ~her-~ and ~aus-~. The particle conveys bringing something out into the open — publishing, discovering, or making public.\n\nDespite the base ~streichen~ \"to strike out,\" ~herausstreichen~ means to extol or emphasize — to make a merit prominent and press it on the listener."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "heraussuchen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~heraus-~ + ~suchen~:\n\n- ~suchen~: Aus Mhd. ~suochen~, ~süechen~, aus Ahd. ~suohhen~, aus Proto-Westgermanisch *~sōkijan~, aus Urgermanisch *~sōkijaną~, aus PIE *~seh₂g-~ („aufsuchen“). Die moderne umlautlose Form spiegelt den oberdeutschen Dialekt wider, der den Umlaut langer gerundeter Vokale vor Velaren widerstand. Verwandt mit Englisch ~seek~, Niederländisch ~zoeken~, Dänisch ~søge~, Gotisch ~sōkjan~.\n- ~heraus-~: Durchsichtig zusammengesetzt aus ~her-~ („hierher, zum Sprecher hin“) und ~aus~, also „heraus zum Sprecher hin“ — das Spiegelbild von ~hinaus~, „hinaus vom Sprecher weg“. Dieser Gegensatz von her und hin ist die nützlichste Tatsache über die ganze deiktische Gruppe. Umgangssprachlich wird ~heraus~ zu ~raus~ verkürzt. Siehe die Einträge zu ~her-~ und ~aus-~. Die Partikel drückt eine Bewegung nach außen zum Sprecher hin aus.\n\n~heraussuchen~ heißt, suchend auszuwählen — bestimmte Stücke aus einem größeren Vorrat aussuchen, das Gewünschte vom Übrigen trennen.",
+   "en": "A separable compound of ~heraus-~ + ~suchen~:\n\n- ~suchen~: From MHG ~suochen~, ~süechen~, from OHG ~suohhen~, from Proto-West Germanic *~sōkijan~, from Proto-Germanic *~sōkijaną~, from PIE *~seh₂g-~ (\"to seek out\"). The modern umlautless form reflects the Upper German dialect, which resisted umlaut of long rounded vowels before velars. Cognate with English ~seek~, Dutch ~zoeken~, Danish ~søge~, Gothic ~sōkjan~.\n- ~heraus-~: Transparently ~her-~ (\"hither, toward the speaker\") plus ~aus~ (\"out\"), hence \"out toward the speaker\" — the mirror of ~hinaus~, \"out away from the speaker.\" This her/hin opposition is the single most useful fact about the whole deictic group. Colloquial German contracts ~heraus~ to ~raus~. See the entries for ~her-~ and ~aus-~. The particle conveys outward motion toward the speaker.\n\n~heraussuchen~ is to search out and pick — to select particular items from a larger stock, sorting the wanted from the rest."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "heraustreten": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~heraus-~ + ~treten~:\n\n- ~treten~: Aus Mhd. ~trëten~, aus Ahd. ~trëtan~, aus Proto-Westgermanisch *~tredan~, aus Urgermanisch *~trudaną~, aus einem möglichen vorgermanischen *~dret-~, vielleicht einer Erweiterung von PIE *~dr-~ („laufen“). Ein starkes Verb der Klasse V (~treten~, ~trat~, ~getreten~), wahrscheinlich zu einem Wurzelaorist mit alternierendem Vokalismus *~tred-~/*~trud-~. Verwandt mit Englisch ~tread~, Niederländisch ~treden~, Altnordisch ~troða~.\n- ~heraus-~: Durchsichtig zusammengesetzt aus ~her-~ („hierher, zum Sprecher hin“) und ~aus~, also „heraus zum Sprecher hin“ — das Spiegelbild von ~hinaus~, „hinaus vom Sprecher weg“. Dieser Gegensatz von her und hin ist die nützlichste Tatsache über die ganze deiktische Gruppe. Umgangssprachlich wird ~heraus~ zu ~raus~ verkürzt. Siehe die Einträge zu ~her-~ und ~aus-~. Die Partikel drückt eine Bewegung nach außen zum Sprecher hin aus.\n\n~heraustreten~ heißt, sichtbar hervorzutreten — eine Person, die aus einer Tür oder einer Menge tritt, und übertragen ein Muster oder eine Wahrheit, die zutage tritt.",
+   "en": "A separable compound of ~heraus-~ + ~treten~:\n\n- ~treten~: From MHG ~trëten~, from OHG ~trëtan~, from Proto-West Germanic *~tredan~, from Proto-Germanic *~trudaną~, from a possible pre-Germanic *~dret-~, perhaps an extension of PIE *~dr-~ (\"to run\"). A class V strong verb (~treten~, ~trat~, ~getreten~) whose Proto-Germanic root is probably a root aorist with alternating vocalism *~tred-~/*~trud-~. Cognate with English ~tread~, Dutch ~treden~, Old Norse ~troða~.\n- ~heraus-~: Transparently ~her-~ (\"hither, toward the speaker\") plus ~aus~ (\"out\"), hence \"out toward the speaker\" — the mirror of ~hinaus~, \"out away from the speaker.\" This her/hin opposition is the single most useful fact about the whole deictic group. Colloquial German contracts ~heraus~ to ~raus~. See the entries for ~her-~ and ~aus-~. The particle conveys outward motion toward the speaker.\n\n~heraustreten~ is to step forth into view — a person emerging from a doorway or a crowd, and figuratively a pattern or truth that becomes apparent."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Da trat der Teufel heraus, als ein sehr vornehmer Herr, prächtig gekleidet, und sprach: »Ihr drei seid unschuldig; ihr dürft nun sprechen, sagt heraus, was ihr gesehen und gehört habt.",
+    "source": "Grimm — Märchen"
+   },
+   "en": {
+    "sentence": "Then the devil stepped forth, as a very distinguished gentleman, splendidly dressed, and said: “You three are innocent; you may now speak, say out what you have seen and heard.”",
+    "source": "Grimm — Märchen"
+   }
+  },
+  "notes": "Both Nietzsche candidates are 50-65-word periods; took the shorter Grimm candidate (index 2, ~34 words) attesting the same 'emerge' gloss."
+ }
+}

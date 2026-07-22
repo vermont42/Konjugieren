@@ -1,0 +1,391 @@
+{
+ "erfragen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~er-~ + ~fragen~:\n\n- ~fragen~: Aus Mhd. ~vrāgen~, aus Ahd. ~frāgēn~, ~frahēn~, aus Proto-Westgermanisch *~frāgēn~ (Denominativum zu *~frāgu~ „Frage“), aus Urgermanisch *~frēgō~ („Frage“), aus PIE *~preḱ-~ („fragen“), das auch Lateinisch ~precor~ und Sanskrit ~pṛcchāti~ ergab. Verwandt mit Englisch ~frain~ (veraltet), Niederländisch ~vragen~, Schwedisch ~fråga~, Isländisch ~fregna~.\n- ~er-~: Aus Mhd. ~er-~, aus Ahd. ~ir-~, ~ar-~, aus Proto-Westgermanisch *~uʀ-~, aus Urgermanisch *~uz-~ („heraus, auf“), aus PIE *~ud~ („aufwärts, hinaus, weg“). Dublette des betonten Präfixes ~ur-~. ~er-~ drückt aus, dass etwas mittels der Grundhandlung erlangt wird.\n\nDas Kompositum verengt ~fragen~ auf sein Ergebnis: nicht das Fragen selbst, sondern die dadurch gewonnene Auskunft, sodass ~etwas erfragen~ „durch Fragen herausfinden“ heißt.",
+   "en": "An inseparable compound of ~er-~ + ~fragen~:\n\n- ~fragen~: From MHG ~vrāgen~, from OHG ~frāgēn~, ~frahēn~, from Proto-West Germanic *~frāgēn~ (a denominative from *~frāgu~, \"question\"), from Proto-Germanic *~frēgō~ (\"question\"), from PIE *~preḱ-~ (\"to ask\"), which also gave Latin ~precor~ and Sanskrit ~pṛcchāti~. Cognate with English ~frain~ (archaic), Dutch ~vragen~, Swedish ~fråga~, Icelandic ~fregna~.\n- ~er-~: From MHG ~er-~, from OHG ~ir-~, ~ar-~, from Proto-West Germanic *~uʀ-~, from Proto-Germanic *~uz-~ (\"out, up\"), from PIE *~ud~ (\"up, out, away\"). Doublet of the stressed prefix ~ur-~. ~er-~ conveys obtaining or acquiring something by means of the base action.\n\nThe compound narrows ~fragen~ „to ask“ to its result: not the questioning itself but the information secured by it, so ~etwas erfragen~ is „to find something out by asking“."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Die Werte der Befragung von 2018 sind hier allerdings nur unter Vorbehalt direkt mit denen der Befragungen 2020 und 2021 vergleichbar, da sie nicht in der gleichen Form erfragt wurden.",
+    "source": "Berufsbildungsbericht (2024)"
+   },
+   "en": {
+    "sentence": "However, the 2018 survey figures are only comparable here with those of the 2020 and 2021 surveys with reservations, since they were not asked for in the same form.",
+    "source": "Berufsbildungsbericht (2024)"
+   }
+  },
+  "notes": null
+ },
+ "erfrieren": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~er-~ + ~frieren~:\n\n- ~frieren~: Aus Mhd. ~vriesen~ (neben ~vrieren~), aus Ahd. ~friosan~, aus Proto-Westgermanisch *~freusan~, aus Urgermanisch *~freusaną~, aus PIE *~prews-~ („frieren, gefrieren“). Ein starkes Verb der Klasse II (~frieren~, ~fror~, ~gefroren~); das ~r~ entstand durch grammatischen Wechsel in den Vergangenheitsformen und wanderte in den Infinitiv, wie bei ~verlieren~. Verwandt mit Englisch ~freeze~ und ~frost~, Niederländisch ~vriezen~, Dänisch ~fryse~.\n- ~er-~: Aus Mhd. ~er-~, aus Ahd. ~ir-~, ~ar-~, aus Proto-Westgermanisch *~uʀ-~, aus Urgermanisch *~uz-~ („heraus, auf“), aus PIE *~ud~ („aufwärts, hinaus, weg“). Dublette des betonten Präfixes ~ur-~. ~er-~ führt die Grundhandlung zu einem tödlichen Ende.\n\nDa ~er-~ den tödlichen Ausgang beisteuert, heißt ~erfrieren~ nicht bloß frieren, sondern daran sterben; es bildet das Perfekt mit ~sein~, wie Verben des Zustandswechsels.",
+   "en": "An inseparable compound of ~er-~ + ~frieren~:\n\n- ~frieren~: From MHG ~vriesen~ (beside ~vrieren~), from OHG ~friosan~, from Proto-West Germanic *~freusan~, from Proto-Germanic *~freusaną~, from PIE *~prews-~ (\"to freeze, frost\"). A class II strong verb (~frieren~, ~fror~, ~gefroren~); the ~r~ arose by grammatischer Wechsel in the past forms and spread to the infinitive, as in ~verlieren~. Cognate with English ~freeze~ and ~frost~, Dutch ~vriezen~, Danish ~fryse~.\n- ~er-~: From MHG ~er-~, from OHG ~ir-~, ~ar-~, from Proto-West Germanic *~uʀ-~, from Proto-Germanic *~uz-~ (\"out, up\"), from PIE *~ud~ (\"up, out, away\"). Doublet of the stressed prefix ~ur-~. ~er-~ carries the base action to a fatal end.\n\nWith ~er-~ supplying the fatal outcome, ~erfrieren~ is not merely to feel cold but to die of it; it forms its perfect with ~sein~, as change-of-state verbs do."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Die Mutter: »Nein, mein liebes Töchterchen, es ist zu kalt, du könntest mir erfrieren.",
+    "source": "Grimm — Märchen"
+   },
+   "en": {
+    "sentence": "The mother: \"No, my dear little daughter, it is too cold, you could freeze to death on me.\"",
+    "source": "Grimm — Märchen"
+   }
+  },
+  "notes": "Rank-0 (Nietzsche) rejected as a bare appositive fragment needing its antecedent."
+ },
+ "erfühlen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~er-~ + ~fühlen~:\n\n- ~fühlen~: Aus nördlichem Mhd. ~vüelen~, aus Ahd. ~fuolen~, aus Proto-Westgermanisch *~fōlijan~ („fühlen“); die weitere Herkunft ist unsicher — vermutlich verwandt mit Altnordisch ~falma~ („tasten“), womöglich ein sekundäres Kausativ eines starken *~falaną~, aus PIE *~pelh₁-~ („streicheln“). Verwandt mit Englisch ~feel~, Niederländisch ~voelen~, Dänisch ~føle~.\n- ~er-~: Aus Mhd. ~er-~, aus Ahd. ~ir-~, ~ar-~, aus Proto-Westgermanisch *~uʀ-~, aus Urgermanisch *~uz-~ („heraus, auf“), aus PIE *~ud~ („aufwärts, hinaus, weg“). Dublette des betonten Präfixes ~ur-~. ~er-~ drückt aus, dass etwas mittels der Grundhandlung erlangt wird.\n\n~erfühlen~ fasst das Tasten als Mittel der Erkenntnis: was bloßes ~fühlen~ nur tut, führt ~erfühlen~ zu einem mit den Fingerspitzen gewonnenen Wissen.",
+   "en": "An inseparable compound of ~er-~ + ~fühlen~:\n\n- ~fühlen~: From northern MHG ~vüelen~, from OHG ~fuolen~, from Proto-West Germanic *~fōlijan~ (\"to feel\"); the further origin is uncertain — presumably related to Old Norse ~falma~ (\"to grope\"), and possibly a secondary causative of a strong *~falaną~, from PIE *~pelh₁-~ (\"to stroke\"). Cognate with English ~feel~, Dutch ~voelen~, Danish ~føle~.\n- ~er-~: From MHG ~er-~, from OHG ~ir-~, ~ar-~, from Proto-West Germanic *~uʀ-~, from Proto-Germanic *~uz-~ (\"out, up\"), from PIE *~ud~ (\"up, out, away\"). Doublet of the stressed prefix ~ur-~. ~er-~ conveys obtaining or acquiring something by means of the base action.\n\n~erfühlen~ frames touch as a means of discovery: what plain ~fühlen~ merely does, ~erfühlen~ carries to knowledge gained through the fingertips."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "ergehen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~er-~ + ~gehen~:\n\n- ~gehen~: Aus Mhd. ~gan~, ~gen~, aus Ahd. ~gan~, ~gen~, aus Proto-Westgermanisch *~gān~, aus Urgermanisch *~gāną~, aus PIE *~ǵʰeh₁-~ („weggehen“). Die Form ~gen~ ist bairischen Ursprungs; das ~-h-~ kam in Analogie zu ~sehen~ in die Schreibung. Verwandt mit Englisch ~go~, Niederländisch ~gaan~, Niederdeutsch ~gahn~, Schwedisch und Dänisch ~gå~.\n- ~er-~: Aus Mhd. ~er-~, aus Ahd. ~ir-~, ~ar-~, aus Proto-Westgermanisch *~uʀ-~, aus Urgermanisch *~uz-~ („heraus, auf“), aus PIE *~ud~ („aufwärts, hinaus, weg“). Dublette des betonten Präfixes ~ur-~. ~er-~ bewahrt seinen eigenen älteren räumlichen Sinn von Aufwärts- oder Herausbewegung.\n\nAm häufigsten ist ~ergehen~ unpersönlich — ~es ergeht jemandem gut~ —, doch der ältere Sinn eines Erlasses oder einer Botschaft, die ~ergeht~, hält die auswärtsgerichtete Kraft des Präfixes sichtbar.",
+   "en": "An inseparable compound of ~er-~ + ~gehen~:\n\n- ~gehen~: From MHG ~gan~, ~gen~, from OHG ~gan~, ~gen~, from Proto-West Germanic *~gān~, from Proto-Germanic *~gāną~, from PIE *~ǵʰeh₁-~ (\"to leave\"). The form ~gen~ is of Bavarian origin; the ~-h-~ entered the spelling by analogy with ~sehen~. Cognate with English ~go~, Dutch ~gaan~, Low German ~gahn~, Swedish and Danish ~gå~.\n- ~er-~: From MHG ~er-~, from OHG ~ir-~, ~ar-~, from Proto-West Germanic *~uʀ-~, from Proto-Germanic *~uz-~ (\"out, up\"), from PIE *~ud~ (\"up, out, away\"). Doublet of the stressed prefix ~ur-~. ~er-~ preserves its own older spatial sense of upward or outward motion.\n\nIn its commonest use ~ergehen~ is impersonal — ~es ergeht jemandem gut~ „things go well for someone“ — but the older sense of a decree or message that ~ergeht~ „goes forth“ keeps the prefix's outward force visible."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Von der Zukunft her kommen Winde mit heimlichem Flügelschlagen; und an feine Ohren ergeht gute Botschaft.",
+    "source": "Nietzsche — Also sprach Zarathustra"
+   },
+   "en": {
+    "sentence": "Winds come from out of the future with secret beating of wings, and to fine ears good tidings go forth.",
+    "source": "Nietzsche — Also sprach Zarathustra"
+   }
+  },
+  "notes": "Chiefly impersonal today; the outward-motion sense of er- is picked for the older »goes forth« use the sentence attests."
+ },
+ "ergießen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~er-~ + ~gießen~:\n\n- ~gießen~: Aus Mhd. ~giezen~, aus Ahd. ~giozan~, aus Proto-Westgermanisch *~geutan~ („gießen“), aus Urgermanisch *~geutaną~, aus PIE *~gʰewd-~ („gießen“). Die Bedeutung des Metall- und Glasgießens ist seit dem Althochdeutschen belegt (Partizip ~gigozzan~). Verwandt mit Englisch ~gush~, Niederländisch ~gieten~, Altenglisch ~geotan~, Gotisch ~giutan~, Schwedisch ~gjuta~.\n- ~er-~: Aus Mhd. ~er-~, aus Ahd. ~ir-~, ~ar-~, aus Proto-Westgermanisch *~uʀ-~, aus Urgermanisch *~uz-~ („heraus, auf“), aus PIE *~ud~ („aufwärts, hinaus, weg“). Dublette des betonten Präfixes ~ur-~. ~er-~ bewahrt seinen eigenen älteren räumlichen Sinn von Aufwärts- oder Herausbewegung.\n\nMeist reflexiv beschreibt ~sich ergießen~, wie sich eine Flüssigkeitsmasse ausgießt und ausbreitet — die auswärtsgerichtete Bewegung, die das Präfix hier noch trägt.",
+   "en": "An inseparable compound of ~er-~ + ~gießen~:\n\n- ~gießen~: From MHG ~giezen~, from OHG ~giozan~, from Proto-West Germanic *~geutan~ (\"to pour\"), from Proto-Germanic *~geutaną~, from PIE *~gʰewd-~ (\"to pour\"). The sense of casting metal and glass is attested since Old High German (participle ~gigozzan~). Cognate with English ~gush~, Dutch ~gieten~, Old English ~geotan~, Gothic ~giutan~, Swedish ~gjuta~.\n- ~er-~: From MHG ~er-~, from OHG ~ir-~, ~ar-~, from Proto-West Germanic *~uʀ-~, from Proto-Germanic *~uz-~ (\"out, up\"), from PIE *~ud~ (\"up, out, away\"). Doublet of the stressed prefix ~ur-~. ~er-~ preserves its own older spatial sense of upward or outward motion.\n\nAlmost always reflexive, ~sich ergießen~ describes a mass of liquid pouring out and spreading — the outward motion the prefix still carries here."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Die Berge ergossen sich vor dem HERRN, der Sinai vor dem HERRN, dem Gott Israels.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "The mountains poured themselves out before the LORD, Sinai before the LORD, the God of Israel.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": null
+ },
+ "ergründen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~er-~ + ~gründen~:\n\n- ~gründen~: Aus Mhd. ~gründen~, aus Ahd. ~grunten~ („ergründen, untersuchen“), einem Denominativum zu ~Grund~ mit Ableitungsumlaut (u → ü). ~Grund~ geht über Ahd. ~grunt~, Proto-Westgermanisch *~grundu~ und Urgermanisch *~grunduz~ auf PIE *~gʰr̥mtu-~ zurück. Die Bedeutung verschob sich vom Erkunden des Grundes zum Schaffen eines solchen. Verwandt mit Englisch ~ground~, Niederländisch ~gronden~, Westfriesisch ~grûn~.\n- ~er-~: Aus Mhd. ~er-~, aus Ahd. ~ir-~, ~ar-~, aus Proto-Westgermanisch *~uʀ-~, aus Urgermanisch *~uz-~ („heraus, auf“), aus PIE *~ud~ („aufwärts, hinaus, weg“). Dublette des betonten Präfixes ~ur-~. ~er-~ kennzeichnet das erfolgreiche Erreichen oder die Vollendung der Grundhandlung.\n\n~ergründen~ bewahrt den altertümlichen Sinn von ~gründen~ als „auf den Grund kommen, ergründen“, den das schlichte ~gründen~ verlor, als es sich auf „errichten“ festlegte; ~er-~ kennzeichnet das Ergründen als vollendet.",
+   "en": "An inseparable compound of ~er-~ + ~gründen~:\n\n- ~gründen~: From MHG ~gründen~, from OHG ~grunten~ (\"to fathom, investigate\"), a denominative from ~Grund~ with derivational umlaut (u to ü). ~Grund~ traces through OHG ~grunt~, Proto-West Germanic *~grundu~ and Proto-Germanic *~grunduz~ to PIE *~gʰr̥mtu-~. The sense shifted from probing the ground to creating one. Cognate with English ~ground~, Dutch ~gronden~, West Frisian ~grûn~.\n- ~er-~: From MHG ~er-~, from OHG ~ir-~, ~ar-~, from Proto-West Germanic *~uʀ-~, from Proto-Germanic *~uz-~ (\"out, up\"), from PIE *~ud~ (\"up, out, away\"). Doublet of the stressed prefix ~ur-~. ~er-~ marks the successful achievement or completion of the base action.\n\n~ergründen~ keeps the archaic sense of ~gründen~ as „to reach the bottom, fathom“ that plain ~gründen~ lost when it settled on „to found“; ~er-~ marks the fathoming as brought to completion."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Es ist das Herz ein trotzig und verzagtes Ding; wer kann es ergründen?",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "The heart is a defiant and despondent thing; who can fathom it?",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": null
+ },
+ "erhängen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~er-~ + ~hängen~:\n\n- ~hängen~: Die Verschmelzung dreier ahd. Verben: ~hāhan~ (stark, transitiv; Prät. ~hieng~, Part. ~gehangan~), aus Proto-Westgermanisch *~hą̄han~, aus Urgermanisch *~hanhaną~; ~hangēn~ (schwach, intransitiv); und das Kausativum ~hengen~, aus Proto-Westgermanisch *~hangijan~, aus Urgermanisch *~hangijaną~. Die Unterscheidung hält sich vor allem im Präteritum: intransitiv ~hing~/~gehangen~ gegenüber transitiv ~hängte~/~gehängt~. Verwandt mit Niederländisch ~hangen~, Englisch ~hang~.\n- ~er-~: Aus Mhd. ~er-~, aus Ahd. ~ir-~, ~ar-~, aus Proto-Westgermanisch *~uʀ-~, aus Urgermanisch *~uz-~ („heraus, auf“), aus PIE *~ud~ („aufwärts, hinaus, weg“). Dublette des betonten Präfixes ~ur-~. ~er-~ führt die Grundhandlung zu einem tödlichen Ende.\n\n~er-~ führt ~hängen~ zu einem tödlichen Ende, und das Kompositum ist durchweg schwach (~erhängte~, ~erhängt~) und übernimmt nie die starken Formen, die das intransitive ~hängen~ behält.",
+   "en": "An inseparable compound of ~er-~ + ~hängen~:\n\n- ~hängen~: The merger of three OHG verbs: ~hāhan~ (strong, transitive; past ~hieng~, participle ~gehangan~), from Proto-West Germanic *~hą̄han~, from Proto-Germanic *~hanhaną~; ~hangēn~ (weak, intransitive); and the causative ~hengen~, from Proto-West Germanic *~hangijan~, from Proto-Germanic *~hangijaną~. The distinction is upheld chiefly in the past tense: intransitive ~hing~/~gehangen~ versus transitive ~hängte~/~gehängt~. Cognate with Dutch ~hangen~, English ~hang~.\n- ~er-~: From MHG ~er-~, from OHG ~ir-~, ~ar-~, from Proto-West Germanic *~uʀ-~, from Proto-Germanic *~uz-~ (\"out, up\"), from PIE *~ud~ (\"up, out, away\"). Doublet of the stressed prefix ~ur-~. ~er-~ carries the base action to a fatal end.\n\n~er-~ carries ~hängen~ to a lethal end, and the compound is weak throughout (~erhängte~, ~erhängt~), never taking the strong forms the intransitive ~hängen~ keeps."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Und er warf die Silberlinge in den Tempel, hob sich davon, ging hin und erhängte sich selbst.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "And he threw the pieces of silver into the temple, departed, went off, and hanged himself.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": null
+ },
+ "erhoffen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~er-~ + ~hoffen~:\n\n- ~hoffen~: Aus Mhd. ~hoffen~ (erstmals im 12. Jahrhundert), aus norddeutschem Ahd. *~hoffōn~, aus Proto-Westgermanisch *~hopōn~; die vorgermanische Herkunft ist unsicher, ohne gesicherte Entsprechung außerhalb des Germanischen. Einige Forscher leiten die kontinentalen Formen von Altenglisch ~hopian~ ab. Verwandt mit Englisch ~hope~, Niederländisch ~hopen~, Dänisch ~håbe~.\n- ~er-~: Aus Mhd. ~er-~, aus Ahd. ~ir-~, ~ar-~, aus Proto-Westgermanisch *~uʀ-~, aus Urgermanisch *~uz-~ („heraus, auf“), aus PIE *~ud~ („aufwärts, hinaus, weg“). Dublette des betonten Präfixes ~ur-~. ~er-~ drückt aus, dass etwas mittels der Grundhandlung erlangt wird.\n\n~erhoffen~ ist das transitiv und zielgerichtet gewordene ~hoffen~: man hofft nicht einfach, sondern hofft, etwas Bestimmtes ~zu erlangen~, meist reflexiv (~sich etwas erhoffen~).",
+   "en": "An inseparable compound of ~er-~ + ~hoffen~:\n\n- ~hoffen~: From MHG ~hoffen~ (first attested 12th century), from northern OHG *~hoffōn~, from Proto-West Germanic *~hopōn~; the pre-Germanic origin is uncertain, with no secure cognate outside Germanic. Some scholars derive the continental forms from Old English ~hopian~. Cognate with English ~hope~, Dutch ~hopen~, Danish ~håbe~.\n- ~er-~: From MHG ~er-~, from OHG ~ir-~, ~ar-~, from Proto-West Germanic *~uʀ-~, from Proto-Germanic *~uz-~ (\"out, up\"), from PIE *~ud~ (\"up, out, away\"). Doublet of the stressed prefix ~ur-~. ~er-~ conveys obtaining or acquiring something by means of the base action.\n\n~erhoffen~ is ~hoffen~ made transitive and goal-directed: one hopes not simply, but hopes ~to obtain~ a specific thing, usually reflexively (~sich etwas erhoffen~)."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Block bewegte während dieses Gesprächs unaufhörlich die Lippen, offenbar formulierte er die Antworten, die er von Leni erhoffte.",
+    "source": "Kafka — Der Proceß"
+   },
+   "en": {
+    "sentence": "Throughout this conversation Block moved his lips incessantly, evidently formulating the answers he hoped to get from Leni.",
+    "source": "Kafka — Der Proceß"
+   }
+  },
+  "notes": null
+ },
+ "erhören": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~er-~ + ~hören~:\n\n- ~hören~: Aus Mhd. ~hœren~, aus Ahd. ~hōren~, aus Urgermanisch *~hauzijaną~, aus PIE *~h₂ḱh₂owsyéti~ („scharfohrig sein“), aus *~h₂eḱ-~ („scharf“) + *~h₂ows-~ („Ohr“). Verwandt mit Englisch ~hear~, Niederländisch ~horen~, Dänisch ~høre~, Gotisch ~hausjan~.\n- ~er-~: Aus Mhd. ~er-~, aus Ahd. ~ir-~, ~ar-~, aus Proto-Westgermanisch *~uʀ-~, aus Urgermanisch *~uz-~ („heraus, auf“), aus PIE *~ud~ („aufwärts, hinaus, weg“). Dublette des betonten Präfixes ~ur-~. ~er-~ kennzeichnet das erfolgreiche Erreichen oder die Vollendung der Grundhandlung.\n\nHeute auf Gebete und Bitten beschränkt, heißt ~erhören~ nicht nur hören, sondern hören ~und gewähren~ — die Vollendung, die ~er-~ hinzufügt, macht aus dem Zuhören ein Gewähren.",
+   "en": "An inseparable compound of ~er-~ + ~hören~:\n\n- ~hören~: From MHG ~hœren~, from OHG ~hōren~, from Proto-Germanic *~hauzijaną~, from PIE *~h₂ḱh₂owsyéti~ (\"to be sharp-eared\"), from *~h₂eḱ-~ (\"sharp\") + *~h₂ows-~ (\"ear\"). Cognate with English ~hear~, Dutch ~horen~, Danish ~høre~, Gothic ~hausjan~.\n- ~er-~: From MHG ~er-~, from OHG ~ir-~, ~ar-~, from Proto-West Germanic *~uʀ-~, from Proto-Germanic *~uz-~ (\"out, up\"), from PIE *~ud~ (\"up, out, away\"). Doublet of the stressed prefix ~ur-~. ~er-~ marks the successful achievement or completion of the base action.\n\nRestricted now to prayers and pleas, ~erhören~ is not just to hear but to hear ~and grant~ — the completion ~er-~ adds turns listening into answering."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Dazu um Ismael habe ich dich auch erhört.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "And concerning Ishmael too I have heard your plea.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": null
+ },
+ "erkämpfen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~er-~ + ~kämpfen~:\n\n- ~kämpfen~: Aus Mhd. ~kempfen~, aus Ahd. *~kempfan~, aus Proto-Westgermanisch *~kampijan~, einem denominalen Verb von *~kamp~ („Feld, Schlachtfeld“), entlehnt aus Lateinisch ~campus~ („Feld, offene Ebene“); die Bedeutung verschob sich früh vom Ort der Schlacht zur Handlung des Kämpfens. Lateinisch ~campus~ ergab auch Englisch ~camp~ und ~champion~.\n- ~er-~: Aus Mhd. ~er-~, aus Ahd. ~ir-~, ~ar-~, aus Proto-Westgermanisch *~uʀ-~, aus Urgermanisch *~uz-~ („heraus, auf“), aus PIE *~ud~ („aufwärts, hinaus, weg“). Dublette des betonten Präfixes ~ur-~. ~er-~ drückt aus, dass etwas mittels der Grundhandlung erlangt wird.\n\n~er-~ macht aus dem Kämpfen ein Erlangen: das Objekt von ~erkämpfen~ ist der errungene Preis, nicht der Kampf selbst.",
+   "en": "An inseparable compound of ~er-~ + ~kämpfen~:\n\n- ~kämpfen~: From MHG ~kempfen~, from OHG *~kempfan~, from Proto-West Germanic *~kampijan~, a denominal verb from *~kamp~ (\"field, battlefield\"), borrowed from Latin ~campus~ (\"field, open plain\"); the sense shifted early from the place of battle to the act of fighting. Latin ~campus~ also gives English ~camp~ and ~champion~.\n- ~er-~: From MHG ~er-~, from OHG ~ir-~, ~ar-~, from Proto-West Germanic *~uʀ-~, from Proto-Germanic *~uz-~ (\"out, up\"), from PIE *~ud~ (\"up, out, away\"). Doublet of the stressed prefix ~ur-~. ~er-~ conveys obtaining or acquiring something by means of the base action.\n\n~er-~ turns fighting into acquisition: the object of ~erkämpfen~ is the prize won, not the fight itself."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "„Die Internationale erkämpft das Menschenrecht“ – das hat mich immer geleitet.",
+    "source": "Bundestag — Plenarprotokoll 20/210"
+   },
+   "en": {
+    "sentence": "\"The Internationale wins human rights through struggle\" — that has always guided me.",
+    "source": "Bundestag — Plenarprotokoll 20/210"
+   }
+  },
+  "notes": "Rank-0 rejected as a mid-sentence fragment starting »Jahren seit…«."
+ },
+ "erkaufen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~er-~ + ~kaufen~:\n\n- ~kaufen~: Aus Mhd. ~koufen~, aus Ahd. ~koufōn~, aus Proto-Westgermanisch *~kaupōn~, aus Urgermanisch *~kaupōną~, einem Denominativverb von *~kaupô~ („Händler, Gastwirt“), entlehnt aus Lateinisch ~caupō~ („Gastwirt, Krämer“). Verwandt mit Englisch ~cheap~, Niederländisch ~kopen~, Dänisch ~købe~, Isländisch ~kaupa~.\n- ~er-~: Aus Mhd. ~er-~, aus Ahd. ~ir-~, ~ar-~, aus Proto-Westgermanisch *~uʀ-~, aus Urgermanisch *~uz-~ („heraus, auf“), aus PIE *~ud~ („aufwärts, hinaus, weg“). Dublette des betonten Präfixes ~ur-~. ~er-~ drückt aus, dass etwas mittels der Grundhandlung erlangt wird.\n\nWo ~kaufen~ ein schlichter Kauf ist, betont ~erkaufen~ den gezahlten Preis — meist einen bildlichen, einen teuer ~erkauften~ Sieg oder Vorteil.",
+   "en": "An inseparable compound of ~er-~ + ~kaufen~:\n\n- ~kaufen~: From MHG ~koufen~, from OHG ~koufōn~, from Proto-West Germanic *~kaupōn~, from Proto-Germanic *~kaupōną~, a denominative verb from *~kaupô~ (\"merchant, innkeeper\"), a loanword from Latin ~caupō~ (\"innkeeper, shopkeeper\"). Cognate with English ~cheap~, Dutch ~kopen~, Danish ~købe~, Icelandic ~kaupa~.\n- ~er-~: From MHG ~er-~, from OHG ~ir-~, ~ar-~, from Proto-West Germanic *~uʀ-~, from Proto-Germanic *~uz-~ (\"out, up\"), from PIE *~ud~ (\"up, out, away\"). Doublet of the stressed prefix ~ur-~. ~er-~ conveys obtaining or acquiring something by means of the base action.\n\nWhere ~kaufen~ is a plain purchase, ~erkaufen~ stresses the price paid — usually a figurative one, a victory or advantage ~bought~ at cost."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Beschnitten werden soll alles Gesinde, das dir daheim geboren oder erkauft ist.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "All your household, whether born in your house or bought, shall be circumcised.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": null
+ },
+ "erklimmen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~er-~ + ~klimmen~:\n\n- ~klimmen~: Aus Mhd. ~klimben~, aus Ahd. ~klimban~, aus Proto-Westgermanisch *~klimban~, wahrscheinlich eine nasalierte Variante von Urgermanisch *~klībaną~ („kleben, haften“), doch die Rekonstruktion ist nicht gesichert. Ein starkes Verb der Klasse III (~klimmen~, ~klomm~, ~geklommen~), daneben ein schwaches ~klimmte~; im Alltag von ~klettern~ verdrängt. Verwandt mit Englisch ~climb~, Niederländisch ~klimmen~.\n- ~er-~: Aus Mhd. ~er-~, aus Ahd. ~ir-~, ~ar-~, aus Proto-Westgermanisch *~uʀ-~, aus Urgermanisch *~uz-~ („heraus, auf“), aus PIE *~ud~ („aufwärts, hinaus, weg“). Dublette des betonten Präfixes ~ur-~. ~er-~ bewahrt seinen eigenen älteren räumlichen Sinn von Aufwärts- oder Herausbewegung.\n\n~er-~ bewahrt hier seinen alten Aufwärtssinn: ~erklimmen~ heißt bis zum Gipfel hinaufsteigen, ein mühevolleres und zielgerichteteres Wort als das alltägliche ~klettern~.",
+   "en": "An inseparable compound of ~er-~ + ~klimmen~:\n\n- ~klimmen~: From MHG ~klimben~, from OHG ~klimban~, from Proto-West Germanic *~klimban~, probably a nasalized variant of Proto-Germanic *~klībaną~ (\"to stick, cling\"), though that reconstruction is not secure. A class III strong verb (~klimmen~, ~klomm~, ~geklommen~), beside a weak ~klimmte~; ceded in everyday use to ~klettern~. Cognate with English ~climb~, Dutch ~klimmen~.\n- ~er-~: From MHG ~er-~, from OHG ~ir-~, ~ar-~, from Proto-West Germanic *~uʀ-~, from Proto-Germanic *~uz-~ (\"out, up\"), from PIE *~ud~ (\"up, out, away\"). Doublet of the stressed prefix ~ur-~. ~er-~ preserves its own older spatial sense of upward or outward motion.\n\n~er-~ preserves its old upward sense here: ~erklimmen~ is to climb all the way up to a summit, a more strenuous and goal-bound word than everyday ~klettern~."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "erklingen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~er-~ + ~klingen~:\n\n- ~klingen~: Aus Mhd. ~klingen~, aus Ahd. ~klingan~, aus Proto-Westgermanisch *~klingan~, aus Urgermanisch *~klinganą~, mit ziemlicher Sicherheit onomatopoetischen Ursprungs. Ein starkes Verb der Klasse III (~klingt~, ~klang~, ~geklungen~), dasselbe Muster wie ~singen~. Verwandt mit Englisch ~clink~ und ~clang~, Mittelniederländisch ~klinken~.\n- ~er-~: Aus Mhd. ~er-~, aus Ahd. ~ir-~, ~ar-~, aus Proto-Westgermanisch *~uʀ-~, aus Urgermanisch *~uz-~ („heraus, auf“), aus PIE *~ud~ („aufwärts, hinaus, weg“). Dublette des betonten Präfixes ~ur-~. ~er-~ kennzeichnet den Eintritt in einen Zustand statt den Zustand selbst.\n\n~er-~ kennzeichnet den Augenblick, in dem der Klang ~einsetzt~: ~erklingen~ ist nicht das anhaltende Tönen von ~klingen~, sondern dessen Beginn, das Anschlagen des Tons.",
+   "en": "An inseparable compound of ~er-~ + ~klingen~:\n\n- ~klingen~: From MHG ~klingen~, from OHG ~klingan~, from Proto-West Germanic *~klingan~, from Proto-Germanic *~klinganą~, almost certainly of onomatopoeic origin. A class III strong verb (~klingt~, ~klang~, ~geklungen~), the same pattern as ~singen~. Cognate with English ~clink~ and ~clang~, Middle Dutch ~klinken~.\n- ~er-~: From MHG ~er-~, from OHG ~ir-~, ~ar-~, from Proto-West Germanic *~uʀ-~, from Proto-Germanic *~uz-~ (\"out, up\"), from PIE *~ud~ (\"up, out, away\"). Doublet of the stressed prefix ~ur-~. ~er-~ marks the onset of a state rather than the state itself.\n\n~er-~ marks the moment sound ~begins~: ~erklingen~ is not the sustained ringing of ~klingen~ but its onset, the note striking up."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Aber sein Name war es, der am öftesten erklang.",
+    "source": "Mann — Der Tod in Venedig"
+   },
+   "en": {
+    "sentence": "But it was his name that rang out most often.",
+    "source": "Mann — Der Tod in Venedig"
+   }
+  },
+  "notes": null
+ },
+ "erlesen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~er-~ + ~lesen~:\n\n- ~lesen~: Aus mhd. ~lësen~, aus ahd. ~lësan~, aus proto-westgermanisch *~lesan~, aus urgermanisch *~lesaną~ („sammeln“), aus PIE *~les-~ („sammeln“). Der Wandel von „sammeln“ zu „lesen“ — parallel zu lateinisch ~legō~ („ich sammle; ich lese“) — fasst Lesen als Zusammenlesen von Buchstaben. Verwandt mit niederländisch ~lezen~, englisch ~lease~ (archaisch).\n- ~er-~: Aus Mhd. ~er-~, aus Ahd. ~ir-~, ~ar-~, aus Proto-Westgermanisch *~uʀ-~, aus Urgermanisch *~uz-~ („heraus, auf“), aus PIE *~ud~ („aufwärts, hinaus, weg“). Dublette des betonten Präfixes ~ur-~. ~er-~ drückt aus, dass etwas mittels der Grundhandlung erlangt wird.\n\nAuf dem alten Sinn von ~lesen~ als „sammeln, auslesen“ aufbauend, heißt ~erlesen~ durch sorgfältige Auswahl heraussuchen; das Partizip ~erlesen~ „auserlesen, vortrefflich“ lebt kräftiger fort als das Verb.",
+   "en": "An inseparable compound of ~er-~ + ~lesen~:\n\n- ~lesen~: From MHG ~lësen~, from OHG ~lësan~, from Proto-West Germanic *~lesan~, from Proto-Germanic *~lesaną~ (\"to gather\"), from PIE *~les-~ (\"to gather\"). The shift from \"to gather\" to \"to read\" — paralleled in Latin ~legō~ (\"I gather; I read\") — construes reading as gathering letters. Cognate with Dutch ~lezen~, English ~lease~ (archaic).\n- ~er-~: From MHG ~er-~, from OHG ~ir-~, ~ar-~, from Proto-West Germanic *~uʀ-~, from Proto-Germanic *~uz-~ (\"out, up\"), from PIE *~ud~ (\"up, out, away\"). Doublet of the stressed prefix ~ur-~. ~er-~ conveys obtaining or acquiring something by means of the base action.\n\nBuilt on the old sense of ~lesen~ as „to gather, pick“, ~erlesen~ is to single out by careful selection; the participle ~erlesen~ „exquisite, choice“ survives more vigorously than the verb."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "erleuchten": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~er-~ + ~leuchten~:\n\n- ~leuchten~: Aus ahd. ~liuhten~, aus proto-westgermanisch *~liuhtijan~, aus urgermanisch *~liuhtijaną~, einem faktitiven Verb zu *~leuhtą~ („Licht“) bzw. *~leuhtaz~ („hell“), aus PIE *~lewk-~ („hell, leuchten, sehen“). Verwandt mit mhd. ~liuhten~ und englisch ~light~; aus derselben Wurzel lateinisch ~lūx~ und griechisch ~leukos~ („weiß“).\n- ~er-~: Aus Mhd. ~er-~, aus Ahd. ~ir-~, ~ar-~, aus Proto-Westgermanisch *~uʀ-~, aus Urgermanisch *~uz-~ („heraus, auf“), aus PIE *~ud~ („aufwärts, hinaus, weg“). Dublette des betonten Präfixes ~ur-~. ~er-~ kennzeichnet das erfolgreiche Erreichen oder die Vollendung der Grundhandlung.\n\n~erleuchten~ macht das intransitive ~leuchten~ transitiv: etwas in Licht tauchen und, bildlich, den Geist erhellen.",
+   "en": "An inseparable compound of ~er-~ + ~leuchten~:\n\n- ~leuchten~: From OHG ~liuhten~, from Proto-West Germanic *~liuhtijan~, from Proto-Germanic *~liuhtijaną~, a factitive verb from *~leuhtą~ (\"light\") or *~leuhtaz~ (\"bright\"), from PIE *~lewk-~ (\"bright, to shine, to see\"). Cognate with MHG ~liuhten~ and English ~light~; from the same root, Latin ~lūx~ and Greek ~leukos~ (\"white\").\n- ~er-~: From MHG ~er-~, from OHG ~ir-~, ~ar-~, from Proto-West Germanic *~uʀ-~, from Proto-Germanic *~uz-~ (\"out, up\"), from PIE *~ud~ (\"up, out, away\"). Doublet of the stressed prefix ~ur-~. ~er-~ marks the successful achievement or completion of the base action.\n\n~erleuchten~ makes intransitive ~leuchten~ „to shine“ transitive: to fill something with light, and figuratively to enlighten a mind."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Es war aber eine finstere Wolke und erleuchtete die Nacht, daß sie die ganze Nacht, diese und jene, nicht zusammenkommen konnten.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "But there was a dark cloud, and it lit up the night, so that all night through, the one side and the other could not come together.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": null
+ },
+ "erliegen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~er-~ + ~liegen~:\n\n- ~liegen~: Aus mhd. ~ligen~, aus ahd. ~ligen~ (aus älterem ~liggen~), aus proto-westgermanisch *~liggjan~, aus urgermanisch *~ligjaną~, aus PIE *~legʰ-~ („sich hinlegen“). Ein starkes Verb der Klasse V. Das schwache Kausativum ~legen~ ist über *~-janą~ aus derselben Wurzel gebildet (*~lagjaną~). Verwandt mit englisch ~lie~, niederländisch ~liggen~, gotisch ~ligan~.\n- ~er-~: Aus Mhd. ~er-~, aus Ahd. ~ir-~, ~ar-~, aus Proto-Westgermanisch *~uʀ-~, aus Urgermanisch *~uz-~ („heraus, auf“), aus PIE *~ud~ („aufwärts, hinaus, weg“). Dublette des betonten Präfixes ~ur-~. ~er-~ kennzeichnet den Eintritt in einen Zustand statt den Zustand selbst.\n\n~er-~ führt ~liegen~ in einen Zustandswechsel: einer Sache ~erliegen~ heißt, ihr unterliegend zu Boden zu kommen — einer Versuchung, einem Irrtum oder, im schlimmsten Fall, einer tödlichen Krankheit.",
+   "en": "An inseparable compound of ~er-~ + ~liegen~:\n\n- ~liegen~: From MHG ~ligen~, from OHG ~ligen~ (from earlier ~liggen~), from Proto-West Germanic *~liggjan~, from Proto-Germanic *~ligjaną~, from PIE *~legʰ-~ (\"to lie down\"). A class V strong verb. The weak causative ~legen~ comes from the same root via *~-janą~ (*~lagjaną~). Cognate with English ~lie~, Dutch ~liggen~, Gothic ~ligan~.\n- ~er-~: From MHG ~er-~, from OHG ~ir-~, ~ar-~, from Proto-West Germanic *~uʀ-~, from Proto-Germanic *~uz-~ (\"out, up\"), from PIE *~ud~ (\"up, out, away\"). Doublet of the stressed prefix ~ur-~. ~er-~ marks the onset of a state rather than the state itself.\n\n~er-~ carries ~liegen~ into a change of state: to ~erliegen~ something is to come to lie beneath it, defeated — a temptation, an error, or, at its gravest, a fatal illness."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Wer meint, allein die zur Schau gestellte antifaschistische Gesinnung und ein Verbotsantrag reichen, um diese Partei kleinzukriegen, erliegt einem schweren Irrtum.",
+    "source": "Bundestag — Plenarprotokoll 20/210"
+   },
+   "en": {
+    "sentence": "Whoever thinks that a display of antifascist conviction and a motion to ban it are enough to cut this party down to size succumbs to a grave error.",
+    "source": "Bundestag — Plenarprotokoll 20/210"
+   }
+  },
+  "notes": null
+ },
+ "erlöschen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~er-~ + ~löschen~:\n\n- ~löschen~: Zwei verschiedene Verben unter einer Schreibung. „Auslöschen“: aus mhd. ~leschen~, ahd. ~lescan~, proto-westgermanisch *~leskan~, urgermanisch *~leskaną~ („erlöschen, ausgehen“) — ursprünglich intransitiv, die kausative Bedeutung kam später; verwandt mit niederländisch ~lessen~. „Tilgen, Ladung entladen“: entlehnt aus niederdeutsch ~lössen~, ~lossen~, zum Vorläufer von ~los~ („frei, ledig“).\n- ~er-~: Aus Mhd. ~er-~, aus Ahd. ~ir-~, ~ar-~, aus Proto-Westgermanisch *~uʀ-~, aus Urgermanisch *~uz-~ („heraus, auf“), aus PIE *~ud~ („aufwärts, hinaus, weg“). Dublette des betonten Präfixes ~ur-~. ~er-~ kennzeichnet den Eintritt in einen Zustand statt den Zustand selbst.\n\nDies ist das ~löschen~ des Auslöschens, nicht der niederdeutsche „entladen“-Zwilling; das intransitive ~erlöschen~ beschreibt eine Flamme, die ~ausgeht~, wobei ~er-~ den Eintritt in den erloschenen Zustand kennzeichnet.",
+   "en": "An inseparable compound of ~er-~ + ~löschen~:\n\n- ~löschen~: Two distinct verbs merged under one spelling. \"To extinguish\": from MHG ~leschen~, OHG ~lescan~, Proto-West Germanic *~leskan~, Proto-Germanic *~leskaną~ (\"to go out\") — originally intransitive, the causative sense developing later; cognate with Dutch ~lessen~. \"To delete, unload (cargo)\": borrowed from Low German ~lössen~, ~lossen~, from the ancestor of ~los~ (\"free, rid of\").\n- ~er-~: From MHG ~er-~, from OHG ~ir-~, ~ar-~, from Proto-West Germanic *~uʀ-~, from Proto-Germanic *~uz-~ (\"out, up\"), from PIE *~ud~ (\"up, out, away\"). Doublet of the stressed prefix ~ur-~. ~er-~ marks the onset of a state rather than the state itself.\n\nThis is the „extinguish“ ~löschen~, not the Low German „unload“ twin; intransitive ~erlöschen~ describes a flame ~going out~, ~er-~ marking entry into the extinguished state."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Sie umgeben mich wie Bienen; aber sie erlöschen wie Feuer in Dornen; im Namen des HERRN will ich sie zerhauen.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "They surround me like bees, but they go out like a fire among thorns; in the name of the LORD I will cut them down.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": "Root twin resolved by family (weak) and gloss to the »extinguish« branch, not the Low German »unload« one."
+ },
+ "erlösen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~er-~ + ~lösen~:\n\n- ~lösen~: Aus mhd. ~lœsen~, ~lōsen~, aus ahd. ~lōsen~, aus proto-westgermanisch *~lausijan~, aus urgermanisch *~lausijaną~, einem Kausativ von *~leusaną~ („verlieren, loslassen“), denominativ über *~lausaz~ („los, frei“), aus PIE *~lewh₁-~ („schneiden, trennen, lösen“). Verwandt mit englisch ~loose~ (über altnordisch ~lauss~), niederländisch ~lozen~.\n- ~er-~: Aus Mhd. ~er-~, aus Ahd. ~ir-~, ~ar-~, aus Proto-Westgermanisch *~uʀ-~, aus Urgermanisch *~uz-~ („heraus, auf“), aus PIE *~ud~ („aufwärts, hinaus, weg“). Dublette des betonten Präfixes ~ur-~. ~er-~ kennzeichnet das erfolgreiche Erreichen oder die Vollendung der Grundhandlung.\n\n~er-~ führt das Lösen von ~lösen~ zur Vollendung: ~erlösen~ heißt ganz befreien — aus Fesseln, einem Bann oder von Sünde —, woher die theologische Bedeutung der Erlösung rührt.",
+   "en": "An inseparable compound of ~er-~ + ~lösen~:\n\n- ~lösen~: From MHG ~lœsen~, ~lōsen~, from OHG ~lōsen~, from Proto-West Germanic *~lausijan~, from Proto-Germanic *~lausijaną~, a causative of *~leusaną~ (\"to lose, let loose\"), denominative via *~lausaz~ (\"loose, free\"), from PIE *~lewh₁-~ (\"to cut, sever, loosen\"). Cognate with English ~loose~ (via Old Norse ~lauss~), Dutch ~lozen~.\n- ~er-~: From MHG ~er-~, from OHG ~ir-~, ~ar-~, from Proto-West Germanic *~uʀ-~, from Proto-Germanic *~uz-~ (\"out, up\"), from PIE *~ud~ (\"up, out, away\"). Doublet of the stressed prefix ~ur-~. ~er-~ marks the successful achievement or completion of the base action.\n\n~er-~ brings the loosening of ~lösen~ to its completion: to ~erlösen~ is to release wholly — from bondage, a spell, or sin — whence the theological „to redeem“."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Du hast geleitet durch deine Barmherzigkeit dein Volk, das du erlöst hast, und du hast sie geführt durch deine Stärke zu deiner heiligen Wohnung.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "In your mercy you have led the people you redeemed, and by your strength you have guided them to your holy dwelling.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": null
+ },
+ "erlügen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~er-~ + ~lügen~:\n\n- ~lügen~: Aus mhd. ~liegen~, aus ahd. ~liogan~, aus proto-westgermanisch *~leugan~, aus urgermanisch *~leuganą~, aus PIE *~lewgʰ-~ („lügen, falsch schwören“). Ein starkes Verb der Klasse II (~lügen~, ~log~, ~gelogen~); das ~ü~ ist spät und stammt aus dem Substantiv ~Lüge~, um den Zusammenfall mit ~liegen~ zu vermeiden. Verwandt mit englisch ~lie~, gotisch ~liugan~.\n- ~er-~: Aus Mhd. ~er-~, aus Ahd. ~ir-~, ~ar-~, aus Proto-Westgermanisch *~uʀ-~, aus Urgermanisch *~uz-~ („heraus, auf“), aus PIE *~ud~ („aufwärts, hinaus, weg“). Dublette des betonten Präfixes ~ur-~. ~er-~ drückt aus, dass etwas mittels der Grundhandlung erlangt wird.\n\n~erlügen~ fasst das Lügen als Mittel der Hervorbringung: was ~erlogen~ ist, wird durch Falschheit erdichtet, ins Dasein gelogen, nicht bloß falsch dargestellt.",
+   "en": "An inseparable compound of ~er-~ + ~lügen~:\n\n- ~lügen~: From MHG ~liegen~, from OHG ~liogan~, from Proto-West Germanic *~leugan~, from Proto-Germanic *~leuganą~, from PIE *~lewgʰ-~ (\"to lie, swear falsely\"). A class II strong verb (~lügen~, ~log~, ~gelogen~); the ~ü~ is late, taken from the noun ~Lüge~ to keep the verb from colliding with ~liegen~. Cognate with English ~lie~, Gothic ~liugan~.\n- ~er-~: From MHG ~er-~, from OHG ~ir-~, ~ar-~, from Proto-West Germanic *~uʀ-~, from Proto-Germanic *~uz-~ (\"out, up\"), from PIE *~ud~ (\"up, out, away\"). Doublet of the stressed prefix ~ur-~. ~er-~ conveys obtaining or acquiring something by means of the base action.\n\n~erlügen~ treats lying as a means of production: what is ~erlogen~ is fabricated, conjured into being by falsehood rather than merely misstated."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "erraten": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~er-~ + ~raten~:\n\n- ~raten~: Aus Mhd. ~rāten~, aus Ahd. ~rātan~, aus Proto-Westgermanisch *~rādan~, aus Urgermanisch *~rēdaną~ („entscheiden, beraten, deuten“), aus PIE *~Hreh₁dh-~ („denken, ordnen“). Beide Bedeutungen, „beraten“ und „erraten“, stammen von diesem Sinn des Überlegens. Verwandt mit englisch ~read~ (ursprünglich „beraten, deuten“), archaisch ~rede~, niederländisch ~raden~.\n- ~er-~: Aus Mhd. ~er-~, aus Ahd. ~ir-~, ~ar-~, aus Proto-Westgermanisch *~uʀ-~, aus Urgermanisch *~uz-~ („heraus, auf“), aus PIE *~ud~ („aufwärts, hinaus, weg“). Dublette des betonten Präfixes ~ur-~. ~er-~ drückt aus, dass etwas mittels der Grundhandlung erlangt wird.\n\n~raten~ umfasst „beraten“ und „erraten“; ~erraten~ nimmt nur das zweite und fügt den Erfolg hinzu — ~erraten~ heißt richtig raten, durch Mutmaßung auf die Antwort kommen.",
+   "en": "An inseparable compound of ~er-~ + ~raten~:\n\n- ~raten~: From MHG ~rāten~, from OHG ~rātan~, from Proto-West Germanic *~rādan~, from Proto-Germanic *~rēdaną~ (\"to decide, advise, interpret\"), from PIE *~Hreh₁dh-~ (\"to think, arrange\"). Both senses, \"to advise\" and \"to guess,\" descend from that sense of deliberation. Cognate with English ~read~ (originally \"to counsel, interpret\"), archaic ~rede~, Dutch ~raden~.\n- ~er-~: From MHG ~er-~, from OHG ~ir-~, ~ar-~, from Proto-West Germanic *~uʀ-~, from Proto-Germanic *~uz-~ (\"out, up\"), from PIE *~ud~ (\"up, out, away\"). Doublet of the stressed prefix ~ur-~. ~er-~ conveys obtaining or acquiring something by means of the base action.\n\n~raten~ spans „to advise“ and „to guess“; ~erraten~ takes only the second and adds success — to ~erraten~ is to guess ~correctly~, arriving at the answer by conjecture."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Wißt ihr nicht, daß ein solcher Mann, wie ich, erraten könne?",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "Do you not know that a man such as I can divine things?",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": null
+ },
+ "errechnen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~er-~ + ~rechnen~:\n\n- ~rechnen~: Aus Mhd. ~rechenen~, aus Ahd. ~rehhanōn~, aus Proto-Westgermanisch *~rekanōn~ („zählen, erklären“), aus PIE *~h₃reǵ-~ („gerademachen, richtigmachen“) — derselben Wurzel wie deutsch ~recht~ und lateinisch ~rectus~. Verwandt mit englisch ~reckon~, niederländisch ~rekenen~, niederdeutsch ~rekenen~, dänisch ~regne~.\n- ~er-~: Aus Mhd. ~er-~, aus Ahd. ~ir-~, ~ar-~, aus Proto-Westgermanisch *~uʀ-~, aus Urgermanisch *~uz-~ („heraus, auf“), aus PIE *~ud~ („aufwärts, hinaus, weg“). Dublette des betonten Präfixes ~ur-~. ~er-~ drückt aus, dass etwas mittels der Grundhandlung erlangt wird.\n\n~er-~ richtet ~rechnen~ auf sein Ergebnis: ~errechnen~ heißt, eine Zahl ~durch~ Rechnen zu gewinnen, den ermittelten Wert statt des Rechnens selbst.",
+   "en": "An inseparable compound of ~er-~ + ~rechnen~:\n\n- ~rechnen~: From MHG ~rechenen~, from OHG ~rehhanōn~, from Proto-West Germanic *~rekanōn~ (\"to count, explain\"), from PIE *~h₃reǵ-~ (\"to make straight or right\") — the same root as German ~recht~ and Latin ~rectus~. Cognate with English ~reckon~, Dutch ~rekenen~, Low German ~rekenen~, Danish ~regne~.\n- ~er-~: From MHG ~er-~, from OHG ~ir-~, ~ar-~, from Proto-West Germanic *~uʀ-~, from Proto-Germanic *~uz-~ (\"out, up\"), from PIE *~ud~ (\"up, out, away\"). Doublet of the stressed prefix ~ur-~. ~er-~ conveys obtaining or acquiring something by means of the base action.\n\n~er-~ points ~rechnen~ at its product: ~errechnen~ is to arrive at a figure ~by~ calculating, the computed value rather than the act of computing."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Mittels eines pauschalen Abschreibungsansatzes errechnet sich aus dem Anlagevermögen ein Ersatzinvestitionsbedarf von rd. 900 Mio. € pro Jahr, nur um die jährlichen Substanzverluste auszugleichen.",
+    "source": "Bundesverkehrswegeplan (2030)"
+   },
+   "en": {
+    "sentence": "By means of a flat depreciation approach, a replacement-investment requirement of roughly 900 million euros per year is computed from the asset base, merely to offset the annual losses in substance.",
+    "source": "Bundesverkehrswegeplan (2030)"
+   }
+  },
+  "notes": "Rank-0 ends mid-phrase on an abbreviated date (»…zum 30.«) and rank-1 is an attributive participle; took the next complete verbal use."
+ },
+ "erregen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~er-~ + ~regen~:\n\n- ~regen~: Aus Mhd. ~regen~ („hervorstehen lassen, aufrichten, erregen, bewegen“), aus Urgermanisch *~hragjaną~ („aufrichten, wecken, anstacheln“); synchron das Kausativ von Mhd. ~ragen~ („hervorstehen, emporragen“). Das Verb bedeutet „rühren, bewegen, wecken“, ist mit dem Substantiv ~Regen~ nicht verwandt und begegnet meist reflexiv (~sich regen~).\n- ~er-~: Aus Mhd. ~er-~, aus Ahd. ~ir-~, ~ar-~, aus Proto-Westgermanisch *~uʀ-~, aus Urgermanisch *~uz-~ („heraus, auf“), aus PIE *~ud~ („aufwärts, hinaus, weg“). Dublette des betonten Präfixes ~ur-~. ~er-~ kennzeichnet das erfolgreiche Erreichen oder die Vollendung der Grundhandlung.\n\n~regen~ heißt rühren, bewegen; ~erregen~ steigert dies zur Gemütsbewegung — reizen, aufwühlen, hervorrufen —, indem das Präfix die bloße Bewegung zu ihrer Wirkung führt.",
+   "en": "An inseparable compound of ~er-~ + ~regen~:\n\n- ~regen~: From MHG ~regen~ (\"to make protrude, to erect, to excite, to move\"), from Proto-Germanic *~hragjaną~ (\"to make stand, wake up, incite\"); synchronically the causative of MHG ~ragen~ (\"to project, to tower\"). The verb means \"to stir, move, rouse\" — unrelated to the noun ~Regen~ (\"rain\") — and is most often reflexive (~sich regen~).\n- ~er-~: From MHG ~er-~, from OHG ~ir-~, ~ar-~, from Proto-West Germanic *~uʀ-~, from Proto-Germanic *~uz-~ (\"out, up\"), from PIE *~ud~ (\"up, out, away\"). Doublet of the stressed prefix ~ur-~. ~er-~ marks the successful achievement or completion of the base action.\n\n~regen~ is to stir or move; ~erregen~ stirs up feeling — to excite, arouse, or provoke — the prefix carrying the mere motion to its effect on the mind."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Würde sich die Sittenstrenge gewisser Leute gegenüber der kosmetischen Kunst logischerweise auch auf ihre Zähne erstrecken, so würden sie nicht wenig Anstoß erregen.",
+    "source": "Mann — Der Tod in Venedig"
+   },
+   "en": {
+    "sentence": "If the moral strictness of certain people were, in logic, to extend to their teeth as well, they would give no little offense.",
+    "source": "Mann — Der Tod in Venedig"
+   }
+  },
+  "notes": null
+ },
+ "erretten": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~er-~ + ~retten~:\n\n- ~retten~: Aus Mhd. ~retten~, aus Ahd. ~hretten~ oder ~retten~, aus Proto-Westgermanisch *~hraddjan~, aus Urgermanisch *~hradjaną~ („retten, befreien“). Verwandt mit niederländisch ~redden~, englisch ~redd~ (dialektal „aufräumen, ordnen“) und dem teilweise verwandten englisch ~rid~, das teils aus altenglisch ~hreddan~ („befreien, erretten“) stammt.\n- ~er-~: Aus Mhd. ~er-~, aus Ahd. ~ir-~, ~ar-~, aus Proto-Westgermanisch *~uʀ-~, aus Urgermanisch *~uz-~ („heraus, auf“), aus PIE *~ud~ („aufwärts, hinaus, weg“). Dublette des betonten Präfixes ~ur-~. ~er-~ kennzeichnet das erfolgreiche Erreichen oder die Vollendung der Grundhandlung.\n\nNahezu gleichbedeutend mit schlichtem ~retten~, fügt ~erretten~ eine nachdrückliche Vollständigkeit hinzu — eine durchgeführte Errettung — und bewahrt einen feierlichen, biblischen Ton.",
+   "en": "An inseparable compound of ~er-~ + ~retten~:\n\n- ~retten~: From MHG ~retten~, from OHG ~hretten~ or ~retten~, from Proto-West Germanic *~hraddjan~, from Proto-Germanic *~hradjaną~ (\"to save, rescue\"). Cognate with Dutch ~redden~, English ~redd~ (dialectal, \"to tidy, clear\"), and the partially related English ~rid~, borrowed partly from Old English ~hreddan~ (\"to deliver, rescue\").\n- ~er-~: From MHG ~er-~, from OHG ~ir-~, ~ar-~, from Proto-West Germanic *~uʀ-~, from Proto-Germanic *~uz-~ (\"out, up\"), from PIE *~ud~ (\"up, out, away\"). Doublet of the stressed prefix ~ur-~. ~er-~ marks the successful achievement or completion of the base action.\n\nNear-synonymous with plain ~retten~, ~erretten~ adds emphatic completeness — a deliverance carried through — and keeps a solemn, biblical register."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Errette mich von der Hand meines Bruders, von der Hand Esaus; denn ich fürchte mich vor ihm, daß er nicht komme und schlage mich, die Mütter samt den Kindern.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "Deliver me from the hand of my brother, from the hand of Esau, for I fear him, that he may come and strike me, the mothers together with the children.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": null
+ },
+ "erringen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~er-~ + ~ringen~:\n\n- ~ringen~: Aus Mhd. ~ringen~, aus Ahd. ~ringan~, aus Proto-Westgermanisch *~wringan~, aus Urgermanisch *~wringaną~ („drehen, wringen“), aus einer nasalierten Form von PIE *~wergʰ-~ („drehen, winden“). Ein starkes Verb der Klasse III (~ringen~, ~rang~, ~gerungen~). Trotz des Anscheins hat es nichts mit ~Ring~ zu tun. Verwandt mit englisch ~wring~, ~wrong~ (ursprünglich „verdreht“), niederländisch ~wringen~.\n- ~er-~: Aus Mhd. ~er-~, aus Ahd. ~ir-~, ~ar-~, aus Proto-Westgermanisch *~uʀ-~, aus Urgermanisch *~uz-~ („heraus, auf“), aus PIE *~ud~ („aufwärts, hinaus, weg“). Dublette des betonten Präfixes ~ur-~. ~er-~ drückt aus, dass etwas mittels der Grundhandlung erlangt wird.\n\n~er-~ macht aus dem Ringen von ~ringen~ ein Erlangen: einen Sieg oder ein Mandat ~erringen~ heißt, ihn durch anhaltende Anstrengung zu gewinnen, der Kampf am Preis gemessen.",
+   "en": "An inseparable compound of ~er-~ + ~ringen~:\n\n- ~ringen~: From MHG ~ringen~, from OHG ~ringan~, from Proto-West Germanic *~wringan~, from Proto-Germanic *~wringaną~ (\"to twist, wring\"), from a nasalized form of PIE *~wergʰ-~ (\"to turn, twist\"). A class III strong verb (~ringen~, ~rang~, ~gerungen~). Despite appearances it has nothing to do with ~Ring~. Cognate with English ~wring~, ~wrong~ (originally \"twisted\"), Dutch ~wringen~.\n- ~er-~: From MHG ~er-~, from OHG ~ir-~, ~ar-~, from Proto-West Germanic *~uʀ-~, from Proto-Germanic *~uz-~ (\"out, up\"), from PIE *~ud~ (\"up, out, away\"). Doublet of the stressed prefix ~ur-~. ~er-~ conveys obtaining or acquiring something by means of the base action.\n\n~er-~ turns the wrestling of ~ringen~ into acquisition: to ~erringen~ a victory or a seat is to win it through sustained effort, the struggle measured by its prize."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Die Union wird bei aktuell 29 Prozent aus eigener Kraft nur knapp über 180 Mandate erringen.",
+    "source": "Bundestag — Plenarprotokoll 20/210"
+   },
+   "en": {
+    "sentence": "At its current 29 percent, the Union will win only just over 180 seats on its own strength.",
+    "source": "Bundestag — Plenarprotokoll 20/210"
+   }
+  },
+  "notes": null
+ },
+ "ersaufen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~er-~ + ~saufen~:\n\n- ~saufen~: Aus Mhd. ~sūfen~ („schlürfen, trinken“), aus Ahd. ~sūfan~, aus Proto-Westgermanisch *~sūpan~, aus Urgermanisch *~sūpaną~, aus PIE *~sewp-~, einer labialen Erweiterung von *~sew-~ („Flüssigkeit aufnehmen, schlürfen“). Ein starkes Verb der Klasse II (~saufen~, ~soff~, ~gesoffen~). Die Verschiebung von „schlürfen“ zum heutigen „zechen“ stammt erst aus dem 16. Jahrhundert. Verwandt mit englisch ~sup~, niederländisch ~zuipen~, altnordisch ~súpa~.\n- ~er-~: Aus Mhd. ~er-~, aus Ahd. ~ir-~, ~ar-~, aus Proto-Westgermanisch *~uʀ-~, aus Urgermanisch *~uz-~ („heraus, auf“), aus PIE *~ud~ („aufwärts, hinaus, weg“). Dublette des betonten Präfixes ~ur-~. ~er-~ führt die Grundhandlung zu einem tödlichen Ende.\n\n~er-~ gibt ~saufen~ ein tödliches Ende: ~ersaufen~ ist das derbe Wort fürs Ertrinken, ob Tier oder Mensch, wie ~ertrinken~ sein neutrales Gegenstück ist.",
+   "en": "An inseparable compound of ~er-~ + ~saufen~:\n\n- ~saufen~: From MHG ~sūfen~ (\"to sip, drink\"), from OHG ~sūfan~, from Proto-West Germanic *~sūpan~, from Proto-Germanic *~sūpaną~, from PIE *~sewp-~, a labial extension of *~sew-~ (\"to take liquid, slurp\"). A class II strong verb (~saufen~, ~soff~, ~gesoffen~). The drift from \"to sip\" to today's \"to booze\" dates only to the sixteenth century. Cognate with English ~sup~, Dutch ~zuipen~, Old Norse ~súpa~.\n- ~er-~: From MHG ~er-~, from OHG ~ir-~, ~ar-~, from Proto-West Germanic *~uʀ-~, from Proto-Germanic *~uz-~ (\"out, up\"), from PIE *~ud~ (\"up, out, away\"). Doublet of the stressed prefix ~ur-~. ~er-~ carries the base action to a fatal end.\n\n~er-~ gives ~saufen~ a fatal end: ~ersaufen~ is the coarse word for drowning, animal or human, as ~ertrinken~ is its neutral counterpart."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Und als er an den Brunnen kam und sich über das Wasser bückte und trinken wollte, da zogen ihn die schweren Steine hinein, und er mußte jämmerlich ersaufen.",
+    "source": "Grimm — Märchen"
+   },
+   "en": {
+    "sentence": "And when he came to the well and bent over the water and wanted to drink, the heavy stones dragged him in, and he had to drown miserably.",
+    "source": "Grimm — Märchen"
+   }
+  },
+  "notes": "Sense tiebreak: rank-0 attests the figurative »in Wein ersoffen« (drunk); took the next candidate, which attests literal drowning per the gloss."
+ }
+}

@@ -1,0 +1,319 @@
+{
+ "herabblicken": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~herab-~ + ~blicken~:\n\n- ~blicken~: Aus Mhd. ~blicken~, aus Ahd. ~blicchen~, aus Proto-Westgermanisch *~blikk-~, aus Urgermanisch *~bliką~ / *~blikkaz~ („Schein, Erscheinung, Blick“), aus PIE *~bʰleyǵ-~ („scheinen, glänzen“) — ein ~Blick~ ist ein Lichtblitz, der zum gerichteten Sehen wurde. Verwandt mit Englisch ~bleach~ und ~blank~, Niederländisch ~blik~, Altenglisch ~blice~.\n- ~herab-~: Eine durchsichtige Zusammensetzung aus ~her-~ („hierher“, Bewegung zum Sprecher hin, aus Ahd. ~hera~, aus dem urgermanischen Demonstrativstamm *~hi-~, aus PIE *~ḱi-~ „dieser“) und ~ab~ („ab, herunter“), also „nach unten und zum Sprecher hin“ — die Bewegung von unten gesehen. Ihr Spiegelbild ist ~hinab~, derselbe Abstieg vom Sprecher weg. ~herab-~ bezeichnet die Abwärtsbewegung, ausgerichtet auf den Sprecher oder den Standpunkt unten.\n\n„Herabblicken“ ist das gerichtete Sehen von oben nach unten; im übertragenen Gebrauch — auf jemanden ~herabblicken~ — wird daraus die Geringschätzung, die dem ~herab-~ auch sonst anhaftet.",
+   "en": "A separable compound of ~herab-~ + ~blicken~:\n\n- ~blicken~: From MHG ~blicken~, from OHG ~blicchen~, from Proto-West Germanic *~blikk-~, from Proto-Germanic *~bliką~ / *~blikkaz~ (\"shine, appearance, look\"), from PIE *~bʰleyǵ-~ (\"to shine\") — a ~Blick~ is a flash of light turned into a directed gaze. Cognate with English ~bleach~ and ~blank~, Dutch ~blik~, Old English ~blice~.\n- ~herab-~: A transparent compound of ~her-~ (\"hither,\" marking motion toward the speaker, from OHG ~hera~, from the Proto-Germanic deictic stem *~hi-~, from PIE *~ḱi-~ \"this\") and ~ab~ (\"off, down\"), so \"downward and toward the speaker\" — the motion seen from below. Its mirror image is ~hinab~, the same descent away from the speaker. ~herab-~ marks downward motion oriented toward the speaker or the vantage point below.\n\n„herabblicken“ is directed seeing from above downward; figuratively — to look down on someone — it takes on the disdain that clings elsewhere to ~herab-~."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Einem reichen Manne, dem wurde seine Frau krank, und als sie fühlte, daß ihr Ende herankam, rief sie ihr einziges Töchterlein zu sich ans Bett und sprach: »Liebes Kind, bleib fromm und gut, so wird dir der liebe Gott immer beistehen, und ich will vom Himmel auf dich herabblicken und will um dich sein.",
+    "source": "Grimm — Märchen"
+   },
+   "en": {
+    "sentence": "A rich man's wife fell ill, and when she felt her end drawing near she called her only little daughter to her bedside and said: »Dear child, stay pious and good, and the dear Lord will always help you, and I will look down on you from heaven and will be near you.",
+    "source": "Grimm — Märchen"
+   }
+  },
+  "notes": "Reading glosses the literal 'look downwards'; sense 0 and the Grimm sentence are both literal, though sense_exemplars lists herabblicken under the figurative sense 1 (its more common 'look down on'). Grimm candidate is long (~54 words) but the only literal, gloss-matching genuine use; the Nietzsche alternative is figurative and equally long."
+ },
+ "herabfliegen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~herab-~ + ~fliegen~:\n\n- ~fliegen~: Aus Mhd. ~vliegen~, aus Ahd. ~fliogan~, aus Proto-Westgermanisch *~fleugan~, aus Urgermanisch *~fleuganą~, aus PIE *~plewk-~ („fließen, fliegen“), einer Erweiterung von *~plew-~ („fließen, schweben, schwimmen“), die auch ~fließen~ ergab. Der Vokalgang *eu → Ahd. *io → Mhd. *ie ist typisch für starke Verben der Klasse II. Verwandt mit Englisch ~fly~, Niederländisch ~vliegen~, Dänisch ~flyve~.\n- ~herab-~: Eine durchsichtige Zusammensetzung aus ~her-~ („hierher“, Bewegung zum Sprecher hin, aus Ahd. ~hera~, aus dem urgermanischen Demonstrativstamm *~hi-~, aus PIE *~ḱi-~ „dieser“) und ~ab~ („ab, herunter“), also „nach unten und zum Sprecher hin“ — die Bewegung von unten gesehen. Ihr Spiegelbild ist ~hinab~, derselbe Abstieg vom Sprecher weg. ~herab-~ bezeichnet die Abwärtsbewegung, ausgerichtet auf den Sprecher oder den Standpunkt unten.\n\n~Herabfliegen~ ist die abwärts gerichtete Flugbewegung eines beflügelten Wesens — eines Vogels, Engels oder, im Märchen, hilfreicher Tauben.",
+   "en": "A separable compound of ~herab-~ + ~fliegen~:\n\n- ~fliegen~: From MHG ~vliegen~, from OHG ~fliogan~, from Proto-West Germanic *~fleugan~, from Proto-Germanic *~fleuganą~, from PIE *~plewk-~ (\"to flow, fly\"), an extension of *~plew-~ (\"to flow, float, swim\") that also gave ~fließen~. The vowel path *eu to OHG *io to MHG *ie is characteristic of class II strong verbs. Cognate with English ~fly~, Dutch ~vliegen~, Danish ~flyve~.\n- ~herab-~: A transparent compound of ~her-~ (\"hither,\" marking motion toward the speaker, from OHG ~hera~, from the Proto-Germanic deictic stem *~hi-~, from PIE *~ḱi-~ \"this\") and ~ab~ (\"off, down\"), so \"downward and toward the speaker\" — the motion seen from below. Its mirror image is ~hinab~, the same descent away from the speaker. ~herab-~ marks downward motion oriented toward the speaker or the vantage point below.\n\n~herabfliegen~ is the downward flight of a winged creature — a bird, an angel, or, in a fairy tale, helpful doves."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Und als sie das gerufen hatten, kamen sie beide herabgeflogen und setzten sich dem Aschenputtel auf die Schultern, eine rechts, die andere links, und blieben da sitzen.",
+    "source": "Grimm — Märchen"
+   },
+   "en": {
+    "sentence": "And when they had called that out, the two came flying down and settled on Cinderella's shoulders, one on the right, the other on the left, and stayed sitting there.",
+    "source": "Grimm — Märchen"
+   }
+  },
+  "notes": null
+ },
+ "herabsetzen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~herab-~ + ~setzen~:\n\n- ~setzen~: Aus Mhd. ~setzen~, aus Ahd. ~sezzen~, aus Proto-Westgermanisch *~sattjan~, aus Urgermanisch *~satjaną~ („setzen, hinsetzen“), aus PIE *~sodéyeti~ — eine Kausativableitung von *~sitjaną~ („sitzen“) mit dem Suffix *~-janą~, wörtlich „zum Sitzen bringen“. Verwandt mit Englisch ~set~, Niederländisch ~zetten~, Jiddisch ~zetsn~.\n- ~herab-~: Eine durchsichtige Zusammensetzung aus ~her-~ („hierher“, Bewegung zum Sprecher hin, aus Ahd. ~hera~, aus dem urgermanischen Demonstrativstamm *~hi-~, aus PIE *~ḱi-~ „dieser“) und ~ab~ („ab, herunter“), also „nach unten und zum Sprecher hin“ — die Bewegung von unten gesehen. Ihr Spiegelbild ist ~hinab~, derselbe Abstieg vom Sprecher weg. Übertragen von Herablassung und Geringschätzung (~herabsehen~, ~herabsetzen~).\n\n~Herabsetzen~ trennt sich früh vom räumlichen Bild: man setzt einen Preis, ein Alter oder eine Strafe herab — oder, ganz ohne Maßzahl, den Wert eines Menschen.",
+   "en": "A separable compound of ~herab-~ + ~setzen~:\n\n- ~setzen~: From MHG ~setzen~, from OHG ~sezzen~, from Proto-West Germanic *~sattjan~, from Proto-Germanic *~satjaną~ (\"to set, to place down\"), from PIE *~sodéyeti~ — a causative derivation of *~sitjaną~ (\"to sit\") with the suffix *~-janą~, literally \"to cause to sit.\" Cognate with English ~set~, Dutch ~zetten~, Yiddish ~zetsn~.\n- ~herab-~: A transparent compound of ~her-~ (\"hither,\" marking motion toward the speaker, from OHG ~hera~, from the Proto-Germanic deictic stem *~hi-~, from PIE *~ḱi-~ \"this\") and ~ab~ (\"off, down\"), so \"downward and toward the speaker\" — the motion seen from below. Its mirror image is ~hinab~, the same descent away from the speaker. Figuratively, of condescension or disparagement, looking down on someone (~herabsehen~, ~herabsetzen~).\n\n~herabsetzen~ parts early from the spatial picture: one lowers a price, an age, or a penalty — or, with no number at all, a person's worth."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "In einem weiteren Punkt fordern Sie mal wieder, das Alter der Strafmündigkeit herabzusetzen.",
+    "source": "Bundestag — Plenarprotokoll 20/207"
+   },
+   "en": {
+    "sentence": "In yet another point you are once again demanding that the age of criminal responsibility be lowered.",
+    "source": "Bundestag — Plenarprotokoll 20/207"
+   }
+  },
+  "notes": "Chose the sense-matching 13-word Bundestag candidate (lowering the age of criminal responsibility = 'reduce') over the rank-0 Nietzsche reflexive 'sich herabsetzen' (demean oneself)."
+ },
+ "herabsteigen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~herab-~ + ~steigen~:\n\n- ~steigen~: Aus Mhd. ~stîgen~, aus Ahd. ~stīgan~, aus Proto-Westgermanisch *~stīgan~, aus Urgermanisch *~stīganą~, aus PIE *~steygʰ-~ („gehen, steigen“). Ein starkes Verb der Klasse I (~steigen~, ~stieg~, ~gestiegen~); dieselbe Wurzel ergab Altgriechisch ~steíkhō~ („ich gehe“). Verwandt mit dem archaischen Englisch ~sty~ („klettern“), Niederländisch ~stijgen~, Gotisch ~steigan~.\n- ~herab-~: Eine durchsichtige Zusammensetzung aus ~her-~ („hierher“, Bewegung zum Sprecher hin, aus Ahd. ~hera~, aus dem urgermanischen Demonstrativstamm *~hi-~, aus PIE *~ḱi-~ „dieser“) und ~ab~ („ab, herunter“), also „nach unten und zum Sprecher hin“ — die Bewegung von unten gesehen. Ihr Spiegelbild ist ~hinab~, derselbe Abstieg vom Sprecher weg. ~herab-~ bezeichnet die Abwärtsbewegung, ausgerichtet auf den Sprecher oder den Standpunkt unten.\n\n~Herabsteigen~ ist das kontrollierte, schrittweise Absteigen — nicht der Sturz —, oft von einer Höhe wie Berg, Baum oder Altar herab zum Betrachter.",
+   "en": "A separable compound of ~herab-~ + ~steigen~:\n\n- ~steigen~: From MHG ~stîgen~, from OHG ~stīgan~, from Proto-West Germanic *~stīgan~, from Proto-Germanic *~stīganą~, from PIE *~steygʰ-~ (\"to walk, climb\"). A class I strong verb (~steigen~, ~stieg~, ~gestiegen~); the same root gave Ancient Greek ~steíkhō~ (\"I go\"). Cognate with archaic English ~sty~ (\"to climb\"), Dutch ~stijgen~, Gothic ~steigan~.\n- ~herab-~: A transparent compound of ~her-~ (\"hither,\" marking motion toward the speaker, from OHG ~hera~, from the Proto-Germanic deictic stem *~hi-~, from PIE *~ḱi-~ \"this\") and ~ab~ (\"off, down\"), so \"downward and toward the speaker\" — the motion seen from below. Its mirror image is ~hinab~, the same descent away from the speaker. ~herab-~ marks downward motion oriented toward the speaker or the vantage point below.\n\n~herabsteigen~ is a controlled, step-by-step descent — not a fall — often from a height such as a mountain, tree, or altar down toward the onlooker."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Und Aaron hob seine Hand auf zum Volk und segnete sie; und er stieg herab, da er das Sündopfer, Brandopfer und Dankopfer gemacht hatte.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "And Aaron lifted up his hand toward the people and blessed them; and he came down, after he had made the sin offering, the burnt offering, and the peace offering.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": "Rank-0 Grimm (~50 words) and rank-1 Goethe (~70 words) are both far over band; took the clean 24-word Luther candidate, a literal descent matching 'descend'."
+ },
+ "herabstürzen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~herab-~ + ~stürzen~:\n\n- ~stürzen~: Aus Mhd. ~stürzen~, aus Ahd. ~sturzen~, aus Proto-Westgermanisch *~sturtijan~ („hinunterfallen, stürzen“), letztlich ungesicherter Herkunft; möglicherweise aus PIE *~ster-~ („steif sein“) über eine dentale Erweiterung *~sterd-~, doch ist die Ableitung umstritten. Verwandt mit Englisch ~start~, einer Dublette aus derselben proto-westgermanischen Quelle, deren Bedeutungen radikal auseinandergingen.\n- ~herab-~: Eine durchsichtige Zusammensetzung aus ~her-~ („hierher“, Bewegung zum Sprecher hin, aus Ahd. ~hera~, aus dem urgermanischen Demonstrativstamm *~hi-~, aus PIE *~ḱi-~ „dieser“) und ~ab~ („ab, herunter“), also „nach unten und zum Sprecher hin“ — die Bewegung von unten gesehen. Ihr Spiegelbild ist ~hinab~, derselbe Abstieg vom Sprecher weg. ~herab-~ bezeichnet die Abwärtsbewegung, ausgerichtet auf den Sprecher oder den Standpunkt unten.\n\nWo ~herabsteigen~ das gemessene Absteigen meint, ist ~herabstürzen~ der jähe, unkontrollierte Fall — von Wasser, das kaskadenartig herabstürzt, bis zum abstürzenden Körper.",
+   "en": "A separable compound of ~herab-~ + ~stürzen~:\n\n- ~stürzen~: From MHG ~stürzen~, from OHG ~sturzen~, from Proto-West Germanic *~sturtijan~ (\"to fall down, tumble\"), of uncertain ultimate origin; possibly from PIE *~ster-~ (\"to be stiff\") via a dental extension *~sterd-~, though the derivation is debated. Cognate with English ~start~, a doublet from the same Proto-West Germanic source, from which the meanings have diverged radically.\n- ~herab-~: A transparent compound of ~her-~ (\"hither,\" marking motion toward the speaker, from OHG ~hera~, from the Proto-Germanic deictic stem *~hi-~, from PIE *~ḱi-~ \"this\") and ~ab~ (\"off, down\"), so \"downward and toward the speaker\" — the motion seen from below. Its mirror image is ~hinab~, the same descent away from the speaker. ~herab-~ marks downward motion oriented toward the speaker or the vantage point below.\n\nWhere ~herabsteigen~ is a measured descent, ~herabstürzen~ is the sudden, uncontrolled fall — from water cascading down to a plunging body."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "herabwürdigen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~herab-~ + ~würdigen~:\n\n- ~würdigen~: Aus ~würdig~ („wert, würdig“) + ~-en~; ~würdig~ aus ~Würde~ + ~-ig~, und ~Würde~ aus Mhd. ~wirde~, aus Ahd. ~wirdī~, verwandt mit urgermanisch *~werþaz~ („wertvoll, würdig“), aus PIE *~wert-~ („drehen“). Verwandt mit englisch ~worth~ und ~worthy~.\n- ~herab-~: Eine durchsichtige Zusammensetzung aus ~her-~ („hierher“, Bewegung zum Sprecher hin, aus Ahd. ~hera~, aus dem urgermanischen Demonstrativstamm *~hi-~, aus PIE *~ḱi-~ „dieser“) und ~ab~ („ab, herunter“), also „nach unten und zum Sprecher hin“ — die Bewegung von unten gesehen. Ihr Spiegelbild ist ~hinab~, derselbe Abstieg vom Sprecher weg. Übertragen von Herablassung und Geringschätzung (~herabsehen~, ~herabsetzen~).\n\n~Herabwürdigen~ setzt die ~Würde~ selbst herab: es spricht jemandem den Wert ab, den ~würdigen~ ihm zuerkennt — dieselbe Wurzel, entgegengesetzt gerichtet.",
+   "en": "A separable compound of ~herab-~ + ~würdigen~:\n\n- ~würdigen~: From ~würdig~ (\"worthy\") + ~-en~; ~würdig~ from ~Würde~ (\"dignity, worth\") + ~-ig~, and ~Würde~ from MHG ~wirde~, from OHG ~wirdī~, related to Proto-Germanic *~werþaz~ (\"valuable, worthy\"), from PIE *~wert-~ (\"to turn\"). Cognate with English ~worth~ and ~worthy~.\n- ~herab-~: A transparent compound of ~her-~ (\"hither,\" marking motion toward the speaker, from OHG ~hera~, from the Proto-Germanic deictic stem *~hi-~, from PIE *~ḱi-~ \"this\") and ~ab~ (\"off, down\"), so \"downward and toward the speaker\" — the motion seen from below. Its mirror image is ~hinab~, the same descent away from the speaker. Figuratively, of condescension or disparagement, looking down on someone (~herabsehen~, ~herabsetzen~).\n\n~herabwürdigen~ lowers ~Würde~ itself: it denies someone the worth that ~würdigen~ grants — the same root, turned the opposite way."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "heranbilden": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~heran-~ + ~bilden~:\n\n- ~bilden~: Aus Mhd. ~bilden~, einer Verschmelzung zweier althochdeutscher Verben: ~biliden~ („zu einem Bild formen“), aus Proto-Westgermanisch *~biliþijan~, und ~bilidōn~ („nachahmen“), aus *~biliþōn~; beide zum Substantiv *~biliþī~ (woraus ~Bild~), dessen vorgermanischer Ursprung unklar ist, ohne gesicherte PIE-Etymologie. Verwandt mit Niederländisch ~beelden~, Schwedisch ~bilda~.\n- ~heran-~: Das zusammengesetzte Adverb ~her~ („zum Sprecher hin“) + ~an~ („an, bei, heran“); siehe dort für die jeweilige Geschichte. Umgangssprachlich verkürzt es sich zu ~ran~. Übertragen bezeichnet es das Herangehen an eine Aufgabe oder das Heranwachsen an ein Maß.\n\n~Heranbilden~ meint das planvolle Heranziehen und Ausbilden von Nachwuchs — Fachkräfte, Schüler, eine neue Generation werden an ein Können herangebildet.",
+   "en": "A separable compound of ~heran-~ + ~bilden~:\n\n- ~bilden~: From MHG ~bilden~, a merger of two Old High German verbs: ~biliden~ (\"to form into an image\"), from Proto-West Germanic *~biliþijan~, and ~bilidōn~ (\"to copy, represent\"), from *~biliþōn~; both from the noun *~biliþī~ (whence ~Bild~), whose pre-Germanic origin is obscure, with no secure PIE etymology. Cognate with Dutch ~beelden~, Swedish ~bilda~.\n- ~heran-~: The compound adverb ~her~ (\"toward the speaker\") + ~an~ (\"on, at, up to\"); see those entries for their separate histories. Colloquially it contracts to ~ran~. Figuratively it marks taking on a task, or growing up toward a standard.\n\n~heranbilden~ means deliberately raising and training up successors — skilled workers, pupils, a new generation are brought up to a competence."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "heranbrechen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~heran-~ + ~brechen~:\n\n- ~brechen~: Aus Mhd. ~brëchen~, aus Ahd. ~brëhhan~, aus Proto-Westgermanisch *~brekan~, aus Urgermanisch *~brekaną~, aus PIE *~bʰreg-~ („brechen“) — dasselbe Wort wie Englisch ~break~, nur durch die hochdeutsche Lautverschiebung getrennt. Dieselbe Wurzel liegt Lateinisch ~frangere~ zugrunde, woraus Englisch ~fracture~. Verwandt mit Niederländisch ~breken~, Dänisch ~brække~.\n- ~heran-~: Das zusammengesetzte Adverb ~her~ („zum Sprecher hin“) + ~an~ („an, bei, heran“); siehe dort für die jeweilige Geschichte. Umgangssprachlich verkürzt es sich zu ~ran~. ~heran-~ bezeichnet das Nahen: das Herankommen an den Sprecher oder an einen Bezugspunkt.\n\n~Heranbrechen~ verbindet das Nahen des ~heran-~ mit der plötzlichen Wucht von ~brechen~: der Tag, ein Sturm oder eine Woge bricht heran, kommt unaufhaltsam näher.",
+   "en": "A separable compound of ~heran-~ + ~brechen~:\n\n- ~brechen~: From MHG ~brëchen~, from OHG ~brëhhan~, from Proto-West Germanic *~brekan~, from Proto-Germanic *~brekaną~, from PIE *~bʰreg-~ (\"to break\") — the same word as English ~break~, separated only by the High German consonant shift. The same root underlies Latin ~frangere~, whence English ~fracture~. Cognate with Dutch ~breken~, Danish ~brække~.\n- ~heran-~: The compound adverb ~her~ (\"toward the speaker\") + ~an~ (\"on, at, up to\"); see those entries for their separate histories. Colloquially it contracts to ~ran~. ~heran-~ means approaching: coming up to the speaker or to a point of reference.\n\n~heranbrechen~ joins the approach of ~heran-~ to the sudden force of ~brechen~: a day, a storm, or a wave breaks on, drawing unstoppably nearer."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "heranführen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~heran-~ + ~führen~:\n\n- ~führen~: Aus Mhd. ~vüeren~, aus Ahd. ~fuoren~, aus Proto-Westgermanisch *~fōrijan~, aus Urgermanisch *~fōrijaną~, dem Kausativ von *~faraną~ („gehen, reisen“), aus PIE *~per-~ („Durchgang, Überquerung“). ~Führen~ ist also „gehen machen“, das transitive Gegenstück zum starken ~fahren~. Verwandt mit Niederländisch ~voeren~, Englisch ~fare~ (vom Grundverb).\n- ~heran-~: Das zusammengesetzte Adverb ~her~ („zum Sprecher hin“) + ~an~ („an, bei, heran“); siehe dort für die jeweilige Geschichte. Umgangssprachlich verkürzt es sich zu ~ran~. Bei transitiven Verben bedeutet es, etwas näher heranzubringen.\n\n~Heranführen~ ist das transitive Gegenstück zum Nahen: man führt jemanden oder etwas näher heran — im Konkreten an einen Ort, im Übertragenen an ein Thema.",
+   "en": "A separable compound of ~heran-~ + ~führen~:\n\n- ~führen~: From MHG ~vüeren~, from OHG ~fuoren~, from Proto-West Germanic *~fōrijan~, from Proto-Germanic *~fōrijaną~, the causative of *~faraną~ (\"to go, travel\"), from PIE *~per-~ (\"going, passage\"). To ~führen~ is thus \"to make go,\" the transitive counterpart of strong ~fahren~. Cognate with Dutch ~voeren~, English ~fare~ (from the base verb).\n- ~heran-~: The compound adverb ~her~ (\"toward the speaker\") + ~an~ (\"on, at, up to\"); see those entries for their separate histories. Colloquially it contracts to ~ran~. With transitive verbs it means bringing something nearer.\n\n~heranführen~ is the transitive counterpart of approaching: one leads someone or something nearer — literally to a place, figuratively to a subject."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "herangehen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~heran-~ + ~gehen~:\n\n- ~gehen~: Aus Mhd. ~gan~, ~gen~, aus Ahd. ~gan~, ~gen~, aus Proto-Westgermanisch *~gān~, aus Urgermanisch *~gāną~, aus PIE *~ǵʰeh₁-~ („weggehen“). Die Form ~gen~ ist bairischen Ursprungs; das ~-h-~ kam in Analogie zu ~sehen~ in die Schreibung. Verwandt mit Englisch ~go~, Niederländisch ~gaan~, Niederdeutsch ~gahn~, Schwedisch und Dänisch ~gå~.\n- ~heran-~: Das zusammengesetzte Adverb ~her~ („zum Sprecher hin“) + ~an~ („an, bei, heran“); siehe dort für die jeweilige Geschichte. Umgangssprachlich verkürzt es sich zu ~ran~. Übertragen bezeichnet es das Herangehen an eine Aufgabe oder das Heranwachsen an ein Maß.\n\n~Herangehen~ hat sich fast ganz ins Übertragene verschoben: man geht an eine Aufgabe, ein Problem, eine Sache heran — das Bild des Zutretens bleibt nur als Haltung erhalten.",
+   "en": "A separable compound of ~heran-~ + ~gehen~:\n\n- ~gehen~: From MHG ~gan~, ~gen~, from OHG ~gan~, ~gen~, from Proto-West Germanic *~gān~, from Proto-Germanic *~gāną~, from PIE *~ǵʰeh₁-~ (\"to leave\"). The form ~gen~ is of Bavarian origin; the ~-h-~ entered the spelling by analogy with ~sehen~. Cognate with English ~go~, Dutch ~gaan~, Low German ~gahn~, Swedish and Danish ~gå~.\n- ~heran-~: The compound adverb ~her~ (\"toward the speaker\") + ~an~ (\"on, at, up to\"); see those entries for their separate histories. Colloquially it contracts to ~ran~. Figuratively it marks taking on a task, or growing up toward a standard.\n\n~herangehen~ has shifted almost wholly into the figurative: one approaches a task, a problem, a matter — the image of stepping up survives only as an attitude."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Zweitens bin ich überzeugt davon, dass wir in der nächsten Legislaturperiode mit Mut und Zuversicht da herangehen und diese Maßnahmen umsetzen können.",
+    "source": "Bundestag — Plenarprotokoll 20/210"
+   },
+   "en": {
+    "sentence": "Secondly, I am convinced that in the next legislative period we can approach this with courage and confidence and put these measures into practice.",
+    "source": "Bundestag — Plenarprotokoll 20/210"
+   }
+  },
+  "notes": null
+ },
+ "heranhalten": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~heran-~ + ~halten~:\n\n- ~halten~: Aus Mhd. ~halten~, aus Ahd. ~haltan~, aus Proto-Westgermanisch *~haldan~, aus Urgermanisch *~haldaną~. Verwandt mit Englisch ~hold~, Niederländisch ~houden~, Niederdeutsch ~holden~, Dänisch ~holde~, Isländisch ~halda~, Schwedisch ~hålla~.\n- ~heran-~: Das zusammengesetzte Adverb ~her~ („zum Sprecher hin“) + ~an~ („an, bei, heran“); siehe dort für die jeweilige Geschichte. Umgangssprachlich verkürzt es sich zu ~ran~. Bei transitiven Verben bedeutet es, etwas näher heranzubringen.\n\n~Heranhalten~ bringt etwas dicht an einen Bezugspunkt heran und hält es dort — man hält eine Probe, ein Maßband, das Ohr an den Gegenstand heran.",
+   "en": "A separable compound of ~heran-~ + ~halten~:\n\n- ~halten~: From MHG ~halten~, from OHG ~haltan~, from Proto-West Germanic *~haldan~, from Proto-Germanic *~haldaną~. Cognate with English ~hold~, Dutch ~houden~, Low German ~holden~, Danish ~holde~, Icelandic ~halda~, Swedish ~hålla~.\n- ~heran-~: The compound adverb ~her~ (\"toward the speaker\") + ~an~ (\"on, at, up to\"); see those entries for their separate histories. Colloquially it contracts to ~ran~. With transitive verbs it means bringing something nearer.\n\n~heranhalten~ brings something up close to a reference point and keeps it there — one holds a sample, a tape measure, an ear up to the object."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "herankommen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~heran-~ + ~kommen~:\n\n- ~kommen~: Aus Mhd. ~quemen~, ~komen~, ~kumen~, aus Ahd. ~queman~ (seltener ~cuman~, ~chuman~), aus Proto-Westgermanisch *~kweman~, aus Urgermanisch *~kwemaną~, aus PIE *~gʷem-~. Verwandt mit Englisch ~come~, Niederdeutsch ~kamen~, Niederländisch ~komen~, Dänisch ~komme~.\n- ~heran-~: Das zusammengesetzte Adverb ~her~ („zum Sprecher hin“) + ~an~ („an, bei, heran“); siehe dort für die jeweilige Geschichte. Umgangssprachlich verkürzt es sich zu ~ran~. ~heran-~ bezeichnet das Nahen: das Herankommen an den Sprecher oder an einen Bezugspunkt.\n\n~Herankommen~ ist das schlichte Nähertreten aus eigener Kraft; daneben steht die Wendung „an etwas nicht herankommen“ für Unerreichbares.",
+   "en": "A separable compound of ~heran-~ + ~kommen~:\n\n- ~kommen~: From MHG ~quemen~, ~komen~, ~kumen~, from OHG ~queman~ (rarer ~cuman~, ~chuman~), from Proto-West Germanic *~kweman~, from Proto-Germanic *~kwemaną~, from PIE *~gʷem-~. Cognate with English ~come~, Low German ~kamen~, Dutch ~komen~, Danish ~komme~.\n- ~heran-~: The compound adverb ~her~ (\"toward the speaker\") + ~an~ (\"on, at, up to\"); see those entries for their separate histories. Colloquially it contracts to ~ran~. ~heran-~ means approaching: coming up to the speaker or to a point of reference.\n\n~herankommen~ is simply drawing nearer under one's own power; beside it stands the idiom „an etwas nicht herankommen,“ for what stays out of reach."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Diese Kühe aber schienen mit Eifer einem Redenden zuzuhören und gaben nicht auf Den Acht, der herankam.",
+    "source": "Nietzsche — Also sprach Zarathustra"
+   },
+   "en": {
+    "sentence": "But these cows seemed to be listening eagerly to a speaker and paid no heed to the one who approached.",
+    "source": "Nietzsche — Also sprach Zarathustra"
+   }
+  },
+  "notes": null
+ },
+ "heranmachen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~heran-~ + ~machen~:\n\n- ~machen~: Aus mhd. ~machen~, aus ahd. ~mahhōn~, aus proto-westgermanisch *~makōn~, aus PIE *~mag-~ („kneten, mischen, machen“). Verwandt mit niederländisch ~maken~, niederdeutsch ~maken~, englisch ~make~.\n- ~heran-~: Das zusammengesetzte Adverb ~her~ („zum Sprecher hin“) + ~an~ („an, bei, heran“); siehe dort für die jeweilige Geschichte. Umgangssprachlich verkürzt es sich zu ~ran~. Übertragen bezeichnet es das Herangehen an eine Aufgabe oder das Heranwachsen an ein Maß.\n\n~Sich heranmachen~ ist stets reflexiv und oft mit einem Beiklang von Absicht: man macht sich an eine Arbeit — oder, wie bei Kafka, an eine Person heran.",
+   "en": "A separable compound of ~heran-~ + ~machen~:\n\n- ~machen~: From MHG ~machen~, from OHG ~mahhōn~, from Proto-West Germanic *~makōn~, from PIE *~mag-~ (\"to knead, mix, make\"). Cognate with Dutch ~maken~, Low German ~maken~, English ~make~.\n- ~heran-~: The compound adverb ~her~ (\"toward the speaker\") + ~an~ (\"on, at, up to\"); see those entries for their separate histories. Colloquially it contracts to ~ran~. Figuratively it marks taking on a task, or growing up toward a standard.\n\n~sich heranmachen~ is always reflexive and often carries a whiff of intent: one sets about a task — or, as in Kafka, sidles up to a person."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Jetzt, da der Diener mit K. sprach, waren sie aufgestanden und jeder wollte eine günstige Gelegenheit ausnützen, um sich vor den andern an K. heranzumachen.",
+    "source": "Kafka — Der Proceß"
+   },
+   "en": {
+    "sentence": "Now, while the servant was speaking with K., they had risen, and each wanted to seize a favorable moment to get close to K. ahead of the others.",
+    "source": "Kafka — Der Proceß"
+   }
+  },
+  "notes": "Sole candidate attests 'sich an eine Person heranmachen' (sidle up to someone) rather than the task-tackling of the gloss; same verb, adjacent nuance."
+ },
+ "heranreichen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~heran-~ + ~reichen~:\n\n- ~reichen~: Aus Mhd. ~reichen~, aus Ahd. ~reihhen~, ~reichen~, aus Proto-Westgermanisch *~raikijan~, aus Urgermanisch *~raikijaną~, aus PIE *~Hroyǵ-éye-ti~, einer kausativen o-Stufe von *~Hreyǵ-~ („ausstrecken, reichen“). Das kausative „sich strecken lassen“ weitete sich zu „langen“, „jemandem etwas reichen“ und „genügen“. Verwandt mit englisch ~reach~, niederländisch ~reiken~, dänisch ~række~.\n- ~heran-~: Das zusammengesetzte Adverb ~her~ („zum Sprecher hin“) + ~an~ („an, bei, heran“); siehe dort für die jeweilige Geschichte. Umgangssprachlich verkürzt es sich zu ~ran~. ~heran-~ bezeichnet das Nahen: das Herankommen an den Sprecher oder an einen Bezugspunkt.\n\n~Heranreichen~ meint, sich bis an einen Bezugspunkt zu erstrecken; im übertragenen „an jemanden nicht heranreichen“ wird daraus das Nichterreichen eines Maßstabs.",
+   "en": "A separable compound of ~heran-~ + ~reichen~:\n\n- ~reichen~: From MHG ~reichen~, from OHG ~reihhen~, ~reichen~, from Proto-West Germanic *~raikijan~, from Proto-Germanic *~raikijaną~, from PIE *~Hroyǵ-éye-ti~, a causative o-grade of *~Hreyǵ-~ (\"to stretch out, reach\"). The causative \"to cause to stretch\" broadened to \"to reach,\" \"to hand to,\" and \"to suffice.\" Cognate with English ~reach~, Dutch ~reiken~, Danish ~række~.\n- ~heran-~: The compound adverb ~her~ (\"toward the speaker\") + ~an~ (\"on, at, up to\"); see those entries for their separate histories. Colloquially it contracts to ~ran~. ~heran-~ means approaching: coming up to the speaker or to a point of reference.\n\n~heranreichen~ means extending as far as a reference point; figuratively, in „an jemanden nicht heranreichen,“ it becomes failing to measure up to a standard."
+  },
+  "sentence": null,
+  "notes": "Sole candidate (Luther) is a ~50-word passage spanning two merged verses (mis-split), too long and broken for a phone screen; the verb use itself (heranreichen an = extend/reach up to) is genuine. Nulled for Phase 5."
+ },
+ "herantreten": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~heran-~ + ~treten~:\n\n- ~treten~: Aus Mhd. ~trëten~, aus Ahd. ~trëtan~, aus Proto-Westgermanisch *~tredan~, aus Urgermanisch *~trudaną~, aus einem möglichen vorgermanischen *~dret-~, vielleicht einer Erweiterung von PIE *~dr-~ („laufen“). Ein starkes Verb der Klasse V (~treten~, ~trat~, ~getreten~), wahrscheinlich zu einem Wurzelaorist mit alternierendem Vokalismus *~tred-~/*~trud-~. Verwandt mit Englisch ~tread~, Niederländisch ~treden~, Altnordisch ~troða~.\n- ~heran-~: Das zusammengesetzte Adverb ~her~ („zum Sprecher hin“) + ~an~ („an, bei, heran“); siehe dort für die jeweilige Geschichte. Umgangssprachlich verkürzt es sich zu ~ran~. ~heran-~ bezeichnet das Nahen: das Herankommen an den Sprecher oder an einen Bezugspunkt.\n\n~Herantreten~ ist das förmlichere Nähertreten — man tritt an ein Fenster, aber auch an eine Behörde oder mit einer Bitte an jemanden heran.",
+   "en": "A separable compound of ~heran-~ + ~treten~:\n\n- ~treten~: From MHG ~trëten~, from OHG ~trëtan~, from Proto-West Germanic *~tredan~, from Proto-Germanic *~trudaną~, from a possible pre-Germanic *~dret-~, perhaps an extension of PIE *~dr-~ (\"to run\"). A class V strong verb (~treten~, ~trat~, ~getreten~) whose Proto-Germanic root is probably a root aorist with alternating vocalism *~tred-~/*~trud-~. Cognate with English ~tread~, Dutch ~treden~, Old Norse ~troða~.\n- ~heran-~: The compound adverb ~her~ (\"toward the speaker\") + ~an~ (\"on, at, up to\"); see those entries for their separate histories. Colloquially it contracts to ~ran~. ~heran-~ means approaching: coming up to the speaker or to a point of reference.\n\n~herantreten~ is the more formal drawing near — one steps up to a window, but also approaches an authority or comes to someone with a request."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Drüben war noch die Gesellschaft beim Fenster und schien nur jetzt dadurch, daß K. ans Fenster herangetreten war, in der Ruhe des Zuschauens ein wenig gestört.",
+    "source": "Kafka — Der Proceß"
+   },
+   "en": {
+    "sentence": "Over there the party was still by the window, and only now, because K. had stepped up to the window, did it seem a little disturbed in its calm spectating.",
+    "source": "Kafka — Der Proceß"
+   }
+  },
+  "notes": null
+ },
+ "heranwachsen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~heran-~ + ~wachsen~:\n\n- ~wachsen~: Aus Mhd. ~wahsen~, aus Ahd. ~wahsan~, aus proto-westgermanisch *~wahsan~, aus urgermanisch *~wahsijaną~, aus PIE *~h₂weg-~ („wachsen, zunehmen“). Ein starkes Verb der Klasse VI (~wächst~, ~wuchs~, ~gewachsen~). Verwandt mit englisch ~wax~, niederländisch ~wassen~, dänisch ~vokse~, schwedisch ~växa~, gotisch ~wahsjan~.\n- ~heran-~: Das zusammengesetzte Adverb ~her~ („zum Sprecher hin“) + ~an~ („an, bei, heran“); siehe dort für die jeweilige Geschichte. Umgangssprachlich verkürzt es sich zu ~ran~. Übertragen bezeichnet es das Herangehen an eine Aufgabe oder das Heranwachsen an ein Maß.\n\n~Heranwachsen~ ist das Größerwerden hin zu einem Maß, meist zum Erwachsensein — ein Kind, aber übertragen auch eine Bewegung oder eine Gefahr wächst heran.",
+   "en": "A separable compound of ~heran-~ + ~wachsen~:\n\n- ~wachsen~: From MHG ~wahsen~, from OHG ~wahsan~, from Proto-West Germanic *~wahsan~, from Proto-Germanic *~wahsijaną~, from PIE *~h₂weg-~ (\"to grow, increase\"). A class VI strong verb (~wächst~, ~wuchs~, ~gewachsen~). Cognate with English ~wax~, Dutch ~wassen~, Danish ~vokse~, Swedish ~växa~, Gothic ~wahsjan~.\n- ~heran-~: The compound adverb ~her~ (\"toward the speaker\") + ~an~ (\"on, at, up to\"); see those entries for their separate histories. Colloquially it contracts to ~ran~. Figuratively it marks taking on a task, or growing up toward a standard.\n\n~heranwachsen~ is growing toward a measure, usually adulthood — a child, but figuratively also a movement or a danger, grows up."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Sie pflegten den Findling wohl, und er wuchs in allen Tugenden heran.",
+    "source": "Grimm — Märchen"
+   },
+   "en": {
+    "sentence": "They tended the foundling well, and he grew up in all the virtues.",
+    "source": "Grimm — Märchen"
+   }
+  },
+  "notes": "Rank-0 Bundestag (~40 words, figurative) and rank-1 Goethe (truncated) both worse; took the clean 12-word Grimm candidate, a literal 'grew up' matching the gloss."
+ },
+ "heraufbeschwören": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~herauf-~ + ~be-~ + ~schwören~:\n\n- ~schwören~: Aus Mhd. ~swern~, aus Ahd. ~swerien~, aus Proto-Westgermanisch *~swarjan~, aus Urgermanisch *~swarjaną~, aus PIE *~swer-~ („sprechen, reden“). Ein starkes Verb der Klasse VI (~schwören~, ~schwor~, ~geschworen~); das ältere Präteritum ~schwur~ ist heute altertümlich. Verwandt mit Englisch ~swear~, Niederländisch ~zweren~, Dänisch ~sværge~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ macht ein intransitives Verb transitiv und richtet die Handlung auf ein Objekt.\n- ~herauf-~: Eine durchsichtige Zusammensetzung aus ~her-~ („hierher“, Bewegung zum Sprecher hin, aus Ahd. ~hera~, aus dem urgermanischen Demonstrativstamm *~hi-~, aus PIE *~ḱi-~ „dieser“) und ~auf~ („auf, hinauf“), also „nach oben und zum Sprecher hin“. Ihr Spiegelbild ist ~hinauf~, dieselbe Bewegung vom Sprecher weg. Auch von Zeit und Wetter, die heranrücken (~heraufziehen~, von einem Gewitter).\n\nAus dem räumlichen „von unten heraufrufen“ ist die feste Bedeutung „hervorrufen, entfesseln“ geworden: man beschwört eine Gefahr, einen Krieg, ein Unglück herauf — meist etwas Unheilvolles.",
+   "en": "A separable compound of ~herauf-~ + ~be-~ + ~schwören~:\n\n- ~schwören~: From MHG ~swern~, from OHG ~swerien~, from Proto-West Germanic *~swarjan~, from Proto-Germanic *~swarjaną~, from PIE *~swer-~ (\"to speak, to talk\"). A class VI strong verb (~schwören~, ~schwor~, ~geschworen~); the older Präteritum ~schwur~ is now archaic. Cognate with English ~swear~, Dutch ~zweren~, Danish ~sværge~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ makes an intransitive verb transitive, directing the action at an object.\n- ~herauf-~: A transparent compound of ~her-~ (\"hither,\" marking motion toward the speaker, from OHG ~hera~, from the Proto-Germanic deictic stem *~hi-~, from PIE *~ḱi-~ \"this\") and ~auf~ (\"up, onto\"), so \"upward and toward the speaker.\" Its mirror image is ~hinauf~, the same motion away from the speaker. Also of time and weather moving in on one (~heraufziehen~, of a storm).\n\nFrom the spatial „to call up from below,“ a fixed sense „to bring about, to unleash“ has grown: one conjures up a danger, a war, a calamity — usually something dire."
+  },
+  "sentence": null,
+  "notes": "no candidates. herauf sense 1 per exemplar (grouped with heraufziehen as 'bring on'); be- here is lexicalized (beschwören), taken as the transitivizing sense 0."
+ },
+ "heraufbringen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~herauf-~ + ~bringen~:\n\n- ~bringen~: Aus Mhd. ~bringen~, aus Ahd. ~bringan~, aus Proto-Westgermanisch *~bringan~, aus Urgermanisch *~bringaną~, wahrscheinlich aus vorgermanischem *~bʰrenk-~, einer Kompositwurzel aus PIE *~bʰer-~ („tragen“) + *~h₁nek-~ („bringen“). Mischkonjugation: ~brachte~ verbindet den Vokalwechsel ~i~ > ~a~ mit schwachem Dentalsuffix. Verwandt mit Englisch ~bring~, Niederländisch ~brengen~, Gotisch ~briggan~.\n- ~herauf-~: Eine durchsichtige Zusammensetzung aus ~her-~ („hierher“, Bewegung zum Sprecher hin, aus Ahd. ~hera~, aus dem urgermanischen Demonstrativstamm *~hi-~, aus PIE *~ḱi-~ „dieser“) und ~auf~ („auf, hinauf“), also „nach oben und zum Sprecher hin“. Ihr Spiegelbild ist ~hinauf~, dieselbe Bewegung vom Sprecher weg. ~herauf-~ bezeichnet die Aufwärtsbewegung, ausgerichtet auf den Sprecher oder den Betrachterstandpunkt.\n\n~Heraufbringen~ ist das Tragen oder Geleiten von unten nach oben zum Sprecher hin — bei Luther sogar das Heraufbringen eines Toten aus der Unterwelt.",
+   "en": "A separable compound of ~herauf-~ + ~bringen~:\n\n- ~bringen~: From MHG ~bringen~, from OHG ~bringan~, from Proto-West Germanic *~bringan~, from Proto-Germanic *~bringaną~, probably from pre-Germanic *~bʰrenk-~, a compound root from PIE *~bʰer-~ (\"to carry\") + *~h₁nek-~ (\"to bring\"). Mixed conjugation: ~brachte~ pairs the vowel change ~i~ > ~a~ with a weak dental suffix. Cognate with English ~bring~, Dutch ~brengen~, Gothic ~briggan~.\n- ~herauf-~: A transparent compound of ~her-~ (\"hither,\" marking motion toward the speaker, from OHG ~hera~, from the Proto-Germanic deictic stem *~hi-~, from PIE *~ḱi-~ \"this\") and ~auf~ (\"up, onto\"), so \"upward and toward the speaker.\" Its mirror image is ~hinauf~, the same motion away from the speaker. ~herauf-~ marks upward motion oriented toward the speaker or the vantage point.\n\n~heraufbringen~ is carrying or conducting something from below up toward the speaker — in Luther, even bringing a dead man up from the underworld."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Da sprach das Weib: Wen soll ich dir denn heraufbringen?",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "Then the woman said: Whom shall I bring up for you?",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": null
+ },
+ "herauffahren": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~herauf-~ + ~fahren~:\n\n- ~fahren~: Aus Mhd. ~varn~, aus Ahd. ~faran~, aus Proto-Westgermanisch *~faran~, aus Urgermanisch *~faraną~, aus PIE *~per-~ („Gehen, Durchgang“). Ein starkes Verb der Klasse VI, dessen alter Sinn „gehen, reisen“ sich auf Fahrzeuge verengte; das Kausativum ~führen~ (*~fōrijaną~) ist das transitive Gegenstück. Verwandt mit Englisch ~fare~, Niederländisch ~varen~, Dänisch ~fare~.\n- ~herauf-~: Eine durchsichtige Zusammensetzung aus ~her-~ („hierher“, Bewegung zum Sprecher hin, aus Ahd. ~hera~, aus dem urgermanischen Demonstrativstamm *~hi-~, aus PIE *~ḱi-~ „dieser“) und ~auf~ („auf, hinauf“), also „nach oben und zum Sprecher hin“. Ihr Spiegelbild ist ~hinauf~, dieselbe Bewegung vom Sprecher weg. ~herauf-~ bezeichnet die Aufwärtsbewegung, ausgerichtet auf den Sprecher oder den Betrachterstandpunkt.\n\nDer ältere Sinn von ~fahren~ „sich bewegen, ziehen“ lebt in ~herauffahren~ fort: bei Luther fährt ein Ostwind oder ein Durchbrecher herauf, lange bevor das Wort ans Fahrzeug gebunden war.",
+   "en": "A separable compound of ~herauf-~ + ~fahren~:\n\n- ~fahren~: From MHG ~varn~, from OHG ~faran~, from Proto-West Germanic *~faran~, from Proto-Germanic *~faraną~, from PIE *~per-~ (\"going, passage\"). A class VI strong verb whose old sense \"to go, travel\" narrowed to vehicular travel; the causative ~führen~ (*~fōrijaną~) is its transitive counterpart. Cognate with English ~fare~, Dutch ~varen~, Danish ~fare~.\n- ~herauf-~: A transparent compound of ~her-~ (\"hither,\" marking motion toward the speaker, from OHG ~hera~, from the Proto-Germanic deictic stem *~hi-~, from PIE *~ḱi-~ \"this\") and ~auf~ (\"up, onto\"), so \"upward and toward the speaker.\" Its mirror image is ~hinauf~, the same motion away from the speaker. ~herauf-~ marks upward motion oriented toward the speaker or the vantage point.\n\nThe older sense of ~fahren~, „to move, to travel,“ lives on in ~herauffahren~: in Luther an east wind or a breaker comes up, long before the word was tied to vehicles."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Es wird ein Durchbrecher vor ihnen herauffahren; sie werden durchbrechen und zum Tor ausziehen; und ihr König wird vor ihnen her gehen und der HERR vornean.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "A breaker will come up before them; they will break through and go out by the gate; and their king will go before them, and the LORD at their head.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": "Candidates 0 and 1 are heraufführen (herauf+führen), a different verb, and were rejected; took the first genuine herauffahren, a Luther verse where the older 'come/go up' sense of fahren survives."
+ },
+ "heraufgeben": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~herauf-~ + ~geben~:\n\n- ~geben~: Aus Mhd. ~gëben~, aus Ahd. ~gëban~, aus Proto-Westgermanisch *~geban~, aus Urgermanisch *~gebaną~, aus PIE *~gʰebʰ-~ („geben“). Verwandt mit Englisch ~give~ (aus Altnordisch ~gefa~), Niederländisch ~geven~, Schwedisch ~giva~/~ge~, Dänisch ~give~.\n- ~herauf-~: Eine durchsichtige Zusammensetzung aus ~her-~ („hierher“, Bewegung zum Sprecher hin, aus Ahd. ~hera~, aus dem urgermanischen Demonstrativstamm *~hi-~, aus PIE *~ḱi-~ „dieser“) und ~auf~ („auf, hinauf“), also „nach oben und zum Sprecher hin“. Ihr Spiegelbild ist ~hinauf~, dieselbe Bewegung vom Sprecher weg. ~herauf-~ bezeichnet die Aufwärtsbewegung, ausgerichtet auf den Sprecher oder den Betrachterstandpunkt.\n\n~Heraufgeben~ ist das Reichen eines Gegenstands von unten nach oben — die alltägliche Umkehrung des Herabgebens.",
+   "en": "A separable compound of ~herauf-~ + ~geben~:\n\n- ~geben~: From MHG ~gëben~, from OHG ~gëban~, from Proto-West Germanic *~geban~, from Proto-Germanic *~gebaną~, from PIE *~gʰebʰ-~ (\"to give\"). Cognate with English ~give~ (from Old Norse ~gefa~), Dutch ~geven~, Swedish ~giva~/~ge~, Danish ~give~.\n- ~herauf-~: A transparent compound of ~her-~ (\"hither,\" marking motion toward the speaker, from OHG ~hera~, from the Proto-Germanic deictic stem *~hi-~, from PIE *~ḱi-~ \"this\") and ~auf~ (\"up, onto\"), so \"upward and toward the speaker.\" Its mirror image is ~hinauf~, the same motion away from the speaker. ~herauf-~ marks upward motion oriented toward the speaker or the vantage point.\n\n~heraufgeben~ is handing an object from below up to someone above — the everyday inverse of handing down."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "heraufhalten": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~herauf-~ + ~halten~:\n\n- ~halten~: Aus Mhd. ~halten~, aus Ahd. ~haltan~, aus Proto-Westgermanisch *~haldan~, aus Urgermanisch *~haldaną~. Verwandt mit Englisch ~hold~, Niederländisch ~houden~, Niederdeutsch ~holden~, Dänisch ~holde~, Isländisch ~halda~, Schwedisch ~hålla~.\n- ~herauf-~: Eine durchsichtige Zusammensetzung aus ~her-~ („hierher“, Bewegung zum Sprecher hin, aus Ahd. ~hera~, aus dem urgermanischen Demonstrativstamm *~hi-~, aus PIE *~ḱi-~ „dieser“) und ~auf~ („auf, hinauf“), also „nach oben und zum Sprecher hin“. Ihr Spiegelbild ist ~hinauf~, dieselbe Bewegung vom Sprecher weg. ~herauf-~ bezeichnet die Aufwärtsbewegung, ausgerichtet auf den Sprecher oder den Betrachterstandpunkt.\n\n~Heraufhalten~ meint, etwas nach oben zum Sprecher hin emporzuhalten, damit er es ergreifen oder sehen kann.",
+   "en": "A separable compound of ~herauf-~ + ~halten~:\n\n- ~halten~: From MHG ~halten~, from OHG ~haltan~, from Proto-West Germanic *~haldan~, from Proto-Germanic *~haldaną~. Cognate with English ~hold~, Dutch ~houden~, Low German ~holden~, Danish ~holde~, Icelandic ~halda~, Swedish ~hålla~.\n- ~herauf-~: A transparent compound of ~her-~ (\"hither,\" marking motion toward the speaker, from OHG ~hera~, from the Proto-Germanic deictic stem *~hi-~, from PIE *~ḱi-~ \"this\") and ~auf~ (\"up, onto\"), so \"upward and toward the speaker.\" Its mirror image is ~hinauf~, the same motion away from the speaker. ~herauf-~ marks upward motion oriented toward the speaker or the vantage point.\n\n~heraufhalten~ means holding something up toward the speaker so that it can be taken or seen."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "heraufkommen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~herauf-~ + ~kommen~:\n\n- ~kommen~: Aus Mhd. ~quemen~, ~komen~, ~kumen~, aus Ahd. ~queman~ (seltener ~cuman~, ~chuman~), aus Proto-Westgermanisch *~kweman~, aus Urgermanisch *~kwemaną~, aus PIE *~gʷem-~. Verwandt mit Englisch ~come~, Niederdeutsch ~kamen~, Niederländisch ~komen~, Dänisch ~komme~.\n- ~herauf-~: Eine durchsichtige Zusammensetzung aus ~her-~ („hierher“, Bewegung zum Sprecher hin, aus Ahd. ~hera~, aus dem urgermanischen Demonstrativstamm *~hi-~, aus PIE *~ḱi-~ „dieser“) und ~auf~ („auf, hinauf“), also „nach oben und zum Sprecher hin“. Ihr Spiegelbild ist ~hinauf~, dieselbe Bewegung vom Sprecher weg. ~herauf-~ bezeichnet die Aufwärtsbewegung, ausgerichtet auf den Sprecher oder den Betrachterstandpunkt.\n\n~Heraufkommen~ ist das eigenständige Aufsteigen zum Sprecher hin — Menschen die Treppe herauf, aber auch, übertragen, ein Gewitter oder eine neue Zeit.",
+   "en": "A separable compound of ~herauf-~ + ~kommen~:\n\n- ~kommen~: From MHG ~quemen~, ~komen~, ~kumen~, from OHG ~queman~ (rarer ~cuman~, ~chuman~), from Proto-West Germanic *~kweman~, from Proto-Germanic *~kwemaną~, from PIE *~gʷem-~. Cognate with English ~come~, Low German ~kamen~, Dutch ~komen~, Danish ~komme~.\n- ~herauf-~: A transparent compound of ~her-~ (\"hither,\" marking motion toward the speaker, from OHG ~hera~, from the Proto-Germanic deictic stem *~hi-~, from PIE *~ḱi-~ \"this\") and ~auf~ (\"up, onto\"), so \"upward and toward the speaker.\" Its mirror image is ~hinauf~, the same motion away from the speaker. ~herauf-~ marks upward motion oriented toward the speaker or the vantage point.\n\n~heraufkommen~ is coming up under one's own power toward the speaker — people up the stairs, but figuratively also a storm or a new age."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Als es der König hörte, sprach er: »Laßt ihn heraufkommen.",
+    "source": "Grimm — Märchen"
+   },
+   "en": {
+    "sentence": "When the king heard it, he said: »Let him come up.",
+    "source": "Grimm — Märchen"
+   }
+  },
+  "notes": null
+ },
+ "heraufschicken": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~herauf-~ + ~schicken~:\n\n- ~schicken~: Aus Mhd. ~schicken~ („sich ausstatten, sich einfügen, passend einrichten“), aus Ahd. *~skihhen~, aus Proto-Westgermanisch *~skikkijan~, aus Urgermanisch *~skikkijaną~ („ordnen, schicken“), dem Kausativ des Verbs hinter Mhd. ~geschehen~ („geschehen, eilen“). Die Bedeutung „senden“ erwuchs aus „fertig machen zum Aufbruch“. Verwandt mit englisch ~chic~ (über das Französische), ~geschickt~ und ~Schicksal~.\n- ~herauf-~: Eine durchsichtige Zusammensetzung aus ~her-~ („hierher“, Bewegung zum Sprecher hin, aus Ahd. ~hera~, aus dem urgermanischen Demonstrativstamm *~hi-~, aus PIE *~ḱi-~ „dieser“) und ~auf~ („auf, hinauf“), also „nach oben und zum Sprecher hin“. Ihr Spiegelbild ist ~hinauf~, dieselbe Bewegung vom Sprecher weg. ~herauf-~ bezeichnet die Aufwärtsbewegung, ausgerichtet auf den Sprecher oder den Betrachterstandpunkt.\n\n~Heraufschicken~ ist das Veranlassen, dass jemand oder etwas heraufkommt — man schickt es nach oben, ohne es selbst zu tragen.",
+   "en": "A separable compound of ~herauf-~ + ~schicken~:\n\n- ~schicken~: From MHG ~schicken~ (\"to outfit oneself, fit in, arrange appropriately\"), from OHG *~skihhen~, from Proto-West Germanic *~skikkijan~, from Proto-Germanic *~skikkijaną~ (\"to order, send\"), the causative of the verb underlying MHG ~geschehen~ (\"to happen, rush\"). The sense \"to send\" grew from \"to make ready to go.\" Related to English ~chic~ (via French), ~geschickt~, and ~Schicksal~.\n- ~herauf-~: A transparent compound of ~her-~ (\"hither,\" marking motion toward the speaker, from OHG ~hera~, from the Proto-Germanic deictic stem *~hi-~, from PIE *~ḱi-~ \"this\") and ~auf~ (\"up, onto\"), so \"upward and toward the speaker.\" Its mirror image is ~hinauf~, the same motion away from the speaker. ~herauf-~ marks upward motion oriented toward the speaker or the vantage point.\n\n~heraufschicken~ is causing someone or something to come up — one sends it upward without carrying it oneself."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Der Königssohn sprach: er sollte es heraufschicken, die Mutter aber antwortete: »Ach nein, das ist viel zu schmutzig, das darf sich nicht sehen lassen.",
+    "source": "Grimm — Märchen"
+   },
+   "en": {
+    "sentence": "The king's son said he should send it up, but the mother answered: »Oh no, that is far too dirty, it must not let itself be seen.",
+    "source": "Grimm — Märchen"
+   }
+  },
+  "notes": null
+ },
+ "heraufsetzen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~herauf-~ + ~setzen~:\n\n- ~setzen~: Aus Mhd. ~setzen~, aus Ahd. ~sezzen~, aus Proto-Westgermanisch *~sattjan~, aus Urgermanisch *~satjaną~ („setzen, hinsetzen“), aus PIE *~sodéyeti~ — eine Kausativableitung von *~sitjaną~ („sitzen“) mit dem Suffix *~-janą~, wörtlich „zum Sitzen bringen“. Verwandt mit Englisch ~set~, Niederländisch ~zetten~, Jiddisch ~zetsn~.\n- ~herauf-~: Eine durchsichtige Zusammensetzung aus ~her-~ („hierher“, Bewegung zum Sprecher hin, aus Ahd. ~hera~, aus dem urgermanischen Demonstrativstamm *~hi-~, aus PIE *~ḱi-~ „dieser“) und ~auf~ („auf, hinauf“), also „nach oben und zum Sprecher hin“. Ihr Spiegelbild ist ~hinauf~, dieselbe Bewegung vom Sprecher weg. ~herauf-~ bezeichnet die Aufwärtsbewegung, ausgerichtet auf den Sprecher oder den Betrachterstandpunkt.\n\n~Heraufsetzen~ ist das genaue Gegenstück zu ~herabsetzen~: man setzt einen Preis, eine Gebühr, ein Alter hinauf statt herunter.",
+   "en": "A separable compound of ~herauf-~ + ~setzen~:\n\n- ~setzen~: From MHG ~setzen~, from OHG ~sezzen~, from Proto-West Germanic *~sattjan~, from Proto-Germanic *~satjaną~ (\"to set, to place down\"), from PIE *~sodéyeti~ — a causative derivation of *~sitjaną~ (\"to sit\") with the suffix *~-janą~, literally \"to cause to sit.\" Cognate with English ~set~, Dutch ~zetten~, Yiddish ~zetsn~.\n- ~herauf-~: A transparent compound of ~her-~ (\"hither,\" marking motion toward the speaker, from OHG ~hera~, from the Proto-Germanic deictic stem *~hi-~, from PIE *~ḱi-~ \"this\") and ~auf~ (\"up, onto\"), so \"upward and toward the speaker.\" Its mirror image is ~hinauf~, the same motion away from the speaker. ~herauf-~ marks upward motion oriented toward the speaker or the vantage point.\n\n~heraufsetzen~ is the exact counterpart of ~herabsetzen~: one raises a price, a fee, an age rather than lowering it."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "herausbekommen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~heraus-~ + ~be-~ + ~kommen~:\n\n- ~kommen~: Aus Mhd. ~quemen~, ~komen~, ~kumen~, aus Ahd. ~queman~ (seltener ~cuman~, ~chuman~), aus Proto-Westgermanisch *~kweman~, aus Urgermanisch *~kwemaną~, aus PIE *~gʷem-~. Verwandt mit Englisch ~come~, Niederdeutsch ~kamen~, Niederländisch ~komen~, Dänisch ~komme~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ macht ein intransitives Verb transitiv und richtet die Handlung auf ein Objekt.\n- ~heraus-~: Durchsichtig zusammengesetzt aus ~her-~ („hierher, zum Sprecher hin“) und ~aus~, also „heraus zum Sprecher hin“ — das Spiegelbild von ~hinaus~, „hinaus vom Sprecher weg“. Dieser Gegensatz von her und hin ist die nützlichste Tatsache über die ganze deiktische Gruppe. Umgangssprachlich wird ~heraus~ zu ~raus~ verkürzt. Siehe die Einträge zu ~her-~ und ~aus-~. Die Partikel drückt das Herausbringen an die Öffentlichkeit aus — herausgeben, herausfinden, bekannt machen.\n\n~Herausbekommen~ meint das Ans-Licht-Bringen einer Lösung oder Antwort; daneben steht das konkrete „einen Fleck herausbekommen“, etwas mühsam herauslösen.",
+   "en": "A separable compound of ~heraus-~ + ~be-~ + ~kommen~:\n\n- ~kommen~: From MHG ~quemen~, ~komen~, ~kumen~, from OHG ~queman~ (rarer ~cuman~, ~chuman~), from Proto-West Germanic *~kweman~, from Proto-Germanic *~kwemaną~, from PIE *~gʷem-~. Cognate with English ~come~, Low German ~kamen~, Dutch ~komen~, Danish ~komme~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ makes an intransitive verb transitive, directing the action at an object.\n- ~heraus-~: Transparently ~her-~ (\"hither, toward the speaker\") plus ~aus~ (\"out\"), hence \"out toward the speaker\" — the mirror of ~hinaus~, \"out away from the speaker.\" This her/hin opposition is the single most useful fact about the whole deictic group. Colloquial German contracts ~heraus~ to ~raus~. See the entries for ~her-~ and ~aus-~. The particle conveys bringing something out into the open — publishing, discovering, or making public.\n\n~herausbekommen~ means bringing a solution or answer to light; alongside it stands the concrete „einen Fleck herausbekommen,“ getting a stain out with effort."
+  },
+  "sentence": null,
+  "notes": "no candidates. heraus sense 1 (bring into the open / discover); be- here is lexicalized (bekommen), taken as the transitivizing sense 0."
+ }
+}

@@ -1,0 +1,292 @@
+{
+ "spleißen": {
+  "etymology": {
+   "de": "Aus Mhd. ~splīzen~, aus Ahd. *~splīzan~, aus Proto-Westgermanisch *~splītan~, aus Urgermanisch *~splītaną~ („spalten“), ohne gesicherten indogermanischen Anschluss außerhalb des Germanischen. Ein starkes Verb der Klasse I (~spleißen~, ~spliss~, ~gesplissen~), daneben auch schwach flektiert. In der Standardsprache hat es sich nie allgemein durchgesetzt: ursprünglich mitteldeutsch, lebt es heute vor allem als Fachwort für das Spleißen von Tauwerk und Lichtwellenleitern fort sowie im Substantiv ~Spliss~ („gespaltene Haarspitzen“). Verwandt mit Niederländisch ~splijten~, Niederdeutsch ~splieten~ sowie Englisch ~split~ und ~splice~, die das Englische beide aus dem Niederländischen entlehnt und nicht ererbt hat.",
+   "en": "From MHG ~splīzen~, from OHG *~splīzan~, from Proto-West Germanic *~splītan~, from Proto-Germanic *~splītaną~ (\"to split\"), with no secure Indo-European connection outside Germanic. A class I strong verb (~spleißen~, ~spliss~, ~gesplissen~), though weak forms occur too. It never became general in the standard language: originally Central German, it survives today mainly as a technical term for splicing rope or optical fiber, and in the noun ~Spliss~ (\"split ends\" of hair). Cognate with Dutch ~splijten~, Low German ~splieten~, and English ~split~ and ~splice~, both of which English took from Dutch rather than inheriting."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "sprießen": {
+  "etymology": {
+   "de": "Aus Mhd. ~sprieʒen~, aus Ahd. ~spriozan~, aus Proto-Westgermanisch *~spreutan~, aus Urgermanisch *~spreutaną~ („sprießen“), aus PIE *~sper-~ („streuen, ausstreuen“). Ein starkes Verb der Klasse II (~sprießen~, ~spross~, ~gesprossen~). Verwandt mit Englisch ~sprout~, Niederländisch ~spruiten~, Schottisch ~sproot~; Altgriechisch ~σπείρω~ (speírō, „ich säe“) geht auf dieselbe Wurzel zurück. Die deutschen Ableitungen entfalten sich alle aus dem Pflanzenbild: ein ~Spross~ ist Trieb wie Nachkomme, und eine ~Sprosse~ ist die Stufe einer Leiter.",
+   "en": "From MHG ~sprieʒen~, from OHG ~spriozan~, from Proto-West Germanic *~spreutan~, from Proto-Germanic *~spreutaną~ (\"to sprout\"), from PIE *~sper-~ (\"to strew, scatter\"). A class II strong verb (~sprießen~, ~spross~, ~gesprossen~). Cognate with English ~sprout~, Dutch ~spruiten~, Scots ~sproot~; Ancient Greek ~σπείρω~ (speírō, \"I sow\") goes back to the same root. The German derivatives fan out from the plant image: a ~Spross~ is both a shoot and a descendant, and a ~Sprosse~ is the rung of a ladder."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "stieben": {
+  "etymology": {
+   "de": "Aus Mhd. ~stieben~, aus Ahd. ~stioban~, aus Proto-Westgermanisch *~steuban~, aus Urgermanisch *~steubaną~ („als Staub umherfliegen“), ohne gesicherte Verwandte außerhalb des Germanischen; ein Anschluss an PIE *~dʰewbʰ-~ („wirbeln, rauchen“) wird erwogen, ist aber nicht gesichert. Ein starkes Verb der Klasse II (~stieben~, ~stob~, ~gestoben~), daneben schwach ~stiebte~, ~gestiebt~. Das Verb selbst ist im heutigen Deutsch selten und literarisch und lebt vor allem in ~Funken stieben~ und in ~zerstieben~ fort — seine Ableitung ~Staub~ und mit ihr ~stäuben~ und ~Staubsauger~ sind dagegen ganz alltäglich. Verwandt mit Niederländisch ~stuiven~ und ~stof~ („Staub“).",
+   "en": "From MHG ~stieben~, from OHG ~stioban~, from Proto-West Germanic *~steuban~, from Proto-Germanic *~steubaną~ (\"to fly about as dust\"), with no secure cognates outside Germanic; a link to PIE *~dʰewbʰ-~ (\"to whirl, smoke\") has been proposed but is not established. A class II strong verb (~stieben~, ~stob~, ~gestoben~), with weak ~stiebte~, ~gestiebt~ also current. The verb itself is rare and literary in modern German, surviving chiefly in ~Funken stieben~ (\"sparks fly\") and in ~zerstieben~ — yet its derivative ~Staub~ (\"dust\"), and with it ~stäuben~ and ~Staubsauger~, could hardly be more everyday. Cognate with Dutch ~stuiven~ and ~stof~ (\"dust\")."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "stinken": {
+  "etymology": {
+   "de": "Aus Mhd. ~stinken~, aus Ahd. ~stinkan~, ~stincan~, aus Urgermanisch *~stinkwaną~, aus PIE *~stengʷ-~ („stoßen, schlagen“); das Nordgermanische bewahrte den körperlichen Sinn des Stoßens, während das Westgermanische das Verb auf das Ausströmen eines Geruchs einengte. Ein starkes Verb der Klasse III (~stinken~, ~stank~, ~gestunken~). Verwandt mit Englisch ~stink~ und ~stench~, Niederländisch ~stinken~, Altenglisch ~stincan~. Im Althochdeutschen und Altenglischen war das Verb noch wertneutral — eine Blume konnte angenehm ~stinkan~ —, und die Verengung auf den üblen Geruch vollzog sich im Deutschen und Englischen getrennt, aber parallel.",
+   "en": "From MHG ~stinken~, from OHG ~stinkan~, ~stincan~, from Proto-Germanic *~stinkwaną~, from PIE *~stengʷ-~ (\"to push, thrust\"); North Germanic kept the physical sense of striking while West Germanic specialized the verb to emitting a smell. A class III strong verb (~stinken~, ~stank~, ~gestunken~). Cognate with English ~stink~ and ~stench~, Dutch ~stinken~, Old English ~stincan~. In Old High German and Old English the verb was still neutral — a flower could ~stinkan~ agreeably — and the narrowing to the offensive happened separately but in parallel in German and English."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Noch ein Jahrhundert Leser—und der Geist selber wird stinken.",
+    "source": "Nietzsche — Also sprach Zarathustra"
+   },
+   "en": {
+    "sentence": "One more century of readers—and the spirit itself will stink.",
+    "source": "Nietzsche — Also sprach Zarathustra"
+   }
+  },
+  "notes": null
+ },
+ "standhalten": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~stand~ + ~halten~:\n\n- ~halten~: Aus Mhd. ~halten~, aus Ahd. ~haltan~, aus Proto-Westgermanisch *~haldan~, aus Urgermanisch *~haldaną~. Verwandt mit Englisch ~hold~, Niederländisch ~houden~, Niederdeutsch ~holden~, Dänisch ~holde~, Isländisch ~halda~, Schwedisch ~hålla~.\n- ~stand~: Das Substantiv ~Stand~, ein Verbalsubstantiv zu ~stehen~, aus Mhd. ~stant~, letztlich aus PIE *~steh₂-~ („stehen“). In ~standhalten~ wird es als Objekt inkorporiert: wörtlich „seinen Stand halten“, also sich behaupten, widerstehen. Verwandt mit Englisch ~stand~ als Substantiv und derselben Wurzel zugehörig wie ~Statt~, ~Stätte~ und ~Stadt~. Die Bedeutung von ~stand~ ist hier in ~standhalten~: sich behaupten, widerstehen.\n\nDas Verb regiert den Dativ: Man hält einem Angriff, einem Druck oder einem Gegner stand.",
+   "en": "A separable compound of ~stand~ + ~halten~:\n\n- ~halten~: From MHG ~halten~, from OHG ~haltan~, from Proto-West Germanic *~haldan~, from Proto-Germanic *~haldaną~. Cognate with English ~hold~, Dutch ~houden~, Low German ~holden~, Danish ~holde~, Icelandic ~halda~, Swedish ~hålla~.\n- ~stand~: The noun ~Stand~ (\"standing, position, footing\"), a verbal noun to ~stehen~, from MHG ~stant~, ultimately from PIE *~steh₂-~ (\"to stand\"). In ~standhalten~ it is incorporated as the object: literally \"to hold one's stand\", hence to hold one's ground, to withstand. Cognate with English ~stand~ as a noun, and belonging to the same root as ~Statt~, ~Stätte~, and ~Stadt~. The sense of ~stand~ here is in ~standhalten~: to hold one's ground, to withstand.\n\nThe verb governs the dative: one holds one's ground against an attack, a pressure, or an opponent — ~einem Angriff standhalten~."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Die Bundesregierung wusste, dass die afghanischen Streitkräfte immer schwächer werden und insbesondere dann, wenn die Amerikaner abziehen, so schwach sind, dass sie den Taliban nicht mehr lange standhalten werden können.",
+    "source": "Bundestag — Plenarprotokoll 20/210"
+   },
+   "en": {
+    "sentence": "The federal government knew that the Afghan armed forces are growing ever weaker and, especially once the Americans withdraw, are so weak that they will not be able to hold out against the Taliban much longer.",
+    "source": "Bundestag — Plenarprotokoll 20/210"
+   }
+  },
+  "notes": null
+ },
+ "starkmachen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~stark~ + ~machen~:\n\n- ~machen~: Aus mhd. ~machen~, aus ahd. ~mahhōn~, aus proto-westgermanisch *~makōn~, aus PIE *~mag-~ („kneten, mischen, machen“). Verwandt mit niederländisch ~maken~, niederdeutsch ~maken~, englisch ~make~.\n- ~stark~: Das Adjektiv ~stark~, aus Mhd. ~starc~, aus Ahd. ~starc~, ~starah~, aus Proto-Westgermanisch *~stark~, aus Urgermanisch *~starkaz~ („steif, starr“), aus PIE *~ster-~ („steif“). Verwandt mit Englisch ~stark~, das die ältere Bedeutung „starr, völlig“ bewahrt hat, sowie mit Niederländisch ~sterk~ und Schwedisch ~stark~. Der resultative Rahmen ergibt „stark machen“: ~sich für etwas starkmachen~ heißt, sich für eine Sache einsetzen. Die Bedeutung von ~stark~ ist hier: stark — der Zustand, in den etwas gebracht wird.\n\nDa ~machen~ selbst „machen“ heißt, ist die Bildung durchsichtig resultativ — sie macht ihr Objekt ~stark~ — und gehört zu einer produktiven Reihe von Adjektiv-plus-~machen~-Verben wie ~kleinmachen~, ~breitmachen~ und ~wahrmachen~.",
+   "en": "A separable compound of ~stark~ + ~machen~:\n\n- ~machen~: From MHG ~machen~, from OHG ~mahhōn~, from Proto-West Germanic *~makōn~, from PIE *~mag-~ (\"to knead, mix, make\"). Cognate with Dutch ~maken~, Low German ~maken~, English ~make~.\n- ~stark~: The adjective ~stark~ (\"strong\"), from MHG ~starc~, from OHG ~starc~, ~starah~, from Proto-West Germanic *~stark~, from Proto-Germanic *~starkaz~ (\"stiff, rigid\"), from PIE *~ster-~ (\"stiff\"). Cognate with English ~stark~, which kept the older \"rigid, utter\" sense, as well as Dutch ~sterk~ and Swedish ~stark~. The resultative frame gives \"to make strong\": ~sich für etwas starkmachen~ is to throw one's weight behind a cause. The sense of ~stark~ here is: strong — the state something is brought into.\n\nSince ~machen~ is itself \"to make,\" the formation is transparently resultative — it makes its object ~stark~ — and belongs to a productive family of adjective-plus-~machen~ verbs such as ~kleinmachen~, ~breitmachen~, and ~wahrmachen~."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Und in allen Städten schaffte er Schilde und Spieße und machte sie sehr stark.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "And in all the cities he made shields and spears, and made them very strong.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": "Rank-0 through rank-3 candidates rejected: rank 0 carries a colon-form speaker attribution with bracketed party (\"Jens Spahn (CDU/CSU):\"), ranks 2 and 3 lead with orphaned heckle furniture (\"Super europäisch!)\", \"Genau!)\"), and rank 1 is the figurative reflexive sich starkmachen with an antecedent-dependent \"dafür.\" Took the Luther candidate, a clean literal make-strong matching the gloss \"strengthen.\""
+ },
+ "stattgeben": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~statt~ + ~geben~:\n\n- ~geben~: Aus Mhd. ~gëben~, aus Ahd. ~gëban~, aus Proto-Westgermanisch *~geban~, aus Urgermanisch *~gebaną~, aus PIE *~gʰebʰ-~ („geben“). Verwandt mit Englisch ~give~ (aus Altnordisch ~gefa~), Niederländisch ~geven~, Schwedisch ~giva~/~ge~, Dänisch ~give~.\n- ~statt~: Das Substantiv ~Statt~, aus Mhd. ~stat~, aus Ahd. ~stat~, aus Urgermanisch *~stadiz~, aus PIE *~steh₂-~ („stehen“) — nicht die Präposition ~statt~, die eine spätere Verkürzung von ~anstatt~ ist, das seinerseits auf ebendieses Substantiv zurückgeht. ~Statt~, ~Stadt~ und ~Stätte~ sind ein althochdeutsches Wort in drei Teilen; das bloße Substantiv lebt heute vor allem in festen Wendungen wie ~an meiner Statt~ fort. Verwandt mit Englisch ~stead~ (wie in ~instead~, ~homestead~) und Niederländisch ~stad~. Die Bedeutung von ~statt~ ist hier: „Statt, Raum“ im Sinne des Gewährens, also einer Bitte oder einer Beschwerde stattgeben.\n\n~stattgeben~ ist vor allem ein Wort der Rechts- und Amtssprache und regiert den Dativ: Ein Gericht gibt einem Antrag, einer Klage oder einer Beschwerde statt.",
+   "en": "A separable compound of ~statt~ + ~geben~:\n\n- ~geben~: From MHG ~gëben~, from OHG ~gëban~, from Proto-West Germanic *~geban~, from Proto-Germanic *~gebaną~, from PIE *~gʰebʰ-~ (\"to give\"). Cognate with English ~give~ (from Old Norse ~gefa~), Dutch ~geven~, Swedish ~giva~/~ge~, Danish ~give~.\n- ~statt~: The noun ~Statt~ (\"place, stead\"), from MHG ~stat~, from OHG ~stat~, from Proto-Germanic *~stadiz~, from PIE *~steh₂-~ (\"to stand\") — not the preposition ~statt~ (\"instead of\"), which is a later reduction of ~anstatt~, itself built on this same noun. ~Statt~, ~Stadt~ and ~Stätte~ are one Old High German word split three ways; the bare noun now survives mainly in fixed phrases such as ~an meiner Statt~. Cognate with English ~stead~ (as in ~instead~, ~homestead~) and Dutch ~stad~. The sense of ~statt~ here is: \"place, room\" in the sense of yielding it, i.e. granting a request or upholding an appeal.\n\n~stattgeben~ is chiefly a term of legal and administrative language and governs the dative: a court ~gibt einem Antrag statt~, granting a motion, upholding a claim, or sustaining an appeal."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "statthaben": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~statt~ + ~haben~:\n\n- ~haben~: Aus Mhd. ~haben~, aus Ahd. ~habēn~, aus Proto-Westgermanisch *~habbjan~, aus Urgermanisch *~habjaną~, aus PIE *~keh₂p-~ („greifen, ergreifen“). Trotz des Gleichklangs nicht mit Lateinisch ~habēō~ verwandt, wohl aber mit ~capiō~ („ich ergreife“) und mit Deutsch ~heben~. Verwandt mit Englisch ~have~, Niederländisch ~hebben~, Dänisch ~have~, Gotisch ~haban~.\n- ~statt~: Das Substantiv ~Statt~, aus Mhd. ~stat~, aus Ahd. ~stat~, aus Urgermanisch *~stadiz~, aus PIE *~steh₂-~ („stehen“) — nicht die Präposition ~statt~, die eine spätere Verkürzung von ~anstatt~ ist, das seinerseits auf ebendieses Substantiv zurückgeht. ~Statt~, ~Stadt~ und ~Stätte~ sind ein althochdeutsches Wort in drei Teilen; das bloße Substantiv lebt heute vor allem in festen Wendungen wie ~an meiner Statt~ fort. Verwandt mit Englisch ~stead~ (wie in ~instead~, ~homestead~) und Niederländisch ~stad~. Die Bedeutung von ~statt~ ist hier das inkorporierte Substantiv „Statt“ als Objekt des Verbs: ~stattfinden~ ist wörtlich „Statt finden“, genau die Redewendung hinter Englisch ~take place~.\n\n~statthaben~ ist ein heute gehobenes, veraltendes Gegenstück zu ~stattfinden~: Beide heißen „stattfinden, geschehen“, doch ~stattfinden~ hat das Feld fast ganz übernommen.",
+   "en": "A separable compound of ~statt~ + ~haben~:\n\n- ~haben~: From MHG ~haben~, from OHG ~habēn~, from Proto-West Germanic *~habbjan~, from Proto-Germanic *~habjaną~, from PIE *~keh₂p-~ (\"to grasp, seize\"). Despite the resemblance it is not related to Latin ~habēō~, but it is to ~capiō~ (\"I seize\") and to German ~heben~. Cognate with English ~have~, Dutch ~hebben~, Danish ~have~, Gothic ~haban~.\n- ~statt~: The noun ~Statt~ (\"place, stead\"), from MHG ~stat~, from OHG ~stat~, from Proto-Germanic *~stadiz~, from PIE *~steh₂-~ (\"to stand\") — not the preposition ~statt~ (\"instead of\"), which is a later reduction of ~anstatt~, itself built on this same noun. ~Statt~, ~Stadt~ and ~Stätte~ are one Old High German word split three ways; the bare noun now survives mainly in fixed phrases such as ~an meiner Statt~. Cognate with English ~stead~ (as in ~instead~, ~homestead~) and Dutch ~stad~. The sense of ~statt~ here is the incorporated noun \"place\" as the verb's object: ~stattfinden~ is literally \"to find place\", exactly the idiom behind English ~take place~.\n\n~statthaben~ is a now elevated, dated counterpart of ~stattfinden~: both mean \"to take place, to occur,\" but ~stattfinden~ has all but taken over."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "steckenbleiben": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~stecken~ + ~bleiben~:\n\n- ~bleiben~: Aus Mhd. ~blīben~, ~belīben~, aus Ahd. ~bilīban~ („verbleiben“), aus Urgermanisch *~bilībaną~, einer Zusammensetzung aus *~bi-~ + *~lībaną~, aus PIE *~leyp-~ („kleben, haften“) — physisches Haften wurde zur Metapher für das Verweilen. Verwandt mit Niederländisch ~blijven~, Englisch ~belive~ („verbleiben, bleiben“).\n- ~stecken~: Das Verb ~stecken~ („festsitzen, an einer Stelle verharren“), aus Mhd. ~stecken~, aus Ahd. ~steckōn~, einer Geminaten-Ableitung von Ahd. ~stehhan~ (woraus ~stechen~), aus Urgermanisch *~stikaną~, aus PIE *~(s)teyg-~ („scharf sein, stechen“). Die Bedeutung führt von einem spitzen Gegenstand, der in eine Oberfläche getrieben wird, zu einer Sache, die dort einfach festsitzt. Verwandt mit Englisch ~stick~ und ~steak~, letzteres ursprünglich „Fleisch am Spieß“. Als Partikel nennt es den Zustand, in dem das Subjekt verharrt: ~steckenbleiben~ heißt stecken zu bleiben. Die Bedeutung von ~stecken~ ist hier in ~steckenbleiben~: steckenbleiben, auf halbem Weg ins Stocken geraten.\n\n~stecken~ und ~bleiben~ drücken beide ein Verharren aus; die Zusammensetzung verstärkt also, was schon im Grundverb liegt — nicht nur festsitzen, sondern festsitzen und nicht mehr weiterkommen.",
+   "en": "A separable compound of ~stecken~ + ~bleiben~:\n\n- ~bleiben~: From MHG ~blīben~, ~belīben~, from OHG ~bilīban~ (\"to remain\"), from Proto-Germanic *~bilībaną~, a compound of *~bi-~ + *~lībaną~, from PIE *~leyp-~ (\"to stick, adhere\") — adhesion became a metaphor for staying in place. Cognate with Dutch ~blijven~, English ~belive~ (\"to remain, stay\").\n- ~stecken~: The verb ~stecken~ (\"to be stuck, to be lodged in place\"), from MHG ~stecken~, from OHG ~steckōn~, a geminate derivative of OHG ~stehhan~ (whence ~stechen~, \"to prick, stab\"), from Proto-Germanic *~stikaną~, from PIE *~(s)teyg-~ (\"to be sharp, to stab\"). The sense runs from a pointed thing driven into a surface to a thing simply fixed there. Cognate with English ~stick~ and ~steak~, the latter originally meat on a stick. As a particle it names the state the subject remains in: ~steckenbleiben~ is to get stuck and stay stuck. The sense of ~stecken~ here is in ~steckenbleiben~: to get stuck, to break down or falter mid-way.\n\nBoth ~stecken~ and ~bleiben~ express remaining, so the compound intensifies what the base already holds — not merely to be lodged, but to be lodged and get no further."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "stehenbleiben": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~stehen~ + ~bleiben~:\n\n- ~bleiben~: Aus Mhd. ~blīben~, ~belīben~, aus Ahd. ~bilīban~ („verbleiben“), aus Urgermanisch *~bilībaną~, einer Zusammensetzung aus *~bi-~ + *~lībaną~, aus PIE *~leyp-~ („kleben, haften“) — physisches Haften wurde zur Metapher für das Verweilen. Verwandt mit Niederländisch ~blijven~, Englisch ~belive~ („verbleiben, bleiben“).\n- ~stehen~: Das Verb ~stehen~, aus Mhd. ~stān~, ~stēn~, aus Ahd. ~stān~, ~stēn~, aus Proto-Westgermanisch *~stān~, aus Urgermanisch *~stāną~, aus PIE *~steh₂-~ („stehen“). Verwandt mit Englisch ~stand~, Niederländisch ~staan~ und Lateinisch ~stāre~. Als Partikel nennt es den Zustand, in dem das Subjekt oder Objekt verharrt: ~stehenbleiben~ heißt anhalten und stehen zu bleiben, ~stehenlassen~ heißt etwas dort zu lassen, wo es steht. Die Bedeutung von ~stehen~ ist hier in ~stehenbleiben~: anhalten, stehen bleiben.\n\nÜbertragen bleibt eine Uhr ~stehen~, wenn sie anhält, und im Gespräch fragt man „Wo waren wir stehengeblieben?“, wenn ein fallengelassener Faden wieder aufgenommen werden soll.",
+   "en": "A separable compound of ~stehen~ + ~bleiben~:\n\n- ~bleiben~: From MHG ~blīben~, ~belīben~, from OHG ~bilīban~ (\"to remain\"), from Proto-Germanic *~bilībaną~, a compound of *~bi-~ + *~lībaną~, from PIE *~leyp-~ (\"to stick, adhere\") — adhesion became a metaphor for staying in place. Cognate with Dutch ~blijven~, English ~belive~ (\"to remain, stay\").\n- ~stehen~: The verb ~stehen~ (\"to stand\"), from MHG ~stān~, ~stēn~, from OHG ~stān~, ~stēn~, from Proto-West Germanic *~stān~, from Proto-Germanic *~stāną~, from PIE *~steh₂-~ (\"to stand\"). Cognate with English ~stand~, Dutch ~staan~, and Latin ~stāre~. As a particle it names the state the subject or object remains in: ~stehenbleiben~ is to stop and stay standing, ~stehenlassen~ to leave a thing where it stands. The sense of ~stehen~ here is in ~stehenbleiben~: to come to a halt, to stop, to stay put.\n\nFiguratively a clock ~bleibt stehen~ when it stops, and in conversation one asks \"Wo waren wir stehengeblieben?\" — where did we leave off — when picking up a dropped thread."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Er verläßt sich auf sein Haus, und wird doch nicht bestehen; er wird sich daran halten, aber doch nicht stehenbleiben.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "He leans on his house, but it will not stand; he holds fast to it, yet it will not remain standing.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": null
+ },
+ "stillhalten": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~still~ + ~halten~:\n\n- ~halten~: Aus Mhd. ~halten~, aus Ahd. ~haltan~, aus Proto-Westgermanisch *~haldan~, aus Urgermanisch *~haldaną~. Verwandt mit Englisch ~hold~, Niederländisch ~houden~, Niederdeutsch ~holden~, Dänisch ~holde~, Isländisch ~halda~, Schwedisch ~hålla~.\n- ~still~: Aus Mhd. ~stille~, aus Ahd. ~stilli~, aus Proto-Westgermanisch *~stillī~, aus Urgermanisch *~stillijaz~ („still, unbewegt“), aus PIE *~stel-~ („stellen, setzen“) — die Bedeutung läuft von „hingestellt“ über „unbewegt“ zu „schweigend“. Verwandt mit Englisch ~still~, Niederländisch ~stil~, Niederdeutsch ~still~; dieselbe PIE-Wurzel ergab ~stellen~ und Englisch ~stall~. Als Verbpartikel ist es resultativ — ~stillstehen~, ~stilllegen~, ~stillhalten~. Die Bedeutung von ~still~ ist hier: still, ohne Aufhebens oder Widerspruch.\n\n~stillhalten~ reicht vom wörtlichen „sich nicht bewegen“ — beim Impfen oder Fotografieren — bis zum übertragenen „nichts unternehmen, sich nicht wehren“, wie in ~die Füße stillhalten~.",
+   "en": "A separable compound of ~still~ + ~halten~:\n\n- ~halten~: From MHG ~halten~, from OHG ~haltan~, from Proto-West Germanic *~haldan~, from Proto-Germanic *~haldaną~. Cognate with English ~hold~, Dutch ~houden~, Low German ~holden~, Danish ~holde~, Icelandic ~halda~, Swedish ~hålla~.\n- ~still~: From MHG ~stille~, from OHG ~stilli~, from Proto-West Germanic *~stillī~, from Proto-Germanic *~stillijaz~ (\"still, motionless\"), from PIE *~stel-~ (\"to place, set\") — the sense runs from \"set in place\" to \"not moving\" to \"silent.\" Cognate with English ~still~, Dutch ~stil~, Low German ~still~; the same PIE root gave ~stellen~ and English ~stall~. As a verbal particle it is resultative — ~stillstehen~, ~stilllegen~ (\"to shut down\"), ~stillhalten~. The sense of ~still~ here is: quietly, without disturbance or protest.\n\n~stillhalten~ runs from the literal \"not to move\" — for an injection or a photograph — to the figurative \"to do nothing, to offer no resistance,\" as in ~die Füße stillhalten~."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Denn so spricht der HERR zu mir: Ich will stillhalten und schauen in meinem Sitz wie bei heller Hitze im Sonnenschein, wie bei Taugewölk in der Hitze der Ernte.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "For thus the LORD has said to me: I will hold still and look on from my dwelling, like clear heat in sunshine, like a cloud of dew in the heat of harvest.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": null
+ },
+ "stilllegen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~still~ + ~legen~:\n\n- ~legen~: Aus mhd. ~legen~, aus ahd. ~leggen~, aus proto-westgermanisch *~laggjan~, aus urgermanisch *~lagjaną~, einer kausativen Ableitung von *~ligjaną~ („liegen“) mit dem Suffix *~-janą~, aus PIE *~logʰéyeti~. ~legen~ ist damit das Kausativum zu ~liegen~: „zum Liegen bringen“. Verwandt mit niederländisch ~leggen~, englisch ~lay~, dänisch ~lægge~.\n- ~still~: Aus Mhd. ~stille~, aus Ahd. ~stilli~, aus Proto-Westgermanisch *~stillī~, aus Urgermanisch *~stillijaz~ („still, unbewegt“), aus PIE *~stel-~ („stellen, setzen“) — die Bedeutung läuft von „hingestellt“ über „unbewegt“ zu „schweigend“. Verwandt mit Englisch ~still~, Niederländisch ~stil~, Niederdeutsch ~still~; dieselbe PIE-Wurzel ergab ~stellen~ und Englisch ~stall~. Als Verbpartikel ist es resultativ — ~stillstehen~, ~stilllegen~, ~stillhalten~. Die Bedeutung von ~still~ ist hier: zum Stillstand gebracht, außer Betrieb gesetzt.\n\n~stilllegen~ gilt vor allem Betrieben, Bahnstrecken oder Konten, die außer Betrieb gesetzt werden; das Partizip ~stillgelegt~ beschreibt die dauerhaft geschlossene Anlage.",
+   "en": "A separable compound of ~still~ + ~legen~:\n\n- ~legen~: From MHG ~legen~, from OHG ~leggen~, from Proto-West Germanic *~laggjan~, from Proto-Germanic *~lagjaną~, a causative of *~ligjaną~ (\"to lie\") with the suffix *~-janą~, from PIE *~logʰéyeti~. The verb is thus the causative partner of ~liegen~: to ~legen~ is to \"cause to lie,\" i.e., to lay. Cognate with Dutch ~leggen~, English ~lay~, Danish ~lægge~.\n- ~still~: From MHG ~stille~, from OHG ~stilli~, from Proto-West Germanic *~stillī~, from Proto-Germanic *~stillijaz~ (\"still, motionless\"), from PIE *~stel-~ (\"to place, set\") — the sense runs from \"set in place\" to \"not moving\" to \"silent.\" Cognate with English ~still~, Dutch ~stil~, Low German ~still~; the same PIE root gave ~stellen~ and English ~stall~. As a verbal particle it is resultative — ~stillstehen~, ~stilllegen~ (\"to shut down\"), ~stillhalten~. The sense of ~still~ here is: brought to a halt, shut down.\n\n~stilllegen~ applies above all to factories, rail lines, or accounts taken out of operation; the participle ~stillgelegt~ describes the permanently shut-down facility."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Sollten Sie einen Account stilllegen wollen, sichern Sie bei Bedarf Ihre Daten außerhalb des Netzwerkes und löschen diese dann im Account.",
+    "source": "BSI — Sicherheit in Social Media"
+   },
+   "en": {
+    "sentence": "Should you wish to deactivate an account, back up your data outside the network if necessary, and then delete it within the account.",
+    "source": "BSI — Sicherheit in Social Media"
+   }
+  },
+  "notes": null
+ },
+ "stillschweigen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~still~ + ~schweigen~:\n\n- ~schweigen~: Aus Mhd. ~swīgen~, aus Ahd. ~swīgēn~ („still sein“), aus Proto-Westgermanisch *~swīgēn~. Ursprünglich schwach, entwickelte es im frühen Mittelhochdeutschen starke Formen und flektiert heute stark (~schwieg~, ~geschwiegen~) — ungewöhnlich, da die meisten deutschen Verben den umgekehrten Weg gingen. Verwandt mit Altenglisch ~swīgian~, Altsächsisch ~swīgōn~ (schwach), Altnordisch ~svigna~ („sich biegen, weichen“).\n- ~still~: Aus Mhd. ~stille~, aus Ahd. ~stilli~, aus Proto-Westgermanisch *~stillī~, aus Urgermanisch *~stillijaz~ („still, unbewegt“), aus PIE *~stel-~ („stellen, setzen“) — die Bedeutung läuft von „hingestellt“ über „unbewegt“ zu „schweigend“. Verwandt mit Englisch ~still~, Niederländisch ~stil~, Niederdeutsch ~still~; dieselbe PIE-Wurzel ergab ~stellen~ und Englisch ~stall~. Als Verbpartikel ist es resultativ — ~stillstehen~, ~stilllegen~, ~stillhalten~. Die Bedeutung von ~still~ ist hier: in einen Zustand der Stille oder Bewegungslosigkeit.\n\nDa ~schweigen~ schon „still sein“ heißt, verstärkt ~still-~ nur; lebendiger als das Verb ist heute das adverbiale Partizip ~stillschweigend~ („stillschweigend, unausgesprochen“).",
+   "en": "A separable compound of ~still~ + ~schweigen~:\n\n- ~schweigen~: From MHG ~swīgen~, from OHG ~swīgēn~ (\"to be silent\"), from Proto-West Germanic *~swīgēn~. Originally weak, it developed strong forms in early Middle High German and now inflects strong (~schwieg~, ~geschwiegen~) — unusual, since most German verbs moved the other way. Cognate with Old English ~swīgian~, Old Saxon ~swīgōn~ (weak), Old Norse ~svigna~ (\"to bend, give way\").\n- ~still~: From MHG ~stille~, from OHG ~stilli~, from Proto-West Germanic *~stillī~, from Proto-Germanic *~stillijaz~ (\"still, motionless\"), from PIE *~stel-~ (\"to place, set\") — the sense runs from \"set in place\" to \"not moving\" to \"silent.\" Cognate with English ~still~, Dutch ~stil~, Low German ~still~; the same PIE root gave ~stellen~ and English ~stall~. As a verbal particle it is resultative — ~stillstehen~, ~stilllegen~ (\"to shut down\"), ~stillhalten~. The sense of ~still~ here is: into a state of stillness or silence.\n\nSince ~schweigen~ already means \"to be silent,\" ~still-~ merely intensifies; more alive today than the verb is the adverbial participle ~stillschweigend~ (\"tacitly, by implication\")."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Der Mann aber wunderte sich ihrer und schwieg still, bis er erkennete, ob der HERR zu seiner Reise Gnade gegeben hätte oder nicht.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "But the man marveled at her and kept silent, until he might know whether the LORD had granted his journey grace or not.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": "Ranks 0–2 rejected as the adverbial participle stillschweigend (\"tacitly\"), not a verbal use; rank 4 (\"Doch schweig still\") is five words, below the length band. Took rank 3, a clean separated schwieg…still in band."
+ },
+ "stillstehen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~still~ + ~stehen~:\n\n- ~stehen~: Aus Mhd. ~stān~, ~stēn~, aus Ahd. ~stān~, ~stēn~, aus Proto-Westgermanisch *~stān~, aus Urgermanisch *~stāną~, aus PIE *~steh₂-~ („stehen“). Das ~-h-~ kam in Analogie zu ~sehen~ in die Schreibung; die Präteritumformen (~stand~, ~standen~) sind suppletiv, aus Proto-Westgermanisch *~standan~. Verwandt mit Niederländisch ~staan~, Englisch ~stand~, Dänisch ~stå~, Schwedisch ~stå~.\n- ~still~: Aus Mhd. ~stille~, aus Ahd. ~stilli~, aus Proto-Westgermanisch *~stillī~, aus Urgermanisch *~stillijaz~ („still, unbewegt“), aus PIE *~stel-~ („stellen, setzen“) — die Bedeutung läuft von „hingestellt“ über „unbewegt“ zu „schweigend“. Verwandt mit Englisch ~still~, Niederländisch ~stil~, Niederdeutsch ~still~; dieselbe PIE-Wurzel ergab ~stellen~ und Englisch ~stall~. Als Verbpartikel ist es resultativ — ~stillstehen~, ~stilllegen~, ~stillhalten~. Die Bedeutung von ~still~ ist hier: zum Stillstand gebracht, außer Betrieb gesetzt.\n\n~stillstehen~ reicht vom stillstehenden Räderwerk und der scheinbar stehenbleibenden Zeit bis zum militärischen Kommando ~Stillgestanden!~ „Achtung, stillgestanden!“.",
+   "en": "A separable compound of ~still~ + ~stehen~:\n\n- ~stehen~: From MHG ~stān~, ~stēn~, from OHG ~stān~, ~stēn~, from Proto-West Germanic *~stān~, from Proto-Germanic *~stāną~, from PIE *~steh₂-~ (\"to stand\"). The ~-h-~ entered the spelling by analogy with ~sehen~; the past-tense conjugations (~stand~, ~standen~) are suppletive, from Proto-West Germanic *~standan~. Cognate with Dutch ~staan~, English ~stand~, Danish ~stå~, Swedish ~stå~.\n- ~still~: From MHG ~stille~, from OHG ~stilli~, from Proto-West Germanic *~stillī~, from Proto-Germanic *~stillijaz~ (\"still, motionless\"), from PIE *~stel-~ (\"to place, set\") — the sense runs from \"set in place\" to \"not moving\" to \"silent.\" Cognate with English ~still~, Dutch ~stil~, Low German ~still~; the same PIE root gave ~stellen~ and English ~stall~. As a verbal particle it is resultative — ~stillstehen~, ~stilllegen~ (\"to shut down\"), ~stillhalten~. The sense of ~still~ here is: brought to a halt, shut down.\n\n~stillstehen~ ranges from machinery standing idle and time seeming to stand still to the military command ~Stillgestanden!~, \"attention!\"."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Ist aber vor Augen der Grind stillgestanden und dunkles Haar daselbst aufgegangen, so ist der Grind heil und er rein.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "But if the scurf has stayed still to the eye and dark hair has grown up in it, then the scurf is healed, and he is clean.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": null
+ },
+ "strammstehen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~stramm~ + ~stehen~:\n\n- ~stehen~: Aus Mhd. ~stān~, ~stēn~, aus Ahd. ~stān~, ~stēn~, aus Proto-Westgermanisch *~stān~, aus Urgermanisch *~stāną~, aus PIE *~steh₂-~ („stehen“). Das ~-h-~ kam in Analogie zu ~sehen~ in die Schreibung; die Präteritumformen (~stand~, ~standen~) sind suppletiv, aus Proto-Westgermanisch *~standan~. Verwandt mit Niederländisch ~staan~, Englisch ~stand~, Dänisch ~stå~, Schwedisch ~stå~.\n- ~stramm~: Das Adjektiv ~stramm~, aus Mittelniederdeutsch ~stram~, das sich vom Norden her ins Hochdeutsche ausbreitete; die weitere Herkunft ist unsicher, das Wort könnte lautmalerisch-expressiv sein. Verwandt mit Niederländisch ~stram~ („steif“), das seinerseits wohl aus dem Niederdeutschen entlehnt ist. In ~strammstehen~ beschreibt das Adjektiv die Haltung, die das Subjekt einnimmt — aufgerichtet, starr, gespannt. Die Bedeutung von ~stramm~ ist hier in ~strammstehen~: Haltung annehmen.\n\n~strammstehen~ gehört der militärischen Sprache an und deckt sich weitgehend mit ~stillstehen~ im Sinne des Kommandos „Stillgestanden!“; das Bild ist der straff aufgerichtete, reglose Körper.",
+   "en": "A separable compound of ~stramm~ + ~stehen~:\n\n- ~stehen~: From MHG ~stān~, ~stēn~, from OHG ~stān~, ~stēn~, from Proto-West Germanic *~stān~, from Proto-Germanic *~stāną~, from PIE *~steh₂-~ (\"to stand\"). The ~-h-~ entered the spelling by analogy with ~sehen~; the past-tense conjugations (~stand~, ~standen~) are suppletive, from Proto-West Germanic *~standan~. Cognate with Dutch ~staan~, English ~stand~, Danish ~stå~, Swedish ~stå~.\n- ~stramm~: The adjective ~stramm~ (\"taut, tight, rigid\"), from Middle Low German ~stram~, spreading into standard German from the north; the further origin is uncertain, and the word may be expressive in nature. Cognate with Dutch ~stram~ (\"stiff\"), itself probably a Low German loan. In ~strammstehen~, \"to stand at attention\", the adjective describes the posture the subject holds — drawn up, rigid, taut. The sense of ~stramm~ here is in ~strammstehen~: to stand at attention.\n\n~strammstehen~ belongs to military language and largely overlaps with ~stillstehen~ in the sense of the command \"attention!\"; the image is the taut, upright, motionless body."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "stummschalten": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~stumm~ + ~schalten~:\n\n- ~schalten~: Aus Mhd. ~schalten~, aus Ahd. ~scaltan~, aus Proto-Westgermanisch *~skaldan~ („schieben, stoßen“); die weitere Etymologie ist umstritten, nach Pokorny aus PIE *~(s)kelH-~ („spalten, trennen“), was es mit englisch ~shell~ verwandt machen würde. Der physische Sinn des Schiebens eines Hebels ergab das moderne „schalten, umschalten, verwalten“. Verwandt mit altsächsisch ~skaldan~.\n- ~stumm~: Das Adjektiv ~stumm~, aus Mhd. und Ahd. ~stum~, aus einer urgermanischen Grundlage *~stumm-~, aus PIE *~stem-~ („stoßen, hemmen, stottern“) — die ursprüngliche Bedeutung ist „im Sprechen gehemmt“. Es steht im Ablautverhältnis zu ~stammeln~ und ~stemmen~ und ist verwandt mit Niederländisch ~stom~ und Englisch ~stammer~. Der resultative Rahmen ergibt die moderne Bildung ~stummschalten~. Die Bedeutung von ~stumm~ ist hier in ~stummschalten~: ein Gerät oder Mikrofon stummschalten.\n\nAnders als das dauerhafte ~verstummen~ meint ~stummschalten~ einen umlegbaren Schalter: Was stummgeschaltet ist, lässt sich ebenso wieder lautschalten.",
+   "en": "A separable compound of ~stumm~ + ~schalten~:\n\n- ~schalten~: From MHG ~schalten~, from OHG ~scaltan~, from Proto-West Germanic *~skaldan~ (\"to push, shove\"); the further etymology is debated, Pokorny deriving it from PIE *~(s)kelH-~ (\"to split, separate\"), which would relate it to English ~shell~. The physical sense of shoving a lever became the modern \"to switch, shift gears, manage.\" Cognate with Old Saxon ~skaldan~.\n- ~stumm~: The adjective ~stumm~ (\"mute\"), from MHG and OHG ~stum~, from a Proto-Germanic base *~stumm-~, from PIE *~stem-~ (\"to push, to halt, to stutter\") — the original sense is \"hindered in speech\". It stands in ablaut relation to ~stammeln~ and ~stemmen~, and is cognate with Dutch ~stom~ and English ~stammer~. The resultative frame yields the modern coinage ~stummschalten~, \"to switch to mute\". The sense of ~stumm~ here is in ~stummschalten~: to mute a device or a microphone.\n\nUnlike the permanent ~verstummen~ (\"to fall silent\"), ~stummschalten~ implies a toggle that can be thrown back: what is muted can be unmuted again."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "teilhaben": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~teil~ + ~haben~:\n\n- ~haben~: Aus Mhd. ~haben~, aus Ahd. ~habēn~, aus Proto-Westgermanisch *~habbjan~, aus Urgermanisch *~habjaną~, aus PIE *~keh₂p-~ („greifen, ergreifen“). Trotz des Gleichklangs nicht mit Lateinisch ~habēō~ verwandt, wohl aber mit ~capiō~ („ich ergreife“) und mit Deutsch ~heben~. Verwandt mit Englisch ~have~, Niederländisch ~hebben~, Dänisch ~have~, Gotisch ~haban~.\n- ~teil~: Das Substantiv ~Teil~, aus Mhd. ~teil~, aus Ahd. ~teil~, aus Proto-Westgermanisch *~daili~, aus Urgermanisch *~dailiz~, versuchsweise aus PIE *~dʰeh₁-~ („setzen, tun“) über einen Stamm mit der Bedeutung „Anteil“. Verwandt mit Englisch ~deal~ (wie in „a great deal“, ein Anteil) und ~dole~ sowie mit Niederländisch ~deel~. Das Substantiv wird als Objekt inkorporiert, und die Konstruktion ist eine Lehnübersetzung von Lateinisch ~participāre~: Niederländisch ~deelnemen~ und Englisch ~take part~ bilden dasselbe Vorbild mit eigenem Material nach. Als grammatikalisiertes Substantiv wird es bei Trennung kleingeschrieben — ~ich nehme teil~. Die Bedeutung von ~teil~ ist hier in ~teilhaben~: an etwas Anteil haben.\n\n~teilhaben~ regiert ~an~ mit Dativ und meint das Anteilhaben, das bloße Teilen an etwas; ~teilnehmen~ dagegen betont das tätige Mitmachen — man ~hat an~ einem Erbe ~teil~, aber ~nimmt an~ einer Sitzung ~teil~.",
+   "en": "A separable compound of ~teil~ + ~haben~:\n\n- ~haben~: From MHG ~haben~, from OHG ~habēn~, from Proto-West Germanic *~habbjan~, from Proto-Germanic *~habjaną~, from PIE *~keh₂p-~ (\"to grasp, seize\"). Despite the resemblance it is not related to Latin ~habēō~, but it is to ~capiō~ (\"I seize\") and to German ~heben~. Cognate with English ~have~, Dutch ~hebben~, Danish ~have~, Gothic ~haban~.\n- ~teil~: The noun ~Teil~ (\"part, share\"), from MHG ~teil~, from OHG ~teil~, from Proto-West Germanic *~daili~, from Proto-Germanic *~dailiz~, tentatively from PIE *~dʰeh₁-~ (\"to put, set\") by way of a stem meaning \"portion\". Cognate with English ~deal~ (as in \"a great deal\", a portion) and ~dole~, and with Dutch ~deel~. The noun is incorporated as the object, and the construction calques Latin ~participāre~: Dutch ~deelnemen~ and English ~take part~ render the same model with native material. Being grammaticalized, it is written lowercase when separated — ~ich nehme teil~. The sense of ~teil~ here is in ~teilhaben~: to have a share in something.\n\n~teilhaben~ governs ~an~ plus the dative and denotes sharing in something; ~teilnehmen~, by contrast, stresses active participation — one ~hat an~ an inheritance ~teil~ but ~nimmt an~ a meeting ~teil~."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Wer mit Dieben teilhat, den Fluch aussprechen hört, und sagt's nicht an, der haßt sein Leben.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "Whoever shares with a thief hates his own life; he hears the curse pronounced and reveals nothing.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": null
+ },
+ "totarbeiten": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~tot~ + ~arbeiten~:\n\n- ~arbeiten~: Aus Ahd. ~arbeiten~, aus Urgermanisch *~arbaidijaną~, letztlich aus PIE *~h₃órbʰos~ („Waise“); der Bedeutungsweg führt von „Waise“ über „Mühsal, Plage“ zu „Arbeit“. Verwandt mit Niederländisch ~arbeiden~, Gotisch ~arbaidjan~ und — aus derselben Wurzel — Englisch ~orphan~.\n- ~tot~: Aus dem Adjektiv ~tot~, aus Mhd. ~tōt~, aus Ahd. ~tōt~, aus Proto-Westgermanisch *~daud~, aus Urgermanisch *~daudaz~, einer Partizipialbildung zu *~dawjaną~ („sterben“), aus PIE *~dʰew-~ („dahinscheiden, sterben“). Verwandt mit Englisch ~dead~, Niederländisch ~dood~, Schwedisch ~död~. Sehr oft ist es hyperbolisch statt wörtlich, wie beim Sich-totlachen oder Sich-totarbeiten.\n\n~sich totarbeiten~ ist hyperbolisch — kaum je wörtlich —, und die Herkunft von ~arbeiten~ aus „Mühsal“ (letztlich „Waise“) lässt die Übertreibung doppelt schwer klingen.",
+   "en": "A separable compound of ~tot~ + ~arbeiten~:\n\n- ~arbeiten~: From OHG ~arbeiten~, from Proto-Germanic *~arbaidijaną~, ultimately from PIE *~h₃órbʰos~ (\"orphan\"); the sense runs from \"orphan\" through \"hardship, toil\" to \"work.\" Cognate with Dutch ~arbeiden~, Gothic ~arbaidjan~, and — from the same root — English ~orphan~.\n- ~tot~: From the adjective ~tot~ (\"dead\"), from MHG ~tōt~, from OHG ~tōt~, from Proto-West Germanic *~daud~, from Proto-Germanic *~daudaz~, a participial formation to *~dawjaną~ (\"to die\"), from PIE *~dʰew-~ (\"to pass away, die\"). Cognate with English ~dead~, Dutch ~dood~, Swedish ~död~. It is very often hyperbolic rather than literal, as of laughing or working oneself to death.\n\n~sich totarbeiten~ is hyperbolic, hardly ever literal, and the descent of ~arbeiten~ from \"toil\" (ultimately \"orphan\") gives the exaggeration a double weight."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "totkochen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~tot~ + ~kochen~:\n\n- ~kochen~: Aus Mhd. ~kochen~, aus Ahd. ~kohhōn~, aus Proto-Westgermanisch *~kokōn~, entlehnt aus spätlateinisch ~cocō~, aus lateinisch ~coquō~ („ich koche, ich siede“), aus PIE *~pekʷ-~ („kochen, reifen“). Ein so frühes Lehnwort, dass es die hochdeutsche Lautverschiebung ~k~ → ~ch~ noch mitmachte. Verwandt mit Englisch ~cook~, Niederländisch ~koken~, Dänisch ~koge~.\n- ~tot~: Aus dem Adjektiv ~tot~, aus Mhd. ~tōt~, aus Ahd. ~tōt~, aus Proto-Westgermanisch *~daud~, aus Urgermanisch *~daudaz~, einer Partizipialbildung zu *~dawjaną~ („sterben“), aus PIE *~dʰew-~ („dahinscheiden, sterben“). Verwandt mit Englisch ~dead~, Niederländisch ~dood~, Schwedisch ~död~. In einer resultativen Zusammensetzung benennt ~tot-~ den Endzustand: Die Handlung wird fortgesetzt, bis das Objekt tot ist — ~totschlagen~ heißt, jemanden zu Tode zu schlagen.\n\nBei ~totkochen~ ist das „Tote“ das zu Brei zerkochte Gargut: Man kocht Gemüse oder Fleisch tot, wenn man es bis zur Ungenießbarkeit weiterkocht — der resultative Rahmen, kulinarisch übertrieben.",
+   "en": "A separable compound of ~tot~ + ~kochen~:\n\n- ~kochen~: From MHG ~kochen~, from OHG ~kohhōn~, from Proto-West Germanic *~kokōn~, borrowed from Late Latin ~cocō~, from Latin ~coquō~ (\"I cook, I boil\"), from PIE *~pekʷ-~ (\"to cook, to ripen\"). A loan early enough to have undergone the High German shift of ~k~ to ~ch~. Cognate with English ~cook~, Dutch ~koken~, Danish ~koge~.\n- ~tot~: From the adjective ~tot~ (\"dead\"), from MHG ~tōt~, from OHG ~tōt~, from Proto-West Germanic *~daud~, from Proto-Germanic *~daudaz~, a participial formation to *~dawjaną~ (\"to die\"), from PIE *~dʰew-~ (\"to pass away, die\"). Cognate with English ~dead~, Dutch ~dood~, Swedish ~död~. In a resultative compound ~tot-~ names the end state: the action is carried on until the object is dead — ~totschlagen~ is to beat someone to death.\n\nIn ~totkochen~ the \"dead\" thing is food boiled to mush: one cooks vegetables or meat ~tot~ by carrying the cooking on until they are inedible — the resultative frame, culinary and hyperbolic."
+  },
+  "sentence": null,
+  "notes": "No candidates. Sense: totkochen matches none of the three tot- exemplar sets cleanly; read as the base resultative (sense 0, “carried on until the object is dead”), here stretched to food overcooked to ruin rather than a living victim."
+ },
+ "totlachen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~tot~ + ~lachen~:\n\n- ~lachen~: Aus Mhd. ~lachen~, aus Ahd. ~lahhen~, aus Proto-Westgermanisch *~hlahhjan~, aus Urgermanisch *~hlahjaną~, aus PIE *~kleg-~ („schreien, tönen“). Der anlautende ~hl-~-Cluster wurde im Althochdeutschen zu ~l-~ vereinfacht. Verwandt mit Englisch ~laugh~, Niederländisch ~lachen~, Gotisch ~hlahjan~.\n- ~tot~: Aus dem Adjektiv ~tot~, aus Mhd. ~tōt~, aus Ahd. ~tōt~, aus Proto-Westgermanisch *~daud~, aus Urgermanisch *~daudaz~, einer Partizipialbildung zu *~dawjaną~ („sterben“), aus PIE *~dʰew-~ („dahinscheiden, sterben“). Verwandt mit Englisch ~dead~, Niederländisch ~dood~, Schwedisch ~död~. Sehr oft ist es hyperbolisch statt wörtlich, wie beim Sich-totlachen oder Sich-totarbeiten.\n\n~sich totlachen~ ist reine Hyperbel und hat im englischen „to die laughing“ ein genaues Gegenstück; niemand stirbt wirklich, aber das Bild ist alt und sprachübergreifend.",
+   "en": "A separable compound of ~tot~ + ~lachen~:\n\n- ~lachen~: From MHG ~lachen~, from OHG ~lahhen~, from Proto-West Germanic *~hlahhjan~, from Proto-Germanic *~hlahjaną~, from PIE *~kleg-~ (\"to cry out, sound\"). The initial ~hl-~ cluster was simplified to ~l-~ in Old High German. Cognate with English ~laugh~, Dutch ~lachen~, Gothic ~hlahjan~.\n- ~tot~: From the adjective ~tot~ (\"dead\"), from MHG ~tōt~, from OHG ~tōt~, from Proto-West Germanic *~daud~, from Proto-Germanic *~daudaz~, a participial formation to *~dawjaną~ (\"to die\"), from PIE *~dʰew-~ (\"to pass away, die\"). Cognate with English ~dead~, Dutch ~dood~, Swedish ~död~. It is very often hyperbolic rather than literal, as of laughing or working oneself to death.\n\n~sich totlachen~ is pure hyperbole and has an exact match in English \"to die laughing\"; no one really dies, but the image is old and crosses languages."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "totlaufen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~tot~ + ~laufen~:\n\n- ~laufen~: Aus Mhd. ~loufen~, aus Ahd. ~hloufan~, ~loufan~, aus Proto-Westgermanisch *~hlaupan~, aus Urgermanisch *~hlaupaną~. Ein starkes Verb der Klasse VII. Der anlautende ~hl-~-Cluster ging während der althochdeutschen Periode verloren. Verwandt mit Englisch ~leap~ und ~lope~, Niederländisch ~lopen~, Dänisch ~løbe~.\n- ~tot~: Aus dem Adjektiv ~tot~, aus Mhd. ~tōt~, aus Ahd. ~tōt~, aus Proto-Westgermanisch *~daud~, aus Urgermanisch *~daudaz~, einer Partizipialbildung zu *~dawjaną~ („sterben“), aus PIE *~dʰew-~ („dahinscheiden, sterben“). Verwandt mit Englisch ~dead~, Niederländisch ~dood~, Schwedisch ~död~. Auf Sachen bezogen bedeutet es „abgetötet, zum Schweigen gebracht, außer Gebrauch gesetzt“.\n\n~sich totlaufen~ sagt man von einer Sache, einer Debatte oder einer Spur, die sich erschöpft und im Sande verläuft — die Bewegung läuft weiter, bis nichts mehr von ihr übrig ist.",
+   "en": "A separable compound of ~tot~ + ~laufen~:\n\n- ~laufen~: From MHG ~loufen~, from OHG ~hloufan~, ~loufan~, from Proto-West Germanic *~hlaupan~, from Proto-Germanic *~hlaupaną~. A class VII strong verb. The initial ~hl-~ cluster was lost during the Old High German period. Cognate with English ~leap~ and ~lope~, Dutch ~lopen~, Danish ~løbe~.\n- ~tot~: From the adjective ~tot~ (\"dead\"), from MHG ~tōt~, from OHG ~tōt~, from Proto-West Germanic *~daud~, from Proto-Germanic *~daudaz~, a participial formation to *~dawjaną~ (\"to die\"), from PIE *~dʰew-~ (\"to pass away, die\"). Cognate with English ~dead~, Dutch ~dood~, Swedish ~död~. Applied to things it means \"deadened, silenced, put out of use.\"\n\n~sich totlaufen~ is said of a matter, a debate, or a lead that exhausts itself and comes to nothing — the motion runs on until nothing of it is left."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "totmachen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~tot~ + ~machen~:\n\n- ~machen~: Aus mhd. ~machen~, aus ahd. ~mahhōn~, aus proto-westgermanisch *~makōn~, aus PIE *~mag-~ („kneten, mischen, machen“). Verwandt mit niederländisch ~maken~, niederdeutsch ~maken~, englisch ~make~.\n- ~tot~: Aus dem Adjektiv ~tot~, aus Mhd. ~tōt~, aus Ahd. ~tōt~, aus Proto-Westgermanisch *~daud~, aus Urgermanisch *~daudaz~, einer Partizipialbildung zu *~dawjaną~ („sterben“), aus PIE *~dʰew-~ („dahinscheiden, sterben“). Verwandt mit Englisch ~dead~, Niederländisch ~dood~, Schwedisch ~död~. In einer resultativen Zusammensetzung benennt ~tot-~ den Endzustand: Die Handlung wird fortgesetzt, bis das Objekt tot ist — ~totschlagen~ heißt, jemanden zu Tode zu schlagen.\n\n~totmachen~ ist der umgangssprachliche, kindliche Ausdruck für ~töten~: wörtlich „tot machen“, schlichter und alltäglicher als das gehobene ~töten~.",
+   "en": "A separable compound of ~tot~ + ~machen~:\n\n- ~machen~: From MHG ~machen~, from OHG ~mahhōn~, from Proto-West Germanic *~makōn~, from PIE *~mag-~ (\"to knead, mix, make\"). Cognate with Dutch ~maken~, Low German ~maken~, English ~make~.\n- ~tot~: From the adjective ~tot~ (\"dead\"), from MHG ~tōt~, from OHG ~tōt~, from Proto-West Germanic *~daud~, from Proto-Germanic *~daudaz~, a participial formation to *~dawjaną~ (\"to die\"), from PIE *~dʰew-~ (\"to pass away, die\"). Cognate with English ~dead~, Dutch ~dood~, Swedish ~död~. In a resultative compound ~tot-~ names the end state: the action is carried on until the object is dead — ~totschlagen~ is to beat someone to death.\n\n~totmachen~ is the colloquial, childlike word for ~töten~ (\"to kill\"): literally \"to make dead,\" plainer and more everyday than the elevated ~töten~."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Wenn eins in ihre Gewalt kam, so machte sie es tot, kochte es und aß es, und das war ihr ein Festtag.",
+    "source": "Grimm — Märchen"
+   },
+   "en": {
+    "sentence": "Whenever one fell into her power, she killed it, cooked it, and ate it, and that was a feast day for her.",
+    "source": "Grimm — Märchen"
+   }
+  },
+  "notes": null
+ },
+ "totreden": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~tot~ + ~reden~:\n\n- ~reden~: Aus Mhd. ~reden~, aus Ahd. ~redōn~, ~rediōn~ („sprechen“), ein denominales Verb von ~reda~, ~redia~ („Rede, Wort, Meinung“), aus Urgermanisch *~raþjǭ~ („Rechenschaft, Rede“). Die gemeinsame PIE-Wurzel trug den Sinn geordneter, rechenschaftspflichtiger Rede. Verwandt mit lateinisch ~ratiō~ (woraus englisch ~ratio~, ~reason~), englisch ~rede~ („Rat“) und deutsch ~Rat~.\n- ~tot~: Aus dem Adjektiv ~tot~, aus Mhd. ~tōt~, aus Ahd. ~tōt~, aus Proto-Westgermanisch *~daud~, aus Urgermanisch *~daudaz~, einer Partizipialbildung zu *~dawjaną~ („sterben“), aus PIE *~dʰew-~ („dahinscheiden, sterben“). Verwandt mit Englisch ~dead~, Niederländisch ~dood~, Schwedisch ~död~. Auf Sachen bezogen bedeutet es „abgetötet, zum Schweigen gebracht, außer Gebrauch gesetzt“.\n\n~ein Thema totreden~ heißt, es so lange zu zerreden, bis nichts Lebendiges mehr daran ist — das „Tote“ ist der ausgelaugte, erledigte Gegenstand, nicht ein Mensch.",
+   "en": "A separable compound of ~tot~ + ~reden~:\n\n- ~reden~: From MHG ~reden~, from OHG ~redōn~, ~rediōn~ (\"to speak\"), a denominal verb from ~reda~, ~redia~ (\"speech, word, opinion\"), from Proto-Germanic *~raþjǭ~ (\"accountability, speech\"). The shared PIE root carried the sense of organized, accountable speech. Cognate with Latin ~ratiō~ (whence English ~ratio~, ~reason~), English ~rede~ (\"counsel\"), and German ~Rat~.\n- ~tot~: From the adjective ~tot~ (\"dead\"), from MHG ~tōt~, from OHG ~tōt~, from Proto-West Germanic *~daud~, from Proto-Germanic *~daudaz~, a participial formation to *~dawjaną~ (\"to die\"), from PIE *~dʰew-~ (\"to pass away, die\"). Cognate with English ~dead~, Dutch ~dood~, Swedish ~död~. Applied to things it means \"deadened, silenced, put out of use.\"\n\nTo ~ein Thema totreden~ is to talk a subject over so long that nothing living is left of it — the \"dead\" thing is the exhausted, done-to-death topic, not a person."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "totsagen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~tot~ + ~sagen~:\n\n- ~sagen~: Aus Mhd. ~sagen~, aus Ahd. ~sagēn~, aus Proto-Westgermanisch *~saggjan~, aus Urgermanisch *~sagjaną~, letztlich aus PIE *~sekʷ-~ („sagen, erzählen“). Verwandt mit englisch ~say~, niederländisch ~zeggen~, niederdeutsch ~seggen~, dänisch ~sige~, schwedisch ~säga~.\n- ~tot~: Aus dem Adjektiv ~tot~, aus Mhd. ~tōt~, aus Ahd. ~tōt~, aus Proto-Westgermanisch *~daud~, aus Urgermanisch *~daudaz~, einer Partizipialbildung zu *~dawjaną~ („sterben“), aus PIE *~dʰew-~ („dahinscheiden, sterben“). Verwandt mit Englisch ~dead~, Niederländisch ~dood~, Schwedisch ~död~. Auf Sachen bezogen bedeutet es „abgetötet, zum Schweigen gebracht, außer Gebrauch gesetzt“.\n\n~jemanden totsagen~ heißt, ihn für tot erklären, meist voreilig; das Sprichwort ~Totgesagte leben länger~ spielt genau mit dieser oft irrigen Todesnachricht.",
+   "en": "A separable compound of ~tot~ + ~sagen~:\n\n- ~sagen~: From MHG ~sagen~, from OHG ~sagēn~, from Proto-West Germanic *~saggjan~, from Proto-Germanic *~sagjaną~, ultimately from PIE *~sekʷ-~ (\"to say, tell\"). Cognate with English ~say~, Dutch ~zeggen~, Low German ~seggen~, Danish ~sige~, Swedish ~säga~.\n- ~tot~: From the adjective ~tot~ (\"dead\"), from MHG ~tōt~, from OHG ~tōt~, from Proto-West Germanic *~daud~, from Proto-Germanic *~daudaz~, a participial formation to *~dawjaną~ (\"to die\"), from PIE *~dʰew-~ (\"to pass away, die\"). Cognate with English ~dead~, Dutch ~dood~, Swedish ~död~. Applied to things it means \"deadened, silenced, put out of use.\"\n\nTo ~jemanden totsagen~ is to declare someone dead, usually prematurely; the proverb ~Totgesagte leben länger~ (\"those declared dead live longer\") plays on exactly this often-mistaken report of death."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "totsaufen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~tot~ + ~saufen~:\n\n- ~saufen~: Aus Mhd. ~sūfen~ („schlürfen, trinken“), aus Ahd. ~sūfan~, aus Proto-Westgermanisch *~sūpan~, aus Urgermanisch *~sūpaną~, aus PIE *~sewp-~, einer labialen Erweiterung von *~sew-~ („Flüssigkeit aufnehmen, schlürfen“). Ein starkes Verb der Klasse II (~saufen~, ~soff~, ~gesoffen~). Die Verschiebung von „schlürfen“ zum heutigen „zechen“ stammt erst aus dem 16. Jahrhundert. Verwandt mit englisch ~sup~, niederländisch ~zuipen~, altnordisch ~súpa~.\n- ~tot~: Aus dem Adjektiv ~tot~, aus Mhd. ~tōt~, aus Ahd. ~tōt~, aus Proto-Westgermanisch *~daud~, aus Urgermanisch *~daudaz~, einer Partizipialbildung zu *~dawjaną~ („sterben“), aus PIE *~dʰew-~ („dahinscheiden, sterben“). Verwandt mit Englisch ~dead~, Niederländisch ~dood~, Schwedisch ~död~. Sehr oft ist es hyperbolisch statt wörtlich, wie beim Sich-totlachen oder Sich-totarbeiten.\n\n~sich totsaufen~ steht zwischen Hyperbel und bitterem Ernst: Das Saufen kann wirklich tödlich enden. Das derbe ~saufen~ statt ~trinken~ verleiht der Wendung ihren rauen Ton.",
+   "en": "A separable compound of ~tot~ + ~saufen~:\n\n- ~saufen~: From MHG ~sūfen~ (\"to sip, drink\"), from OHG ~sūfan~, from Proto-West Germanic *~sūpan~, from Proto-Germanic *~sūpaną~, from PIE *~sewp-~, a labial extension of *~sew-~ (\"to take liquid, slurp\"). A class II strong verb (~saufen~, ~soff~, ~gesoffen~). The drift from \"to sip\" to today's \"to booze\" dates only to the sixteenth century. Cognate with English ~sup~, Dutch ~zuipen~, Old Norse ~súpa~.\n- ~tot~: From the adjective ~tot~ (\"dead\"), from MHG ~tōt~, from OHG ~tōt~, from Proto-West Germanic *~daud~, from Proto-Germanic *~daudaz~, a participial formation to *~dawjaną~ (\"to die\"), from PIE *~dʰew-~ (\"to pass away, die\"). Cognate with English ~dead~, Dutch ~dood~, Swedish ~död~. It is very often hyperbolic rather than literal, as of laughing or working oneself to death.\n\n~sich totsaufen~ lies between hyperbole and grim reality: the drinking really can prove fatal. The coarse ~saufen~ rather than ~trinken~ gives the phrase its rough register."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ }
+}

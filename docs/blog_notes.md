@@ -3764,3 +3764,69 @@ Standing tally: **71 of 104 shards, 33 remaining, all contiguous from 071.** Sto
 gate (session read 88% after wave 7's two heavy shards coincided with Fable writing the blog post on
 the same window). No data decisions are open; the two Phase-5 morpheme fixes and the sense-layer pass
 are recorded above, not urgent. Next is shard 071 via the standard resume prompt.
+
+
+## Mining shards 071–084, and catching a self-contradictory sense before it shipped (2026-07-22)
+
+Fourteen shards this window (071–084), bringing the corpus to **85 of 104 mined, 19 remaining
+(085–103)**, all contiguous. Concurrency held at 2 per Josh's standing call. Yield where a candidate
+exists is steady at **90.6%**; the "yield runs near half" framing remains a denominator artifact —
+832 of the no-sentence verbs simply have no corpus candidate at all and wait for Phase-5 corpus
+expansion, against only 122 honest reader refusals.
+
+Three pipeline changes landed, and the discriminator between "stop and fix now" and "collect for
+later" was the same each time: **fix it mid-run only if the defect ships silently *and* the fix is
+cheap and data-checkable; otherwise write it up and keep mining.**
+
+- **Two MINING_SPEC clarifications, both silent-degradation holes.** The exemplar-leak scan is now
+  specified **case-insensitive** — shard 076 shipped a capitalised `Umrühren` past a case-sensitive
+  pass and caught it only on a rescan, and a subagent that scans once would not. And the `contiguous`
+  candidate field, which appeared in the schema but was documented nowhere while its sibling
+  `truncated` got three paragraphs, is now explained: `contiguous: false` is the *ordinary*
+  stranded-particle word order for a separable verb, not a rejection signal. Shard 075's best
+  `umdeuten` candidate was `contiguous: false`; a subagent misreading the flag would have shipped a
+  worse quote. Both fixes were prompted by subagent friction reports, not code inspection — the same
+  pattern every prior improvement followed.
+
+- **`insep:um` had two senses that called the inseparable prefix "separable."** Senses 2–3 in
+  `prefixes-inseparable.json` read "als trennbares Präfix / as a separable prefix" — spliced
+  *verbatim* into any inseparable-um etymology that picked them, a contradiction no reader could
+  catch because subagents splice senses, they don't write them. This was the window's one genuine
+  stop-and-fix. It was decided **from data, not German**: the mislabeled slots were exemplified by
+  *umdrehen, umstellen, umwandeln, umformen* — all separable verbs that already appear under
+  `separ:um`, so they were misfiled duplicates. Deleted both senses and their exemplar slots,
+  leaving `insep:um` with its two true inseparable meanings at 2↔2 parity. No already-mined output
+  used them, no remaining shard needs `insep:um`, and a full shard-rebuild confirmed the corrected
+  data joins cleanly with zero orphaned quotes. Josh, who noted his German is limited, could trust
+  this precisely because the correction rests on a checkable duplication rather than an ear.
+
+Left for Josh, because they need an authoring voice rather than a data edit (all cause *flagged*
+hedges, never silent breakage, so nothing is at risk deferring them):
+
+- **A `unter-`/`über-` "degree" sense pair.** Three shards flagged a missing `insep:unter`
+  "below-a-norm / shortfall" sense (*unterschätzen, unterbezahlen, untersteuern* …), the exact mirror
+  of a missing `insep:über` "surpass / prevail over" sense (*überbieten, überstimmen, überwiegen*) —
+  German's degree pair. Draft de+en sense text and exemplars are in the session report, ready to
+  approve; appending them preserves existing indices, and applying well wants a targeted re-mine of
+  the ~10 hedged verbs.
+- **`ver-` polysemy.** All three all-`ver-` shards (081–083) plus 084 independently hit the same
+  wall: ~7 of 25 verbs per shard collapse onto sense 0 ("intensify"). Three recurring clusters have
+  no home — pejorative transitivizer (*verlachen, verklagen*), announce-forth (*verkünden,
+  vermelden*), and combinatorial "together" (*vermischen, verschmelzen, verschwören*, corroborated
+  by 083 *and* 084). Not pre-drafted: how to carve `ver-`'s polysemy is a taxonomy judgment, not a
+  dedup.
+- **A Verbs.xml separability/decomposition audit.** Four verbs surfaced whose separability marker
+  contradicts attestation (`überkochen`, `umlagern`, `umsorgen`, `unterwinden`) and one false root
+  split (`versiegen` = *ver-* + "win", handled inline via the *begleiten* rule). These drive
+  *conjugation*, so they matter more than the etymology; a scoped homograph-marker audit is the
+  proposed follow-up.
+
+Cost accounting, since the brief keeps insisting pipeline work is worth it: this window spent real
+points on the `um` investigation-and-fix, two analysis questions from Josh (government-doc yield;
+exemplar coverage), and a living session report — and it was the right trade, because the `um` fix
+alone would have silently degraded every future inseparable-um etymology that reached those senses.
+
+**Standing tally: 85 of 104 shards, 19 remaining (085–103), all contiguous.** Stopped at the ~82%
+session mark, one wave short of the budget, to keep headroom for this wrap-up rather than get caught
+mid-wave. No data decisions are open; the deferred items above are recorded in the session report and
+are not urgent. Next is shard 085 via the standard resume prompt.

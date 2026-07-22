@@ -312,6 +312,11 @@
       "verbergen",
       "verschließen",
       "verstopfen"
+    ],
+    [
+      "verbinden",
+      "verschmelzen",
+      "vermischen"
     ]
   ],
   "insep:be": [
@@ -573,6 +578,11 @@
     [
       "überwachen",
       "überblicken"
+    ],
+    [
+      "überbieten",
+      "überstimmen",
+      "überwiegen"
     ]
   ],
   "separ:mit": [
@@ -665,6 +675,11 @@
     ],
     [
       "unterbrechen"
+    ],
+    [
+      "unterschätzen",
+      "unterbieten",
+      "unterschreiten"
     ]
   ],
   "separ:hoch": [
@@ -731,16 +746,6 @@
       "umfahren",
       "umfließen",
       "umrunden"
-    ],
-    [
-      "umdrehen",
-      "umstellen",
-      "umkippen"
-    ],
-    [
-      "umwandeln",
-      "umformen",
-      "umbauen"
     ]
   ],
   "insep:voll": [

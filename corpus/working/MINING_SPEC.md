@@ -185,6 +185,9 @@ only by checking afterwards. So the constraint is narrower than "avoid these wor
 **do not present an exemplar as evidence for the sense you picked**, which is what would make the
 selection aid look like an argument. Citing a cognate or a neighbouring compound on its own
 merits is fine, and a post-hoc scan of your output against the exemplar list is cheap insurance.
+Run that scan **case-insensitively**: a sentence-initial or nominalised `Umrühren` is still the
+exemplar `umrühren`, and a case-sensitive scan misses it silently — a shard-run on 2026-07-22
+shipped a capitalised `Umrühren` past a first case-sensitive pass and caught it only on a second.
 The trap has a sharp variant worth naming: the sibling a closer most naturally reaches for to
 draw a contrast — `hinstellen` against `hinlegen`, `hintanlegen` against `hintanstellen` — is
 sometimes the exact verb that is the picked sense's exemplar, so the contrast you wanted for its
@@ -366,6 +369,15 @@ quote something broken.
 Trust the flag over the punctuation *in one specific respect*: a sentence may legitimately
 *contain* an ellipsis — the Bundestag protocols use them for interruptions — so a leading or
 trailing "…" is not evidence of truncation and its absence is not evidence of completeness.
+
+**The `contiguous` flag is not a filter, and `false` is the ordinary case — not a defect.** A
+separable verb in a main clause puts its finite stem second and strands the particle at the clause
+end (`Sie deuten die deutsche Geschichte um`), so `contiguous: false` — the two pieces recorded
+apart — is the *expected* shape for exactly the verbs this pipeline targets. It never disqualifies
+a candidate. The best candidate for a separable verb is frequently a `contiguous: false` one, while
+the `contiguous: true` survivors are the infinitive, the zu-infinitive, the participle, or a
+verb-final subordinate clause. Judge every candidate on the same completeness and length rules
+regardless of this flag; do not treat a stranded particle as a mis-split.
 
 Copy the chosen `text` and `source` into your output **programmatically, by candidate index**,
 for the same reason you splice the morphemes by script: a validator checks that your quoted

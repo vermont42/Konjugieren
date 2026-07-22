@@ -1,0 +1,328 @@
+{
+ "untersteuern": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~unter-~ + ~steuern~:\n\n- ~steuern~: Aus Mhd. ~stiuren~, aus Ahd. ~stiuren~, aus Proto-Westgermanisch *~stiurijan~, aus Urgermanisch *~stiurijaną~. Das Wurzelnomen ~Steuer~ trägt zwei Bedeutungen mit gemeinsamem Vorfahren: ~das Steuer~ („Ruder, Helm“) und ~die Steuer~ („Abgabe“, über „Stützpfosten“ und „Unterstützung“). ~Steuern~ heißt daher „lenken, navigieren, regeln“ und, archaisch oder schweizerisch, „eine Abgabe entrichten“. Verwandt mit Englisch ~steer~, Niederländisch ~stuur~.\n- ~unter-~: Aus Mhd. ~under-~, aus Ahd. ~untar-~, aus Proto-Westgermanisch *~under~, aus Urgermanisch *~under~ („unter, zwischen, unter mehreren“), aus PIE *~n̥dʰér~ („unter, unterhalb“), mit dem PIE *~h₁n̥ter~ („zwischen, unter mehreren“) im Germanischen zusammenfiel. Verwandt mit Englisch ~under~ und, über die zweite Wurzel, mit Lateinisch ~inter~. ~unter-~ drückt die wörtliche Lage unterhalb von etwas aus.\n\nIn der Fahrdynamik lenkt ein untersteuerndes Fahrzeug schwächer ein, als der Lenkeinschlag vorgibt. Das ~unter-~ trägt hier den Sinn eines Zuwenig, eines Unterschreitens des Sollwerts — wie in ~unterschätzen~ —, der von der wörtlichen Lage „unterhalb“ klar zu trennen ist.",
+   "en": "An inseparable compound of ~unter-~ + ~steuern~:\n\n- ~steuern~: From MHG ~stiuren~, from OHG ~stiuren~, from Proto-West Germanic *~stiurijan~, from Proto-Germanic *~stiurijaną~. The root noun ~Steuer~ carries two meanings sharing one ancestor: ~das Steuer~ (\"rudder, helm\") and ~die Steuer~ (\"tax,\" via \"supporting post\" and \"support\"). ~Steuern~ thus means both \"to steer, navigate, control\" and, in archaic or Swiss usage, \"to pay a tax.\" Cognate with English ~steer~, Dutch ~stuur~.\n- ~unter-~: From MHG ~under-~, from OHG ~untar-~, from Proto-West Germanic *~under~, from Proto-Germanic *~under~ (\"under, between, among\"), from PIE *~n̥dʰér~ (\"under, beneath\"), with which PIE *~h₁n̥ter~ (\"between, among\") merged in Germanic. Cognate with English ~under~ and, through the second root, with Latin ~inter~. ~unter-~ conveys literal position beneath something.\n\nIn vehicle dynamics a car that understeers turns less sharply than the steering input dictates. Here ~unter-~ carries the sense of a shortfall, a falling below a target — as in ~unterschätzen~ (\"to underestimate\") — distinct from the literal \"beneath.\""
+  },
+  "sentence": null,
+  "notes": "No candidates. unter- here marks a shortfall / below-the-norm degree (cf. unterschätzen), a sense the exemplar inventory lacks; spliced the literal 'beneath' sense and reconciled it in the closer."
+ },
+ "untertauchen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~unter-~ + ~tauchen~:\n\n- ~tauchen~: Aus Mhd. ~tūchen~, ~touchen~, aus Ahd. *~tūhhan~, aus Proto-Westgermanisch *~dūkan~, aus Urgermanisch *~dūkaną~ („untertauchen, eintauchen“), dessen weitere Etymologie unsicher ist. Ein starkes Verb der Klasse II, das im Frühneuhochdeutschen schwach wurde: bei seiner Wiedereinführung aus dem Mittel- und Niederdeutschen wurde die starke Konjugation zur schwachen regularisiert. Verwandt mit Niederländisch ~duiken~, Schwedisch ~dyka~; eine niederdeutsche Konsonantenvariante derselben Wurzel ist ~ducken~, verwandt mit Englisch ~duck~.\n- ~unter-~: Aus Mhd. ~under~, aus Ahd. ~untar~, aus Proto-Westgermanisch *~under~, aus Urgermanisch *~under~ („unter, zwischen, unter mehreren“), aus PIE *~n̥dʰér~ („unter, unterhalb“). Verwandt mit Englisch ~under~, Niederländisch ~onder~, Sanskrit ~adhás~ („unten“). Urgermanisch *~under~ scheint ein zweites, davon verschiedenes Etymon mit der Bedeutung „zwischen“ (die Quelle von Lateinisch ~inter~) aufgenommen zu haben, weshalb die Partikel bis heute beide Bedeutungen trägt. Betont und trennbar ist ~unter-~ wörtlich und räumlich: Etwas geht, wird gelegt oder wird darunter geschrieben.\n\nWörtlich taucht der Körper unter die Wasseroberfläche; übertragen heißt ~untertauchen~ auch, in der Menge zu verschwinden und für Verfolger unauffindbar zu werden.",
+   "en": "A separable compound of ~unter-~ + ~tauchen~:\n\n- ~tauchen~: From MHG ~tūchen~, ~touchen~, from OHG *~tūhhan~, from Proto-West Germanic *~dūkan~, from Proto-Germanic *~dūkaną~ (\"to duck, to dive under\"), whose further etymology is uncertain. A class II strong verb that became weak in the early modern period: when it was reintroduced from Central and Low German, the strong conjugation was regularized to weak. Cognate with Dutch ~duiken~, Swedish ~dyka~; a Low German consonant variant of the same root is ~ducken~, cognate with English ~duck~.\n- ~unter-~: From MHG ~under~, from OHG ~untar~, from Proto-West Germanic *~under~, from Proto-Germanic *~under~ (\"under, between, among\"), from PIE *~n̥dʰér~ (\"under, beneath\"). Cognate with English ~under~, Dutch ~onder~, Sanskrit ~adhás~ (\"below\"). Proto-Germanic *~under~ appears to have absorbed a second, distinct etymon meaning \"between\" (the source of Latin ~inter~), which is why the particle still carries both senses. Stressed and separable, ~unter-~ is literal and spatial: something goes, is placed, or is written underneath.\n\nLiterally the body dives beneath the surface of the water; figuratively ~untertauchen~ also means to vanish into the crowd and go to ground, untraceable by pursuers."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Wahrlich, nicht in der Sattheit soll sein Verlangen schweigen und untertauchen, sondern in der Schönheit!",
+    "source": "Nietzsche — Also sprach Zarathustra"
+   },
+   "en": {
+    "sentence": "Truly, it is not in satiety that his longing should fall silent and go under, but in beauty!",
+    "source": "Nietzsche — Also sprach Zarathustra"
+   }
+  },
+  "notes": null
+ },
+ "unterteilen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~unter-~ + ~teilen~:\n\n- ~teilen~: Aus Mhd. ~teilen~ und Ahd. ~teilen~, aus Proto-Westgermanisch *~dailijan~ („teilen, zerteilen, austeilen“), aus Urgermanisch *~dailijaną~, einem Denominativum zu *~dailiz~ („Teil, Anteil“), aus PIE *~dʰ(h₁)-oy-lo-~, versuchsweise von *~dʰeh₁-~ („setzen, legen“), wobei die genaue PIE-Ableitung unsicher ist. Verwandt mit Englisch ~deal~, Niederländisch ~delen~, Dänisch ~dele~.\n- ~unter-~: Aus Mhd. ~under-~, aus Ahd. ~untar-~, aus Proto-Westgermanisch *~under~, aus Urgermanisch *~under~ („unter, zwischen, unter mehreren“), aus PIE *~n̥dʰér~ („unter, unterhalb“), mit dem PIE *~h₁n̥ter~ („zwischen, unter mehreren“) im Germanischen zusammenfiel. Verwandt mit Englisch ~under~ und, über die zweite Wurzel, mit Lateinisch ~inter~. ~unter-~ drückt die wörtliche Lage unterhalb von etwas aus.\n\n~unterteilen~ heißt, ein Ganzes in nachgeordnete Abschnitte zu gliedern; das ~unter-~ ist hier die hierarchische Erweiterung von „unterhalb“ — die entstehenden Teile stehen eine Ebene tiefer als das Ganze.",
+   "en": "An inseparable compound of ~unter-~ + ~teilen~:\n\n- ~teilen~: From MHG ~teilen~ and OHG ~teilen~, from Proto-West Germanic *~dailijan~ (\"to divide, part, deal\"), from Proto-Germanic *~dailijaną~, a denominative of *~dailiz~ (\"part, share\"), from PIE *~dʰ(h₁)-oy-lo-~, tentatively from *~dʰeh₁-~ (\"to put, set, place\"), though the precise PIE derivation is uncertain. Cognate with English ~deal~, Dutch ~delen~, Danish ~dele~.\n- ~unter-~: From MHG ~under-~, from OHG ~untar-~, from Proto-West Germanic *~under~, from Proto-Germanic *~under~ (\"under, between, among\"), from PIE *~n̥dʰér~ (\"under, beneath\"), with which PIE *~h₁n̥ter~ (\"between, among\") merged in Germanic. Cognate with English ~under~ and, through the second root, with Latin ~inter~. ~unter-~ conveys literal position beneath something.\n\n~unterteilen~ means to break a whole into subordinate sections; here ~unter-~ is the hierarchical extension of \"beneath\" — the resulting parts sit one level below the whole."
+  },
+  "sentence": null,
+  "notes": "No candidates. unter- here is the hierarchical 'sub-' extension of 'beneath'; no exemplar matches cleanly."
+ },
+ "untertreiben": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~unter-~ + ~treiben~:\n\n- ~treiben~: Aus Mhd. ~trīben~, aus Ahd. ~trīban~, aus Proto-Westgermanisch *~drīban~, aus Urgermanisch *~drībaną~. Ein starkes Verb der Klasse I (~treiben~, ~trieb~, ~getrieben~), dessen Ablautmuster die urgermanischen Vokalstufen *ei / *ai / *i direkt spiegelt. Verwandt mit Englisch ~drive~, getrennt nur durch die hochdeutsche Lautverschiebung, sowie Niederländisch ~drijven~, Dänisch ~drive~.\n- ~unter-~: Aus Mhd. ~under-~, aus Ahd. ~untar-~, aus Proto-Westgermanisch *~under~, aus Urgermanisch *~under~ („unter, zwischen, unter mehreren“), aus PIE *~n̥dʰér~ („unter, unterhalb“), mit dem PIE *~h₁n̥ter~ („zwischen, unter mehreren“) im Germanischen zusammenfiel. Verwandt mit Englisch ~under~ und, über die zweite Wurzel, mit Lateinisch ~inter~. ~unter-~ drückt die wörtliche Lage unterhalb von etwas aus.\n\n~untertreiben~ ist das Gegenstück zu ~übertreiben~: eine Sache geringer darstellen, als sie ist. Das ~unter-~ bezeichnet auch hier ein Zuwenig — ein Unterschreiten des wahren Maßes —, nicht eine räumliche Lage.",
+   "en": "An inseparable compound of ~unter-~ + ~treiben~:\n\n- ~treiben~: From MHG ~trīben~, from OHG ~trīban~, from Proto-West Germanic *~drīban~, from Proto-Germanic *~drībaną~. A class I strong verb (~treiben~, ~trieb~, ~getrieben~) whose ablaut pattern directly reflects the Proto-Germanic vowel grades *ei / *ai / *i. Cognate with English ~drive~, separated only by the High German consonant shift, as well as Dutch ~drijven~, Danish ~drive~.\n- ~unter-~: From MHG ~under-~, from OHG ~untar-~, from Proto-West Germanic *~under~, from Proto-Germanic *~under~ (\"under, between, among\"), from PIE *~n̥dʰér~ (\"under, beneath\"), with which PIE *~h₁n̥ter~ (\"between, among\") merged in Germanic. Cognate with English ~under~ and, through the second root, with Latin ~inter~. ~unter-~ conveys literal position beneath something.\n\n~untertreiben~ is the counterpart of ~übertreiben~ (\"to exaggerate\"): to present something as less than it is. Here too ~unter-~ marks a shortfall — a falling short of the true measure — rather than a spatial position."
+  },
+  "sentence": null,
+  "notes": "No candidates. unter- here is the 'insufficiently / below the true measure' degree sense (counterpart of über-), absent from the exemplar inventory; spliced the literal 'beneath' sense and corrected it in the closer."
+ },
+ "untervermieten": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~unter-~ + ~ver-~ + ~mieten~:\n\n- ~mieten~: Aus mhd. ~mieten~, aus ahd. ~mietan~, einem Denominativum vom Substantiv ~Miete~ („Miete, Lohn“), das über mhd. ~miete~ und ahd. ~mieta~ auf proto-westgermanisch *~miʀdu~, urgermanisch *~mizdō~ und PIE *~misdʰéh₂~ („Belohnung, Entgelt“) zurückgeht. Verwandt mit gotisch ~mizdo~, englisch ~meed~ (archaisch), griechisch ~misthos~.\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ drückt Entfernung oder Wegbewegung aus, aus dem älteren räumlichen Sinn des Präfixes.\n- ~unter-~: Aus Mhd. ~under~, aus Ahd. ~untar~, aus Proto-Westgermanisch *~under~, aus Urgermanisch *~under~ („unter, zwischen, unter mehreren“), aus PIE *~n̥dʰér~ („unter, unterhalb“). Verwandt mit Englisch ~under~, Niederländisch ~onder~, Sanskrit ~adhás~ („unten“). Urgermanisch *~under~ scheint ein zweites, davon verschiedenes Etymon mit der Bedeutung „zwischen“ (die Quelle von Lateinisch ~inter~) aufgenommen zu haben, weshalb die Partikel bis heute beide Bedeutungen trägt. Bei Verben des Wohnens bedeutet es, jemanden unter ein Dach zu bringen — in Obhut oder Unterkunft.\n\n~vermieten~ heißt, einem Mieter Wohnraum gegen Entgelt zu überlassen; das vorangestellte ~unter-~ macht daraus die nachgeordnete Weitergabe — der Untermieter bezieht seinen Raum vom Mieter, nicht vom Eigentümer.",
+   "en": "A separable compound of ~unter-~ + ~ver-~ + ~mieten~:\n\n- ~mieten~: From MHG ~mieten~, from OHG ~mietan~, a denominative of the noun ~Miete~ (\"rent, reward\"), which via MHG ~miete~ and OHG ~mieta~ goes back to Proto-West Germanic *~miʀdu~, Proto-Germanic *~mizdō~, and PIE *~misdʰéh₂~ (\"reward, compensation\"). Cognate with Gothic ~mizdo~, English ~meed~ (archaic), Greek ~misthos~.\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ conveys removal or motion away, from the prefix's older spatial sense.\n- ~unter-~: From MHG ~under~, from OHG ~untar~, from Proto-West Germanic *~under~, from Proto-Germanic *~under~ (\"under, between, among\"), from PIE *~n̥dʰér~ (\"under, beneath\"). Cognate with English ~under~, Dutch ~onder~, Sanskrit ~adhás~ (\"below\"). Proto-Germanic *~under~ appears to have absorbed a second, distinct etymon meaning \"between\" (the source of Latin ~inter~), which is why the particle still carries both senses. With verbs of housing it means bringing someone under a roof — into shelter or accommodation.\n\n~vermieten~ is to let living space to a tenant for payment; the leading ~unter-~ turns this into a second-order handing-on — the subtenant takes the space from the tenant, not from the owner."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "unterwandern": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~unter-~ + ~wandern~:\n\n- ~wandern~: Aus Mhd. ~wandern~, aus Ahd. *~wantarōn~, aus proto-westgermanisch *~wandarōn~, gebildet aus *~wandōn~ („wenden“) mit dem Frequentativsuffix *~-rōn~ — nicht eine einzelne Reise, sondern wiederholtes Umherziehen —, aus urgermanisch *~wandōną~, aus PIE *~wendʰ-~ („drehen, winden“). Verwandt mit englisch ~wander~, dänisch ~vandre~, schwedisch ~vandra~.\n- ~unter-~: Aus Mhd. ~under-~, aus Ahd. ~untar-~, aus Proto-Westgermanisch *~under~, aus Urgermanisch *~under~ („unter, zwischen, unter mehreren“), aus PIE *~n̥dʰér~ („unter, unterhalb“), mit dem PIE *~h₁n̥ter~ („zwischen, unter mehreren“) im Germanischen zusammenfiel. Verwandt mit Englisch ~under~ und, über die zweite Wurzel, mit Lateinisch ~inter~. ~unter-~ drückt ein Dazwischen oder Inmitten aus, aus der damit verschmolzenen Wurzel für „zwischen“.\n\n~unterwandern~ heißt, allmählich und unauffällig in eine Gruppe einzudringen, um sie von innen zu verändern — das ~wandern~ vollzieht sich verdeckt zwischen den Reihen der Unterwanderten.",
+   "en": "An inseparable compound of ~unter-~ + ~wandern~:\n\n- ~wandern~: From MHG ~wandern~, from OHG *~wantarōn~, from Proto-West Germanic *~wandarōn~, formed from *~wandōn~ (\"to turn\") with the frequentative suffix *~-rōn~ — not a single journey but repeated, meandering motion — from Proto-Germanic *~wandōną~, from PIE *~wendʰ-~ (\"to turn, to wind\"). Cognate with English ~wander~, Danish ~vandre~, Swedish ~vandra~.\n- ~unter-~: From MHG ~under-~, from OHG ~untar-~, from Proto-West Germanic *~under~, from Proto-Germanic *~under~ (\"under, between, among\"), from PIE *~n̥dʰér~ (\"under, beneath\"), with which PIE *~h₁n̥ter~ (\"between, among\") merged in Germanic. Cognate with English ~under~ and, through the second root, with Latin ~inter~. ~unter-~ conveys being between or among, from the merged root meaning \"between\".\n\n~unterwandern~ means to work one's way gradually and unobtrusively into a group in order to change it from within — the \"wandering\" happens covertly, in among the ranks it penetrates."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Deswegen brauchen wir eine gesellschaftliche Debatte, brauchen stärkere Institutionen gegen diese Unterwanderung und brauchen mehr Unabhängigkeit und eine breite Brust, wenn es darum geht, zu verhindern, dass Putin unsere demokratischen Prozesse unterwandert.",
+    "source": "Bundestag — Plenarprotokoll 20/210"
+   },
+   "en": {
+    "sentence": "That is why we need a public debate, need stronger institutions against this infiltration, and need more independence and a broad chest when it comes to preventing Putin from infiltrating our democratic processes.",
+    "source": "Bundestag — Plenarprotokoll 20/210"
+   }
+  },
+  "notes": null
+ },
+ "unterweisen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~unter-~ + ~weisen~:\n\n- ~weisen~: Aus Mhd. ~wīsen~, aus Ahd. ~wīsen~, aus proto-westgermanisch *~wīsijan~, aus urgermanisch *~wīsijaną~, einem denominalen Verb zu *~wīsaz~ („weise, wissend“), aus PIE *~weyd-so-s~ („kundig“), aus *~weyd-~ („sehen, wissen“). Ein starkes Verb der Klasse I; die Bedeutungen „zeigen“ und „verweisen“ lenken beide Wissen oder Aufmerksamkeit. Verwandt mit englisch ~wise~, ~wit~, ~wizard~.\n- ~unter-~: Aus Mhd. ~under-~, aus Ahd. ~untar-~, aus Proto-Westgermanisch *~under~, aus Urgermanisch *~under~ („unter, zwischen, unter mehreren“), aus PIE *~n̥dʰér~ („unter, unterhalb“), mit dem PIE *~h₁n̥ter~ („zwischen, unter mehreren“) im Germanischen zusammenfiel. Verwandt mit Englisch ~under~ und, über die zweite Wurzel, mit Lateinisch ~inter~. ~unter-~ drückt Stützung oder Unterhaltung von unten aus.\n\n~unterweisen~ heißt belehren, in etwas unterrichten; das ~unter-~ ist hier lexikalisiert im didaktischen Sinn, den es mit ~unterrichten~ teilt, und lässt sich keiner der geläufigen Gebrauchsweisen zwanglos zuordnen.",
+   "en": "An inseparable compound of ~unter-~ + ~weisen~:\n\n- ~weisen~: From MHG ~wīsen~, from OHG ~wīsen~, from Proto-West Germanic *~wīsijan~, from Proto-Germanic *~wīsijaną~, a denominative verb from *~wīsaz~ (\"wise, knowing\"), from PIE *~weyd-so-s~ (\"knowledgeable\"), from *~weyd-~ (\"to see, know\"). A class I strong verb; its senses \"to show, point\" and \"to direct, expel\" both direct knowledge or attention. Cognate with English ~wise~, ~wit~, ~wizard~.\n- ~unter-~: From MHG ~under-~, from OHG ~untar-~, from Proto-West Germanic *~under~, from Proto-Germanic *~under~ (\"under, between, among\"), from PIE *~n̥dʰér~ (\"under, beneath\"), with which PIE *~h₁n̥ter~ (\"between, among\") merged in Germanic. Cognate with English ~under~ and, through the second root, with Latin ~inter~. ~unter-~ conveys support or sustenance from below.\n\n~unterweisen~ means to instruct, to teach someone in something; here ~unter-~ is lexicalized in the didactic sense it shares with ~unterrichten~, and sorts cleanly under none of its ordinary uses."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Und hat ihm ins Herz gegeben, zu unterweisen, ihm und Oholiab, dem Sohn Ahisamachs, vom Stamme Dan.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "And he has put it into his heart to instruct, both him and Oholiab, the son of Ahisamach, of the tribe of Dan.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": "unter- here is lexicalized in the didactic sense shared with unterrichten and matches no exemplar cleanly; spliced the 'support from below' sense as nearest."
+ },
+ "unterwerfen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~unter-~ + ~werfen~:\n\n- ~werfen~: Aus Mhd. ~wërfen~, aus Ahd. ~werfan~, aus proto-westgermanisch *~werpan~, aus urgermanisch *~werpaną~, aus PIE *~wergʷ-~ („biegen, drehen, verzerren“). Ein starkes Verb der Klasse III (~wirft~, ~warf~, ~geworfen~). Verwandt mit englisch ~warp~, niederländisch ~werpen~, altsächsisch ~werpan~, altnordisch ~verpa~, gotisch ~wairpan~.\n- ~unter-~: Aus Mhd. ~under-~, aus Ahd. ~untar-~, aus Proto-Westgermanisch *~under~, aus Urgermanisch *~under~ („unter, zwischen, unter mehreren“), aus PIE *~n̥dʰér~ („unter, unterhalb“), mit dem PIE *~h₁n̥ter~ („zwischen, unter mehreren“) im Germanischen zusammenfiel. Verwandt mit Englisch ~under~ und, über die zweite Wurzel, mit Lateinisch ~inter~. ~unter-~ drückt Unterwerfung oder Unterordnung unter eine Autorität aus.\n\n~unterwerfen~ bringt jemanden unter fremde Herrschaft — buchstäblich wird er „unter den Wurf“ gebracht; reflexiv heißt ~sich unterwerfen~, sich einer Autorität zu beugen.",
+   "en": "An inseparable compound of ~unter-~ + ~werfen~:\n\n- ~werfen~: From MHG ~wërfen~, from OHG ~werfan~, from Proto-West Germanic *~werpan~, from Proto-Germanic *~werpaną~, from PIE *~wergʷ-~ (\"to bend, spin, warp\"). A class III strong verb (~wirft~, ~warf~, ~geworfen~). Cognate with English ~warp~, Dutch ~werpen~, Old Saxon ~werpan~, Old Norse ~verpa~, Gothic ~wairpan~.\n- ~unter-~: From MHG ~under-~, from OHG ~untar-~, from Proto-West Germanic *~under~, from Proto-Germanic *~under~ (\"under, between, among\"), from PIE *~n̥dʰér~ (\"under, beneath\"), with which PIE *~h₁n̥ter~ (\"between, among\") merged in Germanic. Cognate with English ~under~ and, through the second root, with Latin ~inter~. ~unter-~ conveys subjection or subordination to an authority.\n\n~unterwerfen~ brings someone under another's dominion — literally cast \"under the throw\"; reflexively, ~sich unterwerfen~ is to bow to an authority."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Unserm stärksten Triebe, dem Tyrannen in uns, unterwirft sich nicht nur unsre Vernunft, sondern auch unser Gewissen.",
+    "source": "Nietzsche — Jenseits von Gut und Böse"
+   },
+   "en": {
+    "sentence": "To our strongest drive, the tyrant within us, not only our reason submits but also our conscience.",
+    "source": "Nietzsche — Jenseits von Gut und Böse"
+   }
+  },
+  "notes": null
+ },
+ "unterwinden": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~unter-~ + ~winden~:\n\n- ~winden~: Aus Mhd. ~winden~, aus Ahd. ~wintan~, aus urgermanisch *~windaną~ („winden, wickeln“), aus PIE *~wendʰ-~ („drehen, winden, flechten“). Verwandt mit englisch ~wind~ (das Verb, „aufspulen“), niederländisch ~winden~, dänisch ~vinde~.\n- ~unter-~: Aus Mhd. ~under~, aus Ahd. ~untar~, aus Proto-Westgermanisch *~under~, aus Urgermanisch *~under~ („unter, zwischen, unter mehreren“), aus PIE *~n̥dʰér~ („unter, unterhalb“). Verwandt mit Englisch ~under~, Niederländisch ~onder~, Sanskrit ~adhás~ („unten“). Urgermanisch *~under~ scheint ein zweites, davon verschiedenes Etymon mit der Bedeutung „zwischen“ (die Quelle von Lateinisch ~inter~) aufgenommen zu haben, weshalb die Partikel bis heute beide Bedeutungen trägt. Das unbetonte untrennbare ~unter-~ ist ein anderes Wesen und nimmt abstrakte Bedeutungen von Stützung, Unterwerfung und Unterbrechung an.\n\nDas reflexive ~sich unterwinden~ „etwas auf sich nehmen, sich erdreisten“ ist heute veraltet und lebt fast nur in Luthers Sprache fort. Obwohl das Kompositum hier als trennbar geführt wird, verhält es sich in der Überlieferung untrennbar (~unterwinde sich~, ~unterwanden sich~) — eben jener unbetonte, abstrakte Gebrauch, den die Bedeutung oben nennt.",
+   "en": "A separable compound of ~unter-~ + ~winden~:\n\n- ~winden~: From MHG ~winden~, from OHG ~wintan~, from Proto-Germanic *~windaną~ (\"to wind, to wrap\"), from PIE *~wendʰ-~ (\"to turn, wind, braid\"). Cognate with English ~wind~ (the verb, \"to coil\"), Dutch ~winden~, Danish ~vinde~.\n- ~unter-~: From MHG ~under~, from OHG ~untar~, from Proto-West Germanic *~under~, from Proto-Germanic *~under~ (\"under, between, among\"), from PIE *~n̥dʰér~ (\"under, beneath\"). Cognate with English ~under~, Dutch ~onder~, Sanskrit ~adhás~ (\"below\"). Proto-Germanic *~under~ appears to have absorbed a second, distinct etymon meaning \"between\" (the source of Latin ~inter~), which is why the particle still carries both senses. The unstressed inseparable ~unter-~ is a different creature, taking abstract senses of support, subjection, and interruption.\n\nThe reflexive ~sich unterwinden~ (\"to take something upon oneself, to presume\") is archaic today and survives almost only in Luther's German. Though the compound is filed here as separable, in attestation it behaves inseparably (~unterwinde sich~, ~unterwanden sich~) — precisely the unstressed, abstract use the bullet above names."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Liebe Brüder, unterwinde sich nicht jedermann, Lehrer zu sein, und wisset, daß wir desto mehr Urteil empfangen werden.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "Dear brothers, let not everyone take it upon himself to be a teacher, and know that we shall receive all the greater judgment.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": "Shard tags this separable, but the Luther attestations behave inseparably (unterwinde sich, unterwanden sich), matching the abstract inseparable use; flagged in the closer."
+ },
+ "verachten": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~achten~:\n\n- ~achten~: Aus Mhd. ~ahten~ („bedenken, beachten“), aus Ahd. ~ahtōn~, aus Proto-Westgermanisch *~ahtōn~, einem Denominativum zu *~ahtu~ („Überlegung, Aufmerksamkeit“), vorgermanisch ungesicherter Herkunft — möglicherweise zu Urgermanisch *~ahjaną~ („denken“), mit PIE *~h₃ekʷ-~ („sehen“) verglichen, doch umstritten. Verwandt mit Niederländisch ~achten~, Englisch ~aught~.\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ kehrt die Grundhandlung um oder negiert sie.\n\n~achten~ heißt schätzen, hochachten; ~verachten~ kehrt dies ins Gegenteil — jemanden als wertlos ansehen.",
+   "en": "An inseparable compound of ~ver-~ + ~achten~:\n\n- ~achten~: From MHG ~ahten~ (\"to consider, heed\"), from OHG ~ahtōn~, from Proto-West Germanic *~ahtōn~, a denominative of *~ahtu~ (\"consideration, attention\"), of uncertain pre-Germanic origin — possibly to Proto-Germanic *~ahjaną~ (\"to think\"), compared to PIE *~h₃ekʷ-~ (\"to see\"), though debated. Cognate with Dutch ~achten~, English ~aught~.\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ reverses or negates the base action.\n\n~achten~ is to esteem, to hold in regard; ~verachten~ turns this into its opposite — to regard someone as worthless."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Der König aber ward zornig und sprach: »Wer dir geholfen hat, als du in der Not warst, den sollst du hernach nicht verachten.",
+    "source": "Grimm — Märchen"
+   },
+   "en": {
+    "sentence": "But the king grew angry and said: \"Whoever helped you when you were in need, him you shall not afterward despise.\"",
+    "source": "Grimm — Märchen"
+   }
+  },
+  "notes": "Rank-0 (Nietzsche) has an OCR corruption ('die Weit' for 'die Zeit') and rank-1 (Goethe) needs its antecedent and is fragmentary; took the clean rank-2 Grimm sentence."
+ },
+ "veranschlagen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~anschlagen~:\n\n- ~anschlagen~: Eine Zusammensetzung aus ~an-~ + ~schlagen~. ~schlagen~ aus Mhd. ~slahen~, aus Ahd. ~slahan~, aus Proto-Westgermanisch *~slahan~, aus Urgermanisch *~slahaną~, offenbar lautmalerisch; ein starkes Verb der Klasse VI (~schlagen~, ~schlug~, ~geschlagen~). Das Präfix ~an-~, aus Ahd. ~ana~, aus Urgermanisch *~ana~, aus PIE *~h₂en-~ („auf, an“), verwandt mit Englisch ~on~, steuert den Sinn des Schlagens auf eine Fläche bei.\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ verstärkt das Grundverb oder führt seine Handlung zur Vollendung.\n\n~veranschlagen~ heißt, einen Betrag im Voraus ansetzen und rechnerisch festhalten; das ~ver-~ trägt die Handlung des Anschlagens — des Bewertens — zu einem abschließenden Ansatz durch.",
+   "en": "An inseparable compound of ~ver-~ + ~anschlagen~:\n\n- ~anschlagen~: A compound of ~an-~ + ~schlagen~. ~schlagen~ is from MHG ~slahen~, from OHG ~slahan~, from Proto-West Germanic *~slahan~, from Proto-Germanic *~slahaną~, apparently onomatopoeic; a class VI strong verb (~schlagen~, ~schlug~, ~geschlagen~). The prefix ~an-~, from OHG ~ana~, from Proto-Germanic *~ana~, from PIE *~h₂en-~ (\"on, onto\"), cognate with English ~on~, adds the sense of striking onto a surface.\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ intensifies the base verb or carries its action through to completion.\n\n~veranschlagen~ is to set an amount in advance and fix it by calculation; ~ver-~ carries the act of assessing through to a settled reckoning."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "verantworten": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~antworten~:\n\n- ~antworten~: Aus Mhd. ~antwürten~, aus Ahd. ~antwurten~, aus Urgermanisch *~andawurdijaną~, einem Denominativum von *~andawurdiją~ („Antwort“), aus *~anda-~ („gegen, als Erwiderung“) + *~wurdą~ („Wort“); *~anda-~ aus PIE *~h₂ent-~ („Gesicht, Vorderseite, Gegenüber“) — Englisch ~answer~ ist gleich gebaut. Verwandt mit Niederländisch ~antwoorden~, Afrikaans ~antwoord~.\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ verstärkt das Grundverb oder führt seine Handlung zur Vollendung.\n\n~antworten~ ist die bloße Erwiderung; ~verantworten~ heißt, für eine Handlung einzustehen und Rede und Antwort zu geben — die Antwort wird zur Rechenschaft geführt.",
+   "en": "An inseparable compound of ~ver-~ + ~antworten~:\n\n- ~antworten~: From MHG ~antwürten~, from OHG ~antwurten~, from Proto-Germanic *~andawurdijaną~, a denominative of *~andawurdiją~ (\"answer\"), from *~anda-~ (\"against, in return\") + *~wurdą~ (\"word\"); *~anda-~ from PIE *~h₂ent-~ (\"face, front, opposite\") — English ~answer~ is built the same way. Cognate with Dutch ~antwoorden~, Afrikaans ~antwoord~.\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ intensifies the base verb or carries its action through to completion.\n\n~antworten~ is the plain reply; ~verantworten~ is to answer for an action, to give account of it — the answer carried through into accountability."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Du sollst nicht folgen der Menge zum Bösen und nicht also verantworten vor Gericht, daß du der Menge nach vom Rechten weichest.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "You shall not follow the multitude to do evil, nor so testify before the court as to swerve from the right by siding with the multitude.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": null
+ },
+ "verärgern": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~ärgern~:\n\n- ~ärgern~: Aus Mhd. ~argern~ („verschlechtern“), aus Ahd. ~argerōn~, vom Adjektiv ~arg~ („schlecht, böse“), aus Ahd. ~arg~, proto-westgermanisch *~arg~, urgermanisch *~argaz~, aus PIE *~h₃erǵʰ-~ („sich begatten; leidenschaftlich“). Die Bedeutung milderte sich zu „verärgern, reizen“. Verwandt mit englisch ~eerie~, niederländisch ~erg~ („schlimm“), litauisch ~eržùs~.\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ verstärkt das Grundverb oder führt seine Handlung zur Vollendung.\n\n~ärgern~ reizt; ~verärgern~ verstärkt es zu nachhaltigem Groll — jemand bleibt verärgert zurück.",
+   "en": "An inseparable compound of ~ver-~ + ~ärgern~:\n\n- ~ärgern~: From MHG ~argern~ (\"to worsen\"), from OHG ~argerōn~, from the adjective ~arg~ (\"bad, wicked\"), from OHG ~arg~, Proto-West Germanic *~arg~, Proto-Germanic *~argaz~, from PIE *~h₃erǵʰ-~ (\"to copulate; ardent\"). The sense softened to \"to annoy, to irritate.\" Cognate with English ~eerie~, Dutch ~erg~ (\"bad, severe\"), Lithuanian ~eržùs~.\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ intensifies the base verb or carries its action through to completion.\n\n~ärgern~ irritates; ~verärgern~ intensifies it into lasting displeasure — one is left verärgert, put out."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "veräußern": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~äußern~:\n\n- ~äußern~: Aus Mhd. ~ūzeren~ („herausbringen, ausdrücken“), deadjektivisch von ~äußer~, dem Komparativ von ~aus~ / ~außen~, aus Mhd. ~ūȥ~, Ahd. ~ūȥ~, proto-westgermanisch *~ūt~, urgermanisch *~ūt~, aus PIE *~úd~ („aufwärts, fort, hinaus“) — Inneres nach außen bringen. Eine Dublette von englisch ~out~; verwandt mit englisch ~utter~, niederländisch ~uit~.\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ drückt Entfernung oder Wegbewegung aus, aus dem älteren räumlichen Sinn des Präfixes.\n\n~äußern~ heißt eigentlich „nach außen bringen“; ~veräußern~ ist der rechtssprachliche Ausdruck dafür, einen Besitz aus dem eigenen Vermögen fortzugeben und abzutreten.",
+   "en": "An inseparable compound of ~ver-~ + ~äußern~:\n\n- ~äußern~: From MHG ~ūzeren~ (\"to bring out, express\"), deadjectival from ~äußer~ (\"outer\"), the comparative of ~aus~ / ~außen~, from MHG ~ūȥ~, OHG ~ūȥ~, Proto-West Germanic *~ūt~, Proto-Germanic *~ūt~, from PIE *~úd~ (\"upwards, away, out\") — bringing the inner outward. A doublet of English ~out~; related to English ~utter~, Dutch ~uit~.\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ conveys removal or motion away, from the prefix's older spatial sense.\n\n~äußern~ properly means \"to bring outward\"; ~veräußern~ is the legal term for parting with a possession, transferring it out of one's own estate."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "verbeißen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~beißen~:\n\n- ~beißen~: Aus Mhd. ~bīzen~, aus Ahd. ~bīzan~, aus Proto-Westgermanisch *~bītan~, aus Urgermanisch *~bītaną~, aus PIE *~bʰeyd-~ („spalten“). Ein starkes Verb der Klasse I (~beißen~, ~biss~, ~gebissen~). Verwandt mit Englisch ~bite~, Niederländisch ~bijten~, Schwedisch ~bita~; ~bitter~ ist das alte Partizipialadjektiv dieses Verbs, wörtlich „beißend“.\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ verstärkt das Grundverb oder führt seine Handlung zur Vollendung.\n\n~sich verbeißen~ heißt, sich verbissen in etwas festzubeißen und nicht mehr abzulassen; in „sich das Lachen verbeißen“ tritt daneben die Bedeutung des Zurückhaltens, des Zubeißens gegen den eigenen Ausdruck.",
+   "en": "An inseparable compound of ~ver-~ + ~beißen~:\n\n- ~beißen~: From MHG ~bīzen~, from OHG ~bīzan~, from Proto-West Germanic *~bītan~, from Proto-Germanic *~bītaną~, from PIE *~bʰeyd-~ (\"to split\"). A class I strong verb (~beißen~, ~biss~, ~gebissen~). Cognate with English ~bite~, Dutch ~bijten~, Swedish ~bita~; ~bitter~ is this verb's old participial adjective, literally \"biting.\"\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ intensifies the base verb or carries its action through to completion.\n\n~sich verbeißen~ is to sink one's teeth in with dogged persistence and not let go; alongside it, in \"sich das Lachen verbeißen\" (\"to stifle a laugh\"), sits the sense of biting something back, holding it shut."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "verbiegen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~biegen~:\n\n- ~biegen~: Aus Mhd. ~biegen~, aus Ahd. ~biogan~, aus Proto-Westgermanisch *~beugan~, aus Urgermanisch *~beuganą~, aus PIE *~bʰewgʰ-~ („biegen“). Ein starkes Verb der Klasse II (~biegen~, ~bog~, ~gebogen~). Verwandt mit Englisch ~bow~ und ~elbow~ („Armbiegung“), Niederländisch ~buigen~, Sanskrit ~bhujáti~ („biegen, krümmen“).\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ kennzeichnet die Handlung als falsch, fehlgeleitet oder misslungen.\n\n~biegen~ ist das schlichte Krümmen; ~verbiegen~ krümmt aus der rechten Form heraus — etwas wird verformt, und im übertragenen ~sich verbiegen~ gibt einer seine Grundsätze preis.",
+   "en": "An inseparable compound of ~ver-~ + ~biegen~:\n\n- ~biegen~: From MHG ~biegen~, from OHG ~biogan~, from Proto-West Germanic *~beugan~, from Proto-Germanic *~beuganą~, from PIE *~bʰewgʰ-~ (\"to bend\"). A class II strong verb (~biegen~, ~bog~, ~gebogen~). Cognate with English ~bow~ and ~elbow~ (\"arm-bend\"), Dutch ~buigen~, Sanskrit ~bhujáti~ (\"to bend, curve\").\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ marks the action as going wrong, astray, or amiss.\n\n~biegen~ is plain bending; ~verbiegen~ bends something out of true — it becomes deformed, and figuratively ~sich verbiegen~ is to abandon one's principles to fit in."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Doch lassen Sie da draußen sich nicht täuschen: Die Union ist und bleibt eine Partei der Heuchler, die sich nach Belieben verbiegt – ohne Prinzipien, ohne Rückgrat und ohne Ehrlichkeit.",
+    "source": "Bundestag — Plenarprotokoll 20/210"
+   },
+   "en": {
+    "sentence": "But do not let yourselves out there be fooled: the Union is and remains a party of hypocrites who contort themselves at will — without principles, without backbone, and without honesty.",
+    "source": "Bundestag — Plenarprotokoll 20/210"
+   }
+  },
+  "notes": "Rank-0 (Nietzsche 'verbogen') is adjectival, paired with the pure adjective 'verlogen'; took rank-1, a figurative reflexive finite use."
+ },
+ "verbilden": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~bilden~:\n\n- ~bilden~: Aus Mhd. ~bilden~, einer Verschmelzung zweier althochdeutscher Verben: ~biliden~ („zu einem Bild formen“), aus Proto-Westgermanisch *~biliþijan~, und ~bilidōn~ („nachahmen“), aus *~biliþōn~; beide zum Substantiv *~biliþī~ (woraus ~Bild~), dessen vorgermanischer Ursprung unklar ist, ohne gesicherte PIE-Etymologie. Verwandt mit Niederländisch ~beelden~, Schwedisch ~bilda~.\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ kennzeichnet die Handlung als falsch, fehlgeleitet oder misslungen.\n\n~bilden~ formt und erzieht; ~verbilden~ erzieht in die falsche Richtung — die Bildung schlägt fehl und prägt verkehrt.",
+   "en": "An inseparable compound of ~ver-~ + ~bilden~:\n\n- ~bilden~: From MHG ~bilden~, a merger of two Old High German verbs: ~biliden~ (\"to form into an image\"), from Proto-West Germanic *~biliþijan~, and ~bilidōn~ (\"to copy, represent\"), from *~biliþōn~; both from the noun *~biliþī~ (whence ~Bild~), whose pre-Germanic origin is obscure, with no secure PIE etymology. Cognate with Dutch ~beelden~, Swedish ~bilda~.\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ marks the action as going wrong, astray, or amiss.\n\n~bilden~ forms and educates; ~verbilden~ shapes in the wrong direction — the schooling miscarries and molds amiss."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "verbitten": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~bitten~:\n\n- ~bitten~: Aus Mhd. ~bitten~, aus Ahd. ~bitten~, aus Proto-Westgermanisch *~biddjan~, aus Urgermanisch *~bidjaną~, aus PIE *~gʷʰedʰ-~ („erbitten, anflehen“). Ein starkes Verb der Klasse V; das Substantiv ~Bitte~ und die Partikel ~bitte~ stammen von derselben Wurzel. Verwandt mit Englisch ~bid~, Niederländisch ~bidden~ („beten“), Dänisch ~bede~.\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ kehrt die Grundhandlung um oder negiert sie.\n\n~bitten~ erbittet; das reflexive ~sich etwas verbitten~ kehrt die Bitte um zur entschiedenen Zurückweisung — man verlangt ausdrücklich, dass etwas unterbleibe.",
+   "en": "An inseparable compound of ~ver-~ + ~bitten~:\n\n- ~bitten~: From MHG ~bitten~, from OHG ~bitten~, from Proto-West Germanic *~biddjan~, from Proto-Germanic *~bidjaną~, from PIE *~gʷʰedʰ-~ (\"to ask for, beseech\"). A class V strong verb; the noun ~Bitte~ and the particle ~bitte~ come from the same root. Cognate with English ~bid~, Dutch ~bidden~ (\"to pray\"), Danish ~bede~.\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ reverses or negates the base action.\n\n~bitten~ is to request; the reflexive ~sich etwas verbitten~ turns the request on its head into a firm refusal — one demands expressly that something not be done."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Und Sie waren bereits weit über Ihre Redezeit; deswegen verbitte ich mir das.",
+    "source": "Bundestag — Plenarprotokoll 20/207"
+   },
+   "en": {
+    "sentence": "And you were already well over your speaking time; that is why I will not stand for it.",
+    "source": "Bundestag — Plenarprotokoll 20/207"
+   }
+  },
+  "notes": "ver- here negates/reverses the base 'ask' into a refusal; no exemplar of that sense matches cleanly."
+ },
+ "verbleichen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~bleichen~:\n\n- ~bleichen~: Eine Verschmelzung zweier Verben: des starken intransitiven Mhd. ~blīchen~ („glänzen, erbleichen“), aus Ahd. ~blīhhan~, aus Proto-Westgermanisch *~blīkan~, aus Urgermanisch *~blīkaną~; und seines schwachen Kausativs Mhd. ~bleichen~ („bleich machen“), aus Ahd. ~bleihhen~, aus Urgermanisch *~blaikijaną~. Beide aus PIE *~bʰleyg-~ („glänzen“). Heute schwach konjugiert, das starke Partizip ~geblichen~ nur noch am Rande. Verwandt mit Englisch ~bleach~ und ~bleak~, Niederländisch ~bleken~.\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ bezeichnet ein allmähliches Vergehen — der Vorgang läuft von selbst aus, bis nichts mehr von ihm übrig ist.\n\n~bleichen~ ist das Blasswerden; ~verbleichen~ trägt es zu Ende — die Farbe schwindet ganz dahin, und in älterer Sprache heißt ~verbleichen~ geradezu „sterben“.",
+   "en": "An inseparable compound of ~ver-~ + ~bleichen~:\n\n- ~bleichen~: A merger of two verbs: the strong intransitive MHG ~blīchen~ (\"to shine, gleam, grow pale\"), from OHG ~blīhhan~, from Proto-West Germanic *~blīkan~, from Proto-Germanic *~blīkaną~; and its weak causative MHG ~bleichen~ (\"to make pale\"), from OHG ~bleihhen~, from Proto-Germanic *~blaikijaną~. Both from PIE *~bʰleyg-~ (\"to shine\"). Modern German conjugates it weak, the strong participle ~geblichen~ surviving only marginally. Cognate with English ~bleach~ and ~bleak~, Dutch ~bleken~.\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ marks a gradual dying away — the process runs itself out until nothing of it remains.\n\n~bleichen~ is growing pale; ~verbleichen~ carries it to its end — the color dies away entirely, and in older usage ~verbleichen~ meant outright \"to die.\""
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Aber wie schnell verbleicht jetzt gerade dies Gefühl, wie schwer ist heute schon das Wissen um dies Gefühl, - wie fremd klingt die Sprache jener Rousseau, Schiller, Shelley, Byron an unser Ohr, in denen zusammen das selbe Schicksal Europa's den Weg zum Wort gefunden hat, das in Beethoven zu singen wusste!",
+    "source": "Nietzsche — Jenseits von Gut und Böse"
+   },
+   "en": {
+    "sentence": "But how quickly this feeling fades just now, how hard already today is the very knowledge of this feeling — how strange to our ear sounds the language of those Rousseau, Schiller, Shelley, Byron, in whom together the same fate of Europe found its way to words, the fate that in Beethoven knew how to sing!",
+    "source": "Nietzsche — Jenseits von Gut und Böse"
+   }
+  },
+  "notes": "Sole candidate is a 50-word Nietzsche period; under the 65-word ceiling for a sole candidate, so shipped."
+ },
+ "verbraten": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~braten~:\n\n- ~braten~: Aus Mhd. ~brāten~, aus Ahd. ~brātan~, aus Proto-Westgermanisch *~brādan~, aus Urgermanisch *~brēdaną~ („braten, rösten“), aus PIE *~bʰreh₁-~ („erhitzen, sieden, brennen“) — der Wurzel hinter ~brennen~ und Englisch ~brew~. Ein starkes Verb der Klasse VII (~braten~, ~briet~, ~gebraten~). Verwandt mit Englisch ~brawn~ (über Altfranzösisch entlehnt), Niederländisch ~braden~, Altenglisch ~brǣdan~.\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ drückt Verbrauchen, Aufzehren oder Aufbrauchen aus.\n\nWörtlich heißt ~verbraten~, Speisen durch zu langes Braten verderben; umgangssprachlich verbrät man Geld oder Zeit — beides wird nutzlos aufgebraucht.",
+   "en": "An inseparable compound of ~ver-~ + ~braten~:\n\n- ~braten~: From MHG ~brāten~, from OHG ~brātan~, from Proto-West Germanic *~brādan~, from Proto-Germanic *~brēdaną~ (\"to roast\"), from PIE *~bʰreh₁-~ (\"to heat, boil, burn\") — the root behind ~brennen~ and English ~brew~. A class VII strong verb (~braten~, ~briet~, ~gebraten~). Cognate with English ~brawn~ (borrowed via Old French), Dutch ~braden~, Old English ~brǣdan~.\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ conveys using up, consuming, or wearing away.\n\nLiterally ~verbraten~ is to ruin food by frying it too long; colloquially one ~verbrät~ money or time — either way something is uselessly used up."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Da ist so viel Geld verbraten worden, und es ist immer noch nicht lauffähig.",
+    "source": "Bundestag — Plenarprotokoll 20/210"
+   },
+   "en": {
+    "sentence": "So much money has been blown there, and it is still not up and running.",
+    "source": "Bundestag — Plenarprotokoll 20/210"
+   }
+  },
+  "notes": "Sole candidate attests the colloquial 'waste money' extension, not the literal overcooking gloss; both are the same 'use up' sense."
+ },
+ "verbrechen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~brechen~:\n\n- ~brechen~: Aus Mhd. ~brëchen~, aus Ahd. ~brëhhan~, aus Proto-Westgermanisch *~brekan~, aus Urgermanisch *~brekaną~, aus PIE *~bʰreg-~ („brechen“) — dasselbe Wort wie Englisch ~break~, nur durch die hochdeutsche Lautverschiebung getrennt. Dieselbe Wurzel liegt Lateinisch ~frangere~ zugrunde, woraus Englisch ~fracture~. Verwandt mit Niederländisch ~breken~, Dänisch ~brække~.\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ kennzeichnet die Handlung als falsch, fehlgeleitet oder misslungen.\n\n~brechen~ ist das Zerbrechen; ~verbrechen~ heißt, sich durch eine Tat zu vergehen — ~das Verbrechen~ ist die so begangene Untat.",
+   "en": "An inseparable compound of ~ver-~ + ~brechen~:\n\n- ~brechen~: From MHG ~brëchen~, from OHG ~brëhhan~, from Proto-West Germanic *~brekan~, from Proto-Germanic *~brekaną~, from PIE *~bʰreg-~ (\"to break\") — the same word as English ~break~, separated only by the High German consonant shift. The same root underlies Latin ~frangere~, whence English ~fracture~. Cognate with Dutch ~breken~, Danish ~brække~.\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ marks the action as going wrong, astray, or amiss.\n\n~brechen~ is to break; ~verbrechen~ is to do wrong by an act — ~das Verbrechen~, \"the crime,\" is the misdeed so committed."
+  },
+  "sentence": null,
+  "notes": "No usable candidate: four candidates are 'verbracht', the participle of verbringen (a different verb — verbrechen's participle is verbrochen), and the one true 'verbrechen' token is a garbled non-sentence. Sentence null."
+ },
+ "verbuchen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~buchen~:\n\n- ~buchen~: Im kaufmännischen Sinne („reservieren, verbuchen“) ein denominales Verb von ~Buch~, nach dem Vorbild von Englisch ~to book~. ~Buch~ geht zurück auf Mhd. ~buoch~, Ahd. ~buoh~, Proto-Westgermanisch *~bōk~, Urgermanisch *~bōks~ — dieselbe Wurzel wie Englisch ~beech~, denn frühe germanische Schrift wurde in Buchentafeln geritzt. Daneben steht ein älteres ~buchen~ „aus Buchenholz“ (Adjektiv). Verwandt mit Englisch ~book~.\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ verstärkt das Grundverb oder führt seine Handlung zur Vollendung.\n\n~buchen~ trägt ein; ~verbuchen~ führt die Eintragung zum Abschluss — ein Betrag wird endgültig ins Konto gebracht, und übertragen verbucht man einen Erfolg.",
+   "en": "An inseparable compound of ~ver-~ + ~buchen~:\n\n- ~buchen~: In its commercial sense (\"to book, reserve\"), a denominal verb from ~Buch~, modelled on English ~to book~. ~Buch~ is from MHG ~buoch~, OHG ~buoh~, Proto-West Germanic *~bōk~, Proto-Germanic *~bōks~ — the same root as English ~beech~, early Germanic writing being scratched onto beech tablets. A separate older ~buchen~ is an adjective, \"of the beech tree.\" Cognate with English ~book~.\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ intensifies the base verb or carries its action through to completion.\n\n~buchen~ enters; ~verbuchen~ carries the entry through to completion — an amount is posted finally to an account, and figuratively one ~verbucht~ a success, chalks it up."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Für das Jahr 2023 konnten sowohl für das Ausbildungsangebot als auch für die Ausbildungsnachfrage Anstiege verbucht werden.",
+    "source": "Berufsbildungsbericht (2024)"
+   },
+   "en": {
+    "sentence": "For the year 2023, increases could be recorded both in the supply of training positions and in the demand for them.",
+    "source": "Berufsbildungsbericht (2024)"
+   }
+  },
+  "notes": null
+ },
+ "verdecken": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~decken~:\n\n- ~decken~: Aus Mhd. ~decken~, aus Ahd. ~decchen~, aus Proto-Westgermanisch *~þakkjan~ („bedecken“), aus Urgermanisch *~þakjaną~, einer Kausativbildung von *~þaką~ („Dach, Stroh“), aus PIE *~(s)teg-~ („bedecken“) — etymologisch heißt das Verb „bedachen“. Verwandt mit Englisch ~thatch~, Niederländisch ~dekken~, Schwedisch ~täcka~; aus derselben Wurzel Lateinisch ~tegere~, woraus Englisch ~protect~.\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ drückt Verschließen oder Verdecken aus — etwas wird zugemacht, versperrt oder den Blicken entzogen.\n\n~decken~ legt etwas darüber; ~verdecken~ deckt so zu, dass das Darunterliegende den Blicken entzogen ist — es wird verhüllt, nicht bloß bedeckt.",
+   "en": "An inseparable compound of ~ver-~ + ~decken~:\n\n- ~decken~: From MHG ~decken~, from OHG ~decchen~, from Proto-West Germanic *~þakkjan~ (\"to cover\"), from Proto-Germanic *~þakjaną~, a causative formation from *~þaką~ (\"roof, thatch\"), from PIE *~(s)teg-~ (\"to cover\") — the verb is etymologically \"to roof.\" Cognate with English ~thatch~, Dutch ~dekken~, Swedish ~täcka~; from the same root Latin ~tegere~, whence English ~protect~.\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ conveys closing or covering — something is shut, blocked, or hidden from view.\n\n~decken~ lays something over; ~verdecken~ covers so as to keep what lies beneath from view — it conceals, not merely covers."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Da sie nun Juda sah, meinte er, sie wäre eine Hure; denn sie hatte ihr Angesicht verdeckt.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "When Judah now saw her, he thought she was a prostitute, for she had covered her face.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": null
+ },
+ "verdenken": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~denken~:\n\n- ~denken~: Aus Mhd. ~denken~, aus Ahd. ~denken~, aus Proto-Westgermanisch *~þankijan~, aus Urgermanisch *~þankijaną~, aus PIE *~teng-~ („denken, fühlen“). Ein Verb mit gemischter Konjugation aus der Rückumlaut-Gruppe: ~dachte~ verbindet den Vokalwechsel ~e~ > ~a~ mit schwachem Dentalsuffix und ~k~ > ~ch~. Verwandt mit Englisch ~think~, Niederländisch ~denken~, Isländisch ~þekkja~.\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ kennzeichnet die Handlung als falsch, fehlgeleitet oder misslungen.\n\n~denken~ ist das schlichte Überlegen; im idiomatischen ~jemandem etwas verdenken~ wendet sich das Denken ins Vorwurfsvolle — man nimmt es einem übel.",
+   "en": "An inseparable compound of ~ver-~ + ~denken~:\n\n- ~denken~: From MHG ~denken~, from OHG ~denken~, from Proto-West Germanic *~þankijan~, from Proto-Germanic *~þankijaną~, from PIE *~teng-~ (\"to think, feel\"). A mixed-conjugation verb of the Rückumlaut cohort: ~dachte~ pairs the vowel change ~e~ > ~a~ with a weak dental suffix and ~k~ > ~ch~. Cognate with English ~think~, Dutch ~denken~, Icelandic ~þekkja~.\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ marks the action as going wrong, astray, or amiss.\n\n~denken~ is plain thinking; in the idiom ~jemandem etwas verdenken~ the thinking turns reproachful — one holds it against someone, thinks the worse of them for it."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "verderben": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~derben~:\n\n- ~derben~: Kein selbständiges Verb des heutigen Deutsch; es lebt nur noch in ~verderben~ fort. Aus Mhd. ~derben~ („umkommen“), aus Proto-Westgermanisch *~derban~, aus Urgermanisch *~derbaną~ („arbeiten; umkommen“), aus PIE *~dʰerHbʰ-~ („sich mühen, umkommen“). Ein starkes Verb der Klasse III, dessen Ablaut die Zusammensetzung unversehrt bewahrt: ~verderben~, ~verdarb~, ~verdorben~. Verwandt mit Altenglisch ~deorfan~, Litauisch ~dirbti~.\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ verstärkt das Grundverb oder führt seine Handlung zur Vollendung.\n\nDie Wurzel ~derben~ trug schon selbst „umkommen“; ~ver-~ führt es zur Vollendung — etwas wird ganz und gar zunichte, sei es Speise, die schlecht wird, oder ein Mensch, der sittlich zugrunde geht.",
+   "en": "An inseparable compound of ~ver-~ + ~derben~:\n\n- ~derben~: Not an independent verb of modern German; it survives only inside ~verderben~ (\"to spoil, ruin\"). From MHG ~derben~ (\"to perish\"), from Proto-West Germanic *~derban~, from Proto-Germanic *~derbaną~ (\"to work; to perish\"), from PIE *~dʰerHbʰ-~ (\"to labor, perish\"). A class III strong verb, and the compound keeps the ablaut intact: ~verderben~, ~verdarb~, ~verdorben~. Cognate with Old English ~deorfan~, Lithuanian ~dirbti~.\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ intensifies the base verb or carries its action through to completion.\n\nThe root ~derben~ already carried \"to perish\"; ~ver-~ drives it to completion — something is utterly undone, whether food going bad or a person morally ruined."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Die ungeheure Erwartung in Betreff der Geschlechtsliebe, und die Scham in dieser Erwartung, verdirbt den Frauen von vornherein alle Perspektiven.",
+    "source": "Nietzsche — Jenseits von Gut und Böse"
+   },
+   "en": {
+    "sentence": "The immense expectation regarding sexual love, and the shame in this expectation, spoils all perspectives for women from the outset.",
+    "source": "Nietzsche — Jenseits von Gut und Böse"
+   }
+  },
+  "notes": "Rank-0 (Luther 'war verderbt') is a stative/adjectival participle; took rank-1, Nietzsche's finite transitive 'verdirbt'."
+ }
+}

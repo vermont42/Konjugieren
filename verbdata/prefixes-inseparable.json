@@ -67,9 +67,7 @@
       "chain": "Aus Mhd. ~umbe~, ~um(b)-~, aus Ahd. ~umbi~, aus Proto-Westgermanisch *~umbi~, aus Urgermanisch *~umbi~ („herum“), aus PIE *~h₂m̥bʰi~ („herum, auf beiden Seiten“). Verwandt mit Lateinisch ~ambi-~ und Altgriechisch ~amphí-~, woraus Englisch ~ambiguous~ und ~amphitheater~.",
       "senses": [
         "~um-~ vermittelt als untrennbares Präfix das Umgeben oder Umschließen von etwas.",
-        "~um-~ vermittelt als untrennbares Präfix das Umgehen oder Vermeiden von etwas.",
-        "~um-~ vermittelt als trennbares Präfix Umdrehen oder Umstellen.",
-        "~um-~ vermittelt als trennbares Präfix Umwandlung — etwas in eine andere Form bringen."
+        "~um-~ vermittelt als untrennbares Präfix das Umgehen oder Vermeiden von etwas."
       ],
       "occurrences": 11
     },
@@ -80,7 +78,8 @@
         "~unter-~ drückt Unterwerfung oder Unterordnung unter eine Autorität aus.",
         "~unter-~ drückt Stützung oder Unterhaltung von unten aus.",
         "~unter-~ drückt ein Dazwischen oder Inmitten aus, aus der damit verschmolzenen Wurzel für „zwischen“.",
-        "~unter-~ drückt Unterbrechung aus — das Hineinschneiden in einen laufenden Vorgang."
+        "~unter-~ drückt Unterbrechung aus — das Hineinschneiden in einen laufenden Vorgang.",
+        "~unter-~ drückt das Unterschreiten eines Maßes aus — etwas zu wenig oder unter einem angemessenen Wert tun."
       ],
       "occurrences": 24
     },
@@ -94,7 +93,8 @@
         "~ver-~ kehrt die Grundhandlung um oder negiert sie.",
         "~ver-~ bildet aus einem Substantiv oder Adjektiv ein Verb mit der Bedeutung, etwas dazu zu machen.",
         "~ver-~ bezeichnet ein allmähliches Vergehen — der Vorgang läuft von selbst aus, bis nichts mehr von ihm übrig ist.",
-        "~ver-~ drückt Verschließen oder Verdecken aus — etwas wird zugemacht, versperrt oder den Blicken entzogen."
+        "~ver-~ drückt Verschließen oder Verdecken aus — etwas wird zugemacht, versperrt oder den Blicken entzogen.",
+        "~ver-~ drückt das Zusammenfügen mehrerer Dinge zu einem aus."
       ],
       "occurrences": 189
     },
@@ -133,7 +133,8 @@
         "~über-~ drückt aus, dass etwas gründlich durchgegangen oder vollständig überzogen wird.",
         "~über-~ drückt Übermaß aus — etwas zu sehr oder über eine Grenze hinaus tun.",
         "~über-~ drückt Übergehen, Auslassen oder Übersehen aus.",
-        "~über-~ drückt Autorität oder Überblick von oben herab aus."
+        "~über-~ drückt Autorität oder Überblick von oben herab aus.",
+        "~über-~ drückt Übertreffen oder Überlegenheit aus — jemanden an Maß oder im Wettstreit überbieten."
       ],
       "occurrences": 49
     }
@@ -206,9 +207,7 @@
       "chain": "From MHG ~umbe~, ~um(b)-~, from OHG ~umbi~, from Proto-West Germanic *~umbi~, from Proto-Germanic *~umbi~ (\"around\"), from PIE *~h₂m̥bʰi~ (\"around, on both sides\"). Cognate with Latin ~ambi-~ and Ancient Greek ~amphí-~, whence English ~ambiguous~ and ~amphitheater~.",
       "senses": [
         "~um-~, as an inseparable prefix, conveys surrounding or encircling something.",
-        "~um-~, as an inseparable prefix, conveys going around or circumventing something.",
-        "~um-~, as a separable prefix, conveys turning around or repositioning.",
-        "~um-~, as a separable prefix, conveys transformation — changing something into another form."
+        "~um-~, as an inseparable prefix, conveys going around or circumventing something."
       ],
       "occurrences": 11
     },
@@ -219,7 +218,8 @@
         "~unter-~ conveys subjection or subordination to an authority.",
         "~unter-~ conveys support or sustenance from below.",
         "~unter-~ conveys being between or among, from the merged root meaning \"between\".",
-        "~unter-~ conveys interruption — cutting into an action already under way."
+        "~unter-~ conveys interruption — cutting into an action already under way.",
+        "~unter-~ conveys falling short of a norm — doing something too little or below a proper measure."
       ],
       "occurrences": 24
     },
@@ -233,7 +233,8 @@
         "~ver-~ reverses or negates the base action.",
         "~ver-~ derives a verb from a noun or adjective, meaning to make something into that.",
         "~ver-~ marks a gradual dying away — the process runs itself out until nothing of it remains.",
-        "~ver-~ conveys closing or covering — something is shut, blocked, or hidden from view."
+        "~ver-~ conveys closing or covering — something is shut, blocked, or hidden from view.",
+        "~ver-~ conveys binding or fusing several things into one."
       ],
       "occurrences": 189
     },
@@ -272,7 +273,8 @@
         "~über-~ conveys going over something thoroughly or covering it completely.",
         "~über-~ conveys excess — doing something too much or past a limit.",
         "~über-~ conveys passing over, skipping, or overlooking.",
-        "~über-~ conveys authority or vantage from above."
+        "~über-~ conveys authority or vantage from above.",
+        "~über-~ conveys surpassing or prevailing over — outdoing another in degree or in contest."
       ],
       "occurrences": 49
     }

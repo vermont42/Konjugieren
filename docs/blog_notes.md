@@ -3673,3 +3673,94 @@ second copies.
 Standing tally: 57 of 104 shards, 47 remaining, all contiguous from 057. Session stopped here at
 Josh's call after the two clarifications, with headroom to spare rather than caught mid-wave. No
 data decisions are open. Next is shard 057 via the standard resume prompt.
+
+## Mining shards 057–070, and two indexer defects that were silently discarding the corpus's best sentences (2026-07-22)
+
+Resumed at 57/104 and mined through 070 — fourteen shards, seven waves at concurrency 2 — landing
+at **71/104, 33 remaining**. Two of those waves were spent instead on indexer fixes, and that was
+the right trade: both fixes were found the way the resume prompt predicts, from a subagent's
+friction note rather than from anyone reading the code, and each was silently degrading every shard
+until it landed.
+
+**Fix 1 — a defect-precedence bug that let two-column PDF garbage survive.** Shards 057 and 058
+both flagged the same recurring cost: Bundestag `pdftotext -layout` gutter-merges (`Das
+González zu Recht … Motiv ist glasklar` — two columns spliced word-by-word) that they had to reject
+by hand each time. `is_defective` *already* had `gutter-splice` and `column-marker` drop-rules, so
+this shouldn't have happened. The cause: the function returns the *first* matching defect, and the
+two benign DEMOTE-only defects (`unbalanced`, `leading-dash`) were tested *above* the hard-drop
+ones. A gutter splice injects `(Beifall …)` applause markers and `(C)` column tags, which read as
+unbalanced parens — so every splice got the benign `unbalanced` label, was demoted-but-kept, and
+never reached the `gutter-splice` test. The fix moves the two demote-checks *below* the
+garbage-drops but keeps them *above* `no-terminal-punct`, so the deliberate masking that keeps a
+dash-ending Nietzsche period (`… davonstürmte?—`, which is complete but fails the terminal-punct
+test) as a demoted last resort is unchanged. Measured against a scratch rebuild before touching the
+live index: 20 candidates dropped (all genuine gutter/column/editorial garbage), 4 verbs moved from
+"rejected garbage" to honest "no candidate" nulls, and **0 of 826 already-shipped quotes orphaned**.
+
+**Fix 2 — a rule running at 0% precision, found by pulling one thread.** One of Fix 1's drops
+(`trügen`, a Grimm candidate) looked wrong — `Wand- oder Handstein` is a legitimate suspended
+compound, not damage. Chasing that revealed the `gutter-hyphen` rule (`[a-zäöüß]-\s+[a-zäöüß]`) was
+matching **189 candidates, every single one a suspended compound** (`Bildungs- und Berufsberatung`,
+`Vater- und Mutterländern`, `Personen- und Güterverkehr`) and **zero real damage**. The reason it
+had gone unnoticed for so long: it is case-sensitive, and a genuine broken word at a column edge
+(`Schleswig- Holstein`, `Black- Rock`) *capitalizes* the continuation, so the rule never matched
+the damage it was named for — only the lowercase `compound- und/oder/bzw` construction, which is
+never damage. It was silently deleting the clean administrative German that is the pipeline's best
+material. The fix guards the rule to fire only when a *non-connector* lowercase word follows
+(excluding `und|oder|bzw|noch|bis|sowie|als|vnd|vnnd`, all attested; the `\b` keeps a real break
+like `beding- ungslos` catchable). That rescued 189 sentences and brought 7 verbs back from
+zero-candidate.
+
+Both fixes went in mid-pass, at 69/104, with **zero re-mining** — the line-561 orphan hazard did
+not fire, because every candidate removed or reshuffled was garbage no subagent had ever quoted. I
+measured that (0 orphans) on a scratch rebuild before editing the live files, then again on the
+real regenerate. The lesson the brief already states held exactly: the pipeline is cheap to change
+when the change only removes what no one quoted.
+
+**A capability discovery, and a corrected assumption.** The resume prompt asserted "you cannot
+introspect usage — ask Josh to paste `usage.png`." That is false: `claude -p "/usage"` runs the
+slash command in a headless child and prints its panel to stdout, so a session can read its own
+five-hour-window figure (the `Current session` line; the weekly lines are a separate pool). I'd
+confidently predicted it *wouldn't* work — the panel looked like UI-only state — and was wrong.
+It's documented now in Phase 4's "As built" section (read approximate/local, poll every few waves
+not in a loop, it gauges consumed-not-fits), and the resume block was changed from asserting the
+false claim to pointing at that note. Josh scoped it to the pipeline doc rather than global
+CLAUDE.md — the *command* is general but the *pacing discipline* it serves is orchestration-only —
+and later retired the `usage.png` fallback line entirely, since self-serve always works. This
+session used it to gate every wave; the 80% hard stop it enforced is what ended the run cleanly at
+88% rather than mid-wave.
+
+**Two brief additions (`MINING_SPEC.md`), both from subagents, both agreed by Josh.** A narrow
+exception to "no exemplars in output, including notes": when diagnosing a *false split*, naming the
+verb that owns a mis-stranded particle (`niederknien` for a bad `niedermachen` candidate) is
+evidence about the indexer's mis-parse, not sense-selection leakage, so it is allowed even when
+that verb is an exemplar. And a rejection-list bullet for orphaned parliamentary-heckle furniture
+(`Unglaublich!) AfD:`, `Zuruf von der SPD:`), which I *measured* at 5–6 candidates corpus-wide
+before deciding **not** to build an indexer filter for it — the sole-candidate cases are honest
+nulls either way and the rest have clean alternatives, so it stays a subagent rejection like the
+furniture and doublet residues.
+
+**What I deliberately did *not* fix, and why.** A sense-layer problem recurred across roughly eight
+shards and I let it accumulate rather than patch piecemeal: `sense-exemplars.json` has coverage gaps
+(`hoch-` evaluative, `recht-` directional, `nieder-` "reduce to the ground / destroy", `nachbleiben`
+stative) and, worse, *degenerate self-reference* — single-compound prefixes (`madig`, `maus`,
+`platt`, `publik`, `preis`, `sonder`, `sicher`) whose only exemplar *is* the verb being resolved, so
+the tiebreak points at itself. Separately, `raus-`'s sense text restates facets its own chain
+already states, where `rein-`'s does not — a sense-text rewrite target. None degrades output (the
+subagents fall back to a defensible sense and flag it), and all of it is *linguistic authoring*, not
+a mechanical filter — exactly the work that should be done deliberately in one pass with the parity
+check, never reflexively mid-wave under budget pressure. That distinction is why the gutter fixes
+were worth stopping for and these are not: mechanical-and-corrupting versus linguistic-and-defensible.
+
+**Two morpheme mis-assignments for Phase 5.** `mausrutschen` is fed `separ:maus` (the *mausetot*
+fossil intensifier) but means the computer *Maus*; `reinwaschen` is fed `separ:rein` (the directional
+*herein/hinein* contraction, whose chain literally says "not the adjective *rein* 'clean'") but *is*
+that adjective, used resultatively. Both subagents caught the contradiction, declined to splice the
+absurd chain, authored a corrected bullet inline, and flagged it — so the shipped output is right,
+but `Verbs.xml` wants the fix. Homograph-starvation nulls (`krauchen`, drained by strong `kriechen`
+forms) also continue as the brief's anticipated Phase-5 tail-rescue territory.
+
+Standing tally: **71 of 104 shards, 33 remaining, all contiguous from 071.** Stopped at the 80%
+gate (session read 88% after wave 7's two heavy shards coincided with Fable writing the blog post on
+the same window). No data decisions are open; the two Phase-5 morpheme fixes and the sense-layer pass
+are recorded above, not urgent. Next is shard 071 via the standard resume prompt.

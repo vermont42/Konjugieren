@@ -477,6 +477,17 @@ by exact equality, so paraphrase, trimming, and retyping all fail it.
   **Pipeline work is the other half of the budget, and it is worth it.** The 2026-07-20 window
   spent ~13 of 17 points on fixes rather than shards, against the ~200 it would have cost to
   re-mine 100 shards contaminated by the defects those fixes removed.
+- **Checking the window, discovered 2026-07-22.** A session *can* read its own usage, contrary to
+  the assumption these notes were first written under: `claude -p "/usage"` runs the slash command
+  in a headless child and prints its panel to stdout, so the figures come straight back. Read the
+  **`Current session`** line — the five-hour window this pacing is about; the two weekly lines are a
+  separate, slower pool. They are the panel's own numbers, "approximate, based on local sessions on
+  this machine," so treat them as a gauge, keep headroom, and remember they miss other devices and
+  claude.ai. The call costs about one request — negligible against a shard's ~100k subagent tokens —
+  so poll every few shards, never in a loop. And it reports what is *consumed*, not whether the next
+  batch *fits*: combine the reading with the ~2-points-per-shard estimate above and stop with
+  headroom rather than mid-shard. Pasting `~/Desktop/usage.png` remains a fallback that costs no
+  request at all.
 - **Three artifacts landed on 2026-07-20 that a resuming session should know exist**, all
   tracked, all with their reasoning in their own docstrings:
   - `verbdata/normalize_prefix_senses.py` — made every prefix sense a complete sentence, so the
@@ -660,10 +671,10 @@ brief is `corpus/working/MINING_SPEC.md` and it is authoritative; anything a lau
 says about `truncated`, about what is reused versus authored, or about candidate selection is
 a second copy that will drift out of date and then contradict it.
 
-Budget roughly 2 session points per shard. You cannot introspect usage — ask me to paste
-`~/Desktop/usage.png` before starting and every few waves, and label any figure you derive
-from calibration as an estimate rather than a reading. Stop with about 5 points of headroom
-instead of getting caught mid-wave.
+Budget roughly 2 session points per shard. Check the five-hour window before starting and every
+few waves — the technique is in Phase 4's "As built" section — and label any figure you derive
+from calibration as an estimate rather
+than a reading. Stop with about 5 points of headroom instead of getting caught mid-wave.
 
 Run the Phase 4 validator before treating any shard as done; a subagent's self-report is not
 evidence. Append to `docs/blog_notes.md` once at the end, not per shard. Do not merge anything

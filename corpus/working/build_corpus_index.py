@@ -257,14 +257,18 @@ def is_defective(text, rel="", truncated=False):
         return "speaker-tag"
     if text[0].islower():
         return "starts-lowercase"
-    if re.match(r"(?:[–—-]\s|--)", text):
-        return "leading-dash"
-    for opener, closer in (("(", ")"), ("„", "“")):
-        if text.count(opener) != text.count(closer):
-            return "unbalanced"
-    if text.count('"') % 2:
-        return "unbalanced"
-    if re.search(r"[a-zäöüß]-\s+[a-zäöüß]", text):
+    # A word physically broken at a line or column edge, its halves separated by the gutter:
+    # `Sitz- ungswoche`. Guarded to fire only when the token after the break is NOT a
+    # coordinating connector, because `lowercase- und/oder/bzw/…` is not damage — it is a
+    # legitimate German suspended compound (`Bildungs- und Berufsberatung`, archaic `Land- vnd
+    # Lehengüter`, `mittel- bis langfristig`, `geist- als weltlich`). Measured 2026-07-22:
+    # without the guard the case-sensitive rule matched 189 candidates and every one was a
+    # suspended compound — 0% precision — silently dropping the clean administrative-German
+    # sentences that are the pipeline's best material. Real gutter breaks (`Black- Rock`,
+    # `Schleswig- Holstein`) capitalize the continuation and were never caught by this rule
+    # anyway. The `\b` after each connector keeps a genuine break like `beding- ungslos`
+    # catchable, since `und\b` does not match the `und` inside `ungslos`.
+    if re.search(r"[a-zäöüß]-\s+(?!(?:und|oder|bzw|noch|bis|sowie|als|vnd|vnnd)\b)[a-zäöüß]", text):
         return "gutter-hyphen"
     if re.search(r"\((?:A|B|C|D)\)", text):
         return "column-marker"
@@ -280,6 +284,19 @@ def is_defective(text, rel="", truncated=False):
         return "gutter-splice"
     if rel and bucket_of(rel).startswith("government") and UNSUITABLE_CONTENT.search(text):
         return "unsuitable-content"
+    # The two DEMOTE_ONLY defects are tested after the hard-drop garbage above, so a candidate
+    # that is genuine two-column PDF garbage — which routinely also reads as unbalanced parens,
+    # because the gutter splices in `(Beifall …)` / `(C)` markers — is dropped on the garbage,
+    # not merely demoted on the imbalance. They stay *above* `no-terminal-punct`, though, so the
+    # masking that keeps a dash-opening Nietzsche period (`… davonstürmte?—`) as a demoted last
+    # resort is unchanged; only gutter/column/editorial garbage is newly dropped.
+    if re.match(r"(?:[–—-]\s|--)", text):
+        return "leading-dash"
+    for opener, closer in (("(", ")"), ("„", "“")):
+        if text.count(opener) != text.count(closer):
+            return "unbalanced"
+    if text.count('"') % 2:
+        return "unbalanced"
     # Closing marks and brackets trail legitimate terminal punctuation (`… gesagt.“`), so they
     # come off before the test; otherwise every quoted sentence in Grimm reads as a fragment.
     if not truncated and not text.rstrip().rstrip(TRAILING_CLOSERS).endswith(TERMINAL_PUNCT):

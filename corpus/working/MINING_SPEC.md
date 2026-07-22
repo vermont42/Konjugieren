@@ -192,6 +192,14 @@ own sake reads as the aid presented as evidence. A shard-run on 2026-07-21 rewor
 this. When the useful sibling and the exemplar coincide, reach for a different sibling or drop the
 contrast.
 
+**One place naming an exemplar is not a leak: diagnosing a false split.** When a candidate is a
+mis-indexed pairing — the stranded particle belongs to a different verb than the matched token —
+the most precise `notes` entry names that other verb, and it is sometimes an exemplar of the same
+morpheme (a shard-run on 2026-07-22 reached for `niederknien` while diagnosing a bad `niedermachen`
+candidate and reworded to "a separate verb of kneeling" to comply). Name it anyway. There the verb
+is evidence about the *indexer's* mis-parse, not about which sense you picked, so it does not
+present the picking aid as an argument — which is the only thing the rule forbids.
+
 **Every sense is a complete sentence, so add no connective of your own.** It already carries
 its own subject — `~be-~ makes an intransitive verb transitive, …` — and concatenating it after
 the chain's final period needs nothing between them but a space. This is worth stating because
@@ -271,6 +279,13 @@ Candidates are already ranked and balanced across sources. Reject a candidate wh
   it is listed because the failure mode that matters is not rejecting one but *not noticing* one
   and shipping a broken word into the app. Do not rejoin the halves yourself — the quotation must
   match the candidate string exactly, so a repaired quote fails the validator. Reject and move on.
+- it carries **orphaned parliamentary-heckle furniture** — a leading `Wort!)` whose opening paren
+  fell on the previous column (*Unglaublich!) AfD: …*), or a colon-form speaker attribution the
+  bracketed party filter misses (*Zuruf von der AfD:*, *– Weiterer Zuruf von der SPD:*). Measured
+  2026-07-22 at 5–6 candidates corpus-wide, mostly with a clean alternative in the same pool and
+  two the verb's sole candidate — so this costs you almost nothing, and like the line-break case
+  above it is listed because the failure mode that matters is shipping the heckle, not rejecting
+  it. Reject and move on.
 
 **Among candidates that are all genuine, prefer one attesting the sense the reading glosses.**
 Walk the candidates in order and take the earliest genuine verbal use *whose sense matches the

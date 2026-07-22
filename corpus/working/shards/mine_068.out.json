@@ -1,0 +1,256 @@
+{
+ "reinwaschen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~rein~ + ~waschen~:\n\n- ~waschen~: Aus Mhd. ~waschen~, aus Ahd. ~wascan~, aus proto-westgermanisch *~waskan~, aus urgermanisch *~waskaną~, aus einem älteren *~watskaną~, einer ~ske~-Präsensbildung von PIE *~wed-~ („nass, Wasser“) — also „(wiederholt) nass machen“. Verwandt mit englisch ~wash~, ~water~, ~wet~, niederländisch ~wassen~, dänisch ~vaske~.\n- ~rein~: Das Adjektiv ~rein~ („sauber, unvermischt“), aus Mhd. ~reine~, aus Ahd. ~reini~, aus Proto-Westgermanisch *~hrainī~, aus Urgermanisch *~hrainiz~ („rein, sauber“). Verwandt mit Niederländisch ~rein~, Gotisch ~hrains~. In trennbaren Zusammensetzungen ist das Adjektiv resultativ.\n\nHier ist ~rein~ nicht die Richtungspartikel, sondern das Adjektiv ~rein~ („sauber“): resultativ „sauberwaschen“, und bildlich jemanden von einem Verdacht reinwaschen.",
+   "en": "A separable compound of ~rein~ + ~waschen~:\n\n- ~waschen~: From MHG ~waschen~, from OHG ~wascan~, from Proto-West Germanic *~waskan~, from Proto-Germanic *~waskaną~, from an earlier *~watskaną~, a ~ske~-present formation from PIE *~wed-~ (\"wet, water\") — hence \"to make wet (repeatedly).\" Cognate with English ~wash~, ~water~, ~wet~, Dutch ~wassen~, Danish ~vaske~.\n- ~rein~: The adjective ~rein~ (\"clean, pure\"), from MHG ~reine~, from OHG ~reini~, from Proto-West Germanic *~hrainī~, from Proto-Germanic *~hrainiz~ (\"clean, pure\"). Cognate with Dutch ~rein~, Gothic ~hrains~. In separable compounds the adjective is resultative.\n\nHere ~rein~ is not the directional particle but the adjective ~rein~ (\"clean\"): resultatively \"to wash clean\", and figuratively to clear someone of suspicion."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Da wusch es sich erst Hände und Angesicht rein, ging dann hin und neigte sich vor dem Königssohn, der ihm den goldenen Schuh reichte.",
+    "source": "Grimm — Märchen"
+   },
+   "en": {
+    "sentence": "Then it first washed its hands and face clean, went over, and bowed before the king's son, who handed it the golden shoe.",
+    "source": "Grimm — Märchen"
+   }
+  },
+  "notes": "Decomposition mis-assigned: the shard joins separ:rein (directional contraction of herein/hinein), but reinwaschen's rein is the adjective rein 'clean', used resultatively (wash clean; figuratively exonerate). The candidate confirms it (Hände und Angesicht rein). Authored a corrected rein-adjective bullet."
+ },
+ "reinziehen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~rein-~ + ~ziehen~:\n\n- ~ziehen~: Aus Mhd. ~ziehen~, aus Ahd. ~ziohan~, aus proto-westgermanisch *~teuhan~, aus urgermanisch *~teuhaną~, aus PIE *~dewk-~ („ziehen, führen“). Ein starkes Verb der Klasse II. Verwandt mit gotisch ~tiuhan~, altenglisch ~tēon~, altnordisch ~toga~, westfriesisch ~tsjen~ und englisch ~tie~.\n- ~rein-~: In diesen Verben handelt es sich nicht um das Adjektiv ~rein~ („rein, sauber“), sondern um die umgangssprachliche Kurzform von ~herein~ und oft auch von ~hinein~ — also ~her~ oder ~hin~ + ~ein~. Die beiden Wörter sind Homographen mit unverwandter Geschichte, und nur das richtungsanzeigende bildet diese Zusammensetzungen. Es gehört der gesprochenen und lockeren Sprache an; die geschriebene Standardsprache bevorzugt die vollen Formen.\n\nDer Richtungskern des Kompositums — etwas hereinziehen — trägt beide Verwendungen: das wörtliche Hineinziehen und die saloppe Wendung „sich etwas reinziehen“, also etwas begierig zu sich nehmen.",
+   "en": "A separable compound of ~rein-~ + ~ziehen~:\n\n- ~ziehen~: From MHG ~ziehen~, from OHG ~ziohan~, from Proto-West Germanic *~teuhan~, from Proto-Germanic *~teuhaną~, from PIE *~dewk-~ (\"to pull, lead\"). A class II strong verb. Cognate with Gothic ~tiuhan~, Old English ~tēon~, Old Norse ~toga~, West Frisian ~tsjen~, and English ~tie~.\n- ~rein-~: In these verbs this is not the adjective ~rein~ (\"pure, clean\") but the colloquial contraction of ~herein~, and often of ~hinein~ as well — that is, ~her~ or ~hin~ + ~ein~ (\"in\"). The two words are homographs with unrelated histories, and only the directional one forms these compounds. It belongs to spoken and informal register; written standard German prefers the full forms.\n\nThe compound's directional core — pulling something in — carries both uses: the literal drawing-in and the slangy \"sich etwas reinziehen\" for eagerly consuming food, drink, or media."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Einige Häuser wurden da reingezogen.",
+    "source": "Bundestag — Plenarprotokoll 20/207"
+   },
+   "en": {
+    "sentence": "A few houses were pulled in there.",
+    "source": "Bundestag — Plenarprotokoll 20/207"
+   }
+  },
+  "notes": "Sole candidate attests the literal directional sense (houses pulled in), not the reading's colloquial gloss 'consume/inhale'. Taken as the only genuine use, sense mismatch noted."
+ },
+ "richtigliegen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~richtig~ + ~liegen~:\n\n- ~liegen~: Aus mhd. ~ligen~, aus ahd. ~ligen~ (aus älterem ~liggen~), aus proto-westgermanisch *~liggjan~, aus urgermanisch *~ligjaną~, aus PIE *~legʰ-~ („sich hinlegen“). Ein starkes Verb der Klasse V. Das schwache Kausativum ~legen~ ist über *~-janą~ aus derselben Wurzel gebildet (*~lagjaną~). Verwandt mit englisch ~lie~, niederländisch ~liggen~, gotisch ~ligan~.\n- ~richtig~: Das Adjektiv ~richtig~, aus Mhd. ~rihtec~, mit dem Suffix ~-ig~ zu ~richten~ („gerademachen, lenken, urteilen“) gebildet, das seinerseits ein Kausativum zu ~recht~ ist, aus PIE *~h₃reǵ-~ („gerademachen, richten“). Wurzelverwandt sind Englisch ~right~ und über Lateinisch ~regere~ auch ~correct~ und ~direct~. In trennbaren Zusammensetzungen ist das Adjektiv resultativ. Die Bedeutung von ~richtig~ ist hier: prädikativ „richtig“, beim Urteilen oder beim Liegen an der richtigen Stelle.\n\n„richtigliegen“ überträgt das Bild des richtigen Liegens auf das Rechthaben — mit einer Vermutung richtig liegen.",
+   "en": "A separable compound of ~richtig~ + ~liegen~:\n\n- ~liegen~: From MHG ~ligen~, from OHG ~ligen~ (from earlier ~liggen~), from Proto-West Germanic *~liggjan~, from Proto-Germanic *~ligjaną~, from PIE *~legʰ-~ (\"to lie down\"). A class V strong verb. The weak causative ~legen~ comes from the same root via *~-janą~ (*~lagjaną~). Cognate with English ~lie~, Dutch ~liggen~, Gothic ~ligan~.\n- ~richtig~: The adjective ~richtig~ (\"correct, proper\"), from MHG ~rihtec~, formed with the suffix ~-ig~ on ~richten~ (\"to set straight, direct, judge\"), itself a causative built to ~recht~, from PIE *~h₃reǵ-~ (\"to straighten, direct\"). Its root relatives are English ~right~ and, through Latin ~regere~, ~correct~ and ~direct~. In separable compounds the adjective is resultative. The sense of ~richtig~ here is: predicatively, \"correctly, rightly\", of judging or of being in the right position.\n\n\"richtigliegen\" carries the image of lying in the right place over to being correct — to be right in one's guess."
+  },
+  "sentence": null,
+  "notes": "No candidates."
+ },
+ "richtigstellen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~richtig~ + ~stellen~:\n\n- ~stellen~: Aus Mhd. ~stellen~, aus Ahd. ~stellen~, aus Proto-Westgermanisch *~stalljan~ („setzen, aufstellen“), aus PIE *~stel-~ („stellen, setzen“). Ein kausatives schwaches Verb — das transitive Gegenstück zu ~stehen~. Verwandt mit Englisch ~stell~ („platzieren, befestigen“), Niederländisch ~stellen~, Dänisch ~stille~, Jiddisch ~shteln~.\n- ~richtig~: Das Adjektiv ~richtig~, aus Mhd. ~rihtec~, mit dem Suffix ~-ig~ zu ~richten~ („gerademachen, lenken, urteilen“) gebildet, das seinerseits ein Kausativum zu ~recht~ ist, aus PIE *~h₃reǵ-~ („gerademachen, richten“). Wurzelverwandt sind Englisch ~right~ und über Lateinisch ~regere~ auch ~correct~ und ~direct~. In trennbaren Zusammensetzungen ist das Adjektiv resultativ. Die Bedeutung von ~richtig~ ist hier: als resultatives Adjektiv „in einen richtigen Zustand“, etwa beim Richtigstellen einer Aussage.\n\nDas resultative ~richtig~ nennt den Zielzustand: eine Aussage wird in den richtigen Zustand versetzt, also korrigiert.",
+   "en": "A separable compound of ~richtig~ + ~stellen~:\n\n- ~stellen~: From MHG ~stellen~, from OHG ~stellen~, from Proto-West Germanic *~stalljan~ (\"to put, position\"), from PIE *~stel-~ (\"to place, put\"). A causative weak verb — the transitive counterpart to ~stehen~ (\"to stand\"). Cognate with English ~stell~ (\"to place, fix\"), Dutch ~stellen~, Danish ~stille~, Yiddish ~shteln~.\n- ~richtig~: The adjective ~richtig~ (\"correct, proper\"), from MHG ~rihtec~, formed with the suffix ~-ig~ on ~richten~ (\"to set straight, direct, judge\"), itself a causative built to ~recht~, from PIE *~h₃reǵ-~ (\"to straighten, direct\"). Its root relatives are English ~right~ and, through Latin ~regere~, ~correct~ and ~direct~. In separable compounds the adjective is resultative. The sense of ~richtig~ here is: as a resultative adjective, \"into a correct state\", as of setting a statement right.\n\nThe resultative ~richtig~ names the end state: a statement is put into a correct state, that is, corrected."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Von daher möchte ich das einfach einmal richtigstellen und dann noch einmal mit dir über das Thema „Wettbewerbsfähigkeit“ reden.",
+    "source": "Bundestag — Plenarprotokoll 20/207"
+   },
+   "en": {
+    "sentence": "So I would simply like to set the record straight on this and then talk with you once more about the topic of \"competitiveness.\"",
+    "source": "Bundestag — Plenarprotokoll 20/207"
+   }
+  },
+  "notes": null
+ },
+ "ringen": {
+  "etymology": {
+   "de": "Aus Mhd. ~ringen~, aus Ahd. ~ringan~, aus Proto-Westgermanisch *~wringan~, aus Urgermanisch *~wringaną~ („drehen, wringen“), aus einer nasalierten Form von PIE *~wergʰ-~ („drehen, winden“). Ein starkes Verb der Klasse III (~ringen~, ~rang~, ~gerungen~). Verwandt mit Englisch ~wring~, Niederländisch ~wringen~ und Niederdeutsch ~wringen~, das das Deutsche als Doublette ~wringen~ („Wäsche auswringen“) zurückentlehnte. Trotz des Anscheins hat es nichts mit ~Ring~ (aus Urgermanisch *~hringaz~) zu tun; seine echten Verwandten sind ~Ringen~ und ~Ringkampf~, und Englisch ~wrong~ gehört ebenfalls hierher, denn es bedeutete ursprünglich „verdreht, krumm“.",
+   "en": "From MHG ~ringen~, from OHG ~ringan~, from Proto-West Germanic *~wringan~, from Proto-Germanic *~wringaną~ (\"to twist, wring\"), from a nasalized form of PIE *~wergʰ-~ (\"to turn, twist\"). A class III strong verb (~ringen~, ~rang~, ~gerungen~). Cognate with English ~wring~, Dutch ~wringen~, and Low German ~wringen~, which German reborrowed as the doublet ~wringen~ (\"to wring out laundry\"). Despite appearances it has nothing to do with ~Ring~ (from Proto-Germanic *~hringaz~); its true relatives are ~Ringen~ and ~Ringkampf~ (\"wrestling\"), and English ~wrong~ belongs here too, having meant \"twisted, crooked\"."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Da rang ein Mann mit ihm, bis die Morgenröte anbrach.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "Then a man wrestled with him until daybreak.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": null
+ },
+ "rinnen": {
+  "etymology": {
+   "de": "Aus Mhd. ~rinnen~, aus Ahd. ~rinnan~, aus Proto-Westgermanisch *~rinnan~, aus Urgermanisch *~rinnaną~ („laufen, fließen“); die PIE-Quelle ist umstritten, meist wird *~h₃reyH-~ („aufwühlen, in Bewegung setzen“) angesetzt. Ein starkes Verb der Klasse III (~rinnen~, ~rann~, ~geronnen~). Verwandt mit Englisch ~run~, Gotisch ~rinnan~, Schwedisch ~rinna~ und Niederländisch ~rennen~. Deutsch ~rennen~ ist sein Kausativum, aus *~rannijaną~, „fließen machen“, sodass beide Verben eine Wurzel sind, aufgeteilt auf das, was Wasser tut, und das, was ein Läufer tut.",
+   "en": "From MHG ~rinnen~, from OHG ~rinnan~, from Proto-West Germanic *~rinnan~, from Proto-Germanic *~rinnaną~ (\"to run, flow\"); the PIE source is debated, most often given as *~h₃reyH-~ (\"to churn, set in motion\"). A class III strong verb (~rinnen~, ~rann~, ~geronnen~). Cognate with English ~run~, Gothic ~rinnan~, Swedish ~rinna~, and Dutch ~rennen~. German ~rennen~ (\"to run\") is its causative, from *~rannijaną~, \"to make flow\", so the two verbs are one root divided between what water does and what a runner does."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Meine Augen rinnen mit Wasserbächen über den Jammer der Tochter meines Volks.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "My eyes run with streams of water over the destruction of the daughter of my people.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": null
+ },
+ "rotsehen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~rot~ + ~sehen~:\n\n- ~sehen~: Aus Mhd. ~sëhen~, aus Ahd. ~sëhan~, aus Proto-Westgermanisch *~sehwan~, aus Urgermanisch *~sehwaną~, aus PIE *~sekʷ-~ („sehen, bemerken“). Verwandt mit Englisch ~see~, Niederländisch ~zien~, Dänisch ~se~, Gotisch ~saihwan~.\n- ~rot~: Aus Mhd. ~rōt~, aus Ahd. ~rōt~, aus Proto-Westgermanisch *~raud~, aus Urgermanisch *~raudaz~, aus PIE *~h₁rewdʰ-~ („rot“). Verwandt mit Englisch ~red~, Niederländisch ~rood~, Dänisch ~rød~, Lateinisch ~ruber~, Griechisch ~erythrós~, Sanskrit ~rudhira-~. Es gehört zu den beständigsten Farbwörtern des Indogermanischen und ist in fast jedem Zweig wiederzuerkennen. Die Bedeutung von ~rot~ ist hier: vom Erröten oder vom Rotmarkieren.\n\n„rotsehen“ ist bildlich: vor plötzlicher Wut die Beherrschung verlieren — das Rot ist die Farbe des Zorns, nicht wirklich Gesehenes.",
+   "en": "A separable compound of ~rot~ + ~sehen~:\n\n- ~sehen~: From MHG ~sëhen~, from OHG ~sëhan~, from Proto-West Germanic *~sehwan~, from Proto-Germanic *~sehwaną~, from PIE *~sekʷ-~ (\"to see, notice\"). Cognate with English ~see~, Dutch ~zien~, Danish ~se~, Gothic ~saihwan~.\n- ~rot~: From MHG ~rōt~, from OHG ~rōt~, from Proto-West Germanic *~raud~, from Proto-Germanic *~raudaz~, from PIE *~h₁rewdʰ-~ (\"red\"). Cognate with English ~red~, Dutch ~rood~, Danish ~rød~, Latin ~ruber~, Greek ~erythrós~, Sanskrit ~rudhira-~. It is among the most stable color words in Indo-European, recognizable in nearly every branch. The sense of ~rot~ here is: of blushing, or of marking something in red.\n\n\"rotsehen\" is figurative: to lose control in sudden rage — the red is the color of anger, not anything actually seen."
+  },
+  "sentence": null,
+  "notes": "No candidates."
+ },
+ "rübermachen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~rüber-~ + ~machen~:\n\n- ~machen~: Aus mhd. ~machen~, aus ahd. ~mahhōn~, aus proto-westgermanisch *~makōn~, aus PIE *~mag-~ („kneten, mischen, machen“). Verwandt mit niederländisch ~maken~, niederdeutsch ~maken~, englisch ~make~.\n- ~rüber-~: Eine umgangssprachliche Zusammenziehung von ~herüber~ (~her-~ „auf den Sprecher zu“ + ~über~), die mit ~rauf~, ~raus~, ~rein~, ~ran~ zur lockeren Rede gehört. Sie bezeichnet die Bewegung herüber auf diese, die Seite des Sprechers. Die Bedeutung von ~rüber-~ ist hier: umgangssprachlich für ~herüber~; saloppe Sprachschicht.\n\n„rübermachen“ meint umgangssprachlich, sich auf die andere Seite zu begeben — oft über eine Grenze in ein anderes Land.",
+   "en": "A separable compound of ~rüber-~ + ~machen~:\n\n- ~machen~: From MHG ~machen~, from OHG ~mahhōn~, from Proto-West Germanic *~makōn~, from PIE *~mag-~ (\"to knead, mix, make\"). Cognate with Dutch ~maken~, Low German ~maken~, English ~make~.\n- ~rüber-~: A colloquial contraction of ~herüber~ (~her-~ \"toward the speaker\" + ~über~ \"over, across\"), belonging with ~rauf~, ~raus~, ~rein~, ~ran~ in casual speech. It marks motion across to this side, the speaker's side. The sense of ~rüber-~ here is: colloquial for ~herüber~; informal register.\n\n\"rübermachen\" colloquially means to get oneself across to the other side — often over a border into another country."
+  },
+  "sentence": null,
+  "notes": "No candidates."
+ },
+ "rückbesinnen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~rück-~ + ~be-~ + ~sinnen~:\n\n- ~sinnen~: Aus Mhd. ~sinnen~, aus Ahd. ~sinnan~ („reisen; streben; denken“), aus Proto-Westgermanisch *~sinnan~, aus Urgermanisch *~sinnaną~, aus PIE *~sent-~ („sich richten auf, gehen; fühlen“). Ein starkes Verb der Klasse III (~sinnen~, ~sann~, ~gesonnen~). Dieselbe Wurzel ergab Lateinisch ~sentīre~, sodass ~Sinn~ und Englisch ~sense~ verwandt sind. Verwandt mit Altenglisch ~sinnan~ („nachsinnen“), Niederländisch ~zinnen~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ bildet ein Verb, das nur reflexiv gebraucht wird — die Handlung richtet sich auf den Handelnden selbst zurück und nie auf ein äußeres Objekt.\n- ~rück-~: Eine gebundene Kompositionsform, nie ein freies Wort. Sie ist der ältere Stamm von ~Rücken~, aus Ahd. ~(h)ruggi~, aus Urgermanisch *~hrugjaz~ („Rücken, Grat“), und gelangt über ~zurück~ zu den Verben — Ahd. ~zi rugge~, „nach dem Rücken hin“. Komposita behalten die Kurzform (~rückerstatten~, ~rückfragen~, ~Rückkehr~), wo beim finiten Verb das volle Adverb ~zurück~ stünde. Englisch ~ridge~ ist dasselbe urgermanische Wort: Altenglisch ~hrycg~ bezeichnete sowohl den Rücken eines Menschen als auch den Grat eines Hügels. Die Bedeutung von ~rück-~ ist hier: rückbezüglich, auf bereits Gesagtes zurückkommend.\n\n„sich rückbesinnen“ heißt, sich auf etwas Vergangenes zurückzubesinnen; ~rück-~ trägt den Rückbezug bei, während ~be-~ das Verb rein reflexiv macht.",
+   "en": "A separable compound of ~rück-~ + ~be-~ + ~sinnen~:\n\n- ~sinnen~: From MHG ~sinnen~, from OHG ~sinnan~ (\"to travel; to strive for; to think\"), from Proto-West Germanic *~sinnan~, from Proto-Germanic *~sinnaną~, from PIE *~sent-~ (\"to head for, go; to feel\"). A class III strong verb (~sinnen~, ~sann~, ~gesonnen~). The same root gave Latin ~sentīre~, so ~Sinn~ and English ~sense~ are relatives. Cognate with Old English ~sinnan~ (\"to meditate on\"), Dutch ~zinnen~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ forms a verb used only reflexively — the action turns back on the one performing it and never reaches an outside object.\n- ~rück-~: A bound combining form, never a free word. It is the older stem of ~Rücken~ (\"back\"), from OHG ~(h)ruggi~, from Proto-Germanic *~hrugjaz~ (\"back, ridge\"), and it reaches verbs by way of ~zurück~ — OHG ~zi rugge~, \"toward the back.\" Compounds keep the short form (~rückerstatten~, ~rückfragen~, ~Rückkehr~) where a finite verb would take the full adverb ~zurück~. English ~ridge~ is the same Proto-Germanic word: Old English ~hrycg~ meant both a person's back and the spine of a hill. The sense of ~rück-~ here is: in response, referring back to something already said.\n\n\"sich rückbesinnen\" means to call something past back to mind; ~rück-~ supplies the backward reference while ~be-~ makes the verb purely reflexive."
+  },
+  "sentence": null,
+  "notes": "No candidates."
+ },
+ "rückdrehen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~rück-~ + ~drehen~:\n\n- ~drehen~: Aus Mhd. ~dræjen~, aus Ahd. ~drāen~, aus Proto-Westgermanisch *~þrāan~, aus Urgermanisch *~þrēaną~ („drehen, wenden“), aus PIE *~terh₁-~ („reiben, durch Drehen reiben, wenden“). Verwandt mit Englisch ~throw~ — ein echter Verwandter: Altenglisch ~þrāwan~ hieß „drehen“, ein Sinn, den „to throw a pot“ bewahrt — sowie Englisch ~thread~, Niederländisch ~draaien~.\n- ~rück-~: Eine gebundene Kompositionsform, nie ein freies Wort. Sie ist der ältere Stamm von ~Rücken~, aus Ahd. ~(h)ruggi~, aus Urgermanisch *~hrugjaz~ („Rücken, Grat“), und gelangt über ~zurück~ zu den Verben — Ahd. ~zi rugge~, „nach dem Rücken hin“. Komposita behalten die Kurzform (~rückerstatten~, ~rückfragen~, ~Rückkehr~), wo beim finiten Verb das volle Adverb ~zurück~ stünde. Englisch ~ridge~ ist dasselbe urgermanische Wort: Altenglisch ~hrycg~ bezeichnete sowohl den Rücken eines Menschen als auch den Grat eines Hügels. Die Bedeutung von ~rück-~ ist hier: zurück, rückwärts, in die Gegenrichtung.\n\n„rückdrehen“ bezeichnet das Zurückdrehen in die Gegenrichtung, gegen den Uhrzeigersinn.",
+   "en": "A separable compound of ~rück-~ + ~drehen~:\n\n- ~drehen~: From MHG ~dræjen~, from OHG ~drāen~, from Proto-West Germanic *~þrāan~, from Proto-Germanic *~þrēaną~ (\"to twist, turn\"), from PIE *~terh₁-~ (\"to rub, rub by twisting, turn\"). Cognate with English ~throw~ — a true cognate: Old English ~þrāwan~ meant \"to twist,\" a sense that \"throw a pot\" still keeps — plus English ~thread~, Dutch ~draaien~.\n- ~rück-~: A bound combining form, never a free word. It is the older stem of ~Rücken~ (\"back\"), from OHG ~(h)ruggi~, from Proto-Germanic *~hrugjaz~ (\"back, ridge\"), and it reaches verbs by way of ~zurück~ — OHG ~zi rugge~, \"toward the back.\" Compounds keep the short form (~rückerstatten~, ~rückfragen~, ~Rückkehr~) where a finite verb would take the full adverb ~zurück~. English ~ridge~ is the same Proto-Germanic word: Old English ~hrycg~ meant both a person's back and the spine of a hill. The sense of ~rück-~ here is: back, backwards, in the reverse direction.\n\n\"rückdrehen\" denotes turning back in the opposite, anticlockwise direction."
+  },
+  "sentence": null,
+  "notes": "No candidates."
+ },
+ "rücküberweisen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~rück-~ + ~über-~ + ~weisen~:\n\n- ~weisen~: Aus Mhd. ~wīsen~, aus Ahd. ~wīsen~, aus proto-westgermanisch *~wīsijan~, aus urgermanisch *~wīsijaną~, einem denominalen Verb zu *~wīsaz~ („weise, wissend“), aus PIE *~weyd-so-s~ („kundig“), aus *~weyd-~ („sehen, wissen“). Ein starkes Verb der Klasse I; die Bedeutungen „zeigen“ und „verweisen“ lenken beide Wissen oder Aufmerksamkeit. Verwandt mit englisch ~wise~, ~wit~, ~wizard~.\n- ~über-~: Aus Mhd. ~über~, aus Ahd. ~ubar~, ~ubiri~, aus Proto-Westgermanisch *~ubar~, aus Urgermanisch *~uber~, aus PIE *~upéri~ („über, oberhalb“). Verwandt mit Englisch ~over~, Lateinisch ~super~ und Altgriechisch ~hupér~, der Quelle des ~hyper-~ englischer Gelehrtenwörter. ~über-~ drückt Übertragung oder Übergabe an jemanden aus.\n- ~rück-~: Eine gebundene Kompositionsform, nie ein freies Wort. Sie ist der ältere Stamm von ~Rücken~, aus Ahd. ~(h)ruggi~, aus Urgermanisch *~hrugjaz~ („Rücken, Grat“), und gelangt über ~zurück~ zu den Verben — Ahd. ~zi rugge~, „nach dem Rücken hin“. Komposita behalten die Kurzform (~rückerstatten~, ~rückfragen~, ~Rückkehr~), wo beim finiten Verb das volle Adverb ~zurück~ stünde. Englisch ~ridge~ ist dasselbe urgermanische Wort: Altenglisch ~hrycg~ bezeichnete sowohl den Rücken eines Menschen als auch den Grat eines Hügels. Die Bedeutung von ~rück-~ ist hier: etwas an seinen Ursprung oder in einen früheren Zustand zurückführend.\n\n„rücküberweisen“ verbindet beide Beiträge: ~über-~ nennt die Überweisung, ~rück-~ die Rückführung an den Absender.",
+   "en": "A separable compound of ~rück-~ + ~über-~ + ~weisen~:\n\n- ~weisen~: From MHG ~wīsen~, from OHG ~wīsen~, from Proto-West Germanic *~wīsijan~, from Proto-Germanic *~wīsijaną~, a denominative verb from *~wīsaz~ (\"wise, knowing\"), from PIE *~weyd-so-s~ (\"knowledgeable\"), from *~weyd-~ (\"to see, know\"). A class I strong verb; its senses \"to show, point\" and \"to direct, expel\" both direct knowledge or attention. Cognate with English ~wise~, ~wit~, ~wizard~.\n- ~über-~: From MHG ~über~, from OHG ~ubar~, ~ubiri~, from Proto-West Germanic *~ubar~, from Proto-Germanic *~uber~, from PIE *~upéri~ (\"over, above\"). Cognate with English ~over~, Latin ~super~ and Ancient Greek ~hupér~, source of the ~hyper-~ of English learned words. ~über-~ conveys transfer or handing over to someone.\n- ~rück-~: A bound combining form, never a free word. It is the older stem of ~Rücken~ (\"back\"), from OHG ~(h)ruggi~, from Proto-Germanic *~hrugjaz~ (\"back, ridge\"), and it reaches verbs by way of ~zurück~ — OHG ~zi rugge~, \"toward the back.\" Compounds keep the short form (~rückerstatten~, ~rückfragen~, ~Rückkehr~) where a finite verb would take the full adverb ~zurück~. English ~ridge~ is the same Proto-Germanic word: Old English ~hrycg~ meant both a person's back and the spine of a hill. The sense of ~rück-~ here is: returning something to its origin or to an earlier state.\n\n\"rücküberweisen\" joins both contributions: ~über-~ names the transfer, ~rück-~ its return to the sender."
+  },
+  "sentence": null,
+  "notes": "No candidates."
+ },
+ "rückwärtsfahren": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~rückwärts-~ + ~fahren~:\n\n- ~fahren~: Aus Mhd. ~varn~, aus Ahd. ~faran~, aus Proto-Westgermanisch *~faran~, aus Urgermanisch *~faraną~, aus PIE *~per-~ („Gehen, Durchgang“). Ein starkes Verb der Klasse VI, dessen alter Sinn „gehen, reisen“ sich auf Fahrzeuge verengte; das Kausativum ~führen~ (*~fōrijaną~) ist das transitive Gegenstück. Verwandt mit Englisch ~fare~, Niederländisch ~varen~, Dänisch ~fare~.\n- ~rückwärts-~: Aus ~Rücken~ und dem Adverbialsuffix ~-wärts~, aus Ahd. ~-wert~, aus Urgermanisch *~werþaz~ („zugewandt“), aus PIE *~wert-~ („drehen, wenden“) — genau das englische ~-ward~ von ~backward~ und ~homeward~. ~Rücken~ selbst geht auf Ahd. ~(h)rukki~ zurück, aus Urgermanisch *~hrugjaz~, dessen englischer Nachkomme ~ridge~ ist, der Rücken oder Grat eines Hügels. Als Partikel richtet es die Handlung nach hinten. Die Bedeutung von ~rückwärts-~ ist hier: „rückwärts, in umgekehrter Richtung“.\n\n„rückwärtsfahren“ richtet die Fahrt nach hinten — im Rückwärtsgang fahren.",
+   "en": "A separable compound of ~rückwärts-~ + ~fahren~:\n\n- ~fahren~: From MHG ~varn~, from OHG ~faran~, from Proto-West Germanic *~faran~, from Proto-Germanic *~faraną~, from PIE *~per-~ (\"going, passage\"). A class VI strong verb whose old sense \"to go, travel\" narrowed to vehicular travel; the causative ~führen~ (*~fōrijaną~) is its transitive counterpart. Cognate with English ~fare~, Dutch ~varen~, Danish ~fare~.\n- ~rückwärts-~: From ~Rücken~ (\"back\") plus the adverbial suffix ~-wärts~, from OHG ~-wert~, from Proto-Germanic *~werþaz~ (\"turned toward\"), from PIE *~wert-~ (\"to turn\") — exactly the English ~-ward~ of ~backward~ and ~homeward~. ~Rücken~ itself goes back to OHG ~(h)rukki~, from Proto-Germanic *~hrugjaz~, whose English descendant is ~ridge~, the back or spine of a hill. As a particle it orients the action backward. The sense of ~rückwärts-~ here is: \"backward, in reverse\".\n\n\"rückwärtsfahren\" points the driving backward — to drive in reverse."
+  },
+  "sentence": null,
+  "notes": "No candidates."
+ },
+ "rückzahlen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~rück-~ + ~zahlen~:\n\n- ~zahlen~: Aus Mhd. ~zaln~, ~zalen~, aus Ahd. ~zalōn~, aus proto-westgermanisch *~talōn~, aus urgermanisch *~talōną~ („erzählen; zählen, rechnen“). ~Zahlen~ und ~zählen~ sind Geschwister derselben Wurzel: Bezahlung erfordert das Abzählen des richtigen Betrags. Verwandt mit englisch ~tale~ und ~tell~, niederländisch ~betalen~, schwedisch ~tala~.\n- ~rück-~: Eine gebundene Kompositionsform, nie ein freies Wort. Sie ist der ältere Stamm von ~Rücken~, aus Ahd. ~(h)ruggi~, aus Urgermanisch *~hrugjaz~ („Rücken, Grat“), und gelangt über ~zurück~ zu den Verben — Ahd. ~zi rugge~, „nach dem Rücken hin“. Komposita behalten die Kurzform (~rückerstatten~, ~rückfragen~, ~Rückkehr~), wo beim finiten Verb das volle Adverb ~zurück~ stünde. Englisch ~ridge~ ist dasselbe urgermanische Wort: Altenglisch ~hrycg~ bezeichnete sowohl den Rücken eines Menschen als auch den Grat eines Hügels. Die Bedeutung von ~rück-~ ist hier: etwas an seinen Ursprung oder in einen früheren Zustand zurückführend.\n\n„rückzahlen“ führt eine Zahlung an ihren Ursprung zurück — zurückzahlen, erstatten.",
+   "en": "A separable compound of ~rück-~ + ~zahlen~:\n\n- ~zahlen~: From MHG ~zaln~, ~zalen~, from OHG ~zalōn~, from Proto-West Germanic *~talōn~, from Proto-Germanic *~talōną~ (\"to tell, recount; to count, reckon\"). ~Zahlen~ and ~zählen~ are siblings from the same root: payment requires counting out the correct amount. Cognate with English ~tale~ and ~tell~, Dutch ~betalen~, Swedish ~tala~.\n- ~rück-~: A bound combining form, never a free word. It is the older stem of ~Rücken~ (\"back\"), from OHG ~(h)ruggi~, from Proto-Germanic *~hrugjaz~ (\"back, ridge\"), and it reaches verbs by way of ~zurück~ — OHG ~zi rugge~, \"toward the back.\" Compounds keep the short form (~rückerstatten~, ~rückfragen~, ~Rückkehr~) where a finite verb would take the full adverb ~zurück~. English ~ridge~ is the same Proto-Germanic word: Old English ~hrycg~ meant both a person's back and the spine of a hill. The sense of ~rück-~ here is: returning something to its origin or to an earlier state.\n\n\"rückzahlen\" returns a payment to its origin — to repay or refund."
+  },
+  "sentence": null,
+  "notes": "No candidates."
+ },
+ "rumbringen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~rum-~ + ~bringen~:\n\n- ~bringen~: Aus Mhd. ~bringen~, aus Ahd. ~bringan~, aus Proto-Westgermanisch *~bringan~, aus Urgermanisch *~bringaną~, wahrscheinlich aus vorgermanischem *~bʰrenk-~, einer Kompositwurzel aus PIE *~bʰer-~ („tragen“) + *~h₁nek-~ („bringen“). Mischkonjugation: ~brachte~ verbindet den Vokalwechsel ~i~ > ~a~ mit schwachem Dentalsuffix. Verwandt mit Englisch ~bring~, Niederländisch ~brengen~, Gotisch ~briggan~.\n- ~rum-~: Umgangssprachliche Kurzform von ~herum~ („herum, ringsum“), selbst ~her-~ + ~um~. Die Verkürzung bleibt auf die gesprochene Sprache und informelles Schreiben beschränkt; die standardsprachliche Zusammensetzung lautet ~herum-~. Gesprochen und umgangssprachlich im Register.\n\n„rumbringen“ meint umgangssprachlich, die Zeit herumzubringen — sie irgendwie vergehen zu lassen.",
+   "en": "A separable compound of ~rum-~ + ~bringen~:\n\n- ~bringen~: From MHG ~bringen~, from OHG ~bringan~, from Proto-West Germanic *~bringan~, from Proto-Germanic *~bringaną~, probably from pre-Germanic *~bʰrenk-~, a compound root from PIE *~bʰer-~ (\"to carry\") + *~h₁nek-~ (\"to bring\"). Mixed conjugation: ~brachte~ pairs the vowel change ~i~ > ~a~ with a weak dental suffix. Cognate with English ~bring~, Dutch ~brengen~, Gothic ~briggan~.\n- ~rum-~: A colloquial contraction of ~herum~ (\"around, about\"), itself ~her-~ + ~um~. The reduction is confined to speech and informal writing; the standard compound is ~herum-~. Spoken and informal in register.\n\n\"rumbringen\" colloquially means to get the time around — to pass or while it away."
+  },
+  "sentence": null,
+  "notes": "No candidates."
+ },
+ "rumkommen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~rum-~ + ~kommen~:\n\n- ~kommen~: Aus Mhd. ~quemen~, ~komen~, ~kumen~, aus Ahd. ~queman~ (seltener ~cuman~, ~chuman~), aus Proto-Westgermanisch *~kweman~, aus Urgermanisch *~kwemaną~, aus PIE *~gʷem-~. Verwandt mit Englisch ~come~, Niederdeutsch ~kamen~, Niederländisch ~komen~, Dänisch ~komme~.\n- ~rum-~: Umgangssprachliche Kurzform von ~herum~ („herum, ringsum“), selbst ~her-~ + ~um~. Die Verkürzung bleibt auf die gesprochene Sprache und informelles Schreiben beschränkt; die standardsprachliche Zusammensetzung lautet ~herum-~. ~rum-~ bezeichnet die kreisende oder ziellose Bewegung, „herum, ringsum“.\n\n„rumkommen“ heißt, viel herumzukommen — an viele Orte zu gelangen.",
+   "en": "A separable compound of ~rum-~ + ~kommen~:\n\n- ~kommen~: From MHG ~quemen~, ~komen~, ~kumen~, from OHG ~queman~ (rarer ~cuman~, ~chuman~), from Proto-West Germanic *~kweman~, from Proto-Germanic *~kwemaną~, from PIE *~gʷem-~. Cognate with English ~come~, Low German ~kamen~, Dutch ~komen~, Danish ~komme~.\n- ~rum-~: A colloquial contraction of ~herum~ (\"around, about\"), itself ~her-~ + ~um~. The reduction is confined to speech and informal writing; the standard compound is ~herum-~. ~rum-~ marks circular or aimless motion, \"around, about.\"\n\n\"rumkommen\" means to get around a good deal — to reach many places."
+  },
+  "sentence": null,
+  "notes": "No candidates."
+ },
+ "rumlaufen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~rum-~ + ~laufen~:\n\n- ~laufen~: Aus Mhd. ~loufen~, aus Ahd. ~hloufan~, ~loufan~, aus Proto-Westgermanisch *~hlaupan~, aus Urgermanisch *~hlaupaną~. Ein starkes Verb der Klasse VII. Der anlautende ~hl-~-Cluster ging während der althochdeutschen Periode verloren. Verwandt mit Englisch ~leap~ und ~lope~, Niederländisch ~lopen~, Dänisch ~løbe~.\n- ~rum-~: Umgangssprachliche Kurzform von ~herum~ („herum, ringsum“), selbst ~her-~ + ~um~. Die Verkürzung bleibt auf die gesprochene Sprache und informelles Schreiben beschränkt; die standardsprachliche Zusammensetzung lautet ~herum-~. ~rum-~ bezeichnet die kreisende oder ziellose Bewegung, „herum, ringsum“.\n\n„rumlaufen“ bezeichnet das ziellose Herumlaufen.",
+   "en": "A separable compound of ~rum-~ + ~laufen~:\n\n- ~laufen~: From MHG ~loufen~, from OHG ~hloufan~, ~loufan~, from Proto-West Germanic *~hlaupan~, from Proto-Germanic *~hlaupaną~. A class VII strong verb. The initial ~hl-~ cluster was lost during the Old High German period. Cognate with English ~leap~ and ~lope~, Dutch ~lopen~, Danish ~løbe~.\n- ~rum-~: A colloquial contraction of ~herum~ (\"around, about\"), itself ~her-~ + ~um~. The reduction is confined to speech and informal writing; the standard compound is ~herum-~. ~rum-~ marks circular or aimless motion, \"around, about.\"\n\n\"rumlaufen\" denotes walking or roaming aimlessly about."
+  },
+  "sentence": null,
+  "notes": "No candidates."
+ },
+ "rummachen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~rum-~ + ~machen~:\n\n- ~machen~: Aus mhd. ~machen~, aus ahd. ~mahhōn~, aus proto-westgermanisch *~makōn~, aus PIE *~mag-~ („kneten, mischen, machen“). Verwandt mit niederländisch ~maken~, niederdeutsch ~maken~, englisch ~make~.\n- ~rum-~: Umgangssprachliche Kurzform von ~herum~ („herum, ringsum“), selbst ~her-~ + ~um~. Die Verkürzung bleibt auf die gesprochene Sprache und informelles Schreiben beschränkt; die standardsprachliche Zusammensetzung lautet ~herum-~. ~rum-~ trägt oft einen abschätzigen Beiklang der Ziellosigkeit (~rumsitzen~, ~rumlaufen~).\n\n„rummachen“ ist salopp für Herummachen — sich mit etwas abgeben, fummeln oder knutschen.",
+   "en": "A separable compound of ~rum-~ + ~machen~:\n\n- ~machen~: From MHG ~machen~, from OHG ~mahhōn~, from Proto-West Germanic *~makōn~, from PIE *~mag-~ (\"to knead, mix, make\"). Cognate with Dutch ~maken~, Low German ~maken~, English ~make~.\n- ~rum-~: A colloquial contraction of ~herum~ (\"around, about\"), itself ~her-~ + ~um~. The reduction is confined to speech and informal writing; the standard compound is ~herum-~. Often carries a dismissive tint of purposelessness (~rumsitzen~, ~rumlaufen~).\n\n\"rummachen\" is casual for fooling around — messing about with something, or making out."
+  },
+  "sentence": null,
+  "notes": "No candidates."
+ },
+ "rumschmeißen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~rum-~ + ~schmeißen~:\n\n- ~schmeißen~: Aus Mhd. ~smīȥen~, aus Ahd. ~smīȥan~, aus Proto-Westgermanisch *~smītan~, aus Urgermanisch *~smītaną~, aus PIE *~smeyd-~. Ein starkes Verb der Klasse I (~schmeißen~, ~schmiss~, ~geschmissen~). Verwandt mit Englisch ~smite~, Niederländisch ~smijten~, Dänisch ~smide~, Gotisch ~bismeitan~ („bestreichen, salben“).\n- ~rum-~: Umgangssprachliche Kurzform von ~herum~ („herum, ringsum“), selbst ~her-~ + ~um~. Die Verkürzung bleibt auf die gesprochene Sprache und informelles Schreiben beschränkt; die standardsprachliche Zusammensetzung lautet ~herum-~. Gesprochen und umgangssprachlich im Register.\n\n„rumschmeißen“ heißt, etwas herumzuwerfen — auch bildlich „mit Geld um sich schmeißen“.",
+   "en": "A separable compound of ~rum-~ + ~schmeißen~:\n\n- ~schmeißen~: From MHG ~smīȥen~, from OHG ~smīȥan~, from Proto-West Germanic *~smītan~, from Proto-Germanic *~smītaną~, from PIE *~smeyd-~. A class I strong verb (~schmeißen~, ~schmiss~, ~geschmissen~). Cognate with English ~smite~, Dutch ~smijten~, Danish ~smide~, Gothic ~bismeitan~ (\"to smear, to anoint\").\n- ~rum-~: A colloquial contraction of ~herum~ (\"around, about\"), itself ~her-~ + ~um~. The reduction is confined to speech and informal writing; the standard compound is ~herum-~. Spoken and informal in register.\n\n\"rumschmeißen\" means to sling something about — also figuratively to throw money around."
+  },
+  "sentence": null,
+  "notes": "No candidates."
+ },
+ "rumstehen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~rum-~ + ~stehen~:\n\n- ~stehen~: Aus Mhd. ~stān~, ~stēn~, aus Ahd. ~stān~, ~stēn~, aus Proto-Westgermanisch *~stān~, aus Urgermanisch *~stāną~, aus PIE *~steh₂-~ („stehen“). Das ~-h-~ kam in Analogie zu ~sehen~ in die Schreibung; die Präteritumformen (~stand~, ~standen~) sind suppletiv, aus Proto-Westgermanisch *~standan~. Verwandt mit Niederländisch ~staan~, Englisch ~stand~, Dänisch ~stå~, Schwedisch ~stå~.\n- ~rum-~: Umgangssprachliche Kurzform von ~herum~ („herum, ringsum“), selbst ~her-~ + ~um~. Die Verkürzung bleibt auf die gesprochene Sprache und informelles Schreiben beschränkt; die standardsprachliche Zusammensetzung lautet ~herum-~. ~rum-~ trägt oft einen abschätzigen Beiklang der Ziellosigkeit (~rumsitzen~, ~rumlaufen~).\n\n„rumstehen“ bezeichnet das untätige Herumstehen.",
+   "en": "A separable compound of ~rum-~ + ~stehen~:\n\n- ~stehen~: From MHG ~stān~, ~stēn~, from OHG ~stān~, ~stēn~, from Proto-West Germanic *~stān~, from Proto-Germanic *~stāną~, from PIE *~steh₂-~ (\"to stand\"). The ~-h-~ entered the spelling by analogy with ~sehen~; the past-tense conjugations (~stand~, ~standen~) are suppletive, from Proto-West Germanic *~standan~. Cognate with Dutch ~staan~, English ~stand~, Danish ~stå~, Swedish ~stå~.\n- ~rum-~: A colloquial contraction of ~herum~ (\"around, about\"), itself ~her-~ + ~um~. The reduction is confined to speech and informal writing; the standard compound is ~herum-~. Often carries a dismissive tint of purposelessness (~rumsitzen~, ~rumlaufen~).\n\n\"rumstehen\" denotes standing idly about."
+  },
+  "sentence": null,
+  "notes": "No candidates."
+ },
+ "rundgehen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~rund~ + ~gehen~:\n\n- ~gehen~: Aus Mhd. ~gan~, ~gen~, aus Ahd. ~gan~, ~gen~, aus Proto-Westgermanisch *~gān~, aus Urgermanisch *~gāną~, aus PIE *~ǵʰeh₁-~ („weggehen“). Die Form ~gen~ ist bairischen Ursprungs; das ~-h-~ kam in Analogie zu ~sehen~ in die Schreibung. Verwandt mit Englisch ~go~, Niederländisch ~gaan~, Niederdeutsch ~gahn~, Schwedisch und Dänisch ~gå~.\n- ~rund~: Im Mhd. als ~runt~ aus Altfranzösisch ~ront~, ~roont~ entlehnt, aus Lateinisch ~rotundus~ („rund“), einer Ableitung von ~rota~ („Rad“). Englisch ~round~ ist dieselbe, unabhängig vollzogene Entlehnung, und auch ~rotund~, ~rotate~ und ~roulette~ gehen auf ~rota~ zurück; das ererbte deutsche Wort zu dieser Wurzel ist ~Rad~, sodass Lehnwort und Erbwort entfernte Verwandte sind. Als Partikel nennt es Rundheit oder übertragen Vollständigkeit als Ergebnis. Die Bedeutung von ~rund~ ist hier: das Adjektiv ~rund~ als der erreichte Zustand.\n\n„rundgehen“ meint das Umlaufen im Kreis; „es geht rund“ heißt zudem, dass viel los ist.",
+   "en": "A separable compound of ~rund~ + ~gehen~:\n\n- ~gehen~: From MHG ~gan~, ~gen~, from OHG ~gan~, ~gen~, from Proto-West Germanic *~gān~, from Proto-Germanic *~gāną~, from PIE *~ǵʰeh₁-~ (\"to leave\"). The form ~gen~ is of Bavarian origin; the ~-h-~ entered the spelling by analogy with ~sehen~. Cognate with English ~go~, Dutch ~gaan~, Low German ~gahn~, Swedish and Danish ~gå~.\n- ~rund~: Borrowed in MHG as ~runt~ from Old French ~ront~, ~roont~, from Latin ~rotundus~ (\"round\"), a derivative of ~rota~ (\"wheel\"). English ~round~ is the same borrowing made independently, and ~rotund~, ~rotate~, and ~roulette~ go back to ~rota~ as well; the inherited German word from that root is ~Rad~ (\"wheel\"), so the loan and the native word are distant relatives. As a particle it names roundness, or figuratively completeness, as the outcome. The sense of ~rund~ here is: the adjective ~rund~ (\"round\") as the resulting state.\n\n\"rundgehen\" means to go around in a circle; \"es geht rund\" additionally means that things are getting lively."
+  },
+  "sentence": null,
+  "notes": "No candidates."
+ },
+ "runterdrücken": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~runter-~ + ~drücken~:\n\n- ~drücken~: Aus Mhd. ~drücken~, aus Ahd. ~drucchen~, aus Proto-Westgermanisch *~þrukkijan~, aus Urgermanisch *~þrukkijaną~, aus PIE *~trewk-~ („auf etwas pressen und brechen“). ~drücken~ („pressen“) und ~drucken~ („drucken“) sind eine Dublette aus demselben althochdeutschen Verb. Verwandt mit Niederländisch ~drukken~, Altenglisch ~þryċċan~, Walisisch ~trychu~, Litauisch ~trū́kti~.\n- ~runter-~: Umgangssprachliche Kurzform von ~herunter~ („herunter, zum Sprecher hin“) und in der Alltagssprache ebenso von ~hinunter~ („hinunter, vom Sprecher weg“), sodass die verkürzte Form beide Richtungen abdeckt, die die Vollformen unterscheiden. Die geschriebene Standardsprache verwendet ~herunter-~ oder ~hinunter-~. Deiktisch neutral, anders als die Vollformen, die sie ersetzt.\n\n„runterdrücken“ heißt, etwas nach unten zu drücken.",
+   "en": "A separable compound of ~runter-~ + ~drücken~:\n\n- ~drücken~: From MHG ~drücken~, from OHG ~drucchen~, from Proto-West Germanic *~þrukkijan~, from Proto-Germanic *~þrukkijaną~, from PIE *~trewk-~ (\"to press on and break\"). ~drücken~ (\"to press\") and ~drucken~ (\"to print\") are a doublet from the same Old High German verb. Cognate with Dutch ~drukken~, Old English ~þryċċan~, Welsh ~trychu~, Lithuanian ~trū́kti~.\n- ~runter-~: A colloquial contraction of ~herunter~ (\"down hither\"), and in everyday speech of ~hinunter~ (\"down thither\") as well, so that the reduced form covers both directions the full forms distinguish. Written standard German uses ~herunter-~ or ~hinunter-~. Deictically neutral, unlike the full forms it replaces.\n\n\"runterdrücken\" means to press something down."
+  },
+  "sentence": null,
+  "notes": "No candidates."
+ },
+ "runtergehen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~runter-~ + ~gehen~:\n\n- ~gehen~: Aus Mhd. ~gan~, ~gen~, aus Ahd. ~gan~, ~gen~, aus Proto-Westgermanisch *~gān~, aus Urgermanisch *~gāną~, aus PIE *~ǵʰeh₁-~ („weggehen“). Die Form ~gen~ ist bairischen Ursprungs; das ~-h-~ kam in Analogie zu ~sehen~ in die Schreibung. Verwandt mit Englisch ~go~, Niederländisch ~gaan~, Niederdeutsch ~gahn~, Schwedisch und Dänisch ~gå~.\n- ~runter-~: Umgangssprachliche Kurzform von ~herunter~ („herunter, zum Sprecher hin“) und in der Alltagssprache ebenso von ~hinunter~ („hinunter, vom Sprecher weg“), sodass die verkürzte Form beide Richtungen abdeckt, die die Vollformen unterscheiden. Die geschriebene Standardsprache verwendet ~herunter-~ oder ~hinunter-~. ~runter-~ bezeichnet die Bewegung nach unten, „herunter, hinunter“.\n\n„runtergehen“ reicht von der wörtlichen Abwärtsbewegung bis zum Sinken von Preisen oder Werten.",
+   "en": "A separable compound of ~runter-~ + ~gehen~:\n\n- ~gehen~: From MHG ~gan~, ~gen~, from OHG ~gan~, ~gen~, from Proto-West Germanic *~gān~, from Proto-Germanic *~gāną~, from PIE *~ǵʰeh₁-~ (\"to leave\"). The form ~gen~ is of Bavarian origin; the ~-h-~ entered the spelling by analogy with ~sehen~. Cognate with English ~go~, Dutch ~gaan~, Low German ~gahn~, Swedish and Danish ~gå~.\n- ~runter-~: A colloquial contraction of ~herunter~ (\"down hither\"), and in everyday speech of ~hinunter~ (\"down thither\") as well, so that the reduced form covers both directions the full forms distinguish. Written standard German uses ~herunter-~ or ~hinunter-~. ~runter-~ marks downward motion, \"down.\"\n\n\"runtergehen\" ranges from literal descent to the falling of prices or figures."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Wenn Herr Trump mit der Unternehmensteuer auf 15 Prozent runtergeht, ist das die Hälfte der Unternehmensteuer, die in Deutschland gezahlt wird.",
+    "source": "Bundestag — Plenarprotokoll 20/210"
+   },
+   "en": {
+    "sentence": "If Mr. Trump brings corporate tax down to 15 percent, that is half the corporate tax paid in Germany.",
+    "source": "Bundestag — Plenarprotokoll 20/210"
+   }
+  },
+  "notes": null
+ },
+ "runterhalten": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~runter-~ + ~halten~:\n\n- ~halten~: Aus Mhd. ~halten~, aus Ahd. ~haltan~, aus Proto-Westgermanisch *~haldan~, aus Urgermanisch *~haldaną~. Verwandt mit Englisch ~hold~, Niederländisch ~houden~, Niederdeutsch ~holden~, Dänisch ~holde~, Isländisch ~halda~, Schwedisch ~hålla~.\n- ~runter-~: Umgangssprachliche Kurzform von ~herunter~ („herunter, zum Sprecher hin“) und in der Alltagssprache ebenso von ~hinunter~ („hinunter, vom Sprecher weg“), sodass die verkürzte Form beide Richtungen abdeckt, die die Vollformen unterscheiden. Die geschriebene Standardsprache verwendet ~herunter-~ oder ~hinunter-~. Gesprochen und umgangssprachlich im Register.\n\n„runterhalten“ heißt, etwas unten zu halten.",
+   "en": "A separable compound of ~runter-~ + ~halten~:\n\n- ~halten~: From MHG ~halten~, from OHG ~haltan~, from Proto-West Germanic *~haldan~, from Proto-Germanic *~haldaną~. Cognate with English ~hold~, Dutch ~houden~, Low German ~holden~, Danish ~holde~, Icelandic ~halda~, Swedish ~hålla~.\n- ~runter-~: A colloquial contraction of ~herunter~ (\"down hither\"), and in everyday speech of ~hinunter~ (\"down thither\") as well, so that the reduced form covers both directions the full forms distinguish. Written standard German uses ~herunter-~ or ~hinunter-~. Spoken and informal in register.\n\n\"runterhalten\" means to hold something down, keeping it low."
+  },
+  "sentence": null,
+  "notes": "No candidates."
+ },
+ "runterkommen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~runter-~ + ~kommen~:\n\n- ~kommen~: Aus Mhd. ~quemen~, ~komen~, ~kumen~, aus Ahd. ~queman~ (seltener ~cuman~, ~chuman~), aus Proto-Westgermanisch *~kweman~, aus Urgermanisch *~kwemaną~, aus PIE *~gʷem-~. Verwandt mit Englisch ~come~, Niederdeutsch ~kamen~, Niederländisch ~komen~, Dänisch ~komme~.\n- ~runter-~: Umgangssprachliche Kurzform von ~herunter~ („herunter, zum Sprecher hin“) und in der Alltagssprache ebenso von ~hinunter~ („hinunter, vom Sprecher weg“), sodass die verkürzte Form beide Richtungen abdeckt, die die Vollformen unterscheiden. Die geschriebene Standardsprache verwendet ~herunter-~ oder ~hinunter-~. ~runter-~ bezeichnet die Bewegung nach unten, „herunter, hinunter“.\n\n„runterkommen“ meint wörtlich das Herabkommen, umgangssprachlich das Zur-Ruhe-Kommen.",
+   "en": "A separable compound of ~runter-~ + ~kommen~:\n\n- ~kommen~: From MHG ~quemen~, ~komen~, ~kumen~, from OHG ~queman~ (rarer ~cuman~, ~chuman~), from Proto-West Germanic *~kweman~, from Proto-Germanic *~kwemaną~, from PIE *~gʷem-~. Cognate with English ~come~, Low German ~kamen~, Dutch ~komen~, Danish ~komme~.\n- ~runter-~: A colloquial contraction of ~herunter~ (\"down hither\"), and in everyday speech of ~hinunter~ (\"down thither\") as well, so that the reduced form covers both directions the full forms distinguish. Written standard German uses ~herunter-~ or ~hinunter-~. ~runter-~ marks downward motion, \"down.\"\n\n\"runterkommen\" literally means to come down, and colloquially to calm down."
+  },
+  "sentence": null,
+  "notes": "No candidates."
+ },
+ "runterladen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~runter-~ + ~laden~:\n\n- ~laden~: Zwei historisch verschiedene Verben unter einem Infinitiv. ~laden~ (stark, „beladen“): aus Mhd. ~laden~, aus Ahd. ~hladan~, aus Proto-Westgermanisch *~hlaþan~, aus Urgermanisch *~hlaþaną~, aus PIE *~kleh₂-~ („legen, ausbreiten“); verwandt mit Englisch ~lade~ und ~laden~, Litauisch ~klṓti~. ~laden~ (schwach, „einladen“): aus Mhd. ~laden~, aus Ahd. ~ladon~, aus Proto-Westgermanisch *~laþōn~, aus Urgermanisch *~laþōną~, von *~laþō~ („Einladung“), aus PIE *~h₂lot-eh₂~, einer nur im Germanischen und Anatolischen belegten Wurzel (Hethitisch ~halzai~).\n- ~runter-~: Umgangssprachliche Kurzform von ~herunter~ („herunter, zum Sprecher hin“) und in der Alltagssprache ebenso von ~hinunter~ („hinunter, vom Sprecher weg“), sodass die verkürzte Form beide Richtungen abdeckt, die die Vollformen unterscheiden. Die geschriebene Standardsprache verwendet ~herunter-~ oder ~hinunter-~. Deiktisch neutral, anders als die Vollformen, die sie ersetzt.\n\n„runterladen“ ist herunterladen; ~laden~ ist hier das starke „beladen“, nicht das schwache „einladen“.",
+   "en": "A separable compound of ~runter-~ + ~laden~:\n\n- ~laden~: Two historically distinct verbs under one infinitive. ~laden~ (strong, \"to load\"): from MHG ~laden~, from OHG ~hladan~, from Proto-West Germanic *~hlaþan~, from Proto-Germanic *~hlaþaną~, from PIE *~kleh₂-~ (\"to put, lay out\"); cognate with English ~lade~ and ~laden~, Lithuanian ~klṓti~. ~laden~ (weak, \"to invite, summon\"): from MHG ~laden~, from OHG ~ladon~, from Proto-West Germanic *~laþōn~, from Proto-Germanic *~laþōną~, from *~laþō~ (\"invitation\"), from PIE *~h₂lot-eh₂~, a root found only in Germanic and Anatolian (Hittite ~halzai~).\n- ~runter-~: A colloquial contraction of ~herunter~ (\"down hither\"), and in everyday speech of ~hinunter~ (\"down thither\") as well, so that the reduced form covers both directions the full forms distinguish. Written standard German uses ~herunter-~ or ~hinunter-~. Deictically neutral, unlike the full forms it replaces.\n\n\"runterladen\" is to download; ~laden~ here is the strong \"to load\", not its weak \"to invite\" twin."
+  },
+  "sentence": null,
+  "notes": "No candidates."
+ }
+}

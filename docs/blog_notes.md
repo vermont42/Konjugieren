@@ -3519,3 +3519,60 @@ a fresh budget, not a 91%-of-window edit. Left it for the resume note rather tha
 Standing tally: 51 of 104 shards, 53 remaining, all contiguous from 051. The exemplar tail is a
 one-time asset that now sharpens every future window, which is the trade that justified spending
 this one on it rather than on the four extra shards the same budget would have bought.
+
+## Mine shards 051–052, and find a 12-way de/en frame mismatch in the separable senses (2026-07-21)
+
+A short window — 89% of the session already spent when it opened, so the budget bought one wave
+of two shards and a defect investigation, not a run. Regenerated the build products (`forms.json`
+at 50,011 forms, the index at 0 unresolved morphemes, 61% of targets with candidates), mined
+`mine_051` and `mine_052` at concurrency 2, and ran the Phase 4 validator over all 53 out-files:
+all pass. Both shards were `her-`/`heraus-`/`herbei-`/`herein-`/`herum-` deictic compounds; yield
+was 19+14 sentences against 6+11 nulls, most nulls being empty candidate pools rather than
+refusals, which is the expected shape for a band this heavy in colloquial motion verbs the legal
+and literary corpus barely uses.
+
+**The window's real find came from reading a report as evidence about the pipeline, not status.**
+Shard 051 flagged that `en.her.senses[1]` carried a leaked frame — *"The sense of ~her-~ here is:
+It can also point backward in time…"* — while its German twin was clean. That is the exact
+double-prepend signature the Phase 4 note attributes to `normalize_prefix_senses.py`, so I scanned
+the whole `prefixes-separable.json` for it. The first cut was misleading: **419 EN and 411 DE
+senses carry that frame**, and at a glance it looked like a corpus-wide contamination. It is not.
+The frame is the *designed* form for the short-gloss prefixes — it is the connective the normalizer
+adds so "splice verbatim" is executable — and it is present uniformly in both languages there. The
+actual defect is narrower and sharper: a **de/en parity mismatch**, a sense framed in one language
+and frame-free in its twin. There are **12** of them (10 EN-only, 2 DE-only), across `beieinander`,
+`erstauf`, `gern`, `her`, `hier`, `los`, `schön`, `tot`, `voraus`, `wohl`. The subagent had found
+one of the twelve.
+
+**Why I did not fix it in-window, and why it is not a mechanical strip.** The 12 straddle two
+authoring styles. The short-gloss entries (`gern`, `hier`, `beieinander`) use the frame as their
+norm and one DE twin simply lost it. The full-entry prose entries (`her`, `los`, `tot`, `voraus`,
+`wohl`, `erstauf`, `schön`) are flowing multi-sentence exposition — "It also…", "More often it is
+temporal…" — authored to stand alone starting with the prefix name, and the frame is contamination
+that landed on a sense or two in one language. Repairing either direction is real bilingual
+authoring, not deletion: the frame-free senses are full clauses beginning with the prefix
+(`~gern-~ drückt Zuneigung oder Mögen aus`), while the framed ones are fragments built to follow a
+colon (`…ist hier: expressing fondness`), so stripping a frame leaves a fragment
+(`bei Reflexiva: ein Zustand des Behagens…`) and adding one double-states the prefix. Which style
+each entry should take is a presentation call that is Josh's, it does not block the 53 mined shards
+(both new shards used `her` sense 0, which is clean in both languages), and the window was at its
+5-point-headroom stop line — so the responsible move was to record the finding with a per-entry
+recommendation and leave the authoring for a fresh budget, exactly as shard 049's exemplar/reading
+precedence question was left at the end of the prior window.
+
+Standing tally: 53 of 104 shards, 51 remaining, all contiguous from 053. Two data decisions now
+wait at a fresh budget — this frame-parity repair, and the shard-049 exemplar-precedence rule from
+the previous note — and both are the kind of cheap-before-mining, expensive-after change the brief
+says to make between windows rather than inside one.
+
+**Decision captured, execution deferred (Josh, 2026-07-21):** repair the 12 mismatches by
+*per-entry dominant style*, not by a blanket strip. The 7 full-entry prose prefixes — `her`, `los`,
+`tot`, `voraus`, `wohl`, `erstauf`, `schön` — go fully frame-free, re-authoring each contaminated
+sense into a standalone clause beginning with the prefix name (in both languages, matching the
+clean twin's register). The 3 short-gloss prefixes — `gern`, `hier`, `beieinander` — keep the frame
+as their norm and get it *added* to the one DE twin that lost it (rephrasing the finite clause into
+the colon-fragment shape the sibling senses use). `schön` is the mixed case to watch: sense 0 is
+framed in both languages, so it stays framed and only senses 1–2 are brought into line frame-free —
+resolve it by reading all three senses together, not sense-by-sense. Validate with
+`merge_reuse_files.py --validate-only` after, which catches tilde/quote/parity regressions. This is
+next-session work at a fresh budget, before mining resumes from shard 053.

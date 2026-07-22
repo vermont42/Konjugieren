@@ -1,0 +1,346 @@
+{
+ "hierhergehören": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~hierher-~ + ~ge-~ + ~hören~:\n\n- ~hören~: Aus Mhd. ~hœren~, aus Ahd. ~hōren~, aus Urgermanisch *~hauzijaną~, aus PIE *~h₂ḱh₂owsyéti~ („scharfohrig sein“), aus *~h₂eḱ-~ („scharf“) + *~h₂ows-~ („Ohr“). Verwandt mit Englisch ~hear~, Niederländisch ~horen~, Dänisch ~høre~, Gotisch ~hausjan~.\n- ~ge-~: Aus Mhd. ~ge-~, aus Ahd. ~gi-~, ~ga-~, aus Proto-Westgermanisch *~ga-~, aus Urgermanisch *~ga-~ („zusammen, mit“), aus PIE *~ḱóm~ („neben, nahe, bei, mit“). Dasselbe Präfix bildet das Perfektpartizip und, als Substantivpräfix, Kollektiva wie ~Gebirge~ und ~Gebrüder~. ~ge-~ ist semantisch nicht mehr unterscheidbar und mit dem Grundverb verschmolzen.\n- ~hierher-~: Das Adverb ~hier~ mit dem deiktischen ~her~ zusammengesetzt: wörtlich „hier-her“. Wie die übrige ~her-~/~hin-~-Familie ist es durchsichtig zusammengesetzt — ~her-~ weist die Bewegung auf den Sprecher zu, ~hin-~ vom Sprecher weg — und seine Etymologie ist die seiner beiden Teile. Die Bedeutung von ~hierher-~ ist hier: direktional „an diesen Ort, hierhin“.\n\nIn ~gehören~ hat sich die Grundbedeutung weit von ~hören~ „hören“ entfernt und bedeutet „zugehörig sein“; ~hierher-~ fügt den Ort hinzu, sodass das Ganze „an diesen Ort gehören“ heißt — und, von einer Bemerkung gesagt, „hierher passen, relevant sein“.",
+   "en": "A separable compound of ~hierher-~ + ~ge-~ + ~hören~:\n\n- ~hören~: From MHG ~hœren~, from OHG ~hōren~, from Proto-Germanic *~hauzijaną~, from PIE *~h₂ḱh₂owsyéti~ (\"to be sharp-eared\"), from *~h₂eḱ-~ (\"sharp\") + *~h₂ows-~ (\"ear\"). Cognate with English ~hear~, Dutch ~horen~, Danish ~høre~, Gothic ~hausjan~.\n- ~ge-~: From MHG ~ge-~, from OHG ~gi-~, ~ga-~, from Proto-West Germanic *~ga-~, from Proto-Germanic *~ga-~ (\"together, with\"), from PIE *~ḱóm~ (\"beside, near, by, with\"). The same prefix that forms the Perfektpartizip and, as a noun prefix, collectives like ~Gebirge~ and ~Gebrüder~. ~ge-~ is no longer semantically distinct, having fused with the base verb.\n- ~hierher-~: The adverb ~hier~ (\"here\") compounded with the deictic ~her~ (\"hither\"): literally \"here-hither\". Like the rest of the ~her-~ / ~hin-~ family it is transparently compositional — ~her-~ points motion toward the speaker, ~hin-~ away from the speaker — and its etymology is that of its two parts. The sense of ~hierher-~ here is: directional, \"to this place, over here\".\n\nIn ~gehören~ the base has drifted far from ~hören~ \"to hear\" and means \"to belong\"; ~hierher-~ adds the location, so the whole means to belong in this place — and, said of a remark, to be relevant here."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Hören Sie: Ich bin vor etwa 10 Tagen verhaftet worden, über die Tatsache der Verhaftung selbst lache ich, aber das gehört jetzt nicht hierher.",
+    "source": "Kafka — Der Proceß"
+   },
+   "en": {
+    "sentence": "Listen: I was arrested about ten days ago; I laugh at the fact of the arrest itself, but that doesn't belong here now.",
+    "source": "Kafka — Der Proceß"
+   }
+  },
+  "notes": null
+ },
+ "hierherkommen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~hierher-~ + ~kommen~:\n\n- ~kommen~: Aus Mhd. ~quemen~, ~komen~, ~kumen~, aus Ahd. ~queman~ (seltener ~cuman~, ~chuman~), aus Proto-Westgermanisch *~kweman~, aus Urgermanisch *~kwemaną~, aus PIE *~gʷem-~. Verwandt mit Englisch ~come~, Niederdeutsch ~kamen~, Niederländisch ~komen~, Dänisch ~komme~.\n- ~hierher-~: Das Adverb ~hier~ mit dem deiktischen ~her~ zusammengesetzt: wörtlich „hier-her“. Wie die übrige ~her-~/~hin-~-Familie ist es durchsichtig zusammengesetzt — ~her-~ weist die Bewegung auf den Sprecher zu, ~hin-~ vom Sprecher weg — und seine Etymologie ist die seiner beiden Teile. Die Bedeutung von ~hierher-~ ist hier: direktional „an diesen Ort, hierhin“.\n\nMit ~kommen~ ist das Kompositum vollkommen durchsichtig — an diesen Ort kommen — und bildet wie andere Bewegungsverben das Perfekt mit ~sein~.",
+   "en": "A separable compound of ~hierher-~ + ~kommen~:\n\n- ~kommen~: From MHG ~quemen~, ~komen~, ~kumen~, from OHG ~queman~ (rarer ~cuman~, ~chuman~), from Proto-West Germanic *~kweman~, from Proto-Germanic *~kwemaną~, from PIE *~gʷem-~. Cognate with English ~come~, Low German ~kamen~, Dutch ~komen~, Danish ~komme~.\n- ~hierher-~: The adverb ~hier~ (\"here\") compounded with the deictic ~her~ (\"hither\"): literally \"here-hither\". Like the rest of the ~her-~ / ~hin-~ family it is transparently compositional — ~her-~ points motion toward the speaker, ~hin-~ away from the speaker — and its etymology is that of its two parts. The sense of ~hierher-~ here is: directional, \"to this place, over here\".\n\nWith ~kommen~ the compound is fully transparent — to come to this place — and, like other motion verbs, forms its perfect with ~sein~."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Da sprach Samuel zu Isai; Sende hin und laß ihn holen; denn wir werden uns nicht setzen, bis er hierherkomme.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "Then Samuel said to Jesse: Send and fetch him; for we will not sit down until he comes here.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": null
+ },
+ "hinabklettern": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~hinab-~ + ~klettern~:\n\n- ~klettern~: Ein Iterativverb, im Frühneuhochdeutschen aus ~kletten~ gebildet, aus PIE *~gleyt-~ („sich klammern, haften, kleben“), aus der Wurzel *~gley-~ („kleben, schmieren“). Das Iterativsuffix ~-ern~ betont die wiederholte Handlung. Verwandt mit ~Klette~ und ~Kleid~, ursprünglich etwas am Körper Haftendes.\n- ~hinab-~: Das deiktische Adverb ~hin~ („vom Sprecher weg“) mit ~ab~ („herunter, weg“) zusammengesetzt: Bewegung nach unten und weg. Durchsichtig zusammengesetzt; die Etymologie gehört den beiden Bestandteilen, und der deiktische Gegensatz ist ~herab~ („zum Sprecher herunter“). Die Bedeutung von ~hinab-~ ist hier: direktional „hinunter, abwärts“.\n\n~klettern~ steuert die Art und Weise bei — ein Hinunterklettern mit Händen und Füßen statt eines bloßen Hinabgehens; das Iterativsuffix ~-ern~ bewahrt den Sinn des wiederholten Sich-Festklammerns auch beim Abstieg.",
+   "en": "A separable compound of ~hinab-~ + ~klettern~:\n\n- ~klettern~: An iterative verb formed in Early New High German from ~kletten~, from PIE *~gleyt-~ (\"to cling to, cleave, stick\"), from the root *~gley-~ (\"to stick, smear\"). The iterative ~-ern~ suffix emphasizes repeated action. Related to ~Klette~ (\"burr\") and to ~Kleid~ (\"garment\"), originally something that clings to the body.\n- ~hinab-~: The deictic adverb ~hin~ (\"thither, away from the speaker\") compounded with ~ab~ (\"off, down\"): motion downward and away. Transparently compositional; the etymology belongs to the two component entries, and the deictic contrast is with ~herab~ (\"down toward the speaker\"). The sense of ~hinab-~ here is: directional, \"down, downward\".\n\n~klettern~ contributes the manner — a scrambling, hand-and-foot descent rather than a plain walk down — and the iterative ~-ern~ keeps the sense of repeated clutching even on the way down."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "hinabsteigen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~hinab-~ + ~steigen~:\n\n- ~steigen~: Aus Mhd. ~stîgen~, aus Ahd. ~stīgan~, aus Proto-Westgermanisch *~stīgan~, aus Urgermanisch *~stīganą~, aus PIE *~steygʰ-~ („gehen, steigen“). Ein starkes Verb der Klasse I (~steigen~, ~stieg~, ~gestiegen~); dieselbe Wurzel ergab Altgriechisch ~steíkhō~ („ich gehe“). Verwandt mit dem archaischen Englisch ~sty~ („klettern“), Niederländisch ~stijgen~, Gotisch ~steigan~.\n- ~hinab-~: Das deiktische Adverb ~hin~ („vom Sprecher weg“) mit ~ab~ („herunter, weg“) zusammengesetzt: Bewegung nach unten und weg. Durchsichtig zusammengesetzt; die Etymologie gehört den beiden Bestandteilen, und der deiktische Gegensatz ist ~herab~ („zum Sprecher herunter“). Die Bedeutung von ~hinab-~ ist hier: direktional „hinunter, abwärts“.\n\n~steigen~ allein bezeichnet nur „sich auf einer Steigung bewegen“ — es dient ~hinauf-~ ebenso wie ~hinab-~ —, sodass hier allein die Partikel die Richtung als abwärts und vom Sprecher weg festlegt.",
+   "en": "A separable compound of ~hinab-~ + ~steigen~:\n\n- ~steigen~: From MHG ~stîgen~, from OHG ~stīgan~, from Proto-West Germanic *~stīgan~, from Proto-Germanic *~stīganą~, from PIE *~steygʰ-~ (\"to walk, climb\"). A class I strong verb (~steigen~, ~stieg~, ~gestiegen~); the same root gave Ancient Greek ~steíkhō~ (\"I go\"). Cognate with archaic English ~sty~ (\"to climb\"), Dutch ~stijgen~, Gothic ~steigan~.\n- ~hinab-~: The deictic adverb ~hin~ (\"thither, away from the speaker\") compounded with ~ab~ (\"off, down\"): motion downward and away. Transparently compositional; the etymology belongs to the two component entries, and the deictic contrast is with ~herab~ (\"down toward the speaker\"). The sense of ~hinab-~ here is: directional, \"down, downward\".\n\n~steigen~ by itself says only \"move on a gradient\" — it serves ~hinauf-~ as readily as ~hinab-~ — so here the particle alone fixes the direction as downward and away from the speaker."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Er ist noch gehindert, hinabzusteigen, sein Koffer hindert ihn, der eben mit Mühsal die leiterartige Treppe hinunter gezerrt und geschleppt wird.",
+    "source": "Mann — Der Tod in Venedig"
+   },
+   "en": {
+    "sentence": "He is still kept from climbing down; his trunk hinders him, which is just now being dragged and hauled with effort down the ladder-like stairs.",
+    "source": "Mann — Der Tod in Venedig"
+   }
+  },
+  "notes": null
+ },
+ "hinarbeiten": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~hin-~ + ~arbeiten~:\n\n- ~arbeiten~: Aus Ahd. ~arbeiten~, aus Urgermanisch *~arbaidijaną~, letztlich aus PIE *~h₃órbʰos~ („Waise“); der Bedeutungsweg führt von „Waise“ über „Mühsal, Plage“ zu „Arbeit“. Verwandt mit Niederländisch ~arbeiden~, Gotisch ~arbaidjan~ und — aus derselben Wurzel — Englisch ~orphan~.\n- ~hin-~: Aus Ahd. ~hina~, aus Urgermanisch *~hina~ („weg von hier, dorthin“), aus dem PIE-Demonstrativstamm *~ḱi-~ („dieser, hier“). ~Hin-~ weist vom Sprecher weg, ~her-~ zum Sprecher hin; das Englische zog dieselbe Grenze einst mit ~thither~ und ~hither~. Verwandt mit Englisch ~hence~ und ~here~. Die Partikel drückt eine Bewegung auf ein Ziel zu aus, im Gegensatz zu ~her-~ für die Bewegung zum Sprecher hin.\n\nDie Bewegung ist hier übertragen: Man reist nirgends hin, sondern richtet anhaltende Anstrengung auf ein Ziel, ~auf etwas hinarbeiten~, wobei die Partikel auf das Ziel statt auf einen Ort weist.",
+   "en": "A separable compound of ~hin-~ + ~arbeiten~:\n\n- ~arbeiten~: From OHG ~arbeiten~, from Proto-Germanic *~arbaidijaną~, ultimately from PIE *~h₃órbʰos~ (\"orphan\"); the sense runs from \"orphan\" through \"hardship, toil\" to \"work.\" Cognate with Dutch ~arbeiden~, Gothic ~arbaidjan~, and — from the same root — English ~orphan~.\n- ~hin-~: From OHG ~hina~, from Proto-Germanic *~hina~ (\"away from here, thither\"), from the PIE demonstrative stem *~ḱi-~ (\"this, here\"). ~Hin-~ points away from the speaker and ~her-~ toward the speaker; English once drew the same line with ~thither~ and ~hither~. Cognate with English ~hence~ and ~here~. The particle conveys motion toward a destination, paired against ~her-~ for motion toward the speaker.\n\nHere the motion is figurative: one travels nowhere but directs sustained effort toward a goal, ~auf etwas hinarbeiten~, the particle pointing at the aim rather than a place."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Worauf Sie seit Jahren unermüdlich hinarbeiten und was Sie regelmäßig mit Ihren Aussagen und auch Ihren Anträgen versuchen, hat nun endlich funktioniert.",
+    "source": "Bundestag — Plenarprotokoll 20/210"
+   },
+   "en": {
+    "sentence": "What you have been tirelessly working toward for years, and what you regularly attempt with your statements and your motions, has now finally succeeded.",
+    "source": "Bundestag — Plenarprotokoll 20/210"
+   }
+  },
+  "notes": "hin- sense chosen by the sense text (\"toward a destination\"), since the figurative goal-directed use matches no exemplar and that slot's exemplar list is empty."
+ },
+ "hinaufgeben": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~hinauf-~ + ~geben~:\n\n- ~geben~: Aus Mhd. ~gëben~, aus Ahd. ~gëban~, aus Proto-Westgermanisch *~geban~, aus Urgermanisch *~gebaną~, aus PIE *~gʰebʰ-~ („geben“). Verwandt mit Englisch ~give~ (aus Altnordisch ~gefa~), Niederländisch ~geven~, Schwedisch ~giva~/~ge~, Dänisch ~give~.\n- ~hinauf-~: Eine durchsichtige Zusammensetzung aus ~hin-~ („dorthin“, Bewegung vom Sprecher weg) und ~auf~ („auf, hinauf“), also „nach oben und vom Sprecher weg“ — der Aufstieg von unten gesehen. Ihr Spiegelbild ist ~herauf~, derselbe Aufstieg zum Sprecher hin. ~hinauf-~ bezeichnet die Aufwärtsbewegung, vom Sprecher weg ausgerichtet.\n\n~geben~ steuert die Übergabe bei und ~hinauf-~ die Richtung: etwas nach oben, an einen höher gelegenen Ort reichen.",
+   "en": "A separable compound of ~hinauf-~ + ~geben~:\n\n- ~geben~: From MHG ~gëben~, from OHG ~gëban~, from Proto-West Germanic *~geban~, from Proto-Germanic *~gebaną~, from PIE *~gʰebʰ-~ (\"to give\"). Cognate with English ~give~ (from Old Norse ~gefa~), Dutch ~geven~, Swedish ~giva~/~ge~, Danish ~give~.\n- ~hinauf-~: A transparent compound of ~hin-~ (\"thither,\" marking motion away from the speaker) and ~auf~ (\"up, onto\"), so \"upward and away from the speaker\" — the climb seen from the bottom. Its mirror image is ~herauf~, the same ascent toward the speaker. ~hinauf-~ marks upward motion oriented away from the speaker.\n\n~geben~ contributes the transfer and ~hinauf-~ the direction: to hand or pass something up to a higher place."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "hinaufgehen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~hinauf-~ + ~gehen~:\n\n- ~gehen~: Aus Mhd. ~gan~, ~gen~, aus Ahd. ~gan~, ~gen~, aus Proto-Westgermanisch *~gān~, aus Urgermanisch *~gāną~, aus PIE *~ǵʰeh₁-~ („weggehen“). Die Form ~gen~ ist bairischen Ursprungs; das ~-h-~ kam in Analogie zu ~sehen~ in die Schreibung. Verwandt mit Englisch ~go~, Niederländisch ~gaan~, Niederdeutsch ~gahn~, Schwedisch und Dänisch ~gå~.\n- ~hinauf-~: Eine durchsichtige Zusammensetzung aus ~hin-~ („dorthin“, Bewegung vom Sprecher weg) und ~auf~ („auf, hinauf“), also „nach oben und vom Sprecher weg“ — der Aufstieg von unten gesehen. Ihr Spiegelbild ist ~herauf~, derselbe Aufstieg zum Sprecher hin. ~hinauf-~ bezeichnet die Aufwärtsbewegung, vom Sprecher weg ausgerichtet.\n\nMit ~gehen~ ist das Kompositum das schlichte intransitive „hinaufgehen“ — zu Fuß, vom Sprecher weg — und bildet wie andere Bewegungsverben das Perfekt mit ~sein~.",
+   "en": "A separable compound of ~hinauf-~ + ~gehen~:\n\n- ~gehen~: From MHG ~gan~, ~gen~, from OHG ~gan~, ~gen~, from Proto-West Germanic *~gān~, from Proto-Germanic *~gāną~, from PIE *~ǵʰeh₁-~ (\"to leave\"). The form ~gen~ is of Bavarian origin; the ~-h-~ entered the spelling by analogy with ~sehen~. Cognate with English ~go~, Dutch ~gaan~, Low German ~gahn~, Swedish and Danish ~gå~.\n- ~hinauf-~: A transparent compound of ~hin-~ (\"thither,\" marking motion away from the speaker) and ~auf~ (\"up, onto\"), so \"upward and away from the speaker\" — the climb seen from the bottom. Its mirror image is ~herauf~, the same ascent toward the speaker. ~hinauf-~ marks upward motion oriented away from the speaker.\n\nWith ~gehen~ the compound is the plain intransitive to go up — on foot, away from the speaker — and, like other motion verbs, forms its perfect with ~sein~."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Aber meine Brüder, die mit mir hinaufgegangen waren, machten dem Volk das Herz verzagt; ich aber folgte dem HERRN, meinem Gott, treulich.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "But my brothers who had gone up with me made the people's heart faint; I, however, faithfully followed the LORD my God.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": null
+ },
+ "hinaufhalten": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~hinauf-~ + ~halten~:\n\n- ~halten~: Aus Mhd. ~halten~, aus Ahd. ~haltan~, aus Proto-Westgermanisch *~haldan~, aus Urgermanisch *~haldaną~. Verwandt mit Englisch ~hold~, Niederländisch ~houden~, Niederdeutsch ~holden~, Dänisch ~holde~, Isländisch ~halda~, Schwedisch ~hålla~.\n- ~hinauf-~: Eine durchsichtige Zusammensetzung aus ~hin-~ („dorthin“, Bewegung vom Sprecher weg) und ~auf~ („auf, hinauf“), also „nach oben und vom Sprecher weg“ — der Aufstieg von unten gesehen. Ihr Spiegelbild ist ~herauf~, derselbe Aufstieg zum Sprecher hin. ~hinauf-~ bezeichnet die Aufwärtsbewegung, vom Sprecher weg ausgerichtet.\n\n~halten~ mit der Aufwärtspartikel ergibt „etwas hinaufhalten“, also einen Gegenstand nach oben halten, statt sich selbst zu bewegen.",
+   "en": "A separable compound of ~hinauf-~ + ~halten~:\n\n- ~halten~: From MHG ~halten~, from OHG ~haltan~, from Proto-West Germanic *~haldan~, from Proto-Germanic *~haldaną~. Cognate with English ~hold~, Dutch ~houden~, Low German ~holden~, Danish ~holde~, Icelandic ~halda~, Swedish ~hålla~.\n- ~hinauf-~: A transparent compound of ~hin-~ (\"thither,\" marking motion away from the speaker) and ~auf~ (\"up, onto\"), so \"upward and away from the speaker\" — the climb seen from the bottom. Its mirror image is ~herauf~, the same ascent toward the speaker. ~hinauf-~ marks upward motion oriented away from the speaker.\n\n~halten~ \"to hold\" with the upward particle gives \"to hold something up\" — raising an object into a higher position rather than moving oneself."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "hinaufschauen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~hinauf-~ + ~schauen~:\n\n- ~schauen~: Aus Mhd. ~schouwen~, aus Ahd. ~scouwōn~, aus Urgermanisch *~skawwōną~ („blicken, sehen, beobachten“), aus PIE *~(s)kewh₁-~ („beachten, schauen, wahrnehmen“). Dieselbe Wurzel ergibt englisch ~show~; die germanischen Nachkommen teilen sich zwischen intransitivem „schauen“ und transitivem „sichtbar machen“. Das Verb ist charakteristisch für den süddeutschen, österreichischen und schweizerischen Sprachgebrauch. Verwandt mit englisch ~show~, niederländisch ~schouwen~.\n- ~hinauf-~: Eine durchsichtige Zusammensetzung aus ~hin-~ („dorthin“, Bewegung vom Sprecher weg) und ~auf~ („auf, hinauf“), also „nach oben und vom Sprecher weg“ — der Aufstieg von unten gesehen. Ihr Spiegelbild ist ~herauf~, derselbe Aufstieg zum Sprecher hin. ~hinauf-~ bezeichnet die Aufwärtsbewegung, vom Sprecher weg ausgerichtet.\n\nMit ~schauen~ — dem süddeutsch-österreichisch-schweizerischen Verb des Blickens — wandert der Blick selbst nach oben und weg, „hinaufschauen“ zu etwas Höherem; ~heraufschauen~ kehrte denselben Blick zum Sprecher hin.",
+   "en": "A separable compound of ~hinauf-~ + ~schauen~:\n\n- ~schauen~: From MHG ~schouwen~, from OHG ~scouwōn~, from Proto-Germanic *~skawwōną~ (\"to look, see, watch\"), from PIE *~(s)kewh₁-~ (\"to heed, look, take note of\"). The same root gives English ~show~, the Germanic descendants dividing between intransitive \"to look\" and transitive \"to make visible.\" The verb is characteristic of southern German, Austrian, and Swiss usage. Cognate with English ~show~, Dutch ~schouwen~.\n- ~hinauf-~: A transparent compound of ~hin-~ (\"thither,\" marking motion away from the speaker) and ~auf~ (\"up, onto\"), so \"upward and away from the speaker\" — the climb seen from the bottom. Its mirror image is ~herauf~, the same ascent toward the speaker. ~hinauf-~ marks upward motion oriented away from the speaker.\n\nWith ~schauen~ — the southern, Austrian and Swiss verb for looking — the gaze itself travels upward and away, to look up at something above; ~heraufschauen~ would turn the same look toward the speaker."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "hinaufsteigen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~hinauf-~ + ~steigen~:\n\n- ~steigen~: Aus Mhd. ~stîgen~, aus Ahd. ~stīgan~, aus Proto-Westgermanisch *~stīgan~, aus Urgermanisch *~stīganą~, aus PIE *~steygʰ-~ („gehen, steigen“). Ein starkes Verb der Klasse I (~steigen~, ~stieg~, ~gestiegen~); dieselbe Wurzel ergab Altgriechisch ~steíkhō~ („ich gehe“). Verwandt mit dem archaischen Englisch ~sty~ („klettern“), Niederländisch ~stijgen~, Gotisch ~steigan~.\n- ~hinauf-~: Eine durchsichtige Zusammensetzung aus ~hin-~ („dorthin“, Bewegung vom Sprecher weg) und ~auf~ („auf, hinauf“), also „nach oben und vom Sprecher weg“ — der Aufstieg von unten gesehen. Ihr Spiegelbild ist ~herauf~, derselbe Aufstieg zum Sprecher hin. ~hinauf-~ bezeichnet die Aufwärtsbewegung, vom Sprecher weg ausgerichtet.\n\nWieder trägt das neutrale ~steigen~ nur die Vertikalbewegung; erst die Partikel legt die Richtung fest — hier als Aufstieg, vom Sprecher weg und einer Höhe zu, das genaue Gegenstück zum Abstieg.",
+   "en": "A separable compound of ~hinauf-~ + ~steigen~:\n\n- ~steigen~: From MHG ~stîgen~, from OHG ~stīgan~, from Proto-West Germanic *~stīgan~, from Proto-Germanic *~stīganą~, from PIE *~steygʰ-~ (\"to walk, climb\"). A class I strong verb (~steigen~, ~stieg~, ~gestiegen~); the same root gave Ancient Greek ~steíkhō~ (\"I go\"). Cognate with archaic English ~sty~ (\"to climb\"), Dutch ~stijgen~, Gothic ~steigan~.\n- ~hinauf-~: A transparent compound of ~hin-~ (\"thither,\" marking motion away from the speaker) and ~auf~ (\"up, onto\"), so \"upward and away from the speaker\" — the climb seen from the bottom. Its mirror image is ~herauf~, the same ascent toward the speaker. ~hinauf-~ marks upward motion oriented away from the speaker.\n\nAgain the neutral ~steigen~ carries only the vertical motion; the particle alone fixes the direction — here as an ascent, away from the speaker and toward a height, the exact opposite of a descent."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Du und Aaron mit dir sollt heraufsteigen; aber die Priester und das Volk sollen nicht durchbrechen, daß sie hinaufsteigen zu dem HERRN, daß er sie nicht zerschmettere.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "You and Aaron with you shall come up; but the priests and the people shall not break through to climb up to the LORD, lest he strike them down.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": null
+ },
+ "hinausbringen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~hinaus-~ + ~bringen~:\n\n- ~bringen~: Aus Mhd. ~bringen~, aus Ahd. ~bringan~, aus Proto-Westgermanisch *~bringan~, aus Urgermanisch *~bringaną~, wahrscheinlich aus vorgermanischem *~bʰrenk-~, einer Kompositwurzel aus PIE *~bʰer-~ („tragen“) + *~h₁nek-~ („bringen“). Mischkonjugation: ~brachte~ verbindet den Vokalwechsel ~i~ > ~a~ mit schwachem Dentalsuffix. Verwandt mit Englisch ~bring~, Niederländisch ~brengen~, Gotisch ~briggan~.\n- ~hinaus-~: Das zusammengesetzte Adverb ~hin~ („vom Sprecher weg“) + ~aus~ („aus, heraus“); siehe den Eintrag ~her~ für das deiktische Paar. Umgangssprachlich verkürzt es sich zu ~raus~, einer Kurzform, die es mit ~heraus~ teilt. Sein Gegenstück ~heraus-~ beschreibt denselben Weg nach außen, aber zum Sprecher hin: Wer drinnen ist, geht ~hinaus~, und wer draußen ist, sieht ihn ~heraus~ kommen.\n\n~bringen~ führt ein Objekt mit sich, sodass ~hinausbringen~ „etwas hinausbefördern“ bedeutet — hinaustragen, hinausbegleiten —, während das Gegenstück ~herausbringen~ dieselbe Last zum Sprecher hin bewegt.",
+   "en": "A separable compound of ~hinaus-~ + ~bringen~:\n\n- ~bringen~: From MHG ~bringen~, from OHG ~bringan~, from Proto-West Germanic *~bringan~, from Proto-Germanic *~bringaną~, probably from pre-Germanic *~bʰrenk-~, a compound root from PIE *~bʰer-~ (\"to carry\") + *~h₁nek-~ (\"to bring\"). Mixed conjugation: ~brachte~ pairs the vowel change ~i~ > ~a~ with a weak dental suffix. Cognate with English ~bring~, Dutch ~brengen~, Gothic ~briggan~.\n- ~hinaus-~: The compound adverb ~hin~ (\"away from the speaker\") + ~aus~ (\"out\"); see the ~her~ entry for the deictic pair. Colloquially it contracts to ~raus~, a contraction it shares with ~heraus~. Its counterpart ~heraus-~ traces the same outward path toward the speaker: the one inside goes ~hinaus~, and the one already outside watches him come ~heraus~.\n\n~bringen~ carries an object along, so ~hinausbringen~ is to convey something out — to carry or see it outside — while the counterpart ~herausbringen~ moves the same load toward the speaker."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Und als sie ihn hatten hinausgebracht, sprach er: Errette dein Seele und sieh nicht hinter dich; auch stehe nicht in dieser ganzen Gegend.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "And when they had brought him out, he said: Save your soul and do not look behind you; and do not stop anywhere in all this region.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": null
+ },
+ "hinausgeben": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~hinaus-~ + ~geben~:\n\n- ~geben~: Aus Mhd. ~gëben~, aus Ahd. ~gëban~, aus Proto-Westgermanisch *~geban~, aus Urgermanisch *~gebaną~, aus PIE *~gʰebʰ-~ („geben“). Verwandt mit Englisch ~give~ (aus Altnordisch ~gefa~), Niederländisch ~geven~, Schwedisch ~giva~/~ge~, Dänisch ~give~.\n- ~hinaus-~: Das zusammengesetzte Adverb ~hin~ („vom Sprecher weg“) + ~aus~ („aus, heraus“); siehe den Eintrag ~her~ für das deiktische Paar. Umgangssprachlich verkürzt es sich zu ~raus~, einer Kurzform, die es mit ~heraus~ teilt. Sein Gegenstück ~heraus-~ beschreibt denselben Weg nach außen, aber zum Sprecher hin: Wer drinnen ist, geht ~hinaus~, und wer draußen ist, sieht ihn ~heraus~ kommen.\n\n~geben~ steuert die Übergabe bei, ~hinaus-~ den nach außen und vom Sprecher weg gerichteten Weg, sodass das Kompositum „etwas hinausgeben“ bedeutet — aus einem Haus oder Fenster, oder, im älteren Sprachgebrauch, eine Tochter aus der Familie hinausverheiraten.",
+   "en": "A separable compound of ~hinaus-~ + ~geben~:\n\n- ~geben~: From MHG ~gëben~, from OHG ~gëban~, from Proto-West Germanic *~geban~, from Proto-Germanic *~gebaną~, from PIE *~gʰebʰ-~ (\"to give\"). Cognate with English ~give~ (from Old Norse ~gefa~), Dutch ~geven~, Swedish ~giva~/~ge~, Danish ~give~.\n- ~hinaus-~: The compound adverb ~hin~ (\"away from the speaker\") + ~aus~ (\"out\"); see the ~her~ entry for the deictic pair. Colloquially it contracts to ~raus~, a contraction it shares with ~heraus~. Its counterpart ~heraus-~ traces the same outward path toward the speaker: the one inside goes ~hinaus~, and the one already outside watches him come ~heraus~.\n\n~geben~ supplies the transfer and ~hinaus-~ the outward, speaker-distal path, so the compound is to hand or give something out — of a house or window, or, in older usage, to marry a daughter out of the family."
+  },
+  "sentence": null,
+  "notes": "Sole candidate (Luther, Judges 12) is a mis-split: it carries a stray verse number (\"sieben Jahre 10 und starb\") and runs two verses together, so it is not a clean sentence. hinausgeben has no exemplar; its sense was chosen by analogy to the transitive 'convey out' verbs."
+ },
+ "hinausgehen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~hinaus-~ + ~gehen~:\n\n- ~gehen~: Aus Mhd. ~gan~, ~gen~, aus Ahd. ~gan~, ~gen~, aus Proto-Westgermanisch *~gān~, aus Urgermanisch *~gāną~, aus PIE *~ǵʰeh₁-~ („weggehen“). Die Form ~gen~ ist bairischen Ursprungs; das ~-h-~ kam in Analogie zu ~sehen~ in die Schreibung. Verwandt mit Englisch ~go~, Niederländisch ~gaan~, Niederdeutsch ~gahn~, Schwedisch und Dänisch ~gå~.\n- ~hinaus-~: Das zusammengesetzte Adverb ~hin~ („vom Sprecher weg“) + ~aus~ („aus, heraus“); siehe den Eintrag ~her~ für das deiktische Paar. Umgangssprachlich verkürzt es sich zu ~raus~, einer Kurzform, die es mit ~heraus~ teilt. ~hinaus-~ bezeichnet die Bewegung aus etwas heraus, vom Sprecher weg gerichtet.\n\nMit ~gehen~ ist das Kompositum das alltägliche „hinausgehen“, aus einem Raum oder Gebäude und vom Sprecher weg; übertragen bedeutet ~über etwas hinausgehen~ „etwas überschreiten“.",
+   "en": "A separable compound of ~hinaus-~ + ~gehen~:\n\n- ~gehen~: From MHG ~gan~, ~gen~, from OHG ~gan~, ~gen~, from Proto-West Germanic *~gān~, from Proto-Germanic *~gāną~, from PIE *~ǵʰeh₁-~ (\"to leave\"). The form ~gen~ is of Bavarian origin; the ~-h-~ entered the spelling by analogy with ~sehen~. Cognate with English ~go~, Dutch ~gaan~, Low German ~gahn~, Swedish and Danish ~gå~.\n- ~hinaus-~: The compound adverb ~hin~ (\"away from the speaker\") + ~aus~ (\"out\"); see the ~her~ entry for the deictic pair. Colloquially it contracts to ~raus~, a contraction it shares with ~heraus~. ~hinaus-~ means motion out of something, directed away from the speaker.\n\nWith ~gehen~ the compound is the everyday to go out — out of a room or building and away from the speaker; figuratively ~über etwas hinausgehen~ is to exceed or go beyond it."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Und als die Englein einmal alle hinausgegangen waren, dachte es: »Nun bin ich ganz allein und könnte hineingucken, es weiß es ja niemand, wenn ich's tue.",
+    "source": "Grimm — Märchen"
+   },
+   "en": {
+    "sentence": "And once when the little angels had all gone out, it thought: 'Now I am all alone and could peek inside; no one will know if I do it.'",
+    "source": "Grimm — Märchen"
+   }
+  },
+  "notes": null
+ },
+ "hinaushalten": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~hinaus-~ + ~halten~:\n\n- ~halten~: Aus Mhd. ~halten~, aus Ahd. ~haltan~, aus Proto-Westgermanisch *~haldan~, aus Urgermanisch *~haldaną~. Verwandt mit Englisch ~hold~, Niederländisch ~houden~, Niederdeutsch ~holden~, Dänisch ~holde~, Isländisch ~halda~, Schwedisch ~hålla~.\n- ~hinaus-~: Das zusammengesetzte Adverb ~hin~ („vom Sprecher weg“) + ~aus~ („aus, heraus“); siehe den Eintrag ~her~ für das deiktische Paar. Umgangssprachlich verkürzt es sich zu ~raus~, einer Kurzform, die es mit ~heraus~ teilt. Bei Zeit- und Maßangaben bedeutet es „darüber hinaus“, das Überschreiten einer Grenze.\n\nDie Partikel ist hier zeitlich, nicht räumlich: ~hinaushalten~ heißt „durchhalten“, etwas über den Punkt hinaus dehnen, an dem es hätte enden sollen.",
+   "en": "A separable compound of ~hinaus-~ + ~halten~:\n\n- ~halten~: From MHG ~halten~, from OHG ~haltan~, from Proto-West Germanic *~haldan~, from Proto-Germanic *~haldaną~. Cognate with English ~hold~, Dutch ~houden~, Low German ~holden~, Danish ~holde~, Icelandic ~halda~, Swedish ~hålla~.\n- ~hinaus-~: The compound adverb ~hin~ (\"away from the speaker\") + ~aus~ (\"out\"); see the ~her~ entry for the deictic pair. Colloquially it contracts to ~raus~, a contraction it shares with ~heraus~. With expressions of time or measure it means \"beyond,\" going past a limit.\n\nHere the particle is temporal, not spatial: ~hinaushalten~ is to hold out, to stretch something out beyond the point where it should have ended."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "hinauskommen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~hinaus-~ + ~kommen~:\n\n- ~kommen~: Aus Mhd. ~quemen~, ~komen~, ~kumen~, aus Ahd. ~queman~ (seltener ~cuman~, ~chuman~), aus Proto-Westgermanisch *~kweman~, aus Urgermanisch *~kwemaną~, aus PIE *~gʷem-~. Verwandt mit Englisch ~come~, Niederdeutsch ~kamen~, Niederländisch ~komen~, Dänisch ~komme~.\n- ~hinaus-~: Das zusammengesetzte Adverb ~hin~ („vom Sprecher weg“) + ~aus~ („aus, heraus“); siehe den Eintrag ~her~ für das deiktische Paar. Umgangssprachlich verkürzt es sich zu ~raus~, einer Kurzform, die es mit ~heraus~ teilt. Sein Gegenstück ~heraus-~ beschreibt denselben Weg nach außen, aber zum Sprecher hin: Wer drinnen ist, geht ~hinaus~, und wer draußen ist, sieht ihn ~heraus~ kommen.\n\nMit ~kommen~ ist das Kompositum das intransitive „hinauskommen“, von innen nach außen gelangen; übertragen bedeutet ~über etwas nicht hinauskommen~ „nicht über eine Stufe hinausgelangen“.",
+   "en": "A separable compound of ~hinaus-~ + ~kommen~:\n\n- ~kommen~: From MHG ~quemen~, ~komen~, ~kumen~, from OHG ~queman~ (rarer ~cuman~, ~chuman~), from Proto-West Germanic *~kweman~, from Proto-Germanic *~kwemaną~, from PIE *~gʷem-~. Cognate with English ~come~, Low German ~kamen~, Dutch ~komen~, Danish ~komme~.\n- ~hinaus-~: The compound adverb ~hin~ (\"away from the speaker\") + ~aus~ (\"out\"); see the ~her~ entry for the deictic pair. Colloquially it contracts to ~raus~, a contraction it shares with ~heraus~. Its counterpart ~heraus-~ traces the same outward path toward the speaker: the one inside goes ~hinaus~, and the one already outside watches him come ~heraus~.\n\nWith ~kommen~ the compound is the intransitive to come out, reaching the outside from within; figuratively ~über etwas nicht hinauskommen~ is to fail to get past a stage."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Als sie aber hinauskamen, stürzten die Mörder über ihn her, banden ihn und wollten ihn an einen Baum hängen.",
+    "source": "Grimm — Märchen"
+   },
+   "en": {
+    "sentence": "But when they came out, the murderers fell upon him, bound him, and wanted to hang him from a tree.",
+    "source": "Grimm — Märchen"
+   }
+  },
+  "notes": null
+ },
+ "hinauslaufen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~hinaus-~ + ~laufen~:\n\n- ~laufen~: Aus Mhd. ~loufen~, aus Ahd. ~hloufan~, ~loufan~, aus Proto-Westgermanisch *~hlaupan~, aus Urgermanisch *~hlaupaną~. Ein starkes Verb der Klasse VII. Der anlautende ~hl-~-Cluster ging während der althochdeutschen Periode verloren. Verwandt mit Englisch ~leap~ und ~lope~, Niederländisch ~lopen~, Dänisch ~løbe~.\n- ~hinaus-~: Das zusammengesetzte Adverb ~hin~ („vom Sprecher weg“) + ~aus~ („aus, heraus“); siehe den Eintrag ~her~ für das deiktische Paar. Umgangssprachlich verkürzt es sich zu ~raus~, einer Kurzform, die es mit ~heraus~ teilt. ~hinaus-~ bezeichnet die Bewegung aus etwas heraus, vom Sprecher weg gerichtet.\n\nMit ~laufen~ ist der wörtliche Sinn „hinauslaufen“; bekannter ist das Kompositum jedoch im übertragenen ~auf etwas hinauslaufen~ — „in etwas münden“ —, wo das Hinauslaufen zur Metapher dafür wird, worauf eine Sache am Ende hinausläuft.",
+   "en": "A separable compound of ~hinaus-~ + ~laufen~:\n\n- ~laufen~: From MHG ~loufen~, from OHG ~hloufan~, ~loufan~, from Proto-West Germanic *~hlaupan~, from Proto-Germanic *~hlaupaną~. A class VII strong verb. The initial ~hl-~ cluster was lost during the Old High German period. Cognate with English ~leap~ and ~lope~, Dutch ~lopen~, Danish ~løbe~.\n- ~hinaus-~: The compound adverb ~hin~ (\"away from the speaker\") + ~aus~ (\"out\"); see the ~her~ entry for the deictic pair. Colloquially it contracts to ~raus~, a contraction it shares with ~heraus~. ~hinaus-~ means motion out of something, directed away from the speaker.\n\nWith ~laufen~ the literal sense is to run out; but the compound is better known figuratively — ~auf etwas hinauslaufen~, \"to amount to, to come down to\" — where the running-out becomes a metaphor for where a matter finally ends up."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Noch jüngst sah ich sie in der Frühe auf tapferen Füssen hinauslaufen: aber ihre Füsse der Erkenntniss wurden müde, und nun verleumden sie auch noch ihre Morgen-Tapferkeit!",
+    "source": "Nietzsche — Also sprach Zarathustra"
+   },
+   "en": {
+    "sentence": "Only lately I saw them run out at dawn on brave feet; but their feet of knowledge grew weary, and now they even slander their morning bravery!",
+    "source": "Nietzsche — Also sprach Zarathustra"
+   }
+  },
+  "notes": null
+ },
+ "hinauslehnen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~hinaus-~ + ~lehnen~:\n\n- ~lehnen~: Verschmelzung zweier Verben: mhd. ~linen~/~lenen~ (intransitiv), aus ahd. ~hlinēn~, aus proto-westgermanisch *~hlinēn~, aus urgermanisch *~hlināną~, aus PIE *~k̂ley-~ („lehnen, neigen“); und mhd. ~leinen~ (kausativ), aus ahd. ~hleinen~, aus urgermanisch *~hlainijaną~. Ein zweites, archaisches ~lehnen~ („leihen, borgen“), aus ahd. ~lēhanōn~, lebt nur in ~entlehnen~ und ~Lehnwort~ fort. Verwandt mit englisch ~lean~, lateinisch ~clīnō~.\n- ~hinaus-~: Das zusammengesetzte Adverb ~hin~ („vom Sprecher weg“) + ~aus~ („aus, heraus“); siehe den Eintrag ~her~ für das deiktische Paar. Umgangssprachlich verkürzt es sich zu ~raus~, einer Kurzform, die es mit ~heraus~ teilt. Sein Gegenstück ~heraus-~ beschreibt denselben Weg nach außen, aber zum Sprecher hin: Wer drinnen ist, geht ~hinaus~, und wer draußen ist, sieht ihn ~heraus~ kommen.\n\n~lehnen~ ist hier der intransitive „lehnen“-Zweig (siehe die Verschmelzung zweier Verben im Eintrag), reflexiv gebraucht: ~sich hinauslehnen~, sich nach außen und vom Sprecher weg lehnen — aus einem Fenster oder über ein Geländer.",
+   "en": "A separable compound of ~hinaus-~ + ~lehnen~:\n\n- ~lehnen~: A merger of two verbs: MHG ~linen~/~lenen~ (intransitive), from OHG ~hlinēn~, from Proto-West Germanic *~hlinēn~, from Proto-Germanic *~hlināną~, from PIE *~k̂ley-~ (\"to lean, incline\"); and MHG ~leinen~ (causative), from OHG ~hleinen~, from Proto-Germanic *~hlainijaną~. A second, archaic ~lehnen~ (\"to lend, borrow\"), from OHG ~lēhanōn~, survives only in ~entlehnen~ and ~Lehnwort~. Cognate with English ~lean~, Latin ~clīnō~.\n- ~hinaus-~: The compound adverb ~hin~ (\"away from the speaker\") + ~aus~ (\"out\"); see the ~her~ entry for the deictic pair. Colloquially it contracts to ~raus~, a contraction it shares with ~heraus~. Its counterpart ~heraus-~ traces the same outward path toward the speaker: the one inside goes ~hinaus~, and the one already outside watches him come ~heraus~.\n\n~lehnen~ here is the intransitive \"lean\" branch (see the two-verb merger in the bullet), used reflexively: ~sich hinauslehnen~, to lean oneself out and away from the speaker — from a window or over a railing."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "hinausschieben": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~hinaus-~ + ~schieben~:\n\n- ~schieben~: Aus Mhd. ~schieben~, aus Ahd. ~skioban~, aus Proto-Westgermanisch *~skeuban~, aus Urgermanisch *~skeubaną~, aus PIE *~skewbʰ-~ („schieben, stoßen, drängen“). Ein starkes Verb der Klasse II (~schieben~, ~schob~, ~geschoben~). Verwandt mit Englisch ~shove~, Niederländisch ~schuiven~, Dänisch ~skubbe~.\n- ~hinaus-~: Das zusammengesetzte Adverb ~hin~ („vom Sprecher weg“) + ~aus~ („aus, heraus“); siehe den Eintrag ~her~ für das deiktische Paar. Umgangssprachlich verkürzt es sich zu ~raus~, einer Kurzform, die es mit ~heraus~ teilt. Bei Zeit- und Maßangaben bedeutet es „darüber hinaus“, das Überschreiten einer Grenze.\n\n~schieben~ mit dem zeitlichen Sinn der Partikel ergibt „hinausschieben, aufschieben“ — eine Sache über ihre angesetzte Zeit hinausschieben, nicht durch den Raum.",
+   "en": "A separable compound of ~hinaus-~ + ~schieben~:\n\n- ~schieben~: From MHG ~schieben~, from OHG ~skioban~, from Proto-West Germanic *~skeuban~, from Proto-Germanic *~skeubaną~, from PIE *~skewbʰ-~ (\"to push, to shove, to thrust\"). A class II strong verb (~schieben~, ~schob~, ~geschoben~). Cognate with English ~shove~, Dutch ~schuiven~, Danish ~skubbe~.\n- ~hinaus-~: The compound adverb ~hin~ (\"away from the speaker\") + ~aus~ (\"out\"); see the ~her~ entry for the deictic pair. Colloquially it contracts to ~raus~, a contraction it shares with ~heraus~. With expressions of time or measure it means \"beyond,\" going past a limit.\n\n~schieben~ \"to push\" with the particle's temporal sense yields to postpone — to push a matter out beyond its appointed time rather than through space."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "hinauswerfen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~hinaus-~ + ~werfen~:\n\n- ~werfen~: Aus Mhd. ~wërfen~, aus Ahd. ~werfan~, aus proto-westgermanisch *~werpan~, aus urgermanisch *~werpaną~, aus PIE *~wergʷ-~ („biegen, drehen, verzerren“). Ein starkes Verb der Klasse III (~wirft~, ~warf~, ~geworfen~). Verwandt mit englisch ~warp~, niederländisch ~werpen~, altsächsisch ~werpan~, altnordisch ~verpa~, gotisch ~wairpan~.\n- ~hinaus-~: Das zusammengesetzte Adverb ~hin~ („vom Sprecher weg“) + ~aus~ („aus, heraus“); siehe den Eintrag ~her~ für das deiktische Paar. Umgangssprachlich verkürzt es sich zu ~raus~, einer Kurzform, die es mit ~heraus~ teilt. ~hinaus-~ bezeichnet die Bewegung aus etwas heraus, vom Sprecher weg gerichtet.\n\n~werfen~ liefert das kräftige Mitglied der Reihe: ~hinauswerfen~ heißt „etwas hinausschleudern“ und übertragen „jemanden hinauswerfen, entlassen“.",
+   "en": "A separable compound of ~hinaus-~ + ~werfen~:\n\n- ~werfen~: From MHG ~wërfen~, from OHG ~werfan~, from Proto-West Germanic *~werpan~, from Proto-Germanic *~werpaną~, from PIE *~wergʷ-~ (\"to bend, spin, warp\"). A class III strong verb (~wirft~, ~warf~, ~geworfen~). Cognate with English ~warp~, Dutch ~werpen~, Old Saxon ~werpan~, Old Norse ~verpa~, Gothic ~wairpan~.\n- ~hinaus-~: The compound adverb ~hin~ (\"away from the speaker\") + ~aus~ (\"out\"); see the ~her~ entry for the deictic pair. Colloquially it contracts to ~raus~, a contraction it shares with ~heraus~. ~hinaus-~ means motion out of something, directed away from the speaker.\n\n~werfen~ \"to throw\" gives the forceful member of the set: ~hinauswerfen~ is to throw or fling something out, and idiomatically to eject or fire a person."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "In diesem Hause allein ist er schon aus fünf Wohnungen, in die er sich eingeschlichen hat, hinausgeworfen worden.",
+    "source": "Kafka — Der Proceß"
+   },
+   "en": {
+    "sentence": "In this house alone he has already been thrown out of five apartments into which he had crept.",
+    "source": "Kafka — Der Proceß"
+   }
+  },
+  "notes": null
+ },
+ "hinbekommen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~hin-~ + ~be-~ + ~kommen~:\n\n- ~kommen~: Aus Mhd. ~quemen~, ~komen~, ~kumen~, aus Ahd. ~queman~ (seltener ~cuman~, ~chuman~), aus Proto-Westgermanisch *~kweman~, aus Urgermanisch *~kwemaną~, aus PIE *~gʷem-~. Verwandt mit Englisch ~come~, Niederdeutsch ~kamen~, Niederländisch ~komen~, Dänisch ~komme~.\n- ~be-~: Aus Mhd. ~be-~, aus Ahd. ~bi-~, aus Proto-Westgermanisch *~bi-~, aus Urgermanisch *~bi-~ („bei, an, um“), aus PIE *~h₁epi~ („auf, bei, nahe“). Die unbetonte proklitische Form der Präposition ~bei~. ~be-~ macht ein intransitives Verb transitiv und richtet die Handlung auf ein Objekt.\n- ~hin-~: Aus Ahd. ~hina~, aus Urgermanisch *~hina~ („weg von hier, dorthin“), aus dem PIE-Demonstrativstamm *~ḱi-~ („dieser, hier“). ~Hin-~ weist vom Sprecher weg, ~her-~ zum Sprecher hin; das Englische zog dieselbe Grenze einst mit ~thither~ und ~hither~. Verwandt mit Englisch ~hence~ und ~here~. Die Partikel drückt das Hinstellen oder Hinlegen an einen bestimmten Ort aus.\n\nBeide Präfixe sind hier verblasst: ~bekommen~ bedeutet längst „erhalten“ statt „ankommen“, und ~hin-~ fügt keine echte Richtung hinzu, sondern den Sinn, etwas in Form zu bringen — sodass das umgangssprachliche Kompositum „hinbekommen, zustande bringen“ heißt.",
+   "en": "A separable compound of ~hin-~ + ~be-~ + ~kommen~:\n\n- ~kommen~: From MHG ~quemen~, ~komen~, ~kumen~, from OHG ~queman~ (rarer ~cuman~, ~chuman~), from Proto-West Germanic *~kweman~, from Proto-Germanic *~kwemaną~, from PIE *~gʷem-~. Cognate with English ~come~, Low German ~kamen~, Dutch ~komen~, Danish ~komme~.\n- ~be-~: From MHG ~be-~, from OHG ~bi-~, from Proto-West Germanic *~bi-~, from Proto-Germanic *~bi-~ (\"by, at, around\"), from PIE *~h₁epi~ (\"on, at, near\"). The unstressed proclitic form of the preposition ~bei~. ~be-~ makes an intransitive verb transitive, directing the action at an object.\n- ~hin-~: From OHG ~hina~, from Proto-Germanic *~hina~ (\"away from here, thither\"), from the PIE demonstrative stem *~ḱi-~ (\"this, here\"). ~Hin-~ points away from the speaker and ~her-~ toward the speaker; English once drew the same line with ~thither~ and ~hither~. Cognate with English ~hence~ and ~here~. The particle conveys setting something down in a particular place.\n\nBoth prefixes are bleached here: ~bekommen~ has long meant \"to get\" rather than \"to come to,\" and ~hin-~ adds not a real direction but the sense of getting something into shape — so the colloquial compound means to manage or pull something off."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Wir haben es in Baden-Württemberg hinbekommen, dass es jetzt nur noch sieben Monate dauert.",
+    "source": "Bundestag — Plenarprotokoll 20/207"
+   },
+   "en": {
+    "sentence": "In Baden-Württemberg we managed to get it done so that it now takes only seven months.",
+    "source": "Bundestag — Plenarprotokoll 20/207"
+   }
+  },
+  "notes": "hin- placement sense and its idiomatic bleaching noted in the closer; the colloquial \"manage\" use matches no hin- exemplar."
+ },
+ "hindeuten": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~hin-~ + ~deuten~:\n\n- ~deuten~: Aus Mhd. ~diuten~, aus Ahd. ~diuten~, aus Proto-Westgermanisch *~þiudijan~, aus Urgermanisch *~þiudijaną~ („auslegen; hinweisen“), zu *~þeudō~ („Volk“), aus PIE *~tewtéh₂~ („Volk“) — ursprünglich „dem Volk verständlich machen“, dasselbe Wort, das ~deutsch~ ergibt. Verwandt mit Niederländisch ~duiden~, Isländisch ~þýða~, Schwedisch ~tyda~.\n- ~hin-~: Aus Ahd. ~hina~, aus Urgermanisch *~hina~ („weg von hier, dorthin“), aus dem PIE-Demonstrativstamm *~ḱi-~ („dieser, hier“). ~Hin-~ weist vom Sprecher weg, ~her-~ zum Sprecher hin; das Englische zog dieselbe Grenze einst mit ~thither~ und ~hither~. Verwandt mit Englisch ~hence~ und ~here~. Die Partikel drückt eine Bewegung auf ein Ziel zu aus, im Gegensatz zu ~her-~ für die Bewegung zum Sprecher hin.\n\nDie Bewegung ist hier übertragen und gestisch: ~auf etwas hindeuten~ heißt auf eine Sache zeigen, wobei die Partikel die Aufmerksamkeit dorthin lenkt; erweitert „deuten“ Tatsachen oder Zeichen „auf etwas hin“.",
+   "en": "A separable compound of ~hin-~ + ~deuten~:\n\n- ~deuten~: From MHG ~diuten~, from OHG ~diuten~, from Proto-West Germanic *~þiudijan~, from Proto-Germanic *~þiudijaną~ (\"to interpret; to point out\"), from *~þeudō~ (\"people\"), from PIE *~tewtéh₂~ (\"people\") — originally \"to make intelligible to the people,\" the same word that gives ~deutsch~. Cognate with Dutch ~duiden~, Icelandic ~þýða~, Swedish ~tyda~.\n- ~hin-~: From OHG ~hina~, from Proto-Germanic *~hina~ (\"away from here, thither\"), from the PIE demonstrative stem *~ḱi-~ (\"this, here\"). ~Hin-~ points away from the speaker and ~her-~ toward the speaker; English once drew the same line with ~thither~ and ~hither~. Cognate with English ~hence~ and ~here~. The particle conveys motion toward a destination, paired against ~her-~ for motion toward the speaker.\n\nHere the motion is figurative and gestural: ~auf etwas hindeuten~ is to point at a thing, the particle directing attention toward it; extended, facts or signs \"point to\" a conclusion."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Im Gegenteil, die erste Erklärung deutet sogar auf die zweite hin.",
+    "source": "Kafka — Der Proceß"
+   },
+   "en": {
+    "sentence": "On the contrary, the first explanation even points to the second.",
+    "source": "Kafka — Der Proceß"
+   }
+  },
+  "notes": "hin- sense chosen by the sense text (\"toward a destination\"), since the figurative pointing use matches no exemplar and that slot's exemplar list is empty."
+ },
+ "hindurchgehen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~hindurch-~ + ~gehen~:\n\n- ~gehen~: Aus Mhd. ~gan~, ~gen~, aus Ahd. ~gan~, ~gen~, aus Proto-Westgermanisch *~gān~, aus Urgermanisch *~gāną~, aus PIE *~ǵʰeh₁-~ („weggehen“). Die Form ~gen~ ist bairischen Ursprungs; das ~-h-~ kam in Analogie zu ~sehen~ in die Schreibung. Verwandt mit Englisch ~go~, Niederländisch ~gaan~, Niederdeutsch ~gahn~, Schwedisch und Dänisch ~gå~.\n- ~hindurch-~: Das deiktische Adverb ~hin-~ und die Partikel ~durch~ („durch“): Bewegung durch etwas hindurch und vom Sprecher weg. ~Hin-~ weist vom Sprecher weg, ~her-~ zu ihm hin; ~hindurch~ zeichnet daher einen Weg ganz bis zur anderen Seite und steht ebenso selbstverständlich für Zeitspannen, die von Anfang bis Ende durchgestanden werden. Siehe die Einträge zu ~hin-~ und ~durch~. Die Bedeutung von ~hindurch-~ ist hier: vom Sprecher weg, durch etwas hindurch.\n\nMit ~gehen~ bleibt das Kompositum wörtlich und räumlich — hindurchgehen und auf der anderen Seite hinaus, wie durch ein geteiltes Meer —, während die zeitliche Lesart „von Anfang bis Ende“ den Kontexten der Dauer überlassen bleibt.",
+   "en": "A separable compound of ~hindurch-~ + ~gehen~:\n\n- ~gehen~: From MHG ~gan~, ~gen~, from OHG ~gan~, ~gen~, from Proto-West Germanic *~gān~, from Proto-Germanic *~gāną~, from PIE *~ǵʰeh₁-~ (\"to leave\"). The form ~gen~ is of Bavarian origin; the ~-h-~ entered the spelling by analogy with ~sehen~. Cognate with English ~go~, Dutch ~gaan~, Low German ~gahn~, Swedish and Danish ~gå~.\n- ~hindurch-~: The deictic adverb ~hin-~ plus the particle ~durch~ (\"through\"): motion through something and away from the speaker. ~Hin-~ points away from the speaker and ~her-~ toward the speaker; ~hindurch~ therefore traces a path all the way out the far side, and it is used of stretches of time endured from end to end as readily as of space. See the entries for ~hin-~ and ~durch~. The sense of ~hindurch-~ here is: away from the speaker, passing through something.\n\nWith ~gehen~ the compound stays literal and spatial — to pass through and out the far side, as through a parted sea — leaving the temporal \"throughout\" reading to contexts of duration."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Da nahm Elia seinen Mantel und wickelte ihn zusammen und schlug ins Wasser; das teilte sich auf beiden Seiten, daß die beiden trocken hindurchgingen.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "Then Elijah took his cloak and rolled it up and struck the water; it parted to both sides, so that the two of them went through on dry ground.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": null
+ },
+ "hineinblicken": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~hinein-~ + ~blicken~:\n\n- ~blicken~: Aus Mhd. ~blicken~, aus Ahd. ~blicchen~, aus Proto-Westgermanisch *~blikk-~, aus Urgermanisch *~bliką~ / *~blikkaz~ („Schein, Erscheinung, Blick“), aus PIE *~bʰleyǵ-~ („scheinen, glänzen“) — ein ~Blick~ ist ein Lichtblitz, der zum gerichteten Sehen wurde. Verwandt mit Englisch ~bleach~ und ~blank~, Niederländisch ~blik~, Altenglisch ~blice~.\n- ~hinein-~: Das zusammengesetzte Adverb ~hin~ („vom Sprecher weg“) + ~ein~ („ein, hinein“); siehe den Eintrag ~her~ für das deiktische Paar. ~Hin~ stammt aus Mhd. ~hin~, aus Ahd. ~hina~, aus demselben germanischen deiktischen Stamm *~hi-~, der auch ~her~ und ~hier~ ergibt. Umgangssprachlich verkürzt es sich zu ~rein~, einer Kurzform, die es mit ~herein~ teilt. ~hinein-~ bezeichnet die Bewegung in etwas hinein, vom Sprecher weg gerichtet.\n\n~blicken~ lässt den Blick, nicht den Körper, nach innen wandern: ~hineinblicken~ heißt „in etwas hineinsehen“, vom Sprecher weg gerichtet — in einen Raum, ein Gefäß oder, übertragen, in sich selbst.",
+   "en": "A separable compound of ~hinein-~ + ~blicken~:\n\n- ~blicken~: From MHG ~blicken~, from OHG ~blicchen~, from Proto-West Germanic *~blikk-~, from Proto-Germanic *~bliką~ / *~blikkaz~ (\"shine, appearance, look\"), from PIE *~bʰleyǵ-~ (\"to shine\") — a ~Blick~ is a flash of light turned into a directed gaze. Cognate with English ~bleach~ and ~blank~, Dutch ~blik~, Old English ~blice~.\n- ~hinein-~: The compound adverb ~hin~ (\"away from the speaker\") + ~ein~ (\"in\"); see the ~her~ entry for the deictic pair. ~Hin~ comes from MHG ~hin~, from OHG ~hina~, from the same Germanic deictic stem *~hi-~ that gives ~her~ and ~hier~. Colloquially it contracts to ~rein~, a contraction it shares with ~herein~. ~hinein-~ means motion into something, directed away from the speaker.\n\n~blicken~ makes it the gaze, not the body, that travels inward: ~hineinblicken~ is to look into something, directed away from the speaker — into a room, a container, or, figuratively, into oneself."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Und wenn du lange in einen Abgrund blickst, blickt der Abgrund auch in dich hinein.",
+    "source": "Nietzsche — Jenseits von Gut und Böse"
+   },
+   "en": {
+    "sentence": "And when you gaze long into an abyss, the abyss also gazes into you.",
+    "source": "Nietzsche — Jenseits von Gut und Böse"
+   }
+  },
+  "notes": "hinein- sense chosen by analogy to the sense-0 \"into\" verbs; hineinblicken has no exemplar."
+ },
+ "hineinbringen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~hinein-~ + ~bringen~:\n\n- ~bringen~: Aus Mhd. ~bringen~, aus Ahd. ~bringan~, aus Proto-Westgermanisch *~bringan~, aus Urgermanisch *~bringaną~, wahrscheinlich aus vorgermanischem *~bʰrenk-~, einer Kompositwurzel aus PIE *~bʰer-~ („tragen“) + *~h₁nek-~ („bringen“). Mischkonjugation: ~brachte~ verbindet den Vokalwechsel ~i~ > ~a~ mit schwachem Dentalsuffix. Verwandt mit Englisch ~bring~, Niederländisch ~brengen~, Gotisch ~briggan~.\n- ~hinein-~: Das zusammengesetzte Adverb ~hin~ („vom Sprecher weg“) + ~ein~ („ein, hinein“); siehe den Eintrag ~her~ für das deiktische Paar. ~Hin~ stammt aus Mhd. ~hin~, aus Ahd. ~hina~, aus demselben germanischen deiktischen Stamm *~hi-~, der auch ~her~ und ~hier~ ergibt. Umgangssprachlich verkürzt es sich zu ~rein~, einer Kurzform, die es mit ~herein~ teilt. ~hinein-~ bezeichnet die Bewegung in etwas hinein, vom Sprecher weg gerichtet.\n\n~bringen~ befördert ein Objekt, sodass ~hineinbringen~ „etwas hineintragen, hineinbefördern“ bedeutet, in einen umschlossenen Raum und vom Sprecher weg; ~hereinbringen~ bewegte dieselbe Sache nach innen zum Sprecher hin.",
+   "en": "A separable compound of ~hinein-~ + ~bringen~:\n\n- ~bringen~: From MHG ~bringen~, from OHG ~bringan~, from Proto-West Germanic *~bringan~, from Proto-Germanic *~bringaną~, probably from pre-Germanic *~bʰrenk-~, a compound root from PIE *~bʰer-~ (\"to carry\") + *~h₁nek-~ (\"to bring\"). Mixed conjugation: ~brachte~ pairs the vowel change ~i~ > ~a~ with a weak dental suffix. Cognate with English ~bring~, Dutch ~brengen~, Gothic ~briggan~.\n- ~hinein-~: The compound adverb ~hin~ (\"away from the speaker\") + ~ein~ (\"in\"); see the ~her~ entry for the deictic pair. ~Hin~ comes from MHG ~hin~, from OHG ~hina~, from the same Germanic deictic stem *~hi-~ that gives ~her~ and ~hier~. Colloquially it contracts to ~rein~, a contraction it shares with ~herein~. ~hinein-~ means motion into something, directed away from the speaker.\n\n~bringen~ conveys an object, so ~hineinbringen~ is to take or carry something in, into an enclosed space and away from the speaker; ~hereinbringen~ would move the same thing inward toward the speaker."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Da schleppten die sieben Geißlein in aller Eile die Steine herbei und steckten sie ihm in den Bauch, so viel sie hineinbringen konnten.",
+    "source": "Grimm — Märchen"
+   },
+   "en": {
+    "sentence": "Then the seven little goats hurriedly dragged the stones over and stuffed them into his belly, as many as they could fit in.",
+    "source": "Grimm — Märchen"
+   }
+  },
+  "notes": null
+ },
+ "hineingeben": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~hinein-~ + ~geben~:\n\n- ~geben~: Aus Mhd. ~gëben~, aus Ahd. ~gëban~, aus Proto-Westgermanisch *~geban~, aus Urgermanisch *~gebaną~, aus PIE *~gʰebʰ-~ („geben“). Verwandt mit Englisch ~give~ (aus Altnordisch ~gefa~), Niederländisch ~geven~, Schwedisch ~giva~/~ge~, Dänisch ~give~.\n- ~hinein-~: Das zusammengesetzte Adverb ~hin~ („vom Sprecher weg“) + ~ein~ („ein, hinein“); siehe den Eintrag ~her~ für das deiktische Paar. ~Hin~ stammt aus Mhd. ~hin~, aus Ahd. ~hina~, aus demselben germanischen deiktischen Stamm *~hi-~, der auch ~her~ und ~hier~ ergibt. Umgangssprachlich verkürzt es sich zu ~rein~, einer Kurzform, die es mit ~herein~ teilt. ~hinein-~ bezeichnet die Bewegung in etwas hinein, vom Sprecher weg gerichtet.\n\n~geben~ steuert die Übergabe bei, ~hinein-~ den nach innen und vom Sprecher weg gerichteten Weg: „etwas hineingeben, hineintun“ — im süddeutschen Gebrauch besonders vom Hinzufügen einer Zutat.",
+   "en": "A separable compound of ~hinein-~ + ~geben~:\n\n- ~geben~: From MHG ~gëben~, from OHG ~gëban~, from Proto-West Germanic *~geban~, from Proto-Germanic *~gebaną~, from PIE *~gʰebʰ-~ (\"to give\"). Cognate with English ~give~ (from Old Norse ~gefa~), Dutch ~geven~, Swedish ~giva~/~ge~, Danish ~give~.\n- ~hinein-~: The compound adverb ~hin~ (\"away from the speaker\") + ~ein~ (\"in\"); see the ~her~ entry for the deictic pair. ~Hin~ comes from MHG ~hin~, from OHG ~hina~, from the same Germanic deictic stem *~hi-~ that gives ~her~ and ~hier~. Colloquially it contracts to ~rein~, a contraction it shares with ~herein~. ~hinein-~ means motion into something, directed away from the speaker.\n\n~geben~ supplies the transfer and ~hinein-~ the inward, speaker-distal path: to put or add something into something — in southern usage especially of adding an ingredient to a dish."
+  },
+  "sentence": null,
+  "notes": "Sole candidate's ~hinein~ attaches to ~trat~ (hineintreten, \"stepped in\"), not to ~gab~, so it does not attest hineingeben. hinein- sense chosen by analogy to the sense-0 \"into\" verbs; hineingeben has no exemplar."
+ }
+}

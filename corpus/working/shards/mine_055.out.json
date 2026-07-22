@@ -1,0 +1,391 @@
+{
+  "hineingehen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~hinein-~ + ~gehen~:\n\n- ~gehen~: Aus Mhd. ~gan~, ~gen~, aus Ahd. ~gan~, ~gen~, aus Proto-Westgermanisch *~gān~, aus Urgermanisch *~gāną~, aus PIE *~ǵʰeh₁-~ („weggehen“). Die Form ~gen~ ist bairischen Ursprungs; das ~-h-~ kam in Analogie zu ~sehen~ in die Schreibung. Verwandt mit Englisch ~go~, Niederländisch ~gaan~, Niederdeutsch ~gahn~, Schwedisch und Dänisch ~gå~.\n- ~hinein-~: Das zusammengesetzte Adverb ~hin~ („vom Sprecher weg“) + ~ein~ („ein, hinein“); siehe den Eintrag ~her~ für das deiktische Paar. ~Hin~ stammt aus Mhd. ~hin~, aus Ahd. ~hina~, aus demselben germanischen deiktischen Stamm *~hi-~, der auch ~her~ und ~hier~ ergibt. Umgangssprachlich verkürzt es sich zu ~rein~, einer Kurzform, die es mit ~herein~ teilt. ~hinein-~ bezeichnet die Bewegung in etwas hinein, vom Sprecher weg gerichtet.\n\nDie wörtliche Bedeutung „von außen nach innen treten“ dehnt sich übertragen auf das Sich-Hineinbegeben in eine Lage aus.",
+      "en": "A separable compound of ~hinein-~ + ~gehen~:\n\n- ~gehen~: From MHG ~gan~, ~gen~, from OHG ~gan~, ~gen~, from Proto-West Germanic *~gān~, from Proto-Germanic *~gāną~, from PIE *~ǵʰeh₁-~ (\"to leave\"). The form ~gen~ is of Bavarian origin; the ~-h-~ entered the spelling by analogy with ~sehen~. Cognate with English ~go~, Dutch ~gaan~, Low German ~gahn~, Swedish and Danish ~gå~.\n- ~hinein-~: The compound adverb ~hin~ (\"away from the speaker\") + ~ein~ (\"in\"); see the ~her~ entry for the deictic pair. ~Hin~ comes from MHG ~hin~, from OHG ~hina~, from the same Germanic deictic stem *~hi-~ that gives ~her~ and ~hier~. Colloquially it contracts to ~rein~, a contraction it shares with ~herein~. ~hinein-~ means motion into something, directed away from the speaker.\n\nThe literal sense of stepping from outside to inside extends figuratively to entering into a situation."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Mein Tagebuch, das ich seit einiger Zeit vernachlässiget, fiel mir heut wieder in die Hände, und ich bin erstaunt, wie ich so wissentlich in das alles, Schritt vor Schritt, hineingegangen bin!",
+        "source": "Goethe — Die Leiden des jungen Werthers"
+      },
+      "en": {
+        "sentence": "My diary, which I had neglected for some time, fell into my hands again today, and I am astonished at how knowingly, step by step, I walked into all of this!",
+        "source": "Goethe — Die Leiden des jungen Werthers"
+      }
+    },
+    "notes": "Skipped the rank-0 Luther candidate (Genesis 19, Lot's daughters) as explicit for a learner app; the Goethe candidate attests the figurative „go into (a situation)“ sense rather than the literal gloss."
+  },
+  "hineinkommen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~hinein-~ + ~kommen~:\n\n- ~kommen~: Aus Mhd. ~quemen~, ~komen~, ~kumen~, aus Ahd. ~queman~ (seltener ~cuman~, ~chuman~), aus Proto-Westgermanisch *~kweman~, aus Urgermanisch *~kwemaną~, aus PIE *~gʷem-~. Verwandt mit Englisch ~come~, Niederdeutsch ~kamen~, Niederländisch ~komen~, Dänisch ~komme~.\n- ~hinein-~: Das zusammengesetzte Adverb ~hin~ („vom Sprecher weg“) + ~ein~ („ein, hinein“); siehe den Eintrag ~her~ für das deiktische Paar. ~Hin~ stammt aus Mhd. ~hin~, aus Ahd. ~hina~, aus demselben germanischen deiktischen Stamm *~hi-~, der auch ~her~ und ~hier~ ergibt. Umgangssprachlich verkürzt es sich zu ~rein~, einer Kurzform, die es mit ~herein~ teilt. ~hinein-~ bezeichnet die Bewegung in etwas hinein, vom Sprecher weg gerichtet.\n\nHäufig steht es für das Hineingelangen durch eine enge Öffnung, wie im Bild des Fußes, der nicht in den Schuh will.",
+      "en": "A separable compound of ~hinein-~ + ~kommen~:\n\n- ~kommen~: From MHG ~quemen~, ~komen~, ~kumen~, from OHG ~queman~ (rarer ~cuman~, ~chuman~), from Proto-West Germanic *~kweman~, from Proto-Germanic *~kwemaną~, from PIE *~gʷem-~. Cognate with English ~come~, Low German ~kamen~, Dutch ~komen~, Danish ~komme~.\n- ~hinein-~: The compound adverb ~hin~ (\"away from the speaker\") + ~ein~ (\"in\"); see the ~her~ entry for the deictic pair. ~Hin~ comes from MHG ~hin~, from OHG ~hina~, from the same Germanic deictic stem *~hi-~ that gives ~her~ and ~hier~. Colloquially it contracts to ~rein~, a contraction it shares with ~herein~. ~hinein-~ means motion into something, directed away from the speaker.\n\nIt often denotes getting in through a narrow opening, as in the image of the foot that will not go into the shoe."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Aber sie konnte mit der großen Zehe nicht hineinkommen, und der Schuh war ihr zu klein, da reichte ihr die Mutter ein Messer und sprach.",
+        "source": "Grimm — Märchen"
+      },
+      "en": {
+        "sentence": "But she could not get in with her big toe, and the shoe was too small for her, so the mother handed her a knife and spoke.",
+        "source": "Grimm — Märchen"
+      }
+    },
+    "notes": null
+  },
+  "hineinmischen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~hinein-~ + ~mischen~:\n\n- ~mischen~: Aus mhd. ~mischen~, aus ahd. ~misken~, aus urgermanisch *~miskijaną~ („mischen“), aus PIE *~meyḱ-~ („mischen, kneten“), über das inchoative Präsens *~miḱ-sḱé-~. Verwandt mit englisch ~mix~, lateinisch ~misceō~, griechisch ~mísgo~, Sanskrit ~miśrá~ („gemischt“).\n- ~hinein-~: Das zusammengesetzte Adverb ~hin~ („vom Sprecher weg“) + ~ein~ („ein, hinein“); siehe den Eintrag ~her~ für das deiktische Paar. ~Hin~ stammt aus Mhd. ~hin~, aus Ahd. ~hina~, aus demselben germanischen deiktischen Stamm *~hi-~, der auch ~her~ und ~hier~ ergibt. Umgangssprachlich verkürzt es sich zu ~rein~, einer Kurzform, die es mit ~herein~ teilt. Übertragen bezeichnet es das Sich-Hineinstürzen in eine Tätigkeit oder eine Lage.\n\nReflexiv gebraucht — ~sich hineinmischen~ — bezeichnet es das ungebetene Einmischen in fremde Angelegenheiten; bei Nietzsche steht die ältere, konkretere Vorstellung des Hineinmengens in die Dinge.",
+      "en": "A separable compound of ~hinein-~ + ~mischen~:\n\n- ~mischen~: From MHG ~mischen~, from OHG ~misken~, from Proto-Germanic *~miskijaną~ (\"to mix\"), from PIE *~meyḱ-~ (\"to mix, knead\"), via the inchoative present *~miḱ-sḱé-~. Cognate with English ~mix~, Latin ~misceō~, Greek ~mísgo~, Sanskrit ~miśrá~ (\"mixed\").\n- ~hinein-~: The compound adverb ~hin~ (\"away from the speaker\") + ~ein~ (\"in\"); see the ~her~ entry for the deictic pair. ~Hin~ comes from MHG ~hin~, from OHG ~hina~, from the same Germanic deictic stem *~hi-~ that gives ~her~ and ~hier~. Colloquially it contracts to ~rein~, a contraction it shares with ~herein~. Figuratively it marks throwing oneself into an activity or a situation.\n\nUsed reflexively — ~sich hineinmischen~ — it denotes meddling uninvited in others' affairs; in Nietzsche the older, more concrete notion of mixing something into things is at work."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Wir sind es, die allein die Ursachen, das Nacheinander, das Für-einander, die Relativität, den Zwang, die Zahl, das Gesetz, die Freiheit, den Grund, den Zweck erdichtet haben; und wenn wir diese Zeichen-Welt als \"an sich\" in die Dinge hineindichten, hineinmischen, so treiben wir es noch einmal, wie wir es immer getrieben haben, nämlich mythologisch.",
+        "source": "Nietzsche — Jenseits von Gut und Böse"
+      },
+      "en": {
+        "sentence": "It is we alone who have invented the causes, the succession, the for-one-another, relativity, constraint, number, law, freedom, ground, purpose; and when we mix this sign-world into things, project it into them as though it existed \"in itself,\" we are doing once more what we have always done, namely acting mythologically.",
+        "source": "Nietzsche — Jenseits von Gut und Böse"
+      }
+    },
+    "notes": "Sole candidate is a ~55-word Nietzsche period (under the 65-word sole-candidate ceiling) attesting the concrete „mix/project into“ reading rather than the interpersonal „interfere“ gloss."
+  },
+  "hineinpassen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~hinein-~ + ~passen~:\n\n- ~passen~: Entlehnt aus französisch ~passer~, mit niederländisch ~passen~ als Vermittler, aus altfranzösisch ~passer~, aus vulgärlateinisch *~passāre~, einem Denominativum von lateinisch ~passus~ („Schritt“), von ~pandō~ („ausbreiten“), aus PIE *~pet-~ („ausbreiten, ausdehnen“). ~passen~ heißt meist „passen, geeignet sein“, nicht „vorbeigehen“. Verwandt mit englisch ~pass~ und ~pace~.\n- ~hinein-~: Das zusammengesetzte Adverb ~hin~ („vom Sprecher weg“) + ~ein~ („ein, hinein“); siehe den Eintrag ~her~ für das deiktische Paar. ~Hin~ stammt aus Mhd. ~hin~, aus Ahd. ~hina~, aus demselben germanischen deiktischen Stamm *~hi-~, der auch ~her~ und ~hier~ ergibt. Umgangssprachlich verkürzt es sich zu ~rein~, einer Kurzform, die es mit ~herein~ teilt. ~hinein-~ bezeichnet die Bewegung in etwas hinein, vom Sprecher weg gerichtet.\n\nEs bezeichnet, dass ein Gegenstand oder eine Person in einen vorgegebenen Raum oder Rahmen genau hineinpasst.",
+      "en": "A separable compound of ~hinein-~ + ~passen~:\n\n- ~passen~: Borrowed from French ~passer~, with Dutch ~passen~ as intermediary, from Old French ~passer~, from Vulgar Latin *~passāre~, a denominative of Latin ~passus~ (\"step, pace\"), from ~pandō~ (\"to spread\"), from PIE *~pet-~ (\"to spread, extend\"). A false friend: ~passen~ most often means \"to fit, to suit,\" not \"to pass by.\" Cognate with English ~pass~ and ~pace~.\n- ~hinein-~: The compound adverb ~hin~ (\"away from the speaker\") + ~ein~ (\"in\"); see the ~her~ entry for the deictic pair. ~Hin~ comes from MHG ~hin~, from OHG ~hina~, from the same Germanic deictic stem *~hi-~ that gives ~her~ and ~hier~. Colloquially it contracts to ~rein~, a contraction it shares with ~herein~. ~hinein-~ means motion into something, directed away from the speaker.\n\nIt denotes that an object or person fits exactly into a given space or frame."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "hineinrufen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~hinein-~ + ~rufen~:\n\n- ~rufen~: Aus Mhd. ~ruofen~, aus Ahd. ~ruofan~/~hruofan~, aus Proto-Westgermanisch *~hrōpan~, aus Urgermanisch *~hrōpaną~, dessen weitere Herkunft unsicher ist. Ein starkes Verb der Klasse VII. Eine parallele schwache Form im Mittelhochdeutschen erklärt, dass dem heutigen Präsens der Umlaut fehlt (~du rufst~, nicht *~du rüfst~). Verwandt mit niederländisch ~roepen~.\n- ~hinein-~: Das zusammengesetzte Adverb ~hin~ („vom Sprecher weg“) + ~ein~ („ein, hinein“); siehe den Eintrag ~her~ für das deiktische Paar. ~Hin~ stammt aus Mhd. ~hin~, aus Ahd. ~hina~, aus demselben germanischen deiktischen Stamm *~hi-~, der auch ~her~ und ~hier~ ergibt. Umgangssprachlich verkürzt es sich zu ~rein~, einer Kurzform, die es mit ~herein~ teilt. ~hinein-~ bezeichnet die Bewegung in etwas hinein, vom Sprecher weg gerichtet.\n\nDie Stimme, nicht der Sprecher, vollzieht hier die Bewegung nach innen — man ruft von außen in einen Raum hinein.",
+      "en": "A separable compound of ~hinein-~ + ~rufen~:\n\n- ~rufen~: From MHG ~ruofen~, from OHG ~ruofan~/~hruofan~, from Proto-West Germanic *~hrōpan~, from Proto-Germanic *~hrōpaną~, of uncertain further origin. A class VII strong verb. A parallel weak form in Middle High German explains why the modern present lacks the expected umlaut (~du rufst~, not *~du rüfst~). Cognate with Dutch ~roepen~.\n- ~hinein-~: The compound adverb ~hin~ (\"away from the speaker\") + ~ein~ (\"in\"); see the ~her~ entry for the deictic pair. ~Hin~ comes from MHG ~hin~, from OHG ~hina~, from the same Germanic deictic stem *~hi-~ that gives ~her~ and ~hier~. Colloquially it contracts to ~rein~, a contraction it shares with ~herein~. ~hinein-~ means motion into something, directed away from the speaker.\n\nHere it is the voice, not the speaker, that performs the inward motion — one calls from outside into a space."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "hineinspielen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~hinein-~ + ~spielen~:\n\n- ~spielen~: Aus Mhd. ~spil(e)n~, aus Ahd. ~spilōn~, aus Proto-Westgermanisch *~spilōn~, aus Urgermanisch *~spilōną~, einem denominativen Verb zum Substantiv *~spilą~ („Spiel, Tanz“); der vorgermanische Ursprung ist ungewiss. Ahd. ~spilōn~ umfasste breiter auch Tanz und Unterhaltung. Verwandt mit Niederländisch ~spelen~, Niederdeutsch ~spelen~.\n- ~hinein-~: Das zusammengesetzte Adverb ~hin~ („vom Sprecher weg“) + ~ein~ („ein, hinein“); siehe den Eintrag ~her~ für das deiktische Paar. ~Hin~ stammt aus Mhd. ~hin~, aus Ahd. ~hina~, aus demselben germanischen deiktischen Stamm *~hi-~, der auch ~her~ und ~hier~ ergibt. Umgangssprachlich verkürzt es sich zu ~rein~, einer Kurzform, die es mit ~herein~ teilt. Übertragen bezeichnet es das Sich-Hineinstürzen in eine Tätigkeit oder eine Lage.\n\nÜbertragen heißt ~hineinspielen~, als mitwirkender Faktor in eine Sache eingehen — ein Umstand, der bei etwas eine Rolle spielt.",
+      "en": "A separable compound of ~hinein-~ + ~spielen~:\n\n- ~spielen~: From MHG ~spil(e)n~, from OHG ~spilōn~, from Proto-West Germanic *~spilōn~, from Proto-Germanic *~spilōną~, a denominative verb from the noun *~spilą~ (\"play, game, dance\"); the pre-Germanic origin is uncertain. OHG ~spilōn~ was broader, covering dance and entertainment generally. Cognate with Dutch ~spelen~, Low German ~spelen~.\n- ~hinein-~: The compound adverb ~hin~ (\"away from the speaker\") + ~ein~ (\"in\"); see the ~her~ entry for the deictic pair. ~Hin~ comes from MHG ~hin~, from OHG ~hina~, from the same Germanic deictic stem *~hi-~ that gives ~her~ and ~hier~. Colloquially it contracts to ~rein~, a contraction it shares with ~herein~. Figuratively it marks throwing oneself into an activity or a situation.\n\nFiguratively ~hineinspielen~ means to enter into a matter as a contributing factor — a circumstance that plays a part in something."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "hineinstecken": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~hinein-~ + ~stecken~:\n\n- ~stecken~: Das heutige ~stecken~ verschmilzt zwei Verben: das transitive schwache („etwas hineinstecken“) aus Mhd. ~stecken~, Ahd. ~steckōn~, einer Geminaten-Ableitung von ~stëhhan~ (dem Vorfahren von ~stechen~), und das starke intransitive (archaisch ~stak~/~gestocken~, „festsitzen“); die beiden fielen im Frühneuhochdeutschen zusammen. Beide aus Proto-Westgermanisch *~stekan~, aus Urgermanisch *~stikaną~, aus PIE *~(s)teyg-~ („scharf sein, stechen, antreiben“). Verwandt mit Englisch ~stick~ und ~steak~.\n- ~hinein-~: Das zusammengesetzte Adverb ~hin~ („vom Sprecher weg“) + ~ein~ („ein, hinein“); siehe den Eintrag ~her~ für das deiktische Paar. ~Hin~ stammt aus Mhd. ~hin~, aus Ahd. ~hina~, aus demselben germanischen deiktischen Stamm *~hi-~, der auch ~her~ und ~hier~ ergibt. Umgangssprachlich verkürzt es sich zu ~rein~, einer Kurzform, die es mit ~herein~ teilt. ~hinein-~ bezeichnet die Bewegung in etwas hinein, vom Sprecher weg gerichtet.\n\nKonkret meint es das Hineinschieben eines Gegenstands, wie den Schlüssel ins Schloss; übertragen steckt man Geld oder Mühe in etwas hinein.",
+      "en": "A separable compound of ~hinein-~ + ~stecken~:\n\n- ~stecken~: Modern ~stecken~ merges two verbs: the transitive weak one (\"to put, stick something in\") from MHG ~stecken~, OHG ~steckōn~, a geminate derivative of ~stëhhan~ (the ancestor of ~stechen~), and the strong intransitive one (archaic ~stak~/~gestocken~, \"to be stuck\"); the two fused in Early Modern German. Both trace to Proto-West Germanic *~stekan~, from Proto-Germanic *~stikaną~, from PIE *~(s)teyg-~ (\"to be sharp, stab, goad\"). Cognate with English ~stick~ and ~steak~.\n- ~hinein-~: The compound adverb ~hin~ (\"away from the speaker\") + ~ein~ (\"in\"); see the ~her~ entry for the deictic pair. ~Hin~ comes from MHG ~hin~, from OHG ~hina~, from the same Germanic deictic stem *~hi-~ that gives ~her~ and ~hier~. Colloquially it contracts to ~rein~, a contraction it shares with ~herein~. ~hinein-~ means motion into something, directed away from the speaker.\n\nConcretely it means pushing an object in, like a key into a lock; figuratively one puts money or effort into something."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Es suchte den Schlüssel heraus und als es ihn in der Hand hielt, steckte es ihn auch in das Schloß, und als es ihn hineingesteckt hatte, drehte es auch um.",
+        "source": "Grimm — Märchen"
+      },
+      "en": {
+        "sentence": "It searched out the key, and when it held it in its hand, it put it into the lock as well, and when it had stuck it in, it turned it too.",
+        "source": "Grimm — Märchen"
+      }
+    },
+    "notes": null
+  },
+  "hineinversetzen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~hinein-~ + ~ver-~ + ~setzen~:\n\n- ~setzen~: Aus Mhd. ~setzen~, aus Ahd. ~sezzen~, aus Proto-Westgermanisch *~sattjan~, aus Urgermanisch *~satjaną~ („setzen, hinsetzen“), aus PIE *~sodéyeti~ — eine Kausativableitung von *~sitjaną~ („sitzen“) mit dem Suffix *~-janą~, wörtlich „zum Sitzen bringen“. Verwandt mit Englisch ~set~, Niederländisch ~zetten~, Jiddisch ~zetsn~.\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ drückt Entfernung oder Wegbewegung aus, aus dem älteren räumlichen Sinn des Präfixes.\n- ~hinein-~: Das zusammengesetzte Adverb ~hin~ („vom Sprecher weg“) + ~ein~ („ein, hinein“); siehe den Eintrag ~her~ für das deiktische Paar. ~Hin~ stammt aus Mhd. ~hin~, aus Ahd. ~hina~, aus demselben germanischen deiktischen Stamm *~hi-~, der auch ~her~ und ~hier~ ergibt. Umgangssprachlich verkürzt es sich zu ~rein~, einer Kurzform, die es mit ~herein~ teilt. Übertragen bezeichnet es das Sich-Hineinstürzen in eine Tätigkeit oder eine Lage.\n\nReflexiv — ~sich in jemanden hineinversetzen~ — bezeichnet es das gedankliche Sich-Verlagern in die Lage eines anderen; ~ver-~ steuert die Verlagerung bei, ~hinein-~ das Ziel.",
+      "en": "A separable compound of ~hinein-~ + ~ver-~ + ~setzen~:\n\n- ~setzen~: From MHG ~setzen~, from OHG ~sezzen~, from Proto-West Germanic *~sattjan~, from Proto-Germanic *~satjaną~ (\"to set, to place down\"), from PIE *~sodéyeti~ — a causative derivation of *~sitjaną~ (\"to sit\") with the suffix *~-janą~, literally \"to cause to sit.\" Cognate with English ~set~, Dutch ~zetten~, Yiddish ~zetsn~.\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ conveys removal or motion away, from the prefix's older spatial sense.\n- ~hinein-~: The compound adverb ~hin~ (\"away from the speaker\") + ~ein~ (\"in\"); see the ~her~ entry for the deictic pair. ~Hin~ comes from MHG ~hin~, from OHG ~hina~, from the same Germanic deictic stem *~hi-~ that gives ~her~ and ~hier~. Colloquially it contracts to ~rein~, a contraction it shares with ~herein~. Figuratively it marks throwing oneself into an activity or a situation.\n\nReflexively — ~sich in jemanden hineinversetzen~ — it denotes mentally transposing oneself into another's position; ~ver-~ supplies the displacement, ~hinein-~ the goal."
+    },
+    "sentence": null,
+    "notes": "no candidates"
+  },
+  "hineinziehen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~hinein-~ + ~ziehen~:\n\n- ~ziehen~: Aus Mhd. ~ziehen~, aus Ahd. ~ziohan~, aus proto-westgermanisch *~teuhan~, aus urgermanisch *~teuhaną~, aus PIE *~dewk-~ („ziehen, führen“). Ein starkes Verb der Klasse II. Verwandt mit gotisch ~tiuhan~, altenglisch ~tēon~, altnordisch ~toga~, westfriesisch ~tsjen~ und englisch ~tie~.\n- ~hinein-~: Das zusammengesetzte Adverb ~hin~ („vom Sprecher weg“) + ~ein~ („ein, hinein“); siehe den Eintrag ~her~ für das deiktische Paar. ~Hin~ stammt aus Mhd. ~hin~, aus Ahd. ~hina~, aus demselben germanischen deiktischen Stamm *~hi-~, der auch ~her~ und ~hier~ ergibt. Umgangssprachlich verkürzt es sich zu ~rein~, einer Kurzform, die es mit ~herein~ teilt. ~hinein-~ bezeichnet die Bewegung in etwas hinein, vom Sprecher weg gerichtet.\n\nKonkret zieht es einen Körper nach innen, wie die Hand in Luthers Vers; übertragen zieht man jemanden in einen Streit oder eine Sache hinein.",
+      "en": "A separable compound of ~hinein-~ + ~ziehen~:\n\n- ~ziehen~: From MHG ~ziehen~, from OHG ~ziohan~, from Proto-West Germanic *~teuhan~, from Proto-Germanic *~teuhaną~, from PIE *~dewk-~ (\"to pull, lead\"). A class II strong verb. Cognate with Gothic ~tiuhan~, Old English ~tēon~, Old Norse ~toga~, West Frisian ~tsjen~, and English ~tie~.\n- ~hinein-~: The compound adverb ~hin~ (\"away from the speaker\") + ~ein~ (\"in\"); see the ~her~ entry for the deictic pair. ~Hin~ comes from MHG ~hin~, from OHG ~hina~, from the same Germanic deictic stem *~hi-~ that gives ~her~ and ~hier~. Colloquially it contracts to ~rein~, a contraction it shares with ~herein~. ~hinein-~ means motion into something, directed away from the speaker.\n\nConcretely it pulls a body inward, as the hand in Luther's verse; figuratively one draws someone into a quarrel or affair."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Da aber der seine Hand wieder hineinzog, kam sein Bruder heraus; und sie sprach: Warum hast du um deinetwillen solchen Riß gerissen?",
+        "source": "Luther — Bibel"
+      },
+      "en": {
+        "sentence": "But when he drew his hand back in, his brother came out; and she said: Why have you torn such a breach for your own sake?",
+        "source": "Luther — Bibel"
+      }
+    },
+    "notes": "The exemplar slot lists hineinziehen under the figurative sense (2); the reading's gloss „pull in, drag in“ and the chosen literal candidate attest the concrete inward-motion sense (0), so sense 0 was taken."
+  },
+  "hinfahren": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~hin-~ + ~fahren~:\n\n- ~fahren~: Aus Mhd. ~varn~, aus Ahd. ~faran~, aus Proto-Westgermanisch *~faran~, aus Urgermanisch *~faraną~, aus PIE *~per-~ („Gehen, Durchgang“). Ein starkes Verb der Klasse VI, dessen alter Sinn „gehen, reisen“ sich auf Fahrzeuge verengte; das Kausativum ~führen~ (*~fōrijaną~) ist das transitive Gegenstück. Verwandt mit Englisch ~fare~, Niederländisch ~varen~, Dänisch ~fare~.\n- ~hin-~: Aus Ahd. ~hina~, aus Urgermanisch *~hina~ („weg von hier, dorthin“), aus dem PIE-Demonstrativstamm *~ḱi-~ („dieser, hier“). ~Hin-~ weist vom Sprecher weg, ~her-~ zum Sprecher hin; das Englische zog dieselbe Grenze einst mit ~thither~ und ~hither~. Verwandt mit Englisch ~hence~ und ~here~. Die Partikel zeigt eine Bewegung vom Sprecher weg an, hin zu einem anderen Ort.\n\nTransitiv heißt ~hinfahren~, jemanden an einen Ort fahren; bei Goethe steht der ältere, verallgemeinerte Sinn des Dahinfahrens im Gleis der Gewohnheit.",
+      "en": "A separable compound of ~hin-~ + ~fahren~:\n\n- ~fahren~: From MHG ~varn~, from OHG ~faran~, from Proto-West Germanic *~faran~, from Proto-Germanic *~faraną~, from PIE *~per-~ (\"going, passage\"). A class VI strong verb whose old sense \"to go, travel\" narrowed to vehicular travel; the causative ~führen~ (*~fōrijaną~) is its transitive counterpart. Cognate with English ~fare~, Dutch ~varen~, Danish ~fare~.\n- ~hin-~: From OHG ~hina~, from Proto-Germanic *~hina~ (\"away from here, thither\"), from the PIE demonstrative stem *~ḱi-~ (\"this, here\"). ~Hin-~ points away from the speaker and ~her-~ toward the speaker; English once drew the same line with ~thither~ and ~hither~. Cognate with English ~hence~ and ~here~. The particle indicates motion away from the speaker, toward some other place.\n\nTransitively ~hinfahren~ means to drive someone to a place; in Goethe the older, generalized sense of coasting along in the rut of habit is at work."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Lieber Wilhelm, ich habe allerlei nachgedacht, über die Begier im Menschen, sich auszubreiten, neue Entdeckungen zu machen, herumzuschweifen; und dann wieder über den inneren Trieb, sich der Einschränkung willig zu ergeben, in dem Gleise der Gewohnheit so hinzufahren und sich weder um Rechts noch um Links zu bekümmern.",
+        "source": "Goethe — Die Leiden des jungen Werthers"
+      },
+      "en": {
+        "sentence": "Dear Wilhelm, I have been pondering all sorts of things — about the human craving to spread out, to make new discoveries, to roam about; and then again about the inner urge to submit willingly to constraint, to coast along in the rut of habit and to trouble oneself about neither right nor left.",
+        "source": "Goethe — Die Leiden des jungen Werthers"
+      }
+    },
+    "notes": "Ranks 0, 3, 4 are the homograph ~hinführen~ „lead there,“ not ~hinfahren~; rank 1, the only literal ~hinfahren~, is a 66-word Grimm period over the 65-word ceiling. Chose the 48-word Goethe ~hinzufahren~, which attests a generalized figurative sense rather than the transitive „give a ride“ gloss."
+  },
+  "hinfallen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~hin-~ + ~fallen~:\n\n- ~fallen~: Aus Mhd. ~vallen~, aus Ahd. ~fallan~, aus Proto-Westgermanisch *~fallan~, aus Urgermanisch *~fallaną~; der PIE-Ursprung ist unsicher, vorgeschlagen wird *~h₂peh₃lH-~ („wegfallen, zerstört werden“). Ein starkes Verb der Klasse VII, urgermanisch mit redupliziertem Präteritum; das schwache Kausativum ~fällen~ (*~fallijaną~) zeigt den Umlaut als Spur. Verwandt mit Englisch ~fall~, Niederländisch ~vallen~, Dänisch ~falde~.\n- ~hin-~: Aus Ahd. ~hina~, aus Urgermanisch *~hina~ („weg von hier, dorthin“), aus dem PIE-Demonstrativstamm *~ḱi-~ („dieser, hier“). ~Hin-~ weist vom Sprecher weg, ~her-~ zum Sprecher hin; das Englische zog dieselbe Grenze einst mit ~thither~ und ~hither~. Verwandt mit Englisch ~hence~ und ~here~. Die Partikel zeigt eine Bewegung vom Sprecher weg an, hin zu einem anderen Ort.\n\nMit dem Hilfsverb ~sein~ gebildet, bezeichnet es das Zu-Boden-Stürzen; ~hin-~ gibt der Bewegung ihr Ziel, den Boden.",
+      "en": "A separable compound of ~hin-~ + ~fallen~:\n\n- ~fallen~: From MHG ~vallen~, from OHG ~fallan~, from Proto-West Germanic *~fallan~, from Proto-Germanic *~fallaną~; the PIE origin is uncertain, one proposal being *~h₂peh₃lH-~ (\"to fall away, be destroyed\"). A class VII strong verb, reduplicating in the Proto-Germanic past; the weak causative ~fällen~ (*~fallijaną~) shows the umlaut as its trace. Cognate with English ~fall~, Dutch ~vallen~, Danish ~falde~.\n- ~hin-~: From OHG ~hina~, from Proto-Germanic *~hina~ (\"away from here, thither\"), from the PIE demonstrative stem *~ḱi-~ (\"this, here\"). ~Hin-~ points away from the speaker and ~her-~ toward the speaker; English once drew the same line with ~thither~ and ~hither~. Cognate with English ~hence~ and ~here~. The particle indicates motion away from the speaker, toward some other place.\n\nBuilt with the auxiliary ~sein~, it denotes falling to the ground; ~hin-~ gives the motion its goal, the ground."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Und soll einer über den andern hinfallen, gleich als vor dem Schwert, da sie doch niemand jagt; und ihr sollt euch nicht auflehnen dürfen wider eure Feinde.",
+        "source": "Luther — Bibel"
+      },
+      "en": {
+        "sentence": "And they shall stumble over one another as though before the sword, though no one pursues them; and you shall not be able to stand against your enemies.",
+        "source": "Luther — Bibel"
+      }
+    },
+    "notes": null
+  },
+  "hingeben": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~hin-~ + ~geben~:\n\n- ~geben~: Aus Mhd. ~gëben~, aus Ahd. ~gëban~, aus Proto-Westgermanisch *~geban~, aus Urgermanisch *~gebaną~, aus PIE *~gʰebʰ-~ („geben“). Verwandt mit Englisch ~give~ (aus Altnordisch ~gefa~), Niederländisch ~geven~, Schwedisch ~giva~/~ge~, Dänisch ~give~.\n- ~hin-~: Aus Ahd. ~hina~, aus Urgermanisch *~hina~ („weg von hier, dorthin“), aus dem PIE-Demonstrativstamm *~ḱi-~ („dieser, hier“). ~Hin-~ weist vom Sprecher weg, ~her-~ zum Sprecher hin; das Englische zog dieselbe Grenze einst mit ~thither~ und ~hither~. Verwandt mit Englisch ~hence~ und ~here~. Die Partikel zeigt eine Bewegung vom Sprecher weg an, hin zu einem anderen Ort.\n\nWörtlich das Weggeben aus der Hand; reflexiv — ~sich hingeben~ — bezeichnet es die restlose Hingabe an eine Sache oder Person.",
+      "en": "A separable compound of ~hin-~ + ~geben~:\n\n- ~geben~: From MHG ~gëben~, from OHG ~gëban~, from Proto-West Germanic *~geban~, from Proto-Germanic *~gebaną~, from PIE *~gʰebʰ-~ (\"to give\"). Cognate with English ~give~ (from Old Norse ~gefa~), Dutch ~geven~, Swedish ~giva~/~ge~, Danish ~give~.\n- ~hin-~: From OHG ~hina~, from Proto-Germanic *~hina~ (\"away from here, thither\"), from the PIE demonstrative stem *~ḱi-~ (\"this, here\"). ~Hin-~ points away from the speaker and ~her-~ toward the speaker; English once drew the same line with ~thither~ and ~hither~. Cognate with English ~hence~ and ~here~. The particle indicates motion away from the speaker, toward some other place.\n\nLiterally giving away from one's hand; reflexively — ~sich hingeben~ — it denotes devoting oneself wholly to a cause or person."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Da rief der König: »Alles, was ich auf der Welt habe, will ich für dich hingeben.",
+        "source": "Grimm — Märchen"
+      },
+      "en": {
+        "sentence": "Then the king cried: \"Everything that I have in the world I will give up for you.\"",
+        "source": "Grimm — Märchen"
+      }
+    },
+    "notes": null
+  },
+  "hingehen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~hin-~ + ~gehen~:\n\n- ~gehen~: Aus Mhd. ~gan~, ~gen~, aus Ahd. ~gan~, ~gen~, aus Proto-Westgermanisch *~gān~, aus Urgermanisch *~gāną~, aus PIE *~ǵʰeh₁-~ („weggehen“). Die Form ~gen~ ist bairischen Ursprungs; das ~-h-~ kam in Analogie zu ~sehen~ in die Schreibung. Verwandt mit Englisch ~go~, Niederländisch ~gaan~, Niederdeutsch ~gahn~, Schwedisch und Dänisch ~gå~.\n- ~hin-~: Aus Ahd. ~hina~, aus Urgermanisch *~hina~ („weg von hier, dorthin“), aus dem PIE-Demonstrativstamm *~ḱi-~ („dieser, hier“). ~Hin-~ weist vom Sprecher weg, ~her-~ zum Sprecher hin; das Englische zog dieselbe Grenze einst mit ~thither~ und ~hither~. Verwandt mit Englisch ~hence~ und ~here~. Die Partikel zeigt eine Bewegung vom Sprecher weg an, hin zu einem anderen Ort.\n\nNeben der räumlichen Bedeutung steht der übertragene Gebrauch für das Verstreichen der Zeit („die Tage gehen hin“).",
+      "en": "A separable compound of ~hin-~ + ~gehen~:\n\n- ~gehen~: From MHG ~gan~, ~gen~, from OHG ~gan~, ~gen~, from Proto-West Germanic *~gān~, from Proto-Germanic *~gāną~, from PIE *~ǵʰeh₁-~ (\"to leave\"). The form ~gen~ is of Bavarian origin; the ~-h-~ entered the spelling by analogy with ~sehen~. Cognate with English ~go~, Dutch ~gaan~, Low German ~gahn~, Swedish and Danish ~gå~.\n- ~hin-~: From OHG ~hina~, from Proto-Germanic *~hina~ (\"away from here, thither\"), from the PIE demonstrative stem *~ḱi-~ (\"this, here\"). ~Hin-~ points away from the speaker and ~her-~ toward the speaker; English once drew the same line with ~thither~ and ~hither~. Cognate with English ~hence~ and ~here~. The particle indicates motion away from the speaker, toward some other place.\n\nBeside the spatial sense stands the figurative use for the passing of time (~die Tage gehen hin~)."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Da ward ihre Neugierde und Lust immer mehr angeregt, so daß sie endlich sagte: »Führe mich hin zu dem Schiff, ich will selbst hingehen und deines Herrn Schätze betrachten.",
+        "source": "Grimm — Märchen"
+      },
+      "en": {
+        "sentence": "Her curiosity and desire were roused more and more, so that at last she said: \"Lead me to the ship; I will go there myself and look at your master's treasures.\"",
+        "source": "Grimm — Märchen"
+      }
+    },
+    "notes": null
+  },
+  "hingehören": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~hin-~ + ~ge-~ + ~hören~:\n\n- ~hören~: Aus Mhd. ~hœren~, aus Ahd. ~hōren~, aus Urgermanisch *~hauzijaną~, aus PIE *~h₂ḱh₂owsyéti~ („scharfohrig sein“), aus *~h₂eḱ-~ („scharf“) + *~h₂ows-~ („Ohr“). Verwandt mit Englisch ~hear~, Niederländisch ~horen~, Dänisch ~høre~, Gotisch ~hausjan~.\n- ~ge-~: Aus Mhd. ~ge-~, aus Ahd. ~gi-~, ~ga-~, aus Proto-Westgermanisch *~ga-~, aus Urgermanisch *~ga-~ („zusammen, mit“), aus PIE *~ḱóm~ („neben, nahe, bei, mit“). Dasselbe Präfix bildet das Perfektpartizip und, als Substantivpräfix, Kollektiva wie ~Gebirge~ und ~Gebrüder~. ~ge-~ ist semantisch nicht mehr unterscheidbar und mit dem Grundverb verschmolzen.\n- ~hin-~: Aus Ahd. ~hina~, aus Urgermanisch *~hina~ („weg von hier, dorthin“), aus dem PIE-Demonstrativstamm *~ḱi-~ („dieser, hier“). ~Hin-~ weist vom Sprecher weg, ~her-~ zum Sprecher hin; das Englische zog dieselbe Grenze einst mit ~thither~ und ~hither~. Verwandt mit Englisch ~hence~ und ~here~. Die Partikel zeigt eine Bewegung vom Sprecher weg an, hin zu einem anderen Ort.\n\nDas Kompositum bezeichnet, dass etwas an einen bestimmten Platz gehört; ~hin-~ nennt den Ort, an den es sich fügt.",
+      "en": "A separable compound of ~hin-~ + ~ge-~ + ~hören~:\n\n- ~hören~: From MHG ~hœren~, from OHG ~hōren~, from Proto-Germanic *~hauzijaną~, from PIE *~h₂ḱh₂owsyéti~ (\"to be sharp-eared\"), from *~h₂eḱ-~ (\"sharp\") + *~h₂ows-~ (\"ear\"). Cognate with English ~hear~, Dutch ~horen~, Danish ~høre~, Gothic ~hausjan~.\n- ~ge-~: From MHG ~ge-~, from OHG ~gi-~, ~ga-~, from Proto-West Germanic *~ga-~, from Proto-Germanic *~ga-~ (\"together, with\"), from PIE *~ḱóm~ (\"beside, near, by, with\"). The same prefix that forms the Perfektpartizip and, as a noun prefix, collectives like ~Gebirge~ and ~Gebrüder~. ~ge-~ is no longer semantically distinct, having fused with the base verb.\n- ~hin-~: From OHG ~hina~, from Proto-Germanic *~hina~ (\"away from here, thither\"), from the PIE demonstrative stem *~ḱi-~ (\"this, here\"). ~Hin-~ points away from the speaker and ~her-~ toward the speaker; English once drew the same line with ~thither~ and ~hither~. Cognate with English ~hence~ and ~here~. The particle indicates motion away from the speaker, toward some other place.\n\nThe compound denotes that something belongs in a particular place; ~hin-~ names the spot into which it fits."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Aber sie haben auch Sorgen, weil in diesem Land manche von der Industrie sprechen wie von etwas, das hier eigentlich gar nicht mehr hingehört, das weg kann.",
+        "source": "Bundestag — Plenarprotokoll 20/207"
+      },
+      "en": {
+        "sentence": "But they also have worries, because in this country some speak of industry as of something that really no longer belongs here, that could go.",
+        "source": "Bundestag — Plenarprotokoll 20/207"
+      }
+    },
+    "notes": null
+  },
+  "hingucken": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~hin-~ + ~gucken~:\n\n- ~gucken~: Aus Mhd. ~gücken~, ~guggen~ („neugierig schauen, spähen“), unklarer Herkunft — vielleicht aus Mhd. ~gücken~, Ahd. ~guckōn~ („wie ein Kuckuck rufen“), über das Bild des Herauslugens. Die Nebenform ~kucken~ wird dem Einfluss von Niederdeutsch ~kieken~ zugeschrieben. Umgangssprachlich und nord-/mitteldeutsch; der Süden bevorzugt ~schauen~. Verwandt mit Niederländisch ~kijken~, Luxemburgisch ~kucken~.\n- ~hin-~: Aus Ahd. ~hina~, aus Urgermanisch *~hina~ („weg von hier, dorthin“), aus dem PIE-Demonstrativstamm *~ḱi-~ („dieser, hier“). ~Hin-~ weist vom Sprecher weg, ~her-~ zum Sprecher hin; das Englische zog dieselbe Grenze einst mit ~thither~ und ~hither~. Verwandt mit Englisch ~hence~ und ~here~. Die Partikel zeigt eine Bewegung vom Sprecher weg an, hin zu einem anderen Ort.\n\nUmgangssprachliches, nord- und mitteldeutsches Gegenstück zu ~hinsehen~; ~hin-~ lenkt den Blick auf einen Punkt.",
+      "en": "A separable compound of ~hin-~ + ~gucken~:\n\n- ~gucken~: From MHG ~gücken~, ~guggen~ (\"to look inquisitively, to peek\"), of uncertain origin — perhaps from MHG ~gücken~, OHG ~guckōn~ (\"to cuckoo\"), via the image of peeping out from cover. The variant ~kucken~ is attributed to influence from Low German ~kieken~. Colloquial and northern/central German; the south prefers ~schauen~. Cognate with Dutch ~kijken~, Luxembourgish ~kucken~.\n- ~hin-~: From OHG ~hina~, from Proto-Germanic *~hina~ (\"away from here, thither\"), from the PIE demonstrative stem *~ḱi-~ (\"this, here\"). ~Hin-~ points away from the speaker and ~her-~ toward the speaker; English once drew the same line with ~thither~ and ~hither~. Cognate with English ~hence~ and ~here~. The particle indicates motion away from the speaker, toward some other place.\n\nA colloquial, northern and central German counterpart to ~hinsehen~; ~hin-~ directs the gaze to a point."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Die Grünen haben sich jetzt etwas ganz Neues ausgedacht – man muss immer genau hingucken –: eine globale Milliardärssteuer.",
+        "source": "Bundestag — Plenarprotokoll 20/207"
+      },
+      "en": {
+        "sentence": "The Greens have now thought up something entirely new — you always have to look closely —: a global billionaire tax.",
+        "source": "Bundestag — Plenarprotokoll 20/207"
+      }
+    },
+    "notes": null
+  },
+  "hinhalten": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~hin-~ + ~halten~:\n\n- ~halten~: Aus Mhd. ~halten~, aus Ahd. ~haltan~, aus Proto-Westgermanisch *~haldan~, aus Urgermanisch *~haldaną~. Verwandt mit Englisch ~hold~, Niederländisch ~houden~, Niederdeutsch ~holden~, Dänisch ~holde~, Isländisch ~halda~, Schwedisch ~hålla~.\n- ~hin-~: Aus Ahd. ~hina~, aus Urgermanisch *~hina~ („weg von hier, dorthin“), aus dem PIE-Demonstrativstamm *~ḱi-~ („dieser, hier“). ~Hin-~ weist vom Sprecher weg, ~her-~ zum Sprecher hin; das Englische zog dieselbe Grenze einst mit ~thither~ und ~hither~. Verwandt mit Englisch ~hence~ und ~here~. Die Partikel zeigt eine Bewegung vom Sprecher weg an, hin zu einem anderen Ort.\n\nKonkret hält man jemandem etwas hin, wie der Alte bei Mann den Hut; übertragen bedeutet ~hinhalten~, jemanden mit leeren Versprechungen vertrösten.",
+      "en": "A separable compound of ~hin-~ + ~halten~:\n\n- ~halten~: From MHG ~halten~, from OHG ~haltan~, from Proto-West Germanic *~haldan~, from Proto-Germanic *~haldaną~. Cognate with English ~hold~, Dutch ~houden~, Low German ~holden~, Danish ~holde~, Icelandic ~halda~, Swedish ~hålla~.\n- ~hin-~: From OHG ~hina~, from Proto-Germanic *~hina~ (\"away from here, thither\"), from the PIE demonstrative stem *~ḱi-~ (\"this, here\"). ~Hin-~ points away from the speaker and ~her-~ toward the speaker; English once drew the same line with ~thither~ and ~hither~. Cognate with English ~hence~ and ~here~. The particle indicates motion away from the speaker, toward some other place.\n\nConcretely one holds something out to someone, like the old man's hat in Mann; figuratively ~hinhalten~ means to put someone off with empty promises."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "--Der Herr ist umsonst gefahren, sagte der Alte und hielt den Hut hin.",
+        "source": "Mann — Der Tod in Venedig"
+      },
+      "en": {
+        "sentence": "\"The gentleman has ridden for nothing,\" said the old man, and held out his hat.",
+        "source": "Mann — Der Tod in Venedig"
+      }
+    },
+    "notes": "Skipped the rank-0 candidate, which attests the figurative „stall, put off“ sense, in favor of the literal „hold out“ gloss."
+  },
+  "hinhören": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~hin-~ + ~hören~:\n\n- ~hören~: Aus Mhd. ~hœren~, aus Ahd. ~hōren~, aus Urgermanisch *~hauzijaną~, aus PIE *~h₂ḱh₂owsyéti~ („scharfohrig sein“), aus *~h₂eḱ-~ („scharf“) + *~h₂ows-~ („Ohr“). Verwandt mit Englisch ~hear~, Niederländisch ~horen~, Dänisch ~høre~, Gotisch ~hausjan~.\n- ~hin-~: Aus Ahd. ~hina~, aus Urgermanisch *~hina~ („weg von hier, dorthin“), aus dem PIE-Demonstrativstamm *~ḱi-~ („dieser, hier“). ~Hin-~ weist vom Sprecher weg, ~her-~ zum Sprecher hin; das Englische zog dieselbe Grenze einst mit ~thither~ und ~hither~. Verwandt mit Englisch ~hence~ und ~here~. Die Partikel zeigt eine Bewegung vom Sprecher weg an, hin zu einem anderen Ort.\n\n~hin-~ richtet das Gehör auf eine Quelle; das Verb meint das aufmerksame, gezielte Hinhören, nicht das bloße Hören.",
+      "en": "A separable compound of ~hin-~ + ~hören~:\n\n- ~hören~: From MHG ~hœren~, from OHG ~hōren~, from Proto-Germanic *~hauzijaną~, from PIE *~h₂ḱh₂owsyéti~ (\"to be sharp-eared\"), from *~h₂eḱ-~ (\"sharp\") + *~h₂ows-~ (\"ear\"). Cognate with English ~hear~, Dutch ~horen~, Danish ~høre~, Gothic ~hausjan~.\n- ~hin-~: From OHG ~hina~, from Proto-Germanic *~hina~ (\"away from here, thither\"), from the PIE demonstrative stem *~ḱi-~ (\"this, here\"). ~Hin-~ points away from the speaker and ~her-~ toward the speaker; English once drew the same line with ~thither~ and ~hither~. Cognate with English ~hence~ and ~here~. The particle indicates motion away from the speaker, toward some other place.\n\n~hin-~ directs the hearing toward a source; the verb means attentive, focused listening, not mere hearing."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Aber was braucht denn, wenn man mal genauer hinhört, die Wirtschaft wirklich?",
+        "source": "Bundestag — Plenarprotokoll 20/210"
+      },
+      "en": {
+        "sentence": "But what, if one listens more closely, does the economy really need?",
+        "source": "Bundestag — Plenarprotokoll 20/210"
+      }
+    },
+    "notes": "Ranks 0–1 are the participle ~hingehört~ of the homograph ~hingehören~ „belong,“ not ~hinhören~; took the rank-2 ~hinhört~."
+  },
+  "hinkommen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~hin-~ + ~kommen~:\n\n- ~kommen~: Aus Mhd. ~quemen~, ~komen~, ~kumen~, aus Ahd. ~queman~ (seltener ~cuman~, ~chuman~), aus Proto-Westgermanisch *~kweman~, aus Urgermanisch *~kwemaną~, aus PIE *~gʷem-~. Verwandt mit Englisch ~come~, Niederdeutsch ~kamen~, Niederländisch ~komen~, Dänisch ~komme~.\n- ~hin-~: Aus Ahd. ~hina~, aus Urgermanisch *~hina~ („weg von hier, dorthin“), aus dem PIE-Demonstrativstamm *~ḱi-~ („dieser, hier“). ~Hin-~ weist vom Sprecher weg, ~her-~ zum Sprecher hin; das Englische zog dieselbe Grenze einst mit ~thither~ und ~hither~. Verwandt mit Englisch ~hence~ und ~here~. Die Partikel zeigt eine Bewegung vom Sprecher weg an, hin zu einem anderen Ort.\n\nAnders als ~hingehen~ betont ~hinkommen~ das Ankommen am Ziel; umgangssprachlich auch „ausreichen“ oder „stimmen“ („das kommt hin“).",
+      "en": "A separable compound of ~hin-~ + ~kommen~:\n\n- ~kommen~: From MHG ~quemen~, ~komen~, ~kumen~, from OHG ~queman~ (rarer ~cuman~, ~chuman~), from Proto-West Germanic *~kweman~, from Proto-Germanic *~kwemaną~, from PIE *~gʷem-~. Cognate with English ~come~, Low German ~kamen~, Dutch ~komen~, Danish ~komme~.\n- ~hin-~: From OHG ~hina~, from Proto-Germanic *~hina~ (\"away from here, thither\"), from the PIE demonstrative stem *~ḱi-~ (\"this, here\"). ~Hin-~ points away from the speaker and ~her-~ toward the speaker; English once drew the same line with ~thither~ and ~hither~. Cognate with English ~hence~ and ~here~. The particle indicates motion away from the speaker, toward some other place.\n\nUnlike ~hingehen~, ~hinkommen~ stresses arrival at the goal; colloquially also \"to suffice\" or \"to be about right\" (~das kommt hin~)."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Wo er hinkam, war ihm das Beste gut genug, und je teurer, je lieber, denn er hatte immer einen vollen Beutel.",
+        "source": "Grimm — Märchen"
+      },
+      "en": {
+        "sentence": "Wherever he went, the best was good enough for him, and the dearer the better, for he always had a full purse.",
+        "source": "Grimm — Märchen"
+      }
+    },
+    "notes": null
+  },
+  "hinkriegen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~hin-~ + ~kriegen~:\n\n- ~kriegen~: Aus Mhd. ~kriegen~ („Krieg führen, nach etwas streben“), einer Verbbildung von ~Krieg~, aus Ahd. ~krig~, aus Proto-Westgermanisch *~krīg~, dessen Herkunft umstritten ist. Der Sinn des Erlangens verdrängte den militärischen; umgangssprachlich heißt ~kriegen~ heute schlicht „bekommen“. Verwandt mit Niederländisch ~krijgen~ („bekommen“), Bairisch ~kriagn~.\n- ~hin-~: Aus Ahd. ~hina~, aus Urgermanisch *~hina~ („weg von hier, dorthin“), aus dem PIE-Demonstrativstamm *~ḱi-~ („dieser, hier“). ~Hin-~ weist vom Sprecher weg, ~her-~ zum Sprecher hin; das Englische zog dieselbe Grenze einst mit ~thither~ und ~hither~. Verwandt mit Englisch ~hence~ und ~here~. Die Partikel zeigt eine Bewegung vom Sprecher weg an, hin zu einem anderen Ort.\n\nUmgangssprachlich heißt ~hinkriegen~, etwas zustande oder in Ordnung bringen — eine idiomatische Wendung von ~kriegen~ „bekommen“, die die räumliche Bedeutung von ~hin-~ hinter sich gelassen hat.",
+      "en": "A separable compound of ~hin-~ + ~kriegen~:\n\n- ~kriegen~: From MHG ~kriegen~ (\"to war, to strive for\"), a verbalization of ~Krieg~ (\"war\"), from OHG ~krig~, from Proto-West Germanic *~krīg~, whose origin is debated. The \"obtaining\" sense overshadowed the military one; colloquial modern German ~kriegen~ simply means \"to get.\" Cognate with Dutch ~krijgen~ (\"to get\"), Bavarian ~kriagn~.\n- ~hin-~: From OHG ~hina~, from Proto-Germanic *~hina~ (\"away from here, thither\"), from the PIE demonstrative stem *~ḱi-~ (\"this, here\"). ~Hin-~ points away from the speaker and ~her-~ toward the speaker; English once drew the same line with ~thither~ and ~hither~. Cognate with English ~hence~ and ~here~. The particle indicates motion away from the speaker, toward some other place.\n\nColloquially ~hinkriegen~ means to bring something off or get it into order — an idiomatic turn on ~kriegen~ \"to get\" that has left the spatial sense of ~hin-~ behind."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Wir haben ja fast nicht gewagt, zu glauben, dass wir dafür einen tollen Antrag hinkriegen; mein Kollege Stephan Mayer wird dazu noch ausführen.",
+        "source": "Bundestag — Plenarprotokoll 20/210"
+      },
+      "en": {
+        "sentence": "We hardly dared to believe that we would pull off a great motion on this; my colleague Stephan Mayer will say more about it.",
+        "source": "Bundestag — Plenarprotokoll 20/210"
+      }
+    },
+    "notes": "The colloquial „manage, succeed“ sense is idiomatic and matches none of the deictic exemplars; the spatial sense 0 was taken as the base and the closer explains the extension."
+  },
+  "hinlegen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~hin-~ + ~legen~:\n\n- ~legen~: Aus mhd. ~legen~, aus ahd. ~leggen~, aus proto-westgermanisch *~laggjan~, aus urgermanisch *~lagjaną~, einer kausativen Ableitung von *~ligjaną~ („liegen“) mit dem Suffix *~-janą~, aus PIE *~logʰéyeti~. ~legen~ ist damit das Kausativum zu ~liegen~: „zum Liegen bringen“. Verwandt mit niederländisch ~leggen~, englisch ~lay~, dänisch ~lægge~.\n- ~hin-~: Aus Ahd. ~hina~, aus Urgermanisch *~hina~ („weg von hier, dorthin“), aus dem PIE-Demonstrativstamm *~ḱi-~ („dieser, hier“). ~Hin-~ weist vom Sprecher weg, ~her-~ zum Sprecher hin; das Englische zog dieselbe Grenze einst mit ~thither~ und ~hither~. Verwandt mit Englisch ~hence~ und ~here~. Die Partikel drückt das Hinstellen oder Hinlegen an einen bestimmten Ort aus.\n\nDas transitive Gegenstück zu ~hinfallen~: man legt etwas an einen Ort; umgangssprachlich „eine tolle Leistung hinlegen“.",
+      "en": "A separable compound of ~hin-~ + ~legen~:\n\n- ~legen~: From MHG ~legen~, from OHG ~leggen~, from Proto-West Germanic *~laggjan~, from Proto-Germanic *~lagjaną~, a causative of *~ligjaną~ (\"to lie\") with the suffix *~-janą~, from PIE *~logʰéyeti~. The verb is thus the causative partner of ~liegen~: to ~legen~ is to \"cause to lie,\" i.e., to lay. Cognate with Dutch ~leggen~, English ~lay~, Danish ~lægge~.\n- ~hin-~: From OHG ~hina~, from Proto-Germanic *~hina~ (\"away from here, thither\"), from the PIE demonstrative stem *~ḱi-~ (\"this, here\"). ~Hin-~ points away from the speaker and ~her-~ toward the speaker; English once drew the same line with ~thither~ and ~hither~. Cognate with English ~hence~ and ~here~. The particle conveys setting something down in a particular place.\n\nThe transitive counterpart to ~hinfallen~: one lays something down at a place; colloquially \"to pull off a great performance.\""
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Aber Maria Magdalena und Maria, des Joses Mutter, schauten zu, wo er hingelegt ward.",
+        "source": "Luther — Bibel"
+      },
+      "en": {
+        "sentence": "But Mary Magdalene and Mary the mother of Joses looked on to see where he was laid.",
+        "source": "Luther — Bibel"
+      }
+    },
+    "notes": null
+  },
+  "hinreisen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~hin-~ + ~reisen~:\n\n- ~reisen~: Aus Mhd. ~reisen~ („zu einem Feldzug aufbrechen, reisen“), aus Ahd. ~reisōn~, aus Proto-Westgermanisch *~raisōn~, abgeleitet von einer Form verwandt mit Urgermanisch *~raizijaną~ („veranlassen aufzustehen“); die Wurzel *~rīsaną~ („aufstehen“) ergibt auch englisch ~rise~. Der Wandel von „aufbrechen“ zu „reisen“ verlief über den militärischen Kontext: eine ~Reise~ war zuerst ein Feldzug.\n- ~hin-~: Aus Ahd. ~hina~, aus Urgermanisch *~hina~ („weg von hier, dorthin“), aus dem PIE-Demonstrativstamm *~ḱi-~ („dieser, hier“). ~Hin-~ weist vom Sprecher weg, ~her-~ zum Sprecher hin; das Englische zog dieselbe Grenze einst mit ~thither~ und ~hither~. Verwandt mit Englisch ~hence~ und ~here~. Die Partikel zeigt eine Bewegung vom Sprecher weg an, hin zu einem anderen Ort.\n\n~hin-~ nennt den Zielort der Reise; das Verb betont das Reisen dorthin, nicht die Ankunft.",
+      "en": "A separable compound of ~hin-~ + ~reisen~:\n\n- ~reisen~: From MHG ~reisen~ (\"to set out on a campaign, to travel\"), from OHG ~reisōn~, from Proto-West Germanic *~raisōn~, from a form akin to Proto-Germanic *~raizijaną~ (\"to cause to rise\"); the root *~rīsaną~ (\"to rise\") also gives English ~rise~. The shift from \"setting out\" to \"traveling\" ran through the military sense: a ~Reise~ was originally a campaign.\n- ~hin-~: From OHG ~hina~, from Proto-Germanic *~hina~ (\"away from here, thither\"), from the PIE demonstrative stem *~ḱi-~ (\"this, here\"). ~Hin-~ points away from the speaker and ~her-~ toward the speaker; English once drew the same line with ~thither~ and ~hither~. Cognate with English ~hence~ and ~here~. The particle indicates motion away from the speaker, toward some other place.\n\n~hin-~ names the destination of the journey; the verb stresses traveling there rather than arriving."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "So es aber wert ist, daß ich auch hinreise, sollen sie mit mir reisen.",
+        "source": "Luther — Bibel"
+      },
+      "en": {
+        "sentence": "But if it is worthwhile that I too travel there, they shall travel with me.",
+        "source": "Luther — Bibel"
+      }
+    },
+    "notes": null
+  },
+  "hinreißen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~hin-~ + ~reißen~:\n\n- ~reißen~: Aus Mhd. ~rīȥen~, aus Ahd. ~rīȥan~ („kratzen“), aus einer Verschmelzung zweier proto-westgermanischer Verben: *~wrītan~, aus Urgermanisch *~wrītaną~, aus PIE *~wer-~ („schneiden, kratzen, ritzen“), und *~hrītan~, aus Urgermanisch *~hrītaną~. Die Verschmelzung hinterließ ein ungewöhnlich breites Bedeutungsfeld; *~wrītaną~ ergab auch englisch ~write~, ursprünglich „kratzen, ritzen“. Verwandt mit niederländisch ~rijten~, niederdeutsch ~rieten~.\n- ~hin-~: Aus Ahd. ~hina~, aus Urgermanisch *~hina~ („weg von hier, dorthin“), aus dem PIE-Demonstrativstamm *~ḱi-~ („dieser, hier“). ~Hin-~ weist vom Sprecher weg, ~her-~ zum Sprecher hin; das Englische zog dieselbe Grenze einst mit ~thither~ und ~hither~. Verwandt mit Englisch ~hence~ und ~here~. Die Partikel zeigt eine Bewegung vom Sprecher weg an, hin zu einem anderen Ort.\n\nKonkret ein Wegreißen; übertragen — und so meist gebraucht — reißt Begeisterung oder Leidenschaft den Menschen mit sich fort, wie Goethes Erzähler zur lebhaften Teilnahme hingerissen wird.",
+      "en": "A separable compound of ~hin-~ + ~reißen~:\n\n- ~reißen~: From MHG ~rīȥen~, from OHG ~rīȥan~ (\"to scratch\"), from a conflation of two Proto-West Germanic verbs: *~wrītan~, from Proto-Germanic *~wrītaną~, from PIE *~wer-~ (\"to cut, scratch, tear, sketch an outline\"), and *~hrītan~, from Proto-Germanic *~hrītaną~. The merger left an unusually broad semantic field, and *~wrītaną~ also gave English ~write~, originally \"to scratch, carve.\" Cognate with Dutch ~rijten~, Low German ~rieten~.\n- ~hin-~: From OHG ~hina~, from Proto-Germanic *~hina~ (\"away from here, thither\"), from the PIE demonstrative stem *~ḱi-~ (\"this, here\"). ~Hin-~ points away from the speaker and ~her-~ toward the speaker; English once drew the same line with ~thither~ and ~hither~. Cognate with English ~hence~ and ~here~. The particle indicates motion away from the speaker, toward some other place.\n\nConcretely a tearing away; figuratively — and so most often used — enthusiasm or passion carries a person off, as Goethe's narrator is swept away into lively sympathy."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Wenn du auf diesen Eingang viel Hohes und Vornehmes erwartest, so bist du wieder übel betrogen; es ist nichts als ein Bauerbursch, der mich zu dieser lebhaften Teilnehmung hingerissen hat.",
+        "source": "Goethe — Die Leiden des jungen Werthers"
+      },
+      "en": {
+        "sentence": "If you expect much lofty and noble matter from this opening, you are again sorely deceived; it is nothing but a peasant lad who has carried me away to this lively sympathy.",
+        "source": "Goethe — Die Leiden des jungen Werthers"
+      }
+    },
+    "notes": null
+  },
+  "hinrichten": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~hin-~ + ~richten~:\n\n- ~richten~: Aus Mhd. ~richten~, aus Ahd. ~rihten~ („gerademachen, in Ordnung bringen, lenken“), aus Proto-Westgermanisch *~rihtijan~, aus Urgermanisch *~rihtijaną~, einem Denominativ vom Adjektiv *~rehtaz~ („gerade, recht“), aus PIE *~h₃reǵtós~ („recht, gerichtet“), von *~h₃reǵ-~ („ausstrecken, gerademachen, lenken“). Verwandt mit englisch ~right~, niederländisch ~richten~, gotisch ~raihtjan~.\n- ~hin-~: Aus Ahd. ~hina~, aus Urgermanisch *~hina~ („weg von hier, dorthin“), aus dem PIE-Demonstrativstamm *~ḱi-~ („dieser, hier“). ~Hin-~ weist vom Sprecher weg, ~her-~ zum Sprecher hin; das Englische zog dieselbe Grenze einst mit ~thither~ und ~hither~. Verwandt mit Englisch ~hence~ und ~here~. Die Partikel zeigt eine Bewegung vom Sprecher weg an, hin zu einem anderen Ort.\n\nDie heutige Bedeutung „töten, exekutieren“ ist aus ~richten~ „in Ordnung bringen, mit jemandem verfahren“ und ~hin-~ „weg, zunichte“ zusammengewachsen — jemanden „hinrichten“ hieß ursprünglich, ihn zu seinem Ende abzufertigen.",
+      "en": "A separable compound of ~hin-~ + ~richten~:\n\n- ~richten~: From MHG ~richten~, from OHG ~rihten~ (\"to straighten, set right, direct\"), from Proto-West Germanic *~rihtijan~, from Proto-Germanic *~rihtijaną~, a denominative from the adjective *~rehtaz~ (\"straight, right\"), from PIE *~h₃reǵtós~ (\"right, straightened\"), from *~h₃reǵ-~ (\"to stretch out, straighten, direct\"). Cognate with English ~right~, Dutch ~richten~, Gothic ~raihtjan~.\n- ~hin-~: From OHG ~hina~, from Proto-Germanic *~hina~ (\"away from here, thither\"), from the PIE demonstrative stem *~ḱi-~ (\"this, here\"). ~Hin-~ points away from the speaker and ~her-~ toward the speaker; English once drew the same line with ~thither~ and ~hither~. Cognate with English ~hence~ and ~here~. The particle indicates motion away from the speaker, toward some other place.\n\nThe modern sense \"to execute\" grew together from ~richten~ \"to set in order, to deal with someone\" and ~hin-~ \"away, to naught\" — to ~hinrichten~ someone originally meant to dispatch him to his end."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Umso schlimmer ist es, dass der Bundeskanzler gestern hier im Plenum verteidigte, dass Deutschland als einziges Land in Europa wieder nach Afghanistan abschiebt – in ein Land, das von einem Regime regiert wird, das Menschen öffentlich auspeitscht, Frauen in fensterlose Häuser sperrt und hinrichtet.",
+        "source": "Bundestag — Plenarprotokoll 20/210"
+      },
+      "en": {
+        "sentence": "All the worse it is that the Chancellor yesterday defended here in the plenum that Germany, as the only country in Europe, is again deporting to Afghanistan — to a country ruled by a regime that publicly flogs people, locks women in windowless houses, and executes them.",
+        "source": "Bundestag — Plenarprotokoll 20/210"
+      }
+    },
+    "notes": "Sole candidate is a ~43-word Bundestag period; longer than ideal but well under the sole-candidate ceiling and an unambiguous attestation of „execute.“"
+  },
+  "hinrücken": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~hin-~ + ~rücken~:\n\n- ~rücken~: Aus Mhd. ~rücken~, aus Ahd. ~rucchen~, aus Proto-Westgermanisch *~rukkijan~. Das Verb bedeutet „bewegen, verschieben“ und ist die Grundlage von ~verrückt~ (wörtlich „verschoben, deplatziert“); das Substantiv ~Rücken~ ist etymologisch ein eigenständiges Wort. Verwandt mit englisch ~rock~, altnordisch ~rykkja~, altenglisch ~roccian~.\n- ~hin-~: Aus Ahd. ~hina~, aus Urgermanisch *~hina~ („weg von hier, dorthin“), aus dem PIE-Demonstrativstamm *~ḱi-~ („dieser, hier“). ~Hin-~ weist vom Sprecher weg, ~her-~ zum Sprecher hin; das Englische zog dieselbe Grenze einst mit ~thither~ und ~hither~. Verwandt mit Englisch ~hence~ und ~here~. Die Partikel zeigt eine Bewegung vom Sprecher weg an, hin zu einem anderen Ort.\n\n~rücken~ meint das ruckweise Verschieben; ~hin-~ gibt die Richtung — bei Luther das Entrückt-Werden in die Wolken.",
+      "en": "A separable compound of ~hin-~ + ~rücken~:\n\n- ~rücken~: From MHG ~rücken~, from OHG ~rucchen~, from Proto-West Germanic *~rukkijan~. The verb means \"to move, to shift\" and is the base of ~verrückt~ (\"crazy,\" literally \"shifted, displaced\"); the noun ~Rücken~ (\"back\") is etymologically a separate word. Cognate with English ~rock~, Old Norse ~rykkja~, Old English ~roccian~.\n- ~hin-~: From OHG ~hina~, from Proto-Germanic *~hina~ (\"away from here, thither\"), from the PIE demonstrative stem *~ḱi-~ (\"this, here\"). ~Hin-~ points away from the speaker and ~her-~ toward the speaker; English once drew the same line with ~thither~ and ~hither~. Cognate with English ~hence~ and ~here~. The particle indicates motion away from the speaker, toward some other place.\n\n~rücken~ means shifting with a jerk; ~hin-~ gives the direction — in Luther, being caught up into the clouds."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Darnach wir, die wir leben und übrig bleiben, werden zugleich mit ihnen hingerückt werden in den Wolken, dem HERRN entgegen in der Luft, und werden also bei dem HERRN sein allezeit.",
+        "source": "Luther — Bibel"
+      },
+      "en": {
+        "sentence": "Thereafter we who live and remain shall together with them be caught up into the clouds, to meet the Lord in the air, and so shall we be with the Lord always.",
+        "source": "Luther — Bibel"
+      }
+    },
+    "notes": null
+  },
+  "hinschauen": {
+    "etymology": {
+      "de": "Trennbares Kompositum aus ~hin-~ + ~schauen~:\n\n- ~schauen~: Aus Mhd. ~schouwen~, aus Ahd. ~scouwōn~, aus Urgermanisch *~skawwōną~ („blicken, sehen, beobachten“), aus PIE *~(s)kewh₁-~ („beachten, schauen, wahrnehmen“). Dieselbe Wurzel ergibt englisch ~show~; die germanischen Nachkommen teilen sich zwischen intransitivem „schauen“ und transitivem „sichtbar machen“. Das Verb ist charakteristisch für den süddeutschen, österreichischen und schweizerischen Sprachgebrauch. Verwandt mit englisch ~show~, niederländisch ~schouwen~.\n- ~hin-~: Aus Ahd. ~hina~, aus Urgermanisch *~hina~ („weg von hier, dorthin“), aus dem PIE-Demonstrativstamm *~ḱi-~ („dieser, hier“). ~Hin-~ weist vom Sprecher weg, ~her-~ zum Sprecher hin; das Englische zog dieselbe Grenze einst mit ~thither~ und ~hither~. Verwandt mit Englisch ~hence~ und ~here~. Die Partikel zeigt eine Bewegung vom Sprecher weg an, hin zu einem anderen Ort.\n\nWie ~hingucken~, aber schriftsprachlich neutraler; ~schauen~ ist zudem der süddeutsche, österreichische und schweizerische Normalfall für „sehen“.",
+      "en": "A separable compound of ~hin-~ + ~schauen~:\n\n- ~schauen~: From MHG ~schouwen~, from OHG ~scouwōn~, from Proto-Germanic *~skawwōną~ (\"to look, see, watch\"), from PIE *~(s)kewh₁-~ (\"to heed, look, take note of\"). The same root gives English ~show~, the Germanic descendants dividing between intransitive \"to look\" and transitive \"to make visible.\" The verb is characteristic of southern German, Austrian, and Swiss usage. Cognate with English ~show~, Dutch ~schouwen~.\n- ~hin-~: From OHG ~hina~, from Proto-Germanic *~hina~ (\"away from here, thither\"), from the PIE demonstrative stem *~ḱi-~ (\"this, here\"). ~Hin-~ points away from the speaker and ~her-~ toward the speaker; English once drew the same line with ~thither~ and ~hither~. Cognate with English ~hence~ and ~here~. The particle indicates motion away from the speaker, toward some other place.\n\nLike ~hingucken~, but stylistically more neutral; ~schauen~ is moreover the ordinary word for \"to see\" in southern German, Austrian, and Swiss usage."
+    },
+    "sentence": {
+      "de": {
+        "sentence": "Deswegen ist es auch richtig, dass wir hier genau hinschauen, welche Einflussnahme stattfindet.",
+        "source": "Bundestag — Plenarprotokoll 20/210"
+      },
+      "en": {
+        "sentence": "That is why it is also right that we look closely here at what influence is being exerted.",
+        "source": "Bundestag — Plenarprotokoll 20/210"
+      }
+    },
+    "notes": null
+  }
+}

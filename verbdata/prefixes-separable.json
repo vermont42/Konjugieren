@@ -179,7 +179,7 @@
       "chain": "Ein durchsichtiges Adverbkompositum: die Partikel ~bei~ + ~einander~, dieses aus ~ein~ + ~ander~. Der Sinn ist schlicht „nahe beieinander, an einem Ort zusammen“. Siehe die Einträge zu ~bei~ und zu den Adverbien, mit denen es ein Muster bildet.",
       "senses": [
         "Die Bedeutung von ~beieinander-~ ist hier: dicht zusammen, an einem Ort.",
-        "~beieinander-~ versammelt, in Gesellschaft beisammen (~beieinandersitzen~, ~beieinanderstehen~).",
+        "Die Bedeutung von ~beieinander-~ ist hier: versammelt, in Gesellschaft beisammen (~beieinandersitzen~, ~beieinanderstehen~).",
         "Die Bedeutung von ~beieinander-~ ist hier: als Gesamtheit zusammengehalten."
       ],
       "occurrences": 1
@@ -778,7 +778,7 @@
       "chain": "Aus dem Adverb ~gern~, Mhd. ~gerne~, Ahd. ~gerno~, dem Adverb zum untergegangenen Adjektiv Ahd. ~gern~ („begierig, verlangend“), aus Urgermanisch *~gernaz~, aus PIE *~ǵʰer-~ („begehren, verlangen“). Das englische Gegenstück ist ~yearn~ (Altenglisch ~giernan~), sodass ~gernhaben~ im Grunde heißt, etwas sehnsüchtig zu haben. Verwandt auch mit Gotisch ~gairns~ und mit deutschem ~begehren~.",
       "senses": [
         "Die Bedeutung von ~gern-~ ist hier: gern, mit Vergnügen.",
-        "~gern-~ drückt Zuneigung oder Mögen aus.",
+        "Die Bedeutung von ~gern-~ ist hier: Zuneigung oder Mögen ausdrückend.",
         "Die Bedeutung von ~gern-~ ist hier: bereitwillig, ohne Widerstreben."
       ],
       "occurrences": 1
@@ -1002,7 +1002,7 @@
       "chain": "Das Adverb ~hier~, aus Mhd. ~hier~, aus Ahd. ~hier~, aus Urgermanisch *~hēr~, gebildet zum Demonstrativstamm *~hi-~ („dieser“), aus PIE *~ḱe-~ („dieser, hier“). Als Partikel bindet es die Handlung schlicht an den Ort des Sprechers, wie in ~hierbleiben~. Verwandt mit Englisch ~here~, Niederländisch ~hier~, Altnordisch ~hér~, Gotisch ~hēr~; derselbe Demonstrativstamm steckt in Englisch ~he~ und in ~heute~, ursprünglich „an diesem Tage“.",
       "senses": [
         "Die Bedeutung von ~hier-~ ist hier: hier, an diesem Ort.",
-        "~hier-~ bindet die Handlung an den Ort des Sprechers.",
+        "Die Bedeutung von ~hier-~ ist hier: die Handlung an den Ort des Sprechers bindend.",
         "Die Bedeutung von ~hier-~ ist hier: bleiben, nicht weggehen."
       ],
       "occurrences": 1
@@ -1673,7 +1673,7 @@
       "chain": "Das Adjektiv ~schön~, aus Mhd. ~schœne~, aus Ahd. ~scōni~, aus Proto-Westgermanisch *~skaunī~, aus Urgermanisch *~skauniz~, gebildet zur Wurzel von ~schauen~ und somit ursprünglich „des Anschauens wert“. Verwandt mit Englisch ~sheen~, das einst „schön, glänzend“ bedeutete. Als Partikel ist es resultativ und meist ironisch: ~schönreden~ und ~schönfärben~ lassen etwas gut aussehen, statt es gut zu machen.",
       "senses": [
         "Die Bedeutung von ~schön~ ist hier resultativ: macht das Objekt schön oder ansehnlich.",
-        "Die Bedeutung von ~schön~ ist hier ironisch: lässt etwas nur besser erscheinen, als es ist.",
+        "~schön~ lässt ironisch etwas nur besser erscheinen, als es ist.",
         "~schön~ trägt oft den Beiklang des Beschönigens oder Vertuschens."
       ],
       "occurrences": 3
@@ -2083,7 +2083,7 @@
       "chain": "Aus dem Adverb ~wohl~, aus Mhd. ~wol~, ~wole~, aus Ahd. ~wola~, aus Proto-Westgermanisch *~wela~, aus Urgermanisch *~wela~, aus PIE *~welh₁-~ („wünschen, wählen“). Das ist dieselbe Wurzel wie bei ~wollen~ und Latein ~velle~: ~wohl~ zu sein heißt etymologisch, so zu sein, wie man es sich wünscht. Verwandt mit Englisch ~well~, Niederländisch ~wel~, Schwedisch ~väl~, Dänisch ~vel~, und Ursprung des Substantivs ~Wohl~.",
       "senses": [
         "~wohl-~ kennzeichnet die Handlung als gut, freundlich oder zum Guten ausgeführt.",
-        "Die Bedeutung von ~wohl-~ ist hier bei Reflexiva: ein Zustand des Behagens oder der Behaglichkeit.",
+        "~wohl-~ kennzeichnet bei Reflexiva einen Zustand des Behagens oder der Behaglichkeit.",
         "Die Bedeutung von ~wohl-~ ist hier: in älteren oder gehobenen Zusammensetzungen ein formelhafter Ton des Wohlwollens."
       ],
       "occurrences": 1
@@ -2915,7 +2915,7 @@
       "kind": "fossil",
       "chain": "Not a particle in its own right but a stacking of ~erst~ (\"first\") onto the particle ~auf~, attested only in ~erstaufführen~, which belongs beside the noun ~Erstaufführung~ (\"first performance, premiere\"); ~auf~ carries its ordinary sense from ~aufführen~ (\"to stage, perform\"). ~Erst~ is the old superlative of ~eher~ (\"earlier\"), the same formation as English ~erst~ and ~erstwhile~. The verb is largely confined to the infinitive and the past participle, and the stacked element is best described as this compound's own rather than as a productive particle.",
       "senses": [
-        "The sense of ~erstauf-~ here is: marking a performance as the first of its kind.",
+        "~erstauf-~ marks a performance as the first of its kind.",
         "~erst~ (\"first\") stacked onto the particle ~auf~.",
         "The sense of ~erstauf-~ here is: in ~erstaufführen~, staging a work for the first time."
       ],
@@ -3184,7 +3184,7 @@
       "chain": "From MHG ~her~, from OHG ~hera~, belonging to the Germanic deictic stem *~hi-~ (\"this, here\"), from PIE *~ḱi-~ (\"this, here\") — the same stem that yields ~hier~ and ~heute~ (\"this day\"). Cognate with English ~here~ and, through the same demonstrative, English ~he~.",
       "senses": [
         "~her-~ marks motion toward the speaker — \"hither\" — and is the exact counterpart of ~hin-~, which marks motion away from the speaker. This opposition is the organizing fact of the whole deictic group.",
-        "The sense of ~her-~ here is: It can also point backward in time, meaning \"from then until now.\"",
+        "It can also point backward in time, meaning \"from then until now.\"",
         "It is the first element of the compound particles ~heraus~, ~herein~, ~herunter~, ~herum~, ~heran~, ~herüber~, and of their colloquial contractions ~raus~, ~rein~, ~runter~, ~rum~, ~ran~, ~rüber~."
       ],
       "occurrences": 19
@@ -3585,10 +3585,10 @@
       "kind": "particle",
       "chain": "From the adjective ~los~ (\"loose, free, unattached\"), from MHG ~lōs~, from OHG ~lōs~, from Proto-West Germanic *~laus~, from Proto-Germanic *~lausaz~, probably from PIE *~lewH-~ (\"to cut off, loosen\"). Cognate with English ~loose~ and Dutch ~los~. The German suffix ~-los~ and the English suffix ~-less~ are this same adjective, worn down into a bound ending.",
       "senses": [
-        "The sense of ~los-~ here is: as a particle ~los-~ most often marks inception: ~loslaufen~ is not \"to run loose\" but \"to start running.\"",
+        "As a particle ~los-~ most often marks inception: ~loslaufen~ is not \"to run loose\" but \"to start running.\"",
         "It also keeps its literal adjectival sense of releasing, loosening, or detaching something.",
         "It can mark separation from a fixed point, of a vehicle or a rope being let go.",
-        "The sense of ~los-~ here is: as a bare imperative, ~los!~ survives on its own: \"go, get on with it.\""
+        "As a bare imperative, ~los!~ survives on its own: \"go, get on with it.\""
       ],
       "occurrences": 16
     },
@@ -3960,7 +3960,7 @@
       "senses": [
         "The sense of ~schön~ here is resultative: makes the object beautiful or presentable.",
         "~schön~, ironically, makes something merely appear better than it is.",
-        "The sense of ~schön~ here is: often carries a note of glossing over or whitewashing."
+        "~schön~ often carries a note of glossing over or whitewashing."
       ],
       "occurrences": 3
     },
@@ -4092,7 +4092,7 @@
       "senses": [
         "In a resultative compound ~tot-~ names the end state: the action is carried on until the object is dead — ~totschlagen~ is to beat someone to death.",
         "It is very often hyperbolic rather than literal, as of laughing or working oneself to death.",
-        "The sense of ~tot~ here is: Applied to things it means \"deadened, silenced, put out of use.\""
+        "Applied to things it means \"deadened, silenced, put out of use.\""
       ],
       "occurrences": 13
     },
@@ -4190,7 +4190,7 @@
       "senses": [
         "~voraus-~ means going on ahead of others in space.",
         "More often it is temporal: doing something in advance, before the fact.",
-        "The sense of ~voraus-~ here is: In ~vorausgesetzt~ it has hardened into a fixed sense, \"presupposed, granted that.\""
+        "In ~vorausgesetzt~ it has hardened into a fixed sense, \"presupposed, granted that.\""
       ],
       "occurrences": 12
     },

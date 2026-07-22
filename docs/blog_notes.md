@@ -3576,3 +3576,100 @@ framed in both languages, so it stays framed and only senses 1–2 are brought i
 resolve it by reading all three senses together, not sense-by-sense. Validate with
 `merge_reuse_files.py --validate-only` after, which catches tilde/quote/parity regressions. This is
 next-session work at a fresh budget, before mining resumes from shard 053.
+
+## Repair the 12-way de/en frame-parity mismatch by per-entry dominant style (2026-07-21)
+
+Executed the frame-parity repair that the prior window scoped and Josh decided but deferred (see
+the shards 051–052 entry above). Re-derived the mismatch list from `prefixes-separable.json` rather
+than trusting the count: the XOR check — a sense is a defect only when exactly one language carries
+the normalizer frame (`The sense of ~X~ here is:` / `Die Bedeutung von ~X~ ist hier:`) and its twin
+does not — reproduced the same 12 (10 EN-only, 2 DE-only) across `beieinander`, `erstauf`, `gern`,
+`her`, `hier`, `los`, `schön`, `tot`, `voraus`, `wohl`.
+
+**Reading all of an entry's senses together, not sense-by-sense, was the load-bearing step.** The
+naive read of Josh's "7 prose prefixes go fully frame-free" is "strip every frame in those entries,"
+but `schön` is the counterexample that disproves it: sense 0 is framed in *both* languages, so it is
+parity-consistent, not a defect, and stays framed — only senses 1–2 change. The same logic spares
+`wohl[2]` and `erstauf[2]` (both framed in both languages) and every framed short-gloss sibling. The
+repair set is therefore exactly the 12 XOR-flagged senses; "fully frame-free" means "for the senses
+that were contaminated," not "for the whole entry." The final entries mix registers deliberately —
+`schön` ships framed-both / frame-free / frame-free down its three senses.
+
+**The repair is bilingual authoring in two directions, split by the entry's dominant style.** For
+the 7 prose prefixes I stripped the frame from whichever language carried it and re-authored that
+sense into a standalone clause beginning with the prefix name, in the clean twin's register —
+`wohl[1]` DE went from the colon-fragment `…ist hier bei Reflexiva: ein Zustand des Behagens` to the
+finite clause `~wohl-~ kennzeichnet bei Reflexiva einen Zustand des Behagens`, mirroring its clean EN
+twin `~wohl-~, with reflexives, marks a state of comfort`. For the 3 short-gloss prefixes (`gern`,
+`hier`, `beieinander`) I went the other way: kept the frame as the entry norm and *added* it to the
+one DE twin that had lost it, rephrasing the finite clause into the sibling colon-fragment shape —
+`~hier-~ bindet die Handlung an den Ort des Sprechers` became `Die Bedeutung von ~hier-~ ist hier:
+die Handlung an den Ort des Sprechers bindend` (finite `bindet` → participial `bindend`, because a
+colon-fragment cannot host a finite verb without re-stating the subject the frame already names).
+
+**Mechanics that kept the diff honest.** Every replacement anchored on the frame text or the
+curly-quoted (`„ "`) DE string, so none touched an ASCII `"` (U+0022) — the five EN values with
+`\"…\"` quotes in their kept tails were never in an anchor, sidestepping the JSON-escaping trap. Did
+not round-trip through `json.dump`; used targeted `str.replace` with a uniqueness assertion per
+anchor. Post-repair: the XOR check reports 0 remaining mismatches, `merge_reuse_files.py
+--validate-only` passes (233 separable entries, tilde/quote/parity all clean), and `git diff --stat`
+shows the single file at 12 insertions / 12 deletions — one line per repaired sense, zero
+reformatting churn.
+
+The shard-049 exemplar-vs-reading precedence question, deferred alongside this one, was settled the
+same window. Josh chose the **narrow** rule: the exemplar slot still outranks the reading in the
+ordinary underdetermined case (a terse `translation` that cannot settle sense — the `abmelken` /
+`abladen` reason the exemplars exist), and the reading wins *only* on an unambiguous conflict, where
+the `translation` clearly names a sense that is not the slot's. `herabblicken` is that case: figurative
+"look down on" exemplars against a literally glossed reading, where following the slot would ship an
+etymology contradicting the displayed sentence. A blanket "reading wins" was rejected precisely
+because it would undo the exemplars wherever a vague translation merely looks like disagreement. The
+rule is now written into `corpus/working/MINING_SPEC.md` right below the tiebreak it qualifies — not
+into `uses_etymologies.md` or any launch prompt, per the resume note's standing rule that
+candidate/sense-selection rules have exactly one home in the authoritative brief and a second copy
+only drifts.
+
+Both deferred data decisions are now closed. Phase 4 stands at 53 of 104 shards; next is shard 053
+via the standard resume prompt in `prompts/uses_etymologies.md` § "Resuming Phase 4 in a fresh
+session."
+
+## Resume Phase 4: mine shards 053–056, and clarify the brief twice (2026-07-21)
+
+Opened with the session at 0% used, so the budget was there for a real wave, not just the two data
+repairs above. Regenerated the build products faithfully rather than trusting the on-disk copies —
+the forms dump came back at 50,011 forms (4,338 split readings), the index at 0 unresolved
+morphemes and 61% of targets with candidates, and `build_mining_shards.py` reported 53/104 mined,
+next `mine_053`. Reproducing the prior window's numbers byte-for-byte was itself the check that
+nothing had drifted since the frame-parity edit (which touched only `prefixes-separable.json`, not
+`Verbs.xml`).
+
+Mined 053–056 at concurrency 2, one subagent per shard, using the recorded per-shard launch prompt
+verbatim. All four were `her-`/`hin-`-family deictic compounds — the heaviest colloquial-motion
+band in the corpus — so yield ran below half on the `hinunter-`/`hineinB` sets (many verbs with
+empty candidate pools) and the real work was closers and salvage-vs-null calls. The Phase 4
+validator passed over all 57 out-files after each wave; two shards' worth of self-reports were not
+taken as evidence.
+
+**The 049 precedence rule earned its place on its first live outing.** It fired three times —
+`herunterfahren` (053), `hineinziehen` (055), `hinweggehen` (056) — each the exact narrow case it
+was written for: an exemplar slot pointing at one sense while the reading's gloss unambiguously
+named another, resolved toward the reading with a hedge in `notes`. That the rule triggered on the
+very first wave after being written, and only on genuine unambiguous conflicts rather than on every
+terse translation, is the evidence that the narrow wording (not the blanket "reading wins" Josh
+rejected) was the right cut.
+
+**Two brief clarifications, both from friction three agents hit independently, both rule-neutral so
+they cannot invalidate a mined shard.** First: the markup section stated the German-prose
+quote convention (`„…"`, never ASCII `"`) but never its English mirror, and three shard-runs each
+hand-cleaned a straight-quote English gloss carrying German marks or the reverse — so the symmetric
+rule (English prose and translations use ASCII `"…"`, never `„…"`) is now stated where the German
+one is. Second: the "do not present an exemplar as evidence" rule has a sharp variant an agent
+surfaced — the sibling a closer naturally contrasts against (`hinstellen` vs `hinlegen`) is
+sometimes the picked sense's own exemplar, so a contrast wanted for its own sake reads as the aid
+dressed up as an argument; the fix is to reach for a different sibling or drop the contrast. Both
+landed in `MINING_SPEC.md`, the one authoritative home, per the resume note's standing rule against
+second copies.
+
+Standing tally: 57 of 104 shards, 47 remaining, all contiguous from 057. Session stopped here at
+Josh's call after the two clarifications, with headroom to spare rather than caught mid-wave. No
+data decisions are open. Next is shard 057 via the standard resume prompt.

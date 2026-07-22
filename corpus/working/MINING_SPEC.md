@@ -107,6 +107,18 @@ each sense. Find the entry whose exemplars your verb most resembles and take tha
 the tiebreaker, and it outranks your own reading of the sense text, because the point is that
 every shard resolves the same ambiguity the same way.
 
+**One exception, and only one: when the reading's `translation` unambiguously names a different
+sense than the exemplar slot would assign, prefer the reading and hedge.** The tiebreak exists for
+the ordinary case, where the terse `translation` cannot settle sense (`abmelken`, `abladen` below) —
+there the slot wins, because otherwise every shard drifts. But when the `translation` *does* settle
+it and settles it *against* the slot, following the slot would ship an etymology that contradicts the
+very sentence displayed under it. `herabblicken` is the case that forced the rule (2026-07-21): its
+exemplars sit under the figurative "look down on, despise" sense, but its corpus reading is glossed
+literally, "look down from above." Take the reading's sense and note in `notes` that the exemplar
+slot disagreed. This does not loosen the tiebreak — it fires only on an *unambiguous* conflict, where
+the `translation` clearly names one sense and it is not the slot's. A terse or vague `translation` is
+exactly the underdetermined case the exemplars exist to resolve, and there the slot still wins.
+
 The field exists because sense selection was the last genuinely underdetermined step here: two
 shard-runs reported on 2026-07-20 that `abmelken` sits between completion and drawing-out, and
 `abladen` between separation and downward motion, with the terse `translation` unable to settle
@@ -173,6 +185,12 @@ only by checking afterwards. So the constraint is narrower than "avoid these wor
 **do not present an exemplar as evidence for the sense you picked**, which is what would make the
 selection aid look like an argument. Citing a cognate or a neighbouring compound on its own
 merits is fine, and a post-hoc scan of your output against the exemplar list is cheap insurance.
+The trap has a sharp variant worth naming: the sibling a closer most naturally reaches for to
+draw a contrast — `hinstellen` against `hinlegen`, `hintanlegen` against `hintanstellen` — is
+sometimes the exact verb that is the picked sense's exemplar, so the contrast you wanted for its
+own sake reads as the aid presented as evidence. A shard-run on 2026-07-21 reworded two closers for
+this. When the useful sibling and the exemplar coincide, reach for a different sibling or drop the
+contrast.
 
 **Every sense is a complete sentence, so add no connective of your own.** It already carries
 its own subject — `~be-~ makes an intransitive verb transitive, …` — and concatenating it after
@@ -395,7 +413,11 @@ collects the nulls and Josh expands the corpus for them.
 | `"gloss"` en / `„Glosse“` de | meaning gloss |
 
 Never use `` ` ``, `$…$`, `‡…‡`, or `^…^` — all four are meaningful to the app's parser.
-German prose uses `„…“` and never ASCII `"`. Bullets are `- ~morpheme~: …`, one per line.
+German prose uses `„…“` and never ASCII `"`; English prose and translations use ASCII `"…"` and
+never `„…“`. The asymmetry is easy to leak when you author a closer in one language and its
+translation in the other, and it is the recurring cleanup three shard-runs on 2026-07-21 each did
+by hand — a straight-quote English gloss carrying German marks, or the reverse. Bullets are
+`- ~morpheme~: …`, one per line.
 
 **These rules govern the prose you write, never the sentence you quote.** Some corpus sentences
 punctuate speech with ASCII `"`, and the validator compares your quoted German to the candidate

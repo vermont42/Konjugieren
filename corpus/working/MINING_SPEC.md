@@ -57,11 +57,29 @@ morpheme, then optionally a closing sentence.
 ```
 From MHG ~vermīden~, from OHG ~firmīdan~. Compound of ~ver-~ + ~meiden~:
 
-- ~meiden~: <the root entry, verbatim>
-- ~ver-~: <the prefix chain, verbatim> <the picked sense from `senses`, verbatim>
+• ~meiden~: <the root entry, verbatim>
+• ~ver-~: <the prefix chain, verbatim> <the picked sense from `senses`, verbatim>
 
 <closing sentence, yours, on the compound's own semantics>
 ```
+
+**Bullets use `•` (U+2022 BULLET), not a hyphen.** The template shows `• ~meiden~:`. That is the
+whole rule for the marker; the morpheme label after it is still spliced verbatim and stays lowercase
+(`• ~meiden~:`, `• ~ver-~:`). The marker changed from `- ` on 2026-07-23 for legibility in the app.
+
+**Every sentence you author begins with a capital — including one that opens on a cited form.** The
+lead and the closer are your prose, and a closer routinely begins on the verb itself: write
+`~Irregehen~ behält den wörtlichen Sinn…`, not `~irregehen~ behält…`. Capitalize the first letter
+*inside* the tildes — sentence-initial position overrides the lowercase citation form, and this is the
+one place a cited infinitive is capitalized. The same holds for a simplex verb, whose whole etymology
+is authored prose. The rule does **not** reach the bullets: a morpheme label, and the reused chain and
+sense spliced inside a `•` bullet, are not sentence starts in this sense and stay exactly as given — a
+sense that reads `~be-~ makes an intransitive verb transitive` keeps its lowercase `~be-~`, and
+lowercase after a bullet is correct. A sentence that genuinely opens on a reconstructed form is the one
+exception: `*~bʰer-~` is not capitalized, by convention. This was enforced across the shipped corpus by
+a sweep on 2026-07-23 (1,375 sentence-initial forms, mostly closers and a batch of older leads written
+as `~verb~ ist eine Zusammensetzung…` rather than the fixed `Trennbares Kompositum…` form below).
+Authoring the closer capitalized costs nothing; re-sweeping does.
 
 **Bullets run innermost-first: the root, then each prefix outward.** This is the *reverse* of the
 lead sentence, which names the outermost prefix first (`~ver-~ + ~meiden~`), so the two orders are
@@ -444,7 +462,7 @@ German prose uses `„…“` and never ASCII `"`; English prose and translation
 never `„…“`. The asymmetry is easy to leak when you author a closer in one language and its
 translation in the other, and it is the recurring cleanup three shard-runs on 2026-07-21 each did
 by hand — a straight-quote English gloss carrying German marks, or the reverse. Bullets are
-`- ~morpheme~: …`, one per line.
+`• ~morpheme~: …`, one per line (the marker is `•`, U+2022 — see the composing section).
 
 **These rules govern the prose you write, never the sentence you quote.** Some corpus sentences
 punctuate speech with ASCII `"`, and the validator compares your quoted German to the candidate

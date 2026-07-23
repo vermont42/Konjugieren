@@ -1,0 +1,5 @@
+I examined the following verbs for systemic etymology-formatting problems: anlauten · antippen · aufknüpfen · besehen · heimbringen · irregehen · mithalten · schnauben · wegstoßen · überlesen
+
+The final sentence of the irregehen etymology starts with "~irregehen~", not "~Irregehen~", as it should. This defect is not ubiquitous. The final sentence of heimbringen's English etymology starts with "~Heimbringen~", as it should. But all etymologies need a sweep. No sentence should start with a lowercase letter or ~ followed by a lowercase letter.
+
+All etymologies, including new ones, introduce parts with -. I find this - ugly. Example: erhalten's etymology has "- ~halten~: ..." and "- ~er~: ...". I would like the - replaced globally with a •. The lowercasing of halten and er actually makes sense because those are not sentences. Thus, the sweep in the preceding paragraph should not impact parts like "~halten~" and "~er~". Thus, it might make sense to do this replacement first and then do the sweep in the preceding paragraph, conscious of •.

@@ -1,0 +1,319 @@
+{
+ "versteigern": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~steigern~:\n\n- ~steigern~: Das Kausativ zu ~steigen~ („klettern, aufsteigen“), gebildet mit dem Suffix ~-ern~: „etwas zum Steigen bringen, erhöhen“. ~Steigen~ aus Mhd. ~stîgen~, Ahd. ~stīgan~, Proto-Westgermanisch *~stīgan~, Urgermanisch *~stīganą~, aus PIE *~steygʰ-~ („gehen, steigen, schreiten“). Verwandt mit Englisch ~stair~ und dem veralteten ~sty~ („klettern“), Altgriechisch ~στείχω~ (~steíkhō~, „ich gehe“).\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ drückt Entfernung oder Wegbewegung aus, aus dem älteren räumlichen Sinn des Präfixes.\n\n~Versteigern~ verbindet ~steigern~ mit dem Wegschaffen-Sinn des Präfixes: die Ware wird veräußert, während die Gebote in die Höhe getrieben — gesteigert — werden, bis sie dem Höchstbietenden zufällt.",
+   "en": "An inseparable compound of ~ver-~ + ~steigern~:\n\n- ~steigern~: The causative of ~steigen~ (\"to climb, rise\"), formed with the ~-ern~ suffix: \"to make something climb, to increase.\" ~Steigen~ descends from MHG ~stîgen~, OHG ~stīgan~, Proto-West Germanic *~stīgan~, Proto-Germanic *~stīganą~, from PIE *~steygʰ-~ (\"to walk, climb, stride\"). Cognate with English ~stair~ and the obsolete ~sty~ (\"to climb\"), Ancient Greek ~στείχω~ (~steíkhō~, \"I go\").\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ conveys removal or motion away, from the prefix's older spatial sense.\n\n~Versteigern~ joins ~steigern~ to the prefix's disposal sense: the goods are sold off while the bids are driven upward — gesteigert — until the item falls to the highest bidder."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "verstellen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~stellen~:\n\n- ~stellen~: Aus Mhd. ~stellen~, aus Ahd. ~stellen~, aus Proto-Westgermanisch *~stalljan~ („setzen, aufstellen“), aus PIE *~stel-~ („stellen, setzen“). Ein kausatives schwaches Verb — das transitive Gegenstück zu ~stehen~. Verwandt mit Englisch ~stell~ („platzieren, befestigen“), Niederländisch ~stellen~, Dänisch ~stille~, Jiddisch ~shteln~.\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ kennzeichnet die Handlung als falsch, fehlgeleitet oder misslungen.\n\n~Verstellen~ trägt den Sinn des Fehlgeleiteten sowohl räumlich — etwas wird aus seiner richtigen Lage gerückt — als auch übertragen: ~sich verstellen~ heißt, eine falsche Miene aufsetzen.",
+   "en": "An inseparable compound of ~ver-~ + ~stellen~:\n\n- ~stellen~: From MHG ~stellen~, from OHG ~stellen~, from Proto-West Germanic *~stalljan~ (\"to put, position\"), from PIE *~stel-~ (\"to place, put\"). A causative weak verb — the transitive counterpart to ~stehen~ (\"to stand\"). Cognate with English ~stell~ (\"to place, fix\"), Dutch ~stellen~, Danish ~stille~, Yiddish ~shteln~.\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ marks the action as going wrong, astray, or amiss.\n\n~Verstellen~ carries the prefix's amiss sense both spatially — something is shifted out of its correct position — and figuratively: ~sich verstellen~ means to put on a false front."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Da ergrimmte Kain sehr, und seine Gebärde verstellte sich.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "Then Cain was very wroth, and his countenance fell.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": "Earlier candidates attest the disguise/obstruct senses (sich verstellen, den Weg verstellen), which the gloss 'adjust, alter, misalign' does not name; the Luther candidate attests 'alter' (Gebärde verstellte sich)."
+ },
+ "versteuern": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~steuern~:\n\n- ~steuern~: Aus Mhd. ~stiuren~, aus Ahd. ~stiuren~, aus Proto-Westgermanisch *~stiurijan~, aus Urgermanisch *~stiurijaną~. Das Wurzelnomen ~Steuer~ trägt zwei Bedeutungen mit gemeinsamem Vorfahren: ~das Steuer~ („Ruder, Helm“) und ~die Steuer~ („Abgabe“, über „Stützpfosten“ und „Unterstützung“). ~Steuern~ heißt daher „lenken, navigieren, regeln“ und, archaisch oder schweizerisch, „eine Abgabe entrichten“. Verwandt mit Englisch ~steer~, Niederländisch ~stuur~.\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ verstärkt das Grundverb oder führt seine Handlung zur Vollendung.\n\n~Versteuern~ greift den heute verschütteten Steuer-Zweig von ~steuern~ auf (~die Steuer~, „Abgabe“): das Einkommen wird versteuert, wenn die darauf entfallende Abgabe vollständig entrichtet ist.",
+   "en": "An inseparable compound of ~ver-~ + ~steuern~:\n\n- ~steuern~: From MHG ~stiuren~, from OHG ~stiuren~, from Proto-West Germanic *~stiurijan~, from Proto-Germanic *~stiurijaną~. The root noun ~Steuer~ carries two meanings sharing one ancestor: ~das Steuer~ (\"rudder, helm\") and ~die Steuer~ (\"tax,\" via \"supporting post\" and \"support\"). ~Steuern~ thus means both \"to steer, navigate, control\" and, in archaic or Swiss usage, \"to pay a tax.\" Cognate with English ~steer~, Dutch ~stuur~.\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ intensifies the base verb or carries its action through to completion.\n\n~Versteuern~ draws on the now-buried tax branch of ~steuern~ (~die Steuer~, \"tax\"): income is versteuert once the tax due on it has been fully paid."
+  },
+  "sentence": null,
+  "notes": "No candidates. Sense read as completive over steuern's archaic 'pay a tax' branch; the terse gloss leaves the exemplar slot underdetermined."
+ },
+ "verstimmen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~stimmen~:\n\n- ~stimmen~: Aus Mhd. ~stimmen~, aus Ahd. *~stimmen~, eine denominale Ableitung von ~Stimme~ (Ahd. ~stimma~, Proto-Westgermanisch *~stebnu~, Urgermanisch *~stebnō~, aus PIE *~stomen-~ „Mund, Maul“). Daher die Bedeutungen „stimmen“ (ein Instrument), „korrekt sein“ und „abstimmen“. Verwandt mit dem archaischen Englisch ~steven~ („Stimme“), Niederländisch ~stem~, Gotisch ~stibna~, Altgriechisch ~stóma~ („Mund“).\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ kennzeichnet die Handlung als falsch, fehlgeleitet oder misslungen.\n\n~Verstimmen~ heißt wörtlich, ein Instrument aus der richtigen Stimmung zu bringen, und übertragen, jemanden in üble Laune zu versetzen — beides ein Stimmen, das misslingt.",
+   "en": "An inseparable compound of ~ver-~ + ~stimmen~:\n\n- ~stimmen~: From MHG ~stimmen~, from OHG *~stimmen~, a denominative of ~Stimme~ (\"voice, vote\": OHG ~stimma~, Proto-West Germanic *~stebnu~, Proto-Germanic *~stebnō~, from PIE *~stomen-~ \"mouth, muzzle\"). Hence the senses \"to tune\" (an instrument), \"to be correct,\" and \"to vote.\" Cognate with archaic English ~steven~ (\"voice\"), Dutch ~stem~, Gothic ~stibna~, Ancient Greek ~stóma~ (\"mouth\").\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ marks the action as going wrong, astray, or amiss.\n\n~Verstimmen~ literally means to throw an instrument out of tune, and figuratively to put someone in a bad mood — in both, a tuning gone wrong."
+  },
+  "sentence": null,
+  "notes": "No usable candidate: one is attributive (verstimmten Klavier), the other opens on a corrupt token (\"E ist\" for \"Es ist\") and its participle is predicative-adjectival."
+ },
+ "verstinken": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~stinken~:\n\n- ~stinken~: Aus Mhd. ~stinken~, aus Ahd. ~stinkan~, ~stincan~, aus Urgermanisch *~stinkwaną~, aus PIE *~stengʷ-~ („stoßen, schlagen“); das Westgermanische engte das Verb auf das Ausströmen eines Geruchs ein. Ein starkes Verb der Klasse III (~stinken~, ~stank~, ~gestunken~). Verwandt mit Englisch ~stink~ und ~stench~, Niederländisch ~stinken~, Altenglisch ~stincan~.\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ bezeichnet ein allmähliches Vergehen — der Vorgang läuft von selbst aus, bis nichts mehr von ihm übrig ist.\n\n~Verstinken~ wendet den Auslauf-Sinn des Präfixes auf ~stinken~ an: der Gestank verzieht sich mit der Zeit von selbst, bis nichts mehr davon übrig ist.",
+   "en": "An inseparable compound of ~ver-~ + ~stinken~:\n\n- ~stinken~: From MHG ~stinken~, from OHG ~stinkan~, ~stincan~, from Proto-Germanic *~stinkwaną~, from PIE *~stengʷ-~ (\"to push, thrust\"); West Germanic specialized the verb to emitting a smell. A class III strong verb (~stinken~, ~stank~, ~gestunken~). Cognate with English ~stink~ and ~stench~, Dutch ~stinken~, Old English ~stincan~.\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ marks a gradual dying away — the process runs itself out until nothing of it remains.\n\n~Verstinken~ applies the prefix's dying-away sense to ~stinken~: the stench disperses of its own accord over time until none of it is left."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "verstören": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~stören~:\n\n- ~stören~: Aus Mhd. ~stören~, aus Ahd. ~stōren~, aus Proto-Westgermanisch *~staurijan~; verwandt mit Urgermanisch *~steuran~, dessen Wurzel „bewegen, erregen“ bedeutete. Verwandt mit Englisch ~stir~, Altenglisch ~styrian~ („rühren, bewegen, erregen“), Niederländisch ~storen~.\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ verstärkt das Grundverb oder führt seine Handlung zur Vollendung.\n\n~Verstören~ vertieft ~stören~ zu einer tiefen, oft seelischen Erschütterung; die ältere Bedeutung „verwüsten, zerrütten“ — wie bei Luther — lebt heute nur noch übertragen fort.",
+   "en": "An inseparable compound of ~ver-~ + ~stören~:\n\n- ~stören~: From MHG ~stören~, from OHG ~stōren~, from Proto-West Germanic *~staurijan~; related to Proto-Germanic *~steuran~, whose root meant \"to move, to agitate.\" Cognate with English ~stir~, Old English ~styrian~ (\"to stir, move, agitate\"), Dutch ~storen~.\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ intensifies the base verb or carries its action through to completion.\n\n~Verstören~ deepens ~stören~ into a profound, often psychological derangement; the older sense \"to lay waste, to devastate\" — as in Luther — survives now only figuratively."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Es wird ein Stern aus Jakob aufgehen und ein Zepter aus Israel aufkommen und wird zerschmettern die Fürsten der Moabiter und verstören alle Kinder des Getümmels.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "A star shall rise out of Jacob and a scepter come up out of Israel, and it shall shatter the princes of the Moabites and lay waste all the children of tumult.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": "Sentence attests the archaic 'lay waste / rout' sense (active future); the modern 'disturb, distraught' candidates (Grimm, Nietzsche) are all adjectival participles."
+ },
+ "verstrahlen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~strahlen~:\n\n- ~strahlen~: Ein denominales Verb des 16. Jahrhunderts zum Substantiv ~Strahl~ („Lichtstrahl“) mit dem Verbalsuffix ~-en~. ~Strahl~ aus Mhd. ~strāle~, aus Ahd. ~strāla~ („Pfeil“), aus Proto-Westgermanisch *~strālu~ („Pfeil“); die Bedeutung „Lichtstrahl“ entstand im 17. Jahrhundert metaphorisch aus dem geraden Flug des Pfeils. Verwandt mit Niederländisch ~straal~ und dem seltenen Englisch ~streal~.\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ kennzeichnet die Handlung als falsch, fehlgeleitet oder misslungen.\n\n~Verstrahlen~ ist eine Prägung des Atomzeitalters: ~strahlen~ wird transitiv und pejorativ — ein Ort oder ein Körper wird durch radioaktive Strahlung verseucht.",
+   "en": "An inseparable compound of ~ver-~ + ~strahlen~:\n\n- ~strahlen~: A 16th-century denominative verb from the noun ~Strahl~ (\"ray, beam\") with the verbal suffix ~-en~. ~Strahl~ traces to MHG ~strāle~, from OHG ~strāla~ (\"arrow\"), from Proto-West Germanic *~strālu~ (\"arrow\"); the sense \"ray of light\" arose in the 17th century as a metaphor from the arrow's straight flight. Cognate with Dutch ~straal~ and the rare English ~streal~.\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ marks the action as going wrong, astray, or amiss.\n\n~Verstrahlen~ is a coinage of the atomic age: ~strahlen~ turned transitive and pejorative — a place or a body is contaminated by radioactive radiation."
+  },
+  "sentence": null,
+  "notes": "No candidates. Sense picked as the pejorative-resultative ver- (like verseuchen); verstrahlen matches none of the exemplar slots cleanly."
+ },
+ "verstreben": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~streben~:\n\n- ~streben~: Aus Mhd. ~strëben~, aus Ahd. ~strëbēn~, aus Proto-Westgermanisch *~stribēn~, aus Urgermanisch *~stribāną~ („streben, sich widersetzen“). Verwandt mit Niederländisch ~streven~ und Englisch ~strive~ (über Altfranzösisch ~estriver~, das seinerseits aus einer germanischen Quelle entlehnt wurde).\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ drückt das Zusammenfügen mehrerer Dinge zu einem aus.\n\nDer Wurzeleintrag gibt ~streben~ „sich mühen“; ~verstreben~ gehört jedoch zum Substantiv ~die Strebe~ („Stützbalken“, aus demselben Stamm) und heißt im Bauwesen, Bauteile durch Streben zu einem starren Gefüge zu verspannen.",
+   "en": "An inseparable compound of ~ver-~ + ~streben~:\n\n- ~streben~: From MHG ~strëben~, from OHG ~strëbēn~, from Proto-West Germanic *~stribēn~, from Proto-Germanic *~stribāną~ (\"to strive, resist\"). Cognate with Dutch ~streven~ (\"to strive\") and English ~strive~ (via Old French ~estriver~, itself borrowed from a Germanic source).\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ conveys binding or fusing several things into one.\n\nThe root entry gives ~streben~ \"to strive\"; ~verstreben~, however, belongs to the noun ~die Strebe~ (\"strut, brace,\" from the same stem) and means, in construction, to tie members together into a rigid frame with struts."
+  },
+  "sentence": null,
+  "notes": "Decomposition is formal: the root bullet covers streben 'strive', but verstreben is denominal from die Strebe 'strut'."
+ },
+ "verstreichen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~streichen~:\n\n- ~streichen~: Aus Mhd. ~strīchen~, aus Ahd. ~strīhhan~, aus Proto-Westgermanisch *~strīkan~, aus Urgermanisch *~strīkaną~ („streichen, reiben“), aus PIE *~streyg-~ („streichen, reiben, drücken“). Ein starkes Verb der Klasse I. Verwandt mit Englisch ~strike~, Niederländisch ~strijken~ („bügeln, streichen“).\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ bezeichnet ein allmähliches Vergehen — der Vorgang läuft von selbst aus, bis nichts mehr von ihm übrig ist.\n\nAus dem Streichen — dem gleitenden Darüberstreichen — wird bei ~verstreichen~ das Verrinnen der Zeit: eine Frist oder Gelegenheit verstreicht, wenn sie ungenutzt dahingeht.",
+   "en": "An inseparable compound of ~ver-~ + ~streichen~:\n\n- ~streichen~: From MHG ~strīchen~, from OHG ~strīhhan~, from Proto-West Germanic *~strīkan~, from Proto-Germanic *~strīkaną~ (\"to stroke, to rub\"), from PIE *~streyg-~ (\"to stroke, rub, press\"). A class I strong verb. Cognate with English ~strike~, Dutch ~strijken~ (\"to iron, to stroke\").\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ marks a gradual dying away — the process runs itself out until nothing of it remains.\n\nFrom ~streichen~ — a gliding stroke across — ~verstreichen~ takes the running-out of time: a deadline or an opportunity verstreicht when it slips away unused."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Die ersten drei Jahre hat die FDP blockiert, die letzten drei Monate will anscheinend auch die CDU/CSU untätig verstreichen lassen.",
+    "source": "Bundestag — Plenarprotokoll 20/207"
+   },
+   "en": {
+    "sentence": "For the first three years the FDP blocked things, and for the last three months the CDU/CSU too apparently means to let the time slip idly by.",
+    "source": "Bundestag — Plenarprotokoll 20/207"
+   }
+  },
+  "notes": null
+ },
+ "vertauschen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~tauschen~:\n\n- ~tauschen~: Aus Mhd. ~tiuschen~, abgeleitet von ~tūschen~, verwandt mit ~täuschen~ („betrügen“), beide ungesicherter weiterer Herkunft. Die Bedeutung verlief von „betrügen“ über „jemanden zum Kauf der eigenen Waren überlisten“ zu „handeln, austauschen, Tauschhandel treiben“; ~tauschen~ verlor dabei die negative Konnotation, ~täuschen~ behielt sie.\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ kennzeichnet die Handlung als falsch, fehlgeleitet oder misslungen.\n\n~Vertauschen~ setzt an die Stelle des einen Dings ein anderes — anders als das bloß gegenseitige ~tauschen~ zielt es auf das Ersetzen, oft unbemerkt oder versehentlich.",
+   "en": "An inseparable compound of ~ver-~ + ~tauschen~:\n\n- ~tauschen~: From MHG ~tiuschen~, derived from ~tūschen~, related to ~täuschen~ (\"to deceive\"), both of uncertain further origin. The sense ran from \"to deceive\" to \"to trick someone into buying one's goods\" to \"to trade, exchange, barter\"; ~tauschen~ lost the negative connotation along the way while ~täuschen~ retained it.\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ marks the action as going wrong, astray, or amiss.\n\n~Vertauschen~ puts one thing in the place of another — unlike plain ~tauschen~ (a mutual trade), it aims at substitution, often unnoticed or by mistake."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Das holte er ganz sachte herbei und vertauschte es mit dem Wünschtischchen.",
+    "source": "Grimm — Märchen"
+   },
+   "en": {
+    "sentence": "He fetched it over very quietly and swapped it for the wishing-table.",
+    "source": "Grimm — Märchen"
+   }
+  },
+  "notes": null
+ },
+ "vertippen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~tippen~:\n\n- ~tippen~: Aus dem Niederdeutschen; die hochdeutsche Entsprechung wäre ~tüpfen~ („tupfen, punkten“) gewesen. Das Wort hat zwei Zweige: „tippen, antippen“ geht auf die lautmalerische Nachahmung leichten Berührens zurück, „wetten, raten“ (~Lotto tippen~) dagegen auf das Substantiv ~Tipp~, das aus Englisch ~tip~ („ein Ratschlag, ein Hinweis“) entlehnt ist.\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ kennzeichnet die Handlung als falsch, fehlgeleitet oder misslungen.\n\n~Sich vertippen~ heißt, beim Tippen die falsche Taste zu treffen — eine Prägung des Schreibmaschinen- und Tastaturzeitalters, die zur reflexiven Fehlhandlungs-Familie von ~ver-~ gehört (vgl. ~sich verschreiben~, ~sich verlesen~).",
+   "en": "An inseparable compound of ~ver-~ + ~tippen~:\n\n- ~tippen~: From Low German, where the standard High German equivalent would have been ~tüpfen~ (\"to dab, dot\"). The word has two branches: in the sense \"to type, to tap\" it derives from the onomatopoeic imitation of light touching, while in the sense \"to bet, to guess\" (~Lotto tippen~) it comes from the noun ~Tipp~, borrowed from English ~tip~ (\"a piece of advice, a hint\").\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ marks the action as going wrong, astray, or amiss.\n\n~Sich vertippen~ means to hit the wrong key while typing — a coinage of the typewriter and keyboard age, belonging to ver-'s reflexive slip family (cf. ~sich verschreiben~, ~sich verlesen~)."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "vertrinken": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~trinken~:\n\n- ~trinken~: Aus Mhd. ~trinken~, aus Ahd. ~trinkan~, aus Proto-Westgermanisch *~drinkan~, aus Urgermanisch *~drinkaną~; ein gesichertes außergermanisches Kognat wurde nicht identifiziert, sodass das Wort eine germanische Neubildung sein könnte. Verwandt mit Englisch ~drink~, getrennt nur durch die hochdeutsche Lautverschiebung, sowie Altnordisch ~drekka~ und Gotisch ~𐌳𐍂𐌹𐌲𐌺𐌰𐌽~ (drigkan).\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ drückt Verbrauchen, Aufzehren oder Aufbrauchen aus.\n\n~Vertrinken~ verwandelt Geld oder ein Erbe in Getränk und zehrt es dabei auf — das Objekt wird durchgebracht, wie bei ~verspielen~ oder ~verprassen~.",
+   "en": "An inseparable compound of ~ver-~ + ~trinken~:\n\n- ~trinken~: From MHG ~trinken~, from OHG ~trinkan~, from Proto-West Germanic *~drinkan~, from Proto-Germanic *~drinkaną~; no non-Germanic cognate has been securely identified, so the word may be a Germanic innovation. Cognate with English ~drink~, separated only by the High German consonant shift, as well as Old Norse ~drekka~ and Gothic ~𐌳𐍂𐌹𐌲𐌺𐌰𐌽~ (drigkan).\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ conveys using up, consuming, or wearing away.\n\n~Vertrinken~ turns money or an inheritance into drink and uses it up in the process — the object is squandered, as with ~verspielen~ (\"to gamble away\") or ~verprassen~ (\"to fritter away\")."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "vertrocknen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~trocknen~:\n\n- ~trocknen~: Ein deadjektivisches Verb zum Adjektiv ~trocken~ mit dem verbalen Suffix ~-en~. ~Trocken~ aus Mhd. ~trucken~, aus Ahd. ~truckan~, ~trokkan~ („ausgedörrt“), aus Proto-Westgermanisch *~drukn~, aus Urgermanisch *~druknaz~ („trocken“), aus PIE *~dʰerǵʰ-~ („hart oder fest werden“), einer Erweiterung von *~dʰer-~ („halten, festhalten“). Verwandt mit Altsächsisch ~drokno~ und Altenglisch ~gedrycnan~ („austrocknen“).\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ bezeichnet ein allmähliches Vergehen — der Vorgang läuft von selbst aus, bis nichts mehr von ihm übrig ist.\n\n~Vertrocknen~ überträgt den Auslauf-Sinn des Präfixes auf das Feuchte: eine Pflanze, ein Bach oder das Gewässer trocknet gänzlich aus, bis kein Wasser mehr bleibt.",
+   "en": "An inseparable compound of ~ver-~ + ~trocknen~:\n\n- ~trocknen~: A deadjectival verb from the adjective ~trocken~ (\"dry\") with the verbal suffix ~-en~. ~Trocken~ traces to MHG ~trucken~, from OHG ~truckan~, ~trokkan~ (\"dried out\"), from Proto-West Germanic *~drukn~, from Proto-Germanic *~druknaz~ (\"dry\"), from PIE *~dʰerǵʰ-~ (\"to become hard or solid\"), an extension of *~dʰer-~ (\"to hold, hold fast\"). Cognate with Old Saxon ~drokno~ and Old English ~gedrycnan~ (\"to dry up\").\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ marks a gradual dying away — the process runs itself out until nothing of it remains.\n\n~Vertrocknen~ applies the prefix's running-out sense to moisture: a plant, a brook, or a body of water dries out entirely until no water is left."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Im sechshundertundersten Jahr des Alters Noahs, am ersten Tage des ersten Monats vertrocknete das Gewässer auf Erden.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "In the six hundred and first year of Noah's life, on the first day of the first month, the waters dried up upon the earth.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": null
+ },
+ "verüben": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~üben~:\n\n- ~üben~: Aus Mhd. ~üeben~, ~uoben~, aus Ahd. ~uoben~, aus urgermanisch *~ōbijaną~ („tun, üben“), der kausativ-iterativen Bildung eines verlorenen starken Verbs *~afaną~, aus PIE *~h₃ep-~ („arbeiten, sich mühen“), woraus auch lateinisch ~opus~ und ~opera~. Verwandt mit niederländisch ~oefenen~, altsächsisch ~ōbian~, altnordisch *~œfa~ (isländisch ~æfa~).\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ verstärkt das Grundverb oder führt seine Handlung zur Vollendung.\n\n~Verüben~ bewahrt den älteren Sinn von ~üben~, nämlich ausüben und ins Werk setzen statt einstudieren; heute steht es fast nur noch für Untaten: einen Frevel, einen Mord oder ein Attentat verüben.",
+   "en": "An inseparable compound of ~ver-~ + ~üben~:\n\n- ~üben~: From MHG ~üeben~, ~uoben~, from OHG ~uoben~, from Proto-Germanic *~ōbijaną~ (\"to do, practice\"), the causative-iterative formation of a lost strong verb *~afaną~, from PIE *~h₃ep-~ (\"to labor, work, toil\"), which also gives Latin ~opus~ and ~opera~. Cognate with Dutch ~oefenen~, Old Saxon ~ōbian~, Old Norse *~œfa~ (Icelandic ~æfa~).\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ intensifies the base verb or carries its action through to completion.\n\n~Verüben~ preserves the older sense of ~üben~ — to carry out, to put into effect, rather than to rehearse; today it is used almost only of misdeeds: to perpetrate an outrage, a murder, an assassination."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Darauf erzählte sie dem König den Frevel, den die böse Hexe und ihre Tochter an ihr verübt hatten.",
+    "source": "Grimm — Märchen"
+   },
+   "en": {
+    "sentence": "Thereupon she told the king of the outrage that the wicked witch and her daughter had perpetrated on her.",
+    "source": "Grimm — Märchen"
+   }
+  },
+  "notes": null
+ },
+ "verwachsen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~wachsen~:\n\n- ~wachsen~: Aus Mhd. ~wahsen~, aus Ahd. ~wahsan~, aus proto-westgermanisch *~wahsan~, aus urgermanisch *~wahsijaną~, aus PIE *~h₂weg-~ („wachsen, zunehmen“). Ein starkes Verb der Klasse VI (~wächst~, ~wuchs~, ~gewachsen~). Verwandt mit englisch ~wax~, niederländisch ~wassen~, dänisch ~vokse~, schwedisch ~växa~, gotisch ~wahsjan~.\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ drückt Verschließen oder Verdecken aus — etwas wird zugemacht, versperrt oder den Blicken entzogen.\n\n~Verwachsen~ heißt, unter Wuchs zu verschwinden — ein Pfad oder eine Ruine verwächst, bis Pflanzen ihn verdecken; von Knochen und Wunden gesagt bedeutet es dagegen zusammenwachsen, das Verwachsen zu einem Ganzen.",
+   "en": "An inseparable compound of ~ver-~ + ~wachsen~:\n\n- ~wachsen~: From MHG ~wahsen~, from OHG ~wahsan~, from Proto-West Germanic *~wahsan~, from Proto-Germanic *~wahsijaną~, from PIE *~h₂weg-~ (\"to grow, increase\"). A class VI strong verb (~wächst~, ~wuchs~, ~gewachsen~). Cognate with English ~wax~, Dutch ~wassen~, Danish ~vokse~, Swedish ~växa~, Gothic ~wahsjan~.\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ conveys closing or covering — something is shut, blocked, or hidden from view.\n\n~Verwachsen~ means to vanish under growth — a path or a ruin becomes overgrown until plants cover it; said of bones and wounds it instead means to knit together, growing into a single whole."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "verwählen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~wählen~:\n\n- ~wählen~: Aus Mhd. ~weln~, ~welen~, ~wellen~, aus Ahd. ~wellen~, aus proto-westgermanisch *~walljan~, aus urgermanisch *~waljaną~, aus PIE *~welh₁-~ („wünschen, wählen“). Der Umlaut ~ä~ stammt aus der zweiten und dritten Person Singular im Mittelhochdeutschen; ~wählen~ und ~wollen~ teilen dieselbe Wurzel. Verwandt mit englisch ~well~ (archaisch „wohl wünschen“), niederländisch ~willen~.\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ kennzeichnet die Handlung als falsch, fehlgeleitet oder misslungen.\n\n~Sich verwählen~ heißt, beim Telefonieren die falsche Nummer zu wählen — eine junge Prägung aus der Zeit der Wählscheibe, in der ~wählen~ das Einstellen einer Nummer bezeichnet.",
+   "en": "An inseparable compound of ~ver-~ + ~wählen~:\n\n- ~wählen~: From MHG ~weln~, ~welen~, ~wellen~, from OHG ~wellen~, from Proto-West Germanic *~walljan~, from Proto-Germanic *~waljaną~, from PIE *~welh₁-~ (\"to wish, choose\"). The umlaut ~ä~ comes from the MHG second- and third-person singular; ~wählen~ and ~wollen~ share the same root. Cognate with English ~well~ (archaic \"to wish well\"), Dutch ~willen~.\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ marks the action as going wrong, astray, or amiss.\n\n~Sich verwählen~ means to dial the wrong number on the telephone — a young coinage from the era of the rotary dial, in which ~wählen~ means to dial a number."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "verwarnen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~warnen~:\n\n- ~warnen~: Aus Mhd. ~warnen~ („bewachen, beschützen“), aus Ahd. ~warnōn~ („verweigern, ablehnen“), aus proto-westgermanisch *~warnōn~, aus urgermanisch *~warnōną~, aus PIE *~wer-~ („achten, wahrnehmen, aufpassen“) — von der Verweigerung eigener Gefahr zum Warnen anderer. Verwandt mit englisch ~warn~, altenglisch ~wyrnan~, altnordisch ~varna~.\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ verstärkt das Grundverb oder führt seine Handlung zur Vollendung.\n\n~Verwarnen~ ist das amtliche Gegenstück zu ~warnen~: eine Behörde, ein Schiedsrichter oder ein Polizist verwarnt mit förmlicher Rüge, während ~warnen~ bloß auf eine Gefahr aufmerksam macht.",
+   "en": "An inseparable compound of ~ver-~ + ~warnen~:\n\n- ~warnen~: From MHG ~warnen~ (\"to watch over, to protect\"), from OHG ~warnōn~ (\"to deny, to refuse\"), from Proto-West Germanic *~warnōn~, from Proto-Germanic *~warnōną~, from PIE *~wer-~ (\"to heed, to perceive, to watch out for\") — from refusing danger for oneself to cautioning others. Cognate with English ~warn~, Old English ~wyrnan~, Old Norse ~varna~.\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ intensifies the base verb or carries its action through to completion.\n\n~Verwarnen~ is the official counterpart of ~warnen~: an authority, a referee, or a police officer verwarnt with a formal reprimand, whereas ~warnen~ merely alerts to a danger."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Nun ist dem Alten leid, weil seine Söhne in die Welt kommen, daß er sie nicht vor allerlei Gefahr erst verwarnet und ihnen gute Lehren fürgesagt habe.",
+    "source": "Grimm — Märchen"
+   },
+   "en": {
+    "sentence": "Now the old man is grieved, because his sons are going out into the world, that he did not first warn them against every kind of danger and give them good counsel.",
+    "source": "Grimm — Märchen"
+   }
+  },
+  "notes": "Sentence attests the older 'warn against danger' sense, close to warnen; the modern official-caution sense is later."
+ },
+ "verwaschen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~waschen~:\n\n- ~waschen~: Aus Mhd. ~waschen~, aus Ahd. ~wascan~, aus proto-westgermanisch *~waskan~, aus urgermanisch *~waskaną~, aus einem älteren *~watskaną~, einer ~ske~-Präsensbildung von PIE *~wed-~ („nass, Wasser“) — also „(wiederholt) nass machen“. Verwandt mit englisch ~wash~, ~water~, ~wet~, niederländisch ~wassen~, dänisch ~vaske~.\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ drückt Verbrauchen, Aufzehren oder Aufbrauchen aus.\n\n~Verwaschen~ heißt, Farben oder Konturen durch Waschen bis zur Unschärfe abzunutzen; meist begegnet es als Adjektiv ~verwaschen~ (ausgeblichen, undeutlich), auch übertragen von einer unklaren Formulierung.",
+   "en": "An inseparable compound of ~ver-~ + ~waschen~:\n\n- ~waschen~: From MHG ~waschen~, from OHG ~wascan~, from Proto-West Germanic *~waskan~, from Proto-Germanic *~waskaną~, from an earlier *~watskaną~, a ~ske~-present formation from PIE *~wed-~ (\"wet, water\") — hence \"to make wet (repeatedly).\" Cognate with English ~wash~, ~water~, ~wet~, Dutch ~wassen~, Danish ~vaske~.\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ conveys using up, consuming, or wearing away.\n\n~Verwaschen~ means to wear colors or outlines down to a blur by washing; it most often appears as the adjective ~verwaschen~ \"faded, indistinct,\" including figuratively of woolly, vague wording."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "verweben": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~weben~:\n\n- ~weben~: Aus Mhd. ~weben~, aus Ahd. ~weban~, aus proto-westgermanisch *~weban~, aus urgermanisch *~webaną~, aus PIE *~webʰ-~ („weben, flechten“). Ursprünglich ein starkes Verb der Klasse V (Ahd. ~weban~, ~wab~, ~giweban~); das heutige Deutsch flektiert es im wörtlichen handwerklichen Sinn schwach (~webte~, ~gewebt~), während das starke ~wob~, ~gewoben~ — eine analogische Umbildung nach ~heben~, ~hob~, ~gehoben~ — dem gehobenen und übertragenen Gebrauch angehört. Verwandt mit englisch ~weave~ und ~web~, niederländisch ~weven~, dänisch ~væve~.\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ drückt das Zusammenfügen mehrerer Dinge zu einem aus.\n\n~Verweben~ fügt mehrere Fäden oder Motive zu einem Gewebe zusammen; oft übertragen — Stimmen, Themen, Leben verweben sich —, wobei der gehobene Gebrauch die starken Formen ~verwob~, ~verwoben~ wählt.",
+   "en": "An inseparable compound of ~ver-~ + ~weben~:\n\n- ~weben~: From MHG ~weben~, from OHG ~weban~, from Proto-West Germanic *~weban~, from Proto-Germanic *~webaną~, from PIE *~webʰ-~ (\"to weave, braid\"). Originally a class V strong verb (OHG ~weban~, ~wab~, ~giweban~); modern German conjugates it weak (~webte~, ~gewebt~) for the literal craft, while the strong ~wob~, ~gewoben~ — an analogical remodelling on the pattern of ~heben~, ~hob~, ~gehoben~ — belongs to elevated and figurative use. Cognate with English ~weave~ and ~web~, Dutch ~weven~, Danish ~væve~.\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ conveys binding or fusing several things into one.\n\n~Verweben~ weaves several threads or motifs into a single fabric; often figurative — voices, themes, lives interwoven — with elevated usage taking the strong forms ~verwob~, ~verwoben~."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Aber das Gelächter, der heraufwehende Hospitalgeruch und die Nähe des Schönen verwoben sich ihm zu einem Traumbann, der unzerreißbar und unentrinnbar sein Haupt, seinen Sinn umfangen hielt.",
+    "source": "Mann — Der Tod in Venedig"
+   },
+   "en": {
+    "sentence": "But the laughter, the wafting hospital smell, and the nearness of the beautiful wove themselves for him into a dream-spell that held his head, his mind, encompassed, unbreakable and inescapable.",
+    "source": "Mann — Der Tod in Venedig"
+   }
+  },
+  "notes": null
+ },
+ "verwechseln": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~wechseln~:\n\n- ~wechseln~: Aus Mhd. ~wëhseln~, aus Ahd. *~wehsalōn~, aus urgermanisch *~wihslōną~, aus PIE *~weyk-~, *~weyḱ-~ („wechseln, biegen, weichen“). Verwandt mit niederländisch ~wisselen~, luxemburgisch ~wiesselen~, englisch ~week~, deutsch ~Woche~ und lateinisch ~vicis~ („Wechsel, Reihe, Abwechslung“).\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ kennzeichnet die Handlung als falsch, fehlgeleitet oder misslungen.\n\n~Verwechseln~ heißt, ein Ding im Kopf für ein anderes zu nehmen; aus ~wechseln~ (tauschen) wird mit ~ver-~ der Irrtum, das eine für das andere zu halten.",
+   "en": "An inseparable compound of ~ver-~ + ~wechseln~:\n\n- ~wechseln~: From MHG ~wëhseln~, from OHG *~wehsalōn~, from Proto-Germanic *~wihslōną~, from PIE *~weyk-~, *~weyḱ-~ (\"to change, bend, yield\"). Cognate with Dutch ~wisselen~, Luxembourgish ~wiesselen~, English ~week~, German ~Woche~, and Latin ~vicis~ (\"change, turn, alternation\").\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ marks the action as going wrong, astray, or amiss.\n\n~Verwechseln~ means to take one thing for another in one's mind; from ~wechseln~ (\"to change, exchange\"), the ~ver-~ makes it the error of mistaking one for the other."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Und habt eure Maske und Feinheit, dass man euch verwechsele!",
+    "source": "Nietzsche — Jenseits von Gut und Böse"
+   },
+   "en": {
+    "sentence": "And keep your mask and your subtlety, so that one may mistake you for another!",
+    "source": "Nietzsche — Jenseits von Gut und Böse"
+   }
+  },
+  "notes": null
+ },
+ "verwehren": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~wehren~:\n\n- ~wehren~: Aus Mhd. ~weren~, aus Ahd. ~werien~, aus proto-westgermanisch *~warjan~, aus urgermanisch *~warjaną~ („verteidigen, abwehren, schützen“), aus PIE *~wer-~ („schließen, bedecken, schützen“). Am häufigsten reflexiv: ~sich wehren~. Verwandt mit englisch ~weir~, ~ward~, ~guard~, niederländisch ~weren~, altnordisch ~verja~, gotisch ~warjan~.\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ drückt Verschließen oder Verdecken aus — etwas wird zugemacht, versperrt oder den Blicken entzogen.\n\n~Verwehren~ heißt, jemandem den Zugang zu etwas zu versperren — die Sicht, den Zutritt, ein Recht; aus ~wehren~ (abwehren) wird so das Verweigern, das jemandem etwas vorenthält.",
+   "en": "An inseparable compound of ~ver-~ + ~wehren~:\n\n- ~wehren~: From MHG ~weren~, from OHG ~werien~, from Proto-West Germanic *~warjan~, from Proto-Germanic *~warjaną~ (\"to defend, to ward off, to protect\"), from PIE *~wer-~ (\"to close, to cover, to protect\"). Most commonly used reflexively: ~sich wehren~ (\"to defend oneself\"). Cognate with English ~weir~, ~ward~, ~guard~, Dutch ~weren~, Old Norse ~verja~, Gothic ~warjan~.\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ conveys closing or covering — something is shut, blocked, or hidden from view.\n\n~Verwehren~ means to bar someone's access to something — the view, entry, a right; from ~wehren~ (\"to ward off\"), the ~ver-~ makes it a denial that shuts the thing off."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Ich gedachte, ich wollte dich ehren; aber der HERR hat dir die Ehre verwehrt.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "I thought I would honor you, but the LORD has denied you the honor.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": "Sense read as the barring/blocking ver- (die Sicht/den Zutritt verwehren) over the intensive reading."
+ },
+ "verwerfen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~werfen~:\n\n- ~werfen~: Aus Mhd. ~wërfen~, aus Ahd. ~werfan~, aus proto-westgermanisch *~werpan~, aus urgermanisch *~werpaną~, aus PIE *~wergʷ-~ („biegen, drehen, verzerren“). Ein starkes Verb der Klasse III (~wirft~, ~warf~, ~geworfen~). Verwandt mit englisch ~warp~, niederländisch ~werpen~, altsächsisch ~werpan~, altnordisch ~verpa~, gotisch ~wairpan~.\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ drückt Entfernung oder Wegbewegung aus, aus dem älteren räumlichen Sinn des Präfixes.\n\n~Verwerfen~ wirft etwas beiseite: ein Plan, eine Hypothese, ein Einspruch wird verworfen und damit fortgeschafft; daneben stehen die fachsprachlichen Bedeutungen, etwa das Verwerfen von Gesteinsschichten oder das Sich-Verwerfen von Holz.",
+   "en": "An inseparable compound of ~ver-~ + ~werfen~:\n\n- ~werfen~: From MHG ~wërfen~, from OHG ~werfan~, from Proto-West Germanic *~werpan~, from Proto-Germanic *~werpaną~, from PIE *~wergʷ-~ (\"to bend, spin, warp\"). A class III strong verb (~wirft~, ~warf~, ~geworfen~). Cognate with English ~warp~, Dutch ~werpen~, Old Saxon ~werpan~, Old Norse ~verpa~, Gothic ~wairpan~.\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ conveys removal or motion away, from the prefix's older spatial sense.\n\n~Verwerfen~ throws something aside: a plan, a hypothesis, an appeal is verworfen and so cast away; alongside stand technical senses, such as the faulting of rock strata or the warping of wood."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Diese also verwerfen wir mit Entschlossenheit, und fortan gilt unser Trachten einzig der Schönheit, das will sagen der Einfachheit, Größe und neuen Strenge, der zweiten Unbefangenheit und der Form.",
+    "source": "Mann — Der Tod in Venedig"
+   },
+   "en": {
+    "sentence": "These, then, we reject with resolve, and henceforth our striving belongs solely to beauty, that is to say to simplicity, grandeur and a new rigor, to the second naivety and to form.",
+    "source": "Mann — Der Tod in Venedig"
+   }
+  },
+  "notes": null
+ },
+ "verwerten": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~werten~:\n\n- ~werten~: Abgeleitet von ~Wert~, aus Mhd. ~wert~, aus Ahd. ~werd~, aus urgermanisch *~werþaz~ („wert, würdig“), aus PIE *~wert-~ („drehen“); die Verbindung zum Wert verläuft über das Tauschen — Waren werden in einer Transaktion umgewendet. Verwandt mit lateinisch ~versus~ („gedreht“) und englisch ~worth~, ~worthy~, ~worship~.\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ verstärkt das Grundverb oder führt seine Handlung zur Vollendung.\n\n~Verwerten~ heißt, etwas zu Nutzen oder Geld zu machen — Abfälle, Rechte, Daten verwerten; aus ~werten~ (bewerten) wird mit ~ver-~ das tatsächliche Einlösen des Wertes, nicht bloß sein Einschätzen.",
+   "en": "An inseparable compound of ~ver-~ + ~werten~:\n\n- ~werten~: Derived from ~Wert~ (\"value, worth\"), from MHG ~wert~, from OHG ~werd~, from Proto-Germanic *~werþaz~ (\"worth, worthy\"), from PIE *~wert-~ (\"to turn\"); the connection to value runs through exchange — turning goods over in a transaction. Related to Latin ~versus~ (\"turned\") and English ~worth~, ~worthy~, ~worship~.\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ intensifies the base verb or carries its action through to completion.\n\n~Verwerten~ means to turn something to use or profit — to utilize waste, exploit rights, monetize data; from ~werten~ (\"to assess value\"), the ~ver-~ marks the actual realizing of the value, not merely its appraisal."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Immer mehr, immer feinere und differenziertere Dimensionen von Wirtschaft und Gesellschaft werden gemessen und verwertet, vernetzt und vermarktet.",
+    "source": "Digitale Strategie 2025"
+   },
+   "en": {
+    "sentence": "More and more, ever finer and more differentiated dimensions of economy and society are measured and exploited, networked and marketed.",
+    "source": "Digitale Strategie 2025"
+   }
+  },
+  "notes": "Sense picked as completive (0): ver- carries werten's valuation through to actual realization; the fit is approximate."
+ },
+ "verwiegen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~wiegen~:\n\n- ~wiegen~: Zwei verschiedene Verben, beide aus Mhd. ~wigen~. Bedeutung 1 („das Gewicht feststellen“): eine nordwestliche Variante von ~wegen~, die den Präsens-Singular-Stammvokal ~i~ verallgemeinerte, aus Ahd. ~wegan~, aus Proto-Westgermanisch *~wegan~, aus Urgermanisch *~weganą~ („bewegen, tragen, wiegen“), aus PIE *~weǵʰ-~ („befördern, bewegen“); die alte ~e~-Form überlebt in der Dublette ~wägen~. Bedeutung 2 („schaukeln“): von ~wige~ („Wiege“), aus Ahd. ~wīga~, vermutlich verwandt mit Proto-Westgermanisch *~waggjan~ („in Bewegung versetzen“), aus derselben PIE-Wurzel. Verwandt mit Englisch ~weigh~, Niederländisch ~wegen~, Dänisch ~veje~.\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ verstärkt das Grundverb oder führt seine Handlung zur Vollendung.\n\n~Verwiegen~ gehört zum Wäge-Zweig von ~wiegen~ (das Gewicht feststellen), nicht zum gleichlautenden ~wiegen~ (schaukeln); die starke Beugung (~verwog~, ~verwogen~) bestätigt es. Es ist ein Fachwort des Handels und der Seefahrt für das Auswiegen von Gütern.",
+   "en": "An inseparable compound of ~ver-~ + ~wiegen~:\n\n- ~wiegen~: Two distinct verbs, both from MHG ~wigen~. Sense 1 (\"to weigh\"): a northwestern variant of ~wegen~ that generalized the present-singular stem vowel ~i~, from OHG ~wegan~, from Proto-West Germanic *~wegan~, from Proto-Germanic *~weganą~ (\"to move, carry, weigh\"), from PIE *~weǵʰ-~ (\"to convey, move\"); the original ~e~-form survives in the doublet ~wägen~. Sense 2 (\"to rock, cradle\"): from ~wige~ (\"cradle,\" modern ~Wiege~), from OHG ~wīga~, likely related to Proto-West Germanic *~waggjan~ (\"to cause to move\"), from the same PIE root. Cognate with English ~weigh~, Dutch ~wegen~, Danish ~veje~.\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ intensifies the base verb or carries its action through to completion.\n\n~Verwiegen~ belongs to the weighing branch of ~wiegen~ (\"to determine the weight\"), not to the identically spelled ~wiegen~ (\"to rock, cradle\"); the strong conjugation (~verwog~, ~verwogen~) confirms it. It is a trade and seafaring term for weighing out goods."
+  },
+  "sentence": null,
+  "notes": "No candidates; sense read as completive over the weigh-branch (family s confirms the branch, not the cradle homograph)."
+ },
+ "verwinden": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~ver-~ + ~winden~:\n\n- ~winden~: Aus Mhd. ~winden~, aus Ahd. ~wintan~, aus urgermanisch *~windaną~ („winden, wickeln“), aus PIE *~wendʰ-~ („drehen, winden, flechten“). Verwandt mit englisch ~wind~ (das Verb, „aufspulen“), niederländisch ~winden~, dänisch ~vinde~.\n- ~ver-~: Aus Mhd. ~ver-~, aus Ahd. ~fir-~, ~far-~, ~fur-~, aus Proto-Westgermanisch *~fra-~, aus Urgermanisch *~fra-~ („weg, fort“), aus PIE *~per~ („vor, vorne, voran“). Das eine heutige Präfix setzt drei verschiedene urgermanische Präfixe fort, *~fra-~, *~fur-~ und *~fer-~, die im Althochdeutschen zusammenfielen. ~ver-~ verstärkt das Grundverb oder führt seine Handlung zur Vollendung.\n\n~Verwinden~ heißt, sich aus einem Leid herauszuwinden und darüber hinwegzukommen — einen Verlust, eine Kränkung verwinden; das ~ver-~ führt das Winden durch die Schwierigkeit bis ans Ende. Fachsprachlich meint ~verwinden~ auch das Verdrehen eines Bauteils.",
+   "en": "An inseparable compound of ~ver-~ + ~winden~:\n\n- ~winden~: From MHG ~winden~, from OHG ~wintan~, from Proto-Germanic *~windaną~ (\"to wind, to wrap\"), from PIE *~wendʰ-~ (\"to turn, wind, braid\"). Cognate with English ~wind~ (the verb, \"to coil\"), Dutch ~winden~, Danish ~vinde~.\n- ~ver-~: From MHG ~ver-~, from OHG ~fir-~, ~far-~, ~fur-~, from Proto-West Germanic *~fra-~, from Proto-Germanic *~fra-~ (\"away, forth\"), from PIE *~per~ (\"before, in front, forward\"). The single modern prefix continues three distinct Proto-Germanic prefixes, *~fra-~, *~fur-~ and *~fer-~, which fell together in Old High German. ~ver-~ intensifies the base verb or carries its action through to completion.\n\n~Verwinden~ means to wind one's way out of a hardship and get over it — to get over a loss, an insult; the ~ver-~ carries the winding through the difficulty to its end. In technical usage ~verwinden~ also means the twisting of a structural part."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Wie verwand und überwand ich solche Wunden?",
+    "source": "Nietzsche — Also sprach Zarathustra"
+   },
+   "en": {
+    "sentence": "How did I get over such wounds and overcome them?",
+    "source": "Nietzsche — Also sprach Zarathustra"
+   }
+  },
+  "notes": "Luther candidate rejected: its 'verwunden' is the separate verb verwunden 'to wound' (from Wunde), not a form of verwinden."
+ }
+}

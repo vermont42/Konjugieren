@@ -3830,3 +3830,92 @@ alone would have silently degraded every future inseparable-um etymology that re
 session mark, one wave short of the budget, to keep headroom for this wrap-up rather than get caught
 mid-wave. No data decisions are open; the deferred items above are recorded in the session report and
 are not urgent. Next is shard 085 via the standard resume prompt.
+
+## Mining shards 085–102: the prefix tail, and a reciprocal-sense gap that recurs across prefixes (2026-07-22)
+
+Eighteen shards mined this window (085–102), concurrency held at 2, one subagent per shard, every
+one validated by the Phase 4 verbatim-quote checker before it counted as done. Yield was **274
+sentences over 450 verbs, 60%** — well above the ~half the brief predicted from shards 000–001,
+because this is the alphabetical prefix tail (`ver-`, `vor-`, `weg-`, `wieder-`, `zer-`, `zu-`,
+`zurück-`, `zusammen-`) and those compounds are comparatively well-attested in the literary corpus.
+Most of the 176 nulls are genuinely empty candidate pools; the honest-refusal nulls are a minority.
+Only shard **103 remains**, left deliberately (see the headroom note at the end).
+
+**Unlike the 071–084 window, this one made no data edits.** That window found the `insep:um`
+separable-label defect and stopped to fix it. This window found no silent breakage: every friction
+item below arrived as a *flagged hedge* in a subagent's notes, never as a contaminated etymology, so
+nothing was at risk in deferring it. The one check that would have justified a stop — is any mined
+output wrong? — kept coming back clean across all 103 shards. So the discipline was to mine, record,
+and hand Josh a consolidated list, rather than spend the window on sense edits that only benefit a
+future re-mine and carry index-parity risk.
+
+**The headline finding: "reciprocal / in-return" is a cross-prefix sense gap, not per-prefix noise.**
+Two independent subagents (shards 098 and 099) each concluded, without seeing the other, that
+`zurück-`'s three senses (return-to-former-state / backward-retreat / withdrawal) have no slot for
+the very productive "do X in return" reading — *zurückschreiben* "reply," *zurückzahlen* "repay,"
+*zurückschlagen* "retaliate," *zurücklächeln* "smile back." Then shard 101 hit the *same shape* on a
+different prefix: `zusammen-` has no reciprocal mutual-contact sense for *zusammenstoßen* "collide,"
+*zusammentreffen* "coincide/meet." A reproduced finding on one prefix plus an independent echo on
+another is the strongest sense-inventory signal the pipeline has produced. Proposed: a reciprocal
+sense for `zurück-` ("in return, reciprocating an action") and for `zusammen-` ("reciprocal meeting
+of two sides"); `zurück-` also wants a retentive sense for *zurückhalten* "withhold."
+
+**Other sense-inventory gaps, all flagged-and-hedged, all author-voice work for Josh (extends the
+"Left for Josh" list from the 071–084 entry, does not duplicate it):**
+
+- **`zer-` distributive/intensive.** The three `zer-` senses are all physical fragmentation; there is
+  no slot for "all over, thoroughly" or figurative dissolution of a bond/order (*zersetzen* "subvert,"
+  *zerstreiten* "fall out"). Shard 095 proposed a fourth sense exemplified by *zerrütten*/*zermürben*.
+- **`be-` inside double-prefix and already-transitive bases.** Shards 087, 090, 093 each hit `be-`
+  compounds that match none of the six `be-` senses: the `vor-`+`be-`+root lexicalizations
+  (*vorbehalten, vorbestellen, vorbestimmen*) and `be-` on an already-transitive goal-directed base
+  (*befördern* "convey/transport" — neither transitivizer nor covering nor denominal). A "conveys/
+  directs toward a goal" sense, or a picking aid for opaque double-prefix stacks, would remove the
+  guesswork.
+- **`zu-` durative/attentive.** *zuwarten* "bide time" and *zusehen* "look on" (shard 102) fit none of
+  `zu-`'s four senses; a durative/attentive sense would cover both. Shard 097 separately noted that
+  the exemplar tiebreak resolves *zuleiten*/*zuliefern* to the allocation sense on *syntactic*
+  resemblance (transitive + dative) when their semantics are directional — a syntax-vs-semantics split
+  worth a line in the spec so future shards resolve it identically.
+- **`ver-` polysemy — corroborates the existing deferred item.** *verwenden* "employ/use" (093) and
+  *verwirken* "forfeit" / *verzeigen* "denounce" (085, 086) collapse onto ill-fitting `ver-` senses,
+  the same "~7 of 25 verbs land on sense 0" wall the 081–084 shards reported. This is more evidence
+  for the already-deferred `ver-` taxonomy carve, not a new finding.
+- **`wider-` one genuinely mis-pointed exemplar.** For *widerrufen* "revoke" (093), the `insep:wider`
+  exemplar slot points at a sense that is really a *wider-/wieder-* spelling-disambiguation note
+  carrying no semantics. This is the one slot a subagent called mis-pointed rather than merely terse,
+  so it is a targeted fix rather than an authoring judgment.
+
+**The one concrete indexer finding — and why it was NOT fixed this window.** Three shards (085, 094,
+097) reported Luther verse-number / corrupt-token mis-splits reaching the reader flagged
+`truncated: false`: `"E ist"` for `"Es ist"` (085, Goethe line 1722), a Rev 16:10–11 two-verse merge
+carrying an embedded "11" (094 *zerbeißen*), and `des HERRN 14 und sah` mid-sentence (097 *zulaufen*).
+The subagents rejected all three correctly, so no output is contaminated — they cost nulls, not bad
+sentences. The indexer *has* a verse-number filter; it is under-catching. This was deliberately left
+alone mid-run: per the brief's own `abgehen` precedent, any change to what survives `MAX_OCCURRENCES`
+can silently orphan a legitimately-quoted candidate elsewhere, and with 103 shards already mined and
+validated the blast radius is the whole corpus. Indexer changes are cheap before mining and expensive
+after; the cheap moment is the corpus expansion + re-mine the roadmap already plans for the zero-hit
+verbs. Recommendation: tighten the verse-number/corrupt-token filter *then*, with those three cases as
+regression fixtures, not now.
+
+**A documentation note for whoever writes an automated exemplar-leak validator.** Four shards (088,
+094, 096, 102) observed that a naive case-insensitive scan of the *whole* etymology false-positives,
+because spliced chain/sense text legitimately names a prefix's own exemplar: the `vorher-` chain names
+*vorhersagen*; the `zer-` chain glosses OE *tōbrecan* as *zerbrechen* (a sense-0 exemplar); the
+`separ:zu` sense-1 string literally contains *zumachen*; a compound's own base verb (*zugehören* →
+*gehören*) is sometimes the picked sense's exemplar. The real check must scope to the authored
+lead+closer, which is exactly what every subagent's own scan did. Worth a line in the brief before
+someone writes the whole-etymology version and chases phantom leaks.
+
+**Headroom, not completion, set the stopping point.** Per-shard main-loop cost climbed through the
+window as the running report history accumulated in context — an *estimated* ~3.75%/shard early,
+~7%/shard by the end (read from `/usage`'s Current-session line, polled every few waves). At the 85%
+mark after shard 102, mining 103 too would have pushed the mandatory wrap-up (this note + commit) past
+the 5-point-headroom line, so 103 was left for a resume. It is one relaunch: `build_mining_shards.py`
+will report it, and the standard resume prompt finishes it. Stopping a wave short to protect the
+wrap-up is the same call the 071–084 window made, and the same one the brief keeps arguing for.
+
+**Standing tally: 103 of 104 shards, 1 remaining (103).** No data decisions are open; the sense-work
+and indexer items above are recorded here and in the session, and none is urgent because none is
+silently breaking output. Next is shard 103 via the standard resume prompt.

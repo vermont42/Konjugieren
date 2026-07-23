@@ -1,0 +1,364 @@
+{
+ "zerschmeißen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~zer-~ + ~schmeißen~:\n\n- ~schmeißen~: Aus Mhd. ~smīȥen~, aus Ahd. ~smīȥan~, aus Proto-Westgermanisch *~smītan~, aus Urgermanisch *~smītaną~, aus PIE *~smeyd-~. Ein starkes Verb der Klasse I (~schmeißen~, ~schmiss~, ~geschmissen~). Verwandt mit Englisch ~smite~, Niederländisch ~smijten~, Dänisch ~smide~, Gotisch ~bismeitan~ („bestreichen, salben“).\n- ~zer-~: Aus Mhd. ~zer-~, aus Ahd. ~zi-~, ~za-~, ~zir-~, aus Proto-Westgermanisch *~ti-~, aus Urgermanisch *~te-~ („auseinander, entzwei“), aus PIE *~dwís~ („zweimal, entzwei“). Verwandt mit Altenglisch ~tō-~ („auseinander“), dem Präfix von ~tōbrecan~ („zerbrechen“), und mit Lateinisch ~dis-~. ~zer-~ drückt Zerbrechen, Zersplittern oder Auseinanderfallen aus.\n\n„zerschmeißen“ meint das Zerschlagen eines Gegenstands durch Werfen oder wuchtiges Schlagen; heute wirkt es altertümlich, während ~schmeißen~ allein umgangssprachlich „werfen“ bedeutet.",
+   "en": "An inseparable compound of ~zer-~ + ~schmeißen~:\n\n- ~schmeißen~: From MHG ~smīȥen~, from OHG ~smīȥan~, from Proto-West Germanic *~smītan~, from Proto-Germanic *~smītaną~, from PIE *~smeyd-~. A class I strong verb (~schmeißen~, ~schmiss~, ~geschmissen~). Cognate with English ~smite~, Dutch ~smijten~, Danish ~smide~, Gothic ~bismeitan~ (\"to smear, to anoint\").\n- ~zer-~: From MHG ~zer-~, from OHG ~zi-~, ~za-~, ~zir-~, from Proto-West Germanic *~ti-~, from Proto-Germanic *~te-~ (\"apart, asunder\"), from PIE *~dwís~ (\"twice, in two\"). Cognate with Old English ~tō-~ (\"apart\"), the prefix of ~tōbrecan~ (\"to break to pieces\"), and with Latin ~dis-~. ~zer-~ conveys breaking apart, shattering, or falling to pieces.\n\n\"~zerschmeißen~\" denotes smashing an object by hurling or striking it hard; it now sounds archaic, while ~schmeißen~ alone is colloquial for \"to throw.\""
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Ist mein Wort nicht wie Feuer, spricht der HERR, und wie ein Hammer, der Felsen zerschmeißt?",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "Is my word not like fire, says the LORD, and like a hammer that shatters rock?",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": "Rank-0 candidate is a figurative rout of a troop; took the rank-2 hammer-shatters-rock line as the clearer attestation of the gloss."
+ },
+ "zerschmelzen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~zer-~ + ~schmelzen~:\n\n- ~schmelzen~: Aus Mhd. ~smelzen~, aus Ahd. ~smelzan~, aus Proto-Westgermanisch *~smeltan~, aus Urgermanisch *~smeltaną~ („schmelzen“), aus PIE *~(s)meld-~ („schmelzen, weich werden“). Intransitiv ein starkes Verb der Klasse III (~schmelzen~, ~schmolz~, ~geschmolzen~), daneben ein schwaches Kausativ ~schmelzen~ („etwas einschmelzen“). Verwandt mit Englisch ~smelt~ und ~melt~ — derselben Wurzel mit und ohne bewegliches ~s-~ — sowie Niederländisch ~smelten~.\n- ~zer-~: Aus Mhd. ~zer-~, aus Ahd. ~zi-~, ~za-~, ~zir-~, aus Proto-Westgermanisch *~ti-~, aus Urgermanisch *~te-~ („auseinander, entzwei“), aus PIE *~dwís~ („zweimal, entzwei“). Verwandt mit Altenglisch ~tō-~ („auseinander“), dem Präfix von ~tōbrecan~ („zerbrechen“), und mit Lateinisch ~dis-~. ~zer-~ drückt Zerstreuung aus — ein Auseinandergehen oder Auflösen in alle Richtungen.\n\nIntransitiv beschreibt ~zerschmelzen~ das restlose Hinwegschmelzen, das vollständige Auflösen einer festen Masse in Flüssigkeit.",
+   "en": "An inseparable compound of ~zer-~ + ~schmelzen~:\n\n- ~schmelzen~: From MHG ~smelzen~, from OHG ~smelzan~, from Proto-West Germanic *~smeltan~, from Proto-Germanic *~smeltaną~ (\"to melt\"), from PIE *~(s)meld-~ (\"to melt, to soften\"). Intransitively a class III strong verb (~schmelzen~, ~schmolz~, ~geschmolzen~), beside a weak causative ~schmelzen~ (\"to melt something down\"). Cognate with English ~smelt~ and ~melt~ — the same root with and without the mobile ~s-~ — and Dutch ~smelten~.\n- ~zer-~: From MHG ~zer-~, from OHG ~zi-~, ~za-~, ~zir-~, from Proto-West Germanic *~ti-~, from Proto-Germanic *~te-~ (\"apart, asunder\"), from PIE *~dwís~ (\"twice, in two\"). Cognate with Old English ~tō-~ (\"apart\"), the prefix of ~tōbrecan~ (\"to break to pieces\"), and with Latin ~dis-~. ~zer-~ conveys dispersal — scattering or dissolving in every direction.\n\nIntransitively, ~zerschmelzen~ describes melting away entirely — a solid mass dissolving completely into liquid."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Wenn aber die Sonne heiß schien, zerschmolz es.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "But when the sun shone hot, it melted away.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": null
+ },
+ "zerschneiden": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~zer-~ + ~schneiden~:\n\n- ~schneiden~: Aus Mhd. ~snīden~, aus Ahd. ~snīdan~, aus Proto-Westgermanisch *~snīþan~ („schneiden“); eine gesicherte PIE-Wurzel fehlt, das Wort könnte eine germanische Neubildung sein. Ein starkes Verb der Klasse I (~schneiden~, ~schnitt~, ~geschnitten~). Verwandt mit archaisch Englisch ~snithe~ („schneiden“), Niederländisch ~snijden~, Isländisch ~sníða~.\n- ~zer-~: Aus Mhd. ~zer-~, aus Ahd. ~zi-~, ~za-~, ~zir-~, aus Proto-Westgermanisch *~ti-~, aus Urgermanisch *~te-~ („auseinander, entzwei“), aus PIE *~dwís~ („zweimal, entzwei“). Verwandt mit Altenglisch ~tō-~ („auseinander“), dem Präfix von ~tōbrecan~ („zerbrechen“), und mit Lateinisch ~dis-~. ~zer-~ drückt Zerbrechen, Zersplittern oder Auseinanderfallen aus.\n\nDas Kompositum meint das Zerteilen mit einer Klinge in mehrere Stücke und wird auch übertragen für das Durchtrennen von Bindungen gebraucht.",
+   "en": "An inseparable compound of ~zer-~ + ~schneiden~:\n\n- ~schneiden~: From MHG ~snīden~, from OHG ~snīdan~, from Proto-West Germanic *~snīþan~ (\"to cut\"); no secure PIE root has been established, and the word may be a Germanic innovation. A class I strong verb (~schneiden~, ~schnitt~, ~geschnitten~). Cognate with archaic English ~snithe~ (\"to cut\"), Dutch ~snijden~, Icelandic ~sníða~.\n- ~zer-~: From MHG ~zer-~, from OHG ~zi-~, ~za-~, ~zir-~, from Proto-West Germanic *~ti-~, from Proto-Germanic *~te-~ (\"apart, asunder\"), from PIE *~dwís~ (\"twice, in two\"). Cognate with Old English ~tō-~ (\"apart\"), the prefix of ~tōbrecan~ (\"to break to pieces\"), and with Latin ~dis-~. ~zer-~ conveys breaking apart, shattering, or falling to pieces.\n\nThe compound means cutting something into several pieces with a blade, and is used figuratively for severing ties."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Meinst du die Genossen werden ihn zerschneiden, daß er unter die Kaufleute zerteilt wird?",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "Do you think the companions will cut it up, that it be divided among the merchants?",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": null
+ },
+ "zersetzen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~zer-~ + ~setzen~:\n\n- ~setzen~: Aus Mhd. ~setzen~, aus Ahd. ~sezzen~, aus Proto-Westgermanisch *~sattjan~, aus Urgermanisch *~satjaną~ („setzen, hinsetzen“), aus PIE *~sodéyeti~ — eine Kausativableitung von *~sitjaną~ („sitzen“) mit dem Suffix *~-janą~, wörtlich „zum Sitzen bringen“. Verwandt mit Englisch ~set~, Niederländisch ~zetten~, Jiddisch ~zetsn~.\n- ~zer-~: Aus Mhd. ~zer-~, aus Ahd. ~zi-~, ~za-~, ~zir-~, aus Proto-Westgermanisch *~ti-~, aus Urgermanisch *~te-~ („auseinander, entzwei“), aus PIE *~dwís~ („zweimal, entzwei“). Verwandt mit Altenglisch ~tō-~ („auseinander“), dem Präfix von ~tōbrecan~ („zerbrechen“), und mit Lateinisch ~dis-~. ~zer-~ drückt vollständige Zerstörung oder Vernichtung aus.\n\n~zersetzen~ bezeichnet das chemische Zerfallen eines Stoffes in seine Bestandteile und, übertragen, das Untergraben von Zusammenhalt und Ordnung — das Substantiv ~Zersetzung~ war ein Fachbegriff der Stasi.",
+   "en": "An inseparable compound of ~zer-~ + ~setzen~:\n\n- ~setzen~: From MHG ~setzen~, from OHG ~sezzen~, from Proto-West Germanic *~sattjan~, from Proto-Germanic *~satjaną~ (\"to set, to place down\"), from PIE *~sodéyeti~ — a causative derivation of *~sitjaną~ (\"to sit\") with the suffix *~-janą~, literally \"to cause to sit.\" Cognate with English ~set~, Dutch ~zetten~, Yiddish ~zetsn~.\n- ~zer-~: From MHG ~zer-~, from OHG ~zi-~, ~za-~, ~zir-~, from Proto-West Germanic *~ti-~, from Proto-Germanic *~te-~ (\"apart, asunder\"), from PIE *~dwís~ (\"twice, in two\"). Cognate with Old English ~tō-~ (\"apart\"), the prefix of ~tōbrecan~ (\"to break to pieces\"), and with Latin ~dis-~. ~zer-~ conveys complete destruction or ruin.\n\n\"~zersetzen~\" names the chemical breakdown of a substance into its components and, figuratively, the undermining of cohesion and order — the noun ~Zersetzung~ was a Stasi term of art."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Die Stasi spitzelte, zersetzte und ja, sie mordete auch in der Bundesrepublik.",
+    "source": "Bundestag — Plenarprotokoll 20/210"
+   },
+   "en": {
+    "sentence": "The Stasi spied, subverted, and yes, it also murdered in the Federal Republic.",
+    "source": "Bundestag — Plenarprotokoll 20/210"
+   }
+  },
+  "notes": "No sense_exemplar matches zersetzen; picked sense 1 (destruction/ruin) by reasoning, closest to corrode/decompose and the figurative Zersetzung the candidates attest."
+ },
+ "zersingen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~zer-~ + ~singen~:\n\n- ~singen~: Aus Mhd. ~singen~, aus Ahd. ~singan~, aus Proto-Westgermanisch *~singwan~, aus Urgermanisch *~singwaną~, aus PIE *~sengʷʰ-~ („rezitieren, intonieren, singen“), verwandt mit Altgriechisch ~ὀμφή~ (omphḗ, „göttliche Stimme, Orakel“). Ein starkes Verb der Klasse III (~singen~, ~sang~, ~gesungen~). Verwandt mit Englisch ~sing~, Gotisch ~𐍃𐌹𐌲𐌲𐍅𐌰𐌽~ (siggwan), Niederländisch ~zingen~.\n- ~zer-~: Aus Mhd. ~zer-~, aus Ahd. ~zi-~, ~za-~, ~zir-~, aus Proto-Westgermanisch *~ti-~, aus Urgermanisch *~te-~ („auseinander, entzwei“), aus PIE *~dwís~ („zweimal, entzwei“). Verwandt mit Altenglisch ~tō-~ („auseinander“), dem Präfix von ~tōbrecan~ („zerbrechen“), und mit Lateinisch ~dis-~. ~zer-~ drückt Zerbrechen, Zersplittern oder Auseinanderfallen aus.\n\nDas seltene Kompositum meint das Zerbersten eines Gegenstands — etwa eines Glases — durch die Schwingung des Gesangs.",
+   "en": "An inseparable compound of ~zer-~ + ~singen~:\n\n- ~singen~: From MHG ~singen~, from OHG ~singan~, from Proto-West Germanic *~singwan~, from Proto-Germanic *~singwaną~, from PIE *~sengʷʰ-~ (\"to recite, intone, chant\"), connected to Ancient Greek ~ὀμφή~ (omphḗ, \"divine voice, oracle\"). A class III strong verb (~singen~, ~sang~, ~gesungen~). Cognate with English ~sing~, Gothic ~𐍃𐌹𐌲𐌲𐍅𐌰𐌽~ (siggwan), Dutch ~zingen~.\n- ~zer-~: From MHG ~zer-~, from OHG ~zi-~, ~za-~, ~zir-~, from Proto-West Germanic *~ti-~, from Proto-Germanic *~te-~ (\"apart, asunder\"), from PIE *~dwís~ (\"twice, in two\"). Cognate with Old English ~tō-~ (\"apart\"), the prefix of ~tōbrecan~ (\"to break to pieces\"), and with Latin ~dis-~. ~zer-~ conveys breaking apart, shattering, or falling to pieces.\n\nThe rare compound denotes shattering an object — a glass, say — through the vibration of song."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "zerspringen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~zer-~ + ~springen~:\n\n- ~springen~: Aus Ahd. ~springan~, aus Urgermanisch *~springaną~, aus PIE *~sprenǵʰ-~, einer nasalierten Form von *~sperǵʰ-~ („sich energisch bewegen, eilen, springen“). Ein starkes Verb der Klasse III (~springen~, ~sprang~, ~gesprungen~). Verwandt mit Englisch ~spring~, Niederländisch ~springen~, Dänisch ~springe~, Griechisch ~spérkhō~ („eilen“).\n- ~zer-~: Aus Mhd. ~zer-~, aus Ahd. ~zi-~, ~za-~, ~zir-~, aus Proto-Westgermanisch *~ti-~, aus Urgermanisch *~te-~ („auseinander, entzwei“), aus PIE *~dwís~ („zweimal, entzwei“). Verwandt mit Altenglisch ~tō-~ („auseinander“), dem Präfix von ~tōbrecan~ („zerbrechen“), und mit Lateinisch ~dis-~. ~zer-~ drückt Zerbrechen, Zersplittern oder Auseinanderfallen aus.\n\nIntransitiv und mit ~sein~ gebildet, beschreibt ~zerspringen~ das plötzliche Bersten unter Spannung; im übertragenen Sinn kann das Herz vor Freude oder Kummer zerspringen.",
+   "en": "An inseparable compound of ~zer-~ + ~springen~:\n\n- ~springen~: From OHG ~springan~, from Proto-Germanic *~springaną~, from PIE *~sprenǵʰ-~, a nasalized form of *~sperǵʰ-~ (\"to move energetically, to hasten, to spring\"). A class III strong verb (~springen~, ~sprang~, ~gesprungen~). Cognate with English ~spring~, Dutch ~springen~, Danish ~springe~, Greek ~spérkhō~ (\"to hasten\").\n- ~zer-~: From MHG ~zer-~, from OHG ~zi-~, ~za-~, ~zir-~, from Proto-West Germanic *~ti-~, from Proto-Germanic *~te-~ (\"apart, asunder\"), from PIE *~dwís~ (\"twice, in two\"). Cognate with Old English ~tō-~ (\"apart\"), the prefix of ~tōbrecan~ (\"to break to pieces\"), and with Latin ~dis-~. ~zer-~ conveys breaking apart, shattering, or falling to pieces.\n\nIntransitive and built with ~sein~, ~zerspringen~ describes a sudden bursting under tension; figuratively the heart can burst with joy or grief."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Sein Zorn brennt wie Feuer, und die Felsen zerspringen vor ihm.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "His wrath burns like fire, and the rocks burst apart before him.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": null
+ },
+ "zerstechen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~zer-~ + ~stechen~:\n\n- ~stechen~: Aus Mhd. ~stëchen~, aus Ahd. ~stëhhan~, aus Proto-Westgermanisch *~stekan~, aus Urgermanisch *~stekaną~ („stechen, piksen“), aus PIE *~(s)teg-~ („stechen, stoßen“). Verwandt mit Niederländisch ~steken~ („stechen, stacheln“), Altnordisch ~stinga~, Englisch ~stick~ (ursprünglich „stechen, durchbohren“).\n- ~zer-~: Aus Mhd. ~zer-~, aus Ahd. ~zi-~, ~za-~, ~zir-~, aus Proto-Westgermanisch *~ti-~, aus Urgermanisch *~te-~ („auseinander, entzwei“), aus PIE *~dwís~ („zweimal, entzwei“). Verwandt mit Altenglisch ~tō-~ („auseinander“), dem Präfix von ~tōbrecan~ („zerbrechen“), und mit Lateinisch ~dis-~. ~zer-~ drückt vollständige Zerstörung oder Vernichtung aus.\n\n~zerstechen~ meint das Unbrauchbarmachen durch wiederholtes Einstechen — einen Reifen ~zerstechen~ — sowie das Zerstechen der Haut durch viele einzelne Stiche.",
+   "en": "An inseparable compound of ~zer-~ + ~stechen~:\n\n- ~stechen~: From MHG ~stëchen~, from OHG ~stëhhan~, from Proto-West Germanic *~stekan~, from Proto-Germanic *~stekaną~ (\"to stab, prick\"), from PIE *~(s)teg-~ (\"to stick, poke\"). Cognate with Dutch ~steken~ (\"to stab, sting\"), Old Norse ~stinga~, English ~stick~ (originally \"to stab, pierce\").\n- ~zer-~: From MHG ~zer-~, from OHG ~zi-~, ~za-~, ~zir-~, from Proto-West Germanic *~ti-~, from Proto-Germanic *~te-~ (\"apart, asunder\"), from PIE *~dwís~ (\"twice, in two\"). Cognate with Old English ~tō-~ (\"apart\"), the prefix of ~tōbrecan~ (\"to break to pieces\"), and with Latin ~dis-~. ~zer-~ conveys complete destruction or ruin.\n\n\"~zerstechen~\" means rendering something useless by repeated stabbing — to slash a tire — as well as pricking skin all over with many separate stings."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Ich sehe dich betäubt vom Lärme der grossen Männer und zerstochen von den Stacheln der kleinen.",
+    "source": "Nietzsche — Also sprach Zarathustra"
+   },
+   "en": {
+    "sentence": "I see you dazed by the noise of the great men and stung all over by the stings of the little ones.",
+    "source": "Nietzsche — Also sprach Zarathustra"
+   }
+  },
+  "notes": "No exemplar matches; picked sense 1 (make unusable/ruin) per gloss, though the chosen Nietzsche line attests the distributive prick-all-over nuance."
+ },
+ "zerstieben": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~zer-~ + ~stieben~:\n\n- ~stieben~: Aus Mhd. ~stieben~, aus Ahd. ~stioban~, aus Proto-Westgermanisch *~steuban~, aus Urgermanisch *~steubaną~ („als Staub umherfliegen“), ohne gesicherte Verwandte außerhalb des Germanischen; ein Anschluss an PIE *~dʰewbʰ-~ („wirbeln, rauchen“) ist erwogen, aber nicht gesichert. Ein starkes Verb der Klasse II (~stieben~, ~stob~, ~gestoben~), daneben schwach ~stiebte~, ~gestiebt~. Heute selten und literarisch, vor allem in ~Funken stieben~ und ~zerstieben~. Verwandt mit Niederländisch ~stuiven~ und ~stof~ („Staub“).\n- ~zer-~: Aus Mhd. ~zer-~, aus Ahd. ~zi-~, ~za-~, ~zir-~, aus Proto-Westgermanisch *~ti-~, aus Urgermanisch *~te-~ („auseinander, entzwei“), aus PIE *~dwís~ („zweimal, entzwei“). Verwandt mit Altenglisch ~tō-~ („auseinander“), dem Präfix von ~tōbrecan~ („zerbrechen“), und mit Lateinisch ~dis-~. ~zer-~ drückt Zerstreuung aus — ein Auseinandergehen oder Auflösen in alle Richtungen.\n\n~zerstieben~ malt das Auseinanderstäuben in alle Richtungen — Funken, Gischt oder eine Menge, die sprühend auseinanderfliegt; das Wort ist gehoben und literarisch.",
+   "en": "An inseparable compound of ~zer-~ + ~stieben~:\n\n- ~stieben~: From MHG ~stieben~, from OHG ~stioban~, from Proto-West Germanic *~steuban~, from Proto-Germanic *~steubaną~ (\"to fly about as dust\"), with no secure cognates outside Germanic; a link to PIE *~dʰewbʰ-~ (\"to whirl, smoke\") has been proposed but is not established. A class II strong verb (~stieben~, ~stob~, ~gestoben~), with weak ~stiebte~, ~gestiebt~ also current. Rare and literary in modern German, surviving chiefly in ~Funken stieben~ and ~zerstieben~. Cognate with Dutch ~stuiven~ and ~stof~ (\"dust\").\n- ~zer-~: From MHG ~zer-~, from OHG ~zi-~, ~za-~, ~zir-~, from Proto-West Germanic *~ti-~, from Proto-Germanic *~te-~ (\"apart, asunder\"), from PIE *~dwís~ (\"twice, in two\"). Cognate with Old English ~tō-~ (\"apart\"), the prefix of ~tōbrecan~ (\"to break to pieces\"), and with Latin ~dis-~. ~zer-~ conveys dispersal — scattering or dissolving in every direction.\n\n~zerstieben~ paints a flying-apart into dust in every direction — sparks, spray, or a crowd bursting outward; the word is elevated and literary."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "zerstoßen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~zer-~ + ~stoßen~:\n\n- ~stoßen~: Aus Mhd. ~stōzen~, aus Ahd. ~stōzan~, aus Proto-Westgermanisch *~stautan~, aus Urgermanisch *~stautaną~, aus PIE *~stówd-e-ti~, einer o-Stufen-Intensivbildung zu *~(s)tewd-~ („schlagen, stoßen“); dieselbe Wurzel ergab Lateinisch ~tundere~ („schlagen, stampfen“). Verwandt mit dialektalem Englisch ~stot~ („abprallen“), Niederländisch ~stoten~, Altnordisch ~stauta~ und ~steyta~.\n- ~zer-~: Aus Mhd. ~zer-~, aus Ahd. ~zi-~, ~za-~, ~zir-~, aus Proto-Westgermanisch *~ti-~, aus Urgermanisch *~te-~ („auseinander, entzwei“), aus PIE *~dwís~ („zweimal, entzwei“). Verwandt mit Altenglisch ~tō-~ („auseinander“), dem Präfix von ~tōbrecan~ („zerbrechen“), und mit Lateinisch ~dis-~. ~zer-~ drückt Zerbrechen, Zersplittern oder Auseinanderfallen aus.\n\n~zerstoßen~ meint das Zerkleinern durch Stoßen oder Stampfen, etwa das Zerreiben einer Substanz zu Pulver im Mörser.",
+   "en": "An inseparable compound of ~zer-~ + ~stoßen~:\n\n- ~stoßen~: From MHG ~stōzen~, from OHG ~stōzan~, from Proto-West Germanic *~stautan~, from Proto-Germanic *~stautaną~, from PIE *~stówd-e-ti~, an o-grade intensive formation from *~(s)tewd-~ (\"to hit, push\"); the same root produced Latin ~tundere~ (\"to beat, pound\"). Cognate with dialectal English ~stot~ (\"to bounce, ricochet\"), Dutch ~stoten~, Old Norse ~stauta~ and ~steyta~.\n- ~zer-~: From MHG ~zer-~, from OHG ~zi-~, ~za-~, ~zir-~, from Proto-West Germanic *~ti-~, from Proto-Germanic *~te-~ (\"apart, asunder\"), from PIE *~dwís~ (\"twice, in two\"). Cognate with Old English ~tō-~ (\"apart\"), the prefix of ~tōbrecan~ (\"to break to pieces\"), and with Latin ~dis-~. ~zer-~ conveys breaking apart, shattering, or falling to pieces.\n\n~zerstoßen~ means breaking something up by pounding or stamping — grinding a substance to powder in a mortar, for instance."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Ich will sie zerstoßen wie Staub auf der Erde; wie Kot auf der Gasse will ich sie verstäuben und zerstreuen.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "I will grind them like dust on the earth; like dirt in the streets I will pulverize and scatter them.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": null
+ },
+ "zerstreiten": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~zer-~ + ~streiten~:\n\n- ~streiten~: Aus Mhd. ~strīten~, aus Ahd. ~strītan~, aus Proto-Westgermanisch *~strīdan~, aus Urgermanisch *~strīdaną~, wahrscheinlich aus vorgermanisch *~streydʰh₁-~, einer Zusammensetzung aus PIE *~strey-~ („sich widersetzen“) + *~dʰeh₁-~ („setzen, stellen“). Verwandt mit Englisch ~stride~, Niederländisch ~strijden~ („kämpfen, ringen“), Niederdeutsch ~striden~.\n- ~zer-~: Aus Mhd. ~zer-~, aus Ahd. ~zi-~, ~za-~, ~zir-~, aus Proto-Westgermanisch *~ti-~, aus Urgermanisch *~te-~ („auseinander, entzwei“), aus PIE *~dwís~ („zweimal, entzwei“). Verwandt mit Altenglisch ~tō-~ („auseinander“), dem Präfix von ~tōbrecan~ („zerbrechen“), und mit Lateinisch ~dis-~. ~zer-~ drückt Zerbrechen, Zersplittern oder Auseinanderfallen aus.\n\nReflexiv gebraucht — ~sich zerstreiten~ — bezeichnet das Kompositum das Auseinanderbrechen einer Beziehung im Streit, bis die Beteiligten einander entzweit sind.",
+   "en": "An inseparable compound of ~zer-~ + ~streiten~:\n\n- ~streiten~: From MHG ~strīten~, from OHG ~strītan~, from Proto-West Germanic *~strīdan~, from Proto-Germanic *~strīdaną~, probably from Pre-Germanic *~streydʰh₁-~, a compound of PIE *~strey-~ (\"to resist\") + *~dʰeh₁-~ (\"to put, place\"). Cognate with English ~stride~, Dutch ~strijden~ (\"to fight, struggle\"), Low German ~striden~.\n- ~zer-~: From MHG ~zer-~, from OHG ~zi-~, ~za-~, ~zir-~, from Proto-West Germanic *~ti-~, from Proto-Germanic *~te-~ (\"apart, asunder\"), from PIE *~dwís~ (\"twice, in two\"). Cognate with Old English ~tō-~ (\"apart\"), the prefix of ~tōbrecan~ (\"to break to pieces\"), and with Latin ~dis-~. ~zer-~ conveys breaking apart, shattering, or falling to pieces.\n\nUsed reflexively — ~sich zerstreiten~ — the compound denotes a relationship breaking apart in quarrel until the parties have become estranged."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Deswegen gehört zur Wahrheit in diesem Haus auch – in einer Woche, in der man sich hier vielleicht so sehr zerstritten hat, wie lange nicht mehr in diesem Hohen Haus –: Es gibt eben auch diesen Kompromiss zwischen den vier großen Parteien, der genau das möglich macht.",
+    "source": "Bundestag — Plenarprotokoll 20/210"
+   },
+   "en": {
+    "sentence": "That is why the truth in this House also includes — in a week in which people here have perhaps fallen out with one another more than in a long time in this High House —: there is also this compromise between the four large parties that makes exactly that possible.",
+    "source": "Bundestag — Plenarprotokoll 20/210"
+   }
+  },
+  "notes": "Sense picked as 0 (a bond falling apart); none of the physical exemplars maps to this interpersonal sense."
+ },
+ "zerteilen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~zer-~ + ~teilen~:\n\n- ~teilen~: Aus Mhd. ~teilen~ und Ahd. ~teilen~, aus Proto-Westgermanisch *~dailijan~ („teilen, zerteilen, austeilen“), aus Urgermanisch *~dailijaną~, einem Denominativum zu *~dailiz~ („Teil, Anteil“), aus PIE *~dʰ(h₁)-oy-lo-~, versuchsweise von *~dʰeh₁-~ („setzen, legen“), wobei die genaue PIE-Ableitung unsicher ist. Verwandt mit Englisch ~deal~, Niederländisch ~delen~, Dänisch ~dele~.\n- ~zer-~: Aus Mhd. ~zer-~, aus Ahd. ~zi-~, ~za-~, ~zir-~, aus Proto-Westgermanisch *~ti-~, aus Urgermanisch *~te-~ („auseinander, entzwei“), aus PIE *~dwís~ („zweimal, entzwei“). Verwandt mit Altenglisch ~tō-~ („auseinander“), dem Präfix von ~tōbrecan~ („zerbrechen“), und mit Lateinisch ~dis-~. ~zer-~ drückt Zerbrechen, Zersplittern oder Auseinanderfallen aus.\n\n~zerteilen~ meint das Auftrennen eines Ganzen in mehrere Teile, transitiv wie reflexiv — etwa wenn sich eine Wolke oder eine Menschenmenge zerteilt.",
+   "en": "An inseparable compound of ~zer-~ + ~teilen~:\n\n- ~teilen~: From MHG ~teilen~ and OHG ~teilen~, from Proto-West Germanic *~dailijan~ (\"to divide, part, deal\"), from Proto-Germanic *~dailijaną~, a denominative of *~dailiz~ (\"part, share\"), from PIE *~dʰ(h₁)-oy-lo-~, tentatively from *~dʰeh₁-~ (\"to put, set, place\"), though the precise PIE derivation is uncertain. Cognate with English ~deal~, Dutch ~delen~, Danish ~dele~.\n- ~zer-~: From MHG ~zer-~, from OHG ~zi-~, ~za-~, ~zir-~, from Proto-West Germanic *~ti-~, from Proto-Germanic *~te-~ (\"apart, asunder\"), from PIE *~dwís~ (\"twice, in two\"). Cognate with Old English ~tō-~ (\"apart\"), the prefix of ~tōbrecan~ (\"to break to pieces\"), and with Latin ~dis-~. ~zer-~ conveys breaking apart, shattering, or falling to pieces.\n\n~zerteilen~ means splitting a whole into several parts, transitive or reflexive — as when a cloud or a crowd divides."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Einer hieß Peleg, darum daß zu seiner Zeit die Welt zerteilt ward; des Bruder hieß Joktan.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "One was named Peleg, because in his time the world was divided; his brother was named Joktan.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": null
+ },
+ "zertreiben": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~zer-~ + ~treiben~:\n\n- ~treiben~: Aus Mhd. ~trīben~, aus Ahd. ~trīban~, aus Proto-Westgermanisch *~drīban~, aus Urgermanisch *~drībaną~. Ein starkes Verb der Klasse I (~treiben~, ~trieb~, ~getrieben~), dessen Ablautmuster die urgermanischen Vokalstufen *ei / *ai / *i direkt spiegelt. Verwandt mit Englisch ~drive~, getrennt nur durch die hochdeutsche Lautverschiebung, sowie Niederländisch ~drijven~, Dänisch ~drive~.\n- ~zer-~: Aus Mhd. ~zer-~, aus Ahd. ~zi-~, ~za-~, ~zir-~, aus Proto-Westgermanisch *~ti-~, aus Urgermanisch *~te-~ („auseinander, entzwei“), aus PIE *~dwís~ („zweimal, entzwei“). Verwandt mit Altenglisch ~tō-~ („auseinander“), dem Präfix von ~tōbrecan~ („zerbrechen“), und mit Lateinisch ~dis-~. ~zer-~ drückt Zerstreuung aus — ein Auseinandergehen oder Auflösen in alle Richtungen.\n\n~zertreiben~ meint das Auseinandertreiben, das Verjagen einer Menge oder Herde in alle Richtungen.",
+   "en": "An inseparable compound of ~zer-~ + ~treiben~:\n\n- ~treiben~: From MHG ~trīben~, from OHG ~trīban~, from Proto-West Germanic *~drīban~, from Proto-Germanic *~drībaną~. A class I strong verb (~treiben~, ~trieb~, ~getrieben~) whose ablaut pattern directly reflects the Proto-Germanic vowel grades *ei / *ai / *i. Cognate with English ~drive~, separated only by the High German consonant shift, as well as Dutch ~drijven~, Danish ~drive~.\n- ~zer-~: From MHG ~zer-~, from OHG ~zi-~, ~za-~, ~zir-~, from Proto-West Germanic *~ti-~, from Proto-Germanic *~te-~ (\"apart, asunder\"), from PIE *~dwís~ (\"twice, in two\"). Cognate with Old English ~tō-~ (\"apart\"), the prefix of ~tōbrecan~ (\"to break to pieces\"), and with Latin ~dis-~. ~zer-~ conveys dispersal — scattering or dissolving in every direction.\n\n~zertreiben~ means driving apart — scattering and chasing a crowd or herd off in every direction."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "zertrennen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~zer-~ + ~trennen~:\n\n- ~trennen~: Aus Mhd. ~trennen~, aus Ahd. ~trennen~, aus Proto-Westgermanisch *~trannijan~, aus Urgermanisch *~trannijaną~. Die tiefere Etymologie ist unsicher: die urgermanische Wurzel lässt sich nicht gesichert an eine PIE-Wurzel anschließen. Verwandt mit Niederdeutsch ~trennen~ und Niederländisch ~tornen~, das sich auf „Nähte auftrennen“ verengt hat.\n- ~zer-~: Aus Mhd. ~zer-~, aus Ahd. ~zi-~, ~za-~, ~zir-~, aus Proto-Westgermanisch *~ti-~, aus Urgermanisch *~te-~ („auseinander, entzwei“), aus PIE *~dwís~ („zweimal, entzwei“). Verwandt mit Altenglisch ~tō-~ („auseinander“), dem Präfix von ~tōbrecan~ („zerbrechen“), und mit Lateinisch ~dis-~. ~zer-~ drückt Zerbrechen, Zersplittern oder Auseinanderfallen aus.\n\n~zertrennen~ meint das gewaltsame Auftrennen einer Verbindung — vom Lösen einer Naht bis zum Zersprengen eines Verbunds.",
+   "en": "An inseparable compound of ~zer-~ + ~trennen~:\n\n- ~trennen~: From MHG ~trennen~, from OHG ~trennen~, from Proto-West Germanic *~trannijan~, from Proto-Germanic *~trannijaną~. The deeper etymology is uncertain: the Proto-Germanic root is not securely connected to any PIE root. Cognate with Low German ~trennen~ and Dutch ~tornen~, which has narrowed to \"to unpick stitches.\"\n- ~zer-~: From MHG ~zer-~, from OHG ~zi-~, ~za-~, ~zir-~, from Proto-West Germanic *~ti-~, from Proto-Germanic *~te-~ (\"apart, asunder\"), from PIE *~dwís~ (\"twice, in two\"). Cognate with Old English ~tō-~ (\"apart\"), the prefix of ~tōbrecan~ (\"to break to pieces\"), and with Latin ~dis-~. ~zer-~ conveys breaking apart, shattering, or falling to pieces.\n\n~zertrennen~ means forcibly parting a joined thing — from undoing a seam to breaking up an alliance."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Und David sprach: Gott hat meine Feinde durch meine Hand zertrennt, wie sich das Wasser trennt.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "And David said: God has broken apart my enemies by my hand, as water divides.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": null
+ },
+ "zertreten": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~zer-~ + ~treten~:\n\n- ~treten~: Aus Mhd. ~trëten~, aus Ahd. ~trëtan~, aus Proto-Westgermanisch *~tredan~, aus Urgermanisch *~trudaną~, aus einem möglichen vorgermanischen *~dret-~, vielleicht einer Erweiterung von PIE *~dr-~ („laufen“). Ein starkes Verb der Klasse V (~treten~, ~trat~, ~getreten~), wahrscheinlich zu einem Wurzelaorist mit alternierendem Vokalismus *~tred-~/*~trud-~. Verwandt mit Englisch ~tread~, Niederländisch ~treden~, Altnordisch ~troða~.\n- ~zer-~: Aus Mhd. ~zer-~, aus Ahd. ~zi-~, ~za-~, ~zir-~, aus Proto-Westgermanisch *~ti-~, aus Urgermanisch *~te-~ („auseinander, entzwei“), aus PIE *~dwís~ („zweimal, entzwei“). Verwandt mit Altenglisch ~tō-~ („auseinander“), dem Präfix von ~tōbrecan~ („zerbrechen“), und mit Lateinisch ~dis-~. ~zer-~ drückt vollständige Zerstörung oder Vernichtung aus.\n\n~zertreten~ meint das Zermalmen unter dem Fuß, das Vernichten durch Treten — wörtlich wie im Bild vom zertretenen Kopf der Schlange.",
+   "en": "An inseparable compound of ~zer-~ + ~treten~:\n\n- ~treten~: From MHG ~trëten~, from OHG ~trëtan~, from Proto-West Germanic *~tredan~, from Proto-Germanic *~trudaną~, from a possible pre-Germanic *~dret-~, perhaps an extension of PIE *~dr-~ (\"to run\"). A class V strong verb (~treten~, ~trat~, ~getreten~) whose Proto-Germanic root is probably a root aorist with alternating vocalism *~tred-~/*~trud-~. Cognate with English ~tread~, Dutch ~treden~, Old Norse ~troða~.\n- ~zer-~: From MHG ~zer-~, from OHG ~zi-~, ~za-~, ~zir-~, from Proto-West Germanic *~ti-~, from Proto-Germanic *~te-~ (\"apart, asunder\"), from PIE *~dwís~ (\"twice, in two\"). Cognate with Old English ~tō-~ (\"apart\"), the prefix of ~tōbrecan~ (\"to break to pieces\"), and with Latin ~dis-~. ~zer-~ conveys complete destruction or ruin.\n\n~zertreten~ means crushing underfoot, destroying by treading — literally, as in the image of the serpent's crushed head."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Derselbe soll dir den Kopf zertreten, und du wirst ihn in die Ferse stechen.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "He shall crush your head, and you shall strike him in the heel.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": null
+ },
+ "zerwerfen": {
+  "etymology": {
+   "de": "Untrennbares Kompositum aus ~zer-~ + ~werfen~:\n\n- ~werfen~: Aus Mhd. ~wërfen~, aus Ahd. ~werfan~, aus proto-westgermanisch *~werpan~, aus urgermanisch *~werpaną~, aus PIE *~wergʷ-~ („biegen, drehen, verzerren“). Ein starkes Verb der Klasse III (~wirft~, ~warf~, ~geworfen~). Verwandt mit englisch ~warp~, niederländisch ~werpen~, altsächsisch ~werpan~, altnordisch ~verpa~, gotisch ~wairpan~.\n- ~zer-~: Aus Mhd. ~zer-~, aus Ahd. ~zi-~, ~za-~, ~zir-~, aus Proto-Westgermanisch *~ti-~, aus Urgermanisch *~te-~ („auseinander, entzwei“), aus PIE *~dwís~ („zweimal, entzwei“). Verwandt mit Altenglisch ~tō-~ („auseinander“), dem Präfix von ~tōbrecan~ („zerbrechen“), und mit Lateinisch ~dis-~. ~zer-~ drückt Zerbrechen, Zersplittern oder Auseinanderfallen aus.\n\n~zerwerfen~ meint das Zerschlagen durch Werfen; reflexiv — ~sich mit jemandem zerwerfen~ — bezeichnet es zudem das Zerwürfnis, das Auseinandergeraten im Streit.",
+   "en": "An inseparable compound of ~zer-~ + ~werfen~:\n\n- ~werfen~: From MHG ~wërfen~, from OHG ~werfan~, from Proto-West Germanic *~werpan~, from Proto-Germanic *~werpaną~, from PIE *~wergʷ-~ (\"to bend, spin, warp\"). A class III strong verb (~wirft~, ~warf~, ~geworfen~). Cognate with English ~warp~, Dutch ~werpen~, Old Saxon ~werpan~, Old Norse ~verpa~, Gothic ~wairpan~.\n- ~zer-~: From MHG ~zer-~, from OHG ~zi-~, ~za-~, ~zir-~, from Proto-West Germanic *~ti-~, from Proto-Germanic *~te-~ (\"apart, asunder\"), from PIE *~dwís~ (\"twice, in two\"). Cognate with Old English ~tō-~ (\"apart\"), the prefix of ~tōbrecan~ (\"to break to pieces\"), and with Latin ~dis-~. ~zer-~ conveys breaking apart, shattering, or falling to pieces.\n\n~zerwerfen~ means smashing something by throwing it; reflexively — ~sich mit jemandem zerwerfen~ — it also names a falling-out, a rupture in a quarrel."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Denselben mußt du rein austrinken, darnach die Scherben zerwerfen und deine Brüste zerreißen; denn ich habe es geredet, spricht der HERR HERR.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "You must drink it down entirely, then smash the shards and tear your breasts; for I have spoken it, says the Lord GOD.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": null
+ },
+ "zuarbeiten": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~zu-~ + ~arbeiten~:\n\n- ~arbeiten~: Aus Ahd. ~arbeiten~, aus Urgermanisch *~arbaidijaną~, letztlich aus PIE *~h₃órbʰos~ („Waise“); der Bedeutungsweg führt von „Waise“ über „Mühsal, Plage“ zu „Arbeit“. Verwandt mit Niederländisch ~arbeiden~, Gotisch ~arbaidjan~ und — aus derselben Wurzel — Englisch ~orphan~.\n- ~zu-~: Aus Mhd. ~zuo~, aus Ahd. ~zuo~, aus Proto-Westgermanisch *~tō~, aus Urgermanisch *~tō~ („zu“), aus PIE *~doh₁~, dem Instrumental von *~de~ („zu, hin“). Verwandt mit Englisch ~to~, Niederländisch ~toe~, Altsächsisch ~tō~. Das Präfix drückt eine Richtung auf ein Ziel hin aus.\n\nMit Dativ — ~jemandem zuarbeiten~ — meint das Verb, für einen anderen die Vorarbeit zu leisten und ihm zuzuliefern, worauf er aufbauen kann.",
+   "en": "A separable compound of ~zu-~ + ~arbeiten~:\n\n- ~arbeiten~: From OHG ~arbeiten~, from Proto-Germanic *~arbaidijaną~, ultimately from PIE *~h₃órbʰos~ (\"orphan\"); the sense runs from \"orphan\" through \"hardship, toil\" to \"work.\" Cognate with Dutch ~arbeiden~, Gothic ~arbaidjan~, and — from the same root — English ~orphan~.\n- ~zu-~: From MHG ~zuo~, from OHG ~zuo~, from Proto-West Germanic *~tō~, from Proto-Germanic *~tō~ (\"to\"), from PIE *~doh₁~, the instrumental of *~de~ (\"to, toward\"). Cognate with English ~to~, Dutch ~toe~, Old Saxon ~tō~. The prefix conveys direction toward a goal or target.\n\nWith a dative — ~jemandem zuarbeiten~ — the verb means doing the preparatory work for someone and supplying them with what they build on."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Ich finde, all diejenigen, die sich dort für Deutschland eingesetzt haben – und damit meine ich auch die Ortskräfte, die uns über viele Jahre zugearbeitet haben –, haben es verdient, dass sie sich auf das deutsche Wort verlassen können, haben es verdient, dass wir das Land auch jetzt nicht aus den Augen verlieren.",
+    "source": "Bundestag — Plenarprotokoll 20/210"
+   },
+   "en": {
+    "sentence": "I believe all those who worked there for Germany — and by that I also mean the local staff who assisted us over many years — have earned the right to rely on the German word, have earned that we do not lose sight of the country even now.",
+    "source": "Bundestag — Plenarprotokoll 20/210"
+   }
+  },
+  "notes": null
+ },
+ "zubauen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~zu-~ + ~bauen~:\n\n- ~bauen~: Aus Mhd. ~būwen~, aus Ahd. ~būan~, aus Proto-Westgermanisch *~būan~, aus Urgermanisch *~būaną~ („wohnen, sich aufhalten“), aus PIE *~bʰuH-~ („sein, werden, wachsen“) — man baut, wo man lebt. Verwandt mit Englisch ~be~, ~bower~ („Behausung“), ~neighbor~ („Nahbewohner“), Niederländisch ~bouwen~.\n- ~zu-~: Aus Mhd. ~zuo~, aus Ahd. ~zuo~, aus Proto-Westgermanisch *~tō~, aus Urgermanisch *~tō~ („zu“), aus PIE *~doh₁~, dem Instrumental von *~de~ („zu, hin“). Verwandt mit Englisch ~to~, Niederländisch ~toe~, Altsächsisch ~tō~. Das Präfix bedeutet „geschlossen“ — etwas zumachen.\n\n~zubauen~ meint das Verstellen oder Auffüllen einer freien Fläche mit Bauten, bis der offene Raum geschlossen ist.",
+   "en": "A separable compound of ~zu-~ + ~bauen~:\n\n- ~bauen~: From MHG ~būwen~, from OHG ~būan~, from Proto-West Germanic *~būan~, from Proto-Germanic *~būaną~ (\"to dwell, reside\"), from PIE *~bʰuH-~ (\"to be, become, grow\") — one builds where one lives. Cognate with English ~be~, ~bower~ (\"dwelling\"), ~neighbor~ (\"near-dweller\"), Dutch ~bouwen~.\n- ~zu-~: From MHG ~zuo~, from OHG ~zuo~, from Proto-West Germanic *~tō~, from Proto-Germanic *~tō~ (\"to\"), from PIE *~doh₁~, the instrumental of *~de~ (\"to, toward\"). Cognate with English ~to~, Dutch ~toe~, Old Saxon ~tō~. The prefix means \"shut\" — closing something.\n\n~zubauen~ means filling or blocking an open space with buildings until the open area is closed off."
+  },
+  "sentence": null,
+  "notes": "Sole candidate rejected: a fragmentary parliamentary mis-split with no clear subject, and it attests the „Zubau“ (capacity-addition) sense, not the building-cover sense glossed here."
+ },
+ "zubeißen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~zu-~ + ~beißen~:\n\n- ~beißen~: Aus Mhd. ~bīzen~, aus Ahd. ~bīzan~, aus Proto-Westgermanisch *~bītan~, aus Urgermanisch *~bītaną~, aus PIE *~bʰeyd-~ („spalten“). Ein starkes Verb der Klasse I (~beißen~, ~biss~, ~gebissen~). Verwandt mit Englisch ~bite~, Niederländisch ~bijten~, Schwedisch ~bita~; ~bitter~ ist das alte Partizipialadjektiv dieses Verbs, wörtlich „beißend“.\n- ~zu-~: Aus Mhd. ~zuo~, aus Ahd. ~zuo~, aus Proto-Westgermanisch *~tō~, aus Urgermanisch *~tō~ („zu“), aus PIE *~doh₁~, dem Instrumental von *~de~ („zu, hin“). Verwandt mit Englisch ~to~, Niederländisch ~toe~, Altsächsisch ~tō~. Das Präfix drückt eine Richtung auf ein Ziel hin aus.\n\n~zubeißen~ meint das kräftige Zuschnappen — die Zähne auf ein Ziel hin zusammenzuschlagen, sei es beim Fressen oder beim Angriff eines Tiers.",
+   "en": "A separable compound of ~zu-~ + ~beißen~:\n\n- ~beißen~: From MHG ~bīzen~, from OHG ~bīzan~, from Proto-West Germanic *~bītan~, from Proto-Germanic *~bītaną~, from PIE *~bʰeyd-~ (\"to split\"). A class I strong verb (~beißen~, ~biss~, ~gebissen~). Cognate with English ~bite~, Dutch ~bijten~, Swedish ~bita~; ~bitter~ is this verb's old participial adjective, literally \"biting.\"\n- ~zu-~: From MHG ~zuo~, from OHG ~zuo~, from Proto-West Germanic *~tō~, from Proto-Germanic *~tō~ (\"to\"), from PIE *~doh₁~, the instrumental of *~de~ (\"to, toward\"). Cognate with English ~to~, Dutch ~toe~, Old Saxon ~tō~. The prefix conveys direction toward a goal or target.\n\n~zubeißen~ means biting down hard — snapping the teeth shut on a target, whether in feeding or in an animal's attack."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "zubinden": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~zu-~ + ~binden~:\n\n- ~binden~: Aus Mhd. ~binden~, aus Ahd. ~bintan~, aus Proto-Westgermanisch *~bindan~, aus Urgermanisch *~bindaną~, aus PIE *~bʰendʰ-~ („binden, knüpfen“). Ein starkes Verb der Klasse III mit dem charakteristischen ~i~–~a~–~u~-Ablaut (~binden~, ~band~, ~gebunden~). Verwandt mit Englisch ~bind~, Niederländisch ~binden~, Gotisch ~bindan~.\n- ~zu-~: Aus Mhd. ~zuo~, aus Ahd. ~zuo~, aus Proto-Westgermanisch *~tō~, aus Urgermanisch *~tō~ („zu“), aus PIE *~doh₁~, dem Instrumental von *~de~ („zu, hin“). Verwandt mit Englisch ~to~, Niederländisch ~toe~, Altsächsisch ~tō~. Das Präfix bedeutet „geschlossen“ — etwas zumachen.\n\n~zubinden~ meint das Verschließen durch Zusammenbinden — einen Sack, einen Schnürsenkel oder einen Beutel zubinden.",
+   "en": "A separable compound of ~zu-~ + ~binden~:\n\n- ~binden~: From MHG ~binden~, from OHG ~bintan~, from Proto-West Germanic *~bindan~, from Proto-Germanic *~bindaną~, from PIE *~bʰendʰ-~ (\"to bind, tie\"). A class III strong verb with the characteristic ~i~–~a~–~u~ ablaut (~binden~, ~band~, ~gebunden~). Cognate with English ~bind~, Dutch ~binden~, Gothic ~bindan~.\n- ~zu-~: From MHG ~zuo~, from OHG ~zuo~, from Proto-West Germanic *~tō~, from Proto-Germanic *~tō~ (\"to\"), from PIE *~doh₁~, the instrumental of *~de~ (\"to, toward\"). Cognate with English ~to~, Dutch ~toe~, Old Saxon ~tō~. The prefix means \"shut\" — closing something.\n\n~zubinden~ means closing something by tying it together — a sack, a shoelace, a pouch."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Wie alles darin stak, ging doch noch viel hinein, da sprach er: »Ich will dem Ding ein Ende machen, man bindet wohl einmal einen Sack zu, wenn er auch noch nicht voll ist.",
+    "source": "Grimm — Märchen"
+   },
+   "en": {
+    "sentence": "As full as it already was, still much more went in, so he said: \"I'll put an end to this thing; one does tie a sack shut once, even if it isn't yet full.\"",
+    "source": "Grimm — Märchen"
+   }
+  },
+  "notes": null
+ },
+ "zubringen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~zu-~ + ~bringen~:\n\n- ~bringen~: Aus Mhd. ~bringen~, aus Ahd. ~bringan~, aus Proto-Westgermanisch *~bringan~, aus Urgermanisch *~bringaną~, wahrscheinlich aus vorgermanischem *~bʰrenk-~, einer Kompositwurzel aus PIE *~bʰer-~ („tragen“) + *~h₁nek-~ („bringen“). Mischkonjugation: ~brachte~ verbindet den Vokalwechsel ~i~ > ~a~ mit schwachem Dentalsuffix. Verwandt mit Englisch ~bring~, Niederländisch ~brengen~, Gotisch ~briggan~.\n- ~zu-~: Aus Mhd. ~zuo~, aus Ahd. ~zuo~, aus Proto-Westgermanisch *~tō~, aus Urgermanisch *~tō~ („zu“), aus PIE *~doh₁~, dem Instrumental von *~de~ („zu, hin“). Verwandt mit Englisch ~to~, Niederländisch ~toe~, Altsächsisch ~tō~. Das Präfix drückt eine Richtung auf ein Ziel hin aus.\n\nHeute meint ~zubringen~ meist „(Zeit) verbringen“; die ältere, hier belegte Bedeutung ist „jemandem etwas herbeibringen oder zutragen“.",
+   "en": "A separable compound of ~zu-~ + ~bringen~:\n\n- ~bringen~: From MHG ~bringen~, from OHG ~bringan~, from Proto-West Germanic *~bringan~, from Proto-Germanic *~bringaną~, probably from pre-Germanic *~bʰrenk-~, a compound root from PIE *~bʰer-~ (\"to carry\") + *~h₁nek-~ (\"to bring\"). Mixed conjugation: ~brachte~ pairs the vowel change ~i~ > ~a~ with a weak dental suffix. Cognate with English ~bring~, Dutch ~brengen~, Gothic ~briggan~.\n- ~zu-~: From MHG ~zuo~, from OHG ~zuo~, from Proto-West Germanic *~tō~, from Proto-Germanic *~tō~ (\"to\"), from PIE *~doh₁~, the instrumental of *~de~ (\"to, toward\"). Cognate with English ~to~, Dutch ~toe~, Old Saxon ~tō~. The prefix conveys direction toward a goal or target.\n\nToday ~zubringen~ mostly means \"to spend (time)\"; the older sense attested here is \"to bring or convey something to someone.\""
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Nimm doch den Segen von mir an, den ich dir zugebracht habe; denn Gott hat mir's beschert, und ich habe alles genug.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "Do accept the blessing from me that I have brought to you; for God has bestowed it on me, and I have plenty of everything.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": null
+ },
+ "zudecken": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~zu-~ + ~decken~:\n\n- ~decken~: Aus Mhd. ~decken~, aus Ahd. ~decchen~, aus Proto-Westgermanisch *~þakkjan~ („bedecken“), aus Urgermanisch *~þakjaną~, einer Kausativbildung von *~þaką~ („Dach, Stroh“), aus PIE *~(s)teg-~ („bedecken“) — etymologisch heißt das Verb „bedachen“. Verwandt mit Englisch ~thatch~, Niederländisch ~dekken~, Schwedisch ~täcka~; aus derselben Wurzel Lateinisch ~tegere~, woraus Englisch ~protect~.\n- ~zu-~: Aus Mhd. ~zuo~, aus Ahd. ~zuo~, aus Proto-Westgermanisch *~tō~, aus Urgermanisch *~tō~ („zu“), aus PIE *~doh₁~, dem Instrumental von *~de~ („zu, hin“). Verwandt mit Englisch ~to~, Niederländisch ~toe~, Altsächsisch ~tō~. Das Präfix bedeutet „geschlossen“ — etwas zumachen.\n\n~zudecken~ meint das Bedecken von oben — jemanden mit einer Decke zudecken — und übertragen das Verbergen oder Vertuschen.",
+   "en": "A separable compound of ~zu-~ + ~decken~:\n\n- ~decken~: From MHG ~decken~, from OHG ~decchen~, from Proto-West Germanic *~þakkjan~ (\"to cover\"), from Proto-Germanic *~þakjaną~, a causative formation from *~þaką~ (\"roof, thatch\"), from PIE *~(s)teg-~ (\"to cover\") — the verb is etymologically \"to roof.\" Cognate with English ~thatch~, Dutch ~dekken~, Swedish ~täcka~; from the same root Latin ~tegere~, whence English ~protect~.\n- ~zu-~: From MHG ~zuo~, from OHG ~zuo~, from Proto-West Germanic *~tō~, from Proto-Germanic *~tō~ (\"to\"), from PIE *~doh₁~, the instrumental of *~de~ (\"to, toward\"). Cognate with English ~to~, Dutch ~toe~, Old Saxon ~tō~. The prefix means \"shut\" — closing something.\n\n~zudecken~ means covering from above — tucking someone in under a blanket — and, figuratively, concealing or hushing up."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Da tat sie auf einen Milchtopf und gab ihm zu trinken und deckte ihn zu.",
+    "source": "Luther — Bibel"
+   },
+   "en": {
+    "sentence": "Then she opened a jug of milk and gave him drink and covered him up.",
+    "source": "Luther — Bibel"
+   }
+  },
+  "notes": "Rank-0 candidate is a 70-word Goethe period; rank-1 carries a leading orphaned em-dash. Took the clean rank-2 Luther line."
+ },
+ "zudrehen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~zu-~ + ~drehen~:\n\n- ~drehen~: Aus Mhd. ~dræjen~, aus Ahd. ~drāen~, aus Proto-Westgermanisch *~þrāan~, aus Urgermanisch *~þrēaną~ („drehen, wenden“), aus PIE *~terh₁-~ („reiben, durch Drehen reiben, wenden“). Verwandt mit Englisch ~throw~ — ein echter Verwandter: Altenglisch ~þrāwan~ hieß „drehen“, ein Sinn, den „to throw a pot“ bewahrt — sowie Englisch ~thread~, Niederländisch ~draaien~.\n- ~zu-~: Aus Mhd. ~zuo~, aus Ahd. ~zuo~, aus Proto-Westgermanisch *~tō~, aus Urgermanisch *~tō~ („zu“), aus PIE *~doh₁~, dem Instrumental von *~de~ („zu, hin“). Verwandt mit Englisch ~to~, Niederländisch ~toe~, Altsächsisch ~tō~. Das Präfix bedeutet „geschlossen“ — etwas zumachen.\n\n~zudrehen~ meint das Schließen durch Drehen — den Hahn ~zudrehen~; reflexiv dagegen bedeutet ~sich jemandem zudrehen~ das Hinwenden zu einer Person.",
+   "en": "A separable compound of ~zu-~ + ~drehen~:\n\n- ~drehen~: From MHG ~dræjen~, from OHG ~drāen~, from Proto-West Germanic *~þrāan~, from Proto-Germanic *~þrēaną~ (\"to twist, turn\"), from PIE *~terh₁-~ (\"to rub, rub by twisting, turn\"). Cognate with English ~throw~ — a true cognate: Old English ~þrāwan~ meant \"to twist,\" a sense that \"throw a pot\" still keeps — plus English ~thread~, Dutch ~draaien~.\n- ~zu-~: From MHG ~zuo~, from OHG ~zuo~, from Proto-West Germanic *~tō~, from Proto-Germanic *~tō~ (\"to\"), from PIE *~doh₁~, the instrumental of *~de~ (\"to, toward\"). Cognate with English ~to~, Dutch ~toe~, Old Saxon ~tō~. The prefix means \"shut\" — closing something.\n\n~zudrehen~ means closing by turning — to turn off the tap; reflexively, though, ~sich jemandem zudrehen~ means turning toward a person."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Er legte sich wieder ins Bett zurück, zog das Federbett bis zum Knie und drehte sich der Wand zu.",
+    "source": "Kafka — Der Proceß"
+   },
+   "en": {
+    "sentence": "He lay back down in bed, pulled the featherbed up to his knee, and turned toward the wall.",
+    "source": "Kafka — Der Proceß"
+   }
+  },
+  "notes": "No candidate attests the glossed „screw closed“ sense; every one shows the reflexive turn-toward sense. Took the shortest in-band genuine use (rank 0 is 31 words, out of band)."
+ },
+ "zudringen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~zu-~ + ~dringen~:\n\n- ~dringen~: Aus Mhd. ~dringen~, aus Ahd. ~dringan~, aus Proto-Westgermanisch *~þringwan~, aus Urgermanisch *~þrinhwaną~, aus PIE *~trenkʷ-~ („schlagen, hauen, pressen“). Ein starkes Verb der Klasse III (~dringen~, ~drang~, ~gedrungen~); sein Kausativ ~drängen~ zeigt den erwarteten Umlaut. Verwandt mit dialektalem Englisch ~thring~ („pressen“) und Englisch ~throng~.\n- ~zu-~: Aus Mhd. ~zuo~, aus Ahd. ~zuo~, aus Proto-Westgermanisch *~tō~, aus Urgermanisch *~tō~ („zu“), aus PIE *~doh₁~, dem Instrumental von *~de~ („zu, hin“). Verwandt mit Englisch ~to~, Niederländisch ~toe~, Altsächsisch ~tō~. Das Präfix drückt eine Richtung auf ein Ziel hin aus.\n\n~zudringen~ meint das Vordringen auf jemanden oder etwas zu; das verwandte Adjektiv ~zudringlich~ bewahrt diesen Sinn des allzu nahen Herandrängens.",
+   "en": "A separable compound of ~zu-~ + ~dringen~:\n\n- ~dringen~: From MHG ~dringen~, from OHG ~dringan~, from Proto-West Germanic *~þringwan~, from Proto-Germanic *~þrinhwaną~, from PIE *~trenkʷ-~ (\"to beat, hew, press\"). A class III strong verb (~dringen~, ~drang~, ~gedrungen~); its causative ~drängen~ carries the expected umlaut. Cognate with dialectal English ~thring~ (\"to press\") and English ~throng~.\n- ~zu-~: From MHG ~zuo~, from OHG ~zuo~, from Proto-West Germanic *~tō~, from Proto-Germanic *~tō~ (\"to\"), from PIE *~doh₁~, the instrumental of *~de~ (\"to, toward\"). Cognate with English ~to~, Dutch ~toe~, Old Saxon ~tō~. The prefix conveys direction toward a goal or target.\n\n~zudringen~ means pressing forward toward someone or something; the related adjective ~zudringlich~ (\"pushy, intrusive\") preserves this sense of crowding too close."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "zudrücken": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~zu-~ + ~drücken~:\n\n- ~drücken~: Aus Mhd. ~drücken~, aus Ahd. ~drucchen~, aus Proto-Westgermanisch *~þrukkijan~, aus Urgermanisch *~þrukkijaną~, aus PIE *~trewk-~ („auf etwas pressen und brechen“). ~drücken~ („pressen“) und ~drucken~ („drucken“) sind eine Dublette aus demselben althochdeutschen Verb. Verwandt mit Niederländisch ~drukken~, Altenglisch ~þryċċan~, Walisisch ~trychu~, Litauisch ~trū́kti~.\n- ~zu-~: Aus Mhd. ~zuo~, aus Ahd. ~zuo~, aus Proto-Westgermanisch *~tō~, aus Urgermanisch *~tō~ („zu“), aus PIE *~doh₁~, dem Instrumental von *~de~ („zu, hin“). Verwandt mit Englisch ~to~, Niederländisch ~toe~, Altsächsisch ~tō~. Das Präfix bedeutet „geschlossen“ — etwas zumachen.\n\n~zudrücken~ meint das Schließen durch Druck; die Redewendung ~ein Auge zudrücken~ heißt, nachsichtig über etwas hinwegzusehen.",
+   "en": "A separable compound of ~zu-~ + ~drücken~:\n\n- ~drücken~: From MHG ~drücken~, from OHG ~drucchen~, from Proto-West Germanic *~þrukkijan~, from Proto-Germanic *~þrukkijaną~, from PIE *~trewk-~ (\"to press on and break\"). ~drücken~ (\"to press\") and ~drucken~ (\"to print\") are a doublet from the same Old High German verb. Cognate with Dutch ~drukken~, Old English ~þryċċan~, Welsh ~trychu~, Lithuanian ~trū́kti~.\n- ~zu-~: From MHG ~zuo~, from OHG ~zuo~, from Proto-West Germanic *~tō~, from Proto-Germanic *~tō~ (\"to\"), from PIE *~doh₁~, the instrumental of *~de~ (\"to, toward\"). Cognate with English ~to~, Dutch ~toe~, Old Saxon ~tō~. The prefix means \"shut\" — closing something.\n\n~zudrücken~ means closing something by pressing; the idiom ~ein Auge zudrücken~ means to turn a blind eye."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Kein Auge drückt er mir zu, die Seele lässt er mir wach.",
+    "source": "Nietzsche — Also sprach Zarathustra"
+   },
+   "en": {
+    "sentence": "He does not close an eye for me; he keeps my soul awake.",
+    "source": "Nietzsche — Also sprach Zarathustra"
+   }
+  },
+  "notes": null
+ },
+ "zueignen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~zu-~ + ~eignen~:\n\n- ~eignen~: Aus Mhd. ~eigenen~, aus Ahd. ~eiganen~, aus Urgermanisch *~aiginōną~, einem Denominativum zu *~aiganaz~ („besessen, eigen“), dem Partizip Perfekt von *~aiganą~ („besitzen“), aus PIE *~h₂eh₂óyḱe~, aus *~h₂eyḱ-~ („Fähigkeit, Besitz“). Ursprünglich „sich zu eigen machen“. Verwandt mit Englisch ~own~, Niederländisch ~eigen~, Schwedisch ~ägna~.\n- ~zu-~: Aus Mhd. ~zuo~, aus Ahd. ~zuo~, aus Proto-Westgermanisch *~tō~, aus Urgermanisch *~tō~ („zu“), aus PIE *~doh₁~, dem Instrumental von *~de~ („zu, hin“). Verwandt mit Englisch ~to~, Niederländisch ~toe~, Altsächsisch ~tō~. Das Präfix drückt Zuteilung aus — jemandem etwas zuweisen oder gewähren.\n\n~zueignen~ meint das Sich-zu-eigen-Machen — sich etwas ~zueignen~ — und in der gehobenen Sprache das Widmen eines Werks.",
+   "en": "A separable compound of ~zu-~ + ~eignen~:\n\n- ~eignen~: From MHG ~eigenen~, from OHG ~eiganen~, from Proto-Germanic *~aiginōną~, a denominative from *~aiganaz~ (\"owned, one's own\"), the past participle of *~aiganą~ (\"to possess\"), from PIE *~h₂eh₂óyḱe~, from *~h₂eyḱ-~ (\"ability, possession\"). Originally \"to make one's own.\" Cognate with English ~own~, Dutch ~eigen~, Swedish ~ägna~.\n- ~zu-~: From MHG ~zuo~, from OHG ~zuo~, from Proto-West Germanic *~tō~, from Proto-Germanic *~tō~ (\"to\"), from PIE *~doh₁~, the instrumental of *~de~ (\"to, toward\"). Cognate with English ~to~, Dutch ~toe~, Old Saxon ~tō~. The prefix conveys allocation — assigning or granting something to a recipient.\n\n~zueignen~ means making something one's own — to appropriate it — and, in elevated usage, dedicating a work to someone."
+  },
+  "sentence": null,
+  "notes": "Sole candidate is a false split: the token „eignen“ is the adjective ~eigen~ in „seinen eignen Blick“, and the stranded „zu“ belongs to ~zuwenden~ (wandte … zu), not to zueignen."
+ }
+}

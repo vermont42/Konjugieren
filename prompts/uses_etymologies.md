@@ -586,6 +586,23 @@ to `verbdata/no-corpus-example.txt` with the reason (no candidates at all, versu
 were all nominal). Josh will expand the corpus and re-mine those; authored sentences are a later,
 separate decision, and if they happen they must be flagged in Credits as the existing eleven are.
 
+**The expansion has a shape, not just a size, and the shape tells you what to add.** Measured over
+the full 104-shard run (2026-07-23): of the imported verbs that got no sentence, the large majority
+had *zero candidates* — the corpus never attests them at all — and only a small remainder had
+candidates that were all non-verbal and got honestly rejected. So the miss is a **register gap, not
+a thin corpus**: the mined texts are literary and historical (Nietzsche, Kafka, Luther, the Weimar
+constitution), and the un-attested verbs are overwhelmingly the register those authors never wrote
+in — administrative, commercial, and technical vocabulary (*abbestellen* "cancel a subscription",
+*abbuchen* "debit an account", *abrechnen* "settle accounts", *zwischenspeichern* "cache/buffer",
+which post-dates the whole corpus). This is confirmable from the zero-candidate list
+`build_corpus_index.py` prints: it opens with a wall of `ab-`/`an-`/`aus-` compounds of exactly this
+kind. So the re-mine is not blind fishing — add **contemporary German of the missing registers**
+(news and non-fiction prose, administrative/commercial text, technical writing) and a large fraction
+of the zero-candidate list should resolve on the next pass. Adding *more* of the same literary
+sources will not: those verbs are absent by register, not by volume. The all-rejected remainder is a
+different, permanent floor — verbs the corpus mentions only as nouns, or drained by a homograph —
+and it stays a subagent rejection, not a target for expansion.
+
 **Extend `.claude/skills/integrate`; do not write a parallel merge.** That skill already exists and
 already encodes the rules this phase needs — diff working against bundled, add only missing verbs,
 never overwrite an existing entry, keep keys sorted per language, validate that `de` and `en` agree

@@ -28,7 +28,11 @@ count is misleading on the object-valued `ExampleSentences.json` (the Rules expl
 - **Mode A working file:** `ExampleSentences.json` (project root) — pipeline output, gitignored.
 - **Mode B working files:** `corpus/working/shards/mine_<NNN>.out.json` — one per shard, tracked.
   `corpus/` is otherwise gitignored, but the `.out.json` outputs are un-ignored because they carry
-  authored scholarship, not a regenerable build product.
+  authored scholarship, not a regenerable build product. They are nonetheless **ephemeral work
+  product, committed only as pre-integration backup insurance** — once a shard's content is merged
+  into the bundle below, the bundle is the source of truth and the shard is inert. Do **not** keep
+  the shards in parity with the bundle: a later fix to the shipped etymologies (e.g. a formatting
+  sweep) belongs in `Etymologies.json`, and re-sweeping the frozen shards to match is wasted effort.
 - **Bundled sentences:** `Konjugieren/Models/ExampleSentences.json` — ships with the app, committed.
   Loaded by `ExampleSentence.swift`. Keyed `{de: {verb: {sentence, source}}, en: {...}}`.
 - **Bundled etymologies:** `Konjugieren/Models/Etymologies.json` — ships with the app, committed.

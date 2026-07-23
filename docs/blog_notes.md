@@ -3919,3 +3919,46 @@ wrap-up is the same call the 071–084 window made, and the same one the brief k
 **Standing tally: 103 of 104 shards, 1 remaining (103).** No data decisions are open; the sense-work
 and indexer items above are recorded here and in the session, and none is urgent because none is
 silently breaking output. Next is shard 103 via the standard resume prompt.
+
+## Mining shard 103: the alphabetical tail, and Phase 4 closes at 104/104 (2026-07-23)
+
+The 085–102 window stopped one shard short of the end — not because 103 was hard but because
+per-shard main-loop cost had climbed to ~7%/shard as the running report history accumulated in
+context, and mining 103 would have pushed the mandatory wrap-up past the 5-point-headroom line.
+That was the right call, and it made this session trivial: a fresh five-hour window (0% used at
+start), one relaunch, one wave.
+
+Shard 103 is the very end of the corpus alphabetically — seven separable compounds, `zuwerfen`
+through `zwischenspeichern`. Three yielded sentences, four were etymology-only nulls (all four had
+no candidate at all, the honest ~36%-of-targets floor, not a refusal). `zuwerfen` is a small
+illustration of why the length tiebreak earns its keep: its rank-0 and rank-1 candidates both
+attest the *wrong* sense (`die Tür zugeworfen`, "slam shut"), rank 2 attests the glossed throw-to
+sense but runs 37 words, and the in-band rank-3 Nietzsche quote — "euch werfe ich den goldenen Ball
+zu", 23 words — is the one that shipped. `zuziehen` was the one hedge: the reading's etymology
+tracks the "move here" relocation sense, but no candidate attests it (the verb is badly polysemous
+— bring-in, consult, incur), so the subagent fell back to the earliest genuine use and noted the
+mismatch, exactly as the fallback rule prescribes. It also correctly caught a false split where a
+stranded `zu` came from `zuvor`, not the particle.
+
+**One friction note, recorded not acted on.** On this tail shard, three of six sense-exemplar slots
+(`zuwiderhandeln`, `zwischenlagern`, `zwischenspeichern`) had the *target verb itself* as their only
+exemplar — the picking-aid degenerates for rare verbs with no cohort in `sense-exemplars.json`. It
+cost nothing here because the sense was confirmable from the `translation` alone, so it is a note
+for whoever tunes exemplar coverage, not a pipeline change. Consistent with the whole 085–102
+window's finding that the remaining friction is all in sense-selection aids, none of it silently
+breaking output.
+
+**The at-odds check was satisfied by construction, not by a classification pass.** The pipeline note
+says the count "should not move; if it does, something unintended happened," and the reason it should
+not move is that neither half touches `Verbs.xml`. Mining shard 103 writes only
+`corpus/working/shards/mine_103.out.json` (gitignored). Rather than pay a multi-minute
+classify-and-verify run to confirm a file I could see was byte-identical in git, I checked
+`git status Konjugieren/Models/Verbs.xml` directly — clean, before and after. The full oracle is for
+steps that edit `Verbs.xml`; a git-integrity check is the same invariant for a step that provably
+cannot.
+
+**Phase 4 is complete: 104/104 shards, all passing the validator** including the verbatim quote
+check. `build_mining_shards.py` now prints "Phase 4 is complete; proceed to Phase 5." Phase 5 —
+aggregating `mined_*.json` into `Etymologies.json` and `ExampleSentences.json` by *widening*
+`.claude/skills/integrate` rather than writing a parallel merge — is deliberately left untouched
+here, per the resume brief. Next session starts there.

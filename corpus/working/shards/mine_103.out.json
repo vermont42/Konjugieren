@@ -1,0 +1,85 @@
+{
+ "zuwerfen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~zu-~ + ~werfen~:\n\n- ~werfen~: Aus Mhd. ~wërfen~, aus Ahd. ~werfan~, aus proto-westgermanisch *~werpan~, aus urgermanisch *~werpaną~, aus PIE *~wergʷ-~ („biegen, drehen, verzerren“). Ein starkes Verb der Klasse III (~wirft~, ~warf~, ~geworfen~). Verwandt mit englisch ~warp~, niederländisch ~werpen~, altsächsisch ~werpan~, altnordisch ~verpa~, gotisch ~wairpan~.\n- ~zu-~: Aus Mhd. ~zuo~, aus Ahd. ~zuo~, aus Proto-Westgermanisch *~tō~, aus Urgermanisch *~tō~ („zu“), aus PIE *~doh₁~, dem Instrumental von *~de~ („zu, hin“). Verwandt mit Englisch ~to~, Niederländisch ~toe~, Altsächsisch ~tō~. Das Präfix drückt eine Richtung auf ein Ziel hin aus.\n\nMit persönlichem Dativ bedeutet ~zuwerfen~, jemandem etwas hinzuwerfen (~jemandem den Ball zuwerfen~); bei einem unbelebten Objekt wie einer Tür verschiebt sich die Bedeutung zu „heftig schließen“, wo ~zu-~ dann das „geschlossen“ trägt.",
+   "en": "A separable compound of ~zu-~ + ~werfen~:\n\n- ~werfen~: From MHG ~wërfen~, from OHG ~werfan~, from Proto-West Germanic *~werpan~, from Proto-Germanic *~werpaną~, from PIE *~wergʷ-~ (\"to bend, spin, warp\"). A class III strong verb (~wirft~, ~warf~, ~geworfen~). Cognate with English ~warp~, Dutch ~werpen~, Old Saxon ~werpan~, Old Norse ~verpa~, Gothic ~wairpan~.\n- ~zu-~: From MHG ~zuo~, from OHG ~zuo~, from Proto-West Germanic *~tō~, from Proto-Germanic *~tō~ (\"to\"), from PIE *~doh₁~, the instrumental of *~de~ (\"to, toward\"). Cognate with English ~to~, Dutch ~toe~, Old Saxon ~tō~. The prefix conveys direction toward a goal or target.\n\nWith a personal dative ~zuwerfen~ means to throw something to someone (~jemandem den Ball zuwerfen~); with an inanimate object such as a door it shifts to \"to slam shut,\" where ~zu-~ instead carries its \"shut\" sense."
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Wahrlich, ein Ziel hatte Zarathustra, er warf seinen Ball: nun seid ihr Freunde meines Zieles Erbe, euch werfe ich den goldenen Ball zu.",
+    "source": "Nietzsche — Also sprach Zarathustra"
+   },
+   "en": {
+    "sentence": "Truly, Zarathustra had a goal; he threw his ball. Now you, my friends, are the heirs of my goal: to you I throw the golden ball.",
+    "source": "Nietzsche — Also sprach Zarathustra"
+   }
+  },
+  "notes": "Ranks 0-1 attest the 'slam shut' sense of zu-; shipped rank 3 (Nietzsche), the earliest in-band candidate attesting the glossed throw-to sense. Rank 2 also matches but runs 37 words."
+ },
+ "zuwiderhandeln": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~zuwider-~ + ~handeln~:\n\n- ~handeln~: Aus Mhd. ~handeln~, aus Ahd. ~hantalōn~, aus Proto-Westgermanisch *~handulōn~, einem Denominativverb von Urgermanisch *~handuz~ („Hand“) mit dem Frequentativsuffix *~-lōną~; die Bedeutung erweiterte sich von „hantieren“ zu „agieren, Handel treiben“. Verwandt mit Englisch ~handle~, Niederländisch ~handelen~, Dänisch ~handle~.\n- ~zuwider-~: Eine erstarrte Fügung: ~zu~ + ~wider~ („gegen“), wörtlich „entgegen“, mit dem Dativ. Sie lebt fort als Adjektiv („widerwärtig“) und als trennbare Partikel in den rechtssprachlichen Verben ~zuwiderhandeln~ und ~zuwiderlaufen~. Zum Bestandteil ~wider~ — Urgermanisch *~wiþrą~, verwandt mit Englisch ~with~ in dessen alter Bedeutung „gegen“ — und zu seiner Verwechselbarkeit mit ~wieder~ („erneut“) siehe den Eintrag ~wider~. ~zuwider-~ kennzeichnet Zuwiderhandlung: gegen eine Regel, Anordnung oder ein Gesetz handeln.\n\nDas Verb regiert den Dativ dessen, wogegen verstoßen wird: man handelt ~einem Verbot~ oder ~einer Auflage zuwider~, wobei sich die Partikel ~zuwider~ ans Satzende stellt.",
+   "en": "A separable compound of ~zuwider-~ + ~handeln~:\n\n- ~handeln~: From MHG ~handeln~, from OHG ~hantalōn~, from Proto-West Germanic *~handulōn~, a denominative verb from Proto-Germanic *~handuz~ (\"hand\") with the frequentative suffix *~-lōną~; the sense broadened from \"to handle\" to \"to act, deal, trade.\" Cognate with English ~handle~, Dutch ~handelen~, Danish ~handle~.\n- ~zuwider-~: A frozen phrase: ~zu~ + ~wider~ (\"against\"), literally \"contrary to\", governing the dative. It lives on as an adjective (\"repugnant\") and as a separable particle in the legal-register verbs ~zuwiderhandeln~ (\"to contravene\") and ~zuwiderlaufen~ (\"to run counter to\"). For the ~wider~ half — Proto-Germanic *~wiþrą~, cognate with English ~with~ in its old sense \"against\" — and for its confusability with ~wieder~ (\"again\"), see the ~wider~ entry. ~zuwider-~ marks contravention: acting against a rule, order, or law.\n\nThe verb governs the dative of whatever is being violated: one acts ~einem Verbot zuwider~ (\"contrary to a prohibition\"), with the particle ~zuwider~ stranded at the clause end."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "zuwinken": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~zu-~ + ~winken~:\n\n- ~winken~: Aus Mhd. ~winken~, aus Ahd. ~winken~ („nicken, blinzeln“), aus proto-westgermanisch *~winkōn~ (neben *~winkijan~), aus PIE *~weng-~ („biegen, krümmen“) — dieselbe Wurzel wie ~Winkel~. Ein schwaches Verb, und schon im Althochdeutschen schwach; das starke Partizip ~gewunken~ ist ein Nachzügler nach dem Muster von ~sinken~/~gesunken~, kein Überbleibsel. Verwandt mit englisch ~wink~ und ~winch~, niederländisch ~wenken~.\n- ~zu-~: Aus Mhd. ~zuo~, aus Ahd. ~zuo~, aus Proto-Westgermanisch *~tō~, aus Urgermanisch *~tō~ („zu“), aus PIE *~doh₁~, dem Instrumental von *~de~ („zu, hin“). Verwandt mit Englisch ~to~, Niederländisch ~toe~, Altsächsisch ~tō~. Das Präfix drückt eine Richtung auf ein Ziel hin aus.\n\nMit dem Dativ des Gegrüßten bezeichnet ~zuwinken~ die freundliche Geste des Winkens hin zu jemandem — im Gegensatz zu ~abwinken~, „ablehnend abwehren“.",
+   "en": "A separable compound of ~zu-~ + ~winken~:\n\n- ~winken~: From MHG ~winken~, from OHG ~winken~ (\"to nod, to blink\"), from Proto-West Germanic *~winkōn~ (beside *~winkijan~), from PIE *~weng-~ (\"to bend, to curve\") — the same root as ~Winkel~ (\"angle, corner\"). A weak verb, and already weak in OHG; the strong participle ~gewunken~ is a latecomer built on the model of ~sinken~/~gesunken~, not a survival. Cognate with English ~wink~ and ~winch~, Dutch ~wenken~.\n- ~zu-~: From MHG ~zuo~, from OHG ~zuo~, from Proto-West Germanic *~tō~, from Proto-Germanic *~tō~ (\"to\"), from PIE *~doh₁~, the instrumental of *~de~ (\"to, toward\"). Cognate with English ~to~, Dutch ~toe~, Old Saxon ~tō~. The prefix conveys direction toward a goal or target.\n\nWith the dative of the person greeted, ~zuwinken~ names the friendly gesture of waving toward someone — the opposite of ~abwinken~, \"to wave off in refusal.\""
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Wahrlich, ich selber bin der erschreckte Vogel, der euch einmal nackt sah und ohne Farbe; und ich flog davon, als das Gerippe mir Liebe zuwinkte.",
+    "source": "Nietzsche — Also sprach Zarathustra"
+   },
+   "en": {
+    "sentence": "Truly, I myself am the frightened bird that once saw you naked and without color; and I flew away when the skeleton beckoned love to me.",
+    "source": "Nietzsche — Also sprach Zarathustra"
+   }
+  },
+  "notes": null
+ },
+ "zuzahlen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~zu-~ + ~zahlen~:\n\n- ~zahlen~: Aus Mhd. ~zaln~, ~zalen~, aus Ahd. ~zalōn~, aus proto-westgermanisch *~talōn~, aus urgermanisch *~talōną~ („erzählen; zählen, rechnen“). ~Zahlen~ und ~zählen~ sind Geschwister derselben Wurzel: Bezahlung erfordert das Abzählen des richtigen Betrags. Verwandt mit englisch ~tale~ und ~tell~, niederländisch ~betalen~, schwedisch ~tala~.\n- ~zu-~: Aus Mhd. ~zuo~, aus Ahd. ~zuo~, aus Proto-Westgermanisch *~tō~, aus Urgermanisch *~tō~ („zu“), aus PIE *~doh₁~, dem Instrumental von *~de~ („zu, hin“). Verwandt mit Englisch ~to~, Niederländisch ~toe~, Altsächsisch ~tō~. Das Präfix drückt Hinzufügung oder Zunahme aus — etwas zu Vorhandenem hinzutun.\n\n~zuzahlen~ meint, einen Betrag zusätzlich zu einem schon geleisteten zu entrichten; das zugehörige Substantiv ~die Zuzahlung~ ist im Gesundheitswesen der Eigenanteil des Patienten.",
+   "en": "A separable compound of ~zu-~ + ~zahlen~:\n\n- ~zahlen~: From MHG ~zaln~, ~zalen~, from OHG ~zalōn~, from Proto-West Germanic *~talōn~, from Proto-Germanic *~talōną~ (\"to tell, recount; to count, reckon\"). ~Zahlen~ and ~zählen~ are siblings from the same root: payment requires counting out the correct amount. Cognate with English ~tale~ and ~tell~, Dutch ~betalen~, Swedish ~tala~.\n- ~zu-~: From MHG ~zuo~, from OHG ~zuo~, from Proto-West Germanic *~tō~, from Proto-Germanic *~tō~ (\"to\"), from PIE *~doh₁~, the instrumental of *~de~ (\"to, toward\"). Cognate with English ~to~, Dutch ~toe~, Old Saxon ~tō~. The prefix conveys addition or increase — adding to what is already there.\n\n~zuzahlen~ means to pay a further amount on top of one already paid; the related noun ~die Zuzahlung~ is, in health care, the patient's own copayment."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "zuziehen": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~zu-~ + ~ziehen~:\n\n- ~ziehen~: Aus Mhd. ~ziehen~, aus Ahd. ~ziohan~, aus proto-westgermanisch *~teuhan~, aus urgermanisch *~teuhaną~, aus PIE *~dewk-~ („ziehen, führen“). Ein starkes Verb der Klasse II. Verwandt mit gotisch ~tiuhan~, altenglisch ~tēon~, altnordisch ~toga~, westfriesisch ~tsjen~ und englisch ~tie~.\n- ~zu-~: Aus Mhd. ~zuo~, aus Ahd. ~zuo~, aus Proto-Westgermanisch *~tō~, aus Urgermanisch *~tō~ („zu“), aus PIE *~doh₁~, dem Instrumental von *~de~ („zu, hin“). Verwandt mit Englisch ~to~, Niederländisch ~toe~, Altsächsisch ~tō~. Das Präfix drückt eine Richtung auf ein Ziel hin aus.\n\nIn dieser Lesart bezeichnet ~zuziehen~ (stark: ~zieht~, ~zog~, ~gezogen~) den Zuzug an einen Ort, gebildet mit ~sein~; dasselbe Verb heißt anderswo „einen Vorhang zuziehen“ oder „einen Fachmann zuziehen“.",
+   "en": "A separable compound of ~zu-~ + ~ziehen~:\n\n- ~ziehen~: From MHG ~ziehen~, from OHG ~ziohan~, from Proto-West Germanic *~teuhan~, from Proto-Germanic *~teuhaną~, from PIE *~dewk-~ (\"to pull, lead\"). A class II strong verb. Cognate with Gothic ~tiuhan~, Old English ~tēon~, Old Norse ~toga~, West Frisian ~tsjen~, and English ~tie~.\n- ~zu-~: From MHG ~zuo~, from OHG ~zuo~, from Proto-West Germanic *~tō~, from Proto-Germanic *~tō~ (\"to\"), from PIE *~doh₁~, the instrumental of *~de~ (\"to, toward\"). Cognate with English ~to~, Dutch ~toe~, Old Saxon ~tō~. The prefix conveys direction toward a goal or target.\n\nIn this reading ~zuziehen~ (strong: ~zieht~, ~zog~, ~gezogen~) denotes moving to a place, built with ~sein~; the same verb elsewhere means \"to draw a curtain shut\" or \"to call in an expert.\""
+  },
+  "sentence": {
+   "de": {
+    "sentence": "Zu Beratungen über wichtige Gegenstände sollen von den Reichsministerien die zuständigen Ausschüsse des Reichsrats zugezogen werden.",
+    "source": "Weimarer Verfassung (1919)"
+   },
+   "en": {
+    "sentence": "For deliberations on important matters, the competent committees of the Reichsrat shall be brought in by the Reich ministries.",
+    "source": "Weimarer Verfassung (1919)"
+   }
+  },
+  "notes": "No candidate attests the glossed 'move here' sense; all genuine ones show other senses (bring in/consult, incur). Shipped the earliest genuine use (rank 0, 'bring in' sense). Rank 4 (Luther) is a false split — its 'zu' comes from 'zuvor', not the particle. Rank 2 is a truncated lowercase fragment."
+ },
+ "zwischenlagern": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~zwischen-~ + ~lagern~:\n\n- ~lagern~: Abgeleitet vom Substantiv ~Lager~ („Lager, Vorrat, Warenlager“), aus Mhd. ~lëger~, aus Ahd. ~lëgar~, aus Proto-Westgermanisch *~legr~, aus Urgermanisch *~legrą~. Die moderne Form mit ~-a-~ ist ostmitteldeutscher Herkunft, beeinflusst von ~Lage~. Verwandt mit Englisch ~lair~, Niederländisch ~leger~, Dänisch ~lejr~, Schwedisch ~läger~.\n- ~zwischen-~: Aus der Präposition ~zwischen~, Mhd. ~zwischen~, verkürzt aus Ahd. ~in zwiskēn~, dem Dativ Plural von ~zwiski~ („zweifach“), gebildet zum Zahlwort ~zwei~. Englisch ~between~ ist genauso gebaut, aus Altenglisch ~be tweonum~ („bei zweien“); beide Sprachen gelangten also über „unter zweien“ zu „in der Mitte“. Verwandt mit Niederländisch ~tussen~ und mit dem ~twi-~ von Englisch ~twilight~ und ~twin~. Die Bedeutung von ~zwischen-~ ist hier: vorläufig, im Zeitraum vor der eigentlichen Sache getan.\n\n~zwischenlagern~ heißt, etwas vorübergehend unterzubringen, bis es an seinen endgültigen Ort kommt; das ~Zwischenlager~ für radioaktive Abfälle ist der bekannteste Fall.",
+   "en": "A separable compound of ~zwischen-~ + ~lagern~:\n\n- ~lagern~: Derived from the noun ~Lager~ (\"camp, store, warehouse\"), from MHG ~lëger~, from OHG ~lëgar~, from Proto-West Germanic *~legr~, from Proto-Germanic *~legrą~. The modern form with ~-a-~ is of East Central German origin, influenced by ~Lage~ (\"position\"). Cognate with English ~lair~, Dutch ~leger~, Danish ~lejr~, Swedish ~läger~.\n- ~zwischen-~: From the preposition ~zwischen~, MHG ~zwischen~, a reduction of OHG ~in zwiskēn~, the dative plural of ~zwiski~ (\"twofold\"), built on the numeral ~zwei~ (\"two\"). English ~between~ is built the very same way, from Old English ~be tweonum~ (\"by twos\"), so both languages arrived at \"in the middle\" by way of \"among two.\" Cognate with Dutch ~tussen~ and with the ~twi-~ of English ~twilight~ and ~twin~. The sense of ~zwischen-~ here is: provisional, done in the interval before the real thing.\n\n~zwischenlagern~ means to store something provisionally until it reaches its final place; the ~Zwischenlager~ for radioactive waste is the best-known instance."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ },
+ "zwischenspeichern": {
+  "etymology": {
+   "de": "Trennbares Kompositum aus ~zwischen-~ + ~speichern~:\n\n- ~speichern~: Ein denominales Verb zu ~Speicher~ („Lagerhaus, Kornspeicher“), aus Mhd. ~spīcher~, Ahd. ~spīhhāri~, Proto-Westgermanisch *~spīkārī~, entlehnt aus Spätlateinisch ~spīcārium~ („Kornspeicher“), zu ~spīca~ („Ähre, Spitze“). Dasselbe lateinische Wort ergab Englisch ~spike~.\n- ~zwischen-~: Aus der Präposition ~zwischen~, Mhd. ~zwischen~, verkürzt aus Ahd. ~in zwiskēn~, dem Dativ Plural von ~zwiski~ („zweifach“), gebildet zum Zahlwort ~zwei~. Englisch ~between~ ist genauso gebaut, aus Altenglisch ~be tweonum~ („bei zweien“); beide Sprachen gelangten also über „unter zweien“ zu „in der Mitte“. Verwandt mit Niederländisch ~tussen~ und mit dem ~twi-~ von Englisch ~twilight~ und ~twin~. Die Bedeutung von ~zwischen-~ ist hier: eingeschoben, in einen laufenden Ablauf eingefügt (~zwischenlanden~, ~zwischenspeichern~).\n\n~zwischenspeichern~ gehört der Datenverarbeitung an: Daten werden für die Dauer eines Vorgangs in einem Puffer gehalten, bevor sie endgültig geschrieben oder verworfen werden.",
+   "en": "A separable compound of ~zwischen-~ + ~speichern~:\n\n- ~speichern~: A denominal verb from ~Speicher~ (\"storehouse, granary\"), from MHG ~spīcher~, OHG ~spīhhāri~, Proto-West Germanic *~spīkārī~, borrowed from Late Latin ~spīcārium~ (\"granary\"), from ~spīca~ (\"ear of grain, spike\"). The same Latin word also gives English ~spike~.\n- ~zwischen-~: From the preposition ~zwischen~, MHG ~zwischen~, a reduction of OHG ~in zwiskēn~, the dative plural of ~zwiski~ (\"twofold\"), built on the numeral ~zwei~ (\"two\"). English ~between~ is built the very same way, from Old English ~be tweonum~ (\"by twos\"), so both languages arrived at \"in the middle\" by way of \"among two.\" Cognate with Dutch ~tussen~ and with the ~twi-~ of English ~twilight~ and ~twin~. The sense of ~zwischen-~ here is: interposed, inserted into an ongoing sequence (~zwischenlanden~, ~zwischenspeichern~).\n\n~zwischenspeichern~ belongs to computing: data is held in a buffer for the duration of a process before being written out or discarded for good."
+  },
+  "sentence": null,
+  "notes": "no candidates"
+ }
+}

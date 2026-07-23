@@ -1,6 +1,7 @@
 # Etymology-and-Example-Use Pipeline
 
-**Status: designed 2026-07-20.** Phases 0 through 3 are done; phases 4 and 5 are not.
+**Status: designed 2026-07-20; Phase 4 mining completed 2026-07-23.** Phases 0 through 4 are done;
+phase 5 is not.
 
 Fill the 2,582 verbs that have neither an etymology nor an example sentence, in one pass, by
 moving the expensive work off the LLM and reusing what the corpus already knows.
@@ -389,7 +390,14 @@ Eight things shaped the result, and Phase 4 should know them.
 `verbdata/` is tracked, so unlike `corpus/` these three files are not build products: the seed
 is re-derivable but the authored scholarship is not.
 
-### Phase 4 — Mine, sharded, with capped concurrency
+### Phase 4 — Mine, sharded, with capped concurrency ✅ first pass done 2026-07-23
+
+**"First pass" is deliberate: the whole section below stays live.** Every shard of the current
+corpus is mined (`build_mining_shards.py` reports it and prints "Phase 4 is complete"), but the
+resume protocol, cost calibration, validator, and per-shard launch prompt are *reused verbatim* by
+the corpus-expansion re-mine that Phase 5 plans — the zero-candidate verbs get new candidates once
+the corpus grows, and mining them is another Phase 4 pass, not new machinery. Do not retire this
+section; it is done for *this* corpus, not done forever.
 
 One subagent per shard. Each subagent, per verb, returns **both** an etymology and an example
 sentence, and writes its own `corpus/working/mined_<NNN>.json`.

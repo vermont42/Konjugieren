@@ -47,52 +47,66 @@ visible defect: the gloss is the English meaning shown beside the verb, and a wr
 wrong word. `fernschauen` shipped as "look into the distance" when it means *watch TV*; `niederführen`
 shipped as "run someone over" when it means *lead down*.
 
-### The trap: do not filter by "the app shipped glosses[0]"
+### The "shipped glosses[0]" filter: real, and still not worth using
 
-The obvious cheap sweep is to flag every verb where kaikki listed multiple senses and the app shipped
-the first one, on the theory that the importer took entry order for frequency. **Measured against the
-review's findings, that filter is too weak to run on its own:**
+The obvious cheap sweep is to audit only verbs where kaikki listed multiple senses and the app shipped
+the first, on the theory that the importer took entry order for frequency. Measured against the
+review's findings, using `build_gloss_shards.py`'s own `match_sense`:
 
 | | |
 |---|---|
-| Reviewed verbs that were first-sense picks | 209 |
-| ... found defective | **24 (11% precision)** |
-| Gloss defects that were *not* first-sense picks | **31 of 55 (56% missed)** |
+| Reviewed verbs that were first-sense picks | 377 |
+| ... found defective | **40 (11% precision)** |
+| Gloss defects that were *not* first-sense picks | **15 of 55 (27% missed)** |
 
-Eleven percent precision would send nine clean verbs to a reviewer for every real defect, and it would
-still miss over half of them. The 31 it misses are the ones no mechanical rule can catch: raw import
-artifacts (`abschmecken` truncated mid-clause at a comma; `entmieten` shipping only the parenthetical
-usage label "of a landlord"; `durchspielen` with an unbalanced `)`; `hinwegschauen` shipping the
-cross-reference "synonym of hinwegsehen"; `kaltmachen` glossed with Jamaican-English "duppy"), and
-glosses that are simply wrong about the language regardless of what kaikki listed.
+**That is a real filter and this plan says so plainly**, because an earlier draft of this section
+overstated the case against it by measuring with strict string equality, which put the miss rate at
+56%. It is not 56%. Applied to the audit pool the filter cuts 2,432 verbs to 993 and would still find
+roughly seven of every eight defects.
 
-For reference, the pool sizes: 1,877 shipping verbs have more than one kaikki sense, 605 of those
-shipped `glosses[0]`, and 420 of *those* were never reviewed.
+Sweep everything anyway, for two reasons that are about cost and calibration rather than recall. The
+saving is 59% of a **cheap, one-time** pass over data that already ships, and the price is ~13 wrong
+glosses left in the app with nothing remaining that would ever look at them again. And 11% precision
+means nine clean verbs per real defect, which is a poor diet for a reviewer that calibrates its
+threshold on what it is shown.
 
-**So sweep all 2,475, not a filtered subset.** Use the first-sense flag as a *hint in the shard*, not
-as the selection criterion — tell the reviewer "the importer took sense 1 of N here", which is exactly
-the signal that let the sentence review call 48 of its 55 findings mechanical rather than judgment.
+**If a future run is under real window pressure, order rather than filter:** shard the first-sense
+picks first and the rest after. That banks the same 88% early and leaves a resumable tail, which is
+strictly better than dropping the tail. `build_gloss_shards.py` emits `sense_index` and `sense_match`
+on every entry, so the ordering is a sort, not a rebuild.
+
+The defects the filter misses are the ones no mechanical rule can catch: raw import artifacts
+(`abschmecken` truncated mid-clause at a comma; `entmieten` shipping only the parenthetical usage label
+"of a landlord"; `durchspielen` with an unbalanced `)`; `hinwegschauen` shipping the cross-reference
+"synonym of hinwegsehen"; `kaltmachen` glossed with Jamaican-English "duppy"), and glosses simply wrong
+about the language regardless of what kaikki listed.
 
 ### Why this is cheaper than the sentence review was
 
 A gloss review reads a word, a gloss, and a candidate list. It does not read a sentence, judge whether
 the sentence demonstrates the gloss, or write a replacement sentence. The sentence review measured
-**1.8 window points per 25-verb shard**; budget well under that per verb, and use **50-verb shards** —
-2,475 verbs is then ~50 shards. Measure wave 1 and re-plan from it, as every run in this pipeline has.
+**1.8 window points per 25-verb shard**; budget well under that per verb. The shards are already
+built: 49 shards of 50 verbs. Measure wave 1 and re-plan from it, as every run in this pipeline has.
 
 ### Steps
 
-1. **Extend the reviewer brief, or write a gloss-only sibling.** `prompts/example_review.md` now has a
-   `fix_gloss` field and documents the app's gloss house style (bare lowercase verb phrase, no leading
-   `to `, comma-separated synonyms, ~14 characters typical). A gloss-only brief should keep that
-   section verbatim and drop everything about sentences. Keep `bad_gloss` as the only finding type;
-   `wrong_sense` is meaningless without a sentence to be wrong about.
-2. **Build shards** of `{verb, gloss, candidate_glosses, sense_index}` for the 2,475 verbs not in
-   `verbdata/authored/provenance.json`, 50 per shard. Emit `candidate_glosses` always here, not only
-   when there are several — for a gloss audit, "kaikki listed exactly one sense and we shipped it" is
-   itself the finding-relevant fact.
-3. **Run waves** with `verbdata/review/run_review_wave.sh` as the model; it is generic except for the
-   paths and the eight valid finding types.
+**Both artifacts already exist — written 2026-07-25, unrun.** Steps 1 and 2 are done; start at 3.
+
+1. ~~Write the brief.~~ [`prompts/gloss_review.md`](gloss_review.md). Gloss-only, `bad_gloss` as the
+   sole finding type (`wrong_sense` is meaningless without a sentence to be wrong about), severity
+   carrying the weight, `fix_gloss` **required** because a finding without a replacement cannot be
+   applied. It keeps `example_review.md`'s house-style section, and adds a "what is NOT a finding"
+   list aimed at the specific over-flagging risk here: a gloss terser than the dictionary is the house
+   style, not a defect.
+2. ~~Build the shards.~~ `python3 verbdata/authored/build_gloss_shards.py` — **49 shards of 50 verbs,
+   2,432 verbs**, in `verbdata/gloss-review/shards/`. Not 2,475: 43 verbs carry two `<reading>`
+   elements, where "the shipped gloss" is not a single value and `apply_gloss_corrections.py` refuses
+   to write one, so they are excluded to `verbdata/gloss-review/skipped-multi-reading.txt` rather than
+   dropped in silence. Audit those by hand if the sweep's defect rate warrants it.
+3. **Run waves.** Copy `verbdata/review/run_review_wave.sh` to `verbdata/gloss-review/`, changing the
+   three paths (`prompts/gloss_review.md`, `gloss_NNN.in.json`, `gloss_NNN.out.json`) and narrowing
+   `VALID` to `{'bad_gloss'}`. Nothing else in it is specific to sentences. Read `/usage` after each
+   wave and stop past 75%, as every run in this pipeline has.
 4. **Apply** via `verbdata/authored/apply_gloss_corrections.py`, which already asserts each `old`
    gloss still matches before writing and refuses any verb carrying two `<reading>` elements rather
    than guessing which sense to rewrite. Add entries to a new corrections file rather than reusing
@@ -187,12 +201,14 @@ shard's reviewer is the opposite of its author. Note that a compound label such 
 ## Kickoff — paste one of these into a fresh session
 
 ````
-Execute item 1 of prompts/example_review_followups.md: audit the glosses of the 2,475 shipping verbs
+Execute item 1 of prompts/example_review_followups.md: audit the glosses of the 2,432 shipping verbs
 the example-sentence review never examined. Working directory: /Users/josh/Desktop/workspace/Konjugieren
 
-Sweep all 2,475 — do NOT filter to first-sense picks; the plan documents why that filter is too weak.
-Build 50-verb shards, run waves reading /usage after each, stop past 75%, and apply via
-apply_gloss_corrections.py into a NEW corrections file. Report the defect count and rate to me.
+The brief (prompts/gloss_review.md) and the shard builder (verbdata/authored/build_gloss_shards.py)
+already exist and are unrun. Rebuild the shards, copy run_review_wave.sh per step 3, then run waves
+reading /usage after each and stopping past 75%. Sweep all 49 shards - do NOT filter to first-sense
+picks; the plan says why. Apply via apply_gloss_corrections.py into a NEW corrections file. Report
+the defect count and rate to me.
 ````
 
 ````

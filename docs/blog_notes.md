@@ -4758,3 +4758,35 @@ form as stem `lebte` with particle `wiederauf`. German strands those as two toke
 wieder auf"*), and `check_forms.py` matches a split form by looking for one standalone token equal to
 the particle. Nothing linguistic is wrong; the gate needs to accept a particle satisfied by consecutive
 tokens. It is the only one of the fourteen where every party is right and the check still fails.
+
+## Prepping the gloss audit, and correcting my own case against a filter (2026-07-25)
+
+Wrote the two artifacts item 1 needs so a fresh window opens straight into review waves instead of
+setup: `prompts/gloss_review.md` (the brief) and `verbdata/authored/build_gloss_shards.py` (the shard
+builder). Neither has been run. 49 shards of 50 verbs, 2,432 of the 2,475 unreviewed verbs — the other
+43 carry two `<reading>` elements, where "the shipped gloss" is not a single value, so they go to a
+skipped file rather than being dropped in silence.
+
+**Two things I got wrong first, both caught by running the builder rather than reasoning about it.**
+
+The first version computed "which kaikki sense did the shipped gloss come from" by string equality and
+reported that **1,520 of 2,432 glosses matched no kaikki sense** — 63%, which reads as a mass import
+failure. It is nothing of the kind. The app's house style is a terse phrase (~14 characters) and
+kaikki's is a full dictionary definition: `work off` against "to work off (a debt, the items on a
+to-do list, etc); to resolve or take care of something by working" is a faithful shortening. Shipping
+that field would have told every reviewer the ordinary case was suspicious. `match_sense` now
+distinguishes exact / shortened / none, and the real split is 912 / 1,059 / 461.
+
+The second is worse, because it was in a plan doc I had already committed. I told Josh the
+first-sense filter was "too weak to run on its own" at 11% precision and **56% of defects missed** —
+but that miss rate was measured with the same strict equality. Recomputed with the generous matcher:
+**27% missed, not 56%.** The filter is real. It cuts 2,432 verbs to 993 and still finds seven of every
+eight defects. The recommendation to sweep everything survives, but the argument had to change from
+recall to cost: the saving is 59% of a cheap one-time pass over shipping data, and the price is ~13
+wrong glosses left with nothing remaining that would ever look at them. The plan now says so, and
+records the ordering trick that gets both — shard first-sense picks first, keep the tail resumable.
+
+The lesson is the one this repo keeps relearning in different costumes: a normalization decision buried
+in a helper silently becomes an empirical claim. The 56% was not a typo or a slip of reasoning; it was
+a correct measurement of the wrong thing, and it looked exactly like a correct measurement of the right
+thing until the builder printed a number too extreme to believe.

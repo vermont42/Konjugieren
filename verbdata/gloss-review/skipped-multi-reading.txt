@@ -1,0 +1,48 @@
+# Verbs excluded from the gloss audit: more than one <reading>, so 'the shipped
+# gloss' is not a single value and apply_gloss_corrections.py cannot write one.
+# Audit these by hand if the sweep's defect rate suggests it is worth it.
+# format: <verb>\t<gloss> | <gloss> ...
+
+abbrechen	break off, cancel | break off, snap (come apart)
+abziehen	deduct, withdraw | leave, depart
+antreten	line up, report for duty | take up (office), begin (a journey)
+anziehen	attract, dress | set off, start moving
+bewegen	move, shift | induce, prompt
+brechen	break (something) | break, snap (come apart)
+dringen	penetrate, force a way through | insist, press
+eingehen	enter into (an agreement) | arrive, shrink, die
+eintreten	enter, occur | kick in (something)
+einziehen	collect, retract | move in (take up residence)
+fahren	drive (a vehicle) | travel, go
+fliegen	fly (travel by air) | fly, pilot (an aircraft)
+fliehen	flee, escape | flee from, avoid
+heilen	heal, cure (someone) | heal, mend (become whole)
+hängen	hang, be suspended | hang, suspend something
+landen	land, touch down | land (an aircraft)
+passieren	happen, occur | pass through, strain
+reiten	ride (as an activity) | ride (to a destination)
+reißen	tear, rip (something) | tear, snap (come apart)
+rennen	run, race | run over (someone)
+rollen	roll (something) | roll (move by rolling)
+rücken	move (something) over | move over, shift
+scheiden	divorce, separate (a couple) | part, depart
+schießen	shoot, fire | dart, shoot (rush)
+schwimmen	swim (to a destination) | swim (as an activity)
+starten	start (something) | start off, take off
+stoßen	push, shove | come across, bump into
+stürzen	fall, plunge | hurl, topple (something)
+tanzen	dance (as an activity) | dance (to a destination)
+tauchen	dive, immerse (something) | dive, surface
+treiben	drive, propel | drift, float
+treten	kick | step, tread
+trocknen	dry (something) | dry, become dry
+umgehen	deal with, handle | circulate, make a detour
+umstellen	rearrange, switch | surround
+unterstellen	subordinate, allege | place underneath, take shelter
+verbrennen	burn (something) | burn up, be consumed
+verlaufen	run, proceed | lose one's way
+weichen	yield, give way | soak, soften
+ziehen	pull, draw | move, migrate
+zurückziehen	withdraw, pull back | retreat, move away
+übersetzen	translate, interpret | ferry across
+überstehen	survive, withstand | protrude, jut out

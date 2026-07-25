@@ -1,0 +1,130 @@
+{
+  "shard": 2,
+  "verbs": [
+    {
+      "verb": "abscheiden",
+      "gloss": "deposit, precipitate",
+      "separability": "separable"
+    },
+    {
+      "verb": "abschinden",
+      "gloss": "slave away",
+      "separability": "separable"
+    },
+    {
+      "verb": "abschmecken",
+      "gloss": "taste a dish and, if necessary",
+      "separability": "separable"
+    },
+    {
+      "verb": "abschwellen",
+      "gloss": "decongest, subside, go down",
+      "separability": "separable"
+    },
+    {
+      "verb": "abschwören",
+      "gloss": "abjure, renounce",
+      "separability": "separable"
+    },
+    {
+      "verb": "absenden",
+      "gloss": "forward, send on",
+      "separability": "separable"
+    },
+    {
+      "verb": "abstammen",
+      "gloss": "descend",
+      "separability": "separable"
+    },
+    {
+      "verb": "abstehen",
+      "gloss": "stick out",
+      "separability": "separable"
+    },
+    {
+      "verb": "abstreichen",
+      "gloss": "wipe off, scrape off",
+      "separability": "separable"
+    },
+    {
+      "verb": "abstützen",
+      "gloss": "brace, support, underpin, prop up",
+      "separability": "separable"
+    },
+    {
+      "verb": "abtauchen",
+      "gloss": "submerge, plunge, descend",
+      "separability": "separable"
+    },
+    {
+      "verb": "abtauschen",
+      "gloss": "trade a piece for another",
+      "separability": "separable"
+    },
+    {
+      "verb": "abteilen",
+      "gloss": "divide, split apart, sunder, section",
+      "separability": "separable"
+    },
+    {
+      "verb": "abtippen",
+      "gloss": "type up, transcribe",
+      "separability": "separable"
+    },
+    {
+      "verb": "abtragen",
+      "gloss": "carry off, remove, denude",
+      "separability": "separable"
+    },
+    {
+      "verb": "abtrinken",
+      "gloss": "drink down a little",
+      "separability": "separable"
+    },
+    {
+      "verb": "abtrocknen",
+      "gloss": "make dry, e.g. by wiping with a towel",
+      "separability": "separable"
+    },
+    {
+      "verb": "abtöten",
+      "gloss": "mortify",
+      "separability": "separable"
+    },
+    {
+      "verb": "abwandeln",
+      "gloss": "modify",
+      "separability": "separable"
+    },
+    {
+      "verb": "abwechseln",
+      "gloss": "alternate",
+      "separability": "separable"
+    },
+    {
+      "verb": "abwerben",
+      "gloss": "entice, poach",
+      "separability": "separable"
+    },
+    {
+      "verb": "abzahlen",
+      "gloss": "pay off",
+      "separability": "separable"
+    },
+    {
+      "verb": "abzählen",
+      "gloss": "count",
+      "separability": "separable"
+    },
+    {
+      "verb": "allemachen",
+      "gloss": "kill",
+      "separability": "separable"
+    },
+    {
+      "verb": "altmachen",
+      "gloss": "age",
+      "separability": "separable"
+    }
+  ]
+}

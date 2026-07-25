@@ -1,0 +1,99 @@
+{
+  "übergreifen": {
+    "de": "Das Feuer griff vom Schuppen sehr schnell auf das Nachbarhaus über.",
+    "en": "The fire spread from the shed to the neighboring house very quickly."
+  },
+  "überhelfen": {
+    "de": "Draußen war es eisig, deshalb half er seiner Großmutter den dicken Mantel über.",
+    "en": "It was freezing outside, so he helped his grandmother into her heavy coat.",
+    "gloss_note": "gloss says 'force on someone'; separable überhelfen standardly means to help someone put a garment on (parallel to überziehen)",
+    "note": "the verb is rare; 'jemandem in den Mantel helfen' is the everyday phrasing"
+  },
+  "überkochen": {
+    "de": "Wenn du den Deckel auf dem Topf lässt, kocht die Milch garantiert über.",
+    "en": "If you leave the lid on the pot, the milk is sure to boil over.",
+    "note": "shard marks this inseparable, but überkochen in the 'boil over' sense is separable: die Milch kocht über, ist übergekocht"
+  },
+  "überladen": {
+    "de": "Sie hatten den Anhänger so überladen, dass unterwegs eine Achse brach.",
+    "en": "They had overloaded the trailer so badly that an axle broke on the way."
+  },
+  "überreagieren": {
+    "de": "Mein Chef überreagiert jedes Mal, wenn jemand auch nur eine Minute zu spät kommt.",
+    "en": "My boss overreacts every time someone is even a minute late."
+  },
+  "überrinnen": {
+    "de": "Er füllte den Eimer bis zum Rand, und das Wasser rann langsam über.",
+    "en": "He filled the bucket to the brim, and the water slowly ran over the edge.",
+    "note": "überrinnen is rare and slightly elevated; überlaufen is the everyday word"
+  },
+  "überrollen": {
+    "de": "Fast hätte der Traktor den Igel überrollt, doch der Fahrer bremste rechtzeitig.",
+    "en": "The tractor nearly ran over the hedgehog, but the driver braked in time."
+  },
+  "überrunden": {
+    "de": "Der führende Fahrer überrundete das halbe Feld, bevor das Rennen zu Ende war.",
+    "en": "The leading driver lapped half the field before the race was over."
+  },
+  "überschallen": {
+    "de": "Der Lärm der Presslufthämmer überschallte jedes Gespräch vor dem Café.",
+    "en": "The noise of the jackhammers drowned out every conversation in front of the café.",
+    "note": "übertönen is the more usual verb for this; überschallen is comparatively rare"
+  },
+  "überschießen": {
+    "de": "Der Stürmer stand frei vor dem Tor, doch in der Hektik schoss er weit über.",
+    "en": "The striker had a clear shot at goal, but in the rush he fired way over the bar.",
+    "gloss_note": "gloss says 'shoot something over something'; in everyday use separable überschießen means to shoot over or past the target"
+  },
+  "übersenden": {
+    "de": "Die fehlenden Unterlagen übersende ich Ihnen noch heute per Einschreiben.",
+    "en": "I will send you the missing documents by registered mail today."
+  },
+  "überstellen": {
+    "de": "Der Verdächtige wurde am Abend den österreichischen Behörden überstellt.",
+    "en": "The suspect was handed over to the Austrian authorities that evening."
+  },
+  "übersteuern": {
+    "de": "In der nassen Kurve übersteuerte der Wagen und drehte sich einmal um die eigene Achse.",
+    "en": "In the wet curve the car oversteered and spun a full turn."
+  },
+  "überstürzen": {
+    "de": "Er überstürzte den Umzug und vergaß dabei die Hälfte seiner Sachen im alten Keller.",
+    "en": "He rushed the move and left half his belongings behind in the old basement."
+  },
+  "übertauchen": {
+    "de": "Mit ein paar Ersparnissen hat der Wirt den schwierigen Winter gerade noch übertaucht.",
+    "en": "With a bit of savings, the innkeeper just barely got through the difficult winter.",
+    "note": "übertauchen in this sense is Austrian usage; in Germany one would say überstehen or durchhalten"
+  },
+  "übertöten": {
+    "de": "Wer den Boden mit so viel Gift behandelt, übertötet die Schädlinge und vernichtet auch alle Nützlinge.",
+    "en": "Treating the soil with that much poison goes far beyond killing the pests and wipes out the beneficial insects too.",
+    "note": "übertöten is very rare and I am not fully certain of the intended sense; it is also encountered for a strong taste or smell overpowering a subtler one"
+  },
+  "überwachsen": {
+    "de": "Efeu hat die alte Gartenmauer inzwischen fast vollständig überwachsen.",
+    "en": "Ivy has by now almost completely overgrown the old garden wall."
+  },
+  "überwechseln": {
+    "de": "Zur neuen Saison wechselt unsere beste Stürmerin zu einem Verein in Hamburg über.",
+    "en": "For the new season, our best striker is moving to a club in Hamburg."
+  },
+  "überwerfen": {
+    "de": "Sie warf sich schnell eine Jacke über und lief zur Bushaltestelle.",
+    "en": "She quickly threw on a jacket and ran to the bus stop."
+  },
+  "überzahlen": {
+    "de": "Für den wackeligen Schrank hat sie beim Antiquitätenhändler deutlich überzahlt.",
+    "en": "She paid far too much for that wobbly cabinet at the antique dealer's.",
+    "gloss_note": "gloss says 'pay, transfer money', which describes überweisen; überzahlen means to pay too much for something"
+  },
+  "überzeichnen": {
+    "de": "Die Karikatur überzeichnet seine Nase so stark, dass man ihn sofort erkennt.",
+    "en": "The caricature exaggerates his nose so much that you recognize him instantly."
+  },
+  "überziehen": {
+    "de": "Am Abend wurde es kühl, also zog sie sich noch einen dicken Pullover über.",
+    "en": "It turned chilly in the evening, so she pulled on a thick sweater."
+  }
+}

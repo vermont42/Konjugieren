@@ -1,0 +1,130 @@
+{
+  "shard": 34,
+  "verbs": [
+    {
+      "verb": "verklicken",
+      "gloss": "misclick",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verklingen",
+      "gloss": "fade away",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verkochen",
+      "gloss": "vaporize, forwall",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verkosten",
+      "gloss": "try, taste",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verkümmern",
+      "gloss": "waste away",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verlanden",
+      "gloss": "silt up",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verlesen",
+      "gloss": "misread",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verlügen",
+      "gloss": "lie about someone or something",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "vermachen",
+      "gloss": "leave, bequeath, devise",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "vermeinen",
+      "gloss": "suppose, believe, imagine something",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "vermelden",
+      "gloss": "announce, report",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "vermerken",
+      "gloss": "mention, note, or record",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verpfeifen",
+      "gloss": "tell on, snitch, rat on/out",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verpflegen",
+      "gloss": "feed, nourish",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verrauchen",
+      "gloss": "disappear",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verreden",
+      "gloss": "talk away",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verreiben",
+      "gloss": "rub",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verreisen",
+      "gloss": "take a trip, travel, go out of town",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verreißen",
+      "gloss": "slate, slam",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verrennen",
+      "gloss": "go in the wrong direction",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verrufen",
+      "gloss": "make infamous",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verräumen",
+      "gloss": "store, stow away, put away, tidy away",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verrühren",
+      "gloss": "stir up, whip up, mix up, scramble",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "versalzen",
+      "gloss": "put too much salt in",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verschallen",
+      "gloss": "stop being audible",
+      "separability": "inseparable"
+    }
+  ]
+}

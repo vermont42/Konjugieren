@@ -1,0 +1,130 @@
+{
+  "shard": 32,
+  "verbs": [
+    {
+      "verb": "umlenken",
+      "gloss": "redirect",
+      "separability": "separable"
+    },
+    {
+      "verb": "umlügen",
+      "gloss": "misrepresent",
+      "separability": "separable"
+    },
+    {
+      "verb": "ummelden",
+      "gloss": "report a change",
+      "separability": "separable"
+    },
+    {
+      "verb": "umnutzen",
+      "gloss": "repurpose",
+      "separability": "separable"
+    },
+    {
+      "verb": "umpflanzen",
+      "gloss": "replant, transplant",
+      "separability": "separable"
+    },
+    {
+      "verb": "umrechnen",
+      "gloss": "convert",
+      "separability": "separable"
+    },
+    {
+      "verb": "umrunden",
+      "gloss": "go around, circumnavigate",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "umräumen",
+      "gloss": "rearrange, reorganize",
+      "separability": "separable"
+    },
+    {
+      "verb": "umrühren",
+      "gloss": "stir, stir up",
+      "separability": "separable"
+    },
+    {
+      "verb": "umschalten",
+      "gloss": "switch",
+      "separability": "separable"
+    },
+    {
+      "verb": "umschließen",
+      "gloss": "encompass, embrace, surround",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "umschulen",
+      "gloss": "move schools",
+      "separability": "separable"
+    },
+    {
+      "verb": "umsorgen",
+      "gloss": "look after",
+      "separability": "separable"
+    },
+    {
+      "verb": "umstreiten",
+      "gloss": "dispute, contest",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "umtauschen",
+      "gloss": "exchange",
+      "separability": "separable"
+    },
+    {
+      "verb": "umtreten",
+      "gloss": "boot",
+      "separability": "separable"
+    },
+    {
+      "verb": "umändern",
+      "gloss": "alter",
+      "separability": "separable"
+    },
+    {
+      "verb": "unterbewerten",
+      "gloss": "underrate, underestimate",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "unterbezahlen",
+      "gloss": "underpay",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "unterführen",
+      "gloss": "pass below",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "unterheben",
+      "gloss": "fold in",
+      "separability": "separable"
+    },
+    {
+      "verb": "unterkommen",
+      "gloss": "find a place",
+      "separability": "separable"
+    },
+    {
+      "verb": "unterkriegen",
+      "gloss": "bring down",
+      "separability": "separable"
+    },
+    {
+      "verb": "untermalen",
+      "gloss": "underpaint",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "untermischen",
+      "gloss": "mix in, add, intermix",
+      "separability": "separable"
+    }
+  ]
+}

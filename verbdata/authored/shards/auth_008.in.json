@@ -1,0 +1,130 @@
+{
+  "shard": 8,
+  "verbs": [
+    {
+      "verb": "ausrutschen",
+      "gloss": "slip",
+      "separability": "separable"
+    },
+    {
+      "verb": "ausrücken",
+      "gloss": "march out, go on a mission",
+      "separability": "separable"
+    },
+    {
+      "verb": "ausschauen",
+      "gloss": "look, appear",
+      "separability": "separable"
+    },
+    {
+      "verb": "ausscheißen",
+      "gloss": "shit out, defecate something",
+      "separability": "separable"
+    },
+    {
+      "verb": "ausschenken",
+      "gloss": "pour, pour out, sell",
+      "separability": "separable"
+    },
+    {
+      "verb": "ausschildern",
+      "gloss": "mark with signs/plates",
+      "separability": "separable"
+    },
+    {
+      "verb": "ausschleichen",
+      "gloss": "sneak off",
+      "separability": "separable"
+    },
+    {
+      "verb": "ausschweigen",
+      "gloss": "stop talking, be quiet",
+      "separability": "separable"
+    },
+    {
+      "verb": "ausschwimmen",
+      "gloss": "swim out",
+      "separability": "separable"
+    },
+    {
+      "verb": "aussparen",
+      "gloss": "leave out, spare",
+      "separability": "separable"
+    },
+    {
+      "verb": "ausspeichern",
+      "gloss": "draw from storage",
+      "separability": "separable"
+    },
+    {
+      "verb": "aussperren",
+      "gloss": "lock out",
+      "separability": "separable"
+    },
+    {
+      "verb": "aussterben",
+      "gloss": "die out, become extinct, cease",
+      "separability": "separable"
+    },
+    {
+      "verb": "aussteuern",
+      "gloss": "endow, provide with a dower",
+      "separability": "separable"
+    },
+    {
+      "verb": "austräumen",
+      "gloss": "stop dreaming",
+      "separability": "separable"
+    },
+    {
+      "verb": "ausverkaufen",
+      "gloss": "sell out",
+      "separability": "separable"
+    },
+    {
+      "verb": "auswachsen",
+      "gloss": "right or correct itself",
+      "separability": "separable"
+    },
+    {
+      "verb": "auswandern",
+      "gloss": "emigrate",
+      "separability": "separable"
+    },
+    {
+      "verb": "auswaschen",
+      "gloss": "wash out",
+      "separability": "separable"
+    },
+    {
+      "verb": "auswechseln",
+      "gloss": "swap out, replace",
+      "separability": "separable"
+    },
+    {
+      "verb": "auswringen",
+      "gloss": "wring out",
+      "separability": "separable"
+    },
+    {
+      "verb": "autostoppen",
+      "gloss": "hitchhike",
+      "separability": "separable"
+    },
+    {
+      "verb": "bankrottgehen",
+      "gloss": "go bankrupt",
+      "separability": "separable"
+    },
+    {
+      "verb": "beatmen",
+      "gloss": "ventilate",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "bebauen",
+      "gloss": "build a building in, develop",
+      "separability": "inseparable"
+    }
+  ]
+}

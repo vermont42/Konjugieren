@@ -1,0 +1,130 @@
+{
+  "shard": 31,
+  "verbs": [
+    {
+      "verb": "totkochen",
+      "gloss": "cook to death, overcook",
+      "separability": "separable"
+    },
+    {
+      "verb": "totlachen",
+      "gloss": "crack up, laugh one's head off",
+      "separability": "separable"
+    },
+    {
+      "verb": "totlaufen",
+      "gloss": "peter out",
+      "separability": "separable"
+    },
+    {
+      "verb": "totreden",
+      "gloss": "discuss to death",
+      "separability": "separable"
+    },
+    {
+      "verb": "totsagen",
+      "gloss": "falsely report someone's death",
+      "separability": "separable"
+    },
+    {
+      "verb": "totsaufen",
+      "gloss": "drink to death",
+      "separability": "separable"
+    },
+    {
+      "verb": "totstechen",
+      "gloss": "stab to death",
+      "separability": "separable"
+    },
+    {
+      "verb": "tottrinken",
+      "gloss": "drink to death",
+      "separability": "separable"
+    },
+    {
+      "verb": "umarbeiten",
+      "gloss": "rework, revamp",
+      "separability": "separable"
+    },
+    {
+      "verb": "umbiegen",
+      "gloss": "bend",
+      "separability": "separable"
+    },
+    {
+      "verb": "umbilden",
+      "gloss": "reshape",
+      "separability": "separable"
+    },
+    {
+      "verb": "umbinden",
+      "gloss": "tie on",
+      "separability": "separable"
+    },
+    {
+      "verb": "umbrechen",
+      "gloss": "wrap",
+      "separability": "separable"
+    },
+    {
+      "verb": "umbuchen",
+      "gloss": "rebook",
+      "separability": "separable"
+    },
+    {
+      "verb": "umdenken",
+      "gloss": "rethink",
+      "separability": "separable"
+    },
+    {
+      "verb": "umeinanderstehen",
+      "gloss": "synonym of herumstehen",
+      "separability": "separable"
+    },
+    {
+      "verb": "umerziehen",
+      "gloss": "reeducate",
+      "separability": "separable"
+    },
+    {
+      "verb": "umfließen",
+      "gloss": "flow around",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "umformen",
+      "gloss": "transform, rearrange",
+      "separability": "separable"
+    },
+    {
+      "verb": "umhaben",
+      "gloss": "have on",
+      "separability": "separable"
+    },
+    {
+      "verb": "umklappen",
+      "gloss": "fold over, fold down",
+      "separability": "separable"
+    },
+    {
+      "verb": "umkämpfen",
+      "gloss": "dispute, contest",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "umlagern",
+      "gloss": "transfer, relocate",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "umlauten",
+      "gloss": "umlaut",
+      "separability": "separable"
+    },
+    {
+      "verb": "umleiten",
+      "gloss": "reroute, redirect, divert",
+      "separability": "separable"
+    }
+  ]
+}

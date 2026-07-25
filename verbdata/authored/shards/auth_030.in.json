@@ -1,0 +1,130 @@
+{
+  "shard": 30,
+  "verbs": [
+    {
+      "verb": "scheckiglachen",
+      "gloss": "laugh one's head off",
+      "separability": "separable"
+    },
+    {
+      "verb": "scheißen",
+      "gloss": "shit",
+      "separability": "simplex"
+    },
+    {
+      "verb": "schieflachen",
+      "gloss": "crack up, laugh one's head off",
+      "separability": "separable"
+    },
+    {
+      "verb": "schiefliegen",
+      "gloss": "be wrong",
+      "separability": "separable"
+    },
+    {
+      "verb": "schlappmachen",
+      "gloss": "wilt",
+      "separability": "separable"
+    },
+    {
+      "verb": "schleißen",
+      "gloss": "strip, wear away",
+      "separability": "simplex"
+    },
+    {
+      "verb": "schwarzarbeiten",
+      "gloss": "moonlight",
+      "separability": "separable"
+    },
+    {
+      "verb": "schwarzbrennen",
+      "gloss": "moonshine, illegally distill alcohol",
+      "separability": "separable"
+    },
+    {
+      "verb": "schwarzfahren",
+      "gloss": "use transportation without a valid fare",
+      "separability": "separable"
+    },
+    {
+      "verb": "schwarzsehen",
+      "gloss": "be pessimistic",
+      "separability": "separable"
+    },
+    {
+      "verb": "schwären",
+      "gloss": "fester, suppurate",
+      "separability": "simplex"
+    },
+    {
+      "verb": "schönreden",
+      "gloss": "embellish, sugarcoat, whitewash",
+      "separability": "separable"
+    },
+    {
+      "verb": "schönsaufen",
+      "gloss": "use alcohol to make something tolerable",
+      "separability": "separable"
+    },
+    {
+      "verb": "schöntrinken",
+      "gloss": "synonym of schönsaufen",
+      "separability": "separable"
+    },
+    {
+      "verb": "sichergehen",
+      "gloss": "make sure",
+      "separability": "separable"
+    },
+    {
+      "verb": "sonderkündigen",
+      "gloss": "terminate by special termination right",
+      "separability": "separable"
+    },
+    {
+      "verb": "spleißen",
+      "gloss": "splice, split",
+      "separability": "simplex"
+    },
+    {
+      "verb": "sprießen",
+      "gloss": "sprout",
+      "separability": "simplex"
+    },
+    {
+      "verb": "stattgeben",
+      "gloss": "approve",
+      "separability": "separable"
+    },
+    {
+      "verb": "statthaben",
+      "gloss": "take place",
+      "separability": "separable"
+    },
+    {
+      "verb": "steckenbleiben",
+      "gloss": "become stuck",
+      "separability": "separable"
+    },
+    {
+      "verb": "stieben",
+      "gloss": "fly about, scatter",
+      "separability": "simplex"
+    },
+    {
+      "verb": "strammstehen",
+      "gloss": "stand at attention",
+      "separability": "separable"
+    },
+    {
+      "verb": "stummschalten",
+      "gloss": "mute",
+      "separability": "separable"
+    },
+    {
+      "verb": "totarbeiten",
+      "gloss": "work to death",
+      "separability": "separable"
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "shard": 36,
+  "verbs": [
+    {
+      "verb": "volllaufen",
+      "gloss": "run full, fill up",
+      "separability": "separable"
+    },
+    {
+      "verb": "vollmachen",
+      "gloss": "fill",
+      "separability": "separable"
+    },
+    {
+      "verb": "voranmachen",
+      "gloss": "hurry up, get a move on",
+      "separability": "separable"
+    },
+    {
+      "verb": "voranschieben",
+      "gloss": "push forward",
+      "separability": "separable"
+    },
+    {
+      "verb": "vorausahnen",
+      "gloss": "anticipate",
+      "separability": "separable"
+    },
+    {
+      "verb": "vorausberechnen",
+      "gloss": "precalculate",
+      "separability": "separable"
+    },
+    {
+      "verb": "voraushaben",
+      "gloss": "have something as an advantage",
+      "separability": "separable"
+    },
+    {
+      "verb": "vorauslaufen",
+      "gloss": "run on ahead",
+      "separability": "separable"
+    },
+    {
+      "verb": "vorausreisen",
+      "gloss": "travel in advance",
+      "separability": "separable"
+    },
+    {
+      "verb": "vorausrennen",
+      "gloss": "run ahead",
+      "separability": "separable"
+    },
+    {
+      "verb": "voraussenden",
+      "gloss": "send ahead",
+      "separability": "separable"
+    },
+    {
+      "verb": "vorauszahlen",
+      "gloss": "pay in advance, prepay",
+      "separability": "separable"
+    },
+    {
+      "verb": "vorbauen",
+      "gloss": "preassemble",
+      "separability": "separable"
+    },
+    {
+      "verb": "vorbehandeln",
+      "gloss": "pre-treat",
+      "separability": "separable"
+    },
+    {
+      "verb": "vorbeilaufen",
+      "gloss": "pass, walk by",
+      "separability": "separable"
+    },
+    {
+      "verb": "vorbeireden",
+      "gloss": "talk past, have a misunderstanding",
+      "separability": "separable"
+    },
+    {
+      "verb": "vorbeischauen",
+      "gloss": "look past",
+      "separability": "separable"
+    },
+    {
+      "verb": "vorbestellen",
+      "gloss": "reserve, preorder",
+      "separability": "separable"
+    },
+    {
+      "verb": "vorbestimmen",
+      "gloss": "predetermine",
+      "separability": "separable"
+    },
+    {
+      "verb": "vorbeten",
+      "gloss": "lead a prayer",
+      "separability": "separable"
+    },
+    {
+      "verb": "vordenken",
+      "gloss": "think ahead, anticipate",
+      "separability": "separable"
+    },
+    {
+      "verb": "vorfahren",
+      "gloss": "drive up",
+      "separability": "separable"
+    },
+    {
+      "verb": "vorfordern",
+      "gloss": "summon",
+      "separability": "separable"
+    },
+    {
+      "verb": "vorgreifen",
+      "gloss": "reach forward",
+      "separability": "separable"
+    },
+    {
+      "verb": "vorherberechnen",
+      "gloss": "precalculate",
+      "separability": "separable"
+    }
+  ]
+}

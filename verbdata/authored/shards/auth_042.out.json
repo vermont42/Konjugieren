@@ -1,0 +1,110 @@
+{
+  "zusichern": {
+    "de": "Der Chef sicherte ihr zu, dass sie im nächsten Jahr befördert werde.",
+    "en": "The boss assured her that she would be promoted the following year."
+  },
+  "zustellen": {
+    "de": "Die geparkten Lieferwagen stellten die schmale Einfahrt so vollständig zu, dass niemand durchkam.",
+    "en": "The parked delivery vans blocked the narrow driveway so completely that no one could get through.",
+    "gloss_note": "gloss says 'block'; this is a real but secondary sense of zustellen (obstruct by piling things up) — its far more common meaning is 'deliver' (mail, parcels)"
+  },
+  "zustoßen": {
+    "de": "Ihre Mutter macht sich große Sorgen, es könnte ihr auf der langen Reise etwas zustoßen.",
+    "en": "Her mother is very worried that something might happen to her on the long journey."
+  },
+  "zustreben": {
+    "de": "Nach der Pause strebten die erschöpften Wanderer endlich dem Gipfel zu.",
+    "en": "After the break, the exhausted hikers finally headed for the summit."
+  },
+  "zutreten": {
+    "de": "Feige trat er noch zu, als sein Gegner längst am Boden lag.",
+    "en": "Like a coward, he kept kicking even after his opponent was long since on the ground."
+  },
+  "zutrinken": {
+    "de": "Die alten Freunde hoben ihre Gläser und tranken einander fröhlich zu.",
+    "en": "The old friends raised their glasses and cheerfully toasted one another."
+  },
+  "zuvorsagen": {
+    "de": "Kein Meteorologe hätte diesen plötzlichen Wintereinbruch im Oktober zuvorsagen können.",
+    "en": "No meteorologist could have predicted this sudden onset of winter in October.",
+    "note": "zuvorsagen ('foretell, predict') is rare and slightly archaic; standard modern German prefers vorhersagen or voraussagen for the same meaning"
+  },
+  "zuwarten": {
+    "de": "Wir sollten mit dem Verkauf noch etwas zuwarten, bis sich die Kurse erholt haben.",
+    "en": "We should hold off on the sale a bit longer, until prices have recovered.",
+    "note": "zuwarten ('wait, hold off') is chiefly Southern-German, Austrian and Swiss standard; Northern speakers would more often say abwarten or warten"
+  },
+  "zuwiderhandeln": {
+    "de": "Wer den Brandschutzvorschriften zuwiderhandelt, muss mit einer empfindlichen Geldstrafe rechnen.",
+    "en": "Anyone who contravenes the fire-safety regulations must expect a hefty fine."
+  },
+  "zuzahlen": {
+    "de": "Für das teurere Medikament musste die Patientin zehn Euro aus eigener Tasche zuzahlen.",
+    "en": "For the more expensive medication, the patient had to pay an extra ten euros out of pocket."
+  },
+  "zwischenlagern": {
+    "de": "Während des Umzugs lagern wir die alten Möbel vorübergehend in einer gemieteten Halle zwischen.",
+    "en": "During the move, we're temporarily storing the old furniture in a rented warehouse."
+  },
+  "zwischenspeichern": {
+    "de": "Das Programm speichert deine Eingaben automatisch zwischen, falls der Rechner plötzlich abstürzt.",
+    "en": "The program automatically caches your input in case the computer suddenly crashes."
+  },
+  "ähnlichschauen": {
+    "de": "Der kleine Bub schaut seinem Großvater auf den alten Fotos verblüffend ähnlich.",
+    "en": "In the old photos, the little boy looks strikingly like his grandfather.",
+    "note": "ähnlichschauen ('jemandem ähnlich schauen' = resemble, look like) is Austrian/Bavarian standard; Northern German uses ähnlich sehen. The gloss's 'be typical of' reflects the idiom 'das schaut dir ähnlich', a secondary sense"
+  },
+  "überbewerten": {
+    "de": "Man sollte eine einzige schlechte Note im Zeugnis wirklich nicht überbewerten.",
+    "en": "One really shouldn't overrate a single bad grade on a report card."
+  },
+  "überbuchen": {
+    "de": "Die Fluggesellschaft hatte den Flug überbucht, sodass mehrere Passagiere am Gate warten mussten.",
+    "en": "The airline had overbooked the flight, so several passengers had to wait at the gate."
+  },
+  "überdauern": {
+    "de": "Diese uralten Bräuche haben Kriege, Hungersnöte und Jahrhunderte überdauert.",
+    "en": "These ancient customs have outlasted wars, famines and centuries."
+  },
+  "überdecken": {
+    "de": "In kalten Nächten deckte die Mutter den schlafenden Kindern noch eine zweite Wolldecke über.",
+    "en": "On cold nights the mother laid a second wool blanket over the sleeping children.",
+    "gloss_note": "authored for the separable über|decken ('lay a cover over', matching the shard's separability and gloss); note the inseparable überdecken means 'to cover up / mask'"
+  },
+  "übereignen": {
+    "de": "Der Großvater übereignete das alte Bauernhaus schon zu Lebzeiten seinen Enkeln.",
+    "en": "The grandfather transferred ownership of the old farmhouse to his grandchildren while he was still alive."
+  },
+  "übereinanderhalten": {
+    "de": "Vor Kälte zitternd hielt sie die klammen Hände dicht übereinander, um sie zu wärmen.",
+    "en": "Shivering with cold, she held her numb hands close over each other to warm them.",
+    "gloss_note": "gloss says 'keep shut, clench'; übereinanderhalten literally means to hold one thing on top of another — authored for that transparent sense"
+  },
+  "übereinanderlegen": {
+    "de": "Sie legte die frisch gebügelten Handtücher ordentlich übereinander und räumte sie in den Schrank.",
+    "en": "She laid the freshly ironed towels neatly on top of one another and put them away in the cupboard."
+  },
+  "übereinanderliegen": {
+    "de": "Im Schuppen lagen die alten Bretter kreuz und quer übereinander.",
+    "en": "In the shed the old boards lay every which way on top of one another."
+  },
+  "übereintreffen": {
+    "de": "Nach zähen Verhandlungen trafen beide Seiten schließlich überein, den Vertrag zu verlängern.",
+    "en": "After tough negotiations, both sides finally came to terms on extending the contract.",
+    "note": "übereintreffen ('reach an agreement') is rare; modern German far more commonly uses übereinkommen for this meaning"
+  },
+  "überfinanzieren": {
+    "de": "Das junge Start-up war so großzügig überfinanziert, dass es kaum wusste, wohin mit dem vielen Geld.",
+    "en": "The young start-up was so generously overfunded that it hardly knew what to do with all the money."
+  },
+  "überfliegen": {
+    "de": "Ein einzelner Adler überflog majestätisch das weite, stille Tal.",
+    "en": "A lone eagle majestically flew over the wide, silent valley."
+  },
+  "überfordern": {
+    "de": "Die vielen gleichzeitigen Aufgaben überforderten den neuen Praktikanten schon in der ersten Woche völlig.",
+    "en": "The many simultaneous tasks completely overwhelmed the new intern in his very first week.",
+    "gloss_note": "gloss says 'overcharge'; überfordern means to overtax / demand too much of someone. Overcharging a price is zu viel berechnen or übervorteilen, not überfordern"
+  }
+}

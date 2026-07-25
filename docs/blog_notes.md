@@ -4186,3 +4186,99 @@ the credit to "Opus 4.6 and 4.8" so it survives future batches. `no-corpus-examp
 sentences, `Verbs.xml` DTD-valid, `.xcstrings` a clean 2-line diff, `check_docs` clean. The remaining
 ~1,097 gap verbs are Josh's next session — the sharded author → gate → adversarial-review → merge
 loop the pilot validated.
+
+## Authoring 1,097 example sentences, and an Opus 4.8 vs 5.0 A/B (2026-07-25)
+
+The pilot in the previous entry validated the loop on 25 verbs. This session ran it over the
+remaining **1,097** — every verb shipping an etymology but no example sentence — and, because Opus 5.0
+shipped the same day, ran half the work on each model to compare them. Plan:
+`prompts/example_generation.md`; the subagent brief `prompts/example_prompt.md` was passed verbatim to
+every child and is deliberately **measurement-blind** — it never mentions models, tokens, or timing —
+so the two models would behave as they naturally would.
+
+**Why headless `claude -p` children rather than the Task tool.** The in-session Agent tool cannot pin
+a *specific* Opus version (its selector is the alias `opus`) and hands back no per-run token or
+duration figures. `claude -p --model <exact-id> --output-format json` does both. One wrinkle worth
+recording: the JSON is an **array of events**, and the metrics live in the element with
+`type == "result"`. A second wrinkle became the run's integrity check — that element also carries
+`modelUsage`, keyed by the models that actually served, so a silent fallback to the wrong model would
+otherwise have been invisible. It was recorded per shard; all 44 matched.
+
+**The result.** All 44 shards finished in one five-hour window, 23% → 75%, ~15 minutes of wall clock,
+1,097/1,097 verbs with both `de` and `en`, 22 shards per model.
+
+```
+model            shards sent  en/sent  tok/sent  med_api_ms  $/sent
+claude-opus-4-8     22   550     76.6     239.9     85,454    0.02028
+claude-opus-5       22   547     80.5     313.1     95,718    0.02285
+```
+
+**The interesting finding started as a mismatch between two measures of verbosity.** Opus 5.0's
+English is only **+5%** longer per sentence, but it spends **+30%** more output tokens producing it.
+Completion was identical — 25/25 on every shard — so the extra tokens were not landing in the
+deliverable. The natural reading was "deliberation, not output," and two other signals agreed: 5.0
+filed uncertainty `note`s on **12.1%** of verbs against 4.8's **7.6%**, saying "I am not sure about
+this obscure verb" 60% more often.
+
+**Then the inference turned into a measurement.** The per-child `meta/*.meta.json` files carry
+`thinking_tokens` events that nothing in the pipeline had looked at. Extracting them:
+
+```
+model            think_tok/sent  % of out_tokens  turns(med)
+claude-opus-4-8            93.7            39.0%         3.0
+claude-opus-5             151.6            48.4%         3.0
+```
+
+Of the +73.2 tok/sentence gap, **+57.9 is thinking** (a +62% increase) and only +15.3 is prose (+10%,
+matching the +5% longer English). **79% of the excess is deliberation** — no longer inferred from a
+mismatch but read off directly. And median `num_turns` is **3.0 for both models**, so this is not
+extra tool-use rounds or retries; it is deeper thinking inside the identical read-then-write
+structure. The thinking *text* is redacted (empty `thinking` field, signature only), so the counts
+survive and the content does not. `thinking_tokens` and `num_turns` were folded back into
+`metrics.jsonl` afterward, which also makes that file self-sufficient for analysis. 5.0 was also
+noticeably less consistent shard-to-shard (output tokens 6.1k–13.6k vs 3.4k–7.9k). None of this is a
+*quality* claim — `verbdata/authored/provenance.json` tags each verb with its author model precisely
+so a later adversarial review can split accept/reject by model and settle that.
+
+**Measurement is not free, and that was the run's biggest practical surprise.** The plan shipped with
+its window cost deliberately UNRESOLVED, to be filled in by the first run. Running waves of *differing*
+width (4, 6, 8, 9, 9, 9) let the cost be decomposed algebraically instead of guessed — every wave cost
+exactly `shards + 1` points, giving **≈1.0 window point per 25-verb shard and ≈1.0 point per `/usage`
+read**. A usage probe costs as much window as an entire authoring shard, because every headless child
+pays the same ~23k cache-creation input regardless of how little it does. At the plan's suggested
+4-shard waves, **20% of the window goes to measuring**; widening to 8–9 after the first clean wave is
+most of why all 44 shards fit. Same-width waves could not have separated the two terms at all.
+
+**Two shards failed, one per model, in the same way.** Shard 023 (Opus 5.0) and shard 038 (Opus 4.8)
+each wrote invalid JSON by opening a German quotation with `„` (U+201E) and closing it with an
+unescaped **ASCII** `"`. Notably, 038's *English* curly quotes in the same entry were correct — it is
+specifically the German closer that slips. This is the identical failure class `CLAUDE.md` documents
+for `Localizable.xcstrings`: ASCII `"` needs JSON escaping, curly quotes do not. Both retried clean.
+The fix was to delete and re-run, not to repair the escape by hand — a repair is a *correction*, and
+corrections are a later pass whose whole point is to be independent. The episode also exposed a resume
+hazard now documented in the plan: `run_wave.sh` skips on **file existence**, not validity, so a
+corrupt `.out.json` would silently count as done forever.
+
+**The gloss audit came in above projection.** The pilot flagged 2 of 25 glosses (~8%) and projected
+~90 over the corpus. The real rate was **125 of 1,097 (11.4%)** — `verbdata/authored/gloss-
+disagreements.txt`. Better still, the check is cheap: `verbdata/candidates.json` holds the full
+multi-gloss kaikki list per verb, and **83 of the 125** already have a competing gloss sitting on disk,
+meaning the import simply picked the wrong sense. Those are mechanically confirmable; the other 42 need
+judgment.
+
+**Deliberately not done:** no adversarial review, no `forms.json` gate, no corrections, no `integrate`
+merge. Running them would have muddied the performance data, which was the point of the exercise. A
+successor plan, `prompts/example_analysis.md`, hands the analysis session the file inventory, the
+already-computed baseline, and — more usefully — what is *not* on disk. Three things: `metrics.jsonl`
+records only successes, so it shows 44 clean shards and hides the true 42/44 first-try rate; there is
+no window or wave data in it; and no quality verdict exists anywhere. It also documents a trap found
+while writing it. The obvious way to test "does 5.0's deliberation help on obscure verbs?" is to join
+corpus frequency from `verbdata/dwds-frequencies.json` — but its 990 lemmas overlap these 1,097 verbs
+by **exactly zero**, because all 990 are verbs that were already shipping an example. The gap set is by
+construction what that pass did not reach. Coverage was measured rather than assumed for every
+auxiliary file, which is the only reason that was caught before a session wasted a window on it.
+
+**Handoff:** 1,097 authored sentences under `verbdata/authored/shards/`, `metrics.jsonl`,
+`provenance.json`, `gloss-disagreements.txt`. Review, gate, and merge are a fresh window — a review
+split across two windows would reintroduce exactly the throughput bias the interleaved-wave design was
+built to cancel.

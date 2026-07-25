@@ -1,0 +1,130 @@
+{
+  "shard": 33,
+  "verbs": [
+    {
+      "verb": "unterschieben",
+      "gloss": "foist",
+      "separability": "separable"
+    },
+    {
+      "verb": "untersinken",
+      "gloss": "sink",
+      "separability": "separable"
+    },
+    {
+      "verb": "untersteuern",
+      "gloss": "understeer",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "unterteilen",
+      "gloss": "divide",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "untertreiben",
+      "gloss": "understate",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "untervermieten",
+      "gloss": "sublet, sublease",
+      "separability": "separable"
+    },
+    {
+      "verb": "veranschlagen",
+      "gloss": "estimate",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verbeißen",
+      "gloss": "bite the bit",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verbilden",
+      "gloss": "miseducate",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verbrechen",
+      "gloss": "do, be at fault for",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verdenken",
+      "gloss": "blame, hold against",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verdreschen",
+      "gloss": "slug, thrash, lambaste, whale on, bash up",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verdrucken",
+      "gloss": "misprint",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verdrücken",
+      "gloss": "sneak off",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verenden",
+      "gloss": "perish",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verfechten",
+      "gloss": "advocate, defend, champion",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verfilmen",
+      "gloss": "make a film of",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verformen",
+      "gloss": "deform",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verglimmen",
+      "gloss": "stop glowing",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "vergucken",
+      "gloss": "mislook, misheed",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "vergären",
+      "gloss": "ferment",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verhassen",
+      "gloss": "hate, loathe",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verheben",
+      "gloss": "hurt oneself by lifting",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verheilen",
+      "gloss": "heal",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verklappen",
+      "gloss": "dump waste into a body of water",
+      "separability": "inseparable"
+    }
+  ]
+}

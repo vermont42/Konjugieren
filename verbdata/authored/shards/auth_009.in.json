@@ -1,0 +1,130 @@
+{
+  "shard": 9,
+  "verbs": [
+    {
+      "verb": "bedrucken",
+      "gloss": "print on, imprint",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "beehren",
+      "gloss": "compliment",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "befahren",
+      "gloss": "drive on, along, sail, cruise",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "befangen",
+      "gloss": "apprehend, seize, grasp, conceive",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "befüllen",
+      "gloss": "fill something",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "behaben",
+      "gloss": "behave",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "behelfen",
+      "gloss": "make do, manage, get by",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "behängen",
+      "gloss": "hang, drape",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "beibleiben",
+      "gloss": "continue",
+      "separability": "separable"
+    },
+    {
+      "verb": "beidrehen",
+      "gloss": "heave to",
+      "separability": "separable"
+    },
+    {
+      "verb": "beieinanderhalten",
+      "gloss": "keep together",
+      "separability": "separable"
+    },
+    {
+      "verb": "beigeben",
+      "gloss": "add",
+      "separability": "separable"
+    },
+    {
+      "verb": "beigehen",
+      "gloss": "synonym of drangehen",
+      "separability": "separable"
+    },
+    {
+      "verb": "beihelfen",
+      "gloss": "aid, assist, contribute, help",
+      "separability": "separable"
+    },
+    {
+      "verb": "beiliegen",
+      "gloss": "accompany",
+      "separability": "separable"
+    },
+    {
+      "verb": "beiordnen",
+      "gloss": "associate, coordinate",
+      "separability": "separable"
+    },
+    {
+      "verb": "beischlafen",
+      "gloss": "copulate",
+      "separability": "separable"
+    },
+    {
+      "verb": "beiseitehalten",
+      "gloss": "hold something aside",
+      "separability": "separable"
+    },
+    {
+      "verb": "beiseiteschieben",
+      "gloss": "ignore, brush aside",
+      "separability": "separable"
+    },
+    {
+      "verb": "beisetzen",
+      "gloss": "bury",
+      "separability": "separable"
+    },
+    {
+      "verb": "beispringen",
+      "gloss": "come to assistance",
+      "separability": "separable"
+    },
+    {
+      "verb": "beistimmen",
+      "gloss": "agree",
+      "separability": "separable"
+    },
+    {
+      "verb": "bejagen",
+      "gloss": "hunt, hunt after",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "bekanntmachen",
+      "gloss": "make known",
+      "separability": "separable"
+    },
+    {
+      "verb": "bekochen",
+      "gloss": "cook for someone",
+      "separability": "inseparable"
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "shard": 15,
+  "verbs": [
+    {
+      "verb": "einkriegen",
+      "gloss": "catch up",
+      "separability": "separable"
+    },
+    {
+      "verb": "einlagern",
+      "gloss": "store, deposit, put into storage",
+      "separability": "separable"
+    },
+    {
+      "verb": "einleben",
+      "gloss": "settle in",
+      "separability": "separable"
+    },
+    {
+      "verb": "einlenken",
+      "gloss": "relent, back down",
+      "separability": "separable"
+    },
+    {
+      "verb": "einmachen",
+      "gloss": "can",
+      "separability": "separable"
+    },
+    {
+      "verb": "einpflanzen",
+      "gloss": "plant, ingraft, dibble, prick in",
+      "separability": "separable"
+    },
+    {
+      "verb": "einpflegen",
+      "gloss": "enter data",
+      "separability": "separable"
+    },
+    {
+      "verb": "einreiben",
+      "gloss": "rub in",
+      "separability": "separable"
+    },
+    {
+      "verb": "einrollen",
+      "gloss": "roll in",
+      "separability": "separable"
+    },
+    {
+      "verb": "einrühren",
+      "gloss": "stir in",
+      "separability": "separable"
+    },
+    {
+      "verb": "einsagen",
+      "gloss": "whisper the answer to someone, prompt",
+      "separability": "separable"
+    },
+    {
+      "verb": "einsaugen",
+      "gloss": "suck in",
+      "separability": "separable"
+    },
+    {
+      "verb": "einschauen",
+      "gloss": "cover the eyes with one's hands",
+      "separability": "separable"
+    },
+    {
+      "verb": "einschießen",
+      "gloss": "break by shooting",
+      "separability": "separable"
+    },
+    {
+      "verb": "einschwören",
+      "gloss": "make someone swear",
+      "separability": "separable"
+    },
+    {
+      "verb": "einsenden",
+      "gloss": "send in, submit",
+      "separability": "separable"
+    },
+    {
+      "verb": "einspringen",
+      "gloss": "fill in for, step in for",
+      "separability": "separable"
+    },
+    {
+      "verb": "einstechen",
+      "gloss": "prick",
+      "separability": "separable"
+    },
+    {
+      "verb": "einstimmen",
+      "gloss": "join in",
+      "separability": "separable"
+    },
+    {
+      "verb": "eintauchen",
+      "gloss": "plunge",
+      "separability": "separable"
+    },
+    {
+      "verb": "eintippen",
+      "gloss": "type in",
+      "separability": "separable"
+    },
+    {
+      "verb": "einvernehmen",
+      "gloss": "interrogate, question",
+      "separability": "separable"
+    },
+    {
+      "verb": "einwechseln",
+      "gloss": "substitute, replace, change",
+      "separability": "separable"
+    },
+    {
+      "verb": "einwecken",
+      "gloss": "can",
+      "separability": "separable"
+    },
+    {
+      "verb": "einweichen",
+      "gloss": "soak",
+      "separability": "separable"
+    }
+  ]
+}

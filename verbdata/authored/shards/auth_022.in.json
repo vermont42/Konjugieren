@@ -1,0 +1,130 @@
+{
+  "shard": 22,
+  "verbs": [
+    {
+      "verb": "herumschlagen",
+      "gloss": "struggle, argue, deal with",
+      "separability": "separable"
+    },
+    {
+      "verb": "herumspinnen",
+      "gloss": "spin around",
+      "separability": "separable"
+    },
+    {
+      "verb": "herumsprechen",
+      "gloss": "travel, get around, get out",
+      "separability": "separable"
+    },
+    {
+      "verb": "herunterbrechen",
+      "gloss": "break off and fall",
+      "separability": "separable"
+    },
+    {
+      "verb": "herunterdrücken",
+      "gloss": "press down, push down",
+      "separability": "separable"
+    },
+    {
+      "verb": "herunterfahren",
+      "gloss": "drive down",
+      "separability": "separable"
+    },
+    {
+      "verb": "herunterhalten",
+      "gloss": "hold something down",
+      "separability": "separable"
+    },
+    {
+      "verb": "herunterhandeln",
+      "gloss": "lowball, haggle down",
+      "separability": "separable"
+    },
+    {
+      "verb": "heruntermachen",
+      "gloss": "bash, denigrate",
+      "separability": "separable"
+    },
+    {
+      "verb": "herunterrutschen",
+      "gloss": "slide down",
+      "separability": "separable"
+    },
+    {
+      "verb": "heruntersetzen",
+      "gloss": "reduce",
+      "separability": "separable"
+    },
+    {
+      "verb": "herunterspielen",
+      "gloss": "downplay, belittle",
+      "separability": "separable"
+    },
+    {
+      "verb": "herunterziehen",
+      "gloss": "pull down",
+      "separability": "separable"
+    },
+    {
+      "verb": "hervortauchen",
+      "gloss": "emerge",
+      "separability": "separable"
+    },
+    {
+      "verb": "herzeigen",
+      "gloss": "show, present something",
+      "separability": "separable"
+    },
+    {
+      "verb": "herüberkommen",
+      "gloss": "come over",
+      "separability": "separable"
+    },
+    {
+      "verb": "hinabklettern",
+      "gloss": "climb down",
+      "separability": "separable"
+    },
+    {
+      "verb": "hinaufgeben",
+      "gloss": "give something upwards",
+      "separability": "separable"
+    },
+    {
+      "verb": "hinaufhalten",
+      "gloss": "hold something up",
+      "separability": "separable"
+    },
+    {
+      "verb": "hinaufschauen",
+      "gloss": "look up to/at",
+      "separability": "separable"
+    },
+    {
+      "verb": "hinausgeben",
+      "gloss": "give/take/put something out of something",
+      "separability": "separable"
+    },
+    {
+      "verb": "hinaushalten",
+      "gloss": "hold out",
+      "separability": "separable"
+    },
+    {
+      "verb": "hinauslehnen",
+      "gloss": "lean out",
+      "separability": "separable"
+    },
+    {
+      "verb": "hinausschieben",
+      "gloss": "postpone",
+      "separability": "separable"
+    },
+    {
+      "verb": "hineingeben",
+      "gloss": "give/take/put something into something",
+      "separability": "separable"
+    }
+  ]
+}

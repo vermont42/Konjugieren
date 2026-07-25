@@ -1,0 +1,113 @@
+{
+  "verklicken": {
+    "de": "Beim schnellen Durchscrollen habe ich mich verklickt und aus Versehen das falsche Foto gelöscht.",
+    "en": "While scrolling quickly I misclicked and accidentally deleted the wrong photo.",
+    "gloss_note": "reflexive (sich verklicken): to click the wrong thing by mistake, typically on a screen"
+  },
+  "verklingen": {
+    "de": "Als der letzte Ton des Konzerts verklungen war, herrschte einen Moment lang völlige Stille.",
+    "en": "When the last note of the concert had faded away, there was complete silence for a moment."
+  },
+  "verkochen": {
+    "de": "Wenn du die Soße zu lange köcheln lässt, verkocht das ganze Wasser und sie brennt an.",
+    "en": "If you let the sauce simmer too long, all the water boils away and it burns.",
+    "gloss_note": "gloss 'vaporize, forwall' is garbled; verkochen means (of liquid) to boil away, or to overcook something"
+  },
+  "verkosten": {
+    "de": "Auf dem Weingut durften wir ein Dutzend verschiedene Rieslinge verkosten.",
+    "en": "At the winery we got to taste a dozen different Rieslings."
+  },
+  "verkümmern": {
+    "de": "Ohne regelmäßige Bewegung verkümmern die Muskeln schneller, als man denkt.",
+    "en": "Without regular exercise the muscles waste away faster than you'd think."
+  },
+  "verlanden": {
+    "de": "Der alte Teich hinter dem Haus verlandet langsam und wird bald zu einer Wiese.",
+    "en": "The old pond behind the house is slowly silting up and will soon become a meadow."
+  },
+  "verlesen": {
+    "de": "Ich habe mich verlesen und dachte, der Termin sei am Montag statt am Mittwoch.",
+    "en": "I misread it and thought the appointment was on Monday instead of Wednesday.",
+    "gloss_note": "in the 'misread' sense verlesen is reflexive (sich verlesen); non-reflexive verlesen means to read aloud"
+  },
+  "verlügen": {
+    "de": "Er hatte sich so in seine Ausreden verlogen, dass ihm am Ende niemand mehr glaubte.",
+    "en": "He had tangled himself up in his excuses so badly that in the end no one believed him anymore.",
+    "note": "rare verb; used reflexively (sich verlügen) it means to entangle oneself in lies — related to the common adjective verlogen"
+  },
+  "vermachen": {
+    "de": "Meine Großmutter hat mir in ihrem Testament ihren alten Schmuck vermacht.",
+    "en": "In her will my grandmother left me her old jewelry."
+  },
+  "vermeinen": {
+    "de": "Sie vermeinte, in der Ferne ein Licht zu sehen, doch es war nur der Mond.",
+    "en": "She imagined she saw a light in the distance, but it was only the moon.",
+    "note": "somewhat literary; vermeinen means to mistakenly suppose or believe, usually with a following zu-infinitive"
+  },
+  "vermelden": {
+    "de": "Die Lokalzeitung vermeldet einen neuen Rekord bei den Besucherzahlen des Museums.",
+    "en": "The local newspaper reports a new record in the museum's visitor numbers."
+  },
+  "vermerken": {
+    "de": "Der Beamte vermerkte meine Beschwerde sorgfältig in der Akte.",
+    "en": "The official carefully noted my complaint in the file."
+  },
+  "verpfeifen": {
+    "de": "Sein bester Freund hat ihn bei der Lehrerin verpfiffen.",
+    "en": "His best friend ratted him out to the teacher."
+  },
+  "verpflegen": {
+    "de": "Während der Wanderung wurden wir in einer gemütlichen Berghütte bestens verpflegt.",
+    "en": "During the hike we were splendidly fed at a cozy mountain hut."
+  },
+  "verrauchen": {
+    "de": "Nach einem tiefen Atemzug war sein Ärger überraschend schnell verraucht.",
+    "en": "After a deep breath his anger surprisingly quickly evaporated.",
+    "gloss_note": "in this sense verrauchen means (of anger or emotion) to disappear, literally to 'go up in smoke'"
+  },
+  "verreden": {
+    "de": "Er versuchte, ihr die Angst vor der Prüfung zu verreden, doch sie ließ sich nicht beruhigen.",
+    "en": "He tried to talk her out of her fear of the exam, but she wouldn't be reassured.",
+    "note": "rare; here 'jemandem etwas verreden' means to talk someone out of something by talking it away"
+  },
+  "verreiben": {
+    "de": "Sie verrieb die Salbe vorsichtig auf der geröteten Haut.",
+    "en": "She carefully rubbed the ointment into the reddened skin."
+  },
+  "verreisen": {
+    "de": "Über die Feiertage verreisen wir jedes Jahr in die Berge.",
+    "en": "Over the holidays we go away to the mountains every year."
+  },
+  "verreißen": {
+    "de": "Die Kritiker haben den neuen Film gnadenlos verrissen.",
+    "en": "The critics savaged the new film mercilessly."
+  },
+  "verrennen": {
+    "de": "Er hat sich so in seine eine Idee verrannt, dass er keine Kritik mehr zuließ.",
+    "en": "He got so fixated on his one idea that he no longer allowed any criticism.",
+    "gloss_note": "reflexive (sich verrennen): to go down the wrong track, to become stubbornly fixated on a mistaken course"
+  },
+  "verrufen": {
+    "de": "Die vielen Gerüchte verriefen den kleinen Gasthof, bis kaum noch Gäste kamen.",
+    "en": "The many rumors gave the small inn such a bad name that hardly any guests came anymore.",
+    "note": "the finite verb is rare; verrufen far more often appears as the adjective 'verrufen' (disreputable)"
+  },
+  "verräumen": {
+    "de": "Nach dem Kochen verräumte sie das ganze Geschirr wieder in die Schränke.",
+    "en": "After cooking she put all the dishes away again in the cupboards.",
+    "note": "chiefly southern German and Austrian for tidying or stowing things away"
+  },
+  "verrühren": {
+    "de": "Verrühre die Eier mit dem Mehl, bis ein glatter Teig entsteht.",
+    "en": "Stir the eggs together with the flour until you get a smooth batter."
+  },
+  "versalzen": {
+    "de": "Ich habe die Suppe versalzen und musste sie am Ende wegschütten.",
+    "en": "I put too much salt in the soup and ended up having to pour it out."
+  },
+  "verschallen": {
+    "de": "Die Rufe der Kinder verschallten allmählich im dichten Wald.",
+    "en": "The children's shouts gradually faded away in the dense forest.",
+    "note": "archaic and rare; verschallen means to stop being audible, to die away into inaudibility"
+  }
+}

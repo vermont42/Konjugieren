@@ -1,0 +1,130 @@
+{
+  "shard": 38,
+  "verbs": [
+    {
+      "verb": "weghören",
+      "gloss": "deliberately not listen",
+      "separability": "separable"
+    },
+    {
+      "verb": "wegjagen",
+      "gloss": "chase away, chase off, drive away",
+      "separability": "separable"
+    },
+    {
+      "verb": "wegmachen",
+      "gloss": "remove",
+      "separability": "separable"
+    },
+    {
+      "verb": "wegrauchen",
+      "gloss": "smoke away something",
+      "separability": "separable"
+    },
+    {
+      "verb": "wegrennen",
+      "gloss": "bolt, run, run away",
+      "separability": "separable"
+    },
+    {
+      "verb": "wegschießen",
+      "gloss": "shoot off",
+      "separability": "separable"
+    },
+    {
+      "verb": "wegschleifen",
+      "gloss": "drag away, pull away",
+      "separability": "separable"
+    },
+    {
+      "verb": "wegschmeißen",
+      "gloss": "ditch, junk",
+      "separability": "separable"
+    },
+    {
+      "verb": "wegschwimmen",
+      "gloss": "swim away",
+      "separability": "separable"
+    },
+    {
+      "verb": "wegsetzen",
+      "gloss": "move away",
+      "separability": "separable"
+    },
+    {
+      "verb": "wegsperren",
+      "gloss": "lock away",
+      "separability": "separable"
+    },
+    {
+      "verb": "wegstecken",
+      "gloss": "put away something",
+      "separability": "separable"
+    },
+    {
+      "verb": "wegsterben",
+      "gloss": "die, vanish",
+      "separability": "separable"
+    },
+    {
+      "verb": "wegtreten",
+      "gloss": "dismiss",
+      "separability": "separable"
+    },
+    {
+      "verb": "wegwaschen",
+      "gloss": "wash away",
+      "separability": "separable"
+    },
+    {
+      "verb": "wegweisen",
+      "gloss": "send away, show out",
+      "separability": "separable"
+    },
+    {
+      "verb": "wegwünschen",
+      "gloss": "wish someone would go away",
+      "separability": "separable"
+    },
+    {
+      "verb": "weichkochen",
+      "gloss": "cook until soft",
+      "separability": "separable"
+    },
+    {
+      "verb": "weiterreden",
+      "gloss": "continue speaking",
+      "separability": "separable"
+    },
+    {
+      "verb": "weiterschenken",
+      "gloss": "regift",
+      "separability": "separable"
+    },
+    {
+      "verb": "weiterverarbeiten",
+      "gloss": "process",
+      "separability": "separable"
+    },
+    {
+      "verb": "weiterverschenken",
+      "gloss": "regift",
+      "separability": "separable"
+    },
+    {
+      "verb": "wettmachen",
+      "gloss": "make up for, make good",
+      "separability": "separable"
+    },
+    {
+      "verb": "wichtigmachen",
+      "gloss": "put on airs",
+      "separability": "separable"
+    },
+    {
+      "verb": "widerreden",
+      "gloss": "talk back",
+      "separability": "inseparable"
+    }
+  ]
+}

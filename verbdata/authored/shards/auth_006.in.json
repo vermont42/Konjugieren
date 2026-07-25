@@ -1,0 +1,130 @@
+{
+  "shard": 6,
+  "verbs": [
+    {
+      "verb": "aufprägen",
+      "gloss": "imprint",
+      "separability": "separable"
+    },
+    {
+      "verb": "aufrauchen",
+      "gloss": "rise, appear",
+      "separability": "separable"
+    },
+    {
+      "verb": "aufrechnen",
+      "gloss": "charge",
+      "separability": "separable"
+    },
+    {
+      "verb": "aufreihen",
+      "gloss": "string",
+      "separability": "separable"
+    },
+    {
+      "verb": "aufreiten",
+      "gloss": "ride up in formation",
+      "separability": "separable"
+    },
+    {
+      "verb": "aufrollen",
+      "gloss": "roll up",
+      "separability": "separable"
+    },
+    {
+      "verb": "aufrunden",
+      "gloss": "round up",
+      "separability": "separable"
+    },
+    {
+      "verb": "aufsaugen",
+      "gloss": "suck up",
+      "separability": "separable"
+    },
+    {
+      "verb": "aufscheinen",
+      "gloss": "appear, be on record, be listed",
+      "separability": "separable"
+    },
+    {
+      "verb": "aufschießen",
+      "gloss": "shoot open",
+      "separability": "separable"
+    },
+    {
+      "verb": "aufschmelzen",
+      "gloss": "melt, dissolve",
+      "separability": "separable"
+    },
+    {
+      "verb": "aufschwellen",
+      "gloss": "swell up",
+      "separability": "separable"
+    },
+    {
+      "verb": "aufspüren",
+      "gloss": "detect, trace, track down or sniff out",
+      "separability": "separable"
+    },
+    {
+      "verb": "aufstreben",
+      "gloss": "aspire",
+      "separability": "separable"
+    },
+    {
+      "verb": "auftreffen",
+      "gloss": "impact, hit",
+      "separability": "separable"
+    },
+    {
+      "verb": "auftrennen",
+      "gloss": "undo, unpick, unstitch, unravel",
+      "separability": "separable"
+    },
+    {
+      "verb": "aufwaschen",
+      "gloss": "do the dishes",
+      "separability": "separable"
+    },
+    {
+      "verb": "aufzahlen",
+      "gloss": "pay extra",
+      "separability": "separable"
+    },
+    {
+      "verb": "aufzwingen",
+      "gloss": "force, impose something on someone",
+      "separability": "separable"
+    },
+    {
+      "verb": "ausatmen",
+      "gloss": "breathe out, exhale",
+      "separability": "separable"
+    },
+    {
+      "verb": "ausbedingen",
+      "gloss": "stipulate, make something a condition",
+      "separability": "separable"
+    },
+    {
+      "verb": "ausbeten",
+      "gloss": "finish praying",
+      "separability": "separable"
+    },
+    {
+      "verb": "ausbleichen",
+      "gloss": "bleach something",
+      "separability": "separable"
+    },
+    {
+      "verb": "ausblicken",
+      "gloss": "look out, search for someone or something",
+      "separability": "separable"
+    },
+    {
+      "verb": "ausdeuten",
+      "gloss": "interpret, expose",
+      "separability": "separable"
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "shard": 42,
+  "verbs": [
+    {
+      "verb": "zusichern",
+      "gloss": "pledge, assure something",
+      "separability": "separable"
+    },
+    {
+      "verb": "zustellen",
+      "gloss": "block",
+      "separability": "separable"
+    },
+    {
+      "verb": "zustoßen",
+      "gloss": "happen to",
+      "separability": "separable"
+    },
+    {
+      "verb": "zustreben",
+      "gloss": "head to, make for",
+      "separability": "separable"
+    },
+    {
+      "verb": "zutreten",
+      "gloss": "kick",
+      "separability": "separable"
+    },
+    {
+      "verb": "zutrinken",
+      "gloss": "raise one's glass as a greeting",
+      "separability": "separable"
+    },
+    {
+      "verb": "zuvorsagen",
+      "gloss": "predict",
+      "separability": "separable"
+    },
+    {
+      "verb": "zuwarten",
+      "gloss": "wait with, defer",
+      "separability": "separable"
+    },
+    {
+      "verb": "zuwiderhandeln",
+      "gloss": "contravene",
+      "separability": "separable"
+    },
+    {
+      "verb": "zuzahlen",
+      "gloss": "pay additionally, copay",
+      "separability": "separable"
+    },
+    {
+      "verb": "zwischenlagern",
+      "gloss": "temporarily store",
+      "separability": "separable"
+    },
+    {
+      "verb": "zwischenspeichern",
+      "gloss": "cache",
+      "separability": "separable"
+    },
+    {
+      "verb": "ähnlichschauen",
+      "gloss": "be typical of, be like",
+      "separability": "separable"
+    },
+    {
+      "verb": "überbewerten",
+      "gloss": "overrate, overvalue",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "überbuchen",
+      "gloss": "overbook",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "überdauern",
+      "gloss": "survive, outlast",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "überdecken",
+      "gloss": "place on top of",
+      "separability": "separable"
+    },
+    {
+      "verb": "übereignen",
+      "gloss": "transfer ownership",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "übereinanderhalten",
+      "gloss": "keep shut, clench",
+      "separability": "separable"
+    },
+    {
+      "verb": "übereinanderlegen",
+      "gloss": "lay on top of each other",
+      "separability": "separable"
+    },
+    {
+      "verb": "übereinanderliegen",
+      "gloss": "lie on top of each other",
+      "separability": "separable"
+    },
+    {
+      "verb": "übereintreffen",
+      "gloss": "come to terms, reach an agreement",
+      "separability": "separable"
+    },
+    {
+      "verb": "überfinanzieren",
+      "gloss": "overfund",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "überfliegen",
+      "gloss": "fly over",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "überfordern",
+      "gloss": "overcharge",
+      "separability": "inseparable"
+    }
+  ]
+}

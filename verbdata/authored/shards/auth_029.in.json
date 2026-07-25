@@ -1,0 +1,130 @@
+{
+  "shard": 29,
+  "verbs": [
+    {
+      "verb": "reinhauen",
+      "gloss": "beat up",
+      "separability": "separable"
+    },
+    {
+      "verb": "reinhängen",
+      "gloss": "pull out all the stops, go all out",
+      "separability": "separable"
+    },
+    {
+      "verb": "reinmachen",
+      "gloss": "put in",
+      "separability": "separable"
+    },
+    {
+      "verb": "reinscheißen",
+      "gloss": "shit into, defecate into",
+      "separability": "separable"
+    },
+    {
+      "verb": "reinstecken",
+      "gloss": "insert, stick in, stick into",
+      "separability": "separable"
+    },
+    {
+      "verb": "richtigliegen",
+      "gloss": "be right",
+      "separability": "separable"
+    },
+    {
+      "verb": "rotsehen",
+      "gloss": "see red",
+      "separability": "separable"
+    },
+    {
+      "verb": "rumbringen",
+      "gloss": "pass, spend",
+      "separability": "separable"
+    },
+    {
+      "verb": "rumkommen",
+      "gloss": "move around",
+      "separability": "separable"
+    },
+    {
+      "verb": "rumlaufen",
+      "gloss": "walk around",
+      "separability": "separable"
+    },
+    {
+      "verb": "rummachen",
+      "gloss": "make out, french-kiss etc",
+      "separability": "separable"
+    },
+    {
+      "verb": "rumschmeißen",
+      "gloss": "throw around",
+      "separability": "separable"
+    },
+    {
+      "verb": "rumstehen",
+      "gloss": "stand around idly",
+      "separability": "separable"
+    },
+    {
+      "verb": "rundgehen",
+      "gloss": "go around, circulate",
+      "separability": "separable"
+    },
+    {
+      "verb": "runterdrücken",
+      "gloss": "depress, push down",
+      "separability": "separable"
+    },
+    {
+      "verb": "runterhalten",
+      "gloss": "hold something down",
+      "separability": "separable"
+    },
+    {
+      "verb": "runterkommen",
+      "gloss": "calm down",
+      "separability": "separable"
+    },
+    {
+      "verb": "runterladen",
+      "gloss": "download",
+      "separability": "separable"
+    },
+    {
+      "verb": "runterschauen",
+      "gloss": "look down",
+      "separability": "separable"
+    },
+    {
+      "verb": "rübermachen",
+      "gloss": "travel to a place in another country",
+      "separability": "separable"
+    },
+    {
+      "verb": "rückbesinnen",
+      "gloss": "think back, remember, remind oneself",
+      "separability": "separable"
+    },
+    {
+      "verb": "rückdrehen",
+      "gloss": "back, shift in an anticlockwise direction",
+      "separability": "separable"
+    },
+    {
+      "verb": "rückwärtsfahren",
+      "gloss": "reverse",
+      "separability": "separable"
+    },
+    {
+      "verb": "rückzahlen",
+      "gloss": "pay back, repay, refund",
+      "separability": "separable"
+    },
+    {
+      "verb": "rücküberweisen",
+      "gloss": "transfer back, wire back",
+      "separability": "separable"
+    }
+  ]
+}

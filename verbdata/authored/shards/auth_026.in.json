@@ -1,0 +1,130 @@
+{
+  "shard": 26,
+  "verbs": [
+    {
+      "verb": "mausrutschen",
+      "gloss": "misclick, have one's mouse slip",
+      "separability": "separable"
+    },
+    {
+      "verb": "maßhalten",
+      "gloss": "be moderate",
+      "separability": "separable"
+    },
+    {
+      "verb": "maßnehmen",
+      "gloss": "measure, take measure",
+      "separability": "separable"
+    },
+    {
+      "verb": "mitfolgen",
+      "gloss": "follow along",
+      "separability": "separable"
+    },
+    {
+      "verb": "mitklingen",
+      "gloss": "sound together with other sounds, resonate",
+      "separability": "separable"
+    },
+    {
+      "verb": "mitmischen",
+      "gloss": "be involved, interfere, muscle in",
+      "separability": "separable"
+    },
+    {
+      "verb": "mitreisen",
+      "gloss": "travel along, travel with",
+      "separability": "separable"
+    },
+    {
+      "verb": "mitschneiden",
+      "gloss": "record",
+      "separability": "separable"
+    },
+    {
+      "verb": "mitsingen",
+      "gloss": "sing along",
+      "separability": "separable"
+    },
+    {
+      "verb": "mitunterzeichnen",
+      "gloss": "cosign",
+      "separability": "separable"
+    },
+    {
+      "verb": "mitzeichnen",
+      "gloss": "draw along with others",
+      "separability": "separable"
+    },
+    {
+      "verb": "mobilmachen",
+      "gloss": "mobilize",
+      "separability": "separable"
+    },
+    {
+      "verb": "nachbacken",
+      "gloss": "recook",
+      "separability": "separable"
+    },
+    {
+      "verb": "nachbehandeln",
+      "gloss": "treat again",
+      "separability": "separable"
+    },
+    {
+      "verb": "nachbestellen",
+      "gloss": "reorder",
+      "separability": "separable"
+    },
+    {
+      "verb": "nachbeten",
+      "gloss": "repeat a prayer",
+      "separability": "separable"
+    },
+    {
+      "verb": "nacherzählen",
+      "gloss": "retell",
+      "separability": "separable"
+    },
+    {
+      "verb": "nachführen",
+      "gloss": "update, upgrade",
+      "separability": "separable"
+    },
+    {
+      "verb": "nachfüllen",
+      "gloss": "refill",
+      "separability": "separable"
+    },
+    {
+      "verb": "nachgeraten",
+      "gloss": "take after",
+      "separability": "separable"
+    },
+    {
+      "verb": "nachgießen",
+      "gloss": "top up",
+      "separability": "separable"
+    },
+    {
+      "verb": "nachhalten",
+      "gloss": "keep track of",
+      "separability": "separable"
+    },
+    {
+      "verb": "nachkaufen",
+      "gloss": "buy more",
+      "separability": "separable"
+    },
+    {
+      "verb": "nachklingen",
+      "gloss": "linger, echo",
+      "separability": "separable"
+    },
+    {
+      "verb": "nachladen",
+      "gloss": "reload",
+      "separability": "separable"
+    }
+  ]
+}

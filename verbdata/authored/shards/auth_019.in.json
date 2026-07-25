@@ -1,0 +1,130 @@
+{
+  "shard": 19,
+  "verbs": [
+    {
+      "verb": "fortgeben",
+      "gloss": "give away something, relinquish something",
+      "separability": "separable"
+    },
+    {
+      "verb": "fortlegen",
+      "gloss": "put away",
+      "separability": "separable"
+    },
+    {
+      "verb": "fortlocken",
+      "gloss": "lure away",
+      "separability": "separable"
+    },
+    {
+      "verb": "fortreisen",
+      "gloss": "travel away",
+      "separability": "separable"
+    },
+    {
+      "verb": "forträumen",
+      "gloss": "put away, clear away, remove",
+      "separability": "separable"
+    },
+    {
+      "verb": "fortschaffen",
+      "gloss": "take away",
+      "separability": "separable"
+    },
+    {
+      "verb": "fortwähren",
+      "gloss": "continue, go on",
+      "separability": "separable"
+    },
+    {
+      "verb": "fortzahlen",
+      "gloss": "continue to pay, keep paying",
+      "separability": "separable"
+    },
+    {
+      "verb": "freihaben",
+      "gloss": "be on vacation",
+      "separability": "separable"
+    },
+    {
+      "verb": "freinehmen",
+      "gloss": "take off",
+      "separability": "separable"
+    },
+    {
+      "verb": "freitesten",
+      "gloss": "test out of restrictions",
+      "separability": "separable"
+    },
+    {
+      "verb": "fremdgehen",
+      "gloss": "cheat, be unfaithful",
+      "separability": "separable"
+    },
+    {
+      "verb": "gegenlesen",
+      "gloss": "proofread, copyedit",
+      "separability": "separable"
+    },
+    {
+      "verb": "gegenwirken",
+      "gloss": "counteract or counter",
+      "separability": "separable"
+    },
+    {
+      "verb": "gehaben",
+      "gloss": "behave, behave oneself",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "geradebiegen",
+      "gloss": "straighten",
+      "separability": "separable"
+    },
+    {
+      "verb": "geringhalten",
+      "gloss": "keep low, minimize, keep to a minimum",
+      "separability": "separable"
+    },
+    {
+      "verb": "geringschätzen",
+      "gloss": "despise, disdain, hold in contempt",
+      "separability": "separable"
+    },
+    {
+      "verb": "geruhen",
+      "gloss": "deign, condescend",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "gesundmelden",
+      "gloss": "report back to work after sick leave",
+      "separability": "separable"
+    },
+    {
+      "verb": "glattstellen",
+      "gloss": "balance",
+      "separability": "separable"
+    },
+    {
+      "verb": "glattziehen",
+      "gloss": "smooth, pull smooth",
+      "separability": "separable"
+    },
+    {
+      "verb": "gleichbehandeln",
+      "gloss": "treat equally",
+      "separability": "separable"
+    },
+    {
+      "verb": "gleichschalten",
+      "gloss": "synchronise",
+      "separability": "separable"
+    },
+    {
+      "verb": "gleichsehen",
+      "gloss": "look like",
+      "separability": "separable"
+    }
+  ]
+}

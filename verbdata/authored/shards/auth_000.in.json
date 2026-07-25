@@ -1,0 +1,130 @@
+{
+  "shard": 0,
+  "verbs": [
+    {
+      "verb": "abbezahlen",
+      "gloss": "pay off",
+      "separability": "separable"
+    },
+    {
+      "verb": "abbinden",
+      "gloss": "untie, undo",
+      "separability": "separable"
+    },
+    {
+      "verb": "abbleiben",
+      "gloss": "be located",
+      "separability": "separable"
+    },
+    {
+      "verb": "abbrennen",
+      "gloss": "set fire to, destroy by fire",
+      "separability": "separable"
+    },
+    {
+      "verb": "abdanken",
+      "gloss": "resign",
+      "separability": "separable"
+    },
+    {
+      "verb": "abdreschen",
+      "gloss": "thresh",
+      "separability": "separable"
+    },
+    {
+      "verb": "abdringen",
+      "gloss": "obtain by force",
+      "separability": "separable"
+    },
+    {
+      "verb": "abdrucken",
+      "gloss": "publish by printing in a newspaper",
+      "separability": "separable"
+    },
+    {
+      "verb": "abdrängen",
+      "gloss": "push away",
+      "separability": "separable"
+    },
+    {
+      "verb": "abdrücken",
+      "gloss": "fire, shoot, pull the trigger",
+      "separability": "separable"
+    },
+    {
+      "verb": "aberkennen",
+      "gloss": "revoke, strip someone of something",
+      "separability": "separable"
+    },
+    {
+      "verb": "abernten",
+      "gloss": "harvest, reap",
+      "separability": "separable"
+    },
+    {
+      "verb": "aberziehen",
+      "gloss": "break someone of something",
+      "separability": "separable"
+    },
+    {
+      "verb": "abfahren",
+      "gloss": "depart, leave",
+      "separability": "separable"
+    },
+    {
+      "verb": "abfassen",
+      "gloss": "write down",
+      "separability": "separable"
+    },
+    {
+      "verb": "abfliegen",
+      "gloss": "take off, fly away",
+      "separability": "separable"
+    },
+    {
+      "verb": "abfüllen",
+      "gloss": "fill up",
+      "separability": "separable"
+    },
+    {
+      "verb": "abgießen",
+      "gloss": "drain, decant",
+      "separability": "separable"
+    },
+    {
+      "verb": "abgleiten",
+      "gloss": "slip off, slip from something",
+      "separability": "separable"
+    },
+    {
+      "verb": "abgraben",
+      "gloss": "dig off",
+      "separability": "separable"
+    },
+    {
+      "verb": "abhören",
+      "gloss": "inspect, explore something by listening",
+      "separability": "separable"
+    },
+    {
+      "verb": "abjagen",
+      "gloss": "take, snatch away, steal",
+      "separability": "separable"
+    },
+    {
+      "verb": "abklären",
+      "gloss": "clarify, clear up",
+      "separability": "separable"
+    },
+    {
+      "verb": "abkochen",
+      "gloss": "boil down, boil off",
+      "separability": "separable"
+    },
+    {
+      "verb": "abkriegen",
+      "gloss": "get",
+      "separability": "separable"
+    }
+  ]
+}

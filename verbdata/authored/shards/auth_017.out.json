@@ -1,0 +1,111 @@
+{
+  "entpacken": {
+    "de": "Nachdem er die Datei heruntergeladen hatte, entpackte er das Archiv und startete sofort die Installation.",
+    "en": "After downloading the file, he unzipped the archive and started the installation right away."
+  },
+  "entreißen": {
+    "de": "Ein Radfahrer entriss der alten Frau die Handtasche und war in wenigen Sekunden verschwunden.",
+    "en": "A cyclist snatched the old woman's handbag and was gone within seconds."
+  },
+  "entsichern": {
+    "de": "Die Polizistin entsicherte ihre Waffe erst, als der Mann trotz mehrfacher Aufforderung nicht stehen blieb.",
+    "en": "The police officer released the safety on her weapon only when the man refused to stop despite repeated orders."
+  },
+  "entsperren": {
+    "de": "Sie entsperrt ihr Handy inzwischen nur noch mit dem Gesicht, weil sie den Code vergessen hat.",
+    "en": "These days she only unlocks her phone with her face, because she has forgotten the code."
+  },
+  "entspiegeln": {
+    "de": "Der Optiker entspiegelt meine neuen Brillengläser, damit mich das Bildschirmlicht am Abend nicht mehr blendet.",
+    "en": "The optician is putting an antireflection coating on my new lenses so that screen glare stops bothering me in the evening."
+  },
+  "entstammen": {
+    "de": "Die Familie meiner Großmutter entstammt einem kleinen Dorf im Allgäu, in dem noch Dialekt gesprochen wird.",
+    "en": "My grandmother's family comes from a small village in the Allgäu where people still speak dialect."
+  },
+  "entstören": {
+    "de": "Ein Techniker entstörte den alten Staubsauger, der bei jedem Einschalten das Radio knacken ließ.",
+    "en": "A technician suppressed the interference from the old vacuum cleaner, which made the radio crackle every time it was switched on."
+  },
+  "entwarnen": {
+    "de": "Nach zwei Stunden entwarnte die Feuerwehr, denn der Rauch stammte nur von einem angebrannten Topf.",
+    "en": "After two hours the fire brigade gave the all-clear, since the smoke came only from a burnt pot."
+  },
+  "entwerten": {
+    "de": "Die Inflation entwertete die Ersparnisse so schnell, dass ein Monatslohn kaum noch für Brot reichte.",
+    "en": "Inflation devalued their savings so quickly that a month's wages barely covered bread."
+  },
+  "entzweigehen": {
+    "de": "Beim Spülen ging der Henkel der alten Tasse entzwei, und sie klebte ihn abends wieder an.",
+    "en": "The handle of the old cup broke off while she was washing up, and that evening she glued it back on."
+  },
+  "entäußern": {
+    "de": "Der Mönch entäußerte sich allen Besitzes und zog mit nichts als einer Decke ins Kloster.",
+    "en": "The monk renounced all his possessions and entered the monastery with nothing but a blanket.",
+    "note": "entäußern is an elevated, largely religious-philosophical verb; it is nearly always reflexive and governs the genitive (sich einer Sache entäußern)."
+  },
+  "erahnen": {
+    "de": "Im dichten Nebel erahnte man die Türme der Kathedrale nur als zwei dunkle Schatten.",
+    "en": "In the thick fog you could only make out the cathedral's towers as two dark shapes."
+  },
+  "erbeten": {
+    "de": "Am Sterbebett erbetete die Großmutter sich die Genesung ihres Enkels und glaubte fest daran.",
+    "en": "At the deathbed the grandmother prayed her grandson back to health and believed in it utterly.",
+    "note": "Rare verb. Note the homograph trap: the written form erbeten is far more often the past participle of erbitten (\"to request\"). The finite forms keep them apart — er-beten gives erbetete, while erbitten gives erbat."
+  },
+  "erfangen": {
+    "de": "Nach langer Jagd über die Wiesen hat der Förster das entlaufene Kalb doch noch erfangen.",
+    "en": "After a long chase across the meadows, the forester managed to catch the runaway calf after all.",
+    "note": "erfangen is archaic and regional; everyday German uses fangen or einfangen here. Sentence written for the gloss's sense, but usage is uncertain."
+  },
+  "erfließen": {
+    "de": "Aus diesem Vertrag erfließen für beide Seiten Pflichten, die niemand einfach ignorieren kann.",
+    "en": "This contract gives rise to obligations for both sides that no one can simply ignore.",
+    "note": "Formal, chiefly legal register; in ordinary German one would say ergeben sich or entstehen."
+  },
+  "erfühlen": {
+    "de": "Der Arzt erfühlte den Bruch mit den Fingerspitzen, noch bevor das Röntgenbild fertig war.",
+    "en": "The doctor felt out the fracture with his fingertips, even before the X-ray was ready."
+  },
+  "erklimmen": {
+    "de": "Nach vier Stunden erklommen wir endlich den Gipfel und sahen den Bodensee unter uns liegen.",
+    "en": "After four hours we finally reached the summit and saw Lake Constance lying below us."
+  },
+  "erlesen": {
+    "de": "Für das Hochzeitsessen erlas der Küchenchef nur die besten Zutaten vom Wochenmarkt.",
+    "en": "For the wedding dinner the chef picked out only the finest ingredients from the farmers' market.",
+    "note": "As a verb erlesen is dated; today the word survives mainly as the adjective erlesen (\"choice, exquisite\"), which is this verb's old participle."
+  },
+  "erlügen": {
+    "de": "Die ganze Geschichte von dem gestohlenen Fahrrad hatte er von Anfang bis Ende erlogen.",
+    "en": "He had made up the entire story about the stolen bicycle from beginning to end."
+  },
+  "erschauen": {
+    "de": "Vom Ausguck erschaute der Matrose nach Wochen auf See endlich einen schmalen Streifen Land.",
+    "en": "From the lookout the sailor finally sighted a narrow strip of land after weeks at sea.",
+    "note": "Elevated register; everyday German would use erblicken or sichten."
+  },
+  "erschwingen": {
+    "de": "Mit zwei Nebenjobs erschwang sie am Ende doch das Studium in München.",
+    "en": "With two side jobs she managed, in the end, to afford her studies in Munich.",
+    "note": "Modern German almost always uses this verb inside a modal frame (etwas nicht erschwingen können) or as the adjective erschwinglich; the plain finite forms shown here are rare."
+  },
+  "erspüren": {
+    "de": "Erfahrene Hebammen erspüren mit den Händen, wie das Kind im Bauch der Mutter liegt.",
+    "en": "Experienced midwives can feel with their hands how the baby is lying in the mother's womb."
+  },
+  "erstaufführen": {
+    "de": "Kafkas Stück wurde 1924 in Berlin erstaufgeführt und danach jahrzehntelang nicht mehr gespielt.",
+    "en": "Kafka's play premiered in Berlin in 1924 and then went unperformed for decades.",
+    "note": "In practice this verb appears almost exclusively as the participle erstaufgeführt in passive sentences; a split main-clause form (führt … erstauf) is theoretically possible but hardly ever written."
+  },
+  "erstinken": {
+    "de": "Nach Wochen im warmen Keller war das Wasser in der Blumenvase völlig erstunken.",
+    "en": "After weeks in the warm cellar, the water in the flower vase had turned utterly foul.",
+    "gloss_note": "The literal sense \"become stinky\" is what the sentence shows, but in living German the verb survives almost only in the fixed pair erstunken und erlogen (\"a pack of lies\")."
+  },
+  "erstreiten": {
+    "de": "Die Belegschaft erstritt vor Gericht eine Nachzahlung für drei Jahre unbezahlter Überstunden.",
+    "en": "The workforce won a back payment in court for three years of unpaid overtime."
+  }
+}

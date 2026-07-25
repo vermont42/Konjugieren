@@ -1,0 +1,109 @@
+{
+  "verschalten": {
+    "de": "Der Elektriker verschaltet die Solarmodule so, dass sie auch bei Teilverschattung noch Strom liefern.",
+    "en": "The electrician wires the solar panels together so that they still produce power when partly shaded."
+  },
+  "verschauen": {
+    "de": "Sie hat sich beim ersten Tanz derart in ihn verschaut, dass sie den ganzen Abend strahlte.",
+    "en": "She fell for him so hard during the first dance that she beamed all evening.",
+    "note": "In this sense sich verschauen is Austrian/Bavarian and always reflexive; in standard German it more often means to misread something at a glance."
+  },
+  "verscheißen": {
+    "de": "Die Möwen haben die Windschutzscheibe verschissen, die er gerade erst geputzt hatte.",
+    "en": "The seagulls shat all over the windshield he had only just cleaned.",
+    "note": "Vulgar register; the idiom es sich bei jemandem verscheißen (to blow it with someone) is far more common in speech."
+  },
+  "verschreien": {
+    "de": "Das Viertel ist zu Unrecht als gefährlich verschrien, obwohl hier seit Jahren kaum etwas passiert.",
+    "en": "The neighborhood is unfairly decried as dangerous, even though almost nothing has happened here in years."
+  },
+  "verschätzen": {
+    "de": "Bei der Fahrzeit habe ich mich völlig verschätzt und kam eine halbe Stunde zu spät.",
+    "en": "I completely misjudged how long the drive would take and arrived half an hour late."
+  },
+  "verspeisen": {
+    "de": "Zum Nachtisch verspeiste er genüsslich das letzte Stück Schwarzwälder Kirschtorte.",
+    "en": "For dessert he happily polished off the last slice of Black Forest cake."
+  },
+  "verspüren": {
+    "de": "Nach dem langen Spaziergang durch den Schnee verspürte sie plötzlich großen Hunger.",
+    "en": "After the long walk through the snow she suddenly felt very hungry."
+  },
+  "verstehlen": {
+    "de": "Als der Redner endlich Luft holte, verstahl er sich leise aus dem überfüllten Saal.",
+    "en": "When the speaker finally paused for breath, he quietly slipped out of the packed hall.",
+    "gloss_note": "gloss says 'steal'; sich verstehlen is a literary, reflexive verb meaning to steal away, to slip off unnoticed, not to take something"
+  },
+  "versteigern": {
+    "de": "Das alte Klavier meiner Großmutter wurde am Samstag für dreihundert Euro versteigert.",
+    "en": "My grandmother's old piano was auctioned off for three hundred euros on Saturday."
+  },
+  "versteuern": {
+    "de": "Auch das Honorar für den Vortrag muss sie am Jahresende ordentlich versteuern.",
+    "en": "She has to properly declare and pay tax on the fee for the talk at the end of the year, too.",
+    "gloss_note": "gloss says 'put a tax on something'; versteuern is what the taxpayer does — pay tax on one's own income. Imposing a tax is besteuern."
+  },
+  "verstimmen": {
+    "de": "Seine schroffe Antwort verstimmte die ganze Runde, und danach sprach kaum noch jemand.",
+    "en": "His curt reply put everyone out of sorts, and after that hardly anyone spoke."
+  },
+  "verstinken": {
+    "de": "Die frisch lackierten Bretter müssen erst im Schuppen verstinken, bevor wir sie ins Haus holen.",
+    "en": "The freshly varnished boards have to sit in the shed until the smell wears off before we bring them inside.",
+    "note": "Rare and colloquial; the verb means to finish stinking, i.e. to lose its stench over time."
+  },
+  "verstrahlen": {
+    "de": "Nach dem Reaktorunfall war die ganze Umgebung für Jahrzehnte verstrahlt.",
+    "en": "After the reactor accident the whole surrounding area was contaminated with radiation for decades."
+  },
+  "verstreben": {
+    "de": "Die Zimmerleute verstrebten den Dachstuhl mit kräftigen Balken, damit er dem Sturm standhält.",
+    "en": "The carpenters braced the roof truss with sturdy beams so it would withstand the storm.",
+    "gloss_note": "gloss gives the noun 'strut'; verstreben means to brace or reinforce a structure with struts"
+  },
+  "vertippen": {
+    "de": "Beim Passwort habe ich mich zweimal vertippt und wurde prompt aus dem Konto ausgesperrt.",
+    "en": "I mistyped the password twice and was promptly locked out of my account."
+  },
+  "vertrinken": {
+    "de": "Er hat seinen ganzen Wochenlohn in einer einzigen Nacht in der Kneipe vertrunken.",
+    "en": "He drank away his entire week's wages in a single night at the pub."
+  },
+  "verwachsen": {
+    "de": "Der schmale Pfad zum See ist inzwischen völlig mit Brombeeren verwachsen.",
+    "en": "The narrow path down to the lake has become completely overgrown with brambles."
+  },
+  "verwaschen": {
+    "de": "Die vielen heißen Wäschen haben die Farben des T-Shirts ganz verwaschen.",
+    "en": "All those hot washes have left the colors of the T-shirt completely faded."
+  },
+  "verwiegen": {
+    "de": "Der Metzger verwiegt die Wurst und klebt das Preisschild auf die Packung.",
+    "en": "The butcher weighs out the sausage and sticks the price tag on the package."
+  },
+  "verwählen": {
+    "de": "„Entschuldigung, ich habe mich verwählt“, murmelte er und legte schnell wieder auf.",
+    "en": "\"Sorry, wrong number,\" he mumbled and quickly hung up again."
+  },
+  "verzeigen": {
+    "de": "Wer in Zürich bei Rot über die Straße geht, wird von der Polizei verzeigt.",
+    "en": "Anyone who crosses the street on a red light in Zurich gets reported to the authorities by the police.",
+    "note": "Swiss usage: verzeigen means to report someone for an offense; in Germany one would say anzeigen."
+  },
+  "verzählen": {
+    "de": "Beim Auszählen der Stimmen hat er sich verzählt und musste noch einmal von vorn anfangen.",
+    "en": "He miscounted while tallying the votes and had to start all over again."
+  },
+  "verärgern": {
+    "de": "Mit seiner ständigen Nörgelei verärgerte er selbst die geduldigsten Kollegen.",
+    "en": "With his constant griping he annoyed even the most patient colleagues."
+  },
+  "veräußern": {
+    "de": "Die Familie musste das Grundstück am Waldrand veräußern, um die Schulden zu begleichen.",
+    "en": "The family had to sell off the plot at the edge of the woods in order to settle their debts."
+  },
+  "vollladen": {
+    "de": "Wir laden den Anhänger mit Brennholz voll, bevor der erste Schnee fällt.",
+    "en": "We load the trailer up with firewood before the first snow falls."
+  }
+}

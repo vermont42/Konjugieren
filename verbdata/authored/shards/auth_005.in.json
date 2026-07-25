@@ -1,0 +1,130 @@
+{
+  "shard": 5,
+  "verbs": [
+    {
+      "verb": "antragen",
+      "gloss": "offer",
+      "separability": "separable"
+    },
+    {
+      "verb": "antrinken",
+      "gloss": "get drunk or tipsy",
+      "separability": "separable"
+    },
+    {
+      "verb": "anwarten",
+      "gloss": "await",
+      "separability": "separable"
+    },
+    {
+      "verb": "anwerfen",
+      "gloss": "throw at",
+      "separability": "separable"
+    },
+    {
+      "verb": "anzahlen",
+      "gloss": "make a down payment, put down a deposit",
+      "separability": "separable"
+    },
+    {
+      "verb": "anzählen",
+      "gloss": "count down",
+      "separability": "separable"
+    },
+    {
+      "verb": "aufbacken",
+      "gloss": "crisp up",
+      "separability": "separable"
+    },
+    {
+      "verb": "aufbekommen",
+      "gloss": "open",
+      "separability": "separable"
+    },
+    {
+      "verb": "aufbellen",
+      "gloss": "suddenly bark",
+      "separability": "separable"
+    },
+    {
+      "verb": "aufbiegen",
+      "gloss": "bend up, bend open",
+      "separability": "separable"
+    },
+    {
+      "verb": "aufbieten",
+      "gloss": "muster, field",
+      "separability": "separable"
+    },
+    {
+      "verb": "aufbinden",
+      "gloss": "untie, undo",
+      "separability": "separable"
+    },
+    {
+      "verb": "aufbrauchen",
+      "gloss": "deplete, exhaust, use up",
+      "separability": "separable"
+    },
+    {
+      "verb": "aufdrehen",
+      "gloss": "screw open, unscrew",
+      "separability": "separable"
+    },
+    {
+      "verb": "aufdringen",
+      "gloss": "impose",
+      "separability": "separable"
+    },
+    {
+      "verb": "aufeinanderfolgen",
+      "gloss": "follow one another",
+      "separability": "separable"
+    },
+    {
+      "verb": "aufeinanderlegen",
+      "gloss": "lay on top of each other",
+      "separability": "separable"
+    },
+    {
+      "verb": "aufeinanderliegen",
+      "gloss": "lie on top of each other",
+      "separability": "separable"
+    },
+    {
+      "verb": "aufglänzen",
+      "gloss": "gleam, glimmer",
+      "separability": "separable"
+    },
+    {
+      "verb": "aufkleben",
+      "gloss": "glue on, stick on",
+      "separability": "separable"
+    },
+    {
+      "verb": "aufknüpfen",
+      "gloss": "hang",
+      "separability": "separable"
+    },
+    {
+      "verb": "aufkochen",
+      "gloss": "boil up, bring to a boil",
+      "separability": "separable"
+    },
+    {
+      "verb": "aufleuchten",
+      "gloss": "light up, become bright, flash",
+      "separability": "separable"
+    },
+    {
+      "verb": "aufmischen",
+      "gloss": "shake up, shuffle up",
+      "separability": "separable"
+    },
+    {
+      "verb": "aufnähen",
+      "gloss": "sew something over something",
+      "separability": "separable"
+    }
+  ]
+}

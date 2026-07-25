@@ -1,0 +1,110 @@
+{
+  "klugreden": {
+    "de": "Statt endlich mit anzupacken, redet er in der Küche wieder nur klug.",
+    "en": "Instead of finally pitching in, he's once again just playing the know-it-all in the kitchen."
+  },
+  "kneifen": {
+    "de": "Der Kleine kniff seine Schwester in den Arm, weil sie ihm den Keks weggenommen hatte.",
+    "en": "The little boy pinched his sister's arm because she had taken his cookie."
+  },
+  "kneipen": {
+    "de": "Die Großmutter kneipte ihn zur Begrüßung sanft in die Wange, wie man es dort auf dem Land tut.",
+    "en": "His grandmother gave his cheek a gentle pinch in greeting, the way people do out there in the countryside.",
+    "note": "kneipen is a regional (chiefly northern/Low German) variant of kneifen; a modern reader will more likely know it in the unrelated student sense 'to go drinking' (Kneipe)"
+  },
+  "krankfeiern": {
+    "de": "Er feiert schon wieder krank, obwohl ihn gestern jemand beim Angeln gesehen hat.",
+    "en": "He's calling in sick again, even though someone saw him out fishing yesterday."
+  },
+  "krankmachen": {
+    "de": "Der ständige Lärm von der Baustelle macht die Anwohner auf Dauer wirklich krank.",
+    "en": "The constant noise from the construction site is genuinely making the residents ill over time.",
+    "gloss_note": "gloss 'make sick' is right for this transitive use; colloquially krankmachen is also used intransitively for skiving off work like krankfeiern"
+  },
+  "krankmelden": {
+    "de": "Weil das Fieber nicht sank, meldete sie sich für den Rest der Woche krank.",
+    "en": "Since her fever wouldn't come down, she called in sick for the rest of the week."
+  },
+  "krauchen": {
+    "de": "Das Kind krauchte auf allen vieren unter den Tisch, um den Ball hervorzuholen.",
+    "en": "The child crawled under the table on all fours to fetch the ball.",
+    "note": "krauchen is a colloquial/regional (largely northern and central German) counterpart to kriechen"
+  },
+  "kundgeben": {
+    "de": "Der Bürgermeister gab seinen Rücktritt vor der versammelten Presse kund.",
+    "en": "The mayor announced his resignation before the assembled press."
+  },
+  "kurzarbeiten": {
+    "de": "Weil die Aufträge ausbleiben, arbeitet die halbe Belegschaft seit März kurz.",
+    "en": "With orders failing to come in, half the workforce has been on short-time hours since March."
+  },
+  "kurzschließen": {
+    "de": "Die Diebe schlossen die Zündung kurz und fuhren mit dem alten Wagen davon.",
+    "en": "The thieves hot-wired the ignition and drove off in the old car."
+  },
+  "kürzertreten": {
+    "de": "Nach dem Herzinfarkt musste mein Vater beruflich deutlich kürzertreten.",
+    "en": "After his heart attack, my father had to cut back considerably at work.",
+    "gloss_note": "gloss says 'economize'; kürzertreten more broadly means to scale back or take it easier, most often with workload or commitments rather than money"
+  },
+  "langmachen": {
+    "de": "Der Junge machte sich lang, um an die Keksdose im obersten Regal zu kommen.",
+    "en": "The boy stretched himself out to reach the cookie tin on the top shelf.",
+    "gloss_note": "gloss 'stretch' fits, but the verb is essentially reflexive: sich langmachen, to stretch oneself out or up"
+  },
+  "leerlaufen": {
+    "de": "Der Tank lief langsam leer, weil unter dem Auto ein Schlauch undicht war.",
+    "en": "The tank slowly drained because a hose under the car was leaking."
+  },
+  "leerrauchen": {
+    "de": "Über Nacht hatten die Gäste auf dem Balkon die ganze Schachtel leergeraucht.",
+    "en": "Over the course of the night, the guests out on the balcony smoked the whole pack."
+  },
+  "lockermachen": {
+    "de": "Für das neue Rennrad musste er am Ende doch achthundert Euro lockermachen.",
+    "en": "In the end he had to shell out eight hundred euros for the new road bike.",
+    "gloss_note": "gloss says 'loosen'; written as one word, lockermachen is chiefly the colloquial 'cough up money'. The literal sense is spelled locker machen."
+  },
+  "losbrechen": {
+    "de": "Als das Tor fiel, brach im Stadion ein ohrenbetäubender Jubel los.",
+    "en": "When the goal went in, a deafening cheer erupted in the stadium.",
+    "gloss_note": "gloss 'break off' covers the rarer transitive use (einen Ast losbrechen); the everyday sense is intransitive: a storm, panic, or cheering breaks out"
+  },
+  "loslachen": {
+    "de": "Als er über die eigene Türschwelle stolperte, lachten alle Gäste laut los.",
+    "en": "When he tripped over his own doorstep, all the guests burst out laughing."
+  },
+  "loslaufen": {
+    "de": "Kaum war die Ampel grün, lief sie los, um den Bus noch zu erwischen.",
+    "en": "The moment the light turned green, she took off running to catch the bus."
+  },
+  "lossagen": {
+    "de": "Nach dem Streit sagte er sich öffentlich von seiner alten Partei los.",
+    "en": "After the falling-out, he publicly renounced his old party."
+  },
+  "losschießen": {
+    "de": "Die Wachen schossen sofort los, als sich der Wagen der Sperre näherte.",
+    "en": "The guards opened fire immediately when the car approached the barrier.",
+    "gloss_note": "the gloss sense is correct; in everyday speech the imperative schieß los! far more often means 'out with it, fire away'"
+  },
+  "lostreten": {
+    "de": "Mit einer einzigen Bemerkung trat er im Büro eine wochenlange Debatte los.",
+    "en": "With a single remark he set off a debate in the office that lasted for weeks."
+  },
+  "losziehen": {
+    "de": "Am Samstagabend zogen die Freunde gemeinsam los, um die neue Bar auszuprobieren.",
+    "en": "On Saturday evening the friends headed out together to try the new bar."
+  },
+  "madigmachen": {
+    "de": "Mit seiner ständigen Nörgelei machte er mir die Vorfreude auf den Urlaub gründlich madig.",
+    "en": "With his constant griping he thoroughly spoiled my anticipation of the vacation."
+  },
+  "malnehmen": {
+    "de": "Wenn du die Länge mit der Breite malnimmst, bekommst du die Fläche des Zimmers.",
+    "en": "If you multiply the length by the width, you get the area of the room."
+  },
+  "mattsetzen": {
+    "de": "Mit einem überraschenden Damenopfer setzte die Zwölfjährige den Großmeister matt.",
+    "en": "With a surprising queen sacrifice, the twelve-year-old checkmated the grandmaster."
+  }
+}

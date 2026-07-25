@@ -1,0 +1,130 @@
+{
+  "shard": 12,
+  "verbs": [
+    {
+      "verb": "darüberliegen",
+      "gloss": "overlay or cover",
+      "separability": "separable"
+    },
+    {
+      "verb": "davonreisen",
+      "gloss": "travel away",
+      "separability": "separable"
+    },
+    {
+      "verb": "davonrennen",
+      "gloss": "run away",
+      "separability": "separable"
+    },
+    {
+      "verb": "davorhalten",
+      "gloss": "hold something in front of something",
+      "separability": "separable"
+    },
+    {
+      "verb": "dazufügen",
+      "gloss": "add to something",
+      "separability": "separable"
+    },
+    {
+      "verb": "dazwischenkommen",
+      "gloss": "get in the way",
+      "separability": "separable"
+    },
+    {
+      "verb": "dazwischenwerfen",
+      "gloss": "throw in between",
+      "separability": "separable"
+    },
+    {
+      "verb": "dichthalten",
+      "gloss": "stay sealed",
+      "separability": "separable"
+    },
+    {
+      "verb": "dichtmachen",
+      "gloss": "close off, seal up",
+      "separability": "separable"
+    },
+    {
+      "verb": "drangehen",
+      "gloss": "approach, touch, handle, use something",
+      "separability": "separable"
+    },
+    {
+      "verb": "drankommen",
+      "gloss": "touch inadvertently",
+      "separability": "separable"
+    },
+    {
+      "verb": "draufdrücken",
+      "gloss": "press, push",
+      "separability": "separable"
+    },
+    {
+      "verb": "draufgehen",
+      "gloss": "fall apart",
+      "separability": "separable"
+    },
+    {
+      "verb": "draufhaben",
+      "gloss": "be able to, know one's stuff",
+      "separability": "separable"
+    },
+    {
+      "verb": "draufhalten",
+      "gloss": "hold something on something",
+      "separability": "separable"
+    },
+    {
+      "verb": "draufkommen",
+      "gloss": "guess, find out",
+      "separability": "separable"
+    },
+    {
+      "verb": "drauflosarbeiten",
+      "gloss": "get straight down to work",
+      "separability": "separable"
+    },
+    {
+      "verb": "drauflosfahren",
+      "gloss": "hit the road without a chosen destination",
+      "separability": "separable"
+    },
+    {
+      "verb": "drauflosreden",
+      "gloss": "rattle on, prattle",
+      "separability": "separable"
+    },
+    {
+      "verb": "draufstehen",
+      "gloss": "stand on",
+      "separability": "separable"
+    },
+    {
+      "verb": "drunterhalten",
+      "gloss": "hold something underneath something",
+      "separability": "separable"
+    },
+    {
+      "verb": "drüberhalten",
+      "gloss": "hold something over something, cover",
+      "separability": "separable"
+    },
+    {
+      "verb": "durchbeißen",
+      "gloss": "bite through something",
+      "separability": "separable"
+    },
+    {
+      "verb": "durchbrennen",
+      "gloss": "continue to burn, burn through",
+      "separability": "separable"
+    },
+    {
+      "verb": "durcheinanderbringen",
+      "gloss": "jumble",
+      "separability": "separable"
+    }
+  ]
+}

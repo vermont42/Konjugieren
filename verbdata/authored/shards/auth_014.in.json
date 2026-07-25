@@ -1,0 +1,130 @@
+{
+  "shard": 14,
+  "verbs": [
+    {
+      "verb": "durchstellen",
+      "gloss": "put through",
+      "separability": "separable"
+    },
+    {
+      "verb": "durchstreichen",
+      "gloss": "cross out, strike through",
+      "separability": "separable"
+    },
+    {
+      "verb": "durchtrennen",
+      "gloss": "cut in two, sever",
+      "separability": "separable"
+    },
+    {
+      "verb": "durchwachsen",
+      "gloss": "grow through",
+      "separability": "separable"
+    },
+    {
+      "verb": "durchzählen",
+      "gloss": "count up",
+      "separability": "separable"
+    },
+    {
+      "verb": "einarbeiten",
+      "gloss": "incorporate",
+      "separability": "separable"
+    },
+    {
+      "verb": "einbegreifen",
+      "gloss": "involve, include, encompass",
+      "separability": "separable"
+    },
+    {
+      "verb": "einbehalten",
+      "gloss": "withhold",
+      "separability": "separable"
+    },
+    {
+      "verb": "einbekennen",
+      "gloss": "acknowledge",
+      "separability": "separable"
+    },
+    {
+      "verb": "einbestellen",
+      "gloss": "summon",
+      "separability": "separable"
+    },
+    {
+      "verb": "einblasen",
+      "gloss": "blow into",
+      "separability": "separable"
+    },
+    {
+      "verb": "eindecken",
+      "gloss": "cover, roof",
+      "separability": "separable"
+    },
+    {
+      "verb": "eindenken",
+      "gloss": "familiarize oneself",
+      "separability": "separable"
+    },
+    {
+      "verb": "eindrehen",
+      "gloss": "screw in",
+      "separability": "separable"
+    },
+    {
+      "verb": "eindrucken",
+      "gloss": "imprint",
+      "separability": "separable"
+    },
+    {
+      "verb": "einfahren",
+      "gloss": "drive in",
+      "separability": "separable"
+    },
+    {
+      "verb": "einfassen",
+      "gloss": "frame, enclose, hedge in",
+      "separability": "separable"
+    },
+    {
+      "verb": "einflechten",
+      "gloss": "weave together",
+      "separability": "separable"
+    },
+    {
+      "verb": "einfühlen",
+      "gloss": "empathize, put oneself in someone's shoes",
+      "separability": "separable"
+    },
+    {
+      "verb": "eingießen",
+      "gloss": "pour in",
+      "separability": "separable"
+    },
+    {
+      "verb": "einheben",
+      "gloss": "collect a fee",
+      "separability": "separable"
+    },
+    {
+      "verb": "einherfahren",
+      "gloss": "drive along",
+      "separability": "separable"
+    },
+    {
+      "verb": "einherschreiten",
+      "gloss": "stride along",
+      "separability": "separable"
+    },
+    {
+      "verb": "einjagen",
+      "gloss": "fill with",
+      "separability": "separable"
+    },
+    {
+      "verb": "einkochen",
+      "gloss": "boil down",
+      "separability": "separable"
+    }
+  ]
+}

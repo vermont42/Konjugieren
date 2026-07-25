@@ -1,0 +1,111 @@
+{
+  "abladen": {
+    "de": "Die Möbelpacker laden den Lastwagen im Regen ab, so schnell sie nur können.",
+    "en": "The movers are unloading the truck in the rain as fast as they possibly can."
+  },
+  "ablagern": {
+    "de": "Im Wasserkocher lagert sich mit der Zeit Kalk ab, wenn man ihn nie entkalkt.",
+    "en": "Limescale gradually builds up in the kettle if you never descale it.",
+    "gloss_note": "gloss says 'deposit'; in everyday German ablagern is usually reflexive — a substance settles or is deposited somewhere"
+  },
+  "ableben": {
+    "de": "Der letzte Freiherr des Hauses ist 1912 abgelebt, und die Zeitungen widmeten ihm lange Nachrufe.",
+    "en": "The last baron of the house passed away in 1912, and the newspapers devoted long obituaries to him.",
+    "note": "ableben is elevated and dated as a verb; the noun das Ableben ('passing') is far more common in modern German"
+  },
+  "ableisten": {
+    "de": "Er leistete seinen Zivildienst in einem Altenheim in Bamberg ab, bevor er studierte.",
+    "en": "He completed his civilian service at a nursing home in Bamberg before starting university."
+  },
+  "abliefern": {
+    "de": "Der Bote lieferte das Paket noch am selben Abend im Büro ab und ließ sich unterschreiben.",
+    "en": "The courier delivered the package to the office that same evening and got a signature."
+  },
+  "abliegen": {
+    "de": "Das Dorf liegt so weit ab, dass der Bus nur zweimal am Tag dorthin fährt.",
+    "en": "The village lies so far off the beaten track that the bus only goes there twice a day.",
+    "note": "the finite verb is uncommon; the participle abgelegen ('remote') is the usual everyday form"
+  },
+  "ablöschen": {
+    "de": "Der Schmied löschte das glühende Eisen im Wasserfass ab, und es zischte laut.",
+    "en": "The blacksmith quenched the glowing iron in the water barrel, and it hissed loudly.",
+    "gloss_note": "gloss 'extinguish, put out' fits the quenching sense shown here; in cooking ablöschen means to deglaze a pan with wine or stock"
+  },
+  "abmachen": {
+    "de": "Wir haben abgemacht, dass jeder die Hälfte der Fahrtkosten übernimmt.",
+    "en": "We agreed that each of us would cover half the travel costs."
+  },
+  "abmelken": {
+    "de": "Der Bauer melkt die Kühe jeden Morgen kurz vor fünf ab, noch vor dem Frühstück.",
+    "en": "The farmer milks the cows every morning just before five, even before breakfast."
+  },
+  "abmischen": {
+    "de": "Der Tontechniker mischte das Album in drei Nächten ab, weil das Studio nur nachts frei war.",
+    "en": "The sound engineer mixed the album down over three nights, because the studio was only free at night."
+  },
+  "abneigen": {
+    "de": "Als die Kamera auf ihn schwenkte, neigte er den Kopf leicht ab und lächelte verlegen.",
+    "en": "When the camera panned to him, he tilted his head away slightly and smiled awkwardly.",
+    "note": "abneigen is rare as a finite verb; speakers today mostly know the adjective abgeneigt ('averse')"
+  },
+  "abnutzen": {
+    "de": "Die vielen Bergwanderungen haben die Sohlen meiner Stiefel völlig abgenutzt.",
+    "en": "All those mountain hikes have completely worn out the soles of my boots."
+  },
+  "abordnen": {
+    "de": "Die Behörde ordnete zwei Beamte für ein halbes Jahr nach Berlin ab.",
+    "en": "The agency seconded two officials to Berlin for half a year."
+  },
+  "abpfeifen": {
+    "de": "Der Schiedsrichter pfiff das Spiel mitten in der Nachspielzeit ab, und die Fans protestierten lautstark.",
+    "en": "The referee blew the final whistle in the middle of stoppage time, and the fans protested loudly."
+  },
+  "abprüfen": {
+    "de": "Die Lehrerin prüfte die unregelmäßigen Verben vor der Klassenarbeit noch einmal gründlich ab.",
+    "en": "The teacher thoroughly quizzed us on the irregular verbs once more before the test."
+  },
+  "abregen": {
+    "de": "Reg dich ab, der Zug fährt erst in zwanzig Minuten!",
+    "en": "Calm down, the train doesn't leave for another twenty minutes!",
+    "gloss_note": "colloquial and reflexive: sich abregen — the gloss 'calm down' is right, but the verb needs a reflexive pronoun"
+  },
+  "abringen": {
+    "de": "Sie rang ihm nach langem Zögern das Versprechen ab, nie wieder zu spielen.",
+    "en": "After much hesitation, she wrung a promise out of him never to gamble again."
+  },
+  "abrinnen": {
+    "de": "Nach dem Gewitter rann das Regenwasser noch lange an der Fensterscheibe ab.",
+    "en": "After the thunderstorm, rainwater kept running down the windowpane for a long while."
+  },
+  "abrollen": {
+    "de": "Sie rollte den Draht vorsichtig von der Spule ab, damit er sich nicht verknotete.",
+    "en": "She carefully unwound the wire from the spool so that it wouldn't get tangled.",
+    "gloss_note": "gloss says 'roll off'; the everyday transitive sense is to unroll or unwind something from a coil"
+  },
+  "abrunden": {
+    "de": "Ein kräftiger Espresso rundet so ein schweres Essen erst richtig ab.",
+    "en": "A strong espresso is what really rounds off a heavy meal like that."
+  },
+  "abrutschen": {
+    "de": "Auf dem nassen Fels rutschte sein Fuß ab, doch er hielt sich am Seil fest.",
+    "en": "His foot slipped on the wet rock, but he held on to the rope."
+  },
+  "abrücken": {
+    "de": "Er rückte mit dem Stuhl vom Tisch ab, um Platz für den Kinderwagen zu machen.",
+    "en": "He moved his chair away from the table to make room for the stroller."
+  },
+  "absaufen": {
+    "de": "In der überfluteten Unterführung ist ihm der Motor abgesoffen, und er musste den Wagen schieben.",
+    "en": "His engine flooded and died in the flooded underpass, and he had to push the car.",
+    "gloss_note": "colloquial; besides 'drown', absaufen is the standard informal way to say an engine flooded out or a cellar went under water"
+  },
+  "absaugen": {
+    "de": "Der Zahnarzt saugte während der Behandlung ständig Speichel ab, damit ich schlucken konnte.",
+    "en": "The dentist kept suctioning off saliva during the treatment so that I could swallow."
+  },
+  "abschauen": {
+    "de": "Das Rezept für den Hefezopf habe ich mir bei meiner Oma abgeschaut.",
+    "en": "I picked up the recipe for the braided sweet bread by watching my grandmother.",
+    "note": "also used for copying off a classmate in an exam: beim Nachbarn abschauen"
+  }
+}

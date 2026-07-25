@@ -1,0 +1,130 @@
+{
+  "shard": 4,
+  "verbs": [
+    {
+      "verb": "anmischen",
+      "gloss": "create by mixing",
+      "separability": "separable"
+    },
+    {
+      "verb": "anpreisen",
+      "gloss": "praise, advertise",
+      "separability": "separable"
+    },
+    {
+      "verb": "anprüfen",
+      "gloss": "examine in a cursory mode",
+      "separability": "separable"
+    },
+    {
+      "verb": "anrauchen",
+      "gloss": "light up",
+      "separability": "separable"
+    },
+    {
+      "verb": "anreihen",
+      "gloss": "line up, add to a row",
+      "separability": "separable"
+    },
+    {
+      "verb": "anreisen",
+      "gloss": "travel, take a trip",
+      "separability": "separable"
+    },
+    {
+      "verb": "anreißen",
+      "gloss": "tear",
+      "separability": "separable"
+    },
+    {
+      "verb": "anrücken",
+      "gloss": "move in",
+      "separability": "separable"
+    },
+    {
+      "verb": "ansaufen",
+      "gloss": "get drunk or tipsy",
+      "separability": "separable"
+    },
+    {
+      "verb": "anschaffen",
+      "gloss": "get, obtain in particular by bargain",
+      "separability": "separable"
+    },
+    {
+      "verb": "anschalten",
+      "gloss": "switch on",
+      "separability": "separable"
+    },
+    {
+      "verb": "anscheinen",
+      "gloss": "appear, seem",
+      "separability": "separable"
+    },
+    {
+      "verb": "anscheißen",
+      "gloss": "bawl out, chew out, bollock",
+      "separability": "separable"
+    },
+    {
+      "verb": "anschießen",
+      "gloss": "injure by shooting, hit with shots",
+      "separability": "separable"
+    },
+    {
+      "verb": "anschleichen",
+      "gloss": "sneak up on",
+      "separability": "separable"
+    },
+    {
+      "verb": "anschmeißen",
+      "gloss": "turn on, fire up",
+      "separability": "separable"
+    },
+    {
+      "verb": "anschwellen",
+      "gloss": "swell, rise or bulge",
+      "separability": "separable"
+    },
+    {
+      "verb": "ansenken",
+      "gloss": "countersink",
+      "separability": "separable"
+    },
+    {
+      "verb": "ansinnen",
+      "gloss": "designate",
+      "separability": "separable"
+    },
+    {
+      "verb": "ansteuern",
+      "gloss": "head for, make for, strive for",
+      "separability": "separable"
+    },
+    {
+      "verb": "anstimmen",
+      "gloss": "intone",
+      "separability": "separable"
+    },
+    {
+      "verb": "ansuchen",
+      "gloss": "submit an application",
+      "separability": "separable"
+    },
+    {
+      "verb": "antanzen",
+      "gloss": "approach or arrive dancing",
+      "separability": "separable"
+    },
+    {
+      "verb": "antauchen",
+      "gloss": "give something or someone a push",
+      "separability": "separable"
+    },
+    {
+      "verb": "antippen",
+      "gloss": "tap",
+      "separability": "separable"
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "shard": 17,
+  "verbs": [
+    {
+      "verb": "entpacken",
+      "gloss": "unzip, decompress, unpack, unpackage",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "entreißen",
+      "gloss": "wrest",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "entsichern",
+      "gloss": "release the safety",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "entsperren",
+      "gloss": "unlock",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "entspiegeln",
+      "gloss": "apply an antireflection coating",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "entstammen",
+      "gloss": "come from",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "entstören",
+      "gloss": "remove interference",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "entwarnen",
+      "gloss": "give the all-clear",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "entwerten",
+      "gloss": "devalue",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "entzweigehen",
+      "gloss": "break",
+      "separability": "separable"
+    },
+    {
+      "verb": "entäußern",
+      "gloss": "give up, renounce, relinquish",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "erahnen",
+      "gloss": "guess, surmise",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "erbeten",
+      "gloss": "attain by praying",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "erfangen",
+      "gloss": "catch something or someone",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "erfließen",
+      "gloss": "ensue, arise, result",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "erfühlen",
+      "gloss": "sense by touching",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "erklimmen",
+      "gloss": "climb, ascend",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "erlesen",
+      "gloss": "select, choose",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "erlügen",
+      "gloss": "fabricate",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "erschauen",
+      "gloss": "sight",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "erschwingen",
+      "gloss": "afford something",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "erspüren",
+      "gloss": "sense something",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "erstaufführen",
+      "gloss": "premiere something",
+      "separability": "separable"
+    },
+    {
+      "verb": "erstinken",
+      "gloss": "become stinky",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "erstreiten",
+      "gloss": "win, gain, achieve",
+      "separability": "inseparable"
+    }
+  ]
+}

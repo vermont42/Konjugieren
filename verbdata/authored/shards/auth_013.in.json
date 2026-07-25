@@ -1,0 +1,130 @@
+{
+  "shard": 13,
+  "verbs": [
+    {
+      "verb": "durcheinanderkommen",
+      "gloss": "get confused",
+      "separability": "separable"
+    },
+    {
+      "verb": "durchfließen",
+      "gloss": "flow through",
+      "separability": "separable"
+    },
+    {
+      "verb": "durchfragen",
+      "gloss": "ask one's way through",
+      "separability": "separable"
+    },
+    {
+      "verb": "durchgeben",
+      "gloss": "pass something through an opening",
+      "separability": "separable"
+    },
+    {
+      "verb": "durchgraben",
+      "gloss": "dig through",
+      "separability": "separable"
+    },
+    {
+      "verb": "durchgreifen",
+      "gloss": "grasp through",
+      "separability": "separable"
+    },
+    {
+      "verb": "durchhängen",
+      "gloss": "sag",
+      "separability": "separable"
+    },
+    {
+      "verb": "durchklingen",
+      "gloss": "sound through, come through",
+      "separability": "separable"
+    },
+    {
+      "verb": "durchkriechen",
+      "gloss": "crawl through",
+      "separability": "separable"
+    },
+    {
+      "verb": "durchleiten",
+      "gloss": "send through, pass through, route through",
+      "separability": "separable"
+    },
+    {
+      "verb": "durchliegen",
+      "gloss": "wear out",
+      "separability": "separable"
+    },
+    {
+      "verb": "durchmischen",
+      "gloss": "mix, mix well and thoroughly",
+      "separability": "separable"
+    },
+    {
+      "verb": "durchnehmen",
+      "gloss": "cover, teach about",
+      "separability": "separable"
+    },
+    {
+      "verb": "durchrinnen",
+      "gloss": "trickle through",
+      "separability": "separable"
+    },
+    {
+      "verb": "durchsagen",
+      "gloss": "announce over loudspeakers or on the radio",
+      "separability": "separable"
+    },
+    {
+      "verb": "durchscheinen",
+      "gloss": "shine through",
+      "separability": "separable"
+    },
+    {
+      "verb": "durchschlafen",
+      "gloss": "sleep undisturbed",
+      "separability": "separable"
+    },
+    {
+      "verb": "durchschneiden",
+      "gloss": "cut through",
+      "separability": "separable"
+    },
+    {
+      "verb": "durchschwimmen",
+      "gloss": "swim",
+      "separability": "separable"
+    },
+    {
+      "verb": "durchschütteln",
+      "gloss": "give something a good shake, churn",
+      "separability": "separable"
+    },
+    {
+      "verb": "durchsehen",
+      "gloss": "look through",
+      "separability": "separable"
+    },
+    {
+      "verb": "durchspielen",
+      "gloss": "play out to its conclusion)",
+      "separability": "separable"
+    },
+    {
+      "verb": "durchstarten",
+      "gloss": "go around",
+      "separability": "separable"
+    },
+    {
+      "verb": "durchstechen",
+      "gloss": "prick, puncture, pierce",
+      "separability": "separable"
+    },
+    {
+      "verb": "durchsteigen",
+      "gloss": "climb through something",
+      "separability": "separable"
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "shard": 41,
+  "verbs": [
+    {
+      "verb": "zurückstecken",
+      "gloss": "put back, stick back",
+      "separability": "separable"
+    },
+    {
+      "verb": "zurückverfolgen",
+      "gloss": "trace back",
+      "separability": "separable"
+    },
+    {
+      "verb": "zurückversetzen",
+      "gloss": "transfer back, shift back",
+      "separability": "separable"
+    },
+    {
+      "verb": "zurückwirken",
+      "gloss": "have a retroactive effect",
+      "separability": "separable"
+    },
+    {
+      "verb": "zusammenfließen",
+      "gloss": "flow into each other",
+      "separability": "separable"
+    },
+    {
+      "verb": "zusammengeben",
+      "gloss": "wed, marry",
+      "separability": "separable"
+    },
+    {
+      "verb": "zusammenhauen",
+      "gloss": "beat up, rough up",
+      "separability": "separable"
+    },
+    {
+      "verb": "zusammenkehren",
+      "gloss": "pile up",
+      "separability": "separable"
+    },
+    {
+      "verb": "zusammenkleben",
+      "gloss": "glue",
+      "separability": "separable"
+    },
+    {
+      "verb": "zusammenkneifen",
+      "gloss": "pinch together, squeeze together",
+      "separability": "separable"
+    },
+    {
+      "verb": "zusammenlügen",
+      "gloss": "boldly lie",
+      "separability": "separable"
+    },
+    {
+      "verb": "zusammenrechnen",
+      "gloss": "add up, sum up",
+      "separability": "separable"
+    },
+    {
+      "verb": "zusammenreißen",
+      "gloss": "pull oneself together",
+      "separability": "separable"
+    },
+    {
+      "verb": "zusammenräumen",
+      "gloss": "pack up",
+      "separability": "separable"
+    },
+    {
+      "verb": "zusammensinken",
+      "gloss": "collapse, sink down",
+      "separability": "separable"
+    },
+    {
+      "verb": "zusammenspielen",
+      "gloss": "collude",
+      "separability": "separable"
+    },
+    {
+      "verb": "zusammenspinnen",
+      "gloss": "dream up",
+      "separability": "separable"
+    },
+    {
+      "verb": "zusammenstoßen",
+      "gloss": "collide",
+      "separability": "separable"
+    },
+    {
+      "verb": "zusammenstreben",
+      "gloss": "converge",
+      "separability": "separable"
+    },
+    {
+      "verb": "zusammenstürzen",
+      "gloss": "collapse",
+      "separability": "separable"
+    },
+    {
+      "verb": "zusammenwachsen",
+      "gloss": "coalesce",
+      "separability": "separable"
+    },
+    {
+      "verb": "zusammenzählen",
+      "gloss": "add up, add together, sum up",
+      "separability": "separable"
+    },
+    {
+      "verb": "zuscheißen",
+      "gloss": "cover with faeces",
+      "separability": "separable"
+    },
+    {
+      "verb": "zuschießen",
+      "gloss": "pass",
+      "separability": "separable"
+    },
+    {
+      "verb": "zuschwellen",
+      "gloss": "swell up",
+      "separability": "separable"
+    }
+  ]
+}

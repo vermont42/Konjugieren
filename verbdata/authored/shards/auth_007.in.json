@@ -1,0 +1,130 @@
+{
+  "shard": 7,
+  "verbs": [
+    {
+      "verb": "ausdienen",
+      "gloss": "complete one's military career",
+      "separability": "separable"
+    },
+    {
+      "verb": "ausdrucken",
+      "gloss": "print out",
+      "separability": "separable"
+    },
+    {
+      "verb": "auseinandernehmen",
+      "gloss": "dismantle",
+      "separability": "separable"
+    },
+    {
+      "verb": "auseinanderreißen",
+      "gloss": "rip apart, tear apart, pull apart",
+      "separability": "separable"
+    },
+    {
+      "verb": "auseinanderstreben",
+      "gloss": "diverge",
+      "separability": "separable"
+    },
+    {
+      "verb": "ausfassen",
+      "gloss": "receive a sentence by a court",
+      "separability": "separable"
+    },
+    {
+      "verb": "ausfechten",
+      "gloss": "fight out",
+      "separability": "separable"
+    },
+    {
+      "verb": "ausfließen",
+      "gloss": "flow out",
+      "separability": "separable"
+    },
+    {
+      "verb": "ausfolgen",
+      "gloss": "follow, accompany",
+      "separability": "separable"
+    },
+    {
+      "verb": "ausfällen",
+      "gloss": "precipitate",
+      "separability": "separable"
+    },
+    {
+      "verb": "ausgreifen",
+      "gloss": "make a horse stride, take wide steps",
+      "separability": "separable"
+    },
+    {
+      "verb": "ausklingen",
+      "gloss": "come to an end, draw to a close",
+      "separability": "separable"
+    },
+    {
+      "verb": "auskämpfen",
+      "gloss": "fight out",
+      "separability": "separable"
+    },
+    {
+      "verb": "auslagern",
+      "gloss": "swap",
+      "separability": "separable"
+    },
+    {
+      "verb": "auslauten",
+      "gloss": "have as an auslaut",
+      "separability": "separable"
+    },
+    {
+      "verb": "ausleben",
+      "gloss": "act out, live out",
+      "separability": "separable"
+    },
+    {
+      "verb": "ausleihen",
+      "gloss": "borrow",
+      "separability": "separable"
+    },
+    {
+      "verb": "ausleiten",
+      "gloss": "divert",
+      "separability": "separable"
+    },
+    {
+      "verb": "ausloben",
+      "gloss": "offer",
+      "separability": "separable"
+    },
+    {
+      "verb": "auspfeifen",
+      "gloss": "express one's discontent, indignation",
+      "separability": "separable"
+    },
+    {
+      "verb": "ausprägen",
+      "gloss": "develop",
+      "separability": "separable"
+    },
+    {
+      "verb": "ausrauchen",
+      "gloss": "smoke out",
+      "separability": "separable"
+    },
+    {
+      "verb": "ausreisen",
+      "gloss": "depart, exit",
+      "separability": "separable"
+    },
+    {
+      "verb": "ausreiten",
+      "gloss": "go for a ride on a horse",
+      "separability": "separable"
+    },
+    {
+      "verb": "ausrinnen",
+      "gloss": "leak out, flow out",
+      "separability": "separable"
+    }
+  ]
+}

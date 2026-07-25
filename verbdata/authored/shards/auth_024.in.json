@@ -1,0 +1,130 @@
+{
+  "shard": 24,
+  "verbs": [
+    {
+      "verb": "hochklappen",
+      "gloss": "fold upwards, tilt upwards",
+      "separability": "separable"
+    },
+    {
+      "verb": "hochkochen",
+      "gloss": "run high, boil",
+      "separability": "separable"
+    },
+    {
+      "verb": "hochkriechen",
+      "gloss": "creep up, crawl up",
+      "separability": "separable"
+    },
+    {
+      "verb": "hochnehmen",
+      "gloss": "take upstairs, take to an elevated place",
+      "separability": "separable"
+    },
+    {
+      "verb": "hochschauen",
+      "gloss": "look up",
+      "separability": "separable"
+    },
+    {
+      "verb": "hochschlafen",
+      "gloss": "sleep one's way up",
+      "separability": "separable"
+    },
+    {
+      "verb": "hochschätzen",
+      "gloss": "highly appreciate, esteem",
+      "separability": "separable"
+    },
+    {
+      "verb": "hochspielen",
+      "gloss": "play up",
+      "separability": "separable"
+    },
+    {
+      "verb": "hochstecken",
+      "gloss": "put up",
+      "separability": "separable"
+    },
+    {
+      "verb": "hochsteigen",
+      "gloss": "soar, ascend",
+      "separability": "separable"
+    },
+    {
+      "verb": "hochstellen",
+      "gloss": "turn up",
+      "separability": "separable"
+    },
+    {
+      "verb": "hochtragen",
+      "gloss": "carry up",
+      "separability": "separable"
+    },
+    {
+      "verb": "irreführen",
+      "gloss": "mislead",
+      "separability": "separable"
+    },
+    {
+      "verb": "kaltmachen",
+      "gloss": "off someone, duppy",
+      "separability": "separable"
+    },
+    {
+      "verb": "kaputtlachen",
+      "gloss": "crack up, laugh one's head off",
+      "separability": "separable"
+    },
+    {
+      "verb": "kaputtreißen",
+      "gloss": "break by tearing",
+      "separability": "separable"
+    },
+    {
+      "verb": "kehrtmachen",
+      "gloss": "turn back",
+      "separability": "separable"
+    },
+    {
+      "verb": "keifen",
+      "gloss": "nag, scold shrilly",
+      "separability": "simplex"
+    },
+    {
+      "verb": "klarlegen",
+      "gloss": "explain",
+      "separability": "separable"
+    },
+    {
+      "verb": "klarträumen",
+      "gloss": "lucid dream",
+      "separability": "separable"
+    },
+    {
+      "verb": "kleinhalten",
+      "gloss": "keep down",
+      "separability": "separable"
+    },
+    {
+      "verb": "kleinreden",
+      "gloss": "downplay, belittle",
+      "separability": "separable"
+    },
+    {
+      "verb": "kleinschreiben",
+      "gloss": "lowercase",
+      "separability": "separable"
+    },
+    {
+      "verb": "klieben",
+      "gloss": "cleave (regional)",
+      "separability": "simplex"
+    },
+    {
+      "verb": "klimmen",
+      "gloss": "clamber, climb",
+      "separability": "simplex"
+    }
+  ]
+}

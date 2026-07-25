@@ -1,0 +1,130 @@
+{
+  "shard": 40,
+  "verbs": [
+    {
+      "verb": "zufassen",
+      "gloss": "make a grab",
+      "separability": "separable"
+    },
+    {
+      "verb": "zufrieren",
+      "gloss": "freeze over",
+      "separability": "separable"
+    },
+    {
+      "verb": "zugraben",
+      "gloss": "cover over, fill by digging",
+      "separability": "separable"
+    },
+    {
+      "verb": "zuhaben",
+      "gloss": "be closed, keep closed",
+      "separability": "separable"
+    },
+    {
+      "verb": "zukaufen",
+      "gloss": "buy in addition",
+      "separability": "separable"
+    },
+    {
+      "verb": "zuklappen",
+      "gloss": "flip shut",
+      "separability": "separable"
+    },
+    {
+      "verb": "zuladen",
+      "gloss": "load weight or cargo",
+      "separability": "separable"
+    },
+    {
+      "verb": "zuliefern",
+      "gloss": "supply",
+      "separability": "separable"
+    },
+    {
+      "verb": "zupacken",
+      "gloss": "grab, grip, hold on",
+      "separability": "separable"
+    },
+    {
+      "verb": "zupasskommen",
+      "gloss": "be appropriate for",
+      "separability": "separable"
+    },
+    {
+      "verb": "zurechtlegen",
+      "gloss": "put in a desired state",
+      "separability": "separable"
+    },
+    {
+      "verb": "zureisen",
+      "gloss": "travel to a place and settle there",
+      "separability": "separable"
+    },
+    {
+      "verb": "zureiten",
+      "gloss": "ride towards someone or something",
+      "separability": "separable"
+    },
+    {
+      "verb": "zurückbauen",
+      "gloss": "return something to its original state",
+      "separability": "separable"
+    },
+    {
+      "verb": "zurückbilden",
+      "gloss": "regress",
+      "separability": "separable"
+    },
+    {
+      "verb": "zurückkaufen",
+      "gloss": "buy back",
+      "separability": "separable"
+    },
+    {
+      "verb": "zurücklächeln",
+      "gloss": "smile back",
+      "separability": "separable"
+    },
+    {
+      "verb": "zurückmachen",
+      "gloss": "go back, return",
+      "separability": "separable"
+    },
+    {
+      "verb": "zurückmelden",
+      "gloss": "report back",
+      "separability": "separable"
+    },
+    {
+      "verb": "zurückreichen",
+      "gloss": "reach back, date back",
+      "separability": "separable"
+    },
+    {
+      "verb": "zurückreisen",
+      "gloss": "travel back",
+      "separability": "separable"
+    },
+    {
+      "verb": "zurückrennen",
+      "gloss": "run back",
+      "separability": "separable"
+    },
+    {
+      "verb": "zurückräumen",
+      "gloss": "put back",
+      "separability": "separable"
+    },
+    {
+      "verb": "zurückschicken",
+      "gloss": "send back, return",
+      "separability": "separable"
+    },
+    {
+      "verb": "zurückschlagen",
+      "gloss": "retaliate",
+      "separability": "separable"
+    }
+  ]
+}

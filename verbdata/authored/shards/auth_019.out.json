@@ -1,0 +1,108 @@
+{
+  "fortgeben": {
+    "de": "Als die Wohnung zu klein wurde, gab sie das alte Klavier ihrer Nichte fort.",
+    "en": "When the apartment got too small, she gave the old piano away to her niece."
+  },
+  "fortlegen": {
+    "de": "Er legte das Buch fort und ging widerwillig ans klingelnde Telefon.",
+    "en": "He put the book aside and reluctantly went to answer the ringing phone."
+  },
+  "fortlocken": {
+    "de": "Mit einem Stück Wurst lockte der Nachbar unseren Hund vom Grundstück fort.",
+    "en": "With a piece of sausage, the neighbor lured our dog away from the property."
+  },
+  "fortreisen": {
+    "de": "Sie reiste schon am nächsten Morgen fort, ohne sich von uns zu verabschieden.",
+    "en": "She departed the very next morning without saying goodbye to us."
+  },
+  "forträumen": {
+    "de": "Nach dem Fest räumten wir die leeren Flaschen fort, bevor die Nachbarn klingelten.",
+    "en": "After the party we cleared away the empty bottles before the neighbors rang the bell."
+  },
+  "fortschaffen": {
+    "de": "Der Schrank war so schwer, dass wir ihn nur zu viert fortschaffen konnten.",
+    "en": "The wardrobe was so heavy that it took four of us to haul it away."
+  },
+  "fortwähren": {
+    "de": "Der Regen währte die ganze Nacht fort und hörte erst im Morgengrauen auf.",
+    "en": "The rain went on all night and stopped only at daybreak."
+  },
+  "fortzahlen": {
+    "de": "Der Arbeitgeber zahlt den Lohn im Krankheitsfall sechs Wochen lang fort.",
+    "en": "In case of illness, the employer continues to pay wages for six weeks."
+  },
+  "freihaben": {
+    "de": "Am Freitag habe ich frei und fahre mit dem Rad an den See.",
+    "en": "I have Friday off and I'm riding my bike out to the lake.",
+    "gloss_note": "gloss says 'be on vacation'; freihaben means to have time off from work or school generally, not specifically to be on vacation"
+  },
+  "freinehmen": {
+    "de": "Für den Umzug nahm er sich zwei Tage frei und lieh sich einen Transporter.",
+    "en": "He took two days off for the move and rented a van."
+  },
+  "freitesten": {
+    "de": "Nach drei Tagen Quarantäne konnte sie sich mit einem negativen Test freitesten.",
+    "en": "After three days of quarantine, she was able to test her way out of it with a negative result.",
+    "note": "recent coinage from the pandemic years: to end an isolation or quarantine requirement by producing a negative test"
+  },
+  "fremdgehen": {
+    "de": "Als sie merkte, dass er fremdging, zog sie noch am selben Abend aus.",
+    "en": "When she realized he was cheating on her, she moved out that same evening."
+  },
+  "gegenlesen": {
+    "de": "Bevor der Vertrag unterschrieben wird, liest eine Kollegin ihn noch einmal gegen.",
+    "en": "Before the contract gets signed, a colleague gives it one more proofread."
+  },
+  "gegenwirken": {
+    "de": "Mit täglicher Bewegung und weniger Salz kann man dem Bluthochdruck gegenwirken.",
+    "en": "With daily exercise and less salt, you can counteract high blood pressure.",
+    "note": "gegenwirken is rare in modern usage; entgegenwirken (with the same meaning and dative object) is far more common"
+  },
+  "gehaben": {
+    "de": "Zum Abschied rief der alte Wirt uns von der Tür aus „Gehabt euch wohl!“ nach.",
+    "en": "As we left, the old innkeeper called after us from the doorway, “Fare you well!”",
+    "gloss_note": "gloss says 'behave'; in living German gehaben survives almost only reflexively in the archaic farewell „gehab dich wohl“ / „gehabt euch wohl“"
+  },
+  "geradebiegen": {
+    "de": "Der Mechaniker bog den verbogenen Fahrradlenker mit zwei Handgriffen wieder gerade.",
+    "en": "The mechanic straightened the bent handlebars again with a couple of quick moves."
+  },
+  "geringhalten": {
+    "de": "Um die Kosten geringzuhalten, kochten wir im Urlaub fast jeden Abend selbst.",
+    "en": "To keep costs down, we cooked for ourselves almost every evening on vacation."
+  },
+  "geringschätzen": {
+    "de": "Er schätzte handwerkliche Arbeit gering, bis er selbst ein Regal bauen musste.",
+    "en": "He looked down on manual work until he had to build a shelf himself."
+  },
+  "geruhen": {
+    "de": "Gegen Mittag geruhte mein Sohn endlich, aus dem Bett zu steigen.",
+    "en": "Around noon my son finally deigned to get out of bed."
+  },
+  "gesundmelden": {
+    "de": "Nach zwei Wochen Grippe meldete er sich am Montag wieder gesund.",
+    "en": "After two weeks with the flu, he reported himself fit for work again on Monday."
+  },
+  "glattstellen": {
+    "de": "Vor dem Wochenende stellte der Händler alle offenen Positionen glatt.",
+    "en": "Before the weekend, the trader closed out all his open positions.",
+    "gloss_note": "gloss says 'balance'; glattstellen is a finance term meaning to close out or square an open position"
+  },
+  "glattziehen": {
+    "de": "Sie zog das Bettlaken noch einmal glatt, bevor die Gäste das Zimmer sahen.",
+    "en": "She smoothed out the bedsheet one more time before the guests saw the room."
+  },
+  "gleichbehandeln": {
+    "de": "Das Gesetz verlangt, dass der Betrieb alle Bewerber gleichbehandelt.",
+    "en": "The law requires the company to treat all applicants equally."
+  },
+  "gleichschalten": {
+    "de": "Die neue Regierung versuchte, die Presse gleichzuschalten und kritische Stimmen zum Schweigen zu bringen.",
+    "en": "The new government tried to bring the press into line and silence critical voices.",
+    "gloss_note": "gloss says 'synchronise'; the technical sense is obsolete and gleichschalten now almost always means forcing institutions into ideological conformity, with strong Nazi-era connotations"
+  },
+  "gleichsehen": {
+    "de": "Der Junge sieht seinem Großvater so sehr gleich, dass ihn im Dorf jeder erkennt.",
+    "en": "The boy looks so much like his grandfather that everyone in the village recognizes him."
+  }
+}

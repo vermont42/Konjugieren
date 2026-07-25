@@ -1,0 +1,130 @@
+{
+  "shard": 21,
+  "verbs": [
+    {
+      "verb": "herausbekommen",
+      "gloss": "figure out",
+      "separability": "separable"
+    },
+    {
+      "verb": "herausdringen",
+      "gloss": "come out, leak out",
+      "separability": "separable"
+    },
+    {
+      "verb": "herauskriegen",
+      "gloss": "work out, suss out",
+      "separability": "separable"
+    },
+    {
+      "verb": "herauslösen",
+      "gloss": "dissolve out",
+      "separability": "separable"
+    },
+    {
+      "verb": "herausreden",
+      "gloss": "explain away, make excuses",
+      "separability": "separable"
+    },
+    {
+      "verb": "herausschaffen",
+      "gloss": "manage to get out",
+      "separability": "separable"
+    },
+    {
+      "verb": "herausschauen",
+      "gloss": "look out, be looking out",
+      "separability": "separable"
+    },
+    {
+      "verb": "herausschmecken",
+      "gloss": "taste something in something",
+      "separability": "separable"
+    },
+    {
+      "verb": "herausschmeißen",
+      "gloss": "kick out",
+      "separability": "separable"
+    },
+    {
+      "verb": "herausschneiden",
+      "gloss": "cut out",
+      "separability": "separable"
+    },
+    {
+      "verb": "herausstechen",
+      "gloss": "stick out",
+      "separability": "separable"
+    },
+    {
+      "verb": "herausstreichen",
+      "gloss": "highlight, underline",
+      "separability": "separable"
+    },
+    {
+      "verb": "heraussuchen",
+      "gloss": "pick out, select",
+      "separability": "separable"
+    },
+    {
+      "verb": "herbeiziehen",
+      "gloss": "attract",
+      "separability": "separable"
+    },
+    {
+      "verb": "hereinfinden",
+      "gloss": "get the hang of, get used to",
+      "separability": "separable"
+    },
+    {
+      "verb": "hereingeben",
+      "gloss": "give/take/put something into something",
+      "separability": "separable"
+    },
+    {
+      "verb": "hereinlegen",
+      "gloss": "lay down inside, put",
+      "separability": "separable"
+    },
+    {
+      "verb": "herhalten",
+      "gloss": "serve as",
+      "separability": "separable"
+    },
+    {
+      "verb": "herhören",
+      "gloss": "listen",
+      "separability": "separable"
+    },
+    {
+      "verb": "herreißen",
+      "gloss": "snatch, snatch up",
+      "separability": "separable"
+    },
+    {
+      "verb": "herrichten",
+      "gloss": "arrange",
+      "separability": "separable"
+    },
+    {
+      "verb": "hersagen",
+      "gloss": "recite",
+      "separability": "separable"
+    },
+    {
+      "verb": "herumhängen",
+      "gloss": "be hung around in a disorganized manner",
+      "separability": "separable"
+    },
+    {
+      "verb": "herumkriegen",
+      "gloss": "cajole, wangle",
+      "separability": "separable"
+    },
+    {
+      "verb": "herumreisen",
+      "gloss": "travel around",
+      "separability": "separable"
+    }
+  ]
+}

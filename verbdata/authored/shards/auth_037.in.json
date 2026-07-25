@@ -1,0 +1,130 @@
+{
+  "shard": 37,
+  "verbs": [
+    {
+      "verb": "vorherbestimmen",
+      "gloss": "predetermine",
+      "separability": "separable"
+    },
+    {
+      "verb": "vorhängen",
+      "gloss": "hang in front of",
+      "separability": "separable"
+    },
+    {
+      "verb": "vorkehren",
+      "gloss": "put on display, show off",
+      "separability": "separable"
+    },
+    {
+      "verb": "vorleisten",
+      "gloss": "perform in advance",
+      "separability": "separable"
+    },
+    {
+      "verb": "vorsagen",
+      "gloss": "say something for someone else to repeat",
+      "separability": "separable"
+    },
+    {
+      "verb": "vorschießen",
+      "gloss": "advance",
+      "separability": "separable"
+    },
+    {
+      "verb": "vorschützen",
+      "gloss": "feign, make a pretext of",
+      "separability": "separable"
+    },
+    {
+      "verb": "vorspielen",
+      "gloss": "perform something for, play something for",
+      "separability": "separable"
+    },
+    {
+      "verb": "vorsprechen",
+      "gloss": "audition",
+      "separability": "separable"
+    },
+    {
+      "verb": "vorspringen",
+      "gloss": "jump out",
+      "separability": "separable"
+    },
+    {
+      "verb": "vorstoßen",
+      "gloss": "advance",
+      "separability": "separable"
+    },
+    {
+      "verb": "vorverlegen",
+      "gloss": "move up",
+      "separability": "separable"
+    },
+    {
+      "verb": "vorwagen",
+      "gloss": "venture forward",
+      "separability": "separable"
+    },
+    {
+      "verb": "vorwarnen",
+      "gloss": "forewarn, warn in advance",
+      "separability": "separable"
+    },
+    {
+      "verb": "vorwiegen",
+      "gloss": "prevail, predominate",
+      "separability": "separable"
+    },
+    {
+      "verb": "vorüberfahren",
+      "gloss": "drive past",
+      "separability": "separable"
+    },
+    {
+      "verb": "wachhalten",
+      "gloss": "keep someone awake",
+      "separability": "separable"
+    },
+    {
+      "verb": "wachrufen",
+      "gloss": "evoke, awake",
+      "separability": "separable"
+    },
+    {
+      "verb": "warmhalten",
+      "gloss": "keep warm",
+      "separability": "separable"
+    },
+    {
+      "verb": "wegbefördern",
+      "gloss": "move something away or out of the way",
+      "separability": "separable"
+    },
+    {
+      "verb": "wegbegeben",
+      "gloss": "leave",
+      "separability": "separable"
+    },
+    {
+      "verb": "wegdenken",
+      "gloss": "imagine a situation without",
+      "separability": "separable"
+    },
+    {
+      "verb": "wegdrücken",
+      "gloss": "push away",
+      "separability": "separable"
+    },
+    {
+      "verb": "wegerklären",
+      "gloss": "explain away",
+      "separability": "separable"
+    },
+    {
+      "verb": "weghalten",
+      "gloss": "hold something away from someone/oneself",
+      "separability": "separable"
+    }
+  ]
+}

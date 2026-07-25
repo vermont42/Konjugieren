@@ -1,0 +1,130 @@
+{
+  "shard": 27,
+  "verbs": [
+    {
+      "verb": "nachleben",
+      "gloss": "follow",
+      "separability": "separable"
+    },
+    {
+      "verb": "nachleisten",
+      "gloss": "perform belatedly",
+      "separability": "separable"
+    },
+    {
+      "verb": "nachnehmen",
+      "gloss": "take seconds",
+      "separability": "separable"
+    },
+    {
+      "verb": "nachpfeifen",
+      "gloss": "whistle at, wolf whistle, catcall",
+      "separability": "separable"
+    },
+    {
+      "verb": "nachrechnen",
+      "gloss": "recalculate, check one's calculations",
+      "separability": "separable"
+    },
+    {
+      "verb": "nachreisen",
+      "gloss": "follow someone's travel",
+      "separability": "separable"
+    },
+    {
+      "verb": "nachrennen",
+      "gloss": "run after",
+      "separability": "separable"
+    },
+    {
+      "verb": "nachsalzen",
+      "gloss": "add extra salt",
+      "separability": "separable"
+    },
+    {
+      "verb": "nachsingen",
+      "gloss": "repeat",
+      "separability": "separable"
+    },
+    {
+      "verb": "nachspüren",
+      "gloss": "track down",
+      "separability": "separable"
+    },
+    {
+      "verb": "nachsteigen",
+      "gloss": "follow",
+      "separability": "separable"
+    },
+    {
+      "verb": "nachtreten",
+      "gloss": "pile on, rub it in",
+      "separability": "separable"
+    },
+    {
+      "verb": "nachverfolgen",
+      "gloss": "keep track of, trace",
+      "separability": "separable"
+    },
+    {
+      "verb": "nachverhandeln",
+      "gloss": "renegotiate",
+      "separability": "separable"
+    },
+    {
+      "verb": "nachweinen",
+      "gloss": "mourn, regret",
+      "separability": "separable"
+    },
+    {
+      "verb": "nachzahlen",
+      "gloss": "pay later, pay back",
+      "separability": "separable"
+    },
+    {
+      "verb": "nahestehen",
+      "gloss": "have a close connection to",
+      "separability": "separable"
+    },
+    {
+      "verb": "nebeneinanderhalten",
+      "gloss": "hold next to each other",
+      "separability": "separable"
+    },
+    {
+      "verb": "neustarten",
+      "gloss": "restart",
+      "separability": "separable"
+    },
+    {
+      "verb": "niederbrechen",
+      "gloss": "demolish, tear down",
+      "separability": "separable"
+    },
+    {
+      "verb": "niederbrennen",
+      "gloss": "burn down",
+      "separability": "separable"
+    },
+    {
+      "verb": "niederführen",
+      "gloss": "run someone over",
+      "separability": "separable"
+    },
+    {
+      "verb": "niederhalten",
+      "gloss": "hold someone on the ground",
+      "separability": "separable"
+    },
+    {
+      "verb": "niederhauen",
+      "gloss": "defeat",
+      "separability": "separable"
+    },
+    {
+      "verb": "niederkommen",
+      "gloss": "give birth",
+      "separability": "separable"
+    }
+  ]
+}

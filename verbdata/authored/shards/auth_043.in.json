@@ -1,0 +1,115 @@
+{
+  "shard": 43,
+  "verbs": [
+    {
+      "verb": "übergreifen",
+      "gloss": "spread",
+      "separability": "separable"
+    },
+    {
+      "verb": "überhelfen",
+      "gloss": "force on someone",
+      "separability": "separable"
+    },
+    {
+      "verb": "überkochen",
+      "gloss": "boil over",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "überladen",
+      "gloss": "overload",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "überreagieren",
+      "gloss": "overreact",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "überrinnen",
+      "gloss": "overflow",
+      "separability": "separable"
+    },
+    {
+      "verb": "überrollen",
+      "gloss": "run over",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "überrunden",
+      "gloss": "lap",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "überschallen",
+      "gloss": "drown out",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "überschießen",
+      "gloss": "shoot something over something",
+      "separability": "separable"
+    },
+    {
+      "verb": "übersenden",
+      "gloss": "submit, send",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "überstellen",
+      "gloss": "transfer someone or something",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "übersteuern",
+      "gloss": "oversteer",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "überstürzen",
+      "gloss": "rush",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "übertauchen",
+      "gloss": "overcome, endure",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "übertöten",
+      "gloss": "overkill",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "überwachsen",
+      "gloss": "overgrow",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "überwechseln",
+      "gloss": "move",
+      "separability": "separable"
+    },
+    {
+      "verb": "überwerfen",
+      "gloss": "throw",
+      "separability": "separable"
+    },
+    {
+      "verb": "überzahlen",
+      "gloss": "pay, transfer money",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "überzeichnen",
+      "gloss": "exaggerate, overcolour",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "überziehen",
+      "gloss": "put on",
+      "separability": "separable"
+    }
+  ]
+}

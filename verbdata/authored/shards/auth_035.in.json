@@ -1,0 +1,130 @@
+{
+  "shard": 35,
+  "verbs": [
+    {
+      "verb": "verschalten",
+      "gloss": "connect by switches",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verschauen",
+      "gloss": "fall in love",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verscheißen",
+      "gloss": "soil with feces",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verschreien",
+      "gloss": "decry",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verschätzen",
+      "gloss": "misestimate, misjudge",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verspeisen",
+      "gloss": "eat up",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verspüren",
+      "gloss": "feel, sense",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verstehlen",
+      "gloss": "steal",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "versteigern",
+      "gloss": "auction",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "versteuern",
+      "gloss": "tax, put a tax on something",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verstimmen",
+      "gloss": "annoy",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verstinken",
+      "gloss": "stink until the stench has dissipated",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verstrahlen",
+      "gloss": "contaminate",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verstreben",
+      "gloss": "strut",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "vertippen",
+      "gloss": "mistype",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "vertrinken",
+      "gloss": "drink away",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verwachsen",
+      "gloss": "overgrow, become overgrown",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verwaschen",
+      "gloss": "make something washy, washed out, blurry",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verwiegen",
+      "gloss": "weigh",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verwählen",
+      "gloss": "misdial",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verzeigen",
+      "gloss": "report",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verzählen",
+      "gloss": "miscount",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "verärgern",
+      "gloss": "annoy, anger, upset",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "veräußern",
+      "gloss": "divest, dispose of",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "vollladen",
+      "gloss": "load up",
+      "separability": "separable"
+    }
+  ]
+}

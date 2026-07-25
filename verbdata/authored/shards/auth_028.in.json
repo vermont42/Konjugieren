@@ -1,0 +1,130 @@
+{
+  "shard": 28,
+  "verbs": [
+    {
+      "verb": "niedermachen",
+      "gloss": "slaughter, massacre",
+      "separability": "separable"
+    },
+    {
+      "verb": "niederreden",
+      "gloss": "talk someone into the ground",
+      "separability": "separable"
+    },
+    {
+      "verb": "niederringen",
+      "gloss": "wrestle down, outwrestle",
+      "separability": "separable"
+    },
+    {
+      "verb": "niederrinnen",
+      "gloss": "flow down",
+      "separability": "separable"
+    },
+    {
+      "verb": "niederschauen",
+      "gloss": "look down",
+      "separability": "separable"
+    },
+    {
+      "verb": "niederschießen",
+      "gloss": "shoot down",
+      "separability": "separable"
+    },
+    {
+      "verb": "näherstehen",
+      "gloss": "be closer",
+      "separability": "separable"
+    },
+    {
+      "verb": "plattmachen",
+      "gloss": "flatten",
+      "separability": "separable"
+    },
+    {
+      "verb": "publikmachen",
+      "gloss": "make public, publicize",
+      "separability": "separable"
+    },
+    {
+      "verb": "querlesen",
+      "gloss": "skim, scan",
+      "separability": "separable"
+    },
+    {
+      "verb": "querschießen",
+      "gloss": "interfere, obstruct",
+      "separability": "separable"
+    },
+    {
+      "verb": "querschlagen",
+      "gloss": "ricochet",
+      "separability": "separable"
+    },
+    {
+      "verb": "ranhalten",
+      "gloss": "get a move on, keep at something",
+      "separability": "separable"
+    },
+    {
+      "verb": "raufgehen",
+      "gloss": "go up",
+      "separability": "separable"
+    },
+    {
+      "verb": "raufhalten",
+      "gloss": "hold something up",
+      "separability": "separable"
+    },
+    {
+      "verb": "rausbringen",
+      "gloss": "bring or take out",
+      "separability": "separable"
+    },
+    {
+      "verb": "rausdrehen",
+      "gloss": "take out",
+      "separability": "separable"
+    },
+    {
+      "verb": "rausfliegen",
+      "gloss": "be kicked out",
+      "separability": "separable"
+    },
+    {
+      "verb": "rausgehen",
+      "gloss": "go out",
+      "separability": "separable"
+    },
+    {
+      "verb": "rauslassen",
+      "gloss": "drop off",
+      "separability": "separable"
+    },
+    {
+      "verb": "rechtdrehen",
+      "gloss": "veer, shift in a clockwise direction",
+      "separability": "separable"
+    },
+    {
+      "verb": "rechtschreiben",
+      "gloss": "spell correctly",
+      "separability": "separable"
+    },
+    {
+      "verb": "reinfallen",
+      "gloss": "fall into",
+      "separability": "separable"
+    },
+    {
+      "verb": "reinfeiern",
+      "gloss": "celebrate into the day",
+      "separability": "separable"
+    },
+    {
+      "verb": "reingehen",
+      "gloss": "go in, get inside, go inside",
+      "separability": "separable"
+    }
+  ]
+}

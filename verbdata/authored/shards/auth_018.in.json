@@ -1,0 +1,130 @@
+{
+  "shard": 18,
+  "verbs": [
+    {
+      "verb": "ertanzen",
+      "gloss": "achieve or accomplish by dancing",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "erträumen",
+      "gloss": "dream of",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "ertöten",
+      "gloss": "suffocate, repress",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "erwünschen",
+      "gloss": "wish",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "falschspielen",
+      "gloss": "cheat",
+      "separability": "separable"
+    },
+    {
+      "verb": "fehlbesetzen",
+      "gloss": "miscast",
+      "separability": "separable"
+    },
+    {
+      "verb": "fehlleiten",
+      "gloss": "misdirect, misguide",
+      "separability": "separable"
+    },
+    {
+      "verb": "feilbieten",
+      "gloss": "offer for sale",
+      "separability": "separable"
+    },
+    {
+      "verb": "ferngucken",
+      "gloss": "watch television",
+      "separability": "separable"
+    },
+    {
+      "verb": "fernliegen",
+      "gloss": "be alien to",
+      "separability": "separable"
+    },
+    {
+      "verb": "fernschauen",
+      "gloss": "look into the distance",
+      "separability": "separable"
+    },
+    {
+      "verb": "fernsehen",
+      "gloss": "watch television",
+      "separability": "separable"
+    },
+    {
+      "verb": "festbacken",
+      "gloss": "firmly cake, stick together",
+      "separability": "separable"
+    },
+    {
+      "verb": "festfahren",
+      "gloss": "get stuck",
+      "separability": "separable"
+    },
+    {
+      "verb": "festfragen",
+      "gloss": "corner with questions",
+      "separability": "separable"
+    },
+    {
+      "verb": "festhängen",
+      "gloss": "be stuck, be caught on something",
+      "separability": "separable"
+    },
+    {
+      "verb": "festkleben",
+      "gloss": "glue firmly",
+      "separability": "separable"
+    },
+    {
+      "verb": "festlaufen",
+      "gloss": "run aground, get stuck",
+      "separability": "separable"
+    },
+    {
+      "verb": "festsaugen",
+      "gloss": "adhere",
+      "separability": "separable"
+    },
+    {
+      "verb": "festtreten",
+      "gloss": "tread down",
+      "separability": "separable"
+    },
+    {
+      "verb": "festziehen",
+      "gloss": "pull tight, tighten",
+      "separability": "separable"
+    },
+    {
+      "verb": "flachlegen",
+      "gloss": "nap, lay down",
+      "separability": "separable"
+    },
+    {
+      "verb": "fortbestehen",
+      "gloss": "linger, survive",
+      "separability": "separable"
+    },
+    {
+      "verb": "fortbilden",
+      "gloss": "continue educating",
+      "separability": "separable"
+    },
+    {
+      "verb": "fortdauern",
+      "gloss": "go on, continue",
+      "separability": "separable"
+    }
+  ]
+}

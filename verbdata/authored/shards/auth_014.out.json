@@ -1,0 +1,109 @@
+{
+  "durchstellen": {
+    "de": "Einen Moment bitte, ich stelle Sie gleich zur zuständigen Abteilung durch.",
+    "en": "One moment please, I'll put you through to the relevant department right away."
+  },
+  "durchstreichen": {
+    "de": "Sie strich den falschen Namen auf der Liste durch und schrieb den richtigen darüber.",
+    "en": "She crossed out the wrong name on the list and wrote the correct one above it."
+  },
+  "durchtrennen": {
+    "de": "Mit einem einzigen kräftigen Schnitt trennte er das dicke Seil durch.",
+    "en": "With one strong cut, he severed the thick rope.",
+    "note": "durchtrennen also exists as an inseparable verb (er durchtrennt das Kabel); the separable form here matches the shard's tagging."
+  },
+  "durchwachsen": {
+    "de": "Zwischen den Pflastersteinen wuchs im Frühling überall frisches Moos durch.",
+    "en": "In spring, fresh moss grew up everywhere between the paving stones."
+  },
+  "durchzählen": {
+    "de": "Bevor der Bus losfuhr, zählte die Lehrerin ihre Schüler noch einmal durch.",
+    "en": "Before the bus set off, the teacher counted her pupils once more."
+  },
+  "einarbeiten": {
+    "de": "Der Lektor arbeitete alle Korrekturen sorgfältig in die neue Fassung des Textes ein.",
+    "en": "The editor carefully worked all the corrections into the new version of the text."
+  },
+  "einbegreifen": {
+    "de": "Der Reisepreis begreift die Verpflegung und sämtliche Ausflüge mit ein.",
+    "en": "The trip price includes meals and all the excursions.",
+    "note": "einbegreifen is rather formal and most common as a past participle (im Preis einbegriffen); the finite use here is valid but stilted."
+  },
+  "einbehalten": {
+    "de": "Der Arbeitgeber behält die Lohnsteuer jeden Monat direkt vom Gehalt ein.",
+    "en": "The employer withholds the income tax directly from the salary each month."
+  },
+  "einbekennen": {
+    "de": "Nach langem Zögern bekannte er seinen Fehler offen vor der ganzen Klasse ein.",
+    "en": "After hesitating for a long time, he openly acknowledged his mistake in front of the whole class.",
+    "note": "einbekennen is Austrian standard German; in Germany one would say eingestehen or zugeben."
+  },
+  "einbestellen": {
+    "de": "Nach dem Vorfall bestellte das Außenministerium den Botschafter noch am selben Abend ein.",
+    "en": "After the incident, the foreign ministry summoned the ambassador that very evening."
+  },
+  "einblasen": {
+    "de": "Die Feuerwehr blies mit einem Gebläse frische Luft in den verrauchten Keller ein.",
+    "en": "The fire brigade blew fresh air into the smoke-filled cellar with a fan."
+  },
+  "eindecken": {
+    "de": "Der Dachdecker deckte das alte Bauernhaus mit neuen roten Ziegeln ein.",
+    "en": "The roofer covered the old farmhouse with new red tiles."
+  },
+  "eindenken": {
+    "de": "Ich musste mich erst gründlich in die komplizierte neue Software eindenken.",
+    "en": "First I had to thoroughly familiarize myself with the complicated new software."
+  },
+  "eindrehen": {
+    "de": "Er drehte die neue Glühbirne vorsichtig in die Fassung ein, bis sie festsaß.",
+    "en": "He carefully screwed the new bulb into the socket until it was tight."
+  },
+  "eindrucken": {
+    "de": "Die Maschine druckt das Firmenlogo in jeden einzelnen Kunststoffdeckel ein.",
+    "en": "The machine imprints the company logo into every single plastic lid."
+  },
+  "einfahren": {
+    "de": "Mit einer Minute Verspätung fuhr der Zug endlich in den Bahnhof ein.",
+    "en": "One minute late, the train finally pulled into the station."
+  },
+  "einfassen": {
+    "de": "Der Juwelier fasste den kleinen Diamanten in einen schmalen Goldring ein.",
+    "en": "The jeweler set the small diamond in a slender gold ring."
+  },
+  "einflechten": {
+    "de": "Zum Fest flocht die Mutter bunte Bänder in die langen Zöpfe ihrer Tochter ein.",
+    "en": "For the celebration, the mother wove colorful ribbons into her daughter's long braids."
+  },
+  "einfühlen": {
+    "de": "Sie konnte sich mühelos in die Sorgen ihrer besten Freundin einfühlen.",
+    "en": "She could easily empathize with her best friend's worries."
+  },
+  "eingießen": {
+    "de": "Nach dem Essen goss der Gastgeber allen noch einmal Rotwein ein.",
+    "en": "After the meal, the host poured everyone another round of red wine."
+  },
+  "einheben": {
+    "de": "Die Gemeinde hebt für die Benutzung des Parkplatzes eine geringe Gebühr ein.",
+    "en": "The municipality collects a small fee for the use of the parking lot.",
+    "note": "einheben (collect/levy a fee) is Austrian standard German; in Germany one would say erheben."
+  },
+  "einherfahren": {
+    "de": "Stolz fuhr der alte König in seiner vergoldeten Kutsche durch die Stadt einher.",
+    "en": "Proudly, the old king rode through the town in his gilded carriage.",
+    "note": "einherfahren is elevated and somewhat archaic; the einher- element means 'along, forth'."
+  },
+  "einherschreiten": {
+    "de": "Würdevoll schritt der Bischof im festlichen Ornat durch das Kirchenschiff einher.",
+    "en": "The bishop strode solemnly through the nave in his festive vestments.",
+    "note": "einherschreiten is elevated/literary register; everyday German would use gehen or schreiten."
+  },
+  "einjagen": {
+    "de": "Der plötzliche laute Knall jagte allen Gästen einen gehörigen Schrecken ein.",
+    "en": "The sudden loud bang gave all the guests quite a fright.",
+    "gloss_note": "gloss says 'fill with'; einjagen only occurs in the idiom jemandem Angst/einen Schrecken einjagen — to instill fear or give someone a fright."
+  },
+  "einkochen": {
+    "de": "Jeden Sommer kocht meine Großmutter die reifen Kirschen zu Marmelade ein.",
+    "en": "Every summer my grandmother boils down the ripe cherries into jam."
+  }
+}

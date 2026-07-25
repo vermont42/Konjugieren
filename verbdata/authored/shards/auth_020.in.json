@@ -1,0 +1,130 @@
+{
+  "shard": 20,
+  "verbs": [
+    {
+      "verb": "gleichziehen",
+      "gloss": "catch up",
+      "separability": "separable"
+    },
+    {
+      "verb": "großschreiben",
+      "gloss": "capitalize",
+      "separability": "separable"
+    },
+    {
+      "verb": "großziehen",
+      "gloss": "raise, rear",
+      "separability": "separable"
+    },
+    {
+      "verb": "gutheißen",
+      "gloss": "approve",
+      "separability": "separable"
+    },
+    {
+      "verb": "gutschreiben",
+      "gloss": "credit",
+      "separability": "separable"
+    },
+    {
+      "verb": "gären",
+      "gloss": "ferment",
+      "separability": "simplex"
+    },
+    {
+      "verb": "heimfahren",
+      "gloss": "drive home",
+      "separability": "separable"
+    },
+    {
+      "verb": "heimfinden",
+      "gloss": "find one's way home",
+      "separability": "separable"
+    },
+    {
+      "verb": "heimleuchten",
+      "gloss": "guide someone home with a lamp or torch",
+      "separability": "separable"
+    },
+    {
+      "verb": "heimreisen",
+      "gloss": "travel home",
+      "separability": "separable"
+    },
+    {
+      "verb": "heimtrauen",
+      "gloss": "dare to go home",
+      "separability": "separable"
+    },
+    {
+      "verb": "heimzahlen",
+      "gloss": "pay back, avenge oneself",
+      "separability": "separable"
+    },
+    {
+      "verb": "heißmachen",
+      "gloss": "make hot",
+      "separability": "separable"
+    },
+    {
+      "verb": "hellsehen",
+      "gloss": "be clairvoyant",
+      "separability": "separable"
+    },
+    {
+      "verb": "herabstürzen",
+      "gloss": "cascade",
+      "separability": "separable"
+    },
+    {
+      "verb": "herabwürdigen",
+      "gloss": "disparage, vilify",
+      "separability": "separable"
+    },
+    {
+      "verb": "heranbilden",
+      "gloss": "train up, develop",
+      "separability": "separable"
+    },
+    {
+      "verb": "heranbrechen",
+      "gloss": "surge, break",
+      "separability": "separable"
+    },
+    {
+      "verb": "heranführen",
+      "gloss": "lead someone or something to",
+      "separability": "separable"
+    },
+    {
+      "verb": "heranhalten",
+      "gloss": "hold something next/up/close to something",
+      "separability": "separable"
+    },
+    {
+      "verb": "heranreichen",
+      "gloss": "reach",
+      "separability": "separable"
+    },
+    {
+      "verb": "heraufbeschwören",
+      "gloss": "provoke",
+      "separability": "separable"
+    },
+    {
+      "verb": "heraufgeben",
+      "gloss": "give something upwards",
+      "separability": "separable"
+    },
+    {
+      "verb": "heraufhalten",
+      "gloss": "hold something up",
+      "separability": "separable"
+    },
+    {
+      "verb": "heraufsetzen",
+      "gloss": "raise prices",
+      "separability": "separable"
+    }
+  ]
+}

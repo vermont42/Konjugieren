@@ -9,24 +9,38 @@ The companion file [`prompts/example_prompt.md`](example_prompt.md) is the **sub
 deliberately measurement-blind — it never mentions models, tokens, timing, or verbosity — so that the
 two models behave as they naturally would. Keep it that way.
 
-## Run cost — UNRESOLVED (the first run resolves this permanently)
+## Run cost — RESOLVED (measured by the first run, 2026-07-25)
 
-**How much of a five-hour window a run over these verbs consumes is not yet known.** It cannot be
-known until a run is measured, so this document ships with the figure deliberately blank. **The first
-orchestration run MUST measure it and edit the line below**, converting the placeholder into a
-concrete number. Once filled in, it stays filled — every later run reads it to size the wave loop and
-to predict whether one window covers all ~44 shards or the run must resume in a second window.
+**How much of a five-hour window a run over these verbs consumes was not knowable until a run was
+measured**, so this document originally shipped with the figure blank and instructed the first
+orchestration run to fill it in. That run happened on 2026-07-25; the measured figures are below and
+are now permanent. Later runs read them to size the wave loop and to predict whether one window
+covers all ~44 shards. The authoritative stop condition is still the **live `/usage` read**, not this
+recorded figure — the figure only lets a run *anticipate* how many waves fit before it starts.
 
 > ### Measured run cost
-> **UNRESOLVED as of 2026-07-25 — the first run fills this in.**
-> When resolved, this line should read something like: *"On <date>, a run consumed **N.N% of the
-> five-hour window per shard** (≈X% per wave of W shards). All ~44 shards fit in one window"* — or —
-> *"…the run reached shard K at the 75% cap and resumed in a second window."*
+> **RESOLVED 2026-07-25 by the first orchestration run.** A full pass over all **44 shards (1,097
+> verbs)** consumed **52 points of the five-hour window** — 23% → 75% — and **all 44 shards fit in
+> one window**, finishing exactly at the 75% cap with no second window needed.
+>
+> The cost decomposes cleanly into two ~equal unit costs, fitted across six waves of differing
+> width (4, 6, 8, 9, 9, 9 shards; each wave's delta was `shards + 1` points, an exact fit):
+>
+> - **≈1.0 point per 25-verb shard.**
+> - **≈1.0 point per `/usage` read.** A usage probe costs as much window as a whole authoring shard,
+>   because every headless child pays the same ~23k cache-creation input regardless of how little it
+>   does. **Measurement is ~1/5 of a narrow wave**, so prefer wider waves: they do not reduce token
+>   cost, but they amortize the probe. Waves of 8–9 are a good default; 4 wastes ~20% on probing.
+>
+> Budget arithmetic for a future run: `points ≈ shards + waves`, plus the orchestrator session's own
+> overhead (this session's tokens count against the same window; the figures above include it).
+> A full 44-shard pass therefore needs **~50 points of headroom**, i.e. a window no more than ~25%
+> spent. Wall-clock is not the binding constraint — all six waves plus retries took ~15 minutes.
 
-Resolving it is a real edit to *this file* (`prompts/example_generation.md`): after the first wave,
-compute the window delta from the two `/usage` reads (§ "The wave loop"), and after enough waves to be
-representative, replace the UNRESOLVED line above with the measured figures. This is the one ambiguity
-the plan carries on purpose; the first run is what discharges it.
+This was the one ambiguity the plan carried on purpose, and the first run discharged it. A later run
+need not re-measure, but if the CLI, the shard size, or the model set changes materially, re-derive
+the two unit costs the same way: read `/usage` before and after each wave and fit `delta = a·shards +
+b·reads` across waves of *differing width* — same-width waves cannot separate the two terms.
 
 ## Goal and scope
 
@@ -235,9 +249,17 @@ Notes on the invocation:
   its output non-interactively. If a Write still prompts in this CLI, fall back to
   `--dangerously-skip-permissions` (headless, repo-scoped — acceptable for a controlled author-and-write
   task, but prefer the allowlist).
-- **Concurrency is the wave size.** Start at **4 per wave** (2 on each model). Raise it only if `/usage`
-  shows the window is barely moving; a wider wave spends the window faster but also puts more shards in
+- **Concurrency is the wave size.** Start at **4 per wave** (2 on each model), then widen to **8–9**
+  once a wave has come back clean. Widening does not reduce token cost, but it amortizes the ~1-point
+  `/usage` probe (§ "Measured run cost"); the countervailing risk is only that more shards are in
   flight before you can react to a problem.
+- **Malformed-JSON shards happen, and the driver's skip logic does not catch them.** In the 2026-07-25
+  run, 2 of 46 shard-runs (one per model — 023 on 5.0, 038 on 4.8) wrote invalid JSON, both times by
+  closing a German quotation opened with `„` (U+201E) using an **ASCII** `"` (U+0022), unescaped inside
+  a JSON string. The driver prints `NNN: bad out.json (…)` and records no metrics row, but the corrupt
+  `.out.json` still **exists**, so `[ -f "$out" ]` would skip it forever on resume. Recovery is to
+  `rm` the bad file and re-queue the shard; both retries succeeded first try. Do **not** hand-repair the
+  escape — that is a correction, and corrections are Josh's later pass, not this run's.
 
 ## The wave loop and the 75% window stop
 
@@ -257,17 +279,15 @@ Loop shape (the orchestrator runs this itself, one wave at a time, assigning mod
 1. `USED0=$(read /usage Current-session %)`. If already >75%, stop.
 2. Pick the next up-to-`WAVE_SIZE` shards **without** an `.out.json`, alternating models:
    `bash verbdata/authored/run_wave.sh 012:claude-opus-4-8 013:claude-opus-5 014:claude-opus-4-8 015:claude-opus-5`
-3. `USED1=$(read /usage)`. Record `USED1-USED0` as this wave's window cost. **On the first run, after
-   enough waves to be representative, resolve the "Measured run cost" placeholder at the top of this
-   file** — edit `prompts/example_generation.md` and replace the UNRESOLVED line with the measured
-   per-shard / per-wave window cost and whether one window covered all shards. That edit is permanent;
-   it is the whole point of the first run's measurement.
+3. `USED1=$(read /usage)`. Record `USED1-USED0` as this wave's window cost, and sanity-check it
+   against § "Measured run cost" (expect `shards + 1` points). A wave that costs materially more than
+   that is a signal something changed — investigate before launching the next one.
 4. If `USED1 > 75` or no shards remain → stop. Else go to 2.
 
-Until that placeholder is resolved, do not guess the per-wave cost — a written-in guess is worse than
-none, exactly as in the mining pipeline. The authoritative stop condition is always the live `/usage`
-read, not the recorded figure; the recorded figure only lets a future run *anticipate* how many waves
-fit before it starts.
+The authoritative stop condition is always the live `/usage` read, not the recorded figure; the
+recorded figure only lets a run *anticipate* how many waves fit before it starts. Note that step 3's
+read is itself billed at ~1 point, so `WAVE_SIZE` of 4 spends ~20% of the window on measurement —
+8–9 is the better default (see § "Measured run cost").
 
 Stopping at >75% leaves headroom for the analysis step and Josh's later passes. If the window is
 exhausted before all 44-ish shards are done, that is fine — the run is resumable; a fresh window

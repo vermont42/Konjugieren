@@ -1,0 +1,130 @@
+{
+  "shard": 1,
+  "verbs": [
+    {
+      "verb": "abladen",
+      "gloss": "unload",
+      "separability": "separable"
+    },
+    {
+      "verb": "ablagern",
+      "gloss": "deposit",
+      "separability": "separable"
+    },
+    {
+      "verb": "ableben",
+      "gloss": "decease, die, pass away, leave this life",
+      "separability": "separable"
+    },
+    {
+      "verb": "ableisten",
+      "gloss": "perform till end",
+      "separability": "separable"
+    },
+    {
+      "verb": "abliefern",
+      "gloss": "deliver",
+      "separability": "separable"
+    },
+    {
+      "verb": "abliegen",
+      "gloss": "be far away",
+      "separability": "separable"
+    },
+    {
+      "verb": "ablöschen",
+      "gloss": "extinguish, put out",
+      "separability": "separable"
+    },
+    {
+      "verb": "abmachen",
+      "gloss": "agree on, settle on, make",
+      "separability": "separable"
+    },
+    {
+      "verb": "abmelken",
+      "gloss": "milk",
+      "separability": "separable"
+    },
+    {
+      "verb": "abmischen",
+      "gloss": "mix, mix down",
+      "separability": "separable"
+    },
+    {
+      "verb": "abneigen",
+      "gloss": "turn away, tilt away",
+      "separability": "separable"
+    },
+    {
+      "verb": "abnutzen",
+      "gloss": "wear out",
+      "separability": "separable"
+    },
+    {
+      "verb": "abordnen",
+      "gloss": "delegate",
+      "separability": "separable"
+    },
+    {
+      "verb": "abpfeifen",
+      "gloss": "stop or end by blowing a whistle",
+      "separability": "separable"
+    },
+    {
+      "verb": "abprüfen",
+      "gloss": "thoroughly examine",
+      "separability": "separable"
+    },
+    {
+      "verb": "abregen",
+      "gloss": "calm down",
+      "separability": "separable"
+    },
+    {
+      "verb": "abringen",
+      "gloss": "force out, wring",
+      "separability": "separable"
+    },
+    {
+      "verb": "abrinnen",
+      "gloss": "run off, drain off",
+      "separability": "separable"
+    },
+    {
+      "verb": "abrollen",
+      "gloss": "roll off",
+      "separability": "separable"
+    },
+    {
+      "verb": "abrunden",
+      "gloss": "round off",
+      "separability": "separable"
+    },
+    {
+      "verb": "abrutschen",
+      "gloss": "slip off, slip from something",
+      "separability": "separable"
+    },
+    {
+      "verb": "abrücken",
+      "gloss": "move away",
+      "separability": "separable"
+    },
+    {
+      "verb": "absaufen",
+      "gloss": "flood, drown",
+      "separability": "separable"
+    },
+    {
+      "verb": "absaugen",
+      "gloss": "suck off",
+      "separability": "separable"
+    },
+    {
+      "verb": "abschauen",
+      "gloss": "learn by watching",
+      "separability": "separable"
+    }
+  ]
+}

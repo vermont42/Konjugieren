@@ -1,0 +1,109 @@
+{
+  "umlenken": {
+    "de": "Wegen des Unfalls lenkte die Polizei den gesamten Verkehr auf eine Nebenstraße um.",
+    "en": "Because of the accident, the police redirected all the traffic onto a side street."
+  },
+  "umlügen": {
+    "de": "In seinen Berichten lügt er die Ereignisse so um, dass niemand die Wahrheit erkennt.",
+    "en": "In his reports he twists the events with lies so that no one can tell what really happened.",
+    "note": "Rare verb; umlügen means to distort something by lying about it. Confidence moderate."
+  },
+  "ummelden": {
+    "de": "Nach dem Umzug muss ich mich innerhalb von zwei Wochen beim Bürgeramt ummelden.",
+    "en": "After moving I have to register my change of address at the citizens' office within two weeks."
+  },
+  "umnutzen": {
+    "de": "Die Stadt nutzt die alte Textilfabrik jetzt als lebendiges Kulturzentrum um.",
+    "en": "The city is now repurposing the old textile factory as a lively cultural center."
+  },
+  "umpflanzen": {
+    "de": "Sobald die Tomaten kräftiger sind, pflanze ich sie in größere Töpfe um.",
+    "en": "As soon as the tomatoes are sturdier, I transplant them into bigger pots."
+  },
+  "umrechnen": {
+    "de": "Vor der Reise rechnete sie schnell alle Preise von Euro in Dollar um.",
+    "en": "Before the trip she quickly converted all the prices from euros into dollars."
+  },
+  "umrunden": {
+    "de": "Der Segler umrundete in achtzig Tagen ganz allein die Welt.",
+    "en": "The sailor circumnavigated the world all on his own in eighty days."
+  },
+  "umräumen": {
+    "de": "Am Wochenende räumen wir das ganze Wohnzimmer um, weil das Sofa woandershin soll.",
+    "en": "This weekend we're rearranging the whole living room, because the sofa needs to go somewhere else."
+  },
+  "umrühren": {
+    "de": "Rühre die Soße die ganze Zeit um, damit sie am Boden nicht anbrennt.",
+    "en": "Keep stirring the sauce the whole time so it doesn't burn on the bottom."
+  },
+  "umschalten": {
+    "de": "Als die Werbung begann, schaltete er genervt auf einen anderen Sender um.",
+    "en": "When the commercials came on, he annoyedly switched to another channel."
+  },
+  "umschließen": {
+    "de": "Eine hohe, efeubewachsene Mauer umschließt den alten Klostergarten.",
+    "en": "A high, ivy-covered wall surrounds the old monastery garden."
+  },
+  "umschulen": {
+    "de": "Nach der Werksschließung ließ er sich mit vierzig zum Pflegefachmann umschulen.",
+    "en": "After the plant closed, at forty he retrained as a nursing professional.",
+    "gloss_note": "gloss says 'move schools'; umschulen most commonly means occupational retraining, though it also covers transferring a child to another school"
+  },
+  "umsorgen": {
+    "de": "Sie umsorgt ihre kranke Mutter rund um die Uhr und gibt sie nicht ins Heim.",
+    "en": "She looks after her sick mother around the clock and won't put her in a home.",
+    "note": "shard tags umsorgen as separable, but standard German conjugates it inseparably (sie umsorgt, not sie sorgt um)"
+  },
+  "umstreiten": {
+    "de": "Historiker umstreiten bis heute die wahren Gründe für den Niedergang des Reiches.",
+    "en": "Historians dispute to this day the true reasons for the empire's decline.",
+    "note": "A finite active form of umstreiten is rare; the verb is chiefly met as the participial adjective 'umstritten' (disputed, contested)."
+  },
+  "umtauschen": {
+    "de": "Das Hemd war zu klein, also tauschte ich es im Laden gegen eine größere Größe um.",
+    "en": "The shirt was too small, so I exchanged it at the shop for a bigger size."
+  },
+  "umtreten": {
+    "de": "Der Rowdy trat im Vorbeigehen einfach die Mülltonne um.",
+    "en": "The hooligan just kicked over the trash can as he walked past.",
+    "gloss_note": "gloss says 'boot'; umtreten means to knock something over by kicking or trampling (treten 'to kick' + separable um- 'over')"
+  },
+  "umändern": {
+    "de": "Die Schneiderin ändert das geerbte Kleid so um, dass es mir perfekt passt.",
+    "en": "The tailor is altering the inherited dress so that it fits me perfectly."
+  },
+  "unterbewerten": {
+    "de": "Viele Trainer unterbewerten das Talent junger Spielerinnen aus reiner Gewohnheit.",
+    "en": "Many coaches underrate the talent of young players out of sheer habit."
+  },
+  "unterbezahlen": {
+    "de": "Der Konzern unterbezahlt seine Näherinnen seit Jahren und tut so, als sei das normal.",
+    "en": "The corporation has been underpaying its seamstresses for years and acts as if that were normal."
+  },
+  "unterführen": {
+    "de": "Die neue Umgehungsstraße unterführt an dieser Stelle die alte Bahnlinie.",
+    "en": "At this point the new bypass road passes beneath the old railway line.",
+    "note": "The verb unterführen is rare; the derived noun Unterführung (underpass) is far more common."
+  },
+  "unterheben": {
+    "de": "Zum Schluss hebt man den steifen Eischnee ganz vorsichtig unter den Teig.",
+    "en": "At the very end you gently fold the stiff beaten egg whites into the batter."
+  },
+  "unterkommen": {
+    "de": "Nach der Flut kamen die obdachlosen Familien vorübergehend in einer Turnhalle unter.",
+    "en": "After the flood the homeless families found temporary shelter in a gymnasium."
+  },
+  "unterkriegen": {
+    "de": "Trotz aller Rückschläge lässt sie sich von niemandem unterkriegen.",
+    "en": "Despite all the setbacks, she won't let anyone get her down."
+  },
+  "untermalen": {
+    "de": "Sanfte Klaviermusik untermalte die ganze Abschiedsszene des Films.",
+    "en": "Soft piano music underscored the entire farewell scene of the film.",
+    "gloss_note": "gloss says 'underpaint'; in everyday use untermalen most commonly means to underscore or accompany (e.g. with background music), though it also names an underpainting layer"
+  },
+  "untermischen": {
+    "de": "Er mischte heimlich etwas Zimt unter den Teig, damit die Kekse besser dufteten.",
+    "en": "He secretly mixed a little cinnamon into the dough so the cookies would smell better."
+  }
+}

@@ -1,0 +1,130 @@
+{
+  "shard": 10,
+  "verbs": [
+    {
+      "verb": "belehnen",
+      "gloss": "enfeoff",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "beleihen",
+      "gloss": "pawn",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "beliefern",
+      "gloss": "supply",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "belächeln",
+      "gloss": "smile condescendingly at",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "beregen",
+      "gloss": "stir up, bring into motion",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "bereinigen",
+      "gloss": "settle",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "bereisen",
+      "gloss": "travel to",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "bereiterklären",
+      "gloss": "agree",
+      "separability": "separable"
+    },
+    {
+      "verb": "bereitlegen",
+      "gloss": "get ready, prepare, lay out",
+      "separability": "separable"
+    },
+    {
+      "verb": "beringen",
+      "gloss": "ring",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "besaufen",
+      "gloss": "get drunk",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "beschallen",
+      "gloss": "treat or diagnose with ultrasound",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "bescheißen",
+      "gloss": "shit on, sully with feces, beshit",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "beschießen",
+      "gloss": "shoot at, bombard",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "beschlafen",
+      "gloss": "sleep with",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "beschulen",
+      "gloss": "provide with school lessons",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "beschweigen",
+      "gloss": "not talk about",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "beschwingen",
+      "gloss": "exhilarate, elate",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "besichern",
+      "gloss": "collateralize",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "bestoßen",
+      "gloss": "scuff",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "bestreben",
+      "gloss": "endeavor, be eager",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "bestürzen",
+      "gloss": "devastate, dismay, upset, shock",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "betrauen",
+      "gloss": "entrust with",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "betrinken",
+      "gloss": "get drunk, bedrink oneself",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "betätigen",
+      "gloss": "engage",
+      "separability": "inseparable"
+    }
+  ]
+}

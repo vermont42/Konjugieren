@@ -1,0 +1,108 @@
+{
+  "reinhauen": {
+    "de": "Als der Streit vor der Kneipe eskalierte, haute er seinem Gegner eine rein.",
+    "en": "When the argument outside the pub escalated, he landed one on his opponent.",
+    "gloss_note": "gloss 'beat up' only fits the fixed phrase „jemandem eine reinhauen\" (land someone a punch); the far more common everyday sense of reinhauen is to tuck into food („Hau rein!\")"
+  },
+  "reinhängen": {
+    "de": "Sie hat sich beim Umzug so reingehängt, dass abends kein Karton mehr im Flur stand.",
+    "en": "She threw herself into the move so completely that by evening not a single box was left in the hallway.",
+    "note": "used reflexively: sich reinhängen"
+  },
+  "reinmachen": {
+    "de": "Wenn du den Tee aufgießt, mach bitte nicht so viel Zucker rein.",
+    "en": "When you brew the tea, please don't put so much sugar in it."
+  },
+  "reinscheißen": {
+    "de": "Eine Katze hat in den Sandkasten reingeschissen, deshalb spielen die Kinder heute auf der Wiese.",
+    "en": "A cat shat in the sandbox, so the kids are playing on the lawn today."
+  },
+  "reinstecken": {
+    "de": "Steck den Stecker richtig rein, sonst lädt das Handy über Nacht wieder nicht.",
+    "en": "Push the plug all the way in, or the phone won't charge overnight again."
+  },
+  "richtigliegen": {
+    "de": "Mit ihrer Vermutung, dass es zum Grillfest regnen würde, lag sie leider völlig richtig.",
+    "en": "Her hunch that it would rain on the day of the barbecue turned out to be exactly right."
+  },
+  "rotsehen": {
+    "de": "Wenn jemand seinen kleinen Bruder hänselt, sieht er sofort rot.",
+    "en": "Whenever someone teases his little brother, he sees red immediately."
+  },
+  "rumbringen": {
+    "de": "Bis der Anschlusszug kam, brachten wir zwei Stunden mit Kartenspielen rum.",
+    "en": "We killed two hours playing cards until the connecting train arrived."
+  },
+  "rumkommen": {
+    "de": "Als Lkw-Fahrer ist er in dreißig Jahren in halb Europa rumgekommen.",
+    "en": "As a truck driver he got around half of Europe over thirty years."
+  },
+  "rumlaufen": {
+    "de": "Den ganzen Vormittag lief sie in der Innenstadt rum und fand trotzdem kein passendes Geschenk.",
+    "en": "She walked around downtown the whole morning and still didn't find a suitable present."
+  },
+  "rummachen": {
+    "de": "Auf der Party haben die beiden den halben Abend in der Küche rumgemacht.",
+    "en": "At the party those two spent half the evening making out in the kitchen."
+  },
+  "rumschmeißen": {
+    "de": "Er schmeißt so mit seinem Geld rum, dass am Monatsende nie etwas übrig bleibt.",
+    "en": "He throws his money around so freely that there's never anything left at the end of the month."
+  },
+  "rumstehen": {
+    "de": "Die Handwerker standen den halben Morgen im Hof rum, weil das Material noch nicht geliefert war.",
+    "en": "The workmen stood around in the courtyard half the morning because the materials hadn't been delivered yet."
+  },
+  "rundgehen": {
+    "de": "Am Lagerfeuer ging die Flasche Apfelwein einmal rund, bis jeder probiert hatte.",
+    "en": "At the campfire the bottle of cider went around once until everyone had had a taste."
+  },
+  "runterdrücken": {
+    "de": "Um das alte Fenster zu öffnen, muss man den Griff kräftig runterdrücken.",
+    "en": "To open the old window, you have to press the handle down hard."
+  },
+  "runterhalten": {
+    "de": "Halt den Ast kurz runter, damit ich an die oberen Kirschen komme.",
+    "en": "Hold the branch down for a second so I can reach the cherries at the top."
+  },
+  "runterkommen": {
+    "de": "Nach dem Streit brauchte er eine halbe Stunde im Garten, um wieder runterzukommen.",
+    "en": "After the argument he needed half an hour in the garden to calm down again."
+  },
+  "runterladen": {
+    "de": "Ich habe mir die Serie vor dem Flug runtergeladen, weil es an Bord kein WLAN gibt.",
+    "en": "I downloaded the series before the flight because there's no Wi-Fi on board."
+  },
+  "runterschauen": {
+    "de": "Vom Kölner Dom schauten wir auf die Dächer der Altstadt runter.",
+    "en": "From Cologne Cathedral we looked down on the rooftops of the old town."
+  },
+  "rübermachen": {
+    "de": "Kurz vor dem Mauerbau machte sein Onkel nach West-Berlin rüber und kam nie zurück.",
+    "en": "Shortly before the Wall went up, his uncle went over to West Berlin and never came back.",
+    "gloss_note": "gloss is broadly right, but in practice rübermachen is used above all of crossing the inner-German border from East to West"
+  },
+  "rückbesinnen": {
+    "de": "In der Krise hat sich die Brauerei auf ihre alten Rezepte rückbesonnen.",
+    "en": "During the crisis the brewery went back to its old recipes.",
+    "note": "the everyday form is sich zurückbesinnen; rückbesinnen is rare and back-formed from the common noun Rückbesinnung"
+  },
+  "rückdrehen": {
+    "de": "Der Wind dreht über Nacht rück, deshalb müssen wir die Segel morgen früh neu setzen.",
+    "en": "The wind will back overnight, so we'll have to reset the sails in the morning.",
+    "note": "nautical and meteorological term: the wind shifts counterclockwise (English 'backs'), the opposite of rechtsdrehen ('veers')"
+  },
+  "rückwärtsfahren": {
+    "de": "Weil die Gasse plötzlich endete, fuhr sie fünfzig Meter rückwärts.",
+    "en": "Because the alley suddenly came to a dead end, she reversed fifty meters."
+  },
+  "rückzahlen": {
+    "de": "Die Krankenkasse zahlt den zu viel entrichteten Beitrag innerhalb von vier Wochen rück.",
+    "en": "The health insurer refunds the overpaid contribution within four weeks.",
+    "note": "colloquial German says zurückzahlen; rückzahlen belongs to official and Austrian usage, alongside the noun Rückzahlung"
+  },
+  "rücküberweisen": {
+    "de": "Weil die Bestellung storniert wurde, hat der Händler den Betrag noch am selben Tag rücküberwiesen.",
+    "en": "Because the order was canceled, the retailer wired the money back the same day."
+  }
+}

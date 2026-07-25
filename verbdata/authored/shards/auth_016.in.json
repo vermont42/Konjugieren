@@ -1,0 +1,130 @@
+{
+  "shard": 16,
+  "verbs": [
+    {
+      "verb": "einweisen",
+      "gloss": "brief, instruct",
+      "separability": "separable"
+    },
+    {
+      "verb": "einwählen",
+      "gloss": "dial in, dial up",
+      "separability": "separable"
+    },
+    {
+      "verb": "eislaufen",
+      "gloss": "ice-skate",
+      "separability": "separable"
+    },
+    {
+      "verb": "emporblicken",
+      "gloss": "look upwards",
+      "separability": "separable"
+    },
+    {
+      "verb": "emporfahren",
+      "gloss": "drive up",
+      "separability": "separable"
+    },
+    {
+      "verb": "emporhelfen",
+      "gloss": "help upwards",
+      "separability": "separable"
+    },
+    {
+      "verb": "emporkommen",
+      "gloss": "ascend",
+      "separability": "separable"
+    },
+    {
+      "verb": "emporstreben",
+      "gloss": "strive to a height, aim to a height",
+      "separability": "separable"
+    },
+    {
+      "verb": "emportragen",
+      "gloss": "carry upwards",
+      "separability": "separable"
+    },
+    {
+      "verb": "enteignen",
+      "gloss": "expropriate",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "entflechten",
+      "gloss": "disentangle",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "entfließen",
+      "gloss": "flow out",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "entfolgen",
+      "gloss": "unfollow",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "entgegenhalten",
+      "gloss": "hold out something to someone",
+      "separability": "separable"
+    },
+    {
+      "verb": "entgegensehen",
+      "gloss": "look at",
+      "separability": "separable"
+    },
+    {
+      "verb": "entgegenstreben",
+      "gloss": "strive towards a certain direction",
+      "separability": "separable"
+    },
+    {
+      "verb": "enthaften",
+      "gloss": "release from custody",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "entladen",
+      "gloss": "unload, discharge",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "entlangfahren",
+      "gloss": "drive along",
+      "separability": "separable"
+    },
+    {
+      "verb": "entlanggehen",
+      "gloss": "walk along",
+      "separability": "separable"
+    },
+    {
+      "verb": "entleihen",
+      "gloss": "borrow",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "entlieben",
+      "gloss": "fall out of love, unlove",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "entmieten",
+      "gloss": "of a landlord",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "entmischen",
+      "gloss": "unmix or demix",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "entnerven",
+      "gloss": "unnerve, enervate",
+      "separability": "inseparable"
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "shard": 23,
+  "verbs": [
+    {
+      "verb": "hineinpassen",
+      "gloss": "fit in",
+      "separability": "separable"
+    },
+    {
+      "verb": "hineinrufen",
+      "gloss": "call into, shout into",
+      "separability": "separable"
+    },
+    {
+      "verb": "hineinspielen",
+      "gloss": "come into play, have a part to play",
+      "separability": "separable"
+    },
+    {
+      "verb": "hineinversetzen",
+      "gloss": "put oneself in someone's shoes",
+      "separability": "separable"
+    },
+    {
+      "verb": "hinschreiben",
+      "gloss": "write down, write",
+      "separability": "separable"
+    },
+    {
+      "verb": "hinstürzen",
+      "gloss": "rush somewhere",
+      "separability": "separable"
+    },
+    {
+      "verb": "hintanlegen",
+      "gloss": "put back, order into a posterior position",
+      "separability": "separable"
+    },
+    {
+      "verb": "hintansetzen",
+      "gloss": "put back, order into a posterior position",
+      "separability": "separable"
+    },
+    {
+      "verb": "hinterherpfeifen",
+      "gloss": "whistle at, wolf whistle, catcall",
+      "separability": "separable"
+    },
+    {
+      "verb": "hinterherreisen",
+      "gloss": "travel after someone",
+      "separability": "separable"
+    },
+    {
+      "verb": "hinterherräumen",
+      "gloss": "clean up after someone",
+      "separability": "separable"
+    },
+    {
+      "verb": "hintertreiben",
+      "gloss": "foil, thwart",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "hinterziehen",
+      "gloss": "evade",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "hinunterdrücken",
+      "gloss": "press down",
+      "separability": "separable"
+    },
+    {
+      "verb": "hinunterhalten",
+      "gloss": "hold something down",
+      "separability": "separable"
+    },
+    {
+      "verb": "hinunterklettern",
+      "gloss": "climb down",
+      "separability": "separable"
+    },
+    {
+      "verb": "hinunterrutschen",
+      "gloss": "slide down",
+      "separability": "separable"
+    },
+    {
+      "verb": "hinunterschauen",
+      "gloss": "look down",
+      "separability": "separable"
+    },
+    {
+      "verb": "hinunterziehen",
+      "gloss": "pull down",
+      "separability": "separable"
+    },
+    {
+      "verb": "hinwegschauen",
+      "gloss": "synonym of hinwegsehen",
+      "separability": "separable"
+    },
+    {
+      "verb": "hinwegsetzen",
+      "gloss": "leap over, jump over",
+      "separability": "separable"
+    },
+    {
+      "verb": "hinzubekommen",
+      "gloss": "get in addition",
+      "separability": "separable"
+    },
+    {
+      "verb": "hocharbeiten",
+      "gloss": "work one’s way up",
+      "separability": "separable"
+    },
+    {
+      "verb": "hochdienen",
+      "gloss": "work one's way up to the top",
+      "separability": "separable"
+    },
+    {
+      "verb": "hochfliegen",
+      "gloss": "fly up",
+      "separability": "separable"
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "shard": 39,
+  "verbs": [
+    {
+      "verb": "widersagen",
+      "gloss": "object, contradict",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "wiederaufleben",
+      "gloss": "revive",
+      "separability": "separable"
+    },
+    {
+      "verb": "wiederentdecken",
+      "gloss": "rediscover",
+      "separability": "separable"
+    },
+    {
+      "verb": "wiederverwenden",
+      "gloss": "reuse",
+      "separability": "separable"
+    },
+    {
+      "verb": "wiederverwerten",
+      "gloss": "recycle",
+      "separability": "separable"
+    },
+    {
+      "verb": "wiederwählen",
+      "gloss": "reelect",
+      "separability": "separable"
+    },
+    {
+      "verb": "wringen",
+      "gloss": "wring",
+      "separability": "simplex"
+    },
+    {
+      "verb": "wundliegen",
+      "gloss": "get pressure ulcers by lying",
+      "separability": "separable"
+    },
+    {
+      "verb": "wundreiben",
+      "gloss": "chafe, gall",
+      "separability": "separable"
+    },
+    {
+      "verb": "zerbeißen",
+      "gloss": "bite apart",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "zerfließen",
+      "gloss": "melt",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "zerkochen",
+      "gloss": "overcook",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "zerlaufen",
+      "gloss": "lose form due to melting, melt away",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "zerleben",
+      "gloss": "dilapidate by living",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "zerlesen",
+      "gloss": "wear out a book",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "zerschießen",
+      "gloss": "shoot to pieces",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "zersingen",
+      "gloss": "break through singing",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "zerstieben",
+      "gloss": "dissolve into dustlike fragments",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "zertreiben",
+      "gloss": "drive apart",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "zubauen",
+      "gloss": "cover an area with new buildings",
+      "separability": "separable"
+    },
+    {
+      "verb": "zubeißen",
+      "gloss": "bite",
+      "separability": "separable"
+    },
+    {
+      "verb": "zudringen",
+      "gloss": "approach, come closer",
+      "separability": "separable"
+    },
+    {
+      "verb": "zueignen",
+      "gloss": "appropriate",
+      "separability": "separable"
+    },
+    {
+      "verb": "zueinanderhalten",
+      "gloss": "hold to / towards each other",
+      "separability": "separable"
+    },
+    {
+      "verb": "zuerteilen",
+      "gloss": "award, bestow",
+      "separability": "separable"
+    }
+  ]
+}

@@ -53,3 +53,8 @@ verbdata/classification-summary.md
 # Python bytecode from the verbdata/ scripts
 __pycache__/
 *.pyc
+
+# Authoring-run raw child telemetry: 2.4 MB of harness boilerplate whose useful fields
+# (thinking_tokens, num_turns) are folded into metrics.jsonl. See prompts/example_analysis.md.
+verbdata/authored/meta/
+verbdata/authored/run.log

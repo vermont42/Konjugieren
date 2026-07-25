@@ -1,0 +1,130 @@
+{
+  "shard": 11,
+  "verbs": [
+    {
+      "verb": "bewandern",
+      "gloss": "explore by hiking",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "bewehren",
+      "gloss": "arm, protect, fortify",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "bewenden",
+      "gloss": "put to rest",
+      "separability": "inseparable"
+    },
+    {
+      "verb": "blankziehen",
+      "gloss": "draw",
+      "separability": "separable"
+    },
+    {
+      "verb": "blaumachen",
+      "gloss": "skive",
+      "separability": "separable"
+    },
+    {
+      "verb": "bleichen",
+      "gloss": "bleach, fade",
+      "separability": "simplex"
+    },
+    {
+      "verb": "bloßlegen",
+      "gloss": "lay bare, unearth",
+      "separability": "separable"
+    },
+    {
+      "verb": "brachliegen",
+      "gloss": "be fallow, empty, unused",
+      "separability": "separable"
+    },
+    {
+      "verb": "breittreten",
+      "gloss": "go on about",
+      "separability": "separable"
+    },
+    {
+      "verb": "brinnen",
+      "gloss": "burn, be aflame",
+      "separability": "simplex"
+    },
+    {
+      "verb": "dabeihaben",
+      "gloss": "have with oneself",
+      "separability": "separable"
+    },
+    {
+      "verb": "dagegenhalten",
+      "gloss": "hold something against something",
+      "separability": "separable"
+    },
+    {
+      "verb": "dagegenwirken",
+      "gloss": "counteract or counter",
+      "separability": "separable"
+    },
+    {
+      "verb": "dahaben",
+      "gloss": "have available, have in stock",
+      "separability": "separable"
+    },
+    {
+      "verb": "daherreden",
+      "gloss": "speak foolishly, drivel",
+      "separability": "separable"
+    },
+    {
+      "verb": "daherschwimmen",
+      "gloss": "come swimming by",
+      "separability": "separable"
+    },
+    {
+      "verb": "dahinleben",
+      "gloss": "exist",
+      "separability": "separable"
+    },
+    {
+      "verb": "dahinschmelzen",
+      "gloss": "melt away",
+      "separability": "separable"
+    },
+    {
+      "verb": "dahinschwinden",
+      "gloss": "peter out",
+      "separability": "separable"
+    },
+    {
+      "verb": "dahinterhalten",
+      "gloss": "hold something behind something",
+      "separability": "separable"
+    },
+    {
+      "verb": "dahinterkommen",
+      "gloss": "find out, discover",
+      "separability": "separable"
+    },
+    {
+      "verb": "danebenhalten",
+      "gloss": "hold something next to something",
+      "separability": "separable"
+    },
+    {
+      "verb": "danebenschießen",
+      "gloss": "miss a shot",
+      "separability": "separable"
+    },
+    {
+      "verb": "darunterhalten",
+      "gloss": "hold something underneath something",
+      "separability": "separable"
+    },
+    {
+      "verb": "darüberhalten",
+      "gloss": "hold something over something, cover",
+      "separability": "separable"
+    }
+  ]
+}

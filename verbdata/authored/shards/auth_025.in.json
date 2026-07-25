@@ -1,0 +1,130 @@
+{
+  "shard": 25,
+  "verbs": [
+    {
+      "verb": "klugreden",
+      "gloss": "speak as a know-it-all",
+      "separability": "separable"
+    },
+    {
+      "verb": "kneifen",
+      "gloss": "pinch",
+      "separability": "simplex"
+    },
+    {
+      "verb": "kneipen",
+      "gloss": "pinch (dialectal)",
+      "separability": "simplex"
+    },
+    {
+      "verb": "krankfeiern",
+      "gloss": "skip work feigning illness",
+      "separability": "separable"
+    },
+    {
+      "verb": "krankmachen",
+      "gloss": "make sick",
+      "separability": "separable"
+    },
+    {
+      "verb": "krankmelden",
+      "gloss": "report sick, call in sick",
+      "separability": "separable"
+    },
+    {
+      "verb": "krauchen",
+      "gloss": "crawl (regional)",
+      "separability": "simplex"
+    },
+    {
+      "verb": "kundgeben",
+      "gloss": "announce",
+      "separability": "separable"
+    },
+    {
+      "verb": "kurzarbeiten",
+      "gloss": "work short-time",
+      "separability": "separable"
+    },
+    {
+      "verb": "kurzschließen",
+      "gloss": "short circuit",
+      "separability": "separable"
+    },
+    {
+      "verb": "kürzertreten",
+      "gloss": "economize",
+      "separability": "separable"
+    },
+    {
+      "verb": "langmachen",
+      "gloss": "stretch",
+      "separability": "separable"
+    },
+    {
+      "verb": "leerlaufen",
+      "gloss": "empty",
+      "separability": "separable"
+    },
+    {
+      "verb": "leerrauchen",
+      "gloss": "smoke the whole supply",
+      "separability": "separable"
+    },
+    {
+      "verb": "lockermachen",
+      "gloss": "loosen",
+      "separability": "separable"
+    },
+    {
+      "verb": "losbrechen",
+      "gloss": "break off",
+      "separability": "separable"
+    },
+    {
+      "verb": "loslachen",
+      "gloss": "burst out laughing",
+      "separability": "separable"
+    },
+    {
+      "verb": "loslaufen",
+      "gloss": "start running",
+      "separability": "separable"
+    },
+    {
+      "verb": "lossagen",
+      "gloss": "renounce",
+      "separability": "separable"
+    },
+    {
+      "verb": "losschießen",
+      "gloss": "open fire",
+      "separability": "separable"
+    },
+    {
+      "verb": "lostreten",
+      "gloss": "unleash",
+      "separability": "separable"
+    },
+    {
+      "verb": "losziehen",
+      "gloss": "go out, go off, leave",
+      "separability": "separable"
+    },
+    {
+      "verb": "madigmachen",
+      "gloss": "put someone off something",
+      "separability": "separable"
+    },
+    {
+      "verb": "malnehmen",
+      "gloss": "multiply",
+      "separability": "separable"
+    },
+    {
+      "verb": "mattsetzen",
+      "gloss": "checkmate",
+      "separability": "separable"
+    }
+  ]
+}

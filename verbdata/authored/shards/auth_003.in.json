@@ -1,0 +1,130 @@
+{
+  "shard": 3,
+  "verbs": [
+    {
+      "verb": "anbehalten",
+      "gloss": "keep on",
+      "separability": "separable"
+    },
+    {
+      "verb": "anbellen",
+      "gloss": "bark at",
+      "separability": "separable"
+    },
+    {
+      "verb": "anbraten",
+      "gloss": "pan-fry quickly at great heat",
+      "separability": "separable"
+    },
+    {
+      "verb": "andienen",
+      "gloss": "press",
+      "separability": "separable"
+    },
+    {
+      "verb": "androhen",
+      "gloss": "threaten",
+      "separability": "separable"
+    },
+    {
+      "verb": "andrücken",
+      "gloss": "press in order to fixate, attach",
+      "separability": "separable"
+    },
+    {
+      "verb": "aneinanderhalten",
+      "gloss": "hold together, hold against each other",
+      "separability": "separable"
+    },
+    {
+      "verb": "aneinanderschlagen",
+      "gloss": "hit two things against each other",
+      "separability": "separable"
+    },
+    {
+      "verb": "anerziehen",
+      "gloss": "instill",
+      "separability": "separable"
+    },
+    {
+      "verb": "anfragen",
+      "gloss": "request",
+      "separability": "separable"
+    },
+    {
+      "verb": "anfügen",
+      "gloss": "append",
+      "separability": "separable"
+    },
+    {
+      "verb": "anfüttern",
+      "gloss": "bait, win over with gifts",
+      "separability": "separable"
+    },
+    {
+      "verb": "angießen",
+      "gloss": "sprinkle, water",
+      "separability": "separable"
+    },
+    {
+      "verb": "angleichen",
+      "gloss": "adapt, adjust",
+      "separability": "separable"
+    },
+    {
+      "verb": "anhauen",
+      "gloss": "hit",
+      "separability": "separable"
+    },
+    {
+      "verb": "anheimfallen",
+      "gloss": "fall victim",
+      "separability": "separable"
+    },
+    {
+      "verb": "anheimgeben",
+      "gloss": "leave to someone's discretion",
+      "separability": "separable"
+    },
+    {
+      "verb": "anheimstellen",
+      "gloss": "leave to the discretion",
+      "separability": "separable"
+    },
+    {
+      "verb": "ankaufen",
+      "gloss": "buy",
+      "separability": "separable"
+    },
+    {
+      "verb": "anklingen",
+      "gloss": "be heard, be reminiscent",
+      "separability": "separable"
+    },
+    {
+      "verb": "anlagern",
+      "gloss": "bind",
+      "separability": "separable"
+    },
+    {
+      "verb": "anlauten",
+      "gloss": "have as an anlaut",
+      "separability": "separable"
+    },
+    {
+      "verb": "anlernen",
+      "gloss": "teach",
+      "separability": "separable"
+    },
+    {
+      "verb": "anlesen",
+      "gloss": "read the first few pages of something",
+      "separability": "separable"
+    },
+    {
+      "verb": "anmalen",
+      "gloss": "draw",
+      "separability": "separable"
+    }
+  ]
+}

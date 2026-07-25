@@ -21,15 +21,27 @@ completes.
 | 8 | Import tranche 2: prefixed derivatives | [`verb-sources.md`](verb-sources.md) next-steps item 6 | ✅ 2026-07-19 | step 5 ✅; prefix inventory widened |
 | 8b | Clear the tranche-2 deferrals | this file, § "The tranche-2 deferrals" | ✅ 2026-07-19 | step 8 ✅ |
 | 9 | Import tranche 3: weak stems by frequency | [`verb-sources.md`](verb-sources.md) next-steps item 7 | 🚧 blocked | **BBAW reply**; fetch needs probes |
-| 10 | Etymologies **and example sentences**, in one pipeline | [`../prompts/uses_etymologies.md`](../prompts/uses_etymologies.md) | ⬜ designed 2026-07-20 | phase 0 ✅ |
-| 11 | The docs sweep | [`verb-sources.md`](verb-sources.md) next-steps item 9 | ⬜ | step 10 |
+| 10 | Etymologies **and example sentences**, in one pipeline | [`../prompts/uses_etymologies.md`](../prompts/uses_etymologies.md) | ✅ 2026-07-23 | phase 0 ✅ |
+| 11 | The docs sweep | [`verb-sources.md`](verb-sources.md) next-steps item 9 | ✅ 2026-07-24 | step 10 ✅ |
 
-**Step 10 is larger than it looks, and its own doc said otherwise.**
+**Step 10 was larger than it looked, and its own doc said otherwise — now settled.**
 [`etymology-pipeline.md`](etymology-pipeline.md) led with "COMPLETE — every verb in `Verbs.xml` is
-translated" until 2026-07-20. That was true on 2026-07-19 and false hours later: `Etymologies.json`
-holds 990 keys, the corpus holds 3,572, so **2,582 verbs have no etymology in either language**.
-The app's etymology surface therefore covers 28% of the corpus today. `scripts/check_docs.py` now
-asserts that heading against actual coverage, so it will go quiet on its own when step 10 lands.
+translated" until 2026-07-20. That was true on 2026-07-19 and false hours later, when tranche 1 took
+the corpus 990 → 3,572 and left 2,582 verbs with no etymology in either language. **Closed
+2026-07-23:** the one-pipeline mine (Phase 4) plus the `integrate` skill's new Mode B (Phase 5,
+commit `34e57ab`) folded an etymology into every verb and a corpus-mined sentence into 1,448 of
+them. `Etymologies.json` now holds 3,572 keys per language and `ExampleSentences.json` holds 2,438.
+`scripts/check_docs.py`'s completeness check, phrased as a self-clearing conditional, now *actively
+verifies* the etymology coverage on every run rather than merely policing a stale claim.
+
+**What step 10 did not finish is a register gap, not a bug.** 1,134 verbs ship an etymology but no
+example sentence, listed in `verbdata/no-corpus-example.txt` (995 with no corpus candidate at all,
+141 whose candidates were all unusable — 34 of those only for the 55-word ceiling). The mined texts
+are literary and historical; the un-attested verbs are administrative, commercial, and technical
+vocabulary those authors never wrote. Closing it is corpus **expansion** followed by a re-mine
+(another Phase 4 pass over the same machinery), which is the next feature but is deliberately *not*
+part of the docs sweep. See [`../prompts/uses_etymologies.md`](../prompts/uses_etymologies.md)
+Phase 5 for the shape of what to add.
 
 ### These step numbers are not `verb-sources.md`'s numbers
 
@@ -439,3 +451,6 @@ Small things the pipeline surfaced that no plan currently owns. None blocks the 
 | Prefix inventory widened | — | The classifier now reads the separable head off Wiktionary's own participle instead of off a shipping-verb inventory, since German infixes the participle's *ge-* after a separable first element. Incoming verification 84.4% → **94.6%**; the prefix-gap queue collapsed 747 → 28, and adjective and noun compounds (*kaputtmachen*, *achtgeben*) became expressible |
 | Clear the tranche-2 deferrals | — | 189 verbs, corpus 3,383 → **3,572**, no new ablaut groups. The 182 derivatives blocked on a missing group fell to 26, almost entirely by one classifier fix: prefer a region whose group already ships over the shortest region that verifies. Two shipping-data blockers cleared with it — `haben`'s nine full-word overrides became the mixed pattern they were spelling out, and identity replacements like `treten`'s `ET,pp` are now ignored when matching. 106 shipped translations rewritten after finding that a semicolon inside a kaikki gloss separates synonyms, not senses (*aufbleiben* shipped as "wake"). At-odds held at 8 |
 | Import tranche 2: prefixed derivatives | — | 2,315 verbs, corpus 1,068 → **3,383**, no new ablaut groups. `hi` derived from each base by a ratio measured off the corpus's own 446 real derivative/base pairs, clamped to the rank-900 count; `ic` inherited from the base; `tn` normalized from kaikki. All 2,315 verify with their shipped encoding; at-odds held at 8 |
+| Etymologies + example sentences (step 10) | `34e57ab` | The one-pipeline mine of [`../prompts/uses_etymologies.md`](../prompts/uses_etymologies.md): Phases 0–4 (104 shards, all validator-clean) then Phase 5, folding both halves into the bundle via a new Mode B in `.claude/skills/integrate` rather than a parallel merge. `Etymologies.json` 990 → **3,572** per language; `ExampleSentences.json` 990 → **2,438** (1,448 corpus-mined). 1,134 verbs etymology-only, logged to `verbdata/no-corpus-example.txt` for the re-mine. Neither half touches `Verbs.xml`; at-odds held at the git-integrity level |
+| Etymology formatting sweep | `3e37016` | Systemic cosmetic fixes across both languages of `Etymologies.json`, from inspecting ten random mined verbs: 12,388 morpheme bullets `-` → `•`, and 1,375 sentence-initial cited forms capitalized (abbreviation-guarded so descent chains stay lowercase; reconstructed `*~` forms left lowercase by PIE convention). `MINING_SPEC.md` updated so future mining does not reintroduce either. The whole-file rewrite also cleared the two Phase-3 shipping-data defects (49 literal `\n` in German, 36 `ķ`-for-`ḱ`) as a side effect |
+| The docs sweep (step 11) | — | Flipped this roadmap's steps 10–11 to done, corrected `etymology-pipeline.md`'s three-day-stale "INCOMPLETE" headline to a now-actively-verified `COMPLETE`, marked `uses_etymologies.md` Phase 5 done, and wrote the missing Phase 5 blog entry. `check_docs.py` clean |

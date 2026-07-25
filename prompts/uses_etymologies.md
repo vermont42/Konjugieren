@@ -1,9 +1,12 @@
 # Etymology-and-Example-Use Pipeline
 
-**Status: designed 2026-07-20; Phase 4 mining completed 2026-07-23.** Phases 0 through 4 are done;
-phase 5 is not.
+**Status: COMPLETE. Designed 2026-07-20; Phase 4 mining completed 2026-07-23; Phase 5 integrated
+2026-07-23 (commit `34e57ab`).** All phases are done. What remains is not part of this pipeline: a
+corpus **expansion** to attest the 1,134 etymology-only verbs, followed by a re-mine that reuses
+this same machinery (see Phase 5 below). This document stays live because that re-mine is another
+Phase 4 pass, not new work.
 
-Fill the 2,582 verbs that have neither an etymology nor an example sentence, in one pass, by
+Fill the 2,582 verbs that had neither an etymology nor an example sentence, in one pass, by
 moving the expensive work off the LLM and reusing what the corpus already knows.
 
 ## Why one pipeline, and why not the obvious two prompts
@@ -380,8 +383,10 @@ Eight things shaped the result, and Phase 4 should know them.
 - **Two defects in shipping data surfaced by being copied.** 49 German entries in
   `Etymologies.json` carry a literal `\n` where the English side has a real newline, and 36
   places have U+0137 `ķ` (a Latvian k-cedilla) standing for U+1E31 `ḱ`, the PIE palatal. Both
-  are repaired on write into the reuse files, by `sanitize` in each script; neither is fixed
-  in `Etymologies.json`, which is shipping app content. **That fix is still outstanding.**
+  are repaired on write into the reuse files, by `sanitize` in each script; neither was fixed
+  in `Etymologies.json` at the time. **Now resolved (2026-07-23):** the whole-file formatting
+  sweep in commit `3e37016` rewrote both language sections and cleared both defects as a side
+  effect. Verified 0 occurrences of each.
 - **The validator is the durable artifact, not the merge.** `--validate-only` re-checks tilde
   balance, asterisk placement, the four parser-significant markers, cross-language quote
   style, de/en key and sense-list parity, and both defects above. Every check exists because
@@ -587,12 +592,38 @@ Three things a later pass should know:
   The general lesson is that the pipeline is cheap to change before mining and expensive after,
   which is the argument for spending a window on reported friction rather than on more shards.
 
-### Phase 5 — Aggregate, and report the gaps
+### Phase 5 — Aggregate, and report the gaps ✅ done 2026-07-23
 
 Merge `mined_*.json` into `Etymologies.json` and `ExampleSentences.json`. Write the zero-hit verbs
 to `verbdata/no-corpus-example.txt` with the reason (no candidates at all, versus candidates that
 were all nominal). Josh will expand the corpus and re-mine those; authored sentences are a later,
 separate decision, and if they happen they must be flagged in Credits as the existing eleven are.
+
+**As built — commit `34e57ab`.** Done by widening `.claude/skills/integrate` into a new **Mode B**,
+not a parallel merge, exactly as the brief below insists. `Etymologies.json` went 990 → **3,572**
+per language (every verb ships an etymology; the imported tranche no longer ships bare) and
+`ExampleSentences.json` went 990 → **2,438** (1,448 corpus-mined sentences). Re-derive these rather
+than trusting them. Three things the build learned:
+
+- **The three brief-named gaps closed as planned.** Mode B merges an etymology *as well as* a
+  sentence, aggregates the 104 shard files rather than one working file, and treats `"sentence":
+  null` as a *successful* etymology-only result rather than a skip — which, mishandled, would have
+  dropped about a third of the etymologies.
+- **The "no deletions" diff rule is wrong for the object-valued `ExampleSentences.json`.**
+  Interleaving new keys makes git's line diff report ~4,000 phantom deletions with zero semantic
+  change. The skill now does a byte-for-byte preservation check instead: strip the merged verbs and
+  assert the remainder reproduces `HEAD`. This is the opposite of the `git diff --stat` advice below
+  and in `CLAUDE.md`, which holds only for files whose keys append at the end.
+- **The "all nominal" bucket was coarser than reality.** 34 of the 141 `candidates-none-usable`
+  verbs are genuine verbal uses rejected only for the 55-word ceiling — recoverable by revisiting
+  the ceiling, not by growing the corpus. `no-corpus-example.txt` carries the specific reason per
+  verb (`no-candidates` 995, `candidates-none-usable` 141) so the re-mine can act on the distinction.
+
+A cosmetic follow-up landed the same day (commit `3e37016`): morpheme bullets normalized `-` → `•`
+and sentence-initial cited forms capitalized across both languages, with `MINING_SPEC.md` updated so
+a future re-mine does not reintroduce either. That sweep also cleared, as a side effect, the two
+Phase-3 shipping-data defects this doc flagged as outstanding — the literal `\n` in 49 German
+entries and the `ķ`-for-`ḱ` in 36 places are both now gone from `Etymologies.json`.
 
 **The expansion has a shape, not just a size, and the shape tells you what to add.** Measured over
 the full 104-shard run (2026-07-23): of the imported verbs that got no sentence, the large majority

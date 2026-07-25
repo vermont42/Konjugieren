@@ -3962,3 +3962,85 @@ check. `build_mining_shards.py` now prints "Phase 4 is complete; proceed to Phas
 aggregating `mined_*.json` into `Etymologies.json` and `ExampleSentences.json` by *widening*
 `.claude/skills/integrate` rather than writing a parallel merge — is deliberately left untouched
 here, per the resume brief. Next session starts there.
+
+## Phase 5: the mined shards become shipping content, and the docs finally catch up (2026-07-24)
+
+Two windows are folded into one entry here, because the journal skipped a beat: Phase 5 (commit
+`34e57ab`) and the formatting sweep (`3e37016`) both landed on 2026-07-23 without a blog note, and
+this session found the gap while answering a simpler question — "what's the next step, and is there
+cleanup?" The answer turned out to be that Phase 5 was already done and the *docs* were the cleanup.
+
+**Phase 5 — aggregation, done the way the brief demanded and not the tempting way.** The 104
+validated `mine_<NNN>.out.json` shards had been sitting inert since Phase 4 closed. The obvious move
+was a one-off merge script; the brief was emphatic that this is exactly how a bundle drifts, because
+then there are two write paths into the same file. So the work went into a new **Mode B** of
+`.claude/skills/integrate` instead, widening the one skill that already knew the rules — diff
+working against bundled, add only missing verbs, never overwrite, keep keys sorted per language,
+assert `de`/`en` agree in count. Result: `Etymologies.json` 990 → **3,572** per language (every verb
+in the corpus now ships an etymology; the imported tranche no longer ships bare), and
+`ExampleSentences.json` 990 → **2,438** (1,448 corpus-mined sentences added).
+
+Mode B had to close three gaps the sentence-only skill did not cover, and the third was the
+dangerous one. It merges an etymology as well as a sentence; it aggregates 104 shard files rather
+than one working file (tolerating missing shards, since a resumed run leaves gaps); and it treats
+`"sentence": null` as a **successful etymology-only result**, not a skip. That last distinction is
+load-bearing: Phase 4 emits a null sentence for any verb whose candidates were all non-verbal, but
+the etymology is still good. Had Mode B reused the old skip-if-incomplete rule, it would have
+silently dropped roughly a third of the etymologies — the exact failure the brief warned about.
+
+Two findings surfaced mid-merge, both worth recording because they contradict advice written
+elsewhere in this repo. First, **the "confirm `git diff --stat` shows no deletions" rule is wrong
+for `ExampleSentences.json`.** That file is object-valued and keys interleave, so inserting new
+verbs makes git's *line* diff report ~4,000 phantom deletions with zero semantic change. The rule
+holds only for files whose new keys append at the end. Mode B replaced it with a byte-for-byte
+preservation check: strip the merged verbs and assert the remainder reproduces `HEAD` exactly. Every
+original entry is provably intact — a stronger guarantee than the diff ever gave. Second, **the
+brief's "candidates were all nominal" bucket was coarser than the truth.** 34 of the 141
+`candidates-none-usable` verbs are genuine verbal uses rejected only for the 55-word sentence
+ceiling — recoverable by revisiting the ceiling, no corpus growth required. So
+`verbdata/no-corpus-example.txt` now carries a per-verb reason (`no-candidates` 995,
+`candidates-none-usable` 141) rather than one flat label, and the re-mine can act on the split.
+
+**The formatting sweep (`3e37016`) came from Josh eyeballing ten random mined verbs in the app.** Two
+systemic defects, both cosmetic, both across the whole of `Etymologies.json`: the hyphen that
+introduced each morpheme bullet was ugly, and some cited sentence-initial forms rendered lowercase.
+So 12,388 bullets became `•` (plain literal text — `RichTextView` does not special-case the marker,
+so this is pure legibility) and 1,375 sentence-initial forms were capitalized *inside* the tildes.
+The sweep is abbreviation-guarded so a descent chain (*Aus mhd. ~x~, aus ahd. ~y~*) is never wrongly
+capitalized, and reconstructed `*~` forms stay lowercase by PIE convention; a char-level audit
+asserted every single change was one of those two and nothing else moved. `MINING_SPEC.md` gained
+both rules so a future re-mine does not reintroduce them.
+
+An unplanned bonus fell out of that whole-file rewrite: it **cleared the two Phase-3 shipping-data
+defects** the pipeline doc had been flagging as outstanding — the literal `\n` in 49 German entries
+and the Latvian `ķ` standing in for the PIE palatal `ḱ` in 36 places. Both are now 0 occurrences. A
+formatting pass fixed a data bug for free because it was the first thing to rewrite those entries
+since they were imported.
+
+**The cleanup this session actually did was the docs sweep — roadmap step 11.** The caches were
+already honest (`check_docs.py` came back clean throughout), but three *planning* docs described a
+pre-Phase-5 world, and the checker can't police planning prose. `docs/roadmap.md` still showed steps
+10–11 as not-started and quoted "28% coverage / 2,582 verbs missing"; `docs/etymology-pipeline.md`
+still led with **"INCOMPLETE… 2,582 verbs have no etymology at all"**; `prompts/uses_etymologies.md`
+still said "phase 5 is not [done]." The etymology-pipeline header was the sly one: `check_docs.py`
+reported `[ok] etymology completeness claim`, but that check only fires when the headline *claims*
+COMPLETE — a stale "INCOMPLETE" passes it trivially while being flat wrong. Flipping the header to
+`**COMPLETE` did not defeat the guard; it armed it. The check was written as a self-clearing
+conditional ("when step 10 fills the gap, the claim becomes true and the check goes quiet"), so it
+now runs the missing-verb diff against `Verbs.xml` on every invocation and will fail loudly if any
+future verb ever ships without an etymology. All three docs are corrected, this entry fills the
+journal gap, and `check_docs.py` is still clean.
+
+**What's next is a feature, not cleanup: corpus expansion, then a re-mine.** 1,134 verbs ship an
+etymology but no example sentence, and the shape of the miss is the instruction. The large majority
+(995) have *zero* corpus candidates — the corpus never attests them — and they are overwhelmingly
+administrative, commercial, and technical vocabulary (*abbuchen* "debit an account",
+*zwischenspeichern* "cache") that Kafka, Luther, and Nietzsche never wrote. So this is a **register
+gap, not a thin corpus**: adding more literary German will not touch it; adding contemporary news,
+non-fiction, administrative, and technical prose should resolve a large fraction on the next pass.
+That re-mine reuses the Phase 4 machinery verbatim, which is why `prompts/uses_etymologies.md` stays
+live rather than being retired. Smaller, cheaper follow-ons that need no corpus growth: recover the
+34 ceiling-only rejects by revisiting the 55-word limit, and clear the handful of `Verbs.xml`
+morpheme/separability flags the miners raised (*mausrutschen* fed the *mausetot* fossil sense but
+means the computer *Maus*; *reinwaschen* similar) — none ship broken output today, since every one
+was caught and flagged inline, but they are the honest residue.

@@ -4039,8 +4039,40 @@ administrative, commercial, and technical vocabulary (*abbuchen* "debit an accou
 gap, not a thin corpus**: adding more literary German will not touch it; adding contemporary news,
 non-fiction, administrative, and technical prose should resolve a large fraction on the next pass.
 That re-mine reuses the Phase 4 machinery verbatim, which is why `prompts/uses_etymologies.md` stays
-live rather than being retired. Smaller, cheaper follow-ons that need no corpus growth: recover the
-34 ceiling-only rejects by revisiting the 55-word limit, and clear the handful of `Verbs.xml`
-morpheme/separability flags the miners raised (*mausrutschen* fed the *mausetot* fossil sense but
-means the computer *Maus*; *reinwaschen* similar) — none ship broken output today, since every one
-was caught and flagged inline, but they are the honest residue.
+live rather than being retired.
+
+**Two "cheap follow-ons" were proposed here, investigated the same session, and both dissolved — so
+this paragraph corrects itself rather than leaving the bad framing for a future session to chase.**
+
+- **The ceiling recovery is not cheap and not mechanical.** The ceiling is *tiered*, not a single
+  55-word rule — 45 words for a last-resort candidate, 55 normally, 65 for a sole candidate — so
+  "raise the 55-word limit" is not even well-defined. The 22 genuinely-verbal-but-too-long rejects
+  run 41–86 words, many of them single Nietzsche/Mann periods. Recovering them needs a UX policy
+  call on the longest sentence that belongs on a phone screen (Josh's, not automatable) *and*
+  per-verb translation, since a rejected candidate was never translated (`sentence` is `null`). It
+  is a small authored project, not an edit.
+- **The `Verbs.xml` separability flags are false alarms — checked against the oracle, the app is
+  already right.** All seven miner-flagged verbs (*überkochen, umsorgen, unterwinden, umlagern,
+  versiegen, mausrutschen, reinwaschen*) come back `status: verified` in `classification.json`, and
+  six carry `shippedEncodingFailed: False` — the app conjugates them correctly and matches
+  Wiktionary. The mining flags were reasoning from *one corpus sentence*, usually the other half of
+  a separability doublet: a subagent seeing "die Milch kocht über" concluded `über*kochen`
+  (inseparable) was wrong, but kaikki's paradigm attests `überkocht`, the inseparable homograph
+  (overcook), which is what ships — *überkochen* is two identically-spelled verbs. *umsorgen* and
+  *unterwinden* are genuine doublets: kaikki lists **both** `sorgt um`/`umsorgt` and `windet
+  unter`/`unterwindet`, and the app ships the separable reading defensibly. Flipping any of the six
+  would break a currently-correct verb. Where both readings are attested, the honest enhancement is
+  *adding a second reading* via the existing dual-separability machinery (the *übersetzen*/*umgehen*
+  pattern), not a flip — real, oracle-verified work, not a quick edit. This is "verified means agrees
+  with Wiktionary, not correct" cutting the other way: a confident linguistic read (*überkochen* =
+  boil over = separable) is *true* and still wrong, because it picks the wrong homograph, and the
+  paradigm oracle is what disambiguates.
+
+  The one genuine defect the check surfaced is *reinwaschen* (`shippedEncodingFailed: True`), but it
+  is an *ablaut-encoding* problem on strong `waschen` (wäscht/wusch/gewaschen), not a separability
+  flip, and it already sits inside the known 7-verbs-at-odds audit the roadmap tracks — not a
+  standalone win.
+
+So the honest residue is: no cheap wins here. The real next work is corpus expansion + re-mine (the
+feature above), the ceiling policy call, and — if wanted — dual-reading enrichment for the true
+doublets, each of which is deliberate work verified through the classify-and-verify oracle.

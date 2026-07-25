@@ -1,0 +1,50 @@
+{
+  "abschmecken": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The shipped gloss 'taste a dish and, if necessary' is truncated mid-clause: the dictionary definition is 'to taste a dish and, if necessary, to season it', and the import cut it at the second comma. The German sentence and its translation both correctly demonstrate that sense (tasting, then correcting the seasoning), so only the gloss is defective. Suggested gloss: 'season to taste'."
+      }
+    ]
+  },
+  "absenden": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The shipped gloss 'forward, send on' is the meaning of weiterleiten/weitersenden, not absenden. absenden means to send off, dispatch, mail, or (of a form) submit — it says nothing about passing something along that was received from someone else. The sentence and its English ('submit it with a single click') demonstrate the correct meaning, so the gloss is the defect. Suggested gloss: 'send off, dispatch, submit'."
+      }
+    ]
+  },
+  "abtöten": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The shipped gloss 'mortify' is the rare ascetic-religious sense (das Fleisch abtöten), and it is the first of the two candidate glosses — a mechanical import defect that took entry order for frequency. The everyday meaning, already present as candidate gloss 2 ('to kill; to kill off; usually in masses, of vermin or germs'), is what the sentence demonstrates: 'Kochendes Wasser tötet die meisten Keime im Trinkwasser zuverlässig ab.' The German and English are both correct; the gloss should be changed to 'kill off' rather than the sentence rewritten."
+      }
+    ]
+  },
+  "abtrinken": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "'drink a little off it' is a word-for-word rendering of 'einen Schluck abtrinken' and is not idiomatic English; 'off it' has no natural antecedent reading here. English takes a sip off the top of an overfull glass.",
+        "fix_en": "The glass was so full that he first had to take a sip off the top to be able to carry it."
+      }
+    ]
+  },
+  "allemachen": {
+    "findings": [
+      {
+        "type": "logic",
+        "severity": "low",
+        "detail": "'Mit einer einzigen Falle' contradicts the punctual, exhaustive 'machte … die Ratten … alle'. A single trap catches one rat at a time, so it cannot finish off a barn's rat population in one stroke; the instrument undercuts the totality the verb expresses. Either the instrument or the time frame needs to allow for repetition.",
+        "fix_de": "Mit immer neuen Fallen machte der Bauer die Ratten in der Scheune nach und nach alle.",
+        "fix_en": "Setting trap after trap, the farmer gradually finished off the rats in the barn."
+      }
+    ]
+  }
+}

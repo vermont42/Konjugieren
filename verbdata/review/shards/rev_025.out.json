@@ -1,0 +1,24 @@
+{
+  "lockermachen": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "medium",
+        "detail": "The shipped gloss is 'loosen', but 'achthundert Euro lockermachen' (English 'shell out eight hundred euros') demonstrates the money sense, which is already listed as candidate_glosses[1] 'to pay out'. This is a mechanical import mismatch: the sentence is correct German, but it teaches the wrong target sense.",
+        "fix_de": "Er machte die festgerostete Schraube mit ein paar Tropfen Öl endlich wieder locker.",
+        "fix_en": "With a few drops of oil he finally loosened the rusted-on screw again."
+      }
+    ]
+  },
+  "losbrechen": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "medium",
+        "detail": "The shipped gloss is 'break off', but 'brach … ein ohrenbetäubender Jubel los' (English 'a deafening cheer erupted') demonstrates the sudden-onset sense, already listed as candidate_glosses[1] 'to break out (begin suddenly)'. The sentence is correct German but teaches the wrong target sense.",
+        "fix_de": "Ein großer Felsbrocken brach von der Steilwand los und stürzte in die Tiefe.",
+        "fix_en": "A large boulder broke loose from the cliff face and crashed into the depths below."
+      }
+    ]
+  }
+}

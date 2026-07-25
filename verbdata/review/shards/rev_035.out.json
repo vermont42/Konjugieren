@@ -1,0 +1,33 @@
+{
+  "verstehlen": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "medium",
+        "detail": "The sentence uses the reflexive 'sich verstehlen' ('verstahl er sich leise aus dem Saal'), which means 'to steal away, sneak off' — candidate gloss #2 — not the shipped gloss 'steal' (take property). The English 'slipped out of the hall' confirms the sneak-off sense, not theft.",
+        "fix_de": "Der Dieb hatte dem schlafenden Gast in der Nacht die Brieftasche verstohlen.",
+        "fix_en": "In the night the thief had stolen the sleeping guest's wallet."
+      }
+    ]
+  },
+  "versteuern": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The gloss 'tax, put a tax on something' describes 'besteuern' (a tax authority levying), not 'versteuern'. 'versteuern' means the taxpayer pays tax on income/earnings ('etwas versteuern' = 'pay tax on something') — which is candidate gloss #2 ('to pay a tax on something'). The German sentence and its English translation ('declare and pay tax on the fee') correctly demonstrate that second sense, so the shipped gloss is the wrong target. Mechanical import defect: the correct sense is already in candidate_glosses."
+      }
+    ]
+  },
+  "verwaschen": {
+    "findings": [
+      {
+        "type": "grammar",
+        "severity": "low",
+        "detail": "'die vielen heißen Wäschen' uses a nonstandard plural of 'Wäsche', which is a mass noun in standard German. The target usage 'die Farben ... verwaschen' is correct; only the plural is off. Natural phrasings are 'die vielen heißen Waschgänge' or the nominalized 'das viele heiße Waschen'.",
+        "fix_de": "Die vielen heißen Waschgänge haben die Farben des T-Shirts ganz verwaschen.",
+        "fix_en": "All those hot wash cycles have left the colors of the T-shirt completely faded."
+      }
+    ]
+  }
+}

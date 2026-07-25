@@ -1,0 +1,75 @@
+{
+  "irreführen": {
+    "findings": [
+      {
+        "type": "wrong_verb",
+        "severity": "high",
+        "detail": "The sentence contains 'führt … in die Irre', which is the free collocation with the noun 'die Irre', not the separable verb irreführen. Separated, irreführen yields adverbial lowercase 'irre' as the stranded element ('führt … irre'), exactly as the app's forms show. The sentence therefore never displays the verb it is meant to demonstrate.",
+        "fix_de": "Die geschickt formulierte Werbung führt viele Kunden über den wahren Preis irre.",
+        "fix_en": "The cleverly worded ad misleads many customers about the real price."
+      }
+    ]
+  },
+  "klarträumen": {
+    "findings": [
+      {
+        "type": "grammar",
+        "severity": "high",
+        "detail": "'zu klarträumen' is wrong: a separable-prefix verb infixes zu between prefix and stem, giving 'klarzuträumen' (which is what the app itself generates). The sentence models the error a learner is most likely to make with this class of verb.",
+        "fix_de": "Nach wochenlangem Üben gelang es ihm endlich, bewusst klarzuträumen und im Traum zu fliegen."
+      }
+    ]
+  },
+  "kaputtreißen": {
+    "findings": [
+      {
+        "type": "grammar",
+        "severity": "medium",
+        "detail": "Two competing resultatives in one clause: the directional/resultative PP 'in tausend Stücke' and the resultative predicate 'kaputt' both specify the end state of the letter. German licenses only one ('riss den Brief kaputt' or 'riss den Brief in tausend Stücke'), so 'in tausend Stücke kaputtreißen' is ill-formed. The English translation quietly drops 'kaputt', which is how the doubling escaped notice.",
+        "fix_de": "Vor Wut riss er den Brief kaputt und warf die Fetzen in den Papierkorb.",
+        "fix_en": "In a fit of rage he tore the letter up and threw the scraps in the wastebasket."
+      }
+    ]
+  },
+  "kaltmachen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The shipped gloss 'off someone, duppy' is unusable. 'Duppy' is Jamaican-English (a noun for a ghost, verbed as 'to kill') and will be opaque to essentially every learner; it looks like an unfiltered import of a dictionary's full synonym list. The German sentence is correct and its English rendering ('bump off') is the right register, so only the gloss is wrong.",
+        "fix_en": "Suggested gloss: \"bump off, kill\"."
+      }
+    ]
+  },
+  "keifen": {
+    "findings": [
+      {
+        "type": "connotation",
+        "severity": "low",
+        "detail": "keifen is a lexically gendered pejorative — dictionaries note it is applied disparagingly to women — and the sentence pairs it with 'die Nachbarin' shrieking over a fence about a flowerbed, which is the stock shrew image. The verb still needs teaching, but a male subject demonstrates it just as well without the stereotype.",
+        "fix_de": "Der Nachbar keifte lautstark über den Zaun, weil unser Ball in seinem Beet lag.",
+        "fix_en": "The neighbor shrilly scolded over the fence because our ball had landed in his flowerbed."
+      }
+    ]
+  },
+  "kaputtlachen": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "'laughed ourselves to death' is a word-for-word rendering that is not idiomatic English; the fixed expression is 'died laughing'. The gloss's own 'crack up, laugh one's head off' points at the idiomatic options.",
+        "fix_en": "We almost died laughing at his old joke."
+      }
+    ]
+  },
+  "klarlegen": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "'laid out her expectations unmistakably clearly' stacks two adverbs of the same sense and reads as a calque. klarlegen is 'make clear', so the adjective belongs in the predicate rather than as a second adverb.",
+        "fix_en": "In the meeting, the boss made her expectations unmistakably clear."
+      }
+    ]
+  }
+}

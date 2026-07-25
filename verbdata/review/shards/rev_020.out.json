@@ -1,0 +1,77 @@
+{
+  "großziehen": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "medium",
+        "detail": "The German 'deren drei Kinder' unambiguously means the sister's children; the English 'her three children' reads as the subject's own children, which then contradicts 'as if they were her own'. The English loses the whole point of 'deren'.",
+        "fix_en": "After her sister's death, she raised her sister's three children as if they were her own."
+      }
+    ]
+  },
+  "heimleuchten": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "'über den dunklen Feldweg' is 'along the dark farm track'; 'across the dark path' both mistranslates 'Feldweg' (a rural track between fields, not a generic path) and uses the wrong preposition — one walks along a track, not across it.",
+        "fix_en": "Grandfather took the lantern and lit the children's way home along the dark farm track."
+      }
+    ]
+  },
+  "heimtrauen": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "'After the broken vase' is a word-for-word calque of 'Nach der zerbrochenen Vase'. English does not use a bare result noun phrase this way; it needs the event, not the object.",
+        "fix_en": "After breaking the vase, the boy didn't dare go home all afternoon."
+      }
+    ]
+  },
+  "heranbrechen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The sentence ('Als der Morgen heranbrach') is a natural and by far the most common use of heranbrechen — a period of time setting in. That is the second sense in candidate_glosses, 'to start, commence'. The shipped gloss 'surge, break' is the wave/onrush sense and does not describe what the sentence shows, so this is an import defect in the gloss rather than a defect in the sentence. The gloss should read something like 'begin, set in (of a time of day)'."
+      }
+    ]
+  },
+  "heranreichen": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "medium",
+        "detail": "'So gut sie auch kocht' is a concessive ('however well she cooks'). English 'As well as she cooks' first parses as 'in addition to cooking', which inverts the sense of the clause. Also, 'Rouladen' is a German noun and should keep its capital in English or be glossed.",
+        "fix_en": "However well she cooks, she simply can't match her grandmother's Rouladen."
+      }
+    ]
+  },
+  "heraufgeben": {
+    "findings": [
+      {
+        "type": "grammar",
+        "severity": "low",
+        "detail": "'Steh schon mal oben auf der Leiter' commands a stative posture with a dative location, but the situation requires a change of position, which German expresses with 'steig auf die Leiter' or 'stell dich auf die Leiter' plus accusative. The English 'Get up on the ladder' translates the inchoative reading the German does not have.",
+        "fix_de": "Steig schon mal auf die Leiter, dann gebe ich dir die Ziegel einzeln herauf."
+      }
+    ]
+  },
+  "heraufhalten": {
+    "findings": [
+      {
+        "type": "logic",
+        "severity": "medium",
+        "detail": "heraufhalten presupposes a goal above the holder, with the viewpoint located up there ('her-' = toward the speaker), the same deixis as heraufgeben. The scene here has no one above: the child simply displays the drawing to everyone present, which is hochhalten or in die Höhe halten. As written, the sentence reads as an error for hochhalten and teaches the wrong distribution.",
+        "fix_de": "Ich stand oben auf dem Balkon, und das Kind hielt mir stolz seine Zeichnung herauf.",
+        "fix_en": "I was standing up on the balcony, and the child proudly held their drawing up to me."
+      },
+      {
+        "type": "logic",
+        "severity": "low",
+        "detail": "'seine gemalte Zeichnung' is self-contradictory: a Zeichnung is drawn (zeichnen), not painted (malen). Either 'seine Zeichnung' or 'sein gemaltes Bild'."
+      }
+    ]
+  }
+}

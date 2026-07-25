@@ -1,0 +1,42 @@
+{
+  "verkochen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "The shipped gloss 'vaporize, forwall' contains 'forwall', an obsolete English verb that a learner cannot parse; it is a mechanical carry-over of the first candidate gloss ('to vaporize, to forwall'). The sentence itself correctly demonstrates the intransitive 'boil away' sense of verkochen, so only the gloss wording is at fault. A plain gloss such as 'boil away, boil dry' would name the sense the sentence teaches."
+      }
+    ]
+  },
+  "verlügen": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "medium",
+        "detail": "The gloss is transitive 'lie about someone or something', but the sentence demonstrates a reflexive 'sich in etwas verlügen' — entangling oneself in one's own lies — which is a different (and very marginal) use. The English translation confirms the drift: 'tangled himself up in his excuses' contains no notion of lying about anything. There is a second problem that makes the sentence poor as a teaching example even on its own terms: 'verlogen' is overwhelmingly read as the everyday adjective meaning 'mendacious', so 'Er hatte sich so in seine Ausreden verlogen' garden-paths a reader rather than showing a participle of verlügen.",
+        "fix_de": "Statt die Wahrheit zu sagen, verlog er den ganzen Hergang des Unfalls.",
+        "fix_en": "Instead of telling the truth, he lied about the whole course of the accident."
+      }
+    ]
+  },
+  "verrauchen": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "The English stacks two adverbs before the verb in German word order — 'his anger surprisingly quickly evaporated'. English puts manner/degree adverbials after the verb here.",
+        "fix_en": "After a deep breath, his anger evaporated surprisingly quickly."
+      }
+    ]
+  },
+  "verrennen": {
+    "findings": [
+      {
+        "type": "grammar",
+        "severity": "low",
+        "detail": "'seine eine Idee' stacks a possessive on the numeral/emphatic 'ein', which is a calque of English 'his one idea'. Standard German uses either 'diese eine Idee' for the emphatic reading or a bare 'seine Idee'; possessive + 'ein' survives only as colloquial regional usage ('mein einer Freund') and reads as an error here. The verb itself and its reflexive construction are correct.",
+        "fix_de": "Er hat sich so in diese eine Idee verrannt, dass er keine Kritik mehr zuließ."
+      }
+    ]
+  }
+}

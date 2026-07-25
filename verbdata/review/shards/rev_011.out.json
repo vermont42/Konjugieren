@@ -1,0 +1,12 @@
+{
+  "dabeihaben": {
+    "findings": [
+      {
+        "type": "comma_splice",
+        "severity": "low",
+        "detail": "The English joins two independent clauses ('Luckily she had her ID on her' and 'they wouldn't have let her into the stadium') with only a comma plus the conjunctive adverb 'otherwise'. Since 'otherwise' is an adverb rather than a coordinating conjunction, the comma alone links the clauses, which is a splice in English. The German original's comma before 'sonst' is correct German but does not carry into English.",
+        "fix_en": "Luckily she had her ID on her; otherwise they wouldn't have let her into the stadium."
+      }
+    ]
+  }
+}

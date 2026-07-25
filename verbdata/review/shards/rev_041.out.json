@@ -1,0 +1,38 @@
+{
+  "zurückversetzen": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "medium",
+        "detail": "The shipped gloss 'transfer back, shift back' is candidate_glosses[0] (reassigning someone back into a department/assignment they held before). The sentence 'Der Geruch von frischen Waffeln versetzte sie sofort in ihre Kindheit zurück' instead demonstrates candidate_glosses[2], the metaphorical 'transport back to an earlier time by evoked association.' The German and English are both fine, but they illustrate a different sense than the label."
+      }
+    ]
+  },
+  "zusammenkehren": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "Gloss 'pile up' loses the sweeping that is the core of the verb ('kehren' = to sweep). The sentence uses a Handbesen and the English says 'swept up', both matching candidate_glosses[1], 'to sweep up'. The correct sense is already in candidate_glosses, so this is a mechanical import mislabel: the gloss should be 'sweep up / sweep together'."
+      }
+    ]
+  },
+  "zusammenräumen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "Gloss 'pack up' is candidate_glosses[0] (gather one's belongings in order to leave). The sentence 'räumten die Kinder das Wohnzimmer zusammen' and its English 'tidied up the living room' demonstrate candidate_glosses[1], 'to tidy up'. The correct sense is in candidate_glosses, so this is an import mislabel; the gloss should be 'tidy up / clear up'."
+      }
+    ]
+  },
+  "zuschwellen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "Gloss 'swell up' blurs the 'zu-' = shut/closed nuance. 'zuschwellen' means to swell until closed (eye, throat), distinct from 'anschwellen' (swell up). The sentence and its English translation ('swelled shut completely') are correct; only the label is imprecise and could lead a learner to use zuschwellen where anschwellen is meant. Gloss should be 'swell shut / swell closed'."
+      }
+    ]
+  }
+}

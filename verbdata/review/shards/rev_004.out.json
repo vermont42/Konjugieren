@@ -1,0 +1,69 @@
+{
+  "anmischen": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "'kept mixing the paint fresh' is a word-for-word carry-over of 'frisch … an' and is not idiomatic English; 'fresh' cannot post-modify 'the paint' this way. The German means he mixed up fresh batches until the shade matched.",
+        "fix_en": "The painter kept mixing fresh batches of paint until the shade matched the wall exactly."
+      }
+    ]
+  },
+  "anreisen": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "low",
+        "detail": "The English renders the sentence with 'arrive', which is candidate gloss 2, not the shipped gloss 'travel, take a trip'. The German is correct and idiomatic, but a learner reading gloss and translation together sees a mismatch. Note also that anreisen never means simply 'take a trip' (that is reisen/verreisen); it always means travelling to a destination, so the shipped gloss is weak on its own.",
+        "fix_en": "Most guests travel in as early as Friday evening so they can stay for the whole weekend."
+      }
+    ]
+  },
+  "anscheinen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The sentence is correct and demonstrates 'shine on (someone or something)', which is already present as candidate gloss 2. The shipped gloss 'appear, seem' is the archaic impersonal use ('es scheint mich an') that survives today essentially only in the adverb 'anscheinend'; Duden gives separable anscheinen only as '(von der Sonne, vom Mond o. Ä.) auf jemanden, etwas scheinen'. The import took candidate 1 where candidate 2 is the living sense. Keep the sentence; change the gloss."
+      }
+    ]
+  },
+  "ansenken": {
+    "findings": [
+      {
+        "type": "grammar",
+        "severity": "low",
+        "detail": "Zeitenfolge mismatch: the main clause narrates a specific past event in the Präteritum ('senkte … an') but the damit-clause is in the present ('sitzen'). Present tense there forces a generic-truth reading. German expects 'saßen', which is also what the English 'would sit flush' already conveys.",
+        "fix_de": "Vor dem Verschrauben senkte der Tischler jedes Bohrloch sorgfältig an, damit die Schraubenköpfe bündig saßen."
+      }
+    ]
+  },
+  "ansinnen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "The shipped gloss 'designate' bears no relation to the verb. 'jemandem etwas ansinnen' means to expect or demand something of someone, usually something unreasonable (cf. the noun 'Ansinnen' = an unreasonable request); it is close to 'zumuten'. The German sentence and its English translation both demonstrate exactly that sense correctly, so only the gloss needs fixing. No candidate_glosses were supplied for this verb, so this is a judgment call rather than a demonstrable import mix-up. Suggested gloss: 'expect or demand (something unreasonable) of someone'."
+      }
+    ]
+  },
+  "antanzen": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "medium",
+        "detail": "The sentence demonstrates candidate gloss 2, 'to go and arrive (somewhere), typically against one's wishes' — the colloquial 'show up unannounced' reading, which the English translation ('He just showed up at our place unannounced') confirms. It does not demonstrate the shipped gloss 'approach or arrive dancing'; nobody in the sentence is dancing. Since the shipped sentence exercises the far more common everyday sense, aligning the gloss to candidate 2 is the cleaner fix than rewriting the German around a rare literal reading."
+      }
+    ]
+  },
+  "antauchen": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "'shoved the stalled car off the intersection' uses the wrong preposition; a car is pushed 'out of' an intersection, not 'off' it. 'off' would suit a surface one sits on (off the road, off the tracks).",
+        "fix_en": "Together the neighbors put their backs into it and pushed the stalled car out of the intersection."
+      }
+    ]
+  }
+}

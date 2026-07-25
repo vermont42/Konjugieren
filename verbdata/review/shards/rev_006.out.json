@@ -1,0 +1,61 @@
+{
+  "aufrauchen": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "high",
+        "detail": "The gloss is 'rise, appear' (of smoke or fog rising), but the sentence — 'rauchte seine letzte Zigarre in Ruhe auf' — demonstrates candidate gloss 3, 'to finish smoking (a tobacco product)', which is also what the English translation says ('finished his last cigar'). The rising-smoke sense is intransitive and takes no accusative object; this sentence is transitive.",
+        "fix_de": "Kaum hatte er die Kerze gelöscht, rauchte ein dünner grauer Faden auf.",
+        "fix_en": "The moment he blew out the candle, a thin gray wisp of smoke rose."
+      },
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "'rise, appear' is candidate gloss 1 and is attested, but it is the rare, literary sense. The ordinary modern sense of aufrauchen is the one the sentence already demonstrates — finishing or using up a tobacco supply. Changing the gloss to 'finish smoking, use up (tobacco)' is the cheaper fix and leaves a good sentence in place."
+      }
+    ]
+  },
+  "aufrechnen": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "high",
+        "detail": "The gloss is 'charge', but 'die ausstehende Miete gegen die hinterlegte Kaution aufrechnen' is the legal set-off sense — candidate gloss 3, 'to offset'. The construction gegen + accusative is diagnostic of that sense, and the English translation itself renders it 'offsets'.",
+        "fix_de": "Der Vermieter rechnet die ausstehende Miete gegen die hinterlegte Kaution auf.",
+        "fix_en": "The landlord offsets the outstanding rent against the deposit that was put down."
+      },
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "'charge' looks like a mechanical import defect: it is candidate gloss 1, but aufrechnen's core meaning is 'to offset, set off (one claim against another)', which is already present as candidate gloss 3. Fixing the gloss to 'offset' makes the existing sentence correct and needs no change to the German or the English."
+      }
+    ]
+  },
+  "aufschießen": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "high",
+        "detail": "The gloss is 'shoot open' (candidate 1: forcing a lock with a gunshot), but the sentence — bamboo shooting up overnight after warm rain — demonstrates candidate gloss 2, 'to grow quickly, to shoot up (of plants)'. Nothing in the sentence involves a firearm or an object being opened.",
+        "fix_de": "Die Einsatzkräfte schossen das verrostete Vorhängeschloss auf und öffneten den Container.",
+        "fix_en": "The responders shot the rusted padlock open and opened the container."
+      },
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "'shoot open' is attested but is the narrowest and rarest of the four senses; the plant sense the sentence already demonstrates is the common one and is listed as candidate gloss 2. Retargeting the gloss to 'grow quickly, shoot up' preserves the existing sentence, which is idiomatic and well chosen."
+      }
+    ]
+  },
+  "aufstreben": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "medium",
+        "detail": "The sentence contains no finite form of aufstreben — only the attributive present participle 'aufstrebenden', which has lexicalized as an adjective meaning 'up-and-coming, burgeoning'. A neighborhood does not aspire, so the sentence does not demonstrate the glossed sense 'aspire'; it demonstrates the adjective. A learner meeting the verb here sees no conjugation and infers the wrong meaning.",
+        "fix_de": "Aus einfachen Verhältnissen strebte der junge Geiger bis auf die großen Konzertbühnen auf.",
+        "fix_en": "From humble beginnings the young violinist rose to the great concert stages."
+      }
+    ]
+  }
+}

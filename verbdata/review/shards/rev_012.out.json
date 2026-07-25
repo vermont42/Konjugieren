@@ -1,0 +1,87 @@
+{
+  "davonreisen": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "\"simply traveled away\" is a word-for-word calque of \"reiste einfach davon\" and is not idiomatic English; \"travel away\" is not a normal English collocation for departing.",
+        "fix_en": "No sooner had she ended the argument than she packed her suitcase and simply departed."
+      }
+    ]
+  },
+  "davorhalten": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "The English supplies an antecedent the German does not have. In the German the only available referent for \"davor\" is \"die Sonne\", so the sentence says he held his hand in front of it; \"in front of his eyes\" introduces a noun (Augen) that appears nowhere in the German.",
+        "fix_en": "When the sun blinded him, he quickly held his hand up in front of it."
+      }
+    ]
+  },
+  "dichthalten": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "medium",
+        "detail": "The sentence demonstrates the figurative sense 'keep one's mouth shut, keep mum' (candidate_glosses[1]), not the shipped gloss 'stay sealed'. \"eisern dichthalten\" about a surprise party is unambiguously about not divulging a secret; the shipped gloss is about a seal, roof, or container not leaking.",
+        "fix_de": "Trotz des tagelangen Dauerregens hielt das neu gedeckte Dach überall dicht.",
+        "fix_en": "Despite days of steady rain, the newly re-shingled roof stayed watertight everywhere."
+      }
+    ]
+  },
+  "dichtmachen": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "medium",
+        "detail": "The sentence demonstrates 'close down, shutter (a business)' (candidate_glosses[1]), not the shipped gloss 'close off, seal up'. A bakery going out of business after thirty years is the business-closure sense; the shipped gloss is the physical one (sealing windows, a gap, a container).",
+        "fix_de": "Vor dem angekündigten Sturm machten wir alle Fenster und Läden sorgfältig dicht.",
+        "fix_en": "Before the forecast storm we carefully sealed up all the windows and shutters."
+      }
+    ]
+  },
+  "draufgehen": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "medium",
+        "detail": "The sentence demonstrates the 'be used up, be consumed' sense (money or time going on something), which is neither the shipped gloss 'fall apart' nor the listed alternative 'to die'. Savings do not fall apart; they get eaten up.",
+        "fix_de": "Bei der letzten Bergtour ist mein alter Rucksack endgültig draufgegangen.",
+        "fix_en": "On the last mountain hike my old backpack finally fell apart for good."
+      }
+    ]
+  },
+  "draufhalten": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "\"held a swab pressed firmly on it\" is not idiomatic English: it stacks a participle onto \"held\" where English wants either \"held ... firmly on\" or \"pressed ... firmly onto\".",
+        "fix_en": "To finally stop the bleeding, the doctor held a swab firmly on it."
+      }
+    ]
+  },
+  "durchbrennen": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "medium",
+        "detail": "A burned-out light bulb is the 'blow, blow out (of a fuse, wire)' sense listed separately as candidate_glosses[2]. The shipped gloss 'continue to burn, burn through' corresponds to candidate_glosses[0], which is temporal — a fire burning through the night — and the sentence does not demonstrate it.",
+        "fix_de": "Das Feuer im Kamin brannte die ganze Nacht durch, sodass es am Morgen noch warm war.",
+        "fix_en": "The fire in the fireplace burned right through the night, so it was still warm in the morning."
+      }
+    ]
+  },
+  "durcheinanderbringen": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "medium",
+        "detail": "The sentence demonstrates 'bewilder, confuse, befuddle (a person)' (candidate_glosses[1]) — jemanden durcheinanderbringen. The shipped gloss 'jumble' is the sense with a non-human object, etwas durcheinanderbringen, i.e. physically mixing up an ordered set of things.",
+        "fix_de": "Beim Suchen hat er meine sorgfältig sortierten Karteikarten völlig durcheinandergebracht.",
+        "fix_en": "While searching, he completely jumbled my carefully sorted index cards."
+      }
+    ]
+  }
+}

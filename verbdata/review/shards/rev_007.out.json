@@ -1,0 +1,29 @@
+{
+  "ausfolgen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The shipped gloss 'follow, accompany' is wrong. 'ausfolgen' is Austrian administrative German for 'to hand over, to deliver' (= aushändigen), and the sentence ('Das Fundbüro folgte ihr die verlorene Brieftasche … aus' / 'The lost-property office handed over her lost wallet') correctly demonstrates that sense — which is already listed as candidate_glosses #2. The 'follow, accompany' reading looks like a mechanical import mis-split by analogy to 'folgen'; the German sentence itself is correct."
+      }
+    ]
+  },
+  "auslagern": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "medium",
+        "detail": "The sentence demonstrates 'to outsource' ('Die Firma hat ihre Buchhaltung nach Polen ausgelagert' / 'The company outsourced its accounting to Poland'), which is candidate_glosses #2, not the shipped gloss 'swap' (the IT memory-swapping sense). The German and English are correct and internally consistent; the mismatch is between them and the gloss."
+      }
+    ]
+  },
+  "ausrauchen": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "medium",
+        "detail": "The sentence and its translation both demonstrate 'to finish smoking (a tobacco product)' ('Er rauchte seine Zigarette in Ruhe aus' / 'He finished smoking his cigarette'), which is candidate_glosses #2, not the shipped gloss 'smoke out' (driving something out by smoke, candidate #1). The German is correct; the gloss is the wrong sense for this sentence."
+      }
+    ]
+  }
+}

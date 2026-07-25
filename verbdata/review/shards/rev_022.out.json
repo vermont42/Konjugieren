@@ -1,0 +1,84 @@
+{
+  "herumspinnen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The shipped gloss is 'spin around', but the sentence ('Wenn du weiter so herumspinnst und nur Unsinn redest') demonstrates the colloquial sense 'act crazy, talk nonsense', which is the verb's ordinary living meaning; the literal rotational reading is essentially unattested for herumspinnen (rotation is sich drehen / herumwirbeln). The correct sense is already present in candidate_glosses as 'to act strange', so this is a mechanical import defect: the first candidate was taken rather than the right one. The sentence and translation are both fine; the gloss should read something like 'act crazy, talk nonsense'."
+      }
+    ]
+  },
+  "herunterhalten": {
+    "findings": [
+      {
+        "type": "logic",
+        "severity": "medium",
+        "detail": "herunterhalten means to hold something downward, typically extending it down toward a lower place or person ('er hielt ihm das Seil herunter'). Restraining a jumping dog by its collar is festhalten, zurückhalten, or niederhalten; nothing in the scene supplies the downward direction herunter needs, so the sentence teaches a collocation a native speaker would not use. The fix keeps the dog and the mail carrier but makes the downward motion explicit, so herunter is earned.",
+        "fix_de": "Der Hund sprang immer wieder hoch, doch er hielt ihn am Halsband herunter, bis der Postbote vorbei war.",
+        "fix_en": "The dog kept jumping up, but he held it down by its collar until the mail carrier had passed."
+      }
+    ]
+  },
+  "herunterziehen": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "'shining too glaringly' is a word-for-word rendering of 'schien zu grell' and is not idiomatic English; the adverb 'glaringly' is used of statements ('glaringly obvious'), not of light. Natural English is 'too brightly' or 'the sun was glaring into the room'.",
+        "fix_en": "Because the sun was shining too brightly into the room, she pulled the blinds down."
+      }
+    ]
+  },
+  "herüberkommen": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "The English is punctuated as a statement but framed as a 'Why don't you …' question, so it ends with a period where it needs a question mark. Rendering the German invitation ('Komm doch …') as a plain imperative avoids the mismatch entirely and matches the German mood.",
+        "fix_en": "Come over to our place on Saturday and we'll barbecue together in the garden."
+      }
+    ]
+  },
+  "hinaufgeben": {
+    "findings": [
+      {
+        "type": "grammar",
+        "severity": "low",
+        "detail": "'nach oben aufs Gerüst hinauf' marks the upward direction three times: nach oben, the goal aufs Gerüst, and the particle hinauf. The particle alone carries it, so 'nach oben' is pleonastic and reads as padding in a sentence whose job is to show the particle.",
+        "fix_de": "Der Lehrling gab dem Dachdecker die schweren Ziegel aufs Gerüst hinauf."
+      }
+    ]
+  },
+  "hinaufhalten": {
+    "findings": [
+      {
+        "type": "grammar",
+        "severity": "medium",
+        "detail": "hinauf is deictic and needs a goal above the speaker ('zum Fenster hinauf', 'aufs Gerüst hinauf'). Here there is no goal at all, and 'so hoch wie möglich' already supplies the upward direction, so hinaufhalten is both unanchored and redundant; a native speaker would say hochhalten or 'in die Höhe halten'. The fix supplies a target above, which is what licenses hinauf.",
+        "fix_de": "Das kleine Mädchen hielt den bunten Luftballon zum offenen Fenster hinauf.",
+        "fix_en": "The little girl held the colorful balloon up to the open window."
+      }
+    ]
+  },
+  "hinaufschauen": {
+    "findings": [
+      {
+        "type": "logic",
+        "severity": "low",
+        "detail": "The spires of the Kölner Dom are dark, weathered sandstone and trachyte, not gilded; there is no 'vergoldete Spitze'. The factual error is the kind a German learner using the app in Cologne would notice immediately. The German construction with hinaufschauen is otherwise correct.",
+        "fix_de": "Ehrfürchtig schaute sie zur steinernen Spitze des Kölner Doms hinauf.",
+        "fix_en": "In awe she looked up at the stone spire of Cologne Cathedral."
+      }
+    ]
+  },
+  "hinauslehnen": {
+    "findings": [
+      {
+        "type": "comma_splice",
+        "severity": "low",
+        "detail": "'Don't lean so far out of the moving train' and 'it's really dangerous' are both independent clauses joined by a bare comma. The German comma before 'das ist wirklich gefährlich' is correct German; English needs a semicolon, dash, or period.",
+        "fix_en": "Don't lean so far out of the moving train; it's really dangerous!"
+      }
+    ]
+  }
+}

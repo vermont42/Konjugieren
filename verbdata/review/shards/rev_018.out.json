@@ -1,0 +1,81 @@
+{
+  "fehlleiten": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "medium",
+        "detail": "\"misdirected the hikers into completely the wrong direction\" is not English: one misdirects someone *in* a direction, or sends someone off in a direction, but not 'into a direction'. The trailing 'for hours' also strands the time adverbial.",
+        "fix_en": "A sign turned the wrong way sent the hikers off in completely the wrong direction for hours."
+      },
+      {
+        "type": "logic",
+        "severity": "low",
+        "detail": "Pleonasm: the particle fehl- already encodes 'in the wrong direction', so 'in die völlig falsche Richtung fehlleiten' says the same thing twice, which blurs what the particle contributes for a learner.",
+        "fix_de": "Ein umgedrehtes Schild leitete die Wanderer stundenlang fehl, bis sie endlich einen Einheimischen fragten.",
+        "fix_en": "A sign turned the wrong way misdirected the hikers for hours, until they finally asked a local."
+      }
+    ]
+  },
+  "fernliegen": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "medium",
+        "detail": "The sentence demonstrates the fixed idiom 'es liegt mir fern, etwas zu tun' = 'far be it from me to …', which is the second candidate gloss ('to not be one's intention'), not the shipped gloss 'be alien to'. The 'be alien to' sense takes a nominal subject denoting an attitude or idea (Neid, solche Gedanken, jeder Fanatismus) rather than an extraposed zu-infinitive. Cleanest repair is probably to ship the second candidate gloss for this sentence; the alternative is to rewrite the sentence to the nominal-subject pattern, as below.",
+        "fix_de": "Jede Form von Neid liegt ihr völlig fern; sie gönnt anderen ihren Erfolg von Herzen.",
+        "fix_en": "Any form of envy is utterly alien to her; she is genuinely glad of others' success."
+      }
+    ]
+  },
+  "fernschauen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "The shipped gloss 'look into the distance' is not the live meaning of fernschauen; in Austrian and southern German usage it is simply the regional word for watching television, which is exactly what the sentence demonstrates. That sense is already present in candidate_glosses ('to watch television'), so this is a mechanical import defect: the first listed sense was taken rather than the usual one. The sentence is good and should be kept; the gloss should become 'watch television'.",
+        "fix_en": "In Austria many families settle in together on Sunday evenings to watch TV."
+      }
+    ]
+  },
+  "festbacken": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "\"bakes fast onto the tray\" invites the wrong reading of 'fast': next to 'easily' a learner parses it as 'quickly' rather than as the archaic 'stuck fast'. Say 'sticks fast to'.",
+        "fix_en": "Without baking paper the dough easily sticks fast to the tray in the hot oven."
+      }
+    ]
+  },
+  "festkleben": {
+    "findings": [
+      {
+        "type": "wrong_verb",
+        "severity": "medium",
+        "detail": "In 'klebte so fest am Schuh' the word 'fest' is a degree-modified adverb, not the separable particle: a particle cannot be modified by 'so' (compare 'er klebte es so fest an', which is impossible). The sentence therefore reads as kleben + fest 'stick firmly', not festkleben. Independently, the shipped gloss 'glue firmly' is transitive — glue something onto something — while the sentence is intransitive 'be stuck'. A transitive example fixes both at once.",
+        "fix_de": "Sie klebte das Etikett mit etwas Leim sorgfältig auf dem Marmeladenglas fest.",
+        "fix_en": "She carefully glued the label onto the jam jar with a bit of paste."
+      }
+    ]
+  },
+  "festtreten": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "\"trod the soil firm around the seedling\" is word-for-word rather than idiomatic; the resultative 'trod X firm' is not current English, and 'After planting it' puts the pronoun before its antecedent. 'Tamped down' is the ordinary gardening verb.",
+        "fix_en": "After planting, the gardener carefully tamped down the soil around the seedling."
+      }
+    ]
+  },
+  "flachlegen": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "'erst einmal' means 'to start with, the first thing I did', but sentence-final 'first thing' in English is read as 'first thing in the morning', which contradicts 'after the long hike'.",
+        "fix_en": "After the long hike, the first thing I did was lie down for an hour."
+      }
+    ]
+  }
+}

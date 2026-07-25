@@ -1,0 +1,11 @@
+{
+  "beehren": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The shipped gloss 'compliment' does not match beehren. The sentence uses the canonical collocation 'beehrte ... mit seiner Anwesenheit' = 'to honor/grace someone with one's presence', and the English correctly renders it 'honored'. beehren means 'to honor/grace/favor', never 'to compliment' (which would be 'ein Kompliment machen'). The other candidate_gloss 'to favor' is the nearer sense, so the import selected the wrong one of two available senses. The German sentence and the English translation are both correct; only the target gloss is wrong."
+      }
+    ]
+  }
+}

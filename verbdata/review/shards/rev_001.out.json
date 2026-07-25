@@ -1,0 +1,32 @@
+{
+  "abliefern": {
+    "findings": [
+      {
+        "type": "grammar",
+        "severity": "medium",
+        "detail": "The verb abliefern itself is used correctly ('lieferte das Paket … ab'). The defect is the trailing clause 'und ließ sich unterschreiben': 'sich etwas unterschreiben lassen' is a dative-reflexive causative that requires an explicit accusative object naming what gets signed (den Empfang, die Lieferung, die Zustellung). Without an object, 'ließ sich unterschreiben' reads as 'let himself be signed', which is nonsensical for a person.",
+        "fix_de": "Der Bote lieferte das Paket noch am selben Abend im Büro ab und ließ sich den Empfang quittieren."
+      }
+    ]
+  },
+  "abrollen": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "low",
+        "detail": "The German ('Sie rollte den Draht … von der Spule ab') and the English ('unwound the wire from the spool') both demonstrate the 'unwind, unroll' sense, but the shipped gloss is 'roll off'. The intended sense 'to unwind, to unroll' is already present in candidate_glosses, so this is a mechanical gloss-selection mismatch, not a sentence defect. Either point the gloss at the unwind sense or rewrite a sentence for the 'roll off (of a vehicle)' sense."
+      }
+    ]
+  },
+  "absaugen": {
+    "findings": [
+      {
+        "type": "logic",
+        "severity": "low",
+        "detail": "The purpose clause inverts the real-world causality. Dental suction clears pooled saliva precisely so the patient does NOT have to swallow while the mouth is held open, not 'so that I could swallow'. The suction substitutes for swallowing rather than enabling it.",
+        "fix_de": "Der Zahnarzt saugte während der Behandlung ständig Speichel ab, damit ich nicht dauernd schlucken musste.",
+        "fix_en": "The dentist kept suctioning off saliva during the treatment so that I didn't have to keep swallowing."
+      }
+    ]
+  }
+}

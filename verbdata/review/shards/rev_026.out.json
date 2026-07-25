@@ -1,0 +1,32 @@
+{
+  "mausrutschen": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "Dangling participle in the English: the participial phrase 'Clicking too hastily' attaches to the main-clause subject 'my mouse', so the sentence literally says the mouse was clicking. The German subject is 'ich' throughout ('bin ich mausgerutscht'), so the person, not the mouse, should govern the participle.",
+        "fix_en": "Clicking in haste, I slipped with the mouse and accidentally deleted the wrong file."
+      }
+    ]
+  },
+  "nachbacken": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The German sentence is correct and idiomatic ('die aufwendige Torte zu Hause nachzubacken'), but it demonstrates the sense 'to recreate (a dish) by baking it from a model or recipe', which is candidate gloss 2, not the shipped gloss 'recook'. 'Recook' wrongly suggests cooking or reheating something a second time, and it is odd English for a baking verb. Because the correct sense is already present in candidate_glosses, this is a mechanical import defect: the shipped gloss should be 'recreate (a dish) by baking' or similar."
+      }
+    ]
+  },
+  "nachbeten": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "medium",
+        "detail": "The sentence demonstrates the figurative sense 'to parrot' (candidate gloss 2) — pupils repeating memorized formulas mindlessly — not the shipped gloss 'repeat a prayer' (candidate gloss 1). The English translation confirms this: it renders the verb as 'parroted', with no prayer anywhere in the sentence. Either the sentence should show the literal liturgical sense, or the shipped gloss should be changed to 'parrot'.",
+        "fix_de": "Bei der Andacht beteten die Kinder die Worte des Priesters leise nach.",
+        "fix_en": "During the service, the children quietly repeated the priest's words after him."
+      }
+    ]
+  }
+}

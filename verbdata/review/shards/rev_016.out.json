@@ -1,0 +1,73 @@
+{
+  "eislaufen": {
+    "findings": [
+      {
+        "type": "grammar",
+        "severity": "low",
+        "detail": "Orthography: the separated form is written lowercase, 'laufen … eis', because 'eislaufen' is one of the univerbated noun+verb compounds restored by the 2006 revision of the amtliches Regelwerk (alongside 'kopfstehen'), unlike 'Rad fahren' or 'Ski fahren', which stayed separate. 'Eis laufen' with a capital was the 1996–2004 spelling, so it is superseded rather than nonsense, but it contradicts the app's own paradigm, which the learner sees on the same screen ('lauf … eis', 'läuft … eis', 'eisgelaufen').",
+        "fix_de": "Sobald der Teich zugefroren ist, laufen die Kinder dort stundenlang eis."
+      }
+    ]
+  },
+  "entfließen": {
+    "findings": [
+      {
+        "type": "logic",
+        "severity": "low",
+        "detail": "Collocation misfire: a Quelle is the point of emergence, not the fluid, so it is water that 'entfließt' a rock while a spring 'entspringt' it — 'Dem Felsen entspringt eine Quelle' is the fixed idiom. As written, the spring is made the thing doing the flowing out of itself. The dative object and the elevated register are both correct; only the subject noun is misplaced.",
+        "fix_de": "Dem moosbewachsenen Felsen entfließt klares Quellwasser, das das ganze Tal versorgt.",
+        "fix_en": "Clear spring water flows out of the moss-covered rock and supplies the whole valley."
+      }
+    ]
+  },
+  "entfolgen": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "'posted nothing but ads anymore' is not idiomatic English: 'anymore' in an affirmative clause is regionally marked, and stacking it on the negative 'nothing but' reads as a word-for-word carry-over of 'nur noch'. The German is fine.",
+        "fix_en": "Since all he posted now was ads, I unfollowed him on every channel."
+      }
+    ]
+  },
+  "entgegenhalten": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "medium",
+        "detail": "The purpose clause 'um ihre Version der Geschichte zu beweisen' makes the argumentative reading dominant — 'jemandem etwas entgegenhalten' in the sense of adducing something against an opponent's claim, which is candidate gloss 2 ('to counter, to retort'), not the shipped gloss 'hold out something to someone'. Holding photos out physically is demonstrated only if the goal is that he take or see them; as written, the photos function as evidence in a dispute, which is the other sense. Fix keeps the object and gesture and swaps the purpose for a physical one.",
+        "fix_de": "Sie hielt ihm die alten Fotos entgegen, damit er die Gesichter im Licht besser erkennen konnte.",
+        "fix_en": "She held the old photos out to him so he could make out the faces better in the light."
+      }
+    ]
+  },
+  "entgegensehen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The shipped gloss 'look at' is a literal calque of the parts (entgegen + sehen) and is not a live meaning of the verb: 'einer Sache entgegensehen' means to await, face, or look forward to something. The sentence is correct German and idiomatic, but it demonstrates candidate gloss 2, 'to await something, look forward to something', which the import already found and did not ship — so this is a mechanical import defect, not a judgment call. Recommend replacing the gloss with 'look forward to, await' and leaving the sentence untouched.",
+        "fix_en": "We are looking forward to the concert this weekend with great anticipation."
+      }
+    ]
+  },
+  "entmieten": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The shipped gloss 'of a landlord' is a truncated dictionary usage label, not a meaning: the source entry was evidently '(of a landlord) to clear a building of its tenants', and only the parenthetical survived the import. As shipped, the learner is told nothing about what the verb means. The sentence and its translation are correct and demonstrate the verb well; only the gloss needs replacing, e.g. 'clear a building of tenants'."
+      }
+    ]
+  },
+  "entnerven": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "'unnerve' is a near-false friend here. English 'unnerve' means to deprive of composure or courage (a disconcerting effect), whereas 'entnerven' means to wear someone's nerves down to exasperation. A ringing phone exasperates; it does not rob anyone of nerve, so the English will teach the wrong equivalence.",
+        "fix_en": "The nonstop ringing of the phone frayed his nerves so much that he finally switched it off."
+      }
+    ]
+  }
+}

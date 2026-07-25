@@ -1,0 +1,11 @@
+{
+  "widersagen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The sentence ('Bei der Taufe widersagt der Pate feierlich dem Bösen …') is correct German and demonstrates the liturgical 'renounce, forswear' sense — 'dem Bösen widersagen', the standard baptismal renunciation. That is candidate gloss #2 ('to defy, to oppose, renounce'), not the shipped gloss 'object, contradict' (candidate #1). The import picked the less-apt listed sense; 'object, contradict' is really the province of widersprechen, and the sentence teaches a mismatched label. Suggest changing the gloss to 'renounce, forswear' (the sense the sentence actually shows) rather than altering the sentence."
+      }
+    ]
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "zutreten": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "'trat er noch zu' is a single punctual kick ('he still got a kick in', 'he kicked him even then'); the English 'kept kicking' asserts a repeated action the German does not.",
+        "fix_en": "Like a coward, he kicked him even when his opponent was long since on the ground."
+      }
+    ]
+  },
+  "übereinanderhalten": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The sentence ('hielt die klammen Hände dicht übereinander') demonstrates the plain compositional sense 'to hold on top of each other', which is the second entry in candidate_glosses. The shipped gloss is the first entry, 'keep shut, clench', which the sentence does not illustrate at all — nothing is being clenched or held shut. This is a mechanical import defect: the correct sense was already in candidate_glosses and the importer took the wrong one. The German sentence and its translation are otherwise fine; the fix belongs on the gloss, which should read 'hold on top of each other'."
+      },
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "'held her numb hands close over each other' is word-for-word rather than idiomatic English; 'over each other' is not how English describes hands stacked for warmth.",
+        "fix_en": "Shivering with cold, she held her numb hands pressed one on top of the other to warm them."
+      }
+    ]
+  },
+  "übereintreffen": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "medium",
+        "detail": "The sentence uses the frame 'überein…, den Vertrag zu verlängern' — a zu-infinitive complement expressing a jointly resolved course of action. That frame belongs to übereinkommen ('beide Seiten kamen überein, den Vertrag zu verlängern'), not to übereintreffen. Where übereintreffen is attested at all it is the rare/archaic equivalent of übereinstimmen: two accounts, statements or figures coinciding in content ('die Aussagen trafen überein'). The particle is right and the verb is present character for character, so this is not a wrong_verb, but the sentence demonstrates a construction the verb does not license. If the shipped gloss 'come to terms, reach an agreement' is meant to stand, the verb that carries that meaning is übereinkommen and this is a gloss defect; if the verb is to stay, the sentence needs the coincide sense.",
+        "fix_de": "Nach zähen Verhandlungen trafen die Vorstellungen beider Seiten schließlich überein.",
+        "fix_en": "After tough negotiations, the two sides' positions finally coincided."
+      }
+    ]
+  },
+  "überfordern": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "The shipped gloss is 'overcharge', but the sentence and its translation demonstrate the primary sense — demanding more of someone than they can manage, i.e. overwhelm/overtax ('Die vielen gleichzeitigen Aufgaben überforderten den neuen Praktikanten'). Nothing in the sentence involves a price. That sense is the first entry in candidate_glosses and 'overcharge' is the second, so the importer took the wrong one: a mechanical defect, not a judgment call. The German sentence and the English translation are both correct and should be kept; the gloss should read 'overwhelm, overtax'. As shipped, a learner reading the gloss beside this sentence is told a common verb means something it does not mean here."
+      }
+    ]
+  }
+}

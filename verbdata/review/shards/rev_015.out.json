@@ -1,0 +1,30 @@
+{
+  "einkriegen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The sentence uses reflexive 'sich vor Lachen gar nicht mehr einkriegen', which is the 'calm oneself / not be able to stop' sense — already listed as candidate_glosses[1] ('to calm oneself'). The shipped gloss 'catch up' is a different, real sense of einkriegen but not the one the sentence demonstrates. This is a mechanical import defect: the correct sense is in candidate_glosses. Gloss should be something like 'calm down (oneself)'."
+      }
+    ]
+  },
+  "einrollen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The sentence 'Er rollte die Poster vorsichtig ein' means he rolled the posters UP (furled them) — candidate_glosses[1] ('to roll up something, to furl something'), which the English translation correctly renders as 'rolled up the posters'. The shipped gloss 'roll in' is candidate_glosses[0], the intransitive 'a train/tank rolls in' sense, a different meaning. Mechanical import picked the wrong candidate; gloss should be 'roll up, furl'."
+      }
+    ]
+  },
+  "einstechen": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "The German 'stach die Nadel ... ein' (inserted/stuck the needle in) is correct, but 'pricked the needle in' misuses 'prick': in English you prick skin WITH a needle, not prick the needle itself. Cosmetic.",
+        "fix_en": "The nurse slid the needle in so gently that he barely felt it."
+      }
+    ]
+  }
+}

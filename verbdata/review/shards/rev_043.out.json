@@ -1,0 +1,23 @@
+{
+  "überhelfen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "The gloss 'force on someone' implies coercion, but überhelfen means to help someone put on / into a garment (jemandem den Mantel überhelfen). The German sentence and the English translation both correctly show the helping sense; only the gloss label is misleading. A learner reading 'force on someone' would misread a helpful act as a forceful one.",
+        "fix_en": "It was freezing outside, so he helped his grandmother on with her heavy coat."
+      }
+    ]
+  },
+  "überzahlen": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "medium",
+        "detail": "The sentence 'hat sie ... deutlich überzahlt' means she overpaid (paid far too much) — that is candidate_glosses[1] 'to overpay', reinforced by 'deutlich' and 'für den wackeligen Schrank'. The shipped gloss is 'pay, transfer money' (candidate_glosses[0]), a different real sense. The sentence is correct German but demonstrates the wrong target sense; 'overpay' is in fact the dominant meaning of überzahlen, so the gloss selection itself is also questionable.",
+        "fix_de": "Weil gute Fachkräfte so gefragt sind, überzahlt der Betrieb seine Monteure deutlich über dem Tariflohn.",
+        "fix_en": "Because skilled workers are in such demand, the company pays its fitters well above the standard wage."
+      }
+    ]
+  }
+}

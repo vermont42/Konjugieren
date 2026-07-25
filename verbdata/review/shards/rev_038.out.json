@@ -1,0 +1,66 @@
+{
+  "wegrauchen": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "medium",
+        "detail": "The shipped gloss 'smoke away something' corresponds to candidate_gloss 4, where the direct object is the feeling being suppressed (Ärger, Kummer, Stress). The sentence's object is 'eine ganze Schachtel', so it demonstrates candidate_glosses 2/3 instead — smoking an entire supply, or smoking large quantities quickly without enjoyment. 'Vor lauter Nervosität' gestures at the coping sense but does not make the pack the thing smoked away.",
+        "fix_de": "Nach dem Streit ging er auf den Balkon und rauchte seinen Ärger weg.",
+        "fix_en": "After the argument he went out on the balcony and smoked his anger away."
+      }
+    ]
+  },
+  "wegschleifen": {
+    "findings": [
+      {
+        "type": "logic",
+        "severity": "low",
+        "detail": "'vorsichtig' undercuts the verb it is meant to demonstrate. schleifen (weak: schleifte, geschleift) means dragging a body along the ground, which is inherently rough — it is the emergency grip you use precisely when there is no time to be careful. 'Vorsichtig schleifen' reads like 'gently drag'. Making the urgency explicit motivates the choice of wegschleifen over wegziehen or wegtragen.",
+        "fix_de": "Die Sanitäter schleiften den Verletzten so schnell wie möglich von der befahrenen Straße weg.",
+        "fix_en": "The paramedics dragged the injured man off the busy road as fast as they could."
+      }
+    ]
+  },
+  "wegsterben": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "medium",
+        "detail": "wegsterben takes animate subjects — people or animals dying off one after another ('die Alten sterben nach und nach weg'). With an inanimate, abstract subject such as 'die alten Handwerksberufe', German idiom requires aussterben. The English confirms the drift: 'are slowly dying out' is aussterben, not wegsterben. Restoring an animate subject keeps the village scene and demonstrates the shipped gloss 'die, vanish (by dying)'.",
+        "fix_de": "In dem kleinen Bergdorf sind die alten Handwerker nach und nach weggestorben, und niemand führt ihre Werkstätten fort.",
+        "fix_en": "In the small mountain village the old craftsmen died off one by one, and no one carries on their workshops."
+      }
+    ]
+  },
+  "wegwünschen": {
+    "findings": [
+      {
+        "type": "wrong_verb",
+        "severity": "medium",
+        "detail": "'weit weg' parses as the free directional adverbial 'far away' modifying plain wünschen, not as the separable particle of wegwünschen — compare 'wirf den Ball weit weg', which is not wegwerfen in the dispose sense. The app's form for this slot is 'wünschte … weg', which the inserted 'weit' obscures. Duden also gives the verb as reflexive-dative, 'sich jemanden wegwünschen'; the missing 'sich' costs the sentence its idiomaticity even apart from the particle problem.",
+        "fix_de": "An anstrengenden Tagen wünschte sie sich ihre lärmenden Nachbarn einfach weg.",
+        "fix_en": "On exhausting days she simply wished her noisy neighbors away."
+      }
+    ]
+  },
+  "weiterverarbeiten": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "'processes the fresh milk right on into cheese and yogurt' is not idiomatic English; 'right on into' is a word-for-word attempt at the continuation sense of weiter- plus 'gleich'. English carries that with an ordinary adverb of immediacy.",
+        "fix_en": "The small dairy processes the fresh milk into cheese and yogurt right away."
+      }
+    ]
+  },
+  "widerreden": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "'at every instruction' is a word-for-word rendering of 'bei jeder Anweisung'. English does not use 'at' with a count noun this way; the natural preposition here is 'over' (or a clause, 'every time an instruction was given').",
+        "fix_en": "The apprentice talked back to the master over every instruction and constantly caused trouble."
+      }
+    ]
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "gehaben": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "medium",
+        "detail": "The gloss is 'behave, behave oneself', but the sentence „Gehabt euch wohl!\" with its translation 'Fare you well!' demonstrates the distinct 'to fare' sense (sich wohl gehaben = to be/fare well), which candidate_glosses lists separately as 'to fare'. The shipped gloss and the English translation point at different senses; a learner reading gloss 'behave oneself' beside a farewell would be misled. Recommend aligning the gloss to 'fare (well)' for this idiom, or leaving the sentence and changing the gloss."
+      }
+    ]
+  },
+  "gleichschalten": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "medium",
+        "detail": "The gloss is 'synchronise' — the marginal, neutral electrical-engineering sense — but the sentence about a new government forcing the press into line demonstrates the political sense of subjugating thought and action to the ruling class (Gleichschaltung), which candidate_glosses lists as 'to force into Gleichschaltung' and 'to subjugate someone's thought and action to the policies and worldview of the ruling class'. The dominant, historically Nazi-freighted meaning is what the sentence shows; glossing it as harmless 'synchronise' could lead a learner to use the word casually, which would be jarring. Recommend a gloss like 'bring into line, force into conformity'. The German sentence and English translation themselves are correct."
+      }
+    ]
+  },
+  "freihaben": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "The gloss is 'be on vacation' (= Urlaub haben), but freihaben means 'to have off / be off duty', and the sentence „Am Freitag habe ich frei\" demonstrates having a single Friday off, not a vacation. The German sentence and its English translation ('I have Friday off') are correct; only the gloss is too narrow/wrong. Recommend a gloss like 'have off, have time off'."
+      }
+    ]
+  }
+}

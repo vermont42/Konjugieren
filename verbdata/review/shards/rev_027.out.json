@@ -1,0 +1,29 @@
+{
+  "nachsteigen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The shipped gloss 'follow' reads as candidate_glosses' first sense, 'to follow (e.g., on a climbing tour)'. The sentence ('Er stieg ihr wochenlang nach, bis sie ihm ... sagte, dass sie kein Interesse habe') demonstrates the colloquial romantic-pursuit sense, candidate_glosses' second entry 'to stalk, to pursue, to go after'. The correct sense is already listed, so this is a mechanical wrong-candidate pick. The German is fine; only the gloss is misdirected."
+      }
+    ]
+  },
+  "niederhauen": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "medium",
+        "detail": "The gloss is 'defeat' (candidate_glosses' 'to defeat (an enemy)'), but the sentence — a robber striking a single guard unconscious during a heist — and its own English ('struck the guard down') demonstrate candidate_glosses' third sense, 'to strike (someone) down, to beat (someone) down'. A robbery is not a contest, so 'defeat' does not fit; the label should be 'strike/cut down'."
+      }
+    ]
+  },
+  "niederführen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "The gloss 'run someone over' is wrong for niederführen, which means 'to lead down' — exactly what the sentence shows ('Ein schmaler Pfad führt vom Aussichtspunkt ... zum Fluss nieder'). 'Run someone over' belongs to the near-homograph niederfahren (or überfahren). The German sentence is correct for the verb's real meaning; the gloss points at a different verb."
+      }
+    ]
+  }
+}

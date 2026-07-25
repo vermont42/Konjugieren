@@ -1,0 +1,69 @@
+{
+  "abbinden": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "medium",
+        "detail": "The shipped gloss is 'untie, undo', but the sentence shows a paramedic applying a tourniquet to stop bleeding, which is the 'ligate / tie off' sense — already listed separately in candidate_glosses as 'to ligate'. The English translation ('tied off') confirms the mismatch: it does not render 'untie, undo' at all. A sentence for the shipped gloss needs abbinden as the reversal of anbinden/zubinden.",
+        "fix_de": "Nach dem Kochen band sie die Schürze ab und hängte sie ordentlich an den Haken.",
+        "fix_en": "After cooking, she untied her apron and hung it neatly on the hook."
+      }
+    ]
+  },
+  "abbleiben": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "high",
+        "detail": "The shipped gloss is 'be located', which for abbleiben lives almost entirely in the idiom 'Wo ist … abgeblieben?' ('where has it got to?'). The sentence instead means 'stay away from family gatherings', so it demonstrates nothing of the glossed sense.",
+        "fix_de": "Wo ist eigentlich mein zweiter Handschuh abgeblieben? Seit dem Umzug habe ich ihn nicht mehr gesehen.",
+        "fix_en": "Where has my other glove got to? I haven't seen it since the move."
+      },
+      {
+        "type": "grammar",
+        "severity": "medium",
+        "detail": "'allen Familienfeiern … abbleiben' gives abbleiben a dative complement it does not govern. The verb that means 'stay away from' and takes the dative is fernbleiben ('er bleibt allen Familienfeiern fern'); abbleiben in its stay-away reading is intransitive and regional ('er bleibt einfach ab'). Also, the English 'all the family gatherings' should be 'all family gatherings' for the generic reading.",
+        "fix_de": "Seit dem Streit bleibt er allen Familienfeiern konsequent fern und meldet sich bei niemandem.",
+        "fix_en": "Since the argument, he has consistently stayed away from all family gatherings and doesn't contact anyone."
+      }
+    ]
+  },
+  "abfüllen": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "'they bottle the young wine by hand into clean bottles' is redundant in English: 'bottle' already names the container, so 'into clean bottles' repeats it. The German 'in saubere Flaschen abfüllen' is not redundant because abfüllen names the decanting, not the vessel.",
+        "fix_en": "At the small winery, they pour the young wine by hand into clean bottles."
+      }
+    ]
+  },
+  "abgießen": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "'you carefully drain the hot water off over the colander' is word-for-word from 'über dem Sieb ab'. English drains water *through* a colander, not *over* one, and 'drain … off over' reads as an error rather than a register choice.",
+        "fix_en": "As soon as the pasta is done, you carefully pour the hot water off through a colander."
+      }
+    ]
+  },
+  "abkochen": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "medium",
+        "detail": "The shipped gloss is 'boil down, boil off' (reducing a liquid, especially a broth), but boiling tap water so it is safe to drink is the sanitising sense, which candidate_glosses lists separately as 'to boil a liquid shortly in order to sanitise it'. The English 'boil the tap water before drinking it' demonstrates that fourth sense, not the first.",
+        "fix_de": "Der Koch kochte die Brühe stundenlang ab, bis nur noch ein kräftiger, dunkler Fond übrig war.",
+        "fix_en": "The cook boiled the broth down for hours until only a strong, dark stock was left."
+      },
+      {
+        "type": "logic",
+        "severity": "medium",
+        "detail": "A power outage is the wrong trigger for the precaution and quietly works against it. Boil-water advisories follow contamination — a burst main, flooding, a failed treatment plant — not loss of power; and a power outage is precisely the situation in which an electric stove or kettle cannot boil anything. If the sanitising sentence is kept at all, the cause needs to be one that makes the water unsafe.",
+        "fix_de": "Nach dem Rohrbruch muss man das Leitungswasser vor dem Trinken sicherheitshalber abkochen.",
+        "fix_en": "After the burst water main, you have to boil the tap water before drinking it, just to be safe."
+      }
+    ]
+  }
+}

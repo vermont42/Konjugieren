@@ -1,0 +1,75 @@
+{
+  "ausrücken": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "\"set out to a major blaze\" is not idiomatic: \"set out to\" takes a verb (\"set out to find them\"), while a destination takes \"set out for\". English fire-service usage is \"was called out to\" / \"turned out to\" a blaze.",
+        "fix_en": "In the middle of the night the fire brigade was called out to a major blaze on the edge of town."
+      }
+    ]
+  },
+  "ausschauen": {
+    "findings": [
+      {
+        "type": "comma_splice",
+        "severity": "low",
+        "detail": "\"You really look tired today\" and \"did you sleep badly?\" are both independent clauses joined by a bare comma. The German comma is correct German but does not carry into English; a statement joined to a question by a comma is still a splice.",
+        "fix_en": "You really look tired today — did you sleep badly?"
+      }
+    ]
+  },
+  "ausschenken": {
+    "findings": [
+      {
+        "type": "logic",
+        "severity": "low",
+        "detail": "\"frisch gezapft\" collocates with beer, not wine: zapfen is drawing from a tap/keg, and \"frisch gezapftes Bier\" is the fixed phrase. Wine in a Wirtschaft is \"offen\", \"vom Fass\", or simply \"frisch geöffnet\". The verb ausschenken and its \"an + Akkusativ\" object are both correct; only the modifier is mismatched.",
+        "fix_de": "Der Wirt schenkte den jungen Wein vom Fass großzügig an seine Stammgäste aus.",
+        "fix_en": "The innkeeper generously poured out the young wine from the barrel for his regulars."
+      }
+    ]
+  },
+  "ausschleichen": {
+    "findings": [
+      {
+        "type": "grammar",
+        "severity": "medium",
+        "detail": "\"schlich er sich leise aus dem Saal aus\" doubles the aus: the directional PP \"aus dem Saal\" already carries the sense, so the trailing particle is redundant and the sentence reads as sich (hin)ausschleichen with a stray particle appended. Native usage is either \"schlich er sich leise aus dem Saal\" (schleichen) / \"hinaus\" (hinausschleichen), or ausschleichen used without a competing aus-PP.",
+        "fix_de": "Als der Vortrag immer langweiliger wurde, schlich er sich leise aus, ohne sich zu verabschieden.",
+        "fix_en": "As the lecture grew more and more boring, he quietly slipped out without saying goodbye."
+      }
+    ]
+  },
+  "ausschweigen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The shipped gloss \"stop talking, be quiet\" describes a cessative sense the verb does not have. sich ausschweigen is obligatorily reflexive and takes a topic (über/zu etwas): it means to keep silent about something, to refuse to comment. The sentence itself is correct and idiomatic and demonstrates that real sense; it is the gloss that is wrong. No candidate_glosses were imported for this verb, so this is a judgment call rather than a demonstrable import defect.",
+        "fix_en": "Gloss should read: keep silent (about something), refuse to comment."
+      }
+    ]
+  },
+  "auswaschen": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "\"before it could dry in\" is a Germanism for eintrocknen. English has no phrasal verb \"dry in\" in this sense; a stain \"dries\" or, idiomatically, \"sets\".",
+        "fix_en": "She washed the red wine stain out immediately with cold water before it could set."
+      }
+    ]
+  },
+  "bankrottgehen": {
+    "findings": [
+      {
+        "type": "connotation",
+        "severity": "low",
+        "detail": "\"Nach den langen Lockdowns gingen zahlreiche kleine Restaurants ... bankrott\" asserts a causal link between pandemic restrictions and small-business failure, which remains a contested political claim in German-language discourse. The German and the translation are both correct; the freight is in the subject matter, and a neutral cause costs the example nothing.",
+        "fix_de": "Nach der langen Wirtschaftskrise gingen zahlreiche kleine Restaurants in der Innenstadt bankrott.",
+        "fix_en": "After the long economic crisis, numerous small restaurants in the city center went bankrupt."
+      }
+    ]
+  }
+}

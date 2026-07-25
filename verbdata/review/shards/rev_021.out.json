@@ -1,0 +1,22 @@
+{
+  "hereinlegen": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "medium",
+        "detail": "The shipped gloss is the literal 'lay down inside, put', but the sentence 'hat uns der Verkäufer gründlich hereingelegt' / 'took us in' demonstrates the figurative sense 'jemanden hereinlegen' = to trick/con someone. candidate_glosses lists 'to trick; to pull someone's leg' as a distinct sense, so this is a sense/gloss mismatch rather than a judgment call. Either the gloss should be corrected to 'trick, con' (the sentence is natural and good for that sense), or the sentence should be rewritten to show the literal 'put/lay inside' meaning."
+      }
+    ]
+  },
+  "herreißen": {
+    "findings": [
+      {
+        "type": "logic",
+        "severity": "medium",
+        "detail": "The particle 'her' denotes motion toward the narrator, but the situation is the narrator's brother taking the bag away from the narrator ('snatched the bag away from me' = motion away from narrator). The deixis runs backwards relative to the sentence's own English; a brother grabbing chips off the narrator is 'wegreißen', not 'herreißen'. To actually demonstrate herreißen, the narrator must be the one pulling the object toward themselves.",
+        "fix_de": "Ungeduldig riss ich meinem Bruder die Chipstüte einfach her, kaum dass er sie aufgemacht hatte.",
+        "fix_en": "Impatiently, I just snatched the bag of chips over from my brother the moment he had opened it."
+      }
+    ]
+  }
+}

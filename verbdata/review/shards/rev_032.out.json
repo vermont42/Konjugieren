@@ -1,0 +1,81 @@
+{
+  "umnutzen": {
+    "findings": [
+      {
+        "type": "grammar",
+        "severity": "low",
+        "detail": "Collocation: umnutzen governs 'zu' + dative for the new use ('ein Gebäude zu Wohnungen umnutzen'). 'als' belongs to plain 'nutzen als' ('etwas als Kulturzentrum nutzen'), so with 'als' the particle 'um' is left doing nothing and the sentence reads as simple nutzen. The perfect ('hat ... umgenutzt') would also be more idiomatic than the present for a completed conversion.",
+        "fix_de": "Die Stadt nutzt die alte Textilfabrik jetzt zu einem lebendigen Kulturzentrum um."
+      }
+    ]
+  },
+  "umschalten": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "'annoyedly' is a word-for-word rendering of 'genervt' and is vanishingly rare in real English; a learner would take it for normal usage. Idiomatic English puts the state before the verb ('irritated, he switched') or uses a prepositional phrase ('in irritation').",
+        "fix_en": "When the commercials came on, he switched to another channel in irritation."
+      }
+    ]
+  },
+  "umschulen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The sentence demonstrates the vocational sense — 'sich zum Pflegefachmann umschulen lassen' is retraining for a new profession — while the shipped gloss says 'move schools' (transferring a pupil to a different school), which the sentence does not illustrate at all. 'to retrain (for a new profession, trade, etc.)' is already in candidate_glosses, so this is a mechanical import defect: the first candidate was taken rather than the dominant modern sense. The German and English are otherwise correct; only the gloss needs changing."
+      }
+    ]
+  },
+  "umstreiten": {
+    "findings": [
+      {
+        "type": "grammar",
+        "severity": "medium",
+        "detail": "Valency: transitive umstreiten takes as its object the contested thing itself — a territory, an inheritance, a title, something two parties both claim ('ein heiß umstrittenes Gebiet'). It does not take a proposition or a question under debate. One disputes *about* reasons: 'Historiker streiten bis heute über die wahren Gründe.' As written, 'die Gründe umstreiten' is not German, and the finite active form is in any case largely confined to this claim-to-possession reading; the everyday word is the participial 'umstritten'.",
+        "fix_de": "Beide Königshäuser umstreiten seit Generationen das kleine Herzogtum an der Grenze.",
+        "fix_en": "The two royal houses have been contesting the small duchy on the border for generations."
+      }
+    ]
+  },
+  "umtreten": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The gloss 'boot' is ambiguous to the point of being misleading: for most learners the primary English sense is 'start a computer', and the kicking sense is slangy and does not carry the 'over, so that it falls' component that the particle um- supplies. The sentence itself is correct and demonstrates exactly that component ('trat die Mülltonne um' = kicked it over). The gloss should read 'kick over, knock over'."
+      }
+    ]
+  },
+  "unterheben": {
+    "findings": [
+      {
+        "type": "wrong_verb",
+        "severity": "medium",
+        "detail": "'unter' here has an object — 'unter den Teig' — so it is a preposition, not the separable particle, and the verb actually demonstrated is plain heben with a directional PP. The particle verb unterheben leaves the particle bare at the end of the clause and takes only the folded-in ingredient as its object: 'den Eischnee unterheben'. The two constructions are alternatives, not combinable; recipes write either 'unter den Teig heben' or 'unterheben', never both.",
+        "fix_de": "Zum Schluss hebt man den steifen Eischnee ganz vorsichtig unter.",
+        "fix_en": "At the very end you gently fold in the stiff beaten egg whites."
+      }
+    ]
+  },
+  "untermischen": {
+    "findings": [
+      {
+        "type": "wrong_verb",
+        "severity": "medium",
+        "detail": "Same particle-versus-preposition problem: 'unter den Teig' gives 'unter' an accusative object, making it a preposition, so the sentence demonstrates plain mischen, not untermischen. The particle verb takes the receiving substance in the dative and strands the bare particle at the end: 'Er mischte dem Teig etwas Zimt unter.'",
+        "fix_de": "Er mischte dem Teig heimlich etwas Zimt unter, damit die Kekse besser dufteten."
+      }
+    ]
+  },
+  "untermalen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The sentence demonstrates the musical sense — 'Klaviermusik untermalte die Szene' is the standard collocation for scoring or underlaying a scene with music — but the shipped gloss is 'underpaint', the literal painting technique (applying a base layer under the finished picture). A learner reading 'underpaint' cannot get from it to what this sentence means. Both 'to underscore (with background music)' and 'to underscore, to underline, to emphasise, to accompany' are already in candidate_glosses, so this is a mechanical import defect: the first, and by far the rarest, candidate was taken. The German and English are correct as they stand."
+      }
+    ]
+  }
+}

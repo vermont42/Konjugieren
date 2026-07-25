@@ -1,0 +1,20 @@
+{
+  "anhauen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The sentence is correct German for the colloquial 'accost / hit up for money' sense of anhauen ('haute er mich an, ob ich ihm … zwanzig Euro leihen könne'), and the English 'hit me up' renders it well. But the shipped gloss 'hit' reads as the physical-strike sense (as in 'sich den Kopf anhauen'), which the sentence does not demonstrate. candidate_glosses[1] already carries the right sense: 'to accost (to approach someone with a demand or request)'. This is a mechanical import defect: the gloss should be that sense, not 'hit'."
+      }
+    ]
+  },
+  "anheimfallen": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "low",
+        "detail": "'dem Staat anheimfallen' here is the neutral legal sense of escheat — the estate reverting to the state after the last heir dies — which candidate_glosses[1] captures as 'to become subject'. The shipped gloss 'fall victim' carries a negative 'fall prey to' framing that the neutral sentence (and its accurate English 'passed to the state') does not demonstrate. The German and English are both correct; only the gloss sense is mismatched."
+      }
+    ]
+  }
+}

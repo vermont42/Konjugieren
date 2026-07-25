@@ -1,0 +1,52 @@
+{
+  "voranschieben": {
+    "findings": [
+      {
+        "type": "logic",
+        "severity": "medium",
+        "detail": "The sentence gives two conflicting directional specifications: 'an den Straßenrand' names a lateral goal (over to the shoulder), while the particle 'voran' means onward/forward along a path. A native speaker would write either 'schoben das Auto an den Straßenrand' (goal) or 'schoben das Auto langsam voran' (progress), not both. The strain shows in the English too: 'pushed the stalled car forward to the side of the road' has the same double direction.",
+        "fix_de": "Mit vereinten Kräften schoben sie das liegengebliebene Auto langsam voran, bis es endlich am Straßenrand stand.",
+        "fix_en": "Working together, they slowly pushed the stalled car forward until it was finally at the side of the road."
+      }
+    ]
+  },
+  "vorbauen": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "high",
+        "detail": "The sentence demonstrates 'vorsorgen, sich gegen etwas absichern' — taking precautions against hard times, the proverbial 'wer klug ist, baut vor'. It does not demonstrate the shipped gloss 'preassemble' (prefabricating a component), which would be 'vorfertigen'/'vormontieren'. The sentence itself is good German; the mismatch is with the gloss, so the cleaner fix is to change the gloss rather than the sentence."
+      },
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The sense the sentence shows is already present in candidate_glosses as 'to prevent, obviate', so the shipped gloss 'preassemble' is a mechanical import defect, not a judgment call. 'Take precautions, guard against' is the sense a learner meets in modern German; recommend replacing the gloss with that and keeping the sentence."
+      }
+    ]
+  },
+  "vorbeischauen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "The sentence demonstrates 'drop by, swing by for a short visit' — 'Schau doch morgen kurz bei uns vorbei' can only be read that way. That sense is already listed in candidate_glosses ('to swing by, to visit briefly'), so the shipped gloss 'look past' is a mechanical import defect: the importer took the first-listed literal sense rather than the dominant one. The sentence is correct and idiomatic; the gloss should change to 'drop by, swing by'."
+      },
+      {
+        "type": "comma_splice",
+        "severity": "low",
+        "detail": "The English joins two independent clauses ('Why don't you drop by our place tomorrow' / 'we've baked a fresh cake') with only a comma. The German comma is correct German, but it does not carry into English.",
+        "fix_en": "Why don't you drop by our place tomorrow? We've baked a fresh cake."
+      }
+    ]
+  },
+  "vorherberechnen": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "'Precalculate a solar eclipse' is a word-for-word rendering that English does not use with an event as object; one calculates or predicts an eclipse in advance. 'Heute' is also better rendered as 'today' in the sense of 'nowadays', which 'now' only partly carries.",
+        "fix_en": "Astronomers today can calculate a solar eclipse in advance down to the exact minute."
+      }
+    ]
+  }
+}

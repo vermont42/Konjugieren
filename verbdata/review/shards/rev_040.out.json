@@ -1,0 +1,82 @@
+{
+  "zufassen": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "The English calls the child 'it' ('steadied it'), which German 'das Kind' → 'es' licenses but English does not; referring to a child as 'it' reads as a calque. 'hielt es fest' also drifts slightly: it is 'held fast/tight', not 'steadied'.",
+        "fix_en": "When the child was about to stumble, the mother grabbed hold in a flash and held the child fast."
+      }
+    ]
+  },
+  "zukaufen": {
+    "findings": [
+      {
+        "type": "logic",
+        "severity": "medium",
+        "detail": "A Bäcker has no 'eigene Ernte', and a harvest yields grain, not flour. The sentence skips the mill and attributes a farm to a baker, so the causal link ('because his own harvest wasn't enough … extra flour') does not hold. Replacing the baker with a miller and the flour with grain keeps the zukaufen construction intact.",
+        "fix_de": "Weil die eigene Ernte nicht reichte, musste der Müller zusätzliches Getreide zukaufen.",
+        "fix_en": "Because his own harvest wasn't enough, the miller had to buy in extra grain."
+      }
+    ]
+  },
+  "zupacken": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "medium",
+        "detail": "The shipped gloss is 'grab, grip, hold on', but 'Als es viel zu tragen gab, packte er ohne Zögern zu' demonstrates the second listed sense, 'to knuckle down / pitch in with work' — as the English translation ('pitched in') itself confirms. Nothing is grabbed or gripped in the sentence.",
+        "fix_de": "Als ihm das nasse Seil entglitt, packte er blitzschnell zu und hielt es fest.",
+        "fix_en": "When the wet rope slipped out of his hand, he grabbed hold in a flash and held on."
+      }
+    ]
+  },
+  "zurückbauen": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "'wieder' in 'bauten … wieder zurück' is the idiomatic German 'back (to the prior state)', but it is rendered as 'again', which in English asserts a repetition — it reads as though the crew had dismantled the stage once before.",
+        "fix_en": "After the festival the crew took the big stage back down and cleared the whole site."
+      }
+    ]
+  },
+  "zurückbilden": {
+    "findings": [
+      {
+        "type": "grammar",
+        "severity": "medium",
+        "detail": "'stillgelegt' is the wrong collocation for a limb: 'stilllegen' applies to factories, mines, and rail lines. Immobilizing a body part is 'ruhigstellen' ('das Bein war ruhiggestellt'). The rest of the sentence, including the reflexive 'sich zurückbilden', is correct.",
+        "fix_de": "Nach der langen Ruhephase bildete sich der Muskel deutlich zurück, weil das Bein wochenlang ruhiggestellt war."
+      }
+    ]
+  },
+  "zurücklächeln": {
+    "findings": [
+      {
+        "type": "logic",
+        "severity": "low",
+        "detail": "The 'zurück' in zurücklächeln reciprocates a smile, but the trigger clause has him only looking at her ('ansah'), not smiling. There is no smile for hers to answer; 'anlächelte' supplies one and leaves the rest of the sentence untouched.",
+        "fix_de": "Als er sie freundlich anlächelte, lächelte sie ein wenig schüchtern zurück.",
+        "fix_en": "When he smiled at her kindly, she smiled back a little shyly."
+      }
+    ]
+  },
+  "zurückmachen": {
+    "findings": [
+      {
+        "type": "wrong_verb",
+        "severity": "high",
+        "detail": "The sentence does not contain zurückmachen. Its construction is the fixed idiom 'sich auf den Heimweg machen' with a stray 'zurück' appended; 'sich auf den Heimweg zurückmachen' is not German (the idiom with a return sense is 'sich auf den Rückweg machen', where 'zurück' is not a verb particle at all). Colloquial zurückmachen in the glossed sense is intransitive and non-reflexive: 'wir machen zurück'.",
+        "fix_de": "Es ist schon spät geworden, wir sollten langsam zurückmachen und nach Hause fahren.",
+        "fix_en": "It's gotten late already; we should start back soon and head home."
+      },
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "'langsam' here is the German discourse use meaning 'gradually, it's about time', not manner. 'we should slowly start heading back' renders it as speed, which is not what the German says.",
+        "fix_en": "It's gotten late already; we should start back soon and head home."
+      }
+    ]
+  }
+}

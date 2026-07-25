@@ -1,0 +1,19 @@
+{
+  "schöntrinken": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "medium",
+        "detail": "\"he drinks them away\" renders wegtrinken / seine Sorgen ertränken, not schöntrinken. sich etwas schöntrinken means to drink until the thing seems fine or attractive to you; the English says he makes the worries disappear, which is the opposite mechanism (perception changes, not the object). A learner reading the pair would take away the wrong meaning for the very verb the sentence exists to teach.",
+        "fix_en": "Instead of dealing with his worries, he drinks every single evening until they look harmless to him."
+      },
+      {
+        "type": "logic",
+        "severity": "low",
+        "detail": "Sorgen is a poor object for schöntrinken. The verb takes something one is stuck with and perceives as bad — die Lage, das Leben, den Job, die Wohnung — and makes it look good. Worries are not made to look good; they are drowned (ertränken) or drunk away (wegtrinken), which is exactly the collocation the English translation slipped into. Swapping the object to a situation makes the German idiomatic and the translation straightforward.",
+        "fix_de": "Statt seine Probleme anzugehen, trinkt er sich seine Lage Abend für Abend schön.",
+        "fix_en": "Instead of tackling his problems, he drinks until his situation looks fine to him, evening after evening."
+      }
+    ]
+  }
+}

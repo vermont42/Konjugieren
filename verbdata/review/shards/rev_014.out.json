@@ -1,0 +1,39 @@
+{
+  "durchwachsen": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "The English renders 'wuchs … durch' as 'grew up … between', which drops the through-a-barrier sense the verb exists to demonstrate. A learner reading gloss 'grow through' beside 'grew up between' gets no evidence of the particle's contribution.",
+        "fix_en": "In spring, fresh moss grew up everywhere through the gaps between the paving stones."
+      }
+    ]
+  },
+  "einfahren": {
+    "findings": [
+      {
+        "type": "logic",
+        "severity": "low",
+        "detail": "'endlich' presupposes a wait long enough to have tried the speaker's patience, but the same sentence puts the delay at one minute. The adverb and the quantity undercut each other.",
+        "fix_de": "Mit zwanzig Minuten Verspätung fuhr der Zug endlich in den Bahnhof ein.",
+        "fix_en": "Twenty minutes late, the train finally pulled into the station."
+      },
+      {
+        "type": "wrong_sense",
+        "severity": "low",
+        "detail": "A train entering a station is the 'to arrive, to pull in' sense, which candidate_glosses lists separately from the shipped gloss 'drive in'. The English translation itself says 'pulled into', not 'drove in', so the sentence visibly illustrates the neighboring sense. Either retarget the gloss to 'pull in, arrive' or use a drive-in example such as a vehicle entering a yard.",
+        "fix_de": "Der Lastwagen fuhr rückwärts in den engen Hof ein.",
+        "fix_en": "The truck drove backwards into the narrow yard."
+      }
+    ]
+  },
+  "einflechten": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "'weave together' describes verflechten/zusammenflechten — combining strands with each other. einflechten is 'weave in, braid in': adding something into an existing braid, which is exactly what the sentence shows (ribbons into braids) and what the English translation says ('wove … into'). The gloss and the sentence therefore point at different actions. Note that 'weave in' is not among candidate_glosses, so this is a defect in the imported gloss itself rather than a wrong pick from the available senses."
+      }
+    ]
+  }
+}

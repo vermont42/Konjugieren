@@ -1,0 +1,22 @@
+{
+  "durchgreifen": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "medium",
+        "detail": "The gloss is 'grasp through' (the literal sense), but the sentence 'griff … endlich hart durch und sperrte die Handys' demonstrates the idiomatic 'hart durchgreifen' = take firm action / crack down, which is the separate candidate gloss 'to take action'. A learner reading the gloss 'grasp through' beside a sentence about a school cracking down on phones would be misled.",
+        "fix_de": "Der Höhleneingang war zugewuchert, doch sie griff durch das Gestrüpp durch und tastete nach dem Seil.",
+        "fix_en": "The cave entrance was overgrown, but she reached through the undergrowth and felt for the rope."
+      }
+    ]
+  },
+  "durchspielen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "The shipped gloss 'play out to its conclusion)' has an unbalanced trailing parenthesis, an import artifact from a nested dictionary gloss like 'to play out (to play (a game etc.) to its conclusion)'. The German sentence itself is correct."
+      }
+    ]
+  }
+}

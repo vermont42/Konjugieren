@@ -1,0 +1,21 @@
+{
+  "totsagen": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "low",
+        "detail": "The gloss is 'falsely report someone's death' (a person), but the sentence is about a vinyl record being pronounced dead — the 'falsely report something's end' sense, which is candidate_glosses[1]. The German and English are correct; they just demonstrate the second listed sense rather than the shipped one. A mechanical import defect: the gloss picked the person sense while the sentence illustrates the thing sense."
+      }
+    ]
+  },
+  "umlagern": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The entry is marked inseparable and the sentence correctly demonstrates inseparable umlágern = 'surround, besiege, throng around' (Fans umlagerten den Bus), which the English 'thronged around' renders accurately. But the shipped gloss 'transfer, relocate' belongs to the SEPARABLE homograph úmlagern (e.g. Waren umlagern = restock/relocate goods). The gloss describes a different verb than the one the sentence uses. Neither the correct 'surround/besiege' sense nor a matching gloss appears in candidate_glosses, so the gloss should be corrected to 'surround, besiege, throng around'. The German sentence and English translation themselves are both fine.",
+        "fix_en": "After the concert, hundreds of fans thronged around the band's bus, calling for autographs."
+      }
+    ]
+  }
+}

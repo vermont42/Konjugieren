@@ -1,0 +1,22 @@
+{
+  "hinwegsetzen": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "medium",
+        "detail": "The sentence 'Er setzte sich einfach über das Verbot hinweg' demonstrates the reflexive figurative sense 'sich über etwas hinwegsetzen' = to flout/disregard/defy — which is candidate_gloss #2 '(über) to flout, to override, to dismiss, to defy, to ignore'. It does not demonstrate the shipped gloss 'leap over, jump over', which is the literal, non-reflexive sein-auxiliary sense (e.g. 'über einen Graben hinwegsetzen'). To keep the shipped gloss, the sentence must show the literal leap; to keep the sentence, the gloss should be the disregard sense.",
+        "fix_de": "Das Pferd setzte in vollem Galopp mühelos über den breiten Graben hinweg.",
+        "fix_en": "At full gallop the horse cleared the wide ditch with ease."
+      }
+    ]
+  },
+  "hinwegschauen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "The shipped gloss 'synonym of hinwegsehen' is a dictionary cross-reference, not a meaning a learner can use. The German sentence correctly demonstrates the verb (turning a blind eye to typos), so the gloss should state that sense directly, e.g. 'overlook, turn a blind eye to, disregard'."
+      }
+    ]
+  }
+}

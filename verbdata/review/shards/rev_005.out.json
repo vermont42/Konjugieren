@@ -1,0 +1,34 @@
+{
+  "antrinken": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "medium",
+        "detail": "The shipped gloss is 'get drunk or tipsy' (candidate sense 1), but the sentence 'trank er sich heimlich Mut an' demonstrates candidate sense 2, 'to obtain some quality by getting drunk, for example courage' (sich Mut antrinken). It shows acquiring courage through drink, not the state of becoming drunk. A learner reading the gloss beside this sentence would misattach the collocation.",
+        "fix_de": "Auf der Betriebsfeier hatte er sich noch vor dem Essen einen ordentlichen Schwips angetrunken.",
+        "fix_en": "At the office party he had already drunk himself pleasantly tipsy before dinner."
+      }
+    ]
+  },
+  "anwerfen": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "medium",
+        "detail": "The shipped gloss is 'throw at' (candidate sense 1), but the sentence 'warf er den alten Rasenmäher an' demonstrates candidate sense 2, 'to start up (an engine etc.)' — and the English translation itself renders it 'started up the old lawnmower', confirming the mismatch is between gloss and sentence, not within the German. Either the gloss should become 'start up (an engine)' or the sentence should be rewritten to show 'throw at'.",
+        "fix_de": "Im Streit warf ihm der Bruder eine Handvoll nassen Sand an.",
+        "fix_en": "In the quarrel his brother threw a handful of wet sand at him."
+      }
+    ]
+  },
+  "anzählen": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "medium",
+        "detail": "'counted out' is auszählen (complete the ten-count = knockout), not anzählen (begin/administer the count). The sentence's own logic contradicts 'counted out': the boxer 'kam noch vor der Acht wieder hoch', so he was precisely NOT counted out. German keeps anzählen and auszählen distinct; the English should say 'counted' or 'began the count over', not 'counted out'.",
+        "fix_en": "The referee began the count over the fallen boxer, but he got back up before the count of eight."
+      }
+    ]
+  }
+}

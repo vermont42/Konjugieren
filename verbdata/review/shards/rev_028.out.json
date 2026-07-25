@@ -1,0 +1,86 @@
+{
+  "niedermachen": {
+    "findings": [
+      {
+        "type": "connotation",
+        "severity": "low",
+        "detail": "Soldiers massacring the inhabitants of a village 'ohne jede Gnade' reads, in a German-language context, as a depiction of a Wehrmacht/SS village massacre. The verb is inherently violent, so some violence is unavoidable, but the specific soldiers-versus-civilians framing carries freight a learner sentence does not need; a historical or non-civilian object keeps the sense without it.",
+        "fix_de": "Die Truppen des Belagerers machten die letzten Verteidiger der Festung ohne jede Gnade nieder.",
+        "fix_en": "The besieger's troops cut down the last defenders of the fortress without any mercy."
+      }
+    ]
+  },
+  "niederreden": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "'Talked his colleague down' is misleading English: 'talk someone down' means to condescend to them, to negotiate a price lower, or to guide a pilot to land. The German means overwhelming someone with a torrent of talk until they give up, which the English does not convey.",
+        "fix_en": "He wore his colleague down with talk in every meeting until she finally fell silent."
+      }
+    ]
+  },
+  "näherstehen": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "The German is 'mein Bruder steht mir näher' — my brother is closer to me. The English swaps the subject and adds 'feel' ('I feel much closer to my brother'), so the clause the learner must align with the verb no longer matches it word for word.",
+        "fix_en": "Since our trip through Italy together, my brother is much closer to me than before."
+      }
+    ]
+  },
+  "raufgehen": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "'Walking up the four floors on foot' is pleonastic in English — 'walking up' already means on foot. The German 'zu Fuß' is not redundant, because it contrasts with the broken elevator, but it must not be rendered literally.",
+        "fix_en": "Since the elevator is broken again, we're walking up the four flights of stairs."
+      }
+    ]
+  },
+  "raufhalten": {
+    "findings": [
+      {
+        "type": "grammar",
+        "severity": "medium",
+        "detail": "'in die Höhe rauf' doubles the directional: 'in die Höhe halten' and 'raufhalten' each already express holding something up, and combining them is not idiomatic German. Either 'in die Höhe' or 'rauf' must go, and since 'rauf' is the verb being demonstrated, 'in die Höhe' should be replaced by a goal phrase.",
+        "fix_de": "Er hielt seinen Ausweis zum Fenster rauf, damit der Kontrolleur ihn deutlich sehen konnte.",
+        "fix_en": "He held his ID up to the window so the inspector could see it clearly."
+      }
+    ]
+  },
+  "rauslassen": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "'at the next corner already' is a calque of 'schon'. German 'schon an der nächsten Ecke' means 'as early as the next corner'; English 'already' in that slot is not idiomatic.",
+        "fix_en": "Can you please let me out as early as the next corner? I'll walk from there."
+      }
+    ]
+  },
+  "rechtschreiben": {
+    "findings": [
+      {
+        "type": "grammar",
+        "severity": "medium",
+        "detail": "rechtschreiben is intransitive ('die Rechtschreibung beherrschen', used almost only in the infinitive: 'er kann nicht rechtschreiben'). Giving it the accusative object 'bestimmte Fremdwörter' is nonstandard; with a direct object German uses plain 'schreiben' ('Fremdwörter richtig schreiben'). 'fehlerfrei rechtschreiben' is additionally pleonastic, since the recht- already means 'correctly'.",
+        "fix_de": "Selbst viele Erwachsene können nicht rechtschreiben, wenn Fremdwörter im Spiel sind.",
+        "fix_en": "Even many adults can't spell correctly when foreign words are involved."
+      }
+    ]
+  },
+  "reinfeiern": {
+    "findings": [
+      {
+        "type": "logic",
+        "severity": "medium",
+        "detail": "'in einen Geburtstag reinfeiern' means celebrating across midnight into the new day, so the party must continue past midnight. 'bis Mitternacht' caps it at midnight and therefore contradicts the very meaning the sentence is demonstrating.",
+        "fix_de": "Wir haben gestern mit Freunden bis weit nach Mitternacht in ihren dreißigsten Geburtstag reingefeiert.",
+        "fix_en": "Last night we celebrated with friends well past midnight to ring in her thirtieth birthday."
+      }
+    ]
+  }
+}

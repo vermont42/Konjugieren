@@ -1,0 +1,43 @@
+{
+  "bereinigen": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "\"in a clearing-the-air conversation\" is a mis-formed version of the English idiom, which is the attributive \"a clear-the-air conversation\" (or \"a conversation that cleared the air\"). The gerund form reads as word-for-word carryover of \"klärendes Gespräch\".",
+        "fix_en": "After the long quarrel the two of them tried to settle their differences in a clear-the-air conversation."
+      }
+    ]
+  },
+  "beschallen": {
+    "findings": [
+      {
+        "type": "logic",
+        "severity": "medium",
+        "detail": "\"Die Ärztin beschallte vorsichtig ihren Bauch\" has no antecedent for \"ihren\" other than the subject, because German possessives are not reflexive and no patient is introduced. The sentence therefore reads as the doctor scanning her own belly, which contradicts \"um das ungeborene Kind zu untersuchen\". A patient noun is needed.",
+        "fix_de": "Beim Termin beschallte die Ärztin vorsichtig den Bauch der werdenden Mutter, um das ungeborene Kind zu untersuchen.",
+        "fix_en": "At the appointment the doctor carefully scanned the expectant mother's belly with ultrasound to examine the unborn child."
+      }
+    ]
+  },
+  "bescheißen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "The sentence (\"hat uns beim Wechselkurs ganz übel beschissen\") demonstrates the swindle sense, which is candidate_gloss 2, \"to rip off, to screw, to swindle\". The shipped gloss is the literal scatological sense, so the import took the first listed sense rather than the living one. The German sentence and the English translation are both correct and idiomatic for the swindle sense; the fix belongs in the gloss, not the sentence. The literal sense is essentially confined to fixed expressions and would make a worse example.",
+        "fix_en": "The shady dealer totally ripped us off on the exchange rate."
+      }
+    ]
+  },
+  "beschweigen": {
+    "findings": [
+      {
+        "type": "grammar",
+        "severity": "high",
+        "detail": "Valency error: beschweigen is transitive (etwas beschweigen), and the sentence gives it a prepositional object in an impersonal passive (\"Über die dunklen Jahre … wurde … beschwiegen\"), which is the frame of the simplex schweigen (über etwas schweigen). The be- prefix is precisely what promotes the prepositional object to accusative, so the sentence undoes the derivation it is meant to demonstrate. It should be a personal passive with the years as subject.",
+        "fix_de": "Die dunklen Jahre der Familiengeschichte wurden am Esstisch stets beharrlich beschwiegen."
+      }
+    ]
+  }
+}

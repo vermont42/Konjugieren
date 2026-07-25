@@ -1,0 +1,22 @@
+{
+  "verbeißen": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "medium",
+        "detail": "The sentence 'Sie musste sich das Lachen verbeißen' demonstrates the reflexive 'suppress/stifle' sense (candidate gloss 'to suppress, to stifle (e.g., a smile, laughter, pain)'), which the English 'bite back her laughter' correctly renders. But the shipped gloss is 'bite the bit', a different sense. The German and English are both fine; only the gloss it is filed under is mismatched."
+      }
+    ]
+  },
+  "verhassen": {
+    "findings": [
+      {
+        "type": "grammar",
+        "severity": "medium",
+        "detail": "The sentence uses 'verhasste ... den Krieg' as an active transitive verb meaning 'loathed the war' (subject hates object). That is not standard German: the verb for hating is 'hassen'. Where 'verhassen' is attested it means 'jemandem etwas verhassen' — to make something loathsome/odious TO someone — and requires a dative recipient plus an accusative object of what becomes hateful. With no dative here, 'verhasste den Krieg' reads as an error to a native speaker.",
+        "fix_de": "In seinen Tagebüchern schrieb der alte Chronist, wie der endlose Krieg ihm seine Heimat verhasst hatte.",
+        "fix_en": "In his diaries the old chronicler wrote how the endless war had made his homeland hateful to him."
+      }
+    ]
+  }
+}

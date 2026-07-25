@@ -1,0 +1,12 @@
+{
+  "vorkehren": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "The shipped gloss 'put on display, show off' is the wrong sense. The sentence ('alles Nötige vorgekehrt, damit das Hochwasser keinen Schaden anrichtet') correctly demonstrates the precaution sense: vorkehren = 'Vorkehrungen treffen', i.e. to take precautions / make provisions. That correct sense is already present as candidate_glosses[1] ('to take precaution (regarding something)'), so this is a mechanical import defect where the wrong candidate was promoted to the shipped gloss. The German sentence and English translation are both fine; only the gloss target is wrong.",
+        "fix_en": "The town made all the necessary provisions in time so that the flooding wouldn't cause any damage."
+      }
+    ]
+  }
+}

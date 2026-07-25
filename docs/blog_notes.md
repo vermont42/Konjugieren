@@ -4559,3 +4559,43 @@ where particle scope and sense boundaries are exactly what goes wrong. It is pla
 than average, and projecting 8 x 44 from it assumes a representativeness that alphabetical sharding
 does not provide. The plan now says to sample two shards from different parts of the alphabet before
 believing any projection.
+
+## Fixing the four sentence defects, without touching the sentences (2026-07-25)
+
+The `forms.json` gate found four genuine authoring errors among 1,097 sentences. All four are now
+fixed, and the gate reads **1,082 / 1,097 (98.6%)**, up from 1,078.
+
+**Corrections are overlaid, not edited in.** The obvious move was to rewrite the four sentences in
+their `auth_*.out.json` shards. That would have been wrong twice over: those files are the raw record
+of what each model produced, so overwriting a sentence destroys the evidence for the finding made
+against it, and it silently changes the `en_chars` the verbosity comparison was measured on. So the
+fixes live in `verbdata/authored/corrections.json`, keyed by verb, carrying a `reason` and a `source`,
+and `check_forms.py` now applies them on read. That is also exactly the shape the adversarial review's
+`fix_de` / `fix_en` findings need, so the two paths converge on one file rather than two mechanisms.
+
+The four:
+
+| verb | was | now |
+|---|---|---|
+| `wegschmeißen` | *Wirf … weg*, which is **wegwerfen** | *Schmeiß … weg*, with the comma splice fixed by a semicolon |
+| `hochstellen` | *stellte … ein paar Stufen höher*, i.e. **höherstellen** | *stellte die Heizung im Wohnzimmer hoch* |
+| `heranhalten` | *hielt … nah an die Lampe*, plain *halten* plus a PP | *hielt das Foto dicht an die Lampe **heran*** |
+| `rechtdrehen` | *dreht … rechts*, the adverb | *dreht … recht* |
+
+`wegschmeißen` used the reviewer's own proposed fix from the shard-038 trial, which is the first time
+the review pipeline has fed a correction end to end.
+
+**`rechtdrehen` resolved against the oracle, and it went the other way from my instinct.** I had left
+it flagged rather than fixed, on the grounds that real meteorological German says *der Wind dreht
+rechts* and that the app's `recht+drehen` marking might therefore be the defect. Checking kaikki
+settles it: `präsensIndikativ.ts = ['rechtdreht', 'dreht recht']`. The particle really is *recht*, the
+app is right, and the sentence was wrong. Which is the *überkochen* lesson for the fourth time in a
+day — a confident linguistic read that is *true about the language* can still be wrong about *this
+lemma*, and the paradigm oracle is what disambiguates. Hedging until the oracle spoke was the correct
+call; the hedge just resolved against me.
+
+**What remains in the miss list is now entirely non-defects.** Fifteen misses: nine dual-paradigm
+verbs where the model wrote the other attested form (resolving when wrinkle 1 lands), four clipped
+colloquial imperatives the app does not generate, and two limits of the matcher itself. There is no
+longer a single sentence in the corpus that the gate can see is wrong, which is the point at which a
+mechanical gate has given everything it has and the adversarial review has to carry the rest.

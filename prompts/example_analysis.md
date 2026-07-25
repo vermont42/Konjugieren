@@ -206,12 +206,20 @@ The mechanical gate has **already been run** (`verbdata/authored/check_forms.py`
 with no judge in the loop. Figures below are **after** the two corpus defects it surfaced were fixed.
 
 ```
-OVERALL                 1,078 / 1,097 (98.3%)
-claude-opus-4-8           542 / 550   (98.5%)
+OVERALL                 1,082 / 1,097 (98.6%)   [4 corrections overlaid]
+claude-opus-4-8           546 / 550   (99.3%)
 claude-opus-5             536 / 547   (98.0%)
-difference  +0.6pp, 95% CI [-1.0, +2.1]  ->  NOT significant
-strong verbs   4-8 98.6%  vs  5.0 97.8%      weak verbs  4-8 98.4%  vs  5.0 98.0%
 ```
+
+**No remaining miss is a sentence defect.** The four genuine ones were fixed on 2026-07-25 and live in
+`verbdata/authored/corrections.json`, which `check_forms.py` overlays on read. The authored shards are
+never edited: they are the raw record of what each model produced, and rewriting a sentence there
+would destroy the evidence for the finding against it and silently change the `en_chars` the
+verbosity comparison was measured on. Accepted `fix_de` / `fix_en` findings from the adversarial
+review belong in that same file.
+
+Figures below are pre-correction, since they are what the models produced unaided.
+Pre-correction the gate read 1,078 / 1,097 (98.3%), 4.8 at 98.5% and 5.0 at 97.6%.
 
 **On mechanical conjugation correctness the two models are indistinguishable.** The gap is 0.6pp
 against a ±1.6pp interval — the regime § "Hazard 3" warns not to report as a finding. 5.0's +62%

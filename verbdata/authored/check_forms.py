@@ -5,8 +5,16 @@ Consumes:
   corpus/working/forms.json                  form -> [{verb, contiguous, particle?}]
                                              built by KonjugierenTests/Utils/CorpusFormsDumpTests
   verbdata/authored/shards/auth_*.out.json   the authored {de, en} sentences
+  verbdata/authored/corrections.json         accepted fixes, overlaid on the authored sentences
+                                             (optional; absent on a first run)
   verbdata/authored/provenance.json          verb -> author model
   verbdata/classification.json               per-verb family / auxiliary / ablautGroup
+
+CORRECTIONS ARE OVERLAID, NOT EDITED IN. The authored shards are the raw record of what each model
+produced and must stay immutable: overwriting a sentence there would destroy the evidence for any
+finding made against it, and would silently change the en_chars the A/B was measured on. So accepted
+fixes live in corrections.json, keyed by verb, and every consumer applies them on read. That is also
+the shape the adversarial review's fix_de/fix_en findings need, so the two paths converge.
 
 Produces:
   verbdata/authored/forms-gate.json          per-verb verdict + the matched token
@@ -44,6 +52,7 @@ this script is for.
 
 import json
 import glob
+import os
 import re
 import collections
 
@@ -56,6 +65,13 @@ classif = {c["word"]: c for c in json.load(open("verbdata/classification.json"))
 sentences = {}
 for f in sorted(glob.glob("verbdata/authored/shards/auth_*.out.json")):
     sentences.update(json.load(open(f)))
+
+CORRECTIONS = {}
+if os.path.exists("verbdata/authored/corrections.json"):
+    CORRECTIONS = json.load(open("verbdata/authored/corrections.json"))
+    for verb, fix in CORRECTIONS.items():
+        if verb in sentences:
+            sentences[verb] = {**sentences[verb], **{k: v for k, v in fix.items() if k in ("de", "en")}}
 
 
 def attests(verb, sentence):
@@ -79,6 +95,7 @@ for verb, e in sorted(sentences.items()):
     results[verb] = {
         "hit": ok,
         "matched": tok,
+        "corrected": verb in CORRECTIONS,
         "model": prov[verb],
         "family": classif.get(verb, {}).get("family"),
         "flagged": bool(e.get("note")),
@@ -96,7 +113,7 @@ def rate(rows):
 
 
 rows = list(results.values())
-print(f"OVERALL  {rate(rows)}\n")
+print(f"OVERALL  {rate(rows)}" + (f"   [{len(CORRECTIONS)} corrections overlaid]" if CORRECTIONS else "") + "\n")
 
 print("by author model")
 for m in sorted({r["model"] for r in rows}):

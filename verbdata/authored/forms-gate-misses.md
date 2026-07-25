@@ -1,41 +1,31 @@
-# forms.json gate — the 19 remaining misses, categorised
+# forms.json gate — the 15 remaining misses, categorised
 
 Generated alongside `verbdata/authored/check_forms.py`. Raw per-verb verdicts: `forms-gate.json`.
 
-**1,078 / 1,097 (98.3%) matched.** Only **4** of the 19 misses are actual sentence defects, so 98.3%
-is a floor on authoring quality, not an estimate of it. Read the categories before treating any miss
-as an error.
+**1,082 / 1,097 (98.6%) matched**, with `verbdata/authored/corrections.json` overlaid.
+**No remaining miss is a sentence defect.** Every one is either the app's one-paradigm-per-verb
+limitation, an orthographic variant the app does not generate, or a limit of the matcher itself.
 
-## Already fixed (2)
+## Fixed: the 4 genuine sentence defects (2026-07-25)
 
-Two misses were **corpus defects, not sentence defects**, and were corrected in `Verbs.xml`:
+Corrected in `verbdata/authored/corrections.json`, which is overlaid on read rather than edited into
+the authored shards, so the raw record of what each model produced stays intact.
 
-- **zusammenspinnen** — was `zusammen+spinnen fa="w"`, generating the non-word *zusammengespinnt*.
-  Now `zusammen+sp^i^nnen fa="s" ag="beginnen"`, matching its siblings `sp^i^nnen` and
-  `herum+sp^i^nnen`. The model's *zusammengesponnen* was right all along.
-- **überkochen** — ships the inseparable homograph (*overcook*) correctly, per the pilot, but was
-  glossed `tn="boil over"`, the **separable** homograph's meaning. Now carries both readings, via the
-  `über*setzen` pattern: `<reading tn="overcook" fa="w" />` plus
-  `<reading in="über+kochen" tn="boil over" fa="w" ay="s" />`.
+| verb | was | now |
+|---|---|---|
+| `wegschmeißen` | *Wirf … weg* (that is **wegwerfen**) | *Schmeiß … weg*; the English comma splice fixed with a semicolon |
+| `hochstellen` | *stellte … ein paar Stufen höher* (**höherstellen**) | *stellte die Heizung … hoch* |
+| `heranhalten` | *hielt … nah an die Lampe* (plain *halten* + PP) | *hielt … an die Lampe **heran*** |
+| `rechtdrehen` | *dreht … rechts* (the adverb) | *dreht … recht*; settled against kaikki, which attests *dreht recht* |
 
-Both authored sentences now pass the gate.
+## Fixed earlier: 2 corpus defects
 
-## Genuine sentence defect — the sentence does not demonstrate its verb (4)
-
-These four are real authoring errors and should be corrected or re-authored.
-
-- **wegschmeißen** _[4-8]_ — uses *warf … weg* — that is **wegwerfen**; wegschmeißen wants *schmiss … weg*
-  > Wirf die alten Zeitungen bitte nicht weg, ich brauche sie noch zum Basteln.
-- **hochstellen** _[4-8]_ — uses *stellte … höher* — that is **höherstellen**; the particle *hoch* never appears
-  > Weil ihm kalt war, stellte er die Heizung ein paar Stufen höher.
-- **heranhalten** _[4-8]_ — uses *hielt … an* — the particle is **heran**, not *an*
-  > Er hielt das Foto ganz nah an die Lampe, um die Gesichter besser zu erkennen.
-- **rechtdrehen** _[4-8]_ — uses *dreht … rechts* — the particle is **recht**, not *rechts*
-  > Laut Wetterbericht dreht der Wind am Nachmittag rechts und weht dann kräftig aus Westen.
+`zusammen+spinnen` was `fa="w"`, generating the non-word *zusammengespinnt*; now `fa="s" ag="beginnen"`.
+`über*kochen` was glossed with the separable homograph's meaning; it now carries both readings.
 
 ## Dual-form verb — model used the other valid German form (9)
 
-The app picks one form of a genuinely dual verb; the model picked the other. Both are attested German, so these are not sentence defects. `verglimmen` is already listed as **deferred** in `verbdata/wiktionary-defects.json` for exactly this reason.
+The app picks one form of a genuinely dual verb; the model picked the other. Both are attested German, so these are not sentence defects. **Josh decided 2026-07-25 that the corpus should carry both forms** (wrinkle 1 in `docs/verb-sources.md`), so these resolve when that model pass lands. `verglimmen` is additionally listed as **deferred** in `verbdata/wiktionary-defects.json`.
 
 - **absaugen** _[5]_ — app conjugates *saugen* strong (*absog*, *abgesogen*); model used weak *saugte*
   > Der Zahnarzt saugte während der Behandlung ständig Speichel ab, damit ich schlucken konnte.

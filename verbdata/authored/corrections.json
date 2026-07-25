@@ -1,0 +1,27 @@
+{
+  "wegschmeißen": {
+    "de": "Schmeiß die alten Zeitungen bitte nicht weg, ich brauche sie noch zum Basteln.",
+    "en": "Please don't throw the old newspapers out; I still need them for crafts.",
+    "reason": "wrong_verb + comma_splice. The original used 'Wirf … weg', which is wegwerfen; wegschmeißen needs the stem schmeiß-. The English also joined two independent clauses with a bare comma, correct in the German original but a splice in English.",
+    "source": "adversarial review, shard 038 (claude-opus-5), 2026-07-25"
+  },
+  "hochstellen": {
+    "de": "Weil ihm kalt war, stellte er die Heizung im Wohnzimmer hoch.",
+    "en": "Because he was cold, he turned up the heating in the living room.",
+    "reason": "wrong_verb. The original wrote 'stellte … ein paar Stufen höher', which is höherstellen; the particle hoch never appeared.",
+    "source": "forms.json gate, 2026-07-25"
+  },
+  "heranhalten": {
+    "de": "Er hielt das Foto dicht an die Lampe heran, um die Gesichter besser zu erkennen.",
+    "en": "He held the photo right up to the lamp to make out the faces better.",
+    "reason": "wrong_verb. The original wrote 'hielt … nah an die Lampe', i.e. plain halten plus a prepositional phrase; the particle is heran, and heranhalten takes 'an etwas heran'.",
+    "source": "forms.json gate, 2026-07-25"
+  },
+  "rechtdrehen": {
+    "de": "Laut Wetterbericht dreht der Wind am Nachmittag recht und weht dann kräftig aus Westen.",
+    "en": "According to the forecast, the wind will veer clockwise in the afternoon and then blow strongly from the west.",
+    "note": "rechtdrehen is meteorological/nautical jargon for wind shifting clockwise (backing is its opposite, linksdrehen); rare in everyday speech",
+    "reason": "wrong_verb. The original wrote 'dreht … rechts', the adverb, not the particle recht. Settled against kaikki, which attests präsensIndikativ 'dreht recht' for this lemma, so the app's recht+drehen marking is correct and the sentence was wrong.",
+    "source": "forms.json gate, 2026-07-25"
+  }
+}

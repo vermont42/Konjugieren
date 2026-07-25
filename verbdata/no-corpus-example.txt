@@ -16,6 +16,12 @@
 #
 # format: <verb>	<reason>	<subagent note, if any>
 #
+# 2026-07-24 (pilot): 25 verbs given high-quality Opus 4.8-authored example sentences (source
+# 'Opus 4.8'), validated by a forms.json form-check and an independent adversarial review. They
+# are removed from this list. Authoring the remaining gap verbs is the ongoing next step; two of
+# the 25 (aufsprechen, anräumen) doubled as a gloss check — aufsprechen's tn was corrected to
+# 'record (a message)' in Verbs.xml; anräumen's Austrian 'clutter' gloss was vindicated by kaikki.
+#
 # 2026-07-24: 12 verbs whose sole genuine candidate exceeded the old tiered ceiling were
 # recovered by raising the ceiling to 80 words (Josh's call) and translating their real corpus
 # sentence. They now ship a sentence and are removed from this list: abhandenkommen, anbetreffen,
@@ -23,13 +29,10 @@
 # entsteigen, zusammenruecken. The remaining candidates-none-usable rows are the corpus-quality
 # floor (nominal / homograph / adjectival participle / mis-split / corrupt).
 
-abbehalten	no-candidates	no candidates
-abbestellen	no-candidates	no candidates
 abbezahlen	no-candidates	no candidates
 abbinden	no-candidates	sole candidate rejected: a 51-word Luther passage carrying an embedded verse number (…Tannenholz 9 Meine Knechte…) and a broken hyphenation (Zedern-und), so it is not a quotable sentence
 abbleiben	no-candidates	no candidates
 abbrennen	no-candidates	no candidates
-abbuchen	no-candidates	no candidates
 abdanken	no-candidates	no candidates
 abdreschen	no-candidates	no candidates
 abdringen	no-candidates	no candidates
@@ -66,7 +69,6 @@ abnutzen	no-candidates	no candidates
 abordnen	candidates-none-usable	Only candidate 0 is a genuine verbal use, but at 61 words it exceeds the 55-word ceiling; candidate 1 is a truncated 1648 treaty fragment beginning mid-clause.
 abpfeifen	no-candidates	no candidates
 abprüfen	no-candidates	no candidates
-abrechnen	no-candidates	no candidates
 abregen	no-candidates	no candidates
 abringen	no-candidates	no candidates
 abrinnen	no-candidates	no candidates
@@ -79,7 +81,6 @@ absaugen	no-candidates	no candidates
 abschauen	no-candidates	no candidates
 abscheiden	candidates-none-usable	Quotation carries a stray Luther verse number (24) mid-sentence, an artifact of the source text; the attested sense is „hinscheiden“, to depart this life, not the chemical one. Re-picked 2026-07-20 after the indexer gained a mid-sentence verse-number filter. The originally quoted Luther sentence carried a stray verse number („…wäre; 24 aber es ist…“), was flagged as a hedge when mined, and is now correctly dropped from the pool. The sole remaining candidate is the Nietzsche attestation in exactly the right sense, but at 49 words it exceeds the brief's 45-word ceiling for a last candidate, so this returns null rather than shipping an over-long quotation.
 abschinden	no-candidates	no candidates
-abschleifen	no-candidates	no candidates
 abschmecken	no-candidates	no candidates
 abschwellen	no-candidates	no candidates
 abschwören	candidates-none-usable	no candidates
@@ -135,7 +136,6 @@ anrauchen	no-candidates	no candidates
 anreihen	candidates-none-usable	Sole candidate is a fragmentary 1648 treaty heading ending mid-citation, not a sentence; nulled.
 anreisen	no-candidates	no candidates
 anreißen	no-candidates	no candidates
-anräumen	no-candidates	No candidates. Sense fit is loose: ~anräumen~ resembles none of the exemplar sets closely; took contact/attachment as nearest.
 anrücken	no-candidates	no candidates
 ansaufen	no-candidates	no candidates; sense 7 (accumulation) taken as the nearest fit, but the reflexive state-acquisition of ~sich einen ansaufen~ matches none of the exemplars closely
 anschaffen	no-candidates	no candidates
@@ -191,7 +191,6 @@ aufscheinen	no-candidates	no candidates
 aufschießen	no-candidates	no candidates
 aufschmelzen	no-candidates	no candidates; the state-loosening use (auftauen, aufweichen, auflösen) fits no exemplar set — took the working-up/reconditioning sense as nearest.
 aufschwellen	no-candidates	no candidates
-aufsprechen	no-candidates	no candidates. Gloss "chat, talk" is vague and no auf- sense covers an inchoative speech verb; sense 4 (emergence, beginning suddenly) chosen as nearest.
 aufspüren	no-candidates	no candidates
 aufstreben	no-candidates	no candidates
 auftreffen	no-candidates	no candidates
@@ -207,9 +206,6 @@ ausblicken	no-candidates	No candidates.
 ausdeuten	no-candidates	No candidates.
 ausdienen	no-candidates	No candidates.
 ausdrucken	no-candidates	No candidates.
-auseinanderbrechen	no-candidates	No candidates.
-auseinanderfallen	no-candidates	No candidates.
-auseinanderhalten	no-candidates	no candidates
 auseinandernehmen	no-candidates	no candidates
 auseinanderreißen	no-candidates	no candidates
 auseinanderstreben	no-candidates	no candidates
@@ -247,7 +243,6 @@ ausspeichern	no-candidates	no candidates
 aussperren	no-candidates	no candidates. Sense hedged as for aussparen: aus- here is privative (keeping someone outside), which no listed sense covers exactly.
 aussterben	candidates-none-usable	Sole candidate is a three-word fragment opening with a stray quotation mark and carrying no subject; rejected as not a sentence.
 aussteuern	no-candidates	no candidates
-ausstrahlen	candidates-none-usable	Sole candidate is a mis-split fragment: it opens on a dative object with no governing subject or finite main verb. Rejected.
 austräumen	no-candidates	no candidates
 ausverkaufen	no-candidates	no candidates
 auswachsen	no-candidates	no candidates
@@ -303,7 +298,6 @@ beschulen	no-candidates	no candidates
 beschweigen	no-candidates	no candidates
 beschwingen	no-candidates	no candidates
 besichern	no-candidates	no candidates
-bespringen	no-candidates	no candidates
 bestoßen	no-candidates	no candidates
 bestreben	candidates-none-usable	All four candidates are the lexicalized predicative adjective in "bestrebt sein" — gradable, hence adjectival, not a verbal use.
 bestürzen	candidates-none-usable	All five candidates are the predicative adjective "bestürzt" (one of them graded with "sehr"), not a verbal use.
@@ -359,7 +353,6 @@ drunterhalten	no-candidates	no candidates
 drüberhalten	no-candidates	no candidates
 durchbeißen	no-candidates	no candidates
 durchbrennen	no-candidates	no candidates
-durchdrehen	no-candidates	no candidates
 durcheinanderbringen	candidates-none-usable	Sole candidate ("Sie bringen das eine mit dem anderen durcheinander!)") is a genuine verbal use but is a mis-split Bundestag interjection carrying a stray closing parenthesis, so it was rejected rather than quoted with visible debris.
 durcheinanderkommen	no-candidates	no candidates
 durchfließen	no-candidates	no candidates
@@ -415,7 +408,6 @@ einkriegen	no-candidates	no candidates
 einlagern	no-candidates	no candidates
 einleben	no-candidates	no candidates
 einlenken	no-candidates	no candidates
-einliefern	no-candidates	no candidates
 einmachen	no-candidates	no candidates
 einpflanzen	candidates-none-usable	Sole candidate is a five-word fragment ("Sicherheit und SPD einpflanzen lassen."); rejected.
 einpflegen	no-candidates	no candidates
@@ -471,7 +463,6 @@ entstammen	candidates-none-usable	Sole candidate carries a leading footnote mark
 entstören	no-candidates
 entwarnen	no-candidates
 entwerten	no-candidates
-entzweibrechen	no-candidates
 entzweigehen	no-candidates
 entäußern	no-candidates	no candidates
 erahnen	no-candidates	Sole candidate is a broken Bundestag fragment: the relative clause 'mit denen Sie …' breaks off into an interpolated '(Beifall bei der AfD …)' stage direction. No usable sentence.
@@ -527,7 +518,6 @@ freitesten	no-candidates	no candidates
 fremdgehen	no-candidates	no candidates
 gegenlesen	no-candidates	no candidates
 gegenwirken	no-candidates	no candidates
-gegenzeichnen	no-candidates	no candidates
 gehaben	candidates-none-usable	~gehaben~ is not among the ~ge-~ exemplars; assigned the fused sense (index 3). Sentence null: every candidate is the participle ~gehabt~ of ~haben~, not ~gehaben~.
 geradebiegen	no-candidates	no candidates
 geringhalten	no-candidates	no candidates
@@ -583,7 +573,6 @@ hereingeben	no-candidates	no candidates
 hereinlegen	no-candidates	no candidates; sense 0 (literal „lay in“) chosen over the figurative sense 1 to match this reading's gloss „lay down inside, put,“ even though hereinlegen is itself the sense-1 exemplar
 herhalten	no-candidates	no candidates
 herhören	candidates-none-usable	sole candidate is a false match: „Man hört ihre Rosse schnauben von Dan her“ is hören + the phrase „von Dan her,“ not the verb herhören
-herreisen	no-candidates	no candidates
 herreißen	no-candidates	no candidates
 herrichten	candidates-none-usable	her- bleached; verb resembles no her- exemplar, sense 0 assigned as nearest. The sole candidate (Luther, "richte deinen Weg vor mir her") is the directional frame "vor mir her" (ahead of me) on the base verb richten, not the "arrange/fix up" sense of herrichten; rejected, sentence null.
 hersagen	no-candidates	no candidates
@@ -639,7 +628,6 @@ hinwegsetzen	candidates-none-usable	Sense 0 (literal 'leap over') taken on the r
 hinzubekommen	no-candidates	no candidates
 hocharbeiten	no-candidates	no candidates
 hochdienen	no-candidates	no candidates
-hochdrehen	no-candidates	no candidates
 hochfliegen	candidates-none-usable	Sole candidate is ~fliegen~ with the gradable adverb 'so hoch' (altitude), not the particle verb ~hochfliegen~ 'fly up'; rejected, so no sentence.
 hochklappen	no-candidates	no candidates
 hochkochen	no-candidates	no candidates
@@ -695,7 +683,6 @@ mausrutschen	no-candidates	The maus- morpheme is glossed as the fossil intensifi
 maßhalten	no-candidates
 maßnehmen	candidates-none-usable	No sentence: all five candidates are the noun ~Maßnahme(n)~ ("measure, step"), not the verb ~maßnehmen~ ("take someone's measurements").
 mitfolgen	candidates-none-usable	No sentence: the only candidate is a 60+-word Luther run-on with embedded verse numbers (2, 3, 4), rejected as over-length and mis-split.
-mithören	no-candidates	no candidates
 mitklingen	no-candidates	no candidates
 mitmischen	no-candidates	no candidates
 mitreisen	no-candidates	no candidates
@@ -751,7 +738,6 @@ niederschießen	no-candidates	no candidates
 näherstehen	no-candidates	no candidates
 plattmachen	no-candidates	no candidates. The reading glosses "flatten," the literal resulting-flat-state sense (0); the figurative "dumbfounded" sense was not taken.
 publikmachen	no-candidates	no candidates
-querdenken	no-candidates	no candidates
 querlesen	no-candidates	no candidates
 querschießen	no-candidates	no candidates
 querschlagen	no-candidates	no candidates. The reading glosses "ricochet," the crosswise-deflection sense (0); the "obstruct" sense (1) was not taken despite the slot.
@@ -807,7 +793,6 @@ schwären	no-candidates
 schönreden	no-candidates
 schönsaufen	no-candidates
 schöntrinken	no-candidates
-seilspringen	no-candidates
 sichergehen	no-candidates	Exemplars are degenerate — senses 1 and 2 both list only "sichergehen" — so the slot gives no signal; picked sense 2 by the unambiguous translation "make sure."
 sonderkündigen	no-candidates	Exemplars are degenerate — all three sense slots list only "sonderkündigen" — so the slot gives no signal; picked sense 0 by the translation, a Sonderkündigungs-right being an extraordinary one.
 spleißen	no-candidates	no candidates
@@ -863,7 +848,6 @@ umtreten	candidates-none-usable	No usable sentence: the sole candidate is a fals
 umändern	no-candidates	no candidates
 unterbewerten	no-candidates	No candidates. Note: unter- here is the quantitative 'below true value / too little' sense (as in unterschätzen), which the insep:unter inventory does not list; used the closest, sense 0 (literal beneath).
 unterbezahlen	no-candidates	unter- here is the "below a norm" reading — a metaphorical extension of the literal-beneath sense (0), not a separately listed sense.
-unterfordern	no-candidates	unter- here is the "below a norm" reading — a metaphorical extension of the literal-beneath sense (0), not a separately listed sense.
 unterführen	no-candidates	no candidates
 unterheben	no-candidates	no candidates
 unterkommen	no-candidates	no candidates
@@ -919,7 +903,6 @@ verrufen	no-candidates	no candidates
 verräumen	no-candidates	no candidates
 verrühren	no-candidates	no candidates
 versalzen	candidates-none-usable	no usable sentence: the sole candidate has ~versalzte~ as an attributive adjective (~versalzte Beredsamkeit~), not a verbal use.
-versaufen	no-candidates	no candidates
 verschallen	no-candidates	no candidates
 verschalten	no-candidates	ver- here is combinatorial ('connect together'), not cleanly among the listed senses; picked sense 0 (completive) as the nearest.
 verschauen	no-candidates	no candidates
@@ -975,7 +958,6 @@ vorherbestimmen	candidates-none-usable	All five candidates use participial 'vorh
 vorhängen	no-candidates	no candidates
 vorkehren	no-candidates	root:kehren covers both homographs; family w and the 'turn to the front' gloss select the 'turn' branch (kehren 1), not 'sweep.'
 vorleisten	no-candidates	no candidates
-vormerken	no-candidates	no candidates
 vorsagen	no-candidates	no candidates
 vorschießen	no-candidates	no candidates
 vorschützen	no-candidates	no candidates
@@ -1031,7 +1013,6 @@ wiederwählen	no-candidates	no candidates
 wringen	no-candidates	no candidates
 wundliegen	no-candidates	no candidates
 wundreiben	no-candidates	no candidates
-zeihen	candidates-none-usable	All five candidates are the verb ~ziehen~ ("to pull, draw") — ~zieht~, ~ziehen~ — not ~zeihen~ ("to accuse"); no candidate is a genuine use of the target verb.
 zerbeißen	candidates-none-usable	Sole candidate is a spliced two-verse Luther passage with an embedded verse number ("11") joining Revelation 16:10–11; rejected as a broken mis-split.
 zerfließen	no-candidates	no candidates
 zerkochen	no-candidates	no candidates

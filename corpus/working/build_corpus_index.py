@@ -974,15 +974,22 @@ def merge_balanced(by_work, lit_works, gov, tech, rank):
 
 
 def target_verbs():
-    """The verbs this pipeline exists to fill: those with no etymology yet. Re-derived from the
-    corpus rather than restated, per the phase spec."""
+    """The verbs this pipeline exists to fill: those with no example sentence yet. Re-derived from
+    the corpus rather than restated, per the phase spec.
+
+    This keyed on *etymology* coverage until 2026-07-24. That was correct while the etymology and
+    sentence halves were mined in one pass, but Phase 5 gave every verb in the corpus an etymology,
+    which drove the no-etymology set to 0 — so the indexer reported `TARGET verbs (no etymology): 0`
+    and a re-mine would have targeted nothing. The metric that matters for an example-sentence
+    re-mine is a missing *sentence*, so it now keys on `ExampleSentences.json`. The etymology pass is
+    complete; only the sentence pass has a residue."""
     import xml.etree.ElementTree as ET
-    ety_path = os.path.join(ROOT, "Konjugieren", "Models", "Etymologies.json")
+    ex_path = os.path.join(ROOT, "Konjugieren", "Models", "ExampleSentences.json")
     xml_path = os.path.join(ROOT, "Konjugieren", "Models", "Verbs.xml")
-    if not (os.path.exists(ety_path) and os.path.exists(xml_path)):
+    if not (os.path.exists(ex_path) and os.path.exists(xml_path)):
         return set()
-    with open(ety_path, encoding="utf-8") as handle:
-        have = set(json.load(handle)["en"])
+    with open(ex_path, encoding="utf-8") as handle:
+        have = set(json.load(handle)["de"])
     every = {re.sub(r"[+*^]", "", verb.get("in")) for verb in ET.parse(xml_path).getroot()}
     return {verb for verb in every if verb not in have}
 

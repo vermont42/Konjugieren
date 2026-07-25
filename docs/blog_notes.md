@@ -4125,3 +4125,64 @@ periods. `MINING_SPEC.md`'s ceiling section is updated to 80 with this reasoning
 re-mine inherits the policy rather than re-litigating it. The etymologies were already shipping for
 all twelve; this only adds the sentence. Neither `Verbs.xml` nor the at-odds count is touched —
 `durchziehen`'s reading was *read*, not changed.
+
+## Corpus expansion scoped, rejected, and replaced with Claude-authored examples (2026-07-24)
+
+The "corpus expansion" next step got scoped with real measurement, and the measurement killed it —
+which is exactly what scoping is for. Then Josh chose a different path, and a 25-verb pilot proved it
+out. Three findings and a pivot.
+
+**Scoping finding 1: the pipeline could not be re-mined at all.** `build_corpus_index.py`'s
+`target_verbs()` defined the work-list as *verbs with no etymology*, and Phase 5 drove that set to 0.
+The indexer literally printed `TARGET verbs (no etymology): 0`; a re-mine would have targeted
+nothing. Fixed to key on *missing example sentences* (`ExampleSentences.json`), which returns the real
+1,122-verb gap. This was a silent trap — a re-mine would have "succeeded" doing nothing, the same
+green-but-empty failure mode the repo keeps tripping over.
+
+**Scoping finding 2: the right-register sources were already on disk and moved the gap by ~0.**
+`government2/`, expanded `government/`, and `technology/` (data-protection, circular-economy, three
+more Bundestag protocols, BSI security, German Wikipedia tech articles, ~6.9 MB) were already staged
+and wired into the indexer's `TIERS`. Measured against the 994 no-candidate verbs: `government2`
+attests 569 distinct verbs, **0 of them in the gap**. Every verb it covers was already covered by the
+literary corpus. On-register text does not help when the gap verbs are too rare to appear in it — a
+Zipfian wall: corpus coverage of a fixed vocabulary grows with the *log* of size, so a few curated MB
+re-attest common verbs and surface almost no rare ones. Of the 994, ~190 are deictic/multi-particle
+coinages (*heraufgeben*, *drauflosreden*) rare in any corpus; ~804 are plausibly attestable.
+
+**The pivot: Josh rejected a large Wikipedia ingest and chose high-quality Claude-authored
+examples.** This is not a new practice — the app already ships 11 authored sentences marked
+`source: "Opus 4.6"`, disclosed in `creditsText`. The Phase 5 note anticipated exactly this ("authored
+sentences… must be flagged in Credits as the existing eleven are"). So the work is to continue the
+established, honestly-marked practice at scale, with this session's batch marked `source: "Opus 4.8"`
+(and future models get their own tag — the `source` field is a per-sentence provenance record, so
+"multiple Opuses" is a feature).
+
+**The pilot: 25 representative verbs, a two-stage validation stack, and it earned its keep.** Stage
+one is a mechanical gate — every authored sentence must contain a real conjugated form of its verb,
+checked against `forms.json` (25/25 passed). Stage two is an independent adversarial review by a
+second Opus playing native linguist. That second pass caught what neither the gate nor a non-native
+could: a **logic** contradiction in *abbehalten* ("trotz der Kälte … die Mütze nicht abbehalten" —
+keeping a cap on in the cold is sensible, not stubborn; fixed with a warm setting), a post-2020
+political connotation on *querdenken* (which **Josh chose to keep** — his call, and it is a lovely
+word), and two verbs whose **glosses were wrong**.
+
+**The unplanned bonus: authoring is also a gloss audit.** To write a correct sentence you must commit
+to what a verb *means*, which forces a confrontation with the stored `tn` gloss that mining never
+does — a miner just quotes a corpus sentence. Two of 25 flagged gloss problems, and resolving them
+re-taught the *überkochen* lesson in both directions. *anräumen*'s gloss ("fill or clutter with
+objects") the reviewer confidently called wrong ("it means clear the table") — but kaikki tags it
+`[Austria] "fill or clutter"`, vindicating the shipped gloss and the sentence; the confident native
+read lost to the source, again. *aufsprechen*'s gloss ("chat, talk") was the genuine error: the
+standard modern sense is *record a message* (*eine Nachricht aufsprechen*), so `Verbs.xml`'s `tn` was
+corrected to "record (a message)" and the sentence rewritten to the record sense. Projected over
+1,122 verbs, an ~8% flag rate could surface ~90 gloss errors as a side effect — a second deliverable
+improving the app's *translations*, riding along on the first.
+
+**Shipped tonight:** 25 authored sentences merged via `integrate` Mode A (`ExampleSentences.json`
+2,450 → 2,475), the `aufsprechen` gloss fix, the `target_verbs()` fix, and a `creditsText` rewrite
+that **drops the verb enumeration** (Josh's call — it does not scale past a handful) and generalizes
+the credit to "Opus 4.6 and 4.8" so it survives future batches. `no-corpus-example.txt` fell 1,122 →
+1,097. Verified: `forms.json` gate, adversarial review, byte-for-byte preservation of the 2,450 prior
+sentences, `Verbs.xml` DTD-valid, `.xcstrings` a clean 2-line diff, `check_docs` clean. The remaining
+~1,097 gap verbs are Josh's next session — the sharded author → gate → adversarial-review → merge
+loop the pilot validated.

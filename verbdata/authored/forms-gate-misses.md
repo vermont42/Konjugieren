@@ -1,10 +1,24 @@
-# forms.json gate — the 21 misses, categorised
+# forms.json gate — the 19 remaining misses, categorised
 
 Generated alongside `verbdata/authored/check_forms.py`. Raw per-verb verdicts: `forms-gate.json`.
 
-**1,076 / 1,097 (98.1%) matched.** Only **4** of the 21 misses are actual sentence defects, so 98.1%
+**1,078 / 1,097 (98.3%) matched.** Only **4** of the 19 misses are actual sentence defects, so 98.3%
 is a floor on authoring quality, not an estimate of it. Read the categories before treating any miss
 as an error.
+
+## Already fixed (2)
+
+Two misses were **corpus defects, not sentence defects**, and were corrected in `Verbs.xml`:
+
+- **zusammenspinnen** — was `zusammen+spinnen fa="w"`, generating the non-word *zusammengespinnt*.
+  Now `zusammen+sp^i^nnen fa="s" ag="beginnen"`, matching its siblings `sp^i^nnen` and
+  `herum+sp^i^nnen`. The model's *zusammengesponnen* was right all along.
+- **überkochen** — ships the inseparable homograph (*overcook*) correctly, per the pilot, but was
+  glossed `tn="boil over"`, the **separable** homograph's meaning. Now carries both readings, via the
+  `über*setzen` pattern: `<reading tn="overcook" fa="w" />` plus
+  `<reading in="über+kochen" tn="boil over" fa="w" ay="s" />`.
+
+Both authored sentences now pass the gate.
 
 ## Genuine sentence defect — the sentence does not demonstrate its verb (4)
 
@@ -18,15 +32,6 @@ These four are real authoring errors and should be corrected or re-authored.
   > Er hielt das Foto ganz nah an die Lampe, um die Gesichter besser zu erkennen.
 - **rechtdrehen** _[4-8]_ — uses *dreht … rechts* — the particle is **recht**, not *rechts*
   > Laut Wetterbericht dreht der Wind am Nachmittag rechts und weht dann kräftig aus Westen.
-
-## App corpus defect — the sentence is right, the corpus is wrong (ACTIONABLE) (2)
-
-Both are worth fixing in `Verbs.xml`.
-
-- **zusammenspinnen** _[5]_ — app has `zusammen+spinnen fa="w"`, generating *zusammengespinnt*. Its siblings `sp^i^nnen` and `herum+sp^i^nnen` are `fa="s" ag="beginnen"`. The model's *zusammengesponnen* is correct; the entry should match its siblings
-  > Was er sich über seine angebliche Karriere zusammengesponnen hat, glaubt ihm längst niemand mehr.
-- **überkochen** _[5]_ — app ships `über*kochen` (inseparable homograph = *overcook*, as the pilot established) but glosses it `tn="boil over"` — the **separable** homograph's meaning. The model wrote a correct separable sentence for the gloss it was handed. Fix is the pilot's own prescription: add a second separable reading via the `übersetzen`/`umgehen` dual machinery, not a flip
-  > Wenn du den Deckel auf dem Topf lässt, kocht die Milch garantiert über.
 
 ## Dual-form verb — model used the other valid German form (9)
 

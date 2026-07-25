@@ -9369,8 +9369,8 @@
     "de": "Bauamt und Baufirma hatten offenbar zusammengespielt, um die Ausschreibung zu umgehen."
   },
   "zusammenspinnen": {
-    "hit": false,
-    "matched": null,
+    "hit": true,
+    "matched": "zusammengesponnen",
     "model": "claude-opus-5",
     "family": "w",
     "flagged": false,
@@ -9693,8 +9693,8 @@
     "de": "Draußen war es eisig, deshalb half er seiner Großmutter den dicken Mantel über."
   },
   "überkochen": {
-    "hit": false,
-    "matched": null,
+    "hit": true,
+    "matched": "kocht … über",
     "model": "claude-opus-5",
     "family": "w",
     "flagged": true,

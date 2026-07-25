@@ -4336,3 +4336,58 @@ The lesson that generalises: a mechanical gate's aggregate number is nearly usel
 sounds like "21 bad sentences" and actually means "4 bad sentences, 2 bad corpus entries, and 15 places
 where German is wider than the app's paradigm." The categorisation, not the ratio, is the deliverable —
 `verbdata/authored/forms-gate-misses.md`.
+
+## Fixing the two corpus defects the gate found — and losing a p-value doing it (2026-07-25)
+
+The `forms.json` gate surfaced two defects in `Verbs.xml`. Both are now fixed, both verified by
+regenerating `forms.json` and re-running the gate, with the full 211-test suite green and the file
+still DTD-valid.
+
+**zusammenspinnen** shipped as `zusammen+spinnen fa="w"`, so the app generated *zusammengespinnt* — not
+a German word. Its own siblings `sp^i^nnen` and `herum+sp^i^nnen` are `fa="s" ag="beginnen"`, so the
+import had simply dropped the strong classification on one member of a family. Now
+`zusammen+sp^i^nnen fa="s" ag="beginnen"`, which yields *spann* and *zusammengesponnen*. The authoring
+model's *zusammengesponnen* had been right the whole time; the corpus was wrong.
+
+**überkochen** is the more interesting one, and it closes a loop the pilot opened. The app ships
+`über*kochen` — the inseparable homograph, *overcook* — and the pilot established that this is
+**correct**, against a confident native read that "überkochen means boil over, so it must be
+separable." Kaikki's paradigm attests *überkocht*. But the shipped entry carried `tn="boil over"`,
+which is the *separable* homograph's meaning. So the authoring model was handed a gloss describing one
+verb and an entry encoding another, and wrote a perfectly good separable sentence for the gloss it got.
+The fix is the one the pilot itself prescribed — *add a second reading, do not flip* — using the
+`über*setzen` dual-separability pattern, where a `<reading>` carries its own `in=` overriding the
+verb-level marked infinitive:
+
+```xml
+<verb in="über*kochen" hi="71407" hp="y" ic="cooldown">
+  <reading tn="overcook" fa="w" />
+  <reading in="über+kochen" tn="boil over" fa="w" ay="s" />
+</verb>
+```
+
+`ay="s"` because *die Milch **ist** übergekocht*. The corpus stays 3,572 verbs; readings went 3,615 →
+3,616. Both authored sentences now pass, and the gate rose 98.1% → **98.3%** (1,076 → 1,078).
+
+**And then the calibration result stopped being significant.** Before the fixes: flagged verbs missed
+at 4.6% against 1.6% unflagged, a 2.86x relative risk at Fisher one-sided p = 0.048. After: 3.7% vs
+1.5%, 2.44x, **p = 0.108**. The cause is exactly one observation. *überkochen* had been **flagged** by
+its author, so fixing the corpus converted a flagged miss into a flagged hit — and with only 108
+flagged verbs in the whole batch, that single reclassification walked p from just under the threshold
+to just over it.
+
+The honest lesson is about the earlier number, not the later one. **A p-value that one observation can
+flip was never worth the weight "significant" implies**, and it was sitting at 0.048 when I first
+reported it. The direction still looks real (2.4x is not nothing) and deserves retesting on a larger
+flagged set; the threshold claim does not survive.
+
+There is a subtler reading too, and it may be the more useful one. *überkochen* was flagged because the
+model sensed something was wrong — and something **was** wrong, in the corpus rather than in its
+sentence. So these flags may be tracking *"this verb is ambiguous or its gloss looks off"* rather than
+*"my sentence is probably incorrect."* Those are different competencies, and only the second predicts
+gate failure. The first is arguably more valuable — it found a real corpus defect that had been sitting
+in `Verbs.xml` unnoticed. Worth separating the two if the adversarial review ever supplies an
+independent defect signal to correlate against.
+
+Which is the second time in one day that this pipeline audited the corpus rather than the sentences. It
+was built to check the authors and keeps catching the app instead.

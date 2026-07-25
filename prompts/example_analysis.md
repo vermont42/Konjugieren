@@ -199,49 +199,57 @@ deliberation is quantified.
 
 The mechanical gate has **already been run** (`verbdata/authored/check_forms.py` →
 `forms-gate.json`, misses categorised in `forms-gate-misses.md`). It is the one quality signal here
-with no judge in the loop.
+with no judge in the loop. Figures below are **after** the two corpus defects it surfaced were fixed.
 
 ```
-OVERALL                 1,076 / 1,097 (98.1%)
+OVERALL                 1,078 / 1,097 (98.3%)
 claude-opus-4-8           542 / 550   (98.5%)
-claude-opus-5             534 / 547   (97.6%)
-difference  +0.9pp, 95% CI [-0.7, +2.5]  ->  NOT significant
-strong verbs   4-8 98.6%  vs  5.0 97.8%      weak verbs  4-8 98.4%  vs  5.0 97.4%
+claude-opus-5             536 / 547   (98.0%)
+difference  +0.6pp, 95% CI [-1.0, +2.1]  ->  NOT significant
+strong verbs   4-8 98.6%  vs  5.0 97.8%      weak verbs  4-8 98.4%  vs  5.0 98.0%
 ```
 
-**On mechanical conjugation correctness the two models are indistinguishable.** The observed gap is
-0.9pp against a ±1.6pp interval — exactly the regime § "Hazard 3" warns not to report as a finding.
-5.0's +62% thinking bought nothing measurable *on this axis*. That is a real result, and it raises the
-bar for the adversarial review: whatever the deliberation bought, it is not basic conjugation accuracy.
+**On mechanical conjugation correctness the two models are indistinguishable.** The gap is 0.6pp
+against a ±1.6pp interval — the regime § "Hazard 3" warns not to report as a finding. 5.0's +62%
+thinking bought nothing measurable *on this axis*, which raises the bar for the adversarial review:
+whatever the deliberation bought, it is not basic conjugation accuracy.
 
-**The calibration test came back positive, for both models.**
+**The calibration test points the right way but does NOT reach significance.**
 
 ```
-flagged with a `note`   103 / 108 hit  ->  4.6% miss
-unflagged               973 / 989 hit  ->  1.6% miss
-relative risk 2.86x,  Fisher one-sided p = 0.048
+flagged with a `note`   104 / 108 hit  ->  3.7% miss
+unflagged               974 / 989 hit  ->  1.5% miss
+relative risk 2.44x,  Fisher one-sided p = 0.108
 ```
 
-When either model attached an uncertainty note, that sentence was ~2.9x likelier to fail — significant,
-if barely. **The hedging is aimed at real difficulty, not sprayed as generic anxiety.** Being a
-within-model comparison, no judge bias touches it.
+Read the history here, because it is a lesson in itself. **Before** the corpus fixes this was 2.86x at
+p = 0.048 — nominally significant. One of the two fixed verbs (`überkochen`) had been *flagged* by its
+author, so correcting the corpus removed a flagged miss, and with only 108 flagged verbs that single
+reclassification pushed p from 0.048 to 0.108. **A p-value that fragile was never worth the weight
+"significant" implies.** The direction is real and worth retesting on a larger flagged set; the
+threshold claim is not.
 
-**98.1% is a floor, not an estimate.** Only **4** of the 21 misses are genuine sentence defects
-(`wegschmeißen`, `hochstellen`, `heranhalten`, `rechtdrehen`). Nine are dual-form verbs where the model
-used the other attested German form (the app conjugates *saugen* strong, *hauen* and *senden* weak;
-`verglimmen` is already **deferred** in `wiktionary-defects.json`). Four are clipped colloquial
+There is a subtler reading available too. `überkochen` was flagged because the model sensed something
+was wrong — and something *was* wrong, in the **corpus**, not in its sentence. So the flags may track
+*"this verb is ambiguous or the gloss looks off"* rather than *"my sentence is likely wrong."* Those
+are different competencies, and only the second one predicts gate failure. Worth separating if the
+adversarial review gives a second, independent defect signal.
+
+**98.3% is a floor, not an estimate.** Only **4** of the 19 remaining misses are genuine sentence
+defects (`wegschmeißen`, `hochstellen`, `heranhalten`, `rechtdrehen`). Nine are dual-form verbs where
+the model used the other attested German form (the app conjugates *saugen* strong, *hauen* and *senden*
+weak; `verglimmen` is already **deferred** in `wiktionary-defects.json`). Four are clipped colloquial
 imperatives (*„Halt bitte das Essen warm"*) the app does not generate. Two are matcher limits.
 
-**Two are corpus defects the gate surfaced, both actionable:**
+**Two corpus defects the gate surfaced were fixed** (`Verbs.xml`, both verified by regenerating
+`forms.json` and re-running the gate, full suite green at 211 tests):
 
-- `zusammen+spinnen` is `fa="w"`, generating *zusammengespinnt*, while its siblings `sp^i^nnen` and
-  `herum+sp^i^nnen` are `fa="s" ag="beginnen"`. The model's *zusammengesponnen* is correct German.
-- `über*kochen` ships the inseparable homograph (*overcook*) — correctly, per the pilot — but carries
-  the gloss `tn="boil over"`, which is the **separable** homograph's meaning. The model wrote a correct
-  separable sentence for the gloss it was given. The pilot already named the honest fix: add a second
-  separable reading via the `übersetzen`/`umgehen` dual machinery rather than flipping the marking.
-
-Neither has been fixed; both are Josh's call.
+- `zusammen+spinnen` was `fa="w"`, generating the non-word *zusammengespinnt*, while its siblings
+  `sp^i^nnen` and `herum+sp^i^nnen` are `fa="s" ag="beginnen"`. Now aligned with them.
+- `über*kochen` ships the inseparable homograph (*overcook*) correctly, per the pilot, but was glossed
+  `tn="boil over"` — the **separable** homograph's meaning. It now carries **both** readings via the
+  `über*setzen` dual-separability pattern, which is the fix the pilot itself prescribed rather than a
+  flip. Corpus stays 3,572 verbs; readings 3,615 → 3,616.
 
 ## What is NOT on disk
 

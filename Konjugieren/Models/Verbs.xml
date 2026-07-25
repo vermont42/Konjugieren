@@ -7888,7 +7888,8 @@
     <reading tn="ignore, mishear" fa="w" />
   </verb>
   <verb in="über*kochen" hi="71407" hp="y" ic="cooldown">
-    <reading tn="boil over" fa="w" />
+    <reading tn="overcook" fa="w" />
+    <reading in="über+kochen" tn="boil over" fa="w" ay="s" />
   </verb>
   <verb in="über*k^om^men" hi="573851" hp="y" ic="walk.arrival">
     <reading tn="overcome, conquer, seize" fa="s" ag="kommen" />
@@ -10621,8 +10622,8 @@
   <verb in="zusammen+spielen" hi="573882" hp="y" ic="play">
     <reading tn="collude" fa="w" />
   </verb>
-  <verb in="zusammen+spinnen" hi="32180" hp="y" ic="barre">
-    <reading tn="dream up" fa="w" />
+  <verb in="zusammen+sp^i^nnen" hi="32180" hp="y" ic="barre">
+    <reading tn="dream up" fa="s" ag="beginnen" />
   </verb>
   <verb in="zusammen+stellen" hi="980507" ic="handball">
     <reading tn="compile, put together" fa="w" />

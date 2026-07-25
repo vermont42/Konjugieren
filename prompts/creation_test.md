@@ -1,0 +1,8 @@
+I'd like your help building a pipeline for generating examples for the remaining verbs.
+
+Please create two files in the prompts folder.
+
+1. A plan describing the raw example-creation part of the pipeline and its goal. This is for orchestrator sessions. The pipeline involves the orchestrator launching subagents until all verbs have examples. Here is the wrinkle. Anthropic just released the Opus 5.0 model. I'd like to compare the performance and verbosity of that model that to those of the Opus 4.8 model. So the orchestrator should use 4.8 for half the subagents and 5.0 for half. For each subagent run, the orchestrator should record how long the subagent ran, how many tokens it used, and the total character count of the English tranlations of its examples. Adversarial checks and corrections are outside the scope of this plan because I don't want that to muddy the performance data. I will do the adversarial checks and corrections later. The orchestrator should launch waves until more than 75% of the five-hour window is used. Not sure what percentage of the five-hour window a wave will use. That will need to be measured with one wave and incorporated into the plan. The orchestrator can check usage with `claude -p "/usage"`. The plan should include a sentence surrounded with ``` or ```` that I can paste into a fresh sesssion to start orchestration. If a subagent disagrees with a gloss, note that, and we'll address later.
+2. A subagent brief in the prompts folder containing instructions for subagents. This brief should not mention that subagent performance is being measured. Tell subagents not to update blog notes.
+
+Happy to answer questions about my intent or consider additional ways the Opus 4.8 and 5.0 models could be compared with this experiment.

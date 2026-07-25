@@ -195,6 +195,54 @@ shard-to-shard.
 exactly what the open work below settles — and it is now a sharp question, because the cost of that
 deliberation is quantified.
 
+## Results of the `forms.json` gate — run 2026-07-25
+
+The mechanical gate has **already been run** (`verbdata/authored/check_forms.py` →
+`forms-gate.json`, misses categorised in `forms-gate-misses.md`). It is the one quality signal here
+with no judge in the loop.
+
+```
+OVERALL                 1,076 / 1,097 (98.1%)
+claude-opus-4-8           542 / 550   (98.5%)
+claude-opus-5             534 / 547   (97.6%)
+difference  +0.9pp, 95% CI [-0.7, +2.5]  ->  NOT significant
+strong verbs   4-8 98.6%  vs  5.0 97.8%      weak verbs  4-8 98.4%  vs  5.0 97.4%
+```
+
+**On mechanical conjugation correctness the two models are indistinguishable.** The observed gap is
+0.9pp against a ±1.6pp interval — exactly the regime § "Hazard 3" warns not to report as a finding.
+5.0's +62% thinking bought nothing measurable *on this axis*. That is a real result, and it raises the
+bar for the adversarial review: whatever the deliberation bought, it is not basic conjugation accuracy.
+
+**The calibration test came back positive, for both models.**
+
+```
+flagged with a `note`   103 / 108 hit  ->  4.6% miss
+unflagged               973 / 989 hit  ->  1.6% miss
+relative risk 2.86x,  Fisher one-sided p = 0.048
+```
+
+When either model attached an uncertainty note, that sentence was ~2.9x likelier to fail — significant,
+if barely. **The hedging is aimed at real difficulty, not sprayed as generic anxiety.** Being a
+within-model comparison, no judge bias touches it.
+
+**98.1% is a floor, not an estimate.** Only **4** of the 21 misses are genuine sentence defects
+(`wegschmeißen`, `hochstellen`, `heranhalten`, `rechtdrehen`). Nine are dual-form verbs where the model
+used the other attested German form (the app conjugates *saugen* strong, *hauen* and *senden* weak;
+`verglimmen` is already **deferred** in `wiktionary-defects.json`). Four are clipped colloquial
+imperatives (*„Halt bitte das Essen warm"*) the app does not generate. Two are matcher limits.
+
+**Two are corpus defects the gate surfaced, both actionable:**
+
+- `zusammen+spinnen` is `fa="w"`, generating *zusammengespinnt*, while its siblings `sp^i^nnen` and
+  `herum+sp^i^nnen` are `fa="s" ag="beginnen"`. The model's *zusammengesponnen* is correct German.
+- `über*kochen` ships the inseparable homograph (*overcook*) — correctly, per the pilot — but carries
+  the gloss `tn="boil over"`, which is the **separable** homograph's meaning. The model wrote a correct
+  separable sentence for the gloss it was given. The pilot already named the honest fix: add a second
+  separable reading via the `übersetzen`/`umgehen` dual machinery rather than flipping the marking.
+
+Neither has been fixed; both are Josh's call.
+
 ## What is NOT on disk
 
 Three things a fresh session will otherwise get wrong:
@@ -342,18 +390,14 @@ verbs each model itself flagged with a `note`* against the rest.
 shortest translations, length histograms per model, outlier sentences, whether either model drifts
 toward a template. Join to `provenance.json` for the model split.
 
-### 3. Conjugation verification against `forms.json`
+### 3. Conjugation verification against `forms.json` — **DONE 2026-07-25**
 
-The brief required each German sentence to contain a correctly conjugated form of its verb; nobody has
-checked. `KonjugierenTests/Utils/CorpusFormsDumpTests` produces the form → lemma map (see
-[`CLAUDE.md`](../CLAUDE.md) § "Environment-gated harnesses" — remember the `TEST_RUNNER_` prefix, or
-the suite silently skips and writes nothing). A hit rate split by model is a second quality axis, and
-unlike the adversarial review it is fully mechanical.
-
-Before reporting a mismatch as a defect, check the verb against `verbdata/wiktionary-defects.json`:
-those are verbs where Konjugieren deliberately differs from Wiktionary, so a disagreement there may be
-the app being right. Also expect strong verbs (448 of the 1,097, per `classification.json`) to carry
-most of the genuine misses.
+Ran; see § "Results of the forms.json gate" above. Re-run with
+`python3 verbdata/authored/check_forms.py` after any correction pass. Regenerating `forms.json` itself
+needs `KonjugierenTests/Utils/CorpusFormsDumpTests` (see [`CLAUDE.md`](../CLAUDE.md) § "Environment-gated
+harnesses"): the `TEST_RUNNER_` prefix is required, and the `--only-testing` path wants the **struct**
+name `CorpusFormsDumpTests`, not the `@Suite` display name `CorpusFormsDump` — the file's own header
+comment gets this wrong and would run zero tests while reporting success.
 
 ### 4. The gloss audit
 

@@ -4282,3 +4282,57 @@ auxiliary file, which is the only reason that was caught before a session wasted
 `provenance.json`, `gloss-disagreements.txt`. Review, gate, and merge are a fresh window — a review
 split across two windows would reintroduce exactly the throughput bias the interleaved-wave design was
 built to cancel.
+
+## The forms.json gate on 1,097 authored sentences (2026-07-25)
+
+Ran the mechanical conjugation gate over the authored batch — the "gate" half of the pilot's
+author → gate → review → merge loop. It costs no five-hour window at all (an `xcodebuild` harness plus
+local Python), which is why it went first while the window sat at 77%.
+
+`corpus/working/forms.json` was already on disk from Jul 23, and `Verbs.xml` had changed since — but
+the only change was one `tn` gloss attribute (*aufsprechen*), which cannot affect conjugation.
+Regenerated anyway and the new file was **byte-identical**, which is a better position to argue from
+than an inference. Worth recording that the harness's own header comment gives the run command as
+`KonjugierenTests/CorpusFormsDump/dumpForms()` — the `@Suite` **display name**, not the struct name.
+That filter matches nothing, runs zero tests, and still prints `Test Succeeded`. The working address is
+`KonjugierenTests/CorpusFormsDumpTests/dumpForms()`.
+
+**1,076 / 1,097 (98.1%).** Split by author: 4.8 at 98.5%, 5.0 at 97.6% — a 0.9-point gap against a
+±1.6-point confidence interval, so **not significant**. On mechanical conjugation correctness the two
+models are indistinguishable, and 5.0's +62% thinking bought nothing measurable here. This is exactly
+the regime the review-design section warns about, and it was pleasant to have written the power
+analysis down *before* seeing the number rather than after.
+
+**The calibration test came back positive, and it is the better result.** Each model had flagged verbs
+it felt unsure about. Do those verbs actually fail more? Flagged: 4.6% miss. Unflagged: 1.6%. A
+**2.86x relative risk, Fisher one-sided p = 0.048.** Both models' hedging is aimed at real difficulty
+rather than sprayed as generic anxiety — and because it is a *within*-model comparison, no judge bias
+can touch it. That is a claim about self-knowledge, and it survives without an adversarial review
+existing at all.
+
+**The headline 98.1% is a floor, not an estimate**, which only became clear by reading all 21 misses
+rather than trusting the ratio. Just **four** are real authoring errors (*wegschmeißen* used *warf* —
+that is *wegwerfen*; *hochstellen* used *höher*; *heranhalten* used *an* not *heran*; *rechtdrehen* used
+*rechts*). Nine are dual-form verbs where the model chose the other attested German form: the app
+conjugates *saugen* strong (*absog*) against the models' *saugte*, *hauen* and *senden* weak against
+their *hieb* and *sandte*. *verglimmen* is the sweetest of these — the model wrote *verglomm*, and
+`wiktionary-defects.json` already lists the verb as **deferred** for precisely that weak-Präteritum /
+strong-participle wrinkle. The cross-check written into the analysis plan a few hours earlier fired on
+its first real use. Four more misses are clipped colloquial imperatives („Halt bitte das Essen warm")
+that the app does not generate, and two are matcher limits.
+
+**Two misses are corpus defects the gate surfaced.** `zusammen+spinnen` ships `fa="w"`, so the app
+generates *zusammengespinnt* — not a German word — while its own siblings `sp^i^nnen` and
+`herum+sp^i^nnen` are `fa="s" ag="beginnen"`. The model's *zusammengesponnen* was right and the corpus
+was wrong. And `über*kochen` reprised the pilot's lesson from a third direction: the app ships the
+inseparable homograph (*overcook*) **correctly**, as the pilot established against a confident native
+read — but the entry carries `tn="boil over"`, which is the *separable* homograph's meaning. So the
+model was handed a gloss describing one verb and an entry encoding the other, and wrote a perfectly
+good separable sentence for the gloss it got. The defect is upstream of the sentence, and the fix is
+the one the pilot already prescribed: add a second separable reading via the *übersetzen*/*umgehen*
+dual machinery, not a flip. Neither is fixed; both are Josh's call.
+
+The lesson that generalises: a mechanical gate's aggregate number is nearly useless on its own. 98.1%
+sounds like "21 bad sentences" and actually means "4 bad sentences, 2 bad corpus entries, and 15 places
+where German is wider than the app's paradigm." The categorisation, not the ratio, is the deliverable —
+`verbdata/authored/forms-gate-misses.md`.

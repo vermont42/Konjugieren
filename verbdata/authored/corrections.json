@@ -23,5 +23,669 @@
     "note": "rechtdrehen is meteorological/nautical jargon for wind shifting clockwise (backing is its opposite, linksdrehen); rare in everyday speech",
     "reason": "wrong_verb. The original wrote 'dreht … rechts', the adverb, not the particle recht. Settled against kaikki, which attests präsensIndikativ 'dreht recht' for this lemma, so the app's recht+drehen marking is correct and the sentence was wrong.",
     "source": "forms.json gate, 2026-07-25"
+  },
+  "abbinden": {
+    "de": "Nach dem Kochen band sie die Schürze ab und hängte sie ordentlich an den Haken.",
+    "en": "After cooking, she untied her apron and hung it neatly on the hook.",
+    "reason": "Accepted medium/wrong_sense.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "abbleiben": {
+    "de": "Wo ist eigentlich mein zweiter Handschuh abgeblieben? Seit dem Umzug habe ich ihn nicht mehr gesehen.",
+    "en": "Where has my other glove got to? I haven't seen it since the move.",
+    "reason": "Accepted high/wrong_sense; superseded medium/grammar.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "abfüllen": {
+    "en": "At the small winery, they pour the young wine by hand into clean bottles.",
+    "reason": "Accepted low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "abgießen": {
+    "en": "As soon as the pasta is done, you carefully pour the hot water off through a colander.",
+    "reason": "Accepted low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "abkochen": {
+    "de": "Der Koch kochte die Brühe stundenlang ab, bis nur noch ein kräftiger, dunkler Fond übrig war.",
+    "en": "The cook boiled the broth down for hours until only a strong, dark stock was left.",
+    "reason": "Accepted medium/wrong_sense; superseded medium/logic.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "abliefern": {
+    "de": "Der Bote lieferte das Paket noch am selben Abend im Büro ab und ließ sich den Empfang quittieren.",
+    "reason": "Accepted medium/grammar.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "absaugen": {
+    "de": "Der Zahnarzt saugte während der Behandlung ständig Speichel ab, damit ich nicht dauernd schlucken musste.",
+    "en": "The dentist kept suctioning off saliva during the treatment so that I didn't have to keep swallowing.",
+    "reason": "Accepted low/logic.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "abtrinken": {
+    "en": "The glass was so full that he first had to take a sip off the top to be able to carry it.",
+    "reason": "Accepted low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "allemachen": {
+    "de": "Mit immer neuen Fallen machte der Bauer die Ratten in der Scheune nach und nach alle.",
+    "en": "Setting trap after trap, the farmer gradually finished off the rats in the barn.",
+    "reason": "Accepted low/logic.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "anmischen": {
+    "en": "The painter kept mixing fresh batches of paint until the shade matched the wall exactly.",
+    "reason": "Accepted low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "anreisen": {
+    "en": "Most guests travel in as early as Friday evening so they can stay for the whole weekend.",
+    "reason": "Accepted low/wrong_sense. Gloss also corrected (see gloss-corrections.json).",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "ansenken": {
+    "de": "Vor dem Verschrauben senkte der Tischler jedes Bohrloch sorgfältig an, damit die Schraubenköpfe bündig saßen.",
+    "reason": "Accepted low/grammar.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "antauchen": {
+    "en": "Together the neighbors put their backs into it and pushed the stalled car out of the intersection.",
+    "reason": "Accepted low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "antrinken": {
+    "de": "Auf der Betriebsfeier hatte er sich noch vor dem Essen einen ordentlichen Schwips angetrunken.",
+    "en": "At the office party he had already drunk himself pleasantly tipsy before dinner.",
+    "reason": "Accepted medium/wrong_sense.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "anwerfen": {
+    "de": "Im Streit warf ihm der Bruder eine Handvoll nassen Sand an.",
+    "en": "In the quarrel his brother threw a handful of wet sand at him.",
+    "reason": "Accepted medium/wrong_sense.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "anzählen": {
+    "en": "The referee began the count over the fallen boxer, but he got back up before the count of eight.",
+    "reason": "Accepted medium/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "aufrauchen": {
+    "de": "Kaum hatte er die Kerze gelöscht, rauchte ein dünner grauer Faden auf.",
+    "en": "The moment he blew out the candle, a thin gray wisp of smoke rose.",
+    "reason": "Accepted high/wrong_sense; superseded medium/bad_gloss.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "aufschießen": {
+    "de": "Die Einsatzkräfte schossen das verrostete Vorhängeschloss auf und öffneten den Container.",
+    "en": "The responders shot the rusted padlock open and opened the container.",
+    "reason": "Accepted high/wrong_sense; superseded medium/bad_gloss.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "aufstreben": {
+    "de": "Aus einfachen Verhältnissen strebte der junge Geiger bis auf die großen Konzertbühnen auf.",
+    "en": "From humble beginnings the young violinist rose to the great concert stages.",
+    "reason": "Accepted medium/wrong_sense.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "ausrücken": {
+    "en": "In the middle of the night the fire brigade was called out to a major blaze on the edge of town.",
+    "reason": "Accepted low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "ausschauen": {
+    "en": "You really look tired today — did you sleep badly?",
+    "reason": "Accepted low/comma_splice.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "ausschenken": {
+    "de": "Der Wirt schenkte den jungen Wein vom Fass großzügig an seine Stammgäste aus.",
+    "en": "The innkeeper generously poured out the young wine from the barrel for his regulars.",
+    "reason": "Accepted low/logic.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "ausschleichen": {
+    "de": "Als der Vortrag immer langweiliger wurde, schlich er sich leise aus, ohne sich zu verabschieden.",
+    "en": "As the lecture grew more and more boring, he quietly slipped out without saying goodbye.",
+    "reason": "Accepted medium/grammar.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "ausschweigen": {
+    "en": "Gloss should read: keep silent (about something), refuse to comment.",
+    "reason": "Accepted medium/bad_gloss. Gloss also corrected (see gloss-corrections.json).",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "auswaschen": {
+    "en": "She washed the red wine stain out immediately with cold water before it could set.",
+    "reason": "Accepted low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "bankrottgehen": {
+    "de": "Nach der langen Wirtschaftskrise gingen zahlreiche kleine Restaurants in der Innenstadt bankrott.",
+    "en": "After the long economic crisis, numerous small restaurants in the city center went bankrupt.",
+    "reason": "Accepted low/connotation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "bereinigen": {
+    "en": "After the long quarrel the two of them tried to settle their differences in a clear-the-air conversation.",
+    "reason": "Accepted low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "beschallen": {
+    "de": "Beim Termin beschallte die Ärztin vorsichtig den Bauch der werdenden Mutter, um das ungeborene Kind zu untersuchen.",
+    "en": "At the appointment the doctor carefully scanned the expectant mother's belly with ultrasound to examine the unborn child.",
+    "reason": "Accepted medium/logic.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "beschweigen": {
+    "de": "Die dunklen Jahre der Familiengeschichte wurden am Esstisch stets beharrlich beschwiegen.",
+    "reason": "Accepted high/grammar.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "dabeihaben": {
+    "en": "Luckily she had her ID on her; otherwise they wouldn't have let her into the stadium.",
+    "reason": "Accepted low/comma_splice.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "davonreisen": {
+    "en": "No sooner had she ended the argument than she packed her suitcase and simply departed.",
+    "reason": "Accepted low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "davorhalten": {
+    "en": "When the sun blinded him, he quickly held his hand up in front of it.",
+    "reason": "Accepted low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "dichthalten": {
+    "de": "Trotz des tagelangen Dauerregens hielt das neu gedeckte Dach überall dicht.",
+    "en": "Despite days of steady rain, the newly re-shingled roof stayed watertight everywhere.",
+    "reason": "Accepted medium/wrong_sense.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "dichtmachen": {
+    "de": "Vor dem angekündigten Sturm machten wir alle Fenster und Läden sorgfältig dicht.",
+    "en": "Before the forecast storm we carefully sealed up all the windows and shutters.",
+    "reason": "Accepted medium/wrong_sense.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "draufgehen": {
+    "de": "Bei der letzten Bergtour ist mein alter Rucksack endgültig draufgegangen.",
+    "en": "On the last mountain hike my old backpack finally fell apart for good.",
+    "reason": "Accepted medium/wrong_sense.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "draufhalten": {
+    "en": "To finally stop the bleeding, the doctor held a swab firmly on it.",
+    "reason": "Accepted low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "durchbrennen": {
+    "de": "Das Feuer im Kamin brannte die ganze Nacht durch, sodass es am Morgen noch warm war.",
+    "en": "The fire in the fireplace burned right through the night, so it was still warm in the morning.",
+    "reason": "Accepted medium/wrong_sense.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "durcheinanderbringen": {
+    "de": "Beim Suchen hat er meine sorgfältig sortierten Karteikarten völlig durcheinandergebracht.",
+    "en": "While searching, he completely jumbled my carefully sorted index cards.",
+    "reason": "Accepted medium/wrong_sense.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "durchgreifen": {
+    "de": "Der Höhleneingang war zugewuchert, doch sie griff durch das Gestrüpp durch und tastete nach dem Seil.",
+    "en": "The cave entrance was overgrown, but she reached through the undergrowth and felt for the rope.",
+    "reason": "Accepted medium/wrong_sense.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "durchwachsen": {
+    "en": "In spring, fresh moss grew up everywhere through the gaps between the paving stones.",
+    "reason": "Accepted low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "einfahren": {
+    "de": "Der Lastwagen fuhr rückwärts in den engen Hof ein.",
+    "en": "The truck drove backwards into the narrow yard.",
+    "reason": "Accepted low/wrong_sense; superseded low/logic.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "einstechen": {
+    "en": "The nurse slid the needle in so gently that he barely felt it.",
+    "reason": "Accepted low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "eislaufen": {
+    "de": "Sobald der Teich zugefroren ist, laufen die Kinder dort stundenlang eis.",
+    "reason": "Accepted low/grammar.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "entfließen": {
+    "de": "Dem moosbewachsenen Felsen entfließt klares Quellwasser, das das ganze Tal versorgt.",
+    "en": "Clear spring water flows out of the moss-covered rock and supplies the whole valley.",
+    "reason": "Accepted low/logic.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "entfolgen": {
+    "en": "Since all he posted now was ads, I unfollowed him on every channel.",
+    "reason": "Accepted low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "entgegenhalten": {
+    "de": "Sie hielt ihm die alten Fotos entgegen, damit er die Gesichter im Licht besser erkennen konnte.",
+    "en": "She held the old photos out to him so he could make out the faces better in the light.",
+    "reason": "Accepted medium/wrong_sense.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "entnerven": {
+    "en": "The nonstop ringing of the phone frayed his nerves so much that he finally switched it off.",
+    "reason": "Accepted low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "fehlleiten": {
+    "de": "Ein umgedrehtes Schild leitete die Wanderer stundenlang fehl, bis sie endlich einen Einheimischen fragten.",
+    "en": "A sign turned the wrong way misdirected the hikers for hours, until they finally asked a local.",
+    "reason": "Accepted low/logic; superseded medium/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "fernliegen": {
+    "de": "Jede Form von Neid liegt ihr völlig fern; sie gönnt anderen ihren Erfolg von Herzen.",
+    "en": "Any form of envy is utterly alien to her; she is genuinely glad of others' success.",
+    "reason": "Accepted medium/wrong_sense.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "fernschauen": {
+    "en": "In Austria many families settle in together on Sunday evenings to watch TV.",
+    "reason": "Accepted high/bad_gloss. Gloss also corrected (see gloss-corrections.json).",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "festbacken": {
+    "en": "Without baking paper the dough easily sticks fast to the tray in the hot oven.",
+    "reason": "Accepted low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "festkleben": {
+    "de": "Sie klebte das Etikett mit etwas Leim sorgfältig auf dem Marmeladenglas fest.",
+    "en": "She carefully glued the label onto the jam jar with a bit of paste.",
+    "reason": "Accepted medium/wrong_verb.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "festtreten": {
+    "en": "After planting, the gardener carefully tamped down the soil around the seedling.",
+    "reason": "Accepted low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "flachlegen": {
+    "en": "After the long hike, the first thing I did was lie down for an hour.",
+    "reason": "Accepted low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "großziehen": {
+    "en": "After her sister's death, she raised her sister's three children as if they were her own.",
+    "reason": "Accepted medium/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "heimleuchten": {
+    "en": "Grandfather took the lantern and lit the children's way home along the dark farm track.",
+    "reason": "Accepted low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "heimtrauen": {
+    "en": "After breaking the vase, the boy didn't dare go home all afternoon.",
+    "reason": "Accepted low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "heranreichen": {
+    "en": "However well she cooks, she simply can't match her grandmother's Rouladen.",
+    "reason": "Accepted medium/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "heraufgeben": {
+    "de": "Steig schon mal auf die Leiter, dann gebe ich dir die Ziegel einzeln herauf.",
+    "reason": "Accepted low/grammar.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "heraufhalten": {
+    "de": "Ich stand oben auf dem Balkon, und das Kind hielt mir stolz seine Zeichnung herauf.",
+    "en": "I was standing up on the balcony, and the child proudly held their drawing up to me.",
+    "reason": "Accepted medium/logic; superseded low/logic.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "herreißen": {
+    "de": "Ungeduldig riss ich meinem Bruder die Chipstüte einfach her, kaum dass er sie aufgemacht hatte.",
+    "en": "Impatiently, I just snatched the bag of chips over from my brother the moment he had opened it.",
+    "reason": "Accepted medium/logic.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "herunterhalten": {
+    "de": "Der Hund sprang immer wieder hoch, doch er hielt ihn am Halsband herunter, bis der Postbote vorbei war.",
+    "en": "The dog kept jumping up, but he held it down by its collar until the mail carrier had passed.",
+    "reason": "Accepted medium/logic.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "herunterziehen": {
+    "en": "Because the sun was shining too brightly into the room, she pulled the blinds down.",
+    "reason": "Accepted low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "herüberkommen": {
+    "en": "Come over to our place on Saturday and we'll barbecue together in the garden.",
+    "reason": "Accepted low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "hinaufgeben": {
+    "de": "Der Lehrling gab dem Dachdecker die schweren Ziegel aufs Gerüst hinauf.",
+    "reason": "Accepted low/grammar.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "hinaufhalten": {
+    "de": "Das kleine Mädchen hielt den bunten Luftballon zum offenen Fenster hinauf.",
+    "en": "The little girl held the colorful balloon up to the open window.",
+    "reason": "Accepted medium/grammar.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "hinaufschauen": {
+    "de": "Ehrfürchtig schaute sie zur steinernen Spitze des Kölner Doms hinauf.",
+    "en": "In awe she looked up at the stone spire of Cologne Cathedral.",
+    "reason": "Accepted low/logic.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "hinauslehnen": {
+    "en": "Don't lean so far out of the moving train; it's really dangerous!",
+    "reason": "Accepted low/comma_splice.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "hinwegsetzen": {
+    "de": "Das Pferd setzte in vollem Galopp mühelos über den breiten Graben hinweg.",
+    "en": "At full gallop the horse cleared the wide ditch with ease.",
+    "reason": "Accepted medium/wrong_sense.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "irreführen": {
+    "de": "Die geschickt formulierte Werbung führt viele Kunden über den wahren Preis irre.",
+    "reason": "Accepted high/wrong_verb.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "kaltmachen": {
+    "en": "Suggested gloss: \"bump off, kill\".",
+    "reason": "Accepted medium/bad_gloss. Gloss also corrected (see gloss-corrections.json).",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "kaputtlachen": {
+    "en": "We almost died laughing at his old joke.",
+    "reason": "Accepted low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "kaputtreißen": {
+    "de": "Vor Wut riss er den Brief kaputt und warf die Fetzen in den Papierkorb.",
+    "en": "In a fit of rage he tore the letter up and threw the scraps in the wastebasket.",
+    "reason": "Accepted medium/grammar.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "keifen": {
+    "de": "Der Nachbar keifte lautstark über den Zaun, weil unser Ball in seinem Beet lag.",
+    "en": "The neighbor shrilly scolded over the fence because our ball had landed in his flowerbed.",
+    "reason": "Accepted low/connotation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "klarlegen": {
+    "en": "In the meeting, the boss made her expectations unmistakably clear.",
+    "reason": "Accepted low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "klarträumen": {
+    "de": "Nach wochenlangem Üben gelang es ihm endlich, bewusst klarzuträumen und im Traum zu fliegen.",
+    "reason": "Accepted high/grammar.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "lockermachen": {
+    "de": "Er machte die festgerostete Schraube mit ein paar Tropfen Öl endlich wieder locker.",
+    "en": "With a few drops of oil he finally loosened the rusted-on screw again.",
+    "reason": "Accepted medium/wrong_sense.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "losbrechen": {
+    "de": "Ein großer Felsbrocken brach von der Steilwand los und stürzte in die Tiefe.",
+    "en": "A large boulder broke loose from the cliff face and crashed into the depths below.",
+    "reason": "Accepted medium/wrong_sense.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "mausrutschen": {
+    "en": "Clicking in haste, I slipped with the mouse and accidentally deleted the wrong file.",
+    "reason": "Accepted low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "nachbeten": {
+    "de": "Bei der Andacht beteten die Kinder die Worte des Priesters leise nach.",
+    "en": "During the service, the children quietly repeated the priest's words after him.",
+    "reason": "Accepted medium/wrong_sense.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "niedermachen": {
+    "de": "Die Truppen des Belagerers machten die letzten Verteidiger der Festung ohne jede Gnade nieder.",
+    "en": "The besieger's troops cut down the last defenders of the fortress without any mercy.",
+    "reason": "Accepted low/connotation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "niederreden": {
+    "en": "He wore his colleague down with talk in every meeting until she finally fell silent.",
+    "reason": "Accepted low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "näherstehen": {
+    "en": "Since our trip through Italy together, my brother is much closer to me than before.",
+    "reason": "Accepted low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "raufgehen": {
+    "en": "Since the elevator is broken again, we're walking up the four flights of stairs.",
+    "reason": "Accepted low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "raufhalten": {
+    "de": "Er hielt seinen Ausweis zum Fenster rauf, damit der Kontrolleur ihn deutlich sehen konnte.",
+    "en": "He held his ID up to the window so the inspector could see it clearly.",
+    "reason": "Accepted medium/grammar.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "rauslassen": {
+    "en": "Can you please let me out as early as the next corner? I'll walk from there.",
+    "reason": "Accepted low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "rechtschreiben": {
+    "de": "Selbst viele Erwachsene können nicht rechtschreiben, wenn Fremdwörter im Spiel sind.",
+    "en": "Even many adults can't spell correctly when foreign words are involved.",
+    "reason": "Accepted medium/grammar.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "reinfeiern": {
+    "de": "Wir haben gestern mit Freunden bis weit nach Mitternacht in ihren dreißigsten Geburtstag reingefeiert.",
+    "en": "Last night we celebrated with friends well past midnight to ring in her thirtieth birthday.",
+    "reason": "Accepted medium/logic.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "schöntrinken": {
+    "de": "Statt seine Probleme anzugehen, trinkt er sich seine Lage Abend für Abend schön.",
+    "en": "Instead of tackling his problems, he drinks until his situation looks fine to him, evening after evening.",
+    "reason": "Accepted low/logic; superseded medium/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "umnutzen": {
+    "de": "Die Stadt nutzt die alte Textilfabrik jetzt zu einem lebendigen Kulturzentrum um.",
+    "reason": "Accepted low/grammar.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "umschalten": {
+    "en": "When the commercials came on, he switched to another channel in irritation.",
+    "reason": "Accepted low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "umstreiten": {
+    "de": "Beide Königshäuser umstreiten seit Generationen das kleine Herzogtum an der Grenze.",
+    "en": "The two royal houses have been contesting the small duchy on the border for generations.",
+    "reason": "Accepted medium/grammar.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "unterheben": {
+    "de": "Zum Schluss hebt man den steifen Eischnee ganz vorsichtig unter.",
+    "en": "At the very end you gently fold in the stiff beaten egg whites.",
+    "reason": "Accepted medium/wrong_verb.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "untermischen": {
+    "de": "Er mischte dem Teig heimlich etwas Zimt unter, damit die Kekse besser dufteten.",
+    "reason": "Accepted medium/wrong_verb.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "verhassen": {
+    "de": "In seinen Tagebüchern schrieb der alte Chronist, wie der endlose Krieg ihm seine Heimat verhasst hatte.",
+    "en": "In his diaries the old chronicler wrote how the endless war had made his homeland hateful to him.",
+    "reason": "Accepted medium/grammar.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "verlügen": {
+    "de": "Statt die Wahrheit zu sagen, verlog er den ganzen Hergang des Unfalls.",
+    "en": "Instead of telling the truth, he lied about the whole course of the accident.",
+    "reason": "Accepted medium/wrong_sense.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "verrauchen": {
+    "en": "After a deep breath, his anger evaporated surprisingly quickly.",
+    "reason": "Accepted low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "verrennen": {
+    "de": "Er hat sich so in diese eine Idee verrannt, dass er keine Kritik mehr zuließ.",
+    "reason": "Accepted low/grammar.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "verstehlen": {
+    "de": "Der Dieb hatte dem schlafenden Gast in der Nacht die Brieftasche verstohlen.",
+    "en": "In the night the thief had stolen the sleeping guest's wallet.",
+    "reason": "Accepted medium/wrong_sense.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "verwaschen": {
+    "de": "Die vielen heißen Waschgänge haben die Farben des T-Shirts ganz verwaschen.",
+    "en": "All those hot wash cycles have left the colors of the T-shirt completely faded.",
+    "reason": "Accepted low/grammar.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "voranschieben": {
+    "de": "Mit vereinten Kräften schoben sie das liegengebliebene Auto langsam voran, bis es endlich am Straßenrand stand.",
+    "en": "Working together, they slowly pushed the stalled car forward until it was finally at the side of the road.",
+    "reason": "Accepted medium/logic.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "vorbeischauen": {
+    "en": "Why don't you drop by our place tomorrow? We've baked a fresh cake.",
+    "reason": "Accepted low/comma_splice; superseded high/bad_gloss. Gloss also corrected (see gloss-corrections.json).",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "vorherberechnen": {
+    "en": "Astronomers today can calculate a solar eclipse in advance down to the exact minute.",
+    "reason": "Accepted low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "wegrauchen": {
+    "de": "Nach dem Streit ging er auf den Balkon und rauchte seinen Ärger weg.",
+    "en": "After the argument he went out on the balcony and smoked his anger away.",
+    "reason": "Accepted medium/wrong_sense.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "wegschleifen": {
+    "de": "Die Sanitäter schleiften den Verletzten so schnell wie möglich von der befahrenen Straße weg.",
+    "en": "The paramedics dragged the injured man off the busy road as fast as they could.",
+    "reason": "Accepted low/logic.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "wegsterben": {
+    "de": "In dem kleinen Bergdorf sind die alten Handwerker nach und nach weggestorben, und niemand führt ihre Werkstätten fort.",
+    "en": "In the small mountain village the old craftsmen died off one by one, and no one carries on their workshops.",
+    "reason": "Accepted medium/wrong_sense.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "wegwünschen": {
+    "de": "An anstrengenden Tagen wünschte sie sich ihre lärmenden Nachbarn einfach weg.",
+    "en": "On exhausting days she simply wished her noisy neighbors away.",
+    "reason": "Accepted medium/wrong_verb.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "weiterverarbeiten": {
+    "en": "The small dairy processes the fresh milk into cheese and yogurt right away.",
+    "reason": "Accepted low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "widerreden": {
+    "en": "The apprentice talked back to the master over every instruction and constantly caused trouble.",
+    "reason": "Accepted low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "zufassen": {
+    "en": "When the child was about to stumble, the mother grabbed hold in a flash and held the child fast.",
+    "reason": "Accepted low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "zukaufen": {
+    "de": "Weil die eigene Ernte nicht reichte, musste der Müller zusätzliches Getreide zukaufen.",
+    "en": "Because his own harvest wasn't enough, the miller had to buy in extra grain.",
+    "reason": "Accepted medium/logic.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "zupacken": {
+    "de": "Als ihm das nasse Seil entglitt, packte er blitzschnell zu und hielt es fest.",
+    "en": "When the wet rope slipped out of his hand, he grabbed hold in a flash and held on.",
+    "reason": "Accepted medium/wrong_sense.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "zurückbauen": {
+    "en": "After the festival the crew took the big stage back down and cleared the whole site.",
+    "reason": "Accepted low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "zurückbilden": {
+    "de": "Nach der langen Ruhephase bildete sich der Muskel deutlich zurück, weil das Bein wochenlang ruhiggestellt war.",
+    "reason": "Accepted medium/grammar.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "zurücklächeln": {
+    "de": "Als er sie freundlich anlächelte, lächelte sie ein wenig schüchtern zurück.",
+    "en": "When he smiled at her kindly, she smiled back a little shyly.",
+    "reason": "Accepted low/logic.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "zurückmachen": {
+    "de": "Es ist schon spät geworden, wir sollten langsam zurückmachen und nach Hause fahren.",
+    "en": "It's gotten late already; we should start back soon and head home.",
+    "reason": "Accepted high/wrong_verb; superseded low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "zutreten": {
+    "en": "Like a coward, he kicked him even when his opponent was long since on the ground.",
+    "reason": "Accepted low/translation.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "übereinanderhalten": {
+    "en": "Shivering with cold, she held her numb hands pressed one on top of the other to warm them.",
+    "reason": "Accepted low/translation; superseded medium/bad_gloss. Gloss also corrected (see gloss-corrections.json).",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "übereintreffen": {
+    "de": "Nach zähen Verhandlungen trafen die Vorstellungen beider Seiten schließlich überein.",
+    "en": "After tough negotiations, the two sides' positions finally coincided.",
+    "reason": "Accepted medium/wrong_sense.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "überhelfen": {
+    "en": "It was freezing outside, so he helped his grandmother on with her heavy coat.",
+    "reason": "Accepted low/bad_gloss. Gloss also corrected (see gloss-corrections.json).",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
+  },
+  "überzahlen": {
+    "de": "Weil gute Fachkräfte so gefragt sind, überzahlt der Betrieb seine Monteure deutlich über dem Tariflohn.",
+    "en": "Because skilled workers are in such demand, the company pays its fitters well above the standard wage.",
+    "reason": "Accepted medium/wrong_sense.",
+    "source": "adversarial review, 2026-07-25, applied without human triage"
   }
 }

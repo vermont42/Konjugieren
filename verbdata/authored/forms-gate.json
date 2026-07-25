@@ -12,22 +12,22 @@
   "abbinden": {
     "hit": true,
     "matched": "band … ab",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
     "gloss_note": true,
-    "de": "Der Sanitäter band den blutenden Oberarm rasch ab, um die schlimmste Blutung zu stoppen."
+    "de": "Nach dem Kochen band sie die Schürze ab und hängte sie ordentlich an den Haken."
   },
   "abbleiben": {
     "hit": true,
-    "matched": "bleibt … ab",
-    "corrected": false,
+    "matched": "abgeblieben",
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": true,
     "gloss_note": true,
-    "de": "Seit dem Streit bleibt er allen Familienfeiern konsequent ab und meldet sich bei niemandem."
+    "de": "Wo ist eigentlich mein zweiter Handschuh abgeblieben? Seit dem Umzug habe ich ihn nicht mehr gesehen."
   },
   "abbrennen": {
     "hit": true,
@@ -162,7 +162,7 @@
   "abfüllen": {
     "hit": true,
     "matched": "füllen … ab",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
@@ -172,7 +172,7 @@
   "abgießen": {
     "hit": true,
     "matched": "gießt … ab",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
@@ -231,13 +231,13 @@
   },
   "abkochen": {
     "hit": true,
-    "matched": "abkochen",
-    "corrected": false,
+    "matched": "koch … ab",
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
     "gloss_note": false,
-    "de": "Bei einem Stromausfall muss man das Leitungswasser vor dem Trinken sicherheitshalber abkochen."
+    "de": "Der Koch kochte die Brühe stundenlang ab, bis nur noch ein kräftiger, dunkler Fond übrig war."
   },
   "abkriegen": {
     "hit": true,
@@ -292,12 +292,12 @@
   "abliefern": {
     "hit": true,
     "matched": "lieferte … ab",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-5",
     "family": "w",
     "flagged": false,
     "gloss_note": false,
-    "de": "Der Bote lieferte das Paket noch am selben Abend im Büro ab und ließ sich unterschreiben."
+    "de": "Der Bote lieferte das Paket noch am selben Abend im Büro ab und ließ sich den Empfang quittieren."
   },
   "abliegen": {
     "hit": true,
@@ -482,12 +482,12 @@
   "absaugen": {
     "hit": false,
     "matched": null,
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-5",
     "family": "w",
     "flagged": false,
     "gloss_note": false,
-    "de": "Der Zahnarzt saugte während der Behandlung ständig Speichel ab, damit ich schlucken konnte."
+    "de": "Der Zahnarzt saugte während der Behandlung ständig Speichel ab, damit ich nicht dauernd schlucken musste."
   },
   "abschauen": {
     "hit": true,
@@ -652,7 +652,7 @@
   "abtrinken": {
     "hit": true,
     "matched": "abtrinken",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
@@ -732,12 +732,12 @@
   "allemachen": {
     "hit": true,
     "matched": "machte … alle",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": true,
     "gloss_note": false,
-    "de": "Mit einer einzigen Falle machte der Bauer die Ratten in der Scheune alle."
+    "de": "Mit immer neuen Fallen machte der Bauer die Ratten in der Scheune nach und nach alle."
   },
   "altmachen": {
     "hit": true,
@@ -1002,7 +1002,7 @@
   "anmischen": {
     "hit": true,
     "matched": "mischte … an",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
@@ -1052,7 +1052,7 @@
   "anreisen": {
     "hit": true,
     "matched": "reisen … an",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
@@ -1172,12 +1172,12 @@
   "ansenken": {
     "hit": true,
     "matched": "senkte … an",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
     "gloss_note": false,
-    "de": "Vor dem Verschrauben senkte der Tischler jedes Bohrloch sorgfältig an, damit die Schraubenköpfe bündig sitzen."
+    "de": "Vor dem Verschrauben senkte der Tischler jedes Bohrloch sorgfältig an, damit die Schraubenköpfe bündig saßen."
   },
   "ansinnen": {
     "hit": true,
@@ -1232,7 +1232,7 @@
   "antauchen": {
     "hit": true,
     "matched": "tauchten … an",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": true,
@@ -1261,13 +1261,13 @@
   },
   "antrinken": {
     "hit": true,
-    "matched": "trank … an",
-    "corrected": false,
+    "matched": "angetrunken",
+    "corrected": true,
     "model": "claude-opus-5",
     "family": "s",
     "flagged": false,
     "gloss_note": true,
-    "de": "Vor der Rede trank er sich heimlich Mut an, was man ihm später deutlich anmerkte."
+    "de": "Auf der Betriebsfeier hatte er sich noch vor dem Essen einen ordentlichen Schwips angetrunken."
   },
   "anwarten": {
     "hit": true,
@@ -1282,12 +1282,12 @@
   "anwerfen": {
     "hit": true,
     "matched": "warf … an",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-5",
     "family": "s",
     "flagged": false,
     "gloss_note": true,
-    "de": "Mit einem kräftigen Ruck an der Schnur warf er den alten Rasenmäher an."
+    "de": "Im Streit warf ihm der Bruder eine Handvoll nassen Sand an."
   },
   "anzahlen": {
     "hit": true,
@@ -1302,7 +1302,7 @@
   "anzählen": {
     "hit": true,
     "matched": "zählte … an",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-5",
     "family": "w",
     "flagged": false,
@@ -1512,12 +1512,12 @@
   "aufrauchen": {
     "hit": true,
     "matched": "rauchte … auf",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
     "gloss_note": true,
-    "de": "Nach dem Essen setzte er sich auf die Terrasse und rauchte seine letzte Zigarre in Ruhe auf."
+    "de": "Kaum hatte er die Kerze gelöscht, rauchte ein dünner grauer Faden auf."
   },
   "aufrechnen": {
     "hit": true,
@@ -1591,13 +1591,13 @@
   },
   "aufschießen": {
     "hit": true,
-    "matched": "schoss … auf",
-    "corrected": false,
+    "matched": "schossen … auf",
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
     "gloss_note": true,
-    "de": "Nach dem warmen Regen schoss der Bambus im Garten geradezu über Nacht auf."
+    "de": "Die Einsatzkräfte schossen das verrostete Vorhängeschloss auf und öffneten den Container."
   },
   "aufschmelzen": {
     "hit": true,
@@ -1630,14 +1630,14 @@
     "de": "Der gut ausgebildete Hund spürte die vermisste Wanderin noch vor Einbruch der Nacht auf."
   },
   "aufstreben": {
-    "hit": false,
-    "matched": null,
-    "corrected": false,
+    "hit": true,
+    "matched": "strebte … auf",
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
     "gloss_note": false,
-    "de": "In dem aufstrebenden Viertel eröffnen jede Woche neue Cafés und kleine Galerien."
+    "de": "Aus einfachen Verhältnissen strebte der junge Geiger bis auf die großen Konzertbühnen auf."
   },
   "auftreffen": {
     "hit": true,
@@ -2012,7 +2012,7 @@
   "ausrücken": {
     "hit": true,
     "matched": "rückte … aus",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
@@ -2022,7 +2022,7 @@
   "ausschauen": {
     "hit": true,
     "matched": "schaust … aus",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
@@ -2042,12 +2042,12 @@
   "ausschenken": {
     "hit": true,
     "matched": "schenkte … aus",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
     "gloss_note": false,
-    "de": "Der Wirt schenkte den frisch gezapften Wein großzügig an seine Stammgäste aus."
+    "de": "Der Wirt schenkte den jungen Wein vom Fass großzügig an seine Stammgäste aus."
   },
   "ausschildern": {
     "hit": true,
@@ -2062,17 +2062,17 @@
   "ausschleichen": {
     "hit": true,
     "matched": "schlich … aus",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
     "gloss_note": false,
-    "de": "Als der Vortrag immer langweiliger wurde, schlich er sich leise aus dem Saal aus."
+    "de": "Als der Vortrag immer langweiliger wurde, schlich er sich leise aus, ohne sich zu verabschieden."
   },
   "ausschweigen": {
     "hit": true,
     "matched": "schwieg … aus",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
@@ -2182,7 +2182,7 @@
   "auswaschen": {
     "hit": true,
     "matched": "wusch … aus",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
@@ -2222,12 +2222,12 @@
   "bankrottgehen": {
     "hit": true,
     "matched": "gingen … bankrott",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
     "gloss_note": false,
-    "de": "Nach den langen Lockdowns gingen zahlreiche kleine Restaurants in der Innenstadt bankrott."
+    "de": "Nach der langen Wirtschaftskrise gingen zahlreiche kleine Restaurants in der Innenstadt bankrott."
   },
   "beatmen": {
     "hit": true,
@@ -2552,7 +2552,7 @@
   "bereinigen": {
     "hit": true,
     "matched": "bereinigen",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
@@ -2612,12 +2612,12 @@
   "beschallen": {
     "hit": true,
     "matched": "beschallte",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
     "gloss_note": false,
-    "de": "Beim Termin beschallte die Ärztin vorsichtig ihren Bauch, um das ungeborene Kind zu untersuchen."
+    "de": "Beim Termin beschallte die Ärztin vorsichtig den Bauch der werdenden Mutter, um das ungeborene Kind zu untersuchen."
   },
   "bescheißen": {
     "hit": true,
@@ -2662,12 +2662,12 @@
   "beschweigen": {
     "hit": true,
     "matched": "beschwiegen",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
     "gloss_note": false,
-    "de": "Über die dunklen Jahre der Familiengeschichte wurde am Esstisch stets beharrlich beschwiegen."
+    "de": "Die dunklen Jahre der Familiengeschichte wurden am Esstisch stets beharrlich beschwiegen."
   },
   "beschwingen": {
     "hit": true,
@@ -2852,7 +2852,7 @@
   "dabeihaben": {
     "hit": true,
     "matched": "hatte … dabei",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-5",
     "family": "m",
     "flagged": false,
@@ -3012,7 +3012,7 @@
   "davonreisen": {
     "hit": true,
     "matched": "reiste … davon",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
@@ -3032,7 +3032,7 @@
   "davorhalten": {
     "hit": true,
     "matched": "hielt … davor",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
@@ -3072,22 +3072,22 @@
   "dichthalten": {
     "hit": true,
     "matched": "hielt … dicht",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
     "gloss_note": false,
-    "de": "Egal wie sehr man ihn über die Überraschungsparty ausfragte, er hielt eisern dicht."
+    "de": "Trotz des tagelangen Dauerregens hielt das neu gedeckte Dach überall dicht."
   },
   "dichtmachen": {
     "hit": true,
-    "matched": "dichtmachen",
-    "corrected": false,
+    "matched": "machten … dicht",
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
     "gloss_note": false,
-    "de": "Nach dreißig Jahren musste die kleine Bäckerei an der Ecke endgültig dichtmachen."
+    "de": "Vor dem angekündigten Sturm machten wir alle Fenster und Läden sorgfältig dicht."
   },
   "drangehen": {
     "hit": true,
@@ -3121,13 +3121,13 @@
   },
   "draufgehen": {
     "hit": true,
-    "matched": "ging … drauf",
-    "corrected": false,
+    "matched": "draufgegangen",
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
     "gloss_note": true,
-    "de": "Für die teure Autoreparatur ging fast mein ganzes Erspartes drauf."
+    "de": "Bei der letzten Bergtour ist mein alter Rucksack endgültig draufgegangen."
   },
   "draufhaben": {
     "hit": true,
@@ -3142,7 +3142,7 @@
   "draufhalten": {
     "hit": true,
     "matched": "hielt … drauf",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
@@ -3231,23 +3231,23 @@
   },
   "durchbrennen": {
     "hit": true,
-    "matched": "durchgebrannt",
-    "corrected": false,
+    "matched": "brannte … durch",
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "m",
     "flagged": false,
     "gloss_note": true,
-    "de": "Die Glühbirne im Flur ist schon wieder durchgebrannt und muss ausgetauscht werden."
+    "de": "Das Feuer im Kamin brannte die ganze Nacht durch, sodass es am Morgen noch warm war."
   },
   "durcheinanderbringen": {
     "hit": true,
-    "matched": "brachte … durcheinander",
-    "corrected": false,
+    "matched": "durcheinandergebracht",
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "m",
     "flagged": false,
     "gloss_note": false,
-    "de": "Der laute Straßenlärm brachte ihn so durcheinander, dass er beim Rechnen den Faden verlor."
+    "de": "Beim Suchen hat er meine sorgfältig sortierten Karteikarten völlig durcheinandergebracht."
   },
   "durcheinanderkommen": {
     "hit": true,
@@ -3302,12 +3302,12 @@
   "durchgreifen": {
     "hit": true,
     "matched": "griff … durch",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-5",
     "family": "s",
     "flagged": false,
     "gloss_note": true,
-    "de": "Nach der dritten Beschwerde griff die Schulleitung endlich hart durch und sperrte die Handys."
+    "de": "Der Höhleneingang war zugewuchert, doch sie griff durch das Gestrüpp durch und tastete nach dem Seil."
   },
   "durchhängen": {
     "hit": true,
@@ -3532,7 +3532,7 @@
   "durchwachsen": {
     "hit": true,
     "matched": "wuchs … durch",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
@@ -3652,12 +3652,12 @@
   "einfahren": {
     "hit": true,
     "matched": "fuhr … ein",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
     "gloss_note": false,
-    "de": "Mit einer Minute Verspätung fuhr der Zug endlich in den Bahnhof ein."
+    "de": "Der Lastwagen fuhr rückwärts in den engen Hof ein."
   },
   "einfassen": {
     "hit": true,
@@ -3922,7 +3922,7 @@
   "einstechen": {
     "hit": true,
     "matched": "stach … ein",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-5",
     "family": "s",
     "flagged": false,
@@ -4022,12 +4022,12 @@
   "eislaufen": {
     "hit": true,
     "matched": "laufen … eis",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
     "gloss_note": false,
-    "de": "Sobald der Teich zugefroren ist, laufen die Kinder dort stundenlang Eis."
+    "de": "Sobald der Teich zugefroren ist, laufen die Kinder dort stundenlang eis."
   },
   "emporblicken": {
     "hit": true,
@@ -4112,17 +4112,17 @@
   "entfließen": {
     "hit": true,
     "matched": "entfließt",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
     "gloss_note": false,
-    "de": "Dem moosbewachsenen Felsen entfließt eine klare Quelle, die das Tal versorgt."
+    "de": "Dem moosbewachsenen Felsen entfließt klares Quellwasser, das das ganze Tal versorgt."
   },
   "entfolgen": {
     "hit": true,
     "matched": "entfolgte",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
@@ -4132,12 +4132,12 @@
   "entgegenhalten": {
     "hit": true,
     "matched": "hielt … entgegen",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
     "gloss_note": false,
-    "de": "Sie hielt ihm die alten Fotos entgegen, um ihre Version der Geschichte zu beweisen."
+    "de": "Sie hielt ihm die alten Fotos entgegen, damit er die Gesichter im Licht besser erkennen konnte."
   },
   "entgegensehen": {
     "hit": true,
@@ -4242,7 +4242,7 @@
   "entnerven": {
     "hit": true,
     "matched": "entnervte",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
@@ -4562,12 +4562,12 @@
   "fehlleiten": {
     "hit": true,
     "matched": "leitete … fehl",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
     "gloss_note": false,
-    "de": "Ein umgedrehtes Schild leitete die Wanderer stundenlang in die völlig falsche Richtung fehl."
+    "de": "Ein umgedrehtes Schild leitete die Wanderer stundenlang fehl, bis sie endlich einen Einheimischen fragten."
   },
   "feilbieten": {
     "hit": true,
@@ -4592,17 +4592,17 @@
   "fernliegen": {
     "hit": true,
     "matched": "liegt … fern",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
     "gloss_note": false,
-    "de": "Es liegt mir fern, dir Vorschriften zu machen, aber überlege dir das gut."
+    "de": "Jede Form von Neid liegt ihr völlig fern; sie gönnt anderen ihren Erfolg von Herzen."
   },
   "fernschauen": {
     "hit": true,
     "matched": "schauen … fern",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
@@ -4622,7 +4622,7 @@
   "festbacken": {
     "hit": true,
     "matched": "backt … fest",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
@@ -4662,12 +4662,12 @@
   "festkleben": {
     "hit": true,
     "matched": "klebte … fest",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
     "gloss_note": false,
-    "de": "Das alte Kaugummi klebte so fest am Schuh, dass ich es kaum abbekam."
+    "de": "Sie klebte das Etikett mit etwas Leim sorgfältig auf dem Marmeladenglas fest."
   },
   "festlaufen": {
     "hit": true,
@@ -4692,7 +4692,7 @@
   "festtreten": {
     "hit": true,
     "matched": "trat … fest",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
@@ -4712,7 +4712,7 @@
   "flachlegen": {
     "hit": true,
     "matched": "legte … flach",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
@@ -5022,7 +5022,7 @@
   "großziehen": {
     "hit": true,
     "matched": "zog … groß",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
@@ -5082,7 +5082,7 @@
   "heimleuchten": {
     "hit": true,
     "matched": "leuchtete … heim",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
@@ -5102,7 +5102,7 @@
   "heimtrauen": {
     "hit": true,
     "matched": "traute … heim",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
@@ -5202,7 +5202,7 @@
   "heranreichen": {
     "hit": true,
     "matched": "reicht … heran",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
@@ -5222,22 +5222,22 @@
   "heraufgeben": {
     "hit": true,
     "matched": "gebe … herauf",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
     "gloss_note": false,
-    "de": "Steh schon mal oben auf der Leiter, dann gebe ich dir die Ziegel einzeln herauf."
+    "de": "Steig schon mal auf die Leiter, dann gebe ich dir die Ziegel einzeln herauf."
   },
   "heraufhalten": {
     "hit": true,
     "matched": "hielt … herauf",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
     "gloss_note": false,
-    "de": "Das Kind hielt stolz seine gemalte Zeichnung herauf, damit alle sie sehen konnten."
+    "de": "Ich stand oben auf dem Balkon, und das Kind hielt mir stolz seine Zeichnung herauf."
   },
   "heraufsetzen": {
     "hit": true,
@@ -5442,12 +5442,12 @@
   "herreißen": {
     "hit": true,
     "matched": "riss … her",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-5",
     "family": "s",
     "flagged": true,
     "gloss_note": false,
-    "de": "Kaum hatte ich die Chips ausgepackt, riss mir mein Bruder die Tüte einfach her."
+    "de": "Ungeduldig riss ich meinem Bruder die Chipstüte einfach her, kaum dass er sie aufgemacht hatte."
   },
   "herrichten": {
     "hit": true,
@@ -5562,12 +5562,12 @@
   "herunterhalten": {
     "hit": true,
     "matched": "hielt … herunter",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
     "gloss_note": false,
-    "de": "Er hielt den aufgeregten Hund am Halsband herunter, bis der Postbote vorbei war."
+    "de": "Der Hund sprang immer wieder hoch, doch er hielt ihn am Halsband herunter, bis der Postbote vorbei war."
   },
   "herunterhandeln": {
     "hit": true,
@@ -5622,7 +5622,7 @@
   "herunterziehen": {
     "hit": true,
     "matched": "zog … herunter",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
@@ -5652,7 +5652,7 @@
   "herüberkommen": {
     "hit": true,
     "matched": "komm … herüber",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
@@ -5672,32 +5672,32 @@
   "hinaufgeben": {
     "hit": true,
     "matched": "gab … hinauf",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
     "gloss_note": false,
-    "de": "Der Lehrling gab dem Dachdecker die schweren Ziegel nach oben aufs Gerüst hinauf."
+    "de": "Der Lehrling gab dem Dachdecker die schweren Ziegel aufs Gerüst hinauf."
   },
   "hinaufhalten": {
     "hit": true,
     "matched": "hielt … hinauf",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
     "gloss_note": false,
-    "de": "Das kleine Mädchen hielt den bunten Luftballon so hoch wie möglich hinauf."
+    "de": "Das kleine Mädchen hielt den bunten Luftballon zum offenen Fenster hinauf."
   },
   "hinaufschauen": {
     "hit": true,
     "matched": "schaute … hinauf",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
     "gloss_note": false,
-    "de": "Ehrfürchtig schaute sie zur vergoldeten Spitze des Kölner Doms hinauf."
+    "de": "Ehrfürchtig schaute sie zur steinernen Spitze des Kölner Doms hinauf."
   },
   "hinausgeben": {
     "hit": true,
@@ -5722,7 +5722,7 @@
   "hinauslehnen": {
     "hit": true,
     "matched": "lehn … hinaus",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
@@ -5952,12 +5952,12 @@
   "hinwegsetzen": {
     "hit": true,
     "matched": "setzte … hinweg",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-5",
     "family": "w",
     "flagged": false,
     "gloss_note": true,
-    "de": "Er setzte sich einfach über das Verbot hinweg und stellte sein Rad wieder vor den Eingang."
+    "de": "Das Pferd setzte in vollem Galopp mühelos über den breiten Graben hinweg."
   },
   "hinzubekommen": {
     "hit": true,
@@ -6122,17 +6122,17 @@
   "irreführen": {
     "hit": true,
     "matched": "führt … irre",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
     "gloss_note": false,
-    "de": "Die geschickt formulierte Werbung führt viele Kunden über den wahren Preis in die Irre."
+    "de": "Die geschickt formulierte Werbung führt viele Kunden über den wahren Preis irre."
   },
   "kaltmachen": {
     "hit": true,
     "matched": "kaltzumachen",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
@@ -6142,7 +6142,7 @@
   "kaputtlachen": {
     "hit": true,
     "matched": "kaputtgelacht",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
@@ -6152,12 +6152,12 @@
   "kaputtreißen": {
     "hit": true,
     "matched": "riss … kaputt",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
     "gloss_note": false,
-    "de": "Vor Wut riss er den Brief in tausend Stücke kaputt."
+    "de": "Vor Wut riss er den Brief kaputt und warf die Fetzen in den Papierkorb."
   },
   "kehrtmachen": {
     "hit": true,
@@ -6172,17 +6172,17 @@
   "keifen": {
     "hit": true,
     "matched": "keifte",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
     "gloss_note": false,
-    "de": "Die Nachbarin keifte lautstark über den Zaun, weil unser Ball in ihrem Beet lag."
+    "de": "Der Nachbar keifte lautstark über den Zaun, weil unser Ball in seinem Beet lag."
   },
   "klarlegen": {
     "hit": true,
     "matched": "legte … klar",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
@@ -6191,13 +6191,13 @@
   },
   "klarträumen": {
     "hit": true,
-    "matched": "klarträumen",
-    "corrected": false,
+    "matched": "klarzuträumen",
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
     "gloss_note": false,
-    "de": "Nach wochenlangem Üben gelang es ihm endlich, bewusst zu klarträumen und im Traum zu fliegen."
+    "de": "Nach wochenlangem Üben gelang es ihm endlich, bewusst klarzuträumen und im Traum zu fliegen."
   },
   "kleinhalten": {
     "hit": true,
@@ -6391,23 +6391,23 @@
   },
   "lockermachen": {
     "hit": true,
-    "matched": "lockermachen",
-    "corrected": false,
+    "matched": "machte … locker",
+    "corrected": true,
     "model": "claude-opus-5",
     "family": "w",
     "flagged": false,
     "gloss_note": true,
-    "de": "Für das neue Rennrad musste er am Ende doch achthundert Euro lockermachen."
+    "de": "Er machte die festgerostete Schraube mit ein paar Tropfen Öl endlich wieder locker."
   },
   "losbrechen": {
     "hit": true,
     "matched": "brach … los",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-5",
     "family": "s",
     "flagged": false,
     "gloss_note": true,
-    "de": "Als das Tor fiel, brach im Stadion ein ohrenbetäubender Jubel los."
+    "de": "Ein großer Felsbrocken brach von der Steilwand los und stürzte in die Tiefe."
   },
   "loslachen": {
     "hit": true,
@@ -6502,7 +6502,7 @@
   "mausrutschen": {
     "hit": true,
     "matched": "mausgerutscht",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": true,
@@ -6652,12 +6652,12 @@
   "nachbeten": {
     "hit": true,
     "matched": "beteten … nach",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
     "gloss_note": false,
-    "de": "Die Schüler beteten die auswendig gelernten Formeln nach, ohne sie wirklich zu verstehen."
+    "de": "Bei der Andacht beteten die Kinder die Worte des Priesters leise nach."
   },
   "nacherzählen": {
     "hit": true,
@@ -7002,17 +7002,17 @@
   "niedermachen": {
     "hit": true,
     "matched": "machten … nieder",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
     "gloss_note": true,
-    "de": "Die Soldaten machten die Bewohner des kleinen Dorfes ohne jede Gnade nieder."
+    "de": "Die Truppen des Belagerers machten die letzten Verteidiger der Festung ohne jede Gnade nieder."
   },
   "niederreden": {
     "hit": true,
     "matched": "redete … nieder",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
@@ -7062,7 +7062,7 @@
   "näherstehen": {
     "hit": true,
     "matched": "steht … näher",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
@@ -7132,7 +7132,7 @@
   "raufgehen": {
     "hit": true,
     "matched": "gehen … rauf",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
@@ -7142,12 +7142,12 @@
   "raufhalten": {
     "hit": true,
     "matched": "hielt … rauf",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
     "gloss_note": false,
-    "de": "Er hielt seinen Ausweis in die Höhe rauf, damit der Kontrolleur ihn deutlich sehen konnte."
+    "de": "Er hielt seinen Ausweis zum Fenster rauf, damit der Kontrolleur ihn deutlich sehen konnte."
   },
   "rausbringen": {
     "hit": true,
@@ -7192,7 +7192,7 @@
   "rauslassen": {
     "hit": true,
     "matched": "rauslassen",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
@@ -7212,12 +7212,12 @@
   "rechtschreiben": {
     "hit": true,
     "matched": "rechtschreiben",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": true,
     "gloss_note": false,
-    "de": "Selbst viele Erwachsene können bestimmte Fremdwörter nicht fehlerfrei rechtschreiben."
+    "de": "Selbst viele Erwachsene können nicht rechtschreiben, wenn Fremdwörter im Spiel sind."
   },
   "reinfallen": {
     "hit": true,
@@ -7232,12 +7232,12 @@
   "reinfeiern": {
     "hit": true,
     "matched": "reingefeiert",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
     "gloss_note": false,
-    "de": "Wir haben gestern mit Freunden bis Mitternacht in ihren dreißigsten Geburtstag reingefeiert."
+    "de": "Wir haben gestern mit Freunden bis weit nach Mitternacht in ihren dreißigsten Geburtstag reingefeiert."
   },
   "reingehen": {
     "hit": true,
@@ -7632,12 +7632,12 @@
   "schöntrinken": {
     "hit": true,
     "matched": "trinkt … schön",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
     "gloss_note": false,
-    "de": "Statt seine Sorgen anzugehen, trinkt er sie sich Abend für Abend schön."
+    "de": "Statt seine Probleme anzugehen, trinkt er sich seine Lage Abend für Abend schön."
   },
   "sichergehen": {
     "hit": true,
@@ -8032,12 +8032,12 @@
   "umnutzen": {
     "hit": true,
     "matched": "nutzt … um",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
     "gloss_note": false,
-    "de": "Die Stadt nutzt die alte Textilfabrik jetzt als lebendiges Kulturzentrum um."
+    "de": "Die Stadt nutzt die alte Textilfabrik jetzt zu einem lebendigen Kulturzentrum um."
   },
   "umpflanzen": {
     "hit": true,
@@ -8092,7 +8092,7 @@
   "umschalten": {
     "hit": true,
     "matched": "schaltete … um",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
@@ -8132,12 +8132,12 @@
   "umstreiten": {
     "hit": true,
     "matched": "umstreiten",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": true,
     "gloss_note": false,
-    "de": "Historiker umstreiten bis heute die wahren Gründe für den Niedergang des Reiches."
+    "de": "Beide Königshäuser umstreiten seit Generationen das kleine Herzogtum an der Grenze."
   },
   "umtauschen": {
     "hit": true,
@@ -8202,12 +8202,12 @@
   "unterheben": {
     "hit": true,
     "matched": "hebt … unter",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
     "gloss_note": false,
-    "de": "Zum Schluss hebt man den steifen Eischnee ganz vorsichtig unter den Teig."
+    "de": "Zum Schluss hebt man den steifen Eischnee ganz vorsichtig unter."
   },
   "unterkommen": {
     "hit": true,
@@ -8242,12 +8242,12 @@
   "untermischen": {
     "hit": true,
     "matched": "mischte … unter",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
     "gloss_note": false,
-    "de": "Er mischte heimlich etwas Zimt unter den Teig, damit die Kekse besser dufteten."
+    "de": "Er mischte dem Teig heimlich etwas Zimt unter, damit die Kekse besser dufteten."
   },
   "unterschieben": {
     "hit": true,
@@ -8461,13 +8461,13 @@
   },
   "verhassen": {
     "hit": true,
-    "matched": "verhasste",
-    "corrected": false,
+    "matched": "verhasst",
+    "corrected": true,
     "model": "claude-opus-5",
     "family": "w",
     "flagged": true,
     "gloss_note": false,
-    "de": "In seinen Tagebüchern verhasste der alte Chronist den Krieg mit jeder Zeile, die er schrieb."
+    "de": "In seinen Tagebüchern schrieb der alte Chronist, wie der endlose Krieg ihm seine Heimat verhasst hatte."
   },
   "verheben": {
     "hit": true,
@@ -8571,13 +8571,13 @@
   },
   "verlügen": {
     "hit": true,
-    "matched": "verlogen",
-    "corrected": false,
+    "matched": "verlog",
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": true,
     "gloss_note": false,
-    "de": "Er hatte sich so in seine Ausreden verlogen, dass ihm am Ende niemand mehr glaubte."
+    "de": "Statt die Wahrheit zu sagen, verlog er den ganzen Hergang des Unfalls."
   },
   "vermachen": {
     "hit": true,
@@ -8642,7 +8642,7 @@
   "verrauchen": {
     "hit": true,
     "matched": "verraucht",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
@@ -8692,12 +8692,12 @@
   "verrennen": {
     "hit": true,
     "matched": "verrannt",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "m",
     "flagged": false,
     "gloss_note": true,
-    "de": "Er hat sich so in seine eine Idee verrannt, dass er keine Kritik mehr zuließ."
+    "de": "Er hat sich so in diese eine Idee verrannt, dass er keine Kritik mehr zuließ."
   },
   "verrufen": {
     "hit": true,
@@ -8821,13 +8821,13 @@
   },
   "verstehlen": {
     "hit": true,
-    "matched": "verstahl",
-    "corrected": false,
+    "matched": "verstohlen",
+    "corrected": true,
     "model": "claude-opus-5",
     "family": "s",
     "flagged": false,
     "gloss_note": true,
-    "de": "Als der Redner endlich Luft holte, verstahl er sich leise aus dem überfüllten Saal."
+    "de": "Der Dieb hatte dem schlafenden Gast in der Nacht die Brieftasche verstohlen."
   },
   "versteigern": {
     "hit": true,
@@ -8922,12 +8922,12 @@
   "verwaschen": {
     "hit": true,
     "matched": "verwaschen",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-5",
     "family": "s",
     "flagged": false,
     "gloss_note": false,
-    "de": "Die vielen heißen Wäschen haben die Farben des T-Shirts ganz verwaschen."
+    "de": "Die vielen heißen Waschgänge haben die Farben des T-Shirts ganz verwaschen."
   },
   "verwiegen": {
     "hit": true,
@@ -9032,12 +9032,12 @@
   "voranschieben": {
     "hit": true,
     "matched": "schoben … voran",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
     "gloss_note": false,
-    "de": "Mit vereinten Kräften schoben sie das liegengebliebene Auto langsam an den Straßenrand voran."
+    "de": "Mit vereinten Kräften schoben sie das liegengebliebene Auto langsam voran, bis es endlich am Straßenrand stand."
   },
   "vorausahnen": {
     "hit": true,
@@ -9162,7 +9162,7 @@
   "vorbeischauen": {
     "hit": true,
     "matched": "schau … vorbei",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
@@ -9242,7 +9242,7 @@
   "vorherberechnen": {
     "hit": true,
     "matched": "vorherberechnen",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
@@ -9531,13 +9531,13 @@
   },
   "wegrauchen": {
     "hit": true,
-    "matched": "weggeraucht",
-    "corrected": false,
+    "matched": "rauchte … weg",
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
     "gloss_note": false,
-    "de": "Vor lauter Nervosität hat er an dem Abend eine ganze Schachtel weggeraucht."
+    "de": "Nach dem Streit ging er auf den Balkon und rauchte seinen Ärger weg."
   },
   "wegrennen": {
     "hit": true,
@@ -9562,12 +9562,12 @@
   "wegschleifen": {
     "hit": true,
     "matched": "schleiften … weg",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
     "gloss_note": false,
-    "de": "Die Sanitäter schleiften den Verletzten vorsichtig von der befahrenen Straße weg."
+    "de": "Die Sanitäter schleiften den Verletzten so schnell wie möglich von der befahrenen Straße weg."
   },
   "wegschmeißen": {
     "hit": true,
@@ -9621,13 +9621,13 @@
   },
   "wegsterben": {
     "hit": true,
-    "matched": "sterben … weg",
-    "corrected": false,
+    "matched": "weggestorben",
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
     "gloss_note": false,
-    "de": "In dem kleinen Bergdorf sterben die alten Handwerksberufe langsam weg."
+    "de": "In dem kleinen Bergdorf sind die alten Handwerker nach und nach weggestorben, und niemand führt ihre Werkstätten fort."
   },
   "wegtreten": {
     "hit": true,
@@ -9662,12 +9662,12 @@
   "wegwünschen": {
     "hit": true,
     "matched": "wünschte … weg",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
     "gloss_note": false,
-    "de": "An anstrengenden Tagen wünschte sie ihre lärmenden Nachbarn weit weg."
+    "de": "An anstrengenden Tagen wünschte sie sich ihre lärmenden Nachbarn einfach weg."
   },
   "weichkochen": {
     "hit": true,
@@ -9702,7 +9702,7 @@
   "weiterverarbeiten": {
     "hit": true,
     "matched": "verarbeitet … weiter",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
@@ -9742,7 +9742,7 @@
   "widerreden": {
     "hit": true,
     "matched": "widerredete",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": true,
@@ -10002,7 +10002,7 @@
   "zufassen": {
     "hit": true,
     "matched": "fasste … zu",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
@@ -10042,12 +10042,12 @@
   "zukaufen": {
     "hit": true,
     "matched": "zukaufen",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
     "gloss_note": false,
-    "de": "Weil die eigene Ernte nicht reichte, musste der Bäcker zusätzliches Mehl zukaufen."
+    "de": "Weil die eigene Ernte nicht reichte, musste der Müller zusätzliches Getreide zukaufen."
   },
   "zuklappen": {
     "hit": true,
@@ -10082,12 +10082,12 @@
   "zupacken": {
     "hit": true,
     "matched": "packte … zu",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
     "gloss_note": false,
-    "de": "Als es viel zu tragen gab, packte er ohne Zögern zu und schleppte die schwersten Kisten."
+    "de": "Als ihm das nasse Seil entglitt, packte er blitzschnell zu und hielt es fest."
   },
   "zupasskommen": {
     "hit": true,
@@ -10132,7 +10132,7 @@
   "zurückbauen": {
     "hit": true,
     "matched": "bauten … zurück",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
@@ -10142,12 +10142,12 @@
   "zurückbilden": {
     "hit": true,
     "matched": "bildete … zurück",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
     "gloss_note": false,
-    "de": "Nach der langen Ruhephase bildete sich der Muskel deutlich zurück, weil das Bein wochenlang stillgelegt war."
+    "de": "Nach der langen Ruhephase bildete sich der Muskel deutlich zurück, weil das Bein wochenlang ruhiggestellt war."
   },
   "zurückkaufen": {
     "hit": true,
@@ -10162,22 +10162,22 @@
   "zurücklächeln": {
     "hit": true,
     "matched": "lächelte … zurück",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": false,
     "gloss_note": false,
-    "de": "Als er sie freundlich ansah, lächelte sie ein wenig schüchtern zurück."
+    "de": "Als er sie freundlich anlächelte, lächelte sie ein wenig schüchtern zurück."
   },
   "zurückmachen": {
     "hit": true,
     "matched": "zurückmachen",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "w",
     "flagged": true,
     "gloss_note": false,
-    "de": "Es ist schon spät geworden, wir sollten uns langsam auf den Heimweg zurückmachen."
+    "de": "Es ist schon spät geworden, wir sollten langsam zurückmachen und nach Hause fahren."
   },
   "zurückmelden": {
     "hit": true,
@@ -10542,7 +10542,7 @@
   "zutreten": {
     "hit": true,
     "matched": "trat … zu",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
@@ -10682,7 +10682,7 @@
   "übereinanderhalten": {
     "hit": true,
     "matched": "hielt … übereinander",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": false,
@@ -10712,12 +10712,12 @@
   "übereintreffen": {
     "hit": true,
     "matched": "trafen … überein",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-4-8",
     "family": "s",
     "flagged": true,
     "gloss_note": false,
-    "de": "Nach zähen Verhandlungen trafen beide Seiten schließlich überein, den Vertrag zu verlängern."
+    "de": "Nach zähen Verhandlungen trafen die Vorstellungen beider Seiten schließlich überein."
   },
   "überfinanzieren": {
     "hit": true,
@@ -10762,7 +10762,7 @@
   "überhelfen": {
     "hit": true,
     "matched": "half … über",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-5",
     "family": "s",
     "flagged": true,
@@ -10942,12 +10942,12 @@
   "überzahlen": {
     "hit": true,
     "matched": "überzahlt",
-    "corrected": false,
+    "corrected": true,
     "model": "claude-opus-5",
     "family": "w",
     "flagged": false,
     "gloss_note": true,
-    "de": "Für den wackeligen Schrank hat sie beim Antiquitätenhändler deutlich überzahlt."
+    "de": "Weil gute Fachkräfte so gefragt sind, überzahlt der Betrieb seine Monteure deutlich über dem Tariflohn."
   },
   "überzeichnen": {
     "hit": true,

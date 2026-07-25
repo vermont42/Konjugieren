@@ -1,0 +1,1 @@
+{"shard": "038", "reviewer": "claude-opus-5", "served_models": ["claude-opus-5"], "verbs_with_findings": 7, "findings": 8, "high": 1, "medium": 2, "low": 5, "invalid_types": [], "duration_ms": 211045, "duration_api_ms": 212965, "output_tokens": 15995, "cost_usd": 0.9957325}

@@ -4510,3 +4510,52 @@ a *tie off* sentence; and the candidate list contains "to ligate". The reviewer 
 from the data instead of from memory. Removing the experiment made the remaining work better informed,
 not just smaller — which is the second time today the scope cut turned out to be a simplification
 rather than a subtraction.
+
+## The review brief, trial-run on one shard (2026-07-25)
+
+Ran a single review shard before committing a window to all 44, which the orchestrator plan requires
+for exactly the reason it paid off: two of its own estimates were wrong.
+
+Picked shard **038** rather than the plan's suggested 000, because 038 contains *wegschmeißen* — the
+one sentence with known ground truth, carrying both a `wrong_verb` defect and the corpus's single
+comma splice. Shard 000 would have tested the flagging *rate* only; 038 tests rate and detection at
+once. Cross-assignment sent it to Opus 5, since 4.8 authored it.
+
+**Both known findings came back**, with the right diagnosis and the right fix. That is the detection
+test passed.
+
+**Eight findings on 7 of 25 verbs (high 1, medium 2, low 5), and on inspection every one was
+defensible.** Three are worth recording:
+
+- *wegsterben*: „die alten Handwerksberufe sterben weg". The reviewer noted that *wegsterben* takes
+  **animate** subjects and that professions require *aussterben* — then observed that the author's own
+  English, "are slowly dying out", renders *aussterben* rather than *wegsterben*. It caught the
+  translation betraying the German. Nothing mechanical reaches that.
+- *wegrauchen*: argued the shipped gloss "smoke away something" is candidate sense **4** (smoking away
+  one's *Frust*), while the sentence's object is the cigarettes, i.e. sense 2/3. That finding exists
+  only because the shard carries `candidate_glosses`, which the reviewer gets precisely because
+  dropping the quality A/B removed the reason to starve it of context.
+- *wegschleifen*: „schleiften den Verletzten **vorsichtig** weg" — *schleifen* is hauling along the
+  ground, the opposite of careful. The *abbehalten* failure class from the pilot, found again.
+
+**Two corrections to the plan, both from this one shard.**
+
+First, **reviewing costs ~2.5x what authoring did**: 15,995 output tokens against ~6,300, and 213 s of
+API time against ~95 s. I had estimated the review at "roughly one full window" by assuming a reviewer
+child has the same shape as an authoring child. It does not — reading 25 sentences against gloss,
+candidates, and generated forms, and then justifying each finding, is more work than writing them was.
+Budget **two windows**.
+
+Second, and more embarrassing, **the calibration thresholds I wrote were miscalibrated**. The plan
+called 2–4 findings per 25 "calibrated" and 10+ "over-flagging", which would have read 8 as borderline
+bad. But 5 of the 8 were `low`, and high-plus-medium was 3 — exactly the pilot's rate. The threshold
+should never have been on the raw count; `severity` exists to separate defects from polish, and the
+guidance now says to judge findings individually and size the triage from high-plus-medium only.
+
+**And a sampling caveat that applies to every future single-shard trial.** Shards are built in
+alphabetical order, so no shard is a random sample. 038 is `weghören, wegjagen, wegmachen, wegrauchen,
+wegrennen, …` — seventeen consecutive *weg-* compounds, a dense run of near-synonymous separable verbs
+where particle scope and sense boundaries are exactly what goes wrong. It is plausibly a harder shard
+than average, and projecting 8 x 44 from it assumes a representativeness that alphabetical sharding
+does not provide. The plan now says to sample two shards from different parts of the alphabet before
+believing any projection.

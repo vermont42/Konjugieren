@@ -59,6 +59,10 @@ __pycache__/
 verbdata/authored/meta/
 verbdata/authored/run.log
 
-# Review shards: 1.1 MB fully derived from the authored shards, candidates.json, and
-# forms.json. Regenerate with verbdata/authored/build_review_shards.py.
-verbdata/review/shards/
+# Review INPUT shards: 1.1 MB fully derived from the authored shards, candidates.json, and
+# forms.json. Regenerate with verbdata/authored/build_review_shards.py. The .out.json findings
+# beside them are model output and are NOT derivable, so they stay tracked.
+verbdata/review/shards/*.in.json
+# Reviewer raw child telemetry, as with the authoring run.
+verbdata/review/meta/
+verbdata/review/run.log

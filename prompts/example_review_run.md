@@ -59,16 +59,26 @@ If Josh would rather have a single reviewer for consistency, that is a defensibl
 in the wrap-up, because a self-reviewed shard's findings deserve less weight than a cross-reviewed
 one's.
 
-## Run cost
+## Run cost — reviewing is ~2.5x more expensive than authoring
 
-The authoring run measured **≈1.0 window point per 25-verb shard and ≈1.0 point per `/usage` read**
-(`example_generation.md` § "Measured run cost"). A reviewer child has the same shape — read one file,
-think, write one file — so **expect roughly one full window for 44 shards**, and budget ~50 points.
+**This section originally reused the authoring figure and was wrong.** A trial shard on 2026-07-25
+(shard 038, `claude-opus-5`) measured:
 
-Two reasons it could run higher, both worth watching on wave 1: the review shards are larger than the
-authoring shards (~23 KB against ~2 KB, because they carry `candidate_glosses` and `app_forms`), and a
-reviewer that writes `fix_de` / `fix_en` for many verbs produces more output than one that writes
-`{}`. **Measure wave 1's delta before sizing wave 2**; do not assume the authoring figure transfers.
+| | authoring shard (5.0) | review shard | ratio |
+|---|---|---|---|
+| `output_tokens` | ~6,300 | **15,995** | 2.5x |
+| `duration_api_ms` | ~95,000 | **212,965** | 2.2x |
+| `cost_usd` | ~0.54 | **1.00** | 1.8x |
+
+Reading 25 sentences against their gloss, `candidate_glosses`, and `app_forms` and then justifying
+each finding is simply more work than writing the sentences was. So against the authoring run's
+measured **≈1.0 window point per shard**, budget **≈2 to 2.5 points per review shard**, i.e. roughly
+**100 points for all 44 — two windows, not one.**
+
+Treat that as derived from token ratios, not measured from `/usage`: the trial was a single shard and
+no window delta was read for it. **Measure wave 1's `/usage` delta and re-plan from it**, exactly as
+the authoring run did. If a wave of 8 costs materially more than ~20 points, stop and re-scope before
+launching another.
 
 Because there is no model interleaving to preserve here, wave size is purely an efficiency question.
 Go straight to **8–9 per wave**; the authoring run's advice to start at 4 existed to catch problems
@@ -86,13 +96,24 @@ n=sum(len(v['findings']) for v in d.values())
 print(f'{n} findings across {len(d)} of 25 verbs'); print(json.dumps(d, ensure_ascii=False, indent=2)[:2000])"
 ```
 
-Read the findings yourself and judge them before spending a window:
+Read the findings yourself and judge them before spending a window. **Judge them individually; do not
+judge by the count.** The trial run on shard 038 returned **8 findings on 7 of 25 verbs
+(high 1, medium 2, low 5)**, and every one was defensible on inspection. A raw count in that range is
+therefore not evidence of over-flagging.
 
-- **2 to 4 findings per 25 verbs** matches the pilot's rate (3 substantive findings in 25) and means
-  the brief is calibrated. Proceed.
-- **10 or more** means it is over-flagging. Tighten `prompts/example_review.md` § "What is NOT a
-  finding" against whatever it is over-reporting, delete `rev_000.out.json`, and re-run the one shard.
-  Do this before the full run, not after.
+- **Look at the severity split, not the total.** High plus medium is the triage load that matters; the
+  trial's 3 per 25 extrapolates to ~130 across the corpus, which is the band the pilot predicted.
+  `low` findings are optional polish and can be deferred wholesale.
+- **Over-flagging looks like bad findings, not many findings.** If you read the list and disagree with
+  several, tighten `prompts/example_review.md` § "What is NOT a finding" against whatever it is
+  over-reporting, delete the `.out.json`, and re-run the one shard. Do that before the full run.
+
+**Do not extrapolate a total from one shard.** Shards are built in alphabetical order, so each is a
+*clustered* sample rather than a random one. Shard 038 is `weghören, wegjagen, wegmachen, wegrauchen,
+wegrennen, …` — seventeen consecutive `weg-` compounds, a run of near-synonymous separable verbs where
+particle scope and sense boundaries are unusually dense, and plausibly harder than average. A shard of
+unrelated verbs may well come back at 3. Sample two shards from different parts of the alphabet before
+believing any projection.
 - **0** on a shard known to contain a real defect is the opposite failure. Shard 000 does not contain
   one, so a `{}` there is unremarkable. The four known genuine defects
   (`verbdata/authored/forms-gate-misses.md`) sit in four specific shards:
@@ -202,10 +223,19 @@ The triage list puts each finding beside the sentence it is about and the propos
 Josh can accept or reject without opening anything else. Sorted severity-first, then by finding type
 in the brief's own order, so `wrong_verb` leads.
 
-**Sanity-check the aggregate before handing it over.** Two numbers tell you whether the run worked:
-the four known defects (§ "Before the full run") should appear as `wrong_verb`, and the total should
-be on the order of 100 to 150 if the pilot's rate held. A total under 20 means the reviewers were too
-permissive; a total over 400 means they were too strict, and the list will be unusable.
+**Sanity-check the aggregate before handing it over.** Three checks, in order of how much they tell
+you:
+
+1. **The four known defects** (§ "Before the full run") should each appear as `wrong_verb`, and
+   `wegschmeißen` should also carry `comma_splice`. This is the only hard ground truth available.
+2. **High plus medium should land near 130.** That is the trial shard's 3-per-25 extrapolated, and it
+   agrees with the pilot's 3-substantive-findings-per-25. This is the number that sizes Josh's triage.
+3. **The overall total will be much larger, and that is expected** — around 350 if the trial rate
+   holds, most of it `low`. Do not read a large total as over-flagging; read the severity split.
+
+A high-plus-medium count under 30 means the reviewers were too permissive to be useful. Over ~250
+means they were too strict, and the list will be unusable regardless of how good individual findings
+look.
 
 ## Handoff
 

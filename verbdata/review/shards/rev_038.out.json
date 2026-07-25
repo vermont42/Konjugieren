@@ -1,0 +1,84 @@
+{
+  "wegrauchen": {
+    "findings": [
+      {
+        "type": "wrong_sense",
+        "severity": "medium",
+        "detail": "The shipped gloss 'smoke away something' is candidate sense 4, where the object is the thing being suppressed (Kummer, Frust, Stress) and smoking is the means. The sentence's object is 'eine ganze Schachtel', i.e. the tobacco itself, which is candidate sense 2/3 ('to smoke the entire supply of a tobacco product' / 'to smoke large quantities in a short amount of time'). 'Vor lauter Nervosität' gestures at the coping motivation, but the object determines the sense, and here it is the cigarettes, not the nervousness.",
+        "fix_de": "Nach der Kündigung versuchte er, seinen Frust auf dem Balkon wegzurauchen.",
+        "fix_en": "After being laid off, he tried to smoke away his frustration out on the balcony."
+      }
+    ]
+  },
+  "wegschleifen": {
+    "findings": [
+      {
+        "type": "logic",
+        "severity": "low",
+        "detail": "'schleifen' means to haul something along the ground without lifting it, which is precisely the opposite of handling an injured person 'vorsichtig'. Paramedics who have time to be careful lift or 'ziehen'; they drag only when the danger outweighs the risk to the casualty. The adverb therefore undercuts the verb it is meant to demonstrate. Replacing 'vorsichtig' with an urgency adverbial keeps the verb and removes the contradiction.",
+        "fix_de": "Die Sanitäter schleiften den Verletzten so schnell wie möglich von der befahrenen Straße weg.",
+        "fix_en": "The paramedics dragged the injured man off the busy road as quickly as they could."
+      }
+    ]
+  },
+  "wegschmeißen": {
+    "findings": [
+      {
+        "type": "wrong_verb",
+        "severity": "high",
+        "detail": "The sentence contains 'Wirf … weg', which is wegwerfen, not wegschmeißen. The stem must be schmeiß-; the imperative singular is 'Schmeiß … weg'.",
+        "fix_de": "Schmeiß die alten Zeitungen bitte nicht weg, ich brauche sie noch zum Basteln.",
+        "fix_en": "Please don't throw the old newspapers out; I still need them for crafts."
+      },
+      {
+        "type": "comma_splice",
+        "severity": "low",
+        "detail": "'Please don't throw the old newspapers out' and 'I still need them for crafts' are both independent clauses joined by a bare comma. The German comma is correct German but does not carry into English; use a semicolon.",
+        "fix_en": "Please don't throw the old newspapers out; I still need them for crafts."
+      }
+    ]
+  },
+  "wegsetzen": {
+    "findings": [
+      {
+        "type": "grammar",
+        "severity": "low",
+        "detail": "'setzte ich mich an einen anderen Tisch weg' combines a goal PP ('an einen anderen Tisch', toward) with the particle 'weg' (away from) in one clause, so the two directional elements pull against each other. 'sich wegsetzen' is normally used absolutely ('ich setzte mich weg') or with a source ('von ihm weg'); the goal alone takes plain 'sich setzen'. Case and word order are otherwise fine.",
+        "fix_de": "Weil der Mann neben mir so laut telefonierte, setzte ich mich mit meinem Kaffee weg.",
+        "fix_en": "Because the man next to me was talking so loudly on the phone, I moved away with my coffee."
+      }
+    ]
+  },
+  "wegsterben": {
+    "findings": [
+      {
+        "type": "logic",
+        "severity": "medium",
+        "detail": "wegsterben takes animate subjects: a group of living beings dying off one by one. Its subject here is 'die alten Handwerksberufe', and professions do not die — German uses aussterben for trades, dialects, and species. The English translation 'are slowly dying out' confirms the mismatch: it renders aussterben, not wegsterben. Making the subject the craftsmen themselves fixes both sides at once.",
+        "fix_de": "In dem kleinen Bergdorf sterben die letzten alten Handwerker langsam weg.",
+        "fix_en": "In the small mountain village, the last old craftsmen are slowly dying off."
+      }
+    ]
+  },
+  "wegwünschen": {
+    "findings": [
+      {
+        "type": "wrong_verb",
+        "severity": "low",
+        "detail": "With 'weit' immediately before it, 'weg' reads as the head of the adverbial phrase 'weit weg' ('far away') modifying wünschen, rather than as the separable particle of wegwünschen. The meaning is unchanged, but the sentence demonstrates the free construction 'jemanden weit weg wünschen' instead of the compound the entry is for. Dropping 'weit' restores the particle reading. The English also inflates the single 'weit' into 'far, far'.",
+        "fix_de": "An anstrengenden Tagen wünschte sie ihre lärmenden Nachbarn einfach weg.",
+        "fix_en": "On exhausting days she simply wished her noisy neighbors away."
+      }
+    ]
+  },
+  "weiterverarbeiten": {
+    "findings": [
+      {
+        "type": "translation",
+        "severity": "low",
+        "detail": "'processes the fresh milk right on into cheese and yogurt' is not idiomatic English; 'right on into' is a word-for-word attempt at 'gleich … weiter' that no English speaker would write. 'straight into' carries both the immediacy of 'gleich' and the onward step of 'weiter'.",
+        "fix_en": "The small dairy processes the fresh milk straight into cheese and yogurt."
+      }
+    ]
+  }
+}

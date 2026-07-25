@@ -84,52 +84,47 @@ Because there is no model interleaving to preserve here, wave size is purely an 
 Go straight to **8–9 per wave**; the authoring run's advice to start at 4 existed to catch problems
 early in a first-ever run, and this pipeline is now well-trodden.
 
-## Before the full run: one shard, by hand
+## The trial shard — ALREADY DONE, do not repeat it
 
-Cheapest way to learn whether the brief is calibrated. **Do this first.**
+**Shard 038 was trialled on 2026-07-25 and approved. Go straight to the waves.** A fresh session that
+re-trials burns a shard and ~3.5 minutes re-proving a settled point.
 
-```bash
-bash verbdata/review/run_review_wave.sh 000:claude-opus-5
-python3 -c "
-import json; d=json.load(open('verbdata/review/shards/rev_000.out.json'))
-n=sum(len(v['findings']) for v in d.values())
-print(f'{n} findings across {len(d)} of 25 verbs'); print(json.dumps(d, ensure_ascii=False, indent=2)[:2000])"
-```
+Shard 038 itself **will** be reviewed again in the normal waves, deliberately. Its trial output was
+produced against the *uncorrected* `wegschmeißen` sentence, and the two findings it raised have since
+been fixed in `corrections.json` — so keeping it would have made the triage list report two closed
+items as open. The trial output is preserved as `verbdata/review/trial-038.out.json`, out of the
+driver's path, and 038 gets a clean review against the corrected text like every other shard.
 
-Read the findings yourself and judge them before spending a window. **Judge them individually; do not
-judge by the count.** The trial run on shard 038 returned **8 findings on 7 of 25 verbs
-(high 1, medium 2, low 5)**, and every one was defensible on inspection. A raw count in that range is
-therefore not evidence of over-flagging.
+What the trial established, so you do not have to re-establish it:
 
-- **Look at the severity split, not the total.** High plus medium is the triage load that matters; the
-  trial's 3 per 25 extrapolates to ~130 across the corpus, which is the band the pilot predicted.
-  `low` findings are optional polish and can be deferred wholesale.
+- **Detection works.** Shard 038 holds `wegschmeißen`, the one sentence with known ground truth. Both
+  expected findings came back correctly diagnosed and correctly fixed: `wrong_verb` (high) and
+  `comma_splice` (low). Its `fix_de` / `fix_en` are now shipped in
+  `verbdata/authored/corrections.json`.
+- **The rate is 8 findings per 25 verbs**, split high 1 / medium 2 / low 5, with every finding
+  defensible on inspection and `invalid_types` empty.
+- **Judge by severity, not by total.** High-plus-medium was 3 per 25, matching the pilot. That is the
+  number that sizes triage.
+
+**Rebuild the shards before running.** All four known defects — `wegschmeißen` (038), `heranhalten`
+(020), `hochstellen` (024), `rechtdrehen` (028) — have been **fixed** in `corrections.json`, and
+`build_review_shards.py` overlays it. Skip the rebuild and the reviewer sees the old sentences and
+re-reports four closed findings. After a correct rebuild, those four verbs should come back **clean**,
+which is itself a useful check: a `wrong_verb` finding on any of them means the overlay did not apply.
+
+### If you edit the brief, re-trial
+
+Only then. Delete the shard's `.out.json`, re-run the single shard, and judge the findings
+individually:
+
 - **Over-flagging looks like bad findings, not many findings.** If you read the list and disagree with
   several, tighten `prompts/example_review.md` § "What is NOT a finding" against whatever it is
-  over-reporting, delete the `.out.json`, and re-run the one shard. Do that before the full run.
-
-**Do not extrapolate a total from one shard.** Shards are built in alphabetical order, so each is a
-*clustered* sample rather than a random one. Shard 038 is `weghören, wegjagen, wegmachen, wegrauchen,
-wegrennen, …` — seventeen consecutive `weg-` compounds, a run of near-synonymous separable verbs where
-particle scope and sense boundaries are unusually dense, and plausibly harder than average. A shard of
-unrelated verbs may well come back at 3. Sample two shards from different parts of the alphabet before
-believing any projection.
-- **0** on a shard known to contain a real defect is the opposite failure. Shard 000 does not contain
-  one, so a `{}` there is unremarkable. The four known genuine defects
-  (`verbdata/authored/forms-gate-misses.md`) sit in four specific shards:
-
-  | shard | verb | the defect |
-  |---|---|---|
-  | 020 | `heranhalten` | uses *an*, needs the particle *heran* |
-  | 024 | `hochstellen` | uses *höher*, needs *hoch* |
-  | 028 | `rechtdrehen` | uses *rechts*, needs *recht* (and may be a corpus defect, not a sentence one) |
-  | 038 | `wegschmeißen` | uses *wirf … weg*, which is **wegwerfen**; also the corpus's one comma splice |
-
-  **These four are the ground truth for whether the review works at all.** Each should come back as
-  `wrong_verb`, and 038 should additionally come back as `comma_splice`. When those shards complete,
-  check them before launching more waves. A review that misses all four is not calibrated, whatever
-  its total count looks like. All four were authored by `claude-opus-4-8`, so cross-assignment sends
-  every one of them to `claude-opus-5`.
+  over-reporting.
+- **Do not extrapolate a total from one shard.** Shards are built in alphabetical order, so each is a
+  *clustered* sample. Shard 038 is `weghören, wegjagen, wegmachen, wegrauchen, wegrennen, …` —
+  seventeen consecutive `weg-` compounds, a run of near-synonymous separable verbs where particle
+  scope and sense boundaries are unusually dense, and plausibly harder than average. Sample two shards
+  from different parts of the alphabet before believing any projection.
 
 ## Build the shards
 
@@ -261,13 +256,13 @@ no model reviews its own shards. Do NOT apply any corrections, do NOT run the in
 do NOT compare the two authoring models in any form.
 
 Steps, in order:
-1. Build the review shards (build_review_shards.py). Regenerate corpus/working/forms.json first if
-   it is missing.
-2. Run ONE shard and show me the findings before going further, so I can judge whether the brief
-   is calibrated. Stop there and wait for my go-ahead.
-3. After I approve: run waves of 8-9 shards, reading /usage after each, until the Current session
-   exceeds 75% or all 44 shards are done.
-4. Aggregate into verbdata/review/triage.md and report the severity and type tables to me.
+1. Rebuild the review shards (build_review_shards.py) so they pick up
+   verbdata/authored/corrections.json. Regenerate corpus/working/forms.json first if it is missing.
+2. Do NOT run a trial shard. Shard 038 was already trialled and approved; the plan records what it
+   established. Go straight to waves of 8-9 shards, reading /usage after each, until the Current
+   session exceeds 75% or all 44 shards are done. Budget two windows; the driver skips completed
+   shards, so resuming in a fresh window is just running it again.
+3. Aggregate into verbdata/review/triage.md and report the severity and type tables to me.
 
 The subagent brief is prompts/example_review.md - pass it verbatim to each child (the driver does
 this) and do not add anything to it.

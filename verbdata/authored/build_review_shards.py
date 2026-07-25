@@ -4,8 +4,14 @@
 Consumes:
   verbdata/authored/shards/auth_NNN.in.json    verb, gloss, separability (what the author saw)
   verbdata/authored/shards/auth_NNN.out.json   the authored de/en
+  verbdata/authored/corrections.json           accepted fixes, overlaid (optional)
   verbdata/candidates.json                     the full kaikki gloss list per verb
   corpus/working/forms.json                    form -> [{verb, contiguous, particle?}]
+
+CORRECTIONS ARE OVERLAID HERE TOO, and forgetting to would be worse than cosmetic: the reviewer
+would be shown a sentence that has already been fixed, and would re-report a finding that is
+already closed. The authored shards stay immutable for the reasons in check_forms.py's header;
+every consumer applies corrections.json on read.
 
 Produces:
   verbdata/review/shards/rev_NNN.in.json       one per authored shard, same verbs, same order
@@ -50,6 +56,10 @@ for form, entries in FORMS.items():
             form if e["contiguous"] else f'{form} … {e.get("particle", "")}'.strip()
         )
 
+CORRECTIONS = {}
+if os.path.exists("verbdata/authored/corrections.json"):
+    CORRECTIONS = json.load(open("verbdata/authored/corrections.json"))
+
 os.makedirs("verbdata/review/shards", exist_ok=True)
 built = total = 0
 
@@ -60,6 +70,10 @@ for inp in sorted(glob.glob("verbdata/authored/shards/auth_*.in.json")):
         print(f"skip {n}: no authored output")
         continue
     authored = json.load(open(outp))
+    for verb, fix in CORRECTIONS.items():
+        if verb in authored:
+            authored[verb] = {**authored[verb],
+                              **{k: v for k, v in fix.items() if k in ("de", "en")}}
     verbs = []
     for entry in json.load(open(inp))["verbs"]:
         v = entry["verb"]
@@ -87,4 +101,5 @@ for inp in sorted(glob.glob("verbdata/authored/shards/auth_*.in.json")):
     built += 1
     total += len(verbs)
 
-print(f"built {built} review shards covering {total} verbs -> verbdata/review/shards/")
+print(f"built {built} review shards covering {total} verbs -> verbdata/review/shards/"
+      f"{f' ({len(CORRECTIONS)} corrections overlaid)' if CORRECTIONS else ''}")

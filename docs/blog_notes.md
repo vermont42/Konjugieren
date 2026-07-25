@@ -4599,3 +4599,162 @@ verbs where the model wrote the other attested form (resolving when wrinkle 1 la
 colloquial imperatives the app does not generate, and two limits of the matcher itself. There is no
 longer a single sentence in the corpus that the gate can see is wrong, which is the point at which a
 mechanical gate has given everything it has and the adversarial review has to carry the rest.
+
+## The adversarial review ran: 182 findings across all 1,097 sentences (2026-07-25)
+
+All 44 review shards completed, cross-assigned so no model reviewed its own work, in **one** window
+rather than the two `prompts/example_review_run.md` budgeted. 182 findings on 169 verbs: 16 high,
+90 medium, 76 low. No shard went off-schema — `invalid_types` empty on all 44 — and the served model
+matched the requested reviewer every time.
+
+**The cost estimate held; the volume estimate did not.** The plan derived ≈2–2.5 window points per
+review shard from the trial's token ratios, never having measured a window delta. The four waves came
+in at 1.9, 1.8, 1.7, 1.7 — the derivation was sound, and slightly pessimistic. But the plan also
+extrapolated the trial's 8-findings-per-shard to ~350 total, and the real number is 182. The trial
+shard had warned about exactly this: shard 038 is seventeen consecutive `weg-` compounds, a run of
+near-synonymous separable verbs where particle scope is unusually dense. It was a hard sample, and the
+plan's own instruction — "do not extrapolate a total from one shard" — was right to distrust it. What
+*did* transfer was the number the plan said to judge by: high-plus-medium came in at 106 against an
+estimated ~130, well inside the 30-to-250 usability band.
+
+**The overlay check passed, and it is the only hard ground truth this run had.** All four verbs fixed
+in `corrections.json` — `wegschmeißen`, `hochstellen`, `heranhalten`, `rechtdrehen` — came back with
+zero findings from reviewers that had no idea those sentences had been touched. Worth noting the plan
+contradicted itself here: § "Sanity-check the aggregate" still said the four "should each appear as
+`wrong_verb`", stale text from before the corrections existed, while § "Rebuild the shards" correctly
+said a good rebuild makes them come back clean. The later-written section was the wrong one. A plan
+that carries its own pre-fix expectations forward can turn a passing check into an alarm.
+
+**The real surprise is where the findings landed.** `wrong_verb`, the defect the mechanical
+`forms.json` gate was built to catch and the one the plan called "the most common real defect", is
+now the *rarest* substantive type at 6 of 182. The gate did its job so thoroughly that almost nothing
+of that shape survived. What the review actually found is a sense problem: `wrong_sense` (43) plus
+`bad_gloss` (44) is 87 findings, **48% of everything**, and 75 of those 87 are high or medium. The
+sentences are largely fine German that demonstrates the wrong meaning — or demonstrates the right
+meaning against a gloss the kaikki import got wrong by taking the first-listed sense rather than the
+living one. `fernschauen` glossed "look into the distance" when Austrians mean *watch TV*;
+`bescheißen` glossed scatologically when the sentence uses the swindle sense; `vorbeischauen` glossed
+"look past" for what can only be *drop by*. In each case the correct sense was already sitting in
+`candidate_glosses`, which makes them mechanical import defects rather than judgment calls — and
+means giving the reviewer `candidate_glosses` was the highest-value decision in
+`build_review_shards.py`.
+
+**That exposes a schema gap worth fixing before the next review.** `prompts/example_review.md` offers
+`fix_de` and `fix_en` and nothing else, so a finding whose correct remedy is *edit the gloss, keep the
+sentence* has nowhere to put its proposal. Of the 87 sense findings, 49 offered no fix at all and 5
+echoed the unchanged sentence back into `fix_de`/`fix_en` — 54 findings, nearly a third of the run,
+where the reviewer diagnosed correctly and the schema could not carry the answer. The next iteration
+of the brief wants a `fix_gloss` field. The diagnoses are in the `detail` prose and readable, so
+nothing is lost; it just is not machine-applicable the way the sentence fixes are.
+
+One housekeeping note: `verbdata/review/metrics.jsonl` holds 45 rows for 44 shards, because 038 has
+both its trial row and its clean re-review row. Deduplicate on last-wins if anything reads it.
+
+## Applying all 182 review findings unattended (2026-07-25)
+
+Josh's call, made explicitly after seeing the triage list: he lacks the time to weigh 182 findings
+individually, so apply them all with no human pass. The plan (`prompts/example_review_run.md`) forbids
+the orchestrator from applying corrections, but that prohibition exists to protect *Josh's* triage
+pass, and Josh is the one who delegated it. Worth recording plainly, because a future session reading
+only the plan will think this run violated it.
+
+**What kept it safe was routing everything through overlays rather than editing sentences in place.**
+The 121 accepted sentence fixes went into `verbdata/authored/corrections.json` (now 125 entries), which
+every consumer already applies on read; the authored shards stay immutable, so the evidence for each
+finding survives beside its fix. The 55 gloss fixes needed a second, new file —
+`verbdata/authored/gloss-corrections.json`, applied by `apply_gloss_corrections.py` — because glosses
+do not live in the pipeline at all. They live in the `tn` attribute of `<reading>` in
+`Konjugieren/Models/Verbs.xml`, which is *shipping app data*. That asymmetry was the main surprise of
+the session: half the findings targeted staged pipeline output and half targeted the app itself.
+
+**Three guards did the work a human triage pass would have done.**
+
+1. *Severity-ordered composition with an English-staleness rule.* A `fix_en` written against the old
+   English becomes wrong the instant the German is replaced, so English-only fixes apply **only** when
+   the German was not replaced. That retired 61 findings as collateral with no mismatched de/en pairs.
+   It also caught the one actively harmful proposal in the set: `abbleiben`'s medium `grammar` fix
+   corrected a dative complement by substituting *fernbleiben*, i.e. by deleting the very verb the
+   sentence exists to demonstrate. The high `wrong_sense` fix outranked it.
+2. *`check_forms.py` as the acceptance test.* 1083/1097, 14 misses — one *fewer* than before the
+   review. Exactly one miss (`absaugen`) sits on a sentence whose German I changed, and it was already
+   a miss: `saugte` is not in the app's paradigm for it, only `sog`, the dual-paradigm non-defect from
+   the June gate run. The fix touched only the purpose clause. So **no applied correction broke verb
+   presence**, which is the failure mode unattended application most invites.
+3. *An `old`-value assertion per gloss.* `apply_gloss_corrections.py` refuses the whole file unless
+   every shipped gloss is exactly what the review saw, and refuses any verb carrying two `<reading>`
+   elements rather than guessing which sense to rewrite. No verb tripped the multi-reading guard this
+   time, but `add_readings.py` gave 18 verbs a second reading and the guard has to exist before that
+   stops being true. Verbs.xml diffed 55 insertions / 55 deletions — one line per gloss, no churn.
+
+211 tests in 32 suites pass; `check_docs.py` reports 0 problems.
+
+**The finding distribution says the remaining defect is upstream of the sentences.** `wrong_verb`, what
+the mechanical gate was built for, was 6 of 182. The real cluster was sense: 55 glosses were wrong, and
+**48 of them had the correct sense already sitting in `candidate_glosses`** — the kaikki import
+promoted a first-listed sense over the living one, again and again. `fernschauen` "look into the
+distance" where Austrians mean *watch TV*; `bescheißen` scatological where the corpus wants the
+swindle; `vorbeischauen` "look past" for *drop by*; `überfordern` "overcharge" for *overwhelm*. Five
+more were not wrong picks but raw import artifacts, unusable as learner text at any sense:
+`abschmecken` truncated mid-clause at a comma ("taste a dish and, if necessary"), `entmieten` shipping
+only a parenthetical usage label ("of a landlord"), `durchspielen` with an unbalanced `)`,
+`hinwegschauen` shipping a cross-reference ("synonym of hinwegsehen"), and `kaltmachen` glossed with
+Jamaican-English "duppy".
+
+That is a systematic importer defect, not 55 unlucky verbs, and it is worth a targeted pass: any verb
+where kaikki listed multiple senses and the app shipped `glosses[0]` is a suspect. This review only
+saw the 1,097 verbs that lacked example sentences. **The same first-sense bias is presumably sitting in
+the ~2,475 verbs it never looked at**, and nothing in the pipeline has checked them.
+
+Also worth a future fix: `prompts/example_review.md` has no `fix_gloss` field, so 54 findings — nearly
+a third — could diagnose a gloss defect but not propose the replacement in machine-readable form. Every
+one of the 55 glosses here had to be authored by hand from the `detail` prose. Add the field before the
+next review and that becomes mechanical.
+
+## The integrate merge: every verb in the app now has an example (2026-07-25)
+
+Mode A, run at Josh's go-ahead with about 20% of the window left. `ExampleSentences.json` went from
+2,475 to **3,572 entries per language — exactly the verb count in `Verbs.xml`**. The authoring gap was
+defined as "every verb in Verbs.xml with no entry in ExampleSentences.json", so closing it exactly
+means the gap set is now empty and can never be recomputed from those two files again.
+`verbdata/authored/provenance.json` is the only surviving record of which 1,097 verbs they were.
+
+**Mode A wanted a working file this pipeline never produced.** The skill reads a single root
+`ExampleSentences.json`; the authoring run left 44 shards plus a corrections overlay plus a provenance
+map. So the merge needed a build step first: overlay `corrections.json` onto the shards (125 applied),
+stamp `source` from `provenance.json`, emit the `{de: {verb: {sentence, source}}, en: {…}}` shape. The
+source labels follow the bundle's existing convention for model-authored sentences — it already held
+25 `Opus 4.8` and 11 `Opus 4.6` entries — so `claude-opus-4-8` → `Opus 4.8` and `claude-opus-5` →
+`Opus 5`. That transient root file was deleted after the merge: it is regenerable in seconds and is
+**not** gitignored in this repo (the skill assumes it is, because Mode A was written for a different
+pipeline), and an untracked 1,097-entry duplicate at the project root is exactly the kind of thing a
+later session mistakes for authoritative.
+
+**The `source` stamp is the one place this merge is knowingly imprecise.** It names the *authoring*
+model, per the plan, but 121 of those sentences carry text revised by the *other* model during review
+and 75 have wholly replaced German. The bundle has no compound-source convention and inventing one
+mid-merge would have been worse; the correction record lives in `corrections.json`. If the attribution
+should read differently, it is a one-line change to the label map plus a re-merge.
+
+**The preservation check earned its warning label, in reverse.** The Rules say `git diff --stat` cries
+wolf on this file — a Mode B merge once showed ~4,000 phantom deletions with nothing lost. This merge
+showed **4**. Both numbers are meaningless: the check that settles it strips the merged verbs back out
+and asserts the remainder reproduces `HEAD` byte-for-byte, which it did, with exactly 2,475 entries
+remaining. Worth recording that a clean-looking line-diff is no more evidence than a terrifying one.
+
+211 tests in 32 suites pass; `check_docs.py` reports 0 problems; no doc claimed a coverage count that
+went stale (the sole `1,097` mention is in `roadmap.md`, narrating history, and stays true).
+
+**What is left, and it is small.** Fourteen sentences still miss the mechanical gate, and the split is
+now settled: nine dual-paradigm verbs, four clipped colloquial imperatives the app does not generate,
+and one matcher limit. The dual-paradigm nine include `krauchen`, which looked at first like a genuine
+app defect — the app gives it *krauche/krauchst* in the Präsens but *kroch/gekrochen* in the past, an
+apparent chimera. It is not a defect: kaikki attests krauchen as strong, class 2, so the app is
+faithful to its source, and the sentence's *krauchte* is the weak regional variant. A second paradigm
+resolves it along with the other eight.
+
+The one genuinely open item is **`wiederaufleben`**, and it belongs to the harness, not the app. The
+verb is doubly separable — *wieder* + *auf* + *leben* — and the app correctly synthesizes the split
+form as stem `lebte` with particle `wiederauf`. German strands those as two tokens (*„lebte … langsam
+wieder auf"*), and `check_forms.py` matches a split form by looking for one standalone token equal to
+the particle. Nothing linguistic is wrong; the gate needs to accept a particle satisfied by consecutive
+tokens. It is the only one of the fourteen where every party is right and the check still fails.

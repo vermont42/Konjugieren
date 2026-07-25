@@ -29,10 +29,15 @@ Ordered roughly by severity.
   for **hochstellen**). This is the most common real defect. Check the particle character by
   character.
 - **`wrong_sense`** — the sentence demonstrates a real meaning of the verb, but not the one in
-  `gloss`. Say which sense it does demonstrate.
+  `gloss`. Say which sense it does demonstrate. Such a finding has **two** possible repairs: replace
+  the sentence so it demonstrates the shipped gloss (`fix_de` / `fix_en`), or retarget the gloss at the
+  sense the sentence already demonstrates (`fix_gloss`). Choose one and supply it. Prefer `fix_gloss`
+  when the sentence is good German demonstrating the verb's *dominant* sense, and prefer a replacement
+  sentence when the shipped gloss is the sense a learner most needs.
 - **`bad_gloss`** — the shipped `gloss` itself looks wrong, so the sentence is correct for a wrong
   target. Check `candidate_glosses` first: if the sense you believe correct is already listed there,
-  say so, because that makes it a mechanical import defect rather than a judgment call.
+  say so, because that makes it a mechanical import defect rather than a judgment call. Supply the
+  replacement in `fix_gloss`; the sentence usually needs no change at all.
 - **`logic`** — the sentence is grammatical but does not make sense, or quietly contradicts itself.
   A real example from this project's pilot: *„trotz der Kälte die Mütze nicht abbehalten"* — keeping a
   cap on in the cold is sensible, not stubborn, so the sentence undercut the meaning it was
@@ -92,6 +97,16 @@ everything is fine writes `{}`.
         "fix_en": "Please don't throw the old newspapers out; I still need them for crafts."
       }
     ]
+  },
+  "fernschauen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "The shipped gloss 'look into the distance' is not the live meaning; in Austrian and southern German this is simply the word for watching television, which is what the sentence demonstrates. That sense is already in candidate_glosses, so the import took the first listed sense rather than the usual one. The sentence is good and should be kept.",
+        "fix_gloss": "watch television"
+      }
+    ]
   }
 }
 ```
@@ -101,6 +116,17 @@ everything is fine writes `{}`.
 - `detail` names the specific problem. "Unnatural" alone is not a finding; say what is unnatural.
 - `fix_de` and `fix_en` are optional, and welcome. Supply a corrected sentence whenever you can write
   one, keeping as much of the original as the fix allows. Omit the one you are not changing.
+- `fix_gloss` is the replacement gloss, for `bad_gloss` and `wrong_sense` findings. Supply it whenever
+  your diagnosis is that the *gloss* is what should move. A finding that says so only in `detail`
+  cannot be applied mechanically, and someone has to re-derive your conclusion by hand.
+
+  **Write it in the app's house style, which is not the dictionary's.** A bare lowercase verb phrase
+  with no leading `to `, synonyms separated by commas, as short as the sense allows — `watch
+  television`, `offset, set off`, `sweep up, sweep together`. Roughly fourteen characters is typical
+  and parentheticals are rare, so `help put on (a garment)` is acceptable but `to swing by, to visit
+  briefly (especially if not at a specific time)` is not. Do **not** paste a `candidate_glosses` entry
+  verbatim: those carry `to `, nested parentheses, and usage labels that have to be stripped. Name the
+  sense the sentence teaches, not every sense the lemma has.
 - A verb may carry more than one finding, as above.
 
 ## Rules

@@ -180,6 +180,12 @@ TYPE_ORDER = ['wrong_verb', 'wrong_sense', 'bad_gloss', 'logic',
 sent = {}
 for f in sorted(glob.glob('verbdata/authored/shards/auth_*.out.json')):
     sent.update(json.load(open(f)))
+# Overlay corrections, exactly as build_review_shards.py does. Without this the "current de/en"
+# lines print pre-fix text, so a re-run after any fixes are accepted shows Josh sentences that no
+# longer exist and re-proposes fixes already applied.
+for verb, fix in json.load(open('verbdata/authored/corrections.json')).items():
+    if verb in sent:
+        sent[verb] = {**sent[verb], **{k: v for k, v in fix.items() if k in ('de', 'en')}}
 rows, shards = [], 0
 for f in sorted(glob.glob('verbdata/review/shards/rev_*.out.json')):
     shards += 1
@@ -206,6 +212,7 @@ for sev, _, verb, fi in rows:
     out.append(f'{fi.get("detail", "")}')
     out.append(f'- current de: {sent.get(verb, {}).get("de", "")}')
     out.append(f'- current en: {sent.get(verb, {}).get("en", "")}')
+    if fi.get('fix_gloss'): out.append(f'- **fix gloss:** {fi["fix_gloss"]}')
     if fi.get('fix_de'): out.append(f'- **fix de:** {fi["fix_de"]}')
     if fi.get('fix_en'): out.append(f'- **fix en:** {fi["fix_en"]}')
     out.append('')
@@ -221,12 +228,18 @@ in the brief's own order, so `wrong_verb` leads.
 **Sanity-check the aggregate before handing it over.** Three checks, in order of how much they tell
 you:
 
-1. **The four known defects** (§ "Before the full run") should each appear as `wrong_verb`, and
-   `wegschmeißen` should also carry `comma_splice`. This is the only hard ground truth available.
-2. **High plus medium should land near 130.** That is the trial shard's 3-per-25 extrapolated, and it
-   agrees with the pilot's 3-substantive-findings-per-25. This is the number that sizes Josh's triage.
-3. **The overall total will be much larger, and that is expected** — around 350 if the trial rate
-   holds, most of it `low`. Do not read a large total as over-flagging; read the severity split.
+1. **The four corrected verbs should come back with no findings at all** — `wegschmeißen`,
+   `hochstellen`, `heranhalten`, `rechtdrehen`. This is the only hard ground truth available, and note
+   that it reads *backwards* from the obvious: they are the four verbs with known defects, so the
+   instinct is to expect `wrong_verb` on each. Their defects are fixed in `corrections.json`, which
+   § "Rebuild the shards" overlays, so a `wrong_verb` finding on any of them means the overlay did not
+   apply and the reviewers read stale sentences.
+2. **High plus medium should land near 110.** Measured on 2026-07-25: 106, across all 44 shards. This
+   is the number that sizes Josh's triage.
+3. **The overall total will be larger, and that is expected** — 182 on the 2026-07-25 run, most of it
+   `low`. Do not read a large total as over-flagging; read the severity split. The trial shard's
+   8-findings-per-25 rate projected ~350 and was nearly double the truth, because seventeen
+   consecutive `weg-` compounds made it a harder-than-average sample.
 
 A high-plus-medium count under 30 means the reviewers were too permissive to be useful. Over ~250
 means they were too strict, and the list will be unusable regardless of how good individual findings
@@ -244,6 +257,26 @@ Leave Josh:
 
 Josh triages, applies the fixes he accepts, and merges via the `integrate` skill (Mode A), stamping
 each sentence's `source` from `verbdata/authored/provenance.json`. **None of that is this run's job.**
+
+### Where accepted fixes land — two files, because glosses are not pipeline data
+
+Whoever applies the fixes needs to know that the review's three fix fields do not go to one place:
+
+- `fix_de` / `fix_en` → `verbdata/authored/corrections.json`, keyed by verb, carrying a `reason` and a
+  `source`. The authored shards stay immutable and every consumer overlays this file on read; see
+  `check_forms.py`'s header for why.
+- `fix_gloss` → `verbdata/authored/gloss-corrections.json`, applied by
+  `verbdata/authored/apply_gloss_corrections.py`. Glosses are **not** in the pipeline at all: they live
+  in the `tn` attribute of `<reading>` in `Konjugieren/Models/Verbs.xml`, which is shipping app data.
+  That script asserts each `old` gloss still matches before writing anything, refuses the whole file if
+  one is stale, and refuses any verb carrying two `<reading>` elements rather than guessing which sense
+  to rewrite.
+
+After applying either, **run `python3 verbdata/authored/check_forms.py`**. It is the acceptance test
+for accepted fixes: a `fix_de` that quietly drops the target verb shows up as a new miss, which is the
+one failure mode a proposed sentence can have that reading it does not reveal. Compare the miss list
+against the run before, not against zero — roughly fourteen misses are known non-defects
+(dual-paradigm verbs, clipped colloquial imperatives, matcher limits).
 
 ## Kickoff — paste this into a fresh session
 

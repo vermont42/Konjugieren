@@ -108,6 +108,10 @@
       "sentence": "Ich ließ mich aber in nichts stören, ließ ihn sehr vernünftige Sachen abhandeln und baute den Kindern ihre Kartenhäuser wieder, die sie zerschlagen hatten.",
       "source": "Goethe — Die Leiden des jungen Werthers"
     },
+    "abhandenkommen": {
+      "sentence": "Es ist hier im Bundestag, muss ich sagen, trotz allem, auch wenn wir nicht immer einer Meinung sind, ein einzigartiger Arbeitsplatz mit sehr viel Verantwortung, mit demokratischen Möglichkeiten für die Menschen im Land und natürlich auch für jeden in seinem Wahlkreis, verbunden mit größtem Respekt, der einigen allerdings schon ziemlich lange abhandengekommen ist, und in der Sache wichtig.",
+      "source": "Bundestag — Plenarprotokoll 20/210"
+    },
     "abhauen": {
       "sentence": "Sondern also sollt ihr mit ihnen tun: ihre Altäre sollt ihr zerreißen, ihre Säulen zerbrechen, ihre Haine abhauen und ihre Götzen mit Feuer verbrennen.",
       "source": "Luther — Bibel"
@@ -488,6 +492,10 @@
       "sentence": "Ich und der Knabe wollen dorthin gehen; und wenn wir angebetet haben, wollen wir wieder zu euch kommen.",
       "source": "Luther — Bibel"
     },
+    "anbetreffen": {
+      "sentence": "Was aber \"die guten Freunde\" anbetrifft, welche immer zu bequem sind und gerade als Freunde ein Recht auf Bequemlichkeit zu haben glauben: so thut man gut, ihnen von vornherein einen Spielraum und Tummelplatz des Missverständnisses zuzugestehn: - so hat man noch, zu lachen; - oder sie ganz abzuschaffen, diese guten Freunde, - und auch zu lachen!",
+      "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
     "anbieten": {
       "sentence": "Nenne es nur: was ich habe, biete ich dir an!",
       "source": "Nietzsche — Jenseits von Gut und Böse"
@@ -527,6 +535,10 @@
     "andeuten": {
       "sentence": "Wer mit den Augen winkt, denkt nichts Gutes; und wer mit den Lippen andeutet, vollbringt Böses.",
       "source": "Luther — Bibel"
+    },
+    "andrehen": {
+      "sentence": "Im nächsten Augenblick mußte sie in ihr Zimmer gehen, in das K. gewiß um Mitternacht nicht eindringen durfte; er mußte sie also jetzt ansprechen, hatte aber unglücklicherweise versäumt, das elektrische Licht in seinem Zimmer anzudrehen, so daß sein Vortreten aus dem dunklen Zimmer den Anschein eines Überfalls hatte und wenigstens sehr erschrecken mußte.",
+      "source": "Kafka — Der Proceß"
     },
     "aneignen": {
       "sentence": "Wie sich doch der Direktor-Stellvertreter alles anzueignen verstand, was K. jetzt notgedrungen aufgeben mußte!",
@@ -604,6 +616,10 @@
       "sentence": "Und Aaron soll ihn anhaben, wenn er dient, daß man seinen Klang höre, wenn er aus und eingeht in das Heilige vor dem HERRN, auf daß er nicht sterbe.",
       "source": "Luther — Bibel"
     },
+    "anhaften": {
+      "sentence": "Es kann nicht die Schuld sein, die sie schön macht, denn — so muß wenigstens ich als Advokat sprechen — es sind doch nicht alle schuldig, es kann auch nicht die richtige Strafe sein, die sie jetzt schon schön macht, denn es werden doch nicht alle bestraft, es kann also nur an dem gegen sie erhobenen Verfahren liegen, das ihnen irgendwie anhaftet.",
+      "source": "Kafka — Der Proceß"
+    },
     "anhalten": {
       "sentence": "Der Reiter, der das gehört hatte, hielt an und rief: »Ei, Hans, warum laufst du auch zu Fuß?«",
       "source": "Grimm — Märchen"
@@ -659,6 +675,10 @@
     "anlegen": {
       "sentence": "Der den Harnisch anlegt, soll sich nicht rühmen wie der, der ihn hat abgelegt.",
       "source": "Luther — Bibel"
+    },
+    "anlehnen": {
+      "sentence": "Kaminer lief zur Ecke, um den Wagen zu holen, die zwei andern versuchten offensichtlich K. zu zerstreuen, als plötzlich Kullich auf das gegenüberliegende Haustor zeigte, in dem eben der große Mann mit dem blonden Spitzbart erschien und im ersten Augenblick, ein wenig verlegen darüber, daß er sich jetzt in seiner ganzen Größe zeigte, zur Wand zurücktrat und sich anlehnte.",
+      "source": "Kafka — Der Proceß"
     },
     "anleiten": {
       "sentence": "Er aber sprach: Wie kann ich, so mich nicht jemand anleitet?",
@@ -1032,6 +1052,10 @@
       "sentence": "K. warf es so heftig weg, daß es aufklappte und mit zerdrückten Blättern ein Stück über den Boden schleifte.",
       "source": "Kafka — Der Proceß"
     },
+    "aufklingen": {
+      "sentence": "Und die Begeisterten heulten den Ruf aus weichen Mitlauten und gezogenem u-Ruf am Ende, süß und wild zugleich, wie kein jemals erhörter: hier klang er auf, in die Lüfte geröhrt, wie von Hirschen, und dort gab man ihn wieder, vielstimmig, in wüstem Triumph, hetzte einander damit zum Tanz und Schleudern der Glieder und ließ ihn niemals verstummen.",
+      "source": "Mann — Der Tod in Venedig"
+    },
     "aufklären": {
       "sentence": "Eine Sache, die sich aufklärt, hört auf, uns etwas anzugehn.",
       "source": "Nietzsche — Jenseits von Gut und Böse"
@@ -1043,6 +1067,10 @@
     "aufkündigen": {
       "sentence": "Doch genau diesen Konsens hat ausgerechnet die Partei Adenauers, nur zwei Stunden nach dem Gedenken an 80 Jahre Befreiung des Konzentrationslagers, aufgekündigt.",
       "source": "Bundestag — Plenarprotokoll 20/210"
+    },
+    "auflachen": {
+      "sentence": "Der Direktor-Stellvertreter aber merkte es gar nicht oder wurde, wenn er es merkte, dadurch nur aufgemuntert, lachte öfters laut auf, brachte einmal durch eine schlagfertige Entgegnung den Fabrikanten in deutliche Verlegenheit, aus der er ihn aber sofort riß, indem er sich selbst einen Einwand machte, und lud ihn schließlich ein, in sein Bureau hinüberzukommen, wo sie die Angelegenheit zu Ende führen könnten.",
+      "source": "Kafka — Der Proceß"
     },
     "aufladen": {
       "sentence": "Dem Kameele gleich kniet er nieder und lässt sich gut aufladen.",
@@ -2848,6 +2876,10 @@
       "sentence": "Wir müssen unsere Soldatinnen und Soldaten auch bei den seegehenden Einheiten mit einem technischen Gerät versorgen, sodass sie in der Lage sind, auch einen Einsatz gegen die Huthis durchzustehen, meine sehr verehrten Damen und Herren.",
       "source": "Bundestag — Plenarprotokoll 20/210"
     },
+    "durchziehen": {
+      "sentence": "Später lag Tadzio, vom Bade ausruhend, im Sande, gehüllt in sein weißes Laken, das unter der rechten Schulter durchgezogen war, den Kopf auf den bloßen Arm gebettet; und auch wenn Aschenbach ihn nicht betrachtete, sondern einige Seiten in seinem Buche las, vergaß er fast niemals, daß jener dort lag und daß es ihn nur eine leichte Wendung des Kopfes nach rechts kostete, um das Bewunderungswürdige zu erblicken.",
+      "source": "Mann — Der Tod in Venedig"
+    },
     "dürfen": {
       "sentence": "Manchem Menschen darfst du nicht die Hand geben, sondern nur die Tatze: und ich will, dass deine Tatze auch Krallen habe.",
       "source": "Nietzsche — Also sprach Zarathustra"
@@ -3272,6 +3304,10 @@
       "sentence": "Joseph wird wachsen, er wird wachsen wie ein Baum an der Quelle, daß die Zweige emporsteigen über die Mauer.",
       "source": "Luther — Bibel"
     },
+    "emporwachsen": {
+      "sentence": "Dass die einzelnen philosophischen Begriffe nichts Beliebiges, nichts Für-sich-Wachsendes sind, sondern in Beziehung und Verwandtschaft zu einander emporwachsen, dass sie, so plötzlich und willkürlich sie auch in der Geschichte des Denkens anscheinend heraustreten, doch eben so gut einem Systeme angehören als die sämmtlichen Glieder der Fauna eines Erdtheils: das verräth sich zuletzt noch darin, wie sicher die verschiedensten Philosophen ein gewisses Grundschema von möglichen Philosophien immer wieder ausfüllen.",
+      "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
     "enden": {
       "sentence": "Wie gut will dieser Tag enden, der so schlimm und schwer begann!",
       "source": "Nietzsche — Also sprach Zarathustra"
@@ -3416,6 +3452,10 @@
       "sentence": "vorläufig aber stehe es, wie er aus der Laune des Herrn Prokuristen entnehmen könne, gar nicht gut.",
       "source": "Kafka — Der Proceß"
     },
+    "entraten": {
+      "sentence": "Etwas Amtlich-Erzieherisches trat mit der Zeit in Gustav Aschenbachs Vorführungen ein, sein Stil entriet in späteren Jahren der unmittelbaren Kühnheiten, der subtilen und neuen Abschattungen, er wandelte sich ins Mustergültig-Feststehende, Geschliffen-Herkömmliche, Erhaltende, Formelle, selbst Formelhafte, und wie die Überlieferung es von Ludwig dem Vierzehnten wissen will, so verbannte der Alternde aus seiner Sprachweise jedes gemeine Wort: Damals geschah es, daß die Unterrichtsbehörde ausgewählte Seiten von ihm in die vorgeschriebenen Schullesebücher übernahm.",
+      "source": "Mann — Der Tod in Venedig"
+    },
     "entrichten": {
       "sentence": "Es solle auch den Hessischen nicht erlaubt seyn/ dieser Declaration zum Nachtheil/ jemand zu eximiren, welche aber jhre quotam ordentlich entrichtet/ sollen so ferrn aller Beschwerung frey seyn.",
       "source": "Westfälischer Friede (1648)"
@@ -3491,6 +3531,10 @@
     "entstehen": {
       "sentence": "Der Krieg mehrentheils auß widerwärtiger Religion entstanden.",
       "source": "Westfälischer Friede (1648)"
+    },
+    "entsteigen": {
+      "sentence": "Er gehorchte, er lief, das widerstrebende Wasser mit den Beinen zu Schaum schlagend, zurückgeworfenen Kopfes durch die Flut; und zu sehen, wie die lebendige Gestalt, vormännlich hold und herb, mit triefenden Locken und schön wie ein zarter Gott, herkommend aus den Tiefen von Himmel und Meer, dem Elemente entstieg und entrann: Dieser Anblick gab mythische Vorstellungen ein, er war wie Dichterkunde von anfänglichen Zeiten, vom Ursprung der Form und von der Geburt der Götter.",
+      "source": "Mann — Der Tod in Venedig"
     },
     "entstellen": {
       "sentence": "Meine Feinde sind mächtig worden und haben meiner Lehre Bildniss entstellt, also, dass meine Liebsten sich der Gaben schämen müssen, die ich ihnen gab.",
@@ -9352,6 +9396,10 @@
       "sentence": "Und wird alles Heer des Himmels verfaulen, und der Himmel wird zusammengerollt werden wie ein Buch, und all sein Heer wird verwelken, wie ein Blatt verwelkt am Weinstock und wie ein dürres Blatt am Feigenbaum.",
       "source": "Luther — Bibel"
     },
+    "zusammenrücken": {
+      "sentence": "Nun, er kam aber trotzdem, wir unterhielten uns friedlich, soweit meine Schwäche es erlaubte, wir hatten zwar Leni nicht verboten, Besuche einzulassen, denn es waren keine zu erwarten, aber unsere Meinung war doch, daß wir allein bleiben sollten, dann aber kamen deine Fausthiebe, Albert, der Herr Kanzleidirektor rückte mit Sessel und Tisch in den Winkel, nun aber zeigt sich, daß wir möglicherweise, d. h. wenn der Wunsch danach besteht, gemeinsame Angelegenheit zu besprechen haben und sehr gut wieder zusammenrücken können.",
+      "source": "Kafka — Der Proceß"
+    },
     "zusammenschlagen": {
       "sentence": "Er hatte ein mitleidiges Herz, öffnete die Türe und erblickte einen alten Mann, der heftig weinte und die Hände über dem Kopf zusammenschlug.",
       "source": "Grimm — Märchen"
@@ -9862,6 +9910,10 @@
       "sentence": "But I let nothing disturb me, let him expound his very sensible matters, and rebuilt the children's houses of cards, which they had knocked down.",
       "source": "Goethe — Die Leiden des jungen Werthers"
     },
+    "abhandenkommen": {
+      "sentence": "It is here in the Bundestag, I must say, despite everything, even when we are not always of one mind, a unique workplace with a great deal of responsibility, with democratic possibilities for the people of this country and of course for everyone in their own constituency, bound up with the greatest respect — which some, admittedly, have quite long since lost — and important in substance.",
+      "source": "Bundestag — Plenarprotokoll 20/210"
+    },
     "abhauen": {
       "sentence": "Rather, this is what you shall do with them: you shall tear down their altars, break their pillars, cut down their sacred groves, and burn their idols with fire.",
       "source": "Luther — Bibel"
@@ -10242,6 +10294,10 @@
       "sentence": "The boy and I will go over there; and when we have worshipped, we will come back to you.",
       "source": "Luther — Bibel"
     },
+    "anbetreffen": {
+      "sentence": "But as for “the good friends,” who are always too comfortable and, precisely as friends, believe they have a right to comfort: one does well to grant them from the outset some room and playground for misunderstanding — then one still has something to laugh at; — or to do away with them entirely, these good friends — and to laugh as well!",
+      "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
     "anbieten": {
       "sentence": "Just name it: what I have, I offer to you!",
       "source": "Nietzsche — Jenseits von Gut und Böse"
@@ -10281,6 +10337,10 @@
     "andeuten": {
       "sentence": "He who winks with his eyes intends no good, and he who hints with his lips brings evil to pass.",
       "source": "Luther — Bibel"
+    },
+    "andrehen": {
+      "sentence": "In the next moment she would have to go into her room, which K. certainly could not intrude upon at midnight; so he had to speak to her now, but had unfortunately neglected to turn on the electric light in his room, so that his stepping forward out of the dark room had the appearance of an assault and was bound at least to frighten her badly.",
+      "source": "Kafka — Der Proceß"
     },
     "aneignen": {
       "sentence": "How well the deputy manager knew how to appropriate everything that K. was now forced to give up!",
@@ -10358,6 +10418,10 @@
       "sentence": "And Aaron shall wear it when he serves, so that its sound may be heard when he goes into and out of the sanctuary before the LORD, that he may not die.",
       "source": "Luther — Bibel"
     },
+    "anhaften": {
+      "sentence": "It cannot be the guilt that makes them beautiful, for — so at least I as an advocate must put it — surely not all of them are guilty; nor can it be the just punishment that already makes them beautiful now, for surely not all of them are punished; so it can only be due to the proceedings brought against them, which somehow cling to them.",
+      "source": "Kafka — Der Proceß"
+    },
     "anhalten": {
       "sentence": "The rider, who had heard this, stopped and called out: “Well, Hans, why are you going on foot?”",
       "source": "Grimm — Märchen"
@@ -10413,6 +10477,10 @@
     "anlegen": {
       "sentence": "Let him who puts on armor not boast like him who takes it off.",
       "source": "Luther — Bibel"
+    },
+    "anlehnen": {
+      "sentence": "Kaminer ran to the corner to fetch the carriage, the two others were evidently trying to distract K., when suddenly Kullich pointed at the doorway of the house opposite, in which the tall man with the blond goatee had just appeared and, in the first moment, a little embarrassed that he was now showing himself in his full height, stepped back to the wall and leaned against it.",
+      "source": "Kafka — Der Proceß"
     },
     "anleiten": {
       "sentence": "But he said: How can I, unless someone guides me?",
@@ -10786,6 +10854,10 @@
       "sentence": "K. threw it away so violently that it flew open and slid some distance across the floor with its pages crumpled.",
       "source": "Kafka — Der Proceß"
     },
+    "aufklingen": {
+      "sentence": "And the enraptured ones howled the cry, made of soft consonants and a drawn-out u at the end, sweet and wild at once, like none ever heard before: here it rang out, bellowed into the air as if by stags, and there it was taken up again, in many voices, in savage triumph, driving one another with it to dance and fling their limbs, and never letting it fall silent.",
+      "source": "Mann — Der Tod in Venedig"
+    },
     "aufklären": {
       "sentence": "A matter that clears itself up ceases to concern us.",
       "source": "Nietzsche — Jenseits von Gut und Böse"
@@ -10797,6 +10869,10 @@
     "aufkündigen": {
       "sentence": "Yet it was Adenauer's own party, of all parties, that renounced precisely this consensus, only two hours after the commemoration of eighty years since the liberation of the concentration camp.",
       "source": "Bundestag — Plenarprotokoll 20/210"
+    },
+    "auflachen": {
+      "sentence": "The deputy manager, however, did not notice it at all, or, if he did notice, was only cheered by it, laughed out loud several times, once threw the manufacturer into visible embarrassment with a quick-witted retort, but at once pulled him out of it by raising an objection against himself, and finally invited him to come over into his office, where they could bring the matter to a close.",
+      "source": "Kafka — Der Proceß"
     },
     "aufladen": {
       "sentence": "Like the camel he kneels down and lets himself be well loaded.",
@@ -12602,6 +12678,10 @@
       "sentence": "We must supply our soldiers, including those on seagoing units, with technical equipment that puts them in a position to see even a deployment against the Houthis through to the end, ladies and gentlemen.",
       "source": "Bundestag — Plenarprotokoll 20/210"
     },
+    "durchziehen": {
+      "sentence": "Later Tadzio lay resting from his bathe in the sand, wrapped in his white sheet, which was drawn through under his right shoulder, his head pillowed on his bare arm; and even when Aschenbach was not gazing at him but reading a few pages in his book, he almost never forgot that the boy lay there, and that it cost him only a slight turn of the head to the right to catch sight of the admirable one.",
+      "source": "Mann — Der Tod in Venedig"
+    },
     "dürfen": {
       "sentence": "To many a person you must not offer your hand, but only your paw: and I want your paw to have claws as well.",
       "source": "Nietzsche — Also sprach Zarathustra"
@@ -13026,6 +13106,10 @@
       "sentence": "Joseph will grow, he will grow like a tree by the spring, so that the branches climb up over the wall.",
       "source": "Luther — Bibel"
     },
+    "emporwachsen": {
+      "sentence": "That the individual philosophical concepts are nothing arbitrary, nothing growing up for themselves, but grow up in relation and kinship to one another; that, however suddenly and arbitrarily they seem to emerge in the history of thought, they nonetheless belong to a system just as much as all the members of a continent's fauna: this betrays itself in the end in how surely the most diverse philosophers keep filling in a certain fundamental scheme of possible philosophies.",
+      "source": "Nietzsche — Jenseits von Gut und Böse"
+    },
     "enden": {
       "sentence": "How well this day is about to end, which began so badly and gloomily!",
       "source": "Nietzsche — Also sprach Zarathustra"
@@ -13170,6 +13254,10 @@
       "sentence": "But in the meantime things do not look at all good, as you can see from the mood of the chief clerk himself.",
       "source": "Kafka — Der Proceß"
     },
+    "entraten": {
+      "sentence": "Something officially didactic entered Gustav Aschenbach's performances over time; in his later years his style dispensed with the immediate audacities, the subtle and novel nuances, it turned toward the exemplary and fixed, the polished and conventional, the conservative, the formal, even the formulaic, and, as tradition will have it of Louis the Fourteenth, the aging man banished every common word from his manner of speech: it was then that the education authority took selected pages of his into the prescribed school readers.",
+      "source": "Mann — Der Tod in Venedig"
+    },
     "entrichten": {
       "sentence": "Nor shall the Hessians be permitted, to the detriment of this Declaration, to exempt anyone; but those who have duly paid their quota shall to that extent be free of all burden.",
       "source": "Westfälischer Friede (1648)"
@@ -13245,6 +13333,10 @@
     "entstehen": {
       "sentence": "The war arose mostly from religious disagreement.",
       "source": "Westfälischer Friede (1648)"
+    },
+    "entsteigen": {
+      "sentence": "He obeyed, he ran, beating the resisting water to foam with his legs, his head thrown back, through the flood; and to see how the living figure, boyishly fair and severe, with dripping locks and beautiful as a delicate god, coming forth out of the depths of sky and sea, rose from the element and escaped it: this sight inspired mythical imaginings, it was like a poet's tidings of primal times, of the origin of form and of the birth of the gods.",
+      "source": "Mann — Der Tod in Venedig"
     },
     "entstellen": {
       "sentence": "My enemies have grown mighty and have distorted the image of my teaching, so that my dearest ones must be ashamed of the gifts I gave them.",
@@ -19105,6 +19197,10 @@
     "zusammenrollen": {
       "sentence": "And all the host of heaven shall rot away, and the sky shall be rolled up like a book, and all its host shall wither, as a leaf withers on the vine and as a dry leaf on the fig tree.",
       "source": "Luther — Bibel"
+    },
+    "zusammenrücken": {
+      "sentence": "Well, he came all the same, we talked peacefully, as far as my weakness allowed; we had not, it is true, forbidden Leni to let visitors in, since none were to be expected, but our view was nonetheless that we should remain alone — but then came your fist-blows, Albert, and the Chancellery Director moved with armchair and table into the corner; now, however, it turns out that we may possibly, that is, if the wish for it exists, have common business to discuss and can very well move together again.",
+      "source": "Kafka — Der Proceß"
     },
     "zusammenschlagen": {
       "sentence": "He had a compassionate heart, opened the door, and caught sight of an old man who was weeping bitterly and clapping his hands together over his head.",

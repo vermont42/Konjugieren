@@ -4076,3 +4076,52 @@ this paragraph corrects itself rather than leaving the bad framing for a future 
 So the honest residue is: no cheap wins here. The real next work is corpus expansion + re-mine (the
 feature above), the ceiling policy call, and — if wanted — dual-reading enrichment for the true
 doublets, each of which is deliberate work verified through the classify-and-verify oracle.
+
+## The ceiling policy call, made: recover 12 real attestations at 80 words (2026-07-24)
+
+The entry above listed "the ceiling policy call" as deliberate work needing Josh's judgment, not a
+cheap win. Josh made the call the same day, and it is worth recording *why* rather than just *what*,
+because it inverts the reasoning the ceiling was built on.
+
+The sentence-length ceiling had moved twice already (45 → 65) and each move was a *reaction* — a
+shard-run reported nulling a verb's sole genuine attestation to a few words of margin, and the
+ceiling rose just far enough to catch it. This move was different: a *policy* decision, made after
+looking at three of the actual rejected sentences (the Kafka *auflachen* period, the Mann
+*aufklingen* and *entsteigen* periods). Josh's reasoning: **a real corpus attestation has value that
+a phone-screen-friendly length does not, and these verbs are unlikely to be attested more briefly
+anywhere else, so re-finding them by expanding the corpus would burn compute to reproduce sentences
+we already hold.** "People can scroll." So the ceiling went to **80 words**, and the recovery ran
+against the shards already on disk — no re-mine, because the ceiling is a *subagent judgment rule*,
+not an indexer filter, so every rejected candidate was still sitting in its `mine_<NNN>.in.json`
+waiting to be reconsidered.
+
+The recovery was a filtering problem more than a translation one, and the filtering is where the
+care went. A naive "word count ≤ 80" pass admits garbage: the same pool holds candidates that are
+the wrong verb (*zeihen*'s hits are all *ziehen*), adjectival participles masquerading as verbal
+uses (*bewehren*, *umkämpfen*, *vorherbestimmen* — all stative *'-ed'* forms), mis-splits with
+dialogue debris (*zurechtlegen*), and verse-number-corrupted Luther runs (*abbinden*, *ausbeten*).
+The miner's own per-verb note already classified each, so the filter was: a length signal in the
+note, **minus** every disqualifier, then read each surviving candidate by eye to confirm the target
+verb genuinely appears as a verb. That took the field from ~140 verbs-with-candidates down to **12**
+clean recoveries. Two were excluded on grounds length alone would have passed: *umdenken* (a
+two-sentence quote whose second sentence carries no verb, and the verbatim rule forbids trimming to
+the first), and *abwechseln* (its only genuine candidate is 83 words, past even the new ceiling; the
+under-80 ones are the adverb *abwechselnd*).
+
+One case needed the conjugation oracle, not just a reading: ***durchziehen* is a separability
+doublet**, and the app ships `durch+z^ieh^en` — the *separable* reading (pull/draw through). Its
+Luther candidates ("*durchzogen das Land*") are the *inseparable* traverse sense the app does not
+ship, so they were correctly avoided; the recovered sentence is the Mann one where a sheet "*unter
+der rechten Schulter durchgezogen war*" — separable, literal, and the right reading. Picking by word
+count alone would have had a one-in-three chance of shipping the wrong verb under a Mann citation.
+
+Merged via `integrate` **Mode A** (single working file, sentences only) rather than touching the
+frozen shards — `ExampleSentences.json` went **2,438 → 2,450** per language, the 12 dropped from
+`no-corpus-example.txt` (now 1,122 rows: 994 no-candidates, 128 candidates-none-usable), and the
+byte-for-byte preservation check confirmed all 2,438 prior entries intact. The German side is every
+candidate's stored text *verbatim* (the quote invariant that proves a real attestation, not a
+paraphrase); only the English translation was authored, one careful pass over twelve literary
+periods. `MINING_SPEC.md`'s ceiling section is updated to 80 with this reasoning, so a future
+re-mine inherits the policy rather than re-litigating it. The etymologies were already shipping for
+all twelve; this only adds the sentence. Neither `Verbs.xml` nor the at-odds count is touched —
+`durchziehen`'s reading was *read*, not changed.

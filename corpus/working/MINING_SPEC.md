@@ -410,23 +410,27 @@ Keep the sentence a reasonable length for a phone screen — roughly 8 to 30 wor
 are now sorted so that ones inside that band come first within their rank tier, so the earliest
 genuine verbal use is usually also the right length.
 
-**When there is no next candidate, 65 words is the ceiling.** Past that, return `null` rather
+**When there is no next candidate, 80 words is the ceiling.** Past that, return `null` rather
 than quoting a period that will not fit a phone screen. A null is a productive result — Phase 5
-collects them and Josh expands the corpus — whereas an unreadable 80-word quotation ships. Below
-65, prefer the shorter candidate but do not reject a usable sentence for length alone.
+collects them and Josh expands the corpus — whereas an unreadable 90-word quotation ships. Below
+80, prefer the shorter candidate but do not reject a usable sentence for length alone.
 
 The ceiling was 45 until 2026-07-20, when a shard-run reported nulling `anbetreffen` and
 `andrehen` — both sole candidates, both genuine verbal uses, both 53 words, both trapped in a
 single long Nietzsche or Kafka period. Losing a verb's only attestation to eight words of margin
-is the worse error, since a null ships nothing at all. It was raised again, to 65, when the
+is the worse error, since a null ships nothing at all. It was raised to 65 when the
 same complaint arrived at 57 words (`aufklingen`, Mann) — at which point the pool was measured
 rather than argued about: 22 verbs across the corpus have every candidate above 55 but at least
-one at 65 or below, and they were shipping nothing. The distribution has no cliff, so the number
-is a judgment about phone screens, not a natural boundary; 65 still nulls the genuine runaways,
-which in the shard that prompted the change ran 86 words. The ceiling still exists, and still
-binds; it simply no longer sits just below where German literary prose naturally lands. This
-applies only when the candidate is the last one — a long sentence never beats a short one that
-is equally good.
+one at 65 or below, and they were shipping nothing. It was raised again, to **80, on 2026-07-24**,
+this time as a deliberate policy call rather than a reaction to a single null: Josh chose to accept
+long single-period quotations because a real corpus attestation has value a phone-screen-friendly
+length does not, and these verbs are unlikely to be attested more briefly elsewhere ("people can
+scroll"). That change recovered 12 verbs whose sole genuine candidate ran 53–80 words — the
+Kafka/Mann/Nietzsche periods for `abhandenkommen`, `anhaften`, `entsteigen`, `zusammenrücken` and
+eight more — each translated and merged via `integrate` Mode A. The distribution still has no cliff,
+so 80 remains a judgment about phone screens, not a natural boundary; it still nulls the genuine
+runaways (the 86-word truncated `aufglänzen` stays out). This applies only when the candidate is
+the last one — a long sentence never beats a short one that is equally good.
 
 **Raising this number is cheap and safe, which is why it has moved twice.** The ceiling is a rule
 in this brief, not a filter in the indexer, so changing it leaves every candidate pool byte-identical

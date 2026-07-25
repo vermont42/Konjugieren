@@ -15,6 +15,13 @@
 #                                the Phase 5 brief is coarser than what's actually here.
 #
 # format: <verb>	<reason>	<subagent note, if any>
+#
+# 2026-07-24: 12 verbs whose sole genuine candidate exceeded the old tiered ceiling were
+# recovered by raising the ceiling to 80 words (Josh's call) and translating their real corpus
+# sentence. They now ship a sentence and are removed from this list: abhandenkommen, anbetreffen,
+# andrehen, anhaften, anlehnen, aufklingen, auflachen, durchziehen, emporwachsen, entraten,
+# entsteigen, zusammenruecken. The remaining candidates-none-usable rows are the corpus-quality
+# floor (nominal / homograph / adjectival participle / mis-split / corrupt).
 
 abbehalten	no-candidates	no candidates
 abbestellen	no-candidates	no candidates
@@ -39,7 +46,6 @@ abfüllen	no-candidates	no candidates
 abgießen	no-candidates	no candidates
 abgleiten	no-candidates	no candidates
 abgraben	no-candidates	no candidates
-abhandenkommen	candidates-none-usable	Sole candidate is a genuine verbal use but runs 58 words, past the 55-word ceiling, so nulled.
 abhören	no-candidates	no candidates
 abjagen	no-candidates	no candidates
 abklären	no-candidates	no candidates
@@ -99,10 +105,8 @@ allemachen	candidates-none-usable	Both candidates are false positives: „machte
 altmachen	candidates-none-usable	Sole candidate is corrupt: a Luther verse number („… gedenken.' 13 Indem er sagt …“) splices two sentences together.
 anbehalten	candidates-none-usable	Sole candidate is ~behalten~, with its ~an~ belonging to the frame „von dem Tage an“, not to this verb.
 anbellen	no-candidates	no candidates
-anbetreffen	candidates-none-usable	Sole candidate (Nietzsche) runs 53 words, past the 45-word ceiling; no shorter candidate exists.
 anbraten	no-candidates	no candidates
 andienen	no-candidates	no candidates
-andrehen	candidates-none-usable	Sole candidate (Kafka) runs 53 words, past the 45-word ceiling.
 androhen	no-candidates	Sole candidate is a polemical Bundestag passage that names a living official and recommends threatening critics with beatings — a genuine verbal use, but unsuitable content for a learner app. Flagged for Josh rather than shipped.
 andrücken	no-candidates	no candidates
 aneinanderhalten	no-candidates	no candidates
@@ -113,7 +117,6 @@ anfügen	no-candidates	Sole candidate is corrupt: text from two PDF columns inte
 anfüttern	no-candidates	no candidates
 angießen	candidates-none-usable	Sole candidate is the fixed idiom ~wie angegossen~, a participle used purely predicatively and in the casting sense rather than the reading's „sprinkle, water“; rejected as adjectival.
 angleichen	candidates-none-usable	Candidate 0 („Neu ist des Bundes angeglichen werden.“) is a corrupt fragment; candidate 1 matches on the adverb ~gleich~ inside an ~anmelden~ clause, a different verb. No usable candidate.
-anhaften	candidates-none-usable	Sole candidate is a genuine verbal use but runs 62 words, past the 55-word ceiling for a last candidate.
 anhauen	no-candidates	no candidates
 anheimfallen	no-candidates	no candidates
 anheimgeben	no-candidates	no candidates
@@ -122,7 +125,6 @@ ankaufen	no-candidates	no candidates; sense hedged for the same accumulative ~an
 anklingen	no-candidates	no candidates
 anlagern	no-candidates	no candidates
 anlauten	no-candidates	no candidates
-anlehnen	candidates-none-usable	Sole candidate is a 59-word Kafka period, above the 55-word ceiling for a last candidate, so nulled.
 anlernen	no-candidates	no candidates
 anlesen	no-candidates	no candidates
 anmalen	candidates-none-usable	All five candidates are the adverb ~mal~ inside separable ~ansehen~/~angucken~ constructions, not ~anmalen~; no genuine use in the pool.
@@ -172,10 +174,8 @@ aufeinanderlegen	no-candidates	no candidates
 aufeinanderliegen	no-candidates	no candidates
 aufglänzen	candidates-none-usable	Sole candidate is truncated and, at 86 words, far over the 55-word ceiling — a single Nietzsche period. No usable sentence.
 aufkleben	no-candidates	no candidates
-aufklingen	candidates-none-usable	Sole candidate is a genuine verbal use (Mann, „hier klang er auf“) but runs 57 words, just past the 55-word ceiling.
 aufknüpfen	no-candidates	no candidates
 aufkochen	no-candidates	no candidates
-auflachen	candidates-none-usable	Sole candidate is a genuine verbal use (Kafka, „lachte öfters laut auf“) but runs 62 words, past the 55-word ceiling.
 aufleuchten	no-candidates	no candidates
 aufmischen	no-candidates	no candidates; auf- as stirring-from-below matches no exemplar closely, sense 0 taken as nearest.
 aufnähen	no-candidates	no candidates
@@ -390,7 +390,6 @@ durchstellen	no-candidates	no candidates
 durchstreichen	candidates-none-usable	No sentence: the sole candidate ('die Fluten durchstreichen') is the inseparable durchstréichen 'to range through', not the separable 'cross out' this reading glosses.
 durchtrennen	no-candidates	no candidates
 durchwachsen	no-candidates	no candidates
-durchziehen	candidates-none-usable	No sentence: candidates 0, 1 and 4 are the transitive inseparable durchzíehen 'traverse'; the two genuinely separable ones (Mann, Goethe) run 67 and 76 words, past the 65-word ceiling.
 durchzählen	no-candidates	no candidates
 einarbeiten	no-candidates	no candidates
 einbegreifen	no-candidates	no candidates
@@ -447,7 +446,6 @@ emporhelfen	no-candidates	no candidates
 emporkommen	no-candidates	no candidates
 emporstreben	no-candidates	no candidates
 emportragen	no-candidates	no candidates
-emporwachsen	candidates-none-usable	Only candidate is a 68-word Nietzsche period, over the 65-word ceiling for a sole candidate.
 enteignen	no-candidates	no candidates
 entflechten	no-candidates	no candidates
 entfließen	no-candidates	no candidates
@@ -465,13 +463,11 @@ entmieten	no-candidates	no candidates
 entmischen	no-candidates	no candidates
 entnerven	candidates-none-usable	Only candidate is a predicative/adjectival participle (erwachte ... entnervt, coordinated with the adjectives zerrüttet und kraftlos), not a genuine verbal use.
 entpacken	no-candidates	no candidates
-entraten	candidates-none-usable	Only candidate (Mann) is a 71-word period, over the 65-word ceiling; the entriet use itself cleanly attests the gloss.
 entreißen	no-candidates	no candidates
 entsichern	no-candidates	no candidates
 entsperren	no-candidates	no candidates
 entspiegeln	no-candidates	no candidates
 entstammen	candidates-none-usable	Sole candidate carries a leading footnote marker ('77' + tab) and a truncated trailing date ('...zum 30.'); not shippable verbatim as a clean sentence.
-entsteigen	candidates-none-usable	Only candidate is a 74-word Mann period, over the 65-word ceiling.
 entstören	no-candidates
 entwarnen	no-candidates
 entwerten	no-candidates
@@ -1091,7 +1087,6 @@ zusammenlügen	no-candidates	no candidates; the sense is figurative — cobbling
 zusammenrechnen	no-candidates	no candidates
 zusammenreißen	no-candidates	no candidates
 zusammenräumen	no-candidates	no candidates
-zusammenrücken	candidates-none-usable	sole candidate is an ~80-word Kafka period, over the 65-word ceiling; nulled for length
 zusammensinken	candidates-none-usable	both candidates are predicative „ein wenig zusammengesunken" (slumped a little); the degree modifier grades the participle, so the gradability test marks it adjectival rather than a verbal use
 zusammenspielen	no-candidates	no candidates
 zusammenspinnen	no-candidates	no candidates

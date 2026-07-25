@@ -4391,3 +4391,30 @@ independent defect signal to correlate against.
 
 Which is the second time in one day that this pipeline audited the corpus rather than the sentences. It
 was built to check the authors and keeps catching the app instead.
+
+## A comma-splice rule, and the German comma that causes it (2026-07-25)
+
+Josh spotted a comma splice in one of the authored English translations: *"Please don't throw the old
+newspapers out, I still need them for crafts."* The style guide was silent on splices, so it now has a
+`No Comma Splices` section.
+
+The interesting part is the cause. The German original, „Wirf die alten Zeitungen bitte nicht weg, ich
+brauche sie noch zum Basteln", is **correct German**: German licenses the bare comma between
+independent clauses, because its comma rules are grammatical rather than rhetorical. So an idiomatic
+English translation has to *re-punctuate*, not merely re-word. This is the one spot in the project
+where a translator can be entirely fluent and still carry a structural habit across, which is why the
+new section flags German translation specifically.
+
+Scanning all 1,097 authored translations found **exactly one** genuine splice: the one Josh saw. Both
+models are otherwise handling it. The scan is worth recording for a different reason, though: a naive
+"comma followed by a pronoun" regex returned **33** hits, of which **32** were correct English, mostly
+fronted phrases ("At the small winery, they bottle…") and subordinate clauses ("The moment the light
+turned green, she took off running"). The naive reading of that first output would have been "4.8
+splices twice as often as 5.0", which is pure artifact. So the new rule ships with a **second table of
+things not to flag**, and the note that over-correction is the likelier failure here. Same lesson as
+the forms gate this morning, for the third time in a day: the hand-checked list is the deliverable, the
+ratio is not.
+
+Deliberately not touched: `prompts/example_prompt.md`, the authoring brief. Editing it now would break
+comparability with this run's A/B data. A future authoring run can inherit the rule from the style
+guide instead.

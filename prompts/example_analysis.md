@@ -215,6 +215,90 @@ Three things a fresh session will otherwise get wrong:
    unreviewed: no adversarial check, no `forms.json` conjugation verification, no corrections were run,
    by design — they would have muddied the performance data.
 
+## Designing the adversarial review so it answers the question
+
+The review is the **only axis that can falsify the one interesting thing this run found.** Everything
+measured so far is cost: 5.0 spends **+62% more thinking tokens per sentence at identical median
+turns**. That is a price tag with no benefit attached to it yet. The review is what prices it — and if
+accept rates come back equal, that is a real result, not a failed experiment: *5.0 charged 30% more
+output tokens for the same product on this task.*
+
+Because the review supplies the verdicts, its design decides whether the comparison means anything.
+Four hazards, all cheap to avoid beforehand and impossible to fix afterward.
+
+### Hazard 1 — shards are model-homogeneous, so reviewing by shard de-blinds the reviewer
+
+Each of the 44 shards was authored **entirely by one model**. Handing a reviewer a whole shard gives it
+25 sentences sharing one author's tics, which does two bad things: it lets the reviewer drift into
+judging a *style* rather than 25 independent sentences, and it makes verdicts within a shard
+correlated, which inflates any apparent between-model difference.
+
+**Review in shuffled batches that mix both models, and do not give the reviewer `provenance.json`.**
+Join provenance back only at analysis time. Deterministic, so the batching is reproducible:
+
+```python
+import json, glob, random
+sent = {}
+for f in sorted(glob.glob('verbdata/authored/shards/auth_*.out.json')):
+    sent.update(json.load(open(f)))
+items = sorted(sent.items())              # sorted first: dict order must not leak shard order
+random.Random(20260725).shuffle(items)    # fixed seed, not an unseeded shuffle
+BATCH = 25
+batches = [items[i:i+BATCH] for i in range(0, len(items), BATCH)]
+```
+
+Every batch then lands ~50/50 across the two models by construction, and no reviewer sees a run of
+one author.
+
+### Hazard 2 — the judge's own identity is a confound
+
+An Opus 5.0 reviewer may systematically prefer 5.0's prose; self-preference is a well-documented
+failure mode for LLM judges. Cheapest mitigation: **review with both models and check whether the
+verdicts agree.** Disagreement that concentrates along author lines *is* the bias, measured rather
+than assumed. If only one reviewer is affordable, say which model judged, and treat a small
+same-model advantage as suspect.
+
+### Hazard 3 — the comparison is underpowered for small effects
+
+~550 sentences per arm, and both models write good German, so expect a ceiling. At a 95% accept rate:
+
+```
+SE(p_4.8 - p_5.0) = sqrt(0.95 * 0.05 * (1/550 + 1/547)) ≈ 0.013   →  95% CI ≈ ±2.6 points
+at a 90% accept rate                                     ≈ 0.018   →  95% CI ≈ ±3.5 points
+```
+
+**Nothing below roughly a 3-point gap is distinguishable from noise**, and a true 1-point difference is
+invisible to this run at any level of reviewer effort. Do not report a 1–2 point difference as a
+finding.
+
+The fix is to **grade rather than accept/reject**. Capture defect *type* and *severity* — wrong
+conjugation, wrong sense, unnatural German, translation drift, register mismatch. Defect counts carry
+far more signal per sentence than a binary sitting at a ceiling, and they permit a comparison even
+when both models are equally "acceptable" overall.
+
+### Hazard 4 — post-hoc slicing will find something whether or not anything is there
+
+This data offers many cuts: `family`, `auxiliary`, `separability`, `ablautGroup`, shard position,
+rejection reason, self-flagged vs not. Slice enough of them and one will clear p<0.05 by chance.
+**Pre-register the hypothesis before looking** — it is already written down in Open Analysis 1 (gains
+should concentrate on obscure/archaic verbs and be flat elsewhere) — and report exploratory cuts
+explicitly as exploratory.
+
+### Run the unconfounded signals first
+
+Two quality signals need no judge at all, and one of them is the sharpest question available:
+
+- **The `forms.json` gate (Open Analysis 3).** Purely mechanical, zero judge bias, no window cost, and
+  it targets the defect that matters most pedagogically. With **448 strong verbs** in the gap set
+  (`classification.json`), there is a real arm for *does either model conjugate ablaut verbs more
+  reliably?* This is the cleanest model comparison this data can produce. Run it before the review.
+- **The calibration test.** Each model flagged verbs it was unsure about — 12.1% for 5.0, 7.6% for
+  4.8. Do those flagged verbs actually carry more defects? If yes, the hedging is informative and the
+  extra deliberation is aimed at the right places. If flagged and unflagged verbs fail at the same
+  rate, the extra thinking was anxiety rather than insight. This is a result about **self-knowledge**,
+  it is a *within*-model comparison, and it therefore sidesteps judge bias entirely. It can run off the
+  `forms.json` gate alone, before any review exists.
+
 ## Open analyses — what this session can actually do
 
 Ordered roughly by value. Pick what Josh asks for; do not assume all of them.
@@ -222,8 +306,13 @@ Ordered roughly by value. Pick what Josh asks for; do not assume all of them.
 ### 1. The quality A/B (the big one, and the reason `provenance.json` exists)
 
 Every other comparison here is about speed and verbosity. The unanswered question is whether Opus
-5.0's extra 30% of deliberation produced *better sentences*. Once verdicts exist — from Josh's
-adversarial review, or from a fresh review pass if he asks for one — split them by author model:
+5.0's extra 30% of deliberation produced *better sentences*. **Read § "Designing the adversarial
+review so it answers the question" before any review runs** — shard-homogeneity, judge
+self-preference, and statistical power all have to be handled up front, and none of them can be
+repaired after the verdicts exist.
+
+Once verdicts exist — from Josh's adversarial review, or from a fresh review pass if he asks for one —
+split them by author model:
 
 ```python
 import json

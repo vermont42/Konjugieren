@@ -313,6 +313,17 @@ Two constraints on how estimates are formed:
 
 Small things the pipeline surfaced that no plan currently owns. None blocks the sequence.
 
+- **Dual paradigms: decided, unscheduled.** Wrinkle 1 in `verb-sources.md`, resolved
+  **2026-07-25** in favor of **extending the model** so a verb can carry two parallel paradigms,
+  rather than continuing to pick one editorially per verb. **111 of 3,572 shipping verbs (3.1%)**
+  are affected, 35 of them in the 1,097 authored-example gap set — *abhauen* (abhaute/abhieb),
+  *absenden* (absandte/absendete), *aufsaugen* (aufsaugte/aufsog), *anwenden*
+  (anwandte/anwendete). Comparable in size to the dual-auxiliary pass, and it wants the same
+  treatment: its own prompt doc, on the `prompts/dual_auxiliary.md` model. The `<reading>`
+  mechanism cannot be reused, because readings distinguish *meanings* and this is one meaning with
+  two form sets. `Quiz` needs no design change; its `acceptableAnswers` is already a `Set`.
+  Prompted by the example-sentence gate, where 9 misses turned out to be authors writing the
+  paradigm the app does not ship. Full analysis in `verb-sources.md` wrinkle 1.
 - **`mahlen` and `spalten`** — weak Präteritum with strong participle (*mahlte*, but
   *gemahlen*). Neither the mixed family nor the weak family fits. Wrinkle 4 in
   `verb-sources.md`; needs a new family or a full-override ablaut group. Step 7 confirmed the

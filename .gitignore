@@ -58,3 +58,7 @@ __pycache__/
 # (thinking_tokens, num_turns) are folded into metrics.jsonl. See prompts/example_analysis.md.
 verbdata/authored/meta/
 verbdata/authored/run.log
+
+# Review shards: 1.1 MB fully derived from the authored shards, candidates.json, and
+# forms.json. Regenerate with verbdata/authored/build_review_shards.py.
+verbdata/review/shards/

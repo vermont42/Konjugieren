@@ -321,6 +321,13 @@ Ordered roughly by value. Pick what Josh asks for; do not assume all of them.
 See § "Scope decision". Reviewing sentences for quality before shipping is still worth doing; splitting
 the verdicts by author model is not part of this experiment.
 
+The reviewer brief is [`prompts/example_review.md`](example_review.md), and
+`verbdata/authored/build_review_shards.py` builds its input into `verbdata/review/shards/`
+(44 shards mirroring the authored ones 1:1, ~23 KB each). Because the review is no longer an A/B, the
+reviewer is given far *more* context than the author had: the full kaikki `candidate_glosses` and the
+app's own generated `app_forms`. To drive it, `verbdata/authored/run_wave.sh` adapts by changing three
+paths: the brief it cats, and the in/out shard paths.
+
 ### 2. Sentence-level distributions
 
 `metrics.jsonl` is shard-aggregated, so per-sentence questions need the `out.json` files. Longest and

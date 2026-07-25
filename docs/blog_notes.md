@@ -4458,3 +4458,55 @@ panels — because the retired sections would otherwise read as an invitation to
 What remains is genuinely knowable, and it is the interesting part anyway: 5.0 writing English 5%
 longer while spending 30% more output tokens, of which 79% is thinking, at identical median turns.
 None of that needed a judge.
+
+## Dual paradigms decided, and a reviewer brief that gets to know more (2026-07-25)
+
+Two things, and the first is larger than it looked when asked.
+
+**The 9 dual-form gate misses forced a modeling decision.** Those were sentences using *saugte* where
+the app conjugates *sog*, *hieb* where the app has *haute*, *sandte* where it has *sendete*. All are
+real German; the app just ships one paradigm. Asked whether such a sentence is a defect *for this app*,
+Josh chose: **the corpus should carry both forms.**
+
+That turns out not to be a data edit. It is **wrinkle 1** in `verb-sources.md`, written down on
+2026-07-18 and open ever since: *"sieden, küren, weben, and gären each have parallel strong and weak
+conjugation sets, both current. The model supports one paradigm per verb; either pick house style per
+verb or extend the model."* The corpus had been taking the first branch, and tranche 1 wrote the rule
+down explicitly — ship strong only where the strong paradigm is current standard German — while
+recording that the choice for *melken, weben, sieden, flechten, gären, glimmen, bellen, triefen* was
+**editorial, not mechanical**. Choosing "carry both" reverses that policy and needs the extension.
+
+Measured the scope rather than guessing it, and the first measurement was wrong in an instructive way.
+Counting verbs whose kaikki `forms` list two entries in the Präteritum or participle gave **2,252 of
+3,572**, which is absurd on its face. The cause: kaikki lists *abbaute* and *baute ab* as two forms,
+which is one paradigm rendered contiguous and stranded, not two paradigms. Dropping any form
+containing a space gives the real figure: **111 of 3,572 shipping verbs (3.1%)**, 35 of them in the
+1,097-verb authored set. *abhauen* (abhaute/abhieb), *absenden* (absandte/absendete), *aufsaugen*
+(aufsaugte/aufsog), *anwenden* (anwandte/anwendete). Comparable in size to the dual-auxiliary pass's
+48, which got its own prompt doc and a sequenced slot.
+
+Two findings about the blast radius. The `<reading>` machinery **cannot** be reused: readings
+distinguish *meanings*, and a dual paradigm is one meaning with two form sets, so a second reading
+carrying a duplicate gloss would corrupt the reading picker. But the **Quiz needs no design change at
+all**, which was a pleasant surprise. `Quiz.swift` already builds `acceptableAnswers` as a `Set` over
+the three `Region` cases, under the standing principle that a presentation setting must never mark a
+learner wrong. A second paradigm drops straight into that set. The consumer that looked hardest was
+already built for plural correct answers, because a *different* variation axis had forced the issue
+years of design decisions earlier. Recorded in `verb-sources.md` wrinkle 1 and `roadmap.md`; not
+scheduled.
+
+**The reviewer brief, `prompts/example_review.md`.** Adversarial native-speaker linguist, eight finding
+types ordered by severity, and an explicit *not-a-finding* list that is doing most of the work:
+alternate-paradigm forms, clipped colloquial imperatives, stranded particles, and style preference are
+all named as things to leave alone. Over-flagging is the likelier failure, and every finding costs
+human attention.
+
+The nicest consequence of dropping the quality A/B is visible in the shard builder. The **author** was
+given only verb, gloss, and separability, deliberately starved so input size could not bias the token
+comparison. The **reviewer** has nothing being measured about it, so it can be given everything that
+helps: the full kaikki `candidate_glosses`, and `app_forms`, the conjugations the app itself generates.
+`abbinden` is the worked example. Its shipped gloss reads "untie, undo"; the author disagreed and wrote
+a *tie off* sentence; and the candidate list contains "to ligate". The reviewer can now settle that
+from the data instead of from memory. Removing the experiment made the remaining work better informed,
+not just smaller — which is the second time today the scope cut turned out to be a simplification
+rather than a subtraction.

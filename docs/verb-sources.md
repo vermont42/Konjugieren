@@ -123,6 +123,16 @@ The last row is the frequency surprise of the investigation: küren out-polls ev
 ## Modeling wrinkles the extraction must handle
 
 1. **Dual paradigms.** sieden, küren, weben, and gären each have parallel strong and weak conjugation sets, both current. The model supports one paradigm per verb; either pick house style per verb or extend the model.
+
+   **Decided 2026-07-25: extend the model.** Josh's call. Until now the corpus took the first branch, and tranche 1 applied the editorial rule "ship strong only where the strong paradigm is current standard German" (see step 5 below), which records the strong/weak choice for *melken, weben, sieden, flechten, gären, glimmen, bellen, triefen* as **editorial, not mechanical**. Carrying both forms reverses that policy.
+
+   Measured scope, from kaikki `forms` against the shipping corpus, excluding separable-stranding pairs like *abbaute*/*baute ab* which are one paradigm rendered two ways: **111 of 3,572 shipping verbs (3.1%)** list parallel paradigms, of which 35 are in the 1,097 authored-example gap set. Examples: *abhauen* (abhaute/abhieb), *absenden* (absandte/absendete), *aufsaugen* (aufsaugte/aufsog), *anwenden* (anwandte/anwendete). Comparable in size to wrinkle 3's 48 shipping dual-auxiliary verbs.
+
+   **The `<reading>` machinery does not serve here.** Readings distinguish *meanings*; a dual paradigm is one meaning with two form sets, so a second reading carrying a duplicate gloss would corrupt the reading picker in `VerbView`. This needs its own mechanism.
+
+   Known blast radius: `Verbs.xml` and the DTD to express it, `VerbParser` and `Reading` to carry it, `Conjugator` to return alternates, and the conjugation view to render two forms per cell. `CorpusFormsDumpTests` then emits both, which retires a class of false positives in the example-sentence gate. **The Quiz needs no design change**: `Quiz.swift` already builds `acceptableAnswers` as a `Set` over the `Region` cases, on the standing principle that presentation settings must never mark a learner wrong, and a second paradigm slots into that same set.
+
+   Not scheduled. Recorded in [`roadmap.md`](roadmap.md) § "Known gaps that are nobody's step yet". Note that model passes are cheaper before the corpus grows, and it has since gone 990 → 3,572, so this costs more now than when this wrinkle was written.
 2. **Variant principal parts.** spinnen (spann beside archaic sponn), schwören (schwor beside archaic schwur), melken (milkt/melkt, molk/melkte).
 3. **Dual auxiliaries.** schmelzen takes sein intransitively and haben transitively; `ay` is single-valued. Measured against kaikki, 469 single-word lemmas are dual-auxiliary: **51 already ship in Konjugieren** with one reading silently wrong, and 418 are in the incoming pool. The full analysis, the five classes involved, and the deferred work plan are in [`../prompts/dual_auxiliary.md`](../prompts/dual_auxiliary.md); its interim policy governs until that pass runs.
 4. **Weak Präteritum with strong participle.** mahlen, salzen, spalten (mahlte, gemahlen). Neither the current mixed family (vowel change plus weak endings) nor the weak family fits; a new family or ablaut-group full overrides (the `*` suffix mechanism) would cover them.

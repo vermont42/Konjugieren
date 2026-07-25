@@ -4418,3 +4418,43 @@ ratio is not.
 Deliberately not touched: `prompts/example_prompt.md`, the authoring brief. Editing it now would break
 comparability with this run's A/B data. A future authoring run can inherit the rule from the style
 guide instead.
+
+## Narrowing the experiment: verbosity, time, and cost only (2026-07-25)
+
+Josh ruled the model-vs-model **quality** comparison out of scope. The experiment measures verbosity,
+time, and cost. Sentence quality still matters and is being improved, but attributing it to one model
+or the other is no longer part of this.
+
+The reasoning is his, and the day's own measurements happen to support it from three directions:
+
+- **The one judge-free quality comparison came back null.** The `forms.json` gate, which needs no LLM
+  reviewer at all, found 0.6 points between the models against a ±1.6-point interval.
+- **The design cannot resolve what a judge would add.** ~550 sentences per arm at a ~98% ceiling puts
+  the detectable difference around 3 points. A true 1-point difference is invisible at this n no matter
+  how good the reviewer.
+- **Conclusions at this scale are brittle.** The calibration p-value walked from 0.048 to 0.108 on a
+  single reclassified observation. A quality verdict set would be at least as fragile.
+
+And there is no clean judge available. An Opus reviewer may prefer its own family's prose, so an honest
+comparison wants a third-party model, plausibly from another vendor. That is real infrastructure for a
+question this run could not answer regardless. Josh's phrasing was the right one: *way too
+complicated*, for something the data cannot support.
+
+What is striking in retrospect is how much of the analysis plan existed **only** to protect that
+comparison. The review-design section — shuffled model-mixed batches so a reviewer could not de-blind
+itself on shard homogeneity, two reviewers to measure self-preference, a pre-registered hypothesis to
+stop post-hoc slicing from manufacturing significance — was four hazards' worth of machinery guarding
+one claim. Dropping the claim deletes all of it. A quality review that is not an A/B needs no blinding,
+no balanced batching, and no pre-registration; it can run shard by shard in whatever order is
+convenient, with any reviewer. **The scope cut made the remaining work simpler, not just smaller.**
+
+`provenance.json` survives with a demoted job: it is what `integrate` reads to stamp each accepted
+sentence's `source` as `Opus 4.8` or `Opus 5.0`. A provenance record, not an experimental variable.
+
+Both plans now carry the decision, and `example_analysis.md` gained an explicit guard against
+rebuilding the comparison by accident — no accept rates by author, no defect counts by author, no judge
+panels — because the retired sections would otherwise read as an invitation to a future session.
+
+What remains is genuinely knowable, and it is the interesting part anyway: 5.0 writing English 5%
+longer while spending 30% more output tokens, of which 79% is thinking, at identical median turns.
+None of that needed a judge.

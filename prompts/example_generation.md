@@ -76,9 +76,18 @@ of the comparison.
 - Per-sentence normalization: `en_chars / sentences`, `output_tokens / sentences`, `cost_usd / sentence`.
 - German verbosity: `de_chars` and words per sentence (a second verbosity axis).
 - Completion: sentences produced vs verbs assigned (does one model skip or refuse more?).
-- **Provenance for a later *quality* A/B.** Record which model authored each verb (`provenance.json`,
-  § "Analyze"). When Josh runs his adversarial review, the accept/reject rate can then be split by
-  model — a quality comparison riding on the same run, not just speed and verbosity.
+- Thinking effort: `thinking_tokens` per sentence, and `num_turns` (added to `metrics.jsonl` after the
+  run, extracted from each child's `meta/*.meta.json`). This turned out to be the most informative
+  column of all — see the run's results.
+
+> **Scope narrowed 2026-07-25, after the run.** This section originally also proposed *"provenance for
+> a later **quality** A/B"*: split Josh's adversarial-review accept/reject verdicts by author model.
+> **Josh ruled that out of scope.** The experiment measures verbosity, time, and cost, which are
+> directly knowable; a model-vs-model quality claim is not practical here (~550 sentences per arm at a
+> ~98% ceiling resolves nothing under ~3 points, and an honest judge would have to come from another
+> vendor). Sentence quality still matters and is being worked on separately. `provenance.json` is
+> retained, but as the provenance record that `integrate` stamps into each sentence's `source`, not as
+> an experimental variable. Full reasoning: `prompts/example_analysis.md` § "Scope decision".
 
 ## Why headless `claude -p` children, not the Task/Agent tool
 

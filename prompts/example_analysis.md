@@ -3,6 +3,10 @@
 **Audience: a fresh session doing analysis, not generation.** Written 2026-07-25, immediately after
 the creation run finished.
 
+**Scope in one line: the experiment measures verbosity, time, and cost. Quality is out of scope** by
+Josh's decision of 2026-07-25 (§ "Scope decision"). Improving the sentences is worthwhile and separate;
+attributing their quality to one model or the other is not part of this.
+
 This is the third document in a set. Read the other two only as needed:
 
 - [`prompts/example_prompt.md`](example_prompt.md) — the **subagent brief**, passed verbatim to every
@@ -40,7 +44,7 @@ Everything lives under `verbdata/authored/`.
 | `shards/auth_NNN.in.json` | 44 files, the input given each shard (`verb`, `gloss`, `separability`) | joining a sentence back to the gloss it was written against; separability breakdowns |
 | `metrics.jsonl` | 44 rows, one per shard | the speed/verbosity/cost A/B — the whole headline table |
 | `meta/auth_NNN.meta.json` | 44 files, each child's raw `--output-format json` | residual detail only — `stop_reason`, `ttft_ms`, `permission_denials`, per-model `modelUsage`. The two fields that mattered (`thinking_tokens`, `num_turns`) are already folded into `metrics.jsonl`. Note the `thinking` blocks are **empty** (signature only), so the reasoning text is not recoverable |
-| `provenance.json` | 1,097 entries, verb → author model | **the bridge to a quality A/B** — split any verdict by author model |
+| `provenance.json` | 1,097 entries, verb → author model | provenance for `integrate`'s `source` stamp (`Opus 4.8` / `Opus 5.0`). **Not** an experimental variable, see § "Scope decision" |
 | `gloss-disagreements.txt` | 125 lines, `verb<TAB>gloss_note` | the free gloss audit the authors produced as a side effect |
 | `run_wave.sh` | the driver | reference only; do not re-run |
 
@@ -211,8 +215,8 @@ strong verbs   4-8 98.6%  vs  5.0 97.8%      weak verbs  4-8 98.4%  vs  5.0 98.0
 
 **On mechanical conjugation correctness the two models are indistinguishable.** The gap is 0.6pp
 against a ±1.6pp interval — the regime § "Hazard 3" warns not to report as a finding. 5.0's +62%
-thinking bought nothing measurable *on this axis*, which raises the bar for the adversarial review:
-whatever the deliberation bought, it is not basic conjugation accuracy.
+thinking bought nothing measurable *on this axis*. This null result is part of why a model-vs-model
+quality comparison was taken out of scope (§ "Scope decision").
 
 **The calibration test points the right way but does NOT reach significance.**
 
@@ -232,8 +236,8 @@ threshold claim is not.
 There is a subtler reading available too. `überkochen` was flagged because the model sensed something
 was wrong — and something *was* wrong, in the **corpus**, not in its sentence. So the flags may track
 *"this verb is ambiguous or the gloss looks off"* rather than *"my sentence is likely wrong."* Those
-are different competencies, and only the second one predicts gate failure. Worth separating if the
-adversarial review gives a second, independent defect signal.
+are different competencies, and only the second one predicts gate failure. Recorded as an observation;
+separating them would need an independent defect signal this experiment is not gathering.
 
 **98.3% is a floor, not an estimate.** Only **4** of the 19 remaining misses are genuine sentence
 defects (`wegschmeißen`, `hochstellen`, `heranhalten`, `rechtdrehen`). Nine are dual-form verbs where
@@ -271,126 +275,51 @@ Three things a fresh session will otherwise get wrong:
    unreviewed: no adversarial check, no `forms.json` conjugation verification, no corrections were run,
    by design — they would have muddied the performance data.
 
-## Designing the adversarial review so it answers the question
+## Scope decision: quality is NOT part of this experiment (2026-07-25)
 
-The review is the **only axis that can falsify the one interesting thing this run found.** Everything
-measured so far is cost: 5.0 spends **+62% more thinking tokens per sentence at identical median
-turns**. That is a price tag with no benefit attached to it yet. The review is what prices it — and if
-accept rates come back equal, that is a real result, not a failed experiment: *5.0 charged 30% more
-output tokens for the same product on this task.*
+**Josh's call, made after the measurements below were in hand.** The experiment is
+**verbosity, time, and cost**. Those are directly measured, judge-free, and knowable. A model-vs-model
+*quality* comparison is out of scope. Sentence quality still matters, but improving it is separate
+work, not an arm of this experiment. Do not build one back in.
 
-Because the review supplies the verdicts, its design decides whether the comparison means anything.
-Four hazards, all cheap to avoid beforehand and impossible to fix afterward.
+Three findings from this run support the call, and are worth keeping because they are the reasoning:
 
-### Hazard 1 — shards are model-homogeneous, so reviewing by shard de-blinds the reviewer
+- **The one judge-free quality comparison available came back null.** The `forms.json` gate found
+  0.6pp between the models against a ±1.6pp interval (§ "Results of the `forms.json` gate").
+- **The design is underpowered for anything a judge could add.** ~550 sentences per arm sitting near a
+  98% ceiling puts the resolvable difference at roughly 3 points:
 
-Each of the 44 shards was authored **entirely by one model**. Handing a reviewer a whole shard gives it
-25 sentences sharing one author's tics, which does two bad things: it lets the reviewer drift into
-judging a *style* rather than 25 independent sentences, and it makes verdicts within a shard
-correlated, which inflates any apparent between-model difference.
+  ```
+  SE(p_4.8 - p_5.0) = sqrt(0.95 * 0.05 * (1/550 + 1/547)) ≈ 0.013  ->  95% CI ≈ ±2.6 points
+  ```
 
-**Review in shuffled batches that mix both models, and do not give the reviewer `provenance.json`.**
-Join provenance back only at analysis time. Deterministic, so the batching is reproducible:
+  A true 1-point difference is invisible at this n no matter how good the judge is.
+- **Conclusions at this scale are fragile.** The calibration result moved from p = 0.048 to p = 0.108
+  when a single observation was reclassified by a corpus fix. A quality verdict set would be at least
+  as brittle.
 
-```python
-import json, glob, random
-sent = {}
-for f in sorted(glob.glob('verbdata/authored/shards/auth_*.out.json')):
-    sent.update(json.load(open(f)))
-items = sorted(sent.items())              # sorted first: dict order must not leak shard order
-random.Random(20260725).shuffle(items)    # fixed seed, not an unseeded shuffle
-BATCH = 25
-batches = [items[i:i+BATCH] for i in range(0, len(items), BATCH)]
-```
+There is also no clean judge to be had. An Opus reviewer may prefer its own family's prose
+(self-preference is a documented LLM-judge failure mode), so an honest comparison would want a
+third-party model, likely from another vendor. That is real infrastructure for a question this run
+cannot answer anyway.
 
-Every batch then lands ~50/50 across the two models by construction, and no reviewer sees a run of
-one author.
+**What this changes operationally, and it is a simplification.** A quality review that is *not* an A/B
+needs no blinding, no model-balanced batching, and no pre-registered hypothesis. It can run
+shard-by-shard, in whatever order is convenient, with any reviewer. All of that machinery existed only
+to protect a comparison that is no longer being made.
 
-### Hazard 2 — the judge's own identity is a confound
-
-An Opus 5.0 reviewer may systematically prefer 5.0's prose; self-preference is a well-documented
-failure mode for LLM judges. Cheapest mitigation: **review with both models and check whether the
-verdicts agree.** Disagreement that concentrates along author lines *is* the bias, measured rather
-than assumed. If only one reviewer is affordable, say which model judged, and treat a small
-same-model advantage as suspect.
-
-### Hazard 3 — the comparison is underpowered for small effects
-
-~550 sentences per arm, and both models write good German, so expect a ceiling. At a 95% accept rate:
-
-```
-SE(p_4.8 - p_5.0) = sqrt(0.95 * 0.05 * (1/550 + 1/547)) ≈ 0.013   →  95% CI ≈ ±2.6 points
-at a 90% accept rate                                     ≈ 0.018   →  95% CI ≈ ±3.5 points
-```
-
-**Nothing below roughly a 3-point gap is distinguishable from noise**, and a true 1-point difference is
-invisible to this run at any level of reviewer effort. Do not report a 1–2 point difference as a
-finding.
-
-The fix is to **grade rather than accept/reject**. Capture defect *type* and *severity* — wrong
-conjugation, wrong sense, unnatural German, translation drift, register mismatch. Defect counts carry
-far more signal per sentence than a binary sitting at a ceiling, and they permit a comparison even
-when both models are equally "acceptable" overall.
-
-### Hazard 4 — post-hoc slicing will find something whether or not anything is there
-
-This data offers many cuts: `family`, `auxiliary`, `separability`, `ablautGroup`, shard position,
-rejection reason, self-flagged vs not. Slice enough of them and one will clear p<0.05 by chance.
-**Pre-register the hypothesis before looking** — it is already written down in Open Analysis 1 (gains
-should concentrate on obscure/archaic verbs and be flat elsewhere) — and report exploratory cuts
-explicitly as exploratory.
-
-### Run the unconfounded signals first
-
-Two quality signals need no judge at all, and one of them is the sharpest question available:
-
-- **The `forms.json` gate (Open Analysis 3).** Purely mechanical, zero judge bias, no window cost, and
-  it targets the defect that matters most pedagogically. With **448 strong verbs** in the gap set
-  (`classification.json`), there is a real arm for *does either model conjugate ablaut verbs more
-  reliably?* This is the cleanest model comparison this data can produce. Run it before the review.
-- **The calibration test.** Each model flagged verbs it was unsure about — 12.1% for 5.0, 7.6% for
-  4.8. Do those flagged verbs actually carry more defects? If yes, the hedging is informative and the
-  extra deliberation is aimed at the right places. If flagged and unflagged verbs fail at the same
-  rate, the extra thinking was anxiety rather than insight. This is a result about **self-knowledge**,
-  it is a *within*-model comparison, and it therefore sidesteps judge bias entirely. It can run off the
-  `forms.json` gate alone, before any review exists.
+`provenance.json` is still needed, for a different reason: the `integrate` skill stamps each accepted
+sentence's `source` to its author model (`Opus 4.8` / `Opus 5.0`). It is a provenance record now, not
+an experimental variable.
 
 ## Open analyses — what this session can actually do
 
 Ordered roughly by value. Pick what Josh asks for; do not assume all of them.
 
-### 1. The quality A/B (the big one, and the reason `provenance.json` exists)
+### 1. ~~The quality A/B~~ — RETIRED, out of scope
 
-Every other comparison here is about speed and verbosity. The unanswered question is whether Opus
-5.0's extra 30% of deliberation produced *better sentences*. **Read § "Designing the adversarial
-review so it answers the question" before any review runs** — shard-homogeneity, judge
-self-preference, and statistical power all have to be handled up front, and none of them can be
-repaired after the verdicts exist.
-
-Once verdicts exist — from Josh's adversarial review, or from a fresh review pass if he asks for one —
-split them by author model:
-
-```python
-import json
-prov = json.load(open('verbdata/authored/provenance.json'))
-# verdicts: {verb: bool_accepted} from whatever review produced them
-by = {}
-for verb, ok in verdicts.items():
-    by.setdefault(prov[verb], []).append(ok)
-for m, v in sorted(by.items()):
-    print(f'{m:16} {sum(v)}/{len(v)} accepted ({100*sum(v)/len(v):.1f}%)')
-```
-
-**Hypothesis to test, not to assume:** if the extra deliberation bought anything, the gain should
-concentrate on obscure and archaic verbs — which is where 5.0's uncertainty notes cluster — and be
-flat on ordinary ones. A flat accept-rate difference across the board would instead suggest the extra
-tokens were wasted.
-
-Two ways to cut "obscure" without a network fetch, both already on disk: the `no-candidates` vs
-`candidates-none-usable` split in `no-corpus-example.txt`, and `readingCount` in
-`classification.json`. **Do not reach for `dwds-frequencies.json`** — it has zero overlap with these
-verbs (§ "Trap"). A cheaper first cut needs no rarity measure at all: compare accept rates *on the
-verbs each model itself flagged with a `note`* against the rest.
+See § "Scope decision". Reviewing sentences for quality before shipping is still worth doing; splitting
+the verdicts by author model is not part of this experiment.
 
 ### 2. Sentence-level distributions
 
@@ -441,6 +370,9 @@ report it.
 - **Do not integrate.** Merging into the app bundle is the `integrate` skill (Mode A), and it is Josh's
   separate pass, after review and corrections. Accepted sentences get their `source` stamped to the
   author model (`Opus 4.8` / `Opus 5.0`) — `provenance.json` is what supplies that.
+- **Do not reconstruct a model-vs-model quality comparison** in any form: accept rates by author,
+  defect counts by author, judge panels. It is out of scope by decision, not by oversight
+  (§ "Scope decision"). Quality work on the sentences is welcome; attributing quality to a model is not.
 - **Do not write `docs/blog_notes.md` during analysis.** A single wrap-up entry at the end is fine, per
   [`CLAUDE.md`](../CLAUDE.md).
 

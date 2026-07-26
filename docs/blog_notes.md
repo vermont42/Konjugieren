@@ -5094,3 +5094,29 @@ Left undone, deliberately: `verweben` still has no adjudication verdict, and the
 verbs in `verbdata/gloss-review/skipped-multi-reading.txt` were never sharded, because
 `apply_gloss_corrections.py` refuses to guess which of two senses to rewrite. At the sweep's measured
 10.1% that is perhaps four more defective glosses sitting in the corpus, reachable only by hand.
+
+**verweben, settled by usage rather than by dictionary (2026-07-26).** The one proposal the
+adjudicator never returned a verdict for. Josh asked for external confirmation, then sharpened the
+ask: search for *uses*, not definitions. That changed the answer twice.
+
+Dictionaries gave `interweave` (PONS primary) and offered `interlace` (Langenscheidt), so the gloss
+briefly shipped as "interweave, interlace". Attested use then removed `interlace` entirely: it ranks
+sixth on Reverso's frequency-ordered list and appears in no Linguee bilingual pair. Dictionary-
+attested is not the same as used. `intertwine` ranks third and is what translators actually reach
+for in the figurative cases, so the final gloss is **"interweave, intertwine"**.
+
+The register finding is the more interesting one, and it was Josh's observation from reading the
+examples: the finite verb is effectively figurative-only in real text. 5 of 5 DWDS corpus citations
+and 6 of 6 free Reverso examples are figurative — love and friendship in a marriage, film elements,
+narrative strands, national fates. The literal textile sense is real in the dictionaries but survives
+in prose mainly as the nominalized *das Verweben von Fäden* in craft writing.
+
+The gloss is deliberately **not** marked figurative. Both English words read naturally in either
+register, so nothing misleads — and appending "(figurative)" would reproduce the leaked-dictionary-
+apparatus defect class this entire sweep existed to remove. `gloss_review.md` rates `entmieten`
+glossed "of a landlord" as high severity for precisely that reason. Fixing a gloss by adding a usage
+label would have been the sweep undoing itself on its last verb.
+
+Process note: Reverso Context 403s WebFetch, and the right move was the Chrome MCP rather than
+routing around the block with weaker sources. Its ranked-by-frequency translation list — which the
+dictionaries do not provide — is what made the interlace-vs-intertwine question answerable at all.

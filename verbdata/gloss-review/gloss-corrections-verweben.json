@@ -1,0 +1,27 @@
+{
+  "_source": "hand verdict, 2026-07-26",
+  "_why": "The one proposal from the gloss sweep that Opus 4.8 never returned a verdict for: shard 007 emitted 24 verdicts where 25 were required. Verified against external sources instead of a second model, at Josh's request, because the proposed gloss was model-authored -- kaikki lists only 'to weave' for this verb, so there was no dictionary sense available to re-pick.",
+  "_definitions": [
+    "PONS de-en: primary translation 'to interweave sth'",
+    "Langenscheidt de-en: 'to weave sth into sth, to interweave (or interlace) sth with sth'",
+    "DWDS: five senses, all joining-by-weaving; word marked selten",
+    "Duden: weak inflection for the handcraft sense, strong for the figurative"
+  ],
+  "_attested_uses": [
+    "DWDS corpus: all five citations figurative, none literal textile weaving -- 'das sehr eng miteinander verwobene Establishment' (Die Zeit, 2005); 'unser Schicksal so verwoben wie mit dem tschechischen Volk' (1996); 'Seine private Geschichte ist verwoben mit dem Untergang des alten Oesterreich' (Die Zeit, 1970); 'Das Spiel sei eng mit dem Film verwoben' (SZ, 2003); 'sie verwebten sich in meine Traeume' (Bischoff, 1912)",
+    "Reverso Context, infinitive verweben, frequency-ranked renderings: interweave > weave > intertwine > weave together > entwine > interlace > inweave > twine",
+    "Reverso Context, participle verwoben: interwoven > woven > entwined > interweaved > interrelated > weaved > interweaving > intermeshed > intertwining",
+    "Reverso attested pairs: 'Streicher und Gitarren verweben sich wie vom Baum herabfallende Blaetter' -> 'Strings and guitars interweave like leaves falling down from a tree'; 'Filmtypische Elemente verweben sich mit Zeitgenoessischem Tanz' -> 'Typical film elements interweave with contemporary dance'; 'Roest- und Kaffeearomen, verwoben mit Eiche' -> 'Roasted and coffee flavours interwoven with oak'",
+    "Linguee published bilingual pairs: interwoven dominant, then interrelated, intermeshed, woven together",
+    "Literal textile use survives mainly as the nominalized Verweben in craft prose ('das Verweben verschiedener Garne'), not as the finite verb in general text"
+  ],
+  "_decision": "Three states, each evidence-driven. Proposed 'interweave' (model-authored; kaikki lists only 'to weave', so no sense was available to re-pick). Briefly widened to 'interweave, interlace' on Langenscheidt's dictionary listing, then narrowed again when attested uses showed interlace ranks sixth on Reverso and appears in no Linguee pair -- dictionary-attested is not the same as used. Final gloss pairs the dominant rendering with intertwine, which ranks third and carries the figurative sense the corpus shows dominates.",
+  "_note": "weben itself ships 'weave', so the pre-correction gloss made the base verb and its ver- derivative identical.",
+  "verweben": {
+    "old": "weave",
+    "new": "interweave, intertwine",
+    "why": "ver- carries joining-by-weaving; kaikki's bare 'to weave' is weben and collided with it -- both verbs shipped the identical gloss. Every DWDS corpus citation is figurative, and interweave/interwoven is the dominant published rendering."
+  },
+  "_verified_via": "WebSearch, WebFetch (DWDS, PONS, Linguee), and Chrome MCP for Reverso Context, which 403s WebFetch",
+  "_register_of_use": "The finite verb is effectively FIGURATIVE-ONLY in attested general text. Every DWDS corpus citation (5/5) and every free Reverso example for the infinitive (6/6) is figurative -- love and friendship, film elements, narrative strands, fates, institutions. The literal textile sense is attested in DICTIONARIES (DWDS senses 1-3, with constructed examples like 'Goldfaeden in eine Decke verweben') but survives in real prose mainly as the nominalized 'das Verweben von Faeden' in craft writing. Reverso's remaining examples sit behind a registration wall that was not created. The gloss is NOT marked figurative, deliberately: 'interweave' and 'intertwine' both read naturally in either register, so nothing misleads, and appending a usage label such as '(figurative)' would reproduce the leaked-dictionary-apparatus defect this whole sweep was removing -- the brief rates entmieten 'of a landlord' as high severity for exactly that."
+}

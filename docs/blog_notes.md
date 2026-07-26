@@ -5351,3 +5351,76 @@ coverage but the one the `weben`/`verweben` entry named: the pipeline has **no c
 gloss defensible alone and identical to a morphological relative's remains invisible to it. This pass
 closed that hole *within* an entry, by putting `sibling_gloss` in the record. Between entries it is
 still open, and it is mechanical — flag same-stem verbs sharing a gloss before any model is involved.
+
+## The etymologies catch up with the corrected glosses, and an unenforced style rule surfaces (2026-07-26)
+
+Josh read the six corrected glosses against the shipping etymologies and asked whether `überkochen`,
+`tauchen`, and `zurückziehen` needed refinement, noting that `umgehen` and `passieren` looked fine.
+He was right on all five counts, and two of the three turned out to be *wrong* rather than merely
+thin.
+
+**`überkochen` contradicted itself and then contradicted the new gloss.** It opened "An inseparable
+compound of `über-` + `kochen`" and closed "in everyday use `überkochen` is usually separable." In
+between it glossed the prefix as conveying "excess, doing something too much or past a limit," which
+serves neither reading: the inseparable one is the *again* prefix of `überarbeiten`, `überdenken`,
+`überprüfen`, and the separable one is literal spatial *over the rim*. So the app was about to ship a
+gloss saying "cook again" beside an etymology saying the prefix means excess. Rewritten around the
+separable/inseparable split, with the auxiliary, the stress, the Austrian marking, and the fact that
+German expresses cooking-too-long with `verkochen`.
+
+The rewrite also gets a genuine payoff out of the root. PIE *`pekʷ-` reaches Latin `coctus`, which
+gives Old French `bescuit` from `bis coctus`, "twice-cooked," and so English `biscuit` and German
+`Biskuit`. Inseparable `überkochen` means, in one German word, what `biscuit` has been saying in Latin
+the whole time. Etymology occasionally hands you the thematic echo for free.
+
+**`zurückziehen` contained a wrong example, and it collided with a gloss corrected eleven entries
+ago.** The entry listed "withdrawing money (`Geld zurückziehen`)" among the verb's uses. DWDS's
+accusative-object profile for `zurückziehen` is *Kandidatur, Bewerbung, Antrag, Klage, Truppe, Zusage,
+Einspruch, Anzeige, Angebot, Berufung, Unterschrift, Offerte, Beschwerde, Aussage, Gesetzentwurf,
+Vorschlag, Zustimmung, Entwurf*: every object is a formal declaration one revokes, plus troops. No
+money term appears. Money leaves an account with `abheben`, which the recall-gap pass had just
+corrected **to** "withdraw (money)" the same day. The app was shipping two surfaces that disagreed
+about the same English word.
+
+That is the same error class as `überkochen`'s "overcook", and worth naming as a class:
+**English semantics projected onto a German form.** English *withdraw* merges cash and applications
+where German splits them; English *over-* means excess where German inseparable `über-` means again.
+Both defects were invisible to a reader working from the English side, which is exactly who wrote
+them.
+
+**`tauchen` was right but framed off by one.** It said the transitive "immerse" sense "coexists with
+the intransitive 'to dive'," which is *almost* the split. The app's haben reading is not purely
+transitive: it also covers intransitive *activity* diving (`ich habe getaucht`), against the sein
+reading's directed motion (`er ist in die Tiefe getaucht`). That is the activity-versus-goal auxiliary
+alternation, and the corpus already models it identically on `schwimmen`, `reiten`, and `tanzen`. Now
+stated as an auxiliary split, with those three named, and with the point that German marks with an
+auxiliary what English marks, if at all, with a goal phrase.
+
+**`umgehen` and `passieren` audited and clean, and `passieren` had quietly been right all along.** Its
+etymology describes the haben reading as "to pass (a place, a border, an obstacle)" — which matches the
+gloss corrected *this morning* to "pass, cross" and did **not** match the old "pass through, strain".
+The etymology was disagreeing with the gloss for as long as both have shipped, and nothing looked. One
+more instance of the finding that keeps recurring: this corpus has several independent descriptions of
+the same verb, and no pass has ever compared them to each other.
+
+One thing checked and deliberately not changed: `passieren` ends "Cognate with English `pass`, Dutch
+`passeren`, Spanish `pasar`, Italian `passare`." Strictly, German `passieren` and English `pass` are
+co-borrowings from French rather than cognates. But the corpus uses "cognate with" this way
+throughout (`kopieren`: "Cognate with English `copy` and French `copier`, all from the same Latin
+source"), so fixing one entry would make it the odd one out. House usage wins over strict usage; a
+corpus-wide change would be a different decision.
+
+**The style rule that turned out to be unenforced.** `docs/english_writing_style.md` says, flatly,
+"Avoid em dashes entirely," and gives two reasons: Josh dislikes them aesthetically, and readers infer
+that prose containing them is AI-generated. My first draft of all three rewrites was full of them. On
+checking, so is nearly everything else: **2,625 of 3,572 English etymologies contain an em dash**
+(5,292 total), 2,750 of the German, 592 in `Localizable.xcstrings`, and 698 across this journal.
+
+The rule is real and the corpus ignores it, which is a rule-versus-practice conflict I cannot settle
+alone. What I did settle: the three entries I rewrote are now dash-free, and I removed a stray `--`
+that was already sitting in `zurückziehen`. The other ~5,289 are Josh's call, and the second reason in
+the style doc gives it some weight, since these etymologies *were* model-generated and the em dash is
+precisely the tell he named.
+
+Six values changed across two languages, twelve lines of diff, no collateral churn. `check_docs.py`
+clean, 211 tests in 32 suites passing.

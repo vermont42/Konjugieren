@@ -81,6 +81,13 @@ it predates. The same argument covers `docs/etymologies.md` (1,293) if it is a g
 than a live document. **Check which it is before deciding.** Live docs that describe current truth
 are fair game and cheap.
 
+**The journal's exclusion is not permission, and the distinction has a place to live now.**
+`CLAUDE.md` says Josh may eventually generate blog posts from `blog_notes.md`, and a blog post
+publishes under his byline, where the rule plainly governs. So the archive keeps its 699 em dashes as
+a record of how the entries were written, and the sweep belongs in the **post-generation step**
+instead. That is now written into `CLAUDE.md`'s work-journal section and into
+`docs/english_writing_style.md`, so it does not depend on a future session reading this plan.
+
 ## The 4× economy: deduplicate before reviewing
 
 **70% of etymology bullet lines are repeats.** 6,194 bullet occurrences reduce to **1,872 distinct

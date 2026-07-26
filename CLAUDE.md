@@ -6,11 +6,17 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 As you complete chunks of work in this repo, append a note to `docs/blog_notes.md`,
 creating the file if it doesn't exist. Give each entry a `##` heading that includes the
-date — `## <Title> (YYYY-MM-DD)` — with newest entries at the bottom. Write narrative
+date, `## <Title> (YYYY-MM-DD)`, with newest entries at the bottom. Write narrative
 for a future reader (what was tried, what failed, why decisions changed), not a bare
 changelog: Josh may eventually generate blog posts from these notes, and future Claude
-sessions rely on them as dated project memory — when older docs conflict, the journal
+sessions rely on them as dated project memory. When older docs conflict, the journal
 shows which truth is current.
+
+**Generating a blog post from these notes publishes under Josh's byline**, so
+[`docs/english_writing_style.md`](docs/english_writing_style.md) governs the post even
+where it does not govern the archive. The journal's own em dashes are a record of how
+the entries were written, not permission to carry them forward. Strip them, and anything
+else the style doc forbids, at generation time rather than by editing the archive.
 
 ## Version Control
 

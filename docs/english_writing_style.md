@@ -1,6 +1,6 @@
 # Missing Articles Are Okay
 
-Do not flag absent articles as errors when both forms (with and without article) are standard English. For example, "interested in use of Claude Code" is correct — the article is optional, not required. The bare form is common in formal/resume register.
+Do not flag absent articles as errors when both forms (with and without article) are standard English. For example, "interested in use of Claude Code" is correct: the article is optional, not required. The bare form is common in formal/resume register.
 
 **Why:** AI models tend to normalize toward the statistically more frequent form, but frequency isn't correctness. Josh is a strong writer with fifty years of English and finds these false corrections irritating.
 
@@ -25,7 +25,27 @@ Aggressively hyphenate phrasal adjectives (compound modifiers that appear before
 
 # No Em Dashes
 
-Avoid em dashes entirely. Instead, use a colon, semicolon, or comma. Or break into a new sentence with a period. This prohibition springs from two facts. First, Josh dislikes em dashes as an æsthetic matter. Second, many readers infer, often correctly, that prose containing em-dashes is AI-generated.
+Avoid em dashes entirely. Instead, use a colon, semicolon, or comma. Or break into a new sentence with a period. The same applies to an en dash used as punctuation, though a numeric range such as 1904–1944 is correct typography and stays.
+
+**Why:** three facts, in ascending order of durability.
+
+1. Josh dislikes em dashes as an æsthetic matter.
+2. Many readers infer, often correctly, that prose containing em dashes is AI-generated.
+3. This is Josh's writing, under his name, and he does not write that way. He has known the construction since editing a law review twenty years ago and recognizes that some good writers use it. He is a good writer who does not.
+
+The third reason is the one that survives if the second stops being true, and it settles two questions the first two leave open. It applies to the **German** as much as to the English, although the Gedankenstrich is ordinary German typography, because the German text in this app is the same authored prose in another language rather than a concession to German convention. And it applies to anything that will be **published under Josh's byline**, including a blog post generated from `docs/blog_notes.md`. That file's own em dashes are a historical record, not a license; strip them at generation time.
+
+**Why the model keeps producing them:** the same mechanism as the missing-article rule above. Em dashes are dense in the training data, and the construction is not an error anywhere it legitimately appears, so the default rate is simply too high. Frequency is not correctness. Expect to emit them, and expect not to notice by re-reading: a plan arguing against em dashes was drafted on 2026-07-26 containing twenty-eight of them, and a `grep` rather than a careful re-read is what caught it.
+
+**How to apply:** count the dashes in the sentence before replacing any, because a lone dash and a matched pair are different problems.
+
+| Before | After | Fix used |
+|---------|-----------|--------|
+| The boiling goes over the rim of the pot — die Milch kocht über. | The boiling goes over the rim of the pot, as in die Milch kocht über. | A connective, not punctuation |
+| ...and überprüfen ("to check over") — the prefix of doing a thing a second time. | ...and überprüfen ("to check over"); it is the prefix of doing a thing a second time. | Semicolon, plus a subject |
+| a formal declaration — einen Antrag, eine Klage — and one withdraws oneself | a formal declaration (einen Antrag, eine Klage), and one withdraws oneself | Parentheses |
+
+The third row is the one that goes badly wrong under a find-and-replace. A matched pair brackets a parenthetical, so replacing both dashes with commas inside a list that already has commas yields a sentence no reader can parse.
 
 # Logical Punctuation
 

@@ -5424,3 +5424,65 @@ precisely the tell he named.
 
 Six values changed across two languages, twelve lines of diff, no collateral churn. `check_docs.py`
 clean, 211 tests in 32 suites passing.
+
+## Josh's actual reasoning about em dashes, written down where it will be read (2026-07-26)
+
+The style rule existed and gave two reasons. Josh gave a third in conversation, and it is the one
+that holds the others up, so it now lives in `docs/english_writing_style.md` rather than in a chat
+log.
+
+The first two reasons were aesthetic dislike and the AI-slop inference. The third is authorship: this
+is Josh's writing, under his name, and he does not write that way. He has known the construction
+since editing a law review twenty years ago and grants that some good writers use it. He is a good
+writer who does not. That reason is more durable than the AI-inference one, because it survives the
+day em dashes stop reading as a tell.
+
+**It also settles two scope questions the first two reasons leave open**, which is how I knew it was
+worth writing down rather than merely agreeing with.
+
+*German is in scope.* The Gedankenstrich is ordinary German typography, and
+`english_writing_style.md` is scoped to English, so the German etymologies had an apparent exemption.
+On a voice rationale they plainly do not: the German text in this app is the same authored prose in
+another language, not a concession to German convention. I had applied the rule to both on instinct
+earlier the same day; this is why that was right.
+
+*The journal's exclusion is not permission.* `em_dash_sweep.md` excludes `blog_notes.md` on the
+grounds that it is dated project memory and retrofitting its punctuation edits the historical record.
+That still holds. But `CLAUDE.md` says Josh may eventually generate blog posts from these notes, and a
+blog post publishes under his byline, where the rule plainly governs. So the archive keeps its 699 em
+dashes and the sweep belongs in the post-generation step. That is now written into `CLAUDE.md`'s
+work-journal section, into the style doc, and into the plan, because a distinction living in only one
+of the three is a distinction that gets lost.
+
+**The style doc was violating its own rule on line 3**, in the "Missing Articles" section. Fixed.
+That section also turns out to contain the exact argument the em dash section was missing: "AI models
+tend to normalize toward the statistically more frequent form, but frequency isn't correctness. Josh
+is a strong writer with fifty years of English." The pattern was already in the file; only the em
+dash section had not been given it.
+
+**On why the habit is hard to train out, and a connection Josh drew.** The em dash is not an error.
+It is legitimate wherever it appears in the training data, and the defect is purely one of rate. A
+correctness problem can be trained against with a clean signal; a calibration problem means moving a
+frequency on a construction that is fine in most of its occurrences.
+
+There is also a loop in it, and Josh named the right family for it: model collapse. The published
+description of collapse, from training recursively on generated data, is usually about the tails
+vanishing and variance shrinking toward the mean. The em dash is the same mechanism seen from the
+other end: an already over-represented feature getting more over-represented as generated text feeds
+the next corpus. Tail loss and mode amplification are one dynamic viewed from opposite ends of the
+distribution.
+
+The inversion worth keeping is this. Collapse is normally described as invisible degradation, which
+is precisely what makes it dangerous. The em dash is the symptom that is *legible*, a visible
+watermark of the process. That is why it works as a tell, and it is also why the durable fix belongs
+in the repo rather than in the weights: `check_docs.py` exists because prose asking to be re-read does
+not get re-read, and a dash check scoped to authored text is the same shape of answer. It keeps
+working regardless of what any model does by default.
+
+Evidence for that, from this same day: a plan arguing against em dashes was drafted containing
+twenty-eight of them, and a `grep` rather than a careful re-read is what caught it. That anecdote is
+now in the style doc, because it is the most persuasive line in the section.
+
+Not done, and deliberately: `CLAUDE.md` still holds 25 em dashes outside the section I edited.
+Sweeping the repo's internal docs is the scope question `em_dash_sweep.md` step 1 puts to Josh, and
+answering it unilaterally in the middle of a different task would be the wrong way to decide it.

@@ -5885,3 +5885,170 @@ production run, an entire day of citation, and a second file written on top of i
 plausible and nobody spent the three runs. Plausible mechanisms attached to real measurements are
 the hardest kind of wrong to notice: the number keeps being right, so the story next to it never
 gets audited.
+
+## Rewriting the App Store listing for a corpus that tripled (2026-07-26)
+
+Konjugieren is in a good state for release, another session is generating screenshots, and the
+question was what the 1.2 listing now gets wrong. 167 commits separate `3a5dab3` (the 1.2 version
+bump, 2026-05-17) from today.
+
+The verb count was not among the stale claims, which was the first surprise. `docs/description.md`
+already said 3,572, because the corpus-import commits updated it as they went and
+`scripts/check_docs.py` has been enforcing it since `f7ad9b3`. The listing on the App Store still
+says 990. That gap is the whole point of the checker: the file is right and the world is stale, which
+is the correct direction for the error to run.
+
+### Claims that go stale by getting weaker
+
+The most interesting finding was not a false claim but a limp one. The Deep Etymologies paragraph
+promised "cognates from English, French, Latin, Sanskrit, and Turkic." Measured across the 3,572
+shipping etymologies: English 94%, Latin 41%, Greek 26%, Gothic 23%, Old Norse 16%, French 7%,
+Sanskrit 4%, and Turkic in exactly one entry. The sentence was written when the corpus held 990 and
+Turkic was a charming outlier worth naming. At 3,572 it is a rounding error sitting in the same list
+as Latin. Nothing about it became false. It just stopped being the best five words available, and no
+checker can catch that, because "is this the strongest true claim?" is not a machine question.
+
+The same measurement moved "many back to Proto-Indo-European" to "nearly all the way." 95% of
+entries reach PIE. The original was hedged for a smaller corpus and the hedge outlived its reason.
+
+### The count that depends on what you count
+
+The listing says fifteen conjugationgroups in both languages. `Conjugationgroup` has fourteen cases
+and the bullet list beneath the claim enumerates fourteen. The fifteenth is Infinitiv, which
+`docs/terminology.md` names as a one-member conjugationgroup in its opening paragraph but which the
+app renders as the verb's headword rather than as a row. `docs/on-device-tool-design.md` and
+`docs/video_script.md` both say fourteen. So three docs disagree with two, and the disagreement is
+real rather than clerical: it turns on whether the infinitive is a conjugationgroup or the thing
+conjugationgroups are formed from. Flagged for Josh rather than settled unilaterally; he accepted
+fourteen.
+
+This is precisely the case `check_docs.py` § "A count is checkable only if its subject is
+unambiguous" declines to check, and it was right to decline.
+
+### Everything is paid for in characters
+
+Apple caps a description at 4,000. English sat at 3,867 and German at 3,966, so German had 34
+characters of headroom for a release that added a Regional Variety setting, tripled the corpus,
+gave every verb an example sentence, and closed the Families-tab prefix gap.
+
+Two additions were unavoidable. Regional Variety (North Germany / Austria / Switzerland, Swiss
+ss-for-ß, the southern Perfekt auxiliary) is the largest user-visible feature since 1.2 and appeared
+nowhere. Example sentences went from 990 to 3,572 and were likewise absent, having never been in the
+listing at all. Together they cost about 200 characters per language.
+
+They were paid for by compression, not by cutting a section: the arcade paragraph lost "cultural
+icons" and "inspired by classic games," the iPad paragraph lost "intelligently" and "rich," Game
+Center lost "track your progress towards," and the closing line lost "Honor the language." The
+Cliff Schmiesing tribute was not touched, which was the constraint the whole budget was built
+around. German needed a second pass of six more trims because German inflates roughly 1.25x against
+English and had started with 34 characters instead of 133. Both landed at about 3,975.
+
+### The em dash sweep had missed the one file that publishes
+
+`docs/english_writing_style.md` § "No Em Dashes" says the rule governs "anything published under
+Josh's byline," and explicitly covers the German too. `63ba0ae` took `docs/` out of the sweep three
+commits ago, which was right for an archive: `blog_notes.md` and `roadmap.md` are historical records
+and their punctuation is evidence. But `description.md` is not an archive. It is the copy that goes
+into App Store Connect under Josh's name, and it held eight em dashes in each language.
+
+They are gone now, and in German this was not merely cosmetic. German set all eight open (` — `)
+where English set them closed (`—`), so replacing them with a comma or colon freed sixteen
+characters in the language that had none to spare. The style rule paid for part of its own
+enforcement.
+
+### Two things I got wrong and caught
+
+`Reading.swift`'s doc comment names *schmelzen* as the motivating example for per-reading auxiliaries
+(sein when snow melts, haben when the sun melts it). It is a good example and it is not in the
+shipping corpus: `Verbs.xml` gives schmelzen one reading. The comment describes the linguistics the
+model was built for, not the data currently loaded into it. The release notes use *abbrechen*
+instead, which genuinely carries `ay="s"` on its second reading. A doc comment is not a corpus.
+
+And I first wrote that every verb's example sentence is "most drawn from those same sources," having
+just listed Goethe, Kafka, Mann, the Grundgesetz, and the Luther Bible. Luther, Kafka, Mann, Goethe,
+and the Grundgesetz together account for 1,244 of 3,572 sentences, or 35%. "Most" was true of
+published sources in general (2,439, or 68%) and false of the five named immediately before it. The
+sentence read fluently and was wrong, which is the failure mode worth naming: the referent of "those
+same sources" narrowed between one clause and the next without the prose showing any seam.
+
+### Left open
+
+`Region.north` localizes to "North 🇩🇪" and "Nord 🇩🇪" in `Localizable.xcstrings` on `main`, with the
+flag inside the string. Josh's objection to "North" in the description ("not a cognizable region")
+applies at least as strongly to the Settings picker, where it is the actual UI. Not changed:
+Region is the third section in `SettingsView` and `take_screenshots.sh` shoots Settings unscrolled,
+so the label is almost certainly in the App Store screenshots the other session is generating right
+now. Changing the string mid-run would silently invalidate them.
+
+Also noted and not touched: `take_screenshots.sh` line 125 still explains an iPad wait budget with
+"990 verbs in regular size class." The file is modified in the other session's working tree.
+
+
+## The flag that could not fit in a segment (2026-07-26, later)
+
+Two things landed after the listing rewrite above, and one of them was a mistake worth recording.
+
+### The Region picker's asymmetry, and where it came from
+
+Josh objected to the description calling the northern variety "North", on the grounds that North is
+not a cognizable region. Following that into the app surfaced a contradiction between two strings
+that render on the same `VerbView` screen: `auxiliaryPillText` prints `hat 🇩🇪 · ist 🇦🇹🇨🇭`, and
+`Region.southernNote` directly beneath it quotes Duden labeling *ist gestanden* as "southern German,
+Austrian, and Swiss". Read as claims about speakers, the pill puts all of Germany on *hat* and the
+note puts the south on *ist*. `Region.auxiliaryVariesLabel` sides with the pill and silently drops
+the southern German that `southernNote` includes.
+
+The resolution was Josh's, and it changed no code: read the flags as denoting **codified national
+standards** rather than speech communities, say so in `Settings.regionDescription`, and the two
+lines become complementary instead of opposed. The German standard prescribes *hat gestanden*; the
+Austrian and Swiss standards admit *ist gestanden*; intra-German variation is a separate fact the
+description now states. Same pixels, different premise.
+
+Getting the description sentence right took two passes. The first draft disclosed the gap ("Usage in
+southern Germany differs from the national standard") and the second resolves it ("Southern German
+usage often follows the Austrian and Swiss standards rather than the German one"), which tells a
+Munich user which of the three options to pick rather than that the app does not quite cover them.
+"The national standard" also had to go, because leaving one of three national standards unmarked as
+*the* one re-demotes the other two.
+
+A related question Josh raised and answered along the way: no, "Standard German" is not a better
+translation of *Bundesdeutsch* than "German". It is the superordinate term covering all three
+standards, so using it for one inverts the sentence's own argument. English simply lacks a one-word
+*Bundesdeutsch*, and the fix is structural: factor the noun out, so "the German, Austrian, and Swiss
+standards" makes all three parallel adjectives.
+
+The plan is `prompts/region_national_framing.md`.
+
+### The premise I got wrong, and how
+
+The plan originally said the change was "four strings and zero Swift, because the machinery already
+exists", and cited three preconditions: the `EmojiAsset` mapping for 🇩🇪, the `EmojiGermanFlag`
+imageset, and `SettingsView.regionSegment(for:)`. All three are real. **None of them is in `main`.**
+I had read them out of a working tree carrying a second session's uncommitted emoji work, and never
+checked `HEAD`. A fresh session handed that plan today would have found none of its preconditions
+and every "from" value wrong: `main` has `Region.north` as `North 🇩🇪`, flag inside the string, not
+the bare `North` I quoted.
+
+The lesson is narrow and worth stating plainly: **when two sessions share a checkout, reading a file
+tells you about the working tree, not about the branch.** Any plan written for a *later* session has
+to be checked against `git show HEAD:<path>`, because that is the state the later session will
+actually meet. The plan now states its dependency and makes the executor read the current value and
+infer from it whether the blocking work has landed.
+
+### What the other session found, which is better than my summary of it
+
+`docs/emoji-assets.md` is worth reading in full. The short version is that iOS 26 fails to resolve
+Apple Color Emoji for regional-indicator pairs and a tag sequence, across every rendering path
+tried, including a standalone `Text("🐎")`; the fix is to pre-render the glyphs as PNGs on macOS,
+where CoreText handles them correctly, and substitute at render time.
+
+Two details bear on the Region work specifically. The country-flag tofu is **simulator-only**: the
+flags render correctly on a physical device, which is why the bug survived for months, and what
+forced the fix was the App Store screenshot sweep capturing `SettingsView`. And a segmented picker
+renders one plain `Text` or one plain `Image` per segment, silently dropping image attachments
+inside a `Text`, so a segment cannot pair a word with a flag at all. That constraint, not a design
+decision, is why `Region.north` lost its 🇩🇪. The asymmetry Josh reacted to was a rendering artifact
+that happened to expose a real modeling question.
+
+It also makes the plan cheaper than it looked: setting `Region.north` to a bare 🇩🇪 is exactly the
+case `regionSegment(for:)` was written for, so the whole change is four strings and two comments.

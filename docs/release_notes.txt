@@ -1,0 +1,25 @@
+Version 1.3
+
+## English
+
+Konjugieren's corpus grows from 990 verbs to 3,572. The expansion adds the strong verbs the first corpus was missing and 2,303 prefixed derivatives, so the verbs you actually meet in German are now the ones the app conjugates: not just kommen but ankommen, entkommen, unterkommen, and zuvorkommen.
+
+Every one of those 3,572 verbs now ships an etymology and an example sentence, where before only 990 did. Most sentences come from real German: Luther's Bible, the Brothers Grimm, Goethe, Kafka, Mann, Nietzsche, the Grundgesetz, and Bundestag proceedings. The etymologies trace nearly every verb back to Proto-Indo-European, with cognates in English, Latin, Greek, Gothic, and Old Norse.
+
+German is pluricentric, and Konjugieren now says so. A new Regional Variety setting offers the northern German, Austrian, and Swiss standards, seeded from your device's region on first launch. In Swiss German, ss appears in place of ß. Stehen, sitzen, and liegen feature sein as their auxiliary for the southern varieties, contrasting with northern German. The quiz accepts a correct answer in any variety. A new Duden article introduces the dictionary that supplies those labels.
+
+Forty-four verbs have two distinct meanings, with different conjugations for each. Hängen is strong when a picture hangs on the wall and weak when you hang it there. Abbrechen takes haben when you cancel something and sein when something snaps off. These verbs now let you switch between readings, and each reading gets its own conjugation table.
+
+Corrections and fixes: a full review of the corpus revised 220 English translations and 121 example sentences. Home Screen and Lock Screen widgets now advance at midnight without launching the app, and their text is localized into German. The game no longer damages the player every frame during contact, fires at the same rate on ProMotion displays as on any other, and reflows when you rotate the device instead of guessing at orientation. Deeplinks to an article or a verb family switch to the right tab. VoiceOver announces quiz results in German. Settings gains a version footer.
+
+## German
+
+Konjugierens Korpus wächst von 990 auf 3.572 Verben. Die Erweiterung ergänzt die starken Verben, die dem ersten Korpus fehlten, sowie 2.303 präfigierte Ableitungen. So konjugiert die App nun die Verben, denen man im Deutschen tatsächlich begegnet: nicht nur kommen, sondern auch ankommen, entkommen, unterkommen und zuvorkommen.
+
+Jedes dieser 3.572 Verben bringt jetzt eine Etymologie und einen Beispielsatz mit; zuvor waren es nur 990. Die meisten Sätze stammen aus echtem Deutsch: der Lutherbibel, den Märchen der Brüder Grimm, Goethe, Kafka, Mann, Nietzsche, dem Grundgesetz und Plenarprotokollen des Bundestages. Die Etymologien führen fast jedes Verb bis ins Urindogermanische zurück, mit Verwandten aus dem Englischen, Lateinischen, Griechischen, Gotischen und Altnordischen.
+
+Das Deutsche ist plurizentrisch, und Konjugieren sagt das jetzt auch. Die neue Einstellung Regionale Variante bietet den norddeutschen, den österreichischen und den schweizerischen Standard, der beim ersten Start aus der Region Ihres Geräts abgeleitet wird. Im Schweizer Hochdeutsch steht ss anstelle von ß. Stehen, sitzen und liegen bilden das Perfekt in den südlichen Varianten mit sein, im Gegensatz zum norddeutschen Standard. Das Quiz akzeptiert eine richtige Antwort in jeder Variante. Ein neuer Duden-Artikel stellt das Wörterbuch vor, das diese Kennzeichnungen liefert.
+
+Vierundvierzig Verben haben zwei verschiedene Bedeutungen, die sich unterschiedlich konjugieren. Hängen ist stark, wenn ein Bild an der Wand hängt, und schwach, wenn man es dorthin hängt. Abbrechen bildet das Perfekt mit haben, wenn man etwas abbricht, und mit sein, wenn etwas von selbst entzweibricht. Bei diesen Verben lässt sich jetzt zwischen den Lesarten wechseln, und jede Lesart erhält ihre eigene Konjugationstabelle.
+
+Korrekturen und Fehlerbehebungen: Eine vollständige Durchsicht des Korpus hat 220 englische Übersetzungen und 121 Beispielsätze überarbeitet. Widgets für Home- und Sperrbildschirm wechseln jetzt um Mitternacht, ohne dass die App gestartet werden muss, und ihre Texte sind auf Deutsch lokalisiert. Das Spiel fügt der Spielfigur nicht mehr in jedem Einzelbild einer Berührung Schaden zu, feuert auf ProMotion-Displays genauso schnell wie auf allen anderen und passt sich beim Drehen des Geräts der neuen Größe an, statt die Ausrichtung zu erraten. Deeplinks auf einen Artikel oder eine Verbfamilie wechseln zum richtigen Tab. VoiceOver sagt die Quiz-Ergebnisse auf Deutsch an. Die Einstellungen erhalten eine Versionsanzeige.

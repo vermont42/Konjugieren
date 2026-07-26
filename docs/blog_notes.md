@@ -5120,3 +5120,25 @@ label would have been the sweep undoing itself on its last verb.
 Process note: Reverso Context 403s WebFetch, and the right move was the Chrome MCP rather than
 routing around the block with weaker sources. Its ranked-by-frequency translation list — which the
 dictionaries do not provide — is what made the interlace-vs-intertwine question answerable at all.
+
+**weben checked too, and it is clean (2026-07-26).** The obvious follow-up to the verweben work: if
+the derivative's gloss was wrong, is the base verb's? No. `weben` was reviewed in shard 042 and drew
+no finding, and attested use says that was right rather than a miss. Reverso ranks its renderings
+`weave > spin > reweave > loom > woven` and tags the entry with the topic "Clothes Shopping"; every
+free example is literal — *Spinnen weben Netze*, *ein Tuch daraus zu weben*. The shipped gloss
+`weave` stays.
+
+The pair is worth recording because the two verbs turn out to be near-complementary in register.
+`weben` is attested overwhelmingly literal — spiders, cloth, looms. `verweben` is attested
+overwhelmingly figurative — fates, film elements, narrative strands. Shipping both as "weave" did not
+merely lose the *ver-* prefix; it flattened two verbs that in practice barely overlap in use. That is
+a sharper version of the sweep's general finding, and it suggests a check no stage of this pipeline
+performs: **glosses are audited one verb at a time, so a gloss that is defensible alone but identical
+to a morphological relative's is invisible to the reviewer.** Nothing looked at weben and verweben
+together; the collision surfaced only because a human asked about one of them. A future pass could
+flag same-stem verbs sharing a gloss mechanically, before any model is involved.
+
+One trap the importer dodged by luck: kaikki's third sense for `weben` is "to sway back and forth, to
+swing, to ramble" — the archaic-poetic *weben* of *Leben und Weben* and *weben und wirken*. A real
+German sense, useless to a learner, and had entry order placed it first the app would have shipped
+`weben` glossed "sway back and forth". The premise of this whole sweep, in one entry.

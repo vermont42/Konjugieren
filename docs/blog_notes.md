@@ -5537,3 +5537,22 @@ easy to generalise that to "internal docs are exempt". They are not. A log is ex
 historical record; `docs/roadmap.md` and `docs/ui-audit-2.md` are just as internal and are fully in
 scope. The plan now says so in as many words, because the wrong generalisation would quietly exempt
 1,489 more dashes.
+
+**Superseded within the hour: `docs/` and `prompts/` are now out of scope entirely.** Josh's call,
+and the reasoning is a cost judgment rather than a category one: those files are not user-facing the
+way the shipped strings are, nor developer-facing the way code comments are, and fixing roughly
+3,484 dashes there is not a beneficial use of time or tokens. He is explicit that he is not thrilled
+about them, which is worth recording, because an exclusion that reads as an oversight invites the
+next session to helpfully close it.
+
+So the careful log-versus-live-doc distinction I had just written into the plan turned out to be
+scaffolding for a boundary that moved past it. It is kept in the plan anyway, marked as superseded,
+because the reasoning is still correct and the *next* sweep may need it: a log is exempt for being a
+historical record, which is a different and stronger claim than being internal. That is the sort of
+thing worth losing an argument about and keeping the argument.
+
+**The interesting consequence is what the sweep became.** In scope: 11,384, of which
+`Etymologies.json` holds 10,742. **96% of the work is in one file.** `Localizable.xcstrings` has 592,
+Swift comments 45, the widget catalog 3, and the authored example sentences 2. A plan that opened by
+insisting the population splits four ways ends up saying: finish one file and you have finished
+nearly all of it. Both statements are true, and the first is what makes the second safe to act on.

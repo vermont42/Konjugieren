@@ -30,13 +30,12 @@ This is the whole design of the sweep. Counts as of 2026-07-26:
 | `Konjugieren/Models/ExampleSentences.json` | 4,651 | **2** | 4,372 are the citation separator, 277 sit in quoted sentences |
 | `Konjugieren/Assets/Localizable.xcstrings` | 592 | **592** | UI strings and the long-form Info articles. Also 296 en dashes |
 | `KonjugierenWidget/Localizable.xcstrings` | 3 | **3** | widget strings |
-| `docs/` + `prompts/` (81 files) | ~3,484 | **1,489** | `etymologies.md` (1,293) and `blog_notes.md` (~700) are logs |
 | `*.swift` (130 files) | 45 | **45** | comments |
-| **total** | **~19,517** | **~12,873** | |
+| `docs/` + `prompts/` (81 files) | ~3,484 | **0** | out of scope entirely, see below |
+| **total** | **~19,517** | **~11,384** | |
 
-**Roughly 12,900 of 19,500 are in scope; the other third is exempt.** Two of those counts drift by
-design and must be re-derived rather than trusted: `blog_notes.md` grows with every session, and
-this file's own specimen count changes when it is edited. `CLAUDE.md` is absent from the table
+**Roughly 11,400 of 19,500 are in scope, and 96% of those are in one file.** `Etymologies.json` is
+the sweep; everything else is a rounding error against it. `CLAUDE.md` is absent from the table
 because it was swept on 2026-07-26 and holds none.
 
 Four classes, and they take four different verdicts.
@@ -79,23 +78,24 @@ Everything else. `Etymologies.json` is the bulk, and it splits again:
 | em dashes in **shared component bullets** | 2,565 | 2,563 |
 | em dashes in **per-verb prose** | 2,719 | 2,895 |
 
-### 4. Internal docs: the two logs are excluded
+### 4. `docs/` and `prompts/`: out of scope entirely
 
-`docs/` and `prompts/` hold about 3,484, and **1,995 of them are excluded as logs.**
+**Resolved 2026-07-26. Do not audit or fix a single file in `docs/` or `prompts/`, roughly 3,484
+em dashes.** Josh's reasoning, recorded because a later session will otherwise read the exclusion
+as an oversight and helpfully close it: these files are not user-facing the way the shipped strings
+are, nor developer-facing the way code comments are. He is not thrilled about the dashes there, and
+fixing them is still not a beneficial use of time or tokens.
 
-**`docs/blog_notes.md` (~700, and growing) is left alone**, and this is not laziness. `CLAUDE.md`
-describes the journal as dated project memory that narrates what was tried and when; rewriting its
-punctuation edits the historical record to make the past comply with a rule it predates.
+This supersedes a narrower earlier decision that excluded only the two logs, `docs/etymologies.md`
+(1,293) and `docs/blog_notes.md` (~700 and growing), and left 1,489 in the other 79 files as fair
+game. That distinction no longer does any work for this sweep, though the reasoning behind it is
+worth keeping for the next one: a log is exempt for being a **historical record**, which is a
+different and stronger claim than being internal.
 
-**`docs/etymologies.md` (1,293) is left alone too. Resolved 2026-07-26: Josh confirms it is a log.**
-The same argument applies, and it is the larger of the two.
-
-That leaves **1,489** across the other 79 files, which are live documents describing current truth
-and are fair game. The largest are `docs/ui-audit-2.md` (215), `prompts/uses_etymologies.md` (76),
-`docs/wwdc2026-whats-new-swiftui.md` (62), and `docs/roadmap.md` (56); the rest is a long tail of a
-few dashes per file. Note what the exemption actually rests on: a log is exempt for being a
-**historical record**, not for being internal. A live internal doc gets no exemption from being
-internal.
+The practical effect is that the sweep is now **one file plus a tail**. `Etymologies.json` holds
+10,742 of the 11,384 in-scope dashes, or 96%. `Localizable.xcstrings` has 592, `*.swift` comments
+45, the widget catalog 3, and the authored example sentences 2. A session that finishes
+`Etymologies.json` has done nearly all of the work.
 
 **The journal's exclusion is not permission, and the distinction has a place to live now.**
 `CLAUDE.md` says Josh may eventually generate blog posts from `blog_notes.md`, and a blog post
@@ -196,9 +196,9 @@ dedup machinery. Build the extract-distinct-bullets step once and let both sweep
 
 ## Steps
 
-1. **Both scope questions are already answered** (2026-07-26): the `source` separator does not
-   change, and `docs/etymologies.md` is a log. Nothing blocks the start. Re-derive the counts in the
-   table above before trusting them, since two of them drift by design.
+1. **Every scope question is already answered** (2026-07-26): the `source` separator does not
+   change, and `docs/` and `prompts/` are out of scope entirely. Nothing blocks the start.
+   Re-derive the counts in the table above before trusting them, since the corpus moves.
 2. Build `verbdata/style/extract_units.py`: emit every distinct bullet line and every per-verb prose
    paragraph containing `—`, ` – `, or ` -- `, each with its occurrence count and the verbs carrying
    it. Assert the totals against the table above; a mismatch means the corpus moved and the counts
@@ -208,16 +208,19 @@ dedup machinery. Build the extract-distinct-bullets step once and let both sweep
    collateral churn.
 4. Review per-verb prose in shards. Same brief shape as `gloss_review.md`; the reviewer returns a
    replacement sentence, never a punctuation substitution.
-5. Assert the exclusions held: **zero** changes to any sentence not in `provenance.json`, and zero
-   to `blog_notes.md`.
+5. Assert the exclusions held: **zero** changes to any sentence not in `provenance.json`, zero to
+   any `source` field, and zero to any file under `docs/` or `prompts/`. `git diff --name-only`
+   settles the last two in one command.
 6. `python3 scripts/check_docs.py`, the suite via `ios-build-verify`, screenshots of `VerbView` and
    the Info articles, and a journal entry.
 
 ## What "done" means, and a warning about the counter
 
 The natural finish line is "zero em dashes outside the exempt set," and the natural check is a
-`grep -c`. **Do not add that check to `check_docs.py` without an exemption list that names the
-quoted sentences.** A checker that counts dashes repo-wide will go red the next time a Kafka
+`grep -c`. **A repo-wide count is meaningless here: about 8,133 em dashes are exempt by decision,
+against 11,384 in scope.** Do not add a repo-wide check to `check_docs.py`, and do not add a scoped
+one without an exemption list that names the quoted sentences, the `source` field, and the whole of
+`docs/` and `prompts/`. A checker that counts dashes repo-wide will go red the next time a Kafka
 sentence is mined, and the fix a future session will reach for is deleting Kafka's dash. Any
 assertion here must be scoped to authored text, the same way `CACHE_FILES` is scoped to files that
 make no historical claims.
@@ -232,9 +235,10 @@ Read that plan first. Key points it explains: the population splits four ways an
 is in scope. Em dashes in MINED example sentences are correct and must not be touched (Josh,
 2026-07-26). All 55 dashed German sentences are Kafka, Nietzsche, Grimm, Luther, Bundestag; only
 2 English sentences are Claude-authored and in scope. 4,372 dashes are a citation separator in the
-`source` field, which is a format question for Josh, not prose. docs/blog_notes.md is dated project
-memory and is left alone. 70% of etymology bullets are shared, so 419 distinct strings cover 1,835
-sites. Deduplicate BEFORE reviewing or the same ab- bullet gets fixed 94 different ways.
+`source` field and stay. Nothing in docs/ or prompts/ is in scope at all. That leaves ~11,384
+dashes, 96% of them in Etymologies.json. 70% of etymology bullets are shared, so 419 distinct
+strings cover 1,835 sites. Deduplicate BEFORE reviewing or the same ab- bullet gets fixed 94
+different ways.
 
-Both scope questions in step 1 are already resolved, so nothing blocks the start.
+Every scope question is already resolved, so nothing blocks the start.
 ````

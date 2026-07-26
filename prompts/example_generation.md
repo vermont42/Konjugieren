@@ -27,10 +27,24 @@ recorded figure — the figure only lets a run *anticipate* how many waves fit b
 > width (4, 6, 8, 9, 9, 9 shards; each wave's delta was `shards + 1` points, an exact fit):
 >
 > - **≈1.0 point per 25-verb shard.**
-> - **≈1.0 point per `/usage` read.** A usage probe costs as much window as a whole authoring shard,
->   because every headless child pays the same ~23k cache-creation input regardless of how little it
->   does. **Measurement is ~1/5 of a narrow wave**, so prefer wider waves: they do not reduce token
->   cost, but they amortize the probe. Waves of 8–9 are a good default; 4 wastes ~20% on probing.
+> - **≈1.0 point per `/usage` read.** A usage probe costs as much window as a whole authoring shard.
+>   The figure is right; **the attribution first recorded here was wrong**, corrected 2026-07-26 by
+>   direct measurement. It blamed the headless child, on the theory that every child pays the same
+>   ~23k cache-creation input regardless of how little it does. The child pays *nothing*:
+>   `claude -p "/usage"` resolves the slash command inside the CLI and never sends a request, so the
+>   run reports `num_turns: 0`, every `usage` field 0, and `total_cost_usd: 0` in about one second.
+>   The point is spent by the **orchestrator's own turn**, which re-reads its whole cached context in
+>   order to make one Bash call and read the answer back. That the fitted cost held at ~1.0 across
+>   waves of 4, 6, 8, and 9 shards is itself the tell: a per-child cost would scale with wave width,
+>   and a per-orchestrator-turn cost does not.
+>
+>   The practical advice is unchanged, and the corrected attribution sharpens it. **Measurement is
+>   ~1/5 of a narrow wave**, so prefer wider waves: they do not reduce token cost, but they amortize
+>   the probe. Waves of 8–9 are a good default; 4 wastes ~20% on probing. Two further consequences
+>   follow from the parent being the payer. Filter the probe with `| grep -m1 'Current session'`,
+>   because the full panel is ~1,110 characters that then sit in the orchestrator's context and are
+>   re-read on every later turn. And expect the probe to get *more* expensive as the run proceeds,
+>   since the orchestrator's context only grows.
 >
 > Budget arithmetic for a future run: `points ≈ shards + waves`, plus the orchestrator session's own
 > overhead (this session's tokens count against the same window; the figures above include it).

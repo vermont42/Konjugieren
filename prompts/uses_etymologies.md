@@ -496,11 +496,23 @@ by exact equality, so paraphrase, trimming, and retyping all fail it.
   **`Current session`** line — the five-hour window this pacing is about; the two weekly lines are a
   separate, slower pool. They are the panel's own numbers, "approximate, based on local sessions on
   this machine," so treat them as a gauge, keep headroom, and remember they miss other devices and
-  claude.ai. The call costs about one request — negligible against a shard's ~100k subagent tokens —
-  so poll every few shards, never in a loop. And it reports what is *consumed*, not whether the next
-  batch *fits*: combine the reading with the ~2-points-per-shard estimate above and stop with
-  headroom rather than mid-shard. Pasting `~/Desktop/usage.png` remains a fallback that costs no
-  request at all.
+  claude.ai. **What the probe costs was misattributed here until 2026-07-26**, when it was measured
+  directly. The line above used to read "the call costs about one request, negligible against a
+  shard's ~100k subagent tokens." The headless child in fact costs *nothing*: it resolves the slash
+  command inside the CLI and never sends a request, reporting `num_turns: 0`, every `usage` field 0,
+  and `total_cost_usd: 0` in about a second. The cost is the *orchestrating* session's own turn,
+  which re-reads its whole context in order to make the call and read the answer back, so the probe
+  is priced by the caller's context size rather than by anything the child does. That came to ≈1.0
+  window point in the 2026-07-25 authoring run (see
+  [`prompts/example_generation.md`](example_generation.md)), comparable to a whole shard, so the
+  original "negligible" was wrong by an order of magnitude. Poll every few shards, never in a loop,
+  and pipe through `grep -m1 'Current session'` so that only the line that matters lands in context,
+  where it would otherwise be re-read on every later turn. And it reports what is *consumed*, not
+  whether the next batch *fits*: combine the reading with the ~2-points-per-shard estimate above and
+  stop with headroom rather than mid-shard. Pasting `~/Desktop/usage.png` remains a fallback for
+  when the CLI is unavailable, but it is not the free option it was thought to be: the screenshot
+  still costs the orchestrator a turn, and an image costs more context than the panel's ~1,110
+  characters of text.
 - **Three artifacts landed on 2026-07-20 that a resuming session should know exist**, all
   tracked, all with their reasoning in their own docstrings:
   - `verbdata/normalize_prefix_senses.py` — made every prefix sense a complete sentence, so the

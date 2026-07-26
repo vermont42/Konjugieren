@@ -233,6 +233,7 @@ docs/
 ├── ui-audit.md                # UI audit notes and findings (Round One; implemented in commit 657bb4f)
 ├── ui-audit-2.md              # UI audit Round Two — post-657bb4f suggestions; self-contained for future implementation sessions
 ├── ui-audit-2-next-session.md # Next-session brief for OnboardingView page-1 layout work from UI audit Round Two #16
+├── usage.md                   # Reading the five-hour window from inside a session: the zero-token `/usage` probe, why the calling session pays, and what a headless child costs
 ├── vanilla_build_and_test.md  # Raw xcodebuild commands for opting out of the ios-build-verify dependency
 ├── roadmap.md                 # START HERE for verb-corpus expansion: the sequence of plans, what gates what
 ├── verb-classification.md     # The classify-and-verify pipeline: design, invocation, and what it found

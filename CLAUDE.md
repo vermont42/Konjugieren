@@ -24,6 +24,11 @@ else the style doc forbids, at generation time rather than by editing the archiv
 "branch before committing" reflex does not apply here. If you find yourself proposing a feature
 branch, don't.
 
+## Checking the Five-Hour Usage Window
+
+If the need arises to check token usage in the five-hour window, consult
+[`docs/usage.md`](docs/usage.md).
+
 ## Build and Test Commands
 
 This project uses the [`ios-build-verify`](https://github.com/vermont42/ios-build-verify) Claude Code skill for build and test. The scripts pipe `xcodebuild` through `xcbeautify` for concise output and tee raw output to `build.log` as a fallback. Per-project config lives in `.claude/ios-build-verify.config.sh` (gitignored).

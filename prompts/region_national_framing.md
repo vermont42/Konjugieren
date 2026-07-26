@@ -3,7 +3,8 @@
 ## Status
 
 **Planned, not started.** Decided by Josh on 2026-07-26, during the 1.3 release-copy pass.
-Implement, then redo the two `settings` screenshot cells (see "Screenshots" at the end).
+Implement, then redo the four `settings` screenshot cells, which is 2 devices by 2 languages
+(see "Screenshots" at the end). Not two: 36 shots over 9 views is 4 per view.
 
 **Blocked by the emoji-asset work in flight as of 2026-07-26.** A second session is adding
 German, Austrian, and Swiss flag imagesets, the `EmojiAsset` mappings for them, and a
@@ -41,11 +42,14 @@ and then make the picker symmetric. Once 🇩🇪 denotes a national standard th
 already do, **North** is the odd element, because it names a direction where the other two name
 nations. Three bare flags is the consistent result.
 
-There is a second, purely practical payoff. `prompts/regional_variation.md` records that the
-original design put a word *and* a flag in every segment, and that the flags were dropped
-because the labels truncated. A segmented control gives each segment an equal slice, and
-"North" plus two flags wastes most of two slices while straining the third. Three flags removes
-the label-length problem, the truncation risk, and the translation of the label, all at once.
+There is a second, purely practical payoff, and `docs/emoji-assets.md` is the authority on it:
+`SegmentedPickerStyle` renders one plain `Text` or one plain `Image` per segment and silently
+drops image attachments inside a `Text`, so a segment **cannot** pair a word with a flag at all.
+Austria and Switzerland went flag-only for that reason, and the north kept `North 🇩🇪` only until
+the same constraint took its flag away too. Label length has now caused trouble twice, most
+recently when simulator tofu doubled each flag's width and truncated `North 🇩🇪` to `North…`.
+Three bare flags is the one arrangement every segment can actually represent, and it retires the
+truncation risk and the label translation along with it.
 
 ## The naming problem this sidesteps
 

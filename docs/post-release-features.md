@@ -166,3 +166,20 @@ Additional iOS-platform features not covered in `platform-features-plan.md`. The
 | 10 | App Clips | Medium | Low-Medium | Marketing channel |
 
 Top three for editorial impact: **Swift Charts**, **Apple Watch**, and **SharePlay**. For pure user value: **local notifications with spaced repetition**.
+
+---
+
+## Appendix: Developer Tooling
+
+Not a shipping feature and deliberately outside the tiers and the priority table above, which rank user-facing platform features by editorial impact. Recorded here because this is where post-release work gets tracked.
+
+### Share the App Store media tooling across the three apps
+
+**Why it matters:** `scripts/verify_store_media.sh` and the alpha-flattening step in `scripts/take_screenshots.sh` encode Apple's App Store Connect media requirements, which are app-independent. Three apps need them — Konjugieren, Conjuguer, and Conjugar — and today two of them hold copied files that have already begun to diverge. The non-square-pixel (SAR) check was written twice on 2026-07-25, once per repo, because Conjuguer's second rejection surfaced after the first copy had landed. A third consumer is the cardinality that justified making `ios-build-verify` a plugin-marketplace skill rather than a copied script, and this tooling has the same shape.
+
+**Proposed shape:** follow the `ios-build-verify` precedent — checks live in the shared skill, per-project values live in a gitignored config beside `.claude/ios-build-verify.config.sh`. The per-project surface is small: the media directories (a screenshot bundle and a rendered-preview folder), and possibly the app's own accepted-size history.
+
+**The part that resists sharing naively:** the script's two-tier severity split is calibrated on *evidence*, not on the spec text. Its advisory tier exists because Konjugieren's live 1.2 previews carry H.264 Level 5.0/5.1, 125 kbps audio, and a stray timecode track, so a spec-literal checker would block files that demonstrably shipped. That evidence is this app's alone; Conjuguer's accepted 2.0 previews were conformant on every advisory item and so contribute none, and Conjugar has contributed none. A shared version should keep the evidence trail attributable per app rather than flattening it into an unsourced list of tolerances.
+
+**Prior art in this repo:** `ios-build-verify` (build/verify scripts shared across the same three apps via the plugin marketplace, with per-project config).
+**Effort:** Low-Medium. **Impact:** prevents a repeat of the 2026-07-25 rejections in whichever app submits next.

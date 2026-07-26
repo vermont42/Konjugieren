@@ -4893,3 +4893,31 @@ preview dimensions (screenshot sizes in the video doc), screenshot alpha channel
 format check on a fully-opaque channel), and non-square pixels (`scale=W:-2` writing a
 compensating SAR). Only the first was in any document beforehand, and it was in there
 wrong.
+
+### Backlog: extract the media tooling into a shared skill (2026-07-25)
+
+Josh's read on the day's work: the tooling needs to be shared, and it goes on the backlog
+rather than into today's change. Recorded in `docs/post-release-features.md`, under a new
+"Appendix: Developer Tooling" section.
+
+Placement took a judgment call. That file is a tiered list of *user-facing* iOS platform
+features ranked by editorial appeal, each with Key APIs and an iOS availability; a
+developer-tooling item has none of those, and slotting it in as #11 would have quietly
+corrupted the priority table, which ranks the ten features against each other. So it went
+in as an appendix after the summary, explicitly outside the tiers, with a sentence saying
+why it is there at all.
+
+Two facts the entry is built on. First, the count: Conjugar is a third consumer, which is
+the same cardinality that justified making `ios-build-verify` a marketplace skill instead
+of a copied script — the precedent is already in this toolchain, solving this problem, for
+these three apps. Second, the drift is not hypothetical: the SAR check was written twice
+today, once per repo, because Conjuguer's second rejection landed after the first copy had
+been committed. Diffing the two copies afterward showed exactly one difference, a doc path
+in the header comment that is correct in each repo — which is the healthy state, and also
+precisely what a per-project config file is for.
+
+The caveat worth preserving is about the advisory tier. It is calibrated on this app's
+shipped 1.2 previews and nothing else. Conjuguer's accepted 2.0 files were conformant on
+every advisory item, so they add no evidence, and Conjugar has contributed none. If the
+checks move into a shared skill, that provenance should move with them; an unsourced list
+of tolerances is exactly the kind of claim this repo has already watched go stale.

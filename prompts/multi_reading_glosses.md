@@ -1,5 +1,30 @@
 # Auditing the glosses of the multi-`<reading>` verbs — a plan
 
+## Status
+
+**Executed 2026-07-26.** 88 glosses reviewed, **6 defects, 6.8%**; all six accepted by the
+`claude-opus-4-8` adjudication and confirmed against attested use. See the `docs/blog_notes.md` entry
+of that date for what the plan did not anticipate. Three things, briefly:
+
+1. **The pair defect was a *swap*, not a collision.** The plan predicted two glosses collapsing into
+   the same English. `umgehen` instead had each reading carrying the *other's* meaning. Same
+   invisibility to a one-gloss-at-a-time reviewer, and it made the reading-scoped splice load-bearing
+   immediately rather than eventually: the corrections file asks to write a string onto reading 1 that
+   is still sitting on reading 0.
+2. **Two fields the plan did not list turned out to be load-bearing.** Separability is per *reading*
+   and differs from the parent's on six of the 88 (`übersetzen` is inseparable "translate" against
+   separable "ferry across" — two verbs distinguished by a stress German does not write). And
+   `candidate_glosses` is per *lemma*, so "no listed sense supports this" means nothing on this
+   population; `sense_match: "none"` covers 66 of 88. Both briefs had to say so, or the adjudicator
+   would have rejected the lot on a signal that does not apply.
+3. **Reverso is the wrong tool for half of these questions.** It pools all readings under one lemma,
+   so it cannot settle a claim about which *paradigm* carries a sense — `zurückziehen`'s free examples
+   are all reflexive. DWDS publishes per-sense paradigms and settled both `zurückziehen` and
+   `überkochen`. The `verweben` lesson (prefer use to dictionary listings) still holds; the refinement
+   is that a corpus dictionary answers a question a bilingual concordance cannot.
+
+Original plan follows.
+
 **Audience: a future session picking up the one population the gloss sweep never looked at.** The
 sweep of 2026-07-25/26 audited 2,432 shipping verbs and corrected 225 glosses. It excluded every verb
 carrying two `<reading>` elements. This document says what they are, why they were excluded, why the

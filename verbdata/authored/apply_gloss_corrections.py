@@ -1,8 +1,10 @@
 #!/usr/bin/env python3
 """Apply a gloss-corrections file to Konjugieren/Models/Verbs.xml.
 
-Consumes: a corrections JSON  (verb -> {old, new, why}), default
+Consumes: a corrections JSON  (key -> {old, new, why}), default
           verbdata/authored/gloss-corrections.json
+          A key is either a bare lemma (`ablesen`) for a single-reading verb, or a
+          reading-scoped `<lemma>#<index>` (`abbrechen#1`) for a verb with several.
 Rewrites: Konjugieren/Models/Verbs.xml  (the tn= attribute of one <reading>)
 
 Run from the repo root:  python3 verbdata/authored/apply_gloss_corrections.py [CORRECTIONS_JSON]
@@ -14,12 +16,18 @@ phrases, and several are substrings of other verbs' glosses ("follow", "hit", "c
 wrong verb. Every replacement here is scoped to the matched <verb> element first, so the
 gloss can only change on the lemma it was authored for.
 
-THE MULTI-READING GUARD IS THE POINT OF THE per-verb CHECK. add_readings.py gave 18 shipping
-dual-auxiliary verbs a SECOND <reading>, each carrying its own tn. On such a verb, "replace
-the tn in this element" is ambiguous and would silently pick the first. This script therefore
-refuses any verb whose element holds more than one tn= and reports it for hand-editing rather
-than guessing. None of the 55 review corrections hit such a verb, but the guard has to exist
-before that stops being true.
+BARE KEYS REFUSE A MULTI-READING VERB; REACHING ONE TAKES `#index`. add_readings.py gave 44
+shipping dual-auxiliary verbs a SECOND <reading>, each carrying its own tn. On such a verb
+"replace the tn in this element" is ambiguous and would silently pick the first, so a bare
+lemma key is refused and reported. That refusal was for a year the reason those 44 verbs were
+excluded from the gloss audit entirely — a mechanical limitation, never a linguistic one.
+
+`<lemma>#<index>` names the reading positionally, 0-based in document order, which resolves it.
+The index is scoped to the <reading> ELEMENT, not to the verb: the replacement is spliced inside
+that one reading and cannot reach its sibling even if the two happen to share a tn value. Nothing
+in the corpus shares one today, but the sibling glosses of a dual-auxiliary verb are near-synonyms
+by construction ("break off, cancel" beside "break off, snap"), so the day one pair converges is
+the day a body-scoped replace would silently rewrite the wrong sense.
 
 The `old` value in the corrections file is an ASSERTION, not a hint. If Verbs.xml no longer
 holds it, the entry is stale — the gloss was edited by something else since the review ran —
@@ -76,34 +84,65 @@ for m in re.finditer(r'<verb in="([^"]+)"[^>]*>(.*?)</verb>', raw, re.S):
     spans[re.sub(r"[+*^]", "", m.group(1))].append(m)
 
 problems, stale, edits = [], [], []
-for verb, fix in sorted(corrections.items()):
+for key, fix in sorted(corrections.items()):
+    # A reading-scoped key names the lemma and the 0-based position of the <reading> to rewrite.
+    verb, _, index = key.partition("#")
+    if index and not index.isdigit():
+        problems.append(f"{key}: reading index {index!r} is not a number")
+        continue
     ms = spans.get(verb) or []
     if not ms:
-        problems.append(f"{verb}: not in Verbs.xml")
+        problems.append(f"{key}: not in Verbs.xml")
         continue
     if len(ms) > 1:
-        problems.append(f"{verb}: {len(ms)} <verb> elements share this unmarked lemma -- hand-edit")
+        problems.append(f"{key}: {len(ms)} <verb> elements share this unmarked lemma -- hand-edit")
         continue
     m = ms[0]
     body = m.group(2)
+    readings = list(re.finditer(r'<reading\b[^>]*/>', body))
     tns = re.findall(r'tn="([^"]*)"', body)
-    if len(tns) != 1:
-        problems.append(f"{verb}: {len(tns)} readings ({tns}) -- hand-edit, this script will not guess")
+    if index == "" and len(tns) != 1:
+        problems.append(f"{key}: {len(tns)} readings ({tns}) -- key it as "
+                        f"{verb}#0..{len(tns) - 1}, this script will not guess")
         continue
+    if index != "" and int(index) >= len(readings):
+        problems.append(f"{key}: only {len(readings)} reading(s) on {verb}")
+        continue
+    # The replaced SPAN is the whole element for a bare key and the one <reading> for a scoped key.
+    # Absolute offsets, because m.start(2) is where the body sits in the file.
+    if index == "":
+        start, end = m.start(), m.end()
+    else:
+        r = readings[int(index)]
+        start, end = m.start(2) + r.start(), m.start(2) + r.end()
+    segment = raw[start:end]
+    seg_tns = re.findall(r'tn="([^"]*)"', segment)
+    if len(seg_tns) != 1:
+        problems.append(f"{key}: {len(seg_tns)} tn= in the targeted span -- hand-edit")
+        continue
+    old_encoded = seg_tns[0]
     new = (fix.get("new") or "").strip()
     if not new:
-        problems.append(f"{verb}: empty replacement gloss")
+        problems.append(f"{key}: empty replacement gloss")
         continue
     # `old` is compared DECODED. Values arrive from Verbs.xml as encoded text and from the reviewer
     # as plain text; no tn currently contains an XML-significant character, which made the raw
     # comparison accidentally correct rather than correct.
-    if unescape(tns[0]) != fix["old"]:
-        stale.append(f'{verb}: expected old gloss {fix["old"]!r}, found {unescape(tns[0])!r}')
+    if unescape(old_encoded) != fix["old"]:
+        stale.append(f'{key}: expected old gloss {fix["old"]!r}, found {unescape(old_encoded)!r}')
         continue
     if new == fix["old"]:
-        problems.append(f"{verb}: replacement is identical to the shipped gloss")
+        problems.append(f"{key}: replacement is identical to the shipped gloss")
         continue
-    edits.append((verb, m.start(), m.end(), body, tns[0], new))
+    edits.append((key, start, end, segment, old_encoded, new))
+
+# Two corrections aimed at the same reading would each be validated against the shipped `old` and
+# then applied back-to-front, so the earlier-sorting one would win silently. Overlapping spans are
+# the general form of that: a bare key and a scoped key on the same verb collide the same way.
+edits.sort(key=lambda e: e[1])
+for a, b in zip(edits, edits[1:]):
+    if b[1] < a[2]:
+        problems.append(f"{a[0]} and {b[0]}: overlapping target spans -- one of them is redundant")
 
 # Stale entries are the drift signal this script exists to catch, so they abort by default. But
 # holding 200 good corrections hostage to one drifted entry is not a safety property, hence
@@ -126,13 +165,14 @@ if not edits:
     sys.exit("no edits survived validation -- refusing to rewrite shipping data with no change")
 
 # apply back-to-front so earlier spans keep their offsets
-for verb, start, end, body, old_encoded, new in sorted(edits, key=lambda e: -e[1]):
+for key, start, end, segment, old_encoded, new in sorted(edits, key=lambda e: -e[1]):
     # Escape rather than refuse. A legitimate gloss containing & ("cash & carry") is encodable; the
     # earlier behavior rejected it AND, because any problem aborts the file, took every other
     # correction down with it.
-    new_body = body.replace(f'tn="{old_encoded}"', f'tn="{escape(new, {chr(34): "&quot;"})}"', 1)
-    raw = raw[:start] + raw[start:end].replace(body, new_body, 1) + raw[end:]
-    print(f"  {verb}: {unescape(old_encoded)!r} -> {new!r}")
+    new_segment = segment.replace(f'tn="{old_encoded}"',
+                                  f'tn="{escape(new, {chr(34): "&quot;"})}"', 1)
+    raw = raw[:start] + new_segment + raw[end:]
+    print(f"  {key}: {unescape(old_encoded)!r} -> {new!r}")
 
 # Validate the artifact produced, not merely the inputs consumed. Verbs.xml is shipping app data and
 # this script splices raw text into it; one parse before writing is a complete guarantee that a

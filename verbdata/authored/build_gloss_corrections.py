@@ -41,6 +41,14 @@ an attested phrase with one no source backs -- and the error costs are asymmetri
 defect merely leaves kaikki's wording in place while a false positive ships a model's invention.
 Measured over the first 16 shards, only about a quarter of proposed replacements were re-picks.
 
+--PATTERN multi SERVES THE PER-READING SHARD, AND THE UNIT OF WORK BECOMES A READING. The 44
+dual-auxiliary verbs carry two <reading> elements with a gloss each, so `abbrechen` names two glosses
+and cannot be a correction key. build_gloss_shards.py --multi-reading emits `readings`, keyed
+`<verb>#<index>`, and apply_gloss_corrections.py accepts that key. Everything below is unchanged by
+it: a key is an opaque string here, and "one gloss per key" holds either way. Only the shard glob,
+the record list's field name, and which field is the key differ, which is why this is a pattern flag
+rather than a second script.
+
 MULTIPLE FINDINGS ON ONE VERB collapse to one correction, because a verb has one gloss. The pick is
 the highest-severity finding THAT CARRIES A fix_gloss -- not simply the highest-severity one. An
 earlier version took the top-severity finding unconditionally and, when that finding happened to
@@ -65,18 +73,24 @@ parser.add_argument("--partial", action="store_true",
                     help="proceed even though some input shards have no reviewer output")
 parser.add_argument("--out", default="verbdata/gloss-review/gloss-corrections-sweep.json")
 parser.add_argument("--triage", default="verbdata/gloss-review/triage.md")
+parser.add_argument("--pattern", choices=["gloss", "multi"], default="gloss",
+                    help="'gloss' reads the 49 per-verb shards; 'multi' reads the per-reading "
+                         "shard, whose records are keyed <verb>#<index>")
 args = parser.parse_args()
 cutoff = RANK[args.min_severity]
 
 SHARDS = "verbdata/gloss-review/shards"
+PREFIX = args.pattern
+# The two shard shapes differ in one field name each: the record list, and the record's key.
+LIST_FIELD, KEY_FIELD = ("verbs", "verb") if PREFIX == "gloss" else ("readings", "key")
 
 
 def shard_id(path):
-    return re.search(r"gloss_(\d+)", path).group(1)
+    return re.search(rf"{PREFIX}_(\d+)", path).group(1)
 
 
-in_ids = {shard_id(f) for f in glob.glob(f"{SHARDS}/gloss_*.in.json")}
-out_ids = {shard_id(f) for f in glob.glob(f"{SHARDS}/gloss_*.out.json")}
+in_ids = {shard_id(f) for f in glob.glob(f"{SHARDS}/{PREFIX}_*.in.json")}
+out_ids = {shard_id(f) for f in glob.glob(f"{SHARDS}/{PREFIX}_*.out.json")}
 missing = sorted(in_ids - out_ids)
 if missing and not args.partial:
     raise SystemExit(
@@ -113,17 +127,18 @@ def trace(fix, candidates):
     return "authored"
 
 
-# shipped gloss and candidate senses per verb, from the INPUT shards -- see the docstring
+# shipped gloss and candidate senses per key, from the INPUT shards -- see the docstring
 shipped, cands_of, shard_of = {}, {}, {}
-for f in sorted(glob.glob(f"{SHARDS}/gloss_*.in.json")):
+for f in sorted(glob.glob(f"{SHARDS}/{PREFIX}_*.in.json")):
     n = shard_id(f)
-    for entry in json.load(open(f))["verbs"]:
-        shipped[entry["verb"]] = entry["gloss"]
-        cands_of[entry["verb"]] = entry.get("candidate_glosses") or []
-        shard_of[entry["verb"]] = n
+    for entry in json.load(open(f))[LIST_FIELD]:
+        key = entry[KEY_FIELD]
+        shipped[key] = entry["gloss"]
+        cands_of[key] = entry.get("candidate_glosses") or []
+        shard_of[key] = n
 
 findings, malformed = [], []
-for f in sorted(glob.glob(f"{SHARDS}/gloss_*.out.json")):
+for f in sorted(glob.glob(f"{SHARDS}/{PREFIX}_*.out.json")):
     n = shard_id(f)
     try:
         data = json.load(open(f))
@@ -185,7 +200,7 @@ for path in (args.out, args.triage):
     os.makedirs(os.path.dirname(path) or ".", exist_ok=True)
 
 header = {
-    "_source": f"{SHARDS}/gloss_*.out.json",
+    "_source": f"{SHARDS}/{PREFIX}_*.out.json",
     "_brief": "prompts/gloss_review.md",
     "_min_severity": args.min_severity,
     "_shards_total": len(in_ids),

@@ -1,0 +1,76 @@
+{
+  "_source": "verbdata/gloss-review/gloss-corrections-multi-reading.json",
+  "_adjudicated_by": "claude-opus-4-8",
+  "_brief": "prompts/gloss_adjudication.md",
+  "_proposed": 6,
+  "_accepted": 6,
+  "_amended": 0,
+  "_rejected": 0,
+  "_unjudged": [],
+  "passieren#1": {
+    "old": "pass through, strain",
+    "new": "pass, cross",
+    "why": "The haben reading's everyday sense is passing a border or checkpoint ('die Kontrolle passieren'), kaikki index 1 'to move beyond; pass'. The shipped gloss committed to the culinary sieve sense (index 2), and the comma made 'pass through' read as through a strainer, hiding the common sense. 'pass, cross' also stays clearly apart from the sein sibling 'happen, occur'.",
+    "severity": "low",
+    "traceability": "partial",
+    "verdict": "accept",
+    "adjudicator_own_gloss": "pass, cross",
+    "shard": "000",
+    "source": "claude-opus-5, confirmed by claude-opus-4-8"
+  },
+  "tauchen#1": {
+    "old": "dive, surface",
+    "new": "dive down, plunge",
+    "why": "The sein reading is directed motion into the water (kaikki index 0 'to dive'); surfacing is auftauchen. The shipped 'dive, surface' pairs two opposite motions across a comma the house style reads as synonymy, which would send a learner to the wrong verb for the common case. 'dive down, plunge' fixes the direction and stays distinct from the haben sibling.",
+    "severity": "medium",
+    "traceability": "authored",
+    "verdict": "accept",
+    "adjudicator_own_gloss": "dive, plunge",
+    "shard": "000",
+    "source": "claude-opus-5, confirmed by claude-opus-4-8"
+  },
+  "umgehen#0": {
+    "old": "deal with, handle",
+    "new": "bypass, circumvent",
+    "why": "This is inseparable umgéhen with haben (participle umgangen), meaning bypass/circumvent/avoid, exactly kaikki indices 0 and 1. 'deal with, handle' is the separable úmgehen/sein verb (participle umgegangen) and reached this reading from the wrong verb, leaving the attested avoid sense on neither reading. Distinct from the corrected sibling.",
+    "severity": "high",
+    "traceability": "partial",
+    "verdict": "accept",
+    "adjudicator_own_gloss": "bypass, circumvent, avoid",
+    "shard": "000",
+    "source": "claude-opus-5, confirmed by claude-opus-4-8"
+  },
+  "umgehen#1": {
+    "old": "circulate, make a detour",
+    "new": "deal with, handle",
+    "why": "Separable úmgehen with sein is 'mit jemandem/etwas umgehen' — deal with, handle — by far the most frequent sense a learner meets. 'make a detour' is the inseparable go-around-an-obstacle sense imported from the wrong verb. The sibling_gloss shows the current shipped 'deal with, handle', but this is a coordinated swap with umgehen#0, so the final pair (bypass/circumvent vs. deal with/handle) stays distinct rather than collapsing.",
+    "severity": "medium",
+    "traceability": "authored",
+    "verdict": "accept",
+    "adjudicator_own_gloss": "deal with, handle",
+    "shard": "000",
+    "source": "claude-opus-5, confirmed by claude-opus-4-8"
+  },
+  "zurückziehen#1": {
+    "old": "retreat, move away",
+    "new": "move back (relocate)",
+    "why": "With sein and no reflexive the verb is directional motion back to a place ('in ihre Heimatstadt zurückgezogen'). 'Retreat' is reflexive sich zurückziehen (haben), already carried by the sibling 'withdraw, pull back'. 'move away' names the opposite direction from zurück, which is worse than imprecise. Per-lemma candidates cover only the haben senses, which the dual-auxiliary caveat says is not grounds to reject.",
+    "severity": "medium",
+    "traceability": "authored",
+    "verdict": "accept",
+    "adjudicator_own_gloss": "move back, relocate",
+    "shard": "000",
+    "source": "claude-opus-5, confirmed by claude-opus-4-8"
+  },
+  "überkochen#0": {
+    "old": "overcook",
+    "new": "cook again",
+    "why": "This is inseparable über- with haben, the again/re- prefix of überarbeiten and überprüfen, which kaikki gives at index 2 'to cook something again' — a transitive sense consistent with the haben auxiliary. The shipped 'overcook' matches no candidate gloss and reads über- as English 'too much'; German overcook is verkochen, and the boil-over sense is the separable sein sibling.",
+    "severity": "medium",
+    "traceability": "authored",
+    "verdict": "accept",
+    "adjudicator_own_gloss": "cook again",
+    "shard": "000",
+    "source": "claude-opus-5, confirmed by claude-opus-4-8"
+  }
+}

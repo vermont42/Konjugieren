@@ -89,11 +89,45 @@ Your shard file is JSON: `{"shard": N, "records": [{...}, ...]}`. Each record ho
 `separability`, `shipped_gloss`, `proposed_gloss`, `severity` (the proposer's own severity rating),
 `reviewer_detail`, and `candidate_glosses` (every sense kaikki listed, in kaikki's order).
 
+### If your records hold a `key` field
+
+Skip this section otherwise. These records come from the 44 **dual-auxiliary** verbs: one lemma, one
+conjugation, and **two** `<reading>` elements with a gloss each, distinguished by whether the perfect
+takes *haben* or *sein*. *abbrechen* is the model — "break off, cancel" with haben (transitive) beside
+"break off, snap (come apart)" with sein (intransitive). You are judging one of the two, and the
+record carries three extra fields for it.
+
+- **`key`** is `<verb>#<index>`. **Return your verdicts under `key`, not under `verb`** — `verb` names
+  two glosses and cannot address one.
+- **`auxiliary`** is usually the strongest evidence available about which sense the reading is
+  supposed to name, because on this population the auxiliary split is generally *why* the second
+  reading exists. German pairs a haben-perfect with the transitive, causative, or activity sense and a
+  sein-perfect with the intransitive, change-of-state, or goal-directed one. A `sein` reading glossed
+  transitively, or a `haben` reading glossed as a change of state, is a real defect however well the
+  English reads. Weigh this in `own_gloss` too: derive the gloss for *this reading*, not for the lemma.
+- **`sibling_gloss`** is the other reading's shipped gloss. **Reject a proposal that would collapse the
+  pair into the same English**, even a proposal that is otherwise an improvement: two identical glosses
+  show a learner the same meaning twice with no way to tell which auxiliary goes with which, which is
+  strictly worse than one imprecise gloss. If the shipped gloss is genuinely bad *and* the obvious fix
+  collides with the sibling, `amend` with a gloss that keeps them distinct.
+
+Two data caveats. **`candidate_glosses` is per lemma, not per reading** — kaikki keys senses to the
+written word, so both readings receive the same list and for some verbs it describes only one of them
+(*übersetzen* reading 1 is "ferry across" and its list holds translate, compile, and two obscure
+senses, because kaikki's separable *über|setzen* entry did not merge). On this shard, therefore, "no
+listed sense supports this" is **not** grounds to reject; the usual asymmetry between attested and
+invented wording is weaker here, because most of these glosses were authored by hand to split the
+senses in the first place. And **`separability` is per reading and may differ from the sibling's**,
+because some pairs are two different verbs distinguished by a stress German orthography does not mark:
+inseparable *übersétzen* "translate" against separable *ÜBERsetzen* "ferry across". Judge each gloss
+against the verb its own `separability` names.
+
 ## Output format
 
-Write a single JSON object to the output path. **Every verb in your shard must appear as a key.**
-Unlike the review pass that produced these proposals, silence is not a valid answer here: a missing
-verb is indistinguishable from a shard you never read, and the driver checks coverage.
+Write a single JSON object to the output path. **Every record in your shard must appear as a key** —
+its `key` field if it has one, otherwise its `verb`. Unlike the review pass that produced these
+proposals, silence is not a valid answer here: a missing record is indistinguishable from a shard you
+never read, and the driver checks coverage.
 
 ```json
 {

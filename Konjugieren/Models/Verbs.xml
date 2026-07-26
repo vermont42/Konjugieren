@@ -6897,7 +6897,7 @@
   </verb>
   <verb in="passieren" hi="5648030" ic="walk">
     <reading tn="happen, occur" fa="i" ay="s" />
-    <reading tn="pass through, strain" fa="i" />
+    <reading tn="pass, cross" fa="i" />
   </verb>
   <verb in="pf^eif^en" hi="403900" hp="y" ic="wave">
     <reading tn="whistle" fa="s" ag="greifen" />
@@ -7672,7 +7672,7 @@
   </verb>
   <verb in="tauchen" hi="1436327" ic="pool.swim">
     <reading tn="dive, immerse (something)" fa="w" />
-    <reading tn="dive, surface" fa="w" ay="s" />
+    <reading tn="dive down, plunge" fa="w" ay="s" />
   </verb>
   <verb in="tauschen" hi="931961" ic="2">
     <reading tn="exchange, swap" fa="w" />
@@ -7888,7 +7888,7 @@
     <reading tn="fail to hear, ignore" fa="w" />
   </verb>
   <verb in="über*kochen" hi="71407" hp="y" ic="cooldown">
-    <reading tn="overcook" fa="w" />
+    <reading tn="cook again" fa="w" />
     <reading in="über+kochen" tn="boil over" fa="w" ay="s" />
   </verb>
   <verb in="über*k^om^men" hi="573851" hp="y" ic="walk.arrival">
@@ -8137,8 +8137,8 @@
     <reading tn="surround" fa="s" ag="geben" />
   </verb>
   <verb in="um*g^eh^en" hi="2053967" ic="2">
-    <reading tn="deal with, handle" fa="s" ag="gehen" />
-    <reading in="um+g^eh^en" tn="circulate, make a detour" fa="s" ag="gehen" ay="s" />
+    <reading tn="bypass, circumvent" fa="s" ag="gehen" />
+    <reading in="um+g^eh^en" tn="deal with, handle" fa="s" ag="gehen" ay="s" />
   </verb>
   <verb in="um+gr^a^ben" hi="45127" hp="y" ic="strengthtraining.traditional">
     <reading tn="dig over" fa="s" ag="fahren" />
@@ -10491,7 +10491,7 @@
   </verb>
   <verb in="zurück+z^ieh^en" hi="873552" ic="flexibility">
     <reading tn="withdraw, pull back" fa="s" ag="ziehen" />
-    <reading tn="retreat, move away" fa="s" ag="ziehen" ay="s" />
+    <reading tn="move back (relocate)" fa="s" ag="ziehen" ay="s" />
   </verb>
   <verb in="zu+r^u^fen" hi="330557" hp="y" ic="wave">
     <reading tn="call out to" fa="s" ag="heißen" />

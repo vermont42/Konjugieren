@@ -46,13 +46,15 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--corrections", default="verbdata/gloss-review/gloss-corrections-sweep.json")
 parser.add_argument("--out", default="verbdata/gloss-review/gloss-corrections-final.json")
 parser.add_argument("--triage", default="verbdata/adjudication/triage.md")
+parser.add_argument("--verdicts", default="verbdata/adjudication/shards/adj_*.out.json",
+                    help="glob of adjudicator output; the per-reading run writes to shards-multi/")
 parser.add_argument("--partial", action="store_true")
 args = parser.parse_args()
 
 proposals = {k: v for k, v in json.load(open(args.corrections)).items() if not k.startswith("_")}
 
 verdicts, malformed = {}, []
-for f in sorted(glob.glob("verbdata/adjudication/shards/adj_*.out.json")):
+for f in sorted(glob.glob(args.verdicts)):
     try:
         data = json.load(open(f))
     except Exception as exc:

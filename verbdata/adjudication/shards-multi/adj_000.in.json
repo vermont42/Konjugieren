@@ -1,0 +1,97 @@
+{
+ "shard": 0,
+ "records": [
+  {
+   "key": "passieren#1",
+   "verb": "passieren",
+   "separability": "simplex",
+   "shipped_gloss": "pass through, strain",
+   "proposed_gloss": "pass, cross",
+   "severity": "low",
+   "reviewer_detail": "The haben reading is dominated by the sense at kaikki index 1, 'to move beyond; pass' — passing a border, a checkpoint, a landmark ('die Kontrolle passieren'). The shipped gloss comes from index 2, the culinary sieve sense, and the comma makes 'pass through' read as passing through a sieve rather than through a place, so the everyday sense is effectively hidden behind a kitchen term. Committing to the crossing sense keeps the reading clearly apart from the sein sibling 'happen, occur'.",
+   "candidate_glosses": [
+    "to happen",
+    "to move beyond; pass",
+    "to pass through a sieve, to strain"
+   ],
+   "auxiliary": "haben",
+   "sibling_gloss": "happen, occur"
+  },
+  {
+   "key": "tauchen#1",
+   "verb": "tauchen",
+   "separability": "simplex",
+   "shipped_gloss": "dive, surface",
+   "proposed_gloss": "dive down, plunge",
+   "severity": "medium",
+   "reviewer_detail": "The comma presents two opposite motions as equivalents. The sein reading is directed motion into the water — 'er ist in die Tiefe getaucht' — which kaikki has at index 0. Coming up out of the water is auftauchen; plain tauchen carries that reading only marginally, in 'aus dem Wasser tauchen', and a learner who takes 'surface' from this gloss will use the wrong verb for the commonest case. Committing the reading to the downward motion also keeps it distinct from the haben sibling's activity and transitive-immerse senses.",
+   "candidate_glosses": [
+    "to dive",
+    "to immerse, to bathe, to submerge"
+   ],
+   "auxiliary": "sein",
+   "sibling_gloss": "dive, immerse (something)"
+  },
+  {
+   "key": "umgehen#0",
+   "verb": "umgehen",
+   "separability": "inseparable",
+   "shipped_gloss": "deal with, handle",
+   "proposed_gloss": "bypass, circumvent",
+   "severity": "high",
+   "reviewer_detail": "This reading is inseparable umgéhen with haben, which means to bypass, circumvent, or avoid — 'das Gesetz umgehen', 'er hat die Stadt umgangen'. Both of kaikki's senses (indices 0 and 1) name exactly that. 'Deal with, handle' belongs to the other verb, separable úmgehen with sein, whose participle is 'umgegangen', not 'umgangen': 'Er ist gut mit Kindern umgegangen.' The shipped gloss therefore teaches a learner the meaning of the sibling reading, and the pair as shipped leaves the avoid/circumvent sense — the one kaikki attests — on neither reading.",
+   "candidate_glosses": [
+    "to avoid, bypass, to go around (a physical obstacle)",
+    "to avoid (something nonphysical)"
+   ],
+   "auxiliary": "haben",
+   "sibling_gloss": "circulate, make a detour"
+  },
+  {
+   "key": "umgehen#1",
+   "verb": "umgehen",
+   "separability": "separable",
+   "shipped_gloss": "circulate, make a detour",
+   "proposed_gloss": "deal with, handle",
+   "severity": "medium",
+   "reviewer_detail": "Separable úmgehen with sein means to circulate or go around ('Gerüchte gehen um'), to haunt, and above all 'mit jemandem/etwas umgehen' — to deal with, handle, treat. It does not mean 'make a detour'; that is the going-around-an-obstacle sense of inseparable umgéhen, imported here from the wrong verb. Paired with the fix to umgehen#0, the deal-with sense should sit on this reading, where it is by far the most frequent thing a learner meets, and the two readings stay cleanly distinct.",
+   "candidate_glosses": [
+    "to avoid, bypass, to go around (a physical obstacle)",
+    "to avoid (something nonphysical)"
+   ],
+   "auxiliary": "sein",
+   "sibling_gloss": "deal with, handle"
+  },
+  {
+   "key": "zurückziehen#1",
+   "verb": "zurückziehen",
+   "separability": "separable",
+   "shipped_gloss": "retreat, move away",
+   "proposed_gloss": "move back (relocate)",
+   "severity": "medium",
+   "reviewer_detail": "With sein and no reflexive, zurückziehen means to move back, to relocate back somewhere — the directional-motion counterpart of ziehen#1 'move, migrate': 'Nach dem Studium ist sie in ihre Heimatstadt zurückgezogen.' 'Retreat' belongs to reflexive sich zurückziehen, which takes haben and is already covered by the sibling 'withdraw, pull back'. 'Move away' is worse than imprecise: it names the opposite direction from zurück, so a learner would use the verb for leaving rather than returning.",
+   "candidate_glosses": [
+    "to pull back, to withdraw",
+    "to retreat"
+   ],
+   "auxiliary": "sein",
+   "sibling_gloss": "withdraw, pull back"
+  },
+  {
+   "key": "überkochen#0",
+   "verb": "überkochen",
+   "separability": "inseparable",
+   "shipped_gloss": "overcook",
+   "proposed_gloss": "cook again",
+   "severity": "medium",
+   "reviewer_detail": "Inseparable über- with haben is the again/over-once-more prefix of überarbeiten, überdenken, überprüfen, and kaikki's index 2 gives that reading here: 'to cook something again'. It is not the excessive-quantity prefix, and German expresses cooking something too long with verkochen, not überkochen. 'Overcook' reads über- as 'too much' by analogy with English and names a sense the inseparable verb does not carry; the boil-over sense it might be confused with is the separable sibling.",
+   "candidate_glosses": [
+    "to boil over",
+    "to over escalate",
+    "to cook something again"
+   ],
+   "auxiliary": "haben",
+   "sibling_gloss": "boil over"
+  }
+ ]
+}

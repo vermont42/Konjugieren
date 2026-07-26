@@ -99,6 +99,56 @@ Do not report these. Each has been considered and settled.
 - **Anything about the German verb itself** — its conjugation, its separability, whether it should be
   in the app. You are auditing the English gloss only.
 
+## If your shard is the multi-reading shard (`multi_000.in.json`)
+
+Skip this section unless your shard file's records hold a `key` field. Everything above still
+applies; the rest of this section is what differs.
+
+Forty-four verbs in the corpus carry **two readings**, each with its own gloss. These are
+dual-auxiliary verbs: one lemma, one conjugation, two senses distinguished by whether the perfect
+takes *haben* or *sein*. *abbrechen* is the model — "break off, cancel" with haben (transitive) beside
+"break off, snap (come apart)" with sein (intransitive). Your shard holds one record per **reading**,
+of the form `{"key": "abbrechen#1", "verb": "abbrechen", "reading_index": 1, "gloss": "...",
+"separability": "...", "auxiliary": "sein", "ablaut_group": "...", "sibling_gloss": "...",
+"candidate_glosses": [...], "sense_index": null, "sense_match": "none"}`.
+
+**Key your findings by `key`, not by `verb`.** `"abbrechen"` does not say which of the two glosses to
+rewrite; `"abbrechen#1"` does.
+
+**Each reading is judged on its own meaning, and the two glosses on one verb must stay
+distinguishable from each other.** This is the one genuinely new requirement, and it is the failure
+mode a per-verb review cannot see. Two glosses can each be defensible alone and still collapse into
+the same English, which defeats the point of having two readings: the app would show a learner the
+same meaning twice and no way to tell which auxiliary goes with which. `weben` and `verweben` both
+shipped as "weave" for exactly this reason — the sweep found it only because a human compared two
+entries. Here the collision would sit inside a single entry. `sibling_gloss` is in the record so you
+can check for it. If a *proposed* fix would collide with the sibling, propose the pair.
+
+**`auxiliary` is usually the strongest evidence you have about which sense a reading names**, because
+on this population the auxiliary split is generally *why* the second reading exists. German pairs a
+haben-perfect with the transitive, causative, or activity sense and a sein-perfect with the
+intransitive, change-of-state, or goal-directed one. So a `sein` reading glossed transitively, or a
+`haben` reading glossed as a change of state, is a real finding even when the English reads well.
+*rollen* "roll (something)" with haben beside "roll (move by rolling)" with sein is the pattern done
+right.
+
+**Two data caveats, both of which will otherwise look like defects that are not there.**
+
+- **`candidate_glosses` is per lemma, not per reading.** kaikki keys senses to the written word, so
+  both readings of a verb receive the same list, and for some verbs that list describes only one of
+  them. *übersetzen* reading 1 is "ferry across", and its `candidate_glosses` holds translate,
+  compile, and two obscure senses — because kaikki's *über|setzen* entry is separate and did not
+  merge. A gloss with no support in the list is therefore **not** evidence of anything on this
+  shard. `sense_match: "none"` covers 66 of the 88 records here, against a minority elsewhere: these
+  glosses were largely authored by hand to split the senses, which is what they were supposed to be.
+- **`separability` is per reading and can differ from the other reading's**, because the two readings
+  are sometimes two different verbs distinguished by stress, which German orthography does not mark.
+  *übersetzen* is inseparable *übersétzen* "translate" in reading 0 and separable *ÜBERsetzen* "ferry
+  across" in reading 1; *umgehen*, *umstellen*, *unterstellen*, *überstehen*, and *überkochen* are
+  the same shape. Judge each gloss against the verb its own `separability` names. A separable
+  reading takes the literal, spatial sense and an inseparable one the figurative or transferred
+  sense, near-universally.
+
 ## Output format
 
 Write a single JSON object to the output path. **Only verbs with findings appear.** A shard where

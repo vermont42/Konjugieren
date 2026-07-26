@@ -1,6 +1,15 @@
-# Verbs excluded from the gloss audit: more than one <reading>, so 'the shipped
-# gloss' is not a single value and apply_gloss_corrections.py cannot write one.
-# Audit these by hand if the sweep's defect rate suggests it is worth it.
+# Verbs excluded from the DEFAULT-mode gloss audit: more than one <reading>, so 'the
+# shipped gloss' is not a single value.
+#
+# AUDITED 2026-07-26 -- this file is now a historical record, not a to-do. The exclusion was
+# an addressing limitation, not a linguistic one; apply_gloss_corrections.py now accepts a
+# reading-scoped `<verb>#<index>` key and build_gloss_shards.py --multi-reading emits one
+# record per reading. 88 glosses reviewed, 6 defects. See docs/blog_notes.md (2026-07-26).
+#
+# THIS FILE LISTS 43. THERE ARE 44. `überkochen` was removed by the already-reviewed filter
+# one step before the multi-reading check ran, so no record was ever written for it -- and it
+# turned out to be one of the six defects. Any exclusion file inherits the blindness of every
+# filter that ran before it.
 # format: <verb>\t<gloss> | <gloss> ...
 
 abbrechen	break off, cancel | break off, snap (come apart)

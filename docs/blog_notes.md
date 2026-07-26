@@ -5207,3 +5207,147 @@ the sweep found, except inside a single entry. A reviewer judging one gloss at a
 and that is exactly how the pipeline works. The plan adds a pair-distinguishability rule to the brief
 for that reason. It generalises: the pipeline has no cross-verb view at all, so any defect that is
 only visible as a *relationship* between two glosses is out of its reach by construction.
+
+## The 44 multi-reading verbs, audited: 6 defects in 88 glosses, and one crossed pair (2026-07-26)
+
+Executed `prompts/multi_reading_glosses.md`. The population the gloss sweep never looked at is now
+looked at: **88 glosses on 44 dual-auxiliary verbs, 6 defects, 6.8%** — against the sweep's 10.1% over
+2,432 verbs. All six accepted by the cross-model adjudicator, all six confirmed against attested use,
+none applied pending Josh's read.
+
+**The plan was right that the blocker was addressing, not modelling, and the fix was an afternoon.**
+`build_gloss_shards.py --multi-reading` emits one record per `<reading>` keyed `<verb>#<index>`;
+`apply_gloss_corrections.py` accepts that key and scopes the splice to the one `<reading>` element
+rather than to the `<verb>` body. `build_gloss_corrections.py` and `build_adjudication_shards.py`
+took a `--pattern multi` flag apiece, which is all they needed, because a correction key is an opaque
+string to both and "one gloss per key" holds either way. Both were regression-checked against the
+sweep's own artifacts: the 246-correction file and all ten adjudication shards rebuild byte-identical.
+
+**Scoping the splice to the reading element stopped being hypothetical the moment the findings came
+back.** `umgehen`'s two glosses were **crossed** — each reading shipped the other's meaning — so the
+corrections file asks to write "deal with, handle" onto reading 1 while that exact string is still
+sitting on reading 0. A body-scoped `replace` would have hit the first occurrence and quietly
+corrupted the pair. The docstring justified the reading-scoped splice on the grounds that dual-
+auxiliary siblings are near-synonyms by construction and would someday converge; the very first
+correction file contained a swap.
+
+**Three fields turned out to be load-bearing, and all three were found by looking at the data rather
+than by reasoning about it.**
+
+*Separability is per reading, not per verb.* Nine readings carry their own `in=` overriding the
+parent, and for six of them it changes the separability: `übersetzen` is inseparable *übersétzen*
+"translate" in reading 0 and separable *ÜBERsetzen* "ferry across" in reading 1. These are two
+different verbs distinguished by a stress German orthography does not mark. Inheriting the parent's
+value would have shown the reviewer "ferry across (inseparable)" and invited a finding against a verb
+that does not exist.
+
+*`candidate_glosses` is per lemma, not per reading.* kaikki keys senses to the written word, so both
+readings get the same list and for some verbs it describes only one of them — `übersetzen` reading 1
+is "ferry across" against a list holding translate, compile, and two obscure senses, because kaikki's
+separable entry never merged. This inverts the sweep's central asymmetry: there, an unattested gloss
+was the risky class, and the adjudication brief tells the adjudicator to reject on uncertainty for
+that reason. Here `sense_match: "none"` covers **66 of 88** records, because these glosses were
+authored by hand to split the senses in the first place. Both briefs had to say so explicitly, or the
+adjudicator would have rejected the population wholesale on a signal that means nothing here.
+
+*The auxiliary is the strongest evidence available.* On this population the haben/sein split is
+generally *why* the second reading exists, and German pairs haben with the transitive/causative sense
+and sein with the intransitive/change-of-state one. Every one of the six findings argued from the
+auxiliary, the separability, or the sibling — i.e. from a field that exists only in the per-reading
+record. Nothing in the old per-verb shard could have produced them.
+
+**The pair-distinguishability rule earned its place, and not in the way the plan predicted.** The plan
+expected a *collision* — two glosses collapsing into the same English, the `weben`/`verweben` defect
+inside one entry. What the shard actually contained was a *swap*, which is the collision's sibling and
+invisible to exactly the same reviewer. `umgehen` shipped "deal with, handle" on inseparable *umgéhen*
+(haben, participle *umgangen*) and "circulate, make a detour" on separable *úmgehen* (sein, participle
+*umgegangen*). Both are real senses of something; each was on the wrong reading. Reverso settles it
+from the grammar of its examples rather than its ranking: every *mit*-dative use renders deal/handle,
+every accusative-transitive one renders bypass. The adjudicator caught that the fix was a coordinated
+swap and said so in its reason, which means it was reading `sibling_gloss` as intended.
+
+**`überkochen`, the 44th verb — the one no filter ever showed anybody — was defective, and DWDS
+vindicated the data model while doing it.** It shipped inseparable reading 0 as "overcook", which is
+English's *over-as-excess* read into a German prefix that does not carry it; German says *verkochen*.
+DWDS lists two entries with explicit paradigms: *kocht über / übergekocht /* sein = boil over, and
+*überkocht / überkocht /* haben, marked *landschaftlich, besonders österreichisch*, = "etw. noch
+einmal kochen". So the app's reading pair models a real split faithfully, and the correct gloss is
+"cook again". Worth stating plainly what that means for filter hygiene: the verb was invisible because
+two filters ran in sequence and only the second wrote a record. `skipped-multi-reading.txt` is honest
+about what *it* dropped and structurally blind to what was dropped upstream of it — and the thing it
+could not see turned out to be defective.
+
+**Attested use overrode the ranking twice, in opposite directions.** Reverso's frequency list is the
+right tool when the question is which rendering translators reach for — `tauchen`'s ranked list is
+`dive · dip · appear · immerse · plunge · emerge · submerge · swim` and **"surface" is absent
+entirely**, the `anschlagen` shape again; `passieren` ranks the shipped gloss's second half
+(`strain`) dead last of ten. But it is the wrong tool when the question is which *paradigm* carries a
+sense, because it pools everything under one lemma. `zurückziehen` ranks `withdraw · retreat · retire
+…` with every free example reflexive, which cannot settle a claim about the non-reflexive sein
+reading. DWDS can and does: its sense 3, "zum Ausgangsort ziehen", gives both examples in sein — *sie
+sind nach Leipzig zurückgezogen*. The lesson from `verweben` was "prefer use to dictionary listings";
+the refinement is that a *corpus* dictionary that publishes per-sense paradigms answers a question a
+bilingual concordance cannot.
+
+**A regional gloss ships unmarked, again.** DWDS marks inseparable *überkochen* Austrian/regional, and
+"cook again" does not tell a learner that. Appending "(regional)" was rejected for the same reason
+"(figurative)" was rejected on `verweben` eleven entries ago: it reproduces the leaked-dictionary-
+apparatus class this sweep spent 49 shards removing, which `gloss_review.md` rates high-severity via
+`entmieten` "of a landlord". The precedent is the brief's own worked example — `fernschauen` glosses
+"watch television" with no marker despite being Austrian and southern.
+
+**Cost and rates.** Review $1.22 for one 88-record shard (18.3k output tokens, ~4 min); adjudication
+$0.70 (10.4k output tokens, ~2.4 min). Under $2 total, against $30.44 + $13.24 for the sweep.
+Adjudication accepted **6 of 6** where the sweep's ran 218/2/25 — small n, but consistent with a
+reviewer that had the auxiliary, the separability, and the sibling in front of it. Three of six
+`own_gloss` values matched the proposal character-for-character, which is the corroboration signal the
+sweep found more trustworthy than traceability. Traceability again predicted nothing: 0 of 4
+`authored` rejected, 0 of 2 `partial`.
+
+**One incidental hazard closed, and then walked straight into anyway.**
+`build_gloss_shards.py` in its default mode now refuses to overwrite existing `gloss_NNN.in.json`
+without `--force`. Those 49 files are the audit trail of what the sweep reviewed, and 220 of the
+glosses they quote have since been corrected in `Verbs.xml`, so a rebuild silently makes the record of
+the sweep disagree with the sweep.
+
+Then, late in the session, I passed `--force` to check that a header string round-tripped — and
+clobbered all 49 with post-correction glosses. Two things made that recoverable, and both are worth
+naming because neither was luck. The shards are *derived* data whose only non-reproducible input is a
+`Verbs.xml` that git has at every revision, so `git show 08af73f^:Konjugieren/Models/Verbs.xml` plus a
+rebuild restores them exactly. And there is a check that *proves* the restore rather than assuming it:
+rebuilding the sweep's corrections file from the shards must reproduce
+`gloss-corrections-sweep.json` byte-for-byte, which it can only do if the shards hold pre-correction
+`old` values. That check is what turned "I think it's fine" into a verified restore, and it existed
+only because I had run it earlier as a regression test on the `--pattern` flag.
+
+The guard was right and the reason I bypassed it was bad: I wanted to test a comment. Testing the
+writer against the checked-in file needed a temp destination, not `--force` on shipping artifacts.
+
+**Applied.** Josh read the triage and approved all six, and they went into
+`Konjugieren/Models/Verbs.xml`. Six lines changed, one per targeted `<reading>`; every `old` assertion
+held, the spliced document re-parses, `check_docs.py` reports 0 problems, and the suite passes at 211
+tests in 32 suites. `verbdata/adjudication/triage-multi-reading.md` is the human record, including the
+external checks.
+
+The `umgehen` hunk is the one worth looking at in the diff, because it is the whole case for the
+reading-scoped splice rendered as six characters of context:
+
+```xml
+-    <reading tn="deal with, handle" fa="s" ag="gehen" />
+-    <reading in="um+g^eh^en" tn="circulate, make a detour" fa="s" ag="gehen" ay="s" />
++    <reading tn="bypass, circumvent" fa="s" ag="gehen" />
++    <reading in="um+g^eh^en" tn="deal with, handle" fa="s" ag="gehen" ay="s" />
+```
+
+Two edits, disjoint spans, and the string being *written* to the second reading is the string being
+*deleted* from the first. Under the old body-scoped `replace(f'tn="{old}"', ...)` the reading-1
+correction would have matched reading 0's `tn` — the first occurrence in the body — and produced a verb
+glossed "deal with, handle" twice with the circumvent sense gone entirely. The guard against that
+existed for one session before the corpus produced the case it was written for.
+
+**What is now genuinely unaudited: nothing in the shipping corpus.** 2,432 single-reading verbs +
+1,097 sentence-reviewed verbs + these 44 covers it. The open gloss-quality problem is no longer
+coverage but the one the `weben`/`verweben` entry named: the pipeline has **no cross-verb view**, so a
+gloss defensible alone and identical to a morphological relative's remains invisible to it. This pass
+closed that hole *within* an entry, by putting `sibling_gloss` in the record. Between entries it is
+still open, and it is mechanical — flag same-stem verbs sharing a gloss before any model is involved.

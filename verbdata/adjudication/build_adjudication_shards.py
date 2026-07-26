@@ -32,6 +32,15 @@ could not see the bucket.
 The `severity` field IS passed, because it is the proposer's own claim about how bad the defect is
 and the adjudicator should be able to hold it to that claim -- a `high` severity attached to a
 cosmetic quibble is itself informative.
+
+--PATTERN multi ADJUDICATES THE PER-READING SHARD, and adds two fields the per-verb records do not
+have. Corrections on the 44 dual-auxiliary verbs are keyed `<verb>#<index>`, one per <reading>, so the
+adjudicator is judging one of a verb's two glosses. It needs `auxiliary`, because on this population
+the haben/sein split is generally the whole reason the second reading exists and is therefore the
+strongest evidence about which sense a reading is supposed to name; and it needs `sibling_gloss`,
+because two glosses on one lemma can each be defensible alone and still collapse into the same
+English -- a defect visible only as a relationship between them, which a record showing one gloss at
+a time hides by construction.
 """
 
 import argparse
@@ -43,7 +52,11 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--corrections", default="verbdata/gloss-review/gloss-corrections-sweep.json")
 parser.add_argument("--size", type=int, default=25)
 parser.add_argument("--out", default="verbdata/adjudication/shards")
+parser.add_argument("--pattern", choices=["gloss", "multi"], default="gloss",
+                    help="which review shards hold the kaikki senses: 'gloss' (per verb) or "
+                         "'multi' (per reading, keyed <verb>#<index>)")
 args = parser.parse_args()
+LIST_FIELD, KEY_FIELD = ("verbs", "verb") if args.pattern == "gloss" else ("readings", "key")
 
 corrections = {k: v for k, v in json.load(open(args.corrections)).items() if not k.startswith("_")}
 if not corrections:
@@ -51,9 +64,9 @@ if not corrections:
 
 # kaikki senses and separability come from the review shards, which read them from Verbs.xml.
 meta = {}
-for f in glob.glob("verbdata/gloss-review/shards/gloss_*.in.json"):
-    for entry in json.load(open(f))["verbs"]:
-        meta[entry["verb"]] = entry
+for f in glob.glob(f"verbdata/gloss-review/shards/{args.pattern}_*.in.json"):
+    for entry in json.load(open(f))[LIST_FIELD]:
+        meta[entry[KEY_FIELD]] = entry
 
 missing = sorted(v for v in corrections if v not in meta)
 if missing:
@@ -64,18 +77,23 @@ if missing:
     )
 
 records = []
-for verb in sorted(corrections):
-    fix = corrections[verb]
-    entry = meta[verb]
-    records.append({
-        "verb": verb,
+for key in sorted(corrections):
+    fix = corrections[key]
+    entry = meta[key]
+    record = {
+        "verb": entry["verb"] if args.pattern == "multi" else key,
         "separability": entry.get("separability"),
         "shipped_gloss": fix["old"],
         "proposed_gloss": fix["new"],
         "severity": fix.get("severity"),
         "reviewer_detail": fix.get("why", ""),
         "candidate_glosses": entry.get("candidate_glosses") or [],
-    })
+    }
+    if args.pattern == "multi":
+        # `key` is what the verdict must come back under; `verb` alone names two glosses.
+        record = {"key": key, **record, "auxiliary": entry.get("auxiliary"),
+                  "sibling_gloss": entry.get("sibling_gloss")}
+    records.append(record)
 
 os.makedirs(args.out, exist_ok=True)
 shards = [records[i:i + args.size] for i in range(0, len(records), args.size)]

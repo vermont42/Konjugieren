@@ -1,0 +1,32 @@
+{
+  "passieren#1": {
+    "own_gloss": "pass, cross",
+    "verdict": "accept",
+    "reason": "The haben reading's everyday sense is passing a border or checkpoint ('die Kontrolle passieren'), kaikki index 1 'to move beyond; pass'. The shipped gloss committed to the culinary sieve sense (index 2), and the comma made 'pass through' read as through a strainer, hiding the common sense. 'pass, cross' also stays clearly apart from the sein sibling 'happen, occur'."
+  },
+  "tauchen#1": {
+    "own_gloss": "dive, plunge",
+    "verdict": "accept",
+    "reason": "The sein reading is directed motion into the water (kaikki index 0 'to dive'); surfacing is auftauchen. The shipped 'dive, surface' pairs two opposite motions across a comma the house style reads as synonymy, which would send a learner to the wrong verb for the common case. 'dive down, plunge' fixes the direction and stays distinct from the haben sibling."
+  },
+  "umgehen#0": {
+    "own_gloss": "bypass, circumvent, avoid",
+    "verdict": "accept",
+    "reason": "This is inseparable umgéhen with haben (participle umgangen), meaning bypass/circumvent/avoid, exactly kaikki indices 0 and 1. 'deal with, handle' is the separable úmgehen/sein verb (participle umgegangen) and reached this reading from the wrong verb, leaving the attested avoid sense on neither reading. Distinct from the corrected sibling."
+  },
+  "umgehen#1": {
+    "own_gloss": "deal with, handle",
+    "verdict": "accept",
+    "reason": "Separable úmgehen with sein is 'mit jemandem/etwas umgehen' — deal with, handle — by far the most frequent sense a learner meets. 'make a detour' is the inseparable go-around-an-obstacle sense imported from the wrong verb. The sibling_gloss shows the current shipped 'deal with, handle', but this is a coordinated swap with umgehen#0, so the final pair (bypass/circumvent vs. deal with/handle) stays distinct rather than collapsing."
+  },
+  "zurückziehen#1": {
+    "own_gloss": "move back, relocate",
+    "verdict": "accept",
+    "reason": "With sein and no reflexive the verb is directional motion back to a place ('in ihre Heimatstadt zurückgezogen'). 'Retreat' is reflexive sich zurückziehen (haben), already carried by the sibling 'withdraw, pull back'. 'move away' names the opposite direction from zurück, which is worse than imprecise. Per-lemma candidates cover only the haben senses, which the dual-auxiliary caveat says is not grounds to reject."
+  },
+  "überkochen#0": {
+    "own_gloss": "cook again",
+    "verdict": "accept",
+    "reason": "This is inseparable über- with haben, the again/re- prefix of überarbeiten and überprüfen, which kaikki gives at index 2 'to cook something again' — a transitive sense consistent with the haben auxiliary. The shipped 'overcook' matches no candidate gloss and reads über- as English 'too much'; German overcook is verkochen, and the boil-over sense is the separable sein sibling."
+  }
+}

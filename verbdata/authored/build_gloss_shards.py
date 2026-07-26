@@ -7,11 +7,14 @@ Consumes:
   verbdata/candidates.json            the full kaikki gloss list per verb
   verbdata/authored/provenance.json   the 1,097 verbs the example-sentence review already covered
 
-Produces:
+Produces, in the default single-reading mode:
   verbdata/gloss-review/shards/gloss_NNN.in.json    50 verbs each
   verbdata/gloss-review/skipped-multi-reading.txt   verbs excluded, with their readings
 
-Run from the repo root:  python3 verbdata/authored/build_gloss_shards.py
+Produces, with --multi-reading:
+  verbdata/gloss-review/shards/multi_000.in.json    one record per READING, 88 of them
+
+Run from the repo root:  python3 verbdata/authored/build_gloss_shards.py [--multi-reading]
 
 WHAT IS BEING AUDITED, AND WHY IT IS NOT THE SENTENCES. The adversarial review of 2026-07-25 read
 1,097 verbs and found 55 defective glosses, 5.0%. It found them incidentally: it was reading example
@@ -43,21 +46,56 @@ finding-relevant fact, because it tells the reviewer that a disagreement is a ju
 the dictionary rather than a wrong pick among options. Nine of the review's 55 findings were of that
 kind, and they were the ones its `detail` prose hedged on.
 
-MULTI-READING VERBS ARE SKIPPED, LOUDLY. add_readings.py gave 18 dual-auxiliary verbs a second
-<reading>, each with its own tn, and there are ~44 extra readings in the file overall. On such a verb
-"the shipped gloss" is not a single value, and apply_gloss_corrections.py refuses to write one rather
-than guess which sense to rewrite. Sending them to a reviewer would spend tokens producing findings
-nothing can apply. They are written to skipped-multi-reading.txt instead of being dropped in silence,
-because a silent cap reads as coverage it did not have.
+MULTI-READING VERBS ARE SKIPPED BY THE DEFAULT MODE, LOUDLY — AND SERVED BY --multi-reading.
+add_readings.py gave 44 dual-auxiliary verbs a second <reading>, each with its own tn. On such a verb
+"the shipped gloss" is not a single value, and apply_gloss_corrections.py originally refused to write
+one rather than guess which sense to rewrite, so the default mode excludes them and lists them in
+skipped-multi-reading.txt rather than dropping them in silence. That exclusion was mechanical, never
+linguistic: each reading has its own gloss and each is independently auditable.
+
+--multi-reading audits them, emitting one record per READING keyed `<verb>#<index>`. The applier now
+accepts that key (see apply_gloss_corrections.py), which is what unblocked the population. Three
+things the per-reading record must carry, each learned by looking at the data rather than assumed:
+
+  * SEPARABILITY IS PER READING, NOT PER VERB. Nine of the 44 readings carry their own `in=`
+    overriding the parent <verb>: `übersetzen` is inseparable `über*setzen` (übersétzen, translate)
+    in reading 0 and separable `über+setzen` (ÜBERsetzen, ferry across) in reading 1. German
+    orthography does not mark the stress that distinguishes them. Inheriting the parent's
+    separability would show a reviewer "ferry across (inseparable)" and invite a finding against a
+    verb that does not exist.
+  * THE SIBLING GLOSS. The one failure mode this population has and the 2,432-verb sweep never faced
+    is a pair that collapses into the same English — the weben/verweben collision found in that
+    sweep, except inside one entry. A reviewer judging records one at a time cannot see it, so the
+    sibling is named in the record instead of being left to be inferred from file adjacency.
+  * THE AUXILIARY. `ay="s"` means the perfect takes sein. On this population it is usually the whole
+    reason the second reading exists (transitive haben vs intransitive sein), so it is the strongest
+    available evidence about which sense a reading is supposed to name.
+
+WHY --multi-reading WRITES A SEPARATE FILE AND THE DEFAULT MODE NOW REFUSES TO CLOBBER. The 49
+gloss_NNN.in.json shards are the audit trail of what the sweep actually reviewed, and 220 of the
+glosses they quote have since been corrected in Verbs.xml. Re-running the default mode today would
+rewrite them with post-correction values, silently making the record of the sweep disagree with the
+sweep. It therefore refuses when the shards already exist unless --force is passed.
 """
 
+import argparse
 import collections
+import glob
 import json
 import os
 import re
 
 SIZE = 50
 OUT = "verbdata/gloss-review/shards"
+
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("--multi-reading", action="store_true",
+                    help="audit the 44 two-<reading> verbs instead: one record per reading, "
+                         "keyed <verb>#<index>, into multi_000.in.json")
+parser.add_argument("--force", action="store_true",
+                    help="overwrite existing shard files (see the docstring: the gloss_NNN shards "
+                         "are the sweep's audit trail and Verbs.xml has moved since)")
+args = parser.parse_args()
 
 raw = open("Konjugieren/Models/Verbs.xml").read()
 CAND = {c["word"]: (c.get("glosses") or [])
@@ -101,6 +139,80 @@ def match_sense(gloss, glosses):
     return None, "none"
 
 
+def separability(marked):
+    return ("separable" if "+" in marked
+            else "inseparable" if "*" in marked else "simplex")
+
+
+def build_multi_reading():
+    """One record per reading of every two-<reading> verb, keyed <verb>#<index>.
+
+    THE REVIEWED FILTER IS DELIBERATELY NOT APPLIED HERE, and that is not a shortcut. In the
+    default mode the two filters run in sequence — already-reviewed first, multi-reading second —
+    and only the second writes a record, so `überkochen` was removed from the pool before the
+    multi-reading check ever saw it and is absent from skipped-multi-reading.txt. That file says
+    43; the corpus holds 44. Its glosses have never been audited: provenance.json records that its
+    example SENTENCE was reviewed, which is a different pass with a different subject. Any
+    exclusion file inherits the blindness of every filter that ran before it.
+    """
+    records, overrides = [], []
+    for m in re.finditer(r'<verb in="([^"]+)"[^>]*>(.*?)</verb>', raw, re.S):
+        marked, body = m.group(1), m.group(2)
+        verb = re.sub(r"[+*^]", "", marked)
+        readings = [dict(re.findall(r'(\w+)="([^"]*)"', r.group(1)))
+                    for r in re.finditer(r'<reading\b([^>]*)/>', body)]
+        if len(readings) < 2:
+            continue
+        glosses = CAND.get(verb) or []
+        for i, rd in enumerate(readings):
+            idx, kind = match_sense(rd["tn"], glosses)
+            if separability(rd.get("in", marked)) != separability(marked):
+                overrides.append(f"{verb}#{i}")
+            records.append({
+                "key": f"{verb}#{i}",
+                "verb": verb,
+                "reading_index": i,
+                "gloss": rd["tn"],
+                # A reading may override the parent's `in`, which changes the separability and thus
+                # WHICH GERMAN VERB this gloss belongs to: übersetzen is übersétzen (translate) in
+                # reading 0 and ÜBERsetzen (ferry across) in reading 1.
+                "separability": separability(rd.get("in", marked)),
+                "auxiliary": "sein" if rd.get("ay") == "s" else "haben",
+                "ablaut_group": rd.get("ag"),
+                "sibling_gloss": readings[1 - i]["tn"] if len(readings) == 2 else None,
+                "candidate_glosses": glosses,
+                "sense_index": idx,
+                "sense_match": kind,
+            })
+    records.sort(key=lambda r: (r["verb"], r["reading_index"]))
+    os.makedirs(OUT, exist_ok=True)
+    path = f"{OUT}/multi_000.in.json"
+    if os.path.exists(path) and not args.force:
+        raise SystemExit(f"{path} exists -- pass --force to overwrite")
+    json.dump({"shard": "multi_000", "readings": records},
+              open(path, "w"), ensure_ascii=False, indent=2)
+    verbs = {r["verb"] for r in records}
+    kinds = collections.Counter(r["sense_match"] for r in records)
+    print(f"{len(records)} readings on {len(verbs)} verbs -> {path}")
+    print(f"  gloss tracks a kaikki sense: exact {kinds['exact']}, "
+          f"shortened {kinds['shortened']}, none {kinds['none']}")
+    print(f"  readings overriding the parent's separability: {len(overrides)} {overrides}")
+    print(f"  readings taking sein: {sum(1 for r in records if r['auxiliary'] == 'sein')}")
+    print(f"  in provenance.json (invisible to skipped-multi-reading.txt): "
+          f"{sorted(verbs & REVIEWED)}")
+
+
+if args.multi_reading:
+    build_multi_reading()
+    raise SystemExit
+
+if glob.glob(f"{OUT}/gloss_*.in.json") and not args.force:
+    raise SystemExit(
+        f"{OUT}/ already holds gloss_NNN.in.json shards -- refusing to rewrite them.\n"
+        "They quote the glosses the sweep of 2026-07-25 reviewed, 220 of which have since been\n"
+        "corrected in Verbs.xml, so a rebuild would make the audit trail disagree with the audit.\n"
+        "Pass --force if you really mean to rebuild from current Verbs.xml.")
+
 entries, skipped = [], []
 for m in re.finditer(r'<verb in="([^"]+)"[^>]*>(.*?)</verb>', raw, re.S):
     marked = m.group(1)
@@ -116,8 +228,7 @@ for m in re.finditer(r'<verb in="([^"]+)"[^>]*>(.*?)</verb>', raw, re.S):
     entries.append({
         "verb": verb,
         "gloss": tns[0],
-        "separability": ("separable" if "+" in marked
-                         else "inseparable" if "*" in marked else "simplex"),
+        "separability": separability(marked),
         "candidate_glosses": glosses,
         # 0-based index of the kaikki sense the shipped gloss came from, and how faithfully.
         # sense_index 0 with several candidates is the first-sense pick the review found
@@ -135,9 +246,27 @@ for i in range(0, len(entries), SIZE):
               open(f"{OUT}/gloss_{n:03d}.in.json", "w"), ensure_ascii=False, indent=2)
 
 with open("verbdata/gloss-review/skipped-multi-reading.txt", "w") as f:
-    f.write("# Verbs excluded from the gloss audit: more than one <reading>, so 'the shipped\n"
-            "# gloss' is not a single value and apply_gloss_corrections.py cannot write one.\n"
-            "# Audit these by hand if the sweep's defect rate suggests it is worth it.\n"
+    # Kept in sync with the checked-in file by hand. A regeneration must not read as a fresh
+    # to-do list: these verbs were audited on 2026-07-26 via --multi-reading.
+    f.write("# Verbs excluded from the DEFAULT-mode gloss audit: more than one <reading>, so 'the\n"
+            "# shipped gloss' is not a single value.\n"
+            "#\n"
+            "# AUDITED 2026-07-26 -- this file is now a historical record, not a to-do. The "
+            "exclusion was\n"
+            "# an addressing limitation, not a linguistic one; apply_gloss_corrections.py now "
+            "accepts a\n"
+            "# reading-scoped `<verb>#<index>` key and build_gloss_shards.py --multi-reading emits "
+            "one\n"
+            "# record per reading. 88 glosses reviewed, 6 defects. See docs/blog_notes.md "
+            "(2026-07-26).\n"
+            "#\n"
+            "# THIS FILE LISTS 43. THERE ARE 44. `überkochen` was removed by the already-reviewed "
+            "filter\n"
+            "# one step before the multi-reading check ran, so no record was ever written for it "
+            "-- and it\n"
+            "# turned out to be one of the six defects. Any exclusion file inherits the blindness "
+            "of every\n"
+            "# filter that ran before it.\n"
             "# format: <verb>\\t<gloss> | <gloss> ...\n\n")
     for verb, tns in sorted(skipped):
         f.write(f"{verb}\t" + " | ".join(tns) + "\n")

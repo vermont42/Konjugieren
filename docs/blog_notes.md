@@ -6307,3 +6307,30 @@ the guard that is broken.
 `git diff --stat` showed three insertions and three deletions, which is right: each article's German
 value is a single long JSON line, so six typos on three lines is three changed lines. Had it shown
 thousands, that would have been the `json.load` + `json.dump` round-trip CLAUDE.md warns about.
+
+### Eight cells re-shot, not four (2026-07-26, still later)
+
+The Region reframing landed, so the four `settings` cells needed redoing, which
+`prompts/region_national_framing.md` had said from the start. The picker now shows three bare
+flags at equal weight with no truncation and no tofu, and the three-sentence description renders
+in both languages.
+
+The part worth recording is that four was the wrong number. Checking what else had changed since
+the sweep turned up `fb8ffde`, a spelling fix landed by another session for six instances of
+*Verganheits* in German Info articles. Two of the three affected keys carried the typo at
+character 55 and character 87, and `InfoBrowseView` renders the opening of each article as its
+row preview. So the German `info_browse` capture, screenshot 6, showed **Verganheits-Conjugationgroup**
+twice on screen, in the Präteritum Indikativ and Perfekt Indikativ rows. A spelling error in a
+store screenshot, in the app's own subject matter, in the language it teaches.
+
+Nobody would have caught it by looking at the commit. The typo fix touches Info article prose, and
+the screenshot it invalidates is of a *list* whose rows quote the first sentence of each article.
+The dependency runs from a string in the catalog, through a preview that shows roughly the first
+200 characters of it, to a capture of a screen that is nominally about navigation. The check that
+found it was mechanical and cheap: diff the catalog keys between the commit the screenshots were
+shot at and `HEAD`, then ask which captured screens render any of them.
+
+Worth generalizing for the next release. After a sweep, any commit that touches
+`Localizable.xcstrings` potentially invalidates a screenshot, and which one is not obvious from
+the key name. `Info.präteritumIndikativText` sounds like it belongs to screenshot 7; it is
+screenshot 6 that showed it, because 7 is a different article entirely.

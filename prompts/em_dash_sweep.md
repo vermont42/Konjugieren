@@ -24,14 +24,20 @@ Josh names. A reader who notices it is not wrong.
 
 This is the whole design of the sweep. Counts as of 2026-07-26:
 
-| surface | em | en | ` -- ` | what it is |
-|---|---|---|---|---|
-| `Konjugieren/Models/Etymologies.json` | 10,742 | 138 | 250 | authored prose, user-visible |
-| `Konjugieren/Models/ExampleSentences.json` | 4,651 | 49 | 0 | **mostly quoted text and citations** |
-| `Konjugieren/Assets/Localizable.xcstrings` | 592 | 296 | 0 | UI strings + long-form Info articles |
-| `KonjugierenWidget/Localizable.xcstrings` | 3 | 0 | 0 | widget strings |
-| `docs/` + `prompts/` (81 files) | 3,465 | n/a | n/a | internal; `blog_notes.md` is 699 of them |
-| `*.swift` (130 files) | 45 | n/a | n/a | comments |
+| surface | em dashes | in scope | what it is |
+|---|---|---|---|
+| `Konjugieren/Models/Etymologies.json` | 10,742 | **10,742** | authored prose, user-visible. Also 138 en dashes and 250 double hyphens |
+| `Konjugieren/Models/ExampleSentences.json` | 4,651 | **2** | 4,372 are the citation separator, 277 sit in quoted sentences |
+| `Konjugieren/Assets/Localizable.xcstrings` | 592 | **592** | UI strings and the long-form Info articles. Also 296 en dashes |
+| `KonjugierenWidget/Localizable.xcstrings` | 3 | **3** | widget strings |
+| `docs/` + `prompts/` (81 files) | ~3,484 | **1,489** | `etymologies.md` (1,293) and `blog_notes.md` (~700) are logs |
+| `*.swift` (130 files) | 45 | **45** | comments |
+| **total** | **~19,517** | **~12,873** | |
+
+**Roughly 12,900 of 19,500 are in scope; the other third is exempt.** Two of those counts drift by
+design and must be re-derived rather than trusted: `blog_notes.md` grows with every session, and
+this file's own specimen count changes when it is edited. `CLAUDE.md` is absent from the table
+because it was swept on 2026-07-26 and holds none.
 
 Four classes, and they take four different verdicts.
 
@@ -59,9 +65,10 @@ separator in a citation format: `Kafka — Der Proceß`, `Bundestag — Plenarpr
 `Mann — Der Tod in Venedig`. That is not prose containing an em dash; it is a delimiter that
 happens to be spelled with one.
 
-It is mechanically replaceable (`, ` or ` · ` or `: `) and it is **Josh's call whether to**, because
-the style rule is about prose. Ask before touching it. If it changes, it changes in one `sed` across
-4,372 uniform sites and needs a screenshot check of `VerbView`, not a review pass.
+**Resolved 2026-07-26: the separator does not change. Leave all 4,372 alone.** The style rule is
+about prose, and a delimiter in a citation format is not prose. This is the largest single exemption
+in the sweep, so it is worth stating in the negative too: a later pass that counts em dashes in
+`ExampleSentences.json`, reports 4,651 outstanding, and calls it a regression has misread the scope.
 
 ### 3. Authored prose: the actual work
 
@@ -72,18 +79,27 @@ Everything else. `Etymologies.json` is the bulk, and it splits again:
 | em dashes in **shared component bullets** | 2,565 | 2,563 |
 | em dashes in **per-verb prose** | 2,719 | 2,895 |
 
-### 4. Internal docs: decide the boundary before starting
+### 4. Internal docs: the two logs are excluded
 
-`docs/` and `prompts/` hold 3,465. **`docs/blog_notes.md` (699) should be left alone**, and this is
-not laziness. `CLAUDE.md` describes the journal as dated project memory that narrates what was tried
-and when; rewriting its punctuation edits the historical record to make the past comply with a rule
-it predates. The same argument covers `docs/etymologies.md` (1,293) if it is a generation log rather
-than a live document. **Check which it is before deciding.** Live docs that describe current truth
-are fair game and cheap.
+`docs/` and `prompts/` hold about 3,484, and **1,995 of them are excluded as logs.**
+
+**`docs/blog_notes.md` (~700, and growing) is left alone**, and this is not laziness. `CLAUDE.md`
+describes the journal as dated project memory that narrates what was tried and when; rewriting its
+punctuation edits the historical record to make the past comply with a rule it predates.
+
+**`docs/etymologies.md` (1,293) is left alone too. Resolved 2026-07-26: Josh confirms it is a log.**
+The same argument applies, and it is the larger of the two.
+
+That leaves **1,489** across the other 79 files, which are live documents describing current truth
+and are fair game. The largest are `docs/ui-audit-2.md` (215), `prompts/uses_etymologies.md` (76),
+`docs/wwdc2026-whats-new-swiftui.md` (62), and `docs/roadmap.md` (56); the rest is a long tail of a
+few dashes per file. Note what the exemption actually rests on: a log is exempt for being a
+**historical record**, not for being internal. A live internal doc gets no exemption from being
+internal.
 
 **The journal's exclusion is not permission, and the distinction has a place to live now.**
 `CLAUDE.md` says Josh may eventually generate blog posts from `blog_notes.md`, and a blog post
-publishes under his byline, where the rule plainly governs. So the archive keeps its 699 em dashes as
+publishes under his byline, where the rule plainly governs. So the archive keeps its em dashes as
 a record of how the entries were written, and the sweep belongs in the **post-generation step**
 instead. That is now written into `CLAUDE.md`'s work-journal section and into
 `docs/english_writing_style.md`, so it does not depend on a future session reading this plan.
@@ -180,8 +196,9 @@ dedup machinery. Build the extract-distinct-bullets step once and let both sweep
 
 ## Steps
 
-1. Ask Josh the two scope questions **before writing code**: does the `source` field's separator
-   change, and does `docs/etymologies.md` count as a live document or a log?
+1. **Both scope questions are already answered** (2026-07-26): the `source` separator does not
+   change, and `docs/etymologies.md` is a log. Nothing blocks the start. Re-derive the counts in the
+   table above before trusting them, since two of them drift by design.
 2. Build `verbdata/style/extract_units.py`: emit every distinct bullet line and every per-verb prose
    paragraph containing `—`, ` – `, or ` -- `, each with its occurrence count and the verbs carrying
    it. Assert the totals against the table above; a mismatch means the corpus moved and the counts
@@ -219,5 +236,5 @@ is in scope. Em dashes in MINED example sentences are correct and must not be to
 memory and is left alone. 70% of etymology bullets are shared, so 419 distinct strings cover 1,835
 sites. Deduplicate BEFORE reviewing or the same ab- bullet gets fixed 94 different ways.
 
-Ask me the two scope questions in step 1 before writing code.
+Both scope questions in step 1 are already resolved, so nothing blocks the start.
 ````

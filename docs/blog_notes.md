@@ -5514,3 +5514,26 @@ The practical consequence is in `em_dash_sweep.md` now: detection needs no conte
 Search U+2014 unconditionally. A closed em dash could plausibly be doing typographic work inside a
 compound and would need thought; a spaced one between clauses is always the punctuation the rule
 targets, and the corpus contains nothing else.
+
+**Both scope questions resolved (2026-07-26).** Josh answered the two that step 1 of the plan was
+holding open. The `source` field's citation separator does **not** change, and `docs/etymologies.md`
+**is** a log. That turns the plan from a proposal into something a fresh session can start on, and
+it makes the size of the job knowable for the first time: **roughly 12,900 em dashes in scope out of
+19,500 in the repo.** A third of the population is exempt, and almost all of that third is the two
+answers just given plus the quoted sentences.
+
+The numbers are worth writing down because the shape is counterintuitive. `ExampleSentences.json`
+holds 4,651 em dashes and exactly **2** are in scope: 4,372 are the citation separator and 277 sit
+in quoted text. Meanwhile `Etymologies.json`'s 10,742 are in scope to the last one. A sweep that
+sorted its work by file size would start in exactly the wrong place.
+
+Two entries in the plan's table drift by design and are now labelled as such: `blog_notes.md` grows
+every time a session journals, and the plan's own specimen count changes when the plan is edited. A
+future session must re-derive both rather than trust the table, which is the same discipline
+`check_docs.py` enforces on the corpus counts.
+
+One clarification the resolution forced into the plan. Both exclusions are **logs**, and it would be
+easy to generalise that to "internal docs are exempt". They are not. A log is exempt for being a
+historical record; `docs/roadmap.md` and `docs/ui-audit-2.md` are just as internal and are fully in
+scope. The plan now says so in as many words, because the wrong generalisation would quietly exempt
+1,489 more dashes.

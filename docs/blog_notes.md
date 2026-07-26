@@ -6278,3 +6278,32 @@ sentence explaining it quietly stops being true, and nothing in the type system 
 variation must not become a second `Reading` while justifying it on the wrong grounds. The argument
 holds better under the new framing: two readings would tell every user both forms are available to
 them personally, and which standard is in force is not a fact about the verb's meaning.
+
+## Six Verganheits, not one (2026-07-26)
+
+Josh spotted `Verganheits-Conjugationgroup` in the German `Info.perfektIndikativText` while
+reviewing the Region reframing. The interesting part is that it was not one typo.
+
+Grepping for the exact string would have found the one instance and closed the ticket. Grepping for
+the *class* instead, every `Vergan\w*` in the catalog with the correct compounds whitelisted, turned
+up six occurrences of the same missing `gen` across three articles: three in
+`perfektIndikativText`, two in `plusquamperfektKonjunktivIIText`, and one in
+`präteritumIndikativText`. Four are `Verganheits-Conjugationgroup` and two are
+`Verganheits-Konditionalsätze(n)`. Same hand, same slip, three files, and five of them invisible to
+anyone searching for what they happened to notice.
+
+That is the second time in as many hours that widening a search from the instance to the class
+changed the answer. The Region comment sweep did it too: a phrase-based grep found four sites, and
+generalizing the phrase found two more.
+
+`Verganheits` is never a correct German spelling, which is what made a raw-text global replace safe
+here rather than merely convenient. The write was still guarded, and the first guard I wrote was
+wrong: I asserted that the post-replace counts of `Verganheits` and `Vergangenheits` would be equal,
+forgetting that the typo is not a substring of the correct spelling, so the count is zero rather
+than matching. The assertion failed, the file was not written because the write follows the assert,
+and the fix cost one more round trip. A guard that fails closed is doing its job even when it is
+the guard that is broken.
+
+`git diff --stat` showed three insertions and three deletions, which is right: each article's German
+value is a single long JSON line, so six typos on three lines is three changed lines. Had it shown
+thousands, that would have been the `json.load` + `json.dump` round-trip CLAUDE.md warns about.

@@ -3,8 +3,10 @@
 ## Status
 
 **Planned, not started.** Decided by Josh on 2026-07-26, during the 1.3 release-copy pass.
-Implement, then redo the four `settings` screenshot cells, which is 2 devices by 2 languages
-(see "Screenshots" at the end). Not two: 36 shots over 9 views is 4 per view.
+**Implement only. Do not run the screenshot driver.** Josh is routing the redo to the session
+that already has the simulator warm and the sweep workflow loaded. Hand off when the code is
+verified; the "Screenshots" section at the end is a briefing for that session, not a step for
+you.
 
 **Blocked by the emoji-asset work in flight as of 2026-07-26.** A second session is adding
 German, Austrian, and Swiss flag imagesets, the `EmojiAsset` mappings for them, and a
@@ -226,7 +228,10 @@ A large balanced insertion/deletion count means the file was round-tripped throu
 
 ## Screenshots
 
-Only the `settings` cells change, so redo four of the thirty-six:
+**For the screenshot session, not the implementing one.** Only the `settings` cells change, so
+this is four of the thirty-six, which is 2 devices by 2 languages. Not two: 36 shots over 9
+views is 4 per view, and redoing only the iPhone pair leaves the iPad pair stale in a way that
+survives review because nobody opens them side by side.
 
 ```bash
 scripts/take_screenshots.sh --view settings   # 4 cells: 2 devices x 2 languages

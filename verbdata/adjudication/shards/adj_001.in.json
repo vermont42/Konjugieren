@@ -1,0 +1,340 @@
+{
+ "shard": 1,
+ "records": [
+  {
+   "verb": "aufarbeiten",
+   "separability": "separable",
+   "shipped_gloss": "refurbish",
+   "proposed_gloss": "work through",
+   "severity": "medium",
+   "reviewer_detail": "'Refurbish' is a real but narrow sense (Möbel aufarbeiten). The reading a learner actually meets is working through accumulated material: Rückstände aufarbeiten, die Vergangenheit aufarbeiten, ein Trauma aufarbeiten — the dominant modern usage, and candidate_glosses index 2 ('to mentally process; to bring clarity to'). The importer took kaikki's first-listed sense over the common one.",
+   "candidate_glosses": [
+    "to refurbish",
+    "to use up",
+    "to mentally process; to bring clarity to",
+    "to pick oneself up (figuratively)"
+   ]
+  },
+  {
+   "verb": "aufatmen",
+   "separability": "separable",
+   "shipped_gloss": "breathe again",
+   "proposed_gloss": "breathe a sigh of relief",
+   "severity": "medium",
+   "reviewer_detail": "kaikki's sole gloss is a literal reading of auf + atmen. The verb means to breathe out in relief — erleichtert aufatmen — and the relief component is the meaning, not an overtone. 'Breathe again' invites the learner to use it for resuming breathing, which is wieder atmen.",
+   "candidate_glosses": [
+    "(semelfactive, intransitive) to breathe again"
+   ]
+  },
+  {
+   "verb": "aufbleiben",
+   "separability": "separable",
+   "shipped_gloss": "wake, stay awake, stay up",
+   "proposed_gloss": "stay up, stay awake",
+   "severity": "medium",
+   "reviewer_detail": "The leading 'wake' is kaikki's archaic intransitive English (as in keeping a vigil), not the modern reading. In the salient first position it maps aufbleiben onto aufwachen/aufwecken, which it never means. The trailing synonyms carry the actual sense; the first item should simply go.",
+   "candidate_glosses": [
+    "to wake; to stay awake; to stay up",
+    "to remain open"
+   ]
+  },
+  {
+   "verb": "auferwecken",
+   "separability": "separable",
+   "shipped_gloss": "raise up, awaken",
+   "proposed_gloss": "resurrect, raise from the dead",
+   "severity": "medium",
+   "reviewer_detail": "auferwecken is the elevated, religious causative of auferstehen: to raise someone from the dead (Lazarus auferwecken). 'Raise up, awaken' is vague enough to read as ordinary waking, which collides with aufwecken — a near-homograph the learner will also meet. The app already glosses auferstehen 'be resurrected, rise from the dead'; the transitive partner should mirror it.",
+   "candidate_glosses": [
+    "to raise up, awaken"
+   ]
+  },
+  {
+   "verb": "auflegen",
+   "separability": "separable",
+   "shipped_gloss": "lay on",
+   "proposed_gloss": "hang up, lay on",
+   "severity": "medium",
+   "reviewer_detail": "The shipped 'lay on' is kaikki's first-listed literal sense, but the reading a learner actually meets is telephonic: 'Ich lege jetzt auf' (I'm hanging up now) is the everyday use, and candidate_glosses lists 'to hang up' at index 1. The DJ sense (Platten auflegen, index 4) is also more current than bare 'lay on'.",
+   "candidate_glosses": [
+    "to lay on",
+    "to hang up",
+    "to publish",
+    "to issue (shares etc.)",
+    "to select and play records",
+    "to lay up (a boat, ship)"
+   ]
+  },
+  {
+   "verb": "auflehnen",
+   "separability": "separable",
+   "shipped_gloss": "lean on",
+   "proposed_gloss": "rebel, revolt",
+   "severity": "medium",
+   "reviewer_detail": "In actual use auflehnen is essentially always reflexive and means to rebel or revolt: 'sich gegen die Obrigkeit auflehnen'. The physical 'lean one's arms on' reading behind the shipped 'lean on' is marginal and, as a bare gloss, collides with anlehnen and sich stützen auf. candidate_glosses has the right sense at index 1.",
+   "candidate_glosses": [
+    "to lean (one's arms) on",
+    "to rebel"
+   ]
+  },
+  {
+   "verb": "aufschieben",
+   "separability": "separable",
+   "shipped_gloss": "push open",
+   "proposed_gloss": "postpone, put off",
+   "severity": "medium",
+   "reviewer_detail": "The dominant sense is temporal — to postpone or defer, as in 'die Entscheidung aufschieben' (hence Aufschieberitis for procrastination). The shipped 'push open' is the literal spatial reading, restricted to things that slide (a bolt, a sliding door), and is much rarer. candidate_glosses lists 'to postpone' at index 1.",
+   "candidate_glosses": [
+    "to push open",
+    "to postpone"
+   ]
+  },
+  {
+   "verb": "aufschlagen",
+   "separability": "separable",
+   "shipped_gloss": "pitch, serve",
+   "proposed_gloss": "open (a book), serve",
+   "severity": "medium",
+   "reviewer_detail": "'pitch, serve' ships kaikki's first sense, a narrow sports reading, and in English the pair is doubly opaque because 'pitch' reads as baseball rather than as the tennis serve intended. The senses a learner meets are 'ein Buch aufschlagen' (open a book — candidate index 3) and 'auf dem Boden aufschlagen' (hit, impact — index 5).",
+   "candidate_glosses": [
+    "to pitch, to serve (a ball)",
+    "to set up, to pitch up (a camp, a tent)",
+    "to break, to crack (an egg)",
+    "to open (a book, the eyes)",
+    "to add to something, to increase, to mark up (a price)",
+    "to impact, to strike, to hit"
+   ]
+  },
+  {
+   "verb": "aufsetzen",
+   "separability": "separable",
+   "shipped_gloss": "put on",
+   "proposed_gloss": "put on (headwear)",
+   "severity": "low",
+   "reviewer_detail": "The shortening dropped the part that carried the meaning: candidate index 0 is 'to put on (something to be worn on the head)'. Bare 'put on' invites the learner to use aufsetzen for clothing generally, which takes anziehen — one aufsetzt a Hut, Mütze, or Brille, not Schuhe.",
+   "candidate_glosses": [
+    "to put on (something to be worn on the head)",
+    "to put on (coffee or tea)",
+    "to draft; to compose (a written document)",
+    "to sit up",
+    "to touch down",
+    "to touch the ground"
+   ]
+  },
+  {
+   "verb": "aufsteigen",
+   "separability": "separable",
+   "shipped_gloss": "get on, mount",
+   "proposed_gloss": "rise, ascend",
+   "severity": "medium",
+   "reviewer_detail": "Mounting a horse or bicycle is a specialized application of aufsteigen, and it is first in kaikki only by entry order. The central sense is upward motion — Rauch/Nebel steigt auf, ein Ballon steigt auf — with the promotion senses (beruflich aufsteigen, in die Bundesliga aufsteigen) following from it. That is candidate_glosses index 2 (\"to rise, to ascend\"). \"get on, mount\" leaves the learner unable to read the ordinary uses.",
+   "candidate_glosses": [
+    "to get on, to mount",
+    "to advance",
+    "to rise, to ascend",
+    "to get promoted (to elevate to a higher league)"
+   ]
+  },
+  {
+   "verb": "aufstören",
+   "separability": "separable",
+   "shipped_gloss": "pattern up",
+   "proposed_gloss": "stir up, rouse",
+   "severity": "high",
+   "reviewer_detail": "\"pattern up\" is not English and names no action; it is a corrupt Wiktionary entry that the importer took verbatim as the sole candidate (index 0). German aufstören means to rouse or startle something out of rest — aufscheuchen — as in Wild aufstören, and figuratively to stir up or unsettle. A learner cannot recover any meaning from the shipped gloss.",
+   "candidate_glosses": [
+    "to pattern up"
+   ]
+  },
+  {
+   "verb": "auftreiben",
+   "separability": "separable",
+   "shipped_gloss": "bloat",
+   "proposed_gloss": "get hold of, come by",
+   "severity": "medium",
+   "reviewer_detail": "\"bloat\" is a real but marginal sense (a distended belly, dough rising). The dominant modern use is procuring something with difficulty — Wo soll ich so schnell Geld auftreiben?, einen Ersatzteil auftreiben — which is candidate_glosses index 3 (\"to find, to get, to get hold of, to come by\"). The importer took kaikki's first-listed sense and shipped the rare one.",
+   "candidate_glosses": [
+    "to bloat",
+    "to rise (of dough)",
+    "to whirl up, to blow up",
+    "to find, to get, to get hold of, to come by",
+    "to raise (money)"
+   ]
+  },
+  {
+   "verb": "aufwarten",
+   "separability": "separable",
+   "shipped_gloss": "serve, wait",
+   "proposed_gloss": "offer, serve up",
+   "severity": "medium",
+   "reviewer_detail": "\"serve, wait\" is the dated servant sense (jemandem bei Tisch aufwarten), marked veraltet in contemporary usage. The current everyday construction is mit etwas aufwarten — mit einer Überraschung, mit Zahlen aufwarten — which is candidate_glosses index 2 (\"to offer, to serve up\"). The English is also actively confusing: bare \"wait\" reads as warten (wait for), which is the wrong verb entirely.",
+   "candidate_glosses": [
+    "to serve, to wait (in a restaurant, etc.)",
+    "to pay a courtesy visit",
+    "to offer, to serve up"
+   ]
+  },
+  {
+   "verb": "aufzeichnen",
+   "separability": "separable",
+   "shipped_gloss": "plot, chart",
+   "proposed_gloss": "record, draw",
+   "severity": "medium",
+   "reviewer_detail": "\"plot, chart\" is the narrow technical sense (a curve on graph paper) and is what kaikki happens to list first. The sense a learner meets is recording — eine Sendung aufzeichnen, ein Gespräch aufzeichnen — which is candidate_glosses index 2 (\"to record, to note\"), plus the plain drawing sense. Shipping the graph-paper reading leaves the learner without the everyday word.",
+   "candidate_glosses": [
+    "to plot, to chart",
+    "to trace",
+    "to record, to note",
+    "to register"
+   ]
+  },
+  {
+   "verb": "ausbleiben",
+   "separability": "separable",
+   "shipped_gloss": "be absent",
+   "proposed_gloss": "fail to appear",
+   "severity": "low",
+   "reviewer_detail": "\"be absent\" invites the learner to use ausbleiben of a person missing from school or work, which takes fehlen. Ausbleiben is said of an expected event or result that never arrives — der Erfolg blieb aus, die Reaktion blieb nicht aus. The gloss is broadly in the right area but points at the wrong subject.",
+   "candidate_glosses": [
+    "to be absent"
+   ]
+  },
+  {
+   "verb": "ausbringen",
+   "separability": "separable",
+   "shipped_gloss": "raise",
+   "proposed_gloss": "propose (a toast)",
+   "severity": "medium",
+   "reviewer_detail": "The shortening cut away the part that carried the meaning. candidate_glosses index 0 reads \"to raise, to utter (something) in front of others which they echo or react to\" — that is the toast sense, einen Trinkspruch auf jemanden ausbringen. Reduced to bare \"raise\", the gloss reads as heben or erhöhen, which ausbringen does not mean; the other live sense is agricultural spreading (Gülle ausbringen).",
+   "candidate_glosses": [
+    "to raise, to utter (something) in front of others which they echo or react to",
+    "to scatter, spread, distribute",
+    "to put outside the ship, to lower"
+   ]
+  },
+  {
+   "verb": "ausholen",
+   "separability": "separable",
+   "shipped_gloss": "haul off",
+   "proposed_gloss": "wind up (the arm)",
+   "severity": "medium",
+   "reviewer_detail": "As a bare two-word gloss, 'haul off' does not convey the verb. In ordinary English 'haul off' reads as carrying something away, and the striking sense survives only in the fixed American idiom 'haul off and hit someone'. The kaikki parenthetical that carried the actual meaning ('to draw back the arm in order to punch') was dropped in shortening. German ausholen is winding the arm back before a blow, and by extension (weit ausholen) starting a story far back.",
+   "candidate_glosses": [
+    "to haul off (to draw back the arm in order to punch)",
+    "to go far back (to start telling earlier events, circumstances or causes before telling the actual story)",
+    "to tighten the outhaul"
+   ]
+  },
+  {
+   "verb": "auslernen",
+   "separability": "separable",
+   "shipped_gloss": "finish learning",
+   "proposed_gloss": "complete one's training",
+   "severity": "low",
+   "reviewer_detail": "'finish learning' is a literal calque that fits the proverb 'man lernt nie aus' but not the verb's ordinary use, which is specifically completing a vocational apprenticeship: 'sie hat ausgelernt' means she is now fully trained. A learner given 'finish learning' would build ungrammatical sentences like 'ich habe das Buch ausgelernt'. kaikki offers nothing better, so this is a judgment call rather than an import defect.",
+   "candidate_glosses": [
+    "to finish learning"
+   ]
+  },
+  {
+   "verb": "auslesen",
+   "separability": "separable",
+   "shipped_gloss": "cull",
+   "proposed_gloss": "select, pick out",
+   "severity": "medium",
+   "reviewer_detail": "'cull' is the etymologically faithful rendering of the pick-out sense, but in modern English the word is dominated by the selective-slaughter sense, which German auslesen never carries. The readings a learner actually meets are 'select, pick out' (candidate_glosses index 2, cf. Auslese for selected grapes) and 'read out' of data (index 1). A one-word gloss of 'cull' teaches the wrong action.",
+   "candidate_glosses": [
+    "to cull",
+    "to read, to read out",
+    "to select",
+    "to sort out",
+    "to finish reading"
+   ]
+  },
+  {
+   "verb": "ausscheiden",
+   "separability": "separable",
+   "shipped_gloss": "secrete",
+   "proposed_gloss": "drop out, be eliminated",
+   "severity": "medium",
+   "reviewer_detail": "The shipped gloss takes kaikki's first-listed physiological sense, which is both technical and imprecise: German ausscheiden is excretion (elimination), not secretion, which is absondern or sezernieren. The sense a learner meets is dropping out of a competition or leaving a post — 'Deutschland ist im Viertelfinale ausgeschieden' — which candidate_glosses lists at index 2.",
+   "candidate_glosses": [
+    "to secrete",
+    "to excrete, to eliminate",
+    "to leave, to be eliminated",
+    "to be ruled out, to be excluded"
+   ]
+  },
+  {
+   "verb": "ausscheren",
+   "separability": "separable",
+   "shipped_gloss": "sheer, sheer out",
+   "proposed_gloss": "pull out, veer off",
+   "severity": "medium",
+   "reviewer_detail": "'sheer, sheer out' is nautical jargon opaque to a learner, and the verb 'sheer' collides with the far more familiar adjective (sheer drop, sheer nonsense). The everyday sense is a vehicle pulling out of line or changing lanes, and figuratively breaking ranks with a group; candidate_glosses lists this at index 1.",
+   "candidate_glosses": [
+    "to sheer, sheer out (move away from a course, leave a formation)",
+    "to veer off, change lanes",
+    "to swerve from, step out of (e.g. a party line)"
+   ]
+  },
+  {
+   "verb": "ausschreiben",
+   "separability": "separable",
+   "shipped_gloss": "advertise",
+   "proposed_gloss": "advertise (a position)",
+   "severity": "low",
+   "reviewer_detail": "English 'advertise' defaults to promoting a product or service, which ausschreiben never means; that is werben fuer. The verb covers putting a position or contract out for open application or tender (eine Stelle ausschreiben) and, separately, writing something out in full (eine Zahl ausschreiben). candidate_glosses indices 1, 3 and 5 all point at the tender sense, so index 0's unqualified 'advertise' is a shortening that lost the qualifier.",
+   "candidate_glosses": [
+    "to advertise",
+    "to advertise for bids",
+    "to announce",
+    "to invite tenders",
+    "to spell in full",
+    "to put something out for tender"
+   ]
+  },
+  {
+   "verb": "austrinken",
+   "separability": "separable",
+   "shipped_gloss": "empty",
+   "proposed_gloss": "drink up",
+   "severity": "medium",
+   "reviewer_detail": "The verb means to drink something to the last drop (Duden: ganz leer trinken); the emptying is only the result and the drinking is the criterial part. The shipped 'empty' comes from candidate_glosses index 0, kaikki's bare 'to empty', which strips exactly the component that distinguishes austrinken from leeren. As shipped, a learner would use austrinken for emptying a box or a room. Index 2, 'to finish one's drink', is the sense actually meant.",
+   "candidate_glosses": [
+    "to empty",
+    "to finish",
+    "to finish one's drink"
+   ]
+  },
+  {
+   "verb": "ausziehen",
+   "separability": "separable",
+   "shipped_gloss": "move out, vacate",
+   "proposed_gloss": "take off (clothes), move out",
+   "severity": "low",
+   "reviewer_detail": "Both shipped senses are real, but kaikki's entry order is not frequency order here: Duden leads with the clothing sense, and 'take off / undress' is what a learner meets first and hears most (zieh die Schuhe aus, sich ausziehen). candidate_glosses indices 2 through 4 all cover it. Shipping only 'move out, vacate' leaves the everyday sense unrepresented.",
+   "candidate_glosses": [
+    "to move out, to vacate",
+    "to set off, to set out (in order to achieve a higher goal, into war, a period of travels, etc.)",
+    "to take off (a piece of clothing, shoes)",
+    "to undress (a person)",
+    "to undress (oneself), to take off one's clothes",
+    "to extend, to pull out (something to its full length, from a previously collapsed state)"
+   ]
+  },
+  {
+   "verb": "bedingen",
+   "separability": "inseparable",
+   "shipped_gloss": "have agreed upon as a contractual term",
+   "proposed_gloss": "require, cause",
+   "severity": "medium",
+   "reviewer_detail": "The shipped gloss is kaikki's sense 0, the archaic legal/contractual reading that survives today mainly in the reflexive sich etwas ausbedingen and in the obsolete strong forms bedang/bedungen. Living modern bedingen is causal: 'Das bedingt hohe Kosten', 'bedingt durch das Wetter'. That meaning is already in candidate_glosses at index 1 ('to require, have as a prerequisite or condition') and index 2 ('to cause'), so this is a mechanical first-sense import defect. The shipped phrase is also unusable as a short gloss: a learner cannot recover the verb's everyday meaning from it.",
+   "candidate_glosses": [
+    "to have agreed upon as a contractual term",
+    "to require, have as a prerequisite or condition",
+    "to cause"
+   ]
+  }
+ ]
+}

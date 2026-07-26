@@ -1,0 +1,82 @@
+{
+  "mitkriegen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "Cross-reference rather than a meaning: 'synonym of mitbekommen' tells a learner nothing about the verb, and mitbekommen is itself mis-glossed in this corpus. Colloquial mitkriegen means to catch, notice, or pick up on something (Hast du das mitgekriegt?).",
+        "fix_gloss": "notice, pick up on"
+      }
+    ]
+  },
+  "mitreißen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "'Entrain' is a fluid-dynamics term of art, and in ordinary English it means to board a train; either reading is useless or actively wrong for a learner. mitreißen means to sweep something along by force (der Fluss riss das Boot mit) and, figuratively, to carry an audience away. candidate_glosses index 1, 'to carry away', is the usable sense.",
+        "fix_gloss": "sweep along, carry away"
+      }
+    ]
+  },
+  "nachblicken": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "'Look at' names a different action and would teach the learner to use nachblicken where German wants ansehen or anschauen. nachblicken is always jemandem nachblicken: to follow someone with one's eyes as they leave. The nach- component, which carries the whole meaning, is absent from the gloss.",
+        "fix_gloss": "gaze after"
+      }
+    ]
+  },
+  "mitbekommen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The shipped sense (being given something to take with you, as in a dowry or a packed lunch) is real but marginal. The sense a learner meets constantly is candidate_glosses index 1: to catch, notice, or become aware of something — Hast du das mitbekommen?, Davon habe ich nichts mitbekommen. Shipping only the first-listed sense leaves the common one unglossed.",
+        "fix_gloss": "notice, pick up on"
+      }
+    ]
+  },
+  "mitspielen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "'Cooperate' is the figurative extension (wenn das Wetter mitspielt), not the sense a learner meets. The everyday meaning is to take part in a game or play alongside others — candidate_glosses index 1, 'to play along'. Glossing it as 'cooperate' also collides with mitarbeiten and mitwirken, which ship that same word.",
+        "fix_gloss": "play along, join in a game"
+      }
+    ]
+  },
+  "mitfahren": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "'Drive with' is a Germanism that implies the subject is operating the vehicle, when mitfahren specifically means travelling as a passenger or accepting a ride: Kann ich mitfahren?, Sie ist bei ihm mitgefahren. The gloss points at the right situation but attributes the wrong role.",
+        "fix_gloss": "ride along"
+      }
+    ]
+  },
+  "mitdenken": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "A bare 'follow' is too thin to identify the verb and collides with folgen, nachgehen, and mitkommen, all of which a learner will also meet. mitdenken means to think actively alongside a speaker or process — to keep up with the reasoning, or to use one's head rather than mechanically execute. kaikki offers nothing better, so the gloss needs writing rather than importing.",
+        "fix_gloss": "think along, follow the reasoning"
+      }
+    ]
+  },
+  "nachempfinden": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "'Feel for' reads as pity or sympathy, which is mitfühlen — and mitfühlen ships that exact phrase in this same corpus, so the two verbs are indistinguishable to a learner. nachempfinden is candidate_glosses index 0: to imaginatively re-experience how someone felt, hence to understand or relate to it (Das kann ich gut nachempfinden). The shipped gloss comes from index 1, the weaker sense.",
+        "fix_gloss": "relate to, empathize with"
+      }
+    ]
+  }
+}

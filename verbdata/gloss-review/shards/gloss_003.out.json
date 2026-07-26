@@ -1,0 +1,72 @@
+{
+  "angeloben": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "angeloben is chiefly Austrian and its ordinary use is the swearing-in of soldiers, recruits, and officeholders (Angelobung is the standard word for that ceremony) — candidate_glosses index 2, 'to pledge, to swear in'. The shipped 'vow' is the sense of the base verb geloben; a learner who meets angeloben will meet it in the swearing-in reading.",
+        "fix_gloss": "swear in, pledge"
+      }
+    ]
+  },
+  "anhaben": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "The trailing 'see usage notes' is Wiktionary editorial scaffolding that survived the shortening of candidate_glosses index 0; it is not part of the meaning and reads as broken English to a learner, who has no usage notes to consult. The meaning itself is correct: to wear, to have on.",
+        "fix_gloss": "wear, have on"
+      }
+    ]
+  },
+  "anhängen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The everyday sense of anhängen is physical or digital attachment: einen Anhänger anhängen (hitch a trailer), eine Datei anhängen (attach a file), einen Satz anhängen (append a sentence). The shipped 'weigh on, burden' renders only the figurative dative reading (jemandem etwas anhängen), which is far rarer and is not what a learner meets. The attach sense is absent from candidate_glosses — kaikki's entry here covers only the strong dative verb — so the fix is a rewrite, not an index swap.",
+        "fix_gloss": "attach, append"
+      }
+    ]
+  },
+  "anklagen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "Mangled shortening of candidate_glosses index 0: the shortening cut out the middle of the parenthetical and left 'indict by the findings of a jury)' with a dangling clause and an unbalanced closing parenthesis. As English it says something false as well — an indictment is not made by a jury's findings in the sense the fragment implies. anklagen means to accuse or, in a legal register, to charge or indict.",
+        "fix_gloss": "accuse, indict"
+      }
+    ]
+  },
+  "anhalten": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "The house style separates synonyms with commas, so 'stop, continue' reads as a pair of equivalents while naming two opposite actions, which is more confusing than helpful. Both are real senses (candidate_glosses indices 0 and 1), but the one a learner meets is 'stop' — er hielt das Auto an, halt an. The 'last, persist' reading is better carried by the participle anhaltend and does not need to share the gloss line.",
+        "fix_gloss": "stop, halt"
+      }
+    ]
+  },
+  "anleiten": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "'guide or to train' is candidate_glosses index 0 pasted with only the first 'to' stripped, leaving a dangling infinitive marker that is ungrammatical in the app's bare-verb-phrase style. The sense is right; anleiten is specifically to instruct or give guidance to someone (Anleitung is a set of instructions).",
+        "fix_gloss": "guide, instruct"
+      }
+    ]
+  },
+  "anreden": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "In English 'begin a talk with someone' reads as starting a lecture or a formal discussion, which anreden does not mean. The verb is to address or speak to someone — it is the verb behind Anrede, the form of address, as in jemanden mit du anreden. The shipped wording is a literal expansion of candidate_glosses index 0 and misses the addressing sense that gives the verb its use.",
+        "fix_gloss": "address, speak to"
+      }
+    ]
+  }
+}

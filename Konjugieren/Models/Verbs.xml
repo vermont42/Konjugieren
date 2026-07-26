@@ -34,7 +34,7 @@
     <reading tn="get a share of something" fa="s" ag="kommen" />
   </verb>
   <verb in="ab+be*r^u^fen" hi="573149" hp="y" ic="wave">
-    <reading tn="withdraw" fa="s" ag="heißen" />
+    <reading tn="recall from a post" fa="s" ag="heißen" />
   </verb>
   <verb in="ab+be*stellen" hi="573967" hp="y" ic="stand">
     <reading tn="cancel a subscription" fa="w" />
@@ -55,7 +55,7 @@
     <reading tn="ask for pardon for" fa="s" ag="liegen" />
   </verb>
   <verb in="ab+bl^a^sen" hi="50379" hp="y" ic="wave">
-    <reading tn="blow off something, blow clear" fa="s" ag="halten" />
+    <reading tn="call off, cancel" fa="s" ag="halten" />
   </verb>
   <verb in="ab+bl^ei^ben" hi="573968" hp="y" ic="seated.side.left">
     <reading tn="be located" fa="s" ag="bleiben" ay="s" />
@@ -83,7 +83,7 @@
     <reading tn="push away" fa="w" />
   </verb>
   <verb in="ab+drehen" hi="476584" hp="y" ic="socialdance">
-    <reading tn="veer" fa="w" />
+    <reading tn="turn off, shut off" fa="w" />
   </verb>
   <verb in="ab+dr^e^schen" hi="11920" hp="y" ic="strengthtraining.traditional">
     <reading tn="thresh" fa="s" ag="schmelzen" />
@@ -119,7 +119,7 @@
     <reading tn="write down" fa="w" />
   </verb>
   <verb in="ab+feiern" hi="573451" hp="y" ic="arms.open">
-    <reading tn="celebrate, praise, love" fa="w" />
+    <reading tn="take time off in lieu" fa="w" />
   </verb>
   <verb in="ab+fertigen" hi="164629" hp="y" ic="strengthtraining.traditional">
     <reading tn="make ready for dispatch" fa="w" />
@@ -140,7 +140,7 @@
     <reading tn="inquire about something" fa="w" />
   </verb>
   <verb in="ab+führen" hi="573837" hp="y" ic="walk.arrival">
-    <reading tn="take away" fa="w" />
+    <reading tn="lead away (in custody)" fa="w" />
   </verb>
   <verb in="ab+füllen" hi="291614" hp="y" ic="flexibility">
     <reading tn="fill up" fa="w" />
@@ -155,7 +155,7 @@
     <reading tn="drain, decant" fa="s" ag="schließen" />
   </verb>
   <verb in="ab+gl^eich^en" hi="106507" hp="y" ic="mind.and.body">
-    <reading tn="verify congruence" fa="s" ag="streichen" />
+    <reading tn="compare, reconcile" fa="s" ag="streichen" />
   </verb>
   <verb in="ab+gl^eit^en" hi="42767" hp="y" ic="skating">
     <reading tn="slip off, slip from something" fa="s" ag="schneiden" ay="s" />
@@ -176,7 +176,7 @@
     <reading tn="depend" fa="s" ag="hängen" />
   </verb>
   <verb in="ab+hauen" hi="58407" hp="y" ic="boxing">
-    <reading tn="cut off" fa="w" />
+    <reading tn="clear off, run away" fa="w" />
   </verb>
   <verb in="ab+h^e^ben" hi="267983" hp="y" ic="strengthtraining.traditional">
     <reading tn="lift off" fa="s" ag="bieten" />
@@ -242,10 +242,10 @@
     <reading tn="derive, deduce" fa="w" />
   </verb>
   <verb in="ab+lenken" hi="116218" hp="y" ic="seated.side.left.steeringwheel">
-    <reading tn="divert" fa="w" />
+    <reading tn="distract, divert" fa="w" />
   </verb>
   <verb in="ab+l^e^sen" hi="573515" hp="y" ic="mind.and.body">
-    <reading tn="read" fa="s" ag="sehen" />
+    <reading tn="read off (a meter)" fa="s" ag="sehen" />
   </verb>
   <verb in="ab+liefern" hi="573204" hp="y" ic="handball">
     <reading tn="deliver" fa="w" />
@@ -314,7 +314,7 @@
     <reading tn="tear off" fa="s" ag="reißen" />
   </verb>
   <verb in="ab+richten" hi="522367" hp="y" ic="archery">
-    <reading tn="drill" fa="w" />
+    <reading tn="train (an animal)" fa="w" />
   </verb>
   <verb in="ab+r^i^ngen" hi="58236" hp="y" ic="wrestling">
     <reading tn="force out, wring" fa="s" ag="finden" />
@@ -443,7 +443,7 @@
     <reading tn="descend" fa="w" />
   </verb>
   <verb in="ab+st^e^chen" hi="69761" hp="y" ic="flexibility">
-    <reading tn="cut off, cut out, carve out" fa="s" ag="sprechen" />
+    <reading tn="stab to death" fa="s" ag="sprechen" />
   </verb>
   <verb in="ab+stecken" hi="519694" hp="y" ic="indoor.rowing">
     <reading tn="stake out" fa="w" />
@@ -458,7 +458,7 @@
     <reading tn="turn off, park" fa="w" />
   </verb>
   <verb in="ab+st^e^rben" hi="573151" hp="y" ic="fall">
-    <reading tn="atrophy" fa="s" ag="sterben" ay="s" />
+    <reading tn="die off, die back" fa="s" ag="sterben" ay="s" />
   </verb>
   <verb in="ab+stimmen" hi="1297565" ic="wave">
     <reading tn="vote, coordinate" fa="w" />
@@ -500,13 +500,13 @@
     <reading tn="carry off, remove, denude" fa="s" ag="fahren" />
   </verb>
   <verb in="ab+tr^ei^ben" hi="308213" hp="y" ic="seated.side.left.steeringwheel">
-    <reading tn="go/be sent off course" fa="s" ag="bleiben" />
+    <reading tn="have an abortion" fa="s" ag="bleiben" />
   </verb>
   <verb in="ab+trennen" hi="274003" hp="y" ic="fencing">
     <reading tn="cut off, sever" fa="w" />
   </verb>
   <verb in="ab+tr^et^en" hi="573037" hp="y" ic="stairs">
-    <reading tn="kick away" fa="s" ag="treten" />
+    <reading tn="step down, cede" fa="s" ag="treten" />
   </verb>
   <verb in="ab+tr^i^nken" hi="263220" hp="y" ic="cooldown">
     <reading tn="drink down a little" fa="s" ag="finden" />
@@ -515,10 +515,10 @@
     <reading tn="make dry, e.g. by wiping with a towel" fa="w" />
   </verb>
   <verb in="ab+w^ä^gen" hi="3446" hp="y" ic="flexibility">
-    <reading tn="weigh" fa="s" ag="bieten" />
+    <reading tn="weigh up, consider" fa="s" ag="bieten" />
   </verb>
   <verb in="ab+wählen" hi="573376" hp="y" ic="wave">
-    <reading tn="deselect" fa="w" />
+    <reading tn="vote out, deselect" fa="w" />
   </verb>
   <verb in="ab+wandeln" hi="77780" hp="y" ic="walk">
     <reading tn="modify" fa="w" />
@@ -708,7 +708,7 @@
     <reading tn="start moving" fa="s" ag="fahren" />
   </verb>
   <verb in="an+f^all^en" hi="573054" hp="y" ic="fall">
-    <reading tn="set upon, attack suddenly" fa="s" ag="fallen" />
+    <reading tn="arise, accrue" fa="s" ag="fallen" />
   </verb>
   <verb in="an+f^a^ngen" hi="2693973" ic="walk.arrival">
     <reading tn="begin" fa="s" ag="fangen" />
@@ -753,7 +753,7 @@
     <reading tn="belong to" fa="w" />
   </verb>
   <verb in="an+ge*loben" hi="281134" hp="y" ic="wave">
-    <reading tn="vow" fa="w" />
+    <reading tn="swear in, pledge" fa="w" />
   </verb>
   <verb in="an+g^ieß^en" hi="82770" hp="y" ic="flexibility">
     <reading tn="sprinkle, water" fa="s" ag="schließen" />
@@ -768,16 +768,16 @@
     <reading tn="watch, look at" fa="w" />
   </verb>
   <verb in="an+h^ab^en" hi="573133" hp="y" ic="arms.open">
-    <reading tn="wear, have on see usage notes" fa="m" ag="haben" />
+    <reading tn="wear, have on" fa="m" ag="haben" />
   </verb>
   <verb in="an+haften" hi="104202" hp="y" ic="flexibility">
     <reading tn="inhere, be inherent in" fa="w" />
   </verb>
   <verb in="an+h^a^lten" hi="727669" ic="boxing">
-    <reading tn="stop, continue" fa="s" ag="halten" />
+    <reading tn="stop, halt" fa="s" ag="halten" />
   </verb>
   <verb in="an+h^ä^ngen" hi="573241" hp="y" ic="flexibility">
-    <reading tn="weigh on, burden" fa="s" ag="hängen" />
+    <reading tn="attach, append" fa="s" ag="hängen" />
   </verb>
   <verb in="an+hauen" hi="80817" hp="y" ic="boxing">
     <reading tn="hit up, accost" fa="w" />
@@ -804,7 +804,7 @@
     <reading tn="buy" fa="w" />
   </verb>
   <verb in="an+klagen" hi="213870" hp="y" ic="wave">
-    <reading tn="indict by the findings of a jury)" fa="w" />
+    <reading tn="accuse, indict" fa="w" />
   </verb>
   <verb in="an+kleben" hi="104923" hp="y" ic="indoor.rowing">
     <reading tn="glue" fa="w" />
@@ -846,7 +846,7 @@
     <reading tn="lean" fa="w" />
   </verb>
   <verb in="an+leiten" hi="459504" hp="y" ic="walk.arrival">
-    <reading tn="guide or to train" fa="w" />
+    <reading tn="guide, instruct" fa="w" />
   </verb>
   <verb in="an+lernen" hi="573554" hp="y" ic="mind.and.body">
     <reading tn="teach" fa="w" />
@@ -1072,7 +1072,7 @@
     <reading tn="answer" fa="w" />
   </verb>
   <verb in="an+ver*trauen" hi="184494" hp="y" ic="strengthtraining.traditional">
-    <reading tn="entrust in various ways" fa="w" />
+    <reading tn="entrust" fa="w" />
   </verb>
   <verb in="an+w^a^chsen" hi="573346" hp="y" ic="stairs">
     <reading tn="accrue, rise, increase" fa="s" ag="fahren" ay="s" />
@@ -1121,7 +1121,7 @@
     <reading tn="refurbish" fa="w" />
   </verb>
   <verb in="auf+atmen" hi="63576" hp="y" ic="yoga">
-    <reading tn="breathe again" fa="w" />
+    <reading tn="breathe a sigh of relief" fa="w" />
   </verb>
   <verb in="auf+backen" hi="170017" hp="y" ic="cooldown">
     <reading tn="crisp up" fa="w" />
@@ -1157,7 +1157,7 @@
     <reading tn="inflate, blow up" fa="s" ag="halten" />
   </verb>
   <verb in="auf+bl^ei^ben" hi="574001" hp="y" ic="seated.side.left">
-    <reading tn="wake, stay awake, stay up" fa="s" ag="bleiben" ay="s" />
+    <reading tn="stay up, stay awake" fa="s" ag="bleiben" ay="s" />
   </verb>
   <verb in="auf+blicken" hi="288112" hp="y" ic="flexibility">
     <reading tn="look up" fa="w" />
@@ -1202,7 +1202,7 @@
     <reading tn="be resurrected, rise from the dead" fa="s" ag="stehen" ay="s" />
   </verb>
   <verb in="auf+er*wecken" hi="176121" hp="y" ic="stand">
-    <reading tn="raise up, awaken" fa="w" />
+    <reading tn="resurrect, raise from the dead" fa="w" />
   </verb>
   <verb in="auf+er*z^ieh^en" hi="573693" hp="y" ic="indoor.rowing">
     <reading tn="raise, bring up" fa="s" ag="ziehen" />
@@ -1304,7 +1304,7 @@
     <reading tn="lay on" fa="w" />
   </verb>
   <verb in="auf+lehnen" hi="227336" hp="y" ic="flexibility">
-    <reading tn="lean on" fa="w" />
+    <reading tn="rebel, revolt" fa="w" />
   </verb>
   <verb in="auf+l^e^sen" hi="573553" hp="y" ic="mind.and.body">
     <reading tn="pick up" fa="s" ag="sehen" />
@@ -1391,13 +1391,13 @@
     <reading tn="appear, be on record, be listed" fa="s" ag="bleiben" ay="s" />
   </verb>
   <verb in="auf+sch^ie^ben" hi="200854" hp="y" ic="skating">
-    <reading tn="push open" fa="s" ag="bieten" />
+    <reading tn="postpone, put off" fa="s" ag="bieten" />
   </verb>
   <verb in="auf+sch^ieß^en" hi="288393" hp="y" ic="archery">
     <reading tn="shoot open" fa="s" ag="schließen" />
   </verb>
   <verb in="auf+schl^a^gen" hi="573348" hp="y" ic="boxing">
-    <reading tn="pitch, serve" fa="s" ag="fahren" />
+    <reading tn="open (a book)" fa="s" ag="fahren" />
   </verb>
   <verb in="auf+schl^ieß^en" hi="573476" hp="y" ic="flexibility">
     <reading tn="unlock" fa="s" ag="schließen" />
@@ -1421,7 +1421,7 @@
     <reading tn="look up" fa="s" ag="sehen" />
   </verb>
   <verb in="auf+setzen" hi="573830" hp="y" ic="seated.side.left">
-    <reading tn="put on" fa="w" />
+    <reading tn="put on (headwear)" fa="w" />
   </verb>
   <verb in="auf+speichern" hi="308439" hp="y" ic="handball">
     <reading tn="heap up, garner" fa="w" />
@@ -1445,13 +1445,13 @@
     <reading tn="get up" fa="s" ag="stehen" />
   </verb>
   <verb in="auf+st^ei^gen" hi="573475" hp="y" ic="stairs">
-    <reading tn="get on, mount" fa="s" ag="bleiben" ay="s" />
+    <reading tn="rise, ascend" fa="s" ag="bleiben" ay="s" />
   </verb>
   <verb in="auf+stellen" hi="2265345" ic="strengthtraining.traditional">
     <reading tn="set up, put up" fa="w" />
   </verb>
   <verb in="auf+stören" hi="253673" hp="y" ic="boxing">
-    <reading tn="pattern up" fa="w" />
+    <reading tn="stir up, rouse" fa="w" />
   </verb>
   <verb in="auf+st^o^ßen" hi="364308" hp="y" ic="boxing">
     <reading tn="push open, bump open" fa="s" ag="stoßen" />
@@ -1475,7 +1475,7 @@
     <reading tn="impact, hit" fa="s" ag="treffen" />
   </verb>
   <verb in="auf+tr^ei^ben" hi="337176" hp="y" ic="seated.side.left.steeringwheel">
-    <reading tn="bloat" fa="s" ag="bleiben" />
+    <reading tn="get hold of, come by" fa="s" ag="bleiben" />
   </verb>
   <verb in="auf+trennen" hi="299751" hp="y" ic="fencing">
     <reading tn="undo, unpick, unstitch, unravel" fa="w" />
@@ -1487,7 +1487,7 @@
     <reading tn="grow up" fa="s" ag="wachsen" ay="s" />
   </verb>
   <verb in="auf+warten" hi="573322" hp="y" ic="seated.side.left">
-    <reading tn="serve, wait" fa="w" />
+    <reading tn="offer, serve up" fa="w" />
   </verb>
   <verb in="auf+w^a^schen" hi="137482" hp="y" ic="pool.swim">
     <reading tn="do the dishes" fa="s" ag="wachsen" />
@@ -1520,7 +1520,7 @@
     <reading tn="list, enumerate" fa="w" />
   </verb>
   <verb in="auf+zeichnen" hi="375285" hp="y" ic="flexibility">
-    <reading tn="plot, chart" fa="w" />
+    <reading tn="record" fa="w" />
   </verb>
   <verb in="auf+zeigen" hi="844966" ic="walk.arrival">
     <reading tn="show, demonstrate" fa="w" />
@@ -1568,7 +1568,7 @@
     <reading tn="burn out" fa="m" ag="kennen" />
   </verb>
   <verb in="aus+br^ing^en" hi="573951" hp="y" ic="hiking">
-    <reading tn="raise" fa="m" ag="bringen" />
+    <reading tn="propose (a toast)" fa="m" ag="bringen" />
   </verb>
   <verb in="aus+dauern" hi="573237" hp="y" ic="handball">
     <reading tn="last, persist, outlast" fa="w" />
@@ -1691,7 +1691,7 @@
     <reading tn="help out" fa="s" ag="sterben" />
   </verb>
   <verb in="aus+holen" hi="573380" hp="y" ic="handball">
-    <reading tn="haul off" fa="w" />
+    <reading tn="wind up (the arm)" fa="w" />
   </verb>
   <verb in="aus+kämpfen" hi="573163" hp="y" ic="boxing">
     <reading tn="fight out" fa="w" />
@@ -1742,10 +1742,10 @@
     <reading tn="divert" fa="w" />
   </verb>
   <verb in="aus+lernen" hi="573508" hp="y" ic="mind.and.body">
-    <reading tn="finish learning" fa="w" />
+    <reading tn="complete one's training" fa="w" />
   </verb>
   <verb in="aus+l^e^sen" hi="573585" hp="y" ic="mind.and.body">
-    <reading tn="cull" fa="s" ag="sehen" />
+    <reading tn="select, pick out" fa="s" ag="sehen" />
   </verb>
   <verb in="aus+leuchten" hi="109728" hp="y" ic="highintensity.intervaltraining">
     <reading tn="illuminate, light up" fa="w" />
@@ -1844,7 +1844,7 @@
     <reading tn="look, appear" fa="w" />
   </verb>
   <verb in="aus+sch^ei^den" hi="123841" hp="y" ic="fencing">
-    <reading tn="secrete" fa="s" ag="bleiben" />
+    <reading tn="drop out, be eliminated" fa="s" ag="bleiben" />
   </verb>
   <verb in="aus+sch^eiß^en" hi="19036" hp="y" ic="cooldown">
     <reading tn="shit out, defecate something" fa="s" ag="reißen" />
@@ -1853,7 +1853,7 @@
     <reading tn="pour, pour out, sell" fa="w" />
   </verb>
   <verb in="aus+scheren" hi="18221" hp="y" ic="barre">
-    <reading tn="sheer, sheer out" fa="w" ay="s" />
+    <reading tn="pull out, veer off" fa="w" ay="s" />
   </verb>
   <verb in="aus+schicken" hi="573148" hp="y" ic="fall">
     <reading tn="send out" fa="w" />
@@ -1877,7 +1877,7 @@
     <reading tn="cut out" fa="s" ag="schneiden" />
   </verb>
   <verb in="aus+schr^ei^ben" hi="573810" hp="y" ic="flexibility">
-    <reading tn="advertise" fa="s" ag="bleiben" />
+    <reading tn="advertise (a position)" fa="s" ag="bleiben" />
   </verb>
   <verb in="aus+schr^eit^en" hi="50575" hp="y" ic="walk">
     <reading tn="stride out" fa="s" ag="schneiden" ay="s" />
@@ -1964,7 +1964,7 @@
     <reading tn="leave, retire from, quit" fa="s" ag="treten" ay="s" />
   </verb>
   <verb in="aus+tr^i^nken" hi="320723" hp="y" ic="cooldown">
-    <reading tn="empty" fa="s" ag="finden" />
+    <reading tn="drink up" fa="s" ag="finden" />
   </verb>
   <verb in="aus+trocknen" hi="68561" hp="y" ic="cooldown">
     <reading tn="dry out" fa="w" />
@@ -2087,7 +2087,7 @@
     <reading tn="serve, operate" fa="w" />
   </verb>
   <verb in="be*dingen" hi="2528" hp="y" ic="2">
-    <reading tn="have agreed upon as a contractual term" fa="w" />
+    <reading tn="require, cause" fa="w" />
   </verb>
   <verb in="be*drängen" hi="523439" hp="y" ic="strengthtraining.traditional">
     <reading tn="beset, harass" fa="w" />
@@ -2123,7 +2123,7 @@
     <reading tn="drive on, along, sail, cruise" fa="s" ag="fahren" />
   </verb>
   <verb in="be*f^all^en" hi="573082" hp="y" ic="fall">
-    <reading tn="affect" fa="s" ag="fallen" />
+    <reading tn="afflict, infest" fa="s" ag="fallen" />
   </verb>
   <verb in="be*f^a^ngen" hi="573299" hp="y" ic="handball">
     <reading tn="apprehend, seize, grasp, conceive" fa="s" ag="fangen" />
@@ -2153,7 +2153,7 @@
     <reading tn="free, liberate" fa="w" />
   </verb>
   <verb in="be*fühlen" hi="573814" hp="y" ic="yoga">
-    <reading tn="palpate" fa="w" />
+    <reading tn="feel, touch" fa="w" />
   </verb>
   <verb in="be*füllen" hi="573336" hp="y" ic="flexibility">
     <reading tn="fill something" fa="w" />
@@ -2255,7 +2255,7 @@
     <reading tn="aid, assist, contribute, help" fa="s" ag="sterben" />
   </verb>
   <verb in="bei+k^om^men" hi="574318" hp="y" ic="walk.arrival">
-    <reading tn="come here" fa="s" ag="kommen" ay="s" />
+    <reading tn="deal with, get at" fa="s" ag="kommen" ay="s" />
   </verb>
   <verb in="bei+legen" hi="573627" hp="y" ic="flexibility">
     <reading tn="enclose" fa="w" />
@@ -2333,7 +2333,7 @@
     <reading tn="confess, profess" fa="m" ag="kennen" />
   </verb>
   <verb in="be*klagen" hi="446827" hp="y" ic="wave">
-    <reading tn="pity, lament" fa="w" />
+    <reading tn="lament, deplore" fa="w" />
   </verb>
   <verb in="be*kochen" hi="570593" hp="y" ic="cooldown">
     <reading tn="cook for someone" fa="w" />
@@ -2351,7 +2351,7 @@
     <reading tn="smile condescendingly at" fa="w" />
   </verb>
   <verb in="be*lachen" hi="573266" hp="y" ic="wave">
-    <reading tn="laugh at, belaugh" fa="w" />
+    <reading tn="laugh at" fa="w" />
   </verb>
   <verb in="be*l^a^den" hi="573812" hp="y" ic="barre">
     <reading tn="load" fa="s" ag="fahren" />
@@ -2402,7 +2402,7 @@
     <reading tn="paint" fa="w" />
   </verb>
   <verb in="be*meistern" hi="305216" hp="y" ic="flexibility">
-    <reading tn="dominate" fa="w" />
+    <reading tn="master, overcome" fa="w" />
   </verb>
   <verb in="be*merken" hi="1463508" ic="skating">
     <reading tn="notice" fa="w" />
@@ -2429,7 +2429,7 @@
     <reading tn="observe" fa="w" />
   </verb>
   <verb in="be*pflanzen" hi="218106" hp="y" ic="walk.arrival">
-    <reading tn="plant" fa="w" />
+    <reading tn="plant (an area)" fa="w" />
   </verb>
   <verb in="be*r^a^ten" hi="2869402" ic="wave">
     <reading tn="advise, consult" fa="s" ag="halten" />
@@ -2489,7 +2489,7 @@
     <reading tn="burst" fa="s" ag="bersten" ay="s" />
   </verb>
   <verb in="be*rücken" hi="573298" hp="y" ic="hiking">
-    <reading tn="ensnare" fa="w" />
+    <reading tn="captivate, enchant" fa="w" />
   </verb>
   <verb in="be*rücksichtigen" hi="2473035" ic="handball">
     <reading tn="consider, take into account" fa="w" />
@@ -2528,7 +2528,7 @@
     <reading tn="inspect, look at" fa="w" />
   </verb>
   <verb in="be*sch^ei^den" hi="293818" hp="y" ic="fencing">
-    <reading tn="confer the decision or fate formally" fa="s" ag="bleiben" />
+    <reading tn="notify of a decision" fa="s" ag="bleiben" />
   </verb>
   <verb in="be*sch^ei^nen" hi="573839" hp="y" ic="flexibility">
     <reading tn="shine on something, illuminate" fa="s" ag="bleiben" />
@@ -2537,13 +2537,13 @@
     <reading tn="rip off, swindle" fa="s" ag="reißen" />
   </verb>
   <verb in="be*schenken" hi="573249" hp="y" ic="arms.open">
-    <reading tn="endow" fa="w" />
+    <reading tn="give presents to" fa="w" />
   </verb>
   <verb in="be*scheren" hi="43231" hp="y" ic="barre">
     <reading tn="present as a gift" fa="w" />
   </verb>
   <verb in="be*schicken" hi="573542" hp="y" ic="fall">
-    <reading tn="send, commit" fa="w" />
+    <reading tn="send to, load" fa="w" />
   </verb>
   <verb in="be*sch^ieß^en" hi="573291" hp="y" ic="archery">
     <reading tn="shoot at, bombard" fa="s" ag="schließen" />
@@ -2561,7 +2561,7 @@
     <reading tn="decide" fa="s" ag="schließen" />
   </verb>
   <verb in="be*schn^eid^en" hi="573261" hp="y" ic="fencing">
-    <reading tn="circumcise" fa="s" ag="schneiden" />
+    <reading tn="trim, prune, curtail" fa="s" ag="schneiden" />
   </verb>
   <verb in="be*schränken" hi="1359886" ic="seated.side.left">
     <reading tn="restrict, limit" fa="w" />
@@ -2621,13 +2621,13 @@
     <reading tn="discuss" fa="s" ag="sprechen" />
   </verb>
   <verb in="be*spr^i^ngen" hi="573236" hp="y" ic="jumprope">
-    <reading tn="synonym of begatten" fa="s" ag="finden" />
+    <reading tn="mount (of animals)" fa="s" ag="finden" />
   </verb>
   <verb in="besser+stellen" hi="574043" hp="y" ic="stand">
     <reading tn="make better off" fa="w" />
   </verb>
   <verb in="be*stärken" hi="573382" hp="y" ic="strengthtraining.traditional">
-    <reading tn="strengthen, encourage, fortify" fa="w" />
+    <reading tn="reinforce, encourage" fa="w" />
   </verb>
   <verb in="be*stätigen" hi="5581992" ic="wave">
     <reading tn="confirm" fa="w" />
@@ -2636,7 +2636,7 @@
     <reading tn="bribe" fa="s" ag="sprechen" />
   </verb>
   <verb in="be*stecken" hi="573571" hp="y" ic="indoor.rowing">
-    <reading tn="get stuck" fa="w" />
+    <reading tn="adorn by sticking in" fa="w" />
   </verb>
   <verb in="be*st^eh^en" hi="11921056" ic="handball">
     <reading tn="exist, pass" fa="s" ag="stehen" />
@@ -2742,7 +2742,7 @@
     <reading tn="arm, protect, fortify" fa="w" />
   </verb>
   <verb in="be*weinen" hi="199553" hp="y" ic="wave">
-    <reading tn="cry over, beweep, bewail, mourn" fa="w" />
+    <reading tn="mourn, cry over" fa="w" />
   </verb>
   <verb in="be*w^ei^sen" hi="2634141" ic="flexibility">
     <reading tn="prove" fa="s" ag="weisen" />
@@ -2908,7 +2908,7 @@
     <reading tn="peter out" fa="s" ag="finden" ay="s" />
   </verb>
   <verb in="dahin+st^e^rben" hi="573287" hp="y" ic="fall">
-    <reading tn="die" fa="s" ag="sterben" ay="s" />
+    <reading tn="waste away, die off" fa="s" ag="sterben" ay="s" />
   </verb>
   <verb in="dahinter+h^a^lten" hi="573939" hp="y" ic="strengthtraining.traditional">
     <reading tn="hold something behind something" fa="s" ag="halten" />
@@ -2938,7 +2938,7 @@
     <reading tn="set about doing something" fa="w" />
   </verb>
   <verb in="daran+setzen" hi="573875" hp="y" ic="seated.side.left">
-    <reading tn="risk, not spare, make, use" fa="w" />
+    <reading tn="devote, stake" fa="w" />
   </verb>
   <verb in="darauf+h^a^lten" hi="573936" hp="y" ic="strengthtraining.traditional">
     <reading tn="hold something on something" fa="s" ag="halten" />
@@ -2953,7 +2953,7 @@
     <reading tn="explain, set forth" fa="w" />
   </verb>
   <verb in="darnieder+l^ie^gen" hi="574021" hp="y" ic="cooldown">
-    <reading tn="be sick" fa="s" ag="liegen" />
+    <reading tn="be laid low, languish" fa="s" ag="liegen" />
   </verb>
   <verb in="dar+stellen" hi="3624693" ic="arms.open">
     <reading tn="represent, portray" fa="w" />
@@ -3016,7 +3016,7 @@
     <reading tn="fit in, belong" fa="w" />
   </verb>
   <verb in="dazu+k^om^men" hi="574314" hp="y" ic="walk.arrival">
-    <reading tn="arrive" fa="s" ag="kommen" ay="s" />
+    <reading tn="join, be added" fa="s" ag="kommen" ay="s" />
   </verb>
   <verb in="dazwischen+g^eh^en" hi="574205" hp="y" ic="walk">
     <reading tn="intervene" fa="s" ag="gehen" ay="s" />
@@ -3079,7 +3079,7 @@
     <reading tn="press, push" fa="w" />
   </verb>
   <verb in="drauf+g^e^ben" hi="574342" hp="y" ic="arms.open">
-    <reading tn="add of something" fa="s" ag="geben" />
+    <reading tn="add on top" fa="s" ag="geben" />
   </verb>
   <verb in="drauf+g^eh^en" hi="574203" hp="y" ic="walk">
     <reading tn="fall apart" fa="s" ag="gehen" ay="s" />
@@ -3155,7 +3155,7 @@
     <reading tn="continue to burn, burn through" fa="m" ag="kennen" />
   </verb>
   <verb in="durch+br^ing^en" hi="573992" hp="y" ic="hiking">
-    <reading tn="be able to bring through" fa="m" ag="bringen" />
+    <reading tn="get through, pull through" fa="m" ag="bringen" />
   </verb>
   <verb in="durch+drehen" hi="573176" hp="y" ic="socialdance">
     <reading tn="freak out, snap, panic" fa="w" />
@@ -3170,7 +3170,7 @@
     <reading tn="get confused" fa="s" ag="kommen" ay="s" />
   </verb>
   <verb in="durch+f^all^en" hi="573051" hp="y" ic="fall">
-    <reading tn="fall through" fa="s" ag="fallen" ay="s" />
+    <reading tn="fail (an exam)" fa="s" ag="fallen" ay="s" />
   </verb>
   <verb in="durch+fl^ieß^en" hi="306066" hp="y" ic="flexibility">
     <reading tn="flow through" fa="s" ag="schließen" ay="s" />
@@ -3242,7 +3242,7 @@
     <reading tn="announce over loudspeakers or on the radio" fa="w" />
   </verb>
   <verb in="durch+schauen" hi="573444" hp="y" ic="flexibility">
-    <reading tn="see through" fa="w" />
+    <reading tn="look through" fa="w" />
   </verb>
   <verb in="durch+sch^ei^nen" hi="573526" hp="y" ic="flexibility">
     <reading tn="shine through" fa="s" ag="bleiben" />
@@ -3341,7 +3341,7 @@
     <reading tn="turn" fa="s" ag="bieten" />
   </verb>
   <verb in="ein+bilden" hi="558522" hp="y" ic="walk.arrival">
-    <reading tn="imagine" fa="w" />
+    <reading tn="imagine falsely" fa="w" />
   </verb>
   <verb in="ein+b^i^nden" hi="998837" ic="2.and.child.holdinghands">
     <reading tn="integrate, bind" fa="s" ag="finden" />
@@ -3465,13 +3465,13 @@
     <reading tn="shop" fa="w" />
   </verb>
   <verb in="ein+kehren" hi="188167" hp="y" ic="socialdance">
-    <reading tn="sojourn" fa="w" />
+    <reading tn="stop at an inn" fa="w" />
   </verb>
   <verb in="ein+kochen" hi="159293" hp="y" ic="cooldown">
     <reading tn="boil down" fa="w" />
   </verb>
   <verb in="ein+k^om^men" hi="574082" hp="y" ic="walk.arrival">
-    <reading tn="earn" fa="s" ag="kommen" ay="s" />
+    <reading tn="come in (of money)" fa="s" ag="kommen" ay="s" />
   </verb>
   <verb in="ein+kriegen" hi="136779" hp="y" ic="handball">
     <reading tn="calm oneself" fa="w" />
@@ -3558,7 +3558,7 @@
     <reading tn="submit, file" fa="w" />
   </verb>
   <verb in="ein+reisen" hi="186037" hp="y" ic="seated.side.left.steeringwheel">
-    <reading tn="enter, travel" fa="w" ay="s" />
+    <reading tn="enter a country" fa="w" ay="s" />
   </verb>
   <verb in="ein+r^eiß^en" hi="146557" hp="y" ic="boxing">
     <reading tn="knock down, demolish" fa="s" ag="reißen" />
@@ -3621,13 +3621,13 @@
     <reading tn="restrict, limit" fa="w" />
   </verb>
   <verb in="ein+schr^ei^ben" hi="573629" hp="y" ic="flexibility">
-    <reading tn="write into, inscribe" fa="s" ag="bleiben" />
+    <reading tn="enroll, register" fa="s" ag="bleiben" />
   </verb>
   <verb in="ein+schr^eit^en" hi="33498" hp="y" ic="walk">
     <reading tn="intervene, interfere, step in" fa="s" ag="schneiden" ay="s" />
   </verb>
   <verb in="ein+schulen" hi="47821" hp="y" ic="walk.arrival">
-    <reading tn="instruct for a specific position, task" fa="w" />
+    <reading tn="enroll in school" fa="w" />
   </verb>
   <verb in="ein+schw^ö^ren" hi="43948" hp="y" ic="stand">
     <reading tn="make someone swear" fa="s" ag="bieten" />
@@ -3669,7 +3669,7 @@
     <reading tn="get in, enter" fa="s" ag="steigen" ay="s" />
   </verb>
   <verb in="ein+stellen" hi="3473780" ic="indoor.rowing">
-    <reading tn="set, hire" fa="w" />
+    <reading tn="adjust, set" fa="w" />
   </verb>
   <verb in="ein+stimmen" hi="526868" hp="y" ic="wave">
     <reading tn="join in" fa="w" />
@@ -3709,7 +3709,7 @@
     <reading tn="kick in (something)" fa="s" ag="treten" />
   </verb>
   <verb in="ein+üben" hi="200769" hp="y" ic="skating">
-    <reading tn="drill, # to practice / practise" fa="w" />
+    <reading tn="practice, rehearse" fa="w" />
   </verb>
   <verb in="ein+ver*n^ehm^en" hi="573085" hp="y" ic="handball">
     <reading tn="interrogate, question" fa="s" ag="nehmen" />
@@ -3733,7 +3733,7 @@
     <reading tn="brief, instruct" fa="s" ag="bleiben" />
   </verb>
   <verb in="ein+wenden" hi="297041" hp="y" ic="socialdance">
-    <reading tn="raise, make" fa="w" />
+    <reading tn="object, raise an objection" fa="w" />
   </verb>
   <verb in="ein+w^e^rfen" hi="450256" hp="y" ic="handball">
     <reading tn="drop, insert" fa="s" ag="sterben" />
@@ -3803,7 +3803,7 @@
     <reading tn="present" fa="s" ag="bieten" />
   </verb>
   <verb in="ent*b^i^nden" hi="269991" hp="y" ic="2.and.child.holdinghands">
-    <reading tn="see a woman through childbirth, deliver" fa="s" ag="finden" />
+    <reading tn="give birth" fa="s" ag="finden" />
   </verb>
   <verb in="ent*br^e^nnen" hi="230145" hp="y" ic="highintensity.intervaltraining">
     <reading tn="break out, flare up, erupt" fa="m" ag="kennen" />
@@ -3818,7 +3818,7 @@
     <reading tn="expropriate" fa="w" />
   </verb>
   <verb in="ent*f^a^hren" hi="573718" hp="y" ic="seated.side.left.steeringwheel">
-    <reading tn="escape" fa="s" ag="fahren" ay="s" />
+    <reading tn="slip out (of one's mouth)" fa="s" ag="fahren" ay="s" />
   </verb>
   <verb in="ent*f^all^en" hi="1246037" ic="flexibility">
     <reading tn="be omitted, lapse" fa="s" ag="fallen" ay="s" />
@@ -3965,7 +3965,7 @@
     <reading tn="escape" fa="s" ag="beginnen" ay="s" />
   </verb>
   <verb in="ent*rücken" hi="391424" hp="y" ic="hiking">
-    <reading tn="translate, rapture" fa="w" />
+    <reading tn="carry away, enrapture" fa="w" />
   </verb>
   <verb in="ent*sagen" hi="574322" hp="y" ic="wave">
     <reading tn="renounce, relinquish" fa="w" />
@@ -3974,7 +3974,7 @@
     <reading tn="decide" fa="s" ag="bleiben" />
   </verb>
   <verb in="ent*schl^a^fen" hi="300303" hp="y" ic="cooldown">
-    <reading tn="fall asleep, die" fa="s" ag="halten" ay="s" />
+    <reading tn="pass away" fa="s" ag="halten" ay="s" />
   </verb>
   <verb in="ent*schl^a^gen" hi="573478" hp="y" ic="boxing">
     <reading tn="dispense with, forgo, refuse" fa="s" ag="fahren" />
@@ -4169,7 +4169,7 @@
     <reading tn="result in, yield" fa="s" ag="geben" />
   </verb>
   <verb in="er*g^eh^en" hi="574354" hp="y" ic="walk">
-    <reading tn="forms the perfect with sein" fa="s" ag="gehen" ay="s" />
+    <reading tn="fare" fa="s" ag="gehen" ay="s" />
   </verb>
   <verb in="er*g^ieß^en" hi="188688" hp="y" ic="flexibility">
     <reading tn="gush, pour out" fa="s" ag="schließen" />
@@ -4190,7 +4190,7 @@
     <reading tn="raise, collect" fa="s" ag="heben" />
   </verb>
   <verb in="er*hoffen" hi="573828" hp="y" ic="jumprope">
-    <reading tn="hope, desire, want" fa="w" />
+    <reading tn="hope for" fa="w" />
   </verb>
   <verb in="er*höhen" hi="5094602" ic="stairs">
     <reading tn="increase, raise" fa="w" />
@@ -4265,7 +4265,7 @@
     <reading tn="succumb to, lose out to, yield to" fa="s" ag="liegen" ay="s" />
   </verb>
   <verb in="er*löschen" hi="573308" hp="y" ic="flexibility">
-    <reading tn="extinguish, quench, douse" fa="w" />
+    <reading tn="go out, be extinguished" fa="w" />
   </verb>
   <verb in="er*lösen" hi="573661" hp="y" ic="flexibility">
     <reading tn="deliver, set free" fa="w" />
@@ -4298,7 +4298,7 @@
     <reading tn="open" fa="w" />
   </verb>
   <verb in="er*r^a^ten" hi="573167" hp="y" ic="wave">
-    <reading tn="determine through advice or empathy" fa="s" ag="halten" />
+    <reading tn="guess correctly" fa="s" ag="halten" />
   </verb>
   <verb in="er*rechnen" hi="573745" hp="y" ic="barre">
     <reading tn="reckon, calculate, compute" fa="w" />
@@ -4367,7 +4367,7 @@
     <reading tn="sense something" fa="w" />
   </verb>
   <verb in="er*statten" hi="706530" ic="arms.open">
-    <reading tn="reimburse, file" fa="w" />
+    <reading tn="reimburse, refund" fa="w" />
   </verb>
   <verb in="erstauf+führen" hi="573966" hp="y" ic="walk.arrival">
     <reading tn="premiere something" fa="w" />
@@ -4388,7 +4388,7 @@
     <reading tn="create" fa="w" />
   </verb>
   <verb in="er*st^e^rben" hi="573691" hp="y" ic="fall">
-    <reading tn="die" fa="s" ag="sterben" ay="s" />
+    <reading tn="die away, fade out" fa="s" ag="sterben" ay="s" />
   </verb>
   <verb in="er*st^i^nken" hi="118638" hp="y" ic="cooldown">
     <reading tn="become stinky" fa="s" ag="finden" />
@@ -4424,7 +4424,7 @@
     <reading tn="drown" fa="s" ag="finden" ay="s" />
   </verb>
   <verb in="er*w^a^chsen" hi="573710" hp="y" ic="stairs">
-    <reading tn="grow up, grow" fa="s" ag="fahren" ay="s" />
+    <reading tn="arise from, result from" fa="s" ag="fahren" ay="s" />
   </verb>
   <verb in="er*w^ä^gen" hi="10870" hp="y" ic="flexibility">
     <reading tn="consider" fa="s" ag="bieten" />
@@ -4475,7 +4475,7 @@
     <reading tn="generate, produce" fa="w" />
   </verb>
   <verb in="er*z^ieh^en" hi="574066" hp="y" ic="indoor.rowing">
-    <reading tn="nurture" fa="s" ag="ziehen" />
+    <reading tn="raise, bring up" fa="s" ag="ziehen" />
   </verb>
   <verb in="er*zielen" hi="4763247" ic="arms.open">
     <reading tn="achieve" fa="w" />
@@ -4500,7 +4500,7 @@
     <reading tn="fall" fa="s" ag="fallen" ay="s" />
   </verb>
   <verb in="fällen" hi="5729943" ic="handball">
-    <reading tn="fell, pass" fa="w" />
+    <reading tn="fell, cut down" fa="w" />
   </verb>
   <verb in="falsch+l^ie^gen" hi="574018" hp="y" ic="cooldown">
     <reading tn="be wrong" fa="s" ag="liegen" />
@@ -4599,10 +4599,10 @@
     <reading tn="corner with questions" fa="w" />
   </verb>
   <verb in="fest+fr^ie^ren" hi="72040" hp="y" ic="skiing.downhill">
-    <reading tn="ice over, freeze" fa="s" ag="bieten" ay="s" />
+    <reading tn="freeze stuck" fa="s" ag="bieten" ay="s" />
   </verb>
   <verb in="fest+h^a^lten" hi="1565512" ic="handball">
-    <reading tn="hold on, record" fa="s" ag="halten" />
+    <reading tn="hold on to, hold tight" fa="s" ag="halten" />
   </verb>
   <verb in="fest+h^ä^ngen" hi="573209" hp="y" ic="flexibility">
     <reading tn="be stuck, be caught on something" fa="s" ag="hängen" />
@@ -4635,7 +4635,7 @@
     <reading tn="be stuck" fa="w" />
   </verb>
   <verb in="fest+st^eh^en" hi="574117" hp="y" ic="stand">
-    <reading tn="stand firm" fa="s" ag="stehen" />
+    <reading tn="be certain, be settled" fa="s" ag="stehen" />
   </verb>
   <verb in="fest+stellen" hi="3535734" ic="skating">
     <reading tn="determine, notice" fa="w" />
@@ -4703,7 +4703,7 @@
     <reading tn="go on, continue" fa="w" />
   </verb>
   <verb in="fort+f^a^hren" hi="573681" hp="y" ic="seated.side.left.steeringwheel">
-    <reading tn="drive away, drive off" fa="s" ag="fahren" />
+    <reading tn="continue" fa="s" ag="fahren" />
   </verb>
   <verb in="fort+führen" hi="573965" hp="y" ic="walk.arrival">
     <reading tn="continue" fa="w" />
@@ -4712,7 +4712,7 @@
     <reading tn="give away something, relinquish something" fa="s" ag="geben" />
   </verb>
   <verb in="fort+g^eh^en" hi="574196" hp="y" ic="walk">
-    <reading tn="continue, go on, keep on, carry on" fa="s" ag="gehen" ay="s" />
+    <reading tn="leave, go away" fa="s" ag="gehen" ay="s" />
   </verb>
   <verb in="fort+jagen" hi="105995" hp="y" ic="hunting">
     <reading tn="chase away" fa="w" />
@@ -4745,7 +4745,7 @@
     <reading tn="take away" fa="w" />
   </verb>
   <verb in="fort+schleifen" hi="48605" hp="y" ic="strengthtraining.traditional">
-    <reading tn="synonym of wegschleifen: to drag away" fa="w" />
+    <reading tn="drag away" fa="w" />
   </verb>
   <verb in="fort+schr^ei^ben" hi="573824" hp="y" ic="flexibility">
     <reading tn="update" fa="s" ag="bleiben" />
@@ -4790,7 +4790,7 @@
     <reading tn="reveal" fa="w" />
   </verb>
   <verb in="frei+machen" hi="574252" hp="y" ic="strengthtraining.traditional">
-    <reading tn="put a stamp on" fa="w" />
+    <reading tn="clear, free up" fa="w" />
   </verb>
   <verb in="frei+n^ehm^en" hi="573102" hp="y" ic="handball">
     <reading tn="take off" fa="s" ag="nehmen" />
@@ -4817,7 +4817,7 @@
     <reading tn="eat (animals)" fa="s" ag="messen" />
   </verb>
   <verb in="freuen" hi="13564768" ic="arms.open">
-    <reading tn="be happy, please" fa="w" />
+    <reading tn="be glad, be pleased" fa="w" />
   </verb>
   <verb in="fr^ie^ren" hi="431600" hp="y" ic="skiing.downhill">
     <reading tn="freeze, be cold" fa="s" ag="bieten" />
@@ -4940,7 +4940,7 @@
     <reading tn="take responsibility" fa="s" ag="stehen" />
   </verb>
   <verb in="ge*r^a^ten" hi="3703393" ic="socialdance">
-    <reading tn="get into, turn out" fa="s" ag="halten" ay="s" />
+    <reading tn="get into, end up in" fa="s" ag="halten" ay="s" />
   </verb>
   <verb in="gering+h^a^lten" hi="573922" hp="y" ic="strengthtraining.traditional">
     <reading tn="keep low, minimize, keep to a minimum" fa="s" ag="halten" />
@@ -4985,7 +4985,7 @@
     <reading tn="ensure" fa="w" />
   </verb>
   <verb in="ge*warten" hi="574070" hp="y" ic="seated.side.left">
-    <reading tn="expect, await or wait for" fa="w" />
+    <reading tn="expect, await" fa="w" />
   </verb>
   <verb in="ge*w^i^nnen" hi="14175586" ic="arms.open">
     <reading tn="win" fa="s" ag="gewinnen" />
@@ -5103,7 +5103,7 @@
     <reading tn="hit, hew" fa="w" />
   </verb>
   <verb in="haus+h^a^lten" hi="573921" hp="y" ic="strengthtraining.traditional">
-    <reading tn="have or run a household" fa="s" ag="heißen" />
+    <reading tn="economize, be thrifty" fa="s" ag="heißen" />
   </verb>
   <verb in="h^e^ben" hi="2084109" ic="strengthtraining.traditional">
     <reading tn="lift, raise" fa="s" ag="heben" />
@@ -5251,7 +5251,7 @@
     <reading tn="figure out" fa="s" ag="kommen" />
   </verb>
   <verb in="heraus+br^e^chen" hi="365504" hp="y" ic="boxing">
-    <reading tn="burst out" fa="s" ag="sprechen" />
+    <reading tn="break out, break off" fa="s" ag="sprechen" />
   </verb>
   <verb in="heraus+br^ing^en" hi="573985" hp="y" ic="hiking">
     <reading tn="publish, issue, launch" fa="m" ag="bringen" />
@@ -5266,7 +5266,7 @@
     <reading tn="challenge" fa="w" />
   </verb>
   <verb in="heraus+g^e^ben" hi="511942" ic="handball">
-    <reading tn="publish, hand out" fa="s" ag="geben" />
+    <reading tn="publish, issue" fa="s" ag="geben" />
   </verb>
   <verb in="heraus+g^eh^en" hi="574191" hp="y" ic="walk">
     <reading tn="go out" fa="s" ag="gehen" ay="s" />
@@ -5275,7 +5275,7 @@
     <reading tn="single out" fa="s" ag="greifen" />
   </verb>
   <verb in="heraus+h^a^lten" hi="573917" hp="y" ic="strengthtraining.traditional">
-    <reading tn="hold out, stick out" fa="s" ag="halten" />
+    <reading tn="keep out of, stay out of" fa="s" ag="halten" />
   </verb>
   <verb in="heraus+h^e^ben" hi="347864" hp="y" ic="strengthtraining.traditional">
     <reading tn="lift out, upheave" fa="s" ag="bieten" />
@@ -5317,13 +5317,13 @@
     <reading tn="cut out" fa="s" ag="schneiden" />
   </verb>
   <verb in="heraus+schr^ei^ben" hi="573821" hp="y" ic="flexibility">
-    <reading tn="write out" fa="s" ag="bleiben" />
+    <reading tn="copy out, excerpt" fa="s" ag="bleiben" />
   </verb>
   <verb in="heraus+st^e^chen" hi="90554" hp="y" ic="flexibility">
     <reading tn="stick out" fa="s" ag="sprechen" />
   </verb>
   <verb in="heraus+stellen" hi="587136" ic="socialdance">
-    <reading tn="turn out, highlight" fa="w" />
+    <reading tn="turn out to be" fa="w" />
   </verb>
   <verb in="heraus+str^eich^en" hi="238487" hp="y" ic="fall">
     <reading tn="highlight, underline" fa="s" ag="streichen" />
@@ -5338,7 +5338,7 @@
     <reading tn="throw out" fa="s" ag="sterben" />
   </verb>
   <verb in="heraus+z^ieh^en" hi="573763" hp="y" ic="indoor.rowing">
-    <reading tn="pull" fa="s" ag="ziehen" />
+    <reading tn="pull out" fa="s" ag="ziehen" />
   </verb>
   <verb in="herbei+führen" hi="573961" hp="y" ic="walk.arrival">
     <reading tn="precipitate, cause, induce" fa="w" />
@@ -5416,7 +5416,7 @@
     <reading tn="deduce" fa="w" />
   </verb>
   <verb in="her+machen" hi="574247" hp="y" ic="strengthtraining.traditional">
-    <reading tn="make a impression" fa="w" />
+    <reading tn="look impressive" fa="w" />
   </verb>
   <verb in="her+reisen" hi="299227" hp="y" ic="seated.side.left.steeringwheel">
     <reading tn="travel to a place" fa="w" ay="s" />
@@ -5464,7 +5464,7 @@
     <reading tn="be hung around in a disorganized manner" fa="s" ag="hängen" />
   </verb>
   <verb in="herum+k^om^men" hi="574297" hp="y" ic="walk.arrival">
-    <reading tn="move round something" fa="s" ag="kommen" ay="s" />
+    <reading tn="get out of, avoid" fa="s" ag="kommen" ay="s" />
   </verb>
   <verb in="herum+kriegen" hi="220000" hp="y" ic="handball">
     <reading tn="cajole, wangle" fa="w" />
@@ -5551,7 +5551,7 @@
     <reading tn="cause, provoke" fa="s" ag="rufen" />
   </verb>
   <verb in="hervor+s^e^hen" hi="574093" hp="y" ic="mind.and.body">
-    <reading tn="show" fa="s" ag="sehen" />
+    <reading tn="peek out, show through" fa="s" ag="sehen" />
   </verb>
   <verb in="hervor+st^e^chen" hi="90553" hp="y" ic="flexibility">
     <reading tn="stick out" fa="s" ag="sprechen" />
@@ -5620,7 +5620,7 @@
     <reading tn="come out" fa="s" ag="kommen" ay="s" />
   </verb>
   <verb in="hinaus+l^au^fen" hi="573736" hp="y" ic="run">
-    <reading tn="walk out" fa="s" ag="laufen" ay="s" />
+    <reading tn="amount to, come down to" fa="s" ag="laufen" ay="s" />
   </verb>
   <verb in="hinaus+lehnen" hi="269753" hp="y" ic="flexibility">
     <reading tn="lean out" fa="w" />
@@ -5638,7 +5638,7 @@
     <reading tn="hinder, prevent" fa="w" />
   </verb>
   <verb in="hin+deuten" hi="196602" hp="y" ic="archery">
-    <reading tn="point" fa="w" />
+    <reading tn="indicate, suggest" fa="w" />
   </verb>
   <verb in="hindurch+g^eh^en" hi="574184" hp="y" ic="walk">
     <reading tn="go through" fa="s" ag="gehen" ay="s" />
@@ -5680,7 +5680,7 @@
     <reading tn="pull in, drag in" fa="s" ag="ziehen" />
   </verb>
   <verb in="hin+f^a^hren" hi="573676" hp="y" ic="seated.side.left.steeringwheel">
-    <reading tn="give a ride" fa="s" ag="fahren" />
+    <reading tn="drive there, travel there" fa="s" ag="fahren" />
   </verb>
   <verb in="hin+f^all^en" hi="573047" hp="y" ic="fall">
     <reading tn="fall down" fa="s" ag="fallen" ay="s" />
@@ -5695,7 +5695,7 @@
     <reading tn="belong" fa="w" />
   </verb>
   <verb in="hin+gucken" hi="181387" hp="y" ic="flexibility">
-    <reading tn="synonym of hinsehen" fa="w" />
+    <reading tn="take a look, look" fa="w" />
   </verb>
   <verb in="hin+h^a^lten" hi="573915" hp="y" ic="strengthtraining.traditional">
     <reading tn="hold out to/for" fa="s" ag="halten" />
@@ -5725,7 +5725,7 @@
     <reading tn="execute, put to death" fa="w" />
   </verb>
   <verb in="hin+rücken" hi="348845" hp="y" ic="hiking">
-    <reading tn="move away" fa="w" />
+    <reading tn="move over there, shift over" fa="w" />
   </verb>
   <verb in="hin+schauen" hi="573441" hp="y" ic="flexibility">
     <reading tn="look" fa="w" />
@@ -5749,7 +5749,7 @@
     <reading tn="rush somewhere" fa="w" ay="s" />
   </verb>
   <verb in="hintan+h^a^lten" hi="573912" hp="y" ic="strengthtraining.traditional">
-    <reading tn="evite, try to make something not appear" fa="s" ag="halten" />
+    <reading tn="prevent, avert" fa="s" ag="halten" />
   </verb>
   <verb in="hintan+legen" hi="573618" hp="y" ic="flexibility">
     <reading tn="put back, order into a posterior position" fa="w" />
@@ -5758,7 +5758,7 @@
     <reading tn="put back, order into a posterior position" fa="w" />
   </verb>
   <verb in="hintan+stellen" hi="574033" hp="y" ic="stand">
-    <reading tn="put back, order into a posterior position" fa="w" />
+    <reading tn="put last" fa="w" />
   </verb>
   <verb in="hinter*fragen" hi="476843" ic="wave">
     <reading tn="question" fa="w" />
@@ -5818,7 +5818,7 @@
     <reading tn="overlook, turn a blind eye to" fa="w" />
   </verb>
   <verb in="hinweg+s^e^hen" hi="574091" hp="y" ic="mind.and.body">
-    <reading tn="look over" fa="s" ag="sehen" />
+    <reading tn="overlook, ignore" fa="s" ag="sehen" />
   </verb>
   <verb in="hinweg+setzen" hi="573865" hp="y" ic="seated.side.left">
     <reading tn="leap over, jump over" fa="w" />
@@ -5854,10 +5854,10 @@
     <reading tn="work one's way up to the top" fa="w" />
   </verb>
   <verb in="hoch+drehen" hi="573174" hp="y" ic="socialdance">
-    <reading tn="turn upward" fa="w" />
+    <reading tn="turn up" fa="w" />
   </verb>
   <verb in="hoch+f^a^hren" hi="573675" hp="y" ic="seated.side.left.steeringwheel">
-    <reading tn="drive upwards/northwards" fa="s" ag="fahren" />
+    <reading tn="boot up, start up" fa="s" ag="fahren" />
   </verb>
   <verb in="hoch+fl^ie^gen" hi="419215" hp="y" ic="skiing.downhill">
     <reading tn="fly up" fa="s" ag="bieten" ay="s" />
@@ -5890,7 +5890,7 @@
     <reading tn="take upstairs, take to an elevated place" fa="s" ag="nehmen" />
   </verb>
   <verb in="hoch+rechnen" hi="573035" hp="y" ic="barre">
-    <reading tn="calculate purposefully high in the dark" fa="w" />
+    <reading tn="extrapolate, project" fa="w" />
   </verb>
   <verb in="hoch+schätzen" hi="497729" hp="y" ic="arms.open">
     <reading tn="highly appreciate, esteem" fa="w" />
@@ -5935,7 +5935,7 @@
     <reading tn="inform" fa="i" />
   </verb>
   <verb in="inne+h^ab^en" hi="573125" hp="y" ic="arms.open">
-    <reading tn="hold" fa="m" ag="haben" />
+    <reading tn="hold (an office)" fa="m" ag="haben" />
   </verb>
   <verb in="inne+h^a^lten" hi="573909" hp="y" ic="strengthtraining.traditional">
     <reading tn="pause, wait a while" fa="s" ag="halten" />
@@ -5998,7 +5998,7 @@
     <reading tn="buy" fa="w" />
   </verb>
   <verb in="kehren" hi="1813261" ic="socialdance">
-    <reading tn="sweep, turn" fa="w" />
+    <reading tn="sweep" fa="w" />
   </verb>
   <verb in="kehrt+machen" hi="574241" hp="y" ic="strengthtraining.traditional">
     <reading tn="turn back" fa="w" />
@@ -6019,7 +6019,7 @@
     <reading tn="complain, sue" fa="w" />
   </verb>
   <verb in="klappen" hi="2065430" ic="strengthtraining.traditional">
-    <reading tn="work out, fold" fa="w" />
+    <reading tn="work out, succeed" fa="w" />
   </verb>
   <verb in="klären" hi="2295517" ic="yoga">
     <reading tn="clarify" fa="w" />
@@ -6046,7 +6046,7 @@
     <reading tn="keep down" fa="s" ag="halten" />
   </verb>
   <verb in="klein+kriegen" hi="219998" hp="y" ic="handball">
-    <reading tn="break" fa="w" />
+    <reading tn="break someone's spirit" fa="w" />
   </verb>
   <verb in="klein+machen" hi="574239" hp="y" ic="strengthtraining.traditional">
     <reading tn="put down, humiliate, belittle" fa="w" />
@@ -6115,7 +6115,7 @@
     <reading tn="contact" fa="i" />
   </verb>
   <verb in="kontrollieren" hi="1920407" ic="walk.arrival">
-    <reading tn="control, check" fa="i" />
+    <reading tn="check, inspect" fa="i" />
   </verb>
   <verb in="konzentrieren" hi="2028006" ic="archery">
     <reading tn="concentrate" fa="i" />
@@ -6242,7 +6242,7 @@
     <reading tn="teach" fa="w" />
   </verb>
   <verb in="leicht+f^all^en" hi="573046" hp="y" ic="fall">
-    <reading tn="come, be easy" fa="s" ag="fallen" ay="s" />
+    <reading tn="come easily, be easy" fa="s" ag="fallen" ay="s" />
   </verb>
   <verb in="l^eid^en" hi="2724250" ic="mind.and.body">
     <reading tn="suffer" fa="s" ag="schneiden" />
@@ -6335,7 +6335,7 @@
     <reading tn="open fire" fa="s" ag="schließen" />
   </verb>
   <verb in="los+schl^a^gen" hi="573418" hp="y" ic="boxing">
-    <reading tn="knock loose" fa="s" ag="fahren" />
+    <reading tn="attack, strike" fa="s" ag="fahren" />
   </verb>
   <verb in="los+tr^et^en" hi="573060" hp="y" ic="stairs">
     <reading tn="unleash" fa="s" ag="treten" />
@@ -6407,7 +6407,7 @@
     <reading tn="collaborate, cooperate" fa="w" />
   </verb>
   <verb in="mit+be*k^om^men" hi="574284" hp="y" ic="walk.arrival">
-    <reading tn="get or be given something when leaving" fa="s" ag="kommen" />
+    <reading tn="notice, pick up on" fa="s" ag="kommen" />
   </verb>
   <verb in="mit+be*stimmen" hi="573340" hp="y" ic="wave">
     <reading tn="decide together, codetermine" fa="w" />
@@ -6422,7 +6422,7 @@
     <reading tn="also experience, also be present" fa="w" />
   </verb>
   <verb in="mit+f^a^hren" hi="573673" hp="y" ic="seated.side.left.steeringwheel">
-    <reading tn="drive with" fa="s" ag="fahren" />
+    <reading tn="ride along" fa="s" ag="fahren" />
   </verb>
   <verb in="mit+folgen" hi="573633" hp="y" ic="walk.motion">
     <reading tn="follow along" fa="w" />
@@ -6452,7 +6452,7 @@
     <reading tn="come with, join and come along with" fa="s" ag="kommen" ay="s" />
   </verb>
   <verb in="mit+kriegen" hi="219997" hp="y" ic="handball">
-    <reading tn="synonym of mitbekommen" fa="w" />
+    <reading tn="notice, pick up on" fa="w" />
   </verb>
   <verb in="mit+l^eid^en" hi="454713" hp="y" ic="mind.and.body">
     <reading tn="feel compassion" fa="s" ag="schneiden" />
@@ -6473,7 +6473,7 @@
     <reading tn="travel along, travel with" fa="w" ay="s" />
   </verb>
   <verb in="mit+r^eiß^en" hi="235723" hp="y" ic="boxing">
-    <reading tn="entrain" fa="s" ag="reißen" />
+    <reading tn="sweep along, carry away" fa="s" ag="reißen" />
   </verb>
   <verb in="mit+schn^eid^en" hi="326231" hp="y" ic="fencing">
     <reading tn="record" fa="s" ag="schneiden" />
@@ -6485,7 +6485,7 @@
     <reading tn="sing along" fa="s" ag="finden" />
   </verb>
   <verb in="mit+spielen" hi="573883" hp="y" ic="play">
-    <reading tn="cooperate" fa="w" />
+    <reading tn="play along, join in a game" fa="w" />
   </verb>
   <verb in="mit+teilen" hi="3534207" ic="wave">
     <reading tn="inform, communicate" fa="w" />
@@ -6545,7 +6545,7 @@
     <reading tn="stay behind" fa="s" ag="bleiben" ay="s" />
   </verb>
   <verb in="nach+blicken" hi="117086" hp="y" ic="flexibility">
-    <reading tn="look at" fa="w" />
+    <reading tn="gaze after" fa="w" />
   </verb>
   <verb in="nach+d^enk^en" hi="1321959" ic="yoga">
     <reading tn="think about, reflect" fa="m" ag="bringen" />
@@ -6554,7 +6554,7 @@
     <reading tn="reprint" fa="w" />
   </verb>
   <verb in="nach+emp*f^i^nden" hi="573086" hp="y" ic="arms.open">
-    <reading tn="feel for" fa="s" ag="finden" />
+    <reading tn="relate to, empathize with" fa="s" ag="finden" />
   </verb>
   <verb in="nach+er*zählen" hi="360390" hp="y" ic="barre">
     <reading tn="retell" fa="w" />
@@ -6650,7 +6650,7 @@
     <reading tn="run after" fa="m" ag="kennen" ay="s" />
   </verb>
   <verb in="nach+sagen" hi="573948" hp="y" ic="wave">
-    <reading tn="repeat something said by someone else" fa="w" />
+    <reading tn="say about someone" fa="w" />
   </verb>
   <verb in="nach+salzen" hi="4150" hp="y" ic="seated.side.left">
     <reading tn="add extra salt" fa="w" />
@@ -6668,7 +6668,7 @@
     <reading tn="check, look into, investigate, explore" fa="s" ag="sehen" />
   </verb>
   <verb in="nach+setzen" hi="573474" hp="y" ic="seated.side.left">
-    <reading tn="place after" fa="w" />
+    <reading tn="chase after, pursue" fa="w" />
   </verb>
   <verb in="nach+s^i^ngen" hi="166024" hp="y" ic="wave">
     <reading tn="repeat" fa="s" ag="finden" />
@@ -6842,7 +6842,7 @@
     <reading tn="stab down" fa="s" ag="sprechen" />
   </verb>
   <verb in="nieder+st^o^ßen" hi="432279" hp="y" ic="boxing">
-    <reading tn="thrust down, knock down so that it falls)" fa="s" ag="stoßen" />
+    <reading tn="thrust down, knock down" fa="s" ag="stoßen" />
   </verb>
   <verb in="nieder+stürzen" hi="269884" hp="y" ic="fall">
     <reading tn="fall down, crash down" fa="w" ay="s" />
@@ -6866,7 +6866,7 @@
     <reading tn="remain unresolved" fa="s" ag="bleiben" ay="s" />
   </verb>
   <verb in="offen+h^a^lten" hi="573903" hp="y" ic="strengthtraining.traditional">
-    <reading tn="synonym of offenlassen" fa="s" ag="halten" />
+    <reading tn="keep open" fa="s" ag="halten" />
   </verb>
   <verb in="offen+legen" hi="573611" hp="y" ic="flexibility">
     <reading tn="unfold, disclose, unveil, reveal" fa="w" />
@@ -6933,7 +6933,7 @@
     <reading tn="praise, laud" fa="s" ag="bleiben" />
   </verb>
   <verb in="preis+g^e^ben" hi="574329" hp="y" ic="arms.open">
-    <reading tn="abandon, forsake, relinquish, surrender" fa="s" ag="geben" />
+    <reading tn="disclose, reveal" fa="s" ag="geben" />
   </verb>
   <verb in="probieren" hi="1447903" ic="wrestling">
     <reading tn="try, taste" fa="i" />
@@ -6999,7 +6999,7 @@
     <reading tn="go out" fa="s" ag="gehen" ay="s" />
   </verb>
   <verb in="raus+h^a^lten" hi="573087" hp="y" ic="strengthtraining.traditional">
-    <reading tn="hold out" fa="s" ag="halten" />
+    <reading tn="stay out of, keep out of" fa="s" ag="halten" />
   </verb>
   <verb in="raus+k^om^men" hi="574279" hp="y" ic="walk.arrival">
     <reading tn="come out" fa="s" ag="kommen" ay="s" />
@@ -7095,7 +7095,7 @@
     <reading tn="insert, stick in, stick into" fa="w" />
   </verb>
   <verb in="rein+w^a^schen" hi="163134" hp="y" ic="pool.swim">
-    <reading tn="cleanse" fa="s" ag="wachsen" />
+    <reading tn="clear of blame, whitewash" fa="s" ag="wachsen" />
   </verb>
   <verb in="rein+z^ieh^en" hi="573078" hp="y" ic="indoor.rowing">
     <reading tn="consume, inhale, down" fa="s" ag="ziehen" />
@@ -7128,7 +7128,7 @@
     <reading tn="save, rescue" fa="w" />
   </verb>
   <verb in="richten" hi="4062454" ic="archery">
-    <reading tn="direct, judge" fa="w" />
+    <reading tn="direct, aim" fa="w" />
   </verb>
   <verb in="richtig+l^ie^gen" hi="574015" hp="y" ic="cooldown">
     <reading tn="be right" fa="s" ag="liegen" />
@@ -7241,7 +7241,7 @@
     <reading tn="be sick/tired of" fa="m" ag="haben" />
   </verb>
   <verb in="satt+s^e^hen" hi="574089" hp="y" ic="mind.and.body">
-    <reading tn="have enough of seeing something beautiful" fa="s" ag="sehen" />
+    <reading tn="look one's fill" fa="s" ag="sehen" />
   </verb>
   <verb in="sauber+machen" hi="574225" hp="y" ic="strengthtraining.traditional">
     <reading tn="clean" fa="w" />
@@ -7445,7 +7445,7 @@
     <reading tn="be" fa="s" ag="sein" ay="s" />
   </verb>
   <verb in="selig+machen" hi="574222" hp="y" ic="strengthtraining.traditional">
-    <reading tn="bless, beatify" fa="w" />
+    <reading tn="bless, make blessed" fa="w" />
   </verb>
   <verb in="selig+spr^e^chen" hi="573806" hp="y" ic="wave">
     <reading tn="beatify" fa="s" ag="sprechen" />
@@ -7496,7 +7496,7 @@
     <reading tn="terminate by special termination right" fa="w" />
   </verb>
   <verb in="sorgen" hi="11914448" ic="seated.side.left.steeringwheel">
-    <reading tn="worry, care" fa="w" />
+    <reading tn="take care of, see to" fa="w" />
   </verb>
   <verb in="sortieren" hi="549236" ic="flexibility">
     <reading tn="sort" fa="i" />
@@ -7553,7 +7553,7 @@
     <reading tn="strengthen" fa="w" />
   </verb>
   <verb in="stark+machen" hi="574221" hp="y" ic="strengthtraining.traditional">
-    <reading tn="strengthen" fa="w" />
+    <reading tn="advocate for, stand up for" fa="w" />
   </verb>
   <verb in="starten" hi="8451646" ic="walk.arrival">
     <reading tn="start (something)" fa="w" />
@@ -7690,7 +7690,7 @@
     <reading tn="test" fa="w" />
   </verb>
   <verb in="thematisieren" hi="494175" ic="wave">
-    <reading tn="address, make topic" fa="i" />
+    <reading tn="bring up, address" fa="i" />
   </verb>
   <verb in="tippen" hi="528539" ic="flexibility">
     <reading tn="type, tap" fa="w" />
@@ -7792,7 +7792,7 @@
     <reading tn="entrust, give over" fa="w" />
   </verb>
   <verb in="über*arbeiten" hi="414316" ic="strengthtraining.traditional">
-    <reading tn="revise, overwork" fa="w" />
+    <reading tn="revise, rework" fa="w" />
   </verb>
   <verb in="über*bewerten" hi="98713" hp="y" ic="flexibility">
     <reading tn="overrate, overvalue" fa="w" />
@@ -7804,7 +7804,7 @@
     <reading tn="remain" fa="s" ag="bleiben" ay="s" />
   </verb>
   <verb in="über*blicken" hi="95279" hp="y" ic="flexibility">
-    <reading tn="oversee, overview" fa="w" />
+    <reading tn="survey, get an overview of" fa="w" />
   </verb>
   <verb in="über*br^ing^en" hi="573460" hp="y" ic="hiking">
     <reading tn="deliver" fa="m" ag="bringen" />
@@ -7858,7 +7858,7 @@
     <reading tn="overwhelm, overtax" fa="w" />
   </verb>
   <verb in="über*führen" hi="573431" hp="y" ic="walk.arrival">
-    <reading tn="transfer, transport, translate, move" fa="w" />
+    <reading tn="transfer, transport, move" fa="w" />
   </verb>
   <verb in="über*füllen" hi="105499" hp="y" ic="flexibility">
     <reading tn="overfill, overflow, crowd excessively" fa="w" />
@@ -7867,7 +7867,7 @@
     <reading tn="hand over" fa="s" ag="geben" />
   </verb>
   <verb in="über*g^eh^en" hi="508907" ic="jumprope">
-    <reading tn="skip, go over to" fa="s" ag="gehen" ay="s" />
+    <reading tn="skip, ignore" fa="s" ag="gehen" ay="s" />
   </verb>
   <verb in="über+gr^eif^en" hi="166382" hp="y" ic="handball">
     <reading tn="spread" fa="s" ag="greifen" />
@@ -7885,20 +7885,20 @@
     <reading tn="overtake, pass" fa="w" />
   </verb>
   <verb in="über*hören" hi="330642" hp="y" ic="mind.and.body">
-    <reading tn="ignore, mishear" fa="w" />
+    <reading tn="fail to hear, ignore" fa="w" />
   </verb>
   <verb in="über*kochen" hi="71407" hp="y" ic="cooldown">
     <reading tn="overcook" fa="w" />
     <reading in="über+kochen" tn="boil over" fa="w" ay="s" />
   </verb>
   <verb in="über*k^om^men" hi="573851" hp="y" ic="walk.arrival">
-    <reading tn="overcome, conquer, seize" fa="s" ag="kommen" />
+    <reading tn="come over, overwhelm" fa="s" ag="kommen" />
   </verb>
   <verb in="über*l^a^den" hi="323148" hp="y" ic="barre">
     <reading tn="overload" fa="s" ag="fahren" />
   </verb>
   <verb in="über*l^ass^en" hi="1107700" ic="walk">
-    <reading tn="leave to, abandon" fa="s" ag="lassen" />
+    <reading tn="leave to, entrust to" fa="s" ag="lassen" />
   </verb>
   <verb in="über+l^au^fen" hi="573152" hp="y" ic="run">
     <reading tn="overflow" fa="s" ag="laufen" ay="s" />
@@ -7958,7 +7958,7 @@
     <reading tn="overestimate" fa="w" />
   </verb>
   <verb in="über*schauen" hi="294477" hp="y" ic="flexibility">
-    <reading tn="overlook" fa="w" />
+    <reading tn="survey, grasp" fa="w" />
   </verb>
   <verb in="über+sch^ieß^en" hi="95371" hp="y" ic="archery">
     <reading tn="shoot something over something" fa="s" ag="schließen" />
@@ -7970,7 +7970,7 @@
     <reading tn="intersect" fa="s" ag="schneiden" />
   </verb>
   <verb in="über+schr^ei^ben" hi="573272" hp="y" ic="flexibility">
-    <reading tn="make over, sign over" fa="s" ag="bleiben" />
+    <reading tn="overwrite" fa="s" ag="bleiben" />
   </verb>
   <verb in="über*schr^eit^en" hi="1038311" ic="stairs">
     <reading tn="exceed, cross" fa="s" ag="schreiten" />
@@ -7986,7 +7986,7 @@
     <reading in="über+setzen" tn="ferry across" fa="w" ay="s" />
   </verb>
   <verb in="über+spielen" hi="573407" hp="y" ic="play">
-    <reading tn="dub, rerecord sth" fa="w" />
+    <reading tn="dub, re-record" fa="w" />
   </verb>
   <verb in="über*spr^i^ngen" hi="86012" hp="y" ic="jumprope">
     <reading tn="jump over" fa="s" ag="finden" />
@@ -8252,14 +8252,14 @@
     <reading tn="look after" fa="w" />
   </verb>
   <verb in="um+st^ei^gen" hi="573300" hp="y" ic="stairs">
-    <reading tn="change, interchange, switch" fa="s" ag="bleiben" ay="s" />
+    <reading tn="change (trains, buses)" fa="s" ag="bleiben" ay="s" />
   </verb>
   <verb in="um+stellen" hi="634267" ic="walk.arrival">
     <reading tn="rearrange, switch" fa="w" />
     <reading in="um*stellen" tn="surround" fa="w" />
   </verb>
   <verb in="um+stimmen" hi="484596" hp="y" ic="wave">
-    <reading tn="retune" fa="w" />
+    <reading tn="change someone's mind" fa="w" />
   </verb>
   <verb in="um+st^o^ßen" hi="247194" hp="y" ic="boxing">
     <reading tn="knock over, knock down" fa="s" ag="stoßen" />
@@ -8274,7 +8274,7 @@
     <reading tn="exchange" fa="w" />
   </verb>
   <verb in="um+tr^ei^ben" hi="228784" hp="y" ic="seated.side.left.steeringwheel">
-    <reading tn="drive around" fa="s" ag="bleiben" />
+    <reading tn="preoccupy, trouble" fa="s" ag="bleiben" />
   </verb>
   <verb in="um+tr^et^en" hi="573033" hp="y" ic="stairs">
     <reading tn="kick over, knock over" fa="s" ag="treten" />
@@ -8286,7 +8286,7 @@
     <reading tn="convert, transform" fa="w" />
   </verb>
   <verb in="um+wenden" hi="273208" hp="y" ic="socialdance">
-    <reading tn="turn over, turn inside out" fa="w" />
+    <reading tn="turn over" fa="w" />
   </verb>
   <verb in="um*w^e^rben" hi="151137" hp="y" ic="yoga">
     <reading tn="woo" fa="s" ag="sterben" />
@@ -8316,7 +8316,7 @@
     <reading tn="suppress, oppress" fa="w" />
   </verb>
   <verb in="unter*f^a^ngen" hi="251069" hp="y" ic="handball">
-    <reading tn="undertake" fa="s" ag="fangen" />
+    <reading tn="dare, presume" fa="s" ag="fangen" />
   </verb>
   <verb in="unter*fordern" hi="573402" hp="y" ic="wave">
     <reading tn="underchallenge" fa="w" />
@@ -8325,13 +8325,13 @@
     <reading tn="pass below" fa="w" />
   </verb>
   <verb in="unter+g^eh^en" hi="574102" hp="y" ic="walk">
-    <reading tn="set" fa="s" ag="gehen" ay="s" />
+    <reading tn="go down, sink, set" fa="s" ag="gehen" ay="s" />
   </verb>
   <verb in="unter*gr^a^ben" hi="56722" hp="y" ic="strengthtraining.traditional">
     <reading tn="undermine, subvert" fa="s" ag="fahren" />
   </verb>
   <verb in="unter*h^a^lten" hi="1410050" ic="walk">
-    <reading tn="entertain, maintain" fa="s" ag="halten" />
+    <reading tn="entertain" fa="s" ag="halten" />
   </verb>
   <verb in="unter+h^e^ben" hi="250030" hp="y" ic="strengthtraining.traditional">
     <reading tn="fold in" fa="s" ag="bieten" />
@@ -8449,7 +8449,7 @@
     <reading tn="vary" fa="i" />
   </verb>
   <verb in="ver*abschieden" hi="2131376" ic="wave">
-    <reading tn="say goodbye, pass" fa="w" />
+    <reading tn="say goodbye" fa="w" />
   </verb>
   <verb in="ver*achten" hi="573383" hp="y" ic="arms.open">
     <reading tn="despise, scorn" fa="w" />
@@ -8494,7 +8494,7 @@
     <reading tn="improve" fa="w" />
   </verb>
   <verb in="ver*b^ie^gen" hi="116670" hp="y" ic="flexibility">
-    <reading tn="bend something" fa="s" ag="bieten" />
+    <reading tn="bend" fa="s" ag="bieten" />
   </verb>
   <verb in="ver*b^ie^ten" hi="2362738" ic="boxing">
     <reading tn="forbid" fa="s" ag="bieten" />
@@ -8534,7 +8534,7 @@
     <reading tn="spend (time)" fa="m" ag="bringen" />
   </verb>
   <verb in="ver*buchen" hi="480013" hp="y" ic="flexibility">
-    <reading tn="post" fa="w" />
+    <reading tn="book, record" fa="w" />
   </verb>
   <verb in="ver*danken" hi="882704" ic="flexibility">
     <reading tn="owe, be indebted" fa="w" />
@@ -8606,7 +8606,7 @@
     <reading tn="advocate, defend, champion" fa="s" ag="schmelzen" />
   </verb>
   <verb in="ver*fehlen" hi="573788" hp="y" ic="wave">
-    <reading tn="miss, meet or hit not" fa="w" />
+    <reading tn="miss" fa="w" />
   </verb>
   <verb in="ver*fertigen" hi="392631" hp="y" ic="strengthtraining.traditional">
     <reading tn="produce" fa="w" />
@@ -8672,7 +8672,7 @@
     <reading tn="mislook, misheed" fa="w" />
   </verb>
   <verb in="ver*haften" hi="179606" hp="y" ic="flexibility">
-    <reading tn="stop moving and instead stick" fa="w" />
+    <reading tn="arrest" fa="w" />
   </verb>
   <verb in="ver*h^a^lten" hi="1413215" ic="flexibility">
     <reading tn="behave" fa="s" ag="halten" />
@@ -8699,13 +8699,13 @@
     <reading tn="heal" fa="w" ay="s" />
   </verb>
   <verb in="ver*heiraten" hi="773513" ic="2">
-    <reading tn="marry (someone)" fa="w" />
+    <reading tn="marry off" fa="w" />
   </verb>
   <verb in="ver*h^ei^ßen" hi="574004" hp="y" ic="wave">
     <reading tn="promise" fa="s" ag="heißen" />
   </verb>
   <verb in="ver*h^e^lfen" hi="573950" hp="y" ic="2.and.child.holdinghands">
-    <reading tn="help" fa="s" ag="sterben" />
+    <reading tn="help obtain" fa="s" ag="sterben" />
   </verb>
   <verb in="ver*hindern" hi="4611292" ic="boxing">
     <reading tn="prevent" fa="w" />
@@ -8723,7 +8723,7 @@
     <reading tn="sell" fa="w" />
   </verb>
   <verb in="ver*kehren" hi="556067" hp="y" ic="socialdance">
-    <reading tn="interact in someone’s sphere" fa="w" />
+    <reading tn="run, operate (of transport)" fa="w" />
   </verb>
   <verb in="ver*k^e^nnen" hi="573854" hp="y" ic="mind.and.body">
     <reading tn="mistake, misjudge, err" fa="m" ag="kennen" />
@@ -8802,10 +8802,10 @@
     <reading tn="lose one's way" fa="s" ag="laufen" />
   </verb>
   <verb in="ver*lauten" hi="573391" hp="y" ic="flexibility">
-    <reading tn="announce" fa="w" />
+    <reading tn="be reported, become known" fa="w" />
   </verb>
   <verb in="ver*leben" hi="573853" hp="y" ic="flexibility">
-    <reading tn="spend" fa="w" />
+    <reading tn="spend (time)" fa="w" />
   </verb>
   <verb in="ver*legen" hi="1588977" ic="hiking">
     <reading tn="move, publish" fa="w" />
@@ -8820,7 +8820,7 @@
     <reading tn="cause someone to do something detrimental" fa="w" />
   </verb>
   <verb in="ver*lernen" hi="573081" hp="y" ic="mind.and.body">
-    <reading tn="cease doing, forget" fa="w" />
+    <reading tn="forget how to do" fa="w" />
   </verb>
   <verb in="ver*l^e^sen" hi="573848" hp="y" ic="mind.and.body">
     <reading tn="misread" fa="s" ag="sehen" />
@@ -8835,7 +8835,7 @@
     <reading tn="lose" fa="s" ag="verlieren" />
   </verb>
   <verb in="ver*loben" hi="484570" hp="y" ic="wave">
-    <reading tn="betroth, get engaged ‘someone’])" fa="w" />
+    <reading tn="get engaged" fa="w" />
   </verb>
   <verb in="ver*locken" hi="444406" hp="y" ic="skating">
     <reading tn="entice" fa="w" />
@@ -8847,7 +8847,7 @@
     <reading tn="go missing" fa="s" ag="gehen" ay="s" />
   </verb>
   <verb in="ver*löschen" hi="573158" hp="y" ic="flexibility">
-    <reading tn="quench, extinguish" fa="w" />
+    <reading tn="go out, fade" fa="w" />
   </verb>
   <verb in="ver*l^ü^gen" hi="135700" hp="y" ic="play">
     <reading tn="lie about someone or something" fa="s" ag="bieten" />
@@ -8925,7 +8925,7 @@
     <reading tn="store, stow away, put away, tidy away" fa="w" />
   </verb>
   <verb in="ver*rechnen" hi="573595" hp="y" ic="barre">
-    <reading tn="calculate several quantities together" fa="w" />
+    <reading tn="offset, set off" fa="w" />
   </verb>
   <verb in="ver*reden" hi="573379" hp="y" ic="wave">
     <reading tn="talk away" fa="w" />
@@ -9006,7 +9006,7 @@
     <reading tn="oversleep" fa="s" ag="halten" />
   </verb>
   <verb in="ver*schl^a^gen" hi="573699" hp="y" ic="boxing">
-    <reading tn="drive, strand, shlep, bring" fa="s" ag="fahren" />
+    <reading tn="strand, drive somewhere" fa="s" ag="fahren" />
   </verb>
   <verb in="ver*schl^eiß^en" hi="2239" hp="y" ic="cooldown">
     <reading tn="wear out, chafe, abrade" fa="s" ag="reißen" />
@@ -9045,7 +9045,7 @@
     <reading tn="conspire" fa="s" ag="bieten" />
   </verb>
   <verb in="ver*s^e^hen" hi="1279858" ic="handball">
-    <reading tn="equip, make mistake" fa="s" ag="sehen" />
+    <reading tn="provide with, furnish" fa="s" ag="sehen" />
   </verb>
   <verb in="ver*senden" hi="701796" ic="fall">
     <reading tn="send, dispatch" fa="w" />
@@ -9117,7 +9117,7 @@
     <reading tn="disturb" fa="w" />
   </verb>
   <verb in="ver*st^o^ßen" hi="706038" ic="boxing">
-    <reading tn="violate, expel" fa="s" ag="stoßen" />
+    <reading tn="violate, infringe" fa="s" ag="stoßen" />
   </verb>
   <verb in="ver*strahlen" hi="230094" hp="y" ic="flexibility">
     <reading tn="contaminate" fa="w" />
@@ -9153,7 +9153,7 @@
     <reading tn="trust" fa="w" />
   </verb>
   <verb in="ver*tr^ei^ben" hi="979091" ic="seated.side.left.steeringwheel">
-    <reading tn="drive out, distribute" fa="s" ag="bleiben" />
+    <reading tn="drive away, expel" fa="s" ag="bleiben" />
   </verb>
   <verb in="ver*tr^et^en" hi="4006169" ic="arms.open">
     <reading tn="represent" fa="s" ag="treten" />
@@ -9204,7 +9204,7 @@
     <reading tn="refuse, deny" fa="w" />
   </verb>
   <verb in="ver*w^ei^sen" hi="2702173" ic="boxing">
-    <reading tn="refer, expel" fa="s" ag="weisen" />
+    <reading tn="refer to" fa="s" ag="weisen" />
   </verb>
   <verb in="ver*wenden" hi="8049893" ic="strengthtraining.traditional">
     <reading tn="use, employ" fa="w" />
@@ -9282,7 +9282,7 @@
     <reading tn="carry out, perform" fa="s" ag="ziehen" />
   </verb>
   <verb in="vonstatten+g^eh^en" hi="574166" hp="y" ic="walk">
-    <reading tn="take place" fa="s" ag="gehen" ay="s" />
+    <reading tn="proceed, go" fa="s" ag="gehen" ay="s" />
   </verb>
   <verb in="voran+g^eh^en" hi="574165" hp="y" ic="walk">
     <reading tn="precede" fa="s" ag="gehen" ay="s" />
@@ -9387,10 +9387,10 @@
     <reading tn="prevent, lean forward" fa="w" />
   </verb>
   <verb in="vor+bilden" hi="327954" hp="y" ic="walk.arrival">
-    <reading tn="preform" fa="w" />
+    <reading tn="train in advance" fa="w" />
   </verb>
   <verb in="vor+br^ing^en" hi="573563" hp="y" ic="hiking">
-    <reading tn="say" fa="m" ag="bringen" />
+    <reading tn="put forward, raise" fa="m" ag="bringen" />
   </verb>
   <verb in="vor+d^enk^en" hi="573185" hp="y" ic="yoga">
     <reading tn="think ahead, anticipate" fa="m" ag="bringen" />
@@ -9426,7 +9426,7 @@
     <reading tn="intend, have planned, have to do" fa="m" ag="haben" />
   </verb>
   <verb in="vor+h^a^lten" hi="573520" hp="y" ic="strengthtraining.traditional">
-    <reading tn="hold up" fa="s" ag="halten" />
+    <reading tn="hold against, reproach" fa="s" ag="halten" />
   </verb>
   <verb in="vor+hängen" hi="240813" hp="y" ic="flexibility">
     <reading tn="hang in front of" fa="w" />
@@ -9468,7 +9468,7 @@
     <reading tn="perform in advance" fa="w" />
   </verb>
   <verb in="vor+l^e^sen" hi="573168" hp="y" ic="mind.and.body">
-    <reading tn="read" fa="s" ag="sehen" />
+    <reading tn="read aloud" fa="s" ag="sehen" />
   </verb>
   <verb in="vorlieb+n^ehm^en" hi="573097" hp="y" ic="handball">
     <reading tn="make do with, settle for" fa="s" ag="nehmen" />
@@ -9513,10 +9513,10 @@
     <reading tn="provide for, plan" fa="s" ag="sehen" />
   </verb>
   <verb in="vor+setzen" hi="573503" hp="y" ic="seated.side.left">
-    <reading tn="prefix" fa="w" />
+    <reading tn="put in front of, serve" fa="w" />
   </verb>
   <verb in="vor+s^i^ngen" hi="176967" hp="y" ic="wave">
-    <reading tn="sing" fa="s" ag="finden" />
+    <reading tn="sing to someone" fa="s" ag="finden" />
   </verb>
   <verb in="vor+sorgen" hi="573260" hp="y" ic="seated.side.left.steeringwheel">
     <reading tn="make provision" fa="w" />
@@ -9564,7 +9564,7 @@
     <reading tn="show" fa="s" ag="bleiben" />
   </verb>
   <verb in="vor+w^e^rfen" hi="264382" hp="y" ic="handball">
-    <reading tn="throw at, throw forward" fa="s" ag="sterben" />
+    <reading tn="accuse of, reproach" fa="s" ag="sterben" />
   </verb>
   <verb in="vor+w^ie^gen" hi="45340" hp="y" ic="barre">
     <reading tn="prevail, predominate" fa="s" ag="bieten" />
@@ -9651,7 +9651,7 @@
     <reading tn="imagine a situation without" fa="m" ag="bringen" />
   </verb>
   <verb in="weg+drängen" hi="235041" hp="y" ic="strengthtraining.traditional">
-    <reading tn="edge away, edge off" fa="w" />
+    <reading tn="push away, push aside" fa="w" />
   </verb>
   <verb in="weg+drücken" hi="441291" hp="y" ic="strengthtraining.traditional">
     <reading tn="push away" fa="w" />
@@ -9669,7 +9669,7 @@
     <reading tn="fly away" fa="s" ag="bieten" />
   </verb>
   <verb in="weg+führen" hi="573956" hp="y" ic="walk.arrival">
-    <reading tn="carry away" fa="w" />
+    <reading tn="lead away" fa="w" />
   </verb>
   <verb in="weg+g^e^ben" hi="574327" hp="y" ic="arms.open">
     <reading tn="give away" fa="s" ag="geben" />
@@ -9786,7 +9786,7 @@
     <reading tn="pull away" fa="s" ag="ziehen" />
   </verb>
   <verb in="wehren" hi="1090456" ic="fall">
-    <reading tn="defend, resist" fa="w" />
+    <reading tn="defend oneself, resist" fa="w" />
   </verb>
   <verb in="w^eich^en" hi="714567" ic="arms.open">
     <reading tn="yield, give way" fa="s" ag="streichen" ay="s" />
@@ -9802,10 +9802,10 @@
     <reading tn="point, show" fa="s" ag="weisen" />
   </verb>
   <verb in="weis+machen" hi="574216" hp="y" ic="strengthtraining.traditional">
-    <reading tn="make believe" fa="w" />
+    <reading tn="fool, delude" fa="w" />
   </verb>
   <verb in="weiter+arbeiten" hi="573792" hp="y" ic="strengthtraining.traditional">
-    <reading tn="resume one's work" fa="w" />
+    <reading tn="continue working" fa="w" />
   </verb>
   <verb in="weiter+ent*wickeln" hi="813736" ic="stairs">
     <reading tn="develop further" fa="w" />
@@ -9826,7 +9826,7 @@
     <reading tn="help along" fa="s" ag="sterben" />
   </verb>
   <verb in="weiter+kämpfen" hi="573197" hp="y" ic="boxing">
-    <reading tn="continue to battle after a pause" fa="w" />
+    <reading tn="fight on, keep fighting" fa="w" />
   </verb>
   <verb in="weiter+leben" hi="573654" hp="y" ic="flexibility">
     <reading tn="live on, continue to live, survive" fa="w" />
@@ -9940,7 +9940,7 @@
     <reading tn="find again" fa="s" ag="finden" />
   </verb>
   <verb in="wieder+g^e^ben" hi="365759" ic="socialdance">
-    <reading tn="reproduce, return" fa="s" ag="geben" />
+    <reading tn="reproduce, render" fa="s" ag="geben" />
   </verb>
   <verb in="wieder+h^ab^en" hi="573120" hp="y" ic="arms.open">
     <reading tn="have back" fa="m" ag="haben" />
@@ -9994,7 +9994,7 @@
     <reading tn="wring" fa="s" ag="finden" />
   </verb>
   <verb in="wundern" hi="1018046" ic="stairs">
-    <reading tn="wonder, surprise" fa="w" />
+    <reading tn="surprise, astonish" fa="w" />
   </verb>
   <verb in="wund+l^ie^gen" hi="574013" hp="y" ic="cooldown">
     <reading tn="get pressure ulcers by lying" fa="s" ag="liegen" />
@@ -10132,10 +10132,10 @@
     <reading tn="crush, trample" fa="s" ag="treten" />
   </verb>
   <verb in="zer*w^e^rfen" hi="573251" hp="y" ic="handball">
-    <reading tn="break by throwing" fa="s" ag="sterben" />
+    <reading tn="fall out with someone" fa="s" ag="sterben" />
   </verb>
   <verb in="zeugen" hi="537559" ic="and.child.holdinghands">
-    <reading tn="testify, father" fa="w" />
+    <reading tn="father, beget" fa="w" />
   </verb>
   <verb in="z^ieh^en" hi="13235448" ic="indoor.rowing">
     <reading tn="pull, draw" fa="s" ag="ziehen" />
@@ -10163,7 +10163,7 @@
     <reading tn="tie up" fa="s" ag="finden" />
   </verb>
   <verb in="zu+br^ing^en" hi="573649" hp="y" ic="hiking">
-    <reading tn="bring" fa="m" ag="bringen" />
+    <reading tn="spend (time)" fa="m" ag="bringen" />
   </verb>
   <verb in="zu+decken" hi="107860" hp="y" ic="walk.motion">
     <reading tn="cover" fa="w" />
@@ -10196,7 +10196,7 @@
     <reading tn="make a grab" fa="w" />
   </verb>
   <verb in="zu+fl^ie^gen" hi="182701" hp="y" ic="skiing.downhill">
-    <reading tn="fly" fa="s" ag="bieten" ay="s" />
+    <reading tn="fly toward" fa="s" ag="bieten" ay="s" />
   </verb>
   <verb in="zu+fl^ieß^en" hi="133388" hp="y" ic="flexibility">
     <reading tn="accrue to" fa="s" ag="schließen" ay="s" />
@@ -10232,7 +10232,7 @@
     <reading tn="cover over, fill by digging" fa="s" ag="fahren" />
   </verb>
   <verb in="zu+gr^eif^en" hi="819287" ic="handball">
-    <reading tn="access, seize" fa="s" ag="greifen" />
+    <reading tn="grab, seize" fa="s" ag="greifen" />
   </verb>
   <verb in="zugute+h^a^lten" hi="573895" hp="y" ic="strengthtraining.traditional">
     <reading tn="give credit, grant" fa="s" ag="halten" />
@@ -10244,7 +10244,7 @@
     <reading tn="be closed, keep closed" fa="m" ag="haben" />
   </verb>
   <verb in="zu+h^a^lten" hi="573587" hp="y" ic="strengthtraining.traditional">
-    <reading tn="be keep something shut" fa="s" ag="halten" />
+    <reading tn="hold shut" fa="s" ag="halten" />
   </verb>
   <verb in="zu+hauen" hi="33042" hp="y" ic="boxing">
     <reading tn="slam something, bang something" fa="w" />
@@ -10256,7 +10256,7 @@
     <reading tn="buy in addition" fa="w" />
   </verb>
   <verb in="zu+kehren" hi="131902" hp="y" ic="socialdance">
-    <reading tn="turn something" fa="w" />
+    <reading tn="turn toward" fa="w" />
   </verb>
   <verb in="zu+klappen" hi="150246" hp="y" ic="strengthtraining.traditional">
     <reading tn="flip shut" fa="w" />
@@ -10280,7 +10280,7 @@
     <reading tn="add, gain" fa="w" />
   </verb>
   <verb in="zu+leiten" hi="187870" hp="y" ic="walk.arrival">
-    <reading tn="feed" fa="w" />
+    <reading tn="supply, channel" fa="w" />
   </verb>
   <verb in="zu+liefern" hi="371749" hp="y" ic="handball">
     <reading tn="supply" fa="w" />
@@ -10289,7 +10289,7 @@
     <reading tn="close, shut" fa="w" />
   </verb>
   <verb in="zu+nähen" hi="59424" hp="y" ic="flexibility">
-    <reading tn="suture" fa="w" />
+    <reading tn="sew shut, stitch up" fa="w" />
   </verb>
   <verb in="zu+n^ehm^en" hi="853592" ic="stairs">
     <reading tn="increase, gain weight" fa="s" ag="nehmen" />
@@ -10334,7 +10334,7 @@
     <reading tn="ride towards someone or something" fa="s" ag="schneiden" />
   </verb>
   <verb in="zu+richten" hi="295515" hp="y" ic="archery">
-    <reading tn="hurt" fa="w" />
+    <reading tn="batter, beat up" fa="w" />
   </verb>
   <verb in="zurück+bauen" hi="573452" hp="y" ic="strengthtraining.traditional">
     <reading tn="return something to its original state" fa="w" />
@@ -10460,7 +10460,7 @@
     <reading tn="put back, stick back" fa="w" />
   </verb>
   <verb in="zurück+st^eh^en" hi="574104" hp="y" ic="stand">
-    <reading tn="stand further back, stand behind" fa="s" ag="stehen" />
+    <reading tn="take a back seat" fa="s" ag="stehen" />
   </verb>
   <verb in="zurück+stellen" hi="574027" hp="y" ic="stand">
     <reading tn="put off, defer" fa="w" />
@@ -10494,7 +10494,7 @@
     <reading tn="retreat, move away" fa="s" ag="ziehen" ay="s" />
   </verb>
   <verb in="zu+r^u^fen" hi="330557" hp="y" ic="wave">
-    <reading tn="call" fa="s" ag="heißen" />
+    <reading tn="call out to" fa="s" ag="heißen" />
   </verb>
   <verb in="zu+sagen" hi="574009" hp="y" ic="wave">
     <reading tn="accept, promise to come" fa="w" />
@@ -10512,16 +10512,16 @@
     <reading tn="break down, collapse" fa="s" ag="sprechen" ay="s" />
   </verb>
   <verb in="zusammen+br^ing^en" hi="573975" hp="y" ic="hiking">
-    <reading tn="collect" fa="m" ag="bringen" />
+    <reading tn="bring together" fa="m" ag="bringen" />
   </verb>
   <verb in="zusammen+drängen" hi="235039" hp="y" ic="strengthtraining.traditional">
-    <reading tn="condense" fa="w" />
+    <reading tn="crowd together" fa="w" />
   </verb>
   <verb in="zusammen+drücken" hi="441289" hp="y" ic="strengthtraining.traditional">
     <reading tn="compress, press together" fa="w" />
   </verb>
   <verb in="zusammen+f^a^hren" hi="573666" hp="y" ic="seated.side.left.steeringwheel">
-    <reading tn="collide" fa="s" ag="fahren" ay="s" />
+    <reading tn="flinch, give a start" fa="s" ag="fahren" ay="s" />
   </verb>
   <verb in="zusammen+f^all^en" hi="573040" hp="y" ic="fall">
     <reading tn="collapse" fa="s" ag="fallen" ay="s" />
@@ -10581,7 +10581,7 @@
     <reading tn="boldly lie" fa="s" ag="bieten" />
   </verb>
   <verb in="zusammen+n^ehm^en" hi="573093" hp="y" ic="handball">
-    <reading tn="add up, total" fa="s" ag="nehmen" />
+    <reading tn="muster, summon up" fa="s" ag="nehmen" />
   </verb>
   <verb in="zusammen+packen" hi="239418" hp="y" ic="handball">
     <reading tn="pack up, bundle up, wrap up" fa="w" />
@@ -10662,7 +10662,7 @@
     <reading tn="pass" fa="s" ag="schließen" />
   </verb>
   <verb in="zu+schl^a^gen" hi="446925" hp="y" ic="boxing">
-    <reading tn="take one’s chance" fa="s" ag="fahren" />
+    <reading tn="strike, hit" fa="s" ag="fahren" />
   </verb>
   <verb in="zu+schn^eid^en" hi="142177" hp="y" ic="fencing">
     <reading tn="tailor, cut" fa="s" ag="schneiden" />
@@ -10722,7 +10722,7 @@
     <reading tn="think capable" fa="w" />
   </verb>
   <verb in="zu+tr^ei^ben" hi="174363" hp="y" ic="seated.side.left.steeringwheel">
-    <reading tn="drive" fa="s" ag="bleiben" />
+    <reading tn="drive toward" fa="s" ag="bleiben" />
   </verb>
   <verb in="zu+tr^et^en" hi="555755" hp="y" ic="stairs">
     <reading tn="kick" fa="s" ag="treten" />
@@ -10749,7 +10749,7 @@
     <reading tn="assign" fa="s" ag="bleiben" />
   </verb>
   <verb in="zu+wenden" hi="208221" hp="y" ic="socialdance">
-    <reading tn="turn" fa="w" />
+    <reading tn="turn toward" fa="w" />
   </verb>
   <verb in="zu+w^e^rfen" hi="315622" hp="y" ic="handball">
     <reading tn="throw" fa="s" ag="sterben" />

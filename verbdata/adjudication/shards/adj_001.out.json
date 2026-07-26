@@ -1,0 +1,129 @@
+{
+  "aufarbeiten": {
+    "own_gloss": "work through",
+    "verdict": "reject",
+    "reason": "'Refurbish' (candidate index 0, Möbel aufarbeiten) is an attested, non-archaic sense, so the shipped gloss is not wrong. 'Work through' is a more common sense, but that alone is not grounds, and the backlog/Vergangenheit reading is not cleanly attested (index 2 is 'mentally process')."
+  },
+  "aufatmen": {
+    "own_gloss": "breathe a sigh of relief",
+    "verdict": "accept",
+    "reason": "aufatmen (erleichtert aufatmen) denotes breathing out in relief; the relief is the meaning, not an overtone. The sole candidate 'breathe again' is a literal auf+atmen calque that reads as resuming breathing (wieder atmen). My independent gloss matches the proposal."
+  },
+  "aufbleiben": {
+    "own_gloss": "stay up, stay awake",
+    "verdict": "accept",
+    "reason": "The leading 'wake' in candidate index 0 is the archaic vigil sense; in first position a comma-joined 'wake' maps aufbleiben onto aufwachen/aufwecken, which it never means. Dropping it leaves the two genuine synonyms."
+  },
+  "auferwecken": {
+    "own_gloss": "raise from the dead, resurrect",
+    "verdict": "accept",
+    "reason": "auferwecken is the elevated causative of auferstehen (Lazarus auferwecken); the sole candidate 'raise up, awaken' is vague and 'awaken' collides with aufwecken. My independent gloss matches, and it mirrors the app's existing auferstehen gloss."
+  },
+  "auflegen": {
+    "own_gloss": "hang up (phone)",
+    "verdict": "reject",
+    "reason": "'Lay on' (candidate index 0, apply/put on: Hand/Farbe auflegen) is a defensible attested sense, so the shipped gloss is not wrong. The proposal rests on completeness (adding 'hang up', index 1) and joins two non-synonyms with a comma, which the house style reads as false synonymy."
+  },
+  "auflehnen": {
+    "own_gloss": "rebel, revolt",
+    "verdict": "accept",
+    "reason": "sich auflehnen is essentially always reflexive and means to rebel (candidate index 1). The shipped 'lean on' is the marginal physical reading and collides with anlehnen; it is genuinely the wrong sense to have chosen. My independent gloss matches."
+  },
+  "aufschieben": {
+    "own_gloss": "postpone, put off",
+    "verdict": "accept",
+    "reason": "The overwhelmingly dominant everyday sense is temporal (die Entscheidung aufschieben; Aufschieberitis), candidate index 1. The shipped 'push open' is a narrow literal reading restricted to sliding objects; it leaves the learner unable to read the ordinary use."
+  },
+  "aufschlagen": {
+    "own_gloss": "open (a book)",
+    "verdict": "amend",
+    "amended_gloss": "open (a book)",
+    "reason": "The reviewer is right that 'pitch, serve' is a poor choice: 'pitch' reads as baseball or pitching a tent, and the tennis-serve sense is narrow. But the proposal 'open (a book), serve' joins two distinct senses with a comma, so I ship the single clean everyday sense (candidate index 3)."
+  },
+  "aufsetzen": {
+    "own_gloss": "put on (headwear)",
+    "verdict": "accept",
+    "reason": "The shortening dropped the qualifier that carried the meaning (candidate index 0, 'put on something worn on the head'). Bare 'put on' invites use for clothing generally, which takes anziehen; one setzt a Hut or Brille auf, not Schuhe. My independent gloss matches."
+  },
+  "aufsteigen": {
+    "own_gloss": "rise, ascend",
+    "verdict": "accept",
+    "reason": "The core sense is upward motion (Rauch/Ballon steigt auf), from which the very common promotion sense (beruflich, in die Bundesliga aufsteigen) follows; that is candidate index 2. Shipped 'get on, mount' is a narrow application that gives the learner no access to either. My independent gloss matches."
+  },
+  "aufstören": {
+    "own_gloss": "rouse, startle",
+    "verdict": "accept",
+    "reason": "'Pattern up' is not English and names no action; it is a corrupt Wiktionary entry taken verbatim as the sole candidate. aufstören means to rouse/startle out of rest (aufscheuchen, Wild aufstören), figuratively to stir up. A learner can recover nothing from the shipped gloss."
+  },
+  "auftreiben": {
+    "own_gloss": "get hold of, come by",
+    "verdict": "accept",
+    "reason": "The dominant modern use is procuring something with difficulty (Wo soll ich Geld auftreiben?), candidate index 3. The shipped 'bloat' (index 0) is a marginal sense; as a bare gloss a learner would use auftreiben for distending a belly, not finding something. My independent gloss matches."
+  },
+  "aufwarten": {
+    "own_gloss": "offer, present",
+    "verdict": "accept",
+    "reason": "The shipped 'serve, wait' is the dated servant sense, and bare 'wait' reads as warten (wait for), the wrong verb entirely. The living construction mit etwas aufwarten means to offer/present (candidate index 2), which the proposal captures."
+  },
+  "aufzeichnen": {
+    "own_gloss": "record",
+    "verdict": "amend",
+    "amended_gloss": "record",
+    "reason": "The reviewer is right that 'plot, chart' (index 0) is a narrow graph-paper sense and the everyday meaning is recording (eine Sendung aufzeichnen, index 2). But the proposal 'record, draw' joins two distinct senses with a comma, so I ship the single dominant sense."
+  },
+  "ausbleiben": {
+    "own_gloss": "fail to materialize",
+    "verdict": "reject",
+    "reason": "'Be absent' (the sole candidate) is a defensible rendering of ausbleiben (to stay away, not come; die Gäste/Kundschaft blieben aus). The proposal 'fail to appear' is a refinement toward the event reading, not a correction, and is not attested; the distinction from fehlen is subtle, so the shipped gloss survives."
+  },
+  "ausbringen": {
+    "own_gloss": "propose (a toast)",
+    "verdict": "accept",
+    "reason": "The shortening cut the qualifier from candidate index 0 ('utter something others echo') — the toast sense, einen Trinkspruch ausbringen. Bare 'raise' reads as heben or erhöhen, which ausbringen does not mean. My independent gloss matches."
+  },
+  "ausholen": {
+    "own_gloss": "wind up (the arm)",
+    "verdict": "accept",
+    "reason": "The kaikki parenthetical that carried the meaning ('draw back the arm to punch', candidate index 0) was dropped; bare 'haul off' reads in English as carrying something away. German ausholen is winding the arm back before a blow. My independent gloss matches."
+  },
+  "auslernen": {
+    "own_gloss": "finish one's training",
+    "verdict": "accept",
+    "reason": "auslernen specifically means completing a vocational apprenticeship (sie hat ausgelernt = she is now fully trained). The sole candidate 'finish learning' is a literal calque that fits only 'man lernt nie aus' and would generate ungrammatical uses like 'ich habe das Buch ausgelernt'. My independent gloss matches."
+  },
+  "auslesen": {
+    "own_gloss": "select, pick out",
+    "verdict": "accept",
+    "reason": "In modern English 'cull' (index 0) is dominated by the selective-slaughter sense, which auslesen never carries. The reading a learner meets is 'select, pick out' (index 2, cf. Auslese). The one-word shipped gloss teaches the wrong action; my independent gloss matches."
+  },
+  "ausscheiden": {
+    "own_gloss": "drop out, be eliminated",
+    "verdict": "accept",
+    "reason": "The shipped 'secrete' (index 0) is technical and imprecise — ausscheiden is excretion, not secretion (that is absondern). The sense a learner meets is dropping out of a competition or leaving a post (index 2). My independent gloss matches."
+  },
+  "ausscheren": {
+    "own_gloss": "pull out, change lanes",
+    "verdict": "accept",
+    "reason": "'Sheer, sheer out' (index 0) is nautical jargon opaque to a learner, and 'sheer' collides with the far more familiar adjective. The everyday sense is a vehicle pulling out of line / changing lanes, figuratively breaking ranks (index 1). My independent gloss matches."
+  },
+  "ausschreiben": {
+    "own_gloss": "advertise (a position)",
+    "verdict": "accept",
+    "reason": "Bare 'advertise' defaults in English to promoting a product, which ausschreiben never means (that is werben für). The verb puts a position or contract out for open application (eine Stelle ausschreiben, indices 1/3/5). The restored qualifier fixes a shortening defect; my independent gloss matches."
+  },
+  "austrinken": {
+    "own_gloss": "drink up",
+    "verdict": "accept",
+    "reason": "The shipped 'empty' (index 0) strips the drinking component that distinguishes austrinken from leeren; a learner would use it for emptying a box. The verb means to finish one's drink to the last drop (index 2). My independent gloss matches."
+  },
+  "ausziehen": {
+    "own_gloss": "take off (clothes)",
+    "verdict": "reject",
+    "reason": "'Move out, vacate' (candidate index 0) is an attested and fully defensible sense, not wrong. The proposal adds the equally-common clothing sense — a completeness argument, which is by design — and joins two distinct senses with a comma. The shipped gloss survives."
+  },
+  "bedingen": {
+    "own_gloss": "require, cause",
+    "verdict": "accept",
+    "reason": "The shipped phrase is the archaic legal/contractual sense (index 0), surviving today mainly in sich ausbedingen and the obsolete strong forms bedang/bedungen; living bedingen is causal (das bedingt hohe Kosten; bedingt durch), candidate indices 1 and 2. It is also unusable as a short gloss. My independent gloss matches."
+  }
+}

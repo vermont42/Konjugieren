@@ -1,0 +1,42 @@
+{
+  "vertreiben": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "The comma joins two unrelated senses, which the house style reads as synonyms: 'drive out' is candidate sense 0 (jemanden vertreiben) and 'distribute' is the commercial sense 2 (to market or sell in quantity). A learner reading them as equivalents may take vertreiben for verteilen. Ship the expulsion sense, which is the one a learner meets first and the one the app's related verbs (austreiben, verjagen) sit beside.",
+        "fix_gloss": "drive away, expel"
+      }
+    ]
+  },
+  "verweben": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "kaikki offers only the bare 'to weave', which is weben, not verweben. The ver- prefix carries the sense of weaving things together: verweben is to interweave or interlace, and its commonest modern use is the figurative participle (eng miteinander verwoben). Glossed as 'weave' the verb collides with weben and invites a learner to write 'einen Teppich verweben'.",
+        "fix_gloss": "interweave"
+      }
+    ]
+  },
+  "verweisen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "Same comma collision: 'refer' is candidate sense 0 (auf etwas verweisen) and 'expel' is candidate sense 2 (jemanden von der Schule verweisen), and the house style presents them as synonyms. Referring is much the commoner reading and the one that governs the verb's usual prepositional frame.",
+        "fix_gloss": "refer to"
+      }
+    ]
+  },
+  "vonstattengehen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "'take place' is stattfinden, and the shipped gloss makes the two look interchangeable. vonstattengehen is almost always used with a manner adverbial — reibungslos, zügig, langsam vonstattengehen — and means how a process runs, which is candidate sense 1 ('to proceed'). A learner given 'take place' will write 'Das Konzert geht vonstatten', which is not German.",
+        "fix_gloss": "proceed, go"
+      }
+    ]
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "hingucken": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "The shipped gloss is a Wiktionary cross-reference, not a meaning: it points the learner at another German verb (hinsehen) instead of telling them what hingucken means. The verb is the colloquial (northern/central) equivalent of hinsehen: to direct one's gaze at something, to take a look.",
+        "fix_gloss": "take a look, look"
+      }
+    ]
+  },
+  "hinfahren": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The importer took the transitive haben-sense (driving someone else somewhere), which is comparatively rare. The reading a learner actually meets is the intransitive sein-sense in candidate_glosses index 1: to drive or travel there, as in 'Wie kommst du hin?' — 'Ich fahre hin.' Glossed as 'give a ride', a learner cannot parse that ordinary use at all.",
+        "fix_gloss": "drive there, travel there"
+      }
+    ]
+  },
+  "hinauslaufen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "In modern German this verb is met almost exclusively in the prepositional frame 'auf etwas hinauslaufen' — to amount to, to come down to, as in 'Das läuft auf dasselbe hinaus.' That is candidate_glosses index 1. The shipped literal sense is both the rarer one and slightly off in English besides, since laufen here is running rather than walking.",
+        "fix_gloss": "amount to, come down to"
+      }
+    ]
+  },
+  "hingeben": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "'Hand over' names the plain physical transfer, which German expresses with übergeben, aushändigen or reichen; hingeben carries an elevated sense of relinquishing something valuable — 'sein Leben hingeben', and reflexively 'sich einer Sache hingeben'. Candidate_glosses index 1 has the right sense. Glossed as 'hand over', a learner would use it for passing the salt.",
+        "fix_gloss": "sacrifice, give up"
+      }
+    ]
+  },
+  "hindeuten": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The shipped gloss took the physical-gesture sense, but the reading a learner meets is the evidential one in candidate_glosses index 2: 'alles deutet darauf hin, dass ...' — everything indicates/suggests that. Bare 'point' sends the learner to the gesture reading, for which German normally uses zeigen anyway.",
+        "fix_gloss": "indicate, suggest"
+      }
+    ]
+  },
+  "hinrücken": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The shortening dropped kaikki's '(from speaker)' and inverted the meaning in the process: English 'move away' reads as distancing oneself, i.e. wegrücken or abrücken. Hinrücken is shifting or scooting something toward a specified place — 'rück den Stuhl mal hin'. The hin- deixis is toward the target, not away from it.",
+        "fix_gloss": "move over there, shift over"
+      }
+    ]
+  },
+  "hervorsehen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The shortening dropped kaikki's '(of an object)' and left a bare transitive-looking 'show'. Hervorsehen is intransitive: something protrudes into view from behind or beneath something else — 'das Taschentuch sah aus der Jackentasche hervor'. Glossed as 'show', a learner would take it for a synonym of zeigen.",
+        "fix_gloss": "peek out, show through"
+      }
+    ]
+  }
+}

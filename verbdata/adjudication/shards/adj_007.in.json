@@ -1,0 +1,323 @@
+{
+ "shard": 7,
+ "records": [
+  {
+   "verb": "verabschieden",
+   "separability": "inseparable",
+   "shipped_gloss": "say goodbye, pass",
+   "proposed_gloss": "say goodbye",
+   "severity": "low",
+   "reviewer_detail": "Two unrelated senses joined by a comma: sich verabschieden = say goodbye (candidate index 0) and ein Gesetz verabschieden = pass a law (index 4). Read as house-style synonyms, \"say goodbye, pass\" invites the reading \"pass away,\" which the verb does not mean. Ship the everyday sense alone.",
+   "candidate_glosses": [
+    "to say goodbye (to); to take leave (of)",
+    "to stop participating in; to leave (a position, community, setting)",
+    "to say goodbye to (someone); to take leave of (someone)",
+    "to see off; to dismiss",
+    "to adopt; to pass (a law, resolution, etc.)"
+   ]
+  },
+  {
+   "verb": "verbiegen",
+   "separability": "inseparable",
+   "shipped_gloss": "bend something",
+   "proposed_gloss": "bend",
+   "severity": "low",
+   "reviewer_detail": "\"something\" is kaikki's transitivity placeholder, retained from candidate index 0 (\"to bend something.\"), where it existed only to distinguish that entry from index 1's intransitive \"to bend, become bent.\" It is dictionary scaffolding rather than part of the meaning, and no other gloss in the corpus carries a dummy object.",
+   "candidate_glosses": [
+    "to bend something.",
+    "to bend, become bent"
+   ]
+  },
+  {
+   "verb": "verbuchen",
+   "separability": "inseparable",
+   "shipped_gloss": "post",
+   "proposed_gloss": "book, record",
+   "severity": "low",
+   "reviewer_detail": "'post' is the technical accounting sense (post an entry to a ledger), but as a bare one-word gloss it reads to a learner as posting a letter or posting online, neither of which verbuchen means. The verb is to book or record an entry, and by extension to chalk something up ('einen Erfolg verbuchen'). candidate_glosses index 2 ('to register, book') is the unambiguous wording.",
+   "candidate_glosses": [
+    "to post",
+    "to enter (data)",
+    "to register, book"
+   ]
+  },
+  {
+   "verb": "verfehlen",
+   "separability": "inseparable",
+   "shipped_gloss": "miss, meet or hit not",
+   "proposed_gloss": "miss",
+   "severity": "high",
+   "reviewer_detail": "'meet or hit not' is broken English carried over verbatim from kaikki — a word-for-word calque of German 'nicht treffen' with the negation stranded at the end. The leading 'miss' already carries the meaning correctly (das Ziel verfehlen, seinen Zweck verfehlen); the trailing fragment is apparatus, not a synonym, and should be dropped.",
+   "candidate_glosses": [
+    "to miss, to meet or hit not",
+    "to misdo, to fail compliance",
+    "to rape, to swive without consent"
+   ]
+  },
+  {
+   "verb": "vergelten",
+   "separability": "inseparable",
+   "shipped_gloss": "retaliate",
+   "proposed_gloss": "repay, requite",
+   "severity": "low",
+   "reviewer_detail": "vergelten is neutral as to whether what is repaid is good or bad — 'Vergelt's Gott' (may God reward you) and 'Böses mit Bösem vergelten' are the same verb. 'retaliate' narrows it to revenge only, and is intransitive in English where vergelten is transitive, so it also mismodels the syntax. candidate_glosses carries both halves separately (index 0 'retaliate', index 1 'reward'); a single neutral gloss covers both.",
+   "candidate_glosses": [
+    "to retaliate",
+    "to reward"
+   ]
+  },
+  {
+   "verb": "verhaften",
+   "separability": "inseparable",
+   "shipped_gloss": "stop moving and instead stick",
+   "proposed_gloss": "arrest",
+   "severity": "high",
+   "reviewer_detail": "verhaften means to arrest — the everyday police sense, which candidate_glosses lists at index 1 ('to imprison, to put into confinement after judicial writ'). The shipped gloss lifts kaikki's sense 0, a philosophical/literary paraphrase ('stop moving and instead stick'), which is both the wrong sense and unusable as English: a learner reading it would never connect it to 'Die Polizei hat ihn verhaftet.'",
+   "candidate_glosses": [
+    "to stop moving and instead stick, or make or become bound (more or less literally or figuratively)",
+    "to imprison, to put into confinement after judicial writ (the state of which is called Haft) (this is the most common signification in its strict definition, of which however legal laymen may deviate to mean any kind of government arrest)",
+    "to legally subject to eventual foreclosure"
+   ]
+  },
+  {
+   "verb": "verheiraten",
+   "separability": "inseparable",
+   "shipped_gloss": "marry (someone)",
+   "proposed_gloss": "marry off",
+   "severity": "high",
+   "reviewer_detail": "'marry (someone)' is the gloss for heiraten, not verheiraten. heiraten is what the spouses do ('Sie heiratet ihn'); verheiraten is what a third party does — give in marriage, marry off ('Er verheiratete seine Tochter'), or officiate. candidate_glosses index 1 has it: 'to marry off; to find a spouse for'. As shipped, the gloss teaches the learner to use verheiraten where heiraten is required, a classic error.",
+   "candidate_glosses": [
+    "to wed; to marry (officially join two people in marriage)",
+    "to marry off; to find a spouse for",
+    "to marry; to get married"
+   ]
+  },
+  {
+   "verb": "verhelfen",
+   "separability": "inseparable",
+   "shipped_gloss": "help",
+   "proposed_gloss": "help obtain",
+   "severity": "low",
+   "reviewer_detail": "Bare 'help' is the gloss for helfen and loses everything the ver- prefix adds. verhelfen is always jemandem zu etwas verhelfen — to help someone get or achieve something ('Das verhalf ihm zum Sieg'). kaikki's index 0 kept the preposition as 'to help (to)'; the shortening dropped it, leaving a gloss that collides with a different, more basic verb.",
+   "candidate_glosses": [
+    "to help (to)"
+   ]
+  },
+  {
+   "verb": "verkehren",
+   "separability": "inseparable",
+   "shipped_gloss": "interact in someone’s sphere",
+   "proposed_gloss": "run, operate (of transport)",
+   "severity": "high",
+   "reviewer_detail": "'interact in someone’s sphere' is leaked dictionary paraphrase, not English about the verb — it names no action a learner could recognize or produce. The senses actually met are: of transport, to run or operate on a route ('Die Linie verkehrt stündlich'), which is the everyday one; also 'mit jemandem verkehren' (associate with) and 'ins Gegenteil verkehren' (turn into its opposite). The transport sense is inside kaikki's index 0, buried after the paraphrase as 'to operate'.",
+   "candidate_glosses": [
+    "to interact in someone’s sphere, to have exchange, to operate",
+    "to cause to flow across spheres, to make be in commerce",
+    "to turn into an opposite nature, state or direction"
+   ]
+  },
+  {
+   "verb": "verkriechen",
+   "separability": "inseparable",
+   "shipped_gloss": "creep away",
+   "proposed_gloss": "hide away",
+   "severity": "low",
+   "reviewer_detail": "\"creep away\" is a literal reading of ver- plus kriechen that keeps the manner and drops the point: sich verkriechen is about ending up hidden — sich ins Bett / unter die Decke verkriechen, said of a person who withdraws from the world. Candidate index 1 (\"to hide away, to be holed up\") names the sense in use; as shipped the gloss collides with wegschleichen.",
+   "candidate_glosses": [
+    "to creep away",
+    "to hide away, to be holed up"
+   ]
+  },
+  {
+   "verb": "verlauten",
+   "separability": "inseparable",
+   "shipped_gloss": "announce",
+   "proposed_gloss": "be reported, become known",
+   "severity": "low",
+   "reviewer_detail": "Verlauten is reportive and subjectless in normal use — wie aus Regierungskreisen verlautet, es verlautete, dass… — so the meaning runs in the opposite direction from \"announce\", which is what the causative verlauten lassen adds. The shipped gloss teaches the wrong argument structure for the bare verb.",
+   "candidate_glosses": [
+    "to announce"
+   ]
+  },
+  {
+   "verb": "verleben",
+   "separability": "inseparable",
+   "shipped_gloss": "spend",
+   "proposed_gloss": "spend (time)",
+   "severity": "low",
+   "reviewer_detail": "Bare \"spend\" is ambiguous in English and, next to a German verb, reads first as spending money — which is ausgeben. Verleben takes only time as its object: den Sommer bei den Großeltern verleben.",
+   "candidate_glosses": [
+    "to spend"
+   ]
+  },
+  {
+   "verb": "verlernen",
+   "separability": "inseparable",
+   "shipped_gloss": "cease doing, forget",
+   "proposed_gloss": "forget how to do",
+   "severity": "medium",
+   "reviewer_detail": "The importer took kaikki's second sense (index 1). \"cease doing\" names a different action — that is aufhören. Verlernen means to lose a skill through lack of practice: Ich habe mein Französisch verlernt. Sense index 0 has it right: lose the ability to do a task due to rarely doing it. Because the house comma reads as \"these mean the same thing\", the shipped gloss presents stopping and forgetting-how as equivalents.",
+   "candidate_glosses": [
+    "to lose the ability to do a task due to rarely doing it; to unlearn, forget",
+    "to cease doing, to forget"
+   ]
+  },
+  {
+   "verb": "verloben",
+   "separability": "inseparable",
+   "shipped_gloss": "betroth, get engaged ‘someone’])",
+   "proposed_gloss": "get engaged",
+   "severity": "high",
+   "reviewer_detail": "Leaked dictionary apparatus: the trailing \"‘someone’])\" is the tail of kaikki's argument-structure note \"(optional [with mit (+ dative) ‘someone’])\", cut mid-bracket. As shipped it is not English about the verb. Sich verloben means to become engaged to be married.",
+   "candidate_glosses": [
+    "to betroth; to get engaged (optional [with mit (+ dative) ‘someone’])"
+   ]
+  },
+  {
+   "verb": "verlöschen",
+   "separability": "inseparable",
+   "shipped_gloss": "quench, extinguish",
+   "proposed_gloss": "go out, fade",
+   "severity": "medium",
+   "reviewer_detail": "Verlöschen as a learner meets it is intransitive: die Kerze verlischt, das Feuer verlosch — the flame or light dies out on its own. The transitive \"extinguish\" is löschen (or auslöschen); glossing the ver- verb as \"quench, extinguish\" invites the learner to produce *ich verlösche das Feuer. The intransitive reading is candidate index 1.",
+   "candidate_glosses": [
+    "to quench, to extinguish",
+    "to go out, to fade, to get dimmer"
+   ]
+  },
+  {
+   "verb": "verrechnen",
+   "separability": "inseparable",
+   "shipped_gloss": "calculate several quantities together",
+   "proposed_gloss": "offset, set off",
+   "severity": "low",
+   "reviewer_detail": "The shortening kept the definitional first half of candidate index 0 and dropped the half that named the action: \"particularly: to offset one against another\". \"calculate several quantities together\" is a description of an entry rather than a usable English rendering — a learner cannot substitute it into a sentence for etwas mit etwas verrechnen.",
+   "candidate_glosses": [
+    "to calculate several quantities together; particularly: to offset one against another",
+    "to charge, to bill, to invoice",
+    "to miscalculate",
+    "to make a mistake"
+   ]
+  },
+  {
+   "verb": "verschlagen",
+   "separability": "inseparable",
+   "shipped_gloss": "drive, strand, shlep, bring",
+   "proposed_gloss": "strand, drive somewhere",
+   "severity": "high",
+   "reviewer_detail": "The shortening kept an unfiltered synonym pile from candidate index 0 and dropped the parenthetical that made it interpretable. 'shlep' is a Yiddish-derived regionalism opaque to a German learner reading English, and 'bring' floating at the end of the list is so general it names nothing. The verb's live use is the near-impersonal 'es hat ihn nach München verschlagen' — chance carried him somewhere he did not intend to go — so 'strand' plus a directional 'drive' carries it; 'shlep' and 'bring' should go.",
+   "candidate_glosses": [
+    "to drive, to strand; to shlep; to bring (causing difficulty, often to somewhere someone didn't want to go)",
+    "to suddenly take away",
+    "to lose (one's page in a book)",
+    "to beat together",
+    "to mishit (a ball)",
+    "to board up"
+   ]
+  },
+  {
+   "verb": "versehen",
+   "separability": "inseparable",
+   "shipped_gloss": "equip, make mistake",
+   "proposed_gloss": "provide with, furnish",
+   "severity": "high",
+   "reviewer_detail": "The gloss welds two unrelated senses into one comma list, which the house style reads as synonyms: 'equip' renders transitive 'etwas mit etwas versehen' (candidate index 3, 'to provide with'), while 'make mistake' renders the reflexive 'sich versehen' (candidate index 4), a separate and much rarer reading. A learner sees 'equip' and 'make mistake' presented as equivalents. The second half is also ungrammatical English, missing its article. The sense to ship is the transitive one: to furnish or provide something with something.",
+   "candidate_glosses": [
+    "to perform (a service or duty)",
+    "to hold (an office)",
+    "to emblazon with",
+    "to provide with",
+    "to make a mistake",
+    "to expect"
+   ]
+  },
+  {
+   "verb": "verstoßen",
+   "separability": "inseparable",
+   "shipped_gloss": "violate, expel",
+   "proposed_gloss": "violate, infringe",
+   "severity": "low",
+   "reviewer_detail": "'violate, expel' pairs two genuinely different constructions as if they were synonyms: 'gegen etwas verstoßen' means to violate or infringe a rule (candidate index 1), while 'jemanden verstoßen' means to cast out or disown (candidate index 0). The first is far more frequent and is the one a learner meets, in news German especially. Committing to it removes the false equivalence.",
+   "candidate_glosses": [
+    "to cast out (of a community), to disown",
+    "to infringe, to break, to violate, to be contrary to",
+    "to obturate, to occlude by propping something into",
+    "to hide, to conceal",
+    "to cease to advance, to not flow anymore"
+   ]
+  },
+  {
+   "verb": "vertreiben",
+   "separability": "inseparable",
+   "shipped_gloss": "drive out, distribute",
+   "proposed_gloss": "drive away, expel",
+   "severity": "low",
+   "reviewer_detail": "The comma joins two unrelated senses, which the house style reads as synonyms: 'drive out' is candidate sense 0 (jemanden vertreiben) and 'distribute' is the commercial sense 2 (to market or sell in quantity). A learner reading them as equivalents may take vertreiben for verteilen. Ship the expulsion sense, which is the one a learner meets first and the one the app's related verbs (austreiben, verjagen) sit beside.",
+   "candidate_glosses": [
+    "to force to leave, to drive away",
+    "to pass (time)",
+    "to put on the market, to sell (especially in large quantities)",
+    "to put colors softly together"
+   ]
+  },
+  {
+   "verb": "verweben",
+   "separability": "inseparable",
+   "shipped_gloss": "weave",
+   "proposed_gloss": "interweave",
+   "severity": "low",
+   "reviewer_detail": "kaikki offers only the bare 'to weave', which is weben, not verweben. The ver- prefix carries the sense of weaving things together: verweben is to interweave or interlace, and its commonest modern use is the figurative participle (eng miteinander verwoben). Glossed as 'weave' the verb collides with weben and invites a learner to write 'einen Teppich verweben'.",
+   "candidate_glosses": [
+    "to weave"
+   ]
+  },
+  {
+   "verb": "verweisen",
+   "separability": "inseparable",
+   "shipped_gloss": "refer, expel",
+   "proposed_gloss": "refer to",
+   "severity": "low",
+   "reviewer_detail": "Same comma collision: 'refer' is candidate sense 0 (auf etwas verweisen) and 'expel' is candidate sense 2 (jemanden von der Schule verweisen), and the house style presents them as synonyms. Referring is much the commoner reading and the one that governs the verb's usual prepositional frame.",
+   "candidate_glosses": [
+    "to refer",
+    "to relegate",
+    "to eject; to expel"
+   ]
+  },
+  {
+   "verb": "vonstattengehen",
+   "separability": "separable",
+   "shipped_gloss": "take place",
+   "proposed_gloss": "proceed, go",
+   "severity": "low",
+   "reviewer_detail": "'take place' is stattfinden, and the shipped gloss makes the two look interchangeable. vonstattengehen is almost always used with a manner adverbial — reibungslos, zügig, langsam vonstattengehen — and means how a process runs, which is candidate sense 1 ('to proceed'). A learner given 'take place' will write 'Das Konzert geht vonstatten', which is not German.",
+   "candidate_glosses": [
+    "to take place",
+    "to proceed, advance"
+   ]
+  },
+  {
+   "verb": "vorbilden",
+   "separability": "separable",
+   "shipped_gloss": "preform",
+   "proposed_gloss": "train in advance",
+   "severity": "medium",
+   "reviewer_detail": "The verb means to give someone preliminary training or education — 'gut vorgebildet' is the everyday use, and the adjective 'vorgebildet' means qualified or trained. 'Preform' is a technical/literal reading (shaping material in advance) that a learner will not meet, and in English it is also easily misread as a typo for 'perform'. candidate_glosses index 1 ('to prelearn; to prepare; to equip with knowledge in advance') is the sense the app should ship.",
+   "candidate_glosses": [
+    "to preform",
+    "to prelearn; to prepare; to equip with knowledge in advance"
+   ]
+  },
+  {
+   "verb": "vorbringen",
+   "separability": "separable",
+   "shipped_gloss": "say",
+   "proposed_gloss": "put forward, raise",
+   "severity": "low",
+   "reviewer_detail": "The shortening dropped the qualifier that carried the meaning: kaikki's sense is 'to say (in the sense of to allege or state something)'. Bare 'say' makes vorbringen indistinguishable from sagen, when the verb specifically means to advance or raise something — an argument, an objection, a complaint (Einwände vorbringen, Beschwerde vorbringen). The action is right but the rendering is too vague to be usable.",
+   "candidate_glosses": [
+    "to say (in the sense of to allege or state something)."
+   ]
+  }
+ ]
+}

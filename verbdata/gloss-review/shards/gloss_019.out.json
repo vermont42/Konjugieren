@@ -1,0 +1,62 @@
+{
+  "erlöschen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "The shipped gloss makes this a transitive verb of putting fires out, which is löschen (or auslöschen). The strong verb erlöschen (erlischt, erlosch, ist erloschen) is intransitive: a flame or light goes out on its own (die Kerze erlosch), and by extension a right, warranty, contract, or family line lapses or dies out (der Anspruch erlischt). candidate_glosses offers only the transitive reading, so the correct sense is not in the list — this is a wrong-entry import rather than a wrong-index one. A learner taught 'extinguish' will write ich erlösche das Feuer, which is not German.",
+        "fix_gloss": "go out, be extinguished"
+      }
+    ]
+  },
+  "erraten": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "'determine through advice or empathy' is an archaic sense preserved from the older meaning of raten (advise), and as English it barely reads as a verb meaning at all. The verb a learner meets is 'guess correctly' — Rate mal! … Du hast es erraten! — which is candidate_glosses index 1, 'to guess (something) correctly, to divine'. The importer took kaikki's first-listed sense over the only living one.",
+        "fix_gloss": "guess correctly"
+      }
+    ]
+  },
+  "erwachsen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "'grow up' is what aufwachsen means, and it is almost certainly first in kaikki because the participle erwachsen became the adjective for 'adult'. As a finite verb in modern German, erwachsen means to arise or spring from something: daraus erwuchsen erhebliche Probleme, ihm erwuchs daraus ein Vorteil. That is candidate_glosses index 1 ('to spring up, to spring from, to proceed from') and index 4 ('to arise (difficulties, tasks)'). A learner given 'grow up' will reach for erwachsen where only aufwachsen works.",
+        "fix_gloss": "arise from, result from"
+      }
+    ]
+  },
+  "ersterben": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "Plain 'die' of a person or animal is sterben; ersterben is not used that way in modern German. It survives almost exclusively in the figurative sense of a sound, motion, or expression fading out — der Lärm erstarb, das Lächeln erstarb auf ihren Lippen. That is candidate_glosses index 1, 'to die away, to gradually stop'. The shipped gloss both duplicates sterben and sends the learner to the wrong register.",
+        "fix_gloss": "die away, fade out"
+      }
+    ]
+  },
+  "erstatten": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "The comma presents 'reimburse' and 'file' as synonyms, but they are two unrelated senses, and 'file' is uninterpretable on its own: it is a fragment of the fixed collocation Anzeige erstatten (file a complaint) / Bericht erstatten (make a report), where the meaning lives in the noun. Keeping 'reimburse' — the sense that works with a free object, as in Kosten erstatten — and dropping the stranded fragment.",
+        "fix_gloss": "reimburse, refund"
+      }
+    ]
+  },
+  "ersehen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "kaikki's bare 'to learn' loses what distinguishes this verb: ersehen is nearly always aus etwas ersehen, to gather or discern something from a document or set of facts (wie aus dem Bericht zu ersehen ist). As shipped it collides head-on with lernen and with erlernen, which this same corpus glosses 'learn, acquire', so the learner has no way to tell the three apart.",
+        "fix_gloss": "gather, discern"
+      }
+    ]
+  }
+}

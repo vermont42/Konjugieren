@@ -1,0 +1,52 @@
+{
+  "abrichten": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The everyday meaning of abrichten is to train an animal (einen Hund abrichten), which candidate_glosses lists as sense 1. The shipped 'drill' is a real but narrow equivalent (drilling troops, or the technical sense of truing a surface, as in Abrichthobel), and as a bare English word it reads first as boring a hole, which is bohren. A learner would take away the wrong verb.",
+        "fix_gloss": "train (an animal)"
+      }
+    ]
+  },
+  "abstechen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "Sense 0 describes the spade sense (Torf, Rasenkanten abstechen), which is specialized gardening vocabulary. In ordinary German abstechen means to stab, especially to stab to death (candidate 1, ein Schwein abstechen), or to contrast sharply with something (candidate 3, gegen etwas abstechen). Glossed as 'cut off, cut out, carve out' the verb reads as a synonym of abschneiden, which it is not.",
+        "fix_gloss": "stab to death"
+      }
+    ]
+  },
+  "absterben": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "absterben is an ordinary verb meaning that tissue, plants, or limbs die off (abgestorbene Äste; mir ist der Fuß abgestorben), which candidate 2 gives as 'to die back'. 'Atrophy' is both far more technical than the German and semantically off: atrophy is wasting away from disuse, which is verkümmern, whereas absterben is simply dying.",
+        "fix_gloss": "die off, die back"
+      }
+    ]
+  },
+  "abtreiben": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The sense a learner meets is the abortion one, candidate 1 (and 2), which is what abtreiben means in essentially all contemporary non-nautical use. The shipped 'go/be sent off course' is the drift sense, restricted to boats and swimmers being carried by wind or current.",
+        "fix_gloss": "have an abortion"
+      }
+    ]
+  },
+  "abtreten": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "'Kick away' is a marginal reading. The senses a learner meets are stepping down from an office or a stage (candidates 3 and 4, von einem Amt abtreten) and ceding or handing over rights or territory (Rechte, Gebiete abtreten), the latter missing from candidate_glosses entirely. As shipped the gloss suggests a physical kicking action the verb rarely denotes.",
+        "fix_gloss": "step down, cede"
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "einkommen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "\"earn\" is the action of verdienen and would license the wrong German: einkommen is not a transitive verb of earning, and *\"Ich komme 3000 Euro ein\" is not German. The verb is intransitive and formal — money, donations, or entries come in (\"die eingekommenen Spenden\"), or one petitions for something (\"um etwas einkommen\"). The money-arriving sense is not in candidate_glosses; index 1 is the unrelated sports sense of placing in a ranking.",
+        "fix_gloss": "come in (of money)"
+      }
+    ]
+  },
+  "einkehren": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "\"sojourn\" is archaic English and loses what the verb actually names: stopping off at an inn or restaurant during a walk or journey (\"wir sind im Gasthaus eingekehrt\"). A learner reading \"sojourn\" would take it for a general word for staying somewhere, which is einkehren's figurative extension at best (\"Ruhe kehrte ein\"). Neither candidate gloss is usable; the correct sense is absent from the list.",
+        "fix_gloss": "stop at an inn"
+      }
+    ]
+  },
+  "einreisen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "\"travel\" belongs to reisen, not einreisen, and bare \"enter\" collides with betreten/eintreten for entering a room. einreisen means specifically to cross a border into a country (\"nach Deutschland einreisen\"); the country is not an optional nuance but the whole content of the ein-. The single candidate gloss carries the same defect, so the fix is not an index swap.",
+        "fix_gloss": "enter a country"
+      }
+    ]
+  },
+  "einschreiben": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The literal \"write into, inscribe\" is kaikki's first-listed sense but the reading a learner meets is reflexive: sich einschreiben = to enroll or register, above all at a university. That sense is candidate_glosses index 2 (\"to enroll, enlist\"). The registered-mail sense at index 1 is the other one in daily use; the inscribing sense is the rarest of the three.",
+        "fix_gloss": "enroll, register"
+      }
+    ]
+  },
+  "einschulen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The shipped gloss is the Austrian workplace sense (einschulen = einarbeiten, train someone for a job), which in Germany is rare. The standard meaning is enrolling a child in school — \"das Kind wird im September eingeschult\" — which is candidate_glosses index 1 (\"to accept a pupil into the first grade\"). The shipped phrasing is also a dictionary paraphrase rather than a gloss.",
+        "fix_gloss": "enroll in school"
+      }
+    ]
+  },
+  "einschneiden": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "\"engrave\" points at gravieren and away from the core sense, which is simply cutting into a surface or making an incision (\"eine Kerbe einschneiden\"), plus the everyday physical sense of a strap or waistband digging in (\"der Riemen schneidet ein\"). \"carve\" is defensible for \"seinen Namen in die Rinde einschneiden\" and worth keeping alongside, but leading with the engraving reading misdirects.",
+        "fix_gloss": "cut into, carve"
+      }
+    ]
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "durchbringen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The shipped gloss is candidate 0 with its scaffolding intact: 'be able to' is modal framing from the dictionary wording, not part of the verb's meaning, so the phrase names no action a learner can attach to durchbringen. The senses actually met are 'get someone through' (an illness, an exam, a bill) and 'support, keep fed' — candidates 2 through 5 all cluster there.",
+        "fix_gloss": "get through, pull through"
+      }
+    ]
+  },
+  "durchfallen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The importer took the compositional literal sense. In use durchfallen almost always means to fail an exam or test (durch die Prüfung durchfallen), which candidate_glosses lists as sense 1 ('to fail, to not pass'). A learner shown 'fall through' will not recognize the verb in the context where it actually appears.",
+        "fix_gloss": "fail (an exam)"
+      }
+    ]
+  },
+  "durchschauen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "Candidate 0 reads 'to see through (e.g. a window, telescope)'; the shortening dropped the parenthetical that was doing the disambiguating work. Bare English 'see through' overwhelmingly means detecting a deception, which is the meaning of the inseparable durchscháuen (jemanden durchschauen), not of the literal separable verb glossed here. 'look through' names the intended sense unambiguously, and matches how durchblicken is glossed in this same corpus.",
+        "fix_gloss": "look through"
+      }
+    ]
+  },
+  "durchziehen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "'pass' is candidate 0 taken verbatim, and on its own it is too vague to identify the verb — it reads as passing an exam or handing something over, neither of which durchziehen means. The senses a learner meets are the literal 'pull through' (candidate 3) and the very common colloquial 'etwas durchziehen', to go through with something and see it to the end.",
+        "fix_gloss": "pull through, go through with"
+      }
+    ]
+  },
+  "einbilden": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "The shortening dropped the '(falsely)' in candidate 0, and that word carried the whole distinction. Reflexive sich etwas einbilden means to imagine something that is not so, to fancy or delude oneself; plain 'imagine' collides with sich vorstellen, which is the neutral verb and the one a learner will otherwise reach for.",
+        "fix_gloss": "imagine falsely"
+      }
+    ]
+  }
+}

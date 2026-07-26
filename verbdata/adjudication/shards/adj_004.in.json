@@ -1,0 +1,322 @@
+{
+ "shard": 4,
+ "records": [
+  {
+   "verb": "erweichen",
+   "separability": "inseparable",
+   "shipped_gloss": "weaken, soften",
+   "proposed_gloss": "soften",
+   "severity": "low",
+   "reviewer_detail": "erweichen means to make or become soft — Wachs erweichen — and figuratively to soften someone's resolve or move them. It does not mean 'weaken' in the sense of reducing strength; that is schwächen. Leading the gloss with 'weaken' (kaikki's own wording at index 0) invites a learner to reach for erweichen where schwächen is required. 'soften' alone carries both the literal and the figurative reading.",
+   "candidate_glosses": [
+    "to weaken, soften",
+    "to soften up, to appease"
+   ]
+  },
+  {
+   "verb": "erziehen",
+   "separability": "inseparable",
+   "shipped_gloss": "nurture",
+   "proposed_gloss": "raise, bring up",
+   "severity": "medium",
+   "reviewer_detail": "erziehen is the ordinary German verb for bringing a child up — Kinder erziehen, gut erzogen, Erziehung 'upbringing'. It names the formative, disciplinary business of raising someone, not the fostering-and-caring sense that English 'nurture' denotes (that is pflegen or hegen). kaikki's 'to nurture' is its first-listed sense and was taken verbatim; sense 1, 'to educate', is closer, but the gloss a learner needs is 'raise, bring up'.",
+   "candidate_glosses": [
+    "to nurture",
+    "to educate"
+   ]
+  },
+  {
+   "verb": "festfrieren",
+   "separability": "separable",
+   "shipped_gloss": "ice over, freeze",
+   "proposed_gloss": "freeze stuck",
+   "severity": "low",
+   "reviewer_detail": "festfrieren means to freeze fast to something so that it can no longer be moved — das Boot ist am Ufer festgefroren. The shipped 'ice over, freeze' describes a surface becoming covered in ice, which is zufrieren or vereisen, and drops the fest- component that is the whole point of the compound. Same shape as the zuschwellen 'swell up' case.",
+   "candidate_glosses": [
+    "to ice over, to freeze"
+   ]
+  },
+  {
+   "verb": "festhalten",
+   "separability": "separable",
+   "shipped_gloss": "hold on, record",
+   "proposed_gloss": "hold on to, hold tight",
+   "severity": "low",
+   "reviewer_detail": "Both halves name real senses, but the comma makes them read as synonyms, so the learner is told that 'hold on' and 'record' are the same action. They are candidate senses 0/1 and 5 respectively — grip-and-not-let-go versus documenting an event in writing or on film. The sense a learner meets first and most often is the physical one, so the gloss should commit to it.",
+   "candidate_glosses": [
+    "to hold on (to) (to keep another object or person in place)",
+    "to hold on (to) [with an (+ dative) ‘to something’] (to keep oneself in place by gripping a fixture)",
+    "to detain, to hold in custody (by force)",
+    "to stick (to), to remain steadfast (in)",
+    "to keep supporting, to keep (someone) on the team",
+    "to record, to capture (an event, e.g. through photo, video, or a chronicle)"
+   ]
+  },
+  {
+   "verb": "feststehen",
+   "separability": "separable",
+   "shipped_gloss": "stand firm",
+   "proposed_gloss": "be certain, be settled",
+   "severity": "medium",
+   "reviewer_detail": "English 'stand firm' names refusing to yield under pressure, which is standhalten or festbleiben, not feststehen. German feststehen is predicated of facts and arrangements: 'Es steht fest, dass…', 'Der Termin steht fest' — to be settled, established, beyond doubt. kaikki offers only the literal fest+stehen reading, so no correct sense is in candidate_glosses; the shipped gloss teaches a learner to use the verb of certainty for acts of resolve.",
+   "candidate_glosses": [
+    "to stand firm"
+   ]
+  },
+  {
+   "verb": "fortfahren",
+   "separability": "separable",
+   "shipped_gloss": "drive away, drive off",
+   "proposed_gloss": "continue",
+   "severity": "medium",
+   "reviewer_detail": "The sense a learner meets is 'continue, carry on' — 'Fahren Sie bitte fort', 'mit der Arbeit fortfahren' — which candidate_glosses lists at index 2 and 3. The shipped 'drive away, drive off' is the literal vehicular reading, which is possible but marginal in modern usage and is normally covered by wegfahren or losfahren.",
+   "candidate_glosses": [
+    "to drive away, drive off",
+    "to drive away, remove by means of a vehicle",
+    "to continue",
+    "to continue, to resume"
+   ]
+  },
+  {
+   "verb": "fortgehen",
+   "separability": "separable",
+   "shipped_gloss": "continue, go on, keep on, carry on",
+   "proposed_gloss": "leave, go away",
+   "severity": "medium",
+   "reviewer_detail": "The primary sense is departure — 'Er ist fortgegangen' — a straight synonym of weggehen, which candidate_glosses lists at index 1. The shipped 'continue, go on, keep on, carry on' is the impersonal reading used of processes ('die Arbeit geht fort'), which is both rarer and better served by fortdauern or weitergehen. Four synonyms for the secondary sense also crowds out the one a learner needs.",
+   "candidate_glosses": [
+    "to continue, to go on, to keep on, to carry on",
+    "to depart, to take off, to go away",
+    "to go out, to go clubbing"
+   ]
+  },
+  {
+   "verb": "fortschleifen",
+   "separability": "separable",
+   "shipped_gloss": "synonym of wegschleifen: to drag away",
+   "proposed_gloss": "drag away",
+   "severity": "high",
+   "reviewer_detail": "Leaked dictionary apparatus: the gloss is a cross-reference to another German verb rather than English about this one, and it names wegschleifen — a word the learner has no reason to know — before delivering any meaning. Only the tail 'drag away' is a gloss.",
+   "candidate_glosses": [
+    "synonym of wegschleifen: to drag away, to pull away"
+   ]
+  },
+  {
+   "verb": "freimachen",
+   "separability": "separable",
+   "shipped_gloss": "put a stamp on",
+   "proposed_gloss": "clear, free up",
+   "severity": "medium",
+   "reviewer_detail": "'Put a stamp on' is the postal-clerk sense (frankieren), a technical usage a learner will essentially never meet, especially now that franking is machine-done. The senses in live use are clearing or freeing something up — 'die Straße freimachen', 'sich einen Nachmittag freimachen' — candidate_glosses index 1, plus the reflexive 'undress' heard at a doctor's office.",
+   "candidate_glosses": [
+    "to put a stamp on (envelope, letter, parcel)",
+    "to clear (a road, a path)",
+    "to bare, to strip (to remove clothing)"
+   ]
+  },
+  {
+   "verb": "freuen",
+   "separability": "simplex",
+   "shipped_gloss": "be happy, please",
+   "proposed_gloss": "be glad, be pleased",
+   "severity": "low",
+   "reviewer_detail": "The comma pairs the reflexive sense with the transitive one as if they were synonyms, so the learner is shown 'be happy' and 'please' as equivalents when they are converse valencies (sich freuen versus es freut mich). Worse, 'be happy, please' parses on sight as an imperative with the politeness word attached. The sense a learner meets first is the reflexive one, candidate_glosses index 1.",
+   "candidate_glosses": [
+    "to gladden, to make glad, to make pleased",
+    "to be glad, pleased, or happy about something",
+    "to look forward to",
+    "to be happy for someone",
+    "to take delight in"
+   ]
+  },
+  {
+   "verb": "fällen",
+   "separability": "simplex",
+   "shipped_gloss": "fell, pass",
+   "proposed_gloss": "fell, cut down",
+   "severity": "low",
+   "reviewer_detail": "The bare 'pass' carries no meaning without its object: it is intelligible only if the learner already knows 'ein Urteil fällen'. As shipped it reads as a second synonym of 'fell', which it is not. The core sense is felling a tree, candidate_glosses index 0.",
+   "candidate_glosses": [
+    "to cut down, to chop down, to fell (a tree)",
+    "to precipitate",
+    "to make",
+    "to pass"
+   ]
+  },
+  {
+   "verb": "geraten",
+   "separability": "inseparable",
+   "shipped_gloss": "get into, turn out",
+   "proposed_gloss": "get into, end up in",
+   "severity": "low",
+   "reviewer_detail": "The comma joins two genuinely different senses, which the house style reads as synonymy: 'get into' is candidate sense 3 (in Panik/Schwierigkeiten/Vergessenheit geraten) and 'turn out' is candidate sense 0 (der Kuchen ist gut geraten). The dominant sense a learner meets by far is the first, unintentional-arrival one, so the gloss should commit to it with true synonyms rather than pair it with an unrelated reading.",
+   "candidate_glosses": [
+    "to turn out; to succeed; to thrive",
+    "to take after; to come to resemble",
+    "to come (across, by); to fall (upon)",
+    "to get (into); to fall (into); to come (to); to fly (into)"
+   ]
+  },
+  {
+   "verb": "gewarten",
+   "separability": "inseparable",
+   "shipped_gloss": "expect, await or wait for",
+   "proposed_gloss": "expect, await",
+   "severity": "low",
+   "reviewer_detail": "The shortening preserved kaikki's internal alternation 'to await or wait for' verbatim, so the shipped gloss carries a dictionary 'or' that no other gloss in the corpus uses. The sense is right; only the phrasing is lifted apparatus. House style would list the synonyms with commas.",
+   "candidate_glosses": [
+    "to expect, to await or wait for"
+   ]
+  },
+  {
+   "verb": "haushalten",
+   "separability": "separable",
+   "shipped_gloss": "have or run a household",
+   "proposed_gloss": "economize, be thrifty",
+   "severity": "medium",
+   "reviewer_detail": "The shipped gloss takes kaikki's first sense, the literal 'run a household', which is the dated reading; modern usage is overwhelmingly 'mit etwas haushalten' — to use a resource sparingly (mit den Kräften/Ressourcen/dem Geld haushalten). DWDS and Duden both give the economizing sense as the live one, and it is candidate_glosses index 1. A learner meeting haushalten in text will almost always meet it with 'mit' plus a resource, not as a synonym for einen Haushalt führen.",
+   "candidate_glosses": [
+    "to have or run a household",
+    "to be economical or thrifty"
+   ]
+  },
+  {
+   "verb": "herausbrechen",
+   "separability": "separable",
+   "shipped_gloss": "burst out",
+   "proposed_gloss": "break out, break off",
+   "severity": "medium",
+   "reviewer_detail": "The shipped gloss takes kaikki's first sense, the narrow figurative one that only works in the frame 'es brach aus ihm heraus' (words bursting out of someone). The sense a learner meets is the literal one at candidate_glosses index 1: forcibly breaking a piece out of something, or a piece breaking off (einen Zahn herausbrechen, ein Stück aus der Mauer herausbrechen). Standing alone as English, 'burst out' also reads as burst out laughing or burst out of a room, neither of which this verb means.",
+   "candidate_glosses": [
+    "to burst out (to speak emotionally or suddenly) [with aus and dative ‘someone’]",
+    "to break out something, to quarry out something"
+   ]
+  },
+  {
+   "verb": "herausgeben",
+   "separability": "separable",
+   "shipped_gloss": "publish, hand out",
+   "proposed_gloss": "publish, issue",
+   "severity": "low",
+   "reviewer_detail": "'publish' is right, but 'hand out' names the wrong action for the second sense. herausgeben is handing something over or giving it back to its owner — surrendering documents, giving change (Geld herausgeben) — not distributing copies to a group, which is verteilen or austeilen. A learner taking 'hand out' at face value would produce 'Flyer herausgeben', which German does not say. candidate_glosses index 1 has it as 'to hand over, to give, to restitute'; the safe fix is to keep the publishing sense the gloss already leads with and drop the misleading second term.",
+   "candidate_glosses": [
+    "to give/take/put something out of something (in direction towards the speaker)",
+    "to hand over, to give, to restitute, to disclose",
+    "to release, to publish, to issue"
+   ]
+  },
+  {
+   "verb": "heraushalten",
+   "separability": "separable",
+   "shipped_gloss": "hold out, stick out",
+   "proposed_gloss": "keep out of, stay out of",
+   "severity": "medium",
+   "reviewer_detail": "The shipped gloss is the literal physical sense (holding something out a window), which is real but marginal. In use the verb is overwhelmingly reflexive: 'sich aus etwas heraushalten', 'halt dich da raus' — candidate index 2, 'to keep oneself away from something'. That is the sense a learner will meet.",
+   "candidate_glosses": [
+    "to hold (something) out, to stick out (in direction towards the speaker)",
+    "to keep someone away from something",
+    "not to take part in something, to keep oneself away from something"
+   ]
+  },
+  {
+   "verb": "herausschreiben",
+   "separability": "separable",
+   "shipped_gloss": "write out",
+   "proposed_gloss": "copy out, excerpt",
+   "severity": "low",
+   "reviewer_detail": "English 'write out' reads as writing something in full or in longhand. The German means extracting by writing — copying quotations, figures, or vocabulary out of a source, which is what kaikki's '(i.e. of a work)' was pointing at.",
+   "candidate_glosses": [
+    "to write out (i.e. of a work)"
+   ]
+  },
+  {
+   "verb": "herausstellen",
+   "separability": "separable",
+   "shipped_gloss": "turn out, highlight",
+   "proposed_gloss": "turn out to be",
+   "severity": "medium",
+   "reviewer_detail": "The comma presents two unrelated senses as synonyms: 'turn out' is reflexive 'sich herausstellen' (candidate index 4) while 'highlight' is transitive emphasis (candidate index 1). The sense a learner meets constantly is the reflexive one, in 'es stellte sich heraus, dass ...'. Ship that alone rather than pairing it with a different sense.",
+   "candidate_glosses": [
+    "to put something outside (in direction towards the speaker)",
+    "to emphasize, underline",
+    "to showcase",
+    "to come to light",
+    "to turn out to be"
+   ]
+  },
+  {
+   "verb": "herausziehen",
+   "separability": "separable",
+   "shipped_gloss": "pull",
+   "proposed_gloss": "pull out",
+   "severity": "low",
+   "reviewer_detail": "Shortening candidate index 0 'to pull (out)' dropped the parenthesized 'out', so the gloss collapses onto simplex 'ziehen'. The heraus- prefix is the whole content of the verb: extraction, as in a splinter, a plug, or a tooth.",
+   "candidate_glosses": [
+    "to pull (out)"
+   ]
+  },
+  {
+   "verb": "hermachen",
+   "separability": "separable",
+   "shipped_gloss": "make a impression",
+   "proposed_gloss": "look impressive",
+   "severity": "high",
+   "reviewer_detail": "The gloss is ungrammatical English ('a impression') and was cut from kaikki's sense 0 'to make a (specified) impression', losing the parenthetical that carried the meaning: the verb needs a quantifier ('viel/wenig hermachen' = look impressive / not look like much) and does not mean 'make an impression' in the English idiomatic sense of impressing a person. Sense 1 ('sich über etwas hermachen' = get busy with, tackle) is the other reading a learner meets.",
+   "candidate_glosses": [
+    "to make a (specified) impression",
+    "to get busy with, to tackle, to deal with, to pounce on",
+    "to attack, to lay into"
+   ]
+  },
+  {
+   "verb": "herumkommen",
+   "separability": "separable",
+   "shipped_gloss": "move round something",
+   "proposed_gloss": "get out of, avoid",
+   "severity": "medium",
+   "reviewer_detail": "'move round something' is kaikki's literal first sense and is the least-used reading. The everyday idiom is 'um etwas nicht herumkommen' — candidate index 2, being unable to avoid something ('da kommst du nicht drum herum'); the other live sense is candidate index 1, 'viel herumkommen' = travel widely. Either would serve a learner better than the literal one.",
+   "candidate_glosses": [
+    "to move round something",
+    "to get around, to get about (to visit a variety of different places, to travel a lot)",
+    "to be able to avoid/get around something"
+   ]
+  },
+  {
+   "verb": "hervorsehen",
+   "separability": "separable",
+   "shipped_gloss": "show",
+   "proposed_gloss": "peek out, show through",
+   "severity": "medium",
+   "reviewer_detail": "The shortening dropped kaikki's '(of an object)' and left a bare transitive-looking 'show'. Hervorsehen is intransitive: something protrudes into view from behind or beneath something else — 'das Taschentuch sah aus der Jackentasche hervor'. Glossed as 'show', a learner would take it for a synonym of zeigen.",
+   "candidate_glosses": [
+    "to show (of an object)",
+    "to look out (of a person)"
+   ]
+  },
+  {
+   "verb": "hinauslaufen",
+   "separability": "separable",
+   "shipped_gloss": "walk out",
+   "proposed_gloss": "amount to, come down to",
+   "severity": "medium",
+   "reviewer_detail": "In modern German this verb is met almost exclusively in the prepositional frame 'auf etwas hinauslaufen' — to amount to, to come down to, as in 'Das läuft auf dasselbe hinaus.' That is candidate_glosses index 1. The shipped literal sense is both the rarer one and slightly off in English besides, since laufen here is running rather than walking.",
+   "candidate_glosses": [
+    "to walk out",
+    "to result in, to conclude in, to amount to"
+   ]
+  },
+  {
+   "verb": "hindeuten",
+   "separability": "separable",
+   "shipped_gloss": "point",
+   "proposed_gloss": "indicate, suggest",
+   "severity": "medium",
+   "reviewer_detail": "The shipped gloss took the physical-gesture sense, but the reading a learner meets is the evidential one in candidate_glosses index 2: 'alles deutet darauf hin, dass ...' — everything indicates/suggests that. Bare 'point' sends the learner to the gesture reading, for which German normally uses zeigen anyway.",
+   "candidate_glosses": [
+    "to point (physically)",
+    "to point out (within the context of a discussion)",
+    "to indicate (to manifest somehow and thus allow for an inference)"
+   ]
+  }
+ ]
+}

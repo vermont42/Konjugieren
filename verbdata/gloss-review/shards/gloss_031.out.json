@@ -1,0 +1,42 @@
+{
+  "offenhalten": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "The shipped gloss is a Wiktionary cross-reference, not English about the verb: it tells the learner to look up another German word. The meaning was in the same candidate entry (index 0, 'synonym of offenlassen; to keep open') but the shortening kept the pointer and discarded the definition. offenhalten means to keep something open — a door, a shop, a position, an option.",
+        "fix_gloss": "keep open"
+      }
+    ]
+  },
+  "preisgeben": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The shipped gloss takes kaikki's first sense (abandon/surrender), which in modern German is the literary one — 'dem Untergang preisgeben', 'sich preisgeben'. The sense a learner actually meets is candidate index 1: disclosing information, as in 'keine Details preisgeben', 'Daten preisgeben', 'seine Identität preisgeben', which is standard news and everyday German.",
+        "fix_gloss": "disclose, reveal"
+      }
+    ]
+  },
+  "raushalten": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "'hold out' reads in English as endure or resist (German durchhalten), so it points at the wrong action. Even taken as physically holding something out — candidate index 1 — that is a marginal use of the clipped form. In practice raushalten is overwhelmingly reflexive: 'sich aus etwas raushalten', 'Halt dich da raus!', meaning to keep clear of a matter.",
+        "fix_gloss": "stay out of, keep out of"
+      }
+    ]
+  },
+  "offenstehen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "'stay open' names duration, which belongs to offenbleiben. offenstehen is stative: 'Die Tür steht offen' is the door is open, not the door stays open. The imprecision was inherited from kaikki's own wording at index 0, so the gloss is broadly right but collides with a neighboring verb.",
+        "fix_gloss": "be open, stand open"
+      }
+    ]
+  }
+}

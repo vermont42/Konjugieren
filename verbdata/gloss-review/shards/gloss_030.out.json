@@ -1,0 +1,42 @@
+{
+  "niederstoßen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "Mangled shortening: the gloss ends 'knock down so that it falls)' with an unbalanced closing parenthesis, because the shortener spliced the tail of kaikki's parenthetical clarification '(to hit or knock (something) so that it falls)' onto the definition. The verb simply means to thrust or knock something down.",
+        "fix_gloss": "thrust down, knock down"
+      }
+    ]
+  },
+  "nachsagen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The shipped sense (kaikki index 0, parroting what another person said) is the marginal one; that job is done in ordinary German by nachsprechen, which this shard glosses 'repeat'. The reading a learner actually meets is candidate index 1: jemandem etwas nachsagen, to say something (usually unflattering) about someone — 'man sagt ihm nach, er sei geizig', 'das kann man ihr nicht nachsagen'.",
+        "fix_gloss": "say about someone"
+      }
+    ]
+  },
+  "nachsetzen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "'Place after' is the technical typographic/grammatical sense (setting one element behind another) and is not what a learner encounters. The everyday reading is candidate index 1: jemandem nachsetzen, to give chase — 'die Polizei setzte dem Flüchtenden nach'. German Wiktionary lists the pursuit sense first.",
+        "fix_gloss": "chase after, pursue"
+      }
+    ]
+  },
+  "niederschlagen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "'Defeat' is broadly in range but loose enough to mislead: it invites a learner to use niederschlagen where besiegen is wanted (a sports or election defeat), which German does not allow. The verb carries a forcible put-down — einen Aufstand, Proteste, Widerstand niederschlagen — which kaikki separates as index 1 'to quell (a rebellion)'.",
+        "fix_gloss": "put down, quell"
+      }
+    ]
+  }
+}

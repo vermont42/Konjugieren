@@ -1,0 +1,42 @@
+{
+  "bemeistern": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "bemeistern means to get something under control — to master or overcome it (seine Angst bemeistern, die Lage bemeistern). 'Dominate' names a different action, the one carried by beherrschen or dominieren, and a learner taught it would use bemeistern for holding power over people rather than for overcoming a difficulty. The correct sense is not in candidate_glosses; kaikki's single entry is itself the weak rendering.",
+        "fix_gloss": "master, overcome"
+      }
+    ]
+  },
+  "beklagen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "The lead synonym 'pity' points at bemitleiden, which ships in this same corpus glossed exactly 'pity'. beklagen is to lament, bemoan, or deplore — Verluste beklagen, die zu beklagenden Opfer — with reflexive sich beklagen meaning complain. 'Lament' is present in candidate 0 but arrives second, behind the reading that collides.",
+        "fix_gloss": "lament, deplore"
+      }
+    ]
+  },
+  "bepflanzen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "bepflanzen takes the ground as its object, not the plant: ein Beet bepflanzen is to plant a bed with something, while planting a tree is pflanzen or einpflanzen. The bare gloss 'plant' loses the be- prefix's applicative force and invites the error einen Baum bepflanzen. candidate 0 preserves the distinction with its '(supply with plants)' rider, which the shortening dropped.",
+        "fix_gloss": "plant (an area)"
+      }
+    ]
+  },
+  "belachen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "'Belaugh' is not usable English — it is a Wiktionary calque of the German prefixation, not a word a learner will ever encounter or be understood using. The first synonym carries the meaning correctly, so the gloss is not unusable, but the second half is noise imported verbatim from candidate 0.",
+        "fix_gloss": "laugh at"
+      }
+    ]
+  }
+}

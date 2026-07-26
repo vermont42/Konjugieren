@@ -1,0 +1,319 @@
+{
+ "shard": 3,
+ "records": [
+  {
+   "verb": "durchziehen",
+   "separability": "separable",
+   "shipped_gloss": "pass",
+   "proposed_gloss": "pull through, go through with",
+   "severity": "medium",
+   "reviewer_detail": "'pass' is candidate 0 taken verbatim, and on its own it is too vague to identify the verb — it reads as passing an exam or handing something over, neither of which durchziehen means. The senses a learner meets are the literal 'pull through' (candidate 3) and the very common colloquial 'etwas durchziehen', to go through with something and see it to the end.",
+   "candidate_glosses": [
+    "to pass",
+    "to soak",
+    "to pull",
+    "to pull through",
+    "to run",
+    "to run through"
+   ]
+  },
+  {
+   "verb": "einbilden",
+   "separability": "separable",
+   "shipped_gloss": "imagine",
+   "proposed_gloss": "imagine falsely",
+   "severity": "low",
+   "reviewer_detail": "The shortening dropped the '(falsely)' in candidate 0, and that word carried the whole distinction. Reflexive sich etwas einbilden means to imagine something that is not so, to fancy or delude oneself; plain 'imagine' collides with sich vorstellen, which is the neutral verb and the one a learner will otherwise reach for.",
+   "candidate_glosses": [
+    "to imagine (falsely)"
+   ]
+  },
+  {
+   "verb": "einkehren",
+   "separability": "separable",
+   "shipped_gloss": "sojourn",
+   "proposed_gloss": "stop at an inn",
+   "severity": "medium",
+   "reviewer_detail": "\"sojourn\" is archaic English and loses what the verb actually names: stopping off at an inn or restaurant during a walk or journey (\"wir sind im Gasthaus eingekehrt\"). A learner reading \"sojourn\" would take it for a general word for staying somewhere, which is einkehren's figurative extension at best (\"Ruhe kehrte ein\"). Neither candidate gloss is usable; the correct sense is absent from the list.",
+   "candidate_glosses": [
+    "to sojourn",
+    "to come"
+   ]
+  },
+  {
+   "verb": "einkommen",
+   "separability": "separable",
+   "shipped_gloss": "earn",
+   "proposed_gloss": "come in (of money)",
+   "severity": "high",
+   "reviewer_detail": "\"earn\" is the action of verdienen and would license the wrong German: einkommen is not a transitive verb of earning, and *\"Ich komme 3000 Euro ein\" is not German. The verb is intransitive and formal — money, donations, or entries come in (\"die eingekommenen Spenden\"), or one petitions for something (\"um etwas einkommen\"). The money-arriving sense is not in candidate_glosses; index 1 is the unrelated sports sense of placing in a ranking.",
+   "candidate_glosses": [
+    "to earn",
+    "to come in (in a ranking)",
+    "to come to mind"
+   ]
+  },
+  {
+   "verb": "einreisen",
+   "separability": "separable",
+   "shipped_gloss": "enter, travel",
+   "proposed_gloss": "enter a country",
+   "severity": "medium",
+   "reviewer_detail": "\"travel\" belongs to reisen, not einreisen, and bare \"enter\" collides with betreten/eintreten for entering a room. einreisen means specifically to cross a border into a country (\"nach Deutschland einreisen\"); the country is not an optional nuance but the whole content of the ein-. The single candidate gloss carries the same defect, so the fix is not an index swap.",
+   "candidate_glosses": [
+    "to enter, to travel"
+   ]
+  },
+  {
+   "verb": "einschneiden",
+   "separability": "separable",
+   "shipped_gloss": "engrave, carve",
+   "proposed_gloss": "cut into, carve",
+   "severity": "low",
+   "reviewer_detail": "\"engrave\" points at gravieren and away from the core sense, which is simply cutting into a surface or making an incision (\"eine Kerbe einschneiden\"), plus the everyday physical sense of a strap or waistband digging in (\"der Riemen schneidet ein\"). \"carve\" is defensible for \"seinen Namen in die Rinde einschneiden\" and worth keeping alongside, but leading with the engraving reading misdirects.",
+   "candidate_glosses": [
+    "to engrave; to carve"
+   ]
+  },
+  {
+   "verb": "einschreiben",
+   "separability": "separable",
+   "shipped_gloss": "write into, inscribe",
+   "proposed_gloss": "enroll, register",
+   "severity": "medium",
+   "reviewer_detail": "The literal \"write into, inscribe\" is kaikki's first-listed sense but the reading a learner meets is reflexive: sich einschreiben = to enroll or register, above all at a university. That sense is candidate_glosses index 2 (\"to enroll, enlist\"). The registered-mail sense at index 1 is the other one in daily use; the inscribing sense is the rarest of the three.",
+   "candidate_glosses": [
+    "to write into, inscribe",
+    "to send (a letter) by registered mail",
+    "to enroll, enlist"
+   ]
+  },
+  {
+   "verb": "einschulen",
+   "separability": "separable",
+   "shipped_gloss": "instruct for a specific position, task",
+   "proposed_gloss": "enroll in school",
+   "severity": "medium",
+   "reviewer_detail": "The shipped gloss is the Austrian workplace sense (einschulen = einarbeiten, train someone for a job), which in Germany is rare. The standard meaning is enrolling a child in school — \"das Kind wird im September eingeschult\" — which is candidate_glosses index 1 (\"to accept a pupil into the first grade\"). The shipped phrasing is also a dictionary paraphrase rather than a gloss.",
+   "candidate_glosses": [
+    "to instruct for a specific position, task",
+    "to accept a pupil into the first grade"
+   ]
+  },
+  {
+   "verb": "einstellen",
+   "separability": "separable",
+   "shipped_gloss": "set, hire",
+   "proposed_gloss": "adjust, set",
+   "severity": "low",
+   "reviewer_detail": "'set, hire' joins two unrelated senses with a comma, which house style reads as 'these mean the same thing'. Both are real senses of einstellen (candidate indices 1 and 0), but presented as synonyms they teach neither. The sense to commit to is adjusting or setting something — the one behind the everyday noun Einstellungen ('settings') and behind sich einstellen auf.",
+   "candidate_glosses": [
+    "to hire (to add someone to a position of employment)",
+    "to adjust, to set",
+    "to prepare, to adjust, to adapt to something or someone",
+    "to appear, to turn up, to come",
+    "to cease, to stop",
+    "to build in a way fusing with other buildings or the whole project"
+   ]
+  },
+  {
+   "verb": "eintreiben",
+   "separability": "separable",
+   "shipped_gloss": "drive in",
+   "proposed_gloss": "collect (a debt)",
+   "severity": "medium",
+   "reviewer_detail": "The importer took kaikki sense 0, the literal 'drive in' (cattle, a nail). The sense a learner actually meets is the one at candidate index 1: collecting money that is owed — Schulden eintreiben, Steuern eintreiben, Außenstände eintreiben. 'drive in' also collides with einschlagen/einfahren in a learner's mind.",
+   "candidate_glosses": [
+    "to drive in",
+    "to collect (e.g. debts)"
+   ]
+  },
+  {
+   "verb": "einwenden",
+   "separability": "separable",
+   "shipped_gloss": "raise, make",
+   "proposed_gloss": "object, raise an objection",
+   "severity": "high",
+   "reviewer_detail": "The shortening kept only the bare verbs from kaikki sense 0 ('to raise (an objection to), to make (an argument against)') and dropped the parenthesized objects that carried the entire meaning. 'raise, make' names no action a learner can attach to einwenden; the verb means to object or to raise an objection ('dagegen ist nichts einzuwenden').",
+   "candidate_glosses": [
+    "to raise (an objection to), to make (an argument against)"
+   ]
+  },
+  {
+   "verb": "einüben",
+   "separability": "separable",
+   "shipped_gloss": "drill, # to practice / practise",
+   "proposed_gloss": "practice, rehearse",
+   "severity": "high",
+   "reviewer_detail": "Leaked dictionary apparatus: the gloss carries a stray '#' sense separator and the unstripped infinitival 'to practice / practise' from kaikki sense 0. As shipped it is not English about the verb. einüben means to practice or rehearse something until it is mastered (ein Stück, einen Ablauf einüben).",
+   "candidate_glosses": [
+    "to drill, # to practice / practise",
+    "to rehearse"
+   ]
+  },
+  {
+   "verb": "entbinden",
+   "separability": "inseparable",
+   "shipped_gloss": "see a woman through childbirth, deliver",
+   "proposed_gloss": "give birth",
+   "severity": "medium",
+   "reviewer_detail": "The shipped gloss is kaikki sense 0 written from the attendant's perspective ('see a woman through childbirth'), which is the obstetric usage. The reading a learner meets is intransitive and takes the mother as subject — 'Sie hat gestern entbunden' — which candidate index 1 and 2 both give as 'to give birth'. The current wording also pairs that clinical sense with 'deliver' across a comma, presenting two different perspectives as synonyms.",
+   "candidate_glosses": [
+    "to see a woman through childbirth; to deliver",
+    "to give birth; referring to labour, excluding pregnancy",
+    "to give birth to a child",
+    "to free (someone) from a duty; to release; to exempt",
+    "to dismiss, to discharge"
+   ]
+  },
+  {
+   "verb": "entfahren",
+   "separability": "inseparable",
+   "shipped_gloss": "escape",
+   "proposed_gloss": "slip out (of one's mouth)",
+   "severity": "medium",
+   "reviewer_detail": "Bare 'escape' points a learner at entfliehen/entkommen — escaping a place or captor — which entfahren does not mean. Its living use is the involuntary utterance: a word, cry, or curse escapes someone's lips ('ein Fluch entfuhr ihm'), which candidate index 1 gives as 'to slip out (someone's) mouth'. The subject is the utterance, not the person.",
+   "candidate_glosses": [
+    "to escape",
+    "to slip out (someone's) mouth"
+   ]
+  },
+  {
+   "verb": "entheben",
+   "separability": "inseparable",
+   "shipped_gloss": "relieve",
+   "proposed_gloss": "relieve of duty",
+   "severity": "low",
+   "reviewer_detail": "'relieve' standing alone reads in English as relieve pain or relieve pressure, which is erleichtern or lindern, not entheben. Entheben takes a genitive of the thing someone is freed from and its live use is jemanden seines Amtes entheben — remove from office, relieve of duty (hence Amtsenthebung). The gloss points at the right action but the one word most learners will resolve it to is the wrong verb.",
+   "candidate_glosses": [
+    "to relieve"
+   ]
+  },
+  {
+   "verb": "entrücken",
+   "separability": "inseparable",
+   "shipped_gloss": "translate, rapture",
+   "proposed_gloss": "carry away, enrapture",
+   "severity": "high",
+   "reviewer_detail": "Both words in the shipped gloss name the wrong action to any learner. 'translate' is the archaic theological sense (as in 'Enoch was translated to heaven'), and a German learner will read it as übersetzen — the single most confusable false lead possible in a language app. 'rapture' as a transitive verb is not ordinary English either. The verb means to carry someone off to another place or state, and in living use it is the mental/spiritual sense: die Musik entrückte ihn, and the participle entrückt 'rapt, in a trance, far away'. candidate_glosses has this at index 1 ('to ravish, to enrapture, to enthrall (spiritually)') and index 2 ('to transport, to carry away (mentally)'); the importer took index 0.",
+   "candidate_glosses": [
+    "to translate, to rapture (physically)",
+    "to ravish, to enrapture, to enthrall (spiritually)",
+    "to transport, to carry away (mentally)",
+    "to escape [with dative ‘(from) someone/something’]"
+   ]
+  },
+  {
+   "verb": "entschlafen",
+   "separability": "inseparable",
+   "shipped_gloss": "fall asleep, die",
+   "proposed_gloss": "pass away",
+   "severity": "low",
+   "reviewer_detail": "Correct as far as it goes, but leading with 'fall asleep' invites the error the verb is most likely to cause: a learner glossing entschlafen onto einschlafen and writing ich bin gestern früh entschlafen. Modern entschlafen is a euphemism for dying (sanft entschlafen, die Entschlafenen) and is not used for ordinary sleep. Putting 'die' second, after a comma the house style reads as 'these mean the same thing', understates that the death sense is the only one in use.",
+   "candidate_glosses": [
+    "to fall asleep, to die (often in the phrase: sanft entschlafen)"
+   ]
+  },
+  {
+   "verb": "ergehen",
+   "separability": "inseparable",
+   "shipped_gloss": "forms the perfect with sein",
+   "proposed_gloss": "fare",
+   "severity": "high",
+   "reviewer_detail": "Leaked dictionary apparatus. 'forms the perfect with sein' is Wiktionary's auxiliary-selection header for the sense group that follows (candidate_glosses index 0), not a meaning; the importer took it as sense 0. It tells the learner nothing about the verb. The sense a learner actually meets is the impersonal one in 'Wie ist es dir ergangen?' / 'Es erging ihm schlecht' — how someone fared, which is candidate_glosses index 2. The legal 'be issued' sense (index 1, 'ein Urteil ergeht') is the other real reading but is confined to officialese.",
+   "candidate_glosses": [
+    "forms the perfect with sein",
+    "to go out, to be issued",
+    "to go (well, badly etc. for someone)",
+    "forms the perfect with haben",
+    "to hold forth, to expound",
+    "to indulge (oneself)"
+   ]
+  },
+  {
+   "verb": "erhoffen",
+   "separability": "inseparable",
+   "shipped_gloss": "hope, desire, want",
+   "proposed_gloss": "hope for",
+   "severity": "low",
+   "reviewer_detail": "kaikki's 'to hope (for); desire; want (to)' used semicolons to separate loose paraphrases; flattening them to commas presents 'desire' and 'want' as synonyms of the verb. Erhoffen (nearly always reflexive: 'sich etwas von etwas erhoffen') means specifically to hope for or hope to gain something, and glossing it as 'want' invites a learner to substitute it for wollen or wünschen, which it cannot do.",
+   "candidate_glosses": [
+    "to hope (for); desire; want (to)"
+   ]
+  },
+  {
+   "verb": "erlöschen",
+   "separability": "inseparable",
+   "shipped_gloss": "extinguish, quench, douse",
+   "proposed_gloss": "go out, be extinguished",
+   "severity": "high",
+   "reviewer_detail": "The shipped gloss makes this a transitive verb of putting fires out, which is löschen (or auslöschen). The strong verb erlöschen (erlischt, erlosch, ist erloschen) is intransitive: a flame or light goes out on its own (die Kerze erlosch), and by extension a right, warranty, contract, or family line lapses or dies out (der Anspruch erlischt). candidate_glosses offers only the transitive reading, so the correct sense is not in the list — this is a wrong-entry import rather than a wrong-index one. A learner taught 'extinguish' will write ich erlösche das Feuer, which is not German.",
+   "candidate_glosses": [
+    "to extinguish; to quench, to douse"
+   ]
+  },
+  {
+   "verb": "erraten",
+   "separability": "inseparable",
+   "shipped_gloss": "determine through advice or empathy",
+   "proposed_gloss": "guess correctly",
+   "severity": "high",
+   "reviewer_detail": "'determine through advice or empathy' is an archaic sense preserved from the older meaning of raten (advise), and as English it barely reads as a verb meaning at all. The verb a learner meets is 'guess correctly' — Rate mal! … Du hast es erraten! — which is candidate_glosses index 1, 'to guess (something) correctly, to divine'. The importer took kaikki's first-listed sense over the only living one.",
+   "candidate_glosses": [
+    "to determine (something) through advice or empathy",
+    "to guess (something) correctly, to divine"
+   ]
+  },
+  {
+   "verb": "ersehen",
+   "separability": "inseparable",
+   "shipped_gloss": "learn",
+   "proposed_gloss": "gather, discern",
+   "severity": "low",
+   "reviewer_detail": "kaikki's bare 'to learn' loses what distinguishes this verb: ersehen is nearly always aus etwas ersehen, to gather or discern something from a document or set of facts (wie aus dem Bericht zu ersehen ist). As shipped it collides head-on with lernen and with erlernen, which this same corpus glosses 'learn, acquire', so the learner has no way to tell the three apart.",
+   "candidate_glosses": [
+    "to learn",
+    "to see"
+   ]
+  },
+  {
+   "verb": "erstatten",
+   "separability": "inseparable",
+   "shipped_gloss": "reimburse, file",
+   "proposed_gloss": "reimburse, refund",
+   "severity": "low",
+   "reviewer_detail": "The comma presents 'reimburse' and 'file' as synonyms, but they are two unrelated senses, and 'file' is uninterpretable on its own: it is a fragment of the fixed collocation Anzeige erstatten (file a complaint) / Bericht erstatten (make a report), where the meaning lives in the noun. Keeping 'reimburse' — the sense that works with a free object, as in Kosten erstatten — and dropping the stranded fragment.",
+   "candidate_glosses": [
+    "to pay back [with accusative ‘something’ and dative ‘to someone’] (also idiomatically translated by English reimburse or English refund (someone for something))",
+    "to grant, to administer, to make, to do"
+   ]
+  },
+  {
+   "verb": "ersterben",
+   "separability": "inseparable",
+   "shipped_gloss": "die",
+   "proposed_gloss": "die away, fade out",
+   "severity": "medium",
+   "reviewer_detail": "Plain 'die' of a person or animal is sterben; ersterben is not used that way in modern German. It survives almost exclusively in the figurative sense of a sound, motion, or expression fading out — der Lärm erstarb, das Lächeln erstarb auf ihren Lippen. That is candidate_glosses index 1, 'to die away, to gradually stop'. The shipped gloss both duplicates sterben and sends the learner to the wrong register.",
+   "candidate_glosses": [
+    "to die",
+    "to die away, to gradually stop"
+   ]
+  },
+  {
+   "verb": "erwachsen",
+   "separability": "inseparable",
+   "shipped_gloss": "grow up, grow",
+   "proposed_gloss": "arise from, result from",
+   "severity": "medium",
+   "reviewer_detail": "'grow up' is what aufwachsen means, and it is almost certainly first in kaikki because the participle erwachsen became the adjective for 'adult'. As a finite verb in modern German, erwachsen means to arise or spring from something: daraus erwuchsen erhebliche Probleme, ihm erwuchs daraus ein Vorteil. That is candidate_glosses index 1 ('to spring up, to spring from, to proceed from') and index 4 ('to arise (difficulties, tasks)'). A learner given 'grow up' will reach for erwachsen where only aufwachsen works.",
+   "candidate_glosses": [
+    "to grow up, to grow",
+    "to spring up, to spring from, to proceed from",
+    "to accrue",
+    "to grow out of",
+    "to arise (difficulties, tasks)"
+   ]
+  }
+ ]
+}

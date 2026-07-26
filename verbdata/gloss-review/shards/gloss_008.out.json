@@ -1,0 +1,32 @@
+{
+  "austrinken": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The verb means to drink something to the last drop (Duden: ganz leer trinken); the emptying is only the result and the drinking is the criterial part. The shipped 'empty' comes from candidate_glosses index 0, kaikki's bare 'to empty', which strips exactly the component that distinguishes austrinken from leeren. As shipped, a learner would use austrinken for emptying a box or a room. Index 2, 'to finish one's drink', is the sense actually meant.",
+        "fix_gloss": "drink up"
+      }
+    ]
+  },
+  "ausschreiben": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "English 'advertise' defaults to promoting a product or service, which ausschreiben never means; that is werben fuer. The verb covers putting a position or contract out for open application or tender (eine Stelle ausschreiben) and, separately, writing something out in full (eine Zahl ausschreiben). candidate_glosses indices 1, 3 and 5 all point at the tender sense, so index 0's unqualified 'advertise' is a shortening that lost the qualifier.",
+        "fix_gloss": "advertise (a position)"
+      }
+    ]
+  },
+  "ausziehen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "Both shipped senses are real, but kaikki's entry order is not frequency order here: Duden leads with the clothing sense, and 'take off / undress' is what a learner meets first and hears most (zieh die Schuhe aus, sich ausziehen). candidate_glosses indices 2 through 4 all cover it. Shipping only 'move out, vacate' leaves the everyday sense unrepresented.",
+        "fix_gloss": "take off (clothes), move out"
+      }
+    ]
+  }
+}

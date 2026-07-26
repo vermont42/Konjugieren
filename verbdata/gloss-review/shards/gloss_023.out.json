@@ -1,0 +1,32 @@
+{
+  "haushalten": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The shipped gloss takes kaikki's first sense, the literal 'run a household', which is the dated reading; modern usage is overwhelmingly 'mit etwas haushalten' — to use a resource sparingly (mit den Kräften/Ressourcen/dem Geld haushalten). DWDS and Duden both give the economizing sense as the live one, and it is candidate_glosses index 1. A learner meeting haushalten in text will almost always meet it with 'mit' plus a resource, not as a synonym for einen Haushalt führen.",
+        "fix_gloss": "economize, be thrifty"
+      }
+    ]
+  },
+  "herausbrechen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The shipped gloss takes kaikki's first sense, the narrow figurative one that only works in the frame 'es brach aus ihm heraus' (words bursting out of someone). The sense a learner meets is the literal one at candidate_glosses index 1: forcibly breaking a piece out of something, or a piece breaking off (einen Zahn herausbrechen, ein Stück aus der Mauer herausbrechen). Standing alone as English, 'burst out' also reads as burst out laughing or burst out of a room, neither of which this verb means.",
+        "fix_gloss": "break out, break off"
+      }
+    ]
+  },
+  "herausgeben": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "'publish' is right, but 'hand out' names the wrong action for the second sense. herausgeben is handing something over or giving it back to its owner — surrendering documents, giving change (Geld herausgeben) — not distributing copies to a group, which is verteilen or austeilen. A learner taking 'hand out' at face value would produce 'Flyer herausgeben', which German does not say. candidate_glosses index 1 has it as 'to hand over, to give, to restitute'; the safe fix is to keep the publishing sense the gloss already leads with and drop the misleading second term.",
+        "fix_gloss": "publish, issue"
+      }
+    ]
+  }
+}

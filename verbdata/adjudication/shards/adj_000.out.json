@@ -1,0 +1,127 @@
+{
+  "abberufen": {
+    "own_gloss": "recall (from a post)",
+    "verdict": "accept",
+    "reason": "Bare 'withdraw' is the vaguest reading of candidate 0 and points at withdrawing money/troops/statements, none of which abberufen covers; the verb is recalling a person from an office or post (candidate 1, einen Botschafter abberufen)."
+  },
+  "abblasen": {
+    "own_gloss": "call off, cancel",
+    "verdict": "accept",
+    "reason": "The dominant modern sense is calling off an event or plan (candidate 2, das Spiel/den Streik abblasen); the shipped literal 'blow off/blow clear' (candidate 0) is a technical blowing sense the learner will rarely meet."
+  },
+  "abdrehen": {
+    "own_gloss": "turn off, shut off",
+    "verdict": "accept",
+    "reason": "'veer' (candidate 0) is a narrow nautical/aviation sense; the everyday meaning is shutting off a supply at a valve or switch (candidate 4, das Wasser/Gas abdrehen). Both proposed words are true synonyms."
+  },
+  "abfeiern": {
+    "own_gloss": "take time off in lieu",
+    "verdict": "accept",
+    "reason": "My independent gloss reached the standard workplace sense (candidate 2, Überstunden abfeiern), which dictionaries list first; the shipped 'celebrate, praise, love' is the newer colloquial-slang sense (candidate 0) whose lead word 'celebrate' reads as plain feiern. Both are sourced, so no unsourced-wording penalty applies."
+  },
+  "abführen": {
+    "own_gloss": "lead away (in custody)",
+    "verdict": "accept",
+    "reason": "'take away' is a truncation of candidate 0 that dropped the '(someone in police custody)' parenthetical, leaving a gloss that reads as wegnehmen; abführen is leading a person away under escort (candidate 0)."
+  },
+  "abgleichen": {
+    "own_gloss": "compare, reconcile",
+    "verdict": "accept",
+    "reason": "The shipped 'verify congruence' is lifted from a garbled kaikki entry (candidate 0, 'to but check or collate') and is not English anyone uses; abgleichen is comparing data or accounts to bring them into agreement (Daten/Kontostände abgleichen)."
+  },
+  "abhauen": {
+    "own_gloss": "clear off, run away",
+    "verdict": "accept",
+    "reason": "The live everyday meaning is to clear off or run away (candidate 1, Hau ab!, er ist abgehauen); the shipped 'cut off' is the older literal hewing sense (candidate 0) surviving mainly in fixed phrases."
+  },
+  "ablenken": {
+    "own_gloss": "distract, divert",
+    "verdict": "accept",
+    "reason": "The core sense is distracting someone or their attention (candidate 1, jemanden ablenken); bare 'divert' (candidate 0) reads as redirecting traffic or a river, which is umleiten, inviting the wrong use. The proposal keeps 'divert' and adds the primary sense."
+  },
+  "ablesen": {
+    "own_gloss": "read off (a meter)",
+    "verdict": "accept",
+    "reason": "The shortening cut '(take a reading)' from candidate 0, collapsing the gloss into the base verb lesen; ablesen never means reading a book, it is taking a reading off a gauge (den Zaehlerstand ablesen)."
+  },
+  "abrichten": {
+    "own_gloss": "train (an animal)",
+    "verdict": "accept",
+    "reason": "The everyday meaning is training an animal (candidate 1, einen Hund abrichten); bare 'drill' (candidate 0) reads first as boring a hole, which is bohren, and would teach the wrong verb."
+  },
+  "abstechen": {
+    "own_gloss": "stab to death",
+    "verdict": "accept",
+    "reason": "The shipped 'cut off, cut out, carve out' renders the specialized spade sense (candidate 0, Torf abstechen) and reads as a synonym of abschneiden, which it is not; the ordinary sense is to stab, especially to death (candidate 1, ein Schwein abstechen)."
+  },
+  "absterben": {
+    "own_gloss": "die off, die back",
+    "verdict": "accept",
+    "reason": "absterben is the ordinary verb for tissue, plants, or limbs dying off (candidate 2, abgestorbene Aeste; mir ist der Fuss abgestorben); 'atrophy' is both more technical and semantically off, since atrophy is wasting from disuse (verkuemmern)."
+  },
+  "abtreiben": {
+    "own_gloss": "have an abortion",
+    "verdict": "accept",
+    "reason": "In essentially all contemporary non-nautical use abtreiben means the abortion sense (candidates 1 and 2); the shipped 'go/be sent off course' (candidate 0) is the drift sense restricted to boats and swimmers, the wrong sense to have chosen."
+  },
+  "abtreten": {
+    "own_gloss": "step down, cede",
+    "verdict": "accept",
+    "reason": "'kick away' (candidate 0) is a marginal reading; the senses a learner meets are stepping down from office (candidate 4, von einem Amt abtreten) and ceding rights or territory (Rechte/Gebiete abtreten), which are related relinquish senses rather than opposed ones."
+  },
+  "abwägen": {
+    "own_gloss": "weigh up, consider",
+    "verdict": "accept",
+    "reason": "abwägen is figurative only, weighing options against one another (Vor- und Nachteile abwägen); bare 'weigh' (candidate 0, once disambiguated by the dropped '(to determine the intrinsic value or merit)') collides directly with abwiegen, which this corpus glosses 'weigh, weigh out'."
+  },
+  "abwählen": {
+    "own_gloss": "vote out",
+    "verdict": "accept",
+    "reason": "Shipped 'deselect' (candidate 0) is the narrow computing/checkbox reading; in ordinary German abwählen means voting an officeholder out (candidate 1, eine Regierung abwählen) or dropping a school subject, which a learner given only 'deselect' would miss. The proposal keeps 'deselect' and adds the political sense."
+  },
+  "anfallen": {
+    "own_gloss": "arise, accrue",
+    "verdict": "accept",
+    "reason": "The reading a learner meets is the impersonal one (candidate 3, anfallende Kosten/Arbeit/Daten), i.e. costs or work that arise or accrue; the shipped 'set upon, attack suddenly' (candidate 0) is a literary and largely dated sense."
+  },
+  "angeloben": {
+    "own_gloss": "swear in (Austrian)",
+    "verdict": "accept",
+    "reason": "angeloben is chiefly Austrian and its ordinary use is the swearing-in of soldiers and officeholders (candidate 2, Angelobung); the shipped 'vow' is the base-verb sense of geloben, not what a learner meets angeloben in."
+  },
+  "anhaben": {
+    "own_gloss": "wear, have on",
+    "verdict": "accept",
+    "reason": "The trailing 'see usage notes' is Wiktionary editorial scaffolding that survived the shortening of candidate 0; it is not part of the meaning and reads as broken English. The remaining 'wear, have on' is correct."
+  },
+  "anhalten": {
+    "own_gloss": "stop, halt",
+    "verdict": "accept",
+    "reason": "'stop, continue' joins two opposite actions under the house style's synonym comma, asserting something false; the sense a learner meets is 'stop' (candidate 0, er hielt das Auto an), and 'halt' is a true synonym."
+  },
+  "anhängen": {
+    "own_gloss": "attach, append",
+    "verdict": "accept",
+    "reason": "The everyday sense is physical or digital attachment (eine Datei anhängen, einen Anhänger anhängen), entirely absent from kaikki's entry here; the shipped 'weigh on, burden' renders only the far rarer figurative dative reading (candidate 0). Attach is the common sense the shipped gloss omits, so the fix is a rewrite."
+  },
+  "anklagen": {
+    "own_gloss": "accuse, indict",
+    "verdict": "accept",
+    "reason": "The shipped 'indict by the findings of a jury)' is a mangled shortening of candidate 0, cutting the middle of the parenthetical and leaving a dangling clause with an unbalanced closing paren; anklagen means to accuse or, in legal register, to charge or indict."
+  },
+  "anleiten": {
+    "own_gloss": "guide, instruct",
+    "verdict": "accept",
+    "reason": "'guide or to train' is candidate 0 pasted with only the first 'to' stripped, leaving a dangling infinitive marker ungrammatical in the bare-verb-phrase style; anleiten is to instruct or give guidance to someone (Anleitung)."
+  },
+  "anreden": {
+    "own_gloss": "address, speak to",
+    "verdict": "reject",
+    "reason": "The shipped 'begin a talk with someone' is candidate 0 verbatim and conveys the addressing sense, just awkwardly; the proposed 'address, speak to' is the reviewer's own wording, absent from candidate_glosses. Sourced-but-clunky survives over unsourced-but-clean, and the change is naturalness rather than a fix of a wrong sense."
+  },
+  "anvertrauen": {
+    "own_gloss": "entrust",
+    "verdict": "accept",
+    "reason": "The shipped 'entrust in various ways' is kaikki's sense-group umbrella, not a definition: candidate 0 ends in a colon and the sub-senses follow. The plain meaning is entrust (candidate 1)."
+  }
+}

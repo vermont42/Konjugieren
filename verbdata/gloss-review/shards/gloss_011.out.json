@@ -1,0 +1,72 @@
+{
+  "berücken": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The literal 'ensnare' (catching game in a Rücke, a snare) is the obsolete hunting sense. In all living use berücken means to enchant or charm — Duden glosses it 'in seinen Bann ziehen, bezaubern', and the participle berückend ('berückend schön') is how a learner actually meets the word. candidate_glosses index 1, 'to captivate', is the sense that should have shipped; English 'ensnare' additionally carries a connotation of trickery that the German does not.",
+        "fix_gloss": "captivate, enchant"
+      }
+    ]
+  },
+  "bescheiden": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "'Confer the decision or fate formally' is not English one can use — you do not confer a decision on someone — and it leaves the learner without a usable verb. The transitive verb is Amtsdeutsch: jemanden abschlägig bescheiden = to give someone a formal (negative) ruling, i.e. to notify them of an official decision. candidate_glosses index 0 also offers 'to announce, to proclaim', which is closer to usable but too broad; the notification-of-a-decision element is the whole point of the word.",
+        "fix_gloss": "notify of a decision"
+      }
+    ]
+  },
+  "beschenken": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "'Endow' in English means to fund an institution or to be furnished with a quality, neither of which beschenken does. jemanden beschenken is the everyday word for giving somebody presents — what happens at Weihnachten and Geburtstage. candidate_glosses index 1, 'to present, to gift', is the sense a learner meets.",
+        "fix_gloss": "give presents to"
+      }
+    ]
+  },
+  "beschneiden": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "Circumcision is a real sense but a specialized one. The senses a learner actually meets are horticultural (Hecken, Bäume, Sträucher beschneiden) and figurative (Rechte, Freiheiten, Befugnisse beschneiden) — the latter is among the verb's most frequent collocations in journalistic German, and Duden lists the trimming sense first. candidate_glosses index 1, 'to trim; to prune', should have shipped, extended with the curtail reading.",
+        "fix_gloss": "trim, prune, curtail"
+      }
+    ]
+  },
+  "bespringen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "The gloss is a Wiktionary cross-reference, not a meaning: 'synonym of begatten' tells an English-speaking learner nothing, and the target verb is itself untranslated. bespringen is the animal-husbandry word for a male mounting a female to breed — the ':' clause kaikki appended, 'to cover', is the English term of art but is opaque standing alone.",
+        "fix_gloss": "mount (of animals)"
+      }
+    ]
+  },
+  "bestecken": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "'Get stuck' is the rare intransitive reading (a vessel or plough besteckt = comes to a standstill), archaic outside nautical and agricultural usage. The living verb is transitive and means to set things into a surface: einen Kranz mit Blumen bestecken, einen Braten mit Speck bestecken. candidate_glosses index 1 has it. As shipped, the gloss names an action with the opposite valency from what the verb does.",
+        "fix_gloss": "adorn by sticking in"
+      }
+    ]
+  },
+  "beschicken": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "'Send' is right for eine Messe/Konferenz beschicken (to send exhibits or delegates to), but 'commit' is not English one can use for this verb — it pulls toward committing a crime or committing resources. It also omits the verb's most frequent modern use, the technical one: einen Ofen, Reaktor or eine Maschine beschicken = to charge or feed it, which candidate_glosses index 1 covers with 'to load'.",
+        "fix_gloss": "send to, load"
+      }
+    ]
+  }
+}

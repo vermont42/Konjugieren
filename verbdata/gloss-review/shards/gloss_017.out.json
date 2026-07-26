@@ -1,0 +1,32 @@
+{
+  "entrücken": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "Both words in the shipped gloss name the wrong action to any learner. 'translate' is the archaic theological sense (as in 'Enoch was translated to heaven'), and a German learner will read it as übersetzen — the single most confusable false lead possible in a language app. 'rapture' as a transitive verb is not ordinary English either. The verb means to carry someone off to another place or state, and in living use it is the mental/spiritual sense: die Musik entrückte ihn, and the participle entrückt 'rapt, in a trance, far away'. candidate_glosses has this at index 1 ('to ravish, to enrapture, to enthrall (spiritually)') and index 2 ('to transport, to carry away (mentally)'); the importer took index 0.",
+        "fix_gloss": "carry away, enrapture"
+      }
+    ]
+  },
+  "entheben": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "'relieve' standing alone reads in English as relieve pain or relieve pressure, which is erleichtern or lindern, not entheben. Entheben takes a genitive of the thing someone is freed from and its live use is jemanden seines Amtes entheben — remove from office, relieve of duty (hence Amtsenthebung). The gloss points at the right action but the one word most learners will resolve it to is the wrong verb.",
+        "fix_gloss": "relieve of duty"
+      }
+    ]
+  },
+  "entschlafen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "Correct as far as it goes, but leading with 'fall asleep' invites the error the verb is most likely to cause: a learner glossing entschlafen onto einschlafen and writing ich bin gestern früh entschlafen. Modern entschlafen is a euphemism for dying (sanft entschlafen, die Entschlafenen) and is not used for ordinary sleep. Putting 'die' second, after a comma the house style reads as 'these mean the same thing', understates that the death sense is the only one in use.",
+        "fix_gloss": "pass away"
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "daransetzen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "Shortening destroyed the sense. kaikki's sense 0 is \"to risk, to not spare, to make (every effort), to use\"; stripping the parenthetical left \"make\" and \"use\" as bare verbs, and \"not spare\" as a fragment. The result reads as four unrelated generic verbs rather than a meaning. The verb lives almost entirely in the collocation \"alles daransetzen\" / \"seine ganze Kraft daransetzen\": to stake something on an aim, to devote all one's effort to it.",
+        "fix_gloss": "devote, stake"
+      }
+    ]
+  },
+  "draufgeben": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "Ungrammatical English produced by dropping a parenthetical. kaikki sense 0 is \"to add (on top) of something\"; deleting \"(on top)\" leaves \"add of something\", which is not a usable phrase. The verb means to add something on top of what is already there (etwas draufgeben).",
+        "fix_gloss": "add on top"
+      }
+    ]
+  },
+  "davontragen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The literal sense was shipped over the ones the verb actually carries in use. Plain \"carry away\" is expressed by wegtragen; davontragen is nearly always figurative — Verletzungen/einen Schaden davontragen (sustain an injury), den Sieg/den Preis davontragen (carry off the victory). Those are candidate_glosses indices 1 (\"to achieve, obtain\") and 2 (\"to suffer\").",
+        "fix_gloss": "carry off, sustain"
+      }
+    ]
+  },
+  "dazukommen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "\"arrive\" collides with ankommen and does not name what dazukommen does. The verb means to join something already in progress or, very commonly, to be added on top of what precedes — \"dazu kommt, dass …\" (on top of that …). candidate_glosses index 1 is \"to be added\"; the joining sense is what a learner meets first.",
+        "fix_gloss": "join, be added"
+      }
+    ]
+  },
+  "dahinsterben": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "\"die\" is the gloss for plain sterben and drops everything the dahin- prefix contributes. Like dahinsiechen and dahinvegetieren, this verb names a gradual dying — wasting away over time, or a population dying off one after another — not the event of death.",
+        "fix_gloss": "waste away, die off"
+      }
+    ]
+  },
+  "darniederliegen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "\"be sick\" is faithful to candidate_glosses index 0 but misleads twice: in British English \"be sick\" reads as \"vomit\", and the elevated German verb applies well beyond illness — die Wirtschaft / der Handel liegt darnieder. The sense is lying prostrate, laid low, in a slump; index 1 (\"to languish\") is closer.",
+        "fix_gloss": "be laid low, languish"
+      }
+    ]
+  }
+}

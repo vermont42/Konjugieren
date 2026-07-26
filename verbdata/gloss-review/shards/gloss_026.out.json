@@ -1,0 +1,72 @@
+{
+  "hintanhalten": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "Not usable English. 'Evite' is an archaic Latinate rarity no learner (and few native speakers) will recognize, and the comma-joined remainder, 'try to make something not appear', is a dictionary paraphrase rather than a gloss. The verb is Austrian/administrative German for preventing or averting something before it can happen (Missbrauch hintanhalten).",
+        "fix_gloss": "prevent, avert"
+      }
+    ]
+  },
+  "hintanstellen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The leading synonym 'put back' reads as returning an object to its place, which is zurückstellen or zurücklegen, not this verb; and 'order into a posterior position' is stilted dictionary English. Hintanstellen means to place something last in priority, typically figuratively (seine eigenen Interessen hintanstellen = subordinate one's own interests).",
+        "fix_gloss": "put last"
+      }
+    ]
+  },
+  "hinwegsehen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The shipped gloss takes kaikki's first, literal sense (looking over the top of something), while the sense a learner meets is the figurative one at candidate_glosses index 1: über etwas hinwegsehen = to disregard a fault, to turn a blind eye. The English 'look over' also misleads independently, since it usually means to examine.",
+        "fix_gloss": "overlook, ignore"
+      }
+    ]
+  },
+  "hochdrehen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "'Turn upward' describes rotating something so it points up. The verb's everyday sense is increasing a setting by turning: die Heizung/die Musik hochdrehen, and den Motor hochdrehen for revving an engine. English 'turn up' carries exactly that and is what the learner needs.",
+        "fix_gloss": "turn up"
+      }
+    ]
+  },
+  "hochfahren": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "'Drive upwards/northwards' is kaikki's first-listed sense and the most marginal of the three; the reading a learner actually meets is candidate_glosses index 1, starting up a computer or system (den Rechner hochfahren, die Produktion hochfahren). The slashed 'upwards/northwards' also asks the learner to pick between two unrelated directions.",
+        "fix_gloss": "boot up, start up"
+      }
+    ]
+  },
+  "hochrechnen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "The importer took kaikki's second, pejorative sense, and 'calculate purposefully high in the dark' is not usable English about anything. Hochrechnen is the neutral statistical verb behind Hochrechnung, the election-night projection: extrapolating a whole from a partial sample. Candidate_glosses index 0 has the right sense ('to project, to cast').",
+        "fix_gloss": "extrapolate, project"
+      }
+    ]
+  },
+  "innehaben": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "Bare 'hold' presents this as a synonym of halten and invites the learner to write things like 'Ich habe das Buch inne'. Innehaben takes offices, posts, positions, and titles, never physical objects; the restriction is the whole of the word's meaning and candidate_glosses index 0 states it.",
+        "fix_gloss": "hold (an office)"
+      }
+    ]
+  }
+}

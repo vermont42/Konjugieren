@@ -1,0 +1,306 @@
+{
+ "shard": 2,
+ "records": [
+  {
+   "verb": "befallen",
+   "separability": "inseparable",
+   "shipped_gloss": "affect",
+   "proposed_gloss": "afflict, infest",
+   "severity": "low",
+   "reviewer_detail": "'affect' is too weak and collides with beeinflussen and beeinträchtigen — beeinträchtigen ships as 'impair, affect' in this same shard. befallen is the verb of disease, pests, and sudden emotion seizing a subject: 'von Schädlingen befallen', 'Angst befiel ihn'. The precise senses are in candidate_glosses at index 1 ('to seize') and index 2 ('to infest'). A learner given 'affect' would produce neutral-causation sentences the verb cannot carry.",
+   "candidate_glosses": [
+    "to affect",
+    "to seize",
+    "to infest"
+   ]
+  },
+  {
+   "verb": "befühlen",
+   "separability": "inseparable",
+   "shipped_gloss": "palpate",
+   "proposed_gloss": "feel, touch",
+   "severity": "medium",
+   "reviewer_detail": "'palpate' is medical jargon opaque to most English speakers, and the German verb it actually translates is abtasten (or palpieren). befühlen is everyday German for running one's hands over something to feel it — 'den Stoff befühlen'. kaikki offers only this one candidate, so the register mismatch came in unfiltered rather than from a wrong-sense pick.",
+   "candidate_glosses": [
+    "to palpate"
+   ]
+  },
+  {
+   "verb": "beikommen",
+   "separability": "separable",
+   "shipped_gloss": "come here",
+   "proposed_gloss": "deal with, get at",
+   "severity": "medium",
+   "reviewer_detail": "'come here' is kaikki's sense 0 but corresponds to Duden's landschaftlich (regional) reading 'herankommen'. Standard beikommen takes the dative and means to get at, cope with, or tackle someone or something: 'dem Problem ist nicht beizukommen', 'ihm ist schwer beizukommen'. That is candidate_glosses index 1 ('to deal with'), so the common sense was available and passed over.",
+   "candidate_glosses": [
+    "to come here",
+    "to deal with",
+    "to come to mind"
+   ]
+  },
+  {
+   "verb": "beklagen",
+   "separability": "inseparable",
+   "shipped_gloss": "pity, lament",
+   "proposed_gloss": "lament, deplore",
+   "severity": "low",
+   "reviewer_detail": "The lead synonym 'pity' points at bemitleiden, which ships in this same corpus glossed exactly 'pity'. beklagen is to lament, bemoan, or deplore — Verluste beklagen, die zu beklagenden Opfer — with reflexive sich beklagen meaning complain. 'Lament' is present in candidate 0 but arrives second, behind the reading that collides.",
+   "candidate_glosses": [
+    "to pity, to lament",
+    "to complain"
+   ]
+  },
+  {
+   "verb": "belachen",
+   "separability": "inseparable",
+   "shipped_gloss": "laugh at, belaugh",
+   "proposed_gloss": "laugh at",
+   "severity": "low",
+   "reviewer_detail": "'Belaugh' is not usable English — it is a Wiktionary calque of the German prefixation, not a word a learner will ever encounter or be understood using. The first synonym carries the meaning correctly, so the gloss is not unusable, but the second half is noise imported verbatim from candidate 0.",
+   "candidate_glosses": [
+    "to laugh at, to belaugh (in a friendly manner)",
+    "to laugh at, to belaugh (mockingly)"
+   ]
+  },
+  {
+   "verb": "bemeistern",
+   "separability": "inseparable",
+   "shipped_gloss": "dominate",
+   "proposed_gloss": "master, overcome",
+   "severity": "medium",
+   "reviewer_detail": "bemeistern means to get something under control — to master or overcome it (seine Angst bemeistern, die Lage bemeistern). 'Dominate' names a different action, the one carried by beherrschen or dominieren, and a learner taught it would use bemeistern for holding power over people rather than for overcoming a difficulty. The correct sense is not in candidate_glosses; kaikki's single entry is itself the weak rendering.",
+   "candidate_glosses": [
+    "to dominate"
+   ]
+  },
+  {
+   "verb": "bepflanzen",
+   "separability": "inseparable",
+   "shipped_gloss": "plant",
+   "proposed_gloss": "plant (an area)",
+   "severity": "low",
+   "reviewer_detail": "bepflanzen takes the ground as its object, not the plant: ein Beet bepflanzen is to plant a bed with something, while planting a tree is pflanzen or einpflanzen. The bare gloss 'plant' loses the be- prefix's applicative force and invites the error einen Baum bepflanzen. candidate 0 preserves the distinction with its '(supply with plants)' rider, which the shortening dropped.",
+   "candidate_glosses": [
+    "to plant (supply with plants)"
+   ]
+  },
+  {
+   "verb": "berücken",
+   "separability": "inseparable",
+   "shipped_gloss": "ensnare",
+   "proposed_gloss": "captivate, enchant",
+   "severity": "medium",
+   "reviewer_detail": "The literal 'ensnare' (catching game in a Rücke, a snare) is the obsolete hunting sense. In all living use berücken means to enchant or charm — Duden glosses it 'in seinen Bann ziehen, bezaubern', and the participle berückend ('berückend schön') is how a learner actually meets the word. candidate_glosses index 1, 'to captivate', is the sense that should have shipped; English 'ensnare' additionally carries a connotation of trickery that the German does not.",
+   "candidate_glosses": [
+    "to ensnare",
+    "to captivate"
+   ]
+  },
+  {
+   "verb": "bescheiden",
+   "separability": "inseparable",
+   "shipped_gloss": "confer the decision or fate formally",
+   "proposed_gloss": "notify of a decision",
+   "severity": "medium",
+   "reviewer_detail": "'Confer the decision or fate formally' is not English one can use — you do not confer a decision on someone — and it leaves the learner without a usable verb. The transitive verb is Amtsdeutsch: jemanden abschlägig bescheiden = to give someone a formal (negative) ruling, i.e. to notify them of an official decision. candidate_glosses index 0 also offers 'to announce, to proclaim', which is closer to usable but too broad; the notification-of-a-decision element is the whole point of the word.",
+   "candidate_glosses": [
+    "to confer the decision or fate formally, to announce, to proclaim",
+    "to accept so as to become content with"
+   ]
+  },
+  {
+   "verb": "beschenken",
+   "separability": "inseparable",
+   "shipped_gloss": "endow",
+   "proposed_gloss": "give presents to",
+   "severity": "medium",
+   "reviewer_detail": "'Endow' in English means to fund an institution or to be furnished with a quality, neither of which beschenken does. jemanden beschenken is the everyday word for giving somebody presents — what happens at Weihnachten and Geburtstage. candidate_glosses index 1, 'to present, to gift', is the sense a learner meets.",
+   "candidate_glosses": [
+    "to endow",
+    "to present, to gift"
+   ]
+  },
+  {
+   "verb": "beschicken",
+   "separability": "inseparable",
+   "shipped_gloss": "send, commit",
+   "proposed_gloss": "send to, load",
+   "severity": "low",
+   "reviewer_detail": "'Send' is right for eine Messe/Konferenz beschicken (to send exhibits or delegates to), but 'commit' is not English one can use for this verb — it pulls toward committing a crime or committing resources. It also omits the verb's most frequent modern use, the technical one: einen Ofen, Reaktor or eine Maschine beschicken = to charge or feed it, which candidate_glosses index 1 covers with 'to load'.",
+   "candidate_glosses": [
+    "to send, to commit",
+    "to procure, to supply, to load, to furnish, to ready"
+   ]
+  },
+  {
+   "verb": "beschneiden",
+   "separability": "inseparable",
+   "shipped_gloss": "circumcise",
+   "proposed_gloss": "trim, prune, curtail",
+   "severity": "medium",
+   "reviewer_detail": "Circumcision is a real sense but a specialized one. The senses a learner actually meets are horticultural (Hecken, Bäume, Sträucher beschneiden) and figurative (Rechte, Freiheiten, Befugnisse beschneiden) — the latter is among the verb's most frequent collocations in journalistic German, and Duden lists the trimming sense first. candidate_glosses index 1, 'to trim; to prune', should have shipped, extended with the curtail reading.",
+   "candidate_glosses": [
+    "to circumcise",
+    "to trim; to prune"
+   ]
+  },
+  {
+   "verb": "bespringen",
+   "separability": "inseparable",
+   "shipped_gloss": "synonym of begatten",
+   "proposed_gloss": "mount (of animals)",
+   "severity": "high",
+   "reviewer_detail": "The gloss is a Wiktionary cross-reference, not a meaning: 'synonym of begatten' tells an English-speaking learner nothing, and the target verb is itself untranslated. bespringen is the animal-husbandry word for a male mounting a female to breed — the ':' clause kaikki appended, 'to cover', is the English term of art but is opaque standing alone.",
+   "candidate_glosses": [
+    "synonym of begatten; to cover"
+   ]
+  },
+  {
+   "verb": "bestecken",
+   "separability": "inseparable",
+   "shipped_gloss": "get stuck",
+   "proposed_gloss": "adorn by sticking in",
+   "severity": "medium",
+   "reviewer_detail": "'Get stuck' is the rare intransitive reading (a vessel or plough besteckt = comes to a standstill), archaic outside nautical and agricultural usage. The living verb is transitive and means to set things into a surface: einen Kranz mit Blumen bestecken, einen Braten mit Speck bestecken. candidate_glosses index 1 has it. As shipped, the gloss names an action with the opposite valency from what the verb does.",
+   "candidate_glosses": [
+    "to get stuck",
+    "to decorate by sticking materials into something (e.g., flowers on a wreath)"
+   ]
+  },
+  {
+   "verb": "bestärken",
+   "separability": "inseparable",
+   "shipped_gloss": "strengthen, encourage, fortify",
+   "proposed_gloss": "reinforce, encourage",
+   "severity": "low",
+   "reviewer_detail": "bestärken takes a person as its object and means to reinforce or confirm someone in a belief, resolve, or opinion (jemanden in seiner Meinung bestärken). Leading with 'strengthen' and closing with 'fortify' points the learner at physical strengthening, which is stärken/verstärken, not bestärken; a learner reading this gloss would plausibly write 'die Mauer bestärken'. candidate_glosses index 1 ('to confirm, to reinforce') carries the actual sense.",
+   "candidate_glosses": [
+    "to strengthen, to encourage, to fortify",
+    "to confirm, to reinforce"
+   ]
+  },
+  {
+   "verb": "beweinen",
+   "separability": "inseparable",
+   "shipped_gloss": "cry over, beweep, bewail, mourn",
+   "proposed_gloss": "mourn, cry over",
+   "severity": "low",
+   "reviewer_detail": "The meaning is right, but this is kaikki's unfiltered synonym list rather than a gloss. 'beweep' is not modern English — it survives only in Shakespeare — and contributes nothing a learner can use, while four comma-separated synonyms overrun the house style. 'mourn, cry over' names the sense completely.",
+   "candidate_glosses": [
+    "to cry over, to beweep, bewail, mourn"
+   ]
+  },
+  {
+   "verb": "dahinsterben",
+   "separability": "separable",
+   "shipped_gloss": "die",
+   "proposed_gloss": "waste away, die off",
+   "severity": "low",
+   "reviewer_detail": "\"die\" is the gloss for plain sterben and drops everything the dahin- prefix contributes. Like dahinsiechen and dahinvegetieren, this verb names a gradual dying — wasting away over time, or a population dying off one after another — not the event of death.",
+   "candidate_glosses": [
+    "to die"
+   ]
+  },
+  {
+   "verb": "daransetzen",
+   "separability": "separable",
+   "shipped_gloss": "risk, not spare, make, use",
+   "proposed_gloss": "devote, stake",
+   "severity": "high",
+   "reviewer_detail": "Shortening destroyed the sense. kaikki's sense 0 is \"to risk, to not spare, to make (every effort), to use\"; stripping the parenthetical left \"make\" and \"use\" as bare verbs, and \"not spare\" as a fragment. The result reads as four unrelated generic verbs rather than a meaning. The verb lives almost entirely in the collocation \"alles daransetzen\" / \"seine ganze Kraft daransetzen\": to stake something on an aim, to devote all one's effort to it.",
+   "candidate_glosses": [
+    "to risk, to not spare, to make (every effort), to use",
+    "to set out, to dedicate oneself"
+   ]
+  },
+  {
+   "verb": "darniederliegen",
+   "separability": "separable",
+   "shipped_gloss": "be sick",
+   "proposed_gloss": "be laid low, languish",
+   "severity": "low",
+   "reviewer_detail": "\"be sick\" is faithful to candidate_glosses index 0 but misleads twice: in British English \"be sick\" reads as \"vomit\", and the elevated German verb applies well beyond illness — die Wirtschaft / der Handel liegt darnieder. The sense is lying prostrate, laid low, in a slump; index 1 (\"to languish\") is closer.",
+   "candidate_glosses": [
+    "to be sick",
+    "to languish"
+   ]
+  },
+  {
+   "verb": "davontragen",
+   "separability": "separable",
+   "shipped_gloss": "carry away",
+   "proposed_gloss": "carry off, sustain",
+   "severity": "medium",
+   "reviewer_detail": "The literal sense was shipped over the ones the verb actually carries in use. Plain \"carry away\" is expressed by wegtragen; davontragen is nearly always figurative — Verletzungen/einen Schaden davontragen (sustain an injury), den Sieg/den Preis davontragen (carry off the victory). Those are candidate_glosses indices 1 (\"to achieve, obtain\") and 2 (\"to suffer\").",
+   "candidate_glosses": [
+    "to carry away",
+    "to achieve, obtain",
+    "to suffer"
+   ]
+  },
+  {
+   "verb": "dazukommen",
+   "separability": "separable",
+   "shipped_gloss": "arrive",
+   "proposed_gloss": "join, be added",
+   "severity": "medium",
+   "reviewer_detail": "\"arrive\" collides with ankommen and does not name what dazukommen does. The verb means to join something already in progress or, very commonly, to be added on top of what precedes — \"dazu kommt, dass …\" (on top of that …). candidate_glosses index 1 is \"to be added\"; the joining sense is what a learner meets first.",
+   "candidate_glosses": [
+    "to arrive",
+    "to be added"
+   ]
+  },
+  {
+   "verb": "draufgeben",
+   "separability": "separable",
+   "shipped_gloss": "add of something",
+   "proposed_gloss": "add on top",
+   "severity": "high",
+   "reviewer_detail": "Ungrammatical English produced by dropping a parenthetical. kaikki sense 0 is \"to add (on top) of something\"; deleting \"(on top)\" leaves \"add of something\", which is not a usable phrase. The verb means to add something on top of what is already there (etwas draufgeben).",
+   "candidate_glosses": [
+    "to add (on top) of something",
+    "to put something on something"
+   ]
+  },
+  {
+   "verb": "durchbringen",
+   "separability": "separable",
+   "shipped_gloss": "be able to bring through",
+   "proposed_gloss": "get through, pull through",
+   "severity": "medium",
+   "reviewer_detail": "The shipped gloss is candidate 0 with its scaffolding intact: 'be able to' is modal framing from the dictionary wording, not part of the verb's meaning, so the phrase names no action a learner can attach to durchbringen. The senses actually met are 'get someone through' (an illness, an exam, a bill) and 'support, keep fed' — candidates 2 through 5 all cluster there.",
+   "candidate_glosses": [
+    "to be able to bring (something) through",
+    "to cause (something) to pass",
+    "to cause (something or someone) to pass an exam, a test, an inspection; win an election; etc.",
+    "to overcome opposition so as to make (a cause) advance in proceedings, to get (a bill) passed",
+    "to support (someone’s) life or livelihood",
+    "to provide (someone, an animal, etc.) with (usually the bare minimum of) sustenance, to allow (someone) the minimum needed to get by"
+   ]
+  },
+  {
+   "verb": "durchfallen",
+   "separability": "separable",
+   "shipped_gloss": "fall through",
+   "proposed_gloss": "fail (an exam)",
+   "severity": "medium",
+   "reviewer_detail": "The importer took the compositional literal sense. In use durchfallen almost always means to fail an exam or test (durch die Prüfung durchfallen), which candidate_glosses lists as sense 1 ('to fail, to not pass'). A learner shown 'fall through' will not recognize the verb in the context where it actually appears.",
+   "candidate_glosses": [
+    "to fall through",
+    "to fail, to not pass"
+   ]
+  },
+  {
+   "verb": "durchschauen",
+   "separability": "separable",
+   "shipped_gloss": "see through",
+   "proposed_gloss": "look through",
+   "severity": "low",
+   "reviewer_detail": "Candidate 0 reads 'to see through (e.g. a window, telescope)'; the shortening dropped the parenthetical that was doing the disambiguating work. Bare English 'see through' overwhelmingly means detecting a deception, which is the meaning of the inseparable durchscháuen (jemanden durchschauen), not of the literal separable verb glossed here. 'look through' names the intended sense unambiguously, and matches how durchblicken is glossed in this same corpus.",
+   "candidate_glosses": [
+    "to see through (e.g. a window, telescope)",
+    "to read something critically or carefully"
+   ]
+  }
+ ]
+}

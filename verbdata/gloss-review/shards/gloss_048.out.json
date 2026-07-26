@@ -1,0 +1,52 @@
+{
+  "überschauen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "English 'overlook' is dominantly read as 'fail to notice', which is what übersehen means — and übersehen ships with exactly that gloss elsewhere in the corpus, so the two collide and the learner is taught the opposite of überschauen. überschauen is to take in the whole of something at a glance: to survey it and comprehend its extent (candidate_glosses index 1 has 'to grasp, to assess, to comprehend'). kaikki's index 0 'to overlook' is the archaic 'look out over' reading, not the modern one.",
+        "fix_gloss": "survey, grasp"
+      }
+    ]
+  },
+  "überschlagen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "Skipping a page or passage is a real but secondary reading. Duden leads the transitive entry with 'flüchtig, ungefähr berechnen', and Kosten/den Preis überschlagen is the use a learner actually meets; kaikki's ordering here is entry order, not frequency. The right sense is candidate_glosses index 1.",
+        "fix_gloss": "estimate roughly"
+      }
+    ]
+  },
+  "überschreiben": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "Signing property over is the narrowest and rarest of this verb's readings — legal register, seldom encountered. The senses a learner meets are the computing one (candidate_glosses indices 2 and 3, 'to overwrite') and giving a text a heading (index 1). Shipping the conveyancing sense sends a learner looking for a notary when the word they will actually see is about a file being replaced.",
+        "fix_gloss": "overwrite"
+      }
+    ]
+  },
+  "überspielen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "'sth' is a dictionary abbreviation for 'something' that survived the import; it is apparatus, not English, and leaves the gloss reading as an unfinished phrase. The sense itself — copying or dubbing a recording onto another medium — is right and just needs the placeholder removed.",
+        "fix_gloss": "dub, re-record"
+      }
+    ]
+  },
+  "überstimmen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "überstimmen is specifically defeating someone by majority vote — the stem is Stimme, 'vote'. English 'overrule' names an authority setting a decision aside (German aufheben, verwerfen), which does not require a vote at all and could send a learner to the wrong word in a courtroom or committee context. candidate_glosses index 1 has the precise equivalent.",
+        "fix_gloss": "outvote"
+      }
+    ]
+  }
+}

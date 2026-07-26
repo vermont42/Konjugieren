@@ -4921,3 +4921,176 @@ shipped 1.2 previews and nothing else. Conjuguer's accepted 2.0 files were confo
 every advisory item, so they add no evidence, and Conjugar has contributed none. If the
 checks move into a shared skill, that provenance should move with them; an unsourced list
 of tolerances is exactly the kind of claim this repo has already watched go stale.
+
+## The gloss sweep, and what a verifier found in it (2026-07-25)
+
+Item 1 of `prompts/example_review_followups.md` — audit the glosses of the 2,432 shipping verbs the
+example-sentence review never examined. The brief and the shard builder already existed, unrun. Three
+things were missing and had to be built first: a wave driver for `verbdata/gloss-review/`, a
+corrections path argument on `apply_gloss_corrections.py` (it hardcoded the sentence review's file),
+and — unanticipated by the plan — a converter between the two, since the reviewer emits
+`{verb: {findings: [...]}}` and the applier consumes `{verb: {old, new, why}}`. Run 1 had evidently
+done that collapse by hand in-session. At 220 corrections, by hand was not an option.
+
+45 of 49 shards ran, 2,250 verbs, 220 findings, **9.8%** — roughly double the 5.0% the plan
+predicted. The rate held steady across every wave, so it is not a shard-draw artifact. The stop was
+the 75% window bound, hit at 71% with four shards left; those are resumable and cost about five
+points.
+
+**Why the rate doubled, and why that is not alarming.** The 5.0% baseline came from a reviewer
+reading example *sentences* that noticed bad glosses incidentally — it could only see glosses that
+contradicted their sentence. A dedicated gloss reviewer sees a class that was structurally invisible:
+importer shortening artifacts. `anhaben` shipped "wear, have on, see usage notes", Wiktionary
+editorial scaffolding that survived truncation. `anleiten` shipped "guide or to train", where only the
+first "to" got stripped. `anklagen` shipped a mangled parenthetical with an unbalanced `)`.
+
+**The verification pass was the best money spent.** A subagent adversarially re-judged all 34 wave-1
+findings, prompted to refute: 32 VALID, 1 OVERFLAG, 1 FIX_BAD, ~90% precision after discounting
+borderline calls. The over-flagging fear the brief is built around did not materialize. But it found
+four biases, all fixed in the brief mid-sweep (shards 000–015 ran under the old one; every metrics row
+now carries a `brief_sha` so the record says which):
+
+- Leaked dictionary apparatus was getting `low` when the brief's own `entmieten` precedent makes it
+  `high`. Clean prose was masking it — "entrust in various ways" is grammatical and still describes
+  kaikki's entry structure rather than the verb.
+- Severity had compressed into `medium` in both directions. A vaguer synonym of the *right* sense is
+  now explicitly `low`.
+- The reviewer flagged `anhalten` "stop, continue" for abusing the synonym comma, then shipped
+  "hang up, lay on" and "open (a book), serve". `fix_gloss` must now commit to one sense.
+- The one real recall gap: it caught every gloss whose English *looked* broken and missed glosses
+  reading as good English while naming the wrong sense of a common verb. `abheben` ships "lift off",
+  missing *Geld abheben* and answering the phone. The brief now says to work down from the most
+  frequent verbs, not the oddest-looking English. Four such misses (`abheben`, `anspringen`,
+  `anschlagen`, `abzeichnen`) are in old-brief shards and are listed for hand-review rather than
+  re-running 16 shards at ~19 points.
+
+The verifier also caught a sampling fact worth keeping: `build_gloss_shards.py` emits verbs
+alphabetically, so **shards are prefix clusters** — 000–005 is `abarbeiten` → `aufsperren`, 100%
+separable ab-/an-/auf- verbs. That is exactly the population where kaikki lists the transparent
+compositional sense first and the idiom later, so per-shard rates are not independent samples of the
+corpus.
+
+**A second subagent reviewed the pipeline and found a defect that had already fired.** The converter's
+smoke test wrote a header-only corrections file; feeding it to the applier printed
+`dry run: 0 gloss(es) would change` and exited 0. A clean success report for zero work — this repo's
+`--only-testing` failure mode, rebuilt from scratch in a new script. Both stages now refuse. Nine
+more went with it: a partial sweep that reported `_shards_reviewed: 16` while saying nothing about the
+other 33; second findings filed under "already corrected above" when the verb had not been corrected;
+unknown severities silently relabeled "below cutoff"; `--dryrun` (typo) silently writing to shipping
+data; `&` in a replacement refusing the entire file rather than being escaped; spliced XML written
+without ever being parsed.
+
+**The finding that should govern what happens next.** The brief asks the reviewer to cite a kaikki
+sense index when the right meaning was already listed, "because that makes it a mechanical import
+defect rather than a judgment call." That signal was going into free prose. It is computable, and now
+is: of 220 corrections, **24 are verbatim re-picks of a listed sense, 91 partial, and 105 are the
+reviewer's own wording with no source behind it.** The prior sentence review ran 48 of 55 as re-picks.
+Half of what this sweep proposes to write into `Verbs.xml` is model-authored lexicography.
+
+That is why nothing was applied. The error costs are asymmetric — a missed defect leaves an attested
+kaikki gloss in place, a false positive replaces an attested gloss with an unattested phrase — and
+`triage.md` now sorts authored-first so the entries needing a human are at the top. The cheap next
+step is a findings-only adjudicator on a second model: it reads 220 findings, not 2,432 verbs, so at
+the measured $0.68/shard it should cost $3–5 against the sweep's $30.44.
+
+One thing deliberately not done: the reviewer's output schema should echo the verbs it read, because
+`{}` currently means either "clean shard" or "never opened the file" and nothing distinguishes them.
+That is a third brief version mid-sweep, and no shard has returned zero findings yet, so it is logged
+here as the first change for the next run rather than made now.
+
+**Addendum, same day: the adjudicator is built, and it is genuinely cross-model.** The first plan for
+it assumed Opus 4.8 was gone — it is absent from the interactive `/model` picker — and the design
+compensated with blinding tricks to make Opus 5 a fair judge of its own proposals. Josh's instinct
+that a subagent might still reach it was right, and the check is one command:
+`claude -p "Reply with exactly: OK" --model claude-opus-4-8` returns `served: ['claude-opus-4-8']`.
+The picker curates; `--model` passes through to the API. Today's sentence review had in fact run 22
+shards on 4.8 through that same path a few hours earlier, which should have been the tell.
+
+So `verbdata/adjudication/` runs on 4.8 against Opus 5's proposals, and the cross-assignment logic
+from `example_review_run.md` applies again after having correctly *not* applied to the review pass.
+The distinction is worth keeping straight: no model wrote the shipped glosses, so auditing them on
+any model was fine; the moment a model's own output became the thing under review, self-review was
+back. Four artifacts: `prompts/gloss_adjudication.md`, `build_adjudication_shards.py` (220 proposals
+→ 9 shards of 25), `run_adjudication_wave.sh`, `merge_verdicts.py`.
+
+Two design decisions worth preserving. The adjudicator writes its **own** gloss from the verb and
+kaikki's senses *before* it is allowed to read the proposal, so agreement is evidence rather than
+anchoring. And the `traceability` class is deliberately **withheld** from it — telling a judge "no
+dictionary backs this one" would manufacture the correlation the merge step then measures. The
+verdict-by-traceability table in `verbdata/adjudication/triage.md` is a real measurement only because
+of that withholding: if rejections concentrate in `authored`, traceability is a usable filter for
+future runs; if they spread evenly, it predicts nothing and should stop being called a confidence
+signal.
+
+The adjudication brief also closes the coverage hole the review pass could not. There, `{}` meant
+either "clean shard" or "never opened the file". Here every verb must carry a verdict, so the driver
+asserts output keys against input verbs and records `covered`/`expected` per shard.
+
+## The adjudication ran, and traceability turned out to predict nothing (2026-07-25)
+
+The sweep finished at 49/49 — 2,432 verbs, 246 findings, **10.1%**. Opus 4.8 then adjudicated all 246
+proposals across 10 shards: **218 accept, 2 amend, 25 reject**, one verb unjudged. So the two models
+agree on about 90% of the writes, which independently reproduces the ~90% precision the wave-1
+verifier estimated from a 34-finding sample. Two different methods, same number.
+
+**The coverage assertion earned its place on the first run.** Shard 007 silently omitted `verweben`
+— 24 verdicts where 25 were required. In the review pass that would have been invisible, because
+there an absent verb meant "nothing wrong with it". Requiring an answer for every item, rather than
+only for problems, is what made the omission detectable. `verweben` is flagged in
+`verbdata/adjudication/triage.md` for a hand verdict; the shard was deliberately not re-run, since
+that would overwrite 24 good verdicts with fresh nondeterministic ones and muddy the record to
+recover a single value.
+
+**The negative result is the interesting one, and it kills a hypothesis this pipeline was starting to
+lean on.** `traceability` — whether a proposed gloss re-picks a listed kaikki sense or is the
+reviewer's own wording — was withheld from the adjudicator precisely so that verdict-by-traceability
+would measure something. It measured this:
+
+| | rejected | of | rate |
+|---|---|---|---|
+| repick | 4 | 29 | 13.8% |
+| partial | 8 | 102 | 7.8% |
+| authored | 13 | 114 | 11.4% |
+
+Flat. If anything the *re-picks* fared marginally worst. The prediction — that model-authored glosses
+with no dictionary behind them would be rejected disproportionately — is false, and the `triage.md`
+sort order built on it (authored-first, on the theory those most need a human) has no evidence behind
+it. Two readings, both worth keeping in mind: kaikki's listed senses are not a quality floor, so
+re-picking one buys less than it seems to; and a gloss being unattested says nothing about whether it
+is right, because the house style *requires* rewording that no dictionary entry will match verbatim.
+Traceability should stop being described as a confidence signal in this repo until something
+re-establishes it.
+
+A stronger signal did emerge, and it was free: **173 of the 220 surviving corrections are glosses
+both models wrote independently, character for character**, because the brief made the adjudicator
+commit its own gloss before reading the proposal. That is corroboration in a way agreement-after-
+seeing never is, and it is a better sort key for triage than traceability was.
+
+**Cost, and a bad estimate worth recording.** The sweep was $30.44 across 49 shards. Adjudication was
+**$13.24 across 10** — against my estimate of $2–3. The error was mine and it was structural: I
+priced the adjudication on its small *input* (169 tokens per record, ~4.2k per shard) and ignored
+that I had designed its *output* to be large. Requiring `own_gloss` on every record plus a reason per
+verdict produced a mean of 26,474 output tokens per shard, against the review pass's ~10,000. The
+derive-first design is worth keeping — it produced the corroboration signal above — but it costs
+roughly 2.5x per shard and should be priced that way next time. The session window went from 73% to
+100%, well past the 83% I projected when Josh approved the overrun.
+
+Nothing has been applied. `verbdata/gloss-review/gloss-corrections-final.json` holds 220 corrections
+and dry-runs clean against `Verbs.xml`.
+
+**Applied (2026-07-26).** Josh approved the accepted and amended glosses, and all 220 went into
+`Konjugieren/Models/Verbs.xml`. The applier's `old` assertion held on every entry, the spliced
+document re-parsed, `check_docs.py` reports 0 problems, and the full suite passes — 211 tests in 32
+suites.
+
+One check from the plan's step 5 that was worth doing rather than assuming: whether any test asserts
+a specific gloss string. None does. The only two matches in `KonjugierenTests/` are a comment in
+`ConjugatorTests` and a `shortened(_:)` helper inside the environment-gated `VerbClassificationTests`
+harness, which normalizes glosses rather than pinning them. So a gloss change cannot turn a test red,
+which cuts both ways: the corpus's English side has no regression net at all, and 220 values just
+moved without one.
+
+Left undone, deliberately: `verweben` still has no adjudication verdict, and the 43 multi-`<reading>`
+verbs in `verbdata/gloss-review/skipped-multi-reading.txt` were never sharded, because
+`apply_gloss_corrections.py` refuses to guess which of two senses to rewrite. At the sweep's measured
+10.1% that is perhaps four more defective glosses sitting in the corpus, reachable only by hand.

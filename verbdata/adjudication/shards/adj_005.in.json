@@ -1,0 +1,304 @@
+{
+ "shard": 5,
+ "records": [
+  {
+   "verb": "hinfahren",
+   "separability": "separable",
+   "shipped_gloss": "give a ride",
+   "proposed_gloss": "drive there, travel there",
+   "severity": "medium",
+   "reviewer_detail": "The importer took the transitive haben-sense (driving someone else somewhere), which is comparatively rare. The reading a learner actually meets is the intransitive sein-sense in candidate_glosses index 1: to drive or travel there, as in 'Wie kommst du hin?' — 'Ich fahre hin.' Glossed as 'give a ride', a learner cannot parse that ordinary use at all.",
+   "candidate_glosses": [
+    "to give a ride [auxiliary haben] (to drive for someone else to reach a destination)",
+    "to drive [auxiliary sein] (to drive to a specified location)",
+    "to drive away, to drive off",
+    "to decease",
+    "to quickly wipe (away) (not repeatedly) [with über (+ accusative)]"
+   ]
+  },
+  {
+   "verb": "hingeben",
+   "separability": "separable",
+   "shipped_gloss": "hand over",
+   "proposed_gloss": "sacrifice, give up",
+   "severity": "medium",
+   "reviewer_detail": "'Hand over' names the plain physical transfer, which German expresses with übergeben, aushändigen or reichen; hingeben carries an elevated sense of relinquishing something valuable — 'sein Leben hingeben', and reflexively 'sich einer Sache hingeben'. Candidate_glosses index 1 has the right sense. Glossed as 'hand over', a learner would use it for passing the salt.",
+   "candidate_glosses": [
+    "to hand over (away from speaker)",
+    "to sacrifice",
+    "to devote"
+   ]
+  },
+  {
+   "verb": "hingucken",
+   "separability": "separable",
+   "shipped_gloss": "synonym of hinsehen",
+   "proposed_gloss": "take a look, look",
+   "severity": "high",
+   "reviewer_detail": "The shipped gloss is a Wiktionary cross-reference, not a meaning: it points the learner at another German verb (hinsehen) instead of telling them what hingucken means. The verb is the colloquial (northern/central) equivalent of hinsehen: to direct one's gaze at something, to take a look.",
+   "candidate_glosses": [
+    "synonym of hinsehen"
+   ]
+  },
+  {
+   "verb": "hinrücken",
+   "separability": "separable",
+   "shipped_gloss": "move away",
+   "proposed_gloss": "move over there, shift over",
+   "severity": "medium",
+   "reviewer_detail": "The shortening dropped kaikki's '(from speaker)' and inverted the meaning in the process: English 'move away' reads as distancing oneself, i.e. wegrücken or abrücken. Hinrücken is shifting or scooting something toward a specified place — 'rück den Stuhl mal hin'. The hin- deixis is toward the target, not away from it.",
+   "candidate_glosses": [
+    "to move away (from speaker)"
+   ]
+  },
+  {
+   "verb": "hintanhalten",
+   "separability": "separable",
+   "shipped_gloss": "evite, try to make something not appear",
+   "proposed_gloss": "prevent, avert",
+   "severity": "high",
+   "reviewer_detail": "Not usable English. 'Evite' is an archaic Latinate rarity no learner (and few native speakers) will recognize, and the comma-joined remainder, 'try to make something not appear', is a dictionary paraphrase rather than a gloss. The verb is Austrian/administrative German for preventing or averting something before it can happen (Missbrauch hintanhalten).",
+   "candidate_glosses": [
+    "to evite, to try to make something not appear"
+   ]
+  },
+  {
+   "verb": "hintanstellen",
+   "separability": "separable",
+   "shipped_gloss": "put back, order into a posterior position",
+   "proposed_gloss": "put last",
+   "severity": "medium",
+   "reviewer_detail": "The leading synonym 'put back' reads as returning an object to its place, which is zurückstellen or zurücklegen, not this verb; and 'order into a posterior position' is stilted dictionary English. Hintanstellen means to place something last in priority, typically figuratively (seine eigenen Interessen hintanstellen = subordinate one's own interests).",
+   "candidate_glosses": [
+    "to put back, to order into a posterior position"
+   ]
+  },
+  {
+   "verb": "hinwegsehen",
+   "separability": "separable",
+   "shipped_gloss": "look over",
+   "proposed_gloss": "overlook, ignore",
+   "severity": "medium",
+   "reviewer_detail": "The shipped gloss takes kaikki's first, literal sense (looking over the top of something), while the sense a learner meets is the figurative one at candidate_glosses index 1: über etwas hinwegsehen = to disregard a fault, to turn a blind eye. The English 'look over' also misleads independently, since it usually means to examine.",
+   "candidate_glosses": [
+    "to look over",
+    "to overlook, to ignore"
+   ]
+  },
+  {
+   "verb": "hochdrehen",
+   "separability": "separable",
+   "shipped_gloss": "turn upward",
+   "proposed_gloss": "turn up",
+   "severity": "medium",
+   "reviewer_detail": "'Turn upward' describes rotating something so it points up. The verb's everyday sense is increasing a setting by turning: die Heizung/die Musik hochdrehen, and den Motor hochdrehen for revving an engine. English 'turn up' carries exactly that and is what the learner needs.",
+   "candidate_glosses": [
+    "to turn (sth) upward"
+   ]
+  },
+  {
+   "verb": "hochfahren",
+   "separability": "separable",
+   "shipped_gloss": "drive upwards/northwards",
+   "proposed_gloss": "boot up, start up",
+   "severity": "medium",
+   "reviewer_detail": "'Drive upwards/northwards' is kaikki's first-listed sense and the most marginal of the three; the reading a learner actually meets is candidate_glosses index 1, starting up a computer or system (den Rechner hochfahren, die Produktion hochfahren). The slashed 'upwards/northwards' also asks the learner to pick between two unrelated directions.",
+   "candidate_glosses": [
+    "to drive upwards/northwards",
+    "to boot",
+    "to become upset"
+   ]
+  },
+  {
+   "verb": "hochrechnen",
+   "separability": "separable",
+   "shipped_gloss": "calculate purposefully high in the dark",
+   "proposed_gloss": "extrapolate, project",
+   "severity": "high",
+   "reviewer_detail": "The importer took kaikki's second, pejorative sense, and 'calculate purposefully high in the dark' is not usable English about anything. Hochrechnen is the neutral statistical verb behind Hochrechnung, the election-night projection: extrapolating a whole from a partial sample. Candidate_glosses index 0 has the right sense ('to project, to cast').",
+   "candidate_glosses": [
+    "to calculate the course of things from unfinished material, to project, to cast",
+    "to calculate purposefully high in the dark, to set higher than one would if one sided with truth"
+   ]
+  },
+  {
+   "verb": "innehaben",
+   "separability": "separable",
+   "shipped_gloss": "hold",
+   "proposed_gloss": "hold (an office)",
+   "severity": "low",
+   "reviewer_detail": "Bare 'hold' presents this as a synonym of halten and invites the learner to write things like 'Ich habe das Buch inne'. Innehaben takes offices, posts, positions, and titles, never physical objects; the restriction is the whole of the word's meaning and candidate_glosses index 0 states it.",
+   "candidate_glosses": [
+    "to hold (e.g. a post or office)",
+    "to possess",
+    "to master (e.g. a skill)"
+   ]
+  },
+  {
+   "verb": "kehren",
+   "separability": "simplex",
+   "shipped_gloss": "sweep, turn",
+   "proposed_gloss": "sweep",
+   "severity": "low",
+   "reviewer_detail": "The comma presents two unrelated actions as synonyms: sweeping a floor and turning something around. kaikki lists only 'to sweep' (index 0), which is the living everyday sense (southern German's counterpart to fegen). The 'turn' reading survives mainly in fixed expressions (den Rücken kehren, in sich gekehrt) and should not be paired with 'sweep' as an equivalent.",
+   "candidate_glosses": [
+    "to sweep"
+   ]
+  },
+  {
+   "verb": "klappen",
+   "separability": "simplex",
+   "shipped_gloss": "work out, fold",
+   "proposed_gloss": "work out, succeed",
+   "severity": "low",
+   "reviewer_detail": "'work out, fold' joins two distinct senses with a comma, which the house style reads as 'these mean the same thing'. The sense a learner meets constantly is the impersonal 'das klappt' = it works out, it succeeds (candidate_glosses index 2); the hinge sense (index 1) is a separate meaning and mostly appears in prefixed forms such as umklappen, aufklappen, zuklappen.",
+   "candidate_glosses": [
+    "to clap (make a soft clapping sound, particularly of something being closed)",
+    "to fold; to flip; to bend (to close or open a hinge)",
+    "to work out, to succeed, to function correctly, etc."
+   ]
+  },
+  {
+   "verb": "kleinkriegen",
+   "separability": "separable",
+   "shipped_gloss": "break",
+   "proposed_gloss": "break someone's spirit",
+   "severity": "low",
+   "reviewer_detail": "Shortening to a bare 'break' drops the part that carried the meaning. kaikki's single sense is 'to break (psychologically)' (index 0), and the verb is overwhelmingly used of wearing a person down or of something indestructible (nicht kleinzukriegen sein). Unqualified 'break' points the learner at physical breakage, for which German uses kaputtmachen or zerbrechen.",
+   "candidate_glosses": [
+    "to break (psychologically)"
+   ]
+  },
+  {
+   "verb": "kontrollieren",
+   "separability": "simplex",
+   "shipped_gloss": "control, check",
+   "proposed_gloss": "check, inspect",
+   "severity": "low",
+   "reviewer_detail": "Leading with 'control' teaches the false friend. In ordinary German kontrollieren means to check or inspect (Fahrkarten kontrollieren, Ausweise kontrollieren), which is why kaikki lists 'to check' first (index 0); the 'exercise control over' reading is the narrower, largely business-register one. Pairing the two with a comma tells the learner the English words are interchangeable here, which is exactly the mistake that produces *ich kontrolliere meine Tickets = I control my tickets.",
+   "candidate_glosses": [
+    "to check",
+    "to control"
+   ]
+  },
+  {
+   "verb": "leichtfallen",
+   "separability": "separable",
+   "shipped_gloss": "come, be easy",
+   "proposed_gloss": "come easily, be easy",
+   "severity": "low",
+   "reviewer_detail": "The comma in 'come, be easy' is not a synonym separator but a split inside the phrase 'come easy'. Read by the app's house convention, where a comma means the items are equivalents, the gloss offers 'come' as a standalone meaning of leichtfallen, which is not a sense the verb has. The intended reading — 'das fällt mir leicht' = that comes easily to me, that is easy for me — survives only in the second half.",
+   "candidate_glosses": [
+    "to come, be easy"
+   ]
+  },
+  {
+   "verb": "losgehen",
+   "separability": "separable",
+   "shipped_gloss": "leave",
+   "proposed_gloss": "set off, get going",
+   "severity": "low",
+   "reviewer_detail": "'leave' is the right direction but collides with verlassen and invites a transitive reading a learner will produce wrongly ('das Haus losgehen'). Losgehen is intransitive and means to set off or get going — 'wir gehen um acht los' — and the same word covers something getting under way, 'es geht gleich los' (candidate_glosses index 1). 'set off, get going' names that single sense without the verlassen collision.",
+   "candidate_glosses": [
+    "to leave",
+    "to start",
+    "to go off"
+   ]
+  },
+  {
+   "verb": "losschlagen",
+   "separability": "separable",
+   "shipped_gloss": "knock loose",
+   "proposed_gloss": "attack, strike",
+   "severity": "medium",
+   "reviewer_detail": "The shipped 'knock loose' is the literal, technical sense (Putz losschlagen, loosening something by striking it), which a learner will almost never meet. In ordinary use losschlagen means to launch an attack or strike — 'die Armee schlug los', 'auf jemanden losschlagen' — which candidate_glosses lists at index 2 (and index 1). A secondary common sense is selling something off cheaply. The literal sense was taken because it is kaikki's first-listed, not because it is the encountered one.",
+   "candidate_glosses": [
+    "to knock loose",
+    "to strike",
+    "to attack"
+   ]
+  },
+  {
+   "verb": "mitbekommen",
+   "separability": "separable",
+   "shipped_gloss": "get or be given something when leaving",
+   "proposed_gloss": "notice, pick up on",
+   "severity": "medium",
+   "reviewer_detail": "The shipped sense (being given something to take with you, as in a dowry or a packed lunch) is real but marginal. The sense a learner meets constantly is candidate_glosses index 1: to catch, notice, or become aware of something — Hast du das mitbekommen?, Davon habe ich nichts mitbekommen. Shipping only the first-listed sense leaves the common one unglossed.",
+   "candidate_glosses": [
+    "to get or be given something when leaving",
+    "to notice, learn, find out (become aware, become informed, come to know)",
+    "to understand"
+   ]
+  },
+  {
+   "verb": "mitdenken",
+   "separability": "separable",
+   "shipped_gloss": "follow",
+   "proposed_gloss": "think along, follow the reasoning",
+   "severity": "low",
+   "reviewer_detail": "A bare 'follow' is too thin to identify the verb and collides with folgen, nachgehen, and mitkommen, all of which a learner will also meet. mitdenken means to think actively alongside a speaker or process — to keep up with the reasoning, or to use one's head rather than mechanically execute. kaikki offers nothing better, so the gloss needs writing rather than importing.",
+   "candidate_glosses": [
+    "to follow"
+   ]
+  },
+  {
+   "verb": "mitfahren",
+   "separability": "separable",
+   "shipped_gloss": "drive with",
+   "proposed_gloss": "ride along",
+   "severity": "low",
+   "reviewer_detail": "'Drive with' is a Germanism that implies the subject is operating the vehicle, when mitfahren specifically means travelling as a passenger or accepting a ride: Kann ich mitfahren?, Sie ist bei ihm mitgefahren. The gloss points at the right situation but attributes the wrong role.",
+   "candidate_glosses": [
+    "to drive with"
+   ]
+  },
+  {
+   "verb": "mitkriegen",
+   "separability": "separable",
+   "shipped_gloss": "synonym of mitbekommen",
+   "proposed_gloss": "notice, pick up on",
+   "severity": "high",
+   "reviewer_detail": "Cross-reference rather than a meaning: 'synonym of mitbekommen' tells a learner nothing about the verb, and mitbekommen is itself mis-glossed in this corpus. Colloquial mitkriegen means to catch, notice, or pick up on something (Hast du das mitgekriegt?).",
+   "candidate_glosses": [
+    "synonym of mitbekommen"
+   ]
+  },
+  {
+   "verb": "mitreißen",
+   "separability": "separable",
+   "shipped_gloss": "entrain",
+   "proposed_gloss": "sweep along, carry away",
+   "severity": "high",
+   "reviewer_detail": "'Entrain' is a fluid-dynamics term of art, and in ordinary English it means to board a train; either reading is useless or actively wrong for a learner. mitreißen means to sweep something along by force (der Fluss riss das Boot mit) and, figuratively, to carry an audience away. candidate_glosses index 1, 'to carry away', is the usable sense.",
+   "candidate_glosses": [
+    "to entrain",
+    "to carry away"
+   ]
+  },
+  {
+   "verb": "mitspielen",
+   "separability": "separable",
+   "shipped_gloss": "cooperate",
+   "proposed_gloss": "play along, join in a game",
+   "severity": "medium",
+   "reviewer_detail": "'Cooperate' is the figurative extension (wenn das Wetter mitspielt), not the sense a learner meets. The everyday meaning is to take part in a game or play alongside others — candidate_glosses index 1, 'to play along'. Glossing it as 'cooperate' also collides with mitarbeiten and mitwirken, which ship that same word.",
+   "candidate_glosses": [
+    "to cooperate",
+    "to play along",
+    "to feature (in a film)"
+   ]
+  },
+  {
+   "verb": "nachblicken",
+   "separability": "separable",
+   "shipped_gloss": "look at",
+   "proposed_gloss": "gaze after",
+   "severity": "high",
+   "reviewer_detail": "'Look at' names a different action and would teach the learner to use nachblicken where German wants ansehen or anschauen. nachblicken is always jemandem nachblicken: to follow someone with one's eyes as they leave. The nach- component, which carries the whole meaning, is absent from the gloss.",
+   "candidate_glosses": [
+    "to (have a) look at"
+   ]
+  }
+ ]
+}

@@ -1,0 +1,42 @@
+{
+  "kehren": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "The comma presents two unrelated actions as synonyms: sweeping a floor and turning something around. kaikki lists only 'to sweep' (index 0), which is the living everyday sense (southern German's counterpart to fegen). The 'turn' reading survives mainly in fixed expressions (den Rücken kehren, in sich gekehrt) and should not be paired with 'sweep' as an equivalent.",
+        "fix_gloss": "sweep"
+      }
+    ]
+  },
+  "klappen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "'work out, fold' joins two distinct senses with a comma, which the house style reads as 'these mean the same thing'. The sense a learner meets constantly is the impersonal 'das klappt' = it works out, it succeeds (candidate_glosses index 2); the hinge sense (index 1) is a separate meaning and mostly appears in prefixed forms such as umklappen, aufklappen, zuklappen.",
+        "fix_gloss": "work out, succeed"
+      }
+    ]
+  },
+  "kontrollieren": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "Leading with 'control' teaches the false friend. In ordinary German kontrollieren means to check or inspect (Fahrkarten kontrollieren, Ausweise kontrollieren), which is why kaikki lists 'to check' first (index 0); the 'exercise control over' reading is the narrower, largely business-register one. Pairing the two with a comma tells the learner the English words are interchangeable here, which is exactly the mistake that produces *ich kontrolliere meine Tickets = I control my tickets.",
+        "fix_gloss": "check, inspect"
+      }
+    ]
+  },
+  "kleinkriegen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "Shortening to a bare 'break' drops the part that carried the meaning. kaikki's single sense is 'to break (psychologically)' (index 0), and the verb is overwhelmingly used of wearing a person down or of something indestructible (nicht kleinzukriegen sein). Unqualified 'break' points the learner at physical breakage, for which German uses kaputtmachen or zerbrechen.",
+        "fix_gloss": "break someone's spirit"
+      }
+    ]
+  }
+}

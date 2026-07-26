@@ -1,0 +1,127 @@
+{
+  "nachempfinden": {
+    "own_gloss": "empathize with, relate to",
+    "verdict": "accept",
+    "reason": "Shipped 'feel for' is candidate index 1 and reads as pity/sympathy, colliding with mitfühlen; the core sense is index 0, imaginatively re-experiencing a feeling and so understanding it (Das kann ich gut nachempfinden). Proposed matches index 0 in house style."
+  },
+  "nachsagen": {
+    "own_gloss": "say about someone",
+    "verdict": "accept",
+    "reason": "The idiomatic 'jemandem etwas nachsagen' (say/impute something about someone, often unflattering) is candidate index 1 and the sense a learner actually meets; the shipped index-0 echo/parrot sense is handled in ordinary German by nachsprechen, which this shard glosses 'repeat'."
+  },
+  "nachsetzen": {
+    "own_gloss": "chase after, pursue",
+    "verdict": "accept",
+    "reason": "Shipped 'place after' is the technical typographic sense (index 0); the everyday reading is candidate index 1, jemandem nachsetzen 'give chase' (die Polizei setzte dem Flüchtenden nach). Proposed restores the common sense."
+  },
+  "niederschlagen": {
+    "own_gloss": "put down, quell",
+    "verdict": "reject",
+    "reason": "Shipped 'defeat' is candidate index 0 and, as the reviewer concedes, 'broadly in range'; the proposal is a precision improvement (quell vs the besiegen risk), not a correction of a wrong or misleading gloss. Severity low, attested sense stays."
+  },
+  "niederstoßen": {
+    "own_gloss": "thrust down, knock down",
+    "verdict": "accept",
+    "reason": "The shipped gloss ends 'knock down so that it falls)' with an unbalanced closing parenthesis, a truncation artifact spliced from candidate index 0's parenthetical clarifier. Proposed is the clean definition."
+  },
+  "offenhalten": {
+    "own_gloss": "keep open",
+    "verdict": "accept",
+    "reason": "Shipped 'synonym of offenlassen' is a Wiktionary cross-reference, leaked apparatus that points to another German word rather than translating this one. The meaning sat in the same candidate index 0 ('...; to keep open'); proposed recovers it."
+  },
+  "offenstehen": {
+    "own_gloss": "stand open, be open",
+    "verdict": "reject",
+    "reason": "The reviewer's own admission is 'broadly right', and 'stay open' is the only attested candidate (index 0); the stative-vs-durative distinction against offenbleiben is subtle, and the proposed 'be open, stand open' is unbacked wording. Low severity, attested gloss stays."
+  },
+  "preisgeben": {
+    "own_gloss": "disclose, reveal",
+    "verdict": "accept",
+    "reason": "Shipped leads entirely with the literary abandon/surrender sense (candidate index 0, 'dem Untergang preisgeben'); the everyday sense a learner meets is candidate index 1, disclosing information (Daten/Details/Identität preisgeben). Wrong sense chosen when the common one was available."
+  },
+  "raushalten": {
+    "own_gloss": "keep out of, stay out of",
+    "verdict": "accept",
+    "reason": "'hold out' reads in English as endure/resist (durchhalten), an action raushalten does not denote. In real use it is overwhelmingly reflexive, sich aus etwas raushalten / Halt dich da raus! — the clipping inherits heraushalten's keep-clear sense; proposed is correct even though kaikki lists only the literal reading."
+  },
+  "reinwaschen": {
+    "own_gloss": "clear of blame, whitewash",
+    "verdict": "accept",
+    "reason": "The literal washing sense (candidate index 0) is marked rare; actual use is figurative, clearing someone of suspicion or laundering (sich von einem Verdacht reinwaschen, Geld reinwaschen), which is candidate index 1 'whitewash'. Shipped 'cleanse' also collides with reinigen."
+  },
+  "richten": {
+    "own_gloss": "direct, aim, point",
+    "verdict": "accept",
+    "reason": "The comma in 'direct, judge' asserts synonymy between two unrelated senses; 'direct/aim/point' is the everyday sense (candidate index 0, den Blick auf etwas richten) while 'judge' is the elevated legal/biblical sense (index 5). Proposed 'direct, aim' keeps genuine synonyms."
+  },
+  "sattsehen": {
+    "own_gloss": "look one's fill",
+    "verdict": "accept",
+    "reason": "Shipped is candidate index 0 lifted verbatim; 'have enough of seeing something beautiful' reads in English as being fed up with the sight, inverting the positive satiation of sich nicht sattsehen können ('can't get enough of looking at it'), and it far exceeds house-style length. 'Look one's fill' is the standard idiom."
+  },
+  "seligmachen": {
+    "own_gloss": "make blessed, bless",
+    "verdict": "accept",
+    "reason": "'beatify' (candidate index 0) names the Church's act of declaring someone Blessed, which is seligsprechen — a distinct verb this corpus already glosses that way. seligmachen is selig + machen, to grant blessedness/salvation; kaikki conflated the neighbours and 'beatify' names an action this verb does not denote."
+  },
+  "sorgen": {
+    "own_gloss": "take care of, see to",
+    "verdict": "accept",
+    "reason": "Shipped leads with 'worry', the reflexive-only sense (candidate index 2) and itself uncommon beside sich Sorgen machen, comma-paired with the vague 'care'. The verb a learner meets is für etwas sorgen, candidate indices 0 and 1 (take care of / ensure), which proposed captures."
+  },
+  "starkmachen": {
+    "own_gloss": "advocate for, stand up for",
+    "verdict": "accept",
+    "reason": "Shipped 'strengthen' is kaikki's literal stark+machen reading (candidate index 0) and collides with stärken, already glossed 'strengthen'. Real usage is reflexive advocacy, sich für etwas starkmachen, candidate index 1 'support, advocate for'."
+  },
+  "teilhaben": {
+    "own_gloss": "share in, partake of",
+    "verdict": "reject",
+    "reason": "'participate' is the only attested candidate (index 0) and is a defensible rendering of teilhaben an etwas; the share-vs-take-part distinction against teilnehmen is subtle, the replacement is unbacked wording, and severity is low. Tie goes to the sourced gloss."
+  },
+  "thematisieren": {
+    "own_gloss": "bring up, address",
+    "verdict": "accept",
+    "reason": "'make topic' is not English — a truncation of 'make a topic of' that lost its article and preposition, a fragment a learner cannot use. Candidate index 0 'bring up, address an issue' gives the sense cleanly."
+  },
+  "umschlagen": {
+    "own_gloss": "change abruptly, turn",
+    "verdict": "reject",
+    "reason": "Shipped 'turn' is candidate index 0, and English 'turn' already carries the abrupt-change sense the reviewer wants (the weather turned, the mood turned). The proposal is a precision gain, not a correction, and 'change abruptly' is not a separately listed candidate. Low severity, attested gloss stays."
+  },
+  "umsteigen": {
+    "own_gloss": "change (trains, buses)",
+    "verdict": "accept",
+    "reason": "The shortening dropped candidate index 0's meaning-carrying '(from one means of transport to another)', leaving three vague synonyms including the misleading 'interchange' (English: swap two things for each other), which umsteigen never means. Proposed restores the needed restriction in house style."
+  },
+  "umstimmen": {
+    "own_gloss": "change someone's mind",
+    "verdict": "accept",
+    "reason": "Shipped 'retune' is the technical musical sense (candidate index 0, ein Instrument umstimmen), essentially never met by a learner; the everyday sense is candidate index 1, jemanden umstimmen, to talk someone round. Technical sense chosen over the common one."
+  },
+  "umtreiben": {
+    "own_gloss": "preoccupy, trouble",
+    "verdict": "accept",
+    "reason": "Shipped 'drive around' is the archaic agricultural sense (candidate index 0, driving livestock about); modern German uses umtreiben almost exclusively for what occupies or troubles the mind (Was treibt dich um?), candidate index 1. Archaic sense chosen over the current one."
+  },
+  "umwenden": {
+    "own_gloss": "turn over",
+    "verdict": "accept",
+    "reason": "The comma presents 'turn over' and 'turn inside out' as synonyms, but they are different actions, and turning a garment inside out is umkrempeln/umstülpen. umwenden is turning something onto its other side (a page, a pancake); dropping the stray half removes the false synonymy."
+  },
+  "unterfangen": {
+    "own_gloss": "dare, presume",
+    "verdict": "accept",
+    "reason": "The living verb is reflexive, sich unterfangen, to dare or have the audacity (candidate index 1, Wie kannst du dich unterfangen...). Shipped 'undertake' belongs to the noun das Unterfangen; as a verb it is archaic and steers a learner toward unterfangen where unternehmen is wanted."
+  },
+  "untergehen": {
+    "own_gloss": "go down, sink, set",
+    "verdict": "accept",
+    "reason": "Bare 'set' is a fragment of candidate index 0 whose parenthetical '(of a heavenly body...)' carried the meaning; stripped, it reads as place/put/harden, none of which the verb does. The core is going down or under — sun setting, ship sinking, empire perishing — which proposed covers (senses at indices 0 and 4)."
+  },
+  "unterhalten": {
+    "own_gloss": "entertain",
+    "verdict": "accept",
+    "reason": "The comma equates two distinct senses, entertaining (candidate index 1) and maintaining a building/fleet (index 0), teaching that they are interchangeable renderings. Entertain is the sense a learner meets first, alongside the reflexive sich unterhalten 'converse'."
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "wegführen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "wegführen is führen (lead), not tragen (carry): 'Die Polizei führte den Mann weg' means the police led the man away, and 'der Weg führt vom Dorf weg' means the path leads away from the village. The gloss inherits kaikki's mistranslation (candidate 0, the only candidate) and collides exactly with wegtragen, which is glossed 'carry away' in this same shard — so the two verbs currently ship indistinguishable glosses and the one on wegführen is the wrong action.",
+        "fix_gloss": "lead away"
+      }
+    ]
+  },
+  "weismachen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "The shortening dropped kaikki's '[with dative]' label (candidate 0), and what survives is the English fixed phrase 'make believe', which means to pretend or play imaginatively. jemandem etwas weismachen means the opposite kind of act: to deceive someone into believing something untrue ('Das kannst du mir nicht weismachen'). The learner is left with the English idiom rather than the German verb's meaning.",
+        "fix_gloss": "fool, delude"
+      }
+    ]
+  },
+  "wegdrängen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "'edge away' is intransitive in English — it describes the subject retreating slowly — whereas wegdrängen is transitive and forceful: jemanden wegdrängen is to shove someone aside, and figuratively to crowd out or force out (a competitor, a thought). The gloss reverses the agency and loses drängen (push, press) entirely; 'edge off' is not idiomatic English at all. The defect is inherited verbatim from candidate 0, which is the only candidate.",
+        "fix_gloss": "push away, push aside"
+      }
+    ]
+  },
+  "weiterarbeiten": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "'resume' asserts an interruption that weiter- does not: weiterarbeiten is to keep working, to carry on working ('Arbeite weiter!' means keep at it, not start again). The rest of the weiter- cluster in this shard is glossed consistently as continuation — weiterfahren 'continue driving', weiterlesen 'continue reading', weiterleben 'live on' — so this one is the outlier, and it shifts the aspect.",
+        "fix_gloss": "continue working"
+      }
+    ]
+  },
+  "weiterkämpfen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "'continue to battle' is right, but the trailing 'after a pause' is a false restriction imported from the dictionary definition: weiterkämpfen is simply to fight on, with or without an interruption ('trotz der Verletzung weiterkämpfen'). It also runs far past the app's house length for a sense this simple.",
+        "fix_gloss": "fight on, keep fighting"
+      }
+    ]
+  },
+  "wehren": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "In modern German wehren is essentially reflexive — sich wehren, to defend oneself or fight back (candidate 0 says exactly this). Bare 'defend' reads transitively and points the learner at verteidigen, inviting wrong German like 'ich wehre meine Heimat'. 'resist' is on target; 'defend' needs the reflexive to be accurate.",
+        "fix_gloss": "defend oneself, resist"
+      }
+    ]
+  }
+}

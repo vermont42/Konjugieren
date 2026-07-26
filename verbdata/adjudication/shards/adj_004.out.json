@@ -1,0 +1,127 @@
+{
+  "erweichen": {
+    "own_gloss": "soften",
+    "verdict": "reject",
+    "reason": "Shipped 'weaken, soften' is kaikki index 0 verbatim, and 'weaken' is defensible for the figurative jemanden erweichen (soften/weaken someone's resolve). Dropping it is a precision tweak, not a fix of something wrong; the tie goes to the sourced gloss."
+  },
+  "erziehen": {
+    "own_gloss": "raise, bring up",
+    "verdict": "accept",
+    "reason": "kaikki's 'to nurture' (index 0, taken verbatim) is the fostering/caring sense of pflegen or hegen, not the formative raising erziehen denotes (Kinder erziehen, Erziehung). 'raise, bring up' is the ordinary meaning even though kaikki lists only nurture/educate."
+  },
+  "festfrieren": {
+    "own_gloss": "freeze stuck",
+    "verdict": "accept",
+    "reason": "fest- is the whole content: to freeze fast to something (das Boot ist am Ufer festgefroren), not surface-icing, which is zufrieren or vereisen. Shipped 'ice over, freeze' names an action the verb does not denote despite kaikki's index 0."
+  },
+  "festhalten": {
+    "own_gloss": "hold on to, hold tight",
+    "verdict": "accept",
+    "reason": "The comma makes 'hold on' and 'record' read as synonyms, but they are candidate senses 0/1 (grip) versus 5 (document); commit to the physical grip sense a learner meets first and most often."
+  },
+  "feststehen": {
+    "own_gloss": "be settled, be certain",
+    "verdict": "accept",
+    "reason": "kaikki lists only the literal fest+stehen 'stand firm', which is standhalten/festbleiben; feststehen is predicated of facts and arrangements (Der Termin steht fest) = be settled, established. Shipped teaches the wrong verb for acts of resolve."
+  },
+  "fortfahren": {
+    "own_gloss": "continue",
+    "verdict": "accept",
+    "reason": "'continue' is candidate index 2/3 and the dominant modern sense (mit der Arbeit fortfahren, Fahren Sie fort); the vehicular departure sense the shipped gloss features is dated, displaced in modern usage by wegfahren/losfahren."
+  },
+  "fortgehen": {
+    "own_gloss": "leave, go away",
+    "verdict": "accept",
+    "reason": "The primary sense is departure, a straight synonym of weggehen (candidate index 1); shipped features the rarer impersonal 'continue' (die Arbeit geht fort) and its four crowded synonyms edge out the sense a learner needs."
+  },
+  "fortschleifen": {
+    "own_gloss": "drag away",
+    "verdict": "accept",
+    "reason": "Leaked dictionary apparatus: 'synonym of wegschleifen:' is a cross-reference to another German verb, not English about this one, and it fronts a word the learner has no reason to know. Only the tail 'drag away' (candidate index 0) is a gloss."
+  },
+  "freimachen": {
+    "own_gloss": "clear, free up",
+    "verdict": "accept",
+    "reason": "'put a stamp on' is the technical postal frankieren sense a learner will essentially never meet; the live senses are clearing or freeing something up (candidate index 1, die Straße freimachen)."
+  },
+  "freuen": {
+    "own_gloss": "be glad, be pleased",
+    "verdict": "accept",
+    "reason": "The comma pairs converse valencies — reflexive 'be happy' (candidate index 1) with transitive 'please' (candidate index 0) — and 'be happy, please' misreads as an imperative with a politeness word; commit to the reflexive sich freuen sense a learner meets first."
+  },
+  "fällen": {
+    "own_gloss": "fell, cut down",
+    "verdict": "accept",
+    "reason": "Bare 'pass' is intelligible only if one already knows ein Urteil fällen and reads as a false second synonym of 'fell'; the core sense is felling a tree (candidate index 0)."
+  },
+  "geraten": {
+    "own_gloss": "get into, end up in",
+    "verdict": "accept",
+    "reason": "The comma joins 'get into' (candidate index 3, in Panik/Schwierigkeiten geraten) with 'turn out' (candidate index 0, der Kuchen ist gut geraten), two different senses; commit to the dominant unintentional-arrival sense with true synonyms."
+  },
+  "gewarten": {
+    "own_gloss": "expect, await",
+    "verdict": "accept",
+    "reason": "'await or wait for' is lifted kaikki alternation phrasing, a dictionary 'or' no other gloss in the corpus uses; the sense is right, and house style lists the synonyms with commas (candidate index 0)."
+  },
+  "haushalten": {
+    "own_gloss": "economize, be thrifty",
+    "verdict": "accept",
+    "reason": "Shipped 'run a household' is the dated standalone reading; modern usage is overwhelmingly mit etwas haushalten = use a resource sparingly (mit den Kräften/dem Geld haushalten), which is candidate index 1 and attested, not invented."
+  },
+  "herausbrechen": {
+    "own_gloss": "break out, break off",
+    "verdict": "accept",
+    "reason": "Shipped 'burst out' is the narrow figurative frame es brach aus ihm heraus (candidate index 0) and standing alone misreads as burst out laughing; the literal sense a learner meets — forcibly breaking a piece out, or a piece breaking off — is candidate index 1."
+  },
+  "herausgeben": {
+    "own_gloss": "publish, issue",
+    "verdict": "accept",
+    "reason": "'hand out' names verteilen/austeilen, not herausgeben (surrender or give back, e.g. Geld herausgeben — candidate index 1); the safe fix keeps the correct 'publish' and replaces the misleading term with its synonym 'issue' (candidate index 2)."
+  },
+  "heraushalten": {
+    "own_gloss": "stay out of, keep out of",
+    "verdict": "accept",
+    "reason": "Shipped 'hold out, stick out' is the literal physical sense, real but marginal; the verb is overwhelmingly reflexive — sich aus etwas heraushalten, halt dich da raus — candidate index 2, the sense a learner meets."
+  },
+  "herausschreiben": {
+    "own_gloss": "copy out, excerpt",
+    "verdict": "accept",
+    "reason": "English 'write out' reads as writing in full or in longhand; the German extracts by writing — copying quotations, figures, or vocabulary out of a source — which is what kaikki's '(i.e. of a work)' was pointing at."
+  },
+  "herausstellen": {
+    "own_gloss": "turn out to be",
+    "verdict": "accept",
+    "reason": "The comma presents reflexive 'turn out' (candidate index 4) and transitive 'highlight' (candidate index 1) as synonyms; commit to the reflexive sich-herausstellen sense a learner meets constantly in es stellte sich heraus, dass ..."
+  },
+  "herausziehen": {
+    "own_gloss": "pull out",
+    "verdict": "accept",
+    "reason": "Shortening candidate index 0 'to pull (out)' dropped the parenthesized 'out', collapsing the gloss onto simplex ziehen; the heraus- prefix is the whole content of the verb — extraction (a splinter, a plug, a tooth)."
+  },
+  "hermachen": {
+    "own_gloss": "look impressive",
+    "verdict": "accept",
+    "reason": "Shipped is ungrammatical ('a impression') and was cut from kaikki's 'to make a (specified) impression', losing the parenthetical that carried the meaning: the verb needs a quantifier (viel hermachen = look impressive) and is not the English idiom 'make an impression'."
+  },
+  "herumkommen": {
+    "own_gloss": "avoid, get out of",
+    "verdict": "accept",
+    "reason": "Shipped literal 'move round something' (candidate index 0) is the least-used reading; the everyday idiom is um etwas nicht herumkommen — candidate index 2, being unable to avoid something (da kommst du nicht drum herum)."
+  },
+  "hervorsehen": {
+    "own_gloss": "peek out, show through",
+    "verdict": "accept",
+    "reason": "The shortening dropped kaikki's '(of an object)' and left a bare transitive-looking 'show' (= zeigen); hervorsehen is intransitive — something protrudes into view, das Taschentuch sah aus der Jackentasche hervor (candidate index 0)."
+  },
+  "hinauslaufen": {
+    "own_gloss": "amount to, come down to",
+    "verdict": "accept",
+    "reason": "In modern German the verb is met almost exclusively in auf etwas hinauslaufen = amount to (candidate index 1, Das läuft auf dasselbe hinaus); the shipped literal sense is rarer and 'walk' mistranslates laufen (run)."
+  },
+  "hindeuten": {
+    "own_gloss": "indicate, suggest",
+    "verdict": "accept",
+    "reason": "Shipped 'point' takes the physical-gesture sense (for which German uses zeigen anyway); the reading a learner meets is the evidential one at candidate index 2 — alles deutet darauf hin, dass ... — indicate/suggest."
+  }
+}

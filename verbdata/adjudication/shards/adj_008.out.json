@@ -1,0 +1,127 @@
+{
+  "vorhalten": {
+    "own_gloss": "reproach, hold against",
+    "verdict": "accept",
+    "reason": "The dominant use is 'jemandem etwas vorhalten' = to reproach (candidate index 1), and the shipped bare 'hold up' invites the far commoner English readings 'delay' and 'rob', which the German verb never carries. The proposal restores an attested sense in usable English."
+  },
+  "vorlesen": {
+    "own_gloss": "read aloud",
+    "verdict": "accept",
+    "reason": "Shipped 'read' collapses the verb into its base lesen and loses the vor- component; vorlesen is specifically reading aloud to a listener. Matches candidate index 0, whose '(aloud)' parenthetical was dropped in shortening."
+  },
+  "vorsetzen": {
+    "own_gloss": "set before, serve",
+    "verdict": "accept",
+    "reason": "'Prefix' (candidate index 0) is a narrow grammatical/technical sense that misleads a learner toward morphology; the everyday sense is setting/serving something before someone (candidate indices 1 and 2), which the proposal restores."
+  },
+  "vorsingen": {
+    "own_gloss": "sing to someone",
+    "verdict": "accept",
+    "reason": "Shipped 'sing' is identical in force to the base verb singen; the '(something to someone)' of candidate index 0 was stripped. vorsingen is singing for a listener, and by extension auditioning (index 1)."
+  },
+  "vorwerfen": {
+    "own_gloss": "accuse of, reproach",
+    "verdict": "accept",
+    "reason": "The literal throwing sense (index 0) is now largely confined to the fixed image of throwing someone to the lions, while 'jemandem etwas vorwerfen' = accuse/reproach (candidate index 2) is one of the most frequent constructions in German news prose. The shipped gloss teaches the wrong action."
+  },
+  "vorziehen": {
+    "own_gloss": "prefer, pull forward",
+    "verdict": "reject",
+    "reason": "'Pull to the front' (candidate index 0) is a current, non-rare literal sense — vorziehen commonly means pull a curtain or chair forward, and to move up a scheduled event (index 3). 'prefer' (index 2) is one live sense among several, not so dominant that the shipped choice is wrong; naming one sense of a polysemous verb is by design."
+  },
+  "wegdrängen": {
+    "own_gloss": "push aside, force out",
+    "verdict": "accept",
+    "reason": "The shipped 'edge away' is intransitive English (the subject retreats), but wegdrängen is transitive and forceful — to shove someone aside, to crowd out a competitor. The only candidate (index 0) is itself the mistranslation, and 'edge off' is not idiomatic English at all."
+  },
+  "wegführen": {
+    "own_gloss": "lead away",
+    "verdict": "accept",
+    "reason": "wegführen is führen (lead), not tragen (carry): 'die Polizei führte den Mann weg'. The shipped 'carry away' names the wrong action and collides with wegtragen; the sole candidate inherits kaikki's error."
+  },
+  "wehren": {
+    "own_gloss": "defend oneself, resist",
+    "verdict": "accept",
+    "reason": "In modern German wehren is essentially reflexive — sich wehren, to defend oneself (candidate index 0). Bare 'defend' reads transitively and points a learner at verteidigen; adding 'oneself' restores the attested sense."
+  },
+  "weismachen": {
+    "own_gloss": "delude, fool",
+    "verdict": "accept",
+    "reason": "The shipped 'make believe' is an English fixed phrase meaning to pretend or play imaginatively, the opposite kind of act. 'jemandem etwas weismachen' is to deceive someone into believing something untrue; the shipped gloss ships an English idiom, not the verb's meaning."
+  },
+  "weiterarbeiten": {
+    "own_gloss": "continue working",
+    "verdict": "accept",
+    "reason": "'resume' asserts an interruption that weiter- does not: 'arbeite weiter!' means keep at it, not start again. The rest of the weiter- cluster is glossed as continuation (weiterlesen, weiterleben), making the sole candidate 'resume one's work' the aspect outlier."
+  },
+  "weiterkämpfen": {
+    "own_gloss": "fight on, keep fighting",
+    "verdict": "accept",
+    "reason": "'continue to battle' is right, but 'after a pause' is a false restriction imported from the dictionary line (the only candidate): weiterkämpfen is to fight on with or without an interruption, and the trailing clause also overruns house length badly."
+  },
+  "widersetzen": {
+    "own_gloss": "oppose, resist, defy",
+    "verdict": "reject",
+    "reason": "The shipped gloss's second half, 'make a stand against', already conveys the oppose/resist sense (candidate index 1); the proposal is cleaner English for the same meaning, not a correction of a wrong one. Better English is not grounds to accept."
+  },
+  "wiedergeben": {
+    "own_gloss": "reproduce, render",
+    "verdict": "accept",
+    "reason": "'reproduce, return' joins two unrelated actions with a comma the house style reads as synonymy, and the give-back sense (index 0) is dated (modern German returns objects with zurückgeben). The live senses are rendering content (index 1) and playback (index 2), both covered by 'reproduce, render'."
+  },
+  "wundern": {
+    "own_gloss": "surprise, astonish",
+    "verdict": "accept",
+    "reason": "Leading with 'wonder' teaches a false friend: wundern is transitive 'surprise, astonish' (candidate index 0) and reflexive 'be surprised' (index 1), never English 'wonder' in the sense of asking oneself, which is sich fragen. The proposal removes the false friend."
+  },
+  "zerwerfen": {
+    "own_gloss": "fall out, quarrel",
+    "verdict": "accept",
+    "reason": "'Break by throwing' (index 0) is the regional literal sense and duplicates zerschmeißen exactly; the current standard use is reflexive 'sich mit jemandem zerwerfen' = to quarrel and break off relations (candidate index 1), which the proposal restores."
+  },
+  "zeugen": {
+    "own_gloss": "father, beget",
+    "verdict": "accept",
+    "reason": "The comma presents two unrelated senses as synonyms — begetting a child (index 0) and bearing witness (index 1). The transitive core is 'ein Kind zeugen'; 'testify' additionally misleads because courtroom testimony is aussagen. Ship the transitive sense."
+  },
+  "zubringen": {
+    "own_gloss": "spend (time)",
+    "verdict": "accept",
+    "reason": "Shipped 'bring' collapses into the base verb bringen and names the regional herbeibringen sense that now survives mainly in the noun Zubringer. The everyday meaning is spending time somewhere — 'er brachte den Tag im Bett zu' — candidate index 1."
+  },
+  "zufliegen": {
+    "own_gloss": "fly toward",
+    "verdict": "accept",
+    "reason": "The '(toward)' of the sole candidate was dropped, leaving a gloss identical to plain fliegen. The directional zu- is the entire content of the verb, so 'fly toward' restores what distinguishes it."
+  },
+  "zugreifen": {
+    "own_gloss": "grab, seize",
+    "verdict": "accept",
+    "reason": "The gloss leads with the computing sense (index 2) and comma-joins it to the physical sense, presenting two senses as synonyms. The everyday meaning is grabbing or seizing quickly (candidate index 0); 'access' should not head the gloss."
+  },
+  "zuhalten": {
+    "own_gloss": "hold shut",
+    "verdict": "accept",
+    "reason": "'be keep something shut' is not English — the importer copied a malformed Wiktionary line (candidate index 0) verbatim. The verb means to hold something shut: die Tür zuhalten, sich die Nase zuhalten. This is a leaked truncation artifact, strong grounds."
+  },
+  "zukehren": {
+    "own_gloss": "turn toward",
+    "verdict": "accept",
+    "reason": "'turn something' drops the directional zu- that is the verb's whole content, and kaikki's index 0 '(rotate)' pushes the wrong reading: zukehren is not rotating but turning a side toward someone — jemandem den Rücken zukehren. 'turn toward' captures the meaning."
+  },
+  "zuleiten": {
+    "own_gloss": "channel, supply",
+    "verdict": "accept",
+    "reason": "The parenthetical that carried the meaning was dropped: kaikki index 0 is 'to feed (a liquid, electricity, etc.)', and bare 'feed' reads as füttern, which zuleiten never means. The verb channels or supplies along a conduit — Wasser, Strom zuleiten."
+  },
+  "zunähen": {
+    "own_gloss": "sew shut, stitch up",
+    "verdict": "accept",
+    "reason": "'suture' is a surgical term, but zunähen is the ordinary domestic word for sewing something closed — ein Loch, eine Naht zunähen. The register mismatch keeps a learner from using it where it belongs; candidate index 1 'stitch up' is the everyday equivalent."
+  },
+  "zurichten": {
+    "own_gloss": "batter, beat up",
+    "verdict": "accept",
+    "reason": "'hurt' is a weak gloss the importer took at face value; the German for hurting someone is verletzen or wehtun. In current usage zurichten appears almost exclusively as 'übel/schlimm zurichten' = to batter or leave in a wrecked state, so 'hurt' invites badly wrong output."
+  }
+}

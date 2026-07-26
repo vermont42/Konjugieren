@@ -39,6 +39,15 @@ house style. Both steps introduce defects, and they look different:
 2. For each verb, decide whether the shipped gloss correctly and usefully names what the verb means.
 3. Write your findings to the output path given at the end of this prompt.
 
+**Work down from the most frequent verbs in the shard, not from the oddest-looking English.** A
+measured verification of an earlier wave found this to be the pass's one real recall gap: it caught
+every gloss whose English *looked* broken, and missed glosses that read as perfectly good English
+while naming the wrong sense of a common verb. `abheben` shipped "lift off" — plausible English,
+but the senses a learner meets are withdrawing money (*Geld abheben*) and answering the phone.
+`anspringen` shipped "jump at, pounce", missing that it is what an engine does. Both were missed on a
+shard where far rarer verbs were caught. **A gloss that reads well is not thereby correct**, and the
+common verbs are where a wrong gloss does the most damage.
+
 **`sense_index: 0` is a hint, not a verdict.** It means the importer shipped kaikki's first-listed
 sense, which is where wrong-sense defects concentrate — but measured on a comparable set, only about
 one in nine such verbs was actually defective. Most first-listed senses are first because they are the
@@ -55,8 +64,19 @@ There is only one finding type, `bad_gloss`. Severity carries the weight:
 - **`high`** — the gloss would teach a learner the wrong word. It names a different verb, a different
   action, or is unusable as English (truncated, a bare usage label, a cross-reference, an opaque
   regionalism). `niederführen` "run someone over" and `entmieten` "of a landlord" are both high.
-- **`medium`** — the gloss names a real sense of this verb, but not the one a learner meets. The
+
+  **Leaked dictionary apparatus is always `high`, whether or not the punctuation survived intact.**
+  Sense-group umbrellas that describe the entry rather than the verb (`anvertrauen` "entrust in
+  various ways"), cross-references (`hinwegschauen` "synonym of hinwegsehen"), and editorial pointers
+  (`anhaben` "wear, have on, see usage notes") are all high, because none of them is English about the
+  verb. A gloss reading as clean prose does not exempt it: "entrust in various ways" is grammatical
+  and still tells the learner nothing.
+- **`medium`** — the gloss names a real sense of this verb, but **not one the learner will meet**. The
   rare-sense-shipped-over-common-sense case. `fernschauen` "look into the distance" is medium.
+
+  **A vaguer synonym of the right sense is not medium — it is low.** If the shipped gloss points at
+  the correct action and merely does so loosely, that is imprecision, not a wrong sense. Reserve
+  medium for a genuinely different sense of the verb.
 - **`low`** — the gloss is broadly right but imprecise in a way that could mislead. `zuschwellen`
   "swell up" blurs the *zu-* shut component and collides with *anschwellen*; the right gloss is
   "swell shut".
@@ -106,6 +126,16 @@ everything is fine writes `{}`.
   because that makes it a mechanical import defect rather than a judgment call, and those are applied
   with more confidence.
 - `fix_gloss` is required. A finding without a replacement cannot be applied and wastes the review.
+
+**Commas separate synonyms for a single sense — never two different senses.** The house style reads a
+comma as "these mean the same thing", so `anhalten` "stop, continue" presents two opposite actions as
+equivalents. Your `fix_gloss` must **commit to one sense**. Do not hedge by pairing the sense you are
+proposing with the one you just condemned: if you argue that `auflegen` means hanging up the phone,
+ship `hang up`, not `hang up, lay on`. Pairing them re-creates the exact defect on a new verb.
+
+**Write `fix_gloss` in transatlantically neutral English.** British *spelling* in an existing gloss is
+not a finding, but your replacement is new text and should not be regionally marked either way:
+prefer `run away` to `clear off`, `take compensatory time off` to `take time off in lieu`.
 
 **Write `fix_gloss` in the app's house style, which is not the dictionary's.** A bare lowercase verb
 phrase, no leading `to `, synonyms separated by commas, as short as the sense allows — `watch

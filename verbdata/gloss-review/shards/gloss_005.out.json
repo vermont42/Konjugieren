@@ -1,0 +1,52 @@
+{
+  "auflegen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The shipped 'lay on' is kaikki's first-listed literal sense, but the reading a learner actually meets is telephonic: 'Ich lege jetzt auf' (I'm hanging up now) is the everyday use, and candidate_glosses lists 'to hang up' at index 1. The DJ sense (Platten auflegen, index 4) is also more current than bare 'lay on'.",
+        "fix_gloss": "hang up, lay on"
+      }
+    ]
+  },
+  "auflehnen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "In actual use auflehnen is essentially always reflexive and means to rebel or revolt: 'sich gegen die Obrigkeit auflehnen'. The physical 'lean one's arms on' reading behind the shipped 'lean on' is marginal and, as a bare gloss, collides with anlehnen and sich stützen auf. candidate_glosses has the right sense at index 1.",
+        "fix_gloss": "rebel, revolt"
+      }
+    ]
+  },
+  "aufschieben": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The dominant sense is temporal — to postpone or defer, as in 'die Entscheidung aufschieben' (hence Aufschieberitis for procrastination). The shipped 'push open' is the literal spatial reading, restricted to things that slide (a bolt, a sliding door), and is much rarer. candidate_glosses lists 'to postpone' at index 1.",
+        "fix_gloss": "postpone, put off"
+      }
+    ]
+  },
+  "aufschlagen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "'pitch, serve' ships kaikki's first sense, a narrow sports reading, and in English the pair is doubly opaque because 'pitch' reads as baseball rather than as the tennis serve intended. The senses a learner meets are 'ein Buch aufschlagen' (open a book — candidate index 3) and 'auf dem Boden aufschlagen' (hit, impact — index 5).",
+        "fix_gloss": "open (a book), serve"
+      }
+    ]
+  },
+  "aufsetzen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "The shortening dropped the part that carried the meaning: candidate index 0 is 'to put on (something to be worn on the head)'. Bare 'put on' invites the learner to use aufsetzen for clothing generally, which takes anziehen — one aufsetzt a Hut, Mütze, or Brille, not Schuhe.",
+        "fix_gloss": "put on (headwear)"
+      }
+    ]
+  }
+}

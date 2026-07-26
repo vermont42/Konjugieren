@@ -1,0 +1,72 @@
+{
+  "feststehen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "English 'stand firm' names refusing to yield under pressure, which is standhalten or festbleiben, not feststehen. German feststehen is predicated of facts and arrangements: 'Es steht fest, dass…', 'Der Termin steht fest' — to be settled, established, beyond doubt. kaikki offers only the literal fest+stehen reading, so no correct sense is in candidate_glosses; the shipped gloss teaches a learner to use the verb of certainty for acts of resolve.",
+        "fix_gloss": "be certain, be settled"
+      }
+    ]
+  },
+  "fortfahren": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The sense a learner meets is 'continue, carry on' — 'Fahren Sie bitte fort', 'mit der Arbeit fortfahren' — which candidate_glosses lists at index 2 and 3. The shipped 'drive away, drive off' is the literal vehicular reading, which is possible but marginal in modern usage and is normally covered by wegfahren or losfahren.",
+        "fix_gloss": "continue"
+      }
+    ]
+  },
+  "fortgehen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The primary sense is departure — 'Er ist fortgegangen' — a straight synonym of weggehen, which candidate_glosses lists at index 1. The shipped 'continue, go on, keep on, carry on' is the impersonal reading used of processes ('die Arbeit geht fort'), which is both rarer and better served by fortdauern or weitergehen. Four synonyms for the secondary sense also crowds out the one a learner needs.",
+        "fix_gloss": "leave, go away"
+      }
+    ]
+  },
+  "fortschleifen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "Leaked dictionary apparatus: the gloss is a cross-reference to another German verb rather than English about this one, and it names wegschleifen — a word the learner has no reason to know — before delivering any meaning. Only the tail 'drag away' is a gloss.",
+        "fix_gloss": "drag away"
+      }
+    ]
+  },
+  "freimachen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "'Put a stamp on' is the postal-clerk sense (frankieren), a technical usage a learner will essentially never meet, especially now that franking is machine-done. The senses in live use are clearing or freeing something up — 'die Straße freimachen', 'sich einen Nachmittag freimachen' — candidate_glosses index 1, plus the reflexive 'undress' heard at a doctor's office.",
+        "fix_gloss": "clear, free up"
+      }
+    ]
+  },
+  "freuen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "The comma pairs the reflexive sense with the transitive one as if they were synonyms, so the learner is shown 'be happy' and 'please' as equivalents when they are converse valencies (sich freuen versus es freut mich). Worse, 'be happy, please' parses on sight as an imperative with the politeness word attached. The sense a learner meets first is the reflexive one, candidate_glosses index 1.",
+        "fix_gloss": "be glad, be pleased"
+      }
+    ]
+  },
+  "fällen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "The bare 'pass' carries no meaning without its object: it is intelligible only if the learner already knows 'ein Urteil fällen'. As shipped it reads as a second synonym of 'fell', which it is not. The core sense is felling a tree, candidate_glosses index 0.",
+        "fix_gloss": "fell, cut down"
+      }
+    ]
+  }
+}

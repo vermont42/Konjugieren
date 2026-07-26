@@ -1,0 +1,52 @@
+{
+  "zeugen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The comma presents two unrelated senses as synonyms: begetting a child and bearing witness. The house style reads a comma as 'these mean the same thing', so a learner sees one blurred meaning rather than either real one. The core transitive verb is 'ein Kind zeugen' (candidate index 0). The witness sense is nearly always intransitive with a preposition ('das zeugt von Mut'), and 'testify' additionally misleads because courtroom testimony in German is aussagen. Ship the transitive sense.",
+        "fix_gloss": "father, beget"
+      }
+    ]
+  },
+  "zubringen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The everyday meaning of zubringen is spending time somewhere ('er brachte den Tag im Bett zu'), which candidate_glosses lists at index 1. The shipped 'bring' is the regional literal sense of herbeibringen, which survives mainly in the noun Zubringer, and as a gloss it is indistinguishable from plain bringen.",
+        "fix_gloss": "spend (time)"
+      }
+    ]
+  },
+  "zerwerfen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "'Break by throwing' is the regional literal sense; in ordinary modern German zerwerfen appears reflexively, 'sich mit jemandem zerwerfen', meaning to quarrel and break off relations. That sense is candidate index 1. The shipped gloss also duplicates zerschmeißen exactly, which is the verb that does carry the throwing sense.",
+        "fix_gloss": "fall out with someone"
+      }
+    ]
+  },
+  "zugreifen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The gloss leads with the computing sense (candidate index 2) and joins it by comma to the physical sense, so two different senses are presented as synonyms. The sense a learner meets is grabbing or seizing quickly (candidate index 0), and by extension helping oneself at the table. 'Access' should not head the gloss.",
+        "fix_gloss": "grab, seize"
+      }
+    ]
+  },
+  "zufliegen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "The shortening dropped the '(toward)' that candidate index 0 carried, leaving a gloss identical to plain fliegen. The directional zu- is the whole content of the verb, so the learner is given nothing that distinguishes it.",
+        "fix_gloss": "fly toward"
+      }
+    ]
+  }
+}

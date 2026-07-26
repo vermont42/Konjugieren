@@ -1,0 +1,122 @@
+{
+  "verabschieden": {
+    "own_gloss": "say goodbye",
+    "verdict": "accept",
+    "reason": "False-synonymy comma: 'say goodbye' (sich verabschieden, index 0) and 'pass' a law (index 4) are joined as if equivalent, which the house comma reads as synonyms. Committing to the everyday reflexive sense removes the misreading."
+  },
+  "verbiegen": {
+    "own_gloss": "bend out of shape",
+    "verdict": "accept",
+    "reason": "'something' is kaikki's transitivity placeholder from index 0 ('to bend something.'), retained only to contrast with the intransitive index 1; it is dictionary scaffolding, not part of the meaning. Bare 'bend' is the attested sense."
+  },
+  "verbuchen": {
+    "own_gloss": "book, record",
+    "verdict": "accept",
+    "reason": "Bare 'post' reads to a learner as posting mail or online, neither of which verbuchen means; the accounting sense is to book or record an entry. 'book' is candidate index 2 ('to register, book')."
+  },
+  "verfehlen": {
+    "own_gloss": "miss",
+    "verdict": "accept",
+    "reason": "'meet or hit not' is broken English carried verbatim from candidate index 0, a stranded calque of 'nicht treffen'. The leading 'miss' already renders the verb correctly; the trailing fragment is apparatus."
+  },
+  "vergelten": {
+    "own_gloss": "repay, requite",
+    "verdict": "reject",
+    "reason": "'retaliate' is an attested sense (candidate index 0, 'Böses mit Bösem vergelten'), and selecting one sense of a polysemous verb is by design. The neutral 'repay, requite' is the reviewer's own wording, absent from candidate_glosses, so the safer call keeps the sourced gloss."
+  },
+  "verhaften": {
+    "own_gloss": "arrest",
+    "verdict": "accept",
+    "reason": "Shipped 'stop moving and instead stick' is kaikki's literary paraphrase (index 0), both the wrong sense and unusable English. The everyday police sense is candidate index 1 ('to imprison, to put into confinement after judicial writ'): arrest."
+  },
+  "verheiraten": {
+    "own_gloss": "marry off",
+    "verdict": "accept",
+    "reason": "'marry (someone)' is heiraten's meaning and collapses the prefix: heiraten is what spouses do, verheiraten is what a third party does. Candidate index 1 has the distinctive sense: 'to marry off; to find a spouse for'."
+  },
+  "verhelfen": {
+    "own_gloss": "help obtain",
+    "verdict": "accept",
+    "reason": "Bare 'help' is exactly helfen and drops the ver- prefix; verhelfen is always jemandem zu etwas verhelfen. Kaikki's index 0 kept the frame as 'to help (to)', which the shortening lost, leaving a base-verb collapse."
+  },
+  "verkehren": {
+    "own_gloss": "run, operate (of transport)",
+    "verdict": "accept",
+    "reason": "'interact in someone's sphere' is leaked dictionary paraphrase naming no recognizable action. The everyday transport sense ('Die Linie verkehrt stündlich') is inside candidate index 0, buried after the paraphrase as 'to operate'."
+  },
+  "verkriechen": {
+    "own_gloss": "hide away",
+    "verdict": "reject",
+    "reason": "'creep away' is attested (candidate index 0) and is a defensible rendering of the same intransitive reflexive verb; it and 'hide away' (index 1) are two valid readings, so this trades one attested sense for another without the shipped one being wrong."
+  },
+  "verlauten": {
+    "own_gloss": "be reported, become known",
+    "verdict": "accept",
+    "reason": "Bare verlauten is reportive and near-subjectless ('wie aus Regierungskreisen verlautet'); 'announce' is the meaning of the causative verlauten lassen, so the shipped gloss names an action the bare verb does not denote and teaches the wrong argument structure."
+  },
+  "verleben": {
+    "own_gloss": "spend (time)",
+    "verdict": "accept",
+    "reason": "Verleben takes only time as its object ('den Sommer verleben'); bare 'spend' next to a German verb reads first as spending money, which is ausgeben. The parenthetical restriction removes the ambiguity."
+  },
+  "verlernen": {
+    "own_gloss": "forget how to do",
+    "verdict": "accept",
+    "reason": "The importer took candidate index 1, whose 'cease doing' is aufhören's meaning, not verlernen's; and the house comma presents 'cease doing' and 'forget' as equivalents. Verlernen is losing a skill through disuse (index 0, 'lose the ability to do a task due to rarely doing it')."
+  },
+  "verloben": {
+    "own_gloss": "get engaged",
+    "verdict": "accept",
+    "reason": "Leaked dictionary apparatus: the trailing \"'someone'])\" is the cut-off tail of kaikki's argument-structure note in candidate index 0, not English about the verb. Sich verloben means to become engaged."
+  },
+  "verlöschen": {
+    "own_gloss": "go out, die down",
+    "verdict": "accept",
+    "reason": "The strong-verb form the app conjugates is intransitive ('die Kerze verlischt'); 'quench, extinguish' is transitive löschen/auslöschen and invites *ich verlösche das Feuer. The intransitive reading is candidate index 1 ('to go out, to fade')."
+  },
+  "verrechnen": {
+    "own_gloss": "offset, set off",
+    "verdict": "accept",
+    "reason": "The shortening kept the definitional first half of candidate index 0 and dropped the half that named the action ('particularly: to offset one against another'). 'calculate several quantities together' is a description a learner cannot substitute into 'etwas mit etwas verrechnen'."
+  },
+  "verschlagen": {
+    "own_gloss": "strand, carry off",
+    "verdict": "accept",
+    "reason": "Shipped kept an unfiltered synonym pile from candidate index 0: 'shlep' is an opaque Yiddish regionalism and 'bring' is too general to name anything. The live use is near-impersonal ('es hat ihn nach München verschlagen'), which 'strand' plus a directional carries."
+  },
+  "versehen": {
+    "own_gloss": "provide with, furnish",
+    "verdict": "accept",
+    "reason": "'equip, make mistake' welds two unrelated senses as house-style synonyms: transitive 'mit etwas versehen' (candidate index 3, 'to provide with') and the rare reflexive sich versehen (index 4). The common transitive sense is the one to ship."
+  },
+  "verstoßen": {
+    "own_gloss": "violate, infringe",
+    "verdict": "accept",
+    "reason": "'violate, expel' pairs two different constructions as synonyms: 'gegen etwas verstoßen' (violate a rule, candidate index 1) and 'jemanden verstoßen' (disown, index 0). The first is far more frequent; 'violate, infringe' are true synonyms."
+  },
+  "vertreiben": {
+    "own_gloss": "drive away, expel",
+    "verdict": "accept",
+    "reason": "False-synonymy comma joins 'drive out' (candidate index 0) and the commercial 'distribute' (index 2), risking confusion with verteilen. Shipping the expulsion sense removes the false equivalence and sits beside the app's austreiben/verjagen."
+  },
+  "verweisen": {
+    "own_gloss": "refer to",
+    "verdict": "accept",
+    "reason": "Same comma collision: 'refer' (auf etwas verweisen, candidate index 0) and 'expel' (von der Schule verweisen, index 2) are presented as synonyms. Referring is the commoner reading and governs the verb's usual prepositional frame."
+  },
+  "vonstattengehen": {
+    "own_gloss": "proceed, go",
+    "verdict": "accept",
+    "reason": "'take place' is stattfinden and invites *'Das Konzert geht vonstatten'; vonstattengehen describes how a process runs, almost always with a manner adverbial ('reibungslos vonstattengehen'). Candidate index 1 has it: 'to proceed'."
+  },
+  "vorbilden": {
+    "own_gloss": "train in advance",
+    "verdict": "accept",
+    "reason": "'preform' is a technical/literal reading a learner will not meet and is easily misread as 'perform'. The everyday sense is preliminary training ('gut vorgebildet'), candidate index 1 ('to prelearn; to prepare; to equip with knowledge in advance')."
+  },
+  "vorbringen": {
+    "own_gloss": "put forward, raise",
+    "verdict": "accept",
+    "reason": "The shortening dropped candidate index 0's qualifier ('to say in the sense of to allege or state'), leaving bare 'say' indistinguishable from sagen. Vorbringen specifically means to advance an argument, objection, or complaint ('Einwände vorbringen')."
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "bedingen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The shipped gloss is kaikki's sense 0, the archaic legal/contractual reading that survives today mainly in the reflexive sich etwas ausbedingen and in the obsolete strong forms bedang/bedungen. Living modern bedingen is causal: 'Das bedingt hohe Kosten', 'bedingt durch das Wetter'. That meaning is already in candidate_glosses at index 1 ('to require, have as a prerequisite or condition') and index 2 ('to cause'), so this is a mechanical first-sense import defect. The shipped phrase is also unusable as a short gloss: a learner cannot recover the verb's everyday meaning from it.",
+        "fix_gloss": "require, cause"
+      }
+    ]
+  },
+  "befallen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "'affect' is too weak and collides with beeinflussen and beeinträchtigen — beeinträchtigen ships as 'impair, affect' in this same shard. befallen is the verb of disease, pests, and sudden emotion seizing a subject: 'von Schädlingen befallen', 'Angst befiel ihn'. The precise senses are in candidate_glosses at index 1 ('to seize') and index 2 ('to infest'). A learner given 'affect' would produce neutral-causation sentences the verb cannot carry.",
+        "fix_gloss": "afflict, infest"
+      }
+    ]
+  },
+  "befühlen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "'palpate' is medical jargon opaque to most English speakers, and the German verb it actually translates is abtasten (or palpieren). befühlen is everyday German for running one's hands over something to feel it — 'den Stoff befühlen'. kaikki offers only this one candidate, so the register mismatch came in unfiltered rather than from a wrong-sense pick.",
+        "fix_gloss": "feel, touch"
+      }
+    ]
+  },
+  "beikommen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "'come here' is kaikki's sense 0 but corresponds to Duden's landschaftlich (regional) reading 'herankommen'. Standard beikommen takes the dative and means to get at, cope with, or tackle someone or something: 'dem Problem ist nicht beizukommen', 'ihm ist schwer beizukommen'. That is candidate_glosses index 1 ('to deal with'), so the common sense was available and passed over.",
+        "fix_gloss": "deal with, get at"
+      }
+    ]
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "aufstören": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "\"pattern up\" is not English and names no action; it is a corrupt Wiktionary entry that the importer took verbatim as the sole candidate (index 0). German aufstören means to rouse or startle something out of rest — aufscheuchen — as in Wild aufstören, and figuratively to stir up or unsettle. A learner cannot recover any meaning from the shipped gloss.",
+        "fix_gloss": "stir up, rouse"
+      }
+    ]
+  },
+  "aufzeichnen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "\"plot, chart\" is the narrow technical sense (a curve on graph paper) and is what kaikki happens to list first. The sense a learner meets is recording — eine Sendung aufzeichnen, ein Gespräch aufzeichnen — which is candidate_glosses index 2 (\"to record, to note\"), plus the plain drawing sense. Shipping the graph-paper reading leaves the learner without the everyday word.",
+        "fix_gloss": "record, draw"
+      }
+    ]
+  },
+  "auftreiben": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "\"bloat\" is a real but marginal sense (a distended belly, dough rising). The dominant modern use is procuring something with difficulty — Wo soll ich so schnell Geld auftreiben?, einen Ersatzteil auftreiben — which is candidate_glosses index 3 (\"to find, to get, to get hold of, to come by\"). The importer took kaikki's first-listed sense and shipped the rare one.",
+        "fix_gloss": "get hold of, come by"
+      }
+    ]
+  },
+  "ausbringen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The shortening cut away the part that carried the meaning. candidate_glosses index 0 reads \"to raise, to utter (something) in front of others which they echo or react to\" — that is the toast sense, einen Trinkspruch auf jemanden ausbringen. Reduced to bare \"raise\", the gloss reads as heben or erhöhen, which ausbringen does not mean; the other live sense is agricultural spreading (Gülle ausbringen).",
+        "fix_gloss": "propose (a toast)"
+      }
+    ]
+  },
+  "aufwarten": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "\"serve, wait\" is the dated servant sense (jemandem bei Tisch aufwarten), marked veraltet in contemporary usage. The current everyday construction is mit etwas aufwarten — mit einer Überraschung, mit Zahlen aufwarten — which is candidate_glosses index 2 (\"to offer, to serve up\"). The English is also actively confusing: bare \"wait\" reads as warten (wait for), which is the wrong verb entirely.",
+        "fix_gloss": "offer, serve up"
+      }
+    ]
+  },
+  "aufsteigen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "Mounting a horse or bicycle is a specialized application of aufsteigen, and it is first in kaikki only by entry order. The central sense is upward motion — Rauch/Nebel steigt auf, ein Ballon steigt auf — with the promotion senses (beruflich aufsteigen, in die Bundesliga aufsteigen) following from it. That is candidate_glosses index 2 (\"to rise, to ascend\"). \"get on, mount\" leaves the learner unable to read the ordinary uses.",
+        "fix_gloss": "rise, ascend"
+      }
+    ]
+  },
+  "ausbleiben": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "\"be absent\" invites the learner to use ausbleiben of a person missing from school or work, which takes fehlen. Ausbleiben is said of an expected event or result that never arrives — der Erfolg blieb aus, die Reaktion blieb nicht aus. The gloss is broadly in the right area but points at the wrong subject.",
+        "fix_gloss": "fail to appear"
+      }
+    ]
+  }
+}

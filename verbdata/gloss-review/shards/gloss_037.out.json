@@ -1,0 +1,72 @@
+{
+  "verhaften": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "verhaften means to arrest — the everyday police sense, which candidate_glosses lists at index 1 ('to imprison, to put into confinement after judicial writ'). The shipped gloss lifts kaikki's sense 0, a philosophical/literary paraphrase ('stop moving and instead stick'), which is both the wrong sense and unusable as English: a learner reading it would never connect it to 'Die Polizei hat ihn verhaftet.'",
+        "fix_gloss": "arrest"
+      }
+    ]
+  },
+  "verheiraten": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "'marry (someone)' is the gloss for heiraten, not verheiraten. heiraten is what the spouses do ('Sie heiratet ihn'); verheiraten is what a third party does — give in marriage, marry off ('Er verheiratete seine Tochter'), or officiate. candidate_glosses index 1 has it: 'to marry off; to find a spouse for'. As shipped, the gloss teaches the learner to use verheiraten where heiraten is required, a classic error.",
+        "fix_gloss": "marry off"
+      }
+    ]
+  },
+  "verkehren": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "'interact in someone’s sphere' is leaked dictionary paraphrase, not English about the verb — it names no action a learner could recognize or produce. The senses actually met are: of transport, to run or operate on a route ('Die Linie verkehrt stündlich'), which is the everyday one; also 'mit jemandem verkehren' (associate with) and 'ins Gegenteil verkehren' (turn into its opposite). The transport sense is inside kaikki's index 0, buried after the paraphrase as 'to operate'.",
+        "fix_gloss": "run, operate (of transport)"
+      }
+    ]
+  },
+  "verfehlen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "'meet or hit not' is broken English carried over verbatim from kaikki — a word-for-word calque of German 'nicht treffen' with the negation stranded at the end. The leading 'miss' already carries the meaning correctly (das Ziel verfehlen, seinen Zweck verfehlen); the trailing fragment is apparatus, not a synonym, and should be dropped.",
+        "fix_gloss": "miss"
+      }
+    ]
+  },
+  "verbuchen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "'post' is the technical accounting sense (post an entry to a ledger), but as a bare one-word gloss it reads to a learner as posting a letter or posting online, neither of which verbuchen means. The verb is to book or record an entry, and by extension to chalk something up ('einen Erfolg verbuchen'). candidate_glosses index 2 ('to register, book') is the unambiguous wording.",
+        "fix_gloss": "book, record"
+      }
+    ]
+  },
+  "vergelten": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "vergelten is neutral as to whether what is repaid is good or bad — 'Vergelt's Gott' (may God reward you) and 'Böses mit Bösem vergelten' are the same verb. 'retaliate' narrows it to revenge only, and is intransitive in English where vergelten is transitive, so it also mismodels the syntax. candidate_glosses carries both halves separately (index 0 'retaliate', index 1 'reward'); a single neutral gloss covers both.",
+        "fix_gloss": "repay, requite"
+      }
+    ]
+  },
+  "verhelfen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "Bare 'help' is the gloss for helfen and loses everything the ver- prefix adds. verhelfen is always jemandem zu etwas verhelfen — to help someone get or achieve something ('Das verhalf ihm zum Sieg'). kaikki's index 0 kept the preposition as 'to help (to)'; the shortening dropped it, leaving a gloss that collides with a different, more basic verb.",
+        "fix_gloss": "help obtain"
+      }
+    ]
+  }
+}

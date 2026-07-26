@@ -1,0 +1,32 @@
+{
+  "wundern": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "Leading with 'wonder' teaches a false friend. German wundern is transitive 'to surprise, astonish' (es wundert mich, dass...) and reflexive sich wundern 'to be surprised, be amazed' (candidate index 0 and 1). It does not carry English 'wonder' in its ordinary modern sense of asking oneself something — that is sich fragen — so a learner given this gloss will produce *ich wundere mich, ob... for 'I wonder whether'. Candidate index 2's 'to wonder' is Wiktionary rendering the archaic 'wonder at' construction, which a learner will not read that way.",
+        "fix_gloss": "surprise, astonish"
+      }
+    ]
+  },
+  "widersetzen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "sich widersetzen + dative means to oppose, defy, or resist. Bare 'set against' is not idiomatic English for that: it reads as 'place in opposition to' or 'offset', and only works as opposition in the reflexive 'set oneself against'. The natural gloss is already present as candidate index 1 ('to defy, to oppose, to resist'). The shipped gloss points at the right action but names it in English a learner cannot reuse.",
+        "fix_gloss": "oppose, resist"
+      }
+    ]
+  },
+  "wiedergeben": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "'reproduce, return' joins two unrelated actions with a comma, which the house style reads as 'these mean the same thing'. Worse, the weaker half leads the learner astray: modern German returns objects with zurückgeben, and wiedergeben in the give-back sense (candidate index 0) is formal and dated. The live senses are rendering or restating content (candidate index 1) and playing back audio or video (candidate index 2), both of which 'reproduce, render' covers.",
+        "fix_gloss": "reproduce, render"
+      }
+    ]
+  }
+}

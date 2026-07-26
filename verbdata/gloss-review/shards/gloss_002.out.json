@@ -1,0 +1,32 @@
+{
+  "abwählen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "kaikki's first sense, 'deselect', is the narrow computing/checkbox reading. In ordinary German abwählen means voting an officeholder or government out (eine Regierung abwählen) or dropping a school subject (ein Fach abwählen) — candidate_glosses index 1 carries the political sense. A learner given only 'deselect' will read it as a UI term and miss the two uses actually encountered.",
+        "fix_gloss": "vote out, deselect"
+      }
+    ]
+  },
+  "abwägen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "abwägen is figurative only — to weigh options or arguments against one another (Vor- und Nachteile abwägen). The bare 'weigh' reads as physical weighing and collides directly with abwiegen, which this corpus glosses 'weigh, weigh out'. The parenthetical kaikki carried ('to determine the intrinsic value or merit') was what disambiguated it, and shortening dropped exactly that.",
+        "fix_gloss": "weigh up, consider"
+      }
+    ]
+  },
+  "anfallen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "'set upon, attack suddenly' is a literary and largely dated sense (von Hunden angefallen werden). The reading a learner meets in modern German is the impersonal one at candidate_glosses index 3 — anfallende Kosten, anfallende Arbeit, wenn Daten anfallen — i.e. costs, work, or data that arise or accrue. Shipping the attack sense teaches a register the learner will not encounter.",
+        "fix_gloss": "arise, accrue"
+      }
+    ]
+  }
+}

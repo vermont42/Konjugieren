@@ -1,0 +1,62 @@
+{
+  "hermachen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "The gloss is ungrammatical English ('a impression') and was cut from kaikki's sense 0 'to make a (specified) impression', losing the parenthetical that carried the meaning: the verb needs a quantifier ('viel/wenig hermachen' = look impressive / not look like much) and does not mean 'make an impression' in the English idiomatic sense of impressing a person. Sense 1 ('sich über etwas hermachen' = get busy with, tackle) is the other reading a learner meets.",
+        "fix_gloss": "look impressive"
+      }
+    ]
+  },
+  "herausstellen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The comma presents two unrelated senses as synonyms: 'turn out' is reflexive 'sich herausstellen' (candidate index 4) while 'highlight' is transitive emphasis (candidate index 1). The sense a learner meets constantly is the reflexive one, in 'es stellte sich heraus, dass ...'. Ship that alone rather than pairing it with a different sense.",
+        "fix_gloss": "turn out to be"
+      }
+    ]
+  },
+  "heraushalten": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The shipped gloss is the literal physical sense (holding something out a window), which is real but marginal. In use the verb is overwhelmingly reflexive: 'sich aus etwas heraushalten', 'halt dich da raus' — candidate index 2, 'to keep oneself away from something'. That is the sense a learner will meet.",
+        "fix_gloss": "keep out of, stay out of"
+      }
+    ]
+  },
+  "herumkommen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "'move round something' is kaikki's literal first sense and is the least-used reading. The everyday idiom is 'um etwas nicht herumkommen' — candidate index 2, being unable to avoid something ('da kommst du nicht drum herum'); the other live sense is candidate index 1, 'viel herumkommen' = travel widely. Either would serve a learner better than the literal one.",
+        "fix_gloss": "get out of, avoid"
+      }
+    ]
+  },
+  "herausziehen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "Shortening candidate index 0 'to pull (out)' dropped the parenthesized 'out', so the gloss collapses onto simplex 'ziehen'. The heraus- prefix is the whole content of the verb: extraction, as in a splinter, a plug, or a tooth.",
+        "fix_gloss": "pull out"
+      }
+    ]
+  },
+  "herausschreiben": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "English 'write out' reads as writing something in full or in longhand. The German means extracting by writing — copying quotations, figures, or vocabulary out of a source, which is what kaikki's '(i.e. of a work)' was pointing at.",
+        "fix_gloss": "copy out, excerpt"
+      }
+    ]
+  }
+}

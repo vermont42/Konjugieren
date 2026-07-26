@@ -1,0 +1,92 @@
+{
+  "abberufen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "abberufen is the verb for removing someone from a post or recalling them from a position (einen Botschafter/Geschäftsführer abberufen); candidate_glosses index 1 has it as 'to recall'. The shipped 'withdraw' is the vaguest possible reading of kaikki's first sense and would let a learner reach for abberufen when they mean withdrawing money, troops, or a statement, none of which it covers.",
+        "fix_gloss": "recall from a post"
+      }
+    ]
+  },
+  "abblasen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "In ordinary modern German abblasen almost always means to call off an event or plan (das Spiel/den Streik/die Suche abblasen), which candidate_glosses lists at index 2. The shipped literal 'blow off something, blow clear' is a technical sense the learner is unlikely to meet.",
+        "fix_gloss": "call off, cancel"
+      }
+    ]
+  },
+  "abdrehen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "'veer' is a narrow nautical/aviation sense. The everyday meaning a learner meets is shutting off a supply at a valve or switch — das Wasser/Gas abdrehen, and in southern German and Austrian usage also lights and appliances — which candidate_glosses gives at index 4. A one-word gloss of 'veer' teaches none of that.",
+        "fix_gloss": "turn off, shut off"
+      }
+    ]
+  },
+  "abfeiern": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The standard sense of abfeiern is taking accrued overtime as time off (Überstunden abfeiern), candidate_glosses index 2. The shipped 'celebrate, praise, love' is the youth-slang reading (das feier ich ab), and as English it is confusing on its own: 'celebrate' reads as plain feiern, which abfeiern does not mean.",
+        "fix_gloss": "take time off in lieu"
+      }
+    ]
+  },
+  "abführen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "The shortening dropped the parenthetical that carried the sense: candidate_glosses index 0 is 'to take away (someone in police custody)'. Bare 'take away' reads as wegnehmen, which abführen never means; the verb is about leading a person away under escort (and separately about remitting taxes or having a laxative effect).",
+        "fix_gloss": "lead away (in custody)"
+      }
+    ]
+  },
+  "abgleichen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "'verify congruence' is not English anyone uses, and it comes from a garbled kaikki entry ('to but check or collate'). abgleichen is comparing two sets of data or accounts to bring them into agreement — reconcile, cross-check, sync (Daten/Termine/Kontostände abgleichen). A learner cannot recover that from the shipped phrase.",
+        "fix_gloss": "compare, reconcile"
+      }
+    ]
+  },
+  "abhauen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "By far the live meaning of abhauen is to clear off or run away (Hau ab!, er ist abgehauen), candidate_glosses index 1. The shipped 'cut off' is the older literal sense of hewing something off with a blade, which survives mainly in fixed phrases and is not what the learner will encounter.",
+        "fix_gloss": "clear off, run away"
+      }
+    ]
+  },
+  "ablenken": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The everyday sense is distracting someone or their attention (jemanden ablenken, abgelenkt sein), candidate_glosses index 1. Shipped 'divert' alone points at the physics sense of deflecting light or a projectile and invites the wrong use for diverting traffic or a river, which is umleiten.",
+        "fix_gloss": "distract, divert"
+      }
+    ]
+  },
+  "ablesen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The shortening cut kaikki's '(take a reading)' from index 0, leaving a gloss identical to the base verb lesen. ablesen never means reading a book; it is taking a reading off a gauge or meter (den Zählerstand ablesen) or reading aloud from a prepared text.",
+        "fix_gloss": "read off (a meter)"
+      }
+    ]
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "zuhalten": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "\"be keep something shut\" is not English — the importer copied a malformed Wiktionary line (candidate_glosses index 0 reads \"to be keep something shut\") verbatim, so the defect survived the shortening step. The verb means to hold something shut: die Tür zuhalten, sich die Nase zuhalten, sich die Ohren zuhalten.",
+        "fix_gloss": "hold shut"
+      }
+    ]
+  },
+  "zukehren": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "\"turn something\" drops the directional zu- that is the entire content of the verb, and kaikki's index 0 (\"to turn (rotate) something\") actively pushes toward the wrong reading: zukehren is not rotating, it is turning a side of something toward a person or place. Its dominant use is jemandem den Rücken / das Gesicht zukehren.",
+        "fix_gloss": "turn toward"
+      }
+    ]
+  },
+  "zuleiten": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The shortening dropped the parenthetical that carried the meaning: kaikki index 0 is \"to feed (a liquid, electricity, etc.)\", and bare \"feed\" reads as füttern, a verb zuleiten never means. Zuleiten is to channel or supply something along a conduit — Wasser, Strom, Frischluft zuleiten — and by extension to forward a document to an office.",
+        "fix_gloss": "supply, channel"
+      }
+    ]
+  },
+  "zunähen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "\"suture\" is a surgical term, but zunähen is the ordinary domestic word for sewing something closed — ein Loch, eine Naht, eine Tasche zunähen. The register mismatch will keep a learner from using the verb where it actually belongs. candidate_glosses index 1 (\"to stitch up\") is the everyday equivalent.",
+        "fix_gloss": "sew shut, stitch up"
+      }
+    ]
+  },
+  "zurichten": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "\"hurt\" is a weak Wiktionary gloss the importer took at face value. Zurichten is not the German for hurting someone — that is verletzen or wehtun — and in current usage it appears almost exclusively as übel/schlimm zurichten, meaning to batter someone or leave something in a wrecked state. Glossed as \"hurt\", it invites a learner to write ich habe ihn zugerichtet for \"I hurt him\", which is badly wrong.",
+        "fix_gloss": "batter, beat up"
+      }
+    ]
+  },
+  "zurufen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "Bare \"call\" collides head-on with anrufen, the verb for telephoning, which is the reading a learner will reach for first. Zurufen is to call out to someone across a distance: er rief mir eine Warnung zu.",
+        "fix_gloss": "call out to"
+      }
+    ]
+  }
+}

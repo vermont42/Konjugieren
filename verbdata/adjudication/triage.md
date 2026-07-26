@@ -1,0 +1,269 @@
+# Adjudication triage — 245 of 246 proposals judged
+
+**218 accepted · 2 amended · 25 rejected.** 220 correction(s) written to `verbdata/gloss-review/gloss-corrections-final.json`.
+
+## Verdict by traceability
+
+Traceability was withheld from the adjudicator, so this table measures something.
+
+| | accept | amend | reject |
+|---|---|---|---|
+| repick | 25 | 0 | 4 |
+| partial | 92 | 2 | 8 |
+| authored | 101 | 0 | 13 |
+
+> **PARTIAL.** 1 proposal(s) never judged: verweben.
+
+## Rejected — shipped gloss survives (25)
+
+- **anreden** keeps `begin a talk with someone`, proposal `address, speak to` rejected (authored) — The shipped 'begin a talk with someone' is candidate 0 verbatim and conveys the addressing sense, just awkwardly; the proposed 'address, speak to' is the reviewer's own wording, absent from candidate_glosses. Sourced-but-clunky survives over unsourced-but-clean, and the change is naturalness rather than a fix of a wrong sense.
+- **aufarbeiten** keeps `refurbish`, proposal `work through` rejected (authored) — 'Refurbish' (candidate index 0, Möbel aufarbeiten) is an attested, non-archaic sense, so the shipped gloss is not wrong. 'Work through' is a more common sense, but that alone is not grounds, and the backlog/Vergangenheit reading is not cleanly attested (index 2 is 'mentally process').
+- **auflegen** keeps `lay on`, proposal `hang up, lay on` rejected (partial) — 'Lay on' (candidate index 0, apply/put on: Hand/Farbe auflegen) is a defensible attested sense, so the shipped gloss is not wrong. The proposal rests on completeness (adding 'hang up', index 1) and joins two non-synonyms with a comma, which the house style reads as false synonymy.
+- **ausbleiben** keeps `be absent`, proposal `fail to appear` rejected (authored) — 'Be absent' (the sole candidate) is a defensible rendering of ausbleiben (to stay away, not come; die Gäste/Kundschaft blieben aus). The proposal 'fail to appear' is a refinement toward the event reading, not a correction, and is not attested; the distinction from fehlen is subtle, so the shipped gloss survives.
+- **ausziehen** keeps `move out, vacate`, proposal `take off (clothes), move out` rejected (partial) — 'Move out, vacate' (candidate index 0) is an attested and fully defensible sense, not wrong. The proposal adds the equally-common clothing sense — a completeness argument, which is by design — and joins two distinct senses with a comma. The shipped gloss survives.
+- **davontragen** keeps `carry away`, proposal `carry off, sustain` rejected (authored) — Shipped 'carry away' is candidate 0, a current and correct literal sense (das Kind davontragen) — not rare or archaic — so it clears the bar for keeping one sense of a polysemous verb. The proposed 'carry off, sustain' joins two genuinely different senses (win a prize vs. suffer an injury) with a comma, the false synonymy the house style forbids, so it is not a clean fix.
+- **durchziehen** keeps `pass`, proposal `pull through, go through with` rejected (partial) — Candidate 0 'to pass' is attested and durchziehen genuinely carries the intransitive pass-through sense (a storm or troops passing through); the proposal swaps to a different reading and comma-joins the literal 'pull through' (candidate 3) with the colloquial, unattested 'go through with', which reads as synonymy though they are not.
+- **einschneiden** keeps `engrave, carve`, proposal `cut into, carve` rejected (partial) — Candidate 0 'to engrave; to carve' is what shipped renders, and both are defensible readings of einschneiden (seinen Namen in die Rinde einschneiden); the proposal's 'cut into' is more precise but unattested, and precision alone is not grounds.
+- **eintreiben** keeps `drive in`, proposal `collect (a debt)` rejected (authored) — 'drive in' (candidate 0) is a real, non-archaic literal sense of eintreiben (Vieh eintreiben, einen Pfahl eintreiben); the debt-collection sense (candidate 1) is common too, but preferring one live sense over another is not grounds when the shipped one is genuine and not a collapse into the base verb.
+- **entheben** keeps `relieve`, proposal `relieve of duty` rejected (authored) — Candidate 0 'to relieve' is defensible: English 'relieve' carries exactly the relieve-of-command/duty sense entheben denotes (an officer relieved of command), so 'relieve of duty' merely adds precision, which the brief settles as not grounds.
+- **ersehen** keeps `learn`, proposal `gather, discern` rejected (authored) — Candidate 0 'to learn' is attested and defensible in the 'learn/gather from' sense (wie aus dem Bericht zu ersehen ist); the proposal's 'gather, discern' is unattested, and I am not confident bare 'learn' is misleading rather than merely terse — an uncertain call goes to the shipped gloss.
+- **erweichen** keeps `weaken, soften`, proposal `soften` rejected (repick) — Shipped 'weaken, soften' is kaikki index 0 verbatim, and 'weaken' is defensible for the figurative jemanden erweichen (soften/weaken someone's resolve). Dropping it is a precision tweak, not a fix of something wrong; the tie goes to the sourced gloss.
+- **hingeben** keeps `hand over`, proposal `sacrifice, give up` rejected (partial) — 'Hand over' is candidate_glosses index 0 and hingeben genuinely carries the physical give-away sense; devote/sacrifice is salient but replacing an attested single-sense gloss with a different attested sense is trading, not correcting. Tie goes to the sourced gloss.
+- **losgehen** keeps `leave`, proposal `set off, get going` rejected (authored) — 'Leave' is candidate_glosses index 0 and correctly names the intransitive departure sense (wir gehen um acht los = we leave at eight); the proposal is more idiomatic and dodges a theoretical verlassen collision, but that is precision, not the shipped gloss being wrong.
+- **mitdenken** keeps `follow`, proposal `think along, follow the reasoning` rejected (authored) — 'To follow' is the sole attested gloss (index 0) and is defensible for following a line of reasoning; the reviewer concedes 'the gloss needs writing rather than importing', so the proposal is authored with no dictionary behind it. The safe default keeps the attested gloss.
+- **niederschlagen** keeps `defeat`, proposal `put down, quell` rejected (partial) — Shipped 'defeat' is candidate index 0 and, as the reviewer concedes, 'broadly in range'; the proposal is a precision improvement (quell vs the besiegen risk), not a correction of a wrong or misleading gloss. Severity low, attested sense stays.
+- **offenstehen** keeps `stay open`, proposal `be open, stand open` rejected (authored) — The reviewer's own admission is 'broadly right', and 'stay open' is the only attested candidate (index 0); the stative-vs-durative distinction against offenbleiben is subtle, and the proposed 'be open, stand open' is unbacked wording. Low severity, attested gloss stays.
+- **teilhaben** keeps `participate`, proposal `share in, partake of` rejected (authored) — 'participate' is the only attested candidate (index 0) and is a defensible rendering of teilhaben an etwas; the share-vs-take-part distinction against teilnehmen is subtle, the replacement is unbacked wording, and severity is low. Tie goes to the sourced gloss.
+- **umschlagen** keeps `turn`, proposal `change abruptly, turn` rejected (partial) — Shipped 'turn' is candidate index 0, and English 'turn' already carries the abrupt-change sense the reviewer wants (the weather turned, the mood turned). The proposal is a precision gain, not a correction, and 'change abruptly' is not a separately listed candidate. Low severity, attested gloss stays.
+- **vergelten** keeps `retaliate`, proposal `repay, requite` rejected (authored) — 'retaliate' is an attested sense (candidate index 0, 'Böses mit Bösem vergelten'), and selecting one sense of a polysemous verb is by design. The neutral 'repay, requite' is the reviewer's own wording, absent from candidate_glosses, so the safer call keeps the sourced gloss.
+- **verkriechen** keeps `creep away`, proposal `hide away` rejected (repick) — 'creep away' is attested (candidate index 0) and is a defensible rendering of the same intransitive reflexive verb; it and 'hide away' (index 1) are two valid readings, so this trades one attested sense for another without the shipped one being wrong.
+- **vorziehen** keeps `pull to the front`, proposal `prefer` rejected (repick) — 'Pull to the front' (candidate index 0) is a current, non-rare literal sense — vorziehen commonly means pull a curtain or chair forward, and to move up a scheduled event (index 3). 'prefer' (index 2) is one live sense among several, not so dominant that the shipped choice is wrong; naming one sense of a polysemous verb is by design.
+- **widersetzen** keeps `set against, make a stand against`, proposal `oppose, resist` rejected (partial) — The shipped gloss's second half, 'make a stand against', already conveys the oppose/resist sense (candidate index 1); the proposal is cleaner English for the same meaning, not a correction of a wrong one. Better English is not grounds to accept.
+- **überschlagen** keeps `skip over, omit, leave out`, proposal `estimate roughly` rejected (authored) — Skipping a page or passage (eine Seite überschlagen) is a common, concrete everyday sense at candidate index 0 — not rare, archaic, technical, or regional. Even though I too would lead with the estimate sense, that only makes the estimate reading preferable, not the shipped skip-over reading wrong, so under the polysemy rule the shipped gloss stays.
+- **überstimmen** keeps `overrule`, proposal `outvote` rejected (repick) — 'outvote' is more precise to the Stimme stem, but 'overrule' is candidate index 0 and is a valid English gloss commonly used for majority decisions ('the board overruled him'); mere added precision is not grounds, and the shipped gloss is attested and defensible.
+
+## Amended — neither model's original wording (2)
+
+- **aufschlagen** `pitch, serve` → `open (a book)` (proposal was `open (a book), serve`) — The reviewer is right that 'pitch, serve' is a poor choice: 'pitch' reads as baseball or pitching a tent, and the tennis-serve sense is narrow. But the proposal 'open (a book), serve' joins two distinct senses with a comma, so I ship the single clean everyday sense (candidate index 3).
+- **aufzeichnen** `plot, chart` → `record` (proposal was `record, draw`) — The reviewer is right that 'plot, chart' (index 0) is a narrow graph-paper sense and the everyday meaning is recording (eine Sendung aufzeichnen, index 2). But the proposal 'record, draw' joins two distinct senses with a comma, so I ship the single dominant sense.
+
+## Accepted (218)
+
+- **abberufen** `withdraw` → `recall from a post` (authored)
+- **abblasen** `blow off something, blow clear` → `call off, cancel` (partial) ✓ both models wrote the same gloss independently
+- **abdrehen** `veer` → `turn off, shut off` (partial) ✓ both models wrote the same gloss independently
+- **abfeiern** `celebrate, praise, love` → `take time off in lieu` (authored) ✓ both models wrote the same gloss independently
+- **abführen** `take away` → `lead away (in custody)` (authored) ✓ both models wrote the same gloss independently
+- **abgleichen** `verify congruence` → `compare, reconcile` (authored) ✓ both models wrote the same gloss independently
+- **abhauen** `cut off` → `clear off, run away` (authored) ✓ both models wrote the same gloss independently
+- **ablenken** `divert` → `distract, divert` (partial) ✓ both models wrote the same gloss independently
+- **ablesen** `read` → `read off (a meter)` (authored) ✓ both models wrote the same gloss independently
+- **abrichten** `drill` → `train (an animal)` (authored) ✓ both models wrote the same gloss independently
+- **abstechen** `cut off, cut out, carve out` → `stab to death` (repick) ✓ both models wrote the same gloss independently
+- **absterben** `atrophy` → `die off, die back` (partial) ✓ both models wrote the same gloss independently
+- **abtreiben** `go/be sent off course` → `have an abortion` (repick) ✓ both models wrote the same gloss independently
+- **abtreten** `kick away` → `step down, cede` (authored) ✓ both models wrote the same gloss independently
+- **abwägen** `weigh` → `weigh up, consider` (authored) ✓ both models wrote the same gloss independently
+- **abwählen** `deselect` → `vote out, deselect` (partial)
+- **anfallen** `set upon, attack suddenly` → `arise, accrue` (partial) ✓ both models wrote the same gloss independently
+- **angeloben** `vow` → `swear in, pledge` (partial)
+- **anhaben** `wear, have on see usage notes` → `wear, have on` (partial) ✓ both models wrote the same gloss independently
+- **anhalten** `stop, continue` → `stop, halt` (partial) ✓ both models wrote the same gloss independently
+- **anhängen** `weigh on, burden` → `attach, append` (authored) ✓ both models wrote the same gloss independently
+- **anklagen** `indict by the findings of a jury)` → `accuse, indict` (partial) ✓ both models wrote the same gloss independently
+- **anleiten** `guide or to train` → `guide, instruct` (partial) ✓ both models wrote the same gloss independently
+- **anvertrauen** `entrust in various ways` → `entrust` (repick) ✓ both models wrote the same gloss independently
+- **aufatmen** `breathe again` → `breathe a sigh of relief` (authored) ✓ both models wrote the same gloss independently
+- **aufbleiben** `wake, stay awake, stay up` → `stay up, stay awake` (partial) ✓ both models wrote the same gloss independently
+- **auferwecken** `raise up, awaken` → `resurrect, raise from the dead` (authored)
+- **auflehnen** `lean on` → `rebel, revolt` (partial) ✓ both models wrote the same gloss independently
+- **aufschieben** `push open` → `postpone, put off` (partial) ✓ both models wrote the same gloss independently
+- **aufsetzen** `put on` → `put on (headwear)` (authored) ✓ both models wrote the same gloss independently
+- **aufsteigen** `get on, mount` → `rise, ascend` (partial) ✓ both models wrote the same gloss independently
+- **aufstören** `pattern up` → `stir up, rouse` (authored)
+- **auftreiben** `bloat` → `get hold of, come by` (partial) ✓ both models wrote the same gloss independently
+- **aufwarten** `serve, wait` → `offer, serve up` (partial)
+- **ausbringen** `raise` → `propose (a toast)` (authored) ✓ both models wrote the same gloss independently
+- **ausholen** `haul off` → `wind up (the arm)` (authored) ✓ both models wrote the same gloss independently
+- **auslernen** `finish learning` → `complete one's training` (authored)
+- **auslesen** `cull` → `select, pick out` (partial) ✓ both models wrote the same gloss independently
+- **ausscheiden** `secrete` → `drop out, be eliminated` (partial) ✓ both models wrote the same gloss independently
+- **ausscheren** `sheer, sheer out` → `pull out, veer off` (partial)
+- **ausschreiben** `advertise` → `advertise (a position)` (authored) ✓ both models wrote the same gloss independently
+- **austrinken** `empty` → `drink up` (authored) ✓ both models wrote the same gloss independently
+- **bedingen** `have agreed upon as a contractual term` → `require, cause` (partial) ✓ both models wrote the same gloss independently
+- **befallen** `affect` → `afflict, infest` (partial)
+- **befühlen** `palpate` → `feel, touch` (authored) ✓ both models wrote the same gloss independently
+- **beikommen** `come here` → `deal with, get at` (partial)
+- **beklagen** `pity, lament` → `lament, deplore` (partial)
+- **belachen** `laugh at, belaugh` → `laugh at` (repick) ✓ both models wrote the same gloss independently
+- **bemeistern** `dominate` → `master, overcome` (authored) ✓ both models wrote the same gloss independently
+- **bepflanzen** `plant` → `plant (an area)` (authored) ✓ both models wrote the same gloss independently
+- **berücken** `ensnare` → `captivate, enchant` (partial) ✓ both models wrote the same gloss independently
+- **bescheiden** `confer the decision or fate formally` → `notify of a decision` (authored) ✓ both models wrote the same gloss independently
+- **beschenken** `endow` → `give presents to` (authored) ✓ both models wrote the same gloss independently
+- **beschicken** `send, commit` → `send to, load` (partial)
+- **beschneiden** `circumcise` → `trim, prune, curtail` (partial) ✓ both models wrote the same gloss independently
+- **bespringen** `synonym of begatten` → `mount (of animals)` (authored)
+- **bestecken** `get stuck` → `adorn by sticking in` (authored)
+- **bestärken** `strengthen, encourage, fortify` → `reinforce, encourage` (partial) ✓ both models wrote the same gloss independently
+- **beweinen** `cry over, beweep, bewail, mourn` → `mourn, cry over` (partial)
+- **dahinsterben** `die` → `waste away, die off` (authored) ✓ both models wrote the same gloss independently
+- **daransetzen** `risk, not spare, make, use` → `devote, stake` (authored)
+- **darniederliegen** `be sick` → `be laid low, languish` (partial) ✓ both models wrote the same gloss independently
+- **dazukommen** `arrive` → `join, be added` (partial) ✓ both models wrote the same gloss independently
+- **draufgeben** `add of something` → `add on top` (authored) ✓ both models wrote the same gloss independently
+- **durchbringen** `be able to bring through` → `get through, pull through` (authored) ✓ both models wrote the same gloss independently
+- **durchfallen** `fall through` → `fail (an exam)` (authored) ✓ both models wrote the same gloss independently
+- **durchschauen** `see through` → `look through` (authored) ✓ both models wrote the same gloss independently
+- **einbilden** `imagine` → `imagine falsely` (authored)
+- **einkehren** `sojourn` → `stop at an inn` (authored) ✓ both models wrote the same gloss independently
+- **einkommen** `earn` → `come in (of money)` (authored) ✓ both models wrote the same gloss independently
+- **einreisen** `enter, travel` → `enter a country` (authored) ✓ both models wrote the same gloss independently
+- **einschreiben** `write into, inscribe` → `enroll, register` (partial) ✓ both models wrote the same gloss independently
+- **einschulen** `instruct for a specific position, task` → `enroll in school` (authored) ✓ both models wrote the same gloss independently
+- **einstellen** `set, hire` → `adjust, set` (partial) ✓ both models wrote the same gloss independently
+- **einwenden** `raise, make` → `object, raise an objection` (partial) ✓ both models wrote the same gloss independently
+- **einüben** `drill, # to practice / practise` → `practice, rehearse` (partial) ✓ both models wrote the same gloss independently
+- **entbinden** `see a woman through childbirth, deliver` → `give birth` (repick) ✓ both models wrote the same gloss independently
+- **entfahren** `escape` → `slip out (of one's mouth)` (authored) ✓ both models wrote the same gloss independently
+- **entrücken** `translate, rapture` → `carry away, enrapture` (partial) ✓ both models wrote the same gloss independently
+- **entschlafen** `fall asleep, die` → `pass away` (authored) ✓ both models wrote the same gloss independently
+- **ergehen** `forms the perfect with sein` → `fare` (authored) ✓ both models wrote the same gloss independently
+- **erhoffen** `hope, desire, want` → `hope for` (authored) ✓ both models wrote the same gloss independently
+- **erlöschen** `extinguish, quench, douse` → `go out, be extinguished` (authored)
+- **erraten** `determine through advice or empathy` → `guess correctly` (authored) ✓ both models wrote the same gloss independently
+- **erstatten** `reimburse, file` → `reimburse, refund` (partial) ✓ both models wrote the same gloss independently
+- **ersterben** `die` → `die away, fade out` (partial) ✓ both models wrote the same gloss independently
+- **erwachsen** `grow up, grow` → `arise from, result from` (authored) ✓ both models wrote the same gloss independently
+- **erziehen** `nurture` → `raise, bring up` (authored) ✓ both models wrote the same gloss independently
+- **festfrieren** `ice over, freeze` → `freeze stuck` (authored) ✓ both models wrote the same gloss independently
+- **festhalten** `hold on, record` → `hold on to, hold tight` (authored) ✓ both models wrote the same gloss independently
+- **feststehen** `stand firm` → `be certain, be settled` (authored)
+- **fortfahren** `drive away, drive off` → `continue` (repick) ✓ both models wrote the same gloss independently
+- **fortgehen** `continue, go on, keep on, carry on` → `leave, go away` (partial) ✓ both models wrote the same gloss independently
+- **fortschleifen** `synonym of wegschleifen: to drag away` → `drag away` (repick) ✓ both models wrote the same gloss independently
+- **freimachen** `put a stamp on` → `clear, free up` (partial) ✓ both models wrote the same gloss independently
+- **freuen** `be happy, please` → `be glad, be pleased` (partial) ✓ both models wrote the same gloss independently
+- **fällen** `fell, pass` → `fell, cut down` (partial) ✓ both models wrote the same gloss independently
+- **geraten** `get into, turn out` → `get into, end up in` (authored) ✓ both models wrote the same gloss independently
+- **gewarten** `expect, await or wait for` → `expect, await` (partial) ✓ both models wrote the same gloss independently
+- **haushalten** `have or run a household` → `economize, be thrifty` (authored) ✓ both models wrote the same gloss independently
+- **herausbrechen** `burst out` → `break out, break off` (partial) ✓ both models wrote the same gloss independently
+- **herausgeben** `publish, hand out` → `publish, issue` (partial) ✓ both models wrote the same gloss independently
+- **heraushalten** `hold out, stick out` → `keep out of, stay out of` (authored)
+- **herausschreiben** `write out` → `copy out, excerpt` (authored) ✓ both models wrote the same gloss independently
+- **herausstellen** `turn out, highlight` → `turn out to be` (repick) ✓ both models wrote the same gloss independently
+- **herausziehen** `pull` → `pull out` (authored) ✓ both models wrote the same gloss independently
+- **hermachen** `make a impression` → `look impressive` (authored) ✓ both models wrote the same gloss independently
+- **herumkommen** `move round something` → `get out of, avoid` (partial)
+- **hervorsehen** `show` → `peek out, show through` (authored) ✓ both models wrote the same gloss independently
+- **hinauslaufen** `walk out` → `amount to, come down to` (partial) ✓ both models wrote the same gloss independently
+- **hindeuten** `point` → `indicate, suggest` (partial) ✓ both models wrote the same gloss independently
+- **hinfahren** `give a ride` → `drive there, travel there` (authored)
+- **hingucken** `synonym of hinsehen` → `take a look, look` (authored)
+- **hinrücken** `move away` → `move over there, shift over` (authored)
+- **hintanhalten** `evite, try to make something not appear` → `prevent, avert` (authored) ✓ both models wrote the same gloss independently
+- **hintanstellen** `put back, order into a posterior position` → `put last` (authored) ✓ both models wrote the same gloss independently
+- **hinwegsehen** `look over` → `overlook, ignore` (partial)
+- **hochdrehen** `turn upward` → `turn up` (authored)
+- **hochfahren** `drive upwards/northwards` → `boot up, start up` (authored) ✓ both models wrote the same gloss independently
+- **hochrechnen** `calculate purposefully high in the dark` → `extrapolate, project` (partial) ✓ both models wrote the same gloss independently
+- **innehaben** `hold` → `hold (an office)` (authored) ✓ both models wrote the same gloss independently
+- **kehren** `sweep, turn` → `sweep` (repick) ✓ both models wrote the same gloss independently
+- **klappen** `work out, fold` → `work out, succeed` (partial) ✓ both models wrote the same gloss independently
+- **kleinkriegen** `break` → `break someone's spirit` (authored)
+- **kontrollieren** `control, check` → `check, inspect` (partial) ✓ both models wrote the same gloss independently
+- **leichtfallen** `come, be easy` → `come easily, be easy` (partial) ✓ both models wrote the same gloss independently
+- **losschlagen** `knock loose` → `attack, strike` (partial) ✓ both models wrote the same gloss independently
+- **mitbekommen** `get or be given something when leaving` → `notice, pick up on` (partial)
+- **mitfahren** `drive with` → `ride along` (authored) ✓ both models wrote the same gloss independently
+- **mitkriegen** `synonym of mitbekommen` → `notice, pick up on` (authored)
+- **mitreißen** `entrain` → `sweep along, carry away` (partial) ✓ both models wrote the same gloss independently
+- **mitspielen** `cooperate` → `play along, join in a game` (partial)
+- **nachblicken** `look at` → `gaze after` (authored) ✓ both models wrote the same gloss independently
+- **nachempfinden** `feel for` → `relate to, empathize with` (authored)
+- **nachsagen** `repeat something said by someone else` → `say about someone` (authored) ✓ both models wrote the same gloss independently
+- **nachsetzen** `place after` → `chase after, pursue` (partial) ✓ both models wrote the same gloss independently
+- **niederstoßen** `thrust down, knock down so that it falls)` → `thrust down, knock down` (partial) ✓ both models wrote the same gloss independently
+- **offenhalten** `synonym of offenlassen` → `keep open` (repick) ✓ both models wrote the same gloss independently
+- **preisgeben** `abandon, forsake, relinquish, surrender` → `disclose, reveal` (repick) ✓ both models wrote the same gloss independently
+- **raushalten** `hold out` → `stay out of, keep out of` (authored)
+- **reinwaschen** `cleanse` → `clear of blame, whitewash` (partial) ✓ both models wrote the same gloss independently
+- **richten** `direct, judge` → `direct, aim` (partial)
+- **sattsehen** `have enough of seeing something beautiful` → `look one's fill` (authored) ✓ both models wrote the same gloss independently
+- **seligmachen** `bless, beatify` → `bless, make blessed` (partial)
+- **sorgen** `worry, care` → `take care of, see to` (partial) ✓ both models wrote the same gloss independently
+- **starkmachen** `strengthen` → `advocate for, stand up for` (partial) ✓ both models wrote the same gloss independently
+- **thematisieren** `address, make topic` → `bring up, address` (repick) ✓ both models wrote the same gloss independently
+- **umsteigen** `change, interchange, switch` → `change (trains, buses)` (authored) ✓ both models wrote the same gloss independently
+- **umstimmen** `retune` → `change someone's mind` (repick) ✓ both models wrote the same gloss independently
+- **umtreiben** `drive around` → `preoccupy, trouble` (authored) ✓ both models wrote the same gloss independently
+- **umwenden** `turn over, turn inside out` → `turn over` (repick) ✓ both models wrote the same gloss independently
+- **unterfangen** `undertake` → `dare, presume` (partial) ✓ both models wrote the same gloss independently
+- **untergehen** `set` → `go down, sink, set` (partial) ✓ both models wrote the same gloss independently
+- **unterhalten** `entertain, maintain` → `entertain` (repick) ✓ both models wrote the same gloss independently
+- **verabschieden** `say goodbye, pass` → `say goodbye` (repick) ✓ both models wrote the same gloss independently
+- **verbiegen** `bend something` → `bend` (repick)
+- **verbuchen** `post` → `book, record` (partial) ✓ both models wrote the same gloss independently
+- **verfehlen** `miss, meet or hit not` → `miss` (repick) ✓ both models wrote the same gloss independently
+- **verhaften** `stop moving and instead stick` → `arrest` (repick) ✓ both models wrote the same gloss independently
+- **verheiraten** `marry (someone)` → `marry off` (repick) ✓ both models wrote the same gloss independently
+- **verhelfen** `help` → `help obtain` (authored) ✓ both models wrote the same gloss independently
+- **verkehren** `interact in someone’s sphere` → `run, operate (of transport)` (authored) ✓ both models wrote the same gloss independently
+- **verlauten** `announce` → `be reported, become known` (authored) ✓ both models wrote the same gloss independently
+- **verleben** `spend` → `spend (time)` (authored) ✓ both models wrote the same gloss independently
+- **verlernen** `cease doing, forget` → `forget how to do` (authored) ✓ both models wrote the same gloss independently
+- **verloben** `betroth, get engaged ‘someone’])` → `get engaged` (repick) ✓ both models wrote the same gloss independently
+- **verlöschen** `quench, extinguish` → `go out, fade` (partial)
+- **verrechnen** `calculate several quantities together` → `offset, set off` (partial) ✓ both models wrote the same gloss independently
+- **verschlagen** `drive, strand, shlep, bring` → `strand, drive somewhere` (partial)
+- **versehen** `equip, make mistake` → `provide with, furnish` (partial) ✓ both models wrote the same gloss independently
+- **verstoßen** `violate, expel` → `violate, infringe` (partial) ✓ both models wrote the same gloss independently
+- **vertreiben** `drive out, distribute` → `drive away, expel` (partial) ✓ both models wrote the same gloss independently
+- **verweisen** `refer, expel` → `refer to` (authored) ✓ both models wrote the same gloss independently
+- **vonstattengehen** `take place` → `proceed, go` (partial) ✓ both models wrote the same gloss independently
+- **vorbilden** `preform` → `train in advance` (authored) ✓ both models wrote the same gloss independently
+- **vorbringen** `say` → `put forward, raise` (authored) ✓ both models wrote the same gloss independently
+- **vorhalten** `hold up` → `hold against, reproach` (authored)
+- **vorlesen** `read` → `read aloud` (authored) ✓ both models wrote the same gloss independently
+- **vorsetzen** `prefix` → `put in front of, serve` (partial)
+- **vorsingen** `sing` → `sing to someone` (authored) ✓ both models wrote the same gloss independently
+- **vorwerfen** `throw at, throw forward` → `accuse of, reproach` (partial) ✓ both models wrote the same gloss independently
+- **wegdrängen** `edge away, edge off` → `push away, push aside` (authored)
+- **wegführen** `carry away` → `lead away` (authored) ✓ both models wrote the same gloss independently
+- **wehren** `defend, resist` → `defend oneself, resist` (partial) ✓ both models wrote the same gloss independently
+- **weismachen** `make believe` → `fool, delude` (authored)
+- **weiterarbeiten** `resume one's work` → `continue working` (authored) ✓ both models wrote the same gloss independently
+- **weiterkämpfen** `continue to battle after a pause` → `fight on, keep fighting` (authored) ✓ both models wrote the same gloss independently
+- **wiedergeben** `reproduce, return` → `reproduce, render` (partial) ✓ both models wrote the same gloss independently
+- **wundern** `wonder, surprise` → `surprise, astonish` (partial) ✓ both models wrote the same gloss independently
+- **zerwerfen** `break by throwing` → `fall out with someone` (authored)
+- **zeugen** `testify, father` → `father, beget` (partial) ✓ both models wrote the same gloss independently
+- **zubringen** `bring` → `spend (time)` (authored) ✓ both models wrote the same gloss independently
+- **zufliegen** `fly` → `fly toward` (authored) ✓ both models wrote the same gloss independently
+- **zugreifen** `access, seize` → `grab, seize` (partial) ✓ both models wrote the same gloss independently
+- **zuhalten** `be keep something shut` → `hold shut` (authored) ✓ both models wrote the same gloss independently
+- **zukehren** `turn something` → `turn toward` (authored) ✓ both models wrote the same gloss independently
+- **zuleiten** `feed` → `supply, channel` (authored)
+- **zunähen** `suture` → `sew shut, stitch up` (partial) ✓ both models wrote the same gloss independently
+- **zurichten** `hurt` → `batter, beat up` (authored) ✓ both models wrote the same gloss independently
+- **zurufen** `call` → `call out to` (authored) ✓ both models wrote the same gloss independently
+- **zurückstehen** `stand further back, stand behind` → `take a back seat` (authored) ✓ both models wrote the same gloss independently
+- **zusammenbringen** `collect` → `bring together` (repick) ✓ both models wrote the same gloss independently
+- **zusammendrängen** `condense` → `crowd together` (repick) ✓ both models wrote the same gloss independently
+- **zusammenfahren** `collide` → `flinch, give a start` (partial) ✓ both models wrote the same gloss independently
+- **zusammennehmen** `add up, total` → `muster, summon up` (partial) ✓ both models wrote the same gloss independently
+- **zuschlagen** `take one’s chance` → `strike, hit` (partial) ✓ both models wrote the same gloss independently
+- **zutreiben** `drive` → `drive toward` (authored) ✓ both models wrote the same gloss independently
+- **zuwenden** `turn` → `turn toward` (repick) ✓ both models wrote the same gloss independently
+- **überarbeiten** `revise, overwork` → `revise, rework` (partial) ✓ both models wrote the same gloss independently
+- **überblicken** `oversee, overview` → `survey, get an overview of` (authored)
+- **überführen** `transfer, transport, translate, move` → `transfer, transport, move` (partial) ✓ both models wrote the same gloss independently
+- **übergehen** `skip, go over to` → `skip, ignore` (partial)
+- **überhören** `ignore, mishear` → `fail to hear, ignore` (partial) ✓ both models wrote the same gloss independently
+- **überkommen** `overcome, conquer, seize` → `come over, overwhelm` (partial)
+- **überlassen** `leave to, abandon` → `leave to, entrust to` (authored)
+- **überschauen** `overlook` → `survey, grasp` (partial) ✓ both models wrote the same gloss independently
+- **überschreiben** `make over, sign over` → `overwrite` (repick) ✓ both models wrote the same gloss independently
+- **überspielen** `dub, rerecord sth` → `dub, re-record` (partial) ✓ both models wrote the same gloss independently

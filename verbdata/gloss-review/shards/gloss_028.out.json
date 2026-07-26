@@ -1,0 +1,32 @@
+{
+  "losschlagen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The shipped 'knock loose' is the literal, technical sense (Putz losschlagen, loosening something by striking it), which a learner will almost never meet. In ordinary use losschlagen means to launch an attack or strike — 'die Armee schlug los', 'auf jemanden losschlagen' — which candidate_glosses lists at index 2 (and index 1). A secondary common sense is selling something off cheaply. The literal sense was taken because it is kaikki's first-listed, not because it is the encountered one.",
+        "fix_gloss": "attack, strike"
+      }
+    ]
+  },
+  "leichtfallen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "The comma in 'come, be easy' is not a synonym separator but a split inside the phrase 'come easy'. Read by the app's house convention, where a comma means the items are equivalents, the gloss offers 'come' as a standalone meaning of leichtfallen, which is not a sense the verb has. The intended reading — 'das fällt mir leicht' = that comes easily to me, that is easy for me — survives only in the second half.",
+        "fix_gloss": "come easily, be easy"
+      }
+    ]
+  },
+  "losgehen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "'leave' is the right direction but collides with verlassen and invites a transitive reading a learner will produce wrongly ('das Haus losgehen'). Losgehen is intransitive and means to set off or get going — 'wir gehen um acht los' — and the same word covers something getting under way, 'es geht gleich los' (candidate_glosses index 1). 'set off, get going' names that single sense without the verlassen collision.",
+        "fix_gloss": "set off, get going"
+      }
+    ]
+  }
+}

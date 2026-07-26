@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Apply verbdata/authored/gloss-corrections.json to Konjugieren/Models/Verbs.xml.
+"""Apply a gloss-corrections file to Konjugieren/Models/Verbs.xml.
 
-Consumes: verbdata/authored/gloss-corrections.json  (verb -> {old, new, why})
-Rewrites: Konjugieren/Models/Verbs.xml               (the tn= attribute of one <reading>)
+Consumes: a corrections JSON  (verb -> {old, new, why}), default
+          verbdata/authored/gloss-corrections.json
+Rewrites: Konjugieren/Models/Verbs.xml  (the tn= attribute of one <reading>)
 
-Run from the repo root:  python3 verbdata/authored/apply_gloss_corrections.py
+Run from the repo root:  python3 verbdata/authored/apply_gloss_corrections.py [CORRECTIONS_JSON]
 Add --dry-run to report what would change without writing.
 
 WHY THIS IS A SCRIPT AND NOT 55 Edit CALLS. The tn values being replaced are short English
@@ -31,44 +32,89 @@ and ^ a Dehnungs-h boundary; stripping those three characters yields the plain l
 review pipeline keys on.
 """
 
+import argparse
+import collections
 import json
 import pathlib
 import re
 import sys
+import xml.etree.ElementTree as ET
+from xml.sax.saxutils import escape, unescape
 
 XML = pathlib.Path("Konjugieren/Models/Verbs.xml")
-CORR = pathlib.Path("verbdata/authored/gloss-corrections.json")
+DEFAULT_CORR = "verbdata/authored/gloss-corrections.json"
 
-dry_run = "--dry-run" in sys.argv
+# argparse rather than `"--dry-run" in sys.argv`. The hand-rolled version accepted --dryrun, -n, and
+# every other near-miss silently: the flag simply did not match, dry_run stayed False, and the script
+# wrote to shipping data while the operator believed it was rehearsing. argparse errors on an unknown
+# option instead, which is the only acceptable behavior for a script whose non-dry mode edits
+# Verbs.xml.
+parser = argparse.ArgumentParser(description=__doc__)
+parser.add_argument("corrections", nargs="?", default=DEFAULT_CORR,
+                    help="corrections JSON; each review run should write its own")
+parser.add_argument("--dry-run", action="store_true")
+parser.add_argument("--skip-stale", action="store_true",
+                    help="drop and report entries whose `old` no longer matches, instead of "
+                         "refusing the whole file")
+args = parser.parse_args()
+dry_run = args.dry_run
+CORR = pathlib.Path(args.corrections)
 
 corrections = {k: v for k, v in json.load(CORR.open()).items() if not k.startswith("_")}
+if not corrections:
+    sys.exit(f"{CORR}: no corrections (header only) -- refusing rather than rewriting Verbs.xml "
+             "byte-identically and reporting success")
 raw = XML.read_text()
 
-# verb element spans, keyed by unmarked infinitive
-spans = {}
+# Verb element spans, keyed by unmarked infinitive. The key is many-to-one -- `ab+laufen` and a bare
+# `ablaufen` would both reduce to `ablaufen` -- so collisions are collected rather than overwritten.
+# There are none in the corpus today, but the corpus is growing (docs/roadmap.md), and silently
+# keeping the last match would write a gloss into the wrong <verb> element: exactly the failure this
+# script's docstring says it exists to prevent.
+spans = collections.defaultdict(list)
 for m in re.finditer(r'<verb in="([^"]+)"[^>]*>(.*?)</verb>', raw, re.S):
-    spans[re.sub(r"[+*^]", "", m.group(1))] = m
+    spans[re.sub(r"[+*^]", "", m.group(1))].append(m)
 
-problems, edits = [], []
+problems, stale, edits = [], [], []
 for verb, fix in sorted(corrections.items()):
-    m = spans.get(verb)
-    if m is None:
+    ms = spans.get(verb) or []
+    if not ms:
         problems.append(f"{verb}: not in Verbs.xml")
         continue
+    if len(ms) > 1:
+        problems.append(f"{verb}: {len(ms)} <verb> elements share this unmarked lemma -- hand-edit")
+        continue
+    m = ms[0]
     body = m.group(2)
     tns = re.findall(r'tn="([^"]*)"', body)
     if len(tns) != 1:
         problems.append(f"{verb}: {len(tns)} readings ({tns}) -- hand-edit, this script will not guess")
         continue
-    if tns[0] != fix["old"]:
-        problems.append(f'{verb}: expected old gloss {fix["old"]!r}, found {tns[0]!r} -- stale entry')
+    new = (fix.get("new") or "").strip()
+    if not new:
+        problems.append(f"{verb}: empty replacement gloss")
         continue
-    for ch in "&<>\"":
-        if ch in fix["new"]:
-            problems.append(f'{verb}: new gloss contains XML-significant {ch!r}')
-            break
-    else:
-        edits.append((verb, m.start(), m.end(), body, fix))
+    # `old` is compared DECODED. Values arrive from Verbs.xml as encoded text and from the reviewer
+    # as plain text; no tn currently contains an XML-significant character, which made the raw
+    # comparison accidentally correct rather than correct.
+    if unescape(tns[0]) != fix["old"]:
+        stale.append(f'{verb}: expected old gloss {fix["old"]!r}, found {unescape(tns[0])!r}')
+        continue
+    if new == fix["old"]:
+        problems.append(f"{verb}: replacement is identical to the shipped gloss")
+        continue
+    edits.append((verb, m.start(), m.end(), body, tns[0], new))
+
+# Stale entries are the drift signal this script exists to catch, so they abort by default. But
+# holding 200 good corrections hostage to one drifted entry is not a safety property, hence
+# --skip-stale for the case where the operator has looked and wants the rest.
+if stale and not args.skip_stale:
+    problems += [s + " -- stale entry (re-run with --skip-stale to drop it and apply the rest)"
+                 for s in stale]
+elif stale:
+    print(f"skipping {len(stale)} stale entr(ies):")
+    for s in stale:
+        print("  " + s)
 
 if problems:
     print("REFUSING TO WRITE -- {} problem(s):".format(len(problems)))
@@ -76,11 +122,25 @@ if problems:
         print("  " + p)
     sys.exit(1)
 
+if not edits:
+    sys.exit("no edits survived validation -- refusing to rewrite shipping data with no change")
+
 # apply back-to-front so earlier spans keep their offsets
-for verb, start, end, body, fix in sorted(edits, key=lambda e: -e[1]):
-    new_body = body.replace(f'tn="{fix["old"]}"', f'tn="{fix["new"]}"', 1)
+for verb, start, end, body, old_encoded, new in sorted(edits, key=lambda e: -e[1]):
+    # Escape rather than refuse. A legitimate gloss containing & ("cash & carry") is encodable; the
+    # earlier behavior rejected it AND, because any problem aborts the file, took every other
+    # correction down with it.
+    new_body = body.replace(f'tn="{old_encoded}"', f'tn="{escape(new, {chr(34): "&quot;"})}"', 1)
     raw = raw[:start] + raw[start:end].replace(body, new_body, 1) + raw[end:]
-    print(f'  {verb}: {fix["old"]!r} -> {fix["new"]!r}')
+    print(f"  {verb}: {unescape(old_encoded)!r} -> {new!r}")
+
+# Validate the artifact produced, not merely the inputs consumed. Verbs.xml is shipping app data and
+# this script splices raw text into it; one parse before writing is a complete guarantee that a
+# malformed replacement cannot corrupt the corpus. ET handles the file's DOCTYPE internal subset.
+try:
+    ET.fromstring(raw)
+except ET.ParseError as exc:
+    sys.exit(f"REFUSING TO WRITE -- the spliced XML no longer parses: {exc}")
 
 if dry_run:
     print(f"\ndry run: {len(edits)} gloss(es) would change, nothing written")

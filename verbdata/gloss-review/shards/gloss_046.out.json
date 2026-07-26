@@ -1,0 +1,62 @@
+{
+  "zurückstehen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The shipped gloss takes the literal spatial reading, but in use zurückstehen is overwhelmingly figurative: hinter jemandem zurückstehen (be inferior to, rank below) and zurückstehen müssen (go without so others can go first). candidate_glosses lists these at index 1 and index 2. The English 'stand behind' is additionally treacherous, since it reads as 'support' to an English speaker — the opposite of the German.",
+        "fix_gloss": "take a back seat"
+      }
+    ]
+  },
+  "zusammenbringen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "Bare 'collect' names sammeln, not zusammenbringen. The sense a learner meets is bringing people or things together — zwei Menschen zusammenbringen, Familien zusammenbringen — which candidate_glosses lists at index 3. The importer took kaikki's first-listed sense, which here is a marginal reading.",
+        "fix_gloss": "bring together"
+      }
+    ]
+  },
+  "zusammendrängen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "'Condense' is the figurative, text-editing sense; the primary sense is physical, especially reflexive — die Menschen drängten sich zusammen, to crowd or press into a small space. candidate_glosses has it at index 1. Duden orders it the same way, with the condensing sense marked as transferred use.",
+        "fix_gloss": "crowd together"
+      }
+    ]
+  },
+  "zusammenfahren": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The sense a learner actually meets is the startle reaction — er fuhr zusammen, als es klingelte — which candidate_glosses lists at index 1. For vehicle collisions German normally uses zusammenstoßen, so glossing this verb as 'collide' both ships the rarer sense and points the learner at the wrong word for the common one.",
+        "fix_gloss": "flinch, give a start"
+      }
+    ]
+  },
+  "zusammennehmen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "'Add up, total' corresponds only to the fixed adverbial alles zusammengenommen (all things considered), not to the live verb. In use zusammennehmen means gathering one's resources — allen Mut zusammennehmen, seine Kräfte zusammennehmen — and reflexively sich zusammennehmen, to get a grip on oneself. candidate_glosses has the mustering sense at index 2 and the composure sense at index 3.",
+        "fix_gloss": "muster, summon up"
+      }
+    ]
+  },
+  "zuschlagen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "'Take one's chance' is a real colloquial sense (bei einem Angebot zuschlagen), but the sense a learner meets first and most is physical: to strike or hit — der Täter schlug mehrfach zu. That is candidate_glosses index 0, whose kaikki wording ('avail oneself of one's muscular power and direct it to a striking face') is unusable as-is and presumably why the importer skipped past it to index 1.",
+        "fix_gloss": "strike, hit"
+      }
+    ]
+  }
+}

@@ -1,0 +1,275 @@
+{
+ "shard": 9,
+ "records": [
+  {
+   "verb": "zurufen",
+   "separability": "separable",
+   "shipped_gloss": "call",
+   "proposed_gloss": "call out to",
+   "severity": "low",
+   "reviewer_detail": "Bare \"call\" collides head-on with anrufen, the verb for telephoning, which is the reading a learner will reach for first. Zurufen is to call out to someone across a distance: er rief mir eine Warnung zu.",
+   "candidate_glosses": [
+    "to call"
+   ]
+  },
+  {
+   "verb": "zurückstehen",
+   "separability": "separable",
+   "shipped_gloss": "stand further back, stand behind",
+   "proposed_gloss": "take a back seat",
+   "severity": "medium",
+   "reviewer_detail": "The shipped gloss takes the literal spatial reading, but in use zurückstehen is overwhelmingly figurative: hinter jemandem zurückstehen (be inferior to, rank below) and zurückstehen müssen (go without so others can go first). candidate_glosses lists these at index 1 and index 2. The English 'stand behind' is additionally treacherous, since it reads as 'support' to an English speaker — the opposite of the German.",
+   "candidate_glosses": [
+    "to stand further back, to stand behind",
+    "to rank lower, to lag behind",
+    "to exercise restraint in favor of others, to let others go first"
+   ]
+  },
+  {
+   "verb": "zusammenbringen",
+   "separability": "separable",
+   "shipped_gloss": "collect",
+   "proposed_gloss": "bring together",
+   "severity": "medium",
+   "reviewer_detail": "Bare 'collect' names sammeln, not zusammenbringen. The sense a learner meets is bringing people or things together — zwei Menschen zusammenbringen, Familien zusammenbringen — which candidate_glosses lists at index 3. The importer took kaikki's first-listed sense, which here is a marginal reading.",
+   "candidate_glosses": [
+    "to collect",
+    "to muster",
+    "to manage, to achieve",
+    "to bring together"
+   ]
+  },
+  {
+   "verb": "zusammendrängen",
+   "separability": "separable",
+   "shipped_gloss": "condense",
+   "proposed_gloss": "crowd together",
+   "severity": "medium",
+   "reviewer_detail": "'Condense' is the figurative, text-editing sense; the primary sense is physical, especially reflexive — die Menschen drängten sich zusammen, to crowd or press into a small space. candidate_glosses has it at index 1. Duden orders it the same way, with the condensing sense marked as transferred use.",
+   "candidate_glosses": [
+    "to condense",
+    "to crowd together"
+   ]
+  },
+  {
+   "verb": "zusammenfahren",
+   "separability": "separable",
+   "shipped_gloss": "collide",
+   "proposed_gloss": "flinch, give a start",
+   "severity": "medium",
+   "reviewer_detail": "The sense a learner actually meets is the startle reaction — er fuhr zusammen, als es klingelte — which candidate_glosses lists at index 1. For vehicle collisions German normally uses zusammenstoßen, so glossing this verb as 'collide' both ships the rarer sense and points the learner at the wrong word for the common one.",
+   "candidate_glosses": [
+    "to collide (e.g., vehicles)",
+    "to wince, to flinch"
+   ]
+  },
+  {
+   "verb": "zusammennehmen",
+   "separability": "separable",
+   "shipped_gloss": "add up, total",
+   "proposed_gloss": "muster, summon up",
+   "severity": "medium",
+   "reviewer_detail": "'Add up, total' corresponds only to the fixed adverbial alles zusammengenommen (all things considered), not to the live verb. In use zusammennehmen means gathering one's resources — allen Mut zusammennehmen, seine Kräfte zusammennehmen — and reflexively sich zusammennehmen, to get a grip on oneself. candidate_glosses has the mustering sense at index 2 and the composure sense at index 3.",
+   "candidate_glosses": [
+    "to add up, total",
+    "to sum up",
+    "to summon, summon up, muster, muster up",
+    "to pull together, compose"
+   ]
+  },
+  {
+   "verb": "zuschlagen",
+   "separability": "separable",
+   "shipped_gloss": "take one’s chance",
+   "proposed_gloss": "strike, hit",
+   "severity": "medium",
+   "reviewer_detail": "'Take one's chance' is a real colloquial sense (bei einem Angebot zuschlagen), but the sense a learner meets first and most is physical: to strike or hit — der Täter schlug mehrfach zu. That is candidate_glosses index 0, whose kaikki wording ('avail oneself of one's muscular power and direct it to a striking face') is unusable as-is and presumably why the importer skipped past it to index 1.",
+   "candidate_glosses": [
+    "to avail oneself of one’s muscular power and direct it to a striking face",
+    "to take one’s chance, to commence to act provided the sudden opportunity",
+    "to slam, to whack in such a fashion that it is afterwards closed",
+    "by continuous strikes or blows with an instrument achieve that a thing is afterwards sealed or locked",
+    "to give the knock on to, to distribute to, to whack, to pronounce to belong to, to add to how much someone is worth",
+    "by smacking achieve that a thing instantaneously moves somewhither, to hit and thus pass to"
+   ]
+  },
+  {
+   "verb": "zutreiben",
+   "separability": "separable",
+   "shipped_gloss": "drive",
+   "proposed_gloss": "drive toward",
+   "severity": "low",
+   "reviewer_detail": "In isolation English 'drive' reads as operating a vehicle, which is fahren and exactly wrong here. Zutreiben is to drive something — cattle, a herd, a boat — toward a destination, or intransitively to drift toward one ('das Boot trieb dem Ufer zu'). Candidate index 0 carries the directional complement that the shortening stripped, leaving a gloss that points at the wrong action.",
+   "candidate_glosses": [
+    "to drive [with accusative ‘someone/something’, along with dative or auf (+ accusative) ‘towards someone/something/somewhere’]",
+    "to drift [with dative or auf (+ accusative) ‘towards someone/something/somewhere’]"
+   ]
+  },
+  {
+   "verb": "zuwenden",
+   "separability": "separable",
+   "shipped_gloss": "turn",
+   "proposed_gloss": "turn toward",
+   "severity": "low",
+   "reviewer_detail": "Bare 'turn' is what wenden or drehen mean and loses the directional component that is the whole content of the zu- prefix. Zuwenden is to orient toward something or someone, usually reflexive — 'sie wandte sich ihm zu', 'sich einem Thema zuwenden'. As shipped, the gloss reads as rotating an object, which the verb does not describe. Candidate index 2 has the right sense.",
+   "candidate_glosses": [
+    "to turn",
+    "to devote",
+    "to turn to, turn towards"
+   ]
+  },
+  {
+   "verb": "überarbeiten",
+   "separability": "inseparable",
+   "shipped_gloss": "revise, overwork",
+   "proposed_gloss": "revise, rework",
+   "severity": "low",
+   "reviewer_detail": "The comma presents two different senses as synonyms. Transitive überarbeiten means to revise or rework a text or a design (candidate index 0); 'overwork' is the reflexive sich überarbeiten (candidate index 1), a distinct construction. A learner reading the comma as equivalence would write *'ich überarbeite' for 'I am overworking', dropping the obligatory reflexive pronoun. The gloss should commit to the transitive sense, which is the one the learner meets first.",
+   "candidate_glosses": [
+    "to edit something in order to improve it; to edit something that it is nearly completely rewritten; to revise, to rework",
+    "to work so much as to make someone overstressed; to overwork"
+   ]
+  },
+  {
+   "verb": "überblicken",
+   "separability": "inseparable",
+   "shipped_gloss": "oversee, overview",
+   "proposed_gloss": "survey, get an overview of",
+   "severity": "high",
+   "reviewer_detail": "Neither word works. In current English 'oversee' means to supervise, which is beaufsichtigen, not überblicken; and 'overview' is a noun, not a verb, so the second item is unusable as English. Überblicken means to take in the whole of something at a glance, literally ('vom Turm die ganze Stadt überblicken') or figuratively ('die Lage überblicken', to grasp the situation). The correct sense is absent from candidate_glosses, which reproduces the same two bad items.",
+   "candidate_glosses": [
+    "to oversee, to overview"
+   ]
+  },
+  {
+   "verb": "überführen",
+   "separability": "inseparable",
+   "shipped_gloss": "transfer, transport, translate, move",
+   "proposed_gloss": "transfer, transport, move",
+   "severity": "low",
+   "reviewer_detail": "The synonym list was imported unfiltered and 'translate' came with it. That item reflects the narrow ecclesiastical sense of translating relics or a bishop's see, not anything a learner will use, and it sits next to the German verb übersetzen, which really does mean translate — so the gloss actively invites a false equivalence. The other three items correctly render the transport sense at candidate index 0.",
+   "candidate_glosses": [
+    "to transfer, transport, translate, move",
+    "to convert, change (from one state into another)",
+    "to prove (someone) to have committed"
+   ]
+  },
+  {
+   "verb": "übergehen",
+   "separability": "inseparable",
+   "shipped_gloss": "skip, go over to",
+   "proposed_gloss": "skip, ignore",
+   "severity": "high",
+   "reviewer_detail": "The comma joins senses belonging to two different verbs. Inseparable übergehen (übergeht, überging, hat übergangen) means to pass someone over, skip, or ignore — 'er wurde bei der Beförderung übergangen'. 'Go over to' is the separable ÜBERgehen (geht über, ist übergegangen), as in 'zum nächsten Punkt übergehen' or 'in Rauch übergehen', a different action with a different conjugation. Since the entry ships as inseparable, the gloss must commit to the skip sense, which candidate_glosses gives at indices 0 and 1.",
+   "candidate_glosses": [
+    "to skip",
+    "to ignore"
+   ]
+  },
+  {
+   "verb": "überhören",
+   "separability": "inseparable",
+   "shipped_gloss": "ignore, mishear",
+   "proposed_gloss": "fail to hear, ignore",
+   "severity": "low",
+   "reviewer_detail": "'Mishear' is the wrong English word and collides with sich verhören, which is the verb for hearing something incorrectly. Überhören means not to register an utterance at all — either accidentally ('das habe ich überhört', I missed that) or deliberately ('eine Bemerkung überhören', to let a remark pass). The shortening from candidate index 0 dropped the '(deliberately)' that made the source phrasing barely defensible, leaving a wrong equivalence behind.",
+   "candidate_glosses": [
+    "to ignore; to (deliberately) mishear",
+    "to listen to attentively",
+    "to visit and observe for staffing decisions (especially the procedural behaviour within a judicial authority)"
+   ]
+  },
+  {
+   "verb": "überkommen",
+   "separability": "inseparable",
+   "shipped_gloss": "overcome, conquer, seize",
+   "proposed_gloss": "come over, overwhelm",
+   "severity": "high",
+   "reviewer_detail": "'Conquer' names a different verb. Überkommen does not describe defeating or surmounting something — that is überwinden, besiegen, or erobern. In überkommen the emotion is the subject and the person the object: 'mich überkam ein Gefühl der Angst', a feeling came over me. The shipped gloss reverses the argument structure and would produce wrong German such as *'ich überkam meine Angst'. Candidate index 1 ('to overwhelm') is closer, but 'come over' is what the verb actually does.",
+   "candidate_glosses": [
+    "to overcome; to conquer; to seize",
+    "to overcome; to overwhelm",
+    "to inherit",
+    "to receive; to get"
+   ]
+  },
+  {
+   "verb": "überlassen",
+   "separability": "inseparable",
+   "shipped_gloss": "leave to, abandon",
+   "proposed_gloss": "leave to, entrust to",
+   "severity": "low",
+   "reviewer_detail": "'Abandon' names a different action and is presented as a synonym of the correct one. Überlassen is to let someone else have something or to leave a matter up to them — 'ich überlasse dir das Auto', 'das überlasse ich dir'. Abandoning something is verlassen or aufgeben; the reading only surfaces in the fixed phrase 'jemanden seinem Schicksal überlassen', which is too narrow to carry the gloss. Both candidate glosses describe the relinquish-to-someone sense only.",
+   "candidate_glosses": [
+    "to relinquish something (definitely or temporarily) and leave it to someone else",
+    "to leave (something) up to (someone)"
+   ]
+  },
+  {
+   "verb": "überschauen",
+   "separability": "inseparable",
+   "shipped_gloss": "overlook",
+   "proposed_gloss": "survey, grasp",
+   "severity": "medium",
+   "reviewer_detail": "English 'overlook' is dominantly read as 'fail to notice', which is what übersehen means — and übersehen ships with exactly that gloss elsewhere in the corpus, so the two collide and the learner is taught the opposite of überschauen. überschauen is to take in the whole of something at a glance: to survey it and comprehend its extent (candidate_glosses index 1 has 'to grasp, to assess, to comprehend'). kaikki's index 0 'to overlook' is the archaic 'look out over' reading, not the modern one.",
+   "candidate_glosses": [
+    "to overlook",
+    "to manage, to grasp, to assess, to comprehend, to estimate"
+   ]
+  },
+  {
+   "verb": "überschlagen",
+   "separability": "inseparable",
+   "shipped_gloss": "skip over, omit, leave out",
+   "proposed_gloss": "estimate roughly",
+   "severity": "medium",
+   "reviewer_detail": "Skipping a page or passage is a real but secondary reading. Duden leads the transitive entry with 'flüchtig, ungefähr berechnen', and Kosten/den Preis überschlagen is the use a learner actually meets; kaikki's ordering here is entry order, not frequency. The right sense is candidate_glosses index 1.",
+   "candidate_glosses": [
+    "to skip over, omit, leave out (especially in a book, story, account; less commonly also in other contexts)",
+    "to calculate roughly, to estimate (e.g. by rounding and leaving out smaller amounts)",
+    "to overturn, flip, cartwheel",
+    "to come thick and fast, to develop very quickly (such that one can hardly process one item before the next comes in)",
+    "to crack or become rapid due to emotion"
+   ]
+  },
+  {
+   "verb": "überschreiben",
+   "separability": "separable",
+   "shipped_gloss": "make over, sign over",
+   "proposed_gloss": "overwrite",
+   "severity": "medium",
+   "reviewer_detail": "Signing property over is the narrowest and rarest of this verb's readings — legal register, seldom encountered. The senses a learner meets are the computing one (candidate_glosses indices 2 and 3, 'to overwrite') and giving a text a heading (index 1). Shipping the conveyancing sense sends a learner looking for a notary when the word they will actually see is about a file being replaced.",
+   "candidate_glosses": [
+    "to make over; to sign over (property)",
+    "to title; to provide something with a heading",
+    "to write over something; to overwrite",
+    "to overwrite",
+    "to override"
+   ]
+  },
+  {
+   "verb": "überspielen",
+   "separability": "separable",
+   "shipped_gloss": "dub, rerecord sth",
+   "proposed_gloss": "dub, re-record",
+   "severity": "low",
+   "reviewer_detail": "'sth' is a dictionary abbreviation for 'something' that survived the import; it is apparatus, not English, and leaves the gloss reading as an unfinished phrase. The sense itself — copying or dubbing a recording onto another medium — is right and just needs the placeholder removed.",
+   "candidate_glosses": [
+    "to dub, to rerecord sth.",
+    "to transfer sth."
+   ]
+  },
+  {
+   "verb": "überstimmen",
+   "separability": "inseparable",
+   "shipped_gloss": "overrule",
+   "proposed_gloss": "outvote",
+   "severity": "low",
+   "reviewer_detail": "überstimmen is specifically defeating someone by majority vote — the stem is Stimme, 'vote'. English 'overrule' names an authority setting a decision aside (German aufheben, verwerfen), which does not require a vote at all and could send a learner to the wrong word in a courtroom or committee context. candidate_glosses index 1 has the precise equivalent.",
+   "candidate_glosses": [
+    "to overrule",
+    "to outvote"
+   ]
+  }
+ ]
+}

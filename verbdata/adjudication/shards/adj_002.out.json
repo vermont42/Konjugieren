@@ -1,0 +1,127 @@
+{
+  "befallen": {
+    "own_gloss": "afflict, strike",
+    "verdict": "accept",
+    "reason": "'affect' is neutral-causation and collides with beeinflussen/beeinträchtigen; befallen is the verb of disease, pests, and sudden emotion seizing a subject. The proposed 'afflict, infest' draws on candidate 1 ('to seize') and candidate 2 ('to infest')."
+  },
+  "befühlen": {
+    "own_gloss": "feel, touch",
+    "verdict": "accept",
+    "reason": "'palpate' (the sole candidate) is opaque medical jargon and is really the gloss for abtasten/palpieren; befühlen is everyday German for running one's hands over something, so the register mismatch misrepresents an ordinary verb. 'feel, touch' is the plain sense in house style."
+  },
+  "beikommen": {
+    "own_gloss": "get at, deal with",
+    "verdict": "accept",
+    "reason": "Shipped 'come here' is kaikki's regional (landschaftlich) reading; standard beikommen takes the dative and means to get at or cope with something (dem Problem beizukommen), which is candidate 1 ('to deal with'). This is a regional sense chosen where the common one was available."
+  },
+  "beklagen": {
+    "own_gloss": "lament, bemoan",
+    "verdict": "accept",
+    "reason": "Leading with 'pity' points at bemitleiden, and the comma in 'pity, lament' asserts a false synonymy between non-synonyms; beklagen is to lament, bemoan, or deplore (Opfer beklagen). The proposed 'lament, deplore' are true synonyms and match the 'lament' half of candidate 0."
+  },
+  "belachen": {
+    "own_gloss": "laugh at",
+    "verdict": "accept",
+    "reason": "'belaugh' is an unusable Wiktionary calque of the German prefix imported verbatim from candidate 0, not English a learner will ever meet. 'laugh at' names the sense completely."
+  },
+  "bemeistern": {
+    "own_gloss": "master, overcome",
+    "verdict": "accept",
+    "reason": "bemeistern means to get a difficulty under control (seine Angst bemeistern); 'dominate' names holding power over people, the action of beherrschen/dominieren, which the verb does not denote. kaikki's sole candidate 'to dominate' is itself the weak rendering, but I independently know the master/overcome sense."
+  },
+  "bepflanzen": {
+    "own_gloss": "plant (an area)",
+    "verdict": "accept",
+    "reason": "The be- prefix makes the ground the object (ein Beet bepflanzen); bare 'plant' collapses the verb into base pflanzen and invites the error einen Baum bepflanzen. candidate 0's '(supply with plants)' rider preserves exactly the distinction the shortening dropped."
+  },
+  "berücken": {
+    "own_gloss": "captivate, enchant",
+    "verdict": "accept",
+    "reason": "'ensnare' is the obsolete hunting sense (catching game in a Rücke); in all living use berücken means to enchant or charm (berückend schön), which is candidate 1 ('to captivate'). This is an archaic sense shipped where the current one was available."
+  },
+  "bescheiden": {
+    "own_gloss": "notify of a decision",
+    "verdict": "accept",
+    "reason": "'Confer the decision or fate formally' is a truncation of candidate 0 that is not usable English — you do not confer a decision on someone. The transitive Amtsdeutsch verb (jemanden abschlägig bescheiden) means to notify someone of an official ruling, which the proposed gloss states cleanly."
+  },
+  "beschenken": {
+    "own_gloss": "give presents to",
+    "verdict": "accept",
+    "reason": "'endow' in English means to fund an institution or be furnished with a quality — neither is what beschenken does. jemanden beschenken is the everyday word for giving somebody presents, matching candidate 1 ('to present, to gift')."
+  },
+  "beschicken": {
+    "own_gloss": "charge, load, supply",
+    "verdict": "accept",
+    "reason": "'commit' is not usable English for this verb (it pulls toward committing a crime/resources), and the shipped gloss omits the frequent technical sense of charging a furnace or machine. candidate 1 ('to procure, to supply, to load, to furnish') groups sending and loading under one provisioning sense, so the proposed 'send to, load' is a coherent facet-pair, not false synonymy."
+  },
+  "beschneiden": {
+    "own_gloss": "trim, prune, curtail",
+    "verdict": "accept",
+    "reason": "Circumcision is a real but specialized application; the everyday senses are horticultural (Hecken beschneiden) and figurative (Rechte/Freiheiten beschneiden), the latter among the verb's most frequent collocations, and Duden lists trimming first. candidate 1 ('to trim; to prune') plus the well-attested curtail reading is the sense a learner meets."
+  },
+  "bespringen": {
+    "own_gloss": "mount, cover (of animals)",
+    "verdict": "accept",
+    "reason": "'synonym of begatten' is a Wiktionary cross-reference, not a meaning, and it points at an untranslated target — leaked dictionary apparatus. bespringen is the animal-husbandry term for a male mounting a female to breed; 'mount (of animals)' is English about the verb."
+  },
+  "bestecken": {
+    "own_gloss": "stud with, set into",
+    "verdict": "accept",
+    "reason": "'get stuck' is the rare intransitive reading with the opposite valency (a plough that comes to a standstill); the living verb is transitive — einen Kranz mit Blumen bestecken — which is candidate 1. As shipped, the gloss names an action the verb does not perform."
+  },
+  "bestärken": {
+    "own_gloss": "reinforce, encourage",
+    "verdict": "accept",
+    "reason": "bestärken takes a person and reinforces them in a belief or resolve (jemanden in seiner Meinung bestärken); bare 'strengthen'/'fortify' name physical strengthening (stärken/verstärken) and invite die Mauer bestärken. The proposed gloss is assembled from attested senses — 'reinforce' from candidate 1 and 'encourage' from candidate 0."
+  },
+  "beweinen": {
+    "own_gloss": "mourn, weep over",
+    "verdict": "accept",
+    "reason": "The sense is right but this is kaikki's unfiltered four-synonym list (candidate 0), and 'beweep' is Shakespearean, not modern English. 'mourn, cry over' names the meaning within house-style length."
+  },
+  "dahinsterben": {
+    "own_gloss": "waste away, die off",
+    "verdict": "accept",
+    "reason": "'die' is the gloss for plain sterben and drops the dahin- prefix's contribution; like dahinsiechen and dahinvegetieren, this verb names a gradual dying — wasting away or a population dying off over time — not the event of death. The prefix sense is not in kaikki's lone candidate but is a real, systematic feature of dahin- verbs."
+  },
+  "daransetzen": {
+    "own_gloss": "stake, devote (effort)",
+    "verdict": "accept",
+    "reason": "Shortening stripped candidate 0's parentheticals, leaving 'risk, not spare, make, use' — four disjoint bare verbs and a fragment that name no action. The verb lives in alles daransetzen / seine ganze Kraft daransetzen: to stake something on an aim, to devote all effort to it."
+  },
+  "darniederliegen": {
+    "own_gloss": "be laid low, languish",
+    "verdict": "accept",
+    "reason": "'be sick' (candidate 0) misleads twice: in British English it reads as 'vomit', and the elevated verb applies well beyond illness (die Wirtschaft liegt darnieder). The sense is lying prostrate, laid low, in a slump, closer to candidate 1 ('to languish')."
+  },
+  "davontragen": {
+    "own_gloss": "carry off, sustain",
+    "verdict": "reject",
+    "reason": "Shipped 'carry away' is candidate 0, a current and correct literal sense (das Kind davontragen) — not rare or archaic — so it clears the bar for keeping one sense of a polysemous verb. The proposed 'carry off, sustain' joins two genuinely different senses (win a prize vs. suffer an injury) with a comma, the false synonymy the house style forbids, so it is not a clean fix."
+  },
+  "dazukommen": {
+    "own_gloss": "join, be added",
+    "verdict": "accept",
+    "reason": "'arrive' collides with ankommen and misses the core additive meaning: to join something in progress or, very commonly, to be added on top (dazu kommt, dass …), which is candidate 1 ('to be added'). 'join, be added' are two facets of the one accession sense."
+  },
+  "draufgeben": {
+    "own_gloss": "add on top",
+    "verdict": "accept",
+    "reason": "'add of something' is ungrammatical English produced by deleting the '(on top)' parenthetical from candidate 0. 'add on top' restores the meaning (etwas draufgeben)."
+  },
+  "durchbringen": {
+    "own_gloss": "get through, pull through",
+    "verdict": "accept",
+    "reason": "Shipped 'be able to bring through' keeps candidate 0's modal scaffolding ('be able to'), which is dictionary framing, not part of the verb, so it names no action a learner can attach. The senses actually met — getting someone through an illness/exam/bill, and supporting or keeping fed — cluster in candidates 2–5, and 'get through, pull through' captures them."
+  },
+  "durchfallen": {
+    "own_gloss": "fail (an exam)",
+    "verdict": "accept",
+    "reason": "The importer took the compositional literal sense, but in use durchfallen almost always means to fail an exam or audition (durch die Prüfung fallen), candidate 1 ('to fail, to not pass'). English 'fall through' additionally reads idiomatically as a plan collapsing (scheitern), which the verb does not mean."
+  },
+  "durchschauen": {
+    "own_gloss": "look through",
+    "verdict": "accept",
+    "reason": "candidate 0 is 'to see through (e.g. a window, telescope)'; the dropped parenthetical was doing the disambiguating work. Bare 'see through' idiomatically means detecting a deception — the stress-shifted inseparable durchscháuen (jemanden durchschauen), not this literal separable verb — so 'look through' names the intended sense unambiguously, as durchblicken is glossed elsewhere in the corpus."
+  }
+}

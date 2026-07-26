@@ -1,0 +1,313 @@
+{
+ "shard": 8,
+ "records": [
+  {
+   "verb": "vorhalten",
+   "separability": "separable",
+   "shipped_gloss": "hold up",
+   "proposed_gloss": "hold against, reproach",
+   "severity": "medium",
+   "reviewer_detail": "The sense a learner actually meets is 'jemandem etwas vorhalten' — to hold something against someone, to reproach them with it — which is candidate_glosses index 1 and the dominant use in modern journalistic German. The shipped 'hold up' names the literal index-0 sense, and as bare English it invites the far commoner readings 'delay' and 'rob', neither of which the German verb carries.",
+   "candidate_glosses": [
+    "to hold (something) up (to someone)",
+    "to hold (something) against (someone)",
+    "to provide or reserve (something) for (something)",
+    "to last"
+   ]
+  },
+  {
+   "verb": "vorlesen",
+   "separability": "separable",
+   "shipped_gloss": "read",
+   "proposed_gloss": "read aloud",
+   "severity": "low",
+   "reviewer_detail": "The shortening dropped the parenthetical that did all the work: kaikki reads 'to read (aloud)'. Bare 'read' collides with the base verb lesen and loses the vor- component entirely — vorlesen is specifically reading aloud to someone (dem Kind eine Geschichte vorlesen), never silent reading.",
+   "candidate_glosses": [
+    "to read (aloud)"
+   ]
+  },
+  {
+   "verb": "vorsetzen",
+   "separability": "separable",
+   "shipped_gloss": "prefix",
+   "proposed_gloss": "put in front of, serve",
+   "severity": "medium",
+   "reviewer_detail": "'Prefix' is a narrow grammatical/technical sense that kaikki happens to list first; a learner reading it will think of morphology or computing. The ordinary meaning is to place something in front of someone, above all to set food or drink before them (man setzte uns eine Suppe vor). candidate_glosses index 1 ('to serve (food or drink)') and index 2 ('to put in front; to move forward') are the senses in real use.",
+   "candidate_glosses": [
+    "to prefix",
+    "to serve (food or drink)",
+    "to put in front; to move forward",
+    "to present; to come up with; to offer up (lies, stories, shoddy work etc.)",
+    "to sit at the front",
+    "to make a plan, to resolve, to decide, to intend"
+   ]
+  },
+  {
+   "verb": "vorsingen",
+   "separability": "separable",
+   "shipped_gloss": "sing",
+   "proposed_gloss": "sing to someone",
+   "severity": "low",
+   "reviewer_detail": "The shortening stripped '(something to someone)', leaving a gloss identical in force to the base verb singen. vorsingen is singing for an audience of one or more listeners — and by extension auditioning (candidate_glosses index 1). Bare 'sing' teaches nothing that distinguishes the prefixed verb.",
+   "candidate_glosses": [
+    "to sing (something to someone)",
+    "to audition"
+   ]
+  },
+  {
+   "verb": "vorwerfen",
+   "separability": "separable",
+   "shipped_gloss": "throw at, throw forward",
+   "proposed_gloss": "accuse of, reproach",
+   "severity": "medium",
+   "reviewer_detail": "The importer took kaikki's first-listed literal sense. Physically throwing something forward is now largely confined to the fixed image of throwing someone to the lions; the sense a learner meets constantly is 'jemandem etwas vorwerfen' — to accuse someone of something, to reproach them — which is candidate_glosses index 2. As shipped, the gloss teaches the wrong action for one of the most frequent verbs in German news prose.",
+   "candidate_glosses": [
+    "to throw at, throw forward",
+    "to feed to (throw at an animal as food)",
+    "to accuse of, to reproach someone for something"
+   ]
+  },
+  {
+   "verb": "vorziehen",
+   "separability": "separable",
+   "shipped_gloss": "pull to the front",
+   "proposed_gloss": "prefer",
+   "severity": "medium",
+   "reviewer_detail": "'Pull to the front' is kaikki's first-listed literal sense, but the everyday use is 'to prefer' — es vorziehen, etwas zu tun; ich ziehe Tee vor. That is candidate_glosses index 2. The literal sense is comparatively rare, so a learner is taught a reading they will seldom encounter and denied the one they will.",
+   "candidate_glosses": [
+    "to pull to the front",
+    "synonym of hervorziehen",
+    "to prefer, to favor",
+    "to move up, to move forward (cause a scheduled event to happen earlier)"
+   ]
+  },
+  {
+   "verb": "wegdrängen",
+   "separability": "separable",
+   "shipped_gloss": "edge away, edge off",
+   "proposed_gloss": "push away, push aside",
+   "severity": "high",
+   "reviewer_detail": "'edge away' is intransitive in English — it describes the subject retreating slowly — whereas wegdrängen is transitive and forceful: jemanden wegdrängen is to shove someone aside, and figuratively to crowd out or force out (a competitor, a thought). The gloss reverses the agency and loses drängen (push, press) entirely; 'edge off' is not idiomatic English at all. The defect is inherited verbatim from candidate 0, which is the only candidate.",
+   "candidate_glosses": [
+    "to edge away, to edge off"
+   ]
+  },
+  {
+   "verb": "wegführen",
+   "separability": "separable",
+   "shipped_gloss": "carry away",
+   "proposed_gloss": "lead away",
+   "severity": "high",
+   "reviewer_detail": "wegführen is führen (lead), not tragen (carry): 'Die Polizei führte den Mann weg' means the police led the man away, and 'der Weg führt vom Dorf weg' means the path leads away from the village. The gloss inherits kaikki's mistranslation (candidate 0, the only candidate) and collides exactly with wegtragen, which is glossed 'carry away' in this same shard — so the two verbs currently ship indistinguishable glosses and the one on wegführen is the wrong action.",
+   "candidate_glosses": [
+    "to carry away"
+   ]
+  },
+  {
+   "verb": "wehren",
+   "separability": "simplex",
+   "shipped_gloss": "defend, resist",
+   "proposed_gloss": "defend oneself, resist",
+   "severity": "low",
+   "reviewer_detail": "In modern German wehren is essentially reflexive — sich wehren, to defend oneself or fight back (candidate 0 says exactly this). Bare 'defend' reads transitively and points the learner at verteidigen, inviting wrong German like 'ich wehre meine Heimat'. 'resist' is on target; 'defend' needs the reflexive to be accurate.",
+   "candidate_glosses": [
+    "to defend oneself",
+    "to prevent the spread of something, to fight",
+    "to deny, to prevent someone from doing something"
+   ]
+  },
+  {
+   "verb": "weismachen",
+   "separability": "separable",
+   "shipped_gloss": "make believe",
+   "proposed_gloss": "fool, delude",
+   "severity": "high",
+   "reviewer_detail": "The shortening dropped kaikki's '[with dative]' label (candidate 0), and what survives is the English fixed phrase 'make believe', which means to pretend or play imaginatively. jemandem etwas weismachen means the opposite kind of act: to deceive someone into believing something untrue ('Das kannst du mir nicht weismachen'). The learner is left with the English idiom rather than the German verb's meaning.",
+   "candidate_glosses": [
+    "[with dative] make believe"
+   ]
+  },
+  {
+   "verb": "weiterarbeiten",
+   "separability": "separable",
+   "shipped_gloss": "resume one's work",
+   "proposed_gloss": "continue working",
+   "severity": "low",
+   "reviewer_detail": "'resume' asserts an interruption that weiter- does not: weiterarbeiten is to keep working, to carry on working ('Arbeite weiter!' means keep at it, not start again). The rest of the weiter- cluster in this shard is glossed consistently as continuation — weiterfahren 'continue driving', weiterlesen 'continue reading', weiterleben 'live on' — so this one is the outlier, and it shifts the aspect.",
+   "candidate_glosses": [
+    "to resume one's work"
+   ]
+  },
+  {
+   "verb": "weiterkämpfen",
+   "separability": "separable",
+   "shipped_gloss": "continue to battle after a pause",
+   "proposed_gloss": "fight on, keep fighting",
+   "severity": "low",
+   "reviewer_detail": "'continue to battle' is right, but the trailing 'after a pause' is a false restriction imported from the dictionary definition: weiterkämpfen is simply to fight on, with or without an interruption ('trotz der Verletzung weiterkämpfen'). It also runs far past the app's house length for a sense this simple.",
+   "candidate_glosses": [
+    "to continue to battle after a pause"
+   ]
+  },
+  {
+   "verb": "widersetzen",
+   "separability": "inseparable",
+   "shipped_gloss": "set against, make a stand against",
+   "proposed_gloss": "oppose, resist",
+   "severity": "low",
+   "reviewer_detail": "sich widersetzen + dative means to oppose, defy, or resist. Bare 'set against' is not idiomatic English for that: it reads as 'place in opposition to' or 'offset', and only works as opposition in the reflexive 'set oneself against'. The natural gloss is already present as candidate index 1 ('to defy, to oppose, to resist'). The shipped gloss points at the right action but names it in English a learner cannot reuse.",
+   "candidate_glosses": [
+    "to set against, to make a stand against",
+    "to defy, to oppose, to resist"
+   ]
+  },
+  {
+   "verb": "wiedergeben",
+   "separability": "separable",
+   "shipped_gloss": "reproduce, return",
+   "proposed_gloss": "reproduce, render",
+   "severity": "low",
+   "reviewer_detail": "'reproduce, return' joins two unrelated actions with a comma, which the house style reads as 'these mean the same thing'. Worse, the weaker half leads the learner astray: modern German returns objects with zurückgeben, and wiedergeben in the give-back sense (candidate index 0) is formal and dated. The live senses are rendering or restating content (candidate index 1) and playing back audio or video (candidate index 2), both of which 'reproduce, render' covers.",
+   "candidate_glosses": [
+    "to give back, to return (something to its rightful or previous owner)",
+    "to render, to echo, to reproduce (to state or represent the content of some source or conversation)",
+    "to play (of audio or video data)"
+   ]
+  },
+  {
+   "verb": "wundern",
+   "separability": "simplex",
+   "shipped_gloss": "wonder, surprise",
+   "proposed_gloss": "surprise, astonish",
+   "severity": "medium",
+   "reviewer_detail": "Leading with 'wonder' teaches a false friend. German wundern is transitive 'to surprise, astonish' (es wundert mich, dass...) and reflexive sich wundern 'to be surprised, be amazed' (candidate index 0 and 1). It does not carry English 'wonder' in its ordinary modern sense of asking oneself something — that is sich fragen — so a learner given this gloss will produce *ich wundere mich, ob... for 'I wonder whether'. Candidate index 2's 'to wonder' is Wiktionary rendering the archaic 'wonder at' construction, which a learner will not read that way.",
+   "candidate_glosses": [
+    "to surprise, to astonish (of sights, behaviors, outcomes)",
+    "to be surprised",
+    "to wonder, to consider something strange, to be confused"
+   ]
+  },
+  {
+   "verb": "zerwerfen",
+   "separability": "inseparable",
+   "shipped_gloss": "break by throwing",
+   "proposed_gloss": "fall out with someone",
+   "severity": "medium",
+   "reviewer_detail": "'Break by throwing' is the regional literal sense; in ordinary modern German zerwerfen appears reflexively, 'sich mit jemandem zerwerfen', meaning to quarrel and break off relations. That sense is candidate index 1. The shipped gloss also duplicates zerschmeißen exactly, which is the verb that does carry the throwing sense.",
+   "candidate_glosses": [
+    "to break by throwing",
+    "to fall out"
+   ]
+  },
+  {
+   "verb": "zeugen",
+   "separability": "simplex",
+   "shipped_gloss": "testify, father",
+   "proposed_gloss": "father, beget",
+   "severity": "medium",
+   "reviewer_detail": "The comma presents two unrelated senses as synonyms: begetting a child and bearing witness. The house style reads a comma as 'these mean the same thing', so a learner sees one blurred meaning rather than either real one. The core transitive verb is 'ein Kind zeugen' (candidate index 0). The witness sense is nearly always intransitive with a preposition ('das zeugt von Mut'), and 'testify' additionally misleads because courtroom testimony in German is aussagen. Ship the transitive sense.",
+   "candidate_glosses": [
+    "to beget, father, procreate",
+    "to testify, bear witness, declare"
+   ]
+  },
+  {
+   "verb": "zubringen",
+   "separability": "separable",
+   "shipped_gloss": "bring",
+   "proposed_gloss": "spend (time)",
+   "severity": "medium",
+   "reviewer_detail": "The everyday meaning of zubringen is spending time somewhere ('er brachte den Tag im Bett zu'), which candidate_glosses lists at index 1. The shipped 'bring' is the regional literal sense of herbeibringen, which survives mainly in the noun Zubringer, and as a gloss it is indistinguishable from plain bringen.",
+   "candidate_glosses": [
+    "to bring",
+    "to spend (time somewhere)",
+    "to be able to close"
+   ]
+  },
+  {
+   "verb": "zufliegen",
+   "separability": "separable",
+   "shipped_gloss": "fly",
+   "proposed_gloss": "fly toward",
+   "severity": "low",
+   "reviewer_detail": "The shortening dropped the '(toward)' that candidate index 0 carried, leaving a gloss identical to plain fliegen. The directional zu- is the whole content of the verb, so the learner is given nothing that distinguishes it.",
+   "candidate_glosses": [
+    "to fly (toward)"
+   ]
+  },
+  {
+   "verb": "zugreifen",
+   "separability": "separable",
+   "shipped_gloss": "access, seize",
+   "proposed_gloss": "grab, seize",
+   "severity": "medium",
+   "reviewer_detail": "The gloss leads with the computing sense (candidate index 2) and joins it by comma to the physical sense, so two different senses are presented as synonyms. The sense a learner meets is grabbing or seizing quickly (candidate index 0), and by extension helping oneself at the table. 'Access' should not head the gloss.",
+   "candidate_glosses": [
+    "to grab, to seize, to snap",
+    "to serve oneself, to help oneself",
+    "to access, to read"
+   ]
+  },
+  {
+   "verb": "zuhalten",
+   "separability": "separable",
+   "shipped_gloss": "be keep something shut",
+   "proposed_gloss": "hold shut",
+   "severity": "high",
+   "reviewer_detail": "\"be keep something shut\" is not English — the importer copied a malformed Wiktionary line (candidate_glosses index 0 reads \"to be keep something shut\") verbatim, so the defect survived the shortening step. The verb means to hold something shut: die Tür zuhalten, sich die Nase zuhalten, sich die Ohren zuhalten.",
+   "candidate_glosses": [
+    "to be keep something shut",
+    "to approach, to bear down on",
+    "to have an extramarital affair"
+   ]
+  },
+  {
+   "verb": "zukehren",
+   "separability": "separable",
+   "shipped_gloss": "turn something",
+   "proposed_gloss": "turn toward",
+   "severity": "low",
+   "reviewer_detail": "\"turn something\" drops the directional zu- that is the entire content of the verb, and kaikki's index 0 (\"to turn (rotate) something\") actively pushes toward the wrong reading: zukehren is not rotating, it is turning a side of something toward a person or place. Its dominant use is jemandem den Rücken / das Gesicht zukehren.",
+   "candidate_glosses": [
+    "to turn (rotate) something",
+    "to stop for a bite to eat on the way",
+    "to visit briefly"
+   ]
+  },
+  {
+   "verb": "zuleiten",
+   "separability": "separable",
+   "shipped_gloss": "feed",
+   "proposed_gloss": "supply, channel",
+   "severity": "medium",
+   "reviewer_detail": "The shortening dropped the parenthetical that carried the meaning: kaikki index 0 is \"to feed (a liquid, electricity, etc.)\", and bare \"feed\" reads as füttern, a verb zuleiten never means. Zuleiten is to channel or supply something along a conduit — Wasser, Strom, Frischluft zuleiten — and by extension to forward a document to an office.",
+   "candidate_glosses": [
+    "to feed (a liquid, electricity, etc.)"
+   ]
+  },
+  {
+   "verb": "zunähen",
+   "separability": "separable",
+   "shipped_gloss": "suture",
+   "proposed_gloss": "sew shut, stitch up",
+   "severity": "low",
+   "reviewer_detail": "\"suture\" is a surgical term, but zunähen is the ordinary domestic word for sewing something closed — ein Loch, eine Naht, eine Tasche zunähen. The register mismatch will keep a learner from using the verb where it actually belongs. candidate_glosses index 1 (\"to stitch up\") is the everyday equivalent.",
+   "candidate_glosses": [
+    "to suture",
+    "to stitch up"
+   ]
+  },
+  {
+   "verb": "zurichten",
+   "separability": "separable",
+   "shipped_gloss": "hurt",
+   "proposed_gloss": "batter, beat up",
+   "severity": "medium",
+   "reviewer_detail": "\"hurt\" is a weak Wiktionary gloss the importer took at face value. Zurichten is not the German for hurting someone — that is verletzen or wehtun — and in current usage it appears almost exclusively as übel/schlimm zurichten, meaning to batter someone or leave something in a wrecked state. Glossed as \"hurt\", it invites a learner to write ich habe ihn zugerichtet for \"I hurt him\", which is badly wrong.",
+   "candidate_glosses": [
+    "to hurt",
+    "to finish"
+   ]
+  }
+ ]
+}

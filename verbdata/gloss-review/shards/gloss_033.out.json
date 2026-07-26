@@ -1,0 +1,22 @@
+{
+  "sorgen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "The gloss leads with 'worry', which is the reflexive-only reading (sich sorgen) and is itself uncommon next to sich Sorgen machen. The verb a learner actually meets is 'für jemanden/etwas sorgen' — to take care of, to see to, to make sure something happens — which candidate_glosses lists at indices 0 and 1. Leading with the marginal sense, and pairing it by comma with the vague 'care', invites the reading that sorgen is primarily an emotion verb.",
+        "fix_gloss": "take care of, see to"
+      }
+    ]
+  },
+  "seligmachen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "'beatify' is the meaning of seligsprechen, which ships in this same corpus glossed exactly that way. seligmachen is to make blessed — to grant salvation or blessedness — not to perform the Church's act of declaring someone Blessed. The kaikki entry conflates the two neighbouring verbs, and the shipped gloss inherits the collision.",
+        "fix_gloss": "bless, make blessed"
+      }
+    ]
+  }
+}

@@ -1,0 +1,312 @@
+{
+ "shard": 6,
+ "records": [
+  {
+   "verb": "nachempfinden",
+   "separability": "separable",
+   "shipped_gloss": "feel for",
+   "proposed_gloss": "relate to, empathize with",
+   "severity": "low",
+   "reviewer_detail": "'Feel for' reads as pity or sympathy, which is mitfühlen — and mitfühlen ships that exact phrase in this same corpus, so the two verbs are indistinguishable to a learner. nachempfinden is candidate_glosses index 0: to imaginatively re-experience how someone felt, hence to understand or relate to it (Das kann ich gut nachempfinden). The shipped gloss comes from index 1, the weaker sense.",
+   "candidate_glosses": [
+    "to cause oneself to experience (an emotion, a feeling) by way of empathy; to understand, to appreciate",
+    "to feel for",
+    "to model"
+   ]
+  },
+  {
+   "verb": "nachsagen",
+   "separability": "separable",
+   "shipped_gloss": "repeat something said by someone else",
+   "proposed_gloss": "say about someone",
+   "severity": "medium",
+   "reviewer_detail": "The shipped sense (kaikki index 0, parroting what another person said) is the marginal one; that job is done in ordinary German by nachsprechen, which this shard glosses 'repeat'. The reading a learner actually meets is candidate index 1: jemandem etwas nachsagen, to say something (usually unflattering) about someone — 'man sagt ihm nach, er sei geizig', 'das kann man ihr nicht nachsagen'.",
+   "candidate_glosses": [
+    "to repeat something said by someone else; to echo; to follow someone's opinion",
+    "to say (something about someone, often something negative); to spread rumours about someone."
+   ]
+  },
+  {
+   "verb": "nachsetzen",
+   "separability": "separable",
+   "shipped_gloss": "place after",
+   "proposed_gloss": "chase after, pursue",
+   "severity": "medium",
+   "reviewer_detail": "'Place after' is the technical typographic/grammatical sense (setting one element behind another) and is not what a learner encounters. The everyday reading is candidate index 1: jemandem nachsetzen, to give chase — 'die Polizei setzte dem Flüchtenden nach'. German Wiktionary lists the pursuit sense first.",
+   "candidate_glosses": [
+    "to place after",
+    "to chase after"
+   ]
+  },
+  {
+   "verb": "niederschlagen",
+   "separability": "separable",
+   "shipped_gloss": "defeat",
+   "proposed_gloss": "put down, quell",
+   "severity": "low",
+   "reviewer_detail": "'Defeat' is broadly in range but loose enough to mislead: it invites a learner to use niederschlagen where besiegen is wanted (a sports or election defeat), which German does not allow. The verb carries a forcible put-down — einen Aufstand, Proteste, Widerstand niederschlagen — which kaikki separates as index 1 'to quell (a rebellion)'.",
+   "candidate_glosses": [
+    "to defeat (an enemy)",
+    "to quell (a rebellion)",
+    "to strike (someone) down, to beat (someone) down; to force someone downwards",
+    "to cast down (one's eyes), to look down",
+    "to quit to pursue (a legal claim or a criminal proceeding)"
+   ]
+  },
+  {
+   "verb": "niederstoßen",
+   "separability": "separable",
+   "shipped_gloss": "thrust down, knock down so that it falls)",
+   "proposed_gloss": "thrust down, knock down",
+   "severity": "high",
+   "reviewer_detail": "Mangled shortening: the gloss ends 'knock down so that it falls)' with an unbalanced closing parenthesis, because the shortener spliced the tail of kaikki's parenthetical clarification '(to hit or knock (something) so that it falls)' onto the definition. The verb simply means to thrust or knock something down.",
+   "candidate_glosses": [
+    "to thrust down, to knock down (to hit or knock (something) so that it falls)"
+   ]
+  },
+  {
+   "verb": "offenhalten",
+   "separability": "separable",
+   "shipped_gloss": "synonym of offenlassen",
+   "proposed_gloss": "keep open",
+   "severity": "high",
+   "reviewer_detail": "The shipped gloss is a Wiktionary cross-reference, not English about the verb: it tells the learner to look up another German word. The meaning was in the same candidate entry (index 0, 'synonym of offenlassen; to keep open') but the shortening kept the pointer and discarded the definition. offenhalten means to keep something open — a door, a shop, a position, an option.",
+   "candidate_glosses": [
+    "synonym of offenlassen; to keep open"
+   ]
+  },
+  {
+   "verb": "offenstehen",
+   "separability": "separable",
+   "shipped_gloss": "stay open",
+   "proposed_gloss": "be open, stand open",
+   "severity": "low",
+   "reviewer_detail": "'stay open' names duration, which belongs to offenbleiben. offenstehen is stative: 'Die Tür steht offen' is the door is open, not the door stays open. The imprecision was inherited from kaikki's own wording at index 0, so the gloss is broadly right but collides with a neighboring verb.",
+   "candidate_glosses": [
+    "to stay open"
+   ]
+  },
+  {
+   "verb": "preisgeben",
+   "separability": "separable",
+   "shipped_gloss": "abandon, forsake, relinquish, surrender",
+   "proposed_gloss": "disclose, reveal",
+   "severity": "medium",
+   "reviewer_detail": "The shipped gloss takes kaikki's first sense (abandon/surrender), which in modern German is the literary one — 'dem Untergang preisgeben', 'sich preisgeben'. The sense a learner actually meets is candidate index 1: disclosing information, as in 'keine Details preisgeben', 'Daten preisgeben', 'seine Identität preisgeben', which is standard news and everyday German.",
+   "candidate_glosses": [
+    "to abandon, forsake, relinquish, surrender",
+    "to disclose, reveal, betray (a secret)"
+   ]
+  },
+  {
+   "verb": "raushalten",
+   "separability": "separable",
+   "shipped_gloss": "hold out",
+   "proposed_gloss": "stay out of, keep out of",
+   "severity": "medium",
+   "reviewer_detail": "'hold out' reads in English as endure or resist (German durchhalten), so it points at the wrong action. Even taken as physically holding something out — candidate index 1 — that is a marginal use of the clipped form. In practice raushalten is overwhelmingly reflexive: 'sich aus etwas raushalten', 'Halt dich da raus!', meaning to keep clear of a matter.",
+   "candidate_glosses": [
+    "clipping of heraushalten",
+    "to hold (something) out (of something) (either in direction towards or away from the speaker)"
+   ]
+  },
+  {
+   "verb": "reinwaschen",
+   "separability": "separable",
+   "shipped_gloss": "cleanse",
+   "proposed_gloss": "clear of blame, whitewash",
+   "severity": "medium",
+   "reviewer_detail": "The literal washing sense is marked rare in German dictionaries; in actual use reinwaschen is the figurative verb for clearing someone of suspicion or blame (sich von einem Verdacht reinwaschen, Geld reinwaschen). candidate_glosses lists that sense at index 1 ('to whitewash'). Shipping 'cleanse' also collides with reinigen, which is the verb a learner would actually reach for when they mean cleaning something.",
+   "candidate_glosses": [
+    "to cleanse",
+    "to whitewash"
+   ]
+  },
+  {
+   "verb": "richten",
+   "separability": "simplex",
+   "shipped_gloss": "direct, judge",
+   "proposed_gloss": "direct, aim",
+   "severity": "low",
+   "reviewer_detail": "The comma reads as 'these mean the same thing', but 'direct' and 'judge' are unrelated senses of richten. 'Direct, aim, point' is the sense a learner meets constantly (etwas an jemanden richten, sich nach etwas richten, den Blick auf etwas richten); 'judge' is the elevated legal/biblical sense (ueber jemanden richten) behind the noun Richter and is rare in everyday German. Pairing them invites a learner to use richten for ordinary judging, where German wants beurteilen or urteilen. The correct sense is candidate index 0.",
+   "candidate_glosses": [
+    "to direct, to point",
+    "to direct, to address",
+    "to fix, to rectify, to put right",
+    "to straighten (something bent or tilted or not lined up properly); to right",
+    "to be directed (at) (of emotions, words, etc.); to turn (toward) (of a look, one's eyes, gaze, etc.)",
+    "to judge"
+   ]
+  },
+  {
+   "verb": "sattsehen",
+   "separability": "separable",
+   "shipped_gloss": "have enough of seeing something beautiful",
+   "proposed_gloss": "look one's fill",
+   "severity": "low",
+   "reviewer_detail": "Lifted verbatim from kaikki, and the English inverts the feeling. German sich an etwas sattsehen is satiation in the positive sense: to gaze at something as long as one wants, usually in the negative (ich kann mich nicht daran sattsehen, 'I can't get enough of looking at it'). English 'have enough of seeing something beautiful' reads idiomatically as being fed up with the sight, the opposite of what the verb conveys. It is also far longer than house style allows.",
+   "candidate_glosses": [
+    "to have enough of seeing something beautiful"
+   ]
+  },
+  {
+   "verb": "seligmachen",
+   "separability": "separable",
+   "shipped_gloss": "bless, beatify",
+   "proposed_gloss": "bless, make blessed",
+   "severity": "low",
+   "reviewer_detail": "'beatify' is the meaning of seligsprechen, which ships in this same corpus glossed exactly that way. seligmachen is to make blessed — to grant salvation or blessedness — not to perform the Church's act of declaring someone Blessed. The kaikki entry conflates the two neighbouring verbs, and the shipped gloss inherits the collision.",
+   "candidate_glosses": [
+    "to bless, beatify"
+   ]
+  },
+  {
+   "verb": "sorgen",
+   "separability": "simplex",
+   "shipped_gloss": "worry, care",
+   "proposed_gloss": "take care of, see to",
+   "severity": "low",
+   "reviewer_detail": "The gloss leads with 'worry', which is the reflexive-only reading (sich sorgen) and is itself uncommon next to sich Sorgen machen. The verb a learner actually meets is 'für jemanden/etwas sorgen' — to take care of, to see to, to make sure something happens — which candidate_glosses lists at indices 0 and 1. Leading with the marginal sense, and pairing it by comma with the vague 'care', invites the reading that sorgen is primarily an emotion verb.",
+   "candidate_glosses": [
+    "to take care of, to care for, to look after",
+    "to bring about, to ensure, to cause [with für (+ accusative) ‘something’] (a result or incident)",
+    "to worry, to be worried"
+   ]
+  },
+  {
+   "verb": "starkmachen",
+   "separability": "separable",
+   "shipped_gloss": "strengthen",
+   "proposed_gloss": "advocate for, stand up for",
+   "severity": "medium",
+   "reviewer_detail": "In real usage this verb is almost always reflexive — sich für jemanden/etwas starkmachen — meaning to campaign or stand up for a cause or person. That is candidate_glosses index 1 ('to support, advocate for'). The shipped 'strengthen' is kaikki's first-listed literal reading of stark + machen, and it also collides with stärken, which the corpus already glosses 'strengthen'. A learner will meet starkmachen in the advocacy sense.",
+   "candidate_glosses": [
+    "to strengthen",
+    "to support, advocate for"
+   ]
+  },
+  {
+   "verb": "teilhaben",
+   "separability": "separable",
+   "shipped_gloss": "participate",
+   "proposed_gloss": "share in, partake of",
+   "severity": "low",
+   "reviewer_detail": "teilhaben an etwas means to have a share in something, to partake of it — am Wohlstand teilhaben, am Erfolg teilhaben. The shipped 'participate' names the active taking-part sense that belongs to teilnehmen, which this same corpus glosses identically as 'participate'. Two distinct verbs ending up with the same gloss erases the distinction between having a share in something and taking part in it.",
+   "candidate_glosses": [
+    "to participate"
+   ]
+  },
+  {
+   "verb": "thematisieren",
+   "separability": "simplex",
+   "shipped_gloss": "address, make topic",
+   "proposed_gloss": "bring up, address",
+   "severity": "low",
+   "reviewer_detail": "'make topic' is not an English phrase — it is a shortening of something like 'make a topic of' that lost the article and the preposition, leaving a fragment the learner cannot use. The first half, 'address', is correct; candidate_glosses index 0 ('to bring up, address an issue') gives the sense cleanly.",
+   "candidate_glosses": [
+    "to bring up, address an issue"
+   ]
+  },
+  {
+   "verb": "umschlagen",
+   "separability": "separable",
+   "shipped_gloss": "turn",
+   "proposed_gloss": "change abruptly, turn",
+   "severity": "low",
+   "reviewer_detail": "A bare 'turn' reads as rotation and collides with drehen and wenden. The core sense of umschlagen is an abrupt switch into an opposite state, said of weather, mood, or a situation: 'Das Wetter schlug um', 'Die Stimmung schlug in Wut um'. The gloss points at the right action but so loosely that it names nothing distinctive.",
+   "candidate_glosses": [
+    "to turn",
+    "to fell",
+    "to handle, to transact"
+   ]
+  },
+  {
+   "verb": "umsteigen",
+   "separability": "separable",
+   "shipped_gloss": "change, interchange, switch",
+   "proposed_gloss": "change (trains, buses)",
+   "severity": "low",
+   "reviewer_detail": "The shortening dropped the part of candidate_glosses index 0 that carried the meaning, '(from one means of transport to another)', leaving three vague synonyms. 'interchange' is the misleading one: as an English verb it means to swap two things for each other, which umsteigen never means. The verb is what you do when you get off one train or bus and onto another.",
+   "candidate_glosses": [
+    "to change, to interchange, to switch (from one means of transport to another)"
+   ]
+  },
+  {
+   "verb": "umstimmen",
+   "separability": "separable",
+   "shipped_gloss": "retune",
+   "proposed_gloss": "change someone's mind",
+   "severity": "medium",
+   "reviewer_detail": "The shipped 'retune' is the technical musical sense (ein Instrument umstimmen), which a learner will essentially never meet. In ordinary German umstimmen means to change someone's mind, to talk someone round: 'Ich konnte ihn doch noch umstimmen.' That sense is candidate_glosses index 1.",
+   "candidate_glosses": [
+    "to retune",
+    "to change someone's mind"
+   ]
+  },
+  {
+   "verb": "umtreiben",
+   "separability": "separable",
+   "shipped_gloss": "drive around",
+   "proposed_gloss": "preoccupy, trouble",
+   "severity": "medium",
+   "reviewer_detail": "'drive around' is the archaic agricultural sense (driving livestock about). In modern German umtreiben is used almost exclusively for something that occupies or troubles a person's thoughts: 'Diese Frage treibt mich seit Wochen um', 'Was treibt dich um?' That is candidate_glosses index 1, listed there as 'to worry (someone)'.",
+   "candidate_glosses": [
+    "to drive around",
+    "to worry (someone)"
+   ]
+  },
+  {
+   "verb": "umwenden",
+   "separability": "separable",
+   "shipped_gloss": "turn over, turn inside out",
+   "proposed_gloss": "turn over",
+   "severity": "low",
+   "reviewer_detail": "The comma presents 'turn over' and 'turn inside out' as synonyms, but they are different actions, and the second is not really umwenden's territory anyway: turning a garment inside out is umkrempeln or umstülpen. umwenden is turning something onto its other side, as with a page or a pancake. The stray half came in with candidate_glosses index 0.",
+   "candidate_glosses": [
+    "to turn over; to turn inside out",
+    "to turn around, to go back (when traveling)",
+    "to turn around (of one's body)"
+   ]
+  },
+  {
+   "verb": "unterfangen",
+   "separability": "inseparable",
+   "shipped_gloss": "undertake",
+   "proposed_gloss": "dare, presume",
+   "severity": "medium",
+   "reviewer_detail": "The living verb is reflexive: sich unterfangen = to dare, to presume, to have the audacity (\"Wie kannst du dich unterfangen, so zu reden?\"). That is candidate_glosses index 1. The shipped \"undertake\" belongs to the noun das Unterfangen (an undertaking); as a verb it is archaic, and the only other current verbal use is the construction term for underpinning a foundation. A learner shown \"undertake\" will reach for unterfangen where unternehmen is wanted.",
+   "candidate_glosses": [
+    "to undertake (usually a difficult task)",
+    "to dare to, to have the audacity"
+   ]
+  },
+  {
+   "verb": "untergehen",
+   "separability": "separable",
+   "shipped_gloss": "set",
+   "proposed_gloss": "go down, sink, set",
+   "severity": "low",
+   "reviewer_detail": "The bare one-word \"set\" is a fragment of candidate_glosses index 0, where the parenthetical (\"of a heavenly body: to disappear below the horizon\") carried all the meaning. Stripped of it, \"set\" reads as place, put, or harden, none of which this verb does. The verb's core is going down or under, spanning the sun setting, a ship sinking, and an empire perishing; a gloss naming that motion covers all of them.",
+   "candidate_glosses": [
+    "to set (of a heavenly body: to disappear below the horizon)",
+    "to fall, to go down (to be defeated)",
+    "to perish, to vanish",
+    "to be drowned out",
+    "to go under (water), to sink"
+   ]
+  },
+  {
+   "verb": "unterhalten",
+   "separability": "inseparable",
+   "shipped_gloss": "entertain, maintain",
+   "proposed_gloss": "entertain",
+   "severity": "low",
+   "reviewer_detail": "The comma presents two distinct senses as synonyms: entertaining a guest (candidate index 1) and maintaining a building or a fleet (index 0). House style reads a comma as \"these mean the same thing,\" so this teaches that \"entertain\" and \"maintain\" are interchangeable renderings. Entertain is the right sense to keep, being the one a learner meets first alongside the reflexive sich unterhalten.",
+   "candidate_glosses": [
+    "to maintain",
+    "to entertain",
+    "to converse"
+   ]
+  }
+ ]
+}

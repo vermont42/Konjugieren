@@ -1,0 +1,22 @@
+{
+  "ergehen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "Leaked dictionary apparatus. 'forms the perfect with sein' is Wiktionary's auxiliary-selection header for the sense group that follows (candidate_glosses index 0), not a meaning; the importer took it as sense 0. It tells the learner nothing about the verb. The sense a learner actually meets is the impersonal one in 'Wie ist es dir ergangen?' / 'Es erging ihm schlecht' — how someone fared, which is candidate_glosses index 2. The legal 'be issued' sense (index 1, 'ein Urteil ergeht') is the other real reading but is confined to officialese.",
+        "fix_gloss": "fare"
+      }
+    ]
+  },
+  "erhoffen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "kaikki's 'to hope (for); desire; want (to)' used semicolons to separate loose paraphrases; flattening them to commas presents 'desire' and 'want' as synonyms of the verb. Erhoffen (nearly always reflexive: 'sich etwas von etwas erhoffen') means specifically to hope for or hope to gain something, and glossing it as 'want' invites a learner to substitute it for wollen or wünschen, which it cannot do.",
+        "fix_gloss": "hope for"
+      }
+    ]
+  }
+}

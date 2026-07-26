@@ -1,0 +1,32 @@
+{
+  "versehen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "The gloss welds two unrelated senses into one comma list, which the house style reads as synonyms: 'equip' renders transitive 'etwas mit etwas versehen' (candidate index 3, 'to provide with'), while 'make mistake' renders the reflexive 'sich versehen' (candidate index 4), a separate and much rarer reading. A learner sees 'equip' and 'make mistake' presented as equivalents. The second half is also ungrammatical English, missing its article. The sense to ship is the transitive one: to furnish or provide something with something.",
+        "fix_gloss": "provide with, furnish"
+      }
+    ]
+  },
+  "verschlagen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "The shortening kept an unfiltered synonym pile from candidate index 0 and dropped the parenthetical that made it interpretable. 'shlep' is a Yiddish-derived regionalism opaque to a German learner reading English, and 'bring' floating at the end of the list is so general it names nothing. The verb's live use is the near-impersonal 'es hat ihn nach München verschlagen' — chance carried him somewhere he did not intend to go — so 'strand' plus a directional 'drive' carries it; 'shlep' and 'bring' should go.",
+        "fix_gloss": "strand, drive somewhere"
+      }
+    ]
+  },
+  "verstoßen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "'violate, expel' pairs two genuinely different constructions as if they were synonyms: 'gegen etwas verstoßen' means to violate or infringe a rule (candidate index 1), while 'jemanden verstoßen' means to cast out or disown (candidate index 0). The first is far more frequent and is the one a learner meets, in news German especially. Committing to it removes the false equivalence.",
+        "fix_gloss": "violate, infringe"
+      }
+    ]
+  }
+}

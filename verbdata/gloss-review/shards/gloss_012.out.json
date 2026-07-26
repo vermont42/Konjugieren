@@ -1,0 +1,22 @@
+{
+  "bestärken": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "bestärken takes a person as its object and means to reinforce or confirm someone in a belief, resolve, or opinion (jemanden in seiner Meinung bestärken). Leading with 'strengthen' and closing with 'fortify' points the learner at physical strengthening, which is stärken/verstärken, not bestärken; a learner reading this gloss would plausibly write 'die Mauer bestärken'. candidate_glosses index 1 ('to confirm, to reinforce') carries the actual sense.",
+        "fix_gloss": "reinforce, encourage"
+      }
+    ]
+  },
+  "beweinen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "The meaning is right, but this is kaikki's unfiltered synonym list rather than a gloss. 'beweep' is not modern English — it survives only in Shakespeare — and contributes nothing a learner can use, while four comma-separated synonyms overrun the house style. 'mourn, cry over' names the sense completely.",
+        "fix_gloss": "mourn, cry over"
+      }
+    ]
+  }
+}

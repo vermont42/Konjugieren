@@ -1,0 +1,92 @@
+{
+  "übergehen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "The comma joins senses belonging to two different verbs. Inseparable übergehen (übergeht, überging, hat übergangen) means to pass someone over, skip, or ignore — 'er wurde bei der Beförderung übergangen'. 'Go over to' is the separable ÜBERgehen (geht über, ist übergegangen), as in 'zum nächsten Punkt übergehen' or 'in Rauch übergehen', a different action with a different conjugation. Since the entry ships as inseparable, the gloss must commit to the skip sense, which candidate_glosses gives at indices 0 and 1.",
+        "fix_gloss": "skip, ignore"
+      }
+    ]
+  },
+  "überkommen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "'Conquer' names a different verb. Überkommen does not describe defeating or surmounting something — that is überwinden, besiegen, or erobern. In überkommen the emotion is the subject and the person the object: 'mich überkam ein Gefühl der Angst', a feeling came over me. The shipped gloss reverses the argument structure and would produce wrong German such as *'ich überkam meine Angst'. Candidate index 1 ('to overwhelm') is closer, but 'come over' is what the verb actually does.",
+        "fix_gloss": "come over, overwhelm"
+      }
+    ]
+  },
+  "überblicken": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "Neither word works. In current English 'oversee' means to supervise, which is beaufsichtigen, not überblicken; and 'overview' is a noun, not a verb, so the second item is unusable as English. Überblicken means to take in the whole of something at a glance, literally ('vom Turm die ganze Stadt überblicken') or figuratively ('die Lage überblicken', to grasp the situation). The correct sense is absent from candidate_glosses, which reproduces the same two bad items.",
+        "fix_gloss": "survey, get an overview of"
+      }
+    ]
+  },
+  "überarbeiten": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "The comma presents two different senses as synonyms. Transitive überarbeiten means to revise or rework a text or a design (candidate index 0); 'overwork' is the reflexive sich überarbeiten (candidate index 1), a distinct construction. A learner reading the comma as equivalence would write *'ich überarbeite' for 'I am overworking', dropping the obligatory reflexive pronoun. The gloss should commit to the transitive sense, which is the one the learner meets first.",
+        "fix_gloss": "revise, rework"
+      }
+    ]
+  },
+  "überhören": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "'Mishear' is the wrong English word and collides with sich verhören, which is the verb for hearing something incorrectly. Überhören means not to register an utterance at all — either accidentally ('das habe ich überhört', I missed that) or deliberately ('eine Bemerkung überhören', to let a remark pass). The shortening from candidate index 0 dropped the '(deliberately)' that made the source phrasing barely defensible, leaving a wrong equivalence behind.",
+        "fix_gloss": "fail to hear, ignore"
+      }
+    ]
+  },
+  "überführen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "The synonym list was imported unfiltered and 'translate' came with it. That item reflects the narrow ecclesiastical sense of translating relics or a bishop's see, not anything a learner will use, and it sits next to the German verb übersetzen, which really does mean translate — so the gloss actively invites a false equivalence. The other three items correctly render the transport sense at candidate index 0.",
+        "fix_gloss": "transfer, transport, move"
+      }
+    ]
+  },
+  "überlassen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "'Abandon' names a different action and is presented as a synonym of the correct one. Überlassen is to let someone else have something or to leave a matter up to them — 'ich überlasse dir das Auto', 'das überlasse ich dir'. Abandoning something is verlassen or aufgeben; the reading only surfaces in the fixed phrase 'jemanden seinem Schicksal überlassen', which is too narrow to carry the gloss. Both candidate glosses describe the relinquish-to-someone sense only.",
+        "fix_gloss": "leave to, entrust to"
+      }
+    ]
+  },
+  "zuwenden": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "Bare 'turn' is what wenden or drehen mean and loses the directional component that is the whole content of the zu- prefix. Zuwenden is to orient toward something or someone, usually reflexive — 'sie wandte sich ihm zu', 'sich einem Thema zuwenden'. As shipped, the gloss reads as rotating an object, which the verb does not describe. Candidate index 2 has the right sense.",
+        "fix_gloss": "turn toward"
+      }
+    ]
+  },
+  "zutreiben": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "In isolation English 'drive' reads as operating a vehicle, which is fahren and exactly wrong here. Zutreiben is to drive something — cattle, a herd, a boat — toward a destination, or intransitively to drift toward one ('das Boot trieb dem Ufer zu'). Candidate index 0 carries the directional complement that the shortening stripped, leaving a gloss that points at the wrong action.",
+        "fix_gloss": "drive toward"
+      }
+    ]
+  }
+}

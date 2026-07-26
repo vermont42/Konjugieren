@@ -1,0 +1,82 @@
+{
+  "vorbilden": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The verb means to give someone preliminary training or education — 'gut vorgebildet' is the everyday use, and the adjective 'vorgebildet' means qualified or trained. 'Preform' is a technical/literal reading (shaping material in advance) that a learner will not meet, and in English it is also easily misread as a typo for 'perform'. candidate_glosses index 1 ('to prelearn; to prepare; to equip with knowledge in advance') is the sense the app should ship.",
+        "fix_gloss": "train in advance"
+      }
+    ]
+  },
+  "vorbringen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "The shortening dropped the qualifier that carried the meaning: kaikki's sense is 'to say (in the sense of to allege or state something)'. Bare 'say' makes vorbringen indistinguishable from sagen, when the verb specifically means to advance or raise something — an argument, an objection, a complaint (Einwände vorbringen, Beschwerde vorbringen). The action is right but the rendering is too vague to be usable.",
+        "fix_gloss": "put forward, raise"
+      }
+    ]
+  },
+  "vorhalten": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The sense a learner actually meets is 'jemandem etwas vorhalten' — to hold something against someone, to reproach them with it — which is candidate_glosses index 1 and the dominant use in modern journalistic German. The shipped 'hold up' names the literal index-0 sense, and as bare English it invites the far commoner readings 'delay' and 'rob', neither of which the German verb carries.",
+        "fix_gloss": "hold against, reproach"
+      }
+    ]
+  },
+  "vorlesen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "The shortening dropped the parenthetical that did all the work: kaikki reads 'to read (aloud)'. Bare 'read' collides with the base verb lesen and loses the vor- component entirely — vorlesen is specifically reading aloud to someone (dem Kind eine Geschichte vorlesen), never silent reading.",
+        "fix_gloss": "read aloud"
+      }
+    ]
+  },
+  "vorsetzen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "'Prefix' is a narrow grammatical/technical sense that kaikki happens to list first; a learner reading it will think of morphology or computing. The ordinary meaning is to place something in front of someone, above all to set food or drink before them (man setzte uns eine Suppe vor). candidate_glosses index 1 ('to serve (food or drink)') and index 2 ('to put in front; to move forward') are the senses in real use.",
+        "fix_gloss": "put in front of, serve"
+      }
+    ]
+  },
+  "vorsingen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "The shortening stripped '(something to someone)', leaving a gloss identical in force to the base verb singen. vorsingen is singing for an audience of one or more listeners — and by extension auditioning (candidate_glosses index 1). Bare 'sing' teaches nothing that distinguishes the prefixed verb.",
+        "fix_gloss": "sing to someone"
+      }
+    ]
+  },
+  "vorwerfen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The importer took kaikki's first-listed literal sense. Physically throwing something forward is now largely confined to the fixed image of throwing someone to the lions; the sense a learner meets constantly is 'jemandem etwas vorwerfen' — to accuse someone of something, to reproach them — which is candidate_glosses index 2. As shipped, the gloss teaches the wrong action for one of the most frequent verbs in German news prose.",
+        "fix_gloss": "accuse of, reproach"
+      }
+    ]
+  },
+  "vorziehen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "'Pull to the front' is kaikki's first-listed literal sense, but the everyday use is 'to prefer' — es vorziehen, etwas zu tun; ich ziehe Tee vor. That is candidate_glosses index 2. The literal sense is comparatively rare, so a learner is taught a reading they will seldom encounter and denied the one they will.",
+        "fix_gloss": "prefer"
+      }
+    ]
+  }
+}

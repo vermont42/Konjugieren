@@ -1,0 +1,52 @@
+{
+  "unterfangen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The living verb is reflexive: sich unterfangen = to dare, to presume, to have the audacity (\"Wie kannst du dich unterfangen, so zu reden?\"). That is candidate_glosses index 1. The shipped \"undertake\" belongs to the noun das Unterfangen (an undertaking); as a verb it is archaic, and the only other current verbal use is the construction term for underpinning a foundation. A learner shown \"undertake\" will reach for unterfangen where unternehmen is wanted.",
+        "fix_gloss": "dare, presume"
+      }
+    ]
+  },
+  "untergehen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "The bare one-word \"set\" is a fragment of candidate_glosses index 0, where the parenthetical (\"of a heavenly body: to disappear below the horizon\") carried all the meaning. Stripped of it, \"set\" reads as place, put, or harden, none of which this verb does. The verb's core is going down or under, spanning the sun setting, a ship sinking, and an empire perishing; a gloss naming that motion covers all of them.",
+        "fix_gloss": "go down, sink, set"
+      }
+    ]
+  },
+  "unterhalten": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "The comma presents two distinct senses as synonyms: entertaining a guest (candidate index 1) and maintaining a building or a fleet (index 0). House style reads a comma as \"these mean the same thing,\" so this teaches that \"entertain\" and \"maintain\" are interchangeable renderings. Entertain is the right sense to keep, being the one a learner meets first alongside the reflexive sich unterhalten.",
+        "fix_gloss": "entertain"
+      }
+    ]
+  },
+  "verabschieden": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "Two unrelated senses joined by a comma: sich verabschieden = say goodbye (candidate index 0) and ein Gesetz verabschieden = pass a law (index 4). Read as house-style synonyms, \"say goodbye, pass\" invites the reading \"pass away,\" which the verb does not mean. Ship the everyday sense alone.",
+        "fix_gloss": "say goodbye"
+      }
+    ]
+  },
+  "verbiegen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "\"something\" is kaikki's transitivity placeholder, retained from candidate index 0 (\"to bend something.\"), where it existed only to distinguish that entry from index 1's intransitive \"to bend, become bent.\" It is dictionary scaffolding rather than part of the meaning, and no other gloss in the corpus carries a dummy object.",
+        "fix_gloss": "bend"
+      }
+    ]
+  }
+}

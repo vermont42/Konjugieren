@@ -1,0 +1,32 @@
+{
+  "starkmachen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "In real usage this verb is almost always reflexive — sich für jemanden/etwas starkmachen — meaning to campaign or stand up for a cause or person. That is candidate_glosses index 1 ('to support, advocate for'). The shipped 'strengthen' is kaikki's first-listed literal reading of stark + machen, and it also collides with stärken, which the corpus already glosses 'strengthen'. A learner will meet starkmachen in the advocacy sense.",
+        "fix_gloss": "advocate for, stand up for"
+      }
+    ]
+  },
+  "teilhaben": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "teilhaben an etwas means to have a share in something, to partake of it — am Wohlstand teilhaben, am Erfolg teilhaben. The shipped 'participate' names the active taking-part sense that belongs to teilnehmen, which this same corpus glosses identically as 'participate'. Two distinct verbs ending up with the same gloss erases the distinction between having a share in something and taking part in it.",
+        "fix_gloss": "share in, partake of"
+      }
+    ]
+  },
+  "thematisieren": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "'make topic' is not an English phrase — it is a shortening of something like 'make a topic of' that lost the article and the preposition, leaving a fragment the learner cannot use. The first half, 'address', is correct; candidate_glosses index 0 ('to bring up, address an issue') gives the sense cleanly.",
+        "fix_gloss": "bring up, address"
+      }
+    ]
+  }
+}

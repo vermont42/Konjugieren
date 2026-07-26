@@ -1,0 +1,107 @@
+{
+  "zurufen": {
+    "own_gloss": "call out to",
+    "verdict": "accept",
+    "reason": "Bare 'call' collapses zurufen into its base rufen and drops the zu-, whose whole content is directing the call at someone across a distance; the German unambiguously carries that even though candidate_glosses only lists 'to call'. 'call out to' is correct and in house style."
+  },
+  "zurückstehen": {
+    "own_gloss": "take a back seat",
+    "verdict": "accept",
+    "reason": "The shipped literal-spatial gloss ships the least-used sense, and 'stand behind' is a genuine false friend (an English speaker reads it as 'support', the opposite of the German). 'take a back seat' captures the dominant figurative restraint sense at candidate index 2."
+  },
+  "zusammenbringen": {
+    "own_gloss": "bring together",
+    "verdict": "accept",
+    "reason": "'collect' is the marginal index-0 reading and points at sammeln; the transparent core sense a learner meets — zwei Menschen zusammenbringen — is 'bring together' at candidate index 3."
+  },
+  "zusammendrängen": {
+    "own_gloss": "crowd together",
+    "verdict": "accept",
+    "reason": "'condense' names only the figurative/transferred reading; the primary, mostly reflexive physical sense (sich zusammendrängen, to press into a small space) is candidate index 1 and is what a learner meets first."
+  },
+  "zusammenfahren": {
+    "own_gloss": "flinch, give a start",
+    "verdict": "accept",
+    "reason": "The startle reaction (er fuhr zusammen) at candidate index 1 is the frequent, idiomatic sense; glossing this as 'collide' ships the rarer reading and points the learner away from zusammenstoßen, the normal word for a vehicle collision."
+  },
+  "zusammennehmen": {
+    "own_gloss": "muster, summon up",
+    "verdict": "accept",
+    "reason": "'add up, total' corresponds only to the frozen adverbial 'alles zusammengenommen', not the live verb; gathering one's resources (Mut/Kräfte zusammennehmen) is candidate index 2."
+  },
+  "zuschlagen": {
+    "own_gloss": "strike, hit",
+    "verdict": "accept",
+    "reason": "The physical strike sense (der Täter schlug zu) is candidate index 0, whose kaikki wording ('avail oneself of one's muscular power…') was unusable, so the importer skipped to the colloquial 'take one's chance' at index 1. 'strike, hit' restores the primary sense in usable English."
+  },
+  "zutreiben": {
+    "own_gloss": "drive toward",
+    "verdict": "accept",
+    "reason": "Bare 'drive' reads as operating a vehicle (fahren) and drops the zu-; zutreiben is to drive cattle/a boat toward a destination, or intransitively drift toward one. Candidate index 0 carries the directional complement the shortening stripped."
+  },
+  "zuwenden": {
+    "own_gloss": "turn toward",
+    "verdict": "accept",
+    "reason": "'turn' is wenden/drehen and reads as rotating an object; zuwenden is to orient toward someone (sich ihm zuwenden), the directional content of the zu- prefix, at candidate index 2."
+  },
+  "überarbeiten": {
+    "own_gloss": "revise, rework",
+    "verdict": "accept",
+    "reason": "The shipped comma presents 'overwork' as a synonym of 'revise', but overwork is the distinct reflexive sich überarbeiten (candidate index 1). Committing to the transitive revise/rework sense at index 0 removes a false equivalence that would tempt a learner to drop the obligatory reflexive pronoun."
+  },
+  "überblicken": {
+    "own_gloss": "survey, take in at a glance",
+    "verdict": "accept",
+    "reason": "Both shipped items are broken: 'oversee' means supervise (beaufsichtigen) and 'overview' is not an English verb. überblicken means to take in the whole of something at a glance; the proposal is correct English even though kaikki reproduces only the two bad items."
+  },
+  "überführen": {
+    "own_gloss": "transfer, transport, move",
+    "verdict": "accept",
+    "reason": "'translate' is the narrow ecclesiastical relic/see sense imported unfiltered from candidate index 0, and sitting next to the real 'translate' verb übersetzen it actively invites a false equivalence. The remaining three items render the transport sense correctly."
+  },
+  "übergehen": {
+    "own_gloss": "pass over, skip",
+    "verdict": "accept",
+    "reason": "The entry ships as inseparable (überging, hat übergangen), whose sense is skip/pass over/ignore (candidate indices 0 and 1); 'go over to' is the separable ÜBERgehen with a different conjugation, so the comma joins two distinct verbs and must be dropped for the inseparable entry."
+  },
+  "überhören": {
+    "own_gloss": "fail to hear, ignore",
+    "verdict": "accept",
+    "reason": "'mishear' is wrong and collides with sich verhören (to hear something incorrectly); überhören is to not register an utterance at all, accidentally or deliberately (candidate index 0, minus the dropped '(deliberately)' that made the source barely defensible)."
+  },
+  "überkommen": {
+    "own_gloss": "come over (of a feeling)",
+    "verdict": "accept",
+    "reason": "'conquer, seize' name überwinden/besiegen and reverse the argument structure — in überkommen the feeling is subject and the person object (mich überkam die Angst), so the shipped gloss would produce wrong German like *ich überkam meine Angst. 'come over, overwhelm' has the right direction; 'overwhelm' is candidate index 1."
+  },
+  "überlassen": {
+    "own_gloss": "leave to, hand over to",
+    "verdict": "accept",
+    "reason": "'abandon' names verlassen/aufgeben and only surfaces in the fixed 'jemanden seinem Schicksal überlassen', too narrow to carry the gloss; both candidate glosses describe only relinquishing-to-someone, which 'entrust to' renders correctly."
+  },
+  "überschauen": {
+    "own_gloss": "survey, grasp",
+    "verdict": "accept",
+    "reason": "English 'overlook' is dominantly read as 'fail to notice' — which is übersehen — so it teaches the opposite of überschauen. The verb means to take in and comprehend the whole; 'to grasp, to assess, to comprehend' is candidate index 1."
+  },
+  "überschlagen": {
+    "own_gloss": "estimate roughly",
+    "verdict": "reject",
+    "reason": "Skipping a page or passage (eine Seite überschlagen) is a common, concrete everyday sense at candidate index 0 — not rare, archaic, technical, or regional. Even though I too would lead with the estimate sense, that only makes the estimate reading preferable, not the shipped skip-over reading wrong, so under the polysemy rule the shipped gloss stays."
+  },
+  "überschreiben": {
+    "own_gloss": "overwrite",
+    "verdict": "accept",
+    "reason": "'make over, sign over (property)' is the specialized legal-conveyancing sense at candidate index 0; the sense a learner overwhelmingly meets is the computing one (Datei überschreiben) at candidate indices 2 and 3. Shipping the notary sense over the everyday one is choosing a technical reading where a common one was available."
+  },
+  "überspielen": {
+    "own_gloss": "dub, re-record",
+    "verdict": "accept",
+    "reason": "'sth' is a dictionary abbreviation for 'something' that survived the import (candidate index 0) — apparatus, not English — leaving the gloss reading as an unfinished phrase. The dubbing sense is correct and just needs the placeholder removed."
+  },
+  "überstimmen": {
+    "own_gloss": "outvote",
+    "verdict": "reject",
+    "reason": "'outvote' is more precise to the Stimme stem, but 'overrule' is candidate index 0 and is a valid English gloss commonly used for majority decisions ('the board overruled him'); mere added precision is not grounds, and the shipped gloss is attested and defensible."
+  }
+}

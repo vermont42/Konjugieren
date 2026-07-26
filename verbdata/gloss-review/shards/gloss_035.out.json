@@ -1,0 +1,52 @@
+{
+  "umstimmen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The shipped 'retune' is the technical musical sense (ein Instrument umstimmen), which a learner will essentially never meet. In ordinary German umstimmen means to change someone's mind, to talk someone round: 'Ich konnte ihn doch noch umstimmen.' That sense is candidate_glosses index 1.",
+        "fix_gloss": "change someone's mind"
+      }
+    ]
+  },
+  "umtreiben": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "'drive around' is the archaic agricultural sense (driving livestock about). In modern German umtreiben is used almost exclusively for something that occupies or troubles a person's thoughts: 'Diese Frage treibt mich seit Wochen um', 'Was treibt dich um?' That is candidate_glosses index 1, listed there as 'to worry (someone)'.",
+        "fix_gloss": "preoccupy, trouble"
+      }
+    ]
+  },
+  "umschlagen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "A bare 'turn' reads as rotation and collides with drehen and wenden. The core sense of umschlagen is an abrupt switch into an opposite state, said of weather, mood, or a situation: 'Das Wetter schlug um', 'Die Stimmung schlug in Wut um'. The gloss points at the right action but so loosely that it names nothing distinctive.",
+        "fix_gloss": "change abruptly, turn"
+      }
+    ]
+  },
+  "umwenden": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "The comma presents 'turn over' and 'turn inside out' as synonyms, but they are different actions, and the second is not really umwenden's territory anyway: turning a garment inside out is umkrempeln or umstülpen. umwenden is turning something onto its other side, as with a page or a pancake. The stray half came in with candidate_glosses index 0.",
+        "fix_gloss": "turn over"
+      }
+    ]
+  },
+  "umsteigen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "The shortening dropped the part of candidate_glosses index 0 that carried the meaning, '(from one means of transport to another)', leaving three vague synonyms. 'interchange' is the misleading one: as an English verb it means to swap two things for each other, which umsteigen never means. The verb is what you do when you get off one train or bus and onto another.",
+        "fix_gloss": "change (trains, buses)"
+      }
+    ]
+  }
+}

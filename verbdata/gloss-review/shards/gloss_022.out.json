@@ -1,0 +1,22 @@
+{
+  "geraten": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "The comma joins two genuinely different senses, which the house style reads as synonymy: 'get into' is candidate sense 3 (in Panik/Schwierigkeiten/Vergessenheit geraten) and 'turn out' is candidate sense 0 (der Kuchen ist gut geraten). The dominant sense a learner meets by far is the first, unintentional-arrival one, so the gloss should commit to it with true synonyms rather than pair it with an unrelated reading.",
+        "fix_gloss": "get into, end up in"
+      }
+    ]
+  },
+  "gewarten": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "The shortening preserved kaikki's internal alternation 'to await or wait for' verbatim, so the shipped gloss carries a dictionary 'or' that no other gloss in the corpus uses. The sense is right; only the phrasing is lifted apparatus. House style would list the synonyms with commas.",
+        "fix_gloss": "expect, await"
+      }
+    ]
+  }
+}

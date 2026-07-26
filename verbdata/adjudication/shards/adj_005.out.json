@@ -1,0 +1,127 @@
+{
+  "hinfahren": {
+    "own_gloss": "drive there, go there",
+    "verdict": "accept",
+    "reason": "The importer took the rare transitive haben-sense (index 0, 'give a ride'), leaving the everyday intransitive sein-sense unparseable: a learner who meets 'ich fahre hin' cannot recover it from 'give a ride'. Proposed matches candidate_glosses index 1."
+  },
+  "hingeben": {
+    "own_gloss": "devote, sacrifice",
+    "verdict": "reject",
+    "reason": "'Hand over' is candidate_glosses index 0 and hingeben genuinely carries the physical give-away sense; devote/sacrifice is salient but replacing an attested single-sense gloss with a different attested sense is trading, not correcting. Tie goes to the sourced gloss."
+  },
+  "hingucken": {
+    "own_gloss": "look over there, take a look",
+    "verdict": "accept",
+    "reason": "The shipped 'synonym of hinsehen' is a Wiktionary cross-reference, not English about the verb, and must be replaced regardless; the proposed 'take a look, look' correctly renders the colloquial equivalent of hinsehen."
+  },
+  "hinrücken": {
+    "own_gloss": "shift over, move over",
+    "verdict": "accept",
+    "reason": "Shortening candidate_glosses index 0 dropped the '(from speaker)' deixis and left 'move away', which reads as distancing (wegrücken/abrücken) — the opposite direction. Hinrücken shifts something toward a target; the proposal restores the hin- deixis."
+  },
+  "hintanhalten": {
+    "own_gloss": "prevent, avert",
+    "verdict": "accept",
+    "reason": "'Evite' is an archaic Latinate rarity no learner will know and 'try to make something not appear' is a dictionary paraphrase, not a gloss — neither is usable English. 'Prevent, avert' is correct for this Austrian/administrative verb."
+  },
+  "hintanstellen": {
+    "own_gloss": "put last",
+    "verdict": "accept",
+    "reason": "'Put back' misdirects to returning an object (zurückstellen) and 'order into a posterior position' is stilted dictionary English, not a gloss. 'Put last' cleanly names placing something last in priority (seine Interessen hintanstellen)."
+  },
+  "hinwegsehen": {
+    "own_gloss": "overlook, disregard",
+    "verdict": "accept",
+    "reason": "The importer took the literal index 0 ('look over'), which independently misleads in English toward 'examine'; the sense a learner meets is the figurative index 1, über etwas hinwegsehen = overlook/turn a blind eye. Proposed matches index 1."
+  },
+  "hochdrehen": {
+    "own_gloss": "turn up, rev up",
+    "verdict": "accept",
+    "reason": "'Turn upward' reads as orientation (rotate to point up), a different action from the verb's everyday meaning of increasing a setting or revving (die Heizung/den Motor hochdrehen). My independent gloss is 'turn up' before seeing the proposal; the shipped shortening misnames the action, not merely under-specifies it."
+  },
+  "hochfahren": {
+    "own_gloss": "boot up, start up",
+    "verdict": "accept",
+    "reason": "'Drive upwards/northwards' is the marginal literal index 0 with an awkward slash forcing a choice between two unrelated directions; the salient modern sense is booting/ramping up (den Rechner hochfahren). Proposed matches candidate_glosses index 1."
+  },
+  "hochrechnen": {
+    "own_gloss": "extrapolate, project",
+    "verdict": "accept",
+    "reason": "The importer took the pejorative index 1, and 'calculate purposefully high in the dark' is not usable English about anything. Hochrechnen is the neutral statistical verb behind Hochrechnung; candidate_glosses index 0 supplies 'to project, to cast'."
+  },
+  "innehaben": {
+    "own_gloss": "hold (an office)",
+    "verdict": "accept",
+    "reason": "Bare 'hold' presents the verb as a synonym of halten and invites '*ich habe das Buch inne'; innehaben takes offices and posts, never physical objects, and that restriction is the whole meaning. Candidate_glosses index 0 states it and house style permits the parenthetical."
+  },
+  "kehren": {
+    "own_gloss": "sweep",
+    "verdict": "accept",
+    "reason": "The comma in 'sweep, turn' asserts synonymy between two unrelated actions, and 'turn' is not even in candidate_glosses, which lists only 'to sweep' (index 0). The living everyday sense is the southern counterpart to fegen."
+  },
+  "klappen": {
+    "own_gloss": "work out, succeed",
+    "verdict": "accept",
+    "reason": "'Work out, fold' comma-joins two distinct senses (index 2 and index 1), which the house convention reads as equivalence; the constant learner sense is impersonal 'das klappt' = it works out/succeeds. Proposed keeps both halves of index 2, which are genuine synonyms."
+  },
+  "kleinkriegen": {
+    "own_gloss": "wear down, break",
+    "verdict": "accept",
+    "reason": "Bare 'break' dropped the qualifier that carried the meaning and points at physical breakage (kaputtmachen/zerbrechen); candidate_glosses index 0 is 'to break (psychologically)', of wearing a person down. Proposed restores that restriction."
+  },
+  "kontrollieren": {
+    "own_gloss": "check, inspect",
+    "verdict": "accept",
+    "reason": "'Control, check' leads with the false friend and, under the house comma convention, asserts that control and check are synonyms — they are not (eine Firma kontrollieren = control it, not check it). The everyday sense is check/inspect (candidate_glosses index 0), which is also my independent gloss; the proposal replaces a false-synonymy pair with a true one."
+  },
+  "leichtfallen": {
+    "own_gloss": "come easily, be easy",
+    "verdict": "accept",
+    "reason": "The comma in 'come, be easy' is a truncation artifact splitting the phrase 'come easy', so under the house convention it offers 'come' as a standalone sense the verb does not have. 'das fällt mir leicht' = that comes easily to me; the proposal fixes the split."
+  },
+  "losgehen": {
+    "own_gloss": "set off, start",
+    "verdict": "reject",
+    "reason": "'Leave' is candidate_glosses index 0 and correctly names the intransitive departure sense (wir gehen um acht los = we leave at eight); the proposal is more idiomatic and dodges a theoretical verlassen collision, but that is precision, not the shipped gloss being wrong."
+  },
+  "losschlagen": {
+    "own_gloss": "attack, strike",
+    "verdict": "accept",
+    "reason": "'Knock loose' is the technical literal index 0 (Putz losschlagen) a learner will rarely meet; the ordinary sense is launching an attack (die Armee schlug los), at candidate_glosses indices 1 and 2. Proposed pairs two genuine synonyms."
+  },
+  "mitbekommen": {
+    "own_gloss": "catch, notice",
+    "verdict": "accept",
+    "reason": "The shipped index 0 ('given something when leaving') is real but marginal; the constant learner sense is catching or becoming aware of something (Hast du das mitbekommen?), candidate_glosses index 1, which shipping only the first-listed sense leaves unglossed."
+  },
+  "mitdenken": {
+    "own_gloss": "follow the reasoning",
+    "verdict": "reject",
+    "reason": "'To follow' is the sole attested gloss (index 0) and is defensible for following a line of reasoning; the reviewer concedes 'the gloss needs writing rather than importing', so the proposal is authored with no dictionary behind it. The safe default keeps the attested gloss."
+  },
+  "mitfahren": {
+    "own_gloss": "ride along",
+    "verdict": "accept",
+    "reason": "'Drive with' is a Germanism that attributes the driver's role, but mitfahren specifically means travelling as a passenger (Kann ich mitfahren?). That is a wrong-role defect, not mere imprecision; 'ride along' names the correct action."
+  },
+  "mitkriegen": {
+    "own_gloss": "catch, notice",
+    "verdict": "accept",
+    "reason": "'Synonym of mitbekommen' is a cross-reference that tells a learner nothing, and mitbekommen is itself mis-glossed in this corpus. Colloquial mitkriegen means to catch/notice/pick up on (Hast du das mitgekriegt?); the proposal states the meaning directly."
+  },
+  "mitreißen": {
+    "own_gloss": "sweep along, carry away",
+    "verdict": "accept",
+    "reason": "'Entrain' is a fluid-dynamics term of art that otherwise means to board a train — useless or wrong for a learner. Mitreißen sweeps something along by force (der Fluss riss das Boot mit); candidate_glosses index 1 supplies 'to carry away'."
+  },
+  "mitspielen": {
+    "own_gloss": "play along, join in",
+    "verdict": "accept",
+    "reason": "'Cooperate' is the figurative extension (wenn das Wetter mitspielt) and collides with mitarbeiten/mitwirken; the everyday sense is taking part in a game, candidate_glosses index 1 'to play along'. Proposed names that sense."
+  },
+  "nachblicken": {
+    "own_gloss": "gaze after",
+    "verdict": "accept",
+    "reason": "'Look at' names a different action (ansehen/anschauen); nachblicken is always jemandem nachblicken, following someone with one's eyes as they leave. The nach- deixis carries the whole meaning and is absent from the shipped gloss."
+  }
+}

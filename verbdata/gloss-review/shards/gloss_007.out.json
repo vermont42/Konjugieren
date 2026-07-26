@@ -1,0 +1,52 @@
+{
+  "ausholen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "As a bare two-word gloss, 'haul off' does not convey the verb. In ordinary English 'haul off' reads as carrying something away, and the striking sense survives only in the fixed American idiom 'haul off and hit someone'. The kaikki parenthetical that carried the actual meaning ('to draw back the arm in order to punch') was dropped in shortening. German ausholen is winding the arm back before a blow, and by extension (weit ausholen) starting a story far back.",
+        "fix_gloss": "wind up (the arm)"
+      }
+    ]
+  },
+  "auslernen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "'finish learning' is a literal calque that fits the proverb 'man lernt nie aus' but not the verb's ordinary use, which is specifically completing a vocational apprenticeship: 'sie hat ausgelernt' means she is now fully trained. A learner given 'finish learning' would build ungrammatical sentences like 'ich habe das Buch ausgelernt'. kaikki offers nothing better, so this is a judgment call rather than an import defect.",
+        "fix_gloss": "complete one's training"
+      }
+    ]
+  },
+  "auslesen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "'cull' is the etymologically faithful rendering of the pick-out sense, but in modern English the word is dominated by the selective-slaughter sense, which German auslesen never carries. The readings a learner actually meets are 'select, pick out' (candidate_glosses index 2, cf. Auslese for selected grapes) and 'read out' of data (index 1). A one-word gloss of 'cull' teaches the wrong action.",
+        "fix_gloss": "select, pick out"
+      }
+    ]
+  },
+  "ausscheiden": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The shipped gloss takes kaikki's first-listed physiological sense, which is both technical and imprecise: German ausscheiden is excretion (elimination), not secretion, which is absondern or sezernieren. The sense a learner meets is dropping out of a competition or leaving a post — 'Deutschland ist im Viertelfinale ausgeschieden' — which candidate_glosses lists at index 2.",
+        "fix_gloss": "drop out, be eliminated"
+      }
+    ]
+  },
+  "ausscheren": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "'sheer, sheer out' is nautical jargon opaque to a learner, and the verb 'sheer' collides with the far more familiar adjective (sheer drop, sheer nonsense). The everyday sense is a vehicle pulling out of line or changing lanes, and figuratively breaking ranks with a group; candidate_glosses lists this at index 1.",
+        "fix_gloss": "pull out, veer off"
+      }
+    ]
+  }
+}

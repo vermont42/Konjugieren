@@ -1,0 +1,42 @@
+{
+  "erziehen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "erziehen is the ordinary German verb for bringing a child up — Kinder erziehen, gut erzogen, Erziehung 'upbringing'. It names the formative, disciplinary business of raising someone, not the fostering-and-caring sense that English 'nurture' denotes (that is pflegen or hegen). kaikki's 'to nurture' is its first-listed sense and was taken verbatim; sense 1, 'to educate', is closer, but the gloss a learner needs is 'raise, bring up'.",
+        "fix_gloss": "raise, bring up"
+      }
+    ]
+  },
+  "erweichen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "erweichen means to make or become soft — Wachs erweichen — and figuratively to soften someone's resolve or move them. It does not mean 'weaken' in the sense of reducing strength; that is schwächen. Leading the gloss with 'weaken' (kaikki's own wording at index 0) invites a learner to reach for erweichen where schwächen is required. 'soften' alone carries both the literal and the figurative reading.",
+        "fix_gloss": "soften"
+      }
+    ]
+  },
+  "festfrieren": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "festfrieren means to freeze fast to something so that it can no longer be moved — das Boot ist am Ufer festgefroren. The shipped 'ice over, freeze' describes a surface becoming covered in ice, which is zufrieren or vereisen, and drops the fest- component that is the whole point of the compound. Same shape as the zuschwellen 'swell up' case.",
+        "fix_gloss": "freeze stuck"
+      }
+    ]
+  },
+  "festhalten": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "Both halves name real senses, but the comma makes them read as synonyms, so the learner is told that 'hold on' and 'record' are the same action. They are candidate senses 0/1 and 5 respectively — grip-and-not-let-go versus documenting an event in writing or on film. The sense a learner meets first and most often is the physical one, so the gloss should commit to it.",
+        "fix_gloss": "hold on to, hold tight"
+      }
+    ]
+  }
+}

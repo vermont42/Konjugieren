@@ -1,0 +1,330 @@
+{
+ "shard": 0,
+ "records": [
+  {
+   "verb": "abberufen",
+   "separability": "separable",
+   "shipped_gloss": "withdraw",
+   "proposed_gloss": "recall from a post",
+   "severity": "medium",
+   "reviewer_detail": "abberufen is the verb for removing someone from a post or recalling them from a position (einen Botschafter/Geschäftsführer abberufen); candidate_glosses index 1 has it as 'to recall'. The shipped 'withdraw' is the vaguest possible reading of kaikki's first sense and would let a learner reach for abberufen when they mean withdrawing money, troops, or a statement, none of which it covers.",
+   "candidate_glosses": [
+    "to withdraw",
+    "to recall"
+   ]
+  },
+  {
+   "verb": "abblasen",
+   "separability": "separable",
+   "shipped_gloss": "blow off something, blow clear",
+   "proposed_gloss": "call off, cancel",
+   "severity": "medium",
+   "reviewer_detail": "In ordinary modern German abblasen almost always means to call off an event or plan (das Spiel/den Streik/die Suche abblasen), which candidate_glosses lists at index 2. The shipped literal 'blow off something, blow clear' is a technical sense the learner is unlikely to meet.",
+   "candidate_glosses": [
+    "to blow off something (e.g., dust); to blow clear",
+    "to call off a hunt",
+    "to call off, to cancel (a planned activity or event)"
+   ]
+  },
+  {
+   "verb": "abdrehen",
+   "separability": "separable",
+   "shipped_gloss": "veer",
+   "proposed_gloss": "turn off, shut off",
+   "severity": "medium",
+   "reviewer_detail": "'veer' is a narrow nautical/aviation sense. The everyday meaning a learner meets is shutting off a supply at a valve or switch — das Wasser/Gas abdrehen, and in southern German and Austrian usage also lights and appliances — which candidate_glosses gives at index 4. A one-word gloss of 'veer' teaches none of that.",
+   "candidate_glosses": [
+    "to veer",
+    "to peel off",
+    "to twist off",
+    "to cut off the supply of something (originally referring only to water and gas supply which is shut off by closing a valve, later extended to power supply and figuratively flow of funds)",
+    "to shut off, to switch off, to turn off (appliance, light, mechanism, functionality etc.)",
+    "to abort something, to thwart, to discontinue something"
+   ]
+  },
+  {
+   "verb": "abfeiern",
+   "separability": "separable",
+   "shipped_gloss": "celebrate, praise, love",
+   "proposed_gloss": "take time off in lieu",
+   "severity": "medium",
+   "reviewer_detail": "The standard sense of abfeiern is taking accrued overtime as time off (Überstunden abfeiern), candidate_glosses index 2. The shipped 'celebrate, praise, love' is the youth-slang reading (das feier ich ab), and as English it is confusing on its own: 'celebrate' reads as plain feiern, which abfeiern does not mean.",
+   "candidate_glosses": [
+    "to celebrate, praise, love",
+    "to party hard",
+    "to take (time off in lieu)"
+   ]
+  },
+  {
+   "verb": "abführen",
+   "separability": "separable",
+   "shipped_gloss": "take away",
+   "proposed_gloss": "lead away (in custody)",
+   "severity": "low",
+   "reviewer_detail": "The shortening dropped the parenthetical that carried the sense: candidate_glosses index 0 is 'to take away (someone in police custody)'. Bare 'take away' reads as wegnehmen, which abführen never means; the verb is about leading a person away under escort (and separately about remitting taxes or having a laxative effect).",
+   "candidate_glosses": [
+    "to take away (someone in police custody)",
+    "to regularly pay",
+    "to rebuff",
+    "to evacuate (the bowel)"
+   ]
+  },
+  {
+   "verb": "abgleichen",
+   "separability": "separable",
+   "shipped_gloss": "verify congruence",
+   "proposed_gloss": "compare, reconcile",
+   "severity": "low",
+   "reviewer_detail": "'verify congruence' is not English anyone uses, and it comes from a garbled kaikki entry ('to but check or collate'). abgleichen is comparing two sets of data or accounts to bring them into agreement — reconcile, cross-check, sync (Daten/Termine/Kontostände abgleichen). A learner cannot recover that from the shipped phrase.",
+   "candidate_glosses": [
+    "to verify congruence, to but check or collate or also level out"
+   ]
+  },
+  {
+   "verb": "abhauen",
+   "separability": "separable",
+   "shipped_gloss": "cut off",
+   "proposed_gloss": "clear off, run away",
+   "severity": "medium",
+   "reviewer_detail": "By far the live meaning of abhauen is to clear off or run away (Hau ab!, er ist abgehauen), candidate_glosses index 1. The shipped 'cut off' is the older literal sense of hewing something off with a blade, which survives mainly in fixed phrases and is not what the learner will encounter.",
+   "candidate_glosses": [
+    "to cut off (with a cutting weapon)",
+    "to leave abruptly, to do a runner",
+    "to crack up, to laugh one's head off"
+   ]
+  },
+  {
+   "verb": "ablenken",
+   "separability": "separable",
+   "shipped_gloss": "divert",
+   "proposed_gloss": "distract, divert",
+   "severity": "medium",
+   "reviewer_detail": "The everyday sense is distracting someone or their attention (jemanden ablenken, abgelenkt sein), candidate_glosses index 1. Shipped 'divert' alone points at the physics sense of deflecting light or a projectile and invites the wrong use for diverting traffic or a river, which is umleiten.",
+   "candidate_glosses": [
+    "to divert",
+    "to distract"
+   ]
+  },
+  {
+   "verb": "ablesen",
+   "separability": "separable",
+   "shipped_gloss": "read",
+   "proposed_gloss": "read off (a meter)",
+   "severity": "medium",
+   "reviewer_detail": "The shortening cut kaikki's '(take a reading)' from index 0, leaving a gloss identical to the base verb lesen. ablesen never means reading a book; it is taking a reading off a gauge or meter (den Zählerstand ablesen) or reading aloud from a prepared text.",
+   "candidate_glosses": [
+    "to read (take a reading)",
+    "to pick off, pluck"
+   ]
+  },
+  {
+   "verb": "abrichten",
+   "separability": "separable",
+   "shipped_gloss": "drill",
+   "proposed_gloss": "train (an animal)",
+   "severity": "medium",
+   "reviewer_detail": "The everyday meaning of abrichten is to train an animal (einen Hund abrichten), which candidate_glosses lists as sense 1. The shipped 'drill' is a real but narrow equivalent (drilling troops, or the technical sense of truing a surface, as in Abrichthobel), and as a bare English word it reads first as boring a hole, which is bohren. A learner would take away the wrong verb.",
+   "candidate_glosses": [
+    "to drill",
+    "to train (e.g. animals)"
+   ]
+  },
+  {
+   "verb": "abstechen",
+   "separability": "separable",
+   "shipped_gloss": "cut off, cut out, carve out",
+   "proposed_gloss": "stab to death",
+   "severity": "medium",
+   "reviewer_detail": "Sense 0 describes the spade sense (Torf, Rasenkanten abstechen), which is specialized gardening vocabulary. In ordinary German abstechen means to stab, especially to stab to death (candidate 1, ein Schwein abstechen), or to contrast sharply with something (candidate 3, gegen etwas abstechen). Glossed as 'cut off, cut out, carve out' the verb reads as a synonym of abschneiden, which it is not.",
+   "candidate_glosses": [
+    "to cut off, cut out, to carve out",
+    "to stab to death",
+    "to throw off by stabbing (a horseman off his mount etc.)",
+    "to be very distinct, to stand out",
+    "to rack (to clarify beer, wine or cider by draining it from the dregs)"
+   ]
+  },
+  {
+   "verb": "absterben",
+   "separability": "separable",
+   "shipped_gloss": "atrophy",
+   "proposed_gloss": "die off, die back",
+   "severity": "medium",
+   "reviewer_detail": "absterben is an ordinary verb meaning that tissue, plants, or limbs die off (abgestorbene Äste; mir ist der Fuß abgestorben), which candidate 2 gives as 'to die back'. 'Atrophy' is both far more technical than the German and semantically off: atrophy is wasting away from disuse, which is verkümmern, whereas absterben is simply dying.",
+   "candidate_glosses": [
+    "to atrophy",
+    "to necrotize",
+    "to die back"
+   ]
+  },
+  {
+   "verb": "abtreiben",
+   "separability": "separable",
+   "shipped_gloss": "go/be sent off course",
+   "proposed_gloss": "have an abortion",
+   "severity": "medium",
+   "reviewer_detail": "The sense a learner meets is the abortion one, candidate 1 (and 2), which is what abtreiben means in essentially all contemporary non-nautical use. The shipped 'go/be sent off course' is the drift sense, restricted to boats and swimmers being carried by wind or current.",
+   "candidate_glosses": [
+    "to go/be sent off course",
+    "to have an abortion",
+    "to abort (a baby)"
+   ]
+  },
+  {
+   "verb": "abtreten",
+   "separability": "separable",
+   "shipped_gloss": "kick away",
+   "proposed_gloss": "step down, cede",
+   "severity": "medium",
+   "reviewer_detail": "'Kick away' is a marginal reading. The senses a learner meets are stepping down from an office or a stage (candidates 3 and 4, von einem Amt abtreten) and ceding or handing over rights or territory (Rechte, Gebiete abtreten), the latter missing from candidate_glosses entirely. As shipped the gloss suggests a physical kicking action the verb rarely denotes.",
+   "candidate_glosses": [
+    "to kick away",
+    "to wipe off (the soles of one’s shoes)",
+    "to wear out (one’s shoes)",
+    "to step away, walk off",
+    "to resign (one’s job) [with von]",
+    "to die"
+   ]
+  },
+  {
+   "verb": "abwägen",
+   "separability": "separable",
+   "shipped_gloss": "weigh",
+   "proposed_gloss": "weigh up, consider",
+   "severity": "low",
+   "reviewer_detail": "abwägen is figurative only — to weigh options or arguments against one another (Vor- und Nachteile abwägen). The bare 'weigh' reads as physical weighing and collides directly with abwiegen, which this corpus glosses 'weigh, weigh out'. The parenthetical kaikki carried ('to determine the intrinsic value or merit') was what disambiguated it, and shortening dropped exactly that.",
+   "candidate_glosses": [
+    "to weigh (to determine the intrinsic value or merit of an object)"
+   ]
+  },
+  {
+   "verb": "abwählen",
+   "separability": "separable",
+   "shipped_gloss": "deselect",
+   "proposed_gloss": "vote out, deselect",
+   "severity": "medium",
+   "reviewer_detail": "kaikki's first sense, 'deselect', is the narrow computing/checkbox reading. In ordinary German abwählen means voting an officeholder or government out (eine Regierung abwählen) or dropping a school subject (ein Fach abwählen) — candidate_glosses index 1 carries the political sense. A learner given only 'deselect' will read it as a UI term and miss the two uses actually encountered.",
+   "candidate_glosses": [
+    "to deselect",
+    "to unelect, to recall (an official), to vote out of office"
+   ]
+  },
+  {
+   "verb": "anfallen",
+   "separability": "separable",
+   "shipped_gloss": "set upon, attack suddenly",
+   "proposed_gloss": "arise, accrue",
+   "severity": "medium",
+   "reviewer_detail": "'set upon, attack suddenly' is a literary and largely dated sense (von Hunden angefallen werden). The reading a learner meets in modern German is the impersonal one at candidate_glosses index 3 — anfallende Kosten, anfallende Arbeit, wenn Daten anfallen — i.e. costs, work, or data that arise or accrue. Shipping the attack sense teaches a register the learner will not encounter.",
+   "candidate_glosses": [
+    "to set upon, to attack suddenly (especially of animals or persons compared to animals)",
+    "to assail, overwhelm",
+    "to befall, grip, overwhelm suddenly (of moods, feelings)",
+    "to arise, be incurred, to accumulate"
+   ]
+  },
+  {
+   "verb": "angeloben",
+   "separability": "separable",
+   "shipped_gloss": "vow",
+   "proposed_gloss": "swear in, pledge",
+   "severity": "medium",
+   "reviewer_detail": "angeloben is chiefly Austrian and its ordinary use is the swearing-in of soldiers, recruits, and officeholders (Angelobung is the standard word for that ceremony) — candidate_glosses index 2, 'to pledge, to swear in'. The shipped 'vow' is the sense of the base verb geloben; a learner who meets angeloben will meet it in the swearing-in reading.",
+   "candidate_glosses": [
+    "to vow (to make a vow)",
+    "to betroth, to get engaged",
+    "to pledge, to swear in (e.g., soldiers, political office, etc.)"
+   ]
+  },
+  {
+   "verb": "anhaben",
+   "separability": "separable",
+   "shipped_gloss": "wear, have on see usage notes",
+   "proposed_gloss": "wear, have on",
+   "severity": "high",
+   "reviewer_detail": "The trailing 'see usage notes' is Wiktionary editorial scaffolding that survived the shortening of candidate_glosses index 0; it is not part of the meaning and reads as broken English to a learner, who has no usage notes to consult. The meaning itself is correct: to wear, to have on.",
+   "candidate_glosses": [
+    "to wear; to have on (a piece of clothing) see usage notes",
+    "to have turned on; to have on (an electronic device)",
+    "to harm, to hurt"
+   ]
+  },
+  {
+   "verb": "anhalten",
+   "separability": "separable",
+   "shipped_gloss": "stop, continue",
+   "proposed_gloss": "stop, halt",
+   "severity": "low",
+   "reviewer_detail": "The house style separates synonyms with commas, so 'stop, continue' reads as a pair of equivalents while naming two opposite actions, which is more confusing than helpful. Both are real senses (candidate_glosses indices 0 and 1), but the one a learner meets is 'stop' — er hielt das Auto an, halt an. The 'last, persist' reading is better carried by the participle anhaltend and does not need to share the gloss line.",
+   "candidate_glosses": [
+    "to stop (cease moving)",
+    "to continue, to last",
+    "to stop, to hold, to keep from moving",
+    "to urge, to encourage, to compel (to do something) (often by referring to the matter repeatedly)",
+    "to hold tight, to hold on to something or someone",
+    "to ask for"
+   ]
+  },
+  {
+   "verb": "anhängen",
+   "separability": "separable",
+   "shipped_gloss": "weigh on, burden",
+   "proposed_gloss": "attach, append",
+   "severity": "medium",
+   "reviewer_detail": "The everyday sense of anhängen is physical or digital attachment: einen Anhänger anhängen (hitch a trailer), eine Datei anhängen (attach a file), einen Satz anhängen (append a sentence). The shipped 'weigh on, burden' renders only the figurative dative reading (jemandem etwas anhängen), which is far rarer and is not what a learner meets. The attach sense is absent from candidate_glosses — kaikki's entry here covers only the strong dative verb — so the fix is a rewrite, not an index swap.",
+   "candidate_glosses": [
+    "to weigh on; to burden",
+    "to hang on; to be devoted to; to feel a sense of belonging to (a belief, idea, person, group)"
+   ]
+  },
+  {
+   "verb": "anklagen",
+   "separability": "separable",
+   "shipped_gloss": "indict by the findings of a jury)",
+   "proposed_gloss": "accuse, indict",
+   "severity": "high",
+   "reviewer_detail": "Mangled shortening of candidate_glosses index 0: the shortening cut out the middle of the parenthetical and left 'indict by the findings of a jury)' with a dangling clause and an unbalanced closing parenthesis. As English it says something false as well — an indictment is not made by a jury's findings in the sense the fragment implies. anklagen means to accuse or, in a legal register, to charge or indict.",
+   "candidate_glosses": [
+    "to indict (to make a formal accusation or indictment against (a party) by the findings of a jury)"
+   ]
+  },
+  {
+   "verb": "anleiten",
+   "separability": "separable",
+   "shipped_gloss": "guide or to train",
+   "proposed_gloss": "guide, instruct",
+   "severity": "low",
+   "reviewer_detail": "'guide or to train' is candidate_glosses index 0 pasted with only the first 'to' stripped, leaving a dangling infinitive marker that is ungrammatical in the app's bare-verb-phrase style. The sense is right; anleiten is specifically to instruct or give guidance to someone (Anleitung is a set of instructions).",
+   "candidate_glosses": [
+    "to guide or to train",
+    "to incite"
+   ]
+  },
+  {
+   "verb": "anreden",
+   "separability": "separable",
+   "shipped_gloss": "begin a talk with someone",
+   "proposed_gloss": "address, speak to",
+   "severity": "low",
+   "reviewer_detail": "In English 'begin a talk with someone' reads as starting a lecture or a formal discussion, which anreden does not mean. The verb is to address or speak to someone — it is the verb behind Anrede, the form of address, as in jemanden mit du anreden. The shipped wording is a literal expansion of candidate_glosses index 0 and misses the addressing sense that gives the verb its use.",
+   "candidate_glosses": [
+    "to begin a talk with someone, often a stranger"
+   ]
+  },
+  {
+   "verb": "anvertrauen",
+   "separability": "separable",
+   "shipped_gloss": "entrust in various ways",
+   "proposed_gloss": "entrust",
+   "severity": "low",
+   "reviewer_detail": "The shipped gloss is kaikki's sense-group umbrella, not a definition: candidate 0 ends in a colon ('to entrust in various ways:') and the sub-senses that follow are the actual meanings. 'in various ways' describes the dictionary entry's structure, not the verb. The plain meaning is entrust, which candidate_glosses lists at index 1.",
+   "candidate_glosses": [
+    "to entrust in various ways:",
+    "to entrust",
+    "to entrust, to consign",
+    "to entrust to someone's care, auspices",
+    "to open up, to open one's heart (usually in secret)"
+   ]
+  }
+ ]
+}

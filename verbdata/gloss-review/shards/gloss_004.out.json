@@ -1,0 +1,52 @@
+{
+  "anvertrauen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "The shipped gloss is kaikki's sense-group umbrella, not a definition: candidate 0 ends in a colon ('to entrust in various ways:') and the sub-senses that follow are the actual meanings. 'in various ways' describes the dictionary entry's structure, not the verb. The plain meaning is entrust, which candidate_glosses lists at index 1.",
+        "fix_gloss": "entrust"
+      }
+    ]
+  },
+  "aufarbeiten": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "'Refurbish' is a real but narrow sense (Möbel aufarbeiten). The reading a learner actually meets is working through accumulated material: Rückstände aufarbeiten, die Vergangenheit aufarbeiten, ein Trauma aufarbeiten — the dominant modern usage, and candidate_glosses index 2 ('to mentally process; to bring clarity to'). The importer took kaikki's first-listed sense over the common one.",
+        "fix_gloss": "work through"
+      }
+    ]
+  },
+  "aufatmen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "kaikki's sole gloss is a literal reading of auf + atmen. The verb means to breathe out in relief — erleichtert aufatmen — and the relief component is the meaning, not an overtone. 'Breathe again' invites the learner to use it for resuming breathing, which is wieder atmen.",
+        "fix_gloss": "breathe a sigh of relief"
+      }
+    ]
+  },
+  "aufbleiben": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The leading 'wake' is kaikki's archaic intransitive English (as in keeping a vigil), not the modern reading. In the salient first position it maps aufbleiben onto aufwachen/aufwecken, which it never means. The trailing synonyms carry the actual sense; the first item should simply go.",
+        "fix_gloss": "stay up, stay awake"
+      }
+    ]
+  },
+  "auferwecken": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "auferwecken is the elevated, religious causative of auferstehen: to raise someone from the dead (Lazarus auferwecken). 'Raise up, awaken' is vague enough to read as ordinary waking, which collides with aufwecken — a near-homograph the learner will also meet. The app already glosses auferstehen 'be resurrected, rise from the dead'; the transitive partner should mirror it.",
+        "fix_gloss": "resurrect, raise from the dead"
+      }
+    ]
+  }
+}

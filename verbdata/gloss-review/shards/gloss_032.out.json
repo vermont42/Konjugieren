@@ -1,0 +1,32 @@
+{
+  "reinwaschen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The literal washing sense is marked rare in German dictionaries; in actual use reinwaschen is the figurative verb for clearing someone of suspicion or blame (sich von einem Verdacht reinwaschen, Geld reinwaschen). candidate_glosses lists that sense at index 1 ('to whitewash'). Shipping 'cleanse' also collides with reinigen, which is the verb a learner would actually reach for when they mean cleaning something.",
+        "fix_gloss": "clear of blame, whitewash"
+      }
+    ]
+  },
+  "richten": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "The comma reads as 'these mean the same thing', but 'direct' and 'judge' are unrelated senses of richten. 'Direct, aim, point' is the sense a learner meets constantly (etwas an jemanden richten, sich nach etwas richten, den Blick auf etwas richten); 'judge' is the elevated legal/biblical sense (ueber jemanden richten) behind the noun Richter and is rare in everyday German. Pairing them invites a learner to use richten for ordinary judging, where German wants beurteilen or urteilen. The correct sense is candidate index 0.",
+        "fix_gloss": "direct, aim"
+      }
+    ]
+  },
+  "sattsehen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "Lifted verbatim from kaikki, and the English inverts the feeling. German sich an etwas sattsehen is satiation in the positive sense: to gaze at something as long as one wants, usually in the negative (ich kann mich nicht daran sattsehen, 'I can't get enough of looking at it'). English 'have enough of seeing something beautiful' reads idiomatically as being fed up with the sight, the opposite of what the verb conveys. It is also far longer than house style allows.",
+        "fix_gloss": "look one's fill"
+      }
+    ]
+  }
+}

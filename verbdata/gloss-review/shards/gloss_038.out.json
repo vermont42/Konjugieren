@@ -1,0 +1,72 @@
+{
+  "verloben": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "Leaked dictionary apparatus: the trailing \"‘someone’])\" is the tail of kaikki's argument-structure note \"(optional [with mit (+ dative) ‘someone’])\", cut mid-bracket. As shipped it is not English about the verb. Sich verloben means to become engaged to be married.",
+        "fix_gloss": "get engaged"
+      }
+    ]
+  },
+  "verlernen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The importer took kaikki's second sense (index 1). \"cease doing\" names a different action — that is aufhören. Verlernen means to lose a skill through lack of practice: Ich habe mein Französisch verlernt. Sense index 0 has it right: lose the ability to do a task due to rarely doing it. Because the house comma reads as \"these mean the same thing\", the shipped gloss presents stopping and forgetting-how as equivalents.",
+        "fix_gloss": "forget how to do"
+      }
+    ]
+  },
+  "verlöschen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "Verlöschen as a learner meets it is intransitive: die Kerze verlischt, das Feuer verlosch — the flame or light dies out on its own. The transitive \"extinguish\" is löschen (or auslöschen); glossing the ver- verb as \"quench, extinguish\" invites the learner to produce *ich verlösche das Feuer. The intransitive reading is candidate index 1.",
+        "fix_gloss": "go out, fade"
+      }
+    ]
+  },
+  "verlauten": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "Verlauten is reportive and subjectless in normal use — wie aus Regierungskreisen verlautet, es verlautete, dass… — so the meaning runs in the opposite direction from \"announce\", which is what the causative verlauten lassen adds. The shipped gloss teaches the wrong argument structure for the bare verb.",
+        "fix_gloss": "be reported, become known"
+      }
+    ]
+  },
+  "verleben": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "Bare \"spend\" is ambiguous in English and, next to a German verb, reads first as spending money — which is ausgeben. Verleben takes only time as its object: den Sommer bei den Großeltern verleben.",
+        "fix_gloss": "spend (time)"
+      }
+    ]
+  },
+  "verkriechen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "\"creep away\" is a literal reading of ver- plus kriechen that keeps the manner and drops the point: sich verkriechen is about ending up hidden — sich ins Bett / unter die Decke verkriechen, said of a person who withdraws from the world. Candidate index 1 (\"to hide away, to be holed up\") names the sense in use; as shipped the gloss collides with wegschleichen.",
+        "fix_gloss": "hide away"
+      }
+    ]
+  },
+  "verrechnen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "The shortening kept the definitional first half of candidate index 0 and dropped the half that named the action: \"particularly: to offset one against another\". \"calculate several quantities together\" is a description of an entry rather than a usable English rendering — a learner cannot substitute it into a sentence for etwas mit etwas verrechnen.",
+        "fix_gloss": "offset, set off"
+      }
+    ]
+  }
+}

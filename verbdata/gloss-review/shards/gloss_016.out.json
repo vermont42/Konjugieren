@@ -1,0 +1,62 @@
+{
+  "einwenden": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "The shortening kept only the bare verbs from kaikki sense 0 ('to raise (an objection to), to make (an argument against)') and dropped the parenthesized objects that carried the entire meaning. 'raise, make' names no action a learner can attach to einwenden; the verb means to object or to raise an objection ('dagegen ist nichts einzuwenden').",
+        "fix_gloss": "object, raise an objection"
+      }
+    ]
+  },
+  "einüben": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "high",
+        "detail": "Leaked dictionary apparatus: the gloss carries a stray '#' sense separator and the unstripped infinitival 'to practice / practise' from kaikki sense 0. As shipped it is not English about the verb. einüben means to practice or rehearse something until it is mastered (ein Stück, einen Ablauf einüben).",
+        "fix_gloss": "practice, rehearse"
+      }
+    ]
+  },
+  "eintreiben": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The importer took kaikki sense 0, the literal 'drive in' (cattle, a nail). The sense a learner actually meets is the one at candidate index 1: collecting money that is owed — Schulden eintreiben, Steuern eintreiben, Außenstände eintreiben. 'drive in' also collides with einschlagen/einfahren in a learner's mind.",
+        "fix_gloss": "collect (a debt)"
+      }
+    ]
+  },
+  "entbinden": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "The shipped gloss is kaikki sense 0 written from the attendant's perspective ('see a woman through childbirth'), which is the obstetric usage. The reading a learner meets is intransitive and takes the mother as subject — 'Sie hat gestern entbunden' — which candidate index 1 and 2 both give as 'to give birth'. The current wording also pairs that clinical sense with 'deliver' across a comma, presenting two different perspectives as synonyms.",
+        "fix_gloss": "give birth"
+      }
+    ]
+  },
+  "entfahren": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "medium",
+        "detail": "Bare 'escape' points a learner at entfliehen/entkommen — escaping a place or captor — which entfahren does not mean. Its living use is the involuntary utterance: a word, cry, or curse escapes someone's lips ('ein Fluch entfuhr ihm'), which candidate index 1 gives as 'to slip out (someone's) mouth'. The subject is the utterance, not the person.",
+        "fix_gloss": "slip out (of one's mouth)"
+      }
+    ]
+  },
+  "einstellen": {
+    "findings": [
+      {
+        "type": "bad_gloss",
+        "severity": "low",
+        "detail": "'set, hire' joins two unrelated senses with a comma, which house style reads as 'these mean the same thing'. Both are real senses of einstellen (candidate indices 1 and 0), but presented as synonyms they teach neither. The sense to commit to is adjusting or setting something — the one behind the everyday noun Einstellungen ('settings') and behind sich einstellen auf.",
+        "fix_gloss": "adjust, set"
+      }
+    ]
+  }
+}

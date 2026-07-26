@@ -357,23 +357,41 @@ ensure_soft_keyboard() {
   # transient. A genuine permission failure fails all three attempts and still gets
   # a warning, and the keyboard_is_visible check below reports the real outcome
   # either way, so continuing costs at most one reviewable screenshot.
+  #
+  # The keystroke is gated on Simulator actually being frontmost, and that guard is
+  # NOT redundant with the AXRaise above. Retrying does not help the case it catches:
+  # when the raise silently fails to take focus, `keystroke` still succeeds — it just
+  # lands in whichever app *is* frontmost. Observed on 2026-07-26 in the Conjugar repo,
+  # where a stray Cmd+K launched the Fitness app on the host Mac while the sweep
+  # reported nothing wrong. osascript returns 0 in that case, so the retry loop sees a
+  # success and the post-toggle keyboard_is_visible check reports only that the keyboard
+  # is missing, never that the keystroke went somewhere else. Checking frontmost first
+  # turns a silent misfire into a log line that names the app that caught it.
   local attempt
   local raised=false
+  local front
   for attempt in 1 2 3; do
     if osascript -e 'tell application "Simulator" to activate' \
               -e 'delay 0.5' \
               -e "tell application \"System Events\" to tell process \"Simulator\" to perform action \"AXRaise\" of (first window whose title contains \"$window_match\")" \
               -e 'delay 0.3' \
-              -e 'tell application "System Events" to keystroke "k" using {command down}' \
               >/dev/null 2>&1; then
-      raised=true
-      break
+      front=$(osascript -e 'tell application "System Events" to name of first process whose frontmost is true' 2>/dev/null || true)
+      if [[ "$front" != "Simulator" ]]; then
+        log "AppleScript Cmd+K attempt $attempt: frontmost is '${front:-unknown}', not Simulator; not sending the keystroke"
+        sleep 1.0
+        continue
+      fi
+      if osascript -e 'tell application "System Events" to keystroke "k" using {command down}' >/dev/null 2>&1; then
+        raised=true
+        break
+      fi
     fi
     log "AppleScript Cmd+K attempt $attempt failed; retrying"
     sleep 1.0
   done
   if [[ "$raised" != true ]]; then
-    log "warning: AppleScript Cmd+K failed 3x (accessibility permission for /usr/bin/osascript?)"
+    log "warning: AppleScript Cmd+K failed 3x (accessibility permission for /usr/bin/osascript, or Simulator never came frontmost)"
     return 0
   fi
   sleep 0.9  # let keyboard slide-up animation complete

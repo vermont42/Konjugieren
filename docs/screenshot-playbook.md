@@ -258,6 +258,22 @@ Compact reference. The driver's inline comments hold the full WHY for each — c
     run `osascript -e 'tell application "System Events" to tell process "Simulator" to get name
     of every window'` and shut down extra sims of that family.
 
+    > Conjuguer has since narrowed its match to the **full device name** (`$DEVICE`) rather
+    > than the family substring, since Simulator titles windows `<device name> – iOS <version>`
+    > and the full name selects exactly one. Worth porting here; not done yet.
+
+    **Fixed 2026-07-26: the keystroke is now gated on Simulator actually being frontmost.**
+    The window match above decides *which Simulator window* catches Cmd+K; this guards the
+    worse case, where Simulator is not the frontmost **application** at all and the keystroke
+    goes to a different program entirely. The three-attempt retry does not help, because
+    `keystroke` *succeeds* — it lands wherever focus is, `osascript` returns 0, the retry loop
+    sees success and breaks, and the post-toggle check reports only that the keyboard is
+    missing, never that the keystroke went elsewhere. Observed in the Conjugar repo on
+    2026-07-26, where a stray Cmd+K launched the **Fitness** app on the host Mac while the run
+    reported nothing wrong. The guard queries `name of first process whose frontmost is true`
+    after the AXRaise; a non-Simulator answer logs the offending app's name and counts as a
+    failed attempt rather than firing the keystroke blind.
+
     Also note the AppleScript's `delay` after `activate` is now **0.5 s** (was 0.2 s): a
     freshly-activated Simulator briefly reports no windows, and the resulting `-1719 "Invalid
     index"` error reads exactly like a missing Accessibility permission. It is not one.

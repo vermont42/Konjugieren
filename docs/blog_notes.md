@@ -4838,6 +4838,14 @@ Not done, because it changes shipped artifacts rather than the pipeline: `versio
 RGBA files are still on disk as-is. They only matter if that bundle is reused for a future
 submission; flatten then.
 
+> **Superseded 2026-07-26.** Flattened. Josh asked for it after the same audit run across all
+> three repos found Conjuguer sitting on two fully-RGBA bundles with no note at all. Every
+> file was verified fully opaque first and the RGB channels compared before and after —
+> `magick compare -metric AE -alpha off` returns 0 for all 36 — so the flatten is lossless and
+> the archived artifact still depicts exactly what shipped. `version_2` and `version_3` now
+> both pass `verify_store_media.sh` clean.
+
+
 ### Follow-up: non-square pixels, and why this repo's files were the diagnostic (2026-07-25)
 
 Conjuguer's iPad preview was rejected a second time — correct 1200 × 1600 dimensions,
@@ -6334,3 +6342,39 @@ Worth generalizing for the next release. After a sweep, any commit that touches
 `Localizable.xcstrings` potentially invalidates a screenshot, and which one is not obvious from
 the key name. `Info.präteritumIndikativText` sounds like it belongs to screenshot 7; it is
 screenshot 6 that showed it, because 7 is a different article entirely.
+
+## Two fixes back from Conjugar's port session (2026-07-26)
+
+Conjugar spent a session porting this repo's screenshot fixes forward and sent two things
+back.
+
+**`version_2`'s 36 RGBA files are flattened.** The 2026-07-25 entry above deliberately left
+them, on the reasoning that they were shipped artifacts rather than pipeline. Josh reversed
+that after the same audit run across all three repos found Conjuguer holding two fully-RGBA
+bundles with no note at all — at which point a documented exception in one repo and an
+undocumented landmine in another are hard to tell apart from the outside. Flattening
+everything and letting `verify_store_media.sh` come back clean everywhere is the state that
+needs no explaining.
+
+Safe because it was checked rather than assumed: every file confirmed fully opaque first,
+and each flatten verified to leave the colour data untouched (`magick compare -metric AE
+-alpha off` returns 0 for all 36) before the result replaced the original. `version_2` and
+`version_3` both pass clean now.
+
+**The Cmd+K keystroke is now gated on Simulator being frontmost.** Workaround #10 covers
+which Simulator *window* catches the toggle. The gap is one level up: if Simulator is not the
+frontmost *application*, the keystroke goes to another program entirely, and the three-attempt
+retry added on 2026-07-26 cannot catch it — `keystroke` succeeds, `osascript` returns 0, the
+loop sees success and breaks, and the post-toggle check reports a missing keyboard without
+ever indicating the keystroke went elsewhere.
+
+Observed during Conjugar's measurement session, where a stray Cmd+K launched the **Fitness**
+app on Josh's Mac. He noticed and asked, which is the only reason it was diagnosed; inside a
+sweep it would have surfaced as two keyboard-less `quiz_mid` cells and no explanation. The
+guard reads `name of first process whose frontmost is true` after the AXRaise and treats a
+non-Simulator answer as a failed attempt, logging the offending app's name.
+
+Also noted while comparing the two drivers, not changed: Conjuguer has narrowed its AXRaise
+match from the device *family* substring to the full `$DEVICE` name, since Simulator titles
+windows `<device name> – iOS <version>` and the full name selects exactly one. That is
+strictly better than what is here and is now flagged in workaround #10 as a port candidate.

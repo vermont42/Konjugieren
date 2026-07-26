@@ -5501,3 +5501,16 @@ a small piece of luck that the rule's one carve-out is the line naming Josh's gr
 
 The diff was 26 insertions against 26 deletions, which is the signature to look for: pure
 substitution, no structural churn.
+
+**A second tell, measured on Josh's aside.** He noted that most writers do not know an em dash takes
+no space on either side. The corpus proves the point at scale: of 5,284 em dashes in the English
+etymologies, **5,281 are set open**, as `word — word`, with exactly one closed instance in the whole
+file. So the artifact carries two independent signals rather than one. A closed em dash is the
+American convention; British and AP style avoid the em dash in this position entirely and use a
+spaced en dash. The spaced *em* dash is neither, which is what splitting the difference across mixed
+sources produces, and it reads as machine-set to a copy-editor before the dash itself registers.
+
+The practical consequence is in `em_dash_sweep.md` now: detection needs no context test at all.
+Search U+2014 unconditionally. A closed em dash could plausibly be doing typographic work inside a
+compound and would need thought; a spaced one between clauses is always the punctuation the rule
+targets, and the corpus contains nothing else.

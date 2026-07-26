@@ -127,11 +127,37 @@ The third is the one a `sed` gets catastrophically wrong. Paired dashes bracket 
 replacing both with commas inside a comma-separated list produces a sentence no reader can parse.
 **Count the dashes per sentence first**: a lone dash and a matched pair are different problems.
 
-One note about this document itself. The eight em dashes still in it are **specimens**: code literals
-being searched for, quoted `source` values, and the "before" column of the table above. They
-illustrate the defect and must survive, on exactly the principle that exempts the Kafka sentences.
-Everything that was this document's own prose has been fixed. If a future counter flags this file,
-that is the counter's bug.
+## Detection is unambiguous, because the corpus sets every dash the same way
+
+Measured over `Etymologies.json`, English side, 2026-07-26:
+
+| spacing | count | share |
+|---|---|---|
+| `word — word` (open, spaced both sides) | **5,281** | 99.9% |
+| spaced on one side only | 2 | 0.0% |
+| `word—word` (closed) | 1 | 0.0% |
+
+**Search for U+2014 unconditionally.** No context test is needed, because the corpus never uses the
+closed form that a rule about prose would have to think about: an em dash set tight can be doing
+typographic work inside a compound, and a spaced one between clauses is always the punctuation this
+rule targets. Every hit is the latter.
+
+That uniformity is itself worth understanding, because it is a **second, independent tell** on top of
+the dash. A closed em dash is the American convention, in Chicago and every American house style.
+British and AP style avoid the em dash here entirely and use a **spaced en dash** instead,
+`word – word`. The spaced *em* dash is neither convention. It is what splitting the difference across
+mixed training sources produces, and to anyone who has done copy-editing it reads as machine-set
+before the dash itself even registers. Do not "fix" the spacing; remove the dash.
+
+For anyone typing the characters deliberately on macOS: `⌥⇧-` gives the em dash, `⌥-` the en dash.
+The family is hyphen-minus `-` (U+002D), en dash `–` (U+2013), em dash `—` (U+2014), figure dash `‒`
+(U+2012), and true minus `−` (U+2212).
+
+One note about this document itself. The thirteen em dashes still in it are **specimens**: code
+literals being searched for, quoted `source` values, the "before" column of the table above, and the
+spacing table below. They illustrate the defect and must survive, on exactly the principle that
+exempts the Kafka sentences. Everything that was this document's own prose has been fixed. If a
+future counter flags this file, that is the counter's bug.
 
 ## Ordering, and the en dashes
 

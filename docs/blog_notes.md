@@ -5142,3 +5142,33 @@ One trap the importer dodged by luck: kaikki's third sense for `weben` is "to sw
 swing, to ramble" — the archaic-poetic *weben* of *Leben und Weben* and *weben und wirken*. A real
 German sense, useless to a learner, and had entry order placed it first the app would have shipped
 `weben` glossed "sway back and forth". The premise of this whole sweep, in one entry.
+
+**The four recall-gap misses, closed (2026-07-26).** The wave-1 verification pass named four verbs
+the reviewer had missed, all in shards 000–015 — the ones reviewed before the brief was amended. Each
+ships a gloss whose English reads perfectly well while naming a sense the learner rarely meets, which
+is exactly the bias the amendment addressed. Re-running those 16 shards to recover four known values
+would have cost ~19 window points, so they were fixed by hand instead, each verified against Reverso
+Context through the Chrome MCP.
+
+| verb | was | now | Reverso rank of the old gloss |
+|---|---|---|---|
+| `abheben` | lift off | withdraw (money) | 4th |
+| `anspringen` | jump at, pounce | start (of an engine) | 3rd/4th |
+| `anschlagen` | bump | strike, hit | **absent from the list** |
+| `abzeichnen` | draw a copy of something | emerge, become apparent | 7th |
+
+`anschlagen` was the worst of the four and worse than the verifier claimed: "bump" is a real sense
+(*sich den Kopf anschlagen*) but does not appear among Reverso's ranked renderings at all, where
+*strike* — striking a note, strumming a string — dominates. `abzeichnen` was carrying kaikki's
+unshortened phrasing on top of the wrong sense.
+
+Two house-style decisions worth recording. `abheben` and `anspringen` take a parenthetical
+restriction — "withdraw (money)", "start (of an engine)" — on the model of "read off (a meter)",
+which the brief permits. That is deliberately not the same thing as a bare usage label of the
+`entmieten` "of a landlord" kind, which the brief rates high-severity: the parenthetical narrows a
+meaning that is already stated, rather than standing in for one. And each new gloss commits to a
+single sense, so the commas separate synonyms only.
+
+This closes everything the sweep knew about. What remains unaudited is what was never looked at: the
+43 multi-`<reading>` verbs, which want the dual-paradigm data model before "the gloss" is even
+well-defined for them.

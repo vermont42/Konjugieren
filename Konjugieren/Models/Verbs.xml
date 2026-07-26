@@ -179,7 +179,7 @@
     <reading tn="clear off, run away" fa="w" />
   </verb>
   <verb in="ab+h^e^ben" hi="267983" hp="y" ic="strengthtraining.traditional">
-    <reading tn="lift off" fa="s" ag="bieten" />
+    <reading tn="withdraw (money)" fa="s" ag="bieten" />
   </verb>
   <verb in="ab+h^e^lfen" hi="573580" hp="y" ic="2.and.child.holdinghands">
     <reading tn="remedy, respond to" fa="s" ag="sterben" />
@@ -569,7 +569,7 @@
     <reading tn="count" fa="w" />
   </verb>
   <verb in="ab+zeichnen" hi="343049" hp="y" ic="flexibility">
-    <reading tn="draw a copy of something" fa="w" />
+    <reading tn="emerge, become apparent" fa="w" />
   </verb>
   <verb in="ab+z^ieh^en" hi="602401" ic="flexibility">
     <reading tn="deduct, withdraw" fa="s" ag="ziehen" />
@@ -972,7 +972,7 @@
     <reading tn="injure by shooting, hit with shots" fa="s" ag="schließen" />
   </verb>
   <verb in="an+schl^a^gen" hi="573456" hp="y" ic="boxing">
-    <reading tn="bump" fa="s" ag="fahren" />
+    <reading tn="strike, hit" fa="s" ag="fahren" />
   </verb>
   <verb in="an+schl^eich^en" hi="62734" hp="y" ic="walk.motion">
     <reading tn="sneak up on" fa="s" ag="streichen" />
@@ -1011,7 +1011,7 @@
     <reading tn="address, appeal to" fa="s" ag="sprechen" />
   </verb>
   <verb in="an+spr^i^ngen" hi="328969" hp="y" ic="jumprope">
-    <reading tn="jump at, pounce" fa="s" ag="finden" />
+    <reading tn="start (of an engine)" fa="s" ag="finden" />
   </verb>
   <verb in="an+stecken" hi="573247" hp="y" ic="indoor.rowing">
     <reading tn="infect" fa="w" />

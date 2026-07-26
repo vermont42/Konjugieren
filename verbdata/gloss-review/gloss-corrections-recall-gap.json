@@ -1,0 +1,32 @@
+{
+  "_source": "hand verdicts, 2026-07-26",
+  "_why": "The four verbs the wave-1 verification pass named as RECALL-GAP misses: each ships a gloss whose English reads perfectly well while naming a sense the learner will rarely meet, which is precisely the bias the reviewer had before the brief was amended mid-sweep. All four sit in shards 000-015, reviewed under the old brief, and were never re-reviewed -- re-running those 16 shards would have cost ~19 window points to recover four known values.",
+  "_verified_via": "Chrome MCP against Reverso Context, whose frequency-ranked renderings and attested bilingual pairs are what no dictionary provides. Reverso 403s WebFetch.",
+  "_evidence": {
+    "abheben": "ranked: withdraw > take off > lift > lift off (4th) > distinguish > take > pick up > cut. Topic tag 'Administrative Tasks'. Pairs: 'Wir fuehren immer Buch, wenn wir Geld aus der Portokasse abheben' -> 'when we withdraw from petty cash'; 'Nur der benannte Inhaber kann Geld von diesem Konto abheben' -> 'can withdraw funds from this account'. The shipped 'lift off' is the aviation sense, fourth by frequency.",
+    "anspringen": "ranked: start > jump > pounce > jump at > jump out at > start up > rise to the bait > spring to life. Pairs: 'als sein Auto nicht anspringen wollte' -> 'when his car wouldn't start'; 'Die Waschmaschine wuerde dann anspringen' -> 'The washing machine would then start'. The shipped 'jump at, pounce' is third and fourth.",
+    "anschlagen": "ranked: strike > strum > hit > cast on > abut > work > beat > play. The shipped 'bump' DOES NOT APPEAR in the ranked list at all; it is the real but marginal sich den Kopf anschlagen sense. Pairs: 'einen Ton auf dem Klavier anschlagen' -> 'strike a note on the piano'; 'die Saiten anschlagen' -> 'strum the strings'.",
+    "abzeichnen": "ranked: emerge > sign off > show > become apparent > stand out > loom > draw (7th) > initial. Topic tags 'TOEFL: Academic Word List', 'IELTS: High Frequency Words'. Pairs: 'wenn sich negative Entwicklungen abzeichnen sollten' -> 'If negative developments emerge'; 'Sollten sich Probleme abzeichnen' -> 'if problems emerge'. The shipped 'draw a copy of something' is seventh AND carries kaikki's unshortened phrasing."
+  },
+  "_house_style_note": "Each new gloss commits to ONE sense, per the amended brief: commas separate synonyms only. abheben and anspringen take a parenthetical restriction on the model of 'read off (a meter)', which the brief permits, rather than a bare usage label of the 'of a landlord' kind it rates high-severity.",
+  "abheben": {
+    "old": "lift off",
+    "new": "withdraw (money)",
+    "why": "Dominant rendering by a wide margin, and the sense a learner meets first. 'lift off' is the aviation reading, fourth by frequency."
+  },
+  "anspringen": {
+    "old": "jump at, pounce",
+    "new": "start (of an engine)",
+    "why": "What an engine, motor, or appliance does. Every attested pair is mechanical; the pouncing sense ranks third."
+  },
+  "anschlagen": {
+    "old": "bump",
+    "new": "strike, hit",
+    "why": "Striking a note or a string dominates. 'bump' is a real sense (sich den Kopf anschlagen) but does not appear among the ranked renderings at all."
+  },
+  "abzeichnen": {
+    "old": "draw a copy of something",
+    "new": "emerge, become apparent",
+    "why": "The reflexive sich abzeichnen dominates all use. The shipped gloss was also kaikki's unshortened phrasing, ranking seventh."
+  }
+}

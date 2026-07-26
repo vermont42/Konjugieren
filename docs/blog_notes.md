@@ -5556,3 +5556,49 @@ thing worth losing an argument about and keeping the argument.
 Swift comments 45, the widget catalog 3, and the authored example sentences 2. A plan that opened by
 insisting the population splits four ways ends up saying: finish one file and you have finished
 nearly all of it. Both statements are true, and the first is what makes the second safe to act on.
+
+## The three plans get an execution order, and one of them acquires obligations (2026-07-26)
+
+Josh set the order: `em_dash_sweep.md` now, `cognate_precision.md` next, `triple_consistency.md` on
+no timeline. All three plans said something about sequencing and all three were wrong in the same
+direction, because two of them recommended that the style sweeps run as a **single combined pass**.
+They are not going to, and sequential is a perfectly good choice, but it moves work across the seam.
+
+**Measuring the seam is what made the update worth doing.** The two style sweeps read the same 1,872
+distinct bullet strings, and the overlap is bigger than either plan had recorded:
+
+| | distinct bullets | occurrences |
+|---|---|---|
+| contain an em dash | 419 | 1,835 |
+| contain "cognate" | 940 | 4,395 |
+| **both** | **218** | **1,421** |
+
+So the em dash pass rewrites **23% of the cognate pass's exact target strings**, and every count in
+`cognate_precision.md` was measured before that happens. An earlier line in both plans claimed "419
+of the dashed bullets are inside the 940 cognate-bearing ones", which was simply wrong; the
+intersection is 218. Nobody would have caught it without running the intersection, because 419 is a
+real number sitting right next to the true one.
+
+The consequence is now written where it will be read. `cognate_precision.md` says its own figures are
+stale by construction, that a mismatch is the **expected** outcome rather than a signal, and that a
+mismatch much larger than ~23% is the thing to worry about. That distinction matters: a plan that
+says "verify the count" invites a future session to treat any drift as corpus corruption.
+
+**The em dash pass picked up two obligations it did not have when the passes were joint.** Build
+`extract_units.py` as a parameterized script rather than inline throwaway code, since the next pass
+wants the identical extract with a different pattern. And record an old-to-new mapping of every
+distinct string it rewrites, so the cognate pass can re-anchor mechanically instead of re-measuring
+blind.
+
+A third instruction went in that is really about restraint. **Do not fix cognate problems while
+sweeping punctuation.** The pass will see them: 218 of the bullets it rewrites say "cognate with",
+and some of those uses are wrong. Fixing them there would change a factual lexicographic claim inside
+a punctuation diff, with no review pass and no cross-model adjudication behind it, which is the
+entire apparatus the second plan exists to provide. The temptation is real precisely because the fix
+looks free once you are already editing the line.
+
+`triple_consistency.md` needed the least work, since it already said it should run last. It now says
+so as a schedule rather than a suggestion, and it gained the note that being last is an advantage
+rather than a consolation: the etymologies will arrive already swept for punctuation and already
+audited for one factual claim, so a disagreement it finds is likelier to be a real contradiction than
+an artifact of text that nothing had ever read.

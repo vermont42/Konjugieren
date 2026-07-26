@@ -6,8 +6,9 @@ tell them apart, how big the real population is (much smaller than the first cou
 why the first instinct, find-and-replace, would damage several hundred entries that are correct
 as written. Written 2026-07-26.
 
-Companion: [`em_dash_sweep.md`](em_dash_sweep.md), which reviews the same strings for a different
-defect. **These two should run as one pass.** See "Run this with the em dash sweep."
+**Order, set by Josh 2026-07-26:** `em_dash_sweep.md` first, `cognate_precision.md` second,
+`triple_consistency.md` on no timeline. This pass therefore runs **after** the em dash sweep,
+which changes what you inherit and what you can trust. See "This runs second."
 
 ## The distinction
 
@@ -108,10 +109,13 @@ the whole argument, as this document just did.
 1. **Ask Josh the scope question above before writing any code.** If the answer is "document the
    loose usage," the entire remaining plan collapses to one paragraph in
    `docs/english_writing_style.md`, and that is a legitimate and cheap outcome.
-2. Build the distinct-unit extract shared with `em_dash_sweep.md`. Emit every distinct bullet and
-   per-verb prose paragraph containing "cognate", with occurrence counts and carrier verbs.
-3. Filter to units that also describe a borrowing. Verify the count against the 323/940 figures
-   above; a mismatch means the corpus moved since 2026-07-26.
+2. Reuse `verbdata/style/extract_units.py`, which the em dash sweep should have left behind, with
+   `cognate` as the pattern. Emit every distinct bullet and per-verb prose paragraph containing the
+   word, with occurrence counts and carrier verbs.
+3. Filter to units that also describe a borrowing. **Expect the 323/940 figures above not to match**,
+   because the em dash sweep rewrote 218 of the cognate-bearing bullets after they were measured. A
+   mismatch is the expected outcome, not a signal; a mismatch far larger than ~23% of the bullet
+   population is the signal.
 4. Review in shards, on `claude-opus-5`. The brief must require, in every finding, an explicit
    statement of **when** the borrowing happened relative to the split. That is the whole judgment,
    and a finding that omits it has not been made.
@@ -124,13 +128,26 @@ the whole argument, as this document just did.
    journal entry recording the defect **rate** against the 323 candidates. That number is what
    tells a future reader whether the filter was any good.
 
-## Run this with the em dash sweep
+## This runs second
 
-Both passes read the same 1,872 distinct bullet strings out of the same 7.5 MB JSON file, and 419
-of the dashed bullets are inside the 940 cognate-bearing ones. Running them separately means
-building the dedup machinery twice, reviewing overlapping strings twice, and resolving merge
-conflicts between two large diffs against one file. Build `verbdata/style/extract_units.py` once,
-emit both populations from it, and let the two briefs consume the same extract.
+An earlier draft argued for running this jointly with `em_dash_sweep.md`, since both read the same
+1,872 distinct bullet strings. Josh is running them in sequence instead, em dash first. Two
+consequences, and the second will bite if it is ignored.
+
+**You inherit working machinery.** `verbdata/style/extract_units.py` should already exist, built by
+the em dash pass to take a search pattern and emit distinct bullets and per-verb prose paragraphs
+with occurrence counts and carrier verbs. Run it with `cognate` and you have your population. If it
+does not exist or is not parameterized, build it that way rather than inline, because it is the
+third pass in a row to have wanted it.
+
+**Every count in this document is pre-sweep, and 23% of your anchors are stale.** Measured
+2026-07-26, before the em dash pass ran: 940 distinct bullets mention "cognate", **218 of which also
+contain an em dash** and were therefore rewritten. The 323-candidate figure has the same problem.
+Re-derive everything from the current file, and check whether the em dash pass left an old-to-new
+mapping of the strings it changed; if it did, re-anchor from that rather than re-measuring blind.
+
+Nothing about the linguistics changes. A punctuation edit cannot turn a co-borrowing into a cognate.
+Only the string identities moved, and only for the 218.
 
 ## Kickoff: paste into a fresh session
 
@@ -147,5 +164,6 @@ kaufen/cheap ARE cognates (Proto-Germanic borrowed from Latin caupō, then both 
 not be touched; kochen/cook are NOT (two separate Latin borrowings, two different Latin words).
 323 entries are candidates, NOT defects: expect well under half to be real. 70% of etymology
 bullets are shared, so deduplicate before reviewing or one kochen bullet gets three different
-rewordings. Run this together with prompts/em_dash_sweep.md; they read the same strings.
+rewordings. This runs AFTER prompts/em_dash_sweep.md, which rewrote 218 of the 940 cognate-bearing
+bullets, so re-derive every count in the plan rather than trusting it.
 ````

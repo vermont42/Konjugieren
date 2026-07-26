@@ -6,8 +6,9 @@ gives two reasons, and has been ignored by roughly every generated artifact in t
 document says how many there are, which of them must **not** be touched, and why the obvious
 `sed` is the wrong tool. Written 2026-07-26, from counts taken the same day.
 
-Companion: [`cognate_precision.md`](cognate_precision.md), which sweeps the same files for a
-different defect and should probably run in the same pass. See "Run this with the cognate sweep."
+**Order, set by Josh 2026-07-26:** `em_dash_sweep.md` first, `cognate_precision.md` second,
+`triple_consistency.md` on no timeline. This pass therefore runs first, and it owes the next
+one two things. See "This runs first: what it owes the cognate sweep."
 
 ## The rule, and why it has teeth
 
@@ -169,7 +170,7 @@ For anyone typing the characters deliberately on macOS: `⌥⇧-` gives the em d
 The family is hyphen-minus `-` (U+002D), en dash `–` (U+2013), em dash `—` (U+2014), figure dash `‒`
 (U+2012), and true minus `−` (U+2212).
 
-One note about this document itself. The thirteen em dashes still in it are **specimens**: code
+One note about this document itself. The fourteen em dashes still in it are **specimens**: code
 literals being searched for, quoted `source` values, the "before" column of the table above, and the
 spacing table below. They illustrate the defect and must survive, on exactly the principle that
 exempts the Kafka sentences. Everything that was this document's own prose has been fixed. If a
@@ -186,13 +187,37 @@ En dashes need a second look rather than a blanket rule: a genuine numeric range
 appears in the dedication) is correct typography and must survive. Filter to `–` **with spaces
 around it** before proposing anything.
 
-## Run this with the cognate sweep
+## This runs first: what it owes the cognate sweep
 
 [`cognate_precision.md`](cognate_precision.md) reviews the same distinct-bullet population for a
-different defect: **940 distinct bullets mention "cognate", covering 4,395 occurrences**, and 419
-of the dashed bullets overlap that set. Two passes over the same strings, a week apart, will produce
-two rounds of merge conflicts against a 7.5 MB JSON file, and the second will have to re-derive the
-dedup machinery. Build the extract-distinct-bullets step once and let both sweeps consume it.
+different defect, and Josh is running it second rather than jointly. An earlier draft of this plan
+argued for one combined pass. That is no longer the plan, and sequential is fine, but it puts two
+obligations on this pass that a combined one would not have had.
+
+**Build `verbdata/style/extract_units.py` as a reusable script, not as inline throwaway code.** It
+should take the pattern to search for as an argument and emit distinct bullets and per-verb prose
+paragraphs with occurrence counts and carrier verbs. The cognate pass needs exactly the same extract
+with `cognate` in place of `—`, and re-deriving it from scratch is pure waste.
+
+**Record which distinct strings this sweep rewrote, old and new, in a file that survives.** This is
+the obligation that matters, because of an overlap that is larger than it looks:
+
+| | distinct bullets | occurrences |
+|---|---|---|
+| contain an em dash | 419 | 1,835 |
+| contain "cognate" | 940 | 4,395 |
+| **contain both** | **218** | **1,421** |
+
+**So this sweep rewrites 23% of the cognate pass's exact target strings.** Every count and every
+anchor in `cognate_precision.md` was measured on 2026-07-26, before this pass ran, and 218 of its
+940 strings will not exist in that form afterward. A recorded old-to-new mapping lets the cognate
+pass re-anchor mechanically instead of re-measuring blind.
+
+**Do not fix cognate problems while you are in there.** You will see them; 218 of the bullets you
+rewrite say "cognate with", and some of those uses are wrong. Fixing them here means a factual
+lexicographic claim gets changed inside a punctuation diff, with no review pass and no cross-model
+adjudication behind it. That is the entire apparatus `cognate_precision.md` exists to provide. Stay
+in the punctuation lane and let the second pass do its job.
 
 ## Steps
 

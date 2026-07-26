@@ -7,6 +7,11 @@ internally. This document says what the check is, what it would cost, why the ob
 does not work, and, most importantly, why the first move is a 50-verb pilot rather than the sweep.
 Written 2026-07-26.
 
+**Order, set by Josh 2026-07-26:** [`em_dash_sweep.md`](em_dash_sweep.md) first,
+[`cognate_precision.md`](cognate_precision.md) second, this one **on no timeline**. Both of those
+rewrite etymology prose, so this pass must not start before they land. Assume every measurement in
+this document is stale when you arrive.
+
 **Do not run the full pass without a measured defect rate from step 3.** Every cost figure below is
 an extrapolation from other passes. The pilot is ~$2 and converts all of them into arithmetic.
 
@@ -118,13 +123,21 @@ relocalization discipline held and means there is no yield there. Keep it as a r
   has no write path. Build it, with the same `old`-assertion and occurrence-count discipline, or
   the review produces a triage nobody can apply, which is exactly the failure
   `build_gloss_shards.py` avoided by excluding multi-reading verbs in the first place.
-- **Order this after the style sweeps.** [`em_dash_sweep.md`](em_dash_sweep.md) and
-  [`cognate_precision.md`](cognate_precision.md) both rewrite etymology prose. Running them after
-  this pass would invalidate every `old` assertion in its corrections file.
+- **This runs last, and that is now scheduled rather than advisory.** Josh set the order on
+  2026-07-26: [`em_dash_sweep.md`](em_dash_sweep.md) first, [`cognate_precision.md`](cognate_precision.md)
+  second, this one on no timeline. Both of those rewrite etymology prose, so running this before them
+  would invalidate every `old` assertion in its corrections file. Being last is a real advantage
+  here: the etymologies arrive already swept for punctuation and already audited for one factual
+  claim, so a disagreement this pass finds is more likely to be a genuine contradiction than an
+  artifact of text nothing had ever read.
 
 ## Steps
 
-1. Land `em_dash_sweep.md` and `cognate_precision.md` first, or explicitly accept the rework.
+1. Confirm `em_dash_sweep.md` and `cognate_precision.md` have both landed. They are scheduled ahead
+   of this and both rewrite etymology prose. **Re-derive every measurement in this document before
+   using it.** The figures here are from 2026-07-26 and two sweeps will have moved the text since;
+   the 61%-shared-bullets and 172-tokens-per-record numbers drive the cost model and the shard
+   design, so a stale one is not a cosmetic problem.
 2. Build the per-reading record: gloss, sibling gloss, etymology **prose only**, both sentences,
    sentence provenance flag, separability, auxiliary.
 3. **Pilot one 50-verb shard.** Measure the defect rate and the disagreement mix: how often the

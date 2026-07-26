@@ -5761,3 +5761,127 @@ almost always want the same shape. Almost, but not reliably enough to automate, 
 
 The machinery is the durable output. `cognate_precision.md` wants the same dedup over the same
 strings for a different defect, and `extract_units.py` already takes the `--pattern` flag for it.
+
+## The `/usage` probe costs nothing, and the bill was going to the wrong party (2026-07-26)
+
+This one started outside the repo. Josh had posted the `claude -p "/usage"` trick to LinkedIn a few
+days earlier: an orchestrating session can read its own five-hour window and decide for itself when
+to stop launching subagents, rather than getting cut off at whatever half-finished point the limit
+lands on. He handed me a screenshot of the post and then asked a question about it.
+
+The question was a good one and its premise was wrong, which is the whole story here.
+
+### The hypothesis
+
+Josh had found through experimentation that the probe was expensive, and reasoned that much of the
+expense was the fresh session reading `CLAUDE.md`, which in this repo is 40,877 bytes. If that was
+the dominant term, launching the probe from a folder with a tiny or absent `CLAUDE.md` would fix it.
+He flagged the alternative himself: the cost might be the fixed system prompt instead.
+
+Both branches are measurable, so neither got argued about. `claude -p ... --output-format json`
+reports a `usage` block for the headless child, which settles it directly.
+
+### The premise did not survive the first run
+
+```
+message types: ['system/init', 'assistant/None', 'result/success']
+num_turns: 0
+input=0  cache_write=0  cache_read=0  output=0
+total_cost_usd: 0
+duration: 1,023 ms
+```
+
+Zero. The `assistant` message is the panel synthesized by the CLI client, not a model response.
+Slash commands resolve inside the harness, so the child boots, prints, and exits without ever
+sending a request. Running it from an empty directory gave the same zero in 1,130 ms, which closes
+off the proposed fix: there is nothing there to optimize.
+
+So Josh's folder idea would have solved a problem that does not exist. What made the session worth
+having is that the question underneath it, whether `CLAUDE.md` dominates a headless child's startup,
+is a real question about work this repo actually does. The authoring and mining pipelines spawn
+dozens of `claude -p` children per run, and *those* make model turns. Measured with a prompt that
+forces one (`Reply with exactly the word OK. Use no tools.`):
+
+| Config | cache_write | total input | cost |
+|---|---|---|---|
+| This repo | 24,254 | 39,544 | $0.2503 |
+| Empty dir | 6,471 | 21,746 | $0.0730 |
+| Empty dir plus `--safe-mode` | 2,705 | 20,152 | $0.0365 |
+
+Project context adds ~17,800 tokens and nearly doubles a child's startup, so the hypothesis was
+directionally right. But it does not dominate: the ~20k harness floor is still the larger half, and
+`CLAUDE.md` is only ~10k of the 17,800. The rest is the cupertino MCP server's ten tool schemas, the
+skill roster, and the agent definitions, which travel with the working directory just as `CLAUDE.md`
+does. An empty directory is a 45% cut, not a 95% one.
+
+### Where the point was actually going
+
+The probe does cost about one window point. That figure was measured on 2026-07-25 across six waves
+and fitted exactly, so it was never in doubt. If the child is free, the point is being spent by the
+**orchestrator's own turn**, which re-reads its whole cached context in order to make one Bash call
+and read the answer back. The probe is priced by the caller's context size and by nothing the child
+does.
+
+The measurement already contained the evidence for this, unnoticed. The fitted cost held at ~1.0
+across waves of 4, 6, 8, and 9 shards. A per-child cost would have scaled with wave width. A
+per-caller-turn cost does not. The number had been sitting in `example_generation.md` for a day
+explaining itself to anyone who looked at it that way.
+
+Two of the notes' recommendations survive the correction, one of them strengthened. Wide waves
+amortize the probe, which is now true for a sharper reason. Filtering through
+`grep -m1 'Current session'` matters more than it looked: the full panel is ~1,110 characters, and
+anything added to a long-running orchestrator's context is paid for again on every later turn. Ten
+unfiltered polls across a hundred later turns is not 2,800 tokens of context, it is 280,000.
+
+One recommendation inverts. Both prompt files said pasting `~/Desktop/usage.png` was the fallback
+that "costs no request at all." Under the corrected attribution the screenshot still costs the
+caller a turn, and an image costs more context than 1,110 characters of text, making it the *more*
+expensive option. It is now documented as a fallback for when the CLI is unavailable and nothing
+else.
+
+### The two files had been contradicting each other
+
+`uses_etymologies.md` called the call "about one request, negligible against a shard's ~100k
+subagent tokens." `example_generation.md` had measured it at a full authoring shard's worth of
+window and explained that with a fabricated mechanism, that every headless child pays the same ~23k
+cache-creation input regardless of how little it does. Both files were written by sessions that
+believed they were recording a measurement. Neither noticed the other, and the contradiction sat
+there through an entire 44-shard run.
+
+The resolution is that both claims were true of different halves of one event. Negligible describes
+the child. A whole shard's worth describes the caller's turn. Both files now cross-link to
+`docs/usage.md`, so the figure has one home.
+
+### Where the prose ended up, which was Josh's correction of me
+
+I first wrote the whole account as a new section inside `CLAUDE.md`, 32 lines of it. Josh had asked
+for something in `CLAUDE.md`, so that is what I produced, and it did not occur to me that the file I
+was writing into is the one file every session in this repo pays to read unconditionally. He caught
+it and asked for a two-line pointer with the prose moved to `docs/usage.md`. His reasoning: he does
+not want every session bearing the cost of information almost none of them need.
+
+The irony is exact. The section was about the cost of reading context, and I had put it in the most
+expensive possible place. It also went against the pattern the file already follows everywhere else,
+with `docs/adding-verbs.md`, `docs/terminology.md`, and `docs/feature-architecture.md` all reached
+by pointer. Once it moved, the doc could carry material a `CLAUDE.md` budget would have excluded:
+the raw measurement signature, the headless-child table, and the warning that `--safe-mode` is the
+flag for a cheap child while `--bare` is a trap, since it forces `ANTHROPIC_API_KEY` authentication
+and would bill at API rates, which is the outcome the whole pacing discipline exists to prevent.
+
+The `CLAUDE.md` section is now 25 tokens against the ~400 it briefly cost. Multiply by every session
+this repo will ever run.
+
+### What is left open
+
+The LinkedIn post is now partly wrong in public. The trick itself stands exactly as described, and
+the operational advice is unchanged. What changed is the cost model underneath it, and the post's
+implied claim that polling is cheap because the child is small. Josh declined a journal entry when I
+first offered one, then asked for this one after the code landed, so the correction exists here
+whatever he decides to do about the post.
+
+One methodological note for a future session. Every figure above came from three `claude -p` runs
+and cost a few minutes. The wrong mechanism in `example_generation.md` had survived a full 44-shard
+production run, an entire day of citation, and a second file written on top of it, because it was
+plausible and nobody spent the three runs. Plausible mechanisms attached to real measurements are
+the hardest kind of wrong to notice: the number keeps being right, so the story next to it never
+gets audited.

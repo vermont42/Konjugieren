@@ -5189,3 +5189,21 @@ carrying two `tn=` values because "replace the tn in this element" does not say 
 correction by `(verb, reading index)` — or by its `old` value, which is already asserted — resolves
 it, and the shard builder would emit one record per reading instead of one per verb. That is an
 afternoon, not a data-model migration, and it does not wait on anything.
+
+**Handoff written for the 44 (2026-07-26).** [`prompts/multi_reading_glosses.md`](../prompts/multi_reading_glosses.md),
+on the `example_review_followups.md` model, so the next session starts from a plan rather than a
+clipboard. Two things surfaced while writing it that were not known before.
+
+**There are 44 verbs, not 43.** `überkochen` carries two readings and never reached the
+multi-reading check, because the already-reviewed filter removed it from the pool one step earlier.
+Its glosses have never been audited. The general shape is worth remembering: two filters ran in
+sequence and only the second wrote a record, so `skipped-multi-reading.txt` is honest about what it
+dropped and structurally blind to what was dropped upstream of it. Any exclusion file inherits the
+blindness of everything that ran before it.
+
+**These verbs have a failure mode the sweep never faced.** Two glosses on one lemma can each be
+defensible alone and still collapse into the same English — which is the `weben`/`verweben` collision
+the sweep found, except inside a single entry. A reviewer judging one gloss at a time cannot see it,
+and that is exactly how the pipeline works. The plan adds a pair-distinguishability rule to the brief
+for that reason. It generalises: the pipeline has no cross-verb view at all, so any defect that is
+only visible as a *relationship* between two glosses is out of its reach by construction.

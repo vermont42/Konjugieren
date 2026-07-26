@@ -21,14 +21,14 @@ else the style doc forbids, at generation time rather than by editing the archiv
 ## Version Control
 
 **Commit directly to `main`. Do not create branches.** This is a solo project and the default
-"branch before committing" reflex does not apply here — if you find yourself proposing a feature
+"branch before committing" reflex does not apply here. If you find yourself proposing a feature
 branch, don't.
 
 ## Build and Test Commands
 
 This project uses the [`ios-build-verify`](https://github.com/vermont42/ios-build-verify) Claude Code skill for build and test. The scripts pipe `xcodebuild` through `xcbeautify` for concise output and tee raw output to `build.log` as a fallback. Per-project config lives in `.claude/ios-build-verify.config.sh` (gitignored).
 
-Future Claude Code sessions invoke `build_app.sh` / `run_tests.sh` via the skill's `scripts/` directory. Resolve the path once per session against the **marketplace clone** — `export IBV_SCRIPTS=$(dirname "$(find ~/.claude/plugins/marketplaces -path '*ios-build-verify*' -name build_app.sh 2>/dev/null | head -1)")` — then invoke as `"$IBV_SCRIPTS/build_app.sh"`. Scoping `find` to `marketplaces/` (not all of `~/.claude`) is deliberate: the marketplace clone is a single git checkout that `claude plugin marketplace update` pulls to the latest release, so it has no version segment and yields exactly one match. The broader `~/.claude` glob also reaches the per-version `cache/ios-build-verify/<version>/` directories — which are shared across Josh's other apps (Calculator3, Conjuguer) and can pin older releases — so an unsorted `head -1` there could nondeterministically resolve to a stale version. See SKILL.md's "Resolving the script path" section for the full convention. For terminal use, `--only-testing "Target/Suite/method()"` filters to a single test. Two ways to write that path run zero tests and still report `Test Succeeded`: omitting the trailing `()` that Swift Testing requires on method names, and writing the `@Suite` display name where the path wants the **struct** name. `ConjugatorTests` is annotated `@Suite("Conjugator")`, and the filter wants `KonjugierenTests/ConjugatorTests/…` — the annotation is a display label, not an address. A filter that matches nothing is not an error, so read the run's test count rather than its exit status.
+Future Claude Code sessions invoke `build_app.sh` / `run_tests.sh` via the skill's `scripts/` directory. Resolve the path once per session against the **marketplace clone** by running `export IBV_SCRIPTS=$(dirname "$(find ~/.claude/plugins/marketplaces -path '*ios-build-verify*' -name build_app.sh 2>/dev/null | head -1)")`, then invoke as `"$IBV_SCRIPTS/build_app.sh"`. Scoping `find` to `marketplaces/` (not all of `~/.claude`) is deliberate: the marketplace clone is a single git checkout that `claude plugin marketplace update` pulls to the latest release, so it has no version segment and yields exactly one match. The broader `~/.claude` glob also reaches the per-version `cache/ios-build-verify/<version>/` directories, which are shared across Josh's other apps (Calculator3, Conjuguer) and can pin older releases, so an unsorted `head -1` there could nondeterministically resolve to a stale version. See SKILL.md's "Resolving the script path" section for the full convention. For terminal use, `--only-testing "Target/Suite/method()"` filters to a single test. Two ways to write that path run zero tests and still report `Test Succeeded`: omitting the trailing `()` that Swift Testing requires on method names, and writing the `@Suite` display name where the path wants the **struct** name. `ConjugatorTests` is annotated `@Suite("Conjugator")`, and the filter wants `KonjugierenTests/ConjugatorTests/…`. The annotation is a display label, not an address. A filter that matches nothing is not an error, so read the run's test count rather than its exit status.
 
 The skill also provides a verify half (launch the app, tap by accessibility identifier, screenshot, audit views). See its `SKILL.md` for the full operation surface.
 
@@ -42,11 +42,11 @@ The skill also provides a verify half (launch the app, tap by accessibility iden
 
 ### App-specific friction: review-prompt UserDefaults accumulation
 
-Konjugieren shows a custom "Enjoying Konjugieren?" review prompt gated by `promptActionCount` and `lastReviewPromptDate` cooldowns (see `Settings.swift`). On a simulator with accumulated UserDefaults — typical after exploratory testing — the prompt fires on launch and gates the AXTree, and `launch_app.sh` exits 5 with the modal-gating hint pointing at SKILL.md "Modal AXTree gating". Recovery: tap "Not Now" once (cooldown blocks subsequent prompts) or `xcrun simctl uninstall <UDID> biz.joshadams.Konjugieren` for a clean reset.
+Konjugieren shows a custom "Enjoying Konjugieren?" review prompt gated by `promptActionCount` and `lastReviewPromptDate` cooldowns (see `Settings.swift`). On a simulator with accumulated UserDefaults (typical after exploratory testing), the prompt fires on launch and gates the AXTree, and `launch_app.sh` exits 5 with the modal-gating hint pointing at SKILL.md "Modal AXTree gating". Recovery: tap "Not Now" once (cooldown blocks subsequent prompts) or `xcrun simctl uninstall <UDID> biz.joshadams.Konjugieren` for a clean reset.
 
 ### App-specific friction: Apple Intelligence Tutor host-eligibility on iOS 26.3+
 
-The Tutor row in `InfoBrowseView`, the `ErrorExplainerView` card in `QuizView`, and the Tutor page in `OnboardingView` are all gated on `Current.languageModelService.isAvailable`. The simulator delegates `SystemLanguageModel(guardrails:).availability` resolution to the host Mac via the `os-eligibility-domain.change.greymatter` gate. Earlier iOS 26.x simulator runtimes were permissive enough that Intel-Mac hosts could exercise these surfaces; iOS 26.3.1 tightened the gate, and Intel-Mac hosts now resolve to `.unavailable(.deviceNotEligible)`. The failure is silent — gated UI simply doesn't render, with no console error. Verify Tutor / ErrorExplainer / onboarding-Tutor flows on a real Apple-Intelligence-capable iPhone or an Apple Silicon Mac on macOS 26+. UI screenshots taken on this Intel host should not be used to evaluate any Tutor-gated surface.
+The Tutor row in `InfoBrowseView`, the `ErrorExplainerView` card in `QuizView`, and the Tutor page in `OnboardingView` are all gated on `Current.languageModelService.isAvailable`. The simulator delegates `SystemLanguageModel(guardrails:).availability` resolution to the host Mac via the `os-eligibility-domain.change.greymatter` gate. Earlier iOS 26.x simulator runtimes were permissive enough that Intel-Mac hosts could exercise these surfaces; iOS 26.3.1 tightened the gate, and Intel-Mac hosts now resolve to `.unavailable(.deviceNotEligible)`. The failure is silent: gated UI simply doesn't render, with no console error. Verify Tutor / ErrorExplainer / onboarding-Tutor flows on a real Apple-Intelligence-capable iPhone or an Apple Silicon Mac on macOS 26+. UI screenshots taken on this Intel host should not be used to evaluate any Tutor-gated surface.
 
 ### Diagnostic fallback (raw xcodebuild)
 
@@ -85,8 +85,8 @@ A few conventions that apply across the suite:
 ### Parallel execution and `@Suite(.serialized)`
 
 - Swift Testing runs suites and tests **in parallel by default**.
-- A suite that mutates shared global state — the `@MainActor var Current` world, or any `static` — must be `@Suite(.serialized)` so its tests don't race each other. That's why `SettingsTests`, `DeeplinkTests`, `QuizTests`, `QuizErrorHistoryTests`, and the `Unterminated Delimiters` sub-suite of `StringExtensionsTests` are serialized: each one swaps out parts of `Current` (e.g. `Current.fatalError = spy`) or touches UserDefaults-backed state.
-- There is no `setUp`/`tearDown`. Do per-test setup in the suite `init` or in a helper called at the top of each `@Test`. Note: on a `struct` with no stored properties, a parameterless `init()` used only for side-effecting reset can trip SwiftLint's `unneeded_synthesized_initializer` — prefer an explicit reset helper if that rule is enabled here.
+- A suite that mutates shared global state (the `@MainActor var Current` world, or any `static`) must be `@Suite(.serialized)` so its tests don't race each other. That's why `SettingsTests`, `DeeplinkTests`, `QuizTests`, `QuizErrorHistoryTests`, and the `Unterminated Delimiters` sub-suite of `StringExtensionsTests` are serialized: each one swaps out parts of `Current` (e.g. `Current.fatalError = spy`) or touches UserDefaults-backed state.
+- There is no `setUp`/`tearDown`. Do per-test setup in the suite `init` or in a helper called at the top of each `@Test`. Note: on a `struct` with no stored properties, a parameterless `init()` used only for side-effecting reset can trip SwiftLint's `unneeded_synthesized_initializer`. Prefer an explicit reset helper if that rule is enabled here.
 
 ### Environment-gated harnesses
 
@@ -100,7 +100,7 @@ current two. Both take an output path from the environment and are gated with
 
 **`xcodebuild` forwards a host environment variable into the simulator only when it is named
 `TEST_RUNNER_<NAME>`**, stripping the prefix on the way in. Setting the bare name leaves the gate
-false and the suite skips — green, silent, nothing written:
+false and the suite skips. Green, silent, nothing written:
 
 ```bash
 TEST_RUNNER_KONJUGIEREN_FORMS_OUT="$PWD/corpus/working/forms.json" \
@@ -136,7 +136,7 @@ private func expectConjugation(
 }
 ```
 
-The helper forwards `sourceLocation: SourceLocation = #_sourceLocation` to both `#expect` and `Issue.record`. Because `#_sourceLocation` resolves at each call site, a failing assertion reports the `expectConjugation(...)` line that actually failed rather than the helper's internal line — without that, every one of the ~hundreds of assertions funneled through this helper would collapse to a single line, making a red test impossible to locate without bisecting. Any new shared assertion helper must do the same.
+The helper forwards `sourceLocation: SourceLocation = #_sourceLocation` to both `#expect` and `Issue.record`. Because `#_sourceLocation` resolves at each call site, a failing assertion reports the `expectConjugation(...)` line that actually failed rather than the helper's internal line. Without that, every one of the ~hundreds of assertions funneled through this helper would collapse to a single line, making a red test impossible to locate without bisecting. Any new shared assertion helper must do the same.
 
 ### Mixed-Case Convention in Test Expectations
 
@@ -179,7 +179,7 @@ When adding tests for a new verb or ablaut pattern:
 
 ## Architecture Overview
 
-Konjugieren is an iOS app for learning German verb conjugations. It conjugates 3,572 verbs across all German conjugationgroups ("tenses" in ordinary (and incorrect) parlance), and the corpus is still growing — see [`docs/roadmap.md`](docs/roadmap.md). Konjugieren uses SwiftUI for its user interface.
+Konjugieren is an iOS app for learning German verb conjugations. It conjugates 3,572 verbs across all German conjugationgroups ("tenses" in ordinary (and incorrect) parlance), and the corpus is still growing; see [`docs/roadmap.md`](docs/roadmap.md). Konjugieren uses SwiftUI for its user interface.
 
 ## About the Human Developer
 
@@ -236,7 +236,7 @@ Code should be well-written and therefore self-explanatory. Explanatory and MARK
 * File headers
 * TODOs
 * Hacks or workarounds
-* A non-obvious *why* that the code cannot state — a linguistic rule, an Apple-framework
+* A non-obvious *why* that the code cannot state: a linguistic rule, an Apple-framework
   constraint, or a decision whose alternatives look equally reasonable from the call site.
   `Conjugator.needsEpentheticE` is the model: the code says which letters trigger the rule,
   and the comment says why a Dehnungs-h does not.
@@ -249,9 +249,9 @@ When reviewing code, do not flag these types of comments.
 `KonjugierenTests/Utils/VerbClassificationTests.swift` are held to a **more permissive**
 standard. Comment them generously.
 
-The reason is that such a file's correctness usually rests on facts outside itself — the shape
-of an external dataset, a quirk of `xcodebuild`, an orthographic convention in `AblautGroups.xml`
-— and those facts are not recoverable by reading the code. A future session that cannot see the
+The reason is that such a file's correctness usually rests on facts outside itself (the shape
+of an external dataset, a quirk of `xcodebuild`, an orthographic convention in `AblautGroups.xml`),
+and those facts are not recoverable by reading the code. A future session that cannot see the
 reasoning will re-derive it wrongly, which has already happened in this repo. Prefer:
 
 * A file-header block stating what the file consumes, what it produces, and how to run it.
@@ -268,7 +268,7 @@ When writing or editing any English text (localization strings, documentation, c
 
 ## Grep on long-line files
 
-Historical gotcha, resolved 2026-06-11: `grep -n` matches on long-line files (anything past ~250 characters) used to vanish silently from Bash-tool output (tracking issue anthropics/claude-code#56751). Root cause: the Bash tool's `grep` was secretly Claude Code's embedded ugrep via shell-snapshot shadowing — de-shadowed machine-wide; matched lines of 300/1,000/5,000 characters now render intact. History and recovery recipe: [`docs/grep-gotchas.md`](docs/grep-gotchas.md). If silent vanishing ever recurs, the diagnostic still applies: `grep -c` count > 0 while `grep -n` shows nothing means output is being hidden — verify via `Read` with offset, and never treat grep silence as absence. (Separate and still real: the **Grep tool** truncates long matched lines to `[Omitted long matching line]` — see "Searching Within Localizable.xcstrings" below.)
+Historical gotcha, resolved 2026-06-11: `grep -n` matches on long-line files (anything past ~250 characters) used to vanish silently from Bash-tool output (tracking issue anthropics/claude-code#56751). Root cause: the Bash tool's `grep` was secretly Claude Code's embedded ugrep via shell-snapshot shadowing, now de-shadowed machine-wide; matched lines of 300/1,000/5,000 characters now render intact. History and recovery recipe: [`docs/grep-gotchas.md`](docs/grep-gotchas.md). If silent vanishing ever recurs, the diagnostic still applies: `grep -c` count > 0 while `grep -n` shows nothing means output is being hidden; verify via `Read` with offset, and never treat grep silence as absence. (Separate and still real: the **Grep tool** truncates long matched lines to `[Omitted long matching line]`; see "Searching Within Localizable.xcstrings" below.)
 
 ## Swift Coding Conventions
 
@@ -312,7 +312,7 @@ case .optionB: return L.Setting.optionB
 
 ### Single Space After Commas
 
-Use a single space after each comma in argument lists. Do not column-align argument names with extra padding — alignment churns diffs unnecessarily when a name changes.
+Use a single space after each comma in argument lists. Do not column-align argument names with extra padding. Alignment churns diffs unnecessarily when a name changes.
 
 ```swift
 // Prefer this
@@ -394,7 +394,7 @@ struct OuterTests {
 }
 ```
 
-A suite also needs `@MainActor` when it merely **compares two app values inside `#expect` whose `Equatable` conformance is main-actor-isolated** — no "call into app code" required. A non-`@MainActor` suite doing `#expect(parsedSegments == [...])` on isolated model types (e.g. the `StringExtensions` markup enums) hits:
+A suite also needs `@MainActor` when it merely **compares two app values inside `#expect` whose `Equatable` conformance is main-actor-isolated**, with no "call into app code" required. A non-`@MainActor` suite doing `#expect(parsedSegments == [...])` on isolated model types (e.g. the `StringExtensions` markup enums) hits:
 
 > `main actor-isolated conformance of '…' to 'Equatable' cannot be used in nonisolated context`
 
@@ -456,8 +456,8 @@ class World {
 ```
 
 `World.chooseWorld()` selects the appropriate configuration:
-- **Device/Simulator**: Uses the `*Real` implementations — `GetterSetterReal`, `GameCenterReal`, `SoundPlayerReal`, `ReviewPrompterReal`, `UttererReal`, `FatalErrorReal`, `AnalyticsReal`, and `LanguageModelServiceReal` (on iOS 26+, else `LanguageModelServiceDummy`).
-- **Unit Tests**: Uses the fakes/dummies/spies — `GetterSetterFake`, `GameCenterDummy`, `SoundPlayerDummy`, `ReviewPrompterDummy`, `UttererDummy`, `LanguageModelServiceDummy`, `FatalErrorSpy`, `AnalyticsSpy`.
+- **Device/Simulator**: Uses the `*Real` implementations: `GetterSetterReal`, `GameCenterReal`, `SoundPlayerReal`, `ReviewPrompterReal`, `UttererReal`, `FatalErrorReal`, `AnalyticsReal`, and `LanguageModelServiceReal` (on iOS 26+, else `LanguageModelServiceDummy`).
+- **Unit Tests**: Uses the fakes/dummies/spies: `GetterSetterFake`, `GameCenterDummy`, `SoundPlayerDummy`, `ReviewPrompterDummy`, `UttererDummy`, `LanguageModelServiceDummy`, `FatalErrorSpy`, `AnalyticsSpy`.
 
 Access dependencies anywhere using syntax like `Current.settings`. This pattern enables:
 - Easy mocking in tests (swap `Current` with a test-configured `World`)
@@ -516,17 +516,17 @@ var mySetting: MySetting = mySettingDefault {
 static let mySettingKey = "mySetting"
 static let mySettingDefault: MySetting = .optionA
 
-// In init(), add one line — the generic `restore` overload handles the
+// In init(), add one line: the generic `restore` overload handles the
 // load-or-seed dance for any `RawRepresentable` (String raw value) setting:
 mySetting = restore(key: Settings.mySettingKey, default: Settings.mySettingDefault)
 ```
 
 `restore` is overloaded for the common storage shapes, so the same one-line call works for non-enum settings too:
 
-- `RawRepresentable` (String raw value) — enums like `MySetting` above.
-- `Bool` — e.g. `hasSeenOnboarding`.
-- `Int` — e.g. `gameHighScore`, `promptActionCount`.
-- `Date?` — `restore(key:)` (no default; returns `nil` and writes nothing when absent), e.g. `lastReviewPromptDate`.
+- `RawRepresentable` (String raw value), for enums like `MySetting` above.
+- `Bool`, e.g. `hasSeenOnboarding`.
+- `Int`, e.g. `gameHighScore`, `promptActionCount`.
+- `Date?`, via `restore(key:)` (no default; returns `nil` and writes nothing when absent), e.g. `lastReviewPromptDate`.
 
 3. **Add localization strings** to `L.swift` and `Localizable.xcstrings`
 
@@ -703,7 +703,7 @@ When the English version of a long text is edited, the German version must be re
 
 ### Widget Localization (WidgetL)
 
-The `KonjugierenWidget` extension ships as its own `.appex` bundle with its **own** string catalog, `KonjugierenWidget/Localizable.xcstrings` — separate from the app's `Konjugieren/Assets/Localizable.xcstrings`. Widget user-facing strings (gallery names/descriptions, Control Center labels, Live Activity "Wave"/"Game Over", quiz "Correct!"/"Incorrect") route through `WidgetL` (`KonjugierenWidget/WidgetL.swift`), the widget's analogue to the app's `L`. Catalog keys follow `L`'s `Group.member` convention.
+The `KonjugierenWidget` extension ships as its own `.appex` bundle with its **own** string catalog, `KonjugierenWidget/Localizable.xcstrings`, separate from the app's `Konjugieren/Assets/Localizable.xcstrings`. Widget user-facing strings (gallery names/descriptions, Control Center labels, Live Activity "Wave"/"Game Over", quiz "Correct!"/"Incorrect") route through `WidgetL` (`KonjugierenWidget/WidgetL.swift`), the widget's analogue to the app's `L`. Catalog keys follow `L`'s `Group.member` convention.
 
 `WidgetL` exposes **two accessor styles**, dictated by isolation and the type the call site needs:
 
@@ -727,8 +727,8 @@ enum WidgetL {
 
 Two important exceptions where strings **cannot** route through `WidgetL` and stay inline against the same catalog keys:
 
-1. **AppIntent titles and `@Parameter(title:)`** — `appintentsmetadataprocessor` parses source statically and requires a string literal or a direct `LocalizedStringResource(...)` initializer call, not an accessor. These four sites are inline by necessity.
-2. **`Shared/` intents (`OpenQuizIntent`, `OpenRandomVerbIntent`)** — `Shared/` compiles into **both** the app and widget targets, and `LocalizedStringResource` resolves against whichever bundle runs. Their keys therefore live in **both** `Localizable.xcstrings` catalogs.
+1. **AppIntent titles and `@Parameter(title:)`**: `appintentsmetadataprocessor` parses source statically and requires a string literal or a direct `LocalizedStringResource(...)` initializer call, not an accessor. These four sites are inline by necessity.
+2. **`Shared/` intents (`OpenQuizIntent`, `OpenRandomVerbIntent`)**: `Shared/` compiles into **both** the app and widget targets, and `LocalizedStringResource` resolves against whichever bundle runs. Their keys therefore live in **both** `Localizable.xcstrings` catalogs.
 
 ## VoiceOver and Mixed-Language Pronunciation
 

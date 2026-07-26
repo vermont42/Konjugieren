@@ -5483,6 +5483,21 @@ Evidence for that, from this same day: a plan arguing against em dashes was draf
 twenty-eight of them, and a `grep` rather than a careful re-read is what caught it. That anecdote is
 now in the style doc, because it is the most persuasive line in the section.
 
-Not done, and deliberately: `CLAUDE.md` still holds 25 em dashes outside the section I edited.
-Sweeping the repo's internal docs is the scope question `em_dash_sweep.md` step 1 puts to Josh, and
-answering it unilaterally in the middle of a different task would be the wrong way to decide it.
+`CLAUDE.md` was swept in the same session, at Josh's instruction: 29 em dashes across 25 lines, now
+zero. It is a useful rehearsal of the larger sweep because it is the first population where every
+one of the rule's four replacements was actually needed, and the counts came out roughly even: six
+periods, seven colons, three semicolons, three commas, and four matched pairs converted to
+parentheses. A single-replacement `sed` would have been wrong about two thirds of the time.
+
+The matched pairs are the ones worth having practiced on. `— the @MainActor var Current world, or
+any static —` brackets a parenthetical whose content already contains a comma, so commas would have
+produced a four-item list where a two-item one was meant. Parentheses are the only fix that keeps
+the sentence parseable, and there were four such pairs in one file. `em_dash_sweep.md` predicted
+this and now has a worked precedent behind the prediction.
+
+One en dash survives, correctly: `Clifford August Schmiesing (1904–1944)` in the note about the
+app's dedication. A numeric range is correct typography and the style doc says so explicitly. It is
+a small piece of luck that the rule's one carve-out is the line naming Josh's grandfather.
+
+The diff was 26 insertions against 26 deletions, which is the signature to look for: pure
+substitution, no structural churn.

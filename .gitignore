@@ -67,3 +67,12 @@ verbdata/gloss-review/shards/*.in.json
 # Reviewer raw child telemetry, as with the authoring run.
 verbdata/review/meta/
 verbdata/review/run.log
+
+# Em-dash sweep extracts: `sentences*.json`, `units.json`, and `xc-sentences.json` are pure build
+# products, re-extracted from the corpus by `new_round.py` at the start of each round, and they
+# total 7.9 MB across the eleven rounds. The `fixes*.json` files beside them are the opposite:
+# 5,611 hand decisions, one short code per dash, derivable from nothing. Those stay tracked, as do
+# the scripts. See the "Sweeping the em dashes" entry in docs/blog_notes.md.
+verbdata/style/sentences*.json
+verbdata/style/units.json
+verbdata/style/xc-sentences.json

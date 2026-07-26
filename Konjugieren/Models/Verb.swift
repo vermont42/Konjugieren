@@ -36,8 +36,8 @@ struct Verb: Identifiable, Hashable {
   let hits: Int
 
   /// True when `hits` is an editorial estimate rather than a measured DWDS count, because
-  /// the verb was imported while bulk querying was blocked. Affects nothing the user sees —
-  /// the rank derives from `hits` either way — and exists so the provisional population
+  /// the verb was imported while bulk querying was blocked. Affects nothing the user sees
+  /// (the rank derives from `hits` either way), and exists so the provisional population
   /// stays findable rather than quietly becoming permanent. See `hp` in `verb-sources.md`.
   let hitsAreProvisional: Bool
 
@@ -52,7 +52,7 @@ struct Verb: Identifiable, Hashable {
   /// auxiliary, the paradigm, or the prefix has more. See `Reading`.
   let readings: [Reading]
 
-  /// The reading that answers for the verb wherever a single answer is required — the
+  /// The reading that answers for the verb wherever a single answer is required: the
   /// browse list, the widget, deeplinks, and anything else with room for one gloss.
   var primaryReading: Reading {
     readings.first ?? Reading(

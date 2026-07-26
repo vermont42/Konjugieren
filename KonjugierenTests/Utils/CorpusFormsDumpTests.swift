@@ -39,19 +39,19 @@ import Testing
 //    stamm + ending with the prefix still attached ("anfängt"), because the app displays
 //    paradigms rather than sentences and a paradigm cell has no clause to strand a particle
 //    in. Real main-clause German writes "er fängt … an", which is the single largest
-//    matching problem this pipeline faces — 76% of the target verbs take a separable
+//    matching problem this pipeline faces: 76% of the target verbs take a separable
 //    prefix. So the split finite forms are SYNTHESIZED here rather than harvested, by
 //    dropping the separable run off each contiguous finite form.
 //
 // 3. Compound conjugationgroups are deliberately NOT enumerated. conjugateCompoundTense
 //    returns auxiliary + " " + secondPart, where the second part is either the
-//    Perfektpartizip or the bare infinitive — both of which this harness already emits
+//    Perfektpartizip or the bare infinitive, both of which this harness already emits
 //    directly. Walking the compound groups would add no form for the verb itself while
 //    mapping "habe" and "werde" onto every verb in the corpus, which is a false
 //    attestation: "habe" attests haben, and haben emits it from its own Präsens.
 //
 // Every reading is walked, not just the primary one, because readings differ in family and
-// therefore in forms — hängen is both hing and hängte, and both attest hängen.
+// therefore in forms: hängen is both hing and hängte, and both attest hängen.
 //
 // A form maps to SEVERAL verbs and disambiguation is deliberately left to the Phase 4
 // subagent, which has the sentence in front of it. Cf. Conjugar's fue → ir/ser.
@@ -150,7 +150,7 @@ struct CorpusFormsDumpTests {
   /// when the verb has no separable prefix.
   ///
   /// The `hasPrefix` test is not redundant with `run.isEmpty`. An ablaut group may fully
-  /// override the stem — the trailing `*` convention in AblautGroups.xml — and a full
+  /// override the stem (the trailing `*` convention in AblautGroups.xml) and a full
   /// override replaces the stem outright, prefix and all, so the run is not guaranteed to
   /// survive into the conjugated form. Dropping a fixed character count from such a form
   /// would silently emit a mangled token.

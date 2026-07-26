@@ -10,8 +10,8 @@ struct BrowseableFamilyTests {
   // The defect this suite exists to pin: verbsByPrefix bucketed verbs into a hand-curated
   // prefix list and silently dropped anything else, while verbCount kept counting the
   // dropped verbs. The Separable card said 2,035 and its own detail screen listed 1,245.
-  // Curation cannot close this — German's separable slot is open class, taking adjectives
-  // (tot-, frei-) and nouns (heim-) as well as particles — so the fix was a catch-all
+  // Curation cannot close this: German's separable slot is open class, taking adjectives
+  // (tot-, frei-) and nouns (heim-) as well as particles, so the fix was a catch-all
   // section rather than a longer list, and this test is what proves the catch-all is total.
   @Test(arguments: [BrowseableFamily.separable, BrowseableFamily.inseparable])
   func prefixSectionsAccountForEveryVerb(family: BrowseableFamily) {

@@ -11,7 +11,7 @@ struct VerbTests {
   // of order because of it: the import script inserted back-to-front without accounting for
   // repeated insert() at one index reversing the batch, so verbs sharing an anchor came out
   // as glimmen before gleiten. Verb.verbs is a dictionary, so file order survives nowhere in
-  // the parsed model — the raw XML is the only place this can be checked.
+  // the parsed model; the raw XML is the only place this can be checked.
   @Test func verbsXMLIsAlphabeticallyOrdered() throws {
     let url = try #require(Bundle(for: VerbParser.self).url(forResource: "Verbs", withExtension: "xml"))
     let text = try String(contentsOf: url, encoding: .utf8)
@@ -78,8 +78,8 @@ struct VerbTests {
   @Test func onlyImportedTranchesHaveProvisionalHitCounts() {
     // The `hp` attribute shipped on 2026-07-19 with no verb carrying it: all 990 counts came
     // from DWDS. Three tranches have since been imported while bulk querying was still blocked
-    // pending BBAW — 78 strong bases (roadmap step 7), 2,315 prefixed derivatives (step 8), and
-    // 189 more derivatives that step 8 had deferred (step 8b) — so 2,582 verbs carry an estimate
+    // pending BBAW: 78 strong bases (roadmap step 7), 2,315 prefixed derivatives (step 8), and
+    // 189 more derivatives that step 8 had deferred (step 8b), so 2,582 verbs carry an estimate
     // rather than a measurement. Each tranche is run to a fixpoint: importing one makes further
     // derivatives classifiable, because a double-prefix verb needs its inner base to ship before
     // anything proposes separating it.

@@ -89,7 +89,7 @@ private struct Classification: Encodable {
   ///
   /// Without this the at-odds count silently undercounts. `ablautGroupIsNew` catches only a
   /// verb whose repair needs a group that does not ship; a verb repairable with a group that
-  /// *does* ship — beschreiben, scheinen, schwimmen — was reported "verified" while the app
+  /// *does* ship (beschreiben, scheinen, schwimmen) was reported "verified" while the app
   /// went on conjugating it wrongly.
   let shippedEncodingFailed: Bool
   /// How many readings the verb ships with. A verb with more than one cannot be judged by
@@ -155,7 +155,7 @@ private final class Classifier {
 
     // For a verb that already ships, the encoding in Verbs.xml is the hypothesis that
     // matters. Testing it first keeps the search from reporting an equivalent-but-
-    // different encoding — n^eh^men for the shipped n^ehm^en — as though the shipped
+    // different encoding (n^eh^men for the shipped n^ehm^en) as though the shipped
     // one were wrong.
     if candidate.alreadyShipping, let shipped = originalVerbs[candidate.word] {
       Verb.verbs[candidate.word] = shipped
@@ -307,7 +307,7 @@ private final class Classifier {
         )
 
         // A group whose every replacement merely extends the original region encodes
-        // no ablaut at all — it is Conjugator's missing epenthetic e wearing a
+        // no ablaut at all; it is Conjugator's missing epenthetic e wearing a
         // costume, arbeit → arbeite. Such a verb is weak and belongs in the queue,
         // not in a fabricated ablaut group. Genuine groups that happen to carry an
         // e for the same phonological reason, like binden's INDE beside AND, survive
@@ -321,7 +321,7 @@ private final class Classifier {
         let sortedGroups = shippedAblautGroups.sorted { $0.key < $1.key }
         // A replacement equal to the region it replaces spells no new letters; it exists only
         // to mark the region for the mixed-case highlighting convention. treten carries one --
-        // getrETen has the same et as treten -- and `minimize` correctly drops it from a
+        // getrETen has the same et as treten, and `minimize` correctly drops it from a
         // proposal, since removing it still reproduces Wiktionary. That asymmetry alone kept
         // 20 derivatives of treten from matching a group they conjugate identically to. Ignore
         // such entries when comparing, and the derivative inherits the family's highlighting
@@ -348,7 +348,7 @@ private final class Classifier {
         // shortest replacement that lands: for anschreien it reads I from schrien, because
         // schr + I + en spells it, and IE from schrie, where no ending follows. That split
         // pattern verifies and matches nothing, so eight schreien derivatives proposed a new
-        // group -- while IE everywhere, the group schreien itself ships, verifies just as well
+        // group: while IE everywhere, the group schreien itself ships, verifies just as well
         // now that Conjugator absorbs the ending-initial e (schrIE + en is schrIEn).
         //
         // So before giving up, try the shipping groups themselves against the full table. This
@@ -399,8 +399,8 @@ private final class Classifier {
   ///
   /// The replacement is searched rather than read off the probe because Conjugator's
   /// ending depends on the stem's final letter: beißen's Präsens 2s is beißt, not
-  /// beißst, so a probe's ending is not the real one. Only the probe's head — the
-  /// untouched text to the left of the region — is reliable, and it bounds the search
+  /// beißst, so a probe's ending is not the real one. Only the probe's head, the
+  /// untouched text to the left of the region, is reliable, and it bounds the search
   /// to the suffixes of the expected form.
   private func derive(
     word: String,
@@ -484,7 +484,7 @@ private final class Classifier {
     return nil
   }
 
-  /// Drops every entry the Conjugator can infer on its own — chiefly the e→i
+  /// Drops every entry the Conjugator can infer on its own, chiefly the e→i
   /// Imperativ stem change, which `applyEToIStemChange` derives from the Präsens 2s
   /// ablaut. Without this the derived group would never equal a shipped one.
   private func minimize(
@@ -605,8 +605,8 @@ private final class Classifier {
     let word = candidate.word
     var hypotheses: [[Prefix]] = []
 
-    // The Perfektpartizip usually decides separability — an+ge+kommen against
-    // ver+standen — but Wiktionary omits the ge on some doubly prefixed verbs, so a
+    // The Perfektpartizip usually decides separability, an+ge+kommen against
+    // ver+standen, but Wiktionary omits the ge on some doubly prefixed verbs, so a
     // finite form written with a trailing particle counts as evidence too.
     let participles = candidate.forms["perfektpartizip"] ?? []
     let split = Set(candidate.forms.values.flatMap { $0 }.compactMap { $0.split(separator: " ").last.map(String.init) })
@@ -620,7 +620,7 @@ private final class Classifier {
     // the participle's ge- *after* a separable first element, so wherever Wiktionary writes
     // ge- somewhere other than the front, the text before it names the element. Reading the
     // head off each participle needs no inventory and no maintenance, and it generalizes
-    // past particles to the adjective and noun compounds that behave identically —
+    // past particles to the adjective and noun compounds that behave identically:
     // kaputtgemacht, eisgelaufen, achtgegeben. A wrong guess costs nothing: every hypothesis
     // still has to reproduce the entire table before it is accepted.
     //
@@ -646,7 +646,7 @@ private final class Classifier {
         separableHeads.append(prefix)
       } else if split.contains(prefix) == false && participles.contains(where: { $0.hasPrefix(prefix) && !$0.hasPrefix(prefix + "ge") }) {
         // No ge after the particle is itself the signature of a separable prefix sitting
-        // on an already-prefixed base — abbekommen, not abgebekommen. It is not evidence
+        // on an already-prefixed base: abbekommen, not abgebekommen. It is not evidence
         // of a single separable prefix, so it seeds only the two-prefix hypotheses below.
         separableHeads.append(prefix)
       }
@@ -655,7 +655,7 @@ private final class Classifier {
     // that shows ge- *in front of the candidate prefix* refutes the hypothesis: gebebt rules
     // be- out of beben, and gegeigt rules ge- out of geigen. Testing only for a leading ge-
     // is not enough, because a verb whose prefix genuinely is ge- also starts its participle
-    // with one — gehören, gehört. The old escape hatch for that case read `word.hasPrefix("ge")`,
+    // with one: gehören, gehört. The old escape hatch for that case read `word.hasPrefix("ge")`,
     // which is true of every ge-initial word and so admitted geigen, geifern and geisseln as
     // ge*-verbs; each then needed a fabricated pp-only ablaut to put the swallowed ge- back.
     // Comparing against ge- plus the prefix separates the two and survives ablaut, which the

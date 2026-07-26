@@ -438,7 +438,7 @@ struct QuizItem: Identifiable {
   let acceptableAnswers: Set<String>
   /// Which of the verb's readings this question asks about. The prompt shows this reading's
   /// gloss, so the learner knows whether hängen here means "be suspended" or "suspend
-  /// something" — the two inflect differently.
+  /// something": the two inflect differently.
   let readingIndex: Int
   var userAnswer: String?
   var isCorrect: Bool?

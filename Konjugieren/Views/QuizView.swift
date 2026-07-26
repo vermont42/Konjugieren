@@ -146,7 +146,7 @@ struct QuizView: View {
               .accessibilityLabel(Text(verbatim: MixedCaseAccessibility.accessibilityLabel(for: lastCorrect)))
           }
 
-          // TODO: 1.0-disabled surface — FM hallucinates fake grammar rules
+          // TODO: 1.0-disabled surface. FM hallucinates fake grammar rules
           // (e.g., singen Präteritum → "-en changes to -t"). See "Currently
           // disabled in 1.0" in docs/cloud-llm-tier.md. Restore when
           // HybridLanguageModelService ships.

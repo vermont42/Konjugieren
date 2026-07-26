@@ -19,7 +19,7 @@ enum Conjugator {
   // regional reading pass the auxiliary explicitly; see RegionalConjugator.
   //
   // `readingIndex` selects among a verb's readings, which may differ in auxiliary, family,
-  // and prefix all at once — hängen inflects strong when intransitive and weak when
+  // and prefix all at once: hängen inflects strong when intransitive and weak when
   // transitive. It defaults to the primary reading, so existing call sites are unaffected.
   static func conjugate(
     infinitiv: String,
@@ -146,8 +146,8 @@ enum Conjugator {
 
       let imperativStamm = newStamm != stamm ? newStamm : applyEToIStemChange(stamm: stamm, reading: reading)
 
-      // A strong verb that changes its stem here keeps the bare imperative — gilt, sieh,
-      // nimm — while an unchanged stem takes the epenthetic -e: arbeite, atme, finde.
+      // A strong verb that changes its stem here keeps the bare imperative (gilt, sieh,
+      // nimm) while an unchanged stem takes the epenthetic -e: arbeite, atme, finde.
       let needsE = imperativStamm == stamm && needsEpentheticE(stamm: imperativStamm)
       let form = needsE ? imperativStamm + "e" : imperativStamm
       return .success(withSeparablePrefix(reading: reading, form: form))

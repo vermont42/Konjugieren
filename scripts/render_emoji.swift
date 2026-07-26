@@ -1,7 +1,7 @@
 // Renders emoji glyphs to PNG assets in Konjugieren/Assets/Assets.xcassets.
 //
 // Why this script exists: iOS 26 simulators (and possibly real devices on this
-// iOS) cannot render certain Apple Color Emoji glyphs through any text path —
+// iOS) cannot render certain Apple Color Emoji glyphs through any text path:
 // SwiftUI Text, AttributedString, UILabel, UITextView, and even SwiftUI's
 // ImageRenderer all produce [?] tofu glyphs for the regional flag tag sequence
 // (🏴󠁧󠁢󠁥󠁮󠁧󠁿) and 🐎. macOS's NSAttributedString → NSImage rendering pipeline

@@ -5602,3 +5602,162 @@ so as a schedule rather than a suggestion, and it gained the note that being las
 rather than a consolation: the etymologies will arrive already swept for punctuation and already
 audited for one factual claim, so a disagreement it finds is likelier to be a real contradiction than
 an artifact of text that nothing had ever read.
+
+## Sweeping the em dashes, all eleven rounds (2026-07-26)
+
+Executed `prompts/em_dash_sweep.md`. Every count in that plan reproduced exactly before anything was
+touched: 10,742 em dashes in `Etymologies.json`, 138 en dashes, 250 double hyphens, 4,372 in the
+`source` field of `ExampleSentences.json`, and the same two Claude-authored English sentences,
+`ausschauen` and `daherreden`. The plan was not stale, so its arithmetic could be trusted and its
+dedup argument acted on directly.
+
+**The sweep is complete.** All 11,075 in-scope dashes in `Etymologies.json` are gone, along with
+every in-scope dash in the string catalog, the Swift sources, and the two authored example
+sentences. It took eleven rounds and 5,611 individual sentence decisions. An earlier draft of this
+entry stopped at round two and reported the corpus as a little over half swept; that headline is
+superseded, and the resume instructions it carried are kept below only as a record of the method,
+since `cognate_precision.md` will want the same machinery.
+
+### The plan said this was not a `sed`, and the data agreed
+
+Rather than take that on faith, the sweep measured it. After 1,022 hand decisions had accumulated, a
+script grouped them by the two features a rule could cheaply see: whether the sentence already
+contained a colon, and what kind of word followed the dash. The largest bucket, 451 single-dash
+sentences with no preceding colon and an ordinary word after the dash, split **49% colon against 42%
+comma**. Nothing separates those two populations except whether the trailing material is an
+explanatory gloss or an appositive noun phrase, which is a judgment about the clause and not a
+feature any regex sees. A rule would therefore have disagreed with considered judgment on roughly
+two-fifths of the biggest class. The plan's warning was right, and it is now right with a number
+attached.
+
+### The machinery, which is the reusable part
+
+Five scripts now live in `verbdata/style/`, and they are the thing to reach for next time.
+
+- `extract_units.py` emits every distinct bullet line and prose paragraph carrying a dash, with its
+  occurrence count and the verbs that carry it. It takes a `--pattern` flag because
+  `cognate_precision.md` wants the same dedup over the same strings for a different defect, exactly
+  as both plans ask.
+- `dashfix.py` applies **one short code per dash**: `:` `,` `;` `.` `(` `)` `),` `:^` `-` `=literal`
+  `K`. This is the decision that made the volume affordable without giving up judgment. Retyping
+  5,600 whole sentences of text dense with `~`, `„ “`, `*`, IPA and reconstructed forms would have
+  introduced silent transcription errors that no test in this repo could catch. Under the code
+  scheme the markup is never retyped, so it cannot be corrupted, and the reviewer still rules on
+  every individual dash.
+- `review.py` prints the next unreviewed batch, ordered by how many corpus sites carry the sentence.
+- `xcstrings_units.py` does extract-and-apply for a `.xcstrings` catalog.
+- `new_round.py N` archives the previous round's `fixes.json` and `sentences.json`, re-extracts from
+  the corpus as it now stands, and writes a fresh empty `fixes.json`. It was written after round two,
+  when the obvious approach of accumulating decisions in one file stopped working: `--apply` rewrites
+  the corpus, so the previous round's "before" strings no longer occur in it, and a stale entry would
+  quietly match nothing. Re-extracting each round is also the only way the remaining population gets
+  counted correctly, which is what made "617 left in en, 738 in de" a number worth trusting.
+
+Two guards in `dashfix.py` were written after nearly getting something wrong, and both should stay.
+The first refuses `:^` (colon plus capitalise, which German needs when a full sentence follows a
+colon) whenever the next character is `~`: upcasing `~vorbei~` to `~Vorbei~` would silently change
+which German word the entry claims to discuss, and a semicolon avoids the question entirely. The
+second is the `K` code, meaning *keep this dash*, needed because an exempt citation can sit inside a
+sentence whose other dashes are in scope.
+
+### Scope decisions made during the sweep
+
+The plan resolved the big ones. Three more came up and were decided by extending its own logic, that
+a delimiter spelled with a dash is not prose:
+
+- **Bibliography and citation headings in `Localizable.xcstrings` stay.** `creditsText` is a source
+  list (`~Kafka — Der Proceß~ (Project Gutenberg)`, `~Berufsbildungsbericht 2024~ — BMBF`) and the
+  Info articles' section headings are citations (`` `Goethe — Die Leiden des jungen Werthers (1774)` ``).
+  These are the same `Author — Work` separator the plan already exempted in the `source` field, and
+  one of them, `Strategie Künstliche Intelligenz — Fortschreibung 2020`, has the dash inside the real
+  document title. 162 dashes remain in the catalog on this basis; the other 691 were fixed.
+  Classification had to be positional rather than by line, because `RichTextView` requires headings
+  to concatenate with no preceding newline, so a heading arrives glued to the end of a prose sentence.
+- **Swift string literals stay; Swift comments were swept.** `return "—"` and `conjugation = "—"` are
+  placeholder glyphs standing in for an absent conjugation, the typographic equivalent of "n/a".
+  `Text("— \(source)")` and `Text("\(infinitiv) — \(translation)")` are the attribution separator.
+  `@Test("Seconds only (1–59)")` is a numeric range, which `english_writing_style.md` protects
+  explicitly. That left 39 real comments, which were fixed. The plan's table said 45 Swift dashes and
+  the count is now 50, so the tail grew slightly since the plan was written.
+- **The widget catalog's three dashes stay**, all instances of `— %@`, matching the Swift call sites
+  above. The plan listed them as in scope; on inspection they are the same delimiter class.
+
+### The two authored example sentences needed re-punctuation, not de-dashing
+
+Both are English translations of Claude-authored German, and in both the German joins two independent
+clauses with a bare comma, which German licenses and English does not. So `english_writing_style.md`'s
+comma-splice section governs as much as its dash section: "You really look tired today — did you
+sleep badly?" became two sentences, and "Don't talk such nonsense — you weren't even there at the
+time!" took a semicolon. Dropping the dash for a comma would have traded one violation for another.
+
+### Two bugs worth remembering
+
+**The en dash span was too narrow.** It required whitespace on both sides, to protect numeric ranges
+like `1904–1944` and `12.–13. Jahrhundert`. But `Conjuguer –, aber` has punctuation on the right and
+is plainly prose, so the rule is now *whitespace before, anything after*. It caught exactly one more
+dash per file, which is a good ratio for a rule that is now correct in principle.
+
+**`json.dumps` defaults to `ensure_ascii=True`, and that silently matched nothing.** The first
+`.xcstrings` apply reported all 576 fixes unmatched. Xcode writes the catalog as literal UTF-8, so
+escaping every `„` and emoji to `\uXXXX` produced strings that appear nowhere in the file. It failed
+safe, changing nothing, but a version that half-matched would have been much worse. Also discovered
+here: some dashes in that catalog are flanked by **thin spaces** (U+2009) rather than ordinary ones,
+which `\s` happens to cover.
+
+For the record, `git diff --stat` on the catalog reads 49 insertions and 49 deletions, one per
+changed string unit and no structural churn, which is the check `CLAUDE.md` asks for. `Etymologies.json`
+round-trips byte-identically through `json.dumps(indent=2)`, so it can be rewritten wholesale without
+the reformatting hazard the `.xcstrings` rule warns about.
+
+### Verified exclusions
+
+- Zero changes under `docs/` or `prompts/` from this sweep. (`CLAUDE.md`, `prompts/example_generation.md`
+  and `prompts/uses_etymologies.md` do show changes in the working tree; those are Josh's concurrent
+  edits about `/usage` probe cost and are unrelated.)
+- Zero changes to any `source` field: still exactly 4,372.
+- Exactly two sentences changed, both in `verbdata/authored/provenance.json`. The 277 dashes in mined
+  quotations and their translations are untouched.
+- `scripts/check_docs.py` reports 0 problems.
+
+### How the remaining 5,161 got done
+
+The prediction that the tail would take several sessions was wrong, and the reason is worth writing
+down. Rounds one and two were slow because each sentence was being weighed on its own. By round
+four a stable set of four shapes had emerged, and after that the reading went at roughly 130
+sentences per batch:
+
+- The dash introduces a **list or an example**, so a colon. `~Zubinden~ meint das Verschließen durch
+  Zusammenbinden: einen Sack, einen Schnürsenkel oder einen Beutel.`
+- The dash introduces an **appositive or a gloss**, so a comma. `~Zerstören~ bedeutet „vernichten“,
+  etymologisch „in Stücke stören“.`
+- The dash joins a genuinely **independent clause**, so a semicolon. `~Wegreißen~ trennt etwas mit
+  einem Ruck von seinem Ort; die Gewalt des Reißens steckt schon im Grundverb.`
+- A **pair** of dashes brackets a parenthetical, so parentheses, with the `),` code when a
+  subordinate clause follows.
+
+Those four cover almost everything, which does not contradict the finding above that no rule can
+pick between them: the classification is cheap for a reader and invisible to a regex. The 49/42
+colon-comma split in the largest bucket is exactly the boundary between shape one and shape two.
+
+Two sub-cases needed care. Where the bracketed material already contained parentheses, as in
+`("beweglich") — "selbstbeweglich" —`, a pair of commas beat a second pair of parentheses. And a
+sentence that already carried a colon or a semicolon usually wanted the other mark for its dash,
+since German tolerates a colon and a semicolon in one sentence far better than two colons.
+
+Because English and German entries are close translations of each other, coding one language first
+made the other faster: `d0030` and `e0000` are the same sentence about `reinstecken`, and they
+almost always want the same shape. Almost, but not reliably enough to automate, so both were read.
+
+### Final state
+
+- `Etymologies.json`: 0 dash spans remaining, in either language. Still 3,572 verbs per language,
+  valid JSON, and byte-identical under `json.dumps(indent=2)` round-trip.
+- `git diff --stat` reads 5,628 insertions and 5,628 deletions across the three data files, one line
+  per changed value and no structural churn.
+- 211 tests in 32 suites pass. `scripts/check_docs.py` reports 0 problems.
+- `verbdata/style/fixes-round1.json` through `fixes-round10.json` plus the live `fixes.json` record
+  all 5,611 decisions. They are archives, not inputs: each round rewrote the corpus, so replaying an
+  older file would match nothing.
+
+The machinery is the durable output. `cognate_precision.md` wants the same dedup over the same
+strings for a different defect, and `extract_units.py` already takes the `--pattern` flag for it.

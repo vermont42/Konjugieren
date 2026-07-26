@@ -8,7 +8,7 @@
 /// differs in prefix separability. The unit that varies is therefore the reading, not the
 /// auxiliary, and a verb owns an ordered list of them. See `prompts/dual_auxiliary.md`.
 ///
-/// Variation by *where the speaker lives* is deliberately not modeled here — two readings
+/// Variation by *where the speaker lives* is deliberately not modeled here; two readings
 /// differing only in an auxiliary would tell every user both forms are available to them
 /// personally, which is false for any one speaker. That is `auxiliaryIsRegional`.
 struct Reading: Hashable {

@@ -8,8 +8,8 @@ struct VerbView: View {
   @State private var readingIndex = 0
   private var settings: Settings { Current.settings }
 
-  /// The reading the screen is currently showing. Every piece of metadata below — family,
-  /// auxiliary, prefix, ablaut group — belongs to the reading rather than to the verb,
+  /// The reading the screen is currently showing. Every piece of metadata below (family,
+  /// auxiliary, prefix, ablaut group) belongs to the reading rather than to the verb,
   /// because hängen is strong in one reading and weak in the other.
   private var reading: Reading {
     verb.reading(at: readingIndex) ?? verb.primaryReading
@@ -188,7 +188,7 @@ struct VerbView: View {
   //
   // Deliberately not a segmented Picker, for two reasons found by inspection. UISegmentedControl
   // renders every segment on one line and truncates the overflow, and these labels are glosses
-  // of arbitrary length — antreten's "take up (office), begin (a journey)" lost half of itself,
+  // of arbitrary length: antreten's "take up (office), begin (a journey)" lost half of itself,
   // which defeats the point of naming the readings at all. It also exposed itself to VoiceOver
   // as an AXTabGroup with no children, so the segments could not be reached by label.
   //
@@ -199,7 +199,7 @@ struct VerbView: View {
   // Nothing accessibility-related belongs on the container. Both a label on the Picker this
   // replaced and an .accessibilityElement(children: .contain) plus .accessibilityLabel here
   // collapsed the whole control into one element named "Meaning", leaving VoiceOver no way to
-  // tell the readings apart — the exact failure the control exists to avoid. The buttons name
+  // tell the readings apart, the exact failure the control exists to avoid. The buttons name
   // themselves by their glosses and carry .isSelected, which is what a user needs.
   private var readingPicker: some View {
     ViewThatFits(in: .horizontal) {

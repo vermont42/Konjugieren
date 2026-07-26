@@ -73,7 +73,7 @@ struct TutorView: View {
         ScrollViewReader { proxy in
           ScrollView {
             VStack(alignment: .leading, spacing: Layout.doubleDefaultSpacing) {
-              // TODO: 1.0-disabled surface — recommendPractice hallucinates from
+              // TODO: 1.0-disabled surface. recommendPractice hallucinates from
               // tense labels (e.g., "Past Indicative" → "errors in recalling past
               // events"). See "Currently disabled in 1.0" in docs/cloud-llm-tier.md.
               // Restore when HybridLanguageModelService ships AND the input shape
@@ -382,7 +382,7 @@ struct TutorView: View {
         recommendation = try await Current.languageModelService.recommendPractice(aggregatedErrors: aggregated)
         Current.soundPlayer.play(.pop)
       } catch {
-        // Silently fail — recommendations are supplementary
+        // Silently fail: recommendations are supplementary
       }
       isLoadingRecommendation = false
     }

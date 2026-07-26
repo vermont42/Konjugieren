@@ -5170,5 +5170,22 @@ meaning that is already stated, rather than standing in for one. And each new gl
 single sense, so the commas separate synonyms only.
 
 This closes everything the sweep knew about. What remains unaudited is what was never looked at: the
-43 multi-`<reading>` verbs, which want the dual-paradigm data model before "the gloss" is even
-well-defined for them.
+43 multi-`<reading>` verbs.
+
+**Correction, added the same day.** An earlier draft of this paragraph said those 43 want the
+dual-paradigm data model before "the gloss" is well-defined for them. That is wrong, and the entry of
+2026-07-24 above already says why: readings distinguish *meanings*, while a dual paradigm is one
+meaning with two form sets. They are unrelated problems.
+
+A multi-`<reading>` verb is the **dual-auxiliary** case, and it is already modelled —
+`<reading tn="break off, cancel" ag="sprechen" />` beside
+`<reading tn="break off, snap (come apart)" ag="sprechen" ay="s" />` on *abbrechen*: same ablaut
+group, same conjugation, differing only in perfect auxiliary and meaning. Each reading has its own
+gloss, and each is independently auditable today.
+
+The actual blocker is smaller and purely mechanical: `apply_gloss_corrections.py` refuses a verb
+carrying two `tn=` values because "replace the tn in this element" does not say which one, so
+`build_gloss_shards.py` excludes them rather than emit findings nothing could apply. Keying a
+correction by `(verb, reading index)` — or by its `old` value, which is already asserted — resolves
+it, and the shard builder would emit one record per reading instead of one per verb. That is an
+afternoon, not a data-model migration, and it does not wait on anything.

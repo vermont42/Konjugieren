@@ -4790,3 +4790,106 @@ The lesson is the one this repo keeps relearning in different costumes: a normal
 in a helper silently becomes an empirical claim. The 56% was not a typo or a slip of reasoning; it was
 a correct measurement of the wrong thing, and it looked exactly like a correct measurement of the right
 thing until the builder printed a number too extreme to believe.
+
+## App Store media pipeline hardened, ported from Conjuguer (2026-07-25)
+
+Conjuguer's 2.0 upload was rejected — all four preview videos for wrong dimensions, and
+its screenshots would have been rejected for carrying alpha channels. After fixing that,
+Josh asked for the same hardening here. Probing this repo's media first turned up three
+latent problems and one useful piece of evidence.
+
+**Latent problems found:**
+
+1. **Screenshots carry alpha.** `axe screenshot` writes RGBA, and Apple's spec is explicit:
+   "Images can't include alpha channels or transparencies." Of `version_2`'s 40 files, the
+   **36 driver-produced ones are RGBA**; only the four hand-made `10.png` slots are RGB.
+   That split is the diagnosis — the driver is the source, not the editing. Fixed by
+   flattening inside `take_screenshot()`.
+2. **One shipped preview is over the hard limit.** `English iPad 2 - 1200x1600.mov` is
+   **30.015 s** against a 30 s maximum. Its siblings run 29.93–30.00. `video_script.md`
+   called for "exactly 34 seconds" of raw footage minus four seconds of transitions,
+   arithmetic that lands precisely on the cap with zero margin for rounding — so a drift
+   past it was invisible. Retargeted to 29 s.
+3. **The iPad previews were originally the wrong size.** `English iPad 2.mov` and
+   `German iPad 2.mov` are 2048 × 2732 — a *screenshot* size — which is why the
+   `- 1200x1600.mov` re-renders exist beside them. That is the same confusion that sank
+   Conjuguer's upload, caught here at some earlier point and never written down. Now it is,
+   in a new "App Store preview specifications" section (this repo had no preview-video doc
+   at all).
+
+**The evidence, which changed the design of the shared tool:** these previews *shipped* —
+1.2 is live — while carrying H.264 Level 5.0/5.1, 125 kbps audio (spec says 256), and a
+third timecode stream. So App Store Connect enforces **dimensions** strictly and tolerates
+the codec-detail deviations. My first version of `verify_store_media.sh` (written in
+Conjuguer earlier today) failed all of them, which would have blocked files that
+demonstrably shipped. It now grades in two tiers — **blocking** for wrong dimensions,
+alpha, and duration outside 15–30 s; **advisory** for the rest — with the reasoning and
+this evidence recorded in a comment at the severity split, so a future reader can promote
+an item if one ever does block an upload. Conjuguer's copy and docs were corrected to
+match; I had overstated the case there.
+
+Changes: `scripts/verify_store_media.sh` (new, shared with Conjuguer),
+`scripts/take_screenshots.sh` (flatten at capture), `docs/screenshot-plan.md` (alpha +
+confirm-the-tile section with downscale recipes), `docs/video_script.md` (duration margin,
+preview specs, ffmpeg normalization), `docs/screenshot-playbook.md` (Outputs warning,
+two Known Gotchas).
+
+Not done, because it changes shipped artifacts rather than the pipeline: `version_2`'s 36
+RGBA files are still on disk as-is. They only matter if that bundle is reused for a future
+submission; flatten then.
+
+### Follow-up: non-square pixels, and why this repo's files were the diagnostic (2026-07-25)
+
+Conjuguer's iPad preview was rejected a second time — correct 1200 × 1600 dimensions,
+correct Media Manager tile, same "dimensions are wrong" error. The cause was
+`ffmpeg`'s `scale=W:-2`, which rounds the height to an even number and compensates by
+writing a **non-square sample aspect ratio** (`SAR 2048:2049`), so the file's *display*
+aspect was 512:683 rather than 3:4 while `width`/`height` still read 1200 × 1600.
+
+**This repo's shipped files are what made it diagnosable.** Probing
+`~/Desktop/Final/Konjugieren/*1200x1600.mov` — files known to have been accepted by App
+Store Connect — showed `SAR 1:1, DAR 3:4`. A field-by-field diff of known-good against
+known-bad located the problem immediately; Apple's spec page never mentions pixel aspect
+ratio at all. Second time today that Konjugieren's shipped media settled a question
+Conjuguer's docs couldn't (the first being which spec deviations App Store Connect
+actually enforces).
+
+`verify_store_media.sh` now fails any SAR that isn't 1:1, in both repos, and the ffmpeg
+recipe in `video_script.md` gained `setsar=1`. Konjugieren's own previews pass the new
+check unchanged, as expected.
+
+### Outcome: Conjuguer's 2.0 media was accepted (2026-07-25)
+
+Closing the loop on the pipeline fixes ported here. Conjuguer submitted successfully with
+886 × 1920 / 1200 × 1600 previews at `SAR 1:1`, 29.000 s, H.264 High L4.0, 256 kbps stereo
+audio, two streams, and flattened screenshots. So the sizes and the square-pixel
+requirement in `video_script.md` are confirmed, not inferred.
+
+Two honest limits on that evidence. The accepted re-encode changed both SAR *and* duration
+at once, so it doesn't isolate which mattered (SAR almost certainly — this repo shipped a
+30.015 s preview). And since those files were conformant on every advisory item, nothing
+new was learned about the advisory tier; it still rests entirely on this repo's shipped
+1.2 media.
+
+Also added to `screenshot-plan.md`: the alpha rejection is a *format* check, not a content
+check. Conjuguer's rejected captures were fully opaque at every pixel and were refused
+anyway. `version_2`'s 36 RGBA files will therefore be rejected whatever they look like.
+
+### Resolved: Media Manager took the native sizes (2026-07-25)
+
+Josh uploaded the **6.9" (1320 × 2868)** and **13" (2064 × 2752)** sets — the driver's
+native output, unchanged — through **View All Sizes in Media Manager**. So the whole
+tile-mismatch problem has a cleaner answer than "downscale to match the tile": the version
+page's single tile is a stale view, and Media Manager exposes every display size
+regardless. The 6.5" and 12.9" sets I generated were never needed.
+
+Both repos' docs now lead with the Media Manager path and demote the downscale recipes to
+fallbacks, rather than presenting the two as equal options. Worth the edit: the earlier
+wording would have sent a future reader down an unnecessary resize for an upload that
+works natively — and lossily, since those recipes crop 12 px of iPhone content.
+
+Score for the day, for whoever reads this next: three rejections, three distinct causes —
+preview dimensions (screenshot sizes in the video doc), screenshot alpha channels (a
+format check on a fully-opaque channel), and non-square pixels (`scale=W:-2` writing a
+compensating SAR). Only the first was in any document beforehand, and it was in there
+wrong.

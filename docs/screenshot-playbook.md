@@ -69,6 +69,14 @@ The `--device` value is the device-class label (with parens), not the simulator'
 
 The driver writes timestamped PNGs to `docs/screenshots/<timestamp>-<device>-<lang>-<view>.png` (gitignored). One file per cell per run; iterating with `--view` accumulates timestamped versions.
 
+> **Alpha channels — flattened at capture since 2026-07-25.** `axe screenshot` writes
+> **RGBA**, and App Store Connect rejects any screenshot with an alpha channel ("Images
+> can't include alpha channels or transparencies"). `take_screenshot()` now pipes each
+> capture through `magick … -alpha remove -alpha off`. Two consequences: **`magick` is now
+> effectively required** (the driver warns and continues without it, producing rejectable
+> PNGs), and **`version_2` is non-compliant** — its 36 driver-produced files are RGBA,
+> while only the four hand-made `10.png` slots are RGB. Flatten before reusing it.
+
 For App Store Connect upload, copy the latest version of each cell to `docs/screenshots/latest/`:
 
 ```bash
@@ -344,6 +352,18 @@ Visual review will surface bad cells. Re-run any single one via the `--device` /
 
 ## Known Gotchas
 
+- **Run `scripts/verify_store_media.sh` before every upload.** It walks a bundle (or the
+  `~/Desktop/Final/Konjugieren` video folder) and asserts accepted dimensions, absence of
+  alpha, and — for previews — duration bounds, H.264 level, stream count, frame rate, and
+  audio bit rate. It grades in two tiers: **blocking** for things known to stop an upload
+  (wrong dimensions, alpha, duration outside 15–30 s) and **advisory** for spec deviations
+  this app has shipped anyway (Level 5.0/5.1, 125 kbps audio, a stray timecode track). None
+  of it is visible in a screenshot review.
+- **A valid screenshot size can still be the wrong size.** App Store Connect exposes one
+  tile per device family, and which size it wants follows what the app shipped last time.
+  Konjugieren's 6.9"/13" captures have matched its tiles so far; Conjuguer's 2.0 page
+  offered only a 6.5" tile and rejected the same 1320 × 2868 size. Read the drop zone
+  before building a bundle — see [`docs/screenshot-plan.md`](screenshot-plan.md).
 - **TipKit popovers surface mid-sweep — now suppressible.** The "Try the Quiz" tip renders on `verb_browse` (sweep view #1) on any fresh install, and other tips can appear elsewhere depending on TipKit eligibility. An earlier revision of this playbook said the driver couldn't suppress these and told you to visually review instead; `TipDisplay.tipsEnabled` now handles it (see *Flip the kill switches first*). Visual review is still worth doing, but it is no longer the only defense.
 - **Apple Intelligence Tutor surfaces are gated on Intel-Mac hosts, and this *does* affect the sweep.** Per CLAUDE.md, the Tutor row in InfoBrowseView, the `ErrorExplainerView` card in QuizView, and the Tutor page in OnboardingView don't render as live features on Intel-Mac simulators with iOS 26.3+. `info_browse` is one of the 9 target views, and `InfoBrowseView` doesn't simply omit the tutor when the model is unavailable — it substitutes `TutorUnavailableRowView`, which states the reason ("Apple Intelligence is being configured…" / "…isn't available on this device."). So both `info_browse` shots carry that row unless `TutorDisplay.tutorUnavailableRowEnabled` is set `false` (see *Disable the tutor row first* above). An earlier revision of this playbook claimed no target view was Tutor-gated; that was wrong.
 - **Review-prompt cooldown is per-install.** `disable_review_prompt` pre-seeds `lastReviewPromptDate` for in-run prompts, but a manual screenshot capture of the StoreKit modal would still require uninstalling/reinstalling first.

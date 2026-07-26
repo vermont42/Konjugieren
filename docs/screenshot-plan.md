@@ -17,3 +17,69 @@ Create iPhone 6.9" screenshots using iPhone 17 Pro Max simulator. Create iPad 13
 Create all screenshots with the iPhone and iPad running in both English and German modes.
 
 The end product is thirty-six screenshots.
+
+## Alpha channels
+
+`axe screenshot` writes **RGBA**, and App Store Connect rejects any screenshot carrying an
+alpha channel: "Images can't include alpha channels or transparencies."
+`scripts/take_screenshots.sh` now flattens each capture immediately, so a fresh sweep is
+compliant.
+
+**The rejection is about the channel, not about transparency.** Sibling app Conjuguer's
+rejected captures were fully opaque — max alpha at every pixel — and were refused anyway.
+Apple isn't inspecting content; it refuses any file whose *format* admits transparency,
+which is why this stays invisible until upload. Check with
+`magick 1.png -alpha extract -format '%[min],%[max]' info:`.
+
+**Everything shot before 2026-07-25 is not compliant.** Of `version_2`'s 40 files, the **36
+driver-produced ones are RGBA**; only the four hand-made `10.png` slots are RGB — which
+neatly identifies the driver as the source. Flatten any old bundle before reuse:
+
+```bash
+magick in.png -background white -alpha remove -alpha off out.png
+```
+
+Then check the whole bundle at once:
+
+```bash
+scripts/verify_store_media.sh docs/screenshots/version_<N>
+```
+
+## Before shooting: confirm which slot App Store Connect is offering
+
+App Store Connect's version page shows **one tile per device family**, and which display
+size that tile accepts depends on what the app shipped previously — not on what's current.
+Konjugieren has been lucky here: `version_2`'s 1320 × 2868 (6.9") and 2064 × 2752 (13")
+captures matched the tiles it was offered.
+
+The sibling app Conjuguer was not. Its 2.0 page offered only an **iPhone 6.5" Display**
+tile, because 1.5 had shipped 6.5", and rejected 1320 × 2868 uploads that are a perfectly
+valid App Store size.
+
+**The fix, and the recommended path here too: use Media Manager and keep native sizes.**
+**View All Sizes in Media Manager** exposes every display size regardless of which single
+tile the version page shows. Conjuguer 2.0 shipped that way, its native 6.9" and 13"
+captures accepted unchanged — no downscaling, no regenerated bundle. Try that before
+reaching for either recipe below.
+
+Fallbacks, if a tile has to be filled directly:
+
+- To fill a **6.5"** tile:
+
+  ```bash
+  # 1320 × 2868 → 1284 × 2778, alpha stripped
+  magick in.png -background white -alpha remove -alpha off \
+    -resize 1284x -gravity center -crop 1284x2778+0+0 +repage out.png
+  ```
+
+- To fill a **12.9"** iPad tile rather than 13":
+
+  ```bash
+  # 2064 × 2752 → 2048 × 2732, alpha stripped
+  magick in.png -background white -alpha remove -alpha off \
+    -resize x2732 -gravity center -crop 2048x2732+0+0 +repage out.png
+  ```
+
+Both recipes scale on the axis that leaves the target size *inside* the scaled image and
+center-crop the remainder — 12 px for the iPhone, 1 px for the iPad — rather than
+stretching to fit.

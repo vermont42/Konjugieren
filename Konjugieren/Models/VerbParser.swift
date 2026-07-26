@@ -148,7 +148,7 @@ class VerbParser: NSObject, XMLParserDelegate {
     }
 
     // ay="r" marks an auxiliary that varies by region rather than a third auxiliary verb.
-    // The stored value stays haben, the northern standard, so that Conjugator and the
+    // The stored value stays haben, the German standard, so that Conjugator and the
     // classify-and-verify oracle see exactly what they saw before this attribute existed.
     let auxiliaryCode = attributeDict["ay"]
     let auxiliaryIsRegional = auxiliaryCode == "r"

@@ -44,8 +44,10 @@ enum Region: String, CaseIterable {
   }
 
   /// Which auxiliary a regionally conditioned verb (stehen, sitzen, liegen and their
-  /// prefixed derivatives) takes in the Perfekt. Austria and Switzerland say
-  /// "ist gestanden" where the northern standard says "hat gestanden".
+  /// prefixed derivatives) takes in the Perfekt. The Austrian and Swiss standards admit
+  /// "ist gestanden" where the German standard prescribes "hat gestanden". These cases are
+  /// three codified national standards, not three speech communities: southern Germany
+  /// patterns with Austria and Switzerland on this feature without being a fourth case.
   nonisolated var regionalAuxiliary: Auxiliary {
     switch self {
     case .north:

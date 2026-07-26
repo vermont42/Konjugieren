@@ -75,9 +75,10 @@ Two rules govern reading-level `in`:
   `.prefix` all return it.
 
 **Do not use a second reading for regional variation.** *stehen*, *sitzen*, and *liegen* take
-haben in the northern standard and sein in Austria and Switzerland, which is a difference in
-where the speaker lives, not in what the verb means. Two readings would tell every user both
-forms are available to them personally. Those verbs use `ay="r"`; see `prompts/regional_variation.md`.
+haben in the German standard and sein in the Austrian and Swiss standards, which is a difference
+in which codified standard is in force, not in what the verb means. Two readings would tell every
+user both forms are available to them personally. Those verbs use `ay="r"`; see
+`prompts/regional_variation.md`.
 
 **The pipeline cannot check the auxiliary.** `VerbClassificationTests` compares only the
 simple tenses, the two participles, and the Imperativ against Wiktionary — never a compound

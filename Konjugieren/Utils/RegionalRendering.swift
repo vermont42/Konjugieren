@@ -40,7 +40,7 @@ enum RegionalConjugator {
   ) -> Result<String, ConjugatorError> {
     // The auxiliary is read off the selected reading rather than the verb, because the two
     // kinds of auxiliary variation compose: schmelzen picks its auxiliary by meaning, and a
-    // regionally conditioned verb picks its own by where the speaker lives.
+    // regionally conditioned verb picks its own by which codified standard is selected.
     let auxiliary = Verb.verbs[infinitiv]?.reading(at: readingIndex)?.regionalAuxiliary(in: region)
     let result = Conjugator.conjugate(
       infinitiv: infinitiv,

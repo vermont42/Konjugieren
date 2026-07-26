@@ -8,9 +8,9 @@
 /// differs in prefix separability. The unit that varies is therefore the reading, not the
 /// auxiliary, and a verb owns an ordered list of them. See `prompts/dual_auxiliary.md`.
 ///
-/// Variation by *where the speaker lives* is deliberately not modeled here; two readings
-/// differing only in an auxiliary would tell every user both forms are available to them
-/// personally, which is false for any one speaker. That is `auxiliaryIsRegional`.
+/// Variation by *which codified standard is in force* is deliberately not modeled here; two
+/// readings differing only in an auxiliary would tell every user both forms are available to
+/// them, which is false under any one standard. That is `auxiliaryIsRegional`.
 struct Reading: Hashable {
   /// Marker-free, and always equal to the parent verb's key. A reading may respell `in`
   /// to change prefix separability or the ablaut region, but never to name a different verb.
@@ -22,9 +22,9 @@ struct Reading: Hashable {
   /// Ordered outermost to innermost: *an+ge\*hören* is `[.separable("an"), .inseparable("ge")]`.
   let prefixes: [Prefix]
 
-  /// True for the handful of verbs whose Perfekt auxiliary depends on where the speaker
-  /// lives rather than on what the verb means: stehen, sitzen, liegen take haben in the
-  /// northern standard and sein in Austria and Switzerland.
+  /// True for the handful of verbs whose Perfekt auxiliary depends on which codified standard
+  /// is in force rather than on what the verb means: stehen, sitzen, liegen take haben in the
+  /// German standard and sein in the Austrian and Swiss standards.
   let auxiliaryIsRegional: Bool
 
   var stamm: String {

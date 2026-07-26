@@ -57,13 +57,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Diese Einstellung bestimmt, welche Standardvariante des Deutschen die App anzeigt. Bundesdeutsch, österreichisch und schweizerisch sind allesamt kodifizierte Standards, keine Dialekte."
+            "value" : "Diese Einstellung bestimmt, welche Standardvariante des Deutschen die App anzeigt. Der bundesdeutsche, der österreichische und der schweizerische Standard sind allesamt kodifiziert, keine Dialekte. Der süddeutsche Sprachgebrauch folgt oft dem österreichischen und schweizerischen Standard statt dem bundesdeutschen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This setting determines which standard variety of German the app shows. German, Austrian, and Swiss are all codified standards, not dialects."
+            "value" : "This setting determines which standard variety of German the app shows. The German, Austrian, and Swiss standards are all codified, not dialects. Southern German usage often follows the Austrian and Swiss standards rather than the German one."
           }
         }
       }
@@ -105,13 +105,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nord"
+            "value" : "🇩🇪"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "North"
+            "value" : "🇩🇪"
           }
         }
       }
@@ -121,13 +121,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "haben im norddeutschen Standard; sein in Österreich und der Schweiz"
+            "value" : "haben im bundesdeutschen Standard; sein im österreichischen und schweizerischen Standard"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "haben in the northern standard; sein in Austria and Switzerland"
+            "value" : "haben in the German standard; sein in the Austrian and Swiss standards"
           }
         }
       }

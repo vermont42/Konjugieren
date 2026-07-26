@@ -917,12 +917,12 @@ struct ConjugatorTests {
     }
   }
 
-  // stehen, sitzen, and liegen take haben in the northern standard and sein in Austria and
-  // Switzerland. Conjugator itself must stay region-free, because it is the oracle the
+  // stehen, sitzen, and liegen take haben in the German standard and sein in the Austrian and
+  // Swiss standards. Conjugator itself must stay region-free, because it is the oracle the
   // classify-and-verify pipeline compares against Wiktionary, so the regional reading comes
   // from RegionalConjugator and an explicitly passed region.
   // Conjugator takes no region and reads no setting, so there is nothing to vary: this pins
-  // the northern-standard reading that the oracle and every other expectation depend on.
+  // the German-standard reading that the oracle and every other expectation depend on.
   @Test func conjugatorIsRegionFree() {
     expectConjugation(infinitiv: "stehen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "habe gestANDen")
     expectConjugation(infinitiv: "sitzen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "habe gesESSen")

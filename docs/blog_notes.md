@@ -6185,3 +6185,96 @@ rendering defect (`version_2`'s tofu bullets) that had survived two releases.
 Worth noting for the next session: `version_3`'s `settings` cells are already known to be
 short-lived, because `prompts/region_national_framing.md` will change that picker. Four cells will
 need re-shooting, and the plan says so.
+
+## The Region picker stopped naming a direction (2026-07-26)
+
+The change is four strings and two comments. What made it worth doing is not in the diff.
+
+`VerbView` renders two things one under the other: an auxiliary pill reading `hat 🇩🇪 · ist 🇦🇹🇨🇭`,
+and a note saying Duden labels *ist gestanden* "southern German, Austrian, and Swiss." Read as
+claims about speakers, those contradict each other. The pill puts all of Germany on *hat* and the
+note puts half of it on *ist*. `Region.auxiliaryVariesLabel` had quietly taken the pill's side,
+saying "sein in Austria and Switzerland" and dropping southern Germany, and `regionalAuxiliary`'s
+doc comment repeated the elision. `Region.seeded(from:)` finished the job by mapping a `DE` locale
+to `.north`, so a Munich user was seeded into a variety the app itself told them was wrong for
+their speech.
+
+Read as claims about codified national standards, both sentences are true and they complement each
+other. The German standard prescribes *hat gestanden*, the Austrian and Swiss standards admit *ist
+gestanden*, and intra-German variation is a separate fact. Nothing in the modeling moves. Only what
+the flags are understood to denote.
+
+Adopting that reading took one sentence in the setting description: "Southern German usage often
+follows the Austrian and Swiss standards rather than the German one." An earlier draft read "Usage
+in southern Germany differs from the national standard," which tells a Munich user the app does not
+quite cover them, offers no remedy, and re-demotes the other two standards by calling one of them
+*the* national one. The shipped sentence tells them which of the three options matches their speech.
+Disclosure became guidance by changing which fact the sentence ends on.
+
+Once 🇩🇪 denotes a national standard the way 🇦🇹 and 🇨🇭 already did, **North** was the odd element:
+a direction sitting where two nations sat. Three bare flags is the symmetric result, and it happens
+to be the only arrangement `SegmentedPickerStyle` can actually render, since a segment is one plain
+`Text` or one plain `Image` and silently drops image attachments inside a `Text`. Label length had
+already caused trouble twice, most recently when simulator tofu doubled each flag's width and
+truncated `North 🇩🇪` to `North…`. The truncation risk and the label translation both retire here.
+
+The naming problem this sidesteps is worth recording, because it will otherwise be re-litigated.
+Every available name for the German national standard is compromised: **North** names a direction,
+**German** collides with the language name, **Standard German** is the superordinate term covering
+all three and demotes the other two, **German Standard German** is the correct term in the
+pluricentricity literature and reads as a typo on a Settings screen, and **Bundesdeutsch** is built
+on *Bundesrepublik* and carried an unspoken contrast with the DDR for forty years. The fix was
+structural rather than lexical: factor the noun out so all three become parallel adjectives, and
+let the flag do the naming.
+
+### Zero Swift, for a reason worth keeping
+
+The picker learned a new rendering without a line of code changing, because `regionSegment(for:)`
+dispatches on `EmojiAsset.assetName(for: region.localizedRegion)` rather than on a `switch` over
+`Region`. Changing the catalog value from `North` to `🇩🇪` flipped `.north` from the `Text` branch
+to the `Image` branch by itself. Behavior keyed off data instead of off the enum, and the payoff
+showed up in a change nobody had that helper in mind for.
+
+The case is still named `north`, and must stay named `north`. `Region` is `String`-raw-valued and
+`Settings` persists it as `"\(region)"`, so renaming the case to `germany` would orphan every
+stored choice and silently re-seed those users from their locale. The case name is invisible; the
+label was the whole point.
+
+### What verification could and could not settle
+
+Build green, 211 tests green, and both locales screenshotted: three flag images, evenly weighted,
+no tofu, and the now-three-sentence description reflowing correctly with German hyphenation intact.
+
+The VoiceOver check did not settle. `describe_ui` collapses every segmented picker on the screen to
+a childless `TabGroup`, the plain-`Text` ones included, so the accessibility tree says nothing about
+segment labels either way. That is a limitation of the dump, not evidence about the change. The
+argument that VoiceOver is fine is a construction argument rather than a measurement: the image
+branch sets `.accessibilityLabel(Text(verbatim: region.localizedRegion))`, `.austria` and
+`.switzerland` already take that exact path and are known to speak "flag of Austria", and `.north`
+now takes it with a value of the same shape. Sound, but worth knowing it was reasoned and not
+observed.
+
+Comments elsewhere still described the auxiliary split as "the northern standard." They sat outside
+the plan's enumerated scope; Josh asked for them too. The first grep found four, in
+`Reading.swift`, `VerbParser.swift`, `ConjugatorTests.swift`, and `docs/adding-verbs.md`. Widening
+the pattern to include "where the speaker lives" found two more, a second one higher up in
+`Reading.swift` and one in `RegionalRendering.swift`, which is a reminder that a phrase-based sweep
+finds the phrasings you already thought of. Six sites in the end.
+
+Two hits were correctly left alone, and knowing why is the useful part. `Info.perfektIndikativText`
+says the Präteritum survives in everyday speech "in norddeutschen Dialekten," which is a claim about
+dialects rather than about codified standards, so it is on the right side of the very distinction
+this change draws. And `roadmap.md`'s "where the speaker lives versus what the verb means" is
+narrating why regional variation had to be sequenced before dual-auxiliary; it records what the `ay`
+attribute was taken to mean at the time, and journals narrate rather than assert.
+
+`Reading.swift`'s was the one that mattered, and it is instructive about how prose goes stale. The
+property is `auxiliaryIsRegional`, and the name survives the reframing untouched: the auxiliary is
+still selected by the Region setting either way. Only the doc comment underneath it took a position,
+saying the auxiliary "depends on where the speaker lives," which is exactly the speaker-community
+reading this change repudiates. A well-chosen identifier can outlive a conceptual shift while the
+sentence explaining it quietly stops being true, and nothing in the type system notices.
+`docs/adding-verbs.md` had the same sentence for the same reason, arguing correctly that regional
+variation must not become a second `Reading` while justifying it on the wrong grounds. The argument
+holds better under the new framing: two readings would tell every user both forms are available to
+them personally, and which standard is in force is not a fact about the verb's meaning.

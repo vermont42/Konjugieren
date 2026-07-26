@@ -6052,3 +6052,136 @@ that happened to expose a real modeling question.
 
 It also makes the plan cheaper than it looked: setting `Region.north` to a bare 🇩🇪 is exactly the
 case `regionSegment(for:)` was written for, so the whole change is four strings and two comments.
+
+## Thirty-six screenshots, and the four bugs standing in front of them (2026-07-26, later still)
+
+The 1.3 release needed its App Store screenshots, which meant running
+`scripts/take_screenshots.sh` for the first time since the 2026-07-18 refresh that was written
+against the sibling app Conjugar and never executed here. The playbook's own header said as much
+and told the next session to treat the first run as a verification run. That was the right
+instruction. Almost nothing about the sweep failed loudly, and every failure produced a
+plausible-looking screenshot rather than an error.
+
+### The two things the refresh got right, and the one it could not have
+
+The keyboard probe points (workaround #6) work on both devices, and the idempotency guard holds:
+the second `quiz_mid` cell of a sweep still has its keyboard, which was the specific bug that
+correction was written to fix.
+
+The iPad tab coordinates were exactly right in English, to the decimal, and wrong in German.
+Re-measuring from the AXTree showed the inherited row was the English centers and that German
+shifts every tab left by up to 20.5 pt, because the regular size class sizes each segment to its
+label. The English numbers did still land inside every German tab, so this had never failed. But
+the German Info tab cleared its right edge by 16.75 pt, which is the margin that disappears the
+first time a label is retranslated. `tab_coords_for()` now takes `(device, lang)`.
+
+The iPhone needs no such split, and the reason is structural rather than lucky: the compact tab
+bar distributes items into equal-width slots, so "Settings" growing to "Einstellungen" changes the
+text without moving the slot center. The iPhone pill also exposes no `AXRadioButton` children at
+all, so it cannot be measured the same way. It has to be probed in reverse, tapping a coordinate
+and reading back the label that answers.
+
+### The driver was building the screenshots with an arbitrary plugin version
+
+`resolve_ibv_scripts()` ran `find ~/.claude -path '*ios-build-verify*' | head -1`, which resolves
+on this machine to `plugins/cache/ios-build-verify/0.3.1/`, with 0.2.1 also present. `find` does
+not guarantee directory order, so which release built the App Store screenshots was unspecified.
+CLAUDE.md documents the correct form, scoped to `plugins/marketplaces/`, and had documented it for
+weeks. The driver simply predated the convention and nobody re-read it, which is the same failure
+mode `check_docs.py` exists to defeat.
+
+### Tofu in a store screenshot
+
+The first review of a `settings` capture showed the Regional Variety picker reading `North...`
+followed by four `[?]` boxes. This is the known iOS 26 emoji bug from `docs/emoji-assets.md`, and
+the 2026-05-09 decision to defer it was correct at the time: flags render properly on Josh's
+iPhone, so the tofu is simulator-only. What changed is that `SettingsView` is one of the nine
+captured screens and the sweep runs on the simulator. "Fine on device" stopped being sufficient
+the moment the simulator's output became the shipping artifact.
+
+Josh chose to apply the existing PNG-asset workaround rather than hide the picker or shoot that
+screen by hand. The rendering script and the procedure already existed; only the three flags were
+missing. What the plan did not anticipate is that `SegmentedPickerStyle` renders a plain `Text` or
+a plain `Image` per segment and silently drops any image attachment inside a `Text`. The first
+attempt produced a picker with "North" shorn of its flag and two entirely empty segments. No one
+segment can pair a word with a flag, which is why `Region.north` is now the bare word and the
+other two are images.
+
+That constraint turned out to agree with the design. The journal entry above records Josh's
+reasoning that once 🇩🇪 denotes a national standard, "North" is the odd element because it names a
+direction where the others name nations. The picker will end up as three bare flags. The layout
+constraint and the modeling argument arrived at the same place from opposite directions.
+
+A second manifestation of the same bug was hiding one screen over. `BodyTextView` substitutes
+emoji only in `.emoji` segments, which the parser emits only from `^...^` markup, and all 1,522
+country flags in the catalog are bare. They are the bullet markers in Info articles, and 46 of
+them per language sit in the Präsens Indikativ article, which is screenshot #7. `version_2` shipped
+them as visible tofu. Substituting on characters in `.plain` segments fixes every article at once
+and costs future articles nothing, where wrapping 1,522 catalog occurrences in carets would have
+been a large mechanical edit to a file with documented editing hazards and would need repeating
+forever.
+
+### Three timing races, and why only one kind of wait catches all of them
+
+`info_view` captured the Info list rather than the article, in all four cells, with no error
+anywhere. Two independent causes were stacked behind that.
+
+The first was `tap_id_first` taking the depth-first `[0]` match, justified in its own comment by
+"the children share the parent NavigationLink's bounds". An `InfoBrowseView` row no longer works
+that way: it reports its heading as a separate `AXStaticText` sitting above the tappable
+`AXButton`. Tapping non-interactive static text does nothing at all.
+
+Preferring an `AXButton` was the obvious fix and it was wrong. On iPad the verb row exposes its
+translation and family tag as buttons while the infinitive is static text, so that rule tapped
+"become" instead of "werden": it fixed `info_view` and broke `verb_view`, which the first sweep
+had captured correctly. Tabulating all five tap sites showed largest-area is the only rule correct
+everywhere, and it has a reason rather than just a fit: the element standing for the whole row is
+the widest one. It reduces to the old behaviour everywhere the old behaviour worked.
+
+The second cause was that the article is roughly 16,000 characters and takes about two seconds to
+lay out, against `tap_id_first`'s fixed 0.7 s settle. The tap had been landing all along. Waiting
+for the list anchor to leave the AX tree fixed it.
+
+The third race was different in kind, and it is the one worth remembering. Switching tabs on iPad
+cross-fades, and `family_browse` and `settings` came out with the verb list ghosted through them.
+No AX-based wait can catch this: `verb_browse_anchor` leaves the tree within 0.3 s of the tap while
+the fade is still plainly visible. Accessibility state answers "has the hierarchy changed"; a
+screenshot is graded on "has the image stopped moving", and those diverge precisely during
+animation, which is exactly when a capture goes wrong.
+
+So `take_screenshot` now compares successive screenshots and waits for the image to settle. The
+tolerance is measured rather than guessed, and measuring it is what made the check viable: a static
+screen scores 0, but the quiz screen never scores below about 7.5e6 because its cursor blinks and
+its timer ticks, so "wait for zero" would hang on four cells every run. Two genuinely different
+screens score 1.8e10. Three orders of magnitude of daylight, and the threshold sits at 1e8 in the
+middle of it.
+
+### Two things that were correct output and still wrong for a screenshot
+
+Josh noticed that the quiz answers being typed carry the conjugator's ablaut capitals: 22 of the 30
+fixture answers, including `IST geblIEben`. The capitals are correct by the app's own convention,
+which is exactly why the fix does not belong anywhere near the conjugator. A screenshot of an answer
+field depicts what a *user* typed, and no human types `IST geblieben`. `exportFixtureAnswers` now
+lowercases, which is Unicode-correct in Swift and would not have been in the shell: `tr` works on
+bytes and would have left `fÄhrt`, `lÄUft`, and the capital ẞ in `wEIẞ` untouched. A quiz that had
+been intermittently scoring 29/30 went back to 30/30 once the capital ẞ stopped being pasted, which
+is probably not a coincidence.
+
+The other was `render_emoji.swift` regenerating `Contents.json` for every imageset on every run.
+Xcode maintains those files itself, adding empty 1x/2x slots and a trailing newline, so rendering
+one new emoji reverted Xcode's edits across every imageset ever added. Same shape as the
+`Localizable.xcstrings` round-trip hazard CLAUDE.md warns about, same tell (deletions where there
+should only be insertions), same fix: write only what you own.
+
+### What the sweep is actually for
+
+Eight of the nine views were fine on the first run. The failures were concentrated in the two
+places where the app had changed since May and in the three places where a fixed sleep was standing
+in for a condition. None of it was visible to the 211 passing tests, because none of it is a
+correctness question about the app: the article renders, the picker works, the tabs switch. The
+sweep is the only thing in this project that asks what the app *looks like*, and it found a shipped
+rendering defect (`version_2`'s tofu bullets) that had survived two releases.
+
+Worth noting for the next session: `version_3`'s `settings` cells are already known to be
+short-lived, because `prompts/region_national_framing.md` will change that picker. Four cells will
+need re-shooting, and the plan says so.

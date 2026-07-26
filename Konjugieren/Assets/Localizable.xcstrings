@@ -105,13 +105,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nord 🇩🇪"
+            "value" : "Nord"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "North 🇩🇪"
+            "value" : "North"
           }
         }
       }

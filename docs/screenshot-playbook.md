@@ -1,13 +1,13 @@
 # Screenshot Playbook
 
-> **⚠️ Updated 2026-07-18 — NOT RE-TESTED.** This playbook and
-> `scripts/take_screenshots.sh` were refreshed from findings made while porting the same
-> harness to the sibling app **Conjugar**, and from a large machine-wide simulator prune the
-> same day. The changes are believed correct but **no cell of this sweep has been run since**,
-> and no simulator was booted to confirm. Treat the first run as a verification run: shoot a
-> single cell (`--lang de --view quiz_results`) and inspect it before trusting a full sweep.
-> Specifically unverified here: the iPad tab coordinates (see *Per-View Navigation Recipes*)
-> and the keyboard probe points (workaround #6).
+> **Verified 2026-07-26** by a full 36-cell sweep for the 1.2 release. The 2026-07-18 refresh,
+> ported from the sibling app **Conjugar** and never run, held up in the two places it was
+> least sure of: the keyboard probe points (workaround #6) see the keyboard on both devices,
+> and the iPad tab coordinates were exactly right *in English*. German needed its own row; see
+> *Per-View Navigation Recipes*. Two things did break on first contact, both now fixed in the
+> driver: the AppleScript Cmd+K raced a fresh install and killed the sweep through `set -e`
+> (workaround #10), and `resolve_ibv_scripts` was resolving to a versioned plugin **cache**
+> copy rather than the marketplace clone.
 
 Captures App Store screenshots for Konjugieren via `scripts/take_screenshots.sh`. The driver carries the calibration values, per-view navigation, and the workarounds inline as comments; this playbook is the prose-and-procedure wrapper around it.
 
@@ -19,10 +19,17 @@ App Store screenshots only — 9 views × 2 languages × 2 devices = 36 PNGs. No
 
 - macOS with Xcode 26+ and the iOS 26.3+ simulator runtime installed.
 - `axe` CLI on PATH (see `ios-build-verify` SKILL.md for installation).
-- `ios-build-verify` skill installed; resolve its scripts directory once per session:
+- `ios-build-verify` skill installed; resolve its scripts directory once per session, scoped to
+  the marketplace clone as CLAUDE.md requires:
   ```bash
-  export IBV_SCRIPTS=$(dirname "$(find ~/.claude -path '*ios-build-verify*' -name build_app.sh 2>/dev/null | head -1)")
+  export IBV_SCRIPTS=$(dirname "$(find ~/.claude/plugins/marketplaces -path '*ios-build-verify*' -name build_app.sh 2>/dev/null | head -1)")
   ```
+  Scoping matters: the broader `~/.claude` glob also reaches
+  `plugins/cache/ios-build-verify/<version>/`, which held both 0.2.1 and 0.3.1 on this machine
+  and is shared with Josh's other apps. `find` does not guarantee directory order, so an
+  unsorted `head -1` there picks a version essentially at random. The driver's own
+  `resolve_ibv_scripts()` had this bug until 2026-07-26 and was building the App Store
+  screenshots with whichever cached release `find` happened to walk into first.
 - macOS Accessibility permission granted to `osascript`. System Settings → Privacy & Security → Accessibility → add `/usr/bin/osascript`. The driver depends on this for the soft-keyboard Cmd+K toggle (workaround #6).
 - Two named simulators (see "Simulator Setup" below). Their UDIDs are hardcoded in the driver's `udid_for()`.
 - All three kill switches set to `false` (see the next section). Restore them to `true` when the sweep finishes.
@@ -77,10 +84,16 @@ The driver writes timestamped PNGs to `docs/screenshots/<timestamp>-<device>-<la
 > PNGs), and **`version_2` is non-compliant** — its 36 driver-produced files are RGBA,
 > while only the four hand-made `10.png` slots are RGB. Flatten before reusing it.
 
-For App Store Connect upload, copy the latest version of each cell to `docs/screenshots/latest/`:
+For App Store Connect upload, copy the latest version of each cell to `docs/screenshots/latest/`.
+**Clear it first.** It is a per-release projection, not an accumulating archive: without the
+`rm -rf`, a re-shoot leaves the previous release's files sitting beside the new ones (36 became
+72 on 2026-07-26), and the numbered-bundle snippet below then depends on `latest/*.png` glob
+order to decide which of two candidates wins. That happens to resolve correctly while the
+timestamps sort in release order, which is not a property worth betting an upload on. The
+timestamped originals stay in `docs/screenshots/` regardless, so nothing is lost.
 
 ```bash
-mkdir -p docs/screenshots/latest && \
+rm -rf docs/screenshots/latest && mkdir -p docs/screenshots/latest && \
 for view in verb_browse verb_view family_browse family_detail quiz_mid \
             info_browse info_view quiz_results settings; do
   for device in "iPhone-17-Pro-Max" "iPad-Pro-13-inch-(M4)"; do
@@ -183,7 +196,21 @@ Compact reference. The driver's inline comments hold the full WHY for each — c
    *Symptom:* OnboardingView may render before `verb_browse_anchor` on a fresh install. *Fix:* interleave a `Skip`/`Überspringen` AXLabel-tap during the render poll.
 
 3. **SwiftUI identifier propagation** (`take_screenshots.sh::tap_id_first`)
-   *Symptom:* SwiftUI propagates `accessibilityIdentifier` to children; `axe tap --id` refuses to disambiguate. *Fix:* parse the first matching `AXFrame` from `describe-ui` and tap its center via coords.
+   *Symptom:* SwiftUI propagates `accessibilityIdentifier` to children; `axe tap --id` refuses to disambiguate. *Fix:* parse the matching `AXFrame`s from `describe-ui` and tap the centre of the **largest-area** one.
+
+   **Corrected 2026-07-26: it used to take the first match.** That was justified by "the
+   children share the parent NavigationLink's bounds", which is no longer true. An
+   `InfoBrowseView` row reports its heading as a separate `AXStaticText` sitting *above* the
+   tappable `AXButton` (heading y=846 h=20.5, button y=870.5 h=38 on iPad), and a depth-first
+   `[0]` returns the heading. Tapping non-interactive static text does nothing at all, so a
+   full sweep captured the Info list in all four `info_view` cells while reporting success.
+
+   Preferring an `AXButton` was tried and is wrong: on iPad the verb row exposes its
+   translation and family tag as buttons while the infinitive is static text, so that rule
+   tapped "become" instead of "werden" and traded a broken `info_view` for a broken
+   `verb_view`. Largest-area holds on every screen, because the element standing for the whole
+   row is the widest one, and it reduces to the old behaviour everywhere the old behaviour
+   worked.
 
 4. **simctl subcommand naming** (`take_screenshots.sh::disable_review_prompt`)
    *Symptom:* `xcrun simctl pasteboard set` is not a real subcommand. *Fix:* `xcrun simctl pbcopy <UDID>`.
@@ -235,6 +262,21 @@ Compact reference. The driver's inline comments hold the full WHY for each — c
     freshly-activated Simulator briefly reports no windows, and the resulting `-1719 "Invalid
     index"` error reads exactly like a missing Accessibility permission. It is not one.
 
+    **Retried 3× and never fatal, since 2026-07-26.** The 0.5 s delay is not always enough: on
+    the very first `quiz_mid` cell of a sweep, moments after `simctl install`, the raise
+    failed, `ensure_soft_keyboard` returned non-zero, and `set -e` tore down the whole run
+    after one screenshot. Sinking a 36-cell sweep over a race is a bad trade against one
+    reviewable screenshot, so the AppleScript now retries with a 1 s gap and returns 0
+    regardless. A real permission failure exhausts all three attempts and says so, and
+    `keyboard_is_visible` reports the actual outcome either way. If you see the warning,
+    confirm with:
+
+    ```bash
+    osascript -e 'tell application "System Events" to tell process "Simulator" to get name of every window'
+    ```
+
+    If that prints your windows, the permission is fine and you saw the race.
+
 11. **Localized onboarding labels** (`take_screenshots.sh::ONBOARDING_LABELS`)
     *Symptom:* the onboarding-Skip button label is localized (`Skip` / `Überspringen`). *Fix:* array of all known labels; the wait-for-render loop tries each.
 
@@ -249,14 +291,42 @@ Compact reference. The driver's inline comments hold the full WHY for each — c
 
     These make workarounds #2 and #11 — the Skip-label interleave during `wait_for_render` — a **belt-and-braces safety net rather than the primary defense.** Keep them: they cost nothing when the cover never appears (the poll just doesn't find a Skip button), and they still cover the case where an operator forgets the switch. But the switch is the reliable mechanism, because the interleave is a race against presentation timing and the switch is not.
 
+15. **Captures taken mid-animation** (`take_screenshots.sh::wait_for_stable_screen`)
+    *Symptom:* the iPad cross-fades between tabs, and `tap_tab`'s fixed `sleep 0.7` sometimes
+    lost the race, so `family_browse` and `settings` came out with the verb list ghosted
+    through them. *Fix:* before every capture, compare successive screenshots and wait until
+    the image stops changing.
+
+    **The AX tree cannot answer this question.** `verb_browse_anchor` leaves the tree within
+    0.3 s of the tap while the fade is still plainly visible, so an AX-based wait reports ready
+    too early. Accessibility state answers "has the hierarchy changed"; a screenshot is graded
+    on "has the image stopped moving".
+
+    The tolerance is measured, not guessed: a static screen scores 0, the quiz screen scores
+    7.5e6–1.6e7 because its cursor blinks and its timer ticks, and two different screens score
+    1.8e10. `STABLE_PIXEL_TOLERANCE` sits at 1e8, in the empty space between.
+
+    This check is worth keeping even though the specific races it caught are also fixed
+    individually, because it is the only one of the fixes that is not screen-specific. Three
+    distinct timing bugs produced wrong-but-plausible captures in a single day; two were
+    fixable by waiting on the AX tree and the third was not.
+
 ## Per-View Navigation Recipes
 
-> **Tab coordinates are unverified since 2026-07-18.** The sibling app Conjugar re-measured its
-> iPad tab centers from the AXTree and found the long-inherited values (`355 / 441.5 / 523 /
-> 587.75 / 667.25`) landed inside the right tab but 3–6 pt off-center. **Those corrected numbers
-> do not transfer to this app** — iPad tab widths follow the localized label text, and German
-> labels differ from Spanish. Re-measure here rather than copying; unlike the iPhone pill (whose
-> children are not exposed), the iPad's top bar reports each tab as an `AXRadioButton`:
+> **Tab coordinates re-measured 2026-07-26, and the iPad's are now per-language.** The
+> long-inherited row (`355 / 441.5 / 523 / 587.75 / 667.25`) turned out to be exactly the
+> English centers, to the decimal. German shifts every tab left by up to 20.5 pt, because the
+> iPad's regular size class renders a top segmented bar that sizes each segment to its label,
+> so a longer word displaces everything after it. The English numbers did still land inside
+> every German tab, but "Info" cleared its right edge by only 16.75 pt, and that is the
+> margin that disappears first if a label is ever retranslated. `tab_coords_for()` now takes
+> `(device, lang)`.
+>
+> **The iPhone needs no such split**, and the reason is structural rather than lucky: the
+> compact tab bar distributes items into equal-width slots, so "Settings" growing to
+> "Einstellungen" changes the text without moving the slot center.
+>
+> Re-measure the iPad from the AXTree, where each tab is an `AXRadioButton`:
 >
 > ```bash
 > axe describe-ui --udid <IPAD_UDID> \
@@ -264,6 +334,13 @@ Compact reference. The driver's inline comments hold the full WHY for each — c
 > ```
 >
 > Center = `x + w/2`. An off-center-but-working tap is the early warning that geometry drifted.
+> The iPhone pill exposes no `AXRadioButton` children at all, so verify it the other way
+> round: probe each coordinate and read back the label that answers:
+>
+> ```bash
+> axe describe-ui --point "296.2,899.3" --udid <IPHONE_UDID> \
+>   | jq -r '[.. | objects | select(.AXLabel? != null and .AXLabel != "") | .AXLabel]'
+> ```
 
 | # | View | Mode | Driver function | Notes |
 |---|---|---|---|---|
@@ -273,7 +350,7 @@ Compact reference. The driver's inline comments hold the full WHY for each — c
 | 4 | FamilyDetailView | light | `nav_family_detail` | `tap_tab families` → `tap_id_first family_row_strong`. |
 | 5 | QuizView (mid) | dark | `nav_quiz_mid` | `tap_tab quiz` → `quiz_start_button` → `quiz_answer_field` → paste fixture answer 0 → `ensure_soft_keyboard`. Captured before submit (keyboard visible per spec). |
 | 6 | InfoBrowseView | light | `nav_info_browse` | `tap_tab info` → 117pt scroll on iPhone, 0 on iPad. |
-| 7 | InfoView | dark | `nav_info_view` | `tap_tab info` → 117pt scroll on iPhone → `tap_id_first info_row_praesens_indikativ`. |
+| 7 | InfoView | dark | `nav_info_view` | `tap_tab info` → `verify_screen_loaded info_row_dedication` → 117pt scroll on iPhone → `tap_id_first info_row_praesens_indikativ` → `wait_for_id_absent info_row_dedication`. The trailing wait is required: the article is ~16,000 characters and takes about 2 s to lay out, far longer than `tap_id_first`'s 0.7 s settle. |
 | 8 | ResultsView | light | `nav_quiz_results` | `tap_tab quiz` → `quiz_start_button` → 30× (paste + Return + sleep 0.3) → `dismiss_review_prompt` if needed → `verify_screen_loaded results_score`. |
 | 9 | SettingsView | dark | `nav_settings` | `tap_tab settings`; no scroll either device. |
 
@@ -366,5 +443,33 @@ Visual review will surface bad cells. Re-run any single one via the `--device` /
   before building a bundle — see [`docs/screenshot-plan.md`](screenshot-plan.md).
 - **TipKit popovers surface mid-sweep — now suppressible.** The "Try the Quiz" tip renders on `verb_browse` (sweep view #1) on any fresh install, and other tips can appear elsewhere depending on TipKit eligibility. An earlier revision of this playbook said the driver couldn't suppress these and told you to visually review instead; `TipDisplay.tipsEnabled` now handles it (see *Flip the kill switches first*). Visual review is still worth doing, but it is no longer the only defense.
 - **Apple Intelligence Tutor surfaces are gated on Intel-Mac hosts, and this *does* affect the sweep.** Per CLAUDE.md, the Tutor row in InfoBrowseView, the `ErrorExplainerView` card in QuizView, and the Tutor page in OnboardingView don't render as live features on Intel-Mac simulators with iOS 26.3+. `info_browse` is one of the 9 target views, and `InfoBrowseView` doesn't simply omit the tutor when the model is unavailable — it substitutes `TutorUnavailableRowView`, which states the reason ("Apple Intelligence is being configured…" / "…isn't available on this device."). So both `info_browse` shots carry that row unless `TutorDisplay.tutorUnavailableRowEnabled` is set `false` (see *Disable the tutor row first* above). An earlier revision of this playbook claimed no target view was Tutor-gated; that was wrong.
+- **The sweep is a rendering audit, and it will find things tests cannot.** The 2026-07-26 run
+  caught the Regional Variety picker shipping four tofu boxes and a `North…` truncation, from
+  the known iOS 26 emoji bug (`docs/emoji-assets.md`). That bug had been left alone for months
+  on the correct reasoning that flags render fine on a physical device. But `SettingsView` is
+  one of the nine captured screens and the sweep runs on the simulator, so "fine on device"
+  stopped being sufficient. Fixing it meant pre-rendering 🇩🇪🇦🇹🇨🇭 as PNG assets and, because a
+  segmented picker drops image attachments inside a `Text`, splitting the segments into
+  word-or-image. Budget for the possibility that a sweep turns up app work, and look at all 36
+  captures rather than spot-checking: 211 passing tests said nothing about any of this.
+- **Quiz answers must be typed in ordinary orthography, not the mixed-case ablaut convention.**
+  `Quiz.exportFixtureAnswers` writes `item.correctAnswer` straight from the conjugator, and the
+  conjugator marks ablaut with capitals so the UI can highlight it: 22 of the 30 fixture answers
+  carry them (`hAt`, `sAng`, `dACHte`, `gegANGen`, `IST geblIEben`).
+
+  **The capitals are correct output, not a defect.** `IST` is exactly what the app's convention
+  specifies, and nothing in the conjugator or the highlighting should be changed to remove it.
+  The problem is narrower and entirely about the screenshot: the answer field depicts something
+  a *user* typed, and no human types `IST geblieben`. Normalize on the way into the text field
+  only. Josh flagged this on 2026-07-26; `version_3` was not re-shot for it.
+
+  Lowercasing is the correct normalization, because in this convention the base form *is*
+  lowercase and capitals are pure markup. It is safe for the whole fixture: no answer contains a
+  legitimately capitalized word, the formal `Sie` imperative not being among the 30.
+
+  **Do not do it with `tr '[:upper:]' '[:lower:]'`.** `tr` works on bytes, so it passes over
+  every non-ASCII capital: `fÄhrt`, `lÄUft`, and `wEIẞ` would keep theirs, and capital ẞ
+  (U+1E9E) needs a real Unicode mapping to reach ß. Normalize in Swift, where `.lowercased()`
+  handles all of it, rather than in the shell.
 - **Review-prompt cooldown is per-install.** `disable_review_prompt` pre-seeds `lastReviewPromptDate` for in-run prompts, but a manual screenshot capture of the StoreKit modal would still require uninstalling/reinstalling first.
 - **iPad first-boot is ~70s on a fresh sim.** Data-migration plugins (keychain, gestalt, MobileSafari, locationd, preferences) initialize on first boot. Subsequent boots are ~22s. The driver's `WAIT_FOR_RENDER_BUDGET_S=20` accommodates the post-launch render poll, but the `xcrun simctl bootstatus -b` step itself can block for ~70s during that initial boot. Don't kill the sweep thinking it's hung — `bootstatus -b` is doing the right thing.

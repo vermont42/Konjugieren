@@ -66,7 +66,7 @@ struct VerbView: View {
             }
             metadataPill(tint: .customRed) {
               Label {
-                Text(verbatim: auxiliaryPillText)
+                EmojiAsset.text(substitutingIn: auxiliaryPillText)
               } icon: {
                 Image(systemName: "arrow.triangle.branch")
               }

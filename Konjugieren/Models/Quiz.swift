@@ -306,7 +306,21 @@ class Quiz {
       [
         "infinitiv": item.verb.infinitiv,
         "group": "\(item.conjugationgroup)",
-        "answer": item.correctAnswer
+        // Lowercased because this JSON exists to be typed into the answer field by
+        // scripts/take_screenshots.sh, and a screenshot depicts what a user typed. The
+        // conjugator's capitals are correct output, marking ablaut for the UI to highlight,
+        // and 22 of these 30 answers carry them, so pasting them verbatim puts "IST
+        // geblIEben" where a human would write "ist geblieben". Nothing about the
+        // conjugator or the highlighting should change to accommodate this; only what gets
+        // typed. Grading is unaffected: it compares against correctAnswer in memory and
+        // never reads this file.
+        //
+        // Lowercasing here rather than in the shell is deliberate. `tr '[:upper:]'
+        // '[:lower:]'` operates on bytes and would leave fÄhrt, lÄUft, and the capital ẞ in
+        // wEIẞ untouched; String.lowercased() maps all of them, ẞ to ß included. Safe for
+        // the whole fixture today because no answer contains a legitimately capitalized
+        // word. Revisit if the plan above ever adds a formal-Sie imperative.
+        "answer": item.correctAnswer.lowercased()
       ]
     }
     guard let data = try? JSONSerialization.data(withJSONObject: payload, options: .prettyPrinted),

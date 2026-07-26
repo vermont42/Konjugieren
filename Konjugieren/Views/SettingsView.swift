@@ -63,7 +63,7 @@ struct SettingsView: View {
               ) {
                 Picker(L.Settings.regionHeading, selection: $settings.region) {
                   ForEach(Region.allCases, id: \.self) { region in
-                    Text(region.localizedRegion).tag(region)
+                    regionSegment(for: region).tag(region)
                   }
                 }
                 .pickerStyle(.segmented)
@@ -268,6 +268,23 @@ struct SettingsView: View {
       return "v\(short) (\(build))"
     }
     return "v\(short)"
+  }
+
+  // A segmented picker renders a plain Text or a plain Image per segment and silently drops
+  // any image attachment inside a Text, so no one segment can pair a word with a flag. The
+  // flags have to be images rather than emoji because iOS 26 renders regional-indicator pairs
+  // as tofu (docs/emoji-assets.md), which is why North shows its word alone while Austria and
+  // Switzerland show their flag alone. Labelling those images with the flag emoji keeps
+  // VoiceOver saying "flag of Austria", exactly as it did when the segments were emoji Text.
+  @ViewBuilder
+  private func regionSegment(for region: Region) -> some View {
+    if let assetName = EmojiAsset.assetName(for: region.localizedRegion) {
+      Image(assetName)
+        .renderingMode(.original)
+        .accessibilityLabel(Text(verbatim: region.localizedRegion))
+    } else {
+      Text(region.localizedRegion)
+    }
   }
 
   private func settingsCard<Content: View>(@ViewBuilder content: () -> Content) -> some View {

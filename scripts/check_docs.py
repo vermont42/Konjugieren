@@ -49,6 +49,11 @@ CACHE_FILES = [
     "CLAUDE.md",
     "docs/description.md",
     "docs/project-structure.md",
+    # Not documentation, but it makes the same kind of claim and went stale the same way: a
+    # calibration comment justified the iPad's wait budget with "990 verbs" long after the
+    # corpus reached 3,572. Nothing here is historical, and the file cites no test or pattern
+    # counts at all, so enrolling it costs one more read and closes the gap permanently.
+    "scripts/take_screenshots.sh",
 ]
 
 # Directories whose Markdown is not this repo's documentation.

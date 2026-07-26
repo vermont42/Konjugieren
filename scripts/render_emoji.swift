@@ -20,9 +20,18 @@ import AppKit
 
 let outDir = "Konjugieren/Assets/Assets.xcassets"
 
+// The three country flags are regional-indicator pairs, which iOS 26 fails on the same way
+// it fails the England tag sequence: each renders as two tofu boxes rather than one glyph.
+// They render correctly on a physical device, so this was deferred for months; it was an App
+// Store screenshot sweep that forced the issue, because the sweep runs on the simulator and
+// SettingsView's Regional Variety picker is one of the nine captured screens. The double-width
+// tofu also truncated "North 🇩🇪" to "North…", so the bug degraded the layout as well as the glyph.
 let emojis: [(String, String)] = [
+  ("EmojiAustrianFlag", "🇦🇹"),
   ("EmojiEnglandFlag", "🏴󠁧󠁢󠁥󠁮󠁧󠁿"),
+  ("EmojiGermanFlag", "🇩🇪"),
   ("EmojiHorse", "🐎"),
+  ("EmojiSwissFlag", "🇨🇭"),
 ]
 
 func contentBounds(of rep: NSBitmapImageRep) -> NSRect {
@@ -80,22 +89,31 @@ for (name, emoji) in emojis {
   let pngURL = URL(fileURLWithPath: "\(imagesetDir)/\(name).png")
   try? pngData.write(to: pngURL)
 
-  let contents = """
-  {
-    "images" : [
-      {
-        "filename" : "\(name).png",
-        "idiom" : "universal",
-        "scale" : "3x"
-      }
-    ],
-    "info" : {
-      "author" : "xcode",
-      "version" : 1
-    }
-  }
-  """
+  // Bootstrap Contents.json only for a new imageset, and never touch one that exists.
+  // Xcode rewrites these files itself: opening the catalog adds empty 1x/2x slot entries
+  // alongside the 3x one and terminates the file with a newline. Regenerating unconditionally
+  // therefore reverted Xcode's edits on every run, so re-rendering one new emoji produced a
+  // diff touching every imageset ever added. Only the 3x entry carries meaning here, and
+  // deciding the rest is Xcode's business.
   let contentsURL = URL(fileURLWithPath: "\(imagesetDir)/Contents.json")
-  try? contents.write(to: contentsURL, atomically: true, encoding: .utf8)
+  if !FileManager.default.fileExists(atPath: contentsURL.path) {
+    let contents = """
+    {
+      "images" : [
+        {
+          "filename" : "\(name).png",
+          "idiom" : "universal",
+          "scale" : "3x"
+        }
+      ],
+      "info" : {
+        "author" : "xcode",
+        "version" : 1
+      }
+    }
+
+    """
+    try? contents.write(to: contentsURL, atomically: true, encoding: .utf8)
+  }
   print("\(name): wrote \(pngData.count)-byte PNG (\(Int(bounds.width))×\(Int(bounds.height)) px) at \(pngURL.path)")
 }

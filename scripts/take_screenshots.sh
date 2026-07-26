@@ -67,10 +67,37 @@ udid_for() {
 }
 
 # Tab-bar pixel centers (logical points). Order: verbs families quiz info settings.
+#
+# The iPad values are per-language and the iPhone values are not, because the two
+# size classes lay the tab bar out differently. iPhone (compact) uses the bottom pill,
+# which distributes items into equal-width slots: the label grows from "Settings" to
+# "Einstellungen" but the slot center does not move, so one set of coordinates serves
+# both languages. iPad (regular) uses a top segmented bar that sizes each segment to
+# its content, so every label length shifts all centers downstream of it.
+#
+# Re-measured 2026-07-26 from AXRadioButton frames (center = x + w/2). The English
+# iPad row confirmed the long-inherited values exactly; German runs up to 20.5 pt to
+# the left of it. The old English-only numbers did still land inside every German tab,
+# so this is hardening rather than a bug fix. But the German Info tab cleared by only
+# 16.75 pt, which is the margin that would vanish first if a label were retranslated.
+# Re-measure with:
+#   axe describe-ui --udid <UDID> \
+#     | jq '[.. | objects | select(.role? == "AXRadioButton")] | .[] | {AXLabel, AXFrame}'
+# The iPhone pill exposes no AXRadioButton children at all; verify it instead by
+# probing each coordinate with `axe describe-ui --point "<x>,899.3"` and reading the
+# label that comes back.
 tab_coords_for() {
-  case "$1" in
-    "iPhone 17 Pro Max")     echo "67,899.3 142.7,899.3 220,899.3 296.2,899.3 372.6,899.3" ;;
-    "iPad Pro 13-inch (M4)") echo "355,54 441.5,54 523,54 587.75,54 667.25,54" ;;
+  local device="$1" lang="$2"
+  case "$device" in
+    "iPhone 17 Pro Max")
+      echo "67,899.3 142.7,899.3 220,899.3 296.2,899.3 372.6,899.3"
+      ;;
+    "iPad Pro 13-inch (M4)")
+      case "$lang" in
+        de) echo "334.5,54 426.75,54 508.75,54 573.5,54 673,54" ;;
+        *)  echo "355,54 441.5,54 523,54 587.75,54 667.25,54" ;;
+      esac
+      ;;
   esac
 }
 
@@ -95,7 +122,7 @@ scroll_settings_for() {
   esac
 }
 
-# iPad's verb_browse_anchor renders slowly (990 verbs in regular size class).
+# iPad's verb_browse_anchor renders slowly (3,572 verbs in regular size class).
 wait_budget_for() {
   case "$1" in
     "iPhone 17 Pro Max")     echo 10 ;;
@@ -144,7 +171,12 @@ apply_device_state() {
   UDID=$(udid_for "$DEVICE")
   DEVICE_SLUG="${DEVICE// /-}"
   WAIT_FOR_RENDER_BUDGET_S=$(wait_budget_for "$DEVICE")
-  IFS=' ' read -ra CURRENT_TAB_CENTERS <<< "$(tab_coords_for "$DEVICE")"
+}
+
+# Tab centers depend on the language on iPad, so they are resolved per-language
+# rather than once per device. See tab_coords_for.
+apply_lang_state() {
+  IFS=' ' read -ra CURRENT_TAB_CENTERS <<< "$(tab_coords_for "$DEVICE" "$1")"
 }
 
 ensure_booted() {
@@ -222,6 +254,32 @@ verify_screen_loaded() {
   wait_for_render "$1"
 }
 
+# Poll until an identifier has left the AX tree, which is how we know a screen has actually
+# been navigated away from.
+#
+# tap_id_first's fixed 0.7 s settle is enough for a row that swaps in a light screen, but
+# InfoView lays out a rich-text article of roughly 16,000 characters and needs closer to 2 s.
+# The 2026-07-26 sweep captured the Info list in all four info_view cells for exactly this
+# reason: the tap was landing, and the screenshot fired mid-transition. Nothing reported an
+# error, because nothing had gone wrong yet at the moment the shot was taken.
+#
+# Waiting on a condition rather than a longer duration is the point. A bigger sleep would fix
+# it on this machine and silently regress on a slower one, and would cost every fast cell the
+# same delay.
+wait_for_id_absent() {
+  local id="$1"
+  local deadline=$(($(date +%s) + WAIT_FOR_RENDER_BUDGET_S))
+  while [[ $(date +%s) -lt $deadline ]]; do
+    if ! axe_has_id "$id"; then
+      sleep 0.4  # let the incoming screen settle after the outgoing one is gone
+      return 0
+    fi
+    sleep 0.3
+  done
+  log "wait_for_id_absent timed out (${WAIT_FOR_RENDER_BUDGET_S}s) waiting for $id to disappear"
+  return 0
+}
+
 # tap_id routes through tap_id_first (describe-ui + coord tap). Two reasons:
 # (1) SwiftUI propagates accessibilityIdentifier to child elements, so axe's
 #     --id tap refuses to disambiguate when multiple matches exist.
@@ -291,15 +349,33 @@ ensure_soft_keyboard() {
   # briefly unenumerable and AXRaise fails with -1719 "Invalid index", which
   # reads exactly like a missing-permission failure and sends you chasing the
   # wrong thing.
-  osascript -e 'tell application "Simulator" to activate' \
-            -e 'delay 0.5' \
-            -e "tell application \"System Events\" to tell process \"Simulator\" to perform action \"AXRaise\" of (first window whose title contains \"$window_match\")" \
-            -e 'delay 0.3' \
-            -e 'tell application "System Events" to keystroke "k" using {command down}' \
-            >/dev/null 2>&1 || {
-    log "warning: AppleScript Cmd+K failed (accessibility permission?)"
-    return 1
-  }
+  #
+  # Retried, and never fatal. That same unenumerable window list is a race, not a
+  # steady state, and the first quiz_mid cell of a sweep runs moments after a fresh
+  # install, which is exactly when it loses. Returning non-zero here used to abort
+  # the entire sweep through `set -e`, throwing away every remaining cell over one
+  # transient. A genuine permission failure fails all three attempts and still gets
+  # a warning, and the keyboard_is_visible check below reports the real outcome
+  # either way, so continuing costs at most one reviewable screenshot.
+  local attempt
+  local raised=false
+  for attempt in 1 2 3; do
+    if osascript -e 'tell application "Simulator" to activate' \
+              -e 'delay 0.5' \
+              -e "tell application \"System Events\" to tell process \"Simulator\" to perform action \"AXRaise\" of (first window whose title contains \"$window_match\")" \
+              -e 'delay 0.3' \
+              -e 'tell application "System Events" to keystroke "k" using {command down}' \
+              >/dev/null 2>&1; then
+      raised=true
+      break
+    fi
+    log "AppleScript Cmd+K attempt $attempt failed; retrying"
+    sleep 1.0
+  done
+  if [[ "$raised" != true ]]; then
+    log "warning: AppleScript Cmd+K failed 3x (accessibility permission for /usr/bin/osascript?)"
+    return 0
+  fi
   sleep 0.9  # let keyboard slide-up animation complete
   # Confirm the toggle landed. Cmd+K is fire-and-forget — osascript returns 0
   # whether or not Simulator acted — so without this a keyboard-less quiz_mid
@@ -320,13 +396,34 @@ type_via_pasteboard() {
 }
 
 # SwiftUI propagates accessibilityIdentifier to child elements. When --id matches
-# multiple AX elements, axe tap refuses to disambiguate — so we extract the first
-# match's AXFrame and tap its center. Hits the parent NavigationLink because the
-# children share its bounds.
+# multiple AX elements, axe tap refuses to disambiguate, so we extract one match's
+# AXFrame and tap its center.
+#
+# Pick the match with the LARGEST frame area, not the first one. The original took the
+# first match and justified it with "the children share the parent NavigationLink's
+# bounds", which stopped being true: an InfoBrowseView row reports its heading as a
+# separate AXStaticText sitting *above* the tappable AXButton (heading y=846 h=20.5,
+# button y=870.5 h=38 on iPad), and a depth-first [0] returns the heading. Tapping
+# non-interactive static text does nothing, which is how the 2026-07-26 sweep captured
+# the Info list in all four info_view cells with no error anywhere.
+#
+# Preferring an AXButton was tried first and is wrong. On iPad the verb row exposes its
+# translation and family tag as AXButtons while the infinitive is AXStaticText, so that
+# rule tapped "become" instead of "werden" and stopped navigating: it fixed info_view and
+# broke verb_view. Largest-area is the rule that holds on every screen here, because the
+# element standing for the whole row is the widest one. It reduces to the old behaviour
+# wherever the old behaviour worked (both verb rows, family rows) and picks the button on
+# both info rows, where its frame is 5x to 13x the heading's.
 tap_id_first() {
   local id="$1" frame x y w h cx cy
   frame=$(axe describe-ui --udid "$UDID" 2>/dev/null \
-    | jq -r --arg id "$id" '[.. | objects | select(.AXUniqueId? == $id)][0].AXFrame // ""')
+    | jq -r --arg id "$id" '
+        def area:
+          capture("\\{\\{(?<x>[-0-9.]+), *(?<y>[-0-9.]+)\\}, *\\{(?<w>[-0-9.]+), *(?<h>[-0-9.]+)\\}\\}")
+          | (.w | tonumber) * (.h | tonumber);
+        [.. | objects | select(.AXUniqueId? == $id and (.AXFrame? != null))] as $matches
+        | (($matches | max_by(.AXFrame | area)) // $matches[0] // {})
+        | .AXFrame // ""')
   if [[ -z "$frame" || "$frame" == "null" ]]; then
     log "tap_id_first: no element with id '$id'"
     return 1
@@ -370,8 +467,64 @@ read_fixture_answers_path() {
   echo "$data_dir/Documents/screenshot_fixture_answers.json"
 }
 
+# Largest frame-to-frame difference (ImageMagick -metric AE) still considered "settled".
+#
+# Measured on 2026-07-26 rather than guessed. A static screen scores 0. The quiz screen,
+# whose text cursor blinks and whose elapsed-time counter ticks, scores 7.5e6 to 1.6e7 and
+# never settles below that. Two genuinely different screens score 1.8e10. Benign motion and
+# a real transition are three orders of magnitude apart, so 1e8 sits in open space between
+# them: about 6x the noisiest legitimate screen and 180x below a screen still cross-fading.
+STABLE_PIXEL_TOLERANCE=100000000
+
+# Wait until the screen stops changing, by comparing successive screenshots.
+#
+# Three separate timing races produced wrong captures in this sweep, and only this check
+# would have caught all three. Two were fixable by waiting on the AX tree, but the third was
+# not: switching tabs on iPad cross-fades, and verb_browse_anchor leaves the AX tree within
+# 0.3 s while the fade is still visibly running, so the iPad's family_browse and settings
+# shots came out with the verb list ghosted through them. Accessibility state answers "has
+# the view hierarchy changed"; a screenshot is graded on "has the image stopped moving", and
+# those are different questions.
+#
+# Never fatal, and bounded: if the screen genuinely will not settle the loop gives up, logs,
+# and the capture proceeds to be reviewed like any other.
+wait_for_stable_screen() {
+  local dir previous current differing i
+  if ! command -v magick >/dev/null 2>&1; then
+    sleep 1.0
+    return 0
+  fi
+  dir=$(mktemp -d)
+  previous="$dir/previous.png"
+  current="$dir/current.png"
+  if ! axe screenshot --udid "$UDID" --output "$previous" >/dev/null 2>&1; then
+    rm -rf "$dir"
+    sleep 1.0
+    return 0
+  fi
+  for i in 1 2 3 4 5 6 7 8; do
+    sleep 0.35
+    axe screenshot --udid "$UDID" --output "$current" >/dev/null 2>&1 || break
+    # `|| true` is load-bearing: `magick compare` exits 1 whenever the images differ, which
+    # is the normal case here, and under `set -o pipefail` that makes the assignment fail and
+    # `set -e` abort the sweep. The first attempt at this function died after one screenshot.
+    differing=$(magick compare -metric AE "$previous" "$current" null: 2>&1 | awk '{print $1}' || true)
+    # awk, not [[ -le ]]: the metric comes back in scientific notation (1.80683e+10).
+    if [[ -n "$differing" ]] \
+       && awk -v d="$differing" -v t="$STABLE_PIXEL_TOLERANCE" 'BEGIN { exit !(d + 0 <= t + 0) }'; then
+      rm -rf "$dir"
+      return 0
+    fi
+    mv "$current" "$previous"
+  done
+  log "wait_for_stable_screen: screen still changing after 8 samples on $DEVICE"
+  rm -rf "$dir"
+  return 0
+}
+
 take_screenshot() {
   local slug="$1"
+  wait_for_stable_screen
   mkdir -p "$(pwd)/docs/screenshots"
   local ts out
   ts=$(date +%Y%m%d-%H%M%S)
@@ -436,11 +589,17 @@ nav_info_browse() {
 
 nav_info_view() {
   tap_tab info
+  # Gate on the list actually being rendered before scrolling or tapping, for the same
+  # reason nav_info_browse does: the iPad's segmented tab finishes its highlight animation
+  # before the NavigationStack swaps content, so an immediate tap can land on the outgoing
+  # screen.
+  verify_screen_loaded info_row_dedication
   # Same scroll as info_browse: praesens_indikativ sits at y=873 by default on
   # iPhone, which overlaps the tab-bar hit zone (y=877+). Scrolling moves it
   # into the safe middle band. iPad has 0 scroll (regular size class fits all rows).
   swipe_up_pts "$(scroll_info_browse_for "$DEVICE")"
   tap_id_first info_row_praesens_indikativ
+  wait_for_id_absent info_row_dedication
 }
 
 nav_quiz_results() {
@@ -511,9 +670,17 @@ nav_settings() {
 # Main
 # ---------------------------------------------------------------------------
 
+# Scope the search to plugins/marketplaces/, not all of ~/.claude. The marketplace
+# clone is a single git checkout that `claude plugin marketplace update` pulls to the
+# latest release, so it has no version segment and yields exactly one match. The
+# broader ~/.claude glob also reaches plugins/cache/ios-build-verify/<version>/, which
+# holds several versions at once (0.2.1 and 0.3.1 on this machine) and is shared with
+# Josh's other apps; find does not guarantee directory order, so an unsorted head -1
+# there could nondeterministically build the App Store screenshots with a stale
+# release. See CLAUDE.md "Build and Test Commands".
 resolve_ibv_scripts() {
   local path
-  path=$(find ~/.claude -path '*ios-build-verify*' -name build_app.sh 2>/dev/null | head -1)
+  path=$(find ~/.claude/plugins/marketplaces -path '*ios-build-verify*' -name build_app.sh 2>/dev/null | head -1)
   [[ -n "$path" ]] || { log "ios-build-verify scripts not found"; exit 2; }
   echo "$(dirname "$path")"
 }
@@ -559,6 +726,7 @@ main() {
 
     for lang in "${LANGS[@]}"; do
       if filter_skip "$lang" "$LANG_FILTER"; then continue; fi
+      apply_lang_state "$lang"
 
       for view in "${VIEWS[@]}"; do
         if filter_skip "$view" "$VIEW_FILTER"; then continue; fi

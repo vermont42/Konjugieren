@@ -24,10 +24,23 @@ The bug appears to live in iOS 26's font-substitution pipeline for certain emoji
 
 | Codepoints | Glyph | Asset name |
 |---|---|---|
+| `U+1F1E6 U+1F1F9` | 🇦🇹 (Austria) | `EmojiAustrianFlag` |
+| `U+1F1E8 U+1F1ED` | 🇨🇭 (Switzerland) | `EmojiSwissFlag` |
+| `U+1F1E9 U+1F1EA` | 🇩🇪 (Germany) | `EmojiGermanFlag` |
 | `U+1F3F4 U+E0067 U+E0062 U+E0065 U+E006E U+E0067 U+E007F` | 🏴󠁧󠁢󠁥󠁮󠁧󠁿 (England flag tag sequence) | `EmojiEnglandFlag` |
 | `U+1F40E` | 🐎 (horse) | `EmojiHorse` |
 
 The horse is a single codepoint, so its inclusion was unexpected. The hypothesis: iOS 26's emoji-rendering bug is contextual — when the tag-sequence flag fails in a text run, font fallback for nearby characters (including 🐎) breaks too.
+
+The three country flags are ordinary regional-indicator pairs, and they were left broken for months because they render correctly on a physical device: the tofu is simulator-only. What forced the fix was the App Store screenshot sweep, which runs on the simulator and captures `SettingsView` as one of its nine screens. Worth noting the bug degrades twice: each flag becomes two tofu boxes, and the doubled width then truncated the picker's `North 🇩🇪` to `North…`. A glyph bug that is invisible on device can still be a layout bug that is not.
+
+### Where substitution happens: markup versus characters
+
+There are two substitution paths, and which one applies depends on whether the string reaches a parser.
+
+Long-form Info prose is parsed by `StringExtensions`, so it uses the `^...^` markup below and `BodyTextView` resolves each `.emoji` segment. Short UI labels never go through that parser. For them, `EmojiAsset.text(substitutingIn:)` walks the string's `Character` values and swaps any it has an asset for. Every one of these emoji is a single grapheme cluster, regional-indicator pairs and the tag sequence alike, so a `Character` walk matches whole emoji with no scalar bookkeeping.
+
+**Neither path works inside a segmented picker.** `SegmentedPickerStyle` renders a plain `Text` or a plain `Image` per segment and silently drops any image attachment inside a `Text`, so a segment cannot pair a word with a flag. `SettingsView.regionSegment(for:)` therefore branches: a segment whose entire localized string is one mapped emoji ships as `Image`, and anything else ships as `Text`. That is why `Region.north` is the bare word `North` / `Nord` rather than `North 🇩🇪`; the flag it used to carry could not survive the segment. The images take an `.accessibilityLabel` of the flag emoji itself, which keeps VoiceOver saying "flag of Austria" without adding localized name strings.
 
 ### Markup syntax
 

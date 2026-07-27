@@ -6378,3 +6378,58 @@ Also noted while comparing the two drivers, not changed: Conjuguer has narrowed 
 match from the device *family* substring to the full `$DEVICE` name, since Simulator titles
 windows `<device name> – iOS <version>` and the full name selects exactly one. That is
 strictly better than what is here and is now flagged in workaround #10 as a port candidate.
+
+## Ported from Conjugar: a status-bar prep script, and a guard for windowless simulators (2026-07-26)
+
+Conjugar shot its `version_2` App Store bundle today, and two of its findings are worth
+having here — one a fix for a failure this repo is exposed to, the other a gap this repo did
+not know it had.
+
+The failure: Conjugar's iPad came back from a per-language reboot **booted but with no
+Simulator window**, so `ensure_soft_keyboard`'s AXRaise had nothing to raise, failed three
+times with `-1719 "Invalid index"`, and that `quiz_mid` cell captured with no keyboard. The
+warning it printed named two causes and both were false. Konjugieren has the same
+`ensure_soft_keyboard`, the same `quiz_mid` cell, and the same cold `simctl boot` inside the
+driver, so the same thing can happen here.
+
+The gap: this playbook had no *Clean Status Bar* section at all — no clock pinning, no
+system-language handling. Which means every Konjugieren screenshot has been shipping with
+whatever the simulator's clock read at capture time, and on iPad with a date in whatever
+system language the sim was left in. Conjugar shipped a bundle with seventeen shots at
+`14:31` and one re-shot cell at `15:31` before catching this. Nothing in a visual review
+flags it unless you happen to compare clocks across cells.
+
+So `scripts/prep_screenshot_sim.sh` is now here, along with a playbook section explaining
+it. It does the steps in the order that matters — set system language → reboot → **re-apply**
+the status-bar override → verify — because `status_bar override` survives install/launch but
+is cleared by every reboot, while a language change requires one; set the override first and
+it is silently wiped. It also checks the rebooted device has a Simulator window and, if not,
+quits and relaunches Simulator.app, which is the only thing that reattaches one.
+
+Two adaptations were needed, both because this repo's sweep sims are *renamed*. The prep
+script carries the driver's hardcoded UDID map instead of resolving by name, since the
+device-class label `--device` takes is not the simulator's name. And its window check matches
+the family substring `iPad`, mirroring `ensure_soft_keyboard`, because the renamed sim's
+window is titled `Konjugieren iPad Screenshots – iOS 26.3` — which contains `iPad` and no
+trace of `iPad Pro 13-inch (M4)`. Matching the class label there would have made prep
+relaunch Simulator on every single run while the driver was perfectly happy: a self-inflicted
+instance of the very bug being fixed. Both `case` blocks are now marked keep-in-sync; if a
+prune forces new UDIDs into `udid_for()`, the prep script needs the same edit.
+
+The driver side got a window check inside `ensure_soft_keyboard`'s existing 3× loop, before
+each AXRaise — detection belongs where the window is needed, even though recovery stays in
+prep. Inside the loop, not before it, for the same reason the frontmost guard sits there: the
+window list is briefly unenumerable just after Simulator activates, so a transient recovers
+on the next attempt while a genuinely windowless device burns three attempts, sends zero
+keystrokes, and logs the true cause. The 3× warning now names three causes instead of two.
+
+Verified with a stubbed-`osascript` harness — present → 1 raise, 1 keystroke; missing → 3
+attempts, 0 keystrokes; missing-then-present → recovery on attempt 2 — identical across all
+three repos, and the executable body of `ensure_soft_keyboard` here is still byte-identical
+to Conjugar's. No app code touched; both scripts pass `bash -n`. Unverified anywhere: the
+recovery branch, since the windowless state would not reproduce on demand afterward.
+
+Not done here, and worth a future session: the prep script is written but has **never been
+run against these simulators**, because today's sweep was Conjugar's. The first Konjugieren
+sweep to use it should watch its verification output closely — particularly that the renamed
+iPad resolves and that `AppleLanguages` reads `(de)` on the German pass.

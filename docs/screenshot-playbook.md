@@ -185,6 +185,57 @@ After creation, copy the new UDIDs into `udid_for()` in the driver.
 
 **Why paren-free names?** The driver bypasses `_resolve_udid.sh`, so its regex-pattern bug (parens in `TARGET_SIM` break the match — see `Prompts/bug-resolve-udid-regex-special-chars.md` in the `ios-build-verify` repo) doesn't bite this workflow. But other `ios-build-verify` operations against these sims (`tap_tab.sh`, `dismiss_onboarding.sh`, manual `launch_app.sh`) do source it. The iPad's Apple-default name `iPad Pro 13-inch (M4)` contains regex specials; renaming to `Konjugieren iPad Screenshots` keeps everything compatible. The iPhone's default name is already paren-free.
 
+## Clean Status Bar
+
+**New here as of 2026-07-26, ported from Conjugar.** The driver never touches the status
+bar, so until now every Konjugieren screenshot shipped with whatever the simulator's clock
+happened to read — and on **iPad** with a **date** rendered in the simulator's *system*
+language, which is independent of the app's own `-AppleLanguages` override. A sim left on
+French stamps `Dimanche 26 juillet` onto German screenshots. Conjugar shipped a bundle with
+a live wall-clock (seventeen shots at `14:31`, one re-shot cell at `15:31`) before catching
+this, which is what the port is meant to prevent here.
+
+**Use [`scripts/prep_screenshot_sim.sh`](../scripts/prep_screenshot_sim.sh)** once per
+(device, language) pair, then shoot that language's nine views:
+
+```bash
+scripts/prep_screenshot_sim.sh "iPhone 17 Pro Max" en      # then shoot --lang en
+scripts/prep_screenshot_sim.sh "iPad Pro 13-inch (M4)" de  # then shoot --lang de
+```
+
+It takes the same device-class labels the driver takes on `--device`, and carries the same
+hardcoded UDID map — necessary here, not stylistic, because this repo's sweep sims are
+**renamed** (`Konjugieren iPad Screenshots`), so the label is not the simulator's name. If
+you re-point `udid_for()` after a prune, re-point the prep script's `case` too; the two are
+required to agree.
+
+What it does, in the order that matters, plus proof each step landed:
+
+```
+set system language → reboot → RE-APPLY the status bar override → verify
+```
+
+**The order is the whole point and it fails silently.** `simctl status_bar override` is
+cleared by every shutdown/reboot but survives `uninstall`/`install` and relaunch, while a
+system-language change *requires* a reboot. An override applied before the language change
+is therefore wiped by it, and that language's shots carry a live clock — which no visual
+review flags unless you happen to compare clocks across languages.
+
+Two consequences for how a sweep is driven:
+
+- **One language per boot, on both devices.** The driver shoots both languages in a single
+  boot, so invoke it one `--lang` per boot instead (`--device "iPhone 17 Pro Max" --lang en`,
+  then the German pass after the next prep run). Keep the device booted for the whole
+  language pass so the override survives.
+- **Both devices need the language treatment, not just the iPad.** The *date* is iPad-only,
+  but the pinned *clock* is locale-formatted: with the identical `--time "9:41"`, `en_US`
+  renders `9:41` and `de_DE` renders `09:41`. Treat only one device and the two disagree
+  inside the same language.
+
+`--time` takes a bare clock string; `"9:41 AM"` and ISO strings are both rejected as
+*"Invalid, non-ISO date/time string"*. Verify by hand with
+`xcrun simctl status_bar "$UDID" list`; undo with `… status_bar "$UDID" clear`.
+
 ## The Workarounds
 
 Compact reference. The driver's inline comments hold the full WHY for each — cross-references point at the relevant function.
@@ -326,6 +377,37 @@ Compact reference. The driver's inline comments hold the full WHY for each — c
     individually, because it is the only one of the fixes that is not screen-specific. Three
     distinct timing bugs produced wrong-but-plausible captures in a single day; two were
     fixable by waiting on the AX tree and the third was not.
+
+16. **A booted simulator can have no Simulator *window*, which silently kills Cmd+K**
+    (`prep_screenshot_sim.sh::ensure_simulator_window`, `take_screenshots.sh::ensure_soft_keyboard`)
+    *Symptom:* one `quiz_mid` cell captured with **no keyboard**, after three
+    `AppleScript Cmd+K attempt N failed` lines and the 3× warning — whose two named causes
+    were both false, the accessibility permission being granted and Simulator having come
+    frontmost. *Cause:* `xcrun simctl boot` does not always make Simulator.app attach a
+    window when Simulator is already running, and the per-language reboot introduced above
+    is the usual way in. The device is then **booted but windowless**: `simctl` and `axe`
+    keep working, because they talk to the device rather than the UI, so nothing else in the
+    sweep notices — but `AXRaise of (first window whose title contains "iPad")` has nothing
+    to raise and fails with `-1719 "Invalid index"`, indistinguishable from a permission
+    failure. *Fix, in two places:* `prep_screenshot_sim.sh` checks for the window after its
+    reboot and, if absent, quits and relaunches Simulator.app (on launch it attaches a
+    window to every already-booted device); `ensure_soft_keyboard` checks inside its
+    existing 3× loop, before each AXRaise, and names the real cause. The driver deliberately
+    does **not** recover — quitting Simulator mid-sweep is too blunt — so a windowless
+    device still costs one reviewable screenshot; it just no longer sends you chasing
+    permissions.
+
+    **The window match must agree between the two files, and here that is not the obvious
+    thing.** This repo's iPad sim is renamed, so its window is titled
+    `Konjugieren iPad Screenshots – iOS 26.x` — which contains the family substring `iPad`
+    that `ensure_soft_keyboard` matches on, but *not* the `iPad Pro 13-inch (M4)` class
+    label the driver takes on `--device`. The prep script therefore matches the family
+    substring too. Match on the class label instead and prep would relaunch Simulator on
+    every single run while the driver was perfectly happy.
+
+    *Observed in Conjugar on 2026-07-26 and ported here the same day; not yet seen in
+    Konjugieren, and the recovery branch has not been exercised end to end anywhere, because
+    the windowless state proved intermittent and would not reproduce on demand.*
 
 ## Per-View Navigation Recipes
 

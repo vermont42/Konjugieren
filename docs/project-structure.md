@@ -238,6 +238,10 @@ docs/
 ├── roadmap.md                 # START HERE for verb-corpus expansion: the sequence of plans, what gates what
 ├── verb-classification.md     # The classify-and-verify pipeline: design, invocation, and what it found
 ├── verb-sources.md            # Verb-corpus expansion research (2026-07): Wiktionary/kaikki/Wikidata/DWDS measurements, licenses, extraction pipeline
+├── verb_history.txt           # Editable English source of Info.verbHistoryText, header plus body; sync with `scripts/sync_verb_history.py`
+├── verb_history_de.txt        # The German translation of the same, synced with `--lang de`
+├── verb_history_claims.md     # Claim inventory for the verb-history fact-check: 111 numbered claims, one owning cluster each
+├── verb_history_phase0.md     # Phase 0 of the fact-check: what was patched from Conjugar's corrections, what diverged, and what the patch could not reach
 ├── video_script.md            # App Store preview script with bilingual captions and 30-second timing math
 ├── voiceover.md               # VoiceOver pronunciation patterns and per-screen strategy
 ├── wwdc2026-platforms-sotu.md  # WWDC2026 Platforms State of the Union announcements relevant to Konjugieren; reshapes the cloud-llm-tier decision
@@ -251,6 +255,8 @@ scripts/
 ├── check_docs.py              # Asserts the checkable claims the docs make about themselves: corpus/ablaut/test counts in the four cache files, relative-link targets, roadmap commit hashes, the kaikki attribution invariant, and etymology completeness
 ├── generate_verb_pdf.py       # Generates PDF verb conjugation tables
 ├── render_emoji.swift         # Renders emoji glyphs to PNG assets in Assets.xcassets (workaround for iOS 26 emoji-rendering bug; see docs/emoji-assets.md)
+├── sync_verb_history.py       # Validates docs/verb_history{,_de}.txt against StringExtensions' markup rules and writes the body back into Localizable.xcstrings
+├── test_sync_verb_history.py  # Negative-tests every validator in sync_verb_history.py by corrupting a copy of the essay one way at a time; also asserts both shipping extracts validate clean
 └── take_screenshots.sh        # Drives ios-build-verify + axe/simctl through 36 App Store screenshots (9 views × 2 langs × 2 devices); see docs/screenshot-playbook.md
 
 corpus/                        # German text corpus for example sentence sourcing (gitignored,

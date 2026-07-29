@@ -6433,3 +6433,118 @@ Not done here, and worth a future session: the prep script is written but has **
 run against these simulators**, because today's sweep was Conjugar's. The first Konjugieren
 sweep to use it should watch its verification output closely — particularly that the renamed
 iPad resolves and that `AppleLanguages` reads `(de)` on the German pass.
+
+## Phase 0 of the verb-history fact-check: patching instead of re-researching (2026-07-28)
+
+`prompts/verify-verb-history.md` asks for a seven-cluster adversarial fact-check of
+`Info.verbHistoryText`, but Phase 0 gates all of it and is deliberately serial: extract the
+essay, build a validator, apply Conjugar's already-verified corrections to the five sections
+the three essays share, and hand the fan-out a claim inventory instead of section ranges.
+This entry is that phase. No researcher was spawned and nothing was synced back to the
+string catalog.
+
+The premise Josh set on 2026-07-28 is that the shared opening sections get **patched, not
+re-checked**. Conjugar's 84 findings already survived a skeptic pass that dismissed 104 of
+188 proposals, so a fresh researcher over the same prose can only tie or regress. That
+turned out to be more right than the prompt claimed. Konjugieren's Yamnaya paragraph said
+the steppe herders had "evolved lactose tolerance". The sources say the exact opposite:
+Segurel screened 48 Yamnaya-associated individuals at rs4988235 and found not one carrier,
+and Conjugar's cluster B lists "tolerance came later and not from the Yamnaya" among the
+things it checked and confirmed. Four words in Konjugieren asserted the thing Conjugar's
+essay spends a paragraph denying, and the fix was to paste three of Conjugar's corrected
+sentences in whole. No research, no searches, no skeptic. That single patch is the argument
+for the whole approach.
+
+Ten patches landed in English and ten in German. Conjugar's `docs/verb_history.txt` turned
+out to be more useful than `docs/history_corrections.md` for this, because the corrections
+document still closes with "Nothing in the essay has been changed" while the essay itself
+was edited later the same day. The corrected prose is therefore in the extract, not in the
+diff document, and using it settles which proposals were actually accepted. Worth knowing
+before the Conjuguer run.
+
+Six patches could not be a straight paste and are flagged rather than smoothed, per the
+prompt's rule that a short list of flagged rewordings beats a clean diff full of unflagged
+ones. The interesting one is P10: Conjugar's corrected optative gloss drops "gentle
+commands", and Conjugar's own verification note calls that "a loss of color, not of truth".
+Writing "wishes, possibilities, and gentle commands" would have been a reworded hedge, which
+is the exact operation the verbatim rule exists to prevent, so Konjugieren pays the same
+cost and the cost is written down.
+
+**The patch manufactured a contradiction, which is the thing agent H exists for.** Patched
+line 93 now says the augment belongs to a few branches and that whether it goes back to
+Proto-Indo-European at all is disputed. Unpatched line 150, in the German-specific half
+where Phase 0 may not edit, still says the augment "had marked past tense in PIE" and "was
+lost entirely in Germanic". You cannot lose what may never have been there. The prompt
+predicted that patching would manufacture exactly this kind of seam and it did, on the first
+try. It is inventory row D7.
+
+The prompt also predicted a different seam and was wrong about it. It expected a patched
+opening to promise something about what a German learner must memorize which the Germanic
+half then fails to deliver, by analogy with the *poder* / *puedo* contradiction Josh caught
+in Conjugar himself. Konjugieren's opening makes no such promise: Conjugar's line 61 ends
+"and, eventually, the reason a student has to memorize that the preterite of ~hacer~ is
+$hICE$", and Konjugieren's counterpart simply stops. Nothing imported would have created it
+either. That trap is empty here.
+
+The sync script is a port of Conjugar's and two things in it would have been wrong if copied
+straight across. Markers have to balance **per block**, not per essay, because
+`richTextBlocks` splits the text at every backtick and parses each body segment on its own,
+so a stray `~` cancelled by another one three headings later still crashes. And the
+negative test for the unterminated-emoji path had to append a stray marker at the very end
+of the text: removing one `^` mid-essay does not go unterminated, because the next `^` pairs
+with it, and the failure surfaces as a cascade of nesting errors ending in an unterminated
+`~` somewhere else entirely. Writing that test is what taught it. Seventeen cases, all
+passing; the round trip through the catalog is byte-identical and shows one insertion and
+one deletion rather than the ~5,400-line churn a `json.load` plus `json.dump` would produce.
+
+Two markup facts the extract headers now carry. The essay contains **no `‡…‡` links at all**,
+so the link validator is idle and exists only so the first link added is not also the first
+link shipped unvalidated. And `^…^` is no longer load-bearing: `BodyTextView` substitutes a
+PNG asset for any of the five mapped emoji whether it arrives as an `^…^` segment or as a
+bare character, so the catalog's lopsided convention, 🐎 and 🏴󠁧󠁢󠁥󠁮󠁧󠁿 always wrapped against
+roughly 1,522 bare country flags, is habit rather than requirement. The script warns instead
+of failing.
+
+Phase 0.5, the claim inventory, exists because Conjugar's fan-out cost most of three
+five-hour windows and section ranges overlap at their edges. `docs/verb_history_claims.md`
+now carries 111 numbered rows across seven clusters, each with exactly one owner, a kind tag,
+and a `depends-on` field. The nine residue items from the shared half are assigned row by
+row rather than routed by default, and they concentrated where the prompt guessed they would:
+four of the nine are the `Ablaut` section, whose German material has essentially no
+counterpart in Conjugar's, since Conjugar's version is about Spanish losing ablaut and cites
+Latin.
+
+The inventory's other job is making silence legible. Several things the prompt's cluster
+briefs expect are simply absent from the essay: Corded Ware, Jastorf and any substrate appeal
+in cluster A; the legion numbers and the Suetonius line in B; Notker in E; Konjunktiv I,
+indirect speech, and Luther in G, whose subjunctive discussion is entirely about Konjunktiv
+II. Each is recorded as a coverage note so that "nobody reported it" stays distinguishable
+from "it was not there", which is the failure the range-based version could not detect.
+
+Not findings, but noted for later phases: the closing paragraph still says
+"supernova-enriched gas" where the patched opening now says "star-forged", which is a
+one-word fix already researched and verified; `$nahm$` is written all-lowercase while `$gAb$`
+marks its ablaut vowel, which is Phase 3's business; the English has a comma splice at line
+157 and a subject-verb disagreement at line 171, both correct in the German; and the German
+renders the Swiss "Chuchi" example circularly, contrasting *Küche* with *Küche*, because the
+English head word is "kitchen" and the translation had nowhere to put it.
+
+## The validator's test earns its place (2026-07-28, later)
+
+Promoted the negative-test harness for `scripts/sync_verb_history.py` out of the session
+scratchpad and into `scripts/test_sync_verb_history.py`. Sixteen corruption cases plus a
+clean-validation check on each of the two extracts, 18 in all, and none of it touches disk.
+
+Two changes on the way in. The clean-extract check now fails on problems but only *reports*
+warnings, because a warning is a convention Josh may legitimately decide against in a later
+edit and a test should not hold a veto over that. And the file documents what to do when a
+case cannot set itself up: each corruption replaces a literal anchor string from the essay,
+so editing the prose can make an anchor vanish, which reports `SETUP FAIL` rather than
+passing with a no-op corruption. Repoint the anchor. Do not delete the case.
+
+Then the harness got the treatment it exists to administer. Moving `~Homo sapiens~` in a
+copy of the body turned exactly the two cases anchored on it into `SETUP FAIL` and left the
+other fourteen green. Stubbing out `check_link` turned exactly its three cases red and was
+not absorbed anywhere else. A test whose failure paths have never fired is the same species
+of object as a validator nobody has seen fail, which is the thing the file was written to
+prevent, so proving both seemed like the minimum price of admission.

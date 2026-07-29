@@ -1,0 +1,153 @@
+QUELLTEXT FÜR Info.verbHistoryText (de): „Eine Geschichte des deutschen Verbsystems“
+Übersetzung des englischen Originals in docs/verb_history.txt. Hier bearbeiten, dann
+`python3 scripts/sync_verb_history.py --lang de` ausführen, um den Artikel nach
+Konjugieren/Assets/Localizable.xcstrings zurückzuschreiben, das ausgeliefert wird. Der
+Katalog hält den ganzen Essay auf einer einzigen JSON-Zeile, weshalb das Bearbeiten von
+Hand dort eine Falle ist; diese Datei gibt es, damit Prosa wie Prosa bearbeitet werden
+kann.
+
+Konjugierens Info-Auszeichnung, aus Konjugieren/Utils/StringExtensions.swift:
+  `…` Zwischenüberschrift   ~…~ Hervorhebung   $…$ Konjugation   ‡…‡ Link   ^…^ Emoji
+
+Die Regeln stehen ausführlich im Kopf von docs/verb_history.txt und gelten hier
+unverändert. In Kürze: Marker müssen ausgeglichen sein, und zwar innerhalb jedes
+Blocks, denn ein offen gebliebener Marker ist in dieser App ein Absturz und kein
+Renderfehler. Marker dürfen sich nicht verschachteln. Großbuchstaben innerhalb von
+$…$ sind Daten und keine Orthographie. Jede ^…^-Nutzlast benennt ein Emoji, das die App
+als PNG-Asset ausliefert. Konventionell werden 🐎 und 🏴󠁧󠁢󠁥󠁮󠁧󠁿 in ^…^ gefasst, die
+Länderflaggen 🇩🇪 🇦🇹 🇨🇭 dagegen nicht; das Skript warnt davor, bricht aber nicht ab.
+
+Invarianten gegenüber dem Englischen, beim Übersetzen geprüft:
+  • Die 18 Überschriften `…` werden frei übersetzt. Sie sind keine Linkziele.
+  • Die 27 $…$-Spannen werden zeichenweise aus dem Englischen übernommen und stimmen
+    derzeit exakt mit ihm überein. Sie enthalten deutsche wie englische Verbformen, und
+    die englischen bleiben englisch, weil sie im Deutschen als Glosse stehen. Weder neu
+    großschreiben noch anpassen.
+  • Die 58 ~…~-Spannen weichen ab, weil sie Fachbegriffe hervorheben und diese im
+    Deutschen andere Wörter sind: ~Aspekt~ für ~Aspect~, ~Präteritopräsentia~ für
+    ~preterite-presents~. Ihre Anzahl bleibt gleich.
+  • Die zwanzig Sternchen sind Linguistik, keine Auszeichnung. Sie markieren
+    rekonstruierte Formen wie *bʰer- und *þeudō, bilden keine Paare und dürfen nicht
+    ausgeglichen werden.
+  • Die Emoji-Aufzählungen behalten Anzahl und Reihenfolge des Englischen.
+
+Zur Zeichensetzung: Der Gedankenstrich ist im Deutschen üblich, kommt in diesem Text
+aber nicht vor. Dieser Text ist dieselbe verfasste Prosa in einer anderen Sprache und
+kein Zugeständnis an deutsche Konvention. Siehe docs/english_writing_style.md.
+
+Alles unterhalb der gestrichelten Linie ist der Artikeltext, wortgetreu: Leerzeilen
+trennen Absätze, und die erste Zeile ist die eröffnende `…`-Überschrift. Weder einen
+Titel noch abschließende Notizen darunter setzen. Das Sync-Skript liefert den gesamten
+Rest der Datei aus.
+
+--------------------------------------------------------------------------------
+
+`Von Sternenstaub zur Sprache`
+Vor etwa 4,6 Milliarden Jahren begann eine riesige Wolke aus Gas und Staub in einem Winkel der Milchstraße zu kollabieren. Dieser Urnebel war keine gewöhnliche Ansammlung von Wasserstoff und Helium. Generationen sterbender Sterne hatten die Wolke mit schweren Elementen angereichert, die in stellaren Öfen geschmiedet wurden, teils still abgegeben in den Winden alternder Riesen, teils hinausgeschleudert von Supernovae, den explosiven Toden von Sternen. Darunter waren Kohlenstoff, das Rückgrat der organischen Chemie; Sauerstoff, unverzichtbar für Wasser und Atmung; Stickstoff, ein Baustein von Proteinen und DNA; Eisen, das den geschmolzenen Erdkern bilden und später durch menschliches Blut fließen würde; Kalzium, bestimmt für Knochen und Schalen; Phosphor, entscheidend für zelluläre Energie; und Schwefel, Gold, Uran und Dutzende anderer Elemente, die kein Stern in seinem langen mittleren Lebensalter erzeugt, sondern die im Zusammenbruch geschmiedet werden, in den Winden sterbender Riesen und, für die schwersten, im Zusammenstoß zweier Neutronensterne.
+
+Als die Schwerkraft dieses angereicherte Material zusammenzog, entzündete sich die Sonne im Zentrum, während die übrigen Trümmer zu Planeten verschmolzen. Die Erde entstand vor etwa 4,5 Milliarden Jahren, ihr Eisen sank ab und bildete einen Kern, ihre leichteren Silikate stiegen auf und formten eine Kruste, und jene in Sternen geschmiedeten Elemente verteilten sich überall, wartend, über Milliarden von Jahren, auf das Entstehen von Leben, das sie eines Tages nutzen würde, um zu sprechen, zu schreiben und Verben zu konjugieren.`Der lange Weg zur Sprache`
+Leben entstand auf der Erde vor vielleicht 3,8 Milliarden Jahren, doch der Weg zu sprachbegabten Wesen war ungeheuer lang. Der moderne Mensch (~Homo sapiens~) entwickelte sich vor etwa 300.000 Jahren in Afrika. Die meiste Zeit lebten unsere Vorfahren als Jäger und Sammler auf dem afrikanischen Kontinent und entwickelten die kognitiven Fähigkeiten, die schließlich komplexe Sprache ermöglichen sollten.
+
+Vor etwa 70.000 Jahren begannen Wellen von Menschen, Afrika zu verlassen und sich über den Globus auszubreiten. Einige zogen nach Norden und Westen nach Europa; andere bewegten sich ostwärts durch Asien. Vor 40.000 Jahren, womöglich früher, hatten Menschen die pontisch-kaspische Steppe erreicht, die weiten Grasländer, die sich vom heutigen Rumänien und der Ukraine ostwärts bis nach Kasachstan erstrecken. Diese Region, nördlich des Schwarzen und Kaspischen Meeres gelegen, sollte zum Schmelztiegel einer der folgenreichsten sprachlichen Entwicklungen der Geschichte werden.`Die Jamnaja und das Proto-Indoeuropäische`
+Zwischen etwa 3300 und 2500 v. Chr. bewohnte ein Volk, das wir Jamnaja nennen (vom russischen яма, "Grube", bezogen auf ihre Bestattungspraktiken), die pontisch-kaspische Steppe. Die Jamnaja gehörten möglicherweise zu den Ersten, die das Pferd ritten, eine Deutung, die einige ihrer Skelette stützen und andere Fachleute bestreiten, und ob sie nun ritten oder nicht, das kürzlich erfundene Rad verlieh ihnen eine Mobilität, wie sie kein früheres Volk genossen hatte. Die Jamnaja waren halbnomadische Hirten, die Rinder, Schafe und Ziegen über die Grasländer trieben. Sie lebten in kleinen, mobilen Gruppen und folgten ihren Herden zu saisonalen Weiden.
+
+Ihre Gesellschaft scheint patriarchalisch und hierarchisch gewesen zu sein. Sie bestatteten ihre Toten in charakteristischen Grubengräbern unter Erdhügeln, die ~Kurgane~ genannt werden, oft mit Grabbeigaben, die den Status anzeigten: Waffen, Schmuck, Tieropfer. DNA-Belege deuten darauf hin, dass sie erhebliche Mengen an Milchprodukten konsumierten, und archäologische Funde weisen auf eine Ernährung hin, die durch Jagd und begrenzte Landwirtschaft ergänzt wurde. Was sie nicht konnten, war unverarbeitete Milch verdauen. Dutzende von Jamnaja-Individuen wurden direkt auf das europäische Laktasepersistenz-Allel genotypisiert, und nicht ein einziges trug eine Kopie. Sie waren Milchviehhirten, die laktoseintolerant waren, was der übliche Grund für die Annahme ist, dass ihre Milch sie vergoren und gereift erreichte, als Joghurt und Käse, mit bereits von Bakterien abgebautem Milchzucker.
+
+Die Jamnaja sprachen, was Linguisten als ~Proto-Indoeuropäisch~ (PIE) rekonstruieren, die Vorfahrensprache von Sprachen, die heute von fast der Hälfte aller lebenden Menschen gesprochen werden. Zu diesen Sprachen gehören Deutsch, Englisch, Ukrainisch, Hindi, Persisch, Kornisch, Griechisch und Latein.
+
+Wir wissen nicht, wie dieses Volk sich selbst nannte. Autonyme enthalten oft den Begriff „das Volk“. Die Haudenosaunee, die von Europäern Irokesen genannt wurden, nannten sich selbst „Volk des langen Hauses“. Linguisten rekonstruieren PIE *tewtéh₂, von der Wurzel *tew- („schwellen, stark sein“), als ein Wort für „die gesamte Gemeinschaft“ oder schlicht „das Volk“. Falls die Jamnaja oder ihre sprachlichen Erben etwas wie *tewtéh₂ als Eigenbezeichnung verwendeten, sind seine Echos noch heute hörbar: Daraus wurde protogermanisch *þeudō, dann altenglisch þēod („Nation“), dann, über mittellateinisch theodiscus („des Volkes“), neuhochdeutsch Deutsch. Das Wort „deutsch“ geht also möglicherweise auf eine fünftausend Jahre alte Art zurück, „wir“ zu sagen.`Das Verbsystem des Proto-Indoeuropäischen`
+Das proto-indoeuropäische Verb war ein prächtiges und komplexes System, weit ausgefeilter als jede seiner Tochtersprachen bewahren sollte. PIE-Verben wurden auf Wurzeln aufgebaut (typischerweise aus einer Konsonant-Vokal-Konsonant-Struktur bestehend) die die Kernbedeutung trugen. Auf diese Wurzeln schichteten die Sprecher eine komplizierte Architektur von Präfixen, Suffixen und Infixen, um eine Vielzahl grammatischer Informationen auszudrücken.
+
+~Aspekt~ war im PIE von größter Bedeutung. Die Sprache unterschied drei Aspekte:
+^🐎^ ~Imperfektiv~ (auch Präsens genannt): andauernde oder wiederholte Handlung
+🐄 ~Perfektiv~ (auch Aorist genannt): abgeschlossene Handlung als Ganzes betrachtet
+🐖 ~Stativ~ (auch Perfekt genannt): ein Zustand, der aus einer abgeschlossenen Handlung resultiert
+
+Jeder Aspekt hatte seinen eigenen Stamm, oft durch verschiedene Ablautstufen und Affixe gebildet. Eine einzelne Verbwurzel konnte somit drei recht unterschiedliche Stämme haben.
+
+~Tempus~ war dem Aspekt untergeordnet. Vergangenheit wurde hauptsächlich durch die ~sekundären~ Endungen markiert, denen schlicht das Suffix fehlte, das eine Handlung im Hier und Jetzt verankerte. Einige wenige Zweige fügten zusätzlich ein Präfix namens ~Augment~ hinzu, rekonstruiert als *e-, doch es war schon in den ältesten Texten optional, und ob es überhaupt auf das Proto-Indoeuropäische zurückgeht, ist umstritten. Das System erlaubte Ausdrücke für Gegenwart, Vergangenheit (Präteritum) und wohl auch Zukunft, aber die aspektuellen Unterscheidungen trugen mehr semantisches Gewicht als die temporalen.
+
+~Modus~ war reich entwickelt, darunter:
+^🐎^ ~Indikativ~: Aussagen über Tatsachen
+🐄 ~Konjunktiv~: Absichten und noch Bevorstehendes
+🐖 ~Optativ~: Wünsche und Möglichkeiten
+🐐 ~Imperativ~: direkte Befehle
+
+~Diathese~ unterschied Aktiv und Medium (letzteres zeigte Handlung an, die das Subjekt betrifft oder im Interesse des Subjekts geschieht), mit einem sich entwickelnden Passiv.`Ablaut: Das Herz der indoeuropäischen Morphologie`
+Vielleicht hat sich kein Merkmal des Proto-Indoeuropäischen als dauerhafter erwiesen als der ~Ablaut~, der systematische Wechsel von Vokalen innerhalb von Wurzeln und Affixen zum Ausdruck grammatischer Unterscheidungen. Ablaut war kein willkürlicher Lautwandel, sondern ein strukturiertes System von Vokalstufen:
+
+^🐎^ ~e-Stufe~ (Vollstufe): der Vokal *e (wie in der Wurzel *bʰer-, "tragen")
+🐄 ~o-Stufe~: der Vokal *o (wie in *bʰor-)
+🐖 ~Nullstufe~: Abwesenheit des Vokals (wie in *bʰr-)
+🐐 ~gedehnte e-Stufe~: *ē (wie in *mḗh₁-n̥s)
+🐑 ~gedehnte o-Stufe~: *ō (wie in *n̥-péh₂-tōr)
+
+Diese Alternationen waren grammatisch bedeutsam. Zum Beispiel verwendete der Präsensstamm möglicherweise die e-Stufe, während das Perfekt die o-Stufe nutzte; die Nullstufe erschien in bestimmten Suffixen und in unbetonten Positionen. Als PIE *e und *o sich später in den Tochtersprachen zu verschiedenen Vokalen entwickelten, wurden die Ablautmuster zu den Vokalwechseln, die wir noch heute in deutschen starken Verben sehen:
+
+🇩🇪 singen, $sAng$, $gesUngen$ (sing, $sAng$, $sUng$)
+🇩🇪 nehmen, $nahm$, $genOMmen$ (take, $tOOk$, taken)
+🇩🇪 geben, $gAb$, gegeben (give, $gAve$, given)
+
+Diese Vokalwechsel sind direkte Erbschaften aus dem Proto-Indoeuropäischen, bewahrt über fünf Jahrtausende sprachlicher Evolution.`Die Wanderung nach Europa`
+Ab etwa 3000 v. Chr. (vor ungefähr 5.000 Jahren) begannen die Jamnaja und ihre Nachkommen eine Reihe von Wanderungen, die die genetische und sprachliche Landschaft Europas umgestalten sollten. Ausgestattet mit Pferden, Räderkarren und vielleicht Bronzewaffen zogen sie in aufeinanderfolgenden Wellen westwärts.
+
+Diese Migranten brachten ihre proto-indoeuropäische Sprache mit. Als sie sich unter bestehenden Bevölkerungen niederließen oder diese verdrängten, divergierte ihre Sprache in regionale Varietäten. Der Zweig, der zum Germanischen werden sollte, trennte sich wahrscheinlich irgendwann zwischen 2500 und 2000 v. Chr. von anderen indoeuropäischen Gruppen, als Sprecher nach Südskandinavien und Norddeutschland zogen.
+
+Bis zum ersten Jahrtausend v. Chr. war eine erkennbare proto-germanische Sprache in Südskandinavien und entlang der Nordsee- und Ostseeküsten entstanden. Diese germanischsprachigen Völker (den Römern als ~Germani~ bekannt) entwickelten eine Kultur, die an die Wälder und Küsten Nordeuropas angepasst war.`Die Schlacht im Teutoburger Wald`
+Im Jahr 9 n. Chr. ereignete sich eine entscheidende Konfrontation in den dicht bewaldeten Hügeln des heutigen Nordwestdeutschland. Drei römische Legionen unter dem Kommando von Publius Quinctilius Varus (vielleicht 20.000 Soldaten) wurden von einer Allianz germanischer Stämme unter der Führung von Arminius (Hermann), einem romanisierten Häuptling der Cherusker, überfallen und vernichtet.
+
+Die Schlacht im Teutoburger Wald stoppte die römische Expansion in germanisches Gebiet. Während die Römer Strafexpeditionen starten und schließlich den ~limes~ (eine befestigte Grenze) errichten sollten, eroberten sie nie dauerhaft die Länder jenseits von Rhein und Donau. Dies hatte tiefgreifende sprachliche Konsequenzen: Die germanischen Sprachen entwickelten sich frei von der Romanisierung, die Gallisch zu Französisch, iberische Sprachen zu Spanisch und Portugiesisch und Dakisch zu Rumänisch transformierte.
+
+Hätten die Römer Germanien erobert, hätten die germanischen Völker möglicherweise Vulgärlatein übernommen, wie so viele andere innerhalb des Reiches. Stattdessen entwickelten sich die germanischen Sprachen (einschließlich dessen, was Deutsch, Englisch, Niederländisch und die skandinavischen Sprachen werden sollte) unabhängig und bewahrten alte Merkmale, während sie neue nach ihrer eigenen inneren Logik entwickelten.`Lebensweisen der germanischen Stämme`
+Zur Zeit der Schlacht im Teutoburger Wald lebten die germanischen Völker in kleinen Dörfern und Gehöften, die über die Wälder Nordeuropas verstreut waren. Sie betrieben gemischte Landwirtschaft, bauten Gerste, Hafer, Roggen und Weizen an und hielten Rinder, Schweine, Schafe und Pferde. Rinder waren besonders wichtig und dienten als Maß für Wohlstand und als Zahlungsmittel.
+
+Die Gesellschaft war um Verwandtschaftsgruppen und Stammeszugehörigkeiten organisiert, geführt von Häuptlingen, deren Autorität sich aus kriegerischer Tüchtigkeit, Großzügigkeit und edler Abstammung ableitete. Die Kriegeraristokratie bildete eine ~comitatus~, eine Schar von Gefolgsleuten, die durch Treueide an ihren Herrn gebunden waren. Diese Krieger suchten Ruhm in der Schlacht und erwarteten Geschenke von Waffen, Gold und Festmählern als Gegenleistung für ihre Dienste.
+
+Die germanischen Völker hatten keine zentralisierten Staaten oder Städte. Sie errichteten keine Steinmonumente. Sie hinterließen wenig Schriftliches, obwohl sie das Runenalphabet für kurze Inschriften und magische Zwecke entwickelt hatten. Ihre Literatur war mündlich: Heldenpoesie, mythologische Erzählungen und Genealogien, die über Generationen von Sängern und Geschichtenerzählern weitergegeben wurden.
+
+Ihre Religion konzentrierte sich auf ein Pantheon von Göttern (Wōðanaz (später Wōden (Altenglisch) und Óðinn (Altnordisch)), Þunaraz (Thunor und Þórr), Tīwaz (Tiw und Týr) und andere) die in heiligen Hainen statt in Tempeln verehrt wurden. Sie praktizierten Tier- und gelegentlich Menschenopfer, besonders in Zeiten der Krise oder Feier.`Das germanische Verbsystem: Vereinfachung und Innovation`
+Als sich das Proto-Indoeuropäische über etwa zwei Jahrtausende zum Proto-Germanischen entwickelte, erfuhr das Verbsystem eine dramatische Umstrukturierung. Das ausgefeilte PIE-System wurde in mancher Hinsicht vereinfacht und in anderer erneuert.`Verluste gegenüber dem Proto-Indoeuropäischen`
+Die auffälligste Veränderung war der ~Zusammenbruch des Aspektsystems~. Das Proto-Indoeuropäische hatte sorgfältig imperfektive, perfektive (Aorist) und stative (Perfekt) Aspekte unterschieden. Das Germanische gab diese Unterscheidungen fast vollständig auf. Der alte Imperfektiv wurde zum germanischen Präsens; das alte Perfekt mit seiner charakteristischen Reduplikation und o-Stufen-Ablaut wurde als Präteritum (Vergangenheit) umfunktioniert. Der Aorist ging weitgehend verloren, seine Konjugationen verschmolzen gelegentlich mit dem neuen Präteritum.
+
+Dies ließ das Germanische mit nur ~zwei Tempora~ zurück: Präsens und Präteritum. Wo das PIE subtile Unterscheidungen zwischen andauernder vergangener Handlung, abgeschlossener vergangener Handlung und gegenwärtigen Zuständen, die aus vergangener Handlung resultieren, ausdrücken konnte (alles durch Verbmorphologie) musste das Germanische sich auf Kontext oder periphrastische Konstruktionen (Kombinationen von Hilfsverben mit Hauptverben) verlassen.
+
+~Konjunktiv und Optativ verschmolzen~ zu einem einzigen germanischen Konjunktiv, was die modalen Optionen für Sprecher reduzierte.
+
+Das ~Augment~ (*e-), das im PIE die Vergangenheit markiert hatte, ging im Germanischen vollständig verloren.
+
+~Verbklassen vermehrten sich basierend auf der Struktur des Präsensstamms~, was zum komplexen System der "starken" Verbklassen (organisiert nach Ablautmustern) und "schwachen" Verben (eine germanische Innovation mit einem Dentalsuffix für das Präteritum) führte.`Die germanische Innovation: Schwache Verben`
+Das Proto-Germanische schuf etwas Neues: das ~schwache Verb~. Anstatt Ablaut zur Markierung des Präteritums zu verwenden, fügten schwache Verben ein Dentalsuffix (*-d- oder *-t-) hinzu. Dies ist der Ursprung der "-te"-Endung in deutschen Präterita (machte, sagte, spielte) und der "-ed"-Endung im Englischen ($mAde$, $saId$, played).
+
+Der Ursprung dieses Dentalsuffixes ist umstritten, aber die am weitesten akzeptierte Theorie besagt, dass es von einer Zusammensetzung mit dem Verb "tun" (*dō-) abstammt. Was vielleicht als "ich liebe-tat" begann, grammatikalisierte sich zu einem einzigen Wort mit einem verschmolzenen Vergangenheitssuffix. Diese Innovation war enorm produktiv: Neue Verben, die in germanische Sprachen eintraten, folgten fast immer dem schwachen Muster, und viele ursprünglich starke Verben wurden schließlich schwach. Die King-James-Bibel liefert ein Beispiel für dieses Muster. In diesem Buch erscheint die Wendung "the cock $crEw$". Sprecher des modernen Englisch wissen, dass die Konjugation später zu "crowed" wurde.`Althochdeutsch und die fortlaufende Entwicklung`
+Die germanischen Dialekte, die im heutigen Süddeutschland und der Schweiz gesprochen wurden, entwickelten sich zum Althochdeutschen (etwa 750–1050 n. Chr.), das sich von anderen germanischen Sprachen durch die ~hochdeutsche Lautverschiebung~ unterschied. Diese Reihe von Lautveränderungen verwandelte stimmlose Plosive in Frikative oder Affrikate (p → pf oder ff; t → ts oder s; k → ch), wodurch deutsche Wörter wie ~Pfund~, ~Wasser~ und ~machen~ ihre charakteristischen Laute erhielten, wo das Englische ~pound~, ~water~ und ~make~ hat. Die Auswirkungen der Verschiebung waren nicht einheitlich. Dialekte weiter südlich erfuhren mehr Lautveränderungen. Zum Beispiel wurde im Schweizerdeutschen der /k/-Laut zum gutturalen /x/. Das schweizerdeutsche Wort für "Küche" ist daher "Chuchi", im Gegensatz zum Hochdeutschen "Küche". Im Gegensatz dazu erfuhren nördlichere Dialekte bestimmte mit der Verschiebung verbundene Lautveränderungen nicht. Zum Beispiel verschob sich im Kölsch, gesprochen in Köln, das /t/ in "et", englisch "it", nie zu /s/, wie es im Deutschen "es" geschah.`Umstrukturierung der starken Verbklassen`
+Das Althochdeutsche erbte sieben Klassen starker Verben vom Proto-Germanischen, organisiert nach ihren Ablautmustern. Mit der Zeit begannen diese Klassen zu verschwimmen. Einige Verben wechselten die Klasse; andere wurden schwach. Die ursprüngliche phonologische Konditionierung, die die Klassenzugehörigkeit bestimmte, wurde undurchsichtig, als Lautveränderungen die Vokale veränderten. Heute müssen deutsche starke Verben größtenteils einzeln auswendig gelernt werden: Ihre Ablautmuster, obwohl noch systematisch, sind nicht mehr aus dem Infinitiv vorhersagbar.`Entwicklung des Perfekts`
+Eine bedeutende Innovation in der Geschichte des Deutschen war die Entwicklung des ~Perfekts~ unter Verwendung der Hilfsverben ~haben~ (to have) und ~sein~ (to be) mit dem Perfektpartizip. Diese Periphrase, die im Althochdeutschen begann und im Mittelhochdeutschen (1050–1350) vollständig etabliert wurde, schuf eine neue Art, abgeschlossene Handlung auszudrücken:
+
+🇩🇪 Ich habe $gesUngen$ (I have $sUng$)
+🇩🇪 Ich bin gekommen (I have come / I $cAme$)
+
+Im modernen gesprochenen Deutsch hat diese Perfektkonstruktion weitgehend das einfache Präteritum in der Alltagssprache ersetzt, besonders in südlichen Dialekten. Das Präteritum überlebt hauptsächlich in der Schriftsprache, in nördlichen Dialekten und bei hochfrequenten Verben.`Das Futur und die Modalverben`
+Das Althochdeutsche drückte zukünftige Zeit hauptsächlich durch das Präsens mit Zeitadverbien aus. Beginnend im Mittelhochdeutschen wurde das Verb ~werden~ (to become) als Futurauxiliar grammatikalisiert:
+
+🇩🇪 Ich werde singen (I will sing)
+
+Dies schuf ein dreigliedriges temporales System (Präsens, Präteritum/Perfekt, Futur) aus dem ursprünglichen Zwei-Tempora-System des Proto-Germanischen, allerdings bemerkenswert durch Periphrase statt durch neue morphologische Konjugationen des Verbs selbst.`Präteritopräsentia`
+Das Deutsche bewahrt eine besondere Klasse von Verben namens ~Präteritopräsentia~: Verben, deren Präsens-Konjugationen historisch von proto-germanischen starken Präterita abstammen. Dazu gehören die Modalverben ~können~ (can), ~müssen~ (must), ~dürfen~ (may), ~sollen~ (shall), ~mögen~ (may/like) und ~wissen~ (to know).
+
+Die eigentümlichen Konjugationen dieser Verben (ohne Endungen in 1s und 3s (ich $kAnN$, er $kAnN$) und Vokalunterschiede zwischen Singular und Plural (ich $kAnN$ vs. wir können)) spiegeln ihren Ursprung als alte Präteritum-Konjugationen wider, die als Präsensformen reanalysiert wurden.`Der Konjunktiv und das moderne Deutsch`
+Das Althochdeutsche hatte einen voll funktionsfähigen Konjunktiv sowohl im Präsens als auch im Präteritum. Mit der Zeit, als Vokalunterschiede sich reduzierten und die Konjunktiv-Konjugationen bei vielen Verben mit dem Indikativ identisch wurden, verwendeten Sprecher zunehmend periphrastische Konstruktionen mit ~würde~ (would) + Infinitiv, um auszudrücken, was der alte synthetische Konjunktiv einst vermittelt hatte:
+
+🇩🇪 Alt: Wenn ich $kÄme$... (If I $cAme$...)
+🇩🇪 Moderne Alternative: Wenn ich kommen $wÜrde$... (If I $wOUld$ come...)
+
+Dieser Trend setzt sich im zeitgenössischen Deutsch fort, wo die $wÜrde$-Konstruktion zunehmend synthetische Konjunktiv-Konjugationen ersetzt, außer bei häufigen Verben und in formellen Registern.`Das Verbsystem heute`
+Das moderne Deutsch bewahrt die wesentliche Architektur, die im Proto-Germanischen etabliert wurde: zwei morphologische Tempora (Präsens und Präteritum), starke Verben mit Ablaut, schwache Verben mit Dentalsuffix und eine Unterscheidung zwischen Indikativ, Konjunktiv und Imperativ. Dennoch wurde das System durch Jahrtausende des Wandels transformiert:
+
+🇩🇪 ~Aspekt~ wird periphrastisch ausgedrückt (er $lIest$ = he reads/is reading) oder durch verbale Präfixe und Partikeln (er $lIest$ das Buch aus = he finishes reading the book)
+🇩🇪 ~Futur~ wird mit ~werden~ + Infinitiv ausgedrückt
+🇩🇪 ~Perfekt~ wird mit ~haben~/~sein~ + Perfektpartizip ausgedrückt
+🇩🇪 ~Passiv~ wird mit ~werden~ + Perfektpartizip (dynamisch) oder ~sein~ + Perfektpartizip (stativ) ausgedrückt
+
+Die Ablautmuster, die einst die proto-indoeuropäische Morphologie durchdrangen, überleben in den starken Verben, ein lebendes Fossil jener 5.000-jährigen Reise von der pontischen Steppe in die deutschsprachigen Länder Mitteleuropas.
+
+Wenn du ein deutsches Verb konjugierst (wenn du ich singe, ich $sAng$, ich habe $gesUngen$ sagst) nimmst du an einer Tradition teil, die sich durch althochdeutsche Schreiber in mittelalterlichen Klöstern, durch germanische Krieger in ihren Walddörfern, durch Jamnaja-Hirten auf der windgepeitschten Steppe zurückerstreckt, bis hin zu jener Urwolke aus supernova-angereichertem Gas, aus der das Sonnensystem geboren wurde. Die schweren Elemente, die in sterbenden Sternen geschmiedet wurden, wurden zur Erde; die Erde brachte Leben hervor; Leben entwickelte die Fähigkeit zur Sprache; und Sprache, von Generation zu Generation weitergegeben, trägt in sich die Spuren all dieser Geschichte, einschließlich, in den Vokalwechseln eines deutschen starken Verbs, des Echos des proto-indoeuropäischen Ablauts, der noch nach fünfzig Jahrhunderten nachklingt.

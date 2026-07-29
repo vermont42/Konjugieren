@@ -1,0 +1,187 @@
+SOURCE TEXT FOR Info.verbHistoryText: "A History of the German Verb System"
+English, which is the catalog's sourceLanguage. Edit here, then run
+`python3 scripts/sync_verb_history.py` to push the article back into
+Konjugieren/Assets/Localizable.xcstrings, which is what ships. The catalog holds the
+whole essay on one JSON line, so hand-editing it there is a foot-gun; this file exists
+so the prose can be edited like prose. The German translation lives in
+docs/verb_history_de.txt and syncs with `--lang de`.
+
+Konjugieren's Info markup, from Konjugieren/Utils/StringExtensions.swift:
+  `…` subheading   ~…~ emphasis   $…$ conjugation   ‡…‡ link   ^…^ emoji
+
+Do not copy the marker table out of Conjugar or Conjuguer. Those apps head a section
+with ^…^ and link with %…%; here ^…^ means emoji and links use ‡…‡. Of the five markers
+only $…$ means the same thing in all three apps.
+
+Rules the sync script checks:
+  • Markers balance. Conjugar's and Conjuguer's parsers fail silently on bad markup.
+    This one does not: StringExtensions calls Current.fatalError.fatalError for each of
+    `, ~, ‡, $ and ^ left open, so unbalanced markup is a crash on the Info screen
+    rather than a render bug. Validate before syncing, and validate per block, since
+    the four inline markers are parsed inside each backtick-delimited block and have to
+    balance there rather than merely across the whole essay.
+  • Markers do not nest. `~ ‡ $ ^` share one markupStart index inside
+    parseBodyToSegments, so a $…$ opened inside a ~…~ moves the emphasis span's start
+    and the bold run comes out duplicated with a literal $ in it. Close and reopen
+    instead of nesting.
+  • Subheadings are parsed in an earlier pass than the other four markers, in
+    richTextBlocks, which splits the essay into blocks at every backtick and hands only
+    the body blocks to the inline parser. A ~…~ written inside a `…` is therefore not
+    markup at all: it lands in the heading as literal tildes. Headings are plain text.
+  • Inside $…$, every uppercase letter is an irregular letter shown red. A span's
+    capitalization is data, not orthography, and cannot be adjusted to suit its
+    position. A form whose FIRST letter is irregular can never open a sentence: the
+    sentence would demand a capital, and that capital would render as one more red
+    letter, claiming an irregularity the form does not have. Recast so something else
+    leads. A form whose first letter is regular may open a sentence and renders
+    lowercase, which is deliberate rather than a typo.
+  • Every ‡…‡ payload parses as a URL. The essay contains no links today, so the check
+    is idle; it exists so that the first link added is not also the first link shipped
+    unvalidated. A payload that URL(string:) rejects degrades to plain text in the app,
+    silently, which is the one markup mistake here that does not crash.
+  • Every ^…^ payload names an emoji Konjugieren ships as a PNG asset. An unmapped one
+    falls back to the literal glyph, so the markup silently does nothing.
+
+Conventions the script warns about rather than failing on:
+  • 🐎 and 🏴󠁧󠁢󠁥󠁮󠁧󠁿 are wrapped in ^…^, and the regional-indicator flags 🇩🇪 🇦🇹 🇨🇭 are
+    left bare. Five glyphs ship as PNG assets because iOS 26 renders them as tofu boxes
+    through the ordinary text path, but the markup is no longer what routes them there:
+    BodyTextView substitutes an asset for any of the five whether it arrives as an ^…^
+    segment or as a bare character inside plain text. The split is the catalog's habit
+    rather than a requirement, and it is lopsided, roughly 1,522 bare flags against a
+    handful of wrapped horses. See docs/emoji-assets.md.
+  • A heading opens with no newline before its backtick, per the next section.
+
+Conventions nothing checks at all, so nothing will catch a slip:
+  • Asterisks are linguistics, not markup. The twenty in this essay mark reconstructed
+    forms: *bʰer-, *e-, *dō-, *tewtéh₂, *þeudō. They do not pair, and balancing them
+    would be an error.
+  • A heading concatenates directly onto the end of the preceding paragraph, with no
+    blank line and no newline before its opening backtick, as in "…to conjugate
+    verbs.`The Long Road to Language`". RichTextView supplies its own spacing above and
+    below a heading, and the parser swallows exactly one newline after the closing
+    backtick, so an added \n renders as a visible blank line.
+  • Bulleted items lead with an emoji rather than a dash. 🇩🇪 leads a German item and
+    🏴󠁧󠁢󠁥󠁮󠁧󠁿 an English one. Where a list is neither, it opens with 🐎 for the
+    Proto-Indo-European horse and continues 🐄 🐖 🐐 🐑 down the livestock.
+  • Every edit here needs its counterpart in docs/verb_history_de.txt. Both
+    localizations are marked "translated" in the catalog, so a stale German value ships
+    as though it were current rather than falling back to English.
+  • Adding to this header shifts every body line number, so cite findings by quoted text
+    as well as by line.
+
+Everything below the dashed line is the article body, verbatim: blank lines separate
+paragraphs, and the first line is the opening `…` heading. Do not add a title or any
+trailing notes below it. The sync script ships the entire remainder of the file.
+
+--------------------------------------------------------------------------------
+
+`From Stardust to Speech`
+Approximately 4.6 billion years ago, a vast cloud of gas and dust began to collapse in a corner of the Milky Way galaxy. This primordial nebula was no ordinary collection of hydrogen and helium. Generations of dying stars had seeded the cloud with heavy elements forged in stellar furnaces, some shed quietly on the winds of aging giants, the rest blasted outward by supernovae, the explosive deaths of stars. Among them were carbon, the backbone of organic chemistry; oxygen, essential for water and respiration; nitrogen, a building block of proteins and DNA; iron, which would form Earth's molten core and later course through human blood; calcium, destined to become bones and shells; phosphorus, critical for cellular energy; and sulfur, gold, uranium, and dozens of other elements that no star makes in its long middle age, forged instead in the crush of collapse, in the winds of dying giants, and, for the heaviest, in the collision of two neutron stars.
+
+As gravity drew this enriched material together, the Sun ignited at the center while the remaining debris coalesced into planets. Earth formed roughly 4.5 billion years ago, its iron sinking to create a core, its lighter silicates rising to form a crust, and those star-forged elements distributing themselves throughout, awaiting, across billions of years, the emergence of life that would one day use them to speak, to write, and to conjugate verbs.`The Long Road to Language`
+Life emerged on Earth perhaps 3.8 billion years ago, but the journey to language-bearing creatures was immensely long. Modern humans (~Homo sapiens~) evolved in Africa approximately 300,000 years ago. For most of that time, our ancestors lived as hunter-gatherers on the African continent, developing the cognitive capacities that would eventually enable complex language.
+
+Beginning around 70,000 years ago, waves of humans migrated out of Africa, spreading across the globe. Some traveled north and west into Europe; others moved east across Asia. By 40,000 years ago, and quite possibly earlier, humans had reached the Pontic-Caspian steppe, the vast grasslands running from what is now Romania and Ukraine east to Kazakhstan. This region, lying north of the Black and Caspian Seas, would become the crucible of one of history's most consequential linguistic developments.`The Yamnaya and Proto-Indo-European`
+Between approximately 3300 and 2500 BC, a people we call the Yamnaya (from Russian яма, "pit", referring to their burial practices) inhabited the Pontic-Caspian steppe. The Yamnaya may have been among the first to ride the horse, a reading some of their skeletons support and other specialists dispute, and whether or not they rode, the recently invented wheel gave them a mobility no earlier people had enjoyed. The Yamnaya were semi-nomadic pastoralists, herding cattle, sheep, and goats across the grasslands. They lived in small, mobile groups, following their herds to seasonal pastures.
+
+Their society appears to have been patriarchal and hierarchical. They buried their dead in distinctive pit graves beneath earthen mounds called ~kurgans~, often with grave goods indicating status: weapons, jewelry, animal sacrifices. DNA evidence suggests they consumed significant amounts of dairy, and archaeological evidence points to a diet supplemented by hunting and limited agriculture. What they could not do was digest unprocessed milk. Dozens of Yamnaya individuals have been genotyped directly for the European lactase-persistence allele, and not one carried a copy. They were dairy pastoralists who were lactose intolerant, which is the usual reason to suppose their milk reached them fermented and cured, as yogurt and cheese, with the lactose already broken down by bacteria.
+
+The Yamnaya spoke what linguists reconstruct as ~Proto-Indo-European~ (PIE), the ancestor of languages spoken by nearly half of humans alive today. These languages include German, English, Ukrainian, Hindi, Persian, Cornish, Greek, and Latin.
+
+We do not know what these people called themselves. Autonyms often incorporate the concept of “the people”. The Haudenosaunee, whom Europeans called the Iroquois, named themselves “people of the long house”. Linguists reconstruct PIE *tewtéh₂, from the root *tew- (“to swell, be strong”), as a word meaning “the full community” or simply “the people”. If the Yamnaya or their linguistic heirs used something like *tewtéh₂ as a self-designation, its echoes are still audible: it became Proto-Germanic *þeudō, then Old English þēod (“nation”), then, through Medieval Latin theodiscus (“of the people”), Modern German Deutsch. The word “German”, in other words, may trace back to a five-thousand-year-old way of saying “us”.`The Verb System of Proto-Indo-European`
+The Proto-Indo-European verb was a magnificent and complex system, far more elaborate than any of its daughter languages would retain. PIE verbs were built on roots (typically consisting of a consonant-vowel-consonant structure) that carried core meaning. Upon these roots, speakers layered an intricate architecture of prefixes, suffixes, and infixes to express a vast array of grammatical information.
+
+~Aspect~ was paramount in PIE. The language distinguished three aspects:
+^🐎^ ~Imperfective~ (also called present): ongoing or repeated action
+🐄 ~Perfective~ (also called aorist): completed action viewed as a whole
+🐖 ~Stative~ (also called perfect): a state resulting from completed action
+
+Each aspect had its own stem, often formed through different ablaut grades and affixes. A single verb root might thus have three quite different stems.
+
+~Tense~ was secondary to aspect. Past time was marked chiefly by the ~secondary~ endings, which simply lacked the suffix that pinned an action to the here and now. A few branches also added a prefix called the ~augment~, reconstructed as *e-, but it was optional even in the oldest texts, and whether it goes back to Proto-Indo-European at all is disputed. The system allowed for present, past (preterite), and arguably future expressions, but aspectual distinctions carried more semantic weight than temporal ones.
+
+~Mood~ was richly developed, including:
+^🐎^ ~Indicative~: statements of fact
+🐄 ~Subjunctive~: intentions and things still to come
+🐖 ~Optative~: wishes and possibilities
+🐐 ~Imperative~: direct commands
+
+~Voice~ distinguished active and middle (the latter indicating action affecting the subject or done in the subject's interest), with a developing passive.`Ablaut: The Heart of Indo-European Morphology`
+Perhaps no feature of Proto-Indo-European has proven more enduring than ~ablaut~, the systematic alternation of vowels within roots and affixes to express grammatical distinctions. Ablaut was not arbitrary sound change but a structured system of vowel grades:
+
+^🐎^ ~e-grade~ (full grade): the vowel *e (as in the root *bʰer-, "to carry")
+🐄 ~o-grade~: the vowel *o (as in *bʰor-)
+🐖 ~zero-grade~: absence of the vowel (as in *bʰr-)
+🐐 ~lengthened e-grade~: *ē (as in *mḗh₁-n̥s)
+🐑 ~lengthened o-grade~: *ō (as in *n̥-péh₂-tōr)
+
+These alternations were grammatically meaningful. For example, the present stem might use e-grade while the perfect used o-grade; the zero-grade appeared in certain suffixes and in unstressed positions. When PIE *e and *o later developed into different vowels in the daughter languages, the ablaut patterns became the vowel alternations we still see in German strong verbs today:
+
+🇩🇪 singen, $sAng$, $gesUngen$ (sing, $sAng$, $sUng$)
+🇩🇪 nehmen, $nahm$, $genOMmen$ (take, $tOOk$, taken)
+🇩🇪 geben, $gAb$, gegeben (give, $gAve$, given)
+
+These vowel changes are direct inheritances from Proto-Indo-European, preserved across five millennia of linguistic evolution.`The Migration to Europe`
+Beginning around 3000 BC (approximately 5,000 years ago) the Yamnaya and their descendants began a series of migrations that would reshape the genetic and linguistic landscape of Europe. Equipped with horses, wheeled carts, and perhaps bronze weapons, they moved westward in successive waves.
+
+These migrants brought their Proto-Indo-European language with them. As they settled among or displaced existing populations, their speech diverged into regional varieties. The branch that would become Germanic likely separated from other Indo-European groups sometime between 2500 and 2000 BC, as speakers moved into southern Scandinavia and northern Germany.
+
+By the first millennium BC, a recognizable Proto-Germanic language had emerged in southern Scandinavia and along the North Sea and Baltic coasts. These Germanic-speaking peoples (known to the Romans as ~Germani~) developed a culture adapted to the forests and coastlines of northern Europe.`The Battle of the Teutoburg Forest`
+In 9 AD, a pivotal confrontation occurred in the densely forested hills of what is now northwestern Germany. Three Roman legions under the command of Publius Quinctilius Varus (perhaps 20,000 soldiers) were ambushed and annihilated by an alliance of Germanic tribes led by Arminius (Hermann), a Romanized chieftain of the Cherusci.
+
+The Battle of the Teutoburg Forest halted Roman expansion into Germanic territory. While the Romans would launch punitive expeditions and eventually establish the ~limes~ (a fortified frontier) they never permanently conquered the lands beyond the Rhine and Danube. This had profound linguistic consequences: the Germanic languages developed free from the Romanization that transformed Gaulish into French, Iberian languages into Spanish and Portuguese, and Dacian into Romanian.
+
+Had the Romans conquered Germania, the Germanic peoples might have adopted Vulgar Latin, as did so many others within the Empire. Instead, the Germanic languages (including what would become German, English, Dutch, and the Scandinavian languages) evolved independently, preserving ancient features and developing new ones according to their own internal logic.`Lifeways of the Germanic Tribes`
+At the time of the battle at Teutoburg, the Germanic peoples lived in small villages and farmsteads scattered through the forests of northern Europe. They practiced mixed agriculture, growing barley, oats, rye, and wheat while raising cattle, pigs, sheep, and horses. Cattle were especially important, serving as a measure of wealth and a form of currency.
+
+Society was organized around kinship groups and tribal affiliations, led by chieftains whose authority derived from military prowess, generosity, and noble lineage. The warrior aristocracy formed a ~comitatus~, a band of followers bound to their lord by oaths of loyalty. These warriors sought glory in battle and expected gifts of weapons, gold, and feasting in return for their service.
+
+The Germanic peoples had no centralized states or cities. They built no stone monuments. They committed little to writing, though they did develop the runic alphabet for short inscriptions and magical purposes. Their literature was oral: heroic poetry, mythological tales, and genealogies passed down through generations of singers and storytellers.
+
+Their religion centered on a pantheon of gods (Wōðanaz (later Wōden (Old English) and Óðinn (Old Norse)), Þunaraz (Thunor and Þórr), Tīwaz (Tiw and Týr), and others) worshipped in sacred groves rather than temples. They practiced animal and occasionally human sacrifice, particularly at times of crisis or celebration.`The Germanic Verb System: Simplification and Innovation`
+As Proto-Indo-European evolved into Proto-Germanic over some two millennia, the verb system underwent dramatic restructuring. The elaborate PIE system was simplified in some ways and innovated in others.`Losses from Proto-Indo-European`
+The most striking change was the ~collapse of the aspect system~. Proto-Indo-European had carefully distinguished imperfective, perfective (aorist), and stative (perfect) aspects. Germanic abandoned these distinctions almost entirely. The old imperfective became the Germanic present; the old perfect, with its distinctive reduplication and o-grade ablaut, was repurposed as a preterite (past tense). The aorist was largely lost, its conjugations occasionally merging with the new preterite.
+
+This left Germanic with only ~two tenses~: present and preterite. Where PIE could express subtle distinctions between ongoing past action, completed past action, and present states resulting from past action (all through verb morphology) Germanic had to rely on context or periphrastic constructions (combinations of auxiliary verbs with main verbs).
+
+The ~subjunctive and optative moods merged~ into a single Germanic subjunctive, reducing the modal options available to speakers.
+
+The ~augment~ (*e-), which had marked past tense in PIE, was lost entirely in Germanic.
+
+~Verb classes proliferated based on the structure of the present stem~, leading to the complex system of "strong" verb classes (organized by ablaut patterns) and "weak" verbs (a Germanic innovation using a dental suffix for the preterite).`The Germanic Innovation: Weak Verbs`
+Proto-Germanic created something new: the ~weak verb~. Rather than using ablaut to mark the preterite, weak verbs added a dental suffix (*-d- or *-t-). This is the origin of the "-te" ending in German preterites (machte, sagte, spielte) and the "-ed" ending in English ($mAde$, $saId$, played).
+
+The origin of this dental suffix is debated, but the most widely accepted theory is that it derives from a compound with the verb "to do" (*dō-). What began perhaps as "I love-did" grammaticalized into a single word with a fused past-tense suffix. This innovation was enormously productive: new verbs entering Germanic languages almost always followed the weak pattern, and many originally strong verbs eventually became weak. The King James Bible provides one example of this pattern. In that book, the phrase "the cock $crEw$" appears. Speakers of Modern English are aware that the conjugation later became "crowed".`Old High German and the Continuing Evolution`
+The Germanic dialects spoken in what is now southern Germany and Switzerland developed into Old High German (roughly 750–1050 AD), distinguished from other Germanic languages by the ~High German consonant shift~. This series of sound changes transformed voiceless stops into fricatives or affricates (p → pf or ff; t → ts or s; k → ch), giving German words like ~Pfund~, ~Wasser~, and ~machen~ their characteristic sounds where English has ~pound~, ~water~, and ~make~. The effects of the shift were not uniform. Dialects further south experienced more sound changes. For example, in Swiss German, the /k/ sound became guttural /x/. The Swiss German word for "kitchen" is therefore "Chuchi", contrasting with High German "Küche". By contrast, more northerly dialects did not experience certain sound changes associated with the shift. For example, in Kölsch, spoken in Cologne, the /t/ in "et", English "it", never shifted to /s/, as it did in German "es".`Strong-Verb-Class Restructuring`
+Old High German inherited seven classes of strong verbs from Proto-Germanic, organized by their ablaut patterns. Over time, these classes began to blur. Some verbs shifted classes; others became weak. The original phonological conditioning that determined class membership became opaque as sound changes altered vowels. Today, German strong verbs must largely be memorized individually, their ablaut patterns, while still systematic, are no longer predictable from the infinitive.`Development of the Perfect Tense`
+A major innovation in the history of German was the development of the ~perfect tense~ using the auxiliaries ~haben~ (to have) and ~sein~ (to be) with the past participle. This periphrasis, which began in Old High German and became fully established in Middle High German (1050–1350), created a new way to express completed action:
+
+🇩🇪 Ich habe $gesUngen$ (I have $sUng$)
+🇩🇪 Ich bin gekommen (I have come / I $cAme$)
+
+In modern spoken German, this perfect construction has largely replaced the simple preterite in everyday speech, particularly in southern dialects. The preterite survives primarily in writing, in northern dialects, and with high-frequency verbs.`The Future Tense and Modal Verbs`
+Old High German expressed future time primarily through the present tense with temporal adverbs. Beginning in Middle High German, the verb ~werden~ (to become) was grammaticalized as a future auxiliary:
+
+🇩🇪 Ich werde singen (I will sing)
+
+This created a three-way temporal system (present, preterite/perfect, future) from the original two-tense Proto-Germanic system, though notably through periphrasis rather than new morphological conjugations of the verb itself.`Preterite-Present Verbs`
+German preserves a distinctive class of verbs called ~preterite-presents~: verbs whose present-tense conjugations derive historically from Proto-Germanic strong preterites. These include the modal verbs ~können~ (can), ~müssen~ (must), ~dürfen~ (may), ~sollen~ (shall), ~mögen~ (may/like), and ~wissen~ (to know).
+
+The peculiar conjugations of these verbs (with no endings in 1s and 3s (ich $kAnN$, er $kAnN$) and vowel differences between singular and plural (ich $kAnN$ vs. wir können)) reflects their origin as old preterite conjugations that were reanalyzed as presents.`The Subjunctive and Modern German`
+Old High German had a fully functional subjunctive mood in both present and preterite. Over time, as vowel distinctions reduced and the subjunctive conjugations became identical to the indicative in many verbs, speakers increasingly used periphrastic constructions with ~würde~ (would) + infinitive to express what the old synthetic subjunctive once conveyed:
+
+🇩🇪 Old: Wenn ich $kÄme$... (If I $cAme$...)
+🇩🇪 Modern alternative: Wenn ich kommen $wÜrde$... (If I $wOUld$ come...)
+
+This trend continues in contemporary German, where the $wÜrde$ construction increasingly replaces synthetic subjunctive conjugations except for common verbs and in formal registers.`The Verb System Today`
+Modern German retains the essential architecture established in Proto-Germanic: two morphological tenses (present and preterite), strong verbs with ablaut, weak verbs with a dental suffix, and a distinction between indicative, subjunctive, and imperative moods. Yet the system has been transformed by millennia of change:
+
+🇩🇪 ~Aspect~ is expressed periphrastically (er $lIest$ = he reads/is reading) or through verbal prefixes and particles (er $lIest$ das Buch aus = he finishes reading the book)
+🇩🇪 ~Future~ is expressed with ~werden~ + infinitive
+🇩🇪 ~Perfect~ is expressed with ~haben~/~sein~ + past participle
+🇩🇪 ~Passive~ is expressed with ~werden~ + past participle (dynamic) or ~sein~ + past participle (stative)
+
+The ablaut patterns that once pervaded Proto-Indo-European morphology survive in the strong verbs, a living fossil of that 5,000-year journey from the Pontic steppe to the German-speaking lands of central Europe.
+
+When you conjugate a German verb (when you say ich singe, ich $sAng$, ich habe $gesUngen$) you are participating in a tradition that stretches back through Old High German scribes in medieval monasteries, through Germanic warriors in their forest villages, through Yamnaya herders on the windswept steppe, all the way to that primordial cloud of supernova-enriched gas from which the Solar System was born. The heavy elements forged in dying stars became the Earth; the Earth brought forth life; life evolved the capacity for language; and language, passed from generation to generation, carries within it the traces of all this history, including, in the vowel changes of a German strong verb, the echo of Proto-Indo-European ablaut, still sounding after fifty centuries.

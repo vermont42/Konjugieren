@@ -6984,3 +6984,72 @@ Worth noting what caught it, since it was not the script and not me: `git status
 command showed `Konjugieren/Assets/Localizable.xcstrings` dirty in a session that had deliberately
 left it clean for two days. The gate the runbook set up, "nothing syncs until Josh says so", is what
 made an unexpected write visible as an anomaly rather than as noise.
+
+## The verb history reaches the app (2026-07-29)
+
+Three days of fact-checking finally shipped. `Info.verbHistoryText` in the catalog now holds the
+corrected essay in both languages, including Phase 0's ten patches ported from Conjugar, which had
+been sitting unsynced since the run began. Until this afternoon not one correction had ever been in
+front of a user, and nobody had seen any of the text rendered.
+
+Josh's editing pass produced exactly one change. Step 2 of the ship plan says to scope the work from
+`git diff docs/verb_history.txt` rather than by comparing the two essays, and that is what
+established it: the only delta since the last commit was the stellar-winds deletion he had asked for
+in conversation, already mirrored in the German by the same edit. So step 3, translate the changed
+sentences, had nothing to do. I said so before syncing rather than assuming he had simply not saved,
+because what is on disk is what ships.
+
+The build gave the first real evidence the sync had landed, and it was incidental:
+`GeneratedStringSymbols_Localizable.swift` recompiled. That file is generated from the string
+catalog, so its appearance in the compile list means the catalog changed in a way the build noticed.
+The second piece of evidence was better. Before I had opened the article at all, the Info screen's
+accessibility tree already contained the row's preview text, and the preview ended with "forged
+instead in the crush of collapse and, for the heaviest, in the collision of two neutron stars" —
+the sentence we had shortened twenty minutes earlier. The AXTree is a verification surface I had been
+thinking of as a way to find things to tap.
+
+Then the rendered essay, which is the part no automated check can substitute for. Everything held.
+The clearest single confirmation is `ich kann`, which now reddens only the `a`: the old `$kAnN$`
+reddened the second `n` as well, claiming an irregularity the geminate does not have, and the fix
+came from running the app's own conjugator over the span in Phase 3. Seeing one red letter where
+there used to be two is the whole Phase 3 argument in one word. `*dō-` renders as a literal asterisk,
+which is the essay's twenty-five asterisks behaving as linguistics rather than as markup. E3's added
+sentences, G4's relabelled contrast, H16's hedge, H6's `worn down and learned one verb at a time`,
+and H7's new subjunctive bullet are all there, in both languages.
+
+Two process notes worth keeping.
+
+**`tap_id.sh` refused to tap the article row, and it was right to.** Two accessibility elements share
+`info_row_verb_history`, the title button and the body-preview button, and the script exits rather
+than silently picking one. That is the behavior you want from a tool whose failure mode would
+otherwise be "tapped something, don't know what." `tap_label.sh` against the article title worked
+first try.
+
+**The screenshots are gitignored, so I wrote down what they showed.** My first draft of the status
+note in `history_corrections.md` pointed at filenames under `docs/screenshots/`, which is a dangling
+pointer for anyone who clones the repo. Replaced with a description of what was verified. A
+verification artifact that only exists on one machine is not an artifact; the sentence describing it
+is.
+
+Also wrote `prompts/luther-bible-section.md`. Josh spotted a real lacuna, the absence of the Luther
+Bible, and it turns out the fact-check had found the same hole and recorded it as deliberate: cluster
+G's coverage note says the essay "never mentions Luther" and that the omission is not an error but is
+why that cluster came in smaller than its brief. He decided he wants the section anyway, which is a
+scope call rather than a correction.
+
+The brief's substance is four candidate verb-specific effects, ranked by how well I expect each to
+survive a skeptic and all explicitly unresearched: the East Central German retention of final `-e`
+that gives standard German *ich mache* against Upper German *ich mach*; the narrative preterite read
+aloud across regions whose speech was losing it, which would supply the mechanism for a split the
+essay already asserts; Luther arguing in the *Sendbrief vom Dolmetschen* for finite verbs against
+Latinate chancery syntax, where his influence runs against the Satzklammer rather than with it; and
+strong-verb preterite leveling, where his Bible is a witness and not a cause. The framing that
+matters is that Luther invented no verbal morphology. What the Bible did was give one region's
+existing choices enormous reach at the moment several verbal variables were being resolved, and the
+brief says "do not attribute standardization to Luther" three times because that is the error the
+section is most likely to ship.
+
+The brief also carries the one methodological improvement the last run identified and never got to
+use: make the third agent a neutral adjudicator told to decide rather than a second attacker, and
+print the direction-of-movement arithmetic. Phase 2's second-opinion pass moved fourteen findings and
+all fourteen moved toward a stronger finding, which measures the instruction rather than the truth.

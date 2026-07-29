@@ -1,9 +1,19 @@
 # Ship the corrected verb-history essay
 
-**Status: not started. Written 2026-07-29.** This is the last mile of the fact-check run in
-[`verify-verb-history.md`](verify-verb-history.md), which is complete. That run corrected the essay
-in both extracts. This one takes Josh's own editing pass, propagates it to the German, and puts both
-localizations into the app.
+**Status: COMPLETE, 2026-07-29.** Both localizations are in the catalog and the rendered essay was
+checked in the running app. Kept because the steps below are the correct procedure for any future
+edit to this essay, including the Luther section briefed in
+[`luther-bible-section.md`](luther-bible-section.md), and because the traps in "Do not do these
+things" cost real money to learn.
+
+**How the run actually went.** Josh's editing pass produced exactly one change, the deletion of a
+doubled stellar-winds clause that agent H had flagged as redundant, which he asked for in
+conversation rather than editing by hand. Step 2's `git diff` is what established that, and it is
+why the step exists: reading both essays and comparing them by eye would have taken twenty minutes
+to reach the same conclusion less reliably. Step 3 had nothing to do, because the German counterpart
+had landed in the same edit. Steps 4 through 7 ran as written, with no header count needing to
+change and no validator complaint. Step 7 found nothing wrong, which is the outcome to hope for on
+the first render of text nobody has ever seen.
 
 **Step 1 is Josh's and blocks everything else.** He reviews `docs/verb_history.txt` and edits it. No
 session starts at step 2 until he says the English is final.

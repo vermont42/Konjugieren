@@ -16,9 +16,23 @@ asserted against an expected occurrence count rather than eyeballed. Both files 
 the two headers' counts have been updated to match. What was declined, and why, is in
 [What was applied and what was not](#what-was-applied-and-what-was-not).
 
-**`Konjugieren/Assets/Localizable.xcstrings` is still untouched**, so none of this ships yet,
-including Phase 0's ten patches. Two runs of `scripts/sync_verb_history.py`, one per language, are
-what change the app.
+**Shipped to the catalog 2026-07-29.** Both localizations of `Info.verbHistoryText` in
+`Konjugieren/Assets/Localizable.xcstrings` now carry the corrected essay, along with Phase 0's ten
+patches, which had also never shipped. The catalog diff is exactly two changed lines, one per
+localization, and each round-trips byte-identical to its extract.
+
+**Verified in the running app**, in both languages, which no one had done for any of this text.
+Screenshots were taken but `docs/screenshots/` is gitignored, so what they showed is recorded here
+instead. The Info screen renders without the `fatalError` that unbalanced markup would cause. No
+literal markup character appears in the rendered text. `ich k`**`a`**`nn` reddens only the a, which
+is the `$kAnN$` to `$kAnn$` fix, since the old value also reddened the second n. `ich s`**`a`**`ng`
+and `ich habe ges`**`u`**`ngen` redden correctly in both languages. E3's added sentences render with
+`*dō-` as a literal asterisk rather than as markup. G4's `Synthetic:` and `Periphrastic:` labels,
+H16's parenthetical hedge, H6's `worn down and learned one verb at a time`, and H7's new subjunctive
+bullet are all present, as are their German counterparts. Ten further assertions were run
+mechanically against the shipped catalog values, covering the two restored German hedges, the recast
+Küche sentence, `einen ~comitatus~`, H3's `“Deutsch”`, the deleted stellar-winds clause, and the
+`reflect` agreement fix. All ten pass.
 
 The entries below are kept in the form they were written, as proposals with their evidence, because
 the evidence is the reason to trust the change. Read them as the record of why the essay now says
@@ -1256,11 +1270,42 @@ German alone, since the English is right.
 Agent H also recorded ten observations about the sentences Phase 0 pasted verbatim from Conjugar:
 redundancy and register breaks at the patch sites, most visibly the lactose material at EN 88, which
 is now 84 of that paragraph's 155 words in a paragraph whose topic sentence is about social structure.
-**No rewording is proposed for any of them**, because rewording pasted text is the thing the verbatim
-rule exists to prevent. They are in
+**No rewording was proposed for any of them**, because rewording pasted text is the thing the
+verbatim rule exists to prevent. They are in
 [`docs/verb_history_phase1.md`](verb_history_phase1.md) under `## Agent H: internal consistency`,
-subsection "Patch-site notes", and they are what Josh will be looking at when he reads the Phase 0
-diff.
+subsection "Patch-site notes", and they are what Josh looks at when he reads the Phase 0 diff.
+
+### One patch site was actioned by Josh, 2026-07-29
+
+**P1's redundancy, the only one of the ten to be acted on.** Agent H observed that the opening
+paragraph names stellar winds twice under two names about ninety words apart: `some shed quietly on
+the winds of aging giants` early, and `in the winds of dying giants` inside the pasted closing
+clause. Same referent, two adjectives, far enough apart that the second reads as new information
+that is not new.
+
+Josh reviewed the sentence, kept its length and its register, which is the part agent H filed as a
+cost, and cut the later clause. The tail now reads:
+
+> …and dozens of other elements that no star makes in its long middle age, forged instead in the crush of collapse and, for the heaviest, in the collision of two neutron stars.
+
+> …und Dutzende anderer Elemente, die kein Stern in seinem langen mittleren Lebensalter erzeugt, sondern die im Zusammenbruch geschmiedet werden und, für die schwersten, im Zusammenstoß zweier Neutronensterne.
+
+Nothing factual is lost, because the winds are still named in the same sentence, and the three-item
+list becomes two, which is why the serial comma before `and` goes with it. No marker count changed.
+The English body loses six words and the German five.
+
+**This is a deliberate edit to pasted patch text, and it is the first one.** It is recorded here
+rather than left to a future diff, because a session comparing Konjugieren's shared sections against
+Conjugar's corrected prose will find a divergence at this exact clause and needs to know it is a
+decision rather than a botched port. The verbatim rule was always a default for agents, with the
+author reserving the judgement; this is the author exercising it.
+
+One consequence worth noting for anyone who reuses these sections. **The register break agent H
+flagged at P2 survives, on the author's explicit preference.** "Elements that no star makes in its
+long middle age" is still the only clause in the paragraph that personifies a star, and it is still
+the longest non-list clause. H was right that it departs from the paragraph's habit of terse
+appositive glosses, and wrong that the departure is a cost: it is what makes the sentence's tail read
+as a turn rather than as a run-on. Do not "fix" it.
 
 ---
 

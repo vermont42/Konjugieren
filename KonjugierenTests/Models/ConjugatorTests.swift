@@ -820,6 +820,42 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "wollen", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "wIlL")
     expectConjugation(infinitiv: "wollen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "wollte")
     expectConjugation(infinitiv: "wollen", conjugationgroup: .perfektpartizip, expected: "gewollt")
+
+    expectConjugation(infinitiv: "können", conjugationgroup: .präsensIndikativ(.firstSingular), expected: "kAnn")
+    expectConjugation(infinitiv: "können", conjugationgroup: .präsensIndikativ(.secondSingular), expected: "kAnnst")
+    expectConjugation(infinitiv: "können", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "kAnn")
+    expectConjugation(infinitiv: "können", conjugationgroup: .präsensIndikativ(.firstPlural), expected: "können")
+    expectConjugation(infinitiv: "können", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "kOnnte")
+    expectConjugation(infinitiv: "können", conjugationgroup: .perfektpartizip, expected: "gekOnnt")
+
+    expectConjugation(infinitiv: "müssen", conjugationgroup: .präsensIndikativ(.firstSingular), expected: "mUsS")
+    expectConjugation(infinitiv: "müssen", conjugationgroup: .präsensIndikativ(.secondSingular), expected: "mUssT")
+    expectConjugation(infinitiv: "müssen", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "mUsS")
+    expectConjugation(infinitiv: "müssen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "mUsste")
+    expectConjugation(infinitiv: "müssen", conjugationgroup: .perfektpartizip, expected: "gemUsst")
+
+    expectConjugation(infinitiv: "dürfen", conjugationgroup: .präsensIndikativ(.firstSingular), expected: "darF")
+    expectConjugation(infinitiv: "dürfen", conjugationgroup: .präsensIndikativ(.secondSingular), expected: "dArfst")
+    expectConjugation(infinitiv: "dürfen", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "darF")
+    expectConjugation(infinitiv: "dürfen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "dUrfte")
+    expectConjugation(infinitiv: "dürfen", conjugationgroup: .perfektpartizip, expected: "gedUrft")
+
+    // sollen is the preterite-present whose stem vowel does not alternate, so its only
+    // irregularity is the endingless 1s and 3s. Nothing is uppercased because no letter
+    // differs from the stem: the irregularity is the absent ending, which this notation
+    // cannot mark. Until 2026-07-29 this verb was fa="w" with no ablaut group and the app
+    // emitted "solle" and "sollt".
+    expectConjugation(infinitiv: "sollen", conjugationgroup: .präsensIndikativ(.firstSingular), expected: "soll")
+    expectConjugation(infinitiv: "sollen", conjugationgroup: .präsensIndikativ(.secondSingular), expected: "sollst")
+    expectConjugation(infinitiv: "sollen", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "soll")
+    expectConjugation(infinitiv: "sollen", conjugationgroup: .präsensIndikativ(.firstPlural), expected: "sollen")
+    expectConjugation(infinitiv: "sollen", conjugationgroup: .präsensIndikativ(.secondPlural), expected: "sollt")
+    expectConjugation(infinitiv: "sollen", conjugationgroup: .präsensIndikativ(.thirdPlural), expected: "sollen")
+    expectConjugation(infinitiv: "sollen", conjugationgroup: .präsensKonjunktivI(.firstSingular), expected: "solle")
+    expectConjugation(infinitiv: "sollen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "sollte")
+    // No umlaut in Konjunktiv II, unlike könnte, müsste, dürfte and möchte.
+    expectConjugation(infinitiv: "sollen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "sollte")
+    expectConjugation(infinitiv: "sollen", conjugationgroup: .perfektpartizip, expected: "gesollt")
   }
 
   @Test func weakVerbsWithTStems() {

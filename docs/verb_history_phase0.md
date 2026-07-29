@@ -84,13 +84,13 @@ Ten in English, ten in German, one to one. Conjugar's line numbers refer to its
 | P1 | 80 | A · line 30 | needs-hedging | "Nearby supernovae … had enriched this cloud" becomes "Generations of dying stars had seeded the cloud", naming winds as well as explosions |
 | P2 | 80 | A · line 30 | factual error | "elements that could only be created in the intense pressures of collapsing stars or the cataclysmic violence of supernovae" becomes the three-site version that crowns no site |
 | P3 | 82 | A · line 32 | nitpick | "supernova-gifted elements" becomes "star-forged elements" |
-| P4 | 83 | A · line 38 | needs-hedging + nitpick | "By 45,000 years ago" becomes "By 40,000 years ago, and quite possibly earlier"; the steppe's western limit moves from Ukraine to Romania |
+| P4 | 85 | A · line 38 | needs-hedging + nitpick | "By 45,000 years ago" becomes "By 40,000 years ago, and quite possibly earlier"; the steppe's western limit moves from Ukraine to Romania |
 | P5 | 86 | B · line 42 | factual error | The Yamnaya horizon starts at 3300 BC, not 4500 |
 | P6 | 86 | B · line 42 | needs-hedging | The flat horsemanship claim becomes the hedged one, with the mobility attributed to the wheel |
-| P7 | 86 | B · line 46 | factual error (inverted) | "having evolved lactose tolerance" is replaced by three sentences establishing the opposite |
-| P8 | 93 | D · line 64 | factual error | Past time is marked chiefly by the secondary endings; the augment is a few branches' prefix of disputed antiquity |
-| P9 | 96 | D · line 64 | nitpick | Subjunctive: "wishes, possibilities, intentions" becomes "intentions and things still to come" |
-| P10 | 97 | D · line 64 | nitpick | Optative: "hopes, desires, gentle commands" becomes "wishes and possibilities" |
+| P7 | 88 | B · line 46 | factual error (inverted) | "having evolved lactose tolerance" is replaced by three sentences establishing the opposite |
+| P8 | 102 | D · line 64 | factual error | Past time is marked chiefly by the secondary endings; the augment is a few branches' prefix of disputed antiquity |
+| P9 | 106 | D · line 64 | nitpick | Subjunctive: "wishes, possibilities, intentions" becomes "intentions and things still to come" |
+| P10 | 107 | D · line 64 | nitpick | Optative: "hopes, desires, gentle commands" becomes "wishes and possibilities" |
 
 ### P7 deserves its own note
 
@@ -208,14 +208,14 @@ in `docs/verb_history_claims.md` rather than being left to the fan-out to notice
 | # | Line | Claim | Assigned to |
 |---|---|---|---|
 | R1 | 90 | The descendant list "German, English, Ukrainian, Hindi, Persian, Cornish, Greek, and Latin". Conjugar's list was checked; this is a different list | A |
-| R2 | 90 | The whole *tewtéh₂ paragraph: PIE *tewtéh₂ from *tew- "to swell, be strong"; Proto-Germanic *þeudō; Old English þēod; Medieval Latin *theodiscus*; Modern German *Deutsch*; and the Haudenosaunee autonym glossed "people of the long house" | E |
-| R3 | 92 | "PIE verbs were built on roots (typically consisting of a consonant-vowel-consonant structure)" | D |
-| R4 | 93 | "The system allowed for present, past (preterite), and arguably future expressions" | D |
-| R5 | 102 | "with a developing passive" | D |
+| R2 | 92 | The whole *tewtéh₂ paragraph: PIE *tewtéh₂ from *tew- "to swell, be strong"; Proto-Germanic *þeudō; Old English þēod; Medieval Latin *theodiscus*; Modern German *Deutsch*; and the Haudenosaunee autonym glossed "people of the long house" | E |
+| R3 | 93 | "PIE verbs were built on roots (typically consisting of a consonant-vowel-consonant structure)" | D |
+| R4 | 102 | "The system allowed for present, past (preterite), and arguably future expressions" | D |
+| R5 | 110 | "with a developing passive" | D |
 | R6 | 113–117 | The five ablaut grades with their reconstructed forms: *bʰer-, *bʰor-, *bʰr-, *mḗh₁-n̥s, *n̥-péh₂-tōr | E |
 | R7 | 119 | "the present stem might use e-grade while the perfect used o-grade; the zero-grade appeared in certain suffixes and in unstressed positions" | E |
 | R8 | 121–123 | The three German triads with their English glosses: singen/sang/gesungen, nehmen/nahm/genommen, geben/gab/gegeben | E |
-| R9 | 123 | "direct inheritances from Proto-Indo-European, preserved across five millennia of linguistic evolution" | E |
+| R9 | 125 | "direct inheritances from Proto-Indo-European, preserved across five millennia of linguistic evolution" | E |
 
 The prompt predicted the residue would concentrate in `Ablaut`, and it did: R6 through R9 are
 that section, and they are the section's whole substance. Conjugar's counterpart section is
@@ -227,7 +227,7 @@ cites German. Almost nothing overlaps.
 These are not findings. They are things Phase 0 saw while holding the whole text open, and
 several of them are seams the patch itself created.
 
-**The patch manufactured one live contradiction.** Patched line 93 now says the augment
+**The patch manufactured one live contradiction.** Patched line 102 now says the augment
 belongs to a few branches and that "whether it goes back to Proto-Indo-European at all is
 disputed". Unpatched line 150 still says "The ~augment~ (*e-), which had marked past tense in
 PIE, was lost entirely in Germanic." You cannot lose what may never have been there. This is

@@ -7489,8 +7489,8 @@
   <verb in="s^itz^en" hi="6495051" ic="seated.side.left">
     <reading tn="sit" fa="s" ag="sitzen" ay="r" />
   </verb>
-  <verb in="sollen" hi="87824373" ic="walk.arrival">
-    <reading tn="should, ought, be obligated, shall" fa="w" />
+  <verb in="s^oll^en" hi="87824373" ic="walk.arrival">
+    <reading tn="should, ought, be obligated, shall" fa="m" ag="sollen" />
   </verb>
   <verb in="sonder+kündigen" hi="499590" hp="y" ic="skating">
     <reading tn="terminate by special termination right" fa="w" />

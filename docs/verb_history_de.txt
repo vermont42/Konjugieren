@@ -23,7 +23,7 @@ Invarianten gegenüber dem Englischen, beim Übersetzen geprüft:
     derzeit exakt mit ihm überein. Sie enthalten deutsche wie englische Verbformen, und
     die englischen bleiben englisch, weil sie im Deutschen als Glosse stehen. Weder neu
     großschreiben noch anpassen.
-  • Die 58 ~…~-Spannen weichen ab, weil sie Fachbegriffe hervorheben und diese im
+  • Die 59 ~…~-Spannen weichen ab, weil sie Fachbegriffe hervorheben und diese im
     Deutschen andere Wörter sind: ~Aspekt~ für ~Aspect~, ~Präteritopräsentia~ für
     ~preterite-presents~. Ihre Anzahl bleibt gleich.
   • Die zwanzig Sternchen sind Linguistik, keine Auszeichnung. Sie markieren

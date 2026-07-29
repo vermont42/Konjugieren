@@ -61,6 +61,7 @@
   <ag e="sieden" a="OTT,bA,pp|ÖTT,dA" />
   <ag e="singen" a="A,bA|Ä,dA|U,pp" />
   <ag e="sitzen" a="Aẞ,bA|Äẞ,dA|ESS,pp" />
+  <ag e="sollen" a="soll*,a1s,a3s" />
   <ag e="sprechen" a="I,a2s,a3s|A,bA|Ä,dA|O,pp" />
   <ag e="stehen" a="AND,bA,pp|ÄND,dA" />
   <ag e="steigen" a="IE,bA,dA,pp" />

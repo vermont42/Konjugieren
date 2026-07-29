@@ -1,40 +1,69 @@
 # Fact-check "A History of the German Verb System"
 
-**Status: Phase 0 and Phase 0.5 are done, 2026-07-28. Start at Phase 1.** Written 2026-07-27
+**Status: Phases 0, 0.5, 1, 2 and 3 are done. Only Phase 4 remains.** Written 2026-07-27
 from the Conjugar session that ran the same check on Conjugar's Spanish essay. Rescoped
-2026-07-28 by Josh: see "Revision" at the bottom for what changed and why.
+2026-07-28 by Josh: see "Revision" at the bottom for what changed and why. Phases 2 and 3 ran
+2026-07-28 and 2026-07-29; see the two revisions at the bottom.
+
+**Phase 4 is not a fan-out.** It is synthesis in one context: merge four finished inputs into
+one document and write the German counterpart prose. Do not turn on ultracode for it and do not
+spawn a fleet. The "run this with ultracode" instruction below applies to Phases 1 and 2, which
+are done. Everything Phase 4 needs is on disk; it needs no web research and no search budget.
+
+**Do not re-run Phase 2.** It cost 2.38 million subagent tokens across 51 agents and
+returned a disposition for all 31 findings, with replacement prose for the 27 survivors.
+
+**Do not re-run Phase 3.** It ran the app's own conjugator over the essay's spans in a temporary
+Swift Testing suite and then deleted it. Re-running recreates that file and re-derives nine
+corrections that are already written down.
 
 **Do not re-run Phase 0.** Its step 1 says to extract the essay from `Localizable.xcstrings`
 into `docs/verb_history.txt`. That file now holds the *patched* text, and the catalog still
-holds the unpatched text, so a second extraction silently discards all ten patches. What
-Phase 0 produced, and what Phase 1 needs:
+holds the unpatched text, so a second extraction silently discards all ten patches.
+
+**Do not re-run Phase 1 either.** It cost 1.12 million subagent tokens across eight agents and
+returned a verdict for all 111 inventory rows. Re-running it buys nothing and pays for it twice.
+What the run has produced so far:
 
 | File | |
 |---|---|
 | [`docs/verb_history.txt`](../docs/verb_history.txt) | English essay, patched. The line numbers everything else cites |
 | [`docs/verb_history_de.txt`](../docs/verb_history_de.txt) | German translation, patched to match |
-| [`docs/verb_history_claims.md`](../docs/verb_history_claims.md) | **The claim inventory. Phase 1 works from this, not from the section ranges below** |
+| [`docs/verb_history_claims.md`](../docs/verb_history_claims.md) | **The claim inventory. Every fan-out phase works from this, not from the section ranges below** |
 | [`docs/verb_history_phase0.md`](../docs/verb_history_phase0.md) | What was patched, what diverged, the residue list, and the seams the patch created |
+| [`docs/verb_history_phase1.md`](../docs/verb_history_phase1.md) | All 111 verdicts with reasoning and sources, 31 findings with replacement prose, agent H's report, and the inventory gaps |
+| [`docs/verb_history_phase2.md`](../docs/verb_history_phase2.md) | **Phase 4 input 1.** Disposition of all 31 findings, replacement prose for the 27 survivors, agent H's routing, and the coverage audit |
+| [`docs/verb_history_phase2_reports/`](../docs/verb_history_phase2_reports/) | The 31 skeptic reports, the 19 second opinions, the coverage audit, and `final.json` |
+| [`docs/verb_history_phase3.md`](../docs/verb_history_phase3.md) | **Phase 4 input 2.** Nine span corrections, the H11 and H13 adjudications, markup and link results, and four findings against the app rather than the essay |
 | [`scripts/sync_verb_history.py`](../scripts/sync_verb_history.py) | Validates an extract; `--check` writes nothing |
 
 Nothing has been synced back to the catalog, which is Josh's call to make after he reviews
 the extract diff.
 
-**Run this with ultracode on.** It is a fan-out job: seven researchers, each followed by an
-adversarial verifier, plus two agents that stand outside the fan-out. Say `ultracode` in
-your opening message, or turn it on with `/effort`, then point Claude at this file.
+**Phase 1 corrected the inventory's line numbers.** Nine shared-half rows cited a line one to
+nine short of their claim, by varying amounts, so no constant offset would have fixed them. All
+111 have since been audited mechanically, by matching each row's quoted fragment against its
+cited line. Phase 0's patch table had the same defect in five rows and is also corrected. If a
+line number ever looks wrong again, that audit is four lines of Python and is worth re-running
+before trusting a number.
 
-**Phase 0 is not fan-out and it gates everything.** Do it serially, in one context, and do
-not spawn a researcher until its claim inventory exists. The fan-out is what this run costs;
-everything before it is what keeps that cost from being paid twice.
+**Historical, and superseded by the status block at the top of this file.** Phases 1 and 2 were
+the fan-out and were run with ultracode on: seven researchers in Phase 1, then 31 skeptics and 19
+second opinions in Phase 2. Phases 0 and 3 were serial, single-context work, and Phase 4 is too.
+Kept because a reader of the corrections document should be able to tell what produced it.
 
 ## Why this exists
 
 Conjugar's `Info.verbHistoryText` ("A History of the Spanish Verb System") was fact-checked
 claim by claim in July 2026. The findings are in
 `/Users/josh/Desktop/workspace/Conjugar.mig/docs/history_corrections.md`, and the corrected
-prose is in `/Users/josh/Desktop/workspace/Conjugar.mig/docs/verb_history.txt`. Both are
-readable from this session; read them before doing anything else.
+prose is in `/Users/josh/Desktop/workspace/Conjugar.mig/docs/verb_history.txt`.
+
+**Phase 0 read both in full, and no later phase should.** The corrections file is 358 KB and
+about 90,000 tokens, and its whole contribution to this run was the ten patches already applied
+to `docs/verb_history.txt`. A session doing Phase 4 that reads it "before doing anything else",
+as an earlier draft of this line instructed, spends most of a context window on an input whose
+output is already on disk.
 
 **The three essays share their opening sections as near-verbatim variants.** Konjugieren's
 first five sections cover the same ground as Conjugar's:
@@ -177,6 +206,10 @@ claim everybody thought belonged to someone else.
 
 ## Phase 1 — fan out over the German-specific claims
 
+**Done, 2026-07-28. Results in [`docs/verb_history_phase1.md`](../docs/verb_history_phase1.md).**
+Kept below because Phase 2 needs to know what each cluster was told, and because a skeptic
+judging whether a researcher overreached should be able to read the brief it was working from.
+
 Seven clusters, one researcher each. Everything before `The Migration to Europe` is out of
 scope except residue-list items the inventory assigns here.
 
@@ -299,6 +332,77 @@ Grade every survivor:
 - **needs-hedging** — the question is contested and the essay states it flatly
 - **nitpick** — a specialist's quibble that misleads nobody
 
+### What Phase 1 handed you
+
+31 findings out of 111 rows: 7 factual errors, 7 needing a hedge, 17 nitpicks, 80 confirmed. No
+row came back unresolved and no agent reported on a row it did not own, so the partition held
+and coverage needs verifying rather than reconstructing.
+
+Findings per cluster, which is what sizes the skeptic fleet: A 3, B 2, C 6, D 4, E 8, F 3, G 3.
+The distribution is uneven enough that a per-cluster fan-out has a straggler in E.
+
+**Attack these four first.** They are the ones most likely to fall, and Phase 1's own authors
+flagged three of them:
+
+1. **B12** rests on Wikipedia. Its author says so and volunteers the downgrade to nitpick
+   unprompted. The underlying fact is elementary, so the exposure is the grading, not the fact.
+2. **R6** argues that `*n̥-péh₂-tōr` is not a reconstruction the handbooks give of anything.
+   That is an argument from absence, resting on Wiktionary, at medium confidence, and it is
+   exactly the shape of finding the Conjugar skeptic pass killed most often.
+3. **F8** concedes the essay is right about the onset and faults it for stopping there. A
+   finding about an omission has to show the omission misleads, not merely that more could be
+   said.
+4. **C9 and C13** each narrow an absolute, "no stone monuments" and "groves rather than
+   temples". Each can be defended by reading the essay's word more charitably than its author
+   did, and a skeptic should try.
+
+### Do not hand a skeptic the whole Phase 1 document
+
+`docs/verb_history_phase1.md` is 368 KB, roughly 92,000 tokens. Seven agents each reading it is
+about 644,000 input tokens spent before a single search runs, which is more than half of what
+the entire Phase 1 fan-out cost. Slice it and splice the slice inline into the prompt. All seven
+findings blocks together come to 117 KB, about 29,000 tokens, so slicing is a 22-fold saving on
+that axis alone.
+
+Each cluster's findings are the contiguous block under its `### Cluster X` heading in the
+`## Findings` section. The same heading recurs later under `## Confirmed rows`, so stop at the
+next `###` rather than at the next occurrence of the cluster name:
+
+```bash
+awk -v h="### Cluster E: Old High German" \
+    '$0==h{f=1;print;next} f&&/^### /{exit} f' docs/verb_history_phase1.md
+```
+
+A skeptic needs the essay, its own findings block, and the sources under attack. It does not
+need `verb_history_phase0.md`, the style doc, or this file's Phase 0 material: those were for
+agents writing replacement prose, and a skeptic writes none.
+
+### Two decompositions, and what each costs
+
+Phase 1's measured cost was 1,122,761 subagent tokens, 239 tool calls, 107 web searches, about
+21 minutes wall clock across 8 agents.
+
+- **Per cluster, 7 skeptics.** What the paragraph above describes. Roughly 600 to 750 thousand
+  tokens, 55 to 65 percent of Phase 1. Work volume falls because 31 findings is 28 percent of
+  111 rows; per-item cost rises because refuting takes more searching than confirming.
+- **Per finding, 31 skeptics**, or 31 times three under the perspective-diverse verify pattern.
+  Plausibly 1.2 to 2 million tokens, so *more* than Phase 1. This is the more thorough
+  structure and it is what the Conjugar run's kill rate came from.
+
+Neither is wrong. Pick deliberately and say which was picked, because a reader of the finished
+corrections document cannot tell from the output which fleet produced it.
+
+### Agent H's 19 items are not skeptic-bound
+
+They are internal-consistency observations, they needed no research to produce, and research
+will not settle them. Most are a choice about which of two sentences gives way, which is Josh's
+call and not a fact question. Routing them to a refutation fleet wastes the fleet and misframes
+the items. Carry them into the deliverable as their own section.
+
+Three of them do belong somewhere else. H11 and H13 turn on `$…$` span values, which **Phase 3**
+owns because it checks spans against the app's own conjugation output. H14 is the same kind of
+question in prose rather than markup, so it is Josh's.
+
 ## Phase 3 — the app-internal agent
 
 One agent does no web research. It verifies the essay against this app's own code, across
@@ -308,7 +412,10 @@ One agent does no web research. It verifies the essay against this app's own cod
 - Every `$…$` span reddens the letters the app would actually redden. Uppercase inside `$…$`
   means irregular (`StringExtensions.swift:215`, `isUpper = char.isUppercase`), so each span
   should be the difference between the real form and its regular composition. This essay has
-  more than fifty such spans. Check them against the app's own conjugation output, in a
+  **27** such spans, 17 distinct, byte-identical between the two language files. An earlier draft
+  of this file said "more than fifty", which was wrong and was believed until someone counted.
+  Sixteen are German and the app can arbitrate them; eleven are English and must be judged by
+  hand against the same rule. Check the German ones against the app's own conjugation output, in a
   temporary Swift Testing test that you delete afterward.
 - Markers balance and do not nest, since here that is a crash rather than a render bug.
 - Any claim the essay makes about Konjugieren itself matches what the app does.
@@ -320,18 +427,61 @@ Two artifacts, and they are different in kind:
 1. **`docs/verb_history.txt`, patched.** The shared sections carry Conjugar's corrections,
    applied. Josh reviews this as a diff. Nothing syncs back to `Localizable.xcstrings` until
    he says so.
-2. **`docs/history_corrections.md`.** Findings from Phase 1 and 2 on the German-specific
-   claims, structured per finding: the inventory row number, the quoted claim, its line, the
-   verdict and severity, what is actually true, the sources, and **concrete replacement prose
-   in the essay's voice**: same approximate length, markup preserved, no em-dashes and no
-   parenthetical expressions, which is the house style Josh set when he commissioned these
-   essays. Close with a coverage table reconciling the document against
-   `docs/verb_history_claims.md`, so every row is either a finding or an explicit
-   `confirmed`. Any row appearing in neither is the run's own bug, and it should be visible
-   in the deliverable rather than discovered later.
+2. **`docs/history_corrections.md`.** It has **four** inputs, not two, and a fresh session that
+   merges only the first will ship an incomplete document:
+
+   1. **`docs/verb_history_phase2.md`**, the 27 surviving findings with English replacement prose.
+      Note that 15 of the 27 carry prose written by the second opinion rather than by Phase 1, so
+      take the prose from the disposition sections rather than from `verb_history_phase1.md`.
+   2. **`docs/verb_history_phase2.md` again, for agent H's 16 non-routed items.** They are not
+      findings and must not be presented as though they were. Most are a choice about which of two
+      sentences gives way, which is Josh's call. H14 is his too. H11 and H13 went to Phase 3 and
+      come back answered.
+   3. **`docs/verb_history_phase3.md`**, nine span corrections plus the H11 and H13 adjudications.
+      Each lands in **both** language files, since the spans are byte-identical.
+   4. **The four thin confirmed rows** from the coverage audit, G16, D1, C8 and C7. These are
+      reasoning defects in rows that passed, not proposed corrections, and they belong in their
+      own section so nobody reads them as findings.
+
+   Phase 3 also produced **findings against the app rather than the essay**. The chief one, that
+   `sollen` was `fa="w"` with no ablaut group and conjugated as an ordinary weak verb, was **fixed
+   on 2026-07-29** and needs no entry: sollen now has its own ablaut group, `modalVerbs()` covers
+   all six preterite-presents rather than three, and the suite passes at 211 tests. The remaining
+   three are B, `auslesen` glossed in a sense the corpus does not ship, C, the passive being the
+   one item in the essay's closing list the app does not model, and D, a terminology note. None is
+   an essay error. Give them a short section pointing at `verb_history_phase3.md` rather than
+   filing them among the findings.
+
+   Structure each finding: the inventory row number, the quoted claim, its line, the verdict and
+   severity, what is actually true, the sources, and **concrete replacement prose in the essay's
+   voice**: same approximate length, markup preserved, and no em dashes, per
+   [`docs/english_writing_style.md`](../docs/english_writing_style.md).
+
+   **On parentheses, correcting an earlier draft of this file.** It said "no parenthetical
+   expressions", and agent H flagged the consequence: this essay is heavily parenthetical by
+   design, since its glosses are parentheses, as in `~haben~ (to have)` and
+   `singen, $sAng$, $gesUngen$ (sing, $sAng$, $sUng$)`. A corrections author obeying that rule
+   literally would produce prose that does not match the voice around it and would strip glosses
+   the essay needs. The rule that was meant: **do not add new parenthetical asides**, and keep the
+   glosses that are already there. Phase 1 and Phase 2 both wrote to the corrected rule.
+
+   Close with a coverage table reconciling the document against `docs/verb_history_claims.md`, so
+   every row is either a finding or an explicit `confirmed`. The numbers are already computed and
+   audited in `verb_history_phase2_reports/coverage_audit.md`; use them rather than recounting.
+   The inventory's own reconciliation table at `docs/verb_history_claims.md` lines 339 to 348 is
+   still blank and those numbers belong in it.
 
 Because this essay is translated, every patch and every replacement must be given **in both
 English and German**, with the same hedge strength in each. Check the German separately.
+
+**The German prose does not exist yet, and that is deliberate rather than an oversight.** Phase 1
+deferred it because roughly half the findings were expected to fall, and four did. Writing it is
+the single largest remaining task in this run. Every survivor cites its German counterpart line, so
+Phase 4 knows what it is translating against. Agent H's German-surface section in
+`verb_history_phase1.md` lists seven places where the existing translation already changes hedge
+strength or reads circularly; two of them are in patched text, where the hedge survived the port
+from Conjugar and then did not survive the translation. Read that section before writing any
+German, because it is a list of the exact mistakes this step is prone to.
 
 **Do not edit the German-specific half of the essay.** For that half the deliverable is the
 corrections document, and Josh decides what changes.
@@ -350,14 +500,18 @@ From `Konjugieren/Utils/StringExtensions.swift`:
 
 ## Lessons from the Conjugar run
 
-- **Raise the web-search cap before Phase 1 starts.** Conjugar's handoff records that the cap
-  is per session and does **not** reset with the five-hour usage window, so researchers run
-  dry silently rather than erroring. Fourteen agents budgeting one to three searches across
-  111 inventory rows will hit it. Start the fan-out session with:
+- **Raise the web-search cap before any fan-out phase starts, including Phase 2.** The cap is
+  per session and does **not** reset with the five-hour usage window, so researchers run dry
+  silently rather than erroring. It is **not** in `settings.json` or any shell profile on this
+  machine, so a session that was not launched with it does not have it, and there is no way to
+  add it partway through. Start the session with:
 
   ```
   CLAUDE_CODE_MAX_WEB_SEARCHES_PER_SESSION=600 claude
   ```
+
+  Phase 1 spent 107 of the 600 across eight agents and 111 rows, so 600 is generous rather than
+  tight. The number is not the point; a silent failure mode with no error message is.
 
 - Give each subagent absolute paths **inline in its prompt**. Passing them through workflow
   `args` failed there: the values arrived as the literal string `undefined`, and the agents
@@ -416,3 +570,112 @@ researched by two agents who each believe it is theirs. Assigning numbered claim
 ranges makes the partition exhaustive and disjoint, lets skeptics verify coverage by checking
 for a missing row number rather than re-reading a range, and costs one agent that is already
 holding the text open for the patch work.
+
+## Revision, 2026-07-28, after Phase 1
+
+Phase 1 ran as written and the structure held: 111 rows, 111 verdicts, no row unresolved, no
+agent reporting on a row it did not own. The three traps the inventory named in advance, D6's
+optative, F8's *werden* dating and G8's inverted aspect claim, all fired, which is an argument
+for writing traps down rather than hoping a researcher rediscovers them.
+
+What this revision adds to Phase 2 is what Phase 1 learned that the earlier draft could not have
+known. Three things.
+
+**The Phase 1 document is 368 KB and must be sliced.** The earlier draft said skeptics research
+findings rather than ranges, which is right, but said nothing about how the findings reach them.
+Handing seven agents the whole document would spend more on reading than the entire Phase 1
+fan-out cost. The `awk` recipe in Phase 2 above is tested against the file's actual headings,
+including the trap that each `### Cluster X` heading appears twice, once under Findings and once
+under Confirmed rows.
+
+**The decomposition fork is now explicit and costed.** The earlier draft said "pipeline each
+cluster's findings into an independent skeptic", which reads as seven agents, while the quality
+patterns argue for one skeptic per finding. Both are defensible and they differ by roughly
+threefold in cost, so the choice deserved to be a decision rather than an accident of phrasing.
+
+**Agent H's output does not fit the Phase 2 pipeline.** The earlier draft placed H inside Phase 1
+and then described Phase 2 purely in terms of cluster findings, leaving H's items with nowhere to
+go. They need no research, research cannot settle them, and most are a choice about which of two
+sentences gives way. They travel to the deliverable directly, with two routed to Phase 3 because
+they turn on `$…$` span values.
+
+One correction of fact, recorded because a future session will otherwise trust the number. The
+inventory's line numbers were wrong for nine shared-half rows, non-uniformly, and Phase 0's patch
+table was wrong for five. Agent H caught it, and the audit that settles it is to match each row's
+quoted fragment against its cited line. The inventory's own How-to-read section had already asked,
+in writing, to locate a row by its quoted text if the number looked wrong. Nobody did until an
+agent with no cluster went looking, which is the same lesson `scripts/check_docs.py` exists to
+teach: prose asking to be re-read does not get re-read.
+
+## Revision, 2026-07-29, after Phase 2
+
+Phase 2 ran per finding rather than per cluster, which was the more expensive of the two options
+this file costed. 51 agents, 2,376,954 subagent tokens, 592 tool calls, 303 of the 600 web searches,
+about 22 minutes of wall clock. That is roughly twice Phase 1 and inside the 1.2 to 2 million the
+per-finding estimate predicted. Results in [`docs/verb_history_phase2.md`](../docs/verb_history_phase2.md).
+
+Four things a future run should take from it.
+
+**A refutation pass is not self-validating, and neither is a pass that audits it.** The skeptics
+killed 15 of 31. A second opinion, firing on every kill, overturned 11 of the 15. Nineteen second
+opinions ran, fourteen changed the disposition, and **all fourteen moved toward a stronger finding
+with not one moving toward a weaker one**. The direction was designed in: "attack the skeptic"
+applied to a kill means "restore it". So the pass measured robustness, not truth, and how many
+findings survive depends substantially on which agent goes last. This retroactively weakens the
+104-of-188 figure that this file cites as evidence the skeptic pass works: those kills were never
+audited, and when Phase 2 audited its own, most did not survive. Do not drop the second pass, since
+without it the 11 restorations would have shipped as kills. Do consider making the third agent a
+**neutral adjudicator** told to decide rather than to attack, and either way **measure the direction
+of movement**, because a pass that only ever pushes one way is visible in one line of arithmetic.
+
+**Ask the skeptic whether the proposed fix is right, not only whether the claim is wrong.** These
+are different questions and they had different answers often enough to matter: **15 of the 27
+surviving findings ship replacement prose that neither Phase 1 nor its own skeptic wrote.** C13 is
+the cautionary case. Phase 1's replacement would have introduced an anachronism into a paragraph
+whose governing sentence dates it to 9 AD, and the finding was killed anyway, so the bad prose died
+with it by luck rather than by anyone checking.
+
+**Name a structured-output field for the thing it decides, not for the agent's own conclusion.** The
+second opinion's `finalVerdict` enum reads two ways: "the finding is upheld" and "the skeptic's kill
+is upheld". One agent meant the second, which put a wrong number in the workflow's own progress log,
+11 overturned kills reported as 12. A companion boolean caught it. Prefer an unambiguous name.
+
+**Slice the prior phase's document; the arithmetic is decisive.** Each skeptic got a 3.7 KB finding
+file rather than the 368 KB Phase 1 document. Handing 31 agents the whole thing would have spent
+about 2.9 million input tokens before a single search ran, which is more than the entire Phase 2
+fan-out cost including all the research.
+
+## Revision, 2026-07-29, after Phase 3
+
+Phase 3 ran as one agent with no web access: 187,212 subagent tokens, 48 tool calls, about 15
+minutes. It is by far the cheapest phase and the only one that found a bug in the app.
+Results in [`docs/verb_history_phase3.md`](../docs/verb_history_phase3.md).
+
+**Nine of the 27 spans were wrong**, seven caught by the app and two by hand. `$nahm$` to `$nAhm$`,
+`$genOMmen$` to `$genOmmen$`, `$kAnN$` to `$kAnn$` three times, `$lIest$` to `$lIEst$` twice, and
+the `$mAde$` / `$saId$` pair removed with the example list rewritten.
+
+**Tell the agent that the app is the arbiter for German forms, and then tell it that finding the
+app wrong is the more interesting result rather than the less.** That one sentence is what produced
+the run's best finding. `sollen` is `fa="w"` with no ablaut group in `Verbs.xml`, unlike the other
+five modals, so the app emits *ich solle* and *er sollt* rather than the preterite-present *ich
+soll*. The essay's claim at line 171 is correct and the corpus contradicts it. Without that
+instruction the agent would have "corrected" the essay to match a buggy corpus and the bug would
+still be shipping. It survived because `modalVerbs()` covers only mögen, wissen and wollen, so
+sollen, können, müssen and dürfen have no test anywhere.
+
+**"More than fifty spans" was wrong for as long as this file has existed.** There are 27. The
+figure was written into the prompt, repeated back in a summary, and only then counted. Cached
+numbers rot in prompts exactly as they rot in documentation, and the prompt is the one place
+nobody thinks to run `scripts/check_docs.py` over.
+
+**Have the agent prove its own validators fire.** It confirmed the per-block markup rule by
+injecting two stray tildes that balance across the whole essay but not within their blocks, and
+watched the script report both. A validator that has never failed is a validator nobody has tested,
+and here bad markup is a `fatalError` on the Info screen rather than a render bug.
+
+**Read the test count, not the exit status.** `CLAUDE.md` documents three ways a filtered run
+reports success having executed nothing. Phase 3 reported its counts unprompted because the brief
+asked for them: 8 tests in the temporary suite with 5 assertion failures across 4 of them, 18 in
+`test_sync_verb_history.py`, 2 `--check` runs, and 1 more after deletion to confirm the target
+still compiled.

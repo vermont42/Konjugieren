@@ -6548,3 +6548,276 @@ other fourteen green. Stubbing out `check_link` turned exactly its three cases r
 not absorbed anywhere else. A test whose failure paths have never fired is the same species
 of object as a validator nobody has seen fail, which is the thing the file was written to
 prevent, so proving both seemed like the minimum price of admission.
+
+## Phase 1 of the verb-history fact-check: eight agents, 111 claims, one bad line number (2026-07-28, later still)
+
+Ran the fan-out. Seven cluster researchers over the German-specific half of "A History of the
+German Verb System", plus agent H, which got no cluster, no web access, and one question: does
+anything here contradict anything else here. All eight returned. 111 rows, 111 verdicts, no
+row unresolved, and 107 web searches against a cap of 600.
+
+The thing worth recording is that **the inventory did its job, and its job was mostly invisible**.
+Phase 0.5 existed because Conjugar's range-based fan-out cost most of three five-hour windows,
+and the diagnosis was that ranges overlap at the edges so two agents research the same fact.
+Handing out numbered claims instead means the waste never happens, which means there is nothing
+to point at afterward and say "look, that didn't happen." What can be pointed at is the negative
+space: no agent reported on a row it did not own, which the runbook names as the signal that the
+partition has a boundary problem. And the coverage table filled itself in, because a row with no
+verdict is a missing dictionary key rather than a silence nobody notices.
+
+Yield: 80 confirmed, 7 factual errors, 7 needing a hedge, 17 nitpicks. The three traps the
+inventory flagged in advance all fired, which is a point in favour of writing the traps down
+rather than hoping a researcher rediscovers them. D6 said the PIE subjunctive and optative
+"merged" into the Germanic subjunctive; Lehmann says flatly that reflexes of the PIE subjunctive
+are not attested and the Germanic mood continues the optative alone, so Germanic kept one and
+lost the other. That is the Latin situation applied to Germanic. F13 called all six
+preterite-presents "the modal verbs", and *wissen* is the class's only full verb; the essay's
+omission of *wollen* turned out to be correct rather than an oversight, which is the kind of
+thing a careless editor would "fix". G8 said aspect is expressed periphrastically and then
+illustrated it with *er liest*, a single synthetic form with no auxiliary in it, which is the
+absence of aspect marking rather than a periphrasis of it.
+
+Agent H is the one I would not cut. Six of its nineteen items live at seams where two clusters'
+ranges meet, so no researcher could have seen them. The best of them, H5, needs no research at
+all: line 146 defines periphrasis as combinations of auxiliary verbs with main verbs, and line
+180 then offers *er liest* as its headline example of periphrasis. The essay fails its own
+definition, 34 lines apart, and the definition is the only one the reader has. H3 is the closest
+analogue to the *poder*/*puedo* seam that Josh caught himself in the Conjugar run: the shared
+half derives Modern German *Deutsch* from PIE *tewtéh₂ and then generalizes to "the word
+'German'", which is an English exonym whose actual source the essay supplies 38 lines later as
+Latin *Germani*. The German localization says „Das Wort ‚deutsch'" and has no problem, so the
+translator resolved it correctly and invisibly, which is exactly why nobody had noticed.
+
+Phase 0's guess about the seam was half right and worth correcting for the record. It predicted
+the trap was empty because Konjugieren's opening makes no learner-memorization promise, and H
+verified that directly by reading every forward-looking sentence in the shared half. But the
+seam exists inverted: the shared half promises system and preservation, the German-specific half
+delivers erosion and "must largely be memorized individually", and the closing reverts to
+"living fossil" without carrying a word of the qualification forward. The failure is at the
+closing, not the opening.
+
+**The operational find was a line-number table.** H reported that the inventory's shared-half
+line numbers were wrong. I did not take that on faith, and building the check was cheap: pull
+each row's quoted fragment out of the inventory and assert it appears on the line the inventory
+cites. 97 of 107 checkable rows verified, nine did not, and the nine are exactly the ones H
+named. Every German-specific row was right; only the shared half drifted, by one to nine lines,
+non-uniformly, so no constant offset would have repaired it. The `docs/verb_history_phase0.md`
+patch table had the same defect in five rows. Both are now corrected and re-audited.
+
+That is a small bug with a sharp edge. R4's cited line 93 is about PIE root structure; its claim
+is at 102. R5's cited line 102 is about the augment; its claim is at 110. A Phase 2 skeptic
+trusting the number reads a different sentence and cannot tell that it has. The lesson is the
+one `scripts/check_docs.py` was written for and this repo keeps relearning: prose asking to be
+re-read does not get re-read, and the inventory's own How-to-read section had asked politely,
+in writing, to locate a row by its quoted text if the number looked wrong. Nobody did until an
+agent with no cluster and nothing else to do went looking. A checker would have caught it in a
+second, and the check is four lines of Python.
+
+One more stale cache fell out of the same pass: `docs/verb_history_de.txt`'s header claimed 58
+`~…~` spans when both bodies carry 59, because P8 added `~secondary~` and `~sekundären~` and the
+header was not updated with the patch. Phase 0's own divergence note 8 records making that
+change. The note was written and the cache was not.
+
+Nothing was edited in the essay. Phase 1's deliverable is `docs/verb_history_phase1.md`: every
+row with its verdict and sources, 31 findings with English replacement prose, and H's report.
+The replacement prose was checked mechanically for the two things that would actually bite, no
+em dashes and all five markers balanced and unnested, since unbalanced markup is a `fatalError`
+on the Info screen rather than a render bug. All 31 passed. German replacement prose is
+deliberately not written yet: Conjugar's skeptic pass killed 104 of 188 proposals, so translating
+before Phase 2 is translating work that is about half likely to be thrown away.
+
+## Phase 2 of the verb-history fact-check: the skeptics, and the agent who audits the skeptics (2026-07-29)
+
+Phase 1 handed over 31 findings against the essay and said, in its own header, that nothing in it
+was settled. Phase 2 was supposed to settle it. What it actually did was show that this kind of
+pass does not settle things so much as measure how hard a claim is to knock down, and that the
+number you report depends on which agent you let speak last.
+
+The runbook offered two decompositions and asked that the choice be deliberate. Seven skeptics, one
+per cluster, was the cheap one, with an obvious flaw: cluster E carries 8 of the 31 findings and
+cluster B carries 2, so six agents would sit idle while E ground through its pile. Thirty-one
+skeptics, one per finding, parallelizes flat and is what produced Conjugar's kill rate. Took the
+second. 51 agents in the end, 2.38 million subagent tokens, 303 web searches, about 22 minutes of
+wall clock split across a usage-window pause.
+
+The thing that made it affordable was arithmetic done before any agent ran. Phase 1's document is
+368 KB. Handing it to 31 agents would have cost roughly 2.9 million input tokens before the first
+search, which is more than the whole fan-out ended up costing including all the research. Sliced it
+into one file per finding, 3.7 KB each, and every skeptic read only its own.
+
+The addition I made to the runbook is the part worth writing down. It says to pipeline each
+finding into a skeptic told to refute it, and it warns, about Phase 1's researchers, that a
+fact-checker with a search engine and no self-skepticism will cheerfully turn a careful hedge into
+a confident mistake. That warning applies at least as hard to an agent whose entire instruction is
+to refute. And in the Conjugar run, 104 findings were killed and nobody ever checked a kill. So I
+added a second agent that fires whenever a skeptic returns `refuted`, and attacks the refutation
+rather than the essay.
+
+It fired 19 times. The skeptics had killed 15 of 31 findings, a 48 percent rate against Conjugar's
+55, and the second opinions overturned 11 of the 15. Which looks like a triumphant vindication of
+Phase 1 until you look at the direction of movement. Fourteen second opinions changed the
+disposition. All fourteen moved toward a stronger finding. Not one moved toward a weaker one.
+
+That is not a discovery about the essay, it is a property of the instruction I wrote. "Attack the
+skeptic," applied to a kill, means "restore it," and an agent handed that job will find something.
+Three passes did not converge on an answer; they alternated. The honest reading is that the pass
+measured which findings are robust rather than which are true, and that both of the interesting
+numbers in this project, Conjugar's 104-of-188 and my 11-of-15, are artifacts of who went last.
+Conjugar's kills were never audited. When this run audited its own, most did not survive. That is
+not proof the Conjugar kills were wrong, and the bias above is a reason to discount it, but it is a
+reason to stop citing 104-of-188 as a validated result, which this repo's own runbook was doing.
+
+The fix for a future run is not to drop the second pass. Without it, 11 restored findings would
+have shipped as kills. The fix is to make the third agent a neutral adjudicator told to decide
+rather than to attack, and either way to measure the direction of movement, which is one line of
+arithmetic and would have caught this in the first minute rather than the last.
+
+Two smaller things earned their place. Each skeptic was asked three questions instead of one: is
+the sentence wrong, is Phase 1's account of the truth right, and is Phase 1's replacement prose
+itself right. That third question is not decorative. Fifteen of the 27 surviving findings now ship
+prose that neither Phase 1 nor its own skeptic wrote. The best case is C13, on the Germanic gods
+worshipped in groves rather than temples, where Phase 1's replacement would have dropped an undated
+clause about roofed cult houses into a paragraph whose governing sentence fixes it to 9 AD. Two
+agents killed C13 independently, so the bad prose died with the finding, but it died by luck rather
+than because anyone was looking at it.
+
+The other is a schema lesson. I gave the second opinions a `finalVerdict` field with values
+upheld / partly / refuted, and one agent read "upheld" as "the skeptic's kill is upheld" while every
+other agent read it as "the finding is upheld." Both readings are correct English for a field with
+that name given to an agent whose job is judging another agent. It put a wrong number in the
+workflow's own progress log, 11 overturned kills reported as 12, and only a companion boolean caught
+it. Name the field for the thing it decides.
+
+The coverage auditor, which had no web access and no authority to open a question of fact, was the
+quiet success. All 111 inventory rows reconcile, no cluster reported outside its territory, and the
+line numbers are now verified mechanically for every row rather than spot-checked, which upgrades a
+sampled conclusion from Phase 1 into a settled one. It also noticed that Phase 1's coverage table
+cannot fail in its most visible column, because Rows and Verdicts are equal by construction, and
+that the check which can actually fail is grade-sum against row count. And it found seven confirmed
+rows out of eighty whose reasoning does not carry its verdict, four worth reopening, including one
+that confirms a claim about gold on evidence that establishes treasure.
+
+Final tally: 7 factual errors, 4 needing a hedge, 16 nitpicks, 4 refuted. Measured against Phase 1
+rather than against the skeptics, 21 of 31 findings ended at the grade Phase 1 gave them, 8 weaker,
+2 stronger. Almost all the movement in this phase was in the prose and the reasoning, not in the
+verdicts, which is a quieter result than the intermediate numbers suggested and probably the true
+one.
+
+## Phase 3 of the verb-history fact-check: the app as arbiter, and the verb it gets wrong (2026-07-29)
+
+Phases 1 and 2 argued about the essay's facts against the world. Phase 3 had a narrower and much
+cheaper job: check the essay against this repo. No web research, no subagents, one temporary test
+file. It found nine bad spans out of 27 and one real bug in the app, and the bug is the part worth
+keeping.
+
+The 27 `$…$` spans are the essay's only machine-checkable content. Sixteen are German conjugations,
+so the app can settle them outright: write a Swift Testing suite that calls
+`Conjugator.conjugate` for each and compares the returned string to the essay's span, case
+included, because inside `$…$` the case *is* the claim. Seven of the sixteen came back wrong.
+`$nahm$` marked nothing at all; the app emits `nAhm`. `$genOMmen$` over-marked the first m; the app
+emits `genOmmen`. `$kAnN$`, three times, over-marked the second n; the app emits `kAnn`. `$lIest$`,
+twice, under-marked the digraph; the app emits `lIEst` and the shipped test has expected exactly
+that since it was written.
+
+The two disputes handed down from Phase 1 both resolved cleanly. H11 asked which of `$nahm$` and
+`$gAb$` gives way, given that nehmen and geben are the same e-to-a strong preterite in adjacent
+bullets. The app answers without ambiguity: `nAhm` and `gAb`, both marking the vowel, so `$nahm$`
+gives way. It was also the only span in the essay with no uppercase at all, sitting in a
+three-item list between `$sAng$` and `$gAb$`, in a list whose entire purpose is to demonstrate that
+PIE ablaut became the German alternations. A span that renders all black demonstrates nothing.
+
+H13 was the more interesting one, and it needed no app at all. The sentence claims the "-ed"
+ending in English and offers `$mAde$`, `$saId$`, played. The German half of the same sentence offers
+machte, sagte, spielte: three regular weak preterites, all bare, all actually spelling the "-te"
+being illustrated. The English half marks two of its three exemplars red for "irregular" inside a
+sentence about the regular pattern, and neither of the two spells "-ed". `$mAde$` is worse than
+inconsistent: the a of made is the a of make, unchanged, so the span reddens the one letter that did
+not change while the actual irregularity, the lost k, is unmarkable in this notation. Recommended
+replacing the list with `(loved, worked, played)` so the English half mirrors the German half that
+was already right.
+
+Two of the wrong spans were wrong in a direction that says something about the app rather than the
+author. Look at the preterite-presents in `AblautGroups.xml`: `kAnn` marks the vowel only, `mUsS`
+and `wIlL` mark the vowel and the final consonant, and `darF` marks the final consonant and *not*
+the vowel, even though the ü-to-a change is the whole point of the entry. So `$kAnN$` matches the
+majority pattern in the app's own data; it just does not match the one entry it quotes. The
+correction stands, because a reader who meets `kAnN` in the essay is one tap from a detail view
+showing `kAnn`, and an essay whose highlighting contradicts the app one tap away teaches the reader
+to distrust the highlighting. But the app's own marking is not self-consistent across that class,
+and `darF` looks flatly wrong.
+
+The bug. The essay names six preterite-presents at line 169 and says at 171 that the class takes no
+ending in 1s and 3s. That is correct German, and the app confirms it for können. It does not hold
+for sollen, which is `fa="w"` in `Verbs.xml` with no ablaut group, unlike the other five. So the
+ordinary weak Präsens endings apply and the app emits `ich solle` and `er sollt`. Both wrong, and
+wrong in exactly the way the essay says preterite-presents are not. The essay is the accurate
+document; the app is not.
+
+It survived because `modalVerbs()` covers mögen, wissen and wollen. A repo-wide search found no test
+anywhere for sollen, können, müssen or dürfen. Four of the six verbs the essay names, including the
+broken one, have never been tested. That is the general lesson of the phase, and it is the same one
+the runbook keeps re-learning in different clothes: the pass that looked like proofreading an
+article turned up a shipping conjugation error, because it was the first thing that ever drove those
+four verbs through the conjugator and looked at the output.
+
+Two smaller results. The markup passes cleanly in both languages, and the per-block balance rule is
+genuinely covered rather than merely claimed: injected one stray tilde into the first body block and
+another into a later one, leaving the essay's overall count even, and the script reported two
+problems. The essay has zero links, confirmed by counting `‡` rather than by trusting the header
+that says so. And `CLAUDE.md`'s own mixed-case example for wissen is wrong: it shows `wEIsS` where
+the app and the shipped test both say `wEIẞ`, with the capital sharp s.
+
+Report at `docs/verb_history_phase3.md`. The temporary test is deleted; the target compiles and
+`modalVerbs()` still passes without it.
+
+## The verb the essay was right about (2026-07-29)
+
+Phase 3 of the verb-history fact-check found a bug in the app rather than in the essay, and Josh
+asked for it fixed. `sollen` was `<reading fa="w" />` in `Verbs.xml`: weak family, no ablaut group,
+unlike the other five modals, which are all `fa="m"` with a group of their own. So the ordinary
+weak Präsens endings applied and the app emitted *ich solle* and *er sollt* where German has *ich
+soll* and *er soll*. The essay's line 171, which says preterite-presents take no ending in 1s and
+3s, was the accurate document.
+
+The fix is two lines and the interesting part is how much smaller it is than it first looked.
+
+Phase 3 sketched the shape as `soll*,a1s,a3s|sollst*,a2s|…`, by analogy with `wollen`, whose group
+is `wIlL*,a1s,a3s|wIllst*,a2s`. But wollen needs the 2s override because its stem vowel alternates,
+o to i, so the regular composition would produce *du wollst*. Sollen's vowel does not alternate.
+The stem is *soll* in every conjugation, so the ordinary weak 2s ending already yields *du sollst*
+and the override would have been a no-op that looked load-bearing. The whole group is
+`<ag e="sollen" a="soll*,a1s,a3s" />`.
+
+The thing worth writing down is what `fa="m"` actually means. There is no modal family. `Family`
+has four cases, strong, mixed, weak and ieren, and `m` parses to **mixed**. Mixed takes the weak
+Präteritum and Perfektpartizip endings, which is exactly why *sollte* and *gesollt* stay correct
+with no override: the group only has to fix the two present-singular cells, and the family system
+supplies everything else. Had `m` meant "modal" with its own ending table, changing sollen's family
+could have broken the six conjugations that were already right. It was worth ten minutes reading
+`Conjugationgroup.ending(family:)` before touching the XML to establish that it could not.
+
+Nothing in `soll*` is uppercased, and that is a decision rather than an oversight. Uppercase inside
+a conjugation is the red-letter signal for an irregular letter, and no letter of *soll* is
+irregular: the form is the bare stem and the irregularity is the missing ending, which this
+notation cannot represent. Phase 3 had already made the same call in the other direction, correcting
+the essay's `$kAnN$` to `$kAnn$` because the app marks the vowel and not the final consonant. The
+app's own marking is inconsistent across this class, `kAnn` and `wEIẞ` mark only what changed while
+`mUsS`, `wIlL` and `darF` mark a final consonant that did not, and `darF` misses the ü-to-a change
+entirely. That inconsistency is still there and is now the only part of this finding left open.
+
+The bug survived because it was untested. `modalVerbs()` covered mögen, wissen and wollen, so four
+of the six verbs the essay names, including the broken one, had no test anywhere in the target.
+`modalVerbs()` now covers all six plus wissen. Writing the können, müssen and dürfen expectations
+from the ablaut specs rather than from the engine's output was the right way round: all four verbs
+passed on the first run, which means the specs say what I read them as saying, and a green run
+after a corpus change is only evidence if the expectations were written independently of it.
+
+Two verification notes. The filtered run reported "Test run with 1 test in 1 suite passed", and
+the count is the thing to read: `CLAUDE.md` documents three ways a filtered run reports success
+having executed nothing, and the XCTest lines directly above it in the same output say "Executed 0
+tests" because this project has no XCTest tests at all. Then `check_docs.py` failed, correctly, on
+`README.md:99: ablaut-group count claims 72, but AblautGroups.xml has 73`. That is the checker
+earning its existence on a change nobody would have thought to connect to the README, which is the
+whole argument for it: prose asking to be re-read does not get re-read.
+
+Full suite: 211 tests in 32 suites, green.

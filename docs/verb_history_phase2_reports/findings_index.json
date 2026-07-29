@@ -1,0 +1,281 @@
+[
+  {
+    "ref": "A4",
+    "cluster": "Cluster A: Into Europe",
+    "line": "126",
+    "grade": "needs-hedging",
+    "confidence": "high",
+    "bytes": 6055,
+    "path": "/Users/josh/.claude/tmp/claude-501/-Users-josh-Desktop-workspace-Konjugieren/1cd87737-1a03-4935-8cd5-d87bbd3a56f5/scratchpad/phase2/finding_A4.md"
+  },
+  {
+    "ref": "A7",
+    "cluster": "Cluster A: Into Europe",
+    "line": "130",
+    "grade": "nitpick",
+    "confidence": "medium",
+    "bytes": 3481,
+    "path": "/Users/josh/.claude/tmp/claude-501/-Users-josh-Desktop-workspace-Konjugieren/1cd87737-1a03-4935-8cd5-d87bbd3a56f5/scratchpad/phase2/finding_A7.md"
+  },
+  {
+    "ref": "R1",
+    "cluster": "Cluster A: Into Europe",
+    "line": "90",
+    "grade": "nitpick",
+    "confidence": "high",
+    "bytes": 3277,
+    "path": "/Users/josh/.claude/tmp/claude-501/-Users-josh-Desktop-workspace-Konjugieren/1cd87737-1a03-4935-8cd5-d87bbd3a56f5/scratchpad/phase2/finding_R1.md"
+  },
+  {
+    "ref": "B12",
+    "cluster": "Cluster B: Teutoburg",
+    "line": "133",
+    "grade": "factual-error",
+    "confidence": "high",
+    "bytes": 5632,
+    "path": "/Users/josh/.claude/tmp/claude-501/-Users-josh-Desktop-workspace-Konjugieren/1cd87737-1a03-4935-8cd5-d87bbd3a56f5/scratchpad/phase2/finding_B12.md"
+  },
+  {
+    "ref": "B7",
+    "cluster": "Cluster B: Teutoburg",
+    "line": "131",
+    "grade": "nitpick",
+    "confidence": "high",
+    "bytes": 3987,
+    "path": "/Users/josh/.claude/tmp/claude-501/-Users-josh-Desktop-workspace-Konjugieren/1cd87737-1a03-4935-8cd5-d87bbd3a56f5/scratchpad/phase2/finding_B7.md"
+  },
+  {
+    "ref": "C9",
+    "cluster": "Cluster C: Tacitus country",
+    "line": "140",
+    "grade": "factual-error",
+    "confidence": "high",
+    "bytes": 3716,
+    "path": "/Users/josh/.claude/tmp/claude-501/-Users-josh-Desktop-workspace-Konjugieren/1cd87737-1a03-4935-8cd5-d87bbd3a56f5/scratchpad/phase2/finding_C9.md"
+  },
+  {
+    "ref": "C10",
+    "cluster": "Cluster C: Tacitus country",
+    "line": "140",
+    "grade": "needs-hedging",
+    "confidence": "high",
+    "bytes": 4476,
+    "path": "/Users/josh/.claude/tmp/claude-501/-Users-josh-Desktop-workspace-Konjugieren/1cd87737-1a03-4935-8cd5-d87bbd3a56f5/scratchpad/phase2/finding_C10.md"
+  },
+  {
+    "ref": "C13",
+    "cluster": "Cluster C: Tacitus country",
+    "line": "142",
+    "grade": "needs-hedging",
+    "confidence": "high",
+    "bytes": 4323,
+    "path": "/Users/josh/.claude/tmp/claude-501/-Users-josh-Desktop-workspace-Konjugieren/1cd87737-1a03-4935-8cd5-d87bbd3a56f5/scratchpad/phase2/finding_C13.md"
+  },
+  {
+    "ref": "C1",
+    "cluster": "Cluster C: Tacitus country",
+    "line": "136",
+    "grade": "nitpick",
+    "confidence": "medium",
+    "bytes": 3684,
+    "path": "/Users/josh/.claude/tmp/claude-501/-Users-josh-Desktop-workspace-Konjugieren/1cd87737-1a03-4935-8cd5-d87bbd3a56f5/scratchpad/phase2/finding_C1.md"
+  },
+  {
+    "ref": "C12",
+    "cluster": "Cluster C: Tacitus country",
+    "line": "142",
+    "grade": "nitpick",
+    "confidence": "high",
+    "bytes": 4050,
+    "path": "/Users/josh/.claude/tmp/claude-501/-Users-josh-Desktop-workspace-Konjugieren/1cd87737-1a03-4935-8cd5-d87bbd3a56f5/scratchpad/phase2/finding_C12.md"
+  },
+  {
+    "ref": "C2",
+    "cluster": "Cluster C: Tacitus country",
+    "line": "136",
+    "grade": "nitpick",
+    "confidence": "medium",
+    "bytes": 4124,
+    "path": "/Users/josh/.claude/tmp/claude-501/-Users-josh-Desktop-workspace-Konjugieren/1cd87737-1a03-4935-8cd5-d87bbd3a56f5/scratchpad/phase2/finding_C2.md"
+  },
+  {
+    "ref": "C6",
+    "cluster": "Cluster C: Tacitus country",
+    "line": "138",
+    "grade": "nitpick",
+    "confidence": "medium",
+    "bytes": 4073,
+    "path": "/Users/josh/.claude/tmp/claude-501/-Users-josh-Desktop-workspace-Konjugieren/1cd87737-1a03-4935-8cd5-d87bbd3a56f5/scratchpad/phase2/finding_C6.md"
+  },
+  {
+    "ref": "D6",
+    "cluster": "Cluster D: The Germanic verb",
+    "line": "148",
+    "grade": "factual-error",
+    "confidence": "high",
+    "bytes": 3499,
+    "path": "/Users/josh/.claude/tmp/claude-501/-Users-josh-Desktop-workspace-Konjugieren/1cd87737-1a03-4935-8cd5-d87bbd3a56f5/scratchpad/phase2/finding_D6.md"
+  },
+  {
+    "ref": "D7",
+    "cluster": "Cluster D: The Germanic verb",
+    "line": "150",
+    "grade": "needs-hedging",
+    "confidence": "high",
+    "bytes": 3022,
+    "path": "/Users/josh/.claude/tmp/claude-501/-Users-josh-Desktop-workspace-Konjugieren/1cd87737-1a03-4935-8cd5-d87bbd3a56f5/scratchpad/phase2/finding_D7.md"
+  },
+  {
+    "ref": "D12",
+    "cluster": "Cluster D: The Germanic verb",
+    "line": "153",
+    "grade": "nitpick",
+    "confidence": "medium",
+    "bytes": 2743,
+    "path": "/Users/josh/.claude/tmp/claude-501/-Users-josh-Desktop-workspace-Konjugieren/1cd87737-1a03-4935-8cd5-d87bbd3a56f5/scratchpad/phase2/finding_D12.md"
+  },
+  {
+    "ref": "D17",
+    "cluster": "Cluster D: The Germanic verb",
+    "line": "155",
+    "grade": "nitpick",
+    "confidence": "medium",
+    "bytes": 2284,
+    "path": "/Users/josh/.claude/tmp/claude-501/-Users-josh-Desktop-workspace-Konjugieren/1cd87737-1a03-4935-8cd5-d87bbd3a56f5/scratchpad/phase2/finding_D17.md"
+  },
+  {
+    "ref": "R5",
+    "cluster": "Cluster D: The Germanic verb",
+    "line": "110",
+    "grade": "nitpick",
+    "confidence": "medium",
+    "bytes": 3230,
+    "path": "/Users/josh/.claude/tmp/claude-501/-Users-josh-Desktop-workspace-Konjugieren/1cd87737-1a03-4935-8cd5-d87bbd3a56f5/scratchpad/phase2/finding_R5.md"
+  },
+  {
+    "ref": "R2c",
+    "cluster": "Cluster E: Old High German",
+    "line": "92",
+    "grade": "factual-error",
+    "confidence": "high",
+    "bytes": 3581,
+    "path": "/Users/josh/.claude/tmp/claude-501/-Users-josh-Desktop-workspace-Konjugieren/1cd87737-1a03-4935-8cd5-d87bbd3a56f5/scratchpad/phase2/finding_R2c.md"
+  },
+  {
+    "ref": "R6",
+    "cluster": "Cluster E: Old High German",
+    "line": "113\u2013117",
+    "grade": "factual-error",
+    "confidence": "medium",
+    "bytes": 4300,
+    "path": "/Users/josh/.claude/tmp/claude-501/-Users-josh-Desktop-workspace-Konjugieren/1cd87737-1a03-4935-8cd5-d87bbd3a56f5/scratchpad/phase2/finding_R6.md"
+  },
+  {
+    "ref": "R2a",
+    "cluster": "Cluster E: Old High German",
+    "line": "92",
+    "grade": "needs-hedging",
+    "confidence": "medium",
+    "bytes": 3718,
+    "path": "/Users/josh/.claude/tmp/claude-501/-Users-josh-Desktop-workspace-Konjugieren/1cd87737-1a03-4935-8cd5-d87bbd3a56f5/scratchpad/phase2/finding_R2a.md"
+  },
+  {
+    "ref": "R9",
+    "cluster": "Cluster E: Old High German",
+    "line": "125",
+    "grade": "needs-hedging",
+    "confidence": "medium",
+    "bytes": 3333,
+    "path": "/Users/josh/.claude/tmp/claude-501/-Users-josh-Desktop-workspace-Konjugieren/1cd87737-1a03-4935-8cd5-d87bbd3a56f5/scratchpad/phase2/finding_R9.md"
+  },
+  {
+    "ref": "E1",
+    "cluster": "Cluster E: Old High German",
+    "line": "156",
+    "grade": "nitpick",
+    "confidence": "medium",
+    "bytes": 3048,
+    "path": "/Users/josh/.claude/tmp/claude-501/-Users-josh-Desktop-workspace-Konjugieren/1cd87737-1a03-4935-8cd5-d87bbd3a56f5/scratchpad/phase2/finding_E1.md"
+  },
+  {
+    "ref": "E12",
+    "cluster": "Cluster E: Old High German",
+    "line": "157",
+    "grade": "nitpick",
+    "confidence": "medium",
+    "bytes": 3089,
+    "path": "/Users/josh/.claude/tmp/claude-501/-Users-josh-Desktop-workspace-Konjugieren/1cd87737-1a03-4935-8cd5-d87bbd3a56f5/scratchpad/phase2/finding_E12.md"
+  },
+  {
+    "ref": "E3",
+    "cluster": "Cluster E: Old High German",
+    "line": "156",
+    "grade": "nitpick",
+    "confidence": "medium",
+    "bytes": 4033,
+    "path": "/Users/josh/.claude/tmp/claude-501/-Users-josh-Desktop-workspace-Konjugieren/1cd87737-1a03-4935-8cd5-d87bbd3a56f5/scratchpad/phase2/finding_E3.md"
+  },
+  {
+    "ref": "R8",
+    "cluster": "Cluster E: Old High German",
+    "line": "121\u2013123",
+    "grade": "nitpick",
+    "confidence": "medium",
+    "bytes": 3138,
+    "path": "/Users/josh/.claude/tmp/claude-501/-Users-josh-Desktop-workspace-Konjugieren/1cd87737-1a03-4935-8cd5-d87bbd3a56f5/scratchpad/phase2/finding_R8.md"
+  },
+  {
+    "ref": "F13",
+    "cluster": "Cluster F: Tense-building",
+    "line": "169",
+    "grade": "factual-error",
+    "confidence": "high",
+    "bytes": 4027,
+    "path": "/Users/josh/.claude/tmp/claude-501/-Users-josh-Desktop-workspace-Konjugieren/1cd87737-1a03-4935-8cd5-d87bbd3a56f5/scratchpad/phase2/finding_F13.md"
+  },
+  {
+    "ref": "F8",
+    "cluster": "Cluster F: Tense-building",
+    "line": "164",
+    "grade": "needs-hedging",
+    "confidence": "medium",
+    "bytes": 5288,
+    "path": "/Users/josh/.claude/tmp/claude-501/-Users-josh-Desktop-workspace-Konjugieren/1cd87737-1a03-4935-8cd5-d87bbd3a56f5/scratchpad/phase2/finding_F8.md"
+  },
+  {
+    "ref": "F16",
+    "cluster": "Cluster F: Tense-building",
+    "line": "171",
+    "grade": "nitpick",
+    "confidence": "high",
+    "bytes": 3318,
+    "path": "/Users/josh/.claude/tmp/claude-501/-Users-josh-Desktop-workspace-Konjugieren/1cd87737-1a03-4935-8cd5-d87bbd3a56f5/scratchpad/phase2/finding_F16.md"
+  },
+  {
+    "ref": "G8",
+    "cluster": "Cluster G: Modern German",
+    "line": "180",
+    "grade": "factual-error",
+    "confidence": "high",
+    "bytes": 4261,
+    "path": "/Users/josh/.claude/tmp/claude-501/-Users-josh-Desktop-workspace-Konjugieren/1cd87737-1a03-4935-8cd5-d87bbd3a56f5/scratchpad/phase2/finding_G8.md"
+  },
+  {
+    "ref": "G14",
+    "cluster": "Cluster G: Modern German",
+    "line": "187",
+    "grade": "nitpick",
+    "confidence": "high",
+    "bytes": 2405,
+    "path": "/Users/josh/.claude/tmp/claude-501/-Users-josh-Desktop-workspace-Konjugieren/1cd87737-1a03-4935-8cd5-d87bbd3a56f5/scratchpad/phase2/finding_G14.md"
+  },
+  {
+    "ref": "G4",
+    "cluster": "Cluster G: Modern German",
+    "line": "174",
+    "grade": "nitpick",
+    "confidence": "high",
+    "bytes": 3103,
+    "path": "/Users/josh/.claude/tmp/claude-501/-Users-josh-Desktop-workspace-Konjugieren/1cd87737-1a03-4935-8cd5-d87bbd3a56f5/scratchpad/phase2/finding_G4.md"
+  }
+]

@@ -15,6 +15,13 @@ one owning cluster.
 **Line numbers refer to the patched `docs/verb_history.txt`.** Adding to that file's header
 shifts every body line, so locate a row by its quoted text if the number looks wrong.
 
+**Nine shared-half numbers were wrong as first written, and were corrected in Phase 1.** S2, S3,
+R2a through R2e, R3, R4, R5 and R9 all cited a line one to nine short of their claim, by varying
+amounts, so no constant offset would have fixed them. Agent H caught it; every row was then
+re-audited mechanically against the essay, matching each row's quoted fragment to its cited line.
+All 111 now verify. See [`docs/verb_history_phase1.md`](verb_history_phase1.md) for the table of
+what moved.
+
 **A heading shares a line with the paragraph before it.** `The Battle of the Teutoburg Forest`
 sits at the end of line 130, which is otherwise the last paragraph of `The Migration to Europe`.
 So a section's first line number is one past where a reader would expect it.
@@ -38,8 +45,8 @@ re-litigated. If one looks wrong, report it as a note for agent H.
 | Ref | Line | What it now says |
 |---|---|---|
 | S1 | 86 | The Yamnaya horizon runs from roughly 3300 BC, and whether they rode is disputed; the wheel carries the mobility claim |
-| S2 | 86 | The Yamnaya were lactose intolerant. Dozens were genotyped directly and none carried the persistence allele |
-| S3 | 93 | Past time was marked chiefly by the secondary endings. The augment belongs to a few branches and its Proto-Indo-European antiquity is disputed |
+| S2 | 88 | The Yamnaya were lactose intolerant. Dozens were genotyped directly and none carried the persistence allele |
+| S3 | 102 | Past time was marked chiefly by the secondary endings. The augment belongs to a few branches and its Proto-Indo-European antiquity is disputed |
 
 ## A. Into Europe
 
@@ -163,9 +170,9 @@ morphology, since no other cluster has a natural claim on it.
 | D15 | 155 | "new verbs entering Germanic languages almost always followed the weak pattern, and many originally strong verbs eventually became weak" | consensus attribution | |
 | D16 | 155 | "The King James Bible … the phrase "the cock $crEw$" appears" | quoted verb form | |
 | D17 | 155 | "Speakers of Modern English are aware that the conjugation later became "crowed"" | quoted verb form | D16 |
-| R3 | 92 | "PIE verbs were built on roots (typically consisting of a consonant-vowel-consonant structure)" | consensus attribution | |
-| R4 | 93 | "The system allowed for present, past (preterite), and arguably future expressions" | consensus attribution | S3 |
-| R5 | 102 | "with a developing passive" | consensus attribution | |
+| R3 | 93 | "PIE verbs were built on roots (typically consisting of a consonant-vowel-consonant structure)" | consensus attribution | |
+| R4 | 102 | "The system allowed for present, past (preterite), and arguably future expressions" | consensus attribution | S3 |
+| R5 | 110 | "with a developing passive" | consensus attribution | |
 
 **D7 is the run's known contradiction, and it was created by Phase 0.** S3 now says the
 augment's Proto-Indo-European antiquity is disputed. D7 says it "had marked past tense in PIE"
@@ -209,15 +216,15 @@ cluster may research either.
 | E10 | 157 | "Some verbs shifted classes; others became weak." | consensus attribution | D15 |
 | E11 | 157 | "The original phonological conditioning that determined class membership became opaque as sound changes altered vowels." | sound law | E9 |
 | E12 | 157 | "Today, German strong verbs must largely be memorized individually, their ablaut patterns, while still systematic, are no longer predictable from the infinitive." | consensus attribution | E11 |
-| R2a | 90 | "Linguists reconstruct PIE *tewtéh₂, from the root *tew- ("to swell, be strong"), as a word meaning "the full community" or simply "the people"" | etymology | |
-| R2b | 90 | "it became Proto-Germanic *þeudō, then Old English þēod ("nation")" | etymology | R2a |
-| R2c | 90 | "then, through Medieval Latin theodiscus ("of the people"), Modern German Deutsch" | etymology | R2b |
-| R2d | 90 | "The Haudenosaunee, whom Europeans called the Iroquois, named themselves "people of the long house"" | etymology | |
-| R2e | 90 | "Autonyms often incorporate the concept of "the people"" | consensus attribution | |
+| R2a | 92 | "Linguists reconstruct PIE *tewtéh₂, from the root *tew- ("to swell, be strong"), as a word meaning "the full community" or simply "the people"" | etymology | |
+| R2b | 92 | "it became Proto-Germanic *þeudō, then Old English þēod ("nation")" | etymology | R2a |
+| R2c | 92 | "then, through Medieval Latin theodiscus ("of the people"), Modern German Deutsch" | etymology | R2b |
+| R2d | 92 | "The Haudenosaunee, whom Europeans called the Iroquois, named themselves "people of the long house"" | etymology | |
+| R2e | 92 | "Autonyms often incorporate the concept of "the people"" | consensus attribution | |
 | R6 | 113–117 | The five ablaut grades and their cited forms: e-grade *bʰer- "to carry", o-grade *bʰor-, zero-grade *bʰr-, lengthened e-grade *mḗh₁-n̥s, lengthened o-grade *n̥-péh₂-tōr | etymology | |
 | R7 | 119 | "the present stem might use e-grade while the perfect used o-grade; the zero-grade appeared in certain suffixes and in unstressed positions" | consensus attribution | R6 |
 | R8 | 121–123 | The three triads: "singen, $sAng$, $gesUngen$ (sing, $sAng$, $sUng$)", "nehmen, $nahm$, $genOMmen$ (take, $tOOk$, taken)", "geben, $gAb$, gegeben (give, $gAve$, given)" | quoted verb form | E8 |
-| R9 | 123 | "These vowel changes are direct inheritances from Proto-Indo-European, preserved across five millennia of linguistic evolution." | number | R8, G13 |
+| R9 | 125 | "These vowel changes are direct inheritances from Proto-Indo-European, preserved across five millennia of linguistic evolution." | number | R8, G13 |
 
 **R2c is the essay's best etymological thread and the least checked thing in it.** The chain
 runs PIE *tewtéh₂ to Proto-Germanic *þeudō to Old English *þēod* to Medieval Latin *theodiscus*
@@ -323,6 +330,11 @@ read as coverage.
 Fill this in at the end of Phase 2. Every row above must appear either as a finding in
 `docs/history_corrections.md` or as an explicit `confirmed`. A row appearing in neither is the
 run's own bug, and it should be visible in the deliverable rather than discovered later.
+
+**Phase 1 returned all 111 verdicts**, 80 confirmed and 31 findings, with no row unresolved and
+no agent reporting on a row it did not own. They are in
+[`docs/verb_history_phase1.md`](verb_history_phase1.md), which Phase 2 works from. The table
+below stays empty until the skeptic pass has said which findings survive.
 
 | Cluster | Rows | Verdicts returned | Findings | Confirmed | Missing |
 |---|---|---|---|---|---|

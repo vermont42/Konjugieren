@@ -6,10 +6,23 @@ inputs into one document: the 27 findings that survived Phase 2's adversarial ve
 H's internal-consistency items, Phase 3's check of the essay against Konjugieren's own conjugator,
 and the coverage audit's list of confirmed rows whose reasoning does not carry their verdict.
 
-**Nothing in the essay has been edited by this phase.** `docs/verb_history.txt` and
-`docs/verb_history_de.txt` are what Phase 0 left, and `Konjugieren/Assets/Localizable.xcstrings` is
-untouched. Every correction below is a proposal. Josh decides which land, and
-`scripts/sync_verb_history.py` pushes the result back into the catalog afterward.
+## Status: applied 2026-07-29
+
+**Josh reviewed this document and directed that it be applied.** All 7 factual errors, all 4
+hedges, all 16 nitpicks, all 9 span occurrences, and 11 of the 16 internal-consistency items are
+now in `docs/verb_history.txt` and `docs/verb_history_de.txt`, along with three repairs to the
+German localization alone. Sixty-nine edits, thirty-three English and thirty-six German, each one
+asserted against an expected occurrence count rather than eyeballed. Both files validate clean and
+the two headers' counts have been updated to match. What was declined, and why, is in
+[What was applied and what was not](#what-was-applied-and-what-was-not).
+
+**`Konjugieren/Assets/Localizable.xcstrings` is still untouched**, so none of this ships yet,
+including Phase 0's ten patches. Two runs of `scripts/sync_verb_history.py`, one per language, are
+what change the app.
+
+The entries below are kept in the form they were written, as proposals with their evidence, because
+the evidence is the reason to trust the change. Read them as the record of why the essay now says
+what it says.
 
 **What produced it.** Phase 1 inventoried 111 checkable claims in the German-specific half and ran
 seven researchers plus one internal-consistency agent over them, returning 31 findings. Phase 2 ran
@@ -59,6 +72,45 @@ hostile third reading is better evidenced than anything the earlier runs produce
 | [Thin confirmations](#confirmed-rows-whose-reasoning-is-thin) | 4 | audit-trail defects, **not** proposed corrections |
 | [Findings against the app](#findings-against-the-app-rather-than-the-essay) | 3 | corpus and code, not essay text |
 | [Refuted, recorded](#refuted-and-recorded) | 4 | so a future run does not pay for them twice |
+
+## What was applied and what was not
+
+Everything graded as a finding was applied: 7 factual errors, 4 hedges, 16 nitpicks, and all 9 span
+occurrences. The judgement calls were in the two categories where this document offered options.
+
+**Applied from the sixteen internal-consistency items.** H3, which Josh named explicitly, changes
+one word: `The word “German”` becomes `The word “Deutsch”` in the English, and the German needed no
+change because the translator had already resolved it. H6 gives the closing sentence the body's
+qualification, "worn down and learned one verb at a time". H7 adds a subjunctive bullet to the
+closing periphrastic list, which also answers half of H8 by putting one of the two omitted sections
+back into the summary. H9 removes the third competing principle for strong-class membership. H12
+dates the periphrases to the daughter languages that built them. H16 hedges the preterite inside the
+parenthesis it already had, rather than adding a new aside. H18's distinguished glosses were merged
+into F13's replacement sentence. H1, H4, H5 and H15 needed nothing, having been discharged by D7,
+R1, G8 and R2c.
+
+**Applied to the German alone**, from agent H's German-surface list. Item 1 restores the hedge the
+translation dropped: `Vor 40.000 Jahren, womöglich früher` becomes `Bis vor 40.000 Jahren, und
+durchaus auch früher`, recovering both the bound the English states with "By" and the emphasis of
+"quite possibly". Item 2 restores "arguably" as a flag rather than an affirmation, `und wohl auch
+Zukunft` becoming `und, wie manche annehmen, auch Zukunft`. Item 4 recasts the Küche sentence so it
+stops contrasting *Küche* with itself. C6's second opinion also caught `eine ~comitatus~` for a Latin
+masculine, now `einen`. And the English-only subject-verb disagreement agent H flagged at EN 171,
+"The peculiar conjugations … reflects", is now "reflect"; the German was already correct.
+
+**Declined, with reasons.**
+
+| Not applied | Why |
+|---|---|
+| **H2**, the closing supernova epithet | Superseded by G14, the researched finding on the identical sentence, which two agents killed independently. An unresearched internal reading does not outrank a three-pass verdict. |
+| **H10**, the "arguably" against the flat mood bullet | Both sentences are pasted patch text and the verbatim rule covers both. Note that fixing German-surface item 2 puts the German in the same position as the English, so the tension now exists equally in both languages, which is more honest than having it in one. |
+| **H14**, whether the essay should explain its own red letters | Editorial, and Josh's. Fixing the four wrong spans makes it slightly sharper rather than softer, since more letters are now red. |
+| **H17**, naming the zero-grade exception to the CVC shape | "Typically" already carries it, and introducing the zero grade twenty-two lines before the essay defines it would cost more than the inconsistency does. |
+| **H19**, a bridging clause from the northern coasts to the southern dialects | Any bridge asserts a migration claim this run did not check. Adding unchecked prose to an essay whose point was removing unchecked prose is self-defeating. E1's widened geography narrows the gap without closing it. |
+| **H8**'s other half, dropping the passive bullet | The bullet is true, and the closing summarizes Modern German rather than the essay. H7's new bullet already returns the subjunctive to the summary. |
+| **R8**'s optional *brechen* row | Unchecked against the app's conjugator, and Phase 3's method is what settles span values. The minimal `$nAhm$` fix landed instead. |
+| **German-surface item 5**, the ten English glosses | Editorial and Josh's: whether a German reader should be told that *haben* means "to have". Untouched, so F13's and F8's new sentences keep the convention those lines already had. |
+| **Items 6 and 7** | Notes rather than defects. Item 7 explicitly warns against "fixing" the German toward the English. |
 
 ---
 
@@ -1301,19 +1353,33 @@ One thing C6's second opinion caught in passing and wrongly punted to a later pa
 
 # Bookkeeping the corrections create
 
-Both file headers assert counts, and applying these corrections makes several of them stale. Nothing
+Both file headers assert counts, and applying these corrections made several of them stale. Nothing
 automated checks them: `scripts/check_docs.py` does not read `docs/verb_history.txt` or
 `docs/verb_history_de.txt`, and `scripts/sync_verb_history.py` validates structure rather than
-arithmetic.
+arithmetic. **The headers were updated on 2026-07-29 from counts recomputed off the edited bodies,
+not from the predictions in the right-hand column.**
 
-| Count | Header site | Today | After all corrections | Driven by |
-|---|---|---|---|---|
-| `$…$` conjugation spans | DE header line 24 | 27 | **25** | H13 removes two |
-| `~…~` emphasis spans | DE header line 26 | 59 | **68** | F8 +3, E3 +4, G8 +1, F16 +1 |
-| asterisks | EN header line 57, DE header line 29 | 20 | **25** | C12 +3, E3 +1, R6 +1 net |
-| `` `…` `` headings | DE header line 21 | 18 | 18 | unchanged |
-| `^…^` emoji spans | both headers | 3 | 3 | unchanged |
-| `‡…‡` links | EN header line 38 | 0 | 0 | unchanged |
+| Count | Header site | Before | Predicted | **Actual** | Driven by |
+|---|---|---|---|---|---|
+| `$…$` conjugation spans | DE header line 24 | 27 | 25 | **25** | H13 removes two |
+| `~…~` emphasis spans | DE header line 26 | 59 | 68 | **70** | F8 +3, E3 +4, G8 +1, F16 +1, and H7 +2 |
+| asterisks | EN header line 57, DE header line 29 | 20 | 25 | **25** | C12 +3, E3 +1, R6 +1 net |
+| `` `…` `` headings | DE header line 21 | 18 | 18 | **18** | unchanged |
+| `^…^` emoji spans | both headers | 3 | 3 | **3** | unchanged |
+| `‡…‡` links | EN header line 38 | 0 | 0 | **0** | unchanged |
+
+**The emphasis-span prediction was two short, and the reason is worth keeping.** The table above was
+computed over the findings only. H7's new subjunctive bullet carries `~subjunctive~` and `~würde~`,
+and it is an internal-consistency item rather than a finding, so it sat outside the arithmetic that
+produced the estimate. A predicted count is a prediction about a fixed set of edits; the moment the
+set changes the prediction is stale, which is the argument for recomputing from the file rather than
+carrying the number forward. Distinct span values also fell from 17 to 15 with the removal of
+`$mAde$` and `$saId$`.
+
+Two further header repairs went in at the same time, both accuracy rather than arithmetic. The
+English header described 🏴󠁧󠁢󠁥󠁮󠁧󠁿 as leading an English bulleted item, and agent H counted zero
+occurrences of that glyph in either body; the header now says so, matching the scrupulousness it
+already showed about links. Both headers' asterisk examples gained `*Wōðanaz`, which C12 introduced.
 
 Three further invariants to hold while editing:
 

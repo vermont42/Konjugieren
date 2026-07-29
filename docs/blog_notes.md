@@ -6886,3 +6886,101 @@ printed directly above it. Phase 2 did not fill it; it wrote a note saying the t
 blank. Phase 4 filled it. That is `check_docs.py`'s lesson in the one form the script cannot catch:
 prose asking to be re-read does not get re-read, and neither does an empty table asking to be
 filled.
+
+## Verb history: applying the corrections (2026-07-29)
+
+Josh read `docs/history_corrections.md` and said to apply it: correct the errors, add the hedges,
+use judgement on the nitpicks and the open decisions, fix the spans, do the bookkeeping. He agreed
+specifically that the essay was wrong to derive the English word "German" from the steppe autonym.
+Sixty-nine edits later, thirty-three English and thirty-six German, both extracts validate clean.
+
+I did not use the Edit tool for any of it. Both bodies keep each paragraph on one very long line, so
+a near-miss on a curly quote or a `„` matches nothing and reports nothing, and a silent no-op is
+indistinguishable from success. Instead a script with a table of `(label, old, new, expected_count)`
+and an assertion per row, printing an ok line for each. Two of the sixty-nine would have failed
+silently under a looser method: the F16 replacement had to carry the `$kAnN$` to `$kAnn$` span fix
+and the "reflects" to "reflect" agreement fix in the same string, and the G8 bullet had to carry
+both `$lIest$` to `$lIEst$` occurrences, because those corrections overlap character ranges. The
+script made the overlap a compile-time problem rather than a proofreading one.
+
+The judgement calls are recorded in the document under "What was applied and what was not", but two
+are worth the journal. **H2 was declined because a researched verdict outranks an unresearched
+reading.** Agent H said the closing line's "supernova-enriched gas" contradicts the opening, which
+credits neutron-star collisions for the heaviest elements. It reads convincingly. But G14 is the
+same sentence, researched, and two agents killed it independently: line 80 already gives supernovae
+"the rest", the larger share, so the closing compresses the essay's own apportionment. Declining H2
+felt wrong and is right, which is a useful thing to have noticed once.
+
+**H19 was declined because a bridge would have added the only unchecked sentence in the essay.** The
+essay locates Germanic in the far north twice and then locates the ancestor of German in the far
+south, with nothing in between. That gap is real. Every way of closing it asserts a migration claim
+this run never checked, and adding unchecked prose to an essay whose entire point was removing
+unchecked prose is self-defeating. E1's widened geography narrows the gap without closing it, and
+the gap is now written down where a future pass can find it.
+
+The German got three repairs the English did not need, and all three are the same failure: the
+translation weakened something the English hedged. `Vor 40.000 Jahren, womöglich früher` dropped both
+the bound the English states with "By" and the emphasis of "quite possibly", so it now reads `Bis vor
+40.000 Jahren, und durchaus auch früher`. `und wohl auch Zukunft` turned an English "arguably" into a
+German "presumably", so it now reads `und, wie manche annehmen, auch Zukunft`. Both sentences are
+patched text from Conjugar: the hedge survived the port and then did not survive the translation,
+which is exactly what the verbatim rule was written to prevent and exactly the place it has no
+purchase. The third was the Küche sentence, which translated its own head word and ended up asserting
+that the Swiss German word for Küche contrasts with Küche.
+
+One prediction was wrong and the way it was wrong is the point. The corrections document's
+bookkeeping table predicted the essay would go from 59 emphasis spans to 68. It went to 70. The
+table was computed over the findings, and H7's new subjunctive bullet carries `~subjunctive~` and
+`~würde~` while being an internal-consistency item rather than a finding, so it sat outside the
+arithmetic. Nothing was harmed, because the headers were updated from counts recomputed off the
+edited files rather than from the prediction. A predicted count is a prediction about a fixed set of
+edits, and it goes stale the moment the set changes. That is the third time this run a cached number
+has rotted: 58 tilde spans, "more than fifty" conjugation spans, and now 68.
+
+Final state: 25 conjugation spans byte-identical across the two languages, 70 emphasis spans, 25
+asterisks, 18 headings, 3 emoji spans, 0 links, 3,169 English words against 3,083 German. Both
+headers updated, plus two accuracy repairs: the English header had described 🏴󠁧󠁢󠁥󠁮󠁧󠁿 as leading an
+English bulleted item when the glyph appears nowhere in either body, and both asterisk examples
+gained `*Wōðanaz`. `test_sync_verb_history.py` still passes at 18 checks.
+
+`Konjugieren/Assets/Localizable.xcstrings` is untouched, so none of this ships yet, including Phase
+0's ten patches from two days ago. Two `sync_verb_history.py` runs are the last step, and that is
+Josh's call rather than mine.
+
+## A default action that publishes, and the flag that found it (2026-07-29)
+
+Writing `prompts/ship-verb-history.md`, the plan for Josh's own editing pass over the corrected
+essay, I wanted to describe `scripts/sync_verb_history.py`'s command line accurately, so I ran it
+with `--help`. It printed `markup OK (en)` and then `wrote Info.verbHistoryText (en) into
+Konjugieren/Assets/Localizable.xcstrings`. There is no `--help`. The script scanned `sys.argv` by
+hand for the literal strings `--check` and `--lang`, ignored everything else, and fell through to
+its default action, which is to write the catalog. So a probe I believed was read-only published the
+essay.
+
+It was one line of JSON and `git checkout --` restored it, so the cost was nil. The interesting part
+is the shape. On almost every other tool an unrecognized flag is an error, and the habit of typing
+`--help` at an unfamiliar script is built on that. Here the same keystroke was a publish, and it
+announced success in the same words a deliberate sync would have used. `--dry-run` would have done
+it too, which is the one that stings: the flag people reach for specifically to avoid side effects
+was itself a side effect. So was `--checks`, one keystroke from the flag that makes it safe.
+
+The fix is `argparse` and took three minutes: `--check` as `store_true`, `--lang` with
+`choices=sorted(SOURCES)`, everything else rejected. I verified it by running the four flags that
+used to publish and confirming what each does now: `--help` exits 0 with usage, `--dry-run` and
+`--checks` exit 2 with "unrecognized arguments", `--lang fr` exits 2 with "invalid choice". Then the
+two documented invocations still validate clean and `test_sync_verb_history.py` still passes at 18
+checks, and `git status` shows the catalog untouched through all of it. The docstring on `parse_args`
+records what the old parsing cost, because the file's own header rule says scripts get generous
+comments for facts that are not recoverable by reading the code, and "an unrecognized flag here used
+to be a publish" is exactly that kind of fact.
+
+The general lesson is narrow and worth keeping: **if a script's default action has an outward-facing
+effect, its argument parsing is part of the safety surface, not a convenience.** A hand-rolled
+`"--flag" in sys.argv` scan is fine in a script that prints; in a script that ships, it converts
+every typo into the most dangerous thing the script can do. The plan now says so under "Do not do
+these things", along with an instruction not to reintroduce it.
+
+Worth noting what caught it, since it was not the script and not me: `git status` on the next
+command showed `Konjugieren/Assets/Localizable.xcstrings` dirty in a session that had deliberately
+left it clean for two days. The gate the runbook set up, "nothing syncs until Josh says so", is what
+made an unexpected write visible as an anomaly rather than as noise.

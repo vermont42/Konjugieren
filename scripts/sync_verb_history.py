@@ -9,6 +9,10 @@ Run:       python3 scripts/sync_verb_history.py                # validate, then 
            python3 scripts/sync_verb_history.py --check        # validate only
            python3 scripts/sync_verb_history.py --lang de      # ditto for the German
 
+           The default action writes the catalog, so an unrecognized flag used to be a
+           publish rather than an error. See parse_args for what that cost and why the
+           hand-rolled sys.argv scan was replaced with argparse.
+
 Ported from Conjugar's script of the same name. Three things changed on the way across,
 and each of them is a way the naive port would have been wrong:
 
@@ -34,6 +38,7 @@ touching `validate`, `check_inline_markers`, `check_link` or `split_blocks`, bec
 that silently stops firing looks exactly like a clean essay.
 """
 
+import argparse
 import json
 import pathlib
 import re
@@ -278,17 +283,45 @@ def write(body: str, lang: str) -> bool:
     return True
 
 
-def language() -> str:
-    if "--lang" not in sys.argv:
-        return "en"
-    lang = sys.argv[sys.argv.index("--lang") + 1]
-    if lang not in SOURCES:
-        sys.exit(f"unknown language {lang!r}; expected one of {', '.join(SOURCES)}")
-    return lang
+def parse_args() -> argparse.Namespace:
+    """Parse the command line, rejecting anything unrecognized.
+
+    This used to scan sys.argv by hand for the literal strings "--check" and "--lang" and
+    ignore everything else, which made the default action, writing the catalog, reachable
+    by typo. `--help`, `-h`, `--dry-run` and `--checks` all fell through to a real sync and
+    printed a reassuring "wrote Info.verbHistoryText (en)". That happened on 2026-07-29 and
+    was caught only because the catalog showed up dirty in `git status` afterward. An
+    unrecognized flag on most tools is an error; here it was a publish. argparse makes it
+    exit 2 with a usage message instead.
+    """
+    parser = argparse.ArgumentParser(
+        prog="sync_verb_history.py",
+        description=(
+            "Validate a verb-history extract and push it into Localizable.xcstrings as "
+            f"{KEY}."
+        ),
+        epilog=(
+            "With no --check, the default action WRITES the catalog, which is what ships. "
+            "Validate first: --check writes nothing."
+        ),
+    )
+    parser.add_argument(
+        "--check",
+        action="store_true",
+        help="validate only; write nothing",
+    )
+    parser.add_argument(
+        "--lang",
+        choices=sorted(SOURCES),
+        default="en",
+        help="which localization to validate or write (default: en)",
+    )
+    return parser.parse_args()
 
 
 def main() -> None:
-    lang = language()
+    args = parse_args()
+    lang = args.lang
     source = SOURCES[lang]
     if not source.exists():
         sys.exit(f"{source.relative_to(REPO)} does not exist.")
@@ -308,7 +341,7 @@ def main() -> None:
     print(f"markup OK ({lang}): {len(body.split())} words, {len(headings)} headings, "
           f"{spans} conjugation spans, {len(warnings)} warning(s)")
 
-    if "--check" in sys.argv:
+    if args.check:
         return
     if write(body, lang):
         print(f"wrote {KEY} ({lang}) into {CATALOG.relative_to(REPO)}")

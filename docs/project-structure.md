@@ -211,7 +211,7 @@ docs/
 ├── feature-architecture.md    # Architecture details: Quiz, Game Center, Info, Deeplink systems
 ├── frequencies.txt            # Verb frequency data
 ├── grep-gotchas.md            # Silent-truncation failure mode that bites `grep` on long-line files (xcstrings, Markdown); detection via `grep -c`
-├── history_corrections.md     # **The verb-history fact-check's deliverable.** 27 findings with replacement prose in both languages, 9 span corrections, agent H's 16 internal-consistency items, 4 thin confirmations, and the coverage reconciliation. Nothing in it is applied to the essay
+├── history_corrections.md     # **The verb-history fact-check's deliverable.** 27 findings with replacement prose in both languages, 9 span corrections, agent H's 16 internal-consistency items, 4 thin confirmations, and the coverage reconciliation. Applied to both extracts on 2026-07-29; its "What was applied and what was not" section records the nine declines. Still unsynced to the catalog
 ├── line-counts-howto.md       # How to generate line count reports
 ├── line-counts.md             # Line count report for the project
 ├── linkedin-launch-post.txt   # LinkedIn post for app launch

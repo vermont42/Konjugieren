@@ -6,11 +6,13 @@ from the Conjugar session that ran the same check on Conjugar's Spanish essay. R
 2026-07-28 by Josh: see "Revision" at the bottom for what changed and why. Phases 2, 3 and 4 ran
 2026-07-28 and 2026-07-29; see the revisions at the bottom.
 
-**What is left is Josh's, not a session's.** Nothing has been applied to
-`docs/verb_history.txt`, `docs/verb_history_de.txt` or `Konjugieren/Assets/Localizable.xcstrings`
-beyond Phase 0's ten patches, which are also unsynced. The corrections document is a set of
-proposals; Josh decides which land, and `scripts/sync_verb_history.py` pushes the result to the
-catalog afterward.
+**The corrections are applied and one step remains.** Josh reviewed the deliverable on 2026-07-29
+and directed that it be applied, so `docs/verb_history.txt` and `docs/verb_history_de.txt` now
+carry all 27 findings, all 9 span corrections, 11 of the 16 internal-consistency items, and three
+repairs to the German alone. Both validate clean and both headers' counts were recomputed.
+`Konjugieren/Assets/Localizable.xcstrings` is **still untouched**, so nothing ships yet, including
+Phase 0's ten patches. Two runs of `scripts/sync_verb_history.py`, one per language, are the last
+step and are Josh's call.
 
 **Phase 4 was not a fan-out.** It was synthesis in one context: merge four finished inputs into
 one document and write the German counterpart prose. Do not turn on ultracode for it and do not

@@ -6821,3 +6821,68 @@ earning its existence on a change nobody would have thought to connect to the RE
 whole argument for it: prose asking to be re-read does not get re-read.
 
 Full suite: 211 tests in 32 suites, green.
+
+## Verb history, Phase 4: the corrections document (2026-07-29)
+
+The fact-check of "A History of the German Verb System" is finished. The deliverable is
+`docs/history_corrections.md`: 27 findings with replacement prose in English and German, nine span
+corrections against the app's own conjugator, agent H's sixteen internal-consistency items, four
+confirmed rows whose reasoning does not carry their verdict, and a coverage table reconciling the
+whole thing against the 111-row inventory. Nothing has been applied to the essay. Even Phase 0's ten
+patches are still unsynced, so `Localizable.xcstrings` ships the text the run started with.
+
+The runbook called Phase 4 "synthesis in one context: merge four finished inputs into one document
+and write the German counterpart prose." That is accurate about the shape and undersells the work,
+because the four inputs do not agree with each other, and finding out where they disagree is the
+only part that could not have been done earlier.
+
+Two outright conflicts. **D12's second opinion proposed recasing `$mAde$` to `$maDe$`**, and Phase 3
+recommended deleting the span entirely, on the ground that the sentence's English half is supposed
+to mirror its German half and only the German half does: *machte, sagte, spielte* are three bare
+regular weak preterites spelling the "-te" the sentence illustrates, while the English half offered
+two irregulars wrapped in red inside a sentence whose whole point is the regular pattern, and left
+*played*, the one example that actually exhibits the ending, unmarked. Phase 3 owns span values, so
+its answer wins and the second opinion's is superseded. **Agent H's H2 says the closing sentence
+contradicts the opening** by crediting supernovae for elements the opening attributes to neutron-star
+collisions, and G14, the researched finding on the identical sentence, was killed twice: line 80
+already gives supernovae "the rest", the larger share, so the closing compresses the essay's own
+apportionment rather than contradicting it. H2 reads convincingly on its own, which is exactly why I
+wrote the supersession down instead of quietly dropping it.
+
+The better discovery was quieter. **Five of agent H's sixteen items are already discharged by a
+surviving finding**: H1 by D7, H4 by R1, H5 by G8, H15 by R2c. H ran inside Phase 1, before anything
+was adjudicated, and Phase 2 explicitly did not route H's items anywhere, so nobody had ever held
+H's list and the surviving replacement prose at the same time. D7's new sentence for the augment
+happens to fix both halves of H1's contradiction, the antiquity claim and the presupposition of
+presence, because Phase 1's H had told D7's owner that a fix has to address both. The advice
+propagated; the bookkeeping did not. Presenting all sixteen as open decisions would have handed Josh
+five choices that no longer exist.
+
+Writing the German was the largest single task and the place I expected to make mistakes, so I wrote
+each replacement against the German line rather than against the English replacement. That is not
+pedantry. **C10 survives in the German only**: the English concessive asserts no date, and the German
+ships a pluperfect, "entwickelt hatten", inside a frame anchored at 9 AD, which flatly places the
+runic alphabet before Teutoburg where no handbook will. **H3 is the mirror image**, an English-only
+contradiction that the translator had already resolved correctly and invisibly by naming *deutsch*,
+which is the word the etymological chain actually derives, where the English says "German", an
+exonym the essay elsewhere derives from Latin *Germani*. A Phase 4 that translated the English
+replacements would have missed the first and repaired the second in the wrong direction.
+
+Two mechanical checks, both of which found nothing and both of which I would run again. First, all
+29 English/German replacement pairs were extracted from the finished document and compared by
+script: equal `~…~` span counts and byte-identical `$…$` values, which is the invariant Phase 3
+established and the one that breaks silently, since a stale German value ships marked "translated"
+rather than falling back to English. Second, the marker arithmetic. Applying everything takes the
+essay from 59 emphasis spans to 68, from 27 conjugation spans to 25, and from 20 asterisks to 25,
+and **both file headers assert those numbers while nothing automated verifies them**: `check_docs.py`
+does not read these two files. I computed the deltas by diffing the replacement strings against the
+originals in Python rather than counting, because this run has already been wrong twice about
+exactly this kind of number, once with the header's stale 58 tilde spans and once with the "more
+than fifty" conjugation spans that turned out to be 27.
+
+Last, the smallest thing and maybe the most durable. The claim inventory has carried an empty
+reconciliation table since Phase 0.5, with the instruction "Fill this in at the end of Phase 2"
+printed directly above it. Phase 2 did not fill it; it wrote a note saying the table was still
+blank. Phase 4 filled it. That is `check_docs.py`'s lesson in the one form the script cannot catch:
+prose asking to be re-read does not get re-read, and neither does an empty table asking to be
+filled.

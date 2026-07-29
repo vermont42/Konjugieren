@@ -327,22 +327,38 @@ read as coverage.
 
 ## Coverage reconciliation
 
-Fill this in at the end of Phase 2. Every row above must appear either as a finding in
-`docs/history_corrections.md` or as an explicit `confirmed`. A row appearing in neither is the
-run's own bug, and it should be visible in the deliverable rather than discovered later.
+**Filled 2026-07-29, at the end of Phase 4.** Every row above appears either as a finding in
+[`docs/history_corrections.md`](history_corrections.md) or as an explicit `confirmed`. A row
+appearing in neither would be the run's own bug, and it would be visible in the deliverable rather
+than discovered later. None does.
 
 **Phase 1 returned all 111 verdicts**, 80 confirmed and 31 findings, with no row unresolved and
 no agent reporting on a row it did not own. They are in
-[`docs/verb_history_phase1.md`](verb_history_phase1.md), which Phase 2 works from. The table
-below stays empty until the skeptic pass has said which findings survive.
+[`docs/verb_history_phase1.md`](verb_history_phase1.md). Phase 2 then refuted four of the 31, so
+the Findings column below counts the **27 survivors** and the Confirmed column counts 80 plus those
+four, whose sentences stand unchanged. The Phase 1 split, for comparison, was 31 findings against
+80 confirmed, graded 7 factual-error, 7 needs-hedging and 17 nitpick.
 
 | Cluster | Rows | Verdicts returned | Findings | Confirmed | Missing |
 |---|---|---|---|---|---|
-| A | 10 | | | | |
-| B | 13 | | | | |
-| C | 14 | | | | |
-| D | 20 | | | | |
-| E | 21 | | | | |
-| F | 16 | | | | |
-| G | 17 | | | | |
-| **Total** | **111** | | | | |
+| A | 10 | 10 | 3 | 7 | 0 |
+| B | 13 | 13 | 2 | 11 | 0 |
+| C | 14 | 14 | 5 | 9 | 0 |
+| D | 20 | 20 | 4 | 16 | 0 |
+| E | 21 | 21 | 8 | 13 | 0 |
+| F | 16 | 16 | 3 | 13 | 0 |
+| G | 17 | 17 | 2 | 15 | 0 |
+| **Total** | **111** | **111** | **27** | **84** | **0** |
+
+Final grades across the 27: 7 factual-error, 4 needs-hedging, 16 nitpick.
+
+Two caveats the table cannot carry, both from
+[`coverage_audit.md`](verb_history_phase2_reports/coverage_audit.md):
+
+- **Rows and Verdicts returned are equal by construction** and can never disagree, so their
+  agreement is not evidence of anything. The check that can fail is grade-sum against row count,
+  and it passes in all seven clusters and in the totals.
+- **One checkable claim in the essay has no row here at all**: line 92's "five-thousand-year-old
+  way of saying 'us'", reported as a gap by cluster E and never assigned. G16 and G13 both lean on
+  it as corroboration, so part of their internal consistency is consistency with a sentence nobody
+  checked.

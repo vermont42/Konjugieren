@@ -211,6 +211,7 @@ docs/
 ├── feature-architecture.md    # Architecture details: Quiz, Game Center, Info, Deeplink systems
 ├── frequencies.txt            # Verb frequency data
 ├── grep-gotchas.md            # Silent-truncation failure mode that bites `grep` on long-line files (xcstrings, Markdown); detection via `grep -c`
+├── history_corrections.md     # **The verb-history fact-check's deliverable.** 27 findings with replacement prose in both languages, 9 span corrections, agent H's 16 internal-consistency items, 4 thin confirmations, and the coverage reconciliation. Nothing in it is applied to the essay
 ├── line-counts-howto.md       # How to generate line count reports
 ├── line-counts.md             # Line count report for the project
 ├── linkedin-launch-post.txt   # LinkedIn post for app launch
@@ -245,7 +246,7 @@ docs/
 ├── verb_history_phase1.md     # Phase 1 of the fact-check: a verdict for all 111 inventory rows, 31 findings with replacement prose, and agent H's internal-consistency report
 ├── verb_history_phase2.md     # Phase 2 of the fact-check: adversarial disposition of all 31 findings, replacement prose for the 27 survivors, and the coverage audit. Phase 4's input
 ├── verb_history_phase2_reports/  # The 31 skeptic reports, the 19 second opinions, the coverage audit, and final.json
-├── verb_history_phase3.md     # Phase 3 of the fact-check: the essay's 27 `$…$` spans against the app's own conjugation output, markup integrity, and two findings against the app rather than the essay
+├── verb_history_phase3.md     # Phase 3 of the fact-check: the essay's 27 `$…$` spans against the app's own conjugation output, markup integrity, and four findings against the app rather than the essay, one of them a shipped `sollen` bug since fixed. Phase 4's other input; the deliverable is `history_corrections.md`
 ├── video_script.md            # App Store preview script with bilingual captions and 30-second timing math
 ├── voiceover.md               # VoiceOver pronunciation patterns and per-screen strategy
 ├── wwdc2026-platforms-sotu.md  # WWDC2026 Platforms State of the Union announcements relevant to Konjugieren; reshapes the cloud-llm-tier decision

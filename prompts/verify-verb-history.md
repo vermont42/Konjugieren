@@ -1,11 +1,18 @@
 # Fact-check "A History of the German Verb System"
 
-**Status: Phases 0, 0.5, 1, 2 and 3 are done. Only Phase 4 remains.** Written 2026-07-27
+**Status: every phase is done, including Phase 4, which ran 2026-07-29.** The deliverable is
+[`docs/history_corrections.md`](../docs/history_corrections.md). Written 2026-07-27
 from the Conjugar session that ran the same check on Conjugar's Spanish essay. Rescoped
-2026-07-28 by Josh: see "Revision" at the bottom for what changed and why. Phases 2 and 3 ran
-2026-07-28 and 2026-07-29; see the two revisions at the bottom.
+2026-07-28 by Josh: see "Revision" at the bottom for what changed and why. Phases 2, 3 and 4 ran
+2026-07-28 and 2026-07-29; see the revisions at the bottom.
 
-**Phase 4 is not a fan-out.** It is synthesis in one context: merge four finished inputs into
+**What is left is Josh's, not a session's.** Nothing has been applied to
+`docs/verb_history.txt`, `docs/verb_history_de.txt` or `Konjugieren/Assets/Localizable.xcstrings`
+beyond Phase 0's ten patches, which are also unsynced. The corrections document is a set of
+proposals; Josh decides which land, and `scripts/sync_verb_history.py` pushes the result to the
+catalog afterward.
+
+**Phase 4 was not a fan-out.** It was synthesis in one context: merge four finished inputs into
 one document and write the German counterpart prose. Do not turn on ultracode for it and do not
 spawn a fleet. The "run this with ultracode" instruction below applies to Phases 1 and 2, which
 are done. Everything Phase 4 needs is on disk; it needs no web research and no search budget.
@@ -35,6 +42,7 @@ What the run has produced so far:
 | [`docs/verb_history_phase2.md`](../docs/verb_history_phase2.md) | **Phase 4 input 1.** Disposition of all 31 findings, replacement prose for the 27 survivors, agent H's routing, and the coverage audit |
 | [`docs/verb_history_phase2_reports/`](../docs/verb_history_phase2_reports/) | The 31 skeptic reports, the 19 second opinions, the coverage audit, and `final.json` |
 | [`docs/verb_history_phase3.md`](../docs/verb_history_phase3.md) | **Phase 4 input 2.** Nine span corrections, the H11 and H13 adjudications, markup and link results, and four findings against the app rather than the essay |
+| [`docs/history_corrections.md`](../docs/history_corrections.md) | **The deliverable.** Phase 4's merge of the four inputs, with German prose written for every survivor |
 | [`scripts/sync_verb_history.py`](../scripts/sync_verb_history.py) | Validates an extract; `--check` writes nothing |
 
 Nothing has been synced back to the catalog, which is Josh's call to make after he reviews
@@ -679,3 +687,53 @@ reports success having executed nothing. Phase 3 reported its counts unprompted 
 asked for them: 8 tests in the temporary suite with 5 assertion failures across 4 of them, 18 in
 `test_sync_verb_history.py`, 2 `--check` runs, and 1 more after deletion to confirm the target
 still compiled.
+
+## Revision, 2026-07-29, after Phase 4
+
+Phase 4 ran as written: one context, no fan-out, no web research, about 25 minutes. It read the two
+extracts, `verb_history_phase2.md`, `verb_history_phase3.md`, the coverage audit, and agent H's
+section sliced out of the 368 KB Phase 1 document with `sed -n '1840,2131p'`. Deliverable:
+[`docs/history_corrections.md`](../docs/history_corrections.md). The inventory's reconciliation table
+at `docs/verb_history_claims.md` is filled.
+
+Five things a future run should take from it.
+
+**The four inputs are not four sections. They collide, and reconciling them is the work.** The
+runbook framed Phase 4 as a merge, which undersells it. Six corrections land on a line another
+correction also touches, and two inputs disagree outright. **D12's second opinion proposed
+`$maDe$`** while **Phase 3 recommended deleting the span**, and Phase 3 owns span values, so the
+second opinion's fix is superseded. **Agent H's H2 says the closing line contradicts the opening**
+while **G14, the researched finding on the identical sentence, was killed twice**, so H2 should not
+be actioned. A session that merged the inputs section by section would have shipped both conflicts
+unnoticed, since neither is visible from inside one document.
+
+**Five of agent H's sixteen items were already discharged by a surviving finding, and that is only
+visible from Phase 4's position.** H1 by D7, H4 by R1, H5 by G8, H15 by R2c. Each was written by an
+agent that could not see the replacement prose, because Phase 1's H ran before the findings were
+adjudicated and Phase 2 never routed them anywhere. Presenting all sixteen as open decisions would
+have handed Josh five choices that no longer exist. Check this explicitly in any future run: the
+internal-consistency agent and the corrections are looking at the same sentences from different
+sides.
+
+**Write the German against the German line, not against the English replacement.** Every survivor
+cites its German counterpart line for exactly this reason, and it matters most where the two
+languages are not parallel. C10 survives **in the German only**: the English concessive asserts no
+date, and the German pluperfect "entwickelt hatten" places the runic alphabet before Teutoburg. H3
+is the mirror image, an English-only contradiction that the translator had already resolved
+correctly. A Phase 4 that translated the English replacements would have missed the first and
+"fixed" the second in the wrong direction.
+
+**Check the marker arithmetic mechanically, because the file headers assert it.** Applying
+everything takes the essay from 59 `~…~` spans to 68, from 27 `$…$` spans to 25, and from 20
+asterisks to 25, all of which the two headers state as facts and nothing automated verifies:
+`check_docs.py` does not read these files. Counting by hand is the failure mode this run has already
+demonstrated twice, with the stale 58 tilde spans and the "more than fifty" spans that were 27. Both
+figures in the corrections document's bookkeeping table were computed by diffing the replacement
+strings against the originals in Python, and the parity of all 29 English/German pairs was checked
+the same way: equal `~…~` counts, byte-identical `$…$` values.
+
+**A blank table in a cache file stays blank until someone is told to fill it.** The inventory's
+reconciliation table asked to be filled "at the end of Phase 2", Phase 2 recorded that it was still
+blank, and it was still blank when Phase 4 started. It is the same lesson `scripts/check_docs.py`
+exists to teach, in the one form the script cannot catch: prose asking to be re-read does not get
+re-read, and neither does an empty table asking to be filled.

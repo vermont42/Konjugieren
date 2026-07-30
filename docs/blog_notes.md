@@ -7159,3 +7159,79 @@ was delivered, looping on a condition already satisfied.
 The trick that actually worked: `TaskStop` on an ID that does not exist prints the live agent roster
 in its error message. Two of three IDs I guessed were stray shells turned out not to be shells at
 all, and the error is what told me so.
+
+## video_script.md gains the simctl recording commands (2026-07-30)
+
+Work started in the sibling app Conjuguer, where Josh asked which simulator to record
+app-preview clips on. Conjuguer answers that in `docs/app-store-preview-videos.md`;
+Konjugieren has no such document, so its `video_script.md` was the only candidate and is
+now the single place the recording procedure lives.
+
+Added: the device table (`iPhone 17 Pro Max` → 1320 × 2868 for the 886 × 1920 project,
+Spatial Conform **Fill**; `iPad Pro 13-inch (M5)` → 2064 × 2752 for 1200 × 1600, exactly
+3:4), a UDID resolver, build/install/launch by explicit destination (the
+`ios-build-verify` config is pinned to `iPhone 17`, so the recording devices need one),
+the `prep_screenshot_sim.sh` language/status-bar pass, the `recordVideo` invocations, and
+an `ffprobe` size check.
+
+UDIDs are resolved by name rather than pasted, and this repo is the reason. Its
+`take_screenshots.sh` hardcodes `E73F9CB3-…` under the label `iPad Pro 13-inch (M4)` —
+and that UDID today belongs to a device *renamed* `Konjugieren iPad Screenshots`. The
+mapping still works; its label no longer describes reality. A doc full of pasted UDIDs
+rots the same way, so:
+
+```bash
+udid() { xcrun simctl list devices available | sed -n "s/^ *$1 (\([0-9A-F-]\{36\}\)) .*/\1/p" | head -1; }
+```
+
+Tested, including the prefix hazard: `iPhone 17` is a prefix of `iPhone 17 Pro Max`, and
+the trailing ` (` in the pattern keeps them distinct.
+
+Two flags that aren't defaults: `--codec h264` (simctl defaults to HEVC) and `--mask
+black` (otherwise the unmasked framebuffer is written; Apple rejects alpha). `recordVideo`
+captures at native pixel resolution however small the Simulator window looks, and Ctrl-C
+— SIGINT — is what finalizes the file, so it's the only correct way to stop.
+
+The fifth clip is the local exception. Its standing note says a simulator bug forces
+capture on real hardware, so `simctl` doesn't apply; the new section says that explicitly
+and points at QuickTime ▸ New Movie Recording, with two caveats a future reader will
+otherwise discover in the edit: a physical device records at its own native size, which
+changes the Spatial Conform, and it shows a live clock rather than the pinned 9:41.
+
+**Follow-up the same day: rewritten around hand recording.** Josh records by hand rather
+than from the shell, and asked whether the invocation affects App Store Connect at all or
+whether conformance is purely post-processing. Purely post — only two capture-time facts
+matter, and neither is a flag: *which device* you record (that fixes the native pixel size,
+hence the aspect and the Spatial Conform) and that the capture is the device framebuffer
+rather than the Mac screen. Everything ASC enforces is imposed by Final Cut and the
+normalize command; the master violates nearly all of it by construction, which is precisely
+why `-r 30` and `setsar=1` are in that command.
+
+The section is now: `open -a Simulator`, Run from Xcode to install,
+`prep_screenshot_sim.sh` for language + 9:41, then **Simulator ▸ File ▸ Record Screen** /
+**Stop Recording** (both menu items verified present in Xcode 26.3 by reading
+`Simulator.app/Contents/Resources/Base.lproj/MainMenu.nib`). `simctl io recordVideo`
+remains as one sentence, framed as scriptable-but-equivalent.
+
+One hazard specific to the hand path is now called out: **macOS screen recording is the
+trap**. ⌘⇧5 or QuickTime ▸ New Screen Recording aimed at the Simulator *window* captures
+at point size × display scale with chrome baked in, roughly 860 × 1864 instead of
+1320 × 2868, unrecoverable without upscaling.
+
+A second warning — that a silent capture carries no audio stream, failing both
+`verify_store_media.sh` and the normalize command's `-map 0:a:0` — was written and then
+cut at Josh's direction: the previews always carry a music track and he always exports
+video and audio. The check is real; the scenario isn't.
+
+The fifth clip's real-hardware note was kept and sharpened: QuickTime ▸ New Movie Recording
+is the *right* tool there, because the device is acting as a camera rather than as a window
+being screen-scraped. That distinction is easy to lose next to the flat "don't use
+QuickTime" warning three paragraphs above it.
+
+**Correction, from real captures in the sibling app.** Conjuguer's five English iPhone
+clips were recorded with Simulator's built-in Record Screen, and probing them disproved a
+claim I had asserted in all three scripts without checking: the recordings are **H.264
+High, Level 5.0**, not HEVC. The HEVC default belongs to `simctl io recordVideo` (per its
+`--help`); the GUI recorder differs. Corrected here too. The rest matched the playbook
+exactly — native size, SAR 1:1, no audio track, variable frame rate with static stretches
+that carry no frames at all, which is capture working as designed rather than a fault.

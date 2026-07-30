@@ -1,8 +1,16 @@
 # Add a section on the Luther Bible to the verb-history essay
 
-**Status: not started. Written 2026-07-29** at Josh's request, after he read the corrected essay and
-identified the gap. The essay covers the Battle of the Teutoburg Forest and says nothing about the
-Luther Bible, which he judged a lacuna worth filling.
+**Status: SHIPPED, 2026-07-29.** Written the same day at Josh's request, after he read the corrected
+essay and identified the gap. The essay covers the Battle of the Teutoburg Forest and says nothing
+about the Luther Bible, which he judged a lacuna worth filling.
+
+**What happened is recorded in [`docs/luther_section.md`](../docs/luther_section.md), and the
+ranking below turned out to be wrong in both directions.** Candidate 1, rated strongest, survives
+only after being reframed: its "visible in every paradigm cell" premise is false, and the app
+disproves it, since `machen`'s imperative is `mach` and the strong preterite is `sAng`. Candidate 4,
+rated weakest and most likely to produce an error, is now the best-evidenced claim in the section,
+verified from 1545 page images. Candidate 2 was refuted rather than merely left unattested, and
+candidate 3 had nothing to resist. Nine agents, about 1.9M subagent tokens.
 
 **This is new work, not the last mile of something finished.** The fact-check in
 [`verify-verb-history.md`](verify-verb-history.md) is closed and its corrections shipped on

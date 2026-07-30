@@ -18,12 +18,12 @@ als PNG-Asset ausliefert. Konventionell werden 🐎 und 🏴󠁧󠁢󠁥󠁮󠁧
 Länderflaggen 🇩🇪 🇦🇹 🇨🇭 dagegen nicht; das Skript warnt davor, bricht aber nicht ab.
 
 Invarianten gegenüber dem Englischen, beim Übersetzen geprüft:
-  • Die 18 Überschriften `…` werden frei übersetzt. Sie sind keine Linkziele.
+  • Die 19 Überschriften `…` werden frei übersetzt. Sie sind keine Linkziele.
   • Die 25 $…$-Spannen werden zeichenweise aus dem Englischen übernommen und stimmen
     derzeit exakt mit ihm überein. Sie enthalten deutsche wie englische Verbformen, und
     die englischen bleiben englisch, weil sie im Deutschen als Glosse stehen. Weder neu
     großschreiben noch anpassen.
-  • Die 70 ~…~-Spannen weichen ab, weil sie Fachbegriffe hervorheben und diese im
+  • Die 81 ~…~-Spannen weichen ab, weil sie Fachbegriffe hervorheben und diese im
     Deutschen andere Wörter sind: ~Aspekt~ für ~Aspect~, ~Präteritopräsentia~ für
     ~preterite-presents~. Ihre Anzahl bleibt gleich.
   • Die 25 Sternchen sind Linguistik, keine Auszeichnung. Sie markieren rekonstruierte
@@ -134,7 +134,12 @@ Das Althochdeutsche drückte zukünftige Zeit hauptsächlich durch das Präsens 
 Dies schuf ein dreigliedriges temporales System (Präsens, Präteritum/Perfekt, Futur) aus dem ursprünglichen Zwei-Tempora-System des Proto-Germanischen, allerdings bemerkenswert durch Periphrase statt durch neue morphologische Konjugationen des Verbs selbst.`Präteritopräsentia`
 Das Deutsche bewahrt eine besondere Klasse von Verben namens ~Präteritopräsentia~: Verben, deren Präsens-Konjugationen historisch von proto-germanischen starken Präterita abstammen. Dazu gehören die Modalverben ~können~ (can), ~müssen~ (must), ~dürfen~ (be allowed to), ~sollen~ (shall) und ~mögen~ (like), dazu ~wissen~ (to know), das ihre Geschichte teilt, aber ein Vollverb ist und kein Modalverb.
 
-Die eigentümlichen Konjugationen dieser Verben (ohne Endungen in 1s und 3s (ich $kAnn$, er $kAnn$) und Vokalunterschiede zwischen Singular und Plural bei allen außer ~sollen~ (ich $kAnn$ vs. wir können)) spiegeln ihren Ursprung als alte Präteritum-Konjugationen wider, die als Präsensformen reanalysiert wurden.`Der Konjunktiv und das moderne Deutsch`
+Die eigentümlichen Konjugationen dieser Verben (ohne Endungen in 1s und 3s (ich $kAnn$, er $kAnn$) und Vokalunterschiede zwischen Singular und Plural bei allen außer ~sollen~ (ich $kAnn$ vs. wir können)) spiegeln ihren Ursprung als alte Präteritum-Konjugationen wider, die als Präsensformen reanalysiert wurden.`Die Lutherbibel`
+Luther hat das Standarddeutsche nicht geschaffen, und er sagte es selbst, bei Tisch: Er habe keine eigene Sprache und die sächsische Kanzlei zum Vorbild. Was seine Bibel beitrug, war nicht Grammatik, sondern Reichweite. Dreitausend Exemplare seines Neuen Testaments von 1522 waren binnen Monaten verkauft, rund vierhundert Ganz- und Teilausgaben seiner Bibel folgten bis zu seinem Tod, und Generationen von Schulkindern lernten seine Verse auswendig. Die Standardsprache selbst wurde erst von den Grammatikern des achtzehnten Jahrhunderts festgelegt, Gottsched und Adelung unter ihnen.
+
+In fünf der sieben Klassen hatten althochdeutsche starke Verben einen Stammvokal in der ersten und dritten Person Singular des Präteritums und einen anderen in allen übrigen Konjugationen, ~sang~ neben ~sungum~. Das Deutsche löste diese Spaltung über Luthers Jahrhundert hinweg und noch lange danach auf, und verschiedene Klassen gingen dabei entgegengesetzte Wege. Seine Bibel hält beide Spaltungen offen: Sie druckt ~sang~ neben ~sungen~, wo das moderne Deutsch sich für ~sangen~ entschied, und ~schreib~ neben ~schrieben~, wo es den anderen Weg ging, zu ~schrieb~. Seine Verben sind Zeugnis des Wandels, nicht seine Ursache.
+
+Ein Buchstabe trägt allerdings seinen Namen. Oberdeutsche Schreiber ließen das auslautende e weg und schrieben ~ich hab~ und ~er redt~, während die sächsische Kanzlei es ausschrieb und Luther mit ihr. Die Forschung nennt ihn das ~lutherische e~. Jesuitenkollegien unterrichteten in den 1760er Jahren noch nach Grammatiken, die ihn wegließen. Der Buchstabe setzte sich erst durch, als der Süden seine eigene Schreibnorm aufgab, mehr als zwei Jahrhunderte nach Luthers Tod.`Der Konjunktiv und das moderne Deutsch`
 Das Althochdeutsche hatte einen voll funktionsfähigen Konjunktiv sowohl im Präsens als auch im Präteritum. Mit der Zeit, als Vokalunterschiede sich reduzierten und die Konjunktiv-Konjugationen bei vielen Verben mit dem Indikativ identisch wurden, verwendeten Sprecher zunehmend periphrastische Konstruktionen mit ~würde~ (would) + Infinitiv, um auszudrücken, was der alte synthetische Konjunktiv einst vermittelt hatte:
 
 🇩🇪 Synthetisch: Wenn ich $kÄme$... (If I $cAme$...)

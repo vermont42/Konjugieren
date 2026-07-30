@@ -7053,3 +7053,109 @@ The brief also carries the one methodological improvement the last run identifie
 use: make the third agent a neutral adjudicator told to decide rather than a second attacker, and
 print the direction-of-movement arithmetic. Phase 2's second-opinion pass moved fourteen findings and
 all fourteen moved toward a stronger finding, which measures the instruction rather than the truth.
+
+## The Luther section, and a brief that ranked its own candidates backwards (2026-07-29)
+
+Josh read the shipped essay and found a hole: it spends three paragraphs on the Battle of the
+Teutoburg Forest and never mentions Luther. The gap was not an oversight. Phase 1's cluster G had
+already noticed it and written it down as deliberate, on the grounds that popular accounts overstate
+Luther and that silence was safer than a wrong sentence. Josh decided he wanted the section anyway,
+which makes it a scope decision rather than a correction.
+
+The brief he handed the session ranked four candidate claims and said plainly that the ranking was a
+prediction rather than a finding. It was wrong in both directions, which is the most interesting
+thing about the run.
+
+**Candidate 1, final `-e`, was rated strongest because it would be visible in every cell of every
+paradigm the app displays.** That premise is false, and the researcher disproved it against this
+repo rather than against a book: `ConjugatorTests.swift` expects `machen`'s singular imperative to be
+`mach`, and the strong preterite is `sAng`. Both are apocopated conjugations Konjugieren shows on
+screen, and imperative *laufe → lauf* is one of the literature's canonical examples of the very
+apocope the claim wanted to credit the east with resisting. Reiffenstein then made it worse: the
+Upper German literary language *preserved* final `-e` in the strong preterite 1sg and 3sg, *ich
+sahe*, *ware*, so the direction reverses inside the verb system. What survived is the name, which is
+the better story: the letter is called the *lutherisches e*, and its spelling won by orientation
+toward Gottsched more than two centuries after Luther died.
+
+**Candidate 4, preterite leveling, was rated weakest and "most likely to produce an error". It is now
+the best-evidenced claim in the section.** The skeptic read `ſungen ein Newlied` off the 1545 page
+images at Revelation 5:9, then tried to break its own finding by pulling OCR for all 1,556 page
+images of both volumes, 1,130,702 words, and finding zero preterite *sangen* anywhere. The two
+ambiguous hits it checked against the images turned out to be *Honig ſaugen*, where the OCR read *u*
+as *n*, and *Sangen* as a noun, ears of parched grain, at Leviticus 23:14. The adjudicator then
+page-verified the one pair the skeptic had left resting on Keller's prose, John 19:19.
+
+**Candidate 2 died by natural experiment**, which is a better death than "unattested". Seiler and
+Weber measured the perfect's share of past-narrative contexts across twelve German Bibles. Luther
+1545 scores 0.04, so the premise that his narrative is wall-to-wall preterite is true and quantified.
+But the Zurich Bible began as a revision of Luther's own text: it scored 0.06 while still copying him
+in 1524 and 1534, jumped to 0.63 in 1557 the moment it went its own way, and held near 0.75 for two
+centuries. A high-prestige Bible, read aloud for two hundred years in the most extreme
+*Präteritumschwund* region there is, did not hold the narrative preterite. Luther's model held it
+only while the text was literally his.
+
+**Candidate 3 had nothing to resist.** The sentence brace was already fully formed in 80.1 percent of
+sixteenth-century main clauses, and its spread is credited to the grammaticalization of compound
+verb conjugations, since a brace presupposes an analytic verb. Kudo, the one real measurement of
+Luther, concludes that his braces are *short*, not absent, and attributes that to deliberate style
+while expressly refusing to equate Lutherdeutsch with everyday speech. A side finding worth keeping:
+*"dem Volk aufs Maul schauen"*, the phrase every popular account attributes to Luther, is not his
+wording.
+
+### The adjudicator earned its keep, and the arithmetic proves it
+
+The brief asked for the one improvement the previous run identified and never used: a neutral third
+agent told to decide rather than attack, printing direction-of-movement arithmetic. Phase 2's
+second-opinion pass had moved fourteen findings and every single one moved toward a stronger finding,
+which measures the instruction rather than the truth.
+
+This one moved both ways. Twenty-four claims: nineteen upheld, three moved stronger, two moved
+weaker. The three strengthenings share a shape, a skeptic reaching for the hedging bucket where no
+hedge repairs the defect, so a re-scoping, a restructuring, and a deletion. The two weakenings share
+the opposite shape, a skeptic reaching for the error bucket where the draft was narrow or loose but
+not false. That is what a pass looks like when it is measuring rather than obeying.
+
+Its hardest call was killing the best sentence. *Ketzerisches e*, the heretical e, is the phrase that
+made the paragraph land, and it does not ship: no coiner is attributable, the earliest reachable
+attestation is an 1857 n-gram, and the apparent source is a Wikipedia stub whose König footnote sits
+after the sentence that does not contain the name. The section exists to stop a plausible-sounding
+falsehood about Luther and could not itself ship an untraceable German coinage. The satisfying part
+is that the nine words needed to fit the 250-word ceiling came out of exactly that material, so
+nothing verified was cut to make room. The skeptic had proposed cutting the schoolchildren clause
+instead; the adjudicator refused, on the ground that it is the only *uptake* evidence in the
+paragraph, since print figures are supply-side and a book can be printed four hundred times without
+entering anyone's competence.
+
+### Two things that made the mechanics easy, and one that did not
+
+Deciding to use no `$…$` spans turned out to protect the riskiest invariant in the whole procedure.
+The two language files must carry byte-identical conjugation spans in the same order, and a diverged
+one ships a stale German value marked `translated`. Because everything the section quotes is either
+historical (*sungen*, *sungum*, *schreib*, which the app's conjugator cannot arbitrate because it
+conjugates no Early New High German) or fully regular (*mache*, *sagte*, which come back with no
+uppercase at all), no span was legitimate anywhere. The invariant did not move.
+
+A throwaway probe suite asked the app for twenty-four conjugations before a word was drafted, and two
+of its answers shaped the section. The weak conjugations came back entirely lowercase, so a span
+around *machte* would have marked nothing, which Phase 3 had already caught once as a defect. And the
+app's marking is wider than the ablaut vowel: it returns `wUrdE`, `gING`, `stÄNDe`. Reasoning a span
+out by hand would have produced `wUrde` and `gIng`, both wrong. That is the whole argument for
+letting the app arbitrate.
+
+The thing that did not go well was the simulator. Verifying the render meant scrolling to the
+seventeenth of nineteen headings in a 3,410-word article, and flick swipes carry momentum that
+clamps at either end, so the first four attempts landed at the bottom, the top, the bottom again, and
+then seven sections too far back. Slow drags with a long duration are the fix, and the calibration
+that worked was measured rather than guessed: five drags spans about nine sections.
+
+### An operational lesson about subagents
+
+Josh asked twice whether agents were nearly done, and the honest answer both times was that a
+parent's elapsed time tells you nothing, because a subagent instructed to research independently can
+fan out. The skeptic on the leveling paragraph spawned three children of its own and ran 28 minutes
+against its siblings' 18. Worse, one earlier researcher left polling shells running after its work
+was delivered, looping on a condition already satisfied.
+
+The trick that actually worked: `TaskStop` on an ID that does not exist prints the live agent roster
+in its error message. Two of three IDs I guessed were stray shells turned out not to be shells at
+all, and the error is what told me so.

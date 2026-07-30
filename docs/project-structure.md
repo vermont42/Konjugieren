@@ -211,11 +211,12 @@ docs/
 ├── feature-architecture.md    # Architecture details: Quiz, Game Center, Info, Deeplink systems
 ├── frequencies.txt            # Verb frequency data
 ├── grep-gotchas.md            # Silent-truncation failure mode that bites `grep` on long-line files (xcstrings, Markdown); detection via `grep -c`
-├── history_corrections.md     # **The verb-history fact-check's deliverable.** 27 findings with replacement prose in both languages, 9 span corrections, agent H's 16 internal-consistency items, 4 thin confirmations, and the coverage reconciliation. Applied to both extracts on 2026-07-29; its "What was applied and what was not" section records the nine declines. Still unsynced to the catalog
+├── history_corrections.md     # **The verb-history fact-check's deliverable.** 27 findings with replacement prose in both languages, 9 span corrections, agent H's 16 internal-consistency items, 4 thin confirmations, and the coverage reconciliation. Applied to both extracts on 2026-07-29; its "What was applied and what was not" section records the nine declines. Synced to the catalog on 2026-07-29
 ├── line-counts-howto.md       # How to generate line count reports
 ├── line-counts.md             # Line count report for the project
 ├── linkedin-launch-post.txt   # LinkedIn post for app launch
 ├── Localization.md            # Localization workflow documentation
+├── luther_section.md          # **The Luther section's deliverable.** Why the verb-history essay's nineteenth heading says what it says: verdicts on the four briefed candidates (two shipped, one refuted by the Zurich Bible's tense statistics, one unsupported because the Satzklammer was already formed), the four things cut from the draft including `ketzerisches e`, and two traps worth carrying forward
 ├── nomination.md              # App Store featuring nomination — Description, Helpful Details, and Supplemental Materials slots
 ├── on-device-tool-design.md   # Lessons from implementing Foundation Models Tool conformances
 ├── pdf.md                     # PDF export documentation

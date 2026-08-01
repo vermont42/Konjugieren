@@ -34,7 +34,7 @@
 #   2. The window check matches the device FAMILY substring ("iPad"), for the same
 #      reason: the renamed sim's window is titled "Konjugieren iPad Screenshots – iOS
 #      26.x", which contains "iPad" but not the class label. This mirrors
-#      ensure_soft_keyboard's window_match exactly — the two must agree or prep will
+#      set_keyboard_state's window_match exactly — the two must agree or prep will
 #      relaunch Simulator on every run while the driver is perfectly happy.
 #
 # Run this once per (device, language) pair, then shoot that language's 9 views with
@@ -64,7 +64,7 @@ case "$DEVICE_NAME" in
   *) echo "unknown device '$DEVICE_NAME' (expected a label from DEVICES in take_screenshots.sh)" >&2; exit 2 ;;
 esac
 
-# Keep in sync with take_screenshots.sh::ensure_soft_keyboard — see note 2 in the header.
+# Keep in sync with take_screenshots.sh::set_keyboard_state — see note 2 in the header.
 case "$DEVICE_NAME" in
   "iPhone 17 Pro Max")     WINDOW_MATCH="iPhone" ;;
   "iPad Pro 13-inch (M4)") WINDOW_MATCH="iPad" ;;
@@ -94,7 +94,7 @@ xcrun simctl bootstatus "$UDID" -b >/dev/null
 # A `simctl boot` does not always give the device a Simulator.app WINDOW. When the
 # reboot above lands while Simulator.app is already running, the device can come back
 # booted-but-windowless: simctl and axe keep working (they talk to the device, not the
-# UI), so nothing looks wrong — but take_screenshots.sh's ensure_soft_keyboard raises
+# UI), so nothing looks wrong — but take_screenshots.sh's set_keyboard_state raises
 # `first window whose title contains "iPad"`, finds no such window, and fails all three
 # attempts with -1719 "Invalid index". The only visible symptom is one keyboard-less
 # quiz_mid screenshot. Hit in Conjugar on 2026-07-26 (workaround #16).

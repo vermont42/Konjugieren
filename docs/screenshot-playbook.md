@@ -9,6 +9,17 @@
 > (workaround #10), and `resolve_ibv_scripts` was resolving to a versioned plugin **cache**
 > copy rather than the marketplace clone.
 
+> **Keyboard mechanism replaced 2026-08-01 — ported from Conjugar, NOT yet run here.**
+> `Cmd+K` ("Toggle Software Keyboard") stopped working on this toolchain (Xcode 26.3); the
+> driver now attaches and detaches the **hardware** keyboard instead, and that turns the two
+> quiz recipes into a small state machine because `axe`'s Cmd+V paste needs the opposite
+> state from the one that shows the keyboard. See **workaround #17**, which is where the
+> whole thing is explained. It was found and verified end to end in Conjugar's 2026-08-01
+> sweep; here it is a careful port, checked against this app's `QuizView` (the answer field
+> is `quiz_answer_field` and is focused by `Quiz.start()`, so the removed tap really was
+> redundant) and syntax-checked, but **no Konjugieren cell has been shot with it**. Shoot
+> `--view quiz_mid` first and look at the PNG before trusting a full sweep.
+
 Captures App Store screenshots for Konjugieren via `scripts/take_screenshots.sh`. The driver carries the calibration values, per-view navigation, and the workarounds inline as comments; this playbook is the prose-and-procedure wrapper around it.
 
 ## Scope
@@ -30,7 +41,19 @@ App Store screenshots only — 9 views × 2 languages × 2 devices = 36 PNGs. No
   unsorted `head -1` there picks a version essentially at random. The driver's own
   `resolve_ibv_scripts()` had this bug until 2026-07-26 and was building the App Store
   screenshots with whichever cached release `find` happened to walk into first.
-- macOS Accessibility permission granted to `osascript`. System Settings → Privacy & Security → Accessibility → add `/usr/bin/osascript`. The driver depends on this for the soft-keyboard Cmd+K toggle (workaround #6).
+- macOS Accessibility permission granted to `osascript`. System Settings → Privacy & Security → Accessibility → add `/usr/bin/osascript`. The driver depends on this to click **I/O ▸ Keyboard ▸ Connect Hardware Keyboard** for the `quiz_mid` keyboard (workaround #17; it was a Cmd+K keystroke through 2026-08-01, workaround #6).
+- **You can use the Mac during a sweep — with one caveat.** Taps, swipes, captures,
+  launches and the pasteboard copy all go through `simctl`/`axe`, which talk to the
+  **device**, so they do not care what is frontmost on the host. The exception is the
+  keyboard step: Simulator's **menu bar** is the only way to attach/detach the hardware
+  keyboard, and AppleScript can only click the menu of the frontmost app. That is a few
+  seconds inside `quiz_mid` and `quiz_results` — 4 of the 36 cells, so roughly 8 short
+  windows per full sweep. Steal focus during one and the driver logs
+  `frontmost is 'X', not Simulator; not touching the menu` and that cell needs a re-shoot.
+  It **refuses to act rather than clicking blind**, so the cost is a retry, never a stray
+  click into your own app — the guard exists because a stray Cmd+K once launched Fitness on
+  the host Mac. It also retries 3×, so a momentary steal usually recovers by itself.
+  Observed for real in Conjugar's 2026-08-01 sweep (Safari, then VS Code).
 - Two named simulators (see "Simulator Setup" below). Their UDIDs are hardcoded in the driver's `udid_for()`.
 - All three kill switches set to `false` (see the next section). Restore them to `true` when the sweep finishes.
 
@@ -269,8 +292,8 @@ Compact reference. The driver's inline comments hold the full WHY for each — c
 5. **Unicode typing via pasteboard** (`take_screenshots.sh::type_via_pasteboard`)
    *Symptom:* `axe type` lacks HID-keycode mappings for German umlauts and `ß`. *Fix:* paste via `simctl pbcopy` + Cmd+V (`axe key-combo --modifiers 227 --key 25`).
 
-6. **Soft keyboard suppression** (`take_screenshots.sh::ensure_soft_keyboard, keyboard_is_visible`)
-   *Symptom:* Simulator forwards host hardware-keyboard events; the soft keyboard is suppressed by default. *Fix:* send Cmd+K via `osascript` (Simulator's "Toggle Software Keyboard").
+6. **Soft keyboard suppression** (`take_screenshots.sh::set_keyboard_state, keyboard_is_visible`)
+   *Symptom:* Simulator forwards host hardware-keyboard events; the soft keyboard is suppressed by default. *Fix (through 2026-08-01):* send Cmd+K via `osascript` (Simulator's "Toggle Software Keyboard"). **Superseded — Cmd+K is inert on this toolchain; the driver now attaches/detaches the hardware keyboard. See workaround #17.** The probe-point half of this entry still stands, and `set_keyboard_state` still depends on it.
 
    **Corrected 2026-07-18 — the idempotency guard was broken.** It counted AXTree elements
    labelled `space`, which is *always zero*: the keyboard runs in its own process and does not
@@ -281,8 +304,8 @@ Compact reference. The driver's inline comments hold the full WHY for each — c
    --point` *can* see the keyboard (same trick as workaround #12 on the StoreKit modal), so
    `keyboard_is_visible` now probes a mid-keyboard coordinate and treats a ≤2-character label
    (`g`) as keys-present. Not the space bar — it reports a blank label, indistinguishable from
-   "nothing found". `ensure_soft_keyboard` also re-checks after toggling and warns if it did
-   not land.
+   "nothing found". The caller — `set_keyboard_state` since 2026-08-01 — re-checks after
+   toggling and warns if it did not land.
 
    The probe points (`220,760` iPhone / `516,1120` iPad) were validated on iOS 26.3 in
    Conjugar. They are a property of the **device**, not the app, and this driver's two sims are
@@ -297,7 +320,7 @@ Compact reference. The driver's inline comments hold the full WHY for each — c
 9. **`axe --id` typeMismatch on iPad** (`take_screenshots.sh::tap_id`)
    *Symptom:* `axe tap --id` and `axe tap --label` throw a Swift `typeMismatch` decoding error in some iPad screen states (e.g., QuizView pre-Start). *Fix:* route all `tap_id` calls through `tap_id_first` (describe-ui + coord-tap) — same path as workaround #3.
 
-10. **Multi-sim window focus** (`take_screenshots.sh::ensure_soft_keyboard`)
+10. **Multi-sim window focus** (`take_screenshots.sh::set_keyboard_state`)
     *Symptom:* with both sims booted, Cmd+K hits whichever Simulator window is frontmost. *Fix:* AXRaise the target sim's window by title-substring match before sending the keystroke.
 
     **The match is by device *family* substring (`iPhone` / `iPad`), so it disambiguates only
@@ -379,7 +402,7 @@ Compact reference. The driver's inline comments hold the full WHY for each — c
     fixable by waiting on the AX tree and the third was not.
 
 16. **A booted simulator can have no Simulator *window*, which silently kills Cmd+K**
-    (`prep_screenshot_sim.sh::ensure_simulator_window`, `take_screenshots.sh::ensure_soft_keyboard`)
+    (`prep_screenshot_sim.sh::ensure_simulator_window`, `take_screenshots.sh::set_keyboard_state`)
     *Symptom:* one `quiz_mid` cell captured with **no keyboard**, after three
     `AppleScript Cmd+K attempt N failed` lines and the 3× warning — whose two named causes
     were both false, the accessibility permission being granted and Simulator having come
@@ -391,7 +414,7 @@ Compact reference. The driver's inline comments hold the full WHY for each — c
     to raise and fails with `-1719 "Invalid index"`, indistinguishable from a permission
     failure. *Fix, in two places:* `prep_screenshot_sim.sh` checks for the window after its
     reboot and, if absent, quits and relaunches Simulator.app (on launch it attaches a
-    window to every already-booted device); `ensure_soft_keyboard` checks inside its
+    window to every already-booted device); `set_keyboard_state` checks inside its
     existing 3× loop, before each AXRaise, and names the real cause. The driver deliberately
     does **not** recover — quitting Simulator mid-sweep is too blunt — so a windowless
     device still costs one reviewable screenshot; it just no longer sends you chasing
@@ -400,7 +423,7 @@ Compact reference. The driver's inline comments hold the full WHY for each — c
     **The window match must agree between the two files, and here that is not the obvious
     thing.** This repo's iPad sim is renamed, so its window is titled
     `Konjugieren iPad Screenshots – iOS 26.x` — which contains the family substring `iPad`
-    that `ensure_soft_keyboard` matches on, but *not* the `iPad Pro 13-inch (M4)` class
+    that `set_keyboard_state` matches on, but *not* the `iPad Pro 13-inch (M4)` class
     label the driver takes on `--device`. The prep script therefore matches the family
     substring too. Match on the class label instead and prep would relaunch Simulator on
     every single run while the driver was perfectly happy.
@@ -408,6 +431,46 @@ Compact reference. The driver's inline comments hold the full WHY for each — c
     *Observed in Conjugar on 2026-07-26 and ported here the same day; not yet seen in
     Konjugieren, and the recovery branch has not been exercised end to end anywhere, because
     the windowless state proved intermittent and would not reproduce on demand.*
+
+17. **Cmd+K is dead; the keyboard is now a two-state machine**
+    (`take_screenshots.sh::set_keyboard_state, keyboard_state_is, toggle_hardware_keyboard,
+    paste_into_quiz_field`)
+    *Symptom (in Conjugar, 2026-08-01):* `quiz_mid` came out keyboard-less with
+    `soft keyboard still not visible after Cmd+K` — the same visible defect as workaround
+    #16, but with none of its causes: the accessibility permission was granted, Simulator
+    came frontmost, and the window was there. *Cause:* on Xcode 26.3, Cmd+K — Simulator's
+    **Toggle Software Keyboard** — no longer surfaces the keyboard while a hardware keyboard
+    is attached. Clicking that menu item directly via AppleScript is equally inert, so it is
+    not a keystroke-delivery problem. What governs the keyboard is
+    **I/O ▸ Keyboard ▸ Connect Hardware Keyboard**: iOS shows the software keyboard for a
+    focused field exactly when no hardware keyboard is attached, and unchecking it raises the
+    keyboard instantly.
+    *The trap that makes this more than a one-line fix:* every quiz answer is pasted with
+    Cmd+V (workaround #5 — `axe type` has no keycodes for umlauts), and axe injects that
+    combo as **hardware** key events, which the device **ignores while the hardware keyboard
+    is detached**. So the two requirements are mutually exclusive at any instant: pasting
+    needs it attached, photographing the keyboard needs it detached. Detaching does not
+    disturb the field's contents, so the driver orders them — `set_keyboard_state hidden` →
+    paste → `set_keyboard_state visible` → capture — and `nav_quiz_results`, which submits 30
+    answers and never photographs a keyboard, holds `hidden` throughout. `set_keyboard_state`
+    keeps #10's and #16's window / frontmost / 3× retry guards verbatim; it never reads the
+    menu's checkmark (only readable while the menu is open) but clicks and then asks the
+    screen, which is also what makes it idempotent across cells.
+    *Second-order defect, fixed with it:* with the keyboard up, the driver's
+    `tap_id quiz_answer_field` was tapping a field that **already had focus** (`QuizView`
+    focuses it after Start), which raises iOS's **"Paste | AutoFill" edit callout** — it
+    swallowed the Cmd+V *and* sat in the middle of the screenshot. The tap is gone from both
+    quiz recipes, and `paste_into_quiz_field` now confirms the field actually holds the
+    answer before moving on, falling back to tap / Cmd+A-replace only when it does not. In
+    `nav_quiz_results` that check earns its keep differently: a silently missed paste there
+    desynchronizes every later answer from its question.
+    *Note on the empty-field read:* the field's `AXValue` reports the **placeholder** when
+    empty, not `""` — so the check compares against the expected answer rather than testing
+    for emptiness.
+    *Status here: ported, not yet run.* Verified end to end in Conjugar (both directions of
+    the state machine, on both devices); in Konjugieren it is syntax-checked and matched
+    against this app's identifiers only. Shoot `--view quiz_mid` and look at the PNG before
+    committing to a full sweep.
 
 ## Per-View Navigation Recipes
 
@@ -446,7 +509,7 @@ Compact reference. The driver's inline comments hold the full WHY for each — c
 | 2 | VerbView | light | `nav_verb_view` | `tap_id_first verb_row_werden`. |
 | 3 | FamilyBrowseView | dark | `nav_family_browse` | `tap_tab families`; no scroll either device. |
 | 4 | FamilyDetailView | light | `nav_family_detail` | `tap_tab families` → `tap_id_first family_row_strong`. |
-| 5 | QuizView (mid) | dark | `nav_quiz_mid` | `tap_tab quiz` → `quiz_start_button` → `quiz_answer_field` → paste fixture answer 0 → `ensure_soft_keyboard`. Captured before submit (keyboard visible per spec). |
+| 5 | QuizView (mid) | dark | `nav_quiz_mid` | `tap_tab quiz` → `quiz_start_button` → `set_keyboard_state hidden` → paste fixture answer 0 → `set_keyboard_state visible`. Captured before submit (keyboard visible per spec). The field is not tapped — it is already focused, and tapping it raises an edit callout (workaround #17). |
 | 6 | InfoBrowseView | light | `nav_info_browse` | `tap_tab info` → 117pt scroll on iPhone, 0 on iPad. |
 | 7 | InfoView | dark | `nav_info_view` | `tap_tab info` → `verify_screen_loaded info_row_dedication` → 117pt scroll on iPhone → `tap_id_first info_row_praesens_indikativ` → `wait_for_id_absent info_row_dedication`. The trailing wait is required: the article is ~16,000 characters and takes about 2 s to lay out, far longer than `tap_id_first`'s 0.7 s settle. |
 | 8 | ResultsView | light | `nav_quiz_results` | `tap_tab quiz` → `quiz_start_button` → 30× (paste + Return + sleep 0.3) → `dismiss_review_prompt` if needed → `verify_screen_loaded results_score`. |

@@ -162,7 +162,7 @@ Strong, weak, mixed, -ieren — explore every verb family and prefix type.
 Starke Verben, schwache Verben, gemischte Verben, Verben die auf -ieren enden — erkunde jede Verbfamilie und jeden Präfixtyp.
 
 Fourth Clip
-Starts out on QuizVew. Start. Type answer. Submit. Repeat once.
+Starts out on QuizView. Start. Type answer. Submit.
 Label:
 Quiz mode: Thirty timed questions to sharpen your conjugation skills.
 Quizmodus: Dreißig Fragen auf Zeit, um deine Konjugationskenntnisse zu schärfen.

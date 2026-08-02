@@ -7235,3 +7235,40 @@ High, Level 5.0**, not HEVC. The HEVC default belongs to `simctl io recordVideo`
 `--help`); the GUI recorder differs. Corrected here too. The rest matched the playbook
 exactly — native size, SAR 1:1, no audio track, variable frame rate with static stretches
 that carry no frames at all, which is capture working as designed rather than a fault.
+
+## IBV_SCRIPTS becomes the dev/prod switch for ios-build-verify (2026-08-02)
+
+Carried over from a Conjugar session that started as a doc-reference fix and turned into a
+question about how this family of apps should consume `ios-build-verify` at all. Conjugar had
+been invoking the skill through a hand-made `~/.claude/skills/ios-build-verify` symlink that
+pointed into the *versioned* plugin cache — so it pinned a release, needed re-pointing on every
+update, and had silently vanished, breaking the build command its CLAUDE.md documented.
+Konjugieren was never exposed to that: it already resolved `IBV_SCRIPTS` against the
+marketplace clone, and the rationale paragraph in this file's "Build and Test Commands" is
+where the convention was first written down. Nothing to fix here on that front.
+
+What did need fixing is a gap the Conjugar work exposed. The skill is developed locally at
+`~/Desktop/workspace/ios-build-verify` but consumed from GitHub, so both the marketplace clone
+and the cache hold published code — testing an unpublished change meant publishing it first.
+Since every call site already resolves a scripts directory rather than hardcoding one,
+`IBV_SCRIPTS` *is* the dev/prod switch: export it at the dev repo, unset it to go back. That
+needed no new machinery, only documentation (now a paragraph in CLAUDE.md) and one change to
+`scripts/take_screenshots.sh`, which called `resolve_ibv_scripts` unconditionally in `main()`
+and so ignored any override.
+
+The obvious way to write that override is `: "${IBV_SCRIPTS:=$(resolve_ibv_scripts)}"`, and it
+is wrong in a script running `set -euo pipefail`. The `:` builtin always succeeds, so the
+resolver's `exit 2` — which, running inside a command substitution, leaves only the subshell —
+gets swallowed, and the sweep proceeds with an *empty* `IBV_SCRIPTS`, invoking `/build_app.sh`.
+A probe in Conjugar confirmed it: `SURVIVED with X=[]`, exit 0. The plain assignment it would
+have replaced aborts correctly, because a failing command substitution in an assignment does
+trip errexit. So the guard is a boring `if [[ -z "${IBV_SCRIPTS:-}" ]]`. Both branches were
+exercised against this repo's own resolver before the edit was trusted — default resolves to
+the marketplace clone, an exported value passes through untouched.
+
+Also worth recording, since it changes what a future session should expect on this machine:
+`ios-build-verify` is now installed at **user** scope, not only the per-project scope this repo
+and Calculator3 and Conjuguer each had. That is `claude plugin install`'s default and it covers
+every iOS project from one record. The three project-scope entries still exist and are now
+redundant; they were left alone rather than uninstalled, since consolidating them is a separate
+decision from this cleanup.

@@ -7272,3 +7272,13 @@ and Calculator3 and Conjuguer each had. That is `claude plugin install`'s defaul
 every iOS project from one record. The three project-scope entries still exist and are now
 redundant; they were left alone rather than uninstalled, since consolidating them is a separate
 decision from this cleanup.
+
+Same-session follow-up: the consolidation happened after all. The three project-scope entries
+are gone and `ios-build-verify` is installed at user scope only, which `~/.claude/settings.json`
+enables globally. Two things worth knowing if this is ever redone. `claude plugin uninstall`
+defaults to `--scope user`, so removing a *project* entry requires an explicit `-s project` —
+the bare command would have removed the one record worth keeping. And the uninstall edits the
+repo: it dropped `"ios-build-verify@ios-build-verify": true` from `enabledPlugins` in this
+repo's checked-in `.claude/settings.json`, which is the change committed alongside this note.
+Conjuguer's project-level `extraKnownMarketplaces` declaration was left alone, correctly, since
+that says where the marketplace lives rather than that the plugin is installed.

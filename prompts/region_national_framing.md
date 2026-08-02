@@ -239,11 +239,11 @@ scripts/take_screenshots.sh --view settings   # 4 cells: 2 devices x 2 languages
 
 Two things to get right first, both from [`docs/screenshot-playbook.md`](../docs/screenshot-playbook.md):
 
-- **Flip the three kill switches in `Konjugieren/Models/KonjugierenTips.swift` to `false`
+- **Flip the three kill switches in `Konjugieren/Utils/KillSwitches.swift` to `false`
   before running, and restore them after.** They are compile-time constants and the driver
   builds once at start. As of 2026-07-26 that file was already modified in another session's
   working tree, so check its actual state rather than assuming `true`, and finish with
-  `git diff --stat Konjugieren/Models/KonjugierenTips.swift` empty.
+  `git diff --stat Konjugieren/Utils/KillSwitches.swift` empty.
 - The `settings` cell is view #9, dark appearance, `tap_tab settings`, **no scroll on either
   device**. That is why the Region picker lands in frame at all, and why this change requires a
   redo.

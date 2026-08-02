@@ -141,6 +141,8 @@ the result the same way. A different device model records at a different native 
 which changes the Spatial Conform, and real hardware shows a live clock rather than the
 pinned 9:41.
 
+Ensure that language and region are English and United States or German and Germany. Ensure that hardware keyboard is disconnected. Ensure that values in KillSwitches.swift are `false`.
+
 First Clip
 Starts out at top of VerbBrowse view. Sort by frequency. Slowly scroll down for five seconds.
 Label:

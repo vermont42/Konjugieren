@@ -2,6 +2,12 @@
 
 **Status:** ✅ implemented and shipped in `7dd7b88`. Kept for the rationale; the plan
 below describes what was built, not outstanding work.
+**Superseded in one detail:** the three kill switches later moved out of
+`Konjugieren/Models/KonjugierenTips.swift` into `Konjugieren/Utils/KillSwitches.swift`,
+so §"The catch" and the `sed` recipes below name a file that no longer holds them. The
+paths are left as written because they record what was true then; for a live recipe use
+[`docs/screenshot-playbook.md`](../docs/screenshot-playbook.md) § *Flip the kill switches
+first*, which is the maintained copy.
 **Ported from:** Conjugar, where this shipped 2026-07-18 as `TutorDisplay.tutorUnavailableRowEnabled`.
 **Estimated size:** ~20 lines of app code, plus playbook and journal prose.
 

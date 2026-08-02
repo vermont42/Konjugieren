@@ -59,7 +59,7 @@ App Store screenshots only — 9 views × 2 languages × 2 devices = 36 PNGs. No
 
 ## Flip the kill switches first (then restore)
 
-`Konjugieren/Models/KonjugierenTips.swift` holds three compile-time kill switches, all ordinarily `true`. **Set all three to `false` before running the driver and restore them afterward.** They are compile-time constants and the driver builds once at start, so they must be flipped *before* launch — flipping one mid-sweep does nothing. (Contrast the `KONJUGIEREN_QUIZ_FIXTURE` flag, which is deliberately runtime because the driver toggles it per-cell.)
+`Konjugieren/Utils/KillSwitches.swift` holds three compile-time kill switches, all ordinarily `true`. **Set all three to `false` before running the driver and restore them afterward.** They are compile-time constants and the driver builds once at start, so they must be flipped *before* launch — flipping one mid-sweep does nothing. (Contrast the `KONJUGIEREN_QUIZ_FIXTURE` flag, which is deliberately runtime because the driver toggles it per-cell.)
 
 | Switch | Effect when `false` | What you get if you forget |
 |---|---|---|
@@ -70,13 +70,13 @@ App Store screenshots only — 9 views × 2 languages × 2 devices = 36 PNGs. No
 ```bash
 # before the sweep
 sed -i '' -E 's/(tipsEnabled|onboardingEnabled|tutorUnavailableRowEnabled) = true/\1 = false/' \
-  Konjugieren/Models/KonjugierenTips.swift
+  Konjugieren/Utils/KillSwitches.swift
 
 # after the sweep — restore
 sed -i '' -E 's/(tipsEnabled|onboardingEnabled|tutorUnavailableRowEnabled) = false/\1 = true/' \
-  Konjugieren/Models/KonjugierenTips.swift
+  Konjugieren/Utils/KillSwitches.swift
 
-git diff --stat Konjugieren/Models/KonjugierenTips.swift   # must be empty when you are done
+git diff --stat Konjugieren/Utils/KillSwitches.swift   # must be empty when you are done
 ```
 
 Only `tutorUnavailableRowEnabled` changes a screen the driver navigates *to*; the other two suppress things that appear *over* screens. That is why forgetting the tutor switch produces a consistently wrong `info_browse`, while forgetting the other two produces intermittent damage that is easy to miss in review.
@@ -373,10 +373,10 @@ Compact reference. The driver's inline comments hold the full WHY for each — c
 12. **Lang-agnostic StoreKit dismiss** (`take_screenshots.sh::dismiss_review_prompt`)
     *Symptom:* StoreKit prompt button labels are system-localized (`Not Now` / `Nicht jetzt`); the modal also has a single-button and a post-star-tap two-button state. *Fix:* vertical sweep of `describe-ui --point` at a known x-center, tap the bottommost `AXButton` found.
 
-13. **Tutor unavailability row in `info_browse`** (`Konjugieren/Models/KonjugierenTips.swift::TutorDisplay`)
-    *Symptom:* the screenshot host can't resolve Apple Intelligence as available (CLAUDE.md's iOS 26.3+ host-eligibility gate), so `InfoBrowseView` substitutes `TutorUnavailableRowView` for `TutorRowView` and both `info_browse` shots ship a status row reading "Apple Intelligence is being configured…" or "…isn't available on this device." Honest on a device, reads as a defect in a store listing. *Fix:* set the compile-time `TutorDisplay.tutorUnavailableRowEnabled` to `false` before the sweep, restore after (see *Disable the tutor row first*). The guard is on the `else if` branch only, so it can never suppress a working tutor. Observed reason on this host is `.modelNotReady`, not the `.deviceNotEligible` one might expect — both take the same branch, so the switch covers either.
+13. **Tutor unavailability row in `info_browse`** (`Konjugieren/Utils/KillSwitches.swift::TutorDisplay`)
+    *Symptom:* the screenshot host can't resolve Apple Intelligence as available (CLAUDE.md's iOS 26.3+ host-eligibility gate), so `InfoBrowseView` substitutes `TutorUnavailableRowView` for `TutorRowView` and both `info_browse` shots ship a status row reading "Apple Intelligence is being configured…" or "…isn't available on this device." Honest on a device, reads as a defect in a store listing. *Fix:* set the compile-time `TutorDisplay.tutorUnavailableRowEnabled` to `false` before the sweep, restore after (see *Flip the kill switches first*). The guard is on the `else if` branch only, so it can never suppress a working tutor. Observed reason on this host is `.modelNotReady`, not the `.deviceNotEligible` one might expect — both take the same branch, so the switch covers either.
 
-14. **Tips and onboarding intruding on captures** (`Konjugieren/Models/KonjugierenTips.swift::TipDisplay, OnboardingDisplay`)
+14. **Tips and onboarding intruding on captures** (`Konjugieren/Utils/KillSwitches.swift::TipDisplay, OnboardingDisplay`)
     *Symptom:* TipKit renders "Try the Quiz" over `verb_browse` on a fresh install, and the first-launch onboarding cover auto-presents over whatever is being captured. *Fix:* set both compile-time switches `false` before the sweep, restore after (see *Flip the kill switches first*).
 
     These make workarounds #2 and #11 — the Skip-label interleave during `wait_for_render` — a **belt-and-braces safety net rather than the primary defense.** Keep them: they cost nothing when the cover never appears (the poll just doesn't find a Skip button), and they still cover the case where an operator forgets the switch. But the switch is the reliable mechanism, because the interleave is a race against presentation timing and the switch is not.
@@ -533,7 +533,7 @@ The driver depends on these app-side touchpoints. Renaming any one silently brea
 | `info_row_<stableKey>` identifiers | `verify_screen_loaded info_row_dedication` (screen 6 settle); `tap_id_first info_row_praesens_indikativ` (screen 7) | `Konjugieren/Views/InfoBrowseView.swift` |
 | `quiz_start_button`, `quiz_answer_field` identifiers | quiz nav for screens 5 and 8 | `Konjugieren/Views/QuizView.swift` |
 | `results_score` identifier | `verify_screen_loaded results_score` after the 30-answer loop | `Konjugieren/Views/ResultsView.swift` |
-| `TipDisplay.tipsEnabled`, `OnboardingDisplay.onboardingEnabled`, `TutorDisplay.tutorUnavailableRowEnabled` | Operator flips all three `false` pre-sweep; the `sed` recipes match the declaration text verbatim, so renaming a constant breaks the recipe silently | `Konjugieren/Models/KonjugierenTips.swift` |
+| `TipDisplay.tipsEnabled`, `OnboardingDisplay.onboardingEnabled`, `TutorDisplay.tutorUnavailableRowEnabled` | Operator flips all three `false` pre-sweep; the `sed` recipes match the declaration text verbatim, so renaming a constant breaks the recipe silently | `Konjugieren/Utils/KillSwitches.swift` |
 | `Tips.configure()` call site | `tipsEnabled` suppresses tips by *not configuring TipKit*; moving `Tips.configure()` out from behind that guard re-enables every tip app-wide | `Konjugieren/App/KonjugierenApp.swift` |
 
 These were added in the Step-1 prep commits (`70850b3` and `66216b3`); see `git log` if you need historical context.
@@ -603,7 +603,7 @@ Visual review will surface bad cells. Re-run any single one via the `--device` /
   offered only a 6.5" tile and rejected the same 1320 × 2868 size. Read the drop zone
   before building a bundle — see [`docs/screenshot-plan.md`](screenshot-plan.md).
 - **TipKit popovers surface mid-sweep — now suppressible.** The "Try the Quiz" tip renders on `verb_browse` (sweep view #1) on any fresh install, and other tips can appear elsewhere depending on TipKit eligibility. An earlier revision of this playbook said the driver couldn't suppress these and told you to visually review instead; `TipDisplay.tipsEnabled` now handles it (see *Flip the kill switches first*). Visual review is still worth doing, but it is no longer the only defense.
-- **Apple Intelligence Tutor surfaces are gated on Intel-Mac hosts, and this *does* affect the sweep.** Per CLAUDE.md, the Tutor row in InfoBrowseView, the `ErrorExplainerView` card in QuizView, and the Tutor page in OnboardingView don't render as live features on Intel-Mac simulators with iOS 26.3+. `info_browse` is one of the 9 target views, and `InfoBrowseView` doesn't simply omit the tutor when the model is unavailable — it substitutes `TutorUnavailableRowView`, which states the reason ("Apple Intelligence is being configured…" / "…isn't available on this device."). So both `info_browse` shots carry that row unless `TutorDisplay.tutorUnavailableRowEnabled` is set `false` (see *Disable the tutor row first* above). An earlier revision of this playbook claimed no target view was Tutor-gated; that was wrong.
+- **Apple Intelligence Tutor surfaces are gated on Intel-Mac hosts, and this *does* affect the sweep.** Per CLAUDE.md, the Tutor row in InfoBrowseView, the `ErrorExplainerView` card in QuizView, and the Tutor page in OnboardingView don't render as live features on Intel-Mac simulators with iOS 26.3+. `info_browse` is one of the 9 target views, and `InfoBrowseView` doesn't simply omit the tutor when the model is unavailable — it substitutes `TutorUnavailableRowView`, which states the reason ("Apple Intelligence is being configured…" / "…isn't available on this device."). So both `info_browse` shots carry that row unless `TutorDisplay.tutorUnavailableRowEnabled` is set `false` (see *Flip the kill switches first* above). An earlier revision of this playbook claimed no target view was Tutor-gated; that was wrong.
 - **The sweep is a rendering audit, and it will find things tests cannot.** The 2026-07-26 run
   caught the Regional Variety picker shipping four tofu boxes and a `North…` truncation, from
   the known iOS 26 emoji bug (`docs/emoji-assets.md`). That bug had been left alone for months

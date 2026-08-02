@@ -89,6 +89,7 @@ Konjugieren/
 │   ├── GetterSetterReal.swift  # UserDefaults implementation of GetterSetter
 │   ├── GradientDivider.swift   # Shared gradient divider used by SettingsView and ResultsView
 │   ├── HapticPlayer.swift      # Haptic feedback methods respecting audio-feedback setting
+│   ├── KillSwitches.swift      # Compile-time screenshot kill switches: TipDisplay, OnboardingDisplay, TutorDisplay
 │   ├── KonjugierenLogger.swift # os.Logger factory with app subsystem
 │   ├── L.swift                 # Type-safe localization string accessors
 │   ├── Layout.swift            # Spacing constants (8pt, 16pt, 24pt)

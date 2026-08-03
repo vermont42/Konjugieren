@@ -7361,3 +7361,35 @@ Trust `didStart`, and log the session category next to it, because the category 
 disease.
 
 211 tests in 32 suites pass, with a zero-warning build.
+
+## Back-porting the per-sound debounce clock from the siblings (2026-08-02)
+
+Chasing the media-services reset above sent me into `../Conjuguer` and `../Conjugar.mig` to ask
+whether they needed the same fix. They did, but reading them also settled an open question about
+Konjugieren.
+
+While diagnosing the silent quiz, the shape of the code offered a tempting wrong answer:
+`SoundPlayerReal` gated debounced plays behind one shared `instantOfLastPlay` that every play
+stamped, including the `shouldDebounce: false` ones, and the quiz's three silent sounds were exactly
+its debounced calls. The device log exonerated it (`willPlay=true`), so it was left alone as a
+latent oddity rather than the bug.
+
+Both siblings turn out to carry the identical comment: "A single shared clock was bumped by every
+(even non-debounced) play, so during active play the frequent non-debounced SFX kept it fresh and
+any debounced sound was almost always dropped." So it was never a hypothesis. Josh had already met
+this bug twice, diagnosed it correctly both times, and fixed it by keying the clock per sound.
+Konjugieren was simply the app the port never reached.
+
+`instantOfLastPlay` is now `instantOfLastPlayBySound: [Sound: TimeInterval]`, matching the siblings.
+The practical effect is real even though it was not today's failure: any game sound firing within a
+second of a quiz answer would drop that answer's chime, and `UttererReal.utter` plays `.silence` on
+every utterance, which under one shared clock could swallow the next debounced sound anywhere in the
+app.
+
+Worth recording as a pattern rather than an incident. Three apps share this file's lineage, and a
+fix landing in one does not propagate. The reset fix went the other direction: Konjugieren found it,
+and both siblings needed it. When one of these three changes an audio, settings, or world file, the
+question "which of the other two is now behind?" is worth asking on the spot, because the answer
+seems to be "usually one of them."
+
+211 tests in 32 suites pass.

@@ -8,7 +8,11 @@ private let soundLogger = KonjugierenLogger.logger(category: "Sound")
 class SoundPlayerReal: SoundPlayer {
   private var sounds: [String: AVAudioPlayer] = [:]
   private let soundExtension = "mp3"
-  private var instantOfLastPlay: TimeInterval = 0.0
+  // Keyed per sound so each sound's debounce window is independent. A single shared clock was
+  // bumped by every play, including the `shouldDebounce: false` ones, so during a game the
+  // frequent non-debounced effects kept it fresh and any debounced sound was almost always
+  // dropped. Conjuguer and Conjugar fixed this the same way.
+  private var instantOfLastPlayBySound: [Sound: TimeInterval] = [:]
   private var musicPlayer: AVAudioPlayer?
   private var savedMusicTime: TimeInterval?
   private var isMusicActive = false
@@ -141,6 +145,7 @@ class SoundPlayerReal: SoundPlayer {
 
     let instantOfCurrentPlay = Date().timeIntervalSince1970
     let minSoundInterval: TimeInterval = 1.0
+    let instantOfLastPlay = instantOfLastPlayBySound[sound] ?? 0.0
     guard !shouldDebounce || (instantOfCurrentPlay - instantOfLastPlay > minSoundInterval) else {
       return
     }
@@ -160,6 +165,6 @@ class SoundPlayerReal: SoundPlayer {
       rebuilt?.volume = volume
       rebuilt?.play()
     }
-    instantOfLastPlay = instantOfCurrentPlay
+    instantOfLastPlayBySound[sound] = instantOfCurrentPlay
   }
 }

@@ -1,8 +1,13 @@
 Script and Playbook for iOS App Store Previews
 
-Ensure that videos are exactly 33 seconds *without* transitions. Inserting half-second transitions between clips shrinks the length by four seconds, to 29.
+Ensure that videos are exactly 32 seconds *without* transitions. There are 5 clips, so 4 half-second transitions between them shrink the length by two seconds, to 30.
 
-**Aim for 29 seconds, not 30.** 30 s is the App Store's hard *maximum*, and landing on it exactly leaves no margin. The evidence is on disk: `~/Desktop/Final/Konjugieren/English iPad 2 - 1200x1600.mov` is **30.015 s** — over the limit — while its siblings sit at 29.93–30.00. Nothing in the old "exactly 34 seconds → 30 seconds" arithmetic left room for a rounding error, so one file drifted past the cap unnoticed.
+**Target 30.000 s exactly.** 30 s is the App Store's hard *maximum* and it is inclusive — a
+file measuring 30.000000 s is accepted. Every second of a preview is precious, so spend all
+thirty. What is *not* accepted is 30.015 s, which is what a careless delivery pass produces
+from a perfectly good 30.000 s master: see **The 30.015 s trap** below. That trap, not the
+edit, is what put `~/Desktop/Final/Konjugieren/English iPad 2 - 1200x1600.mov` over the cap
+at 30.015 s while its siblings sat at 29.93–30.00.
 
 STATUS: Videos are in Final folder on desktop.
 
@@ -27,7 +32,7 @@ Other requirements, and how the shipped files actually measure up:
 
 | Requirement | Spec | Konjugieren 1.2 as shipped |
 |---|---|---|
-| Duration | 15 s min, 30 s max | 29.93–**30.015** s (one over) |
+| Duration | 15 s min, 30 s max (inclusive) | 29.93–**30.015** s (one over — the trap below) |
 | H.264 profile/level | High, ≤ Level 4.0 | iPhone 4.0 ✅, iPad **5.0/5.1** |
 | Video bit rate | 10–12 Mbps target | — |
 | Audio | 256 kbps stereo AAC, 44.1/48 kHz | **125 kbps** |
@@ -44,7 +49,7 @@ To normalize any master into a fully conformant file:
 ffmpeg -y -i "master.mov" \
   -map 0:v:0 -map 0:a:0 -dn -sn \
   -vf "scale=${W}:-2,setsar=1,crop=${W}:${H}" \
-  -frames:v 870 -shortest \
+  -frames:v 900 -shortest \
   -c:v libx264 -profile:v high -level 4.0 -pix_fmt yuv420p -r 30 \
   -b:v 11M -maxrate 12M -bufsize 24M \
   -c:a aac -b:a 256k -ar 48000 -ac 2 \
@@ -60,14 +65,67 @@ Three flags that are easy to miss:
   and App Store Connect rejects it with the identical "dimensions are wrong" message a
   genuinely mis-sized file gets. Konjugieren's accepted previews are all `SAR 1:1`; check
   with `ffprobe -v error -select_streams v:0 -show_entries stream=sample_aspect_ratio,display_aspect_ratio -of csv=p=0 file.mov`.
-- **`-dn`** — removes the timecode track; `-map 0:v:0 -map 0:a:0` alone leaves it.
-- **`-frames:v 870`** — pins duration to exactly 29.000 s at 30 fps. Re-encoding a
-  30.000 s master without it produced 30.014 s.
+- **`-dn`** — removes the timecode track; `-map 0:v:0 -map 0:a:0` alone leaves it. Add
+  `-map_metadata -1`, or the mov muxer re-creates a timecode track from the video stream's
+  metadata even with `-dn` present.
+- **`-frames:v 900` with `-shortest`** — pins duration to exactly 30.000 s at 30 fps.
+  Re-encoding a 30.000 s master without them produced 30.014 s.
 
 Verify before uploading:
 
 ```bash
 scripts/verify_store_media.sh ~/Desktop/Final/Konjugieren
+```
+
+## Delivering the files
+
+A master whose dimensions are already correct does **not** need the full re-encode above.
+Compressor's export conforms on everything App Store Connect enforces — the delivery pass
+is cleanup for two cosmetic advisories: Final Cut writes a stray timecode track (3 streams
+instead of 2), and Compressor's AAC lands near 128 kbps against the 256 kbps spec. Both
+shipped fine on Konjugieren 1.2, so this is polish, not a blocker.
+
+```bash
+cd ~/Desktop/Final/Konjugieren && mkdir -p upload
+for f in *.mov; do
+  ffmpeg -v error -y -i "$f" \
+    -map 0:v:0 -map 0:a:0 \
+    -c:v copy -c:a aac -b:a 256k -ar 48000 -ac 2 \
+    -dn -sn -shortest -map_metadata -1 -movflags +faststart \
+    "upload/$f"
+done
+```
+
+The video is **stream-copied**, so the H.264 bitstream stays bit-identical to the master —
+no generational loss, and no risk of disturbing the profile/level. Confirm it with
+`ffmpeg -v error -i in.mov -map 0:v:0 -f md5 -` run against both files; the hashes must
+match. Only the audio is transcoded.
+
+### The 30.015 s trap
+
+The obvious delivery pass is a pure remux — `-c copy` for *both* streams — and it is
+**wrong**. It yields **30.015 s**, over the cap, from a master that measures exactly
+30.000 s. Every file gains the same silent 15 ms.
+
+Compressor writes a QuickTime **edit list** that trims the audio track back to the last
+video frame. The AAC track physically holds 1409 frames — 1409 × 1024 ÷ 48000 = 30.058 s of
+samples — and the edit list is the only thing hiding that tail. `ffmpeg -c copy` discards
+edit lists, so the full audio track redefines the container duration.
+
+`-t 30` does not rescue it. Under `-c copy` ffmpeg can only cut on AAC packet boundaries,
+and 30.000 s is 1406.25 packets — there is no packet to cut on, so the output stays
+30.015 s. Verified on Conjugar's 1.0 masters in August 2026.
+
+**Re-encoding the audio is what fixes it.** `-shortest` stops the AAC encoder when the
+900th video frame does, giving 1407 frames and a container duration of exactly
+**30.000000**. This also explains the previously unattributed 30.015 s file in the
+Konjugieren 1.2 delivery: same symptom, same 15 ms, same step.
+
+Always re-probe after any delivery pass — the failure is invisible in the picture:
+
+```bash
+ffprobe -v error -show_entries format=duration,nb_streams -of csv=p=0 upload/file.mov
+# expect 2,30.000000
 ```
 
 ## Recording the clips

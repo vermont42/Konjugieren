@@ -7282,3 +7282,82 @@ repo: it dropped `"ios-build-verify@ios-build-verify": true` from `enabledPlugin
 repo's checked-in `.claude/settings.json`, which is the change committed alongside this note.
 Conjuguer's project-level `extraKnownMarketplaces` declaration was left alone, correctly, since
 that says where the marketplace lives rather than that the plugin is installed.
+
+## The quiz went silent, and the audio session was the reason (2026-08-02)
+
+Josh reported no sound when starting a quiz or answering a question, with audio feedback enabled,
+the phone unmuted, the volume up, and sound audibly working in the game. That last clause is what
+made the report interesting: same `SoundPlayerReal`, same `Sound` enum, same `Current.settings`
+guard, two different outcomes.
+
+Reading the code produced a tempting wrong answer. `SoundPlayer.play(_:)` defaults
+`shouldDebounce` to `true`, and `SoundPlayerReal` gates debounced plays behind a single shared
+`instantOfLastPlay` that every play stamps, including the `shouldDebounce: false` ones. The quiz's
+three reported-silent sounds (`randomGun` on start, `chime` on correct, `buzz` on incorrect) are
+exactly its debounced calls, while the game passes `shouldDebounce: false` at nearly every site.
+The symptom list lined up with the code shape so neatly that it felt settled. It was wrong. The
+shared-clock design is still a latent defect worth remembering, but it was not this bug.
+
+What settled it was instrumenting `play` to log the decision and its aftermath, then running the
+instrumented build on Josh's actual iPhone over `devicectl device install` plus
+`devicectl device process launch --console`. `log stream` cannot target a connected device on this
+macOS, so the diagnostics were `print` statements captured from stdout rather than `os_log`.
+
+The simulator refused to reproduce; both quiz sounds played with `didStart=true`. On the phone the
+log caught it:
+
+```
+DIAG play=gun2 … category=AVAudioSessionCategorySoloAmbient outputVolume=0.35
+DIAG result=gun2 didStart=false isPlaying=false
+```
+
+Two fingerprints in one line. The category had reverted from `.playback` to `.soloAmbient`, a value
+no code in this repo ever sets because it is the system default, and `AVAudioPlayer.play()` had
+started returning `false`. That pair is the signature of an `AVAudioSession` media-services reset:
+`mediaserverd` restarts, the session reverts to defaults, and every existing `AVAudioPlayer` becomes
+an orphaned object that silently refuses to play. Apple's documented recovery is to dispose of and
+recreate every audio object, re-set the category, and reactivate. `SoundPlayerReal` observed no
+notifications at all, so a reset silenced the app for the rest of the process, which is exactly why
+relaunching cured it and why the earlier lines of the same log show the game's `coin`, `pop`, and
+`chime` playing happily under `category=Playback`.
+
+The trigger was domestic. Josh's son had been playing the game in Conjugar, the sibling French app,
+on the same phone; the launch line recorded `otherAudio=true`. Two audio-heavy apps trading the
+session is an ordinary way to provoke a reset.
+
+Three observations that had looked like clues were all consequences of the same cause. "Sound works
+in the game" was true when Josh checked it and false afterward, because the reset had not happened
+yet. Tapping a verb to hear it spoken still worked, and kept working after the reset, because
+`AVSpeechSynthesizer` builds its own audio objects and configures its own session, so it is immune
+to the orphaning that killed the preloaded players. And the quiz was not special at all; it was
+merely where Josh was sitting when the reset landed.
+
+The fix follows Apple's contract. `setup` now calls `setActive(true)` alongside `setCategory`, and
+registers for two notifications: `mediaServicesWereResetNotification` triggers a full rebuild
+(discard the players, reconfigure the session, preload again, resume the music if it was playing),
+and `interruptionNotification` reactivates the session on `.ended`, which covers the far more common
+phone-call and Siri cases where the players survive but the session does not. `Notification` is not
+`Sendable`, so the interruption observer reads the type on the posting thread and sends only a `Bool`
+across the `MainActor.assumeIsolated` hop, matching the idiom `Quiz.startTimer` already uses.
+
+`play` also self-heals: a `play()` returning `false` is the only in-band signal that anything is
+wrong, so it triggers the same rebuild and retries once. That path is throttled to one rebuild per
+five seconds, because without the throttle a game frame playing a persistently failing sound would
+reallocate all 33 `Sound.allCases` players on the main actor every frame.
+
+Verifying the recovery needed a reset, and there is no way to force one: the simulator delegates
+audio to the host Mac and has no `mediaserverd` to kill, and a device will not let you restart it.
+So the wiring was verified by posting `mediaServicesWereResetNotification` synthetically from a
+temporary hook in `play`. The log showed the observer firing, the rebuild running on the main actor
+without crashing, all 33 players recreated, the category restored to `Playback`, and the gun and
+buzz both reporting `didStart=true` afterward. The orphaning behavior itself is Apple's contract;
+what needed testing was the handler, which is the part that could have been written wrong.
+
+A note for whoever meets this next: `AVAudioPlayer.play()` returning `true` with `isPlaying == true`
+proves only that the player started its own timeline. It says nothing about whether the session is
+active or the object is still valid. On the first device run, before the reset, the sounds reported
+`didStart=true isPlaying=true` while Josh heard them fine; the failing run reported `false` for both.
+Trust `didStart`, and log the session category next to it, because the category is what names the
+disease.
+
+211 tests in 32 suites pass, with a zero-warning build.

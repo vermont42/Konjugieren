@@ -29,8 +29,10 @@ corpus/working/*
 corpus/working/shards/*
 !corpus/working/shards/*.out.json
 # ios-build-verify
+# .claude/ios-build-verify.config.sh is deliberately NOT ignored: it holds only project
+# facts (scheme, bundle ID, launch anchor, the hand-measured 5-tab coordinates), and a
+# clone needs it for the documented build path to work.
 build.log
-.claude/ios-build-verify.*
 docs/screenshots/
 # WWDC transcript (Apple copyrighted; archived locally for reference only)
 docs/wwdc2026-platforms-sotu-transcript.txt

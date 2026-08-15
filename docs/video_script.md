@@ -204,8 +204,8 @@ Ensure that language and region are English and United States or German and Germ
 First Clip
 Starts out at top of VerbBrowse view. Sort by frequency. Slowly scroll down for five seconds.
 Label:
-990 German verbs — from abbauen to zwingen, sorted alphabetically or by frequency.
-990 deutsche Verben — von abbauen bis zwingen, alphabetisch oder nach Häufigkeit sortiert.
+3,572 German verbs — from abbauen to zwingen, sorted alphabetically or by frequency.
+3.572 ('drei tausend ,fünf hundert ,zwei und siebzig) deutsche Verben — von abbauen bis zwingen, alphabetisch oder nach Häufigkeit sortiert.
 
 Second Clip
 Starts out at top of werden's Verb view. Slowly scroll down for five seconds.

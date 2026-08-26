@@ -70,35 +70,55 @@ struct VerbTests {
     // The direction that has no other guard. Every call site sorts frequency ascending
     // to mean most-common-first, so a rank derived from hits ascending would invert the
     // browse list and make each family screen showcase its three rarest verbs.
+    //
+    // The comparison is `>=` rather than `>` because ties are real. Until 2026-08-26 the
+    // corpus had none, and a strict `>` passed; the corpus-wide DWDS fetch that day gave
+    // 96 verbs a count some other verb also has. Measured counts collide because the
+    // corpus is finite, so this will keep happening, and tightening this back to `>`
+    // would be asserting an accident of the data rather than the property under test.
+    // The tiebreak that makes the order total is checked separately below.
     for (moreCommon, lessCommon) in zip(Verb.verbsSortedByFrequency, Verb.verbsSortedByFrequency.dropFirst()) {
-      #expect(moreCommon.hits > lessCommon.hits, "\(moreCommon.infinitiv) outranks \(lessCommon.infinitiv) but has fewer hits")
+      #expect(moreCommon.hits >= lessCommon.hits, "\(moreCommon.infinitiv) outranks \(lessCommon.infinitiv) but has fewer hits")
     }
   }
 
-  @Test func onlyImportedTranchesHaveProvisionalHitCounts() {
-    // The `hp` attribute shipped on 2026-07-19 with no verb carrying it: all 990 counts came
-    // from DWDS. Three tranches have since been imported while bulk querying was still blocked
-    // pending BBAW: 78 strong bases (roadmap step 7), 2,315 prefixed derivatives (step 8), and
-    // 189 more derivatives that step 8 had deferred (step 8b), so 2,582 verbs carry an estimate
-    // rather than a measurement. Each tranche is run to a fixpoint: importing one makes further
-    // derivatives classifiable, because a double-prefix verb needs its inner base to ship before
-    // anything proposes separating it.
+  @Test func tiedHitCountsBreakOnTheInfinitive() {
+    // Without a tiebreak, two verbs with equal hits would order by whatever `Dictionary`
+    // iteration produced that launch, so a verb's displayed rank could differ between
+    // runs of the same build. `VerbParser.ranked` sorts equal counts by infinitive; this
+    // is the only place that promise is checked.
+    for (moreCommon, lessCommon) in zip(Verb.verbsSortedByFrequency, Verb.verbsSortedByFrequency.dropFirst())
+    where moreCommon.hits == lessCommon.hits {
+      #expect(
+        moreCommon.infinitiv < lessCommon.infinitiv,
+        "\(moreCommon.infinitiv) and \(lessCommon.infinitiv) tie at \(moreCommon.hits) but are not in infinitive order"
+      )
+    }
+  }
+
+  @Test func onlyUnmeasurableVerbsHaveProvisionalHitCounts() {
+    // `hp` shipped on 2026-07-19 with no verb carrying it, then rose to 2,582 across three
+    // tranches imported while bulk DWDS querying was blocked pending BBAW. Permission
+    // arrived 2026-08-26, the whole corpus was re-fetched, and 2,499 of those estimates
+    // became measurements. The 83 that remain are not leftovers of the import: they are the
+    // verbs DWDS cannot measure, and re-running the fetch will not shrink the number.
     //
-    // Step 8b's 189 were not a new rule for estimating counts but a new supply of verbs to
-    // estimate: almost all of them had been blocked on needing an ablaut group that does not
-    // ship, and the classifier now prefers a region whose group already ships over the shortest
-    // region that verifies. They use step 8's ratio, so there are two estimation rules, not three.
+    // What happens to them is worth knowing before someone tries. DWDS has no lemma entry
+    // for these compounds, so rather than failing it echoes the query string back
+    // capitalized and reports that *string's* raw count: starkmachen comes back as
+    // `Starkmachen`, hits 10,015. That figure is a form count where every other verb in the
+    // corpus carries a lemma total across all inflections, so adopting it would rank
+    // starkmachen against a different unit than its neighbours. An editorial estimate is
+    // the better value precisely because it does not look measured. Probing inflected forms
+    // does not help: `starkgemacht` comes back as `starkgemacht`.
     //
-    // The rules are both documented: verbdata/import_tranche1.py placed each count by hand
-    // between comparable shipping verbs, and verbdata/import_tranche2.py derives each from its
-    // base by a ratio measured off the corpus's own real counts.
-    //
-    // When permission arrives, re-query with probes, replace the counts, drop `hp`, and this
-    // expectation goes back to zero. Pinning the exact numbers, not merely an upper bound, is
-    // the point: a later tranche that ships estimates has to come here and say so.
+    // So this expectation does not go to zero, and a drop below 83 means someone found a
+    // probe that works, which is a real result worth writing down here. A rise means a new
+    // tranche shipped estimates, which is also worth saying out loud. Both are why the
+    // number is pinned rather than bounded.
     let provisional = Verb.verbs.values.filter(\.hitsAreProvisional).count
-    #expect(provisional == 78 + 2315 + 189)
-    #expect(Verb.verbs.count - provisional == 990, "measured hit counts drifted from the original corpus")
+    #expect(provisional == 83)
+    #expect(Verb.verbs.count - provisional == 3489, "measured hit counts drifted from the 2026-08-26 fetch")
   }
 
   @Test func theMostFrequentVerbIsRankedFirst() {

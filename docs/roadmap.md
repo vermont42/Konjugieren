@@ -20,7 +20,7 @@ completes.
 | 7 | Import tranche 1: strong bases | [`verb-sources.md`](verb-sources.md) next-steps item 5 | ✅ 2026-07-19 | steps 4–6 ✅; `hi` policy decided |
 | 8 | Import tranche 2: prefixed derivatives | [`verb-sources.md`](verb-sources.md) next-steps item 6 | ✅ 2026-07-19 | step 5 ✅; prefix inventory widened |
 | 8b | Clear the tranche-2 deferrals | this file, § "The tranche-2 deferrals" | ✅ 2026-07-19 | step 8 ✅ |
-| 9 | Import tranche 3: weak stems by frequency | [`verb-sources.md`](verb-sources.md) next-steps item 7 | 🚧 blocked | **BBAW reply**; fetch needs probes |
+| 9 | Import tranche 3: weak stems by frequency | [`verb-sources.md`](verb-sources.md) next-steps item 7 | 📋 unblocked 2026-08-26 | BBAW granted permission; corpus counts now measured |
 | 10 | Etymologies **and example sentences**, in one pipeline | [`../prompts/uses_etymologies.md`](../prompts/uses_etymologies.md) | ✅ 2026-07-23 | phase 0 ✅ |
 | 11 | The docs sweep | [`verb-sources.md`](verb-sources.md) next-steps item 9 | ✅ 2026-07-24 | step 10 ✅ |
 
@@ -268,7 +268,14 @@ touching `Verbs.xml`:
   reinvent it, and must leave the three `ay="r"` verbs alone — their alternation is regional, not
   by meaning.
 
-## The blocked one
+## The formerly blocked one
+
+**Unblocked 2026-08-26.** BBAW granted permission; see the outcome section at the top of
+[`dwds-permission-email.md`](dwds-permission-email.md) for the reply and the three things it
+settles. The whole corpus was re-fetched that day, so `hp="y"` is retired from every verb the
+fetch could measure, and step 9 may now rank the weak tail by measured frequency. Everything
+below is the reasoning from the blocked period, kept because it explains why the corpus carried
+estimates at all and what the cleanup was designed to be.
 
 Step 9 needs frequency ranks for thousands of weak verbs, and DWDS is the only good German
 frequency source. BBAW reserves § 44b UrhG, so bulk querying and shipping derived ranks needs
@@ -290,13 +297,14 @@ counts rather than ranks precisely so that cleanup is one line per verb.
 The cost, stated plainly: the corpus's displayed ranks are approximate until real counts land,
 because the rank is derived globally and a misplaced new verb shifts its neighbours.
 
-**A DWDS credit line is also waiting on that reply.** Decided 2026-07-20: `creditsText` gained a
-`Verb Data` section crediting Wiktionary and kaikki.org, because CC BY-SA obliges it unilaterally
-and the derived data already ships. DWDS is deliberately *not* given a parallel section yet. Its
-terms would permit a citation with a Quellenangabe today, but the outstanding request may change
-both what the app may ship and how the credit should read, so writing one now would presume an
-answer. Do not add it as a tidiness pass; it lands with the reply, or with a decision that no
-reply is coming.
+**A DWDS credit line was also waiting on that reply, and landed with it.** Decided 2026-07-20:
+`creditsText` gained a `Verb Data` section crediting Wiktionary and kaikki.org, because CC BY-SA
+obliges it unilaterally and the derived data already ships. DWDS was deliberately *not* given a
+parallel section, on the reasoning that the outstanding request might change both what the app
+may ship and how the credit should read, so writing one early would presume an answer. That
+reasoning was vindicated: BBAW supplied wording of its own, which differs from the guess the
+request proposed. `creditsText` now carries a `Verb Frequency` section in BBAW's wording, in both
+localizations.
 
 Two constraints on how estimates are formed:
 
@@ -388,6 +396,12 @@ Small things the pipeline surfaced that no plan currently owns. None blocks the 
 - **Two verbs are editorially ambiguous** — *helfen* (Wiktionary's *hülfe* against the shipped
   *hälfe*) and *verstoßen* (the shipped Präsens umlaut *du verstößt* against a table without it).
   Both need a human to pick, not more code.
+- ~~**A bulk DWDS fetch still needs probe generation.**~~ **Reconsidered 2026-08-26**, when the
+  corpus-wide fetch actually ran. Probes are the repair, not the first move. The gate already
+  catches the failure a bare infinitive causes, because a contaminated answer comes back under a
+  *different* lemma, so one bare pass plus a probed second pass over whatever quarantines is
+  cheaper than generating 7,000 probes up front and gives the same guarantee. Generate probes for
+  the quarantine list, not for the corpus. The paragraph below is the original reasoning.
 - **A bulk DWDS fetch still needs probe generation.** Querying a bare infinitive silently
   resolves a verb that is also an adjective or noun to the wrong word — *runden* scored as
   *rund*. Eight such verbs were found and repaired on 2026-07-19, and the script now **refuses to

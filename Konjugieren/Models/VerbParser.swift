@@ -41,8 +41,11 @@ class VerbParser: NSObject, XMLParserDelegate {
   ///
   /// The sort is descending by hits, so that the rank counts the same direction the
   /// hand-maintained ranks did and every existing ascending sort on `frequency` still
-  /// means most-common-first. Ties break on the infinitive to keep the order total; the
-  /// shipping corpus has none, but an imported tranche may.
+  /// means most-common-first. Ties break on the infinitive to keep the order total. The
+  /// corpus-wide DWDS fetch of 2026-08-26 made those real: 96 verbs share a count with
+  /// another, `durchblicken` and `überlaufen` at 110,117 among them. Measured counts
+  /// collide because the corpus is finite, so the tiebreak is load-bearing rather than
+  /// defensive, and dropping it would make the rank depend on dictionary iteration order.
   private static func ranked(_ verbs: [String: Verb]) -> [String: Verb] {
     let ordered = verbs.values.sorted {
       $0.hits == $1.hits ? $0.infinitiv < $1.infinitiv : $0.hits > $1.hits

@@ -7427,3 +7427,128 @@ Not verified against the real fault in this repo — the condition did not repro
 that cleared it. The abort path was verified by substitution in Conjuguer (a shut-down device exits
 2 with the diagnostic; a live one returns in about a second) and this port is byte-identical, plus
 `bash -n` clean here.
+
+## DWDS says yes, and the corpus finally gets real frequencies (2026-08-26)
+
+Franziska Nojack of the BBAW replied to the permission request that went out on 2026-07-19, and
+the answer was yes: query the frequency API, ship the derived ranks, keep the volume modest, use
+this citation. Five weeks of `hp="y"` came to an end. She also answered the question tucked into
+the request's third paragraph, about what to call the set of forms a verb takes, and that answer
+turned into user-facing prose.
+
+The mail settled three things, and the third was the surprise.
+
+**Volume.** "Die Menge der API-Abfragen scheint mir angemessen", with a note that too many at once
+would draw a temporary block and a request to be told rather than worked around if that happened.
+So the corpus-wide run went out at two workers and a half-second delay, roughly 1.6 requests per
+second, about 36 minutes for 3,572 lemmas. Three latency probes taken mid-run all returned in
+0.72 s, so the throttle was never tested. That is the point of a throttle.
+
+**Citation.** She supplied wording, which is worth noting because the request had *guessed* at
+wording and the roadmap had explicitly declined to ship the guess: "DWDS is deliberately *not*
+given a parallel section yet... writing one now would presume an answer." That call was right.
+Her wording differs from the guess, and the guess would have had to be replaced.
+
+**The term.** The request asked whether an established term existed for "conjugationgroup". One
+does: *Flexionsparadigma*, which DWDS uses internally and which she herself flags as "sehr
+fachsprachlich", which is exactly why the app does not adopt it.
+
+Josh's first draft of the new terminology passage said DWDS "has independently coined" the term.
+It has not, and she did not claim it had; *Flexionsparadigma* is ordinary linguistic terminology
+much older than DWDS. Josh then supplied the sharper framing himself: a conjugationgroup is
+arguably a *subset* of a Flexionsparadigma. That correction caught a second error nobody was
+looking for. The draft passage had written "not the six sharing a tense, mood, and voice", and
+conjugationgroups have one, two, four, or six members, as the same article says three paragraphs
+earlier. Subset language sidesteps the miscount entirely. The hedge in "arguably" is also load-
+bearing and was kept: *Flexionsparadigma* has no single fixed scope, meaning either the complete
+inflected set of one lexeme or the abstract pattern a whole inflection class follows, and the
+subset claim is clean only under the first reading.
+
+The etymologies of both halves went into the passage. *Flexion* is Latin *flectere*, "to bend",
+whose own ancestry is obscure even to Latinists, and German set a native twin beside the loanword
+in *Beugung*, built on *biegen*, meaning the identical thing. *Paradigma* is Greek *parádeigma*, "a
+showing side by side", and its second root, PIE \*deyḱ- "to point out", scattered into *dīcere* and
+so *dictionary*, *verdict*, and *index*; into *iūdex* and so *judge*, a metaphor German rebuilt
+natively as *Rechtsprechung*; and through Proto-Germanic into *zeigen*, *Zeichen*, *token*, and
+*teach*. A paradigm is a showing-beside, which is what the verb screen does with six conjugations
+at a time. Both *biegen* and *zeigen* are linked as tappable verbs, so the etymology walks into a
+conjugation table.
+
+### Re-fetch, do not merge
+
+The obvious plan was to top up: leave the 990 measured lemmas alone and fetch only the 2,582
+estimates. That plan is wrong, and the response body says why. The July snapshot reports a corpus
+`total` of 53,203,990,582 and the August one 53,303,287,841. DWDS grew by 99 million tokens in five
+weeks. Counts drawn from two corpus states are not comparable, and a rank derived across both is
+wrong everywhere and visibly wrong nowhere. So all 3,572 were re-queried, and the credit carries a
+single access date honestly.
+
+The drift is small but real and shows up in the diff: *abbauen* went 1,035,271 to 1,037,967.
+
+### The gate needed a second mode, and then a third rule
+
+`fetch_dwds_frequencies.py` refuses to write anything when any row looks suspect. That is right for
+a targeted repair and catastrophic at corpus scale: one archaic verb returning zero hits would
+discard 3,500 good answers. `--quarantine` splits the run instead, clean rows to `--out` and
+suspects to a sidecar with reasons, exit status nonzero either way. The property that mattered is
+preserved, because `apply_dwds_frequencies.py` writes only lemmas the snapshot contains and a
+quarantined lemma keeps its estimate. What quarantine changes is whether the good answers survive
+alongside the bad, and naming every omission in a second file is what stops the partial output from
+reading as complete.
+
+Round 1: 3,457 clean, 115 quarantined, 45 benign ß-as-ss variants reported and passed. Round 2
+supplied two probes per quarantined lemma, sourced from `corpus/working/forms.json` rather than a
+fresh `Conjugator` run, filtering to forms that only one verb claims contiguously. That recovered
+24 and left 91.
+
+Reading the 91 produced the rule worth keeping. The agreement check reasons that when two probes
+disagree, one is contaminated and we cannot tell which. That inference is only forced when
+*neither* answer names the lemma asked about. Eight rows had exactly one probe resolving to the
+lemma exactly while the other resolved to a truncated stem or a near-homograph: `wäge` to `wäg`,
+`überfällst` to `überfällen`. There the disagreement has already identified the bad probe. Encoding
+"an exact lemma match beats agreement" recovered all eight, *überfallen* and *wägen* among them,
+and it is not a loosening: a `dwds_lemma` equal to the lemma means the endpoint reported that
+lemma's total, the same evidence a single-probe query rests on.
+
+### The 83 that DWDS cannot measure
+
+The remainder is not a leftover to be chipped away at, and the test comment now says so, because
+somebody will try. DWDS has no lemma entry for these compounds. Rather than failing, it echoes the
+query string back capitalized and reports *that string's* raw count: *starkmachen* comes back as
+`Starkmachen`, 10,015 hits. Probing an inflected form does not help, because `starkgemacht` comes
+back as `starkgemacht`. Every other verb in the corpus carries a lemma total across all
+inflections, so adopting a form count would rank these against a different unit than their
+neighbours. The editorial estimate is the better value precisely because it does not look measured.
+That is the whole argument for `hp` in one example.
+
+### What moved
+
+3,489 counts written, 2,499 provisional flags cleared, 83 left. Ranks moved a median of 466 places,
+mean 632, max 2,660, with 273 verbs not moving at all. The largest movers vindicate the exercise:
+*bescheren* went from #3450 to #790, and a cluster of rare *geben* derivatives that the tranche-2
+ratio had parked around #920 went to the bottom of the corpus, *heraufgeben* to #3570. The
+estimation ratio was systematically too generous to derivatives nobody uses. The new top of the
+list is unremarkable in the best way: sein, werden, haben, können, geben, müssen, sollen, kommen,
+machen, gehen, sagen, wollen.
+
+Ties are now real: 96 verbs share a count with another, *durchblicken* and *überlaufen* both at
+110,117. `VerbParser.ranked` already broke ties on the infinitive, and its comment had predicted
+this ("the shipping corpus has none, but an imported tranche may"), though it arrived from a
+measurement rather than an import. `moreHitsMeansALowerFrequencyRank` asserted a strict `>` and had
+to become `>=`; tightening it back would assert an accident of the data rather than the property.
+A new test checks the tiebreak itself, which nothing had.
+
+### The trap in check_docs.py
+
+Worth recording because it would have failed silently. `check_attribution` asserted that if
+kaikki-derived verbs ship, the Credits article must credit kaikki, and it keyed that on `hp="y"`.
+The reasoning was sound: `hp` was true of every kaikki-imported verb and of none of the original
+990, a perfect proxy. It was a proxy for something else. `hp` meant "the DWDS fetch is blocked",
+and clearing it today would have hit the function's early return and switched the whole invariant
+off while the kaikki verbs went on shipping. The trigger is now corpus size, which cannot decouple:
+those verbs are still here and the count still exceeds 990. The DWDS half of the check needs no
+trigger at all, since `hi` is `#REQUIRED` and every value of it is a DWDS count or an estimate
+placed between two of them.
+
+The general shape: a proxy variable is safe only while the thing it proxies for stays true, and the
+day it stops is exactly the day nobody is looking at the proxy.

@@ -209,35 +209,50 @@ def check_commit_hashes():
 # Check 4: the attribution invariant
 # ---------------------------------------------------------------------------
 
+# The size of the original frequency-list corpus, before any kaikki import. Any verb beyond
+# this count came from Wiktionary via kaikki, which is what the attribution invariant turns on.
+ORIGINAL_CORPUS = 990
+
+
 def check_attribution():
-    """If kaikki-derived verbs ship, the Credits article must credit kaikki.org.
+    """Whoever's data ships must be credited in the Credits article: kaikki, and DWDS.
 
-    `verbdata/README.md` stated this as a condition in prose on 2026-07-18 ("attribution belongs
-    in the Credits article if derived data ships"). The condition went true with tranche 1 on
-    2026-07-19 and nobody re-read the row; the credit landed 2026-07-20, a day and two tranches
-    late. Written as an assertion it would have failed the whole time.
+    `verbdata/README.md` stated the kaikki half as a condition in prose on 2026-07-18
+    ("attribution belongs in the Credits article if derived data ships"). The condition went true
+    with tranche 1 on 2026-07-19 and nobody re-read the row; the credit landed 2026-07-20, a day
+    and two tranches late. Written as an assertion it would have failed the whole time.
 
-    `hp="y"` is the marker: it means the hit count is an editorial estimate, which is true of
-    every verb imported from kaikki and of nothing in the original 990.
+    **The kaikki trigger used to be `hp="y"` and is now corpus size.** `hp` marks a hit count as
+    an editorial estimate, which was true of every kaikki-imported verb and of none of the
+    original 990, so it read as a perfect proxy for "kaikki data ships". It was a proxy for
+    something else: "the DWDS fetch is still blocked". When permission arrived on 2026-08-26 and
+    the corpus was measured for real, `hp` vanished from all 2,582 imported verbs, and this
+    function's early return would have switched the whole invariant off in silence while the
+    kaikki-derived verbs went on shipping. Corpus size cannot go stale that way: those verbs are
+    still here, and the count still exceeds 990.
+
+    The DWDS half has no trigger, because `hi` is `#REQUIRED` and every value of it is a DWDS
+    count or an estimate placed between two of them. The credit is owed unconditionally.
     """
     failures = []
     verbs = ET.parse(REPO / "Konjugieren/Models/Verbs.xml").getroot()
-    imported = [v for v in verbs if v.get("hp") == "y"]
-    if not imported:
-        return failures
-
     catalog = (REPO / "Konjugieren/Assets/Localizable.xcstrings").read_text()
     credits = catalog.split('"Info.creditsText"')[1].split('"Info.dedication')[0]
-    for token, why in [
-        ("kaikki", "names kaikki.org, the extraction the data came through"),
-        ("Wiktionary", "names Wiktionary, the CC BY-SA licensor"),
-        ("CC BY-SA", "names the license"),
-    ]:
+
+    owed = [
+        ("dwds.de", "links dwds.de, the source of every hit count in Verbs.xml"),
+        ("Häufigkeitsrangfolge", "carries BBAW's prescribed German citation wording"),
+    ]
+    if len(verbs) > ORIGINAL_CORPUS:
+        owed += [
+            ("kaikki", "names kaikki.org, the extraction the data came through"),
+            ("Wiktionary", "names Wiktionary, the CC BY-SA licensor"),
+            ("CC BY-SA", "names the license"),
+        ]
+
+    for token, why in owed:
         if token not in credits:
-            failures.append(
-                f"{len(imported)} verbs carry hp=\"y\" (kaikki-derived), but Info.creditsText "
-                f"never {why}"
-            )
+            failures.append(f"Info.creditsText never {why}")
     return failures
 
 
@@ -283,7 +298,7 @@ CHECKS = [
     ("corpus counts in cache files", check_corpus_counts),
     ("relative links", check_links),
     ("cited commit hashes", check_commit_hashes),
-    ("kaikki attribution invariant", check_attribution),
+    ("source attribution invariant", check_attribution),
     ("etymology completeness claim", check_etymology_completeness),
 ]
 

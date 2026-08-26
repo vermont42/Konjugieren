@@ -40,9 +40,12 @@ docs/wwdc2026-whats-new-in-swift-transcript.txt
 docs/wwdc2026-whats-new-swiftui-transcript.txt
 # kaikki.org Wiktionary extraction (~294 MB; re-download recipe in verbdata/README.md)
 verbdata/*.jsonl
-# DWDS frequency snapshot: BBAW reserves § 44b UrhG and bars redistribution
-# without permission. Untracked pending a reply from dwds@bbaw.de.
+# DWDS frequency snapshots and fetch working files. BBAW granted permission on
+# 2026-08-26 to query the API and to ship the *derived ordinal ranks*, which is
+# what Verbs.xml carries. The request never proposed redistributing raw hit
+# counts, and the reply did not grant it, so these stay untracked.
 verbdata/dwds-frequencies.json
+verbdata/dwds/
 # Classify-and-verify pipeline outputs: large, derived, and regenerable in ~45
 # seconds from the scripts beside them. See docs/verb-classification.md.
 verbdata/candidates.json

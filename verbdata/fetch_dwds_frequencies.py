@@ -5,6 +5,16 @@ Usage:
   python3 verbdata/fetch_dwds_frequencies.py [--lemmas FILE] [--out FILE] [--workers N]
   python3 verbdata/fetch_dwds_frequencies.py --check FILE     # audit a snapshot, no network
 
+## Permission
+
+BBAW granted permission for exactly this use on 2026-08-26, by mail from Franziska Nojack to
+Josh, in reply to the request in `docs/dwds-permission-email.md`. Two conditions travel with
+it. The query volume must stay modest, which is why `--delay` throttles by default and why
+the corpus-wide run of 2026-08-26 used two workers rather than the eight the machine could
+manage. And the app must credit DWDS in the wording BBAW supplied, which it does, in both
+localizations of `Info.creditsText`. If a future run somehow draws a block, Franziska asked
+to be told rather than worked around.
+
 With no --lemmas, the infinitives are read from Konjugieren/Models/Verbs.xml
 (the `in` attribute, with `+` prefix separators and `^` ablaut markers stripped).
 
@@ -80,6 +90,22 @@ ss (`reißen` -> `reissen`), and it drops the *e* before a final *-n* in some -e
 than as a list of three lemmas so that they generalize to imported verbs of the same shape.
 All three shift rank by fewer than 45 places.
 
+## Abort or quarantine
+
+The gate's default is still to write nothing when any row is suspect, because that is right
+for a small targeted fetch: the operator sees the failure and fixes it before anything lands.
+At corpus scale it is wrong, because one archaic verb returning zero hits would discard
+several thousand good answers along with it. `--quarantine FILE` therefore splits the run:
+clean and benign rows go to `--out`, suspects go to FILE with the reason attached, and the
+exit status stays nonzero either way so a caller checking only the status can never mistake a
+partial run for a complete one.
+
+This preserves the property that matters. No suspect count reaches `Verbs.xml`, because
+`apply_dwds_frequencies.py` writes only the lemmas the snapshot contains, and a quarantined
+lemma keeps its `hp="y"` estimate until someone re-queries it with a better probe. What
+quarantine changes is only whether the good answers survive alongside the bad, and naming
+every omission in a second file is what keeps the partial output from looking complete.
+
 Probes are supplied through `--lemmas`, one record per line, tab-separated:
 
     weißen<TAB>geweißt<TAB>weißte
@@ -103,6 +129,12 @@ from concurrent.futures import ThreadPoolExecutor
 ENDPOINT = "https://www.dwds.de/api/frequency/"
 USER_AGENT = "KonjugierenVerbResearch/1.0 (contact: vermontcoder@gmail.com)"
 REPO = pathlib.Path(__file__).resolve().parent.parent
+
+# Seconds each worker waits before issuing a request; set from --delay in main(). BBAW's
+# 2026-08-26 permission mail warns that too many requests at once draws a temporary block,
+# so the corpus-wide run throttles rather than sprinting. With the default 2 workers and
+# 0.5 s, the whole 3,572-lemma corpus goes out at roughly four requests per second.
+REQUEST_DELAY = 0.0
 
 
 def lemmas_from_verbs_xml() -> list[str]:
@@ -196,6 +228,7 @@ def query(term: str) -> dict:
     """One frequency lookup. `term` is whatever is sent to DWDS: a lemma or a probe form."""
     url = f"{ENDPOINT}?{urllib.parse.urlencode({'q': term})}"
     for attempt in range(3):
+        time.sleep(REQUEST_DELAY)
         try:
             request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
             with urllib.request.urlopen(request, timeout=30) as response:
@@ -237,6 +270,38 @@ def fetch(record: tuple[str, list[str]]) -> dict:
 
     counts = {answer["hits"] for _, answer in answers}
     if len(counts) > 1:
+        # An exact lemma match beats agreement. The agreement rule assumes both probes
+        # resolve correctly and reads a disagreement as "one of these is contaminated,
+        # and we cannot tell which". That inference is only forced when *neither* answer
+        # names the lemma asked about. When exactly one does, the disagreement has already
+        # identified the bad probe: the other answer is about a different string, so there
+        # is nothing left to doubt about the one that matched.
+        #
+        # This is not a loosening. A `dwds_lemma` equal to the lemma means the endpoint
+        # reported that lemma's own total, which is the thing being asked for, and it is
+        # the same evidence a single-probe query rests on. Measured 2026-08-26, the rule
+        # recovers eight real verbs the agreement check alone discarded, überfallen and
+        # wägen among them, each rejected because its sibling probe resolved to a
+        # truncated stem (wäge -> wäg) or to a near-homograph (überfällst -> überfällen).
+        exact = [
+            (probe, answer)
+            for probe, answer in answers
+            if answer["dwds_lemma"] and is_benign_variant(lemma, answer["dwds_lemma"])
+        ]
+        if len(exact) == 1:
+            probe, answer = exact[0]
+            return {
+                "lemma": lemma,
+                **answer,
+                "probe": probe,
+                # Kept so a snapshot records which probe was thrown out and why, since
+                # --check re-runs the gate but not the network and cannot rediscover this.
+                "rejected": ", ".join(
+                    f"{other}->{result['dwds_lemma']}={result['hits']}"
+                    for other, result in answers
+                    if other != probe
+                ),
+            }
         return {
             "lemma": lemma,
             "dwds_lemma": None,
@@ -277,7 +342,16 @@ def main() -> int:
         action="store_true",
         help="write without checking for contaminated counts; you almost certainly do not want this",
     )
+    parser.add_argument(
+        "--quarantine",
+        type=pathlib.Path,
+        help="write suspects here and the clean rows to --out, instead of aborting the whole run",
+    )
+    parser.add_argument("--delay", type=float, default=0.5, help="seconds each worker waits per request")
     args = parser.parse_args()
+
+    global REQUEST_DELAY
+    REQUEST_DELAY = args.delay
 
     # --check exists so a snapshot someone else produced can be audited, and so the gate
     # itself can be exercised without spending requests against DWDS.
@@ -298,17 +372,36 @@ def main() -> int:
     with ThreadPoolExecutor(max_workers=args.workers) as pool:
         results = list(pool.map(fetch, records))
 
-    if not args.no_verify:
+    suspects = [] if args.no_verify else verify(results)
+
+    if suspects and not args.quarantine:
         # Refuse to write rather than writing and warning. A contaminated count is a real
         # number for a different word, so a written file looks complete and correct, and
         # the 2026-07-19 run reported success while a third of the corpus was garbage.
-        if verify(results):
-            print(f"\nRefused to write {args.out}.", file=sys.stderr)
-            return 1
+        print(f"\nRefused to write {args.out}.", file=sys.stderr)
+        return 1
+
+    if suspects:
+        # Quarantine keeps the abort's guarantee — no suspect count reaches the corpus —
+        # while not discarding thousands of good answers because a handful of lemmas came
+        # back wrong. The partial-file hazard the abort guards against is met by naming
+        # every omission in a second file, so a downstream updater can tell "not measured"
+        # from "measured as absent" instead of inferring it from a gap.
+        suspect_lemmas = {row["lemma"] for row, _ in suspects}
+        results = [row for row in results if row["lemma"] not in suspect_lemmas]
+        args.quarantine.write_text(
+            json.dumps(
+                [{**row, "reason": reason} for row, reason in suspects], ensure_ascii=False, indent=2
+            )
+            + "\n"
+        )
+        print(f"Quarantined {len(suspects)} rows to {args.quarantine}", file=sys.stderr)
 
     args.out.write_text(json.dumps(results, ensure_ascii=False, indent=2) + "\n")
     print(f"Wrote {args.out} ({len(results)} records)", file=sys.stderr)
-    return 0
+    # Nonzero even after a successful partial write, so a caller that only checks the exit
+    # status never mistakes a quarantined run for a complete one.
+    return 1 if suspects else 0
 
 
 if __name__ == "__main__":

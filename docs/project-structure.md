@@ -280,7 +280,8 @@ corpus/                        # German text corpus for example sentence sourcin
 verbdata/                      # Verb-corpus-expansion data (see docs/verb-sources.md)
 │   generate_frequencies_txt.py  # Regenerates docs/frequencies.txt from Verbs.xml (--check for drift)
 ├── README.md                  # Provenance, integrity stats, and re-download recipes for the data files
-├── fetch_dwds_frequencies.py  # Fetches DWDS lemma frequencies; --lemmas FILE overrides the Verbs.xml corpus
+├── fetch_dwds_frequencies.py  # Fetches DWDS lemma frequencies; --lemmas FILE overrides the Verbs.xml corpus, --quarantine keeps the clean rows when some are suspect
+├── apply_dwds_frequencies.py  # Writes a fetched snapshot back into Verbs.xml: sets hi, drops hp. Text surgery, not an ElementTree round trip
 ├── wiktionary-defects.json    # Verbs where Konjugieren deliberately disagrees with English Wiktionary because Wiktionary is wrong (auto-generated weak tables); subtracted from the at-odds count by summarize_classification.py
 ├── build_candidates.py        # Classify-and-verify stage A: kaikki JSONL → candidates.json (see docs/verb-classification.md)
 ├── summarize_classification.py # Classify-and-verify stage C: classification.json → a Markdown summary grouped by cause
@@ -288,7 +289,8 @@ verbdata/                      # Verb-corpus-expansion data (see docs/verb-sourc
 ├── import_tranche1.py         # One-shot import of the 78 missing strong bases (roadmap step 7); the decision table is the artifact
 ├── import_tranche2.py         # Rule-driven import of 2,303 prefixed derivatives (roadmap step 8); hi derived from each base
 ├── tranche2-dual-auxiliary.txt # 176 imported verbs shipping one reading of two; worklist for the dual-auxiliary pass
-├── dwds-frequencies.json      # 990-lemma DWDS frequency snapshot (gitignored pending BBAW permission)
+├── dwds-frequencies.json      # Corpus-wide DWDS frequency snapshot, re-fetched 2026-08-26 under BBAW permission (gitignored, regenerable)
+├── dwds/                      # Inputs and logs for the corpus-wide fetch: lemma list with probes, quarantine files, run logs (gitignored)
 ├── candidates.json            # 9,217 normalized candidate conjugation tables (gitignored, regenerable)
 ├── classification.json        # Per-verb classification results (gitignored, regenerable)
 ├── classification-summary.md  # Rendered summary of the above (gitignored, regenerable)

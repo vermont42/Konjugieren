@@ -3,6 +3,46 @@
 Draft of an email to `dwds@bbaw.de` requesting permission to derive Konjugieren's verb
 frequency ranking from the DWDS frequency API.
 
+## Outcome: granted, 2026-08-26
+
+Sent 2026-07-19 in the German version below. Franziska Nojack of BBAW replied on 2026-08-26
+granting permission, and the reply settles three things the draft left open.
+
+**The use is permitted, and the volume is fine.** "Sie können die DWDS-Häufigkeitsdaten gern
+für Ihre App abfragen und nutzen. Die Menge der API-Abfragen scheint mir angemessen." She adds
+that too many requests at once would draw a temporary block in any case, and asks to be told if
+that happens rather than worked around. The corpus-wide fetch of 2026-08-26 accordingly ran at
+two workers with a half-second delay per request, roughly four requests per second.
+
+**BBAW supplied the citation wording,** which supersedes the draft's guess and the separate
+guess in `verb-sources.md`:
+
+> „Häufigkeitsrangfolge der Verben abgeleitet aus den Worthäufigkeitsangaben des Digitalen
+> Wörterbuchs der deutschen Sprache, https://www.dwds.de/, abgerufen am xx.xx.2026"
+
+Either a single access date or a span is acceptable. `Info.creditsText` uses that wording in
+its German localization and an English rendering of it in the English, both under a new
+`Verb Frequency` heading, with 26.08.2026 as the access date because the whole corpus was
+re-fetched that day rather than merged with the older 990-lemma snapshot. Mixing counts from
+two fetches would have meant ranking against two different corpus totals.
+
+**There is a term for "conjugationgroup", and it is not a coinage.** The draft asked whether
+one existed. It does: *Flexionsparadigma*, which DWDS uses internally, and which Franziska
+herself flags as "sehr fachsprachlich". That answer is now a passage in `Info.terminologyText`,
+at the end of the Conjugationgroup section, with the etymologies of both halves. Note what she
+did *not* say: she did not claim DWDS coined it. *Flexionsparadigma* is ordinary linguistic
+terminology, and it denotes every inflected form of a lexeme, so a conjugationgroup is arguably
+a *subset* of one rather than a synonym for it. Subset, and specifically not "the six": a
+conjugationgroup has one, two, four, or six members, as the article itself says three paragraphs
+earlier. An early draft of the passage wrote "the six" and had to be corrected.
+
+She also recommended https://www.dwds.de/d/worthaeufigkeit as documentation of how the
+frequencies are derived. That link is in the credit.
+
+A reply is drafted in [`dwds-reply-email.md`](dwds-reply-email.md), German with an English
+translation appended. It is not sent: it claims the data shipped in version 1.4, which is
+ahead of reality, and that sentence has to become true or change before the mail goes out.
+
 **Why this email is necessary:** the DWDS Nutzungsbedingungen reserve BBAW's rights under
 § 44b UrhG and require explicit permission for automated queries not covered by § 60d, the
 exception available to non-commercial research organizations. A shipping App Store app is

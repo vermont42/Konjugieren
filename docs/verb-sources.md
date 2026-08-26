@@ -329,7 +329,39 @@ The one point worth repeating, because the build enforces it rather than the pro
 declares `ay (h|s)`, and a combined value such as `"hs"` will fail validation. That rejection
 is intentional, not an obstacle to route around.
 
-### `hi` is blocked, and re-querying DWDS is the wrong move
+### `hi` was blocked, and is not any more
+
+**Unblocked 2026-08-26.** BBAW granted permission by mail from Franziska Nojack, in reply to the
+request sent 2026-07-19; the reply and what it settles are at the top of
+[`dwds-permission-email.md`](dwds-permission-email.md). Bulk querying the frequency API for this
+app is now permitted, subject to a modest rate and to crediting DWDS in the wording BBAW
+supplied. Both conditions are met: `fetch_dwds_frequencies.py` throttles via `--delay`, and
+`Info.creditsText` carries a `Verb Frequency` section in BBAW's wording in both localizations.
+
+Three notes for whoever fetches next.
+
+**Re-fetch, do not merge.** The whole corpus was re-queried on 2026-08-26 rather than topping up
+the 990 measured lemmas with the 2,582 estimated ones. The reason is in the response body: the
+July snapshot reports a corpus `total` of 53,203,990,582 and the August one 53,303,287,841. DWDS
+grows. Hit counts drawn from two different corpus states are not comparable, and a rank derived
+across both is wrong everywhere and visibly wrong nowhere, which is the worst kind of wrong. Any
+future fetch that adds verbs should re-measure the incumbents in the same pass.
+
+**Quarantine, do not abort.** The gate's write-nothing-on-any-suspect default is correct for a
+targeted repair and wrong at corpus scale, where a single archaic verb returning zero hits would
+throw away several thousand good answers. `--quarantine FILE` splits the run instead; see that
+script's docstring. A quarantined lemma keeps its `hp="y"` estimate, which is exactly right: it
+has no measurement, and inventing one is the defect the gate exists to prevent.
+
+**`hp` is not retired.** It stays in the DTD and stays meaningful, both for quarantined lemmas
+and for any future tranche imported ahead of its measurements. What changed is that it is no
+longer a proxy for "DWDS is blocked", which is what `scripts/check_docs.py` had quietly been
+using it as; see the note in `check_attribution`.
+
+Everything below is the reasoning from the blocked period. It is kept because it explains why the
+corpus carried estimates at all, and because the `hp` machinery it describes is still live.
+
+---
 
 A permission request went to `dwds@bbaw.de` on 2026-07-19; see
 [`dwds-permission-email.md`](dwds-permission-email.md). Until BBAW replies, **do not query the
@@ -420,6 +452,9 @@ Rules:
   question mark in the UI would be noise.
 - **Clearing it is one line per verb.** When permission arrives, re-query with probes, replace
   `hi`, drop `hp`. This is the whole reason step 6 stored counts instead of ranks.
+  **Done 2026-08-26** by `verbdata/apply_dwds_frequencies.py`, which edits the XML as text rather
+  than through an `ElementTree` round trip so the DOCTYPE, attribute order, and hand indentation
+  survive and the diff shows only the counts that moved.
 - **Do not consult a rejected source informally.** Leipzig's numbers are CC BY-NC, and an estimate
   "informed by" them is still derived from them — a human retyping the figure in between does not
   launder it. Legitimate inputs are the verb's register and semantics, Wiktionary/kaikki labels

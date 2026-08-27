@@ -7552,3 +7552,52 @@ placed between two of them.
 
 The general shape: a proxy variable is safe only while the thing it proxies for stays true, and the
 day it stops is exactly the day nobody is looking at the proxy.
+
+## The 1.4 release copy, and the App Store settling what 1.4 contains (2026-08-27)
+
+Josh asked for the English description of version 1.4 in `docs/release_notes.txt`, drafted from
+c373167, the corpus-wide DWDS measurement, with the German to follow once he had read the
+English. He approved it unchanged, and the German went in the same session. The description is
+three paragraphs: the measured ranks and what moved, the Verb Frequency credit, and the
+Flexionsparadigma passage with its two etymologies.
+
+The question that needed settling before writing a word was which commits 1.4 actually carries,
+and git could not answer it. The committed `project.pbxproj` said `MARKETING_VERSION = 1.2` until
+c373167 bumped it to 1.3, so the 1.3 build was cut from an uncommitted bump, and the journal
+records the 1.3 screenshots (2026-07-26) but never the submission. Nine app-code commits landed
+between the 1.3 release copy and the DWDS commit: the Region picker reframing, the Verganheits
+typos, the verb-history corrections and Luther section, the *sollen* preterite-present fix, and
+the two audio fixes of 2026-08-02. Whether those were in 1.3 or waiting for 1.4 decides whether
+the notes need a "corrections and fixes" paragraph.
+
+The App Store knows. `curl 'https://itunes.apple.com/lookup?id=6758258747'` reports
+`currentVersionReleaseDate` of 2026-08-18, sixteen days after the last of those commits, so all
+nine shipped in 1.3, and 1.4 is c373167 alone. Worth remembering as a technique: the lookup API
+is the one place the release date of a build lives when the version bump was never committed.
+
+The rank moves the notes cite were recomputed from the two `Verbs.xml` states with the app's own
+ordering, hits descending with the stripped infinitive as tiebreak, rather than lifted from the
+commit message: *verzeihen* #3535 to #1347, *behindern* #2979 to #697, *bescheren* #3450 to #790,
+*heraufgeben* #919 to #3570, the 63 most common verbs unmoved, 83 estimates remaining. The
+median absolute move is 466, which the notes phrase as half the corpus moving at least that far.
+
+The German echoes the app's own wording wherever the notes describe the app: the credit's „damit
+Anfänger zuerst auf sein und haben stoßen“, the terminology passage's „Es gibt ihn:
+Flexionsparadigma“, and „einheimischen Zwilling“ for Beugung, so a reader who taps through finds
+the sentence the notes promised. Ranks read „Rang 3535“ rather than „Platz“, because Rang is the
+word the German credit uses, and carry no thousands separator, because the verb screen shows
+„#3535“. Counts keep the separator, as in 1.3's „3.572“. Korpus is neuter, Duden's gender for a
+text corpus. The Credits heading is untranslated in the catalog, so the German says Credits-Artikel
+beside Terminologie-Artikel.
+
+Josh asked in passing whether release notes have a length limit. Apple's App Store Connect
+reference page for platform version information says What's New in This Version is limited to
+4,000 characters, the same as the description, with promotional text at 170. The 1.4 texts run
+about 2,200 characters in English and 2,800 in German, so neither language is close.
+
+Two loose ends the copy does not close. `docs/description.md` never mentions frequency, so the
+App Store listing needs no change for this release. And `docs/dwds-reply-email.md` still claims
+the data shipped in 1.4, which becomes true the day this build goes live and not before.
+
+Josh submitted 1.4 to App Review later on 2026-08-27. Recorded here because the journal never
+recorded 1.3's submission, and that gap is what sent this session to the lookup API.

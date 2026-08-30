@@ -4,6 +4,8 @@ Draft of a reply to Franziska Nojack at BBAW, answering the permission grant of 
 The request that prompted her mail, and a summary of what her reply settled, are in
 [`dwds-permission-email.md`](dwds-permission-email.md).
 
+Having shipped version 1.4, Josh sent this reply to Franziska on 2026-08-30.
+
 **Before sending:**
 
 - **The version claim is ahead of reality.** The body says the data shipped in version 1.4.

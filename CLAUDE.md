@@ -273,6 +273,12 @@ Do not extend this permission to shipping app code under `Konjugieren/`.
 
 When writing or editing any English text (localization strings, documentation, comments), consult [`docs/english_writing_style.md`](docs/english_writing_style.md).
 
+**No em dashes between independent clauses.** Going forward, generated prose must never use an
+em dash to separate two clauses that each contain a subject and a predicate. Starting a new
+sentence is usually best. Less often, a semicolon is appropriate. This rule holds in
+`docs/blog_notes.md` entries, commit messages, and chat replies as much as in shipped text, and it
+does not relax the style doc's broader ban on em dashes in other positions.
+
 ## Grep on long-line files
 
 Historical gotcha, resolved 2026-06-11: `grep -n` matches on long-line files (anything past ~250 characters) used to vanish silently from Bash-tool output (tracking issue anthropics/claude-code#56751). Root cause: the Bash tool's `grep` was secretly Claude Code's embedded ugrep via shell-snapshot shadowing, now de-shadowed machine-wide; matched lines of 300/1,000/5,000 characters now render intact. History and recovery recipe: [`docs/grep-gotchas.md`](docs/grep-gotchas.md). If silent vanishing ever recurs, the diagnostic still applies: `grep -c` count > 0 while `grep -n` shows nothing means output is being hidden; verify via `Read` with offset, and never treat grep silence as absence. (Separate and still real: the **Grep tool** truncates long matched lines to `[Omitted long matching line]`; see "Searching Within Localizable.xcstrings" below.)

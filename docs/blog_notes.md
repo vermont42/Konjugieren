@@ -7601,3 +7601,36 @@ the data shipped in 1.4, which becomes true the day this build goes live and not
 
 Josh submitted 1.4 to App Review later on 2026-08-27. Recorded here because the journal never
 recorded 1.3's submission, and that gap is what sent this session to the lookup API.
+
+## Trimming CLAUDE.md under the memory-file warning (2026-10-19)
+
+A `/doctor` pass found the root `CLAUDE.md` at 42,386 characters, just over the roughly
+40,000-character point where Claude Code warns that a single memory file is too large. Every
+character of it loads into every session, about 10.6k tokens before any work starts.
+
+The cut followed one test: could a session working in this repo reconstruct the line by reading
+the code? Where the answer was yes, the line went. That removed the copied `World` class and its
+lists of real and fake implementations, the Current Settings table and the Adding a New Setting
+recipe (both mirror `Settings.swift`, whose existing settings already demonstrate the `restore`
+pattern), the example `L.swift` and `Localizable.xcstrings` snippets, the `expectConjugation`
+source listing, and the narrative half of the long-line grep note, which `docs/grep-gotchas.md`
+already holds. Everything a session could not rediscover stayed: the gotchas, the never-rules,
+the xcstrings editing and searching recipes that `integrate/SKILL.md` and `grep-gotchas.md` link
+to, and the `#_sourceLocation` rationale, minus the code it explained.
+
+Two sections moved rather than died. Test-writing conventions went to `KonjugierenTests/CLAUDE.md`
+and the `WidgetL` section went to `KonjugierenWidget/CLAUDE.md`. Claude Code loads a nested
+`CLAUDE.md` only when a session works with files in that folder. The environment-gated harness
+section stayed in the root on purpose. Its `TEST_RUNNER_` trap bites when someone *runs* tests,
+which can happen without opening a single file under `KonjugierenTests/`, so a lazily loaded copy
+would be absent at exactly the moment it matters. The `Shared/` both-catalogs rule kept one line
+in the root for the same reason: editing `Shared/` never loads the widget file.
+
+The root file is now 30,702 characters, about 7.7k tokens, and `check_docs.py` still passes,
+including its link check over the two new files. The same pass disabled the
+`swift-concurrency` plugin and the project's `swiftui-expert-skill` in this machine's
+`.claude/settings.local.json` (one lifetime use each) and turned off four idle claude.ai
+connectors for this project in `~/.claude.json`. None of those touch checked-in settings.
+Josh then made two MCP changes of his own for this project: he disabled `cupertino`, which the
+pass had left alone only because one retained Konjugieren session was too little evidence either
+way, and enabled `computer-use`, whose tools are deferred and cost nothing up front.

@@ -137,6 +137,7 @@ Konjugieren/
 KonjugierenWidget/
 ├── AnswerQuizIntent.swift      # AppIntent for answering a quiz question from the widget
 ├── Assets.xcassets/            # Widget-specific asset catalog
+├── CLAUDE.md                   # Lazily loaded Claude Code guidance: WidgetL and the widget string catalog
 ├── Info.plist                  # Widget extension configuration
 ├── KonjugierenWidget.entitlements  # Widget entitlements (App Groups)
 ├── KonjugierenWidgetBundle.swift   # Widget bundle combining all widgets and live activities
@@ -169,6 +170,7 @@ Shared/
 └── WidgetSnapshot.swift            # Data models for serialized widget state, incl. WidgetSnapshotBundle (N-day array)
 
 KonjugierenTests/
+├── CLAUDE.md                   # Lazily loaded Claude Code guidance: Swift Testing conventions for this target
 ├── Models/
 │   ├── ConjugationgroupTests.swift # Conjugationgroup.ending(family:) ending-table tests
 │   ├── ConjugatorTests.swift   # Comprehensive conjugation tests (~50 test functions), incl. error paths

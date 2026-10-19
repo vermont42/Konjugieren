@@ -82,18 +82,10 @@ The 36 App Store screenshots are captured by `scripts/take_screenshots.sh`. See 
 
 ## Test Suite
 
-The project uses Swift Testing (`import Testing`) for unit tests. Tests are located in `KonjugierenTests/`.
-
-A few conventions that apply across the suite:
-
-- `import Testing` does **not** re-export Foundation transitively. A test file that uses `URL`, `Date`, `JSONEncoder`, or any other Foundation string/date API must `import Foundation` itself.
-- Prefer `@Test(arguments:)` (optionally with `zip`) when test cases differ only in their input values, so each case reports independently and the body stays single-assertion. `TimeFormatterTests`, `MixedCaseAccessibilityTests`, and parts of `StringExtensionsTests` already follow this.
-
-### Parallel execution and `@Suite(.serialized)`
-
-- Swift Testing runs suites and tests **in parallel by default**.
-- A suite that mutates shared global state (the `@MainActor var Current` world, or any `static`) must be `@Suite(.serialized)` so its tests don't race each other. That's why `SettingsTests`, `DeeplinkTests`, `QuizTests`, `QuizErrorHistoryTests`, and the `Unterminated Delimiters` sub-suite of `StringExtensionsTests` are serialized: each one swaps out parts of `Current` (e.g. `Current.fatalError = spy`) or touches UserDefaults-backed state.
-- There is no `setUp`/`tearDown`. Do per-test setup in the suite `init` or in a helper called at the top of each `@Test`. Note: on a `struct` with no stored properties, a parameterless `init()` used only for side-effecting reset can trip SwiftLint's `unneeded_synthesized_initializer`. Prefer an explicit reset helper if that rule is enabled here.
+Unit tests use Swift Testing and live in `KonjugierenTests/`. Conventions for *writing* them
+(Foundation imports, parameterized tests, `.serialized`, `@MainActor` on nested suites, the
+mixed-case expectation convention) are in [`KonjugierenTests/CLAUDE.md`](KonjugierenTests/CLAUDE.md),
+which loads when working in that folder.
 
 ### Environment-gated harnesses
 
@@ -117,72 +109,6 @@ xcodebuild … -only-testing:KonjugierenTests/CorpusFormsDumpTests
 This is the third way a test run reports success while doing nothing, alongside the two
 `--only-testing` path mistakes above. For any gated, filtered, file-writing suite, the check that
 actually settles it is whether the output file exists and holds plausible contents.
-
-### ConjugatorTests Structure
-
-`ConjugatorTests.swift` is a critical test file for conjugations, containing ~25 test functions organized by conjugationgroup and feature.
-
-### The expectConjugation Helper
-
-All conjugation tests use a private helper function:
-
-```swift
-private func expectConjugation(
-  infinitiv: String,
-  conjugationgroup: Conjugationgroup,
-  expected: String,
-  sourceLocation: SourceLocation = #_sourceLocation
-) {
-  let result = Conjugator.conjugate(infinitiv: infinitiv, conjugationgroup: conjugationgroup)
-  switch result {
-  case .success(let conjugation):
-    #expect(conjugation == expected, "Expected \(infinitiv) → \(expected), got \(conjugation)", sourceLocation: sourceLocation)
-  case .failure(let err):
-    Issue.record("Failed to conjugate \(infinitiv): \(err)", sourceLocation: sourceLocation)
-  }
-}
-```
-
-The helper forwards `sourceLocation: SourceLocation = #_sourceLocation` to both `#expect` and `Issue.record`. Because `#_sourceLocation` resolves at each call site, a failing assertion reports the `expectConjugation(...)` line that actually failed rather than the helper's internal line. Without that, every one of the ~hundreds of assertions funneled through this helper would collapse to a single line, making a red test impossible to locate without bisecting. Any new shared assertion helper must do the same.
-
-### Mixed-Case Convention in Test Expectations
-
-Test expected values use mixed case to indicate ablaut changes:
-- **Lowercase** = expected/unchanged portions of the conjugation
-- **UPPERCASE** = unexpected/ablaut-changed portions
-
-Examples:
-```swift
-// Strong verb singen: i→a in Präteritum
-expectConjugation(infinitiv: "singen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "sAng")
-
-// Modal verb wissen: irregular Präsens
-expectConjugation(infinitiv: "wissen", conjugationgroup: .präsensIndikativ(.firstSingular), expected: "wEIsS")
-
-// Irregular sein: highly irregular forms
-expectConjugation(infinitiv: "sein", conjugationgroup: .präsensIndikativ(.firstSingular), expected: "BIN")
-```
-
-This convention helps verify that `Conjugator` correctly identifies and marks ablaut regions for UI highlighting.
-
-### Adding Tests for New Verbs
-
-When adding tests for a new verb or ablaut pattern:
-
-1. **Find the appropriate test function** based on what you're testing (e.g., `modalVerbs()` for modal verbs, `newAblautGroups()` for new patterns)
-
-2. **Add test cases** using the helper:
-   ```swift
-   // Comment explaining the verb pattern
-   expectConjugation(infinitiv: "verbname", conjugationgroup: .conjugationgroup(.person), expected: "expectedForm")
-   ```
-
-3. **Follow the mixed-case convention** for expected values: uppercase letters mark the ablaut-changed portions
-
-4. **Run the specific test** to verify:
-   ```bash
-   xcodebuild ... -only-testing:KonjugierenTests/ConjugatorTests/testFunctionName()
-   ```
 
 ## Architecture Overview
 
@@ -281,7 +207,7 @@ does not relax the style doc's broader ban on em dashes in other positions.
 
 ## Grep on long-line files
 
-Historical gotcha, resolved 2026-06-11: `grep -n` matches on long-line files (anything past ~250 characters) used to vanish silently from Bash-tool output (tracking issue anthropics/claude-code#56751). Root cause: the Bash tool's `grep` was secretly Claude Code's embedded ugrep via shell-snapshot shadowing, now de-shadowed machine-wide; matched lines of 300/1,000/5,000 characters now render intact. History and recovery recipe: [`docs/grep-gotchas.md`](docs/grep-gotchas.md). If silent vanishing ever recurs, the diagnostic still applies: `grep -c` count > 0 while `grep -n` shows nothing means output is being hidden; verify via `Read` with offset, and never treat grep silence as absence. (Separate and still real: the **Grep tool** truncates long matched lines to `[Omitted long matching line]`; see "Searching Within Localizable.xcstrings" below.)
+Never treat grep silence as absence on long-line files: if `grep -c` > 0 while `grep -n` shows nothing, verify via `Read` with an offset. The Bash-tool cause was fixed on 2026-06-11; history and recovery recipe are in [`docs/grep-gotchas.md`](docs/grep-gotchas.md). The **Grep tool** still truncates long matched lines to `[Omitted long matching line]`; see "Searching Within Localizable.xcstrings" below.
 
 ## Swift Coding Conventions
 
@@ -393,23 +319,7 @@ var title: Text { Text(L.Tips.tryQuizTitle) }
 
 ### Test Suites Need `@MainActor`
 
-Test suites that call into `@MainActor`-isolated app code must be annotated `@MainActor`. In Swift Testing, **`@MainActor` does not propagate to nested `@Suite` structs**. Each nested struct needs its own annotation:
-
-```swift
-@MainActor
-@Suite("Outer")
-struct OuterTests {
-  @MainActor  // Required, not inherited from parent
-  @Suite("Inner")
-  struct InnerTests {
-    @Test func example() { ... }
-  }
-}
-```
-
-A suite also needs `@MainActor` when it merely **compares two app values inside `#expect` whose `Equatable` conformance is main-actor-isolated**, with no "call into app code" required. A non-`@MainActor` suite doing `#expect(parsedSegments == [...])` on isolated model types (e.g. the `StringExtensions` markup enums) hits:
-
-> `main actor-isolated conformance of '…' to 'Equatable' cannot be used in nonisolated context`
+Including nested `@Suite` structs, which do not inherit it. Details in [`KonjugierenTests/CLAUDE.md`](KonjugierenTests/CLAUDE.md).
 
 ## Terminology
 
@@ -442,108 +352,16 @@ passes must land first, and the order between them matters.
 
 ## Dependency Injection
 
-The app uses a simple dependency injection pattern via `Models/World.swift`:
-
-```swift
-@MainActor var Current = World.chooseWorld()
-
-@MainActor
-@Observable
-class World {
-  var settings: Settings
-  var gameCenter: GameCenter
-  let getterSetter: GetterSetter
-  var languageModelService: LanguageModelService
-  var reviewPrompter: ReviewPrompter
-  var soundPlayer: SoundPlayer
-  var utterer: Utterer
-  var fatalError: FatalError
-  var analytics: Analytics
-  var session: URLSession
-  var verb: Verb?       // For deeplink navigation
-  var family: String?   // For deeplink navigation
-  var info: Info?       // For deeplink navigation
-  var selectedTab: TabSelection = .verbs
-  var shouldNavigateToTutor = false
-}
-```
-
-`World.chooseWorld()` selects the appropriate configuration:
-- **Device/Simulator**: Uses the `*Real` implementations: `GetterSetterReal`, `GameCenterReal`, `SoundPlayerReal`, `ReviewPrompterReal`, `UttererReal`, `FatalErrorReal`, `AnalyticsReal`, and `LanguageModelServiceReal` (on iOS 26+, else `LanguageModelServiceDummy`).
-- **Unit Tests**: Uses the fakes/dummies/spies: `GetterSetterFake`, `GameCenterDummy`, `SoundPlayerDummy`, `ReviewPrompterDummy`, `UttererDummy`, `LanguageModelServiceDummy`, `FatalErrorSpy`, `AnalyticsSpy`.
-
-Access dependencies anywhere using syntax like `Current.settings`. This pattern enables:
-- Easy mocking in tests (swap `Current` with a test-configured `World`)
-- Centralized dependency management
-- Reactive UI updates (World uses `@Observable`)
-- Deeplink handling via `Current.handleURL(_:)`
+Dependencies live on the global `@MainActor var Current` world in `Models/World.swift`
+(`Current.settings`, `Current.analytics`, …). `World.chooseWorld()` picks the `*Real`
+implementations on device and simulator, and fakes, dummies, and spies under unit tests.
 
 ## Settings System
 
-Settings are managed by `Settings.swift`, an `@Observable` class that persists to UserDefaults via `GetterSetter`.
-
-### Current Settings
-
-| Setting | Enum / Type | Default | Description |
-|---------|-------------|---------|-------------|
-| `conjugationgroupLang` | `ConjugationgroupLang` | `.german` | Display conjugationgroup names in German or English |
-| `thirdPersonPronounGender` | `ThirdPersonPronounGender` | `.er` | Which 3rd-person-singular pronoun to show (er/sie/es) |
-| `region` | `Region` | `.north`, seeded from locale | Which standard variety of German to show (north/austria/switzerland) |
-| `quizDifficulty` | `QuizDifficulty` | `.regular` | Quiz difficulty level |
-| `audioFeedback` | `AudioFeedback` | `.enable` | Enable/disable sound effects |
-| `searchScope` | `SearchScope` | `.infinitiveOnly` | Search by infinitive only or also by translation |
-| `appIcon` | `AppIcon` | `.hat` | Alternate app icon (hat/pretzel/bundestag) |
-| `hasSeenOnboarding` | `Bool` | `false` | Whether the user has completed onboarding |
-| `gameHighScore` | `Int` | `0` | Highest score achieved in the game |
-| `promptActionCount` | `Int` | `0` | Action count for review-prompt eligibility |
-| `lastReviewPromptDate` | `Date?` | `nil` | When the user was last prompted to review |
-
-### Adding a New Setting
-
-1. **Create the enum** in `Models/` following this pattern:
-
-```swift
-enum MySetting: String, CaseIterable {
-  case optionA
-  case optionB
-
-  var localizedMySetting: String {
-    switch self {
-    case .optionA: return L.MySetting.optionA
-    case .optionB: return L.MySetting.optionB
-    }
-  }
-}
-```
-
-2. **Add to Settings.swift**:
-
-```swift
-var mySetting: MySetting = mySettingDefault {
-  didSet {
-    if mySetting != oldValue {
-      getterSetter.set(key: Settings.mySettingKey, value: "\(mySetting)")
-    }
-  }
-}
-static let mySettingKey = "mySetting"
-static let mySettingDefault: MySetting = .optionA
-
-// In init(), add one line: the generic `restore` overload handles the
-// load-or-seed dance for any `RawRepresentable` (String raw value) setting:
-mySetting = restore(key: Settings.mySettingKey, default: Settings.mySettingDefault)
-```
-
-`restore` is overloaded for the common storage shapes, so the same one-line call works for non-enum settings too:
-
-- `RawRepresentable` (String raw value), for enums like `MySetting` above.
-- `Bool`, e.g. `hasSeenOnboarding`.
-- `Int`, e.g. `gameHighScore`, `promptActionCount`.
-- `Date?`, via `restore(key:)` (no default; returns `nil` and writes nothing when absent), e.g. `lastReviewPromptDate`.
-
-3. **Add localization strings** to `L.swift` and `Localizable.xcstrings`
-
-4. **Add UI** to `SettingsView.swift`
+Settings are managed by `Settings.swift`, an `@Observable` class that persists to UserDefaults via
+`GetterSetter`. To add one, follow an existing setting through `Settings.swift` (its `restore`
+overloads cover enum, `Bool`, `Int`, and `Date?` storage), `L.swift`, `Localizable.xcstrings`, and
+`SettingsView.swift`.
 
 ### Setting Description Consistency
 
@@ -563,50 +381,8 @@ See [`docs/control-center-controls.md`](docs/control-center-controls.md) for iOS
 
 ## Localization System
 
-The app uses a two-part localization system:
-
-### L.swift
-
-Type-safe localization accessors organized by feature:
-
-```swift
-enum L {
-  enum Settings {
-    static var conjugationgroupLangHeading: String {
-      String(localized: "Settings.conjugationgroupLangHeading")
-    }
-  }
-
-  enum ThirdPersonPronounGender {
-    static var er: String { String(localized: "ThirdPersonPronounGender.er") }
-    static var sie: String { String(localized: "ThirdPersonPronounGender.sie") }
-    static var es: String { String(localized: "ThirdPersonPronounGender.es") }
-  }
-}
-```
-
-### Localizable.xcstrings
-
-JSON-based string catalog supporting multiple languages. Each key maps to translations:
-
-```json
-"Settings.thirdPersonPronounGenderHeading" : {
-  "localizations" : {
-    "de" : {
-      "stringUnit" : {
-        "state" : "translated",
-        "value" : "Pronomen 3. Person"
-      }
-    },
-    "en" : {
-      "stringUnit" : {
-        "state" : "translated",
-        "value" : "3P-Pronoun Gender"
-      }
-    }
-  }
-}
-```
+Type-safe accessors in `L.swift` (`L.Feature.purpose`) are backed by keys of the same shape
+(`Feature.purpose`) in `Konjugieren/Assets/Localizable.xcstrings`. A new string needs both.
 
 ### Editing Localizable.xcstrings Safely
 
@@ -673,17 +449,6 @@ Each localization value in `Localizable.xcstrings` occupies a single very long J
 1. **To find which key contains a phrase:** Use Grep to get the line number, then use Read with an offset to view that line.
 2. **To find and replace text:** Use Python via Bash. Use a unique nearby string as an anchor to target the correct language section (e.g., a German word like `könnte bedeuten` to distinguish `de` from `en`).
 
-### Adding New Localized Strings
-
-1. Add the accessor to `L.swift` in the appropriate enum
-2. Add the key and translations to `Localizable.xcstrings`
-3. Use via `L.FeatureName.stringName` in code
-
-### Naming Conventions
-
-- Keys follow the pattern: `FeatureName.stringPurpose`
-- Examples: `Settings.conjugationgroupLangHeading`, `Navigation.verbs`, `History.stardustTitle`
-
 ### Rich Text Markup in Localizable.xcstrings
 
 Long-form Info text (like `verbHistoryText`, `dedicationText`, `creditsText`) uses a custom markup system. The markup is parsed by `StringExtensions.swift` and rendered by `RichTextView.swift`:
@@ -716,32 +481,10 @@ When the English version of a long text is edited, the German version must be re
 
 ### Widget Localization (WidgetL)
 
-The `KonjugierenWidget` extension ships as its own `.appex` bundle with its **own** string catalog, `KonjugierenWidget/Localizable.xcstrings`, separate from the app's `Konjugieren/Assets/Localizable.xcstrings`. Widget user-facing strings (gallery names/descriptions, Control Center labels, Live Activity "Wave"/"Game Over", quiz "Correct!"/"Incorrect") route through `WidgetL` (`KonjugierenWidget/WidgetL.swift`), the widget's analogue to the app's `L`. Catalog keys follow `L`'s `Group.member` convention.
-
-`WidgetL` exposes **two accessor styles**, dictated by isolation and the type the call site needs:
-
-```swift
-enum WidgetL {
-  enum Game {
-    static var over: String { String(localized: "Game.over") }          // @MainActor SwiftUI / WidgetConfiguration
-    static func wave(_ number: Int) -> String { String(localized: "Game.wave \(number)") }
-  }
-
-  enum QuickQuiz {
-    nonisolated static var name: LocalizedStringResource {              // nonisolated control modifiers
-      LocalizedStringResource("QuickQuiz.name")
-    }
-  }
-}
-```
-
-- **`String` via `String(localized:)`** for `@MainActor` SwiftUI / `WidgetConfiguration` strings (mirrors `L`).
-- **`nonisolated` `LocalizedStringResource`** accessors for the Control Center modifiers that require that type in a nonisolated context.
-
-Two important exceptions where strings **cannot** route through `WidgetL` and stay inline against the same catalog keys:
-
-1. **AppIntent titles and `@Parameter(title:)`**: `appintentsmetadataprocessor` parses source statically and requires a string literal or a direct `LocalizedStringResource(...)` initializer call, not an accessor. These four sites are inline by necessity.
-2. **`Shared/` intents (`OpenQuizIntent`, `OpenRandomVerbIntent`)**: `Shared/` compiles into **both** the app and widget targets, and `LocalizedStringResource` resolves against whichever bundle runs. Their keys therefore live in **both** `Localizable.xcstrings` catalogs.
+The widget extension has its **own** string catalog, `KonjugierenWidget/Localizable.xcstrings`,
+and its own accessor enum, `WidgetL`; see [`KonjugierenWidget/CLAUDE.md`](KonjugierenWidget/CLAUDE.md).
+Strings used by `Shared/` intents (`OpenQuizIntent`, `OpenRandomVerbIntent`) compile into both
+targets, so their keys must live in **both** catalogs.
 
 ## VoiceOver and Mixed-Language Pronunciation
 

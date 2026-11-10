@@ -8130,3 +8130,59 @@ Three example sentences now illustrate senses the corrected glosses dropped (aus
 aufrauchen, verstinken). They were added to Part 4 of the plan, not fixed here. The at-odds
 count held at 7; the audit reports `CONTRADICTS` only for the two keeps; the suite is 217 tests
 with 50 ruled readings pinned.
+
+## Defect plan, Part 2: an override keeps its prefix (2026-11-10)
+
+bedürfen showed ich darf, vermögen showed ich mag, and entgelten showed du galtest. All three
+had one cause. An ablaut entry ending in `*` is a full override, the conjugation spelled out
+whole, and `Conjugator.applyAblaut` returned it bare. Its five callers then returned it as the
+complete answer, so a derivative's prefix never came back. The fix sits in `applyAblaut`
+itself, so every caller inherits it. The prefix run is recovered from the reading's own stem,
+`stem.prefix(prefixes.totalLength)`, and put in front of the override. One more rule was
+needed for the participle: essen and tun override it with the ge- already inside (`gegEssen*`,
+`getAn*`), which is right after a separable prefix (aufgegessen) and wrong after an inseparable
+one, so `takesGe` decides whether the ge- comes back out (vertan).
+
+Only three shipping verbs sit on an override group behind a prefix, so the imperative path and
+the inseparable participle had no real verb to test them. The plan said to check the imperative
+with a test and not by reasoning, because `withSeparablePrefix` detaches the run by dropping its
+length from the front of the form, an assumption that overrides used to break. The test inserts
+three real verbs the corpus lacks (dasein, vertun, aufessen) into `Verb.verbs` for the length of
+one test and removes them in a `defer`. That is safe only because the body is synchronous and on
+the main actor, so no other test can run in between. The comment says so, because the pattern
+would be a race in an async test.
+
+**The expected values were nearly taken from the wrong source.** The plan says "from
+Wiktionary", and the kaikki snapshot is Wiktionary, but kaikki gives entgelten a weak table
+(entgeltete, entgeltet). That is the auto-generated-weak-table defect from July, and entgelten
+was already listed in `wiktionary-defects.json`. German Wiktionary gave the strong paradigm the
+tests now pin. bedürfen and vermögen came from kaikki, which agrees with German Wiktionary for
+both.
+
+**The gelten group lost its two overrides.** `gAltest*` and `gAltet*` existed only to supply
+the epenthetic e, which the conjugator has added on its own since July. The group is now
+`I,a2s,a3s|A,bA|Ö,dA|O,pp`, the pinned gAltest and gAltet still pass, and gelten verifies under
+it. The plan's caution held: dürfen and mögen have no ending in the first and third person
+singular, so their overrides stay.
+
+**The at-odds count fell from 7 to 5.** bedürfen and vermögen had been in it all along. The
+classifier could not reproduce them on their shipped encoding and rescued each with a different
+one, and the roadmap's "Known gaps" had filed them as "probably correct as shipped; unverified".
+They were not correct. The remaining five (helfen, schaffen, vergleichen, verstoßen,
+zusammenspinnen) have nothing to do with overrides.
+
+**The unblocking the plan hoped for is only half there.** Derivatives of tun, essen, werden,
+and the modals could not ship while overrides dropped prefixes, and the plan expected some to
+verify now. None does: 94 incoming candidates on those bases remain unverified, because the
+classifier never proposes an override group and falls back to weak (abtute, aufesst). The
+conjugator would get them right. A classifier hypothesis is what's missing, and the roadmap now
+says so under "Still open".
+
+Two comments in `CorpusFormsDumpTests.swift` were also corrected. One described the old
+behavior as a fact about overrides. The other gave a run command with the suite's display name,
+which matches nothing and reports success, the trap Part 0 hit. That is Part 5c done early,
+since it was the same file.
+
+What a user would see changed: bedürfen, vermögen, and entgelten show their own forms, and
+nothing else moves. Scan 1 now finds no prefixed verb missing its prefix, the suite is 219
+tests, and the simulator shows bedarf, vermag, and entgaltest.

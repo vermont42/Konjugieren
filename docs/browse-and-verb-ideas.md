@@ -1030,7 +1030,9 @@ not this list, is the current statement of the defects.
    vermagst, vermag. entgelten shows du galtest and ihr galtet for entgaltest and entgaltet. All
    three sit on ablaut groups that replace the whole stem, and the replacement appears to drop
    the inseparable prefix (**inference** about the cause). A scan of the July map found no other
-   verb with the symptom.
+   verb with the symptom. **Fixed on `main` 2026-11-10** by Part 2 of the defect plan. The
+   inference was right: `Conjugator` returned an override without the reading's prefixes, and
+   now puts them back.
 3. **Two tables disagree with the app's own example sentences.** hauen is classed as weak with
    the Perfektpartizip gehaut, and the example for zusammenhauen has zusammengehauen. The
    standard participle is gehauen (**background**). krauchen is classed as strong (kroch,

@@ -228,8 +228,15 @@ enum Conjugator {
         let ablaut = ablautGroup.ablauts[conjugationgroup]
       {
         if ablaut.hasSuffix("*") {
-          let overrideValue = String(ablaut.dropLast())
-          return (overrideValue, true)
+          // An override spells out the base verb's whole conjugation, so a derivative's
+          // prefixes go back in front of it: be + darf. A participle override already carries
+          // its ge-, which an inseparable prefix must take back out: ver + tan, not ver + getan.
+          let prefixHead = String(stamm.prefix(reading.prefixes.totalLength))
+          var overrideValue = String(ablaut.dropLast())
+          if conjugationgroup == .perfektpartizip && !reading.prefixes.takesGe && overrideValue.hasPrefix("ge") {
+            overrideValue = String(overrideValue.dropFirst(2))
+          }
+          return (prefixHead + overrideValue, true)
         }
 
         var result = stamm

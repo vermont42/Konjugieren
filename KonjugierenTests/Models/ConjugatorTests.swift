@@ -1068,6 +1068,68 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "weichen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt geweicht", readingIndex: 1)
   }
 
+  // Defect plan, Part 2. A full override (a trailing * in AblautGroups.xml) spells out the
+  // base verb's conjugation, and until 2026-11-10 the derivative's prefix was never put back:
+  // bedürfen showed ich darf. Expectations are German Wiktionary's; kaikki's weak table for
+  // entgelten is a known English-Wiktionary defect (verbdata/wiktionary-defects.json).
+  @Test func overridesKeepTheirPrefix() {
+    let bedürfen = ["bedarF", "bedArfst", "bedarF", "bedürfen", "bedürft", "bedürfen"]
+    let vermögen = ["vermAG", "vermAGst", "vermAG", "vermögen", "vermögt", "vermögen"]
+    let entgelten = ["entgAlt", "entgAltest", "entgAlt", "entgAlten", "entgAltet", "entgAlten"]
+    for (personNumber, index) in zip(PersonNumber.allCases, 0...) {
+      expectConjugation(infinitiv: "bedürfen", conjugationgroup: .präsensIndikativ(personNumber), expected: bedürfen[index])
+      expectConjugation(infinitiv: "vermögen", conjugationgroup: .präsensIndikativ(personNumber), expected: vermögen[index])
+      expectConjugation(infinitiv: "entgelten", conjugationgroup: .präteritumIndikativ(personNumber), expected: entgelten[index])
+    }
+    expectConjugation(infinitiv: "bedürfen", conjugationgroup: .perfektpartizip, expected: "bedUrft")
+    expectConjugation(infinitiv: "vermögen", conjugationgroup: .perfektpartizip, expected: "vermOCHt")
+    expectConjugation(infinitiv: "entgelten", conjugationgroup: .perfektpartizip, expected: "entgOlten")
+  }
+
+  // No shipping verb puts an override behind a separable prefix or a participle override
+  // behind an inseparable one, so these three real verbs are inserted for the length of this
+  // synchronous test. A @MainActor body that does not suspend cannot interleave with another
+  // test, so Verb.verbs is restored before anything else reads it.
+  @Test func overridesBehindEachKindOfPrefix() {
+    let synthetic = [
+      Self.syntheticVerb("dasein", group: "sein", prefixes: [.separable("da")], ablautRange: 2..<5),
+      Self.syntheticVerb("vertun", group: "tun", prefixes: [.inseparable("ver")], ablautRange: 4..<5),
+      Self.syntheticVerb("aufessen", group: "essen", prefixes: [.separable("auf")], ablautRange: 3..<6),
+    ]
+    for verb in synthetic {
+      Verb.verbs[verb.infinitiv] = verb
+    }
+    defer {
+      for verb in synthetic {
+        Verb.verbs[verb.infinitiv] = nil
+      }
+    }
+
+    // The Imperativ path detaches the separable run by dropping its length from the front of
+    // the form, which only works now that an override's form begins with that run.
+    expectConjugation(infinitiv: "dasein", conjugationgroup: .präsensIndikativ(.firstSingular), expected: "daBIN")
+    expectConjugation(infinitiv: "dasein", conjugationgroup: .imperativ(.secondSingular), expected: "seI da")
+    expectConjugation(infinitiv: "dasein", conjugationgroup: .imperativ(.secondPlural), expected: "seiD da")
+
+    // The participle override carries its own ge-: kept after a separable prefix, removed
+    // after an inseparable one.
+    expectConjugation(infinitiv: "aufessen", conjugationgroup: .perfektpartizip, expected: "aufgegEssen")
+    expectConjugation(infinitiv: "vertun", conjugationgroup: .perfektpartizip, expected: "vertAn")
+    expectConjugation(infinitiv: "vertun", conjugationgroup: .präteritumIndikativ(.secondSingular), expected: "vertATest")
+  }
+
+  private static func syntheticVerb(_ infinitiv: String, group: String, prefixes: [Prefix], ablautRange: Range<Int>) -> Verb {
+    let reading = Reading(
+      infinitiv: infinitiv,
+      translation: "",
+      family: .strong(ablautGroup: group, ablautStartIndex: ablautRange.lowerBound, ablautEndIndex: ablautRange.upperBound),
+      auxiliary: .haben,
+      prefixes: prefixes,
+      auxiliaryIsRegional: false
+    )
+    return Verb(infinitiv: infinitiv, hits: 0, hitsAreProvisional: false, frequency: 0, frequencyIcon: "", readings: [reading])
+  }
+
   // Defect plan, Part 1. The tranche-2 importer took a verb's auxiliary from kaikki's
   // first-listed one and its gloss from a separate sense, so aufstehen shipped "get up" with
   // haben. Every expectation here comes from DWDS or German Wiktionary, never from the engine;

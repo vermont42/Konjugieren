@@ -27,7 +27,7 @@
   <ag e="gehen" a="ING,bA,dA|ANG,pp" />
   <ag e="greifen" a="Iff,bA,dA,pp" />
   <ag e="gelingen" a="A,bA|Ä,dA|U,pp" />
-  <ag e="gelten" a="I,a2s,a3s|A,b1s,b3s,b1p,b3p|gAltest*,b2s|gAltet*,b2p|Ö,dA|O,pp" />
+  <ag e="gelten" a="I,a2s,a3s|A,bA|Ö,dA|O,pp" />
   <ag e="gewinnen" a="A,bA|Ä,dA|O,pp" />
   <ag e="haben" a="A,a2s,a3s|AT,bA|ÄT,dA" />
   <ag e="halten" a="Ä,a2s,a3s|IE,bA,dA" />

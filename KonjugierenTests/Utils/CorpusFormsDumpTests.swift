@@ -16,7 +16,11 @@ import Testing
 //                    {"verb": "fangen",   "contiguous": true}] }
 //
 // Run: TEST_RUNNER_KONJUGIEREN_FORMS_OUT="$PWD/corpus/working/forms.json" \
-//        "$IBV_SCRIPTS/run_tests.sh" --only-testing "KonjugierenTests/CorpusFormsDump/dumpForms()"
+//        "$IBV_SCRIPTS/run_tests.sh" --only-testing "KonjugierenTests/CorpusFormsDumpTests/dumpForms()"
+//
+// The filter names the struct, CorpusFormsDumpTests, not the @Suite display name. Until
+// 2026-11-10 this line said "CorpusFormsDump", which matches nothing, so the run reported
+// success without writing the file. Confirm that the output's modification time changed.
 //
 // The TEST_RUNNER_ prefix is required and is stripped by xcodebuild before the variable
 // reaches the test process; the bare name stays invisible to the simulator, leaving the
@@ -149,11 +153,13 @@ struct CorpusFormsDumpTests {
   /// The main-clause form of `form`, with its separable run stranded at clause end, or nil
   /// when the verb has no separable prefix.
   ///
-  /// The `hasPrefix` test is not redundant with `run.isEmpty`. An ablaut group may fully
-  /// override the stem (the trailing `*` convention in AblautGroups.xml) and a full
-  /// override replaces the stem outright, prefix and all, so the run is not guaranteed to
-  /// survive into the conjugated form. Dropping a fixed character count from such a form
-  /// would silently emit a mangled token.
+  /// The `hasPrefix` test is a guard, not a known case. Until 2026-11-10 a full override (the
+  /// trailing `*` convention in AblautGroups.xml) replaced the stem prefix and all, so a
+  /// derivative's run did not survive into the form: bedürfen came out as darf. Conjugator
+  /// now puts the prefixes back in front of an override, so every form of a separable verb
+  /// should begin with its run. The test stays because dropping a fixed character count from
+  /// a form that does not would silently emit a mangled token, and scan 1 of
+  /// plans/fix-reference-defects.md is the check that would notice.
   private func strandingParticle(form: String, run: String) -> String? {
     guard !run.isEmpty, form.lowercased().hasPrefix(run.lowercased()) else {
       return nil

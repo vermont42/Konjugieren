@@ -81,8 +81,8 @@ and the gating. Where they disagree on *how*, that file wins.
 ## The one check that runs through all of it
 
 Every step from 4 onward is verified the same way. The classify-and-verify pipeline compares the
-app against Wiktionary for 3,567 shipping verbs, and the corpus currently stands at **7 verbs at
-odds, 99.9% verified**.
+app against Wiktionary for 3,567 shipping verbs, and the corpus currently stands at **5 verbs at
+odds, 99.9% verified** (7 until 2026-11-10, when bedürfen and vermögen were fixed).
 
 **Rebuild `candidates.json` first, every time.** The recipe below starts with `build_candidates.py`
 for a reason that is invisible until it bites: `alreadyShipping` is computed there and baked into
@@ -213,6 +213,17 @@ the choice between them is about which data the corpus has to carry.
   same as complete; the guard was wrong, not merely incomplete.
 - **~28 verbs still fail the prefix check** — mostly noun and adjective compounds whose participle
   gives no usable evidence (*arschkriechen*, *bauchreden*).
+- **Derivatives of the override bases are unblocked in `Conjugator` and still blocked in the
+  classifier** (2026-11-10). Until Part 2 of `plans/fix-reference-defects.md`, a full override
+  dropped the derivative's prefix, so no derivative of tun, essen, werden, können, or the other
+  modals could ship correctly. `Conjugator` now restores the prefix, and removes an override
+  participle's ge- after an inseparable one (ver + tan). But 94 incoming candidates on those
+  bases remain `unverified` (38 on können, 28 on tun, 9 on essen, 8 on wollen, 4 each on müssen
+  and werden, 3 on dürfen and mögen; among them *abtun*, *aufessen*, *loswerden*), because the classifier never proposes an override group:
+  `derive` falls back to weak and emits *abtute* and *aufesst*. The missing hypothesis is "try the
+  base verb's own group", which the shipping-group retry would supply if it ran for them. Not
+  part of that plan, which imports nothing. They are not in `tranche2-deferred.txt`, which lists
+  only verbs that verified.
 
 Unlike the dual-auxiliary list, `verbdata/tranche2-deferred.txt` is **recomputed on every run**,
 so it always describes the current corpus. Regenerate it with
@@ -455,6 +466,11 @@ Small things the pipeline surfaced that no plan currently owns. None blocks the 
   page has no prefix and no base to compare against, and is caught only if that list names it.
 - **Three modals resist the pipeline** — *sollen*, *bedürfen*, *vermögen* use full-override
   ablaut groups the classifier cannot derive. Probably correct as shipped; unverified.
+  **Corrected 2026-11-10:** two of the three were not correct. bedürfen and vermögen lost their
+  prefix under the override (ich darf, ich mag), and the classifier rescued each with a different
+  encoding, which is why both sat in the at-odds count. Part 2 of
+  `plans/fix-reference-defects.md` fixed the cause, both now verify on their shipped encoding,
+  and the at-odds count fell from 7 to 5.
 - ~~**`prompts/prefix_coverage.md` is written and not executed.**~~ **Executed 2026-07-19**,
   commit `08a5e93`. The Families tab bucketed verbs into a hand-curated prefix list, so 923 verbs
   the app conjugates correctly could not be reached by browsing. Everything in `prompts/` is now

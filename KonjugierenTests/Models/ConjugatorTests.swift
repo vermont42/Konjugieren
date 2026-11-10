@@ -1066,6 +1066,19 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "übersetzen", conjugationgroup: .perfektpartizip, expected: "übergesetzt", readingIndex: 1)
     expectConjugation(infinitiv: "übersetzen", conjugationgroup: .imperativ(.secondPlural), expected: "setzt über", readingIndex: 1)
     expectConjugation(infinitiv: "übersetzen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "IST übergesetzt", readingIndex: 1)
+
+    // Part 6 of the defect plan, from DWDS: über*fahren "run over" (hat überfahren) beside
+    // über+fahren "cross by boat" (ist übergefahren), and um*fahren "drive around" (hat
+    // umfahren) beside um+fahren "knock over" (hat umgefahren), which keeps haben.
+    expectConjugation(infinitiv: "überfahren", conjugationgroup: .perfektpartizip, expected: "überfahren")
+    expectConjugation(infinitiv: "überfahren", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt überfahren")
+    expectConjugation(infinitiv: "überfahren", conjugationgroup: .perfektpartizip, expected: "übergefahren", readingIndex: 1)
+    expectConjugation(infinitiv: "überfahren", conjugationgroup: .imperativ(.secondPlural), expected: "fahrt über", readingIndex: 1)
+    expectConjugation(infinitiv: "überfahren", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "IST übergefahren", readingIndex: 1)
+
+    expectConjugation(infinitiv: "umfahren", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt umfahren")
+    expectConjugation(infinitiv: "umfahren", conjugationgroup: .imperativ(.secondPlural), expected: "fahrt um", readingIndex: 1)
+    expectConjugation(infinitiv: "umfahren", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt umgefahren", readingIndex: 1)
   }
 
   // Class 4 again, and class 5 at once: weichen's "yield" reading is strong (wich, gewichen)
@@ -1217,6 +1230,31 @@ struct ConjugatorTests {
     ("abhauen", 0, .sein),
     ("anhängen", 0, .haben),
     ("anhängen", 1, .haben),
+    ("einfahren", 0, .sein),
+    ("einfahren", 1, .haben),
+    ("rückwärtsfahren", 0, .sein),
+    ("mitfahren", 0, .sein),
+    ("überfahren", 0, .haben),
+    ("überfahren", 1, .sein),
+    ("weiterfahren", 0, .sein),
+    ("hochfahren", 0, .haben),
+    ("hochfahren", 1, .sein),
+    ("herunterfahren", 0, .sein),
+    ("herunterfahren", 1, .haben),
+    ("hinfahren", 0, .sein),
+    ("hinfahren", 1, .haben),
+    ("ausfahren", 0, .sein),
+    ("ausfahren", 1, .haben),
+    ("fortfahren", 0, .haben),
+    ("fortfahren", 1, .sein),
+    ("vorfahren", 0, .sein),
+    ("vorfahren", 1, .haben),
+    ("festfahren", 0, .haben),
+    ("entlangfahren", 0, .sein),
+    ("herauffahren", 0, .sein),
+    ("drauflosfahren", 0, .sein),
+    ("umfahren", 0, .haben),
+    ("umfahren", 1, .haben),
   ]
 
   @Test("Each ruled reading carries its dictionary auxiliary", arguments: auxiliaryRulings)

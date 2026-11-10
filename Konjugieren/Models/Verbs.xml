@@ -1622,7 +1622,8 @@
     <reading tn="select, choose" fa="s" ag="sehen" />
   </verb>
   <verb in="aus+f^a^hren" hi="80096" ic="seated.side.left.steeringwheel">
-    <reading tn="go out" fa="s" ag="fahren" />
+    <reading tn="drive out, go for a drive" fa="s" ag="fahren" ay="s" />
+    <reading tn="deliver, take for a drive" fa="s" ag="fahren" />
   </verb>
   <verb in="aus+f^all^en" hi="1457865" ic="fall">
     <reading tn="fail, be cancelled" fa="s" ag="fallen" ay="s" />
@@ -3101,7 +3102,7 @@
     <reading tn="get straight down to work" fa="w" />
   </verb>
   <verb in="drauflos+f^a^hren" hi="536" ic="seated.side.left.steeringwheel">
-    <reading tn="hit the road without a chosen destination" fa="s" ag="fahren" />
+    <reading tn="hit the road without a chosen destination" fa="s" ag="fahren" ay="s" />
   </verb>
   <verb in="drauflos+reden" hi="504" ic="wave">
     <reading tn="rattle on, prattle" fa="w" />
@@ -3384,7 +3385,8 @@
     <reading tn="harvest, reap" fa="w" />
   </verb>
   <verb in="ein+f^a^hren" hi="580160" ic="seated.side.left.steeringwheel">
-    <reading tn="drive in" fa="s" ag="fahren" />
+    <reading tn="drive in, pull in" fa="s" ag="fahren" ay="s" />
+    <reading tn="bring in (a harvest), break in (a car)" fa="s" ag="fahren" />
   </verb>
   <verb in="ein+f^all^en" hi="675768" ic="fall">
     <reading tn="occur to, collapse" fa="s" ag="fallen" ay="s" />
@@ -3915,7 +3917,7 @@
     <reading tn="unload, discharge" fa="s" ag="fahren" />
   </verb>
   <verb in="entlang+f^a^hren" hi="12908" ic="seated.side.left.steeringwheel">
-    <reading tn="drive along" fa="s" ag="fahren" />
+    <reading tn="drive along" fa="s" ag="fahren" ay="s" />
   </verb>
   <verb in="entlang+g^eh^en" hi="8884" ic="walk">
     <reading tn="walk along" fa="s" ag="gehen" ay="s" />
@@ -4707,7 +4709,8 @@
     <reading tn="go on, continue" fa="w" />
   </verb>
   <verb in="fort+f^a^hren" hi="76709" ic="seated.side.left.steeringwheel">
-    <reading tn="continue" fa="s" ag="fahren" />
+    <reading tn="continue, carry on" fa="s" ag="fahren" />
+    <reading tn="drive away, leave" fa="s" ag="fahren" ay="s" />
   </verb>
   <verb in="fort+führen" hi="393344" ic="walk.arrival">
     <reading tn="continue" fa="w" />
@@ -5234,7 +5237,7 @@
     <reading tn="bring up" fa="m" ag="bringen" />
   </verb>
   <verb in="herauf+f^a^hren" hi="1116" ic="seated.side.left.steeringwheel">
-    <reading tn="drive up" fa="s" ag="fahren" />
+    <reading tn="drive up" fa="s" ag="fahren" ay="s" />
   </verb>
   <verb in="herauf+g^e^ben" hi="11" ic="arms.open">
     <reading tn="give something upwards" fa="s" ag="geben" />
@@ -5504,7 +5507,8 @@
     <reading tn="press down, push down" fa="w" />
   </verb>
   <verb in="herunter+f^a^hren" hi="90416" ic="seated.side.left.steeringwheel">
-    <reading tn="drive down" fa="s" ag="fahren" />
+    <reading tn="drive down, come down" fa="s" ag="fahren" ay="s" />
+    <reading tn="shut down, scale back" fa="s" ag="fahren" />
   </verb>
   <verb in="herunter+f^all^en" hi="34307" ic="fall">
     <reading tn="fall down" fa="s" ag="fallen" ay="s" />
@@ -5685,7 +5689,8 @@
     <reading tn="pull in, drag in" fa="s" ag="ziehen" />
   </verb>
   <verb in="hin+f^a^hren" hi="87262" ic="seated.side.left.steeringwheel">
-    <reading tn="drive there, travel there" fa="s" ag="fahren" />
+    <reading tn="go there, travel there" fa="s" ag="fahren" ay="s" />
+    <reading tn="drive (someone) there, take there" fa="s" ag="fahren" />
   </verb>
   <verb in="hin+f^all^en" hi="39928" ic="fall">
     <reading tn="fall down" fa="s" ag="fallen" ay="s" />
@@ -5862,7 +5867,8 @@
     <reading tn="turn up" fa="w" />
   </verb>
   <verb in="hoch+f^a^hren" hi="111115" ic="seated.side.left.steeringwheel">
-    <reading tn="boot up, start up" fa="s" ag="fahren" />
+    <reading tn="boot up, power up" fa="s" ag="fahren" />
+    <reading tn="jump up, start (from sleep)" fa="s" ag="fahren" ay="s" />
   </verb>
   <verb in="hoch+fl^ie^gen" hi="3005" ic="skiing.downhill">
     <reading tn="fly up" fa="s" ag="bieten" ay="s" />
@@ -6427,7 +6433,7 @@
     <reading tn="also experience, also be present" fa="w" />
   </verb>
   <verb in="mit+f^a^hren" hi="176851" ic="seated.side.left.steeringwheel">
-    <reading tn="ride along" fa="s" ag="fahren" />
+    <reading tn="ride along" fa="s" ag="fahren" ay="s" />
   </verb>
   <verb in="mit+folgen" hi="84" ic="walk.motion">
     <reading tn="follow along" fa="w" />
@@ -7174,7 +7180,7 @@
     <reading tn="transfer back, wire back" fa="s" ag="bleiben" />
   </verb>
   <verb in="rückwärts+f^a^hren" hi="573672" hp="y" ic="seated.side.left.steeringwheel">
-    <reading tn="reverse" fa="s" ag="fahren" />
+    <reading tn="drive backwards, reverse" fa="s" ag="fahren" ay="s" />
   </verb>
   <verb in="rück+zahlen" hi="250" ic="arms.open">
     <reading tn="pay back, repay, refund" fa="w" />
@@ -7851,6 +7857,7 @@
   </verb>
   <verb in="über*f^a^hren" hi="148369" ic="seated.side.left.steeringwheel">
     <reading tn="run over, run down" fa="s" ag="fahren" />
+    <reading in="über+f^a^hren" tn="cross (by boat), ferry across" fa="s" ag="fahren" ay="s" />
   </verb>
   <verb in="über*f^all^en" hi="60135" ic="fall">
     <reading tn="attack, assault" fa="s" ag="fallen" />
@@ -8124,6 +8131,7 @@
   </verb>
   <verb in="um*f^a^hren" hi="83303" ic="seated.side.left.steeringwheel">
     <reading tn="drive or sail around" fa="s" ag="fahren" />
+    <reading in="um+f^a^hren" tn="knock over (with a vehicle)" fa="s" ag="fahren" />
   </verb>
   <verb in="um+f^all^en" hi="61468" ic="fall">
     <reading tn="topple, fall down" fa="s" ag="fallen" ay="s" />
@@ -9412,7 +9420,8 @@
     <reading tn="withhold" fa="s" ag="halten" />
   </verb>
   <verb in="vor+f^a^hren" hi="73911" ic="seated.side.left.steeringwheel">
-    <reading tn="drive up" fa="s" ag="fahren" />
+    <reading tn="pull up, drive up (to a building)" fa="s" ag="fahren" ay="s" />
+    <reading tn="bring (a car) round" fa="s" ag="fahren" />
   </verb>
   <verb in="vor+f^i^nden" hi="276068" ic="arms.open">
     <reading tn="find, discover" fa="s" ag="finden" />
@@ -9822,7 +9831,7 @@
     <reading tn="develop further" fa="w" />
   </verb>
   <verb in="weiter+f^a^hren" hi="119321" ic="seated.side.left.steeringwheel">
-    <reading tn="continue driving" fa="s" ag="fahren" />
+    <reading tn="continue driving" fa="s" ag="fahren" ay="s" />
   </verb>
   <verb in="weiter+führen" hi="436971" ic="walk.arrival">
     <reading tn="continue" fa="w" />

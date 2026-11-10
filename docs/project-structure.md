@@ -267,8 +267,7 @@ docs/
 
 plans/                         # Plans written for future sessions to carry out
 ├── browse-and-verb-ideation.md # Brief for ideating Browse and Verb screen improvements, in parallel with the quiz work in docs/pedagogy.md
-├── fix-reference-defects.md   # Plan for fixing the defects that ideation found, to be carried out before any idea is built: wrong auxiliaries (37 contradicted by kaikki, 141 needing a ruling) with a second reading wherever both senses are current, prefixes lost under full-override ablaut entries, two small code bugs, five example sentences, three documents, and the backen/hauen participles
-└── fix-reference-defects-audit.py # Prototype of that plan's auxiliary audit: compares every shipped auxiliary with the kaikki snapshot, sense by sense, and prints a verdict per verb. To be promoted to verbdata/ in the plan's Part 6
+└── fix-reference-defects.md   # Plan for fixing the defects that ideation found, to be carried out before any idea is built: wrong auxiliaries (37 contradicted by kaikki, 141 needing a ruling) with a second reading wherever both senses are current, prefixes lost under full-override ablaut entries, two small code bugs, five example sentences, three documents, and the backen/hauen participles. Its audit prototype was promoted to verbdata/audit_auxiliaries.py
 
 scripts/
 ├── check_docs.py              # Asserts the checkable claims the docs make about themselves: corpus/ablaut/test counts in the four cache files, relative-link targets, roadmap commit hashes, the kaikki attribution invariant, and etymology completeness
@@ -301,6 +300,7 @@ verbdata/                      # Verb-corpus-expansion data (see docs/verb-sourc
 ├── import_tranche1.py         # One-shot import of the 78 missing strong bases (roadmap step 7); the decision table is the artifact
 ├── import_tranche2.py         # Rule-driven import of 2,303 prefixed derivatives (roadmap step 8); hi derived from each base
 ├── tranche2-dual-auxiliary.txt # 176 imported verbs shipping one reading of two; worklist for the dual-auxiliary pass
+├── audit_auxiliaries.py       # Compares every shipped reading's auxiliary with kaikki, sense by sense, and with auxiliary-rulings.tsv. --unruled prints the worklist; --check fails on any reading that disagrees with its ruling and on any listed verb still unruled
 ├── auxiliary-rulings.tsv      # One row per reading ruled against DWDS / German Wiktionary by plans/fix-reference-defects.md (Parts 1 and 6): gloss, auxiliary, outcome, source, reasoning. Pinned by ConjugatorTests.ruledAuxiliary
 ├── dwds-frequencies.json      # Corpus-wide DWDS frequency snapshot, re-fetched 2026-08-26 under BBAW permission (gitignored, regenerable)
 ├── dwds/                      # Inputs and logs for the corpus-wide fetch: lemma list with probes, quarantine files, run logs (gitignored)

@@ -8424,3 +8424,67 @@ now reports its shipped encoding as failing, because it tests only the first rea
 kaikki table that describes only the strong verb, and the summary excludes multi-reading verbs
 from the at-odds count for exactly that reason, so the count holds at 5. 57 verbs now have two
 readings. The suite is 224 tests.
+
+## Defect plan, Part 6 begins: the audit learns to check, and fahren is ruled (2026-11-10)
+
+Part 6 is the long one, about 210 verbs, so its first step was to give the work a bookkeeper. The
+audit prototype beside the plan became `verbdata/audit_auxiliaries.py`, with a `--check` mode that
+reads `verbdata/auxiliary-rulings.tsv` and fails on three things: a ruled reading whose auxiliary,
+gloss, or infinitive in `Verbs.xml` differs from its row; a malformed row (an unknown outcome, no
+source, readings misnumbered); and a verb the audit lists that has no ruling at all. The third is
+what makes `--check` the plan's "done when" test. It fails until the last verb is ruled, and the
+count it prints is the work remaining. `--unruled` prints that worklist as a table.
+
+The prototype skipped every verb with two readings, because the July audit had covered them. The
+promoted script stops skipping a verb as soon as the rulings file has rows for it, and then checks
+every reading, since Part 6 is about to add many second readings of its own. Two checks came before
+trusting it. Its worklist had to equal the prototype's listed verbs minus the ruled ones, and it
+did, 210 against 210 with nothing missing or extra. And a corrupted copy of the rulings file (a
+flipped auxiliary, a changed gloss, a deleted row) had to fail three ways, which it did.
+
+**fahren's fifteen listed derivatives were then ruled against DWDS**, with German Wiktionary where
+DWDS gave no auxiliary for a sense. Every one had shipped haben, the tranche-2 importer's habit
+again. The outcomes: eight gained a second reading (einfahren, herunterfahren, hinfahren,
+ausfahren, fortfahren, vorfahren, hochfahren, überfahren), six flipped to sein (mitfahren,
+weiterfahren, entlangfahren, herauffahren, drauflosfahren, rückwärtsfahren, which was also
+re-glossed), and festfahren kept haben, because its usual construction is reflexive (*der
+Lastwagen fuhr sich fest*). The pairs follow fahren's own split, intransitive motion with sein and
+the transitive sense with haben: "go there, travel there" beside "drive (someone) there, take
+there". Several shipped glosses were sharpened on the way so that the pair could be told apart.
+hinfahren's "drive there" moved to the haben reading, and vorfahren's "drive up" had been
+identical to herauffahren's.
+
+**Three verbs went to Josh, and each ruling widens a precedent.**
+
+- **hochfahren** ships "boot up", which DWDS labels as computing and *häufig Technik*. The
+  anspringen precedent would have refused it a second reading. Josh ruled that *häufig* ("often")
+  marks a frequent domain, not a restriction, so the verb now also has "jump up, start (from
+  sleep)" with sein, *er fuhr aus dem Schlaf hoch*. This narrows the anspringen precedent, and
+  anspringen itself, whose engine sense DWDS labels plain "Technik", is still unruled.
+- **überfahren** is two verbs. Inseparable *überfahren* "run over" takes haben. Separable
+  *überfahren* "cross by boat" takes sein or haben, depending on whether anyone is being carried,
+  so a full split would have needed three readings. Josh chose one separable reading with sein,
+  parallel to übersetzen. The Grimm example sentence, *von dem laßt Euch überfahren*, uses the
+  unmodelled haben use. That is the first time a strong verb has carried a reading-level `in`, so
+  its page was read in the simulator: *er ist übergefahren*, *ihr fahrt über*.
+- **umfahren** was not on the audit's list at all, because kaikki gives it one auxiliary. It
+  shipped only inseparable "drive around". Separable *umfahren*, "knock over (with a vehicle)", is
+  common German and also takes haben, so only its separability differs. The audit compares
+  auxiliaries and cannot see a split like that. Josh had it added, and it is the third verb, after
+  übergehen and anhängen, to be ruled by hand off the list.
+
+The fortfahren ruling also leaned on the *gehoben* precedent. "Continue" is DWDS's sense 3,
+labelled *gehoben*, and it was treated as standard, as anbrechen and anhängen were.
+
+**The review changed nothing.** A Sonnet reviewer read all 25 readings under
+`prompts/gloss_review.md`, with the other 21 fahren derivatives' glosses beside them to catch
+collisions. It raised one finding: überfahren's "ferry across" reads as transitive next to a sein
+auxiliary. A Fable adjudicator rejected it under `prompts/gloss_adjudication.md`. The gloss leads
+with the intransitive "cross (by boat)", the replacement it was offered dropped the boat, and the
+app already ships "ferry across" with sein for übersetzen.
+
+What a user would see changed: fifteen fahren verbs build their Perfekt with the right auxiliary,
+nine offer a second meaning with its own auxiliary, and überfahren and umfahren show the separable
+verb beside the inseparable one. 66 verbs now have two readings. The rulings file has 78 readings
+of 56 verbs, each a case of the parameterized test, and the suite is still 224 tests, since the new
+pinned expectations joined existing tests. The audit's worklist is down to 195 verbs.

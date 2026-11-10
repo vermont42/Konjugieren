@@ -140,7 +140,7 @@ A learner who catches one of these has reason to doubt every table in the app.
 
 The ideas document lists five defects. Preparing this plan widened the first of them a great
 deal. Every shipped auxiliary was compared with the kaikki snapshot in `verbdata/`, using the
-script beside this plan, [`fix-reference-defects-audit.py`](fix-reference-defects-audit.py). Its
+script beside this plan, `fix-reference-defects-audit.py`, since promoted to [`verbdata/audit_auxiliaries.py`](../verbdata/audit_auxiliaries.py). Its
 counts on 2026-11-10:
 
 | Verdict | Verbs | Meaning |

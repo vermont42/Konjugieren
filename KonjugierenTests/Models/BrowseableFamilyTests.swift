@@ -49,6 +49,29 @@ struct BrowseableFamilyTests {
     #expect(L.FamilyDetail.otherPrefixesHeading != "FamilyDetail.otherPrefixesHeading")
   }
 
+  // The Ablaut screen lists AblautGroupInfo.exemplars, a hand-kept list, not the groups the
+  // engine loads. Eight groups added with tranche 1 never reached it, so from July to
+  // November 2026 the Families tab silently omitted bersten, hängen, messen, saufen, schinden,
+  // schmelzen, sieden, and sollen while their verbs conjugated on them.
+  @Test func everyAblautGroupIsListedAndDescribed() {
+    let listed = Set(AblautGroupInfo.allGroups.map(\.exemplar))
+    let loaded = Set(AblautGroup.ablautGroups.keys)
+
+    #expect(loaded.subtracting(listed).isEmpty, "Not in AblautGroupInfo.exemplars: \(loaded.subtracting(listed).sorted())")
+    #expect(listed.subtracting(loaded).isEmpty, "Listed but not in AblautGroups.xml: \(listed.subtracting(loaded).sorted())")
+    for group in AblautGroupInfo.allGroups {
+      #expect(group.description != "AblautGroupInfo.\(group.exemplar)", "\(group.exemplar) has no AblautGroupInfo key in Localizable.xcstrings")
+    }
+  }
+
+  // A group's row counts verbs by their primary reading, so a group used only by a second
+  // reading would render as an empty, unexpandable row.
+  @Test func everyListedAblautGroupHasAVerb() {
+    for group in AblautGroupInfo.allGroups {
+      #expect(group.verbCount > 0, "\(group.exemplar) lists no verbs")
+    }
+  }
+
   @Test func everyPrefixMeaningResolvesItsPIEKey() {
     for meaning in PrefixMeaning.separablePrefixes + PrefixMeaning.inseparablePrefixes {
       #expect(

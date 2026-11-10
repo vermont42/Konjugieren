@@ -21,17 +21,17 @@ struct AblautGroupInfo: Identifiable {
 
   // Alphabetical per German locale (umlauts sort as base vowel, ß as ss)
   private static let exemplars = [
-    "backen", "beginnen", "bieten", "bitten", "bleiben", "bringen",
+    "backen", "beginnen", "bersten", "bieten", "bitten", "bleiben", "bringen",
     "dürfen", "empfehlen", "erscheinen", "essen",
     "fahren", "fallen", "fangen", "finden", "fliegen",
     "gebären", "geben", "gehen", "gelingen", "gelten", "gewinnen", "greifen",
-    "haben", "halten", "hauen", "heben", "heißen",
+    "haben", "halten", "hängen", "hauen", "heben", "heißen",
     "kennen", "kommen", "können",
     "laden", "lassen", "laufen", "liegen",
-    "mögen", "müssen", "nehmen",
+    "messen", "mögen", "müssen", "nehmen",
     "reißen", "rufen",
-    "salzen", "schaffen", "schlafen", "schlagen", "schließen", "schneiden", "schreiten",
-    "sehen", "sein", "singen", "sitzen", "sprechen", "stehen", "steigen", "sterben", "stoßen", "streichen",
+    "salzen", "saufen", "schaffen", "schinden", "schlafen", "schlagen", "schließen", "schmelzen", "schneiden", "schreiten",
+    "sehen", "sein", "sieden", "singen", "sitzen", "sollen", "sprechen", "stehen", "steigen", "sterben", "stoßen", "streichen",
     "tragen", "treffen", "treten", "tun",
     "verlieren", "wachsen", "weisen", "werden", "werfen", "wissen", "wollen",
     "ziehen"

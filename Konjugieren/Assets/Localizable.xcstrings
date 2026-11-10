@@ -289,6 +289,23 @@
         }
       }
     },
+    "AblautGroupInfo.bersten" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wie sprechen: $bErsten$ → $bIrst$ → $bArst$ → $gebOrsten$. Verwandt mit dem englischen burst, das seinen Ablaut verloren hat."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Like sprechen: $bErsten$ → $bIrst$ → $bArst$ → $gebOrsten$. The cognate of English burst, which lost its ablaut."
+          }
+        }
+      }
+    },
     "AblautGroupInfo.bieten" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -533,13 +550,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Die größte Gruppe (19 Verben): e→i (Präsens 2s/3s), e→a (Präteritum). Umfasst lesen, sehen, vergessen."
+            "value" : "Das e→i→a-Muster: $gEben$ → $gIbt$ → $gAb$ → $gegEben$. Geteilt von jedem Verb, das auf geben aufbaut, von abgeben bis zurückgeben."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The largest group (19 verbs): e→i (Präsens 2s/3s), e→a (Präteritum). Includes lesen, sehen, vergessen."
+            "value" : "The e→i→a pattern: $gEben$ → $gIbt$ → $gAb$ → $gegEben$. Shared by every verb built on geben, from abgeben to zurückgeben."
           }
         }
       }
@@ -659,6 +676,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Umlaut plus ie: $hAlten$ → $hÄltst$ → $hIElt$. The past tense ie is distinctive."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.hängen" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das ä→i→a-Muster des intransitiven hängen: $hÄngen$ → $hIng$ → $gehAngen$. Transitives hängen (etwas aufhängen) ist schwach: hängte, gehängt."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The ä→i→a pattern of intransitive hängen: $hÄngen$ → $hIng$ → $gehAngen$. Transitive hängen (hang something up) is weak: hängte, gehängt."
           }
         }
       }
@@ -833,6 +867,23 @@
         }
       }
     },
+    "AblautGroupInfo.messen" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wie geben, wobei ss nach dem langen a der Vergangenheit zu ß wird: $mEssen$ → $mIsst$ → $mAß$ → $gemEssen$. Geteilt von fressen, ursprünglich ver- + essen (‚vollständig aufessen‘), und vergessen, dem Verwandten des englischen forget."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Like geben, with ss becoming ß after the long a of the past: $mEssen$ → $mIsst$ → $mAß$ → $gemEssen$. Shared by fressen, which began as ver- + essen (eat up completely), and vergessen, the cognate of English forget."
+          }
+        }
+      }
+    },
     "AblautGroupInfo.mögen" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -935,6 +986,23 @@
         }
       }
     },
+    "AblautGroupInfo.saufen" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das au→o-Muster: $sAUfen$ → $sÄUft$ → $sOff$ → $gesOffen$. Nach dem kurzen o verdoppelt sich das f. Verwandt ist das englische sup."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The au→o pattern: $sAUfen$ → $sÄUft$ → $sOff$ → $gesOffen$. The f doubles after the short o. English sup is a cognate."
+          }
+        }
+      }
+    },
     "AblautGroupInfo.schaffen" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -948,6 +1016,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Strong \"create\": $schAFFen$ → $schUF$ → $geschAFFen$. Weak schaffen (\"manage\") is regular."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.schinden" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das i→u-Muster: $schInden$ → $schUnd$ → $geschUnden$. Im Präteritum konkurriert das schwache schindete mit schund. Ursprünglich hieß das Verb ‚die Haut abziehen‘ und ist mit dem englischen skin verwandt."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The i→u pattern: $schInden$ → $schUnd$ → $geschUnden$. In the Präteritum, the weak schindete competes with schund. The verb first meant flay and is akin to English skin."
           }
         }
       }
@@ -999,6 +1084,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Like bieten: ie→o pattern. $schlIEßen$ → $schlOss$ → $geschlOssen$."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.schmelzen" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wie sprechen, aber mit o im Präteritum: $schmElzen$ → $schmIlzt$ → $schmOlz$ → $geschmOlzen$. Geteilt von fechten, flechten, dreschen und schwellen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Like sprechen, but with o in the Präteritum: $schmElzen$ → $schmIlzt$ → $schmOlz$ → $geschmOlzen$. Shared by fechten, flechten, dreschen, and schwellen."
           }
         }
       }
@@ -1071,6 +1173,23 @@
         }
       }
     },
+    "AblautGroupInfo.sieden" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das ie→o-Muster, bei dem d zu tt wird: $sIEden$ → $sOTT$ → $gesOTTen$. Verwandt ist das englische seethe, dessen Partizip einst sodden war. Für eine Flüssigkeit, die einfach kocht, sind die schwachen Formen siedete und gesiedet üblich."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The ie→o pattern, with d becoming tt: $sIEden$ → $sOTT$ → $gesOTTen$. English seethe is a cognate, and sodden was once its participle. For a liquid that simply boils, the weak siedete and gesiedet are usual."
+          }
+        }
+      }
+    },
     "AblautGroupInfo.singen" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1101,6 +1220,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "The i→a→e pattern: $sItzen$ → $sAß$ → $gesEssen$. Related to English \"sit, sat\"."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.sollen" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modalverb: $soll$ (Präsens ich, er), $sollte$ (Präteritum). Das einzige Modalverb ganz ohne Vokalwechsel: Unregelmäßig ist nur die fehlende Endung von ich soll und er soll."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modal verb: $soll$ (Präsens ich, er), $sollte$ (Präteritum). The only modal with no vowel change anywhere: its one irregularity is the missing ending of ich soll and er soll."
           }
         }
       }

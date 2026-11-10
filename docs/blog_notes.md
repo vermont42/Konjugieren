@@ -8360,3 +8360,41 @@ geben's pattern is shared by "every verb built on it, from abgeben to zurückgeb
 claim was checked: all 43 verbs on the group are derivatives of geben. The German says the same,
 split into two sentences so that its relative clause does not trail the verb. Neither claim will
 go stale with the next import. The eight hidden groups are still open, as separate work.
+
+## Eight ablaut groups reach the Families tab (2026-11-10)
+
+The Ablaut screen lists `AblautGroupInfo.exemplars`, a hand-kept list, and not the groups the
+engine loads from `AblautGroups.xml`. Tranche 1 added groups to the XML in July without adding
+them to the list, so eight groups never appeared: bersten, hängen, messen, saufen, schinden,
+schmelzen, sieden, and sollen. Their 46 verbs, schmelzen's 21 among them, conjugated correctly
+on groups a learner could not browse. All eight now have an entry in their German-collated
+place and a description in both languages, and the tab and the XML agree at 76.
+
+The descriptions follow the existing shape, principal parts in `$…$` and a sentence or two, and
+each new claim was checked against DWDS or Duden rather than written from memory. That mattered
+twice. sieden's strong forms belong mostly to cooking, and DWDS gives *gesiedet* for a liquid
+that simply boils, so the description says so. On schinden the dictionaries disagree: DWDS gives
+*schund* as the main Präteritum and *schindete* as regional, Duden the reverse with *schund*
+"selten". The app ships *schund*, which DWDS supports, and the description says only that the
+two compete. The etymologies are DWDS's too: *fressen* began as ver- + *essen* (Gothic
+*fra-itan*, "eat up completely"), *vergessen* is the cognate of *forget*, and *saufen* is the
+cognate of *sup*. Two more are standard and were not looked up: *bersten* and *burst*, and
+*sieden* and *seethe*, whose old participle was *sodden*.
+
+**The geben description was false in three ways.** It called geben "the largest group (19
+verbs)" and said it "includes lesen, sehen, vergessen". geben has 43 verbs, bleiben is larger
+with 126, lesen and sehen sit on the sehen group, and vergessen sits on messen, which is one of
+the eight that were hidden. Like the Ablaut article an hour earlier, it now makes a claim that
+cannot go stale: the pattern is shared by every verb built on geben.
+
+**Two tests in `BrowseableFamilyTests` keep this from recurring.** One asserts that the listed
+groups and the loaded groups are the same set and that each has its catalog key. The other
+asserts that every listed group has at least one verb, since a group used only by a second
+reading would show as an empty row. The first was seen to fail, by naming sollen, with sollen
+removed from the list, before it was trusted. The suite is 223 tests.
+
+**Found and not fixed: anhängen.** It sits on the hängen group with the gloss "attach, append",
+so the app conjugates it as strong, which gives *angehangen*. DWDS splits it in two: 1anhängen
+(hing an, hat angehangen) is "be devoted to, weigh on", and 2anhängen (hängte an, hat
+angehängt) is "attach, append". The shipped gloss belongs to the weak verb. It is the hängen and
+schaffen shape, one verb with a strong reading and a weak one, and it belongs with that work.

@@ -275,7 +275,8 @@ Some counts behind the failures:
   infinitive. In frequency order the problem is rarer and still real: 176 of the 3,572 verbs are
   displaced, among them essen, and hören, which appears behind gehören.
 - 44 verbs have a second reading. Its gloss is never searched, so "travel" does not find fahren
-  and "migrate" does not find ziehen.
+  and "migrate" does not find ziehen. **Fixed on `main` 2026-11-10** by Part 3b of the defect
+  plan: both the verb list and the shortcut picker now match every reading's gloss.
 - Everyday verbs are missing from the corpus: googeln, downloaden, chatten, einloggen, scrollen,
   joggen, recyceln, abspeichern, hinaufkommen, weiterschlafen.
 
@@ -708,6 +709,10 @@ to a named index.
 
 Rank the exact match first in the verb picker, and add German spoken phrases.
 
+The first half is **done on `main` as of 2026-11-10**, by Part 3a of the defect plan: the picker
+ranks the exact infinitive, then infinitives that begin with the text, then the rest, each by
+frequency, before it keeps 25. The German phrases remain.
+
 - **Basis.** Observed: seven of the 50 most frequent verbs cannot be found by their own names,
   and the phrases are English only, while 16 real devices run in German.
 - **Effort.** S.
@@ -1033,7 +1038,9 @@ not this list, is the current statement of the defects.
    kinds. The full list was written to the session scratchpad and can be regenerated in a minute.
 5. **The map is stale.** `corpus/working/forms.json` dates from 2026-07-25 and matches the
    corpus's 3,572 verbs, but glosses and counts have changed since, and the counts in this
-   document should be confirmed against a fresh run.
+   document should be confirmed against a fresh run. **Fixed 2026-11-10** in Part 0 of the
+   defect plan: the map was regenerated, and both scans reproduced their counts (3 verbs, 35
+   sentences).
 
 ## Limits of the Research
 

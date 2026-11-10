@@ -8031,3 +8031,31 @@ One edit to the roadmap: step 9, the tranche-3 import, is held again. BBAW's per
 unblocked it in August, but the importer that wrote tranche 2 is the cause of most of Part 1,
 and running it again before Part 6 changes it would write new verbs with mismatched auxiliaries
 and glosses during the months before the next release.
+
+## Defect plan, Part 3: search finds the verb that was asked for (2026-11-10)
+
+Two small bugs, fixed ahead of Part 1 because the plan requires 3b to land first. Part 1 is
+about to add second readings, and until 3b their glosses could not be found by searching.
+
+**3a, the shortcut picker.** `VerbEntityQuery.entities(matching:)` filtered the alphabetical
+list by substring and kept the first 25. For kommen that meant abkommen, ankommen, and twenty-odd
+siblings filled the list before kommen itself appeared, and the same was true of halten, machen,
+setzen, stehen, stellen, and ziehen. The new ordering is a tier and then a frequency: the exact
+infinitive, then infinitives beginning with the text, then everything else, and only then the
+limit of 25. The ranking lives in a static, `VerbEntityQuery.verbs(matching:)`, so a test can
+reach it without App Intents. That static needed an explicit `@MainActor`. The App Intents
+protocols the query conforms to make the struct nonisolated, which overrides the module's
+default isolation, so the compiler refused to let it read `Verb.verbsSortedByFrequency` until
+the static said where it runs.
+
+**3b, second readings' glosses.** Both search sites matched `verb.translation`, which is the
+primary reading's gloss, so "travel" never found fahren, whose second reading is "travel, go".
+`Verb.anyTranslationContains` now checks every reading, and the verb list and the picker share it.
+
+What a user would see changed: asking Shortcuts or Siri for kommen offers kommen first, and
+searching the verb list for an English word finds a verb by any of its meanings. The ideas
+document's other search ideas (umlaut folding, the default scope, exact-match ranking in the
+list itself) were deliberately left alone. They are A1 to A3, and they belong to that document's
+first release.
+
+New suite `VerbSearchTests`, three tests and nine cases. The suite is 215 tests in 33 suites.

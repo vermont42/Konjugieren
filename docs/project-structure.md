@@ -179,6 +179,7 @@ KonjugierenTests/
 │   ├── QuizErrorHistoryTests.swift # Quiz error persistence tests
 │   ├── QuizTests.swift         # Quiz logic, scoring, and timer pause/resume tests
 │   ├── RefusalDetectionTests.swift # Tutor refusal-phrase detection, incl. the "null" exact-match false-positive guard
+│   ├── VerbSearchTests.swift   # Shortcut-picker ranking (exact infinitive first) and second-reading gloss search
 │   └── VerbTests.swift         # Verb.stamm and endingIsValid tests
 └── Utils/
     ├── CorpusFormsDumpTests.swift  # Harness: drives Conjugator over every verb to emit corpus/working/forms.json (form → lemma, with separable-prefix split forms). Gated on TEST_RUNNER_KONJUGIEREN_FORMS_OUT

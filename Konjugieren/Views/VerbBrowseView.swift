@@ -25,7 +25,7 @@ struct VerbBrowseView: View {
         return true
       }
       if settings.searchScope == .infinitiveAndTranslation {
-        return verb.translation.localizedCaseInsensitiveContains(searchText)
+        return verb.anyTranslationContains(searchText)
       }
       return false
     }

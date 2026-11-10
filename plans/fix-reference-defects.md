@@ -6,9 +6,9 @@ small fixes in app code, replacement of five example sentences, and corrections 
 documents. **Written:** 2026-11-10. **Revised** the same day, when Josh made the four decisions
 below.
 
-## Status (2026-11-10, end of the second session)
+## Status (2026-11-10, during the third session)
 
-**Parts 0 to 5 and 7 are done. Part 6 remains.** Read this section before the rest: several
+**Parts 0 to 5 and 7 are done. Part 6 is under way: step 1 and the fahren derivatives are done.** Read this section before the rest: several
 numbers below were true when the plan was written and are not now. The journal entries in
 `docs/blog_notes.md` headed "Defect plan, Part N" are the detailed record.
 
@@ -24,8 +24,32 @@ numbers below were true when the plan was written and are not now. The journal e
 | after 7 | `fb1f60b` | Ablaut article drops its stale counts ("sixty-six patterns", geben's "nineteen"). |
 | after 7 | `6da7c1d` | Eight groups that were in `AblautGroups.xml` but never in the Families tab now listed and described; geben's description corrected. Two `BrowseableFamilyTests` keep the list and the XML in step. |
 | after 7 | `29d2695` | anhängen split into weak "attach, append" and strong "adhere to, be devoted to". A Part 6 ruling, made early. |
+| 6 (step 1, fahren) | `5120262` | `verbdata/audit_auxiliaries.py` with `--check` and `--unruled`; the prototype removed. fahren's 15 listed derivatives ruled (8 two readings, 6 flips, 1 keep), plus umfahren by hand. |
 
-**State to start Part 6 from.**
+**Where Part 6 stands.**
+
+- **Take the worklist from the script**, not from the counts below: `python3 verbdata/audit_auxiliaries.py
+  --unruled`. It lists 195 verbs after fahren, and `--check` prints the same number while failing.
+  `--check` must report `0 other problems` after every batch. The next base verb is ziehen.
+- **The rulings file has 78 readings of 56 verbs**, and 66 verbs have two readings. Suite: 224 tests.
+- **Josh's rulings of 2026-11-10, in the fahren batch**, which later batches should follow:
+  - **A domain label qualified by *häufig* does not fail criterion 2** (hochfahren, "boot up",
+    *häufig Technik*). This narrows the anspringen precedent but does not overturn it: a plain
+    "Technik" or "salopp" label (anspringen, durchdrehen, abhauen) is still unruled. Ask.
+  - **A separable homograph whose own auxiliary splits gets one reading, not two** (überfahren:
+    separable "cross (by boat), ferry across" with sein, parallel to übersetzen; the transitive
+    haben use is left unmodelled). Ask if a case looks different.
+  - **A separability split the audit cannot see may be added by hand** (umfahren, "knock over",
+    both readings haben). It was approved for umfahren only. Raise similar finds with Josh rather
+    than sweeping for them.
+- **Batch method that worked for fahren:** two web-fetch agents on DWDS (Wiktionary as fallback),
+  rule, edit `Verbs.xml` with anchored replacements, then a review shard in the multi-reading
+  format holding every touched reading, including single-reading flips, with the base's other
+  derivatives' glosses supplied beside it to catch cross-verb collisions. Sonnet reviews, Fable
+  adjudicates. A reading with its own `in` deserves a pinned participle and Imperativ test (see
+  `separabilityHomographReadings`), because the parameterized test asserts only the auxiliary.
+
+**State to start Part 6 from (end of the second session; partly superseded above).**
 
 - **The counts have moved.** The audit prototype reports 89 agreeing and 142 needing a ruling
   (rerun at the end of the second session, unchanged by Part 7). The prototype skips every verb

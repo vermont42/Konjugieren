@@ -25,7 +25,10 @@ count is misleading on the object-valued `ExampleSentences.json` (the Rules expl
 
 ## File Roles
 
-- **Mode A working file:** `ExampleSentences.json` (project root) — pipeline output, gitignored.
+- **Mode A working file:** `ExampleSentences.json` (project root) — pipeline output. It is **not**
+  gitignored (checked 2026-11-10), so a copy left at the root shows up as untracked and could be
+  committed by a broad `git add`. Delete it after the merge, or keep it in the session scratchpad
+  and point the Mode A snippets at that path instead.
 - **Mode B working files:** `corpus/working/shards/mine_<NNN>.out.json` — one per shard, tracked.
   `corpus/` is otherwise gitignored, but the `.out.json` outputs are un-ignored because they carry
   authored scholarship, not a regenerable build product. They are nonetheless **ephemeral work
@@ -110,6 +113,11 @@ print(f'Valid JSON. {de} entries per language.')
 ```
 
 4. **Report** a summary table to the user: verb, source, first ~50 chars of the German sentence.
+
+**Replacing an entry rather than adding one.** Mode A never overwrites, so a sentence being
+replaced must leave the bundle first: delete its `de` and `en` keys, then merge as above. The
+preservation check in the Rules still applies, with the replaced verbs as the stripped set. Part 4
+of `plans/fix-reference-defects.md` did this for eight verbs on 2026-11-10.
 
 ## Mode B — etymology-and-example shards
 

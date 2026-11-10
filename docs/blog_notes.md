@@ -8550,3 +8550,28 @@ durchziehen gains two, weiterziehen and zuziehen's moving-in sense build the Per
 vorziehen means "prefer", and two etymologies describe the verbs they sit on. 74 verbs now have
 more than one reading. The rulings file has 102 readings of 71 verbs, the suite is still 224
 tests, and the worklist is 181.
+
+## Defect plan, Part 6: treten, a small batch that needed no rulings from Josh (2026-11-10)
+
+treten had five listed derivatives, and the other twenty read correctly as shipped. Three verbs
+gained a second reading. abtreten shipped "step down, cede", a single gloss that joined a sein
+sense (leave a post or a stage, *er ist abgetreten*) to a haben one (*Gebiete abtreten*), and it is
+now "step down, exit" beside "cede, hand over". übertreten is the überfahren shape again: separable
+"join, convert to" with sein, which it already had, and inseparable "violate, break (a rule)"
+(*übertritt, übertrat, hat übertreten*). zutreten kept "kick" and gained "step toward, walk up to"
+with sein. heraustreten flipped to sein, since DWDS gives only *ist herausgetreten*. kürzertreten
+kept haben, because DWDS and Wiktionary give both auxiliaries for a single meaning. Its gloss
+"economize" was the money sense, while its example sentence, about a father after a heart attack,
+is the health one, so it became "cut back, ease off".
+
+Nothing needed Josh. There was no third reading and no labelled sense, and übertreten's split by
+separability was on the audit's list. Wiktionary has no page for heraustreten, but DWDS's header
+settles it. The new step from the ziehen batch, reading each ruled verb's etymology for a
+"this reading" claim, found all five still true. übertreten's had anticipated the ruling: "stress
+alone distinguishes the two readings". The Sonnet review of the eight readings found nothing, so
+there was nothing to adjudicate.
+
+What a user would see changed: abtreten, übertreten, and zutreten each offer a second meaning with
+its own auxiliary, heraustreten builds the Perfekt with sein, and kürzertreten's gloss covers easing
+off as well as saving. 77 verbs now have more than one reading. The rulings file has 110 readings of
+76 verbs, the suite is still 224 tests, and the worklist is 176.

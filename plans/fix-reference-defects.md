@@ -8,7 +8,7 @@ below.
 
 ## Status (2026-11-10, during the third session)
 
-**Parts 0 to 5 and 7 are done. Part 6 is under way: step 1 and the fahren and ziehen derivatives are done.** Read this section before the rest: several
+**Parts 0 to 5 and 7 are done. Part 6 is under way: step 1 and the fahren, ziehen, and treten derivatives are done.** Read this section before the rest: several
 numbers below were true when the plan was written and are not now. The journal entries in
 `docs/blog_notes.md` headed "Defect plan, Part N" are the detailed record.
 
@@ -26,13 +26,14 @@ numbers below were true when the plan was written and are not now. The journal e
 | after 7 | `29d2695` | anhängen split into weak "attach, append" and strong "adhere to, be devoted to". A Part 6 ruling, made early. |
 | 6 (step 1, fahren) | `5120262` | `verbdata/audit_auxiliaries.py` with `--check` and `--unruled`; the prototype removed. fahren's 15 listed derivatives ruled (8 two readings, 6 flips, 1 keep), plus umfahren by hand. |
 | 6 (ziehen) | `adaf738` | 14 listed ziehen derivatives plus zuziehen by hand: durchziehen the first verb with three readings, 7 more with two, 1 flip, 2 re-glosses, 4 keeps. zuziehen's and durchziehen's etymologies rewritten. |
+| 6 (treten) | this commit | 5 listed treten derivatives: 3 two readings (übertreten split by separability), 1 flip, 1 re-gloss. No question for Josh; review found nothing. |
 
 **Where Part 6 stands.**
 
 - **Take the worklist from the script**, not from the counts below: `python3 verbdata/audit_auxiliaries.py
-  --unruled`. It lists 181 verbs after ziehen, and `--check` prints the same number while failing.
-  `--check` must report `0 other problems` after every batch. The next base verb is treten.
-- **The rulings file has 102 readings of 71 verbs**, and 74 verbs have more than one reading,
+  --unruled`. It lists 176 verbs after treten, and `--check` prints the same number while failing.
+  `--check` must report `0 other problems` after every batch. The next base verb is brechen.
+- **The rulings file has 110 readings of 76 verbs**, and 77 verbs have more than one reading,
   durchziehen three. Suite: 224 tests.
 - **Josh's rulings of 2026-11-10, in the fahren batch**, which later batches should follow:
   - **A domain label qualified by *häufig* does not fail criterion 2** (hochfahren, "boot up",

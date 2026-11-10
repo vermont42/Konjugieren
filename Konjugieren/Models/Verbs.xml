@@ -506,7 +506,8 @@
     <reading tn="cut off, sever" fa="w" />
   </verb>
   <verb in="ab+tr^et^en" hi="179201" ic="stairs">
-    <reading tn="step down, cede" fa="s" ag="treten" />
+    <reading tn="step down, exit" fa="s" ag="treten" ay="s" />
+    <reading tn="cede, hand over" fa="s" ag="treten" />
   </verb>
   <verb in="ab+tr^i^nken" hi="298" ic="cooldown">
     <reading tn="drink down a little" fa="s" ag="finden" />
@@ -5343,7 +5344,7 @@
     <reading tn="pick out, select" fa="w" />
   </verb>
   <verb in="heraus+tr^et^en" hi="29016" ic="stairs">
-    <reading tn="emerge" fa="s" ag="treten" />
+    <reading tn="step out, emerge" fa="s" ag="treten" ay="s" />
   </verb>
   <verb in="heraus+w^e^rfen" hi="9023" ic="handball">
     <reading tn="throw out" fa="s" ag="sterben" />
@@ -6197,7 +6198,7 @@
     <reading tn="shorten, cut" fa="w" />
   </verb>
   <verb in="kürzer+tr^et^en" hi="17429" ic="stairs">
-    <reading tn="economize" fa="s" ag="treten" />
+    <reading tn="cut back, ease off" fa="s" ag="treten" />
   </verb>
   <verb in="kurz+machen" hi="574236" hp="y" ic="strengthtraining.traditional">
     <reading tn="summarize, be brief" fa="w" />
@@ -8047,6 +8048,7 @@
   </verb>
   <verb in="über+tr^et^en" hi="46105" ic="stairs">
     <reading tn="join, convert to" fa="s" ag="treten" ay="s" />
+    <reading in="über*tr^et^en" tn="violate, break (a rule)" fa="s" ag="treten" />
   </verb>
   <verb in="über*wachen" hi="745584" ic="walk.motion">
     <reading tn="monitor, supervise" fa="w" />
@@ -10756,6 +10758,7 @@
   </verb>
   <verb in="zu+tr^et^en" hi="6506" ic="stairs">
     <reading tn="kick" fa="s" ag="treten" />
+    <reading tn="step toward, walk up to" fa="s" ag="treten" ay="s" />
   </verb>
   <verb in="zu+tr^i^nken" hi="620" ic="cooldown">
     <reading tn="raise one's glass as a greeting" fa="s" ag="finden" />

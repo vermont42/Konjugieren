@@ -1089,6 +1089,14 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "durchziehen", conjugationgroup: .perfektpartizip, expected: "durchzOGen", readingIndex: 2)
     expectConjugation(infinitiv: "durchziehen", conjugationgroup: .imperativ(.secondPlural), expected: "durchzieht", readingIndex: 2)
     expectConjugation(infinitiv: "durchziehen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt durchzOGen", readingIndex: 2)
+
+    // From DWDS: über+treten "convert to" (ist übergetreten) beside über*treten "violate"
+    // (übertritt, übertrat, hat übertreten).
+    expectConjugation(infinitiv: "übertreten", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "IST übergetreten")
+    expectConjugation(infinitiv: "übertreten", conjugationgroup: .imperativ(.secondPlural), expected: "tretet über")
+    expectConjugation(infinitiv: "übertreten", conjugationgroup: .perfektpartizip, expected: "übertreten", readingIndex: 1)
+    expectConjugation(infinitiv: "übertreten", conjugationgroup: .imperativ(.secondPlural), expected: "übertretet", readingIndex: 1)
+    expectConjugation(infinitiv: "übertreten", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt übertreten", readingIndex: 1)
   }
 
   // Class 4 again, and class 5 at once: weichen's "yield" reading is strong (wich, gewichen)
@@ -1289,6 +1297,14 @@ struct ConjugatorTests {
     ("blankziehen", 0, .haben),
     ("zuziehen", 0, .haben),
     ("zuziehen", 1, .sein),
+    ("abtreten", 0, .sein),
+    ("abtreten", 1, .haben),
+    ("übertreten", 0, .sein),
+    ("übertreten", 1, .haben),
+    ("heraustreten", 0, .sein),
+    ("kürzertreten", 0, .haben),
+    ("zutreten", 0, .haben),
+    ("zutreten", 1, .sein),
   ]
 
   @Test("Each ruled reading carries its dictionary auxiliary", arguments: auxiliaryRulings)

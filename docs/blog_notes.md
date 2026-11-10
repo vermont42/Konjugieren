@@ -8059,3 +8059,74 @@ list itself) were deliberately left alone. They are A1 to A3, and they belong to
 first release.
 
 New suite `VerbSearchTests`, three tests and nine cases. The suite is 215 tests in 33 suites.
+
+## Defect plan, Part 1: 38 auxiliaries ruled against the dictionary (2026-11-10)
+
+The verbs kaikki contradicts outright, 37 of them, were each ruled against DWDS, with German
+Wiktionary where DWDS gave no per-sense auxiliary. Four web-fetch agents read the pages in
+parallel and reported only what each page stated, quoted. The rulings were made here, in the
+session, and they live in a new file, `verbdata/auxiliary-rulings.tsv`, one row per reading with
+its source and its reasoning.
+
+The outcomes:
+
+- **Two readings, 12 verbs.** angehen, umziehen, schmelzen, ausziehen, anfahren, zerreißen,
+  verstreichen, umkehren, wegfahren, herziehen, triefen, zureiten. The plan expected about four.
+  The test it sets, two current standard senses that a learner meets, admits more than its
+  author guessed, because DWDS lists "jmdn. mit einem Fahrzeug rammen" for anfahren and
+  "Butter verstreichen" for verstreichen as unlabelled main senses. The bar applied was the
+  plan's own argument for decision 1: would a learner who knows the other sense from elsewhere
+  be misled by a single reading? For anfahren ("er ist den Fußgänger angefahren"), yes.
+- **Flips, 21 verbs.** stattfinden and abstreichen to haben; reisen, entgehen, nachgehen,
+  aufstehen, abfahren, and fourteen more to sein.
+- **Re-glosses, 3, plus 3 flips that were also re-glossed.** Three kaikki glosses named
+  senses the dictionaries do not recognize: ausschleichen "sneak off" (it means tapering a
+  medication), aufrauchen "rise, appear" (finish smoking), and verstinken "stink until the
+  stench has dissipated" (stink up). wegtreten shipped "dismiss", which is what the officer
+  says, not what the soldiers do.
+- **Kept, 2.** zerschellen ("ist zerschellt") and durchklingen (Wiktionary: haben). kaikki is
+  wrong about both.
+
+**zurücktreten was not among the 37**, although the plan's first table lists it. The audit had
+put it among the 141 that need a ruling, because kaikki's sense carries no note. It was ruled
+here because the plan's "done when" names it, and Wiktionary settles it: sein.
+
+**Two senses refused a reading on the plan's own terms, and both deserve a second look.**
+anspringen's engine sense is labelled "Technik" by DWDS and durchdrehen's is "salopp", so neither
+verb can carry a second reading, although "der Hund hat mich angesprungen" is everyday German.
+The rule as written says a dictionary's label means the sense is not standard, and it was
+followed.
+
+**The review changed four glosses and caught one ambiguity the matcher found first.** A
+Sonnet reviewer read the 30 new or rewritten glosses under `prompts/gloss_review.md` and raised
+four findings; a Fable adjudicator, a third model, accepted three and rejected one. anfahren's
+"start moving, pull up" paired two opposite actions, which is the anhalten defect. herziehen's
+haben reading stayed "pull along, drag behind", because the proposed "badmouth" names a sense
+Wiktionary gives with either auxiliary. Before the review, the audit script had already
+objected to ausreiten "ride out, go riding": in English, "ride out" also names exercising a
+horse, which is kaikki's haben sense. An approximate gloss matcher turned out to be a decent
+ambiguity detector.
+
+**One test was pinning the interim policy.** `strongBasesTranche1Auxiliaries` expected "habe
+geschmolzen" on schmelzen's first reading, with a comment saying that schmelzen "ships the
+transitive reading". That expectation now addresses reading 1. It is a small instance of what
+`prompts/dual_auxiliary.md` warns about: a test written to describe the engine's output keeps
+the engine's choice in place long after the reason for it is gone.
+
+**And the simulator found an app bug that the tests could not.** Reading both auxiliaries of
+each new pair by deeplink showed reading 1's auxiliary on reading 0 for every verb after the
+first. `VerbBrowseView` handles a deeplink by replacing its path with a one-verb path, which
+reuses the destination's view identity, so `VerbView`'s `@State readingIndex` survived from the
+previous verb. A learner who opened a verb from the widget, Control Center, or Shortcuts while
+looking at fahren's second reading saw the new verb's second reading. Part 1 made that worse,
+since 56 verbs now have two readings and 44 did before. The fix is `.id(verb.id)` on the
+destination.
+
+What a user would see changed: 21 verbs switch to the right auxiliary in their compound
+conjugations, 12 verbs offer a second meaning with its own auxiliary, and 6 glosses name what the
+verb means. Opening a verb from outside the app always starts on its first meaning.
+
+Three example sentences now illustrate senses the corrected glosses dropped (ausschleichen,
+aufrauchen, verstinken). They were added to Part 4 of the plan, not fixed here. The at-odds
+count held at 7; the audit reports `CONTRADICTS` only for the two keeps; the suite is 217 tests
+with 50 ruled readings pinned.

@@ -301,6 +301,7 @@ verbdata/                      # Verb-corpus-expansion data (see docs/verb-sourc
 ├── import_tranche1.py         # One-shot import of the 78 missing strong bases (roadmap step 7); the decision table is the artifact
 ├── import_tranche2.py         # Rule-driven import of 2,303 prefixed derivatives (roadmap step 8); hi derived from each base
 ├── tranche2-dual-auxiliary.txt # 176 imported verbs shipping one reading of two; worklist for the dual-auxiliary pass
+├── auxiliary-rulings.tsv      # One row per reading ruled against DWDS / German Wiktionary by plans/fix-reference-defects.md (Parts 1 and 6): gloss, auxiliary, outcome, source, reasoning. Pinned by ConjugatorTests.ruledAuxiliary
 ├── dwds-frequencies.json      # Corpus-wide DWDS frequency snapshot, re-fetched 2026-08-26 under BBAW permission (gitignored, regenerable)
 ├── dwds/                      # Inputs and logs for the corpus-wide fetch: lemma list with probes, quarantine files, run logs (gitignored)
 ├── candidates.json            # 9,217 normalized candidate conjugation tables (gitignored, regenerable)

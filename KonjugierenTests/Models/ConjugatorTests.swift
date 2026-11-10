@@ -1068,6 +1068,87 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "weichen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt geweicht", readingIndex: 1)
   }
 
+  // Defect plan, Part 1. The tranche-2 importer took a verb's auxiliary from kaikki's
+  // first-listed one and its gloss from a separate sense, so aufstehen shipped "get up" with
+  // haben. Every expectation here comes from DWDS or German Wiktionary, never from the engine;
+  // verbdata/auxiliary-rulings.tsv records the source for each.
+  @Test func auxiliariesRuledAgainstTheDictionary() {
+    expectConjugation(infinitiv: "stattfinden", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt stattgefUnden")
+    expectConjugation(infinitiv: "reisen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "IST gereist")
+    expectConjugation(infinitiv: "entgehen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "IST entgANGen")
+    expectConjugation(infinitiv: "nachgehen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "IST nachgegANGen")
+    expectConjugation(infinitiv: "aufstehen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "IST aufgestANDen")
+    expectConjugation(infinitiv: "abfahren", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "IST abgefahren")
+    expectConjugation(infinitiv: "zurücktreten", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "IST zurückgetreten")
+
+    expectConjugation(infinitiv: "umziehen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "IST umgezOGen")
+    expectConjugation(infinitiv: "umziehen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt umgezOGen", readingIndex: 1)
+
+    expectConjugation(infinitiv: "schmelzen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "IST geschmOlzen")
+    expectConjugation(infinitiv: "schmelzen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt geschmOlzen", readingIndex: 1)
+  }
+
+  // One row per reading in verbdata/auxiliary-rulings.tsv. This pins the rulings without a
+  // hand-written mixed-case string for each, and Part 6 of the defect plan extends it.
+  nonisolated private static let auxiliaryRulings: [(String, Int, Auxiliary)] = [
+    ("stattfinden", 0, .haben),
+    ("angehen", 0, .haben),
+    ("angehen", 1, .sein),
+    ("reisen", 0, .sein),
+    ("entgehen", 0, .sein),
+    ("nachgehen", 0, .sein),
+    ("umziehen", 0, .sein),
+    ("umziehen", 1, .haben),
+    ("aufstehen", 0, .sein),
+    ("schmelzen", 0, .sein),
+    ("schmelzen", 1, .haben),
+    ("ausziehen", 0, .sein),
+    ("ausziehen", 1, .haben),
+    ("anfahren", 0, .sein),
+    ("anfahren", 1, .haben),
+    ("abbiegen", 0, .sein),
+    ("abfahren", 0, .sein),
+    ("zerreißen", 0, .haben),
+    ("zerreißen", 1, .sein),
+    ("verstreichen", 0, .sein),
+    ("verstreichen", 1, .haben),
+    ("ausrücken", 0, .sein),
+    ("umkehren", 0, .sein),
+    ("umkehren", 1, .haben),
+    ("einbiegen", 0, .sein),
+    ("anbrechen", 0, .sein),
+    ("wegfahren", 0, .sein),
+    ("wegfahren", 1, .haben),
+    ("anspringen", 0, .sein),
+    ("herziehen", 0, .sein),
+    ("herziehen", 1, .haben),
+    ("durchdrehen", 0, .sein),
+    ("zerschellen", 0, .sein),
+    ("herumfahren", 0, .sein),
+    ("abfliegen", 0, .sein),
+    ("ausbrennen", 0, .sein),
+    ("triefen", 0, .haben),
+    ("triefen", 1, .sein),
+    ("stieben", 0, .sein),
+    ("ausreiten", 0, .sein),
+    ("abstreichen", 0, .haben),
+    ("durchklingen", 0, .haben),
+    ("wegtreten", 0, .sein),
+    ("ausschleichen", 0, .haben),
+    ("durchkriechen", 0, .sein),
+    ("zureiten", 0, .haben),
+    ("zureiten", 1, .sein),
+    ("aufrauchen", 0, .haben),
+    ("verstinken", 0, .haben),
+    ("zurücktreten", 0, .sein),
+  ]
+
+  @Test("Each ruled reading carries its dictionary auxiliary", arguments: auxiliaryRulings)
+  func ruledAuxiliary(verb: String, readingIndex: Int, auxiliary: Auxiliary) throws {
+    let reading = try #require(Verb.verbs[verb]?.reading(at: readingIndex), "\(verb) has no reading \(readingIndex)")
+    #expect(reading.auxiliary == auxiliary)
+  }
+
   // Four verbs whose shipped encoding was wrong in a way the classify-and-verify pipeline
   // reported as verified: when the shipped hypothesis failed, the classifier went on to find
   // a different *already-shipping* ablaut group that worked, and the at-odds count only
@@ -1207,9 +1288,9 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "schwellen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "BIN geschwOllen")
     expectConjugation(infinitiv: "zerschellen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "BIN zerschellt")
 
-    // haben, for contrast: schmelzen is dual-auxiliary and ships the transitive reading,
-    // and graben and melken take haben outright.
-    expectConjugation(infinitiv: "schmelzen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "habe geschmOlzen")
+    // haben, for contrast: schmelzen's transitive reading, which was its only reading until
+    // the defect plan gave it a second, and graben and melken, which take haben outright.
+    expectConjugation(infinitiv: "schmelzen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "habe geschmOlzen", readingIndex: 1)
     expectConjugation(infinitiv: "graben", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "habe gegraben")
     expectConjugation(infinitiv: "melken", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "habe gemOlken")
   }

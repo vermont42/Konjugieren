@@ -103,7 +103,10 @@ struct VerbBrowseView: View {
       }
       .navigationTitle(L.Navigation.verbs)
       .navigationDestination(for: Verb.self) { verb in
+        // A deeplink replaces the path with a one-verb path, which reuses this destination's
+        // identity, so without the id a VerbView kept the previous verb's selected reading.
         VerbView(verb: verb)
+          .id(verb.id)
       }
       .searchable(text: $searchText, prompt: L.VerbBrowse.searchPrompt)
       .onChange(of: world.verb) {

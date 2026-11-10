@@ -381,6 +381,17 @@ document and belong to its first release.
 | nutzen | nützen | Nietzsche, *Zarathustra* |
 | schalten | ausschalten | Kafka, *Der Proceß* |
 
+**Added by Part 1, 2026-11-10.** Three more sentences illustrate a sense the dictionaries do
+not recognize, because each was authored to fit a kaikki gloss that Part 1 corrected. They are
+not misses in the second scan, since each contains a conjugation of its verb, so the scan will
+not find them. Replace them with the five:
+
+| Verb | Gloss now | What the sentence shows | Source |
+|---|---|---|---|
+| ausschleichen | taper off (a medication) | "schlich er sich leise aus", an unattested "sneak off" | Opus 4.8 |
+| aufrauchen | finish smoking | smoke rising, kaikki's archaic sense | Opus 4.8 |
+| verstinken | stink up | kaikki's obsolete "stink until the smell is gone" | Opus 5 |
+
 **Fix.** Replace each, in German and in English, by the process the pipeline documents describe.
 Before discarding a displaced sentence, check whether the verb it does illustrate (ergreifen,
 ausschalten) is in the corpus with a weaker example, and move the sentence there if so.

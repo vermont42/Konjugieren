@@ -44,6 +44,14 @@
       "checked": "2026-07-20"
     },
     {
+      "verb": "anhauen",
+      "wiktionary": "haute an / angehaut",
+      "correct": "haute an / angehauen",
+      "authority": "DWDS https://www.dwds.de/wb/anhauen (hieb an / haute an, hat angehauen)",
+      "note": "English Wiktionary's auto-generated weak table. The base hauen lists gehauen beside gehaut, and the derivative moved to the hauen group in defect plan Part 7a.",
+      "checked": "2026-11-10"
+    },
+    {
       "verb": "anlesen",
       "wiktionary": "anleste / angelest",
       "correct": "las an / angelesen",
@@ -56,6 +64,14 @@
       "correct": "wusch auf / aufgewaschen",
       "authority": "base verb waschen is strong and the compound is transparent; no de.wiktionary entry exists",
       "checked": "2026-07-20"
+    },
+    {
+      "verb": "aushauen",
+      "wiktionary": "haute aus / ausgehaut",
+      "correct": "haute aus / ausgehauen",
+      "authority": "DWDS https://www.dwds.de/wb/aushauen (hieb aus / haute aus, hat ausgehauen)",
+      "note": "English Wiktionary's auto-generated weak table. The base hauen lists gehauen beside gehaut, and the derivative moved to the hauen group in defect plan Part 7a.",
+      "checked": "2026-11-10"
     },
     {
       "verb": "auspfeifen",
@@ -79,11 +95,43 @@
       "checked": "2026-07-20"
     },
     {
+      "verb": "krauchen",
+      "wiktionary": "kroch / gekrochen",
+      "correct": "krauchte / gekraucht",
+      "authority": "Duden (schwaches Verb; ist) and DWDS (kraucht, krauchte, ist gekraucht). de.wiktionary lists krauchte and gekraucht first, beside kroch and gekrochen, and says the verb is strong only in the Rhineland, the Mosel valley, and Saxony",
+      "note": "The reverse of this file's usual defect: English Wiktionary gives only the strong table, which is the paradigm of kriechen. Defect plan Part 7b.",
+      "checked": "2026-11-10"
+    },
+    {
+      "verb": "nachsalzen",
+      "wiktionary": "salzte nach / nachgesalzt",
+      "correct": "salzte nach / nachgesalzen",
+      "authority": "DWDS https://www.dwds.de/wb/nachsalzen (hat nachgesalzen/nachgesalzt); Duden on salzen: in the food sense, 2. Partizip gewöhnlich gesalzen",
+      "note": "Incomplete rather than wrong: Wiktionary omits the usual participle. Moved to the salzen group in defect plan Part 7a.",
+      "checked": "2026-11-10"
+    },
+    {
+      "verb": "niederhauen",
+      "wiktionary": "haute nieder / niedergehaut",
+      "correct": "haute nieder / niedergehauen",
+      "authority": "DWDS https://www.dwds.de/wb/niederhauen (hat niedergehauen)",
+      "note": "English Wiktionary's auto-generated weak table. The base hauen lists gehauen beside gehaut, and the derivative moved to the hauen group in defect plan Part 7a.",
+      "checked": "2026-11-10"
+    },
+    {
       "verb": "rauslassen",
       "wiktionary": "rauslasste / rausgelasst",
       "correct": "liess raus / rausgelassen",
       "authority": "de.wiktionary",
       "checked": "2026-07-20"
+    },
+    {
+      "verb": "reinhauen",
+      "wiktionary": "haute rein / reingehaut",
+      "correct": "haute rein / reingehauen",
+      "authority": "DWDS https://www.dwds.de/wb/reinhauen (haute rein, hat reingehauen)",
+      "note": "English Wiktionary's auto-generated weak table. The base hauen lists gehauen beside gehaut, and the derivative moved to the hauen group in defect plan Part 7a.",
+      "checked": "2026-11-10"
     },
     {
       "verb": "reinwaschen",
@@ -113,6 +161,14 @@
       "correct": "begab weg / wegbegeben",
       "authority": "de.wiktionary",
       "checked": "2026-07-20"
+    },
+    {
+      "verb": "zusammenhauen",
+      "wiktionary": "haute zusammen / zusammengehaut",
+      "correct": "haute zusammen / zusammengehauen",
+      "authority": "DWDS https://www.dwds.de/wb/zusammenhauen (haute zusammen, hat zusammengehauen)",
+      "note": "English Wiktionary's auto-generated weak table. The base hauen lists gehauen beside gehaut, and the derivative moved to the hauen group in defect plan Part 7a.",
+      "checked": "2026-11-10"
     }
   ],
   "deferred": [

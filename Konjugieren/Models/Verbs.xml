@@ -175,8 +175,8 @@
   <verb in="ab+h^ä^ngen" hi="497802" ic="flexibility">
     <reading tn="depend" fa="s" ag="hängen" />
   </verb>
-  <verb in="ab+hauen" hi="61545" ic="boxing">
-    <reading tn="clear off, run away" fa="w" />
+  <verb in="ab+h^au^en" hi="61545" ic="boxing">
+    <reading tn="clear off, run away" fa="m" ag="hauen" ay="s" />
   </verb>
   <verb in="ab+h^e^ben" hi="454812" ic="strengthtraining.traditional">
     <reading tn="withdraw (money)" fa="s" ag="bieten" />
@@ -781,8 +781,8 @@
   <verb in="an+h^ä^ngen" hi="151031" ic="flexibility">
     <reading tn="attach, append" fa="s" ag="hängen" />
   </verb>
-  <verb in="an+hauen" hi="10225" ic="boxing">
-    <reading tn="hit up, accost" fa="w" />
+  <verb in="an+h^au^en" hi="10225" ic="boxing">
+    <reading tn="hit up, accost" fa="m" ag="hauen" />
   </verb>
   <verb in="an+h^e^ben" hi="526234" ic="strengthtraining.traditional">
     <reading tn="lift up" fa="s" ag="bieten" />
@@ -1125,8 +1125,8 @@
   <verb in="auf+atmen" hi="96238" ic="yoga">
     <reading tn="breathe a sigh of relief" fa="w" />
   </verb>
-  <verb in="auf+backen" hi="8413" ic="cooldown">
-    <reading tn="crisp up" fa="w" />
+  <verb in="auf+b^a^cken" hi="8413" ic="cooldown">
+    <reading tn="crisp up" fa="m" ag="backen" />
   </verb>
   <verb in="auf+bauen" hi="3600157" ic="strengthtraining.traditional">
     <reading tn="build up" fa="w" />
@@ -1683,8 +1683,8 @@
   <verb in="aus+handeln" hi="229994" ic="2">
     <reading tn="negotiate" fa="w" />
   </verb>
-  <verb in="aus+hauen" hi="817" ic="boxing">
-    <reading tn="hew out" fa="w" />
+  <verb in="aus+h^au^en" hi="817" ic="boxing">
+    <reading tn="hew out" fa="m" ag="hauen" />
   </verb>
   <verb in="aus+h^e^ben" hi="79686" ic="strengthtraining.traditional">
     <reading tn="excavate, trench, ditch, dig" fa="s" ag="bieten" />
@@ -2035,8 +2035,8 @@
   <verb in="äußern" hi="2610523" ic="wave">
     <reading tn="express, utter" fa="w" />
   </verb>
-  <verb in="backen" hi="1209397" ic="cooldown">
-    <reading tn="bake" fa="w" />
+  <verb in="b^a^cken" hi="1209397" ic="cooldown">
+    <reading tn="bake" fa="m" ag="backen" />
   </verb>
   <verb in="bankrott+g^eh^en" hi="574208" hp="y" ic="walk">
     <reading tn="go bankrupt" fa="s" ag="gehen" ay="s" />
@@ -4583,8 +4583,8 @@
   <verb in="fertig+stellen" hi="456313" ic="stand">
     <reading tn="finish, complete" fa="w" />
   </verb>
-  <verb in="fest+backen" hi="752" ic="cooldown">
-    <reading tn="firmly cake, stick together" fa="w" />
+  <verb in="fest+b^a^cken" hi="752" ic="cooldown">
+    <reading tn="firmly cake, stick together" fa="m" ag="backen" />
   </verb>
   <verb in="fest+b^eiß^en" hi="14607" ic="hunting">
     <reading tn="bite firmly" fa="s" ag="reißen" />
@@ -5102,8 +5102,8 @@
   <verb in="hassen" hi="456400" ic="boxing">
     <reading tn="hate" fa="w" />
   </verb>
-  <verb in="hauen" hi="454684" ic="boxing">
-    <reading tn="hit, hew" fa="w" />
+  <verb in="h^au^en" hi="454684" ic="boxing">
+    <reading tn="hit, hew" fa="m" ag="hauen" />
   </verb>
   <verb in="haus+h^a^lten" hi="26069" ic="strengthtraining.traditional">
     <reading tn="economize, be thrifty" fa="s" ag="heißen" />
@@ -6148,8 +6148,8 @@
   <verb in="krank+schr^ei^ben" hi="40750" ic="flexibility">
     <reading tn="write someone a sick note" fa="s" ag="bleiben" />
   </verb>
-  <verb in="kr^au^chen" hi="2005" ic="climbing">
-    <reading tn="crawl (regional)" fa="s" ag="heben" ay="s" />
+  <verb in="krauchen" hi="2005" ic="climbing">
+    <reading tn="crawl (regional)" fa="w" ay="s" />
   </verb>
   <verb in="kreieren" hi="540385" ic="walk.arrival">
     <reading tn="create" fa="i" />
@@ -6527,8 +6527,8 @@
   <verb in="nach+arbeiten" hi="41581" ic="strengthtraining.traditional">
     <reading tn="rework, touch up" fa="w" />
   </verb>
-  <verb in="nach+backen" hi="35910" ic="cooldown">
-    <reading tn="recreate by baking" fa="w" />
+  <verb in="nach+b^a^cken" hi="35910" ic="cooldown">
+    <reading tn="recreate by baking" fa="m" ag="backen" />
   </verb>
   <verb in="nach+bauen" hi="93213" ic="strengthtraining.traditional">
     <reading tn="rebuild, re-create, build a replica" fa="w" />
@@ -6656,8 +6656,8 @@
   <verb in="nach+sagen" hi="152744" ic="wave">
     <reading tn="say about someone" fa="w" />
   </verb>
-  <verb in="nach+salzen" hi="2418" ic="seated.side.left">
-    <reading tn="add extra salt" fa="w" />
+  <verb in="nach+s^a^lzen" hi="2418" ic="seated.side.left">
+    <reading tn="add extra salt" fa="m" ag="salzen" />
   </verb>
   <verb in="nach+schauen" hi="154506" ic="flexibility">
     <reading tn="look, look and see, check" fa="w" />
@@ -6803,8 +6803,8 @@
   <verb in="nieder+h^a^lten" hi="6153" ic="strengthtraining.traditional">
     <reading tn="hold someone on the ground" fa="s" ag="halten" />
   </verb>
-  <verb in="nieder+hauen" hi="379" ic="boxing">
-    <reading tn="strike down, cut down" fa="w" />
+  <verb in="nieder+h^au^en" hi="379" ic="boxing">
+    <reading tn="strike down, cut down" fa="m" ag="hauen" />
   </verb>
   <verb in="nieder+k^om^men" hi="2059" ic="walk.arrival">
     <reading tn="give birth" fa="s" ag="kommen" ay="s" />
@@ -7080,8 +7080,8 @@
   <verb in="rein+hängen" hi="22540" ic="flexibility">
     <reading tn="pull out all the stops, go all out" fa="w" />
   </verb>
-  <verb in="rein+hauen" hi="28985" ic="boxing">
-    <reading tn="beat up" fa="w" />
+  <verb in="rein+h^au^en" hi="28985" ic="boxing">
+    <reading tn="beat up" fa="m" ag="hauen" />
   </verb>
   <verb in="reinigen" hi="1079019" ic="flexibility">
     <reading tn="clean" fa="w" />
@@ -7235,8 +7235,8 @@
   <verb in="sagen" hi="64354675" ic="wave">
     <reading tn="say, tell" fa="w" />
   </verb>
-  <verb in="salzen" hi="93818" ic="seated.side.left">
-    <reading tn="salt, season" fa="w" />
+  <verb in="s^a^lzen" hi="93818" ic="seated.side.left">
+    <reading tn="salt, season" fa="m" ag="salzen" />
   </verb>
   <verb in="sammeln" hi="3799281" ic="handball">
     <reading tn="collect" fa="w" />
@@ -8155,8 +8155,8 @@
   <verb in="um+h^ab^en" hi="598" ic="arms.open">
     <reading tn="have on" fa="m" ag="haben" />
   </verb>
-  <verb in="um+hauen" hi="51429" ic="boxing">
-    <reading tn="fell" fa="w" />
+  <verb in="um+h^au^en" hi="51429" ic="boxing">
+    <reading tn="fell" fa="m" ag="hauen" />
   </verb>
   <verb in="umher+g^eh^en" hi="5368" ic="walk">
     <reading tn="walk around" fa="s" ag="gehen" ay="s" />
@@ -8694,8 +8694,8 @@
   <verb in="ver*hassen" hi="17496" ic="boxing">
     <reading tn="hate, loathe" fa="w" />
   </verb>
-  <verb in="ver*hauen" hi="16627" ic="boxing">
-    <reading tn="bash up, trounce" fa="w" />
+  <verb in="ver*h^au^en" hi="16627" ic="boxing">
+    <reading tn="bash up, trounce" fa="m" ag="hauen" />
   </verb>
   <verb in="ver*h^e^ben" hi="11288" ic="strengthtraining.traditional">
     <reading tn="hurt oneself by lifting" fa="s" ag="bieten" />
@@ -8968,8 +8968,8 @@
   <verb in="ver*sagen" hi="515206" ic="wave">
     <reading tn="fail, give out, break down" fa="w" />
   </verb>
-  <verb in="ver*salzen" hi="15969" ic="seated.side.left">
-    <reading tn="put too much salt in" fa="w" />
+  <verb in="ver*s^a^lzen" hi="15969" ic="seated.side.left">
+    <reading tn="put too much salt in" fa="m" ag="salzen" />
   </verb>
   <verb in="ver*sammeln" hi="749414" ic="handball">
     <reading tn="assemble, gather" fa="w" />
@@ -10057,8 +10057,8 @@
   <verb in="zer*g^eh^en" hi="44495" ic="walk">
     <reading tn="melt, dissolve" fa="s" ag="gehen" ay="s" />
   </verb>
-  <verb in="zer*hauen" hi="2452" ic="boxing">
-    <reading tn="beat into pieces" fa="w" />
+  <verb in="zer*h^au^en" hi="2452" ic="boxing">
+    <reading tn="beat into pieces" fa="m" ag="hauen" />
   </verb>
   <verb in="zer*kochen" hi="2672" ic="cooldown">
     <reading tn="overcook" fa="w" />
@@ -10257,8 +10257,8 @@
   <verb in="zu+h^a^lten" hi="28382" ic="strengthtraining.traditional">
     <reading tn="hold shut" fa="s" ag="halten" />
   </verb>
-  <verb in="zu+hauen" hi="2454" ic="boxing">
-    <reading tn="slam something, bang something" fa="w" />
+  <verb in="zu+h^au^en" hi="2454" ic="boxing">
+    <reading tn="slam something, bang something" fa="m" ag="hauen" />
   </verb>
   <verb in="zu+hören" hi="403781" ic="mind.and.body">
     <reading tn="listen" fa="w" />
@@ -10565,8 +10565,8 @@
   <verb in="zusammen+h^ä^ngen" hi="246871" ic="flexibility">
     <reading tn="interrelate, connect" fa="s" ag="hängen" />
   </verb>
-  <verb in="zusammen+hauen" hi="1032" ic="boxing">
-    <reading tn="beat up, rough up" fa="w" />
+  <verb in="zusammen+h^au^en" hi="1032" ic="boxing">
+    <reading tn="beat up, rough up" fa="m" ag="hauen" />
   </verb>
   <verb in="zusammen+kehren" hi="6882" ic="socialdance">
     <reading tn="sweep up, sweep together" fa="w" />

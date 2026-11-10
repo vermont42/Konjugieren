@@ -8,7 +8,7 @@ below.
 
 ## Status (2026-11-10, end of the first session)
 
-**Parts 0 to 5 are done. Parts 6 and 7 remain.** Read this section before the rest: several
+**Parts 0 to 5 and 7 are done. Part 6 remains.** Read this section before the rest: several
 numbers below were true when the plan was written and are not now. The journal entries in
 `docs/blog_notes.md` headed "Defect plan, Part N" are the detailed record.
 
@@ -38,6 +38,9 @@ numbers below were true when the plan was written and are not now. The journal e
   actor.
 - **Part 6 gained two verbs:** übergehen (step 6) and schaffen (step 6a, a missing "create"
   reading with a different family).
+- **Part 7 ruled one of Part 6's verbs:** abhauen, flipped to sein (row 51 of the rulings file).
+  The hauen derivatives are now mixed, on the hauen group, so a second reading for any of them
+  keeps `fa="m" ag="hauen"`. festbacken's auxiliary (DWDS: hat/ist) was left for Part 6.
 
 **Method that worked in Part 1, worth repeating.**
 

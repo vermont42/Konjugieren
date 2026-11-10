@@ -1203,12 +1203,52 @@ struct ConjugatorTests {
     ("aufrauchen", 0, .haben),
     ("verstinken", 0, .haben),
     ("zurücktreten", 0, .sein),
+    ("abhauen", 0, .sein),
   ]
 
   @Test("Each ruled reading carries its dictionary auxiliary", arguments: auxiliaryRulings)
   func ruledAuxiliary(verb: String, readingIndex: Int, auxiliary: Auxiliary) throws {
     let reading = try #require(Verb.verbs[verb]?.reading(at: readingIndex), "\(verb) has no reading \(readingIndex)")
     #expect(reading.auxiliary == auxiliary)
+  }
+
+  // Defect plan, Part 7a. backen, hauen, and salzen kept a strong participle after their
+  // Präteritum went weak, so neither family describes them. Each is mixed with a group holding
+  // only a participle override; the mixed family's weak endings supply backte and haute.
+  // Expectations are DWDS's and Duden's. kaikki lists the weak participle beside the strong one
+  // for all three (gebackt, gehaut, gesalzt), which is how the weak encoding passed as verified.
+  // Duden marks gehaut Austrian or regional, and gesalzt is usual only for salting roads.
+  @Test func strongParticiplesBehindAWeakPräteritum() {
+    expectConjugation(infinitiv: "backen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "backte")
+    expectConjugation(infinitiv: "backen", conjugationgroup: .präteritumIndikativ(.secondSingular), expected: "backtest")
+    expectConjugation(infinitiv: "backen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "backte")
+    expectConjugation(infinitiv: "backen", conjugationgroup: .perfektpartizip, expected: "gebackEN")
+    expectConjugation(infinitiv: "backen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt gebackEN")
+    expectConjugation(infinitiv: "aufbacken", conjugationgroup: .perfektpartizip, expected: "aufgebackEN")
+    expectConjugation(infinitiv: "festbacken", conjugationgroup: .perfektpartizip, expected: "festgebackEN")
+
+    expectConjugation(infinitiv: "hauen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "haute")
+    expectConjugation(infinitiv: "hauen", conjugationgroup: .perfektpartizip, expected: "gehauEN")
+    expectConjugation(infinitiv: "hauen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt gehauEN")
+    expectConjugation(infinitiv: "abhauen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "abhaute")
+    expectConjugation(infinitiv: "abhauen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "IST abgehauEN")
+    expectConjugation(infinitiv: "zusammenhauen", conjugationgroup: .perfektpartizip, expected: "zusammengehauEN")
+    expectConjugation(infinitiv: "verhauen", conjugationgroup: .perfektpartizip, expected: "verhauEN")
+    expectConjugation(infinitiv: "zerhauen", conjugationgroup: .perfektpartizip, expected: "zerhauEN")
+
+    expectConjugation(infinitiv: "salzen", conjugationgroup: .präsensIndikativ(.secondSingular), expected: "salzt")
+    expectConjugation(infinitiv: "salzen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "salzte")
+    expectConjugation(infinitiv: "salzen", conjugationgroup: .perfektpartizip, expected: "gesalzEN")
+    expectConjugation(infinitiv: "nachsalzen", conjugationgroup: .perfektpartizip, expected: "nachgesalzEN")
+    expectConjugation(infinitiv: "versalzen", conjugationgroup: .perfektpartizip, expected: "versalzEN")
+  }
+
+  // Defect plan, Part 7b. krauchen shipped with kriechen's paradigm (kroch, gekrochen), which
+  // is all English Wiktionary gives. Duden and DWDS conjugate it weak; verbdata/
+  // wiktionary-defects.json records the disagreement.
+  @Test func krauchenIsWeak() {
+    expectConjugation(infinitiv: "krauchen", conjugationgroup: .präteritumIndikativ(.thirdSingular), expected: "krauchte")
+    expectConjugation(infinitiv: "krauchen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "IST gekraucht")
   }
 
   // Four verbs whose shipped encoding was wrong in a way the classify-and-verify pipeline

@@ -371,7 +371,12 @@ Small things the pipeline surfaced that no plan currently owns. None blocks the 
   `verb-sources.md`; needs a new family or a full-override ablaut group. Step 7 confirmed the
   diagnosis and left both out: kaikki lists *only* the strong participle for these two, so
   nothing verifies. *salzen* looks identical but kaikki also lists the weak *gesalzt*, so it
-  verified weak and shipped weak.
+  verified weak and shipped weak. **The mechanism exists as of 2026-11-10** (defect plan Part
+  7): backen, hauen, and salzen are now mixed verbs (`fa="m"`) on groups of their own that hold
+  only a participle override (`gebackEN*,pp`), and their 15 derivatives share them. mahlen and
+  spalten can be imported the same way, as two more groups. Importing them is still not
+  scheduled. The classifier does not propose such a group, so import them by hand and check the
+  participle against a dictionary, not against the classifier's verdict.
 - ~~**A strong verb whose stem ends in a vowel takes `-n`, not `-en`.**~~ **Fixed 2026-07-20**
   in `Conjugator.absorbsEnEnding`. A stem ending in `-e` absorbs the `e` of an `-en` ending:
   *wir schrien*, not *schrieen*, and *geschrien*, not *geschrieen*. Both doubled forms were

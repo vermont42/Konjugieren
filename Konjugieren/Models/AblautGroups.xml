@@ -7,6 +7,7 @@
 ]>
 
 <ablautGroups>
+  <ag e="backen" a="gebackEN*,pp" />
   <ag e="beginnen" a="A,bA|Ä,dA|O,pp" />
   <ag e="bersten" a="Ir,a2s|Irs,a3s|Arst,bA|Ärst,dA|Irst,i2s|Orst,pp" />
   <ag e="bieten" a="O,bA,pp|Ö,dA" />
@@ -32,6 +33,7 @@
   <ag e="haben" a="A,a2s,a3s|AT,bA|ÄT,dA" />
   <ag e="halten" a="Ä,a2s,a3s|IE,bA,dA" />
   <ag e="hängen" a="I,bA,dA|A,pp" />
+  <ag e="hauen" a="gehauEN*,pp" />
   <ag e="heben" a="O,bA,pp|Ö,dA" />
   <ag e="heißen" a="IE,bA,dA" />
   <ag e="kennen" a="A,bA,pp" />
@@ -47,6 +49,7 @@
   <ag e="nehmen" a="Imm,a2s,a3s|Ahm,bA|Ähm,dA|Omm,pp" />
   <ag e="rufen" a="IE,bA,dA" />
   <ag e="reißen" a="ISS,bA,dA,pp" />
+  <ag e="salzen" a="gesalzEN*,pp" />
   <ag e="saufen" a="ÄUf,a2s,a3s|Off,bA,pp|Öff,dA" />
   <ag e="schaffen" a="Uf,bA|Üf,dA" />
   <ag e="schinden" a="U,bA,pp|Ü,dA" />

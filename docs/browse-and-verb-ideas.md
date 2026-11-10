@@ -1032,7 +1032,7 @@ not this list, is the current statement of the defects.
    "haben or sein?" is among the questions people open such an app to settle. **Partly fixed
    on `main` 2026-11-10** by Part 1 of the defect plan: the 37 verbs kaikki contradicts outright,
    and zurücktreten, were ruled against DWDS and German Wiktionary. aufstehen and eight of the
-   ten verbs in the plan's first table now read correctly; bedürfen and backen are Parts 2 and 7.
+   ten verbs in the plan's first table now read correctly; bedürfen and backen were fixed by Parts 2 and 7.
    12 verbs gained a second reading. The 141 that need a ruling are Part 6.
 2. **Three verbs lose their prefix in some conjugations.** bedürfen shows ich darf, du darfst, er
    darf for bedarf, bedarfst, bedarf. vermögen shows ich mag, du magst, er mag for vermag,
@@ -1046,7 +1046,9 @@ not this list, is the current statement of the defects.
    the Perfektpartizip gehaut, and the example for zusammenhauen has zusammengehauen. The
    standard participle is gehauen (**background**). krauchen is classed as strong (kroch,
    gekrochen), and its example has krauchte. Which side is right in each case needs a ruling
-   against a dictionary.
+   against a dictionary. **Fixed on `main` 2026-11-10** by Part 7 of the defect plan. The
+   sentences were right both times. hauen, backen, and salzen now generate gehauen, gebacken,
+   and gesalzen, with their derivatives, and krauchen is weak, as Duden and DWDS give it.
 4. **35 example sentences do not contain a conjugation that the app generates for their verb.**
    Some quote a different verb: the sentence for greifen uses ergriff, the one for fertigen uses
    verfertigt, and the one for abstimmen has only the noun Abstimmung. The appendix lists the

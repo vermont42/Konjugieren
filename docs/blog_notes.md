@@ -8276,3 +8276,70 @@ The arcade game contains no conjugation at all. And the Control Center buttons r
 deeplink; they do not use `OpenURLIntent`, which is a silent no-op from a widget extension.
 
 **5c** landed with Part 2, since it was the same file.
+
+## Defect plan, Part 7: three verbs whose participle stayed strong (2026-11-10)
+
+backen shipped *gebackt* and hauen shipped *gehaut*. The app's own example sentence for
+zusammenhauen said *zusammengehauen*, which is how the defect was found. Both verbs went weak in
+the Präteritum (backte, haute) and kept their strong participle, so neither family described
+them. Decision 2 of the plan chose the cheapest encoding the engine already supports. Each base
+verb is now mixed (`fa="m"`), on an ablaut group of its own that holds only a participle
+override: `<ag e="backen" a="gebackEN*,pp" />`. The conjugator consults a group only for strong
+and mixed verbs, and the mixed family's weak endings give backte. Part 2's prefix fix does the
+rest: abgehauen keeps the override's ge-, and verhauen, zerhauen, and versalzen drop it.
+
+**The scan the plan prescribed would have missed both verbs it was written for.** It said to
+look for weak verbs whose *first-listed* kaikki participle differs from the app's. kaikki lists
+*gebackt* and *gehaut* first. The scan that worked asks instead for any shipping weak verb with
+an -en participle that keeps the infinitive's vowel (ge + backen). It found three base verbs,
+under the plan's threshold of five: backen, hauen, and salzen, with 15 derivatives. The broader
+scan, any verb with both a -t and an -en participle, found 50. Nearly all of them are the
+dual-paradigm gap (gemolken, gesogen, gebollen), which is out of scope, and schalten's
+*geschalten* is labelled colloquial by DWDS.
+
+**salzen nearly stayed weak.** DWDS gives "hat gesalzen/gesalzt" and German Wiktionary
+"gesalzt, gesalzen", neither ranked. Duden settled it by sense: in the food sense, the shipped
+gloss, "2. Partizip gewöhnlich: gesalzen", while road salting usually takes *gesalzt* and the
+figurative sense (gesalzene Preise) only *gesalzen*. festbacken looked like an exception, since
+it derives from the homograph backen² "stick, cake", which DWDS gives as "gebacken/gebackt".
+DWDS gives festbacken itself only as *festgebacken*, so it joined the group.
+
+**The at-odds count rose to 11 before it fell back to 5.** Six derivatives (anhauen, aushauen,
+niederhauen, reinhauen, zusammenhauen, nachsalzen) have kaikki records that list only the weak
+participle. That is the auto-generated weak-table defect from July, and DWDS gives -gehauen for
+every one. They are now in `verbdata/wiktionary-defects.json` with DWDS cited, nachsalzen
+marked "incomplete rather than wrong", because DWDS lists both participles for it. The five
+verbs still at odds are the same five as before.
+
+**krauchen was strong with kriechen's forms**, kroch and gekrochen, which is all English
+Wiktionary gives. Duden calls it a "schwaches Verb; ist", and DWDS gives "kraucht, krauchte, ist
+gekraucht". German Wiktionary lists the weak forms first and says the verb is strong only in the
+Rhineland, the Mosel valley, and Saxony. It is now weak, and it is in `wiktionary-defects.json`
+as the reverse of that file's usual defect.
+
+**One auxiliary was ruled on the way.** abhauen "clear off, run away" shipped with haben, which
+made "hat abgehaut" wrong twice. DWDS's 2abhauen is "ist abgehauen". It is a flip, with a row in
+`auxiliary-rulings.tsv` and the parameterized test. The haben sense, "chop off", is current
+standard German, but the shipped sense is labelled salopp, so criterion 2 refused a second
+reading. That is the anspringen precedent again, and Josh has not ruled on it yet. festbacken's
+auxiliary (DWDS: hat/ist) was left for Part 6.
+
+**The family texts needed one paragraph.** The Mixed article said that every mixed verb changes
+its vowel and ends its participle in -t. It now adds that a smaller group mixes the other way,
+and that hauen and salzen were once reduplicating verbs, of the class of halten and heißen. The
+tagline in the Families list became "Combines features of strong and weak verbs". The three
+groups have descriptions in both languages, and the Families tab lists them.
+
+**Recorded and not done.** mahlen and spalten can now be imported as two more groups of this
+shape, and wrinkle 4 in `verb-sources.md` and the roadmap say so. The classifier never proposes
+such a group, so they will have to be encoded by hand. Two existing problems came to light:
+eight groups in `AblautGroups.xml` (bersten, hängen, messen, saufen, schinden, schmelzen,
+sieden, sollen) have no entry in `AblautGroupInfo.exemplars`, so the Families tab has never
+listed them. And the Ablaut article says "sixty-six distinct ablaut patterns", which matched
+neither count before this part and matches neither now.
+
+What a user would see changed: backen, hauen, salzen, and their derivatives show gebacken,
+gehauen, and gesalzen; krauchen shows krauchte and ist gekraucht; abhauen takes sein; and the
+Families tab has three new groups. The suite is 221 tests. The at-odds count held at 5. Scan 1
+finds no verb missing its prefix, and Scan 2's misses fell from 29 to 27, as the plan predicted:
+zusammenhauen and krauchen left the list, and hauen and niederhauen stay, on *hieb*.

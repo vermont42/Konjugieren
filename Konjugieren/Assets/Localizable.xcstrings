@@ -255,6 +255,23 @@
     "😱" : {
 
     },
+    "AblautGroupInfo.backen" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schwaches Präteritum, starkes Partizip: $backen$ → $backte$ → $gebackEN$. Das alte starke Präteritum $bUk$ ist verblasst, doch das starke Partizip hat sich gehalten."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weak Präteritum, strong participle: $backen$ → $backte$ → $gebackEN$. The old strong Präteritum $bUk$ has faded, but the strong participle has held on."
+          }
+        }
+      }
+    },
     "AblautGroupInfo.beginnen" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -646,6 +663,23 @@
         }
       }
     },
+    "AblautGroupInfo.hauen" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schwaches Präteritum, starkes Partizip: $hauen$ → $haute$ → $gehauEN$. Das starke $hIEb$ lebt in gehobener Sprache und für Hiebe mit einer Waffe fort."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weak Präteritum, strong participle: $hauen$ → $haute$ → $gehauEN$. The strong $hIEb$ lives on in elevated German and for blows struck with a weapon."
+          }
+        }
+      }
+    },
     "AblautGroupInfo.heben" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -880,6 +914,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Simple u→ie pattern: $rUfen$ → $rIEf$ → $gerUfen$. Participle returns to original vowel."
+          }
+        }
+      }
+    },
+    "AblautGroupInfo.salzen" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schwaches Präteritum, starkes Partizip: $salzen$ → $salzte$ → $gesalzEN$. Auch das schwache $gesalzt$ ist korrekt, doch im übertragenen Sinn, etwa bei gesalzenen Preisen, gilt nur gesalzen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weak Präteritum, strong participle: $salzen$ → $salzte$ → $gesalzEN$. The weak $gesalzt$ is also correct, but figurative uses such as gesalzene Preise (steep prices) take only gesalzen."
           }
         }
       }
@@ -1920,13 +1971,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Kombiniert den Ablaut starker Verben mit den Endungen schwacher Verben."
+            "value" : "Vereint Merkmale starker und schwacher Verben."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Combines strong-verb ablaut with weak-verb endings."
+            "value" : "Combines features of strong and weak verbs."
           }
         }
       }
@@ -2032,13 +2083,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "~Gemischte~ Verben vereinen Merkmale sowohl starker als auch schwacher Verben. Wie starke Verben durchlaufen sie im Präteritum einen Vokalwechsel (Ablaut). Aber wie schwache Verben verwenden sie das Suffix ~-te~ für das ~Präteritum~ und ~-t~ für das ~Perfektpartizip~.\n\nZu den häufigsten gemischten Verben gehören ~bringen~ (bring, $brAchte$, $gebrAcht$), ~denken~ (think, $dAchte$, $gedAcht$), ~kennen~ (know, $kAnnte$, $gekAnnt$) und ~wissen~ (know facts, $wUsste$, $gewUsst$).\n\nGemischte Verben entstanden vermutlich, als einige starke Verben dem produktiveren schwachen Muster zu folgen begannen und dabei ihre Vokalwechsel beibehielten. Diese hybride Kategorie ist klein, umfasst aber mehrere hochfrequente Verben, die für das tägliche Deutsch unverzichtbar sind."
+            "value" : "~Gemischte~ Verben vereinen Merkmale sowohl starker als auch schwacher Verben. Wie starke Verben durchlaufen sie im Präteritum einen Vokalwechsel (Ablaut). Aber wie schwache Verben verwenden sie das Suffix ~-te~ für das ~Präteritum~ und ~-t~ für das ~Perfektpartizip~.\n\nZu den häufigsten gemischten Verben gehören ~bringen~ (bring, $brAchte$, $gebrAcht$), ~denken~ (think, $dAchte$, $gedAcht$), ~kennen~ (know, $kAnnte$, $gekAnnt$) und ~wissen~ (know facts, $wUsste$, $gewUsst$).\n\nEine kleinere Gruppe mischt umgekehrt. ~backen~ (bake, $backte$, $gebackEN$), ~hauen~ (hit, $haute$, $gehauEN$) und ~salzen~ (salt, $salzte$, $gesalzEN$) behalten ihren Vokal durchgehend und bilden das ~Präteritum~ schwach mit ~-te~, doch ihr ~Perfektpartizip~ behält das starke ~-en~. Alle drei waren einst ganz stark, und das Partizip ist, was davon geblieben ist. ~hauen~ und ~salzen~ waren reduplizierende Verben, aus derselben alten Klasse wie ~halten~ und ~heißen~.\n\nGemischte Verben entstanden vermutlich, als einige starke Verben dem produktiveren schwachen Muster zu folgen begannen und dabei ihre Vokalwechsel beibehielten. Diese hybride Kategorie ist klein, umfasst aber mehrere hochfrequente Verben, die für das tägliche Deutsch unverzichtbar sind."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "~Mixed~ verbs combine features of both strong and weak verbs. Like strong verbs, they undergo a vowel change (ablaut) in the past tense. But like weak verbs, they use the ~-te~ suffix for the ~Präteritum~ and ~-t~ for the ~Perfektpartizip~.\n\nThe most common mixed verbs include ~bringen~ (bring, $brAchte$, $gebrAcht$), ~denken~ (think, $dAchte$, $gedAcht$), ~kennen~ (know, $kAnnte$, $gekAnnt$), and ~wissen~ (know facts, $wUsste$, $gewUsst$).\n\nMixed verbs likely arose when some strong verbs began following the more productive weak pattern while retaining their vowel changes. This hybrid category is small but includes several high-frequency verbs essential for everyday German."
+            "value" : "~Mixed~ verbs combine features of both strong and weak verbs. Like strong verbs, they undergo a vowel change (ablaut) in the past tense. But like weak verbs, they use the ~-te~ suffix for the ~Präteritum~ and ~-t~ for the ~Perfektpartizip~.\n\nThe most common mixed verbs include ~bringen~ (bring, $brAchte$, $gebrAcht$), ~denken~ (think, $dAchte$, $gedAcht$), ~kennen~ (know, $kAnnte$, $gekAnnt$), and ~wissen~ (know facts, $wUsste$, $gewUsst$).\n\nA smaller group mixes the other way. ~backen~ (bake, $backte$, $gebackEN$), ~hauen~ (hit, $haute$, $gehauEN$), and ~salzen~ (salt, $salzte$, $gesalzEN$) keep their vowel throughout and form the ~Präteritum~ with weak ~-te~, but their ~Perfektpartizip~ keeps the strong ~-en~. All three were once fully strong, and the participle is what remains. ~hauen~ and ~salzen~ were reduplicating verbs, of the same ancient class as ~halten~ and ~heißen~.\n\nMixed verbs likely arose when some strong verbs began following the more productive weak pattern while retaining their vowel changes. This hybrid category is small but includes several high-frequency verbs essential for everyday German."
           }
         }
       }

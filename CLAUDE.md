@@ -24,6 +24,16 @@ else the style doc forbids, at generation time rather than by editing the archiv
 "branch before committing" reflex does not apply here. If you find yourself proposing a feature
 branch, don't.
 
+## No Release Before 2027
+
+Josh cannot cut an App Store release of Konjugieren, Conjuguer, or Conjugar from his present
+MacBook, and he plans to replace it in 2027. He said so on 2026-11-10. TestFlight builds are
+probably blocked too, since they need the same upload. Until then, work accumulates on `main` and
+the shipped versions do not change. When planning, do not sequence work around a near release,
+and do not count on shipping a fix or an analytics signal in order to learn from it. Text hosted
+outside the apps, such as the privacy policy, can still change at any time. Remove this section
+when the constraint lifts.
+
 ## Checking the Five-Hour Usage Window
 
 If the need arises to check token usage in the five-hour window, consult

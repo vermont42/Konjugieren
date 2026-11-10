@@ -1,0 +1,3 @@
+I am disappointed with the usage that Konjugieren and, to a lesser extent, Conjuguer and Conjugar are getting. The first step in fixing this is quantifying usage. I am authed in Chrome to TelemetryDeck, which has my usage data. Please create a Markdown file in the docs folder with all the usage data, for all three apps, you can find on the TelemetryDeck website or, if one exists, the TelemetryDeck MCP or API. I will use this data as an input to future work on increasing usage and engagement.
+
+Please ask for clarification if this task is under-specified.

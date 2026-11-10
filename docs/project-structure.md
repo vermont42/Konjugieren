@@ -196,6 +196,7 @@ docs/
 ├── adding-verbs.md            # Verb-addition guide: XML formats, ablaut system, lessons learned
 ├── blog_notes.md              # Work journal: dated narrative notes for future blog posts and session memory
 ├── bratwurst-icon-prompts.md  # Prompts used to generate bratwurst-themed app icons
+├── browse-and-verb-ideas.md   # Findings and ranked ideas for the verb list and verb page (2026-11-10): where a lookup fails today, what other tools do, ideas with basis, effort, signal, and carry-over to Conjuguer and Conjugar, the pieces shared with the quiz track, signals to add, and defects found while checking
 ├── bug-report-gitcommitsha.md  # Bug report draft: Claude Code `plugin update` doesn't refresh `gitCommitSha` in `installed_plugins.json`
 ├── bug-report-grep-silent-truncation.md  # Bug report draft (filed as anthropics/claude-code #56751): long-line `grep` matches silently disappear from Bash tool output
 ├── claude-code-skill-recommendations.md  # Curated third-party Claude Code skills worth installing for Konjugieren work
@@ -223,16 +224,19 @@ docs/
 ├── nomination.md              # App Store featuring nomination — Description, Helpful Details, and Supplemental Materials slots
 ├── on-device-tool-design.md   # Lessons from implementing Foundation Models Tool conformances
 ├── pdf.md                     # PDF export documentation
+├── pedagogy.md                # Research findings on the quiz's pedagogy (2026-11-10): what the quiz does, what a played session and the telemetry show, what the literature supports, and tiered suggestions; every claim labeled by how it was verified
 ├── peterborough-chronicle-reading-list.md  # Reading list for the Peterborough Chronicle and the Old-to-Middle English transition
 ├── platform-features-plan.md  # Plan for platform-specific features
 ├── post-release-features.md   # Post-release feature backlog
 ├── project-structure.md       # This file — annotated directory tree
 ├── query-rewriting-exploration.md  # Query rewriting research for tutor feature
 ├── regenerate-verbs-pdf-prompt.md  # Self-contained session prompt for regenerating konjugieren-verbs.pdf
+├── reply-about-wiktionary-defects.txt  # Josh's reply to a reader who asked how the app records its deliberate disagreements with Wiktionary (verbdata/wiktionary-defects.json); the recipient's name is redacted
 ├── screenshot-plan.md            # App Store screenshot capture spec: 9 view categories × light/dark × English/German across iPhone 6.9" and iPad 13"
 ├── screenshot-playbook.md        # App Store screenshot workflow: prerequisites, driver flags, the 12 workarounds, recovery guidance
 ├── screenshots/                  # Captured App Store screenshots produced by `scripts/take_screenshots.sh` (gitignored)
 ├── sound-replacement-prompts.md    # Prompts used to generate replacement sound effects
+├── telemetry-usage.md         # Usage snapshot (2026-11-10) for Konjugieren, Conjuguer, Conjugar from TelemetryDeck and App Store Connect, the China-device reconciliation, and the recipes and gotchas for refreshing both
 ├── terminology.md             # Conjugationgroup definitions, tense/mood/voice distinctions
 ├── tutor-test-queries.txt     # Test queries for the AI tutor
 ├── ui-audit.md                # UI audit notes and findings (Round One; implemented in commit 657bb4f)
@@ -259,6 +263,11 @@ docs/
 ├── wwdc2026-whats-new-in-swift-transcript.txt  # Verbatim WWDC2026 session-262 transcript (Apple copyrighted; gitignored)
 ├── wwdc2026-whats-new-swiftui.md  # WWDC2026 "What's new in SwiftUI" announcements relevant to Konjugieren; SwiftUI companion to the Platforms SOTU report
 └── wwdc2026-whats-new-swiftui-transcript.txt  # Verbatim WWDC2026 session-269 transcript (Apple copyrighted; gitignored)
+
+plans/                         # Plans written for future sessions to carry out
+├── browse-and-verb-ideation.md # Brief for ideating Browse and Verb screen improvements, in parallel with the quiz work in docs/pedagogy.md
+├── fix-reference-defects.md   # Plan for fixing the defects that ideation found, to be carried out before any idea is built: wrong auxiliaries (37 contradicted by kaikki, 141 needing a ruling) with a second reading wherever both senses are current, prefixes lost under full-override ablaut entries, two small code bugs, five example sentences, three documents, and the backen/hauen participles
+└── fix-reference-defects-audit.py # Prototype of that plan's auxiliary audit: compares every shipped auxiliary with the kaikki snapshot, sense by sense, and prints a verdict per verb. To be promoted to verbdata/ in the plan's Part 6
 
 scripts/
 ├── check_docs.py              # Asserts the checkable claims the docs make about themselves: corpus/ablaut/test counts in the four cache files, relative-link targets, roadmap commit hashes, the kaikki attribution invariant, and etymology completeness

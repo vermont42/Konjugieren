@@ -1,0 +1,14 @@
+Hi [name redacted],
+
+It gets the reasoning from the data, and that was deliberate.
+
+The twelve verbs live in a JSON file in the repo, and each entry records what Wiktionary says, what is correct, which source settled it, and when. The file opens with a comment explaining the underlying failure: English Wiktionary auto-generates a default weak conjugation table for verb pages that no editor has given a strong template, so it confidently lists non-words like "angelest" for anlesen while the base verb lesen is correctly strong. Each exception was arbitrated against German Wiktionary, which is edited independently.
+
+The reason it had to be data rather than notes is a regression check. My verification script counts verbs where the app disagrees with Wiktionary, and the project roadmap says that number must never rise. When I fixed these verbs, the count went from 8 to 17. A future session reading only the number and the rule would have "repaired" my repairs. So the script now reads the exceptions file, subtracts those verbs, and prints why, reporting the raw count alongside. The reasoning shows up in the same place as the number it qualifies.
+
+One rule is written into the file itself: adding a verb requires naming an outside source that contradicts Wiktionary. It's not a mute button.
+
+The file is public if you'd like to look: https://github.com/vermont42/Konjugieren/blob/main/verbdata/wiktionary-defects.json
+
+Best,
+Josh

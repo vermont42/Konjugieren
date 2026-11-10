@@ -7634,3 +7634,379 @@ connectors for this project in `~/.claude.json`. None of those touch checked-in 
 Josh then made two MCP changes of his own for this project: he disabled `cupertino`, which the
 pass had left alone only because one retained Konjugieren session was too little evidence either
 way, and enabled `computer-use`, whose tools are deferred and cost nothing up front.
+
+## Quantifying usage across the three conjugation apps (2026-11-10)
+
+Josh is disappointed with Konjugieren's usage, and to a lesser degree Conjuguer's and Conjugar's,
+and asked for every usage number TelemetryDeck holds, as a baseline for growth work. The result is
+[`docs/telemetry-usage.md`](telemetry-usage.md).
+
+There is no TelemetryDeck MCP server, so the work went through the dashboard in Chrome. The first
+approach was to replay the dashboard's own TQL requests from inside the page, which meant lifting
+its bearer token. The permission classifier refused that, rightly: a token is a credential, and
+the dashboard already offers a sanctioned route. The route is Explore → Playground, a JSON editor
+that runs TQL as you type. Every number in the document came from queries typed there, with a few
+lines of in-page JavaScript summarizing the rendered result tables so that hundreds of per-device
+rows never had to pass through the transcript.
+
+The first monthly query looked broken: "October" showed four Konjugieren signals, against 120 on
+the Event Types page for the last 30 days. Nothing was wrong with the data. The Playground renders
+each bucket's UTC start in the browser's time zone, and in Pacific time midnight UTC on November 1
+is the afternoon of October 31, so the row labelled October held November. A daily query matched
+against the timestamped Recent Events list confirmed the one-period shift for days, weeks, and
+months alike. The document's appendix records it with the other TQL traps found by trial (filtered
+aggregators need raw `longSum` over `count`, `cardinality` needs `byRow` and `round`, and
+string-typed parameters need a `CAST` virtual column before any numeric aggregator sees them).
+
+The numbers are stark. Konjugieren had 10 users in the last 30 days, against 96 for Conjuguer and
+77 for Conjugar, and averaged 0.6 daily active users, with no users at all on 16 of those 30 days.
+Monthly installs have never exceeded 13 devices and fell to zero for November 1 to 10. Its single
+heaviest device accounts for a third of all sessions, which may be Josh's own phone running the
+App Store build; that is the first thing to confirm, because it would shrink every figure further.
+The most surprising result is that no one has ever completed a Konjugieren quiz in the retained
+data: 45 starts, 19 quits (13 on the very first of 30 questions), 0 completions. The completion code
+path in `Quiz.finishQuiz()` reads correctly, so this looks like real behavior rather than a lost
+signal. The audience is also not what one might guess: Germany 30, the US 21, and China 19 of 77
+devices, with Chinese installs arriving steadily every month.
+
+Two limits shape what the data can say. TelemetryDeck sees nothing before first launch, so App
+Store impressions and conversion, likely the heart of an acquisition problem, have to come from
+App Store Connect. And Konjugieren's retained history begins on 2026-03-10, exactly eight months
+before today and after launch, which suggests a plan retention window. If so, the earliest weeks
+will keep scrolling away, and refreshing this snapshot periodically is the only way to keep a
+long baseline.
+
+## Pedagogy research: the quiz is an exam that nobody finishes (2026-11-10)
+
+Josh wrote in [`prompts/pedagogy.md`](../prompts/pedagogy.md) that he is not a teacher and that the
+quiz is his best uninformed effort, and asked whether its method is sound, what methods work, and
+what to change. The deliverable is [`docs/pedagogy.md`](pedagogy.md). No code changed.
+
+The work had four inputs, and two of them arrived as mid-session suggestions from Josh. The first
+was the code. The second was his suggestion to launch the app and take a quiz with
+`ios-build-verify`, which turned out to matter more than expected. The third was
+[`docs/telemetry-usage.md`](telemetry-usage.md), written by a parallel session the same day. The
+fourth was the literature, gathered by Sonnet research agents under the deep-research skill.
+
+The literature pass is the part that went wrong first. Five broad briefs came back thin: each agent
+stopped near a fifteen-call budget, worked from search summaries, and said so candidly. A second
+round of eight narrow briefs, each naming the primary sources to read, did better. Pashler et al.
+(2005) on feedback, Pan et al. (2019) on interleaving Spanish conjugations, the Wong and VanPatten
+drill debate with its replies, Nation's four strands, and the Geneva acquisition-order study were
+all read in full. Much stayed out of reach: Wiley, SAGE, and APA pages returned 403, the Instituto
+Cervantes site was down for maintenance, and the French curricular inventory blocked automated
+access. The response was to label every claim in the document by how it was verified (observed,
+read, secondhand, vendor, inference, background) instead of writing with uniform confidence. A
+future session extending this work should keep that convention and should not promote a
+"secondhand" figure without opening the source.
+
+The simulator session produced the findings the code alone would not have. The correction for a
+wrong answer appears on a card that already shows the next question, with the missed question's
+pronoun and conjugationgroup gone. An answer that includes the pronoun is rejected. `ue` for `ü` is
+rejected. One feedback line looked like a conjugator bug: `anprüft` as the ihr Präsens of the
+separable verb anprüfen. It is not a bug. `ConjugatorTests` expects `ankommt`, so the joined,
+subordinate-clause conjugation is the deliberate convention for every finite conjugationgroup
+except the Imperativ, which splits. The consequence for the quiz was then confirmed on screen with
+a small script that answered `x` until a Präsens question on a separable verb came up: `halten
+hinunter` was marked wrong and `hinunterhalten` expected, while the app's own Präsens article
+teaches "ich komme ... an". Separable verbs are 61.4% of the corpus. That is a decision for Josh
+(which conjugation is standard, and whether the quiz accepts both), not something to patch
+quietly.
+
+The corpus numbers carried the argument. Verbs are drawn uniformly from 3,572, so a 30-question
+quiz expects 0.84 of the 100 most frequent verbs and has an 8.1% chance of containing any of the
+top ten. Only 488 verbs are unprefixed, they carry 73.9% of the frequency count, and 156 of them
+are strong or mixed. The corpus holds 257,184 conjugations that follow from a few hundred facts,
+and the quiz samples the table instead of the facts. The telemetry then reframed the problem: 45
+starts, no completions, and 13 of the 19 recorded quits came before a single answer was submitted.
+Whatever is wrong is wrong in the first ten seconds.
+
+Three traps for later sessions. `docs/feature-architecture.md` is stale on the quiz: it lists three
+conjugationgroups for Regular and four additions for Ridiculous where the code has four and eight,
+and it says the arcade game's players shoot "by conjugating verbs" when the game contains no
+conjugation. It was left alone because the brief was research only. The privacy policy states that
+the app does not record quiz answers, scores, or looked-up verbs, so any new telemetry about
+accuracy needs a policy revision first. And the raw research notes lived in the session scratchpad,
+outside the repository, so `docs/pedagogy.md` and its source list are the durable record.
+
+The mechanics of driving the quiz are worth keeping: `type_text.sh --id quiz_answer_field "<answer>"`
+followed by `axe key 40 --udid <UDID>` submits an answer, and the screen that results carries both
+the feedback for the question just answered and the prompt for the next.
+
+## Adding App Store Connect to the usage snapshot (2026-11-10)
+
+The TelemetryDeck snapshot earlier today could see only what happens after launch, so Josh asked
+for App Store Connect's analytics as well. Both halves now live in
+[`docs/telemetry-usage.md`](telemetry-usage.md).
+
+The method again was the dashboard itself. App Store Connect's Metrics explorer has a metric
+menu, a grouping menu, and a Lifetime range; about 25 selections per app were driven by in-page
+JavaScript clicking the same controls a person would, launched without awaiting so the loop could
+outlive the browser tool's 45-second timeout, with results parked on `window` and polled. Several
+traps cost a rerun each: some submenus open on hover and others only on click, button labels carry
+an SF Symbols glyph that defeats an exact-match regex, and "Active Last 30 Days" quietly resets the
+frequency to daily for every metric selected after it.
+
+Four findings changed the picture. First, App Store Connect dates Konjugieren's launch to
+2026-03-13, which overturns this morning's guess that TelemetryDeck's 2026-03-10 start was a plan
+retention cutoff; those three pre-release days were App Review or Josh. Second, Konjugieren
+converts above the 75th percentile of free Education apps but averages only 157 impressions a
+month, a sixth of Conjuguer's, so its problem is being seen rather than being chosen. Third,
+Conjuguer's apparent download boom in 2024 and 2025 was two September spikes of about 1,000
+Institutional Purchases each, from Switzerland, on Macs: a Swiss institution deploying the app to
+school machines every autumn. It did not come back in September 2026. A web search for the canton
+or school found nothing, and Apple does not identify institutional buyers. Organic Conjuguer
+downloads are up this year regardless.
+
+Fourth, the China puzzle Josh had long wondered about has an answer. Konjugieren is not sold in
+China; Josh offers each app only in English-speaking countries and those speaking its target
+language, by policy, because he localizes into nothing else. The 19 "China" devices in
+TelemetryDeck turned out to be 20 devices on UTC+8, each active for one session on one day, each
+touring nearly every screen, none ever returning. Subtracting them from TelemetryDeck's 77 devices
+leaves 57, exactly App Store Connect's lifetime downloads. Whatever installs Konjugieren in China
+does so without an App Store download, so the likeliest explanation is a re-signed copy explored
+by some app-testing or app-intelligence service. Konjugieren's real audience is 57 devices, mostly
+in Germany and the US, and its second-day return rate is 42% rather than 31%.
+
+## The pedagogy report absorbs the App Store data, and loses a claim (2026-11-10)
+
+A few hours after [`docs/pedagogy.md`](pedagogy.md) was written, the usage snapshot it leans on
+changed underneath it. The parallel session added App Store Connect and worked out that 20 of
+Konjugieren's 77 TelemetryDeck devices are one-day automated visitors on UTC+8. Josh asked for the
+relevant parts to be folded into the report.
+
+One claim did not survive. The report had described Chinese-language devices as a quarter of
+Konjugieren's learners, poorly served by English glosses. They are not learners, and the sentence
+is gone. The correction also touched the report's central numbers, because those devices tour
+every screen and had started 13 of the 45 quizzes on record. The figures are now 32 starts by real
+users, 17 recorded quits, and still no completion. The finding that most people leave before
+answering holds, with a bound in place of a count: at least 11 of the 17 real quits came on
+question 1, since the snapshot does not say which two quits were the automated devices'.
+
+The new data strengthened the report's caution about usage and made it specific. Konjugieren's real
+users return on a second day at 42%, close to Conjugar's 45%, and its store page converts at about
+twice the peer median. It averages 157 impressions a month. The app is chosen and kept at
+respectable rates and is rarely seen, so no change to the quiz can be expected to move its usage
+much. The audience section was rebuilt around an inference worth recording: 34 real devices are set
+to German-speaking regions and only 16 devices run in German at all, so at least 18 belong to
+people in those countries with phones in another language, most plausibly residents learning
+German. That population is the one the Bavarian progression behind the report's level ladder was
+written for.
+
+One thing was checked beyond the snapshot. Conjuguer's Swiss institution, which installed the app
+on about a thousand school Macs each September in 2024 and 2025, did not return in 2026. The
+Conjuguer repository shows its minimum iOS version rising from 18.0 to 26.0 in commit `13be1e8` on
+2026-05-30, four weeks before the bump to 2.0. An iPad app on a Mac needs the corresponding macOS,
+so a fleet on an older system could not install 2.x. This is a hypothesis and nothing more. App
+Store Connect can group downloads by platform version, which would test it. The report records it
+under the Conjuguer findings and as a decision for Josh.
+
+The revision was applied with a script of anchored replacements, each asserted to match exactly
+once, because the usage section was rewritten whole and a hand edit of that size invites a
+half-applied change.
+
+## What the China devices are doing (2026-11-10)
+
+Josh asked for three checks to tell the hypotheses about Konjugieren's one-day China visitors
+apart: session timing, hour of day, and whether visits track releases. The first hit a wall at
+once. TelemetryDeck rounds every timestamp to the hour, so the rhythm of taps inside a session is
+gone. A substitute turned up in `TelemetryDeck.Retention.averageSessionSeconds`, which the SDK fills
+in even during a first session, and it was the most telling number of the day: 15 of the 20
+sessions lasted between 120 and 139 seconds, against a spread of 9 to 346 seconds for ordinary
+single-session users. People do not stop at two minutes on the dot.
+
+The hours were round the clock in China time, with nothing resembling a day shift, and the
+release check was the clincher. Every one of Konjugieren's five versions was visited on that
+version within about five days of reaching ordinary users, sometimes within hours, which at one
+visit every ten days is roughly a 1-in-40,000 coincidence. Three visits ran builds older than the
+current one, so the source keeps an archive. The best reading is an automated service that watches
+for updates, grabs a copy, and runs a scripted two-minute tour. The findings went into the China
+section of [`docs/telemetry-usage.md`](telemetry-usage.md).
+
+## A plan for the Browse and Verb screens (2026-11-10)
+
+A parallel session had been researching the quiz (`docs/pedagogy.md`), and Josh wondered whether,
+given how the apps are used, the Browse and Verb screens deserve the attention instead. The answer
+was both, in concert: the usage data show the reference half is what people use, but in a way
+that mostly already works (a 19-second lookup of about one verb), while the quiz is the only
+feature that gives anyone a reason to return between lookup needs. The connecting idea is to let
+lookups feed practice.
+
+Rather than ideate further here, the work went into a brief for a fresh session,
+[`plans/browse-and-verb-ideation.md`](../plans/browse-and-verb-ideation.md), the first file in a
+new `plans/` folder. It points that session at the usage snapshot and the pedagogy report, records
+the three ideas already raised (reverse lookup from a conjugation using the existing
+`CorpusFormsDumpTests` map, measuring the lookup path before redesigning it, and lookups feeding a
+"my verbs" practice list), and asks it to assume the quiz changes land in parallel, so that shared
+pieces get named rather than built twice.
+
+## Ideas for the Browse and Verb screens (2026-11-10)
+
+The brief in `plans/browse-and-verb-ideation.md` was carried out the same day it was written, and
+the result is [`docs/browse-and-verb-ideas.md`](browse-and-verb-ideas.md). No app code changed.
+
+The brief warned that the lookup "mostly works already", and the first surprise was how narrowly
+that is true. Replaying the app's search rule over the corpus, and then typing the same queries
+into the simulator, showed that search succeeds for a correctly spelled German infinitive and for
+almost nothing else. A conjugation finds nothing (ging, gefunden, kam, muss). An infinitive without
+its umlaut finds nothing (konnen, koennen), because the match folds case and not diacritics, where
+both sibling apps fold both. English finds nothing by default, because the Search Scope setting
+ships as infinitives only. Typing war lists 17 verbs led by erwarten, and sein is not among them.
+Typing essen puts essen sixth, behind schließen and genießen, which is the ß and ss rule doing
+exactly what it was written to do. The usage snapshot, reread with this in mind, holds a number
+nobody had drawn out: of the 50 real devices on 1.1 or later that saw the verb list, between 17
+and 20 never opened a verb page.
+
+Reverse lookup turned out to be closer than expected. The map that `CorpusFormsDumpTests` wrote in
+July holds 50,013 conjugations and compresses to 164 KB. Its ambiguity looked bad at first, with
+4,380 entries pointing at more than one verb, and nearly all of that is one fact about German: a
+base verb's finite conjugation is also the stranded half of every separable derivative. Counting
+whole-word matches only, 179 conjugations are shared, never by more than two verbs. Testing the map
+against the app's own example sentences found each sentence's verb in 3,537 of 3,572, and the 35
+misses were worth more than the hits. They sort into older spellings (the examples contain daß 305
+times), participles with adjective endings, short imperatives, and a few sentences that quote the
+wrong verb.
+
+Checking the verb page in the simulator found defects that outrank every idea in the document.
+The page for aufstehen reads ich habe aufgestanden under the gloss "get up". bedürfen shows ich
+darf, vermögen shows ich mag, and entgelten shows du galtest, each having lost its prefix where an
+ablaut group replaces the whole stem. hauen shows gehaut while the app's own example for
+zusammenhauen has zusammengehauen. None was fixed, since the brief asked for no code changes, and
+all are recorded in the document's defects section.
+
+The ranking that came out: small search fixes first, with three new signals in the same release;
+then principal parts at the top of the verb page and main-clause conjugations for separable verbs;
+then reverse lookup; then a recents list and My Verbs as the piece shared with the quiz track. One
+decision changed during the work. The brief proposed measuring the lookup path before redesigning
+it. With 57 devices that would mean months of waiting to confirm failures that can be shown by
+typing, so the document recommends shipping the small fixes with the signals and holding only the
+larger bets for data. It also recommends putting the signals in Conjuguer and Conjugar at once,
+where ten times the traffic will answer sooner.
+
+Four research passes ran as Sonnet subagents: the sibling repositories, other conjugation tools,
+dictionary apps with Apple's platform documentation, and the literature on dictionary use. The
+literature's most useful result was negative. No evidence was found that a word of the day, a
+history list, or favorites brings anyone back to a reference app, so every return-visit idea in
+the document is labeled as a bet.
+
+## A plan to fix the defects first (2026-11-10)
+
+Josh read the ideas document and asked for a plan to fix the bugs it had turned up, to be carried
+out before any of the ideas. Writing that plan properly meant finding the cause of each defect,
+and the causes turned out to be larger than the symptoms.
+
+The lost prefixes (bedürfen showing ich darf) come from one mechanism. An ablaut entry ending in
+`*` is a full override, and `Conjugator` returns it as the whole conjugation, so a prefix is never
+put back. Only three prefixed verbs sit on a group with overrides today, which is why only three
+are wrong. The roadmap had met the same limit in July and worked around it for haben by rewriting
+the group, without fixing the mechanism.
+
+The auxiliary was the surprise. The ideas document reported aufstehen and guessed at a few
+neighbors on the dual-auxiliary worklist. A script that compares every shipped auxiliary with the
+kaikki snapshot, sense by sense, found 37 verbs contradicted outright and 141 more that kaikki
+cannot settle. Six of the 37 are not dual-auxiliary verbs at all: stattfinden ships sein and
+reisen ships haben, and both have done so since the hand-entered batch of verbs 601 to 1,000. The
+other 31 trace to the tranche-2 importer, which took a verb's first-listed auxiliary and,
+separately, a gloss from one of its senses, so that aufstehen got the auxiliary of "stand open"
+and the gloss "get up". Eight of these were then read off the verb page in the simulator, all
+wrong: er ist stattgefunden, er hat gereist, er hat umgezogen. The useful discovery about the
+data is that kaikki writes a sense's auxiliary inside the gloss text, as "[auxiliary sein]", for
+about 130 shipping verbs. That makes a minority of rulings mechanical and leaves the rest to
+Duden and DWDS.
+
+The same pass confirmed that backen ships the participle gebackt. With hauen and gehaut, that
+makes two shipping members of the class the roadmap calls wrinkle 4 (weak Präteritum, strong
+participle), which it had recorded only for verbs that were never imported. They probably passed
+the classification pipeline because Wiktionary lists both participles and a verb verifies against
+any listed alternative. That is a hypothesis for the fixing session to confirm.
+
+The plan is [`plans/fix-reference-defects.md`](../plans/fix-reference-defects.md), with the audit
+script beside it. It is ordered so that the certain fixes land first: the 37 auxiliaries, then
+the override fix, then two small code bugs (the shortcut picker cannot find kommen by name, and
+the glosses of second readings are never searched), five example sentences that quote the wrong
+verb, and three documents that state something false. The 141 rulings and the backen question
+come last, because the first is long and the second needs a decision from Josh about the model.
+
+## Second readings, not only true ones (2026-11-10)
+
+The defect plan first recommended the smaller fix for the auxiliary errors: make each shipped
+reading true by flipping its auxiliary or correcting its gloss, and leave second readings for a
+later pass. Josh asked what the choice meant, then whether adding the second reading everywhere
+would be more correct, and chose that.
+
+The argument that moved it is worth keeping. A verb that is merely made true can still mislead.
+umziehen with the gloss "move" and sein is correct, and a learner who wants "I changed clothes"
+and finds only sein may write ich bin mich umgezogen. For a reference, an answer that is missing
+at the place where people look shades into a wrong one. There is also a practical point: ruling
+on a verb already means reading the dictionary entry for both senses, so the second gloss is
+cheapest to write at that moment.
+
+"Everywhere" needed a limit, and the plan now states one. A second reading is warranted only
+where the senses differ in auxiliary, family, or prefix, and both are current German that a
+learner would meet. Three kinds of verb stay single: those kaikki marks as taking both
+auxiliaries without a split in meaning (the July pass left anfangen and bekommen single for this
+reason), the derivatives of stehen, sitzen, and liegen, whose variation is regional, and verbs
+whose second sense is marginal, like the colloquial "stand open" of aufstehen.
+
+The decision enlarged the work in a way that is easy to miss. The 71 verbs whose shipped reading
+already agrees with kaikki were out of scope under the smaller fix and are in scope now, because
+a verb can be true as shipped and still want its other reading. That makes 212 verbs to rule on.
+The new glosses go through the same review and second opinion as the July audit of the 44
+two-reading verbs, which found 6 defects in 88 glosses, one of them a swap that no reviewer
+reading one gloss at a time could have seen.
+
+## The defect plan's last three decisions (2026-11-10)
+
+Josh settled the rest of the open questions in `plans/fix-reference-defects.md`. backen and hauen
+get ablaut groups of their own, the second of the two options the roadmap had left open under
+wrinkle 4, which the override fix makes workable for prefixed derivatives. The privacy policy is
+to be corrected so that it lists the signals the app sends, and Josh will deploy it himself.
+
+The fourth answer changes the shape of things beyond this plan. There will be one release that
+includes other work, and it cannot happen soon: Josh cannot cut a release from his present
+MacBook and plans to replace it in 2027. So the corrections will sit on `main` for months while
+version 1.4 goes on showing er hat gereist. The plan no longer treats any part as a candidate
+for a quick release. It keeps its order because the first 37 rulings set the pattern for the
+other 175, and it gained one step for the long wait: a line in the roadmap that holds tranche 3
+of the import until the importer stops pairing a verb's first-listed auxiliary with an unrelated
+gloss. The privacy policy is the one thing that need not wait, since the corrected text
+describes 1.4 as it already ships.
+
+## No release before 2027, and what that undid (2026-11-10)
+
+Josh confirmed that the release constraint covers all three apps, asked for it to be recorded in
+`CLAUDE.md`, and asked for the day's uncommitted documents to be brought into line with it. The
+constraint is short to state: he cannot cut an App Store release of Konjugieren, Conjuguer, or
+Conjugar from his present MacBook, and he plans to replace it in 2027.
+
+It undid more of the day's advice than expected, and the pattern is worth recording, because
+both research documents had made the same assumption without stating it: that something could
+ship soon and be learned from. The ideas document told Josh to ship the search fixes with three
+new signals in one release, and to put the signals in the sibling apps first, where ten times
+the traffic would answer sooner. The quiz report made the matching argument for trying
+session-level changes in Conjugar early. None of that survives as written. No app can be the
+place to try something first when no app can ship.
+
+What replaced it, in both documents. The rankings now order the building and not a series of
+releases, and the first release can carry everything that needs no data. The signals ship with
+the fixes and not ahead of them, so they will describe the corrected screens and cannot give a
+before and an after for search. The two flags designed to measure failed searches ahead of the
+fixes are now worth building only if a fix is left out. The bets that depend on data wait for a
+second release. And the wait has a use: with none of the three apps changing, the months until
+the release are a clean baseline, so the usage snapshot gained a caveat saying that any movement
+in its numbers until then reflects audience and season.
+
+Two consequences were not about measurement. A new signal's line belongs in the deployed privacy
+policy on the day the release that sends it ships, while the lines the policy already omits can
+be deployed at once. And Conjuguer's minimum OS, which may have shut out the Swiss institution,
+is on a clock: lowering it needs a release, the institution installed each September, and the
+check in App Store Connect needs no release at all.
+
+The one kind of evidence that needs no release is watching people. Neither research document
+had observed a single learner, and both now say that this is what the coming months are for.
+
+Files changed: `CLAUDE.md` (a new section, to be removed when the constraint lifts),
+`docs/browse-and-verb-ideas.md`, `docs/pedagogy.md` (a marked section and four small additions,
+since another session wrote it), `docs/telemetry-usage.md` (one caveat), and both files in
+`plans/`. The two prompts and the letter in `docs/` say nothing about releases and were left
+alone.

@@ -1097,6 +1097,17 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "übertreten", conjugationgroup: .perfektpartizip, expected: "übertreten", readingIndex: 1)
     expectConjugation(infinitiv: "übertreten", conjugationgroup: .imperativ(.secondPlural), expected: "übertretet", readingIndex: 1)
     expectConjugation(infinitiv: "übertreten", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt übertreten", readingIndex: 1)
+
+    // durchziehen's shape again. Separable durch+brechen with sein and haben (DWDS 1durchbrechen:
+    // ist/hat durchgebrochen) beside inseparable durch*brechen. DWDS's header for the inseparable
+    // entry misprints its participle as durchgebrochen; its own Perfekt examples ("hat die
+    // Schallmauer durchbrochen") and German Wiktionary give durchbrochen.
+    expectConjugation(infinitiv: "durchbrechen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "IST durchgebrOchen")
+    expectConjugation(infinitiv: "durchbrechen", conjugationgroup: .imperativ(.secondPlural), expected: "brecht durch")
+    expectConjugation(infinitiv: "durchbrechen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt durchgebrOchen", readingIndex: 1)
+    expectConjugation(infinitiv: "durchbrechen", conjugationgroup: .perfektpartizip, expected: "durchbrOchen", readingIndex: 2)
+    expectConjugation(infinitiv: "durchbrechen", conjugationgroup: .imperativ(.secondPlural), expected: "durchbrecht", readingIndex: 2)
+    expectConjugation(infinitiv: "durchbrechen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt durchbrOchen", readingIndex: 2)
   }
 
   // Class 4 again, and class 5 at once: weichen's "yield" reading is strong (wich, gewichen)
@@ -1305,6 +1316,24 @@ struct ConjugatorTests {
     ("kürzertreten", 0, .haben),
     ("zutreten", 0, .haben),
     ("zutreten", 1, .sein),
+    ("aufbrechen", 0, .sein),
+    ("aufbrechen", 1, .haben),
+    ("zerbrechen", 0, .haben),
+    ("zerbrechen", 1, .sein),
+    ("durchbrechen", 0, .sein),
+    ("durchbrechen", 1, .haben),
+    ("durchbrechen", 2, .haben),
+    ("wegbrechen", 0, .sein),
+    ("erbrechen", 0, .haben),
+    ("auseinanderbrechen", 0, .sein),
+    ("herunterbrechen", 0, .sein),
+    ("herunterbrechen", 1, .haben),
+    ("herausbrechen", 0, .sein),
+    ("herausbrechen", 1, .haben),
+    ("losbrechen", 0, .sein),
+    ("umbrechen", 0, .haben),
+    ("niederbrechen", 0, .haben),
+    ("entzweibrechen", 0, .sein),
   ]
 
   @Test("Each ruled reading carries its dictionary auxiliary", arguments: auxiliaryRulings)

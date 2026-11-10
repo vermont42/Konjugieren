@@ -1170,7 +1170,8 @@
     <reading tn="deplete, exhaust, use up" fa="w" />
   </verb>
   <verb in="auf+br^e^chen" hi="531922" ic="boxing">
-    <reading tn="break open, through" fa="s" ag="sprechen" />
+    <reading tn="set off, depart" fa="s" ag="sprechen" ay="s" />
+    <reading tn="break open, force open" fa="s" ag="sprechen" />
   </verb>
   <verb in="auf+br^ing^en" hi="684130" ic="strengthtraining.traditional">
     <reading tn="raise, muster" fa="m" ag="bringen" />
@@ -1597,7 +1598,7 @@
     <reading tn="disassemble" fa="w" />
   </verb>
   <verb in="auseinander+br^e^chen" hi="27407" ic="boxing">
-    <reading tn="burst, break apart" fa="s" ag="sprechen" />
+    <reading tn="break apart, fall apart" fa="s" ag="sprechen" ay="s" />
   </verb>
   <verb in="auseinander+f^all^en" hi="23881" ic="fall">
     <reading tn="fall apart" fa="s" ag="fallen" ay="s" />
@@ -3156,7 +3157,9 @@
     <reading tn="look through" fa="w" />
   </verb>
   <verb in="durch+br^e^chen" hi="336934" ic="boxing">
-    <reading tn="break something in two" fa="s" ag="sprechen" />
+    <reading tn="break through, give way" fa="s" ag="sprechen" ay="s" />
+    <reading tn="break (something) in two" fa="s" ag="sprechen" />
+    <reading in="durch*br^e^chen" tn="breach, overcome (a barrier)" fa="s" ag="sprechen" />
   </verb>
   <verb in="durch+br^e^nnen" hi="20747" ic="highintensity.intervaltraining">
     <reading tn="continue to burn, burn through" fa="m" ag="kennen" />
@@ -4083,7 +4086,7 @@
     <reading tn="withdraw, deprive" fa="s" ag="ziehen" />
   </verb>
   <verb in="entzwei+br^e^chen" hi="512" ic="boxing">
-    <reading tn="break in two" fa="s" ag="sprechen" />
+    <reading tn="break in two (come apart)" fa="s" ag="sprechen" ay="s" />
   </verb>
   <verb in="entzwei+g^eh^en" hi="380" ic="walk">
     <reading tn="break" fa="s" ag="gehen" ay="s" />
@@ -5263,7 +5266,8 @@
     <reading tn="figure out" fa="s" ag="kommen" />
   </verb>
   <verb in="heraus+br^e^chen" hi="20292" ic="boxing">
-    <reading tn="break out, break off" fa="s" ag="sprechen" />
+    <reading tn="burst out, break away" fa="s" ag="sprechen" ay="s" />
+    <reading tn="knock out, chip out (of a whole)" fa="s" ag="sprechen" />
   </verb>
   <verb in="heraus+br^ing^en" hi="222007" ic="hiking">
     <reading tn="publish, issue, launch" fa="m" ag="bringen" />
@@ -5506,7 +5510,8 @@
     <reading tn="run around, hang around, roam the streets" fa="s" ag="bleiben" />
   </verb>
   <verb in="herunter+br^e^chen" hi="23070" ic="boxing">
-    <reading tn="break off and fall" fa="s" ag="sprechen" />
+    <reading tn="break off and fall" fa="s" ag="sprechen" ay="s" />
+    <reading tn="break down (into specifics)" fa="s" ag="sprechen" />
   </verb>
   <verb in="herunter+drücken" hi="6321" ic="strengthtraining.traditional">
     <reading tn="press down, push down" fa="w" />
@@ -6307,7 +6312,7 @@
     <reading tn="be worth it" fa="w" />
   </verb>
   <verb in="los+br^e^chen" hi="15844" ic="boxing">
-    <reading tn="break off" fa="s" ag="sprechen" />
+    <reading tn="break loose, erupt" fa="s" ag="sprechen" ay="s" />
   </verb>
   <verb in="löschen" hi="1958767" ic="flexibility">
     <reading tn="delete, extinguish" fa="w" />
@@ -8114,7 +8119,7 @@
     <reading tn="look around" fa="w" />
   </verb>
   <verb in="um+br^e^chen" hi="6181" ic="boxing">
-    <reading tn="wrap" fa="s" ag="sprechen" />
+    <reading tn="wrap (text), make up (pages)" fa="s" ag="sprechen" />
   </verb>
   <verb in="um+br^ing^en" hi="317939" ic="hiking">
     <reading tn="kill, murder, do away with" fa="m" ag="bringen" />
@@ -9669,7 +9674,7 @@
     <reading tn="look away" fa="w" />
   </verb>
   <verb in="weg+br^e^chen" hi="62855" ic="boxing">
-    <reading tn="break off" fa="s" ag="sprechen" />
+    <reading tn="break away, fall away" fa="s" ag="sprechen" ay="s" />
   </verb>
   <verb in="weg+br^ing^en" hi="27484" ic="hiking">
     <reading tn="move away, take away" fa="m" ag="bringen" />
@@ -10062,7 +10067,8 @@
     <reading tn="burst" fa="s" ag="bersten" ay="s" />
   </verb>
   <verb in="zer*br^e^chen" hi="366245" ic="boxing">
-    <reading tn="break into pieces, shatter, snap" fa="s" ag="sprechen" />
+    <reading tn="shatter, break (something)" fa="s" ag="sprechen" />
+    <reading tn="shatter, break (come apart)" fa="s" ag="sprechen" ay="s" />
   </verb>
   <verb in="zer*drücken" hi="44226" ic="strengthtraining.traditional">
     <reading tn="crush" fa="w" />

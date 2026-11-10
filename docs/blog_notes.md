@@ -8575,3 +8575,53 @@ What a user would see changed: abtreten, übertreten, and zutreten each offer a 
 its own auxiliary, heraustreten builds the Perfekt with sein, and kürzertreten's gloss covers easing
 off as well as saving. 77 verbs now have more than one reading. The rulings file has 110 readings of
 76 verbs, the suite is still 224 tests, and the worklist is 176.
+
+## Defect plan, Part 6: brechen, where most of the list should have been sein (2026-11-10)
+
+brechen had twelve listed derivatives, and they told a single story. Every one shipped haben, and
+most of their example sentences showed the intransitive sense, which takes sein: *das Schiff brach
+auseinander*, *ein Felsbrocken brach los*, *der Rahmen würde wegbrechen*. The base verb already
+had the right model, "break (something)" with haben beside "break, snap (come apart)" with sein,
+and the derivatives now follow it. zerbrechen, herunterbrechen, and herausbrechen gained a second
+reading. wegbrechen, losbrechen, auseinanderbrechen, and entzweibrechen flipped to sein, the last
+two staying single because they are rare and their sentences show the intransitive.
+
+**aufbrechen changed its first reading.** It shipped only "break open", and its commonest sense,
+"set off, depart" (*die Reisegesellschaft brach nach Prag auf*), was not in the app at all. The
+plan says the first reading is the more common sense, so "set off" now leads, with sein, and the
+Nietzsche sentence, *das Erdbeben, das alles Morsche bricht und aufbricht*, illustrates the
+second.
+
+**durchbrechen is the second verb with three readings**, the durchziehen shape exactly, and Josh
+approved it the same way. Separable *dúrchbrechen* gives way or breaks through with sein (*die
+Panzer sind durchgebrochen*) and breaks something in two with haben, and inseparable
+*durchbréchen* breaches a barrier. That last one exposed a misprint in DWDS: its header for the
+inseparable entry reads "hat durchgebrochen", while its own Perfekt examples (*hat die Schallmauer
+durchbrochen*) and German Wiktionary give *durchbrochen*. The pinned test says *durchbrOchen* and
+its comment records why.
+
+**Two rulings needed a third source.** herausbrechen's DWDS header gives only "hat", but its
+intransitive sense was undocumented and Wiktionary has no page. Duden settled it by sense: breaking
+something out takes *hat*, and coming loose or feelings bursting out (*Zorn brach aus ihm
+heraus*) take *ist*. umbrechen's shipped "wrap" turned out to be the typesetting sense, which both
+dictionaries label and file under the inseparable verb (*umbrochen*). Wiktionary adds "auch
+trennbar", so the separable encoding and the authored sentence are attested. Josh kept it as
+shipped, re-glossed "wrap (text), make up (pages)", since a second reading would set aside the
+anspringen precedent for a plainly labelled primary sense.
+
+**An encoding fact this batch surfaced:** every brechen derivative sits on the sprechen ablaut
+group, not on brechen's own. The first edit script assumed `ag="brechen"`, and its assertion
+stopped it before anything was written. The rerun carried each verb's own `fa` and `ag` across.
+
+Two etymologies were corrected, following the check the ziehen batch added. entzweibrechen's
+called the verb transitive only, which DWDS's "ist entzweigebrochen" contradicts. durchbrechen's
+described the stress doublet and now adds that the separable verb divides again by auxiliary.
+Writing the German, I first put the inseparable verb (*durchbrechen Truppen eine Front*) into a
+sentence about the separable one, and corrected it to *Truppen brechen durch* before it was saved.
+The Sonnet review of 18 readings found nothing. Its one remark, that niederbrechen's unmodelled
+sein sense may be the commoner, is in that verb's row as worth a second look.
+
+What a user would see changed: ten brechen verbs build the Perfekt of their intransitive sense with
+sein, aufbrechen means "set off" first, and durchbrechen shows its three verbs. 82 verbs now have
+more than one reading. The rulings file has 128 readings of 88 verbs, the suite is still 224 tests,
+and the worklist is 164.

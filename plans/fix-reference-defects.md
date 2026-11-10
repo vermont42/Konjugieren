@@ -27,7 +27,7 @@ numbers below were true when the plan was written and are not now. The journal e
 | 6 (step 1, fahren) | `5120262` | `verbdata/audit_auxiliaries.py` with `--check` and `--unruled`; the prototype removed. fahren's 15 listed derivatives ruled (8 two readings, 6 flips, 1 keep), plus umfahren by hand. |
 | 6 (ziehen) | `adaf738` | 14 listed ziehen derivatives plus zuziehen by hand: durchziehen the first verb with three readings, 7 more with two, 1 flip, 2 re-glosses, 4 keeps. zuziehen's and durchziehen's etymologies rewritten. |
 | 6 (treten) | `18b6880` | 5 listed treten derivatives: 3 two readings (übertreten split by separability), 1 flip, 1 re-gloss. No question for Josh; review found nothing. |
-| 6 (brechen) | this commit | 12 listed brechen derivatives: durchbrechen three readings, 4 more with two (aufbrechen now leads with "set off"), 4 flips, umbrechen re-glossed and kept, 2 keeps. Two etymologies corrected. |
+| 6 (brechen) | `f4f6fef` | 12 listed brechen derivatives: durchbrechen three readings, 4 more with two (aufbrechen now leads with "set off"), 4 flips, umbrechen re-glossed and kept, 2 keeps. Two etymologies corrected. |
 
 **Where Part 6 stands.**
 

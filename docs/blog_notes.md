@@ -8488,3 +8488,65 @@ nine offer a second meaning with its own auxiliary, and überfahren and umfahren
 verb beside the inseparable one. 66 verbs now have two readings. The rulings file has 78 readings
 of 56 verbs, each a case of the parameterized test, and the suite is still 224 tests, since the new
 pinned expectations joined existing tests. The audit's worklist is down to 195 verbs.
+
+## Defect plan, Part 6: ziehen, and the first verb with three readings (2026-11-10)
+
+The second base verb had fourteen listed derivatives and one that the audit could not list.
+**zuziehen** shipped the gloss "move here, come to a place" with haben, so its page said *er hat
+zugezogen* for a newcomer. kaikki gives the lemma haben only, from *sich etwas zuziehen*, so the
+audit read the app as agreeing. It was found by reading the base verb's whole family, not the
+worklist. Josh had it ruled here, as two readings: "pull shut, incur (an illness)" with haben, and
+"move to the area, settle here" with sein. Its example sentence, from the Weimar Constitution, is
+the haben sense of calling in a committee.
+
+**durchziehen is the first verb with three readings.** DWDS gives three verbs under one spelling.
+Separable *dúrchziehen* takes haben for threading something through and sein for passing through
+a place, and inseparable *durchzíehen* "pervade" takes haben and no ge-. The plan says to stop and
+ask before a third reading, and Josh chose all three. Nothing in the app assumed two: the DTD
+allows `reading+`, the picker is a `ForEach` that stacks its capsules when they do not fit, and
+the quiz draws a random index. It is also the first inseparable *durch\** in the corpus. The parser
+takes separability from the markup, so no code changed, and the simulator shows *er hat
+durchgezogen*, *er ist durchgezogen*, and *er hat durchzogen*, with the chips following the
+selected reading.
+
+One expected value nearly came from a slip. The evidence agent first quoted the inseparable
+header as "hat durchgezogen". A re-read, asked for because inseparable verbs take no ge-, found
+"hat durchzogen" on DWDS and in German Wiktionary's table. The first report had copied the
+separable entry's participle.
+
+The other outcomes: seven more verbs gained a second reading (aufziehen, hinziehen, mitziehen,
+wegziehen, fortziehen, zusammenziehen, and zuziehen), weiterziehen flipped to sein, vorziehen and
+blankziehen were re-glossed ("prefer" over "pull to the front", and "draw (a weapon)" over a bare
+"draw"), and four kept haben (verziehen, hineinziehen, herunterziehen, hinunterziehen).
+verziehen's "move house" sense takes sein and is unlabelled, but it lives mostly on returned mail
+(*Empfänger unbekannt verzogen*), so it was ruled marginal and marked worth a second look.
+Wiktionary returned 404 for hineinziehen and herunterziehen. DWDS settled the latter sense by
+sense, and the former's keep rests on DWDS's transitive frame, as its row says.
+
+**The review raised four findings, and the adjudication rejected all four.** Sonnet proposed
+"follow through" for durchziehen, "pull open, pull up" for aufziehen, and new glosses to split
+herunterziehen from hinunterziehen, which both ship "pull down". Fable kept each. "follow through"
+is a different sense joined by a comma. Winding is what the Nietzsche sentence shows. "pull under"
+is not what *hinunter* means. And telling her- from hin- apart is a corpus-wide question, not a
+defect of one verb. Fable's aside, that "wind up (a clock)" would disambiguate the British "tease"
+reading, is in aufziehen's row and was not applied.
+
+**Two etymologies were rewritten at Josh's request**, because the rulings had made their closing
+paragraphs false. zuziehen's said "in this reading" and described only moving in. It now
+describes the verb's two lives: *zu-* as "shut" or "onto oneself" with haben, and *zu-* as
+"toward here" with sein, which gave German *Zuzug* and the *Zugezogene*, the incomer.
+durchziehen's called the separable verb intransitive, which reading 0 is not, and its prefix
+bullet said "the senses below are the separable ones". That sentence is boilerplate in 50 *durch-*
+entries and was removed from this one only. The new paragraph names the three readings. Both were
+spliced into `Etymologies.json` as raw text in both languages, four changed lines.
+
+Asked mid-session how the adjudicator ran on Fable: the Agent tool takes a per-call `model`
+parameter, and each review step set it, Sonnet for the reviewer and Fable for the adjudicator. The
+author, the reviewer, and the adjudicator are therefore three different models, as
+`prompts/gloss_adjudication.md` requires.
+
+What a user would see changed: seven ziehen verbs gain a meaning with its own auxiliary,
+durchziehen gains two, weiterziehen and zuziehen's moving-in sense build the Perfekt with sein,
+vorziehen means "prefer", and two etymologies describe the verbs they sit on. 74 verbs now have
+more than one reading. The rulings file has 102 readings of 71 verbs, the suite is still 224
+tests, and the worklist is 181.

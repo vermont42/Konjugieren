@@ -1530,6 +1530,7 @@
   </verb>
   <verb in="auf+z^ieh^en" hi="257831" ic="indoor.rowing">
     <reading tn="wind up" fa="s" ag="ziehen" />
+    <reading tn="come up, gather (of a storm)" fa="s" ag="ziehen" ay="s" />
   </verb>
   <verb in="auf+zw^i^ngen" hi="102650" ic="walk.motion">
     <reading tn="force, impose something on someone" fa="s" ag="finden" />
@@ -2810,7 +2811,7 @@
     <reading tn="ask, request" fa="s" ag="bitten" />
   </verb>
   <verb in="blank+z^ieh^en" hi="912" ic="indoor.rowing">
-    <reading tn="draw" fa="s" ag="ziehen" />
+    <reading tn="draw (a weapon)" fa="s" ag="ziehen" />
   </verb>
   <verb in="bl^a^sen" hi="339351" ic="wave">
     <reading tn="blow" fa="s" ag="halten" />
@@ -3304,7 +3305,9 @@
     <reading tn="count up" fa="w" />
   </verb>
   <verb in="durch+z^ieh^en" hi="439285" ic="indoor.rowing">
-    <reading tn="pass" fa="s" ag="ziehen" />
+    <reading tn="pull through, thread through" fa="s" ag="ziehen" />
+    <reading tn="pass through, move through" fa="s" ag="ziehen" ay="s" />
+    <reading in="durch*z^ieh^en" tn="pervade, run through" fa="s" ag="ziehen" />
   </verb>
   <verb in="d^ürf^en" hi="26334208" ic="arms.open">
     <reading tn="may, be allowed to" fa="m" ag="dürfen" />
@@ -4773,7 +4776,8 @@
     <reading tn="continue to pay, keep paying" fa="w" />
   </verb>
   <verb in="fort+z^ieh^en" hi="6675" ic="indoor.rowing">
-    <reading tn="pull away" fa="s" ag="ziehen" />
+    <reading tn="pull away, drag away" fa="s" ag="ziehen" />
+    <reading tn="move away, leave" fa="s" ag="ziehen" ay="s" />
   </verb>
   <verb in="fotografieren" hi="980953" ic="flexibility">
     <reading tn="photograph" fa="i" />
@@ -5843,7 +5847,8 @@
     <reading tn="work towards" fa="w" />
   </verb>
   <verb in="hin+z^ieh^en" hi="208779" ic="indoor.rowing">
-    <reading tn="move" fa="s" ag="ziehen" />
+    <reading tn="move there, go there" fa="s" ag="ziehen" ay="s" />
+    <reading tn="drag on, draw out" fa="s" ag="ziehen" />
   </verb>
   <verb in="hinzu+be*k^om^men" hi="499" ic="walk.arrival">
     <reading tn="get in addition" fa="s" ag="kommen" />
@@ -6514,7 +6519,8 @@
     <reading tn="draw along with others" fa="w" />
   </verb>
   <verb in="mit+z^ieh^en" hi="97792" ic="indoor.rowing">
-    <reading tn="keep pace, keep up" fa="s" ag="ziehen" />
+    <reading tn="follow suit, keep pace" fa="s" ag="ziehen" />
+    <reading tn="come along, travel along" fa="s" ag="ziehen" ay="s" />
   </verb>
   <verb in="mobil+machen" hi="2104" ic="strengthtraining.traditional">
     <reading tn="mobilize" fa="w" />
@@ -9592,7 +9598,7 @@
     <reading tn="show, demonstrate, produce" fa="w" />
   </verb>
   <verb in="vor+z^ieh^en" hi="322931" ic="indoor.rowing">
-    <reading tn="pull to the front" fa="s" ag="ziehen" />
+    <reading tn="prefer" fa="s" ag="ziehen" />
   </verb>
   <verb in="wach+h^a^lten" hi="27018" ic="strengthtraining.traditional">
     <reading tn="keep someone awake" fa="s" ag="halten" />
@@ -9804,6 +9810,7 @@
   </verb>
   <verb in="weg+z^ieh^en" hi="97010" ic="indoor.rowing">
     <reading tn="pull away" fa="s" ag="ziehen" />
+    <reading tn="move away" fa="s" ag="ziehen" ay="s" />
   </verb>
   <verb in="wehren" hi="1092824" ic="fall">
     <reading tn="defend oneself, resist" fa="w" />
@@ -9885,7 +9892,7 @@
     <reading tn="continue to pay, keep paying" fa="w" />
   </verb>
   <verb in="weiter+z^ieh^en" hi="67671" ic="indoor.rowing">
-    <reading tn="move on" fa="s" ag="ziehen" />
+    <reading tn="move on" fa="s" ag="ziehen" ay="s" />
   </verb>
   <verb in="weißen" hi="615455" ic="pool.swim">
     <reading tn="whitewash" fa="w" />
@@ -10670,6 +10677,7 @@
   </verb>
   <verb in="zusammen+z^ieh^en" hi="73904" ic="indoor.rowing">
     <reading tn="shorten, contract" fa="s" ag="ziehen" />
+    <reading tn="move in together" fa="s" ag="ziehen" ay="s" />
   </verb>
   <verb in="zu+schauen" hi="291236" ic="flexibility">
     <reading tn="look on" fa="w" />
@@ -10786,7 +10794,8 @@
     <reading tn="pay additionally, copay" fa="w" />
   </verb>
   <verb in="zu+z^ieh^en" hi="272922" ic="indoor.rowing">
-    <reading tn="move here, come to a place" fa="s" ag="ziehen" />
+    <reading tn="pull shut, incur (an illness)" fa="s" ag="ziehen" />
+    <reading tn="move to the area, settle here" fa="s" ag="ziehen" ay="s" />
   </verb>
   <verb in="zw^i^ngen" hi="1881161" ic="walk.motion">
     <reading tn="force" fa="s" ag="singen" />

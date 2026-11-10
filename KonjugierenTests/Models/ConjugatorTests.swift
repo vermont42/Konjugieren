@@ -1079,6 +1079,16 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "umfahren", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt umfahren")
     expectConjugation(infinitiv: "umfahren", conjugationgroup: .imperativ(.secondPlural), expected: "fahrt um", readingIndex: 1)
     expectConjugation(infinitiv: "umfahren", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt umgefahren", readingIndex: 1)
+
+    // The first verb with three readings, from DWDS and German Wiktionary: separable
+    // durch+ziehen with haben (thread through) and with sein (pass through), and inseparable
+    // durch*ziehen (pervade), whose participle is durchzogen.
+    expectConjugation(infinitiv: "durchziehen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt durchgezOGen")
+    expectConjugation(infinitiv: "durchziehen", conjugationgroup: .imperativ(.secondPlural), expected: "zieht durch")
+    expectConjugation(infinitiv: "durchziehen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "IST durchgezOGen", readingIndex: 1)
+    expectConjugation(infinitiv: "durchziehen", conjugationgroup: .perfektpartizip, expected: "durchzOGen", readingIndex: 2)
+    expectConjugation(infinitiv: "durchziehen", conjugationgroup: .imperativ(.secondPlural), expected: "durchzieht", readingIndex: 2)
+    expectConjugation(infinitiv: "durchziehen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt durchzOGen", readingIndex: 2)
   }
 
   // Class 4 again, and class 5 at once: weichen's "yield" reading is strong (wich, gewichen)
@@ -1255,6 +1265,30 @@ struct ConjugatorTests {
     ("drauflosfahren", 0, .sein),
     ("umfahren", 0, .haben),
     ("umfahren", 1, .haben),
+    ("durchziehen", 0, .haben),
+    ("durchziehen", 1, .sein),
+    ("durchziehen", 2, .haben),
+    ("vorziehen", 0, .haben),
+    ("aufziehen", 0, .haben),
+    ("aufziehen", 1, .sein),
+    ("hinziehen", 0, .sein),
+    ("hinziehen", 1, .haben),
+    ("verziehen", 0, .haben),
+    ("mitziehen", 0, .haben),
+    ("mitziehen", 1, .sein),
+    ("wegziehen", 0, .haben),
+    ("wegziehen", 1, .sein),
+    ("zusammenziehen", 0, .haben),
+    ("zusammenziehen", 1, .sein),
+    ("hineinziehen", 0, .haben),
+    ("weiterziehen", 0, .sein),
+    ("herunterziehen", 0, .haben),
+    ("fortziehen", 0, .haben),
+    ("fortziehen", 1, .sein),
+    ("hinunterziehen", 0, .haben),
+    ("blankziehen", 0, .haben),
+    ("zuziehen", 0, .haben),
+    ("zuziehen", 1, .sein),
   ]
 
   @Test("Each ruled reading carries its dictionary auxiliary", arguments: auxiliaryRulings)

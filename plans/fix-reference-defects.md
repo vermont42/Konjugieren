@@ -25,7 +25,7 @@ numbers below were true when the plan was written and are not now. The journal e
 | after 7 | `6da7c1d` | Eight groups that were in `AblautGroups.xml` but never in the Families tab now listed and described; geben's description corrected. Two `BrowseableFamilyTests` keep the list and the XML in step. |
 | after 7 | `29d2695` | anhängen split into weak "attach, append" and strong "adhere to, be devoted to". A Part 6 ruling, made early. |
 | 6 (step 1, fahren) | `5120262` | `verbdata/audit_auxiliaries.py` with `--check` and `--unruled`; the prototype removed. fahren's 15 listed derivatives ruled (8 two readings, 6 flips, 1 keep), plus umfahren by hand. |
-| 6 (ziehen) | this commit | 14 listed ziehen derivatives plus zuziehen by hand: durchziehen the first verb with three readings, 7 more with two, 1 flip, 2 re-glosses, 4 keeps. zuziehen's and durchziehen's etymologies rewritten. |
+| 6 (ziehen) | `adaf738` | 14 listed ziehen derivatives plus zuziehen by hand: durchziehen the first verb with three readings, 7 more with two, 1 flip, 2 re-glosses, 4 keeps. zuziehen's and durchziehen's etymologies rewritten. |
 
 **Where Part 6 stands.**
 

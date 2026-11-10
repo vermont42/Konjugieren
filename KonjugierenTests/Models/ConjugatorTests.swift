@@ -1024,6 +1024,17 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "hängen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "habe gehängt", readingIndex: 1)
   }
 
+  // anhängen shipped "attach, append" on the strong reading, so a learner read "ich habe die
+  // Datei angehangen". DWDS has two verbs: 2anhängen (hängte an, angehängt) is "attach" and
+  // 1anhängen (hing an, angehangen) is "be devoted to". The weak sense is the common one.
+  @Test func anhängenReadings() {
+    expectConjugation(infinitiv: "anhängen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "anhängte")
+    expectConjugation(infinitiv: "anhängen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt angehängt")
+
+    expectConjugation(infinitiv: "anhängen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "anhIng", readingIndex: 1)
+    expectConjugation(infinitiv: "anhängen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt angehAngen", readingIndex: 1)
+  }
+
   // Class 1: the readings share a paradigm and differ only in auxiliary and gloss.
   // Das Eis ist geschmolzen against ich habe das Eis geschmolzen, here on brechen.
   @Test func transitivityAlternationReadings() {
@@ -1204,6 +1215,8 @@ struct ConjugatorTests {
     ("verstinken", 0, .haben),
     ("zurücktreten", 0, .sein),
     ("abhauen", 0, .sein),
+    ("anhängen", 0, .haben),
+    ("anhängen", 1, .haben),
   ]
 
   @Test("Each ruled reading carries its dictionary auxiliary", arguments: auxiliaryRulings)

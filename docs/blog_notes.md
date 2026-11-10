@@ -8398,3 +8398,29 @@ so the app conjugates it as strong, which gives *angehangen*. DWDS splits it in 
 (hing an, hat angehangen) is "be devoted to, weigh on", and 2anhängen (hängte an, hat
 angehängt) is "attach, append". The shipped gloss belongs to the weak verb. It is the hängen and
 schaffen shape, one verb with a strong reading and a weak one, and it belongs with that work.
+
+## anhängen is two verbs (2026-11-10)
+
+Listing the hidden hängen group exposed it. anhängen shipped on that group, strong, with the
+gloss "attach, append", so the app told a learner *ich habe die Datei angehangen*. DWDS treats
+the spelling as two verbs. 2anhängen (hängte an, hat angehängt) hangs one thing on another, or
+adds a remark, a chapter, two zeros. 1anhängen (hing an, hat angehangen) is devotion, *einer
+Lehre anhängen*, which is where *Anhänger* comes from, and a past that still weighs on someone.
+The gloss came from the first verb and the paradigm from the second. kaikki has no record of the
+weak verb at all, which is probably how the paradigm arrived.
+
+The ruling is two readings, the hängen shape. The weak "attach, append" comes first because it
+is the common sense, and the strong reading is glossed "adhere to, be devoted to". Both take
+haben, so this is a family split, not an auxiliary one. DWDS labels the devotion sense
+*gehoben*, but criterion 2's exclusions (archaic, dated, regional, colloquial, technical) do not
+include it, and the anbrechen ruling had already treated a *gehoben* sense as standard. The
+example sentence, Luther's "die ihr dem HERRN, eurem Gott, anhinget", illustrates the second
+reading and stays, as the plan prescribes. A Sonnet reviewer read the pair under
+`prompts/gloss_review.md`, told that the family and not the auxiliary separates the readings,
+and found nothing to change, so there was nothing to adjudicate.
+
+The verb has two rows in `auxiliary-rulings.tsv` and a test of each paradigm. The classifier
+now reports its shipped encoding as failing, because it tests only the first reading against a
+kaikki table that describes only the strong verb, and the summary excludes multi-reading verbs
+from the at-odds count for exactly that reason, so the count holds at 5. 57 verbs now have two
+readings. The suite is 224 tests.

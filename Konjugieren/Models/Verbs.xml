@@ -778,8 +778,9 @@
   <verb in="an+h^a^lten" hi="728985" ic="boxing">
     <reading tn="stop, halt" fa="s" ag="halten" />
   </verb>
-  <verb in="an+h^ä^ngen" hi="151031" ic="flexibility">
-    <reading tn="attach, append" fa="s" ag="hängen" />
+  <verb in="an+hängen" hi="151031" ic="flexibility">
+    <reading tn="attach, append" fa="w" />
+    <reading in="an+h^ä^ngen" tn="adhere to, be devoted to" fa="s" ag="hängen" />
   </verb>
   <verb in="an+h^au^en" hi="10225" ic="boxing">
     <reading tn="hit up, accost" fa="m" ag="hauen" />

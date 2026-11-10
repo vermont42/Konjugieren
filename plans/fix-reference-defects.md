@@ -6,6 +6,78 @@ small fixes in app code, replacement of five example sentences, and corrections 
 documents. **Written:** 2026-11-10. **Revised** the same day, when Josh made the four decisions
 below.
 
+## Status (2026-11-10, end of the first session)
+
+**Parts 0 to 5 are done. Parts 6 and 7 remain.** Read this section before the rest: several
+numbers below were true when the plan was written and are not now. The journal entries in
+`docs/blog_notes.md` headed "Defect plan, Part N" are the detailed record.
+
+| Part | Commit | What landed |
+|---|---|---|
+| 0 | `3bc1763` | Baselines reproduced. Roadmap step 9 (tranche 3) held for Part 6. |
+| 3 | `abbcfa9` | Shortcut picker ranks the exact infinitive first; search matches every reading's gloss. Done before Part 1, as required. |
+| 1 | `90ddaa8` | 38 verbs ruled (the 37, plus zurücktreten): 12 gained a second reading, 21 flipped, 6 re-glossed, 2 kept. `verbdata/auxiliary-rulings.tsv` created. Also fixed `VerbView` keeping the previous verb's reading after a deeplink. |
+| 2 | `70b99e3` | Overrides keep their prefix. gelten's group simplified. At-odds 7 → 5. 5c done here too. |
+| 4 | `e4f9610` | Eight example sentences replaced (the five, plus three from Part 1). Scan 2: 35 → 29. |
+| 5 | `89de103` | Privacy policy and `feature-architecture.md` corrected. The policy waits for Josh to deploy it and set both date lines. |
+
+**State to start Part 6 from.**
+
+- **The counts have moved.** The audit prototype now reports 89 agreeing and 142 needing a
+  ruling. The prototype skips every verb with two readings, so the 12 verbs that gained one in
+  Part 1 left its rows; the Part 1 re-glosses moved a few more between verdicts. zurücktreten is
+  ruled and still listed. Take Part 6's scope from a fresh run, minus the verbs already in the
+  rulings file. The `--check` mode Part 6 asks for is what removes that bookkeeping.
+- **56 verbs have two readings** (44 before Part 1). The suite is 219 tests; the at-odds count
+  is 5 (helfen, schaffen, vergleichen, verstoßen, zusammenspinnen).
+- **The rulings file has 50 readings.** Its columns are `verb, reading, gloss, auxiliary, in,
+  outcome, source, date, note`. Outcomes used: `two readings`, `flip`, `flip and re-gloss`,
+  `re-gloss`, `keep`. Each new row goes into the file *and* into
+  `ConjugatorTests.auxiliaryRulings`, the table behind the parameterized `ruledAuxiliary` test.
+  That table is `nonisolated` because the `@Test(arguments:)` macro evaluates it off the main
+  actor.
+- **Part 6 gained two verbs:** übergehen (step 6) and schaffen (step 6a, a missing "create"
+  reading with a different family).
+
+**Method that worked in Part 1, worth repeating.**
+
+- **Evidence.** Four web-fetch agents in parallel, about nine verbs each, fetching
+  `https://www.dwds.de/wb/<verb>`, told to quote each sense's "Perfektbildung mit Hilfsverb …"
+  line verbatim and its usage labels, falling back to `https://de.wiktionary.org/wiki/<verb>` where
+  DWDS states no per-sense auxiliary. DWDS often gives only "ist/hat" in the header; that alone
+  does not settle a sense.
+- **Glosses.** Write the pair while ruling. Then build a shard in `prompts/gloss_review.md`'s
+  multi-reading format and review it on a different model from the author (Sonnet was used),
+  then adjudicate the findings under `prompts/gloss_adjudication.md` on a third (Fable was used).
+  The audit script itself is a useful ambiguity check: ausreiten's "ride out" matched kaikki's
+  haben sense, because English uses it for exercising a horse.
+- **The bar for a second reading.** "A learner who knows the other sense from elsewhere would be
+  misled by a single reading" (anfahren: er hat den Fußgänger angefahren). Taken literally,
+  criterion 3 admits nearly every DWDS sense, so judgment is unavoidable. Record it in the note.
+- **Criterion 2 was applied as written:** a shipped sense that DWDS labels "Technik" or "salopp"
+  (anspringen, durchdrehen) could not carry a second reading. Josh has not yet ruled on whether
+  that is too strict, so ask before extending the precedent.
+- **Simulator check.** Deeplinks open a verb directly: `xcrun simctl openurl booted
+  "konjugieren://verb/<verb>"`, then read the `describe_ui.sh` output for `"er (ist|hat) …"`, and
+  `tap_label.sh "<second gloss>"` to switch readings.
+
+**State to start Part 7 from.**
+
+- **Part 2 is done**, so a derivative now shares its base's override group: ab + gehauen, and
+  ver + hauen with the ge- removed (`takesGe` decides). `overridesBehindEachKindOfPrefix` in
+  `ConjugatorTests` shows how to test a prefix path no shipping verb reaches.
+- **Do not take expected values from kaikki's tables without checking.** English Wiktionary
+  auto-generates weak tables for pages with no strong template. kaikki gave entgelten
+  "entgeltete", which is the defect `verbdata/wiktionary-defects.json` records. German
+  Wiktionary's Flexion page is the arbiter.
+- **Scan 2 will tell you whether Part 7 worked, but only in part.** zusammenhauen
+  ("zusammengehauen") and krauchen ("krauchte") are among its 29 misses, and both should leave the
+  list: the first by the new participle, and the second if krauchen is ruled weak. hauen and
+  niederhauen will stay. Their sentences use the strong Präteritum *hieb*, and the mixed family
+  gives *haute*, so they belong to the dual-paradigm gap, not to this fix.
+- **The new ablaut-group count** must be updated in the four cache files that
+  `scripts/check_docs.py` names; it is 73 today.
+
 ## Goal
 
 Make the reference say only true things. Every defect found during the research behind

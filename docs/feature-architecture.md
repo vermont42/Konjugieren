@@ -32,9 +32,11 @@ The quiz tests users' knowledge of German verb conjugations with timed, scored g
 - **2** Perfektpartizip questions
 - **27** other conjugationgroups (varies by difficulty)
 
-**Regular difficulty:** Präsens Indikativ, Perfekt Indikativ, Imperativ
+**Regular difficulty:** Präsens Indikativ, Perfekt Indikativ, Futur Indikativ, Imperativ
 
-**Ridiculous difficulty:** Adds Präsens Konjunktiv I, Präteritum Indikativ, Präteritum Konjunktiv II, Perfekt Konjunktiv I
+**Ridiculous difficulty:** Adds Präsens Konjunktiv I, Präteritum Indikativ, Präteritum Konjunktiv II, Perfekt Konjunktiv I, Plusquamperfekt Indikativ, Plusquamperfekt Konjunktiv II, Futur Konjunktiv I, Futur Konjunktiv II
+
+The lists are `Quiz.randomNonPartizipConjugationgroup()`. Until 2026-11-10 this section gave three and four, which `docs/pedagogy.md` found against the code.
 
 ### Scoring
 
@@ -198,7 +200,7 @@ Info articles can link to verbs or other articles using the `%...%` markup. When
 
 ## Game System
 
-A space-invaders-style arcade game where players shoot descending enemies by conjugating verbs. The game features wave-based progression, power-ups, special mechanics, and Live Activity integration.
+A space-invaders-style arcade game where players shoot descending enemies. It involves no conjugation: the enemies carry app-icon images, and nothing in `GameState` asks for or checks a verb form. (Until 2026-11-10 this sentence said players shoot "by conjugating verbs"; `docs/pedagogy.md` discusses whether the game should.) The game features wave-based progression, power-ups, special mechanics, and Live Activity integration.
 
 ### Architecture
 
@@ -382,7 +384,7 @@ Two Control Center buttons provide quick access to app features.
 | `QuickQuizControl.swift` | Control Center button that launches the quiz via deeplink |
 | `RandomVerbControl.swift` | Control Center button that opens a random verb via deeplink |
 
-Both controls use `OpenURLIntent` to trigger deeplinks (`konjugieren://quiz`, `konjugieren://verb/random`) because ControlWidget extensions cannot use `openAppWhenRun` directly.
+The buttons run `OpenQuizIntent` and `OpenRandomVerbIntent` from `Shared/`, which compile into both the app and the widget extension. Each sets `openAppWhenRun = true` and writes a pending deeplink (`konjugieren://quiz/start`, `konjugieren://verb/random`) to the shared defaults, which the app consumes when it opens. Neither uses `OpenURLIntent`, which is a silent no-op from a widget extension for a custom URL scheme; [`control-center-controls.md`](control-center-controls.md) records why, and why the intents must live in `Shared/`.
 
 ## Siri Shortcuts / App Intents
 

@@ -912,6 +912,15 @@ shipped app does. The lines for the signals it already omits can be deployed at 
 defect plan adds them. The line for a new signal belongs in the deployed policy on the day the
 release that sends it ships, and not before.
 
+**Corrected on `main` 2026-11-10** by Part 5a of the defect plan, ready for Josh to deploy. The
+corrected list is derived from `Analytics.swift` and its call sites, and it found more than this
+section did. The TelemetryDeck SDK (2.11.0, the version 1.4 ships) attaches about 30 parameters
+to every signal: device model, OS version, screen size, locale, region format, time zone,
+appearance, accessibility settings, run context, and session counts. It also sends a first-launch
+signal and a session-start signal of its own. The policy now names all of it. So a new signal's
+line is shorter than this section implied, because the device context needs no new mention, but
+a new *parameter* still does.
+
 ### Signals
 
 Names follow `Analytics.swift`: a verb first, in camelCase, with parameter keys in `ParameterKey`

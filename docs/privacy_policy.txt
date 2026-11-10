@@ -11,12 +11,25 @@ Konjugieren is an iOS app for learning German verb conjugations. This privacy po
 
 2. INFORMATION WE COLLECT
 
-Konjugieren collects anonymized usage analytics to help improve the app. These analytics record:
+Konjugieren collects anonymized usage analytics to help improve the app. The app sends these events:
 
-- Which screens you visit (verb browser, quiz, family browser, info articles, settings)
+- Which screens you visit (verb browser, verb page, family browser, family page, info browser, info article, quiz, tutor, settings)
 - Quiz lifecycle events (starting, quitting, or completing a quiz)
 - Quiz difficulty level (regular or ridiculous) when you quit or complete a quiz
 - How far you progressed in a quiz if you quit early (question number reached)
+- Game events (starting a game, finishing a wave, losing a game)
+- Taps on a few buttons: playing the game, rating or reviewing the app, showing the introduction, viewing the leaderboard, sending a message to the tutor, asking for an error to be explained, and deleting the chat history
+
+A screen visit or a tap is recorded only as having happened. Nothing you type and nothing on the screen is sent with it. That you sent the tutor a message is recorded; the message itself is not. That you opened a verb's page is recorded; which verb is not.
+
+TelemetryDeck's software, which sends these events, adds information about the device and the app to each of them. It also sends two events of its own: one the first time you open the app, and one when each session of use begins. The information it adds is:
+
+- The app's version, and the version of TelemetryDeck's software
+- The device's model, processor architecture, operating system and its version, screen size, and orientation
+- Device settings: language, text direction, region format, time zone, light or dark appearance, text size, and accessibility settings such as Reduce Motion or Bold Text
+- Whether the app was installed from the App Store, through TestFlight, or as a development build
+- The date and the hour at which the event was sent
+- Usage counts: the date of your first session, how many sessions you have had, on how many days you have used the app in all and in the past month, the average length of a session, and the length of the previous one
 
 That is all. The app does not record your quiz answers, your scores, the verbs you look up, or any text you type.
 
@@ -48,7 +61,7 @@ https://telemetrydeck.com/privacy/
 Konjugieren does not collect:
 
 - Names, email addresses, or other personal identifiers
-- Location data
+- Location data. The app does not use location services; the time zone and region format listed above indicate at most a broad region, such as a country.
 - Device identifiers that can be traced back to you
 - Advertising identifiers (the app contains no advertising)
 - Quiz answers, scores, or any text you type
@@ -82,7 +95,7 @@ Konjugieren does not knowingly collect personal information from children under 
 
 9. DATA RETENTION
 
-Anonymized analytics data is retained by TelemetryDeck in accordance with their data-retention policy. Because the data is anonymized and cannot be linked to individual users, deletion requests for specific users cannot be fulfilled -- there is nothing to delete.
+Anonymized analytics data is retained by TelemetryDeck in accordance with their data-retention policy. Because the data is anonymized and cannot be linked to individual users, deletion requests for specific users cannot be fulfilled: there is nothing to delete.
 
 
 10. CHANGES TO THIS POLICY
@@ -116,12 +129,25 @@ Konjugieren ist eine iOS-App zum Erlernen deutscher Verbkonjugationen. Diese Dat
 
 2. WELCHE INFORMATIONEN WIR ERHEBEN
 
-Konjugieren erhebt anonymisierte Nutzungsanalysen, um die App zu verbessern. Diese Analysen erfassen:
+Konjugieren erhebt anonymisierte Nutzungsanalysen, um die App zu verbessern. Die App sendet diese Ereignisse:
 
-- Welche Bildschirme Sie besuchen (Verbbrowser, Quiz, Familienbrowser, Infoartikel, Einstellungen)
+- Welche Bildschirme Sie besuchen (Verbbrowser, Verbseite, Familienbrowser, Familienseite, Infobrowser, Infoartikel, Quiz, Tutor, Einstellungen)
 - Quiz-Lebenszyklus-Ereignisse (Starten, Abbrechen oder Abschließen eines Quiz)
 - Quiz-Schwierigkeitsgrad (normal oder absurd) beim Abbrechen oder Abschließen eines Quiz
 - Ihren Fortschritt in einem Quiz, falls Sie es vorzeitig abbrechen (erreichte Fragennummer)
+- Spielereignisse (Starten eines Spiels, Abschließen einer Welle, Verlieren eines Spiels)
+- Das Antippen einiger Schaltflächen: das Spiel starten, die App bewerten oder rezensieren, die Einführung anzeigen, die Bestenliste ansehen, dem Tutor eine Nachricht senden, einen Fehler erklären lassen und den Chatverlauf löschen
+
+Ein Bildschirmbesuch oder ein Antippen wird nur als Ereignis erfasst. Nichts, was Sie eingeben, und nichts, was auf dem Bildschirm steht, wird mitgesendet. Erfasst wird, dass Sie dem Tutor eine Nachricht gesendet haben, nicht aber die Nachricht selbst. Erfasst wird, dass Sie die Seite eines Verbs geöffnet haben, nicht aber, welches Verb.
+
+Die Software von TelemetryDeck, die diese Ereignisse sendet, fügt jedem von ihnen Angaben über das Gerät und die App hinzu. Außerdem sendet sie zwei eigene Ereignisse: eines, wenn Sie die App zum ersten Mal öffnen, und eines zu Beginn jeder Nutzungssitzung. Die hinzugefügten Angaben sind:
+
+- Die Version der App und die Version der Software von TelemetryDeck
+- Gerätemodell, Prozessorarchitektur, Betriebssystem und dessen Version, Bildschirmgröße und Ausrichtung
+- Geräteeinstellungen: Sprache, Textrichtung, Regionsformat, Zeitzone, helle oder dunkle Darstellung, Textgröße und Bedienungshilfen wie „Bewegung reduzieren“ oder „Fetter Text“
+- Ob die App aus dem App Store, über TestFlight oder als Entwicklungsversion installiert wurde
+- Datum und Stunde, zu der das Ereignis gesendet wurde
+- Nutzungszahlen: das Datum Ihrer ersten Sitzung, die Zahl Ihrer Sitzungen, an wie vielen Tagen Sie die App insgesamt und im vergangenen Monat genutzt haben, die durchschnittliche Dauer einer Sitzung und die Dauer der vorigen
 
 Das ist alles. Die App zeichnet weder Ihre Quizantworten noch Ihre Ergebnisse, die von Ihnen nachgeschlagenen Verben oder eingegebenen Texte auf.
 
@@ -153,7 +179,7 @@ https://telemetrydeck.com/privacy/
 Konjugieren erhebt keine:
 
 - Namen, E-Mail-Adressen oder andere persönliche Kennungen
-- Standortdaten
+- Standortdaten. Die App nutzt keine Ortungsdienste; die oben genannte Zeitzone und das Regionsformat lassen höchstens auf eine grobe Region schließen, etwa ein Land.
 - Gerätekennungen, die auf Sie zurückgeführt werden können
 - Werbekennungen (die App enthält keine Werbung)
 - Quizantworten, Ergebnisse oder eingegebene Texte
@@ -187,7 +213,7 @@ Konjugieren erhebt wissentlich keine personenbezogenen Daten von Kindern unter 1
 
 9. DATENSPEICHERUNG
 
-Anonymisierte Analysedaten werden von TelemetryDeck gemäß deren Datenspeicherungsrichtlinie aufbewahrt. Da die Daten anonymisiert sind und nicht mit einzelnen Benutzern verknüpft werden können, können Löschanfragen für bestimmte Benutzer nicht erfüllt werden – es gibt nichts zu löschen.
+Anonymisierte Analysedaten werden von TelemetryDeck gemäß deren Datenspeicherungsrichtlinie aufbewahrt. Da die Daten anonymisiert sind und nicht mit einzelnen Benutzern verknüpft werden können, können Löschanfragen für bestimmte Benutzer nicht erfüllt werden: Es gibt nichts zu löschen.
 
 
 10. ÄNDERUNGEN DIESER RICHTLINIE

@@ -8236,3 +8236,43 @@ weak, and the app ships only "manage". Part 6 of the plan now names it.
 What a user would see changed: eight verbs show an example that uses the verb itself, in the
 sense its gloss names. Scan 2 went from 35 misses to 29: these five, and bedürfen, whose sentence
 Part 2 made findable.
+
+## Defect plan, Part 5: the privacy policy said less than the app sends (2026-11-10)
+
+The plan's brief for the privacy policy was narrow: ten signals in `Analytics.swift` were
+missing from its list, none carries a parameter, so add them and keep "That is all" true. The
+signals were confirmed at their call sites, and the list now names them, along with the four
+screens the old list also left out (verb page, family page, info browser, tutor). The policy also
+states the two things a reader most wants to know: sending the tutor a message is recorded and
+the message is not, and opening a verb's page is recorded and the verb is not.
+
+**Keeping "That is all" true needed more than the plan knew.** The app's own signals are not
+everything that leaves the device. The TelemetryDeck SDK, version 2.11.0, which is what 1.4
+shipped, adds about 30 parameters to every signal. They cover the app and SDK version; the
+device's model, processor architecture, OS version, screen size, and orientation; language, text
+direction, region format, time zone, appearance, text size, and seven accessibility settings;
+whether the build came from the App Store or TestFlight; the date and hour; and session counts
+(first-session date, total sessions, distinct days used, average and previous session length).
+It also sends two signals of its own, `TelemetryDeck.Acquisition.newInstallDetected` once and
+`TelemetryDeck.Session.started` on each cold launch or return after five minutes, because the
+app's `Config(appID:)` leaves `sendNewSessionBeganSignal` at its default of true. All of this
+was read from the SDK source in DerivedData, not inferred from TelemetryDeck's documentation. The
+policy now describes it in plain terms in both languages, and its "Location data" line explains
+that time zone and region format indicate at most a country.
+
+Nothing about what is collected changed, so `PrivacyInfo.xcprivacy` needed no edit. The SDK
+ships its own manifest declaring Product Interaction and a Device ID, both unlinked and
+untracked, and Xcode merges it into the app's privacy report. The App Privacy answers in App
+Store Connect are not in the repository and were not checked.
+
+The two date lines were left alone, as the plan asks: the policy promises a new effective date
+with each change, and that date is the day Josh deploys it. Two dashes in section 9 (an English
+"--" and a German "–") became colons while the text was open.
+
+**5b.** `docs/feature-architecture.md` held three claims the code contradicts. The quiz has four
+conjugationgroups at Regular (Futur Indikativ was missing) and adds eight at Ridiculous, not four.
+The arcade game contains no conjugation at all. And the Control Center buttons run
+`OpenQuizIntent` and `OpenRandomVerbIntent` from `Shared/`, which hand the app a pending
+deeplink; they do not use `OpenURLIntent`, which is a silent no-op from a widget extension.
+
+**5c** landed with Part 2, since it was the same file.

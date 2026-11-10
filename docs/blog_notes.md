@@ -8343,3 +8343,20 @@ gehauen, and gesalzen; krauchen shows krauchte and ist gekraucht; abhauen takes 
 Families tab has three new groups. The suite is 221 tests. The at-odds count held at 5. Scan 1
 finds no verb missing its prefix, and Scan 2's misses fell from 29 to 27, as the plan predicted:
 zusammenhauen and krauchen left the list, and hauen and niederhauen stay, on *hieb*.
+
+## The Ablaut article stops counting (2026-11-10)
+
+The Ablaut family's long article said "German has sixty-six distinct ablaut patterns" and that
+geben had "nineteen member verbs". Neither was true. The Families tab lists 68 groups,
+`AblautGroups.xml` holds 76, and 43 verbs sit on the geben group. The count had matched neither
+figure even before Part 7 of the defect plan added three groups. `check_docs.py` could not catch
+it, because the numbers were spelled out in words inside a localized string.
+
+Josh chose to drop the exact figures rather than pick one. No single count is right anyway:
+several groups in the XML are not ablaut in the linguistic sense (sollen and wollen hold only
+Präsens overrides, and backen, hauen, and salzen have no vowel change at all), and eight groups
+never appear in the tab. The English now says "dozens of distinct ablaut patterns", and that
+geben's pattern is shared by "every verb built on it, from abgeben to zurückgeben". That second
+claim was checked: all 43 verbs on the group are derivatives of geben. The German says the same,
+split into two sentences so that its relative clause does not trail the verb. Neither claim will
+go stale with the next import. The eight hidden groups are still open, as separate work.

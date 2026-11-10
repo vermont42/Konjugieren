@@ -20,6 +20,7 @@ numbers below were true when the plan was written and are not now. The journal e
 | 2 | `70b99e3` | Overrides keep their prefix. gelten's group simplified. At-odds 7 → 5. 5c done here too. |
 | 4 | `e4f9610` | Eight example sentences replaced (the five, plus three from Part 1). Scan 2: 35 → 29. |
 | 5 | `89de103` | Privacy policy and `feature-architecture.md` corrected. The policy waits for Josh to deploy it and set both date lines. |
+| 7 | `d49f505` | backen, hauen, salzen mixed on participle-override groups (73 → 76), 18 verbs re-encoded. krauchen weak. abhauen to sein. Seven entries added to `wiktionary-defects.json`; at-odds held at 5. Scan 2: 29 → 27. |
 
 **State to start Part 6 from.**
 

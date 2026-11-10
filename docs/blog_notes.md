@@ -8010,3 +8010,24 @@ Files changed: `CLAUDE.md` (a new section, to be removed when the constraint lif
 since another session wrote it), `docs/telemetry-usage.md` (one caveat), and both files in
 `plans/`. The two prompts and the letter in `docs/` say nothing about releases and were left
 alone.
+
+## Defect plan, Part 0: the baselines held (2026-11-10)
+
+The first session to execute `plans/fix-reference-defects.md` began with the before picture,
+and every number in the plan reproduced. The full suite ran 212 tests in 32 suites, all passing.
+The classification pipeline, rebuilt from `build_candidates.py` as the roadmap insists, reported
+7 shipping verbs at odds with Wiktionary, the same as the last recorded summary. The audit script
+beside the plan gave 6 verbs contradicted at the level of the lemma and 31 at the level of the
+sense, 71 that agree, 141 that need a ruling, and 3 regional, exactly the plan's table.
+
+`corpus/working/forms.json` was regenerated with the struct name in the filter, and its
+modification time moved from July 25 to today, which is the check that settles a gated harness.
+Scan 1 printed 98 verbs, and only three of them, bedürfen, entgelten, and vermögen, are real.
+The other 95 all lose their prefix only in a zu-infinitive, the false positive the scan
+predicts (anzugehören for an+ge*hören, where zu sits inside the prefix run). Scan 2 found the
+verb in all but 35 example sentences, also as recorded.
+
+One edit to the roadmap: step 9, the tranche-3 import, is held again. BBAW's permission had
+unblocked it in August, but the importer that wrote tranche 2 is the cause of most of Part 1,
+and running it again before Part 6 changes it would write new verbs with mismatched auxiliaries
+and glosses during the months before the next release.

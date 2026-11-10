@@ -20,9 +20,17 @@ completes.
 | 7 | Import tranche 1: strong bases | [`verb-sources.md`](verb-sources.md) next-steps item 5 | ✅ 2026-07-19 | steps 4–6 ✅; `hi` policy decided |
 | 8 | Import tranche 2: prefixed derivatives | [`verb-sources.md`](verb-sources.md) next-steps item 6 | ✅ 2026-07-19 | step 5 ✅; prefix inventory widened |
 | 8b | Clear the tranche-2 deferrals | this file, § "The tranche-2 deferrals" | ✅ 2026-07-19 | step 8 ✅ |
-| 9 | Import tranche 3: weak stems by frequency | [`verb-sources.md`](verb-sources.md) next-steps item 7 | 📋 unblocked 2026-08-26 | BBAW granted permission; corpus counts now measured |
+| 9 | Import tranche 3: weak stems by frequency | [`verb-sources.md`](verb-sources.md) next-steps item 7 | ⏸ held 2026-11-10 | the importer change in Part 6 of [`../plans/fix-reference-defects.md`](../plans/fix-reference-defects.md) |
 | 10 | Etymologies **and example sentences**, in one pipeline | [`../prompts/uses_etymologies.md`](../prompts/uses_etymologies.md) | ✅ 2026-07-23 | phase 0 ✅ |
 | 11 | The docs sweep | [`verb-sources.md`](verb-sources.md) next-steps item 9 | ✅ 2026-07-24 | step 10 ✅ |
+
+**Step 9 is held again, as of 2026-11-10.** BBAW's permission (2026-08-26) unblocked it, but the
+tranche-2 importer took a verb's auxiliary from kaikki's first-listed one and its gloss from a
+separate sense, and nothing tied the two together. That is how aufstehen shipped "get up" with
+haben, and 37 verbs are contradicted outright. Tranche 3 would repeat the error. It waits for
+Part 6 of [`../plans/fix-reference-defects.md`](../plans/fix-reference-defects.md), which makes
+the importer take the auxiliary from the same sense as the gloss and route dual-auxiliary verbs
+through `verbdata/auxiliary-rulings.tsv`.
 
 **Step 10 was larger than it looked, and its own doc said otherwise — now settled.**
 [`etymology-pipeline.md`](etymology-pipeline.md) led with "COMPLETE — every verb in `Verbs.xml` is

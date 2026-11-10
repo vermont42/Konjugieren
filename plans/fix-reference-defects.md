@@ -6,7 +6,7 @@ small fixes in app code, replacement of five example sentences, and corrections 
 documents. **Written:** 2026-11-10. **Revised** the same day, when Josh made the four decisions
 below.
 
-## Status (2026-11-10, end of the first session)
+## Status (2026-11-10, end of the second session)
 
 **Parts 0 to 5 and 7 are done. Part 6 remains.** Read this section before the rest: several
 numbers below were true when the plan was written and are not now. The journal entries in
@@ -21,17 +21,23 @@ numbers below were true when the plan was written and are not now. The journal e
 | 4 | `e4f9610` | Eight example sentences replaced (the five, plus three from Part 1). Scan 2: 35 → 29. |
 | 5 | `89de103` | Privacy policy and `feature-architecture.md` corrected. The policy waits for Josh to deploy it and set both date lines. |
 | 7 | `d49f505` | backen, hauen, salzen mixed on participle-override groups (73 → 76), 18 verbs re-encoded. krauchen weak. abhauen to sein. Seven entries added to `wiktionary-defects.json`; at-odds held at 5. Scan 2: 29 → 27. |
+| after 7 | `fb1f60b` | Ablaut article drops its stale counts ("sixty-six patterns", geben's "nineteen"). |
+| after 7 | `6da7c1d` | Eight groups that were in `AblautGroups.xml` but never in the Families tab now listed and described; geben's description corrected. Two `BrowseableFamilyTests` keep the list and the XML in step. |
+| after 7 | `29d2695` | anhängen split into weak "attach, append" and strong "adhere to, be devoted to". A Part 6 ruling, made early. |
 
 **State to start Part 6 from.**
 
-- **The counts have moved.** The audit prototype now reports 89 agreeing and 142 needing a
-  ruling. The prototype skips every verb with two readings, so the 12 verbs that gained one in
-  Part 1 left its rows; the Part 1 re-glosses moved a few more between verdicts. zurücktreten is
-  ruled and still listed. Take Part 6's scope from a fresh run, minus the verbs already in the
-  rulings file. The `--check` mode Part 6 asks for is what removes that bookkeeping.
-- **56 verbs have two readings** (44 before Part 1). The suite is 219 tests; the at-odds count
-  is 5 (helfen, schaffen, vergleichen, verstoßen, zusammenspinnen).
-- **The rulings file has 50 readings.** Its columns are `verb, reading, gloss, auxiliary, in,
+- **The counts have moved.** The audit prototype reports 89 agreeing and 142 needing a ruling
+  (rerun at the end of the second session, unchanged by Part 7). The prototype skips every verb
+  with two readings, so the 12 verbs that gained one in Part 1 left its rows; the Part 1
+  re-glosses moved a few more between verdicts. zurücktreten and abhauen are ruled and still
+  listed, because the prototype does not read the rulings file. Take Part 6's scope from a fresh
+  run, minus the verbs already in the rulings file. The `--check` mode Part 6 asks for is what
+  removes that bookkeeping.
+- **57 verbs have two readings** (44 before Part 1, 56 after it; anhängen is the 57th). The
+  suite is 224 tests in 33 suites, and the ablaut inventory is 76 groups. The at-odds count is 5
+  (helfen, schaffen, vergleichen, verstoßen, zusammenspinnen).
+- **The rulings file has 53 readings of 40 verbs.** Its columns are `verb, reading, gloss, auxiliary, in,
   outcome, source, date, note`. Outcomes used: `two readings`, `flip`, `flip and re-gloss`,
   `re-gloss`, `keep`. Each new row goes into the file *and* into
   `ConjugatorTests.auxiliaryRulings`, the table behind the parameterized `ruledAuxiliary` test.
@@ -41,7 +47,28 @@ numbers below were true when the plan was written and are not now. The journal e
   reading with a different family).
 - **Part 7 ruled one of Part 6's verbs:** abhauen, flipped to sein (row 51 of the rulings file).
   The hauen derivatives are now mixed, on the hauen group, so a second reading for any of them
-  keeps `fa="m" ag="hauen"`. festbacken's auxiliary (DWDS: hat/ist) was left for Part 6.
+  keeps `fa="m" ag="hauen"`. festbacken's auxiliary (DWDS: hat/ist) was left for Part 6. The
+  same holds for the backen and salzen derivatives: aufbacken, festbacken, nachbacken,
+  nachsalzen, and versalzen are mixed, on their base's group.
+- **anhängen was ruled after Part 7 (rows 52 and 53)**, and it sets two precedents Part 6 will
+  meet again:
+  - **A split by family is a ruling like a split by auxiliary.** Both anhängen readings take
+    haben, so the rulings rows carry the reason in the note. This is step 6a's shape (schaffen)
+    and hängen's. Expect more among the derivatives of hängen and of other verbs that are two
+    verbs spelled alike. The audit script cannot find these, because it compares auxiliaries.
+    anhängen surfaced only when the hängen group's members became visible in the Families tab.
+  - **A sense DWDS labels *gehoben* passes criterion 2.** The criterion's exclusions are
+    archaic, dated, regional, colloquial, and technical, and anbrechen (Part 1) had already
+    treated *gehoben* as standard. Josh has not ruled on this either way, so name it when it
+    recurs. The criterion-2 refusals for labelled senses (anspringen "Technik", durchdrehen and
+    abhauen "salopp") still await his ruling, so ask before extending them.
+- **A verb whose readings differ in family shows `shippedEncodingFailed` in the classifier.**
+  The classifier tests only the first reading, against a kaikki table that may describe only one
+  of the two verbs. The at-odds summary excludes multi-reading verbs for that reason, so the
+  count does not move. Do not read the flag as a defect on such a verb.
+- **Each new group needs an `AblautGroupInfo.exemplars` entry and a catalog description**, or
+  `everyAblautGroupIsListedAndDescribed` fails. A group used only by a second reading would also
+  fail `everyListedAblautGroupHasAVerb`, because the tab counts verbs by their first reading.
 
 **Method that worked in Part 1, worth repeating.**
 
@@ -739,7 +766,12 @@ for verb, entry in sentences.items():
 
 ## Prompt to Hand a Session
 
-> Read `plans/fix-reference-defects.md` and carry out Part 0 and then Part N. All four decisions
-> at the top of the plan are made. Stop and ask me before giving any verb a third reading, if
-> the scan in Part 7 finds more than five base verbs, and whenever a ruling rests on a source
-> you could not read.
+Parts 0 to 5 and 7 are done, so the next session takes Part 6. Run one Part 6 session at a time:
+each edits `Verbs.xml`, the rulings file, and the test table.
+
+> Read plans/fix-reference-defects.md, starting with its Status section, then the
+> docs/blog_notes.md entries headed "Defect plan, Part N" and the three entries after Part 7.
+> Carry out Part 6, step 1 first, then rule by base verb starting with fahren. All four decisions
+> at the top of the plan are made. Stop and ask me before giving any verb a third reading, before
+> extending the criterion-2 precedent (anspringen, durchdrehen, abhauen), and whenever a ruling
+> rests on a source you could not read.

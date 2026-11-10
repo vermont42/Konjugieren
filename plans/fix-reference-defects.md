@@ -495,6 +495,11 @@ because the gloss matching in the audit script is approximate.
    this plan. A few take sein everywhere because they name a change and not a state: aufstehen,
    auferstehen, and erstehen in the sense "arise".
 6. Rule on übergehen by hand. See Part 4.
+6a. **Added by Part 4, 2026-11-10: rule on schaffen too.** It is not an auxiliary case, so the
+   audit does not list it, but it is the same kind of work. "create" is strong (schuf,
+   geschaffen) and "manage, accomplish" is weak (schaffte, geschafft), and the app ships only the
+   weak reading. It wants a second reading of the hängen shape, different family included. It is
+   one of the five verbs at odds with Wiktionary, so the count should fall when it lands.
 7. Extend the parameterized test of Part 1 with every reading ruled here.
 
 **Stop the cause.** Tranche 3 of the import is unblocked and would repeat the error. Change the

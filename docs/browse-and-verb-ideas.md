@@ -1041,7 +1041,9 @@ not this list, is the current statement of the defects.
 4. **35 example sentences do not contain a conjugation that the app generates for their verb.**
    Some quote a different verb: the sentence for greifen uses ergriff, the one for fertigen uses
    verfertigt, and the one for abstimmen has only the noun Abstimmung. The appendix lists the
-   kinds. The full list was written to the session scratchpad and can be regenerated in a minute.
+   kinds. **The five that quote another verb were replaced on `main` 2026-11-10** by Part 4 of
+   the defect plan, along with three authored sentences that illustrated senses the corrected
+   glosses dropped. The scan now finds 29, each in a class the appendix names. The full list was written to the session scratchpad and can be regenerated in a minute.
 5. **The map is stale.** `corpus/working/forms.json` dates from 2026-07-25 and matches the
    corpus's 3,572 verbs, but glosses and counts have changed since, and the counts in this
    document should be confirmed against a fresh run. **Fixed 2026-11-10** in Part 0 of the

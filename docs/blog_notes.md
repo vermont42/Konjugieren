@@ -8186,3 +8186,53 @@ since it was the same file.
 What a user would see changed: bedürfen, vermögen, and entgelten show their own forms, and
 nothing else moves. Scan 1 now finds no prefixed verb missing its prefix, the suite is 219
 tests, and the simulator shows bedarf, vermag, and entgaltest.
+
+## Defect plan, Part 4: eight example sentences replaced (2026-11-10)
+
+Five sentences contained no conjugation of the verb they illustrated (abstimmen had only the
+noun Abstimmung; fertigen, greifen, nutzen, and schalten quoted verfertigen, ergreifen, nützen,
+and ausschalten). Three more came from Part 1, where correcting kaikki's glosses left authored
+sentences illustrating senses the dictionaries do not have: ausschleichen ("schlich er sich
+leise aus"), aufrauchen (smoke rising), and verstinken (stinking until the smell is gone).
+
+**The displaced sentences had nowhere to move.** The plan said to check whether each one would
+improve the verb it does illustrate. All four quoting sentences were already the shipped
+examples of those verbs. The corpus mining had matched the same passage twice, once to the
+compound and once, wrongly, to its base.
+
+**Choosing replacements took reading, not matching.** The corpus index's own candidates show
+why. schalten's Luther candidate, "Da schalten sie ihn", is the Präteritum of *schelten*;
+nutzen's Kafka candidate is *ausnutzen*; fertigen's Goethe candidate is *abfertigen*. And most
+"fertig" hits are the adjective, which `forms.json` also lists as fertigen's bare imperative. The
+picks, preferring literary sources over government ones as the pipeline doc orders:
+
+- abstimmen: Grundgesetz Art. 29, "Abzustimmen ist über die Frage, ob …", in its voting sense.
+- fertigen: Luther, Isaiah 40:20, "… der ein Bild fertige, das beständig sei".
+- greifen: Kafka, "Die in der ersten Reihe griffen hie und da in ihre Barte", which keeps
+  Kafka's plural *Barte* as the pipeline keeps *daß*.
+- nutzen: Mann, "die Gelegenheit zu nutzen", 41 words, inside the 55-word ceiling.
+- schalten, ausschleichen, aufrauchen, verstinken: authored, because the corpus has no sentence
+  in the shipped sense. schalten's corpus hits all place an advertisement or are *umschalten*.
+
+The authored four passed the forms gate. A Sonnet reviewer under `prompts/example_review.md`
+read all eight and raised one finding: the first greifen pick, Grimm's "wollten den Dieb
+greifen", shows the dated "seize a person", not "grasp, reach". The Kafka sentence replaced it.
+The reviewer also suspected that the Luther text was a paraphrase. It occurs verbatim in the
+corpus file.
+
+**The merge needed one adaptation of the `integrate` skill.** Mode A never overwrites, so the
+eight entries were deleted from the bundle first, then merged from a working file, then checked
+with the skill's preservation rule: every other entry identical and in order, and HEAD
+round-tripping through `json.dumps`, so the diff is the 30 changed lines and nothing else. The
+skill says its Mode A working file at the repository root is gitignored. It is not, so the
+working file went to the session scratchpad instead.
+
+**Two findings that are not this part's to fix, recorded in the roadmap and the plan.** The
+dual-paradigm count of 111 undercounts derivatives. kaikki lists one paradigm for voraussenden
+and the saugen compounds, whose sentences use the other one, while their bases carry both. And
+schaffen is not a dual paradigm but a missing second reading: "create" is strong, "manage" is
+weak, and the app ships only "manage". Part 6 of the plan now names it.
+
+What a user would see changed: eight verbs show an example that uses the verb itself, in the
+sense its gloss names. Scan 2 went from 35 misses to 29: these five, and bedürfen, whose sentence
+Part 2 made findable.

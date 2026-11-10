@@ -351,6 +351,21 @@ Small things the pipeline surfaced that no plan currently owns. None blocks the 
   two form sets. `Quiz` needs no design change; its `acceptableAnswers` is already a `Set`.
   Prompted by the example-sentence gate, where 9 misses turned out to be authors writing the
   paradigm the app does not ship. Full analysis in `verb-sources.md` wrinkle 1.
+
+  **The 111 undercounts derivatives** (2026-11-10, Part 4 of `plans/fix-reference-defects.md`).
+  It was measured from kaikki `forms`, and kaikki often lists one paradigm for a derivative whose
+  base carries two. The shipped example sentences show the class directly: *wenden* (wandte),
+  *verglimmen* (verglomm), and *klieben* (klob) are in the measured set, while *voraussenden*
+  (sandte voraus) and the three *saugen* derivatives *absaugen*, *einsaugen*, and *festsaugen*
+  (saugte) are not, though senden and saugen are. Those sentences are correct and stay. When the
+  model is built, take the scope from the base verbs as well as from each derivative's own record.
+
+  **schaffen is not one of them.** "Am Anfang schuf Gott Himmel und Erde" shows a *second
+  meaning*, not a second paradigm. *schaffen* "create" is strong (schuf, geschaffen) and
+  *schaffen* "manage, accomplish" is weak (schaffte, geschafft), so it wants two readings, the
+  hängen shape, and the app ships only the weak one. That is why "Arbeitsplätze schaffen" would
+  come out as *geschafft*, and why schaffen is among the five verbs at odds with Wiktionary. It
+  belongs with the readings work of Part 6 of that plan.
 - **`mahlen` and `spalten`** — weak Präteritum with strong participle (*mahlte*, but
   *gemahlen*). Neither the mixed family nor the weak family fits. Wrinkle 4 in
   `verb-sources.md`; needs a new family or a full-override ablaut group. Step 7 confirmed the

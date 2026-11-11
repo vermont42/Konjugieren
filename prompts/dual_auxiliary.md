@@ -419,6 +419,13 @@ source.
 
 ## Interim policy, until this pass runs
 
+**Superseded for imports on 2026-11-10.** The model landed long ago, and this policy, applied
+by the tranche-2 importer, is what shipped aufstehen "get up" with haben. An importer now
+takes `ay` from the same kaikki sense as `tn` and holds back every verb kaikki marks with both
+auxiliaries, proposing its readings in `verbdata/auxiliary-rulings.tsv` for a ruling. The rule
+is in the header of `verbdata/auxiliary_screen.py`. The policy below is kept as the record of
+what tranche 2 did. Its last point, about the DTD, still holds.
+
 Applies to any verb added before the model lands.
 
 - Keep `ay` single-valued. For a new dual-auxiliary verb pick the **more common reading**,

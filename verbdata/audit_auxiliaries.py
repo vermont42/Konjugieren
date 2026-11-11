@@ -18,12 +18,24 @@ Two modes, both run from the repository root:
       Exits 1, listing every problem, when
         * a ruled verb's readings in Verbs.xml differ from its rows (count, auxiliary, gloss, or
           the reading's infinitive where the row states one),
-        * a row is malformed (unknown outcome, no source, readings not numbered 0..n-1), or
-        * a verb the report lists has no ruling at all.
-      The last condition is what makes --check the "done" test for Part 6: it fails until every
-      listed verb is ruled, and the count it prints is how much remains.
+        * a row is malformed (unknown outcome, no source, readings not numbered 0..n-1),
+        * a verb the report lists has no ruling at all, or
+        * a verb has `proposed` rows, which nobody has reviewed yet (see below).
+      The third condition is what made --check the "done" test for Part 6: it fails until every
+      listed verb is ruled, and the count it prints is how much remains. The fourth extends the
+      same gate to imports.
 
 Rulings-file columns: verb, reading, gloss, auxiliary (h or s), in, outcome, source, date, note.
+
+The outcome `proposed` (added 2026-11-10, Part 6 "Stop the cause") marks rows that an importer
+wrote and nobody has ruled on. verbdata/import_tranche2.py writes them through
+verbdata/auxiliary_screen.py for every incoming verb the screen holds back, and does not put the
+verb in Verbs.xml. So a proposed row is checked only for its shape: its verb is expected to be
+absent from Verbs.xml, its auxiliary may be "?" when kaikki did not settle it, and the whole
+verb is listed under "awaiting review" and fails --check, as an unruled listed verb does.
+Ruling it means rewriting every row of the verb with a real outcome, a source, and a note, then
+adding the verb to Verbs.xml by hand. A verb with any proposed row is treated as proposed whole,
+because its readings are ruled together or not at all.
 `in` is the reading's effective infinitive with its markup (the reading's own `in`, else the
 verb's), and it may be left empty when it adds nothing. An absent `ay` in Verbs.xml means haben.
 
@@ -59,6 +71,7 @@ SNAPSHOT = "verbdata/kaikki.org-dictionary-German-by-pos-verb.jsonl"
 VERBS = "Konjugieren/Models/Verbs.xml"
 RULINGS = "verbdata/auxiliary-rulings.tsv"
 OUTCOMES = {"two readings", "flip", "flip and re-gloss", "re-gloss", "keep"}
+PROPOSED = "proposed"
 
 
 def letters(text):
@@ -191,8 +204,24 @@ def audit(shipping, rulings):
 
 
 def check(shipping, rulings, rows):
+    """(problems, unruled, proposed). Every entry of unruled and proposed is also a problem."""
     problems = []
+    proposed = []
     for verb, verb_rows in rulings.items():
+        if any(row["outcome"] == PROPOSED for row in verb_rows):
+            proposed.append(verb)
+            indices = [int(row["reading"]) for row in verb_rows]
+            if indices != list(range(len(verb_rows))):
+                problems.append(f"{verb}: rows number their readings {indices}, not 0..{len(verb_rows) - 1}")
+            for row in verb_rows:
+                if row["outcome"] != PROPOSED:
+                    problems.append(f"{verb} reading {row['reading']}: ruled beside proposed rows; "
+                                    f"rule the verb's readings together")
+                if row["auxiliary"] not in {"h", "s", "?"}:
+                    problems.append(f"{verb} reading {row['reading']}: auxiliary {row['auxiliary']!r} "
+                                    f"is not h, s, or ?")
+            problems.append(f"{verb}: proposed by an importer, awaiting review")
+            continue
         if verb not in shipping:
             problems.append(f"{verb}: ruled but not in Verbs.xml")
             continue
@@ -223,7 +252,7 @@ def check(shipping, rulings, rows):
     unruled = sorted({row[1] for row in rows if row[1] not in rulings and row[5] != "regional"})
     for verb in unruled:
         problems.append(f"{verb}: listed by the audit, no ruling")
-    return problems, unruled
+    return problems, unruled, proposed
 
 
 def main():
@@ -235,13 +264,14 @@ def main():
     rulings = load_rulings()
     rows = audit(shipping, rulings)
     if "--check" in args:
-        problems, unruled = check(shipping, rulings, rows)
+        problems, unruled, proposed = check(shipping, rulings, rows)
         for problem in problems:
             print(problem)
         ruled_listed = len({row[1] for row in rows if row[1] in rulings})
-        print(f"{len(rulings)} verbs ruled ({ruled_listed} of them listed by the audit), "
+        print(f"{len(rulings) - len(proposed)} verbs ruled ({ruled_listed} of them listed by the audit), "
               f"{len(unruled)} listed verbs await a ruling, "
-              f"{len(problems) - len(unruled)} other problems", file=sys.stderr)
+              f"{len(proposed)} proposed verbs await review, "
+              f"{len(problems) - len(unruled) - len(proposed)} other problems", file=sys.stderr)
         sys.exit(1 if problems else 0)
     if "--unruled" in args:
         rows = [row for row in rows if row[1] not in rulings and row[5] != "regional"]

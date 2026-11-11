@@ -296,8 +296,10 @@ Three flags in the summary, each a real limit:
   (*beyssen*, *abfliessen*, *laßen*). They conjugate fine and should not ship.
 
 Also unresolved, and deliberately so: 249 verified incoming verbs are dual-auxiliary. The
-interim policy in `prompts/dual_auxiliary.md` governs; the pipeline records `ay` from kaikki's
-primary reading and sets a flag rather than deciding.
+pipeline records `ay` from kaikki's primary reading and sets a flag rather than deciding. That
+`ay` is not what ships: since 2026-11-10 an importer takes the auxiliary from
+`verbdata/auxiliary_screen.py`, which reads every kaikki record (this pipeline reads only the
+first) and holds back dual-auxiliary verbs for a ruling.
 
 `hi` and `ic` are untouched. `hi` — the raw DWDS hit count that replaced the `fr` rank on
 2026-07-19 — is blocked pending BBAW's reply about bulk querying, and `ic` has no external

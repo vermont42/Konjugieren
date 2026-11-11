@@ -8932,3 +8932,75 @@ schwellen, aufschwellen), umlaufen's third reading, and ablaufen keeping "expire
 Fable's amendment. The list is now a record of settled rulings, renamed "Calls made without Josh,
 confirmed", and the rulings file's "worth a second look" notes are settled with it. Part 6's
 importer change ("Stop the cause") and the plan's Closing are left for a fresh session.
+
+## Defect plan, Part 6: the importer stops guessing (2026-11-10)
+
+With the rulings finished, Part 6 had one job left: fix the habit that made them necessary, so
+that tranche 3 cannot repeat it. The tranche-2 importer took a verb's gloss from the first kaikki
+sense that normalized into something short, and its auxiliary from the lemma-level forms of the
+first kaikki record. Nothing tied the two together. Four verbs Part 6 had to fix show four
+different ways that failed, and they became the test cases.
+
+- **zuziehen.** kaikki gives the lemma haben only, because most of its senses are transitive or
+  reflexive (*sich etwas zuziehen*). The gloss came from sense 1, intransitive "move here", which
+  takes sein. No sense carries an auxiliary note. The only evidence is the sense's `intransitive`
+  tag and the meaning of its English gloss.
+- **durchlaufen.** kaikki has two records, separable *durch|laufen* with sein and inseparable
+  *durchlaufen* with haben. `candidates.json` keeps only the first record per lemma, so the
+  importer never learned that a second verb existed.
+- **abschieben.** kaikki marks the lemma "sein or haben", and the importer shipped the first one
+  listed, sein, for "deport".
+- **bleichen.** One record whose headword template offers two paradigms: weak with haben
+  ("bleach") and strong with sein ("fade"). That is two verbs under one spelling.
+
+The fix is a module, `verbdata/auxiliary_screen.py`, and not an edit inside the importer. The
+plan asked whether tranche 3 would reuse `import_tranche2.py` or a copy. It can do neither
+cleanly. Tranches 1 and 2 each got a script of their own, and tranche 3's verbs (unprefixed weak
+stems) fall outside tranche 2's scope, which requires a prefix and a shipping base. A shared
+module is the only form of the fix that tranche 3 can inherit without copying it. It reads the
+kaikki snapshot directly, every record of a lemma, because the single-record view in
+`candidates.json` is half of what went wrong.
+
+The rule is short. The auxiliary comes from the same sense as the gloss, and the lemma's
+auxiliary is a fallback only when the lemma names one and nothing contradicts it. Anything else
+is flagged and not imported: kaikki gives both auxiliaries, or a separable and an inseparable
+verb under the spelling, or a strong and a weak verb, or the gloss's own sense contradicts the
+lemma. A flagged verb goes to `verbdata/auxiliary-rulings.tsv` as rows with a new outcome,
+`proposed`, one per reading its senses suggest, grouped by auxiliary, separability, and family.
+`audit_auxiliaries.py --check` fails while any proposed row remains, so the gate Part 6 already
+relied on now blocks an unreviewed import too, with no new machinery. The importer still does not
+write second readings into `Verbs.xml`. Those need glosses that tell them apart, and that is the
+gloss review's job, not a script's.
+
+Two details took a second try. My first parser of the headword spec read bleichen's strong
+paradigm as haben. Removing the `<rare>` qualifier from `blich,geblichen.sein.<rare>` left a
+trailing empty part, and the code read the auxiliary from the last part. And zuziehen's first
+proposal offered only haben, because the motion inference fed the flag but not the proposal. The
+second fix is the more interesting one. The screen and the proposal now share one order of
+evidence: the sense's own note, then a transitive or reflexive tag, then an intransitive sense
+whose English head verb is one of motion or change of state, then the record.
+
+**The measurement that justifies it.** Every one of the 3,572 shipping verbs was screened as if
+it were incoming. Of the 128 verbs whose auxiliary or readings Parts 1 and 6 changed, the screen
+holds back 125. The other three, entgehen, nachgehen, and stattfinden, were among the
+hand-entered 990 and never passed through an importer, and the screen gives each the auxiliary
+its ruling chose. Among the 3,320 verbs no ruling touched, it holds back 109. 43 of those already
+have two readings from the July pass, so that leaves 66, about 2%, as the review cost a new
+tranche can expect. The motion inference is the noisiest flag. "get out of hand"
+(überhandnehmen) and "fail" (versagen) are intransitive glosses of haben verbs.
+
+The importer's `--check` gained `--screen VERB,…`, which runs named verbs through every decision
+even when they ship or fall outside the tranche, and writes nothing. Run on the four, it holds
+back each one for its own reason and proposes what Part 6 ruled: zuziehen "move here" with sein
+beside "draw, shut by pulling" with haben, and durchlaufen's inseparable reading with
+`durch*laufen`. On the real tranche-2 pool the result matches the old importer's exactly, with
+one difference: bevorstehen, the one dual-auxiliary verb the old rule would have shipped with one
+reading, is now held. An end-to-end run against a scratch copy of the rulings file wrote its
+proposed row, and `--check` failed on it as intended.
+
+`verbdata/tranche2-dual-auxiliary.txt` is frozen, with a header saying so. The roadmap's "Still
+open" entry for it is closed, and step 9 is released. No tranche-3 importer exists yet, and
+the roadmap now says it must import the screen rather than copy it. Nothing was imported.
+
+What a user would see changed: nothing yet. What changes is that the next 6,000 verbs cannot ship
+the error that the last 252 rulings corrected.

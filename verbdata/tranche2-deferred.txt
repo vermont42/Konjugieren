@@ -1,5 +1,7 @@
 # Verified by the pipeline but NOT imported, and why. Recomputed on every run.
-# See docs/roadmap.md, "The tranche-2 deferrals".
+# See docs/roadmap.md, "The tranche-2 deferrals". Rows reading "needs an auxiliary
+# ruling" were held back by verbdata/auxiliary_screen.py; a real run writes them to
+# verbdata/auxiliary-rulings.tsv as proposed rows.
 # verb	reason
 abscheren	needs an ablaut group that does not ship
 aufbraten	needs an ablaut group that does not ship
@@ -11,6 +13,7 @@ außlegen	archaic or pre-1996 orthography
 beklimmen	needs an ablaut group that does not ship
 benützen	every gloss points at another entry rather than translating
 bestehenbleiben	every gloss points at another entry rather than translating
+bevorstehen	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
 beybringen	archaic or pre-1996 orthography
 beyfügen	archaic or pre-1996 orthography
 beygeben	archaic or pre-1996 orthography

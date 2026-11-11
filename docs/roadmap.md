@@ -20,17 +20,29 @@ completes.
 | 7 | Import tranche 1: strong bases | [`verb-sources.md`](verb-sources.md) next-steps item 5 | ✅ 2026-07-19 | steps 4–6 ✅; `hi` policy decided |
 | 8 | Import tranche 2: prefixed derivatives | [`verb-sources.md`](verb-sources.md) next-steps item 6 | ✅ 2026-07-19 | step 5 ✅; prefix inventory widened |
 | 8b | Clear the tranche-2 deferrals | this file, § "The tranche-2 deferrals" | ✅ 2026-07-19 | step 8 ✅ |
-| 9 | Import tranche 3: weak stems by frequency | [`verb-sources.md`](verb-sources.md) next-steps item 7 | ⏸ held 2026-11-10 | the importer change in Part 6 of [`../plans/fix-reference-defects.md`](../plans/fix-reference-defects.md) |
+| 9 | Import tranche 3: weak stems by frequency | [`verb-sources.md`](verb-sources.md) next-steps item 7 | ⏳ unblocked 2026-11-10, not started | ✅ the auxiliary screen (Part 6 of [`../plans/fix-reference-defects.md`](../plans/fix-reference-defects.md)); its importer must call `verbdata/auxiliary_screen.py` |
 | 10 | Etymologies **and example sentences**, in one pipeline | [`../prompts/uses_etymologies.md`](../prompts/uses_etymologies.md) | ✅ 2026-07-23 | phase 0 ✅ |
 | 11 | The docs sweep | [`verb-sources.md`](verb-sources.md) next-steps item 9 | ✅ 2026-07-24 | step 10 ✅ |
 
-**Step 9 is held again, as of 2026-11-10.** BBAW's permission (2026-08-26) unblocked it, but the
-tranche-2 importer took a verb's auxiliary from kaikki's first-listed one and its gloss from a
-separate sense, and nothing tied the two together. That is how aufstehen shipped "get up" with
-haben, and 37 verbs are contradicted outright. Tranche 3 would repeat the error. It waits for
-Part 6 of [`../plans/fix-reference-defects.md`](../plans/fix-reference-defects.md), which makes
-the importer take the auxiliary from the same sense as the gloss and route dual-auxiliary verbs
-through `verbdata/auxiliary-rulings.tsv`.
+**Step 9 was held on 2026-11-10 and released the same day.** BBAW's permission (2026-08-26)
+unblocked it, but the tranche-2 importer took a verb's auxiliary from kaikki's first-listed one
+and its gloss from a separate sense, and nothing tied the two together. That is how aufstehen
+shipped "get up" with haben, and Parts 1 and 6 of
+[`../plans/fix-reference-defects.md`](../plans/fix-reference-defects.md) ruled 252 verbs to undo
+it. The cause is now fixed in `verbdata/auxiliary_screen.py`, which `import_tranche2.py` calls:
+`ay` comes from the same kaikki sense as `tn`, and a verb kaikki marks with both auxiliaries,
+with a separable and an inseparable verb under one spelling, with a strong and a weak verb under
+one spelling, or with a sense that contradicts the lemma's auxiliary is not imported. It goes to
+`verbdata/auxiliary-rulings.tsv` as `proposed` rows, and `audit_auxiliaries.py --check` fails
+until they are ruled. Screening the shipped corpus as if it were incoming, it flags 125 of the
+128 verbs Parts 1 and 6 changed, and the other three were never the importer's.
+
+**What step 9 still needs before it runs.** No tranche-3 importer exists. Tranches 1 and 2 each
+got a script of their own, and tranche 3's scope (unprefixed weak stems, ranked by frequency)
+is outside `import_tranche2.py`'s, which requires a prefix and a shipping base. Write it as a new
+script that imports `auxiliary_screen` rather than copying it, and expect it to hold back a few
+percent of its verbs for rulings: the screen holds back 109 of the 3,320 shipped verbs that no
+ruling touched, 43 of them verbs that already have two readings.
 
 **Step 10 was larger than it looked, and its own doc said otherwise — now settled.**
 [`etymology-pipeline.md`](etymology-pipeline.md) led with "COMPLETE — every verb in `Verbs.xml` is
@@ -205,12 +217,20 @@ the choice between them is about which data the corpus has to carry.
   teaching the classifier to try shipping groups against the full table before inventing one. The
   category fell from 26 verbs to **11**. See "Known gaps" below. The rest need judgment one verb
   at a time.
-- **193 verbs are dual-auxiliary and ship one reading.** `verbdata/tranche2-dual-auxiliary.txt` is
-  the worklist. It is **historical and cumulative** — once a verb ships the classifier skips it,
-  so a row that leaves the file can never be rediscovered. It is now written as a union and rows
-  are only ever added. It used to be replaced, guarded only against an empty result, and step 8b's
-  first re-run produced 17 rows and overwrote 176 rows of history with them. Non-empty is not the
-  same as complete; the guard was wrong, not merely incomplete.
+- ~~**193 verbs are dual-auxiliary and ship one reading.**~~ **Closed 2026-11-10.**
+  `verbdata/tranche2-dual-auxiliary.txt` was the worklist, and it is history now: frozen, no
+  longer written, and every row of it that still ships has been ruled. **The current record is
+  `verbdata/auxiliary-rulings.tsv`**, 332 readings of 252 verbs, each with a source, checked by
+  `python3 verbdata/audit_auxiliaries.py --check` and pinned by `ConjugatorTests.ruledAuxiliary`.
+  The importer no longer ships a dual-auxiliary verb with one reading at all. It holds the verb
+  back and proposes its readings in the rulings file as `proposed` rows, which fail `--check`
+  until a session rules them. See step 9 above. (The file's history, kept for the lesson: it
+  was written as a union because a verb that ships is skipped by the classifier and can never
+  be rediscovered, after step 8b's first re-run overwrote 176 rows of history with 17.)
+- **bevorstehen is the one tranche-2 verb the screen holds back today.** The old rule would have
+  shipped it with one reading. `import_tranche2.py --check` lists it in `tranche2-deferred.txt`
+  as needing an auxiliary ruling, and a real run would propose it. Fourteen more derivatives
+  pass the screen and would import. Nothing is scheduled to import them.
 - **~28 verbs still fail the prefix check** — mostly noun and adjective compounds whose participle
   gives no usable evidence (*arschkriechen*, *bauchreden*).
 - **Derivatives of the override bases are unblocked in `Conjugator` and still blocked in the

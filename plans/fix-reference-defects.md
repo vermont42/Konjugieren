@@ -8,7 +8,7 @@ below.
 
 ## Status (2026-11-10, during the third session)
 
-**Parts 0 to 5 and 7 are done. Part 6's rulings are done: the audit's worklist is empty and `--check` passes. What remains of Part 6 is "Stop the cause" (the importer change) and the review list below; then the plan's Closing.** Read this section before the rest: several
+**Parts 0 to 5 and 7 are done. Part 6's rulings are done: the audit's worklist is empty and `--check` passes. Part 6's "Stop the cause" is done (the importer change, 2026-11-10). What remains is the plan's Closing.** Read this section before the rest: several
 numbers below were true when the plan was written and are not now. The journal entries in
 `docs/blog_notes.md` headed "Defect plan, Part N" are the detailed record.
 
@@ -34,13 +34,14 @@ numbers below were true when the plan was written and are not now. The journal e
 | 6 (brennen, schlagen, wachsen) | `2ba0cc0` | 13 verbs: durchschlagen and überschlagen three readings, abbrennen and ausschlagen two, anbrennen, entbrennen, durchbrennen to sein, 6 keeps. Two etymologies corrected. Three review findings adjudicated: two glosses narrowed, one kept. |
 | 6 (step 5, stehen and liegen) | `623c518` | 39 verbs: erstehen and unterliegen gain a sein reading, umeinanderstehen re-glossed and deferred, 36 keeps, most of them regional variation. erstehen's etymology corrected. Review found nothing. |
 | 6 (small families 1) | `48ca069` | 31 verbs: 6 gain a second reading (überspringen by separability), 7 flip, among them abschieben to haben and ausscheiden's first reading to sein, 18 keeps, two of them deferred. Review found nothing. |
+| 6 (stop the cause) | see journal | `verbdata/auxiliary_screen.py`, called by `import_tranche2.py`: `ay` from the gloss's own kaikki sense, and dual-auxiliary, separability-homograph, family-split, and sense-contradicted verbs held back as `proposed` rows that fail `--check`. Flags 125 of the 128 verbs Parts 1 and 6 changed. Roadmap step 9 released. |
 | 6 (small families 2) | see journal | The last 50 verbs: 18 gain a second reading (durchdringen inseparable first), 6 flip, 4 re-glosses, 22 keeps, two of them deferred. durchdringen's etymology boilerplate removed. One review finding, rejected by Fable. |
 
 **Where Part 6 stands.**
 
 - **The worklist is empty.** `python3 verbdata/audit_auxiliaries.py --check` passes: 252 verbs
-  ruled, 0 awaiting a ruling, 0 other problems. Any later edit to a ruled reading must keep it
-  passing. The next Part 6 work is "Stop the cause", which the away-mode prompt excluded.
+  ruled, 0 awaiting a ruling, 0 proposed verbs awaiting review, 0 other problems. Any later edit
+  to a ruled reading must keep it passing. "Stop the cause" is done; see its section.
 - **The rulings file has 332 readings of 252 verbs**, and 118 verbs have more than one reading,
   6 of them three (durchziehen, durchbrechen, durchlaufen, umlaufen, durchschlagen, überschlagen). Suite: 224 tests.
 - **Josh's rulings of 2026-11-10, in the fahren batch**, which later batches should follow:
@@ -796,6 +797,17 @@ found:
   anhängen shape: schleifen, bleichen, schwellen, where kaikki lists a strong and a weak entry).
   Each can be detected from kaikki's data. Route each to a `proposed` row with the reason in its
   note, rather than importing it.
+
+**Done 2026-11-10.** No tranche-3 importer exists; tranches 1 and 2 each got a script of their
+own, and tranche 3's scope is outside `import_tranche2.py`'s. So the rule went into a shared
+module, `verbdata/auxiliary_screen.py`, which `import_tranche2.py` calls and tranche 3's script
+must import. `audit_auxiliaries.py` accepts the outcome `proposed` and fails `--check` on it.
+`import_tranche2.py --check --screen zuziehen,durchlaufen,abschieben,bleichen` holds back all
+four, each for its own reason, and proposes the readings Part 6 ruled. Screening all 3,572
+shipping verbs as if incoming flags 125 of the 128 that Parts 1 and 6 changed; the other three
+(entgehen, nachgehen, stattfinden) were in the hand-entered 990, and the screen gives each the
+ruled auxiliary. `tranche2-dual-auxiliary.txt` is frozen as history. The journal entry "Defect
+plan, Part 6: the importer stops guessing" has the details.
 
 **Done when.** `audit_auxiliaries.py --check` passes, the parameterized test passes, every new
 pair of glosses has passed review, and the rulings file names a source for every row.

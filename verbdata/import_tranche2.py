@@ -5,10 +5,17 @@ Step 8 of docs/roadmap.md. Consumes verbdata/classification.json (the classify-a
 pipeline's output) plus verbdata/candidates.json (for the untruncated kaikki glosses), and
 writes into Konjugieren/Models/Verbs.xml.
 
-Run:  python3 verbdata/import_tranche2.py [--check] [--sample N]
+Run:  python3 verbdata/import_tranche2.py [--check] [--sample N] [--screen VERB,VERB,...]
 
---check reports what would change and writes nothing. --sample prints N normalized rows so
-the translations can be eyeballed before 2,000-odd user-visible strings ship.
+--check reports what would change and writes nothing but the deferred worklist. --sample prints
+N normalized rows so the translations can be eyeballed before 2,000-odd user-visible strings
+ship. --screen (with --check) runs the named verbs through every per-verb decision, auxiliary
+screen included, even if they already ship or fall outside this tranche's scope, prints what the
+importer would do with each, and writes nothing at all. It is how the auxiliary screen was shown
+to work on verbs Part 6 had to fix; see "AUXILIARIES" below.
+
+Needs the gitignored kaikki snapshot (verbdata/README.md has the recipe), because the auxiliary
+screen reads every kaikki record of a verb and classification.json keeps only the first.
 
 WHY THIS TRANCHE IS DIFFERENT FROM TRANCHE 1
 --------------------------------------------
@@ -22,7 +29,8 @@ rules are stated so a reader can disagree with them:
         real DWDS counts (see RATIOS below). Still marked hp="y".
   `ic`  Inherited from the base verb. A derivative of `beissen` gets `beissen`'s icon.
   `tn`  Normalized from kaikki's gloss (see `normalize_translation`), not hand-written.
-  `ay`  kaikki's primary reading, per the interim policy in prompts/dual_auxiliary.md.
+  `ay`  From the kaikki sense the gloss came from, or the verb is not imported; see
+        "AUXILIARIES" below. (Until 2026-11-10 this was kaikki's first-listed lemma auxiliary.)
 
 Everything else -- family, ablaut group, ablaut region, prefix marking -- comes from the
 pipeline, which verified each one against Wiktionary's full conjugation table.
@@ -94,18 +102,43 @@ A verb can verify perfectly and still not belong in the app. Four filters run be
     permanent data -- the exact failure docs/verb-classification.md's sequencing argument
     warns about. These are deferred to a pass that can look at them.
 
-DUAL AUXILIARIES
-----------------
-197 of these verbs take sein in one reading and haben in another. The <reading> model landed
-in step 5 and could express both, but choosing which sense pairs with which auxiliary is a
-per-verb judgment and this tranche does not make 197 of them. Each ships with kaikki's
-primary auxiliary and a single reading, per the interim policy in prompts/dual_auxiliary.md,
-and --check writes the worklist to verbdata/tranche2-dual-auxiliary.txt so the pass that
-handles them inherits it rather than rediscovering it.
+AUXILIARIES (rewritten 2026-11-10; the old rule is the reason Part 6 existed)
+-----------------------------------------------------------------------------
+Until 2026-11-10 this section said that dual-auxiliary verbs ship "with kaikki's primary
+auxiliary and a single reading", and it worked worse than that sounds. `ay` came from the
+lemma-level auxiliary of the FIRST kaikki record, the gloss from whichever sense normalized
+first, and nothing tied the two together. aufstehen shipped "get up" with haben. Parts 1 and 6
+of plans/fix-reference-defects.md then ruled 252 verbs against DWDS, and 128 of them changed.
+
+The rule now lives in verbdata/auxiliary_screen.py, whose header gives it in full with the four
+shipped verbs that motivated each part (zuziehen, durchlaufen, abschieben, bleichen). In short:
+
+  * `ay` comes from the same kaikki sense as `tn`, falling back to the lemma's auxiliary only
+    when the lemma names one and nothing in kaikki contradicts it.
+  * A verb is FLAGGED, and not imported, when kaikki gives it both auxiliaries, has a separable
+    and an inseparable verb under its spelling, has a strong and a weak verb under its
+    spelling, or has a sense whose own evidence contradicts the lemma's auxiliary.
+  * A flagged verb goes to verbdata/auxiliary-rulings.tsv as rows with the outcome `proposed`,
+    one per reading its senses suggest (a real run writes them; --check only lists the verb in
+    tranche2-deferred.txt). `python3 verbdata/audit_auxiliaries.py --check` fails while any
+    proposed row remains, so an unreviewed verb cannot slip through the gate Part 6 built.
+    Ruling it means rewriting the rows with real outcomes, sources, and notes, putting new
+    glosses through prompts/gloss_review.md, and adding the verb to Verbs.xml by hand.
+
+Measured on 2026-11-10 by screening all 3,572 shipping verbs as if they were incoming: it flags
+125 of the 128 verbs whose auxiliary or readings Parts 1 and 6 changed. The three it passes
+(entgehen, nachgehen, stattfinden) came from the original hand-entered corpus, not from this
+importer, and the screen gives each the auxiliary the ruling chose. Among the 3,320 verbs no
+ruling touched, it flags 109, 43 of them verbs the July pass had already given two readings.
+That is the review cost a tranche can expect: a few percent of its verbs.
+
+verbdata/tranche2-dual-auxiliary.txt was this section's worklist. It is history now and the
+importer no longer writes it; the rulings file is the current record.
 """
 
 import argparse
 import collections
+import datetime
 import json
 import pathlib
 import re
@@ -113,11 +146,13 @@ import statistics
 import sys
 import xml.etree.ElementTree as ET
 
+import auxiliary_screen
+
 REPO = pathlib.Path(__file__).resolve().parent.parent
 VERBS_XML = REPO / "Konjugieren" / "Models" / "Verbs.xml"
 CLASSIFICATION = REPO / "verbdata" / "classification.json"
 CANDIDATES = REPO / "verbdata" / "candidates.json"
-DUAL_WORKLIST = REPO / "verbdata" / "tranche2-dual-auxiliary.txt"
+RULINGS = REPO / "verbdata" / "auxiliary-rulings.tsv"
 DEFERRED_WORKLIST = REPO / "verbdata" / "tranche2-deferred.txt"
 
 GLOBAL_RATIO = 0.174
@@ -208,7 +243,14 @@ def base_of(marked: str) -> str:
 
 
 def normalize_translation(glosses: list[str]) -> str | None:
-    """Turn a kaikki gloss into something that reads like the corpus's own `tn` values.
+    """normalize_translation_from without the source gloss. Kept for --retranslate."""
+    return normalize_translation_from(glosses)[0]
+
+
+def normalize_translation_from(glosses: list[str]) -> tuple[str | None, str | None]:
+    """(translation, the kaikki gloss it came from). The source is what the auxiliary screen needs.
+
+    Turn a kaikki gloss into something that reads like the corpus's own `tn` values.
 
     Tries each gloss in order and returns the first that yields something usable, skipping
     the ones that point at another entry instead of translating.
@@ -224,8 +266,14 @@ def normalize_translation(glosses: list[str]) -> str | None:
     normalizes to a good short translation is a good short translation whatever its index --
     and it is what the roadmap meant by "recoverable by hand from kaikki's later glosses".
 
-    Returns None only when *no* gloss yields anything, which the caller treats as an
+    Returns (None, None) only when *no* gloss yields anything, which the caller treats as an
     exclusion rather than shipping an empty string.
+
+    The source gloss is returned because the auxiliary has to come from the same kaikki sense as
+    the translation (auxiliary_screen.screen). Falling through to a later gloss is exactly the
+    case where the two can part company: a verb whose first sense is a bare header and whose
+    second is intransitive motion gets its translation, and must get its auxiliary, from the
+    second.
 
     The one rule worth stating: this never truncates mid-token. The classifier's own
     `shortened` cuts at 60 characters and produced "...rumours, et", which is precisely the
@@ -236,8 +284,8 @@ def normalize_translation(glosses: list[str]) -> str | None:
             continue
         translation = normalize_one_gloss(gloss)
         if translation:
-            return translation
-    return None
+            return translation, gloss
+    return None, None
 
 
 def step8_normalize_translation(glosses: list[str]) -> str | None:
@@ -351,47 +399,51 @@ def measure_ratios(verbs_root) -> dict[str, float]:
     return ratios
 
 
-def write_worklists(dual_auxiliary: list[str], deferred: list[str]) -> None:
-    """Persist both deferral lists as tracked files.
+def write_worklists(deferred: list[str]) -> None:
+    """Persist the deferral list as a tracked file.
 
     classification.json is gitignored, so anything left only in it is invisible to the next
     session -- and regenerating it needs the 294 MB kaikki snapshot, which is also gitignored.
     A deferral that exists only as a count in a document is not a worklist.
 
-    These are SNAPSHOTS, and the two age differently. Re-running after the import recomputes
-    the deferred list against the new corpus, which is what step 8b wants -- it is the current
-    state. But the dual-auxiliary list cannot be recomputed at all once its verbs ship, because
-    the classifier then skips them: it is a cumulative record of every verb any tranche shipped
-    with one reading of two.
+    The deferred list is a SNAPSHOT, recomputed on every run against the current corpus, which
+    is what step 8b wanted. Since 2026-11-10 it also lists the verbs the auxiliary screen held
+    back, with the screen's reasons, so --check shows them without touching the rulings file.
 
-    So it is written as a UNION, never a replacement. It used to be replaced, guarded only
-    against an empty result -- which held exactly as long as re-runs produced nothing. Step 8b's
-    first re-run produced 17 rows, all of them verbs this pass newly unblocked, and overwrote
-    176 rows of history with them. Non-empty is not the same as complete, and only the union
-    keeps a partial re-run from being indistinguishable from a fresh one.
+    This function used to write a second file, verbdata/tranche2-dual-auxiliary.txt, as a
+    cumulative UNION of every verb shipped with one reading of two. It was a union because a
+    verb that has shipped is skipped by the classifier and can never be rediscovered, and step
+    8b's first re-run, when it was still a replacement, overwrote 176 rows of history with 17.
+    The auxiliary screen retired it: a dual-auxiliary verb is no longer shipped with one
+    reading, so there is nothing to add. The file stays as history, and
+    verbdata/auxiliary-rulings.tsv is the current record.
     """
-    existing = []
-    if DUAL_WORKLIST.exists():
-        existing = [line for line in DUAL_WORKLIST.read_text().splitlines()
-                    if line and not line.startswith("#")]
-    merged = sorted(set(existing) | set(dual_auxiliary))
-    DUAL_WORKLIST.write_text(
-        "# Imported with one reading of two; see prompts/dual_auxiliary.md.\n"
-        "# Historical and cumulative: rows are only ever added, because a verb that has shipped\n"
-        "# is skipped by the classifier and can never be rediscovered.\n"
-        "# verb\tkaikki primary auxiliary\ttranslation as shipped\n"
-        + "\n".join(merged) + "\n"
-    )
-    print(f"wrote {DUAL_WORKLIST.relative_to(REPO)} "
-          f"({len(merged)} rows, {len(merged) - len(existing)} new)")
-
     DEFERRED_WORKLIST.write_text(
         "# Verified by the pipeline but NOT imported, and why. Recomputed on every run.\n"
-        "# See docs/roadmap.md, \"The tranche-2 deferrals\".\n"
+        "# See docs/roadmap.md, \"The tranche-2 deferrals\". Rows reading \"needs an auxiliary\n"
+        "# ruling\" were held back by verbdata/auxiliary_screen.py; a real run writes them to\n"
+        "# verbdata/auxiliary-rulings.tsv as proposed rows.\n"
         "# verb\treason\n"
         + "\n".join(sorted(deferred)) + "\n"
     )
     print(f"wrote {DEFERRED_WORKLIST.relative_to(REPO)} ({len(deferred)} rows)")
+
+
+def append_proposed_rulings(lines: list[str]) -> None:
+    """Append `proposed` rows to verbdata/auxiliary-rulings.tsv, as text, never rewriting the file.
+
+    The file is hand-maintained and read with csv.QUOTE_NONE (see audit_auxiliaries.py), so it
+    is appended to exactly as Part 6's sessions edited it: whole lines at the end. The caller
+    has already skipped any verb that has rows, so a re-run cannot duplicate a proposal, and a
+    ruled row is never overwritten by a fresh proposal.
+    """
+    if not lines:
+        return
+    text = RULINGS.read_text()
+    if not text.endswith("\n"):
+        text += "\n"
+    RULINGS.write_text(text + "\n".join(lines) + "\n")
+    print(f"appended {len(lines)} proposed rows to {RULINGS.relative_to(REPO)}")
 
 
 def retranslate(verbs_text: str, glosses: dict[str, list[str]], check: bool) -> int:
@@ -441,16 +493,45 @@ def retranslate(verbs_text: str, glosses: dict[str, list[str]], check: bool) -> 
     return 0
 
 
+def print_screened(word, ships, translation, source_gloss, result, lemma, marked, encoding):
+    """--screen's report for one verb: what the importer would do with it, and why."""
+    print(f"{word}{'  (ships today; screened as if incoming)' if ships else ''}")
+    print(f"  translation  {translation!r}, from kaikki gloss {source_gloss!r}")
+    if not result.flagged:
+        print(f"  IMPORT with ay={result.auxiliary}  ({encoding})")
+        return
+    print("  HELD: not imported. Flagged:")
+    for reason in result.reasons:
+        print(f"    - {reason}")
+    print("  would append to verbdata/auxiliary-rulings.tsv:")
+    proposals = auxiliary_screen.propose(lemma, result, marked, normalize_one_gloss)
+    for line in auxiliary_screen.rulings_rows(word, result, proposals, encoding,
+                                              datetime.date.today().isoformat()):
+        cells = line.split("\t")
+        print(f"    {cells[0]} reading {cells[1]}: {cells[2]!r} ay={cells[3]}"
+              f"{' in=' + cells[4] if cells[4] else ''}  [{cells[5]}]")
+
+
 def main() -> int:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--check", action="store_true", help="report, write nothing")
+    parser.add_argument("--check", action="store_true",
+                        help="report; write only the deferred worklist")
     parser.add_argument("--sample", type=int, default=0, help="print N normalized rows")
     parser.add_argument(
         "--retranslate",
         action="store_true",
         help="rewrite already-shipped translations this importer generated, and exit",
     )
+    parser.add_argument(
+        "--screen",
+        metavar="VERB,VERB,...",
+        help="with --check: run these verbs through every decision, even if they ship or fall "
+             "outside this tranche, print the outcome, and write nothing",
+    )
     args = parser.parse_args()
+    if args.screen and not args.check:
+        parser.error("--screen only reports, so it needs --check")
+    screened = [w.strip() for w in args.screen.split(",") if w.strip()] if args.screen else []
 
     verbs_text = VERBS_XML.read_text()
     root = ET.fromstring(verbs_text)
@@ -469,27 +550,44 @@ def main() -> int:
     if args.retranslate:
         return retranslate(verbs_text, glosses, check=args.check)
 
+    # Verbs with rows in the rulings file are decided there, whether ruled or still proposed.
+    ruled = set()
+    with RULINGS.open() as handle:
+        next(handle)
+        ruled = {line.split("\t", 1)[0] for line in handle if line.strip()}
+
     rejected = collections.Counter()
     deferred = []
-    dual_auxiliary = []
     already_shipping = []
-    rows = []
+
+    # Pass 1: every filter that needs only classification.json and candidates.json. The
+    # survivors are collected rather than decided, so that the kaikki snapshot (294 MB) is read
+    # once, for exactly the verbs that reach the auxiliary screen.
+    pending = []
     for entry in classifications:
-        if entry["alreadyShipping"] or entry["status"] != "verified":
-            continue
+        word = entry["word"]
         marked = entry.get("markedInfinitiv") or ""
-        if "+" not in marked and "*" not in marked:
-            continue
-        word, base = entry["word"], base_of(marked)
-        if base not in shipping or base == word:
-            continue
-        # Do not trust `alreadyShipping` alone to prevent a double import. It is a field in
-        # classification.json, which is gitignored and regenerable, so running this script
-        # against a copy generated BEFORE the tranche landed would re-insert all of it.
-        # Verbs.xml is the only source of truth for what ships.
-        if word in shipping:
-            already_shipping.append(word)
-            continue
+        base = base_of(marked)
+        if screened:
+            # --screen bypasses SCOPE (already shipping, unprefixed, base not shipping) so a
+            # shipped verb can be put through the same decisions an incoming one would meet.
+            # It does not bypass the QUALITY filters below, which would apply to any import.
+            if word not in screened:
+                continue
+        else:
+            if entry["alreadyShipping"] or entry["status"] != "verified":
+                continue
+            if "+" not in marked and "*" not in marked:
+                continue
+            if base not in shipping or base == word:
+                continue
+            # Do not trust `alreadyShipping` alone to prevent a double import. It is a field in
+            # classification.json, which is gitignored and regenerable, so running this script
+            # against a copy generated BEFORE the tranche landed would re-insert all of it.
+            # Verbs.xml is the only source of truth for what ships.
+            if word in shipping:
+                already_shipping.append(word)
+                continue
 
         if entry.get("ablautGroupIsNew"):
             rejected["needs an ablaut group that does not ship"] += 1
@@ -507,7 +605,10 @@ def main() -> int:
             deferred.append(f"{word}\tSwiss ss-spelling of a verb written with ß")
             continue
         candidate_glosses = glosses.get(word, [])
-        translation = HAND_TRANSLATIONS.get(word) or normalize_translation(candidate_glosses)
+        if word in HAND_TRANSLATIONS:
+            translation, source_gloss = HAND_TRANSLATIONS[word], None
+        else:
+            translation, source_gloss = normalize_translation_from(candidate_glosses)
         if not translation:
             # Both reasons are still worth telling apart in the worklist. A verb every one of
             # whose glosses points elsewhere ("alternative form of benutzen") is a duplicate of
@@ -520,23 +621,65 @@ def main() -> int:
             rejected[reason] += 1
             deferred.append(f"{word}\t{reason}")
             continue
+        pending.append((entry, word, marked, base, translation, source_gloss))
+
+    # Pass 2: the auxiliary screen. See "AUXILIARIES" in the header and the header of
+    # verbdata/auxiliary_screen.py. A flagged verb is held back and proposed for a ruling.
+    lemmas = auxiliary_screen.load(word for _, word, *_ in pending)
+    proposed_lines = []
+    flagged = []
+    differs_from_classifier = []
+    rows = []
+    for entry, word, marked, base, translation, source_gloss in pending:
+        result = auxiliary_screen.screen(lemmas.get(word), source_gloss)
+        encoding = f"fa={entry.get('family')} ag={entry.get('ablautGroup') or '-'} in={marked}"
+        if screened:
+            print_screened(word, word in shipping, translation, source_gloss, result,
+                           lemmas.get(word), marked, encoding)
+            continue
+        if word in ruled:
+            rejected["has rows in auxiliary-rulings.tsv; add it by hand per its ruling"] += 1
+            deferred.append(f"{word}\thas rows in auxiliary-rulings.tsv; add it by hand per its ruling")
+            continue
+        if result.flagged:
+            reason = "needs an auxiliary ruling: " + "; ".join(result.reasons)
+            rejected["needs an auxiliary ruling (proposed in auxiliary-rulings.tsv)"] += 1
+            deferred.append(f"{word}\t{reason}")
+            flagged.append(word)
+            proposals = auxiliary_screen.propose(lemmas[word], result, marked, normalize_one_gloss)
+            proposed_lines.extend(auxiliary_screen.rulings_rows(
+                word, result, proposals, encoding, datetime.date.today().isoformat()))
+            continue
+        # The classifier's `auxiliary` is the first record's lemma auxiliary, the old source of
+        # `ay`. Where the screen passes a verb they should agree, since an unflagged lemma names
+        # one auxiliary. A disagreement means a later record named a different one, which the
+        # screen would have flagged, so a nonzero count here is a bug in one of the two.
+        if result.auxiliary != (entry.get("auxiliary") or "h"):
+            differs_from_classifier.append(word)
 
         head = head_of(marked)
         ratio = ratios.get(head, global_ratio)
         estimate = max(1, round(hits[base] * ratio))
-        if entry.get("dualAuxiliary"):
-            dual_auxiliary.append(f"{word}\t{entry.get('auxiliary')}\t{translation}")
 
         rows.append({
             "in": marked,
             "tn": translation.replace("&", "&amp;").replace('"', "&quot;").replace("<", "&lt;"),
             "fa": entry["family"],
             "ag": entry.get("ablautGroup"),
-            "ay": entry.get("auxiliary") if entry.get("auxiliary") == "s" else None,
+            "ay": result.auxiliary if result.auxiliary == "s" else None,
             "ic": icons[base],
             "hi": estimate,
             "base": base,
         })
+
+    if screened:
+        missing = sorted(set(screened) - {word for _, word, *_ in pending})
+        for word in missing:
+            reason = next((d.split("\t", 1)[1] for d in deferred if d.startswith(word + "\t")),
+                          "not in classification.json")
+            print(f"{word}: stopped before the auxiliary screen ({reason})")
+        print("--screen writes nothing.")
+        return 0
 
     # Clamp rather than rescale; see "THE RATIO SETS THE ORDER" above. Rescaling the whole
     # tranche onto the band was tried first and is worse: spreading 2,300 verbs evenly across
@@ -567,7 +710,10 @@ def main() -> int:
     print(f"{len(rows)} verbs to insert")
     print(f"  by family: {dict(collections.Counter(row['fa'] for row in rows))}")
     print(f"  taking sein: {sum(1 for row in rows if row['ay'] == 's')}")
-    print(f"  dual-auxiliary, shipping one reading: {len(dual_auxiliary)}")
+    print(f"  held for an auxiliary ruling: {len(flagged)} ({', '.join(flagged) or 'none'})")
+    if differs_from_classifier:
+        print(f"  WARNING: screen and classifier disagree on the auxiliary of "
+              f"{', '.join(differs_from_classifier)}; see the comment in main()")
     for reason, count in rejected.most_common():
         print(f"  rejected {count:5}  {reason}")
     if already_shipping:
@@ -583,7 +729,10 @@ def main() -> int:
                   f'tn="{row["tn"]}" fa={row["fa"]} ag={row["ag"]} ay={row["ay"]}  (base {row["base"]})')
 
     if args.check:
-        write_worklists(dual_auxiliary, deferred)
+        write_worklists(deferred)
+        if proposed_lines:
+            print(f"a real run would append {len(proposed_lines)} proposed rows to "
+                  f"{RULINGS.relative_to(REPO)}")
         return 0
 
     keys = [sort_key(v.get("in")) for v in root]
@@ -618,7 +767,8 @@ def main() -> int:
     for at, _, element in sorted(insertions, key=lambda triple: (triple[0], triple[1]), reverse=True):
         lines.insert(at, element)
     VERBS_XML.write_text("".join(lines))
-    write_worklists(dual_auxiliary, deferred)
+    write_worklists(deferred)
+    append_proposed_rulings(proposed_lines)
     print(f"wrote {VERBS_XML.relative_to(REPO)}")
     return 0
 

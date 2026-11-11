@@ -1,3 +1,6 @@
+# FROZEN 2026-11-10. No longer written: verbdata/import_tranche2.py now holds dual-auxiliary
+# verbs back and proposes them in verbdata/auxiliary-rulings.tsv, which is the current record.
+# Parts 1 and 6 of plans/fix-reference-defects.md ruled every row below that still ships.
 # Imported with one reading of two; see prompts/dual_auxiliary.md.
 # Historical and cumulative: rows are only ever added, because a verb that has shipped
 # is skipped by the classifier and can never be rediscovered.

@@ -325,6 +325,10 @@ more times.
 is the single source; a copy in this document would drift from it, which is the failure this
 repo has already paid for twice.
 
+**For imports, that policy was superseded on 2026-11-10** by `verbdata/auxiliary_screen.py`,
+which an importer calls for every verb: a dual-auxiliary verb is held back and proposed in
+`verbdata/auxiliary-rulings.tsv` instead of shipping one reading. Its header is the rule.
+
 The one point worth repeating, because the build enforces it rather than the prose: the DTD
 declares `ay (h|s)`, and a combined value such as `"hs"` will fail validation. That rejection
 is intentional, not an obstacle to route around.

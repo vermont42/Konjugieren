@@ -298,9 +298,10 @@ verbdata/                      # Verb-corpus-expansion data (see docs/verb-sourc
 ├── summarize_classification.py # Classify-and-verify stage C: classification.json → a Markdown summary grouped by cause
 ├── add_readings.py            # One-shot migration that gave every verb a <reading> child (roadmap step 5)
 ├── import_tranche1.py         # One-shot import of the 78 missing strong bases (roadmap step 7); the decision table is the artifact
-├── import_tranche2.py         # Rule-driven import of 2,303 prefixed derivatives (roadmap step 8); hi derived from each base
-├── tranche2-dual-auxiliary.txt # 176 imported verbs shipping one reading of two; worklist for the dual-auxiliary pass
-├── audit_auxiliaries.py       # Compares every shipped reading's auxiliary with kaikki, sense by sense, and with auxiliary-rulings.tsv. --unruled prints the worklist; --check fails on any reading that disagrees with its ruling and on any listed verb still unruled
+├── import_tranche2.py         # Rule-driven import of 2,303 prefixed derivatives (roadmap step 8); hi derived from each base. --check --screen V,V runs named verbs through every decision and writes nothing
+├── auxiliary_screen.py        # Shared by importers: ay from the same kaikki sense as tn; holds back dual-auxiliary, separability-homograph, family-split, and sense-contradicted verbs as `proposed` rows in auxiliary-rulings.tsv
+├── tranche2-dual-auxiliary.txt # Frozen 2026-11-10: the verbs tranche 2 shipped with one reading of two. History; auxiliary-rulings.tsv is the current record
+├── audit_auxiliaries.py       # Compares every shipped reading's auxiliary with kaikki, sense by sense, and with auxiliary-rulings.tsv. --unruled prints the worklist; --check fails on any reading that disagrees with its ruling, on any listed verb still unruled, and on any `proposed` row an importer wrote
 ├── auxiliary-rulings.tsv      # One row per reading ruled against DWDS / German Wiktionary by plans/fix-reference-defects.md (Parts 1 and 6): gloss, auxiliary, outcome, source, reasoning. Pinned by ConjugatorTests.ruledAuxiliary
 ├── dwds-frequencies.json      # Corpus-wide DWDS frequency snapshot, re-fetched 2026-08-26 under BBAW permission (gitignored, regenerable)
 ├── dwds/                      # Inputs and logs for the corpus-wide fetch: lemma list with probes, quarantine files, run logs (gitignored)

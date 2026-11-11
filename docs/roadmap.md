@@ -73,7 +73,16 @@ them. `Etymologies.json` now holds 3,572 keys per language and `ExampleSentences
 `scripts/check_docs.py`'s completeness check, phrased as a self-clearing conditional, now *actively
 verifies* the etymology coverage on every run rather than merely policing a stale claim.
 
-**What step 10 did not finish is a register gap, not a bug.** 1,134 verbs ship an etymology but no
+**Closed 2026-07-25: every verb has an example sentence.** The paragraph below was true when step
+10 finished and stopped being true two days later. Corpus expansion was scoped and rejected in
+favour of Claude-authored sentences (journal, 2026-07-24), 1,097 were authored, gated against
+`forms.json`, and adversarially reviewed, and the `integrate` merge took `ExampleSentences.json`
+to 3,572 entries per language, one per verb (journal, "The integrate merge: every verb in the app
+now has an example", 2026-07-25). `verbdata/authored/provenance.json` records which verbs they
+were. The paragraph is kept as the record of the gap. It was found still standing on
+2026-11-11, when a session repeated its 1,134 as current.
+
+**What step 10 did not finish was a register gap, not a bug.** 1,134 verbs shipped an etymology but no
 example sentence, listed in `verbdata/no-corpus-example.txt` (995 with no corpus candidate at all,
 141 whose candidates were all unusable — 34 of those only for the 55-word ceiling). The mined texts
 are literary and historical; the un-attested verbs are administrative, commercial, and technical

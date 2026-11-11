@@ -9264,3 +9264,20 @@ aufstehen expected *habe aufgestanden*. And its proposed error class "the wrong 
 diagnose only as well as the app's own auxiliaries, which the rulings file now underwrites for
 every verb the audit lists. The count of multi-reading verbs beside its hängen example went from
 44 to 120, because the quiz now asks about many more second meanings.
+
+## Every verb has an example sentence, and the roadmap had not said so (2026-11-11)
+
+Closing the update to the quiz and browse plans, I told Josh that `docs/pedagogy.md` was wrong to
+say every one of the 3,572 verbs has an example sentence, "about 1,134 have none". I had taken the
+1,134 from the roadmap's step-10 paragraph without checking it. When Josh asked for the fix, the
+first count showed `ExampleSentences.json` holding 3,572 entries per language, one per verb. The
+pedagogy report was right, and the roadmap was what had gone stale. The gap closed on 2026-07-25,
+when 1,097 authored sentences were merged after corpus expansion had been rejected, and nobody
+went back to the roadmap paragraph. `verbdata/no-corpus-example.txt` still called itself the input
+to that rejected re-mine.
+
+Both now say the gap is closed, with the dates, and keep their history. `pedagogy.md` is
+unchanged. This is the second stale roadmap claim this session believed without a check. The
+first was schaffen's supposedly missing ablaut group. Both cost a wrong statement to Josh before a
+one-line count settled them. CLAUDE.md's warning about caches applies here: a wrong entry gets
+believed.

@@ -9235,3 +9235,11 @@ etymology already called the verb "to be closer, most often in the figurative se
 closeness" and needed nothing.
 
 What a user would see changed: näherstehen reads "be closer to (someone)".
+
+## Tranche 3 paused (2026-11-11)
+
+Josh decided not to import more verbs for now, and said he will eventually. Roadmap step 9 is
+marked paused with the date, and `verb-sources.md` item 7 says the same, so a later session
+does not read "awaiting Josh's cutoff" as an invitation to raise it. Nothing was imported. The
+importer, `tranche3-ranked.tsv`, `tranche3-deferred.txt`, and the 2026-11-10 entries above are
+what the work resumes from. The DWDS snapshots are gitignored and will need re-fetching.

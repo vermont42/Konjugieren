@@ -20,7 +20,7 @@ completes.
 | 7 | Import tranche 1: strong bases | [`verb-sources.md`](verb-sources.md) next-steps item 5 | ✅ 2026-07-19 | steps 4–6 ✅; `hi` policy decided |
 | 8 | Import tranche 2: prefixed derivatives | [`verb-sources.md`](verb-sources.md) next-steps item 6 | ✅ 2026-07-19 | step 5 ✅; prefix inventory widened |
 | 8b | Clear the tranche-2 deferrals | this file, § "The tranche-2 deferrals" | ✅ 2026-07-19 | step 8 ✅ |
-| 9 | Import tranche 3: weak stems by frequency | [`verb-sources.md`](verb-sources.md) next-steps item 7 | ⏳ importer written and dry-run 2026-11-10; awaiting Josh's cutoff | ✅ the auxiliary screen (Part 6 of [`../plans/fix-reference-defects.md`](../plans/fix-reference-defects.md)); a cutoff, chosen from `verbdata/tranche3-ranked.tsv` |
+| 9 | Import tranche 3: weak stems by frequency | [`verb-sources.md`](verb-sources.md) next-steps item 7 | ⏸ paused by Josh 2026-11-11; importer written and dry-run 2026-11-10 | ✅ the auxiliary screen (Part 6 of [`../plans/fix-reference-defects.md`](../plans/fix-reference-defects.md)); a cutoff, chosen from `verbdata/tranche3-ranked.tsv` |
 | 10 | Etymologies **and example sentences**, in one pipeline | [`../prompts/uses_etymologies.md`](../prompts/uses_etymologies.md) | ✅ 2026-07-23 | phase 0 ✅ |
 | 11 | The docs sweep | [`verb-sources.md`](verb-sources.md) next-steps item 9 | ✅ 2026-07-24 | step 10 ✅ |
 
@@ -51,7 +51,13 @@ counts a lemma string across parts of speech, and *sondern* would have ranked 22
 **hidden compounds** (*zusammensuchen*, with kaikki's corrupt *gezusammensucht*) arrived as bare
 stems.
 
-**What step 9 still needs.** A cutoff, which is Josh's: the roadmap leaves it to taste, and the
+**Paused by Josh on 2026-11-11.** He does not want to import more verbs at this time, and
+will eventually. Do not propose a cutoff, run the import, or re-fetch frequencies unless he asks.
+The work is preserved for that day: the importer, the ranked and deferred lists, and the
+journal entries of 2026-11-10. The DWDS snapshots in `verbdata/dwds/` are gitignored, so expect
+to re-fetch them (about 50 minutes) when the work resumes.
+
+**What step 9 still needs when it resumes.** A cutoff, which is Josh's: the roadmap leaves it to taste, and the
 ranked list is what to read. Rows past 600 have not been read by eye for homographs. After a real
 import: the doc counts (`check_docs.py` names them), the classifier run, and the step-10 pipeline
 for etymologies and sentences, since new verbs have neither. The 2,230 prefixed verbs on bases

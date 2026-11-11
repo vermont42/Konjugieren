@@ -7918,7 +7918,8 @@
     <reading tn="hand over" fa="s" ag="geben" />
   </verb>
   <verb in="über*g^eh^en" hi="509949" ic="jumprope">
-    <reading tn="skip, ignore" fa="s" ag="gehen" ay="s" />
+    <reading tn="skip, ignore" fa="s" ag="gehen" />
+    <reading in="über+g^eh^en" tn="go over (to), turn into" fa="s" ag="gehen" ay="s" />
   </verb>
   <verb in="über+gr^eif^en" hi="75497" ic="handball">
     <reading tn="spread" fa="s" ag="greifen" />

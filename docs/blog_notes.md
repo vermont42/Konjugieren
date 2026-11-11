@@ -9004,3 +9004,36 @@ the roadmap now says it must import the screen rather than copy it. Nothing was 
 
 What a user would see changed: nothing yet. What changes is that the next 6,000 verbs cannot ship
 the error that the last 252 rulings corrected.
+
+## Defect plan, Part 6, step 6: übergehen, found unruled at the Closing (2026-11-10)
+
+Part 6 was declared finished when the audit's worklist emptied, and that was a measure of the
+wrong thing. Two of the plan's steps were never on the worklist. Step 6 asked for übergehen to be
+ruled by hand, and step 6a for schaffen, because the audit cannot see either one. kaikki gives
+übergehen sein in both of its records, which is wrong for the inseparable verb, and schaffen's
+split is by family, not by auxiliary. Neither had a row in the rulings file, and both still shipped
+one reading. The new auxiliary screen found them while I was measuring it against the shipped
+corpus. übergehen came up as a separability homograph and schaffen as a family split, both among
+the verbs no ruling had touched. A plan's checklist outran its own gate here, and it took a second
+detector to notice.
+
+Josh chose to rule übergehen now and defer schaffen. **übergehen** is the übersetzen shape. DWDS
+and German Wiktionary agree: separable *ÜBERgehen* (*ist übergegangen*) means to go over to
+something or turn into it (*das Gewitter ging in Regen über*), and inseparable *übergéhen* (*hat
+übergangen*) means to disregard or skip (*er hat meinen Einwand übergangen*). The app shipped the
+inseparable verb's gloss with the separable verb's auxiliary, so its page said *er ist übergangen*.
+Reading 0 keeps "skip, ignore" and flips to haben. Reading 1 is `über+g^eh^en`, "go over (to),
+turn into", with sein, and the Kafka sentence (*das Verfahren geht allmählich ins Urteil über*)
+illustrates it, as Part 4 had foreseen. The etymology already described both stress verbs and
+needed nothing. The Sonnet review found nothing and no collision with the 69 other *-gehen*
+verbs. Pinned tests cover both participles, the separable Imperativ (*geht über*), and both
+Perfekts.
+
+**schaffen is deferred**, because its strong "create" reading (*schuf, geschaffen*) needs an
+ablaut group that does not ship. That brings an `AblautGroupInfo` entry, a Families-tab
+description in two languages, and new group counts, which is more than a closing step should
+carry. It is now in the roadmap's "Known gaps".
+
+What a user would see changed: übergehen builds "skip" with haben and offers "go over, turn into"
+with sein. 119 verbs now have more than one reading, six of them three. The rulings file has 334
+readings of 253 verbs.

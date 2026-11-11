@@ -35,6 +35,7 @@ numbers below were true when the plan was written and are not now. The journal e
 | 6 (step 5, stehen and liegen) | `623c518` | 39 verbs: erstehen and unterliegen gain a sein reading, umeinanderstehen re-glossed and deferred, 36 keeps, most of them regional variation. erstehen's etymology corrected. Review found nothing. |
 | 6 (small families 1) | `48ca069` | 31 verbs: 6 gain a second reading (überspringen by separability), 7 flip, among them abschieben to haben and ausscheiden's first reading to sein, 18 keeps, two of them deferred. Review found nothing. |
 | 6 (stop the cause) | see journal | `verbdata/auxiliary_screen.py`, called by `import_tranche2.py`: `ay` from the gloss's own kaikki sense, and dual-auxiliary, separability-homograph, family-split, and sense-contradicted verbs held back as `proposed` rows that fail `--check`. Flags 125 of the 128 verbs Parts 1 and 6 changed. Roadmap step 9 released. |
+| 6 (step 6, übergehen) | see journal | Found unruled at the Closing: steps 6 and 6a had never run, and the empty worklist hid it, because neither verb is on the audit's list. übergehen ruled with Josh: inseparable "skip, ignore" flipped to haben, separable `über+g^eh^en` "go over (to), turn into" with sein added. schaffen (6a) deferred by Josh, because its strong "create" reading needs a new ablaut group. Review found nothing. |
 | 6 (small families 2) | see journal | The last 50 verbs: 18 gain a second reading (durchdringen inseparable first), 6 flip, 4 re-glosses, 22 keeps, two of them deferred. durchdringen's etymology boilerplate removed. One review finding, rejected by Fable. |
 
 **Where Part 6 stands.**
@@ -758,12 +759,18 @@ because the gloss matching in the audit script is approximate.
    should also carry the regional marking of their bases is a separate question and not part of
    this plan. A few take sein everywhere because they name a change and not a state: aufstehen,
    auferstehen, and erstehen in the sense "arise".
-6. Rule on übergehen by hand. See Part 4.
+6. Rule on übergehen by hand. See Part 4. *Done 2026-11-10, at the Closing, where it was found
+   never to have run:* two readings, inseparable "skip, ignore" with haben and separable "go
+   over (to), turn into" with sein.
 6a. **Added by Part 4, 2026-11-10: rule on schaffen too.** It is not an auxiliary case, so the
    audit does not list it, but it is the same kind of work. "create" is strong (schuf,
    geschaffen) and "manage, accomplish" is weak (schaffte, geschafft), and the app ships only the
    weak reading. It wants a second reading of the hängen shape, different family included. It is
    one of the five verbs at odds with Wiktionary, so the count should fall when it lands.
+   *Deferred by Josh on 2026-11-10*, when the Closing found it had never run. The strong reading
+   needs an ablaut group that does not ship (the roadmap's "Three ablaut groups are wrong"), and
+   with it an `AblautGroupInfo` entry, descriptions in both languages, and new group counts. It
+   is recorded in the roadmap's "Known gaps".
 7. Extend the parameterized test of Part 1 with every reading ruled here.
 
 **Stop the cause.** Tranche 3 of the import is unblocked and would repeat the error. Change the

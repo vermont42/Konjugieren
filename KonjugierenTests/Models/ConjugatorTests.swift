@@ -1150,6 +1150,15 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "überspringen", conjugationgroup: .imperativ(.secondPlural), expected: "springt über", readingIndex: 1)
     expectConjugation(infinitiv: "überspringen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "IST übergesprUngen", readingIndex: 1)
 
+    // übergehen (plan step 6): inseparable with haben (DWDS II, hat übergangen) beside separable
+    // über+gehen with sein (I, ist übergegangen). kaikki gives sein to both, which is why the
+    // audit never listed it.
+    expectConjugation(infinitiv: "übergehen", conjugationgroup: .perfektpartizip, expected: "übergANGen")
+    expectConjugation(infinitiv: "übergehen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt übergANGen")
+    expectConjugation(infinitiv: "übergehen", conjugationgroup: .perfektpartizip, expected: "übergegANGen", readingIndex: 1)
+    expectConjugation(infinitiv: "übergehen", conjugationgroup: .imperativ(.secondPlural), expected: "geht über", readingIndex: 1)
+    expectConjugation(infinitiv: "übergehen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "IST übergegANGen", readingIndex: 1)
+
     // durchdringen, durchlaufen's arrangement: inseparable first (DWDS 2durchdringen, hat
     // durchdrungen), then separable durch+dringen with sein (1durchdringen, ist durchgedrungen).
     expectConjugation(infinitiv: "durchdringen", conjugationgroup: .perfektpartizip, expected: "durchdrUngen")
@@ -1587,6 +1596,8 @@ struct ConjugatorTests {
     ("zerkochen", 1, .haben),
     ("festbacken", 0, .haben),
     ("mitfolgen", 0, .haben),
+    ("übergehen", 0, .haben),
+    ("übergehen", 1, .sein),
   ]
 
   @Test("Each ruled reading carries its dictionary auxiliary", arguments: auxiliaryRulings)

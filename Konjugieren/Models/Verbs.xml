@@ -225,6 +225,7 @@
   </verb>
   <verb in="ab+l^au^fen" hi="754267" ic="walk">
     <reading tn="expire, proceed" fa="s" ag="laufen" ay="s" />
+    <reading tn="wear down (shoes)" fa="s" ag="laufen" />
   </verb>
   <verb in="ab+leben" hi="2300" ic="flexibility">
     <reading tn="decease, die, pass away, leave this life" fa="w" />
@@ -1304,7 +1305,7 @@
     <reading tn="load onto, load up, charge" fa="s" ag="fahren" />
   </verb>
   <verb in="auf+l^au^fen" hi="342311" ic="run">
-    <reading tn="collide with" fa="s" ag="laufen" />
+    <reading tn="pile up, accumulate" fa="s" ag="laufen" ay="s" />
   </verb>
   <verb in="auf+legen" hi="489791" ic="flexibility">
     <reading tn="lay on" fa="w" />
@@ -3222,8 +3223,10 @@
   <verb in="durch+kr^ie^chen" hi="1635" ic="climbing">
     <reading tn="crawl through" fa="s" ag="bieten" ay="s" />
   </verb>
-  <verb in="durch+l^au^fen" hi="436810" ic="run">
-    <reading tn="go through, run through" fa="s" ag="laufen" />
+  <verb in="durch*l^au^fen" hi="436810" ic="run">
+    <reading tn="go through, traverse" fa="s" ag="laufen" />
+    <reading in="durch+l^au^fen" tn="run through, trickle through" fa="s" ag="laufen" ay="s" />
+    <reading in="durch+l^au^fen" tn="wear through (shoes)" fa="s" ag="laufen" />
   </verb>
   <verb in="durch+leiten" hi="5204" ic="walk.arrival">
     <reading tn="send through, pass through, route through" fa="w" />
@@ -3500,7 +3503,8 @@
     <reading tn="let in, get involved" fa="s" ag="lassen" />
   </verb>
   <verb in="ein+l^au^fen" hi="70293" ic="run">
-    <reading tn="run in" fa="s" ag="laufen" ay="s" />
+    <reading tn="come in, arrive" fa="s" ag="laufen" ay="s" />
+    <reading tn="break in (shoes)" fa="s" ag="laufen" />
   </verb>
   <verb in="ein+leben" hi="62886" ic="flexibility">
     <reading tn="settle in" fa="w" />
@@ -8204,7 +8208,9 @@
     <reading tn="surround, besiege, throng around" fa="w" />
   </verb>
   <verb in="um+l^au^fen" hi="17953" ic="run">
-    <reading tn="run around something" fa="s" ag="laufen" />
+    <reading tn="circulate, go around" fa="s" ag="laufen" ay="s" />
+    <reading in="um*l^au^fen" tn="circle, run around (something)" fa="s" ag="laufen" />
+    <reading tn="knock over (by running)" fa="s" ag="laufen" />
   </verb>
   <verb in="um+lauten" hi="975" ic="flexibility">
     <reading tn="umlaut" fa="w" />
@@ -8375,6 +8381,7 @@
   </verb>
   <verb in="unter*l^au^fen" hi="230400" ic="run">
     <reading tn="circumvent, undermine" fa="s" ag="laufen" />
+    <reading tn="slip in, occur (of a mistake)" fa="s" ag="laufen" ay="s" />
   </verb>
   <verb in="unter*legen" hi="212558" ic="flexibility">
     <reading tn="underlay, put under" fa="w" />
@@ -10312,7 +10319,7 @@
     <reading tn="allow, admit" fa="s" ag="lassen" />
   </verb>
   <verb in="zu+l^au^fen" hi="66597" ic="run">
-    <reading tn="walk to" fa="s" ag="laufen" />
+    <reading tn="run toward, come running" fa="s" ag="laufen" ay="s" />
   </verb>
   <verb in="zu+legen" hi="729526" ic="handball">
     <reading tn="add, gain" fa="w" />

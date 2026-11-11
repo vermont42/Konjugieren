@@ -8,7 +8,7 @@ below.
 
 ## Status (2026-11-10, during the third session)
 
-**Parts 0 to 5 and 7 are done. Part 6 is under way: step 1 and the fahren, ziehen, treten, brechen, and treiben derivatives are done.** Read this section before the rest: several
+**Parts 0 to 5 and 7 are done. Part 6 is under way: step 1 and the fahren, ziehen, treten, brechen, treiben, and laufen derivatives are done.** Read this section before the rest: several
 numbers below were true when the plan was written and are not now. The journal entries in
 `docs/blog_notes.md` headed "Defect plan, Part N" are the detailed record.
 
@@ -28,15 +28,16 @@ numbers below were true when the plan was written and are not now. The journal e
 | 6 (ziehen) | `adaf738` | 14 listed ziehen derivatives plus zuziehen by hand: durchziehen the first verb with three readings, 7 more with two, 1 flip, 2 re-glosses, 4 keeps. zuziehen's and durchziehen's etymologies rewritten. |
 | 6 (treten) | `18b6880` | 5 listed treten derivatives: 3 two readings (übertreten split by separability), 1 flip, 1 re-gloss. No question for Josh; review found nothing. |
 | 6 (brechen) | `f4f6fef` | 12 listed brechen derivatives: durchbrechen three readings, 4 more with two (aufbrechen now leads with "set off"), 4 flips, umbrechen re-glossed and kept, 2 keeps. Two etymologies corrected. |
-| 6 (treiben) | see journal | 9 listed treiben derivatives, the first batch run under the away-mode prompt: 3 two readings (a "drift" sense with sein beside "drive"), 1 re-gloss, 4 keeps, zertreiben deferred for want of any source. Two etymologies corrected. Review found nothing. |
+| 6 (treiben) | `fa78a79` | 9 listed treiben derivatives, the first batch run under the away-mode prompt: 3 two readings (a "drift" sense with sein beside "drive"), 1 re-gloss, 4 keeps, zertreiben deferred for want of any source. Two etymologies corrected. Review found nothing. |
+| 6 (laufen) | see journal | 8 listed laufen derivatives: durchlaufen and umlaufen three readings each, 3 more with two (unterlaufen's "a mistake slips in" with sein), 2 flips to sein with re-gloss, 1 keep. durchlaufen's verb-level `in` made inseparable. umlaufen's etymology rewritten. One review finding, adjudicated and not applied. |
 
 **Where Part 6 stands.**
 
 - **Take the worklist from the script**, not from the counts below: `python3 verbdata/audit_auxiliaries.py
-  --unruled`. It lists 155 verbs after treiben, and `--check` prints the same number while failing.
-  `--check` must report `0 other problems` after every batch. The next base verb is laufen.
-- **The rulings file has 140 readings of 97 verbs**, and 85 verbs have more than one reading,
-  durchziehen and durchbrechen three. Suite: 224 tests.
+  --unruled`. It lists 147 verbs after laufen, and `--check` prints the same number while failing.
+  `--check` must report `0 other problems` after every batch. The next base verb is schießen.
+- **The rulings file has 155 readings of 105 verbs**, and 90 verbs have more than one reading,
+  durchziehen, durchbrechen, durchlaufen, and umlaufen three. Suite: 224 tests.
 - **Josh's rulings of 2026-11-10, in the fahren batch**, which later batches should follow:
   - **A domain label qualified by *häufig* does not fail criterion 2** (hochfahren, "boot up",
     *häufig Technik*). This narrows the anspringen precedent but does not overturn it: a plain
@@ -82,6 +83,24 @@ clears an entry by confirming or reversing it.
 - **eintreiben** (treiben): re-glossed "drive in, collect (debts)", beyond the auxiliary
   question, because collecting debts is the commonest modern sense and the etymology names it.
   Alternative: keep "drive in", which the Luther sentence illustrates.
+- **durchlaufen** (laufen): three readings under the durchziehen-shape default, with the
+  inseparable "go through, traverse" first and the verb's own `in` changed to `durch*l^au^fen`,
+  because it is the commonest sense and the Kafka sentence (*K. durchlief beide Seitenschiffe*)
+  uses it. The verb had shipped separable with the inseparable sense's gloss. Alternative: keep
+  the separable verb first, as durchziehen and durchbrechen do.
+- **umlaufen** (laufen): three readings under the same default: separable "circulate, go
+  around" (sein), inseparable "circle, run around (something)" (haben), and separable "knock
+  over (by running)" (haben). Alternative: two readings, dropping "knock over", which DWDS lists
+  first and unlabelled but which is rare on a verb ranked 2,655.
+- **ablaufen** (laufen): added "wear down (shoes)" with haben, DWDS sense 8, unlabelled.
+  Alternative: keep single, as a minor sense beside "expire". Separately, the review proposed
+  replacing the shipped "expire, proceed" because the comma joins two senses, and Fable amended it
+  to "go, proceed (of events)" to keep the Grimm sentence covered. Not applied, because the
+  amendment drops expiry, the commonest sense. Alternative: apply it, or replace the sentence with
+  an expiry one and accept "expire, run out".
+- **einlaufen** (laufen): re-glossed reading 0 from "run in" to "come in, arrive", because
+  British "run in" is the haben sense of breaking in an engine. Shrinking in the wash (sein) is
+  not in either gloss. Alternative: "come in, shrink".
 
 **State to start Part 6 from (end of the second session; partly superseded above).**
 
@@ -824,8 +843,8 @@ for verb, entry in sentences.items():
 
 ## Prompt to Hand a Session
 
-Part 6 is under way: step 1 and the fahren, ziehen, treten, brechen, and treiben derivatives are
-done. Run one Part 6 session at a time, since each edits `Verbs.xml`, the rulings file, and the test table.
+Part 6 is under way: step 1 and the fahren, ziehen, treten, brechen, treiben, and laufen
+derivatives are done. Run one Part 6 session at a time, since each edits `Verbs.xml`, the rulings file, and the test table.
 
 This prompt lets the session work while Josh is away (written 2026-11-10). It replaces the earlier
 one, which asked the session to stop before a third reading, before extending the criterion-2

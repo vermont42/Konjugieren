@@ -1108,6 +1108,23 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "durchbrechen", conjugationgroup: .perfektpartizip, expected: "durchbrOchen", readingIndex: 2)
     expectConjugation(infinitiv: "durchbrechen", conjugationgroup: .imperativ(.secondPlural), expected: "durchbrecht", readingIndex: 2)
     expectConjugation(infinitiv: "durchbrechen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt durchbrOchen", readingIndex: 2)
+
+    // The same shape with the inseparable verb first, because "eine Ausbildung durchlaufen" is the
+    // commonest sense (DWDS II: hat durchlaufen). The separable readings carry their own in.
+    expectConjugation(infinitiv: "durchlaufen", conjugationgroup: .perfektpartizip, expected: "durchlaufen")
+    expectConjugation(infinitiv: "durchlaufen", conjugationgroup: .imperativ(.secondPlural), expected: "durchlauft")
+    expectConjugation(infinitiv: "durchlaufen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt durchlaufen")
+    expectConjugation(infinitiv: "durchlaufen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "IST durchgelaufen", readingIndex: 1)
+    expectConjugation(infinitiv: "durchlaufen", conjugationgroup: .imperativ(.secondPlural), expected: "lauft durch", readingIndex: 1)
+    expectConjugation(infinitiv: "durchlaufen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt durchgelaufen", readingIndex: 2)
+
+    // umlaufen: separable with sein (DWDS I 5, kursieren) and haben (I 1, umrennen) beside
+    // inseparable um*laufen (DWDS II: hat umlaufen).
+    expectConjugation(infinitiv: "umlaufen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "IST umgelaufen")
+    expectConjugation(infinitiv: "umlaufen", conjugationgroup: .perfektpartizip, expected: "umlaufen", readingIndex: 1)
+    expectConjugation(infinitiv: "umlaufen", conjugationgroup: .imperativ(.secondPlural), expected: "umlauft", readingIndex: 1)
+    expectConjugation(infinitiv: "umlaufen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt umlaufen", readingIndex: 1)
+    expectConjugation(infinitiv: "umlaufen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt umgelaufen", readingIndex: 2)
   }
 
   // Class 4 again, and class 5 at once: weichen's "yield" reading is strong (wich, gewichen)
@@ -1346,6 +1363,21 @@ struct ConjugatorTests {
     ("zertreiben", 0, .haben),
     ("zutreiben", 0, .haben),
     ("zutreiben", 1, .sein),
+    ("ablaufen", 0, .sein),
+    ("ablaufen", 1, .haben),
+    ("auflaufen", 0, .sein),
+    ("belaufen", 0, .haben),
+    ("durchlaufen", 0, .haben),
+    ("durchlaufen", 1, .sein),
+    ("durchlaufen", 2, .haben),
+    ("einlaufen", 0, .sein),
+    ("einlaufen", 1, .haben),
+    ("umlaufen", 0, .sein),
+    ("umlaufen", 1, .haben),
+    ("umlaufen", 2, .haben),
+    ("unterlaufen", 0, .haben),
+    ("unterlaufen", 1, .sein),
+    ("zulaufen", 0, .sein),
   ]
 
   @Test("Each ruled reading carries its dictionary auxiliary", arguments: auxiliaryRulings)

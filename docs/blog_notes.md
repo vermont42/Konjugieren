@@ -8667,3 +8667,50 @@ What a user would see changed: abtreiben, zutreiben, and wegtreiben offer a drif
 builds its Perfekt with sein, and eintreiben's gloss names debt collection. 85 verbs now have more
 than one reading. The rulings file has 140 readings of 97 verbs, the suite is still 224 tests, and
 the worklist is 155.
+
+## Defect plan, Part 6: laufen, two more verbs with three readings (2026-11-10)
+
+laufen's eight listed derivatives held more model changes than any batch since ziehen. Two of
+them have the durchziehen shape, and the away-mode prompt's default allowed a third reading
+wherever the dictionaries show it, so both now have three.
+
+**durchlaufen had shipped as the wrong verb.** Its `in` was separable, but its gloss, "go
+through, run through", and its Kafka sentence (*K. durchlief beide Seitenschiffe*) belong to the
+inseparable verb, *hat durchlaufen*. DWDS gives the separable verb two auxiliaries of its own:
+sein for running through a place or coffee trickling through a filter, and haben for wearing
+through a pair of shoes. Because *eine Ausbildung durchlaufen* is the commonest of the three, the
+inseparable verb now comes first. That meant changing the verb's own `in` to `durch*l^au^fen`,
+the übersetzen arrangement, rather than durchziehen's, where the separable verb leads. The two
+separable readings carry their own `in`.
+
+**umlaufen had the same mismatch.** It shipped separable with the inseparable gloss "run around
+something". It now leads with separable "circulate, go around" with sein (*es ist viel Falschgeld
+umgelaufen*), which is closest to its Luther sentence. Inseparable "circle, run around
+(something)" follows (*er hat den See umlaufen*), and then separable "knock over (by running)"
+with haben, DWDS's first sense. That last one is the reading most open to doubt on a verb this
+rare, and it is in the review list. umlaufen's etymology had said "the senses below are the
+separable ones", the same boilerplate durchziehen's had, so its closing was rewritten as
+durchziehen's was. durchlaufen's already described both stresses correctly.
+
+The other rulings. unterlaufen gained the sense every German speaker knows, *mir ist ein Fehler
+unterlaufen*, which DWDS puts under sein, beside the shipped "circumvent, undermine". ablaufen
+gained "wear down (shoes)" with haben, and einlaufen "break in (shoes)" with haben. einlaufen's
+first reading was re-glossed from "run in" to "come in, arrive", since British English uses "run
+in" for breaking in an engine, which is now the other reading's job. auflaufen and zulaufen
+flipped to sein, the only auxiliary DWDS gives either. auflaufen's gloss "collide with" became
+"pile up, accumulate" to match its Bundestag sentence about debts, and zulaufen's "walk to"
+became "run toward, come running". belaufen kept haben.
+
+**The review raised one finding, and its adjudication was not applied.** Sonnet said ablaufen's
+shipped "expire, proceed" joins two senses with a comma, and proposed "expire, run out". Fable
+amended that to "go, proceed (of events)", because the Grimm sentence (*daß es so gut abgelaufen
+war*) needs the event sense, and noted that its own amendment drops expiry. Expiry is the sense a
+learner meets most often (*der Pass läuft ab*), and the gloss predates this batch, so it stays
+as shipped. The case is in the review list with both alternatives. The cleaner fix is probably a
+new example sentence, and that belongs to the example pipeline, not to this plan.
+
+What a user would see changed: durchlaufen and umlaufen each show three verbs, with the right
+separability and auxiliary for each. unterlaufen, ablaufen, and einlaufen offer a second meaning
+with its own auxiliary. auflaufen and zulaufen build the Perfekt with sein. 90 verbs now have
+more than one reading, four of them three. The rulings file has 155 readings of 105 verbs, the
+suite is still 224 tests, and the worklist is 147.

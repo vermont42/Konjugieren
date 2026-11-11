@@ -773,6 +773,30 @@ ruled on. An importer that wrote second readings straight into `Verbs.xml` would
 review. Update the roadmap under "Still open": when this part is done, the worklist in
 `verbdata/tranche2-dual-auxiliary.txt` is history, and the rulings file is the current record.
 
+*Added 2026-11-10, after the rulings were finished.* Three refinements, from what the rulings
+found:
+
+- **Where the cause sits.** `verbdata/import_tranche2.py` sets a reading's `ay` from the
+  lemma-level `entry.get("auxiliary")` (around line 535), not from the sense its gloss was taken
+  from, and writes dual-marked verbs to `tranche2-dual-auxiliary.txt` with one reading. Roadmap
+  step 9 (tranche 3) is held on this change. Read the importer's header and `write_worklists`
+  before changing it, and check whether tranche 3 is meant to reuse this script or a copy.
+- **An outcome for unreviewed rows.** `audit_auxiliaries.py` accepts only five outcomes (`two
+  readings`, `flip`, `flip and re-gloss`, `re-gloss`, `keep`). Add a sixth, `proposed`, for the
+  rows the importer writes. `--check` should list proposed rows separately and fail while any
+  remain, exactly as it fails on a listed verb with no ruling, so the existing gate ("0 awaiting
+  a ruling") blocks an unreviewed import without new machinery. Ruling a proposed row means
+  rewriting it with a real outcome, a source, and a note, as Part 6 did.
+- **Flag more than dual-marked verbs.** The audit sees only verbs kaikki marks with both
+  auxiliaries, and Part 6 found three kinds of error that pass it. A sense-level auxiliary that
+  contradicts the lemma-level one (zuziehen shipped haben for "move to the area"). A gloss taken
+  from one separability of a prefix that has both (durchlaufen, umlaufen, and durchdringen
+  shipped separable with the inseparable verb's gloss; kaikki usually has `durch|laufen` and
+  `durchlaufen` as separate entries). Two verbs under one spelling with different families (the
+  anhängen shape: schleifen, bleichen, schwellen, where kaikki lists a strong and a weak entry).
+  Each can be detected from kaikki's data. Route each to a `proposed` row with the reason in its
+  note, rather than importing it.
+
 **Done when.** `audit_auxiliaries.py --check` passes, the parameterized test passes, every new
 pair of glosses has passed review, and the rulings file names a source for every row.
 
@@ -841,19 +865,39 @@ risen, and `check_docs.py` passes with the new counts.
 ## Closing
 
 1. Run the whole test suite, the classification pipeline, `python3 scripts/check_docs.py`, and
-   `audit_auxiliaries.py --check`.
+   `audit_auxiliaries.py --check`. **Expect new `shippedEncodingFailed` flags** from the
+   pipeline. Part 6 changed the first reading's family, separability, or order on many verbs
+   (durchlaufen and durchdringen changed their verb-level `in`, and eintauchen, verkleben, and
+   zerkochen reordered their readings), and the classifier tests only reading 0 against a kaikki
+   table that may describe the other verb. The at-odds summary excludes multi-reading verbs, so
+   these are not regressions. Check that the at-odds count itself has not risen above 5.
 2. Regenerate `forms.json` and run both scans in the appendix again.
 3. Open the ten verbs of the first table in the simulator, three verbs that were ruled "keep",
-   and five that gained a reading. Read the Perfekt Indikativ of each, in both readings where
-   there are two.
+   and five that gained a reading. Read the Perfekt Indikativ of each, in every reading. Suggested,
+   so the check covers each kind of change Part 6 made: keeps umbrechen, aufschießen, and
+   festbacken; abschieben (flipped to haben), unterliegen, frieren, überspringen (reading 1 has
+   its own `in`), and durchschlagen (three readings); and durchlaufen and durchdringen, whose
+   verb-level `in` became inseparable. For those two, also check where they now appear in the
+   prefix browse lists. The Region setting does not affect any of these. Use the deeplink
+   `xcrun simctl openurl booted "konjugieren://verb/<verb>"`.
 4. Update the roadmap ("Still open", "Known gaps"), `docs/verb-classification.md` if the
    at-odds count moved, `docs/project-structure.md` for every file added, and the defects
    section of the ideas document. Search the documents that describe the current state for the
-   number of verbs with two readings, which was 44, and update it there. Dated plans and journal
-   entries keep the number they were written with.
-5. Tell Josh, part by part: what changed, which rulings deserve a second look, and what was
-   deferred and why. When Part 5 is done, tell him that the privacy policy is ready to deploy
-   and that both date lines need the day he deploys it.
+   number of verbs with more than one reading, which was 44, and update it: **118 verbs have more
+   than one reading, six of them three** (durchziehen, durchbrechen, durchlaufen, umlaufen,
+   durchschlagen, überschlagen). `check_docs.py` does not assert this number, so search for it by
+   hand. Dated plans and journal entries keep the number they were written with.
+   **Give Part 6's leftovers a home in "Known gaps"**, since they live nowhere but this plan:
+   - Five unmade family splits, the anhängen shape: schleifen, bleichen, ausbleichen, schwellen,
+     aufschwellen.
+   - Example sentences that do not illustrate their gloss: anstehen (*befit*), dafürstehen (*für
+     etwas stehen* written apart), nachschieben ("add afterwards"), überschießen (intransitive),
+     and ablaufen, whose sentence needs "proceed" while the commonest sense is "expire".
+   - Seven verbs kept as shipped for want of any readable source: zertreiben, überschießen,
+     zusammenstreben, umeinanderstehen, hinrücken, rückdrehen, mitfolgen.
+5. Tell Josh, part by part: what changed and what was deferred and why. The Part 6 review list
+   is confirmed and needs no second look. When Part 5 is done, tell him that the privacy policy
+   is ready to deploy and that both date lines need the day he deploys it.
 
 ## Out of Scope
 
@@ -926,12 +970,35 @@ for verb, entry in sentences.items():
 
 ## Prompt to Hand a Session
 
-Part 6's rulings are finished: the session run under this prompt emptied the worklist on
-2026-11-10. The prompt is kept as the record of how that session worked. What remains is Josh's
-pass through the review list, "Stop the cause", and the plan's Closing, none of which this prompt
-covers.
+Written 2026-11-10, after Josh confirmed the away-mode review list. It covers the two pieces of
+work left: Part 6's importer change, then the Closing. Josh will be present, so stop and ask
+where the plan leaves a decision open.
 
-This prompt lets the session work while Josh is away (written 2026-11-10). It replaces the earlier
+> Read plans/fix-reference-defects.md, starting with its Status section. Part 6's rulings are
+> finished and `python3 verbdata/audit_auxiliaries.py --check` passes. The list "Calls made
+> without Josh, confirmed" holds settled rulings: do not reopen them. Then read the
+> docs/blog_notes.md entries headed "Defect plan, Part 6".
+>
+> First, do Part 6's "Stop the cause", including the three refinements added under it on
+> 2026-11-10: the cause in verbdata/import_tranche2.py, a `proposed` outcome that --check fails
+> on, and flags for the three error kinds the dual-auxiliary audit cannot see. Read the
+> importer's header and docs/roadmap.md step 9 before changing anything, and comment the script
+> generously, as CLAUDE.md asks for verbdata/. Show that the change works by running the
+> importer in its check mode against kaikki and confirming that the shipped verbs Part 6 fixed
+> (zuziehen, durchlaufen, abschieben, bleichen) would now be flagged, not imported as they
+> were. Do not import tranche 3. Update the roadmap under "Still open" and step 9's status.
+> Append a journal entry and commit.
+>
+> Then do the plan's Closing, steps 1 to 5, as revised on 2026-11-10. Commit after each step
+> that changes files, with a journal entry for the whole Closing. Finish by telling Josh what
+> changed, part by part, and that the privacy policy is ready to deploy with both date lines
+> set to the day he deploys it.
+
+**Earlier prompt, finished.** Part 6's rulings were done under the prompt below, and the session
+run under it emptied the worklist on 2026-11-10. It is kept as the record of how that session
+worked.
+
+That prompt let the session work while Josh was away (written 2026-11-10). It replaced the earlier
 one, which asked the session to stop before a third reading, before extending the criterion-2
 precedent, and whenever a ruling rested on an unreadable source. Each of those is now a default
 drawn from Josh's rulings of 2026-11-10, and every call made under a default is logged for his

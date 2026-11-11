@@ -9217,3 +9217,21 @@ auxiliary. The simulator shows *er hat bereitgestanden* and *er hat nähergestan
 suite still passes at 224 tests.
 
 What a user would see changed: both verbs build the Perfekt with haben.
+
+## näherstehen means personal closeness (2026-11-10)
+
+*näherstehen* shipped the gloss "be closer", a word-for-word reading of *näher* + *stehen*. DWDS
+defines the verb by personal closeness, *sehr vertraut mit jmdm. sein*, and Duden as *in einer
+engeren Beziehung stehen*. Its example sentence agrees: *seit unserer gemeinsamen Reise ... steht
+mir mein Bruder viel näher als früher*. Josh asked for "be close to (someone)".
+
+The Sonnet review accepted the sense and flagged two things: the gloss dropped the comparative
+that *näher* carries, which both the sentence (*viel näher als früher*) and Duden (*engeren*)
+show; and it sat almost on top of the positive verb's gloss, *nahestehen* "have a close
+connection to". A learner seeing both could not tell which was which. Josh chose "be closer to
+(someone)", which keeps his personal sense and the comparative, and matches kaikki's own "to be
+closer (to sb)". The rulings row is now `flip and re-gloss`, with the history in its note. The
+etymology already called the verb "to be closer, most often in the figurative sense of personal
+closeness" and needed nothing.
+
+What a user would see changed: näherstehen reads "be closer to (someone)".

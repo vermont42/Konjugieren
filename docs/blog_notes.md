@@ -9162,8 +9162,7 @@ no adjective takes, and recovered the 14 that are real verbs. The importer now h
 *sondern* first with 26.4 million hits, then *sieben* and *modern*. Those are the conjunction,
 the numeral, and the adjective. DWDS counts a lemma string across parts of speech. When the
 verb's infinitive is itself another word's lemma, both probes resolve to that lemma and agree,
-and the gate cannot see it. *sondern* would have entered the corpus at rank 22, above *machen*'s
-neighbours. No count can detect this, so the importer holds a named list of three, found by
+and the gate cannot see it. *sondern* would have entered the corpus at rank 22 of 3,572. No count can detect this, so the importer holds a named list of three, found by
 reading the first 600 rows. Its header says plainly that nobody has read past row 600.
 
 The same reading found a second hole. *zusammensuchen* was a "bare stem" at rank 1,000, and

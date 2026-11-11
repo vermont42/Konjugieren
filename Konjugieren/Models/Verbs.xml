@@ -325,7 +325,8 @@
     <reading tn="run off, drain off" fa="s" ag="beginnen" ay="s" />
   </verb>
   <verb in="ab+rollen" hi="16758" ic="roll">
-    <reading tn="unwind, unroll" fa="w" />
+    <reading tn="unwind, unroll (something)" fa="w" />
+    <reading tn="roll off, unfold (of events)" fa="w" ay="s" />
   </verb>
   <verb in="ab+rücken" hi="84680" ic="hiking">
     <reading tn="move away, distance oneself" fa="w" ay="s" />
@@ -517,7 +518,8 @@
     <reading tn="drink down a little" fa="s" ag="finden" />
   </verb>
   <verb in="ab+trocknen" hi="48162" ic="cooldown">
-    <reading tn="make dry, e.g. by wiping with a towel" fa="w" />
+    <reading tn="dry off, towel dry" fa="w" />
+    <reading tn="dry off (become dry)" fa="w" ay="s" />
   </verb>
   <verb in="ab+w^ä^gen" hi="189285" ic="flexibility">
     <reading tn="weigh up, consider" fa="s" ag="bieten" />
@@ -936,7 +938,7 @@
     <reading tn="tear" fa="s" ag="reißen" />
   </verb>
   <verb in="an+r^e^nnen" hi="18374" ic="run">
-    <reading tn="run at, attack" fa="m" ag="kennen" />
+    <reading tn="run at, attack" fa="m" ag="kennen" ay="s" />
   </verb>
   <verb in="an+richten" hi="505389" ic="archery">
     <reading tn="wreak, cause, do" fa="w" />
@@ -1413,7 +1415,8 @@
     <reading tn="unlock" fa="s" ag="schließen" />
   </verb>
   <verb in="auf+schm^e^lzen" hi="3935" ic="skiing.downhill">
-    <reading tn="melt, dissolve" fa="s" ag="schmelzen" />
+    <reading tn="melt down (something)" fa="s" ag="schmelzen" />
+    <reading tn="melt away" fa="s" ag="schmelzen" ay="s" />
   </verb>
   <verb in="auf+schn^eid^en" hi="64069" ic="fencing">
     <reading tn="cut open" fa="s" ag="schneiden" />
@@ -1567,7 +1570,7 @@
     <reading tn="be absent" fa="s" ag="bleiben" ay="s" />
   </verb>
   <verb in="aus+bleichen" hi="11747" ic="cooldown">
-    <reading tn="bleach something" fa="w" ay="s" />
+    <reading tn="bleach out (something)" fa="w" />
   </verb>
   <verb in="aus+blicken" hi="1077" ic="flexibility">
     <reading tn="look out, search for someone or something" fa="w" />
@@ -1718,7 +1721,7 @@
     <reading tn="know one's way around" fa="m" ag="kennen" />
   </verb>
   <verb in="aus+kl^i^ngen" hi="244931" ic="cooldown">
-    <reading tn="come to an end, draw to a close" fa="s" ag="finden" />
+    <reading tn="come to an end, draw to a close" fa="s" ag="finden" ay="s" />
   </verb>
   <verb in="aus+k^om^men" hi="480807" ic="walk.arrival">
     <reading tn="get along" fa="s" ag="kommen" ay="s" />
@@ -1830,6 +1833,7 @@
   </verb>
   <verb in="aus+rollen" hi="199171" ic="roll">
     <reading tn="roll out, unroll" fa="w" />
+    <reading tn="roll to a stop" fa="w" ay="s" />
   </verb>
   <verb in="aus+rücken" hi="140693" ic="hiking">
     <reading tn="march out, go on a mission" fa="w" ay="s" />
@@ -1981,7 +1985,8 @@
     <reading tn="drink up" fa="s" ag="finden" />
   </verb>
   <verb in="aus+trocknen" hi="89636" ic="cooldown">
-    <reading tn="dry out" fa="w" />
+    <reading tn="dry out (something)" fa="w" />
+    <reading tn="dry out (become dry)" fa="w" ay="s" />
   </verb>
   <verb in="aus+üben" hi="975873" ic="roll.runningpace">
     <reading tn="practice, exert" fa="w" />
@@ -2832,7 +2837,7 @@
     <reading tn="stay, remain" fa="s" ag="bleiben" ay="s" />
   </verb>
   <verb in="bleichen" hi="43356" ic="cooldown">
-    <reading tn="bleach, fade" fa="w" />
+    <reading tn="bleach, whiten" fa="w" />
   </verb>
   <verb in="blicken" hi="2054599" ic="flexibility">
     <reading tn="look, glance" fa="w" />
@@ -3177,8 +3182,9 @@
   <verb in="durch+drehen" hi="40668" ic="socialdance">
     <reading tn="freak out, snap, panic" fa="w" ay="s" />
   </verb>
-  <verb in="durch+dr^i^ngen" hi="184534" ic="flexibility">
-    <reading tn="penetrate, permeate" fa="s" ag="finden" ay="s" />
+  <verb in="durch*dr^i^ngen" hi="184534" ic="flexibility">
+    <reading tn="penetrate, permeate" fa="s" ag="finden" />
+    <reading in="durch+dr^i^ngen" tn="get through, prevail" fa="s" ag="finden" ay="s" />
   </verb>
   <verb in="durcheinander+br^ing^en" hi="28666" ic="hiking">
     <reading tn="jumble" fa="m" ag="bringen" />
@@ -3281,7 +3287,7 @@
     <reading tn="give something a good shake, churn" fa="w" />
   </verb>
   <verb in="durch+schw^i^mmen" hi="9230" ic="pool.swim">
-    <reading tn="swim" fa="s" ag="beginnen" ay="s" />
+    <reading tn="swim through (without stopping)" fa="s" ag="beginnen" ay="s" />
   </verb>
   <verb in="durch+s^e^hen" hi="32443" ic="mind.and.body">
     <reading tn="look through" fa="s" ag="sehen" />
@@ -3593,6 +3599,7 @@
   </verb>
   <verb in="ein+rollen" hi="36025" ic="roll">
     <reading tn="roll up, furl" fa="w" />
+    <reading tn="roll in, pull in" fa="w" ay="s" />
   </verb>
   <verb in="ein+rücken" hi="43316" ic="hiking">
     <reading tn="enter, go into" fa="w" />
@@ -4106,7 +4113,8 @@
     <reading tn="break" fa="s" ag="gehen" ay="s" />
   </verb>
   <verb in="entzwei+r^eiß^en" hi="438" ic="boxing">
-    <reading tn="rip in two" fa="s" ag="reißen" />
+    <reading tn="rip in two (something)" fa="s" ag="reißen" />
+    <reading tn="tear in two (come apart)" fa="s" ag="reißen" ay="s" />
   </verb>
   <verb in="er*achten" hi="301275" ic="arms.open">
     <reading tn="consider" fa="w" />
@@ -4292,7 +4300,7 @@
     <reading tn="succumb to, lose out to, yield to" fa="s" ag="liegen" ay="s" />
   </verb>
   <verb in="er*löschen" hi="223615" ic="flexibility">
-    <reading tn="go out, be extinguished" fa="w" />
+    <reading tn="go out, be extinguished" fa="w" ay="s" />
   </verb>
   <verb in="er*lösen" hi="174839" ic="flexibility">
     <reading tn="deliver, set free" fa="w" />
@@ -4473,7 +4481,8 @@
     <reading tn="resist, fend off" fa="w" />
   </verb>
   <verb in="er*weichen" hi="20016" ic="arms.open">
-    <reading tn="weaken, soften" fa="w" />
+    <reading tn="soften, move (someone)" fa="w" />
+    <reading tn="soften (become soft)" fa="w" ay="s" />
   </verb>
   <verb in="er*w^ei^sen" hi="1789899" ic="walk.arrival">
     <reading tn="prove, show" fa="s" ag="weisen" />
@@ -4850,7 +4859,8 @@
     <reading tn="be glad, be pleased" fa="w" />
   </verb>
   <verb in="fr^ie^ren" hi="189935" ic="skiing.downhill">
-    <reading tn="freeze, be cold" fa="s" ag="bieten" />
+    <reading tn="be cold, feel cold" fa="s" ag="bieten" />
+    <reading tn="freeze (solid)" fa="s" ag="bieten" ay="s" />
   </verb>
   <verb in="fügen" hi="1592380" ic="2">
     <reading tn="add, join" fa="w" />
@@ -7383,7 +7393,7 @@
     <reading tn="grind, sharpen" fa="s" ag="greifen" />
   </verb>
   <verb in="schl^eiß^en" hi="1211" ic="cooldown">
-    <reading tn="strip, wear away" fa="s" ag="reißen" />
+    <reading tn="strip (feathers)" fa="s" ag="reißen" />
   </verb>
   <verb in="schl^ieß^en" hi="8179606" ic="flexibility">
     <reading tn="close" fa="s" ag="schließen" />
@@ -8599,7 +8609,8 @@
     <reading tn="blame, hold against" fa="m" ag="bringen" />
   </verb>
   <verb in="ver*d^e^rben" hi="274278" ic="fall">
-    <reading tn="spoil, ruin" fa="s" ag="sterben" />
+    <reading tn="spoil, ruin (something)" fa="s" ag="sterben" />
+    <reading tn="spoil, go bad" fa="s" ag="sterben" ay="s" />
   </verb>
   <verb in="ver*deutlichen" hi="620638" ic="walk.arrival">
     <reading tn="clarify, illustrate" fa="w" />
@@ -8791,7 +8802,8 @@
     <reading tn="glorify, exalt, transfigure, romanticize" fa="w" />
   </verb>
   <verb in="ver*kleben" hi="92041" ic="indoor.rowing">
-    <reading tn="stick together" fa="w" />
+    <reading tn="glue, seal" fa="w" />
+    <reading tn="stick together" fa="w" ay="s" />
   </verb>
   <verb in="ver*klicken" hi="548110" hp="y" ic="flexibility">
     <reading tn="misclick" fa="w" />
@@ -9062,7 +9074,8 @@
     <reading tn="strand, drive somewhere" fa="s" ag="fahren" />
   </verb>
   <verb in="ver*schl^eiß^en" hi="65480" ic="cooldown">
-    <reading tn="wear out, chafe, abrade" fa="s" ag="reißen" />
+    <reading tn="wear out, wear down (something)" fa="s" ag="reißen" />
+    <reading tn="wear out (become worn)" fa="s" ag="reißen" ay="s" />
   </verb>
   <verb in="ver*schl^ieß^en" hi="819410" ic="fall">
     <reading tn="lock, close" fa="s" ag="schließen" />
@@ -9216,7 +9229,7 @@
     <reading tn="drink away" fa="s" ag="finden" />
   </verb>
   <verb in="ver*trocknen" hi="25800" ic="cooldown">
-    <reading tn="dry up" fa="w" />
+    <reading tn="dry up" fa="w" ay="s" />
   </verb>
   <verb in="ver*üben" hi="229261" ic="skating">
     <reading tn="commit, carry out, perpetrate" fa="w" />
@@ -10110,7 +10123,8 @@
     <reading tn="beat into pieces" fa="m" ag="hauen" />
   </verb>
   <verb in="zer*kochen" hi="2672" ic="cooldown">
-    <reading tn="overcook" fa="w" />
+    <reading tn="turn to mush, fall apart" fa="w" ay="s" />
+    <reading tn="overcook (something)" fa="w" />
   </verb>
   <verb in="zer*l^au^fen" hi="9198" ic="run">
     <reading tn="lose form due to melting, melt away" fa="s" ag="laufen" ay="s" />
@@ -10150,7 +10164,7 @@
     <reading tn="break by throwing" fa="s" ag="reißen" />
   </verb>
   <verb in="zer*schm^e^lzen" hi="4507" ic="skiing.downhill">
-    <reading tn="fully melt" fa="s" ag="schmelzen" />
+    <reading tn="fully melt" fa="s" ag="schmelzen" ay="s" />
   </verb>
   <verb in="zer*schn^eid^en" hi="84788" ic="fencing">
     <reading tn="cut up, cut to pieces" fa="s" ag="schneiden" />
@@ -10319,7 +10333,8 @@
     <reading tn="turn toward" fa="w" />
   </verb>
   <verb in="zu+klappen" hi="25866" ic="strengthtraining.traditional">
-    <reading tn="flip shut" fa="w" />
+    <reading tn="flip shut (something)" fa="w" />
+    <reading tn="snap shut" fa="w" ay="s" />
   </verb>
   <verb in="zu+kleben" hi="11898" ic="indoor.rowing">
     <reading tn="seal, tape or glue something shut" fa="w" />

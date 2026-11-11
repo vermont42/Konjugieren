@@ -8,7 +8,7 @@ below.
 
 ## Status (2026-11-10, during the third session)
 
-**Parts 0 to 5 and 7 are done. Part 6 is under way: step 1 and the fahren, ziehen, treten, brechen, treiben, laufen, schießen, streben, brennen, schlagen, wachsen, stehen, and liegen derivatives and the first 31 verbs of the small families are done.** Read this section before the rest: several
+**Parts 0 to 5 and 7 are done. Part 6's rulings are done: the audit's worklist is empty and `--check` passes. What remains of Part 6 is "Stop the cause" (the importer change) and the review list below; then the plan's Closing.** Read this section before the rest: several
 numbers below were true when the plan was written and are not now. The journal entries in
 `docs/blog_notes.md` headed "Defect plan, Part N" are the detailed record.
 
@@ -33,15 +33,16 @@ numbers below were true when the plan was written and are not now. The journal e
 | 6 (schießen, streben) | `8903915` | 7 schießen and 7 streben derivatives in one batch: einschießen two readings, zustreben and emporstreben to sein, 2 re-glosses, 9 keeps, two of them deferred (überschießen, zusammenstreben). Several keeps rest on the labelled-sense defaults. Review found nothing. |
 | 6 (brennen, schlagen, wachsen) | `2ba0cc0` | 13 verbs: durchschlagen and überschlagen three readings, abbrennen and ausschlagen two, anbrennen, entbrennen, durchbrennen to sein, 6 keeps. Two etymologies corrected. Three review findings adjudicated: two glosses narrowed, one kept. |
 | 6 (step 5, stehen and liegen) | `623c518` | 39 verbs: erstehen and unterliegen gain a sein reading, umeinanderstehen re-glossed and deferred, 36 keeps, most of them regional variation. erstehen's etymology corrected. Review found nothing. |
-| 6 (small families 1) | see journal | 31 verbs: 6 gain a second reading (überspringen by separability), 7 flip, among them abschieben to haben and ausscheiden's first reading to sein, 18 keeps, two of them deferred. Review found nothing. |
+| 6 (small families 1) | `48ca069` | 31 verbs: 6 gain a second reading (überspringen by separability), 7 flip, among them abschieben to haben and ausscheiden's first reading to sein, 18 keeps, two of them deferred. Review found nothing. |
+| 6 (small families 2) | see journal | The last 50 verbs: 18 gain a second reading (durchdringen inseparable first), 6 flip, 4 re-glosses, 22 keeps, two of them deferred. durchdringen's etymology boilerplate removed. One review finding, rejected by Fable. |
 
 **Where Part 6 stands.**
 
-- **Take the worklist from the script**, not from the counts below: `python3 verbdata/audit_auxiliaries.py
-  --unruled`. It lists 50 verbs after the first small-family batch, and `--check` prints the same number while failing.
-  `--check` must report `0 other problems` after every batch. Next are the rest of the small families, several to a batch.
-- **The rulings file has 267 readings of 202 verbs**, and 103 verbs have more than one reading,
-  six of them three (durchziehen, durchbrechen, durchlaufen, umlaufen, durchschlagen, überschlagen). Suite: 224 tests.
+- **The worklist is empty.** `python3 verbdata/audit_auxiliaries.py --check` passes: 252 verbs
+  ruled, 0 awaiting a ruling, 0 other problems. Any later edit to a ruled reading must keep it
+  passing. The next Part 6 work is "Stop the cause", which the away-mode prompt excluded.
+- **The rulings file has 332 readings of 252 verbs**, and 118 verbs have more than one reading,
+  6 of them three (durchziehen, durchbrechen, durchlaufen, umlaufen, durchschlagen, überschlagen). Suite: 224 tests.
 - **Josh's rulings of 2026-11-10, in the fahren batch**, which later batches should follow:
   - **A domain label qualified by *häufig* does not fail criterion 2** (hochfahren, "boot up",
     *häufig Technik*). This narrows the anspringen precedent but does not overturn it: a plain
@@ -161,6 +162,26 @@ clears an entry by confirming or reversing it.
 - **nachschieben** (small families): flipped to haben with its gloss kept. Its Bundestag sentence
   (*hat sie nachgeschoben*) is the labelled sense "add afterwards". Alternative: re-gloss it.
 - **hinrücken**, **rückdrehen** (small families): kept and deferred for want of a source.
+- **Family splits not made** (small families): schleifen (strong "grind" beside weak "drag"),
+  bleichen and ausbleichen (weak "bleach" beside strong "fade", *ist geblichen*), schwellen and
+  aufschwellen (strong "swell" beside weak "make swell"). Each is the anhängen shape, which the
+  away-mode defaults do not cover, so each was kept single. bleichen lost "fade" from its gloss,
+  and ausbleichen flipped to haben to match its weak family and transitive sentence. Alternative:
+  add the other verb as a reading with its own family, as anhängen did.
+- **entzweireißen** (small families): two readings, "rip in two (something)" with haben and "tear
+  in two (come apart)" with sein, departing from entzweibrechen's single sein reading, because
+  Wiktionary and the verb's etymology treat the transitive use as ordinary. Alternative: follow
+  entzweibrechen.
+- **durchdringen** (small families): the inseparable "penetrate, permeate" (haben) now leads and
+  the verb's own `in` is inseparable, as with durchlaufen; separable "get through, prevail" (sein)
+  follows. Alternative: separable first, as shipped.
+- **durchschwimmen**, **durchfließen** (small families): kept single. durchschwimmen's
+  separable sense is labelled *umgangssprachlich* (labelled-primary default), and DWDS lists
+  durchfließen only as the inseparable verb, so the shipped separable one is deferred.
+  Alternative: a second, inseparable reading for each.
+- **ausreißen**, **verrauchen** (small families): kept single, each with an unlabelled but minor
+  second sense (*der Griff ist ausgerissen*, sein; *Zigaretten verrauchen*, haben).
+- **mitfolgen** (small families): kept and deferred. No source has an entry.
 
 **State to start Part 6 from (end of the second session; partly superseded above).**
 
@@ -903,9 +924,10 @@ for verb, entry in sentences.items():
 
 ## Prompt to Hand a Session
 
-Part 6 is under way: step 1 and the fahren, ziehen, treten, brechen, treiben, laufen, schießen,
-streben, brennen, schlagen, wachsen, stehen, and liegen derivatives are done, and the first 31
-verbs of the small families. Run one Part 6 session at a time, since each edits `Verbs.xml`, the rulings file, and the test table.
+Part 6's rulings are finished: the session run under this prompt emptied the worklist on
+2026-11-10. The prompt is kept as the record of how that session worked. What remains is Josh's
+pass through the review list, "Stop the cause", and the plan's Closing, none of which this prompt
+covers.
 
 This prompt lets the session work while Josh is away (written 2026-11-10). It replaces the earlier
 one, which asked the session to stop before a third reading, before extending the criterion-2

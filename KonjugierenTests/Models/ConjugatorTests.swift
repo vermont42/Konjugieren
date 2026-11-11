@@ -1149,6 +1149,14 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "überspringen", conjugationgroup: .perfektpartizip, expected: "übergesprUngen", readingIndex: 1)
     expectConjugation(infinitiv: "überspringen", conjugationgroup: .imperativ(.secondPlural), expected: "springt über", readingIndex: 1)
     expectConjugation(infinitiv: "überspringen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "IST übergesprUngen", readingIndex: 1)
+
+    // durchdringen, durchlaufen's arrangement: inseparable first (DWDS 2durchdringen, hat
+    // durchdrungen), then separable durch+dringen with sein (1durchdringen, ist durchgedrungen).
+    expectConjugation(infinitiv: "durchdringen", conjugationgroup: .perfektpartizip, expected: "durchdrUngen")
+    expectConjugation(infinitiv: "durchdringen", conjugationgroup: .imperativ(.secondPlural), expected: "durchdringt")
+    expectConjugation(infinitiv: "durchdringen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt durchdrUngen")
+    expectConjugation(infinitiv: "durchdringen", conjugationgroup: .imperativ(.secondPlural), expected: "dringt durch", readingIndex: 1)
+    expectConjugation(infinitiv: "durchdringen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "IST durchgedrUngen", readingIndex: 1)
   }
 
   // Class 4 again, and class 5 at once: weichen's "yield" reading is strong (wich, gewichen)
@@ -1514,6 +1522,71 @@ struct ConjugatorTests {
     ("umstürzen", 0, .sein),
     ("umstürzen", 1, .haben),
     ("herabstürzen", 0, .sein),
+    ("austrocknen", 0, .haben),
+    ("austrocknen", 1, .sein),
+    ("vertrocknen", 0, .sein),
+    ("abtrocknen", 0, .haben),
+    ("abtrocknen", 1, .sein),
+    ("erlöschen", 0, .sein),
+    ("auslöschen", 0, .haben),
+    ("schwellen", 0, .sein),
+    ("aufschwellen", 0, .sein),
+    ("zerschmelzen", 0, .sein),
+    ("aufschmelzen", 0, .haben),
+    ("aufschmelzen", 1, .sein),
+    ("verrauchen", 0, .sein),
+    ("ausrauchen", 0, .haben),
+    ("erweichen", 0, .haben),
+    ("erweichen", 1, .sein),
+    ("bleichen", 0, .haben),
+    ("ausbleichen", 0, .haben),
+    ("gären", 0, .haben),
+    ("frieren", 0, .haben),
+    ("frieren", 1, .sein),
+    ("erstinken", 0, .haben),
+    ("schwingen", 0, .haben),
+    ("ausklingen", 0, .sein),
+    ("verlauten", 0, .haben),
+    ("schleifen", 0, .haben),
+    ("scheren", 0, .haben),
+    ("verderben", 0, .haben),
+    ("verderben", 1, .sein),
+    ("ausrollen", 0, .haben),
+    ("ausrollen", 1, .sein),
+    ("einrollen", 0, .haben),
+    ("einrollen", 1, .sein),
+    ("abrollen", 0, .haben),
+    ("abrollen", 1, .sein),
+    ("verkleben", 0, .haben),
+    ("verkleben", 1, .sein),
+    ("ausreißen", 0, .haben),
+    ("entzweireißen", 0, .haben),
+    ("entzweireißen", 1, .sein),
+    ("verschleißen", 0, .haben),
+    ("verschleißen", 1, .sein),
+    ("schleißen", 0, .haben),
+    ("durchdringen", 0, .haben),
+    ("durchdringen", 1, .sein),
+    ("durchfließen", 0, .sein),
+    ("durchschwimmen", 0, .sein),
+    ("durchstechen", 0, .haben),
+    ("durchhängen", 0, .haben),
+    ("behängen", 0, .haben),
+    ("vorhängen", 0, .haben),
+    ("zuklappen", 0, .haben),
+    ("zuklappen", 1, .sein),
+    ("austräumen", 0, .haben),
+    ("anrennen", 0, .sein),
+    ("versaufen", 0, .haben),
+    ("antanzen", 0, .sein),
+    ("abschreiten", 0, .haben),
+    ("anschleichen", 0, .haben),
+    ("aufbiegen", 0, .haben),
+    ("anscheißen", 0, .haben),
+    ("zerkochen", 0, .sein),
+    ("zerkochen", 1, .haben),
+    ("festbacken", 0, .haben),
+    ("mitfolgen", 0, .haben),
   ]
 
   @Test("Each ruled reading carries its dictionary auxiliary", arguments: auxiliaryRulings)

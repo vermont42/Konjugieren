@@ -8873,3 +8873,51 @@ What a user would see changed: seven verbs build the Perfekt with the right auxi
 and nachschieben among them, and six offer a second meaning. 103 verbs now have more than one
 reading. The rulings file has 267 readings of 202 verbs, the suite is still 224 tests, and the
 worklist is 50.
+
+## Defect plan, Part 6: the last 50 verbs, and an empty worklist (2026-11-10)
+
+The final batch took the 50 verbs that were left, mostly verbs of drying, melting, rolling,
+tearing, and wearing out. They turned out to be the most uniform group of the whole part. Again
+and again DWDS gave one sense with haben for doing something to an object and another with sein
+for the object undergoing it: *die Sonne hat den Boden ausgetrocknet* beside *der Boden ist
+ausgetrocknet*. Eighteen verbs gained a second reading in that shape: austrocknen, abtrocknen,
+aufschmelzen, erweichen, frieren, verderben, ausrollen, einrollen, abrollen, verkleben,
+entzweireißen, verschleißen, zuklappen, zerkochen, and durchdringen among them. The glosses follow
+brechen's convention, "(something)" beside "(become dry)" or "(come apart)". frieren's old gloss
+"freeze, be cold" had joined its two readings' senses in one string, and it is now "be cold, feel
+cold" with haben beside "freeze (solid)" with sein.
+
+Six verbs flipped. vertrocknen, erlöschen, zerschmelzen, ausklingen, and anrennen take only sein
+in DWDS or Duden and had shipped haben. ausbleichen went the other way. It shipped "bleach
+something" with sein, a transitive gloss on an intransitive auxiliary, and its family is weak,
+which is the transitive verb, so it now takes haben.
+
+**Five verbs stopped the batch at a question the defaults do not answer.** schleifen, bleichen,
+ausbleichen, schwellen, and aufschwellen are each two verbs spelled alike, one strong and one
+weak, with different auxiliaries: *der Stoff ist geblichen*, it faded, beside *die Sonne hat ihn
+gebleicht*. That is the anhängen shape, a split by family. Josh approved it once, but the
+away-mode prompt does not list it, and the prompt says to log what it does not cover rather than
+guess. So each kept its single reading. bleichen only lost "fade" from its gloss, since fade
+belongs to the strong verb it does not model.
+
+durchdringen repeated durchlaufen's mismatch. It shipped as the separable verb with sein, glossed
+with the inseparable verb's meaning, "penetrate, permeate". The inseparable verb now leads with
+haben and no ge- (*hat durchdrungen*), and separable "get through, prevail" with sein follows.
+Its etymology lost the "senses below are the separable ones" boilerplate. entzweireißen got two
+readings although entzweibrechen got one, because its own etymology and Wiktionary both call the
+transitive use ordinary. That departure is in the review list. mitfolgen was the last verb deferred
+for want of any source.
+
+The review of 39 readings raised one finding. Sonnet wanted anrennen's "run at, attack" to be
+"run up against", and Fable rejected it: the hostile charge is Duden's own sense and the Homer
+sentence's, and "run up against" in English means meeting an obstacle.
+
+**With this batch the worklist is empty.** `audit_auxiliaries.py --check` passes with 252 verbs
+ruled and nothing awaiting a ruling. Across the away-mode session that means treiben, laufen,
+schießen, streben, brennen, schlagen, wachsen, the stehen and liegen derivatives, and 81
+small-family verbs. Every call made under a default is in the plan's review list for Josh. The
+prompt excluded the importer change and the Closing step, and they are what Part 6 has left.
+
+What a user would see changed: twenty-four more verbs build the Perfekt with the right auxiliary
+or offer a second meaning with its own. 118 verbs now have more than one reading, six of them
+three. The rulings file has 332 readings of 252 verbs, and the suite is still 224 tests.

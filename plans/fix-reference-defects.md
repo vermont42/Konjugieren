@@ -69,9 +69,11 @@ numbers below were true when the plan was written and are not now. The journal e
   adjudicates. A reading with its own `in` deserves a pinned participle and Imperativ test (see
   `separabilityHomographReadings`), because the parameterized test asserts only the auxiliary.
 
-**Calls made without Josh, to review.** Filled by sessions run under the away-mode prompt at
-the end of this plan: one line per verb, giving the call made, the alternative, and why. Josh
-clears an entry by confirming or reversing it.
+**Calls made without Josh, confirmed.** Filled by the session run under the away-mode prompt at
+the end of this plan: one line per verb, giving the call made, the alternative, and why. **Josh
+confirmed every entry below on 2026-11-10, reversing none.** They are settled rulings now, and a
+later session should not reopen them. The "worth a second look" and "see the review list" notes
+in `verbdata/auxiliary-rulings.tsv` point here and are settled by the same confirmation.
 
 - **zertreiben** (treiben): kept haben and recorded as deferred, under the missing-sources
   default. DWDS has no entry, and Wiktionary and Duden return 404. Alternative: none until a

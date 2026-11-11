@@ -8921,3 +8921,14 @@ prompt excluded the importer change and the Closing step, and they are what Part
 What a user would see changed: twenty-four more verbs build the Perfekt with the right auxiliary
 or offer a second meaning with its own. 118 verbs now have more than one reading, six of them
 three. The rulings file has 332 readings of 252 verbs, and the suite is still 224 tests.
+
+## Defect plan, Part 6: Josh confirms the away-mode calls (2026-11-10)
+
+Josh read the review list the away-mode session left in the plan's Status block, about forty calls
+made under its defaults, and confirmed all of them without reversing one. That includes the calls
+the session itself flagged as most open to doubt: aufschießen keeping "shoot open" under the
+labelled-primary default, the five family splits left unmade (schleifen, bleichen, ausbleichen,
+schwellen, aufschwellen), umlaufen's third reading, and ablaufen keeping "expire, proceed" against
+Fable's amendment. The list is now a record of settled rulings, renamed "Calls made without Josh,
+confirmed", and the rulings file's "worth a second look" notes are settled with it. Part 6's
+importer change ("Stop the cause") and the plan's Closing are left for a fresh session.

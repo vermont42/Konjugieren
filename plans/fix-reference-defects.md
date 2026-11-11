@@ -62,6 +62,10 @@ numbers below were true when the plan was written and are not now. The journal e
   adjudicates. A reading with its own `in` deserves a pinned participle and Imperativ test (see
   `separabilityHomographReadings`), because the parameterized test asserts only the auxiliary.
 
+**Calls made without Josh, to review.** Filled by sessions run under the away-mode prompt at
+the end of this plan: one line per verb, giving the call made, the alternative, and why. Josh
+clears an entry by confirming or reversing it. Empty so far.
+
 **State to start Part 6 from (end of the second session; partly superseded above).**
 
 - **The counts have moved.** The audit prototype reports 89 agreeing and 142 needing a ruling
@@ -803,12 +807,53 @@ for verb, entry in sentences.items():
 
 ## Prompt to Hand a Session
 
-Parts 0 to 5 and 7 are done, so the next session takes Part 6. Run one Part 6 session at a time:
-each edits `Verbs.xml`, the rulings file, and the test table.
+Part 6 is under way: step 1 and the fahren, ziehen, treten, and brechen derivatives are done.
+Run one Part 6 session at a time, since each edits `Verbs.xml`, the rulings file, and the test table.
 
-> Read plans/fix-reference-defects.md, starting with its Status section, then the
-> docs/blog_notes.md entries headed "Defect plan, Part N" and the three entries after Part 7.
-> Carry out Part 6, step 1 first, then rule by base verb starting with fahren. All four decisions
-> at the top of the plan are made. Stop and ask me before giving any verb a third reading, before
-> extending the criterion-2 precedent (anspringen, durchdrehen, abhauen), and whenever a ruling
-> rests on a source you could not read.
+This prompt lets the session work while Josh is away (written 2026-11-10). It replaces the earlier
+one, which asked the session to stop before a third reading, before extending the criterion-2
+precedent, and whenever a ruling rested on an unreadable source. Each of those is now a default
+drawn from Josh's rulings of 2026-11-10, and every call made under a default is logged for his
+review. If Josh is present, he may prefer to be asked instead.
+
+> Read plans/fix-reference-defects.md, starting with its Status section ("Where Part 6 stands"
+> and Josh's rulings of 2026-11-10), then the docs/blog_notes.md entries headed "Defect plan,
+> Part 6". Continue Part 6: rule the remaining verbs by base verb, in this order: treiben,
+> laufen, schießen, streben, brennen, schlagen, wachsen, then the derivatives of stehen and
+> liegen (plan step 5), then the small families, several to a batch. Take each batch's verbs
+> from `python3 verbdata/audit_auxiliaries.py --unruled`.
+>
+> Josh is away and has authorized you to make judgment calls instead of stopping to ask. Use
+> the method the fahren, ziehen, treten, and brechen batches used: web-fetch agents quoting
+> DWDS (German Wiktionary, then Duden, as fallbacks), rulings, anchored edits to Verbs.xml,
+> rows in verbdata/auxiliary-rulings.tsv and ConjugatorTests.auxiliaryRulings, a gloss review
+> on Sonnet under prompts/gloss_review.md, and adjudication on Fable under
+> prompts/gloss_adjudication.md (Agent tool, `model` parameter) for any finding. Where you
+> would have asked Josh, apply these defaults:
+>
+> - Third reading: give one only when the dictionaries show the durchziehen/durchbrechen
+>   shape (separable with haben, separable with sein, inseparable). Otherwise use two
+>   readings at most and leave the rest unmodelled.
+> - Labelled senses: follow the precedents as recorded. A sense labelled gehoben, or a
+>   domain qualified by "häufig", passes criterion 2. A plain Technik, salopp,
+>   umgangssprachlich, regional, or veraltet label fails it. A labelled primary sense keeps
+>   a single reading (umbrechen).
+> - Missing sources: if no source you could read states a sense's auxiliary, do not change
+>   that sense. Keep what ships and record the verb as deferred.
+> - Verbs the audit does not list: fix a clear auxiliary error you find while reading a
+>   family (the zuziehen case) when a source states it. Add a reading for a split by
+>   separability alone (the umfahren case) only when the sense is unlabelled and common.
+> - Etymologies: after ruling a verb, read the closing paragraph of its Etymologies.json
+>   entry in both languages, and correct any claim the ruling made false, splicing raw text
+>   as the earlier batches did.
+>
+> Record every call made under these defaults, plus any ruling you are unsure of, in a list
+> headed "Calls made without Josh, to review" in the plan's Status block: one line per verb,
+> saying what you decided, the alternative, and why. Josh will go through it on his return.
+>
+> After each batch: `--check` must report 0 other problems, the full suite must pass, append
+> a journal entry, update the Status block (counts, next base verb, the review list), and
+> commit to main. Each batch should be safe to stop after. Do not start the importer change
+> ("Stop the cause") or the plan's Closing step. Stop when the worklist is empty, or earlier
+> if something comes up that the defaults above do not cover. In that case, record it in the
+> review list and move to the next family rather than guessing.

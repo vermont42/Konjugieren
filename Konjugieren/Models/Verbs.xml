@@ -3619,6 +3619,7 @@
   </verb>
   <verb in="ein+sch^ieß^en" hi="55131" ic="archery">
     <reading tn="break by shooting" fa="s" ag="schließen" />
+    <reading tn="rush in, flood in" fa="s" ag="schließen" ay="s" />
   </verb>
   <verb in="ein+schl^a^fen" hi="264210" ic="cooldown">
     <reading tn="fall asleep" fa="s" ag="halten" ay="s" />
@@ -3800,7 +3801,7 @@
     <reading tn="climb" fa="s" ag="bleiben" ay="s" />
   </verb>
   <verb in="empor+streben" hi="306" ic="wrestling">
-    <reading tn="strive to a height, aim to a height" fa="w" />
+    <reading tn="rise up, soar" fa="w" ay="s" />
   </verb>
   <verb in="empor+tr^a^gen" hi="843" ic="hiking">
     <reading tn="carry upwards" fa="s" ag="fahren" />
@@ -3899,7 +3900,7 @@
     <reading tn="stand against, oppose" fa="w" />
   </verb>
   <verb in="entgegen+streben" hi="3586" ic="wrestling">
-    <reading tn="strive towards a certain direction" fa="w" />
+    <reading tn="strive toward" fa="w" />
   </verb>
   <verb in="entgegen+wirken" hi="337267" ic="strengthtraining.traditional">
     <reading tn="counteract or counter" fa="w" />
@@ -9538,7 +9539,7 @@
     <reading tn="push forward" fa="s" ag="bieten" />
   </verb>
   <verb in="vor+sch^ieß^en" hi="5305" ic="archery">
-    <reading tn="advance" fa="s" ag="schließen" />
+    <reading tn="advance (money)" fa="s" ag="schließen" />
   </verb>
   <verb in="vor+schl^a^gen" hi="973003" ic="wave">
     <reading tn="suggest" fa="s" ag="schlagen" />
@@ -10757,7 +10758,7 @@
     <reading tn="happen to" fa="s" ag="stoßen" />
   </verb>
   <verb in="zu+streben" hi="9826" ic="wrestling">
-    <reading tn="head to, make for" fa="w" />
+    <reading tn="head to, make for" fa="w" ay="s" />
   </verb>
   <verb in="zu+teilen" hi="155578" ic="fencing">
     <reading tn="assign, allocate" fa="w" />

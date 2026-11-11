@@ -1378,6 +1378,21 @@ struct ConjugatorTests {
     ("unterlaufen", 0, .haben),
     ("unterlaufen", 1, .sein),
     ("zulaufen", 0, .sein),
+    ("verschießen", 0, .haben),
+    ("einschießen", 0, .haben),
+    ("einschießen", 1, .sein),
+    ("niederschießen", 0, .haben),
+    ("vorschießen", 0, .haben),
+    ("aufschießen", 0, .haben),
+    ("überschießen", 0, .haben),
+    ("losschießen", 0, .haben),
+    ("streben", 0, .haben),
+    ("anstreben", 0, .haben),
+    ("zustreben", 0, .sein),
+    ("entgegenstreben", 0, .haben),
+    ("auseinanderstreben", 0, .haben),
+    ("emporstreben", 0, .sein),
+    ("zusammenstreben", 0, .haben),
   ]
 
   @Test("Each ruled reading carries its dictionary auxiliary", arguments: auxiliaryRulings)

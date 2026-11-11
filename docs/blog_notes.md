@@ -8714,3 +8714,46 @@ separability and auxiliary for each. unterlaufen, ablaufen, and einlaufen offer 
 with its own auxiliary. auflaufen and zulaufen build the Perfekt with sein. 90 verbs now have
 more than one reading, four of them three. The rulings file has 155 readings of 105 verbs, the
 suite is still 224 tests, and the worklist is 147.
+
+## Defect plan, Part 6: schießen and streben, where the defaults did most of the work (2026-11-10)
+
+schießen and streben came next in the prompt's order, and their evidence arrived together, so
+they were ruled as one batch. Fourteen verbs produced only five changes. Most of the rest are
+keeps, and most of the keeps rest on one of the away-mode defaults, so seven of them are in the
+review list.
+
+The changes. einschießen gained a second reading. DWDS gives it ten senses with an auxiliary
+stated for each: six with haben, the shipped "break by shooting" among them, and four with sein,
+all about something rushing in, whether water below deck, a nursing mother's milk (*wenn die
+Milch einschießt*), or a sudden cramp (*mir ist ein Krampf eingeschossen*). The new reading is
+"rush in, flood in". zustreben and emporstreben flipped to sein, the only auxiliary DWDS gives
+either, and emporstreben's kaikki wording "strive to a height, aim to a height" became "rise up,
+soar", which is what its Gothic spires do. vorschießen's "advance" became "advance (money)",
+because the bare word also reads as moving forward. entgegenstreben's "strive towards a certain
+direction" became "strive toward".
+
+**The labelled-sense defaults kept three verbs single.** vorschießen and losschießen each have a
+sein sense of sudden motion, "dash forward" and "dash off", and DWDS labels both
+*umgangssprachlich*, which the defaults count as failing criterion 2. aufschießen is the case that
+sits worst with me. It ships "shoot open", a lock shot open, which only kaikki has and labels
+colloquial, and its authored sentence uses it. DWDS does not have that sense at all. Its main
+sense is "shoot up", *die Pilze sind aufgeschossen*, with sein and no label. The umbrechen default
+says a labelled primary keeps its single reading, and it was applied as written. The review list
+names it as the call most worth reversing.
+
+**Two more verbs were deferred for want of a source.** zusammenstreben has no entry anywhere.
+überschießen has a DWDS entry, "ist übergeschossen", but only for milk boiling over, labelled
+regional, and for overshooting, and nothing covers the shipped "shoot something over something".
+Its football sentence, *schoss er weit über*, does not fit that gloss either, which is a gloss
+problem left for Josh rather than an auxiliary one this plan can settle.
+
+The rest kept haben on plain evidence: verschießen (its "fade" homograph is colloquial and mostly
+a participle), niederschießen (Wiktionary's "swoop down" has no DWDS definition), streben and
+anstreben (left single by the July pass, and confirmed), and auseinanderstreben, whose Duden
+"move apart" with ist was ruled marginal for a verb ranked near 3,400. No etymology made a claim
+the rulings falsified. The Sonnet review of six readings found nothing.
+
+What a user would see changed: einschießen offers "rush in, flood in" with sein, zustreben and
+emporstreben build the Perfekt with sein, and three glosses read more plainly. 91 verbs now have
+more than one reading. The rulings file has 170 readings of 119 verbs, the suite is still 224
+tests, and the worklist is 133.

@@ -9134,3 +9134,67 @@ its shipped encoding, so the at-odds count fell from 5 to 4. Scan 2 fell from 26
 
 What a user would see changed: schaffen leads with "create", conjugated *schuf, geschaffen*, and
 keeps "manage" as a second reading. 120 verbs now have more than one reading.
+
+## Tranche 3's importer, and what its first dry run caught (2026-11-10)
+
+Roadmap step 9 was released when the auxiliary screen landed, and Josh asked for the importer
+itself the same evening, built to a dry run with the cutoff left to him. It is
+`verbdata/import_tranche3.py`. Its scope is the verified bare weak and *-ieren* stems that kaikki
+has and the app lacks, 2,982 of them. Almost none of tranche 2's rules carried over, because
+almost all of them leaned on a base verb. tranche 2 inherited each icon from the base, scaled
+the base's count for `hi`, and defined scope as "has a prefix and a shipping base", and a bare
+stem has no base. What did carry over is imported, not copied: the gloss normalizer, the quality
+filters, and the auxiliary screen.
+
+**Frequency is measured now, not estimated.** BBAW's permission means `hi` can be a real DWDS
+count. The fetch probed each lemma with two verbal forms from kaikki's table, as the fetcher's
+header asks for a bulk import, at two workers. 2,614 of 2,850 lemmas verified in about 50
+minutes. Most of the 236 quarantined were the verbs' own doing: 46 have no hits, and 129 are
+rare words whose forms DWDS does not lemmatize. But 57 were the probe's fault. An *-ieren*
+verb's participle and Präsens 3s are the same string (*schockiert*), so it got one probe, and
+DWDS read that participle as the lexicalized adjective. That is *runden* → *rund* one step
+removed, and it cost common verbs: *irritieren*, *schockieren*, *resignieren*. A repair pass
+re-probed them with the Präsens 1s and the Präteritum 3s (*schockiere*, *schockierte*), which
+no adjective takes, and recovered the 14 that are real verbs. The importer now has a
+`--write-repair-lemmas` mode for exactly that.
+
+**The first dry run's head was wrong, and that was its most useful output.** It ranked
+*sondern* first with 26.4 million hits, then *sieben* and *modern*. Those are the conjunction,
+the numeral, and the adjective. DWDS counts a lemma string across parts of speech. When the
+verb's infinitive is itself another word's lemma, both probes resolve to that lemma and agree,
+and the gate cannot see it. *sondern* would have entered the corpus at rank 22, above *machen*'s
+neighbours. No count can detect this, so the importer holds a named list of three, found by
+reading the first 600 rows. Its header says plainly that nobody has read past row 600.
+
+The same reading found a second hole. *zusammensuchen* was a "bare stem" at rank 1,000, and
+kaikki gives its participle as *gezusammensucht*. That is English Wiktionary's auto-generated
+weak table, the defect the roadmap already records for *anlesen* and *aufwaschen*, arriving
+this time without its prefix marked. The importer now holds any bare candidate that splits into
+a prefix the corpus uses and a verb it ships. It caught six: three corrupt tables, *abservieren*
+(separable, so *serviere ab!*), and two that are right as bare stems (*weissagen*, *gutachten*).
+
+**And the screen learned one more thing.** Reading the sein verbs in the ranked list, *wachen*
+"be awake" was about to import with sein, because kaikki gives it sein only. That is zuziehen's
+error turned around: a lemma auxiliary nothing contradicts explicitly. A broad fix, holding any
+sein lemma whose gloss is not a motion verb, would have held 43 of 76 sein verbs, nearly all of
+them real motion verbs (*stroll*, *gallop*) that my English list lacks. The narrow fix holds a
+sein-only lemma whose gloss is a state or posture ("be …", *squat*, *watch*). That is where
+standard German says haben and the south says sein: *gewacht*, *gehockt*, *gestanden*. It holds
+*wachen* and *hocken*, and costs two looks (*avancieren*, *vazieren*). Re-screening the shipped
+corpus, recall on the rulings is 127 of 130, and it now includes übergehen and schaffen. The new
+flag adds eight shipped verbs. Two of them look like real defects: *bereitstehen* and
+*näherstehen*, *stehen* derivatives that ship sein. They are raised, not swept.
+
+**Icons** follow Josh's choice, a keyword map from the gloss's head word to the symbols the
+488 hand-iconned stems already use in habitual ways: speech `wave`, thought `yoga`, cooking
+`cooldown`, conflict `boxing`. It covers 34 of the top 100 and 835 of 2,505 overall, and
+everything else gets `flexibility`, the corpus's commonest symbol. The tail is 1,700 distinct
+English head words, and no map will cover it.
+
+The dry run's result is 2,505 importable verbs in `verbdata/tranche3-ranked.tsv`, most frequent
+first, each with the corpus rank it would take. The top 100 (through *prognostizieren*) would
+land above rank 1,223 of today's 3,572, the top 500 above 1,809, and the top 1,000 above 2,367.
+115 verbs are held for auxiliary rulings, which would be 187 proposed rows. `Verbs.xml` is
+untouched. The cutoff is Josh's.
+
+What a user would see changed: nothing yet.

@@ -202,7 +202,7 @@ Wiktionary and Wikipedia text is CC BY-SA 4.0. Deriving the verb database from t
 
    Deferred, and recorded in `docs/roadmap.md` § "The tranche-2 deferrals": 182 derivatives needing an ablaut group that does not ship, 176 dual-auxiliary verbs shipping one reading, 70 with unusable glosses, and 28 the prefix check still rejects.
 
-7. Then new weak stems in DWDS-frequency order until taste says stop; 6,000+ verbs are reachable from the 6,980-verb both-Wiktionaries pool alone. **Gated on a reply from BBAW** — see "`hi` is blocked" below and [`dwds-permission-email.md`](dwds-permission-email.md). Steps 5 and 6 are unaffected, since they are defined by membership rather than by frequency order; only this long tail needs a ranking. If no reply arrives, rank by a provisional source and mark it for re-derivation.
+7. **Importer written and dry-run 2026-11-10** (`verbdata/import_tranche3.py`; roadmap step 9 has the numbers); the cutoff waits for Josh. Then new weak stems in DWDS-frequency order until taste says stop; 6,000+ verbs are reachable from the 6,980-verb both-Wiktionaries pool alone. **Gated on a reply from BBAW** — see "`hi` is blocked" below and [`dwds-permission-email.md`](dwds-permission-email.md). Steps 5 and 6 are unaffected, since they are defined by membership rather than by frequency order; only this long tail needs a ranking. If no reply arrives, rank by a provisional source and mark it for re-derivation.
 
 8. Feed `etymology_text` into the existing `Etymologies.json` pipeline; kaikki removes the need for the Chrome-based per-page extraction described in `docs/etymologies.md` for new verbs. 5,979 verified incoming verbs carry one.
 

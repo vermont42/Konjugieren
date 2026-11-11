@@ -20,7 +20,7 @@ completes.
 | 7 | Import tranche 1: strong bases | [`verb-sources.md`](verb-sources.md) next-steps item 5 | ✅ 2026-07-19 | steps 4–6 ✅; `hi` policy decided |
 | 8 | Import tranche 2: prefixed derivatives | [`verb-sources.md`](verb-sources.md) next-steps item 6 | ✅ 2026-07-19 | step 5 ✅; prefix inventory widened |
 | 8b | Clear the tranche-2 deferrals | this file, § "The tranche-2 deferrals" | ✅ 2026-07-19 | step 8 ✅ |
-| 9 | Import tranche 3: weak stems by frequency | [`verb-sources.md`](verb-sources.md) next-steps item 7 | ⏳ unblocked 2026-11-10, not started | ✅ the auxiliary screen (Part 6 of [`../plans/fix-reference-defects.md`](../plans/fix-reference-defects.md)); its importer must call `verbdata/auxiliary_screen.py` |
+| 9 | Import tranche 3: weak stems by frequency | [`verb-sources.md`](verb-sources.md) next-steps item 7 | ⏳ importer written and dry-run 2026-11-10; awaiting Josh's cutoff | ✅ the auxiliary screen (Part 6 of [`../plans/fix-reference-defects.md`](../plans/fix-reference-defects.md)); a cutoff, chosen from `verbdata/tranche3-ranked.tsv` |
 | 10 | Etymologies **and example sentences**, in one pipeline | [`../prompts/uses_etymologies.md`](../prompts/uses_etymologies.md) | ✅ 2026-07-23 | phase 0 ✅ |
 | 11 | The docs sweep | [`verb-sources.md`](verb-sources.md) next-steps item 9 | ✅ 2026-07-24 | step 10 ✅ |
 
@@ -37,12 +37,25 @@ one spelling, or with a sense that contradicts the lemma's auxiliary is not impo
 until they are ruled. Screening the shipped corpus as if it were incoming, it flags 125 of the
 128 verbs Parts 1 and 6 changed, and the other three were never the importer's.
 
-**What step 9 still needs before it runs.** No tranche-3 importer exists. Tranches 1 and 2 each
-got a script of their own, and tranche 3's scope (unprefixed weak stems, ranked by frequency)
-is outside `import_tranche2.py`'s, which requires a prefix and a shipping base. Write it as a new
-script that imports `auxiliary_screen` rather than copying it, and expect it to hold back a few
-percent of its verbs for rulings: the screen holds back 109 of the 3,320 shipped verbs that no
-ruling touched, 43 of them verbs that already have two readings.
+**The importer exists and has run dry (2026-11-10).** `verbdata/import_tranche3.py` takes the
+2,982 verified bare weak and *-ieren* stems, imports `auxiliary_screen` and tranche 2's
+normalizer and filters, sets `hi` to a real DWDS count (two-probe verified, fetched under BBAW's
+permission at two workers), and picks icons from a keyword map over the gloss. Its header has the
+run order. The dry run found **2,505 importable** and wrote them, most frequent first, to
+`verbdata/tranche3-ranked.tsv`: the top 100 would land above corpus rank 1,223, the top 500 above
+1,809, the top 1,000 above 2,367. `verbdata/tranche3-deferred.txt` holds the rest with reasons:
+221 without a verified count, 115 held for an auxiliary ruling (187 proposed rows on a real
+run), 132 by tranche 2's quality filters, and two kinds the first dry run exposed. Three
+**same-string homographs** (*sondern*, *sieben*, *modern*) defeat the probe gate, because DWDS
+counts a lemma string across parts of speech, and *sondern* would have ranked 22nd. Six
+**hidden compounds** (*zusammensuchen*, with kaikki's corrupt *gezusammensucht*) arrived as bare
+stems.
+
+**What step 9 still needs.** A cutoff, which is Josh's: the roadmap leaves it to taste, and the
+ranked list is what to read. Rows past 600 have not been read by eye for homographs. After a real
+import: the doc counts (`check_docs.py` names them), the classifier run, and the step-10 pipeline
+for etymologies and sentences, since new verbs have neither. The 2,230 prefixed verbs on bases
+tranche 3 adds become tranche 2's work, by re-running `import_tranche2.py` to a fixpoint.
 
 **Step 10 was larger than it looked, and its own doc said otherwise — now settled.**
 [`etymology-pipeline.md`](etymology-pipeline.md) led with "COMPLETE — every verb in `Verbs.xml` is

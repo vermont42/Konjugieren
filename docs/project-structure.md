@@ -299,6 +299,9 @@ verbdata/                      # Verb-corpus-expansion data (see docs/verb-sourc
 ├── add_readings.py            # One-shot migration that gave every verb a <reading> child (roadmap step 5)
 ├── import_tranche1.py         # One-shot import of the 78 missing strong bases (roadmap step 7); the decision table is the artifact
 ├── import_tranche2.py         # Rule-driven import of 2,303 prefixed derivatives (roadmap step 8); hi derived from each base. --check --screen V,V runs named verbs through every decision and writes nothing
+├── import_tranche3.py         # Tranche 3 (roadmap step 9): bare weak and -ieren stems, hi from a two-probe DWDS fetch, icons by gloss keyword; --write-lemmas, --write-repair-lemmas, --check, then --top N / --min-hits H
+├── tranche3-ranked.tsv        # import_tranche3.py --check output: every importable verb, most frequent first, with the corpus rank it would take. The list a cutoff is chosen from
+├── tranche3-deferred.txt      # import_tranche3.py --check output: every tranche-3 candidate held back, and why. Recomputed each run
 ├── auxiliary_screen.py        # Shared by importers: ay from the same kaikki sense as tn; holds back dual-auxiliary, separability-homograph, family-split, and sense-contradicted verbs as `proposed` rows in auxiliary-rulings.tsv
 ├── tranche2-dual-auxiliary.txt # Frozen 2026-11-10: the verbs tranche 2 shipped with one reading of two. History; auxiliary-rulings.tsv is the current record
 ├── audit_auxiliaries.py       # Compares every shipped reading's auxiliary with kaikki, sense by sense, and with auxiliary-rulings.tsv. --unruled prints the worklist; --check fails on any reading that disagrees with its ruling, on any listed verb still unruled, and on any `proposed` row an importer wrote

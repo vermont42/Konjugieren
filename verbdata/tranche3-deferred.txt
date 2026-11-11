@@ -1,0 +1,479 @@
+# Tranche-3 candidates NOT importable, and why. Recomputed on every --check.
+# verb	reason
+abalienieren	no verified DWDS count (quarantined, or not fetched)
+abhorreszieren	no verified DWDS count (quarantined, or not fetched)
+abhorrieren	no verified DWDS count (quarantined, or not fetched)
+abiturieren	no verified DWDS count (quarantined, or not fetched)
+abservieren	hidden compound: looks like ab+servieren, a prefixed derivative of a shipping verb; check its table against German Wiktionary (kaikki gives abserviert)
+abstrudeln	no verified DWDS count (quarantined, or not fetched)
+acetylieren	no verified DWDS count (quarantined, or not fetched)
+adden	no verified DWDS count (quarantined, or not fetched)
+agacieren	no verified DWDS count (quarantined, or not fetched)
+aliquotieren	no verified DWDS count (quarantined, or not fetched)
+amenagieren	no verified DWDS count (quarantined, or not fetched)
+applicieren	every gloss points at another entry rather than translating
+arrivieren	needs an auxiliary ruling: sense contradicts lemma: an intransitive sense of motion or change ('succeed') under a haben-only lemma
+auditieren	no verified DWDS count (quarantined, or not fetched)
+aufkonzentrieren	no usable translation survived normalization
+avancieren	needs an auxiliary ruling: sense contradicts lemma: a state or posture ('be') under a sein-only lemma
+balbieren	every gloss points at another entry rather than translating
+bappen	no verified DWDS count (quarantined, or not fetched)
+bashen	no verified DWDS count (quarantined, or not fetched)
+batten	no verified DWDS count (quarantined, or not fetched)
+bausparen	no usable translation survived normalization
+beatboxen	no verified DWDS count (quarantined, or not fetched)
+beychten	archaic or pre-1996 orthography
+bingen	no verified DWDS count (quarantined, or not fetched)
+bingewatchen	no verified DWDS count (quarantined, or not fetched)
+binnendifferenzieren	no verified DWDS count (quarantined, or not fetched)
+bitchen	no verified DWDS count (quarantined, or not fetched)
+bladen	no verified DWDS count (quarantined, or not fetched)
+blaken	no usable translation survived normalization
+blassen	every gloss points at another entry rather than translating
+blitzdingsen	no usable translation survived normalization
+blochen	every gloss points at another entry rather than translating
+bonieren	no usable translation survived normalization
+bosseln	Swiss ss-spelling of a verb written with ß
+bostitchen	no verified DWDS count (quarantined, or not fetched)
+boßeln	no verified DWDS count (quarantined, or not fetched)
+boßen	no verified DWDS count (quarantined, or not fetched)
+brafieren	every gloss points at another entry rather than translating
+brafiren	every gloss points at another entry rather than translating
+brammeln	no verified DWDS count (quarantined, or not fetched)
+bratschen	no verified DWDS count (quarantined, or not fetched)
+brausen	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+bravieren	no verified DWDS count (quarantined, or not fetched)
+braviren	every gloss points at another entry rather than translating
+bröckeln	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+bummeln	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+butzen	every gloss points at another entry rather than translating
+bürsteln	no verified DWDS count (quarantined, or not fetched)
+büseln	no verified DWDS count (quarantined, or not fetched)
+büssen	Swiss ss-spelling of a verb written with ß
+cachen	no verified DWDS count (quarantined, or not fetched)
+casten	no verified DWDS count (quarantined, or not fetched)
+clustern	no verified DWDS count (quarantined, or not fetched)
+colorieren	every gloss points at another entry rather than translating
+concessionieren	every gloss points at another entry rather than translating
+copen	no verified DWDS count (quarantined, or not fetched)
+coventrieren	no usable translation survived normalization
+coventrisieren	every gloss points at another entry rather than translating
+cracken	no verified DWDS count (quarantined, or not fetched)
+cringen	no verified DWDS count (quarantined, or not fetched)
+dabben	no verified DWDS count (quarantined, or not fetched)
+darreichen	hidden compound: looks like dar+reichen, a prefixed derivative of a shipping verb; check its table against German Wiktionary (kaikki gives gedarreicht)
+daten	no verified DWDS count (quarantined, or not fetched)
+deamerikanisieren	no verified DWDS count (quarantined, or not fetched)
+defenestrieren	no verified DWDS count (quarantined, or not fetched)
+depublizieren	no verified DWDS count (quarantined, or not fetched)
+deutschtümeln	no verified DWDS count (quarantined, or not fetched)
+dictieren	every gloss points at another entry rather than translating
+diffundieren	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+dimerisieren	no verified DWDS count (quarantined, or not fetched)
+dissen	no verified DWDS count (quarantined, or not fetched)
+dollarisieren	no verified DWDS count (quarantined, or not fetched)
+doomscrollen	no verified DWDS count (quarantined, or not fetched)
+doublieren	every gloss points at another entry rather than translating
+doxen	no verified DWDS count (quarantined, or not fetched)
+droppen	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+dräuen	every gloss points at another entry rather than translating
+duckmäusern	no verified DWDS count (quarantined, or not fetched)
+dörren	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+eiern	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+eilen	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+eintrocknen	hidden compound: looks like ein+trocknen, a prefixed derivative of a shipping verb; check its table against German Wiktionary (kaikki gives geeintrocknet)
+emailen	every gloss points at another entry rather than translating
+endigen	every gloss points at another entry rather than translating
+energetisieren	no verified DWDS count (quarantined, or not fetched)
+enervieren	every gloss points at another entry rather than translating
+erzen	no verified DWDS count (quarantined, or not fetched)
+eskalieren	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+etappieren	no verified DWDS count (quarantined, or not fetched)
+eternisieren	no verified DWDS count (quarantined, or not fetched)
+facebooken	no verified DWDS count (quarantined, or not fetched)
+famulieren	no usable translation survived normalization
+farmen	no verified DWDS count (quarantined, or not fetched)
+faven	no verified DWDS count (quarantined, or not fetched)
+festen	no verified DWDS count (quarantined, or not fetched)
+fetzen	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+flashen	no verified DWDS count (quarantined, or not fetched)
+flauchen	no verified DWDS count (quarantined, or not fetched)
+flensen	no verified DWDS count (quarantined, or not fetched)
+flexen	no verified DWDS count (quarantined, or not fetched)
+flitschen	no verified DWDS count (quarantined, or not fetched)
+fluppen	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+flössen	every gloss points at another entry rather than translating
+flüchten	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+fodern	every gloss points at another entry rather than translating
+followen	no verified DWDS count (quarantined, or not fetched)
+fotodokumentieren	no verified DWDS count (quarantined, or not fetched)
+fotographieren	every gloss points at another entry rather than translating
+foutieren	no verified DWDS count (quarantined, or not fetched)
+framen	no verified DWDS count (quarantined, or not fetched)
+fringsen	no verified DWDS count (quarantined, or not fetched)
+fritieren	every gloss points at another entry rather than translating
+froschen	no verified DWDS count (quarantined, or not fetched)
+fuddeln	every gloss points at another entry rather than translating
+fudeln	no verified DWDS count (quarantined, or not fetched)
+fussen	Swiss ss-spelling of a verb written with ß
+futieren	every gloss points at another entry rather than translating
+fußeln	no verified DWDS count (quarantined, or not fetched)
+fönen	every gloss points at another entry rather than translating
+förchten	every gloss points at another entry rather than translating
+füßeln	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+gamifizieren	no verified DWDS count (quarantined, or not fetched)
+gaukeln	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+gecken	no verified DWDS count (quarantined, or not fetched)
+gegnen	no verified DWDS count (quarantined, or not fetched)
+geisseln	Swiss ss-spelling of a verb written with ß
+gendern	no usable translation survived normalization
+geten	every gloss points at another entry rather than translating
+gibbeln	no verified DWDS count (quarantined, or not fetched)
+gilben	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+gilden	no verified DWDS count (quarantined, or not fetched)
+gilten	no verified DWDS count (quarantined, or not fetched)
+glaubern	no verified DWDS count (quarantined, or not fetched)
+glawben	every gloss points at another entry rather than translating
+glottalisieren	no verified DWDS count (quarantined, or not fetched)
+gnietschen	no verified DWDS count (quarantined, or not fetched)
+goonen	no verified DWDS count (quarantined, or not fetched)
+gotifizieren	no verified DWDS count (quarantined, or not fetched)
+gruscheln	every gloss points at another entry rather than translating
+grüssen	Swiss ss-spelling of a verb written with ß
+gutachten	hidden compound: looks like gut+achten, a prefixed derivative of a shipping verb; check its table against German Wiktionary (kaikki gives gegutachtet)
+gäten	every gloss points at another entry rather than translating
+hampeln	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+hangeln	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+hartzen	no verified DWDS count (quarantined, or not fetched)
+hasslieben	no verified DWDS count (quarantined, or not fetched)
+haten	no verified DWDS count (quarantined, or not fetched)
+hecheln	no usable translation survived normalization
+heichen	no verified DWDS count (quarantined, or not fetched)
+heparinisieren	no verified DWDS count (quarantined, or not fetched)
+herbsteln	needs an auxiliary ruling: sense contradicts lemma: an intransitive sense of motion or change ('become') under a haben-only lemma
+herbsten	needs an auxiliary ruling: sense contradicts lemma: an intransitive sense of motion or change ('become') under a haben-only lemma
+hercheln	every gloss points at another entry rather than translating
+heuen	no verified DWDS count (quarantined, or not fetched)
+heylen	every gloss points at another entry rather than translating
+hircheln	every gloss points at another entry rather than translating
+hitten	no verified DWDS count (quarantined, or not fetched)
+hocken	needs an auxiliary ruling: sense contradicts lemma: a state or posture ('squat') under a sein-only lemma
+holpern	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+hotzen	no verified DWDS count (quarantined, or not fetched)
+hudeln	needs an auxiliary ruling: sense contradicts lemma: an intransitive sense of motion or change ('hurry') under a haben-only lemma
+humpeln	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+hupfen	every gloss points at another entry rather than translating
+händeln	every gloss points at another entry rather than translating
+hörcheln	every gloss points at another entry rather than translating
+hüppen	every gloss points at another entry rather than translating
+inlinern	no verified DWDS count (quarantined, or not fetched)
+inskribieren	no usable translation survived normalization
+instanziieren	no verified DWDS count (quarantined, or not fetched)
+intensifizieren	no verified DWDS count (quarantined, or not fetched)
+interkulturalisieren	no verified DWDS count (quarantined, or not fetched)
+irregularisieren	no verified DWDS count (quarantined, or not fetched)
+irren	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+isomerisieren	no verified DWDS count (quarantined, or not fetched)
+joggen	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+jotieren	no verified DWDS count (quarantined, or not fetched)
+juchzen	every gloss points at another entry rather than translating
+juxtaponieren	no usable translation survived normalization
+kacheln	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+kallen	no verified DWDS count (quarantined, or not fetched)
+kanzellieren	no verified DWDS count (quarantined, or not fetched)
+kardieren	every gloss points at another entry rather than translating
+kartographieren	every gloss points at another entry rather than translating
+kebbeln	every gloss points at another entry rather than translating
+kippen	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+kleckern	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+kletzeln	no verified DWDS count (quarantined, or not fetched)
+klitisieren	no verified DWDS count (quarantined, or not fetched)
+knibbeln	no usable translation survived normalization
+knicken	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+kniepen	no verified DWDS count (quarantined, or not fetched)
+knixen	every gloss points at another entry rather than translating
+knüddeln	no verified DWDS count (quarantined, or not fetched)
+koagulieren	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+kollern	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+kommodifizieren	no verified DWDS count (quarantined, or not fetched)
+komplexieren	no verified DWDS count (quarantined, or not fetched)
+kontraindizieren	no verified DWDS count (quarantined, or not fetched)
+krabbeln	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+kraulen	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+kreissen	Swiss ss-spelling of a verb written with ß
+kremen	every gloss points at another entry rather than translating
+kreuzen	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+krosen	every gloss points at another entry rather than translating
+kräftigen	every gloss points at another entry rather than translating
+krösen	no verified DWDS count (quarantined, or not fetched)
+kucken	every gloss points at another entry rather than translating
+kudern	no verified DWDS count (quarantined, or not fetched)
+kutschieren	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+käbbeln	every gloss points at another entry rather than translating
+käuen	every gloss points at another entry rather than translating
+käufen	every gloss points at another entry rather than translating
+labeln	no verified DWDS count (quarantined, or not fetched)
+laggen	no verified DWDS count (quarantined, or not fetched)
+lakonisieren	no verified DWDS count (quarantined, or not fetched)
+latzen	no verified DWDS count (quarantined, or not fetched)
+launchen	no verified DWDS count (quarantined, or not fetched)
+leaken	no verified DWDS count (quarantined, or not fetched)
+leveln	no verified DWDS count (quarantined, or not fetched)
+liken	no verified DWDS count (quarantined, or not fetched)
+lobbyieren	no verified DWDS count (quarantined, or not fetched)
+lobotomisieren	no verified DWDS count (quarantined, or not fetched)
+locieren	every gloss points at another entry rather than translating
+luschern	no verified DWDS count (quarantined, or not fetched)
+läppern	no usable translation survived normalization
+läugnen	every gloss points at another entry rather than translating
+lüpfen	no usable translation survived normalization
+markten	no verified DWDS count (quarantined, or not fetched)
+mauzen	every gloss points at another entry rather than translating
+mesalliieren	no verified DWDS count (quarantined, or not fetched)
+mesmerisieren	no verified DWDS count (quarantined, or not fetched)
+metabolisieren	no verified DWDS count (quarantined, or not fetched)
+mikrominiaturisieren	no verified DWDS count (quarantined, or not fetched)
+miktieren	no verified DWDS count (quarantined, or not fetched)
+mikturieren	no verified DWDS count (quarantined, or not fetched)
+minen	no verified DWDS count (quarantined, or not fetched)
+missinterpretieren	Swiss ss-spelling of a verb written with ß
+mißinterpretieren	archaic or pre-1996 orthography
+modern	same-string homograph: DWDS count includes the adjective modern (6,321,959 hits); no verb-only count exists
+monogrammieren	no usable translation survived normalization
+moppern	every gloss points at another entry rather than translating
+mouillieren	no verified DWDS count (quarantined, or not fetched)
+mumifizieren	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+musicieren	every gloss points at another entry rather than translating
+mutmassen	Swiss ss-spelling of a verb written with ß
+mässigen	Swiss ss-spelling of a verb written with ß
+möppern	no verified DWDS count (quarantined, or not fetched)
+müffeln	no verified DWDS count (quarantined, or not fetched)
+müßigen	no verified DWDS count (quarantined, or not fetched)
+nahen	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+nazifizieren	no verified DWDS count (quarantined, or not fetched)
+necksen	no verified DWDS count (quarantined, or not fetched)
+niftern	no verified DWDS count (quarantined, or not fetched)
+nimbieren	no verified DWDS count (quarantined, or not fetched)
+numerieren	archaic or pre-1996 orthography
+nässen	needs an auxiliary ruling: sense contradicts lemma: an intransitive sense of motion or change ('become') under a haben-only lemma
+obfuskieren	no verified DWDS count (quarantined, or not fetched)
+obsen	no verified DWDS count (quarantined, or not fetched)
+obsoleszieren	no verified DWDS count (quarantined, or not fetched)
+omittieren	no verified DWDS count (quarantined, or not fetched)
+oxidieren	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+paprizieren	no usable translation survived normalization
+parentifizieren	no verified DWDS count (quarantined, or not fetched)
+parshippen	no verified DWDS count (quarantined, or not fetched)
+patrouillieren	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+patschen	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+pecken	no verified DWDS count (quarantined, or not fetched)
+pedalieren	no verified DWDS count (quarantined, or not fetched)
+pempern	no verified DWDS count (quarantined, or not fetched)
+pendeln	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+peroxidieren	no verified DWDS count (quarantined, or not fetched)
+persifizieren	no verified DWDS count (quarantined, or not fetched)
+pexieren	every gloss points at another entry rather than translating
+pfauchen	every gloss points at another entry rather than translating
+pfriemeln	every gloss points at another entry rather than translating
+pfurzen	no verified DWDS count (quarantined, or not fetched)
+photoshoppen	no verified DWDS count (quarantined, or not fetched)
+picken	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+pieksen	every gloss points at another entry rather than translating
+pingen	no verified DWDS count (quarantined, or not fetched)
+pipettieren	no verified DWDS count (quarantined, or not fetched)
+pirschen	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+pitschen	no usable translation survived normalization
+placieren	every gloss points at another entry rather than translating
+pladdern	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+plantschen	every gloss points at another entry rather than translating
+plazieren	archaic or pre-1996 orthography
+plumpen	every gloss points at another entry rather than translating
+plumpfen	every gloss points at another entry rather than translating
+plästern	no verified DWDS count (quarantined, or not fetched)
+pollen	no verified DWDS count (quarantined, or not fetched)
+poltern	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+portraitieren	every gloss points at another entry rather than translating
+pragmatisieren	no usable translation survived normalization
+prallen	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+pritscheln	no verified DWDS count (quarantined, or not fetched)
+producieren	every gloss points at another entry rather than translating
+projicieren	every gloss points at another entry rather than translating
+prokrastinieren	no verified DWDS count (quarantined, or not fetched)
+promotieren	no verified DWDS count (quarantined, or not fetched)
+prompten	no verified DWDS count (quarantined, or not fetched)
+pronunzieren	no verified DWDS count (quarantined, or not fetched)
+prägeln	every gloss points at another entry rather than translating
+prütteln	no verified DWDS count (quarantined, or not fetched)
+pubertieren	needs an auxiliary ruling: sense contradicts lemma: an intransitive sense of motion or change ('go') under a haben-only lemma
+puschen	every gloss points at another entry rather than translating
+putrifizieren	no verified DWDS count (quarantined, or not fetched)
+pöhlen	no verified DWDS count (quarantined, or not fetched)
+püttkern	no usable translation survived normalization
+quarantänisieren	no verified DWDS count (quarantined, or not fetched)
+quitten	no verified DWDS count (quarantined, or not fetched)
+radebrechen	no verified DWDS count (quarantined, or not fetched)
+ragen	needs an auxiliary ruling: sense contradicts lemma: an intransitive sense of motion or change ('rise') under a haben-only lemma
+raiden	no verified DWDS count (quarantined, or not fetched)
+rallen	no verified DWDS count (quarantined, or not fetched)
+ramifizieren	no verified DWDS count (quarantined, or not fetched)
+ranken	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+rasen	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+ratfragen	no verified DWDS count (quarantined, or not fetched)
+rauschen	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+rawben	every gloss points at another entry rather than translating
+rechen	no verified DWDS count (quarantined, or not fetched)
+regurgitieren	no verified DWDS count (quarantined, or not fetched)
+reifen	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+reinstitutionalisieren	no verified DWDS count (quarantined, or not fetched)
+rekeln	every gloss points at another entry rather than translating
+rekuperieren	no verified DWDS count (quarantined, or not fetched)
+relevieren	no verified DWDS count (quarantined, or not fetched)
+rendern	no verified DWDS count (quarantined, or not fetched)
+replicieren	every gloss points at another entry rather than translating
+reviewen	no verified DWDS count (quarantined, or not fetched)
+reüssieren	needs an auxiliary ruling: sense contradicts lemma: an intransitive sense of motion or change ('succeed') under a haben-only lemma
+rieseln	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+risikostratifizieren	no verified DWDS count (quarantined, or not fetched)
+rodeln	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+rooten	no verified DWDS count (quarantined, or not fetched)
+rosten	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+rudelbumsen	no verified DWDS count (quarantined, or not fetched)
+rudern	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+rumpeln	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+rumsen	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+russen	Swiss ss-spelling of a verb written with ß
+räuchen	every gloss points at another entry rather than translating
+rören	every gloss points at another entry rather than translating
+rütschen	every gloss points at another entry rather than translating
+sacken	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+saisieren	no verified DWDS count (quarantined, or not fetched)
+sandeln	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+sausen	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+scharmieren	every gloss points at another entry rather than translating
+schiffen	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+schippern	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+schlappen	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+schlatzen	no verified DWDS count (quarantined, or not fetched)
+schlenkern	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+schleudern	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+schliefen	no usable translation survived normalization
+schlingern	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+schlumpfen	no verified DWDS count (quarantined, or not fetched)
+schlussfolgern	no verified DWDS count (quarantined, or not fetched)
+schmuddeln	needs an auxiliary ruling: sense contradicts lemma: an intransitive sense of motion or change ('become') under a haben-only lemma
+schneien	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+schneuzen	archaic or pre-1996 orthography
+schnibbeln	every gloss points at another entry rather than translating
+schrammen	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+schrecken	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein; family split: a strong and a weak verb under this spelling
+schriffeln	no verified DWDS count (quarantined, or not fetched)
+schrumpfen	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+schränken	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+schwabbeln	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+schwanken	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+schwappen	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+schweben	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+schweifen	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+schweppern	no verified DWDS count (quarantined, or not fetched)
+schweren	no verified DWDS count (quarantined, or not fetched)
+schwirren	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+schwojen	no verified DWDS count (quarantined, or not fetched)
+schönfinkeln	no verified DWDS count (quarantined, or not fetched)
+schürzen	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+semmeln	no verified DWDS count (quarantined, or not fetched)
+servicieren	no verified DWDS count (quarantined, or not fetched)
+sexeln	no verified DWDS count (quarantined, or not fetched)
+sharen	no verified DWDS count (quarantined, or not fetched)
+sieben	same-string homograph: DWDS count includes the numeral sieben (6,322,623 hits); no verb-only count exists
+siedeln	needs an auxiliary ruling: sense contradicts lemma: an intransitive sense of motion or change ('settle') under a haben-only lemma
+silbieren	no verified DWDS count (quarantined, or not fetched)
+simultandolmetschen	no verified DWDS count (quarantined, or not fetched)
+skaten	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+snöben	no verified DWDS count (quarantined, or not fetched)
+sondern	same-string homograph: DWDS count includes the conjunction sondern (26,439,602 hits); no verb-only count exists
+spazieren	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+spechteln	no verified DWDS count (quarantined, or not fetched)
+spingsen	every gloss points at another entry rather than translating
+spinksen	no verified DWDS count (quarantined, or not fetched)
+spoilern	no verified DWDS count (quarantined, or not fetched)
+sprudeln	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+steinen	no verified DWDS count (quarantined, or not fetched)
+sticken	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+stiefeln	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+stochen	no verified DWDS count (quarantined, or not fetched)
+stoffen	no verified DWDS count (quarantined, or not fetched)
+strauchen	no verified DWDS count (quarantined, or not fetched)
+stritzeln	no verified DWDS count (quarantined, or not fetched)
+struggeln	no verified DWDS count (quarantined, or not fetched)
+strullern	no verified DWDS count (quarantined, or not fetched)
+stöbern	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+stürmen	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+suchten	no verified DWDS count (quarantined, or not fetched)
+sudern	no verified DWDS count (quarantined, or not fetched)
+suizidieren	no verified DWDS count (quarantined, or not fetched)
+surfen	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+surren	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+säuern	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+säumeln	no verified DWDS count (quarantined, or not fetched)
+süssen	Swiss ss-spelling of a verb written with ß
+tappen	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+telegrafieren	every gloss points at another entry rather than translating
+telephonieren	every gloss points at another entry rather than translating
+tigern	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+tindern	no verified DWDS count (quarantined, or not fetched)
+titschen	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+torkeln	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+torten	every gloss points at another entry rather than translating
+tosen	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+traben	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+trampeln	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+transchieren	every gloss points at another entry rather than translating
+trenden	no verified DWDS count (quarantined, or not fetched)
+trensen	every gloss points at another entry rather than translating
+trichtern	every gloss points at another entry rather than translating
+trollen	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+trossen	no verified DWDS count (quarantined, or not fetched)
+trudeln	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+trutzen	every gloss points at another entry rather than translating
+trödeln	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+tschechern	no verified DWDS count (quarantined, or not fetched)
+tuchen	no verified DWDS count (quarantined, or not fetched)
+tuckern	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+tweeten	no verified DWDS count (quarantined, or not fetched)
+twerken	no verified DWDS count (quarantined, or not fetched)
+tödten	every gloss points at another entry rather than translating
+töggelen	every gloss points at another entry rather than translating
+tüdeln	no verified DWDS count (quarantined, or not fetched)
+tümeln	no verified DWDS count (quarantined, or not fetched)
+türmen	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+ululieren	no verified DWDS count (quarantined, or not fetched)
+urtheilen	every gloss points at another entry rather than translating
+vandalieren	every gloss points at another entry rather than translating
+vazieren	needs an auxiliary ruling: sense contradicts lemma: a state or posture ('be') under a sein-only lemma
+vektorisieren	no verified DWDS count (quarantined, or not fetched)
+velarisieren	no verified DWDS count (quarantined, or not fetched)
+vietnamisieren	no verified DWDS count (quarantined, or not fetched)
+wachen	needs an auxiliary ruling: sense contradicts lemma: a state or posture ('be') under a sein-only lemma
+wallen	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+wanken	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+wassern	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+weimern	every gloss points at another entry rather than translating
+weissagen	hidden compound: looks like weis+sagen, a prefixed derivative of a shipping verb; check its table against German Wiktionary (kaikki gives geweissagt)
+weißsagen	every gloss points at another entry rather than translating
+werweissen	no verified DWDS count (quarantined, or not fetched)
+whatsappen	no verified DWDS count (quarantined, or not fetched)
+wibbeln	no usable translation survived normalization
+wirbeln	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+wispeln	every gloss points at another entry rather than translating
+wixxen	every gloss points at another entry rather than translating
+wullacken	no verified DWDS count (quarantined, or not fetched)
+wuppen	no verified DWDS count (quarantined, or not fetched)
+wurschteln	every gloss points at another entry rather than translating
+yahen	every gloss points at another entry rather than translating
+youzen	no usable translation survived normalization
+zischen	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+zuppen	every gloss points at another entry rather than translating
+zusammensuchen	hidden compound: looks like zusammen+suchen, a prefixed derivative of a shipping verb; check its table against German Wiktionary (kaikki gives gezusammensucht)
+zänggeln	no verified DWDS count (quarantined, or not fetched)
+züngeln	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+äussern	Swiss ss-spelling of a verb written with ß

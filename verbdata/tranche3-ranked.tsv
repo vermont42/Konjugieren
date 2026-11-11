@@ -1,0 +1,2508 @@
+# Importable tranche-3 verbs, most frequent first. Written by import_tranche3.py --check.
+# corpus_rank is where the verb would land among the verbs shipping today.
+rank	verb	hits	corpus_rank	tn	fa	ay	ic
+1	kassieren	1033800	635	collect, demand and enregister	i	h	flexibility
+2	sanieren	1017457	642	redevelop	i	h	flexibility
+3	argumentieren	737191	802	argue	i	h	wave
+4	nominieren	724323	810	nominate	i	h	flexibility
+5	tagen	710726	822	meet	w	h	2
+6	regieren	692225	841	govern	i	h	walk.arrival
+7	bremsen	673807	852	brake, slow down, decelerate	w	h	flexibility
+8	inszenieren	651153	869	stage, perform	i	h	flexibility
+9	plädieren	639041	877	plead	i	h	flexibility
+10	platzen	613368	894	burst, pop	w	s	flexibility
+11	listen	606470	899	list	w	h	flexibility
+12	schmücken	603057	903	adorn, decorate	w	h	walk.arrival
+13	protestieren	586764	921	protest	i	h	wave
+14	appellieren	585701	922	appeal	i	h	flexibility
+15	signalisieren	574854	937	signal	i	h	flexibility
+16	schwärmen	574573	937	swarm, fly in swarms or flocks	w	h	skiing.downhill
+17	mahnen	571627	997	urge to do a specific, necessary task	w	h	flexibility
+18	impfen	545548	1025	inoculate, vaccinate	w	h	flexibility
+19	wetten	536058	1035	bet	w	h	flexibility
+20	weigern	533584	1036	refuse	w	h	flexibility
+21	blühen	532703	1036	blossom or bloom	w	h	flexibility
+22	abonnieren	531775	1038	subscribe	i	h	flexibility
+23	urteilen	518950	1049	judge	w	h	flexibility
+24	moderieren	511803	1058	moderate	i	h	flexibility
+25	parken	497824	1070	park	w	h	flexibility
+26	staunen	496827	1071	be amazed or astonished, wonder or marvel	w	h	yoga
+27	missen	491148	1077	be without, lack	w	h	flexibility
+28	spekulieren	490217	1077	speculate	i	h	flexibility
+29	scheuen	488983	1078	shy, balk at	w	h	flexibility
+30	rüsten	485666	1080	equip, arm	w	h	flexibility
+31	telefonieren	478831	1088	have a telephone call	i	h	flexibility
+32	operieren	475056	1091	operate	i	h	flexibility
+33	jubeln	469952	1096	cheer, exult, rejoice loudly	w	h	flexibility
+34	bündeln	467711	1099	bundle	w	h	flexibility
+35	putzen	464842	1101	clean	w	h	pool.swim
+36	kandidieren	464728	1101	be a candidate	i	h	flexibility
+37	täuschen	464522	1101	deceive	w	h	play
+38	forschen	461898	1104	research	w	h	flexibility
+39	faszinieren	461057	1106	fascinate	i	h	flexibility
+40	fokussieren	458353	1109	focus to converge at a single point	i	h	archery
+41	koordinieren	443010	1122	coordinate, harmonize	i	h	flexibility
+42	küren	441817	1122	elect someone, present someone	w	h	flexibility
+43	klingeln	441227	1124	ring	w	h	wave
+44	schwächen	439989	1124	weaken, debilitate	w	h	flexibility
+45	stabilisieren	437515	1127	stabilize / stabilise	i	h	flexibility
+46	riskieren	433921	1130	risk	i	h	flexibility
+47	zweifeln	433769	1131	doubt, be doubtful	w	h	yoga
+48	knacken	429572	1134	make a cracking sound	w	h	flexibility
+49	schmunzeln	428552	1135	smile slightly, smirk	w	h	flexibility
+50	praktizieren	426281	1138	bring into practice	i	h	hiking
+51	publizieren	424397	1141	publish	i	h	flexibility
+52	festigen	422331	1146	consolidate, strengthen	w	h	flexibility
+53	initiieren	420429	1149	initiate	i	h	flexibility
+54	resultieren	417463	1149	result	i	h	flexibility
+55	kooperieren	417020	1149	cooperate	i	h	flexibility
+56	respektieren	411746	1152	respect	i	h	flexibility
+57	stemmen	410558	1154	heave, lift	w	h	strengthtraining.traditional
+58	sprengen	409836	1154	blow up, blast	w	h	wave
+59	distanzieren	409007	1154	distance	i	h	flexibility
+60	kompensieren	403249	1160	compensate	i	h	flexibility
+61	schulden	399317	1161	owe	w	h	flexibility
+62	beugen	398621	1161	bend something, bow something	w	h	flexibility
+63	stricken	395898	1163	knit	w	h	flexibility
+64	schöpfen	395446	1165	scoop up, draw with a bucket	w	h	walk.arrival
+65	mangeln	393500	1168	for there to be a lack	w	h	flexibility
+66	marschieren	392425	1170	march	i	s	walk
+67	wehen	391875	1170	blow	w	h	wave
+68	schnappen	389954	1171	snap	w	h	flexibility
+69	schlüpfen	386073	1175	slip	w	s	skating
+70	musizieren	384625	1179	make music	i	h	flexibility
+71	provozieren	382065	1180	provoke	i	h	boxing
+72	proben	381198	1182	rehearse	w	h	flexibility
+73	wahren	379946	1183	protect, safeguard	w	h	walk.motion
+74	hacken	379048	1185	chop, hack	w	h	fencing
+75	toben	378635	1185	rage, riot	w	h	flexibility
+76	infizieren	375911	1188	infect	i	h	flexibility
+77	lauschen	375503	1188	listen	w	h	mind.and.body
+78	konsumieren	372735	1189	consume	i	h	flexibility
+79	schimpfen	371060	1193	tell off, scold, yell at	w	h	wave
+80	renovieren	362900	1202	renovate	i	h	flexibility
+81	zögern	362183	1202	hesitate, pause before doing something	w	h	flexibility
+82	münden	361138	1204	flow	w	h	pool.swim
+83	programmieren	361083	1204	program	i	h	flexibility
+84	attackieren	360658	1205	attack	i	h	boxing
+85	explodieren	359353	1207	explode	i	s	flexibility
+86	alarmieren	358791	1208	alarm	i	h	flexibility
+87	stiften	356439	1208	found, create	w	h	walk.arrival
+88	zieren	355787	1208	decorate	w	h	walk.arrival
+89	heizen	355764	1208	heat	w	h	cooldown
+90	schädigen	354788	1209	damage, harm, hurt, injure	w	h	boxing
+91	strecken	353425	1211	stretch	w	h	flexibility
+92	streifen	352645	1211	brush, graze, stroke	w	h	cooldown
+93	halbieren	352217	1212	halve, cut in half, bisect	i	h	fencing
+94	komponieren	352032	1212	compose	i	h	flexibility
+95	regulieren	351302	1213	regulate	i	h	barre
+96	schälen	346994	1215	peel, pare, husk, skin	w	h	flexibility
+97	klauen	343611	1216	steal	w	h	flexibility
+98	strömen	340950	1220	flow, stream, pour	w	s	pool.swim
+99	krönen	340541	1220	crown	w	h	flexibility
+100	prognostizieren	338990	1223	predict	i	h	flexibility
+101	grenzen	338335	1223	border	w	h	flexibility
+102	importieren	337639	1223	import	i	h	flexibility
+103	isolieren	337431	1223	isolate, insulate	i	h	flexibility
+104	opfern	333169	1228	sacrifice, give up	w	h	handball
+105	lindern	332834	1228	alleviate, ease, relieve	w	h	flexibility
+106	zelebrieren	332496	1228	celebrate	i	h	flexibility
+107	quälen	330326	1232	torture, torment, agonize	w	h	boxing
+108	strukturieren	327256	1239	structure	i	h	flexibility
+109	sichten	325822	1241	sight	w	h	flexibility
+110	färben	325779	1241	color	w	h	flexibility
+111	referieren	325155	1241	report	i	h	wave
+112	manipulieren	319003	1256	manipulate	i	h	flexibility
+113	mobilisieren	318934	1256	mobilize	i	h	flexibility
+114	krachen	318219	1256	crash	w	h	flexibility
+115	tanken	316210	1260	fuel, refuel	w	h	flexibility
+116	klopfen	315393	1261	knock, rap	w	h	boxing
+117	schlucken	314786	1261	swallow	w	h	cooldown
+118	stolpern	313681	1262	stumble, trip	w	s	fall
+119	spülen	313521	1262	rinse or wash	w	h	pool.swim
+120	automatisieren	313131	1262	automate	i	h	flexibility
+121	spannen	312219	1265	stretch	w	h	flexibility
+122	dekorieren	312017	1265	decorate	i	h	walk.arrival
+123	modernisieren	311258	1268	modernize	i	h	flexibility
+124	exportieren	311047	1268	export	i	h	flexibility
+125	konstruieren	310530	1268	construct, construe, fabricate, design	i	h	strengthtraining.traditional
+126	zünden	309899	1271	kindle	w	h	flexibility
+127	hegen	308969	1274	cherish	w	h	flexibility
+128	rangieren	308950	1274	shunt	i	h	flexibility
+129	schleppen	308322	1275	tow, haul, drag	w	h	strengthtraining.traditional
+130	kleiden	308148	1276	dress, clothe	w	h	flexibility
+131	experimentieren	307843	1277	experiment	i	h	flexibility
+132	streuen	307714	1277	strew, scatter, sprinkle	w	h	pool.swim
+133	tummeln	307570	1277	frisk, romp	w	h	flexibility
+134	fesseln	306268	1278	chain, bind	w	h	2.and.child.holdinghands
+135	bloggen	305910	1278	blog	w	h	flexibility
+136	würzen	305892	1278	season	w	h	cooldown
+137	feuern	304675	1279	fire	w	h	flexibility
+138	küssen	304508	1280	kiss	w	h	2
+139	segnen	304322	1281	bless	w	h	flexibility
+140	pressen	303999	1282	press	w	h	strengthtraining.traditional
+141	kühlen	301355	1287	cool, refrigerate	w	h	cooldown
+142	nicken	301082	1288	nod	w	h	flexibility
+143	arrangieren	296146	1301	arrange	i	h	stand
+144	schrauben	295016	1301	screw	w	h	flexibility
+145	reizen	293971	1301	irritate	w	h	flexibility
+146	kalkulieren	293591	1301	calculate	i	h	barre
+147	lockern	292940	1301	loosen, ease, relax	w	h	flexibility
+148	twittern	292745	1301	tweet	w	h	flexibility
+149	billigen	291153	1303	approve, accept	w	h	handball
+150	paaren	290629	1303	mate, pair	w	h	flexibility
+151	mindern	289713	1307	abate	w	h	flexibility
+152	lauern	289260	1307	lurk, follow, watch	w	h	walk.motion
+153	taugen	289075	1307	be fit	w	h	flexibility
+154	implementieren	287127	1309	implement	i	h	flexibility
+155	kontern	284142	1310	counter	w	h	flexibility
+156	kollidieren	282798	1312	collide	i	s	flexibility
+157	hüpfen	280640	1316	hop, skip, bounce	w	s	jumprope
+158	häufen	279593	1319	heap, pile up	w	h	flexibility
+159	plagen	277735	1323	plague	w	h	flexibility
+160	plaudern	276650	1323	chat	w	h	wave
+161	zittern	274300	1330	shiver, tremble, vibrate	w	h	socialdance
+162	monieren	273844	1331	criticize, complain about something	i	h	wave
+163	baden	272638	1334	bathe, give a bath to or have a bath	w	h	pool.swim
+164	sehnen	271303	1338	yearn, long	w	h	flexibility
+165	restaurieren	269517	1342	restore	i	h	flexibility
+166	weilen	269498	1342	be, be present somewhere	w	h	flexibility
+167	trauern	268858	1344	mourn	w	h	yoga
+168	konstatieren	267431	1348	state	i	h	flexibility
+169	sensibilisieren	264578	1350	sensitize	i	h	flexibility
+170	taufen	264246	1351	baptize	w	h	flexibility
+171	offerieren	262992	1352	offer	i	h	handball
+172	weihen	260790	1354	dedicate to a cause or purpose	w	h	flexibility
+173	schmerzen	260362	1355	cause pain, be painful, ache or hurt	w	h	flexibility
+174	checken	259647	1355	check, inspect, examine	w	h	archery
+175	koppeln	258148	1358	connect or interconnect	w	h	2.and.child.holdinghands
+176	schämen	255808	1365	be ashamed or embarrassed, bashful	w	h	flexibility
+177	gliedern	255743	1365	structure, organize, divide	w	h	walk.arrival
+178	trösten	255613	1365	console, comfort, support someone	w	h	2.and.child.holdinghands
+179	dirigieren	255116	1365	direct, channel	i	h	flexibility
+180	knallen	254352	1365	bang, pop	w	h	wave
+181	rauben	254237	1365	rob, steal	w	h	boxing
+182	komplettieren	253854	1365	complete	i	h	flexibility
+183	kreisen	252581	1365	circle, wheel	w	s	flexibility
+184	dementieren	251517	1366	deny	i	h	flexibility
+185	grinsen	250921	1367	grin	w	h	flexibility
+186	konfigurieren	247621	1374	configure	i	h	flexibility
+187	ebnen	247414	1374	level	w	h	flexibility
+188	schienen	247186	1374	splint	w	h	flexibility
+189	wickeln	246612	1376	wrap, wind around, coil	w	h	roll
+190	rocken	246237	1377	get done, accomplish	w	h	flexibility
+191	glücken	245233	1379	succeed, be successful	w	s	flexibility
+192	dämpfen	242706	1388	steam, treat with steam	w	h	cooldown
+193	promovieren	241778	1391	promote	i	h	stairs
+194	spendieren	240535	1391	pay for, buy	i	h	barre
+195	bangen	239432	1392	feel dread or fear	w	h	yoga
+196	filtern	239105	1393	filter	w	h	flexibility
+197	läuten	238358	1395	ring, toll	w	h	wave
+198	spritzen	237567	1397	spurt, squirt	w	h	flexibility
+199	klatschen	237122	1401	clap	w	h	flexibility
+200	trotzen	236256	1403	defy, brave	w	h	flexibility
+201	bohren	236137	1403	bore, drill	w	h	flexibility
+202	kicken	233008	1410	kick	w	h	boxing
+203	pausieren	232504	1410	pause	i	h	flexibility
+204	illustrieren	232440	1410	illustrate	i	h	flexibility
+205	schüren	232067	1410	poke, stoke	w	h	flexibility
+206	schärfen	231074	1410	sharpen	w	h	flexibility
+207	diagnostizieren	230904	1410	diagnose	i	h	flexibility
+208	handhaben	230633	1410	handle, wield, employ	w	h	flexibility
+209	blitzen	228498	1413	lighten	w	h	flexibility
+210	suggerieren	227332	1415	suggest	i	h	wave
+211	wischen	227043	1416	wipe	w	h	pool.swim
+212	debattieren	226918	1416	debate	i	h	flexibility
+213	züchten	225756	1416	breed	w	h	flexibility
+214	kratzen	225122	1417	scratch	w	h	boxing
+215	relativieren	224680	1418	relativize, qualify, put into perspective	i	h	stand
+216	skizzieren	223874	1421	sketch	i	h	walk.arrival
+217	rügen	223053	1424	reprimand, criticize	w	h	flexibility
+218	duften	222465	1425	smell very pleasantly	w	h	flexibility
+219	stationieren	221516	1426	deploy	i	h	flexibility
+220	intensivieren	221502	1426	intensify, make more intense	i	h	flexibility
+221	segeln	219549	1429	sail	w	h	flexibility
+222	lancieren	219063	1431	launch	i	h	flexibility
+223	schwitzen	218771	1431	sweat, perspire	w	h	flexibility
+224	symbolisieren	218638	1431	symbolise, symbolize	i	h	flexibility
+225	erben	218029	1433	inherit	w	h	flexibility
+226	tönen	216996	1437	give a loud and far-reaching sound	w	h	handball
+227	radeln	215901	1441	cycle	w	s	flexibility
+228	nähren	215080	1444	feed	w	h	cooldown
+229	lüften	214002	1447	air, ventilate	w	h	flexibility
+230	trüben	213991	1447	muddle, bedim, blear, blur	w	h	flexibility
+231	zucken	212391	1456	jerk	w	h	flexibility
+232	lackieren	211766	1457	lacquer, varnish, paint	i	h	walk.arrival
+233	ahnden	210895	1458	punish something	w	h	boxing
+234	breiten	209747	1463	spread	w	h	flexibility
+235	blenden	209139	1465	dazzle, blind	w	h	flexibility
+236	hemmen	208689	1467	check	w	h	archery
+237	charakterisieren	208479	1467	characterize	i	h	flexibility
+238	predigen	207829	1471	preach	w	h	wave
+239	hüten	207547	1471	watch	w	h	archery
+240	schnüren	206115	1474	lace	w	h	flexibility
+241	simulieren	206096	1474	feign	i	h	flexibility
+242	leugnen	205975	1474	deny	w	h	flexibility
+243	ticken	205375	1474	tick, make a clicking noise	w	h	flexibility
+244	zollen	205261	1474	pay	w	h	barre
+245	parieren	205127	1474	trim meat	i	h	fencing
+246	stocken	204830	1478	stop	w	h	flexibility
+247	schmieden	203483	1481	forge	w	h	flexibility
+248	konkurrieren	203150	1484	compete	i	h	flexibility
+249	attestieren	201767	1486	certificate	i	h	flexibility
+250	wärmen	201451	1487	warm	w	h	flexibility
+251	tendieren	201209	1487	tend	i	h	seated.side.left.steeringwheel
+252	formieren	200942	1487	deploy, form up	i	h	walk.arrival
+253	köpfen	200723	1487	behead	w	h	flexibility
+254	säubern	200649	1487	clean, cleanse	w	h	pool.swim
+255	managen	200493	1487	manage	w	h	walk.arrival
+256	stopfen	200179	1488	stuff, plug	w	h	flexibility
+257	langweilen	199898	1490	bore	w	h	flexibility
+258	streicheln	199676	1492	stroke, pet, fondle	w	h	flexibility
+259	synchronisieren	199294	1493	dub	i	h	flexibility
+260	schocken	198859	1494	shock	w	h	flexibility
+261	kursieren	198116	1495	circulate	i	h	flexibility
+262	hausen	197437	1495	dwell, reside	w	h	flexibility
+263	wappnen	197026	1497	prepare oneself, arm oneself	w	h	flexibility
+264	schnuppern	196930	1497	smell, nose, sniff	w	h	flexibility
+265	bessern	196725	1498	improve, better	w	h	stairs
+266	hadern	196416	1499	bicker, quarrel, struggle	w	h	wrestling
+267	brüllen	195606	1504	shout, roar	w	h	wave
+268	scannen	195243	1504	scan	w	h	flexibility
+269	stapeln	194438	1506	pile up, stack	w	h	flexibility
+270	pumpen	194321	1506	pump	w	h	flexibility
+271	involvieren	194047	1508	involve	i	h	flexibility
+272	tolerieren	193785	1508	tolerate	i	h	flexibility
+273	ordern	193595	1509	order, request delivery	w	h	wave
+274	fegen	193541	1509	sweep	w	h	pool.swim
+275	blättern	193341	1509	browse	w	h	archery
+276	irritieren	193079	1511	confuse, disturb, put off, annoy	i	h	stand
+277	meckern	191938	1517	bleat	w	h	wave
+278	rekonstruieren	191649	1518	reconstruct	i	h	flexibility
+279	pochen	190921	1518	thump, throb	w	h	flexibility
+280	dulden	190379	1521	endure	w	h	flexibility
+281	titeln	189768	1525	publish a story under a specified headline	w	h	flexibility
+282	boomen	189497	1526	boom	w	h	wave
+283	wackeln	189356	1526	waggle, wobble	w	h	socialdance
+284	forcieren	189312	1526	accelerate, force, push	i	h	strengthtraining.traditional
+285	bahnen	189197	1527	channel	w	h	flexibility
+286	rasten	189118	1527	rest	w	h	seated.side.left
+287	favorisieren	188745	1527	favor	i	h	flexibility
+288	rächen	187428	1529	revenge, avenge	w	h	flexibility
+289	triumphieren	186478	1531	triumph	i	h	flexibility
+290	garen	186241	1531	cook for eating)	w	h	cooldown
+291	streiken	186210	1531	strike	w	h	boxing
+292	rammen	184551	1536	ram	w	h	flexibility
+293	harmonieren	184096	1539	harmonize	i	h	flexibility
+294	schlendern	183637	1539	stroll	w	s	walk
+295	würfeln	182214	1545	dice	w	h	flexibility
+296	heulen	179983	1549	howl, whine	w	h	wave
+297	propagieren	179392	1550	propagate	i	h	flexibility
+298	datieren	179294	1550	date	i	h	2
+299	weiten	178817	1552	widen, expand, dilate	w	h	flexibility
+300	streamen	177114	1555	stream	w	h	flexibility
+301	polieren	176620	1557	shine	i	h	highintensity.intervaltraining
+302	schütten	176216	1559	pour	w	h	pool.swim
+303	votieren	176051	1560	vote	i	h	flexibility
+304	mehren	175902	1560	increase	w	h	stairs
+305	hetzen	175832	1560	chase, pursue	w	h	hunting
+306	jammern	175098	1563	wail, whine, moan, lament, whinge	w	h	wave
+307	sprühen	175001	1563	spray	w	h	pool.swim
+308	säen	174850	1564	sow	w	h	flexibility
+309	stagnieren	174006	1567	stagnate	i	h	flexibility
+310	dehnen	172629	1574	stretch, make longer or wider by pulling	w	h	flexibility
+311	falten	171982	1575	fold	w	h	flexibility
+312	digitalisieren	171735	1575	digitize	i	h	flexibility
+313	shoppen	171547	1575	shop	w	h	flexibility
+314	scherzen	171198	1575	joke, jest, frolic	w	h	play
+315	rütteln	170146	1578	shake, jolt	w	h	socialdance
+316	fischen	169962	1578	fish	w	h	flexibility
+317	prämieren	169306	1580	award a prize	i	h	flexibility
+318	sponsern	168493	1585	sponsor	w	h	flexibility
+319	flattern	168362	1586	flutter	w	h	flexibility
+320	mixen	167393	1586	mix	w	h	hiking
+321	werkeln	167020	1587	do handicraft as an unskilled person	w	h	flexibility
+322	schwenken	166336	1587	wave, brandish	w	h	flexibility
+323	evakuieren	165035	1587	evacuate	i	h	flexibility
+324	amüsieren	164688	1589	be amused	i	h	flexibility
+325	ruinieren	164648	1589	ruin	i	h	flexibility
+326	hüllen	164459	1590	wrap, drape, cover, engulf	w	h	roll
+327	schminken	163089	1591	put on, make up one's face	w	h	stand
+328	rekrutieren	162205	1593	recruit	i	h	flexibility
+329	duschen	161329	1593	shower	w	h	flexibility
+330	bannen	160458	1596	ostracize, banish, outlaw, excommunicate	w	h	flexibility
+331	köcheln	159957	1598	simmer, boil slightly	w	h	cooldown
+332	frühstücken	159821	1598	have breakfast, breakfast	w	h	flexibility
+333	hinken	159585	1599	limp, hobble	w	h	flexibility
+334	zerren	158394	1603	tug	w	h	indoor.rowing
+335	diktieren	158361	1603	dictate	i	h	flexibility
+336	fiebern	157278	1605	have a high temperature	w	h	flexibility
+337	stufen	157264	1605	subdivide	w	h	flexibility
+338	konkretisieren	156900	1607	concrete, solidify	i	h	flexibility
+339	flüstern	155632	1608	whisper	w	h	wave
+340	interagieren	155053	1611	interact	i	h	flexibility
+341	spitzen	154843	1613	point, sharpen	w	h	archery
+342	expandieren	154633	1614	expand	i	h	flexibility
+343	zocken	153722	1615	gamble	w	h	flexibility
+344	manifestieren	153659	1615	manifest	i	h	flexibility
+345	legitimieren	153651	1615	legitimize	i	h	flexibility
+346	haken	153554	1615	hook	w	h	flexibility
+347	deklarieren	152865	1618	declare	i	h	flexibility
+348	schmälern	152670	1619	reduce, diminish	w	h	flexibility
+349	glätten	148633	1631	smooth	w	h	flexibility
+350	feilen	148471	1631	file	w	h	flexibility
+351	nötigen	148288	1632	coerce	w	h	flexibility
+352	garnieren	148248	1632	garnish	i	h	flexibility
+353	seufzen	148019	1632	sigh	w	h	wave
+354	summieren	147678	1632	sum	i	h	flexibility
+355	schlummern	147407	1633	sleep lightly or briefly, doze, slumber	w	h	seated.side.left
+356	limitieren	146312	1637	limit	i	h	flexibility
+357	mutieren	145634	1641	mutate	i	h	flexibility
+358	reformieren	144741	1643	reform	i	h	flexibility
+359	scrollen	144371	1645	scroll	w	h	flexibility
+360	stimulieren	144276	1645	stimulate	i	h	flexibility
+361	säumen	143878	1647	hem	w	h	flexibility
+362	revolutionieren	143239	1650	revolutionize	i	h	flexibility
+363	schmieren	142635	1652	smear, spread	w	h	flexibility
+364	differenzieren	142543	1652	differentiate	i	h	flexibility
+365	mähen	142389	1652	mow, harvest	w	h	hiking
+366	büßen	142332	1652	pay for, make amends for	w	h	barre
+367	spucken	142314	1652	spit	w	h	flexibility
+368	einen	142073	1653	unite	w	h	2.and.child.holdinghands
+369	baumeln	141894	1653	dangle, hang slack	w	h	socialdance
+370	wähnen	141158	1655	suppose, expect, believe, imagine, ween	w	h	yoga
+371	grillen	141067	1656	grill	w	h	cooldown
+372	googeln	140529	1658	google	w	h	flexibility
+373	fahnden	140197	1659	search	w	h	archery
+374	fälschen	140185	1659	counterfeit, forge	w	h	flexibility
+375	prangen	139954	1660	resplend, shine, be shown, sported	w	h	highintensity.intervaltraining
+376	tilgen	139691	1661	erase, extinguish	w	h	flexibility
+377	wettern	139557	1661	rail	w	h	flexibility
+378	diskriminieren	139011	1661	discriminate against	i	h	flexibility
+379	stressen	138633	1662	stress	w	h	flexibility
+380	eliminieren	138397	1663	eliminate	i	h	flexibility
+381	lasten	138278	1663	weigh on, bear on	w	h	barre
+382	wittern	138264	1663	scent	w	h	flexibility
+383	plündern	138126	1664	loot, plunder, pillage, raid	w	h	flexibility
+384	leeren	137613	1665	empty	w	h	flexibility
+385	rühmen	136744	1667	praise	w	h	wave
+386	revidieren	136662	1667	revise, check, amend	i	h	archery
+387	suspendieren	136565	1668	suspend	i	h	flexibility
+388	brummen	136320	1668	growl	w	h	wave
+389	walten	135449	1672	rule, exercise control	w	h	flexibility
+390	quittieren	134673	1675	sign a receipt	i	h	flexibility
+391	toppen	134478	1676	top	w	h	flexibility
+392	adressieren	134307	1676	address	i	h	wave
+393	bügeln	134177	1676	iron	w	h	flexibility
+394	blocken	133494	1679	block	w	h	flexibility
+395	lähmen	133282	1680	paralyze	w	h	flexibility
+396	drosseln	133129	1680	curb, choke, throttle	w	h	flexibility
+397	wüten	133105	1680	rage, rampage, riot, run amok	w	h	run
+398	brillieren	132824	1683	shine	i	h	highintensity.intervaltraining
+399	orten	132585	1683	locate	w	h	flexibility
+400	mutmaßen	132171	1684	guess, speculate	w	h	yoga
+401	navigieren	130359	1691	navigate	i	h	flexibility
+402	kuscheln	130310	1691	cuddle	w	h	2
+403	mildern	130115	1691	mitigate	w	h	flexibility
+404	klemmen	129986	1691	jam, clamp	w	h	flexibility
+405	improvisieren	129874	1691	improvise	i	h	flexibility
+406	mühen	129631	1693	labor, toil	w	h	strengthtraining.traditional
+407	foltern	129021	1694	torture	w	h	boxing
+408	pilgern	128796	1695	pilgrimage	w	s	flexibility
+409	peilen	128724	1696	take a bearing of, determine the direction	w	h	handball
+410	prügeln	128657	1697	beat, strike	w	h	boxing
+411	stornieren	128493	1698	cancel, reverse	i	h	flexibility
+412	häkeln	128107	1701	crochet	w	h	flexibility
+413	wirtschaften	128087	1701	keep house	w	h	flexibility
+414	regenerieren	127941	1701	regenerate	i	h	flexibility
+415	bombardieren	127680	1702	bomb, bombard, shell	i	h	flexibility
+416	dotieren	127554	1702	endow	i	h	flexibility
+417	brauen	127389	1702	brew	w	h	cooldown
+418	modifizieren	127253	1703	modify	i	h	flexibility
+419	schockieren	126615	1705	shock	i	h	flexibility
+420	zücken	126340	1705	pull something out and ready it for use	w	h	indoor.rowing
+421	rätseln	125563	1710	puzzle over	w	h	flexibility
+422	posieren	125531	1710	pose	i	h	flexibility
+423	kapieren	124769	1715	understand intellectually, get, grasp	i	h	handball
+424	klaffen	124623	1715	gape	w	h	flexibility
+425	pürieren	124463	1715	puree	i	h	flexibility
+426	spicken	124444	1715	stuff meat with bacon, lard	w	h	flexibility
+427	flankieren	124250	1716	flank	i	h	flexibility
+428	katapultieren	124061	1717	catapult	i	h	flexibility
+429	projizieren	123978	1718	project )	i	h	flexibility
+430	debütieren	123927	1718	debut	i	h	flexibility
+431	starren	123728	1718	stare, gaze	w	h	archery
+432	liebäugeln	123684	1718	make eyes at, flirt with	w	h	2
+433	schlachten	123568	1718	slaughter	w	h	boxing
+434	schwelgen	122947	1721	eat or drink greedily	w	h	cooldown
+435	reklamieren	122511	1724	complain	i	h	wave
+436	thronen	122466	1724	throne	w	h	flexibility
+437	kultivieren	122442	1724	cultivate	i	h	flexibility
+438	wälzen	121948	1724	roll	w	h	roll
+439	stöhnen	121807	1725	moan, groan, grunt	w	h	wave
+440	kneten	121766	1725	knead	w	h	flexibility
+441	demontieren	121747	1725	dismantle	i	h	flexibility
+442	fusionieren	120504	1729	fusion	i	h	flexibility
+443	stauen	119125	1734	stow	w	h	flexibility
+444	pflücken	119062	1734	pick	w	h	handball
+445	outen	119022	1735	out oneself	w	h	flexibility
+446	turnen	118330	1737	do gymnastics	w	h	flexibility
+447	signieren	117624	1738	sign	i	h	flexibility
+448	assoziieren	117075	1742	associate	i	h	flexibility
+449	klammern	116144	1746	cling	w	h	flexibility
+450	konvertieren	115448	1749	convert	i	h	flexibility
+451	tarnen	114251	1754	camouflage	w	h	flexibility
+452	bluten	113393	1755	bleed	w	h	flexibility
+453	sonnen	113370	1755	sun, sunbathe	w	h	flexibility
+454	addieren	113308	1755	add up, sum	i	h	flexibility
+455	personalisieren	112644	1758	personalize	i	h	flexibility
+456	residieren	112143	1760	reside	i	h	flexibility
+457	inhaftieren	111832	1760	arrest	i	h	boxing
+458	neutralisieren	111818	1760	neutralize	i	h	flexibility
+459	funken	111514	1762	sparkle	w	h	highintensity.intervaltraining
+460	subventionieren	111051	1764	subsidize	i	h	flexibility
+461	rösten	111036	1764	roast, toast, parch, stir-fry	w	h	cooldown
+462	delegieren	110915	1765	delegate	i	h	flexibility
+463	schimmern	110806	1767	glimmer, shimmer	w	h	flexibility
+464	angeln	110781	1767	angle, fish	w	h	flexibility
+465	jähren	110699	1768	become one year old, complete a year	w	h	flexibility
+466	trommeln	109756	1772	drum, beat a drum	w	h	boxing
+467	brüten	109381	1774	brood	w	h	yoga
+468	altern	109078	1775	age	w	s	flexibility
+469	lecken	108261	1779	lick	w	h	cooldown
+470	letzen	108088	1781	injure, harm, hurt, punish etc	w	h	boxing
+471	hämmern	108006	1781	hammer	w	h	strengthtraining.traditional
+472	quatschen	107522	1781	talk nonsense	w	h	wave
+473	strapazieren	107439	1782	strain, stress, tax, test, tire	i	h	flexibility
+474	hieven	107220	1785	heave	w	h	flexibility
+475	kappen	107076	1785	cut down so as to make unusable, cut off	w	h	fencing
+476	boxen	107013	1785	box	w	h	flexibility
+477	desinfizieren	106530	1788	disinfect	i	h	flexibility
+478	applaudieren	106447	1788	applaud	i	h	flexibility
+479	grübeln	106316	1788	brood, ponder, ruminate, muse, worry, fret	w	h	yoga
+480	transferieren	106202	1790	transfer	i	h	flexibility
+481	deponieren	106041	1791	deposit, place	i	h	stand
+482	sägen	105852	1792	saw	w	h	fencing
+483	schlängeln	105431	1793	move in a snakelike manner	w	h	hiking
+484	kaschieren	105094	1794	cover up	i	h	walk.motion
+485	tasten	105039	1794	feel with the hands, fumble, grope	w	h	yoga
+486	porträtieren	104954	1794	paint a portrait of	i	h	walk.arrival
+487	konsultieren	104859	1794	consult advice)	i	h	flexibility
+488	präzisieren	104649	1794	specify	i	h	flexibility
+489	imitieren	104198	1797	imitate	i	h	flexibility
+490	dosieren	103699	1800	dose	i	h	flexibility
+491	kauen	103636	1800	chew	w	h	cooldown
+492	archivieren	103572	1800	file	i	h	flexibility
+493	blinken	103501	1800	blink	w	h	flexibility
+494	gipfeln	103405	1801	culminate	w	h	flexibility
+495	hallen	102437	1805	echo	w	h	flexibility
+496	evaluieren	102036	1806	evaluate	i	h	flexibility
+497	wühlen	101843	1806	rummage, grub	w	h	flexibility
+498	klassifizieren	101807	1806	classify	i	h	flexibility
+499	stillen	101392	1808	nurse, suckle, breastfeed	w	h	seated.side.left.steeringwheel
+500	schultern	100973	1809	shoulder	w	h	flexibility
+501	pushen	100909	1809	push, promote	w	h	strengthtraining.traditional
+502	schwächeln	100805	1809	weaken slightly	w	h	flexibility
+503	normalisieren	100722	1809	normalize	i	h	flexibility
+504	jucken	100577	1809	itch	w	h	flexibility
+505	tropfen	100361	1810	drop, drip	w	h	fall
+506	absorbieren	100054	1811	absorb, soak up	i	h	pool.swim
+507	reaktivieren	99883	1812	reactivate	i	h	flexibility
+508	massieren	99737	1813	massage	i	h	flexibility
+509	konservieren	99667	1813	conserve, preserve	i	h	flexibility
+510	rotieren	99636	1813	rotate, spin	i	h	socialdance
+511	strafen	99620	1813	punish	w	h	boxing
+512	straffen	98920	1814	tighten, tauten	w	h	flexibility
+513	hapern	98906	1814	be scarce, insufficient, stagnant	w	h	flexibility
+514	boykottieren	98509	1816	boycott	i	h	flexibility
+515	modellieren	98498	1816	model	i	h	flexibility
+516	perfektionieren	98302	1816	bring to perfection, perfect	i	h	hiking
+517	stunden	98246	1816	defer	w	h	flexibility
+518	huldigen	97955	1816	pay homage, honour	w	h	barre
+519	frustrieren	97807	1818	frustrate	i	h	flexibility
+520	schaukeln	97182	1822	swing back and forth, rock to and fro	w	h	socialdance
+521	adoptieren	96745	1826	adopt	i	h	flexibility
+522	zupfen	96364	1829	pluck	w	h	flexibility
+523	nagen	95792	1834	gnaw	w	h	cooldown
+524	pachten	95687	1834	lease	w	h	flexibility
+525	recken	95579	1834	stretch	w	h	flexibility
+526	balancieren	95491	1835	balance	i	h	barre
+527	patzen	95444	1836	blunder	w	h	flexibility
+528	polarisieren	95421	1836	create electrical or magnetic poles	i	h	walk.arrival
+529	stempeln	95415	1836	stamp	w	h	flexibility
+530	künden	95369	1836	announce, tell, bear witness	w	h	wave
+531	inspizieren	95308	1836	inspect	i	h	archery
+532	schnitzen	95113	1838	carve	w	h	fencing
+533	schmuggeln	95084	1838	smuggle	w	h	flexibility
+534	zehren	94917	1839	live on, feed on	w	h	cooldown
+535	revanchieren	94731	1840	repay, return the favor	i	h	flexibility
+536	keimen	94669	1841	sprout, germinate	w	h	flexibility
+537	murmeln	94648	1841	mumble, murmur, mutter	w	h	wave
+538	harren	94563	1841	await patiently	w	h	flexibility
+539	schielen	94193	1842	squint	w	h	archery
+540	funkeln	94171	1842	sparkle, twinkle, glitter	w	h	highintensity.intervaltraining
+541	maximieren	94060	1844	maximize	i	h	flexibility
+542	donnern	93907	1846	thunder	w	h	wave
+543	blamieren	93901	1846	embarrass	i	h	flexibility
+544	protokollieren	93510	1847	record, protocol, take minutes of, log	i	h	handball
+545	adaptieren	93470	1848	adapt	i	h	flexibility
+546	artikulieren	93360	1849	articulate	i	h	flexibility
+547	transformieren	93338	1850	transform	i	h	flexibility
+548	ballen	93181	1851	agglomerate	w	h	flexibility
+549	mausern	92938	1853	moult feathers	w	h	flexibility
+550	disziplinieren	92530	1854	discipline	i	h	flexibility
+551	beben	92520	1854	shake, quiver	w	h	socialdance
+552	rasieren	92348	1855	shave	i	h	flexibility
+553	privatisieren	91359	1862	privatize	i	h	flexibility
+554	prädestinieren	90837	1865	predestine	i	h	flexibility
+555	knipsen	90562	1868	nip, pinch	w	h	flexibility
+556	lokalisieren	90558	1868	localize	i	h	flexibility
+557	hantieren	90523	1868	handle, tamper	i	h	flexibility
+558	frönen	90309	1869	indulge	w	h	flexibility
+559	betteln	90290	1869	beg, panhandle	w	h	wave
+560	ölen	90157	1872	oil	w	h	flexibility
+561	posen	89924	1875	pose	w	h	flexibility
+562	imponieren	89617	1877	impress	i	h	flexibility
+563	brodeln	89572	1877	seethe, bubble, wallop	w	h	flexibility
+564	folgern	89474	1878	conclude, deduce, infer	w	h	flexibility
+565	sinnieren	89388	1878	contemplate, muse	i	h	yoga
+566	tüfteln	88794	1880	tinker, work on something	w	h	strengthtraining.traditional
+567	heften	88687	1880	fasten	w	h	2.and.child.holdinghands
+568	hungern	88451	1881	hunger, starve	w	h	flexibility
+569	instrumentalisieren	88396	1881	instrumentalize, exploit	i	h	flexibility
+570	deportieren	87929	1882	deport, banish	i	h	flexibility
+571	strotzen	87683	1883	be full of, overflow with, teem with, etc	w	h	flexibility
+572	trumpfen	87506	1884	play the card game trump	w	h	play
+573	komprimieren	87088	1888	compress	i	h	flexibility
+574	glitzern	86834	1889	glitter, sparkle	w	h	highintensity.intervaltraining
+575	degradieren	86518	1890	demote	i	h	flexibility
+576	dröhnen	86299	1890	boom, thud, roar	w	h	wave
+577	stampfen	86172	1894	stamp, stomp, clomp	w	h	flexibility
+578	schmeicheln	86028	1895	flatter to an exaggerated degree	w	h	wave
+579	kotzen	86002	1895	vomit, puke	w	h	flexibility
+580	paddeln	85813	1896	paddle	w	s	flexibility
+581	demütigen	85791	1896	humiliate, humble, mortify	w	h	flexibility
+582	rentieren	85743	1896	be profitable, worthwhile	i	h	flexibility
+583	diskreditieren	85727	1896	discredit	i	h	flexibility
+584	buhlen	84849	1900	court, woo	w	h	2
+585	intervenieren	84654	1904	intervene, intercede	i	h	flexibility
+586	stutzen	84492	1906	be a coxcomb, floss, ball	w	h	flexibility
+587	betten	83663	1908	bed	w	h	flexibility
+588	trimmen	83610	1908	trim	w	h	fencing
+589	implizieren	83392	1910	imply	i	h	flexibility
+590	fluten	82882	1915	flood	w	h	pool.swim
+591	präparieren	82672	1916	prep, prepare	i	h	flexibility
+592	gruppieren	82597	1918	arrange	i	h	stand
+593	sprinten	82502	1918	sprint	w	s	run
+594	diffamieren	82457	1918	vilify, defame	i	h	flexibility
+595	taggen	82394	1918	tag	w	h	flexibility
+596	mailen	81472	1924	email, e-mail	w	h	flexibility
+597	queren	81383	1926	cross	w	h	flexibility
+598	schubsen	81355	1927	shove	w	h	flexibility
+599	staffeln	80920	1929	graduate	w	h	flexibility
+600	fundieren	80915	1929	fund	i	h	flexibility
+601	wuchern	80672	1931	practise usury, usure	w	h	flexibility
+602	kapitulieren	80527	1931	surrender, capitulate	i	h	flexibility
+603	foulen	80432	1931	foul	w	h	flexibility
+604	egalisieren	80323	1932	level, equalise	i	h	flexibility
+605	kramen	80272	1932	rummage around	w	h	flexibility
+606	fristen	79928	1935	keep alive	w	h	flexibility
+607	fasten	79619	1939	fast	w	h	flexibility
+608	naschen	79502	1940	eat titbits, graze, nosh, often on the sly	w	h	cooldown
+609	tangieren	79469	1940	be tangent to	i	h	flexibility
+610	höhnen	79406	1940	mock	w	h	boxing
+611	kastrieren	79325	1941	castrate	i	h	flexibility
+612	bürsten	79252	1941	scrub, clean a surface with a brush	w	h	pool.swim
+613	loggen	79250	1941	enter something into a logbook	w	h	flexibility
+614	spotten	78943	1944	scoff, jeer, mock	w	h	boxing
+615	lästern	78833	1944	blaspheme against	w	h	flexibility
+616	sträuben	78327	1945	bristle up, stand on end	w	h	stand
+617	düngen	78310	1945	fertilize	w	h	flexibility
+618	meditieren	78268	1945	meditate	i	h	yoga
+619	wimmeln	78250	1945	teem, crawl, be filled	w	h	climbing
+620	sanktionieren	78147	1946	give official approval to, sanction	i	h	handball
+621	huschen	78126	1946	scurry	w	s	flexibility
+622	mäßigen	77879	1947	temper, moderate	w	h	flexibility
+623	hasten	77708	1948	hurry, rush	w	s	run
+624	munkeln	77645	1948	rumour/rumor	w	h	flexibility
+625	hebeln	77575	1949	lever	w	h	flexibility
+626	lotsen	77385	1950	guide	w	h	walk.arrival
+627	mimen	77344	1950	mime	w	h	flexibility
+628	schnallen	77108	1951	fasten with a clasp	w	h	2.and.child.holdinghands
+629	stranden	77061	1951	strand	w	h	flexibility
+630	fußen	76889	1952	base on	w	h	flexibility
+631	manövrieren	76860	1952	maneuver	i	h	flexibility
+632	flimmern	76693	1953	flicker	w	h	highintensity.intervaltraining
+633	rehabilitieren	76395	1953	rehabilitate	i	h	flexibility
+634	summen	76243	1953	buzz, hum	w	h	wave
+635	knabbern	76220	1953	nibble	w	h	cooldown
+636	quetschen	76196	1953	squeeze, squish	w	h	flexibility
+637	langen	76183	1953	reach, grab	w	h	handball
+638	reproduzieren	76105	1954	reproduce	i	h	flexibility
+639	flirten	75999	1955	flirt	w	h	2
+640	schmiegen	75758	1955	nestle up	w	h	flexibility
+641	ratifizieren	75651	1955	ratify	i	h	flexibility
+642	schmettern	75591	1955	smash	w	h	boxing
+643	konstituieren	75586	1955	constitute	i	h	flexibility
+644	sättigen	75533	1955	satisfy, gorge, satiate	w	h	flexibility
+645	flanieren	75311	1958	stroll	i	s	walk
+646	schnellen	75130	1958	spring	w	h	flexibility
+647	pflastern	75128	1958	pave	w	h	flexibility
+648	intonieren	74974	1961	intone, intonate	i	h	flexibility
+649	emigrieren	74921	1961	emigrate	i	s	flexibility
+650	schuften	74824	1962	drudge, toil	w	h	flexibility
+651	kristallisieren	74818	1962	crystallize	i	h	flexibility
+652	konsolidieren	74641	1967	consolidate	i	h	flexibility
+653	lizenzieren	74549	1967	license	i	h	flexibility
+654	klappern	74401	1969	clatter	w	h	wave
+655	hosten	74327	1969	host	w	h	flexibility
+656	glühen	74284	1969	glow	w	h	highintensity.intervaltraining
+657	dämmen	74217	1969	dam	w	h	flexibility
+658	formatieren	74177	1969	format	i	h	flexibility
+659	assistieren	73964	1969	assist	i	h	2.and.child.holdinghands
+660	skalieren	72639	1979	scale	i	h	flexibility
+661	multiplizieren	72613	1980	multiply )	i	h	flexibility
+662	erden	72493	1980	earth	w	h	flexibility
+663	philosophieren	72370	1981	philosophize	i	h	flexibility
+664	bischen	71885	1983	soothe, calm	w	h	flexibility
+665	spaßen	71680	1986	joke, jest, frolic	w	h	play
+666	würgen	71624	1987	strangle, choke	w	h	boxing
+667	chatten	70942	1990	chat	w	h	wave
+668	mustern	70865	1991	scrutinize, examine, inspect, look over	w	h	archery
+669	priorisieren	70821	1994	prioritize	i	h	flexibility
+670	schweißen	69967	1997	weld	w	h	flexibility
+671	flitzen	69667	1998	speed, whiz, rush	w	s	run
+672	drängeln	69498	1999	push, jostle	w	h	strengthtraining.traditional
+673	fächern	69243	2001	divide into compartments	w	h	fencing
+674	skandieren	69026	2005	chant	i	h	flexibility
+675	bändigen	68728	2006	tame, restrain, subdue	w	h	flexibility
+676	extrahieren	68610	2007	extract	i	h	flexibility
+677	hissen	68512	2008	hoist	w	h	flexibility
+678	netzen	68339	2008	make wet, wetten	w	h	flexibility
+679	dämmern	68191	2011	dawn, fall	w	h	fall
+680	zapfen	68125	2012	tap, draw, dispense	w	h	walk.arrival
+681	plätschern	67945	2014	trickle	w	h	flexibility
+682	korrespondieren	67823	2014	correspond	i	h	flexibility
+683	zensieren	67637	2015	censor	i	h	flexibility
+684	randalieren	67610	2016	riot, rampage	i	h	flexibility
+685	tauen	67347	2017	thaw, melt	w	h	skiing.downhill
+686	zementieren	67345	2017	cement	i	h	flexibility
+687	akquirieren	67214	2019	acquire	i	h	flexibility
+688	fluchen	67070	2019	swear, curse	w	h	wave
+689	rahmen	67013	2019	frame	w	h	walk.arrival
+690	jonglieren	66993	2019	juggle	i	h	flexibility
+691	exen	66983	2019	down quickly, skol, chug, guzzle down	w	h	flexibility
+692	proklamieren	66938	2019	proclaim	i	h	flexibility
+693	zirkulieren	66683	2021	circulate	i	h	flexibility
+694	pusten	66675	2021	blow	w	h	wave
+695	amtieren	66501	2024	hold office, officiate	i	h	handball
+696	demolieren	66429	2026	demolish, destroy, tear down	i	h	boxing
+697	ficken	66305	2029	fuck	w	h	flexibility
+698	morden	66295	2029	commit murder	w	h	flexibility
+699	kichern	65939	2029	giggle, snicker	w	h	wave
+700	schmoren	65809	2030	braise, stew	w	h	cooldown
+701	purzeln	65550	2031	fall, tumble	w	s	fall
+702	dünsten	65459	2033	steam, braise, stew	w	h	cooldown
+703	schichten	65372	2033	layer, stratify, laminate	w	h	flexibility
+704	dichten	65200	2035	compose	w	h	flexibility
+705	wetteifern	65034	2037	vie	w	h	flexibility
+706	witzeln	64971	2037	make jokes, make silly jokes, joke	w	h	play
+707	schaufeln	64619	2040	shovel	w	h	flexibility
+708	zwängen	64527	2040	force, cram	w	h	flexibility
+709	weiden	64503	2041	browse, graze	w	h	archery
+710	roden	64465	2041	clear	w	h	flexibility
+711	dampfen	64396	2042	steam	w	h	cooldown
+712	vibrieren	64216	2042	vibrate	i	h	jumprope
+713	partizipieren	64118	2042	participate	i	h	flexibility
+714	stapfen	63943	2043	trudge, walk heavily	w	h	walk
+715	booten	63857	2043	boot	w	h	flexibility
+716	schlichten	63840	2043	settle, mediate	w	h	seated.side.left
+717	schleusen	62494	2058	bring something through a sluice	w	h	hiking
+718	dezimieren	62469	2058	decimate	i	h	flexibility
+719	torpedieren	62331	2059	torpedo	i	h	flexibility
+720	frequentieren	62147	2061	frequent	i	h	flexibility
+721	fabrizieren	62107	2062	fabricate	i	h	flexibility
+722	kollabieren	61992	2062	faint, collapse, suffer from syncope	i	s	fall
+723	therapieren	61947	2062	treat	i	h	flexibility
+724	horten	61819	2062	hoard, gather	w	h	flexibility
+725	harmonisieren	61634	2062	harmonize	i	h	flexibility
+726	postulieren	61542	2063	postulate	i	h	flexibility
+727	sickern	61525	2063	ooze, seep	w	s	flexibility
+728	traumatisieren	61159	2067	traumatize, traumatise	i	h	flexibility
+729	düsen	61103	2067	dash, rush	w	s	run
+730	arten	61081	2067	become	w	s	flexibility
+731	kurbeln	60939	2069	crank	w	h	flexibility
+732	mobben	60821	2069	bully	w	h	boxing
+733	hauchen	60726	2069	whisper	w	h	wave
+734	schneidern	60716	2069	tailor	w	h	flexibility
+735	touchieren	60218	2071	graze, touch	i	h	cooldown
+736	legalisieren	60194	2071	legalize	i	h	flexibility
+737	deckeln	60159	2071	cap	w	h	flexibility
+738	schäumen	60088	2072	froth, foam	w	h	flexibility
+739	zappeln	59951	2074	wriggle, make fidgety movements	w	h	flexibility
+740	willigen	59565	2077	agree	w	h	flexibility
+741	schlittern	59237	2079	slide	w	s	skating
+742	zimmern	59070	2081	build something from wood	w	h	strengthtraining.traditional
+743	justieren	59033	2082	set, adjust	i	h	stand
+744	adeln	58938	2082	ennoble	w	h	flexibility
+745	husten	58369	2083	cough	w	h	flexibility
+746	kategorisieren	58348	2083	categorize	i	h	flexibility
+747	florieren	58067	2086	flourish, prosper	i	h	flexibility
+748	korrelieren	57717	2090	correlate	i	h	flexibility
+749	schlürfen	57651	2090	slurp, sip loudly	w	h	cooldown
+750	kreischen	57568	2092	squeal, shriek, scream	w	h	wave
+751	zwitschern	57403	2095	chirp, tweet, chatter, twitter	w	h	wave
+752	driften	57391	2095	drift	w	s	flexibility
+753	funzen	57203	2098	function, work	w	h	strengthtraining.traditional
+754	futtern	57054	2100	eat a lot, guzzle	w	h	cooldown
+755	sondieren	56958	2102	sound out	i	h	flexibility
+756	reimen	56953	2102	rhyme	w	h	flexibility
+757	ducken	56857	2102	duck	w	h	flexibility
+758	zügeln	56834	2102	rein in	w	h	flexibility
+759	entern	56764	2102	board	w	h	flexibility
+760	eichen	56746	2102	calibrate, gauge	w	h	flexibility
+761	resignieren	56597	2104	resign oneself	i	h	flexibility
+762	flicken	56227	2106	patch up, mend	w	h	flexibility
+763	solidarisieren	56060	2108	declare one's solidarity	i	h	flexibility
+764	konterkarieren	55976	2109	thwart	i	h	flexibility
+765	duellieren	55815	2110	duel	i	h	fencing
+766	dümpeln	55747	2112	be stuck, be inactive or unsuccessful	w	h	flexibility
+767	mauern	55666	2113	build a wall, lay bricks	w	h	strengthtraining.traditional
+768	vögeln	55648	2113	catch birds	w	h	handball
+769	kitzeln	55587	2113	tickle	w	h	flexibility
+770	sabotieren	55567	2113	sabotage	i	h	flexibility
+771	bürgen	55550	2113	vouch	w	h	flexibility
+772	knurren	55283	2117	growl, grunt, grumble	w	h	wave
+773	herzen	54990	2120	hug, embrace	w	h	2
+774	pokern	54865	2122	play poker	w	h	play
+775	takten	54801	2123	clock	w	h	flexibility
+776	individualisieren	54627	2125	customize, personalize	i	h	flexibility
+777	rezitieren	54576	2125	recite	i	h	wave
+778	ätzen	54532	2125	etch	w	h	flexibility
+779	trachten	54246	2128	seek, strive	w	h	wrestling
+780	liieren	54143	2130	ally, associate	i	h	flexibility
+781	chillen	54082	2130	chill	w	h	skiing.downhill
+782	tupfen	54020	2131	dab	w	h	flexibility
+783	zeitigen	53970	2131	bring about	w	h	hiking
+784	stilisieren	53705	2134	stylize	i	h	flexibility
+785	stauben	53692	2134	emit dust	w	h	flexibility
+786	fachen	53592	2135	kindle, ignite	w	h	highintensity.intervaltraining
+787	rebellieren	53581	2136	rebel	i	h	flexibility
+788	taxieren	53535	2136	appraise	i	h	flexibility
+789	bugsieren	53499	2136	tow a ship	i	h	flexibility
+790	amortisieren	53334	2136	amortize	i	h	flexibility
+791	losen	53289	2136	draw lots, draw straws, toss up	w	h	walk.arrival
+792	geißeln	53253	2137	whip, scourge, flagellate	w	h	flexibility
+793	patentieren	53069	2137	patent	i	h	flexibility
+794	titulieren	52968	2137	call someone something	i	h	wave
+795	heuern	52920	2137	hire	w	h	2
+796	spornen	52910	2137	buckle a spur	w	h	flexibility
+797	rappen	52513	2145	rap	w	h	flexibility
+798	kränken	52463	2145	insult, offend	w	h	boxing
+799	taumeln	52449	2145	sway, teeter, stagger	w	h	socialdance
+800	meißeln	52178	2149	chisel	w	h	flexibility
+801	flehen	52065	2150	entreat, beg	w	h	wave
+802	wippen	51865	2153	seesaw	w	h	flexibility
+803	wedeln	51800	2154	waggle, wag	w	h	flexibility
+804	lichten	51730	2154	thin out, clear, make sparse	w	h	flexibility
+805	flackern	51723	2155	flicker	w	h	highintensity.intervaltraining
+806	peitschen	51600	2155	whip, flog, lash	w	h	flexibility
+807	zweigen	51587	2156	graft, engraft, branch off	w	h	flexibility
+808	prahlen	51537	2156	brag, boast	w	h	wave
+809	grasen	51006	2159	graze	w	h	cooldown
+810	pfeffern	50989	2159	pepper	w	h	flexibility
+811	polstern	50973	2159	cushion, bolster, upholster	w	h	flexibility
+812	buddeln	50847	2160	dig, especially with one’s hands or paws	w	h	flexibility
+813	bücken	50838	2160	bend down, stoop	w	h	flexibility
+814	rattern	50776	2160	rattle, chatter, clatter	w	h	wave
+815	standardisieren	50741	2160	standardize, standardise	i	h	flexibility
+816	knirschen	50739	2160	scrunch, crunch	w	h	flexibility
+817	blinzeln	50642	2162	squint	w	h	archery
+818	dopen	50493	2165	dope	w	h	flexibility
+819	rezensieren	50380	2168	review	i	h	flexibility
+820	tätowieren	50360	2168	tattoo	i	h	flexibility
+821	jobben	50204	2172	have a job, work	w	h	strengthtraining.traditional
+822	raunen	50107	2173	whisper, say secretly	w	h	wave
+823	mengen	50052	2175	mix	w	h	hiking
+824	liquidieren	50015	2175	liquidate	i	h	flexibility
+825	nisten	49917	2176	nest	w	h	flexibility
+826	budgetieren	49872	2176	budget	i	h	barre
+827	tricksen	49658	2177	trick	w	h	play
+828	killen	49532	2177	kill	w	h	boxing
+829	denunzieren	49175	2181	denounce, inform against	i	h	wave
+830	ballern	49147	2182	bang	w	h	wave
+831	texten	49103	2183	write	w	h	walk.arrival
+832	habilitieren	48851	2184	habilitate	i	h	flexibility
+833	asphaltieren	48823	2184	asphalt	i	h	flexibility
+834	fräsen	48808	2186	mill	w	h	flexibility
+835	emittieren	48795	2186	emit, send out, give off	i	h	handball
+836	prasseln	48675	2186	clatter	w	h	wave
+837	wurzeln	48432	2191	be rooted	w	h	flexibility
+838	wuchten	48349	2193	heave, lift something heavy	w	h	strengthtraining.traditional
+839	laborieren	48198	2194	work in a laboratory	i	h	strengthtraining.traditional
+840	lodern	48146	2196	blaze, flare	w	h	highintensity.intervaltraining
+841	nageln	47988	2198	nail	w	h	flexibility
+842	injizieren	47857	2199	inject	i	h	flexibility
+843	indizieren	47428	2202	indicate, hint	i	h	flexibility
+844	knistern	47267	2205	sizzle, crackle, creak	w	h	wave
+845	zwicken	47213	2207	pinch	w	h	flexibility
+846	privilegieren	47132	2208	privilege	i	h	flexibility
+847	chauffieren	46961	2208	chauffeur	i	h	flexibility
+848	radikalisieren	46950	2208	radicalize, radicalise	i	h	flexibility
+849	ruckeln	46822	2208	shake, jerk repeatedly	w	h	socialdance
+850	beuteln	46421	2210	sieve, especially flour	w	h	flexibility
+851	zähmen	46420	2210	tame	w	h	flexibility
+852	kapern	46369	2210	capture, seize, hijack	w	h	handball
+853	raffen	46200	2211	snatch up, grasp	w	h	handball
+854	politisieren	46175	2211	politicise	i	h	flexibility
+855	bräunen	46079	2212	suntan, become tan in color	w	h	flexibility
+856	schlemmen	46063	2212	debauch, feast	w	h	flexibility
+857	kämmen	46062	2212	groom, comb, brush	w	h	flexibility
+858	geizen	46054	2212	be miserly, stingy	w	h	flexibility
+859	migrieren	45781	2214	migrate	i	h	flexibility
+860	duzen	45712	2218	address informally using the pronoun du	w	h	wave
+861	ächzen	45691	2218	groan	w	h	flexibility
+862	frisieren	45687	2218	dress the hair	i	h	flexibility
+863	wässern	45681	2218	water	w	h	pool.swim
+864	terrorisieren	45540	2218	terrorize	i	h	flexibility
+865	kolportieren	45506	2218	spread	i	h	flexibility
+866	zoomen	45499	2218	zoom	w	h	flexibility
+867	emanzipieren	45470	2219	emancipate	i	h	flexibility
+868	tränken	45451	2219	water	w	h	pool.swim
+869	grassieren	45415	2219	rampant, rage	i	h	flexibility
+870	wölben	45185	2219	curve, bend	w	h	flexibility
+871	kegeln	45154	2221	skittle, bowl	w	h	flexibility
+872	räuchern	45106	2222	smoke, cure	w	h	cooldown
+873	pinkeln	44961	2223	pee	w	h	flexibility
+874	fachsimpeln	44941	2223	talk about technical	w	h	wave
+875	ächten	44897	2224	banish, ostracize, outlaw	w	h	flexibility
+876	negieren	44734	2225	negate	i	h	flexibility
+877	härten	44727	2225	harden, make hard	w	h	flexibility
+878	gähnen	44701	2226	yawn	w	h	flexibility
+879	schwelen	44554	2229	smoulder	w	h	flexibility
+880	cremen	44453	2233	cream	w	h	flexibility
+881	schummeln	44440	2233	cheat	w	h	play
+882	stottern	44269	2234	stutter	w	h	wave
+883	quietschen	44250	2234	squeak	w	h	wave
+884	gravieren	44047	2238	engrave	i	h	walk.arrival
+885	lugen	43933	2241	look	w	h	archery
+886	spezifizieren	43895	2241	specify	i	h	flexibility
+887	wellen	43635	2243	wave	w	h	flexibility
+888	autorisieren	43521	2245	authorize	i	h	flexibility
+889	drapieren	43478	2247	drape	i	h	flexibility
+890	marinieren	43413	2247	marinate	i	h	flexibility
+891	kommandieren	43412	2247	command, be in command, in charge	i	h	flexibility
+892	kontrastieren	43408	2247	contrast	i	h	flexibility
+893	akzentuieren	43193	2251	accentuate, emphasize, accent	i	h	flexibility
+894	prellen	43124	2251	bruise, bash	w	h	flexibility
+895	kriminalisieren	43100	2251	criminalize	i	h	flexibility
+896	krümmen	43084	2252	bend, writhe	w	h	flexibility
+897	elektrisieren	42969	2253	electrify	i	h	flexibility
+898	covern	42922	2253	cover	w	h	walk.motion
+899	branden	42892	2253	surge, break	w	h	boxing
+900	maskieren	42810	2253	mask	i	h	flexibility
+901	wogen	42808	2253	undulate, move in a wavelike manner	w	h	hiking
+902	munden	42757	2253	taste good, be tasty	w	h	mind.and.body
+903	brüsten	42693	2254	boast, brag	w	h	wave
+904	heimsen	42566	2256	bring home	w	h	hiking
+905	destabilisieren	42559	2256	destabilize	i	h	flexibility
+906	kranken	42425	2257	be ailing, be held back, be suffering	w	h	flexibility
+907	preschen	42391	2257	rush, charge	w	s	run
+908	flöten	42294	2258	play the flute	w	h	play
+909	deklassieren	42135	2260	downgrade	i	h	flexibility
+910	feilschen	42119	2260	haggle	w	h	flexibility
+911	horchen	42068	2261	listen closely	w	h	mind.and.body
+912	nächtigen	41779	2265	stay the night, stay over, crash	w	h	seated.side.left
+913	traktieren	41672	2267	mistreat, plague	i	h	flexibility
+914	deprimieren	41451	2271	depress	i	h	flexibility
+915	düpieren	41385	2271	fool, deceive, dupe	i	h	play
+916	raufen	41329	2272	brawl, scuffle, fight	w	h	fencing
+917	schunkeln	41281	2273	rock, sway, bob irregularly	w	h	socialdance
+918	sympathisieren	41183	2274	be sympathetic to	i	h	flexibility
+919	kokettieren	41078	2274	try to appeal, win favour	i	h	wrestling
+920	fixen	40758	2278	fix, repair	w	h	strengthtraining.traditional
+921	hobeln	40679	2280	plane	w	h	flexibility
+922	loten	40646	2281	sound	w	h	flexibility
+923	kanalisieren	40539	2281	channel	i	h	flexibility
+924	qualmen	40291	2285	fume	w	h	flexibility
+925	spuken	39842	2288	haunt	w	h	flexibility
+926	kentern	39707	2288	capsize	w	h	flexibility
+927	reglementieren	39704	2288	regularize, regiment	i	h	flexibility
+928	timen	39624	2290	time	w	h	flexibility
+929	satteln	39536	2291	saddle	w	h	flexibility
+930	pulsieren	39372	2292	pulsate	i	h	flexibility
+931	ködern	39298	2292	bait	w	h	flexibility
+932	kurieren	39210	2293	cure	i	h	flexibility
+933	sozialisieren	39200	2293	socialize	i	h	flexibility
+934	validieren	39116	2293	validate	i	h	flexibility
+935	kurven	39018	2295	drive around in a vehicle	w	s	seated.side.left.steeringwheel
+936	dösen	38835	2297	doze	w	h	seated.side.left
+937	flammen	38815	2298	flame	w	h	flexibility
+938	ackern	38794	2299	plow	w	h	flexibility
+939	wuseln	38786	2300	move hastily, scurry	w	h	hiking
+940	krähen	38766	2301	crow	w	h	flexibility
+941	kribbeln	38715	2302	prickle, tickle	w	h	flexibility
+942	diversifizieren	38285	2304	diversify	i	h	flexibility
+943	wurmen	38280	2304	bother, rankle	w	h	boxing
+944	spulen	38267	2304	spool	w	h	flexibility
+945	sezieren	38161	2305	dissect	i	h	flexibility
+946	schikanieren	38082	2305	bully, harass	i	h	boxing
+947	faxen	37940	2307	fax	w	h	flexibility
+948	prickeln	37905	2307	prickle	w	h	flexibility
+949	destillieren	37764	2309	distil	i	h	flexibility
+950	traden	37681	2311	trade, speculate	w	h	2
+951	tadeln	37648	2311	blame, censure, rebuke, reprimand	w	h	flexibility
+952	kauern	37510	2312	crouch, cower, huddle	w	h	flexibility
+953	kullern	37382	2314	roll slowly	w	s	roll
+954	implantieren	37366	2314	implant	i	h	flexibility
+955	schwänzen	37328	2316	skip, truant, play hooky, wag, skive	w	h	jumprope
+956	schönen	37299	2316	massage	w	h	flexibility
+957	stigmatisieren	37284	2316	stigmatize	i	h	flexibility
+958	ritzen	37154	2317	scratch	w	h	boxing
+959	schnüffeln	36794	2321	sniff	w	h	flexibility
+960	trällern	36752	2323	trill	w	h	flexibility
+961	zelten	36747	2323	camp, tent	w	h	hiking
+962	haaren	36716	2323	moult	w	h	flexibility
+963	krempeln	36610	2327	roll up	w	h	roll
+964	fackeln	36604	2327	hesitate	w	h	flexibility
+965	reanimieren	36585	2327	reanimate, resuscitate	i	h	flexibility
+966	inhalieren	36494	2330	inhale	i	h	flexibility
+967	brutzeln	36471	2330	fry	w	h	cooldown
+968	pennen	36456	2330	sleep	w	h	seated.side.left
+969	lamentieren	36391	2330	lament	i	h	flexibility
+970	quaken	36348	2332	quack	w	h	flexibility
+971	pensionieren	36341	2333	pension	i	h	flexibility
+972	schrubben	36003	2340	scrub	w	h	pool.swim
+973	ketten	35936	2341	chain	w	h	flexibility
+974	dozieren	35777	2344	lecture	i	h	flexibility
+975	galoppieren	35686	2344	gallop	i	s	flexibility
+976	akkreditieren	35588	2344	accredit	i	h	flexibility
+977	kacken	35581	2344	shit	w	h	flexibility
+978	faken	35537	2344	fake	w	h	flexibility
+979	schmökern	35470	2346	read leisurely	w	h	flexibility
+980	fädeln	35399	2346	thread	w	h	flexibility
+981	triggern	35295	2348	trigger	w	h	flexibility
+982	goutieren	35276	2348	appreciate	i	h	flexibility
+983	pflügen	35183	2349	plow, plough	w	h	flexibility
+984	münzen	34951	2353	coin, mint	w	h	flexibility
+985	hupen	34901	2353	honk, sound the horn	w	h	wave
+986	murren	34884	2353	grumble	w	h	wave
+987	zappen	34797	2357	zap, channel surf, channel hop	w	h	flexibility
+988	grünen	34739	2357	be green, become green	w	h	flexibility
+989	parodieren	34677	2357	parody	i	h	flexibility
+990	polen	34665	2357	polarize	w	h	flexibility
+991	möblieren	34615	2357	furnish	i	h	flexibility
+992	schnurren	34613	2357	purr	w	h	wave
+993	elektrifizieren	34459	2358	electrify	i	h	flexibility
+994	kalibrieren	34224	2360	calibrate	i	h	flexibility
+995	schluchzen	34205	2360	sob	w	h	wave
+996	kickern	34176	2361	play foosball	w	h	play
+997	internieren	34078	2363	intern	i	h	flexibility
+998	borgen	33971	2364	borrow	w	h	flexibility
+999	stanzen	33903	2367	press, punch, stamp	w	h	strengthtraining.traditional
+1000	straucheln	33871	2367	stumble, fall or nearly fall	w	s	fall
+1001	zwinkern	33836	2367	blink, wink	w	h	flexibility
+1002	wiegeln	33610	2367	rock, sway in a crib	w	h	socialdance
+1003	swingen	33599	2367	swing	w	h	socialdance
+1004	konfiszieren	33509	2368	confiscate	i	h	flexibility
+1005	schnaufen	33361	2369	snort, pant	w	h	wave
+1006	raspeln	33317	2369	rasp	w	h	flexibility
+1007	campen	33310	2369	camp	w	h	hiking
+1008	klonen	33264	2370	clone	w	h	flexibility
+1009	sündigen	33125	2372	sin	w	h	flexibility
+1010	beichten	33087	2374	confess	w	h	wave
+1011	schillern	33004	2375	shimmer, glisten	w	h	flexibility
+1012	dribbeln	32860	2380	dribble	w	h	flexibility
+1013	knöpfen	32817	2380	button	w	h	flexibility
+1014	flutschen	32736	2381	slip, move smoothly	w	s	skating
+1015	amputieren	32721	2381	amputate	i	h	flexibility
+1016	filzen	32720	2381	frisk	w	h	flexibility
+1017	echauffieren	32623	2382	get steamed, upset, worked up, het up	i	h	flexibility
+1018	grätschen	32527	2383	straddle	w	h	flexibility
+1019	lutschen	32489	2384	suck	w	h	cooldown
+1020	grauen	32451	2385	cause terror	w	h	flexibility
+1021	illuminieren	32390	2388	illuminate	i	h	flexibility
+1022	schrillen	32367	2388	shrill, make a shrill noise, go off	w	h	walk
+1023	gruseln	32175	2393	provoke fear, horror, horripilate	w	h	boxing
+1024	scharren	32150	2393	scrape at, scratch at, paw at	w	h	boxing
+1025	kompromittieren	32136	2394	compromise	i	h	flexibility
+1026	zweiteilen	31893	2396	split in two, bisect, halve	w	h	fencing
+1027	pinseln	31882	2396	paint, daub	w	h	walk.arrival
+1028	nummerieren	31741	2398	number	i	h	flexibility
+1029	grölen	31736	2398	bawl, bellow, chant	w	h	wave
+1030	drangsalieren	31682	2398	harass, torment	i	h	boxing
+1031	frittieren	31625	2398	deep-fry	i	h	flexibility
+1032	steppen	31470	2400	sew a straight seam with narrow stitches	w	h	flexibility
+1033	schwärzen	31454	2400	blacken	w	h	flexibility
+1034	laben	31452	2400	refresh someone with	w	h	flexibility
+1035	pointieren	31375	2403	emphasise	i	h	flexibility
+1036	planschen	31360	2404	plash, splash, paddle	w	h	pool.swim
+1037	rascheln	31357	2404	rustle	w	h	wave
+1038	nippen	31352	2404	sip, take a nip	w	h	cooldown
+1039	wabern	31199	2405	waft, undulate	w	h	flexibility
+1040	rappeln	31162	2405	rattle, clatter	w	h	wave
+1041	rümpfen	31095	2405	wrinkle	w	h	flexibility
+1042	präferieren	31084	2405	prefer	i	h	flexibility
+1043	schänden	30852	2411	desecrate, dishonour	w	h	flexibility
+1044	knutschen	30835	2413	kiss passionately, neck, make out, smooch	w	h	2
+1045	längen	30792	2415	lengthen, elongate, stretch	w	h	flexibility
+1046	werken	30697	2416	do handicraft, especially woodwork	w	h	flexibility
+1047	bunkern	30560	2419	load into a ship’s bunker	w	h	hiking
+1048	tänzeln	30477	2419	sashay	w	h	flexibility
+1049	avisieren	30463	2420	announce, notify	i	h	wave
+1050	karren	30438	2420	wheelbarrow	w	h	flexibility
+1051	mogeln	30393	2420	cheat	w	h	play
+1052	kumulieren	30232	2420	cumulate	i	h	flexibility
+1053	zentrieren	30214	2420	center	i	h	flexibility
+1054	urlauben	30189	2420	go on vacation, holiday	w	h	walk
+1055	logieren	30150	2422	lodge	i	h	seated.side.left
+1056	statuieren	30126	2422	state	i	h	flexibility
+1057	schirmen	30124	2422	shield	w	h	walk.motion
+1058	spionieren	29947	2426	spy	i	h	archery
+1059	dimmen	29895	2426	dim	w	h	flexibility
+1060	zentralisieren	29830	2427	centralize	i	h	flexibility
+1061	kloppen	29825	2427	fight, engage in a fistfight	w	h	fencing
+1062	dramatisieren	29820	2427	dramatize	i	h	flexibility
+1063	sterilisieren	29747	2428	sterilize	i	h	flexibility
+1064	pauken	29703	2428	beat a drum	w	h	boxing
+1065	doppeln	29700	2428	double	w	h	flexibility
+1066	stochern	29571	2429	poke, pick	w	h	handball
+1067	hypen	29548	2430	hype	w	h	flexibility
+1068	scheppern	29480	2431	clank, clash, clatter, rattle	w	h	wave
+1069	sticheln	29463	2432	tease, provoke, banter	w	h	boxing
+1070	hofieren	29434	2432	court, pay court to	i	h	2
+1071	schwadronieren	29400	2432	ramble, rant	i	h	wave
+1072	ankern	29219	2434	anchor	w	h	flexibility
+1073	wiehern	29201	2434	neigh, whinny, nicker	w	h	flexibility
+1074	bäumen	29168	2434	rear up	w	h	flexibility
+1075	labern	29147	2435	slurp, drink noisily	w	h	cooldown
+1076	stammeln	29127	2435	stammer	w	h	wave
+1077	pöbeln	29105	2435	swear	w	h	wave
+1078	schnarchen	29059	2436	snore	w	h	wave
+1079	tapezieren	29058	2436	wallpaper, paper a wall	i	h	flexibility
+1080	schwanen	29055	2436	become apparent, dawn	w	h	flexibility
+1081	brettern	28849	2441	drive fast	w	s	seated.side.left.steeringwheel
+1082	hellen	28840	2441	brighten	w	h	flexibility
+1083	brandmarken	28830	2441	brand, stigmatize	w	h	flexibility
+1084	kontaminieren	28817	2442	contaminate	i	h	flexibility
+1085	baggern	28735	2442	excavate, dredge	w	h	flexibility
+1086	heiligen	28688	2442	hallow, make holy	w	h	flexibility
+1087	gieren	28568	2448	desire greedily, lust for	w	h	flexibility
+1088	grummeln	28443	2450	grumble	w	h	wave
+1089	büffeln	28382	2452	swot, cram	w	h	flexibility
+1090	pfänden	28363	2455	seize, impound	w	h	handball
+1091	inserieren	28173	2459	advertise	i	h	flexibility
+1092	detonieren	28141	2459	detonate	i	s	flexibility
+1093	fauchen	27938	2465	hiss, spit, growl	w	h	wave
+1094	rationalisieren	27872	2469	rationalize	i	h	flexibility
+1095	niesen	27824	2471	sneeze	w	h	flexibility
+1096	eskortieren	27821	2471	escort	i	h	flexibility
+1097	imprägnieren	27762	2473	waterproof	i	h	flexibility
+1098	schnippeln	27748	2473	chop, cut into small pieces	w	h	fencing
+1099	waten	27647	2474	wade	w	s	flexibility
+1100	walken	27613	2474	tan, full, walk	w	h	walk
+1101	plappern	27610	2474	babble	w	h	wave
+1102	mokieren	27570	2474	mock	i	h	boxing
+1103	kiffen	27568	2474	smoke marijuana	w	h	cooldown
+1104	knuddeln	27539	2474	cuddle	w	h	2
+1105	kritzeln	27535	2474	scribble	w	h	flexibility
+1106	trotten	27519	2474	trot	w	s	flexibility
+1107	keltern	27498	2474	press	w	h	strengthtraining.traditional
+1108	rupfen	27448	2475	pluck, tear off, rip, rip off	w	h	flexibility
+1109	separieren	27444	2476	separate into separate parts)	i	h	fencing
+1110	krallen	27397	2477	hold on or cling, especially with claws	w	h	handball
+1111	splitten	27309	2479	split, divide into several	w	h	fencing
+1112	löffeln	27233	2480	spoon	w	h	flexibility
+1113	exekutieren	27229	2480	execute	i	h	flexibility
+1114	potenzieren	27228	2480	raise to the power	i	h	flexibility
+1115	normieren	27110	2481	standardize	i	h	flexibility
+1116	hänseln	27108	2481	tease	w	h	boxing
+1117	ängstigen	27075	2483	alarm, frighten	w	h	flexibility
+1118	grollen	26931	2485	grumble, thunder	w	h	wave
+1119	löchern	26929	2485	perforate	w	h	flexibility
+1120	scheuchen	26881	2485	shoo, drive	w	h	seated.side.left.steeringwheel
+1121	räkeln	26838	2488	stretch, pandiculate, loll, lounge, sprawl	w	h	seated.side.left
+1122	schwätzen	26742	2489	chat, talk, babble, prate	w	h	wave
+1123	lechzen	26710	2490	crave, thirst, drool	w	h	flexibility
+1124	motzen	26578	2493	grouch	w	h	flexibility
+1125	koalieren	26510	2496	form a coalition	i	h	walk.arrival
+1126	kabeln	26509	2496	cable	w	h	flexibility
+1127	keuchen	26507	2496	gasp	w	h	wave
+1128	spreizen	26430	2496	straddle	w	h	flexibility
+1129	karamellisieren	26211	2497	caramelize	i	h	flexibility
+1130	fighten	26209	2497	fight ferociously	w	h	fencing
+1131	exponieren	26163	2498	expose	i	h	flexibility
+1132	lochen	26144	2498	punch	w	h	boxing
+1133	argwöhnen	26102	2499	suspect	w	h	yoga
+1134	spähen	26016	2500	peer, peek	w	h	archery
+1135	walzen	25950	2501	roll	w	h	roll
+1136	träufeln	25927	2501	drip	w	h	pool.swim
+1137	buchstabieren	25916	2501	spell	i	h	flexibility
+1138	immatrikulieren	25879	2501	register, enroll	i	h	flexibility
+1139	schürfen	25801	2503	prospect	w	h	flexibility
+1140	karikieren	25796	2504	caricature	i	h	flexibility
+1141	maulen	25707	2505	moan, nag	w	h	wave
+1142	unken	25639	2507	prophesy failure or doom	w	h	flexibility
+1143	tröpfeln	25581	2509	drip, fall or trickle down in small drops	w	h	pool.swim
+1144	ebben	25523	2509	ebb	w	h	flexibility
+1145	blanchieren	25463	2509	blanche	i	h	flexibility
+1146	lupfen	25457	2510	lift, raise	w	h	strengthtraining.traditional
+1147	observieren	25424	2511	observe	i	h	archery
+1148	glotzen	25404	2512	stare, gape, gawk, goggle	w	h	archery
+1149	schreddern	25390	2512	shred	w	h	flexibility
+1150	infiltrieren	25336	2512	infiltrate	i	h	flexibility
+1151	bocken	25287	2513	buck, capriole, be stubborn, be unruly	w	h	flexibility
+1152	schlenzen	25274	2513	flick, curl	w	h	flexibility
+1153	schlurfen	25252	2514	shuffle	w	h	flexibility
+1154	katalogisieren	25227	2514	catalogue	i	h	flexibility
+1155	rasseln	25212	2515	rattle	w	h	wave
+1156	klotzen	25082	2516	show off	w	h	flexibility
+1157	rackern	24988	2516	work hard	w	h	strengthtraining.traditional
+1158	zündeln	24919	2516	play with fire	w	h	play
+1159	spurten	24821	2518	sprint	w	h	run
+1160	projektieren	24766	2518	plan	i	h	flexibility
+1161	rucken	24719	2521	jerk, move in forceful pushes	w	h	hiking
+1162	schmähen	24710	2521	revile, mock, verbally abuse	w	h	boxing
+1163	knoten	24692	2521	tie into a knot	w	h	2.and.child.holdinghands
+1164	rekapitulieren	24587	2522	recapitulate	i	h	flexibility
+1165	runzeln	24581	2522	crinkle, wrinkle	w	h	flexibility
+1166	kitten	24512	2525	putty, cement	w	h	flexibility
+1167	korrumpieren	24455	2525	corrupt	i	h	flexibility
+1168	changieren	24430	2527	change	i	h	flexibility
+1169	blubbern	24424	2527	bubble	w	h	flexibility
+1170	broschieren	24284	2529	make a book	i	h	flexibility
+1171	quantifizieren	24281	2529	quantify	i	h	flexibility
+1172	gängeln	24272	2529	make walk	w	h	walk
+1173	polemisieren	24185	2531	polemicize	i	h	flexibility
+1174	malträtieren	24156	2531	mistreat something	i	h	flexibility
+1175	schmusen	24096	2531	cuddle, fondle, canoodle	w	h	2
+1176	röten	24030	2531	redden	w	h	flexibility
+1177	tuscheln	23901	2534	whisper, quietly and secretly say about	w	h	wave
+1178	faulen	23899	2534	rot	w	s	fall
+1179	kuschen	23895	2534	lie down	w	h	play
+1180	föhnen	23878	2536	blow-dry	w	h	wave
+1181	applizieren	23667	2539	apply	i	h	flexibility
+1182	faseln	23581	2539	ramble, drivel	w	h	wave
+1183	frischen	23518	2539	refine pig iron into steel	w	h	flexibility
+1184	gamen	23451	2541	play a video game	w	h	play
+1185	transplantieren	23443	2541	transplant	i	h	flexibility
+1186	jauchzen	23393	2543	give a high-pitched cry of exultation	w	h	handball
+1187	redigieren	23373	2543	edit	i	h	flexibility
+1188	pimpen	23363	2544	pimp	w	h	flexibility
+1189	portionieren	23359	2545	portion	i	h	flexibility
+1190	kompilieren	23356	2545	compile or assemble information	i	h	flexibility
+1191	eifern	23350	2545	strive	w	h	wrestling
+1192	schwemmen	23339	2545	wash	w	h	pool.swim
+1193	piepen	23296	2545	cheep, squeak	w	h	wave
+1194	liberalisieren	23232	2546	liberalize	i	h	flexibility
+1195	kriseln	23215	2547	show signs of impending crisis or conflict	w	h	flexibility
+1196	pellen	23191	2547	peel	w	h	flexibility
+1197	abstrahieren	23085	2548	abstract	i	h	flexibility
+1198	tabuisieren	22995	2549	taboo	i	h	flexibility
+1199	ekeln	22990	2549	be disgusted	w	h	flexibility
+1200	nörgeln	22934	2550	nag, grumble	w	h	wave
+1201	immunisieren	22901	2551	immunize	i	h	flexibility
+1202	kondensieren	22853	2551	condense	i	h	flexibility
+1203	knattern	22825	2551	rattle, chatter, clatter	w	h	wave
+1204	kulminieren	22736	2552	culminate	i	h	flexibility
+1205	putschen	22595	2555	organize a coup d'état	w	h	walk.arrival
+1206	plumpsen	22496	2559	flop, plump	w	s	flexibility
+1207	löten	22488	2559	solder	w	h	flexibility
+1208	schauspielern	22476	2559	work as an actor, job as an actor	w	h	strengthtraining.traditional
+1209	tunken	22317	2561	dip, dunk a condiment or sauce)	w	h	pool.swim
+1210	beamen	22262	2562	beam	w	h	flexibility
+1211	lärmen	22245	2562	make lots of annoying noise, make a racket	w	h	flexibility
+1212	wildern	22233	2562	poach	w	h	flexibility
+1213	skypen	22175	2563	skype	w	h	flexibility
+1214	beuten	22084	2564	settle bees in a hollow tree	w	h	seated.side.left
+1215	bagatellisieren	21979	2565	belittle, minimise/minimize	i	h	flexibility
+1216	opponieren	21923	2567	oppose, demur	i	h	flexibility
+1217	fabulieren	21883	2567	fabulate, tell stories	i	h	wave
+1218	zürnen	21828	2569	be angry	w	h	flexibility
+1219	schwatzen	21813	2571	babble, waffle, prattle, chat	w	h	wave
+1220	hoppeln	21792	2572	hop	w	s	jumprope
+1221	ramponieren	21774	2572	damage severely, destroy	i	h	boxing
+1222	orchestrieren	21760	2572	orchestrate	i	h	flexibility
+1223	kreuzigen	21715	2572	crucify	w	h	flexibility
+1224	missionieren	21704	2572	convert, proselytize	i	h	flexibility
+1225	röhren	21691	2573	roar	w	h	wave
+1226	bomben	21635	2574	bomb	w	h	flexibility
+1227	eloxieren	21622	2574	anodize	i	h	flexibility
+1228	robben	21546	2577	creep, crawl, move on ground level	w	h	climbing
+1229	spitzeln	21463	2580	spy	w	h	archery
+1230	kompostieren	21434	2580	compost	i	h	flexibility
+1231	klimatisieren	21374	2581	air-condition	i	h	flexibility
+1232	schlecken	21343	2581	lick, lap	w	h	cooldown
+1233	jubilieren	21325	2581	cheer, gloat	i	h	flexibility
+1234	teeren	21236	2583	tar	w	h	flexibility
+1235	engen	21190	2583	limit	w	h	flexibility
+1236	splittern	21190	2583	shatter	w	h	flexibility
+1237	klönen	21135	2583	chat	w	h	wave
+1238	demotivieren	20950	2588	demotivate	i	h	flexibility
+1239	klirren	20935	2588	clink, clank, clash, jingle, clatter	w	h	wave
+1240	retournieren	20854	2589	return to sender	i	h	flexibility
+1241	etikettieren	20825	2589	label, tag	i	h	walk.arrival
+1242	instruieren	20742	2590	instruct	i	h	flexibility
+1243	gärtnern	20739	2590	garden	w	h	flexibility
+1244	grämen	20694	2592	trouble, worry, make unhappy	w	h	yoga
+1245	canceln	20671	2592	cancel, annul	w	h	flexibility
+1246	frösteln	20596	2592	shiver, feel chilly, shudder	w	h	socialdance
+1247	sahnen	20591	2592	cream, skim	w	h	flexibility
+1248	kontakten	20523	2595	contact	w	h	2
+1249	mattieren	20515	2595	tarnish, mat, opaque	i	h	flexibility
+1250	häuten	20469	2595	skin	w	h	flexibility
+1251	hexen	20378	2597	perform witchcraft, cast a spell/spells	w	h	flexibility
+1252	töpfern	20360	2597	make pottery	w	h	flexibility
+1253	flippen	20308	2597	skip	w	h	jumprope
+1254	fuchteln	20305	2597	wave about	w	h	flexibility
+1255	disponieren	20292	2598	have at one's disposal	i	h	flexibility
+1256	protzen	20285	2599	flaunt, show off	w	h	flexibility
+1257	fremdeln	20282	2599	conceive alienation	w	h	flexibility
+1258	sekundieren	20267	2599	second	i	h	flexibility
+1259	brühen	20226	2600	blanch, pour seething water over	w	h	pool.swim
+1260	zicken	20224	2600	bitch, grumble	w	h	wave
+1261	schnorcheln	20213	2600	snorkel	w	h	flexibility
+1262	piepsen	20173	2600	squeak	w	h	wave
+1263	mästen	20164	2600	fatten	w	h	flexibility
+1264	parkieren	20140	2600	park	i	h	flexibility
+1265	schröpfen	20126	2600	bleed, cup	w	h	flexibility
+1266	schmachten	20082	2603	suffer hardship	w	h	mind.and.body
+1267	kodieren	20037	2604	encode	i	h	flexibility
+1268	hospitieren	19899	2609	take part as a guest, sit in	i	h	handball
+1269	suhlen	19888	2609	wallow	w	h	flexibility
+1270	tränen	19861	2609	water	w	h	pool.swim
+1271	jäten	19846	2610	pull out	w	h	indoor.rowing
+1272	dividieren	19820	2610	divide	i	h	fencing
+1273	dürsten	19745	2612	thirst	w	h	flexibility
+1274	jetten	19722	2613	jet	w	s	flexibility
+1275	wetzen	19673	2615	whet, sharpen	w	h	flexibility
+1276	falzen	19603	2617	fold	w	h	flexibility
+1277	necken	19601	2617	tease	w	h	boxing
+1278	klimpern	19524	2619	jingle, jangle, tinkle	w	h	wave
+1279	läutern	19502	2619	refine	w	h	flexibility
+1280	steinigen	19430	2622	stone, lapidate	w	h	flexibility
+1281	süßen	19429	2622	sweeten	w	h	flexibility
+1282	zanken	19428	2622	bicker, fight	w	h	fencing
+1283	schimmeln	19400	2622	mould, become mouldy	w	h	fall
+1284	johlen	19318	2625	hoot, howl, or jeer	w	h	wave
+1285	riegeln	19290	2626	bolt	w	h	flexibility
+1286	massakrieren	19256	2626	massacre	i	h	flexibility
+1287	höhlen	19216	2627	hollow out	w	h	flexibility
+1288	synthetisieren	19202	2627	synthesize	i	h	flexibility
+1289	frappieren	19190	2627	astonish, impress, strike	i	h	boxing
+1290	blähen	19167	2628	cause flatulation	w	h	flexibility
+1291	räuspern	19162	2628	clear one's throat, cough slightly	w	h	flexibility
+1292	schaudern	19150	2628	shudder	w	h	socialdance
+1293	säuseln	19100	2630	rustle	w	h	wave
+1294	fummeln	19094	2630	fumble	w	h	flexibility
+1295	schnattern	19043	2631	cackle	w	h	wave
+1296	feixen	19018	2632	smirk	w	h	flexibility
+1297	retuschieren	18975	2633	retouch	i	h	flexibility
+1298	heucheln	18937	2633	feign, be hypocritical	w	h	flexibility
+1299	komplizieren	18900	2633	complicate	i	h	flexibility
+1300	institutionalisieren	18848	2634	institutionalize	i	h	flexibility
+1301	poppen	18831	2635	have sex, fuck	w	h	flexibility
+1302	jaulen	18789	2637	yelp, howl, yowl	w	h	wave
+1303	kidnappen	18676	2639	abduct, kidnap	w	h	boxing
+1304	ehelichen	18649	2639	espouse	w	h	flexibility
+1305	evozieren	18590	2640	evoke	i	h	flexibility
+1306	mäkeln	18577	2640	nag, find fault with	w	h	flexibility
+1307	kugeln	18564	2640	roll or bowl	w	s	roll
+1308	switchen	18515	2640	code-switch	w	h	flexibility
+1309	urinieren	18458	2642	urinate	i	h	flexibility
+1310	akklimatisieren	18343	2644	acclimate, acclimatize	i	h	flexibility
+1311	taktieren	18341	2644	act tactically, maneuver	i	h	flexibility
+1312	blechen	18276	2645	cough up, fork out, hand over	w	h	handball
+1313	administrieren	18240	2648	manage, administer	i	h	walk.arrival
+1314	krächzen	18051	2654	croak, caw	w	h	wave
+1315	demokratisieren	18014	2654	democratize	i	h	flexibility
+1316	alimentieren	18003	2654	support financially	i	h	2.and.child.holdinghands
+1317	campieren	18002	2655	camp	i	h	hiking
+1318	fetten	17857	2656	grease, smear with fat	w	h	flexibility
+1319	insistieren	17831	2656	insist	i	h	flexibility
+1320	modeln	17721	2656	model	w	h	flexibility
+1321	subsumieren	17692	2656	subsume	i	h	flexibility
+1322	marginalisieren	17686	2657	marginalize	i	h	flexibility
+1323	lümmeln	17682	2657	sprawl, flop down, slouch	w	h	flexibility
+1324	drillen	17629	2659	twist	w	h	socialdance
+1325	temperieren	17621	2659	temper	i	h	flexibility
+1326	kolorieren	17597	2659	colorize	i	h	flexibility
+1327	duplizieren	17561	2661	duplicate exact copies of)	i	h	flexibility
+1328	stibitzen	17513	2662	scrounge, pilfer, snatch	w	h	handball
+1329	nuscheln	17374	2667	mumble, slur	w	h	wave
+1330	replizieren	17324	2670	replicate	i	h	flexibility
+1331	schmollen	17302	2671	sulk, pout	w	h	flexibility
+1332	differieren	17282	2671	differ	i	h	flexibility
+1333	ploppen	17274	2671	make a popping or plopping sound	w	h	flexibility
+1334	knebeln	17241	2671	gag	w	h	flexibility
+1335	rotten	17240	2671	to rot, decay	w	h	fall
+1336	tunen	17239	2671	tune	w	h	flexibility
+1337	retardieren	17216	2671	retard	i	h	flexibility
+1338	eisen	17189	2671	freeze	w	h	skiing.downhill
+1339	pigmentieren	17178	2672	pigment	i	h	flexibility
+1340	typisieren	17170	2672	classify, type	i	h	flexibility
+1341	faulenzen	17150	2673	laze	w	h	seated.side.left
+1342	vegetieren	17090	2675	vegetate	i	h	flexibility
+1343	glasieren	17057	2675	glaze	i	h	walk.arrival
+1344	gellen	16987	2676	emit a loud, clear and strident sound	w	h	flexibility
+1345	nieseln	16961	2676	drizzle	w	h	flexibility
+1346	docken	16959	2676	dock	w	h	flexibility
+1347	picknicken	16954	2677	picnic, have a picnic	w	h	flexibility
+1348	schlauchen	16946	2677	wear out	w	h	flexibility
+1349	frotzeln	16923	2678	tease, scoff	w	h	boxing
+1350	hechten	16903	2678	swan-dive	w	h	flexibility
+1351	kränkeln	16858	2679	be sickly	w	h	flexibility
+1352	ohrfeigen	16821	2680	slap in the face, box someone's ears	w	h	boxing
+1353	agitieren	16810	2680	campaign	i	h	flexibility
+1354	idealisieren	16788	2680	idealize, idealise	i	h	flexibility
+1355	dealen	16785	2680	sell drugs	w	h	flexibility
+1356	narren	16751	2682	fool	w	h	play
+1357	siezen	16747	2682	you	w	h	flexibility
+1358	scheffeln	16746	2682	accumulate	w	h	flexibility
+1359	prozessieren	16743	2682	litigate	i	h	flexibility
+1360	stacheln	16739	2682	spur on	w	h	flexibility
+1361	darben	16560	2687	lack, have a need	w	h	flexibility
+1362	scheuern	16559	2687	scrub, scour	w	h	pool.swim
+1363	obduzieren	16501	2687	autopsy	i	h	flexibility
+1364	salben	16479	2688	salve	w	h	flexibility
+1365	induzieren	16443	2689	induce	i	h	flexibility
+1366	hopsen	16432	2689	hop, lollop, dance awkwardly	w	h	jumprope
+1367	lasern	16405	2689	laser	w	h	flexibility
+1368	personifizieren	16400	2689	personify	i	h	flexibility
+1369	laminieren	16305	2692	laminate	i	h	flexibility
+1370	gabeln	16242	2696	fork	w	h	flexibility
+1371	glorifizieren	16234	2696	glorify	i	h	flexibility
+1372	trippeln	16148	2700	scurry, pitter-patter	w	s	flexibility
+1373	dudeln	16110	2701	play incessantly	w	h	play
+1374	melieren	16087	2703	mix	i	h	hiking
+1375	mampfen	16066	2704	munch	w	h	cooldown
+1376	pausen	16050	2704	trace, copy	w	h	flexibility
+1377	röntgen	15943	2709	x-ray	w	h	flexibility
+1378	stählen	15880	2710	toughen, harden	w	h	flexibility
+1379	modulieren	15866	2710	modulate	i	h	flexibility
+1380	detektieren	15846	2710	detect	i	h	flexibility
+1381	bröseln	15773	2711	crumble	w	h	fall
+1382	kräuseln	15765	2711	crimp, curl	w	h	flexibility
+1383	bibbern	15737	2711	shiver	w	h	socialdance
+1384	rubbeln	15636	2715	rub, scratch	w	h	pool.swim
+1385	feien	15619	2716	protect, shield	w	h	walk.motion
+1386	kraxeln	15575	2718	clamber	w	h	climbing
+1387	schnacken	15547	2718	talk, speak	w	h	wave
+1388	imaginieren	15511	2718	imagine	i	h	yoga
+1389	schwängern	15393	2718	impregnate	w	h	flexibility
+1390	schlitzen	15353	2719	slit	w	h	flexibility
+1391	transkribieren	15235	2720	transcribe	i	h	flexibility
+1392	fasen	15229	2720	chamfer	w	h	flexibility
+1393	flachsen	15222	2720	joke	w	h	play
+1394	hausieren	15211	2720	peddle, hawk	i	h	flexibility
+1395	schaben	15193	2721	scrape, shave, plane, pare	w	h	flexibility
+1396	lasieren	15172	2721	glaze, scumble	i	h	walk.arrival
+1397	pfuschen	15161	2722	work unprofessionally, botch	w	h	strengthtraining.traditional
+1398	panieren	15132	2722	bread	i	h	flexibility
+1399	schauern	15130	2722	shiver	w	h	socialdance
+1400	latschen	15113	2723	traipse, trudge	w	s	flexibility
+1401	lungern	15104	2723	hang around	w	h	flexibility
+1402	gerben	15093	2725	tan	w	h	flexibility
+1403	zuckern	15091	2725	sugar	w	h	flexibility
+1404	assimilieren	15072	2725	assimilate	i	h	flexibility
+1405	peinigen	15060	2726	torment, harry	w	h	boxing
+1406	tätscheln	15034	2728	pat	w	h	flexibility
+1407	sistieren	14959	2728	cease, suspend	i	h	flexibility
+1408	degenerieren	14939	2728	degenerate	i	h	flexibility
+1409	parlieren	14924	2730	chat	i	h	wave
+1410	pudern	14805	2732	powder	w	h	flexibility
+1411	rationieren	14787	2734	ration	i	h	flexibility
+1412	tratschen	14731	2734	gossip, chitchat	w	h	flexibility
+1413	gammeln	14700	2734	to become old, rot	w	h	fall
+1414	strangulieren	14673	2734	strangle	i	h	boxing
+1415	gurgeln	14667	2734	gargle	w	h	flexibility
+1416	emeritieren	14598	2739	get retired	i	h	flexibility
+1417	implodieren	14580	2740	implode	i	s	flexibility
+1418	schippen	14563	2741	shovel	w	h	flexibility
+1419	prosten	14556	2741	raise one's glass, toast	w	h	cooldown
+1420	rangeln	14554	2741	jostle, scrap, wrestle	w	h	wrestling
+1421	beizen	14534	2741	stain	w	h	flexibility
+1422	schellen	14495	2744	ring	w	h	wave
+1423	materialisieren	14466	2745	materialize, materialise	i	h	flexibility
+1424	räsonieren	14435	2745	reason, argue	i	h	wave
+1425	konferieren	14379	2748	confer	i	h	flexibility
+1426	watscheln	14352	2750	waddle	w	s	flexibility
+1427	zaudern	14349	2750	hesitate, dilly-dally	w	h	flexibility
+1428	initialisieren	14320	2750	initialize / initialise	i	h	flexibility
+1429	dämonisieren	14301	2750	demonize	i	h	flexibility
+1430	flachen	14244	2752	flatten	w	h	flexibility
+1431	fingern	14171	2754	fumble, grope	w	h	flexibility
+1432	lädieren	14102	2757	damage	i	h	boxing
+1433	leiern	14077	2757	hum, drone	w	h	wave
+1434	pikieren	14060	2757	prick out	i	h	flexibility
+1435	lavieren	14045	2758	tack	i	h	flexibility
+1436	ordinieren	14045	2758	hold surgery	i	h	handball
+1437	kollaborieren	14041	2758	collaborate with the enemy	i	h	flexibility
+1438	doubeln	14029	2759	double, stand in for	w	h	stand
+1439	fragmentieren	13951	2759	fragment	i	h	flexibility
+1440	quartieren	13911	2759	quarter	i	h	flexibility
+1441	gackern	13904	2759	cackle	w	h	wave
+1442	persiflieren	13885	2759	satirize	i	h	flexibility
+1443	wummern	13823	2760	an onomatopoeia	w	h	flexibility
+1444	tafeln	13793	2761	feast	w	h	flexibility
+1445	paktieren	13791	2761	make a pact	i	h	flexibility
+1446	wimmern	13756	2764	whimper	w	h	flexibility
+1447	arretieren	13622	2770	arrest, lock	i	h	boxing
+1448	linken	13615	2770	deceive	w	h	play
+1449	schwafeln	13578	2771	waffle	w	h	flexibility
+1450	schniefen	13571	2774	sniff up snot through the nose	w	h	flexibility
+1451	welken	13552	2775	wither	w	h	fall
+1452	zetern	13514	2777	express dissatisfaction, nag, scold	w	h	wave
+1453	normen	13501	2777	standardize, set a norm for	w	h	stand
+1454	giften	13488	2777	speak angrily and resentfully	w	h	wave
+1455	pissen	13448	2778	piss	w	h	flexibility
+1456	trampen	13413	2778	hitchhike	w	s	flexibility
+1457	schmatzen	13403	2779	smack, chomp	w	h	flexibility
+1458	dressieren	13400	2779	tame, train	i	h	walk.arrival
+1459	schwindeln	13391	2779	be dizzy	w	h	flexibility
+1460	grunzen	13369	2779	grunt	w	h	flexibility
+1461	fingieren	13346	2779	feign	i	h	flexibility
+1462	bechern	13335	2779	booze, tipple	w	h	flexibility
+1463	desertieren	13325	2779	desert	i	s	flexibility
+1464	türken	13323	2779	fake	w	h	flexibility
+1465	knobeln	13295	2779	draw lots	w	h	walk.arrival
+1466	oszillieren	13287	2779	oscillate	i	h	flexibility
+1467	stauchen	13285	2779	compress	w	h	flexibility
+1468	deeskalieren	13259	2780	de-escalate	i	h	flexibility
+1469	pauschalisieren	13225	2782	generalize	i	h	flexibility
+1470	lallen	13197	2782	utter indistinct sounds	w	h	wave
+1471	schnalzen	13163	2783	click	w	h	flexibility
+1472	substituieren	13156	2783	substitute	i	h	flexibility
+1473	spachteln	13141	2783	apply paint or plaster	w	h	flexibility
+1474	künsteln	13123	2783	make artificially	w	h	flexibility
+1475	sühnen	13102	2786	atone	w	h	flexibility
+1476	pappen	13078	2786	stick or glue something	w	h	indoor.rowing
+1477	knarren	13062	2786	creak, squeak	w	h	wave
+1478	edieren	13040	2786	publish	i	h	flexibility
+1479	streunen	13023	2786	stray	w	s	flexibility
+1480	päppeln	13021	2786	feed, foster, nurse	w	h	cooldown
+1481	kapseln	13015	2786	encapsulate	w	h	flexibility
+1482	determinieren	13004	2786	determine	i	h	flexibility
+1483	desavouieren	12988	2786	expose, compromise	i	h	flexibility
+1484	kommerzialisieren	12919	2787	commercialize	i	h	flexibility
+1485	tollen	12913	2787	romp, gambol, cavort	w	h	flexibility
+1486	zivilisieren	12864	2788	civilise	i	h	flexibility
+1487	geigen	12847	2788	fiddle, play on the violin	w	h	play
+1488	bimmeln	12804	2789	jingle, chime	w	h	wave
+1489	nivellieren	12775	2789	level	i	h	flexibility
+1490	tuschen	12768	2789	paint with watercolours	w	h	walk.arrival
+1491	mopsen	12741	2789	be bored	w	h	flexibility
+1492	spießen	12709	2791	spear	w	h	flexibility
+1493	lynchen	12667	2791	lynch, kill someone	w	h	boxing
+1494	jodeln	12616	2792	yodel	w	h	flexibility
+1495	planieren	12591	2792	level	i	h	flexibility
+1496	schlüsseln	12578	2792	calculate according to given data	w	h	barre
+1497	quasseln	12576	2792	jabber, natter, palaver, yap, gab, jaw	w	h	flexibility
+1498	frankieren	12570	2792	stamp, put a stamp on	i	h	stand
+1499	linsen	12544	2794	peek	w	h	archery
+1500	paralysieren	12519	2794	paralyze	i	h	flexibility
+1501	stupsen	12489	2794	nudge, prod	w	h	flexibility
+1502	deklamieren	12461	2794	declaim	i	h	flexibility
+1503	indoktrinieren	12434	2794	indoctrinate	i	h	flexibility
+1504	dolmetschen	12322	2798	translate	w	h	wave
+1505	köpfeln	12311	2799	head	w	h	flexibility
+1506	aalen	12257	2799	stretch out, especially laughing	w	h	flexibility
+1507	harken	12254	2799	rake	w	h	flexibility
+1508	quengeln	12226	2800	whinge, grizzle, nag, niggle	w	h	flexibility
+1509	rempeln	12223	2800	jostle, elbow	w	h	flexibility
+1510	plätten	12100	2805	flatten, make flat	w	h	flexibility
+1511	hamstern	12080	2805	hoard	w	h	flexibility
+1512	mausen	12061	2806	steal things	w	h	flexibility
+1513	systematisieren	12061	2806	arrange, systematize, systemize	i	h	stand
+1514	tapsen	12051	2806	lumber, lummock	w	h	flexibility
+1515	sabbern	12039	2806	drool	w	h	flexibility
+1516	dehydrieren	12029	2806	dehydrogenate	i	h	flexibility
+1517	drechseln	12017	2806	lathe	w	h	flexibility
+1518	balgen	12007	2807	scrap, tussle, scuffle	w	h	flexibility
+1519	plärren	11995	2807	sing unmelodiously or cacophonously	w	h	wave
+1520	daddeln	11966	2808	play	w	h	play
+1521	prostituieren	11900	2808	prostitute	i	h	flexibility
+1522	dinieren	11887	2809	dine	i	h	cooldown
+1523	schlampen	11873	2809	work in a careless, sloppy manner, slack	w	h	strengthtraining.traditional
+1524	referenzieren	11837	2809	reference	i	h	flexibility
+1525	bluffen	11814	2809	bluff	w	h	flexibility
+1526	krümeln	11794	2809	crumble	w	h	fall
+1527	rüffeln	11791	2809	reprimand	w	h	flexibility
+1528	häckseln	11789	2809	shred, chop up	w	h	fencing
+1529	kreiden	11758	2809	write with chalk	w	h	walk.arrival
+1530	konnotieren	11747	2809	connote, consignify	i	h	flexibility
+1531	schnippen	11713	2810	snap one's fingers	w	h	flexibility
+1532	zetteln	11709	2810	strew, scatter	w	h	flexibility
+1533	domestizieren	11689	2811	domesticate	i	h	flexibility
+1534	plauschen	11642	2813	chat casually with a friend	w	h	wave
+1535	stänkern	11642	2813	provoke someone by aggressive criticizing	w	h	boxing
+1536	brüskieren	11542	2818	affront	i	h	flexibility
+1537	apostrophieren	11526	2818	apostrophize	i	h	flexibility
+1538	ratschen	11517	2819	snag	w	h	flexibility
+1539	demaskieren	11504	2819	unmask someone	i	h	flexibility
+1540	emulieren	11493	2819	emulate	i	h	flexibility
+1541	gehren	11475	2821	mitre	w	h	flexibility
+1542	klauben	11450	2821	pick up, collect	w	h	handball
+1543	hecken	11438	2821	breed, give birth, multiply	w	h	handball
+1544	protegieren	11424	2821	sponsor	i	h	flexibility
+1545	phantasieren	11423	2821	rave	i	h	flexibility
+1546	zuckeln	11418	2822	move at a crawl, trundle along	w	s	hiking
+1547	misten	11353	2824	manure	w	h	flexibility
+1548	flunkern	11301	2827	tell harmless lies	w	h	wave
+1549	perforieren	11293	2827	perforate	i	h	flexibility
+1550	matchen	11220	2831	match	w	h	flexibility
+1551	parfümieren	11192	2831	perfume	i	h	flexibility
+1552	leimen	11127	2832	glue	w	h	indoor.rowing
+1553	tyrannisieren	11109	2833	tyrannize, tyrannise	i	h	flexibility
+1554	haschen	11094	2834	catch, grab	w	h	handball
+1555	intrigieren	11069	2835	intrigue, plot	i	h	flexibility
+1556	menscheln	11044	2835	show humanity, in particular emotions	w	h	flexibility
+1557	liebkosen	10882	2841	snuggle, cuddle	w	h	2
+1558	harzen	10827	2842	resinate	w	h	flexibility
+1559	zirpen	10813	2842	chirp, chirr, chirrup	w	h	wave
+1560	firmen	10806	2842	confirm	w	h	flexibility
+1561	rödeln	10708	2846	work	w	h	strengthtraining.traditional
+1562	säugen	10676	2847	lactate	w	h	flexibility
+1563	schnupfen	10650	2847	snort	w	h	wave
+1564	seihen	10648	2847	filter, sift, strain	w	h	flexibility
+1565	browsen	10639	2847	browse	w	h	archery
+1566	röcheln	10596	2848	rattle, breathe while making snoring	w	h	wave
+1567	intendieren	10589	2848	intend	i	h	flexibility
+1568	flirren	10556	2850	vibrate, quiver, whirr, flacker	w	h	jumprope
+1569	knechten	10549	2850	enslave	w	h	flexibility
+1570	toasten	10529	2850	toast	w	h	cooldown
+1571	dunkeln	10509	2852	darken	w	h	flexibility
+1572	wispern	10393	2855	whisper, make a whispering sound	w	h	wave
+1573	brabbeln	10385	2855	babble	w	h	wave
+1574	rädern	10378	2855	break on the wheel	w	h	boxing
+1575	tunneln	10365	2855	nutmeg	w	h	flexibility
+1576	neiden	10341	2856	have envy	w	h	flexibility
+1577	exhumieren	10337	2856	exhume	i	h	flexibility
+1578	havarieren	10337	2856	break down, fail	i	h	boxing
+1579	segmentieren	10302	2857	segment	i	h	flexibility
+1580	glucksen	10295	2857	chortle, chuckle	w	h	flexibility
+1581	transzendieren	10282	2857	transcend	i	h	flexibility
+1582	himmeln	10275	2857	look at the sky, ogle	w	h	archery
+1583	internationalisieren	10260	2858	internationalize	i	h	flexibility
+1584	tackern	10244	2858	staple	w	h	flexibility
+1585	spötteln	10167	2863	make mocking remarks	w	h	flexibility
+1586	turteln	10166	2863	coo	w	h	flexibility
+1587	mulchen	10123	2863	mulch	w	h	flexibility
+1588	staksen	10116	2863	walk in a stiff and inept way	w	s	walk
+1589	schlottern	10086	2866	shiver, shudder	w	h	socialdance
+1590	akkumulieren	10081	2866	accumulate	i	h	flexibility
+1591	prusten	10071	2867	snort	w	h	wave
+1592	granteln	10027	2868	grumble	w	h	wave
+1593	golfen	9999	2868	play golf	w	h	play
+1594	meucheln	9989	2869	kill secretly and/or treacherously	w	h	boxing
+1595	popularisieren	9978	2869	popularize	i	h	flexibility
+1596	virtualisieren	9970	2869	virtualize	i	h	flexibility
+1597	wienern	9950	2869	shine, polish	w	h	highintensity.intervaltraining
+1598	laichen	9876	2871	spawn	w	h	flexibility
+1599	lukrieren	9867	2871	win, profit by means of	i	h	flexibility
+1600	staken	9812	2873	propel a boat with a quant pole	w	s	flexibility
+1601	äsen	9689	2875	graze	w	h	cooldown
+1602	müllen	9663	2875	make garbage	w	h	flexibility
+1603	stückeln	9652	2876	break into pieces	w	h	boxing
+1604	schassen	9651	2876	kick out, oust	w	h	boxing
+1605	kotieren	9608	2877	quote the market price of	i	h	wave
+1606	fuchsen	9553	2879	annoy	w	h	boxing
+1607	kampieren	9547	2880	camp	i	h	hiking
+1608	kosen	9522	2880	cuddle	w	h	2
+1609	stromern	9509	2880	roam around, tramp	w	s	walk
+1610	piesacken	9502	2880	torment	w	h	boxing
+1611	kondolieren	9490	2880	express condolences	i	h	wave
+1612	zahnen	9485	2880	teethe	w	h	flexibility
+1613	grausen	9445	2882	cause to feel dread	w	h	flexibility
+1614	tapen	9407	2884	tape, dress or bandage with adhesive tape	w	h	flexibility
+1615	gondeln	9365	2885	gondola	w	s	flexibility
+1616	romantisieren	9362	2885	romanticize, romanticise	i	h	flexibility
+1617	knausern	9324	2885	skimp	w	h	flexibility
+1618	abzwacken	9311	2886	pinch off something	w	h	flexibility
+1619	zoffen	9294	2887	bicker	w	h	flexibility
+1620	rülpsen	9281	2887	burp	w	h	flexibility
+1621	krampfen	9274	2888	cramp, seize, have a seizure	w	h	handball
+1622	rhodinieren	9271	2888	rhodium-plate	i	h	flexibility
+1623	schrotten	9238	2889	wreck, make into scrap	w	h	flexibility
+1624	exerzieren	9217	2890	drill	i	h	flexibility
+1625	simsen	9209	2890	text message, text, sms	w	h	flexibility
+1626	krepieren	9206	2890	die miserably, croak	i	s	wave
+1627	masturbieren	9143	2891	masturbate, jack off, jill off	i	h	flexibility
+1628	monopolisieren	9116	2893	monopolize	i	h	flexibility
+1629	radieren	9105	2893	etch	i	h	flexibility
+1630	petzen	9095	2893	tattle, snitch	w	h	flexibility
+1631	hüsteln	9083	2893	cough slightly, give a little cough	w	h	handball
+1632	pasteurisieren	9067	2894	pasteurize	i	h	flexibility
+1633	fleuchen	9066	2894	fly	w	s	skiing.downhill
+1634	brummeln	9035	2895	hum quietly	w	h	wave
+1635	babbeln	9018	2896	blubber, blabber	w	h	flexibility
+1636	winseln	8984	2898	whine, whimper	w	h	wave
+1637	kuppeln	8976	2898	couple	w	h	flexibility
+1638	pulen	8902	2903	pick, pull	w	h	handball
+1639	sporteln	8893	2903	do sports	w	h	flexibility
+1640	graduieren	8861	2904	calibrate, graduate	i	h	flexibility
+1641	blöken	8777	2907	bleat, baa	w	h	wave
+1642	koexistieren	8769	2907	coexist, co-exist	i	h	flexibility
+1643	striegeln	8766	2907	groom, comb	w	h	flexibility
+1644	schuppen	8765	2907	scale	w	h	flexibility
+1645	konzedieren	8731	2909	concede	i	h	flexibility
+1646	aasen	8729	2909	feed on carrion	w	h	cooldown
+1647	prassen	8700	2911	splurge, live extravagantly	w	h	flexibility
+1648	exkommunizieren	8650	2913	excommunicate	i	h	flexibility
+1649	revoltieren	8644	2913	revolt	i	h	flexibility
+1650	buhen	8603	2914	boo	w	h	flexibility
+1651	penetrieren	8602	2914	penetrate	i	h	flexibility
+1652	degustieren	8582	2914	try critically	i	h	wrestling
+1653	sprenkeln	8558	2915	sprinkle, cause to fall in fine drops	w	h	pool.swim
+1654	schroten	8486	2918	grind, chip, crush something coarsely	w	h	boxing
+1655	raunzen	8479	2919	whinge, grouch	w	h	flexibility
+1656	pferchen	8463	2921	enclose	w	h	flexibility
+1657	furzen	8434	2924	fart	w	h	flexibility
+1658	kartonieren	8423	2926	bind in cardboard	i	h	2.and.child.holdinghands
+1659	zurren	8394	2927	fasten freight with ropes	w	h	2.and.child.holdinghands
+1660	buttern	8369	2928	butter	w	h	flexibility
+1661	fläzen	8369	2928	sprawl, lounge	w	h	seated.side.left
+1662	simmern	8368	2928	simmer	w	h	cooldown
+1663	deuteln	8325	2928	explain away, interpret in a petty manner	w	h	wave
+1664	blödeln	8307	2928	fool around, joke around, talk nonsense	w	h	play
+1665	inaktivieren	8298	2928	inactivate	i	h	flexibility
+1666	quieken	8224	2930	squeal	w	h	wave
+1667	trompeten	8165	2935	trumpet	w	h	flexibility
+1668	subtrahieren	8141	2935	subtract	i	h	flexibility
+1669	transponieren	8062	2937	transpose	i	h	flexibility
+1670	salutieren	8007	2940	salute	i	h	flexibility
+1671	kläffen	8002	2940	yap	w	h	flexibility
+1672	apportieren	7981	2940	retrieve	i	h	flexibility
+1673	panzern	7979	2940	armor	w	h	flexibility
+1674	korrodieren	7925	2942	corrode	i	s	flexibility
+1675	paffen	7920	2942	puff, emit smoke	w	h	flexibility
+1676	nesteln	7907	2943	fumble, fiddle	w	h	flexibility
+1677	demissionieren	7900	2945	resign	i	h	flexibility
+1678	hätscheln	7885	2946	fondle, feel up	w	h	yoga
+1679	mandatieren	7843	2947	enable to legally represent by proxy	i	h	flexibility
+1680	rabattieren	7839	2947	mark down a price, rebate	i	h	walk.arrival
+1681	dechiffrieren	7828	2947	decipher	i	h	flexibility
+1682	nuancieren	7814	2948	nuance	i	h	flexibility
+1683	siegeln	7790	2950	seal	w	h	flexibility
+1684	schnauzen	7787	2951	bark	w	h	wave
+1685	schludern	7766	2951	work sloppily, carelessly	w	h	strengthtraining.traditional
+1686	keulen	7762	2951	cull	w	h	flexibility
+1687	gurren	7731	2953	make a low sound	w	h	flexibility
+1688	kanzeln	7699	2954	preach down	w	h	wave
+1689	kolonisieren	7688	2954	colonize	i	h	flexibility
+1690	wichsen	7679	2954	wax, polish	w	h	pool.swim
+1691	keilen	7675	2954	hit or insert with a wedge or as if by one	w	h	boxing
+1692	foppen	7659	2955	put on, tease, hoax	w	h	stand
+1693	tokenisieren	7639	2956	tokenize	i	h	flexibility
+1694	filtrieren	7634	2956	filtrate	i	h	flexibility
+1695	palavern	7623	2956	palaver, chatter, speak at length	w	h	wave
+1696	wursteln	7603	2957	meddle, tamper	w	h	flexibility
+1697	staubsaugen	7597	2957	vacuum	w	h	flexibility
+1698	zechen	7585	2957	drink alcohol to excess, booze	w	h	cooldown
+1699	tradieren	7572	2959	hand down	i	h	handball
+1700	knuspern	7568	2959	crackle, crunch	w	h	wave
+1701	pupsen	7553	2959	fart, pass wind	w	h	handball
+1702	ringeln	7538	2959	twine, entwine, curl	w	h	flexibility
+1703	hospitalisieren	7533	2959	hospitalize	i	h	flexibility
+1704	stöckeln	7524	2959	walk with high heels	w	s	walk
+1705	halluzinieren	7521	2959	hallucinate	i	h	flexibility
+1706	stöpseln	7516	2959	connect	w	h	2.and.child.holdinghands
+1707	fronen	7512	2959	toil	w	h	flexibility
+1708	lampen	7468	2961	be slack, hang down, droop, sag	w	h	flexibility
+1709	rotzen	7466	2961	blow one's nose noisily	w	h	wave
+1710	stieren	7457	2961	stare at	w	h	archery
+1711	kapitalisieren	7448	2961	capitalize	i	h	flexibility
+1712	sedieren	7441	2962	sedate	i	h	flexibility
+1713	nudeln	7437	2964	fatten, force-feed	w	h	flexibility
+1714	blaffen	7414	2966	bark briefly	w	h	wave
+1715	brandschatzen	7404	2966	extort under threat of arson	w	h	flexibility
+1716	böllern	7401	2966	light firecrackers or fireworks	w	h	highintensity.intervaltraining
+1717	kalauern	7396	2967	joke, pun	w	h	play
+1718	suppen	7387	2967	trickle, drip, ooze, leak, seep, soak	w	h	pool.swim
+1719	paraphrasieren	7386	2967	paraphrase	i	h	flexibility
+1720	zwirbeln	7375	2967	twirl	w	h	socialdance
+1721	gummieren	7361	2967	gum	i	h	flexibility
+1722	henken	7360	2967	hang, execute by hanging	w	h	flexibility
+1723	klöppeln	7333	2967	make lace	w	h	flexibility
+1724	rammeln	7331	2967	copulate, mate	w	h	flexibility
+1725	bumsen	7328	2967	thud	w	h	wave
+1726	fiepen	7303	2970	cheep	w	h	wave
+1727	zwacken	7273	2972	pinch	w	h	flexibility
+1728	testieren	7264	2973	make a testament	i	h	flexibility
+1729	fletschen	7234	2973	bare, snarl	w	h	flexibility
+1730	globalisieren	7208	2974	globalize, globalise	i	h	flexibility
+1731	raven	7161	2978	rave	w	h	flexibility
+1732	huren	7158	2978	whore	w	h	flexibility
+1733	dreiteilen	7157	2978	split into three, trisect	w	h	fencing
+1734	insinuieren	7144	2978	insinuate	i	h	flexibility
+1735	onanieren	7107	2979	masturbate	i	h	flexibility
+1736	gurken	7094	2979	travel or generally go by vehicle	w	s	flexibility
+1737	deklinieren	7073	2980	decline	i	h	flexibility
+1738	optieren	7068	2980	opt for, exercise an option	i	h	flexibility
+1739	kaprizieren	7053	2980	set one's heart on, insist on	i	h	stand
+1740	japsen	7050	2980	be out of breath, short of breath	w	h	flexibility
+1741	tuten	7035	2980	honk	w	h	wave
+1742	knittern	7022	2980	crease	w	h	flexibility
+1743	muhen	6974	2982	moo	w	h	flexibility
+1744	prunken	6962	2982	flaunt, show off	w	h	flexibility
+1745	formalisieren	6952	2984	formalize	i	h	flexibility
+1746	meutern	6931	2985	mutiny	w	h	flexibility
+1747	matschen	6901	2988	splash or wallow in mud	w	h	pool.swim
+1748	konvergieren	6896	2988	converge	i	h	flexibility
+1749	heischen	6893	2988	request, ask, bespeak	w	h	wave
+1750	paradieren	6889	2989	parade	i	h	flexibility
+1751	emaillieren	6858	2990	enamel	i	h	flexibility
+1752	lausen	6847	2991	louse	w	h	flexibility
+1753	metzeln	6827	2991	slaughter	w	h	boxing
+1754	piksen	6823	2991	prick, sting, pinch	w	h	flexibility
+1755	schwofen	6807	2992	dance, shake a leg	w	h	socialdance
+1756	kieken	6794	2992	look, glance	w	h	archery
+1757	säkularisieren	6739	2993	secularize	i	h	flexibility
+1758	klumpen	6733	2993	lump	w	h	flexibility
+1759	partitionieren	6716	2993	partition	i	h	flexibility
+1760	repetieren	6715	2993	learning by repeating	i	h	flexibility
+1761	widern	6676	2993	disgust, repulse	w	h	flexibility
+1762	grillieren	6636	2997	grill	i	h	cooldown
+1763	nieten	6621	2997	rivet	w	h	flexibility
+1764	kandieren	6614	2997	candy	i	h	flexibility
+1765	tröten	6577	2998	play a wind instrument	w	h	play
+1766	raffinieren	6561	3000	refine	i	h	flexibility
+1767	kalken	6552	3000	whitewash	w	h	flexibility
+1768	lobpreisen	6532	3000	praise	w	h	wave
+1769	schnorren	6503	3002	scrounge, sponge, cadge	w	h	flexibility
+1770	irrlichtern	6492	3003	flit about, vacillate	w	h	flexibility
+1771	schottern	6475	3003	gravel	w	h	flexibility
+1772	lohen	6450	3003	blaze, flare	w	h	highintensity.intervaltraining
+1773	schleimen	6383	3007	slime	w	h	flexibility
+1774	divergieren	6374	3007	diverge	i	h	flexibility
+1775	schmausen	6359	3007	feast	w	h	flexibility
+1776	rapportieren	6344	3007	report	i	h	wave
+1777	katalysieren	6316	3008	catalyze / catalyse	i	h	flexibility
+1778	mauscheln	6301	3008	scheme, collude	w	h	flexibility
+1779	piken	6290	3008	prick, sting, pinch	w	h	flexibility
+1780	schlabbern	6265	3009	lap	w	h	flexibility
+1781	schlackern	6260	3009	wobble, quake	w	h	socialdance
+1782	pauschalieren	6257	3010	combine into a lump sum	i	h	2.and.child.holdinghands
+1783	gaffen	6256	3010	stare at curiously, rubberneck	w	h	archery
+1784	restituieren	6232	3011	restitute	i	h	flexibility
+1785	nölen	6222	3011	gripe, whinge	w	h	flexibility
+1786	saunieren	6215	3011	sauna	i	h	flexibility
+1787	furnieren	6192	3015	veneer	i	h	flexibility
+1788	ranzen	6177	3016	romp, frolic	w	h	flexibility
+1789	kodifizieren	6137	3020	codify	i	h	flexibility
+1790	bauschen	6126	3021	billow	w	h	flexibility
+1791	lacken	6120	3021	lacquer	w	h	flexibility
+1792	reuen	6090	3022	regret, be sorry, rue	w	h	yoga
+1793	freien	6069	3022	marry or marry off	w	h	2
+1794	knüppeln	6053	3022	bludgeon, thrash, hit with a stick	w	h	boxing
+1795	renommieren	6049	3022	boast, brag	i	h	wave
+1796	achteln	6047	3022	divide into eight parts	w	h	fencing
+1797	schattieren	6019	3024	shade	i	h	flexibility
+1798	sublimieren	6010	3024	sublimate	i	h	flexibility
+1799	halsen	6009	3024	jib	w	h	flexibility
+1800	wuscheln	5948	3025	tousle	w	h	flexibility
+1801	bowlen	5890	3026	bowl, play bowling	w	h	play
+1802	demoralisieren	5859	3027	demoralize	i	h	flexibility
+1803	kalben	5857	3027	calve	w	h	flexibility
+1804	deregulieren	5843	3027	deregulate	i	h	flexibility
+1805	brainstormen	5834	3028	brainstorm	w	h	flexibility
+1806	plustern	5833	3028	fluff up, puff up	w	h	flexibility
+1807	extrapolieren	5807	3029	extrapolate	i	h	flexibility
+1808	martern	5804	3029	torture, martyr	w	h	boxing
+1809	bollern	5764	3032	thud	w	h	wave
+1810	homogenisieren	5764	3032	homogenize	i	h	flexibility
+1811	hyperventilieren	5760	3032	hyperventilate	i	h	flexibility
+1812	industrialisieren	5754	3033	industrialize	i	h	flexibility
+1813	schnarren	5725	3034	utter a croaky sound, snar, snarl, squawk	w	h	wave
+1814	platschen	5669	3040	plash	w	h	flexibility
+1815	züchtigen	5667	3040	corporally punish	w	h	flexibility
+1816	geifern	5657	3042	salivate	w	h	flexibility
+1817	kungeln	5636	3045	scheme	w	h	flexibility
+1818	bandagieren	5628	3045	bandage	i	h	flexibility
+1819	reffen	5627	3045	reef	w	h	flexibility
+1820	kontrahieren	5572	3047	contract	i	h	flexibility
+1821	riffeln	5569	3047	groove	w	h	flexibility
+1822	mümmeln	5566	3047	nibble	w	h	cooldown
+1823	pressieren	5555	3047	be pressing and urgent	i	h	flexibility
+1824	requirieren	5545	3048	commandeer, requisition, seize	i	h	handball
+1825	schnipsen	5528	3050	flick	w	h	flexibility
+1826	strippen	5511	3050	to practice striptease	w	h	flexibility
+1827	tünchen	5487	3050	whitewash	w	h	flexibility
+1828	ventilieren	5428	3052	ventilate	i	h	flexibility
+1829	defilieren	5403	3054	march past, parade past	i	h	walk
+1830	interpolieren	5387	3054	interpolate	i	h	flexibility
+1831	schäkern	5376	3054	banter, dally, jest	w	h	flexibility
+1832	schliddern	5360	3055	slide	w	s	skating
+1833	wichteln	5355	3056	exchange secret santa gifts	w	h	flexibility
+1834	weibeln	5332	3058	campaign, champion	w	h	flexibility
+1835	plagiieren	5328	3058	plagiarize	i	h	flexibility
+1836	sexualisieren	5326	3058	sexualize	i	h	flexibility
+1837	invertieren	5324	3058	invert	i	h	flexibility
+1838	exmatrikulieren	5307	3060	deregister, unenroll	i	h	flexibility
+1839	eitern	5288	3061	suppurate	w	h	flexibility
+1840	koksen	5283	3061	do coke, do lines	w	h	flexibility
+1841	parzellieren	5262	3061	parcel	i	h	flexibility
+1842	amnestieren	5220	3062	amnesty, pardon	i	h	flexibility
+1843	siechen	5209	3062	be very ill, bedridden for a long time	w	h	flexibility
+1844	flennen	5182	3065	cry	w	h	wave
+1845	gleißen	5178	3065	gleam, glisten	w	h	flexibility
+1846	maunzen	5166	3065	meow	w	h	flexibility
+1847	sicken	5150	3067	piss	w	h	flexibility
+1848	flügeln	5133	3068	wing	w	h	flexibility
+1849	sprossen	5128	3068	bud	w	h	flexibility
+1850	kören	5116	3069	choose individual animals for breeding	w	h	flexibility
+1851	wölken	5105	3070	cloud up	w	h	flexibility
+1852	kartografieren	5089	3070	map	i	h	flexibility
+1853	blondieren	5069	3071	dye blond	i	h	flexibility
+1854	koproduzieren	5048	3071	coproduce	i	h	flexibility
+1855	banalisieren	5046	3072	banalize	i	h	flexibility
+1856	internalisieren	5034	3073	internalize	i	h	flexibility
+1857	defragmentieren	5006	3073	defragment	i	h	flexibility
+1858	rebeln	4999	3073	rub with the fingers	w	h	pool.swim
+1859	schlitteln	4994	3074	sled	w	s	flexibility
+1860	bongen	4989	3075	enter into a cash register	w	h	flexibility
+1861	kübeln	4985	3075	bucket down	w	h	flexibility
+1862	randomisieren	4981	3075	randomize	i	h	flexibility
+1863	brocken	4929	3075	break	w	h	boxing
+1864	soufflieren	4913	3076	to prompt, feed, cue	i	h	cooldown
+1865	kooptieren	4851	3077	co-opt	i	h	flexibility
+1866	beulen	4834	3078	become swelled	w	h	flexibility
+1867	hydrieren	4829	3078	hydrogenate	i	h	flexibility
+1868	desillusionieren	4824	3078	disillusion	i	h	flexibility
+1869	rochieren	4809	3078	castle	i	h	flexibility
+1870	greinen	4756	3079	whine, moan	w	h	wave
+1871	hörnen	4736	3079	cuckold	w	h	flexibility
+1872	dekontaminieren	4731	3079	decontaminate	i	h	flexibility
+1873	rivalisieren	4715	3080	rival	i	h	flexibility
+1874	flambieren	4711	3080	flambé	i	h	flexibility
+1875	schustern	4711	3080	cobble	w	h	flexibility
+1876	säbeln	4698	3080	saw away at	w	h	fencing
+1877	pochieren	4667	3081	poach	i	h	flexibility
+1878	falsifizieren	4663	3081	falsify	i	h	flexibility
+1879	panschen	4655	3081	adulterate a liquid or substance	w	h	flexibility
+1880	balzen	4653	3081	perform a courtship display	w	h	flexibility
+1881	lispeln	4649	3083	lisp	w	h	flexibility
+1882	dedizieren	4643	3083	dedicate	i	h	flexibility
+1883	strullen	4637	3083	urinate, especially to urinate profusely	w	h	flexibility
+1884	grienen	4582	3085	grin, smirk	w	h	flexibility
+1885	storchen	4494	3091	stride	w	h	walk
+1886	lullen	4492	3091	lull	w	h	flexibility
+1887	kokeln	4487	3091	play with fire, handle fire unsafely	w	h	play
+1888	trapsen	4478	3092	clump	w	h	flexibility
+1889	oktroyieren	4468	3094	impose	i	h	flexibility
+1890	stäuben	4465	3095	dust	w	h	flexibility
+1891	triezen	4448	3096	disturb or annoy someone	w	h	flexibility
+1892	neppen	4436	3096	rip off	w	h	flexibility
+1893	knüllen	4427	3097	crumple	w	h	flexibility
+1894	scheiteln	4416	3097	endow with a part	w	h	flexibility
+1895	perpetuieren	4413	3097	perpetuate	i	h	flexibility
+1896	sensen	4400	3097	scythe	w	h	flexibility
+1897	nebeln	4373	3097	grow foggy	w	h	stairs
+1898	zwiebeln	4364	3099	hassle, harass, bully, torment	w	h	boxing
+1899	strählen	4352	3100	comb, brush	w	h	flexibility
+1900	tranchieren	4346	3100	carve, slice	i	h	fencing
+1901	schmirgeln	4316	3100	emery, sand	w	h	flexibility
+1902	facettieren	4242	3101	facet	i	h	flexibility
+1903	theoretisieren	4224	3102	theorize	i	h	flexibility
+1904	äffen	4221	3102	ape, imitate	w	h	flexibility
+1905	orgeln	4219	3102	play on an organ	w	h	play
+1906	quäken	4204	3104	squeak	w	h	wave
+1907	narkotisieren	4178	3105	narcotize	i	h	flexibility
+1908	parsen	4177	3105	parse	w	h	flexibility
+1909	arisieren	4152	3107	aryanize	i	h	flexibility
+1910	dengeln	4151	3107	peen	w	h	flexibility
+1911	maturieren	4146	3107	take matura	i	h	handball
+1912	ribbeln	4114	3107	rub	w	h	pool.swim
+1913	blecken	4113	3107	bare	w	h	flexibility
+1914	kippeln	4101	3107	tilt back and forth, wobble	w	h	socialdance
+1915	zergen	4094	3107	tease, provoke, pester	w	h	boxing
+1916	dispensieren	4077	3108	dispense	i	h	flexibility
+1917	dekantieren	4071	3109	decant gently	i	h	flexibility
+1918	kabbeln	4042	3109	tease each other	w	h	boxing
+1919	islamisieren	4040	3109	islamize/islamise, islamicize	i	h	flexibility
+1920	kasernieren	4038	3109	barrack	i	h	flexibility
+1921	furchen	4036	3109	furrow	w	h	flexibility
+1922	promenieren	4028	3109	promenade	i	h	flexibility
+1923	sabbeln	4026	3109	jabber, gab, rattle on, rabbit on	w	h	wave
+1924	koppen	4006	3109	crib	w	h	flexibility
+1925	schnäuzen	3988	3109	blow one's nose	w	h	wave
+1926	militarisieren	3958	3111	militarize	i	h	flexibility
+1927	epilieren	3952	3111	epilate	i	h	flexibility
+1928	schachern	3908	3115	haggle	w	h	flexibility
+1929	memorieren	3899	3115	memorize	i	h	flexibility
+1930	kolonialisieren	3853	3117	colonize	i	h	flexibility
+1931	mineralisieren	3852	3117	mineralize	i	h	flexibility
+1932	schlafwandeln	3825	3118	sleepwalk	w	h	flexibility
+1933	schnabulieren	3822	3119	eat heartily, feast	i	h	cooldown
+1934	emulgieren	3812	3119	emulsify	i	h	flexibility
+1935	ionisieren	3796	3119	ionize	i	h	flexibility
+1936	doktern	3795	3119	make dilettantish healing efforts	w	h	flexibility
+1937	saldieren	3789	3119	determine an account balance	i	h	flexibility
+1938	hirnen	3786	3119	think	w	h	yoga
+1939	christianisieren	3783	3119	christianize	i	h	flexibility
+1940	ziselieren	3775	3119	engrave	i	h	walk.arrival
+1941	zacken	3754	3119	provide with a jagged edge	w	h	handball
+1942	dübeln	3730	3120	dowel	w	h	flexibility
+1943	stricheln	3726	3120	dot	w	h	flexibility
+1944	fächeln	3722	3120	fan	w	h	flexibility
+1945	häufeln	3708	3121	hill	w	h	flexibility
+1946	klecksen	3700	3122	daub, blot	w	h	flexibility
+1947	gnaden	3696	3124	have mercy	w	h	flexibility
+1948	imkern	3685	3124	keep bees	w	h	flexibility
+1949	klacken	3684	3124	clack/click	w	h	flexibility
+1950	demobilisieren	3682	3124	demobilize	i	h	flexibility
+1951	kerben	3676	3124	notch	w	h	flexibility
+1952	puffen	3644	3126	puff	w	h	flexibility
+1953	kopulieren	3636	3127	copulate	i	h	flexibility
+1954	quirlen	3629	3128	mix components with a whisk, whisk	w	h	hiking
+1955	usurpieren	3626	3128	usurp	i	h	flexibility
+1956	sengen	3613	3128	singe	w	h	flexibility
+1957	grapschen	3575	3131	grab	w	h	handball
+1958	dackeln	3547	3131	walk slowly	w	s	walk
+1959	atomisieren	3537	3131	atomize	i	h	flexibility
+1960	toupieren	3532	3131	backcomb, tease	i	h	boxing
+1961	renken	3527	3131	twist, turn	w	h	socialdance
+1962	bräteln	3525	3131	lightly fry over a weak fire	w	h	flexibility
+1963	extrudieren	3518	3133	extrude	i	h	flexibility
+1964	magnetisieren	3514	3133	magnetize / magnetise	i	h	flexibility
+1965	pökeln	3514	3133	brine in a salt solution)	w	h	flexibility
+1966	simplifizieren	3510	3133	simplify	i	h	flexibility
+1967	schraffieren	3505	3133	hatch	i	h	flexibility
+1968	nationalisieren	3484	3133	nationalize	i	h	flexibility
+1969	wehklagen	3465	3133	wail	w	h	wave
+1970	trillern	3451	3133	trill	w	h	flexibility
+1971	dislozieren	3443	3135	deploy, station	i	h	flexibility
+1972	innovieren	3440	3135	innovate	i	h	flexibility
+1973	kupieren	3437	3136	dock	i	h	flexibility
+1974	schwurbeln	3423	3139	blather, talk nonsense, convolute	w	h	wave
+1975	schnipseln	3419	3140	snip	w	h	flexibility
+1976	exemplifizieren	3411	3140	exemplify	i	h	flexibility
+1977	denaturieren	3401	3141	denature	i	h	flexibility
+1978	disputieren	3395	3142	dispute, debate	i	h	flexibility
+1979	phrasieren	3370	3144	phrase	i	h	flexibility
+1980	marodieren	3344	3146	maraud	i	h	flexibility
+1981	lenzen	3325	3148	be idle, hang out	w	h	flexibility
+1982	explizieren	3322	3148	explicate	i	h	flexibility
+1983	motten	3322	3148	smoulder	w	h	flexibility
+1984	frickeln	3317	3148	rig, fiddle, tinker	w	h	flexibility
+1985	zäumen	3314	3149	bridle	w	h	flexibility
+1986	latinisieren	3306	3149	latinize	i	h	flexibility
+1987	eggen	3292	3150	harrow	w	h	flexibility
+1988	zippen	3277	3151	zip into a single and often smaller file	w	h	flexibility
+1989	dilettieren	3276	3151	dabble	i	h	flexibility
+1990	knuffen	3259	3151	nudge, jab, pinch	w	h	flexibility
+1991	schnetzeln	3226	3152	slice, cut into stripes	w	h	fencing
+1992	fiedeln	3224	3152	fiddle, play a string instrument	w	h	play
+1993	zischeln	3185	3154	whisper, hiss	w	h	wave
+1994	panaschieren	3182	3154	split one's vote	i	h	fencing
+1995	amerikanisieren	3172	3154	americanize	i	h	flexibility
+1996	konspirieren	3171	3154	conspire	i	h	flexibility
+1997	schächten	3166	3154	slaughter by bleeding out	w	h	boxing
+1998	heroisieren	3160	3154	heroize	i	h	flexibility
+1999	bläuen	3149	3155	blue	w	h	flexibility
+2000	schoppen	3141	3155	tuck	w	h	flexibility
+2001	popeln	3126	3156	pick one's nose	w	h	handball
+2002	friemeln	3114	3158	fiddle, move something in one's hands	w	h	hiking
+2003	funktionalisieren	3109	3158	functionalize	i	h	flexibility
+2004	hydrolysieren	3106	3158	hydrolyze / hydrolyse	i	h	flexibility
+2005	fleddern	3105	3158	steal from someone helpless	w	h	flexibility
+2006	knapsen	3104	3158	nip, pluck	w	h	flexibility
+2007	europäisieren	3102	3158	europeanize	i	h	flexibility
+2008	legieren	3101	3158	alloy	i	h	flexibility
+2009	pullern	3089	3158	pee	w	h	flexibility
+2010	punzen	3080	3158	hallmark	w	h	flexibility
+2011	arrondieren	3058	3162	realign the boundaries	i	h	flexibility
+2012	trivialisieren	3046	3162	trivialize	i	h	flexibility
+2013	indignieren	3034	3162	cause indignation	i	h	flexibility
+2014	immigrieren	3025	3164	immigrate	i	s	flexibility
+2015	schmurgeln	3013	3164	be fried or baked slowly	w	h	flexibility
+2016	schrammeln	2991	3165	strum	w	h	flexibility
+2017	ejakulieren	2989	3165	ejaculate	i	h	flexibility
+2018	moppen	2979	3166	mop	w	h	pool.swim
+2019	murksen	2969	3167	botch	w	h	flexibility
+2020	pesen	2960	3167	run quickly	w	s	run
+2021	designieren	2947	3168	designate	i	h	flexibility
+2022	brünieren	2927	3169	burnish, blue	i	h	flexibility
+2023	alternieren	2906	3171	alternate	i	h	flexibility
+2024	rußen	2894	3172	smoke	w	h	cooldown
+2025	batiken	2893	3172	batik	w	h	flexibility
+2026	zensurieren	2889	3172	censor	i	h	flexibility
+2027	hicksen	2842	3175	hiccup	w	h	flexibility
+2028	haussieren	2769	3182	rise in value	i	h	stairs
+2029	schachteln	2753	3183	nest	w	h	flexibility
+2030	koten	2731	3185	defecate	w	h	flexibility
+2031	bützen	2728	3185	kiss	w	h	2
+2032	muffeln	2709	3188	smell musty	w	h	flexibility
+2033	pieseln	2702	3188	drizzle	w	h	flexibility
+2034	kundschaften	2686	3190	scout, reconnoiter	w	h	flexibility
+2035	zäunen	2686	3190	build a fence	w	h	strengthtraining.traditional
+2036	approbieren	2656	3191	approve, authorise	i	h	flexibility
+2037	dissoziieren	2656	3191	dissociate	i	h	flexibility
+2038	näseln	2635	3193	talk nasally, talk through one's nose	w	h	wave
+2039	knospen	2633	3193	bud	w	h	flexibility
+2040	adjustieren	2631	3193	set, adjust	i	h	stand
+2041	saven	2631	3193	save	w	h	flexibility
+2042	sächseln	2623	3195	speak or sound sächsisch	w	h	wave
+2043	saunen	2617	3195	sauna	w	h	flexibility
+2044	vierteilen	2609	3196	quarter	w	h	flexibility
+2045	pfropfen	2607	3196	graft, engraft	w	h	flexibility
+2046	sonnenbaden	2606	3196	sunbathe	w	h	flexibility
+2047	fluktuieren	2591	3198	fluctuate	i	h	flexibility
+2048	schmauchen	2545	3200	give off dense smoke	w	h	handball
+2049	kritteln	2528	3200	quibble, cavil, nitpick	w	h	flexibility
+2050	knautschen	2496	3203	squeeze, crumple	w	h	flexibility
+2051	gürten	2486	3203	gird	w	h	flexibility
+2052	galvanisieren	2453	3207	galvanize	i	h	flexibility
+2053	biwakieren	2444	3208	bivouac	i	h	flexibility
+2054	zausen	2425	3209	ruffle	w	h	flexibility
+2055	anfauchen	2418	3209	hiss, spit, growl at someone or something	w	h	wave
+2056	tatschen	2418	3209	paw, touch clumsily	w	h	flexibility
+2057	irisieren	2412	3211	iridesce	i	h	flexibility
+2058	stippen	2409	3211	dip	w	h	pool.swim
+2059	desodorieren	2393	3213	deodorize	i	h	flexibility
+2060	transpirieren	2388	3216	sweat	i	h	flexibility
+2061	chiffrieren	2377	3218	encode	i	h	flexibility
+2062	gründeln	2375	3218	dabble	w	h	flexibility
+2063	menstruieren	2373	3218	menstruate	i	h	flexibility
+2064	schlagzeilen	2347	3224	headline	w	h	flexibility
+2065	resonieren	2332	3224	resonate	i	h	flexibility
+2066	pogen	2326	3224	pogo, mosh	w	h	flexibility
+2067	ministrieren	2321	3226	act as an altar server	i	h	flexibility
+2068	knicksen	2318	3226	curtsey	w	h	flexibility
+2069	zinken	2298	3228	mark	w	h	walk.arrival
+2070	tagträumen	2286	3230	daydream	w	h	yoga
+2071	süffeln	2284	3232	sip an alcoholic beverage	w	h	cooldown
+2072	derangieren	2280	3234	derange someone or something	i	h	flexibility
+2073	busseln	2279	3234	kiss	w	h	2
+2074	exkludieren	2259	3235	exclude, marginalize	i	h	flexibility
+2075	telegraphieren	2258	3235	telegraph	i	h	flexibility
+2076	schwefeln	2237	3237	sulphurize	w	h	flexibility
+2077	armieren	2213	3237	arm, equip with weapons	i	h	flexibility
+2078	adsorbieren	2203	3237	adsorb	i	h	flexibility
+2079	strudeln	2199	3237	swirl	w	h	socialdance
+2080	desensibilisieren	2185	3239	desensitize	i	h	flexibility
+2081	refundieren	2164	3240	refund	i	h	flexibility
+2082	harnen	2155	3240	urinate	w	h	flexibility
+2083	zwirnen	2134	3242	twine	w	h	flexibility
+2084	kuvertieren	2128	3242	envelope something	i	h	flexibility
+2085	pimpern	2128	3242	fuck	w	h	flexibility
+2086	schrumpeln	2119	3242	shrivel	w	h	flexibility
+2087	unieren	2113	3245	unify	i	h	flexibility
+2088	flittern	2099	3247	glisten, sparkle	w	h	highintensity.intervaltraining
+2089	pichen	2089	3248	cover with pitch	w	h	walk.motion
+2090	distinguieren	2077	3249	distinguish	i	h	flexibility
+2091	schniegeln	2077	3249	spruce up	w	h	flexibility
+2092	sohlen	2070	3251	sole	w	h	flexibility
+2093	skalpieren	2062	3253	scalp	i	h	flexibility
+2094	chargieren	2054	3256	overact	i	h	flexibility
+2095	feuchten	2053	3256	wet something, get wet	w	h	flexibility
+2096	löcken	2049	3256	kick, kick out	w	h	boxing
+2097	staffieren	2048	3257	outfit, equip	i	h	flexibility
+2098	schwäbeln	2038	3259	speak in swabian	w	h	wave
+2099	schupfen	2026	3260	shove	w	h	flexibility
+2100	flippern	2019	3260	play pinball	w	h	play
+2101	jappen	2017	3260	gasp for air	w	h	wave
+2102	strunzen	2010	3261	urinate	w	h	flexibility
+2103	zagen	2009	3261	hesitate, be apprehensive	w	h	flexibility
+2104	evangelisieren	2008	3261	evangelize	i	h	flexibility
+2105	zentrifugieren	1976	3262	centrifuge	i	h	flexibility
+2106	masern	1961	3262	vein	w	h	flexibility
+2107	sintern	1949	3265	sinter	w	h	flexibility
+2108	sautieren	1947	3265	sauté	i	h	flexibility
+2109	schlägern	1938	3265	fight, get into a fight	w	h	fencing
+2110	babysitten	1919	3265	babysit	w	h	flexibility
+2111	hamburgern	1918	3265	speak with a hamburg accent	w	h	wave
+2112	dursten	1911	3266	thirst, be thirsty	w	h	flexibility
+2113	krakeln	1907	3268	scrawl	w	h	flexibility
+2114	schrappen	1907	3268	grate or peel with a blade	w	h	flexibility
+2115	kröpfen	1899	3269	feed on	w	h	cooldown
+2116	alphabetisieren	1893	3269	alphabetize	i	h	flexibility
+2117	äufnen	1881	3269	increase	w	h	stairs
+2118	wallfahren	1854	3271	go on a pilgrimage	w	s	walk
+2119	härmen	1851	3271	worry	w	h	yoga
+2120	minnen	1846	3271	love	w	h	2
+2121	kollektivieren	1831	3272	collectivize	i	h	flexibility
+2122	konzessionieren	1820	3275	franchise, grant the right to operate	i	h	flexibility
+2123	ketteln	1818	3276	link, overlock	w	h	2.and.child.holdinghands
+2124	lobhudeln	1818	3276	flatter excessively, adulate	w	h	wave
+2125	quarzen	1805	3277	smoke	w	h	cooldown
+2126	desorientieren	1800	3278	disorient	i	h	flexibility
+2127	prononcieren	1791	3281	pronounce	i	h	flexibility
+2128	raubkopieren	1781	3281	pirate	i	h	flexibility
+2129	rüschen	1778	3281	quill	w	h	flexibility
+2130	kujonieren	1765	3283	bully, abase	i	h	boxing
+2131	kremieren	1746	3286	cremate	i	h	flexibility
+2132	scherbeln	1742	3286	dance playfully, joyously	w	h	socialdance
+2133	makeln	1739	3286	act as a broker	w	h	flexibility
+2134	hucken	1729	3286	carry	w	h	hiking
+2135	drahten	1722	3286	wire	w	h	flexibility
+2136	puddeln	1706	3291	puddle	w	h	flexibility
+2137	speicheln	1690	3292	salivate, drivel	w	h	flexibility
+2138	klüngeln	1688	3292	be slow, delay, dawdle	w	h	flexibility
+2139	tändeln	1681	3292	dally	w	h	flexibility
+2140	parametrisieren	1650	3293	parametrize	i	h	flexibility
+2141	zecken	1649	3293	touch, hit slightly	w	h	boxing
+2142	bohnern	1642	3295	polish with wax	w	h	pool.swim
+2143	exorzieren	1640	3295	exorcise	i	h	flexibility
+2144	interferieren	1623	3299	interfere	i	h	flexibility
+2145	glucken	1620	3299	cluck	w	h	flexibility
+2146	frommen	1615	3300	be useful, serve	w	h	mind.and.body
+2147	benedeien	1594	3302	bless	w	h	flexibility
+2148	delirieren	1593	3302	be delirious	i	h	flexibility
+2149	wallfahrten	1565	3306	go on a pilgrimage	w	s	walk
+2150	charmieren	1548	3310	charm	i	h	flexibility
+2151	brägeln	1545	3312	sizzle, fry in oil	w	h	cooldown
+2152	vulkanisieren	1545	3312	vulcanize	i	h	flexibility
+2153	aspirieren	1541	3312	aspirate	i	h	flexibility
+2154	punzieren	1537	3312	hallmark	i	h	flexibility
+2155	akkordieren	1503	3318	arrange	i	h	stand
+2156	seichen	1501	3318	urinate	w	h	flexibility
+2157	lammen	1500	3318	lamb	w	h	flexibility
+2158	minieren	1496	3319	mine, dig tunnels, galleries	i	h	flexibility
+2159	muffen	1469	3320	have a moldy smell	w	h	flexibility
+2160	urgieren	1463	3320	request	i	h	wave
+2161	herumkrebsen	1453	3320	struggle, scrabble, just get by	w	h	wrestling
+2162	demilitarisieren	1430	3320	demilitarize	i	h	flexibility
+2163	deichseln	1429	3320	wangle	w	h	flexibility
+2164	sedimentieren	1428	3320	sediment	i	h	flexibility
+2165	quadrieren	1424	3321	square	i	h	flexibility
+2166	wursten	1417	3322	make sausage	w	h	flexibility
+2167	bleuen	1412	3322	beat, strike	w	h	boxing
+2168	gustieren	1397	3326	appreciate, enjoy	i	h	flexibility
+2169	sudeln	1390	3327	wash, work in the scullery	w	h	pool.swim
+2170	camouflieren	1379	3328	camouflage	i	h	flexibility
+2171	jodieren	1378	3328	iodate	i	h	flexibility
+2172	takeln	1373	3329	rig	w	h	flexibility
+2173	haspeln	1369	3329	reel	w	h	flexibility
+2174	dekomprimieren	1361	3330	unzip, decompress, unpack	i	h	flexibility
+2175	stümpern	1357	3330	bungle, botch	w	h	flexibility
+2176	krausen	1346	3330	curl	w	h	flexibility
+2177	wimmen	1332	3330	harvest grapes, gather the or a vintage	w	h	hiking
+2178	schnackseln	1328	3330	have sex	w	h	flexibility
+2179	polymerisieren	1327	3330	polymerize	i	h	flexibility
+2180	lunchen	1326	3330	lunch	w	h	flexibility
+2181	prädisponieren	1318	3330	predispose	i	h	flexibility
+2182	rummeln	1311	3330	rumble	w	h	wave
+2183	saften	1305	3331	make juice	w	h	flexibility
+2184	ratzen	1300	3332	sleep	w	h	seated.side.left
+2185	reuten	1295	3334	clear woods, make arable	w	h	flexibility
+2186	schwänzeln	1293	3334	wag, wiggle	w	h	flexibility
+2187	ondulieren	1275	3337	undulate	i	h	flexibility
+2188	plombieren	1267	3337	seal something	i	h	flexibility
+2189	treideln	1254	3339	tow a ship or boat along a river or canal	w	h	flexibility
+2190	hybridisieren	1251	3339	hybridize	i	h	flexibility
+2191	glosen	1244	3339	smoulder, smolder	w	h	flexibility
+2192	bimsen	1239	3339	pumice	w	h	flexibility
+2193	fraternisieren	1225	3340	fraternize	i	h	flexibility
+2194	blauen	1220	3342	turn blue	w	h	socialdance
+2195	alliieren	1211	3343	ally	i	h	flexibility
+2196	translozieren	1205	3344	relocate	i	h	flexibility
+2197	fanatisieren	1202	3344	fanaticize	i	h	flexibility
+2198	kiebitzen	1201	3344	kibitz, observe curiously	w	h	archery
+2199	fotzen	1197	3344	slap someone in the face	w	h	boxing
+2200	feudeln	1170	3345	mop	w	h	pool.swim
+2201	akklamieren	1163	3345	endorse someone, agree with someone	i	h	flexibility
+2202	ochsen	1159	3345	swot, cram	w	h	flexibility
+2203	schematisieren	1145	3346	schematize	i	h	flexibility
+2204	bölken	1142	3346	bawl, bellow, roar	w	h	wave
+2205	konsternieren	1125	3350	consternate	i	h	flexibility
+2206	flöhen	1121	3352	flea, deflea	w	h	flexibility
+2207	malmen	1119	3352	grind loudly	w	h	flexibility
+2208	schlämmen	1101	3355	levigate, elutriate	w	h	flexibility
+2209	urbanisieren	1098	3355	urbanize	i	h	flexibility
+2210	steifen	1095	3355	stiffen	w	h	flexibility
+2211	frottieren	1083	3355	rub down	i	h	pool.swim
+2212	serialisieren	1069	3356	serialize	i	h	flexibility
+2213	plissieren	1062	3358	pleat	i	h	flexibility
+2214	poussieren	1061	3358	flirt	i	h	2
+2215	deduzieren	1057	3358	deduce	i	h	flexibility
+2216	duseln	1049	3360	doze	w	h	seated.side.left
+2217	rechten	1049	3360	argue	w	h	wave
+2218	mauen	1027	3366	meow	w	h	flexibility
+2219	affichieren	1025	3366	post, affix	i	h	flexibility
+2220	dekompilieren	1018	3366	decompile	i	h	flexibility
+2221	wirren	1014	3366	whirl around	w	h	flexibility
+2222	zackern	1013	3366	plow	w	h	flexibility
+2223	riggen	1003	3367	rig	w	h	flexibility
+2224	flektieren	1001	3367	inflect, be inflected	i	h	flexibility
+2225	reihern	1001	3367	puke, vomit	w	h	flexibility
+2226	freveln	999	3367	commit an outrage	w	h	flexibility
+2227	picheln	992	3369	tipple	w	h	flexibility
+2228	füsilieren	964	3372	execute by firing squad	i	h	flexibility
+2229	allozieren	960	3374	allocate	i	h	flexibility
+2230	zuzeln	958	3374	suck on something	w	h	cooldown
+2231	iahen	946	3375	bray	w	h	flexibility
+2232	harpunieren	941	3375	harpoon	i	h	flexibility
+2233	segregieren	936	3378	segregate	i	h	flexibility
+2234	hatschen	934	3378	walk in a clumsy	w	s	walk
+2235	fetischisieren	929	3378	fetishize	i	h	flexibility
+2236	grabbeln	926	3378	grab	w	h	handball
+2237	moussieren	925	3378	have above-average carbonation, sparkle	i	h	highintensity.intervaltraining
+2238	supplieren	925	3378	add	i	h	flexibility
+2239	konterfeien	915	3378	portrait	w	h	flexibility
+2240	bauchpinseln	905	3382	flatter, ingratiate	w	h	wave
+2241	schirren	902	3382	harness	w	h	flexibility
+2242	extemporieren	897	3382	extemporize	i	h	flexibility
+2243	katzbuckeln	894	3385	grovel	w	h	flexibility
+2244	zeisen	884	3387	pick apart	w	h	handball
+2245	flanschen	883	3387	flange	w	h	flexibility
+2246	rekognoszieren	866	3391	acknowledge, recognize, admit	i	h	flexibility
+2247	balsamieren	862	3391	embalm	i	h	flexibility
+2248	krängen	848	3393	list	w	h	flexibility
+2249	pofen	843	3395	sleep, crash	w	h	seated.side.left
+2250	fisten	833	3396	fist-fuck	w	h	flexibility
+2251	willfahren	824	3397	obey	w	h	flexibility
+2252	bördeln	823	3397	flange, crimp	w	h	flexibility
+2253	romanisieren	821	3397	romanize	i	h	flexibility
+2254	klügeln	820	3397	puzzle	w	h	flexibility
+2255	flappen	810	3400	move noisily, often with a flapping sound	w	h	hiking
+2256	kerkern	795	3401	lock up, confine	w	h	flexibility
+2257	etatisieren	787	3401	include in a budget	i	h	flexibility
+2258	faschieren	775	3402	mince meat	i	h	flexibility
+2259	dorren	771	3403	wither, dry out	w	s	fall
+2260	schriftstellern	749	3405	work as a writer	w	h	strengthtraining.traditional
+2261	schnapsen	745	3405	play schnapsen	w	h	play
+2262	klittern	722	3407	piece together, jumble	w	h	flexibility
+2263	jausnen	716	3407	snack, consume a small meal	w	h	flexibility
+2264	pupen	716	3407	break wind, fart, flatulate	w	h	boxing
+2265	computerisieren	713	3408	computerize	i	h	flexibility
+2266	selchen	705	3410	smoke or cure	w	h	cooldown
+2267	stucken	698	3413	swot, cram	w	h	flexibility
+2268	plänkeln	695	3413	skirmish, squabble	w	h	flexibility
+2269	frömmeln	691	3415	display much sanctimony	w	h	flexibility
+2270	quantisieren	686	3415	quantize	i	h	flexibility
+2271	dematerialisieren	679	3415	dematerialize	i	h	flexibility
+2272	sakralisieren	675	3416	sacralize	i	h	flexibility
+2273	gifteln	671	3417	speak angrily and resentfully	w	h	wave
+2274	schmulen	666	3419	peek	w	h	archery
+2275	graupeln	661	3420	hail	w	h	fall
+2276	lackmeiern	613	3432	dupe	w	h	flexibility
+2277	titrieren	610	3432	titrate	i	h	flexibility
+2278	paginieren	609	3432	paginate	i	h	flexibility
+2279	legiferieren	608	3432	legislate	i	h	flexibility
+2280	stenografieren	608	3432	stenograph	i	h	flexibility
+2281	bramarbasieren	601	3433	brag	i	h	wave
+2282	pudeln	600	3433	splash, dabble	w	h	pool.swim
+2283	sumpfen	599	3433	sump	w	h	flexibility
+2284	lottern	597	3434	loiter, indulge	w	h	flexibility
+2285	trappen	597	3434	tramp, clump	w	h	flexibility
+2286	konvenieren	596	3435	agree on something	i	h	flexibility
+2287	absentieren	592	3436	absent oneself	i	h	flexibility
+2288	schokolieren	588	3438	coat or cover with chocolate	i	h	flexibility
+2289	hohnlachen	583	3438	laugh mockingly	w	h	wave
+2290	substantivieren	582	3438	substantivise	i	h	flexibility
+2291	konversieren	578	3440	converse	i	h	flexibility
+2292	klapsen	573	3442	slap )	w	h	boxing
+2293	guillochieren	571	3442	produce guilloches	i	h	flexibility
+2294	belfern	558	3444	bark	w	h	wave
+2295	schiften	556	3444	jibe, gybe	w	h	flexibility
+2296	waffnen	549	3445	arm	w	h	flexibility
+2297	brunzen	539	3445	piss	w	h	flexibility
+2298	engobieren	539	3445	cover with engobe	i	h	walk.motion
+2299	konsentieren	539	3445	consent	i	h	flexibility
+2300	gaunern	530	3448	cheat, swindle	w	h	play
+2301	sekkieren	530	3448	badger, pester, harass, annoy	i	h	boxing
+2302	wuzeln	528	3448	roll something with the palms of the hands	w	h	roll
+2303	defibrillieren	524	3448	defibrillate	i	h	flexibility
+2304	mörteln	522	3448	mortar	w	h	flexibility
+2305	mummen	520	3448	masquerade	w	h	flexibility
+2306	fintieren	516	3449	feint	i	h	flexibility
+2307	triangulieren	514	3449	triangulate	i	h	flexibility
+2308	killern	509	3450	tickle	w	h	flexibility
+2309	delogieren	508	3450	evict or dislodge someone	i	h	flexibility
+2310	detachieren	502	3452	detach	i	h	flexibility
+2311	schlossern	480	3458	do the job of a metalworker or fitter	w	h	flexibility
+2312	keppeln	478	3458	bark, nag, scold	w	h	wave
+2313	kielholen	478	3458	keelhaul	w	h	flexibility
+2314	reversieren	478	3458	reverse	i	h	flexibility
+2315	ludern	470	3462	lecher	w	h	flexibility
+2316	placken	470	3462	toil, labour	w	h	strengthtraining.traditional
+2317	transliterieren	470	3462	transliterate	i	h	flexibility
+2318	arabisieren	468	3462	arabize	i	h	flexibility
+2319	spintisieren	459	3464	ponder, fantasize, daydream	i	h	yoga
+2320	schnöden	458	3464	scoff	w	h	flexibility
+2321	akkommodieren	453	3467	accommodate	i	h	flexibility
+2322	barbieren	450	3468	cut the beard, shave	i	h	fencing
+2323	dunsten	449	3468	steam	w	h	cooldown
+2324	defäkieren	444	3468	defecate	i	h	flexibility
+2325	phosphoreszieren	443	3468	phosphoresce	i	h	flexibility
+2326	beigen	442	3468	stack, pile up	w	h	flexibility
+2327	fallieren	432	3470	go bankrupt	i	h	walk
+2328	pazifizieren	430	3470	pacify	i	h	flexibility
+2329	vandalisieren	428	3470	vandalize	i	h	flexibility
+2330	hehlen	416	3472	hide, conceal, hele	w	h	flexibility
+2331	strebern	413	3472	swot, cram	w	h	flexibility
+2332	spreiten	409	3473	spread	w	h	flexibility
+2333	äugeln	405	3473	eye furtively, ogle	w	h	flexibility
+2334	lautieren	402	3474	enunciate each phone	i	h	flexibility
+2335	kauderwelschen	401	3475	talk gibberish, chatter	w	h	wave
+2336	interpunktieren	397	3476	punctuate	i	h	flexibility
+2337	kobern	394	3476	solicit payment for prostitution	w	h	flexibility
+2338	menetekeln	393	3476	doomsay, prophesy doom	w	h	flexibility
+2339	stremmen	393	3476	be too tight	w	h	flexibility
+2340	feimen	391	3476	skim, clear a liquid from scum	w	h	flexibility
+2341	fladern	389	3476	steal	w	h	flexibility
+2342	schmöken	385	3477	smoke	w	h	cooldown
+2343	quarren	382	3477	make rough, creaky, squawky sounds	w	h	flexibility
+2344	permutieren	380	3478	rearrange, reorder	i	h	flexibility
+2345	ästimieren	375	3481	estimate	i	h	barre
+2346	blasonieren	361	3486	blazon	i	h	flexibility
+2347	schiefern	359	3487	shatter	w	h	flexibility
+2348	dachsen	357	3487	sleep soundly	w	h	seated.side.left
+2349	balkanisieren	356	3487	balkanize	i	h	flexibility
+2350	bähen	349	3489	toast, roast	w	h	cooldown
+2351	plempern	349	3489	dawdle	w	h	flexibility
+2352	eskamotieren	346	3489	make something vanish	i	h	flexibility
+2353	acheln	343	3489	eat	w	h	cooldown
+2354	schurren	341	3490	scrape	w	h	flexibility
+2355	perhorreszieren	339	3491	abominate, abhor	i	h	flexibility
+2356	schnatzen	324	3493	tie one's hair onto the crown of the head	w	h	2.and.child.holdinghands
+2357	koitieren	322	3494	copulate	i	h	flexibility
+2358	fadisieren	320	3494	be bored, feel bored	i	h	yoga
+2359	kirren	320	3494	make an animal tame with fodder	w	h	flexibility
+2360	transmittieren	316	3494	broadcast	i	h	flexibility
+2361	schrämen	314	3495	make a cut in a seam	w	h	flexibility
+2362	flehmen	312	3495	flehm, exhibit the flehmen response	w	h	flexibility
+2363	französisieren	312	3495	to frenchify, gallicise, gallicize	i	h	flexibility
+2364	revozieren	311	3495	revoke	i	h	flexibility
+2365	frachten	307	3496	freight	w	h	flexibility
+2366	sumsen	303	3497	buzz	w	h	wave
+2367	deodorieren	300	3498	deodorize	i	h	flexibility
+2368	nasführen	300	3498	dupe	w	h	flexibility
+2369	wällen	300	3498	boil	w	h	cooldown
+2370	kargen	298	3498	be stingy, miserly	w	h	flexibility
+2371	kiefeln	298	3498	nibble, gnaw at/on something	w	h	cooldown
+2372	idolisieren	294	3500	idolize	i	h	flexibility
+2373	lobben	281	3502	lob	w	h	flexibility
+2374	restringieren	274	3503	restrict, limit	i	h	flexibility
+2375	inkommodieren	272	3503	disturb	i	h	flexibility
+2376	kondizieren	269	3504	demand on unjust enrichment grounds	i	h	flexibility
+2377	karden	268	3504	card	w	h	flexibility
+2378	kontinuieren	267	3504	continue	i	h	flexibility
+2379	roboten	267	3504	toil	w	h	flexibility
+2380	klötern	263	3505	clatter	w	h	wave
+2381	finassieren	256	3506	deceive, intrigue	i	h	play
+2382	okulieren	256	3506	inoculate	i	h	flexibility
+2383	kollationieren	240	3507	collate	i	h	flexibility
+2384	fischeln	237	3509	smell fishy	w	h	flexibility
+2385	trenzen	236	3509	breathe in heavy sequence	w	h	flexibility
+2386	krickeln	232	3510	scrawl, scribble	w	h	flexibility
+2387	chloroformieren	230	3511	chloroform	i	h	flexibility
+2388	logarithmieren	218	3512	logarithmize	i	h	flexibility
+2389	fluorieren	213	3513	fluorinate	i	h	flexibility
+2390	dekomponieren	206	3515	decompose	i	h	flexibility
+2391	gräzisieren	205	3515	grecize	i	h	flexibility
+2392	akzelerieren	201	3515	accelerate	i	h	flexibility
+2393	altertümeln	201	3515	imitate the past, archaize	w	h	flexibility
+2394	schwiemeln	196	3518	swoon, ge dizzy	w	h	flexibility
+2395	hökern	187	3520	trade	w	h	2
+2396	archaisieren	185	3522	archaize	i	h	flexibility
+2397	flattieren	184	3522	flatter	i	h	wave
+2398	instituieren	181	3522	institute	i	h	flexibility
+2399	inokulieren	176	3523	inoculate	i	h	flexibility
+2400	nostrifizieren	175	3523	nostrify	i	h	flexibility
+2401	pardonieren	175	3523	grant quarter to	i	h	flexibility
+2402	perlustrieren	174	3524	frisk someone, pat someone down	i	h	flexibility
+2403	insultieren	170	3527	insult	i	h	boxing
+2404	worfeln	170	3527	winnow	w	h	flexibility
+2405	tattern	169	3527	shake, tremble	w	h	socialdance
+2406	stäupen	168	3527	tie to a post and flog them publicly	w	h	2.and.child.holdinghands
+2407	appropriieren	167	3527	appropriate	i	h	flexibility
+2408	lumineszieren	167	3527	luminesce	i	h	flexibility
+2409	hasardieren	166	3527	hazard	i	h	flexibility
+2410	hutschen	166	3527	swing, rock	w	s	socialdance
+2411	präokkupieren	164	3529	preempt, preoccupy, occupy already	i	h	flexibility
+2412	vindizieren	163	3529	vindicate, lay claim to	i	h	flexibility
+2413	schnullen	161	3529	suck	w	h	cooldown
+2414	supponieren	161	3529	suppose	i	h	flexibility
+2415	purgieren	155	3530	purify, cleanse	i	h	flexibility
+2416	konfabulieren	145	3532	confabulate	i	h	flexibility
+2417	proviantieren	141	3535	provision	i	h	flexibility
+2418	knickern	140	3535	be stingy	w	h	flexibility
+2419	parkettieren	140	3535	parquet	i	h	flexibility
+2420	fretten	134	3537	struggle with a very tedious task	w	h	wrestling
+2421	rekonvaleszieren	133	3537	convalesce, reconvalesce	i	h	flexibility
+2422	appretieren	128	3540	finish a textile	i	h	flexibility
+2423	bromieren	121	3543	brominate	i	h	flexibility
+2424	deroutieren	121	3543	make insecure, uncertain	i	h	flexibility
+2425	kohabitieren	121	3543	cohabit	i	h	flexibility
+2426	reinfizieren	119	3544	reinfect	i	h	flexibility
+2427	druseln	118	3544	doze	w	h	seated.side.left
+2428	exploitieren	118	3544	exploit	i	h	flexibility
+2429	nasalieren	117	3544	nasalize	i	h	flexibility
+2430	ihrzen	116	3544	address using the pronoun ihr	w	h	wave
+2431	palatalisieren	110	3546	palatalize	i	h	flexibility
+2432	harschen	106	3546	freeze over	w	h	skiing.downhill
+2433	wutschen	106	3546	whiz away	w	s	flexibility
+2434	deputieren	103	3546	depute	i	h	flexibility
+2435	proponieren	102	3548	propose	i	h	flexibility
+2436	laktieren	99	3550	lactate	i	h	flexibility
+2437	emendieren	97	3550	emend	i	h	flexibility
+2438	frikassieren	95	3550	fricassee	i	h	flexibility
+2439	jiddeln	94	3550	speak yiddish	w	h	wave
+2440	diphthongieren	93	3550	diphthongize	i	h	flexibility
+2441	abduzieren	92	3551	abduct	i	h	boxing
+2442	glupschen	92	3551	look with big eyes, eye	w	h	archery
+2443	halogenieren	89	3551	halogenate	i	h	flexibility
+2444	rekommandieren	89	3551	recommend	i	h	flexibility
+2445	vomieren	87	3551	vomit	i	h	flexibility
+2446	knuppern	85	3552	nibble	w	h	cooldown
+2447	reifizieren	84	3552	reify	i	h	flexibility
+2448	effilieren	83	3553	thin, blend	i	h	flexibility
+2449	instigieren	81	3553	instigate	i	h	flexibility
+2450	pranzen	78	3553	boast	w	h	wave
+2451	pölzen	78	3553	support, joist	w	h	2.and.child.holdinghands
+2452	drömeln	76	3553	traipse, dawdle	w	h	flexibility
+2453	jüdeln	71	3555	speak yiddish	w	h	wave
+2454	ausbeuteln	66	3558	shake out	w	h	socialdance
+2455	vidieren	66	3558	authenticate something, issue something	i	h	flexibility
+2456	wildeln	66	3558	have haut gout	w	h	flexibility
+2457	fellieren	64	3559	fellate	i	h	flexibility
+2458	dublieren	63	3559	double	i	h	flexibility
+2459	menagieren	63	3559	feed oneself	i	h	cooldown
+2460	vozieren	63	3559	appoint someone	i	h	flexibility
+2461	aluminieren	62	3559	aluminize	i	h	flexibility
+2462	lozieren	59	3559	locate, posit the place of	i	h	flexibility
+2463	suffigieren	59	3559	suffix	i	h	flexibility
+2464	grammatikalisieren	56	3559	grammaticalize	i	h	flexibility
+2465	präsupponieren	53	3559	presuppose	i	h	flexibility
+2466	monophthongieren	51	3559	monophthongize	i	h	flexibility
+2467	elizitieren	50	3559	elicit	i	h	flexibility
+2468	walgern	46	3560	roll	w	h	roll
+2469	fellationieren	44	3560	fellate	i	h	flexibility
+2470	abandonnieren	40	3561	abandon	i	h	flexibility
+2471	etymologisieren	40	3561	etymologize	i	h	flexibility
+2472	wegelagern	38	3562	waylay	w	h	flexibility
+2473	graphitieren	37	3562	graphitize	i	h	flexibility
+2474	skartieren	37	3562	discard and shred files	i	h	flexibility
+2475	etalieren	36	3562	exhibit, display	i	h	flexibility
+2476	desoxidieren	34	3564	deoxidize	i	s	flexibility
+2477	haschieren	33	3565	hash	i	h	flexibility
+2478	urassen	32	3565	waste, squander	w	h	flexibility
+2479	dissentieren	31	3565	dissent	i	h	flexibility
+2480	sponsieren	28	3566	court	i	h	2
+2481	turbieren	27	3566	disturb	i	h	flexibility
+2482	postponieren	21	3569	postpose	i	h	flexibility
+2483	digerieren	20	3569	digest	i	h	cooldown
+2484	präfigieren	20	3569	prefix	i	h	flexibility
+2485	tachinieren	19	3570	laze around	i	h	seated.side.left
+2486	prästabilieren	18	3570	preestablish	i	h	flexibility
+2487	abdizieren	16	3570	abdicate	i	h	flexibility
+2488	fickfacken	16	3570	search for excuses	w	h	archery
+2489	ripostieren	14	3570	riposte	i	h	flexibility
+2490	labialisieren	13	3570	labialize	i	h	flexibility
+2491	abbreviieren	12	3570	abbreviate	i	h	flexibility
+2492	etiolieren	11	3570	etiolate	i	h	flexibility
+2493	ajourieren	10	3571	do openwork	i	h	flexibility
+2494	enrollieren	10	3571	enroll	i	h	flexibility
+2495	pekzieren	10	3571	do something stupid	i	h	flexibility
+2496	repristinieren	10	3571	repristinate	i	h	flexibility
+2497	abfretten	9	3571	struggle with a very tedious task	w	h	wrestling
+2498	ameliorieren	9	3571	ameliorate	i	h	flexibility
+2499	danisieren	8	3571	danicize	i	h	flexibility
+2500	kausieren	8	3571	cause	i	h	flexibility
+2501	kommersieren	8	3571	partake in a jamboree	i	h	flexibility
+2502	präponieren	7	3571	prepose	i	h	flexibility
+2503	avertieren	6	3572	warn	i	h	wave
+2504	pharyngalisieren	6	3572	pharyngealize	i	h	flexibility
+2505	nebenschalten	5	3573	wire or connect in parallel	w	h	flexibility

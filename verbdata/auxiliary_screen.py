@@ -68,8 +68,9 @@ THE FLAGS, AND WHAT IN KAIKKI EACH ONE READS
   sense contradicts    The gloss's own sense contradicts the lemma's single auxiliary: an explicit
   lemma                "[auxiliary sein]" note under a haben lemma (or the reverse); a sense tagged
                        intransitive whose English gloss is a verb of motion or change of state
-                       under a haben-only lemma (zuziehen); or a sense tagged transitive under a
-                       sein-only lemma.
+                       under a haben-only lemma (zuziehen); a sense tagged transitive under a
+                       sein-only lemma; or a state or posture ("be awake", "squat") under a
+                       sein-only lemma (wachen, added after the tranche-3 dry run).
 
 The flags overlap, and a verb carries every reason that applies. That is deliberate: the note in
 the proposed row is all the reviewer starts from.
@@ -118,6 +119,16 @@ SEIN_HEADS = {
     "slip", "spring", "stay", "step", "stumble", "succeed", "swim", "swell", "travel", "turn",
     "vanish", "walk", "wander", "wither",
 }
+
+# English heads that gloss a STATE or a posture. Standard German forms their Perfekt with haben
+# (gewacht, gehockt, gestanden), and the south with sein, which is the Region setting's subject,
+# not a reading. A sein-only kaikki lemma glossed with one of these is suspect: kaikki gave
+# wachen "be awake, watch" sein only, which the tranche-3 dry run of 2026-11-10 caught by eye.
+# A broader test (any sein lemma whose gloss is not in SEIN_HEADS) held 43 of 76 sein verbs in
+# that run, nearly all of them motion verbs whose English the list lacks (stroll, gallop), so
+# the test is kept to states, where the error lives. "be" counts as a state only when it leads.
+STATE_HEADS = {"be", "crouch", "guard", "hang", "kneel", "lean", "lie", "sit", "squat", "stand",
+               "watch"}
 
 AUXILIARY_NOTE = re.compile(r"\[auxiliary ([^\]]+)\]")
 WORD_VALUE = re.compile(r'"word": "([^"]*)"')
@@ -288,6 +299,13 @@ def _probe(line, wanted):
     return any(value in wanted for value in WORD_VALUE.findall(line))
 
 
+def source_head(gloss):
+    """Like head_verb, but keeps a leading "be": 'be' for '(x) to be awake'."""
+    text = re.sub(r"^\s*\([^)]*\)\s*", "", gloss).lower()
+    match = re.match(r"(?:to\s+)?([a-z]+)", text.strip())
+    return match.group(1) if match else ""
+
+
 def head_verb(gloss):
     """The first English word of a gloss after "to" and any leading label: 'move' for '(x) to move here'."""
     text = re.sub(r"^\s*\([^)]*\)\s*", "", gloss).lower()
@@ -388,6 +406,9 @@ def screen(lemma, source_gloss):
         elif (lemma_auxiliary == "s" and "transitive" in source.tags
               and "intransitive" not in source.tags):
             reasons.append("sense contradicts lemma: a transitive sense under a sein-only lemma")
+        elif lemma_auxiliary == "s" and source_head(source.raw) in STATE_HEADS:
+            reasons.append(f"sense contradicts lemma: a state or posture "
+                           f"('{source_head(source.raw)}') under a sein-only lemma")
 
     if reasons:
         return Screen(lemma.word, None, source, reasons)

@@ -274,7 +274,7 @@ Some counts behind the failures:
 - In alphabetical order, 72 of the 100 most frequent verbs are not the first result for their own
   infinitive. In frequency order the problem is rarer and still real: 176 of the 3,572 verbs are
   displaced, among them essen, and hören, which appears behind gehören.
-- 44 verbs have a second reading. Its gloss is never searched, so "travel" does not find fahren
+- 44 verbs have a second reading (119 after the defect plan's Part 6). Its gloss is never searched, so "travel" does not find fahren
   and "migrate" does not find ziehen. **Fixed on `main` 2026-11-10** by Part 3b of the defect
   plan: both the verb list and the shortcut picker now match every reading's gloss.
 - Everyday verbs are missing from the corpus: googeln, downloaden, chatten, einloggen, scrollen,
@@ -1033,7 +1033,12 @@ not this list, is the current statement of the defects.
    on `main` 2026-11-10** by Part 1 of the defect plan: the 37 verbs kaikki contradicts outright,
    and zurücktreten, were ruled against DWDS and German Wiktionary. aufstehen and eight of the
    ten verbs in the plan's first table now read correctly; bedürfen and backen were fixed by Parts 2 and 7.
-   12 verbs gained a second reading. The 141 that need a ruling are Part 6.
+   12 verbs gained a second reading. **Fixed on `main` 2026-11-10** by Part 6: every verb the
+   audit lists is ruled (253 verbs, 334 readings in `verbdata/auxiliary-rulings.tsv`), 119 verbs
+   now have more than one reading, and all ten verbs of the plan's first table read correctly in
+   the simulator. The importer that caused it now takes the auxiliary from the gloss's own sense
+   and holds back what kaikki cannot settle. schaffen's strong reading, five family splits, and
+   seven verbs without a source are deferred; the roadmap's "Known gaps" lists them.
 2. **Three verbs lose their prefix in some conjugations.** bedürfen shows ich darf, du darfst, er
    darf for bedarf, bedarfst, bedarf. vermögen shows ich mag, du magst, er mag for vermag,
    vermagst, vermag. entgelten shows du galtest and ihr galtet for entgaltest and entgaltet. All
@@ -1054,7 +1059,9 @@ not this list, is the current statement of the defects.
    verfertigt, and the one for abstimmen has only the noun Abstimmung. The appendix lists the
    kinds. **The five that quote another verb were replaced on `main` 2026-11-10** by Part 4 of
    the defect plan, along with three authored sentences that illustrated senses the corrected
-   glosses dropped. The scan now finds 29, each in a class the appendix names. The full list was written to the session scratchpad and can be regenerated in a minute.
+   glosses dropped. The scan found 29 after Part 4, 27 after Part 7, and 26 at the plan's
+   Closing, when übergehen's sentence found its new separable reading. Each is in a class the
+   appendix names. The full list was written to the session scratchpad and can be regenerated in a minute.
 5. **The map is stale.** `corpus/working/forms.json` dates from 2026-07-25 and matches the
    corpus's 3,572 verbs, but glosses and counts have changed since, and the counts in this
    document should be confirmed against a fresh run. **Fixed 2026-11-10** in Part 0 of the

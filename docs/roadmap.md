@@ -386,6 +386,36 @@ Small things the pipeline surfaced that no plan currently owns. None blocks the 
   hängen shape, and the app ships only the weak one. That is why "Arbeitsplätze schaffen" would
   come out as *geschafft*, and why schaffen is among the five verbs at odds with Wiktionary. It
   belongs with the readings work of Part 6 of that plan.
+- **Part 6's leftovers** (2026-11-10, `plans/fix-reference-defects.md`). The auxiliary rulings
+  finished with every listed verb ruled and these left open, each by a recorded decision. They
+  live nowhere else but that plan's review list, so they are gathered here.
+  - **schaffen's strong reading, plan step 6a.** "create" is strong (*schuf, geschaffen*) and
+    "manage" weak, and the app ships only the weak reading. Deferred by Josh at the plan's
+    Closing, because the strong reading needs an ablaut group that does not ship (see "Three
+    ablaut groups are wrong" below), with its `AblautGroupInfo` entry, descriptions in two
+    languages, and new group counts. It is one of the five verbs at odds with Wiktionary, so the
+    count should fall to 4 when it lands. Step 6, übergehen, was found unrun at the same time and
+    ruled then.
+  - **Five family splits not made, the anhängen shape:** schleifen (strong "grind" beside weak
+    "drag"), bleichen and ausbleichen (weak "bleach" beside strong "fade", *ist geblichen*), and
+    schwellen and aufschwellen (strong "swell" beside weak "make swell"). Each kept one reading
+    under the away-mode defaults, and Josh confirmed it. Adding the other verb is a reading with
+    its own family, as anhängen did.
+  - **Example sentences that do not illustrate their gloss:** anstehen (the sentence is "befit"),
+    dafürstehen (*für etwas stehen* written apart), nachschieben (the sentence is "add
+    afterwards"), überschießen (the sentence is intransitive), and ablaufen, whose sentence needs
+    "proceed" while the commonest sense is "expire". These belong to the example pipeline.
+  - **Seven verbs kept as shipped for want of any readable source:** zertreiben, überschießen,
+    zusammenstreben, umeinanderstehen, hinrücken, rückdrehen, mitfolgen. Their rulings rows say
+    "deferred". A session that finds a source can rule them like any other.
+  - **The auxiliary screen flags 66 single-reading verbs that no ruling touched.** Screening the
+    shipped corpus as if incoming (see step 9) held back 109 untouched verbs, 43 of them already
+    with two readings. Of the other 66, most are separability homographs like übersetzen whose
+    second verb is not modelled (*durchschauen*, *umfassen*, *wiederholen*, *überlegen*) and
+    noise from the motion inference (*versagen* "fail", *überhandnehmen* "get out of hand").
+    A few may be real errors: *rübermachen* "travel to a place in another country" ships haben
+    on an intransitive sense of motion, which suggests sein, though no dictionary was checked.
+    Not swept, by the plan's rule to raise such finds rather than sweep for them. `import_tranche2.py --check --screen` lists any of them.
 - **`mahlen` and `spalten`** — weak Präteritum with strong participle (*mahlte*, but
   *gemahlen*). Neither the mixed family nor the weak family fits. Wrinkle 4 in
   `verb-sources.md`; needs a new family or a full-override ablaut group. Step 7 confirmed the

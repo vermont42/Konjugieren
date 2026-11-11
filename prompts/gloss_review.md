@@ -104,7 +104,9 @@ Do not report these. Each has been considered and settled.
 Skip this section unless your shard file's records hold a `key` field. Everything above still
 applies; the rest of this section is what differs.
 
-Forty-four verbs in the corpus carry **two readings**, each with its own gloss. These are
+Forty-four verbs in the corpus carried **two readings** when this section was written in July
+2026; after the auxiliary rulings of `plans/fix-reference-defects.md`, 119 do, six of them three.
+Each reading has its own gloss. These are
 dual-auxiliary verbs: one lemma, one conjugation, two senses distinguished by whether the perfect
 takes *haben* or *sein*. *abbrechen* is the model — "break off, cancel" with haben (transitive) beside
 "break off, snap (come apart)" with sein (intransitive). Your shard holds one record per **reading**,

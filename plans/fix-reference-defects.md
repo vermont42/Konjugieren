@@ -8,7 +8,7 @@ below.
 
 ## Status (2026-11-10, during the third session)
 
-**Parts 0 to 5 and 7 are done. Part 6's rulings are done: the audit's worklist is empty and `--check` passes. Part 6's "Stop the cause" is done (the importer change, 2026-11-10). What remains is the plan's Closing.** Read this section before the rest: several
+**Parts 0 to 5 and 7 are done. Part 6's rulings are done: the audit's worklist is empty and `--check` passes. Part 6's "Stop the cause" is done (the importer change, 2026-11-10). The Closing ran on 2026-11-10 and found plan step 6 (übergehen) unrun; it was ruled then, and step 6a (schaffen) was deferred by Josh to the roadmap's "Known gaps". The plan is finished, apart from deploying the privacy policy, which is Josh's.** Read this section before the rest: several
 numbers below were true when the plan was written and are not now. The journal entries in
 `docs/blog_notes.md` headed "Defect plan, Part N" are the detailed record.
 
@@ -882,6 +882,13 @@ the standard participle with a pinned test, krauchen is ruled on, the at-odds co
 risen, and `check_docs.py` passes with the new counts.
 
 ## Closing
+
+*Ran 2026-11-10.* Suite 224 passed; at-odds held at 5, with durchlaufen and durchdringen newly
+`shippedEncodingFailed` as foreseen; `--check` and `check_docs.py` clean. Scan 1 found no real
+hits, and Scan 2 found 26 misses (übergehen left). Every reading listed in step 3 read as ruled
+in the simulator, plus übergehen. Browse placement of durchlaufen and durchdringen was settled
+from the code, because the Family detail screen exposes no accessibility tree. The journal entry
+"Defect plan, Closing" has the details.
 
 1. Run the whole test suite, the classification pipeline, `python3 scripts/check_docs.py`, and
    `audit_auxiliaries.py --check`. **Expect new `shippedEncodingFailed` flags** from the

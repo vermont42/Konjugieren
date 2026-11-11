@@ -9037,3 +9037,65 @@ carry. It is now in the roadmap's "Known gaps".
 What a user would see changed: übergehen builds "skip" with haben and offers "go over, turn into"
 with sein. 119 verbs now have more than one reading, six of them three. The rulings file has 334
 readings of 253 verbs.
+
+## Defect plan, Closing: what the checks said (2026-11-10)
+
+The plan ends with five steps of checking and housekeeping, and the first thing they turned up
+was work that had not been done. Steps 6 and 6a of Part 6 had never run (übergehen and schaffen,
+both off the audit's list), which the previous entry records. übergehen was ruled before the
+checks began, so they cover it.
+
+**Step 1.** The full suite passed, 224 tests in 33 suites, with übergehen's new pinned
+expectations in it. `check_docs.py` and `audit_auxiliaries.py --check` were clean (253 verbs
+ruled, nothing listed or proposed awaiting review). The classification pipeline, rebuilt from
+`build_candidates.py` as the roadmap insists, verified all 3,567 shipping verbs it can check and
+held the at-odds count at 5. Its `shippedEncodingFailed` list grew by exactly the two verbs the
+plan predicted, durchlaufen and durchdringen. Part 6 made each verb's first reading the
+inseparable one, and the classifier tests only reading 0 against a kaikki table for the
+separable verb. The at-odds summary excludes multi-reading verbs for that reason, so the count
+did not move.
+
+**Step 2.** `forms.json` was regenerated, and its modification time confirmed it. Scan 1's 95
+lines are all the false positive its comment predicts, a zu-infinitive inside a prefix run
+(*vorzubereiten*), so no verb loses its prefix. Scan 2 fell from 27 misses to 26. The one that
+left is übergehen, whose Kafka sentence (*geht allmählich ins Urteil über*) now finds the
+separable reading. The 26 that remain are the classes the ideas document's appendix names:
+dual paradigms (*wandte*, *saugte*, *hieb*), schaffen's missing strong reading, adjective
+endings, short imperatives, and old spellings.
+
+**Step 3.** In the simulator, by deeplink, every verb of the plan's first table now reads as
+German does: *er hat stattgefunden*, *er ist gereist*, *er bedarf*, *er hat gebacken*, *er ist
+entgangen*, *er ist nachgegangen*, *er ist umgezogen* beside *er hat umgezogen*, *er ist
+zurückgetreten*, *er ist aufgestanden*, *er ist abgefahren*. The keeps (umbrechen, aufschießen,
+festbacken) take haben. abschieben takes haben. unterliegen, frieren, and überspringen switch
+auxiliary with their reading. durchschlagen and durchlaufen show three verbs each, with the
+inseparable reading's ge-less participle (*hat durchschlagen*, *hat durchlaufen*) beside the
+separable ones. durchdringen and übergehen pair *hat durchdrungen* and *hat übergangen* with *ist
+durchgedrungen* and *ist übergegangen*. The driver was a scratch script that opens each verb,
+waits for its headline, reads the `er hat/ist` line from the accessibility tree, taps each other
+reading's gloss, and reads it again.
+
+The browse-list check for durchlaufen and durchdringen could not be read on screen. The Family
+detail screen exposes no accessibility tree to AXe, and the catch-all section sits below some
+1,500 inseparable verbs in a lazy stack. So it was settled from the code. A verb is browsed by
+its verb-level `in`, both verbs are now `durch*`, and *durch-* is not a curated inseparable
+prefix, so both moved from the Separable card's *durch-* section to the Inseparable card's
+"other prefixes" section. Their separable readings do not affect browsing. A screen that AXe
+cannot see is worth an accessibility identifier someday. That is a note for the ideas document,
+not a fix for this plan.
+
+**Step 4.** The roadmap's "Known gaps" now holds Part 6's leftovers, which until now lived only
+in the plan: schaffen's strong reading, the five family splits Josh confirmed as unmade, five
+example sentences that do not illustrate their gloss, the seven verbs kept for want of a
+source, and the 66 single-reading verbs the new auxiliary screen flags that no ruling touched.
+Among those 66, rübermachen looks like a real error, though no dictionary was checked. The ideas
+document's defects section marks Part 6 fixed, and the two documents that still said 44 verbs
+have a second reading now say 119. The at-odds count did not move, so `verb-classification.md`
+needed nothing.
+
+What a user would see changed, across the whole plan: about 130 verbs had their auxiliary or
+their readings changed to what the dictionaries give, 119 verbs offer each meaning with its own auxiliary or
+separability, three verbs keep their prefix, backen, hauen, and salzen have their strong
+participles, eight example sentences show the verb they illustrate, and search finds a verb by
+any of its meanings. None of it ships until the next release, which waits for Josh's new
+MacBook in 2027. The privacy policy is the exception, and it is ready to deploy.

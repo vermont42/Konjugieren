@@ -8804,3 +8804,37 @@ What a user would see changed: brennen's intransitive derivatives build the Perf
 abbrennen and ausschlagen offer a second meaning, and durchschlagen and überschlagen show their
 separable and inseparable verbs. 95 verbs now have more than one reading, six of them three. The
 rulings file has 189 readings of 132 verbs, the suite is still 224 tests, and the worklist is 120.
+
+## Defect plan, Part 6, step 5: stehen and liegen, where nearly everything stays (2026-11-10)
+
+The plan predicted this step correctly. Of the 39 listed derivatives of stehen and liegen, 36 kept
+haben. kaikki marks them as taking both auxiliaries because southern Germany, Austria, and
+Switzerland say *ist gestanden* where the north says *hat gestanden*, and that is the Region
+setting's subject, not a second reading. DWDS shows this directly for two of them. entgegenstehen
+and herumstehen each have a second header labelled *süddeutsch, österreichisch, schweizerisch* with
+*ist*. For most of the rest DWDS gives only *hat*, which is silence about the south rather than
+evidence against it. The rulings rows say "regional variation" and point at plan step 5. Several
+verbs do have a sein sense of their own, but each is labelled regional: ausstehen's "leave
+service", anstehen's Austrian "depend on", abliegen's southern "hang (of meat)". Those fail
+criterion 2 like any other regional label.
+
+Three verbs changed. **unterliegen** gained "be defeated, lose (to)" with sein beside "be subject
+to" with haben, a sense split DWDS states outright (*die Mannschaft ist dem Gegner unterlegen*).
+Its Nietzsche sentence, *wenn euer Gedanke unterliegt*, illustrates the new reading. **erstehen**
+is two verbs in DWDS: colloquial "buy" with *hat erstanden* and elevated "arise, rise again" with
+*ist erstanden*. The plan's own step 5 names erstehen "arise" as a sein verb, so it was added.
+Both senses carry a label, so neither of the away-mode defaults quite settles it, and it is in
+the review list. Its etymology had called the purchase sense "this reading", now that there are
+two, and the phrase was cut in both languages. **umeinanderstehen** shipped the gloss "synonym of
+herumstehen", a dictionary cross-reference rather than a meaning. It is now "stand around", with
+haben kept as deferred, since DWDS has no page for this Bavarian verb.
+
+Two example sentences surfaced that do not illustrate their verbs' glosses, and both went to the
+review list rather than being fixed here. anstehen's *weil sie mir nicht ganz anstand* means
+"befit", not "stand in a queue". dafürstehen's *Die Linke steht auch dafür* is *für etwas stehen*,
+"stand for", written apart, not the old verb meaning "vouch". The Sonnet review of five readings
+found nothing.
+
+What a user would see changed: unterliegen and erstehen each offer a second meaning with sein, and
+umeinanderstehen has a real gloss. 97 verbs now have more than one reading. The rulings file has
+230 readings of 171 verbs, the suite is still 224 tests, and the worklist is 81.

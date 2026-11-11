@@ -8,7 +8,7 @@ below.
 
 ## Status (2026-11-10, during the third session)
 
-**Parts 0 to 5 and 7 are done. Part 6 is under way: step 1 and the fahren, ziehen, treten, brechen, treiben, laufen, schießen, streben, brennen, schlagen, and wachsen derivatives are done.** Read this section before the rest: several
+**Parts 0 to 5 and 7 are done. Part 6 is under way: step 1 and the fahren, ziehen, treten, brechen, treiben, laufen, schießen, streben, brennen, schlagen, wachsen, stehen, and liegen derivatives are done.** Read this section before the rest: several
 numbers below were true when the plan was written and are not now. The journal entries in
 `docs/blog_notes.md` headed "Defect plan, Part N" are the detailed record.
 
@@ -31,14 +31,15 @@ numbers below were true when the plan was written and are not now. The journal e
 | 6 (treiben) | `fa78a79` | 9 listed treiben derivatives, the first batch run under the away-mode prompt: 3 two readings (a "drift" sense with sein beside "drive"), 1 re-gloss, 4 keeps, zertreiben deferred for want of any source. Two etymologies corrected. Review found nothing. |
 | 6 (laufen) | `412a1f9` | 8 listed laufen derivatives: durchlaufen and umlaufen three readings each, 3 more with two (unterlaufen's "a mistake slips in" with sein), 2 flips to sein with re-gloss, 1 keep. durchlaufen's verb-level `in` made inseparable. umlaufen's etymology rewritten. One review finding, adjudicated and not applied. |
 | 6 (schießen, streben) | `8903915` | 7 schießen and 7 streben derivatives in one batch: einschießen two readings, zustreben and emporstreben to sein, 2 re-glosses, 9 keeps, two of them deferred (überschießen, zusammenstreben). Several keeps rest on the labelled-sense defaults. Review found nothing. |
-| 6 (brennen, schlagen, wachsen) | see journal | 13 verbs: durchschlagen and überschlagen three readings, abbrennen and ausschlagen two, anbrennen, entbrennen, durchbrennen to sein, 6 keeps. Two etymologies corrected. Three review findings adjudicated: two glosses narrowed, one kept. |
+| 6 (brennen, schlagen, wachsen) | `2ba0cc0` | 13 verbs: durchschlagen and überschlagen three readings, abbrennen and ausschlagen two, anbrennen, entbrennen, durchbrennen to sein, 6 keeps. Two etymologies corrected. Three review findings adjudicated: two glosses narrowed, one kept. |
+| 6 (step 5, stehen and liegen) | see journal | 39 verbs: erstehen and unterliegen gain a sein reading, umeinanderstehen re-glossed and deferred, 36 keeps, most of them regional variation. erstehen's etymology corrected. Review found nothing. |
 
 **Where Part 6 stands.**
 
 - **Take the worklist from the script**, not from the counts below: `python3 verbdata/audit_auxiliaries.py
-  --unruled`. It lists 120 verbs after wachsen, and `--check` prints the same number while failing.
-  `--check` must report `0 other problems` after every batch. Next are the derivatives of stehen and liegen (plan step 5).
-- **The rulings file has 189 readings of 132 verbs**, and 95 verbs have more than one reading,
+  --unruled`. It lists 81 verbs after stehen and liegen, and `--check` prints the same number while failing.
+  `--check` must report `0 other problems` after every batch. Next are the small families, several to a batch. wegfliegen and herumfliegen ship haben and want sein.
+- **The rulings file has 230 readings of 171 verbs**, and 97 verbs have more than one reading,
   six of them three (durchziehen, durchbrechen, durchlaufen, umlaufen, durchschlagen, überschlagen). Suite: 224 tests.
 - **Josh's rulings of 2026-11-10, in the fahren batch**, which later batches should follow:
   - **A domain label qualified by *häufig* does not fail criterion 2** (hochfahren, "boot up",
@@ -138,6 +139,19 @@ clears an entry by confirming or reversing it.
   takes haben and is unlabelled, but anzünden is the usual verb. Alternative: a second reading.
 - **wachsen** (wachsen): kept single "grow". The homograph "wax (skis)" is weak and takes haben,
   the anhängen shape. Alternative: add it as a weak second reading.
+- **erstehen** (stehen): added "arise, rise again" with sein (DWDS ¹erstehen, *gehoben*) beside
+  "buy, acquire" (²erstehen, *umgangssprachlich*), as plan step 5 names it. Both senses are
+  labelled, so neither the gehoben precedent nor the labelled-primary default settles it alone.
+  Alternative: keep the single "buy" reading under the umbrechen default.
+- **abstehen** (stehen): kept single. DWDS 2, *von etw. abstehen* (desist), takes sein and is
+  *gehoben*, so it passes criterion 2, but was ruled too rare for criterion 3. Alternative: a
+  second reading.
+- **umeinanderstehen** (stehen): re-glossed from the cross-reference "synonym of herumstehen" to
+  "stand around", and kept haben as deferred. DWDS returns 404, and no other source was tried.
+- **anstehen**, **dafürstehen** (stehen): kept, but each example sentence illustrates something
+  other than the gloss. anstehen's (*weil sie mir nicht ganz anstand*) is "befit", and
+  dafürstehen's (*Die Linke steht auch dafür*) is "für etwas stehen" written apart. Both are
+  example-pipeline questions, not auxiliary ones.
 
 **State to start Part 6 from (end of the second session; partly superseded above).**
 
@@ -881,7 +895,8 @@ for verb, entry in sentences.items():
 ## Prompt to Hand a Session
 
 Part 6 is under way: step 1 and the fahren, ziehen, treten, brechen, treiben, laufen, schießen,
-streben, brennen, schlagen, and wachsen derivatives are done. Run one Part 6 session at a time, since each edits `Verbs.xml`, the rulings file, and the test table.
+streben, brennen, schlagen, wachsen, stehen, and liegen derivatives are done. Run one Part 6
+session at a time, since each edits `Verbs.xml`, the rulings file, and the test table.
 
 This prompt lets the session work while Josh is away (written 2026-11-10). It replaces the earlier
 one, which asked the session to stop before a third reading, before extending the criterion-2

@@ -4399,7 +4399,8 @@
     <reading tn="stab to death" fa="s" ag="sprechen" />
   </verb>
   <verb in="er*st^eh^en" hi="187376" ic="stand">
-    <reading tn="buy" fa="s" ag="stehen" />
+    <reading tn="buy, acquire" fa="s" ag="stehen" />
+    <reading tn="arise, rise again" fa="s" ag="stehen" ay="s" />
   </verb>
   <verb in="er*st^ei^gen" hi="7623" ic="stairs">
     <reading tn="climb, ascend" fa="s" ag="bleiben" />
@@ -8149,7 +8150,7 @@
     <reading tn="twist, turn, turn around" fa="w" />
   </verb>
   <verb in="umeinander+st^eh^en" hi="574106" hp="y" ic="stand">
-    <reading tn="synonym of herumstehen" fa="s" ag="stehen" />
+    <reading tn="stand around" fa="s" ag="stehen" />
   </verb>
   <verb in="um+er*z^ieh^en" hi="11489" ic="indoor.rowing">
     <reading tn="reeducate" fa="s" ag="ziehen" />
@@ -8395,6 +8396,7 @@
   </verb>
   <verb in="unter*l^ie^gen" hi="1687477" ic="flexibility">
     <reading tn="be subject to" fa="s" ag="liegen" />
+    <reading tn="be defeated, lose (to)" fa="s" ag="liegen" ay="s" />
   </verb>
   <verb in="unter*malen" hi="128586" ic="flexibility">
     <reading tn="underscore, accompany" fa="w" />

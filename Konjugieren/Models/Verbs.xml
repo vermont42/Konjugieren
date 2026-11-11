@@ -328,7 +328,8 @@
     <reading tn="unwind, unroll" fa="w" />
   </verb>
   <verb in="ab+rücken" hi="84680" ic="hiking">
-    <reading tn="move away" fa="w" />
+    <reading tn="move away, distance oneself" fa="w" ay="s" />
+    <reading tn="move (something) away" fa="w" />
   </verb>
   <verb in="ab+r^u^fen" hi="645270" ic="wave">
     <reading tn="retrieve, call up" fa="s" ag="rufen" />
@@ -367,7 +368,7 @@
     <reading tn="submit, send, send off" fa="w" />
   </verb>
   <verb in="ab+sch^ie^ben" hi="219128" ic="skating">
-    <reading tn="deport" fa="s" ag="bieten" ay="s" />
+    <reading tn="deport" fa="s" ag="bieten" />
   </verb>
   <verb in="ab+sch^ieß^en" hi="151851" ic="archery">
     <reading tn="shoot off" fa="s" ag="schließen" />
@@ -713,7 +714,8 @@
     <reading tn="hit (with a vehicle), snap at" fa="s" ag="fahren" />
   </verb>
   <verb in="an+f^all^en" hi="398235" ic="fall">
-    <reading tn="arise, accrue" fa="s" ag="fallen" />
+    <reading tn="arise, accrue" fa="s" ag="fallen" ay="s" />
+    <reading tn="attack, seize" fa="s" ag="fallen" />
   </verb>
   <verb in="an+f^a^ngen" hi="2698456" ic="walk.arrival">
     <reading tn="begin" fa="s" ag="fangen" />
@@ -1854,7 +1856,8 @@
     <reading tn="look, appear" fa="w" />
   </verb>
   <verb in="aus+sch^ei^den" hi="595171" ic="fencing">
-    <reading tn="drop out, be eliminated" fa="s" ag="bleiben" />
+    <reading tn="drop out, be eliminated" fa="s" ag="bleiben" ay="s" />
+    <reading tn="excrete, separate out" fa="s" ag="bleiben" />
   </verb>
   <verb in="aus+sch^eiß^en" hi="590" ic="cooldown">
     <reading tn="shit out, defecate something" fa="s" ag="reißen" />
@@ -3707,7 +3710,8 @@
     <reading tn="collapse" fa="w" ay="s" />
   </verb>
   <verb in="ein+tauchen" hi="300603" ic="pool.swim">
-    <reading tn="plunge" fa="w" ay="s" />
+    <reading tn="dip in, immerse (something)" fa="w" />
+    <reading tn="plunge, dive in" fa="w" ay="s" />
   </verb>
   <verb in="ein+tauschen" hi="115669" ic="2">
     <reading tn="exchange" fa="w" />
@@ -5211,7 +5215,7 @@
     <reading tn="descend" fa="s" ag="bleiben" ay="s" />
   </verb>
   <verb in="herab+stürzen" hi="7296" ic="fall">
-    <reading tn="cascade" fa="w" />
+    <reading tn="plunge down, cascade" fa="w" ay="s" />
   </verb>
   <verb in="herab+würdigen" hi="18158" ic="arms.open">
     <reading tn="disparage, vilify" fa="w" />
@@ -5476,7 +5480,7 @@
     <reading tn="drive around" fa="s" ag="fahren" ay="s" />
   </verb>
   <verb in="herum+fl^ie^gen" hi="10216" ic="skiing.downhill">
-    <reading tn="fly around" fa="s" ag="bieten" />
+    <reading tn="fly around" fa="s" ag="bieten" ay="s" />
   </verb>
   <verb in="herum+fragen" hi="2751" ic="wave">
     <reading tn="ask around" fa="w" />
@@ -6693,7 +6697,7 @@
     <reading tn="look, look and see, check" fa="w" />
   </verb>
   <verb in="nach+sch^ie^ben" hi="27076" ic="skating">
-    <reading tn="push from behind" fa="s" ag="bieten" ay="s" />
+    <reading tn="push from behind" fa="s" ag="bieten" />
   </verb>
   <verb in="nach+schl^a^gen" hi="68082" ic="boxing">
     <reading tn="look up" fa="s" ag="fahren" />
@@ -8028,7 +8032,8 @@
     <reading tn="dub, re-record" fa="w" />
   </verb>
   <verb in="über*spr^i^ngen" hi="234813" ic="jumprope">
-    <reading tn="jump over" fa="s" ag="finden" />
+    <reading tn="jump over, skip" fa="s" ag="finden" />
+    <reading in="über+spr^i^ngen" tn="jump across, spread" fa="s" ag="finden" ay="s" />
   </verb>
   <verb in="über*st^eh^en" hi="807701" ic="stand">
     <reading tn="survive, withstand" fa="s" ag="stehen" />
@@ -8312,7 +8317,8 @@
     <reading tn="dispute, contest" fa="s" ag="schneiden" />
   </verb>
   <verb in="um+stürzen" hi="30649" ic="fall">
-    <reading tn="fall over" fa="w" ay="s" />
+    <reading tn="fall over, topple" fa="w" ay="s" />
+    <reading tn="overturn, knock over" fa="w" />
   </verb>
   <verb in="um+tauschen" hi="94875" ic="2">
     <reading tn="exchange" fa="w" />
@@ -9586,7 +9592,7 @@
     <reading tn="introduce, imagine" fa="w" />
   </verb>
   <verb in="vor+st^o^ßen" hi="68018" ic="boxing">
-    <reading tn="advance" fa="s" ag="stoßen" />
+    <reading tn="advance" fa="s" ag="stoßen" ay="s" />
   </verb>
   <verb in="vor+tr^a^gen" hi="660242" ic="hiking">
     <reading tn="lecture, give a report" fa="s" ag="fahren" />
@@ -9716,7 +9722,7 @@
     <reading tn="fall away, disappear" fa="s" ag="fallen" ay="s" />
   </verb>
   <verb in="weg+fl^ie^gen" hi="17690" ic="skiing.downhill">
-    <reading tn="fly away" fa="s" ag="bieten" />
+    <reading tn="fly away" fa="s" ag="bieten" ay="s" />
   </verb>
   <verb in="weg+führen" hi="13629" ic="walk.arrival">
     <reading tn="lead away" fa="w" />
@@ -10684,7 +10690,7 @@
     <reading tn="compile, put together" fa="w" />
   </verb>
   <verb in="zusammen+st^o^ßen" hi="74727" ic="boxing">
-    <reading tn="collide" fa="s" ag="stoßen" />
+    <reading tn="collide" fa="s" ag="stoßen" ay="s" />
   </verb>
   <verb in="zusammen+streben" hi="69" ic="wrestling">
     <reading tn="converge" fa="w" />

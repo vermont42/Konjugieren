@@ -1142,6 +1142,13 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "überschlagen", conjugationgroup: .imperativ(.secondPlural), expected: "schlagt über", readingIndex: 1)
     expectConjugation(infinitiv: "überschlagen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "IST übergeschlagen", readingIndex: 1)
     expectConjugation(infinitiv: "überschlagen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt übergeschlagen", readingIndex: 2)
+
+    // überspringen: inseparable with haben (DWDS II, hat übersprungen) beside separable
+    // über+springen with sein (I, der Funke ist übergesprungen).
+    expectConjugation(infinitiv: "überspringen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt übersprUngen")
+    expectConjugation(infinitiv: "überspringen", conjugationgroup: .perfektpartizip, expected: "übergesprUngen", readingIndex: 1)
+    expectConjugation(infinitiv: "überspringen", conjugationgroup: .imperativ(.secondPlural), expected: "springt über", readingIndex: 1)
+    expectConjugation(infinitiv: "überspringen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "IST übergesprUngen", readingIndex: 1)
   }
 
   // Class 4 again, and class 5 at once: weichen's "yield" reading is strong (wich, gewichen)
@@ -1470,6 +1477,43 @@ struct ConjugatorTests {
     ("erstehen", 1, .sein),
     ("unterliegen", 0, .haben),
     ("unterliegen", 1, .sein),
+    ("bekommen", 0, .haben),
+    ("anfangen", 0, .haben),
+    ("wandern", 0, .sein),
+    ("auftauchen", 0, .sein),
+    ("ergehen", 0, .sein),
+    ("hintergehen", 0, .haben),
+    ("überkommen", 0, .haben),
+    ("unterschreiben", 0, .haben),
+    ("durchfallen", 0, .sein),
+    ("übersteigen", 0, .haben),
+    ("zufügen", 0, .haben),
+    ("entrücken", 0, .haben),
+    ("hinrücken", 0, .haben),
+    ("zurückschieben", 0, .haben),
+    ("rückdrehen", 0, .haben),
+    ("umdrehen", 0, .haben),
+    ("umwenden", 0, .haben),
+    ("zukehren", 0, .haben),
+    ("eintauchen", 0, .haben),
+    ("eintauchen", 1, .sein),
+    ("ausscheiden", 0, .sein),
+    ("ausscheiden", 1, .haben),
+    ("anfallen", 0, .sein),
+    ("anfallen", 1, .haben),
+    ("überspringen", 0, .haben),
+    ("überspringen", 1, .sein),
+    ("wegfliegen", 0, .sein),
+    ("herumfliegen", 0, .sein),
+    ("zusammenstoßen", 0, .sein),
+    ("vorstoßen", 0, .sein),
+    ("abrücken", 0, .sein),
+    ("abrücken", 1, .haben),
+    ("abschieben", 0, .haben),
+    ("nachschieben", 0, .haben),
+    ("umstürzen", 0, .sein),
+    ("umstürzen", 1, .haben),
+    ("herabstürzen", 0, .sein),
   ]
 
   @Test("Each ruled reading carries its dictionary auxiliary", arguments: auxiliaryRulings)

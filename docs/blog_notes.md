@@ -8838,3 +8838,38 @@ found nothing.
 What a user would see changed: unterliegen and erstehen each offer a second meaning with sein, and
 umeinanderstehen has a real gloss. 97 verbs now have more than one reading. The rulings file has
 230 readings of 171 verbs, the suite is still 224 tests, and the worklist is 81.
+
+## Defect plan, Part 6: the small families, first batch (2026-11-10)
+
+With every named base verb ruled, the worklist was 81 verbs with no family large enough for a
+batch of its own. The first 31 went together, grouped loosely by their roots: gehen, kommen,
+fallen, and fangen in one half, and fliegen, stoßen, rücken, schieben, drehen, and stürzen in the
+other.
+
+This batch held the plainest errors since Part 1. **abschieben**, "deport", shipped with sein,
+so its page said *er ist abgeschoben* for an act of the state. DWDS gives haben for every
+transitive sense, and only the slangy "clear off" takes sein. nachschieben had the same inverted
+error. In the other direction, wegfliegen, herumfliegen, zusammenstoßen, vorstoßen, and
+herabstürzen shipped haben for motion that DWDS puts under sein. wegfliegen's own etymology had
+said "intransitive with *sein*" the whole time.
+
+Six verbs gained a second reading. ausscheiden and anfallen each had their sein sense as the
+shipped gloss with haben attached, so reading 0 kept its gloss and changed its auxiliary, and
+the haben sense became reading 1: "excrete, separate out" and "attack, seize". Both of those
+match the verbs' Nietzsche sentences better than the first readings do. eintauchen now leads with
+"dip in, immerse (something)" with haben, which is what its sentence does with a paintbrush, and
+"plunge, dive in" with sein follows. abrücken and umstürzen split the same way, intransitive with
+sein and transitive with haben. überspringen split by separability as well as auxiliary. The
+spark that *ist übergesprungen* is common German and figurative German both.
+
+Eighteen verbs kept what they had. The July pass's singles held up (anfangen, wandern,
+auftauchen, bekommen), though bekommen's *das Essen ist mir gut bekommen* is in the review list as
+a sein sense that never got a reading. umdrehen and umwenden keep haben, since DWDS gives their
+motion sense either auxiliary. hinrücken and rückdrehen were deferred, the first for want of any
+per-sense statement and the second because no dictionary has it. No etymology needed a
+correction. The Sonnet review of 19 readings found nothing.
+
+What a user would see changed: seven verbs build the Perfekt with the right auxiliary, abschieben
+and nachschieben among them, and six offer a second meaning. 103 verbs now have more than one
+reading. The rulings file has 267 readings of 202 verbs, the suite is still 224 tests, and the
+worklist is 50.

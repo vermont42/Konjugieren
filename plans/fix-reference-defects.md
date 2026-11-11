@@ -8,7 +8,7 @@ below.
 
 ## Status (2026-11-10, during the third session)
 
-**Parts 0 to 5 and 7 are done. Part 6 is under way: step 1 and the fahren, ziehen, treten, brechen, treiben, laufen, schießen, streben, brennen, schlagen, wachsen, stehen, and liegen derivatives are done.** Read this section before the rest: several
+**Parts 0 to 5 and 7 are done. Part 6 is under way: step 1 and the fahren, ziehen, treten, brechen, treiben, laufen, schießen, streben, brennen, schlagen, wachsen, stehen, and liegen derivatives and the first 31 verbs of the small families are done.** Read this section before the rest: several
 numbers below were true when the plan was written and are not now. The journal entries in
 `docs/blog_notes.md` headed "Defect plan, Part N" are the detailed record.
 
@@ -32,14 +32,15 @@ numbers below were true when the plan was written and are not now. The journal e
 | 6 (laufen) | `412a1f9` | 8 listed laufen derivatives: durchlaufen and umlaufen three readings each, 3 more with two (unterlaufen's "a mistake slips in" with sein), 2 flips to sein with re-gloss, 1 keep. durchlaufen's verb-level `in` made inseparable. umlaufen's etymology rewritten. One review finding, adjudicated and not applied. |
 | 6 (schießen, streben) | `8903915` | 7 schießen and 7 streben derivatives in one batch: einschießen two readings, zustreben and emporstreben to sein, 2 re-glosses, 9 keeps, two of them deferred (überschießen, zusammenstreben). Several keeps rest on the labelled-sense defaults. Review found nothing. |
 | 6 (brennen, schlagen, wachsen) | `2ba0cc0` | 13 verbs: durchschlagen and überschlagen three readings, abbrennen and ausschlagen two, anbrennen, entbrennen, durchbrennen to sein, 6 keeps. Two etymologies corrected. Three review findings adjudicated: two glosses narrowed, one kept. |
-| 6 (step 5, stehen and liegen) | see journal | 39 verbs: erstehen and unterliegen gain a sein reading, umeinanderstehen re-glossed and deferred, 36 keeps, most of them regional variation. erstehen's etymology corrected. Review found nothing. |
+| 6 (step 5, stehen and liegen) | `623c518` | 39 verbs: erstehen and unterliegen gain a sein reading, umeinanderstehen re-glossed and deferred, 36 keeps, most of them regional variation. erstehen's etymology corrected. Review found nothing. |
+| 6 (small families 1) | see journal | 31 verbs: 6 gain a second reading (überspringen by separability), 7 flip, among them abschieben to haben and ausscheiden's first reading to sein, 18 keeps, two of them deferred. Review found nothing. |
 
 **Where Part 6 stands.**
 
 - **Take the worklist from the script**, not from the counts below: `python3 verbdata/audit_auxiliaries.py
-  --unruled`. It lists 81 verbs after stehen and liegen, and `--check` prints the same number while failing.
-  `--check` must report `0 other problems` after every batch. Next are the small families, several to a batch. wegfliegen and herumfliegen ship haben and want sein.
-- **The rulings file has 230 readings of 171 verbs**, and 97 verbs have more than one reading,
+  --unruled`. It lists 50 verbs after the first small-family batch, and `--check` prints the same number while failing.
+  `--check` must report `0 other problems` after every batch. Next are the rest of the small families, several to a batch.
+- **The rulings file has 267 readings of 202 verbs**, and 103 verbs have more than one reading,
   six of them three (durchziehen, durchbrechen, durchlaufen, umlaufen, durchschlagen, überschlagen). Suite: 224 tests.
 - **Josh's rulings of 2026-11-10, in the fahren batch**, which later batches should follow:
   - **A domain label qualified by *häufig* does not fail criterion 2** (hochfahren, "boot up",
@@ -152,6 +153,14 @@ clears an entry by confirming or reversing it.
   other than the gloss. anstehen's (*weil sie mir nicht ganz anstand*) is "befit", and
   dafürstehen's (*Die Linke steht auch dafür*) is "für etwas stehen" written apart. Both are
   example-pipeline questions, not auxiliary ones.
+- **bekommen** (small families): kept single, as the July pass did, although DWDS II *jmdm.
+  bekommt etw. gut* (*wie ist dir der Abend bekommen?*) takes sein and is unlabelled.
+  Alternative: a second reading "agree with (of food)".
+- **übersteigen** (small families): kept the inseparable "exceed" alone. Separable *übersteigen*
+  (*ist übergestiegen*, climb over) is unlabelled but rare. Alternative: a second reading.
+- **nachschieben** (small families): flipped to haben with its gloss kept. Its Bundestag sentence
+  (*hat sie nachgeschoben*) is the labelled sense "add afterwards". Alternative: re-gloss it.
+- **hinrücken**, **rückdrehen** (small families): kept and deferred for want of a source.
 
 **State to start Part 6 from (end of the second session; partly superseded above).**
 
@@ -895,8 +904,8 @@ for verb, entry in sentences.items():
 ## Prompt to Hand a Session
 
 Part 6 is under way: step 1 and the fahren, ziehen, treten, brechen, treiben, laufen, schießen,
-streben, brennen, schlagen, wachsen, stehen, and liegen derivatives are done. Run one Part 6
-session at a time, since each edits `Verbs.xml`, the rulings file, and the test table.
+streben, brennen, schlagen, wachsen, stehen, and liegen derivatives are done, and the first 31
+verbs of the small families. Run one Part 6 session at a time, since each edits `Verbs.xml`, the rulings file, and the test table.
 
 This prompt lets the session work while Josh is away (written 2026-11-10). It replaces the earlier
 one, which asked the session to stop before a third reading, before extending the criterion-2

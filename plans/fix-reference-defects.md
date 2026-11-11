@@ -715,7 +715,7 @@ the day Josh deploys it. Tell him so when the text is ready.
 **5b. `docs/feature-architecture.md` on the Control Center controls.** It says that both
 controls use `OpenURLIntent`. They use `OpenRandomVerbIntent` and `OpenQuizIntent` from
 `Shared/`, and [`docs/control-center-controls.md`](../docs/control-center-controls.md) explains
-that `OpenURLIntent` does not work from a widget extension. `docs/pedagogy.md` records two more
+that `OpenURLIntent` does not work from a widget extension. `plans/pedagogy.md` records two more
 errors in the same file (the conjugationgroups per quiz difficulty, and the claim that the game
 involves conjugating). Correct all three in one commit.
 
@@ -935,7 +935,7 @@ from the code, because the Family detail screen exposes no accessibility tree. T
 - Regional marking for derivatives of stehen, sitzen, and liegen.
 - Importing verbs, including any that Part 2 or Part 7 unblocks.
 - Cutting a release, bumping the version, and writing release notes.
-- The quiz's grading defects in `docs/pedagogy.md`, and the convention for displaying separable
+- The quiz's grading defects in `plans/pedagogy.md`, and the convention for displaying separable
   verbs, which is a decision in both research documents.
 
 ## Appendix: Two Scans

@@ -7680,7 +7680,7 @@ long baseline.
 
 Josh wrote in [`prompts/pedagogy.md`](../prompts/pedagogy.md) that he is not a teacher and that the
 quiz is his best uninformed effort, and asked whether its method is sound, what methods work, and
-what to change. The deliverable is [`docs/pedagogy.md`](pedagogy.md). No code changed.
+what to change. The deliverable is [`docs/pedagogy.md`](../plans/pedagogy.md). No code changed.
 
 The work had four inputs, and two of them arrived as mid-session suggestions from Josh. The first
 was the code. The second was his suggestion to launch the app and take a quiz with
@@ -7770,7 +7770,7 @@ in Germany and the US, and its second-day return rate is 42% rather than 31%.
 
 ## The pedagogy report absorbs the App Store data, and loses a claim (2026-11-10)
 
-A few hours after [`docs/pedagogy.md`](pedagogy.md) was written, the usage snapshot it leans on
+A few hours after [`docs/pedagogy.md`](../plans/pedagogy.md) was written, the usage snapshot it leans on
 changed underneath it. The parallel session added App Store Connect and worked out that 20 of
 Konjugieren's 77 TelemetryDeck devices are one-day automated visitors on UTC+8. Josh asked for the
 relevant parts to be folded into the report.
@@ -9281,3 +9281,13 @@ unchanged. This is the second stale roadmap claim this session believed without 
 first was schaffen's supposedly missing ablaut group. Both cost a wrong statement to Josh before a
 one-line count settled them. CLAUDE.md's warning about caches applies here: a wrong entry gets
 believed.
+
+## The quiz report moves to plans/ (2026-11-11)
+
+Josh moved `docs/pedagogy.md` to `plans/pedagogy.md`, since it is a plan in all but name: tiered
+suggestions, decisions for him, and an order of building. The move broke twelve relative links,
+which `check_docs.py` named: four inside the report that pointed at its old neighbours in `docs/`,
+and eight pointing at it. All were repointed, along with plain-text mentions in the ideation brief,
+the ideas document, the defect plan, `feature-architecture.md`, and `project-structure.md`.
+Earlier journal entries keep their wording, and only their link targets changed, so the history
+still resolves.

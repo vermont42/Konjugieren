@@ -4,7 +4,7 @@ Research and ideation in response to
 [`plans/browse-and-verb-ideation.md`](../plans/browse-and-verb-ideation.md), written on 2026-11-10.
 Nothing in the app was changed. The subject is Konjugieren's verb list, its verb page, and the
 ways into them from outside the app, with notes on how each idea would carry over to Conjuguer and
-Conjugar. It is the companion to [`docs/pedagogy.md`](pedagogy.md), which covers the quiz. It was
+Conjugar. It is the companion to [`plans/pedagogy.md`](../plans/pedagogy.md), which covers the quiz. It was
 revised the same day, after Josh said that no release of any of the three apps is possible before
 2027.
 
@@ -26,7 +26,7 @@ Six inputs went into this document:
 
 ## How to Read This Document
 
-Claims carry the same labels as in `docs/pedagogy.md`.
+Claims carry the same labels as in `plans/pedagogy.md`.
 
 | Label | Meaning |
 |---|---|

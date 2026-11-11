@@ -225,7 +225,6 @@ docs/
 ├── nomination.md              # App Store featuring nomination — Description, Helpful Details, and Supplemental Materials slots
 ├── on-device-tool-design.md   # Lessons from implementing Foundation Models Tool conformances
 ├── pdf.md                     # PDF export documentation
-├── pedagogy.md                # Research findings on the quiz's pedagogy (2026-11-10): what the quiz does, what a played session and the telemetry show, what the literature supports, and tiered suggestions; every claim labeled by how it was verified
 ├── peterborough-chronicle-reading-list.md  # Reading list for the Peterborough Chronicle and the Old-to-Middle English transition
 ├── platform-features-plan.md  # Plan for platform-specific features
 ├── post-release-features.md   # Post-release feature backlog
@@ -266,8 +265,9 @@ docs/
 └── wwdc2026-whats-new-swiftui-transcript.txt  # Verbatim WWDC2026 session-269 transcript (Apple copyrighted; gitignored)
 
 plans/                         # Plans written for future sessions to carry out
-├── browse-and-verb-ideation.md # Brief for ideating Browse and Verb screen improvements, in parallel with the quiz work in docs/pedagogy.md
-└── fix-reference-defects.md   # Plan for fixing the defects that ideation found, to be carried out before any idea is built: wrong auxiliaries (37 contradicted by kaikki, 141 needing a ruling) with a second reading wherever both senses are current, prefixes lost under full-override ablaut entries, two small code bugs, five example sentences, three documents, and the backen/hauen participles. Its audit prototype was promoted to verbdata/audit_auxiliaries.py
+├── browse-and-verb-ideation.md # Brief for ideating Browse and Verb screen improvements, in parallel with the quiz work in plans/pedagogy.md
+├── fix-reference-defects.md   # Plan for fixing the defects that ideation found, to be carried out before any idea is built: wrong auxiliaries (37 contradicted by kaikki, 141 needing a ruling) with a second reading wherever both senses are current, prefixes lost under full-override ablaut entries, two small code bugs, five example sentences, three documents, and the backen/hauen participles. Its audit prototype was promoted to verbdata/audit_auxiliaries.py
+└── pedagogy.md                # Research findings on the quiz's pedagogy (2026-11-10): what the quiz does, what a played session and the telemetry show, what the literature supports, and tiered suggestions; every claim labeled by how it was verified
 
 scripts/
 ├── check_docs.py              # Asserts the checkable claims the docs make about themselves: corpus/ablaut/test counts in the four cache files, relative-link targets, roadmap commit hashes, the kaikki attribution invariant, and etymology completeness

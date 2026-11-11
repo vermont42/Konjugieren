@@ -5,7 +5,7 @@ Research and ideation in response to [`prompts/pedagogy.md`](../prompts/pedagogy
 Conjugar and Conjuguer where their quizzes differ. It was revised the same day, after the usage
 snapshot gained App Store Connect data and a correction to Konjugieren's device count. A section
 on release timing, [No Release Before 2027](#no-release-before-2027), was added later that day
-by the session that wrote [`docs/browse-and-verb-ideas.md`](browse-and-verb-ideas.md).
+by the session that wrote [`docs/browse-and-verb-ideas.md`](../docs/browse-and-verb-ideas.md).
 
 Four inputs went into this document:
 
@@ -13,7 +13,7 @@ Four inputs went into this document:
    `Conjugator.swift`, `WidgetSnapshotWriter.swift`, and the verb corpus, read directly.
 2. **A played session.** A build of the current `main` was launched in the iPhone 17 simulator, and
    one full 30-question quiz was played, plus part of a second.
-3. **Usage data.** [`docs/telemetry-usage.md`](telemetry-usage.md), the snapshot of the same date
+3. **Usage data.** [`docs/telemetry-usage.md`](../docs/telemetry-usage.md), the snapshot of the same date
    from TelemetryDeck (what people do inside the apps) and App Store Connect (how they arrive).
 4. **The literature.** Thirteen research passes over cognitive psychology, second-language
    acquisition, curricula, competing tools, and engagement, plus a read-only survey of the Conjugar
@@ -40,7 +40,7 @@ sources, so several well-known findings appear here at secondhand strength. The 
 [Limits of This Research](#limits-of-this-research) lists what could not be established.
 
 On terminology: "conjugationgroup" is used for Konjugieren's categories, following
-[`docs/terminology.md`](terminology.md). The word "tense" appears only where a cited study or a
+[`docs/terminology.md`](../docs/terminology.md). The word "tense" appears only where a cited study or a
 sibling app uses it.
 
 ## Short Answers
@@ -688,7 +688,7 @@ lernen* (1972), and the spacing effect it exploits was first measured by Hermann
 *Über das Gedächtnis* (1885). The two ideas most needed by a German conjugation app were both first
 written down in German (**background**).
 
-Two items in [`docs/post-release-features.md`](post-release-features.md), a mastery chart and
+Two items in [`docs/post-release-features.md`](../docs/post-release-features.md), a mastery chart and
 spaced-repetition reminders, presuppose exactly this per-item record. It is the substrate that both
 are waiting for.
 

@@ -53,12 +53,12 @@ Two cautions temper that, and the ideation should keep both in view:
    "App Store Connect" → "Observations from App Store Connect", and "The China devices". **Use the
    57 real Konjugieren devices, not TelemetryDeck's raw 77**; 20 devices are an automated visitor
    in China, explained in that section.
-2. [`docs/pedagogy.md`](../docs/pedagogy.md): the parallel research on the quiz. Most relevant:
+2. [`plans/pedagogy.md`](pedagogy.md): the parallel research on the quiz. Most relevant:
    "Short Answers", "What the Usage Data Add", the six suggestion tiers (especially
-   [Tier 2](../docs/pedagogy.md#tier-2-change-what-the-quiz-asks) and
-   [Tier 3](../docs/pedagogy.md#tier-3-give-the-quiz-a-memory)),
-   [What to Measure](../docs/pedagogy.md#what-to-measure), and
-   [Decisions for Josh](../docs/pedagogy.md#decisions-for-josh).
+   [Tier 2](pedagogy.md#tier-2-change-what-the-quiz-asks) and
+   [Tier 3](pedagogy.md#tier-3-give-the-quiz-a-memory)),
+   [What to Measure](pedagogy.md#what-to-measure), and
+   [Decisions for Josh](pedagogy.md#decisions-for-josh).
 3. The screens themselves: `Konjugieren/Views/VerbBrowseView.swift`, `VerbView.swift`,
    `FamilyBrowseView.swift`, and `FamilyDetailView.swift`. Note the search in `VerbBrowseView`:
    it matches infinitives (with ß/ss normalization) and, depending on the `searchScope` setting,
@@ -74,7 +74,7 @@ Two cautions temper that, and the ideation should keep both in view:
 
 ## What the quiz work will be doing in parallel
 
-Assume the quiz changes in `docs/pedagogy.md` proceed at the same time, starting with its top three:
+Assume the quiz changes in `plans/pedagogy.md` proceed at the same time, starting with its top three:
 accept correct German that is now marked wrong (Tier 1), make the default session about ten
 questions on frequent verbs at a beginner's set of conjugationgroups (Tier 2), and re-ask missed
 questions within a session (Tier 3). Later tiers add memory across sessions, feedback, and
@@ -89,7 +89,7 @@ So the ideation should:
   history, frequency bands), name the shared piece, say what the Browse and Verb screens would
   need from it, and flag who should build it as a decision for Josh. `QuizErrorHistory` already
   records missed questions and is one such piece.
-- **Line up measurement with the quiz track's.** `docs/pedagogy.md` already proposes signals in
+- **Line up measurement with the quiz track's.** `plans/pedagogy.md` already proposes signals in
   "What to Measure". New signals for Browse and Verb should use the same conventions, and
   shouldn't collide with them.
 
@@ -163,7 +163,7 @@ deliverable.
 
 ## Method
 
-1. Read the inputs above. Skim the rest of `docs/pedagogy.md` for findings on reference tools and
+1. Read the inputs above. Skim the rest of `plans/pedagogy.md` for findings on reference tools and
    competitors that apply here.
 2. Read the views closely. Whenever a question comes up about how the Browse or Verb screens look
    or behave, run the app with the `ios-build-verify` skill (see `CLAUDE.md` for the script path
@@ -171,7 +171,7 @@ deliverable.
    taken on this Intel host can't show Tutor-gated surfaces.
 3. Survey how other conjugation and dictionary apps handle lookup, reverse lookup, history,
    favorites, and return visits. Mark sources and distinguish what was observed from what was
-   inferred, as `docs/pedagogy.md` does.
+   inferred, as `plans/pedagogy.md` does.
 4. Generate ideas broadly, then assess and rank them.
 
 Subagents may be useful, for example for the survey of other apps or for parallel reading of the
@@ -181,7 +181,7 @@ three codebases. If the session uses them, they should run on the Sonnet 5.5 mod
 ## Deliverable
 
 A new Markdown file, `docs/browse-and-verb-ideas.md`, structured along the lines of
-`docs/pedagogy.md`:
+`plans/pedagogy.md`:
 
 1. Short answers: the handful of ideas worth doing first, and why.
 2. What the screens do today, and where a lookup fails.
@@ -189,7 +189,7 @@ A new Markdown file, `docs/browse-and-verb-ideas.md`, structured along the lines
    worked, and how it carries over to Conjuguer and Conjugar.
 4. Coordination with the quiz track: the shared pieces, who might build them, and the ideas handed
    over to that track.
-5. What to measure, aligned with `docs/pedagogy.md`'s proposals.
+5. What to measure, aligned with `plans/pedagogy.md`'s proposals.
 6. Decisions for Josh.
 7. Limits of the research, and sources.
 

@@ -65,7 +65,8 @@
     <reading tn="break off, snap (come apart)" fa="s" ag="sprechen" ay="s" />
   </verb>
   <verb in="ab+br^e^nnen" hi="109353" ic="highintensity.intervaltraining">
-    <reading tn="set fire to, destroy by fire" fa="m" ag="kennen" />
+    <reading tn="set fire to, burn down (something)" fa="m" ag="kennen" />
+    <reading tn="burn down (be destroyed by fire)" fa="m" ag="kennen" ay="s" />
   </verb>
   <verb in="ab+br^ing^en" hi="107345" ic="hiking">
     <reading tn="dissuade, discourage, put/throw off course" fa="m" ag="bringen" />
@@ -663,7 +664,7 @@
     <reading tn="dawn, begin" fa="s" ag="sprechen" ay="s" />
   </verb>
   <verb in="an+br^e^nnen" hi="118165" ic="highintensity.intervaltraining">
-    <reading tn="get burnt" fa="m" ag="kennen" />
+    <reading tn="get burnt" fa="m" ag="kennen" ay="s" />
   </verb>
   <verb in="an+br^ing^en" hi="1104869" ic="2.and.child.holdinghands">
     <reading tn="attach, install" fa="m" ag="bringen" />
@@ -1874,7 +1875,8 @@
     <reading tn="sleep late, sleep in" fa="s" ag="halten" />
   </verb>
   <verb in="aus+schl^a^gen" hi="96190" ic="boxing">
-    <reading tn="knock out" fa="s" ag="fahren" />
+    <reading tn="knock out (a tooth)" fa="s" ag="fahren" />
+    <reading tn="turn out (well or badly)" fa="s" ag="fahren" ay="s" />
   </verb>
   <verb in="aus+schl^eich^en" hi="3423" ic="walk.motion">
     <reading tn="taper off (a medication)" fa="s" ag="streichen" />
@@ -3164,7 +3166,7 @@
     <reading in="durch*br^e^chen" tn="breach, overcome (a barrier)" fa="s" ag="sprechen" />
   </verb>
   <verb in="durch+br^e^nnen" hi="20747" ic="highintensity.intervaltraining">
-    <reading tn="continue to burn, burn through" fa="m" ag="kennen" />
+    <reading tn="burn through, blow (of a fuse)" fa="m" ag="kennen" ay="s" />
   </verb>
   <verb in="durch+br^ing^en" hi="52856" ic="hiking">
     <reading tn="get through, pull through" fa="m" ag="bringen" />
@@ -3265,7 +3267,9 @@
     <reading tn="sleep undisturbed" fa="s" ag="halten" />
   </verb>
   <verb in="durch+schl^a^gen" hi="106233" ic="boxing">
-    <reading tn="break through" fa="s" ag="fahren" />
+    <reading tn="fight one's way through, get by" fa="s" ag="fahren" />
+    <reading tn="come through, take effect" fa="s" ag="fahren" ay="s" />
+    <reading in="durch*schl^a^gen" tn="pierce, penetrate" fa="s" ag="fahren" />
   </verb>
   <verb in="durch+schn^eid^en" hi="88264" ic="fencing">
     <reading tn="cut through" fa="s" ag="schneiden" />
@@ -3825,7 +3829,7 @@
     <reading tn="give birth" fa="s" ag="finden" />
   </verb>
   <verb in="ent*br^e^nnen" hi="115809" ic="highintensity.intervaltraining">
-    <reading tn="break out, flare up, erupt" fa="m" ag="kennen" />
+    <reading tn="break out, flare up, erupt" fa="m" ag="kennen" ay="s" />
   </verb>
   <verb in="ent*decken" hi="4992993" ic="hiking">
     <reading tn="discover" fa="w" />
@@ -7996,7 +8000,9 @@
     <reading tn="shoot something over something" fa="s" ag="schließen" />
   </verb>
   <verb in="über*schl^a^gen" hi="227252" ic="boxing">
-    <reading tn="skip over, omit, leave out" fa="s" ag="fahren" />
+    <reading tn="estimate roughly" fa="s" ag="fahren" />
+    <reading in="über+schl^a^gen" tn="spill over, jump across" fa="s" ag="fahren" ay="s" />
+    <reading in="über+schl^a^gen" tn="cross (one's legs)" fa="s" ag="fahren" />
   </verb>
   <verb in="über*schn^eid^en" hi="59640" ic="fencing">
     <reading tn="intersect" fa="s" ag="schneiden" />

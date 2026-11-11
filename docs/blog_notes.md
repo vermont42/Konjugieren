@@ -8757,3 +8757,50 @@ What a user would see changed: einschießen offers "rush in, flood in" with sein
 emporstreben build the Perfekt with sein, and three glosses read more plainly. 91 verbs now have
 more than one reading. The rulings file has 170 readings of 119 verbs, the suite is still 224
 tests, and the worklist is 133.
+
+## Defect plan, Part 6: brennen, schlagen, and wachsen (2026-11-10)
+
+Three small families made one batch of thirteen verbs. brennen's derivatives mostly took the
+wrong auxiliary in the simple way. anbrennen ("get burnt"), entbrennen ("break out, flare up"),
+and durchbrennen shipped haben, though DWDS gives each only sein, and their own etymologies
+already said so: anbrennen's notes that it is the food that burns, not the cook. abbrennen gained
+the split its etymology also described, arsonists burning a village down with haben and the
+village burning down with sein. durchbrennen's gloss now names the blown fuse, its commonest
+sense. einbrennen kept haben, since its only sein sense, tanning, is regional.
+
+**schlagen produced two more verbs with three readings**, which brings the count to six.
+durchschlagen is the durchziehen shape exactly. Separable with haben, one fights one's way
+through (*er hat sich durchgeschlagen*). Separable with sein, ink or a crisis comes through (*die
+Krisen sind durchgeschlagen*). Inseparable with haben and no ge-, a bullet pierces a wall (*hat
+die Wand durchschlagen*). Its Bundestag example sentence illustrates the sein reading, though the
+speaker said *hat durchgeschlagen*, which the rulings row records. überschlagen ran the other way:
+the shipped verb was the inseparable one, and the separable verb with its own two auxiliaries was
+missing. One crosses one's legs with haben, and a spark jumps across with sein (*der Funke ist
+übergeschlagen*). Both etymologies needed the treatment durchziehen's got. durchschlagen's carried
+the "senses below are the separable ones" boilerplate, now gone, and überschlagen's described only
+the inseparable verb.
+
+**The review raised three findings, and the adjudication took a gloss of mine back out.**
+Writing ausschlagen's first reading, I had added "turn down (an offer)" to the shipped "knock
+out". Sonnet objected that the comma joined two senses, and proposed "turn down, decline" alone.
+Fable amended to "knock out (a tooth)", because the Luther sentence is about a tooth. The same
+objection took "skip over" off überschlagen's "estimate roughly", which its Luther sentence (*und
+überschlägt die Kosten*) illustrates. The third finding is the instructive one. Sonnet proposed
+replacing ausschlagen's new sein reading, "turn out (well or badly)", with the pendulum sense,
+"swing, deflect". Fable rejected it on the auxiliary: DWDS gives the pendulum "haben bzw. sein", so
+it cannot be the reason for a reading that exists because one sense takes sein alone. The
+adjudicator was told that rule in its brief, and that brief is now the pattern to reuse.
+
+wachsen's four verbs all kept what they had. The base keeps "grow" alone, although "wax (skis)" is
+a weak homograph with haben, the anhängen shape; it is in the review list. verwachsen and
+auswachsen have haben senses, but each is labelled colloquial. durchwachsen's inseparable verb is
+rare beside the adjective that shares its spelling (*durchwachsener Speck*).
+
+A find for later: the stehen worklist pulled in wegfliegen and herumfliegen, which ship "fly
+away" and "fly around" with haben. They are fliegen derivatives and will be ruled with the small
+families.
+
+What a user would see changed: brennen's intransitive derivatives build the Perfekt with sein,
+abbrennen and ausschlagen offer a second meaning, and durchschlagen and überschlagen show their
+separable and inseparable verbs. 95 verbs now have more than one reading, six of them three. The
+rulings file has 189 readings of 132 verbs, the suite is still 224 tests, and the worklist is 120.

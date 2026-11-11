@@ -1125,6 +1125,23 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "umlaufen", conjugationgroup: .imperativ(.secondPlural), expected: "umlauft", readingIndex: 1)
     expectConjugation(infinitiv: "umlaufen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt umlaufen", readingIndex: 1)
     expectConjugation(infinitiv: "umlaufen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt umgelaufen", readingIndex: 2)
+
+    // durchschlagen: separable with haben (DWDS 1durchschlagen 2, sich durchschlagen) and sein (3,
+    // durchdringen) beside inseparable durch*schlagen (2durchschlagen: hat durchschlagen).
+    expectConjugation(infinitiv: "durchschlagen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt durchgeschlagen")
+    expectConjugation(infinitiv: "durchschlagen", conjugationgroup: .imperativ(.secondPlural), expected: "schlagt durch")
+    expectConjugation(infinitiv: "durchschlagen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "IST durchgeschlagen", readingIndex: 1)
+    expectConjugation(infinitiv: "durchschlagen", conjugationgroup: .perfektpartizip, expected: "durchschlagen", readingIndex: 2)
+    expectConjugation(infinitiv: "durchschlagen", conjugationgroup: .imperativ(.secondPlural), expected: "durchschlagt", readingIndex: 2)
+    expectConjugation(infinitiv: "durchschlagen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt durchschlagen", readingIndex: 2)
+
+    // überschlagen: inseparable first (DWDS 1überschlagen II: hat überschlagen), then separable
+    // über+schlagen with sein (I.2, der Funke ist übergeschlagen) and haben (I.1, die Beine).
+    expectConjugation(infinitiv: "überschlagen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt überschlagen")
+    expectConjugation(infinitiv: "überschlagen", conjugationgroup: .perfektpartizip, expected: "übergeschlagen", readingIndex: 1)
+    expectConjugation(infinitiv: "überschlagen", conjugationgroup: .imperativ(.secondPlural), expected: "schlagt über", readingIndex: 1)
+    expectConjugation(infinitiv: "überschlagen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "IST übergeschlagen", readingIndex: 1)
+    expectConjugation(infinitiv: "überschlagen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt übergeschlagen", readingIndex: 2)
   }
 
   // Class 4 again, and class 5 at once: weichen's "yield" reading is strong (wich, gewichen)
@@ -1393,6 +1410,25 @@ struct ConjugatorTests {
     ("auseinanderstreben", 0, .haben),
     ("emporstreben", 0, .sein),
     ("zusammenstreben", 0, .haben),
+    ("anbrennen", 0, .sein),
+    ("entbrennen", 0, .sein),
+    ("abbrennen", 0, .haben),
+    ("abbrennen", 1, .sein),
+    ("durchbrennen", 0, .sein),
+    ("einbrennen", 0, .haben),
+    ("durchschlagen", 0, .haben),
+    ("durchschlagen", 1, .sein),
+    ("durchschlagen", 2, .haben),
+    ("ausschlagen", 0, .haben),
+    ("ausschlagen", 1, .sein),
+    ("überschlagen", 0, .haben),
+    ("überschlagen", 1, .sein),
+    ("überschlagen", 2, .haben),
+    ("zusammenschlagen", 0, .haben),
+    ("wachsen", 0, .sein),
+    ("durchwachsen", 0, .sein),
+    ("verwachsen", 0, .sein),
+    ("auswachsen", 0, .haben),
   ]
 
   @Test("Each ruled reading carries its dictionary auxiliary", arguments: auxiliaryRulings)

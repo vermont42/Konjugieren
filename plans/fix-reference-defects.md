@@ -8,7 +8,7 @@ below.
 
 ## Status (2026-11-10, during the third session)
 
-**Parts 0 to 5 and 7 are done. Part 6 is under way: step 1 and the fahren, ziehen, treten, brechen, treiben, laufen, schießen, and streben derivatives are done.** Read this section before the rest: several
+**Parts 0 to 5 and 7 are done. Part 6 is under way: step 1 and the fahren, ziehen, treten, brechen, treiben, laufen, schießen, streben, brennen, schlagen, and wachsen derivatives are done.** Read this section before the rest: several
 numbers below were true when the plan was written and are not now. The journal entries in
 `docs/blog_notes.md` headed "Defect plan, Part N" are the detailed record.
 
@@ -30,15 +30,16 @@ numbers below were true when the plan was written and are not now. The journal e
 | 6 (brechen) | `f4f6fef` | 12 listed brechen derivatives: durchbrechen three readings, 4 more with two (aufbrechen now leads with "set off"), 4 flips, umbrechen re-glossed and kept, 2 keeps. Two etymologies corrected. |
 | 6 (treiben) | `fa78a79` | 9 listed treiben derivatives, the first batch run under the away-mode prompt: 3 two readings (a "drift" sense with sein beside "drive"), 1 re-gloss, 4 keeps, zertreiben deferred for want of any source. Two etymologies corrected. Review found nothing. |
 | 6 (laufen) | `412a1f9` | 8 listed laufen derivatives: durchlaufen and umlaufen three readings each, 3 more with two (unterlaufen's "a mistake slips in" with sein), 2 flips to sein with re-gloss, 1 keep. durchlaufen's verb-level `in` made inseparable. umlaufen's etymology rewritten. One review finding, adjudicated and not applied. |
-| 6 (schießen, streben) | see journal | 7 schießen and 7 streben derivatives in one batch: einschießen two readings, zustreben and emporstreben to sein, 2 re-glosses, 9 keeps, two of them deferred (überschießen, zusammenstreben). Several keeps rest on the labelled-sense defaults. Review found nothing. |
+| 6 (schießen, streben) | `8903915` | 7 schießen and 7 streben derivatives in one batch: einschießen two readings, zustreben and emporstreben to sein, 2 re-glosses, 9 keeps, two of them deferred (überschießen, zusammenstreben). Several keeps rest on the labelled-sense defaults. Review found nothing. |
+| 6 (brennen, schlagen, wachsen) | see journal | 13 verbs: durchschlagen and überschlagen three readings, abbrennen and ausschlagen two, anbrennen, entbrennen, durchbrennen to sein, 6 keeps. Two etymologies corrected. Three review findings adjudicated: two glosses narrowed, one kept. |
 
 **Where Part 6 stands.**
 
 - **Take the worklist from the script**, not from the counts below: `python3 verbdata/audit_auxiliaries.py
-  --unruled`. It lists 133 verbs after streben, and `--check` prints the same number while failing.
-  `--check` must report `0 other problems` after every batch. The next base verb is brennen.
-- **The rulings file has 170 readings of 119 verbs**, and 91 verbs have more than one reading,
-  durchziehen, durchbrechen, durchlaufen, and umlaufen three. Suite: 224 tests.
+  --unruled`. It lists 120 verbs after wachsen, and `--check` prints the same number while failing.
+  `--check` must report `0 other problems` after every batch. Next are the derivatives of stehen and liegen (plan step 5).
+- **The rulings file has 189 readings of 132 verbs**, and 95 verbs have more than one reading,
+  six of them three (durchziehen, durchbrechen, durchlaufen, umlaufen, durchschlagen, überschlagen). Suite: 224 tests.
 - **Josh's rulings of 2026-11-10, in the fahren batch**, which later batches should follow:
   - **A domain label qualified by *häufig* does not fail criterion 2** (hochfahren, "boot up",
     *häufig Technik*). This narrows the anspringen precedent but does not overturn it: a plain
@@ -122,6 +123,21 @@ clears an entry by confirming or reversing it.
 - **auseinanderstreben** (streben): kept single "diverge" (Duden: hat). Duden's "move apart"
   takes ist and is unlabelled, and was ruled marginal for a verb this rare. Alternative: a second
   reading.
+- **durchschlagen** (schlagen): three readings under the durchziehen-shape default:
+  "fight one's way through, get by" (haben), "come through, take effect" (sein), and inseparable
+  "pierce, penetrate" (haben). The Bundestag example sentence illustrates the sein reading but its
+  speaker said *hat durchgeschlagen*. Alternative: two readings, dropping the inseparable verb.
+- **überschlagen** (schlagen): three readings under the same default, inseparable "estimate
+  roughly" first, then separable "spill over, jump across" (sein) and "cross (one's legs)"
+  (haben). Alternative: keep the single inseparable reading; the separable haben sense lives
+  mostly in the participle (*mit übergeschlagenen Beinen*).
+- **ausschlagen** (schlagen): added "turn out (well or badly)" with sein, DWDS sense 11, labelled
+  *gehoben*, under the gehoben precedent. Alternative: keep single. Fable kept the gloss against
+  a proposed "swing, deflect", since the pendulum sense takes either auxiliary.
+- **anbrennen** (brennen): flipped to sein and kept single. DWDS's transitive "light (a candle)"
+  takes haben and is unlabelled, but anzünden is the usual verb. Alternative: a second reading.
+- **wachsen** (wachsen): kept single "grow". The homograph "wax (skis)" is weak and takes haben,
+  the anhängen shape. Alternative: add it as a weak second reading.
 
 **State to start Part 6 from (end of the second session; partly superseded above).**
 
@@ -865,7 +881,7 @@ for verb, entry in sentences.items():
 ## Prompt to Hand a Session
 
 Part 6 is under way: step 1 and the fahren, ziehen, treten, brechen, treiben, laufen, schießen,
-and streben derivatives are done. Run one Part 6 session at a time, since each edits `Verbs.xml`, the rulings file, and the test table.
+streben, brennen, schlagen, and wachsen derivatives are done. Run one Part 6 session at a time, since each edits `Verbs.xml`, the rulings file, and the test table.
 
 This prompt lets the session work while Josh is away (written 2026-11-10). It replaces the earlier
 one, which asked the session to stop before a third reading, before extending the criterion-2

@@ -105,7 +105,7 @@ Skip this section unless your shard file's records hold a `key` field. Everythin
 applies; the rest of this section is what differs.
 
 Forty-four verbs in the corpus carried **two readings** when this section was written in July
-2026; after the auxiliary rulings of `plans/fix-reference-defects.md`, 119 do, six of them three.
+2026; after the auxiliary rulings of `plans/fix-reference-defects.md`, 120 do, six of them three.
 Each reading has its own gloss. These are
 dual-auxiliary verbs: one lemma, one conjugation, two senses distinguished by whether the perfect
 takes *haben* or *sein*. *abbrechen* is the model — "break off, cancel" with haben (transitive) beside

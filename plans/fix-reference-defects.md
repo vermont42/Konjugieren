@@ -8,7 +8,7 @@ below.
 
 ## Status (2026-11-10, during the third session)
 
-**Parts 0 to 5 and 7 are done. Part 6's rulings are done: the audit's worklist is empty and `--check` passes. Part 6's "Stop the cause" is done (the importer change, 2026-11-10). The Closing ran on 2026-11-10 and found plan step 6 (übergehen) unrun; it was ruled then, and step 6a (schaffen) was deferred by Josh to the roadmap's "Known gaps". The plan is finished, apart from deploying the privacy policy, which is Josh's.** Read this section before the rest: several
+**Parts 0 to 5 and 7 are done. Part 6's rulings are done: the audit's worklist is empty and `--check` passes. Part 6's "Stop the cause" is done (the importer change, 2026-11-10). The Closing ran on 2026-11-10 and found plan step 6 (übergehen) unrun; it was ruled then. Step 6a (schaffen) was deferred, then done the same day once the reason for deferring it proved stale. The plan is finished, apart from deploying the privacy policy, which is Josh's.** Read this section before the rest: several
 numbers below were true when the plan was written and are not now. The journal entries in
 `docs/blog_notes.md` headed "Defect plan, Part N" are the detailed record.
 
@@ -767,10 +767,10 @@ because the gloss matching in the audit script is approximate.
    geschaffen) and "manage, accomplish" is weak (schaffte, geschafft), and the app ships only the
    weak reading. It wants a second reading of the hängen shape, different family included. It is
    one of the five verbs at odds with Wiktionary, so the count should fall when it lands.
-   *Deferred by Josh on 2026-11-10*, when the Closing found it had never run. The strong reading
-   needs an ablaut group that does not ship (the roadmap's "Three ablaut groups are wrong"), and
-   with it an `AblautGroupInfo` entry, descriptions in both languages, and new group counts. It
-   is recorded in the roadmap's "Known gaps".
+   *Deferred by Josh on 2026-11-10*, when the Closing found it had never run, on the ground that
+   the strong reading needed an ablaut group that does not ship. That was wrong: the `schaffen`
+   group had shipped with erschaffen. *Done the same day*, at Josh's request: strong "create,
+   bring about" first, weak "manage, accomplish" second. The at-odds count fell from 5 to 4.
 7. Extend the parameterized test of Part 1 with every reading ruled here.
 
 **Stop the cause.** Tranche 3 of the import is unblocked and would repeat the error. Change the

@@ -9099,3 +9099,38 @@ separability, three verbs keep their prefix, backen, hauen, and salzen have thei
 participles, eight example sentences show the verb they illustrate, and search finds a verb by
 any of its meanings. None of it ships until the next release, which waits for Josh's new
 MacBook in 2027. The privacy policy is the exception, and it is ready to deploy.
+
+## schaffen gets its strong reading, and a stale reason falls (2026-11-10)
+
+At the defect plan's Closing I offered Josh a deferral for schaffen on the ground that its strong
+reading, "create" (*schuf, geschaffen*), needed an ablaut group that does not ship. I took that
+from the roadmap's "Known gaps", which said schaffen, schreien, and vergleichen "verify only via
+a group that does not ship". It was wrong twice over. schreien had been fixed in July, and the
+`schaffen` group had shipped all along: erschaffen sits on it (`er*sch^aff^en`, `Uf,bA|Üf,dA`),
+with pinned tests. What schaffen lacked was never a group but a reading. When Josh asked for it,
+the first `grep` showed the group, and a job I had sized as a new Families-tab entry with two
+catalog descriptions became an edit of three lines. The lesson is the one CLAUDE.md states about
+caches: a wrong entry gets believed. I believed this one without the `grep` that would have
+settled it.
+
+**Which reading leads** was the only real decision, and three kinds of evidence agreed. DWDS
+gives the strong verb's senses, "create" (*wer schuf dieses Kunstwerk?*) and "bring about" (*die
+Voraussetzungen für etwas schaffen*), with no label, while the weak "manage, accomplish" (*ich
+habe die Prüfung geschafft*) is labelled *umgangssprachlich*. The repository's own corpus has
+*geschaffen* 108 times against *geschafft* 48, and *schuf/schufen* 30 against *schaffte/schafften*
+17. And the verb's Luther sentence, *Am Anfang schuf Gott Himmel und Erde*, is the strong verb.
+So reading 0 is `sch^aff^en`, "create, bring about", on the shared group, and reading 1 is the
+shipped weak "manage, accomplish". The encoding follows hängen's: a plain verb-level `in`, and a
+strong reading carrying its own region markers. Both readings take haben, so the rulings rows
+carry the reason in the note, as anhängen's do. The etymology already told the story of two
+verbs merging under one infinitive and needed nothing.
+
+The Sonnet review found nothing. "bring about" keeps reading 0 apart from erschaffen's plain
+"create". The checks moved the way the plan said they would. The classifier verifies schaffen on
+its shipped encoding, so the at-odds count fell from 5 to 4. Scan 2 fell from 26 to 25, because
+*schuf* is now a conjugation the app generates. The simulator shows *er schuf*, *er schüfe*,
+*er hat geschaffen* under "create, bring about", and *er schaffte*, *er hat geschafft* under
+"manage, accomplish". The suite is still 224 tests.
+
+What a user would see changed: schaffen leads with "create", conjugated *schuf, geschaffen*, and
+keeps "manage" as a second reading. 120 verbs now have more than one reading.

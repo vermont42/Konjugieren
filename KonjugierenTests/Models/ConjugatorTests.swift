@@ -791,6 +791,13 @@ struct ConjugatorTests {
   }
 
   @Test func schaffenAblaut() {
+    // schaffen is two verbs (plan step 6a): strong "create" first, on the group erschaffen
+    // uses, and weak "manage" second. DWDS gives each its own paradigm.
+    expectConjugation(infinitiv: "schaffen", conjugationgroup: .präteritumIndikativ(.thirdSingular), expected: "schUf")
+    expectConjugation(infinitiv: "schaffen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "schÜfe")
+    expectConjugation(infinitiv: "schaffen", conjugationgroup: .perfektpartizip, expected: "geschaffen")
+    expectConjugation(infinitiv: "schaffen", conjugationgroup: .präteritumIndikativ(.thirdSingular), expected: "schaffte", readingIndex: 1)
+    expectConjugation(infinitiv: "schaffen", conjugationgroup: .perfektpartizip, expected: "geschafft", readingIndex: 1)
     expectConjugation(infinitiv: "erschaffen", conjugationgroup: .präsensIndikativ(.firstSingular), expected: "erschaffe")
     expectConjugation(infinitiv: "erschaffen", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "erschafft")
     expectConjugation(infinitiv: "erschaffen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "erschUf")
@@ -1598,6 +1605,8 @@ struct ConjugatorTests {
     ("mitfolgen", 0, .haben),
     ("übergehen", 0, .haben),
     ("übergehen", 1, .sein),
+    ("schaffen", 0, .haben),
+    ("schaffen", 1, .haben),
   ]
 
   @Test("Each ruled reading carries its dictionary auxiliary", arguments: auxiliaryRulings)

@@ -93,8 +93,9 @@ and the gating. Where they disagree on *how*, that file wins.
 ## The one check that runs through all of it
 
 Every step from 4 onward is verified the same way. The classify-and-verify pipeline compares the
-app against Wiktionary for 3,567 shipping verbs, and the corpus currently stands at **5 verbs at
-odds, 99.9% verified** (7 until 2026-11-10, when bedürfen and vermögen were fixed).
+app against Wiktionary for 3,567 shipping verbs, and the corpus currently stands at **4 verbs at
+odds, 99.9% verified** (7 until 2026-11-10, when bedürfen and vermögen were fixed, and 5 until
+schaffen gained its strong reading the same day).
 
 **Rebuild `candidates.json` first, every time.** The recipe below starts with `build_candidates.py`
 for a reason that is invisible until it bites: `alreadyShipping` is computed there and baked into
@@ -383,19 +384,15 @@ Small things the pipeline surfaced that no plan currently owns. None blocks the 
   **schaffen is not one of them.** "Am Anfang schuf Gott Himmel und Erde" shows a *second
   meaning*, not a second paradigm. *schaffen* "create" is strong (schuf, geschaffen) and
   *schaffen* "manage, accomplish" is weak (schaffte, geschafft), so it wants two readings, the
-  hängen shape, and the app ships only the weak one. That is why "Arbeitsplätze schaffen" would
-  come out as *geschafft*, and why schaffen is among the five verbs at odds with Wiktionary. It
-  belongs with the readings work of Part 6 of that plan.
+  hängen shape. **Done 2026-11-10:** strong "create, bring about" is now the first reading and
+  weak "manage, accomplish" the second, and schaffen left the at-odds count (5 → 4).
 - **Part 6's leftovers** (2026-11-10, `plans/fix-reference-defects.md`). The auxiliary rulings
   finished with every listed verb ruled and these left open, each by a recorded decision. They
   live nowhere else but that plan's review list, so they are gathered here.
-  - **schaffen's strong reading, plan step 6a.** "create" is strong (*schuf, geschaffen*) and
-    "manage" weak, and the app ships only the weak reading. Deferred by Josh at the plan's
-    Closing, because the strong reading needs an ablaut group that does not ship (see "Three
-    ablaut groups are wrong" below), with its `AblautGroupInfo` entry, descriptions in two
-    languages, and new group counts. It is one of the five verbs at odds with Wiktionary, so the
-    count should fall to 4 when it lands. Step 6, übergehen, was found unrun at the same time and
-    ruled then.
+  - ~~**schaffen's strong reading, plan step 6a.**~~ **Done 2026-11-10**, the same day it was
+    deferred. The deferral rested on a stale claim (below) that the strong reading needed an
+    ablaut group that does not ship. The `schaffen` group had shipped all along, on erschaffen.
+    "create, bring about" now leads, and the at-odds count fell to 4.
   - **Five family splits not made, the anhängen shape:** schleifen (strong "grind" beside weak
     "drag"), bleichen and ausbleichen (weak "bleach" beside strong "fade", *ist geblichen*), and
     schwellen and aufschwellen (strong "swell" beside weak "make swell"). Each kept one reading
@@ -481,7 +478,10 @@ Small things the pipeline surfaced that no plan currently owns. None blocks the 
   Retiring a group is only safe when its teaching survives the move.
 - **Three ablaut groups are wrong** — *schaffen*, *schreien*, *vergleichen* verify only via a
   group that does not ship, and remain unexamined. *hängen* was the fourth and is fixed: it was a
-  `dual_auxiliary.md` class-4 verb and now ships two readings.
+  `dual_auxiliary.md` class-4 verb and now ships two readings. **Corrected 2026-11-10:** only
+  *vergleichen* is left. *schreien* was fixed on 2026-07-20 (above), and *schaffen* never lacked
+  a group: the `schaffen` group shipped with erschaffen, and what the verb lacked was a strong
+  reading, now added. This entry went stale in two places at once, and a session believed it.
 - **Two verbs are editorially ambiguous** — *helfen* (Wiktionary's *hülfe* against the shipped
   *hälfe*) and *verstoßen* (the shipped Präsens umlaut *du verstößt* against a table without it).
   Both need a human to pick, not more code.

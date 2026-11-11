@@ -1607,6 +1607,8 @@ struct ConjugatorTests {
     ("übergehen", 1, .sein),
     ("schaffen", 0, .haben),
     ("schaffen", 1, .haben),
+    ("bereitstehen", 0, .haben),
+    ("näherstehen", 0, .haben),
   ]
 
   @Test("Each ruled reading carries its dictionary auxiliary", arguments: auxiliaryRulings)

@@ -425,7 +425,10 @@ Small things the pipeline surfaced that no plan currently owns. None blocks the 
     noise from the motion inference (*versagen* "fail", *überhandnehmen* "get out of hand").
     A few may be real errors: *rübermachen* "travel to a place in another country" ships haben
     on an intransitive sense of motion, which suggests sein, though no dictionary was checked.
-    Not swept, by the plan's rule to raise such finds rather than sweep for them. `import_tranche2.py --check --screen` lists any of them.
+    Not swept, by the plan's rule to raise such finds rather than sweep for them.
+    **Two were fixed 2026-11-10:** *bereitstehen* and *näherstehen*, *stehen* derivatives that
+    shipped sein because kaikki gives sein only, now take haben (DWDS *hat bereitgestanden*, *hat
+    nähergestanden*). The screen's state-or-posture test, added for tranche 3, surfaced them. `import_tranche2.py --check --screen` lists any of them.
 - **`mahlen` and `spalten`** — weak Präteritum with strong participle (*mahlte*, but
   *gemahlen*). Neither the mixed family nor the weak family fits. Wrinkle 4 in
   `verb-sources.md`; needs a new family or a full-override ablaut group. Step 7 confirmed the

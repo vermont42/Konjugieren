@@ -9197,3 +9197,23 @@ land above rank 1,223 of today's 3,572, the top 500 above 1,809, and the top 1,0
 untouched. The cutoff is Josh's.
 
 What a user would see changed: nothing yet.
+
+## bereitstehen and näherstehen take haben (2026-11-10)
+
+The state-or-posture test, added to the auxiliary screen for tranche 3 after *wachen* nearly
+imported with sein, found two shipped verbs with the same error. *bereitstehen* "be available or
+ready" and *näherstehen* "be closer" are *stehen* derivatives, and both shipped sein, so their
+pages said *er ist bereitgestanden*. kaikki gives each sein only. That is why the audit read the
+app as agreeing and Part 6 never listed them. DWDS gives *hat bereitgestanden* and *hat
+nähergestanden*, and German Wiktionary gives haben for the first. Duden adds that the south,
+Austria, and Switzerland also say *ist nähergestanden*. That is the regional variation Part 6
+step 5 left to the Region setting, as it did for the other 36 *stehen* and *liegen* derivatives,
+so it is not a second reading. *bereitstehen*'s own Bundestag sentence had said so all along:
+*Sie haben immer bereitgestanden*.
+
+Both readings flipped to haben, with rulings rows that record why the app now disagrees with
+kaikki, so the audit lists them and `--check` verifies them. Neither etymology mentions an
+auxiliary. The simulator shows *er hat bereitgestanden* and *er hat nähergestanden*, and the
+suite still passes at 224 tests.
+
+What a user would see changed: both verbs build the Perfekt with haben.

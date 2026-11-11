@@ -313,7 +313,9 @@ What these audiences need is taken up under
   response, which the quiz does.
 - **Principled grading across varieties.** A learner who types a correct conjugation from another
   standard variety is never marked wrong, and a two-reading verb such as hängen is asked about one
-  reading with that reading's gloss.
+  reading with that reading's gloss. (When this was written, 44 verbs had more than one reading.
+  Since the defect plan of 2026-11-10, 120 do, so the quiz asks about many more second meanings,
+  each with its own gloss and auxiliary.)
 - **Accuracy, not speed, is scored.** The clock is visible and does not affect the score.
 - **A strong reference behind it.** Full paradigms with irregular letters highlighted, families and
   ablaut groups, an article for each conjugationgroup, and an etymology and example sentence for
@@ -430,6 +432,17 @@ score and teaches the learner that a right answer is wrong.
 | Umlaut written as a digraph | **observed** in the simulator | `uebernehme` is rejected. `ss` for `ß` is accepted, as a side effect of accepting the Swiss variety. Learners without a German keyboard must find the long-press. |
 | Alternative standard conjugations | **inference** from the code, not tested | The conjugator yields one du-Imperativ per verb (`zieh hin`). Standard German also accepts the conjugation with -e for most verbs (`ziehe hin`) (**background**). Only regional variants are added to the accepted set, so the alternative is presumably rejected. Other optional variants deserve the same audit. |
 | Near misses | **observed** in the code | Any typing slip is a full error. There is no "almost" state. |
+
+**A further source, in the verb data, fixed on 2026-11-10.** The rows above are defects of the
+grader. When this report was written, the reference the quiz draws on also held errors, and the
+quiz inherited every one: about 130 verbs had the wrong auxiliary or lacked a reading
+(aufstehen "get up" with haben), three lost their prefix in some conjugations (bedürfen gave ich
+darf), and backen, hauen, and salzen generated weak participles (gebackt). A Perfekt question on
+aufstehen therefore expected *habe aufgestanden* and rejected the right answer. The browse and
+verb research found these, and
+[`plans/fix-reference-defects.md`](../plans/fix-reference-defects.md) fixed them on `main` the
+same day. They reach learners with the next release. Nothing in this table was touched by that
+work.
 
 The first row deserves a decision more than a patch. Showing the joined conjugation in a reference
 table is a reasonable convention, because a table has no clause to put a split verb in. As the only
@@ -697,7 +710,10 @@ Error classes the conjugator could detect without any language model:
   conjugation." This single check probably covers a large share of real errors, and it is always
   correct.
 - **A strong verb conjugated as weak**, such as gehte for ging.
-- **The wrong auxiliary**, such as hat gegangen.
+- **The wrong auxiliary**, such as hat gegangen. This diagnosis is only as good as the app's
+  own auxiliaries. Since 2026-11-10 every verb the auxiliary audit lists is ruled against DWDS
+  (`verbdata/auxiliary-rulings.tsv`); verbs to which kaikki gives one auxiliary were not all
+  read, and two such errors (bereitstehen, näherstehen) were found and fixed afterwards.
 - **A participle prefix error**: ge- missing, ge- added to an inseparable or -ieren verb, or ge-
   misplaced in a separable verb.
 - **A separable prefix left attached, or detached, contrary to the frame.**

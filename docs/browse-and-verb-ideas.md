@@ -107,7 +107,9 @@ channel.
 the shipping app. The page for aufstehen reads ich habe aufgestanden, bedürfen shows ich darf,
 and vermögen shows ich mag. A reference that answers "haben or sein?" wrongly for a common verb
 costs more trust than any feature here can earn back. See
-[Defects Found Along the Way](#defects-found-along-the-way).
+[Defects Found Along the Way](#defects-found-along-the-way). **Fixed on `main` 2026-11-10**:
+[`plans/fix-reference-defects.md`](../plans/fix-reference-defects.md) corrected these and the
+larger class behind them, and is finished. The corrections ship with the next release.
 
 ## What the Screens Do Today
 
@@ -237,7 +239,7 @@ All **observed** in `telemetry-usage.md` unless marked.
 | 2. Say what is wanted | The learner types something the search understands. | Only a correctly spelled German infinitive works by default. Conjugations, missing umlauts, English, and verbs outside the corpus all end in "No verbs found". |
 | 3. Pick the right row | The wanted verb is visible near the top. | The exact match is not ranked first. Typing essen puts essen sixth, and in alphabetical order kommen is 46th of 75. |
 | 4. Find the conjugation | The learner scrolls to the right section. | The page is nearly five screens long, ordered by morphology and not by use. The Perfekt Indikativ is almost two screens down. Headings use names a textbook may not. Futur II and the passive are absent. |
-| 5. Trust and use it | The conjugation is what a writer needs. | Separable verbs are shown joined. Some verbs show the wrong auxiliary, and three show wrong conjugations. Red letters are unexplained. |
+| 5. Trust and use it | The conjugation is what a writer needs. | Separable verbs are shown joined. Red letters are unexplained. (Some verbs showed the wrong auxiliary and three showed wrong conjugations; fixed on `main` 2026-11-10 by the defect plan.) |
 | 6. Leave, or stay | The visit ends, or leads somewhere. | Nothing on the page leads on, and nothing remembers the lookup. |
 
 ### What Search Returns
@@ -994,8 +996,9 @@ from one begun on the Quiz tab.
    principal-parts function, and the quiz track the bands, the ladder, and the practice record?
 7. **The privacy policy.** Which of the four ways of learning what was typed is acceptable? The
    rest is settled. Josh decided on 2026-11-10 that the policy should list the signals the app
-   sends, and the game and tap signals it omits are being added under the defect plan. A new
-   signal's line goes into the deployed policy when the release that sends it ships.
+   sends, and the game and tap signals it omitted were added under the defect plan (Part 5a). The
+   corrected text is on `main`, ready for Josh to deploy with both date lines set to the day he
+   does. A new signal's line goes into the deployed policy when the release that sends it ships.
 8. **Which app is released first in 2027.** The signals can be built into all three before then,
    and the siblings' numbers will arrive soonest after their releases.
 9. **Verbs outside the corpus.** Is a derived table acceptable under a clear label, or must every
@@ -1006,25 +1009,28 @@ from one begun on the Quiz tab.
 13. **Glosses.** Eleven real devices run in neither English nor German, and every gloss is
     English. This follows from the localization policy and is noted only so that it is a choice.
 14. **The defects below.** Decided on 2026-11-10: they are fixed first, under
-    [`plans/fix-reference-defects.md`](../plans/fix-reference-defects.md).
+    [`plans/fix-reference-defects.md`](../plans/fix-reference-defects.md). **Done the same day.**
 
 ## Defects Found Along the Way
 
-All **observed** in the simulator on the current `main`, on 2026-11-10. None was fixed, because
-the plan asked for no changes to the app.
+All **observed** in the simulator on the current `main`, on 2026-11-10. None was fixed during
+this research, because the plan asked for no changes to the app. **All five were fixed on `main`
+later that day**, under the defect plan below, which is finished. Each item keeps its original
+observation and notes its fix.
 
 **A plan to fix them exists, and it found more.**
 [`plans/fix-reference-defects.md`](../plans/fix-reference-defects.md) was written the same day.
 Preparing it meant comparing every shipped auxiliary with the kaikki snapshot, which showed that
 item 1 below is far larger than one worklist: 37 verbs are contradicted outright, among them
 stattfinden (er ist stattgefunden), reisen (er hat gereist), and umziehen (er hat umgezogen), and
-141 more need a ruling. It also found that backen ships the participle gebackt. That plan, and
-not this list, is the current statement of the defects.
+141 more need a ruling. It also found that backen ships the participle gebackt. That plan's
+Status section and the 2026-11-10 entries of `docs/blog_notes.md` are the record of what was
+fixed and what was deliberately deferred. The deferrals are in the roadmap's "Known gaps".
 
 1. **aufstehen shows haben.** The auxiliary pill reads haben and the Perfekt Indikativ reads
    ich habe aufgestanden, under the gloss "get up". In that sense the verb takes sein: ich bin
    aufgestanden (**background**). The verb is row 39 of `verbdata/tranche2-dual-auxiliary.txt`,
-   the list of verbs that have two readings and ship one, which the roadmap already tracks. That
+   the list of verbs that have two readings and ship one, which the roadmap then tracked (frozen as history since 2026-11-10; `verbdata/auxiliary-rulings.tsv` is the current record). That
    list has 194 rows, and 182 of them record haben. Several pair it with a gloss that describes
    motion or a change of state: abfahren "depart, leave", abfliegen "take off, fly away",
    abbiegen "turn, turn off", ausziehen "move out, vacate" (**inference** from the glosses, and
@@ -1136,12 +1142,19 @@ not this list, is the current statement of the defects.
 
 The 35 example sentences in which the July map does not find the sentence's own verb, by kind.
 
+**Status, 2026-11-10.** The defect plan took the count from 35 to 25. Ten left the list: the five
+sentences that quoted another verb were replaced; bedürfen's *bedarf* is generated since its
+prefix is restored; krauchen and zusammenhauen match since krauchen went weak and hauen's
+participle went strong; übergehen's *geht ... über* found a new separable reading; and schaffen's
+*schuf* found a new strong reading. The remaining 25 are the classes below that are limits of the
+map or the dual-paradigm gap, not defects of the app.
+
 | Kind | Count | Examples | Remedy |
 |---|---:|---|---|
-| The sentence uses a standard conjugation that the app's table for the verb lacks: a variant, or a second reading | 12 | schuf (schaffen), wandte (wenden), sandte (voraussenden), hieb (hauen, niederhauen), saugte (absaugen, einsaugen, festsaugen), verglomm (verglimmen), klob (klieben), krauchte (krauchen), zusammengehauen (zusammenhauen) | Corpus work, which the roadmap describes. Two of these are listed as defect 3. |
+| The sentence uses a standard conjugation that the app's table for the verb lacks: a variant, or a second reading | 12 | schuf (schaffen), wandte (wenden), sandte (voraussenden), hieb (hauen, niederhauen), saugte (absaugen, einsaugen, festsaugen), verglomm (verglimmen), klob (klieben), krauchte (krauchen), zusammengehauen (zusammenhauen) | Corpus work, which the roadmap describes. Two of these are listed as defect 3. Fixed 2026-11-10: schaffen, krauchen, zusammenhauen. The rest are the dual-paradigm gap. |
 | A participle with an adjective ending | 7 | geklebte, gestrichenen, vorgeschlagenen, hervorgehobenen, glänzende, existierendem, Verstorbenen | Strip the ending before matching |
-| The sentence quotes a different verb, or no verb | 5 | ergriff for greifen, verfertigt for fertigen, ausschalten for schalten, nützen for nutzen, Abstimmung for abstimmen | Replace the sentence |
+| The sentence quotes a different verb, or no verb | 5 | ergriff for greifen, verfertigt for fertigen, ausschalten for schalten, nützen for nutzen, Abstimmung for abstimmen | Replace the sentence. Done 2026-11-10 (defect plan, Part 4). |
 | A short imperative | 4 | halt (danebenhalten, runterhalten, warmhalten), red (daherreden) | Add the variant, as the quiz report's audit of the Imperativ also asks |
 | An older spelling | 4 | interpretirte, spezialisiren, tödtet, einsehn | Add spelling variants where a rule exists |
-| A particle written as two words, or a reading the corpus lacks | 2 | lebte ... wieder auf (wiederaufleben), geht ... über (übergehen) | Sentence mode must join particles. The second is a missing reading. |
-| A wrong conjugation in the app | 1 | bedarf (bedürfen) | Defect 2 |
+| A particle written as two words, or a reading the corpus lacks | 2 | lebte ... wieder auf (wiederaufleben), geht ... über (übergehen) | Sentence mode must join particles. The second was a missing reading, added 2026-11-10. |
+| A wrong conjugation in the app | 1 | bedarf (bedürfen) | Defect 2. Fixed 2026-11-10. |

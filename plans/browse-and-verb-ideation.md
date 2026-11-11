@@ -10,8 +10,9 @@ changes. **Written:** 2026-11-10.
 afterwards, both on the same day.
 
 1. The defects found along the way became a plan of their own,
-   [`fix-reference-defects.md`](fix-reference-defects.md), which Josh will carry out before any
-   idea is built.
+   [`fix-reference-defects.md`](fix-reference-defects.md), to be carried out before any idea is
+   built. **It was finished on 2026-11-10**, so the ideas are no longer waiting on it. The fixes
+   are on `main` and reach learners with the next release.
 2. Josh said that no release of Konjugieren, Conjuguer, or Conjugar is possible before 2027, as
    `CLAUDE.md` records. This brief was written without that knowledge. Where it has the quiz
    changes proceeding "at the same time", and signals that "would at least show direction over

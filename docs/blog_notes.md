@@ -9243,3 +9243,24 @@ marked paused with the date, and `verb-sources.md` item 7 says the same, so a la
 does not read "awaiting Josh's cutoff" as an invitation to raise it. Nothing was imported. The
 importer, `tranche3-ranked.tsv`, `tranche3-deferred.txt`, and the 2026-11-10 entries above are
 what the work resumes from. The DWDS snapshots are gitignored and will need re-fetching.
+
+## The quiz and browse plans catch up with the fixes (2026-11-11)
+
+The quiz report (`docs/pedagogy.md`) and the two browse and verb documents
+(`docs/browse-and-verb-ideas.md`, `plans/browse-and-verb-ideation.md`) were written on
+2026-11-10, before the defect plan ran, and several of their sentences still read as if the
+defects were open. The ideation plan said Josh "will carry out" the defect plan before any idea
+is built, which would have kept a future session waiting on finished work. The ideas document
+said "None was fixed", called the plan "the current statement of the defects", listed "the
+wrong auxiliary" among today's failures in its lookup table, and gave remedies in its appendix
+that are now done. Each such passage keeps its original observation and gains a dated note
+saying what was fixed and where. The appendix now records that the map misses 25 sentences, not
+35, and which ten left and why.
+
+The quiz report never named the defects, but it depended on them in two places, which is why
+it needed a note at all. Its table of ways the quiz "marks correct German wrong" listed only
+grader defects, while the verb data was causing more of the same: a Perfekt question on
+aufstehen expected *habe aufgestanden*. And its proposed error class "the wrong auxiliary" can
+diagnose only as well as the app's own auxiliaries, which the rulings file now underwrites for
+every verb the audit lists. The count of multi-reading verbs beside its hängen example went from
+44 to 120, because the quiz now asks about many more second meanings.

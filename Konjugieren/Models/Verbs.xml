@@ -500,7 +500,8 @@
     <reading tn="carry off, remove, denude" fa="s" ag="fahren" />
   </verb>
   <verb in="ab+tr^ei^ben" hi="36702" ic="seated.side.left.steeringwheel">
-    <reading tn="have an abortion" fa="s" ag="bleiben" />
+    <reading tn="abort (a pregnancy), drive off" fa="s" ag="bleiben" />
+    <reading tn="drift off course" fa="s" ag="bleiben" ay="s" />
   </verb>
   <verb in="ab+trennen" hi="125335" ic="fencing">
     <reading tn="cut off, sever" fa="w" />
@@ -3715,7 +3716,7 @@
     <reading tn="arrive" fa="s" ag="treffen" ay="s" />
   </verb>
   <verb in="ein+tr^ei^ben" hi="55436" ic="seated.side.left.steeringwheel">
-    <reading tn="drive in" fa="s" ag="bleiben" />
+    <reading tn="drive in, collect (debts)" fa="s" ag="bleiben" />
   </verb>
   <verb in="ein+tr^et^en" hi="1092011" ic="walk">
     <reading tn="enter, occur" fa="s" ag="treten" ay="s" />
@@ -9796,6 +9797,7 @@
   </verb>
   <verb in="weg+tr^ei^ben" hi="3354" ic="seated.side.left.steeringwheel">
     <reading tn="drive away" fa="s" ag="bleiben" />
+    <reading tn="drift away" fa="s" ag="bleiben" ay="s" />
   </verb>
   <verb in="weg+tr^et^en" hi="6148" ic="stairs">
     <reading tn="step aside, fall out" fa="s" ag="treten" ay="s" />
@@ -10761,6 +10763,7 @@
   </verb>
   <verb in="zu+tr^ei^ben" hi="6922" ic="seated.side.left.steeringwheel">
     <reading tn="drive toward" fa="s" ag="bleiben" />
+    <reading tn="drift toward" fa="s" ag="bleiben" ay="s" />
   </verb>
   <verb in="zu+tr^et^en" hi="6506" ic="stairs">
     <reading tn="kick" fa="s" ag="treten" />

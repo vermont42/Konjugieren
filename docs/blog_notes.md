@@ -8625,3 +8625,45 @@ What a user would see changed: ten brechen verbs build the Perfekt of their intr
 sein, aufbrechen means "set off" first, and durchbrechen shows its three verbs. 82 verbs now have
 more than one reading. The rulings file has 128 readings of 88 verbs, the suite is still 224 tests,
 and the worklist is 164.
+
+## Defect plan, Part 6: treiben, the first batch run while Josh was away (2026-11-10)
+
+This was the first batch run under the away-mode prompt at the end of the plan. Josh wrote it
+before leaving, and it turns each question an earlier batch would have stopped to ask into a
+default, with every call made under one written into a new list in the plan's Status block,
+"Calls made without Josh, to review". Four of this batch's nine verbs went there.
+
+treiben's derivatives follow their base the way brechen's did. treiben already ships "drive,
+propel" with haben beside "drift, float" with sein, and DWDS gives three derivatives the same
+split: *der Hirte hat die Herde dem Dorf zugetrieben* beside *das Boot trieb dem Ufer zu*. So
+abtreiben, zutreiben, and wegtreiben each gained a "drift" reading with sein. abtreiben was the
+interesting one. It shipped "have an abortion", while its Luther sentence (*Blinde und Lahme
+werden dich abtreiben*) means "drive you off". Both senses take haben, so they now share a
+reading, "abort (a pregnancy), drive off", and "drift off course" sits beside it.
+
+eintreiben was re-glossed rather than split. Every sense takes haben, but the shipped "drive in"
+missed collecting debts, which is the sense a modern reader meets and which the verb's own
+etymology already names. antreiben, austreiben, umtreiben, and auftreiben kept haben. DWDS's
+only sein sense for antreiben is a bullet under a sub-sense, drifting ashore, and it was ruled
+marginal.
+
+**zertreiben is the first verb deferred for want of a source.** DWDS has no entry, and German
+Wiktionary and Duden both return 404. The prompt's default is to keep what ships and say so, and
+the rulings row does. The example sentence, *der Wind zertrieb die Wolken*, is transitive, so
+haben is at least not contradicted.
+
+Two etymologies were corrected. wegtreiben's closing said "the driving force lies with the
+subject, not the driven", which the new sein reading makes false: a drifting boat is the thing
+driven. It now describes both lives, as zuziehen's does. zutreiben's defined the verb as driving
+cattle toward a target and now adds the drift. Both were spliced as raw text, four changed lines.
+
+Two scratch tools were written for this batch and kept out of the repository: an applier that
+replaces a verb's readings and carries its own `fa` and `ag` across, and a shard builder that adds
+the base's other derivatives as collision context. The Sonnet review of seven readings found
+nothing. It remarked that two of the new glosses join two senses with a comma, which zuziehen's
+"pull shut, incur (an illness)" had already done, and raised no finding.
+
+What a user would see changed: abtreiben, zutreiben, and wegtreiben offer a drifting meaning that
+builds its Perfekt with sein, and eintreiben's gloss names debt collection. 85 verbs now have more
+than one reading. The rulings file has 140 readings of 97 verbs, the suite is still 224 tests, and
+the worklist is 155.

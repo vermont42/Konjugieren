@@ -8,7 +8,7 @@ below.
 
 ## Status (2026-11-10, during the third session)
 
-**Parts 0 to 5 and 7 are done. Part 6 is under way: step 1 and the fahren, ziehen, treten, and brechen derivatives are done.** Read this section before the rest: several
+**Parts 0 to 5 and 7 are done. Part 6 is under way: step 1 and the fahren, ziehen, treten, brechen, and treiben derivatives are done.** Read this section before the rest: several
 numbers below were true when the plan was written and are not now. The journal entries in
 `docs/blog_notes.md` headed "Defect plan, Part N" are the detailed record.
 
@@ -28,13 +28,14 @@ numbers below were true when the plan was written and are not now. The journal e
 | 6 (ziehen) | `adaf738` | 14 listed ziehen derivatives plus zuziehen by hand: durchziehen the first verb with three readings, 7 more with two, 1 flip, 2 re-glosses, 4 keeps. zuziehen's and durchziehen's etymologies rewritten. |
 | 6 (treten) | `18b6880` | 5 listed treten derivatives: 3 two readings (übertreten split by separability), 1 flip, 1 re-gloss. No question for Josh; review found nothing. |
 | 6 (brechen) | `f4f6fef` | 12 listed brechen derivatives: durchbrechen three readings, 4 more with two (aufbrechen now leads with "set off"), 4 flips, umbrechen re-glossed and kept, 2 keeps. Two etymologies corrected. |
+| 6 (treiben) | see journal | 9 listed treiben derivatives, the first batch run under the away-mode prompt: 3 two readings (a "drift" sense with sein beside "drive"), 1 re-gloss, 4 keeps, zertreiben deferred for want of any source. Two etymologies corrected. Review found nothing. |
 
 **Where Part 6 stands.**
 
 - **Take the worklist from the script**, not from the counts below: `python3 verbdata/audit_auxiliaries.py
-  --unruled`. It lists 164 verbs after brechen, and `--check` prints the same number while failing.
-  `--check` must report `0 other problems` after every batch. The next base verb is treiben.
-- **The rulings file has 128 readings of 88 verbs**, and 82 verbs have more than one reading,
+  --unruled`. It lists 155 verbs after treiben, and `--check` prints the same number while failing.
+  `--check` must report `0 other problems` after every batch. The next base verb is laufen.
+- **The rulings file has 140 readings of 97 verbs**, and 85 verbs have more than one reading,
   durchziehen and durchbrechen three. Suite: 224 tests.
 - **Josh's rulings of 2026-11-10, in the fahren batch**, which later batches should follow:
   - **A domain label qualified by *häufig* does not fail criterion 2** (hochfahren, "boot up",
@@ -64,7 +65,23 @@ numbers below were true when the plan was written and are not now. The journal e
 
 **Calls made without Josh, to review.** Filled by sessions run under the away-mode prompt at
 the end of this plan: one line per verb, giving the call made, the alternative, and why. Josh
-clears an entry by confirming or reversing it. Empty so far.
+clears an entry by confirming or reversing it.
+
+- **zertreiben** (treiben): kept haben and recorded as deferred, under the missing-sources
+  default. DWDS has no entry, and Wiktionary and Duden return 404. Alternative: none until a
+  source is found. The example sentence is transitive, which haben fits.
+- **antreiben** (treiben): kept single. DWDS gives sein only for a bullet under sense 4,
+  *herantreiben* (*der Kahn treibt an*, drift ashore). Alternative: a second reading "drift
+  ashore" with sein. Judged marginal, a sub-sense of a sub-sense.
+- **abtreiben** (treiben): two readings, with the abortion sense kept first as "abort (a
+  pregnancy), drive off" and "drift off course" with sein second. "drive off" joins the gloss
+  because the Luther sentence uses it. Alternatives: lead with "drive off", or keep the shipped
+  "have an abortion" and leave the sentence's sense unglossed. The reviewer remarked, without a
+  finding, that the comma joins two senses; zuziehen's "pull shut, incur (an illness)" is the
+  precedent.
+- **eintreiben** (treiben): re-glossed "drive in, collect (debts)", beyond the auxiliary
+  question, because collecting debts is the commonest modern sense and the etymology names it.
+  Alternative: keep "drive in", which the Luther sentence illustrates.
 
 **State to start Part 6 from (end of the second session; partly superseded above).**
 
@@ -807,8 +824,8 @@ for verb, entry in sentences.items():
 
 ## Prompt to Hand a Session
 
-Part 6 is under way: step 1 and the fahren, ziehen, treten, and brechen derivatives are done.
-Run one Part 6 session at a time, since each edits `Verbs.xml`, the rulings file, and the test table.
+Part 6 is under way: step 1 and the fahren, ziehen, treten, brechen, and treiben derivatives are
+done. Run one Part 6 session at a time, since each edits `Verbs.xml`, the rulings file, and the test table.
 
 This prompt lets the session work while Josh is away (written 2026-11-10). It replaces the earlier
 one, which asked the session to stop before a third reading, before extending the criterion-2

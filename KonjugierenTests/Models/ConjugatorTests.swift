@@ -1334,6 +1334,18 @@ struct ConjugatorTests {
     ("umbrechen", 0, .haben),
     ("niederbrechen", 0, .haben),
     ("entzweibrechen", 0, .sein),
+    ("abtreiben", 0, .haben),
+    ("abtreiben", 1, .sein),
+    ("antreiben", 0, .haben),
+    ("auftreiben", 0, .haben),
+    ("austreiben", 0, .haben),
+    ("eintreiben", 0, .haben),
+    ("umtreiben", 0, .haben),
+    ("wegtreiben", 0, .haben),
+    ("wegtreiben", 1, .sein),
+    ("zertreiben", 0, .haben),
+    ("zutreiben", 0, .haben),
+    ("zutreiben", 1, .sein),
   ]
 
   @Test("Each ruled reading carries its dictionary auxiliary", arguments: auxiliaryRulings)

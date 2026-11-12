@@ -9,7 +9,8 @@ questions the same day.
 ## Status
 
 Each session that finishes a phase fills in its row here, then writes a **How it differed** note
-under that phase's heading. Leave rows for phases not yet started as they are.
+under that phase's heading. Leave rows for phases not yet started as they are. A finished phase
+that Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it is committed.
 
 | Phase | Status | Date | Commit | Ideas |
 |---:|---|---|---|---|
@@ -63,8 +64,14 @@ not guess at them.
    repurposed files, and run `python3 scripts/check_docs.py`.
 7. Under the idea in `docs/browse-and-verb-ideas.md`, add a line saying it was built on `main`,
    with the date and this plan's phase, as the defect plan did for the ideas it touched.
-8. Fill in the Status row, write **How it differed**, append a journal entry to
-   `docs/blog_notes.md`, and commit to `main`.
+8. Fill in the Status row, write **How it differed**, and append a journal entry to
+   `docs/blog_notes.md`.
+9. **Stop before git.** Do not run `git add`, `git commit`, or `git push` until Josh has tried the
+   changes. Tell him what changed and how to try it: which screens to open, and what to type or
+   tap. Once he says he has tried them, commit and push to `main`. Then, since a commit cannot
+   contain its own hash, record the hash in the Status row with a one-line follow-up commit, and
+   push that too. Josh made this rule on 2026-11-12, after Phase 1, and it holds for every phase
+   and the Closing.
 
 **No release before 2027.** Every phase accumulates on `main`. Nothing here reaches a learner or
 produces a number until a release ships, so no phase should wait on evidence from another.

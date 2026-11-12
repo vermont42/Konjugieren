@@ -17,7 +17,7 @@ that Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until
 | 1 | Done | 2026-11-12 | `bcab0c3` | A1, A2, A3, A8 |
 | 2 | Done | 2026-11-12 | `40acbdf` | A4, C4 |
 | 3 | Done | 2026-11-12 | `1fcef34` | Signals |
-| 4 | Awaiting Josh | 2026-11-12 | | B2 |
+| 4 | Done | 2026-11-12 | `d5ff847` | B2 |
 | 5 | Not started | | | A5 (the map) |
 | 6 | Not started | | | A5 (the search) |
 | 7 | Not started | | | B3, B5's tip |

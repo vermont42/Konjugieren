@@ -204,6 +204,75 @@ konjugieren://info/1          → Opens the Verb History article
 
 Info articles can link to verbs or other articles using the `%...%` markup. When tapped, `InfoView.handleInfoLink(_:)` constructs the appropriate deeplink URL and calls `Current.handleURL(_:)`.
 
+## Conjugation Map
+
+A map from every one-word conjugation of every verb to the verbs it belongs to: ging → gehen,
+gehört → gehören and hören, halte → halten and the 67 separable verbs built on it. Reverse lookup
+in search (Phase 6 of [`plans/browse-and-verb-implementation.md`](../plans/browse-and-verb-implementation.md))
+reads it. Built 2026-11-12, in Phase 5.
+
+### What It Holds
+
+About 50,000 conjugations: the infinitive, the zu-infinitive of a separable verb (anzufangen),
+both participles, the four finite simple conjugationgroups joined (anfängt), the finite part a
+main clause leaves when it sends a separable prefix to the end (fängt, with the particle an), and
+the first word of each Imperativ. Every reading counts. Compound conjugations have no entries,
+because their parts do: hat gefunden resolves through gefunden. Keys are lowercase, because the
+Conjugator's uppercase marks ablaut, not spelling. ß is not folded; a caller that wants muß to find
+müssen folds both sides.
+
+### How It Is Built
+
+| Piece | Role |
+|-------|------|
+| `ConjugationMapTool/` | A macOS command-line target. It compiles 17 of the app's own files (the Conjugator, its model types, the two XML parsers, and `ConjugationMap.swift`), lent to it by a membership exception on the `Konjugieren` folder in `project.pbxproj`, plus `ToolWorld.swift`, a stand-in for `Current` that offers only `fatalError`. |
+| Generate Conjugation Map | A Run Script phase of the app target, after Resources. It runs the tool and writes `ConjugationMap.lzfse` straight into the app bundle. The app target depends on the tool target, so an iOS build builds the tool for the Mac first. |
+| `ConjugationMap.swift` | The map: its builder, its format, and `ConjugationMap.bundled`, a lazy loader that is safe off the main actor. Compiled into both targets, so the tool writes the file with the code the app reads it with. |
+
+**When it regenerates.** The phase declares three inputs (`Verbs.xml`, `AblautGroups.xml`, and the
+tool's executable) and one output. Xcode runs it only when an input is newer than the output. The
+executable stands for every Conjugator source: Xcode relinks it when a file it compiles changes in
+a way that changes the code, and leaves it alone otherwise, so a comment-only edit regenerates
+nothing. An unchanged rebuild does not run the tool. `ConjugationMapTests` compares the bundled
+map with a fresh in-process build, which catches a Conjugator dependency the tool does not
+compile.
+
+**Keeping the core compilable.** The files the tool compiles may not reach `L`, `Settings`,
+`Region`, or any other app-only type. Display members of core types live in
+`ConjugationLabels.swift` (pronouns, family and conjugationgroup names) and `Region.swift`
+(`regionalAuxiliary(in:)`), which the tool does not compile. A build failure in
+`ConjugationMapTool` that names `Current` or an app type means a core file has started reaching
+outside the core; move the member out rather than growing `ToolWorld`.
+
+**Format.** One line per conjugation, sorted: the conjugation, then a tab before each entry. An
+entry is an infinitive, followed by a space and the particle for a finite part (`fängt	fangen	anfangen an`).
+Within a line, whole verbs come first, then finite parts, each alphabetical. The text is about
+1.4 MB and is LZFSE-compressed to about 173 KB. The tool takes 2 seconds in a Release build.
+
+**Archives.** The tool has `SKIP_INSTALL = YES` and no dSYM, so an archive contains only the app
+(checked with an unsigned `xcodebuild archive`, 2026-11-12).
+
+### `forms.json`
+
+The Python pipelines (`corpus/working/build_corpus_index.py`, `verbdata/authored/check_forms.py`,
+`verbdata/authored/build_review_shards.py`) read the same map as `corpus/working/forms.json`, in
+the older JSON shape `{form: [{verb, contiguous, particle?}]}`. `scripts/write_forms_json.sh`
+builds the tool and runs it with `--forms-json`. Until 2026-11-12 a gated test harness,
+`CorpusFormsDumpTests`, wrote that file. The tool's first output was byte-identical to the
+harness's last, and the harness was deleted, so the pipelines and the app's search share one
+writer.
+
+### Which Conjugations Equal a Text
+
+`Verb.conjugations(matching:)` in `ConjugationMatch.swift` returns every cell of every reading
+whose conjugation equals a text, as `ConjugationMatch` values (reading, conjugationgroup, and
+whether the text is only a finite part). It grades as the quiz does, against every region and both
+clauses, ignoring case and spacing: "stand auf" and "aufstand" both match aufstehen's Präteritum,
+and "ist gestanden" matches stehen. Search uses it to name a match, and the quiz's Tier 4
+diagnosis (`plans/pedagogy.md`) can use it to say which other cell an answer belongs to. The map
+says which verbs to ask; this function says which cells. The infinitive and the zu-infinitive are
+not cells and never match.
+
 ## Game System
 
 A space-invaders-style arcade game where players shoot descending enemies. It involves no conjugation: the enemies carry app-icon images, and nothing in `GameState` asks for or checks a verb form. (Until 2026-11-10 this sentence said players shoot "by conjugating verbs"; `plans/pedagogy.md` discusses whether the game should.) The game features wave-based progression, power-ups, special mechanics, and Live Activity integration.

@@ -552,6 +552,15 @@ wendete, schuf, hieb), which is corpus work the roadmap already describes.
   for Conjugar, whose American learners read Spanish. For Conjuguer's francophone users, who know
   the infinitive already, it is lower.
 
+**First half built on `main` 2026-11-12** by [Phase 5](../plans/browse-and-verb-implementation.md#phase-5-the-conjugation-map-as-a-build-product)
+of the implementation plan: the map, as the verdict asks, is generated at build time and only when
+an input changed, by `ConjugationMapTool`, a macOS target that compiles the app's own Conjugator.
+It holds 50,056 conjugations, 173 KB compressed in the bundle, and finds the verb of 3,547 of the
+3,572 example sentences (99.3%), the 25 misses in the appendix. The same tool now writes
+`forms.json`. `Verb.conjugations(matching:)` names the cells a text matches. Search does not use
+either yet; that is Phase 6. See
+[`docs/feature-architecture.md`](feature-architecture.md#conjugation-map).
+
 #### A6. Paste a Sentence, Find Its Verbs
 
 Verdict: No. Not worth the effort, given the low usage of the app and difficulty of discovering that feature.

@@ -5,17 +5,4 @@ enum Family: Hashable {
   case mixed(ablautGroup: String, ablautStartIndex: Int, ablautEndIndex: Int)
   case weak
   case ieren
-
-  var displayName: String {
-    switch self {
-    case .strong:
-      return L.Family.strong
-    case .mixed:
-      return L.Family.mixed
-    case .weak:
-      return L.Family.weak
-    case .ieren:
-      return L.Family.ieren
-    }
-  }
 }

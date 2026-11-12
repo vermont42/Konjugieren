@@ -15,14 +15,14 @@ class VerbParser: NSObject, XMLParserDelegate {
   private var currentIconSuffix = ""
   private var currentReadings: [Reading] = []
 
-  override init() {
+  convenience override init() {
+    self.init(contentsOf: Bundle(for: VerbParser.self).url(forResource: "Verbs", withExtension: "xml"))
+  }
+
+  init(contentsOf url: URL?) {
     super.init()
-    let bundle = Bundle(for: VerbParser.self)
-    if let url = bundle.url(forResource: "Verbs", withExtension: "xml") {
+    if let url {
       parser = XMLParser(contentsOf: url)
-      if parser == nil {
-        return
-      }
       parser?.delegate = self
     }
   }

@@ -9479,3 +9479,61 @@ Two of my own test expectations failed on the first run, and both were mine to f
 code's. stehen's ablaut region is `eh`, so the Präteritum is written `stANDest`, not `stAndst`. The
 mixed case in an expectation is a claim about which letters the ablaut replaced, and it has to be
 copied from the ablaut group rather than guessed.
+
+## The Conjugation Map as a Build Product (2026-11-12)
+
+Phase 5 of the browse plan made the map from conjugation to infinitive (ging → gehen) a file that
+the build writes into the app, so that Phase 6 can let search start from any conjugation. The map
+existed before, as `forms.json`, written by a test harness for the corpus pipelines. Josh's verdict
+asked for it to be generated at build time, and only when an input had changed.
+
+The plan named the risk first: a macOS command-line tool has to compile the Conjugator, and in an
+app built with default MainActor isolation the Conjugator might reach the user's settings, the
+localized strings, or the dependency container. A five-second `swiftc` run in a scratch directory,
+before any project edit, answered it. The core compiled for macOS once seven members moved: the
+er/sie/es pronoun (which reads a setting), the family and conjugationgroup display names, and two
+region helpers. None of them was conjugation; all of them were presentation that had settled into
+the model files. They moved, unchanged, into `ConjugationLabels.swift` and `Region.swift`, and no
+call site noticed, because an extension's members belong to the module, not to the file. Isolation
+turned out not to matter at all: give the tool the same MainActor default, and its top-level code
+calls the Conjugator synchronously, as the app does.
+
+The project change was done by editing `project.pbxproj` rather than in Xcode's interface. Folder
+synchronization made this smaller than it sounds. The tool's own folder is one synchronized group,
+and the 17 app files it borrows are one membership exception on the app's folder: a list of paths
+and a target. The app target depends on the tool, and Xcode builds a macOS dependency of an iOS
+target for the Mac without being told.
+
+The regeneration rule has an elegant shape. The script phase declares three inputs, `Verbs.xml`,
+`AblautGroups.xml`, and the tool's own executable. The executable stands for every Conjugator
+source, because Xcode relinks it exactly when the code it compiles changes. Measuring that
+produced one surprise: a comment-only edit to `Conjugator.swift` recompiled the file but did not
+relink the tool, so the map was not rebuilt. That is the right answer, since the map could not
+have changed, and it means the phase runs strictly less often than "a source is newer". A `touch`
+on a Swift file is not a change to Xcode 26 at all.
+
+The plan asked whether the tool should replace the harness as the writer of `forms.json`. The
+tool's first `forms.json` was byte-identical to the harness's last, which made the decision for
+me: one writer, one Conjugator, and a shell script, `scripts/write_forms_json.sh`, in place of a
+test invocation that had three known ways to report success while writing nothing.
+
+The done-criterion was a test that the map finds the verb of at least 99% of the app's example
+sentences. The first version found 98.99% and failed. The map was fine; the measure was not the
+one the earlier figures came from. The defect plan's Scan 2 folds ß into ss, as the app's search
+does, so Kafka's läßt finds lassen, and it counts a stranded finite part only when its particle is
+also in the sentence. Implemented exactly, the test finds 3,547 of 3,572, the same 25 misses the
+ideas document's appendix sorts by cause. A percentage in a done-criterion is only as precise as
+the method written beside it.
+
+The phase also added the function the coordination table asked for, "which conjugations of this
+verb equal this text?" It grades exactly as the quiz builds its accepted answers, across every
+region and both clauses, so search's naming of a match and the quiz's future diagnosis of a wrong
+answer will agree with the quiz's own marking.
+
+Josh's own builds in Xcode added a coda. The log of his second, unchanged build listed the map
+phase, the tool's output line, and the tool's link step, which looked like a rerun on every build.
+It was not. Xcode's activity log carries forward the records of earlier builds whose results still
+stand, and the tool and the map on disk still had the first build's timestamps. On the way there I
+also misread a two-day-old timestamp as one from the future, because `stat` printed only the time
+of day. Both are the same lesson: when a log and the file system disagree about what a build did,
+the file system is the witness.

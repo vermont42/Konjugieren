@@ -156,6 +156,10 @@ subagent, exactly as Conjugar did with *fue* → `ir`/`ser`.
 Follow the existing convention for such harnesses: gate on an environment variable so the suite
 does not write files in ordinary runs.
 
+**Superseded 2026-11-12.** `scripts/write_forms_json.sh` now writes `forms.json` through
+`ConjugationMapTool`, with byte-identical output, and the harness below was deleted. The
+description stays as the record of why the file has the shape it has.
+
 **As built.** `KonjugierenTests/Utils/CorpusFormsDumpTests.swift`, run in about two seconds:
 
 ```bash
@@ -724,10 +728,7 @@ command prints how many shards are already mined and which remain; that output, 
 prompt, is the state:
 
 ```bash
-TEST_RUNNER_KONJUGIEREN_FORMS_OUT="$PWD/corpus/working/forms.json" \
-xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren \
-  -destination 'platform=iOS Simulator,name=iPhone 17' -parallel-testing-enabled NO test \
-  -only-testing:KonjugierenTests/CorpusFormsDumpTests
+scripts/write_forms_json.sh
 python3 corpus/working/build_corpus_index.py
 python3 corpus/working/build_mining_shards.py
 ```

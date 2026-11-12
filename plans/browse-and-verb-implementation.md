@@ -18,7 +18,7 @@ that Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until
 | 2 | Done | 2026-11-12 | `40acbdf` | A4, C4 |
 | 3 | Done | 2026-11-12 | `1fcef34` | Signals |
 | 4 | Done | 2026-11-12 | `d5ff847` | B2 |
-| 5 | Not started | | | A5 (the map) |
+| 5 | Done | 2026-11-12 | | A5 (the map) |
 | 6 | Not started | | | A5 (the search) |
 | 7 | Not started | | | B3, B5's tip |
 | 8 | Not started | | | B7's article |
@@ -386,6 +386,63 @@ confirms that the map finds the verb of at least 99% of the app's example senten
 map did.
 
 **How it differed:**
+
+- **The risks were small.** The Conjugator and its model types compile for macOS with the app's
+  own default MainActor isolation, so nothing became `nonisolated`. What they reached outside the
+  core was presentation: `Family.displayName` (`L`), `PersonNumber.pronoun` and
+  `pronounWithSieDisambiguation` (`Current.settings`), `Conjugationgroup.displayName(lang:)`, and
+  `regionalAuxiliary(in:)` on `Verb` and `Reading` (`Region`). The first three moved, unchanged, to
+  a new `ConjugationLabels.swift`, and the last to `Region.swift`; no call site changed. The two
+  XML parsers gained `init(contentsOf:)`, with the bundle lookup as the default. The tool's
+  `ToolWorld.swift` stands in for `Current` and offers only `fatalError`.
+- **The target was added by editing `project.pbxproj`**, not in Xcode's interface. The tool's own
+  folder is a synchronized group; the 17 app files it borrows are listed in a membership exception
+  on the `Konjugieren` folder. The app target depends on the tool, so an iOS Simulator build
+  builds it for the Mac first. It builds for the host architecture only (`ARCHS =
+  $(NATIVE_ARCH_ACTUAL)`), with no dSYM, and `SKIP_INSTALL`. An unsigned `xcodebuild archive`
+  produced an archive holding only the app, with the map inside it. **Not tried:** Xcode's own
+  interface, and an Apple Silicon Mac.
+- **The tool's executable stands for the Conjugator sources.** The Run Script phase ("Generate
+  Conjugation Map", after Resources) declares `Verbs.xml`, `AblautGroups.xml`, and the tool as
+  inputs and writes `ConjugationMap.lzfse` straight into the app bundle, so nothing generated is
+  committed. Measured: an unchanged rebuild skipped the phase; touching `Verbs.xml` ran it; a
+  code edit to `Conjugator.swift` relinked the tool and ran it; a comment-only edit recompiled
+  but did not relink, and did not run it, which is right, since the map could not change. A
+  `touch` of a Swift file is not a change to Xcode 26's driver at all.
+  Josh's builds in Xcode confirmed the same: the first one regenerated the map (Xcode re-signed
+  the tool, and a script phase also reruns when its exported environment differs, as it does
+  between Xcode and `xcodebuild`), and an unchanged second one did not. **Judge this by file
+  timestamps, not by the build log.** An Xcode `.xcactivitylog` carries forward the records of
+  earlier builds whose results still stand, so the second build's log listed "Generate
+  Conjugation Map", the tool's output line, and even the tool's link, while the tool and the map
+  on disk kept their earlier timestamps.
+- **The format** is one sorted line per conjugation (`fängt	fangen	anfangen an`), compressed with
+  LZFSE: 50,056 conjugations, 1.4 MB of text, 173 KB in the bundle, about 2 seconds to build.
+  `ConjugationMap.bundled` is a `nonisolated static let`, so Phase 6 can load it from a
+  background task.
+- **The tool replaces `CorpusFormsDumpTests`.** It writes `forms.json` with `--forms-json`, and its
+  first output was byte-identical to the harness's last, so the harness is deleted.
+  `scripts/write_forms_json.sh` builds the tool and writes the file. `CLAUDE.md`, the run command
+  in `prompts/uses_etymologies.md`, the two Python docstrings that named the harness, and
+  `docs/feature-architecture.md` § Conjugation Map say so.
+- **The 99% test uses the defect plan's Scan 2**, which folds ß and ss and counts a finite part
+  only beside its particle. It finds 3,547 of 3,572 sentences (99.3%), the 25 misses in the ideas
+  document's appendix. The first version of the test did not fold ß, missed Kafka's läßt and
+  vergißt, and came out at 98.99%, so the measure has to be stated exactly. A second test compares
+  the bundled map with a fresh in-process build, which catches a Conjugator dependency the tool
+  does not compile. Both run in about 2 seconds.
+- **"Which conjugations of this verb equal this text?"** is `Verb.conjugations(matching:)`, in
+  `ConjugationMatch.swift`. It grades as `QuizItem` builds its accepted answers (every region, both
+  clauses, case and spacing ignored) and marks a match that is only the finite part of a separable
+  reading. It needs no map.
+- **For Phase 6.** The map's keys are not ß-folded: build a folded index at load time, as
+  `ConjugationMapTests` does, for muß and läßt. Adjective endings (geklebte) are not stripped. The
+  infinitive and the zu-infinitive are in the map but are not cells, so `conjugations(matching:)`
+  returns nothing for them; name them in the row's own words. `conjugations(matching:)` makes six
+  Conjugator calls per cell, about 270 per reading, so compute it for a folded row of 67 verbs only
+  when the row opens. Within a key, whole verbs come before finite parts, ready for "base verb
+  first, then one folded row".
+- **Tests.** 17 new `@Test` functions, 296 in all.
 
 ## Phase 6: Reverse Lookup in Search
 

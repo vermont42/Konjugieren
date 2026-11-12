@@ -71,3 +71,17 @@ enum Region: String, CaseIterable {
     }
   }
 }
+
+extension Reading {
+  func regionalAuxiliary(in region: Region) -> Auxiliary {
+    auxiliaryIsRegional ? region.regionalAuxiliary : auxiliary
+  }
+}
+
+extension Verb {
+  /// The auxiliary a speaker of `region` uses. `auxiliary` itself always holds the northern
+  /// standard value, so that Conjugator and the classify-and-verify oracle stay region-free.
+  func regionalAuxiliary(in region: Region) -> Auxiliary {
+    primaryReading.regionalAuxiliary(in: region)
+  }
+}

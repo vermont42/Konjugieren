@@ -80,12 +80,6 @@ struct Verb: Identifiable, Hashable {
   var stamm: String { primaryReading.stamm }
   var ablautGroup: String? { primaryReading.ablautGroup }
 
-  /// The auxiliary a speaker of `region` uses. `auxiliary` itself always holds the northern
-  /// standard value, so that Conjugator and the classify-and-verify oracle stay region-free.
-  func regionalAuxiliary(in region: Region) -> Auxiliary {
-    primaryReading.regionalAuxiliary(in: region)
-  }
-
   func withFrequency(_ frequency: Int) -> Verb {
     Verb(
       infinitiv: infinitiv,

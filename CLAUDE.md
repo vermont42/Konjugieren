@@ -105,19 +105,25 @@ which loads when working in that folder.
 
 Some suites in `KonjugierenTests/Utils/` are not tests but harnesses: they drive app code over the
 whole corpus and write a file. `VerbClassificationTests` (classify-and-verify, see
-[`docs/verb-classification.md`](docs/verb-classification.md)) and `CorpusFormsDumpTests`
-(form → lemma map, see [`prompts/uses_etymologies.md`](prompts/uses_etymologies.md)) are the
-current two. Both take an output path from the environment and are gated with
+[`docs/verb-classification.md`](docs/verb-classification.md)) is the current one. It takes its
+paths from the environment and is gated with
 `.enabled(if: ProcessInfo.processInfo.environment["KONJUGIEREN_…"] != nil)`, so an ordinary
-`run_tests.sh` neither writes files nor pays their cost. Follow that convention for new ones.
+`run_tests.sh` neither writes files nor pays its cost. Follow that convention for new ones, or
+prefer a host tool, as below.
+
+`corpus/working/forms.json`, the conjugation → infinitive map the Python pipelines read, no
+longer comes from a harness. `scripts/write_forms_json.sh` builds `ConjugationMapTool`, the macOS
+target that also writes the app's bundled conjugation map, and runs it. It fails loudly where the
+retired `CorpusFormsDumpTests` could succeed while writing nothing. See
+[`docs/feature-architecture.md`](docs/feature-architecture.md) § Conjugation Map.
 
 **`xcodebuild` forwards a host environment variable into the simulator only when it is named
 `TEST_RUNNER_<NAME>`**, stripping the prefix on the way in. Setting the bare name leaves the gate
 false and the suite skips. Green, silent, nothing written:
 
 ```bash
-TEST_RUNNER_KONJUGIEREN_FORMS_OUT="$PWD/corpus/working/forms.json" \
-xcodebuild … -only-testing:KonjugierenTests/CorpusFormsDumpTests
+TEST_RUNNER_KONJUGIEREN_CLASSIFY_IN="$PWD/verbdata/candidates.json" \
+xcodebuild … -only-testing:KonjugierenTests/VerbClassificationTests
 ```
 
 This is the third way a test run reports success while doing nothing, alongside the two

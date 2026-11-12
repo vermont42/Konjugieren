@@ -3,7 +3,8 @@
 
 Consumes:
   corpus/working/forms.json                  form -> [{verb, contiguous, particle?}]
-                                             built by KonjugierenTests/Utils/CorpusFormsDumpTests
+                                             written by scripts/write_forms_json.sh (ConjugationMapTool;
+                                             before 2026-11-12, the CorpusFormsDumpTests harness)
   verbdata/authored/shards/auth_*.out.json   the authored {de, en} sentences
   verbdata/authored/corrections.json         accepted fixes, overlaid on the authored sentences
                                              (optional; absent on a first run)
@@ -29,12 +30,12 @@ about style. See prompts/example_analysis.md, "Run the unconfounded signals firs
 
 Three facts about forms.json drive the matching logic, none obvious from the call site:
 
-1. Keys are LOWERCASED. CorpusFormsDump lowercases every form because Conjugator returns
+1. Keys are LOWERCASED. The writer lowercases every form because Conjugator returns
    mixed case as UI highlighting metadata ("sAng"), not orthography. So tokens must be
    lowercased before lookup.
 
 2. Separable verbs get TWO entries. A main clause strands the particle -- "er faengt ... an"
-   -- so the harness synthesizes the split form: "faengt" maps to anfangen with
+   -- so the writer emits the split form too: "faengt" maps to anfangen with
    contiguous=false and particle="an". Matching a split entry therefore requires finding the
    particle as a later standalone token, not just the finite form.
 

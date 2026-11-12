@@ -33,6 +33,9 @@ Konjugieren/
 │   ├── Auxiliary.swift         # haben/sein auxiliary verb enum
 │   ├── BrowseableFamily.swift  # Enum of browseable family categories for FamilyBrowseView
 │   ├── Clause.swift            # main/subordinate: whether a separable prefix splits off (ich stehe auf) or joins (aufstehe)
+│   ├── ConjugationLabels.swift # Display members of core types that need L or Settings (Family.displayName, PersonNumber.pronoun, Conjugationgroup.displayName(lang:)), kept out of the files ConjugationMapTool compiles
+│   ├── ConjugationMap.swift    # Conjugation → infinitive map (ging → gehen; halte → aufhalten with particle auf): builder, text/LZFSE format, and the bundled loader. Compiled into the app AND ConjugationMapTool
+│   ├── ConjugationMatch.swift  # Verb.conjugations(matching:): which cells of a verb equal a text, graded as the quiz grades; Conjugationgroup.allCells
 │   ├── Conjugationgroup.swift  # Enum of all conjugationgroups with endings
 │   ├── ConjugationgroupLang.swift  # Setting enum: german/english display
 │   ├── Conjugator.swift        # Core conjugation logic for all conjugationgroups; joined (subordinate-clause) conjugations by default, the Wiktionary oracle
@@ -57,7 +60,7 @@ Konjugieren/
 │   ├── LanguageModelService.swift      # Protocol for on-device AI error explanation and tutoring
 │   ├── LanguageModelServiceDummy.swift # No-op stub for tests/unsupported devices
 │   ├── LanguageModelServiceReal.swift  # FoundationModels implementation for AI tutoring
-│   ├── PersonNumber.swift      # 1s, 2s, 3s, 1p, 2p, 3p with localized pronouns
+│   ├── PersonNumber.swift      # 1s, 2s, 3s, 1p, 2p, 3p (pronouns live in ConjugationLabels.swift)
 │   ├── Prefix.swift            # Separable/inseparable prefix enum ([Prefix] helpers live in Reading.swift)
 │   ├── PrefixMeaning.swift     # Prefix meanings with PIE etymologies
 │   ├── PrefixSection.swift     # Curated-vs-other heading for the prefix-grouped verb list
@@ -166,6 +169,10 @@ KonjugierenWidget/
     ├── SmallWidgetView.swift       # Compact widget showing verb name and translation
     └── WidgetAblautText.swift      # Text rendering for ablaut changes in widgets
 
+ConjugationMapTool/             # macOS command-line target; borrows the conjugation core from Konjugieren/ via membership exceptions in project.pbxproj
+├── main.swift                  # Reads Verbs.xml + AblautGroups.xml, writes ConjugationMap.lzfse (app build phase) and/or forms.json (scripts/write_forms_json.sh)
+└── ToolWorld.swift             # Stand-in for the app's Current, offering only fatalError
+
 Shared/
 ├── GameActivityAttributes.swift    # ActivityKit model for game live activity
 ├── MixedCaseSegmenter.swift        # Pure ablaut segmentation shared by app and widget highlighting
@@ -180,6 +187,8 @@ Shared/
 KonjugierenTests/
 ├── CLAUDE.md                   # Lazily loaded Claude Code guidance: Swift Testing conventions for this target
 ├── Models/
+│   ├── ConjugationMapTests.swift   # Bundled map equals a fresh build (staleness), finds the verb of ≥99% of example sentences (Scan 2 of the defect plan), anchors, format round-trip
+│   ├── ConjugationMatchTests.swift # Verb.conjugations(matching:): clauses, regions, finite parts, readings
 │   ├── ConjugationgroupTests.swift # Conjugationgroup.ending(family:) ending-table tests
 │   ├── ConjugatorTests.swift   # Comprehensive conjugation tests (~50 test functions), incl. error paths
 │   ├── GameStateTests.swift    # Game-logic tests: damage invulnerability, robot-mechanic clearing, game-over/wave transitions, snapshot round-trip
@@ -193,7 +202,6 @@ KonjugierenTests/
 │   └── VerbVisitTests.swift    # VerbVisit: deepest section and banded dwell
 ├── Utils/
 │   ├── AnalyticsTests.swift    # Analytics bands, section order, and the match-kind mapping
-│   ├── CorpusFormsDumpTests.swift  # Harness: drives Conjugator over every verb to emit corpus/working/forms.json (form → lemma, with separable-prefix split forms). Gated on TEST_RUNNER_KONJUGIEREN_FORMS_OUT
 │   ├── DeeplinkTests.swift     # Deeplink URL parsing and handling tests, incl. the `source` query item
 │   ├── MixedCaseAccessibilityTests.swift  # VoiceOver label generation tests
 │   ├── MixedCaseSegmenterTests.swift  # Ablaut segmentation tests (empty/all-regular/all-irregular/formal Sie)
@@ -291,7 +299,8 @@ scripts/
 ├── render_emoji.swift         # Renders emoji glyphs to PNG assets in Assets.xcassets (workaround for iOS 26 emoji-rendering bug; see docs/emoji-assets.md)
 ├── sync_verb_history.py       # Validates docs/verb_history{,_de}.txt against StringExtensions' markup rules and writes the body back into Localizable.xcstrings
 ├── test_sync_verb_history.py  # Negative-tests every validator in sync_verb_history.py by corrupting a copy of the essay one way at a time; also asserts both shipping extracts validate clean
-└── take_screenshots.sh        # Drives ios-build-verify + axe/simctl through 36 App Store screenshots (9 views × 2 langs × 2 devices); see docs/screenshot-playbook.md
+├── take_screenshots.sh        # Drives ios-build-verify + axe/simctl through 36 App Store screenshots (9 views × 2 langs × 2 devices); see docs/screenshot-playbook.md
+└── write_forms_json.sh        # Builds ConjugationMapTool and writes corpus/working/forms.json for the Python pipelines (replaced the CorpusFormsDumpTests harness, 2026-11-12)
 
 corpus/                        # German text corpus for example sentence sourcing (gitignored,
 │                              # except corpus/working/*.py — see .gitignore for why)

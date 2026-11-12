@@ -9,14 +9,14 @@ class AblautGroupParser: NSObject, XMLParserDelegate {
   private var currentExemplar = ""
   private var currentAblauts = ""
 
-  override init() {
+  convenience override init() {
+    self.init(contentsOf: Bundle(for: AblautGroupParser.self).url(forResource: "AblautGroups", withExtension: "xml"))
+  }
+
+  init(contentsOf url: URL?) {
     super.init()
-    let bundle = Bundle(for: AblautGroupParser.self)
-    if let url = bundle.url(forResource: "AblautGroups", withExtension: "xml") {
+    if let url {
       parser = XMLParser(contentsOf: url)
-      if parser == nil {
-        return
-      }
       parser?.delegate = self
     }
   }

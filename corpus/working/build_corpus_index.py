@@ -15,8 +15,9 @@ Conjugar's `SNIPPET_WIDTH = 200` did not survive. It sized a *preview*, and Phas
 
 Inputs
   - corpus/working/forms.json : { "<surface form>": [{verb, contiguous, particle?}, …] }, written
-    by the `CorpusFormsDumpTests` Swift harness driving the app's own Conjugator over all verbs ×
-    conjugationgroups × persons. Exact whole-token matching against this map handles irregular
+    by scripts/write_forms_json.sh, which runs ConjugationMapTool, the app's own Conjugator over all
+    verbs × conjugationgroups × persons. (Before 2026-11-12 the CorpusFormsDumpTests harness wrote it,
+    identically.) Exact whole-token matching against this map handles irregular
     stems (hing/hängte) and avoids substring false positives.
   - corpus/{modern,government,government2,technology}/*.txt
 

@@ -48,10 +48,6 @@ struct Reading: Hashable {
   var prefix: Prefix {
     prefixes.first ?? .none
   }
-
-  func regionalAuxiliary(in region: Region) -> Auxiliary {
-    auxiliaryIsRegional ? region.regionalAuxiliary : auxiliary
-  }
 }
 
 extension [Prefix] {

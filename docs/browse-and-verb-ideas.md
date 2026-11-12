@@ -8,6 +8,11 @@ Conjugar. It is the companion to [`plans/pedagogy.md`](../plans/pedagogy.md), wh
 revised the same day, after Josh said that no release of any of the three apps is possible before
 2027.
 
+**Verdicts and plan, 2026-11-12.** Josh's verdict on each idea appears under its heading. The
+accepted ideas are being built under
+[`plans/browse-and-verb-implementation.md`](../plans/browse-and-verb-implementation.md), whose
+Decisions section also records his answers to four questions the verdicts left open.
+
 Six inputs went into this document:
 
 1. **The code.** `VerbBrowseView.swift`, `VerbView.swift`, `FamilyBrowseView.swift`,
@@ -391,6 +396,8 @@ connections (**inference**).
 
 #### A1. Fold Umlauts and Digraphs
 
+Verdict: Yes.
+
 Treat ä, ae, and a as the same letter when matching, and likewise ö, ü, and ß, so that konnen,
 koennen, and können all find können. The rule that already equates ß with ss shows the way.
 
@@ -404,6 +411,8 @@ koennen, and können all find können. The rule that already equates ß with ss 
 - **Conjuguer and Conjugar.** Already done in both.
 
 #### A2. Search English Glosses by Default, in Every Reading, Whole Words First
+
+Verdict: Yes, flip the default. Ensure that German matches show above English matches. When the user searches for "es", "essen" should appear above "rest".
 
 Search the gloss without asking the learner to find a setting. Search the glosses of all
 readings. Rank a whole-word match (eat) above a match inside a word (beat, create), and ignore a
@@ -422,6 +431,8 @@ first and English matches after them.
 
 #### A3. Rank the Exact Match First
 
+Verdict: Yes.
+
 Order results as: the infinitive that equals the query, then infinitives that begin with it, then
 the rest, each by frequency whatever the list's sort order.
 
@@ -436,6 +447,8 @@ the rest, each by frequency whatever the list's sort order.
 
 #### A4. A Useful Empty State
 
+Verdict: Partial. Keep the trombone on a failed search because it is funny. But, on a failed search, offer the closest match from fuzzy search and note that the result is a guess. Also note that if the user believes that the searched-for verb is real, the user should email vermontcoder@gmail.com .
+
 When nothing matches, say what search accepts, offer the nearest verbs by spelling, and retire
 the trombone, which mocks the learner at the moment the app has failed. Add an "Ask for this
 verb" link that opens a message to Josh with the query filled in.
@@ -448,6 +461,8 @@ verb" link that opens a message to Josh with the query filled in.
 - **Conjuguer and Conjugar.** The same change, trombone included.
 
 #### A5. Reverse Lookup from a Conjugation
+
+Verb: Yes. Generate the conjugations as a build step that only runs as needed. Save and consider the last-modified time of the relevant input file.
 
 Let search find a verb from any of its conjugations. This is the first of the plan's ideas, and
 its open questions now have answers.
@@ -523,6 +538,8 @@ wendete, schuf, hieb), which is corpus work the roadmap already describes.
 
 #### A6. Paste a Sentence, Find Its Verbs
 
+Verdict: No. Not worth the effort, given the low usage of the app and difficulty of discovering that feature.
+
 A second mode for search: paste or dictate a sentence, and the app shows it back with its verbs
 marked and tappable. This answers the case that typing cannot, the separable verb whose particle
 stands at the end of the clause.
@@ -548,6 +565,8 @@ steps on the same base.
 
 #### A7. Conjugate Verbs That Are Not in the Corpus
 
+Verdict: No. The corpus is already quite large and is growing.
+
 When an infinitive is unknown, try two things before giving up. If it is a known prefix on a
 known verb (hinaufkommen, weiterschlafen, abspeichern), build its table from the base verb and
 the prefix's rules. If it looks like an ordinary weak verb (googeln, chatten, joggen), build the
@@ -567,6 +586,8 @@ regular table. Label either as derived and unverified.
 
 #### A8. Search-Field Hygiene
 
+Verdict: Yes.
+
 Turn off autocapitalization and autocorrection in the field, say in the placeholder what can be
 typed, and offer the ä, ö, ü, and ß keys above the keyboard that the quiz report proposes for the
 answer field.
@@ -578,6 +599,8 @@ answer field.
 - **Conjuguer and Conjugar.** Worth the same check. Not verified.
 
 #### A9. Ways to Browse Without Typing
+
+Verdict: Partial. On the Families tab, within families, put a new segmented control between the description and the Verbs Text. This defaults to Alphabetical, which maintains current behavior. The other option is Frequency. This sorts verbs by frequency of use, greatest to least.
 
 Filters for the frequency bands and the families, a view that folds the 3,084 prefixed verbs
 under their base verbs, and frequency order inside the Families lists.
@@ -593,6 +616,8 @@ under their base verbs, and frequency order inside the Families lists.
 
 #### B1. Principal Parts at the Top
 
+Verdict: No. I like the current layout and find it intuitive. "Principle parts" is a concept that is likely unknown to most learners. I only know it because of my casual interest in Latin verbs.
+
 Under the gloss, one line in the shape the Goethe-Institut's word list uses: aufstehen, steht
 auf, stand auf, ist aufgestanden. Tapping a part jumps to its section.
 
@@ -607,6 +632,8 @@ auf, stand auf, ist aufgestanden. Tapping a part jumps to its section.
 
 #### B2. Show Separable Verbs as a Main Clause Writes Them
 
+Verdict: Partial. Do show the separated conjugation. Don't show the joined conjugation. That may be useful, but it would clutter what is already an information-dense screen.
+
 Display ich stehe auf, and note the joined conjugation for subordinate clauses.
 
 - **Basis.** The joined display is observed. Separable verbs are 61.4% of the corpus. The app's
@@ -620,6 +647,8 @@ Display ich stehe auf, and note the joined conjugation for subordinate clauses.
   Conjugar shows bare conjugations for its 114 reflexive-only verbs (**observed**).
 
 #### B3. Order and Fold the Sections by Use, and Name Them Twice
+
+Verdict: Partial. I like the current arrangement of simple conjugationgroups followed by compound conjugationgroups and want to keep that. Nor do I want to make less popular conjugationgroups less accesssible. That said, I would like one change: within the simple conjugationgroups and within the compound conjugationgroups, order the conjugationgroups by frequency of use. This order can be derived from a sampling of the corpus. I recognize that conjugationgroup use varies by register and setting, but a sample of the corpus should give some indication. Do add alternate conjugationgroup names. Do add a button (i within circle icon) to the right of every conjugationgroup that links to the conjugationgroup's description. Add a TipKit tip on VerbView explaining the red letters. This tip does not reappear after dismissal.
 
 Lead with the conjugationgroups a learner meets first (Präsens Indikativ, Perfekt Indikativ,
 Präteritum Indikativ, Imperativ, then the würde and hätte constructions) and fold the rest under
@@ -637,6 +666,8 @@ letters once.
 
 #### B4. Related Verbs
 
+Verdict: Yes.
+
 Give the page ways out: the base verb and its derivatives (stehen, aufstehen, verstehen,
 bestehen), the other verbs of its ablaut group, and its family.
 
@@ -648,6 +679,8 @@ bestehen), the other verbs of its ablaut group, and its family.
   Making Conjugar's a link is S.
 
 #### B5. Bring the Etymology and the Example Within Reach
+
+Verdict: No. This a lot of effort for possibly low return. That said, do add a new TipKit tip after the user dismisses the red-letter tip, encouraging the user to scroll to the bottom for etymology and example use.
 
 A one-line teaser near the top that links to each. They are the app's most distinctive content,
 present for every verb, and they sit 3,160 and 3,920 points down.
@@ -661,6 +694,8 @@ present for every verb, and they sit 3,160 and 3,920 points down.
 
 #### B6. Copy and Share
 
+Verdict: Yes.
+
 A long press copies a conjugation. A share button sends the principal parts with a link.
 
 - **Basis.** Visitors referred by another app download Konjugieren at 24.1%, against 5.4% for
@@ -673,6 +708,8 @@ A long press copies a conjugation. A share button sends the principal parts with
 
 #### B7. The Sections the Page Lacks
 
+Verdict: No. But build an Info article about Futur II.
+
 Add Futur II, built from parts the conjugator already has. For the passive, which only some
 verbs have, add a line that shows how it is built.
 
@@ -684,6 +721,8 @@ verbs have, add a line that shows how it is built.
 ### Group C: Meet People Outside the App
 
 #### C1. A Way to Open Search from Outside
+
+Verdict: Yes.
 
 Add a `search` deeplink that can carry text, an App Intent "Look Up a Verb" that takes a word and
 answers "ging: Präteritum Indikativ of gehen" before opening the page, a Control Center control,
@@ -698,6 +737,8 @@ and a Home Screen quick action.
 
 #### C2. Spotlight That Finds Conjugations and Glosses
 
+Verdict: Yes.
+
 Add each verb's principal parts and gloss to its entry's keywords and alternate names, and move
 to a named index.
 
@@ -708,6 +749,8 @@ to a named index.
 - **Conjuguer and Conjugar.** New work in both. Conjuguer's repository has a design note for it.
 
 #### C3. Fix the Shortcut Picker and Add German Phrases
+
+Verdict: No.
 
 Rank the exact match first in the verb picker, and add German spoken phrases.
 
@@ -723,6 +766,8 @@ frequency, before it keeps 25. The German phrases remain.
 
 #### C4. Keyboard Lookup on iPad and Mac
 
+Verdict: Yes.
+
 Command-F to focus search, Return to open the first result, arrow keys to move.
 
 - **Basis.** The Swiss institution behind most of Conjuguer's downloads installed it on Macs.
@@ -737,6 +782,8 @@ how little they ask of the learner. None sends a notification.
 
 #### D1. Recents
 
+ Verdict: Yes.
+
 Keep the last 20 or so verbs opened, on the device only, and show them when the search field is
 focused and empty.
 
@@ -747,6 +794,8 @@ focused and empty.
 - **Conjuguer and Conjugar.** A new store in each.
 
 #### D2. My Verbs
+
+Verdict: Yes.
 
 A star on the verb page, and a list that holds starred verbs and recent lookups. The list is a
 filter in the verb list and a scope in the quiz.
@@ -759,6 +808,8 @@ filter in the verb list and a scope in the quiz.
 
 #### D3. "Test Me on This Verb"
 
+Verdict: Yes.
+
 A button on the verb page that asks three questions about the verb in view. The entry point
 belongs to this track and the questions to the quiz track.
 
@@ -769,6 +820,8 @@ belongs to this track and the questions to the quiz track.
 - **Conjuguer and Conjugar.** Their quizzes draw from fixed lists and would need a scope first.
 
 #### D4. A Review Card on the Landing Screen
+
+Verdict: Yes.
 
 When someone opens the app for the next lookup, one card above the list offers a verb looked up
 some days ago, with its principal parts hidden until tapped. One tap reveals them and one
@@ -784,6 +837,8 @@ dismisses the card.
 
 #### D5. A Verb of the Day Worth Opening
 
+Verdict: Yes.
+
 Draw the widget's verb and the random verb from the 1,000 most frequent verbs, favoring strong
 and base verbs, and from My Verbs once it has entries.
 
@@ -794,6 +849,8 @@ and base verbs, and from My Verbs once it has entries.
 - **Conjuguer and Conjugar.** Check how each chooses its verb. Not verified.
 
 #### D6. Collections
+
+Verdict: Yes.
 
 Fixed lists as places to go: the 100 most frequent verbs, the modal verbs, the verbs that take
 sein, each ablaut group. A list shows how many of its verbs have been opened, can be shared as a
@@ -806,6 +863,8 @@ link, and can start a quiz on itself.
 - **Conjuguer and Conjugar.** Strongest for Conjuguer, because of schools.
 
 ### Smaller and Later Ideas
+
+Verdict: No.
 
 | Idea | Basis | Effort | Signal | Siblings |
 |---|---|---|---|---|

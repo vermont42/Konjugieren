@@ -9291,3 +9291,31 @@ and eight pointing at it. All were repointed, along with plain-text mentions in 
 the ideas document, the defect plan, `feature-architecture.md`, and `project-structure.md`.
 Earlier journal entries keep their wording, and only their link targets changed, so the history
 still resolves.
+
+## A plan for the accepted browse and verb ideas (2026-11-12)
+
+Josh wrote a verdict under every idea in `docs/browse-and-verb-ideas.md`, and I turned the
+accepted ones into `plans/browse-and-verb-implementation.md`: sixteen phases and a closing, each
+small enough for one session, with a Status table that each session fills in and a "How it
+differed" slot under each phase. The plan says what and why, and it leaves the how to the session
+that builds it, as Josh asked.
+
+Several verdicts amended the ideas rather than accepting them whole, and the amendments are the
+interesting part. The trombone survives a failed search because it is funny; the empty state
+gains a single fuzzy guess, labeled as one, and an invitation to email Josh. B1's principal-parts
+line was rejected because learners do not know the term, so the plan keeps the underlying
+function (the share text, Spotlight, and the review card all want a verb's key conjugations) but
+forbids the label. B3's reordering by use became something narrower: keep simple before compound,
+and order by frequency only within each block, counted from the repo's own text corpus. B5's
+teasers became a TipKit tip that follows the red-letter tip.
+
+Four questions remained, and Josh answered them before I wrote anything. The three proposed
+signals all go in, with their privacy-policy lines staged apart from `privacy_policy.txt` so that
+deploying the defect plan's correction cannot publish them early. The conjugation map is built at
+build time by a host tool that compiles the Conjugator's sources, with Xcode skipping it unless
+`Verbs.xml`, `AblautGroups.xml`, or the conjugator changed. Josh's first wording keyed it on one
+file's modification time, which would have missed a change to the conjugator itself. Separable
+verbs display split, and the quiz accepts both conjugations, which also settles the pedagogy
+report's first decision. And because the quiz track has no plan yet, this plan builds the minimal
+quiz pieces its ideas need (a quiz over a list of verbs, a due date per verb) for the quiz track
+to extend later.

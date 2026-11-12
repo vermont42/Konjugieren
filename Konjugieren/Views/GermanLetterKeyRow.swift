@@ -17,6 +17,7 @@ struct GermanLetterKeyRow: View {
         } label: {
           Text(verbatim: letter)
             .font(.title3)
+            .foregroundStyle(Color.customYellow)
             .frame(minWidth: 44, minHeight: 32)
         }
         .buttonStyle(.bordered)

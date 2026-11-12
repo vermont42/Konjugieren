@@ -9440,3 +9440,42 @@ The policy lines did not go into `privacy_policy.txt`, which Josh can deploy at 
 must describe the shipped app. They wait in `docs/privacy-policy-pending.md` in both languages.
 `CLAUDE.md`'s note about the release freeze points there, since whoever lifts that freeze is the
 person who needs them.
+
+## Separable Verbs as a Main Clause Writes Them (2026-11-12)
+
+Phase 4 of the browse plan changed what the verb page teaches about the 61% of the corpus that is
+separable. The page used to print "ich aufstehe" and "du aufstandest": the conjugations of a
+subordinate clause, where the verb goes to the end and rejoins its prefix. A learner who copied the
+table into a sentence of their own wrote German no one says. The app's own Info articles taught the
+other order ("ich komme ... an"), so the page and the articles disagreed.
+
+The interesting part was finding the inconsistency inside the page itself. The compound sections
+already printed "bin aufgestanden", which is main-clause order, since a subordinate clause would
+say "aufgestanden bin". The Imperativ already split ("steh auf"). Only the four finite simple
+conjugationgroups were in subordinate order. So the change made the page agree with itself as well
+as with the articles.
+
+The question the plan left open was where the split should live. `Conjugator` looked like the
+obvious place, but it is also the oracle that the classify-and-verify pipeline compares with
+Wiktionary, the source of `forms.json` for the corpus pipelines, and the subject of about a
+thousand test expectations. All three deal in the joined word, which is what a dictionary table
+lists and what a form-to-lemma map wants. So `Conjugator` gained a `clause` parameter that defaults
+to the subordinate clause and changes nothing for those callers. `RegionalConjugator`, which already
+existed as "conjugation as the user should see it", defaults to the main clause. That single
+default switched the verb page, the widget, the Conjugate a Verb shortcut, the family pages, and the
+Tutor's tool together, without editing any of them.
+
+The split is the Imperativ's helper, reused. It removes the leading run of separable prefixes and
+puts it after the verb, which already handled the hard cases: nachvollziehen gives "vollziehe nach",
+because an inseparable prefix ends the run, and achthaben gives "hat acht", because haben's
+conjugations are full overrides that carry their prefixes in front.
+
+The quiz now shows "kommt an" and accepts "ankommt" too, since a prompt with no sentence cannot say
+which clause it means. This settles the quiz report's first decision the way it proposed. Grading
+moved into `QuizItem.accepts`, which also collapses doubled spaces, a typo that could not matter
+while every answer was one word.
+
+Two of my own test expectations failed on the first run, and both were mine to fix rather than the
+code's. stehen's ablaut region is `eh`, so the Präteritum is written `stANDest`, not `stAndst`. The
+mixed case in an expectation is a claim about which letters the ablaut replaced, and it has to be
+copied from the ablaut group rather than guessed.

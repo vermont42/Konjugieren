@@ -32,9 +32,10 @@ Konjugieren/
 │   ├── AudioFeedback.swift     # Setting enum: enable/disable sound effects
 │   ├── Auxiliary.swift         # haben/sein auxiliary verb enum
 │   ├── BrowseableFamily.swift  # Enum of browseable family categories for FamilyBrowseView
+│   ├── Clause.swift            # main/subordinate: whether a separable prefix splits off (ich stehe auf) or joins (aufstehe)
 │   ├── Conjugationgroup.swift  # Enum of all conjugationgroups with endings
 │   ├── ConjugationgroupLang.swift  # Setting enum: german/english display
-│   ├── Conjugator.swift        # Core conjugation logic for all conjugationgroups
+│   ├── Conjugator.swift        # Core conjugation logic for all conjugationgroups; joined (subordinate-clause) conjugations by default, the Wiktionary oracle
 │   ├── ConjugatorError.swift   # Error enum for conjugation failures
 │   ├── Etymologies.json        # Bundled verb etymologies keyed by language and infinitive
 │   ├── Etymology.swift         # Lazy-loading etymology lookup by infinitive
@@ -101,7 +102,7 @@ Konjugieren/
 │   ├── MixedCaseAccessibility.swift  # VoiceOver labels for mixed-case ablaut strings
 │   ├── Modifiers.swift         # Custom ViewModifiers (headingLabel, funButton, etc.)
 │   ├── RatingsFetcher.swift    # Fetches app ratings from iTunes API
-│   ├── RegionalRendering.swift # ß→ss display transform + RegionalConjugator (region-aware wrapper over the region-free Conjugator); search folding lives in VerbSearch
+│   ├── RegionalRendering.swift # ß→ss display transform + RegionalConjugator (region-aware wrapper over the region-free Conjugator, defaulting to main-clause conjugations: steht auf); search folding lives in VerbSearch
 │   ├── ReviewPrompter.swift    # Protocol for review-prompting behavior
 │   ├── ReviewPrompterDummy.swift   # No-op stub for tests
 │   ├── ReviewPrompterReal.swift    # Real implementation prompting reviews at intervals

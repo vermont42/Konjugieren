@@ -24,13 +24,15 @@ extension String {
 /// Conjugation as the user should see it, as opposed to `Conjugator`, which is deliberately
 /// region-free so that it can keep serving as the oracle for the classify-and-verify pipeline.
 /// Everything region-sensitive lives here: the auxiliary a regionally conditioned verb takes,
-/// and Swiss orthography.
+/// and Swiss orthography. It also shows a separable verb as a main clause writes it (ich
+/// stehe auf), since that is what a learner reads and writes most often.
 enum RegionalConjugator {
   static func conjugate(
     infinitiv: String,
     conjugationgroup: Conjugationgroup,
     region: Region = Current.settings.region,
-    readingIndex: Int = 0
+    readingIndex: Int = 0,
+    clause: Clause = .main
   ) -> Result<String, ConjugatorError> {
     // The auxiliary is read off the selected reading rather than the verb, because the two
     // kinds of auxiliary variation compose: schmelzen picks its auxiliary by meaning, and a
@@ -40,7 +42,8 @@ enum RegionalConjugator {
       infinitiv: infinitiv,
       conjugationgroup: conjugationgroup,
       auxiliary: auxiliary,
-      readingIndex: readingIndex
+      readingIndex: readingIndex,
+      clause: clause
     )
     switch result {
     case .success(let conjugation):
@@ -54,9 +57,10 @@ enum RegionalConjugator {
     infinitiv: String,
     conjugationgroup: Conjugationgroup,
     region: Region = Current.settings.region,
-    readingIndex: Int = 0
+    readingIndex: Int = 0,
+    clause: Clause = .main
   ) -> String {
-    switch conjugate(infinitiv: infinitiv, conjugationgroup: conjugationgroup, region: region, readingIndex: readingIndex) {
+    switch conjugate(infinitiv: infinitiv, conjugationgroup: conjugationgroup, region: region, readingIndex: readingIndex, clause: clause) {
     case .success(let conjugation):
       return conjugation
     case .failure(let error):

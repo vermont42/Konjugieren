@@ -666,6 +666,13 @@ Display ich stehe auf, and note the joined conjugation for subordinate clauses.
 - **Conjuguer and Conjugar.** No separable verbs. The nearest relative is the reflexive pronoun:
   Conjugar shows bare conjugations for its 114 reflexive-only verbs (**observed**).
 
+**Built on `main` 2026-11-12** by [Phase 4](../plans/browse-and-verb-implementation.md#phase-4-separable-verbs-as-a-main-clause-writes-them)
+of the implementation plan, as Josh's verdict has it: the verb page shows ich stehe auf and du
+standest auf, with no joined conjugation beside them. The quiz shows the split conjugation as the
+answer and accepts the joined one too. The widget, the "Conjugate a Verb" shortcut, and the Tutor's
+conjugation tool show the split conjugation as well. `Conjugator` still returns the joined
+conjugation by default, for Wiktionary and the corpus pipelines.
+
 #### B3. Order and Fold the Sections by Use, and Name Them Twice
 
 Verdict: Partial. I like the current arrangement of simple conjugationgroups followed by compound conjugationgroups and want to keep that. Nor do I want to make less popular conjugationgroups less accesssible. That said, I would like one change: within the simple conjugationgroups and within the compound conjugationgroups, order the conjugationgroups by frequency of use. This order can be derived from a sampling of the corpus. I recognize that conjugationgroup use varies by register and setting, but a sample of the corpus should give some indication. Do add alternate conjugationgroup names. Do add a button (i within circle icon) to the right of every conjugationgroup that links to the conjugationgroup's description. Add a TipKit tip on VerbView explaining the red letters. This tip does not reappear after dismissal.

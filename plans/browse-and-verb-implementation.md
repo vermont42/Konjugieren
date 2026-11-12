@@ -17,7 +17,7 @@ that Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until
 | 1 | Done | 2026-11-12 | `bcab0c3` | A1, A2, A3, A8 |
 | 2 | Done | 2026-11-12 | `40acbdf` | A4, C4 |
 | 3 | Done | 2026-11-12 | `1fcef34` | Signals |
-| 4 | Not started | | | B2 |
+| 4 | Awaiting Josh | 2026-11-12 | | B2 |
 | 5 | Not started | | | A5 (the map) |
 | 6 | Not started | | | A5 (the search) |
 | 7 | Not started | | | B3, B5's tip |
@@ -318,6 +318,42 @@ page and the quiz do with it; what the widget's quiz and the "Conjugate a Verb" 
 and whether any Info article contradicts the new display.
 
 **How it differed:**
+
+- **The Conjugator's output does not change; its callers' does.** `Conjugator.conjugate` gained
+  `clause: Clause` (`Clause.swift`: `main`, `subordinate`), defaulting to `.subordinate`, the joined
+  conjugation it has always returned. That default keeps the classify-and-verify oracle, the ~1,000
+  `ConjugatorTests` expectations, and `CorpusFormsDumpTests`' `forms.json` exactly as they were,
+  since Wiktionary's tables and the Python pipelines both deal in the joined word.
+  `RegionalConjugator` defaults to `.main`, so every surface that shows a conjugation to a learner
+  switched at once: the verb page, the quiz's shown answer, the widget's Präsens table and its
+  multiple-choice quiz, the "Conjugate a Verb" shortcut, the family pages, and the Tutor's
+  conjugation tool. `conjugate(…, clause: .main)` is the function this phase was to add.
+- **Only the four finite simple conjugationgroups split.** The split reuses `withSeparablePrefix`,
+  the Imperativ's helper, so only the leading run of separable prefixes moves (nachvollziehen gives
+  vollziehe nach) and a full override such as haben's keeps working (achthaben gives hat acht). The
+  compound conjugationgroups were already in main-clause order (bin aufgestanden), so the old page
+  mixed two word orders and the new one has one. The Imperativ splits under either clause, as
+  before. **For Phase 5:** a stranded finite part is the first word of a `.main` conjugation of a
+  separable reading in those four conjugationgroups.
+- **The quiz** grades against every region's conjugation in both clauses, and shows the main-clause
+  one. Grading moved into `QuizItem.accepts`, which also collapses runs of spaces, now that an
+  answer can have two words. It does not accept the subordinate order of a compound conjugation
+  (angekommen bin), which nobody asked for. `makeQuizItem` became internal, with an optional
+  `readingIndex`, so tests can build an item for a chosen verb; Phase 13 may find it useful.
+- **No Info article contradicts the display.** The Präsens and Präteritum Indikativ articles
+  already teach "ich komme ... an" and the subordinate "dass der Zug ... ankommt", and the Futur,
+  Perfekt, and Präsenspartizip articles describe conjugations that do not split. The Families
+  tab's separable-verb text says the same. The page now agrees with them where it used to
+  contradict them.
+- **Not changed:** `VerbExportTests`, a harness that exports every verb's page to JSON, still calls
+  `Conjugator` directly and so writes joined conjugations. The App Store screenshot fixture's
+  ankommen question now expects "kommt an", which `take_screenshots.sh` types from the exported
+  answer, so it needs no edit, but a retaken screenshot would differ.
+- **Pedagogy decision 1** is settled by this phase. The Closing updates `plans/pedagogy.md`.
+- **How it was tested.** 4 new tests (the split and its exceptions in `ConjugatorTests`, the
+  regional default, and two for quiz grading), 280 in all. aufstehen's page was checked in the
+  iPhone 17 simulator. The widget and the shortcut were not looked at, since they read the same
+  `RegionalConjugator` default.
 
 ## Phase 5: The Conjugation Map as a Build Product
 

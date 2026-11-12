@@ -949,9 +949,10 @@ struct ConjugatorTests {
     conjugationgroup: Conjugationgroup,
     expected: String,
     readingIndex: Int = 0,
+    clause: Clause = .subordinate,
     sourceLocation: SourceLocation = #_sourceLocation
   ) {
-    let result = Conjugator.conjugate(infinitiv: infinitiv, conjugationgroup: conjugationgroup, readingIndex: readingIndex)
+    let result = Conjugator.conjugate(infinitiv: infinitiv, conjugationgroup: conjugationgroup, readingIndex: readingIndex, clause: clause)
     switch result {
     case .success(let conjugation):
       #expect(conjugation == expected, "Expected \(infinitiv) reading \(readingIndex) → \(expected), got \(conjugation)", sourceLocation: sourceLocation)
@@ -1013,6 +1014,57 @@ struct ConjugatorTests {
     // Only the outer separable prefix detaches; the inseparable one stays put.
     expectConjugation(infinitiv: "nachvollziehen", conjugationgroup: .imperativ(.secondPlural), expected: "vollzieht nach")
     expectConjugation(infinitiv: "nachvollziehen", conjugationgroup: .perfektpartizip, expected: "nachvollzOGen")
+  }
+
+  // A main clause leaves a separable prefix at the end (ich stehe auf), which is what the verb
+  // page shows. Only the four finite simple conjugationgroups change; the joined conjugation
+  // stays the default because Wiktionary and the corpus pipelines read it.
+  @Test func mainClauseSplitsSeparablePrefix() {
+    expectConjugation(infinitiv: "ankommen", conjugationgroup: .präsensIndikativ(.firstSingular), expected: "komme an", clause: .main)
+    expectConjugation(infinitiv: "ankommen", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "kommt an", clause: .main)
+    expectConjugation(infinitiv: "ankommen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "kAm an", clause: .main)
+    expectConjugation(infinitiv: "ankommen", conjugationgroup: .präsensKonjunktivI(.thirdSingular), expected: "komme an", clause: .main)
+    expectConjugation(infinitiv: "ankommen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "kÄme an", clause: .main)
+    expectConjugation(infinitiv: "aufstehen", conjugationgroup: .präteritumIndikativ(.secondSingular), expected: "stANDest auf", clause: .main)
+    expectConjugation(infinitiv: "kennenlernen", conjugationgroup: .präsensIndikativ(.firstPlural), expected: "lernen kennen", clause: .main)
+
+    // Only the leading separable run detaches, as in the Imperativ, and an ablaut region
+    // inside the base is untouched by the move.
+    expectConjugation(infinitiv: "nachvollziehen", conjugationgroup: .präsensIndikativ(.firstSingular), expected: "vollziehe nach", clause: .main)
+    expectConjugation(infinitiv: "einbeziehen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "bezOG ein", clause: .main)
+    expectConjugation(infinitiv: "heraufbeschwören", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "beschwört herauf", clause: .main)
+
+    // A base whose conjugation is a full override still gets its prefix moved: acht + hat.
+    expectConjugation(infinitiv: "achthaben", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "hAt acht", clause: .main)
+
+    // Separability belongs to the reading: über*setzen "translate" never splits, while
+    // über+setzen "ferry across" does.
+    expectConjugation(infinitiv: "übersetzen", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "übersetzt", clause: .main)
+    expectConjugation(infinitiv: "übersetzen", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "setzt über", readingIndex: 1, clause: .main)
+
+    // Verbs without a separable prefix, and conjugationgroups that never split, are unchanged.
+    expectConjugation(infinitiv: "verstehen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "verstAND", clause: .main)
+    expectConjugation(infinitiv: "gehen", conjugationgroup: .präsensIndikativ(.firstSingular), expected: "gehe", clause: .main)
+    expectConjugation(infinitiv: "ankommen", conjugationgroup: .perfektpartizip, expected: "angekommen", clause: .main)
+    expectConjugation(infinitiv: "ankommen", conjugationgroup: .präsenspartizip, expected: "ankommend", clause: .main)
+    expectConjugation(infinitiv: "ankommen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "BIN angekommen", clause: .main)
+    expectConjugation(infinitiv: "ankommen", conjugationgroup: .futurIndikativ(.firstSingular), expected: "werde ankommen", clause: .main)
+
+    // The Imperativ has no subordinate clause, so it splits either way.
+    expectConjugation(infinitiv: "ankommen", conjugationgroup: .imperativ(.secondSingular), expected: "komm an", clause: .subordinate)
+  }
+
+  // RegionalConjugator is what the verb page, the quiz, the widget, and the shortcuts call, so
+  // its default is the main clause, and Swiss orthography applies to the split conjugation too.
+  @Test func regionalConjugatorDefaultsToMainClause() {
+    let germany = RegionalConjugator.conjugate(infinitiv: "aufstehen", conjugationgroup: .präsensIndikativ(.firstSingular), region: .north)
+    #expect(try! germany.get() == "stehe auf")
+
+    let joined = RegionalConjugator.conjugate(infinitiv: "aufstehen", conjugationgroup: .präsensIndikativ(.firstSingular), region: .north, clause: .subordinate)
+    #expect(try! joined.get() == "aufstehe")
+
+    let swiss = RegionalConjugator.conjugate(infinitiv: "anschließen", conjugationgroup: .präsensIndikativ(.thirdSingular), region: .switzerland)
+    #expect(try! swiss.get() == "schliesst an")
   }
 
   // hängen is the type case for readings that inflect differently: strong and intransitive

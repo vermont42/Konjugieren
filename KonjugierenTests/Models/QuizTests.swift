@@ -149,6 +149,30 @@ struct QuizTests {
     quiz.quit()
   }
 
+  // A separable verb's canonical answer is the main-clause one the verb page shows, and the
+  // joined one is accepted too, since the prompt gives no sentence to decide between them.
+  @Test func separableVerbAcceptsSplitAndJoinedConjugations() {
+    let quiz = Quiz(timerInterval: 0.001)
+    let verb = Verb.verbs["ankommen"]!
+    let item = quiz.makeQuizItem(verb: verb, conjugationgroup: .präsensIndikativ(.thirdSingular), readingIndex: 0)
+
+    #expect(item.correctAnswer == "kommt an")
+    #expect(item.accepts("kommt an"))
+    #expect(item.accepts("ankommt"))
+    #expect(item.accepts("  Kommt   an "))
+    #expect(!item.accepts("an kommt"))
+    #expect(!item.accepts("kommtan"))
+  }
+
+  @Test func compoundConjugationOfSeparableVerbIsUnchanged() {
+    let quiz = Quiz(timerInterval: 0.001)
+    let verb = Verb.verbs["ankommen"]!
+    let item = quiz.makeQuizItem(verb: verb, conjugationgroup: .perfektIndikativ(.firstSingular), readingIndex: 0)
+
+    #expect(item.correctAnswer == "BIN angekommen")
+    #expect(item.acceptableAnswers == ["bin angekommen"])
+  }
+
   @Test func submitAnswerWhenNotInProgressDoesNothing() {
     let quiz = Quiz()
     quiz.submitAnswer("anything")

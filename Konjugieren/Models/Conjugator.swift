@@ -21,11 +21,18 @@ enum Conjugator {
   // `readingIndex` selects among a verb's readings, which may differ in auxiliary, family,
   // and prefix all at once: hängen inflects strong when intransitive and weak when
   // transitive. It defaults to the primary reading, so existing call sites are unaffected.
+  //
+  // `clause` defaults to the subordinate clause, which joins a separable prefix to its verb
+  // (ankommt), because the joined conjugation is one word: Wiktionary's tables list it, the
+  // pipelines in corpus/ map it back to its infinitive, and every ConjugatorTests expectation
+  // was written against it. What the learner sees is the main clause, so RegionalConjugator
+  // defaults the other way.
   static func conjugate(
     infinitiv: String,
     conjugationgroup: Conjugationgroup,
     auxiliary: Auxiliary? = nil,
-    readingIndex: Int = 0
+    readingIndex: Int = 0,
+    clause: Clause = .subordinate
   ) -> Result<String, ConjugatorError> {
     guard infinitiv.count >= Verb.minVerbLength else {
       return .failure(.verbTooShort)
@@ -46,7 +53,14 @@ enum Conjugator {
 
     switch conjugationgroup {
     case .präsensIndikativ, .präsensKonjunktivI, .präteritumIndikativ, .präteritumKonjunktivII:
-      return conjugateSimpleTense(reading: reading, conjugationgroup: conjugationgroup)
+      return conjugateSimpleTense(reading: reading, conjugationgroup: conjugationgroup).map { conjugation in
+        switch clause {
+        case .main:
+          return withSeparablePrefix(reading: reading, form: conjugation)
+        case .subordinate:
+          return conjugation
+        }
+      }
 
     case .perfektpartizip:
       let (newStamm, isFullOverride) = applyAblaut(stamm: reading.stamm, reading: reading, conjugationgroup: conjugationgroup)

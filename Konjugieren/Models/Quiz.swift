@@ -82,8 +82,7 @@ class Quiz {
   func submitAnswer(_ answer: String) {
     guard isInProgress, currentIndex < questions.count else { return }
 
-    let trimmedAnswer = answer.trimmingCharacters(in: .whitespaces).lowercased()
-    let isCorrect = questions[currentIndex].acceptableAnswers.contains(trimmedAnswer)
+    let isCorrect = questions[currentIndex].accepts(answer)
 
     questions[currentIndex].userAnswer = answer
     questions[currentIndex].isCorrect = isCorrect
@@ -198,22 +197,28 @@ class Quiz {
     return items
   }
 
-  private func makeQuizItem(verb: Verb, conjugationgroup: Conjugationgroup) -> QuizItem {
+  func makeQuizItem(verb: Verb, conjugationgroup: Conjugationgroup, readingIndex: Int? = nil) -> QuizItem {
     // A question asks about exactly one reading, and the prompt shows that reading's gloss,
     // so a two-reading verb has one right answer rather than two. Without this, hängen in
     // the Präteritum would accept hing and hängte indistinguishably and teach neither.
-    let readingIndex = verb.readings.indices.randomElement() ?? 0
+    let readingIndex = readingIndex ?? verb.readings.indices.randomElement() ?? 0
 
     // The region setting governs presentation and never marks a learner wrong: a user who
     // types a correct conjugation from another standard variety has answered correctly.
     // Only the canonical answer, shown in results and error history, follows the setting.
-    let acceptableAnswers = Set(Region.allCases.map { region in
-      RegionalConjugator.conjugateUnsafely(
-        infinitiv: verb.infinitiv,
-        conjugationgroup: conjugationgroup,
-        region: region,
-        readingIndex: readingIndex
-      ).lowercased()
+    // The same holds for word order: the prompt gives no sentence, so a separable verb's
+    // subordinate-clause conjugation (ankommt) is as right as the main-clause one shown
+    // (kommt an).
+    let acceptableAnswers = Set(Region.allCases.flatMap { region in
+      Clause.allCases.map { clause in
+        RegionalConjugator.conjugateUnsafely(
+          infinitiv: verb.infinitiv,
+          conjugationgroup: conjugationgroup,
+          region: region,
+          readingIndex: readingIndex,
+          clause: clause
+        ).lowercased()
+      }
     })
     let correctAnswer = RegionalConjugator.conjugateUnsafely(
       infinitiv: verb.infinitiv,
@@ -477,6 +482,13 @@ struct QuizItem: Identifiable {
     // The canonical answer is always acceptable, so a caller that knows of no other variety
     // still grades correctly.
     self.acceptableAnswers = acceptableAnswers ?? [correctAnswer.lowercased()]
+  }
+
+  /// Whether an answer as typed is right. Case is ignored, and so is spacing, which matters
+  /// now that a separable verb's answer has two words: "kommt  an" is still kommt an.
+  func accepts(_ answer: String) -> Bool {
+    let normalized = answer.split(whereSeparator: \.isWhitespace).joined(separator: " ").lowercased()
+    return acceptableAnswers.contains(normalized)
   }
 
   var state: State {

@@ -13,7 +13,7 @@ under that phase's heading. Leave rows for phases not yet started as they are.
 
 | Phase | Status | Date | Commit | Ideas |
 |---:|---|---|---|---|
-| 1 | Done | 2026-11-12 | COMMIT | A1, A2, A3, A8 |
+| 1 | Done | 2026-11-12 | `bcab0c3` | A1, A2, A3, A8 |
 | 2 | Not started | | | A4, C4 |
 | 3 | Not started | | | Signals |
 | 4 | Not started | | | B2 |

@@ -69,25 +69,23 @@ Konjugieren shows a custom "Enjoying Konjugieren?" review prompt gated by `promp
 
 The Tutor row in `InfoBrowseView`, the `ErrorExplainerView` card in `QuizView`, and the Tutor page in `OnboardingView` are all gated on `Current.languageModelService.isAvailable`. The simulator delegates `SystemLanguageModel(guardrails:).availability` resolution to the host Mac via the `os-eligibility-domain.change.greymatter` gate. Earlier iOS 26.x simulator runtimes were permissive enough that Intel-Mac hosts could exercise these surfaces; iOS 26.3.1 tightened the gate, and Intel-Mac hosts now resolve to `.unavailable(.deviceNotEligible)`. The failure is silent: gated UI simply doesn't render, with no console error. Verify Tutor / ErrorExplainer / onboarding-Tutor flows on a real Apple-Intelligence-capable iPhone or an Apple Silicon Mac on macOS 26+. UI screenshots taken on this Intel host should not be used to evaluate any Tutor-gated surface.
 
-### Host-specific friction: verify without computer use
+### Reading an Xcode build log: what a build actually ran
 
-On this Intel MacBook Pro, the computer-use tool cannot take screenshots. It reports the only
-display, the built-in one, as "not primary" and fails with "CU display unavailable", although
-macOS's `screencapture` works from the same session, so Screen Recording permission is not the
-cause. Josh reported it as a bug on 2026-11-12. Until it is fixed, verify without the screen:
+**A build log is not a record of what that build ran.** Xcode's build log carries forward the tasks
+of earlier builds whose results still stand. Under the log's **All** filter, an unchanged rebuild
+lists a script phase, its output, and even a link step that did not execute. The **Recent** filter
+shows only what this build did. The `.xcactivitylog` files under
+`~/Library/Developer/Xcode/DerivedData/Konjugieren-*/Logs/Build/` hold the All view, so grepping
+them (`gunzip -c … | LC_ALL=C tr '\r' '\n' | LC_ALL=C grep -a …`) has the same trap. To settle
+whether a task ran, compare the timestamps of its outputs on disk with the build's time, and print
+dates with times (`stat -f "%Sm" -t "%Y-%m-%d %H:%M:%S"`), since a bare time of day misleads across
+days. Learned on 2026-11-12, in Phase 5 of the browse plan.
 
-- **The app:** `xcrun simctl io <UDID> screenshot <file>` captures the simulator, `xcrun simctl
-  openurl <UDID> konjugieren://verb/<infinitive>` opens a verb page, and the `ios-build-verify`
-  skill taps by accessibility identifier through AXe.
-- **An Xcode build Josh ran:** read its log from
-  `~/Library/Developer/Xcode/DerivedData/Konjugieren-*/Logs/Build/*.xcactivitylog`
-  (`gunzip -c … | LC_ALL=C tr '\r' '\n' | LC_ALL=C grep -a …`), newest first by modification time.
-
-**A log is not a record of what that build ran.** An `.xcactivitylog` carries forward the tasks of
-earlier builds whose results still stand, so an unchanged rebuild's log can list a script phase,
-its output, and even a link step that did not execute. To settle whether a task ran, compare the
-timestamps of its outputs on disk with the build's time, and print dates with times (`stat -f
-"%Sm" -t "%Y-%m-%d %H:%M:%S"`), since a bare time of day misleads across days.
+**If computer use cannot take screenshots** ("CU display unavailable", with the only display
+reported as "not primary"), reboot. On 2026-11-12 that failure persisted through the session, while
+macOS's `screencapture` worked from the same shell, and a reboot cleared it. Meanwhile, `xcrun simctl
+io <UDID> screenshot <file>` captures the simulator, and the `.xcactivitylog` files above stand in
+for Xcode's log view.
 
 ### Diagnostic fallback (raw xcodebuild)
 

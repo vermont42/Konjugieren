@@ -23,6 +23,7 @@ class World {
   var info: Info?
   var selectedTab: TabSelection = .verbs
   var shouldNavigateToTutor = false
+  var shouldFocusVerbSearch = false
 
   init(settings: Settings, gameCenter: GameCenter, getterSetter: GetterSetter, languageModelService: LanguageModelService, reviewPrompter: ReviewPrompter, soundPlayer: SoundPlayer, utterer: Utterer, fatalError: FatalError, analytics: Analytics, session: URLSession) {
     self.settings = settings
@@ -61,6 +62,11 @@ class World {
     verb = nil
     family = nil
     info = nil
+  }
+
+  func focusVerbSearch() {
+    selectedTab = .verbs
+    shouldFocusVerbSearch = true
   }
 
   func handleUserActivity(_ userActivity: NSUserActivity) {

@@ -123,4 +123,35 @@ struct VerbSearchTests {
     #expect(results("TRAVEL").contains("fahren"))
     #expect(VerbEntityQuery.verbs(matching: "travel").contains { $0.infinitiv == "fahren" })
   }
+
+  // A4 in docs/browse-and-verb-ideas.md: a failed search offers the nearest verb as a guess.
+  @Test(arguments: zip(
+    ["gehn", "gheen", "konen", "machn", "sprechn", "Schwimen"],
+    ["gehen", "gehen", "können", "machen", "sprechen", "schwimmen"]
+  ))
+  func closestVerbGuessesTheMisspelledVerb(query: String, wanted: String) {
+    #expect(VerbSearch.closestVerb(to: query, in: Verb.verbsSortedAlphabetically)?.infinitiv == wanted)
+  }
+
+  @Test(arguments: ["xyzzyq", "qqqq", "   "])
+  func closestVerbOffersNoGuessForNonsense(query: String) {
+    #expect(VerbSearch.closestVerb(to: query, in: Verb.verbsSortedByFrequency) == nil)
+  }
+
+  @Test(arguments: [
+    ("gehen", "gehen", 0),
+    ("gehn", "gehen", 1),
+    ("gheen", "gehen", 1),
+    ("kitten", "sitting", 3),
+    ("", "abc", 3),
+    ("abc", "", 3),
+  ])
+  func editDistanceCountsASwapAsOneEdit(lhs: String, rhs: String, expected: Int) {
+    #expect(VerbSearch.editDistance(Array(lhs), Array(rhs)) == expected)
+  }
+
+  @Test(arguments: zip([1, 4, 6, 9, 20], [1, 1, 2, 3, 3]))
+  func guessDistanceGrowsWithTheQueryAndIsCapped(length: Int, expected: Int) {
+    #expect(VerbSearch.maxGuessDistance(forQueryLength: length) == expected)
+  }
 }

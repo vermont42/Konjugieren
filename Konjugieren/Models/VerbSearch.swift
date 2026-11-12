@@ -47,6 +47,65 @@ enum VerbSearch {
       .sorted { ($0.kind, $0.verb.frequency, $0.verb.infinitiv) < ($1.kind, $1.verb.frequency, $1.verb.infinitiv) }
   }
 
+  /// The verb whose folded infinitive is fewest edits from the folded query, the more frequent
+  /// on a tie, for a search that matched nothing. Nil when no verb is near enough to be a
+  /// plausible misspelling.
+  static func closestVerb(to query: String, in verbs: [Verb]) -> Verb? {
+    let foldedQuery = Array(fold(query.trimmingCharacters(in: .whitespacesAndNewlines)))
+    guard !foldedQuery.isEmpty else {
+      return nil
+    }
+    let maxDistance = maxGuessDistance(forQueryLength: foldedQuery.count)
+    var best: (verb: Verb, distance: Int)?
+    for verb in verbs {
+      let candidate = Array(keys(for: verb).foldedInfinitiv)
+      guard abs(candidate.count - foldedQuery.count) <= maxDistance else {
+        continue
+      }
+      let distance = editDistance(foldedQuery, candidate)
+      guard distance <= maxDistance else {
+        continue
+      }
+      if let current = best, (current.distance, current.verb.frequency) <= (distance, verb.frequency) {
+        continue
+      }
+      best = (verb, distance)
+    }
+    return best?.verb
+  }
+
+  // One edit in three letters, and never more than three, keeps a guess recognizable: gehn
+  // finds gehen, but a four-letter query never "finds" a verb that shares one letter with it.
+  nonisolated static func maxGuessDistance(forQueryLength length: Int) -> Int {
+    min(3, max(1, length / 3))
+  }
+
+  /// Insertions, deletions, substitutions, and swaps of two adjacent letters each cost one,
+  /// because a swap is the commonest slip on a keyboard (ghen for gehen).
+  nonisolated static func editDistance(_ lhs: [Character], _ rhs: [Character]) -> Int {
+    guard !lhs.isEmpty else {
+      return rhs.count
+    }
+    guard !rhs.isEmpty else {
+      return lhs.count
+    }
+    var twoRowsBack = [Int](repeating: 0, count: rhs.count + 1)
+    var previousRow = Array(0...rhs.count)
+    var currentRow = [Int](repeating: 0, count: rhs.count + 1)
+    for i in 1...lhs.count {
+      currentRow[0] = i
+      for j in 1...rhs.count {
+        let substitutionCost = lhs[i - 1] == rhs[j - 1] ? 0 : 1
+        currentRow[j] = min(previousRow[j] + 1, currentRow[j - 1] + 1, previousRow[j - 1] + substitutionCost)
+        if i > 1, j > 1, lhs[i - 1] == rhs[j - 2], lhs[i - 2] == rhs[j - 1] {
+          currentRow[j] = min(currentRow[j], twoRowsBack[j - 2] + 1)
+        }
+      }
+      (twoRowsBack, previousRow, currentRow) = (previousRow, currentRow, twoRowsBack)
+    }
+    return previousRow[rhs.count]
+  }
+
   /// Collapses the spellings a learner without a German keyboard types (konnen, koennen) and
   /// the Swiss ss onto one key. For matching only: never render it.
   nonisolated static func fold(_ text: String) -> String {

@@ -59,6 +59,9 @@ struct KonjugierenApp: App {
           WidgetCenter.shared.reloadAllTimelines()
         }
     }
+    .commands {
+      VerbSearchCommands()
+    }
   }
 
   init() {

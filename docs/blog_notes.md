@@ -9353,3 +9353,51 @@ row now replaces the sort picker while the field is focused. That works out bett
 search ranks by frequency whatever the sort order, so the picker has nothing to do during a query.
 The row takes an insert closure rather than a binding, so the quiz's answer field can adopt it and
 insert at the cursor.
+
+## Phase 2: A Guess, a Letter, and Three Keys That Fought Back (2026-11-12)
+
+Phase 2 of the browse plan had two halves, and they differed sharply in difficulty.
+
+The empty state was the easy half. Josh kept the sad trombone, because it is funny, and asked for
+two additions below "No verbs found": the single nearest verb, labeled plainly as a guess, and a
+line inviting the learner to email him if the searched-for verb is real. The guess measures edit
+distance between the folded query and every folded infinitive, so umlaut spelling never counts
+against it, and it counts a swap of two neighboring letters as one slip (gheen for gehen). A cap
+of one edit per three letters keeps nonsense from producing a confident wrong answer. The mail
+line's address is a `mailto:` link whose subject and body carry the query. That is the one
+consented way to learn what people searched for, since the privacy policy rules out sending it.
+
+The keyboard half was meant to be small: Command-F focuses search, Return opens the first result,
+and the arrow keys move through results. Return took one modifier. The other two took most of the
+session.
+
+Command-F first did nothing at all. iPadOS has its own Edit › Find item bound to ⌘F, and a command
+placed beside the text-editing group lost to it silently. A top-level menu fixed that, and the
+command then fired, switched tabs, and set the focus state, after which the field still did not
+open. iPadOS 26 shrinks a navigation-stack search field into a toolbar button that ignores
+programmatic focus and programmatic presentation alike. A probe that set focus two seconds after
+launch settled it: the same code focused the field on iPhone and did nothing on iPad. The fix was
+to give iPad the iPhone's arrangement, a search bar under the title, which is a visible layout
+change for Josh to judge.
+
+The arrow keys were stubborn in a different way. A focused text field treats ↑ and ↓ as cursor
+movement, and UIKit ranks that "system behavior" above `.onKeyPress`, above a SwiftUI keyboard
+shortcut, and above a menu command. All three were tried, and none fired. The only key command
+that outranks a text field is a UIKit one that asks to, through `wantsPriorityOverSystemBehavior`,
+installed on a responder above the field. So a small UIKit file now adds two such commands to the
+window's root view controller while the verb search is focused and removes them when it is not,
+so the Quiz and Tutor fields keep their arrows.
+
+A lesson about testing tools came out of it too. Real key presses sent to Simulator.app through
+computer use never reached the simulated iPad, which made every early result ambiguous. AXe's HID
+events did reach it, including ⌘A in a text field, and that is what finally separated "the key
+never arrived" from "the command is not registered". A log stream filtered for an `NSLog` marker
+did the rest; `print` was buffered away when the app ran under `simctl launch --console`.
+
+Josh then tapped the address in the simulator and nothing happened. The link was fine: the
+simulator has no Mail app, and `simctl openurl` refused a bare `mailto:` with error 115. A real
+device opens Mail or whichever email app the learner chose, and one with Mail deleted most likely
+offers to restore it. Josh still wanted a fallback, so the link now goes through an
+`OpenURLAction` that awaits `UIApplication.open` and, on failure, copies the address and says so.
+Trying and reading the result avoids `canOpenURL`, which would have needed `mailto` declared in
+Info.plist.

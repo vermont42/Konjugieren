@@ -115,6 +115,30 @@ enum L {
     static func verbCount(_ count: Int) -> String {
       String(localized: "VerbBrowse.verbCount.\(count)")
     }
+
+    static var addressCopied: String {
+      String(localized: "VerbBrowse.addressCopied")
+    }
+
+    static var findVerb: String {
+      String(localized: "VerbBrowse.findVerb")
+    }
+
+    static var guessIntro: String {
+      String(localized: "VerbBrowse.guessIntro")
+    }
+
+    static func verbRequest(query: String, address: String) -> String {
+      String(localized: "VerbBrowse.verbRequest \(query) \(address)")
+    }
+
+    static func verbRequestSubject(query: String) -> String {
+      String(localized: "VerbBrowse.verbRequestSubject \(query)")
+    }
+
+    static func verbRequestBody(query: String) -> String {
+      String(localized: "VerbBrowse.verbRequestBody \(query)")
+    }
   }
 
   enum SearchScope {

@@ -10,7 +10,8 @@ Konjugieren/
 ├── App/
 │   ├── AppLauncher.swift       # Chooses TestApp vs KonjugierenApp based on environment
 │   ├── KonjugierenApp.swift    # Main app entry point with Game Center auth
-│   └── TestApp.swift           # Minimal app for unit test environment
+│   ├── TestApp.swift           # Minimal app for unit test environment
+│   └── VerbSearchCommands.swift  # Menu command: Command-F switches to the Verbs tab and focuses search (iPad, Mac)
 ├── Assets/
 │   ├── Localizable.xcstrings   # Localization strings (JSON format, EN/DE)
 │   ├── Assets.xcassets/        # Colors, app icons, images (CliffSchmiesing, JoshAdams, etc.)
@@ -72,7 +73,7 @@ Konjugieren/
 │   ├── Reading.swift           # One sense of a verb: gloss, family, auxiliary, prefixes
 │   ├── Verb.swift              # Lemma: frequency, icon, and an ordered list of readings
 │   ├── VerbParser.swift        # XMLParser delegate for Verbs.xml, incl. the `in` marker grammar
-│   ├── VerbSearch.swift        # The one search rule (list and shortcut picker): umlaut/digraph/ß folding, ranked match kinds
+│   ├── VerbSearch.swift        # The one search rule (list and shortcut picker): umlaut/digraph/ß folding, ranked match kinds, and the edit-distance guess for a failed search
 │   ├── Verbs.xml               # 3,572 verb definitions with markers and metadata
 │   └── World.swift             # @Observable DI container with environment selection
 ├── Utils/
@@ -109,9 +110,10 @@ Konjugieren/
 │   ├── StringExtensions.swift  # Rich text markup parsing to RichTextBlock/TextSegment
 │   ├── TextExtension.swift     # Text(mixedCaseString:) for ablaut-highlighted display
 │   ├── TimeFormatter.swift     # Formats elapsed seconds as h:mm:ss
-│   ├── URLExtension.swift      # Deeplink URL helpers (konjugieren:// scheme)
+│   ├── URLExtension.swift      # Deeplink URL helpers (konjugieren:// scheme), developerEmail, and the mailto: builder
 │   ├── URLProtocolStub.swift   # URLProtocol subclass for stubbing HTTP responses in tests
 │   ├── URLSessionExtension.swift   # Extension providing a stubbed URLSession for testing
+│   ├── VerbSearchArrowKeys.swift   # UIKit workaround: priority UIKeyCommands so ↑/↓ move through search results while the field is focused
 │   ├── UserLocale.swift        # Locale detection helpers (isGerman, isEnglish)
 │   ├── Utterer.swift           # Protocol for text-to-speech with UttererLocale constants
 │   ├── UttererDummy.swift      # No-op TTS implementation for tests
@@ -133,7 +135,7 @@ Konjugieren/
     ├── SettingsView.swift      # Settings UI with segmented pickers
     ├── TutorTestView.swift     # Debug view for testing the AI tutor
     ├── TutorView.swift         # Chat interface for the AI tutor with sample queries
-    ├── VerbBrowseView.swift    # Searchable, sortable list of all verbs; the letter row replaces the sort picker while search is focused
+    ├── VerbBrowseView.swift    # Searchable, sortable list of all verbs; the letter row replaces the sort picker while search is focused; a failed search shows a guess and a mail link; Return and the arrow keys open and move through results on iPad and Mac
     └── VerbView.swift          # Verb detail showing all conjugations
 
 KonjugierenWidget/
@@ -181,19 +183,22 @@ KonjugierenTests/
 │   ├── QuizErrorHistoryTests.swift # Quiz error persistence tests
 │   ├── QuizTests.swift         # Quiz logic, scoring, and timer pause/resume tests
 │   ├── RefusalDetectionTests.swift # Tutor refusal-phrase detection, incl. the "null" exact-match false-positive guard
-│   ├── VerbSearchTests.swift   # VerbSearch: folding, match-kind ranking, the ideas doc's failed queries, list/picker agreement
+│   ├── VerbSearchTests.swift   # VerbSearch: folding, match-kind ranking, the ideas doc's failed queries, list/picker agreement, the failed-search guess
 │   └── VerbTests.swift         # Verb.stamm and endingIsValid tests
-└── Utils/
-    ├── CorpusFormsDumpTests.swift  # Harness: drives Conjugator over every verb to emit corpus/working/forms.json (form → lemma, with separable-prefix split forms). Gated on TEST_RUNNER_KONJUGIEREN_FORMS_OUT
-    ├── DeeplinkTests.swift     # Deeplink URL parsing and handling tests
-    ├── MixedCaseAccessibilityTests.swift  # VoiceOver label generation tests
-    ├── MixedCaseSegmenterTests.swift  # Ablaut segmentation tests (empty/all-regular/all-irregular/formal Sie)
-    ├── SettingsTests.swift     # Settings persistence and default-value tests
-    ├── StringExtensionsTests.swift  # Rich text parsing and error handling tests
-    ├── TimeFormatterTests.swift     # Time formatting utility tests
-    ├── VerbClassificationTests.swift  # Harness: stage B of classify-and-verify, searching for the Verbs.xml encoding that reproduces Wiktionary. Gated on TEST_RUNNER_KONJUGIEREN_CLASSIFY_IN
-    ├── VerbExportTests.swift        # Verb data JSON export tests
-    └── WidgetSnapshotTests.swift    # Widget snapshot/bundle generation, per-day paging math, and process-stable answer-shuffle tests
+├── Utils/
+│   ├── CorpusFormsDumpTests.swift  # Harness: drives Conjugator over every verb to emit corpus/working/forms.json (form → lemma, with separable-prefix split forms). Gated on TEST_RUNNER_KONJUGIEREN_FORMS_OUT
+│   ├── DeeplinkTests.swift     # Deeplink URL parsing and handling tests
+│   ├── MixedCaseAccessibilityTests.swift  # VoiceOver label generation tests
+│   ├── MixedCaseSegmenterTests.swift  # Ablaut segmentation tests (empty/all-regular/all-irregular/formal Sie)
+│   ├── SettingsTests.swift     # Settings persistence and default-value tests
+│   ├── StringExtensionsTests.swift  # Rich text parsing and error handling tests
+│   ├── TimeFormatterTests.swift     # Time formatting utility tests
+│   ├── URLExtensionTests.swift      # mailto: percent-encoding tests
+│   ├── VerbClassificationTests.swift  # Harness: stage B of classify-and-verify, searching for the Verbs.xml encoding that reproduces Wiktionary. Gated on TEST_RUNNER_KONJUGIEREN_CLASSIFY_IN
+│   ├── VerbExportTests.swift        # Verb data JSON export tests
+│   └── WidgetSnapshotTests.swift    # Widget snapshot/bundle generation, per-day paging math, and process-stable answer-shuffle tests
+└── Views/
+    └── VerbBrowseViewTests.swift    # Arrow-key selection arithmetic for the verb list
 
 docs/
 ├── adding-verbs.md            # Verb-addition guide: XML formats, ablaut system, lessons learned

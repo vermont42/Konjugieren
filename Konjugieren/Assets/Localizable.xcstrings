@@ -5981,6 +5981,102 @@
         }
       }
     },
+    "VerbBrowse.addressCopied" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Mail-App ließ sich öffnen, deshalb wurde die Adresse kopiert."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No email app could be opened, so the address has been copied."
+          }
+        }
+      }
+    },
+    "VerbBrowse.findVerb" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verb suchen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find a Verb"
+          }
+        }
+      }
+    },
+    "VerbBrowse.guessIntro" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eine Vermutung, welches Verb du meinst:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A guess at the verb you meant:"
+          }
+        }
+      }
+    },
+    "VerbBrowse.verbRequest %@ %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wenn du glaubst, dass „%1$@“ ein deutsches Verb ist, schreib bitte an %2$@."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "If you believe that “%1$@” is a German verb, please email %2$@."
+          }
+        }
+      }
+    },
+    "VerbBrowse.verbRequestBody %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ich habe in Konjugieren nach „%@“ gesucht und glaube, dass es ein deutsches Verb ist."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "I searched Konjugieren for “%@” and believe that it is a German verb."
+          }
+        }
+      }
+    },
+    "VerbBrowse.verbRequestSubject %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konjugieren: Bitte „%@“ ergänzen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konjugieren: please add “%@”"
+          }
+        }
+      }
+    },
     "VerbBrowse.verbCount.%lld" : {
       "localizations" : {
         "de" : {

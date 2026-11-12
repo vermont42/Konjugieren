@@ -12,6 +12,13 @@ struct DeeplinkTests {
     Current.family = nil
     Current.info = nil
     Current.selectedTab = .settings
+    Current.shouldFocusVerbSearch = false
+  }
+
+  @Test func focusVerbSearchShowsTheVerbsTabAndAsksForFocus() {
+    Current.focusVerbSearch()
+    #expect(Current.selectedTab == .verbs)
+    #expect(Current.shouldFocusVerbSearch)
   }
 
   @Test func isDeeplink() {

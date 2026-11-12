@@ -471,6 +471,11 @@ verb" link that opens a message to Josh with the query filled in.
 - **Signal.** The no-result share, taps on a suggestion, and the messages themselves.
 - **Conjuguer and Conjugar.** The same change, trombone included.
 
+**Built on `main` 2026-11-12** by [Phase 2](../plans/browse-and-verb-implementation.md#phase-2-when-search-finds-nothing-and-keyboard-lookup) of the implementation plan, as
+Josh's verdict has it: the trombone stays, one guess by edit distance over the folded infinitives
+appears under a line calling it a guess, and a `mailto:` link to Josh carries the query in its
+subject and body. Nonsense gets no guess.
+
 #### A5. Reverse Lookup from a Conjugation
 
 Verb: Yes. Generate the conjugations as a build step that only runs as needed. Save and consider the last-modified time of the relevant input file.
@@ -789,6 +794,10 @@ Command-F to focus search, Return to open the first result, arrow keys to move.
 - **Effort.** S.
 - **Signal.** None specific.
 - **Conjuguer and Conjugar.** Conjuguer first.
+
+**Built on `main` 2026-11-12** by [Phase 2](../plans/browse-and-verb-implementation.md#phase-2-when-search-finds-nothing-and-keyboard-lookup). On iPad the search field moved from the
+toolbar into a bar under the title, because iPadOS 26's toolbar search ignores programmatic focus.
+The arrow keys needed a UIKit key command, since a focused text field keeps them from SwiftUI.
 
 ### Group D: Give People a Reason to Come Back
 

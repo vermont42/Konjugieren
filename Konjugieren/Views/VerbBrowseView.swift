@@ -9,22 +9,40 @@ struct VerbBrowseView: View {
   @State private var sortedVerbs: [Verb] = Verb.verbsSortedByFrequency
   @State private var searchText: String = ""
   @State private var navigationPath = NavigationPath()
+  @State private var keyboardSelection: Int?
+  @State private var addressWasCopied = false
   @FocusState private var searchIsFocused: Bool
   @Environment(\.horizontalSizeClass) private var sizeClass
   private let tryQuizTip = TryQuizTip()
 
   private var settings: Settings { Current.settings }
 
+  private static let isPadOrMac = UIDevice.current.userInterfaceIdiom == .pad
+
+  // iPadOS 26 shrinks .automatic search into a toolbar button that ignores .searchFocused, so
+  // Command-F could not open it. A drawer that stays put accepts programmatic focus.
+  private var searchPlacement: SearchFieldPlacement {
+    Self.isPadOrMac ? .navigationBarDrawer(displayMode: .always) : .automatic
+  }
+
   private var searchIncludesGlosses: Bool {
     settings.searchScope == .infinitiveAndTranslation
   }
 
+  private var trimmedSearchText: String {
+    searchText.trimmingCharacters(in: .whitespacesAndNewlines)
+  }
+
   private var filteredVerbs: [Verb] {
-    guard !searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+    guard !trimmedSearchText.isEmpty else {
       return sortedVerbs
     }
     return VerbSearch.matches(for: searchText, in: sortedVerbs, includeGlosses: searchIncludesGlosses)
       .map(\.verb)
+  }
+
+  private var guessedVerb: Verb? {
+    VerbSearch.closestVerb(to: searchText, in: sortedVerbs)
   }
 
   var body: some View {
@@ -41,6 +59,8 @@ struct VerbBrowseView: View {
                 .onAppear {
                   Current.soundPlayer.play(.randomSadTrombone)
                 }
+
+              failedSearchHelp
             } else {
               Text(L.VerbBrowse.verbCount(filteredVerbs.count))
                 .font(.caption.smallCaps())
@@ -52,8 +72,12 @@ struct VerbBrowseView: View {
 
               if sizeClass == .regular {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: Layout.verbGridMinimum))], spacing: 0) {
-                  ForEach(filteredVerbs) { verb in
+                  ForEach(Array(filteredVerbs.enumerated()), id: \.element.id) { index, verb in
                     VerbGridCell(verb: verb) { navigationPath.append(verb) }
+                      .background(
+                        RoundedRectangle(cornerRadius: Layout.defaultSpacing)
+                          .fill(index == keyboardSelection ? Color.customRed.opacity(0.2) : Color.clear)
+                      )
                   }
                 }
                 .padding(.horizontal)
@@ -61,13 +85,18 @@ struct VerbBrowseView: View {
                 LazyVStack(spacing: 0) {
                   ForEach(Array(filteredVerbs.enumerated()), id: \.element.id) { index, verb in
                     VerbRowView(verb: verb) { navigationPath.append(verb) }
-                      .background(index.isMultiple(of: 2) ? Color.clear : Color.customYellow.opacity(0.03))
+                      .background(rowBackground(index: index))
 
                     Divider()
                       .padding(.leading)
                   }
                 }
               }
+            }
+          }
+          .onChange(of: keyboardSelection) {
+            if let keyboardSelection, filteredVerbs.indices.contains(keyboardSelection) {
+              proxy.scrollTo(filteredVerbs[keyboardSelection].id)
             }
           }
           .onChange(of: sortOrder) {
@@ -117,11 +146,37 @@ struct VerbBrowseView: View {
       }
       .searchable(
         text: $searchText,
+        placement: searchPlacement,
         prompt: searchIncludesGlosses ? L.VerbBrowse.searchPromptInfinitiveOrMeaning : L.VerbBrowse.searchPromptInfinitive
       )
       .searchFocused($searchIsFocused)
       .textInputAutocapitalization(.never)
       .autocorrectionDisabled()
+      .onSubmit(of: .search) {
+        if Self.isPadOrMac {
+          openKeyboardSelection()
+        }
+      }
+      .onChange(of: searchIsFocused) {
+        if searchIsFocused {
+          VerbSearchArrowKeys.install { offset in
+            moveKeyboardSelection(by: offset)
+          }
+        } else {
+          VerbSearchArrowKeys.uninstall()
+        }
+      }
+      .onChange(of: searchText) {
+        keyboardSelection = nil
+      }
+      .onChange(of: world.shouldFocusVerbSearch) {
+        if world.shouldFocusVerbSearch {
+          world.shouldFocusVerbSearch = false
+          Task {
+            await focusSearch()
+          }
+        }
+      }
       .onChange(of: world.verb) {
         if let verb = world.verb {
           navigationPath = NavigationPath()
@@ -130,6 +185,130 @@ struct VerbBrowseView: View {
         }
       }
     }
+  }
+
+  private var failedSearchHelp: some View {
+    VStack(alignment: .leading, spacing: Layout.defaultSpacing) {
+      if let guessedVerb {
+        Text(L.VerbBrowse.guessIntro)
+          .font(.subheadline)
+          .foregroundStyle(.secondary)
+          .padding(.horizontal)
+          .accessibilityIdentifier("search_guess_intro")
+
+        VerbRowView(verb: guessedVerb) { navigationPath.append(guessedVerb) }
+          .background(keyboardSelection == 0 ? Color.customRed.opacity(0.2) : Color.clear)
+
+        Divider()
+          .padding(.leading)
+      }
+
+      Text(verbRequestText(query: trimmedSearchText))
+        .font(.footnote)
+        .foregroundStyle(.secondary)
+        .padding(.horizontal)
+        .padding(.top, Layout.defaultSpacing)
+        .accessibilityIdentifier("verb_request_link")
+        .environment(\.openURL, OpenURLAction { url in
+          Task {
+            await openVerbRequest(url)
+          }
+          return .handled
+        })
+
+      if addressWasCopied {
+        Text(L.VerbBrowse.addressCopied)
+          .font(.footnote)
+          .foregroundStyle(Color.customYellow)
+          .padding(.horizontal)
+          .transition(.opacity)
+          .accessibilityIdentifier("address_copied_note")
+      }
+    }
+  }
+
+  /// A device with no email app, such as the simulator, cannot open the link, so the address
+  /// goes to the clipboard instead of nowhere.
+  private func openVerbRequest(_ url: URL) async {
+    guard !(await UIApplication.shared.open(url)) else {
+      return
+    }
+    UIPasteboard.general.string = URL.developerEmail
+    AccessibilityNotification.Announcement(L.VerbBrowse.addressCopied).post()
+    withAnimation {
+      addressWasCopied = true
+    }
+    try? await Task.sleep(for: .seconds(4))
+    withAnimation {
+      addressWasCopied = false
+    }
+  }
+
+  private func focusSearch() async {
+    if !navigationPath.isEmpty {
+      navigationPath = NavigationPath()
+      // Hack: focus requested while the pop animates sets the focus state without making the
+      // field first responder, so typing goes nowhere. Wait out the animation.
+      try? await Task.sleep(for: .milliseconds(500))
+    }
+    searchIsFocused = true
+  }
+
+  private func verbRequestText(query: String) -> AttributedString {
+    let address = URL.developerEmail
+    var text = AttributedString(L.VerbBrowse.verbRequest(query: query, address: address))
+    if
+      let range = text.range(of: address, options: .backwards),
+      let url = URL.mailto(address, subject: L.VerbBrowse.verbRequestSubject(query: query), body: L.VerbBrowse.verbRequestBody(query: query))
+    {
+      text[range].link = url
+    }
+    return text
+  }
+
+  private func rowBackground(index: Int) -> Color {
+    if index == keyboardSelection {
+      return Color.customRed.opacity(0.2)
+    }
+    return index.isMultiple(of: 2) ? Color.clear : Color.customYellow.opacity(0.03)
+  }
+
+  /// The verbs that Return and the arrow keys move through: the results, or the guess when
+  /// a search found nothing.
+  private var keyboardTargets: [Verb] {
+    let verbs = filteredVerbs
+    if verbs.isEmpty, let guessedVerb {
+      return [guessedVerb]
+    }
+    return verbs
+  }
+
+  private func moveKeyboardSelection(by offset: Int) {
+    guard navigationPath.isEmpty else {
+      return
+    }
+    keyboardSelection = Self.keyboardSelection(after: keyboardSelection, moving: offset, count: keyboardTargets.count)
+  }
+
+  /// The first arrow press lands on the first result, and the selection stops at either end
+  /// rather than wrapping.
+  nonisolated static func keyboardSelection(after current: Int?, moving offset: Int, count: Int) -> Int? {
+    guard count > 0 else {
+      return nil
+    }
+    guard let current else {
+      return offset > 0 ? 0 : nil
+    }
+    return min(max(current + offset, 0), count - 1)
+  }
+
+  private func openKeyboardSelection() {
+    let targets = keyboardTargets
+    let index = keyboardSelection ?? 0
+    guard targets.indices.contains(index) else {
+      return
+    }
+    navigationPath.append(targets[index])
   }
 
   private func updateSortedVerbs() {

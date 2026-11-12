@@ -15,7 +15,7 @@ that Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until
 | Phase | Status | Date | Commit | Ideas |
 |---:|---|---|---|---|
 | 1 | Done | 2026-11-12 | `bcab0c3` | A1, A2, A3, A8 |
-| 2 | Not started | | | A4, C4 |
+| 2 | Awaiting Josh | 2026-11-12 | | A4, C4 |
 | 3 | Not started | | | Signals |
 | 4 | Not started | | | B2 |
 | 5 | Not started | | | A5 (the map) |
@@ -184,6 +184,47 @@ Phase 6 changes when the empty state appears, since a conjugation will then find
 anything here that Phase 6 must revisit.
 
 **How it differed:**
+
+- **The guess.** `VerbSearch.closestVerb` measures optimal-string-alignment distance (Levenshtein
+  plus a swap of two adjacent letters) between the folded query and each folded infinitive, and
+  breaks ties by frequency. A guess must be within one edit per three letters, and never more than
+  three, so "gehn" finds gehen and "xyzzyq" finds nothing. With no guess, the empty state shows only
+  "No verbs found" and the mail line. The guess is an ordinary verb row under "A guess at the verb
+  you meant:".
+- **The mail line** reads "If you believe that “gehn” is a German verb, please email
+  vermontcoder@gmail.com." The address is a link built by `URL.mailto`, which fills the subject and
+  body with the query in the learner's language. The address lives once, as `URL.developerEmail`.
+  At Josh's request, a device that cannot open the link (the simulator has no Mail app) copies
+  the address to the clipboard instead and says so in a note below the line for four seconds.
+- **Command-F** is a menu command, `VerbSearchCommands`, so it appears in iPadOS 26's menu bar as
+  Verbs › Find a Verb. It switches to the Verbs tab, pops to the list, and focuses the field.
+  `CommandGroup` placed relative to `.textEditing` never fired, because the system's own Find item
+  claims ⌘F there. A top-level `CommandMenu` works.
+- **The iPad search field moved.** iPadOS 26 shrinks `.automatic` search into a toolbar button
+  that ignores `.searchFocused` and `.searchable(isPresented:)`, so Command-F could not open it. On
+  iPad and Mac the field is now a bar under the title that stays put
+  (`.navigationBarDrawer(displayMode: .always)`). iPhone keeps `.automatic` and looks as before.
+  **Josh should judge this layout change.**
+- **Return** opens the highlighted result, else the first, else the guess. It acts only on the iPad
+  idiom (which a Mac running the iPad app also reports), so the iPhone keyboard's Search key behaves
+  as before.
+- **The arrow keys** needed UIKit. A focused text field consumes ↑ and ↓ as cursor movement, which
+  outranks `.onKeyPress`, `.keyboardShortcut`, and a menu command alike, all three of which were
+  tried. `VerbSearchArrowKeys` installs two `UIKeyCommand`s with
+  `wantsPriorityOverSystemBehavior` on the window's root view controller while the field is
+  focused, and removes them when it blurs, so the Quiz and Tutor fields keep their arrows. Down
+  moves to the next result in reading order, also in the iPad grid. Left and right stay with the
+  cursor.
+- **How it was tested.** On the iPad Pro 11-inch (M5) simulator, iOS 26.3, with hardware key
+  events sent by AXe (`axe key`, `axe key-combo`). Key presses sent to Simulator.app through
+  computer use did not reach the device, so do not use that route. Not tried on a Mac or a real
+  iPad.
+- **No analytics yet.** Phase 3 should give a page opened from the guess its own `source` value
+  (for instance `searchGuess`) and count a Return or arrow-key open as an ordinary search open.
+- **For Phase 6 to revisit.** The empty state, and with it the guess, will appear only when the
+  conjugation lookup also fails. `closestVerb` considers infinitives only; decide whether a
+  misspelled conjugation (ginng) should guess too. `keyboardTargets` in `VerbBrowseView` assumes
+  one row per verb, which conjugation rows and the folded row of separable verbs will change.
 
 ## Phase 3: Lookup Signals
 

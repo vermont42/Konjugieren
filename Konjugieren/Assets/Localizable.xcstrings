@@ -5949,18 +5949,34 @@
         }
       }
     },
-    "VerbBrowse.searchPrompt" : {
+    "VerbBrowse.searchPromptInfinitive" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Verben suchen"
+            "value" : "Deutscher Infinitiv"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Search verbs"
+            "value" : "German infinitive"
+          }
+        }
+      }
+    },
+    "VerbBrowse.searchPromptInfinitiveOrMeaning" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Infinitiv oder englische Bedeutung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Infinitive or English meaning"
           }
         }
       }

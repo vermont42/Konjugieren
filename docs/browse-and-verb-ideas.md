@@ -410,6 +410,9 @@ koennen, and können all find können. The rule that already equates ß with ss 
   folding.
 - **Conjuguer and Conjugar.** Already done in both.
 
+**Built on `main` 2026-11-12** by [Phase 1](../plans/browse-and-verb-implementation.md#phase-1-search-finds-what-people-type) of the implementation plan. A match found only after
+folding ranks below a literal match of the same kind.
+
 #### A2. Search English Glosses by Default, in Every Reading, Whole Words First
 
 Verdict: Yes, flip the default. Ensure that German matches show above English matches. When the user searches for "es", "essen" should appear above "rest".
@@ -429,6 +432,11 @@ first and English matches after them.
   Conjuguer has none. Its 86 English-language devices would use it, and its francophone majority
   would not.
 
+**Built on `main` 2026-11-12** by [Phase 1](../plans/browse-and-verb-implementation.md#phase-1-search-finds-what-people-type), with the setting's default flipped and existing installs
+moved to it once. Josh refined the German-first rule that day: German exact and prefix matches
+rank first, then whole-word gloss matches, then German matches inside a word, so that eat finds
+essen ahead of beatmen and go finds gehen ahead of gönnen.
+
 #### A3. Rank the Exact Match First
 
 Verdict: Yes.
@@ -444,6 +452,9 @@ the rest, each by frequency whatever the list's sort order.
 - **Conjuguer and Conjugar.** Both use substring matching in the list's order (**observed**), so
   the same change probably applies, most visibly in alphabetical order (**inference**, not
   tested).
+
+**Built on `main` 2026-11-12** by [Phase 1](../plans/browse-and-verb-implementation.md#phase-1-search-finds-what-people-type). The verb list and the shortcut picker share one
+ranking function, `VerbSearch`.
 
 #### A4. A Useful Empty State
 
@@ -597,6 +608,10 @@ answer field.
 - **Effort.** S.
 - **Signal.** None of its own. It should show in the no-result share.
 - **Conjuguer and Conjugar.** Worth the same check. Not verified.
+
+**Built on `main` 2026-11-12** by [Phase 1](../plans/browse-and-verb-implementation.md#phase-1-search-finds-what-people-type). The letter row takes the sort picker's place while
+the search field is focused, because a keyboard toolbar does not attach to the navigation bar's
+search field. Autocorrection on a device remains untested.
 
 #### A9. Ways to Browse Without Typing
 

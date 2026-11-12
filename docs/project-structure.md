@@ -72,6 +72,7 @@ Konjugieren/
 │   ├── Reading.swift           # One sense of a verb: gloss, family, auxiliary, prefixes
 │   ├── Verb.swift              # Lemma: frequency, icon, and an ordered list of readings
 │   ├── VerbParser.swift        # XMLParser delegate for Verbs.xml, incl. the `in` marker grammar
+│   ├── VerbSearch.swift        # The one search rule (list and shortcut picker): umlaut/digraph/ß folding, ranked match kinds
 │   ├── Verbs.xml               # 3,572 verb definitions with markers and metadata
 │   └── World.swift             # @Observable DI container with environment selection
 ├── Utils/
@@ -97,7 +98,7 @@ Konjugieren/
 │   ├── MixedCaseAccessibility.swift  # VoiceOver labels for mixed-case ablaut strings
 │   ├── Modifiers.swift         # Custom ViewModifiers (headingLabel, funButton, etc.)
 │   ├── RatingsFetcher.swift    # Fetches app ratings from iTunes API
-│   ├── RegionalRendering.swift # ß→ss display transform + RegionalConjugator (region-aware wrapper over the region-free Conjugator)
+│   ├── RegionalRendering.swift # ß→ss display transform + RegionalConjugator (region-aware wrapper over the region-free Conjugator); search folding lives in VerbSearch
 │   ├── ReviewPrompter.swift    # Protocol for review-prompting behavior
 │   ├── ReviewPrompterDummy.swift   # No-op stub for tests
 │   ├── ReviewPrompterReal.swift    # Real implementation prompting reviews at intervals
@@ -121,6 +122,7 @@ Konjugieren/
     ├── FamilyBrowseView.swift  # Browseable list of verb families, prefixes, and ablaut groups
     ├── FamilyDetailView.swift  # Detail view for a single family/prefix/ablaut category
     ├── GameView.swift          # Space-invaders-like verb conjugation game
+    ├── GermanLetterKeyRow.swift # ä ö ü ß keys shown above the keyboard; search uses it, the quiz answer field can adopt it
     ├── InfoBrowseView.swift    # List of Info articles (dedication, history, etc.)
     ├── InfoView.swift          # Detail view for a single Info article
     ├── MainTabView.swift       # Root TabView with five tabs
@@ -131,7 +133,7 @@ Konjugieren/
     ├── SettingsView.swift      # Settings UI with segmented pickers
     ├── TutorTestView.swift     # Debug view for testing the AI tutor
     ├── TutorView.swift         # Chat interface for the AI tutor with sample queries
-    ├── VerbBrowseView.swift    # Searchable, sortable list of all verbs
+    ├── VerbBrowseView.swift    # Searchable, sortable list of all verbs; the letter row replaces the sort picker while search is focused
     └── VerbView.swift          # Verb detail showing all conjugations
 
 KonjugierenWidget/
@@ -179,7 +181,7 @@ KonjugierenTests/
 │   ├── QuizErrorHistoryTests.swift # Quiz error persistence tests
 │   ├── QuizTests.swift         # Quiz logic, scoring, and timer pause/resume tests
 │   ├── RefusalDetectionTests.swift # Tutor refusal-phrase detection, incl. the "null" exact-match false-positive guard
-│   ├── VerbSearchTests.swift   # Shortcut-picker ranking (exact infinitive first) and second-reading gloss search
+│   ├── VerbSearchTests.swift   # VerbSearch: folding, match-kind ranking, the ideas doc's failed queries, list/picker agreement
 │   └── VerbTests.swift         # Verb.stamm and endingIsValid tests
 └── Utils/
     ├── CorpusFormsDumpTests.swift  # Harness: drives Conjugator over every verb to emit corpus/working/forms.json (form → lemma, with separable-prefix split forms). Gated on TEST_RUNNER_KONJUGIEREN_FORMS_OUT

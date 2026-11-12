@@ -20,21 +20,9 @@ struct VerbEntityQuery: EntityStringQuery, EnumerableEntityQuery {
   // Ranking happens before the limit. Cutting an alphabetical list at 25 hid kommen behind
   // abkommen, ankommen, and their siblings, so the verb asked for never appeared.
   @MainActor static func verbs(matching string: String) -> [Verb] {
-    let lowered = string.lowercased()
-    let ranked = Verb.verbsSortedByFrequency
-      .filter { $0.infinitiv.lowercased().contains(lowered) || $0.anyTranslationContains(string) }
-      .map { verb -> (tier: Int, verb: Verb) in
-        let infinitiv = verb.infinitiv.lowercased()
-        if infinitiv == lowered {
-          return (0, verb)
-        } else if infinitiv.hasPrefix(lowered) {
-          return (1, verb)
-        } else {
-          return (2, verb)
-        }
-      }
-      .sorted { ($0.tier, $0.verb.frequency) < ($1.tier, $1.verb.frequency) }
-    return ranked.prefix(matchLimit).map(\.verb)
+    VerbSearch.matches(for: string, in: Verb.verbsSortedByFrequency, includeGlosses: true)
+      .prefix(matchLimit)
+      .map(\.verb)
   }
 
   func entities(for identifiers: [String]) async -> [VerbEntity] {

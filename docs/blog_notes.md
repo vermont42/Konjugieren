@@ -9319,3 +9319,37 @@ verbs display split, and the quiz accepts both conjugations, which also settles 
 report's first decision. And because the quiz track has no plan yet, this plan builds the minimal
 quiz pieces its ideas need (a quiz over a list of verbs, a due date per verb) for the quiz track
 to extend later.
+
+## Search finds what people type (2026-11-12)
+
+Phase 1 of the browse-and-verb plan made the verb list's search forgiving. Before, konnen found
+nothing, essen was sixth for its own name, and "go" found nothing unless the learner had found a
+setting. Now one function, `VerbSearch`, serves both the verb list and the shortcut picker, so the
+two rank alike by construction rather than by care.
+
+The function folds ä, ae, and a together (and ö, ü, ß likewise) on both the query and the
+infinitive, then sorts every match into one of eight kinds. Folding both sides with one function
+makes odd keys harmless: bauen folds to "baun", but so does the query "bauen", and the extra matches
+folding admits land in tiers below the literal ones. "zahl" shows why that matters. It spells the
+zahlen family literally and the zählen family only after folding, and the test pins every zahlen
+ahead of every zählen.
+
+A Python prototype over `Verbs.xml` came before any Swift, and it caught a conflict in the plan
+itself. The plan said every German match ranks above every English one, and also that "eat" must
+find essen first. But eat is a substring of beatmen, and "go" folds into gönnen (gonnen). Josh
+settled it: German exact and prefix matches first, then whole-word gloss matches, then German
+matches inside a word. "es" still finds essen long before ruhen (rest). In passing, Josh asked
+what gonnen means. It is gönnen, "not to begrudge", from Old High German *unnan*, a
+preterite-present verb like können. So the two verbs folding surfaced for konnen and go turned out
+to be cousins.
+
+Flipping the Search Scope default had a catch. `Settings.restore` writes the default to
+UserDefaults on first launch, so every existing install had stored "infinitive only" without
+anyone choosing it. Josh chose a one-time, flag-guarded migration.
+
+The ä ö ü ß key row was meant to be a keyboard toolbar, and the simulator showed that
+`ToolbarItemGroup(placement: .keyboard)` never attaches to the navigation bar's search field. The
+row now replaces the sort picker while the field is focused. That works out better than it sounds:
+search ranks by frequency whatever the sort order, so the picker has nothing to do during a query.
+The row takes an insert closure rather than a binding, so the quiz's answer field can adopt it and
+insert at the cursor.

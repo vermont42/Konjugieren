@@ -100,8 +100,12 @@ enum L {
       String(localized: "VerbBrowse.sortOrder")
     }
 
-    static var searchPrompt: String {
-      String(localized: "VerbBrowse.searchPrompt")
+    static var searchPromptInfinitive: String {
+      String(localized: "VerbBrowse.searchPromptInfinitive")
+    }
+
+    static var searchPromptInfinitiveOrMeaning: String {
+      String(localized: "VerbBrowse.searchPromptInfinitiveOrMeaning")
     }
 
     static var noVerbsFound: String {

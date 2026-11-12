@@ -73,10 +73,6 @@ struct Verb: Identifiable, Hashable {
 
   var translation: String { primaryReading.translation }
 
-  func anyTranslationContains(_ text: String) -> Bool {
-    readings.contains { $0.translation.localizedCaseInsensitiveContains(text) }
-  }
-
   var family: Family { primaryReading.family }
   var auxiliary: Auxiliary { primaryReading.auxiliary }
   var prefix: Prefix { primaryReading.prefix }

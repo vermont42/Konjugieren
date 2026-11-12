@@ -324,14 +324,6 @@ struct StringExtensionsTests {
       #expect(segments[1].text == "oss")
     }
 
-    // A Swiss user sees "schliessen" and types it; the corpus stores "schließen".
-    @Test("Search normalization makes the two spellings compare equal")
-    func sharpSNormalizationMatchesAcrossVarieties() {
-      #expect("schließen".sharpSNormalized == "schliessen".sharpSNormalized)
-      #expect("schließen".sharpSNormalized == "schliessen")
-      #expect("gehen".sharpSNormalized == "gehen")
-    }
-
     @Test("Region seeds from the device locale", arguments: zip(
       ["de_AT", "de_CH", "de_DE", "en_US"],
       [Region.austria, .switzerland, .north, .north]

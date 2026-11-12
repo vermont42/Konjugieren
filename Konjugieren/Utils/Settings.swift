@@ -70,7 +70,8 @@ class Settings {
     }
   }
   static let searchScopeKey = "searchScope"
-  static let searchScopeDefault: SearchScope = .infinitiveOnly
+  static let searchScopeDefault: SearchScope = .infinitiveAndTranslation
+  static let searchScopeDefaultFlippedKey = "searchScopeDefaultFlipped"
 
   var appIcon: AppIcon = appIconDefault {
     didSet {
@@ -142,11 +143,23 @@ class Settings {
     quizDifficulty = restore(key: Settings.quizDifficultyKey, default: Settings.quizDifficultyDefault)
     audioFeedback = restore(key: Settings.audioFeedbackKey, default: Settings.audioFeedbackDefault)
     searchScope = restore(key: Settings.searchScopeKey, default: Settings.searchScopeDefault)
+    flipSearchScopeDefaultOnce()
     appIcon = restore(key: Settings.appIconKey, default: Settings.appIconDefault)
     hasSeenOnboarding = restore(key: Settings.hasSeenOnboardingKey, default: Settings.hasSeenOnboardingDefault)
     gameHighScore = restore(key: Settings.gameHighScoreKey, default: Settings.gameHighScoreDefault)
     promptActionCount = restore(key: Settings.promptActionCountKey, default: Settings.promptActionCountDefault)
     lastReviewPromptDate = restore(key: Settings.lastReviewPromptDateKey)
+  }
+
+  // The default was infinitiveOnly until 2026-11-12, and restore writes the default on first
+  // launch, so a stored infinitiveOnly almost never records a choice. Josh chose to move every
+  // existing install to the new default once and to honor whatever is chosen after that.
+  private func flipSearchScopeDefaultOnce() {
+    guard getterSetter.get(key: Settings.searchScopeDefaultFlippedKey) == nil else {
+      return
+    }
+    getterSetter.set(key: Settings.searchScopeDefaultFlippedKey, value: "true")
+    searchScope = Settings.searchScopeDefault
   }
 
   private func restore<T: RawRepresentable>(key: String, default defaultValue: T) -> T where T.RawValue == String {

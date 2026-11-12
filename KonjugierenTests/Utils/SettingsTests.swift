@@ -12,7 +12,7 @@ struct SettingsTests {
     #expect(settings.thirdPersonPronounGender == .er)
     #expect(settings.quizDifficulty == .regular)
     #expect(settings.audioFeedback == .enable)
-    #expect(settings.searchScope == .infinitiveOnly)
+    #expect(settings.searchScope == .infinitiveAndTranslation)
     #expect(settings.appIcon == .hat)
     #expect(settings.hasSeenOnboarding == false)
   }
@@ -78,6 +78,29 @@ struct SettingsTests {
 
     settings.hasSeenOnboarding = true
     #expect(fake.get(key: Settings.hasSeenOnboardingKey) == "true")
+  }
+
+  @Test func existingInstallMovesToTheNewSearchScopeDefaultOnce() {
+    let fake = GetterSetterFake(dictionary: [Settings.searchScopeKey: "infinitiveOnly"])
+    let settings = Settings(getterSetter: fake)
+    #expect(settings.searchScope == .infinitiveAndTranslation)
+    #expect(fake.get(key: Settings.searchScopeKey) == "infinitiveAndTranslation")
+    #expect(fake.get(key: Settings.searchScopeDefaultFlippedKey) == "true")
+  }
+
+  @Test func searchScopeChosenAfterTheFlipIsKept() {
+    let fake = GetterSetterFake()
+    let settings = Settings(getterSetter: fake)
+    settings.searchScope = .infinitiveOnly
+
+    let relaunched = Settings(getterSetter: fake)
+    #expect(relaunched.searchScope == .infinitiveOnly)
+  }
+
+  @Test func freshInstallRecordsTheFlipSoItNeverRuns() {
+    let fake = GetterSetterFake()
+    _ = Settings(getterSetter: fake)
+    #expect(fake.get(key: Settings.searchScopeDefaultFlippedKey) == "true")
   }
 
   @Test func didSetDoesNotWriteWhenUnchanged() {

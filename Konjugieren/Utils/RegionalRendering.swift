@@ -19,12 +19,6 @@ extension String {
   var inUserRegion: String {
     inRegion(Current.settings.region)
   }
-
-  /// Collapses the ß/ss distinction so that spellings from different varieties compare equal.
-  /// For matching only: never render this, because it discards the ß a northern user expects.
-  nonisolated var sharpSNormalized: String {
-    inRegion(.switzerland)
-  }
 }
 
 /// Conjugation as the user should see it, as opposed to `Conjugator`, which is deliberately

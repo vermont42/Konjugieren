@@ -9,29 +9,26 @@ struct VerbBrowseView: View {
   @State private var sortedVerbs: [Verb] = Verb.verbsSortedByFrequency
   @State private var searchText: String = ""
   @State private var navigationPath = NavigationPath()
+  @FocusState private var searchIsFocused: Bool
   @Environment(\.horizontalSizeClass) private var sizeClass
   private let tryQuizTip = TryQuizTip()
 
   private var settings: Settings { Current.settings }
 
+  private var searchIncludesGlosses: Bool {
+    settings.searchScope == .infinitiveAndTranslation
+  }
+
   private var filteredVerbs: [Verb] {
-    guard !searchText.isEmpty else { return sortedVerbs }
-    // Swiss users see and therefore type ss where the corpus stores ß, so both sides are
-    // normalized to ss before matching. This runs regardless of region: a northern user who
-    // types "schliessen" should find schließen too.
-    let normalizedSearch = searchText.sharpSNormalized
-    return sortedVerbs.filter { verb in
-      if verb.infinitiv.sharpSNormalized.localizedCaseInsensitiveContains(normalizedSearch) {
-        return true
-      }
-      if settings.searchScope == .infinitiveAndTranslation {
-        return verb.anyTranslationContains(searchText)
-      }
-      return false
+    guard !searchText.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty else {
+      return sortedVerbs
     }
+    return VerbSearch.matches(for: searchText, in: sortedVerbs, includeGlosses: searchIncludesGlosses)
+      .map(\.verb)
   }
 
   var body: some View {
+    let filteredVerbs = self.filteredVerbs
     NavigationStack(path: $navigationPath) {
       VStack(spacing: 0) {
         ScrollViewReader { proxy in
@@ -87,14 +84,24 @@ struct VerbBrowseView: View {
 
         Divider()
 
-        Picker(L.VerbBrowse.sortOrder, selection: $sortOrder) {
-          ForEach(SortOrder.allCases, id: \.self) { order in
-            Text(order.displayName)
-              .tag(order)
+        // A keyboard toolbar does not attach to the navigation bar's search field, so the row
+        // takes the sort picker's place while the field is focused. Search ranks by frequency
+        // whatever the sort order, so the picker has nothing to do then.
+        if searchIsFocused {
+          GermanLetterKeyRow { letter in
+            searchText.append(letter)
           }
+          .padding(.vertical, Layout.defaultSpacing)
+        } else {
+          Picker(L.VerbBrowse.sortOrder, selection: $sortOrder) {
+            ForEach(SortOrder.allCases, id: \.self) { order in
+              Text(order.displayName)
+                .tag(order)
+            }
+          }
+          .pickerStyle(.segmented)
+          .padding()
         }
-        .pickerStyle(.segmented)
-        .padding()
       }
       .sensoryFeedback(.selection, trigger: sortOrder)
       .onAppear {
@@ -108,7 +115,13 @@ struct VerbBrowseView: View {
         VerbView(verb: verb)
           .id(verb.id)
       }
-      .searchable(text: $searchText, prompt: L.VerbBrowse.searchPrompt)
+      .searchable(
+        text: $searchText,
+        prompt: searchIncludesGlosses ? L.VerbBrowse.searchPromptInfinitiveOrMeaning : L.VerbBrowse.searchPromptInfinitive
+      )
+      .searchFocused($searchIsFocused)
+      .textInputAutocapitalization(.never)
+      .autocorrectionDisabled()
       .onChange(of: world.verb) {
         if let verb = world.verb {
           navigationPath = NavigationPath()

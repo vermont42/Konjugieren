@@ -13,7 +13,7 @@ under that phase's heading. Leave rows for phases not yet started as they are.
 
 | Phase | Status | Date | Commit | Ideas |
 |---:|---|---|---|---|
-| 1 | Not started | | | A1, A2, A3, A8 |
+| 1 | Done | 2026-11-12 | COMMIT | A1, A2, A3, A8 |
 | 2 | Not started | | | A4, C4 |
 | 3 | Not started | | | Signals |
 | 4 | Not started | | | B2 |
@@ -134,6 +134,33 @@ koennen, go, to go, eat, essen, kommen in alphabetical order) gives the wanted v
 tests pin each case.
 
 **How it differed:**
+
+- **The ranking is not strictly German-first.** "All German matches above all English" failed two
+  of this phase's own done-criterion rows: "eat" is a substring of beatmen, and "go" matches gönnen
+  after folding. Josh chose, on 2026-11-12, this order: exact infinitive, exact after folding,
+  infinitive prefix, **whole-word gloss**, infinitive substring, folded prefix, folded substring,
+  gloss substring. Within each kind, frequency decides, whatever the list's sort order. "es" still
+  gives essen first and ruhen (rest) far below. The order is `VerbSearch.MatchKind`, whose cases
+  are the match kinds Phase 3 needs for `matchKind`.
+- **Folding counts ß/ss as a fold**, so a literal match outranks a ß/ss match of the same kind.
+  Exact-after-folding ranks second overall, so zahlen is followed directly by zählen. The old
+  `String.sharpSNormalized` and `Verb.anyTranslationContains` are gone; `VerbSearch` replaces both.
+- **The Search Scope migration.** `Settings.restore` writes the default on first launch, so every
+  existing install stored `infinitiveOnly` without choosing it. Josh chose a one-time migration:
+  `Settings.flipSearchScopeDefaultOnce` moves a stored value to the new default, sets
+  `searchScopeDefaultFlipped`, and never runs again, so a later choice of Infinitive Only sticks.
+- **The letter row is not a keyboard toolbar.** `ToolbarItemGroup(placement: .keyboard)` never
+  appeared for the navigation bar's search field (iOS 26.3 simulator). The row instead replaces the
+  sort picker while the field is focused (`.searchFocused`), which puts it directly above the
+  keyboard. Losing the picker then costs nothing, because search ignores the sort order. A
+  consequence for later phases: with text in the field and the keyboard dismissed, the picker
+  returns and has no visible effect. `GermanLetterKeyRow` takes an `insert` closure rather than a
+  binding, so the quiz's answer field can insert at the cursor; search simply appends.
+- **The placeholder depends on the scope**: "Infinitive or English meaning", or "German infinitive"
+  when glosses are off. Phase 6 should extend it once a conjugation finds its verb.
+- **Autocorrection was not checked on a device.** It is switched off in code, and the simulator
+  showed lowercase input, but the ideas document's open question about an English keyboard on a
+  real device remains.
 
 ## Phase 2: When Search Finds Nothing, and Keyboard Lookup
 

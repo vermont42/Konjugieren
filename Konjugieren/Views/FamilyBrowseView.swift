@@ -64,10 +64,10 @@ struct FamilyBrowseView: View {
       .onAppear { Current.analytics.signal(name: .viewFamilyBrowseView) }
       .navigationTitle(L.Navigation.families)
       .navigationDestination(for: BrowseableFamily.self) { family in
-        FamilyDetailView(family: family) { verb in navigationPath.append(verb) }
+        FamilyDetailView(family: family) { verb in navigationPath.append(VerbDestination(verb: verb, source: .family)) }
       }
-      .navigationDestination(for: Verb.self) { verb in
-        VerbView(verb: verb)
+      .navigationDestination(for: VerbDestination.self) { destination in
+        VerbView(verb: destination.verb, source: destination.source)
       }
       .onAppear { navigateToDeeplinkedFamily() }
       .onChange(of: world.family) { navigateToDeeplinkedFamily() }

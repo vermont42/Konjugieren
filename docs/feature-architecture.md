@@ -178,6 +178,12 @@ konjugieren://{host}/{path}
 | `family` | Family name | Navigate to family (future feature) |
 | `info` | Index (0-based) | Navigate to Info article at that index |
 
+A `verb` link may carry a `source` query item naming the surface that built it, such as
+`konjugieren://verb/gehen?source=widget`. `URL.analyticsSource` reads it, and `World.handleURL(_:)`
+stores it in `Current.verbSource` beside `Current.verb`, with `deeplink` when it is absent or
+unknown. It exists because a widget or an intent can hand the app nothing but a URL. See
+[Analytics](#analytics).
+
 ### Architecture
 
 | File | Purpose |
@@ -384,7 +390,7 @@ Two Control Center buttons provide quick access to app features.
 | `QuickQuizControl.swift` | Control Center button that launches the quiz via deeplink |
 | `RandomVerbControl.swift` | Control Center button that opens a random verb via deeplink |
 
-The buttons run `OpenQuizIntent` and `OpenRandomVerbIntent` from `Shared/`, which compile into both the app and the widget extension. Each sets `openAppWhenRun = true` and writes a pending deeplink (`konjugieren://quiz/start`, `konjugieren://verb/random`) to the shared defaults, which the app consumes when it opens. Neither uses `OpenURLIntent`, which is a silent no-op from a widget extension for a custom URL scheme; [`control-center-controls.md`](control-center-controls.md) records why, and why the intents must live in `Shared/`.
+The buttons run `OpenQuizIntent` and `OpenRandomVerbControlIntent` from `Shared/`, which compile into both the app and the widget extension. Each sets `openAppWhenRun = true` and writes a pending deeplink (`konjugieren://quiz/start`, `konjugieren://verb/random?source=control`) to the shared defaults, which the app consumes when it opens. `OpenRandomVerbControlIntent` differs from the Random Verb shortcut's `OpenRandomVerbIntent` only in that source, since one intent cannot tell which of the two ran it, and it is hidden from Shortcuts with `isDiscoverable = false`. Neither uses `OpenURLIntent`, which is a silent no-op from a widget extension for a custom URL scheme; [`control-center-controls.md`](control-center-controls.md) records why, and why the intents must live in `Shared/`.
 
 ## Siri Shortcuts / App Intents
 
@@ -426,3 +432,60 @@ The app prompts users to leave an App Store review after sufficient engagement.
 ### Triggering Logic
 
 Review prompts are gated by `Settings.promptActionCount` (number of meaningful actions taken) and `Settings.lastReviewPromptDate` (cooldown between prompts). The real implementation calls `SKStoreReviewController.requestReview()` when both thresholds are met.
+
+## Analytics
+
+`Analytics.swift` holds every signal name (`AnalyticsName`), parameter key (`ParameterKey`), and
+parameter value. `AnalyticsReal` sends through TelemetryDeck, and `AnalyticsSpy` records under unit
+tests. **No signal carries a verb or any typed text**, because the privacy policy promises that.
+Counts and durations go out in bands (`AnalyticsBand`), never as exact numbers.
+
+### Lookup signals
+
+| Signal | Parameters | Sent |
+|---|---|---|
+| `viewVerbView` | `source` | When a verb page appears: on arrival, and again with `source` `resume` after the page returns from another tab, a pushed page, or the background |
+| `leaveVerbView` | `deepestSection` (`header`, `simple`, `compound`, `etymology`, `example`), `dwell` (`0-5s`, `5-15s`, `15-60s`, `60s+`) | Exactly once for each `viewVerbView`: when the page leaves the screen or the app goes to the background |
+| `finishSearch` | `outcome` (`opened`, `abandoned`, `noResult`), `queryLength` (`1-2`, `3-5`, `6-9`, `10+`), `resultCount` (`0`, `1`, `2-10`, `11+`), `matchKind`, `resultPosition` (`1`, `2-5`, `6+`, `none`) | Once per search: when a result or the guess is opened, the field is cleared, or the app goes to the background with text in the field |
+
+`VerbVisit` models one stretch of a verb page on screen, and `SearchTracker` and `SearchReport`
+model one search. A section counts as reached when a third of its block's first card is on screen
+(`onScrollVisibilityChange`); `simple` is the Perfektpartizip card and `compound` the Perfekt
+Indikativ card. Returning to the results and opening another verb without editing the text sends
+no second `finishSearch`. An abandoned search's `matchKind` is that of the top result it passed
+over.
+
+`matchKind` values are `VerbSearch.MatchKind`'s eight cases by name, plus `guess` (the empty
+state's closest verb), `none`, and `conjugation`, which Phase 6 of
+[`plans/browse-and-verb-implementation.md`](../plans/browse-and-verb-implementation.md) will send.
+
+### The `source` vocabulary
+
+`AnalyticsSource` is one vocabulary for `viewVerbView` and, when the quiz track adds it,
+`startQuiz`.
+
+| Value | Sent today? | Meaning |
+|---|---|---|
+| `browse` | Yes | A row of the verb list with the search field empty |
+| `control` | Yes | The Random Verb control in Control Center |
+| `deeplink` | Yes | A `konjugieren://` link with no recognized `source` |
+| `family` | Yes | A verb on a family's page |
+| `handoff` | Yes | Handoff from another device |
+| `infoLink` | Yes | A verb linked from an Info article |
+| `resume` | Yes | The same page appearing again (see above) |
+| `search` | Yes | A search result, opened by tap, Return, or the arrow keys |
+| `searchGuess` | Yes | The guess under "No verbs found" |
+| `shortcut` | Yes | The Open Verb and Random Verb shortcuts |
+| `spotlight` | Yes | A Spotlight result |
+| `widget` | Yes | Any home-screen, lock-screen, or quiz widget |
+| `related` | Phase 9 | A related verb on a verb page |
+| `sharedLink` | Phase 10 | A link inside shared text |
+| `myVerbs`, `recent` | Phase 12 | My Verbs, and the recent lookups |
+| `list` | Phase 16 | A collection |
+| `reviewCard` | Phase 15 | The review card |
+| `tab`, `verbPage` | Phase 13 (`startQuiz`) | The Quiz tab, and "Test me on this verb" |
+
+A phase that adds a way to reach a verb page passes its value in `VerbDestination`, the value the
+`Verbs` and `Families` navigation stacks push, or in the deeplink's `source` query item. It also
+adds the privacy-policy lines to [`privacy-policy-pending.md`](privacy-policy-pending.md).
+

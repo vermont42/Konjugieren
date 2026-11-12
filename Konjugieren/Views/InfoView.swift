@@ -79,7 +79,7 @@ struct InfoView: View {
     }
 
     if Verb.verbs[cleaned] != nil {
-      if let verbURL = URL(string: "\(URL.konjugierenURLPrefix)\(URL.verbHost)/\(cleaned)") {
+      if let verbURL = URL.verbDeeplink(cleaned, source: .infoLink) {
         Current.handleURL(verbURL)
       }
       return .handled

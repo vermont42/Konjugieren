@@ -13,6 +13,7 @@ struct OpenVerbIntent: AppIntent {
   func perform() async throws -> some IntentResult {
     await MainActor.run {
       Current.verb = nil
+      Current.verbSource = .shortcut
       Current.verb = Verb.verbs[verb.id]
       Current.selectedTab = .verbs
     }

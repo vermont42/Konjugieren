@@ -74,7 +74,7 @@ struct LargeWidgetView: View {
 
       Spacer(minLength: 0)
     }
-    .widgetURL(URL(string: "konjugieren://verb/\(snapshot.infinitiv)"))
+    .widgetURL(URL(string: "konjugieren://verb/\(snapshot.infinitiv)?source=widget"))
   }
 
   private func conjugationCell(_ conjugation: WidgetConjugation) -> some View {

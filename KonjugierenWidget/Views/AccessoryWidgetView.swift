@@ -19,7 +19,7 @@ struct AccessoryRectangularView: View {
           .font(.caption2)
       }
     }
-    .widgetURL(URL(string: "konjugieren://verb/\(snapshot.infinitiv)"))
+    .widgetURL(URL(string: "konjugieren://verb/\(snapshot.infinitiv)?source=widget"))
   }
 }
 
@@ -28,6 +28,6 @@ struct AccessoryInlineView: View {
 
   var body: some View {
     Text("\(snapshot.infinitiv) — \(snapshot.translation)")
-      .widgetURL(URL(string: "konjugieren://verb/\(snapshot.infinitiv)"))
+      .widgetURL(URL(string: "konjugieren://verb/\(snapshot.infinitiv)?source=widget"))
   }
 }

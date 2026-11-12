@@ -4,8 +4,14 @@ import SwiftUI
 
 struct VerbView: View {
   let verb: Verb
+  let source: AnalyticsSource
   @Environment(\.horizontalSizeClass) private var sizeClass
+  @Environment(\.scenePhase) private var scenePhase
   @State private var readingIndex = 0
+  @State private var visit: VerbVisit?
+  @State private var visibleSections: Set<VerbPageSection> = []
+  @State private var isOnScreen = false
+  @State private var hasAppeared = false
   private var settings: Settings { Current.settings }
 
   /// The reading the screen is currently showing. Every piece of metadata below (family,
@@ -139,6 +145,9 @@ struct VerbView: View {
             RichTextView(blocks: etymologyText.richTextBlocks)
           }
           .konjCardWithAccentBar()
+          .onScrollVisibilityChange(threshold: Self.sectionVisibilityThreshold) { isVisible in
+            sectionVisibilityChanged(.etymology, isVisible: isVisible)
+          }
           .padding(.horizontal)
         }
 
@@ -167,12 +176,35 @@ struct VerbView: View {
               .foregroundStyle(.secondary)
           }
           .konjCardWithAccentBar()
+          .onScrollVisibilityChange(threshold: Self.sectionVisibilityThreshold) { isVisible in
+            sectionVisibilityChanged(.example, isVisible: isVisible)
+          }
           .padding(.horizontal)
         }
       }
       .padding(.vertical)
     }
-    .onAppear { Current.analytics.signal(name: .viewVerbView) }
+    .onAppear {
+      isOnScreen = true
+      beginVisit(source: hasAppeared ? .resume : source)
+      hasAppeared = true
+    }
+    .onDisappear {
+      isOnScreen = false
+      endVisit()
+    }
+    .onChange(of: scenePhase) {
+      switch scenePhase {
+      case .background:
+        endVisit()
+      case .active:
+        if isOnScreen {
+          beginVisit(source: .resume)
+        }
+      default:
+        break
+      }
+    }
     .navigationTitle(verb.infinitiv.inUserRegion)
     .navigationBarTitleDisplayMode(.inline)
     .userActivity(World.viewVerbActivityType) { activity in
@@ -246,6 +278,9 @@ struct VerbView: View {
       titleIsGerman: titleIsGerman,
       conjugations: [conjugate(.perfektpartizip)]
     )
+    .onScrollVisibilityChange(threshold: Self.sectionVisibilityThreshold) { isVisible in
+      sectionVisibilityChanged(.simple, isVisible: isVisible)
+    }
 
     ConjugationSectionView(
       title: displayName(for: .präsenspartizip),
@@ -265,12 +300,45 @@ struct VerbView: View {
     )
 
     conjugationSection(for: Conjugationgroup.perfektIndikativ)
+      .onScrollVisibilityChange(threshold: Self.sectionVisibilityThreshold) { isVisible in
+        sectionVisibilityChanged(.compound, isVisible: isVisible)
+      }
     conjugationSection(for: Conjugationgroup.perfektKonjunktivI)
     conjugationSection(for: Conjugationgroup.plusquamperfektIndikativ)
     conjugationSection(for: Conjugationgroup.plusquamperfektKonjunktivII)
     conjugationSection(for: Conjugationgroup.futurIndikativ)
     conjugationSection(for: Conjugationgroup.futurKonjunktivI)
     conjugationSection(for: Conjugationgroup.futurKonjunktivII)
+  }
+
+  // A third of a block's first card on screen counts as reaching the block. A higher threshold
+  // could never be met by an etymology card taller than the screen.
+  private static let sectionVisibilityThreshold = 0.3
+
+  private func beginVisit(source: AnalyticsSource) {
+    guard visit == nil else {
+      return
+    }
+    let newVisit = VerbVisit(source: source, start: .now, visibleSections: visibleSections)
+    visit = newVisit
+    Current.analytics.signal(name: .viewVerbView, parameters: newVisit.viewParameters)
+  }
+
+  private func endVisit() {
+    guard let visit else {
+      return
+    }
+    Current.analytics.signal(name: .leaveVerbView, parameters: visit.leaveParameters(end: .now))
+    self.visit = nil
+  }
+
+  private func sectionVisibilityChanged(_ section: VerbPageSection, isVisible: Bool) {
+    if isVisible {
+      visibleSections.insert(section)
+      visit?.reach(section)
+    } else {
+      visibleSections.remove(section)
+    }
   }
 
   // A verb whose auxiliary is regionally conditioned shows both forms with their flags, so
@@ -445,6 +513,6 @@ struct ConjugationSectionView: View {
           auxiliaryIsRegional: false
         )
       ]
-    ))
+    ), source: .browse)
   }
 }

@@ -16,7 +16,7 @@ that Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until
 |---:|---|---|---|---|
 | 1 | Done | 2026-11-12 | `bcab0c3` | A1, A2, A3, A8 |
 | 2 | Done | 2026-11-12 | `40acbdf` | A4, C4 |
-| 3 | Not started | | | Signals |
+| 3 | Awaiting Josh | 2026-11-12 | | Signals |
 | 4 | Not started | | | B2 |
 | 5 | Not started | | | A5 (the map) |
 | 6 | Not started | | | A5 (the search) |
@@ -250,6 +250,58 @@ in the deployed policy only on the day the release that sends it ships. Stage th
 release work will find them, tell Josh where, and have later phases add to the same place.
 
 **How it differed:**
+
+- **Where things live.** Every name, key, and value is in `Analytics.swift`: `AnalyticsSource`,
+  `SearchMatchKind`, `SearchOutcome`, `VerbPageSection`, and the bands in `AnalyticsBand`.
+  `docs/feature-architecture.md` § Analytics has the signal table and says which `source` values
+  are sent today and which phase sends the rest. `AnalyticsSource` is one enum for `viewVerbView`
+  and `startQuiz` alike, including Phase 13's `tab` and `verbPage`, which `startQuiz` does not yet
+  send.
+- **`matchKind` is fine-grained.** It sends `VerbSearch.MatchKind`'s eight cases by name
+  (`exactInfinitive`, `wholeWordGloss`, …) rather than the ideas document's coarse three, plus
+  `guess` and `none`. The mapping is an exhaustive switch, so a new match kind cannot go unnamed.
+  Phase 6 adds `conjugation`, which is already in the enum.
+- **One visit, one leave.** `viewVerbView` already fired again whenever a verb page reappeared
+  after a tab switch, so "once per verb view" needed a definition. A visit is one stretch of the
+  page on screen with the app in the foreground (`VerbVisit`). It ends, sending `leaveVerbView`,
+  when the page leaves the screen or the app goes to the background. A page that comes back
+  starts a new visit whose `source` is `resume`. Every `viewVerbView` thus pairs with one
+  `leaveVerbView`, background time never counts as reading, and arrivals are the views whose
+  source is not `resume`. A resumed visit starts from the deepest section already on screen.
+- **Reaching a section** means a third of its block's first card on screen
+  (`onScrollVisibilityChange`): Perfektpartizip for `simple`, Perfekt Indikativ for `compound`.
+  On an iPhone the Perfektpartizip card shows without scrolling, so `header` alone will be rare.
+- **A search** (`SearchTracker`) begins with the first non-blank letter and ends once: opened,
+  cleared, or the app backgrounded with text in the field. Going back to the results and opening a
+  second verb without editing sends no second `finishSearch`, though the page still reports
+  `search`. An abandoned search reports the top result's match kind. Opening the guess reports
+  outcome `opened`, `resultCount` 0, and `matchKind` `guess`, and the page reports `searchGuess`,
+  as Phase 2 asked. Return and the arrow keys count as ordinary opens.
+- **How the source travels.** The list and the family pages push a `VerbDestination` (verb plus
+  source) instead of a bare `Verb`; Phase 6 can add the matched section and reading to it.
+  Deeplinks carry a `source` query item (`konjugieren://verb/gehen?source=widget`), because a
+  widget or intent can pass the app only a URL. `World.handleURL` stores it in `verbSource`,
+  falling back to `deeplink`. Spotlight, Info links, the widgets, and both random-verb intents
+  name themselves this way; Handoff and the Open Verb intent set `verbSource` directly. **Phase
+  11's deeplink grammar should keep this query item.**
+- **The control needed its own intent.** The Random Verb control and the Random Verb shortcut ran
+  the same `OpenRandomVerbIntent`, which cannot tell which of them ran it. The control now runs
+  `OpenRandomVerbControlIntent` in `Shared/`, hidden from Shortcuts, reusing the existing title
+  key. Phase 14 touches both.
+- **Privacy lines** wait in `docs/privacy-policy-pending.md`, in English and German, with
+  instructions for release day. `CLAUDE.md`'s "No Release Before 2027" section points there.
+  Later phases add their lines to the same file. The staged text also rewrites the paragraph after
+  the list, whose "recorded only as having happened" would otherwise become untrue.
+- **Not built:** the flags `wouldMatchFolded` and `wouldMatchTranslation`, which the ideas
+  document wanted only if A1 or A2 missed the release. Both are on `main`.
+- **How it was tested.** 28 new tests: bands, the tracker's lifecycle, every report's parameters,
+  a check that no parameter can echo the query, visits, and the source of each deeplink literal.
+  In the iPhone 17 simulator, with signals logged temporarily, these fired as designed: browse,
+  search (konnen → `exactFoldedInfinitive`, position 1), guess (gehn), no result (xyzzyq), a
+  backgrounded search (`abandoned`, `infinitivePrefix`), family, a `?source=widget` deeplink, a
+  leave at `example` after scrolling to the bottom, and `resume` after both a tab switch and a
+  return from the background. Spotlight, Handoff, Info links, the shortcuts, and the control were
+  tested through their URLs only, not by invoking them.
 
 ## Phase 4: Separable Verbs as a Main Clause Writes Them
 

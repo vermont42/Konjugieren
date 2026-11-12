@@ -314,9 +314,9 @@ struct AblautGroupHeader: View {
 #Preview {
   @Previewable @State var navigationPath = NavigationPath()
   NavigationStack(path: $navigationPath) {
-    FamilyDetailView(family: .separable) { verb in navigationPath.append(verb) }
-      .navigationDestination(for: Verb.self) { verb in
-        VerbView(verb: verb)
+    FamilyDetailView(family: .separable) { verb in navigationPath.append(VerbDestination(verb: verb, source: .family)) }
+      .navigationDestination(for: VerbDestination.self) { destination in
+        VerbView(verb: destination.verb, source: destination.source)
       }
   }
 }

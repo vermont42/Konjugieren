@@ -46,7 +46,7 @@ struct QuizWidgetView: View {
         }
       }
     }
-    .widgetURL(URL(string: "konjugieren://verb/\(quiz.infinitiv)"))
+    .widgetURL(URL(string: "konjugieren://verb/\(quiz.infinitiv)?source=widget"))
   }
 
   private var answeredView: some View {
@@ -65,7 +65,7 @@ struct QuizWidgetView: View {
           .foregroundStyle(.green)
       }
     }
-    .widgetURL(URL(string: "konjugieren://verb/\(quiz.infinitiv)"))
+    .widgetURL(URL(string: "konjugieren://verb/\(quiz.infinitiv)?source=widget"))
   }
 
   private func answerButton(answer: String) -> some View {

@@ -9401,3 +9401,42 @@ offers to restore it. Josh still wanted a fallback, so the link now goes through
 `OpenURLAction` that awaits `UIApplication.open` and, on failure, copies the address and says so.
 Trying and reading the result avoids `canOpenURL`, which would have needed `mailto` declared in
 Info.plist.
+
+## Lookup Signals: Counting Searches Without Reading Them (2026-11-12)
+
+Phase 3 of the browse plan added the three signals that the ideas document's "What to Measure"
+proposed: `finishSearch` once per search, a `source` on `viewVerbView`, and `leaveVerbView` once
+per verb view. The privacy policy promises that no verb and no typed text leaves the device, so
+every value is either a word from a fixed vocabulary or a band such as "3-5" letters. One test
+feeds queries through every report and checks that each parameter value belongs to that
+vocabulary, so no future edit can quietly echo a query.
+
+The plan's phrase "once per verb view" turned out to need a definition. `viewVerbView` already
+fired from `onAppear`, which SwiftUI calls again whenever a tab switch brings the page back, so the
+existing count was really a count of appearances. Three ways out were weighed. Sending the leave
+signal when the page's state object is destroyed would catch pops but lose every page the system
+killed in the background. Pausing a clock in the background would keep one visit alive across an
+hour in another app. The one chosen treats each stretch on screen as a visit: it ends at
+disappearance or backgrounding, and a page that returns starts a new visit with the source
+`resume`. Every view now pairs with exactly one leave, and arrivals are simply the views whose
+source is not `resume`.
+
+The source turned out harder to carry than to define. A verb page is reached from nine places, and
+four of them (widgets, Spotlight, Info links, and the intents behind shortcuts and Control Center)
+reach the app only as a `konjugieren://` URL, the widget from another process entirely. So the
+source rides in the URL as a query item, `?source=widget`, and `World.handleURL` sets it down
+beside the verb. The Random Verb control and the Random Verb shortcut were a smaller version of the
+same problem: both ran one intent, and an intent cannot know who invoked it. The control got a
+twin intent, hidden from Shortcuts, that differs only in the word it writes into the URL.
+
+Verifying signals in a simulator with no TelemetryDeck key took a temporary `NSLog` in
+`AnalyticsReal` and a `log stream` filtered on a marker string. Driving the app through browse,
+search, a misspelling's guess, a nonsense query, a backgrounded search, a family page, a widget
+deeplink, and a tab switch printed exactly the expected sequence, including a `resume` after both
+the tab switch and the return from the home screen. The log line came out before anything was
+committed.
+
+The policy lines did not go into `privacy_policy.txt`, which Josh can deploy at any time and which
+must describe the shipped app. They wait in `docs/privacy-policy-pending.md` in both languages.
+`CLAUDE.md`'s note about the release freeze points there, since whoever lifts that freeze is the
+person who needs them.

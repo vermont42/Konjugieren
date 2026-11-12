@@ -1025,6 +1025,16 @@ folded, and whether it would have matched a gloss, and send `wouldMatchFolded` a
 typed. With no release before 2027, the signals and the small fixes will ship together, and the
 flags are worth building only if A1 or A2 is left out of that release.
 
+**Built on `main` 2026-11-12** by [Phase 3](../plans/browse-and-verb-implementation.md#phase-3-lookup-signals)
+of the implementation plan: `finishSearch`, `source` on `viewVerbView`, and `leaveVerbView`, with
+the vocabulary in [`feature-architecture.md`](feature-architecture.md#analytics). Three changes
+from the table above. `matchKind` sends the search's eight match kinds by name rather than three
+coarse ones, plus `guess` for the empty state's closest verb. `source` gains `resume`, for a page
+that reappears after another tab or the background, so that every `viewVerbView` pairs with one
+`leaveVerbView`. The flags `wouldMatchFolded` and `wouldMatchTranslation` were not built, since A1
+and A2 are on `main` too. The policy lines wait in
+[`privacy-policy-pending.md`](privacy-policy-pending.md) for the release.
+
 ### What Was Typed
 
 The most valuable thing a reference app can learn is what people wanted and did not get. Four

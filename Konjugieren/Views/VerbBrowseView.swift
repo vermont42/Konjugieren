@@ -11,8 +11,10 @@ struct VerbBrowseView: View {
   @State private var navigationPath = NavigationPath()
   @State private var keyboardSelection: Int?
   @State private var addressWasCopied = false
+  @State private var searchTracker = SearchTracker()
   @FocusState private var searchIsFocused: Bool
   @Environment(\.horizontalSizeClass) private var sizeClass
+  @Environment(\.scenePhase) private var scenePhase
   private let tryQuizTip = TryQuizTip()
 
   private var settings: Settings { Current.settings }
@@ -33,12 +35,20 @@ struct VerbBrowseView: View {
     searchText.trimmingCharacters(in: .whitespacesAndNewlines)
   }
 
+  private var isSearching: Bool {
+    !trimmedSearchText.isEmpty
+  }
+
+  private var searchMatches: [VerbSearch.Match] {
+    matches(for: searchText)
+  }
+
   private var filteredVerbs: [Verb] {
-    guard !trimmedSearchText.isEmpty else {
-      return sortedVerbs
-    }
-    return VerbSearch.matches(for: searchText, in: sortedVerbs, includeGlosses: searchIncludesGlosses)
-      .map(\.verb)
+    isSearching ? searchMatches.map(\.verb) : sortedVerbs
+  }
+
+  private func matches(for query: String) -> [VerbSearch.Match] {
+    VerbSearch.matches(for: query, in: sortedVerbs, includeGlosses: searchIncludesGlosses)
   }
 
   private var guessedVerb: Verb? {
@@ -73,7 +83,7 @@ struct VerbBrowseView: View {
               if sizeClass == .regular {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: Layout.verbGridMinimum))], spacing: 0) {
                   ForEach(Array(filteredVerbs.enumerated()), id: \.element.id) { index, verb in
-                    VerbGridCell(verb: verb) { navigationPath.append(verb) }
+                    VerbGridCell(verb: verb) { openResult(verb, at: index) }
                       .background(
                         RoundedRectangle(cornerRadius: Layout.defaultSpacing)
                           .fill(index == keyboardSelection ? Color.customRed.opacity(0.2) : Color.clear)
@@ -84,7 +94,7 @@ struct VerbBrowseView: View {
               } else {
                 LazyVStack(spacing: 0) {
                   ForEach(Array(filteredVerbs.enumerated()), id: \.element.id) { index, verb in
-                    VerbRowView(verb: verb) { navigationPath.append(verb) }
+                    VerbRowView(verb: verb) { openResult(verb, at: index) }
                       .background(rowBackground(index: index))
 
                     Divider()
@@ -138,11 +148,11 @@ struct VerbBrowseView: View {
         Current.reviewPrompter.promptableActionHappened()
       }
       .navigationTitle(L.Navigation.verbs)
-      .navigationDestination(for: Verb.self) { verb in
+      .navigationDestination(for: VerbDestination.self) { destination in
         // A deeplink replaces the path with a one-verb path, which reuses this destination's
         // identity, so without the id a VerbView kept the previous verb's selected reading.
-        VerbView(verb: verb)
-          .id(verb.id)
+        VerbView(verb: destination.verb, source: destination.source)
+          .id(destination.verb.id)
       }
       .searchable(
         text: $searchText,
@@ -168,6 +178,14 @@ struct VerbBrowseView: View {
       }
       .onChange(of: searchText) {
         keyboardSelection = nil
+        if let query = searchTracker.textChanged(to: searchText) {
+          signalEndedSearch(query: query)
+        }
+      }
+      .onChange(of: scenePhase) {
+        if scenePhase == .background, let query = searchTracker.finish() {
+          signalEndedSearch(query: query)
+        }
       }
       .onChange(of: world.shouldFocusVerbSearch) {
         if world.shouldFocusVerbSearch {
@@ -180,7 +198,7 @@ struct VerbBrowseView: View {
       .onChange(of: world.verb) {
         if let verb = world.verb {
           navigationPath = NavigationPath()
-          navigationPath.append(verb)
+          navigationPath.append(VerbDestination(verb: verb, source: world.verbSource))
           world.verb = nil
         }
       }
@@ -196,7 +214,7 @@ struct VerbBrowseView: View {
           .padding(.horizontal)
           .accessibilityIdentifier("search_guess_intro")
 
-        VerbRowView(verb: guessedVerb) { navigationPath.append(guessedVerb) }
+        VerbRowView(verb: guessedVerb) { openGuess(guessedVerb) }
           .background(keyboardSelection == 0 ? Color.customRed.opacity(0.2) : Color.clear)
 
         Divider()
@@ -303,12 +321,39 @@ struct VerbBrowseView: View {
   }
 
   private func openKeyboardSelection() {
-    let targets = keyboardTargets
     let index = keyboardSelection ?? 0
-    guard targets.indices.contains(index) else {
+    let verbs = filteredVerbs
+    if verbs.isEmpty, index == 0, let guessedVerb {
+      openGuess(guessedVerb)
+    } else if verbs.indices.contains(index) {
+      openResult(verbs[index], at: index)
+    }
+  }
+
+  private func openResult(_ verb: Verb, at index: Int) {
+    guard isSearching else {
+      navigationPath.append(VerbDestination(verb: verb, source: .browse))
       return
     }
-    navigationPath.append(targets[index])
+    if let query = searchTracker.finish() {
+      signal(.opened(query: query, matches: searchMatches, position: index))
+    }
+    navigationPath.append(VerbDestination(verb: verb, source: .search))
+  }
+
+  private func openGuess(_ verb: Verb) {
+    if let query = searchTracker.finish() {
+      signal(.openedGuess(query: query))
+    }
+    navigationPath.append(VerbDestination(verb: verb, source: .searchGuess))
+  }
+
+  private func signalEndedSearch(query: String) {
+    signal(.ended(query: query, matches: matches(for: query)))
+  }
+
+  private func signal(_ report: SearchReport) {
+    Current.analytics.signal(name: .finishSearch, parameters: report.parameters)
   }
 
   private func updateSortedVerbs() {

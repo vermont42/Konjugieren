@@ -64,6 +64,7 @@ Konjugieren/
 │   ├── QuizDifficulty.swift    # Setting enum: regular vs ridiculous
 │   ├── Region.swift            # Setting enum: the three standard varieties (north/austria/switzerland)
 │   ├── QuizErrorHistory.swift  # Persistence for recent quiz errors (up to 200)
+│   ├── SearchReport.swift      # SearchTracker (one search, first letter to its end) and SearchReport (the banded finishSearch parameters)
 │   ├── SearchScope.swift       # Setting enum: infinitive-only vs. infinitive-and-translation search
 │   ├── SortOrder.swift         # Enum for verb list sorting (alphabetical/frequency)
 │   ├── Sound.swift             # Sound effect definitions (guns, chimes, applause)
@@ -73,11 +74,12 @@ Konjugieren/
 │   ├── Reading.swift           # One sense of a verb: gloss, family, auxiliary, prefixes
 │   ├── Verb.swift              # Lemma: frequency, icon, and an ordered list of readings
 │   ├── VerbParser.swift        # XMLParser delegate for Verbs.xml, incl. the `in` marker grammar
+│   ├── VerbVisit.swift         # VerbDestination (a verb page to push, with its analytics source) and VerbVisit (one viewVerbView/leaveVerbView pair)
 │   ├── VerbSearch.swift        # The one search rule (list and shortcut picker): umlaut/digraph/ß folding, ranked match kinds, and the edit-distance guess for a failed search
 │   ├── Verbs.xml               # 3,572 verb definitions with markers and metadata
 │   └── World.swift             # @Observable DI container with environment selection
 ├── Utils/
-│   ├── Analytics.swift         # Analytics protocol, event names, and parameter keys
+│   ├── Analytics.swift         # Analytics protocol, event names, parameter keys, value vocabularies (AnalyticsSource, SearchMatchKind, …), and bands
 │   ├── AnalyticsReal.swift     # TelemetryDeck implementation of Analytics
 │   ├── AnalyticsSpy.swift      # Test spy that captures analytics signals
 │   ├── FatalError.swift        # Protocol for testable fatal error handling
@@ -110,7 +112,7 @@ Konjugieren/
 │   ├── StringExtensions.swift  # Rich text markup parsing to RichTextBlock/TextSegment
 │   ├── TextExtension.swift     # Text(mixedCaseString:) for ablaut-highlighted display
 │   ├── TimeFormatter.swift     # Formats elapsed seconds as h:mm:ss
-│   ├── URLExtension.swift      # Deeplink URL helpers (konjugieren:// scheme), developerEmail, and the mailto: builder
+│   ├── URLExtension.swift      # Deeplink URL helpers (konjugieren:// scheme, the `source` query item), developerEmail, and the mailto: builder
 │   ├── URLProtocolStub.swift   # URLProtocol subclass for stubbing HTTP responses in tests
 │   ├── URLSessionExtension.swift   # Extension providing a stubbed URLSession for testing
 │   ├── VerbSearchArrowKeys.swift   # UIKit workaround: priority UIKeyCommands so ↑/↓ move through search results while the field is focused
@@ -167,7 +169,8 @@ Shared/
 ├── GameActivityAttributes.swift    # ActivityKit model for game live activity
 ├── MixedCaseSegmenter.swift        # Pure ablaut segmentation shared by app and widget highlighting
 ├── OpenQuizIntent.swift            # Shared intent to open quiz via deeplink
-├── OpenRandomVerbIntent.swift      # Shared intent to open random verb via deeplink
+├── OpenRandomVerbControlIntent.swift  # The Random Verb control's action: OpenRandomVerbIntent with source=control, hidden from Shortcuts
+├── OpenRandomVerbIntent.swift      # Shared intent to open random verb via deeplink (the Random Verb shortcut)
 ├── QuizActivityAttributes.swift    # ActivityKit model for quiz live activity
 ├── WidgetConstants.swift           # Constants for widget app-group container, storage keys, day count, and pinned Gregorian calendar
 ├── WidgetQuizShuffle.swift         # Process-stable (FNV-1a seeded) answer shuffle + SeededRNG, shared by widget and tests
@@ -182,12 +185,15 @@ KonjugierenTests/
 │   ├── PersonNumberTests.swift # Pronoun and sie-disambiguation tests
 │   ├── QuizErrorHistoryTests.swift # Quiz error persistence tests
 │   ├── QuizTests.swift         # Quiz logic, scoring, and timer pause/resume tests
+│   ├── SearchReportTests.swift # SearchTracker lifecycle, finishSearch parameters, and the no-typed-text guarantee
 │   ├── RefusalDetectionTests.swift # Tutor refusal-phrase detection, incl. the "null" exact-match false-positive guard
 │   ├── VerbSearchTests.swift   # VerbSearch: folding, match-kind ranking, the ideas doc's failed queries, list/picker agreement, the failed-search guess
-│   └── VerbTests.swift         # Verb.stamm and endingIsValid tests
+│   ├── VerbTests.swift         # Verb.stamm and endingIsValid tests
+│   └── VerbVisitTests.swift    # VerbVisit: deepest section and banded dwell
 ├── Utils/
+│   ├── AnalyticsTests.swift    # Analytics bands, section order, and the match-kind mapping
 │   ├── CorpusFormsDumpTests.swift  # Harness: drives Conjugator over every verb to emit corpus/working/forms.json (form → lemma, with separable-prefix split forms). Gated on TEST_RUNNER_KONJUGIEREN_FORMS_OUT
-│   ├── DeeplinkTests.swift     # Deeplink URL parsing and handling tests
+│   ├── DeeplinkTests.swift     # Deeplink URL parsing and handling tests, incl. the `source` query item
 │   ├── MixedCaseAccessibilityTests.swift  # VoiceOver label generation tests
 │   ├── MixedCaseSegmenterTests.swift  # Ablaut segmentation tests (empty/all-regular/all-irregular/formal Sie)
 │   ├── SettingsTests.swift     # Settings persistence and default-value tests
@@ -220,7 +226,7 @@ docs/
 ├── example-sentence-pipeline.md   # Pipeline for generating literary example sentences
 ├── example-sentence-prompt.md     # Prompt template for example sentence generation
 ├── example-sentence-sources.md    # Source texts for example sentences
-├── feature-architecture.md    # Architecture details: Quiz, Game Center, Info, Deeplink systems
+├── feature-architecture.md    # Architecture details: Quiz, Game Center, Info, Deeplink systems, and Analytics (signals and the `source` vocabulary)
 ├── frequencies.txt            # Verb frequency data
 ├── grep-gotchas.md            # Silent-truncation failure mode that bites `grep` on long-line files (xcstrings, Markdown); detection via `grep -c`
 ├── history_corrections.md     # **The verb-history fact-check's deliverable.** 27 findings with replacement prose in both languages, 9 span corrections, agent H's 16 internal-consistency items, 4 thin confirmations, and the coverage reconciliation. Applied to both extracts on 2026-07-29; its "What was applied and what was not" section records the nine declines. Synced to the catalog on 2026-07-29
@@ -235,6 +241,7 @@ docs/
 ├── peterborough-chronicle-reading-list.md  # Reading list for the Peterborough Chronicle and the Old-to-Middle English transition
 ├── platform-features-plan.md  # Plan for platform-specific features
 ├── post-release-features.md   # Post-release feature backlog
+├── privacy-policy-pending.md  # Privacy-policy lines (English and German) for analytics built on main, to splice into privacy_policy.txt on release day
 ├── project-structure.md       # This file — annotated directory tree
 ├── query-rewriting-exploration.md  # Query rewriting research for tutor feature
 ├── regenerate-verbs-pdf-prompt.md  # Self-contained session prompt for regenerating konjugieren-verbs.pdf

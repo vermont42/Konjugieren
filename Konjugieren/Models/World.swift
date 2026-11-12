@@ -19,6 +19,7 @@ class World {
   var analytics: Analytics
   var session: URLSession
   var verb: Verb?
+  var verbSource: AnalyticsSource = .deeplink
   var family: String?
   var info: Info?
   var selectedTab: TabSelection = .verbs
@@ -78,6 +79,7 @@ class World {
     }
     clearDeeplinkTargets()
     verb = Verb.verbs[infinitiv]
+    verbSource = .handoff
     if verb != nil {
       selectedTab = .verbs
     }
@@ -101,6 +103,7 @@ class World {
       } else {
         verb = Verb.verbs[target]
       }
+      verbSource = url.analyticsSource ?? .deeplink
       if verb != nil {
         selectedTab = .verbs
       }

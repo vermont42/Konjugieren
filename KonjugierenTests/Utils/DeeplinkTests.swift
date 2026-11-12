@@ -9,6 +9,7 @@ import Testing
 struct DeeplinkTests {
   init() {
     Current.verb = nil
+    Current.verbSource = .browse
     Current.family = nil
     Current.info = nil
     Current.selectedTab = .settings
@@ -46,6 +47,42 @@ struct DeeplinkTests {
     #expect(Current.verb?.infinitiv == "machen")
     #expect(Current.family == nil)
     #expect(Current.info == nil)
+  }
+
+  @Test func verbDeeplinkWithoutASourceCountsAsADeeplink() {
+    Current.handleURL(URL(string: "konjugieren://verb/machen")!)
+    #expect(Current.verbSource == .deeplink)
+  }
+
+  @Test func verbDeeplinkCarriesItsSource() {
+    Current.handleURL(URL(string: "konjugieren://verb/machen?source=widget")!)
+    #expect(Current.verb?.infinitiv == "machen")
+    #expect(Current.verbSource == .widget)
+  }
+
+  @Test func unknownSourceCountsAsADeeplink() {
+    Current.handleURL(URL(string: "konjugieren://verb/machen?source=nonsense")!)
+    #expect(Current.verb?.infinitiv == "machen")
+    #expect(Current.verbSource == .deeplink)
+  }
+
+  @Test func builtVerbDeeplinkFindsAVerbWithAnUmlaut() throws {
+    let url = try #require(URL.verbDeeplink("können", source: .spotlight))
+    Current.handleURL(url)
+    #expect(Current.verb?.infinitiv == "können")
+    #expect(Current.verbSource == .spotlight)
+  }
+
+  // The widget extension and the intents in Shared/ cannot see AnalyticsSource, so they spell
+  // their sources as literals. These pin the literals to the vocabulary.
+  @Test(arguments: zip(
+    [OpenRandomVerbIntent.pendingDeeplink, OpenRandomVerbControlIntent.pendingDeeplink, "konjugieren://verb/gehen?source=widget"],
+    [AnalyticsSource.shortcut, .control, .widget]
+  ))
+  func literalSourcesBelongToTheVocabulary(deeplink: String, source: AnalyticsSource) {
+    Current.handleURL(URL(string: deeplink)!)
+    #expect(Current.verb != nil)
+    #expect(Current.verbSource == source)
   }
 
   @Test func handleURLVerbDeeplinkUnknownVerb() {
@@ -124,6 +161,7 @@ struct DeeplinkTests {
     activity.userInfo = ["infinitiv": "machen"]
     Current.handleUserActivity(activity)
     #expect(Current.verb?.infinitiv == "machen")
+    #expect(Current.verbSource == .handoff)
   }
 
   @Test func handleUserActivityUnknownVerb() {

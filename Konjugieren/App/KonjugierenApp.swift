@@ -21,7 +21,7 @@ struct KonjugierenApp: App {
             let rawIdentifier = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String
           {
             let infinitiv = rawIdentifier.replacingOccurrences(of: "VerbEntity/", with: "")
-            if let url = URL(string: "konjugieren://verb/\(infinitiv)") {
+            if let url = URL.verbDeeplink(infinitiv, source: .spotlight) {
               Current.handleURL(url)
             }
           }

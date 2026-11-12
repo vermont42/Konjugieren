@@ -34,6 +34,10 @@ and do not count on shipping a fix or an analytics signal in order to learn from
 outside the apps, such as the privacy policy, can still change at any time. Remove this section
 when the constraint lifts.
 
+Analytics added on `main` since the last release need lines in the privacy policy on the day the
+next release ships, and not before. They wait in
+[`docs/privacy-policy-pending.md`](docs/privacy-policy-pending.md), which says how to apply them.
+
 ## Checking the Five-Hour Usage Window
 
 If the need arises to check token usage in the five-hour window, consult

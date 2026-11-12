@@ -11,6 +11,20 @@ extension URL {
     pathComponents.count == 2
   }
 
+  /// The surface that built this deeplink, which a widget or an intent names in a `source` query
+  /// item because the deeplink is all it can hand the app.
+  var analyticsSource: AnalyticsSource? {
+    URLComponents(url: self, resolvingAgainstBaseURL: false)?
+      .queryItems?
+      .first { $0.name == URL.sourceQueryName }?
+      .value
+      .flatMap(AnalyticsSource.init(rawValue:))
+  }
+
+  static func verbDeeplink(_ infinitiv: String, source: AnalyticsSource) -> URL? {
+    URL(string: "\(konjugierenURLPrefix)\(verbHost)/\(infinitiv)?\(sourceQueryName)=\(source.rawValue)")
+  }
+
   static let developerEmail = "vermontcoder@gmail.com"
 
   nonisolated private static let mailtoUnreserved = CharacterSet(charactersIn: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-._~")
@@ -27,4 +41,5 @@ extension URL {
   static let verbHost = "verb"
   static let familyHost = "family"
   static let infoHost = "info"
+  static let sourceQueryName = "source"
 }

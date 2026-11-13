@@ -167,7 +167,7 @@ struct LearnerVerbsTests {
     let gehen = Verb.verbs["gehen"]!
     let sein = Verb.verbs["sein"]!
 
-    store.recordOpen(gehen, at: date(1))
+    store.recordOpen(gehen, source: .browse, at: date(1))
     #expect(store.toggleStar(sein, at: date(2)))
 
     let reloaded = LearnerVerbStore(getterSetter: getterSetter)
@@ -184,7 +184,7 @@ struct LearnerVerbsTests {
     let getterSetter = GetterSetterFake()
     let store = LearnerVerbStore(getterSetter: getterSetter)
     let gehen = Verb.verbs["gehen"]!
-    store.recordOpen(gehen, at: date(1))
+    store.recordOpen(gehen, source: .browse, at: date(1))
     store.toggleStar(gehen, at: date(2))
 
     store.remove(gehen)
@@ -208,8 +208,8 @@ struct LearnerVerbsTests {
     let store = LearnerVerbStore(getterSetter: GetterSetterFake())
     let gehen = Verb.verbs["gehen"]!
     let sein = Verb.verbs["sein"]!
-    store.recordOpen(gehen, at: date(1))
-    store.recordOpen(sein, at: date(2))
+    store.recordOpen(gehen, source: .browse, at: date(1))
+    store.recordOpen(sein, source: .browse, at: date(2))
     store.toggleStar(sein, at: date(3))
 
     #expect(store.recentVerbs.map(\.infinitiv) == ["sein", "gehen"])

@@ -64,7 +64,7 @@ Konjugieren/
 │   ├── InfoMedia.swift         # Enum: .photo or .sfSymbol media for Info rows
 │   ├── KeyConjugations.swift   # Verb.keyConjugations (steht auf · stand auf · ist aufgestanden, always shown with no label) and Verb.shareText, what the verb page's share button sends
 │   ├── KonjugierenTips.swift   # TipKit tips (e.g., change-difficulty hint; the verb page's RedLettersTip and ScrollToBottomTip)
-│   ├── LearnerVerbStore.swift  # Current.learnerVerbs: @Observable view of Shared/LearnerVerbs.swift that records opens and stars, saves each change to the App Group's defaults, and answers in verbs (starred, recent, My Verbs)
+│   ├── LearnerVerbStore.swift  # Current.learnerVerbs: @Observable view of Shared/LearnerVerbs.swift that records opens, stars, and reviews, saves each change to the App Group's defaults, and answers in verbs (starred, recent, My Verbs, the verb due for review)
 │   ├── LanguageModelService.swift      # Protocol for on-device AI error explanation and tutoring
 │   ├── LanguageModelServiceDummy.swift # No-op stub for tests/unsupported devices
 │   ├── LanguageModelServiceReal.swift  # FoundationModels implementation for AI tutoring
@@ -76,6 +76,7 @@ Konjugieren/
 │   ├── QuizDifficulty.swift    # Setting enum: regular vs ridiculous
 │   ├── RelatedVerbs.swift      # Verb.root (the innermost base: anerkennen → kennen) and Verb.related(readingIndex:): verbs built on the same root, one verb per other root of the ablaut group, and the Families pages of a reading
 │   ├── Region.swift            # Setting enum: the three standard varieties (north/austria/switzerland)
+│   ├── ReviewCardSuppression.swift # Setting enum: off (the default) shows the review card, on hides it
 │   ├── QuizErrorHistory.swift  # Persistence for recent quiz errors (up to 200)
 │   ├── SearchReport.swift      # SearchTracker (one search, first letter to its end, and the surface that opened the field for it) and SearchReport (the banded finishSearch parameters)
 │   ├── SearchScope.swift       # Setting enum: infinitive-only vs. infinitive-and-translation search
@@ -152,11 +153,12 @@ Konjugieren/
     ├── QuizView.swift          # Quiz gameplay: questions, timer, answer input; the Quiz tab's start screen (a big yellow symbol for the scope, its name and description, the All Verbs/My Verbs picker, Start, three fact tiles, and My Verbs' verbs as chips, scaled up on iPad); with a sheetScope, the sheet of "Test me on this verb", which starts as it appears and closes when the quiz ends
     ├── RelatedVerbsView.swift  # The verb page's Related Verbs card (chips in a FlowLayout, which can also center its rows, as the Quiz tab's My Verbs chips do), RelatedVerbListView (every verb of one relation), and VerbPagePush, the environment action by which a verb page pushes onto whichever tab's stack shows it
     ├── ResultsView.swift       # Modal showing quiz results, and the leaderboard button after a ranked quiz
+    ├── ReviewCardView.swift    # The review card above the verb list: a verb looked up days ago, its key conjugations hidden until a tap reveals them; a second tap opens the page, and ✕ dismisses
     ├── RichTextView.swift      # Renders RichTextBlock content with styling
     ├── SettingsView.swift      # Settings UI with segmented pickers
     ├── TutorTestView.swift     # Debug view for testing the AI tutor
     ├── TutorView.swift         # Chat interface for the AI tutor with sample queries
-    ├── VerbBrowseView.swift    # Searchable, sortable list of all verbs; the letter row replaces the sort picker while search is focused; a result found by a conjugation says which cells matched, and separable verbs in which the query is a stranded part fold into one row (a grid section on iPad); a failed search shows a guess and a mail link; Return and the arrow keys open and move through results on iPad and Mac; the focused, empty field shows the recent verbs, and the picker's My Verbs is a List of starred, then recent, verbs, each deletable by a left swipe (a starred one after a confirmation)
+    ├── VerbBrowseView.swift    # Searchable, sortable list of all verbs; the letter row replaces the sort picker while search is focused; a result found by a conjugation says which cells matched, and separable verbs in which the query is a stranded part fold into one row (a grid section on iPad); a failed search shows a guess and a mail link; Return and the arrow keys open and move through results on iPad and Mac; the focused, empty field shows the recent verbs, and the picker's My Verbs is a List of starred, then recent, verbs, each deletable by a left swipe (a starred one after a confirmation); each launch and each return from the background shows the review card above the list when a verb is due
     └── VerbView.swift          # Verb detail showing all conjugations; a search result opens it on the matched reading, scrolled to the matched section, with the matched rows tinted; ends with the Related Verbs card; the bar holds Test Me (a three-question quiz in a sheet), the star, and Share; each arrival records an open in the learner's verbs
 
 KonjugierenWidget/
@@ -197,8 +199,9 @@ Shared/
 ├── OpenRandomVerbControlIntent.swift  # The Random Verb control's action: OpenRandomVerbIntent with source=control, hidden from Shortcuts
 ├── OpenRandomVerbIntent.swift      # Shared intent to open random verb via deeplink (the Random Verb shortcut)
 ├── OpenVerbSearchIntent.swift      # The Find a Verb control's action: konjugieren://search?source=control, hidden from Shortcuts
-├── LearnerVerbs.swift              # The learner's verbs (each verb opened, with dates and a count, and each verb starred), keyed by infinitive and stored as JSON in the App Group's defaults so the widget can read it; new fields must be optional
+├── LearnerVerbs.swift              # The learner's verbs (each verb opened, with dates and a count, each verb starred, and each verb's review schedule), keyed by infinitive and stored as JSON in the App Group's defaults so the widget can read it; new fields must be optional
 ├── QuizActivityAttributes.swift    # ActivityKit model for quiz live activity
+├── ReviewSchedule.swift            # The review card's Leitner ladder (1, 3, 7, 14, 30 days): a box and a due date per verb, set by a lookup, raised by a review, postponed a day by a snooze
 ├── WidgetConstants.swift           # Constants for widget app-group container, storage keys, day count, and pinned Gregorian calendar
 ├── WidgetQuizShuffle.swift         # Process-stable (FNV-1a seeded) answer shuffle + SeededRNG, shared by widget and tests
 └── WidgetSnapshot.swift            # Data models for serialized widget state, incl. WidgetSnapshotBundle (N-day array, paging, and the snapshot displayed at a moment)
@@ -220,6 +223,7 @@ KonjugierenTests/
 │   ├── QuizErrorHistoryTests.swift # Quiz error persistence tests
 │   ├── QuizTests.swift         # Quiz logic, scoring, and timer pause/resume tests; scopes (My Verbs, three questions on a verb page, ranking, the source on start, quit, and completion)
 │   ├── SearchReportTests.swift # SearchTracker lifecycle, finishSearch parameters, and the no-typed-text guarantee
+│   ├── ReviewScheduleTests.swift # The review ladder: due the next morning, the boxes, snoozes, a re-lookup back to the first box, an open from the card, an entry from before the schedule, the store's choice of verb
 │   ├── RelatedVerbsTests.swift # Verb.root through nested prefixes, verbs built on a root, ablaut relatives (one per root), family pages, per-reading relations, [Verb].sorted(by:)
 │   ├── RefusalDetectionTests.swift # Tutor refusal-phrase detection, incl. the "null" exact-match false-positive guard
 │   ├── VerbDrawTests.swift     # Frequency bands, and VerbDraw: weights, My Verbs every third day and in turn, stability through a day, the favored share

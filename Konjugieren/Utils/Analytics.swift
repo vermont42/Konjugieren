@@ -30,6 +30,7 @@ enum AnalyticsName: String {
   case tapExplainError
   case tapPlayGame
   case tapRateOrReview
+  case tapRevealReviewCard
   case tapSendTutorMessage
   case tapShareVerb
   case tapShowOnboarding
@@ -41,6 +42,7 @@ enum AnalyticsName: String {
   case viewInfoBrowseView
   case viewInfoView
   case viewQuizView
+  case viewReviewCard
   case viewSettingsView
   case viewTutorView
   case viewVerbBrowseView

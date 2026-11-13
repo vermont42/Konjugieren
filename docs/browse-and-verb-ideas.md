@@ -949,6 +949,15 @@ dismisses the card.
   card.
 - **Conjuguer and Conjugar.** The same.
 
+**Built on `main` 2026-11-13** by [Phase 15](../plans/browse-and-verb-implementation.md#phase-15-the-review-card) of the implementation plan. Each launch and
+each return from the background, a card above the verb list offers the verb looked up longest ago
+among those due, its key conjugations hidden. A tap reveals them, a second opens the page, and ✕
+dismisses the card. The schedule is a Leitner ladder of 1, 3, 7, 14, and 30 days in the learner's
+record: a lookup puts a verb in the first box, a reveal moves it up, a dismissal before revealing
+brings it back the next day, and a later lookup sends it back to the first box. The signals are
+`viewReviewCard` and `tapRevealReviewCard`, and a page opened from the card reports `source`
+`reviewCard`. A setting, Suppress Review Card, off by default, hides the card.
+
 #### D5. A Verb of the Day Worth Opening
 
 Verdict: Yes.

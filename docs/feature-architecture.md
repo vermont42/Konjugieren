@@ -394,8 +394,8 @@ One on-device record of the learner's own verbs: each verb opened, with its firs
 and a count, and each verb starred, with the date. Built 2026-11-13 in Phase 12 of
 [`plans/browse-and-verb-implementation.md`](../plans/browse-and-verb-implementation.md), as the
 shared piece the ideas document's coordination table assigns to the browse track. Recents, My
-Verbs, the quiz's My Verbs scope, and the verb of the day and random verb (Phase 14) read it today;
-the review card (Phase 15), collections (Phase 16), and the quiz track will.
+Verbs, the quiz's My Verbs scope, the verb of the day and random verb (Phase 14), and the review
+card (Phase 15) read it today; collections (Phase 16) and the quiz track will.
 
 | Piece | Role |
 |---|---|
@@ -413,7 +413,7 @@ arriving by any route, but not the same page reappearing after another tab or th
 **Adding a field.** It must be optional. Synthesized decoding ignores a default value and requires
 the key, so a required field would fail to decode every older record, and the learner's verbs
 would vanish without an error. `LearnerVerbsTests` pins the decoding of a minimal entry. Phase 15's
-due date is such a field.
+`review` is such a field.
 
 **Where it shows.** The verb page's star. The verb list's picker, whose third segment, My Verbs,
 lists the starred verbs, then the recent ones not starred, with Clear on the recent heading.
@@ -424,6 +424,34 @@ dropping into Recent. On iPad it is a list rather than the grid the other modes 
 ignores the picker, as it ignores the sort order. And the verb list with its search field
 focused and empty, which lists the recent verbs under Recent, reachable with the arrow keys and
 Return on iPad and Mac. Nothing is shown when there is no history.
+
+### The Review Card
+
+Built 2026-11-13 in Phase 15 of the browse plan, for idea D4. Each launch, and each return from
+the background, the verb list shows one card above its rows when a verb is due: the verb looked up
+longest ago among those due ("Looked up 3 days ago"), its gloss, and its key conjugations hidden
+under a placeholder. A tap reveals them, red letters and all; a second tap opens the page, with
+`source` `reviewCard`; ✕ dismisses the card. Nothing replaces a dismissed card until the next
+opening, and the card hides while a search, the recents, or My Verbs shows. The Suppress Review
+Card setting (`ReviewCardSuppression`, off by default) hides it altogether; the schedule keeps
+running underneath.
+
+| Piece | Role |
+|---|---|
+| `Shared/ReviewSchedule.swift` | A box and a due date. The ladder is 1, 3, 7, 14, and 30 days, the last repeating; due dates fall at the start of a day |
+| `LearnerVerbs.Entry.review` | The verb's schedule, optional. An entry written before Phase 15 counts as looked up on its last open |
+| `LearnerVerbs.dueForReview(at:)` | The due verbs, longest overdue first |
+| `ReviewCardView.swift` | The card. `VerbBrowseView` chooses the verb and applies each tap to the schedule |
+
+**What moves a verb (Josh, 2026-11-13).** An open puts it in the first box, due the next day, and
+so does any later open, since looking a verb up again suggests it was forgotten. An open from the
+card itself is the exception. Revealing moves it up a box. Dismissing before revealing is no
+review: the verb keeps its box and returns the next day.
+
+**For the quiz track.** Pedagogy Tier 3's practice record can take this over: a right answer
+calls what a reveal calls (`recordReview`), and a wrong one should send the verb back to the
+first box, as a lookup does (`ReviewSchedule.lookedUp`), without counting an open. Its items are
+verbs today; Tier 3's weak-verb patterns would need a key other than the infinitive.
 
 ## Game System
 
@@ -777,6 +805,8 @@ Counts and durations go out in bands (`AnalyticsBand`), never as exact numbers.
 | `tapShareVerb` | None | When the share button in a verb page's navigation bar is tapped, whether or not the learner then shares. Copying a conjugation with a long press sends nothing |
 | `tapStarVerb` | `starred` (`true`, `false`: the state after the tap) | When the star in a verb page's navigation bar is tapped (Phase 12) |
 | `tapTestVerb` | None | When "Test me on this verb" in a verb page's navigation bar is tapped (Phase 13). The quiz it opens sends `startQuiz` with `source` `verbPage` |
+| `viewReviewCard` | None | Once per card shown: when the review card first appears after a launch or a return from the background (Phase 15) |
+| `tapRevealReviewCard` | None | When a tap reveals the review card's key conjugations, once per card (Phase 15). A page opened from the card then sends `viewVerbView` with `source` `reviewCard` |
 | `startQuiz`, `quitQuiz`, `completeQuiz` | `source` (`tab`, `myVerbs`, `verbPage`), added to their existing parameters | When a quiz starts, is quit, or is completed (`source` since Phase 13). Without it, three-question quizzes would inflate the completion rate of the 30-question quiz |
 
 `VerbVisit` models one stretch of a verb page on screen, and `SearchTracker` and `SearchReport`
@@ -831,7 +861,7 @@ My Verbs scope, the list it was begun on.
 | `myVerbs` | Yes | A verb in the verb list's My Verbs (Phase 12); for the quiz signals, a quiz over My Verbs (Phase 13) |
 | `recent` | Yes | A recent verb, listed while the search field is focused and empty (Phase 12) |
 | `list` | Phase 16 | A collection |
-| `reviewCard` | Phase 15 | The review card |
+| `reviewCard` | Yes | The review card, tapped after its conjugations are revealed (Phase 15) |
 | `tab` | Yes | A search begun in the Verbs tab (Phase 11); for the quiz signals, a quiz over every verb from the Quiz tab (Phase 13) |
 | `verbPage` | Yes | The quiz signals only: "Test me on this verb" (Phase 13) |
 

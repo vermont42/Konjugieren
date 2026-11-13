@@ -17,6 +17,9 @@ struct VerbBrowseView: View {
   @State private var verbToUnstar: Verb?
   @State private var searchIsEngaged = false
   @State private var searchFocusLostAt: Date?
+  @State private var reviewCard: ReviewCardState?
+  @State private var reviewCardIsChosen = false
+  @State private var appWasInBackground = false
   @FocusState private var searchIsFocused: Bool
   @Environment(\.horizontalSizeClass) private var sizeClass
   @Environment(\.scenePhase) private var scenePhase
@@ -145,6 +148,25 @@ struct VerbBrowseView: View {
               TipView(tryQuizTip)
                 .padding(.horizontal)
 
+              if let reviewCard, !isSearching, !showsRecents, settings.reviewCardSuppression == .off {
+                ReviewCardView(
+                  verb: reviewCard.verb,
+                  daysSinceLookup: reviewCard.daysSinceLookup,
+                  isRevealed: reviewCard.isRevealed,
+                  reveal: revealReviewCard,
+                  open: openReviewCard,
+                  dismiss: dismissReviewCard
+                )
+                .frame(maxWidth: sizeClass == .regular ? Self.reviewCardMaxWidth : .infinity)
+                .frame(maxWidth: .infinity, alignment: .leading)
+                .padding(.horizontal)
+                .padding(.top, Layout.defaultSpacing)
+                .transition(.opacity)
+                .onAppear {
+                  signalReviewCardShown()
+                }
+              }
+
               if entries.isEmpty {
                 ContentUnavailableView(L.VerbBrowse.noVerbsFound, systemImage: "magnifyingglass")
                   .onAppear {
@@ -252,6 +274,9 @@ struct VerbBrowseView: View {
       .onAppear {
         Current.analytics.signal(name: .viewVerbBrowseView)
         Current.reviewPrompter.promptableActionHappened()
+        if !reviewCardIsChosen {
+          chooseReviewCard()
+        }
         // A deeplink that switched to this tab can arrive before the tab first appears, when
         // no onChange below is yet watching.
         openRequestedVerb()
@@ -302,8 +327,22 @@ struct VerbBrowseView: View {
         }
       }
       .onChange(of: scenePhase) {
-        if scenePhase == .background, let search = searchTracker.finish() {
-          signalEndedSearch(search)
+        switch scenePhase {
+        case .background:
+          appWasInBackground = true
+          if let search = searchTracker.finish() {
+            signalEndedSearch(search)
+          }
+        case .active where appWasInBackground:
+          appWasInBackground = false
+          chooseReviewCard()
+        default:
+          break
+        }
+      }
+      .onChange(of: settings.reviewCardSuppression) {
+        if settings.reviewCardSuppression == .off, reviewCard == nil {
+          chooseReviewCard()
         }
       }
       .onChange(of: world.searchRequest) {
@@ -321,6 +360,61 @@ struct VerbBrowseView: View {
       }
     }
     .environment(\.verbPagePush, VerbPagePush { navigationPath.append($0) })
+  }
+
+  private static let reviewCardMaxWidth: CGFloat = 560
+
+  /// Each launch, and each return from the background, offers the verb longest overdue, if any.
+  /// The choice is made once per opening, so revealing a card does not swap it for the next one.
+  private func chooseReviewCard() {
+    reviewCardIsChosen = true
+    guard settings.reviewCardSuppression == .off else {
+      reviewCard = nil
+      return
+    }
+    reviewCard = learnerVerbs.verbDueForReview().map { verb in
+      ReviewCardState(verb: verb, daysSinceLookup: learnerVerbs.daysSinceOpened(verb))
+    }
+  }
+
+  private func signalReviewCardShown() {
+    guard reviewCard?.wasSignaled == false else {
+      return
+    }
+    reviewCard?.wasSignaled = true
+    Current.analytics.signal(name: .viewReviewCard)
+  }
+
+  private func revealReviewCard() {
+    guard let reviewCard, !reviewCard.isRevealed else {
+      return
+    }
+    learnerVerbs.recordReview(reviewCard.verb)
+    Current.analytics.signal(name: .tapRevealReviewCard)
+    withAnimation {
+      self.reviewCard?.isRevealed = true
+    }
+  }
+
+  private func openReviewCard() {
+    guard let reviewCard else {
+      return
+    }
+    navigationPath.append(VerbDestination(verb: reviewCard.verb, source: .reviewCard))
+  }
+
+  /// A card dismissed before its conjugations were seen was no review, so its verb returns
+  /// tomorrow in the same box.
+  private func dismissReviewCard() {
+    guard let reviewCard else {
+      return
+    }
+    if !reviewCard.isRevealed {
+      learnerVerbs.snoozeReview(reviewCard.verb)
+    }
+    withAnimation {
+      self.reviewCard = nil
+    }
   }
 
   private func listHeading(_ text: String) -> some View {
@@ -841,6 +935,13 @@ private struct SeparableVerbsRow: View {
     .onTapGesture { toggle() }
     .accessibilityIdentifier("separable_verbs_row")
   }
+}
+
+private struct ReviewCardState {
+  let verb: Verb
+  let daysSinceLookup: Int?
+  var isRevealed = false
+  var wasSignaled = false
 }
 
 /// The last search's results. SwiftUI evaluates the list's body several times per keystroke,

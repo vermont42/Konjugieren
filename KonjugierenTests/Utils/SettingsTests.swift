@@ -13,6 +13,7 @@ struct SettingsTests {
     #expect(settings.quizDifficulty == .regular)
     #expect(settings.audioFeedback == .enable)
     #expect(settings.searchScope == .infinitiveAndTranslation)
+    #expect(settings.reviewCardSuppression == .off)
     #expect(settings.appIcon == .hat)
     #expect(settings.hasSeenOnboarding == false)
   }
@@ -24,6 +25,7 @@ struct SettingsTests {
       Settings.quizDifficultyKey: "ridiculous",
       Settings.audioFeedbackKey: "disable",
       Settings.searchScopeKey: "infinitiveAndTranslation",
+      Settings.reviewCardSuppressionKey: "on",
       Settings.hasSeenOnboardingKey: "true",
     ])
 
@@ -33,6 +35,7 @@ struct SettingsTests {
     #expect(settings.quizDifficulty == .ridiculous)
     #expect(settings.audioFeedback == .disable)
     #expect(settings.searchScope == .infinitiveAndTranslation)
+    #expect(settings.reviewCardSuppression == .on)
     #expect(settings.hasSeenOnboarding == true)
   }
 
@@ -57,6 +60,7 @@ struct SettingsTests {
     #expect(fake.get(key: Settings.thirdPersonPronounGenderKey) == "er")
     #expect(fake.get(key: Settings.quizDifficultyKey) == "regular")
     #expect(fake.get(key: Settings.audioFeedbackKey) == "enable")
+    #expect(fake.get(key: Settings.reviewCardSuppressionKey) == "off")
     #expect(fake.get(key: Settings.hasSeenOnboardingKey) == "false")
   }
 
@@ -75,6 +79,9 @@ struct SettingsTests {
 
     settings.audioFeedback = .disable
     #expect(fake.get(key: Settings.audioFeedbackKey) == "disable")
+
+    settings.reviewCardSuppression = .on
+    #expect(fake.get(key: Settings.reviewCardSuppressionKey) == "on")
 
     settings.hasSeenOnboarding = true
     #expect(fake.get(key: Settings.hasSeenOnboardingKey) == "true")

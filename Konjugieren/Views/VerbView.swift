@@ -439,7 +439,7 @@ struct VerbView: View {
     let newVisit = VerbVisit(source: source, start: .now, visibleSections: visibleSections)
     visit = newVisit
     if source != .resume {
-      Current.learnerVerbs.recordOpen(verb)
+      Current.learnerVerbs.recordOpen(verb, source: source)
     }
     Current.analytics.signal(name: .viewVerbView, parameters: newVisit.viewParameters)
   }

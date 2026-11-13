@@ -28,7 +28,7 @@ that Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until
 | 12 | Done | 2026-11-13 | `37bb963` | D1, D2 |
 | 13 | Done | 2026-11-13 | `37bb963` | D2's quiz scope, D3 |
 | 14 | Done | 2026-11-13 | `7a7d8ca` | D5 |
-| 15 | Not started | | | D4 |
+| 15 | Awaiting Josh | 2026-11-13 | | D4 |
 | 16 | Not started | | | D6 |
 | Closing | Not started | | | |
 
@@ -1036,6 +1036,51 @@ a simple due date per verb in the learner's record. Build it so the quiz track's
 (pedagogy Tier 3) can take it over later.
 
 **How it differed:**
+
+- **Josh's answers (2026-11-13).** Dismissing a card before revealing it is no review: the verb
+  keeps its box and returns the next day. A later lookup of a verb on the ladder, by any route but
+  the card, sends it back to the first box, Leitner's wrong answer. A card may appear at each
+  launch and each return from the background.
+- **The due date** is `ReviewSchedule` in `Shared/`, a box and a due date, stored as the optional
+  `review` on each `LearnerVerbs.Entry`. The ladder is the pedagogy report's 1, 3, 7, 14, and 30
+  days, the last repeating. Due dates fall at the start of a day, so a verb looked up at 11 p.m.
+  waits for the next morning rather than an hour. An open sets the first box; a reveal
+  (`recordReview`) moves up one; a dismissal (`snoozeReview`) keeps the box and waits a day.
+  `docs/feature-architecture.md` § The Review Card says how the quiz track can take it over.
+- **No migration.** An entry written before this phase, with opens but no `review`, counts as
+  looked up on its last open, so a learner with history sees a card on the first day. Clear in My
+  Verbs forgets the opens and with them the reviews; a starred verb never opened is never due.
+- **Which verb.** The longest overdue, ties broken by infinitive. The choice is made once per
+  opening, so a reveal does not swap the card for the next verb due.
+- **The card** (`ReviewCardView`) shows "Looked up 3 days ago" ("yesterday" for one), the
+  infinitive, the gloss, and the key conjugations under a redacted placeholder with the line
+  "Recall its conjugations, then tap to check." A tap anywhere reveals them in red and yellow
+  letters. **Added beyond the phase:** after the reveal, a second tap opens the page, since Phase 3
+  had reserved the `reviewCard` source for exactly that, and a chevron says so. That open is the
+  one that keeps the schedule. The card hides while a search, the recents, or My Verbs shows, and
+  on iPad it stops at 560 points rather than spanning the grid.
+- **Analytics.** `viewReviewCard` once per card shown and `tapRevealReviewCard` once per reveal,
+  with no parameters, which give the ideas document's reveals per session; the second-day return
+  of devices that saw a card is TelemetryDeck's to compute from `viewReviewCard`. `reviewCard` is
+  now sent as a source. Privacy lines are staged, including a change to the paragraph about the
+  list kept on the device, which now holds due dates too.
+- **Suppress Review Card (Josh, 2026-11-13, after reading the summary).** A setting in the first
+  settings card, below Search Scope, with Off and On, Off by default, as `ReviewCardSuppression`
+  (`Settings.reviewCardSuppression`, stored as `reviewCardSuppression`). On hides any card at once
+  and chooses none at later openings; Off chooses one at once if none is showing. The schedule
+  keeps running underneath, so turning the card back on offers whatever has come due. No signal
+  is sent for the setting. Tried in the iPhone 17 simulator: on hid aufstehen's card, a relaunch
+  showed none, and off brought it back without a relaunch. `SettingsTests`' four existing tests
+  cover its default, restoring, first write, and saving.
+- **How it was tested.** 15 new `@Test` cases in `ReviewScheduleTests`, 466 in all. In the
+  iPhone 17 simulator, with the record seeded through the App Group's plist: gehen, with no
+  `review` (an old entry), and aufstehen, overdue in box 2. The card offered gehen ("Looked up 3
+  days ago"); a reveal showed "geht · ging · ist gegangen" with red letters and wrote box 1, due
+  in three days; a tap opened gehen's page and counted an open without touching the schedule; a
+  trip to Settings and back offered aufstehen ("10 days ago"); ✕ before revealing moved it to the
+  next midnight in box 2; and a relaunch showed no card. On the iPad Pro 11-inch (M5) in light
+  mode: "Looked up yesterday" and the card's width beside the grid. Not tried: VoiceOver, a
+  German-language device, Dynamic Type at large sizes, and a device.
 
 ## Phase 16: Collections
 

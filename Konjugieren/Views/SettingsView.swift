@@ -82,6 +82,21 @@ struct SettingsView: View {
                 }
                 .pickerStyle(.segmented)
               }
+
+              GradientDivider()
+
+              settingSection(
+                heading: L.Settings.reviewCardSuppressionHeading,
+                description: L.Settings.reviewCardSuppressionDescription
+              ) {
+                Picker(L.Settings.reviewCardSuppressionHeading, selection: $settings.reviewCardSuppression) {
+                  ForEach(ReviewCardSuppression.allCases, id: \.self) { suppression in
+                    Text(suppression.localizedReviewCardSuppression).tag(suppression)
+                  }
+                }
+                .pickerStyle(.segmented)
+                .accessibilityIdentifier("review_card_suppression_picker")
+              }
             }
 
             settingsCard {

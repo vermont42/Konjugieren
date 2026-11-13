@@ -77,6 +77,7 @@ The `.fixedSize` on the label prevents the wrapping problem where `HStack` would
 | Screen | Approach | Why |
 |--------|----------|-----|
 | VerbBrowseView | Programmatic `NavigationPath` | Three separate elements: German verb, English translation, English family |
+| VerbBrowseView (review card) | The verb-row pattern: separate elements, each a button with the card's action | German verb and English gloss, then the English prompt or, once revealed, the German conjugations, read with their red letters and a hint that they open the page. The redacted placeholder is hidden, and ✕ is a labeled button |
 | VerbView (conjugation rows) | `.germanPronunciation()` on parent VStack | All content is German; combining is fine |
 | VerbView (copying) | `.copyOnLongPress` adds a named "Copy" action to each conjugation row and to the infinitive | The context menu a sighted learner opens with a long press is reachable as an action in the rotor, so a double-tap still speaks and nothing extra is read aloud |
 | VerbView (share button) | A `Button` with a localized `Label` in the navigation bar | It presents `UIActivityViewController` itself (`ShareSheet`); see `ShareSheet.swift` for why not `ShareLink` |

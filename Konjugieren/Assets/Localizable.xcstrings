@@ -5799,6 +5799,142 @@
         }
       }
     },
+    "ReviewCard.dismiss" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schließen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dismiss"
+          }
+        }
+      }
+    },
+    "ReviewCard.lookedUp.%lld" : {
+      "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Gestern nachgeschlagen"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Vor %lld Tagen nachgeschlagen"
+                }
+              }
+            }
+          }
+        },
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Looked up yesterday"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Looked up %lld days ago"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ReviewCard.lookedUpEarlier" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Früher nachgeschlagen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Looked up earlier"
+          }
+        }
+      }
+    },
+    "ReviewCard.openHint" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öffnet die Seite des Verbs."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opens the verb’s page."
+          }
+        }
+      }
+    },
+    "ReviewCard.prompt" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erinnere dich an seine Konjugationen und tippe dann zum Prüfen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recall its conjugations, then tap to check."
+          }
+        }
+      }
+    },
+    "ReviewCardSuppression.off" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aus"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Off"
+          }
+        }
+      }
+    },
+    "ReviewCardSuppression.on" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On"
+          }
+        }
+      }
+    },
     "SearchScope.infinitiveAndTranslation" : {
       "localizations" : {
         "de" : {
@@ -5971,6 +6107,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rate or Review"
+          }
+        }
+      }
+    },
+    "Settings.reviewCardSuppressionDescription" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Einstellung bestimmt, ob die Verbliste die Wiederholungskarte ausblendet, die ein vor einigen Tagen nachgeschlagenes Verb anbietet."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This setting determines whether the verb list hides the review card, which offers a verb you looked up some days ago."
+          }
+        }
+      }
+    },
+    "Settings.reviewCardSuppressionHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wiederholungskarte unterdrücken"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suppress Review Card"
           }
         }
       }

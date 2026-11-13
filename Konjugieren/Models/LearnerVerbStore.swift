@@ -35,8 +35,27 @@ final class LearnerVerbStore {
     record.isStarred(verb.infinitiv)
   }
 
-  func recordOpen(_ verb: Verb, at date: Date = .now) {
-    record.recordOpen(verb.infinitiv, at: date)
+  /// The verb the review card offers: the longest overdue.
+  func verbDueForReview(at date: Date = .now) -> Verb? {
+    record.dueForReview(at: date).lazy.compactMap { Verb.verbs[$0] }.first
+  }
+
+  func daysSinceOpened(_ verb: Verb, at date: Date = .now) -> Int? {
+    record.daysSinceOpened(verb.infinitiv, at: date)
+  }
+
+  func recordOpen(_ verb: Verb, source: AnalyticsSource, at date: Date = .now) {
+    record.recordOpen(verb.infinitiv, at: date, schedulesReview: source != .reviewCard)
+    save()
+  }
+
+  func recordReview(_ verb: Verb, at date: Date = .now) {
+    record.recordReview(verb.infinitiv, at: date)
+    save()
+  }
+
+  func snoozeReview(_ verb: Verb, at date: Date = .now) {
+    record.snoozeReview(verb.infinitiv, at: date)
     save()
   }
 

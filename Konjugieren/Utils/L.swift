@@ -233,6 +233,27 @@ enum L {
     }
   }
 
+  enum ReviewCard {
+    static var dismiss: String {
+      String(localized: "ReviewCard.dismiss")
+    }
+
+    static func lookedUp(daysAgo: Int?) -> String {
+      guard let daysAgo, daysAgo > 0 else {
+        return String(localized: "ReviewCard.lookedUpEarlier")
+      }
+      return String(localized: "ReviewCard.lookedUp.\(daysAgo)")
+    }
+
+    static var openHint: String {
+      String(localized: "ReviewCard.openHint")
+    }
+
+    static var prompt: String {
+      String(localized: "ReviewCard.prompt")
+    }
+  }
+
   enum SearchScope {
     static var infinitiveOnly: String {
       String(localized: "SearchScope.infinitiveOnly")
@@ -562,6 +583,14 @@ enum L {
       String(localized: "Settings.quizDifficultyDescription")
     }
 
+    static var reviewCardSuppressionHeading: String {
+      String(localized: "Settings.reviewCardSuppressionHeading")
+    }
+
+    static var reviewCardSuppressionDescription: String {
+      String(localized: "Settings.reviewCardSuppressionDescription")
+    }
+
     static var audioFeedbackHeading: String {
       String(localized: "Settings.audioFeedbackHeading")
     }
@@ -652,6 +681,16 @@ enum L {
 
     static var ridiculous: String {
       String(localized: "QuizDifficulty.ridiculous")
+    }
+  }
+
+  enum ReviewCardSuppression {
+    static var off: String {
+      String(localized: "ReviewCardSuppression.off")
+    }
+
+    static var on: String {
+      String(localized: "ReviewCardSuppression.on")
     }
   }
 

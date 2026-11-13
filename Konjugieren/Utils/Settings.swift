@@ -73,6 +73,16 @@ class Settings {
   static let searchScopeDefault: SearchScope = .infinitiveAndTranslation
   static let searchScopeDefaultFlippedKey = "searchScopeDefaultFlipped"
 
+  var reviewCardSuppression: ReviewCardSuppression = reviewCardSuppressionDefault {
+    didSet {
+      if reviewCardSuppression != oldValue {
+        getterSetter.set(key: Settings.reviewCardSuppressionKey, value: "\(reviewCardSuppression)")
+      }
+    }
+  }
+  static let reviewCardSuppressionKey = "reviewCardSuppression"
+  static let reviewCardSuppressionDefault: ReviewCardSuppression = .off
+
   var appIcon: AppIcon = appIconDefault {
     didSet {
       if appIcon != oldValue {
@@ -144,6 +154,7 @@ class Settings {
     audioFeedback = restore(key: Settings.audioFeedbackKey, default: Settings.audioFeedbackDefault)
     searchScope = restore(key: Settings.searchScopeKey, default: Settings.searchScopeDefault)
     flipSearchScopeDefaultOnce()
+    reviewCardSuppression = restore(key: Settings.reviewCardSuppressionKey, default: Settings.reviewCardSuppressionDefault)
     appIcon = restore(key: Settings.appIconKey, default: Settings.appIconDefault)
     hasSeenOnboarding = restore(key: Settings.hasSeenOnboardingKey, default: Settings.hasSeenOnboardingDefault)
     gameHighScore = restore(key: Settings.gameHighScoreKey, default: Settings.gameHighScoreDefault)

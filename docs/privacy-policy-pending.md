@@ -150,3 +150,52 @@ Neuer Satz am Ende des ersten Absatzes von Abschnitt 6:
 ```
 Nur ein Quiz über alle Verben reicht ein Ergebnis ein; ein Quiz über Ihre eigenen Verben oder ein einzelnes Verb tut das nicht.
 ```
+
+## The review card (browse plan, Phase 15, 2026-11-13)
+
+Adds the signals `viewReviewCard`, sent when the review card above the verb list appears, and
+`tapRevealReviewCard`, sent when a tap reveals its conjugations. Neither has parameters, and
+neither says which verb. Phase 15 also began sending the `reviewCard` source for verb pages, which
+the first bullet of the lookup section covers with "for example". These lines replace the taps
+bullet as given in the My Verbs section above, and the paragraph about the list kept on the
+device, since the list now also holds when each verb is due for review.
+
+### English
+
+The bullet about taps in section 2 now reads:
+
+```
+- Taps on a few buttons: playing the game, rating or reviewing the app, showing the introduction, viewing the leaderboard, sending a message to the tutor, asking for an error to be explained, deleting the chat history, opening a conjugationgroup's article from a verb's page, sharing a verb's page, starring a verb or removing its star, testing yourself on a verb from its page, and revealing the conjugations on a review card
+```
+
+A new bullet follows it:
+
+```
+- That a review card, which offers a verb you looked up earlier, was shown
+```
+
+The paragraph about the list kept on the device now reads:
+
+```
+The app keeps a list of the verbs you have opened and the verbs you have starred, with when each is next due for review, so that it can show your recent verbs, My Verbs, and review cards. The list stays on your device and is never sent.
+```
+
+### German
+
+Der Punkt über das Antippen in Abschnitt 2 lautet nun:
+
+```
+- Das Antippen einiger Schaltflächen: das Spiel starten, die App bewerten oder rezensieren, die Einführung anzeigen, die Bestenliste ansehen, dem Tutor eine Nachricht senden, einen Fehler erklären lassen, den Chatverlauf löschen, den Artikel über eine Conjugationgroup von der Seite eines Verbs aus öffnen, die Seite eines Verbs teilen, ein Verb mit einem Stern markieren oder den Stern entfernen, sich auf der Seite eines Verbs zu diesem Verb abfragen lassen und die Konjugationen auf einer Wiederholungskarte aufdecken
+```
+
+Ein neuer Punkt folgt:
+
+```
+- Dass eine Wiederholungskarte angezeigt wurde, die ein früher nachgeschlagenes Verb anbietet
+```
+
+Der Absatz über die Liste auf dem Gerät lautet nun:
+
+```
+Die App führt eine Liste der Verben, die Sie geöffnet, und der Verben, die Sie mit einem Stern markiert haben, samt dem Tag, an dem jedes wieder zur Wiederholung ansteht, damit sie Ihre zuletzt geöffneten Verben, „Meine Verben“ und Wiederholungskarten zeigen kann. Die Liste bleibt auf Ihrem Gerät und wird nie gesendet.
+```

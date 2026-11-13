@@ -9969,3 +9969,56 @@ generator value on the My Verbs coin before its weighted pick, so the sequence f
 there described a design that no longer existed. When a test can only assert "deterministic", a
 second implementation in another language is a cheap way to confirm the values themselves.
 
+
+## The Review Card: Leitner in a Reference App (2026-11-13)
+
+Phase 15 of the browse plan built idea D4: when the app opens, a card above the verb list offers a
+verb looked up some days ago, with its key conjugations hidden until tapped. It is the first piece
+of Konjugieren that asks the learner to remember something without being asked to, and it needed
+a schedule to say which verb and when.
+
+The schedule is the Leitner system, which the pedagogy report had already proposed for the quiz
+track's Tier 3, with the ladder it suggested: 1, 3, 7, 14, and 30 days. Each verb in the
+learner's record gained an optional box and due date. A lookup puts a verb in the first box, due
+the next morning. Revealing the card moves it up a box. Sebastian Leitner's card boxes, from *So
+lernt man lernen* (1972), move a card on a right answer and send it back on a wrong one, and a
+card that only reveals has no answer. Josh settled the gaps three ways. Dismissing a card before
+revealing it is no review, so the verb keeps its box and returns tomorrow. Looking a verb up again
+counts as the wrong answer and sends it back to the first box, which is a nice fit: in a reference
+app, needing to look something up is the clearest evidence of having forgotten it. And a card
+may appear at every launch and every return from the background, since each card is a verb
+actually due and the schedule bounds how many there are.
+
+Two small choices did more work than they look. Due dates fall at the start of a day, so a verb
+looked up late in the evening comes back the next morning rather than an hour later; "some days
+earlier" is a calendar idea, not a duration. And an entry written before this phase, with opens
+but no schedule, counts as looked up on its last open. That fallback avoids a migration, and it
+means a learner with history sees a card on the first day rather than the second.
+
+Phase 3 had reserved `reviewCard` as a way of reaching a verb page, so after the reveal a second
+tap opens the page. That open is the one exception to "a lookup resets the box", since the
+learner has just reviewed the verb. The tests pin it, because it is exactly the kind of rule a
+future refactor of `recordOpen` would silently break.
+
+Testing a feature whose subject is the passage of days needs a way to fake the days. The unit
+tests pass a UTC calendar and dates in November. In the simulator, the record was seeded by
+editing the App Group's preferences plist with the app stopped. The edit took, but a read of the
+plist straight after a tap still showed the old due date, which looked like a failed snooze. It
+was only the write not yet flushed to disk: a relaunch showed no card, and a second read showed
+the snooze. Settle a question about preferences by behavior or by a later read, not by the first
+read after a write.
+
+The Leitner box now lives in the learner's record, where the quiz track can take it over. A right
+answer can call what a reveal calls, and a wrong one can send the verb back as a lookup does. The
+quiz report noted that the two ideas such an app most needs, spaced repetition and its scheduler,
+were both first written down in German: Ebbinghaus's *Über das Gedächtnis* in 1885 and Leitner's
+boxes in 1972. A German conjugation app reviewing German verbs on a German schedule seems right.
+
+After reading the summary, Josh asked for a setting to suppress the card, off by default. A
+reference app that pushes even a little should let the learner say no, and ✕ only lasts until the
+next opening. The setting is a segmented Off/On under Search Scope, like Audio Feedback's. Two
+small behaviors make it feel right. Turning it on hides a card already showing, and turning it off
+offers a card at once rather than at the next launch. The schedule keeps running either way, so a
+learner who turns the card back on after a month finds the verbs that came due meanwhile. The
+simulator showed the plist-flush lag a second time: the setting read as "on" straight after the
+tap that turned it off, while the screen already showed the card.

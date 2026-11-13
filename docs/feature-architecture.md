@@ -10,7 +10,9 @@ The quiz tests users' knowledge of German verb conjugations with timed, scored g
 
 | File | Purpose |
 |------|---------|
-| `Quiz.swift` | `@Observable` class managing quiz state and logic; `QuizScope`, what a quiz asks about |
+| `Quiz.swift` | `@Observable` class managing quiz state and logic; `QuizScope`, what a quiz asks about; `QuizItem`, one question and its grading |
+| `AnswerSpelling.swift` | Answer normalization, the leading pronouns a cell allows, and digraph spellings of umlauts |
+| `StandardVariants.swift` | Duden's other standard conjugations of a cell, accepted as right answers |
 | `QuizView.swift` | SwiftUI view for active quiz gameplay |
 | `ResultsView.swift` | Modal sheet showing final results |
 | `QuizDifficulty.swift` | Difficulty setting enum |
@@ -68,6 +70,38 @@ the Quiz tab carries on beneath it. The sheet starts its quiz as it appears, clo
 when the results are dismissed, and cannot be swiped away while a question waits, so every quiz
 it starts ends in `quitQuiz` or `completeQuiz`.
 
+### Grading
+
+Built 2026-11-13 in Phase 1 of [`plans/pedagogy-implementation.md`](../plans/pedagogy-implementation.md).
+`Quiz.makeQuizItem` fills `QuizItem.acceptableAnswers` with the cell's conjugation in every region
+and both clauses, plus the variants `StandardVariants` gives for each. `QuizItem.accepts` then
+grades an answer:
+
+- Case and runs of spacing are ignored.
+- A leading pronoun of the asked person is ignored (`ihr habt ferngeguckt`), never another
+  person's. The Imperativ takes none in front, since its wir and Sie conjugations carry theirs.
+  Any of er, sie, and es matches the third-person singular.
+- Any umlaut may be written as a digraph (`uebernehme`, `uebernaehme`, `übernaehme`). The
+  expansion runs only from umlaut to digraph, so a missing umlaut stays wrong (`fahrt`) and a real
+  ue cannot become ü (`baü`). The ss for ß comes from the Swiss spelling.
+- Duden's other standard conjugations are right: komme beside komm, sammle beside sammele,
+  kämst beside kämest, stünde beside stände, sandte beside sendete, and the rest of the rows Josh
+  accepted in [`plans/pedagogy-phase1-variant-audit.md`](../plans/pedagogy-phase1-variant-audit.md).
+  The verb page still shows only the conjugator's conjugation.
+
+When a right answer was spelled another way, `QuizItem.preferredSpelling(of:)` gives the user's
+region's spelling (übernehme for uebernehme, stoßen Sie um for stossen Sie um), and the quiz shows
+it quietly under the score, with a green checkmark, until the next answer. VoiceOver announces
+"Correct. Spelled: …". Another region's legitimately different conjugation, such as Austria's ist
+gestanden, gets no such line.
+
+The answer field shows `GermanLetterKeyRow` as a keyboard toolbar. It inserts at the cursor or
+replaces the selection, through the field's `TextSelection`. With a hardware keyboard attached,
+iOS draws the toolbar as a floating bar at the bottom of the screen.
+
+The DEBUG launch default `KONJUGIEREN_QUIZ_FIXTURE grading` asks ten questions whose answers
+exercise all of this, repeated to 30. See the comment on `Quiz.generateGradingFixture()`.
+
 ### Scoring
 
 - **10 points** per correct answer
@@ -89,6 +123,7 @@ it starts ends in `quitQuiz` or `completeQuiz`.
 | `correctCount` | `Int` | Number correct |
 | `questions` | `[QuizItem]` | All 30 questions |
 | `lastErrorContext` | `ErrorExplainerContext?` | Context for the most recent wrong answer |
+| `lastPreferredSpelling` | `String?` | The conjugation's own spelling of the last answer, when it was right but spelled another way |
 
 ### Sound Effects
 
@@ -349,8 +384,9 @@ its conjugationgroup and its verb's auxiliary (`ConjugationMapTool/CellsJSON.swi
 
 `Verb.conjugations(matching:)` in `ConjugationMatch.swift` returns every cell of every reading
 whose conjugation equals a text, as `ConjugationMatch` values (reading, conjugationgroup, and
-whether the text is only a finite part). It grades as the quiz does, against every region and both
-clauses, ignoring case and spacing: "stand auf" and "aufstand" both match aufstehen's Präteritum,
+whether the text is only a finite part). It matches against every region and both clauses,
+ignoring case and spacing, as the quiz grades, but without the quiz's pronoun stripping, digraphs,
+or standard variants (Phase 1 of the pedagogy plan), which a cell lookup does not need: "stand auf" and "aufstand" both match aufstehen's Präteritum,
 and "ist gestanden" matches stehen. Search uses it to name a match, and the quiz's Tier 4
 diagnosis (`plans/pedagogy.md`) can use it to say which other cell an answer belongs to. The map
 says which verbs to ask; this function says which cells. The infinitive and the zu-infinitive are

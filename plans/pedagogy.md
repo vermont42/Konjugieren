@@ -670,6 +670,17 @@ for ß, because it grades against every region's conjugation and Swiss spelling 
 not accept ae, oe, or ue. Search folds all four digraphs (`VerbSearch`), and its folding is the
 piece for the quiz to reuse.
 
+**Built on `main` 2026-11-13** by [Phase 1](pedagogy-implementation.md#phase-1-accept-what-is-right)
+of the pedagogy plan: stripping a leading pronoun, the digraphs, and the audit of optional
+variants. The quiz ignores a leading pronoun of the asked person (`ihr habt ferngeguckt`) and
+accepts ae, oe, and ue for ä, ö, and ü (`uebernehme`), showing the umlaut spelling quietly beside
+a checkmark. It did not reuse search's folding after all, which reads fahrt as fährt: grading
+expands each umlaut into its digraph instead, so a missing umlaut stays wrong. The answer field
+shows the letter keys. The audit, [`pedagogy-phase1-variant-audit.md`](pedagogy-phase1-variant-audit.md),
+checked Wiktionary's alternatives against Duden, and the quiz now accepts the variants Josh ruled
+standard (komme, sammle, kämst, stünde, sandte, and others) while the verb page keeps the
+conjugator's. The audit also found and fixed two wrong verbs, scheiden and vergleichen.
+
 ### Tier 2: Change What the Quiz Asks
 
 | Suggestion | Basis | Effort | Verdict |

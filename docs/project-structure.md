@@ -31,6 +31,7 @@ Konjugieren/
 │   ├── AblautGroupInfo.swift   # Identifiable struct with localized ablaut-group descriptions
 │   ├── AblautGroupParser.swift # XMLParser delegate that parses AblautGroups.xml
 │   ├── AblautGroups.xml        # 76 ablaut pattern definitions
+│   ├── AnswerSpelling.swift    # Quiz answer normalization: case and spacing, the leading pronouns a cell allows (ihr habt …), digraph spellings of umlauts (ue for ü, never ü for ue), and the orthographic key for showing a learner the umlaut spelling
 │   ├── AppIcon.swift           # Alternate app-icon enum (bratwurst/hat/pretzel/bundestag)
 │   ├── AudioFeedback.swift     # Setting enum: enable/disable sound effects
 │   ├── Auxiliary.swift         # haben/sein auxiliary verb enum
@@ -39,7 +40,7 @@ Konjugieren/
 │   ├── ConjugationLabels.swift # Display members of core types that need L or Settings (Family.displayName, PersonNumber.pronoun, Conjugationgroup.displayName(lang:)), kept out of the files ConjugationMapTool compiles
 │   ├── ConjugationMap.swift    # Conjugation → infinitive map (ging → gehen; halte → aufhalten with particle auf): builder, text/LZFSE format, and the bundled loader. Compiled into the app AND ConjugationMapTool
 │   ├── ConjugationIndex.swift  # The bundled conjugation map indexed for search: folded spellings (muß → muss) and length buckets for the guess
-│   ├── ConjugationMatch.swift  # Verb.conjugations(matching:): which cells of a verb equal a text, graded as the quiz grades; Conjugationgroup.personNumber
+│   ├── ConjugationMatch.swift  # Verb.conjugations(matching:): which cells of a verb equal a text, in any region and either clause; Conjugationgroup.personNumber
 │   ├── ConjugationTable.swift  # The verb page's tables in page order (frequency within simple, then compound; docs/conjugationgroup-frequency.md), each table's cells, second names, and Info article; Conjugationgroup.allCells and .table
 │   ├── Conjugationgroup.swift  # Enum of all conjugationgroups with endings
 │   ├── ConjugationgroupLang.swift  # Setting enum: german/english display
@@ -72,7 +73,7 @@ Konjugieren/
 │   ├── Prefix.swift            # Separable/inseparable prefix enum ([Prefix] helpers live in Reading.swift)
 │   ├── PrefixMeaning.swift     # Prefix meanings with PIE etymologies
 │   ├── PrefixSection.swift     # Curated-vs-other heading for the prefix-grouped verb list
-│   ├── Quiz.swift              # @Observable quiz state: questions, timer, scoring; QuizScope (the verbs asked about, the question count, the analytics source, and whether the score is ranked): every verb, My Verbs, or three questions on a verb's page
+│   ├── Quiz.swift              # @Observable quiz state: questions, timer, scoring; QuizItem grading (accepts, preferredSpelling); DEBUG fixtures (screenshot, grading); QuizScope (the verbs asked about, the question count, the analytics source, and whether the score is ranked): every verb, My Verbs, or three questions on a verb's page
 │   ├── QuizDifficulty.swift    # Setting enum: regular vs ridiculous
 │   ├── RelatedVerbs.swift      # Verb.root (the innermost base: anerkennen → kennen) and Verb.related(readingIndex:): verbs built on the same root, one verb per other root of the ablaut group, and the Families pages of a reading
 │   ├── Region.swift            # Setting enum: the three standard varieties (north/austria/switzerland)
@@ -81,6 +82,7 @@ Konjugieren/
 │   ├── SearchReport.swift      # SearchTracker (one search, first letter to its end, and the surface that opened the field for it) and SearchReport (the banded finishSearch parameters)
 │   ├── SearchScope.swift       # Setting enum: infinitive-only vs. infinitive-and-translation search
 │   ├── SortOrder.swift         # Enum for verb list sorting (alphabetical/frequency); [Verb].sorted(by:), used by the family pages and the related-verb list; VerbListMode, the verb list's picker (Alphabetical, Frequency, My Verbs)
+│   ├── StandardVariants.swift  # Duden's other standard conjugations of a cell (komme, sammle, kämst, stünde, sandte, erkennt an), accepted by the quiz but not shown on the verb page; rows of plans/pedagogy-phase1-variant-audit.md
 │   ├── Sound.swift             # Sound effect definitions (guns, chimes, applause)
 │   ├── TabSelection.swift      # TabView selection enum for programmatic tab switching
 │   ├── ThirdPersonPronounGender.swift  # Setting enum: er/sie/es preference
@@ -146,7 +148,7 @@ Konjugieren/
     ├── FamilyBrowseView.swift  # The Families tab: a Collections section (rows; three cards on iPad) above the verb families, prefixes, and ablaut groups; opens a `list/<key>` link's collection
     ├── FamilyDetailView.swift  # Detail view for a single family/prefix/ablaut category; an Alphabetical/Frequency control orders the verbs within each section; an expanded ablaut group starts with its VerbCollectionBar and checks the verbs looked up, and a link opens the page with its group expanded
     ├── GameView.swift          # Space-invaders-like verb conjugation game
-    ├── GermanLetterKeyRow.swift # ä ö ü ß keys shown above the keyboard; search uses it, the quiz answer field can adopt it
+    ├── GermanLetterKeyRow.swift # ä ö ü ß keys shown above the keyboard, for the search field and the quiz answer field (a keyboard toolbar there, inserting at the cursor)
     ├── InfoBrowseView.swift    # List of Info articles (dedication, history, etc.)
     ├── InfoView.swift          # Detail view for a single Info article
     ├── MainTabView.swift       # Root TabView with five tabs
@@ -211,6 +213,7 @@ Shared/
 KonjugierenTests/
 ├── CLAUDE.md                   # Lazily loaded Claude Code guidance: Swift Testing conventions for this target
 ├── Models/
+│   ├── AnswerSpellingTests.swift   # Quiz grading: the report's three simulator cases, leading pronouns by person, digraphs both ways, the spelling shown beside the checkmark by region and clause
 │   ├── ConjugationMapTests.swift   # Bundled map equals a fresh build (staleness), finds the verb of ≥99% of example sentences (Scan 2 of the defect plan), anchors, format round-trip
 │   ├── ConjugationMatchTests.swift # Verb.conjugations(matching:): clauses, regions, finite parts, readings
 │   ├── ConjugationTableTests.swift # The verb page's table order, cells, articles, and second names
@@ -224,6 +227,7 @@ KonjugierenTests/
 │   ├── PersonNumberTests.swift # Pronoun and sie-disambiguation tests
 │   ├── QuizErrorHistoryTests.swift # Quiz error persistence tests
 │   ├── QuizTests.swift         # Quiz logic, scoring, and timer pause/resume tests; scopes (My Verbs, three questions on a verb page, ranking, the source on start, quit, and completion)
+│   ├── StandardVariantsTests.swift # Every row Josh accepted in the Phase 1 variant audit, and the ones he rejected
 │   ├── SearchReportTests.swift # SearchTracker lifecycle, finishSearch parameters, and the no-typed-text guarantee
 │   ├── ReviewScheduleTests.swift # The review ladder: due the next morning, the boxes, snoozes, a re-lookup back to the first box, an open from the card, an entry from before the schedule, the store's choice of verb
 │   ├── RelatedVerbsTests.swift # Verb.root through nested prefixes, verbs built on a root, ablaut relatives (one per root), family pages, per-reading relations, [Verb].sorted(by:)

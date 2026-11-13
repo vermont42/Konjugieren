@@ -5867,6 +5867,22 @@
         }
       }
     },
+    "Quiz.announceCorrectSpelling %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Richtig. Schreibweise: %@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Correct. Spelled: %@"
+          }
+        }
+      }
+    },
     "Quiz.announceIncorrect" : {
       "localizations" : {
         "de" : {

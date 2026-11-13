@@ -15,7 +15,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 
 | Phase | Status | Date | Commit | Suggestions |
 |---:|---|---|---|---|
-| 1 | Not started | | | T1.3, T1.4, T1.5 |
+| 1 | Awaiting Josh | 2026-11-13 | | T1.3, T1.4, T1.5 |
 | 2 | Not started | | | T1.2 |
 | 3 | Not started | | | T4.1, T4.4, T4.5 |
 | 4 | Not started | | | T1.6 |
@@ -246,7 +246,7 @@ full account. In brief, by code name:
 
 ## Phase 1: Accept What Is Right
 
-**Suggestions:** T1.3, T1.4, T1.5. **Depends on:** nothing. **Status:** Not started.
+**Suggestions:** T1.3, T1.4, T1.5. **Depends on:** nothing. **Status:** Awaiting Josh.
 
 - **T1.3.** Strip a leading pronoun from the answer before grading, so "ihr habt ferngeguckt"
   passes. Strip only a pronoun that matches the question's person, and keep the pronoun that the
@@ -276,7 +276,36 @@ answer field, the ruled variants pass, and tests pin each.
 
 **How it differed:**
 
-(To be written by the session that finishes this phase.)
+- **The digraph rule expands rather than folds.** Instead of folding the learner's answer, each
+  accepted conjugation gains every spelling with any of its umlauts written as a digraph
+  (`AnswerSpelling.digraphSpellings`). A fold on both sides would also have accepted baü for
+  baue. The ss for ß still comes from the Swiss spelling, and the spelling beside the checkmark
+  covers it too: a learner in Germany who types stossen Sie um is shown stoßen Sie um. A
+  different regional conjugation, such as Austria's ist gestanden, gets no such line.
+- **The pronoun rule takes er, sie, or es for the third-person singular**, whichever the settings
+  show, and nothing in front of any Imperativ.
+- **The audit is its own file**, [`pedagogy-phase1-variant-audit.md`](pedagogy-phase1-variant-audit.md),
+  with its method, Duden links per row, and Josh's rulings of 2026-11-13. It mined the kaikki
+  Wiktionary snapshot for every form the conjugator lacks (13,023 across 3,571 verbs) and checked
+  each pattern against Duden's conjugation tables. Wiktionary alone was wrong twice: it lists ich
+  wandre, which Duden does not, and tags nearly every Konjunktiv II "formal, rare". Josh accepted
+  every row recommended, for quiz acceptance only. The variants are in `StandardVariants.swift`.
+- **Two data fixes Josh approved during the session:** scheiden (`sch^eid^en` gave schie and
+  geschien) and vergleichen (bleiben's group gave vergliech), in `Verbs.xml`. This closes the
+  roadmap's last wrong ablaut group. The audit's defects table lists three more verb-page changes
+  Josh chose to defer: the Konjunktiv I of -eln and -ern verbs (du sammelest, which Duden lacks),
+  anerkennen split, and sandte and gesandt as a reading of senden.
+- **`Verb.conjugations(matching:)` no longer grades "as the quiz grades".** It still matches
+  cells exactly, without pronouns, digraphs, or variants, and its comment and
+  `docs/feature-architecture.md` now say so. Phases 4 and 14 call it on a wrong answer, where
+  exact cells are what they want.
+- **A new fixture**, `KONJUGIEREN_QUIZ_FIXTURE grading`: ten questions whose right answers
+  exercise this phase, repeated to 30.
+- **Analytics:** none added, so nothing is staged in `docs/privacy-policy-pending.md`.
+- **Verified on the iPhone 17 simulator**, with a hardware keyboard, where iOS draws the keyboard
+  toolbar as a floating bar at the bottom. The letter keys inserted at the cursor, mid-word too.
+  The software keyboard's placement and the iPad were not tried, and neither was VoiceOver's
+  "Correct. Spelled: …" announcement.
 
 ## Phase 2: The Shape of the Answer
 

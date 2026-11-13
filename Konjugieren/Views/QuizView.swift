@@ -15,6 +15,7 @@ struct QuizView: View {
   @Environment(\.horizontalSizeClass) private var sizeClass
   @State private var tabScope = TabQuizScope.allVerbs
   @State private var userInput = ""
+  @State private var answerSelection: TextSelection?
   @FocusState private var isTextFieldFocused: Bool
   @AccessibilityFocusState private var isTextFieldA11yFocused: Bool
   private var settings: Settings { Current.settings }
@@ -79,6 +80,7 @@ struct QuizView: View {
     }
     .onChange(of: quiz.currentIndex) {
       userInput = ""
+      answerSelection = nil
       isTextFieldFocused = true
       isTextFieldA11yFocused = true
     }
@@ -143,6 +145,19 @@ struct QuizView: View {
           }
         }
 
+        if let spelling = quiz.lastPreferredSpelling {
+          HStack(spacing: 6) {
+            Image(systemName: "checkmark.circle")
+              .foregroundStyle(.green)
+            Text(mixedCaseString: spelling)
+              .germanPronunciation()
+          }
+          .font(.subheadline)
+          .accessibilityElement(children: .ignore)
+          .accessibilityLabel(L.Quiz.announceCorrectSpelling(MixedCaseAccessibility.accessibilityLabel(for: spelling)))
+          .accessibilityIdentifier("quiz_preferred_spelling")
+        }
+
         if let lastIncorrect = quiz.lastIncorrectAnswer, let lastCorrect = quiz.lastCorrectAnswer {
           labeledRow(L.Quiz.lastAnswer) {
             Text(verbatim: lastIncorrect)
@@ -167,7 +182,7 @@ struct QuizView: View {
           // }
         }
 
-        TextField(L.Quiz.conjugation, text: $userInput)
+        TextField(L.Quiz.conjugation, text: $userInput, selection: $answerSelection)
           .textFieldStyle(.roundedBorder)
           .textInputAutocapitalization(.never)
           .autocorrectionDisabled()
@@ -176,6 +191,13 @@ struct QuizView: View {
           .accessibilityHint(L.Accessibility.quizTextFieldHint)
           .accessibilityIdentifier("quiz_answer_field")
           .submitLabel(.go)
+          .toolbar {
+            ToolbarItem(placement: .keyboard) {
+              GermanLetterKeyRow { letter in
+                insertLetter(letter)
+              }
+            }
+          }
           .offset(x: shakeOffset)
           .onSubmit {
             guard !userInput.isEmpty else { return }
@@ -249,6 +271,21 @@ struct QuizView: View {
         remaining: quiz.questionCount - quiz.currentIndex - 1
       ))
     }
+  }
+
+  /// Replaces the selection, or inserts at the cursor, and leaves the cursor after the letter.
+  private func insertLetter(_ letter: String) {
+    guard
+      case .selection(let range) = answerSelection?.indices,
+      range.lowerBound >= userInput.startIndex,
+      range.upperBound <= userInput.endIndex
+    else {
+      userInput.append(letter)
+      return
+    }
+    let offset = userInput.distance(from: userInput.startIndex, to: range.lowerBound) + letter.count
+    userInput.replaceSubrange(range, with: letter)
+    answerSelection = TextSelection(insertionPoint: userInput.index(userInput.startIndex, offsetBy: offset))
   }
 
   private var myVerbs: [Verb] {

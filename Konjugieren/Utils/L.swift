@@ -908,6 +908,10 @@ enum L {
     static var announceIncorrect: String {
       String(localized: "Quiz.announceIncorrect")
     }
+
+    static func announceCorrectSpelling(_ spelling: String) -> String {
+      String(localized: "Quiz.announceCorrectSpelling \(spelling)")
+    }
   }
 
   enum ImageInfo {

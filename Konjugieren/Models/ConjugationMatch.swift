@@ -16,12 +16,14 @@ struct ConjugationMatch: Hashable {
 
 extension Verb {
   /// Every cell of every reading whose conjugation equals `text`, in the order the verb page
-  /// shows them. A text matches as the quiz grades an answer: any region's spelling, either
-  /// clause's word order, case and spacing ignored. So "stand auf" and "aufstand" both match
-  /// aufstehen's Präteritum, and "ist gestanden" matches stehen as Austria and Switzerland
-  /// write it. The infinitive is not a cell and never matches.
+  /// shows them. A text matches any region's spelling in either clause's word order, case and
+  /// spacing ignored, so "stand auf" and "aufstand" both match aufstehen's Präteritum, and "ist
+  /// gestanden" matches stehen as Austria and Switzerland write it. The infinitive is not a cell
+  /// and never matches. The quiz grades more leniently (`QuizItem.accepts` also takes a leading
+  /// pronoun, digraphs, and Duden's other standard conjugations); this does not, since it names
+  /// cells of the conjugator's own tables.
   func conjugations(matching text: String) -> [ConjugationMatch] {
-    let wanted = text.split(whereSeparator: \.isWhitespace).joined(separator: " ").lowercased()
+    let wanted = AnswerSpelling.normalized(text)
     guard !wanted.isEmpty else {
       return []
     }

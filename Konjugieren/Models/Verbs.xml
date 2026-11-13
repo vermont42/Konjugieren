@@ -7322,7 +7322,7 @@
   <verb in="scheckig+lachen" hi="332280" hp="y" ic="wave">
     <reading tn="laugh one's head off" fa="w" />
   </verb>
-  <verb in="sch^eid^en" hi="793504" ic="fencing">
+  <verb in="sch^ei^den" hi="793504" ic="fencing">
     <reading tn="divorce, separate (a couple)" fa="s" ag="bleiben" />
     <reading tn="part, depart" fa="s" ag="bleiben" ay="s" />
   </verb>
@@ -8716,8 +8716,8 @@
   <verb in="ver*g^ieß^en" hi="61176" ic="flexibility">
     <reading tn="shed" fa="s" ag="schließen" />
   </verb>
-  <verb in="ver*gl^ei^chen" hi="2082321" ic="barre">
-    <reading tn="compare" fa="s" ag="bleiben" />
+  <verb in="ver*gl^eich^en" hi="2082321" ic="barre">
+    <reading tn="compare" fa="s" ag="streichen" />
   </verb>
   <verb in="ver*glimmen" hi="2473" ic="flexibility">
     <reading tn="stop glowing" fa="w" />

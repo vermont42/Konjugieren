@@ -629,6 +629,22 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "verstehen", conjugationgroup: .futurKonjunktivII(.firstSingular), expected: "wÜrde verstehen")
   }
 
+  // Both were wrong until 2026-11-13, found by Phase 1 of the pedagogy plan: scheiden's ablaut
+  // region swallowed its d (schie, geschien), and vergleichen sat in bleiben's group
+  // (vergliech) rather than gleichen's.
+  @Test func scheidenAndVergleichen() {
+    expectConjugation(infinitiv: "scheiden", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "schIEd")
+    expectConjugation(infinitiv: "scheiden", conjugationgroup: .präteritumIndikativ(.secondSingular), expected: "schIEdest")
+    expectConjugation(infinitiv: "scheiden", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "schIEde")
+    expectConjugation(infinitiv: "scheiden", conjugationgroup: .perfektpartizip, expected: "geschIEden")
+    expectConjugation(infinitiv: "scheiden", conjugationgroup: .perfektpartizip, expected: "geschIEden", readingIndex: 1)
+    expectConjugation(infinitiv: "scheiden", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "scheidet")
+    expectConjugation(infinitiv: "vergleichen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "verglIch")
+    expectConjugation(infinitiv: "vergleichen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "verglIche")
+    expectConjugation(infinitiv: "vergleichen", conjugationgroup: .perfektpartizip, expected: "verglIchen")
+    expectConjugation(infinitiv: "vergleichen", conjugationgroup: .präsensIndikativ(.firstSingular), expected: "vergleiche")
+  }
+
   @Test func newAblautGroupsPhase2() {
     expectConjugation(infinitiv: "fangen", conjugationgroup: .präsensIndikativ(.secondSingular), expected: "fÄngst")
     expectConjugation(infinitiv: "fangen", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "fÄngt")

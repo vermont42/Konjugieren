@@ -21,6 +21,9 @@ class Quiz {
   private(set) var lastIncorrectAnswer: String?
   private(set) var lastCorrectAnswer: String?
   private(set) var lastErrorContext: ErrorExplainerContext?
+  /// The conjugation's own spelling of the last answer, when that answer was right but written
+  /// another way, such as with a digraph for an umlaut.
+  private(set) var lastPreferredSpelling: String?
 
   private(set) var questions: [QuizItem] = []
   private(set) var scope = QuizScope.allVerbs
@@ -109,11 +112,13 @@ class Quiz {
       lastIncorrectAnswer = nil
       lastCorrectAnswer = nil
       lastErrorContext = nil
+      lastPreferredSpelling = questions[currentIndex].preferredSpelling(of: answer)
       Current.soundPlayer.play(.chime)
       HapticPlayer.playSuccess()
-      announceAnswerResult(correct: true)
+      announceAnswerResult(correct: true, preferredSpelling: lastPreferredSpelling)
     } else {
       let question = questions[currentIndex]
+      lastPreferredSpelling = nil
       lastIncorrectAnswer = answer
       lastCorrectAnswer = question.correctAnswer
       lastErrorContext = ErrorExplainerContext(
@@ -180,14 +185,20 @@ class Quiz {
     lastIncorrectAnswer = nil
     lastCorrectAnswer = nil
     lastErrorContext = nil
+    lastPreferredSpelling = nil
   }
 
   private func generateQuestions() -> [QuizItem] {
     #if DEBUG
-    if UserDefaults.standard.string(forKey: "KONJUGIEREN_QUIZ_FIXTURE") == "screenshot" {
+    switch UserDefaults.standard.string(forKey: "KONJUGIEREN_QUIZ_FIXTURE") {
+    case "screenshot":
       let items = generateScreenshotFixture()
       exportFixtureAnswers(items)
       return items
+    case "grading":
+      return generateGradingFixture()
+    default:
+      break
     }
     #endif
 
@@ -248,17 +259,31 @@ class Quiz {
     // The same holds for word order: the prompt gives no sentence, so a separable verb's
     // subordinate-clause conjugation (ankommt) is as right as the main-clause one shown
     // (kommt an).
+    //
+    // Duden's other standard conjugations of a cell, such as komme beside komm and stünde
+    // beside stände, are right answers too, though the verb page shows only the conjugator's.
+    let reading = verb.reading(at: readingIndex) ?? verb.primaryReading
     let acceptableAnswers = Set(Region.allCases.flatMap { region in
-      Clause.allCases.map { clause in
-        RegionalConjugator.conjugateUnsafely(
+      Clause.allCases.flatMap { clause in
+        let conjugation = RegionalConjugator.conjugateUnsafely(
           infinitiv: verb.infinitiv,
           conjugationgroup: conjugationgroup,
           region: region,
           readingIndex: readingIndex,
           clause: clause
-        ).lowercased()
+        )
+        let variants = StandardVariants.variants(of: conjugation, reading: reading, conjugationgroup: conjugationgroup, region: region)
+        return ([conjugation] + variants).map { $0.lowercased() }
       }
     })
+    let regionalSpellings = Clause.allCases.map { clause in
+      RegionalConjugator.conjugateUnsafely(
+        infinitiv: verb.infinitiv,
+        conjugationgroup: conjugationgroup,
+        readingIndex: readingIndex,
+        clause: clause
+      )
+    }
     let correctAnswer = RegionalConjugator.conjugateUnsafely(
       infinitiv: verb.infinitiv,
       conjugationgroup: conjugationgroup,
@@ -269,6 +294,7 @@ class Quiz {
       conjugationgroup: conjugationgroup,
       correctAnswer: correctAnswer,
       acceptableAnswers: acceptableAnswers,
+      regionalSpellings: regionalSpellings,
       readingIndex: readingIndex
     )
   }
@@ -340,6 +366,34 @@ class Quiz {
     return plan.map { spec in
       guard let verb = Verb.verbs[spec.infinitiv] else {
         preconditionFailure("Screenshot fixture references missing verb: \(spec.infinitiv)")
+      }
+      return makeQuizItem(verb: verb, conjugationgroup: spec.group)
+    }
+  }
+
+  // The answers Phase 1 of the pedagogy plan made right, one per question, for trying by hand:
+  // ihr habt ferngeguckt, uebernehme, stossen Sie um, stuende, sammle, verglich, gehe, kämst,
+  // sandte, and erkennt an. Any question count other than 30 is fine here, since the quiz
+  // finishes at questionCount.
+  private func generateGradingFixture() -> [QuizItem] {
+    let plan: [(infinitiv: String, group: Conjugationgroup)] = [
+      ("ferngucken", .perfektIndikativ(.secondPlural)),
+      ("übernehmen", .präsensIndikativ(.firstSingular)),
+      ("umstoßen", .imperativ(.thirdPlural)),
+      ("stehen", .präteritumKonjunktivII(.firstSingular)),
+      ("sammeln", .präsensIndikativ(.firstSingular)),
+      ("vergleichen", .präteritumIndikativ(.firstSingular)),
+      ("gehen", .imperativ(.secondSingular)),
+      ("kommen", .präteritumKonjunktivII(.secondSingular)),
+      ("senden", .präteritumIndikativ(.firstSingular)),
+      ("anerkennen", .präsensIndikativ(.thirdSingular))
+    ]
+    // Repeated to the quiz's length, so that the progress dots and the finish behave as usual.
+    // Each repeat is a new item, since the dots tell items apart by id.
+    return (0..<questionCount).map { index in
+      let spec = plan[index % plan.count]
+      guard let verb = Verb.verbs[spec.infinitiv] else {
+        preconditionFailure("Grading fixture references missing verb: \(spec.infinitiv)")
       }
       return makeQuizItem(verb: verb, conjugationgroup: spec.group)
     }
@@ -453,10 +507,12 @@ class Quiz {
     }
   }
 
-  private func announceAnswerResult(correct: Bool, correctAnswer: String? = nil) {
+  private func announceAnswerResult(correct: Bool, correctAnswer: String? = nil, preferredSpelling: String? = nil) {
     guard UIAccessibility.isVoiceOverRunning else { return }
     let announcement: String
-    if correct {
+    if correct, let preferredSpelling {
+      announcement = L.Quiz.announceCorrectSpelling(MixedCaseAccessibility.accessibilityLabel(for: preferredSpelling))
+    } else if correct {
       announcement = L.Quiz.announceCorrect
     } else if let correctAnswer {
       let label = MixedCaseAccessibility.accessibilityLabel(for: correctAnswer)
@@ -536,6 +592,12 @@ struct QuizItem: Identifiable {
   /// Every standard variety's spelling of this conjugation, lowercased. Answers are graded
   /// against this set, so no variety is ever marked wrong.
   let acceptableAnswers: Set<String>
+  /// The conjugation in the user's region, in each clause's word order, as the conjugator writes
+  /// it. An accepted answer that differs from one of these only in spelling, such as uebernehme,
+  /// is shown this spelling beside the checkmark.
+  let regionalSpellings: [String]
+  /// `acceptableAnswers` with every umlaut also writable as a digraph.
+  private let acceptedSpellings: Set<String>
   /// Which of the verb's readings this question asks about. The prompt shows this reading's
   /// gloss, so the learner knows whether hängen here means "be suspended" or "suspend
   /// something": the two inflect differently.
@@ -554,6 +616,7 @@ struct QuizItem: Identifiable {
     conjugationgroup: Conjugationgroup,
     correctAnswer: String,
     acceptableAnswers: Set<String>? = nil,
+    regionalSpellings: [String]? = nil,
     readingIndex: Int = 0
   ) {
     self.verb = verb
@@ -562,14 +625,44 @@ struct QuizItem: Identifiable {
     self.readingIndex = readingIndex
     // The canonical answer is always acceptable, so a caller that knows of no other variety
     // still grades correctly.
-    self.acceptableAnswers = acceptableAnswers ?? [correctAnswer.lowercased()]
+    let acceptableAnswers = acceptableAnswers ?? [correctAnswer.lowercased()]
+    self.acceptableAnswers = acceptableAnswers
+    self.regionalSpellings = regionalSpellings ?? [correctAnswer]
+    acceptedSpellings = acceptableAnswers.reduce(into: []) { spellings, answer in
+      spellings.formUnion(AnswerSpelling.digraphSpellings(of: answer))
+    }
   }
 
   /// Whether an answer as typed is right. Case is ignored, and so is spacing, which matters
-  /// now that a separable verb's answer has two words: "kommt  an" is still kommt an.
+  /// now that a separable verb's answer has two words: "kommt  an" is still kommt an. A
+  /// leading pronoun of the asked person is ignored too, and an umlaut may be written as a
+  /// digraph: "ich uebernehme" is übernehme.
   func accepts(_ answer: String) -> Bool {
-    let normalized = answer.split(whereSeparator: \.isWhitespace).joined(separator: " ").lowercased()
-    return acceptableAnswers.contains(normalized)
+    acceptedCandidate(of: answer) != nil
+  }
+
+  /// The user's region's spelling of an accepted answer that was written differently, such as
+  /// übernehme for uebernehme or stoßen Sie um for stossen sie um, for the quiz to show quietly.
+  /// Nil for a wrong answer, and for one already spelled as the conjugation is. A spelling of
+  /// another region that differs in more than orthography, such as Austria's ist gestanden, is
+  /// a right answer in its own right and gets no correction.
+  func preferredSpelling(of answer: String) -> String? {
+    guard let candidate = acceptedCandidate(of: answer) else {
+      return nil
+    }
+    let key = AnswerSpelling.orthographicKey(candidate)
+    let regionalSpelling = regionalSpellings.first { spelling in
+      spelling.lowercased() != candidate && AnswerSpelling.orthographicKey(spelling) == key
+    }
+    // A digraph spelling of a variant, such as stuende for stünde, has no regional spelling
+    // with the same letters, so it is shown the variant it spells.
+    return regionalSpelling ?? acceptableAnswers.sorted().first { answer in
+      answer != candidate && AnswerSpelling.digraphSpellings(of: answer).contains(candidate)
+    }
+  }
+
+  private func acceptedCandidate(of answer: String) -> String? {
+    AnswerSpelling.candidates(for: answer, in: conjugationgroup).first { acceptedSpellings.contains($0) }
   }
 
   var state: State {

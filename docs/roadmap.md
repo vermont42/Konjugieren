@@ -513,9 +513,15 @@ Small things the pipeline surfaced that no plan currently owns. None blocks the 
   *vergleichen* is left. *schreien* was fixed on 2026-07-20 (above), and *schaffen* never lacked
   a group: the `schaffen` group shipped with erschaffen, and what the verb lacked was a strong
   reading, now added. This entry went stale in two places at once, and a session believed it.
+  **Corrected 2026-11-13:** none is left. *vergleichen* now takes `gleichen`'s group (`streichen`,
+  with the region `eich`), found again by Phase 1 of `plans/pedagogy-implementation.md`, which also
+  found *scheiden* encoded `sch^eid^en` (schie, geschien). The classifier never flagged *scheiden*
+  because it skips verbs with more than one reading.
 - **Two verbs are editorially ambiguous** — *helfen* (Wiktionary's *hülfe* against the shipped
   *hälfe*) and *verstoßen* (the shipped Präsens umlaut *du verstößt* against a table without it).
-  Both need a human to pick, not more code.
+  Both need a human to pick, not more code. **Settled for helfen 2026-11-13:** Duden gives both
+  *hälfe* and *hülfe*. The verb page keeps *hälfe*, and the quiz accepts both (`StandardVariants`,
+  row D1 of `plans/pedagogy-phase1-variant-audit.md`).
 - ~~**A bulk DWDS fetch still needs probe generation.**~~ **Reconsidered 2026-08-26**, when the
   corpus-wide fetch actually ran. Probes are the repair, not the first move. The gate already
   catches the failure a bare infinitive causes, because a contaminated answer comes back under a

@@ -10197,3 +10197,51 @@ The key-conjugations exercise got a name, Verb Essentials, chosen over Stammform
 Conjugations. One answer went beyond the options offered: the achievements' artwork is to be
 generated with `gpt-image`, with the hex values of Konjugieren's color sets written into every
 prompt.
+
+## Phase 1 of the Pedagogy Plan: Marking Correct German Right (2026-11-13)
+
+The first pedagogy phase set out to stop the quiz marking correct German wrong in three ways the
+report had observed or inferred: a pronoun typed before the answer (`ihr habt ferngeguckt`), an
+umlaut typed as a digraph (`uebernehme`), and optional conjugations the conjugator never produces.
+
+The first two were small. A leading pronoun of the asked person is dropped before grading, never
+another person's, and never in front of an Imperativ, whose wir and Sie conjugations already carry
+theirs after the verb. For digraphs, the plan warned that search's fold was wrong for grading,
+since it reads fahrt as fährt. Folding only digraph to umlaut on both sides would still have been
+wrong in a quieter way, since it lets baü stand for baue. What shipped runs the other direction:
+each accepted conjugation gains every spelling with any of its umlauts written out, so
+übernähme brings uebernähme, übernaehme, and uebernaehme along, and nothing else. When a learner's
+right answer was spelled another way, the quiz shows the umlaut spelling quietly under the score,
+with a small checkmark, as Josh had decided. The ä, ö, ü, and ß keys from browse Phase 1 finally
+reached the answer field, as a keyboard toolbar that inserts at the cursor through the field's
+`TextSelection`.
+
+The third part was an audit, and it was the session's real work. Rather than guess at candidates,
+a script compared every cell of every verb with the conjugation table Wiktionary gives in the
+kaikki snapshot the classify pipeline already uses. It found 13,023 forms the conjugator does not
+produce. Bucketed by pattern, they reduced to about fifteen questions, and each was checked
+against Duden's conjugation tables, which print alternatives side by side. Wiktionary could not
+be trusted alone. It lists ich wandre and ich klettre, which Duden does not, and it tags nearly
+every Konjunktiv II "formal, rare", which says nothing. Duden settled most rows in a few fetches:
+komm and komme, bitt and bitte, sammle and sammele, kämst and kämest, stünde and stände, hülfe and
+hälfe. That last pair had sat in the roadmap since July as "needs a human to pick". The answer
+turned out to be both.
+
+The audit also turned up what the conjugator gets wrong outright, as opposed to what it leaves
+out. For every -eln and -ern verb, the Konjunktiv I gives du sammelest and ihr wanderet, which
+Duden does not list at all. Konjugieren writes senden and wenden only weak, so the quiz marked
+sandte, gesandt, and wandte sich wrong, though Duden calls these the usual forms. Worst were two
+outright errors in common verbs. scheiden's ablaut region had swallowed its d (`sch^eid^en`), so
+the verb page said schie and geschien. vergleichen, at two million hits, sat in bleiben's group
+and said vergliech. The roadmap had listed vergleichen for months as the last wrong group. scheiden
+had never been flagged at all, because the classifier skips verbs with two readings.
+
+Josh accepted every variant row recommended, for the quiz only, and the two data fixes now. The
+verb-page changes (du sammelst, sandte as a reading) wait for a session that can re-run the
+classify-and-verify regression after touching the conjugator. The variants live in
+`StandardVariants.swift`, one function per row of the audit, with the narrowing made on the side of
+rejecting: hauen's hieb covers hauen alone, because abhauen, "scram", has no hieb ab.
+
+The suite went from 490 to 530 tests. A new `KONJUGIEREN_QUIZ_FIXTURE grading` asks the ten
+questions this phase made answerable, which proved handy in the simulator: all six tried counted,
+and the ß key went in mid-word with the cursor after it.

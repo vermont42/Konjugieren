@@ -191,6 +191,48 @@ enum L {
     }
   }
 
+  enum MyVerbs {
+    static var clearRecent: String {
+      String(localized: "MyVerbs.clearRecent")
+    }
+
+    static var delete: String {
+      String(localized: "MyVerbs.delete")
+    }
+
+    static var emptyDescription: String {
+      String(localized: "MyVerbs.emptyDescription")
+    }
+
+    static var emptyTitle: String {
+      String(localized: "MyVerbs.emptyTitle")
+    }
+
+    static var recent: String {
+      String(localized: "MyVerbs.recent")
+    }
+
+    static var starred: String {
+      String(localized: "MyVerbs.starred")
+    }
+
+    static var title: String {
+      String(localized: "MyVerbs.title")
+    }
+
+    static var unstarConfirm: String {
+      String(localized: "MyVerbs.unstarConfirm")
+    }
+
+    static var unstarMessage: String {
+      String(localized: "MyVerbs.unstarMessage")
+    }
+
+    static func unstarTitle(_ infinitiv: String) -> String {
+      String(localized: "MyVerbs.unstarTitle \(infinitiv)")
+    }
+  }
+
   enum SearchScope {
     static var infinitiveOnly: String {
       String(localized: "SearchScope.infinitiveOnly")
@@ -724,6 +766,42 @@ enum L {
       String(localized: "Quiz.start")
     }
 
+    static var allVerbs: String {
+      String(localized: "Quiz.allVerbs")
+    }
+
+    static var allVerbsDescription: String {
+      String(localized: "Quiz.allVerbsDescription")
+    }
+
+    static var difficultyLabel: String {
+      String(localized: "Quiz.difficultyLabel")
+    }
+
+    static func moreVerbs(_ count: Int) -> String {
+      String(localized: "Quiz.moreVerbs.\(count)")
+    }
+
+    static var pointsPerAnswer: String {
+      String(localized: "Quiz.pointsPerAnswer")
+    }
+
+    static var questionsLabel: String {
+      String(localized: "Quiz.questionsLabel")
+    }
+
+    static var myVerbsEmpty: String {
+      String(localized: "Quiz.myVerbsEmpty")
+    }
+
+    static func myVerbsCount(_ count: Int) -> String {
+      String(localized: "Quiz.myVerbsCount.\(count)")
+    }
+
+    static var scope: String {
+      String(localized: "Quiz.scope")
+    }
+
     static var quit: String {
       String(localized: "Quiz.quit")
     }
@@ -940,6 +1018,18 @@ enum L {
 
     static var share: String {
       String(localized: "VerbView.share")
+    }
+
+    static var star: String {
+      String(localized: "VerbView.star")
+    }
+
+    static var testMe: String {
+      String(localized: "VerbView.testMe")
+    }
+
+    static var unstar: String {
+      String(localized: "VerbView.unstar")
     }
 
     static func shareText(infinitiv: String, gloss: String, keyConjugations: String, link: String) -> String {

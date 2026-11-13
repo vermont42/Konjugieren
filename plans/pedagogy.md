@@ -636,28 +636,28 @@ suggestion rests on judgment.
 
 ### Tier 1: Stop Marking Correct German Wrong
 
-| Suggestion | Basis | Effort |
-|---|---|---|
-| Decide the separable-verb convention on purpose, then make the quiz, the verb page, and the articles agree. The least disruptive choice is to accept both the split and the joined conjugation in the quiz. | Correctness | S |
-| Show the shape of the expected answer. A frame such as `ihr ______` with the pronoun fixed outside the field, or `______ Sie ______!` for a Sie-Imperativ of a separable verb, settles the pronoun question and the word-order question together. | Correctness; 10 | M |
-| Strip a leading pronoun from the answer before grading. | Correctness | S |
-| Accept ae, oe, ue, and ss, and add ä, ö, ü, and ß keys above the keyboard. Consider showing the proper spelling when a digraph is accepted. | Correctness | S |
-| Audit optional variants (the du-Imperativ with and without -e first) and accept every standard one. | Correctness | S to M |
-| Treat a one-letter slip as "almost" and allow one more attempt. How lenient to be is a judgment. No evidence on thresholds was found. | Judgment | M |
+| Suggestion | Basis | Effort | Verdict |
+|---|---|---|---|
+| Decide the separable-verb convention on purpose, then make the quiz, the verb page, and the articles agree. The least disruptive choice is to accept both the split and the joined conjugation in the quiz. | Correctness | S | Yes, accept both. |
+| Show the shape of the expected answer. A frame such as `ihr ______` with the pronoun fixed outside the field, or `______ Sie ______!` for a Sie-Imperativ of a separable verb, settles the pronoun question and the word-order question together. | Correctness; 10 | M | Yes. |
+| Strip a leading pronoun from the answer before grading. | Correctness | S | Yes. |
+| Accept ae, oe, ue, and ss, and add ä, ö, ü, and ß keys above the keyboard. Consider showing the proper spelling when a digraph is accepted. | Correctness | S | Yes. The umlaut keys have been implemente. |
+| Audit optional variants (the du-Imperativ with and without -e first) and accept every standard one. | Correctness | S to M | Yes. |
+| Treat a one-letter slip as "almost" and allow one more attempt. How lenient to be is a judgment. No evidence on thresholds was found. | Judgment | M | Yes. But if the player gets the second attempt right, half points. |
 
 ### Tier 2: Change What the Quiz Asks
 
-| Suggestion | Basis | Effort |
-|---|---|---|
-| Draw from frequency bands and default to the core. The `hi` counts already exist. Bands of 100, 300, and 1,000 verbs, with the whole corpus as an explicit choice, would do. Note that 83 verbs still carry placeholder counts. | 9; observed sampling | S |
-| Prefer base verbs. Draw unprefixed verbs and frequent derivatives, and use rare derivatives sparingly, to practice prefix behavior. | The size argument | S |
-| Replace the two difficulties with levels ordered by use. A sketch follows this table. | 9 | M |
-| Weight within a level. Give a newly opened conjugationgroup most of the questions at first, then fold it into the mix. | 6 | M |
-| Guarantee a mix. Fix the share of strong and weak verbs per session, as Conjugar's Easy quiz fixes regular and irregular, and make sure sein, haben, werden, and the modals recur. | 4; Conjugar's results | S |
-| Thin the Futur and other conjugationgroups whose only variable part is an auxiliary. | Observed sampling | S |
-| Shorten the default session to about ten questions, with an offer to continue. | Telemetry; Conjugar's precedent | S |
-| Let the learner choose scope: conjugationgroups, verb sets, a family or ablaut group, "my verbs". | 13 | M |
-| Make a chosen scope shareable as a link or a QR code, so that a teacher can hand a class one practice set without accounts or a server. The deeplink scheme already has a quiz route. | 13; Conjuguer's school downloads | M |
+| Suggestion | Basis | Effort | Verdict |
+|---|---|---|---|
+| Draw from frequency bands and default to the core. The `hi` counts already exist. Bands of 100, 300, and 1,000 verbs, with the whole corpus as an explicit choice, would do. Note that 83 verbs still carry placeholder counts. | 9; observed sampling | S | Yes, top 300. |
+| Prefer base verbs. Draw unprefixed verbs and frequent derivatives, and use rare derivatives sparingly, to practice prefix behavior. | The size argument | S | Yes. Every quiz should have one to three derivative verbs. |
+| Replace the two difficulties with levels ordered by use. A sketch follows this table. | 9 | M | Yes. |
+| Weight within a level. Give a newly opened conjugationgroup most of the questions at first, then fold it into the mix. | 6 | M | No. Which conjugationgroups have been opened should not impact quizzes. |
+| Guarantee a mix. Fix the share of strong and weak verbs per session, as Conjugar's Easy quiz fixes regular and irregular, and make sure sein, haben, werden, and the modals recur. | 4; Conjugar's results | S | Yes. |
+| Thin the Futur and other conjugationgroups whose only variable part is an auxiliary. | Observed sampling | S | Yes. |
+| Shorten the default session to about ten questions, with an offer to continue. | Telemetry; Conjugar's precedent | S | Reluctantly, yes. I am reluctant because a ten-question quiz is far from comprehensive. But perhaps a shorter quiz will encourage more people to take and finish quizzes. Barely any do now. |
+| Let the learner choose scope: conjugationgroups, verb sets, a family or ablaut group, "my verbs". | 13 | M | Yes, but the default is the classic-style quiz (with modifications from the plan.) "My verbs" an option if such verbs exist. |
+| Make a chosen scope shareable as a link or a QR code, so that a teacher can hand a class one practice set without accounts or a server. The deeplink scheme already has a quiz route. | 13; Conjuguer's school downloads | M | Yes. |
 
 A possible ladder of levels, using the app's conjugationgroup names:
 
@@ -675,13 +675,13 @@ examination specifications were not reached.
 
 ### Tier 3: Give the Quiz a Memory
 
-| Suggestion | Basis | Effort |
-|---|---|---|
-| Re-ask a missed question a few questions later, until it has been answered correctly once. | 4 | S to M |
-| Add "Practice my mistakes". `QuizErrorHistory` already stores the last 200 errors, so the data exist today. | 4 | S |
-| Keep a small record per item: a box number and a due date. Correct answers move an item up a ladder of intervals, and errors send it back. Offer a short "Review" session of whatever is due. | 4, 5 | M to L |
-| Start the ladder short (for example 1, 3, 7, 14, and 30 days) and do not agonize over the numbers. The evidence does not single out an interval. | 5; limits above | S |
-| Track two kinds of item. For strong and mixed verbs, the item is a verb's principal part. For weak verbs, the item is a pattern (a conjugationgroup and person), shared by all weak verbs. | The size argument | M |
+| Suggestion | Basis | Effort | Verdict |
+|---|---|---|---|
+| Re-ask a missed question a few questions later, until it has been answered correctly once. | 4 | S to M | Partial. Re-ask wrong question once. Since quizzes default to ten questions, reasking until correct could cause one question to dominate a quiz |
+| Add "Practice my mistakes". `QuizErrorHistory` already stores the last 200 errors, so the data exist today. | 4 | S | Yes. |
+| Keep a small record per item: a box number and a due date. Correct answers move an item up a ladder of intervals, and errors send it back. Offer a short "Review" session of whatever is due. | 4, 5 | M to L | Yes. |
+| Start the ladder short (for example 1, 3, 7, 14, and 30 days) and do not agonize over the numbers. The evidence does not single out an interval. | 5; limits above | S | Yes. |
+| Track two kinds of item. For strong and mixed verbs, the item is a verb's principal part. For weak verbs, the item is a pattern (a conjugationgroup and person), shared by all weak verbs. | The size argument | M | Yes. |
 
 The card-box scheduler suggested here is the Leitner system, from Sebastian Leitner's *So lernt man
 lernen* (1972), and the spacing effect it exploits was first measured by Hermann Ebbinghaus in
@@ -694,14 +694,14 @@ are waiting for.
 
 ### Tier 4: Make Feedback Land
 
-| Suggestion | Basis | Effort |
-|---|---|---|
-| After a wrong answer, stay on the missed question. Show the prompt, the learner's answer, the correct answer, and a Continue button. After a right answer, advance at once, as now. | 2 | S to M |
-| Diagnose the error from the conjugator's own knowledge and say it in one templated line. Candidate classes are listed below. | 3, 12 | M to L |
-| Try a prompt before the reveal for diagnosable errors ("Check the auxiliary. Try once more."). Prompts that lead learners to repair their own errors outperformed supplied corrections in classroom research (Lyster & Saito 2010, **secondhand**), and most of Heift's learners attempted the repair. Treat it as an experiment, since that research was oral and in classrooms. | 3 | M |
-| Mark where the learner's answer differs, in addition to what is irregular about the verb. | 3 | S to M |
-| Link each correction to the verb's page and its family. | 10 | S |
-| If AI explanation returns, have the model put a deterministic diagnosis into words and nothing more. | 12 | M |
+| Suggestion | Basis | Effort | Verdict |
+|---|---|---|---|
+| After a wrong answer, stay on the missed question. Show the prompt, the learner's answer, the correct answer, and a Continue button. After a right answer, advance at once, as now. | 2 | S to M | Yes. |
+| Diagnose the error from the conjugator's own knowledge and say it in one templated line. Candidate classes are listed below. | 3, 12 | M to L | Yess. |
+| Try a prompt before the reveal for diagnosable errors ("Check the auxiliary. Try once more."). Prompts that lead learners to repair their own errors outperformed supplied corrections in classroom research (Lyster & Saito 2010, **secondhand**), and most of Heift's learners attempted the repair. Treat it as an experiment, since that research was oral and in classrooms. | 3 | M | Yes. |
+| Mark where the learner's answer differs, in addition to what is irregular about the verb. | 3 | S to M | Yes. |
+| Link each correction to the verb's page and its family. | 10 | S | Yes. |
+| If AI explanation returns, have the model put a deterministic diagnosis into words and nothing more. | 12 | M | Not applicable at this time. |
 
 Error classes the conjugator could detect without any language model:
 
@@ -727,27 +727,27 @@ is drawn from the structure of the conjugator and from experience (**inference**
 
 | Suggestion | Basis | Effort |
 |---|---|---|
-| A principal-parts exercise for strong verbs: given the infinitive, supply the third-person Präsens, the Präteritum, and the Perfekt with its auxiliary. This is how the Goethe-Institut list presents them. | The size argument; 9 | M |
-| Family practice from the Families tab: work through one ablaut group, then mix it with groups already known. | 6; unproven for families | M |
-| "Test yourself on this verb" on the verb page: three questions at the moment of a lookup, with the option to add the verb to "my verbs". | Telemetry; 13 | M |
-| Recognition questions: show a conjugation such as käme and ask for the infinitive and the conjugationgroup. This is the direction a reader needs, and the map from conjugation to lemma built by `CorpusFormsDumpTests` already exists. | 11 | M |
-| Sentence frames for the core verbs: short authored sentences with the verb blanked. The bundled literary examples exist for every verb and are mostly too hard for a beginner's blank. They suit a reward after a correct answer better than a prompt. | 10 | L |
-| Choice questions: a context and two conjugationgroups, with the learner picking the one a speaker would use. This needs authored content. | 10 | L |
-| A speed round for items already mastered, as the one place where the clock counts. | Nation's fluency strand | M |
+| A principal-parts exercise for strong verbs: given the infinitive, supply the third-person Präsens, the Präteritum, and the Perfekt with its auxiliary. This is how the Goethe-Institut list presents them. | The size argument; 9 | M | Yes. |
+| Family practice from the Families tab: work through one ablaut group, then mix it with groups already known. | 6; unproven for families | M | Yes. |
+| "Test yourself on this verb" on the verb page: three questions at the moment of a lookup, with the option to add the verb to "my verbs". | Telemetry; 13 | M | Yes. |
+| Recognition questions: show a conjugation such as käme and ask for the infinitive and the conjugationgroup. This is the direction a reader needs, and the map from conjugation to lemma built by `CorpusFormsDumpTests` already exists. | 11 | M | Yes. |
+| Sentence frames for the core verbs: short authored sentences with the verb blanked. The bundled literary examples exist for every verb and are mostly too hard for a beginner's blank. They suit a reward after a correct answer better than a prompt. | 10 | L | Yes. |
+| Choice questions: a context and two conjugationgroups, with the learner picking the one a speaker would use. This needs authored content. | 10 | L | Yes. |
+| A speed round for items already mastered, as the one place where the clock counts. | Nation's fluency strand | M | Yes. |
 
 ### Tier 6: Rebuild Motivation Around Progress
 
-| Suggestion | Basis | Effort |
-|---|---|---|
-| Turn the Quiz tab into a practice hub: what a session is, how long it takes, the current level, what is due for review, and the last result. | Telemetry; judgment | M |
-| Show mastery: the core verbs against the conjugationgroups of the current level, filling in as items move up the ladder. | 14; unproven for persistence | M to L |
-| A short daily session with a streak that can be repaired, and an optional reminder at a time the learner picks. Roughly 37% of users of education apps on iOS allow notifications (**secondhand**, industry report), so the reminder cannot be the plan. | 14 | M |
-| Keep partial work. With a memory, a learner who stops after six questions has still practiced six. Retire the sad trombone. | Telemetry | S |
-| Hide the clock by default. | Judgment; limits above | S |
-| Move the leaderboard out of the main path. Offer personal bests and Game Center achievements for mastery milestones. | 14 | S to M |
-| Rename the levels. "Ridiculous" tells a learner that part of the app is a joke. | Judgment | S |
-| A daily shared challenge built on the existing daily widget question, with a result that can be shared. The evidence for this format is a designer's testimony and one survey. | Speculative | M |
-| Either make the arcade game depend on conjugating, as the architecture document already says it does, or accept it as an amusement. | Judgment | L or none |
+| Suggestion | Basis | Effort | Verdict |
+|---|---|---|---|
+| Turn the Quiz tab into a practice hub: what a session is, how long it takes, the current level, what is due for review, and the last result. | Telemetry; judgment | M | Yes. |
+| Show mastery: the core verbs against the conjugationgroups of the current level, filling in as items move up the ladder. | 14; unproven for persistence | M to L | Yes. |
+| A short daily session with a streak that can be repaired, and an optional reminder at a time the learner picks. Roughly 37% of users of education apps on iOS allow notifications (**secondhand**, industry report), so the reminder cannot be the plan. | 14 | M | Yes. |
+| Keep partial work. With a memory, a learner who stops after six questions has still practiced six. Retire the sad trombone. | Telemetry | S | Partial. Keep the sad trombone, as it is fun and silly. I disagree that it humiliates learners. |
+| Hide the clock by default. | Judgment; limits above | S | Yes. Make a setting that defaults to clock hidden. |
+| Move the leaderboard out of the main path. Offer personal bests and Game Center achievements for mastery milestones. | 14 | S to M | Yes. Josh will need help mucking with leaderboards in App Store Connect. |
+| Rename the levels. "Ridiculous" tells a learner that part of the app is a joke. | Judgment | S | Yes. |
+| A daily shared challenge built on the existing daily widget question, with a result that can be shared. The evidence for this format is a designer's testimony and one survey. | Speculative | M | Yes. |
+| Either make the arcade game depend on conjugating, as the architecture document already says it does, or accept it as an amusement. | Judgment | L or none | In future, yes. Improving the game is outside the scope of the quiz-improvement project. |
 
 A warning about this tier. Meta-analysis finds the effects of gamification on learning small, and
 its effects on motivation and behavior less stable than its effects on test scores (Sailer & Homner
@@ -928,25 +928,25 @@ funnel "before" is every month until then, measured with the signals that exist 
 ## Decisions for Josh
 
 1. **Separable verbs.** Should the app's standard conjugation be the joined one, the split one, or
-   both, and should the quiz accept both?
+   both, and should the quiz accept both? Answer: both.
 2. **Purpose of the quiz.** Is it an examination to be passed or practice to be accumulated? Most
-   suggestions here assume practice.
+   suggestions here assume practice. Answer: practice.
 3. **Primary audience.** Residents of German-speaking countries, English-speaking learners abroad,
    native speakers, or schools? The answer sets the default level, the prompt language, and how
-   much weight "my verbs" deserves. The usage data favor the first group.
-4. **The leaderboard.** Keep it in the main path, move it aside, or re-scope it by level?
-5. **Privacy policy.** Is aggregate accuracy worth a revision?
+   much weight "my verbs" deserves. The usage data favor the first group. Answer: serve both.
+4. **The leaderboard.** Keep it in the main path, move it aside, or re-scope it by level? Answer: re-scope by level.
+5. **Privacy policy.** Is aggregate accuracy worth a revision? Answer: no.
 6. **Where to try things first.** Konjugieren, where the code is freshest, or a sibling, where the
    numbers would speak sooner? With no release before 2027, this is now a question of which app
-   is released first.
-7. **The game.** Tie it to conjugation or leave it as play?
+   is released first. Answer: Konjugieren.
+7. **The game.** Tie it to conjugation or leave it as play? Answer: leave for now. A future project might make the game conjugation-focused.
 8. **Schools.** Is the classroom a channel to design for? Shareable practice sets are the smallest
-   step toward it.
+   step toward it. Answer: yes, that is one channel, and shareable practice sets could be helpful.
 9. **Conjuguer's minimum OS.** Is it worth checking whether the move to iOS 26 shut out the Swiss
    institution, and lowering the minimum if it did? The check needs no release. Lowering the
-   minimum does, and the institution's installs came each September.
+   minimum does, and the institution's installs came each September. Answer: no. I don't want to worry about whether certain OS or SwiftUI features are available. I'll leave the minimum version at 26 for now, not increasing to 27.
 10. **Store category.** Konjugieren is listed under Education and its siblings under Reference,
-    while people use all three as references. Whether the category affects discovery is unknown.
+    while people use all three as references. Whether the category affects discovery is unknown. Answer: given the better download numbers of Conjuguer and Conjugar, the plan should include changing Konjugieren's category to reference. That said, this likely isn't a big lever.
 
 ## Limits of This Research
 

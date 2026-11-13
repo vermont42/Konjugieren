@@ -23,6 +23,11 @@ class Quiz {
   private(set) var lastErrorContext: ErrorExplainerContext?
 
   private(set) var questions: [QuizItem] = []
+  private(set) var scope = QuizScope.allVerbs
+
+  var questionCount: Int {
+    scope.questionCount
+  }
 
   private var timer: Timer?
   private var difficultyUsed: QuizDifficulty = .regular
@@ -35,7 +40,7 @@ class Quiz {
   }
 
   var progressText: String {
-    "\(currentIndex + 1) / \(Quiz.questionCount)"
+    "\(currentIndex + 1) / \(questionCount)"
   }
 
   var elapsedText: String {
@@ -58,24 +63,33 @@ class Quiz {
     self.timerInterval = timerInterval
   }
 
-  func start() {
+  func start(scope: QuizScope = .allVerbs) {
+    self.scope = scope
     difficultyUsed = Current.settings.quizDifficulty
     questions = generateQuestions()
+    guard !questions.isEmpty else {
+      return
+    }
     resetProgressState()
     isInProgress = true
     shouldShowResults = false
     startTimer()
-    let attributes = QuizActivityAttributes(
-      difficulty: difficultyUsed.localizedQuizDifficulty,
-      totalQuestions: Quiz.questionCount
-    )
-    liveActivity = LiveActivityManager.start(
-      attributes: attributes,
-      initialState: makeContentState(isFinished: false)
-    )
+    // A three-question quiz on a verb's page is over before a Live Activity would be noticed.
+    if questionCount == Quiz.questionCount {
+      let attributes = QuizActivityAttributes(
+        difficulty: difficultyUsed.localizedQuizDifficulty,
+        totalQuestions: questionCount
+      )
+      liveActivity = LiveActivityManager.start(
+        attributes: attributes,
+        initialState: makeContentState(isFinished: false)
+      )
+    }
     Current.soundPlayer.play(Sound.randomGun)
     HapticPlayer.playMediumImpact()
-    Current.analytics.signal(name: .startQuiz)
+    Current.analytics.signal(name: .startQuiz, parameters: [
+      ParameterKey.source.rawValue: scope.source.rawValue
+    ])
     announceQuestion()
   }
 
@@ -131,7 +145,7 @@ class Quiz {
       LiveActivityManager.update(liveActivity, state: makeContentState(isFinished: false))
     }
 
-    if currentIndex >= Quiz.questionCount {
+    if currentIndex >= questionCount {
       finishQuiz()
     } else {
       announceQuestion()
@@ -151,7 +165,8 @@ class Quiz {
     Current.soundPlayer.play(Sound.randomSadTrombone)
     Current.analytics.signal(name: .quitQuiz, parameters: [
       ParameterKey.difficulty.rawValue: "\(difficultyUsed)",
-      ParameterKey.questionNumber.rawValue: "\(questionNumber)"
+      ParameterKey.questionNumber.rawValue: "\(questionNumber)",
+      ParameterKey.source.rawValue: scope.source.rawValue
     ])
   }
 
@@ -174,27 +189,49 @@ class Quiz {
     }
     #endif
 
-    let allVerbs = Array(Verb.verbs.values)
-    guard !allVerbs.isEmpty else { return [] }
+    let verbs = scope.verbs ?? Array(Verb.verbs.values)
+    guard let firstVerb = verbs.first, scope.questionCount > 0 else { return [] }
+
+    func item(_ conjugationgroup: Conjugationgroup) -> QuizItem {
+      makeQuizItem(verb: verbs.randomElement() ?? firstVerb, conjugationgroup: conjugationgroup, readingIndex: scope.readingIndex)
+    }
+
+    guard scope.questionCount >= Quiz.questionCount else {
+      return distinctNonPartizipConjugationgroups(count: scope.questionCount).map(item)
+    }
 
     var items: [QuizItem] = []
 
-    items.append(makeQuizItem(verb: allVerbs.randomElement() ?? allVerbs[0], conjugationgroup: .präsenspartizip))
+    items.append(item(.präsenspartizip))
 
     for _ in 0..<2 {
-      items.append(makeQuizItem(verb: allVerbs.randomElement() ?? allVerbs[0], conjugationgroup: .perfektpartizip))
+      items.append(item(.perfektpartizip))
     }
 
-    let remainingCount = Quiz.questionCount - 3
+    let remainingCount = scope.questionCount - 3
     for _ in 0..<remainingCount {
-      let verb = allVerbs.randomElement() ?? allVerbs[0]
-      let conjugationgroup = randomNonPartizipConjugationgroup()
-      items.append(makeQuizItem(verb: verb, conjugationgroup: conjugationgroup))
+      items.append(item(randomNonPartizipConjugationgroup()))
     }
 
     items.shuffle()
 
     return items
+  }
+
+  // A short quiz, such as three questions on one verb's page, would be all participles if it
+  // kept the full quiz's proportions. It asks for different cells instead, and every Perfekt
+  // among them tests the participle anyway.
+  private func distinctNonPartizipConjugationgroups(count: Int) -> [Conjugationgroup] {
+    var conjugationgroups: [Conjugationgroup] = []
+    var attempts = 0
+    while conjugationgroups.count < count, attempts < count * 20 {
+      let conjugationgroup = randomNonPartizipConjugationgroup()
+      if !conjugationgroups.contains(conjugationgroup) {
+        conjugationgroups.append(conjugationgroup)
+      }
+      attempts += 1
+    }
+    return conjugationgroups
   }
 
   func makeQuizItem(verb: Verb, conjugationgroup: Conjugationgroup, readingIndex: Int? = nil) -> QuizItem {
@@ -353,7 +390,7 @@ class Quiz {
 
   private func makeContentState(isFinished: Bool) -> QuizActivityAttributes.ContentState {
     QuizActivityAttributes.ContentState(
-      currentQuestion: min(currentIndex + 1, Quiz.questionCount),
+      currentQuestion: min(currentIndex + 1, questionCount),
       score: score,
       correctCount: correctCount,
       elapsedTime: elapsedTimeLiveActivity,
@@ -388,13 +425,18 @@ class Quiz {
     Current.soundPlayer.play(Sound.randomApplause, shouldDebounce: false)
     HapticPlayer.playSuccess()
     Current.analytics.signal(name: .completeQuiz, parameters: [
-      ParameterKey.difficulty.rawValue: "\(difficultyUsed)"
+      ParameterKey.difficulty.rawValue: "\(difficultyUsed)",
+      ParameterKey.source.rawValue: scope.source.rawValue
     ])
     announceQuizCompletion()
-    ChangeDifficultyTip.quizCompleted.sendDonation()
+    if questionCount == Quiz.questionCount {
+      ChangeDifficultyTip.quizCompleted.sendDonation()
+    }
 
-    Task {
-      await Current.gameCenter.submitScore(finalScore)
+    if scope.isRanked {
+      Task {
+        await Current.gameCenter.submitScore(finalScore)
+      }
     }
     Current.reviewPrompter.promptableActionHappened()
   }
@@ -427,7 +469,7 @@ class Quiz {
 
   private func announceQuizCompletion() {
     guard UIAccessibility.isVoiceOverRunning else { return }
-    let announcement = "\(L.Quiz.results). \(L.Quiz.score) \(finalScore). \(L.Quiz.correct) \(correctCount) / \(Quiz.questionCount)."
+    let announcement = "\(L.Quiz.results). \(L.Quiz.score) \(finalScore). \(L.Quiz.correct) \(correctCount) / \(questionCount)."
     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
       UIAccessibility.post(notification: .announcement, argument: announcement)
     }
@@ -436,6 +478,37 @@ class Quiz {
   @MainActor
   deinit {
     timer?.invalidate()
+  }
+}
+
+/// What a quiz asks about, how many questions it asks, and where it was begun. The quiz track
+/// can add scopes, such as Phase 16's collections, as further constructors.
+struct QuizScope {
+  /// Nil asks about every verb.
+  let verbs: [Verb]?
+
+  /// The reading every question asks about. Nil picks one per question.
+  let readingIndex: Int?
+
+  let questionCount: Int
+  let source: AnalyticsSource
+
+  /// Only a full quiz over every verb posts to the leaderboard, as Josh decided on 2026-11-13:
+  /// a score over a learner's own verbs, or over three questions, compares with nothing.
+  var isRanked: Bool {
+    verbs == nil && questionCount == Quiz.questionCount
+  }
+
+  static let verbPageQuestionCount = 3
+
+  static let allVerbs = QuizScope(verbs: nil, readingIndex: nil, questionCount: Quiz.questionCount, source: .tab)
+
+  static func myVerbs(_ verbs: [Verb]) -> QuizScope {
+    QuizScope(verbs: verbs, readingIndex: nil, questionCount: Quiz.questionCount, source: .myVerbs)
+  }
+
+  static func verbPage(_ verb: Verb, readingIndex: Int) -> QuizScope {
+    QuizScope(verbs: [verb], readingIndex: readingIndex, questionCount: verbPageQuestionCount, source: .verbPage)
   }
 }
 

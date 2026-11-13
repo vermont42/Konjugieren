@@ -8,7 +8,7 @@ struct ResultsView: View {
   @State private var displayedScore = 0
 
   private var scoreColor: Color {
-    let percentage = Double(quiz.correctCount) / Double(Quiz.questionCount)
+    let percentage = Double(quiz.correctCount) / Double(quiz.questionCount)
     if percentage > 0.8 {
       return .green
     } else if percentage >= 0.5 {
@@ -37,7 +37,7 @@ struct ResultsView: View {
             .accessibilityIdentifier("results_score")
 
           HStack(spacing: Layout.doubleDefaultSpacing) {
-            Text(label: L.Quiz.correct, value: "\(quiz.correctCount) / \(Quiz.questionCount)")
+            Text(label: L.Quiz.correct, value: "\(quiz.correctCount) / \(quiz.questionCount)")
               .font(.caption.monospacedDigit())
             Text(label: L.Quiz.difficulty, value: quiz.difficultyText)
               .font(.caption)
@@ -51,7 +51,7 @@ struct ResultsView: View {
         .padding(.horizontal, Layout.doubleDefaultSpacing)
         .padding(.top, Layout.tripleDefaultSpacing)
 
-        if Current.gameCenter.isAuthenticated {
+        if quiz.scope.isRanked, Current.gameCenter.isAuthenticated {
           Button(L.GameCenter.viewLeaderboard) {
             Current.gameCenter.showLeaderboard()
           }

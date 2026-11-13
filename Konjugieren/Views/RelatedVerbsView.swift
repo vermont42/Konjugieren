@@ -193,6 +193,7 @@ struct RelatedVerbListView: View {
 /// Lays its children out in rows, wrapping to a new row when the next child would not fit.
 struct FlowLayout: SwiftUI.Layout {
   var spacing: CGFloat = 8
+  var centersRows = false
 
   func sizeThatFits(proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) -> CGSize {
     let rows = rows(for: subviews, width: proposal.width ?? .infinity)
@@ -204,7 +205,7 @@ struct FlowLayout: SwiftUI.Layout {
   func placeSubviews(in bounds: CGRect, proposal: ProposedViewSize, subviews: Subviews, cache: inout ()) {
     var y = bounds.minY
     for row in rows(for: subviews, width: bounds.width) {
-      var x = bounds.minX
+      var x = bounds.minX + (centersRows ? max(bounds.width - row.width, 0) / 2 : 0)
       for index in row.indices {
         let size = subviews[index].sizeThatFits(.unspecified)
         subviews[index].place(at: CGPoint(x: x, y: y), proposal: ProposedViewSize(size))

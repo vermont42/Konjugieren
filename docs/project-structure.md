@@ -63,6 +63,7 @@ Konjugieren/
 │   ├── InfoMedia.swift         # Enum: .photo or .sfSymbol media for Info rows
 │   ├── KeyConjugations.swift   # Verb.keyConjugations (steht auf · stand auf · ist aufgestanden, always shown with no label) and Verb.shareText, what the verb page's share button sends
 │   ├── KonjugierenTips.swift   # TipKit tips (e.g., change-difficulty hint; the verb page's RedLettersTip and ScrollToBottomTip)
+│   ├── LearnerVerbStore.swift  # Current.learnerVerbs: @Observable view of Shared/LearnerVerbs.swift that records opens and stars, saves each change to the App Group's defaults, and answers in verbs (starred, recent, My Verbs)
 │   ├── LanguageModelService.swift      # Protocol for on-device AI error explanation and tutoring
 │   ├── LanguageModelServiceDummy.swift # No-op stub for tests/unsupported devices
 │   ├── LanguageModelServiceReal.swift  # FoundationModels implementation for AI tutoring
@@ -70,14 +71,14 @@ Konjugieren/
 │   ├── Prefix.swift            # Separable/inseparable prefix enum ([Prefix] helpers live in Reading.swift)
 │   ├── PrefixMeaning.swift     # Prefix meanings with PIE etymologies
 │   ├── PrefixSection.swift     # Curated-vs-other heading for the prefix-grouped verb list
-│   ├── Quiz.swift              # @Observable quiz state: questions, timer, scoring
+│   ├── Quiz.swift              # @Observable quiz state: questions, timer, scoring; QuizScope (the verbs asked about, the question count, the analytics source, and whether the score is ranked): every verb, My Verbs, or three questions on a verb's page
 │   ├── QuizDifficulty.swift    # Setting enum: regular vs ridiculous
 │   ├── RelatedVerbs.swift      # Verb.root (the innermost base: anerkennen → kennen) and Verb.related(readingIndex:): verbs built on the same root, one verb per other root of the ablaut group, and the Families pages of a reading
 │   ├── Region.swift            # Setting enum: the three standard varieties (north/austria/switzerland)
 │   ├── QuizErrorHistory.swift  # Persistence for recent quiz errors (up to 200)
 │   ├── SearchReport.swift      # SearchTracker (one search, first letter to its end, and the surface that opened the field for it) and SearchReport (the banded finishSearch parameters)
 │   ├── SearchScope.swift       # Setting enum: infinitive-only vs. infinitive-and-translation search
-│   ├── SortOrder.swift         # Enum for verb list sorting (alphabetical/frequency); [Verb].sorted(by:), used by the family pages and the related-verb list
+│   ├── SortOrder.swift         # Enum for verb list sorting (alphabetical/frequency); [Verb].sorted(by:), used by the family pages and the related-verb list; VerbListMode, the verb list's picker (Alphabetical, Frequency, My Verbs)
 │   ├── Sound.swift             # Sound effect definitions (guns, chimes, applause)
 │   ├── TabSelection.swift      # TabView selection enum for programmatic tab switching
 │   ├── ThirdPersonPronounGender.swift  # Setting enum: er/sie/es preference
@@ -103,7 +104,7 @@ Konjugieren/
 │   ├── GameCenterReal.swift    # Real GKLocalPlayer authentication and scores
 │   ├── GetterSetter.swift      # Protocol for key-value storage abstraction
 │   ├── GetterSetterFake.swift  # In-memory dictionary implementation for tests
-│   ├── GetterSetterReal.swift  # UserDefaults implementation of GetterSetter
+│   ├── GetterSetterReal.swift  # UserDefaults implementation of GetterSetter; standard defaults unless given others (the learner's verbs use the App Group's)
 │   ├── GradientDivider.swift   # Shared gradient divider used by SettingsView and ResultsView
 │   ├── HapticPlayer.swift      # Haptic feedback methods respecting audio-feedback setting
 │   ├── KillSwitches.swift      # Compile-time screenshot kill switches: TipDisplay, OnboardingDisplay, TutorDisplay
@@ -129,6 +130,7 @@ Konjugieren/
 │   ├── URLExtension.swift      # The deeplink grammar's constants and builders (verbDeeplink with match, searchDeeplink, infoDeeplink by stable key), the `source` query item, developerEmail, the mailto: builder, and URL.appStore
 │   ├── URLProtocolStub.swift   # URLProtocol subclass for stubbing HTTP responses in tests
 │   ├── URLSessionExtension.swift   # Extension providing a stubbed URLSession for testing
+│   ├── ViewControllerTransitions.swift  # UIKit workaround: waits until no view controller is presenting or dismissing, since UIKit drops a push made mid-transition (an iPad tap that ends an empty search)
 │   ├── VerbSearchArrowKeys.swift   # UIKit workaround: priority UIKeyCommands so ↑/↓ move through search results while the field is focused
 │   ├── UserLocale.swift        # Locale detection helpers (isGerman, isEnglish)
 │   ├── Utterer.swift           # Protocol for text-to-speech with UttererLocale constants
@@ -145,15 +147,15 @@ Konjugieren/
     ├── InfoView.swift          # Detail view for a single Info article
     ├── MainTabView.swift       # Root TabView with five tabs
     ├── OnboardingView.swift    # Multi-page onboarding shown on first launch
-    ├── QuizView.swift          # Quiz gameplay: questions, timer, answer input
-    ├── RelatedVerbsView.swift  # The verb page's Related Verbs card (chips in a FlowLayout), RelatedVerbListView (every verb of one relation), and VerbPagePush, the environment action by which a verb page pushes onto whichever tab's stack shows it
-    ├── ResultsView.swift       # Modal showing quiz results and leaderboard button
+    ├── QuizView.swift          # Quiz gameplay: questions, timer, answer input; the Quiz tab's start screen (a big yellow symbol for the scope, its name and description, the All Verbs/My Verbs picker, Start, three fact tiles, and My Verbs' verbs as chips, scaled up on iPad); with a sheetScope, the sheet of "Test me on this verb", which starts as it appears and closes when the quiz ends
+    ├── RelatedVerbsView.swift  # The verb page's Related Verbs card (chips in a FlowLayout, which can also center its rows, as the Quiz tab's My Verbs chips do), RelatedVerbListView (every verb of one relation), and VerbPagePush, the environment action by which a verb page pushes onto whichever tab's stack shows it
+    ├── ResultsView.swift       # Modal showing quiz results, and the leaderboard button after a ranked quiz
     ├── RichTextView.swift      # Renders RichTextBlock content with styling
     ├── SettingsView.swift      # Settings UI with segmented pickers
     ├── TutorTestView.swift     # Debug view for testing the AI tutor
     ├── TutorView.swift         # Chat interface for the AI tutor with sample queries
-    ├── VerbBrowseView.swift    # Searchable, sortable list of all verbs; the letter row replaces the sort picker while search is focused; a result found by a conjugation says which cells matched, and separable verbs in which the query is a stranded part fold into one row (a grid section on iPad); a failed search shows a guess and a mail link; Return and the arrow keys open and move through results on iPad and Mac
-    └── VerbView.swift          # Verb detail showing all conjugations; a search result opens it on the matched reading, scrolled to the matched section, with the matched rows tinted; ends with the Related Verbs card
+    ├── VerbBrowseView.swift    # Searchable, sortable list of all verbs; the letter row replaces the sort picker while search is focused; a result found by a conjugation says which cells matched, and separable verbs in which the query is a stranded part fold into one row (a grid section on iPad); a failed search shows a guess and a mail link; Return and the arrow keys open and move through results on iPad and Mac; the focused, empty field shows the recent verbs, and the picker's My Verbs is a List of starred, then recent, verbs, each deletable by a left swipe (a starred one after a confirmation)
+    └── VerbView.swift          # Verb detail showing all conjugations; a search result opens it on the matched reading, scrolled to the matched section, with the matched rows tinted; ends with the Related Verbs card; the bar holds Test Me (a three-question quiz in a sheet), the star, and Share; each arrival records an open in the learner's verbs
 
 KonjugierenWidget/
 ├── AnswerQuizIntent.swift      # AppIntent for answering a quiz question from the widget
@@ -193,6 +195,7 @@ Shared/
 ├── OpenRandomVerbControlIntent.swift  # The Random Verb control's action: OpenRandomVerbIntent with source=control, hidden from Shortcuts
 ├── OpenRandomVerbIntent.swift      # Shared intent to open random verb via deeplink (the Random Verb shortcut)
 ├── OpenVerbSearchIntent.swift      # The Find a Verb control's action: konjugieren://search?source=control, hidden from Shortcuts
+├── LearnerVerbs.swift              # The learner's verbs (each verb opened, with dates and a count, and each verb starred), keyed by infinitive and stored as JSON in the App Group's defaults so the widget can read it; new fields must be optional
 ├── QuizActivityAttributes.swift    # ActivityKit model for quiz live activity
 ├── WidgetConstants.swift           # Constants for widget app-group container, storage keys, day count, and pinned Gregorian calendar
 ├── WidgetQuizShuffle.swift         # Process-stable (FNV-1a seeded) answer shuffle + SeededRNG, shared by widget and tests
@@ -207,12 +210,13 @@ KonjugierenTests/
 │   ├── ConjugationSearchTests.swift # Search by conjugation: the ideas doc's conjugation queries, stranded parts and the folded row, particles, compounds, folding, adjective endings, cell names, marks
 │   ├── ConjugationgroupTests.swift # Conjugationgroup.ending(family:) ending-table tests
 │   ├── ConjugatorTests.swift   # Comprehensive conjugation tests (~50 test functions), incl. error paths
+│   ├── LearnerVerbsTests.swift # The learner's verbs: opens, stars, recents, My Verbs, removal, clearing, JSON round trip and an old record's decoding, and the store's reload
 │   ├── KeyConjugationsTests.swift # Key conjugations per reading and region, the share text, and what a long press copies
 │   ├── InfoTests.swift         # Info articles: a heading and text per article in each language, every ‡link‡ opens an article or a verb (both catalogs), stable keys
 │   ├── GameStateTests.swift    # Game-logic tests: damage invulnerability, robot-mechanic clearing, game-over/wave transitions, snapshot round-trip
 │   ├── PersonNumberTests.swift # Pronoun and sie-disambiguation tests
 │   ├── QuizErrorHistoryTests.swift # Quiz error persistence tests
-│   ├── QuizTests.swift         # Quiz logic, scoring, and timer pause/resume tests
+│   ├── QuizTests.swift         # Quiz logic, scoring, and timer pause/resume tests; scopes (My Verbs, three questions on a verb page, ranking, the source on start, quit, and completion)
 │   ├── SearchReportTests.swift # SearchTracker lifecycle, finishSearch parameters, and the no-typed-text guarantee
 │   ├── RelatedVerbsTests.swift # Verb.root through nested prefixes, verbs built on a root, ablaut relatives (one per root), family pages, per-reading relations, [Verb].sorted(by:)
 │   ├── RefusalDetectionTests.swift # Tutor refusal-phrase detection, incl. the "null" exact-match false-positive guard

@@ -18,6 +18,7 @@ class World {
   var fatalError: FatalError
   var analytics: Analytics
   var session: URLSession
+  var learnerVerbs: LearnerVerbStore
   var verb: Verb?
   var verbSource: AnalyticsSource = .deeplink
   var verbMarks: MarkedConjugations?
@@ -27,7 +28,7 @@ class World {
   var selectedTab: TabSelection = .verbs
   var shouldNavigateToTutor = false
 
-  init(settings: Settings, gameCenter: GameCenter, getterSetter: GetterSetter, languageModelService: LanguageModelService, reviewPrompter: ReviewPrompter, soundPlayer: SoundPlayer, utterer: Utterer, fatalError: FatalError, analytics: Analytics, session: URLSession) {
+  init(settings: Settings, gameCenter: GameCenter, getterSetter: GetterSetter, languageModelService: LanguageModelService, reviewPrompter: ReviewPrompter, soundPlayer: SoundPlayer, utterer: Utterer, fatalError: FatalError, analytics: Analytics, session: URLSession, learnerVerbs: LearnerVerbStore) {
     self.settings = settings
     self.gameCenter = gameCenter
     self.getterSetter = getterSetter
@@ -38,6 +39,7 @@ class World {
     self.fatalError = fatalError
     self.analytics = analytics
     self.session = session
+    self.learnerVerbs = learnerVerbs
   }
 
   nonisolated static let isRunningUnitTests = NSClassFromString("XCTestCase") != nil
@@ -49,13 +51,13 @@ class World {
   static let real: World = {
     let getterSetter = GetterSetterReal()
     let settings = Settings(getterSetter: getterSetter)
-    return World(settings: settings, gameCenter: GameCenterReal(), getterSetter: getterSetter, languageModelService: LanguageModelServiceReal(), reviewPrompter: ReviewPrompterReal(settings: settings), soundPlayer: SoundPlayerReal(), utterer: UttererReal(), fatalError: FatalErrorReal(), analytics: AnalyticsReal(), session: .shared)
+    return World(settings: settings, gameCenter: GameCenterReal(), getterSetter: getterSetter, languageModelService: LanguageModelServiceReal(), reviewPrompter: ReviewPrompterReal(settings: settings), soundPlayer: SoundPlayerReal(), utterer: UttererReal(), fatalError: FatalErrorReal(), analytics: AnalyticsReal(), session: .shared, learnerVerbs: LearnerVerbStore(getterSetter: GetterSetterReal(userDefaults: WidgetConstants.sharedDefaults ?? .standard)))
   }()
 
   static let unitTest: World = {
     let getterSetter = GetterSetterFake()
     let settings = Settings(getterSetter: getterSetter)
-    return World(settings: settings, gameCenter: GameCenterDummy(), getterSetter: getterSetter, languageModelService: LanguageModelServiceDummy(), reviewPrompter: ReviewPrompterDummy(), soundPlayer: SoundPlayerDummy(), utterer: UttererDummy(), fatalError: FatalErrorSpy(), analytics: AnalyticsSpy(), session: .stubSession(ratingsCount: 1))
+    return World(settings: settings, gameCenter: GameCenterDummy(), getterSetter: getterSetter, languageModelService: LanguageModelServiceDummy(), reviewPrompter: ReviewPrompterDummy(), soundPlayer: SoundPlayerDummy(), utterer: UttererDummy(), fatalError: FatalErrorSpy(), analytics: AnalyticsSpy(), session: .stubSession(ratingsCount: 1), learnerVerbs: LearnerVerbStore(getterSetter: GetterSetterFake()))
   }()
 
   static let viewVerbActivityType = "biz.joshadams.Konjugieren.viewVerb"

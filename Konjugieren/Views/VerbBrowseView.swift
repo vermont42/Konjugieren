@@ -5,7 +5,7 @@ import TipKit
 
 struct VerbBrowseView: View {
   @Bindable var world = Current
-  @State private var sortOrder: SortOrder = .frequency
+  @State private var listMode: VerbListMode = .frequency
   @State private var sortedVerbs: [Verb] = Verb.verbsSortedByFrequency
   @State private var searchText: String = ""
   @State private var navigationPath = NavigationPath()
@@ -14,6 +14,9 @@ struct VerbBrowseView: View {
   @State private var searchTracker = SearchTracker()
   @State private var resultsCache = SearchResultsCache()
   @State private var separableVerbsAreShown = false
+  @State private var verbToUnstar: Verb?
+  @State private var searchIsEngaged = false
+  @State private var searchFocusLostAt: Date?
   @FocusState private var searchIsFocused: Bool
   @Environment(\.horizontalSizeClass) private var sizeClass
   @Environment(\.scenePhase) private var scenePhase
@@ -45,11 +48,82 @@ struct VerbBrowseView: View {
     isSearching ? resultsCache.results(for: trimmedSearchText, includeGlosses: searchIncludesGlosses) : .empty
   }
 
+  private var learnerVerbs: LearnerVerbStore { Current.learnerVerbs }
+
+  /// The verbs last opened, shown while the field is focused and empty, before anything is typed.
+  private var showsRecents: Bool {
+    searchIsEngaged && !isSearching && !learnerVerbs.recentVerbs.isEmpty
+  }
+
+  // Hack: on iPad, a tap outside an empty search field ends the search at touch-down, before the
+  // tap completes. Views that followed the focus (the recent verbs, the letter row) vanished
+  // under the finger, so tapping a recent verb or ä did nothing. They follow this instead, which
+  // lets go of the focus a moment later. See also pushFromSearch.
+  private func searchFocusChanged() {
+    guard !searchIsFocused else {
+      searchIsEngaged = true
+      searchFocusLostAt = nil
+      return
+    }
+    searchFocusLostAt = .now
+    Task {
+      try? await Task.sleep(for: Self.searchLingering)
+      if !searchIsFocused {
+        searchIsEngaged = false
+      }
+    }
+  }
+
+  private static let searchLingering = Duration.milliseconds(700)
+
+  // A tap that ends an empty search on iPad would push while the search is still animating away,
+  // and UIKit drops such a push; see ViewControllerTransitions. A typed search does not end on
+  // that tap, and on iPhone nothing is animating, so both push at once.
+  private func pushFromSearch(_ destination: VerbDestination) {
+    guard !isSearching, searchFocusLostAt != nil else {
+      navigationPath.append(destination)
+      return
+    }
+    Task {
+      await ViewControllerTransitions.waitUntilIdle()
+      navigationPath.append(destination)
+    }
+  }
+
+  // On iPad a key's tap ends an empty search, and the search clears its text as it goes, so a
+  // letter set meanwhile is lost or shows in the results but not the field. The letter waits for
+  // the search to be gone, then reopens it, as a search request from outside the app does.
+  private func insertLetter(_ letter: String) {
+    guard !searchIsFocused else {
+      searchText.append(letter)
+      return
+    }
+    Task {
+      await ViewControllerTransitions.waitUntilIdle()
+      searchText.append(letter)
+      searchIsFocused = true
+    }
+  }
+
+  private var showsMyVerbs: Bool {
+    listMode == .myVerbs && !isSearching && !showsRecents
+  }
+
   private var entries: [VerbSearchResults.Entry] {
     guard isSearching else {
-      return sortedVerbs.map { .hit(VerbSearchResults.Hit(verb: $0, kind: nil, conjugation: nil), isInSeparableVerbs: false) }
+      if showsMyVerbs {
+        return []
+      }
+      let verbs = showsRecents ? learnerVerbs.recentVerbs : sortedVerbs
+      return verbs.map { .hit(VerbSearchResults.Hit(verb: $0, kind: nil, conjugation: nil), isInSeparableVerbs: false) }
     }
     return searchResults.entries(separableVerbsAreShown: separableVerbsAreShown)
+  }
+
+  /// The source of a row opened with the field empty. Settled as the row is drawn, because a tap
+  /// can take the focus from the field, and with it the recents, before the row's action runs.
+  private var browseSource: AnalyticsSource {
+    showsRecents ? .recent : .browse
   }
 
   private var conjugationgroupLang: ConjugationgroupLang {
@@ -59,84 +133,87 @@ struct VerbBrowseView: View {
   var body: some View {
     let results = searchResults
     let entries = self.entries
+    let browseSource = self.browseSource
     NavigationStack(path: $navigationPath) {
       VStack(spacing: 0) {
-        ScrollViewReader { proxy in
-          ScrollView {
-            TipView(tryQuizTip)
-              .padding(.horizontal)
+        // My Verbs is a List of its own, because only a List's rows can be swiped to delete.
+        if showsMyVerbs {
+          myVerbsList
+        } else {
+          ScrollViewReader { proxy in
+            ScrollView {
+              TipView(tryQuizTip)
+                .padding(.horizontal)
 
-            if entries.isEmpty {
-              ContentUnavailableView(L.VerbBrowse.noVerbsFound, systemImage: "magnifyingglass")
-                .onAppear {
-                  Current.soundPlayer.play(.randomSadTrombone)
+              if entries.isEmpty {
+                ContentUnavailableView(L.VerbBrowse.noVerbsFound, systemImage: "magnifyingglass")
+                  .onAppear {
+                    Current.soundPlayer.play(.randomSadTrombone)
+                  }
+
+                failedSearchHelp(guess: results.guess)
+              } else {
+                if showsRecents {
+                  listHeading(L.MyVerbs.recent)
+                    .accessibilityIdentifier("recent_verbs_heading")
+                } else {
+                  listHeading(L.VerbBrowse.verbCount(isSearching ? results.matchCount : sortedVerbs.count))
+                    .accessibilityIdentifier("verb_browse_anchor")
                 }
 
-              failedSearchHelp(guess: results.guess)
-            } else {
-              Text(L.VerbBrowse.verbCount(isSearching ? results.matchCount : sortedVerbs.count))
-                .font(.caption.smallCaps())
-                .foregroundStyle(.secondary)
-                .frame(maxWidth: .infinity, alignment: .leading)
-                .padding(.horizontal)
-                .padding(.top, Layout.defaultSpacing)
-                .accessibilityIdentifier("verb_browse_anchor")
-
-              if sizeClass == .regular {
-                LazyVGrid(columns: [GridItem(.adaptive(minimum: Layout.verbGridMinimum))], spacing: 0) {
-                  ForEach(Self.gridSections(of: entries), id: \.first?.offset) { section in
-                    if let header = section.first, case .separableVerbs(let hits) = header.element {
-                      Section {
-                        ForEach(section.dropFirst(), id: \.element.id) { index, entry in
-                          gridCell(entry, at: index)
+                if sizeClass == .regular {
+                  LazyVGrid(columns: [GridItem(.adaptive(minimum: Layout.verbGridMinimum))], spacing: 0) {
+                    ForEach(Self.gridSections(of: entries), id: \.first?.offset) { section in
+                      if let header = section.first, case .separableVerbs(let hits) = header.element {
+                        Section {
+                          ForEach(section.dropFirst(), id: \.element.id) { index, entry in
+                            gridCell(entry, at: index, browseSource: browseSource)
+                          }
+                        } header: {
+                          separableVerbsRow(hits, at: header.offset)
                         }
-                      } header: {
-                        separableVerbsRow(hits, at: header.offset)
-                      }
-                    } else {
-                      Section {
-                        ForEach(section, id: \.element.id) { index, entry in
-                          gridCell(entry, at: index)
+                      } else {
+                        Section {
+                          ForEach(section, id: \.element.id) { index, entry in
+                            gridCell(entry, at: index, browseSource: browseSource)
+                          }
                         }
                       }
                     }
                   }
-                }
-                .padding(.horizontal)
-              } else {
-                LazyVStack(spacing: 0) {
-                  ForEach(Array(entries.enumerated()), id: \.element.id) { index, entry in
-                    Group {
-                      switch entry {
-                      case .hit(let hit, let isInSeparableVerbs):
-                        VerbRowView(verb: hit.verb, match: hit.conjugation, conjugationgroupLang: conjugationgroupLang, isIndented: isInSeparableVerbs) {
-                          openResult(hit, at: index)
+                  .padding(.horizontal)
+                } else {
+                  LazyVStack(spacing: 0) {
+                    ForEach(Array(entries.enumerated()), id: \.element.id) { index, entry in
+                      Group {
+                        switch entry {
+                        case .hit(let hit, let isInSeparableVerbs):
+                          VerbRowView(verb: hit.verb, match: hit.conjugation, conjugationgroupLang: conjugationgroupLang, isIndented: isInSeparableVerbs) {
+                            openResult(hit, at: index, browseSource: browseSource)
+                          }
+                        case .separableVerbs(let hits):
+                          SeparableVerbsRow(hits: hits, isShown: separableVerbsAreShown, toggle: toggleSeparableVerbs)
                         }
-                      case .separableVerbs(let hits):
-                        SeparableVerbsRow(hits: hits, isShown: separableVerbsAreShown, toggle: toggleSeparableVerbs)
                       }
-                    }
-                    .background(rowBackground(index: index))
+                      .background(rowBackground(index: index))
 
-                    Divider()
-                      .padding(.leading)
+                      Divider()
+                        .padding(.leading)
+                    }
                   }
                 }
               }
             }
-          }
-          .onChange(of: keyboardSelection) {
-            if let keyboardSelection, entries.indices.contains(keyboardSelection) {
-              proxy.scrollTo(entries[keyboardSelection].id)
+            .onChange(of: keyboardSelection) {
+              if let keyboardSelection, entries.indices.contains(keyboardSelection) {
+                proxy.scrollTo(entries[keyboardSelection].id)
+              }
             }
-          }
-          .onChange(of: sortOrder) {
-            withAnimation(.easeInOut(duration: 0.3)) {
-              updateSortedVerbs()
-            }
-            Task { @MainActor in
-              if let firstVerb = sortedVerbs.first {
-                proxy.scrollTo(firstVerb.id, anchor: .top)
+            .onChange(of: listMode) {
+              Task { @MainActor in
+                if listMode.sortOrder != nil, let firstVerb = sortedVerbs.first {
+                  proxy.scrollTo(firstVerb.id, anchor: .top)
+                }
               }
             }
           }
@@ -147,23 +224,31 @@ struct VerbBrowseView: View {
         // A keyboard toolbar does not attach to the navigation bar's search field, so the row
         // takes the sort picker's place while the field is focused. Search ranks by frequency
         // whatever the sort order, so the picker has nothing to do then.
-        if searchIsFocused {
+        if searchIsEngaged {
           GermanLetterKeyRow { letter in
-            searchText.append(letter)
+            insertLetter(letter)
           }
           .padding(.vertical, Layout.defaultSpacing)
         } else {
-          Picker(L.VerbBrowse.sortOrder, selection: $sortOrder) {
-            ForEach(SortOrder.allCases, id: \.self) { order in
-              Text(order.displayName)
-                .tag(order)
+          Picker(L.VerbBrowse.sortOrder, selection: $listMode) {
+            ForEach(VerbListMode.allCases, id: \.self) { mode in
+              Text(mode.displayName)
+                .tag(mode)
             }
           }
           .pickerStyle(.segmented)
           .padding()
+          .accessibilityIdentifier("verb_list_mode_picker")
         }
       }
-      .sensoryFeedback(.selection, trigger: sortOrder)
+      .sensoryFeedback(.selection, trigger: listMode)
+      // Here rather than on the ScrollView, which is absent while My Verbs shows, so that
+      // leaving My Verbs for the other order still re-sorts.
+      .onChange(of: listMode) {
+        withAnimation(.easeInOut(duration: 0.3)) {
+          updateSortedVerbs()
+        }
+      }
       .onAppear {
         Current.analytics.signal(name: .viewVerbBrowseView)
         Current.reviewPrompter.promptableActionHappened()
@@ -199,6 +284,7 @@ struct VerbBrowseView: View {
         }
       }
       .onChange(of: searchIsFocused) {
+        searchFocusChanged()
         if searchIsFocused {
           VerbSearchArrowKeys.install { offset in
             moveKeyboardSelection(by: offset)
@@ -235,6 +321,110 @@ struct VerbBrowseView: View {
       }
     }
     .environment(\.verbPagePush, VerbPagePush { navigationPath.append($0) })
+  }
+
+  private func listHeading(_ text: String) -> some View {
+    Text(text)
+      .font(.caption.smallCaps())
+      .foregroundStyle(.secondary)
+      .frame(maxWidth: .infinity, alignment: .leading)
+      .padding(.horizontal)
+      .padding(.top, Layout.defaultSpacing)
+  }
+
+  /// The starred verbs, then the recent ones not starred. Search ignores this choice, as it
+  /// ignores the sort order. A swipe deletes a verb, star and opens alike, so it leaves the list;
+  /// a starred verb asks first, since its star was put there on purpose.
+  @ViewBuilder
+  private var myVerbsList: some View {
+    let starred = learnerVerbs.starredVerbs
+    let recent = learnerVerbs.recentUnstarredVerbs
+    if starred.isEmpty, recent.isEmpty {
+      ContentUnavailableView(L.MyVerbs.emptyTitle, systemImage: "star", description: Text(L.MyVerbs.emptyDescription))
+        .frame(maxHeight: .infinity)
+        .accessibilityIdentifier("my_verbs_empty")
+    } else {
+      List {
+        if !starred.isEmpty {
+          Section {
+            ForEach(starred) { verb in
+              myVerbRow(verb)
+                .swipeActions(edge: .trailing) {
+                  // Not .destructive: that role removes the row at once, before the learner answers.
+                  Button {
+                    verbToUnstar = verb
+                  } label: {
+                    Label(L.MyVerbs.delete, systemImage: "star.slash")
+                  }
+                  .tint(.customRed)
+                }
+            }
+          } header: {
+            myVerbsHeading(L.MyVerbs.starred)
+              .accessibilityIdentifier("my_verbs_starred_heading")
+          }
+        }
+        if !recent.isEmpty {
+          Section {
+            ForEach(recent) { verb in
+              myVerbRow(verb)
+                .swipeActions(edge: .trailing) {
+                  Button(role: .destructive) {
+                    withAnimation {
+                      learnerVerbs.remove(verb)
+                    }
+                  } label: {
+                    Label(L.MyVerbs.delete, systemImage: "trash")
+                  }
+                }
+            }
+          } header: {
+            HStack(alignment: .firstTextBaseline) {
+              myVerbsHeading(L.MyVerbs.recent)
+              Spacer()
+              Button(L.MyVerbs.clearRecent) {
+                withAnimation {
+                  learnerVerbs.clearRecents()
+                }
+              }
+              .font(.caption)
+              .buttonStyle(.borderless)
+              .accessibilityIdentifier("my_verbs_clear_recent")
+            }
+          }
+        }
+      }
+      .listStyle(.plain)
+      .accessibilityIdentifier("my_verbs_list")
+      .alert(
+        L.MyVerbs.unstarTitle(verbToUnstar?.infinitiv.inUserRegion ?? ""),
+        isPresented: Binding(get: { verbToUnstar != nil }, set: { if !$0 { verbToUnstar = nil } }),
+        presenting: verbToUnstar
+      ) { verb in
+        Button(L.MyVerbs.unstarConfirm, role: .destructive) {
+          withAnimation {
+            learnerVerbs.remove(verb)
+          }
+        }
+        Button(role: .cancel) {}
+      } message: { _ in
+        Text(L.MyVerbs.unstarMessage)
+      }
+    }
+  }
+
+  private func myVerbsHeading(_ text: String) -> some View {
+    Text(text)
+      .font(.caption.smallCaps())
+      .foregroundStyle(.secondary)
+      .accessibilityAddTraits(.isHeader)
+  }
+
+  private func myVerbRow(_ verb: Verb) -> some View {
+    VerbRowView(verb: verb) {
+      navigationPath.append(VerbDestination(verb: verb, source: .myVerbs))
+    }
+    .listRowInsets(EdgeInsets())
   }
 
   private func failedSearchHelp(guess: VerbSearchResults.Hit?) -> some View {
@@ -362,9 +552,9 @@ struct VerbBrowseView: View {
   }
 
   @ViewBuilder
-  private func gridCell(_ entry: VerbSearchResults.Entry, at index: Int) -> some View {
+  private func gridCell(_ entry: VerbSearchResults.Entry, at index: Int, browseSource: AnalyticsSource) -> some View {
     if case .hit(let hit, _) = entry {
-      VerbGridCell(verb: hit.verb, match: hit.conjugation, conjugationgroupLang: conjugationgroupLang) { openResult(hit, at: index) }
+      VerbGridCell(verb: hit.verb, match: hit.conjugation, conjugationgroupLang: conjugationgroupLang) { openResult(hit, at: index, browseSource: browseSource) }
         .background(gridSelectionBackground(index: index))
     }
   }
@@ -460,28 +650,28 @@ struct VerbBrowseView: View {
     }
     switch entries[index] {
     case .hit(let hit, _):
-      openResult(hit, at: index)
+      openResult(hit, at: index, browseSource: browseSource)
     case .separableVerbs:
       toggleSeparableVerbs()
     }
   }
 
-  private func openResult(_ hit: VerbSearchResults.Hit, at index: Int) {
+  private func openResult(_ hit: VerbSearchResults.Hit, at index: Int, browseSource: AnalyticsSource) {
     guard isSearching, let kind = hit.kind else {
-      navigationPath.append(VerbDestination(verb: hit.verb, source: .browse))
+      pushFromSearch(VerbDestination(verb: hit.verb, source: browseSource))
       return
     }
     if let search = searchTracker.finish() {
       signal(.opened(query: search.query, source: search.source, resultCount: searchResults.matchCount, kind: kind, position: index))
     }
-    navigationPath.append(VerbDestination(verb: hit.verb, source: .search, marks: hit.conjugation?.marks(on: hit.verb)))
+    pushFromSearch(VerbDestination(verb: hit.verb, source: .search, marks: hit.conjugation?.marks(on: hit.verb)))
   }
 
   private func openGuess(_ guess: VerbSearchResults.Hit) {
     if let search = searchTracker.finish() {
       signal(.openedGuess(query: search.query, source: search.source))
     }
-    navigationPath.append(VerbDestination(verb: guess.verb, source: .searchGuess, marks: guess.conjugation?.marks(on: guess.verb)))
+    pushFromSearch(VerbDestination(verb: guess.verb, source: .searchGuess, marks: guess.conjugation?.marks(on: guess.verb)))
   }
 
   private func signalEndedSearch(_ search: SearchTracker.Search) {
@@ -494,11 +684,13 @@ struct VerbBrowseView: View {
   }
 
   private func updateSortedVerbs() {
-    switch sortOrder {
+    switch listMode.sortOrder {
     case .alphabetical:
       sortedVerbs = Verb.verbsSortedAlphabetically
     case .frequency:
       sortedVerbs = Verb.verbsSortedByFrequency
+    case nil:
+      break
     }
   }
 }

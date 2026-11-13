@@ -15,6 +15,7 @@ struct VerbView: View {
   @State private var isOnScreen = false
   @State private var hasAppeared = false
   @State private var article: Info?
+  @State private var isTestingVerb = false
   private let redLettersTip = RedLettersTip()
   private let scrollToBottomTip = ScrollToBottomTip()
   private var settings: Settings { Current.settings }
@@ -231,6 +232,9 @@ struct VerbView: View {
     .sheet(item: $article) { info in
       ConjugationgroupArticleSheet(info: info)
     }
+    .sheet(isPresented: $isTestingVerb) {
+      VerbQuizSheet(scope: .verbPage(verb, readingIndex: readingIndex))
+    }
     .onDisappear {
       isOnScreen = false
       endVisit()
@@ -250,6 +254,28 @@ struct VerbView: View {
     .navigationTitle(verb.infinitiv.inUserRegion)
     .navigationBarTitleDisplayMode(.inline)
     .toolbar {
+      ToolbarItem(placement: .topBarTrailing) {
+        Button {
+          Current.analytics.signal(name: .tapTestVerb)
+          isTestingVerb = true
+        } label: {
+          Label(L.VerbView.testMe, systemImage: "pencil.and.list.clipboard")
+        }
+        .accessibilityIdentifier("verb_test_button")
+      }
+      ToolbarItem(placement: .topBarTrailing) {
+        let isStarred = Current.learnerVerbs.isStarred(verb)
+        Button {
+          let isNowStarred = Current.learnerVerbs.toggleStar(verb)
+          Current.analytics.signal(name: .tapStarVerb, parameters: [
+            ParameterKey.starred.rawValue: "\(isNowStarred)"
+          ])
+        } label: {
+          Label(isStarred ? L.VerbView.unstar : L.VerbView.star, systemImage: isStarred ? "star.fill" : "star")
+        }
+        .sensoryFeedback(.selection, trigger: isStarred)
+        .accessibilityIdentifier("verb_star_button")
+      }
       ToolbarItem(placement: .topBarTrailing) {
         Button {
           Current.analytics.signal(name: .tapShareVerb)
@@ -412,6 +438,9 @@ struct VerbView: View {
     }
     let newVisit = VerbVisit(source: source, start: .now, visibleSections: visibleSections)
     visit = newVisit
+    if source != .resume {
+      Current.learnerVerbs.recordOpen(verb)
+    }
     Current.analytics.signal(name: .viewVerbView, parameters: newVisit.viewParameters)
   }
 
@@ -643,6 +672,21 @@ struct ConjugationSectionView: View {
       .germanPronunciation()
     }
     .konjCardWithAccentBar()
+  }
+}
+
+/// "Test me on this verb": three questions about the reading on screen, in a sheet, so the
+/// learner closes it onto the same page. A quiz in the Quiz tab is a separate quiz and carries on.
+/// While a question waits, the sheet closes only through Quit, so every quiz started here ends
+/// with `quitQuiz` or `completeQuiz`.
+private struct VerbQuizSheet: View {
+  let scope: QuizScope
+  @State private var quiz = Quiz()
+
+  var body: some View {
+    QuizView(sheetScope: scope)
+      .environment(quiz)
+      .interactiveDismissDisabled(quiz.isInProgress)
   }
 }
 

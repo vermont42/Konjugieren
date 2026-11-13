@@ -886,6 +886,12 @@ focused and empty.
 - **Signal.** The share of verb pages reached from recents.
 - **Conjuguer and Conjugar.** A new store in each.
 
+**Built on `main` 2026-11-13** by [Phase 12](../plans/browse-and-verb-implementation.md#phase-12-recents-and-my-verbs) of the implementation plan. With the search
+field focused and empty, the verb list shows the 20 verbs last opened under Recent, newest first.
+Every arrival at a verb page counts, from any surface, and a page reappearing after another tab
+does not. The record lives in the App Group's defaults, where the widget can read it. A verb
+opened from the list sends `source` `recent`.
+
 #### D2. My Verbs
 
 Verdict: Yes.
@@ -899,6 +905,14 @@ filter in the verb list and a scope in the quiz.
 - **Signal.** Devices with a starred verb, and quizzes started on the list.
 - **Conjuguer and Conjugar.** The same design. Neither quiz stores anything per verb today.
 
+**Built on `main` 2026-11-13** by [Phase 12](../plans/browse-and-verb-implementation.md#phase-12-recents-and-my-verbs) (the star and the list) and
+[Phase 13](../plans/browse-and-verb-implementation.md#phase-13-a-quiz-over-chosen-verbs) (the quiz scope) of the implementation plan. A star in the verb page's
+navigation bar sends `tapStarVerb`. My Verbs is the third segment of the verb list's picker,
+beside Alphabetical and Frequency: the starred verbs, the most recently starred first, then the
+recent verbs not starred, with Clear for the recent ones. A left swipe deletes a verb from the
+list; a starred verb asks first. The Quiz tab offers All Verbs or My
+Verbs above Start; a My Verbs quiz asks 30 questions and posts no score.
+
 #### D3. "Test Me on This Verb"
 
 Verdict: Yes.
@@ -911,6 +925,13 @@ belongs to this track and the questions to the quiz track.
 - **Effort.** S for the entry point. The questions are counted in the quiz report.
 - **Signal.** Taps per verb view, and questions answered.
 - **Conjuguer and Conjugar.** Their quizzes draw from fixed lists and would need a scope first.
+
+**Built on `main` 2026-11-13** by [Phase 13](../plans/browse-and-verb-implementation.md#phase-13-a-quiz-over-chosen-verbs) of the implementation plan, as an entry point
+with the simplest questions: a button in the verb page's navigation bar opens a sheet with three
+questions on three different cells of the reading on screen, drawn from the quiz's own pool for
+the difficulty, with no participle. It posts no score, as Josh decided. The tap sends
+`tapTestVerb`, and the quiz's signals carry `source` `verbPage`. The questions remain the quiz
+track's to improve.
 
 #### D4. A Review Card on the Landing Screen
 

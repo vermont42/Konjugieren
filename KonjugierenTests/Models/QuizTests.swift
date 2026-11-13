@@ -514,4 +514,105 @@ struct QuizTests {
 
     quiz.quit()
   }
+
+  @Test func aMyVerbsQuizAsksOnlyAboutItsVerbs() {
+    let verbs = ["gehen", "sein", "machen"].map { Verb.verbs[$0]! }
+    let quiz = Quiz(timerInterval: 0.001)
+    quiz.start(scope: .myVerbs(verbs))
+
+    #expect(quiz.questions.count == Quiz.questionCount)
+    #expect(Set(quiz.questions.map(\.verb.infinitiv)).isSubset(of: ["gehen", "sein", "machen"]))
+    #expect(!quiz.scope.isRanked)
+
+    quiz.quit()
+  }
+
+  @Test func aVerbPageQuizAsksThreeDifferentQuestionsAboutTheReadingOnScreen() {
+    let hängen = Verb.verbs["hängen"]!
+    #expect(hängen.readings.count == 2)
+    let quiz = Quiz(timerInterval: 0.001)
+    quiz.start(scope: .verbPage(hängen, readingIndex: 1))
+
+    #expect(quiz.questionCount == QuizScope.verbPageQuestionCount)
+    #expect(quiz.questions.count == QuizScope.verbPageQuestionCount)
+    #expect(quiz.questions.allSatisfy { $0.verb.infinitiv == "hängen" && $0.readingIndex == 1 })
+    #expect(Set(quiz.questions.map(\.conjugationgroup)).count == QuizScope.verbPageQuestionCount)
+    #expect(quiz.progressText == "1 / 3")
+    #expect(!quiz.scope.isRanked)
+
+    quiz.quit()
+  }
+
+  @Test func aVerbPageQuizAsksNoParticiple() {
+    let quiz = Quiz(timerInterval: 0.001)
+    quiz.start(scope: .verbPage(Verb.verbs["gehen"]!, readingIndex: 0))
+
+    let participles = quiz.questions.filter { item in
+      switch item.conjugationgroup {
+      case .präsenspartizip, .perfektpartizip:
+        return true
+      default:
+        return false
+      }
+    }
+    #expect(participles.isEmpty)
+
+    quiz.quit()
+  }
+
+  @Test func aVerbPageQuizFinishesAfterThreeAnswers() {
+    let quiz = Quiz(timerInterval: 0.001)
+    quiz.start(scope: .verbPage(Verb.verbs["gehen"]!, readingIndex: 0))
+    for index in 0..<QuizScope.verbPageQuestionCount {
+      quiz.submitAnswer(quiz.questions[index].correctAnswer)
+    }
+
+    #expect(quiz.isInProgress == false)
+    #expect(quiz.shouldShowResults == true)
+    #expect(quiz.correctCount == 3)
+  }
+
+  @Test func aQuizOverNoVerbsDoesNotStart() {
+    let quiz = Quiz(timerInterval: 0.001)
+    quiz.start(scope: .myVerbs([]))
+
+    #expect(quiz.isInProgress == false)
+    #expect(quiz.questions.isEmpty)
+  }
+
+  @Test func onlyTheFullQuizOverEveryVerbIsRanked() {
+    #expect(QuizScope.allVerbs.isRanked)
+    #expect(!QuizScope.myVerbs(Array(Verb.verbs.values)).isRanked)
+    #expect(!QuizScope.verbPage(Verb.verbs["gehen"]!, readingIndex: 0).isRanked)
+  }
+
+  @Test(arguments: ["tab", "myVerbs", "verbPage"])
+  func quizSignalsCarryTheSource(sourceName: String) {
+    let gehen = Verb.verbs["gehen"]!
+    let source = AnalyticsSource(rawValue: sourceName)!
+    let scope: QuizScope
+    switch source {
+    case .myVerbs:
+      scope = .myVerbs([gehen])
+    case .verbPage:
+      scope = .verbPage(gehen, readingIndex: 0)
+    default:
+      scope = .allVerbs
+    }
+    let spy = Current.analytics as! AnalyticsSpy
+    let initialCount = spy.signalNames.count
+    let quiz = Quiz(timerInterval: 0.001)
+    quiz.start(scope: scope)
+    quiz.quit()
+    quiz.start(scope: scope)
+    for index in 0..<quiz.questionCount {
+      quiz.submitAnswer(quiz.questions[index].correctAnswer)
+    }
+
+    let signals = zip(spy.signalNames, spy.signalParameters).dropFirst(initialCount)
+    for name in [AnalyticsName.startQuiz, .quitQuiz, .completeQuiz] {
+      let parameters = signals.first { $0.0 == name }?.1
+      #expect(parameters?[ParameterKey.source.rawValue] == source.rawValue, "\(name)")
+    }
+  }
 }

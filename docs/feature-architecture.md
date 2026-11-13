@@ -10,7 +10,7 @@ The quiz tests users' knowledge of German verb conjugations with timed, scored g
 
 | File | Purpose |
 |------|---------|
-| `Quiz.swift` | `@Observable` class managing quiz state and logic |
+| `Quiz.swift` | `@Observable` class managing quiz state and logic; `QuizScope`, what a quiz asks about |
 | `QuizView.swift` | SwiftUI view for active quiz gameplay |
 | `ResultsView.swift` | Modal sheet showing final results |
 | `QuizDifficulty.swift` | Difficulty setting enum |
@@ -20,7 +20,7 @@ The quiz tests users' knowledge of German verb conjugations with timed, scored g
 
 ### Quiz Flow
 
-1. User taps "Start" → `quiz.start()` generates 30 questions and starts a Live Activity
+1. User taps "Start" → `quiz.start(scope:)` generates the scope's questions and, for a 30-question quiz, starts a Live Activity
 2. Timer begins, questions presented one at a time; Live Activity updates on each answer
 3. User types conjugation, presses return → `quiz.submitAnswer()`
 4. Wrong answers are recorded to `QuizErrorHistory` and offer an `ErrorExplainerView` for AI explanation
@@ -38,10 +38,39 @@ The quiz tests users' knowledge of German verb conjugations with timed, scored g
 
 The lists are `Quiz.randomNonPartizipConjugationgroup()`. Until 2026-11-10 this section gave three and four, which `plans/pedagogy.md` found against the code.
 
+### Scopes
+
+A `QuizScope` names the verbs a quiz asks about (nil for every verb), the reading to ask about,
+the question count, and the `source` its analytics signals carry. Built 2026-11-13 in Phase 13 of
+[`plans/browse-and-verb-implementation.md`](../plans/browse-and-verb-implementation.md) as the
+minimal piece the quiz track is to extend; a collection (Phase 16) is one more constructor.
+
+| Scope | Verbs | Questions | `source` | Ranked |
+|---|---|---|---|---|
+| `.allVerbs` | Every verb | 30 | `tab` | Yes |
+| `.myVerbs(_:)` | My Verbs (starred, then the 20 last opened), with replacement | 30 | `myVerbs` | No |
+| `.verbPage(_:readingIndex:)` | The verb on screen, in the reading on screen | 3 | `verbPage` | No |
+
+A quiz of 30 questions keeps the mix above. A shorter one asks for distinct cells drawn from the
+non-participle pool of the difficulty, since the full quiz's proportions would make three
+questions all participles. Only a ranked quiz posts to Game Center and shows the leaderboard
+button: Josh decided on 2026-11-13 that neither a scoped quiz nor a three-question quiz should
+post. Only a 30-question quiz starts a Live Activity and counts toward `ChangeDifficultyTip`.
+
+The Quiz tab's start screen shows a big yellow symbol for the chosen scope (books for All
+Verbs, a star for My Verbs), its name and a line about what it asks, the All Verbs / My Verbs
+picker, Start, three tiles (questions, difficulty, and points per right answer, which Ridiculous
+doubles), and, for My Verbs, its verbs as chips, up to twelve. In the regular size class it
+scales the whole composition up. Start is disabled while My Verbs is empty. "Test me on this verb" presents `QuizView(sheetScope:)` with its own `Quiz`, so a quiz in
+the Quiz tab carries on beneath it. The sheet starts its quiz as it appears, closes on Quit or
+when the results are dismissed, and cannot be swiped away while a question waits, so every quiz
+it starts ends in `quitQuiz` or `completeQuiz`.
+
 ### Scoring
 
 - **10 points** per correct answer
 - **Ridiculous difficulty:** 2x multiplier on final score
+- **Leaderboard:** only a ranked quiz (every verb, 30 questions) submits its score
 - `quiz.finalScore` returns the multiplied score
 
 ### Key Properties
@@ -49,6 +78,8 @@ The lists are `Quiz.randomNonPartizipConjugationgroup()`. Until 2026-11-10 this 
 | Property | Type | Description |
 |----------|------|-------------|
 | `isInProgress` | `Bool` | Quiz currently active |
+| `scope` | `QuizScope` | What the quiz asks about |
+| `questionCount` | `Int` | The scope's question count: 30, or 3 on a verb page (`Quiz.questionCount` is the full quiz's 30) |
 | `currentIndex` | `Int` | Current question (0-29) |
 | `score` | `Int` | Raw score (before multiplier) |
 | `finalScore` | `Int` | Score with difficulty multiplier |
@@ -209,7 +240,7 @@ konjugieren://<route>[/<target>][?<item>=<value>&…]
 | `search` | None | `q`, the text; `source` | The verb list with its search field. With text, the results show with the keyboard down; with none (or `q` empty), the field is cleared and focused for typing | Phase 11 |
 | `info` | A `stableKey`, or a legacy position | None | The article | Before 2026; keys Phase 11 |
 | `family` | A `BrowseableFamily` raw value | None | The family's page | Before 2026 |
-| `quiz` | Any (today `start`) | Reserved: `source` (Phase 13), `list` (Phase 16) | The Quiz tab | Before 2026 |
+| `quiz` | Any (today `start`) | Reserved: `list` (Phase 16) | The Quiz tab | Before 2026 |
 | `list` | A collection's key | `source` | Reserved for Phase 16's collections; not handled yet | Phase 16 |
 
 **For Phase 16.** A collection is `list/<key>`, with keys such as `top100`, `modals`, `sein`, and
@@ -356,6 +387,43 @@ marked section, and tints the marked rows, which VoiceOver reads as matching the
 **The guess.** When nothing matches, `VerbSearch.guess` considers folded conjugations of about the
 query's length as well as infinitives, and an infinitive wins a tie. ginng guesses gehen through
 ging, and the guess's row names ging's cells.
+
+## Learner's Verbs
+
+One on-device record of the learner's own verbs: each verb opened, with its first and last dates
+and a count, and each verb starred, with the date. Built 2026-11-13 in Phase 12 of
+[`plans/browse-and-verb-implementation.md`](../plans/browse-and-verb-implementation.md), as the
+shared piece the ideas document's coordination table assigns to the browse track. Recents, My
+Verbs, and the quiz's My Verbs scope read it today; the verb of the day (Phase 14), the review
+card (Phase 15), collections (Phase 16), and the quiz track will.
+
+| Piece | Role |
+|---|---|
+| `Shared/LearnerVerbs.swift` | The record: a Codable value keyed by infinitive, with `recent()` (the 20 last opened), `starred`, `myVerbs` (starred, then recent not starred), `remove(_:)`, which forgets a verb's star and opens alike, and `clearRecents()`, which keeps stars. Compiled into the widget too |
+| `LearnerVerbStore.swift` | `Current.learnerVerbs`, an `@Observable` store that saves each change and maps infinitives to `Verb`s, skipping any that left the corpus |
+
+**Where it lives.** JSON under the key `learnerVerbs` in the App Group's defaults
+(`WidgetConstants.sharedDefaults`), written through a `GetterSetterReal` given those defaults, so
+the widget extension, which has no corpus, can read the infinitives. Under unit tests it uses a
+`GetterSetterFake`. iCloud sync was rejected with the ideas document's smaller ideas.
+
+**What counts as an open.** Every `viewVerbView` whose source is not `resume`: a verb page
+arriving by any route, but not the same page reappearing after another tab or the background.
+
+**Adding a field.** It must be optional. Synthesized decoding ignores a default value and requires
+the key, so a required field would fail to decode every older record, and the learner's verbs
+would vanish without an error. `LearnerVerbsTests` pins the decoding of a minimal entry. Phase 15's
+due date is such a field.
+
+**Where it shows.** The verb page's star. The verb list's picker, whose third segment, My Verbs,
+lists the starred verbs, then the recent ones not starred, with Clear on the recent heading.
+It is a `List`, unlike the rest of the verb list, because only a `List`'s rows can be swiped: a
+left swipe deletes a recent verb at once, and a starred verb after an alert asking to remove its
+star. Deleting forgets the verb entirely, so an opened, starred verb leaves My Verbs rather than
+dropping into Recent. On iPad it is a list rather than the grid the other modes use. Search
+ignores the picker, as it ignores the sort order. And the verb list with its search field
+focused and empty, which lists the recent verbs under Recent, reachable with the arrow keys and
+Return on iPad and Mac. Nothing is shown when there is no history.
 
 ## Game System
 
@@ -681,6 +749,9 @@ Counts and durations go out in bands (`AnalyticsBand`), never as exact numbers.
 | `finishSearch` | `source` (where the search began; below), `outcome` (`opened`, `abandoned`, `noResult`), `queryLength` (`1-2`, `3-5`, `6-9`, `10+`), `resultCount` (`0`, `1`, `2-10`, `11+`), `matchKind`, `resultPosition` (`1`, `2-5`, `6+`, `none`) | Once per search: when a result or the guess is opened, the field is cleared, or the app goes to the background with text in the field |
 | `tapConjugationgroupArticle` | None | When the ⓘ button beside a verb page's conjugationgroup heading opens that conjugationgroup's article. The article itself also sends `viewInfoView` |
 | `tapShareVerb` | None | When the share button in a verb page's navigation bar is tapped, whether or not the learner then shares. Copying a conjugation with a long press sends nothing |
+| `tapStarVerb` | `starred` (`true`, `false`: the state after the tap) | When the star in a verb page's navigation bar is tapped (Phase 12) |
+| `tapTestVerb` | None | When "Test me on this verb" in a verb page's navigation bar is tapped (Phase 13). The quiz it opens sends `startQuiz` with `source` `verbPage` |
+| `startQuiz`, `quitQuiz`, `completeQuiz` | `source` (`tab`, `myVerbs`, `verbPage`), added to their existing parameters | When a quiz starts, is quit, or is completed (`source` since Phase 13). Without it, three-question quizzes would inflate the completion rate of the 30-question quiz |
 
 `VerbVisit` models one stretch of a verb page on screen, and `SearchTracker` and `SearchReport`
 model one search. A section counts as reached when a third of its block's first card is on screen
@@ -709,8 +780,9 @@ follow it. Opening or closing that row sends nothing.
 
 ### The `source` vocabulary
 
-`AnalyticsSource` is one vocabulary for `viewVerbView`, `finishSearch` (since Phase 11), and,
-when the quiz track adds it, `startQuiz`.
+`AnalyticsSource` is one vocabulary for `viewVerbView`, `finishSearch` (since Phase 11), and the
+three quiz signals (since Phase 13). A quiz's `source` is where it was begun, or for the Quiz tab's
+My Verbs scope, the list it was begun on.
 
 | Value | Sent today? | Meaning |
 |---|---|---|
@@ -730,11 +802,12 @@ when the quiz track adds it, `startQuiz`.
 | `spotlight` | Yes | A Spotlight result |
 | `widget` | Yes | Any home-screen, lock-screen, or quiz widget |
 | `sharedLink` | Not planned | A link inside shared text. Phase 10's share text carries only the App Store link, as Josh chose on 2026-11-12, so nothing sends it unless a later change adds a `konjugieren://` or universal link |
-| `myVerbs`, `recent` | Phase 12 | My Verbs, and the recent lookups |
+| `myVerbs` | Yes | A verb in the verb list's My Verbs (Phase 12); for the quiz signals, a quiz over My Verbs (Phase 13) |
+| `recent` | Yes | A recent verb, listed while the search field is focused and empty (Phase 12) |
 | `list` | Phase 16 | A collection |
 | `reviewCard` | Phase 15 | The review card |
-| `tab` | Yes, for `finishSearch` | A search begun in the Verbs tab (Phase 11); for `startQuiz`, the Quiz tab (Phase 13) |
-| `verbPage` | Phase 13 (`startQuiz`) | "Test me on this verb" |
+| `tab` | Yes | A search begun in the Verbs tab (Phase 11); for the quiz signals, a quiz over every verb from the Quiz tab (Phase 13) |
+| `verbPage` | Yes | The quiz signals only: "Test me on this verb" (Phase 13) |
 
 A phase that adds a way to reach a verb page passes its value in `VerbDestination`, the value the
 `Verbs` and `Families` navigation stacks push, or in the deeplink's `source` query item. It also

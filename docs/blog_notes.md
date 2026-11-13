@@ -9815,3 +9815,116 @@ empty every index, not just the one it was called on, and the code ran that clea
 indexing. Every existing install would have opened the update with no Spotlight entries at all.
 The cleanup now runs first. It showed up only because a fresh install, unlike the simulator that
 had been running all session, took the one-time path.
+
+## My Verbs, Recents, and a Quiz on One Verb (2026-11-13)
+
+Phases 12 and 13 of the browse plan, done in one session at Josh's request, gave Konjugieren its
+first memory of the learner. Until now the app forgot every verb the moment its page closed. It
+now keeps one record of the verbs opened, with dates and a count, and of the verbs starred, and
+three features read it: the recent verbs, shown when the search field is focused and empty; My
+Verbs, a third choice in the verb list's picker beside Alphabetical and Frequency; and a My Verbs
+scope on the Quiz tab.
+
+Where the record lives was decided by a later phase. The verb of the day (Phase 14) will draw
+from My Verbs, and the widget extension compiles no conjugator and no corpus; it sees only the
+App Group's shared container. So the record is a plain Codable value in `Shared/`, keyed by
+infinitive, stored as JSON in the shared defaults, and the app wraps it in an observable store
+that turns infinitives into verbs.
+
+A small Swift fact shaped the record's comments. A Codable struct whose property has a default
+value still requires that key when decoding; the synthesized initializer does not consult the
+default. Phase 15 will add a due date per verb. Had it been declared `var due = Date.distantPast`,
+every record written before it would have failed to decode, `try?` would have turned the failure
+into an empty record, and every learner's stars would have quietly disappeared. The rule is now
+written where the next session will see it, and a test decodes an entry that lacks every optional
+field.
+
+The first build failed in a place unrelated to any of this: the type checker gave up on a
+`compactMap`, `sorted`, `prefix`, `map` chain whose closures compared tuples. Naming the tuple's
+fields and pulling the chain into one helper, shared by the starred list and the recent one,
+fixed it.
+
+"Test me on this verb" (Phase 13) needed the quiz to take a list of verbs, which it could not.
+The change was kept deliberately small, because the pedagogy report's later tiers will reshape
+the quiz: a `QuizScope` carries the verbs, the question count, and the analytics source, and says
+whether the quiz is ranked. Josh answered the phase's one question before the session began: no
+scoped or three-question quiz posts to the Game Center leaderboard. A short quiz could not keep
+the full quiz's proportions, one Präsenspartizip and two Perfektpartizip per thirty questions,
+or three questions would all have been participles, so it asks about three different cells
+instead.
+
+The three questions open in a sheet with their own quiz object, so a 30-question quiz left
+running in the Quiz tab survives a detour to a verb page. Every quiz signal now carries a
+`source`. Without it, a stream of three-question completions would have looked like the main
+quiz's completion rate improving.
+
+Looking at the app caught one thing tests could not. The Quiz tab's own symbol, `pencil.circle`,
+shrunk into the navigation bar beside the star and the share button, read as a "no entry" sign.
+The button now shows a clipboard with a pencil. And while drafting the privacy-policy lines, one
+sentence of the deployed policy turned out to need changing too. It says the app does not
+"record" the verbs you look up, and now it does, on the device. The staged text changes the verb
+to "send" and adds a sentence saying the list never leaves the device.
+
+## Swipe to Delete, and a Quiz Screen Worth Looking At (2026-11-13)
+
+Josh tried Phases 12 and 13 and asked for two changes. First, every verb in My Verbs should be
+deletable with a left swipe, and deleting a starred verb should ask first. Second, the Quiz
+tab's start screen, now just a picker and a Start button floating in a black screen, had too much
+empty space, and he suggested big yellow SF Symbols.
+
+Swipe to delete forced a structural change. SwiftUI's swipe actions work only on the rows of a
+`List`, and the verb list is a `ScrollView` of lazy stacks, built that way for its iPad grid and
+its keyboard navigation. So My Verbs became a `List` of its own, shown in place of the scroll
+view. That broke something quietly: the re-sort for Alphabetical and Frequency was attached to
+the scroll view, which no longer existed while My Verbs showed, so going from My Verbs straight
+to Alphabetical would have kept the old order. The re-sort moved to the view around both.
+
+What a deletion means took one decision. Unstarring an opened verb leaves its history, so it
+would drop from Starred into Recent, and to the learner the delete would seem to have failed. A
+deletion now forgets the verb altogether. For a starred verb the confirming button cannot use
+SwiftUI's destructive role: that role animates the row away at once, before the learner has
+answered the alert.
+
+The quiz screen now opens with a large yellow symbol for the scope, a shelf of books for every
+verb and a star that bounces in for My Verbs, then the scope's name and a line about what it
+asks. Below Start, three tiles give the number of questions, the difficulty, and the points per
+right answer, which shows that Ridiculous doubles them. A My Verbs quiz also shows its verbs as
+chips, so the learner sees the list before starting. The first iPad screenshot showed the iPhone
+composition stranded in the middle of the screen, which was the original complaint again, so on
+iPad everything is scaled up, including Start, which takes a scale effect because its button
+style fixes its own font.
+
+## The Tap That Ended the Search (2026-11-13)
+
+Josh found that on iPad, tapping a recent verb under the search field showed the whole verb list
+instead of the verb's page. On iPhone it worked. The fix took several wrong theories, and the
+way they failed is the useful part.
+
+The first theory held up as far as it went. On iPad, a tap outside an empty search field ends its
+focus at touch-down, before the tap completes, and the recents were shown only while the field
+had focus, so they were replaced by the full list under the finger. Making them linger for a
+moment after focus is lost did not fix the bug. A second theory blamed the clear backdrop that
+UIKit's search controller lays over the content; turning it off changed nothing. A third moved
+the iPad recents into SwiftUI's search suggestions, the surface meant for exactly this, and their
+taps were lost the same way.
+
+What settled it was logging rather than screenshots. Temporary `print`s, read through `simctl
+launch --console-pty`, showed that the lingering recents did receive the tap and that the
+code pushed the verb's page. UIKit's own log said what happened next: the push arrived "while an
+existing transition or presentation is occurring; the navigation stack will not be updated." The
+same tap that opened the verb had begun the search's dismissal, and UIKit dropped the push. A
+fixed delay of 0.45 seconds was still too short, because the dismissal ran for nearly a second,
+so the push now waits until no view controller is presenting or dismissing. On iPhone nothing is
+animating, so it goes at once.
+
+The ä ö ü ß row had the same disease from the day it was built in Phase 1, which was tested only
+on iPhone: on iPad its keys vanished under the finger too. An umlaut typed as the first letter of
+üben or öffnen now waits for the dismissal, which also clears the field, and then reopens the
+search with the letter in it.
+
+Two smaller lessons. Simulator automation lied twice by being imprecise: taps aimed at where a
+row had been before the layout settled hit empty space and looked like the bug. And a Python
+splice meant to replace one function deleted the view's whole `body`, because its end anchor was
+the next `private func`, and `private var` declarations lay in between. The file was rebuilt from
+git's copy by replaying the session's edits in order, which worked because every edit had been an
+exact, recorded replacement.

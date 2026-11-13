@@ -13,6 +13,7 @@ enum ParameterKey: String {
   case resultCount
   case resultPosition
   case source
+  case starred
 }
 
 enum AnalyticsName: String {
@@ -32,6 +33,8 @@ enum AnalyticsName: String {
   case tapSendTutorMessage
   case tapShareVerb
   case tapShowOnboarding
+  case tapStarVerb
+  case tapTestVerb
   case tapViewLeaderboard
   case viewFamilyBrowseView
   case viewFamilyDetailView

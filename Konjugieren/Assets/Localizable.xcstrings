@@ -148,6 +148,54 @@
         }
       }
     },
+    "VerbView.star" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zu „Meine Verben“ hinzufügen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add to My Verbs"
+          }
+        }
+      }
+    },
+    "VerbView.testMe" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieses Verb abfragen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Test Me on This Verb"
+          }
+        }
+      }
+    },
+    "VerbView.unstar" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aus „Meine Verben“ entfernen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove from My Verbs"
+          }
+        }
+      }
+    },
     "— %@" : {
 
     },
@@ -3462,6 +3510,166 @@
         }
       }
     },
+    "MyVerbs.clearRecent" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Löschen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Clear"
+          }
+        }
+      }
+    },
+    "MyVerbs.delete" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Löschen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete"
+          }
+        }
+      }
+    },
+    "MyVerbs.emptyDescription" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hier erscheinen die Verben, die du auf ihrer Seite mit einem Stern markierst, und die zuletzt geöffneten Verben."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verbs you star on their pages appear here, and so do the verbs you opened last."
+          }
+        }
+      }
+    },
+    "MyVerbs.emptyTitle" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Noch keine Verben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No Verbs Yet"
+          }
+        }
+      }
+    },
+    "MyVerbs.recent" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zuletzt geöffnet"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Recent"
+          }
+        }
+      }
+    },
+    "MyVerbs.starred" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mit Stern"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starred"
+          }
+        }
+      }
+    },
+    "MyVerbs.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meine Verben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "My Verbs"
+          }
+        }
+      }
+    },
+    "MyVerbs.unstarConfirm" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stern entfernen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove Star"
+          }
+        }
+      }
+    },
+    "MyVerbs.unstarMessage" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das Verb verschwindet aus „Meine Verben“."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The verb will leave My Verbs."
+          }
+        }
+      }
+    },
+    "MyVerbs.unstarTitle %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Den Stern von „%@“ entfernen?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Remove the star from “%@”?"
+          }
+        }
+      }
+    },
     "Navigation.dismiss" : {
       "localizations" : {
         "de" : {
@@ -5115,6 +5323,22 @@
         }
       }
     },
+    "Quiz.difficultyLabel" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Schwierigkeit"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Difficulty"
+          }
+        }
+      }
+    },
     "Quiz.elapsed" : {
       "localizations" : {
         "de" : {
@@ -5143,6 +5367,94 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Last Answer:"
+          }
+        }
+      }
+    },
+    "Quiz.myVerbsEmpty" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Markiere ein Verb auf seiner Seite mit einem Stern oder öffne ein paar Verben, dann fragt das Quiz sie ab."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Star a verb on its page, or open a few verbs, and the quiz will ask about them."
+          }
+        }
+      }
+    },
+    "Quiz.moreVerbs.%lld" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+%lld weitere"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "+%lld more"
+          }
+        }
+      }
+    },
+    "Quiz.myVerbsCount.%lld" : {
+      "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Fragen zu 1 Verb aus „Meine Verben“"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Fragen zu %lld Verben aus „Meine Verben“"
+                }
+              }
+            }
+          }
+        },
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Questions about 1 verb in My Verbs"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Questions about %lld verbs in My Verbs"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "Quiz.pointsPerAnswer" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Punkte pro Antwort"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Points per Answer"
           }
         }
       }
@@ -5179,6 +5491,22 @@
         }
       }
     },
+    "Quiz.questionsLabel" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fragen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Questions"
+          }
+        }
+      }
+    },
     "Quiz.quit" : {
       "localizations" : {
         "de" : {
@@ -5211,6 +5539,22 @@
         }
       }
     },
+    "Quiz.scope" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abgefragte Verben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verbs to Quiz"
+          }
+        }
+      }
+    },
     "Quiz.score" : {
       "localizations" : {
         "de" : {
@@ -5239,6 +5583,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Start"
+          }
+        }
+      }
+    },
+    "Quiz.allVerbs" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Verben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "All Verbs"
+          }
+        }
+      }
+    },
+    "Quiz.allVerbsDescription" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dreißig Fragen auf Zeit, jede zu einem zufällig gewählten Verb."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thirty timed questions, each on a verb drawn at random."
           }
         }
       }

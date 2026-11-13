@@ -25,8 +25,8 @@ that Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until
 | 9 | Done | 2026-11-12 | `9e7ce96` | B4, A9 |
 | 10 | Done | 2026-11-12 | `ac6650a` | B6 |
 | 11 | Done | 2026-11-12 | `a0f1ad1` | C1, C2 |
-| 12 | Not started | | | D1, D2 |
-| 13 | Not started | | | D2's quiz scope, D3 |
+| 12 | Awaiting Josh | 2026-11-13 | | D1, D2 |
+| 13 | Awaiting Josh | 2026-11-13 | | D2's quiz scope, D3 |
 | 14 | Not started | | | D5 |
 | 15 | Not started | | | D4 |
 | 16 | Not started | | | D6 |
@@ -846,6 +846,74 @@ deeplinks address articles before choosing where the new one goes in the list.
 
 **How it differed:**
 
+- **Built with Phase 13 in one session**, at Josh's request. No question in this phase needed
+  him, so its layout choices below are for him to judge after trying them.
+- **The record** is `LearnerVerbs` in `Shared/`, a Codable value keyed by infinitive: first and
+  last opened, a count, and the date starred. The app's `LearnerVerbStore` (`Current.learnerVerbs`)
+  saves each change as JSON in the App Group's defaults, through a `GetterSetterReal` given those
+  defaults, so the widget can decode it without the corpus. **For Phases 14 and 15:** the widget
+  reads `WidgetConstants.sharedDefaults` at `LearnerVerbs.storageKey` with `LearnerVerbs(json:)`,
+  and any field added, such as the due date, must be optional, because synthesized decoding
+  requires every non-optional key and an older record would otherwise decode as nothing. A test
+  pins this. No cap on entries: the corpus bounds them at 3,572.
+- **An open** is a verb page's arrival by any route, recorded where `viewVerbView` is sent with a
+  source other than `resume`. A page that reappears after a tab switch is not a new open.
+- **"The list" is the filter.** The ideas document says the list "is a filter in the verb list
+  and a scope in the quiz", so there is no separate My Verbs screen. The verb list's picker gained
+  a third segment, My Verbs, beside Alphabetical and Frequency (`VerbListMode`). It shows
+  "Starred", the most recently starred first, then "Recent", the recent verbs not starred, and an
+  empty state that says how to fill it. Search ignores the picker, as it ignores the sort order,
+  so typing searches every verb. **Josh should judge the third segment** against the alternative,
+  a star button in the navigation bar that toggles the filter.
+- **Recents** appear under "Recent" when the search field is focused and empty and there is any
+  history, and the full list otherwise. They are rows like any other, so the arrow keys and Return
+  reach them on iPad and Mac.
+- **Added beyond the phase: Clear.** The Recent heading in My Verbs has a Clear button that
+  forgets every open and keeps the stars. A history kept on the device with no way to empty it
+  seemed a gap. No signal is sent.
+- **Swipe to delete (Josh, 2026-11-13, after trying it).** Every verb in My Verbs can be deleted
+  with a left swipe; a starred one first asks, in an alert, whether to remove its star. Deleting
+  forgets the verb, star and opens alike (`LearnerVerbs.remove`), because unstarring alone would
+  move an opened verb from Starred to Recent and the delete would seem not to have worked. Swipe
+  actions exist only on a `List`'s rows, so My Verbs became a `List` of its own beside the verb
+  list's `ScrollView`, and on iPad a full-width list instead of the grid. The starred row's
+  button is not `.destructive`, since that role removes the row before the learner answers. The
+  re-sort on leaving My Verbs moved from the `ScrollView`, which is absent while My Verbs shows,
+  to the view around it. Tried on the iPhone 17 and the iPad Pro 11-inch (M5) simulators: a recent
+  verb deleted, a starred one's Cancel keeping it, and Remove Star removing it entirely.
+- **An iPad bug Josh found (2026-11-13): tapping a recent verb showed the verb list, not the
+  page.** Two causes, found with real clicks in the simulator and logging. First, on iPad a tap
+  outside an empty search field ends its focus at touch-down, so the recents (and the ä ö ü ß
+  row, a Phase 1 bug never tried on iPad) vanished under the finger before the tap completed.
+  They now follow `searchIsEngaged`, which lets go of the focus 0.7 seconds later. Second, the
+  tap's push then arrived while iPadOS was still animating the search away, and UIKit dropped it
+  ("the navigation stack will not be updated"). `ViewControllerTransitions.waitUntilIdle()` waits
+  until no view controller is presenting or dismissing; on iPhone, or for a typed search, which
+  that tap does not end, it returns at once. A letter key in an empty field likewise waits for
+  the search to be gone, since the search clears its text as it leaves, then sets the letter and
+  refocuses, as a search request from outside the app does. Two theories were tried and dropped:
+  the search controller's `obscuresBackgroundDuringPresentation` (turning it off changed
+  nothing), and showing iPad recents as `.searchSuggestions` (their taps were lost the same way).
+  The order of events came from temporary `print`s read through `simctl launch --console-pty`.
+  Tried on the iPad Pro 11-inch (M5) with real clicks and on the iPhone 17 with AXe: a recent
+  verb opens its page, and ü typed into an empty field stays there.
+- **The star** is a button in the navigation bar, between Test Me (Phase 13) and Share, so the
+  top of the page is unchanged, as Josh wanted in Phase 9. It reads "Add to My Verbs" or "Remove
+  from My Verbs" to VoiceOver and gives a selection haptic. `tapStarVerb` carries `starred`
+  (`true` or `false`, the state after the tap), because the ideas document's signal, devices with
+  a starred verb, cannot be read from taps that might be unstarring.
+- **Analytics.** The `recent` and `myVerbs` sources are now sent. Privacy lines are staged in
+  `docs/privacy-policy-pending.md`, including a new paragraph saying the list stays on the device
+  and a change of "does not record … the verbs you look up" to "does not send", which the local
+  list would otherwise make untrue.
+- **How it was tested.** 19 new `@Test` functions in `LearnerVerbsTests`, three of them for
+  deletion. In the iPhone 17
+  simulator: My Verbs empty; three verbs opened by deeplink and one starred; after a relaunch, My
+  Verbs listing aufstehen under Starred and sein, gehen under Recent; the focused, empty field
+  listing all three under Recent; and a recent row opening gehen's page. AXe cannot see the
+  navigation bar's buttons on iOS 26, so they were tapped by position. Not tried: the iPad grid,
+  VoiceOver, a German-language device, Clear, and the widget reading the record.
+
 ## Phase 13: A Quiz over Chosen Verbs
 
 **Ideas:** D2's quiz scope, D3. **Depends on:** Phase 12.
@@ -861,6 +929,52 @@ leaderboard. Keep the change small: Tiers 2 to 6 of the pedagogy report will res
 this phase should give them something to build on, not compete with.
 
 **How it differed:**
+
+- **Josh's answer (2026-11-13): no.** Neither a scoped quiz nor a three-question quiz posts to the
+  leaderboard, and their results show no leaderboard button. `QuizScope.isRanked` (every verb,
+  30 questions) decides both.
+- **`QuizScope`** carries the verbs (nil for every verb), the reading to ask about, the question
+  count, and the analytics source. `Quiz.start(scope:)` defaults to `.allVerbs`, so the Quiz tab's
+  old path is unchanged. Phase 16's collections should add a constructor. `Quiz.questionCount`
+  stays the full quiz's 30, and each quiz has its own `questionCount`, which the progress text,
+  the dots, the results, and VoiceOver now read.
+- **The questions.** A 30-question quiz keeps the existing mix, with verbs drawn from the scope
+  with replacement. A shorter one asks for distinct cells from the difficulty's non-participle
+  pool, because the full proportions would make three questions all participles; a Perfekt among
+  them tests the participle anyway. The three questions ask about the reading on screen, so
+  hängen's page tests the reading the learner is reading.
+- **Test Me opens a sheet**, with its own `Quiz`, rather than switching to the Quiz tab, so the
+  learner closes it onto the same page and a quiz in progress in the tab is not disturbed. The
+  sheet starts its quiz as it appears, focuses the answer field, closes on Quit or when the
+  results are dismissed, and cannot be swiped away mid-quiz, so every quiz it starts sends
+  `quitQuiz` or `completeQuiz`. It starts no Live Activity, and a short quiz does not count toward
+  `ChangeDifficultyTip`. The button is the first in the navigation bar, a clipboard symbol
+  (`pencil.and.list.clipboard`); `pencil.circle`, the Quiz tab's symbol, looked like a "no entry"
+  sign at that size. **Josh should judge** whether an unlabeled symbol is discoverable enough.
+- **The Quiz tab** shows an All Verbs / My Verbs picker above Start. With My Verbs chosen, a note
+  says how many verbs the quiz will ask about, or how to add some, and Start is disabled while the
+  list is empty. The choice is not stored.
+- **The start screen, filled (Josh, 2026-11-13).** Josh found too much empty space around the
+  picker and Start, and suggested big yellow SF Symbols. Above the picker: a 96-point symbol for
+  the scope (`books.vertical.fill`, or a star that bounces in for My Verbs), the scope's name in
+  serif, and a line saying what the quiz asks. Below Start: three tiles with yellow symbols for
+  30 questions, the difficulty, and the points per right answer (10, or 20 on Ridiculous, which
+  doubles the score), and for My Verbs, the verbs as centered chips, up to twelve and "+N more"
+  (`FlowLayout` gained `centersRows`). On iPad the same composition is scaled up: a 180-point
+  symbol, larger type and tiles, and Start enlarged by a scale, since `FunButton` fixes its own
+  font. Tried on the iPhone 17 (dark) and the iPad Pro 11-inch (M5) (light) simulators.
+- **`source` went on all three quiz signals**, not only `startQuiz`: `quitQuiz` and
+  `completeQuiz` carry it too. Without it, three-question completions would raise the completion
+  rate of the 30-question quiz, which the existing signals measure. Values: `tab`, `myVerbs`,
+  `verbPage`. The `quiz/start` deeplink gained no `source`, since it only opens the tab and the
+  learner's tap on Start is what begins a quiz; `docs/feature-architecture.md` no longer marks it
+  reserved for this phase.
+- **How it was tested.** 6 new `@Test` functions in `QuizTests`, plus one with a case per source,
+  431 tests in all, with Phase 12's. In the iPhone 17 simulator: Test Me on gehen's page, three questions, the
+  results with 1 of 3 correct and no leaderboard button, and the sheet closing onto the page; the
+  Quiz tab's picker counting three verbs in My Verbs, and a My Verbs quiz whose first eight
+  questions were all about gehen, sein, or aufstehen. Not tried: Game Center signed in, iPad,
+  VoiceOver, and a German-language device.
 
 ## Phase 14: A Verb of the Day Worth Opening
 

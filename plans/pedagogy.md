@@ -7,6 +7,11 @@ snapshot gained App Store Connect data and a correction to Konjugieren's device 
 on release timing, [No Release Before 2027](#no-release-before-2027), was added later that day
 by the session that wrote [`docs/browse-and-verb-ideas.md`](../docs/browse-and-verb-ideas.md).
 
+Parts of what this report suggests were built on `main` between 2026-11-12 and 2026-11-13 by
+[`plans/browse-and-verb-implementation.md`](browse-and-verb-implementation.md), the browse plan,
+because the browse ideas needed them. Each is noted under its tier with a **Built on `main`**
+or **Partly built** line. None has reached a learner, since no release is possible before 2027.
+
 Four inputs went into this document:
 
 1. **The code.** `Quiz.swift`, `QuizView.swift`, `ResultsView.swift`, `QuizErrorHistory.swift`,
@@ -645,6 +650,22 @@ suggestion rests on judgment.
 | Audit optional variants (the du-Imperativ with and without -e first) and accept every standard one. | Correctness | S to M | Yes. |
 | Treat a one-letter slip as "almost" and allow one more attempt. How lenient to be is a judgment. No evidence on thresholds was found. | Judgment | M | Yes. But if the player gets the second attempt right, half points. |
 
+**Built on `main` 2026-11-12** by [Phase 4](browse-and-verb-implementation.md#phase-4-separable-verbs-as-a-main-clause-writes-them)
+of the browse plan: the separable-verb convention, as decision 1 has it. The verb page, the
+widget, the shortcut, and the quiz's shown answer use the split conjugation (ich stehe auf), and
+the quiz accepts the split and the joined conjugation alike. Grading moved into
+`QuizItem.accepts`, which also collapses runs of spaces now that an answer can be two words. It
+does not accept the subordinate order of a compound conjugation (angekommen bin). The Info
+articles already taught the split order and needed no change.
+
+**Partly built 2026-11-12** by [Phase 1](browse-and-verb-implementation.md#phase-1-search-finds-what-people-type):
+the ä, ö, ü, and ß keys, as `GermanLetterKeyRow`, shown above the keyboard while the verb list's
+search field is focused. The row takes an `insert` closure so that the quiz's answer field can
+insert at the cursor, but as of 2026-11-13 the answer field does not show it. The quiz accepts ss
+for ß, because it grades against every region's conjugation and Swiss spelling has no ß. It does
+not accept ae, oe, or ue. Search folds all four digraphs (`VerbSearch`), and its folding is the
+piece for the quiz to reuse.
+
 ### Tier 2: Change What the Quiz Asks
 
 | Suggestion | Basis | Effort | Verdict |
@@ -658,6 +679,21 @@ suggestion rests on judgment.
 | Shorten the default session to about ten questions, with an offer to continue. | Telemetry; Conjugar's precedent | S | Reluctantly, yes. I am reluctant because a ten-question quiz is far from comprehensive. But perhaps a shorter quiz will encourage more people to take and finish quizzes. Barely any do now. |
 | Let the learner choose scope: conjugationgroups, verb sets, a family or ablaut group, "my verbs". | 13 | M | Yes, but the default is the classic-style quiz (with modifications from the plan.) "My verbs" an option if such verbs exist. |
 | Make a chosen scope shareable as a link or a QR code, so that a teacher can hand a class one practice set without accounts or a server. The deeplink scheme already has a quiz route. | 13; Conjuguer's school downloads | M | Yes. |
+
+**Partly built 2026-11-13** by the browse plan. [Phase 14](browse-and-verb-implementation.md#phase-14-a-verb-of-the-day-worth-opening)
+defined the frequency bands once, as `FrequencyBand` (`.top100`, `.top300`, `.top1000`) with
+`Verb.isIn(_:)` and `Verb.verbs(in:)`. The widget's verb and the random verb draw from the top
+1,000, weighting strong and unprefixed verbs double, which is a start on "prefer base verbs"
+outside the quiz. The quiz does not draw from the bands yet.
+[Phase 13](browse-and-verb-implementation.md#phase-13-a-quiz-over-chosen-verbs) built the scope:
+`QuizScope` carries a list of verbs, a reading, a question count, and an analytics source. The
+Quiz tab offers All Verbs or My Verbs, with the classic quiz as the default, as the verdict asks.
+[Phase 16](browse-and-verb-implementation.md#phase-16-collections) added a 30-question quiz over
+each collection: the 100 most frequent verbs, the modal verbs, the verbs that take sein, and each
+of the 76 ablaut groups. A collection can be shared as a `konjugieren://list/<key>` link, which
+opens it with Quiz one tap away. A link that starts the quiz itself (`quiz/start?list=<key>`) was
+not built, nor were scopes by conjugationgroup. Only a full quiz over every verb posts to the
+leaderboard (`QuizScope.isRanked`), as Josh decided on 2026-11-13.
 
 A possible ladder of levels, using the app's conjugationgroup names:
 
@@ -683,6 +719,15 @@ examination specifications were not reached.
 | Start the ladder short (for example 1, 3, 7, 14, and 30 days) and do not agonize over the numbers. The evidence does not single out an interval. | 5; limits above | S | Yes. |
 | Track two kinds of item. For strong and mixed verbs, the item is a verb's principal part. For weak verbs, the item is a pattern (a conjugationgroup and person), shared by all weak verbs. | The size argument | M | Yes. |
 
+**Partly built 2026-11-13** by [Phase 15](browse-and-verb-implementation.md#phase-15-the-review-card)
+of the browse plan: a due date per verb, not per item. `ReviewSchedule`, in `Shared/`, holds a box
+and a due date on each entry of the learner's verb record (`LearnerVerbs`), on this report's
+ladder of 1, 3, 7, 14, and 30 days, the last repeating. A lookup puts a verb in the first box, a
+reveal on the review card above the verb list moves it up one, and a later lookup by any other
+route sends it back to the first box. Nothing in the quiz reads or writes it yet. It was built so
+that the quiz's practice record can take it over. Re-asking, "Practice my mistakes", and the two
+kinds of item are not built.
+
 The card-box scheduler suggested here is the Leitner system, from Sebastian Leitner's *So lernt man
 lernen* (1972), and the spacing effect it exploits was first measured by Hermann Ebbinghaus in
 *Über das Gedächtnis* (1885). The two ideas most needed by a German conjugation app were both first
@@ -702,6 +747,13 @@ are waiting for.
 | Mark where the learner's answer differs, in addition to what is irregular about the verb. | 3 | S to M | Yes. |
 | Link each correction to the verb's page and its family. | 10 | S | Yes. |
 | If AI explanation returns, have the model put a deterministic diagnosis into words and nothing more. | 12 | M | Not applicable at this time. |
+
+**Partly built 2026-11-12** by [Phase 5](browse-and-verb-implementation.md#phase-5-the-conjugation-map-as-a-build-product)
+of the browse plan: `Verb.conjugations(matching:)`, in `ConjugationMatch.swift`, answers "which
+conjugations of this verb equal this text?" It grades as the quiz does (every region, both
+clauses, case and spacing ignored) and marks a match that is only the finite part of a separable
+reading. It is the check behind "another cell of the same verb" below. Reverse lookup in search
+uses it, and the quiz does not yet.
 
 Error classes the conjugator could detect without any language model:
 
@@ -725,8 +777,8 @@ is drawn from the structure of the conjugator and from experience (**inference**
 
 ### Tier 5: Add Meaning and New Directions
 
-| Suggestion | Basis | Effort |
-|---|---|---|
+| Suggestion | Basis | Effort | Verdict |
+|---|---|---|---|
 | A principal-parts exercise for strong verbs: given the infinitive, supply the third-person Präsens, the Präteritum, and the Perfekt with its auxiliary. This is how the Goethe-Institut list presents them. | The size argument; 9 | M | Yes. |
 | Family practice from the Families tab: work through one ablaut group, then mix it with groups already known. | 6; unproven for families | M | Yes. |
 | "Test yourself on this verb" on the verb page: three questions at the moment of a lookup, with the option to add the verb to "my verbs". | Telemetry; 13 | M | Yes. |
@@ -734,6 +786,19 @@ is drawn from the structure of the conjugator and from experience (**inference**
 | Sentence frames for the core verbs: short authored sentences with the verb blanked. The bundled literary examples exist for every verb and are mostly too hard for a beginner's blank. They suit a reward after a correct answer better than a prompt. | 10 | L | Yes. |
 | Choice questions: a context and two conjugationgroups, with the learner picking the one a speaker would use. This needs authored content. | 10 | L | Yes. |
 | A speed round for items already mastered, as the one place where the clock counts. | Nation's fluency strand | M | Yes. |
+
+**Built on `main` 2026-11-13** by [Phase 13](browse-and-verb-implementation.md#phase-13-a-quiz-over-chosen-verbs)
+of the browse plan: "Test me on this verb", a button in the verb page's navigation bar that opens
+a sheet of three questions on three cells of the reading on screen. The star beside it adds the
+verb to My Verbs ([Phase 12](browse-and-verb-implementation.md#phase-12-recents-and-my-verbs)).
+
+**Partly built 2026-11-13** by [Phase 16](browse-and-verb-implementation.md#phase-16-collections):
+an expanded ablaut group on the Families tab offers a quiz on that group, with a count of its
+verbs looked up. Mixing it with groups already known is not built. For recognition questions, the
+map from conjugation to infinitive now ships in the app, generated at build time by
+`ConjugationMapTool`
+([Phase 5](browse-and-verb-implementation.md#phase-5-the-conjugation-map-as-a-build-product)), and
+`CorpusFormsDumpTests` is retired.
 
 ### Tier 6: Rebuild Motivation Around Progress
 
@@ -748,6 +813,9 @@ is drawn from the structure of the conjugator and from experience (**inference**
 | Rename the levels. "Ridiculous" tells a learner that part of the app is a joke. | Judgment | S | Yes. |
 | A daily shared challenge built on the existing daily widget question, with a result that can be shared. The evidence for this format is a designer's testimony and one survey. | Speculative | M | Yes. |
 | Either make the arcade game depend on conjugating, as the architecture document already says it does, or accept it as an amusement. | Judgment | L or none | In future, yes. Improving the game is outside the scope of the quiz-improvement project. |
+
+Nothing in this tier was built by the browse plan. Its one step in this direction was to keep
+quizzes over My Verbs, a collection, or a single verb off the leaderboard.
 
 A warning about this tier. Meta-analysis finds the effects of gamification on learning small, and
 its effects on motivation and behavior less stable than its effects on test scores (Sailer & Homner
@@ -909,6 +977,15 @@ Within the present policy:
 - Report the time from start to quit in coarse bands. A quit within three seconds is exploration,
   and a quit after forty is a struggle.
 
+**None of these three is built.** `startQuiz` still carries no difficulty. What the browse plan
+added to the quiz signals instead is `source` on `startQuiz`, `quitQuiz`, and `completeQuiz`
+(`tab`, `myVerbs`, `verbPage`, or `list`), built on `main` 2026-11-13 by
+[Phase 13](browse-and-verb-implementation.md#phase-13-a-quiz-over-chosen-verbs), and `collection`
+on `startQuiz` for a collection's quiz, by
+[Phase 16](browse-and-verb-implementation.md#phase-16-collections). Without `source`, three-question
+quizzes would inflate the completion rate of the 30-question quiz. The policy lines for both wait
+in [`docs/privacy-policy-pending.md`](../docs/privacy-policy-pending.md).
+
 With a revised policy, in aggregate only:
 
 - Questions answered and questions correct per session.
@@ -928,7 +1005,9 @@ funnel "before" is every month until then, measured with the signals that exist 
 ## Decisions for Josh
 
 1. **Separable verbs.** Should the app's standard conjugation be the joined one, the split one, or
-   both, and should the quiz accept both? Answer: both.
+   both, and should the quiz accept both? Answer: both. Built on `main` 2026-11-12 by
+   [Phase 4](browse-and-verb-implementation.md#phase-4-separable-verbs-as-a-main-clause-writes-them)
+   of the browse plan: the app shows the split conjugation, and the quiz accepts either.
 2. **Purpose of the quiz.** Is it an examination to be passed or practice to be accumulated? Most
    suggestions here assume practice. Answer: practice.
 3. **Primary audience.** Residents of German-speaking countries, English-speaking learners abroad,

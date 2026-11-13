@@ -1092,6 +1092,25 @@ The two tracks share more than a list of verbs. Each piece below should be built
 Who builds the shared pieces is a decision for Josh. The suggestion above is that this track
 builds what lookups produce and the quiz track builds what practice produces.
 
+**Where the shared pieces stand, 2026-11-13**, when the
+[implementation plan](../plans/browse-and-verb-implementation.md) finished. This track built more
+of the table than the suggestion gave it, because its ideas needed minimal versions first:
+
+- **Built:** the learner's verb list (`LearnerVerbs`, Phase 12), read by the quiz's My Verbs
+  scope; the frequency bands (`FrequencyBand` on `Verb`, Phase 14); the separable-verb convention
+  and `conjugate(…, clause: .main)` (Phase 4); the map (Phase 5); `Verb.conjugations(matching:)`
+  (Phase 5); the key conjugations, `Verb.keyConjugations` (Phase 10), named without "principal
+  parts" as Josh asked; the deeplink grammar (Phase 11, with `list/<key>` from Phase 16); one
+  `source` vocabulary (Phases 3 and 13); and a quiz over a list of verbs (`QuizScope`, Phase 13).
+- **Built in part:** a due date per verb, not per practice item (`ReviewSchedule`, Phase 15),
+  which the quiz does not yet write; a key row (`GermanLetterKeyRow`, Phase 1) that the search
+  field shows and the quiz's answer field does not; and an order of conjugationgroups by use
+  (Phase 7), counted from the text corpus for the verb page, which is not yet the quiz's ladder of
+  levels.
+- **Not built:** a marker on the verb page from `QuizErrorHistory`.
+
+[`plans/pedagogy.md`](../plans/pedagogy.md) notes the same pieces under its tiers.
+
 ## What to Measure
 
 ### The Privacy Policy First
@@ -1171,6 +1190,12 @@ when a quiz is abandoned, and banding the time to a quit. Nothing above collides
 addition joins the tracks: give `startQuiz` the same `source` key, with values such as tab,
 verbPage, myVerbs, list, widget, and shortcut, so that a quiz begun from a verb page can be told
 from one begun on the Quiz tab.
+
+**Built on `main` 2026-11-13** by [Phase 13](../plans/browse-and-verb-implementation.md#phase-13-a-quiz-over-chosen-verbs)
+of the implementation plan, on all three quiz signals rather than `startQuiz` alone, with the
+values `tab`, `myVerbs`, and `verbPage`. [Phase 16](../plans/browse-and-verb-implementation.md#phase-16-collections)
+added `list` and gave `startQuiz` a `collection`. No quiz begins from a widget or a shortcut, so
+those values are not sent. The quiz report's three proposals above are not built.
 
 ### Reading the Numbers
 

@@ -223,7 +223,7 @@ The bullet about taps in section 2 now reads:
 A new bullet follows the one about review cards:
 
 ```
-- Which collection of verbs you opened, such as the modal verbs or an ablaut group, and whether you opened it in the app or from a shared link
+- Which collection of verbs you opened, such as the modal verbs or an ablaut group, and whether you opened it in the app, from a shared link, or from another link
 ```
 
 The first quiz bullet in section 2 now reads:
@@ -249,7 +249,7 @@ Der Punkt über das Antippen in Abschnitt 2 lautet nun:
 Ein neuer Punkt folgt dem über Wiederholungskarten:
 
 ```
-- Welche Sammlung von Verben Sie geöffnet haben, etwa die Modalverben oder eine Ablautgruppe, und ob Sie sie in der App oder über einen geteilten Link geöffnet haben
+- Welche Sammlung von Verben Sie geöffnet haben, etwa die Modalverben oder eine Ablautgruppe, und ob Sie sie in der App, über einen geteilten Link oder über einen anderen Link geöffnet haben
 ```
 
 Der erste Punkt über das Quiz in Abschnitt 2 lautet nun:

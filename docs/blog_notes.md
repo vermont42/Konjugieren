@@ -10078,3 +10078,47 @@ The German word for what this phase built is *Sammlung*, from *sammeln*, from Ol
 and *samt*. It goes back to the Proto-Indo-European root *\*sem-*, "one, together", which gave
 English *same*, and by way of Latin *simul* also gave *assemble*. A collection is a set of verbs
 made one.
+
+## Closing the Browse Plan: What an Audit Finds That Phases Miss (2026-11-13)
+
+The browse plan's sixteen phases ended with Collections, and the Closing was the plan's last
+session: run everything, check that the documents agree with the code, update the quiz report,
+and write down what the work would mean for Conjuguer and Conjugar. No app code changed. The full
+suite passed with 490 tests in 59 suites, the count Phase 16 left, and `check_docs.py` found
+nothing wrong.
+
+The audits were the interesting part, because each phase had checked its own work and none had
+checked the whole. The privacy audit diffed `Analytics.swift` against the last commit before the
+plan and read every call site. Ten signals and ten parameter keys were added across the plan, and
+every one had a staged line in `privacy-policy-pending.md`. One line was imprecise. A collection
+opened from a `konjugieren://` link that is not a shared one sends `source` `deeplink`, but the
+policy bullet said only "in the app or from a shared link". A privacy policy that undercounts is
+the wrong direction to err, so both languages now name the other link.
+
+The pedagogy update found two claims that would have been easy to make and would have been
+wrong. The plan expected the umlaut key row to count as built for the quiz, and Josh's own verdict
+in the report's Tier 1 says "the umlaut keys have been implemented". The component exists, and
+Phase 1 built it to take an `insert` closure precisely so that the quiz's answer field could
+adopt it. But only the search field shows it. The quiz's field is a plain `TextField`. The second
+was smaller. The report had proposed sending the difficulty with `startQuiz`, and the plan listed
+"`source` on `startQuiz`" as a candidate to mark, which is easy to read as the same thing. Phase
+13 added `source`; `startQuiz` still carries no difficulty. The notes in `plans/pedagogy.md` say
+both plainly.
+
+One fact surfaced along the way that nobody had written down: the quiz already accepts ss for ß.
+It grades against every region's conjugation, and the Swiss region writes no ß, so "heissen"
+passes as a matter of course. The digraphs ae, oe, and ue do not, though search folds all four.
+The quiz track's Tier 1 work is half done by accident and half waiting on a function that already
+exists in `VerbSearch`.
+
+The porting list went into the plan as a table, phase by phase, drawn from the carry-over notes
+the ideas document wrote under each idea. It is a starting point, not a survey: neither sibling's
+code was read, so it is only as current as notes written on 2026-11-10 and 11. Some rows are
+short because the work is already done there (both siblings fold diacritics), and some because it
+does not apply (neither French nor Spanish strands a verb particle at the end of a clause).
+
+*Port* comes from Latin *portāre*, "to carry", which is why the ideas document's "carry-over
+notes" are a pleonasm in two languages. The Latin descends from the Proto-Indo-European root
+*\*per-*, "to lead across, to go through", whose Germanic branch gave English *ford* and *ferry*
+and German *Furt* and *fahren*. So *fahren*, which sits in the sein collection Phase 16 built, is
+a distant cousin of the word for what comes next.

@@ -30,7 +30,12 @@ that Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until
 | 14 | Done | 2026-11-13 | `7a7d8ca` | D5 |
 | 15 | Done | 2026-11-13 | `65d5eb6` | D4 |
 | 16 | Done | 2026-11-13 | `08f746e` | D6 |
-| Closing | Not started | | | |
+| Closing | Awaiting Josh | 2026-11-13 | | Audit, pedagogy notes, porting list |
+
+**This plan is finished** (2026-11-13). Every phase and the Closing are done. What remains is
+porting to Conjuguer and Conjugar, listed at the end of the
+[Closing](#porting-to-conjuguer-and-conjugar), and the quiz track's own work in
+[`plans/pedagogy.md`](pedagogy.md), which now says what this plan built for it.
 
 ## How to Work This Plan
 
@@ -1154,3 +1159,55 @@ to Josh where collections live and how they relate to that tab before building.
 - Mark this plan finished in its Status section.
 
 **How it differed:**
+
+- **The checks.** 490 tests in 59 suites passed, the count Phase 16 left, and `check_docs.py`
+  found 0 problems, before and after the Closing's edits.
+- **Every accepted idea carries its "built" line**: A1 to A5, A8, A9, B2 to B4, B6, C1, C2, C4,
+  and D1 to D6, with B5's tip and B7's article noted under ideas whose verdict was otherwise no,
+  and the Phase 3 signals under "What to Measure". Two sections of the ideas document gained a line
+  too: "In Line with the Quiz Track", for `source` on the quiz signals, and "Coordination with the
+  Quiz Track", which now says which shared pieces exist.
+- **The privacy audit.** `Analytics.swift` was diffed against `79b1ef2`, the last commit before
+  this plan, and every call site read. Ten signals (`finishSearch`, `leaveVerbView`,
+  `tapConjugationgroupArticle`, `tapRevealReviewCard`, `tapShareCollection`, `tapShareVerb`,
+  `tapStarVerb`, `tapTestVerb`, `viewCollection`, `viewReviewCard`) and ten parameter keys
+  (`collection`, `deepestSection`, `dwell`, `matchKind`, `outcome`, `queryLength`, `resultCount`,
+  `resultPosition`, `source`, and `starred`) all have staged lines. One line was imprecise: `viewCollection` sends `deeplink` for a collection opened
+  from a `konjugieren://` link that is not a shared one, and the policy bullet said only "in the
+  app or from a shared link". Both languages now name another link as well.
+- **What the pedagogy update found.** Most of the plan's candidates landed as listed. Two did
+  not, and the notes in `plans/pedagogy.md` say so rather than claim them. The ä, ö, ü, and ß key
+  row exists, but only the search field shows it; the quiz's answer field does not, despite
+  Josh's verdict in Tier 1 that the keys are done. The quiz accepts ss for ß through the Swiss
+  regional conjugation, and not ae, oe, or ue. And the report's "send the difficulty with
+  `startQuiz`" is still unbuilt: Phase 13 added `source`, not the difficulty. Tier 5's table also
+  lacked a Verdict column in its header while its rows had one, and now has it.
+
+### Porting to Conjuguer and Conjugar
+
+A starting point, phase by phase, from the ideas document's carry-over notes. Neither sibling's
+code was read for this list, so it is only as current as those notes, which were written on
+2026-11-10 and 2026-11-11. Inferences are marked.
+
+| Phase | Conjuguer (French) | Conjugar (Spanish) |
+|---:|---|---|
+| 1 | Already folds diacritics. Has no gloss search; its 86 English-language devices would use one. Substring matching in list order, so exact-first ranking applies. | Already folds diacritics and searches glosses; could adopt the whole-word gloss ranking. Exact-first ranking applies as in Conjuguer. |
+| 2 | The same empty state, trombone included. Keyboard lookup first here, for the Swiss institution's Macs. iPadOS 26 ignores programmatic focus on a toolbar search field, and a focused field keeps arrow keys from SwiftUI, as Phase 2 found. | The same empty state. Keyboard lookup after Conjuguer. |
+| 3 | Its single `viewAppeared` signal can take a `source` parameter easily. Its own privacy policy needs its own staged lines. | Sends one signal name per screen and no parameters on views, so the signals need more work. Its own policy too. |
+| 4 | Not applicable: no separable verbs. | Not applicable. The nearest relative is the reflexive pronoun: 114 reflexive-only verbs show bare conjugations, a separate question. |
+| 5 | The same harness exists, disabled, and handles suis as both être and suivre. About 6,326 verbs at 99 conjugations each, so measure the map's size first. Phase 5's host tool replaces the harness. | The same harness. About 4,811 verbs at about 140 conjugations each; measure first. |
+| 6 | Lower value, since francophone users know the infinitive. | Highest value, for American learners reading Spanish. Match with accents folded, and show both verbs when accents distinguish (hablo, habló) or a conjugation is shared (fue). |
+| 7 | Hides compound tenses behind a toggle and has a dismissible color key. Ordering by use needs a French count (**inference**). The scrolling tip carries over. | Shows 20 tenses in one list and gains the most from ordering by use. Needs a Spanish count. The scrolling tip carries over. |
+| 8 | Not applicable, per the ideas document. | Not applicable. |
+| 9 | The model row is already tappable. The Models tab already groups verbs by pattern; a frequency sort there is the analogue of A9 (**inference**). | The model row is plain text; making it a link is S. Models tab as in Conjuguer. |
+| 10 | The same: copy a conjugation, share a verb with the App Store link. | The same. |
+| 11 | Deeplinks and controls exist; App Shortcuts and entities do not, so port Konjugieren's first, M each. Spotlight is new work, and the repository has a design note for it. | As Conjuguer, without the design note. |
+| 12 | A new store for recents and starred verbs, the same design. | The same. |
+| 13 | The quiz draws from fixed lists and needs a scope first. The rule that only a full quiz ranks should carry over (**inference**). | The same. |
+| 14 | Check how the widget chooses its verb (not verified). Frequency bands need per-verb counts, unverified in either sibling. | The same. |
+| 15 | The same, once Phase 12's store exists to hold due dates. | The same. |
+| 16 | Strongest here, because of schools. The Models tab is the natural home, as the Families tab was here (**inference**). | The same design, lower priority. |
+
+The pedagogy report advises building shared changes into all three apps. Once the quiz track
+builds a practice record, Phase 15's due date should become part of it in each app, not only in
+Konjugieren (**inference**).

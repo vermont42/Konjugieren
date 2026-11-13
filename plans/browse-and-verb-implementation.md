@@ -30,7 +30,7 @@ that Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until
 | 14 | Done | 2026-11-13 | `7a7d8ca` | D5 |
 | 15 | Done | 2026-11-13 | `65d5eb6` | D4 |
 | 16 | Done | 2026-11-13 | `08f746e` | D6 |
-| Closing | Awaiting Josh | 2026-11-13 | | Audit, pedagogy notes, porting list |
+| Closing | Done | 2026-11-13 | `9d40ea7` | Audit, pedagogy notes, porting list |
 
 **This plan is finished** (2026-11-13). Every phase and the Closing are done. What remains is
 porting to Conjuguer and Conjugar, listed at the end of the

@@ -165,7 +165,8 @@ still advances at once.
   `isBeneathQuiz` environment value hides "Test me on this verb" and a collection's Quiz button
   on those pages, so no second quiz starts over the first. A quiz begun from a verb's own page
   shows no verb link.
-- **Continue.** Return in the answer field also continues, from any blank. Return resigns the
+- **Continue**, at most 400 points wide and centered, so that it does not span an iPad's card.
+  Return in the answer field also continues, from any blank. Return resigns the
   field, so the view refocuses it on holding and again after Back from a linked page.
 
 VoiceOver: a wrong answer is no longer announced by `Quiz`. Instead focus moves to the correction,

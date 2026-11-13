@@ -58,10 +58,11 @@ struct QuizCorrectionView: View {
 
       Button(action: onContinue) {
         Label(L.Quiz.continueAfterCorrection, systemImage: "arrow.right")
-          .frame(maxWidth: .infinity)
+          .frame(maxWidth: Self.continueMaxWidth)
       }
       .funButton()
       .controlSize(.large)
+      .frame(maxWidth: .infinity)
       .accessibilityHint(L.Accessibility.quizContinueHint)
       .accessibilityIdentifier("quiz_continue_button")
       .id(Self.continueButtonID)
@@ -69,6 +70,9 @@ struct QuizCorrectionView: View {
   }
 
   static let continueButtonID = "quiz_continue_button"
+
+  // As wide as an iPhone's card, and no wider on an iPad, where the card spans the screen.
+  private static let continueMaxWidth: CGFloat = 400
 
   // A strong or mixed verb links to its ablaut group, which shows the verbs that change their
   // vowels the same way. A weak verb has none, so it links to its family.

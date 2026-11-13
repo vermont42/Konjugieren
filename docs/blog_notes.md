@@ -10340,7 +10340,10 @@ field on holding. Second, after Back from a linked page, setting the focus state
 nothing, because the state still read 0 although the keyboard had gone. Clearing it and setting
 it again after the pop animation fixed it. The run that proved both typed eight wrong answers and
 continued past each with keystrokes alone. The iPad, in light mode, behaved the same, and the
-tints that had been strengthened for the dark card still read well on the light one.
+tints that had been strengthened for the dark card still read well on the light one. Only
+Continue looked wrong there: the card spans the iPad's screen, so the button became a pink bar
+some 1,470 points long. It is now capped at 400 points and centered, which leaves the iPhone,
+whose card is narrower than that, unchanged.
 
 For VoiceOver, `Quiz` no longer announces a wrong answer, since an announcement and a focus move
 would talk over each other. Focus moves to the correction, which reads "Incorrect. Your answer:

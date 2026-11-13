@@ -444,7 +444,8 @@ VoiceOver announces the correction and the Continue button, and tests pin the st
   visit to a linked page, both links opened and returned to the held question with the keyboard
   back, and the sheet from a verb's page showed no verb link. On the iPad Pro 11-inch (M5), in
   light mode, the hold, the verb link, Back, and Return behaved the same, and the tints read
-  well. There the card, and so Continue, spans the screen's width, as the card did before. Not
+  well. There the card spans the screen's width, as it did before, so at Josh's request
+  (2026-11-13) Continue is capped at 400 points and centered. Not
   tried: the software keyboard (which may cover Continue on a small phone; the view scrolls
   Continue into sight) and VoiceOver by ear. Tests: 16 new, 560 in all. Josh added the fixture to
   the shared scheme as a launch argument, unchecked.

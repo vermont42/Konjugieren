@@ -3,6 +3,7 @@
 import Foundation
 
 enum ParameterKey: String {
+  case collection
   case deepestSection
   case difficulty
   case dwell
@@ -32,11 +33,13 @@ enum AnalyticsName: String {
   case tapRateOrReview
   case tapRevealReviewCard
   case tapSendTutorMessage
+  case tapShareCollection
   case tapShareVerb
   case tapShowOnboarding
   case tapStarVerb
   case tapTestVerb
   case tapViewLeaderboard
+  case viewCollection
   case viewFamilyBrowseView
   case viewFamilyDetailView
   case viewInfoBrowseView

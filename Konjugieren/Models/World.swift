@@ -23,6 +23,7 @@ class World {
   var verbSource: AnalyticsSource = .deeplink
   var verbMarks: MarkedConjugations?
   var family: String?
+  var collection: VerbCollectionRequest?
   var info: Info?
   var searchRequest: SearchRequest?
   var selectedTab: TabSelection = .verbs
@@ -66,6 +67,7 @@ class World {
     verb = nil
     verbMarks = nil
     family = nil
+    collection = nil
     info = nil
     searchRequest = nil
   }
@@ -130,6 +132,11 @@ class World {
         family = url.pathComponents[1]
         selectedTab = .families
       }
+    case URL.listHost:
+      if let found = VerbCollection(key: url.pathComponents[1]) {
+        collection = VerbCollectionRequest(collection: found, source: url.analyticsSource ?? .deeplink)
+        selectedTab = .families
+      }
     case URL.infoHost:
       if let found = Info.info(deeplinkTarget: url.pathComponents[1]) {
         info = found
@@ -139,6 +146,12 @@ class World {
       return
     }
   }
+}
+
+/// A collection to show in the Families tab, and the surface that asked: a deeplink, or a row.
+struct VerbCollectionRequest: Hashable {
+  let collection: VerbCollection
+  let source: AnalyticsSource
 }
 
 /// A request, from a deeplink or a command, that the verb list show its search field.

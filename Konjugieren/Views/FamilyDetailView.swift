@@ -5,6 +5,9 @@ import TipKit
 
 struct FamilyDetailView: View {
   let family: BrowseableFamily
+  /// An ablaut group's collection that a link asked for: the page opens with it expanded and
+  /// scrolled to.
+  var collectionRequest: VerbCollectionRequest?
   let navigateToVerb: (Verb) -> Void
   @State private var sortOrder = SortOrder.alphabetical
 
@@ -13,46 +16,58 @@ struct FamilyDetailView: View {
       Color.customBackground
         .ignoresSafeArea()
 
-      ScrollView {
-        VStack(alignment: .leading, spacing: 0) {
-          HStack {
-            Image(systemName: family.systemImageName)
-              .font(.largeTitle)
-              .foregroundStyle(.customYellow)
-            Text(family.displayName)
-              .font(.largeTitle.bold())
-              .foregroundStyle(.customYellow)
-          }
-          .frame(maxWidth: .infinity, alignment: .center)
-          .padding(.bottom, 16)
-          .accessibilityElement(children: .combine)
-          .accessibilityAddTraits(.isHeader)
-          .germanPronunciation(forReal: UserLocale.isGerman)
+      ScrollViewReader { proxy in
+        ScrollView {
+          VStack(alignment: .leading, spacing: 0) {
+            HStack {
+              Image(systemName: family.systemImageName)
+                .font(.largeTitle)
+                .foregroundStyle(.customYellow)
+              Text(family.displayName)
+                .font(.largeTitle.bold())
+                .foregroundStyle(.customYellow)
+            }
+            .frame(maxWidth: .infinity, alignment: .center)
+            .padding(.bottom, 16)
+            .accessibilityElement(children: .combine)
+            .accessibilityAddTraits(.isHeader)
+            .germanPronunciation(forReal: UserLocale.isGerman)
 
-          RichTextView(blocks: family.longDescription.richTextBlocks)
-            .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
-            .konjCard()
+            RichTextView(blocks: family.longDescription.richTextBlocks)
+              .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+              .konjCard()
 
-          Picker(L.VerbBrowse.sortOrder, selection: $sortOrder) {
-            ForEach(SortOrder.allCases, id: \.self) { order in
-              Text(order.displayName)
-                .tag(order)
+            Picker(L.VerbBrowse.sortOrder, selection: $sortOrder) {
+              ForEach(SortOrder.allCases, id: \.self) { order in
+                Text(order.displayName)
+                  .tag(order)
+              }
+            }
+            .pickerStyle(.segmented)
+            .padding(.top, Layout.doubleDefaultSpacing)
+            .sensoryFeedback(.selection, trigger: sortOrder)
+            .accessibilityIdentifier("family_sort_order")
+
+            if family.hasPrefixList {
+              PrefixGroupedVerbList(family: family, sortOrder: sortOrder, navigateToVerb: navigateToVerb)
+            } else if family.hasAblautList {
+              AblautGroupedVerbList(family: family, sortOrder: sortOrder, collectionRequest: collectionRequest, navigateToVerb: navigateToVerb)
+            } else {
+              VerbListSection(verbs: family.verbs.sorted(by: sortOrder), navigateToVerb: navigateToVerb)
             }
           }
-          .pickerStyle(.segmented)
-          .padding(.top, Layout.doubleDefaultSpacing)
-          .sensoryFeedback(.selection, trigger: sortOrder)
-          .accessibilityIdentifier("family_sort_order")
-
-          if family.hasPrefixList {
-            PrefixGroupedVerbList(family: family, sortOrder: sortOrder, navigateToVerb: navigateToVerb)
-          } else if family.hasAblautList {
-            AblautGroupedVerbList(family: family, sortOrder: sortOrder, navigateToVerb: navigateToVerb)
-          } else {
-            VerbListSection(verbs: family.verbs.sorted(by: sortOrder), navigateToVerb: navigateToVerb)
+          .padding(.horizontal, Layout.doubleDefaultSpacing)
+        }
+        .task {
+          guard let collectionRequest else {
+            return
+          }
+          // The expanded group must be laid out before the scroll can find it.
+          try? await Task.sleep(for: .milliseconds(300))
+          withAnimation {
+            proxy.scrollTo(collectionRequest.collection.key, anchor: .top)
           }
         }
-        .padding(.horizontal, Layout.doubleDefaultSpacing)
       }
       .navigationBarTitleDisplayMode(.inline)
     }
@@ -146,6 +161,7 @@ struct CuratedPrefixHeaderView: View {
 struct VerbRow: View {
   let verb: Verb
   var showFamilyBadge: Bool = false
+  var showsLookedUp: Bool = false
   var leadingInset: CGFloat = 0
   let navigate: () -> Void
 
@@ -171,6 +187,13 @@ struct VerbRow: View {
 
       Spacer()
 
+      if showsLookedUp, Current.learnerVerbs.hasOpened(verb) {
+        Image(systemName: "checkmark.circle.fill")
+          .font(.footnote)
+          .foregroundStyle(.customYellow)
+          .accessibilityLabel(L.VerbCollection.lookedUp)
+      }
+
       if showFamilyBadge {
         Text(verb.family.displayName)
           .font(.footnote)
@@ -190,6 +213,7 @@ struct VerbRow: View {
 
 struct VerbListSection: View {
   let verbs: [Verb]
+  var showsLookedUp = false
   let navigateToVerb: (Verb) -> Void
   @Environment(\.horizontalSizeClass) private var sizeClass
 
@@ -204,13 +228,13 @@ struct VerbListSection: View {
       if sizeClass == .regular {
         LazyVGrid(columns: [GridItem(.adaptive(minimum: Layout.verbGridMinimum))], spacing: 0) {
           ForEach(verbs) { verb in
-            VerbRow(verb: verb) { navigateToVerb(verb) }
+            VerbRow(verb: verb, showsLookedUp: showsLookedUp) { navigateToVerb(verb) }
           }
         }
       } else {
         LazyVStack(spacing: 0) {
           ForEach(verbs) { verb in
-            VerbRow(verb: verb) { navigateToVerb(verb) }
+            VerbRow(verb: verb, showsLookedUp: showsLookedUp) { navigateToVerb(verb) }
 
             Divider()
           }
@@ -223,8 +247,10 @@ struct VerbListSection: View {
 struct AblautGroupedVerbList: View {
   let family: BrowseableFamily
   let sortOrder: SortOrder
+  var collectionRequest: VerbCollectionRequest?
   let navigateToVerb: (Verb) -> Void
   @State private var expandedGroups: Set<String> = []
+  @State private var hasHonoredRequest = false
 
   var body: some View {
     VStack(alignment: .leading, spacing: 0) {
@@ -239,14 +265,24 @@ struct AblautGroupedVerbList: View {
                 expandedGroups.remove(group.exemplar)
               } else {
                 expandedGroups.insert(group.exemplar)
+                VerbCollection.ablautGroup(group.exemplar).signalView(source: .family)
               }
             },
             navigateToVerb: navigateToVerb
           )
+          .id(VerbCollection.ablautGroup(group.exemplar).key)
         }
       }
     }
     .padding(.top, 24)
+    .onAppear {
+      guard !hasHonoredRequest, let collectionRequest, case .ablautGroup(let exemplar) = collectionRequest.collection else {
+        return
+      }
+      hasHonoredRequest = true
+      expandedGroups.insert(exemplar)
+      collectionRequest.collection.signalView(source: collectionRequest.source)
+    }
   }
 }
 
@@ -271,15 +307,19 @@ struct AblautGroupSection: View {
         }
 
       if isExpanded {
+        VerbCollectionBar(collection: .ablautGroup(group.exemplar), verbs: group.verbs)
+          .padding(.leading, 16)
+          .padding(.bottom, Layout.defaultSpacing)
+
         if sizeClass == .regular {
           LazyVGrid(columns: [GridItem(.adaptive(minimum: Layout.verbGridMinimum))], spacing: 0) {
             ForEach(group.verbs.sorted(by: sortOrder)) { verb in
-              VerbRow(verb: verb, showFamilyBadge: true, leadingInset: 16) { navigateToVerb(verb) }
+              VerbRow(verb: verb, showFamilyBadge: true, showsLookedUp: true, leadingInset: 16) { navigateToVerb(verb) }
             }
           }
         } else {
           ForEach(group.verbs.sorted(by: sortOrder)) { verb in
-            VerbRow(verb: verb, showFamilyBadge: true, leadingInset: 16) { navigateToVerb(verb) }
+            VerbRow(verb: verb, showFamilyBadge: true, showsLookedUp: true, leadingInset: 16) { navigateToVerb(verb) }
 
             Divider()
               .padding(.leading, 16)

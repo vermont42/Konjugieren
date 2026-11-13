@@ -12,6 +12,7 @@ struct DeeplinkTests {
     Current.verbSource = .browse
     Current.verbMarks = nil
     Current.family = nil
+    Current.collection = nil
     Current.info = nil
     Current.searchRequest = nil
     Current.selectedTab = .settings
@@ -186,6 +187,37 @@ struct DeeplinkTests {
     let url = URL(string: "konjugieren://info/-1")!
     Current.handleURL(url)
     #expect(Current.info == nil)
+  }
+
+  @Test func listDeeplinkOpensTheCollectionInTheFamiliesTab() {
+    Current.handleURL(URL(string: "konjugieren://list/modals?source=sharedLink")!)
+    #expect(Current.selectedTab == .families)
+    #expect(Current.collection == VerbCollectionRequest(collection: .modals, source: .sharedLink))
+  }
+
+  @Test func listDeeplinkWithoutASourceCountsAsADeeplink() {
+    Current.handleURL(URL(string: "konjugieren://list/top100")!)
+    #expect(Current.collection == VerbCollectionRequest(collection: .top100, source: .deeplink))
+  }
+
+  @Test func builtListDeeplinkFindsAnAblautGroupWithAnUmlaut() throws {
+    let url = try #require(URL.listDeeplink(.ablautGroup("hängen"), source: .sharedLink))
+    Current.handleURL(url)
+    #expect(Current.collection == VerbCollectionRequest(collection: .ablautGroup("hängen"), source: .sharedLink))
+  }
+
+  @Test(arguments: ["konjugieren://list/nope", "konjugieren://list/ablaut-nope", "konjugieren://list"])
+  func listDeeplinkToNoCollectionIsIgnored(link: String) {
+    Current.handleURL(URL(string: link)!)
+    #expect(Current.collection == nil)
+    #expect(Current.selectedTab == .settings)
+  }
+
+  @Test func aVerbDeeplinkReplacesAPendingCollection() {
+    Current.handleURL(URL(string: "konjugieren://list/modals")!)
+    Current.handleURL(URL(string: "konjugieren://verb/gehen")!)
+    #expect(Current.collection == nil)
+    #expect(Current.verb?.infinitiv == "gehen")
   }
 
   @Test func handleURLFamilyDeeplink() {

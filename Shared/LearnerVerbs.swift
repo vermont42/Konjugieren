@@ -57,6 +57,12 @@ nonisolated struct LearnerVerbs: Codable, Equatable, Sendable {
     entries[infinitiv]?.isStarred ?? false
   }
 
+  /// Whether the verb has been opened since its opens were last forgotten. A collection counts
+  /// these toward its progress.
+  func hasOpened(_ infinitiv: String) -> Bool {
+    entries[infinitiv]?.lastOpened != nil
+  }
+
   /// Starred verbs, the most recently starred first.
   var starred: [String] {
     newestFirst(by: \.starred)

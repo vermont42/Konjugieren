@@ -43,13 +43,15 @@ The lists are `Quiz.randomNonPartizipConjugationgroup()`. Until 2026-11-10 this 
 A `QuizScope` names the verbs a quiz asks about (nil for every verb), the reading to ask about,
 the question count, and the `source` its analytics signals carry. Built 2026-11-13 in Phase 13 of
 [`plans/browse-and-verb-implementation.md`](../plans/browse-and-verb-implementation.md) as the
-minimal piece the quiz track is to extend; a collection (Phase 16) is one more constructor.
+minimal piece the quiz track is to extend. Phase 16 added `.collection(_:)`, and `title` (what a
+quiz in a sheet shows) and `collectionKey` (which `startQuiz` names).
 
 | Scope | Verbs | Questions | `source` | Ranked |
 |---|---|---|---|---|
 | `.allVerbs` | Every verb | 30 | `tab` | Yes |
 | `.myVerbs(_:)` | My Verbs (starred, then the 20 last opened), with replacement | 30 | `myVerbs` | No |
 | `.verbPage(_:readingIndex:)` | The verb on screen, in the reading on screen | 3 | `verbPage` | No |
+| `.collection(_:)` | A collection's verbs (Phase 16), with replacement, in a sheet | 30 | `list` | No |
 
 A quiz of 30 questions keeps the mix above. A shorter one asks for distinct cells drawn from the
 non-participle pool of the difficulty, since the full quiz's proportions would make three
@@ -240,23 +242,24 @@ konjugieren://<route>[/<target>][?<item>=<value>&…]
 | `search` | None | `q`, the text; `source` | The verb list with its search field. With text, the results show with the keyboard down; with none (or `q` empty), the field is cleared and focused for typing | Phase 11 |
 | `info` | A `stableKey`, or a legacy position | None | The article | Before 2026; keys Phase 11 |
 | `family` | A `BrowseableFamily` raw value | None | The family's page | Before 2026 |
-| `quiz` | Any (today `start`) | Reserved: `list` (Phase 16) | The Quiz tab | Before 2026 |
-| `list` | A collection's key | `source` | Reserved for Phase 16's collections; not handled yet | Phase 16 |
+| `quiz` | Any (today `start`) | None | The Quiz tab | Before 2026 |
+| `list` | A collection's key: `top100`, `modals`, `sein`, or `ablaut-<exemplar>` (`ablaut-hängen`, percent-encoded) | `source` | The Families tab, on the collection's page, or for an ablaut group, the Ablaut page with that group expanded | Phase 16 |
 
-**For Phase 16.** A collection is `list/<key>`, with keys such as `top100`, `modals`, `sein`, and
-`ablaut-<group>`, chosen by that phase. A quiz over a collection is `quiz/start?list=<key>`, so
-that the quiz route keeps its one target. Phase 10's share text carries no `konjugieren://` link,
-since Messages may not make one tappable, so whether a shared collection carries one is Phase 16's
-question.
+**Collections (Phase 16, 2026-11-13).** A collection is `list/<key>`. The `quiz/start?list=<key>`
+link that Phase 11 reserved was not built: a shared collection opens its page, where Quiz is one
+tap, so the quiz route keeps no query items. A shared collection's text carries its `list` link
+with `source` `sharedLink` beside the App Store link, as Josh chose on 2026-11-13, knowing that
+Messages may not make a `konjugieren://` link tappable and that it does nothing without the app.
 
 ### Architecture
 
 | File | Purpose |
 |------|---------|
 | `URLExtension.swift` | The grammar's constants (routes, query-item names), `isDeeplink`, `analyticsSource`, `deeplinkQueryValue(named:)`, and the three builders |
-| `World.swift` | `handleURL(_:)` parses a link and sets `verb` (with `verbSource` and `verbMarks`), `searchRequest`, `family`, or `info`, and the selected tab; `openSearch(text:source:)` is the search route's effect, which Command-F also uses |
+| `World.swift` | `handleURL(_:)` parses a link and sets `verb` (with `verbSource` and `verbMarks`), `searchRequest`, `family`, `collection` (Phase 16), or `info`, and the selected tab; `openSearch(text:source:)` is the search route's effect, which Command-F also uses |
 | `Info.swift` | `Info.info(deeplinkTarget:)` resolves a stable key or a legacy position |
 | `VerbBrowseView.swift` | Consumes `verb` and `searchRequest` on appear and on change, since a link can arrive before the tab first appears |
+| `FamilyBrowseView.swift` | Consumes `family` and `collection` the same way |
 | `KonjugierenApp.swift` | Receives URLs via `.onOpenURL`, and a control's pending link from the shared defaults when the scene becomes active |
 
 ### Examples
@@ -268,6 +271,8 @@ konjugieren://search?q=stand%20auf                → the verb list searched for
 konjugieren://search?source=control               → the verb list with an empty, focused field
 konjugieren://info/futur_ii                       → the Futur II article
 konjugieren://info/0                              → the Dedication article (legacy position)
+konjugieren://list/modals?source=sharedLink       → the Modal Verbs collection
+konjugieren://list/ablaut-h%C3%A4ngen             → the Ablaut page, the hängen group expanded
 ```
 
 ### Internal Linking
@@ -395,7 +400,7 @@ and a count, and each verb starred, with the date. Built 2026-11-13 in Phase 12 
 [`plans/browse-and-verb-implementation.md`](../plans/browse-and-verb-implementation.md), as the
 shared piece the ideas document's coordination table assigns to the browse track. Recents, My
 Verbs, the quiz's My Verbs scope, the verb of the day and random verb (Phase 14), and the review
-card (Phase 15) read it today; collections (Phase 16) and the quiz track will.
+card (Phase 15), and collections (Phase 16) read it today; the quiz track will.
 
 | Piece | Role |
 |---|---|
@@ -452,6 +457,33 @@ review: the verb keeps its box and returns the next day.
 calls what a reveal calls (`recordReview`), and a wrong one should send the verb back to the
 first box, as a lookup does (`ReviewSchedule.lookedUp`), without counting an open. Its items are
 verbs today; Tier 3's weak-verb patterns would need a key other than the infinitive.
+
+## Collections
+
+Fixed lists as places to go, from idea D6 of
+[`browse-and-verb-ideas.md`](browse-and-verb-ideas.md): the 100 most frequent verbs, the modal
+verbs, the verbs that take sein, and each of the 76 ablaut groups. Built 2026-11-13 in Phase 16 of
+[`plans/browse-and-verb-implementation.md`](../plans/browse-and-verb-implementation.md). Each shows
+how many of its verbs have been looked up, starts an unranked 30-question quiz on itself in a
+sheet, and is shared as text with a `list/<key>` link and the App Store link.
+
+| Piece | Role |
+|---|---|
+| `VerbCollection.swift` | The collections, their keys, their verbs (alphabetical, as every list's arrive), the share text, `viewCollection`, and `QuizScope.collection(_:)` |
+| `VerbCollectionView.swift` | A featured collection's page, and `VerbCollectionBar` (progress, Quiz, Share), which the Ablaut page's expanded groups also show |
+| `FamilyBrowseView.swift` | The Collections section at the top of the Families tab, and the `list` route's landing |
+| `LearnerVerbs.hasOpened(_:)` | What counts toward progress: a verb with a last open. Clear in My Verbs forgets opens, so it resets every collection's progress; a star alone does not count |
+
+**Where they live (Josh, 2026-11-13).** At the top of the Families tab, which keeps its name. The
+ablaut groups stay on the Ablaut page, where an expanded group now begins with the bar, rather
+than each getting a page of its own. The seven family pages did not become collections.
+
+**Membership.** The modal verbs are the six by name. The verbs that take sein are those with any
+reading that takes sein in the learner's region, so fahren is in for "ist gefahren", and liegen,
+sitzen, and stehen are in only for Austria and Switzerland (607 northern, 610 southern on
+2026-11-13). An ablaut group's verbs are those whose primary reading is in the group, as on the
+Ablaut page; 18 of the 76 groups hold a single verb (sein, tun, können, …), and those have the
+bar too.
 
 ## Game System
 
@@ -806,8 +838,10 @@ Counts and durations go out in bands (`AnalyticsBand`), never as exact numbers.
 | `tapStarVerb` | `starred` (`true`, `false`: the state after the tap) | When the star in a verb page's navigation bar is tapped (Phase 12) |
 | `tapTestVerb` | None | When "Test me on this verb" in a verb page's navigation bar is tapped (Phase 13). The quiz it opens sends `startQuiz` with `source` `verbPage` |
 | `viewReviewCard` | None | Once per card shown: when the review card first appears after a launch or a return from the background (Phase 15) |
+| `viewCollection` | `collection` (its key, such as `modals` or `ablaut-gehen`), `source` (`family`, `sharedLink`, `deeplink`) | When a collection's page appears, once per arrival, or an ablaut group is expanded on the Ablaut page (Phase 16). The ideas document's "lists opened". The key names a fixed list, not anything the learner chose |
+| `tapShareCollection` | `collection` | When a collection's share button is tapped, whether or not the learner then shares (Phase 16) |
 | `tapRevealReviewCard` | None | When a tap reveals the review card's key conjugations, once per card (Phase 15). A page opened from the card then sends `viewVerbView` with `source` `reviewCard` |
-| `startQuiz`, `quitQuiz`, `completeQuiz` | `source` (`tab`, `myVerbs`, `verbPage`), added to their existing parameters | When a quiz starts, is quit, or is completed (`source` since Phase 13). Without it, three-question quizzes would inflate the completion rate of the 30-question quiz |
+| `startQuiz`, `quitQuiz`, `completeQuiz` | `source` (`tab`, `myVerbs`, `verbPage`, `list`), added to their existing parameters; `startQuiz` alone also carries `collection` for a collection's quiz (Phase 16) | When a quiz starts, is quit, or is completed (`source` since Phase 13). Without it, three-question quizzes would inflate the completion rate of the 30-question quiz |
 
 `VerbVisit` models one stretch of a verb page on screen, and `SearchTracker` and `SearchReport`
 model one search. A section counts as reached when a third of its block's first card is on screen
@@ -846,7 +880,7 @@ My Verbs scope, the list it was begun on.
 | `control` | Yes | The Random Verb control in Control Center; for `finishSearch`, the Find a Verb control |
 | `deeplink` | Yes | A `konjugieren://` link with no recognized `source` |
 | `lookup` | Yes | Look Up a Verb: the page it opens, or the search it opens when the word is ambiguous (Phase 11) |
-| `family` | Yes | A verb on a family's page |
+| `family` | Yes | A verb on a family's page, including an expanded ablaut group; for `viewCollection`, a collection opened from the Families tab |
 | `handoff` | Yes | Handoff from another device |
 | `infoLink` | Yes | A verb linked from an Info article |
 | `related` | Yes | A verb in a verb page's Related Verbs card, or in the full list it opens |
@@ -857,10 +891,10 @@ My Verbs scope, the list it was begun on.
 | `shortcut` | Yes | The Open Verb and Random Verb shortcuts |
 | `spotlight` | Yes | A Spotlight result |
 | `widget` | Yes | Any home-screen, lock-screen, or quiz widget |
-| `sharedLink` | Not planned | A link inside shared text. Phase 10's share text carries only the App Store link, as Josh chose on 2026-11-12, so nothing sends it unless a later change adds a `konjugieren://` or universal link |
+| `sharedLink` | Yes | `viewCollection` only: a collection's `list` link inside the text its share button sends (Phase 16). A verb's share text carries only the App Store link, as Josh chose on 2026-11-12 |
 | `myVerbs` | Yes | A verb in the verb list's My Verbs (Phase 12); for the quiz signals, a quiz over My Verbs (Phase 13) |
 | `recent` | Yes | A recent verb, listed while the search field is focused and empty (Phase 12) |
-| `list` | Phase 16 | A collection |
+| `list` | Yes | A verb on a featured collection's page; for the quiz signals, a collection's quiz (Phase 16) |
 | `reviewCard` | Yes | The review card, tapped after its conjugations are revealed (Phase 15) |
 | `tab` | Yes | A search begun in the Verbs tab (Phase 11); for the quiz signals, a quiz over every verb from the Quiz tab (Phase 13) |
 | `verbPage` | Yes | The quiz signals only: "Test me on this verb" (Phase 13) |

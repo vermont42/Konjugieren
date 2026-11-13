@@ -49,6 +49,13 @@ extension URL {
     deeplink(host: infoHost, target: info.stableKey, queryItems: [])
   }
 
+  /// `konjugieren://list/ablaut-gehen?source=sharedLink`.
+  static func listDeeplink(_ collection: VerbCollection, source: AnalyticsSource) -> URL? {
+    deeplink(host: listHost, target: collection.key, queryItems: [
+      URLQueryItem(name: sourceQueryName, value: source.rawValue),
+    ])
+  }
+
   private static func deeplink(host: String, target: String?, queryItems: [URLQueryItem?]) -> URL? {
     var components = URLComponents()
     components.scheme = deeplinkScheme
@@ -87,6 +94,7 @@ extension URL {
   static let familyHost = "family"
   static let infoHost = "info"
   static let searchHost = "search"
+  static let listHost = "list"
   static let sourceQueryName = "source"
   static let matchQueryName = "match"
   static let searchTextQueryName = "q"

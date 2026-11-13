@@ -199,3 +199,67 @@ Der Absatz über die Liste auf dem Gerät lautet nun:
 ```
 Die App führt eine Liste der Verben, die Sie geöffnet, und der Verben, die Sie mit einem Stern markiert haben, samt dem Tag, an dem jedes wieder zur Wiederholung ansteht, damit sie Ihre zuletzt geöffneten Verben, „Meine Verben“ und Wiederholungskarten zeigen kann. Die Liste bleibt auf Ihrem Gerät und wird nie gesendet.
 ```
+
+## Collections (browse plan, Phase 16, 2026-11-13)
+
+Adds the signals `viewCollection`, sent when a collection's page opens or an ablaut group is
+expanded, with which collection and whether it was opened in the Families tab or from a link, and
+`tapShareCollection`, with which collection. Adds `collection` to `startQuiz` for a quiz begun on
+a collection, and the `list` value to the quiz signals' `source`. A collection is one of the app's
+fixed lists, such as the modal verbs, so naming it says nothing the learner typed or chose beyond
+opening it. Phase 16 also began sending the `list` source for verb pages, which the first bullet
+of the lookup section covers with "for example". These lines replace the taps bullet as given in
+the review-card section above, the first quiz bullet as given in the My Verbs section, and the
+paragraph about the list kept on the device, since collections count the verbs in it.
+
+### English
+
+The bullet about taps in section 2 now reads:
+
+```
+- Taps on a few buttons: playing the game, rating or reviewing the app, showing the introduction, viewing the leaderboard, sending a message to the tutor, asking for an error to be explained, deleting the chat history, opening a conjugationgroup's article from a verb's page, sharing a verb's page, starring a verb or removing its star, testing yourself on a verb from its page, revealing the conjugations on a review card, and sharing a collection, with which collection
+```
+
+A new bullet follows the one about review cards:
+
+```
+- Which collection of verbs you opened, such as the modal verbs or an ablaut group, and whether you opened it in the app or from a shared link
+```
+
+The first quiz bullet in section 2 now reads:
+
+```
+- Quiz lifecycle events (starting, quitting, or completing a quiz), and where the quiz was begun: the quiz screen, your own verbs, a verb's page, or a collection, and which collection
+```
+
+The paragraph about the list kept on the device now reads:
+
+```
+The app keeps a list of the verbs you have opened and the verbs you have starred, with when each is next due for review, so that it can show your recent verbs, My Verbs, review cards, and how many verbs of each collection you have looked up. The list stays on your device and is never sent.
+```
+
+### German
+
+Der Punkt über das Antippen in Abschnitt 2 lautet nun:
+
+```
+- Das Antippen einiger Schaltflächen: das Spiel starten, die App bewerten oder rezensieren, die Einführung anzeigen, die Bestenliste ansehen, dem Tutor eine Nachricht senden, einen Fehler erklären lassen, den Chatverlauf löschen, den Artikel über eine Conjugationgroup von der Seite eines Verbs aus öffnen, die Seite eines Verbs teilen, ein Verb mit einem Stern markieren oder den Stern entfernen, sich auf der Seite eines Verbs zu diesem Verb abfragen lassen, die Konjugationen auf einer Wiederholungskarte aufdecken und eine Sammlung teilen, samt der Angabe, welche Sammlung
+```
+
+Ein neuer Punkt folgt dem über Wiederholungskarten:
+
+```
+- Welche Sammlung von Verben Sie geöffnet haben, etwa die Modalverben oder eine Ablautgruppe, und ob Sie sie in der App oder über einen geteilten Link geöffnet haben
+```
+
+Der erste Punkt über das Quiz in Abschnitt 2 lautet nun:
+
+```
+- Quiz-Lebenszyklus-Ereignisse (Starten, Abbrechen oder Abschließen eines Quiz) und wo das Quiz begonnen wurde: auf dem Quiz-Bildschirm, mit Ihren eigenen Verben, auf der Seite eines Verbs oder in einer Sammlung, samt der Angabe, welche Sammlung
+```
+
+Der Absatz über die Liste auf dem Gerät lautet nun:
+
+```
+Die App führt eine Liste der Verben, die Sie geöffnet, und der Verben, die Sie mit einem Stern markiert haben, samt dem Tag, an dem jedes wieder zur Wiederholung ansteht, damit sie Ihre zuletzt geöffneten Verben, „Meine Verben“, Wiederholungskarten und die Zahl der nachgeschlagenen Verben jeder Sammlung zeigen kann. Die Liste bleibt auf Ihrem Gerät und wird nie gesendet.
+```

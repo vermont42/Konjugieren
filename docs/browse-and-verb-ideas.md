@@ -992,6 +992,14 @@ link, and can start a quiz on itself.
 - **Signal.** Lists opened, and quizzes started from a list.
 - **Conjuguer and Conjugar.** Strongest for Conjuguer, because of schools.
 
+**Built on `main` 2026-11-13** by [Phase 16](../plans/browse-and-verb-implementation.md#phase-16-collections) of the implementation plan. A
+Collections section at the top of the Families tab holds the 100 most frequent verbs, the modal
+verbs, and the verbs that take sein; each of the 76 ablaut groups is a collection inside the Ablaut
+page, where an expanded group begins with the same bar. Each shows how many of its verbs have been
+looked up, starts an unranked 30-question quiz, and shares text with a `konjugieren://list/<key>`
+link and the App Store link. Signals: `viewCollection` (lists opened) and `startQuiz` with `source`
+`list` and the collection (quizzes started from a list), plus `tapShareCollection`.
+
 ### Smaller and Later Ideas
 
 Verdict: No.

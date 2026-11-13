@@ -148,6 +148,238 @@
         }
       }
     },
+    "VerbCollection.ablautGroupTitle %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ablautgruppe: %@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ablaut Group: %@"
+          }
+        }
+      }
+    },
+    "VerbCollection.heading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sammlungen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Collections"
+          }
+        }
+      }
+    },
+    "VerbCollection.lookedUp" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nachgeschlagen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Looked up"
+          }
+        }
+      }
+    },
+    "VerbCollection.modalsDescription" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verben der Fähigkeit, der Erlaubnis, der Notwendigkeit und des Willens, meist mit dem Infinitiv eines anderen Verbs: ich kann schwimmen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verbs of ability, permission, necessity, and will, usually paired with another verb's infinitive: ich kann schwimmen."
+          }
+        }
+      }
+    },
+    "VerbCollection.modalsTitle" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modalverben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modal Verbs"
+          }
+        }
+      }
+    },
+    "VerbCollection.progress %lld %lld" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld von %2$lld nachgeschlagen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld of %2$lld looked up"
+          }
+        }
+      }
+    },
+    "VerbCollection.quizHint %lld" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Startet ein Quiz mit %lld Fragen zu den Verben dieser Liste."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starts a %lld-question quiz on this list's verbs."
+          }
+        }
+      }
+    },
+    "VerbCollection.seinDescription" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verben, die das Perfekt mit sein bilden, wie in ist gegangen: meist Verben der Bewegung oder der Zustandsveränderung."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verbs that form the Perfekt with sein, as in ist gegangen: mostly verbs of motion or change of state."
+          }
+        }
+      }
+    },
+    "VerbCollection.seinTitle" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verben mit sein"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verbs with sein"
+          }
+        }
+      }
+    },
+    "VerbCollection.shareText %@ %@ %@ %@ %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ (%2$@): %3$@\n\nDiese Liste in Konjugieren öffnen:\n%4$@\n\nKonjugieren im App Store:\n%5$@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ (%2$@): %3$@\n\nOpen this list in Konjugieren:\n%4$@\n\nGet Konjugieren on the App Store:\n%5$@"
+          }
+        }
+      }
+    },
+    "VerbCollection.top100Description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Verben, die in deutschen Texten am häufigsten vorkommen, und die ersten, die man kennen sollte."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The verbs that turn up most often in German text, and the first to know."
+          }
+        }
+      }
+    },
+    "VerbCollection.top100Title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die 100 häufigsten Verben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "100 Most Frequent Verbs"
+          }
+        }
+      }
+    },
+    "VerbCollection.verbCount.%lld" : {
+      "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "1 Verb"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Verben"
+                }
+              }
+            }
+          }
+        },
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "1 verb"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld verbs"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "VerbView.star" : {
       "localizations" : {
         "de" : {

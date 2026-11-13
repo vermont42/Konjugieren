@@ -1010,6 +1010,57 @@ enum L {
     }
   }
 
+  enum VerbCollection {
+    static func ablautGroupTitle(_ exemplar: String) -> String {
+      String(localized: "VerbCollection.ablautGroupTitle \(exemplar)")
+    }
+
+    static var heading: String {
+      String(localized: "VerbCollection.heading")
+    }
+
+    static var lookedUp: String {
+      String(localized: "VerbCollection.lookedUp")
+    }
+
+    static var modalsDescription: String {
+      String(localized: "VerbCollection.modalsDescription")
+    }
+
+    static var modalsTitle: String {
+      String(localized: "VerbCollection.modalsTitle")
+    }
+
+    static func progress(opened: Int, total: Int) -> String {
+      String(localized: "VerbCollection.progress \(opened) \(total)")
+    }
+
+    static func quizHint(questionCount: Int) -> String {
+      String(localized: "VerbCollection.quizHint \(questionCount)")
+    }
+
+    static var seinDescription: String {
+      String(localized: "VerbCollection.seinDescription")
+    }
+
+    static var seinTitle: String {
+      String(localized: "VerbCollection.seinTitle")
+    }
+
+    static func shareText(title: String, count: Int, sample: String, link: String, appStoreLink: String) -> String {
+      let verbCount = String(localized: "VerbCollection.verbCount.\(count)")
+      return String(localized: "VerbCollection.shareText \(title) \(verbCount) \(sample) \(link) \(appStoreLink)")
+    }
+
+    static var top100Description: String {
+      String(localized: "VerbCollection.top100Description")
+    }
+
+    static var top100Title: String {
+      String(localized: "VerbCollection.top100Title")
+    }
+  }
+
   enum VerbView {
     static func allRelated(_ count: Int) -> String {
       String(localized: "VerbView.allRelated.\(count)")

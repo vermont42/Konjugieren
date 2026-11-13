@@ -10022,3 +10022,59 @@ offers a card at once rather than at the next launch. The schedule keeps running
 learner who turns the card back on after a month finds the verbs that came due meanwhile. The
 simulator showed the plist-flush lag a second time: the setting read as "on" straight after the
 tap that turned it off, while the screen already showed the card.
+
+## Collections: Something to Finish (2026-11-13)
+
+Phase 16 of the browse plan built idea D6: fixed lists of verbs as places to go. The verdict named
+four kinds, the 100 most frequent verbs, the modal verbs, the verbs that take sein, and each
+ablaut group, and said each should show how many of its verbs have been opened, share as a link,
+and start a quiz on itself. The reasoning in the ideas document was that a finite list gives a
+self-studier something to finish and a teacher something to assign.
+
+The plan asked for a proposal before any code, because the Families tab already lists the ablaut
+groups, and a second home for them would compete with the first. So the session read the tab,
+counted the lists, and put four questions to Josh. He took every recommendation. Collections went
+at the top of the Families tab, which became the tab of fixed lists without changing its name. The
+ablaut groups stayed where they were, and an expanded group now begins with a small bar: "3 of 70
+looked up", a progress bar, Quiz, and Share. The seven family pages stayed as they were. The
+featured three got pages of their own, built around the same bar.
+
+The counts shaped the design more than the code did. There are 6 modal verbs and 607 verbs that
+take sein, and the 76 ablaut groups run from bleiben's 126 verbs down to 18 groups of one: sein,
+tun, können, and their like. A progress bar over one verb is a little silly, but a quiz over one
+verb still works, since a scoped quiz draws with replacement, so every group got the bar. The sein
+count is 607 only in the northern standard. liegen, sitzen, and stehen take haben in Germany and
+sein in Austria and Switzerland, which the corpus marks as a regional auxiliary, so the collection
+follows the region setting and holds 610 verbs in the south. A teacher in Vienna and a student in
+Hamburg sharing the same link see lists that differ by exactly those three verbs, which seems the
+honest result.
+
+Sharing reopened a choice from Phase 10. A verb's share text carries only the App Store link,
+because a `konjugieren://` link may not be tappable in Messages and does nothing without the app.
+For a collection, though, the link is the point: the recipient should land on the list. Josh chose
+both links, so the text names the list, its first few verbs by frequency, a `list/<key>` link for
+someone who has the app, and the App Store link for someone who does not. That makes this the first
+use of the `sharedLink` source Phase 3 reserved two days earlier. The quiz link Phase 11 also
+reserved, `quiz/start?list=<key>`, was not built: a shared link opens the list, and Quiz is one tap
+away.
+
+One small trap surfaced in the code. `[Verb].sorted(by: .alphabetical)` returns its input
+unchanged, on the stated assumption that every caller hands it an alphabetical list. A collection
+built in frequency order would have made the Alphabetical segment silently do nothing, so the
+collections hand back their verbs alphabetically like everything else and sort by frequency only
+for display.
+
+Two traps surfaced in testing. Swift Testing evaluates a parameterized test's arguments off the
+main actor, and under this project's default main-actor isolation even `AblautGroupInfo.allGroups`
+is isolated, so those tests loop inside their bodies instead. And the deeplinks seemed broken: a
+link to the hängen group did nothing, and so did a link to a family page that had worked for
+months. Both simulators were booted, the iPhone and the iPad from Phase 15, and `simctl openurl
+booted` had been delivering every link to the iPad. Naming the iPhone's UDID fixed it at once, and
+the hängen group opened expanded and scrolled into view. When a long-working path fails alongside
+a new one, suspect the harness before the code.
+
+The German word for what this phase built is *Sammlung*, from *sammeln*, from Old High German
+*samanōn*, "to bring together", built on *saman*, "together", which also survives in *zusammen*
+and *samt*. It goes back to the Proto-Indo-European root *\*sem-*, "one, together", which gave
+English *same*, and by way of Latin *simul* also gave *assemble*. A collection is a set of verbs
+made one.

@@ -87,6 +87,7 @@ Konjugieren/
 │   ├── TutorChatHistory.swift  # Persistence for chat messages with the AI tutor
 │   ├── Reading.swift           # One sense of a verb: gloss, family, auxiliary, prefixes
 │   ├── Verb.swift              # Lemma: frequency, icon, and an ordered list of readings
+│   ├── VerbCollection.swift    # Collections (Phase 16 of the browse plan): the 100 most frequent verbs, the modal verbs, the verbs that take sein (by region), and each ablaut group; keys for `list/<key>` links, the share text, viewCollection, and QuizScope.collection
 │   ├── VerbDraw.swift          # The widget's verb of the day and every random verb: the top 1,000 weighted toward strong and unprefixed verbs, and My Verbs every third day (random: one draw in three)
 │   ├── VerbParser.swift        # XMLParser delegate for Verbs.xml, incl. the `in` marker grammar
 │   ├── VerbVisit.swift         # VerbDestination (a verb page to push, with its analytics source and the cells a search marked) and VerbVisit (one viewVerbView/leaveVerbView pair)
@@ -142,15 +143,15 @@ Konjugieren/
 │   └── WidgetSnapshotWriter.swift  # Generates and persists the 10-day widget bundle from VerbDraw, keeping the verb the widget shows today
 └── Views/
     ├── ErrorExplainerView.swift # AI-generated explanations for conjugation errors
-    ├── FamilyBrowseView.swift  # Browseable list of verb families, prefixes, and ablaut groups
-    ├── FamilyDetailView.swift  # Detail view for a single family/prefix/ablaut category; an Alphabetical/Frequency control orders the verbs within each section
+    ├── FamilyBrowseView.swift  # The Families tab: a Collections section (rows; three cards on iPad) above the verb families, prefixes, and ablaut groups; opens a `list/<key>` link's collection
+    ├── FamilyDetailView.swift  # Detail view for a single family/prefix/ablaut category; an Alphabetical/Frequency control orders the verbs within each section; an expanded ablaut group starts with its VerbCollectionBar and checks the verbs looked up, and a link opens the page with its group expanded
     ├── GameView.swift          # Space-invaders-like verb conjugation game
     ├── GermanLetterKeyRow.swift # ä ö ü ß keys shown above the keyboard; search uses it, the quiz answer field can adopt it
     ├── InfoBrowseView.swift    # List of Info articles (dedication, history, etc.)
     ├── InfoView.swift          # Detail view for a single Info article
     ├── MainTabView.swift       # Root TabView with five tabs
     ├── OnboardingView.swift    # Multi-page onboarding shown on first launch
-    ├── QuizView.swift          # Quiz gameplay: questions, timer, answer input; the Quiz tab's start screen (a big yellow symbol for the scope, its name and description, the All Verbs/My Verbs picker, Start, three fact tiles, and My Verbs' verbs as chips, scaled up on iPad); with a sheetScope, the sheet of "Test me on this verb", which starts as it appears and closes when the quiz ends
+    ├── QuizView.swift          # Quiz gameplay: questions, timer, answer input; the Quiz tab's start screen (a big yellow symbol for the scope, its name and description, the All Verbs/My Verbs picker, Start, three fact tiles, and My Verbs' verbs as chips, scaled up on iPad); with a sheetScope, a quiz in a sheet (QuizSheet: "Test me on this verb" or a collection's quiz), which starts as it appears and closes when the quiz ends
     ├── RelatedVerbsView.swift  # The verb page's Related Verbs card (chips in a FlowLayout, which can also center its rows, as the Quiz tab's My Verbs chips do), RelatedVerbListView (every verb of one relation), and VerbPagePush, the environment action by which a verb page pushes onto whichever tab's stack shows it
     ├── ResultsView.swift       # Modal showing quiz results, and the leaderboard button after a ranked quiz
     ├── ReviewCardView.swift    # The review card above the verb list: a verb looked up days ago, its key conjugations hidden until a tap reveals them; a second tap opens the page, and ✕ dismisses
@@ -159,6 +160,7 @@ Konjugieren/
     ├── TutorTestView.swift     # Debug view for testing the AI tutor
     ├── TutorView.swift         # Chat interface for the AI tutor with sample queries
     ├── VerbBrowseView.swift    # Searchable, sortable list of all verbs; the letter row replaces the sort picker while search is focused; a result found by a conjugation says which cells matched, and separable verbs in which the query is a stranded part fold into one row (a grid section on iPad); a failed search shows a guess and a mail link; Return and the arrow keys open and move through results on iPad and Mac; the focused, empty field shows the recent verbs, and the picker's My Verbs is a List of starred, then recent, verbs, each deletable by a left swipe (a starred one after a confirmation); each launch and each return from the background shows the review card above the list when a verb is due
+    ├── VerbCollectionView.swift # A featured collection's page; VerbCollectionBar ("3 of 100 looked up", a progress bar, Quiz, and Share), which the expanded ablaut groups share; the Families tab's VerbCollectionRow and VerbCollectionCard
     └── VerbView.swift          # Verb detail showing all conjugations; a search result opens it on the matched reading, scrolled to the matched section, with the matched rows tinted; ends with the Related Verbs card; the bar holds Test Me (a three-question quiz in a sheet), the star, and Share; each arrival records an open in the learner's verbs
 
 KonjugierenWidget/
@@ -226,6 +228,7 @@ KonjugierenTests/
 │   ├── ReviewScheduleTests.swift # The review ladder: due the next morning, the boxes, snoozes, a re-lookup back to the first box, an open from the card, an entry from before the schedule, the store's choice of verb
 │   ├── RelatedVerbsTests.swift # Verb.root through nested prefixes, verbs built on a root, ablaut relatives (one per root), family pages, per-reading relations, [Verb].sorted(by:)
 │   ├── RefusalDetectionTests.swift # Tutor refusal-phrase detection, incl. the "null" exact-match false-positive guard
+│   ├── VerbCollectionTests.swift # Collections: keys, members (modals, the top 100, sein by region, ablaut groups as on the Ablaut page), share text, the quiz scope, the store's count of verbs looked up
 │   ├── VerbDrawTests.swift     # Frequency bands, and VerbDraw: weights, My Verbs every third day and in turn, stability through a day, the favored share
 │   ├── VerbLookupTests.swift   # Look Up a Verb: what it says about infinitives, conjugations, ambiguous and unknown words, and where it opens the app
 │   ├── VerbSearchTests.swift   # VerbSearch: folding, match-kind ranking, the ideas doc's failed queries, list/picker agreement, the failed-search guess

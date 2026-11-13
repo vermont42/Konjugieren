@@ -24,6 +24,24 @@ struct LearnerVerbsTests {
     #expect(entry?.isStarred == false)
   }
 
+  @Test func hasOpenedCountsOpensNotStars() {
+    var record = LearnerVerbs()
+    record.recordOpen("gehen", at: date(1))
+    record.setStarred(true, infinitiv: "sein", at: date(2))
+
+    #expect(record.hasOpened("gehen"))
+    #expect(!record.hasOpened("sein"))
+    #expect(!record.hasOpened("haben"))
+  }
+
+  @Test func clearRecentsForgetsWhatWasOpened() {
+    var record = LearnerVerbs()
+    record.recordOpen("gehen", at: date(1))
+    record.clearRecents()
+
+    #expect(!record.hasOpened("gehen"))
+  }
+
   @Test func recentIsNewestFirst() {
     var record = LearnerVerbs()
     record.recordOpen("gehen", at: date(1))

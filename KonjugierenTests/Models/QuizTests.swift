@@ -586,6 +586,32 @@ struct QuizTests {
     #expect(!QuizScope.verbPage(Verb.verbs["gehen"]!, readingIndex: 0).isRanked)
   }
 
+  @Test func collectionQuizNamesItsCollection() {
+    let spy = Current.analytics as! AnalyticsSpy
+    let initialCount = spy.signalNames.count
+    let quiz = Quiz(timerInterval: 0.001)
+    quiz.start(scope: .collection(.modals))
+    quiz.quit()
+
+    let signals = zip(spy.signalNames, spy.signalParameters).dropFirst(initialCount)
+    let parameters = signals.first { $0.0 == .startQuiz }?.1
+    #expect(parameters?[ParameterKey.source.rawValue] == "list")
+    #expect(parameters?[ParameterKey.collection.rawValue] == "modals")
+    #expect(quiz.questions.allSatisfy { VerbCollection.modalInfinitives.contains($0.verb.infinitiv) })
+  }
+
+  @Test func onlyACollectionQuizNamesACollection() {
+    let spy = Current.analytics as! AnalyticsSpy
+    let initialCount = spy.signalNames.count
+    let quiz = Quiz(timerInterval: 0.001)
+    quiz.start(scope: .myVerbs([Verb.verbs["gehen"]!]))
+    quiz.quit()
+
+    let signals = zip(spy.signalNames, spy.signalParameters).dropFirst(initialCount)
+    let parameters = signals.first { $0.0 == .startQuiz }?.1
+    #expect(parameters?[ParameterKey.collection.rawValue] == nil)
+  }
+
   @Test(arguments: ["tab", "myVerbs", "verbPage"])
   func quizSignalsCarryTheSource(sourceName: String) {
     let gehen = Verb.verbs["gehen"]!

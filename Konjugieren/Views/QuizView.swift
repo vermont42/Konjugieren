@@ -67,7 +67,7 @@ struct QuizView: View {
           isTextFieldFocused = true
         }
       }
-      .navigationTitle(sheetScope?.verbs?.first?.infinitiv.inUserRegion ?? L.Navigation.quiz)
+      .navigationTitle(sheetScope?.title ?? L.Navigation.quiz)
       .navigationBarTitleDisplayMode(sheetScope == nil ? .automatic : .inline)
     }
     .sheet(isPresented: $quiz.shouldShowResults, onDismiss: {
@@ -459,6 +459,21 @@ private struct QuizFactTile: View {
 }
 
 /// What the Quiz tab's picker offers. A quiz over one verb starts from that verb's page instead.
+/// A quiz in a sheet, such as "Test me on this verb" or a collection's quiz, so the learner
+/// closes it onto the page it was started from. A quiz in the Quiz tab is a separate quiz and
+/// carries on. While a question waits, the sheet closes only through Quit, so every quiz started
+/// here ends with `quitQuiz` or `completeQuiz`.
+struct QuizSheet: View {
+  let scope: QuizScope
+  @State private var quiz = Quiz()
+
+  var body: some View {
+    QuizView(sheetScope: scope)
+      .environment(quiz)
+      .interactiveDismissDisabled(quiz.isInProgress)
+  }
+}
+
 enum TabQuizScope: CaseIterable {
   case allVerbs
   case myVerbs

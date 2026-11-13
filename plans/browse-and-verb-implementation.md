@@ -29,7 +29,7 @@ that Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until
 | 13 | Done | 2026-11-13 | `37bb963` | D2's quiz scope, D3 |
 | 14 | Done | 2026-11-13 | `7a7d8ca` | D5 |
 | 15 | Done | 2026-11-13 | `65d5eb6` | D4 |
-| 16 | Not started | | | D6 |
+| 16 | Awaiting Josh | 2026-11-13 | | D6 |
 | Closing | Not started | | | |
 
 ## How to Work This Plan
@@ -1092,6 +1092,50 @@ a link, and can start a quiz on itself. The Families tab already lists ablaut gr
 to Josh where collections live and how they relate to that tab before building.
 
 **How it differed:**
+
+- **Josh's answers (2026-11-13), to the proposal made before building.** Collections live at the
+  top of the Families tab, which keeps its name. Each ablaut group is a collection inside the
+  Ablaut page: an expanded group begins with a bar ("3 of 70 looked up", a progress bar, Quiz, and
+  Share) rather than getting a page of its own, and all 76 groups have it, the 18 single-verb
+  groups included. A shared collection carries both its `konjugieren://list/<key>` link and the
+  App Store link. The seven family pages did not become collections.
+- **The model** is `VerbCollection` (`.top100`, `.modals`, `.sein`, `.ablautGroup(_:)`), keyed
+  `top100`, `modals`, `sein`, and `ablaut-<exemplar>`. Its verbs arrive alphabetically, as every
+  list's do, because `[Verb].sorted(by: .alphabetical)` keeps the order it is given; a collection's
+  page and its share text sort by frequency. The sein collection follows the region setting, so
+  liegen, sitzen, and stehen join it in Austria and Switzerland (607 verbs northern, 610 southern),
+  and a verb counts if any reading takes sein, so fahren is in.
+- **Progress** counts verbs with a last open (`LearnerVerbs.hasOpened`), shown as "3 of 100
+  looked up", with a check on each row looked up, matching the review card's "Looked up". A star
+  alone does not count, and Clear in My Verbs resets every collection's progress, since it forgets
+  the opens.
+- **The quiz** is a 30-question unranked `QuizScope.collection(_:)` in the same sheet as Test Me,
+  which moved out of `VerbView` as `QuizSheet`. `QuizScope` gained `title`, which the sheet shows
+  in place of the first verb's infinitive, and `collectionKey`. Being 30 questions, it starts a Live
+  Activity and counts toward `ChangeDifficultyTip`, as a My Verbs quiz does.
+- **Not built: `quiz/start?list=<key>`**, which Phase 11 reserved. A shared link opens the
+  collection, where Quiz is one tap, so the quiz route needed nothing new. The reservation is
+  removed from `docs/feature-architecture.md`.
+- **Sources.** A collection opened in the Families tab, or an ablaut group expanded there, is
+  `family`; a shared link is `sharedLink`, its first use; other links are `deeplink`. A verb opened
+  from a featured collection's page is `list`, but one opened from an expanded ablaut group stays
+  `family`, as before this phase, since that page is still a family page.
+- **The share sheet anchors to its button** on iPad: `ShareSheet.present` takes an `anchorRect`,
+  because the bar's Share button is in the page, not the navigation bar. On iOS 26 the iPhone's
+  sheet then floats beside the button too.
+- **Analytics.** `viewCollection` (`collection`, `source`), `tapShareCollection` (`collection`),
+  and `collection` on `startQuiz`. Privacy lines are staged.
+- **How it was tested.** 15 new `@Test` functions in `VerbCollectionTests`, 2 in
+  `LearnerVerbsTests`, 5 in `DeeplinkTests`, and 2 in `QuizTests`: 490 in all. In the iPhone 17
+  simulator: the Collections section above the families; the top-100 page, with sein checked;
+  werden opened and the count rising from 2 to 3 of 100 on the way back; the quiz sheet titled
+  "100 Most Frequent Verbs" with 30 dots; `list/ablaut-hängen` opening the Ablaut page with hängen
+  expanded and scrolled to; `list/modals` opening Modal Verbs; and the text the share sheet's Copy
+  produced. On the iPad Pro 11-inch (M5) in light mode, the three cards side by side and the
+  collection page's grid with checks. A trap met on the way: with both simulators booted,
+  `simctl openurl booted` sent every link to the iPad, so links must name the device's UDID. Not
+  tried: VoiceOver, a German-language device, Dynamic Type at large sizes, sharing into Messages,
+  and a device.
 
 ## Closing
 

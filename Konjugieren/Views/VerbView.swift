@@ -233,7 +233,7 @@ struct VerbView: View {
       ConjugationgroupArticleSheet(info: info)
     }
     .sheet(isPresented: $isTestingVerb) {
-      VerbQuizSheet(scope: .verbPage(verb, readingIndex: readingIndex))
+      QuizSheet(scope: .verbPage(verb, readingIndex: readingIndex))
     }
     .onDisappear {
       isOnScreen = false
@@ -672,21 +672,6 @@ struct ConjugationSectionView: View {
       .germanPronunciation()
     }
     .konjCardWithAccentBar()
-  }
-}
-
-/// "Test me on this verb": three questions about the reading on screen, in a sheet, so the
-/// learner closes it onto the same page. A quiz in the Quiz tab is a separate quiz and carries on.
-/// While a question waits, the sheet closes only through Quit, so every quiz started here ends
-/// with `quitQuiz` or `completeQuiz`.
-private struct VerbQuizSheet: View {
-  let scope: QuizScope
-  @State private var quiz = Quiz()
-
-  var body: some View {
-    QuizView(sheetScope: scope)
-      .environment(quiz)
-      .interactiveDismissDisabled(quiz.isInProgress)
   }
 }
 

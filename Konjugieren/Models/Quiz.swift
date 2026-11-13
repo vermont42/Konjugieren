@@ -87,9 +87,11 @@ class Quiz {
     }
     Current.soundPlayer.play(Sound.randomGun)
     HapticPlayer.playMediumImpact()
-    Current.analytics.signal(name: .startQuiz, parameters: [
-      ParameterKey.source.rawValue: scope.source.rawValue
-    ])
+    var parameters = [ParameterKey.source.rawValue: scope.source.rawValue]
+    if let collectionKey = scope.collectionKey {
+      parameters[ParameterKey.collection.rawValue] = collectionKey
+    }
+    Current.analytics.signal(name: .startQuiz, parameters: parameters)
     announceQuestion()
   }
 
@@ -493,6 +495,12 @@ struct QuizScope {
   let questionCount: Int
   let source: AnalyticsSource
 
+  /// What a quiz in a sheet shows as its title. Nil for the Quiz tab, which is titled Quiz.
+  var title: String?
+
+  /// The collection a quiz was started from, which `startQuiz` names (Phase 16).
+  var collectionKey: String?
+
   /// Only a full quiz over every verb posts to the leaderboard, as Josh decided on 2026-11-13:
   /// a score over a learner's own verbs, or over three questions, compares with nothing.
   var isRanked: Bool {
@@ -508,7 +516,7 @@ struct QuizScope {
   }
 
   static func verbPage(_ verb: Verb, readingIndex: Int) -> QuizScope {
-    QuizScope(verbs: [verb], readingIndex: readingIndex, questionCount: verbPageQuestionCount, source: .verbPage)
+    QuizScope(verbs: [verb], readingIndex: readingIndex, questionCount: verbPageQuestionCount, source: .verbPage, title: verb.infinitiv.inUserRegion)
   }
 }
 

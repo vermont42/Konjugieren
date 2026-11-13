@@ -35,6 +35,15 @@ final class LearnerVerbStore {
     record.isStarred(verb.infinitiv)
   }
 
+  func hasOpened(_ verb: Verb) -> Bool {
+    record.hasOpened(verb.infinitiv)
+  }
+
+  /// How many of the verbs have been opened, which a collection shows as its progress.
+  func openedCount(of verbs: [Verb]) -> Int {
+    verbs.count { record.hasOpened($0.infinitiv) }
+  }
+
   /// The verb the review card offers: the longest overdue.
   func verbDueForReview(at date: Date = .now) -> Verb? {
     record.dueForReview(at: date).lazy.compactMap { Verb.verbs[$0] }.first

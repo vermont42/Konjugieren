@@ -27,6 +27,22 @@ struct FamilyBrowseView: View {
           .padding(.horizontal)
 
         if sizeClass == .regular {
+          sectionHeading(L.VerbCollection.heading)
+
+          HStack(alignment: .top, spacing: Layout.doubleDefaultSpacing) {
+            ForEach(VerbCollection.featured) { collection in
+              NavigationLink(value: VerbCollectionRequest(collection: collection, source: .family)) {
+                VerbCollectionCard(collection: collection)
+              }
+              .buttonStyle(.plain)
+              .accessibilityIdentifier("collection_row_\(collection.key)")
+            }
+          }
+          .fixedSize(horizontal: false, vertical: true)
+          .padding(.horizontal)
+
+          sectionHeading(L.Navigation.families)
+
           LazyVGrid(columns: [GridItem(.adaptive(minimum: Layout.showcaseCardGridMinimum))], spacing: Layout.doubleDefaultSpacing) {
             ForEach(BrowseableFamily.allCases) { family in
               NavigationLink(value: family) {
@@ -48,6 +64,21 @@ struct FamilyBrowseView: View {
           }
         } else {
           LazyVStack(spacing: 0) {
+            sectionHeading(L.VerbCollection.heading)
+
+            ForEach(VerbCollection.featured) { collection in
+              NavigationLink(value: VerbCollectionRequest(collection: collection, source: .family)) {
+                VerbCollectionRow(collection: collection)
+              }
+              .buttonStyle(.plain)
+              .accessibilityIdentifier("collection_row_\(collection.key)")
+
+              Divider()
+                .padding(.leading)
+            }
+
+            sectionHeading(L.Navigation.families)
+
             ForEach(BrowseableFamily.allCases) { family in
               NavigationLink(value: family) {
                 FamilyRowView(family: family)
@@ -66,14 +97,26 @@ struct FamilyBrowseView: View {
       .navigationDestination(for: BrowseableFamily.self) { family in
         FamilyDetailView(family: family) { verb in navigationPath.append(VerbDestination(verb: verb, source: .family)) }
       }
+      .navigationDestination(for: VerbCollectionRequest.self) { request in
+        switch request.collection {
+        case .ablautGroup:
+          FamilyDetailView(family: .ablaut, collectionRequest: request) { verb in navigationPath.append(VerbDestination(verb: verb, source: .family)) }
+        default:
+          VerbCollectionView(collection: request.collection, source: request.source) { verb in navigationPath.append(VerbDestination(verb: verb, source: .list)) }
+        }
+      }
       .navigationDestination(for: VerbDestination.self) { destination in
         VerbView(verb: destination.verb, source: destination.source)
       }
       .navigationDestination(for: RelatedVerbListDestination.self) { destination in
         RelatedVerbListView(destination: destination)
       }
-      .onAppear { navigateToDeeplinkedFamily() }
+      .onAppear {
+        navigateToDeeplinkedFamily()
+        navigateToDeeplinkedCollection()
+      }
       .onChange(of: world.family) { navigateToDeeplinkedFamily() }
+      .onChange(of: world.collection) { navigateToDeeplinkedCollection() }
     }
     .environment(\.verbPagePush, VerbPagePush { navigationPath.append($0) })
   }
@@ -83,6 +126,24 @@ struct FamilyBrowseView: View {
     navigationPath = NavigationPath()
     navigationPath.append(family)
     world.family = nil
+  }
+
+  private func navigateToDeeplinkedCollection() {
+    guard let request = world.collection else { return }
+    navigationPath = NavigationPath()
+    navigationPath.append(request)
+    world.collection = nil
+  }
+
+  private func sectionHeading(_ text: String) -> some View {
+    Text(text)
+      .font(.title3.bold())
+      .foregroundStyle(.customYellow)
+      .frame(maxWidth: .infinity, alignment: .leading)
+      .padding(.horizontal)
+      .padding(.top, Layout.doubleDefaultSpacing)
+      .padding(.bottom, Layout.defaultSpacing)
+      .accessibilityAddTraits(.isHeader)
   }
 }
 

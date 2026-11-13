@@ -52,29 +52,6 @@ extension Verb {
 }
 
 extension Conjugationgroup {
-  /// Every cell of a verb's tables, in the verb page's order.
-  static let allCells: [Conjugationgroup] = {
-    let finite: [(PersonNumber) -> Conjugationgroup] = [
-      Conjugationgroup.präsensIndikativ,
-      Conjugationgroup.präteritumIndikativ,
-      Conjugationgroup.präsensKonjunktivI,
-      Conjugationgroup.präteritumKonjunktivII,
-    ]
-    let compound: [(PersonNumber) -> Conjugationgroup] = [
-      Conjugationgroup.perfektIndikativ,
-      Conjugationgroup.perfektKonjunktivI,
-      Conjugationgroup.plusquamperfektIndikativ,
-      Conjugationgroup.plusquamperfektKonjunktivII,
-      Conjugationgroup.futurIndikativ,
-      Conjugationgroup.futurKonjunktivI,
-      Conjugationgroup.futurKonjunktivII,
-    ]
-    return [.perfektpartizip, .präsenspartizip]
-      + finite.flatMap { PersonNumber.allCases.map($0) }
-      + PersonNumber.imperativPersonNumbers.map(Conjugationgroup.imperativ)
-      + compound.flatMap { PersonNumber.allCases.map($0) }
-  }()
-
   /// Nil for a participle, which has no person.
   var personNumber: PersonNumber? {
     switch self {

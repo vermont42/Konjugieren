@@ -5543,6 +5543,70 @@
         }
       }
     },
+    "Tips.redLettersMessage" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein roter Buchstabe zeigt eine Unregelmäßigkeit: einen durch Ablaut veränderten Vokal oder eine Endung, die ein regelmäßiges Verb wie machen nicht hätte."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A red letter marks an irregularity: a vowel changed by ablaut, or an ending that a regular verb like machen would not have."
+          }
+        }
+      }
+    },
+    "Tips.redLettersTitle" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rote Buchstaben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Red Letters"
+          }
+        }
+      }
+    },
+    "Tips.scrollToBottomMessage" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unter den Konjugationen erfährst du, woher das Verb stammt, und siehst es in einem Beispielsatz."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Below the conjugations, the page tells where the verb comes from and shows it in an example sentence."
+          }
+        }
+      }
+    },
+    "Tips.scrollToBottomTitle" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weiter nach unten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keep Scrolling"
+          }
+        }
+      }
+    },
     "Tips.tryQuizMessage" : {
       "localizations" : {
         "de" : {
@@ -6185,6 +6249,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Matches your search"
+          }
+        }
+      }
+    },
+    "VerbView.openArticle" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Artikel lesen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Read the article"
+          }
+        }
+      }
+    },
+    "VerbView.secondName %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "auch %@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "also %@"
           }
         }
       }

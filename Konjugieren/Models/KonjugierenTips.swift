@@ -78,3 +78,45 @@ struct TryQuizTip: Tip {
     MaxDisplayCount(1)
   }
 }
+
+/// Explains the verb page's red letters. It stays until the learner closes it, and appears
+/// only on a page that has red letters, since machen's page would leave it nothing to point at.
+struct RedLettersTip: Tip {
+  var title: Text {
+    Text("Tips.redLettersTitle")
+  }
+
+  var message: Text? {
+    Text("Tips.redLettersMessage")
+  }
+
+  var image: Image? {
+    Image(systemName: "character.cursor.ibeam")
+  }
+}
+
+/// Points to the etymology and the example sentence at the bottom of the verb page. It waits
+/// until a page visit after `RedLettersTip` was closed, so the two never appear one straight
+/// after the other, and the page invalidates it once the learner scrolls that far unprompted.
+struct ScrollToBottomTip: Tip {
+  @Parameter
+  static var isUnlocked: Bool = false
+
+  var title: Text {
+    Text("Tips.scrollToBottomTitle")
+  }
+
+  var message: Text? {
+    Text("Tips.scrollToBottomMessage")
+  }
+
+  var image: Image? {
+    Image(systemName: "arrow.down.to.line")
+  }
+
+  var rules: [Rule] {
+    #Rule(Self.$isUnlocked) {
+      $0 == true
+    }
+  }
+}

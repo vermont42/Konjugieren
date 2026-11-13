@@ -5,6 +5,11 @@ import SwiftUI
 struct InfoView: View {
   let info: Info
 
+  /// Where the article's links to other articles and to verbs go. Nil hands them to
+  /// `Current.handleURL`, which opens an article in the Info tab and a verb in the Verbs tab.
+  /// An article opened from a verb page passes its own, so that the learner stays there.
+  var openLink: ((URL) -> Void)?
+
   var body: some View {
     ZStack {
       Color.customBackground
@@ -73,19 +78,27 @@ struct InfoView: View {
 
     if let infoIndex = Info.headingToIndex(heading: cleaned) {
       if let infoURL = URL(string: "\(URL.konjugierenURLPrefix)\(URL.infoHost)/\(infoIndex)") {
-        Current.handleURL(infoURL)
+        open(infoURL)
       }
       return .handled
     }
 
     if Verb.verbs[cleaned] != nil {
       if let verbURL = URL.verbDeeplink(cleaned, source: .infoLink) {
-        Current.handleURL(verbURL)
+        open(verbURL)
       }
       return .handled
     }
 
     return .systemAction
+  }
+
+  private func open(_ url: URL) {
+    if let openLink {
+      openLink(url)
+    } else {
+      Current.handleURL(url)
+    }
   }
 
   private func cleanURLString(_ input: String) -> String {

@@ -709,6 +709,15 @@ letters once.
 - **Signal.** The deepest section reached, and Info articles opened from a verb page.
 - **Conjuguer and Conjugar.** Conjugar shows 20 tenses in one list and would gain the most.
 
+**Built on `main` 2026-11-12** by [Phase 7](../plans/browse-and-verb-implementation.md#phase-7-the-verb-pages-sections)
+of the implementation plan, as Josh's verdict has it. Each block is ordered by a count of the
+text corpus, written up in [`conjugationgroup-frequency.md`](conjugationgroup-frequency.md): Präsens
+Indikativ, Präteritum Indikativ, Präteritum Konjunktiv II, Präsens Konjunktiv I, Imperativ, and then
+the two participles, which Josh placed last in the block for the page's look; then Perfekt Indikativ, Futur Indikativ, Plusquamperfekt Indikativ, Futur
+Konjunktiv II, Plusquamperfekt Konjunktiv II, Perfekt Konjunktiv I, Futur Konjunktiv I. Every
+section stays visible. Each heading carries a textbook's name ("also Partizip II") and an ⓘ button
+that opens its Info article, and a tip explains the red letters once.
+
 #### B4. Related Verbs
 
 Verdict: Yes.
@@ -736,6 +745,11 @@ present for every verb, and they sit 3,160 and 3,920 points down.
 - **Effort.** S to M. It needs a short version of each etymology.
 - **Signal.** The deepest section reached. Measure before building.
 - **Conjuguer and Conjugar.** The same, since both place them at the bottom.
+
+**Built on `main` 2026-11-12** by [Phase 7](../plans/browse-and-verb-implementation.md#phase-7-the-verb-pages-sections)
+of the implementation plan, the tip only: once the red-letter tip is closed, a later verb page
+shows a "Keep Scrolling" tip pointing to the etymology and the example sentence. It retires itself
+if the learner scrolls that far first.
 
 #### B6. Copy and Share
 

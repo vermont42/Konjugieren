@@ -146,6 +146,11 @@ The Info system provides educational content about German verb conjugation, the 
 5. **Conjugationgroup guides** - One article per conjugationgroup (Perfektpartizip, Präsens Indikativ, etc.)
 6. **Credits** - App credits and developer info (with photo)
 
+The verb page opens each conjugationgroup's article from the ⓘ button beside its heading
+(`ConjugationTable.article`, matched by `stableKey`), in a sheet over the page. A link inside that
+sheet to another article opens it in the same sheet; a link to a verb closes the sheet and goes
+through `Current.handleURL`. `InfoView.openLink` is the hook that makes the difference.
+
 ### Rich Text Pipeline
 
 ```
@@ -262,6 +267,13 @@ builds the tool and runs it with `--forms-json`. Until 2026-11-12 a gated test h
 `CorpusFormsDumpTests`, wrote that file. The tool's first output was byte-identical to the
 harness's last, and the harness was deleted, so the pipelines and the app's search share one
 writer.
+
+### `--cells-json`
+
+A third output, added 2026-11-12 for Phase 7 of the browse plan: every one-word conjugation with
+its conjugationgroup and its verb's auxiliary (`ConjugationMapTool/CellsJSON.swift`).
+`scripts/count_conjugationgroups.py` reads it to count conjugationgroups in the corpus; see
+[`conjugationgroup-frequency.md`](conjugationgroup-frequency.md). Nothing in the app reads it.
 
 ### Which Conjugations Equal a Text
 
@@ -554,11 +566,14 @@ Counts and durations go out in bands (`AnalyticsBand`), never as exact numbers.
 | `viewVerbView` | `source` | When a verb page appears: on arrival, and again with `source` `resume` after the page returns from another tab, a pushed page, or the background |
 | `leaveVerbView` | `deepestSection` (`header`, `simple`, `compound`, `etymology`, `example`), `dwell` (`0-5s`, `5-15s`, `15-60s`, `60s+`) | Exactly once for each `viewVerbView`: when the page leaves the screen or the app goes to the background |
 | `finishSearch` | `outcome` (`opened`, `abandoned`, `noResult`), `queryLength` (`1-2`, `3-5`, `6-9`, `10+`), `resultCount` (`0`, `1`, `2-10`, `11+`), `matchKind`, `resultPosition` (`1`, `2-5`, `6+`, `none`) | Once per search: when a result or the guess is opened, the field is cleared, or the app goes to the background with text in the field |
+| `tapConjugationgroupArticle` | None | When the ⓘ button beside a verb page's conjugationgroup heading opens that conjugationgroup's article. The article itself also sends `viewInfoView` |
 
 `VerbVisit` models one stretch of a verb page on screen, and `SearchTracker` and `SearchReport`
 model one search. A section counts as reached when a third of its block's first card is on screen
-(`onScrollVisibilityChange`); `simple` is the Perfektpartizip card and `compound` the Perfekt
-Indikativ card. Returning to the results and opening another verb without editing the text sends
+(`onScrollVisibilityChange`); `simple` is the Präsens Indikativ card and `compound` the Perfekt
+Indikativ card, the first of each block in `ConjugationTable`. Until Phase 7 of the browse plan
+reordered the page (2026-11-12), `simple` was the Perfektpartizip card, which sat higher, so
+`header` alone is likelier than before. Returning to the results and opening another verb without editing the text sends
 no second `finishSearch`. An abandoned search's `matchKind` is that of the top result it passed
 over.
 

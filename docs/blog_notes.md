@@ -9585,3 +9585,61 @@ temporary file that nothing ever opened. Its real consumer, `generate_verb_pdf.p
 `/tmp/konjugieren-export.json`, a path the harness had stopped writing to at some point. Gating it
 on an output path fixed both problems at once: an ordinary run skips it, and a deliberate one
 writes where the PDF script looks.
+
+## Counting Conjugationgroups to Order the Verb Page (2026-11-12)
+
+Phase 7 of the browse plan asked a question I had not seen this project ask before: how often
+does each conjugationgroup actually occur? Josh wanted the verb page's simple conjugationgroups
+ordered by use, and then its compound ones, and he accepted in advance that the answer would vary
+by register. The corpus under `corpus/` was the sample: Goethe, Kafka, Grimm, Nietzsche, the
+Luther Bible, the Grundgesetz, federal reports, three Bundestag plenary protocols, and a handful
+of BSI and Wikipedia pages on computer security.
+
+There was no tagger to lean on, since spaCy is not installed, and it turned out not to be needed.
+The app already knows every conjugation of every verb it carries, so I gave the conjugation-map
+tool a third output: every one-word conjugation with its conjugationgroup and its verb's
+auxiliary. A Python script then reads the texts against that table. The auxiliary is the clever
+part, and it came from German itself: "ist gegangen" is a Perfekt and "ist gemacht" is a
+Zustandspassiv, and the only difference is that gehen takes sein and machen takes haben. Pairing
+an auxiliary with a participle counts only when the participle's verb takes that auxiliary.
+
+The first run was wrong in instructive ways, and each fix came from reading the commonest words
+behind a count rather than the count itself. The Imperativ was inflated by mein, schon, and ziel,
+and, more interestingly, by gilt and liegt. Those are V2 main clauses after a fronted subordinate
+clause ("Wenn das so ist, gilt …"), whose verb opens its clause just as an Imperativ does. Only
+the start of a sentence counts now. Ziel, Reich, and Werte at the start of a sentence are nouns,
+and the corpus says so: it capitalizes them mid-sentence. The Konjunktiv I was inflated by
+Luther's "Sehet die Vögel unter dem Himmel an" and its cousins, archaic ihr forms that happen to
+share the Konjunktiv I spelling. Futur II came out as exactly zero, which was a bug, not a
+finding: I had excluded haben and sein from the infinitive partners. And "müssen gesichert
+werden" was counting as a Futur until a modal in the clause marked werden as an infinitive.
+
+The results are unsurprising at the top and interesting at the bottom. Präsens Indikativ is 70%
+of the simple block and Präteritum Indikativ 15%, though the Präteritum is a third of the literary
+folder and under a tenth of the Bundestag's, which is the written/spoken split every grammar
+describes. In the compound block, Perfekt Indikativ is 61% and Futur Indikativ 25%. Below that,
+three conjugationgroups sit within a percentage point of each other, and the order depends on
+whether the Bible gets a vote proportional to its size. Josh chose to weight the four folders
+equally.
+
+The participles needed his judgment, as the plan expected. Counted as words standing alone, the
+Perfektpartizip is third. Counted everywhere, including inside every "hat gemacht", it is second
+in three of the four folders. He chose the standalone count, which keeps the page's first two
+tables the two a learner checks most. Then he looked at the page and overruled the count, for a
+reason no corpus could supply: a one-line participle card wedged between six-row tables broke the
+page's rhythm. Both participles now close the simple block, below the Imperativ. As he put it, the
+page already departs from frequency by keeping the compound block below the simple one, and this
+is the same kind of choice. The iPad needed one more step, since its two-column grid fills
+row by row: the participles landed beside the Imperativ and beside Perfekt Indikativ, each
+floating in the middle of its row. A one-conjugation table now shares the grid cell of the table
+above it, so the iPad stacks the participles under the Imperativ just as the iPhone does.
+
+The rest of the phase was quieter. A new `ConjugationTable` enum now owns the page order, so the
+landing scroll from Phase 6 cannot drift from it. Each heading carries a textbook's name ("also
+Partizip II", "auch würde-Form") and an ⓘ button that opens its article in a sheet. Two tips
+arrived, explaining the red letters and pointing to the etymology. The second waits for a later
+page visit rather than popping up the instant the first is closed, and it retires itself if the
+learner scrolls to the bottom unprompted. Josh asked mid-session that the new tips respect the
+screenshot and video kill switch. They already did, since an unconfigured TipKit shows nothing,
+but the scroll tip's unlock now checks the switch too. A build with the switch off showed a clean
+page.

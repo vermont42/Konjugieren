@@ -49,3 +49,24 @@ Der Absatz nach der Liste lautet nun:
 ```
 Ein Bildschirmbesuch oder ein Antippen wird nur als Ereignis erfasst, abgesehen von den oben genannten Angaben zu Verbseiten und Suchen. Nichts, was Sie eingeben, und nichts, was auf dem Bildschirm steht, wird mit einem Ereignis gesendet. Erfasst wird, dass Sie gesucht haben, mit den oben genannten groben Zahlen, nicht aber, was Sie eingegeben haben. Erfasst wird, dass Sie die Seite eines Verbs geöffnet haben, nicht aber, welches Verb.
 ```
+
+## Conjugationgroup articles from a verb page (browse plan, Phase 7, 2026-11-12)
+
+Adds the signal `tapConjugationgroupArticle`, with no parameters: the ⓘ button beside a
+conjugationgroup's heading on a verb page. It changes an existing bullet rather than adding one.
+
+### English
+
+The bullet about taps in section 2 now reads:
+
+```
+- Taps on a few buttons: playing the game, rating or reviewing the app, showing the introduction, viewing the leaderboard, sending a message to the tutor, asking for an error to be explained, deleting the chat history, and opening a conjugationgroup's article from a verb's page
+```
+
+### German
+
+Der Punkt über das Antippen in Abschnitt 2 lautet nun:
+
+```
+- Das Antippen einiger Schaltflächen: das Spiel starten, die App bewerten oder rezensieren, die Einführung anzeigen, die Bestenliste ansehen, dem Tutor eine Nachricht senden, einen Fehler erklären lassen, den Chatverlauf löschen und den Artikel über eine Conjugationgroup von der Seite eines Verbs aus öffnen
+```

@@ -36,7 +36,8 @@ Konjugieren/
 │   ├── ConjugationLabels.swift # Display members of core types that need L or Settings (Family.displayName, PersonNumber.pronoun, Conjugationgroup.displayName(lang:)), kept out of the files ConjugationMapTool compiles
 │   ├── ConjugationMap.swift    # Conjugation → infinitive map (ging → gehen; halte → aufhalten with particle auf): builder, text/LZFSE format, and the bundled loader. Compiled into the app AND ConjugationMapTool
 │   ├── ConjugationIndex.swift  # The bundled conjugation map indexed for search: folded spellings (muß → muss) and length buckets for the guess
-│   ├── ConjugationMatch.swift  # Verb.conjugations(matching:): which cells of a verb equal a text, graded as the quiz grades; Conjugationgroup.allCells (page order) and personNumber
+│   ├── ConjugationMatch.swift  # Verb.conjugations(matching:): which cells of a verb equal a text, graded as the quiz grades; Conjugationgroup.personNumber
+│   ├── ConjugationTable.swift  # The verb page's tables in page order (frequency within simple, then compound; docs/conjugationgroup-frequency.md), each table's cells, second names, and Info article; Conjugationgroup.allCells and .table
 │   ├── Conjugationgroup.swift  # Enum of all conjugationgroups with endings
 │   ├── ConjugationgroupLang.swift  # Setting enum: german/english display
 │   ├── Conjugator.swift        # Core conjugation logic for all conjugationgroups; joined (subordinate-clause) conjugations by default, the Wiktionary oracle
@@ -57,7 +58,7 @@ Konjugieren/
 │   │   └── GameState+Robot.swift       # Robot brain/minion mechanic (spawn/update)
 │   ├── Info.swift              # Info article model with rich text and images
 │   ├── InfoMedia.swift         # Enum: .photo or .sfSymbol media for Info rows
-│   ├── KonjugierenTips.swift   # TipKit tips (e.g., change-difficulty hint)
+│   ├── KonjugierenTips.swift   # TipKit tips (e.g., change-difficulty hint; the verb page's RedLettersTip and ScrollToBottomTip)
 │   ├── LanguageModelService.swift      # Protocol for on-device AI error explanation and tutoring
 │   ├── LanguageModelServiceDummy.swift # No-op stub for tests/unsupported devices
 │   ├── LanguageModelServiceReal.swift  # FoundationModels implementation for AI tutoring
@@ -172,6 +173,7 @@ KonjugierenWidget/
     └── WidgetAblautText.swift      # Text rendering for ablaut changes in widgets
 
 ConjugationMapTool/             # macOS command-line target; borrows the conjugation core from Konjugieren/ via membership exceptions in project.pbxproj
+├── CellsJSON.swift             # --cells-json: every one-word conjugation with its conjugationgroup and auxiliary, for scripts/count_conjugationgroups.py
 ├── main.swift                  # Reads Verbs.xml + AblautGroups.xml, writes ConjugationMap.lzfse (app build phase) and/or forms.json (scripts/write_forms_json.sh)
 └── ToolWorld.swift             # Stand-in for the app's Current, offering only fatalError
 
@@ -191,6 +193,7 @@ KonjugierenTests/
 ├── Models/
 │   ├── ConjugationMapTests.swift   # Bundled map equals a fresh build (staleness), finds the verb of ≥99% of example sentences (Scan 2 of the defect plan), anchors, format round-trip
 │   ├── ConjugationMatchTests.swift # Verb.conjugations(matching:): clauses, regions, finite parts, readings
+│   ├── ConjugationTableTests.swift # The verb page's table order, cells, articles, and second names
 │   ├── ConjugationSearchTests.swift # Search by conjugation: the ideas doc's conjugation queries, stranded parts and the folded row, particles, compounds, folding, adjective endings, cell names, marks
 │   ├── ConjugationgroupTests.swift # Conjugationgroup.ending(family:) ending-table tests
 │   ├── ConjugatorTests.swift   # Comprehensive conjugation tests (~50 test functions), incl. error paths
@@ -228,6 +231,7 @@ docs/
 ├── claude-code-skill-recommendations.md  # Curated third-party Claude Code skills worth installing for Konjugieren work
 ├── code-audit.md              # Full-codebase audit (June 2026): bugs, duplication, dead code, smells, test gaps, phased implementation order
 ├── code-review-recommendations.md  # Second full-codebase review (July 2026): ranked recommendations across game, widget, deeplink, and concurrency findings, with a phased implementation sequence
+├── conjugationgroup-frequency.md # How often each conjugationgroup occurs in the corpus: method, results, and the verb page's resulting order
 ├── conjugationgroupText.md    # Template and guidelines for conjugationgroup articles
 ├── control-center-controls.md  # iOS 18+ ControlWidget constraints on `openAppWhenRun`/`OpenURLIntent` and the Shared/ dual-target pattern
 ├── dwds-permission-email.md   # Draft permission request to dwds@bbaw.de for frequency-API use (§ 44b UrhG reservation)
@@ -298,6 +302,7 @@ plans/                         # Plans written for future sessions to carry out
 
 scripts/
 ├── check_docs.py              # Asserts the checkable claims the docs make about themselves: corpus/ablaut/test counts in the four cache files, relative-link targets, roadmap commit hashes, the kaikki attribution invariant, and etymology completeness
+├── count_conjugationgroups.py # Counts each conjugationgroup in the corpus, from ConjugationMapTool --cells-json; see docs/conjugationgroup-frequency.md
 ├── generate_verb_pdf.py       # Generates PDF verb conjugation tables from VerbExportTests' JSON (default /tmp/konjugieren-export.json)
 ├── render_emoji.swift         # Renders emoji glyphs to PNG assets in Assets.xcassets (workaround for iOS 26 emoji-rendering bug; see docs/emoji-assets.md)
 ├── sync_verb_history.py       # Validates docs/verb_history{,_de}.txt against StringExtensions' markup rules and writes the body back into Localizable.xcstrings

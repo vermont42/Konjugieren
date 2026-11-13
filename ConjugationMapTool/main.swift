@@ -5,10 +5,11 @@
 //
 // Consumes: Verbs.xml and AblautGroups.xml, given as paths.
 // Produces: the app's ConjugationMap.lzfse (see Konjugieren/Models/ConjugationMap.swift for
-//           the format) and, when asked, corpus/working/forms.json for the Python pipelines.
+//           the format) and, when asked, corpus/working/forms.json for the Python pipelines
+//           and the cells table that scripts/count_conjugationgroups.py reads (CellsJSON.swift).
 //
 // Run:      ConjugationMapTool --verbs <Verbs.xml> --ablaut-groups <AblautGroups.xml> \
-//             [--map <out.lzfse>] [--forms-json <out.json>]
+//             [--map <out.lzfse>] [--forms-json <out.json>] [--cells-json <out.json>]
 //
 // The app target's "Generate Conjugation Map" build phase runs this with --map, writing
 // straight into the app bundle. Xcode runs that phase only when one of its declared inputs is
@@ -61,8 +62,9 @@ guard let verbsPath = arguments["--verbs"], let ablautGroupsPath = arguments["--
 }
 let mapPath = arguments["--map"]
 let formsJSONPath = arguments["--forms-json"]
-if mapPath == nil && formsJSONPath == nil {
-  fail("Nothing to write. Pass --map, --forms-json, or both.")
+let cellsJSONPath = arguments["--cells-json"]
+if mapPath == nil && formsJSONPath == nil && cellsJSONPath == nil {
+  fail("Nothing to write. Pass --map, --forms-json, --cells-json, or a combination.")
 }
 
 // Order matters for nothing here, since the Conjugator reads both tables only when called, but
@@ -89,6 +91,9 @@ do {
     let encoder = JSONEncoder()
     encoder.outputFormatting = [.prettyPrinted, .sortedKeys, .withoutEscapingSlashes]
     try encoder.encode(forms).write(to: URL(fileURLWithPath: formsJSONPath))
+  }
+  if let cellsJSONPath {
+    try CellsJSON.data().write(to: URL(fileURLWithPath: cellsJSONPath))
   }
 } catch {
   fail("Could not write: \(error)")

@@ -1,6 +1,7 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
 import SwiftUI
+import TipKit
 
 struct VerbView: View {
   let verb: Verb
@@ -13,6 +14,9 @@ struct VerbView: View {
   @State private var visibleSections: Set<VerbPageSection> = []
   @State private var isOnScreen = false
   @State private var hasAppeared = false
+  @State private var article: Info?
+  private let redLettersTip = RedLettersTip()
+  private let scrollToBottomTip = ScrollToBottomTip()
   private var settings: Settings { Current.settings }
 
   init(verb: Verb, source: AnalyticsSource, marks: MarkedConjugations? = nil) {
@@ -29,23 +33,8 @@ struct VerbView: View {
     verb.reading(at: readingIndex) ?? verb.primaryReading
   }
 
-  private func displayName(for group: Conjugationgroup) -> String {
-    group.displayName(lang: settings.conjugationgroupLang)
-  }
-
   private var titleIsGerman: Bool {
     settings.conjugationgroupLang == .german
-  }
-
-  private func conjugationSection(for groupBuilder: (PersonNumber) -> Conjugationgroup) -> some View {
-    ConjugationSectionView(
-      title: displayName(for: groupBuilder(.firstSingular)),
-      titleIsGerman: titleIsGerman,
-      conjugations: PersonNumber.allCases.map { pn in
-        ConjugationRow(pronoun: pn.pronoun, form: conjugate(groupBuilder(pn)), isMarked: isMarked(groupBuilder(pn)))
-      }
-    )
-    .id(groupBuilder(.firstSingular).germanDisplayName)
   }
 
   private func isMarked(_ group: Conjugationgroup) -> Bool {
@@ -60,7 +49,13 @@ struct VerbView: View {
     guard let marks else {
       return nil
     }
-    return Conjugationgroup.allCells.first { marks.conjugationgroups.contains($0) }?.germanDisplayName
+    return Conjugationgroup.allCells.first { marks.conjugationgroups.contains($0) }?.table.scrollID
+  }
+
+  /// Whether any conjugation on the page has a red letter, which the Conjugator marks by
+  /// writing it in uppercase. `RedLettersTip` has nothing to explain on a page without one.
+  private var hasRedLetters: Bool {
+    Conjugationgroup.allCells.contains { conjugate($0).contains(where: \.isUppercase) }
   }
 
   var body: some View {
@@ -146,8 +141,15 @@ struct VerbView: View {
 
           Divider()
 
+          if hasRedLetters {
+            TipView(redLettersTip)
+              .padding(.horizontal)
+          }
+          TipView(scrollToBottomTip)
+            .padding(.horizontal)
+
           if sizeClass == .regular {
-            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], alignment: .leading, spacing: 20) {
+            LazyVGrid(columns: [GridItem(.flexible(), alignment: .top), GridItem(.flexible(), alignment: .top)], alignment: .leading, spacing: 20) {
               conjugationSections
             }
             .padding(.horizontal)
@@ -218,7 +220,11 @@ struct VerbView: View {
         isOnScreen = true
         beginVisit(source: hasAppeared ? .resume : source)
         hasAppeared = true
+        unlockScrollTipIfDue()
       }
+    }
+    .sheet(item: $article) { info in
+      ConjugationgroupArticleSheet(info: info)
     }
     .onDisappear {
       isOnScreen = false
@@ -302,47 +308,78 @@ struct VerbView: View {
     }
   }
 
+  // Each stack is one cell of the iPad grid, so the participles sit under the Imperativ there as
+  // they do on an iPhone, instead of flowing into the next cell beside it.
   @ViewBuilder
   private var conjugationSections: some View {
-    ConjugationSectionView(
-      title: displayName(for: .perfektpartizip),
-      titleIsGerman: titleIsGerman,
-      conjugations: [ConjugationRow(form: conjugate(.perfektpartizip), isMarked: isMarked(.perfektpartizip))]
-    )
-    .id(Conjugationgroup.perfektpartizip.germanDisplayName)
-    .onScrollVisibilityChange(threshold: Self.sectionVisibilityThreshold) { isVisible in
-      sectionVisibilityChanged(.simple, isVisible: isVisible)
+    ForEach(ConjugationTable.stacks, id: \.self) { stack in
+      VStack(alignment: .leading, spacing: 20) {
+        ForEach(stack, id: \.self) { table in
+          conjugationSection(for: table)
+        }
+      }
     }
+  }
 
-    ConjugationSectionView(
-      title: displayName(for: .präsenspartizip),
+  @ViewBuilder
+  private func conjugationSection(for table: ConjugationTable) -> some View {
+    let section = ConjugationSectionView(
+      title: table.displayName(lang: settings.conjugationgroupLang),
       titleIsGerman: titleIsGerman,
-      conjugations: [ConjugationRow(form: conjugate(.präsenspartizip), isMarked: isMarked(.präsenspartizip))]
+      secondName: table.secondName(lang: settings.conjugationgroupLang),
+      conjugations: rows(for: table),
+      openArticle: table.article.map { info in
+        {
+          Current.analytics.signal(name: .tapConjugationgroupArticle)
+          article = info
+        }
+      }
     )
-    .id(Conjugationgroup.präsenspartizip.germanDisplayName)
+    .id(table.scrollID)
 
-    conjugationSection(for: Conjugationgroup.präsensIndikativ)
-    conjugationSection(for: Conjugationgroup.präteritumIndikativ)
-    conjugationSection(for: Conjugationgroup.präsensKonjunktivI)
-    conjugationSection(for: Conjugationgroup.präteritumKonjunktivII)
-
-    ConjugationSectionView(
-      title: displayName(for: .imperativ(.secondSingular)),
-      titleIsGerman: titleIsGerman,
-      conjugations: imperativConjugations()
-    )
-    .id(Conjugationgroup.imperativ(.secondSingular).germanDisplayName)
-
-    conjugationSection(for: Conjugationgroup.perfektIndikativ)
-      .onScrollVisibilityChange(threshold: Self.sectionVisibilityThreshold) { isVisible in
+    if table == Self.firstSimpleTable {
+      section.onScrollVisibilityChange(threshold: Self.sectionVisibilityThreshold) { isVisible in
+        sectionVisibilityChanged(.simple, isVisible: isVisible)
+      }
+    } else if table == Self.firstCompoundTable {
+      section.onScrollVisibilityChange(threshold: Self.sectionVisibilityThreshold) { isVisible in
         sectionVisibilityChanged(.compound, isVisible: isVisible)
       }
-    conjugationSection(for: Conjugationgroup.perfektKonjunktivI)
-    conjugationSection(for: Conjugationgroup.plusquamperfektIndikativ)
-    conjugationSection(for: Conjugationgroup.plusquamperfektKonjunktivII)
-    conjugationSection(for: Conjugationgroup.futurIndikativ)
-    conjugationSection(for: Conjugationgroup.futurKonjunktivI)
-    conjugationSection(for: Conjugationgroup.futurKonjunktivII)
+    } else {
+      section
+    }
+
+  }
+
+  private static let firstSimpleTable = ConjugationTable.allCases.first { !$0.isCompound }
+  private static let firstCompoundTable = ConjugationTable.allCases.first { $0.isCompound }
+
+  private func rows(for table: ConjugationTable) -> [ConjugationRow] {
+    switch table {
+    case .perfektpartizip, .präsenspartizip:
+      return table.cells.map { ConjugationRow(form: conjugate($0), isMarked: isMarked($0)) }
+    case .imperativ:
+      return imperativConjugations()
+    case .präsensIndikativ, .präteritumIndikativ, .präteritumKonjunktivII, .präsensKonjunktivI, .perfektIndikativ, .futurIndikativ,
+      .plusquamperfektIndikativ, .futurKonjunktivII, .plusquamperfektKonjunktivII, .perfektKonjunktivI, .futurKonjunktivI:
+      return table.cells.map { cell in
+        ConjugationRow(pronoun: cell.personNumber?.pronoun, form: conjugate(cell), isMarked: isMarked(cell))
+      }
+    }
+  }
+
+  // The scroll tip waits for a page visit after the red-letter tip was closed, rather than
+  // replacing it in place the moment it closes. It is pointless for a learner who already
+  // scrolls to the bottom, so reaching the etymology or the example retires it. With tips
+  // switched off for screenshots and video, TipKit is never configured, so this leaves its
+  // datastore alone.
+  private func unlockScrollTipIfDue() {
+    guard TipDisplay.tipsEnabled else {
+      return
+    }
+    if case .invalidated = redLettersTip.status {
+      ScrollToBottomTip.isUnlocked = true
+    }
   }
 
   // A third of a block's first card on screen counts as reaching the block. A higher threshold
@@ -370,6 +407,9 @@ struct VerbView: View {
     if isVisible {
       visibleSections.insert(section)
       visit?.reach(section)
+      if section >= .etymology, TipDisplay.tipsEnabled {
+        scrollToBottomTip.invalidate(reason: .actionPerformed)
+      }
     } else {
       visibleSections.remove(section)
     }
@@ -487,28 +527,63 @@ struct ConjugationRow: Identifiable {
 struct ConjugationSectionView: View {
   let title: String
   let titleIsGerman: Bool
+  let secondName: ConjugationTable.SecondName?
   let conjugations: [ConjugationRow]
 
-  init(title: String, titleIsGerman: Bool = true, conjugations: [String]) {
-    self.title = title
-    self.titleIsGerman = titleIsGerman
-    self.conjugations = conjugations.map { ConjugationRow(form: $0) }
-  }
+  /// Opens the conjugationgroup's Info article. Nil hides the button.
+  let openArticle: (() -> Void)?
 
-  init(title: String, titleIsGerman: Bool = true, conjugations: [ConjugationRow]) {
+  init(
+    title: String,
+    titleIsGerman: Bool = true,
+    secondName: ConjugationTable.SecondName? = nil,
+    conjugations: [ConjugationRow],
+    openArticle: (() -> Void)? = nil
+  ) {
     self.title = title
     self.titleIsGerman = titleIsGerman
+    self.secondName = secondName
     self.conjugations = conjugations
+    self.openArticle = openArticle
   }
 
   var body: some View {
     VStack(alignment: .leading, spacing: 8) {
-      Text(title)
-        .font(.subheadline.smallCaps().weight(.semibold))
-        .fontDesign(.serif)
-        .foregroundStyle(.primary)
-        .accessibilityAddTraits(.isHeader)
-        .germanPronunciation(forReal: titleIsGerman)
+      HStack(alignment: .top, spacing: 8) {
+        VStack(alignment: .leading, spacing: 2) {
+          Text(title)
+            .font(.subheadline.smallCaps().weight(.semibold))
+            .fontDesign(.serif)
+            .foregroundStyle(.primary)
+            .accessibilityAddTraits(.isHeader)
+            .germanPronunciation(forReal: titleIsGerman)
+
+          // VoiceOver hears only the name, in its own language: "also" in the learner's
+          // language and Partizip II in German cannot share one element's voice.
+          if let secondName {
+            Text(L.VerbView.secondName(secondName.text))
+              .font(.caption)
+              .foregroundStyle(.secondary)
+              .accessibilityLabel(Text(verbatim: secondName.text))
+              .germanPronunciation(forReal: secondName.isGerman)
+          }
+        }
+
+        Spacer(minLength: 0)
+
+        if let openArticle {
+          Button(action: openArticle) {
+            Image(systemName: "info.circle")
+              .font(.body)
+              .foregroundStyle(.customYellow)
+              .frame(minWidth: 44, minHeight: 44, alignment: .topTrailing)
+              .contentShape(Rectangle())
+          }
+          .buttonStyle(.plain)
+          .padding(.top, -6)
+          .accessibilityLabel(Text(L.VerbView.openArticle))
+        }
+      }
 
       VStack(alignment: .leading, spacing: 4) {
         ForEach(conjugations) { row in
@@ -539,6 +614,54 @@ struct ConjugationSectionView: View {
       .germanPronunciation()
     }
     .konjCardWithAccentBar()
+  }
+}
+
+/// A conjugationgroup's Info article, opened from its heading on the verb page. A link to
+/// another article opens that article here, so the learner can follow the thread and still
+/// close the sheet onto the same verb page. A link to a verb closes the sheet and opens the verb
+/// in the Verbs tab, as an article in the Info tab does.
+private struct ConjugationgroupArticleSheet: View {
+  let info: Info
+  @Environment(\.dismiss) private var dismiss
+  @State private var path: [Info] = []
+
+  var body: some View {
+    NavigationStack(path: $path) {
+      article(info)
+        .navigationDestination(for: Info.self) { next in
+          article(next)
+        }
+    }
+  }
+
+  private func article(_ info: Info) -> some View {
+    InfoView(info: info, openLink: open)
+      .toolbar {
+        ToolbarItem(placement: .cancellationAction) {
+          Button(L.Navigation.dismiss) {
+            dismiss()
+          }
+        }
+      }
+  }
+
+  private func open(_ url: URL) {
+    if
+      url.host == URL.infoHost,
+      let index = url.pathComponents.dropFirst().first.flatMap({ Int($0) }),
+      Info.infos.indices.contains(index)
+    {
+      path.append(Info.infos[index])
+      return
+    }
+    dismiss()
+    // The verb page that presented this sheet is about to be replaced, and SwiftUI drops a
+    // navigation change made while a sheet is still animating away.
+    Task {
+      try? await Task.sleep(for: .milliseconds(400))
+      Current.handleURL(url)
+    }
   }
 }
 

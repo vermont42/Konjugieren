@@ -20,7 +20,7 @@ that Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until
 | 4 | Done | 2026-11-12 | `d5ff847` | B2 |
 | 5 | Done | 2026-11-12 | `6c911fb` | A5 (the map) |
 | 6 | Done | 2026-11-12 | `23bab52` | A5 (the search) |
-| 7 | Not started | | | B3, B5's tip |
+| 7 | Awaiting Josh | 2026-11-12 | | B3, B5's tip |
 | 8 | Not started | | | B7's article |
 | 9 | Not started | | | B4, A9 |
 | 10 | Not started | | | B6 |
@@ -549,6 +549,54 @@ fuzzy guess should consider conjugations too.
   bottom for the etymology and the example sentence. It also never reappears.
 
 **How it differed:**
+
+- **The count.** `scripts/count_conjugationgroups.py` reads a new `--cells-json` output of
+  `ConjugationMapTool` (every one-word conjugation with its conjugationgroup and auxiliary), so it
+  and the page agree on what a conjugation is. It pairs auxiliaries with participles and
+  infinitives within a clause, and checks the participle's auxiliary to tell "ist gegangen" from
+  "ist gemacht". No tagger was available (spaCy is not installed), and none was needed.
+  [`docs/conjugationgroup-frequency.md`](../docs/conjugationgroup-frequency.md) has the method, the
+  per-folder tables, and the known errors. Three fixes came from reading samples of each count: a
+  verb opening a clause after a comma is a V2 main clause, not an Imperativ; a capitalized word at
+  the start of a sentence is a noun if the corpus capitalizes it mid-sentence (Ziel, Reich); and
+  Luther's sehet and wisset are archaic ihr forms, not Konjunktiv I.
+- **Josh's decisions (2026-11-12).** The participles were first placed where their standalone
+  count puts them (third and fourth), not where counting the participle inside every Perfekt would
+  (second). After trying the page, Josh moved both to the end of the simple block, below the
+  Imperativ, because one-line cards between six-row tables looked wrong. On iPad the grid flows
+  row by row, which put Perfektpartizip beside the Imperativ and Präsenspartizip beside Perfekt
+  Indikativ, each centered in its row. So `ConjugationTable.stacks` puts a one-conjugation table in
+  the grid cell of the table above it. The Imperativ's cell holds both participles beneath it,
+  Perfekt Indikativ sits beside that stack (as it sat beside the Imperativ before this phase),
+  and grid rows now align to the top. The
+  four folders are weighted equally, which puts Futur Konjunktiv II ahead of Plusquamperfekt
+  Konjunktiv II and Perfekt Konjunktiv I; pooling the texts reverses those three. He approved the
+  second names as drafted, without changes.
+- **`ConjugationTable`** (`Models/ConjugationTable.swift`) is the one place the order lives. It
+  holds each table's cells, second names, and article, and `Conjugationgroup.allCells` is now
+  derived from it, so Phase 6's landing scroll cannot drift from the page. The page builds its
+  tables in a `ForEach` over it. `leaveVerbView`'s `simple` section is now reached at the Präsens
+  Indikativ card, the block's first; `docs/feature-architecture.md` says so.
+- **Second names** follow the heading language, not the learner's locale: German headings get
+  German textbook names (Partizip II, würde-Form), English headings English ones (Simple Past,
+  Conversational Past). Only "also" and "auch" are localized. VoiceOver hears the name alone, in its
+  own language, because one element cannot speak "also" in English and Partizip II in German.
+- **The article opens in a sheet** over the verb page rather than switching to the Info tab, so
+  closing it returns the learner to the same verb. A link to another article opens it inside the
+  sheet; a link to a verb closes the sheet and opens the verb as before. `InfoView` gained an
+  optional `openLink` for this. A new signal, `tapConjugationgroupArticle`, counts the taps, and
+  its privacy line is staged in `docs/privacy-policy-pending.md`.
+- **The tips.** Both are inline `TipView`s above the tables and stay until closed. The red-letter
+  tip appears only on a page with red letters, since machen's page would leave it nothing to point
+  at. The scroll tip does not replace it the moment it closes: it is unlocked (a persisted TipKit
+  parameter) on the next verb page that appears. Reaching the etymology or the example retires it,
+  since the learner no longer needs the advice. Both obey `TipDisplay.tipsEnabled`, the kill switch
+  for screenshots and video; a fresh install built with it off showed no tip on aufstehen's page.
+- **How it was tested.** 8 new `@Test` functions, 340 in all. In the iPhone 17 simulator, on a
+  fresh install: aufstehen's page in the new order with the red-letter tip, the Präsens Indikativ
+  article from its ⓘ button, closing the tip, and the scroll tip on gehen's page next. Not tried:
+  English headings, the iPad grid, VoiceOver, a German-language device, and following a link inside
+  the article sheet.
 
 ## Phase 8: A Futur II Article
 

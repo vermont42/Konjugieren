@@ -24,6 +24,7 @@ enum AnalyticsName: String {
   case quitQuiz
   case startGame
   case startQuiz
+  case tapConjugationgroupArticle
   case tapDeleteChatHistory
   case tapExplainError
   case tapPlayGame

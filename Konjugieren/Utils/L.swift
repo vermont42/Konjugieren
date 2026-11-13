@@ -859,6 +859,14 @@ enum L {
     static var matchesSearch: String {
       String(localized: "VerbView.matchesSearch")
     }
+
+    static var openArticle: String {
+      String(localized: "VerbView.openArticle")
+    }
+
+    static func secondName(_ name: String) -> String {
+      String(localized: "VerbView.secondName \(name)")
+    }
   }
 
   enum Onboarding {

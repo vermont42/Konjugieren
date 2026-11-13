@@ -69,7 +69,7 @@ App Store screenshots only — 9 views × 2 languages × 2 devices = 36 PNGs. No
 
 | Switch | Effect when `false` | What you get if you forget |
 |---|---|---|
-| `TipDisplay.tipsEnabled` | `KonjugierenApp` skips `Tips.configure()`. TipKit shows nothing until configured, so every `TipView` and `.popoverTip(_:)` stays hidden with no per-call-site changes. | A tip card can land on any shot. "Try the Quiz" reliably occupies `verb_browse` on a fresh install — that is sweep view #1. |
+| `TipDisplay.tipsEnabled` | `KonjugierenApp` skips `Tips.configure()`. TipKit shows nothing until configured, so every `TipView` and `.popoverTip(_:)` stays hidden with no per-call-site changes. | A tip card can land on any shot. "Try the Quiz" reliably occupies `verb_browse` on a fresh install — that is sweep view #1. Since 2026-11-12 the verb page has two inline tips above its tables, "Red Letters" and then "Keep Scrolling", so a fresh install's first verb shot would carry one too. |
 | `OnboardingDisplay.onboardingEnabled` | The first-launch `fullScreenCover` in `KonjugierenApp` never presents. Only that automatic path consults the switch; Settings → **Show Onboarding** ignores it, so the flow stays manually reachable for review. | The welcome tour covers whichever screen was being captured. The driver's Skip interleave (workarounds #2/#11) usually saves you, but it is a race, not a guarantee. |
 | `TutorDisplay.tutorUnavailableRowEnabled` | `InfoBrowseView` drops the tutor **unavailability reason row**. Only that row: when the model *is* available the section still renders `TutorRowView`, so the switch cannot hide a working feature. | Both `info_browse` shots carry an "Apple Intelligence…" status row where a feature should be. |
 

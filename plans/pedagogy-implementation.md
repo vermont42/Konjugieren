@@ -15,7 +15,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 
 | Phase | Status | Date | Commit | Suggestions |
 |---:|---|---|---|---|
-| 1 | Awaiting Josh | 2026-11-13 | | T1.3, T1.4, T1.5 |
+| 1 | Done | 2026-11-13 | `250cca9` | T1.3, T1.4, T1.5 |
 | 2 | Not started | | | T1.2 |
 | 3 | Not started | | | T4.1, T4.4, T4.5 |
 | 4 | Not started | | | T1.6 |
@@ -246,7 +246,7 @@ full account. In brief, by code name:
 
 ## Phase 1: Accept What Is Right
 
-**Suggestions:** T1.3, T1.4, T1.5. **Depends on:** nothing. **Status:** Awaiting Josh.
+**Suggestions:** T1.3, T1.4, T1.5. **Depends on:** nothing. **Status:** Done.
 
 - **T1.3.** Strip a leading pronoun from the answer before grading, so "ihr habt ferngeguckt"
   passes. Strip only a pronoun that matches the question's person, and keep the pronoun that the

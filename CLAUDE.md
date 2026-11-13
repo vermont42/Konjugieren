@@ -82,10 +82,7 @@ dates with times (`stat -f "%Sm" -t "%Y-%m-%d %H:%M:%S"`), since a bare time of 
 days. Learned on 2026-11-12, in Phase 5 of the browse plan.
 
 **If computer use cannot take screenshots** ("CU display unavailable", with the only display
-reported as "not primary"), reboot. On 2026-11-12 that failure persisted through the session, while
-macOS's `screencapture` worked from the same shell, and a reboot cleared it. Meanwhile, `xcrun simctl
-io <UDID> screenshot <file>` captures the simulator, and the `.xcactivitylog` files above stand in
-for Xcode's log view.
+reported as "not primary"), reboot.
 
 ### Diagnostic fallback (raw xcodebuild)
 

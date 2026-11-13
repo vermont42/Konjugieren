@@ -3331,6 +3331,103 @@
         }
       }
     },
+    "Intent.lookUpVerbDescription" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Findet das Verb, zu dem eine Konjugation, ein Infinitiv oder eine englische Bedeutung gehört, sagt, was es gefunden hat, und öffnet es in Konjugieren."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Finds the verb that a conjugation, infinitive, or English meaning belongs to, says what it found, and opens it in Konjugieren."
+          }
+        }
+      }
+    },
+    "Intent.lookUpVerbTitle" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verb nachschlagen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Look Up a Verb"
+          }
+        }
+      }
+    },
+    "Intent.lookUpVerbWord" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wort"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Word"
+          }
+        }
+      }
+    },
+    "Intent.lookUpVerbWordPrompt" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welches Wort soll Konjugieren nachschlagen?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Which word should Konjugieren look up?"
+          }
+        }
+      }
+    },
+    "Intent.openLookupResultTitle" : {
+      "comment" : "Title of the hidden AppIntent that Look Up a Verb opens after answering. Not shown in Shortcuts.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nachschlageergebnis öffnen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Lookup Result"
+          }
+        }
+      }
+    },
+    "Intent.openLookupResultURL" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Link"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Link"
+          }
+        }
+      }
+    },
     "Intent.openQuizTitle" : {
       "comment" : "Title of the shared AppIntent that opens the quiz (Quick Quiz control; shown in Shortcuts/Siri).",
       "localizations" : {
@@ -3457,6 +3554,167 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Verb"
+          }
+        }
+      }
+    },
+    "Intent.openVerbSearchTitle" : {
+      "comment" : "Title of the shared AppIntent that opens verb search (Find a Verb control). Also in the widget catalog.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verb suchen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find a Verb"
+          }
+        }
+      }
+    },
+    "Lookup.conjugation %@ %@ %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@: %2$@ von %3$@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@: %2$@ of %3$@"
+          }
+        }
+      }
+    },
+    "Lookup.finitePartMany %@ %@ %@ %lld" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ ist auch ein Teil von %2$@ (%3$@) und von %4$lld weiteren trennbaren Verben."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ is also a part of %2$@ (%3$@) and of %4$lld more separable verbs."
+          }
+        }
+      }
+    },
+    "Lookup.finitePartOne %@ %@ %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ ist auch ein Teil von %2$@ (%3$@)."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ is also a part of %2$@ (%3$@)."
+          }
+        }
+      }
+    },
+    "Lookup.guessConjugation %@ %@ %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konjugieren kennt kein Verb und keine Konjugation namens „%1$@“. Vielleicht meinst du %2$@ von %3$@."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konjugieren has no verb or conjugation spelled “%1$@”. Perhaps you meant %2$@, of %3$@."
+          }
+        }
+      }
+    },
+    "Lookup.guessVerb %@ %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konjugieren kennt kein Verb und keine Konjugation namens „%1$@“. Vielleicht meinst du %2$@."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konjugieren has no verb or conjugation spelled “%1$@”. Perhaps you meant %2$@."
+          }
+        }
+      }
+    },
+    "Lookup.nothing %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konjugieren kennt kein Verb und keine Konjugation namens „%1$@“."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konjugieren has no verb or conjugation spelled “%1$@”."
+          }
+        }
+      }
+    },
+    "Lookup.otherMatchesMany %@ %lld %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konjugieren kennt kein Verb und keine Konjugation namens „%1$@“, aber %2$lld Verben passen. Das erste ist %3$@."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konjugieren has no verb or conjugation spelled “%1$@”, but %2$lld verbs match. The first is %3$@."
+          }
+        }
+      }
+    },
+    "Lookup.otherMatchesOne %@ %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konjugieren kennt kein Verb und keine Konjugation namens „%1$@“, aber ein Verb passt: %2$@."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konjugieren has no verb or conjugation spelled “%1$@”, but one verb matches: %2$@."
+          }
+        }
+      }
+    },
+    "Lookup.verbWithGloss %@ %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@, „%2$@“"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@, “%2$@”"
           }
         }
       }

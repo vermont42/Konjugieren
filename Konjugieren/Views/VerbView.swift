@@ -678,10 +678,9 @@ private struct ConjugationgroupArticleSheet: View {
   private func open(_ url: URL) {
     if
       url.host == URL.infoHost,
-      let index = url.pathComponents.dropFirst().first.flatMap({ Int($0) }),
-      Info.infos.indices.contains(index)
+      let info = url.pathComponents.dropFirst().first.flatMap(Info.info(deeplinkTarget:))
     {
-      path.append(Info.infos[index])
+      path.append(info)
       return
     }
     dismiss()

@@ -53,6 +53,38 @@
         }
       }
     },
+    "FindVerb.description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öffnet die Verbsuche in Konjugieren."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opens the verb search in Konjugieren."
+          }
+        }
+      }
+    },
+    "FindVerb.name" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verb suchen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find a Verb"
+          }
+        }
+      }
+    },
     "Game.over" : {
       "comment" : "Headline shown on the game Live Activity when the run ends.",
       "localizations" : {
@@ -185,6 +217,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Open Random Verb"
+          }
+        }
+      }
+    },
+    "Intent.openVerbSearchTitle" : {
+      "comment" : "Title of the shared AppIntent that opens verb search (Find a Verb control). Also in the app catalog.",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verb suchen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Find a Verb"
           }
         }
       }

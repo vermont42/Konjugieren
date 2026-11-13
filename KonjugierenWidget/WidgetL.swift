@@ -3,6 +3,16 @@
 import Foundation
 
 enum WidgetL {
+  enum FindVerb {
+    nonisolated static var controlDescription: LocalizedStringResource {
+      LocalizedStringResource("FindVerb.description")
+    }
+
+    nonisolated static var name: LocalizedStringResource {
+      LocalizedStringResource("FindVerb.name")
+    }
+  }
+
   enum Game {
     static var over: String {
       String(localized: "Game.over")

@@ -813,6 +813,12 @@ and a Home Screen quick action.
 - **Conjuguer and Conjugar.** Their deeplinks and controls exist. App Shortcuts and entities do
   not, so Konjugieren's would be ported first, at M each.
 
+**Built on `main` 2026-11-12** by [Phase 11](../plans/browse-and-verb-implementation.md#phase-11-lookup-from-outside-the-app):
+a deeplink grammar in [`feature-architecture.md`](feature-architecture.md#deeplink-system), the
+`search` route, Look Up a Verb, a Find a Verb control, and a Find a Verb quick action. Look Up a
+Verb asks for the word, since a shortcut's phrase cannot carry free text, and opens the page only
+when one verb answers; otherwise it opens the search. `finishSearch` gained a `source`.
+
 #### C2. Spotlight That Finds Conjugations and Glosses
 
 Verdict: Yes.
@@ -825,6 +831,11 @@ to a named index.
 - **Effort.** S to M, with a test on a device.
 - **Signal.** The share of verb pages reached from Spotlight.
 - **Conjuguer and Conjugar.** New work in both. Conjuguer's repository has a design note for it.
+
+**Built on `main` 2026-11-12** by [Phase 11](../plans/browse-and-verb-implementation.md#phase-11-lookup-from-outside-the-app):
+a named index, keywords, alternate names, and the key conjugations as each entry's description.
+In the iOS 26.3 simulator only the title matched, so aufgestanden and "get up" still find
+nothing there. Whether a device does better is open.
 
 #### C3. Fix the Shortcut Picker and Add German Phrases
 

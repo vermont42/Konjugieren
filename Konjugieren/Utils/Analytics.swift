@@ -44,9 +44,10 @@ enum AnalyticsName: String {
   case viewVerbView
 }
 
-/// How the learner reached a verb page or, once the quiz track sends it, began a quiz. The two
-/// signals share one vocabulary so that a verb page and a quiz reached from the same surface
-/// carry the same value. `docs/feature-architecture.md` says which values are sent today.
+/// How the learner reached a verb page, began a search, or, once the quiz track sends it, began
+/// a quiz. The signals share one vocabulary so that a verb page, a search, and a quiz reached
+/// from the same surface carry the same value. `docs/feature-architecture.md` says which values
+/// are sent today.
 enum AnalyticsSource: String, CaseIterable {
   case browse
   case control
@@ -55,7 +56,9 @@ enum AnalyticsSource: String, CaseIterable {
   case handoff
   case infoLink
   case list
+  case lookup
   case myVerbs
+  case quickAction
   case recent
   case related
   case resume

@@ -4,7 +4,7 @@ import Foundation
 
 extension URL {
   var isDeeplink: Bool {
-    scheme == "konjugieren"
+    scheme == URL.deeplinkScheme
   }
 
   var hasExpectedNumberOfDeeplinkComponents: Bool {
@@ -14,15 +14,49 @@ extension URL {
   /// The surface that built this deeplink, which a widget or an intent names in a `source` query
   /// item because the deeplink is all it can hand the app.
   var analyticsSource: AnalyticsSource? {
-    URLComponents(url: self, resolvingAgainstBaseURL: false)?
-      .queryItems?
-      .first { $0.name == URL.sourceQueryName }?
-      .value
-      .flatMap(AnalyticsSource.init(rawValue:))
+    deeplinkQueryValue(named: URL.sourceQueryName).flatMap(AnalyticsSource.init(rawValue:))
   }
 
-  static func verbDeeplink(_ infinitiv: String, source: AnalyticsSource) -> URL? {
-    URL(string: "\(konjugierenURLPrefix)\(verbHost)/\(infinitiv)?\(sourceQueryName)=\(source.rawValue)")
+  /// The value of a query item, such as a search's text. Text always travels in a query item,
+  /// never in the path, because it can hold spaces and slashes.
+  func deeplinkQueryValue(named name: String) -> String? {
+    URLComponents(url: self, resolvingAgainstBaseURL: false)?
+      .queryItems?
+      .first { $0.name == name }?
+      .value
+  }
+
+  /// `konjugieren://verb/aufstehen?source=lookup&match=stand%20auf`. A `match` names a
+  /// conjugation that the page marks, as it marks a search's match.
+  static func verbDeeplink(_ infinitiv: String, source: AnalyticsSource, match: String? = nil) -> URL? {
+    deeplink(host: verbHost, target: infinitiv, queryItems: [
+      URLQueryItem(name: sourceQueryName, value: source.rawValue),
+      match.map { URLQueryItem(name: matchQueryName, value: $0) },
+    ])
+  }
+
+  /// `konjugieren://search?q=ging&source=control`. With no `q`, search opens empty and focused.
+  static func searchDeeplink(text: String?, source: AnalyticsSource) -> URL? {
+    deeplink(host: searchHost, target: nil, queryItems: [
+      text.map { URLQueryItem(name: searchTextQueryName, value: $0) },
+      URLQueryItem(name: sourceQueryName, value: source.rawValue),
+    ])
+  }
+
+  /// `konjugieren://info/futur_ii`. The stable key survives the reordering of articles, which
+  /// an index does not.
+  static func infoDeeplink(_ info: Info) -> URL? {
+    deeplink(host: infoHost, target: info.stableKey, queryItems: [])
+  }
+
+  private static func deeplink(host: String, target: String?, queryItems: [URLQueryItem?]) -> URL? {
+    var components = URLComponents()
+    components.scheme = deeplinkScheme
+    components.host = host
+    components.path = target.map { "/\($0)" } ?? ""
+    let items = queryItems.compactMap { $0 }
+    components.queryItems = items.isEmpty ? nil : items
+    return components.url
   }
 
   /// Konjugieren's App Store page. With no storefront in the path, the App Store opens the
@@ -46,10 +80,14 @@ extension URL {
     return URL(string: "mailto:\(address)?subject=\(encode(subject))&body=\(encode(body))")
   }
 
-  static let konjugierenURLPrefix = "konjugieren://"
+  static let deeplinkScheme = "konjugieren"
+  static let konjugierenURLPrefix = "\(deeplinkScheme)://"
   static let quizHost = "quiz"
   static let verbHost = "verb"
   static let familyHost = "family"
   static let infoHost = "info"
+  static let searchHost = "search"
   static let sourceQueryName = "source"
+  static let matchQueryName = "match"
+  static let searchTextQueryName = "q"
 }

@@ -6,6 +6,7 @@ import WidgetKit
 @main
 struct KonjugierenWidgetBundle: WidgetBundle {
   var body: some Widget {
+    FindVerbControl()
     QuickQuizControl()
     QuizWidget()
     RandomVerbControl()

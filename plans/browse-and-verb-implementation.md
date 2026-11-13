@@ -24,7 +24,7 @@ that Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until
 | 8 | Done | 2026-11-12 | `46f400a` | B7's article |
 | 9 | Done | 2026-11-12 | `9e7ce96` | B4, A9 |
 | 10 | Done | 2026-11-12 | `ac6650a` | B6 |
-| 11 | Not started | | | C1, C2 |
+| 11 | Awaiting Josh | 2026-11-12 | | C1, C2 |
 | 12 | Not started | | | D1, D2 |
 | 13 | Not started | | | D2's quiz scope, D3 |
 | 14 | Not started | | | D5 |
@@ -780,6 +780,57 @@ deeplinks address articles before choosing where the new one goes in the list.
   record whether the test ran on a device or in the simulator.
 
 **How it differed:**
+
+- **The grammar** is in `docs/feature-architecture.md` § Deeplink System: `konjugieren://<route>
+  [/<target>][?items]`, at most one path segment, text only in query items, `source` on any route
+  that leads to a page, a search, or a quiz. The `search` route takes no target and carries its
+  text as `q`. `verb` gained `match`, a conjugation that the page marks as it marks a search's
+  match, which is how the lookup lands on ich ging. `info/` now takes a stable key, as Phase 8 asked, and
+  still accepts a position. **For Phase 16**, `list/<key>` and `quiz/start?list=<key>` are
+  reserved and not handled. `URL` gained builders, so app code no longer interpolates links.
+- **Look Up a Verb asks for the word.** A shortcut's phrase can carry only an entity or an enum,
+  not free text, so "Look up a verb with Konjugieren" asks "Which word should Konjugieren look
+  up?". Its prompt turns off autocorrection, which in the simulator turned ging into Going.
+- **What it opens.** The verb's page, marked, when one verb answers: an infinitive, or a
+  conjugation of one verb. Otherwise the search, for gehört (two verbs), gefallen (a verb and
+  fallen's participle), "eat", or a misspelling, where the list shows every match or the guess.
+  A conjugation's stranded parts do not count against the page, because ging is a part of 63
+  separable verbs and a learner who says ging means gehen; the answer names them in a second line.
+  An infinitive's answer is its gloss and key conjugations, with no label. `VerbLookup` holds the
+  logic and reads the verb list's own `VerbSearchResults`.
+- **The answer was not seen.** The intent answers with `.result(opensIntent:dialog:)`, since a
+  result can open the app only by naming another intent (the hidden `OpenLookupResultIntent`).
+  In the simulator's Shortcuts app the app opened on gehen's page with both cells marked, but the
+  answer did not show first. Siri should speak it. **Josh should try it on a device.**
+- **Analytics.** `finishSearch` gained `source`: where the search began (`control`,
+  `quickAction`, `lookup`, `deeplink`, or `tab` for one begun in the Verbs tab, Command-F
+  included). Without it, a page reached through the control's search would report only `search`.
+  `AnalyticsSource` gained `lookup` and `quickAction`. The staged privacy bullet about searches
+  now names where a search began.
+- **The quick action** is installed at launch rather than declared in Info.plist, so its title
+  comes from the string catalog; it reuses "Find a Verb", Command-F's title. Receiving it needed an
+  `AppDelegate` and a scene delegate, since SwiftUI has no hook. `.onOpenURL` and Spotlight
+  continuation still work beside them. The control has the same title and opens the same empty,
+  focused search. Command-F now goes through the same `openSearch`, which replaced
+  `shouldFocusVerbSearch`.
+- **Spotlight matched only titles in the simulator.** The entries moved to a named index and
+  carry glosses and conjugations as keywords and alternate names, as the phase asked, and the key
+  conjugations as their description. On the iOS 26.3 simulator, aufstehen finds its entry, which
+  now reads "steht auf · stand auf · ist aufgestanden" over "get up", but aufgestanden, "get up",
+  "stand auf", and adjudge find nothing. Classic `CSSearchableItem`s with the same fields did no
+  better, so the app entities stayed. **Tested in the simulator only; Josh offered to check on an
+  iPhone.** If a device also matches only titles, the fields cost nothing, and the remaining lever
+  would be extra entries whose titles are conjugations, which would crowd Spotlight.
+- **A bug found by testing.** Deleting `VerbEntity`s from the default index, done once to leave
+  it, also emptied the named index. Run after indexing, as first written, it would have left every
+  existing install with no Spotlight entries until its second launch. It now runs first.
+- **Tests.** 39 new `@Test` cases, 405 in all: the grammar's routes and round trips, the control's
+  and quick action's links, the tracker's source, `VerbLookupTests`, and `VerbSpotlightTests`.
+  In the iPhone 17 simulator: the `search` route with and without text, `match` on aufhalten
+  (hielt), Spotlight for aufstehen and the tap into its page, the quick action with the app
+  running and not running, and Look Up a Verb for ging from the Shortcuts app. Not tried: the
+  control in Control Center (its link is tested), Siri, iPad, a device, and a German-language
+  device.
 
 ## Phase 12: Recents and My Verbs
 

@@ -216,3 +216,20 @@ extension Reading {
     return (run + "zu" + infinitiv.dropFirst(run.count)).lowercased()
   }
 }
+
+extension MarkedConjugations {
+  /// The cells of `verb` that `text` fills, for a deeplink's `match`. Whole conjugations come
+  /// first; failing those, finite parts, so that hielt marks aufhalten's "ich hielt auf".
+  init?(text: String, on verb: Verb) {
+    let cells = verb.conjugations(matching: text)
+    let wholeCells = cells.filter { !$0.isFinitePart }
+    let chosen = wholeCells.isEmpty ? cells : wholeCells
+    guard let first = chosen.first else {
+      return nil
+    }
+    self.init(
+      readingIndex: first.readingIndex,
+      conjugationgroups: Set(chosen.filter { $0.readingIndex == first.readingIndex }.map(\.conjugationgroup))
+    )
+  }
+}

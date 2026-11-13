@@ -9773,3 +9773,45 @@ version cropped the "i" of "ich" and the "f" of "auf" in the lifted preview, bec
 frame ends exactly at its glyphs. Padding the row before the menu and removing the padding after
 it gives the preview a margin without moving a pixel of the page.
 
+
+## Lookup from Outside the App (2026-11-12)
+
+Phase 11 of the browse plan let a learner reach Konjugieren's search without first finding the
+app: a `search` deeplink, a "Look Up a Verb" shortcut, a Find a Verb button for Control Center, a
+Find a Verb item on the app icon's long-press menu, and richer Spotlight entries. The ideas
+document had found that every outside surface opened a random verb, a quiz, or a verb picked from
+a list, and none opened the lookup, which is what people come to the app for.
+
+The plan asked for one deeplink grammar before any new route, and writing it first paid off at
+once. Text such as "stand auf" goes in a query item, never in the path, so the `search` route
+takes no target at all. A `match` item on the `verb` route lets a link land on a marked cell
+exactly as a search result does. Articles became addressable by stable key, which Phase 8 had
+asked for after finding that `info/20` meant Futur II in one build and Duden in another.
+
+The shortcut met two of the App Intents framework's limits. A shortcut phrase can interpolate
+only an entity or an enum, never free text, so "Look up ging with Konjugieren" is impossible; the
+phrase is "Look up a verb", and the intent asks which word. And an intent that answers and then
+opens the app has to name a second intent to do the opening. The first real test, typed into the
+Shortcuts app, produced a lesson in what a learner's keyboard does: autocorrection turned ging
+into Going before the intent saw it. The lookup then did exactly the right thing with "Going",
+which matched weitermachen's gloss "keep going". The parameter now turns autocorrection off.
+
+One rule took thought. ging is gehen's Präteritum, and it is also the part a main clause leaves
+behind in 63 separable verbs (ging … aus). A first draft sent any word with stranded parts to the
+search list, which would have sent almost every strong verb's Präteritum there. Someone who says
+ging nearly always means gehen, so the lookup opens gehen's page with ich ging and er ging marked,
+and mentions the separable verbs in a second line.
+
+Spotlight was the humbling part. Each verb's entry now carries its glosses, its key
+conjugations, and every one-word conjugation in the conjugation map, in a named index. On the iOS
+26.3 simulator none of it was searchable: aufstehen found its entry, now nicely subtitled "steht
+auf · stand auf · ist aufgestanden", but aufgestanden and "get up" found nothing, and neither did
+the same fields indexed through the older `CSSearchableItem` route. Apple-platform developers have
+reported this, and the plan had warned of it. A device test is next.
+
+Testing Spotlight also caught a bug that unit tests could not. To move from the default index to
+the named one, the app deletes its old entries once. Deleting app entities by type turned out to
+empty every index, not just the one it was called on, and the code ran that cleanup after
+indexing. Every existing install would have opened the update with no Spotlight entries at all.
+The cleanup now runs first. It showed up only because a fresh install, unlike the simulator that
+had been running all session, took the one-time path.

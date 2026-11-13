@@ -14,6 +14,17 @@ struct KonjugierenShortcuts: AppShortcutsProvider {
     )
 
     AppShortcut(
+      intent: LookUpVerbIntent(),
+      phrases: [
+        "Look up a verb with \(.applicationName)",
+        "Look up a word with \(.applicationName)",
+        "Look up a conjugation with \(.applicationName)",
+      ],
+      shortTitle: "Look Up a Verb",
+      systemImageName: "magnifyingglass"
+    )
+
+    AppShortcut(
       intent: OpenVerbIntent(),
       phrases: [
         "Show \(\.$verb) with \(.applicationName)",

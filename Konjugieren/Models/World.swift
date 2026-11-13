@@ -20,11 +20,12 @@ class World {
   var session: URLSession
   var verb: Verb?
   var verbSource: AnalyticsSource = .deeplink
+  var verbMarks: MarkedConjugations?
   var family: String?
   var info: Info?
+  var searchRequest: SearchRequest?
   var selectedTab: TabSelection = .verbs
   var shouldNavigateToTutor = false
-  var shouldFocusVerbSearch = false
 
   init(settings: Settings, gameCenter: GameCenter, getterSetter: GetterSetter, languageModelService: LanguageModelService, reviewPrompter: ReviewPrompter, soundPlayer: SoundPlayer, utterer: Utterer, fatalError: FatalError, analytics: Analytics, session: URLSession) {
     self.settings = settings
@@ -61,13 +62,18 @@ class World {
 
   private func clearDeeplinkTargets() {
     verb = nil
+    verbMarks = nil
     family = nil
     info = nil
+    searchRequest = nil
   }
 
-  func focusVerbSearch() {
+  /// Shows the verb list with its search field. A nil `text` keeps what the field holds, as
+  /// Command-F does; an empty one clears it.
+  func openSearch(text: String?, source: AnalyticsSource) {
+    clearDeeplinkTargets()
     selectedTab = .verbs
-    shouldFocusVerbSearch = true
+    searchRequest = SearchRequest(text: text, source: source)
   }
 
   func handleUserActivity(_ userActivity: NSUserActivity) {
@@ -85,11 +91,21 @@ class World {
     }
   }
 
+  /// The grammar is in docs/feature-architecture.md § Deeplink System.
   func handleURL(_ url: URL) {
-    guard
-      url.isDeeplink,
-      url.hasExpectedNumberOfDeeplinkComponents
-    else {
+    guard url.isDeeplink else {
+      return
+    }
+
+    // The search route alone takes no target, so it comes before the check for one.
+    if url.host == URL.searchHost {
+      if url.pathComponents.count <= 1 {
+        openSearch(text: url.deeplinkQueryValue(named: URL.searchTextQueryName) ?? "", source: url.analyticsSource ?? .deeplink)
+      }
+      return
+    }
+
+    guard url.hasExpectedNumberOfDeeplinkComponents else {
       return
     }
 
@@ -98,13 +114,11 @@ class World {
     switch url.host {
     case URL.verbHost:
       let target = url.pathComponents[1]
-      if target == "random" {
-        verb = Array(Verb.verbs.values).randomElement()
-      } else {
-        verb = Verb.verbs[target]
-      }
+      let found = target == "random" ? Array(Verb.verbs.values).randomElement() : Verb.verbs[target]
       verbSource = url.analyticsSource ?? .deeplink
-      if verb != nil {
+      if let found {
+        verbMarks = url.deeplinkQueryValue(named: URL.matchQueryName).flatMap { MarkedConjugations(text: $0, on: found) }
+        verb = found
         selectedTab = .verbs
       }
     case URL.quizHost:
@@ -115,15 +129,19 @@ class World {
         selectedTab = .families
       }
     case URL.infoHost:
-      if
-        let infoIndex = Int(url.pathComponents[1]),
-        Info.infos.indices.contains(infoIndex)
-      {
-        info = Info.infos[infoIndex]
+      if let found = Info.info(deeplinkTarget: url.pathComponents[1]) {
+        info = found
         selectedTab = .info
       }
     default:
       return
     }
   }
+}
+
+/// A request, from a deeplink or a command, that the verb list show its search field.
+struct SearchRequest: Equatable {
+  /// Nil keeps what the field holds.
+  let text: String?
+  let source: AnalyticsSource
 }

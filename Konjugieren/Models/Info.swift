@@ -45,6 +45,18 @@ struct Info: Hashable, Identifiable {
     Info(stableKey: "credits", heading: L.Info.creditsHeading, text: L.Info.creditsText, media: .photo(filename: "JoshAdams", accessibilityLabel: L.ImageInfo.joshAdams)),
   ]
 
+  /// The article an `info/` deeplink names: by stable key, or by position in `infos`, which
+  /// links built before 2026-11-12 used.
+  static func info(deeplinkTarget target: String) -> Info? {
+    if let info = infos.first(where: { $0.stableKey == target }) {
+      return info
+    }
+    if let index = Int(target), infos.indices.contains(index) {
+      return infos[index]
+    }
+    return nil
+  }
+
   static func headingToIndex(heading: String) -> Int? {
     for (i, info) in infos.enumerated() {
       if info.heading.lowercased() == heading.lowercased() {

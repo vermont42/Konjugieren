@@ -26,7 +26,7 @@ struct SearchReportTests {
   @Test func clearingTheFieldEndsTheSearch() {
     var tracker = SearchTracker()
     _ = tracker.textChanged(to: "geh")
-    #expect(tracker.textChanged(to: "") == "geh")
+    #expect(tracker.textChanged(to: "")?.query == "geh")
     #expect(tracker.query == nil)
   }
 
@@ -39,7 +39,7 @@ struct SearchReportTests {
   @Test func aFinishedSearchIsNotFinishedAgain() {
     var tracker = SearchTracker()
     _ = tracker.textChanged(to: "geh")
-    #expect(tracker.finish() == "geh")
+    #expect(tracker.finish()?.query == "geh")
     #expect(tracker.finish() == nil)
     #expect(tracker.textChanged(to: "") == nil)
   }
@@ -49,7 +49,54 @@ struct SearchReportTests {
     _ = tracker.textChanged(to: "geh")
     _ = tracker.finish()
     _ = tracker.textChanged(to: "gehe")
-    #expect(tracker.finish() == "gehe")
+    #expect(tracker.finish()?.query == "gehe")
+  }
+
+  @Test func aSearchTypedInTheTabIsTheTabs() {
+    var tracker = SearchTracker()
+    _ = tracker.textChanged(to: "geh")
+    #expect(tracker.finish()?.source == .tab)
+  }
+
+  @Test func aSearchTakesTheSourceOfTheSurfaceThatOpenedTheField() {
+    var tracker = SearchTracker()
+    #expect(tracker.fieldOpened(from: .control) == nil)
+    _ = tracker.textChanged(to: "g")
+    _ = tracker.textChanged(to: "geh")
+    #expect(tracker.finish() == SearchTracker.Search(query: "geh", source: .control))
+  }
+
+  @Test func onlyTheFirstSearchAfterTheFieldOpensTakesItsSource() {
+    var tracker = SearchTracker()
+    _ = tracker.fieldOpened(from: .quickAction)
+    _ = tracker.textChanged(to: "geh")
+    _ = tracker.textChanged(to: "")
+    _ = tracker.textChanged(to: "kom")
+    #expect(tracker.finish()?.source == .tab)
+  }
+
+  @Test func openingTheFieldEndsASearchInProgress() {
+    var tracker = SearchTracker()
+    _ = tracker.textChanged(to: "geh")
+    #expect(tracker.fieldOpened(from: .lookup) == SearchTracker.Search(query: "geh", source: .tab))
+    _ = tracker.textChanged(to: "ging")
+    #expect(tracker.finish()?.source == .lookup)
+  }
+
+  @Test func closingAnUntouchedFieldForgetsItsSource() {
+    var tracker = SearchTracker()
+    _ = tracker.fieldOpened(from: .control)
+    tracker.fieldClosed()
+    _ = tracker.textChanged(to: "geh")
+    #expect(tracker.finish()?.source == .tab)
+  }
+
+  @Test func closingTheFieldMidSearchKeepsItsSource() {
+    var tracker = SearchTracker()
+    _ = tracker.fieldOpened(from: .control)
+    _ = tracker.textChanged(to: "geh")
+    tracker.fieldClosed()
+    #expect(tracker.finish()?.source == .control)
   }
 
   @Test func openedReportNamesTheOpenedResultsKind() throws {
@@ -57,6 +104,7 @@ struct SearchReportTests {
     #expect(report.outcome == .opened)
     #expect(report.matchKind == .exactInfinitive)
     #expect(report.parameters == [
+      "source": "tab",
       "outcome": "opened",
       "queryLength": "3-5",
       "resultCount": AnalyticsBand.resultCount(matches("gehen").count),
@@ -104,8 +152,9 @@ struct SearchReportTests {
   }
 
   @Test func openingTheGuessIsAnOpenWithNoResults() {
-    let report = SearchReport.openedGuess(query: "gehn")
+    let report = SearchReport.openedGuess(query: "gehn", source: .control)
     #expect(report.parameters == [
+      "source": "control",
       "outcome": "opened",
       "queryLength": "3-5",
       "resultCount": "0",
@@ -121,6 +170,7 @@ struct SearchReportTests {
     let vocabulary = Set(
       SearchOutcome.allCases.map(\.rawValue)
         + SearchMatchKind.allCases.map(\.rawValue)
+        + AnalyticsSource.allCases.map(\.rawValue)
         + ["1-2", "3-5", "6-9", "10+", "0", "1", "2-10", "11+", "2-5", "6+", "none"]
     )
     let found = matches(query)

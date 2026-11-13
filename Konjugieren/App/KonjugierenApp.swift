@@ -7,6 +7,7 @@ import TipKit
 import WidgetKit
 
 struct KonjugierenApp: App {
+  @UIApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
   @Environment(\.scenePhase) private var scenePhase
 
   var body: some Scene {
@@ -76,8 +77,7 @@ struct KonjugierenApp: App {
     KonjugierenShortcuts.updateAppShortcutParameters()
     LiveActivityManager.endAllActivities()
     Task {
-      let entities = await VerbEntityQuery().allEntities()
-      try? await CSSearchableIndex.default().indexAppEntities(entities)
+      await VerbSpotlight.indexVerbs()
     }
   }
 }

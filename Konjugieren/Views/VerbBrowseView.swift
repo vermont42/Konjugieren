@@ -167,6 +167,10 @@ struct VerbBrowseView: View {
       .onAppear {
         Current.analytics.signal(name: .viewVerbBrowseView)
         Current.reviewPrompter.promptableActionHappened()
+        // A deeplink that switched to this tab can arrive before the tab first appears, when
+        // no onChange below is yet watching.
+        openRequestedVerb()
+        openRequestedSearch()
       }
       .navigationTitle(L.Navigation.verbs)
       .navigationDestination(for: VerbDestination.self) { destination in
@@ -201,27 +205,23 @@ struct VerbBrowseView: View {
           }
         } else {
           VerbSearchArrowKeys.uninstall()
+          searchTracker.fieldClosed()
         }
       }
       .onChange(of: searchText) {
         keyboardSelection = nil
         separableVerbsAreShown = false
-        if let query = searchTracker.textChanged(to: searchText) {
-          signalEndedSearch(query: query)
+        if let search = searchTracker.textChanged(to: searchText) {
+          signalEndedSearch(search)
         }
       }
       .onChange(of: scenePhase) {
-        if scenePhase == .background, let query = searchTracker.finish() {
-          signalEndedSearch(query: query)
+        if scenePhase == .background, let search = searchTracker.finish() {
+          signalEndedSearch(search)
         }
       }
-      .onChange(of: world.shouldFocusVerbSearch) {
-        if world.shouldFocusVerbSearch {
-          world.shouldFocusVerbSearch = false
-          Task {
-            await focusSearch()
-          }
-        }
+      .onChange(of: world.searchRequest) {
+        openRequestedSearch()
       }
       .task {
         // Building the index decompresses the map and folds 50,000 conjugations, which the
@@ -231,11 +231,7 @@ struct VerbBrowseView: View {
         }.value
       }
       .onChange(of: world.verb) {
-        if let verb = world.verb {
-          navigationPath = NavigationPath()
-          navigationPath.append(VerbDestination(verb: verb, source: world.verbSource))
-          world.verb = nil
-        }
+        openRequestedVerb()
       }
     }
     .environment(\.verbPagePush, VerbPagePush { navigationPath.append($0) })
@@ -298,14 +294,47 @@ struct VerbBrowseView: View {
     }
   }
 
-  private func focusSearch() async {
+  private func openRequestedVerb() {
+    guard let verb = world.verb else {
+      return
+    }
+    navigationPath = NavigationPath()
+    navigationPath.append(VerbDestination(verb: verb, source: world.verbSource, marks: world.verbMarks))
+    world.verb = nil
+    world.verbMarks = nil
+  }
+
+  /// Text that arrives with the request is shown as results, with the keyboard down so that
+  /// they are visible. A request with no text, or with empty text, is for typing, so it focuses
+  /// the field.
+  private func openRequestedSearch() {
+    guard let request = world.searchRequest else {
+      return
+    }
+    world.searchRequest = nil
+    if let text = request.text {
+      if let ended = searchTracker.fieldOpened(from: request.source) {
+        signalEndedSearch(ended)
+      }
+      searchText = text
+      // onChange(of: searchText) does not fire when the text is unchanged, and the request
+      // still begins a search.
+      _ = searchTracker.textChanged(to: text)
+    }
+    let wantsKeyboard = request.text?.trimmingCharacters(in: .whitespacesAndNewlines).isEmpty ?? true
+    Task {
+      await showSearch(focused: wantsKeyboard)
+    }
+  }
+
+  private func showSearch(focused: Bool) async {
     if !navigationPath.isEmpty {
       navigationPath = NavigationPath()
       // Hack: focus requested while the pop animates sets the focus state without making the
       // field first responder, so typing goes nowhere. Wait out the animation.
       try? await Task.sleep(for: .milliseconds(500))
     }
-    searchIsFocused = true
+    searchIsFocused = focused
   }
 
   private func verbRequestText(query: String) -> AttributedString {
@@ -442,21 +471,22 @@ struct VerbBrowseView: View {
       navigationPath.append(VerbDestination(verb: hit.verb, source: .browse))
       return
     }
-    if let query = searchTracker.finish() {
-      signal(.opened(query: query, resultCount: searchResults.matchCount, kind: kind, position: index))
+    if let search = searchTracker.finish() {
+      signal(.opened(query: search.query, source: search.source, resultCount: searchResults.matchCount, kind: kind, position: index))
     }
     navigationPath.append(VerbDestination(verb: hit.verb, source: .search, marks: hit.conjugation?.marks(on: hit.verb)))
   }
 
   private func openGuess(_ guess: VerbSearchResults.Hit) {
-    if let query = searchTracker.finish() {
-      signal(.openedGuess(query: query))
+    if let search = searchTracker.finish() {
+      signal(.openedGuess(query: search.query, source: search.source))
     }
     navigationPath.append(VerbDestination(verb: guess.verb, source: .searchGuess, marks: guess.conjugation?.marks(on: guess.verb)))
   }
 
-  private func signalEndedSearch(query: String) {
-    signal(.ended(query: query, matches: VerbSearch.matches(for: query, in: Verb.verbsSortedByFrequency, includeGlosses: searchIncludesGlosses)))
+  private func signalEndedSearch(_ search: SearchTracker.Search) {
+    let matches = VerbSearch.matches(for: search.query, in: Verb.verbsSortedByFrequency, includeGlosses: searchIncludesGlosses)
+    signal(.ended(query: search.query, source: search.source, matches: matches))
   }
 
   private func signal(_ report: SearchReport) {

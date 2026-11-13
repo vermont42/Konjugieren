@@ -51,6 +51,44 @@ enum L {
     }
   }
 
+  enum Lookup {
+    static func verbWithGloss(infinitiv: String, gloss: String) -> String {
+      String(localized: "Lookup.verbWithGloss \(infinitiv) \(gloss)")
+    }
+
+    static func conjugation(_ conjugation: String, cells: String, infinitiv: String) -> String {
+      String(localized: "Lookup.conjugation \(conjugation) \(cells) \(infinitiv)")
+    }
+
+    static func finitePartOne(_ word: String, infinitiv: String, shown: String) -> String {
+      String(localized: "Lookup.finitePartOne \(word) \(infinitiv) \(shown)")
+    }
+
+    static func finitePartMany(_ word: String, infinitiv: String, shown: String, others: Int) -> String {
+      String(localized: "Lookup.finitePartMany \(word) \(infinitiv) \(shown) \(others)")
+    }
+
+    static func otherMatchesOne(_ word: String, verb: String) -> String {
+      String(localized: "Lookup.otherMatchesOne \(word) \(verb)")
+    }
+
+    static func otherMatchesMany(_ word: String, count: Int, verb: String) -> String {
+      String(localized: "Lookup.otherMatchesMany \(word) \(count) \(verb)")
+    }
+
+    static func guessVerb(_ word: String, infinitiv: String) -> String {
+      String(localized: "Lookup.guessVerb \(word) \(infinitiv)")
+    }
+
+    static func guessConjugation(_ word: String, conjugation: String, infinitiv: String) -> String {
+      String(localized: "Lookup.guessConjugation \(word) \(conjugation) \(infinitiv)")
+    }
+
+    static func nothing(_ word: String) -> String {
+      String(localized: "Lookup.nothing \(word)")
+    }
+  }
+
   enum Navigation {
     static var verbs: String {
       String(localized: "Navigation.verbs")

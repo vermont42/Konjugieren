@@ -10,16 +10,68 @@ struct DeeplinkTests {
   init() {
     Current.verb = nil
     Current.verbSource = .browse
+    Current.verbMarks = nil
     Current.family = nil
     Current.info = nil
+    Current.searchRequest = nil
     Current.selectedTab = .settings
-    Current.shouldFocusVerbSearch = false
   }
 
-  @Test func focusVerbSearchShowsTheVerbsTabAndAsksForFocus() {
-    Current.focusVerbSearch()
+  @Test func commandFShowsTheVerbsTabAndKeepsTheFieldsText() {
+    Current.openSearch(text: nil, source: .tab)
     #expect(Current.selectedTab == .verbs)
-    #expect(Current.shouldFocusVerbSearch)
+    #expect(Current.searchRequest == SearchRequest(text: nil, source: .tab))
+  }
+
+  @Test func searchDeeplinkCarriesItsTextAndSource() {
+    Current.handleURL(URL(string: "konjugieren://search?q=stand%20auf&source=control")!)
+    #expect(Current.selectedTab == .verbs)
+    #expect(Current.searchRequest == SearchRequest(text: "stand auf", source: .control))
+  }
+
+  @Test func searchDeeplinkWithNoTextOpensAnEmptyField() {
+    Current.handleURL(URL(string: "konjugieren://search")!)
+    #expect(Current.searchRequest == SearchRequest(text: "", source: .deeplink))
+  }
+
+  @Test func searchDeeplinkWithATargetIsIgnored() {
+    Current.handleURL(URL(string: "konjugieren://search/ging")!)
+    #expect(Current.searchRequest == nil)
+    #expect(Current.selectedTab == .settings)
+  }
+
+  @Test(arguments: ["ging", "stand auf", "läßt zu", "a&b=c#d", ""])
+  func builtSearchDeeplinkRoundTrips(text: String) throws {
+    let url = try #require(URL.searchDeeplink(text: text, source: .lookup))
+    Current.handleURL(url)
+    #expect(Current.searchRequest == SearchRequest(text: text, source: .lookup))
+  }
+
+  @Test func aVerbDeeplinkReplacesAPendingSearch() {
+    Current.handleURL(URL(string: "konjugieren://search?q=ging")!)
+    Current.handleURL(URL(string: "konjugieren://verb/gehen")!)
+    #expect(Current.searchRequest == nil)
+    #expect(Current.verb?.infinitiv == "gehen")
+  }
+
+  @Test func verbDeeplinkMarksItsMatch() throws {
+    let url = try #require(URL.verbDeeplink("gehen", source: .lookup, match: "ging"))
+    Current.handleURL(url)
+    #expect(Current.verb?.infinitiv == "gehen")
+    #expect(Current.verbSource == .lookup)
+    #expect(Current.verbMarks == MarkedConjugations(readingIndex: 0, conjugationgroups: [.präteritumIndikativ(.firstSingular), .präteritumIndikativ(.thirdSingular)]))
+  }
+
+  @Test func verbDeeplinkMarksAFinitePart() throws {
+    let url = try #require(URL.verbDeeplink("aufhalten", source: .lookup, match: "hielt"))
+    Current.handleURL(url)
+    #expect(Current.verbMarks?.conjugationgroups == [.präteritumIndikativ(.firstSingular), .präteritumIndikativ(.thirdSingular)])
+  }
+
+  @Test func verbDeeplinkWithoutAMatchMarksNothing() {
+    Current.handleURL(URL(string: "konjugieren://verb/gehen?match=xyzzy")!)
+    #expect(Current.verb?.infinitiv == "gehen")
+    #expect(Current.verbMarks == nil)
   }
 
   @Test func isDeeplink() {
@@ -85,6 +137,16 @@ struct DeeplinkTests {
     #expect(Current.verbSource == source)
   }
 
+  @Test func findAVerbControlOpensAnEmptySearch() {
+    Current.handleURL(URL(string: OpenVerbSearchIntent.pendingDeeplink)!)
+    #expect(Current.searchRequest == SearchRequest(text: "", source: .control))
+  }
+
+  @Test func findAVerbQuickActionOpensAnEmptySearch() {
+    #expect(QuickAction.perform(QuickAction.findVerb.item))
+    #expect(Current.searchRequest == SearchRequest(text: "", source: .quickAction))
+  }
+
   @Test func handleURLVerbDeeplinkUnknownVerb() {
     let url = URL(string: "konjugieren://verb/nonexistent")!
     Current.handleURL(url)
@@ -98,6 +160,19 @@ struct DeeplinkTests {
     #expect(Current.info?.heading == Info.infos[0].heading)
     #expect(Current.selectedTab == .info)
     #expect(Current.verb == nil)
+  }
+
+  @Test func infoDeeplinkByStableKey() {
+    Current.handleURL(URL(string: "konjugieren://info/futur_ii")!)
+    #expect(Current.info?.stableKey == "futur_ii")
+    #expect(Current.selectedTab == .info)
+  }
+
+  @Test func builtInfoDeeplinkOpensEveryArticle() throws {
+    for info in Info.infos {
+      Current.handleURL(try #require(URL.infoDeeplink(info)))
+      #expect(Current.info?.stableKey == info.stableKey)
+    }
   }
 
   @Test func handleURLInfoDeeplinkOutOfBounds() {

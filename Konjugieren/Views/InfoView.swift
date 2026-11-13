@@ -77,7 +77,7 @@ struct InfoView: View {
     let cleaned = cleanURLString(url.absoluteString)
 
     if let infoIndex = Info.headingToIndex(heading: cleaned) {
-      if let infoURL = URL(string: "\(URL.konjugierenURLPrefix)\(URL.infoHost)/\(infoIndex)") {
+      if let infoURL = URL.infoDeeplink(Info.infos[infoIndex]) {
         open(infoURL)
       }
       return .handled

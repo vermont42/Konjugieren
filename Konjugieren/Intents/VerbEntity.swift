@@ -1,6 +1,7 @@
 // Copyright © 2025 Josh Adams. All rights reserved.
 
 import AppIntents
+import CoreSpotlight
 
 struct VerbEntity: AppEntity, IndexedEntity {
   static let typeDisplayRepresentation = TypeDisplayRepresentation(name: "Verb")
@@ -9,8 +10,22 @@ struct VerbEntity: AppEntity, IndexedEntity {
   let id: String
   let translation: String
 
+  /// Set only on the entities that `VerbSpotlight` indexes. A query's entities leave it nil,
+  /// because a picker shows only the title and subtitle.
+  var spotlight: VerbSpotlight.Text? = nil
+
   var displayRepresentation: DisplayRepresentation {
     DisplayRepresentation(title: "\(id)", subtitle: "\(translation)")
+  }
+
+  var attributeSet: CSSearchableItemAttributeSet {
+    let attributes = defaultAttributeSet
+    if let spotlight {
+      attributes.alternateNames = spotlight.alternateNames
+      attributes.keywords = spotlight.keywords
+      attributes.contentDescription = spotlight.description
+    }
+    return attributes
   }
 }
 

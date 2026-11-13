@@ -10,6 +10,7 @@ Konjugieren/
 ├── App/
 │   ├── AppLauncher.swift       # Chooses TestApp vs KonjugierenApp based on environment
 │   ├── KonjugierenApp.swift    # Main app entry point with Game Center auth
+│   ├── QuickActions.swift      # Home Screen quick action (Find a Verb), installed at launch; AppDelegate and the scene delegate that receive it, since SwiftUI has no hook
 │   ├── TestApp.swift           # Minimal app for unit test environment
 │   └── VerbSearchCommands.swift  # Menu command: Command-F switches to the Verbs tab and focuses search (iPad, Mac)
 ├── Assets/
@@ -19,9 +20,11 @@ Konjugieren/
 ├── Intents/
 │   ├── ConjugateVerbIntent.swift   # Siri shortcut intent for conjugating a verb
 │   ├── KonjugierenShortcuts.swift  # AppShortcutsProvider registering all Siri shortcuts
+│   ├── LookUpVerbIntent.swift      # Look Up a Verb: answers which verb a word belongs to ("ging: Präteritum Indikativ (ich, er) of gehen"), then opens the page or the search through the hidden OpenLookupResultIntent
 │   ├── OpenVerbIntent.swift        # Siri shortcut intent to open a verb detail view
 │   ├── SiriConjugationgroup.swift  # AppEnum mapping conjugationgroups for Siri
-│   └── VerbEntity.swift            # AppEntity for verb selection in Siri intents
+│   ├── VerbEntity.swift            # AppEntity for verb selection in Siri intents; its attributeSet carries the Spotlight fields
+│   └── VerbSpotlight.swift         # Each verb's Spotlight entry (key conjugations as description, glosses and conjugations as alternate names and keywords), indexed at launch into the named index "verbs"
 ├── Models/
 │   ├── Ablaut.swift            # Single ablaut: replacement + target conjugationgroups
 │   ├── AblautGroup.swift       # Named collection of ablauts for a verb pattern
@@ -72,7 +75,7 @@ Konjugieren/
 │   ├── RelatedVerbs.swift      # Verb.root (the innermost base: anerkennen → kennen) and Verb.related(readingIndex:): verbs built on the same root, one verb per other root of the ablaut group, and the Families pages of a reading
 │   ├── Region.swift            # Setting enum: the three standard varieties (north/austria/switzerland)
 │   ├── QuizErrorHistory.swift  # Persistence for recent quiz errors (up to 200)
-│   ├── SearchReport.swift      # SearchTracker (one search, first letter to its end) and SearchReport (the banded finishSearch parameters)
+│   ├── SearchReport.swift      # SearchTracker (one search, first letter to its end, and the surface that opened the field for it) and SearchReport (the banded finishSearch parameters)
 │   ├── SearchScope.swift       # Setting enum: infinitive-only vs. infinitive-and-translation search
 │   ├── SortOrder.swift         # Enum for verb list sorting (alphabetical/frequency); [Verb].sorted(by:), used by the family pages and the related-verb list
 │   ├── Sound.swift             # Sound effect definitions (guns, chimes, applause)
@@ -84,9 +87,10 @@ Konjugieren/
 │   ├── VerbParser.swift        # XMLParser delegate for Verbs.xml, incl. the `in` marker grammar
 │   ├── VerbVisit.swift         # VerbDestination (a verb page to push, with its analytics source and the cells a search marked) and VerbVisit (one viewVerbView/leaveVerbView pair)
 │   ├── VerbSearch.swift        # The one search rule (list and shortcut picker): umlaut/digraph/ß folding, ranked match kinds including conjugations and stranded parts, and the edit-distance guess (infinitives and conjugations) for a failed search
-│   ├── VerbSearchResults.swift # What the verb list shows for a query: rows, the folded row of separable verbs, the guess; MatchedConjugation names a match's cells and the marks for the verb page
+│   ├── VerbLookup.swift        # What Look Up a Verb says about a word (an infinitive, a conjugation of one or more verbs, other matches, the guess) and where it then opens the app
+│   ├── VerbSearchResults.swift # What the verb list shows for a query: rows, the folded row of separable verbs, the guess; MatchedConjugation names a match's cells and the marks for the verb page; MarkedConjugations(text:on:) for a deeplink's match
 │   ├── Verbs.xml               # 3,572 verb definitions with markers and metadata
-│   └── World.swift             # @Observable DI container with environment selection
+│   └── World.swift             # @Observable DI container with environment selection; handleURL parses the deeplink grammar (docs/feature-architecture.md § Deeplink System); SearchRequest
 ├── Utils/
 │   ├── Analytics.swift         # Analytics protocol, event names, parameter keys, value vocabularies (AnalyticsSource, SearchMatchKind, …), and bands
 │   ├── AnalyticsReal.swift     # TelemetryDeck implementation of Analytics
@@ -122,7 +126,7 @@ Konjugieren/
 │   ├── StringExtensions.swift  # Rich text markup parsing to RichTextBlock/TextSegment
 │   ├── TextExtension.swift     # Text(mixedCaseString:) for ablaut-highlighted display
 │   ├── TimeFormatter.swift     # Formats elapsed seconds as h:mm:ss
-│   ├── URLExtension.swift      # Deeplink URL helpers (konjugieren:// scheme, the `source` query item), developerEmail, the mailto: builder, and URL.appStore
+│   ├── URLExtension.swift      # The deeplink grammar's constants and builders (verbDeeplink with match, searchDeeplink, infoDeeplink by stable key), the `source` query item, developerEmail, the mailto: builder, and URL.appStore
 │   ├── URLProtocolStub.swift   # URLProtocol subclass for stubbing HTTP responses in tests
 │   ├── URLSessionExtension.swift   # Extension providing a stubbed URLSession for testing
 │   ├── VerbSearchArrowKeys.swift   # UIKit workaround: priority UIKeyCommands so ↑/↓ move through search results while the field is focused
@@ -155,6 +159,7 @@ KonjugierenWidget/
 ├── AnswerQuizIntent.swift      # AppIntent for answering a quiz question from the widget
 ├── Assets.xcassets/            # Widget-specific asset catalog
 ├── CLAUDE.md                   # Lazily loaded Claude Code guidance: WidgetL and the widget string catalog
+├── FindVerbControl.swift       # Control Center button opening the verb search, empty and focused
 ├── Info.plist                  # Widget extension configuration
 ├── KonjugierenWidget.entitlements  # Widget entitlements (App Groups)
 ├── KonjugierenWidgetBundle.swift   # Widget bundle combining all widgets and live activities
@@ -187,6 +192,7 @@ Shared/
 ├── OpenQuizIntent.swift            # Shared intent to open quiz via deeplink
 ├── OpenRandomVerbControlIntent.swift  # The Random Verb control's action: OpenRandomVerbIntent with source=control, hidden from Shortcuts
 ├── OpenRandomVerbIntent.swift      # Shared intent to open random verb via deeplink (the Random Verb shortcut)
+├── OpenVerbSearchIntent.swift      # The Find a Verb control's action: konjugieren://search?source=control, hidden from Shortcuts
 ├── QuizActivityAttributes.swift    # ActivityKit model for quiz live activity
 ├── WidgetConstants.swift           # Constants for widget app-group container, storage keys, day count, and pinned Gregorian calendar
 ├── WidgetQuizShuffle.swift         # Process-stable (FNV-1a seeded) answer shuffle + SeededRNG, shared by widget and tests
@@ -210,12 +216,14 @@ KonjugierenTests/
 │   ├── SearchReportTests.swift # SearchTracker lifecycle, finishSearch parameters, and the no-typed-text guarantee
 │   ├── RelatedVerbsTests.swift # Verb.root through nested prefixes, verbs built on a root, ablaut relatives (one per root), family pages, per-reading relations, [Verb].sorted(by:)
 │   ├── RefusalDetectionTests.swift # Tutor refusal-phrase detection, incl. the "null" exact-match false-positive guard
+│   ├── VerbLookupTests.swift   # Look Up a Verb: what it says about infinitives, conjugations, ambiguous and unknown words, and where it opens the app
 │   ├── VerbSearchTests.swift   # VerbSearch: folding, match-kind ranking, the ideas doc's failed queries, list/picker agreement, the failed-search guess
+│   ├── VerbSpotlightTests.swift # Spotlight fields: gloss phrases, conjugations with particles, key conjugations per reading and region
 │   ├── VerbTests.swift         # Verb.stamm and endingIsValid tests
 │   └── VerbVisitTests.swift    # VerbVisit: deepest section and banded dwell
 ├── Utils/
 │   ├── AnalyticsTests.swift    # Analytics bands, section order, and the match-kind mapping
-│   ├── DeeplinkTests.swift     # Deeplink URL parsing and handling tests, incl. the `source` query item
+│   ├── DeeplinkTests.swift     # The deeplink grammar: every route, the `source` and `match` query items, the search route, stable-key articles, the control and quick-action links
 │   ├── MixedCaseAccessibilityTests.swift  # VoiceOver label generation tests
 │   ├── MixedCaseSegmenterTests.swift  # Ablaut segmentation tests (empty/all-regular/all-irregular/formal Sie)
 │   ├── SettingsTests.swift     # Settings persistence and default-value tests

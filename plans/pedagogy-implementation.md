@@ -16,7 +16,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | Phase | Status | Date | Commit | Suggestions |
 |---:|---|---|---|---|
 | 1 | Done | 2026-11-13 | `250cca9` | T1.3, T1.4, T1.5 |
-| 2 | Awaiting Josh | 2026-11-13 | | T1.2 |
+| 2 | Done | 2026-11-13 | `11f2d81` | T1.2 |
 | 3 | Not started | | | T4.1, T4.4, T4.5 |
 | 4 | Not started | | | T1.6 |
 | 5 | Not started | | | T2.3, T2.6, T6.7, M1 |
@@ -309,7 +309,7 @@ answer field, the ruled variants pass, and tests pin each.
 
 ## Phase 2: The Shape of the Answer
 
-**Suggestions:** T1.2. **Depends on:** Phase 1. **Status:** Awaiting Josh.
+**Suggestions:** T1.2. **Depends on:** Phase 1. **Status:** Done.
 
 Show the shape of the expected answer around the field: `ihr ______` with the pronoun fixed
 outside the field, and `______ Sie ______!` for a Sie-Imperativ of a separable verb. The frame

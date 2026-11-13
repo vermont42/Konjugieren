@@ -21,7 +21,7 @@ that Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until
 | 5 | Done | 2026-11-12 | `6c911fb` | A5 (the map) |
 | 6 | Done | 2026-11-12 | `23bab52` | A5 (the search) |
 | 7 | Done | 2026-11-12 | `91831dc` | B3, B5's tip |
-| 8 | Not started | | | B7's article |
+| 8 | Awaiting Josh | 2026-11-12 | | B7's article |
 | 9 | Not started | | | B4, A9 |
 | 10 | Not started | | | B6 |
 | 11 | Not started | | | C1, C2 |
@@ -608,6 +608,42 @@ section, so the article shows by example how the construction is built. Check ho
 deeplinks address articles before choosing where the new one goes in the list.
 
 **How it differed:**
+
+- **Placement.** `info/<index>` is a position in `Info.infos`, but every such URL is built at run
+  time from an article's heading, and no widget, intent, Spotlight entry, or test stores one
+  beyond `info/0`. So the article could go anywhere. It sits after Futur Konjunktiv II and before
+  Duden, which keeps the three Futur I articles together and shifts only Duden, Game, and Credits
+  by one. Its key is `futur_ii`, its symbol `flag.checkered`. One caution, seen during testing: an
+  older build given `info/20` opens Duden, not Futur II. **Phase 11's grammar should address
+  articles by `stableKey`** before any outside surface links to one; `docs/feature-architecture.md`
+  § Deeplinks says so.
+- **The article** (about 2,800 words in each language, a little over the template's 2,500) shows
+  the three parts, the shortcut from the Perfekt Indikativ, full tables for machen and gehen, haben
+  or sein (with fahren's two meanings and the Regional Variety setting's stehen), word order, the
+  verb families, the Ersatzinfinitiv, both meanings, the Perfekt as a rival, the Konjunktiv
+  versions, and the name's Latin origin (futurum exactum, and English exact). B7's passive line
+  became a section, "A Look-Alike": Kafka's "beseitigt sein werden" looks like a Futur II and is
+  the Futur I of the Zustandspassiv, which sets up "wird beseitigt worden sein".
+- **The literary examples are authentic**, found by searching the Gutenberg texts named in
+  `docs/conjugationgroupText.md` and paired with those editions' English: Kafka's "Sie werden
+  bemerkt haben" and two more from Der Prozess, Mann's "wirst du mich gut gefahren haben", and,
+  since Werther has no indicative Futur II, Goethe's Konjunktiv II "würde … vorgefunden haben".
+  No Luther example was sought.
+- **Cross-links.** The Tense article's Futur line and the end of the Futur Indikativ article's
+  About section now link to the new article, in both languages.
+- **Three broken links fixed.** A new `InfoTests` checks that every `‡link‡` in both catalogs opens
+  an article or a verb. Its first run found that the Terminology article linked "Präteritum
+  Indicativ" in both languages and, in German, the English heading "A History of the German Verb
+  System". Each tap did nothing. Both are fixed.
+- **Das Präsens.** The German Futur Indikativ article treated Präsens as masculine ("den
+  Präsens"), where Duden has das Präsens. At Josh's request its nine masculine uses are now
+  neuter. The German Präsens Indikativ, Präsens Konjunktiv I, and Futur Konjunktiv I articles do
+  the same (about 20 uses, among correct genitives such as "der Präsens-Konjunktiv-I-Konjugation")
+  and were left for a later pass.
+- **How it was tested.** 4 new `@Test` functions, 344 in all. In the iPhone 17 simulator: the row
+  in the Info list, the article opened from it and from `konjugieren://info/20`, the heading,
+  symbol, bold text, links, and red ablaut letters. Not tried: German on a device, VoiceOver, iPad,
+  and following each link.
 
 ## Phase 9: Ways Between Verbs
 

@@ -167,6 +167,14 @@ RichTextView renders with appropriate styling
 
 Info articles support internal linking via the `konjugieren://info/{index}` scheme. Links in article text can reference other articles or verbs, handled by `InfoView.handleInfoLink(_:)`.
 
+The index is a position in `Info.infos`, not a stable name, so adding an article shifts the
+indices after it. That is safe today because every `info/` URL is built at run time from an
+article's heading (`Info.headingToIndex`) and nothing outside the app stores one. An article link
+(`‡Futur II‡`) names a heading in the text's own language, so a German text must use German
+headings (`‡Genus Verbi‡`, not `‡Voice‡`). `InfoTests` checks every link in both catalogs.
+Phase 11's deeplink grammar should address articles by `stableKey` before any outside surface
+links to one.
+
 ## Deeplink System
 
 The app supports internal navigation via custom URL schemes, enabling links within Info articles and potential external integration.

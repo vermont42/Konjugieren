@@ -416,6 +416,14 @@ enum L {
       String(localized: "Info.futurKonjunktivIIText")
     }
 
+    static var futurIIHeading: String {
+      String(localized: "Info.futurIIHeading")
+    }
+
+    static var futurIIText: String {
+      String(localized: "Info.futurIIText")
+    }
+
     static var dudenHeading: String {
       String(localized: "Info.dudenHeading")
     }

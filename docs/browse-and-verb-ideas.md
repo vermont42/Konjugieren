@@ -772,6 +772,10 @@ Verdict: No. But build an Info article about Futur II.
 Add Futur II, built from parts the conjugator already has. For the passive, which only some
 verbs have, add a line that shows how it is built.
 
+**Built on `main` 2026-11-12** by [Phase 8](../plans/browse-and-verb-implementation.md#phase-8-a-futur-ii-article)
+of the implementation plan, as the Info article "Futur II" in English and German. The passive's
+line is in its "A Look-Alike" section.
+
 - **Basis.** Their absence is observed. That homework asks for them is an inference.
 - **Effort.** S to M for Futur II.
 - **Signal.** The deepest section reached.

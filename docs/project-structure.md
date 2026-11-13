@@ -197,6 +197,7 @@ KonjugierenTests/
 │   ├── ConjugationSearchTests.swift # Search by conjugation: the ideas doc's conjugation queries, stranded parts and the folded row, particles, compounds, folding, adjective endings, cell names, marks
 │   ├── ConjugationgroupTests.swift # Conjugationgroup.ending(family:) ending-table tests
 │   ├── ConjugatorTests.swift   # Comprehensive conjugation tests (~50 test functions), incl. error paths
+│   ├── InfoTests.swift         # Info articles: a heading and text per article in each language, every ‡link‡ opens an article or a verb (both catalogs), stable keys
 │   ├── GameStateTests.swift    # Game-logic tests: damage invulnerability, robot-mechanic clearing, game-over/wave transitions, snapshot round-trip
 │   ├── PersonNumberTests.swift # Pronoun and sie-disambiguation tests
 │   ├── QuizErrorHistoryTests.swift # Quiz error persistence tests

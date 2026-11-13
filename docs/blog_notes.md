@@ -9643,3 +9643,47 @@ learner scrolls to the bottom unprompted. Josh asked mid-session that the new ti
 screenshot and video kill switch. They already did, since an unconfigured TipKit shows nothing,
 but the scroll tip's unlock now checks the switch too. A build with the switch off showed a clean
 page.
+
+## A Futur II Article, and the Links Nobody Could Follow (2026-11-12)
+
+Phase 8 of the browse plan. Josh had rejected a Futur II section on the verb page (B7) but wanted
+an Info article about it, which gives a learner the construction without adding a fifteenth
+table to every page. The article's premise is that it needs nothing new from the app: every Futur
+II conjugation is the Präsens of werden, the Perfektpartizip, and the verb's own auxiliary, three
+things a verb page already shows. The Conjugator confirms it. Futur I and the Perfekt are both
+`conjugateCompoundTense` calls, and Futur II would be a third. Even the subtle cases come along
+for free: hängen's two participles, and the Austrian and Swiss "wird gestanden sein".
+
+The plan asked for a check of how `info/<index>` deeplinks address articles before choosing a
+place in the list. They address articles by position, which sounds fragile, but every such URL is
+built at run time from a heading, and nothing outside the app stores one. The new article went
+after the three Futur I articles. The fragility then showed itself anyway: a screenshot command
+aimed at "the booted simulator" landed on an iPad still running an older build, where
+`info/20` opened Duden. Nothing ships that way, but Phase 11's deeplink grammar should name
+articles by `stableKey` before a widget or a shared link carries one.
+
+The literary examples took a search, not a memory. Futur II is rare: Phase 7's corpus count
+found 62 of them beside 4,531 Futur Indikativ clauses. Werther turned out to have no indicative
+Futur II at all, only a Konjunktiv II one ("es würde sich schon ein anderer sie zu trösten
+vorgefunden haben"), in which Goethe lets one clause borrow the next clause's haben. Kafka was
+richer. His lawyer opens a speech with "Sie werden bemerkt haben", which English renders word for
+word, and K. says "wird man es vielleicht selbst schon bemerkt haben", which the translator
+rendered as "I expect they have already noticed". That translation explains the guessing use of
+the Futur II better than a paragraph could. Kafka also supplied a trap, "beseitigt sein werden",
+which looks like a Futur II and is not: beseitigen takes haben, so this is the Futur I of a state.
+It became the section that carries B7's line about the passive.
+
+The best find was Mann. Aschenbach, alone with a gondolier who will not row him where he asked,
+thinks "wirst du mich gut gefahren haben": even if you kill me with your oar, you will have rowed
+me well. It is the forward-looking Futur II at its purest, and fahren takes haben because the
+gondolier moves someone else. Mann spells Hades the Homeric way, Aides, and the translator swapped
+in Pluto. The name of the construction has its own thread: futurum exactum is "the finished
+future", from exigere, and English exact descends from the same participle by way of "thoroughly
+finished".
+
+A small test turned out to be the most useful thing in the phase. Nothing checked that an
+article's `‡link‡` leads anywhere, and a broken one fails silently: the tap does nothing. The new
+`InfoTests` reads both compiled catalogs, so it checks the German text whatever the simulator's
+language. Its first run found three dead links in the Terminology article, all present since it
+was written: "Präteritum Indicativ" with a c, in both languages, and the German text linking the
+English title of the verb-history article.

@@ -22,7 +22,7 @@ that Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until
 | 6 | Done | 2026-11-12 | `23bab52` | A5 (the search) |
 | 7 | Done | 2026-11-12 | `91831dc` | B3, B5's tip |
 | 8 | Done | 2026-11-12 | `46f400a` | B7's article |
-| 9 | Awaiting Josh | 2026-11-12 | | B4, A9 |
+| 9 | Done | 2026-11-12 | `9e7ce96` | B4, A9 |
 | 10 | Not started | | | B6 |
 | 11 | Not started | | | C1, C2 |
 | 12 | Not started | | | D1, D2 |

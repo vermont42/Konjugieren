@@ -32,8 +32,8 @@ enum L {
       String(localized: "Accessibility.showOnboardingHint")
     }
 
-    static func quizDotRow(current: Int, total: Int, correct: Int, incorrect: Int, remaining: Int) -> String {
-      String(localized: "Accessibility.quizDotRow \(current) \(total) \(correct) \(incorrect) \(remaining)")
+    static func quizDotRow(current: Int, total: Int, correct: Int, secondTry: Int, incorrect: Int, remaining: Int) -> String {
+      String(localized: "Accessibility.quizDotRow \(current) \(total) \(correct) \(secondTry) \(incorrect) \(remaining)")
     }
 
     static var quizBlank: String {
@@ -907,6 +907,18 @@ enum L {
 
     static var yourAnswer: String {
       String(localized: "Quiz.yourAnswer")
+    }
+
+    static var almost: String {
+      String(localized: "Quiz.almost")
+    }
+
+    static var secondTry: String {
+      String(localized: "Quiz.secondTry")
+    }
+
+    static var firstTry: String {
+      String(localized: "Quiz.firstTry")
     }
 
     static var continueAfterCorrection: String {

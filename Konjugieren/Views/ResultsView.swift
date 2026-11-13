@@ -8,7 +8,8 @@ struct ResultsView: View {
   @State private var displayedScore = 0
 
   private var scoreColor: Color {
-    let percentage = Double(quiz.correctCount) / Double(quiz.questionCount)
+    // A right second attempt earns half the points, and half the credit here.
+    let percentage = (Double(quiz.correctCount) + Double(quiz.secondAttemptCount) / 2) / Double(quiz.questionCount)
     if percentage > 0.8 {
       return .green
     } else if percentage >= 0.5 {
@@ -39,6 +40,11 @@ struct ResultsView: View {
           HStack(spacing: Layout.doubleDefaultSpacing) {
             Text(label: L.Quiz.correct, value: "\(quiz.correctCount) / \(quiz.questionCount)")
               .font(.caption.monospacedDigit())
+            if quiz.secondAttemptCount > 0 {
+              Text(label: L.Quiz.secondTry, value: "\(quiz.secondAttemptCount)")
+                .font(.caption.monospacedDigit())
+                .accessibilityIdentifier("results_second_try")
+            }
             Text(label: L.Quiz.difficulty, value: quiz.difficultyText)
               .font(.caption)
             Text(label: L.Quiz.time, value: TimeFormatter.formatIntTime(quiz.elapsedSeconds))
@@ -109,6 +115,17 @@ struct ResultsView: View {
         Text(verbatim: userAnswer)
           .foregroundStyle(.customRed)
           .germanPronunciation()
+      }
+
+      if question.state == .correctOnSecondAttempt, let firstAttempt = question.firstAttempt {
+        HStack(spacing: 0) {
+          Text(L.Quiz.firstTry + " ")
+            .foregroundStyle(.customYellow)
+          Text(verbatim: firstAttempt)
+            .foregroundStyle(QuizItem.State.correctOnSecondAttempt.dotColor)
+            .germanPronunciation()
+        }
+        .font(.caption)
       }
     }
     .frame(maxWidth: .infinity)

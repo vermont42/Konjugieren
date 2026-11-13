@@ -10351,3 +10351,43 @@ fahrt. Correct answer: fährt. Letters that differ: ä." A Magic Tap continues. 
 to it yet. The suite went from 544 to 560 tests, and a new fixture, `KONJUGIEREN_QUIZ_FIXTURE
 corrections`, asks eight questions chosen so that each wrong answer shows a different kind of
 marking or link.
+
+## Pedagogy Phase 4: One More Try (2026-11-13)
+
+Phase 4 gives a slip one more attempt. Type komst for kommst and the quiz now says "Almost! Try
+once more." instead of buzzing, leaves komst in the field to fix, and pays 5 points instead of 10
+if the fix is right. A second miss goes to the held correction that Phase 3 built, so a question
+still gets one extra attempt at most.
+
+The interesting part was deciding what counts as a slip. The plan gave the shape: one edit, or a
+missing umlaut or ß, in an answer of four letters or more, and never an answer that is itself
+another conjugation of the verb. That last clause carries the pedagogy. kommt for du kommst is
+one letter off, but it is er's conjugation, so the learner has the wrong person, not a typo, and
+a second try would only reward a guess. The same rule turns musstest for müsstest into a real
+error, since musstest is the Indikativ: the umlaut there is the mood. So the check runs in two
+stages. A cheap test of nearness comes first, and only a near answer pays for
+`Verb.conjugations(matching:)`, which conjugates every cell of every reading in every region.
+
+The first test run held a surprise. The plan's own model of a missing umlaut, fahrt for er
+fährt, is not a slip, because fahrt is ihr fahrt. The rule caught it before I did. That seems
+right on reflection. A learner who writes fahrt for er may be dropping an umlaut or may be
+conjugating for the wrong person, and the quiz cannot know which. So it shows the correction
+and leaves naming the error to Phase 14. The tests and the fixture now use fahrst for du fährst,
+which is no cell of fahren.
+
+"Missing umlauts and ß" turned out to need care with Phase 1's digraphs. Comparing bare spellings
+(ä to a, ß to ss) against every accepted spelling, digraph spellings included, makes ubernahme for
+übernähme a slip, and also uebernahme, which writes one umlaut as a digraph and drops the other.
+Both are two edits away, so edit distance alone would have missed them.
+
+The state needed no new machinery on `Quiz`. A question awaits its second attempt while
+`QuizItem.firstAttempt` is set and `isCorrect` is still nil, and a right second attempt gets a
+new state, `.correctOnSecondAttempt`, which colors its dot orange. At Josh's choice the results
+count those apart ("Correct: 1 / 3", "Second Try: 2"), and each such row shows the first attempt.
+The one view bug avoided was one I nearly wrote: wrapping the submission in `withAnimation` to
+fade in the "almost" line would also have animated the next question replacing this one, which
+Phase 3 left instant. The animation now lives on a small container around the line alone.
+
+The simulator run confirmed the focus handling Phase 3 learned the hard way. Return resigns the
+field, so a slip refocuses it, and the letter keys reappeared each time. Tests went from 560 to
+569.

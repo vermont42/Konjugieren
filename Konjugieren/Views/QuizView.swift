@@ -24,7 +24,7 @@ struct QuizView: View {
   @State private var shakeOffset: CGFloat = 0
   @State private var showCorrectCheck = false
   @State private var showIncorrectFlash = false
-  @State private var lastSubmittedCorrectCount = 0
+  @State private var rightAnswerCount = 0
 
   var body: some View {
     @Bindable var quiz = quiz
@@ -50,6 +50,14 @@ struct QuizView: View {
                   proxy.scrollTo(QuizCorrectionView.continueButtonID, anchor: .bottom)
                 }
               }
+              // Return resigned the field, and the learner edits the first attempt in it.
+              .onChange(of: quiz.isAwaitingSecondAttempt) { _, isAwaiting in
+                guard isAwaiting else {
+                  return
+                }
+                accessibilityFocusedBlank = 0
+                refocusAnswer(after: .milliseconds(50))
+              }
             }
           } else if !quiz.shouldShowResults, sheetScope == nil {
             startScreen
@@ -69,7 +77,7 @@ struct QuizView: View {
           }
         }
       }
-      .sensoryFeedback(.success, trigger: lastSubmittedCorrectCount)
+      .sensoryFeedback(.success, trigger: rightAnswerCount)
       .sensoryFeedback(.error, trigger: showIncorrectFlash)
       .onAppear {
         TryQuizTip().invalidate(reason: .actionPerformed)
@@ -204,6 +212,18 @@ struct QuizView: View {
         }
         .offset(x: shakeOffset)
 
+        // Animated here alone, so that the next question still replaces this one at once.
+        VStack {
+          if quiz.isAwaitingSecondAttempt {
+            Label(L.Quiz.almost, systemImage: "hand.raised.fill")
+              .font(.headline)
+              .foregroundStyle(QuizItem.State.correctOnSecondAttempt.dotColor)
+              .transition(.opacity.combined(with: .scale(scale: 0.9)))
+              .accessibilityIdentifier("quiz_almost")
+          }
+        }
+        .animation(reduceMotion ? nil : .default, value: quiz.isAwaitingSecondAttempt)
+
         if let correction = quiz.correction {
           QuizCorrectionView(
             question: question,
@@ -254,30 +274,39 @@ struct QuizView: View {
         current: quiz.currentIndex + 1,
         total: quiz.questionCount,
         correct: quiz.questions.filter { $0.state == .correct }.count,
+        secondTry: quiz.questions.filter { $0.state == .correctOnSecondAttempt }.count,
         incorrect: quiz.questions.filter { $0.state == .incorrect }.count,
         remaining: quiz.questionCount - quiz.currentIndex - 1
       ))
     }
   }
 
-  /// Gives the answer field the keyboard while a correction is held, so that Return continues.
-  /// Return resigns the field, and a push takes the keyboard away, yet the focus state can still
-  /// read 0 afterward, so it is cleared and set again once the field is back on screen.
+  /// Gives the answer field the keyboard while a correction is held, so that Return continues,
+  /// and after a slip, so that the learner can edit the first attempt. Return resigns the field,
+  /// and a push takes the keyboard away, yet the focus state can still read 0 afterward, so it
+  /// is cleared and set again once the field is back on screen.
   private func refocusAnswer(after delay: Duration) {
     focusedBlank = nil
     Task { @MainActor in
       try? await Task.sleep(for: delay)
-      if navigationPath.isEmpty, quiz.correction != nil {
+      if navigationPath.isEmpty, quiz.correction != nil || quiz.isAwaitingSecondAttempt {
         focusedBlank = 0
       }
     }
   }
 
   private func submit(_ question: QuizItem) {
-    let wasCorrectCount = quiz.correctCount
+    let index = quiz.currentIndex
     quiz.submitAnswer(question.answerFrame.answer(filling: answerBlanks))
-    if quiz.correctCount > wasCorrectCount {
-      lastSubmittedCorrectCount = quiz.correctCount
+    guard index < quiz.questions.count else {
+      return
+    }
+    switch quiz.questions[index].state {
+    case .unanswered:
+      // A slip, which waits for one more attempt. Its cue is the "almost" line, not a shake.
+      break
+    case .correct, .correctOnSecondAttempt:
+      rightAnswerCount += 1
       if !reduceMotion {
         withAnimation(.spring(response: 0.3, dampingFraction: 0.6)) {
           showCorrectCheck = true
@@ -287,7 +316,7 @@ struct QuizView: View {
           withAnimation { showCorrectCheck = false }
         }
       }
-    } else {
+    case .incorrect:
       showIncorrectFlash.toggle()
       if !reduceMotion {
         withAnimation(.spring(response: 0.08, dampingFraction: 0.3)) {
@@ -548,11 +577,13 @@ enum TabQuizScope: CaseIterable {
   }
 }
 
-private extension QuizItem.State {
+extension QuizItem.State {
   var dotColor: Color {
     switch self {
     case .correct:
       return .customYellow
+    case .correctOnSecondAttempt:
+      return .orange
     case .incorrect:
       return .customRed
     case .unanswered:

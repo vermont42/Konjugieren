@@ -12,6 +12,7 @@ The quiz tests users' knowledge of German verb conjugations with timed, scored g
 |------|---------|
 | `Quiz.swift` | `@Observable` class managing quiz state and logic; `QuizScope`, what a quiz asks about; `QuizItem`, one question and its grading |
 | `AnswerDifference.swift` | Where a wrong answer differs from the right one, letter by letter, for the held correction |
+| `AnswerSlip.swift` | Whether a wrong answer is a slip that earns one more attempt |
 | `AnswerSpelling.swift` | Answer normalization, the leading pronouns a cell allows, and digraph spellings of umlauts |
 | `StandardVariants.swift` | Duden's other standard conjugations of a cell, accepted as right answers |
 | `QuizView.swift` | SwiftUI view for active quiz gameplay |
@@ -27,7 +28,7 @@ The quiz tests users' knowledge of German verb conjugations with timed, scored g
 1. User taps "Start" → `quiz.start(scope:)` generates the scope's questions and, for a 30-question quiz, starts a Live Activity
 2. Timer begins, questions presented one at a time; Live Activity updates on each answer
 3. User types conjugation, presses return → `quiz.submitAnswer()`
-4. A right answer advances at once. A wrong one is recorded to `QuizErrorHistory` and held on its question, with the clock stopped, until Continue (see The Held Correction)
+4. A right answer advances at once. A slip waits for one more attempt (see One More Try). A wrong one is recorded to `QuizErrorHistory` and held on its question, with the clock stopped, until Continue (see The Held Correction)
 5. After 30 questions → `quiz.finishQuiz()` shows ResultsView and ends the Live Activity
 
 ### Question Generation
@@ -176,9 +177,41 @@ when three or fewer), with a hint that Continue follows. A Magic Tap continues t
 `KONJUGIEREN_QUIZ_FIXTURE corrections` asks eight questions with a wrong answer for each in the
 comment on `Quiz.generateCorrectionsFixture()`.
 
+### One More Try
+
+Built 2026-11-13 in Phase 4 of [`plans/pedagogy-implementation.md`](../plans/pedagogy-implementation.md).
+A wrong answer that is only a slip gets one more attempt before any correction. `QuizItem.isSlip`
+decides, on the answer with a leading pronoun of the asked person dropped, as grading drops it:
+
+- **Near.** The answer is one edit (`VerbSearch.editDistance`) from an accepted spelling, digraph
+  spellings included, or differs from one only in missing umlauts and ß, however many
+  (`ubernahme` for übernähme). `AnswerSlip.isSlip(_:of:)` is this test.
+- **Four letters or more** in the right answer, so geb for gib is a wrong vowel, not a slip.
+- **Not another cell.** If `Verb.conjugations(matching:)` finds the answer anywhere in the verb's
+  tables, any reading, it is a grammatical error and goes to the correction: kommt for du kommst
+  (er's cell), musstest for müsstest (the Indikativ). This rule also makes fahrt for er fährt a
+  real error, since fahrt is ihr's cell. Phase 14 is to name such errors.
+
+A slip sets `QuizItem.firstAttempt` and leaves `isCorrect` nil, so `Quiz.isAwaitingSecondAttempt`
+is true. The clock keeps running. The field keeps the first attempt for editing and is refocused,
+since Return resigned it, and an orange "Almost! Try once more." line appears under it, which
+VoiceOver announces. The cue is a pop and a light tap, not the buzz and shake of a wrong answer. A
+question gets one more attempt at most: the second answer is graded and, if wrong, goes to the held
+correction whether or not it too is a slip. Phase 14's diagnosable errors are to share this
+mechanism. A slip is not recorded in `QuizErrorHistory`; a wrong second attempt is.
+
+A right second attempt earns `Quiz.pointsPerSecondAttempt` (5) and counts in
+`Quiz.secondAttemptCount`, apart from `correctCount`. Its `QuizItem.State` is
+`.correctOnSecondAttempt`, an orange dot. The results show "Second Try: n" beside Correct and a
+"First Try:" line on each such row, and VoiceOver's dot-row and completion summaries count them.
+The results' score color gives a second attempt half credit.
+
+`KONJUGIEREN_QUIZ_FIXTURE slips` asks ten questions with a slip or a near miss for each in the
+comment on `Quiz.generateSlipsFixture()`.
+
 ### Scoring
 
-- **10 points** per correct answer
+- **10 points** per correct answer, **5** for one right on the second attempt
 - **Ridiculous difficulty:** 2x multiplier on final score
 - **Leaderboard:** only a ranked quiz (every verb, 30 questions) submits its score
 - `quiz.finalScore` returns the multiplied score
@@ -194,7 +227,9 @@ comment on `Quiz.generateCorrectionsFixture()`.
 | `score` | `Int` | Raw score (before multiplier) |
 | `finalScore` | `Int` | Score with difficulty multiplier |
 | `elapsedSeconds` | `Int` | Time elapsed |
-| `correctCount` | `Int` | Number correct |
+| `correctCount` | `Int` | Number right on the first attempt |
+| `secondAttemptCount` | `Int` | Number right on the second attempt |
+| `isAwaitingSecondAttempt` | `Bool` | A slip waits for its one more attempt |
 | `questions` | `[QuizItem]` | All 30 questions |
 | `correction` | `QuizCorrection?` | The held correction of a wrong answer: its `AnswerDifference`, and the `ErrorExplainerContext` the disabled explainer would take |
 | `lastPreferredSpelling` | `String?` | The conjugation's own spelling of the last answer, when it was right but spelled another way |
@@ -204,6 +239,7 @@ comment on `Quiz.generateCorrectionsFixture()`.
 Quiz uses `SoundPlayer` for audio feedback:
 - **Start:** Random gun sound
 - **Correct answer:** Chime
+- **Slip (one more try):** Pop
 - **Incorrect answer:** Buzz
 - **Quit:** Random sad trombone
 - **Finish:** Random applause

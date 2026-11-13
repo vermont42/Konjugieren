@@ -33,6 +33,7 @@ Konjugieren/
 │   ├── AblautGroups.xml        # 76 ablaut pattern definitions
 │   ├── AnswerDifference.swift  # Where a wrong quiz answer differs from the right one, letter by letter (an alignment like VerbSearch.editDistance's), and QuizItem.difference(from:), which picks the nearest spelling of the cell to show
 │   ├── AnswerFrame.swift       # The shape of a quiz answer: blanks and the words around them (ihr [ ], [ ] Sie [ ] !); the answer a set of filled blanks gives, and where Return goes
+│   ├── AnswerSlip.swift        # Whether a wrong quiz answer is a slip that earns one more attempt: one edit or only missing umlauts and ß, four letters or more, and never another cell of the verb
 │   ├── AnswerSpelling.swift    # Quiz answer normalization: case and spacing, the leading pronouns a cell allows (ihr habt …), digraph spellings of umlauts (ue for ü, never ü for ue), and the orthographic key for showing a learner the umlaut spelling
 │   ├── AppIcon.swift           # Alternate app-icon enum (bratwurst/hat/pretzel/bundestag)
 │   ├── AudioFeedback.swift     # Setting enum: enable/disable sound effects
@@ -219,6 +220,7 @@ KonjugierenTests/
 ├── Models/
 │   ├── AnswerDifferenceTests.swift # The held correction's marking: a missing umlaut, a missing or extra letter, a swap, case as no difference, the nearer word order, a dropped pronoun
 │   ├── AnswerFrameTests.swift      # The quiz's answer frame: every cell of six verbs takes its right answer through its frame, the frame per kind of cell, readings, Return
+│   ├── AnswerSlipTests.swift       # One more try: what is a slip and what is another cell (kommt for kommst, musstest, fahrt), half points, one attempt at most, the separate count
 │   ├── AnswerSpellingTests.swift   # Quiz grading: the report's three simulator cases, leading pronouns by person, digraphs both ways, the spelling shown beside the checkmark by region and clause
 │   ├── ConjugationMapTests.swift   # Bundled map equals a fresh build (staleness), finds the verb of ≥99% of example sentences (Scan 2 of the defect plan), anchors, format round-trip
 │   ├── ConjugationMatchTests.swift # Verb.conjugations(matching:): clauses, regions, finite parts, readings

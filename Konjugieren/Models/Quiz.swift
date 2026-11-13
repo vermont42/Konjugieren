@@ -10,13 +10,17 @@ import UIKit
 class Quiz {
   static let questionCount = 30
   static let pointsPerCorrect = 10
+  static let pointsPerSecondAttempt = pointsPerCorrect / 2
 
   private(set) var isInProgress = false
   var shouldShowResults = false
   private(set) var currentIndex = 0
   private(set) var score = 0
   private(set) var elapsedSeconds = 0
+  /// Right on the first attempt. A right second attempt is counted apart, in
+  /// `secondAttemptCount`.
   private(set) var correctCount = 0
+  private(set) var secondAttemptCount = 0
 
   /// The correction of a wrong answer, which holds the quiz on its question, with the clock
   /// stopped, until `continueAfterCorrection()`. A right answer advances at once.
@@ -40,6 +44,11 @@ class Quiz {
   var currentQuestion: QuizItem? {
     guard isInProgress, currentIndex < questions.count else { return nil }
     return questions[currentIndex]
+  }
+
+  /// True after a slip, while the question waits for its one more attempt.
+  var isAwaitingSecondAttempt: Bool {
+    currentQuestion?.isAwaitingSecondAttempt ?? false
   }
 
   var progressText: String {
@@ -102,13 +111,29 @@ class Quiz {
     guard isInProgress, correction == nil, currentIndex < questions.count else { return }
 
     let isCorrect = questions[currentIndex].accepts(answer)
+    let isSecondAttempt = questions[currentIndex].isAwaitingSecondAttempt
+
+    // A question gets one more attempt at most, so a second slip goes to the correction.
+    if !isCorrect, !isSecondAttempt, questions[currentIndex].isSlip(answer) {
+      questions[currentIndex].firstAttempt = answer
+      lastPreferredSpelling = nil
+      Current.soundPlayer.play(.pop)
+      HapticPlayer.playImpact(.light)
+      announceSecondAttempt()
+      return
+    }
 
     questions[currentIndex].userAnswer = answer
     questions[currentIndex].isCorrect = isCorrect
 
     if isCorrect {
-      score += Quiz.pointsPerCorrect
-      correctCount += 1
+      if isSecondAttempt {
+        score += Quiz.pointsPerSecondAttempt
+        secondAttemptCount += 1
+      } else {
+        score += Quiz.pointsPerCorrect
+        correctCount += 1
+      }
       lastPreferredSpelling = questions[currentIndex].preferredSpelling(of: answer)
       Current.soundPlayer.play(.chime)
       HapticPlayer.playSuccess()
@@ -192,6 +217,7 @@ class Quiz {
     currentIndex = 0
     score = 0
     correctCount = 0
+    secondAttemptCount = 0
     elapsedSeconds = 0
     correction = nil
     lastPreferredSpelling = nil
@@ -210,6 +236,8 @@ class Quiz {
       return generateFramesFixture()
     case "corrections":
       return generateCorrectionsFixture()
+    case "slips":
+      return generateSlipsFixture()
     default:
       break
     }
@@ -442,6 +470,28 @@ class Quiz {
     return repeatedFixture(plan)
   }
 
+  // Answers to type by hand for Phase 4 of the pedagogy plan. Each slip below is offered one
+  // more try: fahrst (a missing umlaut), komst (a missing letter), weis (a missing ß), sanf (a
+  // wrong letter), ubernehme (a missing umlaut, which is not a digraph), and bin aufgestandn. Each
+  // of these goes straight to the correction instead: kommt (er's cell, not du's), geb (under
+  // four letters), musstest (the Präteritum Indikativ, not the Konjunktiv II), and fahrt for er
+  // fährt (a missing umlaut, but also ihr fahrt).
+  private func generateSlipsFixture() -> [QuizItem] {
+    let plan: [(infinitiv: String, group: Conjugationgroup)] = [
+      ("fahren", .präsensIndikativ(.secondSingular)),
+      ("kommen", .präsensIndikativ(.secondSingular)),
+      ("wissen", .präsensIndikativ(.firstSingular)),
+      ("singen", .präteritumIndikativ(.firstSingular)),
+      ("übernehmen", .präsensIndikativ(.firstSingular)),
+      ("aufstehen", .perfektIndikativ(.firstSingular)),
+      ("kommen", .präsensIndikativ(.secondSingular)),
+      ("geben", .imperativ(.secondSingular)),
+      ("müssen", .präteritumKonjunktivII(.secondSingular)),
+      ("fahren", .präsensIndikativ(.thirdSingular))
+    ]
+    return repeatedFixture(plan)
+  }
+
   // Repeated to the quiz's length, so that the progress dots and the finish behave as usual.
   // Each repeat is a new item, since the dots tell items apart by id.
   private func repeatedFixture(_ plan: [(infinitiv: String, group: Conjugationgroup)]) -> [QuizItem] {
@@ -577,9 +627,20 @@ class Quiz {
     }
   }
 
+  // The answer stays in the field for the learner to edit, and VoiceOver's focus with it.
+  private func announceSecondAttempt() {
+    guard UIAccessibility.isVoiceOverRunning else { return }
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+      UIAccessibility.post(notification: .announcement, argument: L.Quiz.almost)
+    }
+  }
+
   private func announceQuizCompletion() {
     guard UIAccessibility.isVoiceOverRunning else { return }
-    let announcement = "\(L.Quiz.results). \(L.Quiz.score) \(finalScore). \(L.Quiz.correct) \(correctCount) / \(questionCount)."
+    var announcement = "\(L.Quiz.results). \(L.Quiz.score) \(finalScore). \(L.Quiz.correct) \(correctCount) / \(questionCount)."
+    if secondAttemptCount > 0 {
+      announcement += " \(L.Quiz.secondTry) \(secondAttemptCount)."
+    }
     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
       UIAccessibility.post(notification: .announcement, argument: announcement)
     }
@@ -638,6 +699,7 @@ struct QuizCorrection: Equatable {
 struct QuizItem: Identifiable {
   enum State {
     case correct
+    case correctOnSecondAttempt
     case incorrect
     case unanswered
   }
@@ -656,13 +718,20 @@ struct QuizItem: Identifiable {
   /// is shown this spelling beside the checkmark.
   let regionalSpellings: [String]
   /// `acceptableAnswers` with every umlaut also writable as a digraph.
-  private let acceptedSpellings: Set<String>
+  let acceptedSpellings: Set<String>
   /// Which of the verb's readings this question asks about. The prompt shows this reading's
   /// gloss, so the learner knows whether hängen here means "be suspended" or "suspend
   /// something": the two inflect differently.
   let readingIndex: Int
+  /// The final answer: the second attempt, if a slip earned one.
   var userAnswer: String?
   var isCorrect: Bool?
+  /// A slip that earned one more attempt, kept for the results.
+  var firstAttempt: String?
+
+  var isAwaitingSecondAttempt: Bool {
+    firstAttempt != nil && isCorrect == nil
+  }
 
   /// The gloss to show with the prompt. Always the asked reading's, which for a
   /// single-reading verb is exactly the verb's translation as before.
@@ -726,7 +795,8 @@ struct QuizItem: Identifiable {
 
   var state: State {
     guard let isCorrect else { return .unanswered }
-    return isCorrect ? .correct : .incorrect
+    guard isCorrect else { return .incorrect }
+    return firstAttempt == nil ? .correct : .correctOnSecondAttempt
   }
 
   var pronoun: String? {

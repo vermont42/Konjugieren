@@ -18,7 +18,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 1 | Done | 2026-11-13 | `250cca9` | T1.3, T1.4, T1.5 |
 | 2 | Done | 2026-11-13 | `11f2d81` | T1.2 |
 | 3 | Done | 2026-11-13 | `f7f3fbc` | T4.1, T4.4, T4.5 |
-| 4 | Not started | | | T1.6 |
+| 4 | Done | 2026-11-13 | | T1.6 |
 | 5 | Not started | | | T2.3, T2.6, T6.7, M1 |
 | 6 | Not started | | | T2.1, T2.2, T2.5 |
 | 7 | Not started | | | T2.7, T3.1, T6.5, M2, M3 |
@@ -452,7 +452,7 @@ VoiceOver announces the correction and the Continue button, and tests pin the st
 
 ## Phase 4: One More Try
 
-**Suggestions:** T1.6. **Depends on:** Phase 3. **Status:** Not started.
+**Suggestions:** T1.6. **Depends on:** Phase 3. **Status:** Done.
 
 Treat a slip as "almost" and allow one more attempt. A right second attempt earns half the points
 (5 where a first attempt earns 10). A wrong second attempt goes to Phase 3's correction.
@@ -479,7 +479,43 @@ the verb does not, half points are scored and shown, and tests pin each case.
 
 **How it differed:**
 
-(To be written by the session that finishes this phase.)
+- **Josh chose the wording on 2026-11-13**, from three drafts: "Almost! Try once more." /
+  "Fast! Versuch es noch einmal." (over one pointing at the spelling and one naming half points),
+  and "Second Try:" / "Zweiter Versuch:" for the separate count (over "Almost:"). A row right on
+  the second attempt shows "First Try:" / "Erster Versuch:" with the slip.
+- **fahrt for er fährt is not a slip.** The rule that an answer matching another cell is a real
+  error catches it, since fahrt is ihr's Präsens and Imperativ. The "Done when" took a missing
+  umlaut as the plainest slip, and it usually is (fahrst for fährst, ubernehme), but the
+  textbook case is also a person error. The rule was kept as written; Phase 14, which names the
+  error, can decide whether "wrong person or missing umlaut" deserves its own line.
+- **Where the four letters are counted.** In the accepted spelling the answer is near, spaces
+  excluded, so geb for gib is not a slip, and nothing compound ever falls under the limit.
+- **"Missing umlauts and ß" means any number of them**, compared on bare spellings (ä to a, ß to
+  ss) against every accepted spelling, digraph spellings included. So ubernahme for übernähme and
+  uebernahme (one digraph, one missing) are slips although each is two edits away.
+- **The mechanism.** `QuizItem.firstAttempt` holds the slip, and a question awaits its second
+  attempt while that is set and `isCorrect` is nil. No separate state on `Quiz`. Phase 14 should
+  set `firstAttempt` for a diagnosable error too, so that the one-attempt limit holds whatever
+  triggered it, and may add a field saying why.
+- **The clock keeps running** through the second attempt, since the learner is still answering.
+  A slip is not written to `QuizErrorHistory`; a wrong second attempt is, as before.
+- **Feedback.** A pop and a light tap, not the buzz, flash, and shake of a wrong answer. The
+  orange of the "almost" line is also the dot color. The results' score color gives a second
+  attempt half credit.
+- **VoiceOver.** The "almost" line is announced, and focus stays in the field. The dot row's label
+  now counts second tries ("3 correct, 1 on the second try, 2 incorrect, …"), as does the summary
+  at the end. Nobody has listened to it.
+- **Analytics:** none added, so nothing is staged in `docs/privacy-policy-pending.md`.
+- **A new fixture**, `KONJUGIEREN_QUIZ_FIXTURE slips`: ten questions, each with a slip or a near
+  miss in the comment on `Quiz.generateSlipsFixture()`.
+- **Verified on the iPhone 17 simulator** with a hardware keyboard: fahrst prompted one more try,
+  with the first attempt still in the field and the keyboard back, and faehrst then scored 5 and
+  an orange dot; kommt for du went straight to the correction; weis and then weix went to the
+  correction after one prompt. A three-question quiz from a verb's page showed the results: 20
+  points, "Correct: 1 / 3", "Second Try: 2", and two "First Try:" lines. With four items in the
+  results header, "Difficulty: Regular" wraps onto two lines on the iPhone; Phase 5 replaces the
+  difficulty with levels, so it was left. Not tried: the iPad, the software keyboard, and
+  VoiceOver by ear. Tests: 9 new, 569 in all.
 
 ## Phase 5: Levels
 

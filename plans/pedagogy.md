@@ -688,6 +688,14 @@ for the Sie Imperativ, and `[ ] Sie [ ] !` with two fields when the verb is sepa
 participle is a bare field. A separable Präsens stays one field, so the joined ankommt is as easy
 to type as kommt an. Return fills the next empty field before it submits.
 
+**Built on `main` 2026-11-13** by [Phase 4](pedagogy-implementation.md#phase-4-one-more-try)
+of the pedagogy plan: one more attempt after a slip, for half points. A slip is one edit, or only
+missing umlauts and ß, in an answer of four letters or more. An answer that is itself another cell
+of the verb is a real error however near: kommt for du kommst, musstest for müsstest, and, by the
+same rule, fahrt for er fährt, which is also ihr fahrt. The first attempt stays in the field under
+"Almost! Try once more." A right second attempt earns 5 points, an orange dot, and a separate
+"Second Try" count in the results. A wrong one goes to the held correction.
+
 ### Tier 2: Change What the Quiz Asks
 
 | Suggestion | Basis | Effort | Verdict |

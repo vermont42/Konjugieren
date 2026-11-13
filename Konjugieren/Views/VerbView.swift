@@ -9,6 +9,7 @@ struct VerbView: View {
   let marks: MarkedConjugations?
   @Environment(\.horizontalSizeClass) private var sizeClass
   @Environment(\.scenePhase) private var scenePhase
+  @Environment(\.isBeneathQuiz) private var isBeneathQuiz
   @State private var readingIndex = 0
   @State private var visit: VerbVisit?
   @State private var visibleSections: Set<VerbPageSection> = []
@@ -254,14 +255,17 @@ struct VerbView: View {
     .navigationTitle(verb.infinitiv.inUserRegion)
     .navigationBarTitleDisplayMode(.inline)
     .toolbar {
-      ToolbarItem(placement: .topBarTrailing) {
-        Button {
-          Current.analytics.signal(name: .tapTestVerb)
-          isTestingVerb = true
-        } label: {
-          Label(L.VerbView.testMe, systemImage: "pencil.and.list.clipboard")
+      // A page opened from a quiz's held correction starts no second quiz over the first.
+      if !isBeneathQuiz {
+        ToolbarItem(placement: .topBarTrailing) {
+          Button {
+            Current.analytics.signal(name: .tapTestVerb)
+            isTestingVerb = true
+          } label: {
+            Label(L.VerbView.testMe, systemImage: "pencil.and.list.clipboard")
+          }
+          .accessibilityIdentifier("verb_test_button")
         }
-        .accessibilityIdentifier("verb_test_button")
       }
       ToolbarItem(placement: .topBarTrailing) {
         let isStarred = Current.learnerVerbs.isStarred(verb)

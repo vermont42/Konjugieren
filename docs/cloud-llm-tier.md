@@ -12,7 +12,7 @@ This is a design memo, not an implementation plan. No code changes proposed yet.
 
 The abstraction is already in place. `LanguageModelService` is a protocol (`Konjugieren/Models/LanguageModelService.swift:58`) with three real responsibilities — `explainError`, `recommendPractice`, `sendTutorMessage` — plus availability reporting. Today the protocol has two conformances: `LanguageModelServiceReal` (Foundation Models, iOS 26+) and `LanguageModelServiceDummy` (tests + `iOS < 26` fallback), wired in `World.swift:56-62`.
 
-Adding a third conformance (`LanguageModelServiceAnthropic`) requires no caller-side changes. Every site that already gates on `Current.languageModelService.isAvailable` — `QuizView.swift:163` (ErrorExplainerView), the Tutor row in `InfoBrowseView`, the Tutor page in `OnboardingView` — will work unmodified. The protocol does the right thing.
+Adding a third conformance (`LanguageModelServiceAnthropic`) requires no caller-side changes. Every site that already gates on `Current.languageModelService.isAvailable` — the held correction in `QuizView.swift` (ErrorExplainerView, commented out beside `QuizCorrectionView`), the Tutor row in `InfoBrowseView`, the Tutor page in `OnboardingView` — will work unmodified. The protocol does the right thing.
 
 ## Currently disabled in 1.0
 

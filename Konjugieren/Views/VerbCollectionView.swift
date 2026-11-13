@@ -78,6 +78,7 @@ struct VerbCollectionBar: View {
   let verbs: [Verb]
   @State private var isQuizzing = false
   @State private var shareButtonFrame = CGRect.zero
+  @Environment(\.isBeneathQuiz) private var isBeneathQuiz
   private var settings: Settings { Current.settings }
 
   var body: some View {
@@ -91,13 +92,16 @@ struct VerbCollectionBar: View {
 
         Spacer()
 
-        Button {
-          isQuizzing = true
-        } label: {
-          Label(L.Navigation.quiz, systemImage: "pencil.and.list.clipboard")
+        // Opened from a quiz's held correction, a collection starts no second quiz over the first.
+        if !isBeneathQuiz {
+          Button {
+            isQuizzing = true
+          } label: {
+            Label(L.Navigation.quiz, systemImage: "pencil.and.list.clipboard")
+          }
+          .accessibilityHint(L.VerbCollection.quizHint(questionCount: Quiz.questionCount))
+          .accessibilityIdentifier("collection_quiz_button")
         }
-        .accessibilityHint(L.VerbCollection.quizHint(questionCount: Quiz.questionCount))
-        .accessibilityIdentifier("collection_quiz_button")
 
         Button {
           share()

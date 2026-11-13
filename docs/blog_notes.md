@@ -10295,3 +10295,56 @@ went from 530 to 544 tests, and one of them pushes every cell of six verbs (gehe
 umstoßen, ferngucken, sein, übersetzen) through its frame and checks that the right answer, cut
 into the blanks, still grades as right. übersetzen earns its place there: in the sense of
 translating it asks `[ ] wir!`, and in the sense of ferrying across, `[ ] wir [ ] !`.
+
+## A Correction That Stays (2026-11-13)
+
+Phase 3 of the pedagogy plan fixes the quiz's oddest habit. `Quiz.submitAnswer` used to advance
+before the view redrew, so the correction for question 7 appeared on the card for question 8,
+under a new verb, while the clock ran. A learner reading it was reading the wrong card on the
+learner's own time. Now a wrong answer holds. The quiz stays on the missed question, the clock
+stops, and the card shows the learner's answer, the right one, two links, and Continue. A right
+answer still advances at once. The plan's chief study recommends exactly that split.
+
+The state machine is small: `Quiz.correction` is either nil or the held correction. While it is
+set, `submitAnswer` ignores input and `resumeTimer` (which runs when the app returns to the
+foreground) leaves the clock alone. `continueAfterCorrection()` clears it, advances, and restarts
+the clock. One side effect is a quiet improvement. The 30th question's correction used to vanish,
+since the results sheet replaced the card it would have appeared on. Now it holds like any other
+before the results.
+
+Marking where the answer differs needed one decision about colour. The app already uses red
+letters to mean "this is irregular", so a difference could not also be red letters. A learner
+who typed fahrt for fährt now sees the a struck through on a red tint in Your Answer and the ä
+underlined on a green tint in Correct Answer. The ä is still red, because it is still the
+irregular letter, so the two marks sit on the same glyph without competing. The alignment is a
+plain edit-distance backtrace with the same costs as search's `editDistance`, swaps included,
+and case does not count, so a capital that marks a red letter is never flagged as an error.
+
+The correction also has to choose which right answer to show. ankommen in the er Präsens has two:
+kommt an, which the verb page shows, and ankommt, which the quiz also accepts. Diffing ankomt
+against kommt an marks nearly every letter and teaches nothing. So `difference(from:)` picks the
+nearest of the region's spellings, and ankomt is corrected to ankommt, with one m underlined.
+
+The links push onto the quiz's own navigation stack, so Back returns to the held question with
+the clock still stopped. The verb link opens the page scrolled to the missed cell and marked,
+through the `MarkedConjugations` that search built in the browse plan. The second link goes to
+the verb's ablaut group, or for a weak verb, its family. Opening fahren's group from a quiz
+revealed a small absurdity: the group's bar has a Quiz button, and the verb page has "Test me".
+A quiz inside a held quiz is nobody's intention, so an `isBeneathQuiz` environment value hides
+both on pages pushed from a correction.
+
+The simulator caught two focus bugs that no test could. First, pressing Return in a `TextField`
+resigns it. Until now the next question's focus reset had hidden that, but a held question has
+no next question yet, so the keyboard vanished and Return did nothing. The view now refocuses the
+field on holding. Second, after Back from a linked page, setting the focus state to 0 did
+nothing, because the state still read 0 although the keyboard had gone. Clearing it and setting
+it again after the pop animation fixed it. The run that proved both typed eight wrong answers and
+continued past each with keystrokes alone. The iPad, in light mode, behaved the same, and the
+tints that had been strengthened for the dark card still read well on the light one.
+
+For VoiceOver, `Quiz` no longer announces a wrong answer, since an announcement and a focus move
+would talk over each other. Focus moves to the correction, which reads "Incorrect. Your answer:
+fahrt. Correct answer: fährt. Letters that differ: ä." A Magic Tap continues. Nobody has listened
+to it yet. The suite went from 544 to 560 tests, and a new fixture, `KONJUGIEREN_QUIZ_FIXTURE
+corrections`, asks eight questions chosen so that each wrong answer shows a different kind of
+marking or link.

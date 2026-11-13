@@ -263,3 +263,11 @@ Der Absatz über die Liste auf dem Gerät lautet nun:
 ```
 Die App führt eine Liste der Verben, die Sie geöffnet, und der Verben, die Sie mit einem Stern markiert haben, samt dem Tag, an dem jedes wieder zur Wiederholung ansteht, damit sie Ihre zuletzt geöffneten Verben, „Meine Verben“, Wiederholungskarten und die Zahl der nachgeschlagenen Verben jeder Sammlung zeigen kann. Die Liste bleibt auf Ihrem Gerät und wird nie gesendet.
 ```
+
+## A correction's links (pedagogy plan, Phase 3, 2026-11-13)
+
+Begins sending the `quizCorrection` source for verb pages opened from a quiz's held correction,
+and for an ablaut group opened from it (`viewCollection`). The first bullet of the lookup section
+covers the verb page with "for example", and the collection bullet's "in the app" covers the
+ablaut group, so no line changes. The source says only that a link under a correction was
+followed, never which verb or answer, as Decision 5 of the plan requires.

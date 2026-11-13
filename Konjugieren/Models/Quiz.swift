@@ -18,9 +18,9 @@ class Quiz {
   private(set) var elapsedSeconds = 0
   private(set) var correctCount = 0
 
-  private(set) var lastIncorrectAnswer: String?
-  private(set) var lastCorrectAnswer: String?
-  private(set) var lastErrorContext: ErrorExplainerContext?
+  /// The correction of a wrong answer, which holds the quiz on its question, with the clock
+  /// stopped, until `continueAfterCorrection()`. A right answer advances at once.
+  private(set) var correction: QuizCorrection?
   /// The conjugation's own spelling of the last answer, when that answer was right but written
   /// another way, such as with a digraph for an umlaut.
   private(set) var lastPreferredSpelling: String?
@@ -99,7 +99,7 @@ class Quiz {
   }
 
   func submitAnswer(_ answer: String) {
-    guard isInProgress, currentIndex < questions.count else { return }
+    guard isInProgress, correction == nil, currentIndex < questions.count else { return }
 
     let isCorrect = questions[currentIndex].accepts(answer)
 
@@ -109,26 +109,26 @@ class Quiz {
     if isCorrect {
       score += Quiz.pointsPerCorrect
       correctCount += 1
-      lastIncorrectAnswer = nil
-      lastCorrectAnswer = nil
-      lastErrorContext = nil
       lastPreferredSpelling = questions[currentIndex].preferredSpelling(of: answer)
       Current.soundPlayer.play(.chime)
       HapticPlayer.playSuccess()
       announceAnswerResult(correct: true, preferredSpelling: lastPreferredSpelling)
+      advance()
     } else {
       let question = questions[currentIndex]
       lastPreferredSpelling = nil
-      lastIncorrectAnswer = answer
-      lastCorrectAnswer = question.correctAnswer
-      lastErrorContext = ErrorExplainerContext(
-        infinitiv: question.verb.infinitiv,
-        translation: question.translation,
-        familyDescription: question.verb.family.displayName,
-        conjugationgroupGerman: question.conjugationgroup.germanDisplayName,
-        conjugationgroupEnglish: question.conjugationgroup.englishDisplayName,
-        userAnswer: answer,
-        correctAnswer: question.correctAnswer
+      stopTimer()
+      correction = QuizCorrection(
+        difference: question.difference(from: answer),
+        errorContext: ErrorExplainerContext(
+          infinitiv: question.verb.infinitiv,
+          translation: question.translation,
+          familyDescription: question.verb.family.displayName,
+          conjugationgroupGerman: question.conjugationgroup.germanDisplayName,
+          conjugationgroupEnglish: question.conjugationgroup.englishDisplayName,
+          userAnswer: answer,
+          correctAnswer: question.correctAnswer
+        )
       )
       QuizErrorHistory.record(
         QuizErrorRecord(
@@ -143,9 +143,20 @@ class Quiz {
       )
       Current.soundPlayer.play(.buzz)
       HapticPlayer.playError()
-      announceAnswerResult(correct: false, correctAnswer: question.correctAnswer)
     }
+  }
 
+  /// Leaves a held correction for the next question, or for the results after the last.
+  func continueAfterCorrection() {
+    guard isInProgress, correction != nil else { return }
+    correction = nil
+    advance()
+    if isInProgress {
+      startTimer()
+    }
+  }
+
+  private func advance() {
     currentIndex += 1
 
     if let liveActivity {
@@ -182,9 +193,7 @@ class Quiz {
     score = 0
     correctCount = 0
     elapsedSeconds = 0
-    lastIncorrectAnswer = nil
-    lastCorrectAnswer = nil
-    lastErrorContext = nil
+    correction = nil
     lastPreferredSpelling = nil
   }
 
@@ -199,6 +208,8 @@ class Quiz {
       return generateGradingFixture()
     case "frames":
       return generateFramesFixture()
+    case "corrections":
+      return generateCorrectionsFixture()
     default:
       break
     }
@@ -412,6 +423,25 @@ class Quiz {
     return repeatedFixture(plan)
   }
 
+  // Questions to answer wrongly by hand for Phase 3 of the pedagogy plan, with a wrong answer
+  // for each that shows a kind of marking: fahrt (a missing umlaut), komst (a missing letter),
+  // ankomt (nearer the joined conjugation than kommt an), hat gemachen (a weak verb, which links
+  // to its family), studirt (an -ieren verb), dachte (a mixed verb's wrong cell), gehne Sie (two
+  // swapped letters), and singte (a strong verb made weak).
+  private func generateCorrectionsFixture() -> [QuizItem] {
+    let plan: [(infinitiv: String, group: Conjugationgroup)] = [
+      ("fahren", .präsensIndikativ(.thirdSingular)),
+      ("kommen", .präsensIndikativ(.secondSingular)),
+      ("ankommen", .präsensIndikativ(.thirdSingular)),
+      ("machen", .perfektIndikativ(.thirdSingular)),
+      ("studieren", .präsensIndikativ(.thirdSingular)),
+      ("denken", .präsensIndikativ(.firstSingular)),
+      ("gehen", .imperativ(.thirdPlural)),
+      ("singen", .präteritumIndikativ(.firstSingular))
+    ]
+    return repeatedFixture(plan)
+  }
+
   // Repeated to the quiz's length, so that the progress dots and the finish behave as usual.
   // Each repeat is a new item, since the dots tell items apart by id.
   private func repeatedFixture(_ plan: [(infinitiv: String, group: Conjugationgroup)]) -> [QuizItem] {
@@ -491,7 +521,7 @@ class Quiz {
   }
 
   func resumeTimer() {
-    guard isInProgress, timer == nil else { return }
+    guard isInProgress, correction == nil, timer == nil else { return }
     startTimer()
   }
 
@@ -532,18 +562,15 @@ class Quiz {
     }
   }
 
-  private func announceAnswerResult(correct: Bool, correctAnswer: String? = nil, preferredSpelling: String? = nil) {
+  // A wrong answer is not announced here: QuizView moves VoiceOver to the held correction,
+  // which reads the result, both answers, and the letters that differ.
+  private func announceAnswerResult(correct: Bool, preferredSpelling: String? = nil) {
     guard UIAccessibility.isVoiceOverRunning else { return }
     let announcement: String
-    if correct, let preferredSpelling {
+    if let preferredSpelling {
       announcement = L.Quiz.announceCorrectSpelling(MixedCaseAccessibility.accessibilityLabel(for: preferredSpelling))
-    } else if correct {
-      announcement = L.Quiz.announceCorrect
-    } else if let correctAnswer {
-      let label = MixedCaseAccessibility.accessibilityLabel(for: correctAnswer)
-      announcement = "\(L.Quiz.announceIncorrect) \(label)"
     } else {
-      announcement = L.Quiz.announceIncorrect
+      announcement = L.Quiz.announceCorrect
     }
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
       UIAccessibility.post(notification: .announcement, argument: announcement)
@@ -599,6 +626,13 @@ struct QuizScope {
   static func verbPage(_ verb: Verb, readingIndex: Int) -> QuizScope {
     QuizScope(verbs: [verb], readingIndex: readingIndex, questionCount: verbPageQuestionCount, source: .verbPage, title: verb.infinitiv.inUserRegion)
   }
+}
+
+/// A wrong answer held on screen with the right one until the learner continues.
+struct QuizCorrection: Equatable {
+  let difference: AnswerDifference
+  /// What `ErrorExplainerView` would explain, were it enabled.
+  let errorContext: ErrorExplainerContext
 }
 
 struct QuizItem: Identifiable {

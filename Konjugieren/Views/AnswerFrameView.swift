@@ -14,6 +14,8 @@ struct AnswerFrameView: View {
   var accessibilityFocusedBlank: AccessibilityFocusState<Int?>.Binding
   /// The first blank's accessibility identifier. Later blanks append their position: `_2`.
   let identifier: String
+  /// While a wrong answer is held, Return continues from any blank, empty or not.
+  var returnAlwaysSubmits = false
   let onSubmit: () -> Void
   @State private var selections: [Int: TextSelection] = [:]
 
@@ -85,7 +87,7 @@ struct AnswerFrameView: View {
       .accessibilityIdentifier(index == 0 ? identifier : "\(identifier)_\(index + 1)")
       .submitLabel(index == frame.blankCount - 1 ? .go : .next)
       .onSubmit {
-        if let next = frame.blankAfterReturn(from: index, blanks: blanks) {
+        if !returnAlwaysSubmits, let next = frame.blankAfterReturn(from: index, blanks: blanks) {
           focusedBlank.wrappedValue = next
         } else {
           onSubmit()

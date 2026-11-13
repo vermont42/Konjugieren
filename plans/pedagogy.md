@@ -777,6 +777,15 @@ clauses, case and spacing ignored) and marks a match that is only the finite par
 reading. It is the check behind "another cell of the same verb" below. Reverse lookup in search
 uses it, and the quiz does not yet.
 
+**Built on `main` 2026-11-13** by [Phase 3](pedagogy-implementation.md#phase-3-a-correction-that-stays)
+of the pedagogy plan: the first, fourth, and fifth suggestions above. A wrong answer now holds on
+its own question with the clock stopped, showing the learner's answer and the right one, until
+Continue or Return. The letters that differ are struck through in the learner's answer and
+underlined in the right one, each on a tint, so they never read as the red letters of
+irregularity. Two links sit under the correction: the verb's page, opened at the missed cell, and
+its ablaut group or, for a weak verb, its family. Both push over the waiting quiz. The diagnosis
+and the prompt to repair remain for Phase 14.
+
 Error classes the conjugator could detect without any language model:
 
 - **Another cell of the same verb.** Generate the verb's full paradigm and look the learner's

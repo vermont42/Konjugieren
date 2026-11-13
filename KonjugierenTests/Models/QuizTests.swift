@@ -19,8 +19,7 @@ struct QuizTests {
     #expect(quiz.score == 0)
     #expect(quiz.elapsedSeconds == 0)
     #expect(quiz.correctCount == 0)
-    #expect(quiz.lastIncorrectAnswer == nil)
-    #expect(quiz.lastCorrectAnswer == nil)
+    #expect(quiz.correction == nil)
     #expect(quiz.questions.isEmpty)
     #expect(quiz.currentQuestion == nil)
   }
@@ -79,8 +78,7 @@ struct QuizTests {
     #expect(quiz.score == 0)
     #expect(quiz.correctCount == 0)
     #expect(quiz.elapsedSeconds == 0)
-    #expect(quiz.lastIncorrectAnswer == nil)
-    #expect(quiz.lastCorrectAnswer == nil)
+    #expect(quiz.correction == nil)
     #expect(quiz.questions.isEmpty)
   }
 
@@ -94,15 +92,14 @@ struct QuizTests {
     #expect(quiz.score == Quiz.pointsPerCorrect)
     #expect(quiz.correctCount == 1)
     #expect(quiz.currentIndex == 1)
-    #expect(quiz.lastIncorrectAnswer == nil)
-    #expect(quiz.lastCorrectAnswer == nil)
+    #expect(quiz.correction == nil)
     #expect(quiz.questions[0].isCorrect == true)
     #expect(quiz.questions[0].userAnswer == correctAnswer)
 
     quiz.quit()
   }
 
-  @Test func submitIncorrectAnswer() {
+  @Test func submitIncorrectAnswerHoldsTheQuestion() {
     let quiz = Quiz(timerInterval: 0.001)
     quiz.start()
 
@@ -112,13 +109,107 @@ struct QuizTests {
 
     #expect(quiz.score == 0)
     #expect(quiz.correctCount == 0)
-    #expect(quiz.currentIndex == 1)
-    #expect(quiz.lastIncorrectAnswer == wrongAnswer)
-    #expect(quiz.lastCorrectAnswer == correctAnswer)
+    #expect(quiz.currentIndex == 0)
+    #expect(quiz.currentQuestion?.id == quiz.questions[0].id)
+    #expect(quiz.correction?.difference.given == wrongAnswer)
+    #expect(quiz.correction?.errorContext.correctAnswer == correctAnswer)
     #expect(quiz.questions[0].isCorrect == false)
     #expect(quiz.questions[0].userAnswer == wrongAnswer)
 
     quiz.quit()
+  }
+
+  @Test func continueLeavesTheHeldQuestion() {
+    let quiz = Quiz(timerInterval: 0.001)
+    quiz.start()
+    quiz.submitAnswer("definitelywrong")
+    quiz.continueAfterCorrection()
+
+    #expect(quiz.correction == nil)
+    #expect(quiz.currentIndex == 1)
+    #expect(quiz.currentQuestion?.id == quiz.questions[1].id)
+    #expect(quiz.isInProgress)
+
+    quiz.quit()
+  }
+
+  @Test func anAnswerWhileHeldIsIgnored() {
+    let quiz = Quiz(timerInterval: 0.001)
+    quiz.start()
+    quiz.submitAnswer("definitelywrong")
+    quiz.submitAnswer(quiz.questions[0].correctAnswer)
+
+    #expect(quiz.currentIndex == 0)
+    #expect(quiz.correctCount == 0)
+    #expect(quiz.questions[0].isCorrect == false)
+    #expect(quiz.questions[0].userAnswer == "definitelywrong")
+
+    quiz.quit()
+  }
+
+  @Test func continueWithoutACorrectionDoesNothing() {
+    let quiz = Quiz(timerInterval: 0.001)
+    quiz.start()
+    quiz.continueAfterCorrection()
+
+    #expect(quiz.currentIndex == 0)
+
+    quiz.quit()
+  }
+
+  @Test func theClockStopsWhileACorrectionIsHeld() {
+    let quiz = Quiz(timerInterval: 0.01)
+    quiz.start()
+    quiz.submitAnswer("definitelywrong")
+    let heldAt = quiz.elapsedSeconds
+
+    RunLoop.current.run(until: Date(timeIntervalSinceNow: 0.05))
+    #expect(quiz.elapsedSeconds == heldAt)
+
+    // Returning to the foreground must not restart a clock that a correction stopped.
+    quiz.resumeTimer()
+    RunLoop.current.run(until: Date(timeIntervalSinceNow: 0.05))
+    #expect(quiz.elapsedSeconds == heldAt)
+
+    quiz.continueAfterCorrection()
+    RunLoop.current.run(until: Date(timeIntervalSinceNow: 0.05))
+    #expect(quiz.elapsedSeconds > heldAt)
+
+    quiz.quit()
+  }
+
+  @Test func aWrongLastAnswerHoldsBeforeTheResults() {
+    let quiz = Quiz(timerInterval: 0.001)
+    quiz.start(scope: .verbPage(Verb.verbs["gehen"]!, readingIndex: 0))
+    quiz.submitAnswer(quiz.questions[0].correctAnswer)
+    quiz.submitAnswer(quiz.questions[1].correctAnswer)
+    quiz.submitAnswer("definitelywrong")
+
+    #expect(quiz.isInProgress)
+    #expect(!quiz.shouldShowResults)
+    #expect(quiz.correction != nil)
+
+    quiz.continueAfterCorrection()
+
+    #expect(!quiz.isInProgress)
+    #expect(quiz.shouldShowResults)
+    #expect(quiz.correction == nil)
+    #expect(quiz.correctCount == 2)
+  }
+
+  @Test func quittingWhileHeldReportsTheHeldQuestion() {
+    let spy = Current.analytics as! AnalyticsSpy
+    let quiz = Quiz(timerInterval: 0.001)
+    quiz.start()
+    quiz.submitAnswer(quiz.questions[0].correctAnswer)
+    quiz.submitAnswer("definitelywrong")
+    let initialCount = spy.signalNames.count
+    quiz.quit()
+
+    let signals = zip(spy.signalNames, spy.signalParameters).dropFirst(initialCount)
+    let parameters = signals.first { $0.0 == .quitQuiz }?.1
+    #expect(parameters?[ParameterKey.questionNumber.rawValue] == "2")
+    #expect(quiz.correction == nil)
   }
 
   @Test func submitAnswerCaseInsensitive() {
@@ -456,6 +547,7 @@ struct QuizTests {
     quiz.start()
     quiz.submitAnswer(quiz.questions[0].correctAnswer)
     quiz.submitAnswer("wrong")
+    quiz.continueAfterCorrection()
     quiz.quit()
 
     #expect(quiz.questions.isEmpty)

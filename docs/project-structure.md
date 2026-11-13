@@ -31,6 +31,7 @@ Konjugieren/
 │   ├── AblautGroupInfo.swift   # Identifiable struct with localized ablaut-group descriptions
 │   ├── AblautGroupParser.swift # XMLParser delegate that parses AblautGroups.xml
 │   ├── AblautGroups.xml        # 76 ablaut pattern definitions
+│   ├── AnswerDifference.swift  # Where a wrong quiz answer differs from the right one, letter by letter (an alignment like VerbSearch.editDistance's), and QuizItem.difference(from:), which picks the nearest spelling of the cell to show
 │   ├── AnswerFrame.swift       # The shape of a quiz answer: blanks and the words around them (ihr [ ], [ ] Sie [ ] !); the answer a set of filled blanks gives, and where Return goes
 │   ├── AnswerSpelling.swift    # Quiz answer normalization: case and spacing, the leading pronouns a cell allows (ihr habt …), digraph spellings of umlauts (ue for ü, never ü for ue), and the orthographic key for showing a learner the umlaut spelling
 │   ├── AppIcon.swift           # Alternate app-icon enum (bratwurst/hat/pretzel/bundestag)
@@ -155,7 +156,8 @@ Konjugieren/
     ├── InfoView.swift          # Detail view for a single Info article
     ├── MainTabView.swift       # Root TabView with five tabs
     ├── OnboardingView.swift    # Multi-page onboarding shown on first launch
-    ├── QuizView.swift          # Quiz gameplay: questions, timer, answer input; the Quiz tab's start screen (a big yellow symbol for the scope, its name and description, the All Verbs/My Verbs picker, Start, three fact tiles, and My Verbs' verbs as chips, scaled up on iPad); with a sheetScope, a quiz in a sheet (QuizSheet: "Test me on this verb" or a collection's quiz), which starts as it appears and closes when the quiz ends
+    ├── QuizCorrectionView.swift # The held correction of a wrong quiz answer: both answers with the differing letters marked, links to the verb's page and its ablaut group or family, and Continue; defines the isBeneathQuiz environment value
+    ├── QuizView.swift          # Quiz gameplay: questions, timer, answer input; the Quiz tab's start screen (a big yellow symbol for the scope, its name and description, the All Verbs/My Verbs picker, Start, three fact tiles, and My Verbs' verbs as chips, scaled up on iPad); with a sheetScope, a quiz in a sheet (QuizSheet: "Test me on this verb" or a collection's quiz), which starts as it appears and closes when the quiz ends; its own navigation stack pushes the pages a held correction links to, over the waiting quiz
     ├── RelatedVerbsView.swift  # The verb page's Related Verbs card (chips in a FlowLayout, which can also center its rows, as the Quiz tab's My Verbs chips do), RelatedVerbListView (every verb of one relation), and VerbPagePush, the environment action by which a verb page pushes onto whichever tab's stack shows it
     ├── ResultsView.swift       # Modal showing quiz results, and the leaderboard button after a ranked quiz
     ├── ReviewCardView.swift    # The review card above the verb list: a verb looked up days ago, its key conjugations hidden until a tap reveals them; a second tap opens the page, and ✕ dismisses
@@ -215,6 +217,7 @@ Shared/
 KonjugierenTests/
 ├── CLAUDE.md                   # Lazily loaded Claude Code guidance: Swift Testing conventions for this target
 ├── Models/
+│   ├── AnswerDifferenceTests.swift # The held correction's marking: a missing umlaut, a missing or extra letter, a swap, case as no difference, the nearer word order, a dropped pronoun
 │   ├── AnswerFrameTests.swift      # The quiz's answer frame: every cell of six verbs takes its right answer through its frame, the frame per kind of cell, readings, Return
 │   ├── AnswerSpellingTests.swift   # Quiz grading: the report's three simulator cases, leading pronouns by person, digraphs both ways, the spelling shown beside the checkmark by region and clause
 │   ├── ConjugationMapTests.swift   # Bundled map equals a fresh build (staleness), finds the verb of ≥99% of example sentences (Scan 2 of the defect plan), anchors, format round-trip

@@ -11,9 +11,11 @@ The quiz tests users' knowledge of German verb conjugations with timed, scored g
 | File | Purpose |
 |------|---------|
 | `Quiz.swift` | `@Observable` class managing quiz state and logic; `QuizScope`, what a quiz asks about; `QuizItem`, one question and its grading |
+| `AnswerDifference.swift` | Where a wrong answer differs from the right one, letter by letter, for the held correction |
 | `AnswerSpelling.swift` | Answer normalization, the leading pronouns a cell allows, and digraph spellings of umlauts |
 | `StandardVariants.swift` | Duden's other standard conjugations of a cell, accepted as right answers |
 | `QuizView.swift` | SwiftUI view for active quiz gameplay |
+| `QuizCorrectionView.swift` | The held correction of a wrong answer |
 | `ResultsView.swift` | Modal sheet showing final results |
 | `QuizDifficulty.swift` | Difficulty setting enum |
 | `QuizErrorHistory.swift` | Persists recent wrong answers (up to 200) for AI analysis |
@@ -25,7 +27,7 @@ The quiz tests users' knowledge of German verb conjugations with timed, scored g
 1. User taps "Start" → `quiz.start(scope:)` generates the scope's questions and, for a 30-question quiz, starts a Live Activity
 2. Timer begins, questions presented one at a time; Live Activity updates on each answer
 3. User types conjugation, presses return → `quiz.submitAnswer()`
-4. Wrong answers are recorded to `QuizErrorHistory` and offer an `ErrorExplainerView` for AI explanation
+4. A right answer advances at once. A wrong one is recorded to `QuizErrorHistory` and held on its question, with the clock stopped, until Continue (see The Held Correction)
 5. After 30 questions → `quiz.finishQuiz()` shows ResultsView and ends the Live Activity
 
 ### Question Generation
@@ -137,6 +139,42 @@ The frame is meant for reuse: Phase 15's three blanks and Phase 18's sentence fr
 segments of the same kind. `KONJUGIEREN_QUIZ_FIXTURE frames` asks one question per frame above,
 repeated to 30.
 
+### The Held Correction
+
+Built 2026-11-13 in Phase 3 of [`plans/pedagogy-implementation.md`](../plans/pedagogy-implementation.md),
+replacing the Last Answer and Correct Answer rows that showed on the *next* question's card while
+its clock ran. A wrong answer sets `Quiz.correction` and stops the timer, and the quiz stays on the
+missed question. `submitAnswer` ignores answers while a correction is held, `resumeTimer` (on
+return to the foreground) leaves the clock stopped, and `continueAfterCorrection()` clears it,
+advances, and restarts the clock, or after the last question shows the results. A right answer
+still advances at once.
+
+`QuizCorrectionView`, under the answer frame, shows:
+
+- **Your Answer and Correct Answer, with the differing letters marked.** `QuizItem.difference(from:)`
+  drops a leading pronoun of the asked person, as grading does, and chooses the nearest of the
+  region's spellings, so ankomt is shown ankommt rather than kommt an (the canonical answer wins a
+  tie). `AnswerDifference.between` aligns the two letter by letter, ignoring case, with the costs
+  of `VerbSearch.editDistance` (a swap marks both letters). The learner's wrong or extra letters
+  are struck through on a red tint; the right answer's changed or missing letters are underlined
+  on a green tint. The red letters of irregularity stay red, so the two marks never compete.
+- **Links.** The verb's page, opened on the asked reading and scrolled to the missed cell, which
+  is marked as a search's match is, and the verb's ablaut group (the Ablaut page with the group
+  expanded) or, for a weak or -ieren verb, its family page. They push onto `QuizView`'s own
+  navigation stack, so Back returns to the held question with the clock still stopped. The
+  `isBeneathQuiz` environment value hides "Test me on this verb" and a collection's Quiz button
+  on those pages, so no second quiz starts over the first. A quiz begun from a verb's own page
+  shows no verb link.
+- **Continue.** Return in the answer field also continues, from any blank. Return resigns the
+  field, so the view refocuses it on holding and again after Back from a linked page.
+
+VoiceOver: a wrong answer is no longer announced by `Quiz`. Instead focus moves to the correction,
+which reads "Incorrect. Your answer: … Correct answer: … Letters that differ: …" (the letters only
+when three or fewer), with a hint that Continue follows. A Magic Tap continues too.
+
+`KONJUGIEREN_QUIZ_FIXTURE corrections` asks eight questions with a wrong answer for each in the
+comment on `Quiz.generateCorrectionsFixture()`.
+
 ### Scoring
 
 - **10 points** per correct answer
@@ -157,7 +195,7 @@ repeated to 30.
 | `elapsedSeconds` | `Int` | Time elapsed |
 | `correctCount` | `Int` | Number correct |
 | `questions` | `[QuizItem]` | All 30 questions |
-| `lastErrorContext` | `ErrorExplainerContext?` | Context for the most recent wrong answer |
+| `correction` | `QuizCorrection?` | The held correction of a wrong answer: its `AnswerDifference`, and the `ErrorExplainerContext` the disabled explainer would take |
 | `lastPreferredSpelling` | `String?` | The conjugation's own spelling of the last answer, when it was right but spelled another way |
 
 ### Sound Effects
@@ -909,7 +947,7 @@ Counts and durations go out in bands (`AnalyticsBand`), never as exact numbers.
 | `tapStarVerb` | `starred` (`true`, `false`: the state after the tap) | When the star in a verb page's navigation bar is tapped (Phase 12) |
 | `tapTestVerb` | None | When "Test me on this verb" in a verb page's navigation bar is tapped (Phase 13). The quiz it opens sends `startQuiz` with `source` `verbPage` |
 | `viewReviewCard` | None | Once per card shown: when the review card first appears after a launch or a return from the background (Phase 15) |
-| `viewCollection` | `collection` (its key, such as `modals` or `ablaut-gehen`), `source` (`family`, `sharedLink`, `deeplink`) | When a collection's page appears, once per arrival, or an ablaut group is expanded on the Ablaut page (Phase 16). The ideas document's "lists opened". The key names a fixed list, not anything the learner chose |
+| `viewCollection` | `collection` (its key, such as `modals` or `ablaut-gehen`), `source` (`family`, `sharedLink`, `deeplink`, `quizCorrection`) | When a collection's page appears, once per arrival, or an ablaut group is expanded on the Ablaut page (Phase 16). The ideas document's "lists opened". The key names a fixed list, not anything the learner chose |
 | `tapShareCollection` | `collection` | When a collection's share button is tapped, whether or not the learner then shares (Phase 16) |
 | `tapRevealReviewCard` | None | When a tap reveals the review card's key conjugations, once per card (Phase 15). A page opened from the card then sends `viewVerbView` with `source` `reviewCard` |
 | `startQuiz`, `quitQuiz`, `completeQuiz` | `source` (`tab`, `myVerbs`, `verbPage`, `list`), added to their existing parameters; `startQuiz` alone also carries `collection` for a collection's quiz (Phase 16) | When a quiz starts, is quit, or is completed (`source` since Phase 13). Without it, three-question quizzes would inflate the completion rate of the 30-question quiz |
@@ -955,6 +993,7 @@ My Verbs scope, the list it was begun on.
 | `handoff` | Yes | Handoff from another device |
 | `infoLink` | Yes | A verb linked from an Info article |
 | `related` | Yes | A verb in a verb page's Related Verbs card, or in the full list it opens |
+| `quizCorrection` | Yes | A verb page opened from a quiz's held correction; for `viewCollection`, an ablaut group opened from it (pedagogy Phase 3) |
 | `quickAction` | Yes | `finishSearch` only: the Find a Verb quick action on the app icon (Phase 11) |
 | `resume` | Yes | The same page appearing again (see above) |
 | `search` | Yes | A search result, opened by tap, Return, or the arrow keys |

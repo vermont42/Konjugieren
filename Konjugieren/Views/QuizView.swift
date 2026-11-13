@@ -17,6 +17,9 @@ struct QuizView: View {
   @State private var answerBlanks: [String] = []
   @FocusState private var focusedBlank: Int?
   @AccessibilityFocusState private var accessibilityFocusedBlank: Int?
+  @AccessibilityFocusState private var correctionHasAccessibilityFocus: Bool
+  /// Pages opened from a held correction, pushed over the quiz, which waits beneath them.
+  @State private var navigationPath = NavigationPath()
   private var settings: Settings { Current.settings }
   @State private var shakeOffset: CGFloat = 0
   @State private var showCorrectCheck = false
@@ -26,15 +29,27 @@ struct QuizView: View {
   var body: some View {
     @Bindable var quiz = quiz
 
-    NavigationStack {
+    NavigationStack(path: $navigationPath) {
       ZStack {
         Color.customBackground
           .ignoresSafeArea()
 
         VStack {
           if quiz.isInProgress, let question = quiz.currentQuestion {
-            ScrollView {
-              quizContent(question: question)
+            ScrollViewReader { proxy in
+              ScrollView {
+                quizContent(question: question)
+              }
+              .onChange(of: quiz.correction != nil) { _, isHeld in
+                guard isHeld else {
+                  return
+                }
+                correctionHasAccessibilityFocus = true
+                refocusAnswer(after: .milliseconds(50))
+                withAnimation(reduceMotion ? nil : .default) {
+                  proxy.scrollTo(QuizCorrectionView.continueButtonID, anchor: .bottom)
+                }
+              }
             }
           } else if !quiz.shouldShowResults, sheetScope == nil {
             startScreen
@@ -69,6 +84,25 @@ struct QuizView: View {
       }
       .navigationTitle(sheetScope?.title ?? L.Navigation.quiz)
       .navigationBarTitleDisplayMode(sheetScope == nil ? .automatic : .inline)
+      .navigationDestination(for: VerbDestination.self) { destination in
+        VerbView(verb: destination.verb, source: destination.source, marks: destination.marks)
+      }
+      .navigationDestination(for: RelatedVerbListDestination.self) { destination in
+        RelatedVerbListView(destination: destination)
+      }
+      .navigationDestination(for: BrowseableFamily.self) { family in
+        FamilyDetailView(family: family) { verb in navigationPath.append(VerbDestination(verb: verb, source: .family)) }
+      }
+      .navigationDestination(for: VerbCollectionRequest.self) { request in
+        FamilyDetailView(family: .ablaut, collectionRequest: request) { verb in navigationPath.append(VerbDestination(verb: verb, source: .family)) }
+      }
+    }
+    .environment(\.verbPagePush, VerbPagePush { navigationPath.append($0) })
+    .environment(\.isBeneathQuiz, true)
+    .accessibilityAction(.magicTap) {
+      if quiz.correction != nil {
+        quiz.continueAfterCorrection()
+      }
     }
     .sheet(isPresented: $quiz.shouldShowResults, onDismiss: {
       if sheetScope != nil {
@@ -81,6 +115,12 @@ struct QuizView: View {
       answerBlanks = []
       focusedBlank = 0
       accessibilityFocusedBlank = 0
+    }
+    // Back from a page opened from the correction, the keyboard returns, so Return continues.
+    .onChange(of: navigationPath.isEmpty) { _, isEmpty in
+      if isEmpty, quiz.correction != nil {
+        refocusAnswer(after: .milliseconds(450))
+      }
     }
     .onChange(of: scenePhase) { _, newPhase in
       switch newPhase {
@@ -148,40 +188,42 @@ struct QuizView: View {
           .accessibilityIdentifier("quiz_preferred_spelling")
         }
 
-        if let lastIncorrect = quiz.lastIncorrectAnswer, let lastCorrect = quiz.lastCorrectAnswer {
-          labeledRow(L.Quiz.lastAnswer) {
-            Text(verbatim: lastIncorrect)
-              .foregroundStyle(.customRed)
-              .germanPronunciation()
-          }
-
-          labeledRow(L.Quiz.correctAnswer) {
-            Text(mixedCaseString: lastCorrect)
-              .germanPronunciation()
-              .accessibilityLabel(Text(verbatim: MixedCaseAccessibility.accessibilityLabel(for: lastCorrect)))
-          }
-
-          // TODO: 1.0-disabled surface. FM hallucinates fake grammar rules
-          // (e.g., singen Präteritum → "-en changes to -t"). See "Currently
-          // disabled in 1.0" in docs/cloud-llm-tier.md. Restore when
-          // HybridLanguageModelService ships.
-          // if let errorContext = quiz.lastErrorContext,
-          //    Current.languageModelService.isAvailable {
-          //   ErrorExplainerView(context: errorContext)
-          //     .id(errorContext)
-          // }
-        }
-
         AnswerFrameView(
           frame: question.answerFrame,
           blanks: $answerBlanks,
           focusedBlank: $focusedBlank,
           accessibilityFocusedBlank: $accessibilityFocusedBlank,
-          identifier: "quiz_answer_field"
+          identifier: "quiz_answer_field",
+          returnAlwaysSubmits: quiz.correction != nil
         ) {
-          submit(question)
+          if quiz.correction != nil {
+            quiz.continueAfterCorrection()
+          } else {
+            submit(question)
+          }
         }
         .offset(x: shakeOffset)
+
+        if let correction = quiz.correction {
+          QuizCorrectionView(
+            question: question,
+            correction: correction,
+            showsVerbLink: quiz.scope.source != .verbPage,
+            accessibilityIsFocused: $correctionHasAccessibilityFocus,
+            onOpen: { navigationPath.append($0) },
+            onContinue: { quiz.continueAfterCorrection() }
+          )
+          .transition(.opacity)
+
+          // TODO: 1.0-disabled surface. FM hallucinates fake grammar rules
+          // (e.g., singen Präteritum → "-en changes to -t"). See "Currently
+          // disabled in 1.0" in docs/cloud-llm-tier.md. Restore when
+          // HybridLanguageModelService ships.
+          // if Current.languageModelService.isAvailable {
+          //   ErrorExplainerView(context: correction.errorContext)
+          //     .id(correction.errorContext)
+          // }
+        }
       }
       .konjCard()
       .overlay(
@@ -215,6 +257,19 @@ struct QuizView: View {
         incorrect: quiz.questions.filter { $0.state == .incorrect }.count,
         remaining: quiz.questionCount - quiz.currentIndex - 1
       ))
+    }
+  }
+
+  /// Gives the answer field the keyboard while a correction is held, so that Return continues.
+  /// Return resigns the field, and a push takes the keyboard away, yet the focus state can still
+  /// read 0 afterward, so it is cleared and set again once the field is back on screen.
+  private func refocusAnswer(after delay: Duration) {
+    focusedBlank = nil
+    Task { @MainActor in
+      try? await Task.sleep(for: delay)
+      if navigationPath.isEmpty, quiz.correction != nil {
+        focusedBlank = 0
+      }
     }
   }
 

@@ -51,6 +51,26 @@ enum L {
     static var quizPlural: String {
       String(localized: "Accessibility.quizPlural")
     }
+
+    static func quizCorrection(given: String, expected: String) -> String {
+      String(localized: "Accessibility.quizCorrection \(given) \(expected)")
+    }
+
+    static func quizDifferingLetters(_ letters: String) -> String {
+      String(localized: "Accessibility.quizDifferingLetters \(letters)")
+    }
+
+    static var quizCorrectionHint: String {
+      String(localized: "Accessibility.quizCorrectionHint")
+    }
+
+    static var quizCorrectionLinkHint: String {
+      String(localized: "Accessibility.quizCorrectionLinkHint")
+    }
+
+    static var quizContinueHint: String {
+      String(localized: "Accessibility.quizContinueHint")
+    }
   }
 
   enum RatingsFetcher {
@@ -885,8 +905,12 @@ enum L {
       String(localized: "Quiz.score")
     }
 
-    static var lastAnswer: String {
-      String(localized: "Quiz.lastAnswer")
+    static var yourAnswer: String {
+      String(localized: "Quiz.yourAnswer")
+    }
+
+    static var continueAfterCorrection: String {
+      String(localized: "Quiz.continueAfterCorrection")
     }
 
     static var correctAnswer: String {

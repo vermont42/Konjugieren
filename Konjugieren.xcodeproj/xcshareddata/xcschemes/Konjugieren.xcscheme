@@ -64,6 +64,12 @@
             ReferencedContainer = "container:Konjugieren.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
+      <CommandLineArguments>
+         <CommandLineArgument
+            argument = "-KONJUGIEREN_QUIZ_FIXTURE corrections"
+            isEnabled = "NO">
+         </CommandLineArgument>
+      </CommandLineArguments>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"

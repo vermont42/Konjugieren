@@ -1483,6 +1483,86 @@
         }
       }
     },
+    "Accessibility.quizContinueHint" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Setzt das Quiz fort"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Goes on with the quiz"
+          }
+        }
+      }
+    },
+    "Accessibility.quizCorrection %@ %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Falsch. Deine Antwort: %1$@. Richtige Antwort: %2$@."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Incorrect. Your answer: %1$@. Correct answer: %2$@."
+          }
+        }
+      }
+    },
+    "Accessibility.quizCorrectionHint" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nach rechts wischen für Links zum Verb, dann für Weiter."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Swipe right for links to the verb, then Continue."
+          }
+        }
+      }
+    },
+    "Accessibility.quizCorrectionLinkHint" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öffnet sich, während das Quiz wartet"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opens while the quiz waits"
+          }
+        }
+      }
+    },
+    "Accessibility.quizDifferingLetters %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Abweichende Buchstaben: %@."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Letters that differ: %@."
+          }
+        }
+      }
+    },
     "Accessibility.quizDotRow %lld %lld %lld %lld %lld" : {
       "localizations" : {
         "de" : {
@@ -5262,6 +5342,22 @@
         }
       }
     },
+    "Quiz.continueAfterCorrection" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weiter"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continue"
+          }
+        }
+      }
+    },
     "Quiz.correct" : {
       "localizations" : {
         "de" : {
@@ -5338,22 +5434,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Elapsed:"
-          }
-        }
-      }
-    },
-    "Quiz.lastAnswer" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Letzte Antwort:"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Last Answer:"
           }
         }
       }
@@ -5602,6 +5682,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Verb:"
+          }
+        }
+      }
+    },
+    "Quiz.yourAnswer" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deine Antwort:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your Answer:"
           }
         }
       }

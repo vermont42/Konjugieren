@@ -17,7 +17,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 |---:|---|---|---|---|
 | 1 | Done | 2026-11-13 | `250cca9` | T1.3, T1.4, T1.5 |
 | 2 | Done | 2026-11-13 | `11f2d81` | T1.2 |
-| 3 | Not started | | | T4.1, T4.4, T4.5 |
+| 3 | Awaiting Josh | 2026-11-13 | | T4.1, T4.4, T4.5 |
 | 4 | Not started | | | T1.6 |
 | 5 | Not started | | | T2.3, T2.6, T6.7, M1 |
 | 6 | Not started | | | T2.1, T2.2, T2.5 |
@@ -366,8 +366,8 @@ of question.
 
 ## Phase 3: A Correction That Stays
 
-**Suggestions:** T4.1, T4.4, T4.5. **Depends on:** nothing; Phase 2 preferably. **Status:** Not
-started.
+**Suggestions:** T4.1, T4.4, T4.5. **Depends on:** nothing; Phase 2 preferably. **Status:**
+Awaiting Josh.
 
 Today `Quiz.submitAnswer` advances before the view redraws, so the correction for question n
 appears on the card for question n + 1 while the clock runs.
@@ -396,7 +396,58 @@ VoiceOver announces the correction and the Continue button, and tests pin the st
 
 **How it differed:**
 
-(To be written by the session that finishes this phase.)
+- **The layout is built, not yet judged.** The correction sits in the question's card, under the
+  answer frame: Your Answer, Correct Answer, a row of links, and a full-width Continue. The field
+  keeps the learner's answer and the keyboard, so Return continues. It stays editable, since a
+  binding that ignores edits can leave a `TextField` showing text its state does not hold, and
+  nothing typed there is graded. Josh has still to judge it on a device-sized screen (the Ask Josh
+  above).
+- **Which right answer is shown.** `QuizItem.difference(from:)` shows the nearest of the user's
+  region's spellings, so ankomt is corrected to ankommt and komt an to kommt an. A leading
+  pronoun of the asked person is dropped, as grading drops it, and the learner's capitals are
+  kept. `QuizErrorHistory` and the error context still record the canonical answer.
+- **The marking.** `AnswerDifference` aligns the two answers with `VerbSearch.editDistance`'s
+  costs and marks whatever the cheapest alignment leaves unmatched. A missing letter has nothing
+  to mark in the learner's answer, so it shows only as an underlined letter of the right answer;
+  a caret in the learner's answer was considered and left out. Case is not a difference, so a red
+  letter is never marked for being a capital. The tints were strengthened after the first
+  screenshots, where they barely showed on the dark card.
+- **One group link.** A strong or mixed reading links to its ablaut group (the Ablaut page,
+  expanded and scrolled to it), and a weak or -ieren reading to its family page. A separable
+  verb's prefix family is not linked. The verb link opens the page on the asked reading,
+  scrolled to the missed cell and marked, through the `MarkedConjugations` that search uses.
+- **No quiz inside a quiz.** Not in the phase: the pages pushed over a held question hide "Test
+  me on this verb" and a collection's Quiz button, through a new `isBeneathQuiz` environment
+  value. The verb link is left out of a quiz begun from a verb's page, as the phase said.
+- **Two focus bugs, found by looking.** Return resigns a `TextField`, and the next question's
+  focus reset had hidden that. A held question therefore lost the keyboard and Return did
+  nothing, so the view now refocuses the field on holding. After Back from a linked page, setting
+  the focus state to the 0 it still held changed nothing, so it is cleared and set again once the
+  pop has finished.
+- **A wrong last answer now shows its correction** before the results. Before, the 30th
+  question's correction never appeared.
+- **VoiceOver.** `Quiz` no longer announces a wrong answer. Focus moves to the correction instead,
+  which reads "Incorrect. Your answer: fahrt. Correct answer: fährt. Letters that differ: ä." (the
+  letters only when three or fewer), with the hint "Swipe right for links to the verb, then
+  Continue." Continue has its own hint, and a Magic Tap also continues. Nobody has listened to it.
+- **Analytics:** one new value, `quizCorrection`, for `viewVerbView` and `viewCollection`. The
+  privacy policy's existing wording covers it, which [`docs/privacy-policy-pending.md`](../docs/privacy-policy-pending.md)
+  records without changing a line.
+- **Removed:** `Quiz.lastIncorrectAnswer`, `lastCorrectAnswer`, `lastErrorContext` (now
+  `correction.errorContext`), and the string `Quiz.lastAnswer`. The commented-out
+  `ErrorExplainerView` sits in the correction's branch of `QuizView`, taking
+  `correction.errorContext`.
+- **A new fixture**, `KONJUGIEREN_QUIZ_FIXTURE corrections`: eight questions, each with a wrong
+  answer in the generator's comment that shows a kind of marking or link.
+- **Verified on the iPhone 17 simulator** with a hardware keyboard: all eight fixture answers
+  held and continued with keystrokes alone, the clock stood still through a hold and through a
+  visit to a linked page, both links opened and returned to the held question with the keyboard
+  back, and the sheet from a verb's page showed no verb link. On the iPad Pro 11-inch (M5), in
+  light mode, the hold, the verb link, Back, and Return behaved the same, and the tints read
+  well. There the card, and so Continue, spans the screen's width, as the card did before. Not
+  tried: the software keyboard (which may cover Continue on a small phone; the view scrolls
+  Continue into sight) and VoiceOver by ear. Tests: 16 new, 560 in all. Josh added the fixture to
+  the shared scheme as a launch argument, unchecked.
 
 ## Phase 4: One More Try
 

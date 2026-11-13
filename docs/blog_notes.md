@@ -10122,3 +10122,78 @@ notes" are a pleonasm in two languages. The Latin descends from the Proto-Indo-E
 *\*per-*, "to lead across, to go through", whose Germanic branch gave English *ford* and *ferry*
 and German *Furt* and *fahren*. So *fahren*, which sits in the sein collection Phase 16 built, is
 a distant cousin of the word for what comes next.
+
+## A Plan for the Quiz's Pedagogy (2026-11-13)
+
+With the browse plan finished, the quiz track came next. Its source is `plans/pedagogy.md`, the
+research report of 2026-11-10, in which Josh had written a verdict beside every suggestion and an
+answer under each of its ten "Decisions for Josh". This session turned those into
+`plans/pedagogy-implementation.md`: 24 phases and a closing, in the browse plan's format, each
+with a Status line, its dependencies, the questions Josh's verdicts leave open, a "Done when"
+test, and an empty **How it differed** section for the session that builds it. No app code
+changed.
+
+The report's suggestions had no numbers, so the plan gives them IDs (T1.1 to T6.9 for the six
+tiers, M1 to M5 for the measurements) and an index mapping each to its verdict and its phase.
+Three were rejected or set aside: weighting a newly opened conjugationgroup (Josh: what has been
+opened "should not impact quizzes"), a language model wording error diagnoses, and the arcade
+game. Two had no verdict at all, the report's within-policy signals for abandoned quizzes and
+time to quit, so their phase asks Josh before building them.
+
+Ordering was the main design problem. The report ranks its tiers by leverage: grade correctly,
+change what is asked, add memory, make feedback land, add new directions, then motivation. But
+the pieces do not respect the tiers. Josh's Tier 1 verdict on near misses ("half points if the
+player gets the second attempt right") needs a quiz that can stay on a question, and that is a
+Tier 4 suggestion. So the correction that stays on its question became Phase 3, ahead of the
+second attempt in Phase 4, and the diagnosis of errors, also Tier 4, waits until Phase 14 because
+it is large and the second attempt does not need it. The practice hub moved up to follow the
+practice record, since a hub with nothing due to show is the blank tab the report criticized.
+
+Reading the code surfaced traps that the plan now names so a later session does not walk into
+them. `VerbSearch.fold` folds ä, ae, and a together, which is right for search and would make the
+quiz accept fahrt for fährt; grading needs a fold that only maps digraphs to umlauts. A one-letter
+slip and a grammatical error can look the same: kommt for kommst is one edit and the wrong person,
+so `Verb.conjugations(matching:)` has to run before the edit distance does. `QuizErrorHistory`
+cannot rebuild its own questions, since each record names a conjugationgroup without its person
+and carries no reading. And the number 30 is wired into four places besides the question count:
+the Live Activity, the tip donation, the participle quota, and the leaderboard's `isRanked`.
+
+Two verdicts pull against each other, and the plan asks rather than choosing. The report's ladder
+of levels ties a verb band to each level (100, 300, 1,000, everything), while Josh's verdict on
+frequency bands says "top 300". And the browse plan's ruling that only a full quiz over every
+verb ranks cannot survive a ten-question default, which is why the per-level leaderboards of
+Decision 4 got their own phase right after the session length changes. The browse plan's
+decision against the term "principal parts" carries over too: the key-conjugations exercise of
+Phase 15 asks Josh what to call itself.
+
+The report calls the quiz a mechanical drill in Wong and VanPatten's sense, and the word has a
+history worth a footnote. English *drill* came from Dutch *drillen*, "to bore, to turn round",
+whose relatives include the *-tril* of *nostril* (Old English *nosþyrl*, "nose hole") and
+*thrill*, first "to pierce". German *drillen* means the same harsh training. Its look-alike
+*Drilling*, "triplet", is unrelated: it was formed from *drei* on the model of *Zwilling*. A
+strong verb's key conjugations, the subject of Phase 15, come in threes, so the exercise is a
+*Drilling* in one sense and a drill in the other.
+
+## Answering the Pedagogy Plan's Questions Up Front (2026-11-13)
+
+Josh prefers to settle a plan's questions before work starts, and the first draft of
+`plans/pedagogy-implementation.md` left an **Ask Josh** list in twenty of its 24 phases. Sorting
+them showed that most needed only his preference, so he answered them in batches the same
+evening, and each phase now records the answers under **Decided**. What remains under **Ask Josh**
+needs something to look at first: the audited list of optional conjugations, frame mockups, draft
+error templates, the achievement list, built screens.
+
+Several answers changed the plan's shape rather than filling in a detail. The verb band now
+follows the level (100, 300, 1,000, everything), which supersedes the "top 300" verdict and
+resolves the conflict the first draft had flagged. The levels have words for names, not CEFR
+labels, and score 10 points a question at every level, so Ridiculous's doubling disappears and
+per-level leaderboards never need to compare. The review card and the quiz will share one
+schedule, so browse Phase 15's per-verb `ReviewSchedule` gets folded into the practice record
+rather than living beside it. A ranked score is the first ten questions of a default session,
+which gives every score a ceiling of 100; the plan notes that ties at the top are likely and that
+the hidden clock cannot break them.
+
+The key-conjugations exercise got a name, Verb Essentials, chosen over Stammformen and Three
+Conjugations. One answer went beyond the options offered: the achievements' artwork is to be
+generated with `gpt-image`, with the hex values of Konjugieren's color sets written into every
+prompt.

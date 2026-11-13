@@ -327,6 +327,7 @@ plans/                         # Plans written for future sessions to carry out
 ├── browse-and-verb-ideation.md # Brief for ideating Browse and Verb screen improvements, in parallel with the quiz work in plans/pedagogy.md
 ├── browse-and-verb-implementation.md # Multi-session plan, in 16 phases plus a closing, for building the ideas Josh accepted in docs/browse-and-verb-ideas.md; each session marks its phase done and notes how it differed
 ├── fix-reference-defects.md   # Plan for fixing the defects that ideation found, to be carried out before any idea is built: wrong auxiliaries (37 contradicted by kaikki, 141 needing a ruling) with a second reading wherever both senses are current, prefixes lost under full-override ablaut entries, two small code bugs, five example sentences, three documents, and the backen/hauen participles. Its audit prototype was promoted to verbdata/audit_auxiliaries.py
+├── pedagogy-implementation.md # Multi-session plan, in 24 phases plus a closing, for building the quiz suggestions Josh accepted in plans/pedagogy.md; indexes the report's suggestions as T1.1 to T6.9 and M1 to M5, and each session marks its phase done and notes how it differed
 └── pedagogy.md                # Research findings on the quiz's pedagogy (2026-11-10): what the quiz does, what a played session and the telemetry show, what the literature supports, and tiered suggestions; every claim labeled by how it was verified
 
 scripts/

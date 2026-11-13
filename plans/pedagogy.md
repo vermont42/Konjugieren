@@ -12,6 +12,10 @@ Parts of what this report suggests were built on `main` between 2026-11-12 and 2
 because the browse ideas needed them. Each is noted under its tier with a **Built on `main`**
 or **Partly built** line. None has reached a learner, since no release is possible before 2027.
 
+The suggestions Josh accepted, and his answers to [Decisions for Josh](#decisions-for-josh), are
+built by [`plans/pedagogy-implementation.md`](pedagogy-implementation.md), written 2026-11-13. Its
+phases add further **Built on `main`** lines here as they finish.
+
 Four inputs went into this document:
 
 1. **The code.** `Quiz.swift`, `QuizView.swift`, `ResultsView.swift`, `QuizErrorHistory.swift`,

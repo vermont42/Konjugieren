@@ -51,6 +51,7 @@ enum RatingsFetcher {
     default:
       description = L.RatingsFetcher.multipleRatings(count: ratingsCount)
     }
+    // This non-localization is intended.
     return description + " Füge deine hinzu."
   }
 

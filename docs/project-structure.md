@@ -35,7 +35,8 @@ Konjugieren/
 │   ├── Clause.swift            # main/subordinate: whether a separable prefix splits off (ich stehe auf) or joins (aufstehe)
 │   ├── ConjugationLabels.swift # Display members of core types that need L or Settings (Family.displayName, PersonNumber.pronoun, Conjugationgroup.displayName(lang:)), kept out of the files ConjugationMapTool compiles
 │   ├── ConjugationMap.swift    # Conjugation → infinitive map (ging → gehen; halte → aufhalten with particle auf): builder, text/LZFSE format, and the bundled loader. Compiled into the app AND ConjugationMapTool
-│   ├── ConjugationMatch.swift  # Verb.conjugations(matching:): which cells of a verb equal a text, graded as the quiz grades; Conjugationgroup.allCells
+│   ├── ConjugationIndex.swift  # The bundled conjugation map indexed for search: folded spellings (muß → muss) and length buckets for the guess
+│   ├── ConjugationMatch.swift  # Verb.conjugations(matching:): which cells of a verb equal a text, graded as the quiz grades; Conjugationgroup.allCells (page order) and personNumber
 │   ├── Conjugationgroup.swift  # Enum of all conjugationgroups with endings
 │   ├── ConjugationgroupLang.swift  # Setting enum: german/english display
 │   ├── Conjugator.swift        # Core conjugation logic for all conjugationgroups; joined (subordinate-clause) conjugations by default, the Wiktionary oracle
@@ -78,8 +79,9 @@ Konjugieren/
 │   ├── Reading.swift           # One sense of a verb: gloss, family, auxiliary, prefixes
 │   ├── Verb.swift              # Lemma: frequency, icon, and an ordered list of readings
 │   ├── VerbParser.swift        # XMLParser delegate for Verbs.xml, incl. the `in` marker grammar
-│   ├── VerbVisit.swift         # VerbDestination (a verb page to push, with its analytics source) and VerbVisit (one viewVerbView/leaveVerbView pair)
-│   ├── VerbSearch.swift        # The one search rule (list and shortcut picker): umlaut/digraph/ß folding, ranked match kinds, and the edit-distance guess for a failed search
+│   ├── VerbVisit.swift         # VerbDestination (a verb page to push, with its analytics source and the cells a search marked) and VerbVisit (one viewVerbView/leaveVerbView pair)
+│   ├── VerbSearch.swift        # The one search rule (list and shortcut picker): umlaut/digraph/ß folding, ranked match kinds including conjugations and stranded parts, and the edit-distance guess (infinitives and conjugations) for a failed search
+│   ├── VerbSearchResults.swift # What the verb list shows for a query: rows, the folded row of separable verbs, the guess; MatchedConjugation names a match's cells and the marks for the verb page
 │   ├── Verbs.xml               # 3,572 verb definitions with markers and metadata
 │   └── World.swift             # @Observable DI container with environment selection
 ├── Utils/
@@ -141,8 +143,8 @@ Konjugieren/
     ├── SettingsView.swift      # Settings UI with segmented pickers
     ├── TutorTestView.swift     # Debug view for testing the AI tutor
     ├── TutorView.swift         # Chat interface for the AI tutor with sample queries
-    ├── VerbBrowseView.swift    # Searchable, sortable list of all verbs; the letter row replaces the sort picker while search is focused; a failed search shows a guess and a mail link; Return and the arrow keys open and move through results on iPad and Mac
-    └── VerbView.swift          # Verb detail showing all conjugations
+    ├── VerbBrowseView.swift    # Searchable, sortable list of all verbs; the letter row replaces the sort picker while search is focused; a result found by a conjugation says which cells matched, and separable verbs in which the query is a stranded part fold into one row (a grid section on iPad); a failed search shows a guess and a mail link; Return and the arrow keys open and move through results on iPad and Mac
+    └── VerbView.swift          # Verb detail showing all conjugations; a search result opens it on the matched reading, scrolled to the matched section, with the matched rows tinted
 
 KonjugierenWidget/
 ├── AnswerQuizIntent.swift      # AppIntent for answering a quiz question from the widget
@@ -189,6 +191,7 @@ KonjugierenTests/
 ├── Models/
 │   ├── ConjugationMapTests.swift   # Bundled map equals a fresh build (staleness), finds the verb of ≥99% of example sentences (Scan 2 of the defect plan), anchors, format round-trip
 │   ├── ConjugationMatchTests.swift # Verb.conjugations(matching:): clauses, regions, finite parts, readings
+│   ├── ConjugationSearchTests.swift # Search by conjugation: the ideas doc's conjugation queries, stranded parts and the folded row, particles, compounds, folding, adjective endings, cell names, marks
 │   ├── ConjugationgroupTests.swift # Conjugationgroup.ending(family:) ending-table tests
 │   ├── ConjugatorTests.swift   # Comprehensive conjugation tests (~50 test functions), incl. error paths
 │   ├── GameStateTests.swift    # Game-logic tests: damage invulnerability, robot-mechanic clearing, game-over/wave transitions, snapshot round-trip
@@ -210,10 +213,10 @@ KonjugierenTests/
 │   ├── TimeFormatterTests.swift     # Time formatting utility tests
 │   ├── URLExtensionTests.swift      # mailto: percent-encoding tests
 │   ├── VerbClassificationTests.swift  # Harness: stage B of classify-and-verify, searching for the Verbs.xml encoding that reproduces Wiktionary. Gated on TEST_RUNNER_KONJUGIEREN_CLASSIFY_IN
-│   ├── VerbExportTests.swift        # Verb data JSON export tests
+│   ├── VerbExportTests.swift        # Harness: every verb's page as JSON, for scripts/generate_verb_pdf.py. Gated on TEST_RUNNER_KONJUGIEREN_EXPORT_OUT (optional TEST_RUNNER_KONJUGIEREN_EXPORT_ONLY)
 │   └── WidgetSnapshotTests.swift    # Widget snapshot/bundle generation, per-day paging math, and process-stable answer-shuffle tests
 └── Views/
-    └── VerbBrowseViewTests.swift    # Arrow-key selection arithmetic for the verb list
+    └── VerbBrowseViewTests.swift    # Arrow-key selection arithmetic and grid sections for the verb list
 
 docs/
 ├── adding-verbs.md            # Verb-addition guide: XML formats, ablaut system, lessons learned
@@ -295,7 +298,7 @@ plans/                         # Plans written for future sessions to carry out
 
 scripts/
 ├── check_docs.py              # Asserts the checkable claims the docs make about themselves: corpus/ablaut/test counts in the four cache files, relative-link targets, roadmap commit hashes, the kaikki attribution invariant, and etymology completeness
-├── generate_verb_pdf.py       # Generates PDF verb conjugation tables
+├── generate_verb_pdf.py       # Generates PDF verb conjugation tables from VerbExportTests' JSON (default /tmp/konjugieren-export.json)
 ├── render_emoji.swift         # Renders emoji glyphs to PNG assets in Assets.xcassets (workaround for iOS 26 emoji-rendering bug; see docs/emoji-assets.md)
 ├── sync_verb_history.py       # Validates docs/verb_history{,_de}.txt against StringExtensions' markup rules and writes the body back into Localizable.xcstrings
 ├── test_sync_verb_history.py  # Negative-tests every validator in sync_verb_history.py by corrupting a copy of the essay one way at a time; also asserts both shipping extracts validate clean

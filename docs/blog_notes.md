@@ -9537,3 +9537,51 @@ stand, and the tool and the map on disk still had the first build's timestamps. 
 also misread a two-day-old timestamp as one from the future, because `stat` printed only the time
 of day. Both are the same lesson: when a log and the file system disagree about what a build did,
 the file system is the witness.
+
+## Search That Starts From a Conjugation (2026-11-12)
+
+Phase 6 of the browse plan is the moment the map from Phase 5 earns its keep. A learner reading
+Kafka meets "hielt" and wants the verb; until today, the search field answered with a sad
+trombone. Now it answers with halten, a line saying "hielt: Präteritum Indikativ (ich, er)", and,
+beneath that, one row: "Also in 67 separable verbs". Tap that row, and festhalten, einhalten,
+aufhalten, and the rest open in place, ordered by frequency, each saying "hielt … fest" or "hielt
+… auf". Tap aufhalten, and the page opens on its Präteritum Indikativ with "ich hielt auf" and "er
+hielt auf" tinted.
+
+The interesting decision was not how to find conjugations but what to do with the parts that
+separable verbs leave stranded. halte is ich halte, and it is also the "halte" of "ich halte mich
+auf", along with 66 other verbs. Folding those into one row is easy for hielt. The trouble is that
+gehen is also a stranded part (wir gehen aus), so a rule that always folded would have hidden
+every base verb's derivatives behind a tap, changing a search that had worked since Phase 1.
+Folding only verbs found no other way fails in the opposite direction: aufhalten contains the
+letters halte, so halte would never get its folded row at all. I put three options to Josh with
+previews, and he chose the middle one: fold, unless the query is itself an infinitive.
+
+Ranking taught a smaller lesson. My first order put folded conjugations just after literal ones,
+by analogy with Phase 1's "exact after folding" kind. Then I noticed that zahl is zahlen's
+Imperativ and, once folded, zählen's too, which would have put zählen second, above every
+literal prefix match. That breaks Phase 1's promise that a literal match leads a folded one, so
+folded conjugations moved below every literal kind. The same zahl/zähl pair is why stranded parts
+come only from literal spellings. Folding would let zahl gather zählen's separable verbs into
+zahlen's row.
+
+Two tests failed on the first run, and in both the code was right and I was wrong. I expected
+gehorten to need an adjective ending stripped to reach gehört; in fact, folded, it already is
+"wir gehörten". I expected muß to fold to one spelling; it folds to two, muss and müss, both
+müssen. The map knows the language's coincidences better than my examples did.
+
+One thing was not wrong but merely mislabeled: `Conjugationgroup.allCells` claimed to be in page
+order and was not, since it put Präsens Konjunktiv I ahead of Präteritum Indikativ. It never
+mattered until the page began scrolling to "the first matching section". Phase 7, which reorders
+the page by frequency, inherits a note to keep the two in step.
+
+Two coda changes came at Josh's request after he read the summary. The Search Scope options were
+still named "Infinitive Only" and "Infinitive + Translation", which stopped being true the moment
+both began matching conjugations; they are now "German Only" and "German + English". The enum
+cases kept their names, because their raw values sit in UserDefaults and Phase 1's one-time
+migration reads them. And `VerbExportTests`, which I had noticed taking 200 of the suite's 215
+seconds, turned out not to be a test at all: it exported every verb's page to a randomly named
+temporary file that nothing ever opened. Its real consumer, `generate_verb_pdf.py`, expected
+`/tmp/konjugieren-export.json`, a path the harness had stopped writing to at some point. Gating it
+on an output path fixed both problems at once: an ordinary run skips it, and a deliberate one
+writes where the PDF script looks.

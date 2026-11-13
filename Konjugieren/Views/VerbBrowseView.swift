@@ -12,6 +12,8 @@ struct VerbBrowseView: View {
   @State private var keyboardSelection: Int?
   @State private var addressWasCopied = false
   @State private var searchTracker = SearchTracker()
+  @State private var resultsCache = SearchResultsCache()
+  @State private var separableVerbsAreShown = false
   @FocusState private var searchIsFocused: Bool
   @Environment(\.horizontalSizeClass) private var sizeClass
   @Environment(\.scenePhase) private var scenePhase
@@ -39,24 +41,24 @@ struct VerbBrowseView: View {
     !trimmedSearchText.isEmpty
   }
 
-  private var searchMatches: [VerbSearch.Match] {
-    matches(for: searchText)
+  private var searchResults: VerbSearchResults {
+    isSearching ? resultsCache.results(for: trimmedSearchText, includeGlosses: searchIncludesGlosses) : .empty
   }
 
-  private var filteredVerbs: [Verb] {
-    isSearching ? searchMatches.map(\.verb) : sortedVerbs
+  private var entries: [VerbSearchResults.Entry] {
+    guard isSearching else {
+      return sortedVerbs.map { .hit(VerbSearchResults.Hit(verb: $0, kind: nil, conjugation: nil), isInSeparableVerbs: false) }
+    }
+    return searchResults.entries(separableVerbsAreShown: separableVerbsAreShown)
   }
 
-  private func matches(for query: String) -> [VerbSearch.Match] {
-    VerbSearch.matches(for: query, in: sortedVerbs, includeGlosses: searchIncludesGlosses)
-  }
-
-  private var guessedVerb: Verb? {
-    VerbSearch.closestVerb(to: searchText, in: sortedVerbs)
+  private var conjugationgroupLang: ConjugationgroupLang {
+    settings.conjugationgroupLang
   }
 
   var body: some View {
-    let filteredVerbs = self.filteredVerbs
+    let results = searchResults
+    let entries = self.entries
     NavigationStack(path: $navigationPath) {
       VStack(spacing: 0) {
         ScrollViewReader { proxy in
@@ -64,15 +66,15 @@ struct VerbBrowseView: View {
             TipView(tryQuizTip)
               .padding(.horizontal)
 
-            if filteredVerbs.isEmpty {
+            if entries.isEmpty {
               ContentUnavailableView(L.VerbBrowse.noVerbsFound, systemImage: "magnifyingglass")
                 .onAppear {
                   Current.soundPlayer.play(.randomSadTrombone)
                 }
 
-              failedSearchHelp
+              failedSearchHelp(guess: results.guess)
             } else {
-              Text(L.VerbBrowse.verbCount(filteredVerbs.count))
+              Text(L.VerbBrowse.verbCount(isSearching ? results.matchCount : sortedVerbs.count))
                 .font(.caption.smallCaps())
                 .foregroundStyle(.secondary)
                 .frame(maxWidth: .infinity, alignment: .leading)
@@ -82,20 +84,39 @@ struct VerbBrowseView: View {
 
               if sizeClass == .regular {
                 LazyVGrid(columns: [GridItem(.adaptive(minimum: Layout.verbGridMinimum))], spacing: 0) {
-                  ForEach(Array(filteredVerbs.enumerated()), id: \.element.id) { index, verb in
-                    VerbGridCell(verb: verb) { openResult(verb, at: index) }
-                      .background(
-                        RoundedRectangle(cornerRadius: Layout.defaultSpacing)
-                          .fill(index == keyboardSelection ? Color.customRed.opacity(0.2) : Color.clear)
-                      )
+                  ForEach(Self.gridSections(of: entries), id: \.first?.offset) { section in
+                    if let header = section.first, case .separableVerbs(let hits) = header.element {
+                      Section {
+                        ForEach(section.dropFirst(), id: \.element.id) { index, entry in
+                          gridCell(entry, at: index)
+                        }
+                      } header: {
+                        separableVerbsRow(hits, at: header.offset)
+                      }
+                    } else {
+                      Section {
+                        ForEach(section, id: \.element.id) { index, entry in
+                          gridCell(entry, at: index)
+                        }
+                      }
+                    }
                   }
                 }
                 .padding(.horizontal)
               } else {
                 LazyVStack(spacing: 0) {
-                  ForEach(Array(filteredVerbs.enumerated()), id: \.element.id) { index, verb in
-                    VerbRowView(verb: verb) { openResult(verb, at: index) }
-                      .background(rowBackground(index: index))
+                  ForEach(Array(entries.enumerated()), id: \.element.id) { index, entry in
+                    Group {
+                      switch entry {
+                      case .hit(let hit, let isInSeparableVerbs):
+                        VerbRowView(verb: hit.verb, match: hit.conjugation, conjugationgroupLang: conjugationgroupLang, isIndented: isInSeparableVerbs) {
+                          openResult(hit, at: index)
+                        }
+                      case .separableVerbs(let hits):
+                        SeparableVerbsRow(hits: hits, isShown: separableVerbsAreShown, toggle: toggleSeparableVerbs)
+                      }
+                    }
+                    .background(rowBackground(index: index))
 
                     Divider()
                       .padding(.leading)
@@ -105,8 +126,8 @@ struct VerbBrowseView: View {
             }
           }
           .onChange(of: keyboardSelection) {
-            if let keyboardSelection, filteredVerbs.indices.contains(keyboardSelection) {
-              proxy.scrollTo(filteredVerbs[keyboardSelection].id)
+            if let keyboardSelection, entries.indices.contains(keyboardSelection) {
+              proxy.scrollTo(entries[keyboardSelection].id)
             }
           }
           .onChange(of: sortOrder) {
@@ -151,8 +172,8 @@ struct VerbBrowseView: View {
       .navigationDestination(for: VerbDestination.self) { destination in
         // A deeplink replaces the path with a one-verb path, which reuses this destination's
         // identity, so without the id a VerbView kept the previous verb's selected reading.
-        VerbView(verb: destination.verb, source: destination.source)
-          .id(destination.verb.id)
+        VerbView(verb: destination.verb, source: destination.source, marks: destination.marks)
+          .id(destination)
       }
       .searchable(
         text: $searchText,
@@ -178,6 +199,7 @@ struct VerbBrowseView: View {
       }
       .onChange(of: searchText) {
         keyboardSelection = nil
+        separableVerbsAreShown = false
         if let query = searchTracker.textChanged(to: searchText) {
           signalEndedSearch(query: query)
         }
@@ -195,6 +217,13 @@ struct VerbBrowseView: View {
           }
         }
       }
+      .task {
+        // Building the index decompresses the map and folds 50,000 conjugations, which the
+        // first keystroke should not wait for.
+        await Task.detached(priority: .utility) {
+          _ = ConjugationIndex.bundled
+        }.value
+      }
       .onChange(of: world.verb) {
         if let verb = world.verb {
           navigationPath = NavigationPath()
@@ -205,16 +234,16 @@ struct VerbBrowseView: View {
     }
   }
 
-  private var failedSearchHelp: some View {
+  private func failedSearchHelp(guess: VerbSearchResults.Hit?) -> some View {
     VStack(alignment: .leading, spacing: Layout.defaultSpacing) {
-      if let guessedVerb {
+      if let guess {
         Text(L.VerbBrowse.guessIntro)
           .font(.subheadline)
           .foregroundStyle(.secondary)
           .padding(.horizontal)
           .accessibilityIdentifier("search_guess_intro")
 
-        VerbRowView(verb: guessedVerb) { openGuess(guessedVerb) }
+        VerbRowView(verb: guess.verb, match: guess.conjugation, conjugationgroupLang: conjugationgroupLang) { openGuess(guess) }
           .background(keyboardSelection == 0 ? Color.customRed.opacity(0.2) : Color.clear)
 
         Divider()
@@ -291,21 +320,84 @@ struct VerbBrowseView: View {
     return index.isMultiple(of: 2) ? Color.clear : Color.customYellow.opacity(0.03)
   }
 
-  /// The verbs that Return and the arrow keys move through: the results, or the guess when
-  /// a search found nothing.
-  private var keyboardTargets: [Verb] {
-    let verbs = filteredVerbs
-    if verbs.isEmpty, let guessedVerb {
-      return [guessedVerb]
+  private func gridSelectionBackground(index: Int) -> some View {
+    RoundedRectangle(cornerRadius: Layout.defaultSpacing)
+      .fill(index == keyboardSelection ? Color.customRed.opacity(0.2) : Color.clear)
+  }
+
+  @ViewBuilder
+  private func gridCell(_ entry: VerbSearchResults.Entry, at index: Int) -> some View {
+    if case .hit(let hit, _) = entry {
+      VerbGridCell(verb: hit.verb, match: hit.conjugation, conjugationgroupLang: conjugationgroupLang) { openResult(hit, at: index) }
+        .background(gridSelectionBackground(index: index))
     }
-    return verbs
+  }
+
+  private func separableVerbsRow(_ hits: [VerbSearchResults.Hit], at index: Int) -> some View {
+    SeparableVerbsRow(hits: hits, isShown: separableVerbsAreShown, toggle: toggleSeparableVerbs)
+      .background(gridSelectionBackground(index: index))
+  }
+
+  /// The grid's entries in runs that each become a section: those before the separable verbs'
+  /// row, that row with the verbs it shows, and those after. The row heads its own section,
+  /// because a grid cell is too narrow for it and a section header spans the grid. Each entry
+  /// keeps its offset in `entries`, which is what the keyboard selection counts.
+  nonisolated static func gridSections<Entry>(
+    of entries: [Entry],
+    isHeader: (Entry) -> Bool,
+    isUnderHeader: (Entry) -> Bool
+  ) -> [[(offset: Int, element: Entry)]] {
+    var sections: [[(offset: Int, element: Entry)]] = []
+    var current: [(offset: Int, element: Entry)] = []
+    for (offset, entry) in entries.enumerated() {
+      let startsSection = isHeader(entry) || (current.first.map { isHeader($0.element) } == true && !isUnderHeader(entry))
+      if startsSection, !current.isEmpty {
+        sections.append(current)
+        current = []
+      }
+      current.append((offset, entry))
+    }
+    if !current.isEmpty {
+      sections.append(current)
+    }
+    return sections
+  }
+
+  private static func gridSections(of entries: [VerbSearchResults.Entry]) -> [[(offset: Int, element: VerbSearchResults.Entry)]] {
+    gridSections(of: entries) { entry in
+      if case .separableVerbs = entry {
+        return true
+      }
+      return false
+    } isUnderHeader: { entry in
+      if case .hit(_, true) = entry {
+        return true
+      }
+      return false
+    }
+  }
+
+  private func toggleSeparableVerbs() {
+    withAnimation {
+      separableVerbsAreShown.toggle()
+    }
+  }
+
+  /// The rows that Return and the arrow keys move through: the entries as shown, or the guess
+  /// when a search found nothing.
+  private var keyboardTargetCount: Int {
+    let count = entries.count
+    if count == 0, isSearching, searchResults.guess != nil {
+      return 1
+    }
+    return count
   }
 
   private func moveKeyboardSelection(by offset: Int) {
     guard navigationPath.isEmpty else {
       return
     }
-    keyboardSelection = Self.keyboardSelection(after: keyboardSelection, moving: offset, count: keyboardTargets.count)
+    keyboardSelection = Self.keyboardSelection(after: keyboardSelection, moving: offset, count: keyboardTargetCount)
   }
 
   /// The first arrow press lands on the first result, and the selection stops at either end
@@ -322,34 +414,42 @@ struct VerbBrowseView: View {
 
   private func openKeyboardSelection() {
     let index = keyboardSelection ?? 0
-    let verbs = filteredVerbs
-    if verbs.isEmpty, index == 0, let guessedVerb {
-      openGuess(guessedVerb)
-    } else if verbs.indices.contains(index) {
-      openResult(verbs[index], at: index)
+    let entries = self.entries
+    if entries.isEmpty, index == 0, let guess = searchResults.guess {
+      openGuess(guess)
+      return
+    }
+    guard entries.indices.contains(index) else {
+      return
+    }
+    switch entries[index] {
+    case .hit(let hit, _):
+      openResult(hit, at: index)
+    case .separableVerbs:
+      toggleSeparableVerbs()
     }
   }
 
-  private func openResult(_ verb: Verb, at index: Int) {
-    guard isSearching else {
-      navigationPath.append(VerbDestination(verb: verb, source: .browse))
+  private func openResult(_ hit: VerbSearchResults.Hit, at index: Int) {
+    guard isSearching, let kind = hit.kind else {
+      navigationPath.append(VerbDestination(verb: hit.verb, source: .browse))
       return
     }
     if let query = searchTracker.finish() {
-      signal(.opened(query: query, matches: searchMatches, position: index))
+      signal(.opened(query: query, resultCount: searchResults.matchCount, kind: kind, position: index))
     }
-    navigationPath.append(VerbDestination(verb: verb, source: .search))
+    navigationPath.append(VerbDestination(verb: hit.verb, source: .search, marks: hit.conjugation?.marks(on: hit.verb)))
   }
 
-  private func openGuess(_ verb: Verb) {
+  private func openGuess(_ guess: VerbSearchResults.Hit) {
     if let query = searchTracker.finish() {
       signal(.openedGuess(query: query))
     }
-    navigationPath.append(VerbDestination(verb: verb, source: .searchGuess))
+    navigationPath.append(VerbDestination(verb: guess.verb, source: .searchGuess, marks: guess.conjugation?.marks(on: guess.verb)))
   }
 
   private func signalEndedSearch(query: String) {
-    signal(.ended(query: query, matches: matches(for: query)))
+    signal(.ended(query: query, matches: VerbSearch.matches(for: query, in: Verb.verbsSortedByFrequency, includeGlosses: searchIncludesGlosses)))
   }
 
   private func signal(_ report: SearchReport) {
@@ -390,15 +490,45 @@ private func verbFamilyText(verb: Verb, navigate: @escaping () -> Void) -> some 
     .accessibilityAction { navigate() }
 }
 
+/// The line that says what a search matched: "ging: Präteritum Indikativ (ich, er)". The
+/// conjugation and the names of its cells are separate elements, because the conjugation is
+/// always German and the names follow the conjugationgroup-language setting.
+@ViewBuilder
+private func matchTexts(_ match: MatchedConjugation?, lang: ConjugationgroupLang, navigate: @escaping () -> Void) -> some View {
+  if let match {
+    let cellNames = match.cellNames(lang: lang)
+    HStack(alignment: .firstTextBaseline, spacing: 0) {
+      Text(verbatim: cellNames == nil ? match.shownConjugation : "\(match.shownConjugation): ")
+        .fixedSize(horizontal: true, vertical: false)
+        .germanPronunciation()
+        .accessibilityAddTraits(.isButton)
+        .accessibilityAction { navigate() }
+      if let cellNames {
+        Text(verbatim: cellNames)
+          .germanPronunciation(forReal: lang == .german)
+          .accessibilityAddTraits(.isButton)
+          .accessibilityAction { navigate() }
+      }
+    }
+    .font(.caption)
+    .foregroundStyle(Color.customYellow)
+  }
+}
+
 struct VerbRowView: View {
   let verb: Verb
+  var match: MatchedConjugation?
+  var conjugationgroupLang: ConjugationgroupLang = .german
+  var isIndented = false
   let navigate: () -> Void
 
   var body: some View {
     HStack {
       VStack(alignment: .leading, spacing: 4) {
         verbNameTexts(verb: verb, navigate: navigate)
+        matchTexts(match, lang: conjugationgroupLang, navigate: navigate)
       }
+      .padding(.leading, isIndented ? Layout.doubleDefaultSpacing : 0)
 
       Spacer()
 
@@ -422,11 +552,14 @@ struct VerbRowView: View {
 
 private struct VerbGridCell: View {
   let verb: Verb
+  let match: MatchedConjugation?
+  let conjugationgroupLang: ConjugationgroupLang
   let navigate: () -> Void
 
   var body: some View {
     VStack(alignment: .leading, spacing: 4) {
       verbNameTexts(verb: verb, navigate: navigate)
+      matchTexts(match, lang: conjugationgroupLang, navigate: navigate)
       verbFamilyText(verb: verb, navigate: navigate)
     }
     .padding(.horizontal)
@@ -435,6 +568,65 @@ private struct VerbGridCell: View {
     .contentShape(Rectangle())
     .onTapGesture { navigate() }
     .accessibilityIdentifier("verb_row_\(verb.infinitiv)")
+  }
+}
+
+/// One row for the separable verbs in which the query is the part a main clause leaves behind:
+/// hielt, of anhalten, aufhalten, and 65 more. Tapping it shows or hides their own rows.
+private struct SeparableVerbsRow: View {
+  let hits: [VerbSearchResults.Hit]
+  let isShown: Bool
+  let toggle: () -> Void
+
+  private static let exampleCount = 3
+
+  private var examples: String {
+    hits.prefix(Self.exampleCount).compactMap { $0.conjugation?.shownConjugation }.joined(separator: ", ")
+  }
+
+  var body: some View {
+    HStack {
+      VStack(alignment: .leading, spacing: 4) {
+        Text(L.VerbBrowse.separableVerbs(hits.count))
+          .tableText()
+          .accessibilityAddTraits(.isButton)
+          .accessibilityValue(Text(isShown ? L.VerbBrowse.separableVerbsShown : L.VerbBrowse.separableVerbsHidden))
+          .accessibilityAction { toggle() }
+        Text(verbatim: examples)
+          .tableSubtext()
+          .germanPronunciation()
+          .accessibilityAddTraits(.isButton)
+          .accessibilityAction { toggle() }
+      }
+
+      Spacer()
+
+      Image(systemName: "chevron.right")
+        .foregroundStyle(.secondary)
+        .rotationEffect(.degrees(isShown ? 90 : 0))
+        .accessibilityHidden(true)
+    }
+    .contentShape(Rectangle())
+    .padding(.horizontal)
+    .padding(.vertical, 12)
+    .onTapGesture { toggle() }
+    .accessibilityIdentifier("separable_verbs_row")
+  }
+}
+
+/// The last search's results. SwiftUI evaluates the list's body several times per keystroke,
+/// and naming a matched conjugation's cells costs a few hundred conjugations.
+final class SearchResultsCache {
+  private var key: (query: String, includeGlosses: Bool)?
+  private var results = VerbSearchResults.empty
+
+  func results(for query: String, includeGlosses: Bool) -> VerbSearchResults {
+    if let key, key == (query, includeGlosses) {
+      return results
+    }
+    results = VerbSearchResults(query: query, verbs: Verb.verbsSortedByFrequency, includeGlosses: includeGlosses)
+    key = (query, includeGlosses)
+    return results
   }
 }
 

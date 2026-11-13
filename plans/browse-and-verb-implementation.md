@@ -19,7 +19,7 @@ that Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until
 | 3 | Done | 2026-11-12 | `1fcef34` | Signals |
 | 4 | Done | 2026-11-12 | `d5ff847` | B2 |
 | 5 | Done | 2026-11-12 | `6c911fb` | A5 (the map) |
-| 6 | Not started | | | A5 (the search) |
+| 6 | Done | 2026-11-12 | | A5 (the search) |
 | 7 | Not started | | | B3, B5's tip |
 | 8 | Not started | | | B7's article |
 | 9 | Not started | | | B4, A9 |
@@ -464,6 +464,68 @@ The empty state from Phase 2 now appears only when this lookup also fails. Decid
 fuzzy guess should consider conjugations too.
 
 **How it differed:**
+
+- **Josh's decision on stranded parts** (2026-11-12): the folded row takes in the separable verbs
+  in which the query is a finite part, **unless the query is itself an infinitive**. So halte
+  gives halten, then "Also in 67 separable verbs", then erhalten and the other substring matches,
+  while gehen and kommen list their derivatives as Phase 1 left them. Folding always would have
+  hidden every base verb's separable derivatives behind a tap; folding only verbs found no other
+  way would have left halte with no folded row at all, since aufhalten contains halte.
+- **The ranking.** `MatchKind` gained `conjugation` and `finitePart`, placed after the two exact
+  infinitive kinds, and `foldedConjugation`, placed after every literal kind. war finds sein
+  before warten, and bin finds sein before binden. A folded conjugation ranks low because zahl is
+  zahlen's Imperativ and only after folding zählen's, and Phase 1's test that literal matches lead
+  folded ones still holds. For the same reason a finite part comes only from a literal spelling.
+- **The shortcut picker leaves out stranded parts** (`includeFiniteParts: false`). It cannot fold
+  them, and komm's 62 separable verbs would fill its 25 slots. It does find conjugations: ging
+  offers gehen.
+- **More than the phase named.** "hat gefunden", "wird gehen", and "ich ging" work: the last word
+  of a compound is looked up and confirmed by `conjugations(matching:)`, and a leading pronoun is
+  dropped. The particle path also folds, so "läßt zu" finds zulassen.
+- **Adjective endings** are stripped only when the word matches nothing as written or folded, and
+  only if what remains is a participle cell of the verb. gehorten needs no stripping: folded, it is
+  wir gehörten.
+- **Each row names its match** as "ging: Präteritum Indikativ (ich, er)", groups joined by a dot,
+  in the conjugationgroup language the setting chooses. Parentheses replaced the plan's "ich and
+  er", which would have needed a localized conjunction inside a German line. "of gehen" is
+  omitted, because the row's title is gehen. A zu-infinitive is named as such. A finite part's row
+  says only "hielt … auf": naming 67 verbs' cells would cost about half a second in a debug build,
+  so they are found when the row is opened.
+- **Landing.** `VerbDestination` carries `MarkedConjugations`. The page opens on that reading,
+  scrolls to the first marked section, and tints the marked rows; VoiceOver reads them as matching
+  the search. `Conjugationgroup.allCells` claimed page order but had Präsens Konjunktiv I before
+  Präteritum Indikativ; it now matches the page. **Phase 7** reorders the page by frequency and
+  must keep `allCells` in step, or the landing will scroll to the wrong first section.
+- **The guess considers conjugations**, as the phase left to the session: ginng guesses gehen
+  through ging, and an infinitive wins a tie.
+- **Phase 2's notes, settled.** The empty state appears only when every lookup fails.
+  `keyboardTargets` now counts rows as shown: Return on the folded row opens or closes it, and the
+  arrows move through its verbs when it is open. On iPad the folded row heads its own grid
+  section, so it spans the grid and its verbs flow into columns.
+- **Strings.** The placeholders now say "Verb, conjugation, or meaning" and "German verb or
+  conjugation", and the Search Scope description says conjugations are always matched. At Josh's
+  request, the scope options were renamed from "Infinitive Only" and "Infinitive + Translation" to
+  "German Only" and "German + English" ("Nur Deutsch", "Deutsch + Englisch"). The string keys and
+  the `SearchScope` cases kept their old names: the cases' raw values are stored in UserDefaults,
+  and Phase 1's one-time migration reads them.
+- **`VerbExportTests` is gated**, also at Josh's request. It was not a test but an export of
+  every verb's page, about 200 of the suite's 215 seconds, written to a uniquely named temporary
+  file that nothing read. It now runs only with `TEST_RUNNER_KONJUGIEREN_EXPORT_OUT` set, writing
+  there, which is where `scripts/generate_verb_pdf.py` reads (`/tmp/konjugieren-export.json` by
+  default). `TEST_RUNNER_KONJUGIEREN_EXPORT_ONLY` replaces the old single-verb abbauen test. That
+  leaves 332 `@Test` functions.
+- **Analytics.** `SearchMatchKind` gained `finitePart` and `foldedConjugation`.
+  `SearchReport.opened` takes the opened row's kind and the verb count rather than the match list,
+  because rows and matches no longer correspond one to one. The staged privacy line names "a
+  conjugation" among its examples.
+- **Performance.** `ConjugationIndex.bundled` is built by a background task when the verb list
+  first appears. The list memoizes the last query's results (`SearchResultsCache`), since SwiftUI
+  evaluates the body several times per keystroke.
+- **How it was tested.** 37 new `@Test` functions, 333 in all. In the iPhone 17 simulator: hielt
+  (halten, the folded row, opening it, opening aufhalten onto the marked "ich hielt auf" and "er
+  hielt auf"), gehört (both verbs), and ginng (the guess). On the iPad Pro 11-inch (M5): hielt
+  with the folded row opened in the grid. Not tried: VoiceOver, a German-language device, and the
+  keyboard on iPad.
 
 ## Phase 7: The Verb Page's Sections
 

@@ -128,6 +128,18 @@ enum L {
       String(localized: "VerbBrowse.guessIntro")
     }
 
+    static func separableVerbs(_ count: Int) -> String {
+      String(localized: "VerbBrowse.separableVerbs.\(count)")
+    }
+
+    static var separableVerbsHidden: String {
+      String(localized: "VerbBrowse.separableVerbsHidden")
+    }
+
+    static var separableVerbsShown: String {
+      String(localized: "VerbBrowse.separableVerbsShown")
+    }
+
     static func verbRequest(query: String, address: String) -> String {
       String(localized: "VerbBrowse.verbRequest \(query) \(address)")
     }
@@ -842,6 +854,10 @@ enum L {
 
     static var exampleSentenceHeading: String {
       String(localized: "VerbView.exampleSentenceHeading")
+    }
+
+    static var matchesSearch: String {
+      String(localized: "VerbView.matchesSearch")
     }
   }
 

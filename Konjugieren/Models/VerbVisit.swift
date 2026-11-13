@@ -6,6 +6,20 @@ import Foundation
 struct VerbDestination: Hashable {
   let verb: Verb
   let source: AnalyticsSource
+  let marks: MarkedConjugations?
+
+  init(verb: Verb, source: AnalyticsSource, marks: MarkedConjugations? = nil) {
+    self.verb = verb
+    self.source = source
+    self.marks = marks
+  }
+}
+
+/// The cells of a verb page that a search matched. The page opens on their reading, scrolls to
+/// the first of them, and marks them.
+struct MarkedConjugations: Hashable {
+  let readingIndex: Int
+  let conjugationgroups: Set<Conjugationgroup>
 }
 
 /// One stretch of time during which a verb page is on screen with the app in the foreground.

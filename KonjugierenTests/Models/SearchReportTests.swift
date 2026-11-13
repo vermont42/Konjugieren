@@ -10,6 +10,12 @@ struct SearchReportTests {
     VerbSearch.matches(for: query, in: Verb.verbsSortedByFrequency, includeGlosses: true)
   }
 
+  private func openedFirst(_ query: String) throws -> SearchReport {
+    let found = matches(query)
+    let kind = try #require(found.first?.kind)
+    return SearchReport.opened(query: query, resultCount: found.count, kind: kind, position: 0)
+  }
+
   @Test func typingBeginsASearchWithoutEndingOne() {
     var tracker = SearchTracker()
     #expect(tracker.textChanged(to: "g") == nil)
@@ -46,8 +52,8 @@ struct SearchReportTests {
     #expect(tracker.finish() == "gehe")
   }
 
-  @Test func openedReportNamesTheOpenedResultsKind() {
-    let report = SearchReport.opened(query: "gehen", matches: matches("gehen"), position: 0)
+  @Test func openedReportNamesTheOpenedResultsKind() throws {
+    let report = try openedFirst("gehen")
     #expect(report.outcome == .opened)
     #expect(report.matchKind == .exactInfinitive)
     #expect(report.parameters == [
@@ -59,20 +65,34 @@ struct SearchReportTests {
     ])
   }
 
-  @Test func foldedQueryReportsAFoldedMatch() {
-    let report = SearchReport.opened(query: "konnen", matches: matches("konnen"), position: 0)
-    #expect(report.matchKind == .exactFoldedInfinitive)
+  @Test func foldedQueryReportsAFoldedMatch() throws {
+    #expect(try openedFirst("konnen").matchKind == .exactFoldedInfinitive)
   }
 
-  @Test func glossQueryReportsAGlossMatch() {
-    let report = SearchReport.opened(query: "eat", matches: matches("eat"), position: 0)
-    #expect(report.matchKind == .wholeWordGloss)
+  @Test func glossQueryReportsAGlossMatch() throws {
+    #expect(try openedFirst("eat").matchKind == .wholeWordGloss)
   }
 
+  @Test(arguments: zip(
+    ["ging", "stand auf", "muß", "gehort"],
+    [SearchMatchKind.conjugation, .conjugation, .foldedConjugation, .foldedConjugation]
+  ))
+  func conjugationQueryReportsAConjugationMatch(query: String, kind: SearchMatchKind) throws {
+    #expect(try openedFirst(query).matchKind == kind)
+  }
+
+  @Test func openingAFinitePartReportsAFinitePart() {
+    let report = SearchReport.opened(query: "hielt", resultCount: 68, kind: .finitePart, position: 2)
+    #expect(report.parameters["matchKind"] == "finitePart")
+    #expect(report.parameters["resultCount"] == "11+")
+    #expect(report.parameters["resultPosition"] == "2-5")
+  }
+
+  // geh is gehen's Imperativ, so its top result is a conjugation, not an infinitive prefix.
   @Test func searchWithResultsAndNoOpenIsAbandoned() {
     let report = SearchReport.ended(query: "geh", matches: matches("geh"))
     #expect(report.outcome == .abandoned)
-    #expect(report.matchKind == .infinitivePrefix)
+    #expect(report.matchKind == .conjugation)
     #expect(report.parameters["resultPosition"] == "none")
   }
 
@@ -106,7 +126,7 @@ struct SearchReportTests {
     let found = matches(query)
     let reports = [
       SearchReport.ended(query: query, matches: found),
-      SearchReport.opened(query: query, matches: found, position: 0),
+      SearchReport.opened(query: query, resultCount: found.count, kind: found.first?.kind ?? .glossSubstring, position: 0),
       SearchReport.openedGuess(query: query),
     ]
     for report in reports {

@@ -208,8 +208,9 @@ Info articles can link to verbs or other articles using the `%...%` markup. When
 
 A map from every one-word conjugation of every verb to the verbs it belongs to: ging → gehen,
 gehört → gehören and hören, halte → halten and the 67 separable verbs built on it. Reverse lookup
-in search (Phase 6 of [`plans/browse-and-verb-implementation.md`](../plans/browse-and-verb-implementation.md))
-reads it. Built 2026-11-12, in Phase 5.
+in search reads it ([below](#search-by-conjugation)). Built 2026-11-12, in Phase 5 of
+[`plans/browse-and-verb-implementation.md`](../plans/browse-and-verb-implementation.md); search
+began reading it the same day, in Phase 6.
 
 ### What It Holds
 
@@ -272,6 +273,43 @@ and "ist gestanden" matches stehen. Search uses it to name a match, and the quiz
 diagnosis (`plans/pedagogy.md`) can use it to say which other cell an answer belongs to. The map
 says which verbs to ask; this function says which cells. The infinitive and the zu-infinitive are
 not cells and never match.
+
+### Search by Conjugation
+
+Built 2026-11-12, in Phase 6 of the browse plan. `VerbSearch.matches` looks the query up in
+`ConjugationIndex` (`ConjugationIndex.swift`), which wraps the bundled map with a folded-spelling
+index and length buckets, and is built once, off the main actor, when the verb list first appears.
+
+| Query | How it is looked up |
+|---|---|
+| One word (ging) | Its own spelling, then spellings equal after `VerbSearch.fold` (muß → muss, gehort → gehört). Failing both, a participle with an adjective ending loses it (geklebte → geklebt), provided the stem is a participle cell of the verb. |
+| Two words, the second a particle (stand auf) | The first word's finite-part entries whose particle is the second word. The particle settles the verb, so this is a whole match. |
+| A compound (hat gefunden, wird gehen) | The last word's whole-verb entries, kept only if `conjugations(matching:)` confirms the whole text is a cell: "hat gegangen" finds nothing. |
+| Any of these after ich, du, er, sie, es, wir, ihr, or man | The pronoun is dropped. |
+
+**Ranking.** `MatchKind` adds `conjugation` (after the two exact-infinitive kinds), `finitePart`
+(next), and `foldedConjugation` (after every literal match, as a folded infinitive ranks). So war
+finds sein ahead of warten, and zahl, zahlen's Imperativ, keeps zählen below zahlen's literal
+matches. A finite part comes only from a literal spelling, or zahl would gather zählen's separable
+verbs.
+
+**Stranded parts.** A finite part (hielt, of aufhalten) matches only when the query is not itself
+an infinitive. Josh chose this on 2026-11-12, so that gehen and kommen search as they did before
+Phase 6. The verb list (`VerbSearchResults`) folds two or more finite-part matches into one row,
+"Also in 67 separable verbs", placed after the base verb and opened in place; a lone finite part
+gets an ordinary row. The shortcut picker passes `includeFiniteParts: false`, since it cannot fold
+them and 62 separable verbs would fill its 25 slots for komm.
+
+**Naming and landing.** A whole match's row names its cells, "ging: Präteritum Indikativ (ich,
+er)", from `MatchedConjugation`, which calls `conjugations(matching:)` once per such verb. A
+finite part's row says only "hielt … auf", and its cells are found when it is opened, because
+naming 67 verbs' cells would cost about half a second. Opening a result pushes a
+`VerbDestination` with `MarkedConjugations`: the page opens on that reading, scrolls to the first
+marked section, and tints the marked rows, which VoiceOver reads as matching the search.
+
+**The guess.** When nothing matches, `VerbSearch.guess` considers folded conjugations of about the
+query's length as well as infinitives, and an infinitive wins a tie. ginng guesses gehen through
+ging, and the guess's row names ging's cells.
 
 ## Game System
 
@@ -524,9 +562,12 @@ Indikativ card. Returning to the results and opening another verb without editin
 no second `finishSearch`. An abandoned search's `matchKind` is that of the top result it passed
 over.
 
-`matchKind` values are `VerbSearch.MatchKind`'s eight cases by name, plus `guess` (the empty
-state's closest verb), `none`, and `conjugation`, which Phase 6 of
-[`plans/browse-and-verb-implementation.md`](../plans/browse-and-verb-implementation.md) will send.
+`matchKind` values are `VerbSearch.MatchKind`'s eleven cases by name, including `conjugation`,
+`finitePart`, and `foldedConjugation` from Phase 6 of
+[`plans/browse-and-verb-implementation.md`](../plans/browse-and-verb-implementation.md), plus
+`guess` (the empty state's closest verb) and `none`. `resultCount` counts verbs, including those
+inside a folded row, and `resultPosition` counts rows as shown, so the verbs of an open folded row
+follow it. Opening or closing that row sends nothing.
 
 ### The `source` vocabulary
 

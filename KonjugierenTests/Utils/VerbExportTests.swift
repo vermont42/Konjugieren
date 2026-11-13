@@ -4,13 +4,25 @@ import Foundation
 import Testing
 @testable import Konjugieren
 
-@Suite("VerbExport")
+// Harness: exports every verb's page (conjugations, etymology, example sentences, metadata) as
+// pretty-printed JSON, which scripts/generate_verb_pdf.py turns into a PDF. It reads
+// /tmp/konjugieren-export.json by default, so run:
+//
+//   TEST_RUNNER_KONJUGIEREN_EXPORT_OUT=/tmp/konjugieren-export.json \
+//   xcodebuild … -only-testing:KonjugierenTests/VerbExportTests
+//
+// TEST_RUNNER_KONJUGIEREN_EXPORT_ONLY, a comma-separated list of infinitives (abbauen,gehen),
+// limits the export to those verbs. xcodebuild forwards a variable into the simulator only with
+// the TEST_RUNNER_ prefix, which it strips, so the bare name leaves the suite skipped and green.
+//
+// Ungated, the export of all 3,572 verbs took about 200 of the suite's 215 seconds, and it wrote
+// to a uniquely named temporary file that nothing read. Gated on 2026-11-12, at Josh's request.
+//
+// The export calls Conjugator directly, so separable verbs come out joined (anfängt), not as the
+// verb page shows them since Phase 4 of the browse plan (fängt an).
+@Suite("VerbExport", .enabled(if: ProcessInfo.processInfo.environment["KONJUGIEREN_EXPORT_OUT"] != nil))
 @MainActor
 struct VerbExportTests {
-  // A per-instance unique path so parallel or concurrent test runs do not collide.
-  private let outputURL = FileManager.default.temporaryDirectory
-    .appendingPathComponent("konjugieren-export-\(UUID().uuidString).json")
-
   // Conjugationgroup factories in VerbView display order (excluding partizipien)
   private static let conjugationgroupFactories: [(String, (PersonNumber) -> Conjugationgroup)] = [
     ("präsensIndikativ", Conjugationgroup.präsensIndikativ),
@@ -27,16 +39,15 @@ struct VerbExportTests {
     ("futurKonjunktivII", Conjugationgroup.futurKonjunktivII)
   ]
 
-  @Test func exportAbbauen() throws {
-    let verb = Verb.verbs["abbauen"]!
-    let verbs = [exportVerb(verb)]
-    try writeJSON(verbs)
-  }
-
-  @Test func exportAllVerbs() throws {
-    let allVerbs = Verb.verbs.keys.sorted().compactMap { Verb.verbs[$0] }
-    let exported = allVerbs.map { exportVerb($0) }
-    try writeJSON(exported)
+  @Test func exportVerbs() throws {
+    let environment = ProcessInfo.processInfo.environment
+    let outputURL = URL(fileURLWithPath: try #require(environment["KONJUGIEREN_EXPORT_OUT"]))
+    let only = environment["KONJUGIEREN_EXPORT_ONLY"].map { Set($0.split(separator: ",").map(String.init)) }
+    let infinitives = Verb.verbs.keys.sorted().filter { only?.contains($0) ?? true }
+    // A misspelled filter would otherwise write an empty array and pass.
+    #expect(!infinitives.isEmpty, "No verb matched KONJUGIEREN_EXPORT_ONLY")
+    let exported = infinitives.compactMap { Verb.verbs[$0] }.map { exportVerb($0) }
+    try writeJSON(exported, to: outputURL)
   }
 
   private func exportVerb(_ verb: Verb) -> ExportedVerb {
@@ -135,11 +146,11 @@ struct VerbExportTests {
     return langSection[infinitiv]
   }
 
-  private func writeJSON(_ verbs: [ExportedVerb]) throws {
+  private func writeJSON(_ verbs: [ExportedVerb], to url: URL) throws {
     let encoder = JSONEncoder()
     encoder.outputFormatting = [.prettyPrinted, .sortedKeys]
     let data = try encoder.encode(verbs)
-    try data.write(to: outputURL)
+    try data.write(to: url)
   }
 }
 

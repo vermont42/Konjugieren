@@ -5,6 +5,7 @@ import SwiftUI
 struct VerbView: View {
   let verb: Verb
   let source: AnalyticsSource
+  let marks: MarkedConjugations?
   @Environment(\.horizontalSizeClass) private var sizeClass
   @Environment(\.scenePhase) private var scenePhase
   @State private var readingIndex = 0
@@ -13,6 +14,13 @@ struct VerbView: View {
   @State private var isOnScreen = false
   @State private var hasAppeared = false
   private var settings: Settings { Current.settings }
+
+  init(verb: Verb, source: AnalyticsSource, marks: MarkedConjugations? = nil) {
+    self.verb = verb
+    self.source = source
+    self.marks = marks
+    _readingIndex = State(initialValue: marks?.readingIndex ?? 0)
+  }
 
   /// The reading the screen is currently showing. Every piece of metadata below (family,
   /// auxiliary, prefix, ablaut group) belongs to the reading rather than to the verb,
@@ -29,165 +37,188 @@ struct VerbView: View {
     settings.conjugationgroupLang == .german
   }
 
-  private func conjugationSection(for groupBuilder: (PersonNumber) -> Conjugationgroup) -> ConjugationSectionView {
+  private func conjugationSection(for groupBuilder: (PersonNumber) -> Conjugationgroup) -> some View {
     ConjugationSectionView(
       title: displayName(for: groupBuilder(.firstSingular)),
       titleIsGerman: titleIsGerman,
       conjugations: PersonNumber.allCases.map { pn in
-        ConjugationRow(pronoun: pn.pronoun, form: conjugate(groupBuilder(pn)))
+        ConjugationRow(pronoun: pn.pronoun, form: conjugate(groupBuilder(pn)), isMarked: isMarked(groupBuilder(pn)))
       }
     )
+    .id(groupBuilder(.firstSingular).germanDisplayName)
+  }
+
+  private func isMarked(_ group: Conjugationgroup) -> Bool {
+    guard let marks, marks.readingIndex == readingIndex else {
+      return false
+    }
+    return marks.conjugationgroups.contains(group)
+  }
+
+  /// The section of the first marked cell, which the page scrolls to when it opens.
+  private var markedSectionID: String? {
+    guard let marks else {
+      return nil
+    }
+    return Conjugationgroup.allCells.first { marks.conjugationgroups.contains($0) }?.germanDisplayName
   }
 
   var body: some View {
-    ScrollView {
-      VStack(alignment: .leading, spacing: 24) {
-        VStack(alignment: .leading, spacing: 8) {
-          Text(verb.infinitiv.inUserRegion)
-            .font(.largeTitle)
-            .fontWeight(.bold)
-            .fontDesign(.serif)
-            .minimumScaleFactor(0.5)
-            .accessibilityAddTraits(UserLocale.isGerman ? .isHeader : [])
-            .germanPronunciation()
-            .speakOnTap(verb.infinitiv.inUserRegion)
-
-          // The picker's segments already carry the glosses, so a separate translation line
-          // would print the selected one twice.
-          if verb.hasMultipleReadings {
-            readingPicker
-          } else {
-            Text(reading.translation)
-              .font(.title2)
+    ScrollViewReader { proxy in
+      ScrollView {
+        VStack(alignment: .leading, spacing: 24) {
+          VStack(alignment: .leading, spacing: 8) {
+            Text(verb.infinitiv.inUserRegion)
+              .font(.largeTitle)
+              .fontWeight(.bold)
               .fontDesign(.serif)
-              .englishPronunciation()
-              .speakOnTap(reading.translation, localeString: UttererLocale.english)
-          }
-
-          HStack(spacing: 8) {
-            metadataPill(tint: .customYellow) {
-              Label(reading.family.displayName, systemImage: "tag")
-                .accessibilityLabel(Text(verbatim: reading.family.displayName))
-                .englishPronunciation()
-            }
-            metadataPill(tint: .customRed) {
-              Label {
-                EmojiAsset.text(substitutingIn: auxiliaryPillText)
-              } icon: {
-                Image(systemName: "arrow.triangle.branch")
-              }
-              .accessibilityLabel(Text(verbatim: auxiliaryAccessibilityLabel))
+              .minimumScaleFactor(0.5)
+              .accessibilityAddTraits(UserLocale.isGerman ? .isHeader : [])
               .germanPronunciation()
-            }
-            metadataPill(tint: .customYellow) {
-              Label("#\(verb.frequency)", systemImage: verb.frequencyIcon)
-                .accessibilityLabel(Text(verbatim: "#\(verb.frequency)"))
-            }
-          }
-          .font(.subheadline)
+              .speakOnTap(verb.infinitiv.inUserRegion)
 
-          if reading.auxiliaryIsRegional {
-            Text(L.Region.southernNote(example: southernAuxiliaryExample))
-              .font(.caption)
-              .foregroundStyle(.secondary)
-              .germanPronunciation(forReal: UserLocale.isGerman)
-          }
+            // The picker's segments already carry the glosses, so a separate translation line
+            // would print the selected one twice.
+            if verb.hasMultipleReadings {
+              readingPicker
+            } else {
+              Text(reading.translation)
+                .font(.title2)
+                .fontDesign(.serif)
+                .englishPronunciation()
+                .speakOnTap(reading.translation, localeString: UttererLocale.english)
+            }
 
-          if reading.prefix != .none || reading.ablautGroup != nil {
             HStack(spacing: 8) {
-              if case .separable = reading.prefix {
-                metadataPill(tint: .customRed) {
-                  Label(L.BrowseableFamily.separable, systemImage: "arrow.left.arrow.right")
-                }
-              } else if case .inseparable = reading.prefix {
-                metadataPill(tint: .customRed) {
-                  Label(L.BrowseableFamily.inseparable, systemImage: "link")
-                }
+              metadataPill(tint: .customYellow) {
+                Label(reading.family.displayName, systemImage: "tag")
+                  .accessibilityLabel(Text(verbatim: reading.family.displayName))
+                  .englishPronunciation()
               }
-
-              if let ablautGroup = reading.ablautGroup {
-                metadataPill(tint: .customYellow, bordered: true) {
-                  Label(ablautGroup.inUserRegion, systemImage: "figure.and.child.holdinghands")
-                    .accessibilityLabel(Text(verbatim: ablautGroup.inUserRegion))
-                    .germanPronunciation()
-                    .speakOnTap(ablautGroup.inUserRegion)
+              metadataPill(tint: .customRed) {
+                Label {
+                  EmojiAsset.text(substitutingIn: auxiliaryPillText)
+                } icon: {
+                  Image(systemName: "arrow.triangle.branch")
                 }
+                .accessibilityLabel(Text(verbatim: auxiliaryAccessibilityLabel))
+                .germanPronunciation()
+              }
+              metadataPill(tint: .customYellow) {
+                Label("#\(verb.frequency)", systemImage: verb.frequencyIcon)
+                  .accessibilityLabel(Text(verbatim: "#\(verb.frequency)"))
               }
             }
             .font(.subheadline)
-          }
-        }
-        .padding(.horizontal)
 
-        Divider()
+            if reading.auxiliaryIsRegional {
+              Text(L.Region.southernNote(example: southernAuxiliaryExample))
+                .font(.caption)
+                .foregroundStyle(.secondary)
+                .germanPronunciation(forReal: UserLocale.isGerman)
+            }
 
-        if sizeClass == .regular {
-          LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], alignment: .leading, spacing: 20) {
-            conjugationSections
+            if reading.prefix != .none || reading.ablautGroup != nil {
+              HStack(spacing: 8) {
+                if case .separable = reading.prefix {
+                  metadataPill(tint: .customRed) {
+                    Label(L.BrowseableFamily.separable, systemImage: "arrow.left.arrow.right")
+                  }
+                } else if case .inseparable = reading.prefix {
+                  metadataPill(tint: .customRed) {
+                    Label(L.BrowseableFamily.inseparable, systemImage: "link")
+                  }
+                }
+
+                if let ablautGroup = reading.ablautGroup {
+                  metadataPill(tint: .customYellow, bordered: true) {
+                    Label(ablautGroup.inUserRegion, systemImage: "figure.and.child.holdinghands")
+                      .accessibilityLabel(Text(verbatim: ablautGroup.inUserRegion))
+                      .germanPronunciation()
+                      .speakOnTap(ablautGroup.inUserRegion)
+                  }
+                }
+              }
+              .font(.subheadline)
+            }
           }
           .padding(.horizontal)
-        } else {
-          VStack(alignment: .leading, spacing: 20) {
-            conjugationSections
-          }
-          .padding(.horizontal)
-        }
 
-        if let etymologyText = Etymology.text(for: verb.infinitiv) {
           Divider()
-          VStack(alignment: .leading, spacing: 8) {
-            Text(L.VerbView.etymologyHeading)
-              .font(.subheadline.smallCaps().weight(.semibold))
-              .fontDesign(.serif)
-              .foregroundStyle(.primary)
-              .accessibilityAddTraits(.isHeader)
-              .foregroundStyle(.customYellow)
-            RichTextView(blocks: etymologyText.richTextBlocks)
+
+          if sizeClass == .regular {
+            LazyVGrid(columns: [GridItem(.flexible()), GridItem(.flexible())], alignment: .leading, spacing: 20) {
+              conjugationSections
+            }
+            .padding(.horizontal)
+          } else {
+            VStack(alignment: .leading, spacing: 20) {
+              conjugationSections
+            }
+            .padding(.horizontal)
           }
-          .konjCardWithAccentBar()
-          .onScrollVisibilityChange(threshold: Self.sectionVisibilityThreshold) { isVisible in
-            sectionVisibilityChanged(.etymology, isVisible: isVisible)
+
+          if let etymologyText = Etymology.text(for: verb.infinitiv) {
+            Divider()
+            VStack(alignment: .leading, spacing: 8) {
+              Text(L.VerbView.etymologyHeading)
+                .font(.subheadline.smallCaps().weight(.semibold))
+                .fontDesign(.serif)
+                .foregroundStyle(.primary)
+                .accessibilityAddTraits(.isHeader)
+                .foregroundStyle(.customYellow)
+              RichTextView(blocks: etymologyText.richTextBlocks)
+            }
+            .konjCardWithAccentBar()
+            .onScrollVisibilityChange(threshold: Self.sectionVisibilityThreshold) { isVisible in
+              sectionVisibilityChanged(.etymology, isVisible: isVisible)
+            }
+            .padding(.horizontal)
           }
-          .padding(.horizontal)
+
+          if let pair = ExampleSentences.pair(for: verb.infinitiv) {
+            Divider()
+            VStack(alignment: .leading, spacing: 8) {
+              Text(L.VerbView.exampleSentenceHeading)
+                .font(.subheadline.smallCaps().weight(.semibold))
+                .fontDesign(.serif)
+                .foregroundStyle(.primary)
+                .accessibilityAddTraits(.isHeader)
+                .foregroundStyle(.customYellow)
+
+              Text(pair.german.sentence)
+                .font(.body)
+                .italic()
+                .germanPronunciation()
+
+              Text(pair.english.sentence)
+                .font(.body)
+                .italic()
+                .englishPronunciation()
+
+              Text("— \(pair.german.source)")
+                .font(.caption)
+                .foregroundStyle(.secondary)
+            }
+            .konjCardWithAccentBar()
+            .onScrollVisibilityChange(threshold: Self.sectionVisibilityThreshold) { isVisible in
+              sectionVisibilityChanged(.example, isVisible: isVisible)
+            }
+            .padding(.horizontal)
+          }
         }
-
-        if let pair = ExampleSentences.pair(for: verb.infinitiv) {
-          Divider()
-          VStack(alignment: .leading, spacing: 8) {
-            Text(L.VerbView.exampleSentenceHeading)
-              .font(.subheadline.smallCaps().weight(.semibold))
-              .fontDesign(.serif)
-              .foregroundStyle(.primary)
-              .accessibilityAddTraits(.isHeader)
-              .foregroundStyle(.customYellow)
-
-            Text(pair.german.sentence)
-              .font(.body)
-              .italic()
-              .germanPronunciation()
-
-            Text(pair.english.sentence)
-              .font(.body)
-              .italic()
-              .englishPronunciation()
-
-            Text("— \(pair.german.source)")
-              .font(.caption)
-              .foregroundStyle(.secondary)
-          }
-          .konjCardWithAccentBar()
-          .onScrollVisibilityChange(threshold: Self.sectionVisibilityThreshold) { isVisible in
-            sectionVisibilityChanged(.example, isVisible: isVisible)
-          }
-          .padding(.horizontal)
-        }
+        .padding(.vertical)
       }
-      .padding(.vertical)
-    }
-    .onAppear {
-      isOnScreen = true
-      beginVisit(source: hasAppeared ? .resume : source)
-      hasAppeared = true
+      .onAppear {
+        if !hasAppeared, let markedSectionID {
+          Task {
+            proxy.scrollTo(markedSectionID, anchor: .top)
+          }
+        }
+        isOnScreen = true
+        beginVisit(source: hasAppeared ? .resume : source)
+        hasAppeared = true
+      }
     }
     .onDisappear {
       isOnScreen = false
@@ -276,8 +307,9 @@ struct VerbView: View {
     ConjugationSectionView(
       title: displayName(for: .perfektpartizip),
       titleIsGerman: titleIsGerman,
-      conjugations: [conjugate(.perfektpartizip)]
+      conjugations: [ConjugationRow(form: conjugate(.perfektpartizip), isMarked: isMarked(.perfektpartizip))]
     )
+    .id(Conjugationgroup.perfektpartizip.germanDisplayName)
     .onScrollVisibilityChange(threshold: Self.sectionVisibilityThreshold) { isVisible in
       sectionVisibilityChanged(.simple, isVisible: isVisible)
     }
@@ -285,8 +317,9 @@ struct VerbView: View {
     ConjugationSectionView(
       title: displayName(for: .präsenspartizip),
       titleIsGerman: titleIsGerman,
-      conjugations: [conjugate(.präsenspartizip)]
+      conjugations: [ConjugationRow(form: conjugate(.präsenspartizip), isMarked: isMarked(.präsenspartizip))]
     )
+    .id(Conjugationgroup.präsenspartizip.germanDisplayName)
 
     conjugationSection(for: Conjugationgroup.präsensIndikativ)
     conjugationSection(for: Conjugationgroup.präteritumIndikativ)
@@ -298,6 +331,7 @@ struct VerbView: View {
       titleIsGerman: titleIsGerman,
       conjugations: imperativConjugations()
     )
+    .id(Conjugationgroup.imperativ(.secondSingular).germanDisplayName)
 
     conjugationSection(for: Conjugationgroup.perfektIndikativ)
       .onScrollVisibilityChange(threshold: Self.sectionVisibilityThreshold) { isVisible in
@@ -401,15 +435,16 @@ struct VerbView: View {
   private func imperativConjugations() -> [ConjugationRow] {
     PersonNumber.imperativPersonNumbers.map { personNumber in
       let form = conjugate(.imperativ(personNumber))
+      let isMarked = isMarked(.imperativ(personNumber))
       switch personNumber {
       case .secondSingular:
-        return ConjugationRow(pronoun: "du", form: form)
+        return ConjugationRow(pronoun: "du", form: form, isMarked: isMarked)
       case .secondPlural:
-        return ConjugationRow(pronoun: "ihr", form: form)
+        return ConjugationRow(pronoun: "ihr", form: form, isMarked: isMarked)
       case .firstPlural, .thirdPlural:
-        return ConjugationRow(pronoun: nil, form: form)
+        return ConjugationRow(pronoun: nil, form: form, isMarked: isMarked)
       case .firstSingular, .thirdSingular:
-        return ConjugationRow(pronoun: personNumber.pronoun, form: form)
+        return ConjugationRow(pronoun: personNumber.pronoun, form: form, isMarked: isMarked)
       }
     }
   }
@@ -418,6 +453,9 @@ struct VerbView: View {
 struct ConjugationRow: Identifiable {
   let pronoun: String?
   let form: String
+
+  /// True for a cell that the search which opened the page matched.
+  let isMarked: Bool
 
   var id: String {
     "\(pronoun ?? ""):\(form)"
@@ -439,9 +477,10 @@ struct ConjugationRow: Identifiable {
     return spokenForm
   }
 
-  init(pronoun: String? = nil, form: String) {
+  init(pronoun: String? = nil, form: String, isMarked: Bool = false) {
     self.pronoun = pronoun
     self.form = form
+    self.isMarked = isMarked
   }
 }
 
@@ -483,8 +522,16 @@ struct ConjugationSectionView: View {
             Text(mixedCaseString: row.form)
           }
           .font(.body)
+          .background {
+            if row.isMarked {
+              RoundedRectangle(cornerRadius: 6)
+                .fill(Color.customYellow.opacity(0.25))
+                .padding(-4)
+            }
+          }
           .accessibilityElement(children: .combine)
           .accessibilityLabel(Text(verbatim: row.accessibilityDescription))
+          .accessibilityValue(Text(verbatim: row.isMarked ? L.VerbView.matchesSearch : ""))
           .speakOnTap(row.speechText)
         }
       }

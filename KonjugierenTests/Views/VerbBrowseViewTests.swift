@@ -19,3 +19,28 @@ struct VerbBrowseViewTests {
     #expect(VerbBrowseView.keyboardSelection(after: current, moving: offset, count: count) == expected)
   }
 }
+
+@Suite("Verb browse grid sections")
+struct VerbBrowseGridSectionTests {
+  // "H" heads the separable verbs' section, and "c" marks a verb shown under it.
+  private func sections(_ entries: [String]) -> [[Int]] {
+    VerbBrowseView.gridSections(of: entries) { $0 == "H" } isUnderHeader: { $0 == "c" }
+      .map { $0.map(\.offset) }
+  }
+
+  @Test func openRowGetsItsOwnSectionBetweenTheOthers() {
+    #expect(sections(["a", "H", "c", "c", "b", "b"]) == [[0], [1, 2, 3], [4, 5]])
+  }
+
+  @Test func closedRowStillSeparatesTheRowsAfterIt() {
+    #expect(sections(["a", "H", "b"]) == [[0], [1], [2]])
+  }
+
+  @Test func rowsWithoutAHeaderAreOneSection() {
+    #expect(sections(["a", "b", "b"]) == [[0, 1, 2]])
+  }
+
+  @Test func headerFirstHasNoEmptySectionBeforeIt() {
+    #expect(sections(["H", "c", "b"]) == [[0, 1], [2]])
+  }
+}

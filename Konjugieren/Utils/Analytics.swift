@@ -78,6 +78,8 @@ enum SearchMatchKind: String, CaseIterable {
   case conjugation
   case exactFoldedInfinitive
   case exactInfinitive
+  case finitePart
+  case foldedConjugation
   case foldedInfinitivePrefix
   case foldedInfinitiveSubstring
   case glossSubstring

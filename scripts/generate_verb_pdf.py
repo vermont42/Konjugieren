@@ -1,5 +1,15 @@
 #!/usr/bin/env python3
-"""Generate a PDF reference of German verb conjugations from exported JSON."""
+r"""Generate a PDF reference of German verb conjugations from exported JSON.
+
+The JSON comes from the gated VerbExportTests harness. To write it where this script looks:
+
+    TEST_RUNNER_KONJUGIEREN_EXPORT_OUT=/tmp/konjugieren-export.json \
+    xcodebuild -project Konjugieren.xcodeproj -scheme Konjugieren \
+      -destination 'platform=iOS Simulator,name=iPhone 17' \
+      test -only-testing:KonjugierenTests/VerbExportTests
+
+Add TEST_RUNNER_KONJUGIEREN_EXPORT_ONLY=abbauen,gehen to export only those verbs.
+"""
 
 import argparse
 import json

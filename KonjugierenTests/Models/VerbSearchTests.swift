@@ -129,13 +129,23 @@ struct VerbSearchTests {
     ["gehn", "gheen", "konen", "machn", "sprechn", "Schwimen"],
     ["gehen", "gehen", "können", "machen", "sprechen", "schwimmen"]
   ))
-  func closestVerbGuessesTheMisspelledVerb(query: String, wanted: String) {
-    #expect(VerbSearch.closestVerb(to: query, in: Verb.verbsSortedAlphabetically)?.infinitiv == wanted)
+  func guessFindsTheMisspelledVerb(query: String, wanted: String) {
+    let guess = VerbSearch.guess(for: query, in: Verb.verbsSortedAlphabetically)
+    #expect(guess?.verb.infinitiv == wanted)
+    #expect(guess?.conjugation == nil)
+  }
+
+  // Phase 6: a misspelled conjugation is guessed too, and says which conjugation it meant.
+  @Test(arguments: zip(["ginng", "gign", "stnad"], [("gehen", "ging"), ("gehen", "ging"), ("stehen", "stand")]))
+  func guessFindsTheMisspelledConjugation(query: String, wanted: (infinitiv: String, conjugation: String)) {
+    let guess = VerbSearch.guess(for: query, in: Verb.verbsSortedByFrequency)
+    #expect(guess?.verb.infinitiv == wanted.infinitiv)
+    #expect(guess?.conjugation == wanted.conjugation)
   }
 
   @Test(arguments: ["xyzzyq", "qqqq", "   "])
-  func closestVerbOffersNoGuessForNonsense(query: String) {
-    #expect(VerbSearch.closestVerb(to: query, in: Verb.verbsSortedByFrequency) == nil)
+  func guessOffersNothingForNonsense(query: String) {
+    #expect(VerbSearch.guess(for: query, in: Verb.verbsSortedByFrequency) == nil)
   }
 
   @Test(arguments: [

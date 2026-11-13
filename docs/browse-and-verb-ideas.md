@@ -561,6 +561,15 @@ It holds 50,056 conjugations, 173 KB compressed in the bundle, and finds the ver
 either yet; that is Phase 6. See
 [`docs/feature-architecture.md`](feature-architecture.md#conjugation-map).
 
+**Second half built on `main` 2026-11-12** by [Phase 6](../plans/browse-and-verb-implementation.md#phase-6-reverse-lookup-in-search):
+a conjugation finds its verb, and the row names the match (ging: Präteritum Indikativ (ich, er)).
+gehört shows both verbs. A stranded part shows its base verb, then one folded row of the separable
+verbs built on it, unless the query is itself an infinitive. "stand auf", "hat gefunden", and "ich
+ging" work, as do muß, läßt, wußte, and geklebte. Opening a result lands on the matching reading
+and section with the conjugation marked. A failed search can guess from a conjugation (ginng →
+gehen). Short imperatives (halt) remain corpus work. See
+[`docs/feature-architecture.md`](feature-architecture.md#search-by-conjugation).
+
 #### A6. Paste a Sentence, Find Its Verbs
 
 Verdict: No. Not worth the effort, given the low usage of the app and difficulty of discovering that feature.

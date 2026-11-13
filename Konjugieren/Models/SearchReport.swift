@@ -37,12 +37,14 @@ struct SearchReport: Equatable {
   let matchKind: SearchMatchKind
   let resultPosition: Int?
 
-  static func opened(query: String, matches: [VerbSearch.Match], position: Int) -> SearchReport {
+  /// `resultCount` counts verbs, including those inside a folded row. `position` counts rows
+  /// as shown, so an open folded row's verbs follow it.
+  static func opened(query: String, resultCount: Int, kind: VerbSearch.MatchKind, position: Int) -> SearchReport {
     SearchReport(
       outcome: .opened,
       queryLength: query.count,
-      resultCount: matches.count,
-      matchKind: matches.indices.contains(position) ? matches[position].kind.analyticsValue : .none,
+      resultCount: resultCount,
+      matchKind: kind.analyticsValue,
       resultPosition: position
     )
   }
@@ -81,12 +83,18 @@ extension VerbSearch.MatchKind {
       return .exactInfinitive
     case .exactFoldedInfinitive:
       return .exactFoldedInfinitive
+    case .conjugation:
+      return .conjugation
+    case .finitePart:
+      return .finitePart
     case .infinitivePrefix:
       return .infinitivePrefix
     case .wholeWordGloss:
       return .wholeWordGloss
     case .infinitiveSubstring:
       return .infinitiveSubstring
+    case .foldedConjugation:
+      return .foldedConjugation
     case .foldedInfinitivePrefix:
       return .foldedInfinitivePrefix
     case .foldedInfinitiveSubstring:

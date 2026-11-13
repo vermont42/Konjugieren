@@ -56,8 +56,8 @@ extension Conjugationgroup {
   static let allCells: [Conjugationgroup] = {
     let finite: [(PersonNumber) -> Conjugationgroup] = [
       Conjugationgroup.präsensIndikativ,
-      Conjugationgroup.präsensKonjunktivI,
       Conjugationgroup.präteritumIndikativ,
+      Conjugationgroup.präsensKonjunktivI,
       Conjugationgroup.präteritumKonjunktivII,
     ]
     let compound: [(PersonNumber) -> Conjugationgroup] = [
@@ -74,6 +74,19 @@ extension Conjugationgroup {
       + PersonNumber.imperativPersonNumbers.map(Conjugationgroup.imperativ)
       + compound.flatMap { PersonNumber.allCases.map($0) }
   }()
+
+  /// Nil for a participle, which has no person.
+  var personNumber: PersonNumber? {
+    switch self {
+    case .perfektpartizip, .präsenspartizip:
+      return nil
+    case .präsensIndikativ(let personNumber), .präsensKonjunktivI(let personNumber), .präteritumIndikativ(let personNumber),
+      .präteritumKonjunktivII(let personNumber), .imperativ(let personNumber), .perfektIndikativ(let personNumber),
+      .perfektKonjunktivI(let personNumber), .plusquamperfektIndikativ(let personNumber), .plusquamperfektKonjunktivII(let personNumber),
+      .futurIndikativ(let personNumber), .futurKonjunktivI(let personNumber), .futurKonjunktivII(let personNumber):
+      return personNumber
+    }
+  }
 
   /// Whether a main clause splits this cell around its separable prefix, leaving a finite part
   /// that is a word on its own. A compound conjugationgroup's first word is the auxiliary,

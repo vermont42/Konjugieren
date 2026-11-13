@@ -5138,13 +5138,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Infinitiv + Übersetzung"
+            "value" : "Deutsch + Englisch"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Infinitive + Translation"
+            "value" : "German + English"
           }
         }
       }
@@ -5154,13 +5154,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nur Infinitiv"
+            "value" : "Nur Deutsch"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Infinitive Only"
+            "value" : "German Only"
           }
         }
       }
@@ -5314,13 +5314,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Diese Einstellung bestimmt, ob die Verblisten-Suche nur Infinitive oder auch Übersetzungen berücksichtigt."
+            "value" : "Diese Einstellung bestimmt, ob die Verblisten-Suche neben Infinitiven und Konjugationen auch englische Übersetzungen berücksichtigt."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This setting determines whether verb-list search matches infinitives only or also matches translations."
+            "value" : "This setting determines whether verb-list search matches English translations as well as infinitives and conjugations."
           }
         }
       }
@@ -5954,13 +5954,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Deutscher Infinitiv"
+            "value" : "Deutsches Verb oder Konjugation"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "German infinitive"
+            "value" : "German verb or conjugation"
           }
         }
       }
@@ -5970,13 +5970,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Infinitiv oder englische Bedeutung"
+            "value" : "Verb, Konjugation oder Bedeutung"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Infinitive or English meaning"
+            "value" : "Verb, conjugation, or meaning"
           }
         }
       }
@@ -6025,6 +6025,54 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "A guess at the verb you meant:"
+          }
+        }
+      }
+    },
+    "VerbBrowse.separableVerbs.%lld" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auch in %lld trennbaren Verben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Also in %lld separable verbs"
+          }
+        }
+      }
+    },
+    "VerbBrowse.separableVerbsHidden" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ausgeblendet"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hidden"
+          }
+        }
+      }
+    },
+    "VerbBrowse.separableVerbsShown" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Angezeigt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shown"
           }
         }
       }
@@ -6121,6 +6169,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Example Sentence"
+          }
+        }
+      }
+    },
+    "VerbView.matchesSearch" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Passt zu deiner Suche"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Matches your search"
           }
         }
       }

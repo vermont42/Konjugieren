@@ -43,25 +43,3 @@ struct ConjugateVerbIntent: AppIntent {
     return .result(dialog: "\(table)")
   }
 }
-
-private extension Conjugationgroup {
-  var personNumber: PersonNumber? {
-    switch self {
-    case .perfektpartizip, .präsenspartizip:
-      return nil
-    case .präsensIndikativ(let pn),
-         .präsensKonjunktivI(let pn),
-         .präteritumIndikativ(let pn),
-         .präteritumKonjunktivII(let pn),
-         .imperativ(let pn),
-         .perfektIndikativ(let pn),
-         .perfektKonjunktivI(let pn),
-         .plusquamperfektIndikativ(let pn),
-         .plusquamperfektKonjunktivII(let pn),
-         .futurIndikativ(let pn),
-         .futurKonjunktivI(let pn),
-         .futurKonjunktivII(let pn):
-      return pn
-    }
-  }
-}

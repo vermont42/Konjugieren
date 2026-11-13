@@ -120,7 +120,9 @@ which loads when working in that folder.
 
 Some suites in `KonjugierenTests/Utils/` are not tests but harnesses: they drive app code over the
 whole corpus and write a file. `VerbClassificationTests` (classify-and-verify, see
-[`docs/verb-classification.md`](docs/verb-classification.md)) is the current one. It takes its
+[`docs/verb-classification.md`](docs/verb-classification.md)) and `VerbExportTests` (every verb's
+page as JSON, for `scripts/generate_verb_pdf.py`; gated on `KONJUGIEREN_EXPORT_OUT` since
+2026-11-12, when it was 200 of the suite's 215 seconds) are the current ones. Each takes its
 paths from the environment and is gated with
 `.enabled(if: ProcessInfo.processInfo.environment["KONJUGIEREN_…"] != nil)`, so an ordinary
 `run_tests.sh` neither writes files nor pays its cost. Follow that convention for new ones, or

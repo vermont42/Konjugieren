@@ -575,6 +575,7 @@ Counts and durations go out in bands (`AnalyticsBand`), never as exact numbers.
 | `leaveVerbView` | `deepestSection` (`header`, `simple`, `compound`, `etymology`, `example`), `dwell` (`0-5s`, `5-15s`, `15-60s`, `60s+`) | Exactly once for each `viewVerbView`: when the page leaves the screen or the app goes to the background |
 | `finishSearch` | `outcome` (`opened`, `abandoned`, `noResult`), `queryLength` (`1-2`, `3-5`, `6-9`, `10+`), `resultCount` (`0`, `1`, `2-10`, `11+`), `matchKind`, `resultPosition` (`1`, `2-5`, `6+`, `none`) | Once per search: when a result or the guess is opened, the field is cleared, or the app goes to the background with text in the field |
 | `tapConjugationgroupArticle` | None | When the ⓘ button beside a verb page's conjugationgroup heading opens that conjugationgroup's article. The article itself also sends `viewInfoView` |
+| `tapShareVerb` | None | When the share button in a verb page's navigation bar is tapped, whether or not the learner then shares. Copying a conjugation with a long press sends nothing |
 
 `VerbVisit` models one stretch of a verb page on screen, and `SearchTracker` and `SearchReport`
 model one search. A section counts as reached when a third of its block's first card is on screen
@@ -612,7 +613,7 @@ follow it. Opening or closing that row sends nothing.
 | `shortcut` | Yes | The Open Verb and Random Verb shortcuts |
 | `spotlight` | Yes | A Spotlight result |
 | `widget` | Yes | Any home-screen, lock-screen, or quiz widget |
-| `sharedLink` | Phase 10 | A link inside shared text |
+| `sharedLink` | Not planned | A link inside shared text. Phase 10's share text carries only the App Store link, as Josh chose on 2026-11-12, so nothing sends it unless a later change adds a `konjugieren://` or universal link |
 | `myVerbs`, `recent` | Phase 12 | My Verbs, and the recent lookups |
 | `list` | Phase 16 | A collection |
 | `reviewCard` | Phase 15 | The review card |

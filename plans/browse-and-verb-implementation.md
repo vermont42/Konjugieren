@@ -23,7 +23,7 @@ that Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until
 | 7 | Done | 2026-11-12 | `91831dc` | B3, B5's tip |
 | 8 | Done | 2026-11-12 | `46f400a` | B7's article |
 | 9 | Done | 2026-11-12 | `9e7ce96` | B4, A9 |
-| 10 | Not started | | | B6 |
+| 10 | Awaiting Josh | 2026-11-12 | | B6 |
 | 11 | Not started | | | C1, C2 |
 | 12 | Not started | | | D1, D2 |
 | 13 | Not started | | | D2's quiz scope, D3 |
@@ -714,6 +714,53 @@ deeplinks address articles before choosing where the new one goes in the list.
   Build the key-conjugations function here. Phases 11 and 15 reuse it.
 
 **How it differed:**
+
+- **Josh's decisions (2026-11-12).** The share text carries the App Store link only, with no
+  `konjugieren://` link, because Messages may not make a custom-scheme link tappable and the raw
+  line looks technical. So the `sharedLink` source that Phase 3 reserved is not sent, and
+  `docs/feature-architecture.md` now says so. The long press opens a context menu with Copy rather
+  than copying at once: it is the platform's convention, it shows that copying is possible, it
+  works with a right-click on a Mac, and it needs no "Copied" toast.
+- **The key conjugations** are `Verb.keyConjugations(readingIndex:region:)` in
+  `KeyConjugations.swift`: the er form of the Präsens, Präteritum, and Perfekt Indikativ, in
+  main-clause order and the given region (ist gestanden in Austria). They come back mixed case, so
+  Phase 15's review card can show red letters; the share text lowercases them. Note that the
+  Conjugator marks the auxiliary as irregular too (hAt gemacht, IST geWESen). For Phase 11, a
+  failed conjugation is left out rather than returned as a dash, and the function reads
+  `Current.settings` by default, so pass `region:` explicitly from code that is not on the main
+  actor.
+- **The share text** reads "aufstehen, “get up”", then "steht auf · stand auf · ist
+  aufgestanden", then "Every conjugation of aufstehen is in Konjugieren:" and
+  `https://apps.apple.com/app/konjugieren/id6758258747` (`URL.appStore`, with no storefront, so
+  the App Store opens the reader's own). The gloss is the reading on screen, so hängen shares
+  whichever meaning is selected. The quotation marks follow the learner's language („get up“ in
+  German), and they keep a gloss that contains parentheses readable.
+- **`ShareLink` could not do the job.** In the navigation bar it reports no tap: neither
+  `.simultaneousGesture` on it nor `.onTapGesture` on its label fired, so `tapShareVerb` could not
+  be sent. Giving it a `SharePreview`, which the share sheet needs for a header better than a
+  blank icon, also removed Copy from the sheet. Both were seen on the iOS 26.3 simulator.
+  `ShareSheet.swift` instead presents `UIActivityViewController` from a plain `Button`, with an
+  `LPLinkMetadata` header showing the verb and the learner's chosen app icon, and Copy kept. On iPad
+  the popover is anchored to the share button, found among the visible navigation items (the
+  selected tab, the top of each stack), so a verb page in another tab cannot claim it.
+- **What a long press copies** is the conjugation alone, lowercased (stehe auf, not ich stehe auf),
+  since the capitals only mark red letters. The infinitive at the top copies too. A dash in a cell
+  the Conjugator could not fill copies nothing. VoiceOver gets a named Copy action on each row,
+  and `docs/voiceover.md` says so. The menu's lifted preview cropped the first and last letters
+  until the modifier padded the row before the menu and took the padding back after it.
+- **Analytics.** `tapShareVerb`, with no parameters, on each tap of the button. Copying sends
+  nothing, since no signal was asked for. The staged privacy bullet about taps now ends with
+  "sharing a verb's page".
+- **How it was tested.** 9 new `@Test` cases (8 in `KeyConjugationsTests`, 1 for `URL.appStore`),
+  366 in all. In the iPhone 17 simulator: aufstehen's share button, the sheet's header and Copy,
+  the copied text checked with `simctl pbpaste`, `tapShareVerb` seen in a temporary log, hängen's
+  second reading, and a long press on "ich stehe auf" copying "stehe auf". On the iPad Pro 11-inch
+  (M5): the popover anchored to the button. Not tried: Messages, Mail, a real device, VoiceOver,
+  a Mac, and a German-language device.
+- **For Phase 11 and the screenshot work.** AXe on an iPad in landscape reports frames in
+  landscape points but takes touches in portrait ones: the share button at (1172, 56) in
+  `describe-ui` was reached by tapping (778, 1172). With two simulators booted, `simctl openurl
+  booted` went to the wrong one; name the UDID.
 
 ## Phase 11: Lookup from Outside the App
 

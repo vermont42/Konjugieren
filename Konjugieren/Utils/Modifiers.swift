@@ -40,6 +40,12 @@ extension View {
     modifier(SpeakOnTap(text: text, localeString: localeString))
   }
 
+  /// A long press, or a right-click on a Mac, offers to copy `text`. VoiceOver gets the same
+  /// choice as an action. Nil offers nothing.
+  func copyOnLongPress(_ text: String?) -> some View {
+    modifier(CopyOnLongPress(text: text))
+  }
+
   func konjCard() -> some View {
     modifier(KonjCard())
   }
@@ -145,6 +151,37 @@ private struct SpeakOnTap: ViewModifier {
         }
       }
   }
+}
+
+private struct CopyOnLongPress: ViewModifier {
+  let text: String?
+
+  func body(content: Content) -> some View {
+    // The margin goes on before the menu and comes off after it, so the lifted preview does not
+    // crop the first and last letters while the layout stays as it was.
+    if let text {
+      content
+        .padding(.horizontal, Self.previewMargin)
+        .padding(.vertical, Self.previewMargin / 2)
+        .contentShape(.contextMenuPreview, RoundedRectangle(cornerRadius: 8))
+        .contextMenu {
+          Button {
+            UIPasteboard.general.string = text
+          } label: {
+            Label(L.VerbView.copy, systemImage: "doc.on.doc")
+          }
+        }
+        .accessibilityAction(named: Text(L.VerbView.copy)) {
+          UIPasteboard.general.string = text
+        }
+        .padding(.horizontal, -Self.previewMargin)
+        .padding(.vertical, -Self.previewMargin / 2)
+    } else {
+      content
+    }
+  }
+
+  private static let previewMargin: CGFloat = 8
 }
 
 private struct KonjCard: ViewModifier {

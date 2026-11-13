@@ -71,6 +71,7 @@ struct VerbView: View {
               .accessibilityAddTraits(UserLocale.isGerman ? .isHeader : [])
               .germanPronunciation()
               .speakOnTap(verb.infinitiv.inUserRegion)
+              .copyOnLongPress(verb.infinitiv.inUserRegion)
 
             // The picker's segments already carry the glosses, so a separate translation line
             // would print the selected one twice.
@@ -248,6 +249,21 @@ struct VerbView: View {
     }
     .navigationTitle(verb.infinitiv.inUserRegion)
     .navigationBarTitleDisplayMode(.inline)
+    .toolbar {
+      ToolbarItem(placement: .topBarTrailing) {
+        Button {
+          Current.analytics.signal(name: .tapShareVerb)
+          ShareSheet.present(
+            text: verb.shareText(readingIndex: readingIndex),
+            title: verb.infinitiv.inUserRegion,
+            icon: UIImage(named: settings.appIcon.previewAssetName),
+            anchorLabel: L.VerbView.share
+          )
+        } label: {
+          Label(L.VerbView.share, systemImage: "square.and.arrow.up")
+        }
+      }
+    }
     .userActivity(World.viewVerbActivityType) { activity in
       activity.title = verb.infinitiv
       activity.isEligibleForHandoff = true
@@ -472,7 +488,7 @@ struct VerbView: View {
     case .success(let form):
       return form
     case .failure:
-      return "—"
+      return ConjugationRow.unavailable
     }
   }
 
@@ -512,6 +528,14 @@ struct ConjugationRow: Identifiable {
     }
     return formLabel
   }
+
+  /// What a long press copies: the conjugation alone, in lowercase, since the capitals only
+  /// mark the red letters. Nothing for a cell the Conjugator could not fill.
+  var copyText: String? {
+    form == Self.unavailable ? nil : form.lowercased()
+  }
+
+  static let unavailable = "—"
 
   var speechText: String {
     let spokenForm = form.lowercased()
@@ -612,6 +636,7 @@ struct ConjugationSectionView: View {
           .accessibilityLabel(Text(verbatim: row.accessibilityDescription))
           .accessibilityValue(Text(verbatim: row.isMarked ? L.VerbView.matchesSearch : ""))
           .speakOnTap(row.speechText)
+          .copyOnLongPress(row.copyText)
         }
       }
       .padding(.leading, 8)

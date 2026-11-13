@@ -773,6 +773,13 @@ A long press copies a conjugation. A share button sends the principal parts with
 - **Signal.** Taps on share, and the referrer rows in App Store Connect.
 - **Conjuguer and Conjugar.** The same.
 
+**Built on `main` 2026-11-12** by [Phase 10](../plans/browse-and-verb-implementation.md#phase-10-copy-and-share)
+of the implementation plan. A long press on a conjugation, or on the infinitive, opens a menu
+with Copy, which copies the conjugation alone (stehe auf). A share button in the navigation bar
+sends the verb, its gloss, its key conjugations with no label, and the App Store link:
+"aufstehen, “get up” / steht auf · stand auf · ist aufgestanden". No web domain and no
+`konjugieren://` link, as Josh chose. Each tap on the button sends `tapShareVerb`.
+
 #### B7. The Sections the Page Lacks
 
 Verdict: No. But build an Info article about Futur II.

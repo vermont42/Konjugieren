@@ -6,6 +6,10 @@ import Testing
 
 @Suite("URL extension")
 struct URLExtensionTests {
+  @Test func appStoreLinkNamesNoStorefront() {
+    #expect(URL.appStore.absoluteString == "https://apps.apple.com/app/konjugieren/id6758258747")
+  }
+
   @Test func mailtoEncodesEverythingOutsideTheUnreservedSet() {
     let url = URL.mailto("someone@example.com", subject: "x & y", body: "Füße=#1")
     #expect(url?.absoluteString == "mailto:someone@example.com?subject=x%20%26%20y&body=F%C3%BC%C3%9Fe%3D%231")

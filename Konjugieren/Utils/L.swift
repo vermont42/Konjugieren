@@ -864,6 +864,10 @@ enum L {
       String(localized: "VerbView.builtOn \(root)")
     }
 
+    static var copy: String {
+      String(localized: "VerbView.copy")
+    }
+
     static var etymologyHeading: String {
       String(localized: "VerbView.etymologyHeading")
     }
@@ -894,6 +898,14 @@ enum L {
 
     static func secondName(_ name: String) -> String {
       String(localized: "VerbView.secondName \(name)")
+    }
+
+    static var share: String {
+      String(localized: "VerbView.share")
+    }
+
+    static func shareText(infinitiv: String, gloss: String, keyConjugations: String, link: String) -> String {
+      String(localized: "VerbView.shareText \(infinitiv) \(gloss) \(keyConjugations) \(link)")
     }
   }
 

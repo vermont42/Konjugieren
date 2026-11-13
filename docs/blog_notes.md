@@ -9742,3 +9742,34 @@ puts haben, können, müssen, sollen, and wollen first, which says more about wh
 practice than the alphabet's abbrennen and abbringen. While testing, an accessibility query against
 the Inseparable page pinned the CPU for 45 seconds, sorting about a thousand non-lazy rows. That
 cost predates this phase, and it is noted in the plan for a later look.
+
+## Copy and Share on the Verb Page (2026-11-12)
+
+Phase 10 of the browse plan gave the verb page two small powers: a long press copies a
+conjugation, and a share button sends a verb to someone who does not have the app. The idea's
+basis was a number from App Store Connect: visitors referred by another app download at 24.1%,
+against 5.4% for searchers. A shared verb is the one feature that reaches people outside the app.
+
+What to share took one question to Josh. The text names the verb, its gloss, and three
+conjugations with no heading: "aufstehen, “get up”", then "steht auf · stand auf · ist
+aufgestanden", then the App Store link. Those three are what textbooks call principal parts, a
+term Josh rejected for the page because most learners have never met it, so the code calls them key
+conjugations. A `konjugieren://` link for recipients who already have the app was left out:
+Messages may not make it tappable, and it looks like a line of code.
+
+The surprise was SwiftUI's `ShareLink`. In a navigation bar it swallowed every tap gesture,
+so the analytics signal for a tap could never fire. Adding a `SharePreview` to replace the share
+sheet's blank placeholder icon removed the sheet's Copy button, which is the action most people
+would want for a text. The fix was the older route: a plain button that presents
+`UIActivityViewController`, with `LPLinkMetadata` supplying the header. The header shows the
+learner's own choice of app icon, the hat or the pretzel. On iPad that sheet is a popover and needs
+an anchor. The first attempt found no bar button and the popover hung from the middle of the
+screen's top edge. The items turned out to be in `trailingItemGroups`, and the search had to be
+limited to the selected tab and the top of each stack, since a verb page in the Families tab has a
+share button of its own.
+
+Copying uses a context menu, the iOS convention, rather than copying on the spot. Its first
+version cropped the "i" of "ich" and the "f" of "auf" in the lifted preview, because the row's
+frame ends exactly at its glyphs. Padding the row before the menu and removing the padding after
+it gives the preview a margin without moving a pixel of the page.
+

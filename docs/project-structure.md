@@ -58,6 +58,7 @@ Konjugieren/
 │   │   └── GameState+Robot.swift       # Robot brain/minion mechanic (spawn/update)
 │   ├── Info.swift              # Info article model with rich text and images
 │   ├── InfoMedia.swift         # Enum: .photo or .sfSymbol media for Info rows
+│   ├── KeyConjugations.swift   # Verb.keyConjugations (steht auf · stand auf · ist aufgestanden, always shown with no label) and Verb.shareText, what the verb page's share button sends
 │   ├── KonjugierenTips.swift   # TipKit tips (e.g., change-difficulty hint; the verb page's RedLettersTip and ScrollToBottomTip)
 │   ├── LanguageModelService.swift      # Protocol for on-device AI error explanation and tutoring
 │   ├── LanguageModelServiceDummy.swift # No-op stub for tests/unsupported devices
@@ -107,20 +108,21 @@ Konjugieren/
 │   ├── Layout.swift            # Spacing constants (8pt, 16pt, 24pt)
 │   ├── LiveActivityManager.swift   # Creates and updates Live Activities for quiz and game
 │   ├── MixedCaseAccessibility.swift  # VoiceOver labels for mixed-case ablaut strings
-│   ├── Modifiers.swift         # Custom ViewModifiers (headingLabel, funButton, etc.)
+│   ├── Modifiers.swift         # Custom ViewModifiers (headingLabel, funButton, speakOnTap, copyOnLongPress, etc.)
 │   ├── RatingsFetcher.swift    # Fetches app ratings from iTunes API
 │   ├── RegionalRendering.swift # ß→ss display transform + RegionalConjugator (region-aware wrapper over the region-free Conjugator, defaulting to main-clause conjugations: steht auf); search folding lives in VerbSearch
 │   ├── ReviewPrompter.swift    # Protocol for review-prompting behavior
 │   ├── ReviewPrompterDummy.swift   # No-op stub for tests
 │   ├── ReviewPrompterReal.swift    # Real implementation prompting reviews at intervals
 │   ├── Settings.swift          # @Observable settings with UserDefaults persistence
+│   ├── ShareSheet.swift        # UIKit workaround: presents UIActivityViewController for the verb page's share button, anchored to the visible bar button on iPad, with an LPLinkMetadata header (ShareLink sends no tap from a toolbar and loses Copy with a SharePreview)
 │   ├── SoundPlayer.swift       # Protocol for audio playback
 │   ├── SoundPlayerDummy.swift  # No-op implementation for tests
 │   ├── SoundPlayerReal.swift   # AVAudioPlayer implementation with debouncing
 │   ├── StringExtensions.swift  # Rich text markup parsing to RichTextBlock/TextSegment
 │   ├── TextExtension.swift     # Text(mixedCaseString:) for ablaut-highlighted display
 │   ├── TimeFormatter.swift     # Formats elapsed seconds as h:mm:ss
-│   ├── URLExtension.swift      # Deeplink URL helpers (konjugieren:// scheme, the `source` query item), developerEmail, and the mailto: builder
+│   ├── URLExtension.swift      # Deeplink URL helpers (konjugieren:// scheme, the `source` query item), developerEmail, the mailto: builder, and URL.appStore
 │   ├── URLProtocolStub.swift   # URLProtocol subclass for stubbing HTTP responses in tests
 │   ├── URLSessionExtension.swift   # Extension providing a stubbed URLSession for testing
 │   ├── VerbSearchArrowKeys.swift   # UIKit workaround: priority UIKeyCommands so ↑/↓ move through search results while the field is focused
@@ -199,6 +201,7 @@ KonjugierenTests/
 │   ├── ConjugationSearchTests.swift # Search by conjugation: the ideas doc's conjugation queries, stranded parts and the folded row, particles, compounds, folding, adjective endings, cell names, marks
 │   ├── ConjugationgroupTests.swift # Conjugationgroup.ending(family:) ending-table tests
 │   ├── ConjugatorTests.swift   # Comprehensive conjugation tests (~50 test functions), incl. error paths
+│   ├── KeyConjugationsTests.swift # Key conjugations per reading and region, the share text, and what a long press copies
 │   ├── InfoTests.swift         # Info articles: a heading and text per article in each language, every ‡link‡ opens an article or a verb (both catalogs), stable keys
 │   ├── GameStateTests.swift    # Game-logic tests: damage invulnerability, robot-mechanic clearing, game-over/wave transitions, snapshot round-trip
 │   ├── PersonNumberTests.swift # Pronoun and sie-disambiguation tests
@@ -218,7 +221,7 @@ KonjugierenTests/
 │   ├── SettingsTests.swift     # Settings persistence and default-value tests
 │   ├── StringExtensionsTests.swift  # Rich text parsing and error handling tests
 │   ├── TimeFormatterTests.swift     # Time formatting utility tests
-│   ├── URLExtensionTests.swift      # mailto: percent-encoding tests
+│   ├── URLExtensionTests.swift      # mailto: percent-encoding and the App Store link
 │   ├── VerbClassificationTests.swift  # Harness: stage B of classify-and-verify, searching for the Verbs.xml encoding that reproduces Wiktionary. Gated on TEST_RUNNER_KONJUGIEREN_CLASSIFY_IN
 │   ├── VerbExportTests.swift        # Harness: every verb's page as JSON, for scripts/generate_verb_pdf.py. Gated on TEST_RUNNER_KONJUGIEREN_EXPORT_OUT (optional TEST_RUNNER_KONJUGIEREN_EXPORT_ONLY)
 │   └── WidgetSnapshotTests.swift    # Widget snapshot/bundle generation, per-day paging math, and process-stable answer-shuffle tests

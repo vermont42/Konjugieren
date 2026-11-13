@@ -6269,6 +6269,22 @@
         }
       }
     },
+    "VerbView.copy" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kopieren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Copy"
+          }
+        }
+      }
+    },
     "VerbView.etymologyHeading" : {
       "localizations" : {
         "de" : {
@@ -6393,6 +6409,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "also %@"
+          }
+        }
+      }
+    },
+    "VerbView.share" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teilen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share"
+          }
+        }
+      }
+    },
+    "VerbView.shareText %@ %@ %@ %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@, „%2$@“\n%3$@\n\nAlle Konjugationen von %1$@ gibt es in Konjugieren:\n%4$@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@, “%2$@”\n%3$@\n\nEvery conjugation of %1$@ is in Konjugieren:\n%4$@"
           }
         }
       }

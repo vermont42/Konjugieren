@@ -27,7 +27,7 @@ that Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until
 | 11 | Done | 2026-11-12 | `a0f1ad1` | C1, C2 |
 | 12 | Done | 2026-11-13 | `37bb963` | D1, D2 |
 | 13 | Done | 2026-11-13 | `37bb963` | D2's quiz scope, D3 |
-| 14 | Awaiting Josh | 2026-11-13 | | D5 |
+| 14 | Done | 2026-11-13 | `7a7d8ca` | D5 |
 | 15 | Not started | | | D4 |
 | 16 | Not started | | | D6 |
 | Closing | Not started | | | |

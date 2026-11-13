@@ -17,7 +17,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 |---:|---|---|---|---|
 | 1 | Done | 2026-11-13 | `250cca9` | T1.3, T1.4, T1.5 |
 | 2 | Done | 2026-11-13 | `11f2d81` | T1.2 |
-| 3 | Awaiting Josh | 2026-11-13 | | T4.1, T4.4, T4.5 |
+| 3 | Done | 2026-11-13 | `f7f3fbc` | T4.1, T4.4, T4.5 |
 | 4 | Not started | | | T1.6 |
 | 5 | Not started | | | T2.3, T2.6, T6.7, M1 |
 | 6 | Not started | | | T2.1, T2.2, T2.5 |
@@ -367,7 +367,7 @@ of question.
 ## Phase 3: A Correction That Stays
 
 **Suggestions:** T4.1, T4.4, T4.5. **Depends on:** nothing; Phase 2 preferably. **Status:**
-Awaiting Josh.
+Done.
 
 Today `Quiz.submitAnswer` advances before the view redraws, so the correction for question n
 appears on the card for question n + 1 while the clock runs.

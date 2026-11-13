@@ -12,8 +12,26 @@ struct WidgetSnapshotBundle: Codable, Equatable {
     let count = snapshots.count
     guard count > 0 else { return [] }
     return (0..<count).map { dayOffset in
-      (((dayOffset + pageOffset) % count) + count) % count
+      Self.snapshotIndex(dayOffset: dayOffset, pageOffset: pageOffset, count: count)
     }
+  }
+
+  static func snapshotIndex(dayOffset: Int, pageOffset: Int, count: Int) -> Int {
+    (((dayOffset + pageOffset) % count) + count) % count
+  }
+
+  /// The snapshot the widget shows at a moment, or nil when the moment falls outside the cached
+  /// days. The app keeps this verb when it rewrites the bundle, so the widget's verb holds
+  /// through the day.
+  func displayedSnapshot(at date: Date, pageOffset: Int) -> WidgetSnapshot? {
+    let calendar = WidgetConstants.gregorianCalendar
+    guard
+      let dayOffset = calendar.dateComponents([.day], from: calendar.startOfDay(for: baseDate), to: calendar.startOfDay(for: date)).day,
+      snapshots.indices.contains(dayOffset)
+    else {
+      return nil
+    }
+    return snapshots[Self.snapshotIndex(dayOffset: dayOffset, pageOffset: pageOffset, count: snapshots.count)]
   }
 }
 

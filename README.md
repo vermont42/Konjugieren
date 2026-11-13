@@ -12,7 +12,7 @@ Konjugieren
 
 **Konjugieren** is an iOS app for learning German-verb conjugations. It conjugates 3,572 verbs—strong, weak, mixed, and _-ieren_—across all 14 German [conjugationgroups](https://www.linkedin.com/posts/racecondition_i-have-written-elsewhere-about-how-my-experience-activity-7404189320758280192-tiAL), from Präsens Indikativ to Plusquamperfekt Konjunktiv II. The app is fully localized in English and German.
 
-Under the hood, **Konjugieren** features a domain-specific ablaut engine that models the vowel and consonant changes of German strong verbs, a hand-written rich-text parser, protocol-oriented dependency injection, and a comprehensive [Swift Testing](https://developer.apple.com/xcode/swift-testing/) suite with 431 tests across 1,800+ lines.
+Under the hood, **Konjugieren** features a domain-specific ablaut engine that models the vowel and consonant changes of German strong verbs, a hand-written rich-text parser, protocol-oriented dependency injection, and a comprehensive [Swift Testing](https://developer.apple.com/xcode/swift-testing/) suite with 451 tests across 1,800+ lines.
 
 **Konjugieren** is available for free download in the iOS App Store™. Tap the button below to install.
 
@@ -72,7 +72,7 @@ The collision system handles 21 distinct interaction types with asymmetric behav
 
 **Conjugation Quiz** offers small and medium home-screen sizes with a four-option multiple-choice question. Answers are submitted via AnswerQuizIntent — a WidgetKit AppIntent that validates the selection, persists the result to the shared UserDefaults container, and reloads the timeline to show a ✓/✗ result view. Answer options are deterministically shuffled using a SeededRNG (XORShift) keyed on the question ID, ensuring the same ordering survives widget reloads.
 
-**Data pipeline** — [`WidgetSnapshotWriter`](Konjugieren/Utils/WidgetSnapshotWriter.swift) (app side) selects the day's verb with `(daysSinceReference + debugOffset) × 127 % eligibleVerbs.count`, generates all six Präsens conjugations via `Conjugator`, assembles wrong quiz answers deterministically, and writes a `WidgetSnapshot` JSON to the shared App Group container. [`SnapshotReader`](KonjugierenWidget/SnapshotReader.swift) (widget side) reads that file; on failure it falls back silently to a placeholder (gehen). The same mixed-case ablaut highlighting used in the main app — yellow for regular portions, red for ablaut-changed letters — is replicated in `WidgetAblautText.swift` using `AttributedString`, with `@Environment(\.colorScheme)` threaded through to switch between dark-mode gold (#FFCE00) and light-mode olive (#665300).
+**Data pipeline** — [`WidgetSnapshotWriter`](Konjugieren/Utils/WidgetSnapshotWriter.swift) (app side) selects the day's verb through `VerbDraw`, from the 1,000 most frequent verbs weighted toward strong and unprefixed ones, and from My Verbs every third day, keeping whatever verb the widget already shows today, generates all six Präsens conjugations via `Conjugator`, assembles wrong quiz answers deterministically, and writes a `WidgetSnapshot` JSON to the shared App Group container. [`SnapshotReader`](KonjugierenWidget/SnapshotReader.swift) (widget side) reads that file; on failure it falls back silently to a placeholder (gehen). The same mixed-case ablaut highlighting used in the main app — yellow for regular portions, red for ablaut-changed letters — is replicated in `WidgetAblautText.swift` using `AttributedString`, with `@Environment(\.colorScheme)` threaded through to switch between dark-mode gold (#FFCE00) and light-mode olive (#665300).
 
 ### Accessibility
 
@@ -93,7 +93,7 @@ Konjugieren is fully accessible to VoiceOver users. The implementation spans fiv
 - **SwiftUI** — Declarative UI with custom `ViewModifier`s, `TabView` navigation, `TimelineView` game loop, and `Canvas` particle effects
 - **Foundation Models** — On-device Apple Intelligence integration with `SystemLanguageModel`, `LanguageModelSession`, `Tool` protocol, and `@Generable` schemas
 - **Core Motion** — 60 Hz gyroscope input for arcade-game tilt controls via `CMMotionManager`
-- **Swift Testing** — Modern test framework (`@Test`, `#expect`) with 431 test functions
+- **Swift Testing** — Modern test framework (`@Test`, `#expect`) with 451 test functions
 - **Game Center** — Global leaderboard for quiz scores via `GKAccessPoint`
 - **WidgetKit** — Two widgets (Verb des Tages, Conjugation Quiz) across five sizes, with AppIntents for interactive quiz answers and verb cycling without launching the app
 - **XMLParser** — Streaming parser for verb and ablaut-group data (3,572 verbs, 76 patterns)
@@ -103,7 +103,7 @@ Konjugieren is fully accessible to VoiceOver users. The implementation spans fiv
 
 ### Testing
 
-The test suite spans **6,000+ lines** across thirty-four files, with **431 test functions** covering conjugation logic, quiz state management, rich-text parsing, and time formatting.
+The test suite spans **6,000+ lines** across thirty-five files, with **451 test functions** covering conjugation logic, quiz state management, rich-text parsing, and time formatting.
 
 The conjugation tests use a **mixed-case convention** to verify ablaut highlighting: lowercase letters represent unchanged portions, and UPPERCASE letters mark ablaut-changed regions. For example, `"sAng"` asserts that _singen_'s Präteritum changes "i" to "a" and the UI will highlight that change. This convention makes it immediately visible when a test expectation involves an ablaut transformation.
 

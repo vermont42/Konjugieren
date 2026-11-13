@@ -50,6 +50,7 @@ Konjugieren/
 │   ├── ExampleSentence.swift   # Lazy-loading literary example sentence lookup by infinitive
 │   ├── ExampleSentences.json   # Bundled literary example sentences keyed by language and infinitive
 │   ├── Family.swift            # Verb families (strong/weak/mixed/ieren)
+│   ├── FrequencyBand.swift     # The 100, 300, and 1,000 most frequent verbs, defined once: Verb.isIn(_:) and Verb.verbs(in:)
 │   ├── Game/
 │   │   ├── GameModels.swift            # Entity structs/enums (Enemy, Bullet, Ghost, RobotBrain, etc.)
 │   │   ├── GameSnapshot.swift          # GameStateSnapshot + SavedGame persistence
@@ -85,6 +86,7 @@ Konjugieren/
 │   ├── TutorChatHistory.swift  # Persistence for chat messages with the AI tutor
 │   ├── Reading.swift           # One sense of a verb: gloss, family, auxiliary, prefixes
 │   ├── Verb.swift              # Lemma: frequency, icon, and an ordered list of readings
+│   ├── VerbDraw.swift          # The widget's verb of the day and every random verb: the top 1,000 weighted toward strong and unprefixed verbs, and My Verbs every third day (random: one draw in three)
 │   ├── VerbParser.swift        # XMLParser delegate for Verbs.xml, incl. the `in` marker grammar
 │   ├── VerbVisit.swift         # VerbDestination (a verb page to push, with its analytics source and the cells a search marked) and VerbVisit (one viewVerbView/leaveVerbView pair)
 │   ├── VerbSearch.swift        # The one search rule (list and shortcut picker): umlaut/digraph/ß folding, ranked match kinds including conjugations and stranded parts, and the edit-distance guess (infinitives and conjugations) for a failed search
@@ -136,7 +138,7 @@ Konjugieren/
 │   ├── Utterer.swift           # Protocol for text-to-speech with UttererLocale constants
 │   ├── UttererDummy.swift      # No-op TTS implementation for tests
 │   ├── UttererReal.swift       # AVSpeechSynthesizer implementation
-│   └── WidgetSnapshotWriter.swift  # Generates and persists widget snapshots with daily verb data
+│   └── WidgetSnapshotWriter.swift  # Generates and persists the 10-day widget bundle from VerbDraw, keeping the verb the widget shows today
 └── Views/
     ├── ErrorExplainerView.swift # AI-generated explanations for conjugation errors
     ├── FamilyBrowseView.swift  # Browseable list of verb families, prefixes, and ablaut groups
@@ -199,7 +201,7 @@ Shared/
 ├── QuizActivityAttributes.swift    # ActivityKit model for quiz live activity
 ├── WidgetConstants.swift           # Constants for widget app-group container, storage keys, day count, and pinned Gregorian calendar
 ├── WidgetQuizShuffle.swift         # Process-stable (FNV-1a seeded) answer shuffle + SeededRNG, shared by widget and tests
-└── WidgetSnapshot.swift            # Data models for serialized widget state, incl. WidgetSnapshotBundle (N-day array)
+└── WidgetSnapshot.swift            # Data models for serialized widget state, incl. WidgetSnapshotBundle (N-day array, paging, and the snapshot displayed at a moment)
 
 KonjugierenTests/
 ├── CLAUDE.md                   # Lazily loaded Claude Code guidance: Swift Testing conventions for this target
@@ -220,6 +222,7 @@ KonjugierenTests/
 │   ├── SearchReportTests.swift # SearchTracker lifecycle, finishSearch parameters, and the no-typed-text guarantee
 │   ├── RelatedVerbsTests.swift # Verb.root through nested prefixes, verbs built on a root, ablaut relatives (one per root), family pages, per-reading relations, [Verb].sorted(by:)
 │   ├── RefusalDetectionTests.swift # Tutor refusal-phrase detection, incl. the "null" exact-match false-positive guard
+│   ├── VerbDrawTests.swift     # Frequency bands, and VerbDraw: weights, My Verbs every third day and in turn, stability through a day, the favored share
 │   ├── VerbLookupTests.swift   # Look Up a Verb: what it says about infinitives, conjugations, ambiguous and unknown words, and where it opens the app
 │   ├── VerbSearchTests.swift   # VerbSearch: folding, match-kind ranking, the ideas doc's failed queries, list/picker agreement, the failed-search guess
 │   ├── VerbSpotlightTests.swift # Spotlight fields: gloss phrases, conjugations with particles, key conjugations per reading and region

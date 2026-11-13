@@ -116,7 +116,7 @@ class World {
     switch url.host {
     case URL.verbHost:
       let target = url.pathComponents[1]
-      let found = target == "random" ? Array(Verb.verbs.values).randomElement() : Verb.verbs[target]
+      let found = target == "random" ? VerbDraw.randomVerb(myVerbs: learnerVerbs.myVerbs) : Verb.verbs[target]
       verbSource = url.analyticsSource ?? .deeplink
       if let found {
         verbMarks = url.deeplinkQueryValue(named: URL.matchQueryName).flatMap { MarkedConjugations(text: $0, on: found) }

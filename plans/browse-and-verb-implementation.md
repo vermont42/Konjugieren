@@ -27,7 +27,7 @@ that Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until
 | 11 | Done | 2026-11-12 | `a0f1ad1` | C1, C2 |
 | 12 | Done | 2026-11-13 | `37bb963` | D1, D2 |
 | 13 | Done | 2026-11-13 | `37bb963` | D2's quiz scope, D3 |
-| 14 | Not started | | | D5 |
+| 14 | Awaiting Josh | 2026-11-13 | | D5 |
 | 15 | Not started | | | D4 |
 | 16 | Not started | | | D6 |
 | Closing | Not started | | | |
@@ -988,6 +988,43 @@ the quiz will use them too. The quiz widget's question sampling belongs to the q
 out of scope.
 
 **How it differed:**
+
+- **Josh's answers (2026-11-13).** My Verbs supplies one draw in three, and "My Verbs" means the
+  list the filter shows: starred verbs, then the last 20 opened.
+- **One in three means every third day for the widget.** The first version drew My Verbs by a
+  one-in-three chance each day. The bundle the simulator wrote had no My Verbs day in nine, and
+  over ten years of simulated days chance left gaps of up to 19 days. The widget now gives My
+  Verbs the days whose number since 2025-01-01 is a multiple of three, and takes its verbs in
+  turn, since uniform picks showed abberufen twice in nine days while gehen waited. The random
+  verb, drawn on demand, keeps the one-in-three chance.
+- **"Favoring strong and base verbs"** became a weight: 2 for a strong or mixed verb, 2 for a
+  verb with no prefix, multiplied, so gehen counts 4, aufstehen and machen 2, and abarbeiten 1.
+  In 1,000 simulated days about 80% of frequent draws were strong or unprefixed, against 64% of
+  the band. Frequency within the band is not weighted, as the verdict did not ask for it.
+- **Stable through the day** needed more than a function of the date, because the app rewrites
+  the 10-day bundle at every activation and My Verbs can change in between. The writer now asks
+  the old bundle which snapshot the widget shows now, page offset included
+  (`WidgetSnapshotBundle.displayedSnapshot(at:pageOffset:)`), and keeps that verb where the new
+  bundle shows today. A side effect: the quiz widget, which reads the same snapshot, keeps its
+  question and its answered state, keyed by date and infinitive, through the day. The quiz
+  widget's question sampling is unchanged, but its verb is now this draw's.
+- **The bands** are `FrequencyBand` (`.top100`, `.top300`, `.top1000`), with `Verb.isIn(_:)` and
+  `Verb.verbs(in:)`. The rank has no ties, so each band holds exactly its count.
+- **The old rule walked the alphabet.** `(days × 127) % 3,572` over the alphabetical list gave
+  beißen, betrauen, draufgeben, einjagen, entgegenarbeiten on consecutive days. The new draw's
+  frequent days from 2026-11-14 are wiederholen, ziehen, betragen, aufwachsen, lagern, geben.
+- **A feedback loop to know about.** A random verb opened is a recent verb, so it joins My Verbs
+  and can return as a My Verbs draw. It ages out of the 20 recents like any other open.
+- **No new signal.** `viewVerbView` with `source` `widget` already counts pages reached from the
+  widget, the ideas document's signal, so nothing is staged for the privacy policy.
+- **How it was tested.** `VerbDrawTests` and `FrequencyBandTests` are new, and `WidgetSnapshotTests`
+  lost four tests of the old rule and gained six: 451 tests in all. In the iPhone 17 simulator, the
+  written bundle matched an independent Python reimplementation of the draw, all ten days;
+  a relaunch kept the displayed verb (beisteuern, chosen by the old rule that morning); with the
+  bundle deleted, today became sein, a My Verbs day, and days 3, 6, and 9 were gehen, abberufen,
+  and sein; six `verb/random?source=control` links opened five frequent verbs and abberufen
+  (#2,303, so from My Verbs). Not tried: the widget's rendering on a Home Screen, the Next button
+  after a rewrite, iPad, and a device.
 
 ## Phase 15: The Review Card
 

@@ -15,57 +15,75 @@ struct WidgetSnapshotTests {
     return formatter.date(from: string)!
   }
 
-  @Test func verbOfTheDayIsDeterministic() {
-    let eligible = WidgetSnapshotWriter.eligibleVerbs()
-    let testDate = date("2026-03-01")
-    let verb1 = WidgetSnapshotWriter.verbOfTheDay(from: eligible, date: testDate, debugOffset: 0)
-    let verb2 = WidgetSnapshotWriter.verbOfTheDay(from: eligible, date: testDate, debugOffset: 0)
-    #expect(verb1.infinitiv == verb2.infinitiv)
+  private func gehen() throws -> Verb {
+    try #require(Verb.verbs["gehen"])
   }
 
-  @Test func verbOfTheDayChangesWithDate() {
-    let eligible = WidgetSnapshotWriter.eligibleVerbs()
-    let day1 = date("2026-03-01")
-    let day2 = date("2026-03-02")
-    let verb1 = WidgetSnapshotWriter.verbOfTheDay(from: eligible, date: day1, debugOffset: 0)
-    let verb2 = WidgetSnapshotWriter.verbOfTheDay(from: eligible, date: day2, debugOffset: 0)
-    #expect(verb1.infinitiv != verb2.infinitiv)
-  }
-
-  @Test func verbOfTheDayChangesWithOffset() {
-    let eligible = WidgetSnapshotWriter.eligibleVerbs()
-    let testDate = date("2026-03-01")
-    let verb1 = WidgetSnapshotWriter.verbOfTheDay(from: eligible, date: testDate, debugOffset: 0)
-    let verb2 = WidgetSnapshotWriter.verbOfTheDay(from: eligible, date: testDate, debugOffset: 1)
-    #expect(verb1.infinitiv != verb2.infinitiv)
-  }
-
-  @Test func onlyEligibleVerbsHaveExampleSentences() {
-    let eligible = WidgetSnapshotWriter.eligibleVerbs()
-    #expect(!eligible.isEmpty)
-    for verb in eligible {
-      #expect(ExampleSentences.pair(for: verb.infinitiv) != nil, "Eligible verb \(verb.infinitiv) should have an example sentence pair")
+  @Test func everyCachedVerbHasAnExampleSentence() throws {
+    let myVerbs = ["abbehalten", "aufstehen"].compactMap { Verb.verbs[$0] }
+    let bundle = try #require(WidgetSnapshotWriter.generateBundle(startDate: date("2026-03-01"), myVerbs: myVerbs))
+    for snapshot in bundle.snapshots {
+      #expect(ExampleSentences.pair(for: snapshot.infinitiv) != nil, "\(snapshot.infinitiv)")
     }
   }
 
-  @Test func snapshotContainsSixPräsensConjugations() {
-    let snapshot = WidgetSnapshotWriter.generateSnapshot(date: date("2026-03-01"))
-    #expect(snapshot != nil)
-    #expect(snapshot!.präsensParadigm.count == 6)
+  @Test func bundleWithoutMyVerbsDrawsFrequentVerbs() throws {
+    let bundle = try #require(WidgetSnapshotWriter.generateBundle(startDate: date("2026-03-01")))
+    for snapshot in bundle.snapshots {
+      #expect(Verb.verbs[snapshot.infinitiv]?.isIn(.top1000) == true, "\(snapshot.infinitiv)")
+    }
   }
 
-  @Test func quizQuestionHasFourOptions() {
-    let snapshot = WidgetSnapshotWriter.generateSnapshot(date: date("2026-03-01"))
-    #expect(snapshot != nil)
-    let quiz = snapshot!.quizQuestion
+  @Test(arguments: [0, 3, 12, -1])
+  func keptVerbIsTheOneDisplayedToday(pageOffset: Int) throws {
+    let start = date("2026-03-01")
+    let kept = try #require(Verb.verbs["abbehalten"])
+    let bundle = try #require(WidgetSnapshotWriter.generateBundle(startDate: start, keeping: kept, pageOffset: pageOffset))
+    #expect(bundle.displayedSnapshot(at: start, pageOffset: pageOffset)?.infinitiv == "abbehalten")
+  }
+
+  @Test(arguments: [0, 4])
+  func rewriteLaterInTheDayKeepsTheDisplayedVerb(pageOffset: Int) throws {
+    let morning = date("2026-03-01").addingTimeInterval(7 * 3600)
+    let evening = morning.addingTimeInterval(14 * 3600)
+    let first = try #require(WidgetSnapshotWriter.generateBundle(startDate: morning, pageOffset: pageOffset))
+    let shown = try #require(first.displayedSnapshot(at: evening, pageOffset: pageOffset))
+    let myVerbs = ["abbehalten", "aufstehen", "verstehen"].compactMap { Verb.verbs[$0] }
+    let second = try #require(WidgetSnapshotWriter.generateBundle(startDate: evening, myVerbs: myVerbs, keeping: Verb.verbs[shown.infinitiv], pageOffset: pageOffset))
+    #expect(second.displayedSnapshot(at: evening, pageOffset: pageOffset) == shown)
+  }
+
+  @Test func rewriteOnALaterDayKeepsThatDaysVerb() throws {
+    let first = try #require(WidgetSnapshotWriter.generateBundle(startDate: date("2026-03-01")))
+    let nextDay = date("2026-03-03")
+    let shown = try #require(first.displayedSnapshot(at: nextDay, pageOffset: 0))
+    #expect(shown == first.snapshots[2])
+    let second = try #require(WidgetSnapshotWriter.generateBundle(startDate: nextDay, myVerbs: [try gehen()], keeping: Verb.verbs[shown.infinitiv]))
+    #expect(second.snapshots[0] == shown)
+  }
+
+  @Test func displayedSnapshotIsNilOutsideTheCachedDays() throws {
+    let bundle = try #require(WidgetSnapshotWriter.generateBundle(startDate: date("2026-03-10")))
+    #expect(bundle.displayedSnapshot(at: date("2026-03-09"), pageOffset: 0) == nil)
+    #expect(bundle.displayedSnapshot(at: date("2026-03-20"), pageOffset: 0) == nil)
+    #expect(bundle.displayedSnapshot(at: date("2026-03-19"), pageOffset: 0) == bundle.snapshots[9])
+  }
+
+  @Test func snapshotContainsSixPräsensConjugations() throws {
+    let snapshot = WidgetSnapshotWriter.generateSnapshot(verb: try gehen(), date: date("2026-03-01"))
+    #expect(snapshot.präsensParadigm.count == 6)
+  }
+
+  @Test func quizQuestionHasFourOptions() throws {
+    let snapshot = WidgetSnapshotWriter.generateSnapshot(verb: try gehen(), date: date("2026-03-01"))
+    let quiz = snapshot.quizQuestion
     #expect(quiz.wrongAnswers.count == 3)
     #expect(!quiz.correctAnswer.isEmpty)
     #expect(!quiz.wrongAnswers.contains(quiz.correctAnswer))
   }
 
   @Test func snapshotRoundTrips() throws {
-    let snapshot = WidgetSnapshotWriter.generateSnapshot(date: date("2026-03-01"))
-    let original = try #require(snapshot)
+    let original = WidgetSnapshotWriter.generateSnapshot(verb: try gehen(), date: date("2026-03-01"))
     let data = try JSONEncoder().encode(original)
     let decoded = try JSONDecoder().decode(WidgetSnapshot.self, from: data)
     #expect(original == decoded)
@@ -87,7 +105,9 @@ struct WidgetSnapshotTests {
     let bundle = try #require(WidgetSnapshotWriter.generateBundle(startDate: start))
     for dayOffset in 0..<bundle.snapshots.count {
       let day = try #require(WidgetConstants.gregorianCalendar.date(byAdding: .day, value: dayOffset, to: start))
-      let standalone = try #require(WidgetSnapshotWriter.generateSnapshot(date: day))
+      let frequentVerbs = VerbDraw.frequentVerbs.filter(WidgetSnapshotWriter.isEligible)
+      let verb = try #require(VerbDraw.verbOfTheDay(on: day, myVerbs: [], frequentVerbs: frequentVerbs))
+      let standalone = WidgetSnapshotWriter.generateSnapshot(verb: verb, date: day)
       #expect(bundle.snapshots[dayOffset] == standalone)
     }
   }

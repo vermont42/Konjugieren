@@ -962,6 +962,13 @@ and base verbs, and from My Verbs once it has entries.
 - **Signal.** Verb pages reached from the widget.
 - **Conjuguer and Conjugar.** Check how each chooses its verb. Not verified.
 
+**Built on `main` 2026-11-13** by [Phase 14](../plans/browse-and-verb-implementation.md#phase-14-a-verb-of-the-day-worth-opening) of the implementation plan. The widget's
+verb and every random verb come from the 1,000 most frequent verbs, a strong or mixed verb and an
+unprefixed one each counting double, and from My Verbs (starred and recent) one draw in three:
+every third day for the widget, its verbs in turn. The widget keeps the verb it shows through the
+day. The frequency bands of 100, 300, and 1,000 are defined once on `Verb`. No signal was added;
+`viewVerbView` with `source` `widget` already counts pages reached from the widget.
+
 #### D6. Collections
 
 Verdict: Yes.

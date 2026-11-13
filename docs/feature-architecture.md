@@ -394,8 +394,8 @@ One on-device record of the learner's own verbs: each verb opened, with its firs
 and a count, and each verb starred, with the date. Built 2026-11-13 in Phase 12 of
 [`plans/browse-and-verb-implementation.md`](../plans/browse-and-verb-implementation.md), as the
 shared piece the ideas document's coordination table assigns to the browse track. Recents, My
-Verbs, and the quiz's My Verbs scope read it today; the verb of the day (Phase 14), the review
-card (Phase 15), collections (Phase 16), and the quiz track will.
+Verbs, the quiz's My Verbs scope, and the verb of the day and random verb (Phase 14) read it today;
+the review card (Phase 15), collections (Phase 16), and the quiz track will.
 
 | Piece | Role |
 |---|---|
@@ -543,6 +543,32 @@ Widget (SnapshotReader)
 NextVerbIntent
     → increments the page offset in shared defaults, reloads timelines
 ```
+
+### Choosing the Verb
+
+`VerbDraw` chooses the widget's verb for each day and every random verb (the `verb/random`
+deeplink, which the Random Verb control and shortcut send). Built 2026-11-13 in Phase 14 of
+[`plans/browse-and-verb-implementation.md`](../plans/browse-and-verb-implementation.md).
+
+- **The frequent verbs** are `FrequencyBand.top1000`, the bands being defined once on `Verb`
+  (`isIn(_:)`, `verbs(in:)`) for the quiz track as well. A draw weights each verb by 2 if it is
+  strong or mixed and by 2 if it has no prefix, so gehen counts 4 and abarbeiten 1. About 80% of
+  draws land on a strong or unprefixed verb, against 64% of the band.
+- **My Verbs** (starred, then recent, as `LearnerVerbs.myVerbs`) gets one draw in three once it
+  has entries, as Josh chose. For the widget that is every third day, by day number, taking the
+  verbs in turn; independent draws left gaps of two weeks and repeated one verb while another
+  waited. A random verb goes to My Verbs by a one-in-three chance. A My Verbs day changes no other
+  day's verb.
+- **Determinism.** A day's frequent verb comes from `SeededRNG` seeded with the day's number since
+  2025-01-01, read with plain modulo rather than `Int.random(in:using:)`, whose use of the generator
+  is not documented.
+- **Stable through the day.** The app rewrites the bundle at every activation, and My Verbs may
+  have changed since the last write. `WidgetSnapshotWriter.writeSnapshot` reads the old bundle,
+  asks it which snapshot the widget shows now (`WidgetSnapshotBundle.displayedSnapshot(at:pageOffset:)`,
+  the page offset included), and puts that verb where the new bundle shows today. This also keeps
+  the quiz widget's answered state, which is keyed by date and infinitive.
+- **Eligibility.** The widget still draws only verbs with an example sentence, which today is all
+  of them.
 
 ### Verb des Tages Widget
 

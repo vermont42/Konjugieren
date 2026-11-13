@@ -9928,3 +9928,44 @@ splice meant to replace one function deleted the view's whole `body`, because it
 the next `private func`, and `private var` declarations lay in between. The file was rebuilt from
 git's copy by replaying the session's edits in order, which worked because every edit had been an
 exact, recorded replacement.
+
+## A Verb of the Day Worth Opening (2026-11-13)
+
+Phase 14 of the browse plan changed how the widget picks its daily verb and how every random verb
+is chosen. The old widget rule was `(days × 127) % 3,572` over the alphabetical list. Because 127
+is small against the corpus, consecutive days marched through the alphabet: beißen, betrauen,
+draufgeben, einjagen, entgegenarbeiten. Most of those are verbs a learner will never meet. The
+random verb was `randomElement()` over the whole corpus, with the same result.
+
+Both now come from `VerbDraw`. The pool is the 1,000 most frequent verbs, with a strong or mixed
+verb counting double and an unprefixed verb counting double, so gehen weighs four times what
+abarbeiten does. The frequency bands of 100, 300, and 1,000 are defined once, on `Verb`, because
+the quiz track's default session will want them too. Once My Verbs has entries, it supplies one
+draw in three, and the list means starred verbs plus recent lookups. Josh chose both.
+
+The interesting part was "one in three". The first version gave each day a one-in-three chance.
+The simulator's first bundle had three verbs in My Verbs and no My Verbs day in nine, which is
+about a 2.6% outcome. That looked like a seeding bug, since the generator was seeded with
+consecutive day numbers. A Python reimplementation over ten years of days showed that the seeding
+was fine: the longest gap was 19 days, against 16 for a true random source. The problem was the
+design. A learner who stars verbs could wait two weeks to see one. For a daily widget, "one in
+three" now means every third day, with My Verbs taking its verbs in turn, because uniform picks
+also showed abberufen twice while gehen waited. The random verb, drawn on demand, keeps the
+chance.
+
+"Stable through the day" turned out to be about the writer, not the draw. The app rewrites the
+widget's 10-day bundle every time it becomes active, and My Verbs can change between two
+activations, so a function of the date alone could swap the verb the widget is showing. The
+writer now reads the old bundle, asks which snapshot the widget displays at this moment, page
+offset included, and keeps that verb in today's place. The simulator showed it working on the
+first launch: the bundle kept beisteuern, which the old rule had chosen that morning. The quiz
+widget reads the same snapshot, so its question and its answered state now hold through the day
+as well.
+
+One check worth repeating: a Python reimplementation of SplitMix64, the weights, and the rotation
+reproduced all ten days of the bundle the app wrote. It also caught a stale claim in the plan's notes.
+Moving to every third day changed the frequent days too, because the old draw had spent one
+generator value on the My Verbs coin before its weighted pick, so the sequence first written down
+there described a design that no longer existed. When a test can only assert "deterministic", a
+second implementation in another language is a cheap way to confirm the values themselves.
+

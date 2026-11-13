@@ -10245,3 +10245,53 @@ rejecting: hauen's hieb covers hauen alone, because abhauen, "scram", has no hie
 The suite went from 490 to 530 tests. A new `KONJUGIEREN_QUIZ_FIXTURE grading` asks the ten
 questions this phase made answerable, which proved handy in the simulator: all six tried counted,
 and the ß key went in mid-word with the cursor after it.
+
+## The Shape of the Answer (2026-11-13)
+
+Phase 2 of the pedagogy plan put the quiz's answer field inside the shape of the answer it wants.
+A learner asked for ankommen in the Präsens for ihr used to see a row that said "Pronoun: ihr"
+and an empty field, and had to guess two things: whether to type the ihr, and whether the an
+goes at the end. Now the field reads `ihr [ ]`. The Sie Imperativ of a separable verb reads
+`[ ] Sie [ ] !`, which answers both questions at a glance, since the prefix can only go in the
+second box.
+
+Before building, I drew three mockups for Josh as ASCII sketches: rounded fields inline with the
+fixed words, underlined blanks like a worksheet, and a single field with the frame drawn as a
+caption above it. He took the inline fields. The caption was the cheapest to build, but it had a
+flaw worth naming: the learner would type the Sie the frame shows as fixed, so the frame would
+be a picture rather than a form. He also chose how two fields behave. Return moves to the next
+empty field and submits only when none is empty. And he accepted that the second field gives away
+whether a verb is separable, which matters only for prefixes that go either way, like um- in
+umfahren and umstoßen. The quiz is practice, not an exam.
+
+The design turned on one observation about the conjugator. The wir and Sie imperatives are the
+only answers with a pronoun inside them (stoßen Sie um), so they are the only place two blanks
+can make sense. Everywhere else one blank is right, and for a separable Präsens it is the only
+right choice: the quiz accepts both kommt an and ankommt, and a second box would make the
+joined spelling awkward to type. So `AnswerFrame` is a list of segments (blank, pronoun, word,
+the (du) addressee, the (3p) note, punctuation). The answer it hands to grading is its blanks
+joined with its own words, the Sie included and the pronoun in front left out. Grading did not
+change at all. A learner who types ihr into the box anyway is still right, because Phase 1
+already strips a leading pronoun.
+
+My first draft got that join wrong. I had defined the graded answer as "everything between the
+first blank and the last", which is tidy until the Sie Imperativ of an inseparable verb, `[ ]
+Sie!`, where the Sie comes after the only blank and would have been dropped. Giving the frame an
+explicit pronoun segment, separate from a word of the answer, fixed it, and the code says what it
+means.
+
+The simulator caught a bug that the tests could not have. I keyed the frame's segments by
+position, so when the next question put ich in front of the field, the field moved from slot 0
+to slot 1, SwiftUI built a new one, and the keyboard lost focus. Typing the next answer went
+nowhere. Keying blanks by their blank index instead of their position keeps the same field alive
+whatever appears in front of it. The run that proved it typed every fixture answer with
+keystrokes alone after a single tap, nine for nine, including stossen for stoßen and the ü key
+landing in the second box. A smaller fix from the same look: the exclamation mark had a full gap
+before it, so the screen said "Sie !". It now sits against the word.
+
+The frame is meant for reuse. Phase 15's three key conjugations (steht auf · stand auf · ist
+aufgestanden) and Phase 18's sentence frames are the same segments with more blanks. The suite
+went from 530 to 544 tests, and one of them pushes every cell of six verbs (gehen, ankommen,
+umstoßen, ferngucken, sein, übersetzen) through its frame and checks that the right answer, cut
+into the blanks, still grades as right. übersetzen earns its place there: in the sense of
+translating it asks `[ ] wir!`, and in the sense of ferrying across, `[ ] wir [ ] !`.

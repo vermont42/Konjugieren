@@ -16,7 +16,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | Phase | Status | Date | Commit | Suggestions |
 |---:|---|---|---|---|
 | 1 | Done | 2026-11-13 | `250cca9` | T1.3, T1.4, T1.5 |
-| 2 | Not started | | | T1.2 |
+| 2 | Awaiting Josh | 2026-11-13 | | T1.2 |
 | 3 | Not started | | | T4.1, T4.4, T4.5 |
 | 4 | Not started | | | T1.6 |
 | 5 | Not started | | | T2.3, T2.6, T6.7, M1 |
@@ -309,7 +309,7 @@ answer field, the ruled variants pass, and tests pin each.
 
 ## Phase 2: The Shape of the Answer
 
-**Suggestions:** T1.2. **Depends on:** Phase 1. **Status:** Not started.
+**Suggestions:** T1.2. **Depends on:** Phase 1. **Status:** Awaiting Josh.
 
 Show the shape of the expected answer around the field: `ihr ______` with the pronoun fixed
 outside the field, and `______ Sie ______!` for a Sie-Imperativ of a separable verb. The frame
@@ -331,7 +331,38 @@ of question.
 
 **How it differed:**
 
-(To be written by the session that finishes this phase.)
+- **Josh chose on 2026-11-13**, from three mockups: inline rounded fields with the fixed words on
+  the same line (over underlined blanks, and over a frame drawn as a caption above one field);
+  Return moves to the next empty blank and submits once none is empty, with the letter keys
+  following the cursor (over Return always advancing, and over a space that jumps blanks); and
+  the second blank may reveal that a verb is separable, since the quiz is practice.
+- **Two blanks only where the pronoun is inside the answer.** The separable wir and Sie Imperativ
+  get `[ ] Sie [ ] !`; every other cell is one blank, compound conjugations included (`ich [ ]`
+  takes bin angekommen). A separable Präsens stays one blank so that ankommt is as easy as kommt
+  an. Separability comes from the asked reading, so übersetzen frames differently by reading.
+- **The person still shows where no pronoun is typed.** The du and ihr Imperativ show `(du) [ ] !`
+  and `(ihr) [ ] !`, since the two take different answers, and sie keeps its `(3s)` or `(3p)`.
+- **The Pronoun row is gone**, and `L.Quiz.pronoun` with it. `QuizItem.pronoun` stays for
+  `ResultsView`.
+- **The frame's pronoun is not part of the graded answer**, so a learner who types `ihr kommt an`
+  into the blank is still right. Nothing new tolerates a Sie typed into the second blank, or the
+  whole `stoßen Sie um` in the first; the Return rule makes the learner fill the second.
+- **A focus bug, found by looking.** The first build keyed the frame's segments by position, so
+  when a pronoun appeared in front of the field on the next question, the field was rebuilt and
+  the keyboard lost focus. The blanks are now keyed by blank index. Giving the frame a new
+  identity per question had the same flaw and would have bounced a software keyboard.
+- **VoiceOver.** Each field's label reads the whole frame in the app's language ("ihr, blank";
+  "blank, Sie, blank. Blank 1 of 2"), with new strings for blank, its position, singular, and
+  plural; the frame's other text is hidden. The German pronouns inside an English label are read
+  by the English voice. Nobody has listened to it yet.
+- **A new fixture**, `KONJUGIEREN_QUIZ_FIXTURE frames`: one question per frame, repeated to 30.
+- **Analytics:** none added, so nothing is staged in `docs/privacy-policy-pending.md`.
+- **Verified on the iPhone 17 simulator** with a hardware keyboard, typing every fixture answer
+  with keystrokes alone after one tap: Return advanced between the Imperativ's blanks, the ß and
+  ü keys inserted into the focused blank, and focus survived every change of frame. The iPad, the
+  software keyboard, and VoiceOver by ear were not tried. The App Store's quiz screenshots will
+  show the frame when next captured; the driver still types into `quiz_answer_field`, and the
+  screenshot fixture asks no wir or Sie Imperativ.
 
 ## Phase 3: A Correction That Stays
 

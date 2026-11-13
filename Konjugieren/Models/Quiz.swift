@@ -197,6 +197,8 @@ class Quiz {
       return items
     case "grading":
       return generateGradingFixture()
+    case "frames":
+      return generateFramesFixture()
     default:
       break
     }
@@ -388,12 +390,35 @@ class Quiz {
       ("senden", .präteritumIndikativ(.firstSingular)),
       ("anerkennen", .präsensIndikativ(.thirdSingular))
     ]
-    // Repeated to the quiz's length, so that the progress dots and the finish behave as usual.
-    // Each repeat is a new item, since the dots tell items apart by id.
-    return (0..<questionCount).map { index in
+    return repeatedFixture(plan)
+  }
+
+  // One question per shape of answer frame from Phase 2 of the pedagogy plan, with its right
+  // answer: angekommen, ankommend, ich stehe auf, sie (3p) kommen an, ihr seid angekommen,
+  // (du) komm an!, (ihr) geht!, steigen wir nach!, stoßen Sie um!, and gehen Sie!
+  private func generateFramesFixture() -> [QuizItem] {
+    let plan: [(infinitiv: String, group: Conjugationgroup)] = [
+      ("ankommen", .perfektpartizip),
+      ("ankommen", .präsenspartizip),
+      ("aufstehen", .präsensIndikativ(.firstSingular)),
+      ("ankommen", .präsensIndikativ(.thirdPlural)),
+      ("ankommen", .perfektIndikativ(.secondPlural)),
+      ("ankommen", .imperativ(.secondSingular)),
+      ("gehen", .imperativ(.secondPlural)),
+      ("nachsteigen", .imperativ(.firstPlural)),
+      ("umstoßen", .imperativ(.thirdPlural)),
+      ("gehen", .imperativ(.thirdPlural))
+    ]
+    return repeatedFixture(plan)
+  }
+
+  // Repeated to the quiz's length, so that the progress dots and the finish behave as usual.
+  // Each repeat is a new item, since the dots tell items apart by id.
+  private func repeatedFixture(_ plan: [(infinitiv: String, group: Conjugationgroup)]) -> [QuizItem] {
+    (0..<questionCount).map { index in
       let spec = plan[index % plan.count]
       guard let verb = Verb.verbs[spec.infinitiv] else {
-        preconditionFailure("Grading fixture references missing verb: \(spec.infinitiv)")
+        preconditionFailure("Quiz fixture references missing verb: \(spec.infinitiv)")
       }
       return makeQuizItem(verb: verb, conjugationgroup: spec.group)
     }
@@ -683,6 +708,17 @@ struct QuizItem: Identifiable {
     case .imperativ(let pn):
       return pn.imperativPronoun
     }
+  }
+
+  /// The shape of the answer around the field, built when shown so that it follows the
+  /// third-person pronoun setting.
+  var answerFrame: AnswerFrame {
+    let reading = verb.reading(at: readingIndex) ?? verb.primaryReading
+    return AnswerFrame.quizFrame(
+      for: conjugationgroup,
+      isSeparable: !reading.prefixes.separableRun.isEmpty,
+      thirdSingularPronoun: Current.settings.thirdPersonPronounGender.pronoun
+    )
   }
 
   func displayName(lang: ConjugationgroupLang) -> String {

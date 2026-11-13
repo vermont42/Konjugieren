@@ -102,6 +102,41 @@ iOS draws the toolbar as a floating bar at the bottom of the screen.
 The DEBUG launch default `KONJUGIEREN_QUIZ_FIXTURE grading` asks ten questions whose answers
 exercise all of this, repeated to 30. See the comment on `Quiz.generateGradingFixture()`.
 
+### The Answer Frame
+
+Built 2026-11-13 in Phase 2 of [`plans/pedagogy-implementation.md`](../plans/pedagogy-implementation.md).
+The answer field sits inside the shape of the expected answer, which replaced the Pronoun row.
+`QuizItem.answerFrame` builds an `AnswerFrame`, a list of segments, and `AnswerFrameView` draws it
+on one line with a rounded text field per blank:
+
+| Question | Frame |
+|---|---|
+| A participle | `[ ]` |
+| A finite cell | `ihr [ ]`, `er [ ]` (the pronoun the settings choose), `sie (3s) [ ]`, `sie (3p) [ ]` |
+| The du or ihr Imperativ | `(du) [ ] !` |
+| The wir or Sie Imperativ | `[ ] Sie!` |
+| The same, separable | `[ ] Sie [ ] !` |
+
+Only the wir and Sie imperatives put a pronoun inside the answer, so only they can take two
+blanks. Every other cell is one blank. A separable Präsens in particular stays one, because the
+quiz accepts both kommt an and ankommt. Whether an Imperativ is separable comes from the asked
+reading's `separableRun`, so übersetzen asks `[ ] wir!` for translating and `[ ] wir [ ] !` for
+ferrying across. The second blank reveals separability for a prefix like um-; Josh accepted that.
+
+`AnswerFrame.answer(filling:)` joins the blanks and the frame's own words of the answer (the Sie,
+never the pronoun in front), and the quiz grades that string as before. A pronoun typed into the
+blank anyway is still stripped by grading. Return moves to the next empty blank and submits once
+none is empty (`blankAfterReturn`); the letter keys insert into whichever blank has the cursor.
+The blanks keep their identity from question to question, keyed by blank index rather than by
+position, so the keyboard keeps its focus when a pronoun appears in front of the field. Each field's
+accessibility label reads the whole frame ("blank, Sie, blank. Blank 1 of 2"), and the frame's
+other text is hidden from VoiceOver. The first field keeps the identifier `quiz_answer_field`; a
+second is `quiz_answer_field_2`.
+
+The frame is meant for reuse: Phase 15's three blanks and Phase 18's sentence frames are more
+segments of the same kind. `KONJUGIEREN_QUIZ_FIXTURE frames` asks one question per frame above,
+repeated to 30.
+
 ### Scoring
 
 - **10 points** per correct answer

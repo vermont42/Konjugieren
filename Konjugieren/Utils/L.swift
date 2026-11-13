@@ -35,6 +35,22 @@ enum L {
     static func quizDotRow(current: Int, total: Int, correct: Int, incorrect: Int, remaining: Int) -> String {
       String(localized: "Accessibility.quizDotRow \(current) \(total) \(correct) \(incorrect) \(remaining)")
     }
+
+    static var quizBlank: String {
+      String(localized: "Accessibility.quizBlank")
+    }
+
+    static func quizBlankPosition(_ position: Int, _ count: Int) -> String {
+      String(localized: "Accessibility.quizBlankPosition \(position) \(count)")
+    }
+
+    static var quizSingular: String {
+      String(localized: "Accessibility.quizSingular")
+    }
+
+    static var quizPlural: String {
+      String(localized: "Accessibility.quizPlural")
+    }
   }
 
   enum RatingsFetcher {
@@ -851,10 +867,6 @@ enum L {
 
     static var translation: String {
       String(localized: "Quiz.translation")
-    }
-
-    static var pronoun: String {
-      String(localized: "Quiz.pronoun")
     }
 
     static var conjugationgroup: String {

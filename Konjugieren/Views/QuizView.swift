@@ -14,10 +14,9 @@ struct QuizView: View {
   @Environment(\.dismiss) private var dismiss
   @Environment(\.horizontalSizeClass) private var sizeClass
   @State private var tabScope = TabQuizScope.allVerbs
-  @State private var userInput = ""
-  @State private var answerSelection: TextSelection?
-  @FocusState private var isTextFieldFocused: Bool
-  @AccessibilityFocusState private var isTextFieldA11yFocused: Bool
+  @State private var answerBlanks: [String] = []
+  @FocusState private var focusedBlank: Int?
+  @AccessibilityFocusState private var accessibilityFocusedBlank: Int?
   private var settings: Settings { Current.settings }
   @State private var shakeOffset: CGFloat = 0
   @State private var showCorrectCheck = false
@@ -65,7 +64,7 @@ struct QuizView: View {
         }
         if !quiz.isInProgress, !quiz.shouldShowResults {
           quiz.start(scope: sheetScope)
-          isTextFieldFocused = true
+          focusedBlank = 0
         }
       }
       .navigationTitle(sheetScope?.title ?? L.Navigation.quiz)
@@ -79,10 +78,9 @@ struct QuizView: View {
       ResultsView(quiz: quiz)
     }
     .onChange(of: quiz.currentIndex) {
-      userInput = ""
-      answerSelection = nil
-      isTextFieldFocused = true
-      isTextFieldA11yFocused = true
+      answerBlanks = []
+      focusedBlank = 0
+      accessibilityFocusedBlank = 0
     }
     .onChange(of: scenePhase) { _, newPhase in
       switch newPhase {
@@ -110,14 +108,6 @@ struct QuizView: View {
           .font(.subheadline)
           .foregroundStyle(.secondary)
           .englishPronunciation()
-
-        if let pronoun = question.pronoun {
-          labeledRow(L.Quiz.pronoun) {
-            Text(verbatim: pronoun)
-              .foregroundStyle(.customForeground)
-              .germanPronunciation()
-          }
-        }
 
         labeledRow(L.Quiz.conjugationgroup) {
           Text(verbatim: question.displayName(lang: settings.conjugationgroupLang))
@@ -182,61 +172,16 @@ struct QuizView: View {
           // }
         }
 
-        TextField(L.Quiz.conjugation, text: $userInput, selection: $answerSelection)
-          .textFieldStyle(.roundedBorder)
-          .textInputAutocapitalization(.never)
-          .autocorrectionDisabled()
-          .focused($isTextFieldFocused)
-          .accessibilityFocused($isTextFieldA11yFocused)
-          .accessibilityHint(L.Accessibility.quizTextFieldHint)
-          .accessibilityIdentifier("quiz_answer_field")
-          .submitLabel(.go)
-          .toolbar {
-            ToolbarItem(placement: .keyboard) {
-              GermanLetterKeyRow { letter in
-                insertLetter(letter)
-              }
-            }
-          }
-          .offset(x: shakeOffset)
-          .onSubmit {
-            guard !userInput.isEmpty else { return }
-            let wasCorrectCount = quiz.correctCount
-            quiz.submitAnswer(userInput)
-            if quiz.correctCount > wasCorrectCount {
-              lastSubmittedCorrectCount = quiz.correctCount
-              if !reduceMotion {
-                withAnimation(.spring(response: 0.3, dampingFraction: 0.6)) {
-                  showCorrectCheck = true
-                }
-                Task { @MainActor in
-                  try? await Task.sleep(for: .seconds(0.6))
-                  withAnimation { showCorrectCheck = false }
-                }
-              }
-            } else {
-              showIncorrectFlash.toggle()
-              if !reduceMotion {
-                withAnimation(.spring(response: 0.08, dampingFraction: 0.3)) {
-                  shakeOffset = 10
-                }
-                Task { @MainActor in
-                  try? await Task.sleep(for: .milliseconds(80))
-                  withAnimation(.spring(response: 0.08, dampingFraction: 0.3)) {
-                    shakeOffset = -8
-                  }
-                  try? await Task.sleep(for: .milliseconds(80))
-                  withAnimation(.spring(response: 0.08, dampingFraction: 0.3)) {
-                    shakeOffset = 5
-                  }
-                  try? await Task.sleep(for: .milliseconds(80))
-                  withAnimation(.spring(response: 0.1, dampingFraction: 0.5)) {
-                    shakeOffset = 0
-                  }
-                }
-              }
-            }
-          }
+        AnswerFrameView(
+          frame: question.answerFrame,
+          blanks: $answerBlanks,
+          focusedBlank: $focusedBlank,
+          accessibilityFocusedBlank: $accessibilityFocusedBlank,
+          identifier: "quiz_answer_field"
+        ) {
+          submit(question)
+        }
+        .offset(x: shakeOffset)
       }
       .konjCard()
       .overlay(
@@ -273,19 +218,42 @@ struct QuizView: View {
     }
   }
 
-  /// Replaces the selection, or inserts at the cursor, and leaves the cursor after the letter.
-  private func insertLetter(_ letter: String) {
-    guard
-      case .selection(let range) = answerSelection?.indices,
-      range.lowerBound >= userInput.startIndex,
-      range.upperBound <= userInput.endIndex
-    else {
-      userInput.append(letter)
-      return
+  private func submit(_ question: QuizItem) {
+    let wasCorrectCount = quiz.correctCount
+    quiz.submitAnswer(question.answerFrame.answer(filling: answerBlanks))
+    if quiz.correctCount > wasCorrectCount {
+      lastSubmittedCorrectCount = quiz.correctCount
+      if !reduceMotion {
+        withAnimation(.spring(response: 0.3, dampingFraction: 0.6)) {
+          showCorrectCheck = true
+        }
+        Task { @MainActor in
+          try? await Task.sleep(for: .seconds(0.6))
+          withAnimation { showCorrectCheck = false }
+        }
+      }
+    } else {
+      showIncorrectFlash.toggle()
+      if !reduceMotion {
+        withAnimation(.spring(response: 0.08, dampingFraction: 0.3)) {
+          shakeOffset = 10
+        }
+        Task { @MainActor in
+          try? await Task.sleep(for: .milliseconds(80))
+          withAnimation(.spring(response: 0.08, dampingFraction: 0.3)) {
+            shakeOffset = -8
+          }
+          try? await Task.sleep(for: .milliseconds(80))
+          withAnimation(.spring(response: 0.08, dampingFraction: 0.3)) {
+            shakeOffset = 5
+          }
+          try? await Task.sleep(for: .milliseconds(80))
+          withAnimation(.spring(response: 0.1, dampingFraction: 0.5)) {
+            shakeOffset = 0
+          }
+        }
+      }
     }
-    let offset = userInput.distance(from: userInput.startIndex, to: range.lowerBound) + letter.count
-    userInput.replaceSubrange(range, with: letter)
-    answerSelection = TextSelection(insertionPoint: userInput.index(userInput.startIndex, offsetBy: offset))
   }
 
   private var myVerbs: [Verb] {

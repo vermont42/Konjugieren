@@ -681,6 +681,13 @@ checked Wiktionary's alternatives against Duden, and the quiz now accepts the va
 standard (komme, sammle, kämst, stünde, sandte, and others) while the verb page keeps the
 conjugator's. The audit also found and fixed two wrong verbs, scheiden and vergleichen.
 
+**Built on `main` 2026-11-13** by [Phase 2](pedagogy-implementation.md#phase-2-the-shape-of-the-answer)
+of the pedagogy plan: the shape of the expected answer. The field sits inside a frame that
+replaced the Pronoun row: `ihr [ ]` for a finite cell, `(du) [ ] !` for the du Imperativ, `[ ] Sie!`
+for the Sie Imperativ, and `[ ] Sie [ ] !` with two fields when the verb is separable. A
+participle is a bare field. A separable Präsens stays one field, so the joined ankommt is as easy
+to type as kommt an. Return fills the next empty field before it submits.
+
 ### Tier 2: Change What the Quiz Asks
 
 | Suggestion | Basis | Effort | Verdict |

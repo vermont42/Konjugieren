@@ -31,6 +31,7 @@ Konjugieren/
 │   ├── AblautGroupInfo.swift   # Identifiable struct with localized ablaut-group descriptions
 │   ├── AblautGroupParser.swift # XMLParser delegate that parses AblautGroups.xml
 │   ├── AblautGroups.xml        # 76 ablaut pattern definitions
+│   ├── AnswerFrame.swift       # The shape of a quiz answer: blanks and the words around them (ihr [ ], [ ] Sie [ ] !); the answer a set of filled blanks gives, and where Return goes
 │   ├── AnswerSpelling.swift    # Quiz answer normalization: case and spacing, the leading pronouns a cell allows (ihr habt …), digraph spellings of umlauts (ue for ü, never ü for ue), and the orthographic key for showing a learner the umlaut spelling
 │   ├── AppIcon.swift           # Alternate app-icon enum (bratwurst/hat/pretzel/bundestag)
 │   ├── AudioFeedback.swift     # Setting enum: enable/disable sound effects
@@ -73,7 +74,7 @@ Konjugieren/
 │   ├── Prefix.swift            # Separable/inseparable prefix enum ([Prefix] helpers live in Reading.swift)
 │   ├── PrefixMeaning.swift     # Prefix meanings with PIE etymologies
 │   ├── PrefixSection.swift     # Curated-vs-other heading for the prefix-grouped verb list
-│   ├── Quiz.swift              # @Observable quiz state: questions, timer, scoring; QuizItem grading (accepts, preferredSpelling); DEBUG fixtures (screenshot, grading); QuizScope (the verbs asked about, the question count, the analytics source, and whether the score is ranked): every verb, My Verbs, or three questions on a verb's page
+│   ├── Quiz.swift              # @Observable quiz state: questions, timer, scoring; QuizItem grading (accepts, preferredSpelling); DEBUG fixtures (screenshot, grading, frames); QuizItem.answerFrame; QuizScope (the verbs asked about, the question count, the analytics source, and whether the score is ranked): every verb, My Verbs, or three questions on a verb's page
 │   ├── QuizDifficulty.swift    # Setting enum: regular vs ridiculous
 │   ├── RelatedVerbs.swift      # Verb.root (the innermost base: anerkennen → kennen) and Verb.related(readingIndex:): verbs built on the same root, one verb per other root of the ablaut group, and the Families pages of a reading
 │   ├── Region.swift            # Setting enum: the three standard varieties (north/austria/switzerland)
@@ -144,11 +145,12 @@ Konjugieren/
 │   ├── UttererReal.swift       # AVSpeechSynthesizer implementation
 │   └── WidgetSnapshotWriter.swift  # Generates and persists the 10-day widget bundle from VerbDraw, keeping the verb the widget shows today
 └── Views/
+    ├── AnswerFrameView.swift   # Draws an AnswerFrame on one line with a text field per blank; Return fills the next empty blank, then submits; the letter keys follow the cursor; each field's VoiceOver label reads the whole frame
     ├── ErrorExplainerView.swift # AI-generated explanations for conjugation errors
     ├── FamilyBrowseView.swift  # The Families tab: a Collections section (rows; three cards on iPad) above the verb families, prefixes, and ablaut groups; opens a `list/<key>` link's collection
     ├── FamilyDetailView.swift  # Detail view for a single family/prefix/ablaut category; an Alphabetical/Frequency control orders the verbs within each section; an expanded ablaut group starts with its VerbCollectionBar and checks the verbs looked up, and a link opens the page with its group expanded
     ├── GameView.swift          # Space-invaders-like verb conjugation game
-    ├── GermanLetterKeyRow.swift # ä ö ü ß keys shown above the keyboard, for the search field and the quiz answer field (a keyboard toolbar there, inserting at the cursor)
+    ├── GermanLetterKeyRow.swift # ä ö ü ß keys shown above the keyboard, for the search field and the quiz's answer frame (a keyboard toolbar there, inserting at the cursor of the focused blank)
     ├── InfoBrowseView.swift    # List of Info articles (dedication, history, etc.)
     ├── InfoView.swift          # Detail view for a single Info article
     ├── MainTabView.swift       # Root TabView with five tabs
@@ -213,6 +215,7 @@ Shared/
 KonjugierenTests/
 ├── CLAUDE.md                   # Lazily loaded Claude Code guidance: Swift Testing conventions for this target
 ├── Models/
+│   ├── AnswerFrameTests.swift      # The quiz's answer frame: every cell of six verbs takes its right answer through its frame, the frame per kind of cell, readings, Return
 │   ├── AnswerSpellingTests.swift   # Quiz grading: the report's three simulator cases, leading pronouns by person, digraphs both ways, the spelling shown beside the checkmark by region and clause
 │   ├── ConjugationMapTests.swift   # Bundled map equals a fresh build (staleness), finds the verb of ≥99% of example sentences (Scan 2 of the defect plan), anchors, format round-trip
 │   ├── ConjugationMatchTests.swift # Verb.conjugations(matching:): clauses, regions, finite parts, readings

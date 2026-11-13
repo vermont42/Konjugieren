@@ -208,6 +208,10 @@ struct VerbView: View {
             }
             .padding(.horizontal)
           }
+
+          Divider()
+          RelatedVerbsView(related: verb.related(readingIndex: readingIndex))
+            .padding(.horizontal)
         }
         .padding(.vertical)
       }

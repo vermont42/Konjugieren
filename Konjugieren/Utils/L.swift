@@ -856,6 +856,14 @@ enum L {
   }
 
   enum VerbView {
+    static func allRelated(_ count: Int) -> String {
+      String(localized: "VerbView.allRelated.\(count)")
+    }
+
+    static func builtOn(_ root: String) -> String {
+      String(localized: "VerbView.builtOn \(root)")
+    }
+
     static var etymologyHeading: String {
       String(localized: "VerbView.etymologyHeading")
     }
@@ -864,12 +872,24 @@ enum L {
       String(localized: "VerbView.exampleSentenceHeading")
     }
 
+    static var familiesHeading: String {
+      String(localized: "VerbView.familiesHeading")
+    }
+
     static var matchesSearch: String {
       String(localized: "VerbView.matchesSearch")
     }
 
     static var openArticle: String {
       String(localized: "VerbView.openArticle")
+    }
+
+    static var relatedHeading: String {
+      String(localized: "VerbView.relatedHeading")
+    }
+
+    static func sameAblaut(_ group: String) -> String {
+      String(localized: "VerbView.sameAblaut \(group)")
     }
 
     static func secondName(_ name: String) -> String {

@@ -22,7 +22,7 @@ that Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until
 | 6 | Done | 2026-11-12 | `23bab52` | A5 (the search) |
 | 7 | Done | 2026-11-12 | `91831dc` | B3, B5's tip |
 | 8 | Done | 2026-11-12 | `46f400a` | B7's article |
-| 9 | Not started | | | B4, A9 |
+| 9 | Awaiting Josh | 2026-11-12 | | B4, A9 |
 | 10 | Not started | | | B6 |
 | 11 | Not started | | | C1, C2 |
 | 12 | Not started | | | D1, D2 |
@@ -637,9 +637,11 @@ deeplinks address articles before choosing where the new one goes in the list.
   System". Each tap did nothing. Both are fixed.
 - **Das Präsens.** The German Futur Indikativ article treated Präsens as masculine ("den
   Präsens"), where Duden has das Präsens. At Josh's request its nine masculine uses are now
-  neuter. The German Präsens Indikativ, Präsens Konjunktiv I, and Futur Konjunktiv I articles do
-  the same (about 20 uses, among correct genitives such as "der Präsens-Konjunktiv-I-Konjugation")
-  and were left for a later pass.
+  neuter. In a follow-up, also at his request, the German Präsens Indikativ, Präsens Konjunktiv I,
+  Futur Konjunktiv I, and Perfekt Konjunktiv I articles got the same fix: 41 edits, including the
+  pronouns that pointed back (Er drückt, Ohne ihn) and four masculine Perfekt and Präteritum in the
+  same sentences. Correct uses that belong to another noun ("in der Präsens-Konjunktiv-I-Konjugation",
+  "der Präsens-Konjunktiv-I-Stil") were kept.
 - **How it was tested.** 4 new `@Test` functions, 344 in all. In the iPhone 17 simulator: the row
   in the Info list, the article opened from it and from `konjugieren://info/20`, the heading,
   symbol, bold text, links, and red ablaut letters. Not tried: German on a device, VoiceOver, iPad,
@@ -659,6 +661,48 @@ deeplinks address articles before choosing where the new one goes in the list.
   frequent first.
 
 **How it differed:**
+
+- **Placement.** Josh chose, on 2026-11-12, from screenshots of a prototype, a Related Verbs card
+  at the bottom of the page, below the example sentence, so the top of the page is unchanged. The
+  alternatives were the same card plus tappable family and ablaut pills at the top (today a tap on
+  the ablaut pill speaks it), or one scrolling row of chips under the pills.
+- **"The base verb and its derivatives"** is the innermost root, followed through nested prefixes:
+  an+erkennen's base is erkennen, whose base is kennen, so anerkennen sits with kennen, bekennen,
+  and verkennen (`Verb.root`, in `RelatedVerbs.swift`). The corpus has 601 roots. 113 of them are
+  not verbs (beginnen's ginnen, ausstatten's statten), so those verbs show no base verb, though
+  verbs built on the same root still list each other. The card shows the root verb first, then up
+  to six by frequency, then "All 40", which opens every verb of the relation with an
+  Alphabetical/Frequency control, Frequency first.
+- **Ablaut relatives are one verb per other root**, by frequency: singen shows klingen, sinken,
+  trinken, and so on, not their hundreds of derivatives. A root that is not a verb is represented
+  by its most frequent verb in the group (beginnen on schwimmen's page). Groups whose verbs all
+  share one root (stehen, gehen, sein) show no ablaut row, since the first row already covers them.
+- **The family.** Chips open the reading's conjugation family and, for a prefixed verb, its
+  Separable or Inseparable page. Each relation follows the reading on screen, so hängen's weak
+  reading has no ablaut row.
+- **Navigation.** The verb page pushes through `VerbPagePush`, an environment action that the
+  Verbs and Families stacks each inject, so the card works in both tabs. The Verbs tab gained
+  destinations for a family page and the full related list, which means a learner who arrives from
+  Spotlight or a widget reaches them without switching tabs. The chips use `onTapGesture` and
+  `accessibilityAction`, as `docs/voiceover.md` asks. Each chip is one element in its own language.
+  The captions ("Built on stehen") are read in the learner's language, German root included.
+- **A9 on all seven pages** (Josh, 2026-11-12). On Separable, Inseparable, and Ablaut, the control
+  orders the verbs within each prefix section and ablaut group, and the sections keep their order.
+  The choice is not stored: a family page always opens Alphabetical, as the verdict asks.
+- **Analytics.** A verb opened from the card or its full list sends `source` `related`, now marked
+  as sent in `docs/feature-architecture.md`. The staged privacy bullet's examples now name "another
+  verb's page". A family page opened from the card sends `viewFamilyDetailView` as before, and a
+  verb opened from it reports `family`.
+- **Seen, not fixed.** With the Inseparable page open, an accessibility query (AXe's `describe-ui`)
+  pegged the app's CPU for about 45 seconds inside SwiftUI's accessibility sorting. The prefix and
+  family lists put about 1,000 rows in a non-lazy stack. This phase added only the control and a
+  sort there, so the cost probably predates it, but it was not compared with an older build.
+  VoiceOver on that page deserves a look.
+- **How it was tested.** 13 new `@Test` functions, 357 in all. In the iPhone 17 simulator:
+  aufstehen's, verstehen's, and singen's cards; "All 40" and a verb opened from it; the Inseparable
+  page opened from verstehen's card inside the Verbs tab; and the Mixed page by frequency (haben,
+  können, müssen). Not tried: iPad, VoiceOver, a German-language device, and the card inside the
+  Families tab.
 
 ## Phase 10: Copy and Share
 

@@ -9687,3 +9687,58 @@ article's `‡link‡` leads anywhere, and a broken one fails silently: the tap 
 language. Its first run found three dead links in the Terminology article, all present since it
 was written: "Präteritum Indicativ" with a c, in both languages, and the German text linking the
 English title of the verb-history article.
+
+## Das Präsens, Forty-One Times (2026-11-12)
+
+A coda to Phase 8. The German Futur Indikativ article said "den Präsens", and Josh asked for that
+and then for the same fix in the other German articles. Duden gives the Latin-derived terms as
+neuter (das Präsens, das Präteritum, das Perfekt, das Futur), and the app's own articles mostly
+agree, sometimes within a single sentence: "Während der Präsens Konjunktiv I berichtet … berichtet
+das Futur Konjunktiv I".
+
+It could not be a find-and-replace. "Der" before Präsens is often right, because the article belongs
+to another noun: "in der Präsens-Konjunktiv-I-Konjugation", "der Präsens-Konjunktiv-I-Stil", and
+"der Konjunktiv I" on its own, whose head really is masculine. Pronouns that pointed back had to
+change too, and two did not survive a mechanical swap: "Ohne ihn würde der Journalismus …" became
+"Ohne diese Conjugationgroup …", and "Er ermöglicht es Reportern" became "Es erlaubt Reportern"
+rather than "Es ermöglicht es". The script edited only each article's German line in the catalog
+and asserted every phrase's count there, so no replacement could land in another article. Forty-one
+edits across four articles. About twenty masculine Perfekt and Präteritum remain, mostly in the
+Perfekt Konjunktiv I and Präteritum Konjunktiv II articles' descriptions of themselves.
+
+## Ways Out of a Verb Page (2026-11-12)
+
+Phase 9 of the browse plan. The verb page was a dead end: from aufstehen nothing led to stehen,
+verstehen, or the other strong verbs, and it is the only screen someone arriving from Spotlight or
+a widget sees. Josh likes the page as it is, so the plan asked for a placement, with a screenshot,
+before building. The quickest honest screenshot was a working prototype. It became the real card,
+a Related Verbs card below the example sentence, once Josh picked it over chips at the top.
+
+The interesting part was deciding what "the base verb" means. The corpus marks prefixes (an+, er\*),
+and peeling them off once gives a base, but sometimes the base is itself a prefixed verb. an+erkennen
+peels to erkennen, which peels to kennen. Stopping after one step would have cut anerkennen off from
+kennen, bekennen, and verkennen, so the code follows the chain to the innermost root. 601 roots
+result. 113 of them are not German verbs at all: be\*ginnen's ginnen, aus+statten's statten. Those
+are fossils of verbs that survive only with a prefix. The Germanic verb behind ginnen is attested
+only in compounds, which is why German has beginnen and English has begin, and neither has the bare
+verb. The card shows no base verb for them,
+though erstatten and gestatten still find each other through statten.
+
+Ablaut groups needed a different cut. The singen group holds hundreds of verbs, nearly all of them
+derivatives of seven roots: singen, klingen, sinken, trinken, zwingen, springen, dringen. Listing
+one verb per root turns the group into the thing a learner wants: verbs that change their vowel the
+way this one does. In the stehen, gehen, and sein groups every verb shares one root, so the ablaut
+row would only repeat the first row, and it is left out.
+
+One snag was in the plumbing. The verb page lives in two navigation stacks, Verbs and Families, and
+`NavigationLink` is out because it flattens per-element VoiceOver languages. So the stacks inject a
+small push action into the environment, and the Verbs tab learned to show a family page. Another
+was a name clash. A wrapping chip row needs a custom `Layout`, and the app already has an `enum
+Layout` of spacing constants, which shadowed SwiftUI's protocol until the conformance was spelled
+`SwiftUI.Layout`.
+
+A9 came along: an Alphabetical/Frequency control on every family page. On the Mixed page, Frequency
+puts haben, können, müssen, sollen, and wollen first, which says more about what "mixed" means in
+practice than the alphabet's abbrennen and abbringen. While testing, an accessibility query against
+the Inseparable page pinned the CPU for 45 seconds, sorting about a thousand non-lazy rows. That
+cost predates this phase, and it is noted in the plan for a later look.

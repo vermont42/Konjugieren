@@ -175,6 +175,12 @@ struct VerbBrowseView: View {
         VerbView(verb: destination.verb, source: destination.source, marks: destination.marks)
           .id(destination)
       }
+      .navigationDestination(for: RelatedVerbListDestination.self) { destination in
+        RelatedVerbListView(destination: destination)
+      }
+      .navigationDestination(for: BrowseableFamily.self) { family in
+        FamilyDetailView(family: family) { verb in navigationPath.append(VerbDestination(verb: verb, source: .family)) }
+      }
       .searchable(
         text: $searchText,
         placement: searchPlacement,
@@ -232,6 +238,7 @@ struct VerbBrowseView: View {
         }
       }
     }
+    .environment(\.verbPagePush, VerbPagePush { navigationPath.append($0) })
   }
 
   private func failedSearchHelp(guess: VerbSearchResults.Hit?) -> some View {

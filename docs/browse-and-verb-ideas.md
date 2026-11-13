@@ -650,6 +650,10 @@ under their base verbs, and frequency order inside the Families lists.
 - **Signal.** The share of verb pages reached by browsing. Wait for it before building.
 - **Conjuguer and Conjugar.** Their Models tabs already group verbs by pattern.
 
+**Built on `main` 2026-11-12** by [Phase 9](../plans/browse-and-verb-implementation.md#phase-9-ways-between-verbs) of the implementation plan, the segmented control
+only, on all seven family pages. On the Separable, Inseparable, and Ablaut pages it orders the
+verbs within each prefix section and ablaut group, and the sections keep their order.
+
 ### Group B: Make the Verb Page Answer in One Screen
 
 #### B1. Principal Parts at the Top
@@ -731,6 +735,10 @@ bestehen), the other verbs of its ablaut group, and its family.
 - **Signal.** Verb pages per session, and the share reached from another verb page.
 - **Conjuguer and Conjugar.** Conjuguer's model row is tappable and Conjugar's is plain text.
   Making Conjugar's a link is S.
+
+**Built on `main` 2026-11-12** by [Phase 9](../plans/browse-and-verb-implementation.md#phase-9-ways-between-verbs) of the implementation plan, as a Related Verbs card
+at the bottom of the verb page: up to six verbs built on the same root with a link to all of
+them, up to six other bases of the ablaut group, and the verb's Families pages.
 
 #### B5. Bring the Etymology and the Example Within Reach
 

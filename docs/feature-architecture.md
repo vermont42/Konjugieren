@@ -605,13 +605,13 @@ follow it. Opening or closing that row sends nothing.
 | `family` | Yes | A verb on a family's page |
 | `handoff` | Yes | Handoff from another device |
 | `infoLink` | Yes | A verb linked from an Info article |
+| `related` | Yes | A verb in a verb page's Related Verbs card, or in the full list it opens |
 | `resume` | Yes | The same page appearing again (see above) |
 | `search` | Yes | A search result, opened by tap, Return, or the arrow keys |
 | `searchGuess` | Yes | The guess under "No verbs found" |
 | `shortcut` | Yes | The Open Verb and Random Verb shortcuts |
 | `spotlight` | Yes | A Spotlight result |
 | `widget` | Yes | Any home-screen, lock-screen, or quiz widget |
-| `related` | Phase 9 | A related verb on a verb page |
 | `sharedLink` | Phase 10 | A link inside shared text |
 | `myVerbs`, `recent` | Phase 12 | My Verbs, and the recent lookups |
 | `list` | Phase 16 | A collection |

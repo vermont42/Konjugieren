@@ -69,9 +69,13 @@ struct FamilyBrowseView: View {
       .navigationDestination(for: VerbDestination.self) { destination in
         VerbView(verb: destination.verb, source: destination.source)
       }
+      .navigationDestination(for: RelatedVerbListDestination.self) { destination in
+        RelatedVerbListView(destination: destination)
+      }
       .onAppear { navigateToDeeplinkedFamily() }
       .onChange(of: world.family) { navigateToDeeplinkedFamily() }
     }
+    .environment(\.verbPagePush, VerbPagePush { navigationPath.append($0) })
   }
 
   private func navigateToDeeplinkedFamily() {

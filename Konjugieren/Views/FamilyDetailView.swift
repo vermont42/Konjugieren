@@ -6,6 +6,7 @@ import TipKit
 struct FamilyDetailView: View {
   let family: BrowseableFamily
   let navigateToVerb: (Verb) -> Void
+  @State private var sortOrder = SortOrder.alphabetical
 
   var body: some View {
     ZStack {
@@ -32,12 +33,23 @@ struct FamilyDetailView: View {
             .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
             .konjCard()
 
+          Picker(L.VerbBrowse.sortOrder, selection: $sortOrder) {
+            ForEach(SortOrder.allCases, id: \.self) { order in
+              Text(order.displayName)
+                .tag(order)
+            }
+          }
+          .pickerStyle(.segmented)
+          .padding(.top, Layout.doubleDefaultSpacing)
+          .sensoryFeedback(.selection, trigger: sortOrder)
+          .accessibilityIdentifier("family_sort_order")
+
           if family.hasPrefixList {
-            PrefixGroupedVerbList(family: family, navigateToVerb: navigateToVerb)
+            PrefixGroupedVerbList(family: family, sortOrder: sortOrder, navigateToVerb: navigateToVerb)
           } else if family.hasAblautList {
-            AblautGroupedVerbList(family: family, navigateToVerb: navigateToVerb)
+            AblautGroupedVerbList(family: family, sortOrder: sortOrder, navigateToVerb: navigateToVerb)
           } else {
-            VerbListSection(verbs: family.verbs, navigateToVerb: navigateToVerb)
+            VerbListSection(verbs: family.verbs.sorted(by: sortOrder), navigateToVerb: navigateToVerb)
           }
         }
         .padding(.horizontal, Layout.doubleDefaultSpacing)
@@ -53,6 +65,7 @@ struct FamilyDetailView: View {
 
 struct PrefixGroupedVerbList: View {
   let family: BrowseableFamily
+  let sortOrder: SortOrder
   let navigateToVerb: (Verb) -> Void
   @Environment(\.horizontalSizeClass) private var sizeClass
 
@@ -63,12 +76,12 @@ struct PrefixGroupedVerbList: View {
 
         if sizeClass == .regular {
           LazyVGrid(columns: [GridItem(.adaptive(minimum: Layout.verbGridMinimum))], spacing: 0) {
-            ForEach(group.verbs) { verb in
+            ForEach(group.verbs.sorted(by: sortOrder)) { verb in
               VerbRow(verb: verb, showFamilyBadge: true) { navigateToVerb(verb) }
             }
           }
         } else {
-          ForEach(group.verbs) { verb in
+          ForEach(group.verbs.sorted(by: sortOrder)) { verb in
             VerbRow(verb: verb, showFamilyBadge: true) { navigateToVerb(verb) }
 
             Divider()
@@ -209,6 +222,7 @@ struct VerbListSection: View {
 
 struct AblautGroupedVerbList: View {
   let family: BrowseableFamily
+  let sortOrder: SortOrder
   let navigateToVerb: (Verb) -> Void
   @State private var expandedGroups: Set<String> = []
 
@@ -218,6 +232,7 @@ struct AblautGroupedVerbList: View {
         ForEach(family.ablautGroups) { group in
           AblautGroupSection(
             group: group,
+            sortOrder: sortOrder,
             isExpanded: expandedGroups.contains(group.exemplar),
             onToggle: {
               if expandedGroups.contains(group.exemplar) {
@@ -237,6 +252,7 @@ struct AblautGroupedVerbList: View {
 
 struct AblautGroupSection: View {
   let group: AblautGroupInfo
+  let sortOrder: SortOrder
   let isExpanded: Bool
   let onToggle: () -> Void
   let navigateToVerb: (Verb) -> Void
@@ -257,12 +273,12 @@ struct AblautGroupSection: View {
       if isExpanded {
         if sizeClass == .regular {
           LazyVGrid(columns: [GridItem(.adaptive(minimum: Layout.verbGridMinimum))], spacing: 0) {
-            ForEach(group.verbs) { verb in
+            ForEach(group.verbs.sorted(by: sortOrder)) { verb in
               VerbRow(verb: verb, showFamilyBadge: true, leadingInset: 16) { navigateToVerb(verb) }
             }
           }
         } else {
-          ForEach(group.verbs) { verb in
+          ForEach(group.verbs.sorted(by: sortOrder)) { verb in
             VerbRow(verb: verb, showFamilyBadge: true, leadingInset: 16) { navigateToVerb(verb) }
 
             Divider()

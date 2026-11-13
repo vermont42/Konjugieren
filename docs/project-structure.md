@@ -68,11 +68,12 @@ Konjugieren/
 │   ├── PrefixSection.swift     # Curated-vs-other heading for the prefix-grouped verb list
 │   ├── Quiz.swift              # @Observable quiz state: questions, timer, scoring
 │   ├── QuizDifficulty.swift    # Setting enum: regular vs ridiculous
+│   ├── RelatedVerbs.swift      # Verb.root (the innermost base: anerkennen → kennen) and Verb.related(readingIndex:): verbs built on the same root, one verb per other root of the ablaut group, and the Families pages of a reading
 │   ├── Region.swift            # Setting enum: the three standard varieties (north/austria/switzerland)
 │   ├── QuizErrorHistory.swift  # Persistence for recent quiz errors (up to 200)
 │   ├── SearchReport.swift      # SearchTracker (one search, first letter to its end) and SearchReport (the banded finishSearch parameters)
 │   ├── SearchScope.swift       # Setting enum: infinitive-only vs. infinitive-and-translation search
-│   ├── SortOrder.swift         # Enum for verb list sorting (alphabetical/frequency)
+│   ├── SortOrder.swift         # Enum for verb list sorting (alphabetical/frequency); [Verb].sorted(by:), used by the family pages and the related-verb list
 │   ├── Sound.swift             # Sound effect definitions (guns, chimes, applause)
 │   ├── TabSelection.swift      # TabView selection enum for programmatic tab switching
 │   ├── ThirdPersonPronounGender.swift  # Setting enum: er/sie/es preference
@@ -131,7 +132,7 @@ Konjugieren/
 └── Views/
     ├── ErrorExplainerView.swift # AI-generated explanations for conjugation errors
     ├── FamilyBrowseView.swift  # Browseable list of verb families, prefixes, and ablaut groups
-    ├── FamilyDetailView.swift  # Detail view for a single family/prefix/ablaut category
+    ├── FamilyDetailView.swift  # Detail view for a single family/prefix/ablaut category; an Alphabetical/Frequency control orders the verbs within each section
     ├── GameView.swift          # Space-invaders-like verb conjugation game
     ├── GermanLetterKeyRow.swift # ä ö ü ß keys shown above the keyboard; search uses it, the quiz answer field can adopt it
     ├── InfoBrowseView.swift    # List of Info articles (dedication, history, etc.)
@@ -139,13 +140,14 @@ Konjugieren/
     ├── MainTabView.swift       # Root TabView with five tabs
     ├── OnboardingView.swift    # Multi-page onboarding shown on first launch
     ├── QuizView.swift          # Quiz gameplay: questions, timer, answer input
+    ├── RelatedVerbsView.swift  # The verb page's Related Verbs card (chips in a FlowLayout), RelatedVerbListView (every verb of one relation), and VerbPagePush, the environment action by which a verb page pushes onto whichever tab's stack shows it
     ├── ResultsView.swift       # Modal showing quiz results and leaderboard button
     ├── RichTextView.swift      # Renders RichTextBlock content with styling
     ├── SettingsView.swift      # Settings UI with segmented pickers
     ├── TutorTestView.swift     # Debug view for testing the AI tutor
     ├── TutorView.swift         # Chat interface for the AI tutor with sample queries
     ├── VerbBrowseView.swift    # Searchable, sortable list of all verbs; the letter row replaces the sort picker while search is focused; a result found by a conjugation says which cells matched, and separable verbs in which the query is a stranded part fold into one row (a grid section on iPad); a failed search shows a guess and a mail link; Return and the arrow keys open and move through results on iPad and Mac
-    └── VerbView.swift          # Verb detail showing all conjugations; a search result opens it on the matched reading, scrolled to the matched section, with the matched rows tinted
+    └── VerbView.swift          # Verb detail showing all conjugations; a search result opens it on the matched reading, scrolled to the matched section, with the matched rows tinted; ends with the Related Verbs card
 
 KonjugierenWidget/
 ├── AnswerQuizIntent.swift      # AppIntent for answering a quiz question from the widget
@@ -203,6 +205,7 @@ KonjugierenTests/
 │   ├── QuizErrorHistoryTests.swift # Quiz error persistence tests
 │   ├── QuizTests.swift         # Quiz logic, scoring, and timer pause/resume tests
 │   ├── SearchReportTests.swift # SearchTracker lifecycle, finishSearch parameters, and the no-typed-text guarantee
+│   ├── RelatedVerbsTests.swift # Verb.root through nested prefixes, verbs built on a root, ablaut relatives (one per root), family pages, per-reading relations, [Verb].sorted(by:)
 │   ├── RefusalDetectionTests.swift # Tutor refusal-phrase detection, incl. the "null" exact-match false-positive guard
 │   ├── VerbSearchTests.swift   # VerbSearch: folding, match-kind ranking, the ideas doc's failed queries, list/picker agreement, the failed-search guess
 │   ├── VerbTests.swift         # Verb.stamm and endingIsValid tests

@@ -127,7 +127,7 @@ class Quiz {
 
   func start(scope: QuizScope = .allVerbs) {
     self.scope = scope
-    level = Current.settings.quizLevel
+    level = scope.level ?? Current.settings.quizLevel
     questions = generateQuestions()
     guard !questions.isEmpty else {
       return
@@ -724,8 +724,13 @@ struct QuizScope {
   /// The collection a quiz was started from, which `startQuiz` names (Phase 16).
   var collectionKey: String?
 
-  /// The learner's own choice of conjugationgroups and verbs, from the Quiz tab.
+  /// The learner's own choice of conjugationgroups and verbs, from the Quiz tab, or a practice
+  /// set's.
   var custom: CustomQuiz?
+
+  /// A practice set's level, so that every learner who opens it is asked the same set (Phase 10).
+  /// Nil asks at the learner's own level.
+  var level: QuizLevel?
 
   /// Only a default quiz posts, to the leaderboard of its level, as Josh decided on 2026-11-13: a
   /// score over a learner's own verbs or conjugationgroups, or over three questions, compares with

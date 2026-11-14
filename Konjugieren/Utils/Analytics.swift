@@ -10,6 +10,7 @@ enum ParameterKey: String {
   case dwell
   case level
   case matchKind
+  case method
   case outcome
   case queryLength
   case questionCount
@@ -37,7 +38,9 @@ enum AnalyticsName: String {
   case tapRateOrReview
   case tapRevealReviewCard
   case tapSendTutorMessage
+  case tapKeepPracticeSet
   case tapShareCollection
+  case tapSharePracticeSet
   case tapShareVerb
   case tapShowOnboarding
   case tapStarVerb
@@ -48,6 +51,7 @@ enum AnalyticsName: String {
   case viewFamilyDetailView
   case viewInfoBrowseView
   case viewInfoView
+  case viewPracticeSet
   case viewQuizView
   case viewReviewCard
   case viewSettingsView
@@ -71,6 +75,7 @@ enum AnalyticsSource: String, CaseIterable {
   case list
   case lookup
   case myVerbs
+  case qrCode
   case quickAction
   case quizCorrection
   case recent

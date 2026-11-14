@@ -56,6 +56,17 @@ extension URL {
     ])
   }
 
+  /// `konjugieren://quiz/set?groups=imperativ&verbs=modals&source=qrCode`. The quiz route's
+  /// other targets (`quiz/start`) still open the Quiz tab.
+  static func practiceSetDeeplink(custom: CustomQuiz, level: QuizLevel?, source: AnalyticsSource) -> URL? {
+    var components = URLComponents()
+    components.percentEncodedQuery = custom.rawValue
+    return deeplink(host: quizHost, target: practiceSetTarget, queryItems: (components.queryItems ?? []) + [
+      level.map { URLQueryItem(name: levelQueryName, value: $0.rawValue) },
+      URLQueryItem(name: sourceQueryName, value: source.rawValue),
+    ])
+  }
+
   private static func deeplink(host: String, target: String?, queryItems: [URLQueryItem?]) -> URL? {
     var components = URLComponents()
     components.scheme = deeplinkScheme
@@ -98,4 +109,6 @@ extension URL {
   static let sourceQueryName = "source"
   static let matchQueryName = "match"
   static let searchTextQueryName = "q"
+  static let practiceSetTarget = "set"
+  static let levelQueryName = "level"
 }

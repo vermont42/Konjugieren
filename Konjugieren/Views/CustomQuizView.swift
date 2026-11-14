@@ -61,10 +61,10 @@ struct CustomQuizEditor: View {
         }
         .accessibilityIdentifier("custom_quiz_verbs_by_level")
 
-        ForEach(Self.verbSets(showsMyVerbs: !myVerbs.isEmpty || custom.verbSet == .myVerbs), id: \.self) { verbSet in
+        ForEach(Self.verbSets(showsMyVerbs: !myVerbs.isEmpty || custom.verbSet == .myVerbs, keptList: custom.verbSet), id: \.self) { verbSet in
           CustomQuizChoiceRow(
             title: verbSet.title,
-            detail: verbSet == .myVerbs ? L.VerbCollection.verbCount(myVerbs.count) : nil,
+            detail: verbSet.detail(myVerbCount: myVerbs.count),
             isSelected: custom.verbSet == verbSet
           ) {
             Current.settings.customQuiz.verbSet = verbSet
@@ -96,9 +96,14 @@ struct CustomQuizEditor: View {
     .navigationBarTitleDisplayMode(.inline)
   }
 
-  // Semantic ordering: narrowest first, then the lists.
-  private static func verbSets(showsMyVerbs: Bool) -> [QuizVerbSet] {
-    FrequencyBand.allCases.map(QuizVerbSet.band) + [.all] + (showsMyVerbs ? [.myVerbs] : []) + [.collection(.modals), .collection(.sein)]
+  // Semantic ordering: narrowest first, then the lists. A practice set's list, once kept, is
+  // offered only while it is the choice, since nothing in the editor can build one.
+  private static func verbSets(showsMyVerbs: Bool, keptList: QuizVerbSet?) -> [QuizVerbSet] {
+    var list: [QuizVerbSet] = []
+    if case .list = keptList, let keptList {
+      list = [keptList]
+    }
+    return FrequencyBand.allCases.map(QuizVerbSet.band) + [.all] + (showsMyVerbs ? [.myVerbs] : []) + list + [.collection(.modals), .collection(.sein)]
   }
 }
 
@@ -172,6 +177,21 @@ private struct CustomQuizChoiceRow: View {
 }
 
 extension QuizVerbSet {
+  /// A row's second line: how many My Verbs there are, or a list's first verbs.
+  func detail(myVerbCount: Int) -> String? {
+    switch self {
+    case .myVerbs:
+      return L.VerbCollection.verbCount(myVerbCount)
+    case .list(let infinitives):
+      let shown = infinitives.prefix(Self.listPreviewCount).map(\.inUserRegion)
+      return shown.joined(separator: ", ") + (infinitives.count > shown.count ? " …" : "")
+    case .all, .band, .collection:
+      return nil
+    }
+  }
+
+  static let listPreviewCount = 6
+
   var isAblautGroup: Bool {
     if case .collection(.ablautGroup) = self {
       return true
@@ -185,5 +205,49 @@ extension CustomQuiz {
   static func levelVerbsDescription(_ level: QuizLevel) -> String {
     let verbs = level.band.map { QuizVerbSet.band($0).title } ?? QuizVerbSet.all.title
     return "\(level.localizedName) · \(verbs)"
+  }
+}
+
+/// What a custom quiz or a practice set asks: its conjugationgroups and its verbs, each the
+/// level's when left unchosen.
+struct CustomQuizSummaryCard: View {
+  let custom: CustomQuiz
+  let level: QuizLevel
+  /// "Set by Your Level" for the learner's own quiz, "Set by Level" for a practice set's.
+  let byLevelLabel: String
+  var isLarge = false
+  private var lang: ConjugationgroupLang { Current.settings.conjugationgroupLang }
+
+  var body: some View {
+    VStack(alignment: .leading, spacing: Layout.defaultSpacing) {
+      row(
+        L.CustomQuiz.conjugationgroups,
+        value: custom.tables.isEmpty
+          ? "\(byLevelLabel): \(level.localizedName)"
+          : custom.orderedTables.map { $0.displayName(lang: lang) }.joined(separator: ", "),
+        valueIsGerman: !custom.tables.isEmpty && lang == .german
+      )
+      row(
+        L.CustomQuiz.verbs,
+        value: custom.verbSet?.title ?? "\(byLevelLabel): \(CustomQuiz.levelVerbsDescription(level))"
+      )
+    }
+    .font(isLarge ? .title3 : .body)
+    .frame(maxWidth: .infinity, alignment: .leading)
+    .konjCard()
+    .accessibilityElement(children: .combine)
+  }
+
+  private func row(_ label: String, value: String, valueIsGerman: Bool = false) -> some View {
+    VStack(alignment: .leading, spacing: 2) {
+      Text(label)
+        .font(.caption.bold())
+        .foregroundStyle(.customYellow)
+        .textCase(.uppercase)
+      Text(verbatim: value)
+        .foregroundStyle(.customForeground)
+        .fixedSize(horizontal: false, vertical: true)
+        .germanPronunciation(forReal: valueIsGerman)
+    }
   }
 }

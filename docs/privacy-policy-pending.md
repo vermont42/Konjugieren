@@ -428,3 +428,56 @@ Der im Abschnitt zu den Bestenlisten oben ergänzte Satz in Abschnitt 6 lautet n
 ```
 Nur die ersten zehn Fragen eines Quiz über alle Verben reichen ein Ergebnis ein, und zwar in der Bestenliste der Stufe des Quiz; ein Quiz über Ihre eigenen Verben, ein einzelnes Verb oder selbst gewählte Conjugationgroups und Verben tut das nicht, ebenso wenig die zehn weiteren Fragen, die Sie anhängen können.
 ```
+
+## Practice sets (pedagogy plan, Phase 10, 2026-11-14)
+
+Adds the `qrCode` value to the quiz signals' `source`, beside the existing `sharedLink`, for a
+quiz begun from a practice set that someone shared as a QR code or as a link, and three signals:
+`tapSharePracticeSet`, with how it was shared (`link` or `qrCode`) and the kind of choice it holds
+(`customChoice`, as Phase 9 sends it); `viewPracticeSet`, with whether it arrived as a link or a
+QR code and whether the app could read it (`opened` or `invalid`); and `tapKeepPracticeSet`, which
+carries nothing. None says which conjugationgroups or verbs the set holds. A practice set's quiz
+sends the set's level as `level`, since that is the level it asks. The lines change the first quiz
+bullet as given in the Phase 9 section above, and add to the taps bullet as last given. A shared
+set's link holds the sharer's chosen verbs, but it goes only where the learner sends it, and the
+app sends none of it, so no line is needed for that.
+
+### English
+
+The first quiz bullet in section 2 now reads:
+
+```
+- Quiz lifecycle events (starting, quitting, completing a round of ten questions, and how many rounds the quiz has reached), and where the quiz was begun: the quiz screen, your own verbs, a verb's page, a collection, and which collection, a quiz you put together, and whether you chose conjugationgroups, verbs, or both (not which), or a practice set someone shared with you, and whether it came as a link or a QR code
+```
+
+The taps bullet in section 2, as last given above, gains at its end:
+
+```
+, sharing a practice set, as a link or a QR code, and whether it holds conjugationgroups, verbs, or both (not which), and keeping a shared practice set as your own quiz
+```
+
+A new bullet follows the one about collections:
+
+```
+- That you opened a shared practice set, whether it came as a link or a QR code, and whether the app could read it, but not which conjugationgroups or verbs it holds
+```
+
+### German
+
+Der erste Punkt über das Quiz in Abschnitt 2 lautet nun:
+
+```
+- Quiz-Lebenszyklus-Ereignisse (Starten, Abbrechen, Abschließen einer Runde von zehn Fragen und wie viele Runden das Quiz erreicht hat) und wo das Quiz begonnen wurde: auf dem Quiz-Bildschirm, mit Ihren eigenen Verben, auf der Seite eines Verbs, in einer Sammlung, samt der Angabe, welche Sammlung, in einem selbst zusammengestellten Quiz, samt der Angabe, ob Sie Conjugationgroups, Verben oder beides gewählt haben (nicht aber, welche), oder in einem Übungsset, das jemand mit Ihnen geteilt hat, samt der Angabe, ob es als Link oder als QR-Code kam
+```
+
+Der Punkt über das Antippen in Abschnitt 2, wie oben zuletzt angegeben, endet nun mit:
+
+```
+, ein Übungsset als Link oder QR-Code teilen, samt der Angabe, ob es Conjugationgroups, Verben oder beides enthält (nicht aber, welche), und ein geteiltes Übungsset als eigenes Quiz behalten
+```
+
+Ein neuer Punkt folgt dem über Sammlungen:
+
+```
+- Dass Sie ein geteiltes Übungsset geöffnet haben, ob es als Link oder als QR-Code kam und ob die App es lesen konnte, nicht aber, welche Conjugationgroups oder Verben es enthält
+```

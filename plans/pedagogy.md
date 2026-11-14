@@ -774,6 +774,14 @@ My Verbs, which pushes a page for choosing any conjugationgroups, at any level, 
 ablaut group). Either part left unchosen is the level's. The choice is kept between launches, the
 tab still opens on the default quiz, and a custom quiz is never ranked.
 
+**Built on `main` 2026-11-14** by [Phase 10](pedagogy-implementation.md#phase-10-practice-sets-to-share)
+of the pedagogy plan: a chosen scope shareable as a link or a QR code. The Custom segment's Share
+offers the link, in text beside the App Store link, or a full-screen QR code made on the device for
+a teacher to project. Opening either shows the practice set in a sheet with Start, and a learner may
+keep it as their own custom quiz. A shared My Verbs travels as its list of verbs, and a part left to
+the level carries the sharer's level, so every student is asked the same set. No server, no account.
+Whether the Camera app offers to open a `konjugieren://` code waits on Josh's phone.
+
 ### Tier 3: Give the Quiz a Memory
 
 | Suggestion | Basis | Effort | Verdict |

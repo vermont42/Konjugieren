@@ -10677,3 +10677,56 @@ values as arguments failed to compile, since even their `Hashable` conformance i
 cases are looped inside the test bodies instead, or passed as their string keys.
 
 Josh has not judged the layout yet, which the phase asks for before any polish.
+
+## Practice Sets to Share (2026-11-14)
+
+Phase 10 of the pedagogy plan makes a custom quiz shareable as a link and as a QR code. The reason
+is a number from Conjuguer's App Store Connect page: one Swiss school brought more downloads than
+every other source combined. A teacher who wants a class to drill this week's Präteritum has no way
+to point thirty phones at the same practice. There is no server and no account system, and Josh
+wants neither, so the whole practice set has to fit inside the link.
+
+### Three questions first
+
+The plan left three things open, and each changed what got built, so they went to Josh before any
+code. What does opening a link do? A sheet over whatever is on screen, with Start and an optional
+"Keep as My Custom Quiz", rather than silently replacing the learner's own custom quiz. What about
+My Verbs? A teacher's My Verbs mean nothing on a student's phone, so the link carries the verbs
+themselves, which turns "star this week's verbs and share" into a way to build a word list. And
+length? Ten questions and Ten More, like every other quiz since Phase 7.
+
+### The link
+
+Phase 9 had already stored the custom quiz as `groups=…&verbs=…` because this phase would share it,
+so the link is that string under a new target on the old quiz route:
+`konjugieren://quiz/set?groups=imperativ&verbs=modals`. `quiz/start` and every other target still
+open the Quiz tab. Browse Phase 16 had turned down `quiz/start?list=<key>` because a collection has
+a page with Quiz one tap away. A practice set has no page, so the sheet plays that role.
+
+Two decisions came from following the link through. A set that leaves its verbs "Set by Level"
+would ask an Intermediate student a different band from a Beginner, so the link carries the
+sharer's level whenever a part is left to it, and the quiz asks at that level without touching the
+student's setting. And a list of verbs could not go in `verbs=`, because the infinitive `sein` is
+also the key of the verbs-with-sein collection. It travels as `infinitives=` instead. A test pins
+`infinitives=sein` reading back as the verb and `verbs=sein` as the collection.
+
+### A QR code with nothing to install
+
+Core Image has had a QR generator for years, so the code is made on the device: medium error
+correction, dark modules on white even in dark mode (some scanners misread inverted codes), and
+the screen kept awake while it shows, since a class takes a while. The most satisfying test in the
+phase makes a code from a link, hands the image to Core Image's QR detector, and expects the link
+back. After the simulator runs, the same check ran against the screenshots themselves, and both the
+iPhone's and the iPad's projected codes decoded to the exact link. What no simulator can show is
+whether the Camera app offers to open a `konjugieren://` code. That waits on Josh's phone.
+
+### What looking found
+
+The QR caption first said "Präteritum Indikativ, Perfekt Indikativ · Verb List · 14 verbs", where
+the two dots meant different things, so the caption now takes two lines. A SwiftUI `Menu` label
+draws a point or two taller than a `NavigationLink` beside it with the same padding. On the iPad,
+the default form sheet was too short and clipped the Keep footer, so the sheet is page-sized there.
+
+The share sheet's first screenshot showed nothing, which looked like a bug in presenting from a
+menu. The system log said otherwise: the share sheet had presented about a second after the tap,
+after the screenshot. Reading the log before changing code saved a fix for a bug that did not exist.

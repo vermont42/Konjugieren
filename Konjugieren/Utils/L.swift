@@ -24,6 +24,14 @@ enum L {
       String(localized: "Accessibility.customQuizStartHint")
     }
 
+    static var practiceSetShareHint: String {
+      String(localized: "Accessibility.practiceSetShareHint")
+    }
+
+    static var practiceSetStartHint: String {
+      String(localized: "Accessibility.practiceSetStartHint")
+    }
+
     static var quizStartHint: String {
       String(localized: "Accessibility.quizStartHint")
     }
@@ -1055,8 +1063,70 @@ enum L {
       String(localized: "CustomQuiz.title")
     }
 
+    static var verbList: String {
+      String(localized: "CustomQuiz.verbList")
+    }
+
     static var verbs: String {
       String(localized: "CustomQuiz.verbs")
+    }
+  }
+
+  enum PracticeSet {
+    static var byLevel: String {
+      String(localized: "PracticeSet.byLevel")
+    }
+
+    static var description: String {
+      String(localized: "PracticeSet.description")
+    }
+
+    static var invalidDescription: String {
+      String(localized: "PracticeSet.invalidDescription")
+    }
+
+    static var invalidTitle: String {
+      String(localized: "PracticeSet.invalidTitle")
+    }
+
+    static var keep: String {
+      String(localized: "PracticeSet.keep")
+    }
+
+    static var keepFooter: String {
+      String(localized: "PracticeSet.keepFooter")
+    }
+
+    static var kept: String {
+      String(localized: "PracticeSet.kept")
+    }
+
+    static var qrCodeLabel: String {
+      String(localized: "PracticeSet.qrCodeLabel")
+    }
+
+    static var scanNote: String {
+      String(localized: "PracticeSet.scanNote")
+    }
+
+    static var scanTitle: String {
+      String(localized: "PracticeSet.scanTitle")
+    }
+
+    static func shareText(summary: String, link: String, appStoreLink: String) -> String {
+      String(localized: "PracticeSet.shareText \(summary) \(link) \(appStoreLink)")
+    }
+
+    static var shareLink: String {
+      String(localized: "PracticeSet.shareLink")
+    }
+
+    static var showQRCode: String {
+      String(localized: "PracticeSet.showQRCode")
+    }
+
+    static var title: String {
+      String(localized: "PracticeSet.title")
     }
   }
 

@@ -1501,6 +1501,40 @@
         }
       }
     },
+    "Accessibility.practiceSetShareHint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teilt dieses eigene Quiz als Link oder QR-Code"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shares this custom quiz as a link or a QR code"
+          }
+        }
+      }
+    },
+    "Accessibility.practiceSetStartHint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Startet zehn Fragen aus diesem Übungsset"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starts ten questions from this practice set"
+          }
+        }
+      }
+    },
     "Accessibility.quizBlank" : {
       "localizations" : {
         "de" : {
@@ -2133,6 +2167,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Custom Quiz"
+          }
+        }
+      }
+    },
+    "CustomQuiz.verbList" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verbliste"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verb List"
           }
         }
       }
@@ -5500,6 +5551,244 @@
     },
     "Pluperfect Indicative" : {
 
+    },
+    "PracticeSet.byLevel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nach Stufe"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set by Level"
+          }
+        }
+      }
+    },
+    "PracticeSet.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jemand hat diese Auswahl an Conjugationgroups und Verben mit dir geteilt. Zehn Fragen und zehn weitere, wann immer du willst."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Someone shared this choice of conjugationgroups and verbs with you. Ten questions, and ten more whenever you like."
+          }
+        }
+      }
+    },
+    "PracticeSet.invalidDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieser Link nennt keine Conjugationgroup und keine Verbauswahl, die diese Version von Konjugieren kennt. Vielleicht ist er unvollständig, oder er braucht eine neuere Version der App."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This link names no conjugationgroup or verb set that this version of Konjugieren knows. It may have been cut short, or it may need a newer version of the app."
+          }
+        }
+      }
+    },
+    "PracticeSet.invalidTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Übungsset nicht gefunden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Practice Set Not Found"
+          }
+        }
+      }
+    },
+    "PracticeSet.keep" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Als eigenes Quiz behalten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keep as My Custom Quiz"
+          }
+        }
+      }
+    },
+    "PracticeSet.keepFooter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Es ersetzt dann das eigene Quiz in deinem Quiz-Tab."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keeping it replaces the custom quiz on your Quiz tab."
+          }
+        }
+      }
+    },
+    "PracticeSet.kept" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Als dein eigenes Quiz behalten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kept as Your Custom Quiz"
+          }
+        }
+      }
+    },
+    "PracticeSet.qrCodeLabel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QR-Code, der dieses Übungsset öffnet"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QR code that opens this practice set"
+          }
+        }
+      }
+    },
+    "PracticeSet.scanNote" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Richte die Kamera-App auf den Code, um dieses Übungsset in Konjugieren zu öffnen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Point the Camera app at the code to open this practice set in Konjugieren."
+          }
+        }
+      }
+    },
+    "PracticeSet.scanTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scannen und üben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Scan to Practice"
+          }
+        }
+      }
+    },
+    "PracticeSet.shareLink" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Link teilen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share Link"
+          }
+        }
+      }
+    },
+    "PracticeSet.shareText %@ %@ %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Übungsset: %1$@\n\nIn Konjugieren öffnen:\n%2$@\n\nKonjugieren im App Store:\n%3$@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Practice set: %1$@\n\nOpen it in Konjugieren:\n%2$@\n\nGet Konjugieren on the App Store:\n%3$@"
+          }
+        }
+      }
+    },
+    "PracticeSet.showQRCode" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "QR-Code zeigen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show QR Code"
+          }
+        }
+      }
+    },
+    "PracticeSet.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Übungsset"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Practice Set"
+          }
+        }
+      }
     },
     "Present Indicative" : {
 

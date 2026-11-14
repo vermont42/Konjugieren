@@ -45,11 +45,14 @@ struct CustomQuiz: Equatable {
 
   private static let tablesKey = "groups"
   private static let verbsKey = "verbs"
+  private static let infinitivesKey = "infinitives"
 }
 
 /// Stored as `groups=praesens_indikativ,imperativ&verbs=modals`. The keys are permanent, since a
-/// learner's choice is kept between launches and Phase 10 of the pedagogy plan shares it as a link.
-/// A key that no longer names anything is dropped rather than failing the whole choice.
+/// learner's choice is kept between launches and a practice set shares it as a link (Phase 10). A
+/// list of verbs, which a shared My Verbs becomes, travels as `infinitives=gehen,kommen` in place
+/// of `verbs`, because an infinitive can equal a set's key (`sein`). A key that no longer names
+/// anything is dropped rather than failing the whole choice.
 extension CustomQuiz: RawRepresentable {
   init?(rawValue: String) {
     var components = URLComponents()
@@ -57,7 +60,11 @@ extension CustomQuiz: RawRepresentable {
     let items = components.queryItems ?? []
     let tableKeys = items.first { $0.name == Self.tablesKey }?.value?.split(separator: ",").map(String.init) ?? []
     tables = Set(tableKeys.compactMap { key in ConjugationTable.allCases.first { $0.articleKey == key } })
-    verbSet = items.first { $0.name == Self.verbsKey }?.value.flatMap(QuizVerbSet.init(key:))
+    if let key = items.first(where: { $0.name == Self.verbsKey })?.value {
+      verbSet = QuizVerbSet(key: key)
+    } else if let list = items.first(where: { $0.name == Self.infinitivesKey })?.value {
+      verbSet = QuizVerbSet(infinitives: list.split(separator: ",").map(String.init))
+    }
   }
 
   var rawValue: String {
@@ -65,7 +72,9 @@ extension CustomQuiz: RawRepresentable {
     if !tables.isEmpty {
       items.append(URLQueryItem(name: Self.tablesKey, value: orderedTables.map(\.articleKey).joined(separator: ",")))
     }
-    if let verbSet {
+    if case .list(let infinitives) = verbSet {
+      items.append(URLQueryItem(name: Self.infinitivesKey, value: infinitives.joined(separator: ",")))
+    } else if let verbSet {
       items.append(URLQueryItem(name: Self.verbsKey, value: verbSet.key))
     }
     var components = URLComponents()
@@ -79,6 +88,8 @@ enum QuizVerbSet: Hashable {
   case all
   case band(FrequencyBand)
   case collection(VerbCollection)
+  /// Infinitives, in the sharer's order: My Verbs as a practice set carries them (Phase 10).
+  case list([String])
   case myVerbs
 
   /// The bands and the corpus are chosen for their size, not their verbs, so they are mixed as the
@@ -87,7 +98,7 @@ enum QuizVerbSet: Hashable {
     switch self {
     case .all, .band:
       return true
-    case .collection, .myVerbs:
+    case .collection, .list, .myVerbs:
       return false
     }
   }
@@ -97,7 +108,7 @@ enum QuizVerbSet: Hashable {
     switch self {
     case .collection(let collection):
       return collection.key
-    case .all, .band, .myVerbs:
+    case .all, .band, .list, .myVerbs:
       return nil
     }
   }
@@ -110,9 +121,24 @@ enum QuizVerbSet: Hashable {
       return "top\(band.verbCount)"
     case .collection(let collection):
       return collection.key
+    case .list:
+      return Self.listKey
     case .myVerbs:
       return "myVerbs"
     }
+  }
+
+  /// What `key` says of a list, whose verbs travel apart from it. It reads back as nothing.
+  static let listKey = "list"
+
+  /// Unknown infinitives and repeats are dropped, and a list left empty is no list.
+  init?(infinitives: [String]) {
+    var seen = Set<String>()
+    let known = infinitives.filter { Verb.verbs[$0] != nil && seen.insert($0).inserted }
+    guard !known.isEmpty else {
+      return nil
+    }
+    self = .list(known)
   }
 
   /// The top-100 collection and the top-100 band hold the same verbs, and both keys are `top100`,
@@ -145,6 +171,8 @@ enum QuizVerbSet: Hashable {
       return Verb.verbs(in: band).sorted { $0.infinitiv < $1.infinitiv }
     case .collection(let collection):
       return collection.verbs()
+    case .list(let infinitives):
+      return infinitives.compactMap { Verb.verbs[$0] }
     case .myVerbs:
       return myVerbs
     }
@@ -158,6 +186,8 @@ enum QuizVerbSet: Hashable {
       return L.CustomQuiz.band(band.verbCount.formatted())
     case .collection(let collection):
       return collection.title
+    case .list(let infinitives):
+      return "\(L.CustomQuiz.verbList) · \(L.VerbCollection.verbCount(infinitives.count))"
     case .myVerbs:
       return L.MyVerbs.title
     }

@@ -121,6 +121,7 @@ quiz in a sheet shows) and `collectionKey` (which `startQuiz` names).
 | `.verbPage(_:readingIndex:)` | The verb on screen, in the reading on screen | 3 | `verbPage` | No |
 | `.collection(_:)` | A collection's verbs (Phase 16), with replacement, in a sheet | 10, then Ten More | `list` | No |
 | `.custom(_:myVerbs:)` | The custom quiz's verb set, or the level's band (pedagogy Phase 9) | 10, then Ten More | `custom` | No |
+| `PracticeSet.scope(source:)` | A shared practice set's verb set, or its level's band, in a sheet (pedagogy Phase 10) | 10, then Ten More | `sharedLink` or `qrCode` | No |
 
 A quiz whose rounds are ten (`QuizScope.continues`) draws as above. The verb page's three
 questions ask distinct cells and no participle, from the learner's level, since every Perfekt
@@ -128,7 +129,8 @@ among three questions tests the participle anyway. Only a ranked quiz posts to G
 level's leaderboard, and shows the leaderboard button: Josh decided on 2026-11-13 that neither a scoped quiz nor a
 three-question quiz should post. Only a quiz of ten-question rounds starts a Live Activity and
 counts toward `ChangeLevelTip`, the latter on its first results only. Every scope uses the
-learner's level. Before Phase 7 of the pedagogy plan (2026-11-13), every quiz but the verb page's
+learner's level, except a practice set's, which carries the sharer's level in `QuizScope.level`
+when it leaves a part to the level. Before Phase 7 of the pedagogy plan (2026-11-13), every quiz but the verb page's
 was 30 questions.
 
 The Quiz tab's start screen shows a big yellow symbol for the chosen scope (books for All
@@ -168,6 +170,36 @@ Start is disabled until something is chosen, or while the choice names an empty 
 - **Never ranked.** `QuizScope.isRanked` requires `custom == nil`, so a custom quiz posts nowhere,
   even one whose choice matches the level's. It continues with Ten More, starts a Live Activity, and
   counts toward `ChangeLevelTip` as any ten-question quiz does.
+
+### Practice Sets
+
+Built 2026-11-14 in Phase 10 of [`plans/pedagogy-implementation.md`](../plans/pedagogy-implementation.md)
+(T2.9, Decision 8), so that a teacher can hand a class one practice set without accounts or a
+server. A practice set is a custom quiz shared as a link.
+
+- **Sharing.** Beside Change on the Custom segment, Share is a menu: Share Link sends text with the
+  set's summary, its `quiz/set` link with `source` `sharedLink`, and the App Store link, as a
+  collection's share does; Show QR Code covers the screen with the link as a QR code (`source`
+  `qrCode`), drawn dark on white in either appearance, with the summary beneath and the screen kept
+  awake. `QRCode.image(for:)` makes it with Core Image's generator at medium error correction.
+  `PracticeSet(sharing:level:myVerbs:)` builds the shared set.
+- **What travels.** The custom quiz's stored form (The Custom Quiz above) and, while either part is
+  left to the level, the sharer's level, so every student is asked the same set (decided in the
+  session, not by Josh). My Verbs are the sharer's
+  own, so they travel as `infinitives=gehen,kommen`, at most 100 (Josh, 2026-11-14); in the stored
+  form a list is `QuizVerbSet.list`, kept apart from `verbs=` because an infinitive can equal a
+  set's key (`sein`). The length does not travel: every set is ten questions, then Ten More (Josh,
+  2026-11-14).
+- **Opening.** `World.handleURL` turns `quiz/set` into `Current.practiceSet`, which `MainTabView`
+  shows as a page-sized sheet over whatever tab is open: what the set asks, Start (a `QuizSheet`
+  over it, at the set's level, never ranked), and Keep as My Custom Quiz, which replaces the
+  learner's own custom quiz (Josh, 2026-11-14, rather than replacing it on opening). A kept set asks
+  the learner's level for a part left to the level, as any custom quiz does. A link naming nothing
+  this version knows shows "Practice Set Not Found" rather than doing nothing; unknown keys, unknown
+  infinitives, and `verbs=myVerbs` are dropped and the rest kept.
+- **Tests.** `PracticeSetTests` pins the link's form, round-trips every table, verb set, list, and
+  level, decodes the generated QR code back to the link, and nests sessions in `QuizTests` and link
+  handling in `DeeplinkTests`.
 
 ### Grading
 
@@ -514,12 +546,13 @@ konjugieren://<route>[/<target>][?<item>=<value>&…]
 | `search` | None | `q`, the text; `source` | The verb list with its search field. With text, the results show with the keyboard down; with none (or `q` empty), the field is cleared and focused for typing | Phase 11 |
 | `info` | A `stableKey`, or a legacy position | None | The article | Before 2026; keys Phase 11 |
 | `family` | A `BrowseableFamily` raw value | None | The family's page | Before 2026 |
-| `quiz` | Any (today `start`) | None | The Quiz tab | Before 2026 |
+| `quiz` | `set`, or any other (today `start`) | For `set`: `groups`, `verbs` or `infinitives`, `level`, `source` | `set` shows a practice set in a sheet over the open tab; any other target, the Quiz tab | Before 2026; `set` pedagogy Phase 10 |
 | `list` | A collection's key: `top100`, `modals`, `sein`, or `ablaut-<exemplar>` (`ablaut-hängen`, percent-encoded) | `source` | The Families tab, on the collection's page, or for an ablaut group, the Ablaut page with that group expanded | Phase 16 |
 
 **Collections (Phase 16, 2026-11-13).** A collection is `list/<key>`. The `quiz/start?list=<key>`
 link that Phase 11 reserved was not built: a shared collection opens its page, where Quiz is one
-tap, so the quiz route keeps no query items. A shared collection's text carries its `list` link
+tap, so the quiz route took no query items until pedagogy Phase 10 gave its `set` target the
+practice set's (below). A shared collection's text carries its `list` link
 with `source` `sharedLink` beside the App Store link, as Josh chose on 2026-11-13, knowing that
 Messages may not make a `konjugieren://` link tappable and that it does nothing without the app.
 
@@ -527,8 +560,9 @@ Messages may not make a `konjugieren://` link tappable and that it does nothing 
 
 | File | Purpose |
 |------|---------|
-| `URLExtension.swift` | The grammar's constants (routes, query-item names), `isDeeplink`, `analyticsSource`, `deeplinkQueryValue(named:)`, and the three builders |
-| `World.swift` | `handleURL(_:)` parses a link and sets `verb` (with `verbSource` and `verbMarks`), `searchRequest`, `family`, `collection` (Phase 16), or `info`, and the selected tab; `openSearch(text:source:)` is the search route's effect, which Command-F also uses |
+| `URLExtension.swift` | The grammar's constants (routes, query-item names), `isDeeplink`, `analyticsSource`, `deeplinkQueryValue(named:)`, and the builders, `practiceSetDeeplink` among them |
+| `PracticeSet.swift` | Reads a `quiz/set` link (`PracticeSet(url:)`) and writes one |
+| `World.swift` | `handleURL(_:)` parses a link and sets `verb` (with `verbSource` and `verbMarks`), `searchRequest`, `family`, `collection` (Phase 16), `practiceSet` (pedagogy Phase 10), or `info`, and the selected tab; `openSearch(text:source:)` is the search route's effect, which Command-F also uses |
 | `Info.swift` | `Info.info(deeplinkTarget:)` resolves a stable key or a legacy position |
 | `VerbBrowseView.swift` | Consumes `verb` and `searchRequest` on appear and on change, since a link can arrive before the tab first appears |
 | `FamilyBrowseView.swift` | Consumes `family` and `collection` the same way |
@@ -545,6 +579,8 @@ konjugieren://info/futur_ii                       → the Futur II article
 konjugieren://info/0                              → the Dedication article (legacy position)
 konjugieren://list/modals?source=sharedLink       → the Modal Verbs collection
 konjugieren://list/ablaut-h%C3%A4ngen             → the Ablaut page, the hängen group expanded
+konjugieren://quiz/set?groups=imperativ&verbs=modals&source=sharedLink → a practice set: the Imperativ of the modal verbs
+konjugieren://quiz/set?infinitives=gehen,h%C3%A4ngen&level=beginner    → a practice set: Beginner's conjugationgroups of gehen and hängen
 ```
 
 ### Internal Linking

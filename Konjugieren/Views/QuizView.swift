@@ -25,6 +25,8 @@ struct QuizView: View {
   @State private var showCorrectCheck = false
   @State private var showIncorrectFlash = false
   @State private var rightAnswerCount = 0
+  @State private var isShowingQRCode = false
+  @State private var shareButtonFrame = CGRect.zero
 
   var body: some View {
     @Bindable var quiz = quiz
@@ -540,51 +542,80 @@ struct QuizView: View {
   private var customQuizSummary: some View {
     VStack(spacing: Layout.doubleDefaultSpacing) {
       if !customQuiz.isEmpty {
-        VStack(alignment: .leading, spacing: Layout.defaultSpacing) {
-          summaryRow(
-            L.CustomQuiz.conjugationgroups,
-            value: customQuiz.tables.isEmpty
-              ? "\(L.CustomQuiz.byLevel): \(level.localizedName)"
-              : customQuiz.orderedTables.map { $0.displayName(lang: settings.conjugationgroupLang) }.joined(separator: ", "),
-            valueIsGerman: !customQuiz.tables.isEmpty && settings.conjugationgroupLang == .german
-          )
-          summaryRow(
-            L.CustomQuiz.verbs,
-            value: customQuiz.verbSet?.title ?? "\(L.CustomQuiz.byLevel): \(CustomQuiz.levelVerbsDescription(level))"
-          )
-        }
-        .font(isLarge ? .title3 : .body)
-        .frame(maxWidth: .infinity, alignment: .leading)
-        .konjCard()
-        .accessibilityElement(children: .combine)
-        .accessibilityIdentifier("custom_quiz_summary")
+        CustomQuizSummaryCard(custom: customQuiz, level: level, byLevelLabel: L.CustomQuiz.byLevel, isLarge: isLarge)
+          .accessibilityIdentifier("custom_quiz_summary")
       }
 
-      NavigationLink(value: CustomQuizDestination.editor) {
-        Label(customQuiz.isEmpty ? L.CustomQuiz.choose : L.CustomQuiz.change, systemImage: "slider.horizontal.3")
-          .font(isLarge ? .title3.bold() : .headline)
-          .padding(.horizontal, Layout.defaultSpacing)
-          .padding(.vertical, 4)
+      HStack(spacing: Layout.defaultSpacing) {
+        NavigationLink(value: CustomQuizDestination.editor) {
+          Label(customQuiz.isEmpty ? L.CustomQuiz.choose : L.CustomQuiz.change, systemImage: "slider.horizontal.3")
+            .font(isLarge ? .title3.bold() : .headline)
+            .padding(.horizontal, Layout.defaultSpacing)
+            .padding(.vertical, 4)
+            .frame(maxHeight: .infinity)
+        }
+        .buttonStyle(.bordered)
+        .tint(.customYellow)
+        .accessibilityHint(L.Accessibility.customQuizEditHint)
+        .accessibilityIdentifier("custom_quiz_choose_button")
+
+        if canStart {
+          practiceSetShareMenu
+        }
       }
-      .buttonStyle(.bordered)
-      .tint(.customYellow)
-      .accessibilityHint(L.Accessibility.customQuizEditHint)
-      .accessibilityIdentifier("custom_quiz_choose_button")
+      // Equal heights, since a Menu's bordered label sits a little taller than a NavigationLink's.
+      .fixedSize(horizontal: false, vertical: true)
     }
     .transition(.opacity)
+    .fullScreenCover(isPresented: $isShowingQRCode) {
+      PracticeSetQRView(practiceSet: sharedPracticeSet)
+    }
   }
 
-  private func summaryRow(_ label: String, value: String, valueIsGerman: Bool = false) -> some View {
-    VStack(alignment: .leading, spacing: 2) {
-      Text(label)
-        .font(.caption.bold())
-        .foregroundStyle(.customYellow)
-        .textCase(.uppercase)
-      Text(verbatim: value)
-        .foregroundStyle(.customForeground)
-        .fixedSize(horizontal: false, vertical: true)
-        .germanPronunciation(forReal: valueIsGerman)
+  /// The custom quiz as a practice set, for a teacher to hand a class (Phase 10).
+  private var sharedPracticeSet: PracticeSet {
+    PracticeSet(sharing: customQuiz, level: level, myVerbs: myVerbs)
+  }
+
+  private var practiceSetShareMenu: some View {
+    Menu {
+      Button {
+        sharedPracticeSet.signalShare(method: PracticeSet.linkMethod)
+        ShareSheet.present(
+          text: sharedPracticeSet.shareText(lang: settings.conjugationgroupLang, levelFallback: level),
+          title: L.PracticeSet.title,
+          icon: UIImage(named: settings.appIcon.previewAssetName),
+          anchorLabel: L.VerbView.share,
+          anchorRect: shareButtonFrame == .zero ? nil : shareButtonFrame
+        )
+      } label: {
+        Label(L.PracticeSet.shareLink, systemImage: "link")
+      }
+      .accessibilityIdentifier("practice_set_share_link")
+
+      Button {
+        sharedPracticeSet.signalShare(method: PracticeSet.qrCodeMethod)
+        isShowingQRCode = true
+      } label: {
+        Label(L.PracticeSet.showQRCode, systemImage: "qrcode")
+      }
+      .accessibilityIdentifier("practice_set_show_qr_code")
+    } label: {
+      Label(L.VerbView.share, systemImage: "square.and.arrow.up")
+        .font(isLarge ? .title3.bold() : .headline)
+        .padding(.horizontal, Layout.defaultSpacing)
+        .padding(.vertical, 4)
+        .frame(maxHeight: .infinity)
     }
+    .buttonStyle(.bordered)
+    .tint(.customYellow)
+    .onGeometryChange(for: CGRect.self) { proxy in
+      proxy.frame(in: .global)
+    } action: { frame in
+      shareButtonFrame = frame
+    }
+    .accessibilityHint(L.Accessibility.practiceSetShareHint)
+    .accessibilityIdentifier("custom_quiz_share_button")
   }
 
   private static let chipLimit = 12

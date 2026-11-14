@@ -26,6 +26,7 @@ class World {
   var collection: VerbCollectionRequest?
   var info: Info?
   var searchRequest: SearchRequest?
+  var practiceSet: PracticeSetRequest?
   var selectedTab: TabSelection = .verbs
   var shouldNavigateToTutor = false
 
@@ -70,6 +71,7 @@ class World {
     collection = nil
     info = nil
     searchRequest = nil
+    practiceSet = nil
   }
 
   /// Shows the verb list with its search field. A nil `text` keeps what the field holds, as
@@ -126,7 +128,12 @@ class World {
         selectedTab = .verbs
       }
     case URL.quizHost:
-      selectedTab = .quiz
+      // A practice set shows over whatever tab is open, as a sheet with Start (Phase 10).
+      if url.pathComponents[1] == URL.practiceSetTarget {
+        practiceSet = PracticeSetRequest(practiceSet: PracticeSet(url: url), source: url.analyticsSource ?? .deeplink)
+      } else {
+        selectedTab = .quiz
+      }
     case URL.familyHost:
       if BrowseableFamily(rawValue: url.pathComponents[1]) != nil {
         family = url.pathComponents[1]

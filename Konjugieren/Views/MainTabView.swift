@@ -31,5 +31,10 @@ struct MainTabView: View {
     }
     .tint(.customRed)
     .sensoryFeedback(.selection, trigger: world.selectedTab)
+    // Over whatever tab is open, since a practice set's link can arrive at any time (Phase 10).
+    .sheet(item: $world.practiceSet) { request in
+      PracticeSetView(request: request)
+        .presentationSizing(.page)
+    }
   }
 }

@@ -24,7 +24,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 7 | Done | 2026-11-13 | `80b5f85` | T2.7, T3.1, T6.5, M2, M3 |
 | 8 | Done | 2026-11-14 | `cba6f9e` | Decision 4 |
 | 9 | Done | 2026-11-14 | `b4f00b0` | T2.8 |
-| 10 | Not started | | | T2.9, Decision 8 |
+| 10 | Awaiting Josh | 2026-11-14 | | T2.9, Decision 8 |
 | 11 | Not started | | | T3.3 (the record), T3.4, T3.5, T6.4 |
 | 12 | Not started | | | T3.2, T3.3 (the session) |
 | 13 | Not started | | | T6.1, T6.6 (the leaderboard's place) |
@@ -73,11 +73,14 @@ record the answer and its date in **How it differed**.
    the iPad to the session (2026-11-13), so the session's check is the only one the iPad gets.
    Exercise the phase's new states there too, not just its first screen, and say in **How it
    differed** what was tried on each device. Split the languages and appearances across the two:
-   on the iPhone, look in English and again in German (relaunch with `-AppleLanguages "(de)"`),
-   and on the iPad in English, so that between them the check covers both languages, light and
-   dark, and both size classes (Josh, 2026-11-13). The iPhone simulator has been in dark mode and
-   the iPad in light; if either has changed, set it with `xcrun simctl ui <udid> appearance dark`
-   (or `light`). The quiz has a `KONJUGIEREN_QUIZ_FIXTURE` launch
+   on the iPhone, look in German and again in English, and on the iPad in English, so that between
+   them the check covers both languages, light and dark, and both size classes (Josh, 2026-11-13).
+   Since 2026-11-14 the iPhone simulator's system language is German (Josh), so a plain
+   `launch_app.sh` shows German there, and the English look needs a relaunch with
+   `-AppleLanguages "(en)"`; the iPad's stays English. Check with `xcrun simctl spawn <udid>
+   defaults read -g AppleLanguages`. The iPhone simulator has been in dark mode and the iPad in
+   light; if either has changed, set it with `xcrun simctl ui <udid> appearance dark` (or
+   `light`). The quiz has a `KONJUGIEREN_QUIZ_FIXTURE` launch
    default for a fixed set of questions; extend it rather than tapping through random quizzes.
 3. Localize every new string in English and German, following `CLAUDE.md`'s rules for
    `Localizable.xcstrings`. A new setting's description begins "This setting determines...".
@@ -998,7 +1001,7 @@ both; the default is unchanged; and tests pin scope construction.
 
 ## Phase 10: Practice Sets to Share
 
-**Suggestions:** T2.9, Decision 8. **Depends on:** Phase 9. **Status:** Not started.
+**Suggestions:** T2.9, Decision 8. **Depends on:** Phase 9. **Status:** Awaiting Josh.
 
 Make a chosen scope shareable as a link and as a QR code, so a teacher can hand a class one
 practice set without accounts or a server. One Swiss institution brought Conjuguer more downloads
@@ -1022,7 +1025,61 @@ fails gracefully, and tests pin encoding and decoding of every scope.
 
 **How it differed:**
 
-(To be written by the session that finishes this phase.)
+- **Decided by Josh (2026-11-14), asked before building.** (1) Opening a set shows a sheet with
+  Start, which runs the quiz in a sheet over it, and Keep as My Custom Quiz, which replaces the
+  learner's own custom quiz only when tapped. (2) A shared My Verbs carries its verbs, by infinitive,
+  so a teacher can star this week's verbs and share them; the session capped the list at 100 so that
+  a projected code stays coarse enough to scan. (3) The length does not travel: every set is ten
+  questions, then Ten More, and a length can be added later without breaking links.
+- **The route.** `konjugieren://quiz/set?groups=…&verbs=…&level=…&source=…`, the quiz route with a
+  `set` target and the custom quiz's stored form as its query. `quiz/start` and every other target
+  still open the Quiz tab, so existing links keep working. Browse Phase 16's reason for not building
+  `quiz/start?list=<key>` still holds for collections, whose `list/<key>` page has Quiz one tap away;
+  a set has no page of its own, so its link opens the sheet.
+- **Decided in the session, not asked.** Each is a guess Josh can overrule. (1) The level travels
+  only while a part is left to the level, so every student is asked the same set whatever their own
+  level; a quiz over the set asks at that level through a new `QuizScope.level`, without touching
+  the learner's setting. A kept set, like any custom quiz, uses the learner's level. (2) A list of
+  verbs is a new `QuizVerbSet.list`, stored as `infinitives=gehen,kommen` rather than in `verbs=`,
+  because the infinitive `sein` equals the sein collection's key. The editor lists a kept list only
+  while it is the choice, since nothing in the editor can build one. (3) A link naming
+  `verbs=myVerbs` drops that part, since it would ask the opener's own verbs. (4) The sheet shows over
+  whatever tab is open rather than switching to the Quiz tab, and a later link replaces it. (5) The
+  QR code's link says `source=qrCode` and the shared text's `sharedLink`, a new source value, so
+  `startQuiz` can tell a projected code from a forwarded message. (6) Share lives only on the Custom
+  segment, as a menu of Share Link and Show QR Code beside Change; the practice-set sheet does not
+  share onward. (7) The QR view draws dark modules on white in both appearances, keeps the screen
+  awake, and shows the set's summary beneath the code.
+- **Invalid links.** A `quiz/set` link that names nothing this version knows opens a sheet saying
+  "Practice Set Not Found", with a line that the link may be cut short or need a newer app, rather
+  than doing nothing. Unknown keys, unknown infinitives, and an unknown level are dropped and the
+  rest kept.
+- **Analytics.** `tapSharePracticeSet` (`method` `link` or `qrCode`, and `customChoice`),
+  `viewPracticeSet` (`source`, and `outcome` `opened` or `invalid`), `tapKeepPracticeSet`, and the
+  `qrCode` source on the quiz signals. None names a conjugationgroup or a verb. Staged in
+  [`docs/privacy-policy-pending.md`](../docs/privacy-policy-pending.md) in both languages.
+- **Found by looking.** The QR caption first joined tables and verbs with a `·`, which read
+  ambiguously beside a list's own "Verb List · 14 verbs", so the summary now takes two lines. Share
+  sat a point taller than Change, a Menu's label being taller than a NavigationLink's. On the iPad
+  the sheet's form-sheet height clipped the Keep footer, so it is presented page-sized.
+- **Tests:** `PracticeSetTests`, 27 functions: the link's pinned form, every set, table, verb set,
+  list, and level round-tripped, the list's stored form and the `sein` collision, nine links that
+  name nothing, a link that keeps what it can read, My Verbs shared as a capped list, the level
+  travelling only when needed, the scope, the share text, the generated QR code read back by Core
+  Image's detector, a hundred long infinitives still fitting a code, and the kept list's
+  persistence; in `DeeplinkTests`, the `quiz/set` route, its failure, `quiz/start` unchanged, and a
+  later link replacing a set; nested in `QuizTests`, a session at the set's level, `startQuiz`
+  naming `qrCode` and the set's level, and no score posted. 675 in all, every one passing.
+- **Verified on the iPhone 17**, in dark mode: a 14-verb set opened by `simctl openurl`, its quiz
+  (lesen in the Perfekt), Quit back to the set, Keep, the kept set on the Custom segment after a
+  relaunch, Share's menu, the share sheet (Copy gave the expected text and link), the QR view, and
+  the invalid link; in German, a set at Grundstufe ("Nach Stufe: Grundstufe · Die 300 häufigsten
+  Verben") and the QR view. **On the iPad Pro 11-inch (M5)**, in light mode and English: the set's
+  sheet, Keep, the share sheet as a popover anchored to Share, and the QR view. The QR codes in the
+  iPhone's and the iPad's screenshots decode to the exact link. Not tried: VoiceOver by ear, the
+  Live Activity of a set's quiz, and Ten More on one (unit-tested).
+- **Waiting on Josh's phone:** whether the Camera app offers to open a `konjugieren://` QR code. The
+  simulator has no camera. Record the result here.
 
 ## Phase 11: The Practice Record
 

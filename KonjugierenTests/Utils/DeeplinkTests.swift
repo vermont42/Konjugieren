@@ -15,6 +15,7 @@ struct DeeplinkTests {
     Current.collection = nil
     Current.info = nil
     Current.searchRequest = nil
+    Current.practiceSet = nil
     Current.selectedTab = .settings
   }
 

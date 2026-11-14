@@ -19,7 +19,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 2 | Done | 2026-11-13 | `11f2d81` | T1.2 |
 | 3 | Done | 2026-11-13 | `f7f3fbc` | T4.1, T4.4, T4.5 |
 | 4 | Done | 2026-11-13 | `ae1b4a4` | T1.6 |
-| 5 | Awaiting Josh | 2026-11-13 | | T2.3, T2.6, T6.7, M1 |
+| 5 | Done | 2026-11-13 | `71e0bc9` | T2.3, T2.6, T6.7, M1 |
 | 6 | Not started | | | T2.1, T2.2, T2.5 |
 | 7 | Not started | | | T2.7, T3.1, T6.5, M2, M3 |
 | 8 | Not started | | | Decision 4 |
@@ -528,7 +528,7 @@ the verb does not, half points are scored and shown, and tests pin each case.
 ## Phase 5: Levels
 
 **Suggestions:** T2.3, T2.6, T6.7, M1. **Depends on:** nothing, though Phases 1 to 4 come first by
-leverage. **Status:** Awaiting Josh.
+leverage. **Status:** Done.
 
 Replace Regular and Ridiculous with levels ordered by use, following the report's ladder, each
 level adding to the one before:

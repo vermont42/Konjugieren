@@ -77,8 +77,8 @@ Konjugieren/
 │   ├── PrefixMeaning.swift     # Prefix meanings with PIE etymologies
 │   ├── PrefixSection.swift     # Curated-vs-other heading for the prefix-grouped verb list
 │   ├── Quiz.swift              # @Observable quiz state: questions, timer, scoring; QuizItem grading (accepts, preferredSpelling); DEBUG fixtures (screenshot, grading, frames); QuizItem.answerFrame; QuizScope (the verbs asked about, the question count, the analytics source, and whether the score is ranked): every verb, My Verbs, or three questions on a verb's page
-│   ├── QuizDraw.swift          # Draws a quiz's questions from a level's pool: a kind by weight, then a verb it admits, then a cell; AnyRandomNumberGenerator
-│   ├── QuizLevel.swift         # Setting enum: Beginner, Elementary, Intermediate, Advanced (replaced QuizDifficulty's regular and ridiculous); each level's pool of QuizPoolEntry (a table's cells, the QuizVerbs it may ask, a weight)
+│   ├── QuizDraw.swift          # Draws a quiz's questions from a level's pool: a kind by weight, then a verb it admits, then a cell; for the default quiz, mixes the verbs (half strong, two core, one to three rare derivatives); AnyRandomNumberGenerator
+│   ├── QuizLevel.swift         # Setting enum: Beginner, Elementary, Intermediate, Advanced (replaced QuizDifficulty's regular and ridiculous); each level's pool of QuizPoolEntry (a table's cells, the QuizVerbs it may ask, a weight) and the frequency band its default quiz draws from
 │   ├── RelatedVerbs.swift      # Verb.root (the innermost base: anerkennen → kennen) and Verb.related(readingIndex:): verbs built on the same root, one verb per other root of the ablaut group, and the Families pages of a reading
 │   ├── Region.swift            # Setting enum: the three standard varieties (north/austria/switzerland)
 │   ├── ReviewCardSuppression.swift # Setting enum: off (the default) shows the review card, on hides it
@@ -236,6 +236,7 @@ KonjugierenTests/
 │   ├── PersonNumberTests.swift # Pronoun and sie-disambiguation tests
 │   ├── QuizErrorHistoryTests.swift # Quiz error persistence tests
 │   ├── QuizLevelTests.swift    # Each level's tables and cells, the restricted cells' verbs, weighted shares under a fixed seed, and short quizzes' distinct cells
+│   ├── QuizVerbMixTests.swift  # The default quiz's verbs over 40 seeds per level: each level's band, half strong, two core verbs, a prefixed verb, one to three rare derivatives, and no provisional count in a band
 │   ├── QuizTests.swift         # Quiz logic, scoring, and timer pause/resume tests; scopes (My Verbs, three questions on a verb page, ranking, the source on start, quit, and completion)
 │   ├── StandardVariantsTests.swift # Every row Josh accepted in the Phase 1 variant audit, and the ones he rejected
 │   ├── SearchReportTests.swift # SearchTracker lifecycle, finishSearch parameters, and the no-typed-text guarantee
@@ -370,6 +371,7 @@ verbdata/                      # Verb-corpus-expansion data (see docs/verb-sourc
 ├── README.md                  # Provenance, integrity stats, and re-download recipes for the data files
 ├── fetch_dwds_frequencies.py  # Fetches DWDS lemma frequencies; --lemmas FILE overrides the Verbs.xml corpus, --quarantine keeps the clean rows when some are suspect
 ├── apply_dwds_frequencies.py  # Writes a fetched snapshot back into Verbs.xml: sets hi, drops hp. Text surgery, not an ElementTree round trip
+├── replace_inflated_estimates.py # One-shot, 2026-11-13: moved 61 provisional (hp) estimates that tranche 2 had ranked near #940 to beside a named measured verb each; the anchor table is the artifact
 ├── wiktionary-defects.json    # Verbs where Konjugieren deliberately disagrees with English Wiktionary because Wiktionary is wrong (auto-generated weak tables); subtracted from the at-odds count by summarize_classification.py
 ├── build_candidates.py        # Classify-and-verify stage A: kaikki JSONL → candidates.json (see docs/verb-classification.md)
 ├── summarize_classification.py # Classify-and-verify stage C: classification.json → a Markdown summary grouped by cause

@@ -20,7 +20,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 3 | Done | 2026-11-13 | `f7f3fbc` | T4.1, T4.4, T4.5 |
 | 4 | Done | 2026-11-13 | `ae1b4a4` | T1.6 |
 | 5 | Done | 2026-11-13 | `71e0bc9` | T2.3, T2.6, T6.7, M1 |
-| 6 | Not started | | | T2.1, T2.2, T2.5 |
+| 6 | Awaiting Josh | 2026-11-13 | | T2.1, T2.2, T2.5 |
 | 7 | Not started | | | T2.7, T3.1, T6.5, M2, M3 |
 | 8 | Not started | | | Decision 4 |
 | 9 | Not started | | | T2.8 |
@@ -645,7 +645,7 @@ migrate, `startQuiz` carries the level, and tests pin each level's pool.
 
 ## Phase 6: Which Verbs Are Asked
 
-**Suggestions:** T2.1, T2.2, T2.5. **Depends on:** Phase 5. **Status:** Not started.
+**Suggestions:** T2.1, T2.2, T2.5. **Depends on:** Phase 5. **Status:** Awaiting Josh.
 
 For the default quiz (not My Verbs, a collection, or a verb's page, whose verbs are chosen):
 
@@ -671,7 +671,64 @@ quizzes are unaffected, with tests for each.
 
 **How it differed:**
 
-(To be written by the session that finishes this phase.)
+- **Josh chose the reading of T2.2 on 2026-11-13.** The phase text was at odds with itself: "one
+  to three derivative verbs" against "otherwise draws unprefixed verbs and frequent derivatives".
+  Read strictly, bekommen and verstehen could appear at most three times in all. Josh chose the
+  looser reading. A prefixed verb in the top 300 (`QuizDraw.frequentDerivativeBand`) draws as
+  freely as a base verb. Beyond it, a prefixed verb is a *rare derivative*, and where the band
+  reaches that far (Intermediate and Advanced) exactly one to three questions ask one, chosen at
+  random per quiz, and no other question may. At Beginner and Elementary no rare derivative
+  exists, so the rule there is a floor: at least one question asks a prefixed verb. The top 100
+  holds 24 prefixed verbs, all inseparable, so separable prefixes first appear at Elementary.
+- **The placeholder check found 56, and Josh chose to fix the data.** Of the 83 verbs with
+  `hp="y"`, 56 sat at ranks 937 to 994, put there by tranche 2's ratio from a common base:
+  madigmachen, armmachen, drüberhalten, umeinanderstehen. Measured compounds of the same shape
+  rank far lower (kaputtmachen #2321, schlechtmachen #3062). Offered a choice between moving the
+  estimates and having the quiz skip provisional verbs, Josh chose to move them, which also fixes
+  the widget's verb of the day, which already drew from the top 1,000. The new
+  `verbdata/replace_inflated_estimates.py` places each of the 61 provisional verbs ranked above
+  #1,200 beside a named measured verb, between two real counts, keeping `hp`. Moving only the 56
+  would have lifted verklicken and verräumen into the band. The highest provisional verb is now
+  verstehlen at #1151. A few left alone (schöntrinken, scheckiglachen, near #1160) look as inflated
+  as the 61 did; they are outside every band, and moving them is a choice for another day. Ranks
+  from #937 down shifted, so `docs/frequencies.txt` was regenerated. The pinned count of 83
+  provisional verbs is unchanged.
+- **How the mix works.** `QuizDraw.questions(mixesVerbs:)`, which `Quiz` sets only when the scope
+  names no verbs, draws every slot's conjugationgroup by weight as in Phase 5. Then it gives
+  slots roles (core, rare derivative, derivative, free) and splits strong and weak exactly in
+  half, and only then draws each slot's verb from those that fit. So the counts are exact, not
+  likely. A restricted kind counts on its own: Elementary's Präteritum and Intermediate's
+  Präteritum Konjunktiv II are core questions by their verbs alone. Since haben is mixed in the
+  data, every core question is also strong. Strength is judged by the asked reading, as in Phase 5.
+  "Half of a default quiz's verbs" is read as half its questions, rounded down.
+- **A bug the 30-question tests hid.** The first version could give the core role to a slot that
+  was already core-only, so a quiz with one restricted Konjunktiv II question and no other core
+  verb counted it twice. Thirty questions draw enough core verbs by chance to hide this; the
+  ten-question test, written with Phase 7 in mind, caught it at two seeds of 40.
+- **A slowdown the tests did not fail on.** Refactoring the draw made the unmixed path filter the
+  whole corpus for every question, and `QuizLevelTests`, which draws 40,000 questions at a time,
+  went from about 3 seconds to 688 while passing. Read the per-suite times, not only the verdict.
+  The full suite now runs in 47 seconds, 11 of them `QuizVerbMixTests`, which draws each level's
+  40 quizzes once and shares them. A mixed quiz costs about 50 ms in a debug build.
+- **The level's description** in Settings now names verbs too: "This setting determines which
+  conjugationgroups and verbs quizzes ask about…", in both languages. The App Store description's
+  levels bullet gained "and verbs". The onboarding page was left; it is still true, and Phase 13
+  rewrites it.
+- **Phase 7** will make the default quiz ten questions. The rules are per draw, so a ten-question
+  quiz gets five strong questions, two core, and one to three rare derivatives, which is a larger
+  share of rare derivatives than at thirty. Phase 7 should decide whether Ten More draws a fresh
+  mix of ten each time (the simple path) or one mix for the session.
+- **No analytics and no privacy lines.** Nothing new is sent; `startQuiz` already carries the level.
+- **Verified on the iPhone 17**, in dark mode, by answering every question of a real quiz wrongly
+  and logging each verb. In English at Beginner, all thirty verbs were in the top 100, with three
+  core questions and eight frequent derivatives (verstehen, erklären). In German at Mittelstufe,
+  exactly one rare derivative (unterscheiden, #329) appeared, and the four Präteritum Konjunktiv II
+  questions were dürfen, müssen, wollen, and sollen. The results screens were fine in both
+  languages. **On the iPad Pro 11-inch (M5)**, in light mode and English: the new description
+  under the level tiles, and an Advanced quiz with one rare derivative (hineinrufen, #3053),
+  rarer bases such as gären, melken, and dingen, and three core questions. Not tried: a scoped
+  quiz on a device (a unit test covers it), and VoiceOver, which this phase gave nothing new to
+  say. Tests: 14 new, 601 in all.
 
 ## Phase 7: Ten Questions, Then Ten More
 

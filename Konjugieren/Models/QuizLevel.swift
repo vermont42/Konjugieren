@@ -35,6 +35,20 @@ enum QuizLevel: String, CaseIterable {
     }
   }
 
+  /// The verbs a default quiz draws from, as Josh decided on 2026-11-13. Nil is the whole corpus.
+  var band: FrequencyBand? {
+    switch self {
+    case .beginner:
+      return .top100
+    case .elementary:
+      return .top300
+    case .intermediate:
+      return .top1000
+    case .advanced:
+      return nil
+    }
+  }
+
   var pool: [QuizPoolEntry] {
     switch self {
     case .beginner:

@@ -468,6 +468,14 @@ Rules:
 `verbdata/generate_frequencies_txt.py` reports how many verbs carry `hp`, so the provisional
 population is visible on every regeneration rather than discoverable only by grep.
 
+**Re-placed 2026-11-13.** Tranche 2 derived each derivative's estimate from its base's count by a
+ratio, and for a base as common as *machen* or *halten* that ratio put a compound DWDS cannot
+measure near rank 940: *madigmachen* above every measured derivative of *machen* but the commonest.
+56 of the 83 sat in the top 1,000, which the quiz's frequency bands and the widget's verb of the day
+both draw from. `verbdata/replace_inflated_estimates.py` moved the 61 ranked above #1,200 beside a
+named measured verb each, by the rule above, and kept their `hp`. The other 22 were left; the
+highest is now #1151. `QuizVerbMixTests.noProvisionalCountReachesABand` keeps the top 1,000 clear.
+
 ### Step 4 in detail: store hits, derive rank
 
 **Executed 2026-07-19.** `Verbs.xml` now carries `hi`, the raw DWDS hit count, and `fr` is gone

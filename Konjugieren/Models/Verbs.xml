@@ -606,7 +606,7 @@
   <verb in="ahnen" hi="658228" ic="flexibility">
     <reading tn="suspect, sense" fa="w" />
   </verb>
-  <verb in="ähnlich+schauen" hi="573432" hp="y" ic="flexibility">
+  <verb in="ähnlich+schauen" hi="5659" hp="y" ic="flexibility">
     <reading tn="be typical of, be like" fa="w" />
   </verb>
   <verb in="aktivieren" hi="1189038" ic="highintensity.intervaltraining">
@@ -618,10 +618,10 @@
   <verb in="akzeptieren" hi="1777086" ic="handball">
     <reading tn="accept" fa="i" />
   </verb>
-  <verb in="alle+machen" hi="574263" hp="y" ic="strengthtraining.traditional">
+  <verb in="alle+machen" hi="5120" hp="y" ic="strengthtraining.traditional">
     <reading tn="kill" fa="w" />
   </verb>
-  <verb in="alt+machen" hi="574262" hp="y" ic="strengthtraining.traditional">
+  <verb in="alt+machen" hi="5149" hp="y" ic="strengthtraining.traditional">
     <reading tn="age" fa="w" />
   </verb>
   <verb in="analysieren" hi="1306621" ic="flexibility">
@@ -907,7 +907,7 @@
   <verb in="an+pr^ei^sen" hi="123312" ic="arms.open">
     <reading tn="praise, advertise" fa="s" ag="bleiben" />
   </verb>
-  <verb in="an+prüfen" hi="573213" hp="y" ic="strengthtraining.traditional">
+  <verb in="an+prüfen" hi="1072" hp="y" ic="strengthtraining.traditional">
     <reading tn="examine in a cursory mode" fa="w" />
   </verb>
   <verb in="an+r^a^ten" hi="71857" ic="wave">
@@ -1088,7 +1088,7 @@
   <verb in="an+w^a^chsen" hi="216897" ic="stairs">
     <reading tn="accrue, rise, increase" fa="s" ag="fahren" ay="s" />
   </verb>
-  <verb in="an+warten" hi="573427" hp="y" ic="seated.side.left">
+  <verb in="an+warten" hi="1091" hp="y" ic="seated.side.left">
     <reading tn="await" fa="w" />
   </verb>
   <verb in="an+w^ei^sen" hi="1074664" ic="wave">
@@ -1122,7 +1122,7 @@
   <verb in="ärgern" hi="1022842" ic="boxing">
     <reading tn="annoy" fa="w" />
   </verb>
-  <verb in="arm+machen" hi="574261" hp="y" ic="strengthtraining.traditional">
+  <verb in="arm+machen" hi="5172" hp="y" ic="strengthtraining.traditional">
     <reading tn="impoverish" fa="w" />
   </verb>
   <verb in="atmen" hi="452806" ic="yoga">
@@ -1445,7 +1445,7 @@
   <verb in="auf+spielen" hi="202995" ic="play">
     <reading tn="show off, grandstand" fa="w" />
   </verb>
-  <verb in="auf+spr^e^chen" hi="573742" hp="y" ic="wave">
+  <verb in="auf+spr^e^chen" hi="7903" hp="y" ic="wave">
     <reading tn="record (a message)" fa="s" ag="sprechen" />
   </verb>
   <verb in="auf+spr^i^ngen" hi="95534" ic="jumprope">
@@ -2055,7 +2055,7 @@
   <verb in="b^a^cken" hi="1209397" ic="cooldown">
     <reading tn="bake" fa="m" ag="backen" />
   </verb>
-  <verb in="bankrott+g^eh^en" hi="574208" hp="y" ic="walk">
+  <verb in="bankrott+g^eh^en" hi="25667" hp="y" ic="walk">
     <reading tn="go bankrupt" fa="s" ag="gehen" ay="s" />
   </verb>
   <verb in="basieren" hi="1602658" ic="flexibility">
@@ -2271,7 +2271,7 @@
   <verb in="bei+g^eh^en" hi="454" ic="walk">
     <reading tn="synonym of drangehen" fa="s" ag="gehen" ay="s" />
   </verb>
-  <verb in="bei+h^e^lfen" hi="573717" hp="y" ic="2.and.child.holdinghands">
+  <verb in="bei+h^e^lfen" hi="7898" hp="y" ic="2.and.child.holdinghands">
     <reading tn="aid, assist, contribute, help" fa="s" ag="sterben" />
   </verb>
   <verb in="bei+k^om^men" hi="52891" ic="walk.arrival">
@@ -2292,7 +2292,7 @@
   <verb in="bei+schl^a^fen" hi="208" ic="cooldown">
     <reading tn="copulate" fa="s" ag="halten" />
   </verb>
-  <verb in="beiseite+h^a^lten" hi="573943" hp="y" ic="strengthtraining.traditional">
+  <verb in="beiseite+h^a^lten" hi="16527" hp="y" ic="strengthtraining.traditional">
     <reading tn="hold something aside" fa="s" ag="halten" />
   </verb>
   <verb in="beiseite+legen" hi="12977" ic="flexibility">
@@ -2930,7 +2930,7 @@
   <verb in="dahin+st^e^rben" hi="477" ic="fall">
     <reading tn="waste away, die off" fa="s" ag="sterben" ay="s" />
   </verb>
-  <verb in="dahinter+h^a^lten" hi="573939" hp="y" ic="strengthtraining.traditional">
+  <verb in="dahinter+h^a^lten" hi="2741" hp="y" ic="strengthtraining.traditional">
     <reading tn="hold something behind something" fa="s" ag="halten" />
   </verb>
   <verb in="dahinter+k^om^men" hi="5047" ic="walk.arrival">
@@ -2984,7 +2984,7 @@
   <verb in="darüber+l^ie^gen" hi="826" ic="cooldown">
     <reading tn="overlay or cover" fa="s" ag="liegen" />
   </verb>
-  <verb in="darunter+h^a^lten" hi="573935" hp="y" ic="strengthtraining.traditional">
+  <verb in="darunter+h^a^lten" hi="2727" hp="y" ic="strengthtraining.traditional">
     <reading tn="hold something underneath something" fa="s" ag="halten" />
   </verb>
   <verb in="dar+w^ä^gen" hi="4473" hp="y" ic="flexibility">
@@ -3023,7 +3023,7 @@
   <verb in="davon+tr^a^gen" hi="72003" ic="hiking">
     <reading tn="carry away" fa="s" ag="fahren" />
   </verb>
-  <verb in="davor+h^a^lten" hi="573933" hp="y" ic="strengthtraining.traditional">
+  <verb in="davor+h^a^lten" hi="2718" hp="y" ic="strengthtraining.traditional">
     <reading tn="hold something in front of something" fa="s" ag="halten" />
   </verb>
   <verb in="dazu+fügen" hi="2722" ic="2">
@@ -3144,7 +3144,7 @@
   <verb in="drohen" hi="3231169" ic="boxing">
     <reading tn="threaten" fa="w" />
   </verb>
-  <verb in="drüber+h^a^lten" hi="573929" hp="y" ic="strengthtraining.traditional">
+  <verb in="drüber+h^a^lten" hi="2702" hp="y" ic="strengthtraining.traditional">
     <reading tn="hold something over something, cover" fa="s" ag="halten" />
   </verb>
   <verb in="drücken" hi="2647452" ic="strengthtraining.traditional">
@@ -3153,7 +3153,7 @@
   <verb in="drucken" hi="757041" ic="flexibility">
     <reading tn="print" fa="w" />
   </verb>
-  <verb in="drunter+h^a^lten" hi="573930" hp="y" ic="strengthtraining.traditional">
+  <verb in="drunter+h^a^lten" hi="2713" hp="y" ic="strengthtraining.traditional">
     <reading tn="hold something underneath something" fa="s" ag="halten" />
   </verb>
   <verb in="durch+arbeiten" hi="55814" ic="strengthtraining.traditional">
@@ -3543,7 +3543,7 @@
   <verb in="ein+machen" hi="5646" ic="strengthtraining.traditional">
     <reading tn="can" fa="w" />
   </verb>
-  <verb in="ein+melden" hi="573187" hp="y" ic="wave">
+  <verb in="ein+melden" hi="2165" hp="y" ic="wave">
     <reading tn="report something to a superior authority" fa="w" />
   </verb>
   <verb in="ein+mischen" hi="185952" ic="2">
@@ -3622,7 +3622,7 @@
   <verb in="ein+schätzen" hi="698364" ic="2">
     <reading tn="assess, estimate" fa="w" />
   </verb>
-  <verb in="ein+schauen" hi="573203" hp="y" ic="flexibility">
+  <verb in="ein+schauen" hi="1065" hp="y" ic="flexibility">
     <reading tn="cover the eyes with one's hands" fa="w" />
   </verb>
   <verb in="ein+schenken" hi="41602" ic="arms.open">
@@ -3872,7 +3872,7 @@
   <verb in="ent*fl^ieß^en" hi="896" ic="flexibility">
     <reading tn="flow out" fa="s" ag="schließen" ay="s" />
   </verb>
-  <verb in="ent*folgen" hi="573701" hp="y" ic="walk.motion">
+  <verb in="ent*folgen" hi="3521" hp="y" ic="walk.motion">
     <reading tn="unfollow" fa="w" />
   </verb>
   <verb in="ent*führen" hi="472014" ic="walk.arrival">
@@ -4170,7 +4170,7 @@
   <verb in="er*f^i^nden" hi="1003319" ic="yoga">
     <reading tn="invent" fa="s" ag="finden" />
   </verb>
-  <verb in="er*fl^ieß^en" hi="573269" hp="y" ic="flexibility">
+  <verb in="er*fl^ieß^en" hi="2186" hp="y" ic="flexibility">
     <reading tn="ensue, arise, result" fa="s" ag="schließen" ay="s" />
   </verb>
   <verb in="er*folgen" hi="6589256" ic="handball">
@@ -4539,7 +4539,7 @@
   <verb in="fällen" hi="5740296" ic="handball">
     <reading tn="fell, cut down" fa="w" />
   </verb>
-  <verb in="falsch+l^ie^gen" hi="574018" hp="y" ic="cooldown">
+  <verb in="falsch+l^ie^gen" hi="66482" hp="y" ic="cooldown">
     <reading tn="be wrong" fa="s" ag="liegen" />
   </verb>
   <verb in="falsch+spielen" hi="172" ic="play">
@@ -4575,7 +4575,7 @@
   <verb in="feil+b^ie^ten" hi="38709" ic="arms.open">
     <reading tn="offer for sale" fa="s" ag="bieten" />
   </verb>
-  <verb in="feil+h^ab^en" hi="573128" hp="y" ic="arms.open">
+  <verb in="feil+h^ab^en" hi="3848" hp="y" ic="arms.open">
     <reading tn="have for sale" fa="m" ag="haben" />
   </verb>
   <verb in="feil+h^a^lten" hi="2373" ic="strengthtraining.traditional">
@@ -4593,7 +4593,7 @@
   <verb in="fern+l^ie^gen" hi="8290" ic="cooldown">
     <reading tn="be alien to" fa="s" ag="liegen" />
   </verb>
-  <verb in="fern+schauen" hi="573443" hp="y" ic="flexibility">
+  <verb in="fern+schauen" hi="15981" hp="y" ic="flexibility">
     <reading tn="watch television" fa="w" />
   </verb>
   <verb in="fern+s^e^hen" hi="70548" ic="mind.and.body">
@@ -4632,7 +4632,7 @@
   <verb in="fest+f^a^hren" hi="15096" ic="seated.side.left.steeringwheel">
     <reading tn="get stuck" fa="s" ag="fahren" />
   </verb>
-  <verb in="fest+fragen" hi="573072" hp="y" ic="wave">
+  <verb in="fest+fragen" hi="1059" hp="y" ic="wave">
     <reading tn="corner with questions" fa="w" />
   </verb>
   <verb in="fest+fr^ie^ren" hi="9472" ic="skiing.downhill">
@@ -4982,7 +4982,7 @@
   <verb in="ge*r^a^ten" hi="3712867" ic="socialdance">
     <reading tn="get into, end up in" fa="s" ag="halten" ay="s" />
   </verb>
-  <verb in="gering+h^a^lten" hi="573922" hp="y" ic="strengthtraining.traditional">
+  <verb in="gering+h^a^lten" hi="87184" hp="y" ic="strengthtraining.traditional">
     <reading tn="keep low, minimize, keep to a minimum" fa="s" ag="halten" />
   </verb>
   <verb in="gering+schätzen" hi="5702" ic="arms.open">
@@ -5012,7 +5012,7 @@
   <verb in="gesund+beten" hi="633" ic="yoga">
     <reading tn="heal through prayer" fa="w" />
   </verb>
-  <verb in="gesund+melden" hi="573410" hp="y" ic="wave">
+  <verb in="gesund+melden" hi="9249" hp="y" ic="wave">
     <reading tn="report back to work after sick leave" fa="w" />
   </verb>
   <verb in="ge*trauen" hi="162299" ic="strengthtraining.traditional">
@@ -5048,7 +5048,7 @@
   <verb in="glauben" hi="8530784" ic="yoga">
     <reading tn="believe" fa="w" />
   </verb>
-  <verb in="gleich+be*handeln" hi="573139" hp="y" ic="2">
+  <verb in="gleich+be*handeln" hi="64234" hp="y" ic="2">
     <reading tn="treat equally" fa="w" />
   </verb>
   <verb in="gl^eich^en" hi="829668" ic="mind.and.body">
@@ -5203,7 +5203,7 @@
   <verb in="h^ei^ßen" hi="14667984" ic="wave">
     <reading tn="be called" fa="s" ag="heißen" />
   </verb>
-  <verb in="heiß+machen" hi="574248" hp="y" ic="strengthtraining.traditional">
+  <verb in="heiß+machen" hi="5134" hp="y" ic="strengthtraining.traditional">
     <reading tn="make hot" fa="w" />
   </verb>
   <verb in="h^e^lfen" hi="12186663" ic="2.and.child.holdinghands">
@@ -5275,7 +5275,7 @@
   <verb in="herauf+g^e^ben" hi="11" ic="arms.open">
     <reading tn="give something upwards" fa="s" ag="geben" />
   </verb>
-  <verb in="herauf+h^a^lten" hi="573918" hp="y" ic="strengthtraining.traditional">
+  <verb in="herauf+h^a^lten" hi="2680" hp="y" ic="strengthtraining.traditional">
     <reading tn="hold something up" fa="s" ag="halten" />
   </verb>
   <verb in="herauf+k^om^men" hi="3744" ic="walk.arrival">
@@ -5639,7 +5639,7 @@
   <verb in="hinauf+g^eh^en" hi="7221" ic="walk">
     <reading tn="climb, go up" fa="s" ag="gehen" ay="s" />
   </verb>
-  <verb in="hinauf+h^a^lten" hi="573914" hp="y" ic="strengthtraining.traditional">
+  <verb in="hinauf+h^a^lten" hi="2659" hp="y" ic="strengthtraining.traditional">
     <reading tn="hold something up" fa="s" ag="halten" />
   </verb>
   <verb in="hinauf+schauen" hi="1715" ic="flexibility">
@@ -5796,7 +5796,7 @@
   <verb in="hintan+h^a^lten" hi="1803" ic="strengthtraining.traditional">
     <reading tn="prevent, avert" fa="s" ag="halten" />
   </verb>
-  <verb in="hintan+legen" hi="573618" hp="y" ic="flexibility">
+  <verb in="hintan+legen" hi="1048" hp="y" ic="flexibility">
     <reading tn="put back, order into a posterior position" fa="w" />
   </verb>
   <verb in="hintan+setzen" hi="363" ic="seated.side.left">
@@ -6089,7 +6089,7 @@
   <verb in="kleben" hi="590615" ic="indoor.rowing">
     <reading tn="stick, glue" fa="w" />
   </verb>
-  <verb in="klein+h^a^lten" hi="573908" hp="y" ic="strengthtraining.traditional">
+  <verb in="klein+h^a^lten" hi="87266" hp="y" ic="strengthtraining.traditional">
     <reading tn="keep down" fa="s" ag="halten" />
   </verb>
   <verb in="klein+kriegen" hi="7821" ic="handball">
@@ -6098,7 +6098,7 @@
   <verb in="klein+machen" hi="4573" ic="strengthtraining.traditional">
     <reading tn="put down, humiliate, belittle" fa="w" />
   </verb>
-  <verb in="klein+rechnen" hi="573353" hp="y" ic="barre">
+  <verb in="klein+rechnen" hi="15185" hp="y" ic="barre">
     <reading tn="undercalculate" fa="w" />
   </verb>
   <verb in="klein+reden" hi="28185" ic="wave">
@@ -6230,7 +6230,7 @@
   <verb in="kürzer+tr^et^en" hi="17429" ic="stairs">
     <reading tn="cut back, ease off" fa="s" ag="treten" />
   </verb>
-  <verb in="kurz+machen" hi="574236" hp="y" ic="strengthtraining.traditional">
+  <verb in="kurz+machen" hi="21078" hp="y" ic="strengthtraining.traditional">
     <reading tn="summarize, be brief" fa="w" />
   </verb>
   <verb in="kurz+schl^ieß^en" hi="14251" ic="flexibility">
@@ -6396,7 +6396,7 @@
   <verb in="machen" hi="67278827" ic="strengthtraining.traditional">
     <reading tn="make, do" fa="w" />
   </verb>
-  <verb in="madig+machen" hi="574232" hp="y" ic="strengthtraining.traditional">
+  <verb in="madig+machen" hi="9289" hp="y" ic="strengthtraining.traditional">
     <reading tn="put someone off something" fa="w" />
   </verb>
   <verb in="malen" hi="1069590" ic="flexibility">
@@ -6808,7 +6808,7 @@
   <verb in="nahe+st^eh^en" hi="48160" ic="stand">
     <reading tn="have a close connection to" fa="s" ag="stehen" />
   </verb>
-  <verb in="nebeneinander+h^a^lten" hi="573905" hp="y" ic="strengthtraining.traditional">
+  <verb in="nebeneinander+h^a^lten" hi="2645" hp="y" ic="strengthtraining.traditional">
     <reading tn="hold next to each other" fa="s" ag="halten" />
   </verb>
   <verb in="n^ehm^en" hi="27416529" ic="handball">
@@ -6823,7 +6823,7 @@
   <verb in="nerven" hi="471111" ic="boxing">
     <reading tn="annoy" fa="w" />
   </verb>
-  <verb in="neu+starten" hi="573551" hp="y" ic="walk.arrival">
+  <verb in="neu+starten" hi="52535" hp="y" ic="walk.arrival">
     <reading tn="restart" fa="w" />
   </verb>
   <verb in="nieder+blicken" hi="220" ic="flexibility">
@@ -6841,7 +6841,7 @@
   <verb in="nieder+f^all^en" hi="2783" ic="fall">
     <reading tn="fall to the ground" fa="s" ag="fallen" ay="s" />
   </verb>
-  <verb in="nieder+führen" hi="573958" hp="y" ic="walk.arrival">
+  <verb in="nieder+führen" hi="5196" hp="y" ic="walk.arrival">
     <reading tn="lead down" fa="w" />
   </verb>
   <verb in="nieder+h^a^lten" hi="6153" ic="strengthtraining.traditional">
@@ -6859,7 +6859,7 @@
   <verb in="nieder+machen" hi="19433" ic="strengthtraining.traditional">
     <reading tn="slaughter, massacre" fa="w" />
   </verb>
-  <verb in="nieder+reden" hi="505474" hp="y" ic="wave">
+  <verb in="nieder+reden" hi="2118" hp="y" ic="wave">
     <reading tn="talk someone into the ground" fa="w" />
   </verb>
   <verb in="nieder+r^eiß^en" hi="19701" ic="boxing">
@@ -6995,7 +6995,7 @@
   <verb in="prüfen" hi="3735454" ic="strengthtraining.traditional">
     <reading tn="check, test" fa="w" />
   </verb>
-  <verb in="publik+machen" hi="574228" hp="y" ic="strengthtraining.traditional">
+  <verb in="publik+machen" hi="126482" hp="y" ic="strengthtraining.traditional">
     <reading tn="make public, publicize" fa="w" />
   </verb>
   <verb in="punkten" hi="834243" ic="archery">
@@ -7004,10 +7004,10 @@
   <verb in="qualifizieren" hi="968752" ic="arms.open">
     <reading tn="qualify" fa="i" />
   </verb>
-  <verb in="quer+d^enk^en" hi="573645" hp="y" ic="yoga">
+  <verb in="quer+d^enk^en" hi="70874" hp="y" ic="yoga">
     <reading tn="think outside the box" fa="m" ag="bringen" />
   </verb>
-  <verb in="quer+l^e^sen" hi="573636" hp="y" ic="mind.and.body">
+  <verb in="quer+l^e^sen" hi="32465" hp="y" ic="mind.and.body">
     <reading tn="skim, scan" fa="s" ag="sehen" />
   </verb>
   <verb in="quer+sch^ieß^en" hi="1656" ic="archery">
@@ -7028,7 +7028,7 @@
   <verb in="rauf+g^eh^en" hi="2357" ic="walk">
     <reading tn="go up" fa="s" ag="gehen" ay="s" />
   </verb>
-  <verb in="rauf+h^a^lten" hi="573088" hp="y" ic="strengthtraining.traditional">
+  <verb in="rauf+h^a^lten" hi="2690" hp="y" ic="strengthtraining.traditional">
     <reading tn="hold something up" fa="s" ag="halten" />
   </verb>
   <verb in="räumen" hi="1679794" ic="highintensity.intervaltraining">
@@ -7037,7 +7037,7 @@
   <verb in="raus+br^ing^en" hi="50708" ic="hiking">
     <reading tn="bring or take out" fa="m" ag="bringen" />
   </verb>
-  <verb in="raus+drehen" hi="573173" hp="y" ic="socialdance">
+  <verb in="raus+drehen" hi="9607" hp="y" ic="socialdance">
     <reading tn="take out" fa="w" />
   </verb>
   <verb in="raus+fl^ie^gen" hi="36549" ic="skiing.downhill">
@@ -7073,7 +7073,7 @@
   <verb in="rechnen" hi="5298632" ic="barre">
     <reading tn="calculate, expect" fa="w" />
   </verb>
-  <verb in="recht+drehen" hi="573172" hp="y" ic="socialdance">
+  <verb in="recht+drehen" hi="2148" hp="y" ic="socialdance">
     <reading tn="veer, shift in a clockwise direction" fa="w" />
   </verb>
   <verb in="rechtfertigen" hi="1151476" ic="wave">
@@ -7206,17 +7206,17 @@
   <verb in="rück+be*s^i^nnen" hi="14505" hp="y" ic="mind.and.body">
     <reading tn="think back, remember, remind oneself" fa="s" ag="beginnen" />
   </verb>
-  <verb in="rück+drehen" hi="573171" hp="y" ic="socialdance">
+  <verb in="rück+drehen" hi="2130" hp="y" ic="socialdance">
     <reading tn="back, shift in an anticlockwise direction" fa="w" />
   </verb>
   <verb in="rücken" hi="2095374" ic="hiking">
     <reading tn="move (something) over" fa="w" />
     <reading tn="move over, shift" fa="w" ay="s" />
   </verb>
-  <verb in="rück+über*w^ei^sen" hi="573136" hp="y" ic="archery">
+  <verb in="rück+über*w^ei^sen" hi="3879" hp="y" ic="archery">
     <reading tn="transfer back, wire back" fa="s" ag="bleiben" />
   </verb>
-  <verb in="rückwärts+f^a^hren" hi="573672" hp="y" ic="seated.side.left.steeringwheel">
+  <verb in="rückwärts+f^a^hren" hi="21031" hp="y" ic="seated.side.left.steeringwheel">
     <reading tn="drive backwards, reverse" fa="s" ag="fahren" ay="s" />
   </verb>
   <verb in="rück+zahlen" hi="250" ic="arms.open">
@@ -7285,7 +7285,7 @@
   <verb in="sammeln" hi="3799281" ic="handball">
     <reading tn="collect" fa="w" />
   </verb>
-  <verb in="satt+h^ab^en" hi="573124" hp="y" ic="arms.open">
+  <verb in="satt+h^ab^en" hi="37548" hp="y" ic="arms.open">
     <reading tn="be sick/tired of" fa="m" ag="haben" />
   </verb>
   <verb in="satt+s^e^hen" hi="15723" ic="mind.and.body">
@@ -7494,7 +7494,7 @@
   <verb in="^sei^n" hi="835493046" ic="yoga">
     <reading tn="be" fa="s" ag="sein" ay="s" />
   </verb>
-  <verb in="selig+machen" hi="574222" hp="y" ic="strengthtraining.traditional">
+  <verb in="selig+machen" hi="9274" hp="y" ic="strengthtraining.traditional">
     <reading tn="bless, make blessed" fa="w" />
   </verb>
   <verb in="selig+spr^e^chen" hi="4851" ic="wave">
@@ -7542,7 +7542,7 @@
   <verb in="s^oll^en" hi="87999785" ic="walk.arrival">
     <reading tn="should, ought, be obligated, shall" fa="m" ag="sollen" />
   </verb>
-  <verb in="sonder+kündigen" hi="499590" hp="y" ic="skating">
+  <verb in="sonder+kündigen" hi="1045" hp="y" ic="skating">
     <reading tn="terminate by special termination right" fa="w" />
   </verb>
   <verb in="sorgen" hi="11937982" ic="seated.side.left.steeringwheel">
@@ -7602,7 +7602,7 @@
   <verb in="stärken" hi="2550161" ic="strengthtraining.traditional">
     <reading tn="strengthen" fa="w" />
   </verb>
-  <verb in="stark+machen" hi="574221" hp="y" ic="strengthtraining.traditional">
+  <verb in="stark+machen" hi="127027" hp="y" ic="strengthtraining.traditional">
     <reading tn="advocate for, stand up for" fa="w" />
   </verb>
   <verb in="starten" hi="8465638" ic="walk.arrival">
@@ -7875,7 +7875,7 @@
   <verb in="über*eignen" hi="19985" ic="strengthtraining.traditional">
     <reading tn="transfer ownership" fa="w" />
   </verb>
-  <verb in="übereinander+h^a^lten" hi="573892" hp="y" ic="strengthtraining.traditional">
+  <verb in="übereinander+h^a^lten" hi="2637" hp="y" ic="strengthtraining.traditional">
     <reading tn="hold on top of each other" fa="s" ag="halten" />
   </verb>
   <verb in="übereinander+legen" hi="7126" ic="flexibility">
@@ -8166,7 +8166,7 @@
   <verb in="um+drehen" hi="243913" ic="socialdance">
     <reading tn="twist, turn, turn around" fa="w" />
   </verb>
-  <verb in="umeinander+st^eh^en" hi="574106" hp="y" ic="stand">
+  <verb in="umeinander+st^eh^en" hi="2196" hp="y" ic="stand">
     <reading tn="stand around" fa="s" ag="stehen" />
   </verb>
   <verb in="um+er*z^ieh^en" hi="11489" ic="indoor.rowing">
@@ -8807,7 +8807,7 @@
     <reading tn="glue, seal" fa="w" />
     <reading tn="stick together" fa="w" ay="s" />
   </verb>
-  <verb in="ver*klicken" hi="548110" hp="y" ic="flexibility">
+  <verb in="ver*klicken" hi="1053" hp="y" ic="flexibility">
     <reading tn="misclick" fa="w" />
   </verb>
   <verb in="ver*kl^i^ngen" hi="35348" ic="cooldown">
@@ -8988,7 +8988,7 @@
   <verb in="ver*rauchen" hi="19050" ic="cooldown">
     <reading tn="disappear" fa="w" ay="s" />
   </verb>
-  <verb in="ver*räumen" hi="514019" hp="y" ic="highintensity.intervaltraining">
+  <verb in="ver*räumen" hi="13754" hp="y" ic="highintensity.intervaltraining">
     <reading tn="store, stow away, put away, tidy away" fa="w" />
   </verb>
   <verb in="ver*rechnen" hi="184476" ic="barre">
@@ -9350,7 +9350,7 @@
   <verb in="voll*z^ieh^en" hi="710286" ic="seated.side.left.steeringwheel">
     <reading tn="carry out, perform" fa="s" ag="ziehen" />
   </verb>
-  <verb in="vonstatten+g^eh^en" hi="574166" hp="y" ic="walk">
+  <verb in="vonstatten+g^eh^en" hi="152822" hp="y" ic="walk">
     <reading tn="proceed, go" fa="s" ag="gehen" ay="s" />
   </verb>
   <verb in="voran+g^eh^en" hi="199587" ic="walk">
@@ -9964,7 +9964,7 @@
   <verb in="wett+machen" hi="112911" ic="strengthtraining.traditional">
     <reading tn="make up for, make good" fa="w" />
   </verb>
-  <verb in="wichtig+machen" hi="574213" hp="y" ic="strengthtraining.traditional">
+  <verb in="wichtig+machen" hi="10865" hp="y" ic="strengthtraining.traditional">
     <reading tn="put on airs" fa="w" />
   </verb>
   <verb in="wider*legen" hi="234465" ic="flexibility">
@@ -10131,7 +10131,7 @@
   <verb in="zer*l^au^fen" hi="9198" ic="run">
     <reading tn="lose form due to melting, melt away" fa="s" ag="laufen" ay="s" />
   </verb>
-  <verb in="zer*leben" hi="573651" hp="y" ic="flexibility">
+  <verb in="zer*leben" hi="1111" hp="y" ic="flexibility">
     <reading tn="dilapidate by living" fa="w" />
   </verb>
   <verb in="zer*legen" hi="236800" ic="flexibility">
@@ -10198,7 +10198,7 @@
   <verb in="zer*teilen" hi="43548" ic="fencing">
     <reading tn="divide, split up" fa="w" />
   </verb>
-  <verb in="zer*tr^ei^ben" hi="400084" hp="y" ic="seated.side.left.steeringwheel">
+  <verb in="zer*tr^ei^ben" hi="1050" hp="y" ic="seated.side.left.steeringwheel">
     <reading tn="drive apart" fa="s" ag="bleiben" />
   </verb>
   <verb in="zer*trennen" hi="2296" ic="fencing">
@@ -10380,7 +10380,7 @@
   <verb in="zu+packen" hi="44137" ic="handball">
     <reading tn="grab, grip, hold on" fa="w" />
   </verb>
-  <verb in="zupass+k^om^men" hi="574271" hp="y" ic="walk.arrival">
+  <verb in="zupass+k^om^men" hi="32868" hp="y" ic="walk.arrival">
     <reading tn="be appropriate for" fa="s" ag="kommen" ay="s" />
   </verb>
   <verb in="zu+rechnen" hi="189806" ic="barre">
@@ -10814,7 +10814,7 @@
   <verb in="zuvor+k^om^men" hi="61410" ic="walk.arrival">
     <reading tn="pre-empt, anticipate" fa="s" ag="kommen" ay="s" />
   </verb>
-  <verb in="zuvor+sagen" hi="574146" hp="y" ic="wave">
+  <verb in="zuvor+sagen" hi="5657" hp="y" ic="wave">
     <reading tn="predict" fa="w" />
   </verb>
   <verb in="zu+w^a^chsen" hi="26139" ic="stairs">

@@ -19,7 +19,7 @@ Three standard varieties: North Germany, Austria, and Switzerland, with Swiss ß
 Interactive Quiz
 
 Test your knowledge with timed 30-question quizzes:
-• Four levels, from Beginner to Advanced: start with the conjugationgroups German uses most, and add the rest as you go
+• Four levels, from Beginner to Advanced: start with the conjugationgroups and verbs German uses most, and add the rest as you go
 • Audio feedback for correct and incorrect answers
 
 Conjugation Tutor (Apple Intelligence)

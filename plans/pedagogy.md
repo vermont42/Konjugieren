@@ -750,6 +750,17 @@ conjugationgroups 2, and the three Futurs and both participles 1. The participle
 and so is Ridiculous's doubling. A stored Regular became Elementary and Ridiculous became
 Advanced; a new install starts at Beginner.
 
+**Built on `main` 2026-11-13** by [Phase 6](pedagogy-implementation.md#phase-6-which-verbs-are-asked)
+of the pedagogy plan: frequency bands, base verbs, and a guaranteed mix, for the default quiz only.
+The ladder's verbs column became each level's band, superseding the verdict's "top 300", which
+now describes Elementary. Half of each quiz's questions ask a strong or mixed reading, and at
+least two ask sein, haben, werden, or a modal. A prefixed verb in the top 300 draws as freely as a
+base verb, by Josh's reading of the derivative verdict; beyond the top 300, exactly one to three
+questions ask a prefixed verb, and at the two lower levels at least one question does. The 83
+placeholder counts the first row warns of were checked, and 56 sat in the top 1,000. Their
+estimates were moved beside measured verbs of similar use, so none of them reaches a band, the
+widget's verb, or the top 1,000 of the frequency sort.
+
 ### Tier 3: Give the Quiz a Memory
 
 | Suggestion | Basis | Effort | Verdict |

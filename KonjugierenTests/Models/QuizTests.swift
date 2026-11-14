@@ -61,6 +61,33 @@ struct QuizTests {
     quiz.quit()
   }
 
+  @Test(arguments: QuizLevel.allCases)
+  func theDefaultQuizDrawsFromTheLevelsBand(level: QuizLevel) {
+    Current.settings.quizLevel = level
+    let quiz = Quiz(timerInterval: 0.001, randomSource: SeededRNG(seed: 11))
+    quiz.start()
+
+    let band = Set(Quiz.defaultVerbs(for: level).map(\.infinitiv))
+    #expect(quiz.questions.allSatisfy { band.contains($0.verb.infinitiv) })
+    let strong = quiz.questions.filter { QuizDraw.isStrong($0.verb.reading(at: $0.readingIndex) ?? $0.verb.primaryReading) }
+    #expect(strong.count == Quiz.questionCount / 2)
+
+    quiz.quit()
+  }
+
+  @Test func aScopedQuizIsNotMixed() {
+    Current.settings.quizLevel = .beginner
+    let weakVerbs = ["fragen", "lernen", "machen", "sagen", "spielen"].compactMap { Verb.verbs[$0] }
+    let quiz = Quiz(timerInterval: 0.001, randomSource: SeededRNG(seed: 3))
+    quiz.start(scope: .myVerbs(weakVerbs))
+
+    #expect(weakVerbs.count == 5)
+    #expect(quiz.questions.count == Quiz.questionCount)
+    #expect(quiz.questions.allSatisfy { weakVerbs.map(\.infinitiv).contains($0.verb.infinitiv) })
+
+    quiz.quit()
+  }
+
   @Test func theSameSeedDrawsTheSameQuiz() {
     let first = Quiz(timerInterval: 0.001, randomSource: SeededRNG(seed: 42))
     first.start()

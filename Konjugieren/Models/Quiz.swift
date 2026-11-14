@@ -246,19 +246,24 @@ class Quiz {
     }
     #endif
 
-    // Sorted so that a seeded random source draws the same quiz in every process, since a
-    // dictionary's order changes from launch to launch.
-    let verbs = scope.verbs ?? Verb.verbs.values.sorted { $0.infinitiv < $1.infinitiv }
     return QuizDraw.questions(
       level: level,
-      verbs: verbs,
+      verbs: scope.verbs ?? Self.defaultVerbs(for: level),
       readingIndex: scope.readingIndex,
       count: scope.questionCount,
       distinctCells: scope.questionCount < Quiz.questionCount,
+      mixesVerbs: scope.verbs == nil,
       using: &randomSource
     ).map { question in
       makeQuizItem(verb: question.verb, conjugationgroup: question.conjugationgroup, readingIndex: question.readingIndex)
     }
+  }
+
+  /// The verbs of the level's band. Sorted so that a seeded random source draws the same quiz in
+  /// every process, since a dictionary's order changes from launch to launch.
+  static func defaultVerbs(for level: QuizLevel) -> [Verb] {
+    let verbs = level.band.map { Verb.verbs(in: $0) } ?? Array(Verb.verbs.values)
+    return verbs.sorted { $0.infinitiv < $1.infinitiv }
   }
 
   func makeQuizItem(verb: Verb, conjugationgroup: Conjugationgroup, readingIndex: Int? = nil) -> QuizItem {

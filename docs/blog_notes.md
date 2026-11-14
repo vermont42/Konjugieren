@@ -10435,3 +10435,73 @@ The migration was tried on real installs rather than only in tests. The iPhone s
 Regular became Elementary. The iPad's was set to Ridiculous first and became Advanced. The
 analytics parameter `difficulty` became `level`, and `startQuiz` carries it now too. Tests went
 from 569 to 587.
+
+## Which Verbs the Quiz Asks (2026-11-13)
+
+Phase 6 of the pedagogy plan changed which verbs the default quiz draws, which is the part of a
+quiz a learner notices first. Before it, a Beginner quiz drew from all 3,572 verbs, so a learner
+meeting the Präsens for the first time could be asked to conjugate *abservieren*. Now each level
+draws from a frequency band: the 100 most frequent verbs at Beginner, 300 at Elementary, 1,000 at
+Intermediate, and everything at Advanced. Within the band, half the questions ask a strong or
+mixed verb, and at least two ask sein, haben, werden, or a modal.
+
+### A phase that contradicted itself
+
+The plan said each quiz should have "one to three derivative verbs", and two lines later that it
+should otherwise draw "unprefixed verbs and frequent derivatives". Those cannot both hold. Read
+strictly, *verstehen* and *bekommen*, which are among the hundred commonest German verbs, could
+turn up at most three times between them. I asked Josh rather than pick, and he chose the looser
+reading. A prefixed verb in the top 300 is as basic as a base verb and draws freely. Beyond the
+top 300, a prefixed verb is a rare derivative, and exactly one to three questions ask one. That
+makes the rule depend on the level in a way I had not expected. At Beginner and Elementary there
+are no rare derivatives at all, so the cap never applies, and the rule becomes a floor of one
+prefixed verb. One detail fell out of the data: the top 100 has 24 prefixed verbs, and every one
+of them is inseparable. A Beginner never meets a separable verb.
+
+### The placeholder check, and *madigmachen*
+
+The phase asked for a check that none of the 83 verbs with placeholder frequencies had slipped
+into the top 1,000. Fifty-six had. They are compounds DWDS cannot measure, such as *madigmachen*,
+*armmachen*, *drüberhalten*, and *umeinanderstehen*. Tranche 2 had estimated each one from its
+base verb's count, and when the base is *machen* that ratio lands near rank 940. Measured
+compounds of the same shape sit far lower: *kaputtmachen* at #2321 and *schlechtmachen* at #3062.
+The quiz was not the only thing affected, since the widget's verb of the day already drew from the
+top 1,000.
+
+Josh chose to fix the data, not to have the quiz step around it. The rule in `verb-sources.md`
+is to place an estimate by judgment ("about as common as *gedeihen*") between two real counts. So
+`verbdata/replace_inflated_estimates.py` holds a table that gives each verb a measured anchor, and
+it places the verb just below it. Two things went wrong on the way. Several verbs sharing an anchor
+could not fit in one gap, because in the tail of the corpus measured counts often differ by one.
+Each verb now takes its own gap, walking down from the anchor. And moving only the 56 would have
+let *verklicken* and *verräumen*, which sat just below #1,000, rise into the band in their place.
+So the script moved all 61 provisional verbs ranked above #1,200.
+
+### Exact counts by deciding first
+
+Hitting "exactly half strong" by chance would have meant redrawing until the numbers came out
+right. Instead, `QuizDraw` decides everything before it chooses a verb. It draws each slot's
+conjugationgroup by weight, as Phase 5 did. Then it gives slots roles and a strong-or-weak value,
+and only then draws a verb that fits all three. Restricted cells count on their own:
+Elementary's Präteritum of sein, haben, and the modals is a core question by definition, and
+since haben is marked mixed in the data, it is strong too.
+
+That design had a bug which thirty questions hid. The core role could land on a slot that was
+already core, so a quiz with one restricted Konjunktiv II question and no other core verb counted
+it twice. Thirty questions draw enough sein and haben by chance to cover for it. A ten-question
+test, written because Phase 7 will shorten the quiz, failed at two seeds out of 40.
+
+### A slowdown that passed
+
+The first full test run took 805 seconds, and every assertion but one passed.
+The refactor had made the unmixed draw filter the whole corpus for every question, an O(1) pick
+turned into O(n). `QuizLevelTests` draws 40,000 questions at a time, and it went from about three
+seconds to 688. Only the per-suite timing in the log showed it. With that fixed, and the new suite
+drawing each level's quizzes once and sharing them, the full run is 47 seconds. One mixed quiz
+costs about 50 ms in a debug build, which a learner will not notice.
+
+On the simulators, I answered every question of a real quiz wrongly and logged each verb. An
+English Beginner quiz on the iPhone asked only top-100 verbs. A German Mittelstufe quiz asked
+exactly one rare derivative, *unterscheiden* at #329. An Advanced quiz on the iPad asked
+*hineinrufen* at #3053, along with *gären*, *melken*, and *dingen*, which is the whole corpus
+doing what Advanced promises. Tests went from 587 to 601.

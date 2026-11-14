@@ -18,8 +18,8 @@ The quiz tests users' knowledge of German verb conjugations with timed, scored g
 | `QuizView.swift` | SwiftUI view for active quiz gameplay |
 | `QuizCorrectionView.swift` | The held correction of a wrong answer |
 | `ResultsView.swift` | Modal sheet showing final results |
-| `QuizLevel.swift` | The level setting, and each level's pool: `QuizPoolEntry` (a table's cells, their verbs, a weight) and `QuizVerbs` (which verbs a restricted cell may ask) |
-| `QuizDraw.swift` | Draws a quiz's questions from a level's pool with an injectable random source |
+| `QuizLevel.swift` | The level setting, each level's pool, `QuizPoolEntry` (a table's cells, their verbs, a weight), `QuizVerbs` (which verbs a restricted cell may ask), and each level's frequency band |
+| `QuizDraw.swift` | Draws a quiz's questions from a level's pool with an injectable random source, mixing the default quiz's verbs |
 | `QuizErrorHistory.swift` | Persists recent wrong answers (up to 200) for AI analysis |
 | `ErrorExplainerView.swift` | On-demand AI explanation of why an answer was wrong |
 | `LiveActivityManager.swift` | Starts/updates/ends quiz Live Activity on lock screen |
@@ -64,9 +64,42 @@ A weight belongs to a kind as a whole, whatever its number of cells. At Beginner
 therefore about 60% Präsens and 40% Imperativ. Every level scores 10 points a right answer.
 
 `Quiz(randomSource:)` takes any `RandomNumberGenerator`, so a test can pass `SeededRNG` and draw the
-same quiz every time. `Quiz` sorts the corpus by infinitive before drawing, since a dictionary's
+same quiz every time. `Quiz` sorts the verbs by infinitive before drawing, since a dictionary's
 order changes between launches. `QuizLevelTests` pins each level's tables, the restricted cells'
 verbs, and each kind's share of 40,000 seeded draws.
+
+### Which Verbs the Default Quiz Asks
+
+Built 2026-11-13 in Phase 6 of [`plans/pedagogy-implementation.md`](../plans/pedagogy-implementation.md).
+A quiz whose scope names no verbs (`QuizScope.allVerbs`, the Quiz tab's default) draws from its
+level's `QuizLevel.band`: the 100 most frequent verbs at Beginner, 300 at Elementary, 1,000 at
+Intermediate, and the whole corpus at Advanced. `Quiz.defaultVerbs(for:)` supplies them, and
+`Quiz` passes `mixesVerbs: true` to `QuizDraw`, which then balances the session:
+
+- **Half the questions, rounded down, ask a strong or mixed reading.** ieren counts as weak, and
+  so the reading, not the verb, decides: hängen counts by the reading asked.
+- **At least two ask sein, haben, werden, or a modal** (`QuizDraw.isCore`). Since haben is mixed in
+  the data, every core question is also a strong one.
+- **Derivatives.** A prefixed verb in the top 300 (`QuizDraw.frequentDerivativeBand`) draws as
+  freely as a base verb, as Josh chose on 2026-11-13: bekommen is as basic as kommen. Beyond the
+  top 300, a prefixed verb is a *rare derivative*, and where the band reaches that far
+  (Intermediate and Advanced) exactly one to three questions ask one, and no other question may.
+  At Beginner and Elementary, where no rare derivative exists, at least one question asks a
+  prefixed verb.
+
+The counts are exact because `QuizDraw.mixedQuestions` decides them before it draws a verb. It
+draws every slot's kind by weight, as above. It then gives slots their roles (core, rare
+derivative, derivative, or free) and gives each slot a strong-or-weak value, the restricted kinds
+first since they have no choice: Elementary's Präteritum is core and strong by its verbs alone.
+Only then does it draw, for each slot, a verb whose reading fits all three. A scoped quiz (My
+Verbs, a collection, a verb's page) is never mixed, because its verbs were chosen.
+`QuizVerbMixTests` pins each rule over 40 seeds per level.
+
+The bands exposed a data defect, fixed the same day. 56 of the 83 verbs whose `hi` is an estimate
+(`hp="y"`, compounds DWDS cannot measure) sat at ranks 937 to 994, put there by tranche 2's ratio
+from a common base (*madigmachen* beside *machen*). `verbdata/replace_inflated_estimates.py` moved
+61 of them beside measured verbs of similar use, and `QuizVerbMixTests` checks that no provisional
+count reaches the top 1,000.
 
 ### Scopes
 

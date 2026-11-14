@@ -6234,13 +6234,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Diese Einstellung bestimmt, welche Conjugationgroups die Quizze abfragen. Der Einstieg beginnt mit den häufigsten, und jede weitere Stufe fügt die nächsthäufigen hinzu. Die Oberstufe fragt alle ab."
+            "value" : "Diese Einstellung bestimmt, welche Conjugationgroups und Verben die Quizze abfragen. Der Einstieg beginnt mit den häufigsten Conjugationgroups und den 100 häufigsten Verben. Jede weitere Stufe fügt die nächsthäufigen Conjugationgroups hinzu und schöpft aus mehr Verben: 300, dann 1.000. Die Oberstufe fragt alle ab."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This setting determines which conjugationgroups quizzes ask about. Beginner starts with the most common, and each level after it adds the next most common. Advanced asks about all of them."
+            "value" : "This setting determines which conjugationgroups and verbs quizzes ask about. Beginner starts with the most common conjugationgroups and the 100 most frequent verbs. Each level after it adds the next most common conjugationgroups and draws from more verbs: 300, then 1,000. Advanced asks about all of them."
           }
         }
       }

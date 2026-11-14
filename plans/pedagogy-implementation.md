@@ -26,7 +26,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 9 | Done | 2026-11-14 | `b4f00b0` | T2.8 |
 | 10 | Done | 2026-11-14 | `dee17b1` | T2.9, Decision 8 |
 | 11 | Done | 2026-11-14 | `e8fcc07` | T3.3 (the record), T3.4, T3.5, T6.4 |
-| 12 | Awaiting Josh | 2026-11-14 | | T3.2, T3.3 (the session) |
+| 12 | Done | 2026-11-14 | `554891b` | T3.2, T3.3 (the session) |
 | 13 | Not started | | | T6.1, T6.6 (the leaderboard's place) |
 | 14 | Not started | | | T4.2, T4.3 |
 | 15 | Not started | | | T5.1 |
@@ -1217,7 +1217,7 @@ schedule.
 
 ## Phase 12: Review and My Mistakes
 
-**Suggestions:** T3.2, T3.3 (the session). **Depends on:** Phase 11. **Status:** Awaiting Josh.
+**Suggestions:** T3.2, T3.3 (the session). **Depends on:** Phase 11. **Status:** Done.
 
 - **Review.** A short session of whatever items are due, built from the record: a strong verb's
   item asks its key conjugation, and a weak pattern asks that conjugationgroup and person of a

@@ -10621,3 +10621,59 @@ Both leaderboard buttons appear only when Game Center is signed in, and the simu
 Signing in takes Josh's Apple ID, which is his to type. So the new strings, the Game Center
 sheets, and a real post from a development build wait for him and his iPhone. Apple says a
 development-signed build sees leaderboards not yet live, marked as prerelease, so it should work.
+
+## Choosing What to Practice (2026-11-14)
+
+Phase 9 of the pedagogy plan gives the learner the quiz's two dials: which conjugationgroups, and
+which verbs. Josh's verdict was yes with a condition, that the default stays the classic-style
+quiz. So the Quiz tab's picker, which had All Verbs and My Verbs, gained a third segment, Custom.
+The tab still opens on All Verbs every time. A beginner sees what they saw before, and a learner who
+wants the Konjunktiv I of the modals is one tap from it.
+
+### Half a choice is still a choice
+
+The phase allows conjugationgroups, a verb set, or both. The question that settles everything else
+is what the unchosen half means. The answer here is that it belongs to the level. Choose only the
+Präteritum, and the quiz asks it of your level's verbs, mixed as the default quiz mixes them: half
+strong, two of sein, haben, werden, or a modal. Choose only the singen group, and the quiz asks
+your level's conjugationgroups of it. Each section of the editor therefore begins with a row, "Set
+by Your Level", that is checked until you choose something else. An empty choice is the default
+quiz, which already has a segment, so Custom with nothing chosen disables Start and says what to do.
+
+### Any conjugationgroup, and what that means for a restricted one
+
+Josh decided that a custom quiz may include any conjugationgroup, above the level or not, because
+it is the learner's explicit choice and a teacher's shared set will need any combination. That
+raised a question the level tables had answered quietly. At Advanced, the Präteritum Konjunktiv II
+is asked only of strong and mixed readings, because a weak verb's (machte) repeats its Präteritum
+Indikativ. A custom quiz takes each chosen table at its fullest, which is Advanced's, so that
+restriction comes along. But the draw's rule is that a kind no verb can answer is left out, and a
+learner who chose only the Konjunktiv II over a My Verbs of weak verbs would get a quiz of nothing.
+So a custom quiz relaxes the restriction when, and only when, it would empty the kind. The learner
+gets machte, which teaches little, rather than silence, which teaches less.
+
+### A string that has to last
+
+The choice is kept between launches, as Josh asked. It is stored as a query string,
+`groups=praeteritum_indikativ&verbs=modals`, because Phase 10 will share the same choice as a
+`konjugieren://` link, and a link once sent must keep working. The table keys are the Info
+articles' stable keys, which already had that promise, and the verb sets reuse the collection keys
+that `list/<key>` links carry. One small collision turned out to be a gift: the top-100 collection
+and the top-100 band hold exactly the same verbs and both are called `top100`, so the editor
+offers only the band. A test pins the stored form literally, as the leaderboard IDs are pinned,
+so a rename fails a test before it breaks a link.
+
+### What looking found
+
+Two things the tests could not. The second names under each table (Imperfekt, Befehlsform,
+würde-Form) first came out in a dim red. Inside a `Button`, SwiftUI's `.secondary` style is a
+shade of the button's tint, and this app's tint is red; `Color.secondary` is a fixed gray. And the
+ablaut list said "1 Verbs", from a count string with no plural. The app already had a pluralized
+one, inline in the collections' share text, so it got an accessor of its own.
+
+A test-writing note for the next session: Swift Testing builds a test's `arguments:` off the main
+actor, and in this project every type is main-actor-isolated by default. Passing `CustomQuiz`
+values as arguments failed to compile, since even their `Hashable` conformance is isolated. The
+cases are looped inside the test bodies instead, or passed as their string keys.
+
+Josh has not judged the layout yet, which the phase asks for before any polish.

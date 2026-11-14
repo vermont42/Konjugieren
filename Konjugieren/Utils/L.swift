@@ -16,6 +16,14 @@ enum L {
       String(localized: "Accessibility.quizTextFieldHint")
     }
 
+    static var customQuizEditHint: String {
+      String(localized: "Accessibility.customQuizEditHint")
+    }
+
+    static var customQuizStartHint: String {
+      String(localized: "Accessibility.customQuizStartHint")
+    }
+
     static var quizStartHint: String {
       String(localized: "Accessibility.quizStartHint")
     }
@@ -1002,6 +1010,56 @@ enum L {
     }
   }
 
+  enum CustomQuiz {
+    static var ablautGroups: String {
+      String(localized: "CustomQuiz.ablautGroups")
+    }
+
+    static func band(_ count: String) -> String {
+      String(localized: "CustomQuiz.band \(count)")
+    }
+
+    static var byLevel: String {
+      String(localized: "CustomQuiz.byLevel")
+    }
+
+    static var change: String {
+      String(localized: "CustomQuiz.change")
+    }
+
+    static var choose: String {
+      String(localized: "CustomQuiz.choose")
+    }
+
+    static var conjugationgroups: String {
+      String(localized: "CustomQuiz.conjugationgroups")
+    }
+
+    static var conjugationgroupsFooter: String {
+      String(localized: "CustomQuiz.conjugationgroupsFooter")
+    }
+
+    static var description: String {
+      String(localized: "CustomQuiz.description")
+    }
+
+    static var emptyDescription: String {
+      String(localized: "CustomQuiz.emptyDescription")
+    }
+
+    static var segment: String {
+      String(localized: "CustomQuiz.segment")
+    }
+
+    static var title: String {
+      String(localized: "CustomQuiz.title")
+    }
+
+    static var verbs: String {
+      String(localized: "CustomQuiz.verbs")
+    }
+  }
+
   enum QuizClock {
     static var hide: String {
       String(localized: "QuizClock.hide")
@@ -1137,6 +1195,10 @@ enum L {
       String(localized: "VerbCollection.modalsTitle")
     }
 
+    static func verbCount(_ count: Int) -> String {
+      String(localized: "VerbCollection.verbCount.\(count)")
+    }
+
     static func progress(opened: Int, total: Int) -> String {
       String(localized: "VerbCollection.progress \(opened) \(total)")
     }
@@ -1154,7 +1216,7 @@ enum L {
     }
 
     static func shareText(title: String, count: Int, sample: String, link: String, appStoreLink: String) -> String {
-      let verbCount = String(localized: "VerbCollection.verbCount.\(count)")
+      let verbCount = verbCount(count)
       return String(localized: "VerbCollection.shareText \(title) \(verbCount) \(sample) \(link) \(appStoreLink)")
     }
 

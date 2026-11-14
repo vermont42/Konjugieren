@@ -104,6 +104,14 @@ struct QuizView: View {
       .navigationDestination(for: VerbCollectionRequest.self) { request in
         FamilyDetailView(family: .ablaut, collectionRequest: request) { verb in navigationPath.append(VerbDestination(verb: verb, source: .family)) }
       }
+      .navigationDestination(for: CustomQuizDestination.self) { destination in
+        switch destination {
+        case .ablautGroups:
+          CustomQuizAblautGroupList()
+        case .editor:
+          CustomQuizEditor()
+        }
+      }
     }
     .environment(\.verbPagePush, VerbPagePush { navigationPath.append($0) })
     .environment(\.isBeneathQuiz, true)
@@ -400,6 +408,8 @@ struct QuizView: View {
               switch tabScope {
               case .allVerbs:
                 quiz.start()
+              case .custom:
+                quiz.start(scope: .custom(customQuiz, myVerbs: myVerbs))
               case .myVerbs:
                 quiz.start(scope: .myVerbs(myVerbs))
               }
@@ -411,18 +421,22 @@ struct QuizView: View {
             // FunButton fixes its own font, so a scale is the way to enlarge it on an iPad.
             .scaleEffect(isLarge ? 1.4 : 1)
             .padding(.vertical, isLarge ? Layout.defaultSpacing : 0)
-            .disabled(tabScope == .myVerbs && myVerbs.isEmpty)
-            .accessibilityHint(L.Accessibility.quizStartHint)
+            .disabled(!canStart)
+            .accessibilityHint(tabScope == .custom ? L.Accessibility.customQuizStartHint : L.Accessibility.quizStartHint)
             .accessibilityIdentifier("quiz_start_button")
           }
 
-          HStack(alignment: .top, spacing: Layout.defaultSpacing) {
-            QuizFactTile(systemImage: "list.number", value: "\(Quiz.questionCount)", label: L.Quiz.questionsLabel, isLarge: isLarge)
-            QuizFactTile(systemImage: level.systemImage, value: level.localizedName, label: L.Quiz.levelLabel, isLarge: isLarge)
-            QuizFactTile(systemImage: "trophy.fill", value: "\(Quiz.pointsPerCorrect)", label: L.Quiz.pointsPerAnswer, isLarge: isLarge)
+          if tabScope == .custom {
+            customQuizSummary
+          } else {
+            HStack(alignment: .top, spacing: Layout.defaultSpacing) {
+              QuizFactTile(systemImage: "list.number", value: "\(Quiz.questionCount)", label: L.Quiz.questionsLabel, isLarge: isLarge)
+              QuizFactTile(systemImage: level.systemImage, value: level.localizedName, label: L.Quiz.levelLabel, isLarge: isLarge)
+              QuizFactTile(systemImage: "trophy.fill", value: "\(Quiz.pointsPerCorrect)", label: L.Quiz.pointsPerAnswer, isLarge: isLarge)
+            }
+            // Equal heights when one label wraps to two lines.
+            .fixedSize(horizontal: false, vertical: true)
           }
-          // Equal heights when one label wraps to two lines.
-          .fixedSize(horizontal: false, vertical: true)
 
           if tabScope == .myVerbs, !myVerbs.isEmpty {
             myVerbChips
@@ -450,7 +464,7 @@ struct QuizView: View {
         .frame(height: isLarge ? 220 : 120)
         .accessibilityHidden(true)
 
-      Text(tabScope == .allVerbs ? L.VerbBrowse.verbCount(Verb.verbs.count) : L.MyVerbs.title)
+      Text(heroTitle)
         .font(isLarge ? .largeTitle.bold() : .title.bold())
         .fontDesign(.serif)
         .foregroundStyle(.customForeground)
@@ -470,8 +484,21 @@ struct QuizView: View {
     switch tabScope {
     case .allVerbs:
       return "books.vertical.fill"
+    case .custom:
+      return "slider.horizontal.3"
     case .myVerbs:
       return myVerbs.isEmpty ? "star" : "star.fill"
+    }
+  }
+
+  private var heroTitle: String {
+    switch tabScope {
+    case .allVerbs:
+      return L.VerbBrowse.verbCount(Verb.verbs.count)
+    case .custom:
+      return L.CustomQuiz.title
+    case .myVerbs:
+      return L.MyVerbs.title
     }
   }
 
@@ -479,8 +506,84 @@ struct QuizView: View {
     switch tabScope {
     case .allVerbs:
       return L.Quiz.allVerbsDescription
+    case .custom:
+      if customQuiz.isEmpty {
+        return L.CustomQuiz.emptyDescription
+      }
+      return customQuizLacksMyVerbs ? L.Quiz.myVerbsEmpty : L.CustomQuiz.description
     case .myVerbs:
       return myVerbs.isEmpty ? L.Quiz.myVerbsEmpty : L.Quiz.myVerbsCount(myVerbs.count)
+    }
+  }
+
+  private var customQuiz: CustomQuiz {
+    settings.customQuiz
+  }
+
+  /// A custom quiz kept from an earlier launch may name My Verbs after they have been cleared.
+  private var customQuizLacksMyVerbs: Bool {
+    customQuiz.verbSet == .myVerbs && myVerbs.isEmpty
+  }
+
+  private var canStart: Bool {
+    switch tabScope {
+    case .allVerbs:
+      return true
+    case .custom:
+      return !customQuiz.isEmpty && !customQuizLacksMyVerbs
+    case .myVerbs:
+      return !myVerbs.isEmpty
+    }
+  }
+
+  /// What a custom quiz will ask, and the way to change it, one tap from Start.
+  private var customQuizSummary: some View {
+    VStack(spacing: Layout.doubleDefaultSpacing) {
+      if !customQuiz.isEmpty {
+        VStack(alignment: .leading, spacing: Layout.defaultSpacing) {
+          summaryRow(
+            L.CustomQuiz.conjugationgroups,
+            value: customQuiz.tables.isEmpty
+              ? "\(L.CustomQuiz.byLevel): \(level.localizedName)"
+              : customQuiz.orderedTables.map { $0.displayName(lang: settings.conjugationgroupLang) }.joined(separator: ", "),
+            valueIsGerman: !customQuiz.tables.isEmpty && settings.conjugationgroupLang == .german
+          )
+          summaryRow(
+            L.CustomQuiz.verbs,
+            value: customQuiz.verbSet?.title ?? "\(L.CustomQuiz.byLevel): \(CustomQuiz.levelVerbsDescription(level))"
+          )
+        }
+        .font(isLarge ? .title3 : .body)
+        .frame(maxWidth: .infinity, alignment: .leading)
+        .konjCard()
+        .accessibilityElement(children: .combine)
+        .accessibilityIdentifier("custom_quiz_summary")
+      }
+
+      NavigationLink(value: CustomQuizDestination.editor) {
+        Label(customQuiz.isEmpty ? L.CustomQuiz.choose : L.CustomQuiz.change, systemImage: "slider.horizontal.3")
+          .font(isLarge ? .title3.bold() : .headline)
+          .padding(.horizontal, Layout.defaultSpacing)
+          .padding(.vertical, 4)
+      }
+      .buttonStyle(.bordered)
+      .tint(.customYellow)
+      .accessibilityHint(L.Accessibility.customQuizEditHint)
+      .accessibilityIdentifier("custom_quiz_choose_button")
+    }
+    .transition(.opacity)
+  }
+
+  private func summaryRow(_ label: String, value: String, valueIsGerman: Bool = false) -> some View {
+    VStack(alignment: .leading, spacing: 2) {
+      Text(label)
+        .font(.caption.bold())
+        .foregroundStyle(.customYellow)
+        .textCase(.uppercase)
+      Text(verbatim: value)
+        .foregroundStyle(.customForeground)
+        .fixedSize(horizontal: false, vertical: true)
+        .germanPronunciation(forReal: valueIsGerman)
     }
   }
 
@@ -588,14 +691,18 @@ struct QuizSheet: View {
   }
 }
 
+// Semantic ordering: the picker's segments, the default first.
 enum TabQuizScope: CaseIterable {
   case allVerbs
   case myVerbs
+  case custom
 
   var displayName: String {
     switch self {
     case .allVerbs:
       return L.Quiz.allVerbs
+    case .custom:
+      return L.CustomQuiz.segment
     case .myVerbs:
       return L.MyVerbs.title
     }

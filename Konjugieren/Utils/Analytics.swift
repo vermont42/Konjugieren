@@ -4,6 +4,7 @@ import Foundation
 
 enum ParameterKey: String {
   case collection
+  case customChoice
   case deepestSection
   case duration
   case dwell
@@ -62,6 +63,7 @@ enum AnalyticsName: String {
 enum AnalyticsSource: String, CaseIterable {
   case browse
   case control
+  case custom
   case deeplink
   case family
   case handoff

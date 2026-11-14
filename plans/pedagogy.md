@@ -767,6 +767,13 @@ now a round of ten, and the results offer Ten More, which draws ten more into th
 with the score and clock carrying on. No 30-question choice remains; two rounds of Ten More reach
 thirty. Each round is drawn afresh, so each has the default quiz's mix.
 
+**Built on `main` 2026-11-14** by [Phase 9](pedagogy-implementation.md#phase-9-choosing-what-to-practice)
+of the pedagogy plan: learner-chosen scope. The Quiz tab's picker gained Custom beside All Verbs and
+My Verbs, which pushes a page for choosing any conjugationgroups, at any level, and one verb set (the
+100, 300, or 1,000 most frequent verbs, every verb, My Verbs, the modals, the verbs with sein, or an
+ablaut group). Either part left unchosen is the level's. The choice is kept between launches, the
+tab still opens on the default quiz, and a custom quiz is never ranked.
+
 ### Tier 3: Give the Quiz a Memory
 
 | Suggestion | Basis | Effort | Verdict |

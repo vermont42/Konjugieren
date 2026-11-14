@@ -64,6 +64,18 @@ class Settings {
   static let quizClockKey = "quizClock"
   static let quizClockDefault: QuizClock = .hide
 
+  /// The Quiz tab's custom quiz, kept between launches beside the default quiz (Josh,
+  /// 2026-11-13). It is not shown in Settings.
+  var customQuiz: CustomQuiz = customQuizDefault {
+    didSet {
+      if customQuiz != oldValue {
+        getterSetter.set(key: Settings.customQuizKey, value: customQuiz.rawValue)
+      }
+    }
+  }
+  static let customQuizKey = "customQuiz"
+  static let customQuizDefault = CustomQuiz()
+
   var audioFeedback: AudioFeedback = audioFeedbackDefault {
     didSet {
       if audioFeedback != oldValue {
@@ -165,6 +177,7 @@ class Settings {
     migrateQuizDifficultyOnce()
     quizLevel = restore(key: Settings.quizLevelKey, default: Settings.quizLevelDefault)
     quizClock = restore(key: Settings.quizClockKey, default: Settings.quizClockDefault)
+    customQuiz = restore(key: Settings.customQuizKey, default: Settings.customQuizDefault)
     audioFeedback = restore(key: Settings.audioFeedbackKey, default: Settings.audioFeedbackDefault)
     searchScope = restore(key: Settings.searchScopeKey, default: Settings.searchScopeDefault)
     flipSearchScopeDefaultOnce()

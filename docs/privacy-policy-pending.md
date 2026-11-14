@@ -391,3 +391,40 @@ Der im Abschnitt zu Phase 7 oben ergänzte Satz in Abschnitt 6 lautet nun:
 ```
 Nur die ersten zehn Fragen eines Quiz über alle Verben reichen ein Ergebnis ein, und zwar in der Bestenliste der Stufe des Quiz; ein Quiz über Ihre eigenen Verben oder ein einzelnes Verb tut das nicht, ebenso wenig die zehn weiteren Fragen, die Sie anhängen können.
 ```
+
+## Custom quizzes (pedagogy plan, Phase 9, 2026-11-14)
+
+Adds the `custom` value to the quiz signals' `source`, for a quiz the learner put together on the
+Quiz tab, and the parameter `customChoice` to `startQuiz`, which says whether the learner chose
+conjugationgroups, verbs, or both, but not which. A custom quiz over a collection also sends the
+collection, as a collection's quiz does. The lines change the first quiz bullet as given in the
+Phase 7 section above. A custom quiz posts no score, which the section 6 sentence already implies
+by naming only a quiz over all verbs; it is changed to say so.
+
+### English
+
+The first quiz bullet in section 2 now reads:
+
+```
+- Quiz lifecycle events (starting, quitting, completing a round of ten questions, and how many rounds the quiz has reached), and where the quiz was begun: the quiz screen, your own verbs, a verb's page, a collection, and which collection, or a quiz you put together, and whether you chose conjugationgroups, verbs, or both (not which)
+```
+
+The sentence added to section 6 in the Leaderboards section above now reads:
+
+```
+Only the first ten questions of a quiz over all verbs post a score, to the leaderboard of the quiz's level; a quiz over your own verbs, a single verb, or conjugationgroups and verbs you chose does not, and neither do the ten more questions you may add.
+```
+
+### German
+
+Der erste Punkt über das Quiz in Abschnitt 2 lautet nun:
+
+```
+- Quiz-Lebenszyklus-Ereignisse (Starten, Abbrechen, Abschließen einer Runde von zehn Fragen und wie viele Runden das Quiz erreicht hat) und wo das Quiz begonnen wurde: auf dem Quiz-Bildschirm, mit Ihren eigenen Verben, auf der Seite eines Verbs, in einer Sammlung, samt der Angabe, welche Sammlung, oder in einem selbst zusammengestellten Quiz, samt der Angabe, ob Sie Conjugationgroups, Verben oder beides gewählt haben (nicht aber, welche)
+```
+
+Der im Abschnitt zu den Bestenlisten oben ergänzte Satz in Abschnitt 6 lautet nun:
+
+```
+Nur die ersten zehn Fragen eines Quiz über alle Verben reichen ein Ergebnis ein, und zwar in der Bestenliste der Stufe des Quiz; ein Quiz über Ihre eigenen Verben, ein einzelnes Verb oder selbst gewählte Conjugationgroups und Verben tut das nicht, ebenso wenig die zehn weiteren Fragen, die Sie anhängen können.
+```

@@ -1419,6 +1419,40 @@
         }
       }
     },
+    "Accessibility.customQuizEditHint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wählt die Conjugationgroups und Verben, die das Quiz abfragt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chooses the conjugationgroups and verbs the quiz asks"
+          }
+        }
+      }
+    },
+    "Accessibility.customQuizStartHint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Startet ein Quiz mit zehn Fragen aus deiner Auswahl"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starts a quiz with ten questions from your choice"
+          }
+        }
+      }
+    },
     "Accessibility.isIrregular" : {
       "localizations" : {
         "de" : {
@@ -1912,6 +1946,210 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "German"
+          }
+        }
+      }
+    },
+    "CustomQuiz.ablautGroups" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ablautgruppen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ablaut Groups"
+          }
+        }
+      }
+    },
+    "CustomQuiz.band %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die %@ häufigsten Verben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@ Most Frequent Verbs"
+          }
+        }
+      }
+    },
+    "CustomQuiz.byLevel" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nach deiner Stufe"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Set by Your Level"
+          }
+        }
+      }
+    },
+    "CustomQuiz.change" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ändern"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Change"
+          }
+        }
+      }
+    },
+    "CustomQuiz.choose" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auswählen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose"
+          }
+        }
+      }
+    },
+    "CustomQuiz.conjugationgroups" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conjugationgroups"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conjugationgroups"
+          }
+        }
+      }
+    },
+    "CustomQuiz.conjugationgroupsFooter" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ist keine gewählt, fragt das Quiz die Conjugationgroups deiner Stufe ab. Du kannst jede wählen, auch über deiner Stufe."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "With none chosen, the quiz asks your level’s conjugationgroups. You may choose any, above your level or not."
+          }
+        }
+      }
+    },
+    "CustomQuiz.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zehn Fragen aus deiner Auswahl und zehn weitere, wann immer du willst."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ten questions from your choice, and ten more whenever you like."
+          }
+        }
+      }
+    },
+    "CustomQuiz.emptyDescription" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle Conjugationgroups, Verben oder beides, und das Quiz fragt nur diese ab."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose conjugationgroups, verbs, or both, and the quiz will ask only those."
+          }
+        }
+      }
+    },
+    "CustomQuiz.segment" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eigene Auswahl"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Custom"
+          }
+        }
+      }
+    },
+    "CustomQuiz.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eigenes Quiz"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Custom Quiz"
+          }
+        }
+      }
+    },
+    "CustomQuiz.verbs" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verbs"
           }
         }
       }
@@ -5709,13 +5947,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Abgefragte Verben"
+            "value" : "Was abgefragt wird"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Verbs to Quiz"
+            "value" : "What to Quiz"
           }
         }
       }

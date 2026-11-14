@@ -149,6 +149,9 @@ class Quiz {
     if let collectionKey = scope.collectionKey {
       parameters[ParameterKey.collection.rawValue] = collectionKey
     }
+    if let custom = scope.custom {
+      parameters[ParameterKey.customChoice.rawValue] = custom.choiceParameter
+    }
     Current.analytics.signal(name: .startQuiz, parameters: parameters)
     announceQuestion()
   }
@@ -335,12 +338,13 @@ class Quiz {
     #endif
 
     return QuizDraw.questions(
-      level: level,
+      pool: scope.pool(level: level),
       verbs: scope.verbs ?? Self.defaultVerbs(for: level),
       readingIndex: scope.readingIndex,
       count: scope.questionCount,
       distinctCells: !scope.continues,
-      mixesVerbs: scope.verbs == nil,
+      mixesVerbs: scope.mixesVerbs,
+      relaxesRestrictions: scope.custom != nil,
       using: &randomSource
     ).map { question in
       makeQuizItem(verb: question.verb, conjugationgroup: question.conjugationgroup, readingIndex: question.readingIndex)
@@ -705,7 +709,7 @@ class Quiz {
 /// What a quiz asks about, how many questions it asks, and where it was begun. The quiz track
 /// can add scopes, such as Phase 16's collections, as further constructors.
 struct QuizScope {
-  /// Nil asks about every verb.
+  /// Nil asks about the level's band of verbs.
   let verbs: [Verb]?
 
   /// The reading every question asks about. Nil picks one per question.
@@ -720,11 +724,23 @@ struct QuizScope {
   /// The collection a quiz was started from, which `startQuiz` names (Phase 16).
   var collectionKey: String?
 
-  /// Only a default quiz over every verb posts, to the leaderboard of its level, as Josh decided
-  /// on 2026-11-13: a score over a learner's own verbs, or over three questions, compares with
+  /// The learner's own choice of conjugationgroups and verbs, from the Quiz tab.
+  var custom: CustomQuiz?
+
+  /// Only a default quiz posts, to the leaderboard of its level, as Josh decided on 2026-11-13: a
+  /// score over a learner's own verbs or conjugationgroups, or over three questions, compares with
   /// nothing. Only its first round posts.
   var isRanked: Bool {
-    verbs == nil && continues
+    verbs == nil && custom == nil && continues
+  }
+
+  /// A quiz whose verbs the learner did not list is balanced as the default quiz is (Phase 6).
+  var mixesVerbs: Bool {
+    verbs == nil || custom?.verbSet?.mixesVerbs == true
+  }
+
+  func pool(level: QuizLevel) -> [QuizPoolEntry] {
+    custom?.pool(level: level) ?? level.pool
   }
 
   /// Whether the results offer Ten More. Every quiz does but a verb page's three questions.

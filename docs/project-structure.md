@@ -49,6 +49,7 @@ Konjugieren/
 │   ├── ConjugationgroupLang.swift  # Setting enum: german/english display
 │   ├── Conjugator.swift        # Core conjugation logic for all conjugationgroups; joined (subordinate-clause) conjugations by default, the Wiktionary oracle
 │   ├── ConjugatorError.swift   # Error enum for conjugation failures
+│   ├── CustomQuiz.swift        # The Quiz tab's custom quiz (Phase 9 of the pedagogy plan): chosen tables and a QuizVerbSet (a band, every verb, My Verbs, or a collection), either falling back to the level's; its permanent stored form (groups=…&verbs=…); QuizScope.custom
 │   ├── Etymologies.json        # Bundled verb etymologies keyed by language and infinitive
 │   ├── Etymology.swift         # Lazy-loading etymology lookup by infinitive
 │   ├── ExampleSentence.swift   # Lazy-loading literary example sentence lookup by infinitive
@@ -76,10 +77,10 @@ Konjugieren/
 │   ├── Prefix.swift            # Separable/inseparable prefix enum ([Prefix] helpers live in Reading.swift)
 │   ├── PrefixMeaning.swift     # Prefix meanings with PIE etymologies
 │   ├── PrefixSection.swift     # Curated-vs-other heading for the prefix-grouped verb list
-│   ├── Quiz.swift              # @Observable quiz state: rounds of ten and Ten More (continueSession), re-asks of missed questions, timer, scoring summed from the items; QuizItem grading (accepts, preferredSpelling), points, reasked(); DEBUG fixtures (screenshot, grading, frames, corrections, slips); QuizItem.answerFrame; QuizScope (the verbs asked about, a round's question count, the analytics source, whether it continues, and whether the score is ranked): every verb, My Verbs, a collection, or three questions on a verb's page
+│   ├── Quiz.swift              # @Observable quiz state: rounds of ten and Ten More (continueSession), re-asks of missed questions, timer, scoring summed from the items; QuizItem grading (accepts, preferredSpelling), points, reasked(); DEBUG fixtures (screenshot, grading, frames, corrections, slips); QuizItem.answerFrame; QuizScope (the verbs asked about, a round's question count, the analytics source, whether it continues, whether its verbs are mixed, its pool, and whether the score is ranked): every verb, My Verbs, a collection, a custom quiz, or three questions on a verb's page
 │   ├── QuizAbandonment.swift   # The quizzes in progress, one entry per Quiz, so that the next launch can send abandonQuiz for one the app was left during (M2)
 │   ├── QuizClock.swift         # Setting enum: hide (the default) or show the quiz's time
-│   ├── QuizDraw.swift          # Draws a quiz's questions from a level's pool: a kind by weight, then a verb it admits, then a cell; for the default quiz, mixes the verbs (half strong, two core, one to three rare derivatives); AnyRandomNumberGenerator
+│   ├── QuizDraw.swift          # Draws a quiz's questions from a pool (a level's, or a custom quiz's, whose restricted kinds fall back to every verb rather than vanish): a kind by weight, then a verb it admits, then a cell; for the default quiz, mixes the verbs (half strong, two core, one to three rare derivatives); AnyRandomNumberGenerator
 │   ├── QuizLevel.swift         # Setting enum: Beginner, Elementary, Intermediate, Advanced (replaced QuizDifficulty's regular and ridiculous); each level's pool of QuizPoolEntry (a table's cells, the QuizVerbs it may ask, a weight) and the frequency band its default quiz draws from
 │   ├── RelatedVerbs.swift      # Verb.root (the innermost base: anerkennen → kennen) and Verb.related(readingIndex:): verbs built on the same root, one verb per other root of the ablaut group, and the Families pages of a reading
 │   ├── Region.swift            # Setting enum: the three standard varieties (north/austria/switzerland)
@@ -151,6 +152,7 @@ Konjugieren/
 │   └── WidgetSnapshotWriter.swift  # Generates and persists the 10-day widget bundle from VerbDraw, keeping the verb the widget shows today
 └── Views/
     ├── AnswerFrameView.swift   # Draws an AnswerFrame on one line with a text field per blank; Return fills the next empty blank, then submits; the letter keys follow the cursor; each field's VoiceOver label reads the whole frame
+    ├── CustomQuizView.swift    # Pushed from the Quiz tab's Custom segment: CustomQuizEditor (conjugationgroup and verb-set rows, each with "Set by Your Level"), CustomQuizAblautGroupList, and CustomQuizDestination
     ├── ErrorExplainerView.swift # AI-generated explanations for conjugation errors
     ├── FamilyBrowseView.swift  # The Families tab: a Collections section (rows; three cards on iPad) above the verb families, prefixes, and ablaut groups; opens a `list/<key>` link's collection
     ├── FamilyDetailView.swift  # Detail view for a single family/prefix/ablaut category; an Alphabetical/Frequency control orders the verbs within each section; an expanded ablaut group starts with its VerbCollectionBar and checks the verbs looked up, and a link opens the page with its group expanded
@@ -161,7 +163,7 @@ Konjugieren/
     ├── MainTabView.swift       # Root TabView with five tabs
     ├── OnboardingView.swift    # Multi-page onboarding shown on first launch
     ├── QuizCorrectionView.swift # The held correction of a wrong quiz answer: both answers with the differing letters marked, links to the verb's page and its ablaut group or family, and Continue; defines the isBeneathQuiz environment value
-    ├── QuizView.swift          # Quiz gameplay: questions, timer, answer input; the Quiz tab's start screen (a big yellow symbol for the scope, its name and description, the All Verbs/My Verbs picker, Start, three fact tiles, and My Verbs' verbs as chips, scaled up on iPad); with a sheetScope, a quiz in a sheet (QuizSheet: "Test me on this verb" or a collection's quiz), which starts as it appears and closes when the quiz ends; its own navigation stack pushes the pages a held correction links to, over the waiting quiz
+    ├── QuizView.swift          # Quiz gameplay: questions, timer, answer input; the Quiz tab's start screen (a big yellow symbol for the scope, its name and description, the All Verbs/My Verbs/Custom picker, Start, three fact tiles, My Verbs' verbs as chips, and the custom quiz's summary with Choose or Change, scaled up on iPad); with a sheetScope, a quiz in a sheet (QuizSheet: "Test me on this verb" or a collection's quiz), which starts as it appears and closes when the quiz ends; its own navigation stack pushes the pages a held correction links to, over the waiting quiz
     ├── RelatedVerbsView.swift  # The verb page's Related Verbs card (chips in a FlowLayout, which can also center its rows, as the Quiz tab's My Verbs chips do), RelatedVerbListView (every verb of one relation), and VerbPagePush, the environment action by which a verb page pushes onto whichever tab's stack shows it
     ├── ResultsView.swift       # Modal showing quiz results, and the leaderboard button after a ranked quiz
     ├── ReviewCardView.swift    # The review card above the verb list: a verb looked up days ago, its key conjugations hidden until a tap reveals them; a second tap opens the page, and ✕ dismisses
@@ -230,6 +232,7 @@ KonjugierenTests/
 │   ├── ConjugationTableTests.swift # The verb page's table order, cells, articles, and second names
 │   ├── ConjugationSearchTests.swift # Search by conjugation: the ideas doc's conjugation queries, stranded parts and the folded row, particles, compounds, folding, adjective endings, cell names, marks
 │   ├── ConjugationgroupTests.swift # Conjugationgroup.ending(family:) ending-table tests
+│   ├── CustomQuizTests.swift   # The custom quiz's stored form and keys, its pool at each level, the restricted-table fallback, its scope (never ranked, mixed only for bands), the setting's persistence; nested in QuizTests, sessions that ask only the choice, post no score, and send source custom
 │   ├── ConjugatorTests.swift   # Comprehensive conjugation tests (~50 test functions), incl. error paths
 │   ├── LearnerVerbsTests.swift # The learner's verbs: opens, stars, recents, My Verbs, removal, clearing, JSON round trip and an old record's decoding, and the store's reload
 │   ├── KeyConjugationsTests.swift # Key conjugations per reading and region, the share text, and what a long press copies

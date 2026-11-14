@@ -19,7 +19,9 @@ The quiz tests users' knowledge of German verb conjugations with timed, scored g
 | `QuizCorrectionView.swift` | The held correction of a wrong answer |
 | `ResultsView.swift` | Modal sheet showing final results |
 | `QuizLevel.swift` | The level setting, each level's pool, `QuizPoolEntry` (a table's cells, their verbs, a weight), `QuizVerbs` (which verbs a restricted cell may ask), and each level's frequency band |
-| `QuizDraw.swift` | Draws a quiz's questions from a level's pool with an injectable random source, mixing the default quiz's verbs |
+| `QuizDraw.swift` | Draws a quiz's questions from a pool with an injectable random source, mixing the default quiz's verbs |
+| `CustomQuiz.swift` | The Quiz tab's custom quiz: chosen tables, a `QuizVerbSet`, its stored form, and `QuizScope.custom` |
+| `CustomQuizView.swift` | The editor the Custom segment pushes, and its list of ablaut groups |
 | `QuizErrorHistory.swift` | Persists recent wrong answers (up to 200) for AI analysis |
 | `QuizAbandonment.swift` | The quizzes in progress, so that the next launch can report one the app was left during (`abandonQuiz`) |
 | `QuizClock.swift` | The setting that shows or hides the quiz's time, hidden by default |
@@ -118,6 +120,7 @@ quiz in a sheet shows) and `collectionKey` (which `startQuiz` names).
 | `.myVerbs(_:)` | My Verbs (starred, then the 20 last opened), with replacement | 10, then Ten More | `myVerbs` | No |
 | `.verbPage(_:readingIndex:)` | The verb on screen, in the reading on screen | 3 | `verbPage` | No |
 | `.collection(_:)` | A collection's verbs (Phase 16), with replacement, in a sheet | 10, then Ten More | `list` | No |
+| `.custom(_:myVerbs:)` | The custom quiz's verb set, or the level's band (pedagogy Phase 9) | 10, then Ten More | `custom` | No |
 
 A quiz whose rounds are ten (`QuizScope.continues`) draws as above. The verb page's three
 questions ask distinct cells and no participle, from the learner's level, since every Perfekt
@@ -129,13 +132,42 @@ learner's level. Before Phase 7 of the pedagogy plan (2026-11-13), every quiz bu
 was 30 questions.
 
 The Quiz tab's start screen shows a big yellow symbol for the chosen scope (books for All
-Verbs, a star for My Verbs), its name and a line about what it asks, the All Verbs / My Verbs
-picker, Start, three tiles (questions, the level with a gauge whose needle rises with it, and points per right
+Verbs, a star for My Verbs, sliders for Custom), its name and a line about what it asks, the
+All Verbs / My Verbs / Custom picker, Start, three tiles (questions, the level with a gauge whose needle rises with it, and points per right
 answer), and, for My Verbs, its verbs as chips, up to twelve. In the regular size class it
-scales the whole composition up. Start is disabled while My Verbs is empty. "Test me on this verb" presents `QuizView(sheetScope:)` with its own `Quiz`, so a quiz in
+scales the whole composition up. Start is disabled while My Verbs is empty. Custom shows its summary and Choose or Change in place of the tiles (see The Custom Quiz). "Test me on this verb" presents `QuizView(sheetScope:)` with its own `Quiz`, so a quiz in
 the Quiz tab carries on beneath it. The sheet starts its quiz as it appears, closes on Quit or
 when the results are dismissed, and cannot be swiped away while a question waits, so every quiz
 it starts ends in `quitQuiz` or `completeQuiz`.
+
+### The Custom Quiz
+
+Built 2026-11-14 in Phase 9 of [`plans/pedagogy-implementation.md`](../plans/pedagogy-implementation.md)
+(T2.8). The Quiz tab's picker gained a third segment, Custom (Eigene Auswahl), beside All Verbs and
+My Verbs. The tab opens on All Verbs at every launch, so the default stays the default. The segment
+shows what the custom quiz will ask and a Choose or Change button that pushes `CustomQuizEditor`,
+where the learner picks any of the fourteen tables and one verb set: the 100, 300, or 1,000 most
+frequent verbs, every verb, My Verbs (listed only while it has verbs), the modal verbs, the verbs
+with sein, or one ablaut group. Either part may stay "Set by Your Level", so a choice of verbs alone
+asks the level's conjugationgroups, and a choice of conjugationgroups alone asks the level's band.
+Start is disabled until something is chosen, or while the choice names an empty My Verbs.
+
+- **Kept between launches** in `Settings.customQuiz`, stored as
+  `groups=praesens_indikativ,imperativ&verbs=ablaut-singen`. Table keys are
+  `ConjugationTable.articleKey`, and verb-set keys are `all`, `top100`, `top300`, `top1000`,
+  `myVerbs`, or a collection's key. The form is permanent, since Phase 10 shares it as a link, and a
+  key that names nothing is dropped. `CustomQuizTests` pins it.
+- **Any table at any level** (Josh, 2026-11-13). A chosen table's kind is Advanced's, the fullest:
+  the Präteritum of every verb, the wir Imperativ, and the Präteritum Konjunktiv II of strong and
+  mixed readings and the core verbs. When no verb of the set fits that restriction, as with a My
+  Verbs of weak verbs, `QuizDraw`'s `relaxesRestrictions` asks it of every verb instead of leaving
+  it out, so the learner's choice is never silently empty. The weights are the usual ones.
+- **Bands are mixed, lists are not.** A band or every verb is balanced as the default quiz is (half
+  strong, two core, the derivative rules), since it was chosen for its size, not its verbs. A
+  collection or My Verbs asks its own verbs as they come. `QuizScope.mixesVerbs` decides.
+- **Never ranked.** `QuizScope.isRanked` requires `custom == nil`, so a custom quiz posts nowhere,
+  even one whose choice matches the level's. It continues with Ten More, starts a Live Activity, and
+  counts toward `ChangeLevelTip` as any ten-question quiz does.
 
 ### Grading
 
@@ -1083,7 +1115,7 @@ Counts and durations go out in bands (`AnalyticsBand`), never as exact numbers.
 | `viewCollection` | `collection` (its key, such as `modals` or `ablaut-gehen`), `source` (`family`, `sharedLink`, `deeplink`, `quizCorrection`) | When a collection's page appears, once per arrival, or an ablaut group is expanded on the Ablaut page (Phase 16). The ideas document's "lists opened". The key names a fixed list, not anything the learner chose |
 | `tapShareCollection` | `collection` | When a collection's share button is tapped, whether or not the learner then shares (Phase 16) |
 | `tapRevealReviewCard` | None | When a tap reveals the review card's key conjugations, once per card (Phase 15). A page opened from the card then sends `viewVerbView` with `source` `reviewCard` |
-| `startQuiz`, `quitQuiz`, `completeQuiz` | `source` (`tab`, `myVerbs`, `verbPage`, `list`); `level` (`beginner`, `elementary`, `intermediate`, `advanced`); `quitQuiz` also `questionNumber` and `duration` (`0-3s`, `3-15s`, `15-40s`, `40s-2m`, `2m+`); `completeQuiz` also `questionCount` (`10`, `20`, `30`, …, or `3`); `startQuiz` alone also carries `collection` for a collection's quiz (Phase 16) | When a quiz starts, is quit, or reaches its results (`source` since Phase 13). Without it, three-question quizzes would inflate the completion rate of the default quiz. `level` replaced `difficulty` (`regular`, `ridiculous`), which only `quitQuiz` and `completeQuiz` sent, in Phase 5 of the pedagogy plan, and `startQuiz` gained it then (M1). Since Phase 7, `completeQuiz` is sent at each round's results, and its `questionCount` says how many rounds' questions the session has asked, so Ten More shows as `20` and `30`. `duration` (M3) is wall-clock time from the start to the quit, background included. `questionNumber` counts re-asks |
+| `startQuiz`, `quitQuiz`, `completeQuiz` | `source` (`tab`, `myVerbs`, `verbPage`, `list`, `custom`); `level` (`beginner`, `elementary`, `intermediate`, `advanced`); `quitQuiz` also `questionNumber` and `duration` (`0-3s`, `3-15s`, `15-40s`, `40s-2m`, `2m+`); `completeQuiz` also `questionCount` (`10`, `20`, `30`, …, or `3`); `startQuiz` alone also carries `collection` for a collection's quiz (Phase 16), or for a custom quiz over a collection, and `customChoice` (`conjugationgroups`, `verbs`, `both`) for a custom quiz (pedagogy Phase 9) | When a quiz starts, is quit, or reaches its results (`source` since Phase 13). Without it, three-question quizzes would inflate the completion rate of the default quiz. `level` replaced `difficulty` (`regular`, `ridiculous`), which only `quitQuiz` and `completeQuiz` sent, in Phase 5 of the pedagogy plan, and `startQuiz` gained it then (M1). Since Phase 7, `completeQuiz` is sent at each round's results, and its `questionCount` says how many rounds' questions the session has asked, so Ten More shows as `20` and `30`. `duration` (M3) is wall-clock time from the start to the quit, background included. `questionNumber` counts re-asks |
 | `abandonQuiz` | `source`, `level`, `questionNumber` | At launch, once for each quiz the last run left in progress (M2, Phase 7 of the pedagogy plan): the app was closed or killed during a question. `QuizAbandonment` keeps an entry per running quiz in `GetterSetter`, written at the start and at each question and removed at a quit or the results. A quiz left at its results is not abandoned |
 
 `VerbVisit` models one stretch of a verb page on screen, and `SearchTracker` and `SearchReport`
@@ -1121,6 +1153,7 @@ My Verbs scope, the list it was begun on.
 |---|---|---|
 | `browse` | Yes | A row of the verb list with the search field empty |
 | `control` | Yes | The Random Verb control in Control Center; for `finishSearch`, the Find a Verb control |
+| `custom` | Yes | The quiz signals only: a custom quiz from the Quiz tab (pedagogy Phase 9) |
 | `deeplink` | Yes | A `konjugieren://` link with no recognized `source` |
 | `lookup` | Yes | Look Up a Verb: the page it opens, or the search it opens when the word is ambiguous (Phase 11) |
 | `family` | Yes | A verb on a family's page, including an expanded ablaut group; for `viewCollection`, a collection opened from the Families tab |

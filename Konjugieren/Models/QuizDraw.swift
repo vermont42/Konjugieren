@@ -29,22 +29,34 @@ enum QuizDraw {
   /// werden, or a modal, and at least one asks a prefixed verb. Where `verbs` reaches past
   /// `frequentDerivativeBand`, one to three questions ask a prefixed verb from beyond it, and no
   /// other question does.
+  ///
+  /// With `relaxesRestrictions`, for a custom quiz, a restricted kind that no verb of the scope
+  /// admits is asked of every verb instead of being left out, since the learner chose it: a custom
+  /// Präteritum Konjunktiv II of weak verbs alone asks machte rather than nothing.
   static func questions(
-    level: QuizLevel,
+    pool: [QuizPoolEntry],
     verbs: [Verb],
     readingIndex: Int?,
     count: Int,
     distinctCells: Bool,
     mixesVerbs: Bool = false,
+    relaxesRestrictions: Bool = false,
     using generator: inout some RandomNumberGenerator
   ) -> [QuizDrawnQuestion] {
     var candidatesByVerbs: [QuizVerbs: [Candidate]] = [:]
-    let kinds: [Kind] = level.pool.compactMap { entry in
+    func admitted(by quizVerbs: QuizVerbs) -> [Candidate] {
+      let candidates = candidatesByVerbs[quizVerbs] ?? Self.candidates(of: verbs, admittedBy: quizVerbs, readingIndex: readingIndex)
+      candidatesByVerbs[quizVerbs] = candidates
+      return candidates
+    }
+    let kinds: [Kind] = pool.compactMap { entry in
       if distinctCells, entry.isParticiple {
         return nil
       }
-      let candidates = candidatesByVerbs[entry.verbs] ?? candidates(of: verbs, admittedBy: entry.verbs, readingIndex: readingIndex)
-      candidatesByVerbs[entry.verbs] = candidates
+      var candidates = admitted(by: entry.verbs)
+      if candidates.isEmpty, relaxesRestrictions {
+        candidates = admitted(by: .all)
+      }
       return candidates.isEmpty ? nil : Kind(entry: entry, candidates: candidates)
     }
     guard !kinds.isEmpty, count > 0 else {
@@ -72,6 +84,18 @@ enum QuizDraw {
       attempts += 1
     }
     return questions
+  }
+
+  static func questions(
+    level: QuizLevel,
+    verbs: [Verb],
+    readingIndex: Int?,
+    count: Int,
+    distinctCells: Bool,
+    mixesVerbs: Bool = false,
+    using generator: inout some RandomNumberGenerator
+  ) -> [QuizDrawnQuestion] {
+    questions(pool: level.pool, verbs: verbs, readingIndex: readingIndex, count: count, distinctCells: distinctCells, mixesVerbs: mixesVerbs, using: &generator)
   }
 
   /// Whether a question asks a reading that `mixesVerbs` counts as strong.

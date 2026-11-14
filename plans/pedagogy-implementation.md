@@ -23,7 +23,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 6 | Done | 2026-11-13 | `4ee097d` | T2.1, T2.2, T2.5 |
 | 7 | Done | 2026-11-13 | `80b5f85` | T2.7, T3.1, T6.5, M2, M3 |
 | 8 | Done | 2026-11-14 | `cba6f9e` | Decision 4 |
-| 9 | Not started | | | T2.8 |
+| 9 | Done | 2026-11-14 | | T2.8 |
 | 10 | Not started | | | T2.9, Decision 8 |
 | 11 | Not started | | | T3.3 (the record), T3.4, T3.5, T6.4 |
 | 12 | Not started | | | T3.2, T3.3 (the session) |
@@ -921,7 +921,7 @@ the walkthrough exists, and tests pin which sessions rank.
 
 ## Phase 9: Choosing What to Practice
 
-**Suggestions:** T2.8. **Depends on:** Phases 5 and 6. **Status:** Not started.
+**Suggestions:** T2.8. **Depends on:** Phases 5 and 6. **Status:** Done.
 
 Let the learner choose the scope: conjugationgroups, a verb set (a frequency band, a collection
 or ablaut group, My Verbs when it has entries), or both. The default remains the classic-style
@@ -947,7 +947,54 @@ both; the default is unchanged; and tests pin scope construction.
 
 **How it differed:**
 
-(To be written by the session that finishes this phase.)
+- **The layout.** The Quiz tab's picker gained a third segment, Custom (Eigene Auswahl). Its start
+  screen shows a sliders symbol, "Custom Quiz", a card summarizing the choice (Conjugationgroups,
+  Verbs), and Choose or Change, which pushes `CustomQuizEditor` onto the tab's stack: one row per
+  table with its second name (Imperfekt, Befehlsform), and one row per verb set, each section
+  opening with "Set by Your Level". Ablaut groups are a further push, a list of the groups with
+  their verb counts. Empty, the segment says what to do and Start is disabled. The tab opens on All
+  Verbs at every launch, so the default stays the default and Custom is one tap from Start. **Josh
+  has not judged the layout**, which the phase asks for before polishing.
+- **Decided in the session, not asked.** Each is a guess Josh can overrule. (1) A part left
+  unchosen is the level's, so tables alone ask the level's band and a verb set alone asks the
+  level's conjugationgroups. (2) A chosen table's kind is Advanced's, so the Präteritum is asked of
+  every verb and the Imperativ of wir too, at any level. (3) The Präteritum Konjunktiv II keeps
+  Advanced's restriction to strong and mixed readings and the core verbs, but when no verb of the
+  set fits it (My Verbs of weak verbs), it is asked of every verb rather than dropped, since the
+  learner chose it (`QuizDraw`'s `relaxesRestrictions`). (4) A band or every verb is mixed as the
+  default quiz is; a collection or My Verbs is not. (5) The top-100 collection is offered only as
+  the band, which holds the same verbs. (6) My Verbs is listed only while it has verbs, or while it
+  is the stored choice. (7) Only one verb set at a time, not a union of several.
+- **Kept between launches** in `Settings.customQuiz`, as `groups=…&verbs=…` with permanent keys
+  (`ConjugationTable.articleKey` and the collection keys), so Phase 10 can put the same string in a
+  link. The setting is not shown in Settings.
+- **Never ranked**: `QuizScope.isRanked` now also requires `custom == nil`. A custom quiz has Ten
+  More, a Live Activity, and the tip donation, like any ten-question quiz.
+- **Analytics.** A new `source` value, `custom`, and a new `startQuiz` parameter, `customChoice`
+  (`conjugationgroups`, `verbs`, or `both`), which says what kind of choice without saying which. A
+  custom quiz over a collection sends `collection` as a collection's quiz does. Staged in
+  [`docs/privacy-policy-pending.md`](../docs/privacy-policy-pending.md) in both languages, with the
+  section 6 sentence naming custom quizzes among those that post nothing.
+- **Strings.** The picker's VoiceOver label, "Verbs to Quiz", no longer fit a picker that also
+  chooses conjugationgroups and became "What to Quiz" / "Was abgefragt wird". `L.VerbCollection`
+  gained a `verbCount` accessor for its existing plural string, after the ablaut list first said
+  "1 Verbs".
+- **Found by looking.** The rows' second names first rendered in a dim red: inside a `Button`,
+  `.secondary` derives from the button's tint, the app's red. `Color.secondary` is fixed.
+- **Tests:** `CustomQuizTests`, 21 functions (some looped, since Swift Testing builds `arguments:`
+  off the main actor, where these types' conformances are not available): the stored form pinned
+  and round-tripped, every table and verb-set key, unknown keys dropped, each level's pool, chosen
+  tables at Beginner, the restriction and its fallback, never ranked, which sets are mixed, the
+  setting's persistence, and, nested in `QuizTests`, sessions that ask only the choice, post no
+  score, and send `custom`. 648 in all, every one passing.
+- **Verified on the iPhone 17**, in dark mode: the empty Custom segment, the editor, a choice of
+  Präteritum Indikativ and Präsens Konjunktiv I kept across a relaunch, Modal Verbs chosen, a quiz
+  that asked sollen in the Präteritum, and the summary and editor in German, where "Eigene Auswahl"
+  fits its segment. **On the iPad Pro 11-inch (M5)**, in light mode and English: the three
+  segments, the empty state, the editor (a full-width plain list, with no My Verbs row since the
+  iPad has none), the ablaut list, choosing singen, the summary, and a quiz that asked singen in the
+  Perfekt. Not tried: VoiceOver by ear, the Live Activity, and Ten More on a custom quiz
+  (unit-tested).
 
 ## Phase 10: Practice Sets to Share
 

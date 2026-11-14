@@ -28,7 +28,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 11 | Done | 2026-11-14 | `e8fcc07` | T3.3 (the record), T3.4, T3.5, T6.4 |
 | 12 | Done | 2026-11-14 | `554891b` | T3.2, T3.3 (the session) |
 | 13 | Done | 2026-11-14 | `c62062f` | T6.1, T6.6 (the leaderboard's place) |
-| 14 | Awaiting Josh | 2026-11-14 | | T4.2, T4.3 |
+| 14 | Done | 2026-11-14 | `9a7056f` | T4.2, T4.3 |
 | 15 | Not started | | | T5.1 |
 | 16 | Not started | | | T5.2 |
 | 17 | Not started | | | T5.4 |
@@ -1385,7 +1385,7 @@ rewritten in both languages, and the leaderboard is one tap away but not in the 
 ## Phase 14: Naming the Error
 
 **Suggestions:** T4.2, T4.3. **Depends on:** Phases 3 and 4; Phase 2 for the separable class.
-**Status:** Awaiting Josh.
+**Status:** Done.
 
 Diagnose a wrong answer from the conjugator's own knowledge and say it in one templated line,
 shown with Phase 3's correction. No language model. The one careful study the report found

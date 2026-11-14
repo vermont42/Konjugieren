@@ -35,9 +35,9 @@ class Quiz {
   private(set) var scope = QuizScope.allVerbs
 
   /// The questions the session's rounds have asked, re-asks not included: 10, then 20 after Ten
-  /// More, or 3 on a verb's page.
+  /// More, or 3 on a verb's page. A Review of four due items asks four.
   var questionCount: Int {
-    scope.questionCount * max(roundCount, 1)
+    questions.filter { !$0.isReask }.count
   }
 
   var score: Int {
@@ -73,9 +73,22 @@ class Quiz {
     questions.filter { $0.isReask && $0.isCorrect == true }.count
   }
 
-  /// Whether the results offer Ten More. A verb page's three questions do not continue.
+  /// Whether the results offer Ten More. A verb page's three questions do not continue, and a
+  /// Review or My Mistakes session continues only while the record has items it has not asked.
   var canContinue: Bool {
-    scope.continues
+    guard scope.continues else {
+      return false
+    }
+    guard let session = scope.recordSession else {
+      return true
+    }
+    let asked = askedItemKeys
+    return session.items(from: Current.practice).contains { $0.isAskable && !asked.contains($0.key) }
+  }
+
+  /// The record's items this session has asked, which a record session's Ten More skips.
+  private var askedItemKeys: Set<String> {
+    Set(questions.map { PracticeItem.exercised(by: $0.conjugationgroup, of: $0.verb, readingIndex: $0.readingIndex).key })
   }
 
   private var timer: Timer?
@@ -128,7 +141,7 @@ class Quiz {
   func start(scope: QuizScope = .allVerbs) {
     self.scope = scope
     level = scope.level ?? Current.settings.quizLevel
-    questions = generateQuestions()
+    questions = generateQuestions(excluding: [])
     guard !questions.isEmpty else {
       return
     }
@@ -161,7 +174,7 @@ class Quiz {
   /// round has the default quiz's mix of verbs.
   func continueSession() {
     guard shouldShowResults, !isInProgress, canContinue else { return }
-    let more = generateQuestions()
+    let more = generateQuestions(excluding: askedItemKeys)
     guard !more.isEmpty else {
       return
     }
@@ -181,7 +194,7 @@ class Quiz {
 
   // A three-question quiz on a verb's page is over before a Live Activity would be noticed.
   private func startLiveActivity() {
-    guard canContinue else {
+    guard scope.continues else {
       return
     }
     liveActivity = LiveActivityManager.start(
@@ -304,19 +317,22 @@ class Quiz {
     resetProgressState()
     questions = []
     Current.soundPlayer.play(Sound.randomSadTrombone)
-    Current.analytics.signal(name: .quitQuiz, parameters: [
+    var parameters = [
       ParameterKey.duration.rawValue: AnalyticsBand.quizDuration(duration),
       ParameterKey.level.rawValue: level.rawValue,
-      ParameterKey.questionNumber.rawValue: "\(questionNumber)",
       ParameterKey.source.rawValue: scope.source.rawValue
-    ])
+    ]
+    if scope.sendsQuestionCounts {
+      parameters[ParameterKey.questionNumber.rawValue] = "\(questionNumber)"
+    }
+    Current.analytics.signal(name: .quitQuiz, parameters: parameters)
   }
 
   /// Where the quiz has reached, for the next launch to report should the app be left during it
   /// (M2).
   private func recordProgress() {
     QuizAbandonment.record(
-      QuizAbandonment.Entry(level: level.rawValue, source: scope.source.rawValue, questionNumber: currentIndex + 1),
+      QuizAbandonment.Entry(level: level.rawValue, source: scope.source.rawValue, questionNumber: scope.sendsQuestionCounts ? currentIndex + 1 : nil),
       id: abandonmentID,
       getterSetter: Current.getterSetter
     )
@@ -330,7 +346,9 @@ class Quiz {
     lastPreferredSpelling = nil
   }
 
-  private func generateQuestions() -> [QuizItem] {
+  /// `excluded` names the record's items the session has already asked, which only a Review or My
+  /// Mistakes round reads.
+  private func generateQuestions(excluding excluded: Set<String>) -> [QuizItem] {
     #if DEBUG
     switch UserDefaults.standard.string(forKey: "KONJUGIEREN_QUIZ_FIXTURE") {
     case "screenshot":
@@ -350,8 +368,20 @@ class Quiz {
     }
     #endif
 
-    let pool = scope.pool(level: level)
     let verbs = scope.verbs ?? Self.defaultVerbs(for: level)
+    if let session = scope.recordSession {
+      return QuizDraw.sessionQuestions(
+        for: session.items(from: Current.practice),
+        verbs: verbs,
+        excluded: excluded,
+        limit: scope.questionCount,
+        using: &randomSource
+      ).map { question in
+        makeQuizItem(verb: question.verb, conjugationgroup: question.conjugationgroup, readingIndex: question.readingIndex)
+      }
+    }
+
+    let pool = scope.pool(level: level)
     let due = scope.mixesDueItems
       ? QuizDraw.dueQuestions(for: Current.practice.dueItems(), pool: pool, verbs: verbs, using: &randomSource)
       : []
@@ -645,14 +675,18 @@ class Quiz {
     }
     Current.soundPlayer.play(Sound.randomApplause, shouldDebounce: false)
     HapticPlayer.playSuccess()
-    Current.analytics.signal(name: .completeQuiz, parameters: [
+    var parameters = [
       ParameterKey.level.rawValue: level.rawValue,
-      ParameterKey.questionCount.rawValue: "\(questionCount)",
       ParameterKey.source.rawValue: scope.source.rawValue
-    ])
+    ]
+    if scope.sendsQuestionCounts {
+      parameters[ParameterKey.questionCount.rawValue] = "\(questionCount)"
+    }
+    Current.analytics.signal(name: .completeQuiz, parameters: parameters)
     announceQuizCompletion()
     let isFirstRound = roundCount == 1
-    if isFirstRound, canContinue {
+    // The tip suggests another level, which a session drawn from the record does not ask by.
+    if isFirstRound, scope.continues, scope.recordSession == nil {
       ChangeLevelTip.quizCompleted.sendDonation()
     }
 
@@ -751,18 +785,29 @@ struct QuizScope {
   /// Nil asks at the learner's own level.
   var level: QuizLevel?
 
+  /// Review or My Mistakes, which draw from the practice record (Phase 12). Nil for every other
+  /// quiz.
+  var recordSession: QuizRecordSession?
+
   /// Only a default quiz posts, to the leaderboard of its level, as Josh decided on 2026-11-13: a
   /// score over a learner's own verbs or conjugationgroups, or over three questions, compares with
   /// nothing. Only its first round posts.
   var isRanked: Bool {
-    verbs == nil && custom == nil && continues
+    verbs == nil && custom == nil && recordSession == nil && continues
   }
 
   /// Only the default quiz mixes in items the practice record says are due, up to
   /// `QuizDraw.dueItemLimit` a round (Phase 11). A quiz over chosen verbs or conjugationgroups asks
   /// what was chosen.
   var mixesDueItems: Bool {
-    verbs == nil && custom == nil && continues
+    verbs == nil && custom == nil && recordSession == nil && continues
+  }
+
+  /// A Review or My Mistakes session's length is the number of items due or missed, when fewer
+  /// than ten, so its signals carry neither the questions asked nor the question reached: either
+  /// would tell how many answers were wrong, which Decision 5 of the pedagogy plan forbids.
+  var sendsQuestionCounts: Bool {
+    recordSession == nil
   }
 
   /// A quiz whose verbs the learner did not list is balanced as the default quiz is (Phase 6).

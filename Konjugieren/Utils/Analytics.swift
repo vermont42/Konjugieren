@@ -75,6 +75,7 @@ enum AnalyticsSource: String, CaseIterable {
   case infoLink
   case list
   case lookup
+  case mistakes
   case myVerbs
   case qrCode
   case quickAction
@@ -82,6 +83,7 @@ enum AnalyticsSource: String, CaseIterable {
   case recent
   case related
   case resume
+  case review
   case reviewCard
   case search
   case searchGuess

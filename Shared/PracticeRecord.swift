@@ -75,7 +75,7 @@ nonisolated struct PracticeRecord: Codable, Equatable, Sendable {
   struct Entry: Codable, Equatable, Sendable {
     var schedule: ReviewSchedule
     var lastAnswered: Date?
-    /// Whether the most recent answer was right, which Phase 12's "practice my mistakes" reads.
+    /// Whether the most recent answer was right, which "Practice My Mistakes" reads.
     var lastAnswerWasRight: Bool?
     var lastLookedUp: Date?
 
@@ -172,6 +172,27 @@ nonisolated struct PracticeRecord: Codable, Equatable, Sendable {
         lhs.due != rhs.due ? lhs.due < rhs.due : lhs.key < rhs.key
       }
       .compactMap { PracticeItem(key: $0.key) }
+  }
+
+  /// The items whose most recent answer was wrong, the most recently missed first, which "Practice
+  /// My Mistakes" asks. An item leaves the list once answered right (Josh, 2026-11-13).
+  func missedItems() -> [PracticeItem] {
+    let missed: [(key: String, answered: Date)] = entries.compactMap { key, entry in
+      guard entry.lastAnswerWasRight == false, let answered = entry.lastAnswered else {
+        return nil
+      }
+      return (key, answered)
+    }
+    return missed
+      .sorted { lhs, rhs in
+        lhs.answered != rhs.answered ? lhs.answered > rhs.answered : lhs.key < rhs.key
+      }
+      .compactMap { PracticeItem(key: $0.key) }
+  }
+
+  /// The earliest due date after `date`, for saying when Review will next have something to ask.
+  func nextDue(after date: Date) -> Date? {
+    entries.values.map(\.schedule.due).filter { $0 > date }.min()
   }
 
   /// Whole days from `earlier` to `date`, counted by the calendar: 1 for yesterday.

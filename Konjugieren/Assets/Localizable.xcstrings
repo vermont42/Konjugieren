@@ -1501,6 +1501,22 @@
         }
       }
     },
+    "Accessibility.mistakesStartHint" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Startet ein Quiz mit den Fragen, die du zuletzt falsch beantwortet hast."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starts a quiz of the questions you last answered wrongly."
+          }
+        }
+      }
+    },
     "Accessibility.practiceSetShareHint" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1755,6 +1771,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Enter the German conjugation, then press return"
+          }
+        }
+      }
+    },
+    "Accessibility.reviewStartHint" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Startet ein Quiz mit den Fragen, die zur Wiederholung anstehen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starts a quiz of the questions due for review."
           }
         }
       }
@@ -5551,6 +5583,206 @@
     },
     "Pluperfect Indicative" : {
 
+    },
+    "PracticeSession.heading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aus deinem Übungsstand"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "From Your Practice"
+          }
+        }
+      }
+    },
+    "PracticeSession.mistakes" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Meine Fehler üben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Practice My Mistakes"
+          }
+        }
+      }
+    },
+    "PracticeSession.mistakesCount.%lld" : {
+      "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "1 zuletzt verfehlte Frage"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld zuletzt verfehlte Fragen"
+                }
+              }
+            }
+          }
+        },
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "1 question you last missed"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld questions you last missed"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "PracticeSession.mistakesEmpty" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keine Fehler zum Üben. Eine Frage, die du im Quiz verfehlst, wartet hier, bis du sie richtig beantwortest."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No mistakes to practice. A question you miss in a quiz waits here until you answer it right."
+          }
+        }
+      }
+    },
+    "PracticeSession.review" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wiederholen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Review"
+          }
+        }
+      }
+    },
+    "PracticeSession.reviewCount.%lld" : {
+      "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "1 Frage steht zur Wiederholung an"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld Fragen stehen zur Wiederholung an"
+                }
+              }
+            }
+          }
+        },
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "1 question due for review"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld questions due for review"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "PracticeSession.reviewEmpty" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Noch nichts zu wiederholen. Was du im Quiz beantwortest und jedes starke Verb, das du nachschlägst, steht einen Tag oder länger danach zur Wiederholung an."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nothing to review yet. What you answer in a quiz, and every strong verb you look up, comes due for review a day or more later."
+          }
+        }
+      }
+    },
+    "PracticeSession.reviewNextDue.%lld" : {
+      "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Heute steht nichts an. Die nächste Wiederholung ist morgen."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Heute steht nichts an. Die nächste Wiederholung ist in %lld Tagen."
+                }
+              }
+            }
+          }
+        },
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Nothing is due today. The next review is tomorrow."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Nothing is due today. The next review is in %lld days."
+                }
+              }
+            }
+          }
+        }
+      }
     },
     "PracticeSet.byLevel" : {
       "extractionState" : "manual",

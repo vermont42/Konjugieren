@@ -26,7 +26,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 9 | Done | 2026-11-14 | `b4f00b0` | T2.8 |
 | 10 | Done | 2026-11-14 | `dee17b1` | T2.9, Decision 8 |
 | 11 | Done | 2026-11-14 | `e8fcc07` | T3.3 (the record), T3.4, T3.5, T6.4 |
-| 12 | Not started | | | T3.2, T3.3 (the session) |
+| 12 | Awaiting Josh | 2026-11-14 | | T3.2, T3.3 (the session) |
 | 13 | Not started | | | T6.1, T6.6 (the leaderboard's place) |
 | 14 | Not started | | | T4.2, T4.3 |
 | 15 | Not started | | | T5.1 |
@@ -1217,7 +1217,7 @@ schedule.
 
 ## Phase 12: Review and My Mistakes
 
-**Suggestions:** T3.2, T3.3 (the session). **Depends on:** Phase 11. **Status:** Not started.
+**Suggestions:** T3.2, T3.3 (the session). **Depends on:** Phase 11. **Status:** Awaiting Josh.
 
 - **Review.** A short session of whatever items are due, built from the record: a strong verb's
   item asks its key conjugation, and a weak pattern asks that conjugationgroup and person of a
@@ -1239,7 +1239,69 @@ empty states.
 
 **How it differed:**
 
-(To be written by the session that finishes this phase.)
+- **Nothing was asked of Josh.** The phase lists no Ask Josh items, and every question below was
+  decided in the session. Each is a guess he can overrule.
+- **Where the entry points live.** A "From Your Practice" ("Aus deinem Übungsstand") section below
+  the Quiz tab's tiles, on every segment, with one row each for Review ("Wiederholen") and Practice
+  My Mistakes ("Meine Fehler üben"). A row with questions shows their count and a play symbol, and
+  a tap starts the session at once. An empty row is not a button. It says why it is empty: Review
+  gives the days to the next due item ("Nothing is due today. The next review is tomorrow."), or,
+  with nothing scheduled, says that quiz answers and strong verbs looked up come due a day or more
+  later. My Mistakes says that a question missed in a quiz waits there until answered right. The
+  segmented picker was not used: a fourth and fifth segment would not fit an iPhone in German, where
+  "Eigene Auswahl" already fills its own. **On an iPhone the section is below the fold**, under the
+  hero and the tiles. Phase 13's hub is the place to fix that.
+- **What each session asks.** Review: the record's due items, most overdue first. My Mistakes: items
+  whose last answer was wrong, most recently missed first (`PracticeRecord.missedItems()`). It reads
+  the record, not `QuizErrorHistory`, which has typed answers but no items. A key conjugation asks its
+  er form, as the review card shows it; a pattern asks its cell of a weak verb from the learner's
+  band. **Neither is held to the level's pool or band**, so Review asks what Phase 11's due items left
+  out (a Präteritum looked up at Elementary, a rare looked-up verb). A verb's due key conjugations sit
+  together in the verb page's order (fährt · fuhr · ist gefahren), at the place of the first drawn.
+- **Rounds.** Ten items, then Ten More while an askable item remains that the session has not asked.
+  Fewer than ten makes a shorter round, so a Review of two due items asks two. Ten More keeps its
+  label when fewer than ten remain. Review needs no exclusion, since an answered item is no longer
+  due. My Mistakes does, since a mistake missed again stays a mistake and would come straight back.
+  Re-asks and second attempts work as in any quiz, and every answer moves the record as before.
+- **`Quiz.questionCount` now counts the questions asked**, re-asks excluded, rather than multiplying
+  rounds by ten. That is the same number for every earlier scope and the true one for a short
+  Review, whose results say "Richtig: 1 / 2". `canContinue` now checks the record for a record
+  session. The Live Activity is keyed on `scope.continues`, since `canContinue` changes meaning
+  mid-session. The level tip is not donated after a record session, which does not ask by level.
+- **The bar's title.** While a session runs or shows its results, the Quiz tab's bar reads
+  "Wiederholen" or "Practice My Mistakes", since its questions look like any quiz's. On the iPad, the
+  top tab bar shows no navigation title at all, "Quiz" included. That predates this phase, so the
+  session name is not visible there.
+- **Analytics.** New `source` values `review` and `mistakes`. **A record session sends no counts.**
+  `completeQuiz` omits `questionCount`, and `quitQuiz` and `abandonQuiz` omit `questionNumber`
+  (`QuizScope.sendsQuestionCounts`). A session shorter than ten is exactly as long as the learner's
+  due or missed items, so its length would be a count of wrong answers (Decision 5).
+  `QuizAbandonment.Entry.questionNumber` became optional, which still decodes stored entries. Staged
+  in [`docs/privacy-policy-pending.md`](../docs/privacy-policy-pending.md) in both languages, with a
+  sentence saying why, and the section 6 sentence naming these sessions among those that post
+  nothing.
+- **VoiceOver.** No new quiz state. Each row reads as one element, its title and its count or
+  reason, and a startable row has a hint ("Starts a quiz of the questions due for review.").
+- **Tests:** `QuizRecordSessionTests`, 12 functions. Six on the parts: missed items most recent
+  first, days to the next due item, a session beyond the pool and band, a verb's key conjugations
+  together, excluded and unaskable items with the limit, and never ranked. Six nested in `QuizTests`:
+  twelve due items asked as ten then two and nothing more, a short Review that does not continue, an
+  empty record starting nothing, a mistake leaving once answered right, a mistake missed again not
+  returning in Ten More, and signals without counts and no score posted. Run in English with
+  `xcodebuild -testLanguage en`: 709 passed and 2 skipped (the environment-gated harnesses), 711
+  in all. `run_tests.sh` was not used, for Phase 11's reason: the iPhone simulator is German.
+- **Verified on the iPhone 17**, in dark mode. In German: both rows with the earlier sessions'
+  record (2 due, 2 missed), a Review of a weak pattern asked of ehren and then of unterschätzen
+  after a relaunch, a slip's "Fast!", a correction with "Diese Frage kommt noch einmal." and the
+  re-ask's diamond, results of "Richtig: 1 / 2" with no Ten More, and both rows' empty states after.
+  In English: a default quiz quit after two misses, both missed questions waiting in My Mistakes,
+  the session titled "Practice My Mistakes" (aufkommen's key conjugation kommt auf, then dürfen's
+  durfte), results of 2 / 2, and both rows empty, read through the accessibility tree. **On the iPad
+  Pro 11-inch (M5)**, in light mode and English: the section above the fold with 4 due and 4
+  missed, a Review opening with singen's two due key conjugations in order, then a weak pattern of
+  mitfühlen, and its correction. Not tried: VoiceOver by ear, the Live Activity of a record session,
+  Ten More from a real record of more than ten, and a real day passing (each unit-tested where it
+  can be).
 
 ## Phase 13: The Practice Hub
 

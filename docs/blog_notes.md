@@ -10800,3 +10800,51 @@ them mine: the iPhone simulator's system language became German this morning, an
 suites expect English output. Running the same suite with `xcodebuild -testLanguage en` passes all
 699, and the same ten fail on a clean tree. And `rg` with a pattern but no path, run after a
 heredoc in the same shell command, reads standard input and waits forever. Always give it a path.
+
+## Review and My Mistakes: The Record Starts Asking (2026-11-14)
+
+Phase 11 gave the quiz a memory, and Phase 12 lets the learner ask it questions. Two sessions now
+start from a "From Your Practice" section on the Quiz tab: Review, of whatever the practice record
+says is due, and Practice My Mistakes, of every item whose last answer was wrong. Neither needed a
+new quiz. Each is a `QuizScope` whose questions come from the record instead of a level's pool, so
+re-asks, second attempts, corrections, Ten More, and the recording of every answer came along for
+free.
+
+### The bug that a design almost had
+
+Review needs no bookkeeping between rounds, because answering an item changes whether it is due. A
+right answer moves it up the ladder, and a wrong one sends it back to tomorrow, so either way Ten
+More's draw no longer sees it. My Mistakes looked identical until I asked what Ten More would do
+after a learner missed a mistake again. The item would still be a mistake, the most recent one, so
+the next round would open with exactly the question just missed, and a stubborn item could fill a
+session. That is the trap Josh had already closed for re-asks (T3.1). So a My Mistakes round skips
+every item the session has asked, and a test pins it: one missed item, missed twice more, and Ten
+More is not offered.
+
+### A count that would have leaked
+
+The quiz's `completeQuiz` signal carries `questionCount`, which has always been 10, 20, or 30. A
+Review of four due items would send 4, and a My Mistakes session of three would send 3. The second
+is a count of the learner's wrong answers, which Decision 5 forbids outright. The question reached
+on a quit carries the same information in a weaker form. So a session drawn from the record sends
+neither, and the staged privacy text says so in a sentence of its own. Decision 5 has mostly been a
+rule about which new signals not to add. This was the first time it stopped an existing parameter
+from changing meaning under a new mode.
+
+### Smaller choices
+
+Review is not held to the learner's level. Phase 11 kept due items in the default quiz within the
+level, which left a Präteritum looked up at Elementary with nowhere to be asked; Review is that
+place. A verb's due key conjugations sit together in the page's order, so a review of fahren reads
+fährt, fuhr, ist gefahren rather than scattering them. And the instance's `questionCount` now counts
+the questions actually asked instead of multiplying rounds by ten, so a two-item Review's results
+say "Richtig: 1 / 2" rather than "1 / 10".
+
+On the simulator, the earlier sessions' leftovers made a better test than a fixture would have. The
+iPhone's record held two due weak patterns and two mistakes. The Review asked the Perfekt er pattern
+of ehren on one launch and of unterschätzen on the next, which is the whole point of a pattern: any
+weak verb will do. Afterward both rows showed their empty states, and the Review row said the next
+review was tomorrow, because the item I had missed on purpose had started its ladder over.
+
+The section sits below the fold on an iPhone. Phase 13 turns the tab into a practice hub, and that
+is where the rows should move up.

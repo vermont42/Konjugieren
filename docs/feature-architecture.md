@@ -122,6 +122,8 @@ quiz in a sheet shows) and `collectionKey` (which `startQuiz` names).
 | `.collection(_:)` | A collection's verbs (Phase 16), with replacement, in a sheet | 10, then Ten More | `list` | No |
 | `.custom(_:myVerbs:)` | The custom quiz's verb set, or the level's band (pedagogy Phase 9) | 10, then Ten More | `custom` | No |
 | `PracticeSet.scope(source:)` | A shared practice set's verb set, or its level's band, in a sheet (pedagogy Phase 10) | 10, then Ten More | `sharedLink` or `qrCode` | No |
+| `.recordSession(.review)` | Due items of the practice record; a pattern asks a weak verb of the level's band (pedagogy Phase 12) | Up to 10, then Ten More while any are due | `review` | No |
+| `.recordSession(.mistakes)` | Items whose last answer was wrong, likewise | Up to 10, then Ten More while any remain | `mistakes` | No |
 
 A quiz whose rounds are ten (`QuizScope.continues`) draws as above. The verb page's three
 questions ask distinct cells and no participle, from the learner's level, since every Perfekt
@@ -404,6 +406,33 @@ outside Phase 6's mix, which balances the other seven. Scoped quizzes mix in not
 for confirmation, then empties the record (saving it empty, so the migration does not run again)
 and `QuizErrorHistory`, which Josh kept on 2026-11-14 for the Tutor's recommendations and Phase
 14. Starred and recent verbs stay.
+
+### Review and My Mistakes
+
+Built 2026-11-14 in Phase 12 of [`plans/pedagogy-implementation.md`](../plans/pedagogy-implementation.md)
+(T3.2, and T3.3's session). Two sessions drawn from the practice record rather than from a level's
+pool, each a `QuizScope.recordSession` (`QuizRecordSession.review`, `.mistakes`) started from a
+"From Your Practice" section below the Quiz tab's tiles. Each row shows its count and starts the
+session, or, with nothing to ask, says why: Review gives the days to the next due item, or says
+what puts items there; My Mistakes says a missed question waits there until answered right. While a
+session runs, the tab's bar is titled with its name (an iPad's tab bar shows no title).
+
+- **What each asks.** Review asks `PracticeRecord.dueItems`, the most overdue first; My Mistakes
+  asks `missedItems()`, items whose last answer was wrong, the most recently missed first, each
+  leaving once answered right (Josh, 2026-11-13). A key conjugation asks its own cell of its verb;
+  a pattern asks its cell of a weak verb from the level's band. Neither session is held to the
+  level's pool or band, so it asks what the default quiz's due items left out (a Präteritum looked
+  up at Elementary, a rare verb). `QuizDraw.sessionQuestions` keeps a verb's key conjugations
+  together in the verb page's order (fährt, fuhr, ist gefahren).
+- **Rounds.** Up to ten items, re-asks and second attempts as in any quiz, and Ten More while
+  `canContinue` finds an askable item the session has not asked. Review needs no exclusion, since
+  an answered item is no longer due; My Mistakes does, since a mistake missed again stays a mistake.
+  `Quiz.questionCount` counts the questions asked, so a Review of four says "Correct: 3 / 4".
+- **Never ranked**, mixing in no due items, and donating no level tip.
+- **No counts in signals** (`QuizScope.sendsQuestionCounts`). A session shorter than ten is as
+  long as the learner's due or missed items, so `completeQuiz` omits `questionCount` and `quitQuiz`
+  and `abandonQuiz` omit `questionNumber` (Decision 5). `QuizAbandonment.Entry.questionNumber` is
+  optional for this.
 
 ### The Quiz Clock
 
@@ -1204,8 +1233,8 @@ Counts and durations go out in bands (`AnalyticsBand`), never as exact numbers.
 | `tapShareCollection` | `collection` | When a collection's share button is tapped, whether or not the learner then shares (Phase 16) |
 | `tapResetPractice` | None | When Reset Practice in Settings is confirmed (pedagogy Phase 11). Nothing about the record is sent |
 | `tapRevealReviewCard` | None | When a tap reveals the review card's key conjugations, once per card (Phase 15). A page opened from the card then sends `viewVerbView` with `source` `reviewCard` |
-| `startQuiz`, `quitQuiz`, `completeQuiz` | `source` (`tab`, `myVerbs`, `verbPage`, `list`, `custom`); `level` (`beginner`, `elementary`, `intermediate`, `advanced`); `quitQuiz` also `questionNumber` and `duration` (`0-3s`, `3-15s`, `15-40s`, `40s-2m`, `2m+`); `completeQuiz` also `questionCount` (`10`, `20`, `30`, …, or `3`); `startQuiz` alone also carries `collection` for a collection's quiz (Phase 16), or for a custom quiz over a collection, and `customChoice` (`conjugationgroups`, `verbs`, `both`) for a custom quiz (pedagogy Phase 9) | When a quiz starts, is quit, or reaches its results (`source` since Phase 13). Without it, three-question quizzes would inflate the completion rate of the default quiz. `level` replaced `difficulty` (`regular`, `ridiculous`), which only `quitQuiz` and `completeQuiz` sent, in Phase 5 of the pedagogy plan, and `startQuiz` gained it then (M1). Since Phase 7, `completeQuiz` is sent at each round's results, and its `questionCount` says how many rounds' questions the session has asked, so Ten More shows as `20` and `30`. `duration` (M3) is wall-clock time from the start to the quit, background included. `questionNumber` counts re-asks |
-| `abandonQuiz` | `source`, `level`, `questionNumber` | At launch, once for each quiz the last run left in progress (M2, Phase 7 of the pedagogy plan): the app was closed or killed during a question. `QuizAbandonment` keeps an entry per running quiz in `GetterSetter`, written at the start and at each question and removed at a quit or the results. A quiz left at its results is not abandoned |
+| `startQuiz`, `quitQuiz`, `completeQuiz` | `source` (`tab`, `myVerbs`, `verbPage`, `list`, `custom`); `level` (`beginner`, `elementary`, `intermediate`, `advanced`); `quitQuiz` also `questionNumber` and `duration` (`0-3s`, `3-15s`, `15-40s`, `40s-2m`, `2m+`); `completeQuiz` also `questionCount` (`10`, `20`, `30`, …, or `3`); `startQuiz` alone also carries `collection` for a collection's quiz (Phase 16), or for a custom quiz over a collection, and `customChoice` (`conjugationgroups`, `verbs`, `both`) for a custom quiz (pedagogy Phase 9). A Review or My Mistakes session (`review`, `mistakes`, pedagogy Phase 12) sends neither `questionCount` nor `questionNumber`, since either would tell how many items were due or missed | When a quiz starts, is quit, or reaches its results (`source` since Phase 13). Without it, three-question quizzes would inflate the completion rate of the default quiz. `level` replaced `difficulty` (`regular`, `ridiculous`), which only `quitQuiz` and `completeQuiz` sent, in Phase 5 of the pedagogy plan, and `startQuiz` gained it then (M1). Since Phase 7, `completeQuiz` is sent at each round's results, and its `questionCount` says how many rounds' questions the session has asked, so Ten More shows as `20` and `30`. `duration` (M3) is wall-clock time from the start to the quit, background included. `questionNumber` counts re-asks |
+| `abandonQuiz` | `source`, `level`, `questionNumber` (not for `review` or `mistakes`) | At launch, once for each quiz the last run left in progress (M2, Phase 7 of the pedagogy plan): the app was closed or killed during a question. `QuizAbandonment` keeps an entry per running quiz in `GetterSetter`, written at the start and at each question and removed at a quit or the results. A quiz left at its results is not abandoned |
 
 `VerbVisit` models one stretch of a verb page on screen, and `SearchTracker` and `SearchReport`
 model one search. A section counts as reached when a third of its block's first card is on screen
@@ -1262,6 +1291,8 @@ My Verbs scope, the list it was begun on.
 | `recent` | Yes | A recent verb, listed while the search field is focused and empty (Phase 12) |
 | `list` | Yes | A verb on a featured collection's page; for the quiz signals, a collection's quiz (Phase 16) |
 | `reviewCard` | Yes | The review card, tapped after its conjugations are revealed (Phase 15) |
+| `review` | Yes | The quiz signals only: a Review session from the Quiz tab (pedagogy Phase 12) |
+| `mistakes` | Yes | The quiz signals only: a Practice My Mistakes session from the Quiz tab (pedagogy Phase 12) |
 | `tab` | Yes | A search begun in the Verbs tab (Phase 11); for the quiz signals, a quiz over every verb from the Quiz tab (Phase 13) |
 | `verbPage` | Yes | The quiz signals only: "Test me on this verb" (Phase 13) |
 

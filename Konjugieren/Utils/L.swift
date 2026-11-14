@@ -36,6 +36,14 @@ enum L {
       String(localized: "Accessibility.quizStartHint")
     }
 
+    static var mistakesStartHint: String {
+      String(localized: "Accessibility.mistakesStartHint")
+    }
+
+    static var reviewStartHint: String {
+      String(localized: "Accessibility.reviewStartHint")
+    }
+
     static var quizQuitHint: String {
       String(localized: "Accessibility.quizQuitHint")
     }
@@ -1036,6 +1044,40 @@ enum L {
 
     static var tenMore: String {
       String(localized: "Quiz.tenMore")
+    }
+  }
+
+  enum PracticeSession {
+    static var heading: String {
+      String(localized: "PracticeSession.heading")
+    }
+
+    static var mistakes: String {
+      String(localized: "PracticeSession.mistakes")
+    }
+
+    static func mistakesCount(_ count: Int) -> String {
+      String(localized: "PracticeSession.mistakesCount.\(count)")
+    }
+
+    static var mistakesEmpty: String {
+      String(localized: "PracticeSession.mistakesEmpty")
+    }
+
+    static var review: String {
+      String(localized: "PracticeSession.review")
+    }
+
+    static func reviewCount(_ count: Int) -> String {
+      String(localized: "PracticeSession.reviewCount.\(count)")
+    }
+
+    static var reviewEmpty: String {
+      String(localized: "PracticeSession.reviewEmpty")
+    }
+
+    static func reviewNextDue(_ days: Int) -> String {
+      String(localized: "PracticeSession.reviewNextDue.\(days)")
     }
   }
 

@@ -92,7 +92,7 @@ struct QuizView: View {
           focusedBlank = 0
         }
       }
-      .navigationTitle(sheetScope?.title ?? L.Navigation.quiz)
+      .navigationTitle(sheetScope?.title ?? tabSessionTitle ?? L.Navigation.quiz)
       .navigationBarTitleDisplayMode(sheetScope == nil ? .automatic : .inline)
       .navigationDestination(for: VerbDestination.self) { destination in
         VerbView(verb: destination.verb, source: destination.source, marks: destination.marks)
@@ -375,6 +375,15 @@ struct QuizView: View {
     }
   }
 
+  /// A Review or My Mistakes session names itself in the tab's bar, since its questions look like
+  /// any quiz's.
+  private var tabSessionTitle: String? {
+    guard sheetScope == nil, quiz.isInProgress || quiz.shouldShowResults else {
+      return nil
+    }
+    return quiz.scope.recordSession?.title
+  }
+
   private var myVerbs: [Verb] {
     Current.learnerVerbs.myVerbs
   }
@@ -443,6 +452,8 @@ struct QuizView: View {
           if tabScope == .myVerbs, !myVerbs.isEmpty {
             myVerbChips
           }
+
+          recordSessions
         }
         .padding(.horizontal, Layout.doubleDefaultSpacing)
         .padding(.vertical, Layout.doubleDefaultSpacing)
@@ -618,6 +629,29 @@ struct QuizView: View {
     .accessibilityIdentifier("custom_quiz_share_button")
   }
 
+  /// Review and My Mistakes, each started directly, or saying why there is nothing to ask (Phase
+  /// 12 of the pedagogy plan). Phase 13 moves them into the practice hub.
+  private var recordSessions: some View {
+    VStack(alignment: .leading, spacing: Layout.defaultSpacing) {
+      Text(L.PracticeSession.heading)
+        .font(isLarge ? .title3.bold() : .headline)
+        .foregroundStyle(.customForeground)
+        .accessibilityAddTraits(.isHeader)
+
+      ForEach([QuizRecordSession.review, .mistakes], id: \.self) { session in
+        QuizRecordSessionRow(
+          session: session,
+          count: session.askableCount(from: Current.practice),
+          daysUntilNextDue: Current.practice.daysUntilNextDue(),
+          isLarge: isLarge
+        ) {
+          quiz.start(scope: .recordSession(session))
+        }
+      }
+    }
+    .frame(maxWidth: .infinity, alignment: .leading)
+  }
+
   private static let chipLimit = 12
 
   /// The verbs a My Verbs quiz will ask about, so the learner sees the list before starting.
@@ -703,6 +737,108 @@ private struct QuizFactTile: View {
         .strokeBorder(Color.customYellow.opacity(0.25), lineWidth: 1)
     }
     .accessibilityElement(children: .combine)
+  }
+}
+
+/// One of the record's sessions on the Quiz tab: a button that starts it while it has questions,
+/// and otherwise a line saying why it has none.
+private struct QuizRecordSessionRow: View {
+  let session: QuizRecordSession
+  let count: Int
+  let daysUntilNextDue: Int?
+  var isLarge = false
+  let start: () -> Void
+
+  var body: some View {
+    if count > 0 {
+      Button(action: start) {
+        content
+      }
+      .buttonStyle(.plain)
+      .accessibilityHint(hint)
+      .accessibilityIdentifier("quiz_\(identifier)_button")
+    } else {
+      content
+        .accessibilityIdentifier("quiz_\(identifier)_empty")
+    }
+  }
+
+  private var content: some View {
+    HStack(spacing: Layout.doubleDefaultSpacing) {
+      Image(systemName: systemImage)
+        .font(isLarge ? .largeTitle : .title2)
+        .foregroundStyle(.customYellow)
+        .frame(width: isLarge ? 56 : 36)
+        .accessibilityHidden(true)
+
+      VStack(alignment: .leading, spacing: 2) {
+        Text(session.title)
+          .font(isLarge ? .title3.bold() : .headline)
+          .foregroundStyle(.customForeground)
+        // Color.secondary, not .secondary, which inside a Button takes the app's red tint.
+        Text(detail)
+          .font(isLarge ? .body : .subheadline)
+          .foregroundStyle(Color.secondary)
+          .fixedSize(horizontal: false, vertical: true)
+      }
+
+      Spacer(minLength: 0)
+
+      if count > 0 {
+        Image(systemName: "play.circle.fill")
+          .font(isLarge ? .largeTitle : .title)
+          .foregroundStyle(.customYellow)
+          .accessibilityHidden(true)
+      }
+    }
+    .padding(Layout.doubleDefaultSpacing)
+    .frame(maxWidth: .infinity, alignment: .leading)
+    .background(Color.customYellow.opacity(0.06), in: RoundedRectangle(cornerRadius: 16))
+    .overlay {
+      RoundedRectangle(cornerRadius: 16)
+        .strokeBorder(Color.customYellow.opacity(0.25), lineWidth: 1)
+    }
+    .contentShape(RoundedRectangle(cornerRadius: 16))
+    .accessibilityElement(children: .combine)
+  }
+
+  private var detail: String {
+    switch session {
+    case .mistakes:
+      return count > 0 ? L.PracticeSession.mistakesCount(count) : L.PracticeSession.mistakesEmpty
+    case .review:
+      if count > 0 {
+        return L.PracticeSession.reviewCount(count)
+      }
+      return daysUntilNextDue.map { L.PracticeSession.reviewNextDue($0) } ?? L.PracticeSession.reviewEmpty
+    }
+  }
+
+  private var hint: String {
+    switch session {
+    case .mistakes:
+      return L.Accessibility.mistakesStartHint
+    case .review:
+      return L.Accessibility.reviewStartHint
+    }
+  }
+
+  private var systemImage: String {
+    switch session {
+    case .mistakes:
+      return "arrow.uturn.backward.circle"
+    case .review:
+      return "clock.arrow.circlepath"
+    }
+  }
+
+  private var identifier: String {
+    switch session {
+    case .mistakes:
+      return "mistakes"
+    case .review:
+      return "review"
+    }
   }
 }
 

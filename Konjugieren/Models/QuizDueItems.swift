@@ -18,27 +18,44 @@ extension QuizDraw {
     limit: Int = dueItemLimit,
     using generator: inout some RandomNumberGenerator
   ) -> [QuizDrawnQuestion] {
+    recordQuestions(for: items, pool: pool, verbs: verbs, limit: limit, using: &generator).map(\.question)
+  }
+
+  /// A question for each item that can be asked, in the items' order, and at most `limit`. With a
+  /// `pool`, as for the default quiz, an item must be one the pool asks, and a key conjugation's
+  /// verb must be in `verbs`. Without one, as for Review, any item is asked whose verb is still in
+  /// the corpus. A pattern always asks its cell of a weak verb from `verbs`.
+  static func recordQuestions(
+    for items: [PracticeItem],
+    pool: [QuizPoolEntry]?,
+    verbs: [Verb],
+    limit: Int,
+    using generator: inout some RandomNumberGenerator
+  ) -> [(item: PracticeItem, question: QuizDrawnQuestion)] {
     let bandInfinitives = Set(verbs.map(\.infinitiv))
     var weakVerbs: [(verb: Verb, readingIndices: [Int])]?
-    var questions: [QuizDrawnQuestion] = []
+    var drawn: [(item: PracticeItem, question: QuizDrawnQuestion)] = []
 
     func admits(_ cell: Conjugationgroup, _ verb: Verb, _ reading: Reading) -> Bool {
-      pool.contains { $0.cells.contains(cell) && $0.verbs.admits(verb, reading: reading) }
+      guard let pool else {
+        return true
+      }
+      return pool.contains { $0.cells.contains(cell) && $0.verbs.admits(verb, reading: reading) }
     }
 
-    for item in items where questions.count < limit {
+    for item in items where drawn.count < limit {
       guard let cell = item.conjugationgroup else {
         continue
       }
       switch item {
       case let .keyConjugation(_, readingIndex, _):
         guard let verb = item.verb,
-              bandInfinitives.contains(verb.infinitiv),
+              pool == nil || bandInfinitives.contains(verb.infinitiv),
               let reading = verb.reading(at: readingIndex),
               admits(cell, verb, reading) else {
           continue
         }
-        questions.append(QuizDrawnQuestion(verb: verb, conjugationgroup: cell, readingIndex: readingIndex))
+        drawn.append((item, QuizDrawnQuestion(verb: verb, conjugationgroup: cell, readingIndex: readingIndex)))
       case .pattern:
         let candidates = weakVerbs ?? verbs.compactMap { verb in
           let indices = verb.readings.indices.filter { index in
@@ -57,10 +74,10 @@ extension QuizDraw {
               let readingIndex = match.readingIndices.randomElement(using: &generator) else {
           continue
         }
-        questions.append(QuizDrawnQuestion(verb: match.verb, conjugationgroup: cell, readingIndex: readingIndex))
+        drawn.append((item, QuizDrawnQuestion(verb: match.verb, conjugationgroup: cell, readingIndex: readingIndex)))
       }
     }
-    return questions
+    return drawn
   }
 
   /// The drawn questions with the due ones placed among them at random.

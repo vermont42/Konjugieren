@@ -60,6 +60,17 @@ final class PracticeStore {
     record.dueItems(at: date)
   }
 
+  /// The items whose last answer was wrong, the most recently missed first.
+  func missedItems() -> [PracticeItem] {
+    record.missedItems()
+  }
+
+  /// Whole days until Review next has an item to ask: 1 for tomorrow. Nil when nothing is
+  /// scheduled.
+  func daysUntilNextDue(at date: Date = .now) -> Int? {
+    record.nextDue(after: date).flatMap { PracticeRecord.daysBetween(date, and: $0, calendar: calendar) }
+  }
+
   /// The strong or mixed verb whose key conjugation is longest overdue, with every due key
   /// conjugation of that reading, since the card shows all three.
   func cardOffer(at date: Date = .now) -> CardOffer? {

@@ -818,6 +818,15 @@ box, and the review card offers strong verbs only. A default quiz asks up to thr
 each round of ten, within its level, so a learner who never opens Review still relearns. Settings
 has Reset Practice.
 
+**Built on `main` 2026-11-14** by [Phase 12](pedagogy-implementation.md#phase-12-review-and-my-mistakes)
+of the pedagogy plan: the Review session and "Practice my mistakes", which complete this tier. Both
+draw from the practice record rather than from `QuizErrorHistory`, which keeps typed answers but no
+schedule. Review asks up to ten due items, the most overdue first, and My Mistakes up to ten items
+whose last answer was wrong, the most recent first; each offers Ten More while items remain, and
+neither is held to the learner's level. They start from a "From Your Practice" section on the Quiz
+tab, where an empty one says why it is empty. Neither ranks, and their signals carry no count of
+questions, since a short session's length is the number of items due or missed.
+
 The card-box scheduler suggested here is the Leitner system, from Sebastian Leitner's *So lernt man
 lernen* (1972), and the spacing effect it exploits was first measured by Hermann Ebbinghaus in
 *Über das Gedächtnis* (1885). The two ideas most needed by a German conjugation app were both first

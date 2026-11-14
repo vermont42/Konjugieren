@@ -4191,13 +4191,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mach zeitgesteuerte Quizze, sammle Punkte und tritt auf der Game-Center-Rangliste an. Wähle zwischen normaler und lächerlicher Schwierigkeit. Letztere enthält Conjugationgroups, die außerhalb formeller oder akademischer Texte selten vorkommen. Die Belohnung für die lächerliche Schwierigkeit ist großartig: doppelte Punktzahl."
+            "value" : "Mach zeitgesteuerte Quizze, sammle Punkte und tritt auf der Game-Center-Rangliste an. Wähle eine Stufe vom Einstieg bis zur Oberstufe. Jede Stufe ergänzt die vorige um weitere Conjugationgroups, und die Oberstufe enthält auch solche, die außerhalb formeller oder akademischer Texte selten vorkommen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Take timed quizzes, earn points, and compete on the Game Center leaderboard. Choose regular or ridiculous difficulty. The latter includes conjugationgroups that are rarely seen outside formal or academic writing. The reward for ridiculous difficulty is great: double the score."
+            "value" : "Take timed quizzes, earn points, and compete on the Game Center leaderboard. Choose a level from Beginner to Advanced. Each level adds conjugationgroups to the one before, and Advanced includes those rarely seen outside formal or academic writing."
           }
         }
       }
@@ -5407,38 +5407,6 @@
         }
       }
     },
-    "Quiz.difficulty" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Schwierigkeit:"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Difficulty:"
-          }
-        }
-      }
-    },
-    "Quiz.difficultyLabel" : {
-      "localizations" : {
-        "de" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Schwierigkeit"
-          }
-        },
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Difficulty"
-          }
-        }
-      }
-    },
     "Quiz.elapsed" : {
       "localizations" : {
         "de" : {
@@ -5468,6 +5436,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "First Try:"
+          }
+        }
+      }
+    },
+    "Quiz.level" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stufe:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Level:"
+          }
+        }
+      }
+    },
+    "Quiz.levelLabel" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stufe"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Level"
           }
         }
       }
@@ -5753,34 +5753,66 @@
         }
       }
     },
-    "QuizDifficulty.regular" : {
+    "QuizLevel.advanced" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Regulär"
+            "value" : "Oberstufe"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Regular"
+            "value" : "Advanced"
           }
         }
       }
     },
-    "QuizDifficulty.ridiculous" : {
+    "QuizLevel.beginner" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Lächerlich"
+            "value" : "Einstieg"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ridiculous"
+            "value" : "Beginner"
+          }
+        }
+      }
+    },
+    "QuizLevel.elementary" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Grundstufe"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Elementary"
+          }
+        }
+      }
+    },
+    "QuizLevel.intermediate" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mittelstufe"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Intermediate"
           }
         }
       }
@@ -6197,34 +6229,34 @@
         }
       }
     },
-    "Settings.quizDifficultyDescription" : {
+    "Settings.quizLevelDescription" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Diese Einstellung bestimmt die Schwierigkeit der Quizze. Normalerweise ist Regulär empfohlen, da Lächerlich Conjugationgroups enthält, die nicht weit verbreitet sind."
+            "value" : "Diese Einstellung bestimmt, welche Conjugationgroups die Quizze abfragen. Der Einstieg beginnt mit den häufigsten, und jede weitere Stufe fügt die nächsthäufigen hinzu. Die Oberstufe fragt alle ab."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This setting determines the difficulty of quizzes. You probably want Regular because Ridiculous includes conjugationgroups that are not in widespread use."
+            "value" : "This setting determines which conjugationgroups quizzes ask about. Beginner starts with the most common, and each level after it adds the next most common. Advanced asks about all of them."
           }
         }
       }
     },
-    "Settings.quizDifficultyHeading" : {
+    "Settings.quizLevelHeading" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Quizschwierigkeit"
+            "value" : "Quizstufe"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Quiz Difficulty"
+            "value" : "Quiz Level"
           }
         }
       }
@@ -6447,34 +6479,34 @@
         }
       }
     },
-    "Tips.changeDifficultyMessage" : {
+    "Tips.changeLevelMessage" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Probiere die Schwierigkeit Absurd für eine größere Herausforderung mit mehr Conjugationgroups."
+            "value" : "Jede Stufe ergänzt die vorige um weitere Conjugationgroups. Wechsle eine Stufe höher, wenn dir das Quiz leichtfällt."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Try Ridiculous difficulty for a greater challenge with more conjugationgroups."
+            "value" : "Each level adds conjugationgroups to the one before. Move up a level when the quiz feels easy."
           }
         }
       }
     },
-    "Tips.changeDifficultyTitle" : {
+    "Tips.changeLevelTitle" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Quiz-Schwierigkeit ändern"
+            "value" : "Wähle deine Stufe"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Change Quiz Difficulty"
+            "value" : "Choose Your Level"
           }
         }
       }

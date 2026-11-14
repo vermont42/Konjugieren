@@ -271,3 +271,27 @@ and for an ablaut group opened from it (`viewCollection`). The first bullet of t
 covers the verb page with "for example", and the collection bullet's "in the app" covers the
 ablaut group, so no line changes. The source says only that a link under a correction was
 followed, never which verb or answer, as Decision 5 of the plan requires.
+
+## Quiz levels (pedagogy plan, Phase 5, 2026-11-13)
+
+Replaces the quiz's `difficulty` parameter (`regular`, `ridiculous`), sent with `quitQuiz` and
+`completeQuiz`, with `level` (`beginner`, `elementary`, `intermediate`, `advanced`), and adds it to
+`startQuiz` (the report's M1). A level is a setting the learner chose, like the difficulty before
+it, so it says nothing about an answer or a score. The line changes rather than a new one being
+added.
+
+### English
+
+The bullet about the quiz difficulty in section 2 now reads:
+
+```
+- The quiz level you chose (Beginner, Elementary, Intermediate, or Advanced) when you start, quit, or complete a quiz
+```
+
+### German
+
+Der Punkt über den Quiz-Schwierigkeitsgrad in Abschnitt 2 lautet nun:
+
+```
+- Die gewählte Quizstufe (Einstieg, Grundstufe, Mittelstufe oder Oberstufe) beim Starten, Abbrechen oder Abschließen eines Quiz
+```

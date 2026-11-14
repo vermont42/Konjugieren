@@ -42,15 +42,17 @@ class Settings {
   static let regionKey = "region"
   static let regionDefault: Region = .north
 
-  var quizDifficulty: QuizDifficulty = quizDifficultyDefault {
+  var quizLevel: QuizLevel = quizLevelDefault {
     didSet {
-      if quizDifficulty != oldValue {
-        getterSetter.set(key: Settings.quizDifficultyKey, value: "\(quizDifficulty)")
+      if quizLevel != oldValue {
+        getterSetter.set(key: Settings.quizLevelKey, value: quizLevel.rawValue)
       }
     }
   }
+  static let quizLevelKey = "quizLevel"
+  static let quizLevelDefault: QuizLevel = .beginner
+  /// The setting the levels replaced, read once to migrate it.
   static let quizDifficultyKey = "quizDifficulty"
-  static let quizDifficultyDefault: QuizDifficulty = .regular
 
   var audioFeedback: AudioFeedback = audioFeedbackDefault {
     didSet {
@@ -150,7 +152,8 @@ class Settings {
     conjugationgroupLang = restore(key: Settings.conjugationgroupLangKey, default: Settings.conjugationgroupLangDefault)
     thirdPersonPronounGender = restore(key: Settings.thirdPersonPronounGenderKey, default: Settings.thirdPersonPronounGenderDefault)
     region = restore(key: Settings.regionKey, default: Region.seeded(from: Locale.current))
-    quizDifficulty = restore(key: Settings.quizDifficultyKey, default: Settings.quizDifficultyDefault)
+    migrateQuizDifficultyOnce()
+    quizLevel = restore(key: Settings.quizLevelKey, default: Settings.quizLevelDefault)
     audioFeedback = restore(key: Settings.audioFeedbackKey, default: Settings.audioFeedbackDefault)
     searchScope = restore(key: Settings.searchScopeKey, default: Settings.searchScopeDefault)
     flipSearchScopeDefaultOnce()
@@ -171,6 +174,19 @@ class Settings {
     }
     getterSetter.set(key: Settings.searchScopeDefaultFlippedKey, value: "true")
     searchScope = Settings.searchScopeDefault
+  }
+
+  // Restore wrote Regular on first launch, so a stored Regular seldom records a choice. Josh
+  // decided on 2026-11-13 that it becomes Elementary anyway, the level nearest Regular's mix,
+  // and that Ridiculous becomes Advanced. A new install, with neither key, starts at Beginner.
+  private func migrateQuizDifficultyOnce() {
+    guard getterSetter.get(key: Settings.quizLevelKey) == nil,
+          let difficulty = getterSetter.get(key: Settings.quizDifficultyKey) else {
+      return
+    }
+    let level: QuizLevel = difficulty == "ridiculous" ? .advanced : .elementary
+    getterSetter.set(key: Settings.quizLevelKey, value: level.rawValue)
+    getterSetter.remove(key: Settings.quizDifficultyKey)
   }
 
   private func restore<T: RawRepresentable>(key: String, default defaultValue: T) -> T where T.RawValue == String {

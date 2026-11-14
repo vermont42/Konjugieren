@@ -67,7 +67,7 @@ Konjugieren/
 │   ├── Info.swift              # Info article model with rich text and images
 │   ├── InfoMedia.swift         # Enum: .photo or .sfSymbol media for Info rows
 │   ├── KeyConjugations.swift   # Verb.keyConjugations (steht auf · stand auf · ist aufgestanden, always shown with no label) and Verb.shareText, what the verb page's share button sends
-│   ├── KonjugierenTips.swift   # TipKit tips (e.g., change-difficulty hint; the verb page's RedLettersTip and ScrollToBottomTip)
+│   ├── KonjugierenTips.swift   # TipKit tips (e.g., ChangeLevelTip, shown in Settings after a quiz; the verb page's RedLettersTip and ScrollToBottomTip)
 │   ├── LearnerVerbStore.swift  # Current.learnerVerbs: @Observable view of Shared/LearnerVerbs.swift that records opens, stars, and reviews, saves each change to the App Group's defaults, and answers in verbs (starred, recent, My Verbs, the verb due for review)
 │   ├── LanguageModelService.swift      # Protocol for on-device AI error explanation and tutoring
 │   ├── LanguageModelServiceDummy.swift # No-op stub for tests/unsupported devices
@@ -77,7 +77,8 @@ Konjugieren/
 │   ├── PrefixMeaning.swift     # Prefix meanings with PIE etymologies
 │   ├── PrefixSection.swift     # Curated-vs-other heading for the prefix-grouped verb list
 │   ├── Quiz.swift              # @Observable quiz state: questions, timer, scoring; QuizItem grading (accepts, preferredSpelling); DEBUG fixtures (screenshot, grading, frames); QuizItem.answerFrame; QuizScope (the verbs asked about, the question count, the analytics source, and whether the score is ranked): every verb, My Verbs, or three questions on a verb's page
-│   ├── QuizDifficulty.swift    # Setting enum: regular vs ridiculous
+│   ├── QuizDraw.swift          # Draws a quiz's questions from a level's pool: a kind by weight, then a verb it admits, then a cell; AnyRandomNumberGenerator
+│   ├── QuizLevel.swift         # Setting enum: Beginner, Elementary, Intermediate, Advanced (replaced QuizDifficulty's regular and ridiculous); each level's pool of QuizPoolEntry (a table's cells, the QuizVerbs it may ask, a weight)
 │   ├── RelatedVerbs.swift      # Verb.root (the innermost base: anerkennen → kennen) and Verb.related(readingIndex:): verbs built on the same root, one verb per other root of the ablaut group, and the Families pages of a reading
 │   ├── Region.swift            # Setting enum: the three standard varieties (north/austria/switzerland)
 │   ├── ReviewCardSuppression.swift # Setting enum: off (the default) shows the review card, on hides it
@@ -234,6 +235,7 @@ KonjugierenTests/
 │   ├── GameStateTests.swift    # Game-logic tests: damage invulnerability, robot-mechanic clearing, game-over/wave transitions, snapshot round-trip
 │   ├── PersonNumberTests.swift # Pronoun and sie-disambiguation tests
 │   ├── QuizErrorHistoryTests.swift # Quiz error persistence tests
+│   ├── QuizLevelTests.swift    # Each level's tables and cells, the restricted cells' verbs, weighted shares under a fixed seed, and short quizzes' distinct cells
 │   ├── QuizTests.swift         # Quiz logic, scoring, and timer pause/resume tests; scopes (My Verbs, three questions on a verb page, ranking, the source on start, quit, and completion)
 │   ├── StandardVariantsTests.swift # Every row Josh accepted in the Phase 1 variant audit, and the ones he rejected
 │   ├── SearchReportTests.swift # SearchTracker lifecycle, finishSearch parameters, and the no-typed-text guarantee

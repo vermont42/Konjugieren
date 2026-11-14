@@ -4,7 +4,7 @@ import ActivityKit
 import Foundation
 
 nonisolated struct QuizActivityAttributes: ActivityAttributes {
-  let difficulty: String
+  let level: String
   let totalQuestions: Int
 
   struct ContentState: Codable, Hashable, Sendable {

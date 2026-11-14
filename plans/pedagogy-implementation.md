@@ -19,7 +19,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 2 | Done | 2026-11-13 | `11f2d81` | T1.2 |
 | 3 | Done | 2026-11-13 | `f7f3fbc` | T4.1, T4.4, T4.5 |
 | 4 | Done | 2026-11-13 | `ae1b4a4` | T1.6 |
-| 5 | Not started | | | T2.3, T2.6, T6.7, M1 |
+| 5 | Awaiting Josh | 2026-11-13 | | T2.3, T2.6, T6.7, M1 |
 | 6 | Not started | | | T2.1, T2.2, T2.5 |
 | 7 | Not started | | | T2.7, T3.1, T6.5, M2, M3 |
 | 8 | Not started | | | Decision 4 |
@@ -68,8 +68,16 @@ record the answer and its date in **How it differed**.
    run's test count, not only its exit status. Question generation is random, so make its random
    source injectable (`SeededRNG` in `Shared/WidgetQuizShuffle.swift` exists) and test
    proportions with a fixed seed rather than with luck.
-2. For any visible change, launch the app and look at it, on the iPhone 17 simulator and, for
-   layout work, the iPad Pro 11-inch (M5). The quiz has a `KONJUGIEREN_QUIZ_FIXTURE` launch
+2. For any visible change, launch the app and look at it on both the iPhone 17 and the iPad Pro
+   11-inch (M5) simulators, not only for layout work. Josh tries changes on an iPhone and leaves
+   the iPad to the session (2026-11-13), so the session's check is the only one the iPad gets.
+   Exercise the phase's new states there too, not just its first screen, and say in **How it
+   differed** what was tried on each device. Split the languages and appearances across the two:
+   on the iPhone, look in English and again in German (relaunch with `-AppleLanguages "(de)"`),
+   and on the iPad in English, so that between them the check covers both languages, light and
+   dark, and both size classes (Josh, 2026-11-13). The iPhone simulator has been in dark mode and
+   the iPad in light; if either has changed, set it with `xcrun simctl ui <udid> appearance dark`
+   (or `light`). The quiz has a `KONJUGIEREN_QUIZ_FIXTURE` launch
    default for a fixed set of questions; extend it rather than tapping through random quizzes.
 3. Localize every new string in English and German, following `CLAUDE.md`'s rules for
    `Localizable.xcstrings`. A new setting's description begins "This setting determines...".
@@ -520,7 +528,7 @@ the verb does not, half points are scored and shown, and tests pin each case.
 ## Phase 5: Levels
 
 **Suggestions:** T2.3, T2.6, T6.7, M1. **Depends on:** nothing, though Phases 1 to 4 come first by
-leverage. **Status:** Not started.
+leverage. **Status:** Awaiting Josh.
 
 Replace Regular and Ridiculous with levels ordered by use, following the report's ladder, each
 level adding to the one before:
@@ -571,7 +579,69 @@ migrate, `startQuiz` carries the level, and tests pin each level's pool.
 
 **How it differed:**
 
-(To be written by the session that finishes this phase.)
+- **Josh chose the names on 2026-11-13**: Beginner, Elementary, Intermediate, and Advanced, and in
+  German Einstieg, Grundstufe, Mittelstufe, and Oberstufe (over Anfänger, Grundlagen, Mittelstufe,
+  Fortgeschritten, and over Einsteiger, Grundkenntnisse, Aufbau, Experte). The German set is all
+  nouns of course stages and avoids the masculine Anfänger.
+- **Josh chose the weights the same day**, from three sets: Präsens and Perfekt Indikativ 3, every
+  other finite conjugationgroup 2, and the three Futurs and both participles 1, the same at every
+  level. A weight belongs to a conjugationgroup as a whole, so a participle's one cell is not as
+  likely as a six-cell table. This replaces the participle quota. A restricted cell keeps its
+  conjugationgroup's weight, so about one Elementary question in five is a Präteritum of sein,
+  haben, or a modal, which Phase 6's two core questions per session may make redundant.
+- **How the draw works.** `QuizLevel.pool` lists each level's conjugationgroups as
+  `QuizPoolEntry` values (a `ConjugationTable`, its cells, a `QuizVerbs` restriction), written out
+  per level rather than built by accumulation, so that each level reads like the table above.
+  `QuizDraw` draws a conjugationgroup by weight, then a verb and a reading that the restriction
+  admits, then a cell. Strong and mixed are judged per reading, so hängen is asked the Präteritum
+  Konjunktiv II only in its strong reading. A conjugationgroup that no verb of the scope admits is
+  left out, which keeps the Präteritum out of an Elementary quiz on a weak verb's page. Phase 6's
+  bands belong in `QuizDraw` too.
+- **The random source is injectable**: `Quiz(randomSource:)`, with `SeededRNG`. `Quiz` sorts the
+  corpus before drawing, since `Verb.verbs` is a dictionary whose order changes between launches,
+  so a seed draws the same quiz in every process.
+- **A short quiz** (three questions on a verb's page) still asks distinct cells and no participle.
+- **The setting moved to a new key**, `quizLevel`. On the first launch without it, a stored
+  `quizDifficulty` migrates (anything but `ridiculous` becomes Elementary) and is removed. Both
+  paths were tried on real simulator installs: the iPhone's stored Regular became Elementary, and
+  the iPad's, set to Ridiculous for the test, became Advanced. A fresh install started at Beginner.
+- **Not a segmented control.** A four-segment picker truncated "Intermedia..." on the iPhone, and
+  the German names are as long. The levels are tiles like the App Icon picker's, each with a gauge
+  (`gauge.with.dots.needle.0percent` to `100percent`) whose needle rises with the level; the Quiz
+  tab's tile uses the same gauge. Josh has not judged this; it was not in the phase.
+- **The tip.** `ChangeDifficultyTip` became `ChangeLevelTip`, "Choose Your Level" / "Wähle deine
+  Stufe". TipKit treats a renamed tip as new while the `quizCompleted` event keeps its donations,
+  so every learner who has finished a quiz will see it once more, which suits a new setting.
+  Looking at it found an older bug: Settings attaches its popover tips to views that stay alive
+  after the tab's first visit, and on the iPad the tip appeared over the Quiz tab's results the
+  moment a quiz finished, pointing at nothing. Settings now attaches its tips, `PlayGameTip`
+  included, only while it is on screen, and the tip waits for the next visit, where it points at
+  Quiz Level. Tried on the iPad after a reinstall.
+- **Text that named Ridiculous.** The onboarding quiz page's two sentences about difficulty now
+  name the levels (Phase 13 rewrites the page), and `docs/description.md`, the App Store text,
+  lists the levels in place of the two difficulties and the 2× multiplier.
+- **Scoring.** Every level scores 10 a right answer. Until Phase 8, every level posts to the one
+  leaderboard, so a Beginner score and an Advanced score now compete there. Nothing ships before
+  Phase 8, so this was left.
+- **Analytics.** The parameter `difficulty` became `level`, with the level's raw value, on
+  `startQuiz` (new, M1), `quitQuiz`, and `completeQuiz`. Staged in
+  [`docs/privacy-policy-pending.md`](../docs/privacy-policy-pending.md) as a changed line in both
+  languages.
+- **`docs/feature-architecture.md`** now gives the levels, the weights, and the draw. The arcade
+  sentence the phase mentions had already been corrected on 2026-11-10.
+- **The Live Activity** shows the level's name, through `QuizActivityAttributes.level`. It was not
+  looked at.
+- **No new fixture.** What needed seeing was the random draw, so the check typed a wrong answer
+  into thirty real questions per level and logged each one's conjugationgroup and verb.
+- **Verified on the iPhone 17**, in dark mode: the Quiz tab's tile, Settings' tiles, and the
+  results row ("Level: Intermediate" fits on one line), in English and German. An Intermediate
+  quiz asked only Intermediate's conjugationgroups, its seven Präteritum Konjunktiv II questions
+  all of sein, haben, werden, or a modal; a Beginner quiz asked only the Präsens and the
+  Imperativ. **On the iPad Pro 11-inch (M5)**, in light mode: the tiles, the onboarding page, an
+  Advanced quiz (every conjugationgroup appeared, its Präteritum Konjunktiv II asked of abwerfen
+  and vordenken), a Beginner quiz's results, and the tip. Not tried: VoiceOver by ear (each level
+  tile reads its name, with the selected trait), the software keyboard, and the Live Activity.
+  Tests: 18 new, 587 in all.
 
 ## Phase 6: Which Verbs Are Asked
 

@@ -8,7 +8,7 @@ import Testing
 @MainActor
 struct QuizTests {
   init() {
-    Current.settings.quizDifficulty = .regular
+    Current.settings.quizLevel = .elementary
   }
 
   @Test func initialState() {
@@ -48,24 +48,31 @@ struct QuizTests {
     quiz.quit()
   }
 
-  @Test func startQuizGeneratesCorrectParticiples() {
-    let quiz = Quiz(timerInterval: 0.001)
+  @Test(arguments: QuizLevel.allCases)
+  func startQuizAsksOnlyTheLevelsCells(level: QuizLevel) {
+    Current.settings.quizLevel = level
+    let quiz = Quiz(timerInterval: 0.001, randomSource: SeededRNG(seed: 5))
     quiz.start()
 
-    let präsenspartizipCount = quiz.questions.filter {
-      if case .präsenspartizip = $0.conjugationgroup { return true }
-      return false
-    }.count
-
-    let perfektpartizipCount = quiz.questions.filter {
-      if case .perfektpartizip = $0.conjugationgroup { return true }
-      return false
-    }.count
-
-    #expect(präsenspartizipCount == 1)
-    #expect(perfektpartizipCount == 2)
+    let cells = Set(level.pool.flatMap(\.cells))
+    #expect(quiz.questions.allSatisfy { cells.contains($0.conjugationgroup) })
+    #expect(quiz.level == level)
 
     quiz.quit()
+  }
+
+  @Test func theSameSeedDrawsTheSameQuiz() {
+    let first = Quiz(timerInterval: 0.001, randomSource: SeededRNG(seed: 42))
+    first.start()
+    let second = Quiz(timerInterval: 0.001, randomSource: SeededRNG(seed: 42))
+    second.start()
+
+    #expect(first.questions.map(\.verb.infinitiv) == second.questions.map(\.verb.infinitiv))
+    #expect(first.questions.map(\.conjugationgroup) == second.questions.map(\.conjugationgroup))
+    #expect(first.questions.map(\.readingIndex) == second.questions.map(\.readingIndex))
+
+    first.quit()
+    second.quit()
   }
 
   @Test func quitQuiz() {
@@ -328,24 +335,14 @@ struct QuizTests {
     quiz2.quit()
   }
 
-  @Test func finalScoreRegularDifficulty() {
+  @Test(arguments: QuizLevel.allCases)
+  func aRightAnswerScoresAlikeAtEveryLevel(level: QuizLevel) {
     let quiz = Quiz(timerInterval: 0.001)
-    Current.settings.quizDifficulty = .regular
+    Current.settings.quizLevel = level
     quiz.start()
 
     quiz.submitAnswer(quiz.questions[0].correctAnswer)
     #expect(quiz.finalScore == Quiz.pointsPerCorrect)
-
-    quiz.quit()
-  }
-
-  @Test func finalScoreRidiculousDifficultyDoubles() {
-    let quiz = Quiz(timerInterval: 0.001)
-    Current.settings.quizDifficulty = .ridiculous
-    quiz.start()
-
-    quiz.submitAnswer(quiz.questions[0].correctAnswer)
-    #expect(quiz.finalScore == Quiz.pointsPerCorrect * 2)
 
     quiz.quit()
   }
@@ -452,9 +449,12 @@ struct QuizTests {
     let spy = Current.analytics as! AnalyticsSpy
     let initialCount = spy.signalNames.count
     let quiz = Quiz(timerInterval: 0.001)
+    Current.settings.quizLevel = .intermediate
     quiz.start()
 
     #expect(spy.signalNames.dropFirst(initialCount).contains(.startQuiz))
+    let signals = zip(spy.signalNames, spy.signalParameters).dropFirst(initialCount)
+    #expect(signals.first { $0.0 == .startQuiz }?.1[ParameterKey.level.rawValue] == "intermediate")
 
     quiz.quit()
   }
@@ -462,7 +462,7 @@ struct QuizTests {
   @Test func quitQuizFiresAnalytics() {
     let spy = Current.analytics as! AnalyticsSpy
     let quiz = Quiz(timerInterval: 0.001)
-    Current.settings.quizDifficulty = .regular
+    Current.settings.quizLevel = .elementary
     quiz.start()
 
     quiz.submitAnswer(quiz.questions[0].correctAnswer)
@@ -475,7 +475,7 @@ struct QuizTests {
 
     if let quitIndex = newNames.firstIndex(of: .quitQuiz) {
       let params = newParams[quitIndex]
-      #expect(params[ParameterKey.difficulty.rawValue] == "regular")
+      #expect(params[ParameterKey.level.rawValue] == "elementary")
       #expect(params[ParameterKey.questionNumber.rawValue] == "2")
     }
   }
@@ -483,7 +483,7 @@ struct QuizTests {
   @Test func completeQuizFiresAnalytics() {
     let spy = Current.analytics as! AnalyticsSpy
     let quiz = Quiz(timerInterval: 0.001)
-    Current.settings.quizDifficulty = .ridiculous
+    Current.settings.quizLevel = .advanced
     quiz.start()
 
     let initialCount = spy.signalNames.count
@@ -497,7 +497,7 @@ struct QuizTests {
 
     if let completeIndex = newNames.firstIndex(of: .completeQuiz) {
       let params = newParams[completeIndex]
-      #expect(params[ParameterKey.difficulty.rawValue] == "ridiculous")
+      #expect(params[ParameterKey.level.rawValue] == "advanced")
     }
   }
 

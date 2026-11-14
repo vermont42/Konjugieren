@@ -611,12 +611,12 @@ enum L {
       String(localized: "Settings.thirdPersonPronounGenderDescription")
     }
 
-    static var quizDifficultyHeading: String {
-      String(localized: "Settings.quizDifficultyHeading")
+    static var quizLevelHeading: String {
+      String(localized: "Settings.quizLevelHeading")
     }
 
-    static var quizDifficultyDescription: String {
-      String(localized: "Settings.quizDifficultyDescription")
+    static var quizLevelDescription: String {
+      String(localized: "Settings.quizLevelDescription")
     }
 
     static var reviewCardSuppressionHeading: String {
@@ -710,13 +710,21 @@ enum L {
     }
   }
 
-  enum QuizDifficulty {
-    static var regular: String {
-      String(localized: "QuizDifficulty.regular")
+  enum QuizLevel {
+    static var advanced: String {
+      String(localized: "QuizLevel.advanced")
     }
 
-    static var ridiculous: String {
-      String(localized: "QuizDifficulty.ridiculous")
+    static var beginner: String {
+      String(localized: "QuizLevel.beginner")
+    }
+
+    static var elementary: String {
+      String(localized: "QuizLevel.elementary")
+    }
+
+    static var intermediate: String {
+      String(localized: "QuizLevel.intermediate")
     }
   }
 
@@ -849,8 +857,8 @@ enum L {
       String(localized: "Quiz.allVerbsDescription")
     }
 
-    static var difficultyLabel: String {
-      String(localized: "Quiz.difficultyLabel")
+    static var levelLabel: String {
+      String(localized: "Quiz.levelLabel")
     }
 
     static func moreVerbs(_ count: Int) -> String {
@@ -941,8 +949,8 @@ enum L {
       String(localized: "Quiz.correct")
     }
 
-    static var difficulty: String {
-      String(localized: "Quiz.difficulty")
+    static var level: String {
+      String(localized: "Quiz.level")
     }
 
     static var time: String {

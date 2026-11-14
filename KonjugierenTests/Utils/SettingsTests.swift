@@ -10,7 +10,7 @@ struct SettingsTests {
     let settings = Settings(getterSetter: GetterSetterFake())
     #expect(settings.conjugationgroupLang == .german)
     #expect(settings.thirdPersonPronounGender == .er)
-    #expect(settings.quizDifficulty == .regular)
+    #expect(settings.quizLevel == .beginner)
     #expect(settings.audioFeedback == .enable)
     #expect(settings.searchScope == .infinitiveAndTranslation)
     #expect(settings.reviewCardSuppression == .off)
@@ -22,7 +22,7 @@ struct SettingsTests {
     let fake = GetterSetterFake(dictionary: [
       Settings.conjugationgroupLangKey: "english",
       Settings.thirdPersonPronounGenderKey: "sie",
-      Settings.quizDifficultyKey: "ridiculous",
+      Settings.quizLevelKey: "intermediate",
       Settings.audioFeedbackKey: "disable",
       Settings.searchScopeKey: "infinitiveAndTranslation",
       Settings.reviewCardSuppressionKey: "on",
@@ -32,7 +32,7 @@ struct SettingsTests {
     let settings = Settings(getterSetter: fake)
     #expect(settings.conjugationgroupLang == .english)
     #expect(settings.thirdPersonPronounGender == .sie)
-    #expect(settings.quizDifficulty == .ridiculous)
+    #expect(settings.quizLevel == .intermediate)
     #expect(settings.audioFeedback == .disable)
     #expect(settings.searchScope == .infinitiveAndTranslation)
     #expect(settings.reviewCardSuppression == .on)
@@ -42,13 +42,13 @@ struct SettingsTests {
   @Test func invalidStoredValueFallsBackToDefault() {
     let fake = GetterSetterFake(dictionary: [
       Settings.conjugationgroupLangKey: "nonsense",
-      Settings.quizDifficultyKey: "extreme",
+      Settings.quizLevelKey: "extreme",
       Settings.hasSeenOnboardingKey: "maybe",
     ])
 
     let settings = Settings(getterSetter: fake)
     #expect(settings.conjugationgroupLang == .german)
-    #expect(settings.quizDifficulty == .regular)
+    #expect(settings.quizLevel == .beginner)
     #expect(settings.hasSeenOnboarding == false)
   }
 
@@ -58,7 +58,7 @@ struct SettingsTests {
 
     #expect(fake.get(key: Settings.conjugationgroupLangKey) == "german")
     #expect(fake.get(key: Settings.thirdPersonPronounGenderKey) == "er")
-    #expect(fake.get(key: Settings.quizDifficultyKey) == "regular")
+    #expect(fake.get(key: Settings.quizLevelKey) == "beginner")
     #expect(fake.get(key: Settings.audioFeedbackKey) == "enable")
     #expect(fake.get(key: Settings.reviewCardSuppressionKey) == "off")
     #expect(fake.get(key: Settings.hasSeenOnboardingKey) == "false")
@@ -74,8 +74,8 @@ struct SettingsTests {
     settings.thirdPersonPronounGender = .es
     #expect(fake.get(key: Settings.thirdPersonPronounGenderKey) == "es")
 
-    settings.quizDifficulty = .ridiculous
-    #expect(fake.get(key: Settings.quizDifficultyKey) == "ridiculous")
+    settings.quizLevel = .advanced
+    #expect(fake.get(key: Settings.quizLevelKey) == "advanced")
 
     settings.audioFeedback = .disable
     #expect(fake.get(key: Settings.audioFeedbackKey) == "disable")
@@ -85,6 +85,37 @@ struct SettingsTests {
 
     settings.hasSeenOnboarding = true
     #expect(fake.get(key: Settings.hasSeenOnboardingKey) == "true")
+  }
+
+  @Test(arguments: [
+    ("regular", QuizLevel.elementary),
+    ("ridiculous", QuizLevel.advanced),
+    ("extreme", QuizLevel.elementary)
+  ])
+  func storedDifficultyMigratesToALevel(difficulty: String, level: QuizLevel) {
+    let fake = GetterSetterFake(dictionary: [Settings.quizDifficultyKey: difficulty])
+
+    let settings = Settings(getterSetter: fake)
+    #expect(settings.quizLevel == level)
+    #expect(fake.get(key: Settings.quizLevelKey) == level.rawValue)
+    #expect(fake.get(key: Settings.quizDifficultyKey) == nil)
+  }
+
+  @Test func aChosenLevelOutlivesTheMigration() {
+    let fake = GetterSetterFake(dictionary: [Settings.quizDifficultyKey: "ridiculous"])
+    let settings = Settings(getterSetter: fake)
+    settings.quizLevel = .beginner
+
+    #expect(Settings(getterSetter: fake).quizLevel == .beginner)
+  }
+
+  @Test func aLevelAlreadyStoredIsNotMigratedAgain() {
+    let fake = GetterSetterFake(dictionary: [
+      Settings.quizLevelKey: "beginner",
+      Settings.quizDifficultyKey: "ridiculous"
+    ])
+
+    #expect(Settings(getterSetter: fake).quizLevel == .beginner)
   }
 
   @Test func existingInstallMovesToTheNewSearchScopeDefaultOnce() {

@@ -8,7 +8,10 @@ struct SettingsView: View {
   @State private var rateReviewDescription = ""
   @State private var showingOnboarding = false
   @State private var showingGame = false
-  private let changeDifficultyTip = ChangeDifficultyTip()
+  // The tab stays alive once visited, and a popover tip that becomes eligible while it is hidden,
+  // as ChangeLevelTip does when a quiz finishes, would float over another tab pointing at nothing.
+  @State private var isOnScreen = false
+  private let changeLevelTip = ChangeLevelTip()
   private let playGameTip = PlayGameTip()
 
   private var playGameDescription: String {
@@ -101,16 +104,11 @@ struct SettingsView: View {
 
             settingsCard {
               settingSection(
-                heading: L.Settings.quizDifficultyHeading,
-                description: L.Settings.quizDifficultyDescription,
-                tip: changeDifficultyTip
+                heading: L.Settings.quizLevelHeading,
+                description: L.Settings.quizLevelDescription,
+                tip: isOnScreen ? changeLevelTip : nil
               ) {
-                Picker(L.Settings.quizDifficultyHeading, selection: $settings.quizDifficulty) {
-                  ForEach(QuizDifficulty.allCases, id: \.self) { quizDifficulty in
-                    Text(quizDifficulty.localizedQuizDifficulty).tag(quizDifficulty)
-                  }
-                }
-                .pickerStyle(.segmented)
+                quizLevelPicker
               }
 
               GradientDivider()
@@ -199,7 +197,7 @@ struct SettingsView: View {
                   title: L.Game.playGame,
                   systemImage: "gamecontroller.fill",
                   description: playGameDescription,
-                  tip: playGameTip
+                  tip: isOnScreen ? playGameTip : nil
                 ) {
                   showingGame = true
                   playGameTip.invalidate(reason: .actionPerformed)
@@ -236,11 +234,15 @@ struct SettingsView: View {
         }
       }
       .onAppear {
+        isOnScreen = true
         Current.analytics.signal(name: .viewSettingsView)
         hasChatHistory = !TutorChatHistory.isEmpty(getterSetter: Current.getterSetter)
       }
-      .onChange(of: settings.quizDifficulty) {
-        changeDifficultyTip.invalidate(reason: .actionPerformed)
+      .onDisappear {
+        isOnScreen = false
+      }
+      .onChange(of: settings.quizLevel) {
+        changeLevelTip.invalidate(reason: .actionPerformed)
       }
       .task {
         if let description = await RatingsFetcher.fetchRatingsDescription(session: Current.session) {
@@ -299,6 +301,47 @@ struct SettingsView: View {
     } else {
       Text(region.localizedRegion)
     }
+  }
+
+  // A segmented control truncated Intermediate and Mittelstufe on an iPhone, so the levels are
+  // tiles like the app icons below, each with a gauge whose needle rises with the level.
+  private var quizLevelPicker: some View {
+    LazyVGrid(
+      columns: Array(repeating: GridItem(.flexible(), spacing: Layout.defaultSpacing), count: QuizLevel.allCases.count),
+      spacing: Layout.defaultSpacing
+    ) {
+      ForEach(QuizLevel.allCases, id: \.self) { quizLevel in
+        let isSelected = Current.settings.quizLevel == quizLevel
+        Button {
+          Current.settings.quizLevel = quizLevel
+        } label: {
+          VStack(spacing: 4) {
+            Image(systemName: quizLevel.systemImage)
+              .font(.system(size: 30))
+              .foregroundStyle(isSelected ? Color.customYellow : Color.secondary)
+              .frame(width: 60, height: 60)
+              .background(
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                  .fill(Color.customBackground)
+              )
+              .overlay(
+                RoundedRectangle(cornerRadius: 14, style: .continuous)
+                  .strokeBorder(isSelected ? Color.customYellow : Color.clear, lineWidth: 3)
+              )
+              .accessibilityHidden(true)
+            Text(quizLevel.localizedName)
+              .font(.caption2)
+              .foregroundStyle(.customForeground)
+              .lineLimit(1)
+              .minimumScaleFactor(0.8)
+          }
+        }
+        .buttonStyle(.plain)
+        .accessibilityAddTraits(isSelected ? .isSelected : [])
+        .accessibilityIdentifier("quiz_level_\(quizLevel.rawValue)")
+      }
+    }
+    .sensoryFeedback(.selection, trigger: Current.settings.quizLevel)
   }
 
   private func settingsCard<Content: View>(@ViewBuilder content: () -> Content) -> some View {

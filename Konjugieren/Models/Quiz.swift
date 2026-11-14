@@ -37,8 +37,9 @@ class Quiz {
   }
 
   private var timer: Timer?
-  private var difficultyUsed: QuizDifficulty = .regular
+  private(set) var level: QuizLevel = Settings.quizLevelDefault
   private let timerInterval: TimeInterval
+  private var randomSource: AnyRandomNumberGenerator
   private var liveActivity: Activity<QuizActivityAttributes>?
 
   var currentQuestion: QuizItem? {
@@ -63,21 +64,20 @@ class Quiz {
     TimeFormatter.formatMinutesSeconds(elapsedSeconds)
   }
 
+  // Every level scores alike, since each will have its own leaderboard (Phase 8 of the pedagogy
+  // plan) and no score compares across levels.
   var finalScore: Int {
-    difficultyUsed == .ridiculous ? score * 2 : score
+    score
   }
 
-  var difficultyText: String {
-    difficultyUsed.localizedQuizDifficulty
-  }
-
-  init(timerInterval: TimeInterval = 1.0) {
+  init(timerInterval: TimeInterval = 1.0, randomSource: any RandomNumberGenerator = SystemRandomNumberGenerator()) {
     self.timerInterval = timerInterval
+    self.randomSource = AnyRandomNumberGenerator(randomSource)
   }
 
   func start(scope: QuizScope = .allVerbs) {
     self.scope = scope
-    difficultyUsed = Current.settings.quizDifficulty
+    level = Current.settings.quizLevel
     questions = generateQuestions()
     guard !questions.isEmpty else {
       return
@@ -89,7 +89,7 @@ class Quiz {
     // A three-question quiz on a verb's page is over before a Live Activity would be noticed.
     if questionCount == Quiz.questionCount {
       let attributes = QuizActivityAttributes(
-        difficulty: difficultyUsed.localizedQuizDifficulty,
+        level: level.localizedName,
         totalQuestions: questionCount
       )
       liveActivity = LiveActivityManager.start(
@@ -99,7 +99,10 @@ class Quiz {
     }
     Current.soundPlayer.play(Sound.randomGun)
     HapticPlayer.playMediumImpact()
-    var parameters = [ParameterKey.source.rawValue: scope.source.rawValue]
+    var parameters = [
+      ParameterKey.level.rawValue: level.rawValue,
+      ParameterKey.source.rawValue: scope.source.rawValue
+    ]
     if let collectionKey = scope.collectionKey {
       parameters[ParameterKey.collection.rawValue] = collectionKey
     }
@@ -207,7 +210,7 @@ class Quiz {
     questions = []
     Current.soundPlayer.play(Sound.randomSadTrombone)
     Current.analytics.signal(name: .quitQuiz, parameters: [
-      ParameterKey.difficulty.rawValue: "\(difficultyUsed)",
+      ParameterKey.level.rawValue: level.rawValue,
       ParameterKey.questionNumber.rawValue: "\(questionNumber)",
       ParameterKey.source.rawValue: scope.source.rawValue
     ])
@@ -243,49 +246,19 @@ class Quiz {
     }
     #endif
 
-    let verbs = scope.verbs ?? Array(Verb.verbs.values)
-    guard let firstVerb = verbs.first, scope.questionCount > 0 else { return [] }
-
-    func item(_ conjugationgroup: Conjugationgroup) -> QuizItem {
-      makeQuizItem(verb: verbs.randomElement() ?? firstVerb, conjugationgroup: conjugationgroup, readingIndex: scope.readingIndex)
+    // Sorted so that a seeded random source draws the same quiz in every process, since a
+    // dictionary's order changes from launch to launch.
+    let verbs = scope.verbs ?? Verb.verbs.values.sorted { $0.infinitiv < $1.infinitiv }
+    return QuizDraw.questions(
+      level: level,
+      verbs: verbs,
+      readingIndex: scope.readingIndex,
+      count: scope.questionCount,
+      distinctCells: scope.questionCount < Quiz.questionCount,
+      using: &randomSource
+    ).map { question in
+      makeQuizItem(verb: question.verb, conjugationgroup: question.conjugationgroup, readingIndex: question.readingIndex)
     }
-
-    guard scope.questionCount >= Quiz.questionCount else {
-      return distinctNonPartizipConjugationgroups(count: scope.questionCount).map(item)
-    }
-
-    var items: [QuizItem] = []
-
-    items.append(item(.präsenspartizip))
-
-    for _ in 0..<2 {
-      items.append(item(.perfektpartizip))
-    }
-
-    let remainingCount = scope.questionCount - 3
-    for _ in 0..<remainingCount {
-      items.append(item(randomNonPartizipConjugationgroup()))
-    }
-
-    items.shuffle()
-
-    return items
-  }
-
-  // A short quiz, such as three questions on one verb's page, would be all participles if it
-  // kept the full quiz's proportions. It asks for different cells instead, and every Perfekt
-  // among them tests the participle anyway.
-  private func distinctNonPartizipConjugationgroups(count: Int) -> [Conjugationgroup] {
-    var conjugationgroups: [Conjugationgroup] = []
-    var attempts = 0
-    while conjugationgroups.count < count, attempts < count * 20 {
-      let conjugationgroup = randomNonPartizipConjugationgroup()
-      if !conjugationgroups.contains(conjugationgroup) {
-        conjugationgroups.append(conjugationgroup)
-      }
-      attempts += 1
-    }
-    return conjugationgroups
   }
 
   func makeQuizItem(verb: Verb, conjugationgroup: Conjugationgroup, readingIndex: Int? = nil) -> QuizItem {
@@ -338,36 +311,6 @@ class Quiz {
       regionalSpellings: regionalSpellings,
       readingIndex: readingIndex
     )
-  }
-
-  private func randomNonPartizipConjugationgroup() -> Conjugationgroup {
-    var options: [() -> Conjugationgroup] = []
-
-    options.append { .präsensIndikativ(self.randomPersonNumber()) }
-    options.append { .perfektIndikativ(self.randomPersonNumber()) }
-    options.append { .futurIndikativ(self.randomPersonNumber()) }
-    options.append { .imperativ(self.randomImperativPersonNumber()) }
-
-    if difficultyUsed == .ridiculous {
-      options.append { .präsensKonjunktivI(self.randomPersonNumber()) }
-      options.append { .präteritumIndikativ(self.randomPersonNumber()) }
-      options.append { .präteritumKonjunktivII(self.randomPersonNumber()) }
-      options.append { .perfektKonjunktivI(self.randomPersonNumber()) }
-      options.append { .plusquamperfektIndikativ(self.randomPersonNumber()) }
-      options.append { .plusquamperfektKonjunktivII(self.randomPersonNumber()) }
-      options.append { .futurKonjunktivI(self.randomPersonNumber()) }
-      options.append { .futurKonjunktivII(self.randomPersonNumber()) }
-    }
-
-    return options.randomElement()?() ?? .präsensIndikativ(.firstSingular)
-  }
-
-  private func randomPersonNumber() -> PersonNumber {
-    PersonNumber.allCases.randomElement() ?? .firstSingular
-  }
-
-  private func randomImperativPersonNumber() -> PersonNumber {
-    PersonNumber.imperativPersonNumbers.randomElement() ?? .secondSingular
   }
 
   #if DEBUG
@@ -586,12 +529,12 @@ class Quiz {
     Current.soundPlayer.play(Sound.randomApplause, shouldDebounce: false)
     HapticPlayer.playSuccess()
     Current.analytics.signal(name: .completeQuiz, parameters: [
-      ParameterKey.difficulty.rawValue: "\(difficultyUsed)",
+      ParameterKey.level.rawValue: level.rawValue,
       ParameterKey.source.rawValue: scope.source.rawValue
     ])
     announceQuizCompletion()
     if questionCount == Quiz.questionCount {
-      ChangeDifficultyTip.quizCompleted.sendDonation()
+      ChangeLevelTip.quizCompleted.sendDonation()
     }
 
     if scope.isRanked {

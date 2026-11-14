@@ -56,7 +56,7 @@ private struct QuizLockScreenView: View {
         Text("Konjugieren Quiz")
           .font(.headline)
 
-        Text(context.attributes.difficulty)
+        Text(context.attributes.level)
           .font(.subheadline)
           .foregroundStyle(.secondary)
       }

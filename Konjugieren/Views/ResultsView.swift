@@ -45,7 +45,7 @@ struct ResultsView: View {
                 .font(.caption.monospacedDigit())
                 .accessibilityIdentifier("results_second_try")
             }
-            Text(label: L.Quiz.difficulty, value: quiz.difficultyText)
+            Text(label: L.Quiz.level, value: quiz.level.localizedName)
               .font(.caption)
             Text(label: L.Quiz.time, value: TimeFormatter.formatIntTime(quiz.elapsedSeconds))
               .font(.caption.monospacedDigit())

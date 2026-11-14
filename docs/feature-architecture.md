@@ -18,7 +18,8 @@ The quiz tests users' knowledge of German verb conjugations with timed, scored g
 | `QuizView.swift` | SwiftUI view for active quiz gameplay |
 | `QuizCorrectionView.swift` | The held correction of a wrong answer |
 | `ResultsView.swift` | Modal sheet showing final results |
-| `QuizDifficulty.swift` | Difficulty setting enum |
+| `QuizLevel.swift` | The level setting, and each level's pool: `QuizPoolEntry` (a table's cells, their verbs, a weight) and `QuizVerbs` (which verbs a restricted cell may ask) |
+| `QuizDraw.swift` | Draws a quiz's questions from a level's pool with an injectable random source |
 | `QuizErrorHistory.swift` | Persists recent wrong answers (up to 200) for AI analysis |
 | `ErrorExplainerView.swift` | On-demand AI explanation of why an answer was wrong |
 | `LiveActivityManager.swift` | Starts/updates/ends quiz Live Activity on lock screen |
@@ -33,15 +34,39 @@ The quiz tests users' knowledge of German verb conjugations with timed, scored g
 
 ### Question Generation
 
-- **1** Präsenspartizip question
-- **2** Perfektpartizip questions
-- **27** other conjugationgroups (varies by difficulty)
+Built 2026-11-13 in Phase 5 of [`plans/pedagogy-implementation.md`](../plans/pedagogy-implementation.md),
+replacing Regular and Ridiculous (which asked four and twelve conjugationgroups, with a fixed quota
+of one Präsenspartizip and two Perfektpartizip questions per quiz). The learner chooses one of four
+levels in Settings (`Settings.quizLevel`), and each adds conjugationgroups to the one before, in
+the order of the report's ladder:
 
-**Regular difficulty:** Präsens Indikativ, Perfekt Indikativ, Futur Indikativ, Imperativ
+| Level | Roughly | Adds |
+|---|---|---|
+| Beginner (Einstieg) | A1 | Präsens Indikativ; Imperativ for du, ihr, and Sie |
+| Elementary (Grundstufe) | A1 to A2 | Perfekt Indikativ; Perfektpartizip; the wir Imperativ; Präteritum Indikativ of sein, haben, and the modals |
+| Intermediate (Mittelstufe) | B1 | Präteritum Indikativ of every verb; Plusquamperfekt Indikativ; Futur Konjunktiv II; Präteritum Konjunktiv II of sein, haben, werden, and the modals; Plusquamperfekt Konjunktiv II; Futur Indikativ |
+| Advanced (Oberstufe) | B2 and above | Präsens Konjunktiv I; Perfekt Konjunktiv I; Futur Konjunktiv I; Präteritum Konjunktiv II of every strong or mixed reading; Präsenspartizip |
 
-**Ridiculous difficulty:** Adds Präsens Konjunktiv I, Präteritum Indikativ, Präteritum Konjunktiv II, Perfekt Konjunktiv I, Plusquamperfekt Indikativ, Plusquamperfekt Konjunktiv II, Futur Konjunktiv I, Futur Konjunktiv II
+`QuizLevel.pool` lists each level's kinds of question as `QuizPoolEntry` values, and `QuizDraw`
+draws every question the same way: a kind by its weight, then a verb (and a reading) that the
+kind's `QuizVerbs` admits, then one of the kind's cells. Drawing the verb after the cell is what
+keeps a restricted cell, such as the Elementary Präteritum, off other verbs; a kind that no verb of
+the scope admits is left out, so a My Verbs quiz of weak verbs at Elementary asks no Präteritum.
+The weights, which Josh chose on 2026-11-13, are fixed and never adapt to the learner:
 
-The lists are `Quiz.randomNonPartizipConjugationgroup()`. Until 2026-11-10 this section gave three and four, which `plans/pedagogy.md` found against the code.
+| Weight | Kinds |
+|---:|---|
+| 3 | Präsens Indikativ, Perfekt Indikativ |
+| 2 | Every other finite conjugationgroup |
+| 1 | Futur Indikativ, Futur Konjunktiv I, Futur Konjunktiv II (only their auxiliary varies), and both participles (one cell each) |
+
+A weight belongs to a kind as a whole, whatever its number of cells. At Beginner, a quiz is
+therefore about 60% Präsens and 40% Imperativ. Every level scores 10 points a right answer.
+
+`Quiz(randomSource:)` takes any `RandomNumberGenerator`, so a test can pass `SeededRNG` and draw the
+same quiz every time. `Quiz` sorts the corpus by infinitive before drawing, since a dictionary's
+order changes between launches. `QuizLevelTests` pins each level's tables, the restricted cells'
+verbs, and each kind's share of 40,000 seeded draws.
 
 ### Scopes
 
@@ -58,16 +83,16 @@ quiz in a sheet shows) and `collectionKey` (which `startQuiz` names).
 | `.verbPage(_:readingIndex:)` | The verb on screen, in the reading on screen | 3 | `verbPage` | No |
 | `.collection(_:)` | A collection's verbs (Phase 16), with replacement, in a sheet | 30 | `list` | No |
 
-A quiz of 30 questions keeps the mix above. A shorter one asks for distinct cells drawn from the
-non-participle pool of the difficulty, since the full quiz's proportions would make three
-questions all participles. Only a ranked quiz posts to Game Center and shows the leaderboard
+A quiz of 30 questions draws as above. A shorter one asks distinct cells and no participle, from
+the learner's level, since every Perfekt among three questions tests the participle anyway. Only a ranked quiz posts to Game Center and shows the leaderboard
 button: Josh decided on 2026-11-13 that neither a scoped quiz nor a three-question quiz should
-post. Only a 30-question quiz starts a Live Activity and counts toward `ChangeDifficultyTip`.
+post. Only a 30-question quiz starts a Live Activity and counts toward `ChangeLevelTip`. Every scope uses
+the learner's level.
 
 The Quiz tab's start screen shows a big yellow symbol for the chosen scope (books for All
 Verbs, a star for My Verbs), its name and a line about what it asks, the All Verbs / My Verbs
-picker, Start, three tiles (questions, difficulty, and points per right answer, which Ridiculous
-doubles), and, for My Verbs, its verbs as chips, up to twelve. In the regular size class it
+picker, Start, three tiles (questions, the level with a gauge whose needle rises with it, and points per right
+answer), and, for My Verbs, its verbs as chips, up to twelve. In the regular size class it
 scales the whole composition up. Start is disabled while My Verbs is empty. "Test me on this verb" presents `QuizView(sheetScope:)` with its own `Quiz`, so a quiz in
 the Quiz tab carries on beneath it. The sheet starts its quiz as it appears, closes on Quit or
 when the results are dismissed, and cannot be swiped away while a question waits, so every quiz
@@ -212,9 +237,11 @@ comment on `Quiz.generateSlipsFixture()`.
 ### Scoring
 
 - **10 points** per correct answer, **5** for one right on the second attempt
-- **Ridiculous difficulty:** 2x multiplier on final score
-- **Leaderboard:** only a ranked quiz (every verb, 30 questions) submits its score
-- `quiz.finalScore` returns the multiplied score
+- **The same at every level.** Ridiculous's doubling went with the levels (Phase 5); each level
+  is to get its own leaderboard in Phase 8, so no score compares across levels
+- **Leaderboard:** only a ranked quiz (every verb, 30 questions) submits its score. Until Phase 8,
+  every level posts to the one leaderboard
+- `quiz.finalScore` equals `score`
 
 ### Key Properties
 
@@ -224,8 +251,9 @@ comment on `Quiz.generateSlipsFixture()`.
 | `scope` | `QuizScope` | What the quiz asks about |
 | `questionCount` | `Int` | The scope's question count: 30, or 3 on a verb page (`Quiz.questionCount` is the full quiz's 30) |
 | `currentIndex` | `Int` | Current question (0-29) |
-| `score` | `Int` | Raw score (before multiplier) |
-| `finalScore` | `Int` | Score with difficulty multiplier |
+| `level` | `QuizLevel` | The level the quiz was started at |
+| `score` | `Int` | Points so far |
+| `finalScore` | `Int` | The score submitted and shown in the results; equal to `score` since Phase 5 |
 | `elapsedSeconds` | `Int` | Time elapsed |
 | `correctCount` | `Int` | Number right on the first attempt |
 | `secondAttemptCount` | `Int` | Number right on the second attempt |
@@ -260,7 +288,7 @@ The app integrates with Game Center to submit quiz scores to a global leaderboar
 ### Leaderboard Configuration
 
 - **Leaderboard ID:** `Leaderboard`
-- **Score:** `quiz.finalScore` (includes 2x multiplier for ridiculous difficulty)
+- **Score:** `quiz.finalScore`
 - **Sort Order:** High to Low
 
 ### iOS 26 API Notes
@@ -810,7 +838,7 @@ Both the quiz and game use ActivityKit Live Activities to show real-time progres
 | File | Purpose |
 |------|---------|
 | `LiveActivityManager.swift` | Static methods to start, update, and end activities |
-| `QuizActivityAttributes.swift` | ActivityKit model: difficulty, total questions, current state |
+| `QuizActivityAttributes.swift` | ActivityKit model: level (its localized name), total questions, current state |
 | `GameActivityAttributes.swift` | ActivityKit model: wave, score, health fraction, phase |
 | `QuizLiveActivityView.swift` | Widget-side view rendering quiz progress |
 | `GameLiveActivityView.swift` | Widget-side view rendering game state |
@@ -987,7 +1015,7 @@ Counts and durations go out in bands (`AnalyticsBand`), never as exact numbers.
 | `viewCollection` | `collection` (its key, such as `modals` or `ablaut-gehen`), `source` (`family`, `sharedLink`, `deeplink`, `quizCorrection`) | When a collection's page appears, once per arrival, or an ablaut group is expanded on the Ablaut page (Phase 16). The ideas document's "lists opened". The key names a fixed list, not anything the learner chose |
 | `tapShareCollection` | `collection` | When a collection's share button is tapped, whether or not the learner then shares (Phase 16) |
 | `tapRevealReviewCard` | None | When a tap reveals the review card's key conjugations, once per card (Phase 15). A page opened from the card then sends `viewVerbView` with `source` `reviewCard` |
-| `startQuiz`, `quitQuiz`, `completeQuiz` | `source` (`tab`, `myVerbs`, `verbPage`, `list`), added to their existing parameters; `startQuiz` alone also carries `collection` for a collection's quiz (Phase 16) | When a quiz starts, is quit, or is completed (`source` since Phase 13). Without it, three-question quizzes would inflate the completion rate of the 30-question quiz |
+| `startQuiz`, `quitQuiz`, `completeQuiz` | `source` (`tab`, `myVerbs`, `verbPage`, `list`); `level` (`beginner`, `elementary`, `intermediate`, `advanced`); `quitQuiz` also `questionNumber`; `startQuiz` alone also carries `collection` for a collection's quiz (Phase 16) | When a quiz starts, is quit, or is completed (`source` since Phase 13). Without it, three-question quizzes would inflate the completion rate of the 30-question quiz. `level` replaced `difficulty` (`regular`, `ridiculous`), which only `quitQuiz` and `completeQuiz` sent, in Phase 5 of the pedagogy plan, and `startQuiz` gained it then (M1) |
 
 `VerbVisit` models one stretch of a verb page on screen, and `SearchTracker` and `SearchReport`
 model one search. A section counts as reached when a third of its block's first card is on screen

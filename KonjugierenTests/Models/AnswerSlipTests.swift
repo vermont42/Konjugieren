@@ -9,7 +9,7 @@ import Testing
 struct AnswerSlipTests {
   init() {
     Current.settings.region = .north
-    Current.settings.quizDifficulty = .regular
+    Current.settings.quizLevel = .elementary
   }
 
   private func item(_ infinitiv: String, _ conjugationgroup: Conjugationgroup, readingIndex: Int = 0) throws -> QuizItem {

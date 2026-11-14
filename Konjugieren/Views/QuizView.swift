@@ -344,13 +344,8 @@ struct QuizView: View {
     Current.learnerVerbs.myVerbs
   }
 
-  private var difficulty: QuizDifficulty {
-    settings.quizDifficulty
-  }
-
-  // Ridiculous doubles the final score, so each right answer is worth twice as much.
-  private var pointsPerAnswer: Int {
-    difficulty == .ridiculous ? Quiz.pointsPerCorrect * 2 : Quiz.pointsPerCorrect
+  private var level: QuizLevel {
+    settings.quizLevel
   }
 
   // An iPad's start screen has room for a bigger composition, and at the iPhone's size it left
@@ -398,13 +393,8 @@ struct QuizView: View {
 
           HStack(alignment: .top, spacing: Layout.defaultSpacing) {
             QuizFactTile(systemImage: "list.number", value: "\(Quiz.questionCount)", label: L.Quiz.questionsLabel, isLarge: isLarge)
-            QuizFactTile(
-              systemImage: difficulty == .ridiculous ? "flame.fill" : "gauge.with.dots.needle.33percent",
-              value: difficulty.localizedQuizDifficulty,
-              label: L.Quiz.difficultyLabel,
-              isLarge: isLarge
-            )
-            QuizFactTile(systemImage: "trophy.fill", value: "\(pointsPerAnswer)", label: L.Quiz.pointsPerAnswer, isLarge: isLarge)
+            QuizFactTile(systemImage: level.systemImage, value: level.localizedName, label: L.Quiz.levelLabel, isLarge: isLarge)
+            QuizFactTile(systemImage: "trophy.fill", value: "\(Quiz.pointsPerCorrect)", label: L.Quiz.pointsPerAnswer, isLarge: isLarge)
           }
           // Equal heights when one label wraps to two lines.
           .fixedSize(horizontal: false, vertical: true)

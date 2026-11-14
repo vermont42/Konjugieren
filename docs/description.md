@@ -19,8 +19,7 @@ Three standard varieties: North Germany, Austria, and Switzerland, with Swiss ß
 Interactive Quiz
 
 Test your knowledge with timed 30-question quizzes:
-• Regular difficulty: Focus on everyday conjugationgroups
-• Ridiculous difficulty: Master the full range, with a 2× score multiplier
+• Four levels, from Beginner to Advanced: start with the conjugationgroups German uses most, and add the rest as you go
 • Audio feedback for correct and incorrect answers
 
 Conjugation Tutor (Apple Intelligence)

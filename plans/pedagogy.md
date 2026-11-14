@@ -739,6 +739,17 @@ the acquisition order found in the Geneva study, which agree with each other. It
 progression is a single document for German as a second language in schools, and official
 examination specifications were not reached.
 
+**Built on `main` 2026-11-13** by [Phase 5](pedagogy-implementation.md#phase-5-levels) of the
+pedagogy plan: the levels, and the thinning of the Futur. Four levels follow the ladder's
+conjugationgroups column (its verbs column is Phase 6's), named Beginner, Elementary,
+Intermediate, and Advanced (Einstieg, Grundstufe, Mittelstufe, Oberstufe), with the wir Imperativ
+joining at Elementary and the Präteritum Konjunktiv II of Advanced asked only of strong and mixed
+verbs. Each question draws a conjugationgroup by a fixed weight, then a verb that fits it, so the
+restricted cells reach only their verbs: Präsens and Perfekt Indikativ weigh 3, the other finite
+conjugationgroups 2, and the three Futurs and both participles 1. The participle quota is gone,
+and so is Ridiculous's doubling. A stored Regular became Elementary and Ridiculous became
+Advanced; a new install starts at Beginner.
+
 ### Tier 3: Give the Quiz a Memory
 
 | Suggestion | Basis | Effort | Verdict |
@@ -855,6 +866,11 @@ map from conjugation to infinitive now ships in the app, generated at build time
 
 Nothing in this tier was built by the browse plan. Its one step in this direction was to keep
 quizzes over My Verbs, a collection, or a single verb off the leaderboard.
+
+**Built on `main` 2026-11-13** by [Phase 5](pedagogy-implementation.md#phase-5-levels) of the
+pedagogy plan: the rename. Regular and Ridiculous gave way to four levels named for what they
+ask, Beginner to Advanced, and the onboarding page and the Settings tip that named Ridiculous now
+name the levels.
 
 A warning about this tier. Meta-analysis finds the effects of gamification on learning small, and
 its effects on motivation and behavior less stable than its effects on test scores (Sailer & Homner
@@ -1016,7 +1032,9 @@ Within the present policy:
 - Report the time from start to quit in coarse bands. A quit within three seconds is exploration,
   and a quit after forty is a struggle.
 
-**None of these three is built.** `startQuiz` still carries no difficulty. What the browse plan
+**The first is built on `main` 2026-11-13** by [Phase 5](pedagogy-implementation.md#phase-5-levels)
+of the pedagogy plan: `startQuiz`, `quitQuiz`, and `completeQuiz` carry `level`, which replaced
+`difficulty`. The other two wait for Phase 7. What the browse plan
 added to the quiz signals instead is `source` on `startQuiz`, `quitQuiz`, and `completeQuiz`
 (`tab`, `myVerbs`, `verbPage`, or `list`), built on `main` 2026-11-13 by
 [Phase 13](browse-and-verb-implementation.md#phase-13-a-quiz-over-chosen-verbs), and `collection`

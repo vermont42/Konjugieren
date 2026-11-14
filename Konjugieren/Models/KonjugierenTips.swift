@@ -3,15 +3,15 @@
 import SwiftUI
 import TipKit
 
-struct ChangeDifficultyTip: Tip {
+struct ChangeLevelTip: Tip {
   static let quizCompleted = Event(id: "quizCompleted")
 
   var title: Text {
-    Text("Tips.changeDifficultyTitle")
+    Text("Tips.changeLevelTitle")
   }
 
   var message: Text? {
-    Text("Tips.changeDifficultyMessage")
+    Text("Tips.changeLevelMessage")
   }
 
   var image: Image? {

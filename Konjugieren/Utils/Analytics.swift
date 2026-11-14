@@ -5,8 +5,8 @@ import Foundation
 enum ParameterKey: String {
   case collection
   case deepestSection
-  case difficulty
   case dwell
+  case level
   case matchKind
   case outcome
   case queryLength

@@ -10391,3 +10391,47 @@ Phase 3 left instant. The animation now lives on a small container around the li
 The simulator run confirmed the focus handling Phase 3 learned the hard way. Return resigns the
 field, so a slip refocuses it, and the letter keys reappeared each time. Tests went from 560 to
 569.
+
+## Pedagogy Phase 5: Levels in Place of Ridiculous (2026-11-13)
+
+Phase 5 of the pedagogy plan replaced Regular and Ridiculous with four levels ordered by how much
+German uses each conjugationgroup: Beginner, Elementary, Intermediate, and Advanced, or Einstieg,
+Grundstufe, Mittelstufe, and Oberstufe. Josh picked the names from three sets. The German set won
+partly because it is all nouns of course stages, where the obvious Anfänger names a man.
+
+The interesting constraint was in the plan's ladder. Some cells belong to a level only for some
+verbs: Elementary asks the Präteritum of sein, haben, and the modals, because war, hatte, and
+konnte come long before ging, and Advanced asks the Präteritum Konjunktiv II only of strong and
+mixed verbs, because a weak verb's (machte) is just its Präteritum Indikativ again. The old
+generator picked a conjugationgroup and then any verb. The new one, `QuizDraw`, picks a
+conjugationgroup by weight, then a verb its restriction admits, then a person. The order matters.
+Picking a verb first and then a fitting cell would have let the verb's kind steer which
+conjugationgroups appear. Strong and mixed turned out to be a property of a reading, not of a
+verb, so hängen is asked the Konjunktiv II only as hing, never as hängte.
+
+Josh chose the weights too: 3 for the Präsens and Perfekt Indikativ, 2 for the other finite
+conjugationgroups, and 1 for the three Futurs (whose only moving part is werden) and the two
+participles. Weighting a conjugationgroup as a whole was the deciding point. With equal weights a
+participle, one cell, would be as likely as a six-person table, and the Perfektpartizip would take
+a fifth of an Elementary quiz.
+
+The random source became injectable for the tests, and that surfaced a small trap. A seeded
+generator still drew different quizzes from run to run, because `Verb.verbs` is a dictionary and
+Swift reorders dictionaries between processes. Sorting the corpus before drawing fixed it. The
+proportion tests draw 40,000 questions per level without conjugating them. The first version took
+twenty seconds, since it re-scanned every question for every conjugationgroup, and counting in one
+pass brought it to one.
+
+Looking at the screens changed two things. The segmented picker truncated "Intermedia..." on the
+iPhone, so the levels became tiles like the App Icon picker's, with a gauge whose needle rises
+level by level. The second was an older bug that the rename made likely. Renaming
+`ChangeDifficultyTip` gives TipKit a new tip, while its `quizCompleted` event keeps its old
+donations, so every learner who has finished a quiz qualifies at once. On the iPad, the tip popped
+up over the Quiz tab's results, anchored to nothing. Settings had attached it to a view that stays
+alive after the tab's first visit. Settings now attaches its tips only while it is on screen, and
+the tip waits there, pointing at Quiz Level.
+
+The migration was tried on real installs rather than only in tests. The iPhone simulator's stored
+Regular became Elementary. The iPad's was set to Ridiculous first and became Advanced. The
+analytics parameter `difficulty` became `level`, and `startQuiz` carries it now too. Tests went
+from 569 to 587.

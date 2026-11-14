@@ -22,7 +22,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 5 | Done | 2026-11-13 | `71e0bc9` | T2.3, T2.6, T6.7, M1 |
 | 6 | Done | 2026-11-13 | `4ee097d` | T2.1, T2.2, T2.5 |
 | 7 | Done | 2026-11-13 | `80b5f85` | T2.7, T3.1, T6.5, M2, M3 |
-| 8 | Done | 2026-11-14 | | Decision 4 |
+| 8 | Done | 2026-11-14 | `cba6f9e` | Decision 4 |
 | 9 | Not started | | | T2.8 |
 | 10 | Not started | | | T2.9, Decision 8 |
 | 11 | Not started | | | T3.3 (the record), T3.4, T3.5, T6.4 |

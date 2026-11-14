@@ -513,12 +513,22 @@ struct QuizView: View {
   }
 
   @ViewBuilder
+  // The value moves below the label rather than wrapping beside it, since at large text sizes
+  // "Conjugationgroup:" leaves "Präsens Indikativ" a column one word wide.
   private func labeledRow<Value: View>(_ label: String, @ViewBuilder value: () -> Value) -> some View {
-    HStack(alignment: .top, spacing: 0) {
-      Text(label + " ")
-        .foregroundStyle(.customYellow)
-        .fixedSize(horizontal: true, vertical: false)
-      value()
+    ViewThatFits(in: .horizontal) {
+      HStack(alignment: .firstTextBaseline, spacing: 0) {
+        Text(label + " ")
+          .foregroundStyle(.customYellow)
+        value()
+      }
+      .fixedSize(horizontal: true, vertical: false)
+
+      VStack(alignment: .leading, spacing: 2) {
+        Text(label)
+          .foregroundStyle(.customYellow)
+        value()
+      }
     }
   }
 }

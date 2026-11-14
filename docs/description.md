@@ -35,7 +35,7 @@ Konjugieren also features a German-themed retro arcade shooter. Tilt your device
 
 Game Center Leaderboards
 
-Compete globally on the way to conjugation mastery.
+Compete globally on the way to conjugation mastery, on a leaderboard for each quiz level.
 
 Widgets, Shortcuts, and More
 

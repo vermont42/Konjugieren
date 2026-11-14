@@ -82,7 +82,7 @@ struct ResultsView: View {
 
         if quiz.scope.isRanked, Current.gameCenter.isAuthenticated {
           Button(L.GameCenter.viewLeaderboard) {
-            Current.gameCenter.showLeaderboard()
+            Current.gameCenter.showLeaderboard(level: quiz.level)
           }
           .funButton()
           .frame(maxWidth: .infinity)

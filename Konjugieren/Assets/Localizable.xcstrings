@@ -1440,13 +1440,29 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Öffnet die Game-Center-Bestenliste"
+            "value" : "Öffnet die Game-Center-Bestenliste für die Stufe dieses Quiz"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Opens Game Center leaderboard"
+            "value" : "Opens the Game Center leaderboard for this quiz's level"
+          }
+        }
+      }
+    },
+    "Accessibility.leaderboardsHint" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öffnet die Game-Center-Bestenlisten"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opens the Game Center leaderboards"
           }
         }
       }
@@ -2560,18 +2576,34 @@
         }
       }
     },
-    "GameCenter.viewLeaderboardDescription" : {
+    "GameCenter.viewLeaderboards" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Diese Schaltfläche zeigt die Game-Center-Bestenliste, in der du deine Spielergebnisse mit denen anderer Spieler vergleichen kannst."
+            "value" : "Bestenlisten anzeigen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This button shows the Game Center leaderboard, where you can compare your game scores with those of other players."
+            "value" : "View Leaderboards"
+          }
+        }
+      }
+    },
+    "GameCenter.viewLeaderboardsDescription" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Schaltfläche zeigt die Game-Center-Bestenlisten, eine für jede Quizstufe, in denen du deine Quizergebnisse mit denen anderer Lernender derselben Stufe vergleichen kannst."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This button shows the Game Center leaderboards, one for each quiz level, where you can compare your quiz scores with those of other learners at the same level."
           }
         }
       }

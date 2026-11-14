@@ -22,7 +22,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 5 | Done | 2026-11-13 | `71e0bc9` | T2.3, T2.6, T6.7, M1 |
 | 6 | Done | 2026-11-13 | `4ee097d` | T2.1, T2.2, T2.5 |
 | 7 | Done | 2026-11-13 | `80b5f85` | T2.7, T3.1, T6.5, M2, M3 |
-| 8 | Not started | | | Decision 4 |
+| 8 | Done | 2026-11-14 | | Decision 4 |
 | 9 | Not started | | | T2.8 |
 | 10 | Not started | | | T2.9, Decision 8 |
 | 11 | Not started | | | T3.3 (the record), T3.4, T3.5, T6.4 |
@@ -827,7 +827,7 @@ pin the re-ask placement and the continuation.
 
 ## Phase 8: Leaderboards by Level
 
-**Suggestions:** Decision 4. **Depends on:** Phases 5 and 7. **Status:** Not started.
+**Suggestions:** Decision 4. **Depends on:** Phases 5 and 7. **Status:** Done.
 
 Re-scope the Game Center leaderboard by level: one leaderboard per level, with a ranked session
 defined so that scores within a level compare. This replaces the rule that only a full quiz over
@@ -857,7 +857,67 @@ the walkthrough exists, and tests pin which sessions rank.
 
 **How it differed:**
 
-(To be written by the session that finishes this phase.)
+- **Josh decided four things on 2026-11-14**, each but one the recommended option. Nothing breaks
+  ties at 100 (over packing the time into the score, or weekly recurring boards). Each
+  leaderboard is named for its level alone, Beginner to Advanced and Einstieg to Oberstufe.
+  Settings' button opens Game Center's list of all the boards (not the recommended current
+  level's), and the results' button opens the quiz's level's board. The old `Leaderboard` is
+  archived on release day, not now, since the shipped app still posts to it and opens it.
+- **Claude created the four leaderboards in App Store Connect**, driving Josh's Chrome, rather
+  than leaving the walkthrough for Josh to follow. Each is Classic, Integer, 0 to 100, Best Score,
+  High to Low, with English and German names and a description, no suffix, and no image, and each
+  is in "Prepare for Submission". None was added for review; that happens with the 2027 version.
+  The form defaults to Low to High, which the walkthrough warns about. Afterward the four
+  leaderboards' range and sort order were read back from their pages.
+- **The IDs are `konjugieren.level.<level>`**, from `QuizLevel.leaderboardID` in `GameCenter.swift`.
+  App Store Connect makes an ID permanent, so a test pins each literally, and the prefix leaves
+  room for the siblings' own.
+- **`GameCenterResources.gamekit` was found mid-phase.** The repo already held Xcode's local
+  Game Center configuration, copied into the app by the build. The four leaderboards were added to
+  its JSON by hand, in the shape of its existing entry (App Store Connect's API attributes). The
+  build only copies the file, so **Josh should open it in Xcode once** to confirm the editor reads
+  them. Apple's docs now describe configuring leaderboards in Xcode and pushing to App Store
+  Connect, which this phase did not use.
+- **The walkthrough, [`docs/game-center-setup.md`](../docs/game-center-setup.md)**, records what
+  exists rather than only how to make it: the five leaderboards, their settings and descriptions,
+  the steps as App Store Connect showed them, what to do on release day (add each for review with
+  the version, archive `Leaderboard`, perhaps change the default), and how to test. Apple's
+  help pages were read for it; the GameKit article was read through its JSON, since its page
+  renders by script.
+- **`GameCenterDummy` became `GameCenterSpy`**, which records submissions and shown leaderboards,
+  in the way `AnalyticsSpy` records signals. The unit-test world uses it, and nothing else used the
+  dummy. `submitScore(_:level:)` is no longer `async`: `GameCenterReal` starts its own `Task`, so
+  `Quiz` calls it inline and a test sees the call at once without waiting on a detached task.
+- **The protocol** has `submitScore(_:level:)`, `showLeaderboard(level:)`, and `showLeaderboards()`
+  (`GKAccessPoint.trigger(state: .leaderboards)`). `QuizScope.isRanked` did not change, since
+  Phase 7 had already ranked a default session's first round; only where the score goes did.
+- **Strings.** Settings' row became "View Leaderboards" / "Bestenlisten anzeigen", with a new
+  description naming one board per level and other learners at the same level (the old one said
+  "game scores", though the game never posted) and a new hint. The results' hint now says it opens
+  the board for this quiz's level. `GameCenter.viewLeaderboardDescription` was replaced by
+  `GameCenter.viewLeaderboardsDescription`. No analytics changed; Settings' tap still sends
+  `tapViewLeaderboard`. Section 6 of the privacy policy gets two revised sentences, staged.
+- **Tests:** `QuizLeaderboardTests` (7 functions): each ID, distinct IDs, each level's ranked
+  session posting 100 to its own board, the level fixed at the quiz's start, a re-ask excluded
+  and a second attempt's half points included, Ten More posting nothing, and three scoped quizzes
+  posting nothing. 627 in all, every one passing.
+- **Not verified on a device.** Both leaderboard controls appear only when signed in to Game
+  Center, and neither simulator was; signing in needs Josh's Apple ID. On the iPhone 17 the
+  Settings screen was read through its accessibility tree and showed no leaderboard row, as
+  expected, and on the iPad Pro 11-inch (M5) the app launched and rendered. The German strings,
+  the Game Center sheets, and posting a score were not seen there.
+- **Josh tried it on his iPhone the same day**, and the post could not be confirmed. With the
+  scheme's GameKit debug mode on, Game Center offered no leaderboards at all, the live one
+  included; with it off (now off in the shared scheme), the build saw only the live
+  `Leaderboard`, and an Elementary quiz's View Leaderboard showed "Cannot Connect". The four level
+  boards are probably invisible until they are added to an app version, and none exists before
+  2027. Josh chose to test then, after the version is created and before it is submitted;
+  [`docs/release.md`](../docs/release.md) carries the reminder, and
+  `docs/game-center-setup.md` the details. The results screen and both buttons were seen working on the device.
+- **A layout fix from the same try.** At Josh's text size, "Conjugationgroup:" on the quiz card
+  left "Präsens Indikativ" a one-word column. `QuizView.labeledRow` now puts the value beside the
+  label when the line fits and below it when it does not (`ViewThatFits`). Checked on the iPhone 17
+  simulator at the default and the largest standard text sizes.
 
 ## Phase 9: Choosing What to Practice
 
@@ -1336,7 +1396,10 @@ with it, sharing produces the agreed text, and tests pin the seeding.
   category from Education to Reference, the siblings' category. Josh expects little from it. If
   App Store Connect applies the change only with a new version, it waits for the 2027 release;
   the Closing checks which.
-- **Leaderboards and achievements**, by the walkthrough Phases 8 and 23 write.
+- **Leaderboards and achievements**, by the walkthrough Phases 8 and 23 write. Phase 8's four
+  leaderboards exist in App Store Connect (2026-11-14). What remains for Josh: open
+  `GameCenterResources.gamekit` in Xcode once, post a score from a development build, and on
+  release day add the four for review and archive the old `Leaderboard`.
 - **Two checks on his phone**, which the simulator cannot make: the Camera app opening a
   `konjugieren://` QR code (Phase 10), and anything a phase marks "not tried on a device".
 

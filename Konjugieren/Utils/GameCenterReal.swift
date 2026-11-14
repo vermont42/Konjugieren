@@ -10,8 +10,6 @@ private let gameCenterLogger = KonjugierenLogger.logger(category: "GameCenter")
 @MainActor
 @Observable
 class GameCenterReal: GameCenter {
-  static let leaderboardID = "Leaderboard"
-
   private(set) var isAuthenticated = false
 
   func authenticate() {
@@ -41,28 +39,37 @@ class GameCenterReal: GameCenter {
     return top
   }
 
-  func submitScore(_ score: Int) async {
+  func submitScore(_ score: Int, level: QuizLevel) {
     guard isAuthenticated else { return }
 
-    do {
-      try await GKLeaderboard.submitScore(
-        score,
-        context: 0,
-        player: GKLocalPlayer.local,
-        leaderboardIDs: [Self.leaderboardID]
-      )
-    } catch {
-      gameCenterLogger.warning("Failed to submit score: \(error.localizedDescription)")
+    let leaderboardID = level.leaderboardID
+    Task {
+      do {
+        try await GKLeaderboard.submitScore(
+          score,
+          context: 0,
+          player: GKLocalPlayer.local,
+          leaderboardIDs: [leaderboardID]
+        )
+      } catch {
+        gameCenterLogger.warning("Failed to submit score to \(leaderboardID): \(error.localizedDescription)")
+      }
     }
   }
 
-  func showLeaderboard() {
+  func showLeaderboard(level: QuizLevel) {
     guard isAuthenticated else { return }
 
     GKAccessPoint.shared.trigger(
-      leaderboardID: Self.leaderboardID,
+      leaderboardID: level.leaderboardID,
       playerScope: .global,
       timeScope: .allTime
     ) {}
+  }
+
+  func showLeaderboards() {
+    guard isAuthenticated else { return }
+
+    GKAccessPoint.shared.trigger(state: .leaderboards) {}
   }
 }

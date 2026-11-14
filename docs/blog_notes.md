@@ -10564,3 +10564,60 @@ held to the one-to-three cap on rare ones, by asserting that forty quizzes held 
 derivatives each on average. At thirty questions that was safe. At ten, the average was 2.7. The
 property it guards had not changed, only how much evidence a quiz could hold, so the test now
 asserts that some ten-question quiz holds more than three.
+
+## Leaderboards by Level, and Driving App Store Connect (2026-11-14)
+
+Phase 8 of the pedagogy plan gave each quiz level its own Game Center leaderboard. The code was
+small. Most of the session went to App Store Connect, which Josh asked me to drive in his Chrome
+rather than hand him a walkthrough to follow.
+
+### Why one board per level
+
+Phase 5 replaced Regular and Ridiculous with four levels, and Ridiculous's doubled points went
+with them. Since then a Beginner score and an Advanced score had been posting to the same board,
+which compares nothing. Phase 7 had already settled what a ranked score is: the first ten
+questions of a quiz over all verbs, second-attempt half points counted and re-asks not, so every
+score's ceiling is 100. Phase 8 only had to change where it goes.
+
+That ceiling means ties. Josh decided nothing should break them. Packing the elapsed time into
+the score would have ranked speed, and the clock has been hidden by default since Phase 7 for the
+plain reason that this is practice, not an examination. Apple's documentation does not even say
+how Game Center orders equal scores.
+
+### A spy instead of a dummy
+
+`GameCenter.submitScore` was `async`, and `Quiz` called it from a detached `Task`. A test could not
+see the call without waiting on a task it had no handle to. The protocol method is now synchronous,
+and `GameCenterReal` starts its own task. The dummy became `GameCenterSpy`, which records each
+submission with its level, in the way `AnalyticsSpy` records signals. Seven tests now pin the IDs
+and which sessions post where.
+
+The IDs are `konjugieren.level.beginner` and so on. App Store Connect never lets an ID change, so
+a test spells each one out. If a level is renamed someday, the test fails before the code drifts
+away from a board it can no longer reach.
+
+### What the form taught
+
+Creating a leaderboard takes three dialogs and a page: names and ID, Classic or Recurring, then
+format, range, submission type, and sort order, then a localization per language. Two things are
+worth knowing. Sort Order defaults to Low to High, which on a board of points would rank the worst
+player first. And a localization has its own Score Format menu, which is best left alone so it
+inherits Integer. The four boards were created, read back, and left in "Prepare for Submission".
+They go to review with the 2027 version, and the old board is archived after it ships, since the
+shipped app still posts to it.
+
+### The file that was already there
+
+Partway through the docs I found `GameCenterResources.gamekit` in the repo: Xcode's local copy of
+the Game Center configuration, from when the first leaderboard was set up. Apple now describes
+configuring leaderboards in Xcode and pushing them to App Store Connect. I had gone the other way,
+so I added the four boards to its JSON by hand, matching its existing entry, which mirrors App
+Store Connect's API. The build only copies the bundle, so a mistake in its shape would pass
+unnoticed. Josh will open it in Xcode once to check.
+
+### What could not be checked
+
+Both leaderboard buttons appear only when Game Center is signed in, and the simulators were not.
+Signing in takes Josh's Apple ID, which is his to type. So the new strings, the Game Center
+sheets, and a real post from a development build wait for him and his iPhone. Apple says a
+development-signed build sees leaderboards not yet live, marked as prerelease, so it should work.

@@ -358,3 +358,36 @@ Der in Abschnitt 6 ergänzte Satz aus dem Abschnitt über „Meine Verben“ obe
 ```
 Nur die ersten zehn Fragen eines Quiz über alle Verben reichen ein Ergebnis ein; ein Quiz über Ihre eigenen Verben oder ein einzelnes Verb tut das nicht, ebenso wenig die zehn weiteren Fragen, die Sie anhängen können.
 ```
+
+## Leaderboards by level (pedagogy plan, Phase 8, 2026-11-14)
+
+No new signal or parameter. Each quiz level now has its own Game Center leaderboard, so section 6
+names them, and the sentence the Phase 7 section above gives for section 6 changes again.
+
+### English
+
+The first sentence of section 6 now reads:
+
+```
+Konjugieren integrates with Apple Game Center for quiz leaderboards, one for each quiz level.
+```
+
+The sentence added to section 6 in the Phase 7 section above now reads:
+
+```
+Only the first ten questions of a quiz over all verbs post a score, to the leaderboard of the quiz's level; a quiz over your own verbs or a single verb does not, and neither do the ten more questions you may add.
+```
+
+### German
+
+Der erste Satz von Abschnitt 6 lautet nun:
+
+```
+Konjugieren ist mit Apple Game Center für Quiz-Bestenlisten integriert, eine für jede Quizstufe.
+```
+
+Der im Abschnitt zu Phase 7 oben ergänzte Satz in Abschnitt 6 lautet nun:
+
+```
+Nur die ersten zehn Fragen eines Quiz über alle Verben reichen ein Ergebnis ein, und zwar in der Bestenliste der Stufe des Quiz; ein Quiz über Ihre eigenen Verben oder ein einzelnes Verb tut das nicht, ebenso wenig die zehn weiteren Fragen, die Sie anhängen können.
+```

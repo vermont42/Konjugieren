@@ -26,17 +26,13 @@ branch, don't.
 
 ## No Release Before 2027
 
-Josh cannot cut an App Store release of Konjugieren, Conjuguer, or Conjugar from his present
-MacBook, and he plans to replace it in 2027. He said so on 2026-11-10. TestFlight builds are
-probably blocked too, since they need the same upload. Until then, work accumulates on `main` and
-the shipped versions do not change. When planning, do not sequence work around a near release,
-and do not count on shipping a fix or an analytics signal in order to learn from it. Text hosted
-outside the apps, such as the privacy policy, can still change at any time. Remove this section
-when the constraint lifts.
+Consult [`docs/release.md`](docs/release.md) for information on the 2027 release.
 
-Analytics added on `main` since the last release need lines in the privacy policy on the day the
-next release ships, and not before. They wait in
-[`docs/privacy-policy-pending.md`](docs/privacy-policy-pending.md), which says how to apply them.
+Josh cannot release Konjugieren, Conjuguer, or Conjugar from his present MacBook until he replaces
+it in 2027 (2026-11-10). Work accumulates on `main`. Do not sequence work around a near release, or
+count on shipping a fix or a signal in order to learn from it. When work leaves a task for release
+time, such as a privacy-policy line or an App Store Connect step, add it to `docs/release.md`.
+Remove this section when the constraint lifts.
 
 ## Checking the Five-Hour Usage Window
 

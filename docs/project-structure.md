@@ -111,9 +111,9 @@ Konjugieren/
 │   ├── FatalError.swift        # Protocol for testable fatal error handling
 │   ├── FatalErrorReal.swift    # Production implementation (calls Swift.fatalError)
 │   ├── FatalErrorSpy.swift     # Test implementation (captures error messages)
-│   ├── GameCenter.swift        # Protocol for Game Center operations
-│   ├── GameCenterDummy.swift   # No-op implementation for tests/simulator
-│   ├── GameCenterReal.swift    # Real GKLocalPlayer authentication and scores
+│   ├── GameCenter.swift        # Protocol for Game Center operations; QuizLevel.leaderboardID, the per-level leaderboard IDs (docs/game-center-setup.md)
+│   ├── GameCenterReal.swift    # Real GKLocalPlayer authentication, per-level score submission, and the leaderboard views
+│   ├── GameCenterSpy.swift     # Records submissions and shown leaderboards for tests (replaced GameCenterDummy in pedagogy Phase 8)
 │   ├── GetterSetter.swift      # Protocol for key-value storage abstraction
 │   ├── GetterSetterFake.swift  # In-memory dictionary implementation for tests
 │   ├── GetterSetterReal.swift  # UserDefaults implementation of GetterSetter; standard defaults unless given others (the learner's verbs use the App Group's)
@@ -238,6 +238,7 @@ KonjugierenTests/
 │   ├── PersonNumberTests.swift # Pronoun and sie-disambiguation tests
 │   ├── QuizErrorHistoryTests.swift # Quiz error persistence tests
 │   ├── QuizRoundTests.swift    # Nested in QuizTests: re-ask placement and limits, half points for a re-ask, Ten More continuing the session, completeQuiz's questionCount, quitQuiz's duration bands, the hidden clock; QuizAbandonment's records and its launch report
+│   ├── QuizLeaderboardTests.swift # Nested in QuizTests: each level's leaderboard ID, a ranked session posting its first round to its level's board (second attempts counted, re-asks not), Ten More and scoped quizzes posting nothing
 │   ├── QuizLevelTests.swift    # Each level's tables and cells, the restricted cells' verbs, weighted shares under a fixed seed, and short quizzes' distinct cells
 │   ├── QuizVerbMixTests.swift  # The default quiz's verbs over 40 seeds per level: each level's band, half strong, two core verbs, a prefixed verb, one to three rare derivatives, and no provisional count in a band
 │   ├── QuizTests.swift         # Quiz logic, scoring, and timer pause/resume tests; scopes (My Verbs, three questions on a verb page, ranking, the source on start, quit, and completion)
@@ -291,6 +292,7 @@ docs/
 ├── example-sentence-sources.md    # Source texts for example sentences
 ├── feature-architecture.md    # Architecture details: Quiz, Game Center, Info, Deeplink systems, and Analytics (signals and the `source` vocabulary)
 ├── frequencies.txt            # Verb frequency data
+├── game-center-setup.md      # The Game Center configuration: leaderboard IDs, names, and settings, how to create one in App Store Connect, and what to do on release day
 ├── grep-gotchas.md            # Silent-truncation failure mode that bites `grep` on long-line files (xcstrings, Markdown); detection via `grep -c`
 ├── history_corrections.md     # **The verb-history fact-check's deliverable.** 27 findings with replacement prose in both languages, 9 span corrections, agent H's 16 internal-consistency items, 4 thin confirmations, and the coverage reconciliation. Applied to both extracts on 2026-07-29; its "What was applied and what was not" section records the nine declines. Synced to the catalog on 2026-07-29
 ├── line-counts-howto.md       # How to generate line count reports
@@ -308,6 +310,7 @@ docs/
 ├── project-structure.md       # This file — annotated directory tree
 ├── query-rewriting-exploration.md  # Query rewriting research for tutor feature
 ├── regenerate-verbs-pdf-prompt.md  # Self-contained session prompt for regenerating konjugieren-verbs.pdf
+├── release.md                 # What the 2027 release must do: before submitting, on release day, and afterward (CLAUDE.md § No Release Before 2027 points here)
 ├── reply-about-wiktionary-defects.txt  # Josh's reply to a reader who asked how the app records its deliberate disagreements with Wiktionary (verbdata/wiktionary-defects.json); the recipient's name is redacted
 ├── screenshot-plan.md            # App Store screenshot capture spec: 9 view categories × light/dark × English/German across iPhone 6.9" and iPad 13"
 ├── screenshot-playbook.md        # App Store screenshot workflow: prerequisites, driver flags, the 12 workarounds, recovery guidance
@@ -395,7 +398,7 @@ verbdata/                      # Verb-corpus-expansion data (see docs/verb-sourc
 ├── classification-summary.md  # Rendered summary of the above (gitignored, regenerable)
 └── kaikki.org-dictionary-German-by-pos-verb.jsonl  # 294 MB kaikki.org German-verb extraction (gitignored)
 
-GameCenterResources.gamekit/   # Game Center leaderboard configuration and images
+GameCenterResources.gamekit/   # Xcode's local Game Center configuration: the retired Leaderboard (with its images) and the four per-level leaderboards; see docs/game-center-setup.md
 
 Images/                        # README and App Store screenshot images
 ```

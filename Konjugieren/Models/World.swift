@@ -58,7 +58,7 @@ class World {
   static let unitTest: World = {
     let getterSetter = GetterSetterFake()
     let settings = Settings(getterSetter: getterSetter)
-    return World(settings: settings, gameCenter: GameCenterDummy(), getterSetter: getterSetter, languageModelService: LanguageModelServiceDummy(), reviewPrompter: ReviewPrompterDummy(), soundPlayer: SoundPlayerDummy(), utterer: UttererDummy(), fatalError: FatalErrorSpy(), analytics: AnalyticsSpy(), session: .stubSession(ratingsCount: 1), learnerVerbs: LearnerVerbStore(getterSetter: GetterSetterFake()))
+    return World(settings: settings, gameCenter: GameCenterSpy(), getterSetter: getterSetter, languageModelService: LanguageModelServiceDummy(), reviewPrompter: ReviewPrompterDummy(), soundPlayer: SoundPlayerDummy(), utterer: UttererDummy(), fatalError: FatalErrorSpy(), analytics: AnalyticsSpy(), session: .stubSession(ratingsCount: 1), learnerVerbs: LearnerVerbStore(getterSetter: GetterSetterFake()))
   }()
 
   static let viewVerbActivityType = "biz.joshadams.Konjugieren.viewVerb"

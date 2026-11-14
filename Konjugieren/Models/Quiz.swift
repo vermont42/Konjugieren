@@ -114,8 +114,8 @@ class Quiz {
     return TimeFormatter.formatMinutesSeconds(elapsedSeconds)
   }
 
-  // Every level scores alike, since each will have its own leaderboard (Phase 8 of the pedagogy
-  // plan) and no score compares across levels.
+  // Every level scores alike, since each has its own leaderboard and no score compares across
+  // levels.
   var finalScore: Int {
     score
   }
@@ -634,12 +634,10 @@ class Quiz {
     }
 
     // Only the first round ranks, and without its re-asks, so that every ranked score has the
-    // same ceiling (Josh, 2026-11-13). Ten More's points are the learner's alone.
+    // same ceiling, 100, on its level's leaderboard (Josh, 2026-11-13). Ten More's points are the
+    // learner's alone.
     if isFirstRound, scope.isRanked {
-      let rankedScore = firstRoundScore
-      Task {
-        await Current.gameCenter.submitScore(rankedScore)
-      }
+      Current.gameCenter.submitScore(firstRoundScore, level: level)
     }
     Current.reviewPrompter.promptableActionHappened()
   }
@@ -722,9 +720,9 @@ struct QuizScope {
   /// The collection a quiz was started from, which `startQuiz` names (Phase 16).
   var collectionKey: String?
 
-  /// Only a default quiz over every verb posts to the leaderboard, as Josh decided on 2026-11-13:
-  /// a score over a learner's own verbs, or over three questions, compares with nothing. Only its
-  /// first round posts.
+  /// Only a default quiz over every verb posts, to the leaderboard of its level, as Josh decided
+  /// on 2026-11-13: a score over a learner's own verbs, or over three questions, compares with
+  /// nothing. Only its first round posts.
   var isRanked: Bool {
     verbs == nil && continues
   }

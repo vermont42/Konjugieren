@@ -188,12 +188,12 @@ struct SettingsView: View {
               VStack(spacing: Layout.doubleDefaultSpacing) {
                 if Current.gameCenter.isAuthenticated {
                   settingsAction(
-                    title: L.GameCenter.viewLeaderboard,
+                    title: L.GameCenter.viewLeaderboards,
                     systemImage: "trophy.fill",
-                    description: L.GameCenter.viewLeaderboardDescription,
-                    accessibilityHint: L.Accessibility.leaderboardHint
+                    description: L.GameCenter.viewLeaderboardsDescription,
+                    accessibilityHint: L.Accessibility.leaderboardsHint
                   ) {
-                    Current.gameCenter.showLeaderboard()
+                    Current.gameCenter.showLeaderboards()
                     Current.analytics.signal(name: .tapViewLeaderboard)
                   }
                 }

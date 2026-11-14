@@ -898,6 +898,14 @@ name the levels.
 of the pedagogy plan: the hidden clock, as a setting. Quiz Clock (Quiz-Uhr) is Hide by default, and
 while it is hidden neither the quiz, its results, nor its Live Activity shows the time.
 
+**Partly built 2026-11-14** by [Phase 8](pedagogy-implementation.md#phase-8-leaderboards-by-level)
+of the pedagogy plan: the leaderboard re-scoped by level (Decision 4), not yet moved aside. Each
+level has its own Game Center leaderboard, created in App Store Connect and waiting for the next
+release. A ranked score is the first ten questions of a quiz over all verbs, so every level's
+ceiling is 100, and nothing breaks ties. The original leaderboard is retired on `main` and will be
+archived when the release ships. Moving the leaderboard out of the main path is Phase 13's, and
+personal bests and achievements are Phase 23's.
+
 A warning about this tier. Meta-analysis finds the effects of gamification on learning small, and
 its effects on motivation and behavior less stable than its effects on test scores (Sailer & Homner
 2020, **secondhand**). Streaks and badges laid over the present quiz would decorate a loop that
@@ -1100,6 +1108,8 @@ funnel "before" is every month until then, measured with the signals that exist 
    native speakers, or schools? The answer sets the default level, the prompt language, and how
    much weight "my verbs" deserves. The usage data favor the first group. Answer: serve both.
 4. **The leaderboard.** Keep it in the main path, move it aside, or re-scope it by level? Answer: re-scope by level.
+   Built on `main` 2026-11-14 by [Phase 8](pedagogy-implementation.md#phase-8-leaderboards-by-level)
+   of the pedagogy plan.
 5. **Privacy policy.** Is aggregate accuracy worth a revision? Answer: no.
 6. **Where to try things first.** Konjugieren, where the code is freshest, or a sibling, where the
    numbers would speak sooner? With no release before 2027, this is now a question of which app

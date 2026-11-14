@@ -28,6 +28,10 @@ enum L {
       String(localized: "Accessibility.leaderboardHint")
     }
 
+    static var leaderboardsHint: String {
+      String(localized: "Accessibility.leaderboardsHint")
+    }
+
     static var showOnboardingHint: String {
       String(localized: "Accessibility.showOnboardingHint")
     }
@@ -1077,8 +1081,12 @@ enum L {
       String(localized: "GameCenter.viewLeaderboard")
     }
 
-    static var viewLeaderboardDescription: String {
-      String(localized: "GameCenter.viewLeaderboardDescription")
+    static var viewLeaderboards: String {
+      String(localized: "GameCenter.viewLeaderboards")
+    }
+
+    static var viewLeaderboardsDescription: String {
+      String(localized: "GameCenter.viewLeaderboardsDescription")
     }
   }
 

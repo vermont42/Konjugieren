@@ -31,6 +31,70 @@
           "localID" : "Leaderboard-en-US",
           "name" : "Leaderboard"
         }
+      ],
+      "konjugieren.level.beginner" : [
+        {
+          "description" : "Die ersten zehn Fragen eines Quiz über alle Verben auf der Stufe Einstieg",
+          "formatterOverride" : null,
+          "locale" : "de-DE",
+          "localID" : "konjugieren.level.beginner-de-DE",
+          "name" : "Einstieg"
+        },
+        {
+          "description" : "The first ten questions of a quiz over all verbs at the Beginner level",
+          "formatterOverride" : null,
+          "locale" : "en-US",
+          "localID" : "konjugieren.level.beginner-en-US",
+          "name" : "Beginner"
+        }
+      ],
+      "konjugieren.level.elementary" : [
+        {
+          "description" : "Die ersten zehn Fragen eines Quiz über alle Verben auf der Grundstufe",
+          "formatterOverride" : null,
+          "locale" : "de-DE",
+          "localID" : "konjugieren.level.elementary-de-DE",
+          "name" : "Grundstufe"
+        },
+        {
+          "description" : "The first ten questions of a quiz over all verbs at the Elementary level",
+          "formatterOverride" : null,
+          "locale" : "en-US",
+          "localID" : "konjugieren.level.elementary-en-US",
+          "name" : "Elementary"
+        }
+      ],
+      "konjugieren.level.intermediate" : [
+        {
+          "description" : "Die ersten zehn Fragen eines Quiz über alle Verben auf der Mittelstufe",
+          "formatterOverride" : null,
+          "locale" : "de-DE",
+          "localID" : "konjugieren.level.intermediate-de-DE",
+          "name" : "Mittelstufe"
+        },
+        {
+          "description" : "The first ten questions of a quiz over all verbs at the Intermediate level",
+          "formatterOverride" : null,
+          "locale" : "en-US",
+          "localID" : "konjugieren.level.intermediate-en-US",
+          "name" : "Intermediate"
+        }
+      ],
+      "konjugieren.level.advanced" : [
+        {
+          "description" : "Die ersten zehn Fragen eines Quiz über alle Verben auf der Oberstufe",
+          "formatterOverride" : null,
+          "locale" : "de-DE",
+          "localID" : "konjugieren.level.advanced-de-DE",
+          "name" : "Oberstufe"
+        },
+        {
+          "description" : "The first ten questions of a quiz over all verbs at the Advanced level",
+          "formatterOverride" : null,
+          "locale" : "en-US",
+          "localID" : "konjugieren.level.advanced-en-US",
+          "name" : "Advanced"
+        }
       ]
     },
     "leaderboards" : [
@@ -43,6 +107,50 @@
         "scoreSortType" : "DESC",
         "submissionType" : "BEST_SCORE",
         "vendorIdentifier" : "Leaderboard",
+        "visibility" : "SHOW_FOR_ALL"
+      },
+      {
+        "archived" : false,
+        "defaultFormatter" : "INTEGER",
+        "referenceName" : "Beginner",
+        "scoreRangeEnd" : "100",
+        "scoreRangeStart" : "0",
+        "scoreSortType" : "DESC",
+        "submissionType" : "BEST_SCORE",
+        "vendorIdentifier" : "konjugieren.level.beginner",
+        "visibility" : "SHOW_FOR_ALL"
+      },
+      {
+        "archived" : false,
+        "defaultFormatter" : "INTEGER",
+        "referenceName" : "Elementary",
+        "scoreRangeEnd" : "100",
+        "scoreRangeStart" : "0",
+        "scoreSortType" : "DESC",
+        "submissionType" : "BEST_SCORE",
+        "vendorIdentifier" : "konjugieren.level.elementary",
+        "visibility" : "SHOW_FOR_ALL"
+      },
+      {
+        "archived" : false,
+        "defaultFormatter" : "INTEGER",
+        "referenceName" : "Intermediate",
+        "scoreRangeEnd" : "100",
+        "scoreRangeStart" : "0",
+        "scoreSortType" : "DESC",
+        "submissionType" : "BEST_SCORE",
+        "vendorIdentifier" : "konjugieren.level.intermediate",
+        "visibility" : "SHOW_FOR_ALL"
+      },
+      {
+        "archived" : false,
+        "defaultFormatter" : "INTEGER",
+        "referenceName" : "Advanced",
+        "scoreRangeEnd" : "100",
+        "scoreRangeStart" : "0",
+        "scoreSortType" : "DESC",
+        "submissionType" : "BEST_SCORE",
+        "vendorIdentifier" : "konjugieren.level.advanced",
         "visibility" : "SHOW_FOR_ALL"
       }
     ]

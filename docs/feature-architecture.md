@@ -121,8 +121,8 @@ quiz in a sheet shows) and `collectionKey` (which `startQuiz` names).
 
 A quiz whose rounds are ten (`QuizScope.continues`) draws as above. The verb page's three
 questions ask distinct cells and no participle, from the learner's level, since every Perfekt
-among three questions tests the participle anyway. Only a ranked quiz posts to Game Center and
-shows the leaderboard button: Josh decided on 2026-11-13 that neither a scoped quiz nor a
+among three questions tests the participle anyway. Only a ranked quiz posts to Game Center, to its
+level's leaderboard, and shows the leaderboard button: Josh decided on 2026-11-13 that neither a scoped quiz nor a
 three-question quiz should post. Only a quiz of ten-question rounds starts a Live Activity and
 counts toward `ChangeLevelTip`, the latter on its first results only. Every scope uses the
 learner's level. Before Phase 7 of the pedagogy plan (2026-11-13), every quiz but the verb page's
@@ -311,12 +311,12 @@ correction is held, and still runs across Ten More.
   `correctCount` and `secondAttemptCount` exclude re-asks. The results' score color is
   `score / maximumScore`
 - **The same at every level.** Ridiculous's doubling went with the levels (Phase 5); each level
-  is to get its own leaderboard in Phase 8, so no score compares across levels
+  has its own leaderboard (Phase 8), so no score compares across levels
 - **Leaderboard:** only a ranked quiz (every verb, the default scope) submits a score, and only
   when its first round's results appear: `firstRoundScore`, the first ten questions' points
   without their re-asks, so every ranked score has a ceiling of 100 (Josh, 2026-11-13, for Phase
-  8; adopted early in Phase 7). Ten More's points are never posted. Until Phase 8, every level
-  posts to the one leaderboard
+  8; adopted early in Phase 7). Ten More's points are never posted. The score goes to the
+  leaderboard of the level the quiz started at (`QuizLevel.leaderboardID`)
 - `quiz.finalScore` equals `score`
 
 ### Key Properties
@@ -353,57 +353,45 @@ Quiz uses `SoundPlayer` for audio feedback:
 
 ## Game Center Integration
 
-The app integrates with Game Center to submit quiz scores to a global leaderboard.
+The app posts quiz scores to Game Center, one leaderboard per quiz level (Phase 8 of the pedagogy
+plan, 2026-11-14). The configuration in App Store Connect and in `GameCenterResources.gamekit`,
+with every leaderboard's ID, names, and settings, is in
+[`game-center-setup.md`](game-center-setup.md).
 
 ### Architecture
 
 | File | Purpose |
 |------|---------|
-| `GameCenter.swift` | Protocol defining authentication and score submission |
-| `GameCenterReal.swift` | Real GKLocalPlayer implementation |
-| `GameCenterDummy.swift` | No-op implementation for tests |
-| `ResultsView.swift` | Shows "View Leaderboard" button when authenticated |
+| `GameCenter.swift` | Protocol for authentication, score submission, and showing leaderboards; `QuizLevel.leaderboardID` |
+| `GameCenterReal.swift` | Real `GKLocalPlayer` and `GKLeaderboard` implementation |
+| `GameCenterSpy.swift` | Records submissions and shown leaderboards, for tests (`World.unitTest`) |
+| `ResultsView.swift` | "View Leaderboard", the quiz's level's board, on a ranked quiz's results |
+| `SettingsView.swift` | "View Leaderboards", Game Center's list of the app's boards |
 
-### Leaderboard Configuration
+Both buttons appear only while the player is signed in to Game Center.
 
-- **Leaderboard ID:** `Leaderboard`
-- **Score:** `quiz.finalScore`
-- **Sort Order:** High to Low
+### Leaderboards
 
-### iOS 26 API Notes
+- **IDs:** `konjugieren.level.beginner`, `.elementary`, `.intermediate`, `.advanced`, from
+  `QuizLevel.leaderboardID`. They are permanent in App Store Connect; a test pins them
+- **Score:** `Quiz.firstRoundScore`, 0 to 100, Best Score, High to Low
+- **Which quizzes post:** see Scoring above. `QuizScope.isRanked` decides, and `Quiz.finishQuiz`
+  posts on the first round's results only
+- The original leaderboard, `Leaderboard`, is retired on `main` and still live for the shipped app
 
-The implementation uses `GKAccessPoint.shared.trigger(leaderboardID:playerScope:timeScope:handler:)` to display the leaderboard. This replaces the deprecated `GKGameCenterViewController` and `GKGameCenterControllerDelegate` APIs.
+### API Notes
+
+`GameCenter.submitScore(_:level:)` is synchronous: `GameCenterReal` starts its own `Task` for
+`GKLeaderboard.submitScore`, so that `Quiz` can call it inline and a spy records the call at once.
+`showLeaderboard(level:)` uses `GKAccessPoint.shared.trigger(leaderboardID:playerScope:timeScope:)`,
+and `showLeaderboards()` uses `GKAccessPoint.shared.trigger(state: .leaderboards)`. These replace
+the deprecated `GKGameCenterViewController` and `GKGameCenterControllerDelegate` APIs.
 
 ### Authentication Flow
 
 1. `KonjugierenApp.init()` calls `Current.gameCenter.authenticate()`
 2. iOS presents Game Center login UI if needed
 3. `gameCenter.isAuthenticated` becomes `true` when successful
-
-### Score Submission
-
-Scores are submitted automatically in `Quiz.finishQuiz()`:
-
-```swift
-Task {
-  await Current.gameCenter.submitScore(finalScore)
-}
-```
-
-### Key Methods
-
-| Method | Description |
-|--------|-------------|
-| `authenticate()` | Initiates Game Center authentication |
-| `submitScore(_ score: Int)` | Submits score to leaderboard (async) |
-| `showLeaderboard()` | Triggers Game Center leaderboard via `GKAccessPoint` |
-
-### App Store Connect Setup
-
-Before the leaderboard works, configure in App Store Connect:
-1. Navigate to **Features** → **Game Center**
-2. Enable Game Center for the app
-3. Create leaderboard with ID `Leaderboard`
 
 ## Info System
 

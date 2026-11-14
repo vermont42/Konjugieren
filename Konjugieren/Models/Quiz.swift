@@ -683,6 +683,7 @@ class Quiz {
       parameters[ParameterKey.questionCount.rawValue] = "\(questionCount)"
     }
     Current.analytics.signal(name: .completeQuiz, parameters: parameters)
+    Current.practice.recordResult(LastQuizResult(quiz: self))
     announceQuizCompletion()
     let isFirstRound = roundCount == 1
     // The tip suggests another level, which a session drawn from the record does not ask by.

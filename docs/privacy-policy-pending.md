@@ -583,3 +583,28 @@ Der Satz in Abschnitt 6, wie zuletzt im Abschnitt zu selbst zusammengestellten Q
 ```
 Nur die ersten zehn Fragen eines Quiz über alle Verben reichen ein Ergebnis ein, und zwar in der Bestenliste der Stufe des Quiz; ein Quiz über Ihre eigenen Verben, ein einzelnes Verb, selbst gewählte Conjugationgroups und Verben oder Ihre anstehenden Fragen oder Fehler tut das nicht, ebenso wenig die zehn weiteren Fragen, die Sie anhängen können.
 ```
+
+## The practice hub (pedagogy plan, Phase 13, 2026-11-14)
+
+Adds the parameter `source`, with the one value `tab`, to the existing signal `tapViewLeaderboard`
+when the leaderboard is opened from the Quiz tab rather than from Settings. The bullet already says
+"viewing the leaderboard", so its wording does not change. The Quiz tab now shows the results of
+the last quiz (how many answers were right, the score, the level, and the day), which the app keeps
+on the device with the practice record and never sends, so the practice-record paragraph added in
+the Phase 11 section above names it.
+
+### English
+
+The practice-record paragraph now reads:
+
+```
+The app also keeps a practice record: which conjugations you have practiced in quizzes and on review cards, whether your last answer to each was right, when each is due for review, and the results of your last quiz, so that it can show review cards, bring back what you missed, and show how your last quiz went. The record stays on your device and is never sent. Reset Practice in Settings erases it.
+```
+
+### German
+
+Der Absatz über den Übungsstand lautet nun:
+
+```
+Die App führt außerdem einen Übungsstand: welche Konjugationen Sie im Quiz und auf Wiederholungskarten geübt haben, ob Ihre letzte Antwort darauf richtig war, wann jede wieder zur Wiederholung ansteht und das Ergebnis Ihres letzten Quiz, damit sie Wiederholungskarten zeigen, Verfehltes wiederholen und zeigen kann, wie Ihr letztes Quiz lief. Der Übungsstand bleibt auf Ihrem Gerät und wird nie gesendet. „Übungsstand zurücksetzen“ in den Einstellungen löscht ihn.
+```

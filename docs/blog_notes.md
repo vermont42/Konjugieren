@@ -10848,3 +10848,59 @@ review was tomorrow, because the item I had missed on purpose had started its la
 
 The section sits below the fold on an iPhone. Phase 13 turns the tab into a practice hub, and that
 is where the rows should move up.
+
+## The Quiz Tab Becomes a Practice Hub (2026-11-14)
+
+Phase 13 of the pedagogy plan took the Quiz tab's start screen, built in browse Phase 13 as a hero
+symbol, a picker, and three tiles, and turned it into a hub. The usage data had shown most quizzes
+ending before the first answer, and the report's diagnosis was that a blank tab gave no reason to
+begin. The phase lists five things the hub must show: what a session is, how long it takes, the
+level, what is due, and the last result.
+
+### Moving things up
+
+Phase 12 left Review and My Mistakes below the fold on an iPhone, under a 96-point symbol and the
+tiles. Shrinking the symbol to 64 points and putting the tiles before Start, so that what a session
+is comes before the button that begins it, was enough to bring Review into view. Nothing had to be
+dropped from the composition.
+
+### Two minutes, not ten points
+
+The third tile used to say ten points per answer. A hub for practice should say what a session costs
+in time, so the tile now says "2–3 Minutes". That number is a guess. The app keeps no timings, and
+showing the learner's own times would quietly undo Phase 7's hidden clock, which Josh chose as the
+default. So the hub states an estimate and says nothing about anyone's speed.
+
+The level tile became a menu. The phase asks only that the hub show the level, but a hub that shows
+the level and then sends the learner to Settings to change it felt like half a hub. The menu writes
+the same setting Settings' picker does.
+
+### The last result, and where it lives
+
+The last result is a new small record, `LastQuizResult`, kept by `PracticeStore` beside the practice
+record. Living there means Reset Practice forgets it without a second code path, and the App Group
+already holds the record. It stores the *kind* of quiz and a verb or collection key rather than a
+title. A title saved in German would still read German after the learner switched the app to
+English, while a kind is named fresh each time the hub draws it. It is written at each round's
+results, so after Ten More it describes the session so far. A quit quiz writes nothing, because its
+results were never shown.
+
+### The leaderboard steps aside
+
+The results screen's View Leaderboard button is gone. In its place is a small bordered button at the
+foot of the hub, visible only to a player signed in to Game Center. That condition also meant the
+simulators, which are not signed in, could not show it. A temporary build forced it on for the
+screenshots and was reverted before the tests ran.
+
+### One simulator lesson
+
+Seeding a last result for the iPad's screenshot failed silently at first. Writing the key straight
+into the App Group's plist worked on the iPhone, then did nothing on the iPad: `cfprefsd` held a
+cached copy of the domain and ignored the file. Writing through `xcrun simctl spawn <udid> defaults
+write <container path>` goes through `cfprefsd` and sticks. After that, a real one-question Review on
+the iPad left "Review · today, Correct: 1 / 1 · Score: 10" on the hub, which was the check that
+mattered.
+
+The onboarding page that said "Test Your Knowledge" and promised points and a leaderboard now says
+"Practice Conjugating", or in German "Konjugieren üben", the app's own name with the verb for
+practice after it. Josh has not yet judged any of it.

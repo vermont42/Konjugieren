@@ -27,7 +27,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 10 | Done | 2026-11-14 | `dee17b1` | T2.9, Decision 8 |
 | 11 | Done | 2026-11-14 | `e8fcc07` | T3.3 (the record), T3.4, T3.5, T6.4 |
 | 12 | Done | 2026-11-14 | `554891b` | T3.2, T3.3 (the session) |
-| 13 | Not started | | | T6.1, T6.6 (the leaderboard's place) |
+| 13 | Awaiting Josh | 2026-11-14 | | T6.1, T6.6 (the leaderboard's place) |
 | 14 | Not started | | | T4.2, T4.3 |
 | 15 | Not started | | | T5.1 |
 | 16 | Not started | | | T5.2 |
@@ -1306,7 +1306,7 @@ empty states.
 ## Phase 13: The Practice Hub
 
 **Suggestions:** T6.1, T6.6 (the leaderboard's place). **Depends on:** Phases 7, 8, 11, and 12.
-**Status:** Not started.
+**Status:** Awaiting Josh.
 
 Turn the Quiz tab into a practice hub: what a session is, how long it takes, the current level,
 what is due for review, and the last result. The usage data show most quizzes ending before the
@@ -1326,7 +1326,61 @@ rewritten in both languages, and the leaderboard is one tap away but not in the 
 
 **How it differed:**
 
-(To be written by the session that finishes this phase.)
+- **Josh has not judged the hub yet**, which the phase asks for before polishing. Everything
+  below was decided in the session, and each choice is a guess he can overrule.
+- **The layout.** The hub keeps browse Phase 13's composition and reorders it so that what a
+  session is comes before Start: the scope's symbol (64 points on an iPhone, down from 96), its
+  name and line, the picker, three tiles, Start, then "From Your Practice" with Review, My
+  Mistakes, and a new Last Quiz row, and last a small View Leaderboard button. On an iPhone 17,
+  Review now sits above the fold, which Phase 12 could not manage; My Mistakes is half visible.
+- **How long it takes.** A new tile, "2–3 Minutes" ("2–3 Minuten"), replaced Points per Answer,
+  which suited an examination more than practice. No timing is kept to derive it from, and showing
+  the learner's own times would undo the hidden clock (Phase 7), so it is a fixed estimate. Its
+  VoiceOver label reads "Two to three minutes".
+- **The level is a menu.** The level tile opens a menu of the four levels, with a chevron to say
+  so, and sets the same setting as Settings' level picker. The phase asks only that the hub show the
+  level, so this goes further; a hub that shows the level but sends the learner to Settings to
+  change it seemed half a hub. It sends no signal, as Settings' picker sends none.
+- **The last result** (`LastQuizResult`, kept by `PracticeStore` beside the record, under
+  `lastQuizResult` in the App Group) is written at each round's results, so after Ten More it is
+  the session so far; a quit quiz writes nothing, since its results were never shown. Every scope
+  writes it, a verb page's three questions included. It keeps a kind and a verb or collection key
+  rather than a title, so it reads in the current language: "All Verbs · Elementary · yesterday",
+  then "Correct: 7 / 10 · Second Try: 1 · Score: 75". Review and My Mistakes keep no level. The row
+  is absent until a quiz has finished. Reset Practice forgets it, and its description and alert
+  now say so.
+- **The leaderboard (T6.6).** The results screen's View Leaderboard button is gone. The hub's
+  is a small bordered button at its foot, shown only while signed in to Game Center, opening the
+  board of the current level. It now sends `tapViewLeaderboard` with `source` `tab`; Settings'
+  sends it with no source, as before. The results' button sent nothing.
+- **Onboarding and tip.** The quiz page is now "Practice Conjugating" / "Konjugieren üben", with a
+  clipboard symbol in place of the trophy and a button reading "Start Practicing" / "Jetzt üben". Its
+  body names ten questions in two or three minutes, the correction that stays, the re-ask, and
+  review from the record kept on the device, and drops points and the leaderboard. `TryQuizTip`
+  keeps its title and now says "Practice German verb conjugations ten questions at a time. What you
+  miss comes back for review."
+- **Analytics and privacy.** The new `source` on `tapViewLeaderboard` is staged in
+  [`docs/privacy-policy-pending.md`](../docs/privacy-policy-pending.md) in both languages, with the
+  practice-record paragraph naming the last quiz's results as kept and never sent.
+- **Tests:** `QuizHubTests`, 12 functions: the stored form pinned, a round trip, an absent level,
+  each scope's kind, titles, the store keeping the result across a launch, and Reset forgetting it;
+  nested in `QuizTests`, a finished quiz keeping its result, Ten More replacing it with the session
+  so far, a quit keeping nothing, a Review session keeping no level, and a verb page's quiz naming
+  its verb. Run in English with `xcodebuild -testLanguage en`: 721 passed and 2 skipped (the
+  environment-gated harnesses), 723 in all.
+- **Verified on the iPhone 17**, in dark mode. In German: the hub with Review above the fold, the
+  level menu opened and Grundstufe chosen (the simulator was left at Grundstufe; it had been
+  Mittelstufe), a seeded last result ("Alle Verben · Mittelstufe · gestern"), and the onboarding
+  page. In English: the hub with the Last Quiz row and the View Leaderboard button, which a
+  temporary build forced on since the simulator is not signed in to Game Center; the condition was
+  restored before the tests ran. **On the iPad Pro 11-inch (M5)**, in light mode and English: the
+  hub with a seeded verb-page result ("fahren · Elementary · today") and the forced button, then a
+  real one-question Review answered right, after which the hub read "Review · today, Correct: 1 / 1
+  · Score: 10". Not tried: VoiceOver by ear, the real Game Center sheet from the hub's button, and
+  Ten More's result from the device (unit-tested).
+- **Found by looking.** A seeded value written straight into the App Group's plist does not reach
+  a simulator's `cfprefsd`, which keeps its cache; writing through `xcrun simctl spawn <udid>
+  defaults write <container>/Library/Preferences/<group>` does.
 
 ## Phase 14: Naming the Error
 

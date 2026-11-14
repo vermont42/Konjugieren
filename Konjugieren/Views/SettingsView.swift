@@ -233,7 +233,7 @@ struct SettingsView: View {
                   }
                 }
 
-                if !Current.practice.isEmpty || hasQuizErrors {
+                if !Current.practice.isEmpty || Current.practice.lastResult != nil || hasQuizErrors {
                   settingsAction(
                     title: L.Settings.resetPractice,
                     systemImage: "arrow.counterclockwise",

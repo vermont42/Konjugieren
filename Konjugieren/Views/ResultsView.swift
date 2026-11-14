@@ -80,16 +80,6 @@ struct ResultsView: View {
           .accessibilityIdentifier("results_ten_more")
         }
 
-        if quiz.scope.isRanked, Current.gameCenter.isAuthenticated {
-          Button(L.GameCenter.viewLeaderboard) {
-            Current.gameCenter.showLeaderboard(level: quiz.level)
-          }
-          .funButton()
-          .frame(maxWidth: .infinity)
-          .padding(.top, Layout.defaultSpacing)
-          .accessibilityHint(L.Accessibility.leaderboardHint)
-        }
-
         GradientDivider()
           .padding(.horizontal, Layout.doubleDefaultSpacing)
           .padding(.top, Layout.defaultSpacing)

@@ -128,18 +128,33 @@ quiz in a sheet shows) and `collectionKey` (which `startQuiz` names).
 A quiz whose rounds are ten (`QuizScope.continues`) draws as above. The verb page's three
 questions ask distinct cells and no participle, from the learner's level, since every Perfekt
 among three questions tests the participle anyway. Only a ranked quiz posts to Game Center, to its
-level's leaderboard, and shows the leaderboard button: Josh decided on 2026-11-13 that neither a scoped quiz nor a
+level's leaderboard: Josh decided on 2026-11-13 that neither a scoped quiz nor a
 three-question quiz should post. Only a quiz of ten-question rounds starts a Live Activity and
 counts toward `ChangeLevelTip`, the latter on its first results only. Every scope uses the
 learner's level, except a practice set's, which carries the sharer's level in `QuizScope.level`
 when it leaves a part to the level. Before Phase 7 of the pedagogy plan (2026-11-13), every quiz but the verb page's
 was 30 questions.
 
-The Quiz tab's start screen shows a big yellow symbol for the chosen scope (books for All
-Verbs, a star for My Verbs, sliders for Custom), its name and a line about what it asks, the
-All Verbs / My Verbs / Custom picker, Start, three tiles (questions, the level with a gauge whose needle rises with it, and points per right
-answer), and, for My Verbs, its verbs as chips, up to twelve. In the regular size class it
-scales the whole composition up. Start is disabled while My Verbs is empty. Custom shows its summary and Choose or Change in place of the tiles (see The Custom Quiz). "Test me on this verb" presents `QuizView(sheetScope:)` with its own `Quiz`, so a quiz in
+The Quiz tab's start screen is a practice hub (pedagogy Phase 13, T6.1). It shows a yellow
+symbol for the chosen scope (books for All Verbs, a star for My Verbs, sliders for Custom), its name
+and a line about what it asks, the All Verbs / My Verbs / Custom picker, three tiles (ten
+questions, "2–3 Minutes", and the level, whose tile is a menu that sets `Settings.quizLevel`, the
+same setting as Settings' level picker), for My Verbs its verbs as chips (up to twelve), and Start.
+Below Start, "From Your Practice" holds Review, My Mistakes, and the last quiz's results
+(`LastQuizResultRow`), and last of all, while signed in to Game Center, a small "View Leaderboard"
+button that opens the current level's board. The results screen no longer has one (T6.6). In the
+regular size class the whole composition scales up. Start is disabled while My Verbs is empty.
+Custom shows its summary and Choose or Change in place of the tiles (see The Custom Quiz).
+
+**The last result** (`LastQuizResult`) is kept by `PracticeStore` under `lastQuizResult` in the App
+Group's defaults, written by `Quiz.finishQuiz` at each round's results, so after Ten More it
+describes the session so far. A quit quiz writes nothing. It stores a kind (all verbs, My Verbs,
+custom, practice set, collection, verb page, Review, My Mistakes) and a verb or collection key
+rather than a title, so the hub names it in the current language; the level (none for Review and My
+Mistakes); the counts right, right on a second try, and asked; the score; and the date. It is never
+sent, and Reset Practice forgets it.
+
+"Test me on this verb" presents `QuizView(sheetScope:)` with its own `Quiz`, so a quiz in
 the Quiz tab carries on beneath it. The sheet starts its quiz as it appears, closes on Quit or
 when the results are dismissed, and cannot be swiped away while a question waits, so every quiz
 it starts ends in `quitQuiz` or `completeQuiz`.
@@ -402,9 +417,9 @@ from the level's band. An item the level does not ask, or a verb beyond the band
 so the default quiz stays within its level. Every Ten More round does the same. Due questions sit
 outside Phase 6's mix, which balances the other seven. Scoped quizzes mix in nothing.
 
-**Reset Practice**, in Settings' last card while there is a record or a kept wrong answer, asks
-for confirmation, then empties the record (saving it empty, so the migration does not run again)
-and `QuizErrorHistory`, which Josh kept on 2026-11-14 for the Tutor's recommendations and Phase
+**Reset Practice**, in Settings' last card while there is a record, a last result, or a kept wrong
+answer, asks for confirmation, then empties the record (saving it empty, so the migration does not
+run again), forgets the last result (since Phase 13), and empties `QuizErrorHistory`, which Josh kept on 2026-11-14 for the Tutor's recommendations and Phase
 14. Starred and recent verbs stay.
 
 ### Review and My Mistakes
@@ -412,7 +427,7 @@ and `QuizErrorHistory`, which Josh kept on 2026-11-14 for the Tutor's recommenda
 Built 2026-11-14 in Phase 12 of [`plans/pedagogy-implementation.md`](../plans/pedagogy-implementation.md)
 (T3.2, and T3.3's session). Two sessions drawn from the practice record rather than from a level's
 pool, each a `QuizScope.recordSession` (`QuizRecordSession.review`, `.mistakes`) started from a
-"From Your Practice" section below the Quiz tab's tiles. Each row shows its count and starts the
+"From Your Practice" section below the Quiz tab's Start. Each row shows its count and starts the
 session, or, with nothing to ask, says why: Review gives the days to the next due item, or says
 what puts items there; My Mistakes says a missed question waits there until answered right. While a
 session runs, the tab's bar is titled with its name (an iPad's tab bar shows no title).
@@ -504,7 +519,7 @@ with every leaderboard's ID, names, and settings, is in
 | `GameCenter.swift` | Protocol for authentication, score submission, and showing leaderboards; `QuizLevel.leaderboardID` |
 | `GameCenterReal.swift` | Real `GKLocalPlayer` and `GKLeaderboard` implementation |
 | `GameCenterSpy.swift` | Records submissions and shown leaderboards, for tests (`World.unitTest`) |
-| `ResultsView.swift` | "View Leaderboard", the quiz's level's board, on a ranked quiz's results |
+| `QuizView.swift` | "View Leaderboard", the current level's board, at the foot of the Quiz tab's hub (pedagogy Phase 13; until then on a ranked quiz's results) |
 | `SettingsView.swift` | "View Leaderboards", Game Center's list of the app's boards |
 
 Both buttons appear only while the player is signed in to Game Center.
@@ -1233,6 +1248,7 @@ Counts and durations go out in bands (`AnalyticsBand`), never as exact numbers.
 | `tapShareCollection` | `collection` | When a collection's share button is tapped, whether or not the learner then shares (Phase 16) |
 | `tapResetPractice` | None | When Reset Practice in Settings is confirmed (pedagogy Phase 11). Nothing about the record is sent |
 | `tapRevealReviewCard` | None | When a tap reveals the review card's key conjugations, once per card (Phase 15). A page opened from the card then sends `viewVerbView` with `source` `reviewCard` |
+| `tapViewLeaderboard` | `source` (`tab`) from the Quiz tab's hub; none from Settings | When View Leaderboard on the Quiz tab's hub (pedagogy Phase 13) or View Leaderboards in Settings is tapped. The results screen's button, which sent nothing, is gone |
 | `startQuiz`, `quitQuiz`, `completeQuiz` | `source` (`tab`, `myVerbs`, `verbPage`, `list`, `custom`); `level` (`beginner`, `elementary`, `intermediate`, `advanced`); `quitQuiz` also `questionNumber` and `duration` (`0-3s`, `3-15s`, `15-40s`, `40s-2m`, `2m+`); `completeQuiz` also `questionCount` (`10`, `20`, `30`, …, or `3`); `startQuiz` alone also carries `collection` for a collection's quiz (Phase 16), or for a custom quiz over a collection, and `customChoice` (`conjugationgroups`, `verbs`, `both`) for a custom quiz (pedagogy Phase 9). A Review or My Mistakes session (`review`, `mistakes`, pedagogy Phase 12) sends neither `questionCount` nor `questionNumber`, since either would tell how many items were due or missed | When a quiz starts, is quit, or reaches its results (`source` since Phase 13). Without it, three-question quizzes would inflate the completion rate of the default quiz. `level` replaced `difficulty` (`regular`, `ridiculous`), which only `quitQuiz` and `completeQuiz` sent, in Phase 5 of the pedagogy plan, and `startQuiz` gained it then (M1). Since Phase 7, `completeQuiz` is sent at each round's results, and its `questionCount` says how many rounds' questions the session has asked, so Ten More shows as `20` and `30`. `duration` (M3) is wall-clock time from the start to the quit, background included. `questionNumber` counts re-asks |
 | `abandonQuiz` | `source`, `level`, `questionNumber` (not for `review` or `mistakes`) | At launch, once for each quiz the last run left in progress (M2, Phase 7 of the pedagogy plan): the app was closed or killed during a question. `QuizAbandonment` keeps an entry per running quiz in `GetterSetter`, written at the start and at each question and removed at a quit or the results. A quiz left at its results is not abandoned |
 

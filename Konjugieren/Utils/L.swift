@@ -52,6 +52,14 @@ enum L {
       String(localized: "Accessibility.leaderboardHint")
     }
 
+    static var quizLevelMenuHint: String {
+      String(localized: "Accessibility.quizLevelMenuHint")
+    }
+
+    static var quizSessionLength: String {
+      String(localized: "Accessibility.quizSessionLength")
+    }
+
     static var leaderboardsHint: String {
       String(localized: "Accessibility.leaderboardsHint")
     }
@@ -926,8 +934,16 @@ enum L {
       String(localized: "Quiz.moreVerbs.\(count)")
     }
 
-    static var pointsPerAnswer: String {
-      String(localized: "Quiz.pointsPerAnswer")
+    static var lastQuiz: String {
+      String(localized: "Quiz.lastQuiz")
+    }
+
+    static var minutesLabel: String {
+      String(localized: "Quiz.minutesLabel")
+    }
+
+    static var sessionMinutes: String {
+      String(localized: "Quiz.sessionMinutes")
     }
 
     static var questionsLabel: String {

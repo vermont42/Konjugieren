@@ -398,10 +398,12 @@ struct QuizView: View {
     sizeClass == .regular
   }
 
+  /// The practice hub (Phase 13 of the pedagogy plan): what a session is, how long it takes, the
+  /// level, Start, what the record has due or missed, the last result, and the leaderboard last.
   private var startScreen: some View {
     GeometryReader { geometry in
       ScrollView {
-        VStack(spacing: isLarge ? Layout.tripleDefaultSpacing * 2 : Layout.tripleDefaultSpacing) {
+        VStack(spacing: isLarge ? Layout.tripleDefaultSpacing * 2 : Layout.doubleDefaultSpacing) {
           scopeHero
 
           VStack(spacing: Layout.doubleDefaultSpacing) {
@@ -414,6 +416,16 @@ struct QuizView: View {
             .pickerStyle(.segmented)
             .controlSize(isLarge ? .large : .regular)
             .accessibilityIdentifier("quiz_scope_picker")
+
+            if tabScope == .custom {
+              customQuizSummary
+            } else {
+              sessionFacts
+            }
+
+            if tabScope == .myVerbs, !myVerbs.isEmpty {
+              myVerbChips
+            }
 
             Button {
               switch tabScope {
@@ -437,23 +449,11 @@ struct QuizView: View {
             .accessibilityIdentifier("quiz_start_button")
           }
 
-          if tabScope == .custom {
-            customQuizSummary
-          } else {
-            HStack(alignment: .top, spacing: Layout.defaultSpacing) {
-              QuizFactTile(systemImage: "list.number", value: "\(Quiz.questionCount)", label: L.Quiz.questionsLabel, isLarge: isLarge)
-              QuizFactTile(systemImage: level.systemImage, value: level.localizedName, label: L.Quiz.levelLabel, isLarge: isLarge)
-              QuizFactTile(systemImage: "trophy.fill", value: "\(Quiz.pointsPerCorrect)", label: L.Quiz.pointsPerAnswer, isLarge: isLarge)
-            }
-            // Equal heights when one label wraps to two lines.
-            .fixedSize(horizontal: false, vertical: true)
-          }
+          practiceSection
 
-          if tabScope == .myVerbs, !myVerbs.isEmpty {
-            myVerbChips
+          if Current.gameCenter.isAuthenticated {
+            leaderboardButton
           }
-
-          recordSessions
         }
         .padding(.horizontal, Layout.doubleDefaultSpacing)
         .padding(.vertical, Layout.doubleDefaultSpacing)
@@ -464,17 +464,64 @@ struct QuizView: View {
     }
   }
 
+  /// How many questions, how long they take, and the level, which a tap changes here rather than
+  /// in Settings.
+  private var sessionFacts: some View {
+    HStack(alignment: .top, spacing: Layout.defaultSpacing) {
+      QuizFactTile(systemImage: "list.number", value: "\(Quiz.questionCount)", label: L.Quiz.questionsLabel, isLarge: isLarge)
+      QuizFactTile(systemImage: "timer", value: L.Quiz.sessionMinutes, label: L.Quiz.minutesLabel, accessibilityLabel: L.Accessibility.quizSessionLength, isLarge: isLarge)
+      levelMenu
+    }
+    // Equal heights when one label wraps to two lines.
+    .fixedSize(horizontal: false, vertical: true)
+    .transition(.opacity)
+  }
+
+  private var levelMenu: some View {
+    Menu {
+      Picker(L.Quiz.levelLabel, selection: Binding(get: { settings.quizLevel }, set: { settings.quizLevel = $0 })) {
+        ForEach(QuizLevel.allCases, id: \.self) { quizLevel in
+          Label(quizLevel.localizedName, systemImage: quizLevel.systemImage)
+            .tag(quizLevel)
+        }
+      }
+    } label: {
+      QuizFactTile(systemImage: level.systemImage, value: level.localizedName, label: L.Quiz.levelLabel, showsMenuIndicator: true, isLarge: isLarge)
+    }
+    .buttonStyle(.plain)
+    .accessibilityHint(L.Accessibility.quizLevelMenuHint)
+    .accessibilityIdentifier("quiz_level_menu")
+    .sensoryFeedback(.selection, trigger: settings.quizLevel)
+  }
+
+  /// A modest control below everything else, since the leaderboard is beside the point of
+  /// practice, though one tap away (T6.6).
+  private var leaderboardButton: some View {
+    Button {
+      Current.gameCenter.showLeaderboard(level: level)
+      Current.analytics.signal(name: .tapViewLeaderboard, parameters: [ParameterKey.source.rawValue: AnalyticsSource.tab.rawValue])
+    } label: {
+      Label(L.GameCenter.viewLeaderboard, systemImage: "trophy")
+        .font(isLarge ? .body : .subheadline)
+    }
+    .buttonStyle(.bordered)
+    .tint(.customYellow)
+    .controlSize(isLarge ? .regular : .small)
+    .accessibilityHint(L.Accessibility.leaderboardHint)
+    .accessibilityIdentifier("quiz_leaderboard_button")
+  }
+
   /// A big symbol for the chosen scope, its name, and a line saying what the quiz will ask about.
   private var scopeHero: some View {
     VStack(spacing: Layout.defaultSpacing) {
       Image(systemName: heroSymbol)
-        .font(.system(size: isLarge ? 180 : 96, weight: .semibold))
+        .font(.system(size: isLarge ? 180 : 64, weight: .semibold))
         .foregroundStyle(
           LinearGradient(colors: [.customYellow, .customYellow.opacity(0.6)], startPoint: .top, endPoint: .bottom)
         )
         .contentTransition(.symbolEffect(.replace))
         .symbolEffect(.bounce, value: reduceMotion ? TabQuizScope.allVerbs : tabScope)
-        .frame(height: isLarge ? 220 : 120)
+        .frame(height: isLarge ? 220 : 76)
         .accessibilityHidden(true)
 
       Text(heroTitle)
@@ -629,9 +676,9 @@ struct QuizView: View {
     .accessibilityIdentifier("custom_quiz_share_button")
   }
 
-  /// Review and My Mistakes, each started directly, or saying why there is nothing to ask (Phase
-  /// 12 of the pedagogy plan). Phase 13 moves them into the practice hub.
-  private var recordSessions: some View {
+  /// Review and My Mistakes, each started directly or saying why there is nothing to ask (Phase
+  /// 12 of the pedagogy plan), and the last quiz's results.
+  private var practiceSection: some View {
     VStack(alignment: .leading, spacing: Layout.defaultSpacing) {
       Text(L.PracticeSession.heading)
         .font(isLarge ? .title3.bold() : .headline)
@@ -647,6 +694,10 @@ struct QuizView: View {
         ) {
           quiz.start(scope: .recordSession(session))
         }
+      }
+
+      if let lastResult = Current.practice.lastResult {
+        LastQuizResultRow(result: lastResult, isLarge: isLarge)
       }
     }
     .frame(maxWidth: .infinity, alignment: .leading)
@@ -706,6 +757,9 @@ private struct QuizFactTile: View {
   let systemImage: String
   let value: String
   let label: String
+  var accessibilityLabel: String?
+  /// The level's tile is a menu, and its chevron says so.
+  var showsMenuIndicator = false
   var isLarge = false
 
   var body: some View {
@@ -716,27 +770,121 @@ private struct QuizFactTile: View {
         .contentTransition(.symbolEffect(.replace))
         .frame(height: isLarge ? 64 : 36)
         .accessibilityHidden(true)
-      Text(verbatim: value)
-        .font(isLarge ? .title2.bold() : .headline)
-        .foregroundStyle(.customForeground)
-        .lineLimit(1)
-        .minimumScaleFactor(0.7)
+      HStack(spacing: 3) {
+        Text(verbatim: value)
+          .lineLimit(1)
+          .minimumScaleFactor(0.7)
+        if showsMenuIndicator {
+          Image(systemName: "chevron.up.chevron.down")
+            .font(isLarge ? .subheadline.bold() : .caption2.bold())
+            .foregroundStyle(.customYellow)
+            .accessibilityHidden(true)
+        }
+      }
+      .font(isLarge ? .title2.bold() : .headline)
+      .foregroundStyle(.customForeground)
+      // Color.secondary, not .secondary, which inside a Menu takes the app's red tint.
       Text(label)
         .font(isLarge ? .subheadline : .caption)
-        .foregroundStyle(.secondary)
+        .foregroundStyle(Color.secondary)
         .multilineTextAlignment(.center)
         .fixedSize(horizontal: false, vertical: true)
       Spacer(minLength: 0)
     }
     .frame(maxWidth: .infinity, maxHeight: .infinity)
-    .padding(.vertical, Layout.doubleDefaultSpacing)
+    .padding(.vertical, isLarge ? Layout.doubleDefaultSpacing : Layout.defaultSpacing * 1.5)
     .padding(.horizontal, Layout.defaultSpacing)
     .background(Color.customYellow.opacity(0.06), in: RoundedRectangle(cornerRadius: 16))
     .overlay {
       RoundedRectangle(cornerRadius: 16)
         .strokeBorder(Color.customYellow.opacity(0.25), lineWidth: 1)
     }
+    .contentShape(RoundedRectangle(cornerRadius: 16))
     .accessibilityElement(children: .combine)
+    .modifier(OptionalAccessibilityLabel(label: accessibilityLabel))
+  }
+}
+
+private struct OptionalAccessibilityLabel: ViewModifier {
+  let label: String?
+
+  func body(content: Content) -> some View {
+    if let label {
+      content.accessibilityLabel(label)
+    } else {
+      content
+    }
+  }
+}
+
+/// The last quiz's results, kept on the device: what was quizzed, at which level, how it went, and
+/// when.
+private struct LastQuizResultRow: View {
+  let result: LastQuizResult
+  var isLarge = false
+
+  var body: some View {
+    HStack(spacing: Layout.doubleDefaultSpacing) {
+      Image(systemName: "flag.checkered")
+        .font(isLarge ? .largeTitle : .title2)
+        .foregroundStyle(.customYellow)
+        .frame(width: isLarge ? 56 : 36)
+        .accessibilityHidden(true)
+
+      VStack(alignment: .leading, spacing: 2) {
+        Text(L.Quiz.lastQuiz)
+          .font(isLarge ? .title3.bold() : .headline)
+          .foregroundStyle(.customForeground)
+        Text(verbatim: subjectLine)
+          .font(isLarge ? .body : .subheadline)
+          .foregroundStyle(.customForeground)
+          .germanPronunciation(forReal: result.kind == .verbPage)
+          .fixedSize(horizontal: false, vertical: true)
+        Text(verbatim: resultLine)
+          .font((isLarge ? Font.body : .subheadline).monospacedDigit())
+          .foregroundStyle(Color.secondary)
+          .fixedSize(horizontal: false, vertical: true)
+      }
+
+      Spacer(minLength: 0)
+    }
+    .padding(Layout.doubleDefaultSpacing)
+    .frame(maxWidth: .infinity, alignment: .leading)
+    .background(Color.customYellow.opacity(0.06), in: RoundedRectangle(cornerRadius: 16))
+    .overlay {
+      RoundedRectangle(cornerRadius: 16)
+        .strokeBorder(Color.customYellow.opacity(0.25), lineWidth: 1)
+    }
+    .accessibilityElement(children: .combine)
+    .accessibilityIdentifier("quiz_last_result")
+  }
+
+  /// "All Verbs · Elementary · today"
+  private var subjectLine: String {
+    [result.title, result.level?.localizedName, relativeDay].compactMap { $0 }.joined(separator: " · ")
+  }
+
+  /// "Correct: 8 / 10 · Score: 85", with a second try's count when there was one.
+  private var resultLine: String {
+    var parts = ["\(L.Quiz.correct) \(result.correctCount) / \(result.questionCount)"]
+    if result.secondAttemptCount > 0 {
+      parts.append("\(L.Quiz.secondTry) \(result.secondAttemptCount)")
+    }
+    parts.append("\(L.Quiz.score) \(result.score)")
+    return parts.joined(separator: " · ")
+  }
+
+  private var relativeDay: String? {
+    guard let days = PracticeRecord.daysBetween(result.date, and: .now) else {
+      return nil
+    }
+    let formatter = RelativeDateTimeFormatter()
+    formatter.dateTimeStyle = .named
+    formatter.unitsStyle = .full
+    // The app's language, which can differ from the region's.
+    formatter.locale = Locale(identifier: Bundle.main.preferredLocalizations.first ?? "en")
+    // A clock set back would otherwise make the last quiz tomorrow's.
+    return formatter.localizedString(from: DateComponents(day: -max(days, 0)))
   }
 }
 

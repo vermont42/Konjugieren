@@ -947,6 +947,14 @@ of the pedagogy plan: partial work kept, as the verdict narrowed it. Each answer
 practice record when it is given, so a quiz quit after six questions has practiced six. The sad
 trombone still plays on quitting.
 
+**Built on `main` 2026-11-14** by [Phase 13](pedagogy-implementation.md#phase-13-the-practice-hub)
+of the pedagogy plan: the practice hub, and the leaderboard moved aside. The Quiz tab now says what
+a session is, ten questions taking two or three minutes, shows the level as a menu that changes it,
+offers Review and My Mistakes above the fold on an iPhone, and shows the last quiz's results, kept on
+the device. The leaderboard left the results screen for a small button at the foot of the hub. The
+onboarding page and the quiz tip now describe practice rather than points and a leaderboard.
+Personal bests and achievements remain Phase 23's.
+
 A warning about this tier. Meta-analysis finds the effects of gamification on learning small, and
 its effects on motivation and behavior less stable than its effects on test scores (Sailer & Homner
 2020, **secondhand**). Streaks and badges laid over the present quiz would decorate a loop that

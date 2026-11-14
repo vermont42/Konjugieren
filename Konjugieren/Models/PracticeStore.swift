@@ -7,6 +7,8 @@ import Foundation
 @Observable
 final class PracticeStore {
   private(set) var record: PracticeRecord
+  /// The results of the last quiz the learner saw, for the Quiz tab's hub.
+  private(set) var lastResult: LastQuizResult?
   private let getterSetter: GetterSetter
   private let calendar: Calendar
 
@@ -32,6 +34,7 @@ final class PracticeStore {
       record = Self.migrated(from: getterSetter, calendar: calendar)
       save()
     }
+    lastResult = getterSetter.getCodable(key: LastQuizResult.storageKey)
   }
 
   var isEmpty: Bool {
@@ -109,11 +112,18 @@ final class PracticeStore {
     save()
   }
 
-  /// Settings' Reset Practice. The record is saved empty rather than removed, so that the next
-  /// launch does not migrate the old schedules again.
+  func recordResult(_ result: LastQuizResult) {
+    lastResult = result
+    getterSetter.setCodable(key: LastQuizResult.storageKey, value: result)
+  }
+
+  /// Settings' Reset Practice, which forgets the last result too. The record is saved empty
+  /// rather than removed, so that the next launch does not migrate the old schedules again.
   func reset() {
     record.reset()
     save()
+    lastResult = nil
+    getterSetter.remove(key: LastQuizResult.storageKey)
   }
 
   private func save() {

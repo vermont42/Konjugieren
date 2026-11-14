@@ -27,7 +27,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 10 | Done | 2026-11-14 | `dee17b1` | T2.9, Decision 8 |
 | 11 | Done | 2026-11-14 | `e8fcc07` | T3.3 (the record), T3.4, T3.5, T6.4 |
 | 12 | Done | 2026-11-14 | `554891b` | T3.2, T3.3 (the session) |
-| 13 | Awaiting Josh | 2026-11-14 | | T6.1, T6.6 (the leaderboard's place) |
+| 13 | Done | 2026-11-14 | `c62062f` | T6.1, T6.6 (the leaderboard's place) |
 | 14 | Not started | | | T4.2, T4.3 |
 | 15 | Not started | | | T5.1 |
 | 16 | Not started | | | T5.2 |
@@ -1306,7 +1306,7 @@ empty states.
 ## Phase 13: The Practice Hub
 
 **Suggestions:** T6.1, T6.6 (the leaderboard's place). **Depends on:** Phases 7, 8, 11, and 12.
-**Status:** Awaiting Josh.
+**Status:** Done.
 
 Turn the Quiz tab into a practice hub: what a session is, how long it takes, the current level,
 what is due for review, and the last result. The usage data show most quizzes ending before the

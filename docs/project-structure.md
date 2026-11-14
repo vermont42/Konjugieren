@@ -69,11 +69,13 @@ Konjugieren/
 │   ├── InfoMedia.swift         # Enum: .photo or .sfSymbol media for Info rows
 │   ├── KeyConjugations.swift   # Verb.keyConjugations (steht auf · stand auf · ist aufgestanden, always shown with no label) and Verb.shareText, what the verb page's share button sends
 │   ├── KonjugierenTips.swift   # TipKit tips (e.g., ChangeLevelTip, shown in Settings after a quiz; the verb page's RedLettersTip and ScrollToBottomTip)
-│   ├── LearnerVerbStore.swift  # Current.learnerVerbs: @Observable view of Shared/LearnerVerbs.swift that records opens, stars, and reviews, saves each change to the App Group's defaults, and answers in verbs (starred, recent, My Verbs, the verb due for review)
+│   ├── LearnerVerbStore.swift  # Current.learnerVerbs: @Observable view of Shared/LearnerVerbs.swift that records opens and stars, saves each change to the App Group's defaults, and answers in verbs (starred, recent, My Verbs)
 │   ├── LanguageModelService.swift      # Protocol for on-device AI error explanation and tutoring
 │   ├── LanguageModelServiceDummy.swift # No-op stub for tests/unsupported devices
 │   ├── LanguageModelServiceReal.swift  # FoundationModels implementation for AI tutoring
+│   ├── PracticeItemMapping.swift # Which PracticeItem a question exercises (a strong reading's key conjugation by the stem its cell is built on, otherwise its cell's pattern; the Futurs are patterns for every verb), the items a lookup schedules, the cell an item asks, and PracticeItem.Stem's tables and key cell
 │   ├── PracticeSet.swift       # A custom quiz shared as a link or QR code (pedagogy Phase 10): reads and writes konjugieren://quiz/set, carries the sharer's level while a part is left to it, turns My Verbs into a list of infinitives, its scope, share text, and summary; PracticeSetRequest, which World.handleURL sets
+│   ├── PracticeStore.swift     # Current.practice: @Observable view of Shared/PracticeRecord.swift that records answers and lookups, offers the review card's verb, reviews and snoozes it, resets, saves to the App Group's defaults, and migrates browse Phase 15's per-verb schedules once
 │   ├── PersonNumber.swift      # 1s, 2s, 3s, 1p, 2p, 3p (pronouns live in ConjugationLabels.swift)
 │   ├── Prefix.swift            # Separable/inseparable prefix enum ([Prefix] helpers live in Reading.swift)
 │   ├── PrefixMeaning.swift     # Prefix meanings with PIE etymologies
@@ -81,12 +83,13 @@ Konjugieren/
 │   ├── Quiz.swift              # @Observable quiz state: rounds of ten and Ten More (continueSession), re-asks of missed questions, timer, scoring summed from the items; QuizItem grading (accepts, preferredSpelling), points, reasked(); DEBUG fixtures (screenshot, grading, frames, corrections, slips); QuizItem.answerFrame; QuizScope (the verbs asked about, a round's question count, the analytics source, whether it continues, whether its verbs are mixed, its pool, and whether the score is ranked): every verb, My Verbs, a collection, a custom quiz, or three questions on a verb's page
 │   ├── QuizAbandonment.swift   # The quizzes in progress, one entry per Quiz, so that the next launch can send abandonQuiz for one the app was left during (M2)
 │   ├── QuizClock.swift         # Setting enum: hide (the default) or show the quiz's time
+│   ├── QuizDueItems.swift      # QuizDraw.dueQuestions and mixing: up to three due practice items a default round asks, within its level and band, placed at random among the drawn questions
 │   ├── QuizDraw.swift          # Draws a quiz's questions from a pool (a level's, or a custom quiz's, whose restricted kinds fall back to every verb rather than vanish): a kind by weight, then a verb it admits, then a cell; for the default quiz, mixes the verbs (half strong, two core, one to three rare derivatives); AnyRandomNumberGenerator
 │   ├── QuizLevel.swift         # Setting enum: Beginner, Elementary, Intermediate, Advanced (replaced QuizDifficulty's regular and ridiculous); each level's pool of QuizPoolEntry (a table's cells, the QuizVerbs it may ask, a weight) and the frequency band its default quiz draws from
 │   ├── RelatedVerbs.swift      # Verb.root (the innermost base: anerkennen → kennen) and Verb.related(readingIndex:): verbs built on the same root, one verb per other root of the ablaut group, and the Families pages of a reading
 │   ├── Region.swift            # Setting enum: the three standard varieties (north/austria/switzerland)
 │   ├── ReviewCardSuppression.swift # Setting enum: off (the default) shows the review card, on hides it
-│   ├── QuizErrorHistory.swift  # Persistence for recent quiz errors (up to 200)
+│   ├── QuizErrorHistory.swift  # Persistence for recent quiz errors (up to 200), read by the Tutor's recommendations; cleared by Reset Practice
 │   ├── SearchReport.swift      # SearchTracker (one search, first letter to its end, and the surface that opened the field for it) and SearchReport (the banded finishSearch parameters)
 │   ├── SearchScope.swift       # Setting enum: infinitive-only vs. infinitive-and-translation search
 │   ├── SortOrder.swift         # Enum for verb list sorting (alphabetical/frequency); [Verb].sorted(by:), used by the family pages and the related-verb list; VerbListMode, the verb list's picker (Alphabetical, Frequency, My Verbs)
@@ -169,7 +172,7 @@ Konjugieren/
     ├── QuizView.swift          # Quiz gameplay: questions, timer, answer input; the Quiz tab's start screen (a big yellow symbol for the scope, its name and description, the All Verbs/My Verbs/Custom picker, Start, three fact tiles, My Verbs' verbs as chips, and the custom quiz's summary with Choose or Change and the Share menu of link or QR code, scaled up on iPad); with a sheetScope, a quiz in a sheet (QuizSheet: "Test me on this verb" or a collection's quiz), which starts as it appears and closes when the quiz ends; its own navigation stack pushes the pages a held correction links to, over the waiting quiz
     ├── RelatedVerbsView.swift  # The verb page's Related Verbs card (chips in a FlowLayout, which can also center its rows, as the Quiz tab's My Verbs chips do), RelatedVerbListView (every verb of one relation), and VerbPagePush, the environment action by which a verb page pushes onto whichever tab's stack shows it
     ├── ResultsView.swift       # Modal showing quiz results, and the leaderboard button after a ranked quiz
-    ├── ReviewCardView.swift    # The review card above the verb list: a verb looked up days ago, its key conjugations hidden until a tap reveals them; a second tap opens the page, and ✕ dismisses
+    ├── ReviewCardView.swift    # The review card above the verb list: a strong verb looked up or practiced days ago, one reading's key conjugations hidden until a tap reveals them; a second tap opens the page, and ✕ dismisses
     ├── RichTextView.swift      # Renders RichTextBlock content with styling
     ├── SettingsView.swift      # Settings UI with segmented pickers
     ├── TutorTestView.swift     # Debug view for testing the AI tutor
@@ -216,9 +219,10 @@ Shared/
 ├── OpenRandomVerbControlIntent.swift  # The Random Verb control's action: OpenRandomVerbIntent with source=control, hidden from Shortcuts
 ├── OpenRandomVerbIntent.swift      # Shared intent to open random verb via deeplink (the Random Verb shortcut)
 ├── OpenVerbSearchIntent.swift      # The Find a Verb control's action: konjugieren://search?source=control, hidden from Shortcuts
-├── LearnerVerbs.swift              # The learner's verbs (each verb opened, with dates and a count, each verb starred, and each verb's review schedule), keyed by infinitive and stored as JSON in the App Group's defaults so the widget can read it; new fields must be optional
+├── LearnerVerbs.swift              # The learner's verbs (each verb opened, with dates and a count, and each verb starred), keyed by infinitive and stored as JSON in the App Group's defaults so the widget can read it; new fields must be optional
+├── PracticeRecord.swift            # The practice record: PracticeItem (a strong verb's key conjugation or a weak pattern, with a permanent string key) and a ReviewSchedule, last answer, and last lookup per item, stored as JSON in the App Group's defaults; never sent
 ├── QuizActivityAttributes.swift    # ActivityKit model for quiz live activity
-├── ReviewSchedule.swift            # The review card's Leitner ladder (1, 3, 7, 14, 30 days): a box and a due date per verb, set by a lookup, raised by a review, postponed a day by a snooze
+├── ReviewSchedule.swift            # The practice record's Leitner ladder (1, 3, 7, 14, 30 days): a box and a due date per item, started by a lookup or a wrong answer, raised by a review or a right answer when due, postponed a day by a snooze
 ├── WidgetConstants.swift           # Constants for widget app-group container, storage keys, day count, and pinned Gregorian calendar
 ├── WidgetQuizShuffle.swift         # Process-stable (FNV-1a seeded) answer shuffle + SeededRNG, shared by widget and tests
 └── WidgetSnapshot.swift            # Data models for serialized widget state, incl. WidgetSnapshotBundle (N-day array, paging, and the snapshot displayed at a moment)
@@ -243,7 +247,10 @@ KonjugierenTests/
 │   ├── GameStateTests.swift    # Game-logic tests: damage invulnerability, robot-mechanic clearing, game-over/wave transitions, snapshot round-trip
 │   ├── PracticeSetTests.swift  # Practice sets: the pinned link, every table, verb set, list, and level round-tripped, links that name nothing, My Verbs shared as a capped list, the QR code read back as the link; extends DeeplinkTests (the quiz/set route) and nests sessions in QuizTests (the set's level, no score)
 │   ├── PersonNumberTests.swift # Pronoun and sie-disambiguation tests
-│   ├── QuizErrorHistoryTests.swift # Quiz error persistence tests
+│   ├── PracticeItemTests.swift # Which item each question exercises: a strong verb's stems by table, the Futurs as patterns, every weak, separable, inseparable, and -ieren verb sharing one pattern per cell, prefixed strong verbs' own items, hängen's two readings, pinned keys, and items asking their own cell back
+│   ├── PracticeRecordTests.swift # The record and store: climbing when due, starting over on a miss, due order, lookups and the card's review and snooze, the card's choice and caption, weak patterns never on the card, a relaunch, the migration of browse Phase 15's schedules, and a reset that stays
+│   ├── QuizErrorHistoryTests.swift # Quiz error persistence tests, including Reset Practice's clear
+│   ├── QuizPracticeTests.swift # Nested in QuizTests: answers recorded as given and kept on quit, every scope writing, due items limited to the level and band, a default round mixing in at most three, scoped quizzes mixing in none
 │   ├── QuizRoundTests.swift    # Nested in QuizTests: re-ask placement and limits, half points for a re-ask, Ten More continuing the session, completeQuiz's questionCount, quitQuiz's duration bands, the hidden clock; QuizAbandonment's records and its launch report
 │   ├── QuizLeaderboardTests.swift # Nested in QuizTests: each level's leaderboard ID, a ranked session posting its first round to its level's board (second attempts counted, re-asks not), Ten More and scoped quizzes posting nothing
 │   ├── QuizLevelTests.swift    # Each level's tables and cells, the restricted cells' verbs, weighted shares under a fixed seed, and short quizzes' distinct cells
@@ -251,7 +258,7 @@ KonjugierenTests/
 │   ├── QuizTests.swift         # Quiz logic, scoring, and timer pause/resume tests; scopes (My Verbs, three questions on a verb page, ranking, the source on start, quit, and completion)
 │   ├── StandardVariantsTests.swift # Every row Josh accepted in the Phase 1 variant audit, and the ones he rejected
 │   ├── SearchReportTests.swift # SearchTracker lifecycle, finishSearch parameters, and the no-typed-text guarantee
-│   ├── ReviewScheduleTests.swift # The review ladder: due the next morning, the boxes, snoozes, a re-lookup back to the first box, an open from the card, an entry from before the schedule, the store's choice of verb
+│   ├── ReviewScheduleTests.swift # The ladder alone: due the next morning, the boxes, snoozes, a quiz answer moving up only when due, a miss starting over, a new item's first answer
 │   ├── RelatedVerbsTests.swift # Verb.root through nested prefixes, verbs built on a root, ablaut relatives (one per root), family pages, per-reading relations, [Verb].sorted(by:)
 │   ├── RefusalDetectionTests.swift # Tutor refusal-phrase detection, incl. the "null" exact-match false-positive guard
 │   ├── VerbCollectionTests.swift # Collections: keys, members (modals, the top 100, sein by region, ablaut groups as on the Ablaut page), share text, the quiz scope, the store's count of verbs looked up

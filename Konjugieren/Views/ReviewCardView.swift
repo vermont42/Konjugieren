@@ -2,19 +2,26 @@
 
 import SwiftUI
 
-/// A verb looked up some days ago, offered above the verb list with its key conjugations hidden.
+/// A strong or mixed verb looked up or practiced some days ago, offered above the verb list with
+/// its key conjugations hidden.
 /// A tap anywhere on the card reveals them; after that, a tap opens the verb's page. The ✕
 /// dismisses the card. Which verb, and what each tap does to its schedule, is the caller's.
 struct ReviewCardView: View {
   let verb: Verb
-  let daysSinceLookup: Int?
+  let readingIndex: Int
+  /// When the verb was last looked up or practiced.
+  let caption: String
   let isRevealed: Bool
   let reveal: () -> Void
   let open: () -> Void
   let dismiss: () -> Void
 
   private var conjugations: [String] {
-    verb.keyConjugations()
+    verb.keyConjugations(readingIndex: readingIndex)
+  }
+
+  private var translation: String {
+    (verb.reading(at: readingIndex) ?? verb.primaryReading).translation
   }
 
   private func tap() {
@@ -27,7 +34,7 @@ struct ReviewCardView: View {
 
   var body: some View {
     VStack(alignment: .leading, spacing: 4) {
-      Text(L.ReviewCard.lookedUp(daysAgo: daysSinceLookup))
+      Text(caption)
         .font(.caption.smallCaps())
         .foregroundStyle(.secondary)
         .englishPronunciation()
@@ -39,7 +46,7 @@ struct ReviewCardView: View {
         .accessibilityAddTraits(.isButton)
         .accessibilityAction { tap() }
 
-      Text(verbatim: verb.translation)
+      Text(verbatim: translation)
         .tableSubtext()
         .englishPronunciation()
         .accessibilityAddTraits(.isButton)

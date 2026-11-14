@@ -10730,3 +10730,73 @@ the default form sheet was too short and clipped the Keep footer, so the sheet i
 The share sheet's first screenshot showed nothing, which looked like a bug in presenting from a
 menu. The system log said otherwise: the share sheet had presented about a second after the tap,
 after the screenshot. Reading the log before changing code saved a fix for a bug that did not exist.
+
+## The Practice Record: Giving the Quiz a Memory (2026-11-14)
+
+Phase 11 of the pedagogy plan gave the quiz the thing the report called its biggest gap: a
+memory. Until today every quiz started from nothing. Now every answer, in every kind of quiz, moves
+a small record on the device: a box on Leitner's ladder of 1, 3, 7, 14, and 30 days, and the date
+it is next due. The ladder already existed. Browse Phase 15 had built `ReviewSchedule` for the
+review card above the verb list, one box per looked-up verb, explicitly so the quiz could take it
+over. This phase did, and the interesting work was in what an "item" is.
+
+### Two kinds of item
+
+The report's T3.5 says a strong verb's item is one of its key conjugations, and a weak verb's item
+is a pattern, a conjugationgroup and person shared by every weak verb. The second half is the
+elegant one. A learner who can write machte can write sagte, kaufte, and verkaufte, so drilling
+those separately would schedule the same knowledge four times. The first half needed a rule the
+report did not give: which key conjugation does a question about er führe exercise?
+
+The answer I settled on is the stem. German strong verbs have three stems worth knowing (fährt,
+fuhr, gefahren), and every cell of the verb page is built on one of them. The Konjunktiv II führe is
+fuhr with an umlaut, so a miss there counts against fuhr. The Konjunktiv I fahre and the
+Präsenspartizip fahrend use the present stem, so they count against fährt. The Perfekt,
+Plusquamperfekt, and the participle all lean on gefahren. Only the three Futurs escape, since
+werden plus an infinitive shows nothing of a strong verb, so they are patterns for every verb. It
+is imperfect at the edges (wir fahren has no vowel change, yet a slip there counts against fährt),
+but it means every question lands on exactly one item, and a test walks all fourteen tables of a
+strong verb to pin it.
+
+### The merge that broke a rule
+
+Josh had decided that the review card and the quiz share one schedule. Merging them exposed a
+problem that I could not settle alone. A weak verb has no items of its own any more, so looking one
+up has nothing to schedule, and the card, which shows a single verb, cannot show a pattern. The
+plan said to ask if a card rule became meaningless, so I asked. Josh chose to offer strong verbs
+only. The card now says how a verb got there ("Looked up 9 days ago" or "Practiced 3 days ago"),
+and the migration, which runs once, turned each strong verb's old schedule into its three key
+conjugations' schedules and dropped the weak ones. On the simulator's real install, aufstehen came
+across overdue in its third box and was the first card offered.
+
+### Spacing has to mean something
+
+One rule was not in the plan and turned out to matter. If a right answer always raised an item,
+then "Präsens, ich" for weak verbs, which comes up constantly, would climb three boxes in one
+afternoon's quiz, and the spacing would be fiction. So a right answer raises an item only when it is
+due, and a wrong one always starts it over. That also makes a re-ask behave sensibly without a
+special case: a missed item is due tomorrow, so getting it right three questions later earns the
+points but leaves it in the first box.
+
+### Review without opening Review
+
+Phase 12 will build the Review session, but Josh wanted learners who never open it to relearn
+anyway, so each round of the default quiz now asks up to three due items. They have to fit the
+level: a Beginner who looked up gebären should not meet its Perfekt in a Präsens-only quiz, and
+Josh had already rejected letting what was opened shape quizzes. The check on the simulator was
+satisfying in a quiet way. I seeded two due weak patterns, answered a Mittelstufe quiz wrongly from
+start to finish, and the round's last two questions were einschätzen in the Perfekt er and bereiten
+in the Präsens ich, exactly the seeded cells, asked of weak verbs from the band.
+
+### Smaller things
+
+Recording happens as each answer is given, so a quiz quit after six questions has practiced six
+(T6.4). The sad trombone still plays, by Josh's verdict. Settings gained Reset Practice behind a
+confirmation; it saves an empty record rather than deleting the key, because deleting it would let
+the one-time migration resurrect the old schedules on the next launch.
+
+Two lessons came from tooling rather than design. A full test run reported ten failures, none of
+them mine: the iPhone simulator's system language became German this morning, and two older
+suites expect English output. Running the same suite with `xcodebuild -testLanguage en` passes all
+699, and the same ten fail on a clean tree. And `rg` with a pattern but no path, run after a
+heredoc in the same shell command, reads standard input and waits forever. Always give it a path.

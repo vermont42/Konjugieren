@@ -36,6 +36,7 @@ enum AnalyticsName: String {
   case tapExplainError
   case tapPlayGame
   case tapRateOrReview
+  case tapResetPractice
   case tapRevealReviewCard
   case tapSendTutorMessage
   case tapKeepPracticeSet

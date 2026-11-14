@@ -481,3 +481,55 @@ Ein neuer Punkt folgt dem über Sammlungen:
 ```
 - Dass Sie ein geteiltes Übungsset geöffnet haben, ob es als Link oder als QR-Code kam und ob die App es lesen konnte, nicht aber, welche Conjugationgroups oder Verben es enthält
 ```
+
+## The practice record (pedagogy plan, Phase 11, 2026-11-14)
+
+Adds the signal `tapResetPractice`, sent when Reset Practice in Settings is confirmed, which carries
+nothing. The practice record itself is kept on the device and never sent (Decision 5 of the
+pedagogy plan): which conjugations the learner has practiced, how the last answer went, and when
+each is due again. The section 2 sentence that the app "does not record your quiz answers, your
+scores" already reads "does not send", as staged in the My Verbs section above; a new paragraph
+says what the app keeps. The review card's list paragraph, as last given in the Collections section,
+no longer says the verb list holds review dates, since the practice record does.
+
+### English
+
+The taps bullet in section 2, as last given above, now ends as follows, the "and" before keeping
+a practice set moving to the new last item:
+
+```
+, keeping a shared practice set as your own quiz, and resetting your practice record
+```
+
+The paragraph about the list kept on the device now reads:
+
+```
+The app keeps a list of the verbs you have opened and the verbs you have starred, so that it can show your recent verbs, My Verbs, and how many verbs of each collection you have looked up. The list stays on your device and is never sent.
+```
+
+A new paragraph follows it:
+
+```
+The app also keeps a practice record: which conjugations you have practiced in quizzes and on review cards, whether your last answer to each was right, and when each is due for review, so that it can show review cards and bring back what you missed. The record stays on your device and is never sent. Reset Practice in Settings erases it.
+```
+
+### German
+
+Der Punkt über das Antippen in Abschnitt 2, wie oben zuletzt angegeben, endet nun so; das „und“
+vor dem Behalten eines Übungssets rückt zum neuen letzten Glied:
+
+```
+, ein geteiltes Übungsset als eigenes Quiz behalten und den Übungsstand zurücksetzen
+```
+
+Der Absatz über die Liste auf dem Gerät lautet nun:
+
+```
+Die App führt eine Liste der Verben, die Sie geöffnet, und der Verben, die Sie mit einem Stern markiert haben, damit sie Ihre zuletzt geöffneten Verben, „Meine Verben“ und die Zahl der nachgeschlagenen Verben jeder Sammlung zeigen kann. Die Liste bleibt auf Ihrem Gerät und wird nie gesendet.
+```
+
+Ein neuer Absatz folgt:
+
+```
+Die App führt außerdem einen Übungsstand: welche Konjugationen Sie im Quiz und auf Wiederholungskarten geübt haben, ob Ihre letzte Antwort darauf richtig war und wann jede wieder zur Wiederholung ansteht, damit sie Wiederholungskarten zeigen und Verfehltes wiederholen kann. Der Übungsstand bleibt auf Ihrem Gerät und wird nie gesendet. „Übungsstand zurücksetzen“ in den Einstellungen löscht ihn.
+```

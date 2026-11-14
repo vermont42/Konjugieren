@@ -43,6 +43,10 @@ enum QuizErrorHistory {
       .joined(separator: ", ")
   }
 
+  static func clear(getterSetter: GetterSetter) {
+    getterSetter.remove(key: storageKey)
+  }
+
   private static func save(_ records: [QuizErrorRecord], getterSetter: GetterSetter) {
     getterSetter.setCodable(key: storageKey, value: records)
   }

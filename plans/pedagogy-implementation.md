@@ -25,7 +25,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 8 | Done | 2026-11-14 | `cba6f9e` | Decision 4 |
 | 9 | Done | 2026-11-14 | `b4f00b0` | T2.8 |
 | 10 | Done | 2026-11-14 | `dee17b1` | T2.9, Decision 8 |
-| 11 | Not started | | | T3.3 (the record), T3.4, T3.5, T6.4 |
+| 11 | Awaiting Josh | 2026-11-14 | | T3.3 (the record), T3.4, T3.5, T6.4 |
 | 12 | Not started | | | T3.2, T3.3 (the session) |
 | 13 | Not started | | | T6.1, T6.6 (the leaderboard's place) |
 | 14 | Not started | | | T4.2, T4.3 |
@@ -1083,8 +1083,8 @@ fails gracefully, and tests pin encoding and decoding of every scope.
 
 ## Phase 11: The Practice Record
 
-**Suggestions:** T3.3 (the record), T3.4, T3.5, T6.4. **Depends on:** Phase 7. **Status:** Not
-started.
+**Suggestions:** T3.3 (the record), T3.4, T3.5, T6.4. **Depends on:** Phase 7. **Status:** Awaiting
+Josh.
 
 Give the quiz a memory: a small record per item, a box and a due date, moved up the ladder of 1,
 3, 7, 14, and 30 days by a right answer and back to the start by a wrong one. Josh's verdict on
@@ -1123,7 +1123,98 @@ schedule.
 
 **How it differed:**
 
-(To be written by the session that finishes this phase.)
+- **Decided by Josh (2026-11-14), asked before building.** (1) The merge made one of the card's
+  rules meaningless: a weak verb has no items of its own, since its answers move patterns shared
+  by every weak verb, so a lookup of one had nothing to schedule. Josh chose to offer **strong and
+  mixed verbs only** on the card, from a lookup or a quiz answer alike, and to drop weak verbs'
+  schedules in the migration (over a card-only item for weak verbs, and over keeping the card's
+  per-verb schedule as a third kind of item). (2) `QuizErrorHistory` stays, and Reset Practice
+  clears it too. It has a second reader the phase text missed: the Tutor's Recommendations sheet
+  counts its misses by conjugationgroup. It also keeps the typed answers, which the record does not.
+- **The mapping (T3.5), decided in the session.** A strong or mixed reading's question maps to
+  the key conjugation of the **stem its cell is built on**: the Präsens Indikativ, Präsens
+  Konjunktiv I, Imperativ, and Präsenspartizip to the Präsens (fährt); the Präteritum Indikativ and
+  Konjunktiv II to the Präteritum (fuhr); the Perfektpartizip and the four Perfekt and
+  Plusquamperfekt tables to the Perfekt (ist gefahren). The three Futurs are patterns for every
+  verb, since werden and the infinitive show nothing of a strong verb. Strength is per reading, as
+  the quiz judges it. Prefixed strong verbs (aufstehen, verstehen) have their own items. Separable,
+  inseparable, and -ieren weak verbs share machen's patterns. The cost of this choice: a slip in
+  wir fahren counts against fährt, though the plural keeps the infinitive's vowel.
+- **Keys** are strings, `key:fahren:0:praeteritum` and `pattern:praeteritum_indikativ:ss`, built
+  from `ConjugationTable.articleKey` and `PersonNumber` raw values, so that the widget, which has no
+  corpus, can read the record. Tests pin them.
+- **The ladder, decided in the session.** `ReviewSchedule` was generalized, not duplicated:
+  `lookedUp` became `start`, and `answered(correctly:)` and `new` were added. A wrong answer always
+  starts an item over. A right one moves it up **only when it is due**, so that a pattern asked
+  three times in one session cannot climb three boxes in an afternoon; Leitner's spacing would
+  mean nothing otherwise. A new item answered right enters the second box (three days), and one
+  answered wrong the first (tomorrow). A slip's right second attempt counts as right. A re-ask is
+  just another answer: after a miss the item is not due, so a right re-ask leaves it in the first
+  box.
+- **Where it lives.** `Shared/PracticeRecord.swift` (the items and the record, `nonisolated`, in
+  the widget too) and `PracticeStore` (`Current.practice`), saving JSON under `practiceRecord` in
+  the App Group's defaults through the same `GetterSetterReal` as `LearnerVerbs`. The review card's
+  fields left `LearnerVerbs`; `recordOpen` lost its `source` and the store its review methods, and
+  the verb page now records the open and the lookup separately.
+- **The migration** runs once, when no record is stored. It reads `LearnerVerbs`' old `review`
+  field, or for an entry from before browse Phase 15 its last open, and gives each strong reading's
+  three key conjugations that schedule. Reset saves an empty record rather than removing the key,
+  so a reset is not undone by a second migration. On the iPhone simulator's real install,
+  aufstehen came across in box 2 and overdue, and was the first card offered; ahnen, weak, was
+  dropped.
+- **Due items in the default quiz, decided in the session.** Up to three per round of ten, the
+  most overdue first, placed at random among a draw of seven, in Ten More rounds too. Only the
+  default quiz mixes them in; a scoped quiz asks what was chosen. An item is skipped when the
+  level does not ask its cell (a Präteritum key conjugation at Elementary, where the Präteritum is
+  sein's, haben's, and the modals') or its verb is beyond the level's band. Josh rejected letting
+  what was opened shape quizzes (T2.4), and the band keeps a looked-up rare verb out of a
+  Beginner's quiz; Phase 12's Review will ask those. Due questions sit outside Phase 6's mix, which
+  balances the other seven, so a round with three due items may have fewer than five strong
+  questions or a fourth rare derivative.
+- **The card's caption** now says how the verb got there: "Looked up 3 days ago" ("Vor 3 Tagen
+  nachgeschlagen"), or "Practiced 3 days ago" ("Vor 3 Tagen geübt") when a quiz answer came after
+  the lookup. The card shows the due reading's key conjugations and gloss, so fahren's two readings
+  are offered one at a time. Revealing raises only the due key conjugations; one not due keeps its
+  place. The Suppress Review Card description now says "a strong verb you looked up or practiced".
+- **Reset Practice** ("Übungsstand zurücksetzen") sits in Settings' last card, beside Show
+  Onboarding and Play Game, while there is a record or a kept wrong answer. An alert confirms it,
+  as Clear does in My Verbs. Its description began "This setting erases", after Delete Chat
+  History, until looking showed its neighbours saying "This button …", and it now says the same.
+  It plays no sound.
+- **Analytics.** `tapResetPractice`, with no parameters, on confirmation. Staged in
+  [`docs/privacy-policy-pending.md`](../docs/privacy-policy-pending.md) in both languages, with a
+  paragraph saying the practice record stays on the device and is never sent. The "does not
+  record" to "does not send" change was already staged by the browse plan's Phase 12.
+- **VoiceOver.** No new quiz state needs an announcement: recording is silent, and a due item is
+  an ordinary question. The card's caption is read as before, and the alert is the system's.
+- **Tests:** 699 in all, 24 more than Phase 10's: 32 new, and `ReviewScheduleTests` cut from 15 to
+  7, its card tests having moved. `PracticeItemTests` (11 functions: pinned and
+  round-tripped keys, unreadable keys, every table of a strong verb, weak, separable,
+  inseparable, and -ieren verbs sharing patterns, prefixed strong verbs, hängen's two readings,
+  lookups, items asking their own cell back, and the stems agreeing with the verb page's key
+  conjugations), `PracticeRecordTests` (14: the ladder through answers, due order, lookups, the
+  card's review and snooze, the card's choice and caption, weak patterns never on the card, a
+  relaunch, the migration, and a reset that stays), `QuizPracticeTests` nested in `QuizTests` (6:
+  answers kept on quit, every scope writing, due items within level and band, at most three, none
+  in a scoped quiz), `QuizErrorHistoryTests`' clear, and `ReviewScheduleTests` rewritten for the
+  ladder alone. Run in English with
+  `xcodebuild -testLanguage en`, all pass (697, and the 2 environment-gated harnesses skipped).
+  **Run through `run_tests.sh`, 10 fail before and after this phase:** `MixedCaseAccessibilityTests`
+  and a `VerbCollectionTests` share-text test expect English, and the iPhone simulator's system
+  language became German today. Confirmed on a clean tree. Pinning those tests' language, or
+  passing `-testLanguage en` in the skill's script, is left for Josh to choose.
+- **Verified on the iPhone 17**, in dark mode: in German, the migrated aufstehen card ("Vor 11
+  Tagen nachgeschlagen"); a seeded record's singen card ("Vor 3 Tagen geübt"), whose reveal raised
+  only its two due key conjugations; a Mittelstufe quiz answered wrongly throughout, whose last two
+  first-round questions were einschätzen in the Perfekt er and bereiten in the Präsens ich, the two
+  seeded due weak patterns, and every answer in the record as it was given; Reset Practice, its
+  alert, and the record read back empty. In English: the singen card ("Looked up 9 days ago"), a
+  dismissal that snoozed the due items to the next morning in their box, and the Reset alert. **On
+  the iPad Pro 11-inch (M5)**, in light mode and English: a first launch's migration of an empty
+  record, the singen card ("Practiced 3 days ago"), and Reset Practice's row and alert. Not tried:
+  VoiceOver by ear, the widget (which reads nothing of the record yet), and a real day passing.
+- **Seen, not changed.** The English "Rate or Review" description still ends in German ("Füge
+  deine hinzu."), as Phase 7 noted.
 
 ## Phase 12: Review and My Mistakes
 

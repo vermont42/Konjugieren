@@ -6714,6 +6714,62 @@
         }
       }
     },
+    "ReviewCard.practiced.%lld" : {
+      "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Gestern geübt"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Vor %lld Tagen geübt"
+                }
+              }
+            }
+          }
+        },
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Practiced yesterday"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Practiced %lld days ago"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "ReviewCard.practicedEarlier" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Früher geübt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Practiced earlier"
+          }
+        }
+      }
+    },
     "ReviewCard.prompt" : {
       "localizations" : {
         "de" : {
@@ -7012,18 +7068,98 @@
         }
       }
     },
-    "Settings.reviewCardSuppressionDescription" : {
+    "Settings.resetPractice" : {
       "localizations" : {
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Diese Einstellung bestimmt, ob die Verbliste die Wiederholungskarte ausblendet, die ein vor einigen Tagen nachgeschlagenes Verb anbietet."
+            "value" : "Übungsstand zurücksetzen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This setting determines whether the verb list hides the review card, which offers a verb you looked up some days ago."
+            "value" : "Reset Practice"
+          }
+        }
+      }
+    },
+    "Settings.resetPracticeConfirm" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zurücksetzen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset"
+          }
+        }
+      }
+    },
+    "Settings.resetPracticeConfirmMessage" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die App vergisst, welche Konjugationen du geübt hast und wann jede wieder ansteht. Deine Verben mit Stern und deine zuletzt geöffneten Verben bleiben. Das lässt sich nicht rückgängig machen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The app will forget which conjugations you have practiced and when each is due again. Your starred and recent verbs stay. This cannot be undone."
+          }
+        }
+      }
+    },
+    "Settings.resetPracticeConfirmTitle" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Übungsstand zurücksetzen?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Reset Practice?"
+          }
+        }
+      }
+    },
+    "Settings.resetPracticeDescription" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Schaltfläche löscht deinen Übungsstand, der auf deinem Gerät bleibt: welche Konjugationen du beim Quiz und auf Wiederholungskarten geübt hast, wie es lief und wann jede wieder ansteht."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This button erases your practice record, which stays on your device: which conjugations you have practiced in quizzes and on review cards, how each went, and when each is due again."
+          }
+        }
+      }
+    },
+    "Settings.reviewCardSuppressionDescription" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Einstellung bestimmt, ob die Verbliste die Wiederholungskarte ausblendet, die ein vor einigen Tagen nachgeschlagenes oder geübtes starkes Verb anbietet."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This setting determines whether the verb list hides the review card, which offers a strong verb you looked up or practiced some days ago."
           }
         }
       }

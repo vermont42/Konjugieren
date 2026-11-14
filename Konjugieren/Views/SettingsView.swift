@@ -5,6 +5,8 @@ import TipKit
 
 struct SettingsView: View {
   @State private var hasChatHistory = false
+  @State private var hasQuizErrors = false
+  @State private var isConfirmingReset = false
   @State private var rateReviewDescription = ""
   @State private var showingOnboarding = false
   @State private var showingGame = false
@@ -231,6 +233,16 @@ struct SettingsView: View {
                   }
                 }
 
+                if !Current.practice.isEmpty || hasQuizErrors {
+                  settingsAction(
+                    title: L.Settings.resetPractice,
+                    systemImage: "arrow.counterclockwise",
+                    description: L.Settings.resetPracticeDescription
+                  ) {
+                    isConfirmingReset = true
+                  }
+                }
+
                 settingsAction(
                   title: L.Settings.rateOrReview,
                   systemImage: "star.fill",
@@ -252,6 +264,15 @@ struct SettingsView: View {
         isOnScreen = true
         Current.analytics.signal(name: .viewSettingsView)
         hasChatHistory = !TutorChatHistory.isEmpty(getterSetter: Current.getterSetter)
+        hasQuizErrors = !QuizErrorHistory.load(getterSetter: Current.getterSetter).isEmpty
+      }
+      .alert(L.Settings.resetPracticeConfirmTitle, isPresented: $isConfirmingReset) {
+        Button(L.Settings.resetPracticeConfirm, role: .destructive) {
+          resetPractice()
+        }
+        Button(role: .cancel) {}
+      } message: {
+        Text(L.Settings.resetPracticeConfirmMessage)
       }
       .onDisappear {
         isOnScreen = false
@@ -272,6 +293,15 @@ struct SettingsView: View {
         GameView()
       }
     }
+  }
+
+  /// Forgets the practice record and the wrong answers kept for the Tutor, which are practice too
+  /// (Josh, 2026-11-14). Starred and recent verbs stay.
+  private func resetPractice() {
+    Current.practice.reset()
+    QuizErrorHistory.clear(getterSetter: Current.getterSetter)
+    hasQuizErrors = false
+    Current.analytics.signal(name: .tapResetPractice)
   }
 
   private var aboutFooter: some View {

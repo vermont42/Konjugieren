@@ -1,0 +1,145 @@
+// Copyright © 2026 Josh Adams. All rights reserved.
+
+import Foundation
+
+/// The app's view of `PracticeRecord`: it maps questions and lookups to items, saves each change
+/// to the App Group's defaults, and answers in verbs for the review card.
+@Observable
+final class PracticeStore {
+  private(set) var record: PracticeRecord
+  private let getterSetter: GetterSetter
+  private let calendar: Calendar
+
+  /// The verb the review card offers, and what to say about it.
+  struct CardOffer: Equatable {
+    let verb: Verb
+    let readingIndex: Int
+    let items: [PracticeItem]
+    /// Whole days since the item was last looked up or answered.
+    let daysSinceActivity: Int?
+    /// Whether that was a lookup rather than a quiz answer.
+    let wasLookedUp: Bool
+  }
+
+  /// `getterSetter` must be the store that holds `LearnerVerbs`, since the first launch with a
+  /// practice record migrates its review schedules.
+  init(getterSetter: GetterSetter, calendar: Calendar = .current, now: Date = .now) {
+    self.getterSetter = getterSetter
+    self.calendar = calendar
+    if let stored = getterSetter.get(key: PracticeRecord.storageKey).flatMap(PracticeRecord.init(json:)) {
+      record = stored
+    } else {
+      record = Self.migrated(from: getterSetter, calendar: calendar)
+      save()
+    }
+  }
+
+  var isEmpty: Bool {
+    record.isEmpty
+  }
+
+  func recordAnswer(verb: Verb, conjugationgroup: Conjugationgroup, readingIndex: Int, isCorrect: Bool, at date: Date = .now) {
+    let item = PracticeItem.exercised(by: conjugationgroup, of: verb, readingIndex: readingIndex)
+    record.recordAnswer(item, isCorrect: isCorrect, at: date, calendar: calendar)
+    save()
+  }
+
+  /// A verb page was opened. An open from the review card does not reschedule, since the learner
+  /// has just reviewed the verb.
+  func recordLookup(_ verb: Verb, source: AnalyticsSource, at date: Date = .now) {
+    let items = PracticeItem.keyConjugations(of: verb)
+    guard !items.isEmpty else {
+      return
+    }
+    record.recordLookup(items, at: date, reschedules: source != .reviewCard, calendar: calendar)
+    save()
+  }
+
+  /// The items due at `date`, the longest overdue first.
+  func dueItems(at date: Date = .now) -> [PracticeItem] {
+    record.dueItems(at: date)
+  }
+
+  /// The strong or mixed verb whose key conjugation is longest overdue, with every due key
+  /// conjugation of that reading, since the card shows all three.
+  func cardOffer(at date: Date = .now) -> CardOffer? {
+    let due = record.dueItems(at: date)
+    guard let first = due.first(where: { $0.verb != nil }),
+          case let .keyConjugation(infinitiv, readingIndex, _) = first,
+          let verb = first.verb else {
+      return nil
+    }
+    let items = due.filter { item in
+      if case let .keyConjugation(otherInfinitiv, otherReading, _) = item {
+        return otherInfinitiv == infinitiv && otherReading == readingIndex
+      }
+      return false
+    }
+    let entries = PracticeItem.Stem.allCases.compactMap { stem in
+      record.entry(for: .keyConjugation(infinitiv: infinitiv, readingIndex: readingIndex, stem: stem))
+    }
+    let latest = entries.max { ($0.lastActivity ?? .distantPast) < ($1.lastActivity ?? .distantPast) }
+    return CardOffer(
+      verb: verb,
+      readingIndex: readingIndex,
+      items: items,
+      daysSinceActivity: latest?.lastActivity.flatMap { PracticeRecord.daysBetween($0, and: date, calendar: calendar) },
+      wasLookedUp: latest?.wasLastLookedUp ?? true
+    )
+  }
+
+  func recordReview(_ offer: CardOffer, at date: Date = .now) {
+    record.recordReview(offer.items, at: date, calendar: calendar)
+    save()
+  }
+
+  func snooze(_ offer: CardOffer, at date: Date = .now) {
+    record.snooze(offer.items, at: date, calendar: calendar)
+    save()
+  }
+
+  /// Settings' Reset Practice. The record is saved empty rather than removed, so that the next
+  /// launch does not migrate the old schedules again.
+  func reset() {
+    record.reset()
+    save()
+  }
+
+  private func save() {
+    if let json = record.json {
+      getterSetter.set(key: PracticeRecord.storageKey, value: json)
+    }
+  }
+
+  /// Browse Phase 15 kept one review schedule per verb, on `LearnerVerbs.Entry.review`, and an
+  /// entry from before that phase counted as looked up on its last open. Each strong or mixed
+  /// verb's schedule becomes its key conjugations' schedule. A weak verb's is dropped, since the
+  /// card no longer offers weak verbs (Josh, 2026-11-14).
+  private static func migrated(from getterSetter: GetterSetter, calendar: Calendar) -> PracticeRecord {
+    var record = PracticeRecord()
+    guard let legacy: LegacyLearnerVerbs = getterSetter.getCodable(key: LearnerVerbs.storageKey) else {
+      return record
+    }
+    for entry in legacy.entries.values {
+      guard let verb = Verb.verbs[entry.infinitiv],
+            let schedule = entry.review ?? entry.lastOpened.map({ ReviewSchedule.start(at: $0, calendar: calendar) }) else {
+        continue
+      }
+      for item in PracticeItem.keyConjugations(of: verb) {
+        record.adopt(item, schedule: schedule, lastLookedUp: entry.lastOpened)
+      }
+    }
+    return record
+  }
+
+  /// The fields of a `LearnerVerbs` record that the migration reads. Decoding ignores the rest.
+  private struct LegacyLearnerVerbs: Decodable {
+    struct Entry: Decodable {
+      let infinitiv: String
+      let lastOpened: Date?
+      let review: ReviewSchedule?
+    }
+
+    let entries: [String: Entry]
+  }
+}

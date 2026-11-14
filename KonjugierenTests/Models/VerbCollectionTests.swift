@@ -107,7 +107,7 @@ struct VerbCollectionTests {
     let verbs = VerbCollection.modals.verbs(region: .north)
     let können = try #require(Verb.verbs["können"])
     let müssen = try #require(Verb.verbs["müssen"])
-    store.recordOpen(können, source: .browse)
+    store.recordOpen(können)
     store.toggleStar(müssen)
     #expect(store.openedCount(of: verbs) == 1)
     #expect(store.hasOpened(können))

@@ -806,6 +806,18 @@ of the pedagogy plan: re-asking, as the verdict narrowed it. A question answered
 once, three questions later or before the results if fewer remain, and never a third time. A right
 re-ask earns half points, like a right second attempt.
 
+**Partly built 2026-11-14** by [Phase 11](pedagogy-implementation.md#phase-11-the-practice-record)
+of the pedagogy plan: the record per item, its ladder, and its two kinds of item, without the Review
+session or "Practice my mistakes" (Phase 12). Every answer in every quiz moves an item, as it is
+given: for a strong or mixed verb, the key conjugation of the stem the question used (fährt, fuhr,
+ist gefahren), and for a weak verb, a pattern of conjugationgroup and person shared by every weak
+verb. A right answer raises an item a box when it is due, and a wrong one sends it back to the
+first. The record lives on the device, in the App Group, and is never sent. Browse Phase 15's
+per-verb schedule was folded in: a lookup now puts a strong verb's key conjugations in the first
+box, and the review card offers strong verbs only. A default quiz asks up to three due items in
+each round of ten, within its level, so a learner who never opens Review still relearns. Settings
+has Reset Practice.
+
 The card-box scheduler suggested here is the Leitner system, from Sebastian Leitner's *So lernt man
 lernen* (1972), and the spacing effect it exploits was first measured by Hermann Ebbinghaus in
 *Über das Gedächtnis* (1885). The two ideas most needed by a German conjugation app were both first
@@ -920,6 +932,11 @@ release. A ranked score is the first ten questions of a quiz over all verbs, so 
 ceiling is 100, and nothing breaks ties. The original leaderboard is retired on `main` and will be
 archived when the release ships. Moving the leaderboard out of the main path is Phase 13's, and
 personal bests and achievements are Phase 23's.
+
+**Built on `main` 2026-11-14** by [Phase 11](pedagogy-implementation.md#phase-11-the-practice-record)
+of the pedagogy plan: partial work kept, as the verdict narrowed it. Each answer goes into the
+practice record when it is given, so a quiz quit after six questions has practiced six. The sad
+trombone still plays on quitting.
 
 A warning about this tier. Meta-analysis finds the effects of gamification on learning small, and
 its effects on motivation and behavior less stable than its effects on test scores (Sailer & Homner

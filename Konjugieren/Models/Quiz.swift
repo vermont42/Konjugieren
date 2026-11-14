@@ -208,6 +208,7 @@ class Quiz {
 
     questions[currentIndex].userAnswer = answer
     questions[currentIndex].isCorrect = isCorrect
+    recordPractice(of: questions[currentIndex], isCorrect: isCorrect)
 
     if isCorrect {
       lastPreferredSpelling = questions[currentIndex].preferredSpelling(of: answer)
@@ -251,6 +252,18 @@ class Quiz {
       Current.soundPlayer.play(.buzz)
       HapticPlayer.playError()
     }
+  }
+
+  /// Each final answer goes into the practice record as it is given, so that a quiz quit after
+  /// six questions has still practiced six (T6.4). A slip's right second attempt counts as right,
+  /// since one letter was all that stood between the learner and the conjugation.
+  private func recordPractice(of question: QuizItem, isCorrect: Bool) {
+    Current.practice.recordAnswer(
+      verb: question.verb,
+      conjugationgroup: question.conjugationgroup,
+      readingIndex: question.readingIndex,
+      isCorrect: isCorrect
+    )
   }
 
   /// Leaves a held correction for the next question, or for the results after the last.
@@ -337,16 +350,22 @@ class Quiz {
     }
     #endif
 
-    return QuizDraw.questions(
-      pool: scope.pool(level: level),
-      verbs: scope.verbs ?? Self.defaultVerbs(for: level),
+    let pool = scope.pool(level: level)
+    let verbs = scope.verbs ?? Self.defaultVerbs(for: level)
+    let due = scope.mixesDueItems
+      ? QuizDraw.dueQuestions(for: Current.practice.dueItems(), pool: pool, verbs: verbs, using: &randomSource)
+      : []
+    let drawn = QuizDraw.questions(
+      pool: pool,
+      verbs: verbs,
       readingIndex: scope.readingIndex,
-      count: scope.questionCount,
+      count: scope.questionCount - due.count,
       distinctCells: !scope.continues,
       mixesVerbs: scope.mixesVerbs,
       relaxesRestrictions: scope.custom != nil,
       using: &randomSource
-    ).map { question in
+    )
+    return QuizDraw.mixing(due, into: drawn, using: &randomSource).map { question in
       makeQuizItem(verb: question.verb, conjugationgroup: question.conjugationgroup, readingIndex: question.readingIndex)
     }
   }
@@ -736,6 +755,13 @@ struct QuizScope {
   /// score over a learner's own verbs or conjugationgroups, or over three questions, compares with
   /// nothing. Only its first round posts.
   var isRanked: Bool {
+    verbs == nil && custom == nil && continues
+  }
+
+  /// Only the default quiz mixes in items the practice record says are due, up to
+  /// `QuizDraw.dueItemLimit` a round (Phase 11). A quiz over chosen verbs or conjugationgroups asks
+  /// what was chosen.
+  var mixesDueItems: Bool {
     verbs == nil && custom == nil && continues
   }
 

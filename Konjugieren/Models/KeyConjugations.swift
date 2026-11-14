@@ -37,9 +37,6 @@ extension Verb {
     )
   }
 
-  private static let keyConjugationgroups: [Conjugationgroup] = [
-    .präsensIndikativ(.thirdSingular),
-    .präteritumIndikativ(.thirdSingular),
-    .perfektIndikativ(.thirdSingular),
-  ]
+  /// The practice record schedules a strong verb's key conjugations, so the two lists are one.
+  private static let keyConjugationgroups = PracticeItem.Stem.allCases.map(\.keyConjugationgroup)
 }

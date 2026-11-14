@@ -359,6 +359,52 @@ attempt. The round ends when `currentIndex` passes the last item, re-asks includ
 
 The dot row wraps (`FlowLayout`), since rounds and re-asks can take it past thirty dots.
 
+### The Practice Record
+
+Built 2026-11-14 in Phase 11 of [`plans/pedagogy-implementation.md`](../plans/pedagogy-implementation.md)
+(T3.3's record, T3.4, T3.5, T6.4). Every final answer in every scope goes into an on-device record
+as it is given, so a quiz quit after six questions has still practiced six; the trombone still
+plays. A slip's first attempt records nothing, and a right second attempt counts as right.
+
+| Piece | Role |
+|---|---|
+| `Shared/PracticeRecord.swift` | `PracticeItem` (an item and its permanent `key`) and `PracticeRecord` (an `Entry` per key: a `ReviewSchedule`, the last answer's date and rightness, the last lookup). Compiled into the widget, which has no corpus |
+| `Shared/ReviewSchedule.swift` | The ladder: 1, 3, 7, 14, and 30 days, the last repeating; due dates fall at the start of a day. `answered(correctly:)` is the quiz's move |
+| `PracticeItemMapping.swift` | Which item a question exercises, the items a lookup schedules, and the cell an item asks |
+| `PracticeStore.swift` | `Current.practice`: saves each change to the App Group's defaults under `practiceRecord`, offers the review card, resets, and migrates browse Phase 15's schedules once |
+| `QuizDueItems.swift` | `QuizDraw.dueQuestions` and `mixing`: the due items a default round takes |
+
+**Two kinds of item (T3.5).** A strong or mixed reading's question exercises one of the verb's key
+conjugations, `key:<infinitiv>:<reading>:<stem>`, chosen by the stem its cell is built on:
+`praesens` for the Präsens Indikativ, the Präsens Konjunktiv I, the Imperativ, and the
+Präsenspartizip; `praeteritum` for the Präteritum Indikativ and Konjunktiv II; `perfekt` for the
+Perfektpartizip and the four Perfekt and Plusquamperfekt tables. A weak or -ieren reading's question
+exercises a pattern, `pattern:<table>:<person>`, shared by every weak verb, so aufmachen, verkaufen,
+and studieren in the Präteritum du share one item with machen. The three Futurs are patterns for
+every verb, since werden and the infinitive show nothing of a strong verb. Strength is judged per
+reading, as the quiz judges it, so hängen's two readings map differently. The table key is
+`ConjugationTable.articleKey` and the person `PersonNumber`'s raw value; changing either orphans
+learners' schedules.
+
+**The ladder.** A new item answered right goes to the second box, due in three days; answered
+wrong, to the first, due tomorrow. A wrong answer always starts an item over. A right answer
+moves it up only when it is due, so a pattern asked three times in one session does not climb
+three boxes in an afternoon. A lookup and the review card move strong verbs' items as § The
+Review Card says.
+
+**Due items in the default quiz.** A round of the default quiz (`QuizScope.mixesDueItems`: every
+verb, no custom choice, ten questions) asks up to `QuizDraw.dueItemLimit` (3) due items, the most
+overdue first, placed at random among a draw of the rest. A key conjugation asks its own cell (the
+er form of the Präsens, Präteritum, or Perfekt) of its verb; a pattern asks its cell of a weak verb
+from the level's band. An item the level does not ask, or a verb beyond the band, waits for Review,
+so the default quiz stays within its level. Every Ten More round does the same. Due questions sit
+outside Phase 6's mix, which balances the other seven. Scoped quizzes mix in nothing.
+
+**Reset Practice**, in Settings' last card while there is a record or a kept wrong answer, asks
+for confirmation, then empties the record (saving it empty, so the migration does not run again)
+and `QuizErrorHistory`, which Josh kept on 2026-11-14 for the Tutor's recommendations and Phase
+14. Starred and recent verbs stay.
+
 ### The Quiz Clock
 
 `Settings.quizClock` (`QuizClock`: `.hide`, `.show`), default `.hide` (T6.5). While it is hidden,
@@ -726,8 +772,9 @@ arriving by any route, but not the same page reappearing after another tab or th
 
 **Adding a field.** It must be optional. Synthesized decoding ignores a default value and requires
 the key, so a required field would fail to decode every older record, and the learner's verbs
-would vanish without an error. `LearnerVerbsTests` pins the decoding of a minimal entry. Phase 15's
-`review` is such a field.
+would vanish without an error. `LearnerVerbsTests` pins the decoding of a minimal entry. Browse
+Phase 15's `review` was such a field; pedagogy Phase 11 moved it into the practice record, and
+decoding ignores it in records written before.
 
 **Where it shows.** The verb page's star. The verb list's picker, whose third segment, My Verbs,
 lists the starred verbs, then the recent ones not starred, with Clear on the recent heading.
@@ -741,31 +788,36 @@ Return on iPad and Mac. Nothing is shown when there is no history.
 
 ### The Review Card
 
-Built 2026-11-13 in Phase 15 of the browse plan, for idea D4. Each launch, and each return from
-the background, the verb list shows one card above its rows when a verb is due: the verb looked up
-longest ago among those due ("Looked up 3 days ago"), its gloss, and its key conjugations hidden
-under a placeholder. A tap reveals them, red letters and all; a second tap opens the page, with
-`source` `reviewCard`; ✕ dismisses the card. Nothing replaces a dismissed card until the next
-opening, and the card hides while a search, the recents, or My Verbs shows. The Suppress Review
-Card setting (`ReviewCardSuppression`, off by default) hides it altogether; the schedule keeps
-running underneath.
+Built 2026-11-13 in Phase 15 of the browse plan, for idea D4, and moved onto the practice record
+(§ The Practice Record, under Quiz System) on 2026-11-14 in Phase 11 of the pedagogy plan. Each
+launch, and each return from the background, the verb list shows one card above its rows when a
+strong or mixed verb has a key conjugation due: the verb whose item is longest overdue, a caption
+saying when it was last touched ("Looked up 3 days ago", or "Practiced 3 days ago" when a quiz
+answer came after the lookup), the asked reading's gloss, and its key conjugations hidden under a
+placeholder. A tap reveals them, red letters and all; a second tap opens the page, with `source`
+`reviewCard`; ✕ dismisses the card. Nothing replaces a dismissed card until the next opening, and
+the card hides while a search, the recents, or My Verbs shows. The Suppress Review Card setting
+(`ReviewCardSuppression`, off by default) hides it altogether; the schedule keeps running
+underneath.
 
 | Piece | Role |
 |---|---|
-| `Shared/ReviewSchedule.swift` | A box and a due date. The ladder is 1, 3, 7, 14, and 30 days, the last repeating; due dates fall at the start of a day |
-| `LearnerVerbs.Entry.review` | The verb's schedule, optional. An entry written before Phase 15 counts as looked up on its last open |
-| `LearnerVerbs.dueForReview(at:)` | The due verbs, longest overdue first |
-| `ReviewCardView.swift` | The card. `VerbBrowseView` chooses the verb and applies each tap to the schedule |
+| `PracticeStore.cardOffer(at:)` | The verb and reading of the longest-overdue key conjugation, with every due key conjugation of that reading, the days since the last activity, and whether that was a lookup |
+| `PracticeStore.recordLookup(_:source:)` | Called by the verb page on every open; puts a strong verb's key conjugations in the first box |
+| `ReviewCardView.swift` | The card. `VerbBrowseView` chooses the offer and applies each tap to the record |
 
-**What moves a verb (Josh, 2026-11-13).** An open puts it in the first box, due the next day, and
-so does any later open, since looking a verb up again suggests it was forgotten. An open from the
-card itself is the exception. Revealing moves it up a box. Dismissing before revealing is no
-review: the verb keeps its box and returns the next day.
+**What moves a verb (Josh, 2026-11-13, kept in Phase 11).** An open puts each strong or mixed
+reading's three key conjugations in the first box, due the next day, and so does any later open,
+since looking a verb up again suggests it was forgotten. An open from the card itself is the
+exception. Revealing moves each due key conjugation of the offered reading up a box; one not yet due
+keeps its place. Dismissing before revealing is no review: each due one keeps its box and returns
+the next day. Quiz answers move the same items.
 
-**For the quiz track.** Pedagogy Tier 3's practice record can take this over: a right answer
-calls what a reveal calls (`recordReview`), and a wrong one should send the verb back to the
-first box, as a lookup does (`ReviewSchedule.lookedUp`), without counting an open. Its items are
-verbs today; Tier 3's weak-verb patterns would need a key other than the infinitive.
+**Weak verbs are no longer offered** (Josh, 2026-11-14). Their conjugations are patterns shared by
+every weak verb, so a lookup of a weak verb schedules nothing, and Review (pedagogy Phase 12) drills
+the patterns. On the first launch with a practice record, each strong verb's Phase 15 schedule
+(`LearnerVerbs.Entry.review`, or for an older entry its last open) became its key conjugations'
+schedule, and weak verbs' schedules were dropped.
 
 ## Collections
 
@@ -1150,6 +1202,7 @@ Counts and durations go out in bands (`AnalyticsBand`), never as exact numbers.
 | `viewReviewCard` | None | Once per card shown: when the review card first appears after a launch or a return from the background (Phase 15) |
 | `viewCollection` | `collection` (its key, such as `modals` or `ablaut-gehen`), `source` (`family`, `sharedLink`, `deeplink`, `quizCorrection`) | When a collection's page appears, once per arrival, or an ablaut group is expanded on the Ablaut page (Phase 16). The ideas document's "lists opened". The key names a fixed list, not anything the learner chose |
 | `tapShareCollection` | `collection` | When a collection's share button is tapped, whether or not the learner then shares (Phase 16) |
+| `tapResetPractice` | None | When Reset Practice in Settings is confirmed (pedagogy Phase 11). Nothing about the record is sent |
 | `tapRevealReviewCard` | None | When a tap reveals the review card's key conjugations, once per card (Phase 15). A page opened from the card then sends `viewVerbView` with `source` `reviewCard` |
 | `startQuiz`, `quitQuiz`, `completeQuiz` | `source` (`tab`, `myVerbs`, `verbPage`, `list`, `custom`); `level` (`beginner`, `elementary`, `intermediate`, `advanced`); `quitQuiz` also `questionNumber` and `duration` (`0-3s`, `3-15s`, `15-40s`, `40s-2m`, `2m+`); `completeQuiz` also `questionCount` (`10`, `20`, `30`, …, or `3`); `startQuiz` alone also carries `collection` for a collection's quiz (Phase 16), or for a custom quiz over a collection, and `customChoice` (`conjugationgroups`, `verbs`, `both`) for a custom quiz (pedagogy Phase 9) | When a quiz starts, is quit, or reaches its results (`source` since Phase 13). Without it, three-question quizzes would inflate the completion rate of the default quiz. `level` replaced `difficulty` (`regular`, `ridiculous`), which only `quitQuiz` and `completeQuiz` sent, in Phase 5 of the pedagogy plan, and `startQuiz` gained it then (M1). Since Phase 7, `completeQuiz` is sent at each round's results, and its `questionCount` says how many rounds' questions the session has asked, so Ten More shows as `20` and `30`. `duration` (M3) is wall-clock time from the start to the quit, background included. `questionNumber` counts re-asks |
 | `abandonQuiz` | `source`, `level`, `questionNumber` | At launch, once for each quiz the last run left in progress (M2, Phase 7 of the pedagogy plan): the app was closed or killed during a question. `QuizAbandonment` keeps an entry per running quiz in `GetterSetter`, written at the start and at each question and removed at a quit or the results. A quiz left at its results is not abandoned |

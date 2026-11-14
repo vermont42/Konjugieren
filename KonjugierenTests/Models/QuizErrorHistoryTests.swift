@@ -30,6 +30,15 @@ struct QuizErrorHistoryTests {
     #expect(records.isEmpty)
   }
 
+  @Test func clearForgetsEveryRecord() {
+    let fake = GetterSetterFake()
+    QuizErrorHistory.record(makeRecord(), getterSetter: fake)
+
+    QuizErrorHistory.clear(getterSetter: fake)
+
+    #expect(QuizErrorHistory.load(getterSetter: fake).isEmpty)
+  }
+
   @Test func recordAndLoad() {
     let fake = GetterSetterFake()
     let record = makeRecord()

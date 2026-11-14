@@ -298,11 +298,12 @@ enum L {
       String(localized: "ReviewCard.dismiss")
     }
 
-    static func lookedUp(daysAgo: Int?) -> String {
+    /// When the card's verb was last looked up, or last practiced in a quiz.
+    static func caption(daysAgo: Int?, wasLookedUp: Bool) -> String {
       guard let daysAgo, daysAgo > 0 else {
-        return String(localized: "ReviewCard.lookedUpEarlier")
+        return wasLookedUp ? String(localized: "ReviewCard.lookedUpEarlier") : String(localized: "ReviewCard.practicedEarlier")
       }
-      return String(localized: "ReviewCard.lookedUp.\(daysAgo)")
+      return wasLookedUp ? String(localized: "ReviewCard.lookedUp.\(daysAgo)") : String(localized: "ReviewCard.practiced.\(daysAgo)")
     }
 
     static var openHint: String {
@@ -649,6 +650,26 @@ enum L {
 
     static var quizClockDescription: String {
       String(localized: "Settings.quizClockDescription")
+    }
+
+    static var resetPractice: String {
+      String(localized: "Settings.resetPractice")
+    }
+
+    static var resetPracticeConfirm: String {
+      String(localized: "Settings.resetPracticeConfirm")
+    }
+
+    static var resetPracticeConfirmMessage: String {
+      String(localized: "Settings.resetPracticeConfirmMessage")
+    }
+
+    static var resetPracticeConfirmTitle: String {
+      String(localized: "Settings.resetPracticeConfirmTitle")
+    }
+
+    static var resetPracticeDescription: String {
+      String(localized: "Settings.resetPracticeDescription")
     }
 
     static var reviewCardSuppressionHeading: String {

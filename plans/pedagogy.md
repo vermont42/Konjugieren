@@ -761,6 +761,12 @@ placeholder counts the first row warns of were checked, and 56 sat in the top 1,
 estimates were moved beside measured verbs of similar use, so none of them reaches a band, the
 widget's verb, or the top 1,000 of the frequency sort.
 
+**Built on `main` 2026-11-13** by [Phase 7](pedagogy-implementation.md#phase-7-ten-questions-then-ten-more)
+of the pedagogy plan: ten questions, then Ten More. Every quiz but a verb page's three questions is
+now a round of ten, and the results offer Ten More, which draws ten more into the same session,
+with the score and clock carrying on. No 30-question choice remains; two rounds of Ten More reach
+thirty. Each round is drawn afresh, so each has the default quiz's mix.
+
 ### Tier 3: Give the Quiz a Memory
 
 | Suggestion | Basis | Effort | Verdict |
@@ -779,6 +785,11 @@ reveal on the review card above the verb list moves it up one, and a later looku
 route sends it back to the first box. Nothing in the quiz reads or writes it yet. It was built so
 that the quiz's practice record can take it over. Re-asking, "Practice my mistakes", and the two
 kinds of item are not built.
+
+**Built on `main` 2026-11-13** by [Phase 7](pedagogy-implementation.md#phase-7-ten-questions-then-ten-more)
+of the pedagogy plan: re-asking, as the verdict narrowed it. A question answered wrongly returns
+once, three questions later or before the results if fewer remain, and never a third time. A right
+re-ask earns half points, like a right second attempt.
 
 The card-box scheduler suggested here is the Leitner system, from Sebastian Leitner's *So lernt man
 lernen* (1972), and the spacing effect it exploits was first measured by Hermann Ebbinghaus in
@@ -882,6 +893,10 @@ quizzes over My Verbs, a collection, or a single verb off the leaderboard.
 pedagogy plan: the rename. Regular and Ridiculous gave way to four levels named for what they
 ask, Beginner to Advanced, and the onboarding page and the Settings tip that named Ridiculous now
 name the levels.
+
+**Built on `main` 2026-11-13** by [Phase 7](pedagogy-implementation.md#phase-7-ten-questions-then-ten-more)
+of the pedagogy plan: the hidden clock, as a setting. Quiz Clock (Quiz-Uhr) is Hide by default, and
+while it is hidden neither the quiz, its results, nor its Live Activity shows the time.
 
 A warning about this tier. Meta-analysis finds the effects of gamification on learning small, and
 its effects on motivation and behavior less stable than its effects on test scores (Sailer & Homner
@@ -1045,7 +1060,10 @@ Within the present policy:
 
 **The first is built on `main` 2026-11-13** by [Phase 5](pedagogy-implementation.md#phase-5-levels)
 of the pedagogy plan: `startQuiz`, `quitQuiz`, and `completeQuiz` carry `level`, which replaced
-`difficulty`. The other two wait for Phase 7. What the browse plan
+`difficulty`. **The other two are built on `main` 2026-11-13** by
+[Phase 7](pedagogy-implementation.md#phase-7-ten-questions-then-ten-more): the next launch after
+the app was closed during a quiz sends `abandonQuiz` with the question reached, and `quitQuiz`
+carries `duration`, in the bands 0-3s, 3-15s, 15-40s, 40s-2m, and 2m+. What the browse plan
 added to the quiz signals instead is `source` on `startQuiz`, `quitQuiz`, and `completeQuiz`
 (`tab`, `myVerbs`, `verbPage`, or `list`), built on `main` 2026-11-13 by
 [Phase 13](browse-and-verb-implementation.md#phase-13-a-quiz-over-chosen-verbs), and `collection`

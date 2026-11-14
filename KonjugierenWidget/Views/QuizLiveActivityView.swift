@@ -11,7 +11,7 @@ struct QuizLiveActivity: Widget {
     } dynamicIsland: { context in
       DynamicIsland {
         DynamicIslandExpandedRegion(.leading) {
-          Label("\(context.state.currentQuestion)/\(context.attributes.totalQuestions)", systemImage: "list.number")
+          Label("\(context.state.currentQuestion)/\(context.state.totalQuestions)", systemImage: "list.number")
             .font(.headline)
         }
         DynamicIslandExpandedRegion(.trailing) {
@@ -19,19 +19,21 @@ struct QuizLiveActivity: Widget {
             .font(.headline)
         }
         DynamicIslandExpandedRegion(.center) {
-          Text(context.state.elapsedTime)
-            .font(.title2)
-            .monospacedDigit()
+          if let elapsedTime = context.state.elapsedTime {
+            Text(elapsedTime)
+              .font(.title2)
+              .monospacedDigit()
+          }
         }
         DynamicIslandExpandedRegion(.bottom) {
           ProgressView(
             value: Double(context.state.currentQuestion),
-            total: Double(context.attributes.totalQuestions)
+            total: Double(context.state.totalQuestions)
           )
           .tint(.blue)
         }
       } compactLeading: {
-        Text("\(context.state.currentQuestion)/\(context.attributes.totalQuestions)")
+        Text("\(context.state.currentQuestion)/\(context.state.totalQuestions)")
           .font(.caption)
           .monospacedDigit()
       } compactTrailing: {
@@ -73,13 +75,15 @@ private struct QuizLockScreenView: View {
         }
 
         HStack(spacing: 4) {
-          Text("\(context.state.currentQuestion) / \(context.attributes.totalQuestions)")
+          Text("\(context.state.currentQuestion) / \(context.state.totalQuestions)")
             .monospacedDigit()
 
-          Text("·")
+          if let elapsedTime = context.state.elapsedTime {
+            Text("·")
 
-          Text(context.state.elapsedTime)
-            .monospacedDigit()
+            Text(elapsedTime)
+              .monospacedDigit()
+          }
         }
         .font(.subheadline)
         .foregroundStyle(.secondary)

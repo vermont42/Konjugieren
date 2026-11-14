@@ -8,8 +8,9 @@ struct ResultsView: View {
   @State private var displayedScore = 0
 
   private var scoreColor: Color {
-    // A right second attempt earns half the points, and half the credit here.
-    let percentage = (Double(quiz.correctCount) + Double(quiz.secondAttemptCount) / 2) / Double(quiz.questionCount)
+    // A right second attempt and a right re-ask earn half points, and the credit here follows
+    // the points.
+    let percentage = Double(quiz.score) / Double(max(quiz.maximumScore, 1))
     if percentage > 0.8 {
       return .green
     } else if percentage >= 0.5 {
@@ -37,7 +38,9 @@ struct ResultsView: View {
             .accessibilityLabel(Text(verbatim: "\(L.Quiz.score) \(quiz.finalScore)"))
             .accessibilityIdentifier("results_score")
 
-          HStack(spacing: Layout.doubleDefaultSpacing) {
+          // A flow, since a second try and a re-ask can make five items, more than an iPhone's
+          // line holds.
+          FlowLayout(spacing: Layout.doubleDefaultSpacing, centersRows: true) {
             Text(label: L.Quiz.correct, value: "\(quiz.correctCount) / \(quiz.questionCount)")
               .font(.caption.monospacedDigit())
             if quiz.secondAttemptCount > 0 {
@@ -45,10 +48,17 @@ struct ResultsView: View {
                 .font(.caption.monospacedDigit())
                 .accessibilityIdentifier("results_second_try")
             }
+            if quiz.reaskCount > 0 {
+              Text(label: L.Quiz.askedAgainLabel, value: "\(quiz.reaskCorrectCount) / \(quiz.reaskCount)")
+                .font(.caption.monospacedDigit())
+                .accessibilityIdentifier("results_asked_again")
+            }
             Text(label: L.Quiz.level, value: quiz.level.localizedName)
               .font(.caption)
-            Text(label: L.Quiz.time, value: TimeFormatter.formatIntTime(quiz.elapsedSeconds))
-              .font(.caption.monospacedDigit())
+            if settings.quizClock == .show {
+              Text(label: L.Quiz.time, value: TimeFormatter.formatIntTime(quiz.elapsedSeconds))
+                .font(.caption.monospacedDigit())
+            }
           }
           .accessibilityElement(children: .combine)
         }
@@ -56,6 +66,19 @@ struct ResultsView: View {
         .konjCard()
         .padding(.horizontal, Layout.doubleDefaultSpacing)
         .padding(.top, Layout.tripleDefaultSpacing)
+
+        if quiz.canContinue {
+          Button {
+            quiz.continueSession()
+          } label: {
+            Label(L.Quiz.tenMore, systemImage: "plus.circle.fill")
+          }
+          .funButton()
+          .frame(maxWidth: .infinity)
+          .padding(.top, Layout.doubleDefaultSpacing)
+          .accessibilityHint(L.Accessibility.quizTenMoreHint)
+          .accessibilityIdentifier("results_ten_more")
+        }
 
         if quiz.scope.isRanked, Current.gameCenter.isAuthenticated {
           Button(L.GameCenter.viewLeaderboard) {
@@ -99,6 +122,16 @@ struct ResultsView: View {
       : question.verb.infinitiv.inUserRegion
 
     VStack(alignment: .center, spacing: 4) {
+      // Not a Label, which a List lays out with its icon in a column of its own.
+      if question.isReask {
+        HStack(spacing: 4) {
+          Image(systemName: "arrow.counterclockwise")
+          Text(L.Quiz.askedAgain)
+        }
+        .font(.caption)
+        .foregroundStyle(.customYellow)
+      }
+
       Text(verbatim: infinitivDisplay)
         .germanPronunciation()
 

@@ -54,6 +54,16 @@ class Settings {
   /// The setting the levels replaced, read once to migrate it.
   static let quizDifficultyKey = "quizDifficulty"
 
+  var quizClock: QuizClock = quizClockDefault {
+    didSet {
+      if quizClock != oldValue {
+        getterSetter.set(key: Settings.quizClockKey, value: quizClock.rawValue)
+      }
+    }
+  }
+  static let quizClockKey = "quizClock"
+  static let quizClockDefault: QuizClock = .hide
+
   var audioFeedback: AudioFeedback = audioFeedbackDefault {
     didSet {
       if audioFeedback != oldValue {
@@ -154,6 +164,7 @@ class Settings {
     region = restore(key: Settings.regionKey, default: Region.seeded(from: Locale.current))
     migrateQuizDifficultyOnce()
     quizLevel = restore(key: Settings.quizLevelKey, default: Settings.quizLevelDefault)
+    quizClock = restore(key: Settings.quizClockKey, default: Settings.quizClockDefault)
     audioFeedback = restore(key: Settings.audioFeedbackKey, default: Settings.audioFeedbackDefault)
     searchScope = restore(key: Settings.searchScopeKey, default: Settings.searchScopeDefault)
     flipSearchScopeDefaultOnce()

@@ -410,8 +410,8 @@ keyboard_is_visible() {
 #
 # So the answer is pasted with the keyboard attached and the hardware keyboard is detached
 # afterwards, purely to raise the soft keyboard for the capture. Detaching does not disturb
-# the field's contents. nav_quiz_results wants the opposite state throughout: it submits 30
-# answers with Cmd+V and Return and never photographs a keyboard.
+# the field's contents. nav_quiz_results wants the opposite state throughout: it submits every
+# fixture answer with Cmd+V and Return and never photographs a keyboard.
 #
 # Cmd+K ("Toggle Software Keyboard") is what this did through 2026-08-01. It no longer
 # surfaces the keyboard on this toolchain (Xcode 26.3) while a hardware keyboard is
@@ -800,7 +800,11 @@ nav_quiz_results() {
   set_keyboard_state hidden
   # No tap: the field is focused after Start and re-focused after each submit, and tapping
   # it raises the edit callout that eats the paste (see paste_into_quiz_field).
-  for i in $(seq 0 29); do
+  # The fixture's length is the quiz's: ten questions since Phase 7 of the pedagogy plan, 30
+  # before it.
+  local count
+  count=$(jq length "$fixture")
+  for i in $(seq 0 $((count - 1))); do
     local answer
     answer=$(jq -r ".[$i].answer" "$fixture")
     paste_into_quiz_field "$answer"

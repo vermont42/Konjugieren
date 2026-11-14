@@ -76,7 +76,9 @@ Konjugieren/
 │   ├── Prefix.swift            # Separable/inseparable prefix enum ([Prefix] helpers live in Reading.swift)
 │   ├── PrefixMeaning.swift     # Prefix meanings with PIE etymologies
 │   ├── PrefixSection.swift     # Curated-vs-other heading for the prefix-grouped verb list
-│   ├── Quiz.swift              # @Observable quiz state: questions, timer, scoring; QuizItem grading (accepts, preferredSpelling); DEBUG fixtures (screenshot, grading, frames); QuizItem.answerFrame; QuizScope (the verbs asked about, the question count, the analytics source, and whether the score is ranked): every verb, My Verbs, or three questions on a verb's page
+│   ├── Quiz.swift              # @Observable quiz state: rounds of ten and Ten More (continueSession), re-asks of missed questions, timer, scoring summed from the items; QuizItem grading (accepts, preferredSpelling), points, reasked(); DEBUG fixtures (screenshot, grading, frames, corrections, slips); QuizItem.answerFrame; QuizScope (the verbs asked about, a round's question count, the analytics source, whether it continues, and whether the score is ranked): every verb, My Verbs, a collection, or three questions on a verb's page
+│   ├── QuizAbandonment.swift   # The quizzes in progress, one entry per Quiz, so that the next launch can send abandonQuiz for one the app was left during (M2)
+│   ├── QuizClock.swift         # Setting enum: hide (the default) or show the quiz's time
 │   ├── QuizDraw.swift          # Draws a quiz's questions from a level's pool: a kind by weight, then a verb it admits, then a cell; for the default quiz, mixes the verbs (half strong, two core, one to three rare derivatives); AnyRandomNumberGenerator
 │   ├── QuizLevel.swift         # Setting enum: Beginner, Elementary, Intermediate, Advanced (replaced QuizDifficulty's regular and ridiculous); each level's pool of QuizPoolEntry (a table's cells, the QuizVerbs it may ask, a weight) and the frequency band its default quiz draws from
 │   ├── RelatedVerbs.swift      # Verb.root (the innermost base: anerkennen → kennen) and Verb.related(readingIndex:): verbs built on the same root, one verb per other root of the ablaut group, and the Families pages of a reading
@@ -235,6 +237,7 @@ KonjugierenTests/
 │   ├── GameStateTests.swift    # Game-logic tests: damage invulnerability, robot-mechanic clearing, game-over/wave transitions, snapshot round-trip
 │   ├── PersonNumberTests.swift # Pronoun and sie-disambiguation tests
 │   ├── QuizErrorHistoryTests.swift # Quiz error persistence tests
+│   ├── QuizRoundTests.swift    # Nested in QuizTests: re-ask placement and limits, half points for a re-ask, Ten More continuing the session, completeQuiz's questionCount, quitQuiz's duration bands, the hidden clock; QuizAbandonment's records and its launch report
 │   ├── QuizLevelTests.swift    # Each level's tables and cells, the restricted cells' verbs, weighted shares under a fixed seed, and short quizzes' distinct cells
 │   ├── QuizVerbMixTests.swift  # The default quiz's verbs over 40 seeds per level: each level's band, half strong, two core verbs, a prefixed verb, one to three rare derivatives, and no provisional count in a band
 │   ├── QuizTests.swift         # Quiz logic, scoring, and timer pause/resume tests; scopes (My Verbs, three questions on a verb page, ranking, the source on start, quit, and completion)

@@ -43,7 +43,7 @@ struct QuizTests {
     let quiz = Quiz(timerInterval: 0.001)
     quiz.start()
 
-    #expect(quiz.questions.count == 30)
+    #expect(quiz.questions.count == 10)
 
     quiz.quit()
   }
@@ -225,10 +225,17 @@ struct QuizTests {
 
     quiz.continueAfterCorrection()
 
+    // The missed question returns once before the results.
+    #expect(quiz.isInProgress)
+    #expect(quiz.correction == nil)
+    #expect(quiz.currentQuestion?.isReask == true)
+
+    quiz.submitAnswer(quiz.currentQuestion!.correctAnswer)
+
     #expect(!quiz.isInProgress)
     #expect(quiz.shouldShowResults)
-    #expect(quiz.correction == nil)
     #expect(quiz.correctCount == 2)
+    #expect(quiz.reaskCorrectCount == 1)
   }
 
   @Test func quittingWhileHeldReportsTheHeldQuestion() {
@@ -343,10 +350,10 @@ struct QuizTests {
     let quiz = Quiz(timerInterval: 0.001)
     quiz.start()
 
-    #expect(quiz.progressText == "1 / 30")
+    #expect(quiz.progressText == "1 / 10")
 
     quiz.submitAnswer(quiz.questions[0].correctAnswer)
-    #expect(quiz.progressText == "2 / 30")
+    #expect(quiz.progressText == "2 / 10")
 
     quiz.quit()
   }
@@ -529,7 +536,7 @@ struct QuizTests {
   }
 
   @Test func quizConstants() {
-    #expect(Quiz.questionCount == 30)
+    #expect(Quiz.questionCount == 10)
     #expect(Quiz.pointsPerCorrect == 10)
   }
 

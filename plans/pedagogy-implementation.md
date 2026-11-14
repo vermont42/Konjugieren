@@ -21,7 +21,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 4 | Done | 2026-11-13 | `ae1b4a4` | T1.6 |
 | 5 | Done | 2026-11-13 | `71e0bc9` | T2.3, T2.6, T6.7, M1 |
 | 6 | Done | 2026-11-13 | `4ee097d` | T2.1, T2.2, T2.5 |
-| 7 | Not started | | | T2.7, T3.1, T6.5, M2, M3 |
+| 7 | Awaiting Josh | 2026-11-13 | | T2.7, T3.1, T6.5, M2, M3 |
 | 8 | Not started | | | Decision 4 |
 | 9 | Not started | | | T2.8 |
 | 10 | Not started | | | T2.9, Decision 8 |
@@ -732,7 +732,8 @@ quizzes are unaffected, with tests for each.
 
 ## Phase 7: Ten Questions, Then Ten More
 
-**Suggestions:** T2.7, T3.1, T6.5, M2, M3. **Depends on:** Phases 3 and 5. **Status:** Not started.
+**Suggestions:** T2.7, T3.1, T6.5, M2, M3. **Depends on:** Phases 3 and 5. **Status:** Awaiting
+Josh.
 
 - **T2.7.** The default session is ten questions, with an offer to continue. Josh agreed
   reluctantly, since ten questions are far from comprehensive, in the hope that a shorter quiz
@@ -765,7 +766,65 @@ pin the re-ask placement and the continuation.
 
 **How it differed:**
 
-(To be written by the session that finishes this phase.)
+- **Josh decided four things on 2026-11-13**, each the recommended option. (1) Until Phase 8, a
+  default session posts its first round's score, re-asks not counted, to the existing leaderboard
+  when the first results appear, and Ten More's points are never posted. That is Phase 8's rule
+  applied early, so Phase 8 has only to change where the score goes (`Quiz.firstRoundScore`).
+  (2) My Verbs and collection quizzes become ten with Ten More too, and a verb page keeps its
+  three questions with no Ten More (`QuizScope.continues`). (3) The Live Activity starts for every
+  ten-question round, with a total that counts the session so far, and shows no time while the
+  clock is hidden. (4) M3's bands are 0-3s, 3-15s, 15-40s, 40s-2m, and 2m+.
+- **Decided in the session, not asked.** Ten More has no limit; "Ten More, twice, reaches thirty"
+  was read as how to reach thirty, not as a cap. Each round of Ten More draws a fresh mix of ten
+  (Phase 6's open question), so every round, the ranked first included, is balanced, at the cost
+  of up to nine rare derivatives in thirty questions. A verb page's quiz re-asks too. A re-ask may
+  still earn a slip's second attempt, and a right re-ask earns 5 on either attempt.
+- **How it works.** `Quiz.questionCount` (the static) is now a round's 10; the instance's
+  `questionCount` is the rounds' questions so far, re-asks excluded, and a round ends when
+  `currentIndex` passes the last item, re-asks included. A wrong final answer inserts
+  `QuizItem.reasked()` `Quiz.reaskGap` (3) questions on, or at the round's end. `score`,
+  `correctCount`, and the other counts are computed from the items' `points` rather than kept
+  alongside, which made re-asks and Ten More bookkeeping-free. `continueSession()` appends a
+  fresh draw and restarts the clock and the Live Activity. `QuizActivityAttributes.totalQuestions`
+  moved into the content state, since re-asks grow it mid-activity, and `elapsedTime` became
+  optional.
+- **What a learner sees.** The correction says "This question will come up again." / "Diese
+  Frage kommt noch einmal."; a re-ask's card and results row say "Asked Again" / "Noch einmal
+  gefragt"; its dot is a diamond; the results add "Asked Again: 2 / 3" and "Ten More" / "Zehn
+  weitere". The results' header became a wrapping flow (five items no longer fit an iPhone's
+  line), and so did the dot row, which passes thirty dots after two rounds of Ten More. Josh has
+  not judged any of the wording.
+- **The clock** is a new setting, Quiz Clock / Quiz-Uhr, Hide / Show (Ausblenden / Anzeigen),
+  under Quiz Level. The clock still counts while hidden.
+- **Strings that said 30 or "timed"** changed: the All Verbs line on the start screen, Start's
+  VoiceOver hint, the onboarding quiz page ("Take ten-question quizzes"), and `TryQuizTip`. The
+  App Store description was not touched; it names no count.
+- **Analytics.** `completeQuiz` is now sent at each round's results with `questionCount` (10, 20,
+  …), so Ten More shows without a signal of its own. `quitQuiz` gained `duration` (M3), wall-clock
+  from the start, background included. The new `abandonQuiz` (M2) is sent at launch for each quiz
+  the last run left mid-question; `QuizAbandonment` keeps one entry per `Quiz` instance, since a
+  sheet's quiz can run beside the tab's. All staged in
+  [`docs/privacy-policy-pending.md`](../docs/privacy-policy-pending.md), with the section 6
+  sentence about which quizzes post.
+- **Fixtures** are cut or repeated to a round's ten; the screenshot fixture now asks its first ten,
+  and `scripts/take_screenshots.sh` answers as many questions as the fixture holds.
+- **One test changed its claim.** `QuizVerbMixTests.frequentDerivativesDrawFreely` asserted that
+  40 thirty-question quizzes held more derivatives than three per quiz. At ten questions that
+  average fell to 2.7, so it now asserts that some quiz holds more than three.
+- **Verified on the iPhone 17**, in dark mode, with the `corrections` fixture: in English, a miss
+  showed the come-up-again line and a diamond four places on, the re-ask came with its badge,
+  answers after it scored 5 each (85 for seven right and three re-asks), the results showed Asked
+  Again and Ten More and no time, and Ten More resumed with the score and the keyboard. In German,
+  the clock set to Anzeigen in Settings, a round of misses showed Zeit in the quiz and the results,
+  the time carried across Zehn weitere (25 s, then 39 s), and 40 dots wrapped to two lines. **On
+  the iPad Pro 11-inch (M5)**, in light mode and English: the start screen, the correction line,
+  the badge, the results (two re-asks, 10 points), Ten More with typing at once, and the clock
+  setting. Found by looking: the results row's "Asked Again" was first a `Label`, whose icon a
+  `List` set apart in a column of its own. Not tried: VoiceOver by ear, the software keyboard, the
+  Live Activity, a real abandonment across a relaunch (unit-tested), and Game Center.
+- **Seen, not changed.** The quiz card's red border stays lit after a wrong answer until the next
+  one, since it follows a toggled flag; this predates the phase. In English, the Rate or Review
+  line in Settings ends in German ("Füge deine hinzu."). Tests: 19 new, 620 in all.
 
 ## Phase 8: Leaderboards by Level
 

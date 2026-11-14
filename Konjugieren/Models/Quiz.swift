@@ -8,19 +8,21 @@ import UIKit
 @MainActor
 @Observable
 class Quiz {
-  static let questionCount = 30
+  /// The questions of a session's first round, and of each Ten More after it.
+  static let questionCount = 10
   static let pointsPerCorrect = 10
+  /// A right second attempt, and a right re-ask, earn half.
   static let pointsPerSecondAttempt = pointsPerCorrect / 2
+  /// A missed question returns once, after this many others, or before the results if fewer
+  /// remain.
+  static let reaskGap = 3
 
   private(set) var isInProgress = false
   var shouldShowResults = false
   private(set) var currentIndex = 0
-  private(set) var score = 0
   private(set) var elapsedSeconds = 0
-  /// Right on the first attempt. A right second attempt is counted apart, in
-  /// `secondAttemptCount`.
-  private(set) var correctCount = 0
-  private(set) var secondAttemptCount = 0
+  /// How many rounds the session has begun: 1 at the start, and one more for each Ten More.
+  private(set) var roundCount = 0
 
   /// The correction of a wrong answer, which holds the quiz on its question, with the clock
   /// stopped, until `continueAfterCorrection()`. A right answer advances at once.
@@ -32,8 +34,48 @@ class Quiz {
   private(set) var questions: [QuizItem] = []
   private(set) var scope = QuizScope.allVerbs
 
+  /// The questions the session's rounds have asked, re-asks not included: 10, then 20 after Ten
+  /// More, or 3 on a verb's page.
   var questionCount: Int {
-    scope.questionCount
+    scope.questionCount * max(roundCount, 1)
+  }
+
+  var score: Int {
+    questions.reduce(0) { $0 + $1.points }
+  }
+
+  /// The most `score` could be, were every question and re-ask right on the first attempt.
+  var maximumScore: Int {
+    questions.reduce(0) { $0 + $1.maximumPoints }
+  }
+
+  /// The score of the first round's questions, re-asks not counted, which is what a ranked
+  /// session posts (Phase 8 of the pedagogy plan).
+  var firstRoundScore: Int {
+    questions.filter { !$0.isReask }.prefix(scope.questionCount).reduce(0) { $0 + $1.points }
+  }
+
+  /// Right on the first attempt, re-asks not included. A right second attempt is counted apart,
+  /// in `secondAttemptCount`.
+  var correctCount: Int {
+    questions.filter { !$0.isReask && $0.state == .correct }.count
+  }
+
+  var secondAttemptCount: Int {
+    questions.filter { !$0.isReask && $0.state == .correctOnSecondAttempt }.count
+  }
+
+  var reaskCount: Int {
+    questions.filter(\.isReask).count
+  }
+
+  var reaskCorrectCount: Int {
+    questions.filter { $0.isReask && $0.isCorrect == true }.count
+  }
+
+  /// Whether the results offer Ten More. A verb page's three questions do not continue.
+  var canContinue: Bool {
+    scope.continues
   }
 
   private var timer: Timer?
@@ -41,6 +83,10 @@ class Quiz {
   private let timerInterval: TimeInterval
   private var randomSource: AnyRandomNumberGenerator
   private var liveActivity: Activity<QuizActivityAttributes>?
+  private var startDate = Date()
+  /// Names this quiz's entry in `QuizAbandonment`, since a quiz in a sheet can run beside the
+  /// Quiz tab's.
+  private let abandonmentID = UUID().uuidString
 
   var currentQuestion: QuizItem? {
     guard isInProgress, currentIndex < questions.count else { return nil }
@@ -53,15 +99,19 @@ class Quiz {
   }
 
   var progressText: String {
-    "\(currentIndex + 1) / \(questionCount)"
+    "\(currentIndex + 1) / \(questions.count)"
   }
 
   var elapsedText: String {
     TimeFormatter.formatIntTime(elapsedSeconds)
   }
 
-  var elapsedTimeLiveActivity: String {
-    TimeFormatter.formatMinutesSeconds(elapsedSeconds)
+  /// Nil while the quiz clock is hidden, so that the Live Activity shows no time either.
+  var elapsedTimeLiveActivity: String? {
+    guard Current.settings.quizClock == .show else {
+      return nil
+    }
+    return TimeFormatter.formatMinutesSeconds(elapsedSeconds)
   }
 
   // Every level scores alike, since each will have its own leaderboard (Phase 8 of the pedagogy
@@ -83,20 +133,13 @@ class Quiz {
       return
     }
     resetProgressState()
+    roundCount = 1
+    startDate = Date()
     isInProgress = true
     shouldShowResults = false
     startTimer()
-    // A three-question quiz on a verb's page is over before a Live Activity would be noticed.
-    if questionCount == Quiz.questionCount {
-      let attributes = QuizActivityAttributes(
-        level: level.localizedName,
-        totalQuestions: questionCount
-      )
-      liveActivity = LiveActivityManager.start(
-        attributes: attributes,
-        initialState: makeContentState(isFinished: false)
-      )
-    }
+    startLiveActivity()
+    recordProgress()
     Current.soundPlayer.play(Sound.randomGun)
     HapticPlayer.playMediumImpact()
     var parameters = [
@@ -108,6 +151,40 @@ class Quiz {
     }
     Current.analytics.signal(name: .startQuiz, parameters: parameters)
     announceQuestion()
+  }
+
+  /// Ten More: another round in the same session, offered by the results. The score, the clock,
+  /// and the questions so far carry on, and the new questions are a fresh draw, so that every
+  /// round has the default quiz's mix of verbs.
+  func continueSession() {
+    guard shouldShowResults, !isInProgress, canContinue else { return }
+    let more = generateQuestions()
+    guard !more.isEmpty else {
+      return
+    }
+    questions += more
+    roundCount += 1
+    correction = nil
+    lastPreferredSpelling = nil
+    isInProgress = true
+    shouldShowResults = false
+    startTimer()
+    startLiveActivity()
+    recordProgress()
+    Current.soundPlayer.play(Sound.randomGun)
+    HapticPlayer.playMediumImpact()
+    announceQuestion()
+  }
+
+  // A three-question quiz on a verb's page is over before a Live Activity would be noticed.
+  private func startLiveActivity() {
+    guard canContinue else {
+      return
+    }
+    liveActivity = LiveActivityManager.start(
+      attributes: QuizActivityAttributes(level: level.localizedName),
+      initialState: makeContentState(isFinished: false)
+    )
   }
 
   func submitAnswer(_ answer: String) {
@@ -130,13 +207,6 @@ class Quiz {
     questions[currentIndex].isCorrect = isCorrect
 
     if isCorrect {
-      if isSecondAttempt {
-        score += Quiz.pointsPerSecondAttempt
-        secondAttemptCount += 1
-      } else {
-        score += Quiz.pointsPerCorrect
-        correctCount += 1
-      }
       lastPreferredSpelling = questions[currentIndex].preferredSpelling(of: answer)
       Current.soundPlayer.play(.chime)
       HapticPlayer.playSuccess()
@@ -146,7 +216,13 @@ class Quiz {
       let question = questions[currentIndex]
       lastPreferredSpelling = nil
       stopTimer()
+      // A re-ask is not asked a third time, whatever its answer, so that one stubborn question
+      // cannot fill a ten-question round (Josh, T3.1).
+      if !question.isReask {
+        questions.insert(question.reasked(), at: min(currentIndex + 1 + Quiz.reaskGap, questions.count))
+      }
       correction = QuizCorrection(
+        willBeReasked: !question.isReask,
         difference: question.difference(from: answer),
         errorContext: ErrorExplainerContext(
           infinitiv: question.verb.infinitiv,
@@ -191,16 +267,19 @@ class Quiz {
       LiveActivityManager.update(liveActivity, state: makeContentState(isFinished: false))
     }
 
-    if currentIndex >= questionCount {
+    if currentIndex >= questions.count {
       finishQuiz()
     } else {
+      recordProgress()
       announceQuestion()
     }
   }
 
   func quit() {
     let questionNumber = currentIndex + 1
+    let duration = Date().timeIntervalSince(startDate)
     stopTimer()
+    QuizAbandonment.clear(id: abandonmentID, getterSetter: Current.getterSetter)
     isInProgress = false
     if let liveActivity {
       LiveActivityManager.end(liveActivity, finalState: makeContentState(isFinished: false))
@@ -210,17 +289,26 @@ class Quiz {
     questions = []
     Current.soundPlayer.play(Sound.randomSadTrombone)
     Current.analytics.signal(name: .quitQuiz, parameters: [
+      ParameterKey.duration.rawValue: AnalyticsBand.quizDuration(duration),
       ParameterKey.level.rawValue: level.rawValue,
       ParameterKey.questionNumber.rawValue: "\(questionNumber)",
       ParameterKey.source.rawValue: scope.source.rawValue
     ])
   }
 
+  /// Where the quiz has reached, for the next launch to report should the app be left during it
+  /// (M2).
+  private func recordProgress() {
+    QuizAbandonment.record(
+      QuizAbandonment.Entry(level: level.rawValue, source: scope.source.rawValue, questionNumber: currentIndex + 1),
+      id: abandonmentID,
+      getterSetter: Current.getterSetter
+    )
+  }
+
   private func resetProgressState() {
     currentIndex = 0
-    score = 0
-    correctCount = 0
-    secondAttemptCount = 0
+    roundCount = 0
     elapsedSeconds = 0
     correction = nil
     lastPreferredSpelling = nil
@@ -230,7 +318,7 @@ class Quiz {
     #if DEBUG
     switch UserDefaults.standard.string(forKey: "KONJUGIEREN_QUIZ_FIXTURE") {
     case "screenshot":
-      let items = generateScreenshotFixture()
+      let items = Array(generateScreenshotFixture().prefix(scope.questionCount))
       exportFixtureAnswers(items)
       return items
     case "grading":
@@ -251,7 +339,7 @@ class Quiz {
       verbs: scope.verbs ?? Self.defaultVerbs(for: level),
       readingIndex: scope.readingIndex,
       count: scope.questionCount,
-      distinctCells: scope.questionCount < Quiz.questionCount,
+      distinctCells: !scope.continues,
       mixesVerbs: scope.verbs == nil,
       using: &randomSource
     ).map { question in
@@ -362,8 +450,7 @@ class Quiz {
 
   // The answers Phase 1 of the pedagogy plan made right, one per question, for trying by hand:
   // ihr habt ferngeguckt, uebernehme, stossen Sie um, stuende, sammle, verglich, gehe, kämst,
-  // sandte, and erkennt an. Any question count other than 30 is fine here, since the quiz
-  // finishes at questionCount.
+  // sandte, and erkennt an.
   private func generateGradingFixture() -> [QuizItem] {
     let plan: [(infinitiv: String, group: Conjugationgroup)] = [
       ("ferngucken", .perfektIndikativ(.secondPlural)),
@@ -440,10 +527,10 @@ class Quiz {
     return repeatedFixture(plan)
   }
 
-  // Repeated to the quiz's length, so that the progress dots and the finish behave as usual.
+  // Repeated to a round's length, so that the progress dots and the finish behave as usual.
   // Each repeat is a new item, since the dots tell items apart by id.
   private func repeatedFixture(_ plan: [(infinitiv: String, group: Conjugationgroup)]) -> [QuizItem] {
-    (0..<questionCount).map { index in
+    (0..<scope.questionCount).map { index in
       let spec = plan[index % plan.count]
       guard let verb = Verb.verbs[spec.infinitiv] else {
         preconditionFailure("Quiz fixture references missing verb: \(spec.infinitiv)")
@@ -493,13 +580,14 @@ class Quiz {
   }
 
   private func updateLiveActivityTime() {
-    guard let liveActivity else { return }
+    guard let liveActivity, Current.settings.quizClock == .show else { return }
     LiveActivityManager.update(liveActivity, state: makeContentState(isFinished: false))
   }
 
   private func makeContentState(isFinished: Bool) -> QuizActivityAttributes.ContentState {
     QuizActivityAttributes.ContentState(
-      currentQuestion: min(currentIndex + 1, questionCount),
+      currentQuestion: min(currentIndex + 1, questions.count),
+      totalQuestions: questions.count,
       score: score,
       correctCount: correctCount,
       elapsedTime: elapsedTimeLiveActivity,
@@ -525,6 +613,7 @@ class Quiz {
 
   private func finishQuiz() {
     stopTimer()
+    QuizAbandonment.clear(id: abandonmentID, getterSetter: Current.getterSetter)
     isInProgress = false
     shouldShowResults = true
     if let liveActivity {
@@ -535,16 +624,21 @@ class Quiz {
     HapticPlayer.playSuccess()
     Current.analytics.signal(name: .completeQuiz, parameters: [
       ParameterKey.level.rawValue: level.rawValue,
+      ParameterKey.questionCount.rawValue: "\(questionCount)",
       ParameterKey.source.rawValue: scope.source.rawValue
     ])
     announceQuizCompletion()
-    if questionCount == Quiz.questionCount {
+    let isFirstRound = roundCount == 1
+    if isFirstRound, canContinue {
       ChangeLevelTip.quizCompleted.sendDonation()
     }
 
-    if scope.isRanked {
+    // Only the first round ranks, and without its re-asks, so that every ranked score has the
+    // same ceiling (Josh, 2026-11-13). Ten More's points are the learner's alone.
+    if isFirstRound, scope.isRanked {
+      let rankedScore = firstRoundScore
       Task {
-        await Current.gameCenter.submitScore(finalScore)
+        await Current.gameCenter.submitScore(rankedScore)
       }
     }
     Current.reviewPrompter.promptableActionHappened()
@@ -552,7 +646,14 @@ class Quiz {
 
   private func announceQuestion() {
     guard UIAccessibility.isVoiceOverRunning, let question = currentQuestion else { return }
-    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+    var delay = 1.0
+    if question.isReask {
+      DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        UIAccessibility.post(notification: .announcement, argument: L.Quiz.askedAgain)
+      }
+      delay += 1.0
+    }
+    DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
       Current.utterer.utter(question.verb.infinitiv)
       DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
         Current.utterer.utter(question.translation, localeString: UttererLocale.english)
@@ -589,6 +690,9 @@ class Quiz {
     if secondAttemptCount > 0 {
       announcement += " \(L.Quiz.secondTry) \(secondAttemptCount)."
     }
+    if reaskCount > 0 {
+      announcement += " \(L.Quiz.askedAgainLabel) \(reaskCorrectCount) / \(reaskCount)."
+    }
     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
       UIAccessibility.post(notification: .announcement, argument: announcement)
     }
@@ -618,10 +722,16 @@ struct QuizScope {
   /// The collection a quiz was started from, which `startQuiz` names (Phase 16).
   var collectionKey: String?
 
-  /// Only a full quiz over every verb posts to the leaderboard, as Josh decided on 2026-11-13:
-  /// a score over a learner's own verbs, or over three questions, compares with nothing.
+  /// Only a default quiz over every verb posts to the leaderboard, as Josh decided on 2026-11-13:
+  /// a score over a learner's own verbs, or over three questions, compares with nothing. Only its
+  /// first round posts.
   var isRanked: Bool {
-    verbs == nil && questionCount == Quiz.questionCount
+    verbs == nil && continues
+  }
+
+  /// Whether the results offer Ten More. Every quiz does but a verb page's three questions.
+  var continues: Bool {
+    questionCount == Quiz.questionCount
   }
 
   static let verbPageQuestionCount = 3
@@ -639,6 +749,8 @@ struct QuizScope {
 
 /// A wrong answer held on screen with the right one until the learner continues.
 struct QuizCorrection: Equatable {
+  /// False for a re-ask, which does not return again.
+  let willBeReasked: Bool
   let difference: AnswerDifference
   /// What `ErrorExplainerView` would explain, were it enabled.
   let errorContext: ErrorExplainerContext
@@ -676,6 +788,8 @@ struct QuizItem: Identifiable {
   var isCorrect: Bool?
   /// A slip that earned one more attempt, kept for the results.
   var firstAttempt: String?
+  /// A missed question asked once more, a few questions later. It earns half points.
+  let isReask: Bool
 
   var isAwaitingSecondAttempt: Bool {
     firstAttempt != nil && isCorrect == nil
@@ -693,8 +807,10 @@ struct QuizItem: Identifiable {
     correctAnswer: String,
     acceptableAnswers: Set<String>? = nil,
     regionalSpellings: [String]? = nil,
-    readingIndex: Int = 0
+    readingIndex: Int = 0,
+    isReask: Bool = false
   ) {
+    self.isReask = isReask
     self.verb = verb
     self.conjugationgroup = conjugationgroup
     self.correctAnswer = correctAnswer
@@ -739,6 +855,35 @@ struct QuizItem: Identifiable {
 
   private func acceptedCandidate(of answer: String) -> String? {
     AnswerSpelling.candidates(for: answer, in: conjugationgroup).first { acceptedSpellings.contains($0) }
+  }
+
+  /// The question asked again, unanswered, as a new item, since the dots tell items apart by id.
+  func reasked() -> QuizItem {
+    QuizItem(
+      verb: verb,
+      conjugationgroup: conjugationgroup,
+      correctAnswer: correctAnswer,
+      acceptableAnswers: acceptableAnswers,
+      regionalSpellings: regionalSpellings,
+      readingIndex: readingIndex,
+      isReask: true
+    )
+  }
+
+  var maximumPoints: Int {
+    isReask ? Quiz.pointsPerSecondAttempt : Quiz.pointsPerCorrect
+  }
+
+  /// A right re-ask earns half points, as a right second attempt does, on whichever attempt.
+  var points: Int {
+    switch state {
+    case .correct:
+      return maximumPoints
+    case .correctOnSecondAttempt:
+      return Quiz.pointsPerSecondAttempt
+    case .incorrect, .unanswered:
+      return 0
+    }
   }
 
   var state: State {

@@ -71,6 +71,7 @@ struct KonjugierenApp: App {
     Current.gameCenter.authenticate()
     let appID = Bundle.main.infoDictionary?["TelemetryDeckAppID"] as? String ?? ""
     Current.analytics.initialize(appID: appID)
+    QuizAbandonment.reportAndClear(getterSetter: Current.getterSetter, analytics: Current.analytics)
     if TipDisplay.tipsEnabled {
       try? Tips.configure()
     }

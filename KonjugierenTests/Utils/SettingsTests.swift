@@ -11,6 +11,7 @@ struct SettingsTests {
     #expect(settings.conjugationgroupLang == .german)
     #expect(settings.thirdPersonPronounGender == .er)
     #expect(settings.quizLevel == .beginner)
+    #expect(settings.quizClock == .hide)
     #expect(settings.audioFeedback == .enable)
     #expect(settings.searchScope == .infinitiveAndTranslation)
     #expect(settings.reviewCardSuppression == .off)
@@ -59,6 +60,7 @@ struct SettingsTests {
     #expect(fake.get(key: Settings.conjugationgroupLangKey) == "german")
     #expect(fake.get(key: Settings.thirdPersonPronounGenderKey) == "er")
     #expect(fake.get(key: Settings.quizLevelKey) == "beginner")
+    #expect(fake.get(key: Settings.quizClockKey) == "hide")
     #expect(fake.get(key: Settings.audioFeedbackKey) == "enable")
     #expect(fake.get(key: Settings.reviewCardSuppressionKey) == "off")
     #expect(fake.get(key: Settings.hasSeenOnboardingKey) == "false")
@@ -76,6 +78,9 @@ struct SettingsTests {
 
     settings.quizLevel = .advanced
     #expect(fake.get(key: Settings.quizLevelKey) == "advanced")
+
+    settings.quizClock = .show
+    #expect(fake.get(key: Settings.quizClockKey) == "show")
 
     settings.audioFeedback = .disable
     #expect(fake.get(key: Settings.audioFeedbackKey) == "disable")

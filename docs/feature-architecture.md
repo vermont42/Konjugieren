@@ -21,16 +21,19 @@ The quiz tests users' knowledge of German verb conjugations with timed, scored g
 | `QuizLevel.swift` | The level setting, each level's pool, `QuizPoolEntry` (a table's cells, their verbs, a weight), `QuizVerbs` (which verbs a restricted cell may ask), and each level's frequency band |
 | `QuizDraw.swift` | Draws a quiz's questions from a level's pool with an injectable random source, mixing the default quiz's verbs |
 | `QuizErrorHistory.swift` | Persists recent wrong answers (up to 200) for AI analysis |
+| `QuizAbandonment.swift` | The quizzes in progress, so that the next launch can report one the app was left during (`abandonQuiz`) |
+| `QuizClock.swift` | The setting that shows or hides the quiz's time, hidden by default |
 | `ErrorExplainerView.swift` | On-demand AI explanation of why an answer was wrong |
 | `LiveActivityManager.swift` | Starts/updates/ends quiz Live Activity on lock screen |
 
 ### Quiz Flow
 
-1. User taps "Start" → `quiz.start(scope:)` generates the scope's questions and, for a 30-question quiz, starts a Live Activity
+1. User taps "Start" → `quiz.start(scope:)` generates the scope's ten questions (three on a verb page) and, except on a verb page, starts a Live Activity
 2. Timer begins, questions presented one at a time; Live Activity updates on each answer
 3. User types conjugation, presses return → `quiz.submitAnswer()`
-4. A right answer advances at once. A slip waits for one more attempt (see One More Try). A wrong one is recorded to `QuizErrorHistory` and held on its question, with the clock stopped, until Continue (see The Held Correction)
-5. After 30 questions → `quiz.finishQuiz()` shows ResultsView and ends the Live Activity
+4. A right answer advances at once. A slip waits for one more attempt (see One More Try). A wrong one is recorded to `QuizErrorHistory`, queued to be asked again, and held on its question, with the clock stopped, until Continue (see The Held Correction, and Rounds and Re-asks)
+5. After the round's questions and re-asks → `quiz.finishQuiz()` shows ResultsView and ends the Live Activity
+6. Ten More (`quiz.continueSession()`) draws ten more questions into the same session, and the flow resumes at step 2
 
 ### Question Generation
 
@@ -111,16 +114,19 @@ quiz in a sheet shows) and `collectionKey` (which `startQuiz` names).
 
 | Scope | Verbs | Questions | `source` | Ranked |
 |---|---|---|---|---|
-| `.allVerbs` | Every verb | 30 | `tab` | Yes |
-| `.myVerbs(_:)` | My Verbs (starred, then the 20 last opened), with replacement | 30 | `myVerbs` | No |
+| `.allVerbs` | Every verb | 10, then Ten More | `tab` | First round |
+| `.myVerbs(_:)` | My Verbs (starred, then the 20 last opened), with replacement | 10, then Ten More | `myVerbs` | No |
 | `.verbPage(_:readingIndex:)` | The verb on screen, in the reading on screen | 3 | `verbPage` | No |
-| `.collection(_:)` | A collection's verbs (Phase 16), with replacement, in a sheet | 30 | `list` | No |
+| `.collection(_:)` | A collection's verbs (Phase 16), with replacement, in a sheet | 10, then Ten More | `list` | No |
 
-A quiz of 30 questions draws as above. A shorter one asks distinct cells and no participle, from
-the learner's level, since every Perfekt among three questions tests the participle anyway. Only a ranked quiz posts to Game Center and shows the leaderboard
-button: Josh decided on 2026-11-13 that neither a scoped quiz nor a three-question quiz should
-post. Only a 30-question quiz starts a Live Activity and counts toward `ChangeLevelTip`. Every scope uses
-the learner's level.
+A quiz whose rounds are ten (`QuizScope.continues`) draws as above. The verb page's three
+questions ask distinct cells and no participle, from the learner's level, since every Perfekt
+among three questions tests the participle anyway. Only a ranked quiz posts to Game Center and
+shows the leaderboard button: Josh decided on 2026-11-13 that neither a scoped quiz nor a
+three-question quiz should post. Only a quiz of ten-question rounds starts a Live Activity and
+counts toward `ChangeLevelTip`, the latter on its first results only. Every scope uses the
+learner's level. Before Phase 7 of the pedagogy plan (2026-11-13), every quiz but the verb page's
+was 30 questions.
 
 The Quiz tab's start screen shows a big yellow symbol for the chosen scope (books for All
 Verbs, a star for My Verbs), its name and a line about what it asks, the All Verbs / My Verbs
@@ -161,7 +167,7 @@ replaces the selection, through the field's `TextSelection`. With a hardware key
 iOS draws the toolbar as a floating bar at the bottom of the screen.
 
 The DEBUG launch default `KONJUGIEREN_QUIZ_FIXTURE grading` asks ten questions whose answers
-exercise all of this, repeated to 30. See the comment on `Quiz.generateGradingFixture()`.
+exercise all of this. See the comment on `Quiz.generateGradingFixture()`.
 
 ### The Answer Frame
 
@@ -195,8 +201,8 @@ other text is hidden from VoiceOver. The first field keeps the identifier `quiz_
 second is `quiz_answer_field_2`.
 
 The frame is meant for reuse: Phase 15's three blanks and Phase 18's sentence frames are more
-segments of the same kind. `KONJUGIEREN_QUIZ_FIXTURE frames` asks one question per frame above,
-repeated to 30.
+segments of the same kind. `KONJUGIEREN_QUIZ_FIXTURE frames` asks one question per frame above.
+A fixture is cut or repeated to a round's ten questions, and Ten More asks it again.
 
 ### The Held Correction
 
@@ -267,13 +273,50 @@ The results' score color gives a second attempt half credit.
 `KONJUGIEREN_QUIZ_FIXTURE slips` asks ten questions with a slip or a near miss for each in the
 comment on `Quiz.generateSlipsFixture()`.
 
+### Rounds and Re-asks
+
+Built 2026-11-13 in Phase 7 of [`plans/pedagogy-implementation.md`](../plans/pedagogy-implementation.md).
+A session is rounds of `Quiz.questionCount` (10) questions. The results of each round offer **Ten
+More**, which calls `Quiz.continueSession()`: ten more questions, drawn afresh so that each round
+has the default quiz's mix (half strong, two core, one to three rare derivatives), are appended to
+`questions`, and the score, the clock, and the earlier questions carry on. There is no limit; two
+rounds of Ten More reach the thirty the quiz used to ask. `roundCount` counts the rounds begun,
+and `questionCount` is the rounds' questions so far (10, 20, 30), re-asks excluded. A verb page's
+three questions do not continue (`canContinue`, from `QuizScope.continues`).
+
+A question answered wrongly, after any second attempt, is **re-asked once**: a copy of it
+(`QuizItem.reasked()`, `isReask`) is inserted `Quiz.reaskGap` (3) questions later, or at the
+round's end when fewer remain, so a question missed near the end returns before the results. A
+re-ask is never re-asked, whatever its answer (Josh, T3.1). The correction says "This question
+will come up again." for a question that will return, and VoiceOver reads it with the correction.
+A re-ask's card carries an "Asked Again" line, which VoiceOver announces before the verb; its dot
+is a diamond; and its results row carries the same line. A re-ask may still earn a slip's second
+attempt. The round ends when `currentIndex` passes the last item, re-asks included.
+
+The dot row wraps (`FlowLayout`), since rounds and re-asks can take it past thirty dots.
+
+### The Quiz Clock
+
+`Settings.quizClock` (`QuizClock`: `.hide`, `.show`), default `.hide` (T6.5). While it is hidden,
+the quiz card, the results, and the Live Activity show no time; `elapsedTimeLiveActivity` is nil
+and the timer's Live Activity updates are skipped. The clock still counts, still stops while a
+correction is held, and still runs across Ten More.
+
 ### Scoring
 
-- **10 points** per correct answer, **5** for one right on the second attempt
+- **10 points** per correct answer, **5** for one right on the second attempt, and **5** for a
+  right re-ask, on whichever attempt
+- Each `QuizItem` knows its `points` and `maximumPoints`; `score`, `correctCount`,
+  `secondAttemptCount`, `reaskCount`, and `reaskCorrectCount` are computed from `questions`.
+  `correctCount` and `secondAttemptCount` exclude re-asks. The results' score color is
+  `score / maximumScore`
 - **The same at every level.** Ridiculous's doubling went with the levels (Phase 5); each level
   is to get its own leaderboard in Phase 8, so no score compares across levels
-- **Leaderboard:** only a ranked quiz (every verb, 30 questions) submits its score. Until Phase 8,
-  every level posts to the one leaderboard
+- **Leaderboard:** only a ranked quiz (every verb, the default scope) submits a score, and only
+  when its first round's results appear: `firstRoundScore`, the first ten questions' points
+  without their re-asks, so every ranked score has a ceiling of 100 (Josh, 2026-11-13, for Phase
+  8; adopted early in Phase 7). Ten More's points are never posted. Until Phase 8, every level
+  posts to the one leaderboard
 - `quiz.finalScore` equals `score`
 
 ### Key Properties
@@ -282,16 +325,19 @@ comment on `Quiz.generateSlipsFixture()`.
 |----------|------|-------------|
 | `isInProgress` | `Bool` | Quiz currently active |
 | `scope` | `QuizScope` | What the quiz asks about |
-| `questionCount` | `Int` | The scope's question count: 30, or 3 on a verb page (`Quiz.questionCount` is the full quiz's 30) |
-| `currentIndex` | `Int` | Current question (0-29) |
+| `questionCount` | `Int` | The session's questions so far, re-asks excluded: 10, 20, 30, …, or 3 on a verb page (`Quiz.questionCount` is a round's 10) |
+| `roundCount` | `Int` | Rounds begun: 1, then one more for each Ten More |
+| `currentIndex` | `Int` | Index of the current item in `questions`, re-asks included |
 | `level` | `QuizLevel` | The level the quiz was started at |
-| `score` | `Int` | Points so far |
+| `score` | `Int` | Points so far, summed from the items |
+| `firstRoundScore` | `Int` | The first round's points without re-asks: what a ranked session posts |
 | `finalScore` | `Int` | The score submitted and shown in the results; equal to `score` since Phase 5 |
 | `elapsedSeconds` | `Int` | Time elapsed |
 | `correctCount` | `Int` | Number right on the first attempt |
 | `secondAttemptCount` | `Int` | Number right on the second attempt |
+| `reaskCount`, `reaskCorrectCount` | `Int` | Re-asks so far, and those answered right |
 | `isAwaitingSecondAttempt` | `Bool` | A slip waits for its one more attempt |
-| `questions` | `[QuizItem]` | All 30 questions |
+| `questions` | `[QuizItem]` | Every round's questions and re-asks, in the order asked |
 | `correction` | `QuizCorrection?` | The held correction of a wrong answer: its `AnswerDifference`, and the `ErrorExplainerContext` the disabled explainer would take |
 | `lastPreferredSpelling` | `String?` | The conjugation's own spelling of the last answer, when it was right but spelled another way |
 
@@ -671,7 +717,7 @@ Fixed lists as places to go, from idea D6 of
 [`browse-and-verb-ideas.md`](browse-and-verb-ideas.md): the 100 most frequent verbs, the modal
 verbs, the verbs that take sein, and each of the 76 ablaut groups. Built 2026-11-13 in Phase 16 of
 [`plans/browse-and-verb-implementation.md`](../plans/browse-and-verb-implementation.md). Each shows
-how many of its verbs have been looked up, starts an unranked 30-question quiz on itself in a
+how many of its verbs have been looked up, starts an unranked ten-question quiz on itself in a
 sheet, and is shared as text with a `list/<key>` link and the App Store link.
 
 | Piece | Role |
@@ -871,7 +917,7 @@ Both the quiz and game use ActivityKit Live Activities to show real-time progres
 | File | Purpose |
 |------|---------|
 | `LiveActivityManager.swift` | Static methods to start, update, and end activities |
-| `QuizActivityAttributes.swift` | ActivityKit model: level (its localized name), total questions, current state |
+| `QuizActivityAttributes.swift` | ActivityKit model: level (its localized name), current state |
 | `GameActivityAttributes.swift` | ActivityKit model: wave, score, health fraction, phase |
 | `QuizLiveActivityView.swift` | Widget-side view rendering quiz progress |
 | `GameLiveActivityView.swift` | Widget-side view rendering game state |
@@ -880,10 +926,11 @@ Both the quiz and game use ActivityKit Live Activities to show real-time progres
 
 | Field | Description |
 |-------|-------------|
-| `currentQuestion` | Question number (1–30) |
+| `currentQuestion` | Position in the session, re-asks included |
+| `totalQuestions` | The session's items so far, which grows with each re-ask and Ten More |
 | `score` | Running score |
 | `correctCount` | Running correct count |
-| `elapsedTime` | Formatted elapsed time string |
+| `elapsedTime` | Formatted elapsed time string, nil while the quiz clock is hidden |
 | `isFinished` | Whether the quiz has ended |
 
 ### Game Live Activity State
@@ -1048,7 +1095,8 @@ Counts and durations go out in bands (`AnalyticsBand`), never as exact numbers.
 | `viewCollection` | `collection` (its key, such as `modals` or `ablaut-gehen`), `source` (`family`, `sharedLink`, `deeplink`, `quizCorrection`) | When a collection's page appears, once per arrival, or an ablaut group is expanded on the Ablaut page (Phase 16). The ideas document's "lists opened". The key names a fixed list, not anything the learner chose |
 | `tapShareCollection` | `collection` | When a collection's share button is tapped, whether or not the learner then shares (Phase 16) |
 | `tapRevealReviewCard` | None | When a tap reveals the review card's key conjugations, once per card (Phase 15). A page opened from the card then sends `viewVerbView` with `source` `reviewCard` |
-| `startQuiz`, `quitQuiz`, `completeQuiz` | `source` (`tab`, `myVerbs`, `verbPage`, `list`); `level` (`beginner`, `elementary`, `intermediate`, `advanced`); `quitQuiz` also `questionNumber`; `startQuiz` alone also carries `collection` for a collection's quiz (Phase 16) | When a quiz starts, is quit, or is completed (`source` since Phase 13). Without it, three-question quizzes would inflate the completion rate of the 30-question quiz. `level` replaced `difficulty` (`regular`, `ridiculous`), which only `quitQuiz` and `completeQuiz` sent, in Phase 5 of the pedagogy plan, and `startQuiz` gained it then (M1) |
+| `startQuiz`, `quitQuiz`, `completeQuiz` | `source` (`tab`, `myVerbs`, `verbPage`, `list`); `level` (`beginner`, `elementary`, `intermediate`, `advanced`); `quitQuiz` also `questionNumber` and `duration` (`0-3s`, `3-15s`, `15-40s`, `40s-2m`, `2m+`); `completeQuiz` also `questionCount` (`10`, `20`, `30`, …, or `3`); `startQuiz` alone also carries `collection` for a collection's quiz (Phase 16) | When a quiz starts, is quit, or reaches its results (`source` since Phase 13). Without it, three-question quizzes would inflate the completion rate of the default quiz. `level` replaced `difficulty` (`regular`, `ridiculous`), which only `quitQuiz` and `completeQuiz` sent, in Phase 5 of the pedagogy plan, and `startQuiz` gained it then (M1). Since Phase 7, `completeQuiz` is sent at each round's results, and its `questionCount` says how many rounds' questions the session has asked, so Ten More shows as `20` and `30`. `duration` (M3) is wall-clock time from the start to the quit, background included. `questionNumber` counts re-asks |
+| `abandonQuiz` | `source`, `level`, `questionNumber` | At launch, once for each quiz the last run left in progress (M2, Phase 7 of the pedagogy plan): the app was closed or killed during a question. `QuizAbandonment` keeps an entry per running quiz in `GetterSetter`, written at the start and at each question and removed at a quit or the results. A quiz left at its results is not abandoned |
 
 `VerbVisit` models one stretch of a verb page on screen, and `SearchTracker` and `SearchReport`
 model one search. A section counts as reached when a third of its block's first card is on screen

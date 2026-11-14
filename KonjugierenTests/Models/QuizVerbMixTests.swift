@@ -90,9 +90,13 @@ struct QuizVerbMixTests {
     })
   }
 
+  // A frequent derivative is not held to the rare ones' one to three, so some ten-question quiz
+  // asks more than three. Before Phase 7's ten questions, this counted all 40 quizzes together.
   @Test func frequentDerivativesDrawFreely() {
-    let derivatives = Self.seeds.flatMap { defaultQuiz(.beginner, seed: $0) }.filter { QuizDraw.isDerivative(reading(of: $0)) }
-    #expect(derivatives.count > Self.seeds.count * QuizDraw.rareDerivativeRange.upperBound)
+    let derivativeCounts = Self.seeds.map { seed in
+      defaultQuiz(.beginner, seed: seed).filter { QuizDraw.isDerivative(reading(of: $0)) }.count
+    }
+    #expect((derivativeCounts.max() ?? 0) > QuizDraw.rareDerivativeRange.upperBound)
   }
 
   @Test(arguments: QuizLevel.allCases)

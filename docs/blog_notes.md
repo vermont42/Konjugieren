@@ -10505,3 +10505,62 @@ English Beginner quiz on the iPhone asked only top-100 verbs. A German Mittelstu
 exactly one rare derivative, *unterscheiden* at #329. An Advanced quiz on the iPad asked
 *hineinrufen* at #3053, along with *gären*, *melken*, and *dingen*, which is the whole corpus
 doing what Advanced promises. Tests went from 587 to 601.
+
+## Ten Questions, Then Ten More (2026-11-13)
+
+Phase 7 of the pedagogy plan shortened the quiz from thirty questions to ten. Josh agreed to this
+reluctantly. Ten questions are far from comprehensive, and he accepted them in the hope that a
+shorter quiz is started and finished more often. The plan's answer to the reluctance is Ten More:
+the results of each round offer ten more questions, and taking them continues the same session,
+with the score and the clock carrying on. Twice reaches the old thirty, and nothing stops a
+learner going further.
+
+The same phase added re-asking. A question answered wrongly comes back once, three questions
+later, or just before the results if the round is nearly over, and a right answer the second time
+earns half points. It comes back only once, by Josh's verdict, because in a ten-question round one
+stubborn question asked until right could take over the quiz. It also hid the clock behind a new
+setting, which is off by default, and added two analytics signals that the pedagogy report had
+asked for: how far a quiz got before the app was closed during it, and roughly how long after the
+start a learner quit.
+
+### Four questions first
+
+The plan left a few things to Josh, and I asked them before writing code. Until Phase 8 gives each
+level its own leaderboard, what should a ten-question quiz post? He chose the first round's score
+without re-asks, which is the rule Phase 8 had already decided, applied early. Should My Verbs and
+collection quizzes, thirty questions until now, change too? Yes, to ten with Ten More. Only the
+three questions on a verb's page stay as they are. Should the Live Activity, which started only for
+thirty-question quizzes and so would never start again, survive? Yes, for every ten-question round.
+And which time bands should the quit signal use? Five, keeping the report's two cutoffs (under
+three seconds is exploring, over forty is struggling) and splitting the long tail.
+
+Two questions I settled myself and recorded. Ten More draws a fresh ten each time rather than
+dealing out thirty drawn at the start, so that every round, the ranked first round above all, has
+Phase 6's balance of strong and weak verbs. And Ten More has no cap.
+
+### Counting by asking the questions
+
+Before this phase, `Quiz` kept its score and its counts of right answers as running totals,
+updated as each answer came in. Re-asks and rounds would have made that bookkeeping fiddly: a
+re-ask earns 5, is counted apart from first-round answers, and must not enter the ranked score.
+Each `QuizItem` now knows its own points from its state, and the score is the sum over
+`questions`. Every count follows from the items, so there is nothing to keep in step.
+
+### Two things the screen showed
+
+The results row for a re-ask carried a small "Asked Again" label with an icon. In the simulator,
+the icon sat far to the left of its text. A `List` treats a `Label` as a row label and puts its icon
+in a column of its own, so the label became a plain `HStack`.
+
+The other was arithmetic. The progress dots sit in a single row, and two rounds of Ten More with a
+few re-asks pass thirty-three dots, wider than an iPhone. A quiz of thirty never had re-asks to
+push it over. The row now wraps, and in a German run of forty misses it broke onto a second line
+as it should.
+
+### Reading what a test claims
+
+One existing test failed for an honest reason. It checked that frequent prefixed verbs are not
+held to the one-to-three cap on rare ones, by asserting that forty quizzes held more than three
+derivatives each on average. At thirty questions that was safe. At ten, the average was 2.7. The
+property it guards had not changed, only how much evidence a quiz could hold, so the test now
+asserts that some ten-question quiz holds more than three.

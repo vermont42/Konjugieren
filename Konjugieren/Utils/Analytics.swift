@@ -5,11 +5,13 @@ import Foundation
 enum ParameterKey: String {
   case collection
   case deepestSection
+  case duration
   case dwell
   case level
   case matchKind
   case outcome
   case queryLength
+  case questionCount
   case questionNumber
   case resultCount
   case resultPosition
@@ -18,6 +20,7 @@ enum ParameterKey: String {
 }
 
 enum AnalyticsName: String {
+  case abandonQuiz
   case completeQuiz
   case completeWave
   case finishSearch
@@ -162,6 +165,24 @@ enum AnalyticsBand {
       return "2-5"
     default:
       return "6+"
+    }
+  }
+
+  /// From a quiz's start to its quit. The report reads a quit within three seconds as exploring
+  /// and one after forty as struggling; the longer bands split a round of ten, which often runs
+  /// one to three minutes.
+  nonisolated static func quizDuration(_ seconds: TimeInterval) -> String {
+    switch seconds {
+    case ..<3:
+      return "0-3s"
+    case ..<15:
+      return "3-15s"
+    case ..<40:
+      return "15-40s"
+    case ..<120:
+      return "40s-2m"
+    default:
+      return "2m+"
     }
   }
 

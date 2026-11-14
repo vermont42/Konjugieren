@@ -112,8 +112,9 @@ struct QuizView: View {
         quiz.continueAfterCorrection()
       }
     }
+    // Ten More closes the results onto the quiz, which is in progress again, so a sheet stays.
     .sheet(isPresented: $quiz.shouldShowResults, onDismiss: {
-      if sheetScope != nil {
+      if sheetScope != nil, !quiz.isInProgress {
         dismiss()
       }
     }) {
@@ -123,6 +124,19 @@ struct QuizView: View {
       answerBlanks = []
       focusedBlank = 0
       accessibilityFocusedBlank = 0
+    }
+    // Ten More leaves currentIndex where the results found it, at the first new question, and the
+    // field returns only once the results sheet has gone.
+    .onChange(of: quiz.roundCount) { _, roundCount in
+      guard roundCount > 1 else {
+        return
+      }
+      answerBlanks = []
+      Task { @MainActor in
+        try? await Task.sleep(for: .milliseconds(450))
+        focusedBlank = 0
+        accessibilityFocusedBlank = 0
+      }
     }
     // Back from a page opened from the correction, the keyboard returns, so Return continues.
     .onChange(of: navigationPath.isEmpty) { _, isEmpty in
@@ -146,6 +160,13 @@ struct QuizView: View {
   private func quizContent(question: QuizItem) -> some View {
     VStack(spacing: Layout.doubleDefaultSpacing) {
       VStack(alignment: .leading, spacing: Layout.defaultSpacing) {
+        if question.isReask {
+          Label(L.Quiz.askedAgain, systemImage: "arrow.counterclockwise")
+            .font(.subheadline.bold())
+            .foregroundStyle(.customYellow)
+            .accessibilityIdentifier("quiz_asked_again")
+        }
+
         Text(verbatim: question.verb.infinitiv.inUserRegion)
           .font(.title.bold())
           .foregroundStyle(.customForeground)
@@ -168,8 +189,10 @@ struct QuizView: View {
           Text(label: L.Quiz.score, value: "\(quiz.score)")
             .font(.caption.monospacedDigit())
           Spacer()
-          Text(label: L.Quiz.elapsed, value: quiz.elapsedText)
-            .font(.caption.monospacedDigit())
+          if settings.quizClock == .show {
+            Text(label: L.Quiz.elapsed, value: quiz.elapsedText)
+              .font(.caption.monospacedDigit())
+          }
         }
 
         if showCorrectCheck {
@@ -253,9 +276,11 @@ struct QuizView: View {
       .padding(.horizontal, Layout.doubleDefaultSpacing)
       .padding(.top, Layout.doubleDefaultSpacing)
 
-      HStack(spacing: 4) {
+      // Wraps, since Ten More and re-asks can take the row past thirty dots, wider than an iPhone.
+      FlowLayout(spacing: 4, centersRows: true) {
         ForEach(Array(quiz.questions.enumerated()), id: \.element.id) { index, item in
-          Image(systemName: "circle.fill")
+          // A re-ask's dot is a diamond, so the row shows which questions return.
+          Image(systemName: item.isReask ? "diamond.fill" : "circle.fill")
             .font(.system(size: 8))
             .frame(width: 8, height: 8)
             .foregroundStyle(item.state.dotColor)
@@ -272,11 +297,11 @@ struct QuizView: View {
       .accessibilityElement(children: .ignore)
       .accessibilityLabel(L.Accessibility.quizDotRow(
         current: quiz.currentIndex + 1,
-        total: quiz.questionCount,
+        total: quiz.questions.count,
         correct: quiz.questions.filter { $0.state == .correct }.count,
         secondTry: quiz.questions.filter { $0.state == .correctOnSecondAttempt }.count,
         incorrect: quiz.questions.filter { $0.state == .incorrect }.count,
-        remaining: quiz.questionCount - quiz.currentIndex - 1
+        remaining: quiz.questions.count - quiz.currentIndex - 1
       ))
     }
   }

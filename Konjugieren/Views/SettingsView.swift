@@ -114,6 +114,21 @@ struct SettingsView: View {
               GradientDivider()
 
               settingSection(
+                heading: L.Settings.quizClockHeading,
+                description: L.Settings.quizClockDescription
+              ) {
+                Picker(L.Settings.quizClockHeading, selection: $settings.quizClock) {
+                  ForEach(QuizClock.allCases, id: \.self) { quizClock in
+                    Text(quizClock.localizedQuizClock).tag(quizClock)
+                  }
+                }
+                .pickerStyle(.segmented)
+                .accessibilityIdentifier("quiz_clock_picker")
+              }
+
+              GradientDivider()
+
+              settingSection(
                 heading: L.Settings.audioFeedbackHeading,
                 description: L.Settings.audioFeedbackDescription
               ) {

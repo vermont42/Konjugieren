@@ -1632,13 +1632,29 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Startet ein Quiz mit 30 Fragen auf Zeit"
+            "value" : "Startet ein Quiz mit zehn Fragen"
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Starts a timed quiz with 30 questions"
+            "value" : "Starts a quiz with ten questions"
+          }
+        }
+      }
+    },
+    "Accessibility.quizTenMoreHint" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Setzt dieses Quiz mit zehn weiteren Fragen fort und zählt die Punkte weiter."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Continues this quiz with ten more questions, adding to its score."
           }
         }
       }
@@ -4191,13 +4207,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Mach zeitgesteuerte Quizze, sammle Punkte und tritt auf der Game-Center-Rangliste an. Wähle eine Stufe vom Einstieg bis zur Oberstufe. Jede Stufe ergänzt die vorige um weitere Conjugationgroups, und die Oberstufe enthält auch solche, die außerhalb formeller oder akademischer Texte selten vorkommen."
+            "value" : "Mach Quizze mit zehn Fragen, sammle Punkte und tritt auf der Game-Center-Rangliste an. Wähle eine Stufe vom Einstieg bis zur Oberstufe. Jede Stufe ergänzt die vorige um weitere Conjugationgroups, und die Oberstufe enthält auch solche, die außerhalb formeller oder akademischer Texte selten vorkommen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Take timed quizzes, earn points, and compete on the Game Center leaderboard. Choose a level from Beginner to Advanced. Each level adds conjugationgroups to the one before, and Advanced includes those rarely seen outside formal or academic writing."
+            "value" : "Take ten-question quizzes, earn points, and compete on the Game Center leaderboard. Choose a level from Beginner to Advanced. Each level adds conjugationgroups to the one before, and Advanced includes those rarely seen outside formal or academic writing."
           }
         }
       }
@@ -5251,13 +5267,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Dreißig Fragen auf Zeit, jede zu einem zufällig gewählten Verb."
+            "value" : "Zehn Fragen, jede zu einem zufällig gewählten Verb, und zehn weitere, wann immer du willst."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Thirty timed questions, each on a verb drawn at random."
+            "value" : "Ten questions, each on a verb drawn at random, and ten more whenever you like."
           }
         }
       }
@@ -5323,6 +5339,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Incorrect."
+          }
+        }
+      }
+    },
+    "Quiz.askedAgain" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Noch einmal gefragt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asked Again"
+          }
+        }
+      }
+    },
+    "Quiz.askedAgainLabel" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Noch einmal gefragt:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asked Again:"
           }
         }
       }
@@ -5689,6 +5737,22 @@
         }
       }
     },
+    "Quiz.tenMore" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zehn weitere"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ten More"
+          }
+        }
+      }
+    },
     "Quiz.time" : {
       "localizations" : {
         "de" : {
@@ -5737,6 +5801,22 @@
         }
       }
     },
+    "Quiz.willAskAgain" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Frage kommt noch einmal."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This question will come up again."
+          }
+        }
+      }
+    },
     "Quiz.yourAnswer" : {
       "localizations" : {
         "de" : {
@@ -5749,6 +5829,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Your Answer:"
+          }
+        }
+      }
+    },
+    "QuizClock.hide" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ausblenden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hide"
+          }
+        }
+      }
+    },
+    "QuizClock.show" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Anzeigen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show"
           }
         }
       }
@@ -6229,6 +6341,38 @@
         }
       }
     },
+    "Settings.quizClockDescription" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Einstellung bestimmt, ob Quizze zeigen, wie lange du schon antwortest. Ist die Uhr ausgeblendet, zeigen weder das Quiz noch seine Ergebnisse die Zeit."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This setting determines whether quizzes show how long you have been answering. While the clock is hidden, neither the quiz nor its results show the time."
+          }
+        }
+      }
+    },
+    "Settings.quizClockHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quiz-Uhr"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quiz Clock"
+          }
+        }
+      }
+    },
     "Settings.quizLevelDescription" : {
       "localizations" : {
         "de" : {
@@ -6644,13 +6788,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Teste dein Wissen über deutsche Verbkonjugationen in einem Quiz auf Zeit."
+            "value" : "Teste dein Wissen über deutsche Verbkonjugationen in einem Quiz mit zehn Fragen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Test your knowledge of German verb conjugations with a timed quiz."
+            "value" : "Test your knowledge of German verb conjugations with a ten-question quiz."
           }
         }
       }

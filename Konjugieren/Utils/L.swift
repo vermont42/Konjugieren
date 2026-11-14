@@ -68,6 +68,10 @@ enum L {
       String(localized: "Accessibility.quizCorrectionLinkHint")
     }
 
+    static var quizTenMoreHint: String {
+      String(localized: "Accessibility.quizTenMoreHint")
+    }
+
     static var quizContinueHint: String {
       String(localized: "Accessibility.quizContinueHint")
     }
@@ -619,6 +623,14 @@ enum L {
       String(localized: "Settings.quizLevelDescription")
     }
 
+    static var quizClockHeading: String {
+      String(localized: "Settings.quizClockHeading")
+    }
+
+    static var quizClockDescription: String {
+      String(localized: "Settings.quizClockDescription")
+    }
+
     static var reviewCardSuppressionHeading: String {
       String(localized: "Settings.reviewCardSuppressionHeading")
     }
@@ -967,6 +979,32 @@ enum L {
 
     static func announceCorrectSpelling(_ spelling: String) -> String {
       String(localized: "Quiz.announceCorrectSpelling \(spelling)")
+    }
+
+    static var askedAgain: String {
+      String(localized: "Quiz.askedAgain")
+    }
+
+    static var askedAgainLabel: String {
+      String(localized: "Quiz.askedAgainLabel")
+    }
+
+    static var willAskAgain: String {
+      String(localized: "Quiz.willAskAgain")
+    }
+
+    static var tenMore: String {
+      String(localized: "Quiz.tenMore")
+    }
+  }
+
+  enum QuizClock {
+    static var hide: String {
+      String(localized: "QuizClock.hide")
+    }
+
+    static var show: String {
+      String(localized: "QuizClock.show")
     }
   }
 

@@ -38,6 +38,14 @@ struct QuizCorrectionView: View {
       .accessibilityFocused(accessibilityIsFocused)
       .accessibilityIdentifier("quiz_correction")
 
+      if correction.willBeReasked {
+        Label(L.Quiz.willAskAgain, systemImage: "arrow.counterclockwise")
+          .font(.subheadline)
+          .foregroundStyle(.secondary)
+          .accessibilityHidden(true)
+          .accessibilityIdentifier("quiz_will_ask_again")
+      }
+
       FlowLayout(spacing: Layout.defaultSpacing) {
         if showsVerbLink {
           link(
@@ -139,6 +147,9 @@ struct QuizCorrectionView: View {
     let letters = difference.expectedMarkedLetters
     if !letters.isEmpty, letters.count <= Self.maxSpokenLetters {
       spoken += " " + L.Accessibility.quizDifferingLetters(letters.joined(separator: ", "))
+    }
+    if correction.willBeReasked {
+      spoken += " " + L.Quiz.willAskAgain
     }
     return spoken
   }

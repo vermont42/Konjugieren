@@ -295,3 +295,66 @@ Der Punkt über den Quiz-Schwierigkeitsgrad in Abschnitt 2 lautet nun:
 ```
 - Die gewählte Quizstufe (Einstieg, Grundstufe, Mittelstufe oder Oberstufe) beim Starten, Abbrechen oder Abschließen eines Quiz
 ```
+
+## Ten-question rounds, abandoned quizzes, and time to quit (pedagogy plan, Phase 7, 2026-11-13)
+
+Adds `questionCount` to `completeQuiz`, which is now sent at the results of each round of ten (10,
+then 20 after Ten More, and so on), `duration` to `quitQuiz` (the time from the start to the quit,
+in the bands below; the report's M3), and the signal `abandonQuiz`, sent at the next launch after
+the app was closed during a quiz, with the level, where the quiz was begun, and the question
+reached (M2). None says which verb was asked, what was answered, or how many answers were right
+(Decision 5). The lines change the quiz bullets as given in the Collections section above, the
+level bullet as given in the Quiz levels section above, and the existing bullet about progress in
+a quiz.
+
+### English
+
+The first quiz bullet in section 2 now reads:
+
+```
+- Quiz lifecycle events (starting, quitting, completing a round of ten questions, and how many rounds the quiz has reached), and where the quiz was begun: the quiz screen, your own verbs, a verb's page, or a collection, and which collection
+```
+
+The bullet about the quiz level now reads:
+
+```
+- The quiz level you chose (Beginner, Elementary, Intermediate, or Advanced) when you start, quit, or complete a quiz, or close the app during one
+```
+
+The bullet about progress in a quiz now reads:
+
+```
+- How far you progressed in a quiz if you quit early or close the app during it (question number reached), and roughly how long after starting you quit (under 3 seconds, 3 to 15 seconds, 15 to 40 seconds, 40 seconds to 2 minutes, or longer)
+```
+
+The sentence added to section 6 in the My Verbs section above now reads:
+
+```
+Only the first ten questions of a quiz over all verbs post a score; a quiz over your own verbs or a single verb does not, and neither do the ten more questions you may add.
+```
+
+### German
+
+Der erste Punkt über das Quiz in Abschnitt 2 lautet nun:
+
+```
+- Quiz-Lebenszyklus-Ereignisse (Starten, Abbrechen, Abschließen einer Runde von zehn Fragen und wie viele Runden das Quiz erreicht hat) und wo das Quiz begonnen wurde: auf dem Quiz-Bildschirm, mit Ihren eigenen Verben, auf der Seite eines Verbs oder in einer Sammlung, samt der Angabe, welche Sammlung
+```
+
+Der Punkt über die Quizstufe lautet nun:
+
+```
+- Die gewählte Quizstufe (Einstieg, Grundstufe, Mittelstufe oder Oberstufe) beim Starten, Abbrechen oder Abschließen eines Quiz oder wenn Sie die App währenddessen schließen
+```
+
+Der Punkt über den Fortschritt in einem Quiz lautet nun:
+
+```
+- Ihren Fortschritt in einem Quiz, falls Sie es vorzeitig abbrechen oder die App währenddessen schließen (erreichte Fragennummer), und ungefähr, wie lange nach dem Start Sie abgebrochen haben (unter 3 Sekunden, 3 bis 15 Sekunden, 15 bis 40 Sekunden, 40 Sekunden bis 2 Minuten oder länger)
+```
+
+Der in Abschnitt 6 ergänzte Satz aus dem Abschnitt über „Meine Verben“ oben lautet nun:
+
+```
+Nur die ersten zehn Fragen eines Quiz über alle Verben reichen ein Ergebnis ein; ein Quiz über Ihre eigenen Verben oder ein einzelnes Verb tut das nicht, ebenso wenig die zehn weiteren Fragen, die Sie anhängen können.
+```

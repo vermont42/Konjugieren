@@ -20,7 +20,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 3 | Done | 2026-11-13 | `f7f3fbc` | T4.1, T4.4, T4.5 |
 | 4 | Done | 2026-11-13 | `ae1b4a4` | T1.6 |
 | 5 | Done | 2026-11-13 | `71e0bc9` | T2.3, T2.6, T6.7, M1 |
-| 6 | Awaiting Josh | 2026-11-13 | | T2.1, T2.2, T2.5 |
+| 6 | Done | 2026-11-13 | `4ee097d` | T2.1, T2.2, T2.5 |
 | 7 | Not started | | | T2.7, T3.1, T6.5, M2, M3 |
 | 8 | Not started | | | Decision 4 |
 | 9 | Not started | | | T2.8 |
@@ -645,7 +645,7 @@ migrate, `startQuiz` carries the level, and tests pin each level's pool.
 
 ## Phase 6: Which Verbs Are Asked
 
-**Suggestions:** T2.1, T2.2, T2.5. **Depends on:** Phase 5. **Status:** Awaiting Josh.
+**Suggestions:** T2.1, T2.2, T2.5. **Depends on:** Phase 5. **Status:** Done.
 
 For the default quiz (not My Verbs, a collection, or a verb's page, whose verbs are chosen):
 

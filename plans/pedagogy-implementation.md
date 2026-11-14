@@ -24,7 +24,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 7 | Done | 2026-11-13 | `80b5f85` | T2.7, T3.1, T6.5, M2, M3 |
 | 8 | Done | 2026-11-14 | `cba6f9e` | Decision 4 |
 | 9 | Done | 2026-11-14 | `b4f00b0` | T2.8 |
-| 10 | Awaiting Josh | 2026-11-14 | | T2.9, Decision 8 |
+| 10 | Done | 2026-11-14 | `dee17b1` | T2.9, Decision 8 |
 | 11 | Not started | | | T3.3 (the record), T3.4, T3.5, T6.4 |
 | 12 | Not started | | | T3.2, T3.3 (the session) |
 | 13 | Not started | | | T6.1, T6.6 (the leaderboard's place) |
@@ -1001,7 +1001,7 @@ both; the default is unchanged; and tests pin scope construction.
 
 ## Phase 10: Practice Sets to Share
 
-**Suggestions:** T2.9, Decision 8. **Depends on:** Phase 9. **Status:** Awaiting Josh.
+**Suggestions:** T2.9, Decision 8. **Depends on:** Phase 9. **Status:** Done.
 
 Make a chosen scope shareable as a link and as a QR code, so a teacher can hand a class one
 practice set without accounts or a server. One Swiss institution brought Conjuguer more downloads

@@ -13,6 +13,7 @@ The quiz tests users' knowledge of German verb conjugations with timed, scored g
 | `Quiz.swift` | `@Observable` class managing quiz state and logic; `QuizScope`, what a quiz asks about; `QuizItem`, one question and its grading |
 | `AnswerDifference.swift` | Where a wrong answer differs from the right one, letter by letter, for the held correction |
 | `AnswerSlip.swift` | Whether a wrong answer is a slip that earns one more attempt |
+| `AnswerDiagnosis.swift` | Why a wrong answer is wrong, when the conjugator can say so for certain, and the one line that says it |
 | `AnswerSpelling.swift` | Answer normalization, the leading pronouns a cell allows, and digraph spellings of umlauts |
 | `StandardVariants.swift` | Duden's other standard conjugations of a cell, accepted as right answers |
 | `QuizView.swift` | SwiftUI view for active quiz gameplay |
@@ -335,15 +336,16 @@ decides, on the answer with a leading pronoun of the asked person dropped, as gr
 - **Not another cell.** If `Verb.conjugations(matching:)` finds the answer anywhere in the verb's
   tables, any reading, it is a grammatical error and goes to the correction: kommt for du kommst
   (er's cell), musstest for müsstest (the Indikativ). This rule also makes fahrt for er fährt a
-  real error, since fahrt is ihr's cell. Phase 14 is to name such errors.
+  real error, since fahrt is ihr's cell. Phase 14 named such errors; see
+  [Naming the Error](#naming-the-error).
 
 A slip sets `QuizItem.firstAttempt` and leaves `isCorrect` nil, so `Quiz.isAwaitingSecondAttempt`
 is true. The clock keeps running. The field keeps the first attempt for editing and is refocused,
 since Return resigned it, and an orange "Almost! Try once more." line appears under it, which
 VoiceOver announces. The cue is a pop and a light tap, not the buzz and shake of a wrong answer. A
 question gets one more attempt at most: the second answer is graded and, if wrong, goes to the held
-correction whether or not it too is a slip. Phase 14's diagnosable errors are to share this
-mechanism. A slip is not recorded in `QuizErrorHistory`; a wrong second attempt is.
+correction whether or not it too is a slip. A diagnosed error shares this mechanism (below). A slip
+is not recorded in `QuizErrorHistory`; a wrong second attempt is.
 
 A right second attempt earns `Quiz.pointsPerSecondAttempt` (5) and counts in
 `Quiz.secondAttemptCount`, apart from `correctCount`. Its `QuizItem.State` is
@@ -353,6 +355,45 @@ The results' score color gives a second attempt half credit.
 
 `KONJUGIEREN_QUIZ_FIXTURE slips` asks ten questions with a slip or a near miss for each in the
 comment on `Quiz.generateSlipsFixture()`.
+
+### Naming the Error
+
+Built 2026-11-14 in Phase 14 of [`plans/pedagogy-implementation.md`](../plans/pedagogy-implementation.md)
+(T4.2 and T4.3). `QuizItem.diagnosis(of:)` returns an `AnswerDiagnosis` for a wrong answer when
+the answer is exactly what a known error would produce, and nil otherwise. No language model is
+involved: each check builds the wrong conjugations an error would yield, in every region's spelling
+and clause order and with digraphs, and asks whether the answer (pronoun dropped) is one of them.
+The checks run in this order and stop at the first that fits, since one answer can fit several:
+
+1. **Another reading, same cell** (`otherReading`): hängte for intransitive hängen's hing.
+2. **Separable prefix order**: aufsteh for steh auf in the du or ihr Imperativ (`prefixAtEnd`; the
+   wir and Sie frames already place the prefix), and gestanden auf or auf gestanden for a
+   participle, alone or after its auxiliary (`participleIsOneWord`).
+3. **Missing auxiliary**: the participle alone for a Perfekt or Plusquamperfekt, the infinitive
+   alone for a Futur.
+4. **Wrong auxiliary**: only an auxiliary no region allows, so stehen's ist gestanden stays right.
+5. **ge-**: missing (macht, aufstanden), on an -ieren verb (gestudiert), on an inseparable verb
+   (geverstanden), or before a separable prefix (geaufstanden).
+6. **Strong or mixed conjugated as weak** (`weakConjugation`): the cell of the same reading with
+   its family set to `.weak`, through `Conjugator.conjugate(reading:…)`, which conjugates a reading
+   that need not be in the corpus. Catches gehte, gesingt, denkte, and fahrst/fahrt for fährst/fährt.
+7. **Another cell of the asked reading** (`otherCell`): another person of the asked
+   conjugationgroup first (kommt for du: "for er and ihr"), then another conjugationgroup, naming
+   its persons only when the asked person is not among them. A finite part alone (steht for
+   aufstehen) is not named.
+
+The rules come before the cell match because both can be true and the rule says more: macht is
+also er's Präsens, and fahrt also ihr's. **Every class prompts a repair** (Josh, 2026-11-14):
+`Quiz.submitAnswer` checks for a diagnosis before a slip, sets `firstAttempt` and
+`firstAttemptDiagnosis`, and the field shows `QuizItem.secondAttemptPrompt`, the line followed by
+"Try once more." in the orange of "almost". The one-attempt limit holds whatever earned the
+attempt. The held correction (`QuizCorrection.diagnosis`) shows the diagnosis of the *final*
+answer, under the two answers with a lightbulb, and VoiceOver reads it after the differing
+letters. The same line serves both places. Conjugationgroups are named in the language the
+settings choose.
+
+`KONJUGIEREN_QUIZ_FIXTURE diagnoses` asks one question per class, with the wrong answer for each in
+the comment on `Quiz.generateDiagnosesFixture()`.
 
 ### Rounds and Re-asks
 
@@ -490,9 +531,9 @@ correction is held, and still runs across Ten More.
 | `correctCount` | `Int` | Number right on the first attempt |
 | `secondAttemptCount` | `Int` | Number right on the second attempt |
 | `reaskCount`, `reaskCorrectCount` | `Int` | Re-asks so far, and those answered right |
-| `isAwaitingSecondAttempt` | `Bool` | A slip waits for its one more attempt |
+| `isAwaitingSecondAttempt` | `Bool` | A slip or a diagnosed error waits for its one more attempt |
 | `questions` | `[QuizItem]` | Every round's questions and re-asks, in the order asked |
-| `correction` | `QuizCorrection?` | The held correction of a wrong answer: its `AnswerDifference`, and the `ErrorExplainerContext` the disabled explainer would take |
+| `correction` | `QuizCorrection?` | The held correction of a wrong answer: its `AnswerDifference`, its `AnswerDiagnosis` if any, and the `ErrorExplainerContext` the disabled explainer would take |
 | `lastPreferredSpelling` | `String?` | The conjugation's own spelling of the last answer, when it was right but spelled another way |
 
 ### Sound Effects

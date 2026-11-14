@@ -209,14 +209,20 @@ class Quiz {
     let isCorrect = questions[currentIndex].accepts(answer)
     let isSecondAttempt = questions[currentIndex].isAwaitingSecondAttempt
 
-    // A question gets one more attempt at most, so a second slip goes to the correction.
-    if !isCorrect, !isSecondAttempt, questions[currentIndex].isSlip(answer) {
-      questions[currentIndex].firstAttempt = answer
-      lastPreferredSpelling = nil
-      Current.soundPlayer.play(.pop)
-      HapticPlayer.playImpact(.light)
-      announceSecondAttempt()
-      return
+    // A question gets one more attempt at most, whether a diagnosis or a slip earned it, so a
+    // second wrong answer goes to the correction. A diagnosis comes first, since naming the
+    // error says more than "almost": fahrst is a slip, and also fahren conjugated as weak.
+    if !isCorrect, !isSecondAttempt {
+      let diagnosis = questions[currentIndex].diagnosis(of: answer)
+      if diagnosis != nil || questions[currentIndex].isSlip(answer) {
+        questions[currentIndex].firstAttempt = answer
+        questions[currentIndex].firstAttemptDiagnosis = diagnosis
+        lastPreferredSpelling = nil
+        Current.soundPlayer.play(.pop)
+        HapticPlayer.playImpact(.light)
+        announceSecondAttempt(questions[currentIndex].secondAttemptPrompt)
+        return
+      }
     }
 
     questions[currentIndex].userAnswer = answer
@@ -241,6 +247,7 @@ class Quiz {
       correction = QuizCorrection(
         willBeReasked: !question.isReask,
         difference: question.difference(from: answer),
+        diagnosis: question.diagnosis(of: answer),
         errorContext: ErrorExplainerContext(
           infinitiv: question.verb.infinitiv,
           translation: question.translation,
@@ -363,6 +370,8 @@ class Quiz {
       return generateCorrectionsFixture()
     case "slips":
       return generateSlipsFixture()
+    case "diagnoses":
+      return generateDiagnosesFixture()
     default:
       break
     }
@@ -580,6 +589,37 @@ class Quiz {
     return repeatedFixture(plan)
   }
 
+  // One question per diagnosis from Phase 14 of the pedagogy plan, with the wrong answer that
+  // shows it: hängte (hängen's other reading), aufsteh (the prefix at the end), gestanden auf
+  // (the participle is one word), gegangen (the auxiliary missing), hat gegangen (the wrong
+  // auxiliary), macht (no ge-), geverstanden (ge- on an inseparable verb), gestudiert (on an
+  // -ieren verb), geaufstanden (ge- before the prefix), gehte (strong made weak), denkte (mixed
+  // made weak), kommt (another person), and ging (another conjugationgroup). Each prompts one
+  // more try; a second wrong answer shows the correction with the line again.
+  private func generateDiagnosesFixture() -> [QuizItem] {
+    let plan: [(infinitiv: String, group: Conjugationgroup, readingIndex: Int)] = [
+      ("hängen", .präteritumIndikativ(.firstSingular), 0),
+      ("aufstehen", .imperativ(.secondSingular), 0),
+      ("aufstehen", .perfektpartizip, 0),
+      ("gehen", .perfektIndikativ(.firstSingular), 0),
+      ("gehen", .perfektIndikativ(.thirdSingular), 0),
+      ("machen", .perfektpartizip, 0),
+      ("verstehen", .perfektpartizip, 0),
+      ("studieren", .perfektpartizip, 0),
+      ("aufstehen", .perfektpartizip, 0),
+      ("gehen", .präteritumIndikativ(.firstSingular), 0),
+      ("denken", .präteritumIndikativ(.firstSingular), 0),
+      ("kommen", .präsensIndikativ(.secondSingular), 0),
+      ("gehen", .perfektIndikativ(.firstSingular), 0)
+    ]
+    return plan.map { spec in
+      guard let verb = Verb.verbs[spec.infinitiv] else {
+        preconditionFailure("Quiz fixture references missing verb: \(spec.infinitiv)")
+      }
+      return makeQuizItem(verb: verb, conjugationgroup: spec.group, readingIndex: spec.readingIndex)
+    }
+  }
+
   // Repeated to a round's length, so that the progress dots and the finish behave as usual.
   // Each repeat is a new item, since the dots tell items apart by id.
   private func repeatedFixture(_ plan: [(infinitiv: String, group: Conjugationgroup)]) -> [QuizItem] {
@@ -733,10 +773,10 @@ class Quiz {
   }
 
   // The answer stays in the field for the learner to edit, and VoiceOver's focus with it.
-  private func announceSecondAttempt() {
+  private func announceSecondAttempt(_ prompt: String) {
     guard UIAccessibility.isVoiceOverRunning else { return }
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-      UIAccessibility.post(notification: .announcement, argument: L.Quiz.almost)
+      UIAccessibility.post(notification: .announcement, argument: prompt)
     }
   }
 
@@ -843,6 +883,8 @@ struct QuizCorrection: Equatable {
   /// False for a re-ask, which does not return again.
   let willBeReasked: Bool
   let difference: AnswerDifference
+  /// Why the final answer is wrong, when that is certain (Phase 14 of the pedagogy plan).
+  let diagnosis: AnswerDiagnosis?
   /// What `ErrorExplainerView` would explain, were it enabled.
   let errorContext: ErrorExplainerContext
 }
@@ -877,13 +919,25 @@ struct QuizItem: Identifiable {
   /// The final answer: the second attempt, if a slip earned one.
   var userAnswer: String?
   var isCorrect: Bool?
-  /// A slip that earned one more attempt, kept for the results.
+  /// A wrong first answer that earned one more attempt, a slip or a diagnosed error, kept for
+  /// the results.
   var firstAttempt: String?
+  /// Why the first attempt was wrong, when a diagnosis rather than a slip earned the second.
+  var firstAttemptDiagnosis: AnswerDiagnosis?
   /// A missed question asked once more, a few questions later. It earns half points.
   let isReask: Bool
 
   var isAwaitingSecondAttempt: Bool {
     firstAttempt != nil && isCorrect == nil
+  }
+
+  /// What the quiz says while the question waits for its second attempt: the diagnosis with
+  /// "Try once more.", or, after a slip, "Almost! Try once more."
+  var secondAttemptPrompt: String {
+    guard let firstAttemptDiagnosis else {
+      return L.Quiz.almost
+    }
+    return firstAttemptDiagnosis.line + " " + L.Quiz.tryOnceMore
   }
 
   /// The gloss to show with the prompt. Always the asked reading's, which for a

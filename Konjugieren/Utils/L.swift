@@ -998,6 +998,10 @@ enum L {
       String(localized: "Quiz.almost")
     }
 
+    static var tryOnceMore: String {
+      String(localized: "Quiz.tryOnceMore")
+    }
+
     static var secondTry: String {
       String(localized: "Quiz.secondTry")
     }
@@ -1206,6 +1210,64 @@ enum L {
 
     static var title: String {
       String(localized: "PracticeSet.title")
+    }
+  }
+
+  enum Diagnosis {
+    static func geBeforeSeparablePrefix(_ prefix: String) -> String {
+      String(localized: "Diagnosis.geBeforeSeparablePrefix \(prefix)")
+    }
+
+    static var geOnIeren: String {
+      String(localized: "Diagnosis.geOnIeren")
+    }
+
+    static func geOnInseparable(_ prefix: String) -> String {
+      String(localized: "Diagnosis.geOnInseparable \(prefix)")
+    }
+
+    static func missingAuxiliary(_ conjugationgroup: String) -> String {
+      String(localized: "Diagnosis.missingAuxiliary \(conjugationgroup)")
+    }
+
+    static var missingGe: String {
+      String(localized: "Diagnosis.missingGe")
+    }
+
+    static func otherConjugationgroup(_ conjugationgroup: String) -> String {
+      String(localized: "Diagnosis.otherConjugationgroup \(conjugationgroup)")
+    }
+
+    static func otherConjugationgroupPersons(_ conjugationgroup: String, _ persons: String) -> String {
+      String(localized: "Diagnosis.otherConjugationgroupPersons \(conjugationgroup) \(persons)")
+    }
+
+    static func otherPerson(_ persons: String) -> String {
+      String(localized: "Diagnosis.otherPerson \(persons)")
+    }
+
+    static func otherReading(_ infinitiv: String, _ translation: String) -> String {
+      String(localized: "Diagnosis.otherReading \(infinitiv) \(translation)")
+    }
+
+    static func participleIsOneWord(_ prefix: String) -> String {
+      String(localized: "Diagnosis.participleIsOneWord \(prefix)")
+    }
+
+    static func prefixAtEnd(_ conjugationgroup: String, _ prefix: String) -> String {
+      String(localized: "Diagnosis.prefixAtEnd \(conjugationgroup) \(prefix)")
+    }
+
+    static func weakConjugationMixed(_ infinitiv: String) -> String {
+      String(localized: "Diagnosis.weakConjugationMixed \(infinitiv)")
+    }
+
+    static func weakConjugationStrong(_ infinitiv: String) -> String {
+      String(localized: "Diagnosis.weakConjugationStrong \(infinitiv)")
+    }
+
+    static func wrongAuxiliary(_ infinitiv: String, _ expected: String, _ given: String) -> String {
+      String(localized: "Diagnosis.wrongAuxiliary \(infinitiv) \(expected) \(given)")
     }
   }
 

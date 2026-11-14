@@ -863,6 +863,16 @@ irregularity. Two links sit under the correction: the verb's page, opened at the
 its ablaut group or, for a weak verb, its family. Both push over the waiting quiz. The diagnosis
 and the prompt to repair remain for Phase 14.
 
+**Built on `main` 2026-11-14** by [Phase 14](pedagogy-implementation.md#phase-14-naming-the-error)
+of the pedagogy plan: the second and third suggestions above. A wrong answer that is exactly what
+a known error produces gets one templated line, in English or German, with no language model.
+The classes are those listed below, plus another reading of a two-reading verb and an auxiliary
+left out. A wrong ending on a right stem is not its own class, since every certain case is
+already another cell or a weak conjugation. Every class prompts a repair, through the slip's
+single second attempt at half points, with the line followed by "Try once more."; a wrong second
+attempt shows the held correction with the final answer's line. The quiz now uses
+`Verb.conjugations(matching:)` for the cell check.
+
 Error classes the conjugator could detect without any language model:
 
 - **Another cell of the same verb.** Generate the verb's full paradigm and look the learner's

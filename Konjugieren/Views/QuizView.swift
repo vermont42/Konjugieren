@@ -248,8 +248,9 @@ struct QuizView: View {
         // Animated here alone, so that the next question still replaces this one at once.
         VStack {
           if quiz.isAwaitingSecondAttempt {
-            Label(L.Quiz.almost, systemImage: "hand.raised.fill")
+            Label(question.secondAttemptPrompt, systemImage: "hand.raised.fill")
               .font(.headline)
+              .fixedSize(horizontal: false, vertical: true)
               .foregroundStyle(QuizItem.State.correctOnSecondAttempt.dotColor)
               .transition(.opacity.combined(with: .scale(scale: 0.9)))
               .accessibilityIdentifier("quiz_almost")

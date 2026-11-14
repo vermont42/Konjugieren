@@ -49,8 +49,19 @@ enum Conjugator {
     guard verb.readings.indices.contains(readingIndex) else {
       return .failure(.readingNotRecognized)
     }
-    let reading = verb.readings[readingIndex]
+    return conjugate(reading: verb.readings[readingIndex], conjugationgroup: conjugationgroup, auxiliary: auxiliary, clause: clause)
+  }
 
+  /// Conjugates a reading that need not be one in the corpus. The quiz's diagnosis of a wrong
+  /// answer conjugates a strong verb's reading as if it were weak, to recognize gehte as what
+  /// a learner who treats gehen as weak would write. Callers with a real verb use the
+  /// infinitive-keyed overload above, which validates it.
+  static func conjugate(
+    reading: Reading,
+    conjugationgroup: Conjugationgroup,
+    auxiliary: Auxiliary? = nil,
+    clause: Clause = .subordinate
+  ) -> Result<String, ConjugatorError> {
     switch conjugationgroup {
     case .präsensIndikativ, .präsensKonjunktivI, .präteritumIndikativ, .präteritumKonjunktivII:
       return conjugateSimpleTense(reading: reading, conjugationgroup: conjugationgroup).map { conjugation in
@@ -83,25 +94,25 @@ enum Conjugator {
       return conjugateImperativ(reading: reading, personNumber: personNumber)
 
     case .perfektIndikativ(let personNumber):
-      return conjugateCompoundTense(infinitiv: infinitiv, readingIndex: readingIndex, auxiliaryInfinitiv: (auxiliary ?? reading.auxiliary).verb, auxiliaryGroup: .präsensIndikativ(personNumber))
+      return conjugateCompoundTense(reading: reading, auxiliaryInfinitiv: (auxiliary ?? reading.auxiliary).verb, auxiliaryGroup: .präsensIndikativ(personNumber))
 
     case .perfektKonjunktivI(let personNumber):
-      return conjugateCompoundTense(infinitiv: infinitiv, readingIndex: readingIndex, auxiliaryInfinitiv: (auxiliary ?? reading.auxiliary).verb, auxiliaryGroup: .präsensKonjunktivI(personNumber))
+      return conjugateCompoundTense(reading: reading, auxiliaryInfinitiv: (auxiliary ?? reading.auxiliary).verb, auxiliaryGroup: .präsensKonjunktivI(personNumber))
 
     case .plusquamperfektIndikativ(let personNumber):
-      return conjugateCompoundTense(infinitiv: infinitiv, readingIndex: readingIndex, auxiliaryInfinitiv: (auxiliary ?? reading.auxiliary).verb, auxiliaryGroup: .präteritumIndikativ(personNumber))
+      return conjugateCompoundTense(reading: reading, auxiliaryInfinitiv: (auxiliary ?? reading.auxiliary).verb, auxiliaryGroup: .präteritumIndikativ(personNumber))
 
     case .plusquamperfektKonjunktivII(let personNumber):
-      return conjugateCompoundTense(infinitiv: infinitiv, readingIndex: readingIndex, auxiliaryInfinitiv: (auxiliary ?? reading.auxiliary).verb, auxiliaryGroup: .präteritumKonjunktivII(personNumber))
+      return conjugateCompoundTense(reading: reading, auxiliaryInfinitiv: (auxiliary ?? reading.auxiliary).verb, auxiliaryGroup: .präteritumKonjunktivII(personNumber))
 
     case .futurIndikativ(let personNumber):
-      return conjugateCompoundTense(infinitiv: infinitiv, readingIndex: readingIndex, auxiliaryInfinitiv: "werden", auxiliaryGroup: .präsensIndikativ(personNumber), useInfinitivAsSecondPart: true)
+      return conjugateCompoundTense(reading: reading, auxiliaryInfinitiv: "werden", auxiliaryGroup: .präsensIndikativ(personNumber), useInfinitivAsSecondPart: true)
 
     case .futurKonjunktivI(let personNumber):
-      return conjugateCompoundTense(infinitiv: infinitiv, readingIndex: readingIndex, auxiliaryInfinitiv: "werden", auxiliaryGroup: .präsensKonjunktivI(personNumber), useInfinitivAsSecondPart: true)
+      return conjugateCompoundTense(reading: reading, auxiliaryInfinitiv: "werden", auxiliaryGroup: .präsensKonjunktivI(personNumber), useInfinitivAsSecondPart: true)
 
     case .futurKonjunktivII(let personNumber):
-      return conjugateCompoundTense(infinitiv: infinitiv, readingIndex: readingIndex, auxiliaryInfinitiv: "werden", auxiliaryGroup: .präteritumKonjunktivII(personNumber), useInfinitivAsSecondPart: true)
+      return conjugateCompoundTense(reading: reading, auxiliaryInfinitiv: "werden", auxiliaryGroup: .präteritumKonjunktivII(personNumber), useInfinitivAsSecondPart: true)
     }
   }
 
@@ -122,8 +133,7 @@ enum Conjugator {
   }
 
   private static func conjugateCompoundTense(
-    infinitiv: String,
-    readingIndex: Int,
+    reading: Reading,
     auxiliaryInfinitiv: String,
     auxiliaryGroup: Conjugationgroup,
     useInfinitivAsSecondPart: Bool = false
@@ -132,12 +142,12 @@ enum Conjugator {
 
     let secondPartResult: Result<String, ConjugatorError>
     if useInfinitivAsSecondPart {
-      secondPartResult = .success(infinitiv)
+      secondPartResult = .success(reading.infinitiv)
     } else {
       // The participle must come from the same reading as the auxiliary, since a verb
       // whose readings differ in family also differs in participle: hängen is gehangen
       // intransitive but gehängt transitive.
-      secondPartResult = conjugate(infinitiv: infinitiv, conjugationgroup: .perfektpartizip, readingIndex: readingIndex)
+      secondPartResult = conjugate(reading: reading, conjugationgroup: .perfektpartizip)
     }
 
     switch (auxiliaryResult, secondPartResult) {

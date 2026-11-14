@@ -31,6 +31,7 @@ Konjugieren/
 │   ├── AblautGroupInfo.swift   # Identifiable struct with localized ablaut-group descriptions
 │   ├── AblautGroupParser.swift # XMLParser delegate that parses AblautGroups.xml
 │   ├── AblautGroups.xml        # 76 ablaut pattern definitions
+│   ├── AnswerDiagnosis.swift   # Why a wrong quiz answer is wrong, when the conjugator can say so exactly (another cell or reading, an auxiliary, ge-, prefix order, a strong verb made weak), and the one line that says it; QuizItem.diagnosis(of:)
 │   ├── AnswerDifference.swift  # Where a wrong quiz answer differs from the right one, letter by letter (an alignment like VerbSearch.editDistance's), and QuizItem.difference(from:), which picks the nearest spelling of the cell to show
 │   ├── AnswerFrame.swift       # The shape of a quiz answer: blanks and the words around them (ihr [ ], [ ] Sie [ ] !); the answer a set of filled blanks gives, and where Return goes
 │   ├── AnswerSlip.swift        # Whether a wrong quiz answer is a slip that earns one more attempt: one edit or only missing umlauts and ß, four letters or more, and never another cell of the verb
@@ -232,6 +233,7 @@ Shared/
 KonjugierenTests/
 ├── CLAUDE.md                   # Lazily loaded Claude Code guidance: Swift Testing conventions for this target
 ├── Models/
+│   ├── AnswerDiagnosisTests.swift  # Each diagnosis for real verbs, undiagnosable answers getting none, the lines, and the repair sharing the slip's one more attempt
 │   ├── AnswerDifferenceTests.swift # The held correction's marking: a missing umlaut, a missing or extra letter, a swap, case as no difference, the nearer word order, a dropped pronoun
 │   ├── AnswerFrameTests.swift      # The quiz's answer frame: every cell of six verbs takes its right answer through its frame, the frame per kind of cell, readings, Return
 │   ├── AnswerSlipTests.swift       # One more try: what is a slip and what is another cell (kommt for kommst, musstest, fahrt), half points, one attempt at most, the separate count

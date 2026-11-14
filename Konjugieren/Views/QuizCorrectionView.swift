@@ -38,6 +38,15 @@ struct QuizCorrectionView: View {
       .accessibilityFocused(accessibilityIsFocused)
       .accessibilityIdentifier("quiz_correction")
 
+      if let diagnosis = correction.diagnosis {
+        Label(diagnosis.line, systemImage: "lightbulb.fill")
+          .font(.subheadline)
+          .foregroundStyle(.customForeground)
+          .fixedSize(horizontal: false, vertical: true)
+          .accessibilityHidden(true)
+          .accessibilityIdentifier("quiz_diagnosis")
+      }
+
       if correction.willBeReasked {
         Label(L.Quiz.willAskAgain, systemImage: "arrow.counterclockwise")
           .font(.subheadline)
@@ -138,7 +147,7 @@ struct QuizCorrectionView: View {
   }
 
   /// "Incorrect. Your answer: fahrt. Correct answer: fährt. Letters that differ: ä." The letters
-  /// are named only while there are few enough to help.
+  /// are named only while there are few enough to help, and the diagnosis follows them.
   private var spokenCorrection: String {
     var spoken = L.Accessibility.quizCorrection(
       given: difference.given,
@@ -147,6 +156,9 @@ struct QuizCorrectionView: View {
     let letters = difference.expectedMarkedLetters
     if !letters.isEmpty, letters.count <= Self.maxSpokenLetters {
       spoken += " " + L.Accessibility.quizDifferingLetters(letters.joined(separator: ", "))
+    }
+    if let diagnosis = correction.diagnosis {
+      spoken += " " + diagnosis.line
     }
     if correction.willBeReasked {
       spoken += " " + L.Quiz.willAskAgain

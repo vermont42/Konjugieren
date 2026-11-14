@@ -28,7 +28,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 11 | Done | 2026-11-14 | `e8fcc07` | T3.3 (the record), T3.4, T3.5, T6.4 |
 | 12 | Done | 2026-11-14 | `554891b` | T3.2, T3.3 (the session) |
 | 13 | Done | 2026-11-14 | `c62062f` | T6.1, T6.6 (the leaderboard's place) |
-| 14 | Not started | | | T4.2, T4.3 |
+| 14 | Awaiting Josh | 2026-11-14 | | T4.2, T4.3 |
 | 15 | Not started | | | T5.1 |
 | 16 | Not started | | | T5.2 |
 | 17 | Not started | | | T5.4 |
@@ -1385,7 +1385,7 @@ rewritten in both languages, and the leaderboard is one tap away but not in the 
 ## Phase 14: Naming the Error
 
 **Suggestions:** T4.2, T4.3. **Depends on:** Phases 3 and 4; Phase 2 for the separable class.
-**Status:** Not started.
+**Status:** Awaiting Josh.
 
 Diagnose a wrong answer from the conjugator's own knowledge and say it in one templated line,
 shown with Phase 3's correction. No language model. The one careful study the report found
@@ -1420,7 +1420,67 @@ line, and the prompted second attempt shares Phase 4's mechanism.
 
 **How it differed:**
 
-(To be written by the session that finishes this phase.)
+- **Josh decided on 2026-11-14**, before anything was built: **every class prompts a repair**
+  (over "rules only, another cell reveals at once" and over "no prompt"); **one line serves both
+  places**, the prompt with "Try once more." appended and the correction without it (over a vaguer
+  hint such as "Check the auxiliary." in the prompt); and the draft templates in both languages
+  were approved as drafted. Three lines were written after that review and have not been seen by
+  him: the participle's prefix order ("The participle is one word, beginning with auf." / "Das
+  Partizip ist ein Wort und beginnt mit auf."), the mixed verb made weak ("That is a weak verb's
+  conjugation, and denken is mixed: its stem changes too." / "… aber denken ist gemischt: Auch der
+  Stamm ändert sich."), and another conjugationgroup with its persons ("That conjugation belongs
+  to the Präteritum Indikativ, for ich and er." / "… gehört zum Präteritum Indikativ, für ich und
+  er.").
+- **The classes, in the order checked** (`AnswerDiagnosis.swift`): another reading's same cell
+  (hängte for intransitive hängen, a class the phase did not list); separable prefix order in the
+  du and ihr Imperativ and in a participle; a missing auxiliary (a class not listed: the
+  participle alone for a Perfekt, the infinitive alone for a Futur); a wrong auxiliary that no
+  region allows; four ge- errors; a strong or mixed verb conjugated as weak; and another cell,
+  another person of the asked conjugationgroup before another conjugationgroup. Each is an exact
+  construction, compared with the answer in every region's spelling, both clause orders, and with
+  digraphs; nothing is inferred from resemblance. The rules come before the cell match, since an
+  answer can fit both and the rule says more: macht for gemacht is also er's Präsens.
+- **Not built as its own class: a wrong ending on a right stem.** Every certain case is already
+  another cell (kommt for kommst) or a weak conjugation (gehte), and an ending that belongs to no
+  cell has no name that is certain. A finite part alone (steht for steht auf) is also left
+  unnamed, since "missing prefix" was not among the reviewed templates; it gets no line and no
+  repair unless it is a slip.
+- **fahrt for er fährt, which Phase 4 left open, is now named** as a weak conjugation ("… fahren is
+  strong"), since that check precedes the cell match that would have said "the conjugation for
+  ihr". Both are true; the first explains the missing umlaut. fahrst is likewise named rather than
+  called "Almost!", because a diagnosis is checked before a slip.
+- **A hypothetical reading.** The weak check conjugates the asked reading with its family set to
+  weak, so `Conjugator` gained `conjugate(reading:conjugationgroup:auxiliary:clause:)`, which the
+  infinitive-keyed overload now calls after validating. Compound conjugationgroups take their
+  participle from the reading rather than by looking the infinitive up again. `ConjugatorTests`
+  passed unchanged.
+- **The mechanism.** `QuizItem.firstAttemptDiagnosis` beside Phase 4's `firstAttempt`, and
+  `QuizItem.secondAttemptPrompt`, which is either the line with "Try once more." or Phase 4's
+  "Almost! Try once more.", in the same orange line, icon, sound, and announcement.
+  `QuizCorrection.diagnosis` holds the diagnosis of the final answer, so a repaired attempt that
+  is wrong in an undiagnosable way gets no line. In the correction the line sits under the two
+  answers with a lightbulb, and VoiceOver reads it after the differing letters.
+- **Analytics:** none added, so nothing is staged in `docs/privacy-policy-pending.md`. A diagnosis
+  would be a statement about an answer, which Decision 5 keeps on the device.
+- **A new fixture**, `KONJUGIEREN_QUIZ_FIXTURE diagnoses`: thirteen questions, one per class, with
+  the wrong answer for each in the comment on `Quiz.generateDiagnosesFixture()`.
+- **Tests:** `AnswerDiagnosisTests`, 10 functions: 29 diagnosed cases for real verbs, including
+  separable, inseparable, -ieren, sein-taking, mixed, and two-reading verbs; 7 answers that get no
+  line (right answers, Austria's bin gestanden, a slip, nonsense, an empty answer); the lines in
+  English under each conjugationgroup-name language; and, in a quiz, a diagnosed error waiting on
+  its question, a right repair earning half points, a wrong repair showing its own diagnosis, a
+  slip after a diagnosis going to the correction, and a slip still saying "Almost!". Run in
+  English with `xcodebuild -testLanguage en`: 731 passed and 2 skipped (the environment-gated
+  harnesses), 733 in all.
+- **Verified on the iPhone 17**, in dark mode. In German: all thirteen fixture classes prompted,
+  each with its line read from the accessibility tree, then repaired, for results of 65 points,
+  "Richtig: 0 / 13" and "Zweiter Versuch: 13", with each row's "Erster Versuch"; and hängte twice,
+  holding the correction with its line, the re-ask notice, and both links. In English: the first
+  five classes, then hat gegangen twice, whose correction showed and read "With gehen, the
+  auxiliary is sein, not haben." **On the iPad Pro 11-inch (M5)**, in light mode and English: the
+  ge- prompt on one line, a wrong undiagnosable repair (ma) with no line, and geverstanden twice,
+  holding "ver- is inseparable, so the participle takes no ge-." Not tried: VoiceOver by ear and
+  the software keyboard. The fixture default was removed from both simulators afterward.
 
 ## Phase 15: Key Conjugations
 

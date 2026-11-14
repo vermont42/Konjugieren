@@ -2269,6 +2269,230 @@
         }
       }
     },
+    "Diagnosis.geBeforeSeparablePrefix %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ge- steht nach dem trennbaren Präfix %@."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ge- goes after the separable prefix %@."
+          }
+        }
+      }
+    },
+    "Diagnosis.geOnIeren" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verben auf -ieren bilden das Partizip ohne ge-."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A verb in -ieren takes no ge- in its participle."
+          }
+        }
+      }
+    },
+    "Diagnosis.geOnInseparable %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@- ist untrennbar, also bekommt das Partizip kein ge-."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@- is inseparable, so the participle takes no ge-."
+          }
+        }
+      }
+    },
+    "Diagnosis.missingAuxiliary %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zum %@ gehört auch ein Hilfsverb."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The %@ needs an auxiliary as well."
+          }
+        }
+      }
+    },
+    "Diagnosis.missingGe" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das Partizip braucht ge-."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The participle takes ge-."
+          }
+        }
+      }
+    },
+    "Diagnosis.otherConjugationgroup %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Konjugation gehört zum %@."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "That conjugation belongs to the %@."
+          }
+        }
+      }
+    },
+    "Diagnosis.otherConjugationgroupPersons %@ %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Konjugation gehört zum %1$@, für %2$@."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "That conjugation belongs to the %1$@, for %2$@."
+          }
+        }
+      }
+    },
+    "Diagnosis.otherPerson %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das ist die Konjugation für %@."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "That is the conjugation for %@."
+          }
+        }
+      }
+    },
+    "Diagnosis.otherReading %@ %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Konjugation gehört zu %1$@ im Sinn von „%2$@“."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "That conjugation belongs to %1$@ in the sense “%2$@”."
+          }
+        }
+      }
+    },
+    "Diagnosis.participleIsOneWord %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Das Partizip ist ein Wort und beginnt mit %@."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The participle is one word, beginning with %@."
+          }
+        }
+      }
+    },
+    "Diagnosis.prefixAtEnd %@ %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Im %1$@ steht %2$@ am Ende."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In the %1$@, %2$@ goes at the end."
+          }
+        }
+      }
+    },
+    "Diagnosis.weakConjugationMixed %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "So konjugiert ein schwaches Verb, aber %@ ist gemischt: Auch der Stamm ändert sich."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "That is a weak verb’s conjugation, and %@ is mixed: its stem changes too."
+          }
+        }
+      }
+    },
+    "Diagnosis.weakConjugationStrong %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "So konjugiert ein schwaches Verb, aber %@ ist stark."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "That is a weak verb’s conjugation, and %@ is strong."
+          }
+        }
+      }
+    },
+    "Diagnosis.wrongAuxiliary %@ %@ %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bei %1$@ ist das Hilfsverb %2$@, nicht %3$@."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "With %1$@, the auxiliary is %2$@, not %3$@."
+          }
+        }
+      }
+    },
     "Done. %lld of %lld returned errors." : {
       "localizations" : {
         "en" : {
@@ -6636,6 +6860,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Translation:"
+          }
+        }
+      }
+    },
+    "Quiz.tryOnceMore" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Versuch es noch einmal."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Try once more."
           }
         }
       }

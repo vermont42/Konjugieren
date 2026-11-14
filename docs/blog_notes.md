@@ -10904,3 +10904,57 @@ mattered.
 The onboarding page that said "Test Your Knowledge" and promised points and a leaderboard now says
 "Practice Conjugating", or in German "Konjugieren üben", the app's own name with the verb for
 practice after it. Josh has not yet judged any of it.
+
+## Naming the Error (2026-11-14)
+
+Phase 14 of the pedagogy plan gives a wrong quiz answer one line that says what went wrong: "With
+gehen, the auxiliary is sein, not haben." or "ver- is inseparable, so the participle takes no ge-."
+The app once tried this with the on-device language model, and the model invented grammar ("-en
+changes to -t" for singen), which is why `ErrorExplainerView` still sits commented out. This time
+there is no model at all.
+
+### Construct the error, then compare
+
+The approach that made every line trustworthy was to stop asking "what did the learner mean?" and
+ask instead "what would each known mistake produce?" For hat gegangen, the check conjugates gehen's
+Perfekt with haben, gets hat gegangen, and finds the answer among the results. For gehte, it
+conjugates gehen as if it were a weak verb. That needed one small change to the conjugator: a way to
+conjugate a `Reading` that is not in the corpus, so that gehen with its family set to weak yields
+gehte, gegeht, and gehst. The old infinitive-keyed entry point now validates and delegates, and the
+conjugator's own tests passed untouched. Each wrong conjugation is compared in all three regions'
+spellings, in both clause orders, and with digraphs, so the line never depends on how the learner
+typed ü.
+
+Nothing is inferred from resemblance. An answer that is not exactly one of these constructions gets
+no line, which is the plan's rule that a wrong diagnosis is worse than none.
+
+### Order matters more than coverage
+
+One answer can fit several classes. macht for gemacht is a participle missing its ge-, and it is
+also er's Präsens. fahrt for er fährt is fahren conjugated as weak, and it is also ihr's Präsens. All
+of these statements are true, but only one helps. So the specific rules run first and the general
+"that is another cell" check runs last. This settled a question Phase 4 had left open. That phase
+refused to call fahrt a slip because it is a real cell, and now the learner hears why it is wrong:
+fahren is strong.
+
+Two classes appeared that the plan had not listed. A two-reading verb like hängen needs its own line
+("That conjugation belongs to hängen in the sense 'hang, suspend something'"), because otherwise the
+weak check would tell the learner that hängen is strong, which is only half true. The other was a
+missing auxiliary, gegangen typed alone into `ich [ ]`. One listed class was deliberately not built.
+"A wrong ending on a right stem" turned out never to be certain on its own: every case that could be
+named was already another cell or a weak conjugation.
+
+### One more try, shared
+
+Josh chose to have every diagnosed error prompt a repair, with the same line in the prompt and the
+correction. It rides on Phase 4's mechanism: the first attempt is kept, the line appears in the orange
+of "Almost!" with "Try once more." after it, a right repair earns half points, and no question gets
+a third attempt, whatever earned the second. Typing the thirteen-question fixture on the iPhone
+showed every class firing in German, with the repairs adding up to 65 points and "Zweiter Versuch:
+13".
+
+### A scripting lesson
+
+Driving the fixture by script went wrong at question five. Each wrong final answer inserts a re-ask
+three questions later, so a script that answers by position drifts. Repairing every question with
+the right answer instead kept the order fixed, and it exercised the half-points path as well.

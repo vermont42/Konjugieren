@@ -21,7 +21,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 4 | Done | 2026-11-13 | `ae1b4a4` | T1.6 |
 | 5 | Done | 2026-11-13 | `71e0bc9` | T2.3, T2.6, T6.7, M1 |
 | 6 | Done | 2026-11-13 | `4ee097d` | T2.1, T2.2, T2.5 |
-| 7 | Awaiting Josh | 2026-11-13 | | T2.7, T3.1, T6.5, M2, M3 |
+| 7 | Done | 2026-11-13 | `80b5f85` | T2.7, T3.1, T6.5, M2, M3 |
 | 8 | Not started | | | Decision 4 |
 | 9 | Not started | | | T2.8 |
 | 10 | Not started | | | T2.9, Decision 8 |
@@ -732,8 +732,7 @@ quizzes are unaffected, with tests for each.
 
 ## Phase 7: Ten Questions, Then Ten More
 
-**Suggestions:** T2.7, T3.1, T6.5, M2, M3. **Depends on:** Phases 3 and 5. **Status:** Awaiting
-Josh.
+**Suggestions:** T2.7, T3.1, T6.5, M2, M3. **Depends on:** Phases 3 and 5. **Status:** Done.
 
 - **T2.7.** The default session is ten questions, with an offer to continue. Josh agreed
   reluctantly, since ten questions are far from comprehensive, in the hope that a shorter quiz

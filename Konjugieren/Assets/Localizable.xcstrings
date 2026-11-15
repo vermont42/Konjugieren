@@ -2146,6 +2146,22 @@
         }
       }
     },
+    "Accessibility.masteryHubHint" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeigt, welche Muster und starken Verben du durch Üben beherrschst."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shows which patterns and strong verbs your practice has mastered."
+          }
+        }
+      }
+    },
     "Accessibility.mistakesStartHint" : {
       "localizations" : {
         "de" : {
@@ -5068,6 +5084,198 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1$@, “%2$@”"
+          }
+        }
+      }
+    },
+    "Mastery.count %lld %lld" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld von %2$lld"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld of %2$lld"
+          }
+        }
+      }
+    },
+    "Mastery.everyVerb" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle Verben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Every verb"
+          }
+        }
+      }
+    },
+    "Mastery.hubSummary %lld %lld %lld %lld" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beherrscht: %1$lld von %2$lld Mustern · %3$lld von %4$lld Verben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mastered: %1$lld of %2$lld patterns · %3$lld of %4$lld verbs"
+          }
+        }
+      }
+    },
+    "Mastery.intro %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Was du auf deiner Stufe, %@, durch Üben gefestigt hast. Beherrscht ist, was frühestens in einer Woche wieder zur Wiederholung ansteht. Eine falsche Antwort fängt von vorn an."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "What your practice has made secure at your level, %@. An item is mastered once its next review is a week or more away. A wrong answer starts it over."
+          }
+        }
+      }
+    },
+    "Mastery.learning" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Im Aufbau"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Learning"
+          }
+        }
+      }
+    },
+    "Mastery.mastered" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Beherrscht"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mastered"
+          }
+        }
+      }
+    },
+    "Mastery.notPracticed" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Noch nicht geübt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Not yet practiced"
+          }
+        }
+      }
+    },
+    "Mastery.patterns" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Muster"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Patterns"
+          }
+        }
+      }
+    },
+    "Mastery.patternsDescription" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alle schwachen Verben folgen diesen Mustern. Wer machte übt, übt also auch sagte."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Every weak verb follows these patterns, so practicing machte practices sagte too."
+          }
+        }
+      }
+    },
+    "Mastery.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lernstand"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mastery"
+          }
+        }
+      }
+    },
+    "Mastery.verbs" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starke und gemischte Verben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Strong and Mixed Verbs"
+          }
+        }
+      }
+    },
+    "Mastery.verbsDescription" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die 50 häufigsten, jeweils mit den Konjugationen, die deine Stufe abfragt."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The 50 most used, each with the conjugations your level asks."
           }
         }
       }

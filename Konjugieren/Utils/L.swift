@@ -96,6 +96,10 @@ enum L {
       String(localized: "Accessibility.ablautPracticeHubHint")
     }
 
+    static var masteryHubHint: String {
+      String(localized: "Accessibility.masteryHubHint")
+    }
+
     static var ablautPracticeMixedHint: String {
       String(localized: "Accessibility.ablautPracticeMixedHint")
     }
@@ -1166,6 +1170,56 @@ enum L {
 
     static func reviewNextDue(_ days: Int) -> String {
       String(localized: "PracticeSession.reviewNextDue.\(days)")
+    }
+  }
+
+  enum Mastery {
+    static func count(_ mastered: Int, _ total: Int) -> String {
+      String(localized: "Mastery.count \(mastered) \(total)")
+    }
+
+    static var everyVerb: String {
+      String(localized: "Mastery.everyVerb")
+    }
+
+    static func hubSummary(_ masteredPatterns: Int, _ patterns: Int, _ masteredVerbs: Int, _ verbs: Int) -> String {
+      String(localized: "Mastery.hubSummary \(masteredPatterns) \(patterns) \(masteredVerbs) \(verbs)")
+    }
+
+    static func intro(_ level: String) -> String {
+      String(localized: "Mastery.intro \(level)")
+    }
+
+    static var learning: String {
+      String(localized: "Mastery.learning")
+    }
+
+    static var mastered: String {
+      String(localized: "Mastery.mastered")
+    }
+
+    static var notPracticed: String {
+      String(localized: "Mastery.notPracticed")
+    }
+
+    static var patterns: String {
+      String(localized: "Mastery.patterns")
+    }
+
+    static var patternsDescription: String {
+      String(localized: "Mastery.patternsDescription")
+    }
+
+    static var title: String {
+      String(localized: "Mastery.title")
+    }
+
+    static var verbs: String {
+      String(localized: "Mastery.verbs")
+    }
+
+    static var verbsDescription: String {
+      String(localized: "Mastery.verbsDescription")
     }
   }
 

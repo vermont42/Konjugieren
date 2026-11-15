@@ -34,7 +34,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 17 | Done | 2026-11-15 | `010e2dc` | T5.4 |
 | 18 | Partly done: the app, the check, and 117 reviewed sentences for the 25 most frequent verbs; about 625 sentences for the rest of the top 300 remain | 2026-11-15 | `9ab13cc` | T5.5 |
 | 19 | Done | 2026-11-15 | `81f3c6b` | T5.6 |
-| 20 | Not started | | | T6.2 |
+| 20 | Awaiting Josh | 2026-11-15 | | T6.2 |
 | 21 | Not started | | | T5.7 |
 | 22 | Not started | | | T6.3 |
 | 23 | Not started | | | T6.6 (personal bests and achievements) |
@@ -2064,7 +2064,7 @@ tests pin the item data's integrity.
 
 ## Phase 20: Mastery
 
-**Suggestions:** T6.2. **Depends on:** Phases 5, 11, and 13. **Status:** Not started.
+**Suggestions:** T6.2. **Depends on:** Phases 5, 11, and 13. **Status:** Awaiting Josh.
 
 Show mastery: the core verbs against the conjugationgroups of the current level, filling in as
 items move up the ladder. The report warns that progress displays are unproven for persistence,
@@ -2080,7 +2080,73 @@ screen.
 
 **How it differed:**
 
-(To be written by the session that finishes this phase.)
+- **Josh decided three things on 2026-11-15**, from ASCII mockups at Elementary, asked before
+  building, each the recommended option. (1) **The split display** over the grid: the weak
+  verbs' patterns, one row per conjugationgroup with a mark under each person, then the strong
+  and mixed verbs, each with its key conjugations. The mockup's note decided it: a strong verb has
+  only three items, so in a verb-by-conjugationgroup grid its Präsens and Imperativ, and its Perfekt
+  and Perfektpartizip, would always be two cells alike, and one "Weak verbs" row would have hidden
+  which person is shaky. (2) **A row in From Your Practice**, below My Mistakes, that pushes the
+  page, as the Ablaut Groups row does (over an inline card with progress bars, which would have
+  pushed My Mistakes further below an iPhone's fold, and over a section of its own at the foot).
+  (3) **The 50 most frequent strong and mixed verbs** at every level (over the level's whole band,
+  1,663 verbs at Advanced and mostly empty, and over the 50 followed by every other verb practiced).
+  Beginner's band holds 57 such verbs, so all 50 are within every band, and the list lines up with
+  Phase 23's sample achievement.
+- **Mastered means the third box**, decided in the session: box index 2, the seven-day interval,
+  the threshold Phase 21's speed round already uses (`MasteryState.masteredBox`). Below it an item
+  is "learning", a lookup included; with no entry, "not yet practiced". Three states, each its own
+  shape (●, ◐, ○), not a mark per box: the phase asks for modest, and a five-step mark would have
+  needed its own legend.
+- **What each level shows, decided in the session.** The patterns are the level's conjugationgroups
+  that a weak verb may be asked (`QuizVerbs.all`): 9 at Beginner, 17 at Elementary, 47 at
+  Intermediate, and 66 at Advanced. Elementary's Präteritum and the Präteritum Konjunktiv II are
+  asked of no weak verb, so they have no patterns. The Futurs carry an "Every verb" tag, since a
+  strong verb's Futur answer is a pattern too (Phase 11's mapping). A strong verb shows only the
+  stems its level asks: the Präsens at Beginner, and at Elementary the Präteritum only for sein,
+  haben, and the modals. fahren and ziehen, with two strong readings, have a row for each, with its
+  gloss. A verb counts as mastered once every stem the level asks, in every strong reading, is; so
+  the hub's counts change with the level.
+- **The page only shows**, decided in the session. A verb row opens nothing, though a link to the
+  verb page was the obvious thing: opening a verb page records a lookup, which sends the verb's key
+  conjugations back to the first box (browse Phase 15's rule, kept in Phase 11), so a learner who
+  tapped a mastered verb to admire it would undo it.
+- **Names, proposed in the session, which Josh can change:** "Mastery" and, in German, "Lernstand"
+  (over "Beherrschung", which reads stiffly as a title). The states are "Mastered", "Learning", and
+  "Not yet practiced", and "Beherrscht", "Im Aufbau", and "Noch nicht geübt".
+- **Built as** `Mastery` (`Models/Mastery.swift`: `MasteryState`, pattern rows, verb rows, the
+  counts, `coreVerbs`, `patternTables(at:)`, `stems(askedAt:of:readingIndex:)`) and `MasteryView`
+  with `MasteryDestination`. A key conjugation is conjugated when drawn rather than when counted, so
+  the hub's row, which builds a `Mastery` each time it draws, does not conjugate some 150 cells.
+- **Analytics.** `viewMastery`, with no parameters, when the page appears, so that whether learners
+  look at it can be known; nothing about the record or the level is sent. Staged in
+  [`docs/privacy-policy-pending.md`](../docs/privacy-policy-pending.md) in both languages: the
+  screens bullet gains the page, and the practice-record paragraph says the record shows what has
+  been mastered.
+- **VoiceOver.** Every mark is its own element, read as its state; every German word (pronoun,
+  conjugation, infinitive) is its own element with German pronunciation, and the gloss English, by
+  `docs/voiceover.md`'s rule that one element speaks in one language. The section headers are
+  headers, read with their counts. The hub row has a hint ("Shows which patterns and strong verbs
+  your practice has mastered."). Read from the source; nobody has listened to it.
+- **Tests:** `MasteryTests`, 16 functions: the state by box through a wrong answer, a lookup as
+  learning, each level's pattern count (4 cases), restricted conjugationgroups without patterns,
+  Beginner's three Imperativ persons, the Futurs alone serving every verb, the 50 core verbs and
+  their band, fahren's two rows, the stems each level asks, a row's key conjugations, the display
+  following a seeded record, a verb mastered by its level's stems, a verb needing both readings, a
+  pattern beyond the level not counted, and answers landing where the mapping sends them. Run in
+  English with `xcodebuild -testLanguage en`: 861 passed and 2 skipped (the environment-gated
+  harnesses), 863 in all.
+- **Verified on the iPhone 17**, in dark mode at Grundstufe, with mastered entries added to its
+  real record (and the record restored afterward, checked byte for byte). In German: the hub row
+  ("Beherrscht: 7 von 17 Mustern · 2 von 50 Verben", matching the seed), the page's legend and
+  pattern cards, and the verbs (the modals with their Elementary Präteritum, geben with two
+  conjugations, kommen filled). In English: the hub row and the page. **On the iPad Pro 11-inch
+  (M5)**, in light mode and English at Advanced, with English conjugationgroup names: the hub row
+  ("7 of 66 patterns · 1 of 50 verbs", since Advanced also asks kommen's Präteritum), the pattern
+  cards through the Futurs and their "Every verb" tag, and ziehen's two rows. Not tried: VoiceOver
+  by ear, large text sizes, and a record built by real days of practice.
+- **Josh has not yet judged it on a device**, which the phase requires. Whether the page reads well
+  at Advanced, where 66 patterns come before the verbs, is the question most worth his look.
 
 ## Phase 21: Speed Round
 

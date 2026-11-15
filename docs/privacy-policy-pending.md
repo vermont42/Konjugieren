@@ -759,3 +759,39 @@ Der Satz in Abschnitt 6 lautet nun:
 ```
 Nur die ersten zehn Fragen eines Quiz über alle Verben reichen ein Ergebnis ein, und zwar in der Bestenliste der Stufe des Quiz; ein Quiz über Ihre eigenen Verben, ein einzelnes Verb, selbst gewählte Conjugationgroups und Verben oder Ihre anstehenden Fragen oder Fehler tut das nicht, ebenso wenig die Verb-Grundlagen, die Übung einer Ablautgruppe, „Konjugationen bestimmen“, „Lückensätze“ und die zehn weiteren Fragen, die Sie anhängen können.
 ```
+
+## Mastery (pedagogy plan, Phase 20, 2026-11-15)
+
+Adds the signal `viewMastery`, sent when the Mastery page, reached from the Quiz tab, appears. It
+carries nothing: not the level, and nothing of what the page shows. The page shows, from the
+practice record kept on the device, which conjugations the learner has mastered, so the
+practice-record paragraph as last given in the Phase 13 section above names it. The screens bullet
+in section 2 gains the page.
+
+### English
+
+The first bullet in section 2 now reads:
+
+```
+- Which screens you visit (verb browser, verb page, family browser, family page, info browser, info article, quiz, mastery, tutor, settings)
+```
+
+The practice-record paragraph now reads:
+
+```
+The app also keeps a practice record: which conjugations you have practiced in quizzes and on review cards, whether your last answer to each was right, when each is due for review, and the results of your last quiz, so that it can show review cards, bring back what you missed, show how your last quiz went, and show which conjugations you have mastered. The record stays on your device and is never sent. Reset Practice in Settings erases it.
+```
+
+### German
+
+Der erste Punkt in Abschnitt 2 lautet nun:
+
+```
+- Welche Bildschirme Sie besuchen (Verbbrowser, Verbseite, Familienbrowser, Familienseite, Infobrowser, Infoartikel, Quiz, Lernstand, Tutor, Einstellungen)
+```
+
+Der Absatz über den Übungsstand lautet nun:
+
+```
+Die App führt außerdem einen Übungsstand: welche Konjugationen Sie im Quiz und auf Wiederholungskarten geübt haben, ob Ihre letzte Antwort darauf richtig war, wann jede wieder zur Wiederholung ansteht und das Ergebnis Ihres letzten Quiz, damit sie Wiederholungskarten zeigen, Verfehltes wiederholen, zeigen kann, wie Ihr letztes Quiz lief, und zeigen kann, welche Konjugationen Sie beherrschen. Der Übungsstand bleibt auf Ihrem Gerät und wird nie gesendet. „Übungsstand zurücksetzen“ in den Einstellungen löscht ihn.
+```

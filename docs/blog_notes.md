@@ -11298,3 +11298,58 @@ and "Morgen werde ich nach Berlin fahren" is not wrong, only less usual. The rea
 and "most" for that reason, and those are the items worth his second look.
 
 He read the sheet the same afternoon and approved all forty as written: "Looks good."
+
+## Mastery: Two Kinds of Progress (2026-11-15)
+
+Phase 20 of the pedagogy plan asked for a mastery display: the core verbs against the
+conjugationgroups of the current level, filling in as items climb the review ladder. The report
+behind the plan rated such displays unproven for keeping learners at it, and the phase said to keep
+this one modest.
+
+### The grid that would have lied a little
+
+The obvious picture is a grid, verbs down the side and conjugationgroups across the top. Before
+drawing a mockup I went back to what the practice record actually holds, and the grid fell apart.
+Since Phase 11, a strong verb's answers move just three items, the stems its key conjugations show
+(fährt, fuhr, ist gefahren). A Präsens question and an Imperativ question about fahren exercise the
+same item, and so do the Perfekt and the Perfektpartizip. In a grid those pairs would sit in separate
+columns and always match, which looks like data and is really one fact drawn twice. Weak verbs have
+the opposite problem: they have no items of their own, only patterns shared by every weak verb, so a
+grid row for machen and one for sagen would fill in together.
+
+So I drew two ASCII mockups for Josh, the grid and a split: weak patterns as a card per
+conjugationgroup with a mark under each person, then the strong verbs, each with its key
+conjugations. He chose the split, a row on the hub that pushes the page, and the 50 most frequent
+strong and mixed verbs, the same at every level. That last number worked out neatly: the smallest
+band, Beginner's 100 most frequent verbs, holds 57 strong and mixed ones, so all 50 sit inside
+every level.
+
+### Small decisions
+
+"Mastered" is the third box of the ladder, the seven-day interval, because the speed round of
+Phase 21 already uses that threshold and two definitions would drift apart. Each level shows only
+what it asks, so kommen at Beginner shows just kommt, and the modals at Elementary show their
+Präteritum while kommen's waits for Intermediate. The Futurs carry an "Every verb" tag, since a
+strong verb's Futur answer lands on a pattern too.
+
+The one decision that ran against instinct: a verb row links nowhere. Every other verb in the app
+opens its page, but opening a verb page counts as a lookup, and a lookup sends the verb back to the
+first box. A learner who tapped a mastered verb to admire it would have unmastered it.
+
+### A word about the words
+
+English *master* and German *Meister* are both borrowings of Latin *magister*, built on *magis*,
+"more": the master is "the one who is more", as the *minister*, from *minus*, is "the one who is
+less". The German title went another way. "Beherrschen" means to be *Herr* over something, and
+*Herr* began in Old High German as *hērro*, a comparative of *hēr*, "grey-haired, venerable": the
+lord is "the greyer one". Both words for command began as comparisons. The page's German title is
+"Lernstand", though, and its mastered items "beherrscht".
+
+### Checking it
+
+Sixteen new tests pin the counts, the stems per level, and where answers land. The simulators had no
+mastered items, so I added some to each real record, looked, and restored the originals byte for
+byte. Reading that record taught one small thing: `defaults read` prints ü as the octal escape
+`\374`, which is not JSON, so the seeding script reads the plist through `defaults export` instead.
+
+Josh has not judged it on a device yet, and the phase is not done until he has.

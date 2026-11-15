@@ -497,6 +497,38 @@ session runs, the tab's bar is titled with its name (an iPad's tab bar shows no 
   and `abandonQuiz` omit `questionNumber` (Decision 5). `QuizAbandonment.Entry.questionNumber` is
   optional for this.
 
+### Mastery
+
+Built 2026-11-15 in Phase 20 of [`plans/pedagogy-implementation.md`](../plans/pedagogy-implementation.md)
+(T6.2). A Mastery row ("Lernstand") in From Your Practice, below My Mistakes, says "Mastered: 7 of 17
+patterns · 2 of 50 verbs" and pushes `MasteryView`, which shows what the practice record has made
+secure at the learner's level. `Mastery` (in `Models/Mastery.swift`) builds it from the record and
+the level; it reads the record and writes nothing.
+
+- **Split, not a grid** (Josh, 2026-11-15, from mockups). A weak verb's cells are patterns shared
+  by every weak verb, so they appear once: a card per conjugationgroup that a weak verb may be asked
+  at the level (`Mastery.patternTables`, the pool entries whose `QuizVerbs` is `.all`), a mark under
+  each person. The Futurs carry an "Every verb" tag, since a strong verb's Futur answer is a pattern
+  too. Then the strong and mixed verbs: the 50 most frequent (`Mastery.coreVerbs`, the same at every
+  level, all within Beginner's band), a row per strong reading (fahren and ziehen have two), each with
+  the key conjugations the level asks (`Mastery.stems(askedAt:of:readingIndex:)`: the Präsens at
+  Beginner; at Elementary the Präteritum only for sein, haben, and the modals). A grid would have
+  shown a strong verb's Präsens and Imperativ, or Perfekt and Perfektpartizip, as two cells always
+  alike, since each pair is one item.
+- **States.** `MasteryState`: not practiced (no entry), learning (box 0 or 1), mastered (box 2 or
+  higher, `MasteryState.masteredBox`, the seven-day interval). Phase 21's speed round uses the same
+  threshold. A lookup puts an item in learning; a wrong answer drops a mastered item back to it.
+- **Counts.** A pattern counts once its own item is mastered; a pattern beyond the level is kept in
+  the record but not counted there. A verb counts once every stem the level asks, in every strong
+  reading, is mastered, so kommen's mastered Präsens masters it at Beginner but not at Elementary.
+- **It only shows.** A verb row opens nothing, since opening a verb page records a lookup, which
+  would send that verb's key conjugations back to the first box. Conjugations are computed when
+  drawn (`Mastery.KeyConjugation.conjugation(region:)`), so the hub's row, which needs only counts,
+  does not conjugate.
+- **VoiceOver.** Every mark is its own element, read as its state; every German word (a pronoun, a
+  conjugation, an infinitive) is its own element with German pronunciation, and the gloss English.
+- Analytics: `viewMastery`, with no parameters, when the page appears.
+
 ### Verb Essentials
 
 Built 2026-11-14 in Phase 15 of [`plans/pedagogy-implementation.md`](../plans/pedagogy-implementation.md)
@@ -1515,6 +1547,7 @@ Counts and durations go out in bands (`AnalyticsBand`), never as exact numbers.
 | `viewCollection` | `collection` (its key, such as `modals` or `ablaut-gehen`), `source` (`family`, `sharedLink`, `deeplink`, `quizCorrection`) | When a collection's page appears, once per arrival, or an ablaut group is expanded on the Ablaut page (Phase 16). The ideas document's "lists opened". The key names a fixed list, not anything the learner chose |
 | `tapShareCollection` | `collection` | When a collection's share button is tapped, whether or not the learner then shares (Phase 16) |
 | `tapResetPractice` | None | When Reset Practice in Settings is confirmed (pedagogy Phase 11). Nothing about the record is sent |
+| `viewMastery` | None | When the Mastery page, pushed from the Quiz tab's hub, appears (pedagogy Phase 20). Nothing about the record or the level is sent |
 | `tapRevealReviewCard` | None | When a tap reveals the review card's key conjugations, once per card (Phase 15). A page opened from the card then sends `viewVerbView` with `source` `reviewCard` |
 | `tapViewLeaderboard` | `source` (`tab`) from the Quiz tab's hub; none from Settings | When View Leaderboard on the Quiz tab's hub (pedagogy Phase 13) or View Leaderboards in Settings is tapped. The results screen's button, which sent nothing, is gone |
 | `startQuiz`, `quitQuiz`, `completeQuiz` | `source` (`tab`, `myVerbs`, `verbPage`, `list`, `custom`); `level` (`beginner`, `elementary`, `intermediate`, `advanced`); `quitQuiz` also `questionNumber` and `duration` (`0-3s`, `3-15s`, `15-40s`, `40s-2m`, `2m+`); `completeQuiz` also `questionCount` (`10`, `20`, `30`, …, or `3`); `startQuiz` alone also carries `collection` for a collection's quiz (Phase 16), or for a custom quiz over a collection, and `customChoice` (`conjugationgroups`, `verbs`, `both`) for a custom quiz (pedagogy Phase 9). A Review or My Mistakes session (`review`, `mistakes`, pedagogy Phase 12) sends neither `questionCount` nor `questionNumber`, since either would tell how many items were due or missed, and neither does a mixed ablaut session (`ablautMixed`, pedagogy Phase 16); an ablaut group's practice carries `collection` | When a quiz starts, is quit, or reaches its results (`source` since Phase 13). Without it, three-question quizzes would inflate the completion rate of the default quiz. `level` replaced `difficulty` (`regular`, `ridiculous`), which only `quitQuiz` and `completeQuiz` sent, in Phase 5 of the pedagogy plan, and `startQuiz` gained it then (M1). Since Phase 7, `completeQuiz` is sent at each round's results, and its `questionCount` says how many rounds' questions the session has asked, so Ten More shows as `20` and `30`. `duration` (M3) is wall-clock time from the start to the quit, background included. `questionNumber` counts re-asks |

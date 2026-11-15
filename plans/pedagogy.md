@@ -1003,6 +1003,16 @@ the device. The leaderboard left the results screen for a small button at the fo
 onboarding page and the quiz tip now describe practice rather than points and a leaderboard.
 Personal bests and achievements remain Phase 23's.
 
+**Built on `main` 2026-11-15** by [Phase 20](pedagogy-implementation.md#phase-20-mastery) of the
+pedagogy plan: mastery, kept modest, as this table asks. A Mastery row on the hub counts what the
+practice record has made secure at the learner's level, and opens a page that shows it in the
+record's two kinds of item rather than as one grid: the weak verbs' patterns, one card per
+conjugationgroup with a mark under each person, and the key conjugations of the 50 most frequent
+strong and mixed verbs, as far as the level asks them. Josh chose the split from mockups, since a
+grid would have shown a strong verb's Präsens and Imperativ as two cells that are one item. An item
+is mastered once its next review is a week or more away, the threshold Phase 21's speed round uses.
+Whether such a display keeps learners practicing is, as the table says, unproven.
+
 A warning about this tier. Meta-analysis finds the effects of gamification on learning small, and
 its effects on motivation and behavior less stable than its effects on test scores (Sailer & Homner
 2020, **secondhand**). Streaks and badges laid over the present quiz would decorate a loop that

@@ -52,6 +52,7 @@ enum AnalyticsName: String {
   case viewFamilyDetailView
   case viewInfoBrowseView
   case viewInfoView
+  case viewMastery
   case viewPracticeSet
   case viewQuizView
   case viewReviewCard

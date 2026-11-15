@@ -128,6 +128,9 @@ struct QuizView: View {
       .navigationDestination(for: AblautPracticeDestination.self) { _ in
         AblautPracticeListView()
       }
+      .navigationDestination(for: MasteryDestination.self) { _ in
+        MasteryView()
+      }
       .navigationDestination(for: CustomQuizDestination.self) { destination in
         switch destination {
         case .ablautGroups:
@@ -896,7 +899,7 @@ struct QuizView: View {
   }
 
   /// Review and My Mistakes, each started directly or saying why there is nothing to ask (Phase
-  /// 12 of the pedagogy plan), and the last quiz's results.
+  /// 12 of the pedagogy plan), Mastery (Phase 20), and the last quiz's results.
   private var practiceSection: some View {
     VStack(alignment: .leading, spacing: Layout.defaultSpacing) {
       Text(L.PracticeSession.heading)
@@ -915,6 +918,19 @@ struct QuizView: View {
           isLarge: isLarge,
           start: count > 0 ? { quiz.start(scope: .recordSession(session)) } : nil
         )
+      }
+
+      let mastery = Mastery(level: level, record: Current.practice.record)
+      QuizHubRow(
+        title: L.Mastery.title,
+        detail: L.Mastery.hubSummary(mastery.masteredPatternCount, mastery.patternCount, mastery.masteredVerbCount, mastery.verbCount),
+        systemImage: "circle.grid.3x3.fill",
+        identifier: "quiz_mastery",
+        hint: L.Accessibility.masteryHubHint,
+        isLarge: isLarge,
+        trailingSystemImage: "chevron.right.circle.fill"
+      ) {
+        navigationPath.append(MasteryDestination())
       }
 
       if let lastResult = Current.practice.lastResult {

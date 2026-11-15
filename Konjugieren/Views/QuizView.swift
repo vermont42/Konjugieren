@@ -15,6 +15,8 @@ struct QuizView: View {
   @Environment(\.horizontalSizeClass) private var sizeClass
   @State private var tabScope = TabQuizScope.allVerbs
   @State private var answerBlanks: [String] = []
+  @State private var recognitionTable: ConjugationTable?
+  @State private var recognitionPerson: PersonNumber?
   @FocusState private var focusedBlank: Int?
   @AccessibilityFocusState private var accessibilityFocusedBlank: Int?
   @AccessibilityFocusState private var correctionHasAccessibilityFocus: Bool
@@ -52,13 +54,17 @@ struct QuizView: View {
                   proxy.scrollTo(QuizCorrectionView.continueButtonID, anchor: .bottom)
                 }
               }
-              // Return resigned the field, and the learner edits the first attempt in it.
+              // Return resigned the field, and the learner edits the first attempt in it. A
+              // recognition card's chips push its field low, so the line is scrolled into sight.
               .onChange(of: quiz.isAwaitingSecondAttempt) { _, isAwaiting in
                 guard isAwaiting else {
                   return
                 }
                 accessibilityFocusedBlank = 0
                 refocusAnswer(after: .milliseconds(50))
+                withAnimation(reduceMotion ? nil : .default) {
+                  proxy.scrollTo(Self.secondAttemptLineID, anchor: .bottom)
+                }
               }
             }
           } else if !quiz.shouldShowResults, sheetScope == nil {
@@ -137,6 +143,8 @@ struct QuizView: View {
     }
     .onChange(of: quiz.currentIndex) {
       answerBlanks = []
+      recognitionTable = nil
+      recognitionPerson = nil
       focusedBlank = 0
       accessibilityFocusedBlank = 0
     }
@@ -147,6 +155,8 @@ struct QuizView: View {
         return
       }
       answerBlanks = []
+      recognitionTable = nil
+      recognitionPerson = nil
       Task { @MainActor in
         try? await Task.sleep(for: .milliseconds(450))
         focusedBlank = 0
@@ -193,18 +203,23 @@ struct QuizView: View {
             .accessibilityIdentifier("quiz_asked_again")
         }
 
-        Text(verbatim: question.verb.infinitiv.inUserRegion)
-          .font(.title.bold())
-          .foregroundStyle(.customForeground)
-          .germanPronunciation()
-          .speakOnTap(question.verb.infinitiv.inUserRegion)
+        if let recognition = question.recognition {
+          // The verb and its gloss are what a recognition question asks for, so neither is shown.
+          RecognitionPromptView(prompt: recognition.prompt)
+        } else {
+          Text(verbatim: question.verb.infinitiv.inUserRegion)
+            .font(.title.bold())
+            .foregroundStyle(.customForeground)
+            .germanPronunciation()
+            .speakOnTap(question.verb.infinitiv.inUserRegion)
 
-        Text(verbatim: question.translation)
-          .font(.subheadline)
-          .foregroundStyle(.secondary)
-          .englishPronunciation()
+          Text(verbatim: question.translation)
+            .font(.subheadline)
+            .foregroundStyle(.secondary)
+            .englishPronunciation()
+        }
 
-        if essentialsRows == nil {
+        if essentialsRows == nil, question.recognition == nil {
           labeledRow(L.Quiz.conjugationgroup) {
             Text(verbatim: question.displayName(lang: settings.conjugationgroupLang))
               .foregroundStyle(.customForeground)
@@ -258,6 +273,24 @@ struct QuizView: View {
             .accessibilityHidden(true)
         }
 
+        // The choices come before the field, so that they stay in sight above the keyboard and
+        // Return can check the answer once the infinitive is typed.
+        if let recognition = question.recognition {
+          RecognitionChoicesView(
+            recognition: recognition,
+            table: $recognitionTable,
+            personNumber: $recognitionPerson,
+            lang: settings.conjugationgroupLang,
+            isLocked: quiz.correction != nil
+          )
+
+          Text(L.Recognition.infinitiveHeading)
+            .font(.subheadline.bold())
+            .foregroundStyle(.customYellow)
+            .padding(.top, 4)
+            .accessibilityHidden(true)
+        }
+
         AnswerFrameView(
           frame: question.answerFrame,
           blanks: $answerBlanks,
@@ -265,7 +298,9 @@ struct QuizView: View {
           accessibilityFocusedBlank: $accessibilityFocusedBlank,
           identifier: "quiz_answer_field",
           returnAlwaysSubmits: quiz.correction != nil,
-          spokenPrefix: currentRow?.conjugationgroup.displayName(lang: settings.conjugationgroupLang)
+          spokenPrefix: question.recognition == nil ? currentRow?.conjugationgroup.displayName(lang: settings.conjugationgroupLang) : L.Recognition.infinitiveHeading,
+          placeholder: question.recognition == nil ? nil : L.Recognition.infinitiveHeading,
+          hint: question.recognition == nil ? nil : L.Accessibility.recognitionFieldHint
         ) {
           if quiz.correction != nil {
             quiz.continueAfterCorrection()
@@ -284,9 +319,24 @@ struct QuizView: View {
               .foregroundStyle(QuizItem.State.correctOnSecondAttempt.dotColor)
               .transition(.opacity.combined(with: .scale(scale: 0.9)))
               .accessibilityIdentifier("quiz_almost")
+              .id(Self.secondAttemptLineID)
           }
         }
         .animation(reduceMotion ? nil : .default, value: quiz.isAwaitingSecondAttempt)
+
+        if question.recognition != nil, quiz.correction == nil {
+          Button {
+            submit(question)
+          } label: {
+            Label(L.Recognition.check, systemImage: "checkmark")
+              .frame(maxWidth: 400)
+          }
+          .funButton()
+          .frame(maxWidth: .infinity)
+          .disabled(recognitionAnswer(for: question) == nil)
+          .accessibilityHint(L.Accessibility.recognitionCheckHint)
+          .accessibilityIdentifier("recognition_check_button")
+        }
 
         if let correction = quiz.correction {
           QuizCorrectionView(
@@ -353,6 +403,8 @@ struct QuizView: View {
     }
   }
 
+  private static let secondAttemptLineID = "quiz_second_attempt_line"
+
   /// Gives the answer field the keyboard while a correction is held, so that Return continues,
   /// and after a slip, so that the learner can edit the first attempt. Return resigns the field,
   /// and a push takes the keyboard away, yet the focus state can still read 0 afterward, so it
@@ -367,9 +419,34 @@ struct QuizView: View {
     }
   }
 
+  /// The recognition answer the card holds, or nil until the infinitive, the conjugationgroup,
+  /// and, unless it is a participle, the person are all given.
+  private func recognitionAnswer(for question: QuizItem) -> RecognitionAnswer? {
+    let infinitiv = question.answerFrame.answer(filling: answerBlanks)
+    guard question.recognition != nil, !infinitiv.isEmpty, let recognitionTable else {
+      return nil
+    }
+    let answer = RecognitionAnswer(infinitiv: infinitiv, table: recognitionTable, personNumber: recognitionPerson)
+    return answer.conjugationgroup == nil ? nil : answer
+  }
+
   private func submit(_ question: QuizItem) {
     let index = quiz.currentIndex
-    quiz.submitAnswer(question.answerFrame.answer(filling: answerBlanks))
+    if question.recognition != nil {
+      guard let answer = recognitionAnswer(for: question) else {
+        // Return with a choice missing: the field keeps the keyboard, and VoiceOver says what is
+        // missing.
+        UIAccessibility.post(notification: .announcement, argument: L.Recognition.incomplete)
+        Task { @MainActor in
+          try? await Task.sleep(for: .milliseconds(50))
+          focusedBlank = 0
+        }
+        return
+      }
+      quiz.submitRecognition(answer)
+    } else {
+      quiz.submitAnswer(question.answerFrame.answer(filling: answerBlanks))
+    }
     guard index < quiz.questions.count else {
       return
     }
@@ -420,6 +497,9 @@ struct QuizView: View {
     }
     if quiz.scope.isVerbEssentials {
       return L.VerbEssentials.title
+    }
+    if quiz.scope.isRecognition {
+      return L.Recognition.title
     }
     return quiz.scope.recordSession?.title
   }
@@ -749,8 +829,8 @@ struct QuizView: View {
   }
 
   /// Ways to practice beside the quiz: Verb Essentials (Phase 15 of the pedagogy plan), the ablaut
-  /// groups' practice (Phase 16), which opens a list of the groups, and the exercises of later
-  /// phases.
+  /// groups' practice (Phase 16), which opens a list of the groups, Name the Conjugation (Phase
+  /// 17), and the exercises of later phases.
   private var exercisesSection: some View {
     VStack(alignment: .leading, spacing: Layout.defaultSpacing) {
       Text(L.Quiz.exercises)
@@ -779,6 +859,17 @@ struct QuizView: View {
         trailingSystemImage: "chevron.right.circle.fill"
       ) {
         navigationPath.append(AblautPracticeDestination())
+      }
+
+      QuizHubRow(
+        title: L.Recognition.title,
+        detail: L.Recognition.description,
+        systemImage: "text.magnifyingglass",
+        identifier: "quiz_recognition",
+        hint: L.Accessibility.recognitionStartHint,
+        isLarge: isLarge
+      ) {
+        quiz.start(scope: .recognition())
       }
     }
     .frame(maxWidth: .infinity, alignment: .leading)

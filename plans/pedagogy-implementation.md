@@ -31,7 +31,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 14 | Done | 2026-11-14 | `9a7056f` | T4.2, T4.3 |
 | 15 | Done | 2026-11-14 | `a324232` | T5.1 |
 | 16 | Done | 2026-11-15 | `bd0537e` | T5.2 |
-| 17 | Not started | | | T5.4 |
+| 17 | Awaiting Josh | 2026-11-15 | | T5.4 |
 | 18 | Not started | | | T5.5 |
 | 19 | Not started | | | T5.6 |
 | 20 | Not started | | | T6.2 |
@@ -1693,7 +1693,7 @@ which groups count as known and how the mix is drawn.
 
 ## Phase 17: Recognition
 
-**Suggestions:** T5.4. **Depends on:** Phase 3. **Status:** Not started.
+**Suggestions:** T5.4. **Depends on:** Phase 3. **Status:** Awaiting Josh.
 
 Show a conjugation, such as käme, and ask for the infinitive and the conjugationgroup. This is the
 direction a reader needs, and the report's principle 11 says practice develops in the direction
@@ -1713,7 +1713,85 @@ record if Phase 11 maps them, with tests on ambiguous conjugations.
 
 **How it differed:**
 
-(To be written by the session that finishes this phase.)
+- **Josh decided four things on 2026-11-15**, asked before building, each the recommended option.
+  (1) The choosing is **chips** on the card: the level's conjugationgroups, then the chosen table's
+  persons (over two pop-up menus, and over a grid like the verb page's). (2) An answer with any part
+  right gets **one more try at half points**, its line naming what to check, through Phase 4's
+  mechanism (over all or nothing, and over scoring the infinitive and the cell apart). (3)
+  **Recognition answers are not recorded** in the practice record, since recognizing fuhr is not
+  evidence of producing it (principle 11), so the phase's "record to the practice record if Phase
+  11 maps them" was answered no although Phase 11 maps every cell. (4) The name is **"Name the
+  Conjugation" / "Konjugationen bestimmen"**, after the German classroom's "Bestimme die Verbform"
+  (over "Recognize the Verb" and "Recognition").
+- **Ambiguity, decided in the session: accept every right reading, avoid nothing.** A question
+  holds every cell of every verb that writes its prompt (`RecognitionQuestion.cells`): kommen is
+  the Präsens and Konjunktiv I of wir and sie, fuhr is either reading of fahren, habe gesollt is the
+  Perfekt Indikativ and the Perfekt Konjunktiv I, and weiß is wissen's ich and er and weißen's du
+  Imperativ. Deciding which cells a text can be is the skill, so no prompt is avoided. The verbs to
+  try come from the bundled conjugation map, by each word of the prompt, and each is matched with
+  `Verb.conjugations(matching:)`. A finite part alone is not its verb: the prompt kam does not
+  accept ankommen. Only the offered tables count.
+- **The grade, decided in the session.** It is judged against the typed verb's cells when the
+  infinitive is right, and against every cell otherwise, and calls a part wrong only when changing
+  it can make the answer right, so a repair line never sends the learner to change what was right.
+  Hence wissen · Imperativ · du for weiß is "check the conjugationgroup and the person", since
+  wissen's own cells are the Präsens of ich and er; weißen's du Imperativ does not rescue it. A
+  participle has no person to judge. The six lines ("Check the infinitive." to "Check the
+  conjugationgroup and the person." / "Prüfe den Infinitiv." to "Prüfe die Conjugationgroup und die
+  Person."), each followed by Phase 4's "Try once more.", **have not been seen by Josh**.
+- **Decided in the session, not asked.** One person is chosen, and any right one is accepted; the
+  mockup showed two selected, which would have asked for every right person. The draw is the
+  default quiz's, ten a round with Ten More, mixed as Phase 6 mixes it. The prompt is the user's
+  region's main-clause conjugation with its ablaut in red; the verb and gloss are not shown. The
+  chips sit **above** the field rather than below as in the mockup, so they stay in sight above the
+  keyboard and Return checks the answer; a Check button, enabled once the answer is complete, does
+  too. `QuizErrorHistory` is not written either, since the Tutor counts its misses as production
+  errors. The level tip is donated as after a default quiz. Never ranked, no due items.
+- **How it is built.** `QuizItem.recognition` marks the question, whose `correctAnswer` is the
+  prompt, so the results, dots, re-asks, and correction work unchanged. `Quiz.submitRecognition`
+  shares the slip path, the right path, and the correction path with `submitAnswer` through three
+  helpers split out of it (`awaitSecondAttempt`, `acceptAnswer`, `holdCorrection`).
+  `QuizCorrection` gained the recognition answer and grade, and `QuizCorrectionView` shows the
+  answer part by part, wrong parts in red, and every right answer, one line per verb and table.
+  `AnswerFrameView` gained `placeholder` and `hint`, since its field said "Conjugation".
+- **Analytics.** A new `source` value, `recognition`. `completeQuiz` carries its `questionCount`.
+  Staged in [`docs/privacy-policy-pending.md`](../docs/privacy-policy-pending.md) in both
+  languages.
+- **VoiceOver.** The question speaks its prompt, not a verb and gloss. Each chip is a button with the
+  selected trait, under a header. The field reads "Infinitive, blank" with its own hint. Return with
+  a choice missing announces "Choose a conjugationgroup and a person." The correction reads
+  "Incorrect. Your answer: kam, Präteritum Indikativ, du. Correct answer: kommen, Präteritum
+  Konjunktiv II, ich, er." Read from the accessibility tree; nobody has listened to it.
+- **A new fixture**, `KONJUGIEREN_QUIZ_FIXTURE recognition`: ten prompts over every table, several
+  ambiguous, with answers worth trying in the comment on `Quiz.generateRecognitionFixture()`.
+- **Tests:** `RecognitionTests`, 19 functions: the cells of käme, fuhr, kam an, weiß, kommen, machte
+  at two levels, a compound, a participle, and seien Sie, each cell checked to write its prompt;
+  grading in any spelling; the parts each of nine answers gets wrong; the six lines; the
+  correction's lines; the chips' persons; and the scope. Nested in `QuizTests`: a Beginner round of
+  the band and tables, a right answer scoring with the record and the error history untouched, a
+  repair for half points, a held correction and re-ask, and the signals, last result, and Ten More.
+  Run in English with `xcodebuild -testLanguage en`: 793 distinct test functions passed and 2
+  skipped (the environment-gated harnesses); `check_docs.py` counts 796 `@Test`s.
+- **Verified on the iPhone 17**, in dark mode, with the fixture. In German: the hub's row, the card
+  with Advanced's fourteen chips, komen for käme ("Prüfe den Infinitiv. Versuch es noch einmal."),
+  repaired for 5, then fahren · Präteritum Indikativ · du for fuhr twice ("Prüfe die Person.", then
+  the correction with du struck through and "fahren · Präteritum Indikativ · ich, er"). In English:
+  kommen for käme through er (right), gehen · Perfektpartizip for fuhr (the correction at once),
+  the rest of the round, and results of 95, "Correct: 9 / 10", "Asked Again: 1 / 1". **On the iPad
+  Pro 11-inch (M5)**, in light mode and English, at Advanced: the hub's row, then a real draw,
+  getrieben as treiben's participle (the person row gone), habe gesollt as the Perfekt Konjunktiv I
+  (right), and fallen · Präsens Indikativ · du for werde reinfallen (the correction listing the
+  Futur Indikativ for ich and the Futur Konjunktiv I for ich and er); and the fixture's käme
+  answered kam. Not tried: VoiceOver by ear, the software keyboard, the Live Activity, Ten More and
+  the hub's Last Quiz row from the device (unit-tested). The fixture default was removed from both
+  simulators afterward.
+- **Found by looking.** The field's placeholder said "Konjugation". On the iPhone the repair line
+  fell below the fold, under the chips, so the quiz now scrolls a second attempt's line into
+  sight, for every kind of question. A wrong infinitive that only lacks letters (fallen for
+  reinfallen) had nothing to mark and read as right, so a wrong infinitive is now red throughout.
+- **Seen, not changed.** On the simulator with a hardware keyboard, the floating ä ö ü ß row covers
+  the foot of a tall card, Check included, which is one more reason Return checks the answer. And
+  starting from the hub still does not focus the field, as Phase 15 noted.
 
 ## Phase 18: Sentences with a Blank
 

@@ -127,6 +127,7 @@ quiz in a sheet shows) and `collectionKey` (which `startQuiz` names).
 | `.recordSession(.mistakes)` | Items whose last answer was wrong, likewise | Up to 10, then Ten More while any remain | `mistakes` | No |
 | `.verbEssentials(_:)` | Five strong or mixed verbs of the level's band, or of the verbs passed, each asked its three key conjugations (pedagogy Phase 15) | 15, then five more verbs | `verbEssentials` | No |
 | `.ablautPractice(_:)` | Verb Essentials over an ablaut group's ten most frequent verbs, alone, or mixed: three of the group's verbs and two of the known groups' (pedagogy Phase 16), in a sheet | Up to 15, then another round | `ablautAlone` or `ablautMixed` | No |
+| `.recognition()` | Name the Conjugation: the level's pool and band, each question a conjugation to name by infinitive, conjugationgroup, and person (pedagogy Phase 17) | 10, then Ten More | `recognition` | No |
 
 A quiz whose rounds are ten (`QuizScope.continues`) draws as above. The verb page's three
 questions ask distinct cells and no participle, from the learner's level, since every Perfekt
@@ -574,6 +575,49 @@ a group shares are what it asks.
   level tip. `startQuiz` carries the group's collection key. A mixed session sends neither
   `questionCount` nor `questionNumber`: its round can be short when the known groups hold few
   verbs, and which groups are known comes from the learner's answers (Decision 5).
+
+### Name the Conjugation
+
+Built 2026-11-15 in Phase 17 of [`plans/pedagogy-implementation.md`](../plans/pedagogy-implementation.md)
+(T5.4): recognition, the direction a reader needs. "Name the Conjugation" ("Konjugationen
+bestimmen", Josh's choice; *bestimmen* is the German classroom's word for naming a verb's cell)
+shows a conjugation, such as käme, and asks for its infinitive, typed, and its conjugationgroup and
+person, chosen from chips, since typing their names would test the metalanguage. It is a mode of its
+own, a row in the hub's Exercises (Josh, 2026-11-13); the default quiz stays production practice.
+
+- **The draw** is the default quiz's: the level's pool and band, mixed as in Phase 6
+  (`QuizScope.recognition()`, ten a round, Ten More). The prompt is the asked cell's conjugation in
+  the user's region and the main clause's word order (kam an, ist gekommen, seien Sie), ablaut in
+  red. The verb and its gloss are not shown, since they are what is asked.
+- **Every right reading is accepted.** `RecognitionQuestion.cells` holds every cell of every verb
+  that writes the prompt: kommen is the Präsens and the Konjunktiv I of wir and sie, fuhr belongs
+  to both readings of fahren, and weiß to wissen (ich, er) and weißen (the du Imperativ). Ambiguous
+  prompts are not avoided, since deciding which cells a text can be is the skill. The verbs to try
+  come from the conjugation map, by each word of the prompt; each is then matched cell by cell with
+  `Verb.conjugations(matching:)`. A finite part alone is not its verb: the prompt kam does not
+  accept ankommen. Only cells of the offered tables count, so at Elementary machte is the Präteritum
+  Indikativ alone.
+- **The chips** (`RecognitionChoicesView`) are the level's tables, in the verb page's order, and
+  then the chosen table's persons (four for the Imperativ, none for a participle). One person is
+  chosen; any right one is accepted. The chips sit above the field, so that they stay in sight
+  above the keyboard and Return checks the answer; a Check button does too, enabled once the answer
+  is complete. The infinitive is graded as the quiz grades: case and spacing aside, umlauts as
+  digraphs, ß as ss.
+- **The grade** (`RecognitionQuestion.grade`) is judged against the typed verb's cells when it is
+  one of them, and against every cell otherwise, and names a part wrong only when changing it can
+  make the answer right. An answer with any part right earns one more try at half points, with a
+  line naming what to check ("Check the person. Try once more."), through Phase 4's mechanism
+  (`QuizItem.firstAttemptRecognition`, Josh, 2026-11-15). Nothing right goes to the correction at
+  once. The correction shows the answer part by part, the wrong parts in red, and lists every right
+  answer, one line per verb and table ("kommen · Präteritum Konjunktiv II · ich, er"); the re-ask
+  and links work as for any question.
+- **Nothing is recorded** (Josh, 2026-11-15). Recognizing fuhr is not evidence of producing it, so a
+  recognition answer moves neither the practice record nor `QuizErrorHistory`, whose misses the
+  Tutor reads as production errors. The last result is kept, as `LastQuizResult.Kind.recognition`.
+- Never ranked, no due items, the level tip donated as for the default quiz. Its signals carry the
+  source `recognition`, and `completeQuiz` its `questionCount`. The fixture
+  `KONJUGIEREN_QUIZ_FIXTURE recognition` asks ten prompts over every table, several ambiguous, when
+  Name the Conjugation is started.
 
 ### The Quiz Clock
 

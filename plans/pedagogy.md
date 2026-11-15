@@ -928,6 +928,14 @@ use the term "principal parts".
 of the pedagogy plan: each ablaut group with more than one verb offers Verb Essentials over its ten
 most frequent verbs alone, and mixed, three of its verbs with two from the groups already known.
 A group is known once half of its key conjugations have left the first box of the practice record.
+
+**Built on `main` 2026-11-15** by [Phase 17](pedagogy-implementation.md#phase-17-recognition)
+of the pedagogy plan: Name the Conjugation ("Konjugationen bestimmen"), from the hub's Exercises,
+shows a conjugation from the learner's level and band and asks for its infinitive, typed, and its
+conjugationgroup and person, chosen. Every cell of every verb that writes the prompt is right, so
+fuhr accepts both readings of fahren and weiß accepts weißen's Imperativ. An answer with any part
+right gets one more try at half points, with a line naming what to check. Recognition answers do
+not move the practice record.
 It starts from each expanded group on the Families tab's Ablaut page and from an Ablaut Groups row
 in the Quiz tab's Exercises, which lists the groups by use.
 

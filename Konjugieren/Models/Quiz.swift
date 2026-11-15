@@ -217,10 +217,7 @@ class Quiz {
       if diagnosis != nil || questions[currentIndex].isSlip(answer) {
         questions[currentIndex].firstAttempt = answer
         questions[currentIndex].firstAttemptDiagnosis = diagnosis
-        lastPreferredSpelling = nil
-        Current.soundPlayer.play(.pop)
-        HapticPlayer.playImpact(.light)
-        announceSecondAttempt(questions[currentIndex].secondAttemptPrompt)
+        awaitSecondAttempt(prompt: questions[currentIndex].secondAttemptPrompt)
         return
       }
     }
@@ -230,35 +227,17 @@ class Quiz {
     recordPractice(of: questions[currentIndex], isCorrect: isCorrect)
 
     if isCorrect {
-      lastPreferredSpelling = questions[currentIndex].preferredSpelling(of: answer)
-      Current.soundPlayer.play(.chime)
-      HapticPlayer.playSuccess()
-      announceAnswerResult(correct: true, preferredSpelling: lastPreferredSpelling)
-      advance()
+      acceptAnswer(preferredSpelling: questions[currentIndex].preferredSpelling(of: answer))
     } else {
       let question = questions[currentIndex]
-      lastPreferredSpelling = nil
-      stopTimer()
-      // A re-ask is not asked a third time, whatever its answer, so that one stubborn question
-      // cannot fill a ten-question round (Josh, T3.1).
-      if !question.isReask {
-        let placement = Self.reaskPlacement(of: currentIndex, in: questions)
-        questions.insert(question.reasked(stepID: placement.stepID), at: placement.position)
-      }
-      correction = QuizCorrection(
-        willBeReasked: !question.isReask,
-        difference: question.difference(from: answer),
-        diagnosis: question.diagnosis(of: answer),
-        errorContext: ErrorExplainerContext(
-          infinitiv: question.verb.infinitiv,
-          translation: question.translation,
-          familyDescription: question.verb.family.displayName,
-          conjugationgroupGerman: question.conjugationgroup.germanDisplayName,
-          conjugationgroupEnglish: question.conjugationgroup.englishDisplayName,
-          userAnswer: answer,
-          correctAnswer: question.correctAnswer
+      holdCorrection { willBeReasked in
+        QuizCorrection(
+          willBeReasked: willBeReasked,
+          difference: question.difference(from: answer),
+          diagnosis: question.diagnosis(of: answer),
+          errorContext: question.errorContext(userAnswer: answer)
         )
-      )
+      }
       QuizErrorHistory.record(
         QuizErrorRecord(
           infinitiv: question.verb.infinitiv,
@@ -270,9 +249,74 @@ class Quiz {
         ),
         getterSetter: Current.getterSetter
       )
-      Current.soundPlayer.play(.buzz)
-      HapticPlayer.playError()
     }
+  }
+
+  /// A Name the Conjugation answer (Phase 17 of the pedagogy plan). An answer with any part right
+  /// earns one more try at half points, its line saying which parts to check; otherwise it goes to
+  /// the correction, which lists every right answer. Recognizing fuhr is not evidence of producing
+  /// it, so the answer moves neither the practice record nor `QuizErrorHistory`, whose misses the
+  /// Tutor reads as production errors (Josh, 2026-11-15).
+  func submitRecognition(_ answer: RecognitionAnswer) {
+    guard isInProgress, correction == nil, currentIndex < questions.count, let recognition = questions[currentIndex].recognition else { return }
+    let grade = recognition.grade(answer)
+    let summary = answer.summary(lang: Current.settings.conjugationgroupLang)
+
+    if grade.earnsSecondAttempt, !questions[currentIndex].isAwaitingSecondAttempt {
+      questions[currentIndex].firstAttempt = summary
+      questions[currentIndex].firstAttemptRecognition = grade
+      awaitSecondAttempt(prompt: questions[currentIndex].secondAttemptPrompt)
+      return
+    }
+
+    questions[currentIndex].userAnswer = summary
+    questions[currentIndex].isCorrect = grade.isCorrect
+    if grade.isCorrect {
+      acceptAnswer(preferredSpelling: recognition.preferredSpelling(of: answer.infinitiv))
+    } else {
+      let question = questions[currentIndex]
+      holdCorrection { willBeReasked in
+        QuizCorrection(
+          willBeReasked: willBeReasked,
+          difference: AnswerDifference.between(given: AnswerSpelling.normalized(answer.infinitiv), expected: recognition.nearestInfinitive(to: answer.infinitiv)),
+          diagnosis: nil,
+          errorContext: question.errorContext(userAnswer: summary),
+          recognitionAnswer: answer,
+          recognitionGrade: grade
+        )
+      }
+    }
+  }
+
+  private func awaitSecondAttempt(prompt: String) {
+    lastPreferredSpelling = nil
+    Current.soundPlayer.play(.pop)
+    HapticPlayer.playImpact(.light)
+    announceSecondAttempt(prompt)
+  }
+
+  private func acceptAnswer(preferredSpelling: String?) {
+    lastPreferredSpelling = preferredSpelling
+    Current.soundPlayer.play(.chime)
+    HapticPlayer.playSuccess()
+    announceAnswerResult(correct: true, preferredSpelling: preferredSpelling)
+    advance()
+  }
+
+  /// Stops the clock on a wrong final answer, schedules its re-ask, and holds its correction.
+  private func holdCorrection(_ makeCorrection: (_ willBeReasked: Bool) -> QuizCorrection) {
+    let question = questions[currentIndex]
+    lastPreferredSpelling = nil
+    stopTimer()
+    // A re-ask is not asked a third time, whatever its answer, so that one stubborn question
+    // cannot fill a ten-question round (Josh, T3.1).
+    if !question.isReask {
+      let placement = Self.reaskPlacement(of: currentIndex, in: questions)
+      questions.insert(question.reasked(stepID: placement.stepID), at: placement.position)
+    }
+    correction = makeCorrection(!question.isReask)
+    Current.soundPlayer.play(.buzz)
+    HapticPlayer.playError()
   }
 
   /// Each final answer goes into the practice record as it is given, so that a quiz quit after
@@ -375,6 +419,8 @@ class Quiz {
       return generateDiagnosesFixture()
     case "essentials" where scope.isVerbEssentials && scope.ablautPractice == nil:
       return generateVerbEssentialsFixture()
+    case "recognition" where scope.isRecognition:
+      return generateRecognitionFixture()
     default:
       break
     }
@@ -402,6 +448,22 @@ class Quiz {
     }
 
     let pool = scope.pool(level: level)
+    if scope.isRecognition {
+      // The default quiz's draw from the level's pool and band, so that the prompts are the
+      // conjugations the learner is asked to produce at the level.
+      let tables = RecognitionQuestion.tables(for: pool)
+      return QuizDraw.questions(
+        pool: pool,
+        verbs: verbs,
+        readingIndex: nil,
+        count: scope.questionCount,
+        distinctCells: false,
+        mixesVerbs: true,
+        using: &randomSource
+      ).map { question in
+        makeRecognitionItem(verb: question.verb, conjugationgroup: question.conjugationgroup, readingIndex: question.readingIndex, tables: tables)
+      }
+    }
     let due = scope.mixesDueItems
       ? QuizDraw.dueQuestions(for: Current.practice.dueItems(), pool: pool, verbs: verbs, using: &randomSource)
       : []
@@ -488,7 +550,50 @@ class Quiz {
     )
   }
 
+  func makeRecognitionItem(verb: Verb, conjugationgroup: Conjugationgroup, readingIndex: Int, tables: [ConjugationTable]) -> QuizItem {
+    let recognition = RecognitionQuestion(verb: verb, conjugationgroup: conjugationgroup, readingIndex: readingIndex, tables: tables)
+    return QuizItem(
+      verb: verb,
+      conjugationgroup: conjugationgroup,
+      correctAnswer: recognition.prompt,
+      readingIndex: readingIndex,
+      recognition: recognition
+    )
+  }
+
   #if DEBUG
+  // Prompts for Name the Conjugation (Phase 17 of the pedagogy plan), each offered every table,
+  // several with more than one right answer: käme (ich or er), fuhr (either reading of fahren),
+  // kam an (ankommen, not kommen), weiß (wissen's ich or er, or weißen's du Imperativ), machte
+  // (the Präteritum or the Konjunktiv II), ist gegangen, gesungen (no person), kommen (the
+  // Präsens or the Konjunktiv I, wir or sie), seien Sie, and hättest gehabt. Answers worth
+  // trying: komen with the right cell (check the infinitive), kommen · Präteritum Indikativ · ich
+  // for käme (check the conjugationgroup), fahren · Präteritum Indikativ · du for fuhr (check
+  // the person), kommen · Präteritum Indikativ · ich for kam an (check the infinitive: kam alone
+  // is kommen's, but kam an is ankommen's), and gehen · Perfektpartizip for fuhr (nothing right,
+  // so the correction at once).
+  private func generateRecognitionFixture() -> [QuizItem] {
+    let plan: [(infinitiv: String, group: Conjugationgroup)] = [
+      ("kommen", .präteritumKonjunktivII(.firstSingular)),
+      ("fahren", .präteritumIndikativ(.thirdSingular)),
+      ("ankommen", .präteritumIndikativ(.firstSingular)),
+      ("wissen", .präsensIndikativ(.firstSingular)),
+      ("machen", .präteritumIndikativ(.thirdSingular)),
+      ("gehen", .perfektIndikativ(.thirdSingular)),
+      ("singen", .perfektpartizip),
+      ("kommen", .präsensIndikativ(.firstPlural)),
+      ("sein", .imperativ(.thirdPlural)),
+      ("haben", .plusquamperfektKonjunktivII(.secondSingular))
+    ]
+    let tables = RecognitionQuestion.tables(for: QuizLevel.advanced.pool)
+    return plan.map { spec in
+      guard let verb = Verb.verbs[spec.infinitiv] else {
+        preconditionFailure("Quiz fixture references missing verb: \(spec.infinitiv)")
+      }
+      return makeRecognitionItem(verb: verb, conjugationgroup: spec.group, readingIndex: 0, tables: tables)
+    }
+  }
+
   private func generateScreenshotFixture() -> [QuizItem] {
     let plan: [(infinitiv: String, group: Conjugationgroup)] = [
       ("machen", .präsensIndikativ(.firstSingular)),
@@ -778,7 +883,8 @@ class Quiz {
   }
 
   /// A step's later questions are not announced, since the verb is already on screen, and VoiceOver
-  /// moves to the next blank, whose label names what it asks.
+  /// moves to the next blank, whose label names what it asks. A recognition question speaks its
+  /// prompt alone, since the verb and its gloss are what it asks for.
   private func announceQuestion() {
     guard UIAccessibility.isVoiceOverRunning, let question = currentQuestion, currentStepRange.lowerBound == currentIndex else { return }
     var delay = 1.0
@@ -787,6 +893,12 @@ class Quiz {
         UIAccessibility.post(notification: .announcement, argument: L.Quiz.askedAgain)
       }
       delay += 1.0
+    }
+    if let recognition = question.recognition {
+      DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+        Current.utterer.utter(recognition.prompt.lowercased())
+      }
+      return
     }
     DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
       Current.utterer.utter(question.verb.infinitiv)
@@ -875,18 +987,25 @@ struct QuizScope {
   /// Verb Essentials over an ablaut group, alone or mixed with the known groups (Phase 16).
   var ablautPractice: AblautPracticeSession?
 
+  /// Name the Conjugation, which shows a conjugation and asks which verb and cell it is (Phase 17).
+  var isRecognition = false
+
   /// Only a default quiz posts, to the leaderboard of its level, as Josh decided on 2026-11-13: a
   /// score over a learner's own verbs or conjugationgroups, or over three questions, compares with
   /// nothing. Only its first round posts.
   var isRanked: Bool {
-    verbs == nil && custom == nil && recordSession == nil && !isVerbEssentials && continues
+    isDefaultQuiz
   }
 
   /// Only the default quiz mixes in items the practice record says are due, up to
   /// `QuizDraw.dueItemLimit` a round (Phase 11). A quiz over chosen verbs or conjugationgroups asks
   /// what was chosen.
   var mixesDueItems: Bool {
-    verbs == nil && custom == nil && recordSession == nil && !isVerbEssentials && continues
+    isDefaultQuiz
+  }
+
+  private var isDefaultQuiz: Bool {
+    verbs == nil && custom == nil && recordSession == nil && !isVerbEssentials && !isRecognition && continues
   }
 
   /// A Review or My Mistakes session's length is the number of items due or missed, when fewer
@@ -940,6 +1059,10 @@ struct QuizCorrection: Equatable {
   let diagnosis: AnswerDiagnosis?
   /// What `ErrorExplainerView` would explain, were it enabled.
   let errorContext: ErrorExplainerContext
+  /// A recognition question's final answer and its grade, which the correction shows part by
+  /// part. `difference` then marks the typed infinitive against the nearest right one.
+  var recognitionAnswer: RecognitionAnswer?
+  var recognitionGrade: RecognitionGrade?
 }
 
 struct QuizItem: Identifiable {
@@ -977,6 +1100,11 @@ struct QuizItem: Identifiable {
   var firstAttempt: String?
   /// Why the first attempt was wrong, when a diagnosis rather than a slip earned the second.
   var firstAttemptDiagnosis: AnswerDiagnosis?
+  /// For a recognition question, which parts of the first attempt were wrong.
+  var firstAttemptRecognition: RecognitionGrade?
+  /// Set for a Name the Conjugation question, whose prompt is `correctAnswer` and whose answer is
+  /// a verb and a cell rather than a conjugation (Phase 17 of the pedagogy plan).
+  let recognition: RecognitionQuestion?
   /// A missed question asked once more, a few questions later. It earns half points.
   let isReask: Bool
   /// The questions shown together on one screen, such as a verb's three key conjugations in Verb
@@ -990,6 +1118,9 @@ struct QuizItem: Identifiable {
   /// What the quiz says while the question waits for its second attempt: the diagnosis with
   /// "Try once more.", or, after a slip, "Almost! Try once more."
   var secondAttemptPrompt: String {
+    if let firstAttemptRecognition {
+      return firstAttemptRecognition.line + " " + L.Quiz.tryOnceMore
+    }
     guard let firstAttemptDiagnosis else {
       return L.Quiz.almost
     }
@@ -1010,10 +1141,12 @@ struct QuizItem: Identifiable {
     regionalSpellings: [String]? = nil,
     readingIndex: Int = 0,
     isReask: Bool = false,
-    stepID: UUID? = nil
+    stepID: UUID? = nil,
+    recognition: RecognitionQuestion? = nil
   ) {
     self.isReask = isReask
     self.stepID = stepID
+    self.recognition = recognition
     self.verb = verb
     self.conjugationgroup = conjugationgroup
     self.correctAnswer = correctAnswer
@@ -1070,7 +1203,20 @@ struct QuizItem: Identifiable {
       regionalSpellings: regionalSpellings,
       readingIndex: readingIndex,
       isReask: true,
-      stepID: stepID
+      stepID: stepID,
+      recognition: recognition
+    )
+  }
+
+  func errorContext(userAnswer: String) -> ErrorExplainerContext {
+    ErrorExplainerContext(
+      infinitiv: verb.infinitiv,
+      translation: translation,
+      familyDescription: verb.family.displayName,
+      conjugationgroupGerman: conjugationgroup.germanDisplayName,
+      conjugationgroupEnglish: conjugationgroup.englishDisplayName,
+      userAnswer: userAnswer,
+      correctAnswer: correctAnswer
     )
   }
 
@@ -1114,6 +1260,10 @@ struct QuizItem: Identifiable {
   /// The shape of the answer around the field, built when shown so that it follows the
   /// third-person pronoun setting.
   var answerFrame: AnswerFrame {
+    // A recognition question's one blank takes the infinitive.
+    if recognition != nil {
+      return AnswerFrame(segments: [.blank])
+    }
     let reading = verb.reading(at: readingIndex) ?? verb.primaryReading
     return AnswerFrame.quizFrame(
       for: conjugationgroup,

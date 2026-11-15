@@ -44,6 +44,18 @@ enum L {
       String(localized: "Accessibility.reviewStartHint")
     }
 
+    static var recognitionCheckHint: String {
+      String(localized: "Accessibility.recognitionCheckHint")
+    }
+
+    static var recognitionFieldHint: String {
+      String(localized: "Accessibility.recognitionFieldHint")
+    }
+
+    static var recognitionStartHint: String {
+      String(localized: "Accessibility.recognitionStartHint")
+    }
+
     static var verbEssentialsStartHint: String {
       String(localized: "Accessibility.verbEssentialsStartHint")
     }
@@ -1142,6 +1154,64 @@ enum L {
 
     static func reviewNextDue(_ days: Int) -> String {
       String(localized: "PracticeSession.reviewNextDue.\(days)")
+    }
+  }
+
+  enum Recognition {
+    static var check: String {
+      String(localized: "Recognition.check")
+    }
+
+    static var checkConjugationgroup: String {
+      String(localized: "Recognition.checkConjugationgroup")
+    }
+
+    static var checkConjugationgroupAndPerson: String {
+      String(localized: "Recognition.checkConjugationgroupAndPerson")
+    }
+
+    static var checkInfinitive: String {
+      String(localized: "Recognition.checkInfinitive")
+    }
+
+    static var checkInfinitiveAndConjugationgroup: String {
+      String(localized: "Recognition.checkInfinitiveAndConjugationgroup")
+    }
+
+    static var checkInfinitiveAndPerson: String {
+      String(localized: "Recognition.checkInfinitiveAndPerson")
+    }
+
+    static var checkPerson: String {
+      String(localized: "Recognition.checkPerson")
+    }
+
+    static var conjugationgroupHeading: String {
+      String(localized: "Recognition.conjugationgroupHeading")
+    }
+
+    static var description: String {
+      String(localized: "Recognition.description")
+    }
+
+    static var incomplete: String {
+      String(localized: "Recognition.incomplete")
+    }
+
+    static var infinitiveHeading: String {
+      String(localized: "Recognition.infinitiveHeading")
+    }
+
+    static var personHeading: String {
+      String(localized: "Recognition.personHeading")
+    }
+
+    static var promptHeading: String {
+      String(localized: "Recognition.promptHeading")
+    }
+
+    static var title: String {
+      String(localized: "Recognition.title")
     }
   }
 

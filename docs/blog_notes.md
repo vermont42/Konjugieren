@@ -11071,3 +11071,75 @@ nothing and reported nothing, so Return fell on an empty field and the quiz did 
 skill's pasteboard path types it. And on the iPad simulator `axe tap --id` fails outright on the
 accessibility tree ("found an array instead"), so I read the element's frame from `describe-ui`
 and tapped its centre.
+
+## Name the Conjugation: Reading in the Other Direction (2026-11-15)
+
+Phase 17 of the pedagogy plan built recognition. Every exercise until now has run one way, from a
+verb and a cell to a conjugation. A reader goes the other way, meeting käme in a sentence and
+needing to know that it is kommen, the Konjunktiv II, and ich or er. The report's principle 11 is that
+practice develops in the direction practiced, so the app needed something that runs backward.
+
+### Four questions before any code
+
+The phase left the shape of the thing open, so I asked Josh four questions with mockups, and he
+took the recommended option each time. The conjugationgroup and person are chosen from **chips**,
+not typed, since typing "Plusquamperfekt Konjunktiv II" would test spelling of the metalanguage
+rather than recognition. Pop-up menus would have hidden the choices, and a grid like the verb page's
+would have run to fourteen rows at Advanced. An answer with **any part right gets one more try at
+half points**, with a line naming the part to check, through the same mechanism as a slip. And
+recognition answers **do not touch the practice record**. That last one overrides the phase text,
+which assumed recording, but the reason is the same principle 11: recognizing fuhr says nothing
+about whether the learner can produce it, and a right recognition would otherwise push fuhr's next
+review days away.
+
+The name is "Name the Conjugation" in English and "Konjugationen bestimmen" in German. Every German
+schoolchild has seen the instruction "Bestimme die Verbform", and *bestimmen* turns out to be a
+lovely word for it. It is built on *Stimme*, voice; in Middle High German it meant to name something
+aloud, to designate it by voice. That is exactly the exercise: look at a word and say what it is.
+
+### Ambiguity is the point
+
+The plan offered two ways to handle a prompt that belongs to several cells: accept them all, or
+avoid such prompts. Avoiding them would have gutted the exercise. kommen is the Präsens and the
+Konjunktiv I of both wir and sie. fuhr belongs to both readings of fahren. habe gesollt is the
+Perfekt Indikativ and the Perfekt Konjunktiv I alike. A reader faces exactly that ambiguity, and
+deciding which cells a text could be is the skill. So a question holds every cell of every verb
+that writes its prompt, found by looking up each word of the prompt in the bundled conjugation map
+and then matching each candidate verb cell by cell.
+
+The best example turned up in the tests. weiß is wissen's ich and er, and it is also the du
+Imperativ of weißen, to whitewash. The two verbs only look related. wissen goes back to the
+Indo-European root for seeing (to know is to have seen), the root of English wit and Latin videre.
+weiß, white, goes back to a different root for brightness, the source of English white and, by way
+of the pale grain, wheat. Two unrelated roots converged on one spelling, and the exercise accepts
+both, because the prompt gives no context to choose.
+
+That test also caught my own wrong expectation. I expected wissen · Imperativ · du for weiß to be
+told "check the conjugationgroup". The code said "check the conjugationgroup and the person", and
+the code was right. Once the learner has typed wissen, the grade is judged against wissen's cells,
+the Präsens of ich and er, and changing the table alone cannot reach either. weißen's du Imperativ
+does not rescue an answer that named wissen. The rule that settled it is the one I want a repair
+line to follow everywhere: call a part wrong only when changing it can make the answer right.
+
+One rule needed care in the other direction. The map lists kam under ankommen too, as the finite
+part a main clause leaves behind ("ich kam gestern an"). But the prompt kam alone is not ankommen;
+only kam an is. So finite-part matches are dropped, and the test kamAnIsAnkommenAlone pins the
+reverse case.
+
+### Found by looking
+
+Three things only the simulator showed. The answer field's placeholder said "Konjugation", which is
+wrong when it asks for an infinitive. With fourteen chips above it, the field sits low on an
+iPhone, and the orange "try once more" line appeared below the fold, invisible; the quiz now
+scrolls that line into sight for every kind of question, which the old layouts never needed. And
+fallen for reinfallen showed in plain white beside a struck-through conjugationgroup, because the
+letter diff marks only letters to remove and fallen is merely missing some. A wrong infinitive is
+now red throughout.
+
+### Tooling notes
+
+The iPad's `axe tap --id` still fails on its accessibility tree, so I wrote a small helper that reads
+the element's frame from `describe-ui` and taps its centre, which made driving a real Advanced draw
+there as easy as on the iPhone. On the simulator with a hardware keyboard, the floating ä ö ü ß row
+covers the foot of a tall card, Check button included; a scripted tap aimed at Check typed a ü.
+Return is the reliable path.

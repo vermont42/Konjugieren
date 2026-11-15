@@ -2095,6 +2095,54 @@
         }
       }
     },
+    "Accessibility.recognitionCheckHint" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prüft Infinitiv, Conjugationgroup und Person, die du gewählt hast."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Checks the infinitive, conjugationgroup, and person you chose."
+          }
+        }
+      }
+    },
+    "Accessibility.recognitionFieldHint" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Infinitiv eingeben, dann Return drücken"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter the infinitive, then press return"
+          }
+        }
+      }
+    },
+    "Accessibility.recognitionStartHint" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Startet zehn Fragen, die je eine Konjugation zeigen und nach Verb, Conjugationgroup und Person fragen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starts ten questions that each show a conjugation and ask for its verb, conjugationgroup, and person."
+          }
+        }
+      }
+    },
     "Accessibility.reviewStartHint" : {
       "localizations" : {
         "de" : {
@@ -7479,6 +7527,230 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "There is one rating for this version of Konjugieren."
+          }
+        }
+      }
+    },
+    "Recognition.check" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prüfen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check"
+          }
+        }
+      }
+    },
+    "Recognition.checkConjugationgroup" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prüfe die Conjugationgroup."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check the conjugationgroup."
+          }
+        }
+      }
+    },
+    "Recognition.checkConjugationgroupAndPerson" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prüfe die Conjugationgroup und die Person."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check the conjugationgroup and the person."
+          }
+        }
+      }
+    },
+    "Recognition.checkInfinitive" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prüfe den Infinitiv."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check the infinitive."
+          }
+        }
+      }
+    },
+    "Recognition.checkInfinitiveAndConjugationgroup" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prüfe den Infinitiv und die Conjugationgroup."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check the infinitive and the conjugationgroup."
+          }
+        }
+      }
+    },
+    "Recognition.checkInfinitiveAndPerson" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prüfe den Infinitiv und die Person."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check the infinitive and the person."
+          }
+        }
+      }
+    },
+    "Recognition.checkPerson" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prüfe die Person."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Check the person."
+          }
+        }
+      }
+    },
+    "Recognition.conjugationgroupHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conjugationgroup"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Conjugationgroup"
+          }
+        }
+      }
+    },
+    "Recognition.description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sieh eine Konjugation wie käme und bestimme Verb, Conjugationgroup und Person"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "See a conjugation, such as käme, and name its verb, conjugationgroup, and person"
+          }
+        }
+      }
+    },
+    "Recognition.incomplete" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle eine Conjugationgroup und eine Person."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Choose a conjugationgroup and a person."
+          }
+        }
+      }
+    },
+    "Recognition.infinitiveHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Infinitiv"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Infinitive"
+          }
+        }
+      }
+    },
+    "Recognition.personHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Person"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Person"
+          }
+        }
+      }
+    },
+    "Recognition.promptHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welches Verb, welche Conjugationgroup, welche Person?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Which verb, conjugationgroup, and person?"
+          }
+        }
+      }
+    },
+    "Recognition.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konjugationen bestimmen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name the Conjugation"
           }
         }
       }

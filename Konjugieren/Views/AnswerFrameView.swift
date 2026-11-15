@@ -19,6 +19,10 @@ struct AnswerFrameView: View {
   /// What VoiceOver reads before the frame, such as the conjugationgroup of a Verb Essentials row,
   /// which the screen shows above the field rather than in the frame.
   var spokenPrefix: String?
+  /// What a lone blank shows while empty. Nil shows "Conjugation".
+  var placeholder: String?
+  /// What VoiceOver says a blank takes. Nil says a German conjugation.
+  var hint: String?
   let onSubmit: () -> Void
   @State private var selections: [Int: TextSelection] = [:]
 
@@ -79,14 +83,14 @@ struct AnswerFrameView: View {
   }
 
   private func field(at index: Int) -> some View {
-    TextField(frame.blankCount == 1 ? L.Quiz.conjugation : "", text: text(at: index), selection: selection(at: index))
+    TextField(frame.blankCount == 1 ? placeholder ?? L.Quiz.conjugation : "", text: text(at: index), selection: selection(at: index))
       .textFieldStyle(.roundedBorder)
       .textInputAutocapitalization(.never)
       .autocorrectionDisabled()
       .focused(focusedBlank, equals: index)
       .accessibilityFocused(accessibilityFocusedBlank, equals: index)
       .accessibilityLabel(spokenPrompt(blankIndex: index))
-      .accessibilityHint(L.Accessibility.quizTextFieldHint)
+      .accessibilityHint(hint ?? L.Accessibility.quizTextFieldHint)
       .accessibilityIdentifier(index == 0 ? identifier : "\(identifier)_\(index + 1)")
       .submitLabel(index == frame.blankCount - 1 ? .go : .next)
       .onSubmit {

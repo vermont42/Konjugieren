@@ -12,6 +12,9 @@ struct AnswerFrame: Equatable {
     /// pronoun, but the learner must still know which one is asked.
     case addressee(String)
     case blank
+    /// A sentence's words around its blanks, which are not part of the answer (Phase 18). The
+    /// text keeps its spacing, so that a comma or full stop written against a blank stays there.
+    case context(String)
     /// Which sie a third-person question means, since the one pronoun asks for two conjugations.
     case number(isPlural: Bool)
     /// A subject pronoun in front of the answer, which the learner does not type.
@@ -40,7 +43,7 @@ struct AnswerFrame: Equatable {
         blankIndex += 1
       case .word(let word):
         words.append(word)
-      case .addressee, .number, .pronoun, .punctuation:
+      case .addressee, .context, .number, .pronoun, .punctuation:
         break
       }
     }
@@ -66,6 +69,49 @@ struct AnswerFrame: Equatable {
       }
     }
     return nil
+  }
+
+  var isSentence: Bool {
+    segments.contains { segment in
+      if case .context = segment {
+        return true
+      }
+      return false
+    }
+  }
+
+  /// What a sentence frame lays out, word by word, so that a long sentence wraps between words.
+  /// A blank carries the text written against it, such as the full stop of `{gegangen}.`, so that
+  /// the stop never starts a line of its own.
+  enum SentenceToken: Equatable {
+    case blank(index: Int, trailing: String)
+    /// A word of the answer that the frame supplies, the Sie of `{Nehmen} Sie Platz!`.
+    case answerWord(String)
+    case word(String)
+  }
+
+  var sentenceTokens: [SentenceToken] {
+    var tokens: [SentenceToken] = []
+    var blankIndex = 0
+    for segment in segments {
+      switch segment {
+      case .blank:
+        tokens.append(.blank(index: blankIndex, trailing: ""))
+        blankIndex += 1
+      case .word(let word):
+        tokens.append(.answerWord(word))
+      case .context(let text), .punctuation(let text), .pronoun(let text), .addressee(let text):
+        var words = text.split(separator: " ", omittingEmptySubsequences: true).map(String.init)
+        if !text.hasPrefix(" "), let first = words.first, case .blank(let index, let trailing) = tokens.last {
+          tokens[tokens.count - 1] = .blank(index: index, trailing: trailing + first)
+          words.removeFirst()
+        }
+        tokens += words.map(SentenceToken.word)
+      case .number:
+        break
+      }
+    }
+    return tokens
   }
 
   /// The frame for one quiz question.

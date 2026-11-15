@@ -11143,3 +11143,89 @@ the element's frame from `describe-ui` and taps its centre, which made driving a
 there as easy as on the iPhone. On the simulator with a hardware keyboard, the floating ä ö ü ß row
 covers the foot of a tall card, Check button included; a scripted tap aimed at Check typed a ü.
 Return is the reliable path.
+
+## Sentences with a Blank (2026-11-15)
+
+Phase 18 of the pedagogy plan gave the quiz its first sentences. Until now every question has
+been a bare cell: kommen, Präsens, du, and a field. The report's point was that practice tied to a
+meaning is the strong kind, and that the literary example sentences already bundled for every verb
+are too hard for a beginner's blank. So the phase asked for authored sentences: short, plain, one
+conjugation blanked. Josh chose a mode of its own in the hub's Exercises, the name "Sentences" /
+"Lückensätze" (the German classroom's word, as Lückentext is for a gapped passage), and a first
+batch of the 25 most frequent verbs at about four sentences each, so that he can see how long
+review takes before deciding how many a verb the other 275 get.
+
+### The braces are the data
+
+Each sentence is stored the way a reviewer reads it: "Gestern {sind} wir ins Kino {gegangen}." The
+braces are both the blanks and the answer, so there is no separate answer field that could drift
+from the sentence. The machine check reads the braces in order and demands the conjugator's own
+conjugation of the cell, in every region. That last clause carries a decision: stehen and liegen
+take sein in Austria and Switzerland, so a Perfekt sentence with habe would teach an Austrian
+learner the wrong auxiliary. Rather than special-case it, the check simply fails any sentence whose
+words differ by region, and the batch avoids compound cells for those two verbs.
+
+All 117 drafts passed on the first run, which in this repo is a reason for suspicion rather than
+relief: three different ways of running zero tests and reporting success are written up in
+CLAUDE.md. So I broke two sentences on purpose. A misspelled blank ({wahr} for war) failed once per
+region, three times, as it should. The second mutation passed, and that was the more useful
+result: "Ich weiß nicht, wann der Film {fängt} {an}." is wrong German, yet fängt an is a perfectly
+real conjugation of the cell. The check knows conjugations, not clauses. Word order in context is
+the reviewer's job, and the plan now says so.
+
+### A sentence knows its clause
+
+The one-line quiz accepts both fängt an and anfängt, because it gives no sentence to choose
+between them. A sentence does. After wann, only anfängt is German, so a sentence item is graded in
+its own clause alone, inferred by checking whether its braces match the main clause's conjugation.
+The first device run then showed the correction for "faengt an" offering fängt an as the right
+answer, marking only the umlaut. Grading was right; the displayed answer was still the main
+clause's. One parameter later the correction says anfängt, and reads the whole sentence back with
+it in place.
+
+Separable verbs are where sentences earn their keep. German splits the verb around the middle of
+the clause (the Satzklammer, the sentence bracket), so "Der Unterricht {fängt} um acht Uhr {an}."
+has two blanks with half a sentence between them, and the learner has to know where the prefix
+lands. None of the 25 most frequent verbs is separable, so the batch adds anfangen, ankommen, and
+einladen, all in the top 300, to make sure the bracket appears.
+
+### The literary reward
+
+Josh decided on 2026-11-13 that the hard literary sentences belong on the results screen, as a
+reward, never as a pause after a right answer. Each verb's first right row now offers its example
+sentence behind a tap. The first one I opened was gehen's: "Die Staatsgewalt geht vom Volke aus."
+It is the first article of the Weimar constitution, the sentence the Grundgesetz carried into its
+own Article 20. It is also not gehen. "geht ... aus" is ausgehen, to emanate, with its prefix sent
+to the end of the clause by the same bracket this phase is about. The example pipeline's
+split-particle rule should have caught it. I noted it rather than fixing it, since other verbs may
+share the fault and that is the pipeline's work.
+
+No signal is sent when a learner opens one. Only right rows offer it, so a count of reveals would be
+a lower bound on right answers, which Decision 5 rules out.
+
+### Tooling notes
+
+A test run rebuilds the app, and `launch_app.sh` installs whatever was built last. I ran the
+mutation test, restored the JSON, and launched, and the simulator showed the mutated two-blank
+sentence. Nothing was wrong with the code; the installed build predated the restore. Rebuild before
+looking after any test run that edited a bundled resource.
+
+The fixture default (`KONJUGIEREN_QUIZ_FIXTURE`) also leaks into the test host, which shares the
+simulator's defaults: with `sentences` set, the session tests drew the fixture instead of the level
+and failed. Clear it before running tests, as earlier phases did after looking.
+
+### The review, and the counts it settled
+
+Josh read all 117 sentences the same afternoon, in five minutes. He does not read German well
+enough to judge it, which is worth saying plainly: his review covered the English and the meaning,
+the machine check covered the conjugations, and my reread covered the German's naturalness. The
+review's real catch was dialect. He asked for American English, "the fall" for "autumn" and "this
+weekend" for "at the weekend", and a second pass found eight more (flat, neighbours, postman, pocket
+money, cellar, lessons, and shop twice). Cellar was the amusing one. Josh says it is natural to him,
+a New England usage that held on there after basement won elsewhere, and it is the same word as the
+sentence's German: cellar and Keller both come from Latin cellarium, a storeroom, English by way
+of Norman French and German straight from the Romans. We kept basement anyway.
+
+His pace, about two and a half seconds a sentence, answered the phase's open question. The rest of
+the top 300 gets three sentences a verb up to rank 100 and two after it, about 625 in all, roughly
+half an hour of reading for him.

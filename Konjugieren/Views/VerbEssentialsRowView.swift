@@ -122,7 +122,7 @@ struct VerbEssentialsFrameLead: View {
           Text(verbatim: isPlural ? "(3p)" : "(3s)")
             .font(.caption)
             .foregroundStyle(.secondary)
-        case .addressee(let text), .pronoun(let text), .punctuation(let text), .word(let text):
+        case .addressee(let text), .context(let text), .pronoun(let text), .punctuation(let text), .word(let text):
           Text(verbatim: text)
             .fontWeight(.semibold)
             .foregroundStyle(.customForeground)
@@ -145,7 +145,7 @@ struct VerbEssentialsFrameLead: View {
       switch segment {
       case .number(let isPlural):
         return isPlural ? L.Accessibility.quizPlural : L.Accessibility.quizSingular
-      case .addressee(let text), .pronoun(let text), .punctuation(let text), .word(let text):
+      case .addressee(let text), .context(let text), .pronoun(let text), .punctuation(let text), .word(let text):
         return text
       case .blank:
         return nil

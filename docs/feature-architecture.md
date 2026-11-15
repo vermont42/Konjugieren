@@ -128,6 +128,7 @@ quiz in a sheet shows) and `collectionKey` (which `startQuiz` names).
 | `.verbEssentials(_:)` | Five strong or mixed verbs of the level's band, or of the verbs passed, each asked its three key conjugations (pedagogy Phase 15) | 15, then five more verbs | `verbEssentials` | No |
 | `.ablautPractice(_:)` | Verb Essentials over an ablaut group's ten most frequent verbs, alone, or mixed: three of the group's verbs and two of the known groups' (pedagogy Phase 16), in a sheet | Up to 15, then another round | `ablautAlone` or `ablautMixed` | No |
 | `.recognition()` | Name the Conjugation: the level's pool and band, each question a conjugation to name by infinitive, conjugationgroup, and person (pedagogy Phase 17) | 10, then Ten More | `recognition` | No |
+| `.sentences()` | Sentences: the authored sentences whose verb is in the level's band and whose cell is in its pool, one a verb where they allow (pedagogy Phase 18) | Up to 10, then Ten More | `sentences` | No |
 
 A quiz whose rounds are ten (`QuizScope.continues`) draws as above. The verb page's three
 questions ask distinct cells and no participle, from the learner's level, since every Perfekt
@@ -618,6 +619,50 @@ own, a row in the hub's Exercises (Josh, 2026-11-13); the default quiz stays pro
   source `recognition`, and `completeQuiz` its `questionCount`. The fixture
   `KONJUGIEREN_QUIZ_FIXTURE recognition` asks ten prompts over every table, several ambiguous, when
   Name the Conjugation is started.
+
+### Sentences
+
+Built 2026-11-15 in Phase 18 of [`plans/pedagogy-implementation.md`](../plans/pedagogy-implementation.md)
+(T5.5), so far with a first batch of content: a short authored sentence with its verb blanked, so
+that a conjugation is tied to a meaning. "Sentences" ("Lückensätze", Josh's choice) is a mode of its
+own, a row in the hub's Exercises (Josh, 2026-11-15).
+
+- **The content** is `Konjugieren/Models/GapSentences.json`: for each sentence an id, the verb, a
+  table (`ConjugationTable.articleKey`) and person (`PersonNumber` raw value), the German with each
+  word of the conjugation in braces ("Gestern {sind} wir ins Kino {gegangen}."), the English, and
+  `reviewed`. Claude drafts, `GapSentenceTests` checks, and Josh reviews every sentence (Josh,
+  2026-11-13). `scripts/gap_sentences.py` writes a review sheet and marks approvals.
+- **The machine check** (`GapSentenceTests.everyBlankIsTheConjugatorsConjugation`) reads each
+  sentence's braces in order and requires the conjugator's conjugation of its cell, in the main or
+  the subordinate clause's word order, and the same words in every region (Swiss ss aside), so that
+  no sentence teaches a wrong conjugation or shows an Austrian learner a German auxiliary. It cannot
+  judge whether the word order suits the sentence: "{fängt} {an}" after *wann* passes it, so that is
+  Josh's review. Other checks: one or two one-word blanks, a verb in the top 300, a cell some level
+  asks, and the wir or Sie of an Imperativ after the first blank.
+- **Drafts.** A release build asks only reviewed sentences; a debug build asks drafts too and marks
+  each card "Draft" ("Entwurf"), so that a draft can be tried in the app (`GapSentences.includesDrafts`).
+- **The frame** is Phase 2's `AnswerFrame`, with the sentence's words as `.context` segments, laid
+  out word by word in a `FlowLayout` so that a long sentence wraps; every blank is one width, so it
+  does not hint at the answer's length, and a full stop written against a blank stays with it. The
+  wir and Sie of an Imperativ are a `.word` the frame supplies ("{Nehmen} Sie bitte Platz!"), as in
+  the one-line frame. The English is shown beneath; the conjugationgroup line stays, and the
+  sentence's subject gives the person.
+- **Grading in the sentence's clause.** A separable verb after a conjunction is graded in the
+  subordinate clause's order alone (`GapSentence.clause`, `Quiz.makeQuizItem(clauses:)`): "anfängt"
+  fills "wann der Film {anfängt}", and "fängt an" does not, though the one-line quiz takes both. The
+  correction shows that clause's conjugation, and the whole sentence read back with it in place.
+- **The draw** (`QuizDraw.sentences`): the sentences the level asks (`GapSentence.isAskable(at:)`,
+  its band and pool), the session's unasked first, one a verb where they allow; a smaller pool makes
+  a shorter round, and once every sentence is asked, Ten More asks them again. The hub's row says
+  when a level has none.
+- **Recorded as production.** A sentence answer goes through `submitAnswer`, so it moves the practice
+  record and, when wrong, `QuizErrorHistory`, and earns Phase 4's and Phase 14's second attempt.
+  Never ranked, no due items, the level tip donated as for the default quiz.
+  `LastQuizResult.Kind.sentences`. The fixture `KONJUGIEREN_QUIZ_FIXTURE sentences` asks ten
+  sentences, one per kind of frame, when Sentences is started.
+- **The literary reward** (Josh, 2026-11-13 and 2026-11-15): on every quiz's results screen, the
+  first row of each verb answered right offers its bundled literary example (`ExampleSentences`),
+  revealed by a tap. The quiz itself never pauses after a right answer. The reveal sends no signal.
 
 ### The Quiz Clock
 
@@ -1482,6 +1527,9 @@ My Verbs scope, the list it was begun on.
 | `review` | Yes | The quiz signals only: a Review session from the Quiz tab (pedagogy Phase 12) |
 | `mistakes` | Yes | The quiz signals only: a Practice My Mistakes session from the Quiz tab (pedagogy Phase 12) |
 | `verbEssentials` | Yes | The quiz signals only: Verb Essentials from the Quiz tab (pedagogy Phase 15) |
+| `ablautAlone`, `ablautMixed` | Yes | The quiz signals only: an ablaut group's practice, alone or mixed (pedagogy Phase 16) |
+| `recognition` | Yes | The quiz signals only: Name the Conjugation from the Quiz tab (pedagogy Phase 17) |
+| `sentences` | Yes | The quiz signals only: Sentences from the Quiz tab (pedagogy Phase 18) |
 | `tab` | Yes | A search begun in the Verbs tab (Phase 11); for the quiz signals, a quiz over every verb from the Quiz tab (Phase 13) |
 | `verbPage` | Yes | The quiz signals only: "Test me on this verb" (Phase 13) |
 

@@ -6,6 +6,8 @@ struct ResultsView: View {
   let quiz: Quiz
   private var settings: Settings { Current.settings }
   @State private var displayedScore = 0
+  /// The rows whose literary example the learner has opened.
+  @State private var shownExamples: Set<UUID> = []
 
   private var scoreColor: Color {
     // A right second attempt and a right re-ask earn half points, and the credit here follows
@@ -122,6 +124,66 @@ struct ResultsView: View {
     return quiz.scope.isVerbEssentials ? L.Accessibility.verbEssentialsMoreHint : L.Accessibility.quizTenMoreHint
   }
 
+  /// The rows that offer the verb's literary example: the first right answer of each verb, so
+  /// that a Verb Essentials verb's three right blanks offer it once. A reward for a right answer
+  /// shown after the quiz, never during it, since the quiz moves on at once after a right answer
+  /// (Phase 18 of the pedagogy plan, as Josh decided on 2026-11-13 and 2026-11-15).
+  private var exampleRowIDs: Set<UUID> {
+    var verbs: Set<String> = []
+    var ids: Set<UUID> = []
+    for question in quiz.questions where question.isCorrect == true && !verbs.contains(question.verb.infinitiv) {
+      verbs.insert(question.verb.infinitiv)
+      ids.insert(question.id)
+    }
+    return ids
+  }
+
+  @ViewBuilder
+  private func exampleSentence(for question: QuizItem) -> some View {
+    if let pair = ExampleSentences.pair(for: question.verb.infinitiv) {
+      let isShown = shownExamples.contains(question.id)
+      Button {
+        if isShown {
+          shownExamples.remove(question.id)
+        } else {
+          shownExamples.insert(question.id)
+        }
+      } label: {
+        // Not a Label, which a List lays out with its icon in a column of its own.
+        HStack(spacing: 4) {
+          Image(systemName: isShown ? "quote.bubble.fill" : "quote.bubble")
+          Text(L.VerbView.exampleSentenceHeading)
+        }
+        .font(.caption)
+        .foregroundStyle(.customYellow)
+      }
+      // Borderless, so that only the button, not the whole row, takes the tap.
+      .buttonStyle(.borderless)
+      .accessibilityAddTraits(isShown ? .isSelected : [])
+      .accessibilityHint(L.Accessibility.exampleSentenceHint)
+      .accessibilityIdentifier("results_example_\(question.verb.infinitiv)")
+
+      if isShown {
+        VStack(spacing: 4) {
+          Text(pair.german.sentence)
+            .italic()
+            .germanPronunciation()
+          Text(pair.english.sentence)
+            .italic()
+            .foregroundStyle(.secondary)
+            .englishPronunciation()
+          Text(verbatim: "— \(pair.german.source)")
+            .font(.caption)
+            .foregroundStyle(.secondary)
+        }
+        .font(.subheadline)
+        .multilineTextAlignment(.center)
+        .fixedSize(horizontal: false, vertical: true)
+        .padding(.top, 4)
+      }
+    }
+  }
+
   @ViewBuilder
   private func resultRow(for question: QuizItem) -> some View {
     let titleIsGerman = settings.conjugationgroupLang == .german
@@ -168,6 +230,10 @@ struct ResultsView: View {
             .germanPronunciation()
         }
         .font(.caption)
+      }
+
+      if exampleRowIDs.contains(question.id) {
+        exampleSentence(for: question)
       }
     }
     .frame(maxWidth: .infinity)

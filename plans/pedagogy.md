@@ -936,6 +936,14 @@ conjugationgroup and person, chosen. Every cell of every verb that writes the pr
 fuhr accepts both readings of fahren and weiß accepts weißen's Imperativ. An answer with any part
 right gets one more try at half points, with a line naming what to check. Recognition answers do
 not move the practice record.
+
+**Partly built on `main` 2026-11-15** by [Phase 18](pedagogy-implementation.md#phase-18-sentences-with-a-blank)
+of the pedagogy plan: Sentences ("Lückensätze"), from the hub's Exercises, asks a verb's conjugation
+in a short authored sentence at the learner's level, graded in the sentence's own word order, with
+the sentence's English beneath. A machine check confirms every blank against the conjugator. The
+first 117 sentences cover the 25 most frequent verbs and are reviewed; about 625 for the other
+275 verbs of the top 300 are to come. Every quiz's results now offer, on each verb's first
+right answer, the verb's literary example sentence.
 It starts from each expanded group on the Families tab's Ablaut page and from an Ablaut Groups row
 in the Quiz tab's Exercises, which lists the groups by use.
 

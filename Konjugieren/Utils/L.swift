@@ -56,6 +56,14 @@ enum L {
       String(localized: "Accessibility.recognitionStartHint")
     }
 
+    static var exampleSentenceHint: String {
+      String(localized: "Accessibility.exampleSentenceHint")
+    }
+
+    static var sentencesStartHint: String {
+      String(localized: "Accessibility.sentencesStartHint")
+    }
+
     static var verbEssentialsStartHint: String {
       String(localized: "Accessibility.verbEssentialsStartHint")
     }
@@ -1212,6 +1220,24 @@ enum L {
 
     static var title: String {
       String(localized: "Recognition.title")
+    }
+  }
+
+  enum Sentences {
+    static var description: String {
+      String(localized: "Sentences.description")
+    }
+
+    static var draft: String {
+      String(localized: "Sentences.draft")
+    }
+
+    static var empty: String {
+      String(localized: "Sentences.empty")
+    }
+
+    static var title: String {
+      String(localized: "Sentences.title")
     }
   }
 

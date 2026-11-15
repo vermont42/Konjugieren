@@ -32,7 +32,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 15 | Done | 2026-11-14 | `a324232` | T5.1 |
 | 16 | Done | 2026-11-15 | `bd0537e` | T5.2 |
 | 17 | Done | 2026-11-15 | `010e2dc` | T5.4 |
-| 18 | Not started | | | T5.5 |
+| 18 | Partly done: the app, the check, and 117 reviewed sentences for the 25 most frequent verbs; about 625 sentences for the rest of the top 300 remain | 2026-11-15 | | T5.5 |
 | 19 | Not started | | | T5.6 |
 | 20 | Not started | | | T6.2 |
 | 21 | Not started | | | T5.7 |
@@ -1795,7 +1795,8 @@ record if Phase 11 maps them, with tests on ambiguous conjugations.
 
 ## Phase 18: Sentences with a Blank
 
-**Suggestions:** T5.5. **Depends on:** Phases 2 and 3. **Status:** Not started.
+**Suggestions:** T5.5. **Depends on:** Phases 2 and 3. **Status:** Partly done (the app and a first
+batch; see How it differed for what remains).
 
 Short authored sentences for the core verbs, with the verb blanked, so the conjugation is tied to
 a meaning. Both sides of the drill debate agree that practice linked to meaning is the strong
@@ -1829,7 +1830,118 @@ questions appear where decided, and tests pin the check.
 
 **How it differed:**
 
-(To be written by the session that finishes this phase.)
+- **Split, as the phase allowed.** This session built the app, the machine check, the review
+  tooling, and a first batch of 117 sentences, which Josh reviewed and approved the same day.
+  **What remains:** the sentences for the other 275 verbs of the top 300, at the counts below, about
+  625 in all: draft them, run `GapSentenceTests`, write a sheet with
+  `python3 scripts/gap_sentences.py review --out plans/gap-sentences-batch-2.md`, and approve what
+  Josh passes with `approve`. Write American English (see below).
+- **The review and the Ask Josh, 2026-11-15.** Josh read all 117 in **five minutes**, about 2.5
+  seconds a sentence. He does not read German well enough to judge it, so he judged the English and
+  the meaning; the conjugations rest on the machine check, and the German on Claude's reread, which
+  changed nothing. He asked for American English: "autumn" became "the fall" and "at the weekend"
+  "this weekend", and Claude found eight more (apartment, neighbors, mail carrier, an allowance,
+  basement, "Class starts", store twice). Josh noted that *cellar* is natural to him too, a New
+  England usage, and kept *basement*. He then approved all 117 (over waiting for a German speaker).
+  **How many a verb**, the phase's Ask Josh, answered from that pace: **three for verbs 26 to 100**,
+  one for each of three level groups (the Präsens or Imperativ, the Perfekt, then the Präteritum or
+  a Konjunktiv), and **two for verbs 101 to 300**, which Beginner never asks (over four each, two
+  each, and one each).
+- **Josh decided four things on 2026-11-15**, asked before building, each the recommended option.
+  (1) Sentences are **a mode of their own**, a row in the hub's Exercises (over a sentence now and
+  then in the default quiz, and over both). (2) The literary reward is offered on **right answers,
+  in every quiz's results** (over every row, and over the sentence mode's results alone). (3) The
+  name is **"Sentences" / "Lückensätze"** (over "Fill in the Blank" / "Lückentext" and "In a
+  Sentence" / "Im Satz"). (4) The first batch is **the 25 most frequent verbs, about four
+  sentences each**, one for each level's conjugationgroups (over 50 verbs at two, and 100 at one).
+- **The batch.** 117 sentences: the 25 most frequent verbs at four to six each, and three
+  separable verbs (anfangen, ankommen, einladen, all in the top 300) so that a split prefix, a
+  subordinate clause, and the separable Sie Imperativ appear, since none of the 25 is separable.
+  The modals are asked the Präsens, the Präteritum, the Konjunktiv II, and the Konjunktiv I, never
+  the Perfekt, whose real use (hat machen können) is not a cell. stehen and liegen are never asked a
+  compound cell, since their auxiliary differs by region. Every one passed the machine check on the
+  first run, which is why the check was then **tested by breaking it**: a misspelled blank failed in
+  all three regions, and "{fängt} {an}" after *wann* passed, because it is a real conjugation of the
+  cell. Word order in context is the reviewer's to judge.
+- **The format, decided in the session.** One JSON array, `Konjugieren/Models/GapSentences.json`,
+  each sentence with an id (`gehen.perfekt.1`), its verb, table key and person, the German with each
+  word of the conjugation in braces, the English, and `reviewed`. Braces rather than a separate
+  answer field, so that the reviewer reads the sentence as the learner will, and the check confirms
+  the braces themselves. The file is written only by `json.dumps(indent=2, ensure_ascii=False)`, so
+  `scripts/gap_sentences.py approve` can rewrite it without churn (unlike `Localizable.xcstrings`).
+- **Drafts in debug builds, decided in the session.** A debug build asks unreviewed sentences too,
+  with a "Draft" ("Entwurf") label on the card, so that Josh can judge a sentence where a learner
+  meets it; a release build never does.
+- **What the machine check requires.** The braces, read in order (the wir or Sie of an Imperativ
+  included, as a word the frame supplies), equal the conjugator's conjugation of the cell in the
+  main or the subordinate clause's order, in every region, Swiss ss aside. A sentence after weil
+  with a compound conjugationgroup (weil wir gegangen sind) cannot pass, since the conjugator writes
+  compounds in main-clause order; none was drafted.
+- **Graded in the sentence's clause, decided in the session.** The one-line quiz takes both
+  "fängt an" and "anfängt", since it gives no sentence. A sentence does, so a separable verb after
+  a conjunction takes "anfängt" alone, and the correction shows that clause's conjugation
+  (`Quiz.makeQuizItem(clauses:)`). The first device run showed the correction offering "fängt an"
+  for the *wann* sentence, which is how the `correctAnswer` fix was found.
+- **How it is built.** `QuizItem.sentence`; `AnswerFrame.Segment.context` for the sentence's words,
+  and `AnswerFrame.sentenceTokens`, which `AnswerFrameView` lays out word by word in a
+  `FlowLayout`, with fields of one width (so that a field's width does not give away the answer's
+  length) keyed by blank index (so that the keyboard keeps focus between sentences, Phase 2's
+  lesson). Answers go through `submitAnswer`, so Phase 4's slips, Phase 14's diagnoses ("Bei gehen
+  ist das Hilfsverb sein, nicht haben." inside a sentence), the practice record, and
+  `QuizErrorHistory` all work unchanged. The correction adds the completed sentence. The card keeps
+  the verb, its gloss, and the conjugationgroup line, and shows the English under the sentence.
+- **The draw, decided in the session.** The sentences whose verb is in the level's band and whose
+  cell is in its pool; ten a round, the session's unasked first, one sentence a verb where possible;
+  a short pool makes a short round, and Ten More starts over once all are asked. The hub's row is
+  empty, saying so, when a level has none. Never ranked, no due items, the level tip donated.
+- **The literary reward.** `ResultsView` offers "Example Sentence" ("Beispielsatz", the verb page's
+  existing string) on the first right row of each verb, in every quiz, revealing the German, the
+  English, and the source. A `Label` first put its icon in a column of its own, the `List` quirk
+  Phase 7 recorded; it is an `HStack` now.
+- **Analytics.** A new `source` value, `sentences`; `completeQuiz` carries its `questionCount`. The
+  reward's reveal sends nothing, since only right rows offer it and a signal would count right
+  answers (Decision 5). Staged in [`docs/privacy-policy-pending.md`](../docs/privacy-policy-pending.md)
+  in both languages. The source table in `docs/feature-architecture.md` § Analytics gained
+  `sentences`, and the `ablautAlone`, `ablautMixed`, and `recognition` rows Phases 16 and 17 had
+  left out.
+- **VoiceOver.** Each field's label reads the sentence with "blank" in place of each blank ("Wann,
+  blank, du nach Hause"), then "Blank 1 of 2" where there are two. The question still speaks the
+  verb and gloss on arrival. The correction's spoken text ends with the completed sentence. The
+  reward is a button with the selected trait while open. Read from the accessibility tree; nobody
+  has listened to it.
+- **A new fixture**, `KONJUGIEREN_QUIZ_FIXTURE sentences`, used only when Sentences is started:
+  one sentence per kind of frame, with the answers in the comment on
+  `Quiz.generateSentencesFixture()`.
+- **Tests:** `GapSentenceTests`, 22 functions: the machine check (well formed, every blank the
+  conjugator's in every region, asked at some level, the Imperativ's pronoun supplied, the batch's
+  25 verbs), frames and tokens, clauses and grading in them, each level's sentences, drafts in
+  release builds, the draw, and the scope. Nested in `QuizTests`, 4: a round of the level's
+  sentences, an answer recorded, a re-ask keeping its sentence, and the signals, last result, and
+  Ten More's unasked sentences. Run in English with
+  `xcodebuild -testLanguage en`: 820 distinct test functions passed and 2 skipped (the
+  environment-gated harnesses); `check_docs.py` counts 822 `@Test`s.
+- **Verified on the iPhone 17**, in dark mode, with the fixture. In German: the hub's Lückensätze
+  row; kommst for "Wann {…} du nach Hause?" (right, and the keyboard carried into the next
+  sentence); haben gegangen for the Perfekt, which prompted "Bei gehen ist das Hilfsverb sein, nicht
+  haben. Versuch es noch einmal.", then held the correction with "Gestern sind wir ins Kino
+  gegangen."; fängt / an in the main clause (right); faengt an after *wann* (the correction, now
+  showing anfängt); and a perfect round of 100 whose results offered the reward on each verb's
+  first right row and none on anfangen's second, gehen's opening on the Weimar constitution. In
+  English: the hub's row and Last Quiz line ("Sentences · Elementary · today"), and the Sie
+  Imperativ's card ("[ ] Sie bitte Platz!"). **On the iPad Pro 11-inch (M5)**, in light mode and
+  English, at Advanced, a real draw: the hub's row, anfangen's separable Sie Imperativ in two blanks
+  (right), können's Konjunktiv II, the rest answered wrongly through the re-asks, and the results
+  with one reward, anfangen's Nietzsche. Not tried: VoiceOver by ear, the software keyboard, the
+  Live Activity, a release build's empty row, and Ten More from the device (unit-tested). The
+  fixture default was removed from the iPhone afterward.
+- **Found by looking.** The words first stood 8 points apart, wider than a space, and now 5; the
+  reward's quote was leading-aligned in centered rows. A test run made while the JSON was
+  deliberately broken installed that build, and the next launch showed the broken sentence; the
+  journal entry says so, since `launch_app.sh` installs whatever was built last.
+- **Seen, not changed.** gehen's literary example, "Die Staatsgewalt geht vom Volke aus.", is
+  ausgehen, not gehen (the separated prefix at the end); the example-sentence pipeline's split-
+  particle rule should have caught it, and other verbs may share the fault. And starting from the
+  hub still does not focus the field, as Phase 15 noted.
 
 ## Phase 19: Which Conjugationgroup Would a Speaker Use?
 

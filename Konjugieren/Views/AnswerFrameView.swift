@@ -27,13 +27,19 @@ struct AnswerFrameView: View {
   @State private var selections: [Int: TextSelection] = [:]
 
   var body: some View {
-    HStack(spacing: 0) {
-      // Keyed so that a blank keeps its identity, and the keyboard its focus, when the next
-      // question's frame puts a pronoun in front of it.
-      ForEach(frame.segments.indices.map(segmentID), id: \.self) { id in
-        let offset = frame.segments.indices.first { segmentID(at: $0) == id } ?? 0
-        segmentView(frame.segments[offset], blankIndex: blankIndex(ofSegmentAt: offset))
-          .padding(.leading, leadingSpace(beforeSegmentAt: offset))
+    Group {
+      if frame.isSentence {
+        sentence
+      } else {
+        HStack(spacing: 0) {
+          // Keyed so that a blank keeps its identity, and the keyboard its focus, when the next
+          // question's frame puts a pronoun in front of it.
+          ForEach(frame.segments.indices.map(segmentID), id: \.self) { id in
+            let offset = frame.segments.indices.first { segmentID(at: $0) == id } ?? 0
+            segmentView(frame.segments[offset], blankIndex: blankIndex(ofSegmentAt: offset))
+              .padding(.leading, leadingSpace(beforeSegmentAt: offset))
+          }
+        }
       }
     }
     .onChange(of: blanks) {
@@ -47,6 +53,53 @@ struct AnswerFrameView: View {
           insertLetter(letter)
         }
       }
+    }
+  }
+
+  /// A sentence laid out word by word, wrapping between words, with a field of one width for every
+  /// blank, so that its width does not hint at the answer's length (Phase 18).
+  private var sentence: some View {
+    // About a space's width at this size, so that the words read as a sentence.
+    FlowLayout(spacing: 5) {
+      // Keyed by blank index, as the one-line frame is, so that the first blank keeps its
+      // identity, and the keyboard its focus, from one sentence to the next.
+      ForEach(sentenceItems) { item in
+        switch item.token {
+        case .blank(let index, let trailing):
+          HStack(spacing: 2) {
+            field(at: index)
+              .frame(width: Self.sentenceFieldWidth)
+            if !trailing.isEmpty {
+              frameText(trailing.inUserRegion)
+                .foregroundStyle(.customForeground)
+            }
+          }
+        case .answerWord(let word):
+          frameText(word)
+            .fontWeight(.semibold)
+            .foregroundStyle(.customForeground)
+        case .word(let word):
+          frameText(word.inUserRegion)
+            .foregroundStyle(.customForeground)
+        }
+      }
+    }
+    .font(.title3)
+  }
+
+  private static let sentenceFieldWidth: CGFloat = 130
+
+  private struct SentenceItem: Identifiable {
+    let id: String
+    let token: AnswerFrame.SentenceToken
+  }
+
+  private var sentenceItems: [SentenceItem] {
+    frame.sentenceTokens.enumerated().map { offset, token in
+      if case .blank(let index, _) = token {
+        return SentenceItem(id: "blank\(index)", token: token)
+      }
+      return SentenceItem(id: "text\(offset)", token: token)
     }
   }
 
@@ -69,6 +122,9 @@ struct AnswerFrameView: View {
     case .punctuation(let punctuation):
       frameText(punctuation)
         .fontWeight(.semibold)
+        .foregroundStyle(.customForeground)
+    case .context(let text):
+      frameText(text)
         .foregroundStyle(.customForeground)
     }
   }
@@ -111,6 +167,9 @@ struct AnswerFrameView: View {
         return L.Accessibility.quizBlank
       case .pronoun(let text), .word(let text), .addressee(let text):
         return text
+      case .context(let text):
+        let trimmed = text.trimmingCharacters(in: .whitespaces.union(.punctuationCharacters))
+        return trimmed.isEmpty ? nil : trimmed
       case .number(let isPlural):
         return isPlural ? L.Accessibility.quizPlural : L.Accessibility.quizSingular
       case .punctuation:
@@ -136,7 +195,7 @@ struct AnswerFrameView: View {
       return frame.segments[offset - 1] == .blank ? Layout.defaultSpacing / 2 : 0
     case .number:
       return Layout.defaultSpacing / 2
-    case .addressee, .blank, .pronoun, .word:
+    case .addressee, .blank, .context, .pronoun, .word:
       return Layout.defaultSpacing
     }
   }

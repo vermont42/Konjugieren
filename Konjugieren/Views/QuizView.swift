@@ -203,6 +203,14 @@ struct QuizView: View {
             .accessibilityIdentifier("quiz_asked_again")
         }
 
+        // Only a debug build asks a sentence Josh has not yet approved.
+        if let sentence = question.sentence, !sentence.reviewed {
+          Label(L.Sentences.draft, systemImage: "pencil.and.list.clipboard")
+            .font(.caption.bold())
+            .foregroundStyle(.secondary)
+            .accessibilityIdentifier("quiz_sentence_draft")
+        }
+
         if let recognition = question.recognition {
           // The verb and its gloss are what a recognition question asks for, so neither is shown.
           RecognitionPromptView(prompt: recognition.prompt)
@@ -309,6 +317,16 @@ struct QuizView: View {
           }
         }
         .offset(x: shakeOffset)
+
+        if let sentence = question.sentence {
+          Text(verbatim: sentence.english)
+            .font(.subheadline)
+            .italic()
+            .foregroundStyle(.secondary)
+            .fixedSize(horizontal: false, vertical: true)
+            .englishPronunciation()
+            .accessibilityIdentifier("quiz_sentence_english")
+        }
 
         // Animated here alone, so that the next question still replaces this one at once.
         VStack {
@@ -500,6 +518,9 @@ struct QuizView: View {
     }
     if quiz.scope.isRecognition {
       return L.Recognition.title
+    }
+    if quiz.scope.isSentences {
+      return L.Sentences.title
     }
     return quiz.scope.recordSession?.title
   }
@@ -830,7 +851,7 @@ struct QuizView: View {
 
   /// Ways to practice beside the quiz: Verb Essentials (Phase 15 of the pedagogy plan), the ablaut
   /// groups' practice (Phase 16), which opens a list of the groups, Name the Conjugation (Phase
-  /// 17), and the exercises of later phases.
+  /// 17), Sentences (Phase 18), and the exercises of later phases.
   private var exercisesSection: some View {
     VStack(alignment: .leading, spacing: Layout.defaultSpacing) {
       Text(L.Quiz.exercises)
@@ -871,6 +892,17 @@ struct QuizView: View {
       ) {
         quiz.start(scope: .recognition())
       }
+
+      let hasSentences = !GapSentences.askable(at: level).isEmpty
+      QuizHubRow(
+        title: L.Sentences.title,
+        detail: hasSentences ? L.Sentences.description : L.Sentences.empty,
+        systemImage: "text.insert",
+        identifier: "quiz_sentences",
+        hint: L.Accessibility.sentencesStartHint,
+        isLarge: isLarge,
+        start: hasSentences ? { quiz.start(scope: .sentences()) } : nil
+      )
     }
     .frame(maxWidth: .infinity, alignment: .leading)
   }

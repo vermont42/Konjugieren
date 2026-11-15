@@ -4,6 +4,108 @@
     "" : {
 
     },
+    "Accessibility.exampleSentenceHint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeigt einen Beispielsatz mit diesem Verb und woher er stammt."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shows an example sentence with this verb, and where it comes from."
+          }
+        }
+      }
+    },
+    "Accessibility.sentencesStartHint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Startet zehn Fragen, jede ein Satz, in dem das Verb fehlt."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starts ten questions, each a sentence with its verb left blank."
+          }
+        }
+      }
+    },
+    "Sentences.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Setze das Verb in einen kurzen Satz deiner Stufe ein."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Write the verb into a short sentence at your level."
+          }
+        }
+      }
+    },
+    "Sentences.draft" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Entwurf"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Draft"
+          }
+        }
+      }
+    },
+    "Sentences.empty" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Für deine Stufe gibt es noch keine Sätze."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "There are no sentences at your level yet."
+          }
+        }
+      }
+    },
+    "Sentences.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Lückensätze"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sentences"
+          }
+        }
+      }
+    },
     "— %@" : {
 
     },

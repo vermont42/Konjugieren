@@ -90,6 +90,7 @@ enum AnalyticsSource: String, CaseIterable {
   case reviewCard
   case search
   case searchGuess
+  case sentences
   case sharedLink
   case shortcut
   case spotlight

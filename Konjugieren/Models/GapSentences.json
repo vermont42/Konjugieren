@@ -1,0 +1,1054 @@
+[
+  {
+    "id": "sein.praesens.1",
+    "verb": "sein",
+    "table": "praesens_indikativ",
+    "person": "tp",
+    "de": "Meine Eltern {sind} heute zu Hause.",
+    "en": "My parents are at home today.",
+    "reviewed": true
+  },
+  {
+    "id": "sein.imperativ.1",
+    "verb": "sein",
+    "table": "imperativ",
+    "person": "ss",
+    "de": "{Sei} bitte pünktlich!",
+    "en": "Please be on time!",
+    "reviewed": true
+  },
+  {
+    "id": "sein.praeteritum.1",
+    "verb": "sein",
+    "table": "praeteritum_indikativ",
+    "person": "fs",
+    "de": "Gestern {war} ich sehr müde.",
+    "en": "Yesterday I was very tired.",
+    "reviewed": true
+  },
+  {
+    "id": "sein.konjunktiv_ii.1",
+    "verb": "sein",
+    "table": "praeteritum_konjunktiv_ii",
+    "person": "fs",
+    "de": "Wenn ich reich {wäre}, würde ich mehr reisen.",
+    "en": "If I were rich, I would travel more.",
+    "reviewed": true
+  },
+  {
+    "id": "sein.konjunktiv_i.1",
+    "verb": "sein",
+    "table": "praesens_konjunktiv_i",
+    "person": "ts",
+    "de": "Sie sagt, ihr Bruder {sei} krank.",
+    "en": "She says her brother is ill.",
+    "reviewed": true
+  },
+  {
+    "id": "werden.praesens.1",
+    "verb": "werden",
+    "table": "praesens_indikativ",
+    "person": "ss",
+    "de": "Du {wirst} jeden Tag größer.",
+    "en": "You get bigger every day.",
+    "reviewed": true
+  },
+  {
+    "id": "werden.perfekt.1",
+    "verb": "werden",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Mein Bruder {ist} letztes Jahr Lehrer {geworden}.",
+    "en": "My brother became a teacher last year.",
+    "reviewed": true
+  },
+  {
+    "id": "werden.praeteritum.1",
+    "verb": "werden",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Im Herbst {wurde} es früh dunkel.",
+    "en": "In the fall it got dark early.",
+    "reviewed": true
+  },
+  {
+    "id": "werden.konjunktiv_ii.1",
+    "verb": "werden",
+    "table": "praeteritum_konjunktiv_ii",
+    "person": "ts",
+    "de": "Wenn er Arzt {würde}, wären seine Eltern stolz.",
+    "en": "If he became a doctor, his parents would be proud.",
+    "reviewed": true
+  },
+  {
+    "id": "haben.praesens.1",
+    "verb": "haben",
+    "table": "praesens_indikativ",
+    "person": "fs",
+    "de": "Ich {habe} heute keine Zeit.",
+    "en": "I have no time today.",
+    "reviewed": true
+  },
+  {
+    "id": "haben.praeteritum.1",
+    "verb": "haben",
+    "table": "praeteritum_indikativ",
+    "person": "fp",
+    "de": "Wir {hatten} gestern viel Spaß.",
+    "en": "We had a lot of fun yesterday.",
+    "reviewed": true
+  },
+  {
+    "id": "haben.perfekt.1",
+    "verb": "haben",
+    "table": "perfekt_indikativ",
+    "person": "ss",
+    "de": "Du {hast} immer Glück {gehabt}.",
+    "en": "You have always been lucky.",
+    "reviewed": true
+  },
+  {
+    "id": "haben.konjunktiv_ii.1",
+    "verb": "haben",
+    "table": "praeteritum_konjunktiv_ii",
+    "person": "fs",
+    "de": "Wenn ich mehr Geld {hätte}, würde ich ein Auto kaufen.",
+    "en": "If I had more money, I would buy a car.",
+    "reviewed": true
+  },
+  {
+    "id": "haben.konjunktiv_i.1",
+    "verb": "haben",
+    "table": "praesens_konjunktiv_i",
+    "person": "ts",
+    "de": "Der Chef sagt, er {habe} keine Zeit.",
+    "en": "The boss says he has no time.",
+    "reviewed": true
+  },
+  {
+    "id": "können.praesens.1",
+    "verb": "können",
+    "table": "praesens_indikativ",
+    "person": "ss",
+    "de": "{Kannst} du mir bitte helfen?",
+    "en": "Can you help me, please?",
+    "reviewed": true
+  },
+  {
+    "id": "können.praeteritum.1",
+    "verb": "können",
+    "table": "praeteritum_indikativ",
+    "person": "fs",
+    "de": "Als Kind {konnte} ich gut schwimmen.",
+    "en": "As a child I could swim well.",
+    "reviewed": true
+  },
+  {
+    "id": "können.konjunktiv_ii.1",
+    "verb": "können",
+    "table": "praeteritum_konjunktiv_ii",
+    "person": "sp",
+    "de": "{Könntet} ihr morgen etwas früher kommen?",
+    "en": "Could you come a little earlier tomorrow?",
+    "reviewed": true
+  },
+  {
+    "id": "können.konjunktiv_i.1",
+    "verb": "können",
+    "table": "praesens_konjunktiv_i",
+    "person": "ts",
+    "de": "Die Lehrerin sagt, jeder {könne} die Prüfung bestehen.",
+    "en": "The teacher says anyone can pass the exam.",
+    "reviewed": true
+  },
+  {
+    "id": "geben.praesens.1",
+    "verb": "geben",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Mein Vater {gibt} mir jeden Monat Taschengeld.",
+    "en": "My father gives me an allowance every month.",
+    "reviewed": true
+  },
+  {
+    "id": "geben.imperativ.1",
+    "verb": "geben",
+    "table": "imperativ",
+    "person": "ss",
+    "de": "{Gib} mir bitte das Salz!",
+    "en": "Please pass me the salt!",
+    "reviewed": true
+  },
+  {
+    "id": "geben.perfekt.1",
+    "verb": "geben",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Ich {habe} ihm meine Telefonnummer {gegeben}.",
+    "en": "I gave him my phone number.",
+    "reviewed": true
+  },
+  {
+    "id": "geben.praeteritum.1",
+    "verb": "geben",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Früher {gab} es hier einen kleinen Laden.",
+    "en": "There used to be a small store here.",
+    "reviewed": true
+  },
+  {
+    "id": "geben.konjunktiv_ii.1",
+    "verb": "geben",
+    "table": "praeteritum_konjunktiv_ii",
+    "person": "ts",
+    "de": "Wenn es heute Kuchen {gäbe}, wäre ich glücklich.",
+    "en": "If there were cake today, I would be happy.",
+    "reviewed": true
+  },
+  {
+    "id": "müssen.praesens.1",
+    "verb": "müssen",
+    "table": "praesens_indikativ",
+    "person": "fs",
+    "de": "Ich {muss} morgen früh arbeiten.",
+    "en": "I have to work early tomorrow.",
+    "reviewed": true
+  },
+  {
+    "id": "müssen.praeteritum.1",
+    "verb": "müssen",
+    "table": "praeteritum_indikativ",
+    "person": "fp",
+    "de": "Wir {mussten} lange auf den Bus warten.",
+    "en": "We had to wait a long time for the bus.",
+    "reviewed": true
+  },
+  {
+    "id": "müssen.konjunktiv_ii.1",
+    "verb": "müssen",
+    "table": "praeteritum_konjunktiv_ii",
+    "person": "ss",
+    "de": "Du {müsstest} eigentlich mehr schlafen.",
+    "en": "You really ought to sleep more.",
+    "reviewed": true
+  },
+  {
+    "id": "müssen.konjunktiv_i.1",
+    "verb": "müssen",
+    "table": "praesens_konjunktiv_i",
+    "person": "ts",
+    "de": "Der Arzt meint, der Patient {müsse} im Bett bleiben.",
+    "en": "The doctor thinks the patient has to stay in bed.",
+    "reviewed": true
+  },
+  {
+    "id": "sollen.praesens.1",
+    "verb": "sollen",
+    "table": "praesens_indikativ",
+    "person": "fs",
+    "de": "{Soll} ich das Fenster zumachen?",
+    "en": "Shall I close the window?",
+    "reviewed": true
+  },
+  {
+    "id": "sollen.praeteritum.1",
+    "verb": "sollen",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Der Zug {sollte} um acht Uhr in Köln sein.",
+    "en": "The train was supposed to be in Cologne at eight.",
+    "reviewed": true
+  },
+  {
+    "id": "sollen.konjunktiv_ii.1",
+    "verb": "sollen",
+    "table": "praeteritum_konjunktiv_ii",
+    "person": "ss",
+    "de": "Du {solltest} mehr Wasser trinken.",
+    "en": "You should drink more water.",
+    "reviewed": true
+  },
+  {
+    "id": "sollen.konjunktiv_i.1",
+    "verb": "sollen",
+    "table": "praesens_konjunktiv_i",
+    "person": "fs",
+    "de": "Meine Mutter sagt, ich {solle} sie morgen anrufen.",
+    "en": "My mother says I should call her tomorrow.",
+    "reviewed": true
+  },
+  {
+    "id": "kommen.praesens.1",
+    "verb": "kommen",
+    "table": "praesens_indikativ",
+    "person": "ss",
+    "de": "Wann {kommst} du nach Hause?",
+    "en": "When are you coming home?",
+    "reviewed": true
+  },
+  {
+    "id": "kommen.imperativ.1",
+    "verb": "kommen",
+    "table": "imperativ",
+    "person": "ss",
+    "de": "{Komm} bitte schnell!",
+    "en": "Please come quickly!",
+    "reviewed": true
+  },
+  {
+    "id": "kommen.perfekt.1",
+    "verb": "kommen",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Ich {bin} gestern spät nach Hause {gekommen}.",
+    "en": "I came home late yesterday.",
+    "reviewed": true
+  },
+  {
+    "id": "kommen.praeteritum.1",
+    "verb": "kommen",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Der Brief {kam} erst nach einer Woche.",
+    "en": "The letter only came after a week.",
+    "reviewed": true
+  },
+  {
+    "id": "kommen.futur_konjunktiv_ii.1",
+    "verb": "kommen",
+    "table": "futur_konjunktiv_ii",
+    "person": "fs",
+    "de": "Ich {würde} gern zu deiner Party {kommen}.",
+    "en": "I would like to come to your party.",
+    "reviewed": true
+  },
+  {
+    "id": "kommen.konjunktiv_ii.1",
+    "verb": "kommen",
+    "table": "praeteritum_konjunktiv_ii",
+    "person": "ts",
+    "de": "Wenn der Bus pünktlich {käme}, wäre alles gut.",
+    "en": "If the bus came on time, everything would be fine.",
+    "reviewed": true
+  },
+  {
+    "id": "machen.praesens.1",
+    "verb": "machen",
+    "table": "praesens_indikativ",
+    "person": "sp",
+    "de": "Was {macht} ihr am Wochenende?",
+    "en": "What are you doing this weekend?",
+    "reviewed": true
+  },
+  {
+    "id": "machen.perfekt.1",
+    "verb": "machen",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Ich {habe} meine Hausaufgaben schon {gemacht}.",
+    "en": "I have already done my homework.",
+    "reviewed": true
+  },
+  {
+    "id": "machen.praeteritum.1",
+    "verb": "machen",
+    "table": "praeteritum_indikativ",
+    "person": "fp",
+    "de": "Im Sommer {machten} wir eine lange Reise.",
+    "en": "In the summer we took a long trip.",
+    "reviewed": true
+  },
+  {
+    "id": "machen.futur.1",
+    "verb": "machen",
+    "table": "futur_indikativ",
+    "person": "ts",
+    "de": "Das {wird} sicher großen Spaß {machen}.",
+    "en": "That will certainly be great fun.",
+    "reviewed": true
+  },
+  {
+    "id": "gehen.praesens.1",
+    "verb": "gehen",
+    "table": "praesens_indikativ",
+    "person": "fs",
+    "de": "Ich {gehe} jeden Morgen zu Fuß zur Arbeit.",
+    "en": "I walk to work every morning.",
+    "reviewed": true
+  },
+  {
+    "id": "gehen.perfekt.1",
+    "verb": "gehen",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Gestern {sind} wir ins Kino {gegangen}.",
+    "en": "Yesterday we went to the cinema.",
+    "reviewed": true
+  },
+  {
+    "id": "gehen.imperativ.1",
+    "verb": "gehen",
+    "table": "imperativ",
+    "person": "sp",
+    "de": "{Geht} bitte nicht zu weit weg!",
+    "en": "Please don't go too far away!",
+    "reviewed": true
+  },
+  {
+    "id": "gehen.praeteritum.1",
+    "verb": "gehen",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Nach dem Essen {ging} er spazieren.",
+    "en": "After the meal he went for a walk.",
+    "reviewed": true
+  },
+  {
+    "id": "gehen.plusquamperfekt.1",
+    "verb": "gehen",
+    "table": "plusquamperfekt_indikativ",
+    "person": "tp",
+    "de": "Als wir ankamen, {waren} die Gäste schon {gegangen}.",
+    "en": "When we arrived, the guests had already left.",
+    "reviewed": true
+  },
+  {
+    "id": "sagen.praesens.1",
+    "verb": "sagen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Mein Opa {sagt} immer die Wahrheit.",
+    "en": "My grandpa always tells the truth.",
+    "reviewed": true
+  },
+  {
+    "id": "sagen.perfekt.1",
+    "verb": "sagen",
+    "table": "perfekt_indikativ",
+    "person": "ss",
+    "de": "Warum {hast} du nichts {gesagt}?",
+    "en": "Why didn't you say anything?",
+    "reviewed": true
+  },
+  {
+    "id": "sagen.imperativ.1",
+    "verb": "sagen",
+    "table": "imperativ",
+    "person": "ss",
+    "de": "{Sag} mir bitte deinen Namen!",
+    "en": "Please tell me your name!",
+    "reviewed": true
+  },
+  {
+    "id": "sagen.praeteritum.1",
+    "verb": "sagen",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Der Lehrer {sagte} kein Wort.",
+    "en": "The teacher didn't say a word.",
+    "reviewed": true
+  },
+  {
+    "id": "wollen.praesens.1",
+    "verb": "wollen",
+    "table": "praesens_indikativ",
+    "person": "fp",
+    "de": "Wir {wollen} im Sommer nach Italien fahren.",
+    "en": "We want to go to Italy in the summer.",
+    "reviewed": true
+  },
+  {
+    "id": "wollen.praeteritum.1",
+    "verb": "wollen",
+    "table": "praeteritum_indikativ",
+    "person": "fs",
+    "de": "Ich {wollte} dich gestern anrufen.",
+    "en": "I wanted to call you yesterday.",
+    "reviewed": true
+  },
+  {
+    "id": "wollen.konjunktiv_ii.1",
+    "verb": "wollen",
+    "table": "praeteritum_konjunktiv_ii",
+    "person": "fs",
+    "de": "Ich {wollte}, ich hätte mehr Zeit.",
+    "en": "I wish I had more time.",
+    "reviewed": true
+  },
+  {
+    "id": "wollen.konjunktiv_i.1",
+    "verb": "wollen",
+    "table": "praesens_konjunktiv_i",
+    "person": "ts",
+    "de": "Er sagt, er {wolle} nicht mitkommen.",
+    "en": "He says he doesn't want to come along.",
+    "reviewed": true
+  },
+  {
+    "id": "finden.praesens.1",
+    "verb": "finden",
+    "table": "praesens_indikativ",
+    "person": "fs",
+    "de": "Ich {finde} meinen Schlüssel nicht.",
+    "en": "I can't find my key.",
+    "reviewed": true
+  },
+  {
+    "id": "finden.perfekt.1",
+    "verb": "finden",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Meine Schwester {hat} eine neue Wohnung {gefunden}.",
+    "en": "My sister has found a new apartment.",
+    "reviewed": true
+  },
+  {
+    "id": "finden.praeteritum.1",
+    "verb": "finden",
+    "table": "praeteritum_indikativ",
+    "person": "fp",
+    "de": "Wir {fanden} den Film sehr spannend.",
+    "en": "We found the film very exciting.",
+    "reviewed": true
+  },
+  {
+    "id": "finden.konjunktiv_ii.1",
+    "verb": "finden",
+    "table": "praeteritum_konjunktiv_ii",
+    "person": "fs",
+    "de": "Wenn ich die Zeit {fände}, würde ich ein Buch schreiben.",
+    "en": "If I found the time, I would write a book.",
+    "reviewed": true
+  },
+  {
+    "id": "stehen.praesens.1",
+    "verb": "stehen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Das Auto {steht} vor dem Haus.",
+    "en": "The car is parked in front of the house.",
+    "reviewed": true
+  },
+  {
+    "id": "stehen.imperativ.1",
+    "verb": "stehen",
+    "table": "imperativ",
+    "person": "tp",
+    "de": "{Stehen} Sie bitte nicht so nah an der Tür!",
+    "en": "Please don't stand so close to the door!",
+    "reviewed": true
+  },
+  {
+    "id": "stehen.praeteritum.1",
+    "verb": "stehen",
+    "table": "praeteritum_indikativ",
+    "person": "fs",
+    "de": "Ich {stand} eine Stunde an der Haltestelle.",
+    "en": "I stood at the stop for an hour.",
+    "reviewed": true
+  },
+  {
+    "id": "stehen.konjunktiv_i.1",
+    "verb": "stehen",
+    "table": "praesens_konjunktiv_i",
+    "person": "ts",
+    "de": "Er sagt, sein Auto {stehe} in der Garage.",
+    "en": "He says his car is in the garage.",
+    "reviewed": true
+  },
+  {
+    "id": "lassen.praesens.1",
+    "verb": "lassen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Er {lässt} die Tür immer offen.",
+    "en": "He always leaves the door open.",
+    "reviewed": true
+  },
+  {
+    "id": "lassen.imperativ.1",
+    "verb": "lassen",
+    "table": "imperativ",
+    "person": "ss",
+    "de": "{Lass} mich bitte in Ruhe!",
+    "en": "Please leave me alone!",
+    "reviewed": true
+  },
+  {
+    "id": "lassen.perfekt.1",
+    "verb": "lassen",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Ich {habe} meinen Regenschirm im Bus {gelassen}.",
+    "en": "I left my umbrella on the bus.",
+    "reviewed": true
+  },
+  {
+    "id": "lassen.praeteritum.1",
+    "verb": "lassen",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Die Lehrerin {ließ} uns früher nach Hause gehen.",
+    "en": "The teacher let us go home early.",
+    "reviewed": true
+  },
+  {
+    "id": "sehen.praesens.1",
+    "verb": "sehen",
+    "table": "praesens_indikativ",
+    "person": "ss",
+    "de": "{Siehst} du den Vogel dort?",
+    "en": "Do you see the bird over there?",
+    "reviewed": true
+  },
+  {
+    "id": "sehen.perfekt.1",
+    "verb": "sehen",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} den Film schon zweimal {gesehen}.",
+    "en": "We have already seen the film twice.",
+    "reviewed": true
+  },
+  {
+    "id": "sehen.praeteritum.1",
+    "verb": "sehen",
+    "table": "praeteritum_indikativ",
+    "person": "fs",
+    "de": "Plötzlich {sah} ich ein Licht im Fenster.",
+    "en": "Suddenly I saw a light in the window.",
+    "reviewed": true
+  },
+  {
+    "id": "sehen.konjunktiv_i.1",
+    "verb": "sehen",
+    "table": "praesens_konjunktiv_i",
+    "person": "ts",
+    "de": "Der Minister erklärt, er {sehe} keinen Grund zur Sorge.",
+    "en": "The minister declares that he sees no cause for concern.",
+    "reviewed": true
+  },
+  {
+    "id": "bleiben.praesens.1",
+    "verb": "bleiben",
+    "table": "praesens_indikativ",
+    "person": "fp",
+    "de": "Heute {bleiben} wir zu Hause.",
+    "en": "Today we're staying at home.",
+    "reviewed": true
+  },
+  {
+    "id": "bleiben.imperativ.1",
+    "verb": "bleiben",
+    "table": "imperativ",
+    "person": "sp",
+    "de": "{Bleibt} bitte ruhig!",
+    "en": "Please stay calm!",
+    "reviewed": true
+  },
+  {
+    "id": "bleiben.perfekt.1",
+    "verb": "bleiben",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Ich {bin} drei Tage in Berlin {geblieben}.",
+    "en": "I stayed in Berlin for three days.",
+    "reviewed": true
+  },
+  {
+    "id": "bleiben.praeteritum.1",
+    "verb": "bleiben",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Das Geschäft {blieb} den ganzen Sommer geschlossen.",
+    "en": "The store stayed closed all summer.",
+    "reviewed": true
+  },
+  {
+    "id": "stellen.praesens.1",
+    "verb": "stellen",
+    "table": "praesens_indikativ",
+    "person": "fs",
+    "de": "Ich {stelle} die Blumen auf den Tisch.",
+    "en": "I'm putting the flowers on the table.",
+    "reviewed": true
+  },
+  {
+    "id": "stellen.imperativ.1",
+    "verb": "stellen",
+    "table": "imperativ",
+    "person": "ss",
+    "de": "{Stell} die Flasche bitte in den Kühlschrank!",
+    "en": "Please put the bottle in the fridge!",
+    "reviewed": true
+  },
+  {
+    "id": "stellen.perfekt.1",
+    "verb": "stellen",
+    "table": "perfekt_indikativ",
+    "person": "ss",
+    "de": "{Hast} du das Fahrrad in den Keller {gestellt}?",
+    "en": "Did you put the bike in the basement?",
+    "reviewed": true
+  },
+  {
+    "id": "stellen.praeteritum.1",
+    "verb": "stellen",
+    "table": "praeteritum_indikativ",
+    "person": "tp",
+    "de": "Die Kinder {stellten} viele Fragen.",
+    "en": "The children asked a lot of questions.",
+    "reviewed": true
+  },
+  {
+    "id": "liegen.praesens.1",
+    "verb": "liegen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Das Buch {liegt} auf dem Tisch.",
+    "en": "The book is lying on the table.",
+    "reviewed": true
+  },
+  {
+    "id": "liegen.praeteritum.1",
+    "verb": "liegen",
+    "table": "praeteritum_indikativ",
+    "person": "fs",
+    "de": "Den ganzen Tag {lag} ich im Bett.",
+    "en": "I lay in bed all day.",
+    "reviewed": true
+  },
+  {
+    "id": "liegen.konjunktiv_ii.1",
+    "verb": "liegen",
+    "table": "praeteritum_konjunktiv_ii",
+    "person": "ts",
+    "de": "Wenn das Hotel am Meer {läge}, würden wir länger bleiben.",
+    "en": "If the hotel were by the sea, we would stay longer.",
+    "reviewed": true
+  },
+  {
+    "id": "liegen.praesenspartizip.1",
+    "verb": "liegen",
+    "table": "praesenspartizip",
+    "de": "Er las das Buch im Bett {liegend}.",
+    "en": "He read the book lying in bed.",
+    "reviewed": true
+  },
+  {
+    "id": "zeigen.praesens.1",
+    "verb": "zeigen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Die Karte {zeigt} den Weg zum Bahnhof.",
+    "en": "The map shows the way to the station.",
+    "reviewed": true
+  },
+  {
+    "id": "zeigen.imperativ.1",
+    "verb": "zeigen",
+    "table": "imperativ",
+    "person": "tp",
+    "de": "{Zeigen} Sie mir bitte Ihren Ausweis!",
+    "en": "Please show me your ID!",
+    "reviewed": true
+  },
+  {
+    "id": "zeigen.perfekt.1",
+    "verb": "zeigen",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Ich {habe} ihr die Fotos {gezeigt}.",
+    "en": "I showed her the photos.",
+    "reviewed": true
+  },
+  {
+    "id": "zeigen.futur.1",
+    "verb": "zeigen",
+    "table": "futur_indikativ",
+    "person": "fp",
+    "de": "Wir {werden} euch morgen die Stadt {zeigen}.",
+    "en": "We will show you the city tomorrow.",
+    "reviewed": true
+  },
+  {
+    "id": "nehmen.praesens.1",
+    "verb": "nehmen",
+    "table": "praesens_indikativ",
+    "person": "ss",
+    "de": "{Nimmst} du den Bus oder das Fahrrad?",
+    "en": "Are you taking the bus or the bike?",
+    "reviewed": true
+  },
+  {
+    "id": "nehmen.imperativ.1",
+    "verb": "nehmen",
+    "table": "imperativ",
+    "person": "tp",
+    "de": "{Nehmen} Sie bitte Platz!",
+    "en": "Please take a seat!",
+    "reviewed": true
+  },
+  {
+    "id": "nehmen.perfekt.1",
+    "verb": "nehmen",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Ich {habe} den falschen Zug {genommen}.",
+    "en": "I took the wrong train.",
+    "reviewed": true
+  },
+  {
+    "id": "nehmen.praeteritum.1",
+    "verb": "nehmen",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Er {nahm} das Geld und ging.",
+    "en": "He took the money and left.",
+    "reviewed": true
+  },
+  {
+    "id": "dürfen.praesens.1",
+    "verb": "dürfen",
+    "table": "praesens_indikativ",
+    "person": "fs",
+    "de": "{Darf} ich das Fenster öffnen?",
+    "en": "May I open the window?",
+    "reviewed": true
+  },
+  {
+    "id": "dürfen.praeteritum.1",
+    "verb": "dürfen",
+    "table": "praeteritum_indikativ",
+    "person": "fp",
+    "de": "Als Kinder {durften} wir lange draußen spielen.",
+    "en": "As children we were allowed to play outside for a long time.",
+    "reviewed": true
+  },
+  {
+    "id": "dürfen.konjunktiv_ii.1",
+    "verb": "dürfen",
+    "table": "praeteritum_konjunktiv_ii",
+    "person": "ts",
+    "de": "Das {dürfte} nicht so schwer sein.",
+    "en": "That shouldn't be too hard.",
+    "reviewed": true
+  },
+  {
+    "id": "dürfen.konjunktiv_i.1",
+    "verb": "dürfen",
+    "table": "praesens_konjunktiv_i",
+    "person": "ts",
+    "de": "Der Arzt sagt, der Patient {dürfe} heute nach Hause.",
+    "en": "The doctor says the patient may go home today.",
+    "reviewed": true
+  },
+  {
+    "id": "mögen.praesens.1",
+    "verb": "mögen",
+    "table": "praesens_indikativ",
+    "person": "fs",
+    "de": "Ich {mag} keinen Kaffee.",
+    "en": "I don't like coffee.",
+    "reviewed": true
+  },
+  {
+    "id": "mögen.praesens.2",
+    "verb": "mögen",
+    "table": "praesens_indikativ",
+    "person": "sp",
+    "de": "{Mögt} ihr Schokolade?",
+    "en": "Do you like chocolate?",
+    "reviewed": true
+  },
+  {
+    "id": "mögen.praeteritum.1",
+    "verb": "mögen",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Als Kind {mochte} er kein Gemüse.",
+    "en": "As a child he didn't like vegetables.",
+    "reviewed": true
+  },
+  {
+    "id": "mögen.konjunktiv_ii.1",
+    "verb": "mögen",
+    "table": "praeteritum_konjunktiv_ii",
+    "person": "fs",
+    "de": "Ich {möchte} ein Glas Wasser, bitte.",
+    "en": "I would like a glass of water, please.",
+    "reviewed": true
+  },
+  {
+    "id": "bringen.praesens.1",
+    "verb": "bringen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Der Briefträger {bringt} jeden Morgen die Post.",
+    "en": "The mail carrier brings the mail every morning.",
+    "reviewed": true
+  },
+  {
+    "id": "bringen.imperativ.1",
+    "verb": "bringen",
+    "table": "imperativ",
+    "person": "ss",
+    "de": "{Bring} mir bitte ein Glas Wasser!",
+    "en": "Please bring me a glass of water!",
+    "reviewed": true
+  },
+  {
+    "id": "bringen.perfekt.1",
+    "verb": "bringen",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Ich {habe} dir ein kleines Geschenk {gebracht}.",
+    "en": "I've brought you a little present.",
+    "reviewed": true
+  },
+  {
+    "id": "bringen.praeteritum.1",
+    "verb": "bringen",
+    "table": "praeteritum_indikativ",
+    "person": "fp",
+    "de": "Wir {brachten} die Kinder zur Schule.",
+    "en": "We took the children to school.",
+    "reviewed": true
+  },
+  {
+    "id": "bringen.konjunktiv_ii.1",
+    "verb": "bringen",
+    "table": "praeteritum_konjunktiv_ii",
+    "person": "ts",
+    "de": "Das {brächte} uns nichts.",
+    "en": "That would get us nowhere.",
+    "reviewed": true
+  },
+  {
+    "id": "führen.praesens.1",
+    "verb": "führen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Diese Straße {führt} direkt zum Bahnhof.",
+    "en": "This street leads straight to the station.",
+    "reviewed": true
+  },
+  {
+    "id": "führen.perfekt.1",
+    "verb": "führen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Der Weg {hat} uns durch den Wald {geführt}.",
+    "en": "The path led us through the forest.",
+    "reviewed": true
+  },
+  {
+    "id": "führen.praeteritum.1",
+    "verb": "führen",
+    "table": "praeteritum_indikativ",
+    "person": "fs",
+    "de": "Damals {führte} ich ein Tagebuch.",
+    "en": "Back then I kept a diary.",
+    "reviewed": true
+  },
+  {
+    "id": "führen.futur.1",
+    "verb": "führen",
+    "table": "futur_indikativ",
+    "person": "ts",
+    "de": "Diese Entscheidung {wird} zu Problemen {führen}.",
+    "en": "This decision will lead to problems.",
+    "reviewed": true
+  },
+  {
+    "id": "anfangen.praesens.1",
+    "verb": "anfangen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Der Unterricht {fängt} um acht Uhr {an}.",
+    "en": "Class starts at eight.",
+    "reviewed": true
+  },
+  {
+    "id": "anfangen.praesens.2",
+    "verb": "anfangen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Ich weiß nicht, wann der Film {anfängt}.",
+    "en": "I don't know when the film starts.",
+    "reviewed": true
+  },
+  {
+    "id": "anfangen.perfekt.1",
+    "verb": "anfangen",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} gestern mit dem Kurs {angefangen}.",
+    "en": "We started the course yesterday.",
+    "reviewed": true
+  },
+  {
+    "id": "anfangen.imperativ.1",
+    "verb": "anfangen",
+    "table": "imperativ",
+    "person": "tp",
+    "de": "{Fangen} Sie bitte {an}!",
+    "en": "Please begin!",
+    "reviewed": true
+  },
+  {
+    "id": "ankommen.praesens.1",
+    "verb": "ankommen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Der Zug {kommt} um zehn Uhr in Hamburg {an}.",
+    "en": "The train arrives in Hamburg at ten.",
+    "reviewed": true
+  },
+  {
+    "id": "ankommen.perfekt.1",
+    "verb": "ankommen",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Ich {bin} gut zu Hause {angekommen}.",
+    "en": "I got home safely.",
+    "reviewed": true
+  },
+  {
+    "id": "ankommen.praeteritum.1",
+    "verb": "ankommen",
+    "table": "praeteritum_indikativ",
+    "person": "tp",
+    "de": "Als die Gäste {ankamen}, war das Essen fertig.",
+    "en": "When the guests arrived, the food was ready.",
+    "reviewed": true
+  },
+  {
+    "id": "einladen.praesens.1",
+    "verb": "einladen",
+    "table": "praesens_indikativ",
+    "person": "fs",
+    "de": "Ich {lade} dich zum Essen {ein}.",
+    "en": "I'm inviting you to dinner.",
+    "reviewed": true
+  },
+  {
+    "id": "einladen.perfekt.1",
+    "verb": "einladen",
+    "table": "perfekt_indikativ",
+    "person": "tp",
+    "de": "Unsere Nachbarn {haben} uns zum Grillen {eingeladen}.",
+    "en": "Our neighbors have invited us to a barbecue.",
+    "reviewed": true
+  },
+  {
+    "id": "einladen.imperativ.1",
+    "verb": "einladen",
+    "table": "imperativ",
+    "person": "sp",
+    "de": "{Ladet} doch eure Freunde {ein}!",
+    "en": "Do invite your friends!",
+    "reviewed": true
+  }
+]

@@ -63,6 +63,22 @@ struct QuizCorrectionView: View {
       .accessibilityFocused(accessibilityIsFocused)
       .accessibilityIdentifier("quiz_correction")
 
+      // The sentence read whole, with the conjugation in place (Phase 18 of the pedagogy plan).
+      if let sentence = question.sentence {
+        Label {
+          Text(verbatim: sentence.completed.inUserRegion)
+            .italic()
+            .germanPronunciation()
+        } icon: {
+          Image(systemName: "text.quote")
+        }
+        .font(.subheadline)
+        .foregroundStyle(.customForeground)
+        .fixedSize(horizontal: false, vertical: true)
+        .accessibilityHidden(true)
+        .accessibilityIdentifier("quiz_correction_sentence")
+      }
+
       if let diagnosis = correction.diagnosis {
         Label(diagnosis.line, systemImage: "lightbulb.fill")
           .font(.subheadline)
@@ -194,6 +210,9 @@ struct QuizCorrectionView: View {
     }
     if let diagnosis = correction.diagnosis {
       spoken += " " + diagnosis.line
+    }
+    if let sentence = question.sentence {
+      spoken += " " + sentence.completed
     }
     if correction.willBeReasked {
       spoken += " " + L.Quiz.willAskAgain

@@ -720,3 +720,42 @@ Der Satz in Abschnitt 6 lautet nun:
 ```
 Nur die ersten zehn Fragen eines Quiz über alle Verben reichen ein Ergebnis ein, und zwar in der Bestenliste der Stufe des Quiz; ein Quiz über Ihre eigenen Verben, ein einzelnes Verb, selbst gewählte Conjugationgroups und Verben oder Ihre anstehenden Fragen oder Fehler tut das nicht, ebenso wenig die Verb-Grundlagen, die Übung einer Ablautgruppe, „Konjugationen bestimmen“ und die zehn weiteren Fragen, die Sie anhängen können.
 ```
+
+## Sentences (pedagogy plan, Phase 18, 2026-11-15)
+
+Adds the value `sentences` to the quiz signals' `source`, for Sentences ("Lückensätze"), an
+exercise begun from the Quiz tab that asks a verb's conjugation in a short sentence. Its rounds are
+ten questions, so `completeQuiz` carries `questionCount` as the default quiz does. It posts no
+score. Its answers go into the practice record, which stays on the device, as every production
+answer does, so the practice-record paragraph is unchanged. Opening a verb's example sentence on the
+results screen sends nothing: only a right answer's row offers it, so a signal for it would count
+right answers (Decision 5). The lines change the first quiz bullet and the section 6 sentence as
+given in the Phase 17 section above.
+
+### English
+
+The first quiz bullet in section 2 now reads:
+
+```
+- Quiz lifecycle events (starting, quitting, completing a round of questions, and how many rounds the quiz has reached), and where the quiz was begun: the quiz screen, your own verbs, a verb's page, a collection, and which collection, a quiz you put together, and whether you chose conjugationgroups, verbs, or both (not which), a practice set someone shared with you, and whether it came as a link or a QR code, a review of your due questions or of your mistakes, the Verb Essentials exercise, the practice of an ablaut group, alone or mixed, and which group, the Name the Conjugation exercise, or the Sentences exercise
+```
+
+The sentence in section 6 now reads:
+
+```
+Only the first ten questions of a quiz over all verbs post a score, to the leaderboard of the quiz's level; a quiz over your own verbs, a single verb, conjugationgroups and verbs you chose, or your due questions or mistakes does not, nor do Verb Essentials, the practice of an ablaut group, Name the Conjugation, and Sentences, and neither do the ten more questions you may add.
+```
+
+### German
+
+Der erste Punkt über das Quiz in Abschnitt 2 lautet nun:
+
+```
+- Quiz-Lebenszyklus-Ereignisse (Starten, Abbrechen, Abschließen einer Fragerunde und wie viele Runden das Quiz erreicht hat) und wo das Quiz begonnen wurde: auf dem Quiz-Bildschirm, mit Ihren eigenen Verben, auf der Seite eines Verbs, in einer Sammlung, samt der Angabe, welche Sammlung, in einem selbst zusammengestellten Quiz, samt der Angabe, ob Sie Conjugationgroups, Verben oder beides gewählt haben (nicht aber, welche), in einem Übungsset, das jemand mit Ihnen geteilt hat, samt der Angabe, ob es als Link oder als QR-Code kam, bei der Wiederholung Ihrer anstehenden Fragen oder Ihrer Fehler, in der Übung „Verb-Grundlagen“, in der Übung einer Ablautgruppe, allein oder gemischt, samt der Angabe, welche Gruppe, in der Übung „Konjugationen bestimmen“ oder in der Übung „Lückensätze“
+```
+
+Der Satz in Abschnitt 6 lautet nun:
+
+```
+Nur die ersten zehn Fragen eines Quiz über alle Verben reichen ein Ergebnis ein, und zwar in der Bestenliste der Stufe des Quiz; ein Quiz über Ihre eigenen Verben, ein einzelnes Verb, selbst gewählte Conjugationgroups und Verben oder Ihre anstehenden Fragen oder Fehler tut das nicht, ebenso wenig die Verb-Grundlagen, die Übung einer Ablautgruppe, „Konjugationen bestimmen“, „Lückensätze“ und die zehn weiteren Fragen, die Sie anhängen können.
+```

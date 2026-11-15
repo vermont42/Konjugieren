@@ -174,7 +174,7 @@ class Quiz {
   /// round has the default quiz's mix of verbs.
   func continueSession() {
     guard shouldShowResults, !isInProgress, canContinue else { return }
-    let more = generateQuestions(excluding: askedItemKeys)
+    let more = generateQuestions(excluding: askedItemKeys.union(questions.compactMap(\.sentence?.id)))
     guard !more.isEmpty else {
       return
     }
@@ -421,6 +421,8 @@ class Quiz {
       return generateVerbEssentialsFixture()
     case "recognition" where scope.isRecognition:
       return generateRecognitionFixture()
+    case "sentences" where scope.isSentences:
+      return generateSentencesFixture()
     default:
       break
     }
@@ -445,6 +447,11 @@ class Quiz {
       ).map { question in
         makeQuizItem(verb: question.verb, conjugationgroup: question.conjugationgroup, readingIndex: question.readingIndex)
       }
+    }
+
+    if scope.isSentences {
+      return QuizDraw.sentences(from: GapSentences.askable(at: level), count: scope.questionCount, excluded: excluded, using: &randomSource)
+        .compactMap(makeSentenceItem)
     }
 
     let pool = scope.pool(level: level)
@@ -497,7 +504,16 @@ class Quiz {
     }
   }
 
-  func makeQuizItem(verb: Verb, conjugationgroup: Conjugationgroup, readingIndex: Int? = nil, stepID: UUID? = nil) -> QuizItem {
+  /// - Parameter clauses: The word orders a right answer may take. A sentence's blanks take its
+  ///   own clause's alone.
+  func makeQuizItem(
+    verb: Verb,
+    conjugationgroup: Conjugationgroup,
+    readingIndex: Int? = nil,
+    stepID: UUID? = nil,
+    clauses: [Clause] = Clause.allCases,
+    sentence: GapSentence? = nil
+  ) -> QuizItem {
     // A question asks about exactly one reading, and the prompt shows that reading's gloss,
     // so a two-reading verb has one right answer rather than two. Without this, hängen in
     // the Präteritum would accept hing and hängte indistinguishably and teach neither.
@@ -514,7 +530,7 @@ class Quiz {
     // beside stände, are right answers too, though the verb page shows only the conjugator's.
     let reading = verb.reading(at: readingIndex) ?? verb.primaryReading
     let acceptableAnswers = Set(Region.allCases.flatMap { region in
-      Clause.allCases.flatMap { clause in
+      clauses.flatMap { clause in
         let conjugation = RegionalConjugator.conjugateUnsafely(
           infinitiv: verb.infinitiv,
           conjugationgroup: conjugationgroup,
@@ -526,7 +542,7 @@ class Quiz {
         return ([conjugation] + variants).map { $0.lowercased() }
       }
     })
-    let regionalSpellings = Clause.allCases.map { clause in
+    let regionalSpellings = clauses.map { clause in
       RegionalConjugator.conjugateUnsafely(
         infinitiv: verb.infinitiv,
         conjugationgroup: conjugationgroup,
@@ -534,10 +550,12 @@ class Quiz {
         clause: clause
       )
     }
+    // A sentence after weil shows anfängt, not fängt an, as the answer it wanted.
     let correctAnswer = RegionalConjugator.conjugateUnsafely(
       infinitiv: verb.infinitiv,
       conjugationgroup: conjugationgroup,
-      readingIndex: readingIndex
+      readingIndex: readingIndex,
+      clause: clauses.first ?? .main
     )
     return QuizItem(
       verb: verb,
@@ -546,8 +564,18 @@ class Quiz {
       acceptableAnswers: acceptableAnswers,
       regionalSpellings: regionalSpellings,
       readingIndex: readingIndex,
-      stepID: stepID
+      stepID: stepID,
+      sentence: sentence
     )
+  }
+
+  /// A Sentences question (Phase 18 of the pedagogy plan): the sentence's verb and cell, graded in
+  /// the sentence's own word order. Nil for a sentence whose verb or cell this version cannot read.
+  func makeSentenceItem(_ sentence: GapSentence) -> QuizItem? {
+    guard let verb = Verb.verbs[sentence.verb], verb.reading(at: sentence.readingIndex) != nil, let conjugationgroup = sentence.conjugationgroup else {
+      return nil
+    }
+    return makeQuizItem(verb: verb, conjugationgroup: conjugationgroup, readingIndex: sentence.readingIndex, clauses: [sentence.clause], sentence: sentence)
   }
 
   func makeRecognitionItem(verb: Verb, conjugationgroup: Conjugationgroup, readingIndex: Int, tables: [ConjugationTable]) -> QuizItem {
@@ -591,6 +619,32 @@ class Quiz {
         preconditionFailure("Quiz fixture references missing verb: \(spec.infinitiv)")
       }
       return makeRecognitionItem(verb: verb, conjugationgroup: spec.group, readingIndex: 0, tables: tables)
+    }
+  }
+
+  // Sentences for Phase 18 of the pedagogy plan, one per kind of frame, drafts included, with
+  // answers worth trying: one blank (kommst), the Perfekt's two (sind / gegangen), a separable
+  // verb's two in a main clause (fängt / an) and its one after weil (anfängt, where "fängt an" is
+  // wrong), the Sie Imperativ with Sie given (Nehmen), the du Imperativ (Komm), a Präteritum
+  // (war), a würde (würde / kommen), and a Konjunktiv I in reported speech (habe).
+  private func generateSentencesFixture() -> [QuizItem] {
+    let ids = [
+      "kommen.praesens.1",
+      "gehen.perfekt.1",
+      "anfangen.praesens.1",
+      "anfangen.praesens.2",
+      "nehmen.imperativ.1",
+      "kommen.imperativ.1",
+      "sein.praeteritum.1",
+      "kommen.futur_konjunktiv_ii.1",
+      "haben.konjunktiv_i.1",
+      "machen.perfekt.1"
+    ]
+    return ids.map { id in
+      guard let sentence = GapSentences.all.first(where: { $0.id == id }), let item = makeSentenceItem(sentence) else {
+        preconditionFailure("Quiz fixture references missing sentence: \(id)")
+      }
+      return item
     }
   }
 
@@ -990,6 +1044,9 @@ struct QuizScope {
   /// Name the Conjugation, which shows a conjugation and asks which verb and cell it is (Phase 17).
   var isRecognition = false
 
+  /// Sentences, which asks a conjugation in a short sentence (Phase 18).
+  var isSentences = false
+
   /// Only a default quiz posts, to the leaderboard of its level, as Josh decided on 2026-11-13: a
   /// score over a learner's own verbs or conjugationgroups, or over three questions, compares with
   /// nothing. Only its first round posts.
@@ -1005,7 +1062,7 @@ struct QuizScope {
   }
 
   private var isDefaultQuiz: Bool {
-    verbs == nil && custom == nil && recordSession == nil && !isVerbEssentials && !isRecognition && continues
+    verbs == nil && custom == nil && recordSession == nil && !isVerbEssentials && !isRecognition && !isSentences && continues
   }
 
   /// A Review or My Mistakes session's length is the number of items due or missed, when fewer
@@ -1105,6 +1162,8 @@ struct QuizItem: Identifiable {
   /// Set for a Name the Conjugation question, whose prompt is `correctAnswer` and whose answer is
   /// a verb and a cell rather than a conjugation (Phase 17 of the pedagogy plan).
   let recognition: RecognitionQuestion?
+  /// Set for a Sentences question, whose frame is the sentence (Phase 18).
+  let sentence: GapSentence?
   /// A missed question asked once more, a few questions later. It earns half points.
   let isReask: Bool
   /// The questions shown together on one screen, such as a verb's three key conjugations in Verb
@@ -1142,11 +1201,13 @@ struct QuizItem: Identifiable {
     readingIndex: Int = 0,
     isReask: Bool = false,
     stepID: UUID? = nil,
-    recognition: RecognitionQuestion? = nil
+    recognition: RecognitionQuestion? = nil,
+    sentence: GapSentence? = nil
   ) {
     self.isReask = isReask
     self.stepID = stepID
     self.recognition = recognition
+    self.sentence = sentence
     self.verb = verb
     self.conjugationgroup = conjugationgroup
     self.correctAnswer = correctAnswer
@@ -1204,7 +1265,8 @@ struct QuizItem: Identifiable {
       readingIndex: readingIndex,
       isReask: true,
       stepID: stepID,
-      recognition: recognition
+      recognition: recognition,
+      sentence: sentence
     )
   }
 
@@ -1263,6 +1325,9 @@ struct QuizItem: Identifiable {
     // A recognition question's one blank takes the infinitive.
     if recognition != nil {
       return AnswerFrame(segments: [.blank])
+    }
+    if let sentence {
+      return sentence.frame
     }
     let reading = verb.reading(at: readingIndex) ?? verb.primaryReading
     return AnswerFrame.quizFrame(

@@ -29,7 +29,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 12 | Done | 2026-11-14 | `554891b` | T3.2, T3.3 (the session) |
 | 13 | Done | 2026-11-14 | `c62062f` | T6.1, T6.6 (the leaderboard's place) |
 | 14 | Done | 2026-11-14 | `9a7056f` | T4.2, T4.3 |
-| 15 | Awaiting Josh | 2026-11-14 | | T5.1 |
+| 15 | Done | 2026-11-14 | `a324232` | T5.1 |
 | 16 | Not started | | | T5.2 |
 | 17 | Not started | | | T5.4 |
 | 18 | Not started | | | T5.5 |
@@ -1484,7 +1484,7 @@ line, and the prompted second attempt shares Phase 4's mechanism.
 
 ## Phase 15: Key Conjugations
 
-**Suggestions:** T5.1. **Depends on:** Phases 2 and 11. **Status:** Awaiting Josh.
+**Suggestions:** T5.1. **Depends on:** Phases 2 and 11. **Status:** Done.
 
 An exercise for strong and mixed verbs: given the infinitive, supply the third-person Präsens, the
 Präteritum, and the Perfekt with its auxiliary, as the Goethe-Institut's B1 list prints them

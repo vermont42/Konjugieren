@@ -34,7 +34,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 17 | Done | 2026-11-15 | `010e2dc` | T5.4 |
 | 18 | Partly done: the app, the check, and 117 reviewed sentences for the 25 most frequent verbs; about 625 sentences for the rest of the top 300 remain | 2026-11-15 | `9ab13cc` | T5.5 |
 | 19 | Done | 2026-11-15 | `81f3c6b` | T5.6 |
-| 20 | Awaiting Josh | 2026-11-15 | | T6.2 |
+| 20 | Done | 2026-11-15 | `2608a03` | T6.2 |
 | 21 | Not started | | | T5.7 |
 | 22 | Not started | | | T6.3 |
 | 23 | Not started | | | T6.6 (personal bests and achievements) |
@@ -2064,7 +2064,7 @@ tests pin the item data's integrity.
 
 ## Phase 20: Mastery
 
-**Suggestions:** T6.2. **Depends on:** Phases 5, 11, and 13. **Status:** Awaiting Josh.
+**Suggestions:** T6.2. **Depends on:** Phases 5, 11, and 13. **Status:** Done.
 
 Show mastery: the core verbs against the conjugationgroups of the current level, filling in as
 items move up the ladder. The report warns that progress displays are unproven for persistence,
@@ -2145,8 +2145,8 @@ screen.
   ("7 of 66 patterns · 1 of 50 verbs", since Advanced also asks kommen's Präteritum), the pattern
   cards through the Futurs and their "Every verb" tag, and ziehen's two rows. Not tried: VoiceOver
   by ear, large text sizes, and a record built by real days of practice.
-- **Josh has not yet judged it on a device**, which the phase requires. Whether the page reads well
-  at Advanced, where 66 patterns come before the verbs, is the question most worth his look.
+- **Josh tried it and asked for the commit** on 2026-11-15, which the phase's "judged it on a
+  device-sized screen" required.
 
 ## Phase 21: Speed Round
 

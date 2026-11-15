@@ -30,7 +30,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 13 | Done | 2026-11-14 | `c62062f` | T6.1, T6.6 (the leaderboard's place) |
 | 14 | Done | 2026-11-14 | `9a7056f` | T4.2, T4.3 |
 | 15 | Done | 2026-11-14 | `a324232` | T5.1 |
-| 16 | Awaiting Josh | 2026-11-15 | | T5.2 |
+| 16 | Done | 2026-11-15 | `bd0537e` | T5.2 |
 | 17 | Not started | | | T5.4 |
 | 18 | Not started | | | T5.5 |
 | 19 | Not started | | | T5.6 |
@@ -1580,7 +1580,7 @@ separable, inseparable, and sein-taking strong verbs.
 
 ## Phase 16: Ablaut Groups, One Then Mixed
 
-**Suggestions:** T5.2. **Depends on:** Phases 11 and 15. **Status:** Awaiting Josh.
+**Suggestions:** T5.2. **Depends on:** Phases 11 and 15. **Status:** Done.
 
 Work through one ablaut group, then mix it with groups already practiced. Browse Phase 16 gave
 each expanded ablaut group a bar with a 30-question Quiz; this phase adds the blocked-then-mixed

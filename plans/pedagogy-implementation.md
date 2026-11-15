@@ -35,7 +35,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 18 | Partly done: the app, the check, and 117 reviewed sentences for the 25 most frequent verbs; about 625 sentences for the rest of the top 300 remain | 2026-11-15 | `9ab13cc` | T5.5 |
 | 19 | Done | 2026-11-15 | `81f3c6b` | T5.6 |
 | 20 | Done | 2026-11-15 | `2608a03` | T6.2 |
-| 21 | Awaiting Josh | 2026-11-15 | | T5.7 |
+| 21 | Done | 2026-11-15 | `38d4496` | T5.7 |
 | 22 | Not started | | | T6.3 |
 | 23 | Not started | | | T6.6 (personal bests and achievements) |
 | 24 | Not started | | | T6.8 |
@@ -2150,7 +2150,7 @@ screen.
 
 ## Phase 21: Speed Round
 
-**Suggestions:** T5.7. **Depends on:** Phases 11 and 20. **Status:** Awaiting Josh.
+**Suggestions:** T5.7. **Depends on:** Phases 11 and 20. **Status:** Done.
 
 A speed round over items already mastered, the one place where the clock counts. It belongs to
 what Paul Nation calls the fluency strand: speed for material already accurate.
@@ -2241,6 +2241,7 @@ scoring.
 - **Found by looking.** The countdown read "1:00" then "59", since `formatIntTime` drops the minutes
   below one; it now uses `formatMinutesSeconds`. The locked row's German runs to five lines on an
   iPhone, since it says what mastered means; Josh may want it shorter.
+- **Josh asked for the commit** on 2026-11-15.
 
 ## Phase 22: A Daily Session and a Streak
 

@@ -66,6 +66,8 @@ enum AnalyticsName: String {
 /// from the same surface carry the same value. `docs/feature-architecture.md` says which values
 /// are sent today.
 enum AnalyticsSource: String, CaseIterable {
+  case ablautAlone
+  case ablautMixed
   case browse
   case control
   case custom

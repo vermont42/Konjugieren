@@ -8,6 +8,8 @@ struct LastQuizResult: Codable, Equatable {
   /// What was quizzed. A kind, not a title, so that the hub names it in the app's current
   /// language.
   enum Kind: String, Codable {
+    case ablautAlone
+    case ablautMixed
     case allVerbs
     case collection
     case custom
@@ -22,9 +24,9 @@ struct LastQuizResult: Codable, Equatable {
   static let storageKey = "lastQuizResult"
 
   let kind: Kind
-  /// The verb of a verb page's quiz, or the key of a collection's.
+  /// The verb of a verb page's quiz, or the key of a collection's or of a practiced ablaut group's.
   let subject: String?
-  /// Nil for Review and My Mistakes, which do not ask by level.
+  /// Nil for Review, My Mistakes, and an ablaut group's practice, which do not ask by level.
   let levelKey: String?
   let score: Int
   let correctCount: Int
@@ -52,7 +54,7 @@ struct LastQuizResult: Codable, Equatable {
     let kind = Kind(scope: quiz.scope)
     let subject: String?
     switch kind {
-    case .collection:
+    case .ablautAlone, .ablautMixed, .collection:
       subject = quiz.scope.collectionKey
     case .verbPage:
       subject = quiz.scope.verbs?.first?.infinitiv
@@ -62,7 +64,7 @@ struct LastQuizResult: Codable, Equatable {
     self.init(
       kind: kind,
       subject: subject,
-      level: quiz.scope.recordSession == nil ? quiz.level : nil,
+      level: quiz.scope.asksByLevel ? quiz.level : nil,
       score: quiz.score,
       correctCount: quiz.correctCount,
       secondAttemptCount: quiz.secondAttemptCount,
@@ -74,6 +76,10 @@ struct LastQuizResult: Codable, Equatable {
   /// The quiz's name on the hub: "All Verbs", "Strong Verbs Like singen", "fahren".
   var title: String {
     switch kind {
+    case .ablautAlone:
+      return ablautSession(.alone)?.title ?? L.AblautPractice.title
+    case .ablautMixed:
+      return ablautSession(.mixed)?.title ?? L.AblautPractice.title
     case .allVerbs:
       return L.Quiz.allVerbs
     case .collection:
@@ -94,6 +100,13 @@ struct LastQuizResult: Codable, Equatable {
       return subject.flatMap { Verb.verbs[$0]?.infinitiv.inUserRegion } ?? subject ?? L.Quiz.allVerbs
     }
   }
+
+  private func ablautSession(_ mode: AblautPracticeSession.Mode) -> AblautPracticeSession? {
+    guard case .ablautGroup(let exemplar) = subject.flatMap(VerbCollection.init(key:)) else {
+      return nil
+    }
+    return AblautPracticeSession(exemplar: exemplar, mode: mode)
+  }
 }
 
 extension LastQuizResult.Kind {
@@ -106,6 +119,13 @@ extension LastQuizResult.Kind {
         self = .mistakes
       case .review:
         self = .review
+      }
+    } else if let session = scope.ablautPractice {
+      switch session.mode {
+      case .alone:
+        self = .ablautAlone
+      case .mixed:
+        self = .ablautMixed
       }
     } else if scope.isVerbEssentials {
       self = .verbEssentials

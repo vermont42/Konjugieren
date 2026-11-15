@@ -11005,3 +11005,69 @@ conjugation belongs to fahren in the sense 'drive (a vehicle)'." It is Phase 14'
 diagnosis, firing exactly as built. fahren drives a car with haben and travels with sein, and the
 exercise asks one reading at a time. The same fact tripped my own first test, which assumed
 fahren's first reading took sein.
+
+## Ablaut Groups, Alone and Then Mixed (2026-11-15)
+
+Phase 16 of the pedagogy plan gave each ablaut group a practice of its own. The exercise is Verb
+Essentials, pointed at one group: fährt, fuhr, ist gefahren for five of the group's verbs. Then the
+same, mixed with verbs from groups the learner already knows. The support is one study, Pan et al.
+(2019), in which learners who practiced a pattern alone before mixing it did better than those who
+mixed from the start. Nobody has tested this on ablaut groups, so the plan calls it a bet.
+
+### The rule that met the data
+
+Josh had decided two days earlier that a group counts as known once half of its items have moved
+past the first box of the practice record. An item is a key conjugation, three to a verb. That
+reads well for singen, with eight verbs. It reads badly for bleiben, which has 125 verbs, nearly
+all of them prefixed derivatives that repeat the pattern of the first ten. Half of 375 items is
+188 right answers. Twelve groups have more than 45 verbs.
+
+I counted before building and asked. Josh chose to make a group its ten most frequent verbs, at
+every level. A group is then at most 30 key conjugations, and one round of five verbs answered
+right makes it known. The Families tab's older Quiz button still covers every verb of a group.
+
+The first simulator round then showed a hole in my own arithmetic. fahren drives with haben and
+travels with sein, so the record keeps fährt twice, once per reading. Counted by reading, fahren's
+group has 36 items, and a perfect round of 15 falls short of half. A round asks one reading per
+verb, and the vowel is the same in both, so a key conjugation now counts once per verb, in
+whichever reading it climbed. Two of my tests had the same blind spot and failed for it: dringen
+has two readings in the singen group, and einfahren two in fahren's.
+
+### Nothing to earn
+
+The plan left open when the mixed session opens for a group. Requiring the group itself to be
+known first would enforce the order the study used. Josh chose the other way: Mixed opens for any
+group as soon as one other group is known. That matches his earlier ruling on levels, that the
+learner chooses and nothing unlocks. Alone sits first on the card, which is as much order as the
+app imposes. For the mix itself he chose three of the group's verbs and two of the known groups',
+so that the session stays about the group the learner picked.
+
+The two known verbs are drawn one group at a time. Otherwise a known group of ten verbs would
+crowd out a known group of one, and the 18 single-verb groups (sein, essen, wissen) exist in this
+feature only as partners. One verb is not a pattern, so they offer no practice alone.
+
+### The hub's first destination was wrong
+
+The plan expected a row for this in the Quiz tab's Exercises section. My first version pushed the
+Families tab's Ablaut page, which already had the practice card in each expanded group. It cost
+nothing and it was wrong: that page opens with an article more than a screen long, so a learner
+who tapped a row to practice had to scroll past the history of the Indo-European vowel before
+finding a button. The row now opens a plain list of the 58 groups that have a pattern, ordered by
+use rather than by alphabet, with haben, geben, and kommen first and a seal on the groups known.
+The same card sits inside each row and in each group on the Ablaut page.
+
+### What an English speaker already knows
+
+Ordering by use puts the singen group early, and it is the friendliest of them. Its pattern,
+i, a, u before a nasal, is the one English kept almost intact: singen, sang, gesungen beside sing,
+sang, sung; trinken beside drink, drank, drunk; sinken beside sink; springen beside spring. Even
+dringen, to press forward, has an English cousin in throng. Jacob Grimm named the alternation
+Ablaut, "off-sound", in 1819, and these are the verbs he would have pointed at.
+
+### Tooling notes
+
+Two traps in driving the simulator. `axe type` sends ASCII only, and given übergibt it typed
+nothing and reported nothing, so Return fell on an empty field and the quiz did not move. The
+skill's pasteboard path types it. And on the iPad simulator `axe tap --id` fails outright on the
+accessibility tree ("found an array instead"), so I read the element's frame from `describe-ui`
+and tapped its centre.

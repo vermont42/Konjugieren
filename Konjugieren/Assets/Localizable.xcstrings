@@ -1403,6 +1403,294 @@
         }
       }
     },
+    "AblautPractice.alone" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Allein"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Alone"
+          }
+        }
+      }
+    },
+    "AblautPractice.anotherRound" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Noch eine Runde"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Another Round"
+          }
+        }
+      }
+    },
+    "AblautPractice.descriptionAll" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verb-Grundlagen mit den Verben dieser Gruppe."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verb Essentials with this group's verbs."
+          }
+        }
+      }
+    },
+    "AblautPractice.descriptionFrequent" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verb-Grundlagen mit den zehn häufigsten Verben dieser Gruppe."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verb Essentials with this group's ten most frequent verbs."
+          }
+        }
+      }
+    },
+    "AblautPractice.heading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dieses Muster üben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Practice This Pattern"
+          }
+        }
+      }
+    },
+    "AblautPractice.hubDescription" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eine Gruppe starker Verben allein, dann gemischt mit Gruppen, die du kennst"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "One group of strong verbs alone, then mixed with groups you know"
+          }
+        }
+      }
+    },
+    "AblautPractice.known" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bekannt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Known"
+          }
+        }
+      }
+    },
+    "AblautPractice.listIntro" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wähle eine Gruppe und übe sie allein, dann gemischt mit den Gruppen, die du kennst. Die meistgebrauchten stehen zuerst."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pick a group and practice it alone, then mixed with the groups you know. The most used come first."
+          }
+        }
+      }
+    },
+    "AblautPractice.mixed" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gemischt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mixed"
+          }
+        }
+      }
+    },
+    "AblautPractice.mixedLocked" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gemischt ist möglich, sobald du eine weitere Gruppe kennst. Eine Gruppe kennst du, sobald du die Hälfte ihrer Übung richtig beantwortet hast."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mixed opens once you know another group. You know a group once you have answered half of its practice right."
+          }
+        }
+      }
+    },
+    "AblautPractice.mixedTitle %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gemischt: %@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mixed: %@"
+          }
+        }
+      }
+    },
+    "AblautPractice.mixedWith %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Gemischt nimmt Verben der Gruppen hinzu, die du kennst: %@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mixed adds verbs of the groups you know: %@"
+          }
+        }
+      }
+    },
+    "AblautPractice.singleVerb" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ein Verb ist noch kein Muster, daher hat diese Gruppe keine eigene Übung. Ihr Verb kommt in die gemischte Übung anderer Gruppen, sobald du es kennst."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "One verb is not a pattern, so this group has no practice of its own. Its verb joins other groups' mixed practice once you know it."
+          }
+        }
+      }
+    },
+    "AblautPractice.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ablautgruppen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ablaut Groups"
+          }
+        }
+      }
+    },
+    "Accessibility.ablautPracticeAloneHint" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fragt je drei Konjugationen von bis zu fünf Verben dieser Gruppe ab."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asks three conjugations each of up to five of this group's verbs."
+          }
+        }
+      }
+    },
+    "Accessibility.ablautPracticeHubHint" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öffnet die Ablautgruppen. Jede Gruppe hat dort ihre Übung."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opens the ablaut groups, where each group has its practice."
+          }
+        }
+      }
+    },
+    "Accessibility.ablautPracticeMixedHint" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fragt je drei Konjugationen von Verben dieser Gruppe und der Gruppen ab, die du kennst."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asks three conjugations each of verbs of this group and of groups you know."
+          }
+        }
+      }
+    },
+    "Accessibility.ablautPracticeMoreHint" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fragt eine weitere Runde dieser Übung ab."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asks another round of this practice."
+          }
+        }
+      }
+    },
     "Accessibility.areIrregular" : {
       "localizations" : {
         "de" : {

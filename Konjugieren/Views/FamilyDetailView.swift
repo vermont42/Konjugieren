@@ -311,6 +311,10 @@ struct AblautGroupSection: View {
           .padding(.leading, 16)
           .padding(.bottom, Layout.defaultSpacing)
 
+        AblautPracticeCard(exemplar: group.exemplar)
+          .padding(.leading, 16)
+          .padding(.bottom, Layout.defaultSpacing)
+
         if sizeClass == .regular {
           LazyVGrid(columns: [GridItem(.adaptive(minimum: Layout.verbGridMinimum))], spacing: 0) {
             ForEach(group.verbs.sorted(by: sortOrder)) { verb in

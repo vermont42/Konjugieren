@@ -924,6 +924,13 @@ section, asks five strong or mixed verbs of the learner's band for er's Präsens
 Perfekt, one blank at a time, each graded and recorded as its own item. The interface does not
 use the term "principal parts".
 
+**Built on `main` 2026-11-15** by [Phase 16](pedagogy-implementation.md#phase-16-ablaut-groups-one-then-mixed)
+of the pedagogy plan: each ablaut group with more than one verb offers Verb Essentials over its ten
+most frequent verbs alone, and mixed, three of its verbs with two from the groups already known.
+A group is known once half of its key conjugations have left the first box of the practice record.
+It starts from each expanded group on the Families tab's Ablaut page and from an Ablaut Groups row
+in the Quiz tab's Exercises, which lists the groups by use.
+
 ### Tier 6: Rebuild Motivation Around Progress
 
 | Suggestion | Basis | Effort | Verdict |

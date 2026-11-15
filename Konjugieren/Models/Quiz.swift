@@ -373,7 +373,7 @@ class Quiz {
       return generateSlipsFixture()
     case "diagnoses":
       return generateDiagnosesFixture()
-    case "essentials" where scope.isVerbEssentials:
+    case "essentials" where scope.isVerbEssentials && scope.ablautPractice == nil:
       return generateVerbEssentialsFixture()
     default:
       break
@@ -381,6 +381,10 @@ class Quiz {
     #endif
 
     let verbs = scope.verbs ?? Self.defaultVerbs(for: level)
+    if let session = scope.ablautPractice {
+      return QuizDraw.ablautPracticeSteps(for: session, record: Current.practice.record, excluded: excluded, using: &randomSource)
+        .flatMap(makeStep)
+    }
     if scope.isVerbEssentials {
       return QuizDraw.verbEssentialsSteps(verbs: verbs, count: QuizScope.verbEssentialsVerbCount, excluded: excluded, using: &randomSource)
         .flatMap(makeStep)
@@ -759,7 +763,7 @@ class Quiz {
     announceQuizCompletion()
     let isFirstRound = roundCount == 1
     // The tip suggests another level, which a session drawn from the record does not ask by, and
-    // whose pool Verb Essentials does not ask.
+    // whose pool Verb Essentials does not ask, an ablaut group's included.
     if isFirstRound, scope.continues, scope.recordSession == nil, !scope.isVerbEssentials {
       ChangeLevelTip.quizCompleted.sendDonation()
     }
@@ -868,6 +872,9 @@ struct QuizScope {
   /// Verb Essentials, which asks each verb's three key conjugations together (Phase 15).
   var isVerbEssentials = false
 
+  /// Verb Essentials over an ablaut group, alone or mixed with the known groups (Phase 16).
+  var ablautPractice: AblautPracticeSession?
+
   /// Only a default quiz posts, to the leaderboard of its level, as Josh decided on 2026-11-13: a
   /// score over a learner's own verbs or conjugationgroups, or over three questions, compares with
   /// nothing. Only its first round posts.
@@ -884,9 +891,16 @@ struct QuizScope {
 
   /// A Review or My Mistakes session's length is the number of items due or missed, when fewer
   /// than ten, so its signals carry neither the questions asked nor the question reached: either
-  /// would tell how many answers were wrong, which Decision 5 of the pedagogy plan forbids.
+  /// would tell how many answers were wrong, which Decision 5 of the pedagogy plan forbids. A
+  /// mixed ablaut round can be short too, when the known groups hold few verbs, and which groups
+  /// are known comes from the learner's answers.
   var sendsQuestionCounts: Bool {
-    recordSession == nil
+    recordSession == nil && ablautPractice?.mode != .mixed
+  }
+
+  /// A Review, My Mistakes, or ablaut-group session asks the same whatever the level.
+  var asksByLevel: Bool {
+    recordSession == nil && ablautPractice == nil
   }
 
   /// A quiz whose verbs the learner did not list is balanced as the default quiz is (Phase 6).

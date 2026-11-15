@@ -106,6 +106,9 @@ struct QuizView: View {
       .navigationDestination(for: VerbCollectionRequest.self) { request in
         FamilyDetailView(family: .ablaut, collectionRequest: request) { verb in navigationPath.append(VerbDestination(verb: verb, source: .family)) }
       }
+      .navigationDestination(for: AblautPracticeDestination.self) { _ in
+        AblautPracticeListView()
+      }
       .navigationDestination(for: CustomQuizDestination.self) { destination in
         switch destination {
         case .ablautGroups:
@@ -116,7 +119,9 @@ struct QuizView: View {
       }
     }
     .environment(\.verbPagePush, VerbPagePush { navigationPath.append($0) })
-    .environment(\.isBeneathQuiz, true)
+    // Only while a question waits. The hub pushes the ablaut groups with no quiz running, and
+    // their practice must start from there.
+    .environment(\.isBeneathQuiz, quiz.isInProgress)
     .accessibilityAction(.magicTap) {
       if quiz.correction != nil {
         quiz.continueAfterCorrection()
@@ -743,8 +748,9 @@ struct QuizView: View {
     .frame(maxWidth: .infinity, alignment: .leading)
   }
 
-  /// Ways to practice beside the quiz: Verb Essentials (Phase 15 of the pedagogy plan), and the
-  /// exercises of later phases.
+  /// Ways to practice beside the quiz: Verb Essentials (Phase 15 of the pedagogy plan), the ablaut
+  /// groups' practice (Phase 16), which opens a list of the groups, and the exercises of later
+  /// phases.
   private var exercisesSection: some View {
     VStack(alignment: .leading, spacing: Layout.defaultSpacing) {
       Text(L.Quiz.exercises)
@@ -761,6 +767,18 @@ struct QuizView: View {
         isLarge: isLarge
       ) {
         quiz.start(scope: .verbEssentials())
+      }
+
+      QuizHubRow(
+        title: L.AblautPractice.title,
+        detail: L.AblautPractice.hubDescription,
+        systemImage: "waveform.path",
+        identifier: "quiz_ablaut_practice",
+        hint: L.Accessibility.ablautPracticeHubHint,
+        isLarge: isLarge,
+        trailingSystemImage: "chevron.right.circle.fill"
+      ) {
+        navigationPath.append(AblautPracticeDestination())
       }
     }
     .frame(maxWidth: .infinity, alignment: .leading)
@@ -961,6 +979,8 @@ private struct QuizHubRow: View {
   let identifier: String
   let hint: String
   var isLarge = false
+  /// A row that opens a page rather than starting a session shows a chevron.
+  var trailingSystemImage = "play.circle.fill"
   /// Nil for a row with nothing to start.
   let start: (() -> Void)?
 
@@ -1000,7 +1020,7 @@ private struct QuizHubRow: View {
       Spacer(minLength: 0)
 
       if start != nil {
-        Image(systemName: "play.circle.fill")
+        Image(systemName: trailingSystemImage)
           .font(isLarge ? .largeTitle : .title)
           .foregroundStyle(.customYellow)
           .accessibilityHidden(true)

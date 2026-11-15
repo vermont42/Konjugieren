@@ -68,6 +68,22 @@ enum L {
       String(localized: "Accessibility.verbEssentialsWrong")
     }
 
+    static var ablautPracticeAloneHint: String {
+      String(localized: "Accessibility.ablautPracticeAloneHint")
+    }
+
+    static var ablautPracticeHubHint: String {
+      String(localized: "Accessibility.ablautPracticeHubHint")
+    }
+
+    static var ablautPracticeMixedHint: String {
+      String(localized: "Accessibility.ablautPracticeMixedHint")
+    }
+
+    static var ablautPracticeMoreHint: String {
+      String(localized: "Accessibility.ablautPracticeMoreHint")
+    }
+
     static var quizQuitHint: String {
       String(localized: "Accessibility.quizQuitHint")
     }
@@ -1141,6 +1157,65 @@ enum L {
 
     static var title: String {
       String(localized: "VerbEssentials.title")
+    }
+  }
+
+  enum AblautPractice {
+    static var alone: String {
+      String(localized: "AblautPractice.alone")
+    }
+
+    /// The results' Ten More, which for an ablaut group's practice asks another round.
+    static var anotherRound: String {
+      String(localized: "AblautPractice.anotherRound")
+    }
+
+    static var descriptionAll: String {
+      String(localized: "AblautPractice.descriptionAll")
+    }
+
+    static var descriptionFrequent: String {
+      String(localized: "AblautPractice.descriptionFrequent")
+    }
+
+    static var heading: String {
+      String(localized: "AblautPractice.heading")
+    }
+
+    static var hubDescription: String {
+      String(localized: "AblautPractice.hubDescription")
+    }
+
+    static var known: String {
+      String(localized: "AblautPractice.known")
+    }
+
+    static var listIntro: String {
+      String(localized: "AblautPractice.listIntro")
+    }
+
+    static var mixed: String {
+      String(localized: "AblautPractice.mixed")
+    }
+
+    static var mixedLocked: String {
+      String(localized: "AblautPractice.mixedLocked")
+    }
+
+    static func mixedTitle(_ exemplar: String) -> String {
+      String(localized: "AblautPractice.mixedTitle \(exemplar)")
+    }
+
+    static func mixedWith(_ exemplars: String) -> String {
+      String(localized: "AblautPractice.mixedWith \(exemplars)")
+    }
+
+    static var singleVerb: String {
+      String(localized: "AblautPractice.singleVerb")
+    }
+
+    static var title: String {
+      String(localized: "AblautPractice.title")
     }
   }
 

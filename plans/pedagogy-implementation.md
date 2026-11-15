@@ -30,7 +30,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 13 | Done | 2026-11-14 | `c62062f` | T6.1, T6.6 (the leaderboard's place) |
 | 14 | Done | 2026-11-14 | `9a7056f` | T4.2, T4.3 |
 | 15 | Done | 2026-11-14 | `a324232` | T5.1 |
-| 16 | Not started | | | T5.2 |
+| 16 | Awaiting Josh | 2026-11-15 | | T5.2 |
 | 17 | Not started | | | T5.4 |
 | 18 | Not started | | | T5.5 |
 | 19 | Not started | | | T5.6 |
@@ -1580,7 +1580,7 @@ separable, inseparable, and sein-taking strong verbs.
 
 ## Phase 16: Ablaut Groups, One Then Mixed
 
-**Suggestions:** T5.2. **Depends on:** Phases 11 and 15. **Status:** Not started.
+**Suggestions:** T5.2. **Depends on:** Phases 11 and 15. **Status:** Awaiting Josh.
 
 Work through one ablaut group, then mix it with groups already practiced. Browse Phase 16 gave
 each expanded ablaut group a bar with a 30-question Quiz; this phase adds the blocked-then-mixed
@@ -1605,7 +1605,91 @@ which groups count as known and how the mix is drawn.
 
 **How it differed:**
 
-(To be written by the session that finishes this phase.)
+- **Josh decided on 2026-11-15**, asked before building: a group is its **ten most frequent
+  verbs**, at every level, for what its practice asks and for what "half of its items" counts
+  (over the level's band, and over every verb). Counted over every verb, bleiben's 125 verbs are
+  375 items and 188 right answers, and 12 groups have more than 45 verbs, nearly all rare prefixed
+  derivatives. And **Mixed opens for a group once another group is known**, whether or not the
+  group itself is (over requiring the group to be known too), in keeping with levels being chosen
+  and nothing unlocking.
+- **The mix's composition, the phase's Ask Josh (2026-11-15)**, asked once a kommen round on the
+  simulator had made kommen known and opened Mixed on geben: **three of a round's five verbs are
+  the group's own** and two the known groups' (over two and three, and over an even share for
+  every group). `QuizDraw.ablautMixGroupVerbCount`.
+- **Known, as built.** `AblautPracticeGroup.isKnown(in:)`: at least half of the group's key
+  conjugations past the first box. Decided in the session: a key conjugation counts **once per
+  verb**, in whichever asked reading it climbed. The record keeps fährt once for fahren's haben
+  reading and once for its sein reading, and counted by reading fahren's group has 36 items, so a
+  perfect round of 15 would fall short of the half Josh was told one round reaches. Nothing is
+  stored: it is computed from the record, so a wrong answer can make a group unknown again. Phase
+  11's ladder moves an item up only when it is due, so **a verb looked up today and answered right
+  today stays in the first box**, and a learner who reads a group's verbs before practicing them
+  needs a second round, or tomorrow. Not changed; the ladder is Josh's.
+- **Which verbs and readings.** Membership is the Ablaut page's (the primary reading's group),
+  the most frequent first. A member is asked only its readings that inflect by the group's
+  pattern: both of fahren's, and hängen's strong one. anhängen, whose strong reading is its
+  second, is on no group's page and so in no group's practice.
+- **The draws.** Alone: five of the group's verbs, the session's unasked ones first, so a group of
+  eight asks its other three in the next round, and a group of two makes a round of two. Mixed:
+  the two known verbs come one known group at a time, so that a known group of ten does not crowd
+  out a known group of one; whichever side is short leaves the rest to the other; shuffled.
+  `QuizDraw.verbEssentialsSteps` was split so that it also takes members whose readings are chosen.
+- **Single-verb groups.** All 18 offer no practice alone and are partners only. Their card on the
+  Ablaut page says why. They become known through any quiz, since nothing here asks them alone.
+- **Where it starts, decided in the session.** `AblautPracticeCard` in each expanded group of the
+  Families tab's Ablaut page, below the bar with Quiz and Share, since the report says "from the
+  Families tab". And an **Ablaut Groups** ("Ablautgruppen") row in the hub's Exercises, which the
+  first build pointed at the Ablaut page. That page opens with an article more than a screen long,
+  so the row now pushes `AblautPracticeListView`: the 58 groups with a pattern, **ordered by use**
+  (each group's most frequent verb: haben, geben, kommen, gehen), with the pattern's description,
+  a seal on the known ones, and the same card inside. The hub's row has a chevron rather than a
+  play symbol, since it starts nothing itself.
+- **`isBeneathQuiz` is now true only while a quiz is in progress.** It was true for everything the
+  Quiz tab's stack pushed, which would have hidden the cards' buttons on the list the hub pushes.
+  A page opened from a held correction is unchanged, since a quiz is in progress there.
+- **The sessions** are `QuizScope.ablautPractice(_:)` in a `QuizSheet`, titled "Ablaut Group:
+  kommen" or "Mixed: geben" ("Gemischt: geben"). The results offer **"Another Round"** ("Noch
+  eine Runde") in place of Five More Verbs, since a round can be fewer than five, and show no
+  level line. Never ranked, no due items, no level tip. The hub's Last Quiz row names the group
+  and keeps no level (`LastQuizResult.Kind.ablautAlone` and `.ablautMixed`).
+- **Analytics.** New `source` values `ablautAlone` and `ablautMixed` on the quiz signals, with the
+  group's `collection` key on `startQuiz`, as a collection's quiz sends. **A mixed session sends no
+  counts** (`QuizScope.sendsQuestionCounts`): its round can be short when the known groups hold
+  few verbs, and which groups are known comes from the learner's answers (Decision 5). Staged in
+  [`docs/privacy-policy-pending.md`](../docs/privacy-policy-pending.md) in both languages.
+- **VoiceOver.** The quiz is Verb Essentials and adds no state. The card's heading is a header,
+  each button has a hint, a closed Mixed is read as dimmed with its reason after it, and a known
+  group's row in the hub's list reads "kommen, Known, …". Nobody has listened to it yet.
+- **Not built.** No mark for a known group on the Ablaut page's collapsed rows (Phase 20 shows
+  mastery), no step from Alone's results into Mixed, and no fixture: the simulator rounds were
+  typed by a script that reads each question from the accessibility tree.
+- **Tests:** `AblautPracticeTests`, 30 functions. The group: ten most frequent, a small group
+  whole, every group of the Ablaut page, the 18 single-verb groups, a member's readings, and three
+  key conjugations a verb. Known: the half, a single verb's two of three, one round making a group
+  of ten known in either reading, both readings counting once, wrong answers and lookups not
+  counting, a wrong answer un-knowing, the known groups in order, and mix partners. The draws:
+  alone, a group of two, unasked verbs first, three and two, partners one group at a time, a short
+  side, unasked first on each side, and partners from the record. The scopes, the withheld counts,
+  and the last result's titles. Nested in `QuizTests`: a group practiced alone becoming known and
+  joining another group's mix, a wrong round leaving it unknown, another round's verbs, and both
+  sessions' signals and results. Run in English with `xcodebuild -testLanguage en`: 775 passed and
+  2 skipped (the environment-gated harnesses), 777 in all.
+- **Verified on the iPhone 17**, in dark mode. In German: the hub's Ablautgruppen row; the list
+  with haben, geben, and kommen first; kommen's card with Gemischt closed and its reason; a kommen
+  round alone, all fifteen blanks right (150, "Richtig: 15 / 15", "Noch eine Runde", no Stufe
+  line), after which kommen's row read "kommen, Bekannt" and geben's card "Gemischt nimmt Verben
+  der Gruppen hinzu, die du kennst: kommen"; a mixed geben round of ankommen, abgeben, begeben,
+  herauskommen, and übergeben, three of geben's and two of kommen's; the hub's "Letztes Quiz:
+  Gemischt: geben · heute"; and essen's card on the Families tab, which says one verb is not a
+  pattern. In English: kommen's card on the Ablaut page with its Known seal and Mixed closed.
+  **On the iPad Pro 11-inch (M5)**, in light mode and English: the hub with the row, the list with
+  stehen expanded, and stehen alone in its sheet, asking verstehen. Not tried: VoiceOver by ear,
+  the software keyboard, a group un-knowing on the device (unit-tested), Another Round from the
+  device (unit-tested), and a real day passing. The iPhone simulator's record now knows kommen.
+- **Seen, not changed.** The bar above the card counts verbs looked up ("0 of 75 looked up")
+  while the card counts verbs practiced, so a group can be Known with nothing looked up. And
+  `axe tap --id` fails on the iPad simulator's tree, and `axe type` types nothing for a word with
+  an umlaut; the journal entry has both workarounds.
 
 ## Phase 17: Recognition
 

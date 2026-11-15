@@ -53,8 +53,11 @@ struct ResultsView: View {
                 .font(.caption.monospacedDigit())
                 .accessibilityIdentifier("results_asked_again")
             }
-            Text(label: L.Quiz.level, value: quiz.level.localizedName)
-              .font(.caption)
+            // An ablaut group's practice asks the same at every level.
+            if quiz.scope.ablautPractice == nil {
+              Text(label: L.Quiz.level, value: quiz.level.localizedName)
+                .font(.caption)
+            }
             if settings.quizClock == .show {
               Text(label: L.Quiz.time, value: TimeFormatter.formatIntTime(quiz.elapsedSeconds))
                 .font(.caption.monospacedDigit())
@@ -71,12 +74,12 @@ struct ResultsView: View {
           Button {
             quiz.continueSession()
           } label: {
-            Label(quiz.scope.isVerbEssentials ? L.VerbEssentials.fiveMore : L.Quiz.tenMore, systemImage: "plus.circle.fill")
+            Label(continueLabel, systemImage: "plus.circle.fill")
           }
           .funButton()
           .frame(maxWidth: .infinity)
           .padding(.top, Layout.doubleDefaultSpacing)
-          .accessibilityHint(quiz.scope.isVerbEssentials ? L.Accessibility.verbEssentialsMoreHint : L.Accessibility.quizTenMoreHint)
+          .accessibilityHint(continueHint)
           .accessibilityIdentifier("results_ten_more")
         }
 
@@ -101,6 +104,22 @@ struct ResultsView: View {
         displayedScore = quiz.finalScore
       }
     }
+  }
+
+  // An ablaut group's round is as many verbs as the group and the known groups can give, which
+  // may be fewer than five, so its button promises a round rather than a number.
+  private var continueLabel: String {
+    if quiz.scope.ablautPractice != nil {
+      return L.AblautPractice.anotherRound
+    }
+    return quiz.scope.isVerbEssentials ? L.VerbEssentials.fiveMore : L.Quiz.tenMore
+  }
+
+  private var continueHint: String {
+    if quiz.scope.ablautPractice != nil {
+      return L.Accessibility.ablautPracticeMoreHint
+    }
+    return quiz.scope.isVerbEssentials ? L.Accessibility.verbEssentialsMoreHint : L.Accessibility.quizTenMoreHint
   }
 
   @ViewBuilder

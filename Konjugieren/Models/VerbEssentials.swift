@@ -11,7 +11,8 @@ extension QuizScope {
   /// second and third blanks come quickly (Josh, 2026-11-14).
   static let verbEssentialsVerbCount = 5
 
-  /// Nil asks the strong and mixed verbs of the learner's band. Phase 16 passes an ablaut group's.
+  /// Nil asks the strong and mixed verbs of the learner's band. An ablaut group's practice is
+  /// `ablautPractice(_:)`, which chooses the readings too.
   static func verbEssentials(_ verbs: [Verb]? = nil) -> QuizScope {
     QuizScope(
       verbs: verbs,
@@ -42,18 +43,47 @@ extension QuizDraw {
     excluded: Set<String> = [],
     using generator: inout some RandomNumberGenerator
   ) -> [[QuizDrawnQuestion]] {
-    let askedInfinitives = Set(excluded.compactMap { PracticeItem(key: $0)?.infinitiv })
-    let candidates: [(verb: Verb, readingIndices: [Int])] = verbs.compactMap { verb in
+    let members: [AblautPracticeGroup.Member] = verbs.compactMap { verb in
       let strong = verb.readings.indices.filter { index in
         verb.reading(at: index).map(isStrong) == true
       }
-      return strong.isEmpty ? nil : (verb, strong)
+      return strong.isEmpty ? nil : AblautPracticeGroup.Member(verb: verb, readingIndices: strong)
     }
-    let fresh = candidates.filter { !askedInfinitives.contains($0.verb.infinitiv) }.shuffled(using: &generator)
-    let asked = candidates.filter { askedInfinitives.contains($0.verb.infinitiv) }.shuffled(using: &generator)
-    return (fresh + asked).prefix(count).compactMap { candidate in
-      candidate.readingIndices.randomElement(using: &generator).map { verbEssentialsStep(verb: candidate.verb, readingIndex: $0) }
-    }
+    return verbEssentialsSteps(members: members, count: count, excluded: excluded, using: &generator)
+  }
+
+  /// A round over verbs whose askable readings are already chosen, as an ablaut group's are
+  /// (Phase 16).
+  static func verbEssentialsSteps(
+    members: [AblautPracticeGroup.Member],
+    count: Int,
+    excluded: Set<String> = [],
+    using generator: inout some RandomNumberGenerator
+  ) -> [[QuizDrawnQuestion]] {
+    freshFirst(members, asked: askedInfinitives(excluded), using: &generator)
+      .prefix(count)
+      .compactMap { step(for: $0, using: &generator) }
+  }
+
+  /// The verbs whose key conjugations a session has asked, from its asked items' keys.
+  static func askedInfinitives(_ excluded: Set<String>) -> Set<String> {
+    Set(excluded.compactMap { PracticeItem(key: $0)?.infinitiv })
+  }
+
+  /// The members shuffled, with those the session has asked after the rest.
+  static func freshFirst(
+    _ members: [AblautPracticeGroup.Member],
+    asked: Set<String>,
+    using generator: inout some RandomNumberGenerator
+  ) -> [AblautPracticeGroup.Member] {
+    let fresh = members.filter { !asked.contains($0.verb.infinitiv) }.shuffled(using: &generator)
+    let repeated = members.filter { asked.contains($0.verb.infinitiv) }.shuffled(using: &generator)
+    return fresh + repeated
+  }
+
+  /// A member's step, through one of its readings at random.
+  static func step(for member: AblautPracticeGroup.Member, using generator: inout some RandomNumberGenerator) -> [QuizDrawnQuestion]? {
+    member.readingIndices.randomElement(using: &generator).map { verbEssentialsStep(verb: member.verb, readingIndex: $0) }
   }
 }
 

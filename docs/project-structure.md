@@ -28,6 +28,7 @@ Konjugieren/
 ├── Models/
 │   ├── Ablaut.swift            # Single ablaut: replacement + target conjugationgroups
 │   ├── AblautGroup.swift       # Named collection of ablauts for a verb pattern
+│   ├── AblautPractice.swift    # Ablaut-group practice (pedagogy Phase 16): AblautPracticeGroup (a group's ten most frequent verbs with their readings of the group, its key conjugations, isKnown: half past the first box of the practice record, mixPartners, practicedAloneByUse), AblautPracticeSession (alone or mixed), QuizScope.ablautPractice, and QuizDraw.ablautPracticeSteps and ablautMixSteps (three verbs of the group, two of the known groups)
 │   ├── AblautGroupInfo.swift   # Identifiable struct with localized ablaut-group descriptions
 │   ├── AblautGroupParser.swift # XMLParser delegate that parses AblautGroups.xml
 │   ├── AblautGroups.xml        # 76 ablaut pattern definitions
@@ -70,7 +71,7 @@ Konjugieren/
 │   ├── InfoMedia.swift         # Enum: .photo or .sfSymbol media for Info rows
 │   ├── KeyConjugations.swift   # Verb.keyConjugations (steht auf · stand auf · ist aufgestanden, always shown with no label) and Verb.shareText, what the verb page's share button sends
 │   ├── KonjugierenTips.swift   # TipKit tips (e.g., ChangeLevelTip, shown in Settings after a quiz; the verb page's RedLettersTip and ScrollToBottomTip)
-│   ├── LastQuizResult.swift    # The last quiz's results for the Quiz tab's hub (pedagogy Phase 13): a kind (LastQuizResult.Kind(scope:)), a verb or collection key, the level, counts, score, and date; kept by PracticeStore on the device and never sent
+│   ├── LastQuizResult.swift    # The last quiz's results for the Quiz tab's hub (pedagogy Phase 13): a kind (LastQuizResult.Kind(scope:)), a verb or collection key (an ablaut group's for its practice, alone or mixed), the level, counts, score, and date; kept by PracticeStore on the device and never sent
 │   ├── LearnerVerbStore.swift  # Current.learnerVerbs: @Observable view of Shared/LearnerVerbs.swift that records opens and stars, saves each change to the App Group's defaults, and answers in verbs (starred, recent, My Verbs)
 │   ├── LanguageModelService.swift      # Protocol for on-device AI error explanation and tutoring
 │   ├── LanguageModelServiceDummy.swift # No-op stub for tests/unsupported devices
@@ -104,7 +105,7 @@ Konjugieren/
 │   ├── Reading.swift           # One sense of a verb: gloss, family, auxiliary, prefixes
 │   ├── Verb.swift              # Lemma: frequency, icon, and an ordered list of readings
 │   ├── VerbCollection.swift    # Collections (Phase 16 of the browse plan): the 100 most frequent verbs, the modal verbs, the verbs that take sein (by region), and each ablaut group; keys for `list/<key>` links, the share text, viewCollection, and QuizScope.collection
-│   ├── VerbEssentials.swift    # Verb Essentials (pedagogy Phase 15): QuizScope.verbEssentials (five strong or mixed verbs, three key conjugations each), QuizDraw.verbEssentialsStep and verbEssentialsSteps, Quiz.currentStepRange and essentialsRows (a step's rows: answered, current, pending, given), and Quiz.reaskPlacement (a missed blank returns after the next verb's step)
+│   ├── VerbEssentials.swift    # Verb Essentials (pedagogy Phase 15): QuizScope.verbEssentials (five strong or mixed verbs, three key conjugations each), QuizDraw.verbEssentialsStep and verbEssentialsSteps (over verbs, or over members whose readings are already chosen, as ablaut practice passes), Quiz.currentStepRange and essentialsRows (a step's rows: answered, current, pending, given), and Quiz.reaskPlacement (a missed blank returns after the next verb's step)
 │   ├── VerbDraw.swift          # The widget's verb of the day and every random verb: the top 1,000 weighted toward strong and unprefixed verbs, and My Verbs every third day (random: one draw in three)
 │   ├── VerbParser.swift        # XMLParser delegate for Verbs.xml, incl. the `in` marker grammar
 │   ├── VerbVisit.swift         # VerbDestination (a verb page to push, with its analytics source and the cells a search marked) and VerbVisit (one viewVerbView/leaveVerbView pair)
@@ -160,11 +161,13 @@ Konjugieren/
 │   ├── UttererReal.swift       # AVSpeechSynthesizer implementation
 │   └── WidgetSnapshotWriter.swift  # Generates and persists the 10-day widget bundle from VerbDraw, keeping the verb the widget shows today
 └── Views/
+    ├── AblautPracticeCard.swift # An ablaut group's practice (pedagogy Phase 16): Alone and Mixed, each a Verb Essentials sheet, a line naming the known groups Mixed adds or saying why it is closed, a Known seal, and for a single-verb group why it has no practice
+    ├── AblautPracticeListView.swift # Pushed by the Quiz tab's Ablaut Groups row: the 58 groups with a pattern, the most used first, each expanding onto its AblautPracticeCard; defines AblautPracticeDestination
     ├── AnswerFrameView.swift   # Draws an AnswerFrame on one line with a text field per blank; Return fills the next empty blank, then submits; the letter keys follow the cursor; each field's VoiceOver label reads the whole frame, after an optional spokenPrefix
     ├── CustomQuizView.swift    # Pushed from the Quiz tab's Custom segment: CustomQuizEditor (conjugationgroup and verb-set rows, each with "Set by Your Level"), CustomQuizAblautGroupList, CustomQuizDestination, and CustomQuizSummaryCard (shared with a practice set's sheet)
     ├── ErrorExplainerView.swift # AI-generated explanations for conjugation errors
     ├── FamilyBrowseView.swift  # The Families tab: a Collections section (rows; three cards on iPad) above the verb families, prefixes, and ablaut groups; opens a `list/<key>` link's collection
-    ├── FamilyDetailView.swift  # Detail view for a single family/prefix/ablaut category; an Alphabetical/Frequency control orders the verbs within each section; an expanded ablaut group starts with its VerbCollectionBar and checks the verbs looked up, and a link opens the page with its group expanded
+    ├── FamilyDetailView.swift  # Detail view for a single family/prefix/ablaut category; an Alphabetical/Frequency control orders the verbs within each section; an expanded ablaut group starts with its VerbCollectionBar and its AblautPracticeCard (pedagogy Phase 16) and checks the verbs looked up, and a link opens the page with its group expanded
     ├── GameView.swift          # Space-invaders-like verb conjugation game
     ├── GermanLetterKeyRow.swift # ä ö ü ß keys shown above the keyboard, for the search field and the quiz's answer frame (a keyboard toolbar there, inserting at the cursor of the focused blank)
     ├── InfoBrowseView.swift    # List of Info articles (dedication, history, etc.)
@@ -173,9 +176,9 @@ Konjugieren/
     ├── OnboardingView.swift    # Multi-page onboarding shown on first launch
     ├── PracticeSetView.swift   # A shared practice set's sheet (what it asks, Start, Keep as My Custom Quiz, or "Practice Set Not Found") and PracticeSetQRView, the full-screen code a teacher projects
     ├── QuizCorrectionView.swift # The held correction of a wrong quiz answer: both answers with the differing letters marked, links to the verb's page and its ablaut group or family, and Continue; defines the isBeneathQuiz environment value
-    ├── QuizView.swift          # Quiz gameplay: questions, timer, answer input; the Quiz tab's practice hub (pedagogy Phase 13: a yellow symbol for the scope, its name and description, the All Verbs/My Verbs/Custom picker, tiles for questions, minutes, and the level as a menu, My Verbs' verbs as chips, the custom quiz's summary with Choose or Change and the Share menu of link or QR code, Start, then From Your Practice with Review, My Mistakes, and LastQuizResultRow, then Exercises with Verb Essentials, each row a QuizHubRow, and a small View Leaderboard button while signed in to Game Center, scaled up on iPad); with a sheetScope, a quiz in a sheet (QuizSheet: "Test me on this verb" or a collection's quiz), which starts as it appears and closes when the quiz ends; its own navigation stack pushes the pages a held correction links to, over the waiting quiz
+    ├── QuizView.swift          # Quiz gameplay: questions, timer, answer input; the Quiz tab's practice hub (pedagogy Phase 13: a yellow symbol for the scope, its name and description, the All Verbs/My Verbs/Custom picker, tiles for questions, minutes, and the level as a menu, My Verbs' verbs as chips, the custom quiz's summary with Choose or Change and the Share menu of link or QR code, Start, then From Your Practice with Review, My Mistakes, and LastQuizResultRow, then Exercises with Verb Essentials, each row a QuizHubRow, and a small View Leaderboard button while signed in to Game Center, scaled up on iPad); with a sheetScope, a quiz in a sheet (QuizSheet: "Test me on this verb" or a collection's quiz), which starts as it appears and closes when the quiz ends; its own navigation stack pushes the pages a held correction links to, over the waiting quiz, and the hub's Ablaut Groups row pushes AblautPracticeListView (pedagogy Phase 16); isBeneathQuiz is set only while a quiz is in progress
     ├── RelatedVerbsView.swift  # The verb page's Related Verbs card (chips in a FlowLayout, which can also center its rows, as the Quiz tab's My Verbs chips do), RelatedVerbListView (every verb of one relation), and VerbPagePush, the environment action by which a verb page pushes onto whichever tab's stack shows it
-    ├── ResultsView.swift       # Modal showing quiz results and Ten More, or for Verb Essentials Five More Verbs; the leaderboard button moved to the Quiz tab's hub in pedagogy Phase 13
+    ├── ResultsView.swift       # Modal showing quiz results and Ten More, or for Verb Essentials Five More Verbs, or for an ablaut group's practice Another Round (and no level line); the leaderboard button moved to the Quiz tab's hub in pedagogy Phase 13
     ├── ReviewCardView.swift    # The review card above the verb list: a strong verb looked up or practiced days ago, one reading's key conjugations hidden until a tap reveals them; a second tap opens the page, and ✕ dismisses
     ├── RichTextView.swift      # Renders RichTextBlock content with styling
     ├── SettingsView.swift      # Settings UI with segmented pickers
@@ -265,6 +268,7 @@ KonjugierenTests/
 │   ├── QuizVerbMixTests.swift  # The default quiz's verbs over 40 seeds per level: each level's band, half strong, two core verbs, a prefixed verb, one to three rare derivatives, and no provisional count in a band
 │   ├── QuizTests.swift         # Quiz logic, scoring, and timer pause/resume tests; scopes (My Verbs, three questions on a verb page, ranking, the source on start, quit, and completion)
 │   ├── StandardVariantsTests.swift # Every row Josh accepted in the Phase 1 variant audit, and the ones he rejected
+│   ├── AblautPracticeTests.swift # Ablaut-group practice (pedagogy Phase 16): a group's ten most frequent verbs and their readings of the group, the 18 single-verb groups, known at half of the key conjugations (either reading, lookups and wrong answers not counting), mix partners, the draws (alone; mixed three and two, partners one group at a time, a short side, unasked verbs first), the scopes, and the last result; nested in QuizTests, a group practiced alone becoming known and joining another's mix, another round, and the signals
 │   ├── SearchReportTests.swift # SearchTracker lifecycle, finishSearch parameters, and the no-typed-text guarantee
 │   ├── ReviewScheduleTests.swift # The ladder alone: due the next morning, the boxes, snoozes, a quiz answer moving up only when due, a miss starting over, a new item's first answer
 │   ├── RelatedVerbsTests.swift # Verb.root through nested prefixes, verbs built on a root, ablaut relatives (one per root), family pages, per-reading relations, [Verb].sorted(by:)

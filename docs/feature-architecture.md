@@ -126,6 +126,7 @@ quiz in a sheet shows) and `collectionKey` (which `startQuiz` names).
 | `.recordSession(.review)` | Due items of the practice record; a pattern asks a weak verb of the level's band (pedagogy Phase 12) | Up to 10, then Ten More while any are due | `review` | No |
 | `.recordSession(.mistakes)` | Items whose last answer was wrong, likewise | Up to 10, then Ten More while any remain | `mistakes` | No |
 | `.verbEssentials(_:)` | Five strong or mixed verbs of the level's band, or of the verbs passed, each asked its three key conjugations (pedagogy Phase 15) | 15, then five more verbs | `verbEssentials` | No |
+| `.ablautPractice(_:)` | Verb Essentials over an ablaut group's ten most frequent verbs, alone, or mixed: three of the group's verbs and two of the known groups' (pedagogy Phase 16), in a sheet | Up to 15, then another round | `ablautAlone` or `ablautMixed` | No |
 
 A quiz whose rounds are ten (`QuizScope.continues`) draws as above. The verb page's three
 questions ask distinct cells and no participle, from the learner's level, since every Perfekt
@@ -143,7 +144,7 @@ and a line about what it asks, the All Verbs / My Verbs / Custom picker, three t
 questions, "2–3 Minutes", and the level, whose tile is a menu that sets `Settings.quizLevel`, the
 same setting as Settings' level picker), for My Verbs its verbs as chips (up to twelve), and Start.
 Below Start, "From Your Practice" holds Review, My Mistakes, and the last quiz's results
-(`LastQuizResultRow`), then "Exercises" holds Verb Essentials (pedagogy Phase 15), and last of all, while signed in to Game Center, a small "View Leaderboard"
+(`LastQuizResultRow`), then "Exercises" holds Verb Essentials (pedagogy Phase 15) and Ablaut Groups (pedagogy Phase 16), a row with a chevron that pushes `AblautPracticeListView`, and last of all, while signed in to Game Center, a small "View Leaderboard"
 button that opens the current level's board. The results screen no longer has one (T6.6). In the
 regular size class the whole composition scales up. Start is disabled while My Verbs is empty.
 Custom shows its summary and Choose or Change in place of the tiles (see The Custom Quiz).
@@ -153,7 +154,7 @@ Group's defaults, written by `Quiz.finishQuiz` at each round's results, so after
 describes the session so far. A quit quiz writes nothing. It stores a kind (all verbs, My Verbs,
 custom, practice set, collection, verb page, Review, My Mistakes) and a verb or collection key
 rather than a title, so the hub names it in the current language (Verb Essentials too, since
-pedagogy Phase 15); the level (none for Review and My Mistakes); the counts right, right on a second try, and asked; the score; and the date. It is never
+pedagogy Phase 15, and an ablaut group's practice, alone or mixed, since Phase 16); the level (none for Review, My Mistakes, and an ablaut group's practice); the counts right, right on a second try, and asked; the score; and the date. It is never
 sent, and Reset Practice forgets it.
 
 "Test me on this verb" presents `QuizView(sheetScope:)` with its own `Quiz`, so a quiz in
@@ -528,7 +529,51 @@ or in code (Decisions Already Made). It starts from a row in the hub's "Exercise
   `verbEssentials`, and `completeQuiz` sends its `questionCount` (15 a round), which depends on no
   answer. The fixture `KONJUGIEREN_QUIZ_FIXTURE essentials` asks fahren as travel, aufstehen,
   verstehen, denken, and gehen, when Verb Essentials is started.
-- **For Phase 16.** `QuizScope.verbEssentials(_:)` takes any verbs, such as an ablaut group's.
+- **Ablaut groups.** An ablaut group's practice is Verb Essentials through
+  `QuizScope.ablautPractice(_:)`, which chooses the readings as well as the verbs (below).
+
+### Ablaut-Group Practice
+
+Built 2026-11-15 in Phase 16 of [`plans/pedagogy-implementation.md`](../plans/pedagogy-implementation.md)
+(T5.2): work through one ablaut group, then mix it with the groups already known. The support is
+Pan et al. (2019), where practicing a pattern alone before mixing it did better; for ablaut groups
+as such there is no study, so it is a bet. The practice is Verb Essentials, since the vowel changes
+a group shares are what it asks.
+
+- **A group is its ten most frequent verbs** (`AblautPracticeGroup.verbLimit`, Josh, 2026-11-15),
+  at every level, or all of them when it has fewer. Counted over every verb, bleiben's 125 would
+  need 188 right answers to be known. Membership is the Ablaut page's (the primary reading's
+  group), and a member is asked only its readings that inflect by the group's pattern: both of
+  fahren's, and hängen's strong one, never hängte. `AblautPracticeGroup.all` is built once, in the
+  Ablaut page's order.
+- **Known.** A group is known once at least half of its key conjugations have moved past the first
+  box of the practice record (`isKnown(in:)`, Josh, 2026-11-13). A key conjugation counts once per
+  verb, in whichever asked reading it climbed, so a group of ten verbs is 30 and one round of five
+  answered right makes it known. Nothing is stored: it is computed from the record, so a wrong
+  answer, which sends an item back to the first box, can make a group unknown again. A right
+  answer moves an item up only when it is due (the ladder's rule), so a verb looked up today and
+  answered right today stays in the first box until tomorrow.
+- **Two sessions** (`AblautPracticeSession`), each in a `QuizSheet`. **Alone** draws five of the
+  group's verbs, the session's unasked ones first. **Mixed** draws three of the group's verbs and
+  two of the known groups' (`QuizDraw.ablautMixGroupVerbCount`, Josh, 2026-11-15), shuffled, taking
+  one verb from each known group in turn so that a group of ten does not crowd out a group of one;
+  whichever side is short leaves the rest to the other. Mixed opens for a group as soon as another
+  group is known, whether or not the group itself is (Josh, 2026-11-15: nothing is earned).
+- **Single-verb groups.** The 18 groups of one verb offer no practice alone, since one verb is not
+  a pattern (Josh, 2026-11-13). They join other groups' mixes once known, which takes two of their
+  verb's three key conjugations, climbed in any quiz.
+- **Where it starts.** `AblautPracticeCard` sits in each expanded group of the Families tab's Ablaut
+  page, below the `VerbCollectionBar`: Alone, Mixed, and a line naming the known groups Mixed adds
+  or saying why it is closed. The hub's Ablaut Groups row pushes `AblautPracticeListView`, the 58
+  groups with a pattern ordered by use (each group's most frequent verb: haben, geben, kommen),
+  with a seal on the known ones, each expanding onto the same card. The Ablaut page was not pushed
+  from the hub, since its article is more than a screen long. `isBeneathQuiz` is now true only
+  while a quiz is in progress, so the cards work on pages the hub pushes.
+- The results offer "Another Round" ("Noch eine Runde"), since a round may be fewer than five
+  verbs, and show no level, which changes nothing here. Never ranked, no due items mixed in, no
+  level tip. `startQuiz` carries the group's collection key. A mixed session sends neither
+  `questionCount` nor `questionNumber`: its round can be short when the known groups hold few
+  verbs, and which groups are known comes from the learner's answers (Decision 5).
 
 ### The Quiz Clock
 
@@ -1330,7 +1375,7 @@ Counts and durations go out in bands (`AnalyticsBand`), never as exact numbers.
 | `tapResetPractice` | None | When Reset Practice in Settings is confirmed (pedagogy Phase 11). Nothing about the record is sent |
 | `tapRevealReviewCard` | None | When a tap reveals the review card's key conjugations, once per card (Phase 15). A page opened from the card then sends `viewVerbView` with `source` `reviewCard` |
 | `tapViewLeaderboard` | `source` (`tab`) from the Quiz tab's hub; none from Settings | When View Leaderboard on the Quiz tab's hub (pedagogy Phase 13) or View Leaderboards in Settings is tapped. The results screen's button, which sent nothing, is gone |
-| `startQuiz`, `quitQuiz`, `completeQuiz` | `source` (`tab`, `myVerbs`, `verbPage`, `list`, `custom`); `level` (`beginner`, `elementary`, `intermediate`, `advanced`); `quitQuiz` also `questionNumber` and `duration` (`0-3s`, `3-15s`, `15-40s`, `40s-2m`, `2m+`); `completeQuiz` also `questionCount` (`10`, `20`, `30`, …, or `3`); `startQuiz` alone also carries `collection` for a collection's quiz (Phase 16), or for a custom quiz over a collection, and `customChoice` (`conjugationgroups`, `verbs`, `both`) for a custom quiz (pedagogy Phase 9). A Review or My Mistakes session (`review`, `mistakes`, pedagogy Phase 12) sends neither `questionCount` nor `questionNumber`, since either would tell how many items were due or missed | When a quiz starts, is quit, or reaches its results (`source` since Phase 13). Without it, three-question quizzes would inflate the completion rate of the default quiz. `level` replaced `difficulty` (`regular`, `ridiculous`), which only `quitQuiz` and `completeQuiz` sent, in Phase 5 of the pedagogy plan, and `startQuiz` gained it then (M1). Since Phase 7, `completeQuiz` is sent at each round's results, and its `questionCount` says how many rounds' questions the session has asked, so Ten More shows as `20` and `30`. `duration` (M3) is wall-clock time from the start to the quit, background included. `questionNumber` counts re-asks |
+| `startQuiz`, `quitQuiz`, `completeQuiz` | `source` (`tab`, `myVerbs`, `verbPage`, `list`, `custom`); `level` (`beginner`, `elementary`, `intermediate`, `advanced`); `quitQuiz` also `questionNumber` and `duration` (`0-3s`, `3-15s`, `15-40s`, `40s-2m`, `2m+`); `completeQuiz` also `questionCount` (`10`, `20`, `30`, …, or `3`); `startQuiz` alone also carries `collection` for a collection's quiz (Phase 16), or for a custom quiz over a collection, and `customChoice` (`conjugationgroups`, `verbs`, `both`) for a custom quiz (pedagogy Phase 9). A Review or My Mistakes session (`review`, `mistakes`, pedagogy Phase 12) sends neither `questionCount` nor `questionNumber`, since either would tell how many items were due or missed, and neither does a mixed ablaut session (`ablautMixed`, pedagogy Phase 16); an ablaut group's practice carries `collection` | When a quiz starts, is quit, or reaches its results (`source` since Phase 13). Without it, three-question quizzes would inflate the completion rate of the default quiz. `level` replaced `difficulty` (`regular`, `ridiculous`), which only `quitQuiz` and `completeQuiz` sent, in Phase 5 of the pedagogy plan, and `startQuiz` gained it then (M1). Since Phase 7, `completeQuiz` is sent at each round's results, and its `questionCount` says how many rounds' questions the session has asked, so Ten More shows as `20` and `30`. `duration` (M3) is wall-clock time from the start to the quit, background included. `questionNumber` counts re-asks |
 | `abandonQuiz` | `source`, `level`, `questionNumber` (not for `review` or `mistakes`) | At launch, once for each quiz the last run left in progress (M2, Phase 7 of the pedagogy plan): the app was closed or killed during a question. `QuizAbandonment` keeps an entry per running quiz in `GetterSetter`, written at the start and at each question and removed at a quit or the results. A quiz left at its results is not abandoned |
 
 `VerbVisit` models one stretch of a verb page on screen, and `SearchTracker` and `SearchReport`
@@ -1366,6 +1411,8 @@ My Verbs scope, the list it was begun on.
 
 | Value | Sent today? | Meaning |
 |---|---|---|
+| `ablautAlone` | Yes | The quiz signals only: an ablaut group practiced alone (pedagogy Phase 16) |
+| `ablautMixed` | Yes | The quiz signals only: an ablaut group practiced mixed with the known groups (pedagogy Phase 16) |
 | `browse` | Yes | A row of the verb list with the search field empty |
 | `control` | Yes | The Random Verb control in Control Center; for `finishSearch`, the Find a Verb control |
 | `custom` | Yes | The quiz signals only: a custom quiz from the Quiz tab (pedagogy Phase 9) |

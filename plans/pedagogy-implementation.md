@@ -31,7 +31,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 14 | Done | 2026-11-14 | `9a7056f` | T4.2, T4.3 |
 | 15 | Done | 2026-11-14 | `a324232` | T5.1 |
 | 16 | Done | 2026-11-15 | `bd0537e` | T5.2 |
-| 17 | Awaiting Josh | 2026-11-15 | | T5.4 |
+| 17 | Done | 2026-11-15 | `010e2dc` | T5.4 |
 | 18 | Not started | | | T5.5 |
 | 19 | Not started | | | T5.6 |
 | 20 | Not started | | | T6.2 |
@@ -1693,7 +1693,7 @@ which groups count as known and how the mix is drawn.
 
 ## Phase 17: Recognition
 
-**Suggestions:** T5.4. **Depends on:** Phase 3. **Status:** Awaiting Josh.
+**Suggestions:** T5.4. **Depends on:** Phase 3. **Status:** Done.
 
 Show a conjugation, such as käme, and ask for the infinitive and the conjugationgroup. This is the
 direction a reader needs, and the report's principle 11 says practice develops in the direction

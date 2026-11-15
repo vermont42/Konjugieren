@@ -57,6 +57,11 @@ dependency that turned out wrong, or a piece deferred to a later phase. A later 
 that note more than on the phase text above it. Read the notes of every phase this one depends on
 before starting.
 
+**Subagents run on Sonnet.** No phase requires subagents, but a session may delegate work to them,
+such as drafting a large batch of Phase 18's sentences or Phase 19's items. Any subagent it
+launches uses Sonnet (`model: "sonnet"` on the Agent tool), as Josh decided on 2026-11-15. The
+session still runs the machine check and reads the drafts itself before Josh reviews them.
+
 **Ask Josh when a verdict does not settle a question.** Most phases list such questions under
 **Ask Josh**. Do not guess at them. Ask before building the part that depends on the answer, and
 record the answer and its date in **How it differed**.

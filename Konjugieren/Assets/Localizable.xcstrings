@@ -1839,6 +1839,102 @@
         }
       }
     },
+    "Accessibility.verbEssentialsMoreHint" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fragt je drei Konjugationen von fünf weiteren starken Verben ab."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asks three conjugations each of five more strong verbs."
+          }
+        }
+      }
+    },
+    "Accessibility.verbEssentialsNotYet" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "noch nicht gefragt"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "not yet asked"
+          }
+        }
+      }
+    },
+    "Accessibility.verbEssentialsRight" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "richtig"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "right"
+          }
+        }
+      }
+    },
+    "Accessibility.verbEssentialsRightSecondTry" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "richtig im zweiten Versuch"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "right on the second try"
+          }
+        }
+      }
+    },
+    "Accessibility.verbEssentialsStartHint" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fragt je drei Konjugationen von fünf starken Verben ab."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Asks three conjugations each of five strong verbs."
+          }
+        }
+      }
+    },
+    "Accessibility.verbEssentialsWrong" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "falsch"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "wrong"
+          }
+        }
+      }
+    },
     "All %lld tests complete." : {
 
     },
@@ -6518,6 +6614,22 @@
         }
       }
     },
+    "Quiz.exercises" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Übungen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exercises"
+          }
+        }
+      }
+    },
     "Quiz.firstTry" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -8841,6 +8953,54 @@
                 }
               }
             }
+          }
+        }
+      }
+    },
+    "VerbEssentials.description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fünf starke Verben, je drei Konjugationen: fährt · fuhr · ist gefahren"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Five strong verbs, three conjugations each: fährt · fuhr · ist gefahren"
+          }
+        }
+      }
+    },
+    "VerbEssentials.fiveMore" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fünf weitere Verben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Five More Verbs"
+          }
+        }
+      }
+    },
+    "VerbEssentials.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verb-Grundlagen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Verb Essentials"
           }
         }
       }

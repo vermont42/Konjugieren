@@ -166,8 +166,19 @@ struct QuizView: View {
     }
   }
 
+  // A Verb Essentials verb shows its three rows, with the answer field in the current one. The
+  // rows before and after the field are separate children around it, so that the field keeps its
+  // place in the hierarchy, and the keyboard its focus, as it moves down the rows.
   @ViewBuilder
   private func quizContent(question: QuizItem) -> some View {
+    let essentialsRows = quiz.essentialsRows
+    let currentRowIndex = essentialsRows?.firstIndex { row in
+      if case .current = row.content {
+        return true
+      }
+      return false
+    }
+    let currentRow = currentRowIndex.flatMap { essentialsRows?[$0] }
     VStack(spacing: Layout.doubleDefaultSpacing) {
       VStack(alignment: .leading, spacing: Layout.defaultSpacing) {
         if question.isReask {
@@ -188,11 +199,13 @@ struct QuizView: View {
           .foregroundStyle(.secondary)
           .englishPronunciation()
 
-        labeledRow(L.Quiz.conjugationgroup) {
-          Text(verbatim: question.displayName(lang: settings.conjugationgroupLang))
-            .foregroundStyle(.customForeground)
-            .fixedSize(horizontal: false, vertical: true)
-            .germanPronunciation(forReal: settings.conjugationgroupLang == .german)
+        if essentialsRows == nil {
+          labeledRow(L.Quiz.conjugationgroup) {
+            Text(verbatim: question.displayName(lang: settings.conjugationgroupLang))
+              .foregroundStyle(.customForeground)
+              .fixedSize(horizontal: false, vertical: true)
+              .germanPronunciation(forReal: settings.conjugationgroupLang == .german)
+          }
         }
 
         HStack {
@@ -202,6 +215,12 @@ struct QuizView: View {
           if settings.quizClock == .show {
             Text(label: L.Quiz.elapsed, value: quiz.elapsedText)
               .font(.caption.monospacedDigit())
+          }
+        }
+
+        if let essentialsRows, let currentRowIndex {
+          ForEach(essentialsRows.prefix(currentRowIndex)) { row in
+            VerbEssentialsRowView(row: row, frame: question.answerFrame, lang: settings.conjugationgroupLang)
           }
         }
 
@@ -229,13 +248,19 @@ struct QuizView: View {
           .accessibilityIdentifier("quiz_preferred_spelling")
         }
 
+        if let currentRow {
+          VerbEssentialsRowLabel(conjugationgroup: currentRow.conjugationgroup, lang: settings.conjugationgroupLang)
+            .accessibilityHidden(true)
+        }
+
         AnswerFrameView(
           frame: question.answerFrame,
           blanks: $answerBlanks,
           focusedBlank: $focusedBlank,
           accessibilityFocusedBlank: $accessibilityFocusedBlank,
           identifier: "quiz_answer_field",
-          returnAlwaysSubmits: quiz.correction != nil
+          returnAlwaysSubmits: quiz.correction != nil,
+          spokenPrefix: currentRow?.conjugationgroup.displayName(lang: settings.conjugationgroupLang)
         ) {
           if quiz.correction != nil {
             quiz.continueAfterCorrection()
@@ -277,6 +302,12 @@ struct QuizView: View {
           //   ErrorExplainerView(context: correction.errorContext)
           //     .id(correction.errorContext)
           // }
+        }
+
+        if let essentialsRows, let currentRowIndex {
+          ForEach(essentialsRows.dropFirst(currentRowIndex + 1)) { row in
+            VerbEssentialsRowView(row: row, frame: question.answerFrame, lang: settings.conjugationgroupLang)
+          }
         }
       }
       .konjCard()
@@ -376,11 +407,14 @@ struct QuizView: View {
     }
   }
 
-  /// A Review or My Mistakes session names itself in the tab's bar, since its questions look like
-  /// any quiz's.
+  /// A Review, My Mistakes, or Verb Essentials session names itself in the tab's bar, since its
+  /// questions look like any quiz's.
   private var tabSessionTitle: String? {
     guard sheetScope == nil, quiz.isInProgress || quiz.shouldShowResults else {
       return nil
+    }
+    if quiz.scope.isVerbEssentials {
+      return L.VerbEssentials.title
     }
     return quiz.scope.recordSession?.title
   }
@@ -400,7 +434,8 @@ struct QuizView: View {
   }
 
   /// The practice hub (Phase 13 of the pedagogy plan): what a session is, how long it takes, the
-  /// level, Start, what the record has due or missed, the last result, and the leaderboard last.
+  /// level, Start, what the record has due or missed, the last result, the exercises beside the
+  /// quiz, and the leaderboard last.
   private var startScreen: some View {
     GeometryReader { geometry in
       ScrollView {
@@ -451,6 +486,8 @@ struct QuizView: View {
           }
 
           practiceSection
+
+          exercisesSection
 
           if Current.gameCenter.isAuthenticated {
             leaderboardButton
@@ -687,18 +724,43 @@ struct QuizView: View {
         .accessibilityAddTraits(.isHeader)
 
       ForEach([QuizRecordSession.review, .mistakes], id: \.self) { session in
-        QuizRecordSessionRow(
-          session: session,
-          count: session.askableCount(from: Current.practice),
-          daysUntilNextDue: Current.practice.daysUntilNextDue(),
-          isLarge: isLarge
-        ) {
-          quiz.start(scope: .recordSession(session))
-        }
+        let count = session.askableCount(from: Current.practice)
+        QuizHubRow(
+          title: session.title,
+          detail: session.hubDetail(count: count, daysUntilNextDue: Current.practice.daysUntilNextDue()),
+          systemImage: session.hubSystemImage,
+          identifier: session.hubIdentifier,
+          hint: session.hubHint,
+          isLarge: isLarge,
+          start: count > 0 ? { quiz.start(scope: .recordSession(session)) } : nil
+        )
       }
 
       if let lastResult = Current.practice.lastResult {
         LastQuizResultRow(result: lastResult, isLarge: isLarge)
+      }
+    }
+    .frame(maxWidth: .infinity, alignment: .leading)
+  }
+
+  /// Ways to practice beside the quiz: Verb Essentials (Phase 15 of the pedagogy plan), and the
+  /// exercises of later phases.
+  private var exercisesSection: some View {
+    VStack(alignment: .leading, spacing: Layout.defaultSpacing) {
+      Text(L.Quiz.exercises)
+        .font(isLarge ? .title3.bold() : .headline)
+        .foregroundStyle(.customForeground)
+        .accessibilityAddTraits(.isHeader)
+
+      QuizHubRow(
+        title: L.VerbEssentials.title,
+        detail: L.VerbEssentials.description,
+        systemImage: "square.3.layers.3d",
+        identifier: "quiz_verb_essentials",
+        hint: L.Accessibility.verbEssentialsStartHint,
+        isLarge: isLarge
+      ) {
+        quiz.start(scope: .verbEssentials())
       }
     }
     .frame(maxWidth: .infinity, alignment: .leading)
@@ -889,26 +951,30 @@ private struct LastQuizResultRow: View {
   }
 }
 
-/// One of the record's sessions on the Quiz tab: a button that starts it while it has questions,
-/// and otherwise a line saying why it has none.
-private struct QuizRecordSessionRow: View {
-  let session: QuizRecordSession
-  let count: Int
-  let daysUntilNextDue: Int?
+/// A row of the Quiz tab's hub: a button that starts a session while it has questions, and
+/// otherwise a line saying why it has none.
+private struct QuizHubRow: View {
+  let title: String
+  let detail: String
+  let systemImage: String
+  /// Ends in `_button` while the row starts something, and in `_empty` otherwise.
+  let identifier: String
+  let hint: String
   var isLarge = false
-  let start: () -> Void
+  /// Nil for a row with nothing to start.
+  let start: (() -> Void)?
 
   var body: some View {
-    if count > 0 {
+    if let start {
       Button(action: start) {
         content
       }
       .buttonStyle(.plain)
       .accessibilityHint(hint)
-      .accessibilityIdentifier("quiz_\(identifier)_button")
+      .accessibilityIdentifier("\(identifier)_button")
     } else {
       content
-        .accessibilityIdentifier("quiz_\(identifier)_empty")
+        .accessibilityIdentifier("\(identifier)_empty")
     }
   }
 
@@ -921,7 +987,7 @@ private struct QuizRecordSessionRow: View {
         .accessibilityHidden(true)
 
       VStack(alignment: .leading, spacing: 2) {
-        Text(session.title)
+        Text(title)
           .font(isLarge ? .title3.bold() : .headline)
           .foregroundStyle(.customForeground)
         // Color.secondary, not .secondary, which inside a Button takes the app's red tint.
@@ -933,7 +999,7 @@ private struct QuizRecordSessionRow: View {
 
       Spacer(minLength: 0)
 
-      if count > 0 {
+      if start != nil {
         Image(systemName: "play.circle.fill")
           .font(isLarge ? .largeTitle : .title)
           .foregroundStyle(.customYellow)
@@ -950,9 +1016,12 @@ private struct QuizRecordSessionRow: View {
     .contentShape(RoundedRectangle(cornerRadius: 16))
     .accessibilityElement(children: .combine)
   }
+}
 
-  private var detail: String {
-    switch session {
+/// What a record session's row on the hub says, shows, and is called.
+private extension QuizRecordSession {
+  func hubDetail(count: Int, daysUntilNextDue: Int?) -> String {
+    switch self {
     case .mistakes:
       return count > 0 ? L.PracticeSession.mistakesCount(count) : L.PracticeSession.mistakesEmpty
     case .review:
@@ -963,8 +1032,8 @@ private struct QuizRecordSessionRow: View {
     }
   }
 
-  private var hint: String {
-    switch session {
+  var hubHint: String {
+    switch self {
     case .mistakes:
       return L.Accessibility.mistakesStartHint
     case .review:
@@ -972,8 +1041,8 @@ private struct QuizRecordSessionRow: View {
     }
   }
 
-  private var systemImage: String {
-    switch session {
+  var hubSystemImage: String {
+    switch self {
     case .mistakes:
       return "arrow.uturn.backward.circle"
     case .review:
@@ -981,12 +1050,12 @@ private struct QuizRecordSessionRow: View {
     }
   }
 
-  private var identifier: String {
-    switch session {
+  var hubIdentifier: String {
+    switch self {
     case .mistakes:
-      return "mistakes"
+      return "quiz_mistakes"
     case .review:
-      return "review"
+      return "quiz_review"
     }
   }
 }

@@ -71,12 +71,12 @@ struct ResultsView: View {
           Button {
             quiz.continueSession()
           } label: {
-            Label(L.Quiz.tenMore, systemImage: "plus.circle.fill")
+            Label(quiz.scope.isVerbEssentials ? L.VerbEssentials.fiveMore : L.Quiz.tenMore, systemImage: "plus.circle.fill")
           }
           .funButton()
           .frame(maxWidth: .infinity)
           .padding(.top, Layout.doubleDefaultSpacing)
-          .accessibilityHint(L.Accessibility.quizTenMoreHint)
+          .accessibilityHint(quiz.scope.isVerbEssentials ? L.Accessibility.verbEssentialsMoreHint : L.Accessibility.quizTenMoreHint)
           .accessibilityIdentifier("results_ten_more")
         }
 

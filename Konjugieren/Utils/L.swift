@@ -44,6 +44,30 @@ enum L {
       String(localized: "Accessibility.reviewStartHint")
     }
 
+    static var verbEssentialsStartHint: String {
+      String(localized: "Accessibility.verbEssentialsStartHint")
+    }
+
+    static var verbEssentialsMoreHint: String {
+      String(localized: "Accessibility.verbEssentialsMoreHint")
+    }
+
+    static var verbEssentialsNotYet: String {
+      String(localized: "Accessibility.verbEssentialsNotYet")
+    }
+
+    static var verbEssentialsRight: String {
+      String(localized: "Accessibility.verbEssentialsRight")
+    }
+
+    static var verbEssentialsRightSecondTry: String {
+      String(localized: "Accessibility.verbEssentialsRightSecondTry")
+    }
+
+    static var verbEssentialsWrong: String {
+      String(localized: "Accessibility.verbEssentialsWrong")
+    }
+
     static var quizQuitHint: String {
       String(localized: "Accessibility.quizQuitHint")
     }
@@ -982,6 +1006,10 @@ enum L {
       String(localized: "Quiz.progress")
     }
 
+    static var exercises: String {
+      String(localized: "Quiz.exercises")
+    }
+
     static var elapsed: String {
       String(localized: "Quiz.elapsed")
     }
@@ -1098,6 +1126,21 @@ enum L {
 
     static func reviewNextDue(_ days: Int) -> String {
       String(localized: "PracticeSession.reviewNextDue.\(days)")
+    }
+  }
+
+  enum VerbEssentials {
+    static var description: String {
+      String(localized: "VerbEssentials.description")
+    }
+
+    /// The results' Ten More, which for Verb Essentials asks five more verbs.
+    static var fiveMore: String {
+      String(localized: "VerbEssentials.fiveMore")
+    }
+
+    static var title: String {
+      String(localized: "VerbEssentials.title")
     }
   }
 

@@ -918,6 +918,12 @@ map from conjugation to infinitive now ships in the app, generated at build time
 ([Phase 5](browse-and-verb-implementation.md#phase-5-the-conjugation-map-as-a-build-product)), and
 `CorpusFormsDumpTests` is retired.
 
+**Built on `main` 2026-11-14** by [Phase 15](pedagogy-implementation.md#phase-15-key-conjugations)
+of the pedagogy plan: Verb Essentials ("Verb-Grundlagen"), from the Quiz tab's new Exercises
+section, asks five strong or mixed verbs of the learner's band for er's Präsens, Präteritum, and
+Perfekt, one blank at a time, each graded and recorded as its own item. The interface does not
+use the term "principal parts".
+
 ### Tier 6: Rebuild Motivation Around Progress
 
 | Suggestion | Basis | Effort | Verdict |

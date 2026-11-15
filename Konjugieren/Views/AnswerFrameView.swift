@@ -16,6 +16,9 @@ struct AnswerFrameView: View {
   let identifier: String
   /// While a wrong answer is held, Return continues from any blank, empty or not.
   var returnAlwaysSubmits = false
+  /// What VoiceOver reads before the frame, such as the conjugationgroup of a Verb Essentials row,
+  /// which the screen shows above the field rather than in the frame.
+  var spokenPrefix: String?
   let onSubmit: () -> Void
   @State private var selections: [Int: TextSelection] = [:]
 
@@ -95,7 +98,8 @@ struct AnswerFrameView: View {
       }
   }
 
-  /// The frame as VoiceOver reads it: "ihr, blank", or "blank, Sie, blank. Blank 1 of 2."
+  /// The frame as VoiceOver reads it: "ihr, blank", "blank, Sie, blank. Blank 1 of 2.", or with a
+  /// prefix, "Präteritum Indikativ, er, blank."
   private func spokenPrompt(blankIndex: Int) -> String {
     let parts: [String] = frame.segments.compactMap { segment in
       switch segment {
@@ -109,7 +113,7 @@ struct AnswerFrameView: View {
         return nil
       }
     }
-    let prompt = parts.joined(separator: ", ")
+    let prompt = ((spokenPrefix.map { [$0] } ?? []) + parts).joined(separator: ", ")
     guard frame.blankCount > 1 else {
       return prompt
     }

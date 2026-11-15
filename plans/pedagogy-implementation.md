@@ -29,7 +29,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 12 | Done | 2026-11-14 | `554891b` | T3.2, T3.3 (the session) |
 | 13 | Done | 2026-11-14 | `c62062f` | T6.1, T6.6 (the leaderboard's place) |
 | 14 | Done | 2026-11-14 | `9a7056f` | T4.2, T4.3 |
-| 15 | Not started | | | T5.1 |
+| 15 | Awaiting Josh | 2026-11-14 | | T5.1 |
 | 16 | Not started | | | T5.2 |
 | 17 | Not started | | | T5.4 |
 | 18 | Not started | | | T5.5 |
@@ -1484,7 +1484,7 @@ line, and the prompted second attempt shares Phase 4's mechanism.
 
 ## Phase 15: Key Conjugations
 
-**Suggestions:** T5.1. **Depends on:** Phases 2 and 11. **Status:** Not started.
+**Suggestions:** T5.1. **Depends on:** Phases 2 and 11. **Status:** Awaiting Josh.
 
 An exercise for strong and mixed verbs: given the infinitive, supply the third-person Präsens, the
 Präteritum, and the Perfekt with its auxiliary, as the Goethe-Institut's B1 list prints them
@@ -1507,7 +1507,76 @@ separable, inseparable, and sein-taking strong verbs.
 
 **How it differed:**
 
-(To be written by the session that finishes this phase.)
+- **Josh decided on 2026-11-14**, from mockups, before anything was built: the blanks are graded
+  **one at a time**, all three rows on screen and Return grading the current one (over filling all
+  three and checking them together); a round is **five verbs**, fifteen blanks (over four, and over
+  ten); the German name is **"Verb-Grundlagen"** (over "Verbgrundlagen"); and it starts from a
+  new **"Exercises"** ("Übungen") section of the hub, below From Your Practice (over a third row in
+  From Your Practice), where Phases 16 to 21 can add their rows.
+- **One blank, one question.** A verb is three `QuizItem`s sharing a new `QuizItem.stepID`, so
+  every quiz mechanism applies per blank without change: Phase 4's slip and Phase 14's diagnosis
+  earn one more try at half points, a held correction sits under its row, a right answer with
+  digraphs shows its spelling, and each answer records its own key conjugation through
+  `PracticeItem.exercised`, which already mapped er's three cells to the three stems. Phase 2's
+  frame is reused as is, as one blank per row (`er [ ]`), rather than grown into a three-blank
+  frame; the rows are `VerbEssentialsRowView`s around the one `AnswerFrameView`.
+- **The field stays put in the hierarchy.** The rows before the field and the rows after it are
+  separate children around it, so the field keeps its identity, and the keyboard its focus, as it
+  moves down a row. Phase 2 found that a rebuilt field loses focus. The diagnosis line and a held
+  correction sit under the field, above the rows still to come.
+- **Re-asks, decided in the session.** Josh's re-ask once (T3.1) holds, by step: a missed blank
+  returns after the next verb as a step of its own, its other two rows given as hints (fährt ·
+  [ ] · ist gefahren), and a second miss in the same verb joins that step. Placing it three
+  questions later, as elsewhere, would have dropped it among another verb's blanks.
+- **What it asks, decided in the session.** The strong and mixed verbs of the level's band, one
+  strong reading each at random (anhängen is asked as hing an, never anhängte), distinct within a
+  session until the band runs out. The level's pool does not apply, so an Elementary learner is
+  asked Präteritum key conjugations that the default quiz keeps for sein, haben, and the modals.
+  Each row is labeled with its conjugationgroup in the chosen language, in place of the card's
+  Conjugationgroup line. The results offer **"Five More Verbs"** ("Fünf weitere Verben") in place
+  of Ten More. Never ranked, no due items mixed in, no level tip.
+- **For Phase 16.** `QuizScope.verbEssentials(_:)` takes any verbs, so an ablaut group's can be
+  passed. Nothing on the verb page or the Families tab offers it yet.
+- **The hub's rows** became one `QuizHubRow`, which Review, My Mistakes, and Verb Essentials share;
+  the old `QuizRecordSessionRow`'s session-specific text moved to a private extension, and the
+  accessibility identifiers are unchanged.
+- **Analytics.** A new `source` value, `verbEssentials`, on the quiz signals. `completeQuiz` keeps
+  its `questionCount` (15 a round), since a round's length depends on no answer. Staged in
+  [`docs/privacy-policy-pending.md`](../docs/privacy-policy-pending.md) in both languages, with
+  the bullet's "a round of ten questions" becoming "a round of questions" and the section 6
+  sentence naming Verb Essentials among those that post no score.
+- **VoiceOver.** The verb is announced at a step's first blank only. Each field's label begins with
+  its row's conjugationgroup ("Präteritum Indikativ, er, blank"), through a new
+  `AnswerFrameView.spokenPrefix`, and each other row reads as one element ("Präsens Indikativ, er
+  fährt, right"; "Perfekt Indikativ, er, not yet asked"). Nobody has listened to it yet.
+- **A new fixture**, `KONJUGIEREN_QUIZ_FIXTURE essentials`, used only when Verb Essentials is
+  started: fahren as travel, aufstehen, verstehen, denken, and gehen, with wrong answers worth
+  typing in the comment on `Quiz.generateVerbEssentialsFixture()`.
+- **Tests:** `VerbEssentialsTests`, 14 functions: a step's cells and items; each blank's answers
+  for aufstehen in both word orders, verstehen, fahren in both readings (hat gefahren, ist
+  gefahren), gehen, and denken; the draw (distinct strong verbs of the band, weak verbs never, a
+  mixed-reading verb's strong reading, asked verbs last); the scope; and re-ask placement. Nested
+  in `QuizTests`: a round's steps and rows, each blank recorded alone, a re-ask step with its other
+  rows given, a diagnosed blank's half points, Five More's new verbs, and the signals, last result,
+  and absent score. Run in English with `xcodebuild -testLanguage en`: 745 passed and 2 skipped
+  (the environment-gated harnesses), 747 in all.
+- **Verified on the iPhone 17**, in dark mode. In German: the hub's Übungen section and its row;
+  the fixture's fahren, typed faehrt (right, shown fährt with its red umlaut and a check), then
+  fahrte (the weak-verb diagnosis under the Präteritum row), then fahrt (the held correction under
+  its row, with the Perfekt row still below and the re-ask's diamond after aufstehen's dots); the
+  re-ask step ("Noch einmal gefragt", fährt and ist gefahren given); and results of 145, "Richtig:
+  14 / 15", "Noch einmal gefragt: 1 / 1", and "Fünf weitere Verben". In English: the hub with "Last
+  Quiz: Verb Essentials · Elementary · today", and hat gefahren for fahren as travel, which Phase
+  14 names as the other reading's ("That conjugation belongs to fahren in the sense 'drive (a
+  vehicle)'"). **On the iPad Pro 11-inch (M5)**, in light mode and English: the hub with Exercises
+  just below the fold, and aufstehen's rows with a held Perfekt correction (hat aufgestanden for ist
+  aufgestanden). Not tried: VoiceOver by ear, the software keyboard (whether the field's move
+  between rows bounces it), the Live Activity, and Five More from the device (unit-tested). The
+  fixture default was removed from both simulators afterward.
+- **Seen, not changed.** Starting any quiz from the hub does not focus the answer field, so a
+  hardware keyboard's first keystrokes go nowhere until the field is tapped. A sheet's quiz does
+  focus it. And the card's red wrong-answer border is a toggle, so it stays lit from one wrong
+  answer until the next.
 
 ## Phase 16: Ablaut Groups, One Then Mixed
 

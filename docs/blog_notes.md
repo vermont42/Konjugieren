@@ -10958,3 +10958,50 @@ showed every class firing in German, with the repairs adding up to 65 points and
 Driving the fixture by script went wrong at question five. Each wrong final answer inserts a re-ask
 three questions later, so a script that answers by position drifts. Repairing every question with
 the right answer instead kept the order fixed, and it exercised the half-points path as well.
+
+## Verb Essentials: Three Blanks, One at a Time (2026-11-14)
+
+Phase 15 of the pedagogy plan built the exercise the Goethe-Institut's B1 list implies: given
+fahren, supply fährt, fuhr, and ist gefahren. The plan forbids the textbook's name for these, so
+the exercise is Verb Essentials, or Verb-Grundlagen in German, a name Josh chose over the closed
+compound Verbgrundlagen.
+
+### Two shapes, one machine
+
+The plan said only that each blank is graded alone and recorded alone. That allowed two shapes.
+One fills all three blanks and checks them together, the way the Goethe list reads. The other
+grades each blank on Return while all three rows stay on screen. I mocked both, and Josh chose the
+second, mostly for what it reuses. The quiz already knew how to give a slip one more try at half
+points, how to name a diagnosed error, how to hold a correction, and how to ask a missed question
+again. A three-blank check would have needed every one of those rebuilt for several wrong answers
+at once. Treated as three ordinary questions that share a screen, a verb gets all of them for free.
+So the whole exercise rests on one new field, `QuizItem.stepID`, which the three questions of a
+verb share.
+
+The practice record needed nothing. Phase 11 had already decided that a strong verb's Präsens,
+Präteritum, and Perfekt questions each exercise one of its key conjugations, and er's cells are
+exactly those three. Each blank lands on its own item without a line of new mapping code.
+
+### Keeping the keyboard
+
+Phase 2 had learned that a text field rebuilt by SwiftUI loses its focus, and with it the
+keyboard. A field that moves down a row each time looked like exactly that problem. The answer was
+structural. The rows before the field and the rows after it are two separate lists placed around
+the one field, so as the field moves visually from row to row it never moves in the view hierarchy.
+SwiftUI identifies a view by its place among its siblings, and the field's place never changes.
+
+### Where a re-ask goes
+
+A missed question normally returns three questions later. Here that would drop fuhr into the
+middle of the next verb's three blanks. So a missed blank waits for the next verb to finish, then
+returns as a step of its own, with the verb's other two conjugations shown as hints. A second miss
+in the same verb joins the first. On the simulator it read well: "Noch einmal gefragt", fährt
+given, a blank, ist gefahren given.
+
+### A nice collision with Phase 14
+
+Typing hat gefahren for fahren in the sense "travel" produced a line I had not planned for: "That
+conjugation belongs to fahren in the sense 'drive (a vehicle)'." It is Phase 14's two-reading
+diagnosis, firing exactly as built. fahren drives a car with haben and travels with sein, and the
+exercise asks one reading at a time. The same fact tripped my own first test, which assumed
+fahren's first reading took sein.

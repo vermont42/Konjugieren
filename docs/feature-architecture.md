@@ -125,6 +125,7 @@ quiz in a sheet shows) and `collectionKey` (which `startQuiz` names).
 | `PracticeSet.scope(source:)` | A shared practice set's verb set, or its level's band, in a sheet (pedagogy Phase 10) | 10, then Ten More | `sharedLink` or `qrCode` | No |
 | `.recordSession(.review)` | Due items of the practice record; a pattern asks a weak verb of the level's band (pedagogy Phase 12) | Up to 10, then Ten More while any are due | `review` | No |
 | `.recordSession(.mistakes)` | Items whose last answer was wrong, likewise | Up to 10, then Ten More while any remain | `mistakes` | No |
+| `.verbEssentials(_:)` | Five strong or mixed verbs of the level's band, or of the verbs passed, each asked its three key conjugations (pedagogy Phase 15) | 15, then five more verbs | `verbEssentials` | No |
 
 A quiz whose rounds are ten (`QuizScope.continues`) draws as above. The verb page's three
 questions ask distinct cells and no participle, from the learner's level, since every Perfekt
@@ -142,7 +143,7 @@ and a line about what it asks, the All Verbs / My Verbs / Custom picker, three t
 questions, "2–3 Minutes", and the level, whose tile is a menu that sets `Settings.quizLevel`, the
 same setting as Settings' level picker), for My Verbs its verbs as chips (up to twelve), and Start.
 Below Start, "From Your Practice" holds Review, My Mistakes, and the last quiz's results
-(`LastQuizResultRow`), and last of all, while signed in to Game Center, a small "View Leaderboard"
+(`LastQuizResultRow`), then "Exercises" holds Verb Essentials (pedagogy Phase 15), and last of all, while signed in to Game Center, a small "View Leaderboard"
 button that opens the current level's board. The results screen no longer has one (T6.6). In the
 regular size class the whole composition scales up. Start is disabled while My Verbs is empty.
 Custom shows its summary and Choose or Change in place of the tiles (see The Custom Quiz).
@@ -151,8 +152,8 @@ Custom shows its summary and Choose or Change in place of the tiles (see The Cus
 Group's defaults, written by `Quiz.finishQuiz` at each round's results, so after Ten More it
 describes the session so far. A quit quiz writes nothing. It stores a kind (all verbs, My Verbs,
 custom, practice set, collection, verb page, Review, My Mistakes) and a verb or collection key
-rather than a title, so the hub names it in the current language; the level (none for Review and My
-Mistakes); the counts right, right on a second try, and asked; the score; and the date. It is never
+rather than a title, so the hub names it in the current language (Verb Essentials too, since
+pedagogy Phase 15); the level (none for Review and My Mistakes); the counts right, right on a second try, and asked; the score; and the date. It is never
 sent, and Reset Practice forgets it.
 
 "Test me on this verb" presents `QuizView(sheetScope:)` with its own `Quiz`, so a quiz in
@@ -417,6 +418,9 @@ attempt. The round ends when `currentIndex` passes the last item, re-asks includ
 
 The dot row wraps (`FlowLayout`), since rounds and re-asks can take it past thirty dots.
 
+Verb Essentials (below) places its re-asks differently, by step: `Quiz.reaskPlacement` returns
+the position and the step for every re-ask, and for a question shown alone it is the rule above.
+
 ### The Practice Record
 
 Built 2026-11-14 in Phase 11 of [`plans/pedagogy-implementation.md`](../plans/pedagogy-implementation.md)
@@ -489,6 +493,42 @@ session runs, the tab's bar is titled with its name (an iPad's tab bar shows no 
   long as the learner's due or missed items, so `completeQuiz` omits `questionCount` and `quitQuiz`
   and `abandonQuiz` omit `questionNumber` (Decision 5). `QuizAbandonment.Entry.questionNumber` is
   optional for this.
+
+### Verb Essentials
+
+Built 2026-11-14 in Phase 15 of [`plans/pedagogy-implementation.md`](../plans/pedagogy-implementation.md)
+(T5.1). "Verb Essentials" ("Verb-Grundlagen", Josh's choice of name) asks a strong or mixed verb's
+three key conjugations, er's Präsens, Präteritum, and Perfekt (fährt, fuhr, ist gefahren), as the
+Goethe-Institut's B1 list prints them. No "principal parts" label appears anywhere, in the interface
+or in code (Decisions Already Made). It starts from a row in the hub's "Exercises" section.
+
+- **Each blank is its own question.** A verb is three `QuizItem`s sharing a `stepID`, in the verb
+  page's order (`QuizDraw.verbEssentialsStep`). Each is graded alone, on Return, and records its
+  own key conjugation through `PracticeItem.exercised`, so every quiz mechanism applies per blank
+  unchanged: a slip's or a diagnosis's one more try at half points, the held correction, the
+  re-ask, and the preferred spelling. Josh chose this on 2026-11-14 over filling all three and
+  checking them together.
+- **One step on screen.** `Quiz.essentialsRows` gives the current verb's three rows: answered
+  (the right conjugation with its state's icon), current (the answer field), pending (an empty
+  outline), or given (a re-ask's hint). `QuizView` draws the rows before the field and the rows
+  after it as separate children around the one `AnswerFrameView`, so the field keeps its place in
+  the hierarchy, and the keyboard its focus, as it moves down a row; the "almost" line and a held
+  correction sit under the field, above the pending rows. Each row is labeled with its
+  conjugationgroup in the chosen language, which replaces the card's Conjugationgroup line, and the
+  field's VoiceOver label begins with it (`AnswerFrameView.spokenPrefix`). VoiceOver hears the verb
+  only at a step's first question.
+- **Rounds.** Five verbs, fifteen blanks (Josh, 2026-11-14), then "Five More Verbs" ("Fünf weitere
+  Verben") in place of Ten More. `QuizDraw.verbEssentialsSteps` draws distinct verbs with a strong
+  or mixed reading from the level's band (the level's pool does not apply), asking one such reading
+  at random; verbs the session has asked come last, so later rounds are new while the band lasts.
+- **Re-asks by step.** A missed blank returns after the next verb, as a step of its own whose other
+  rows are given, so a re-ask never lands among another verb's blanks. A second miss in the same
+  verb joins the first's re-ask step (`Quiz.reaskPlacement`).
+- Never ranked, mixing in no due items, and donating no level tip. Its signals carry the source
+  `verbEssentials`, and `completeQuiz` sends its `questionCount` (15 a round), which depends on no
+  answer. The fixture `KONJUGIEREN_QUIZ_FIXTURE essentials` asks fahren as travel, aufstehen,
+  verstehen, denken, and gehen, when Verb Essentials is started.
+- **For Phase 16.** `QuizScope.verbEssentials(_:)` takes any verbs, such as an ablaut group's.
 
 ### The Quiz Clock
 
@@ -1350,6 +1390,7 @@ My Verbs scope, the list it was begun on.
 | `reviewCard` | Yes | The review card, tapped after its conjugations are revealed (Phase 15) |
 | `review` | Yes | The quiz signals only: a Review session from the Quiz tab (pedagogy Phase 12) |
 | `mistakes` | Yes | The quiz signals only: a Practice My Mistakes session from the Quiz tab (pedagogy Phase 12) |
+| `verbEssentials` | Yes | The quiz signals only: Verb Essentials from the Quiz tab (pedagogy Phase 15) |
 | `tab` | Yes | A search begun in the Verbs tab (Phase 11); for the quiz signals, a quiz over every verb from the Quiz tab (Phase 13) |
 | `verbPage` | Yes | The quiz signals only: "Test me on this verb" (Phase 13) |
 

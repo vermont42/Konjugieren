@@ -608,3 +608,40 @@ Der Absatz über den Übungsstand lautet nun:
 ```
 Die App führt außerdem einen Übungsstand: welche Konjugationen Sie im Quiz und auf Wiederholungskarten geübt haben, ob Ihre letzte Antwort darauf richtig war, wann jede wieder zur Wiederholung ansteht und das Ergebnis Ihres letzten Quiz, damit sie Wiederholungskarten zeigen, Verfehltes wiederholen und zeigen kann, wie Ihr letztes Quiz lief. Der Übungsstand bleibt auf Ihrem Gerät und wird nie gesendet. „Übungsstand zurücksetzen“ in den Einstellungen löscht ihn.
 ```
+
+## Verb Essentials (pedagogy plan, Phase 15, 2026-11-14)
+
+Adds the value `verbEssentials` to the quiz signals' `source`, for Verb Essentials, an exercise
+begun from the Quiz tab that asks three conjugations of each of five strong verbs. Its rounds are
+fifteen questions, so the bullet's "a round of ten questions" becomes "a round of questions". Its
+`completeQuiz` carries `questionCount` as other quizzes do, since a round's length depends on no
+answer. It posts no score. The lines change the first quiz bullet and the section 6 sentence as
+given in the Phase 12 section above.
+
+### English
+
+The first quiz bullet in section 2 now reads:
+
+```
+- Quiz lifecycle events (starting, quitting, completing a round of questions, and how many rounds the quiz has reached), and where the quiz was begun: the quiz screen, your own verbs, a verb's page, a collection, and which collection, a quiz you put together, and whether you chose conjugationgroups, verbs, or both (not which), a practice set someone shared with you, and whether it came as a link or a QR code, a review of your due questions or of your mistakes, or the Verb Essentials exercise
+```
+
+The sentence in section 6 now reads:
+
+```
+Only the first ten questions of a quiz over all verbs post a score, to the leaderboard of the quiz's level; a quiz over your own verbs, a single verb, conjugationgroups and verbs you chose, or your due questions or mistakes does not, nor does Verb Essentials, and neither do the ten more questions you may add.
+```
+
+### German
+
+Der erste Punkt über das Quiz in Abschnitt 2 lautet nun:
+
+```
+- Quiz-Lebenszyklus-Ereignisse (Starten, Abbrechen, Abschließen einer Fragerunde und wie viele Runden das Quiz erreicht hat) und wo das Quiz begonnen wurde: auf dem Quiz-Bildschirm, mit Ihren eigenen Verben, auf der Seite eines Verbs, in einer Sammlung, samt der Angabe, welche Sammlung, in einem selbst zusammengestellten Quiz, samt der Angabe, ob Sie Conjugationgroups, Verben oder beides gewählt haben (nicht aber, welche), in einem Übungsset, das jemand mit Ihnen geteilt hat, samt der Angabe, ob es als Link oder als QR-Code kam, bei der Wiederholung Ihrer anstehenden Fragen oder Ihrer Fehler oder in der Übung „Verb-Grundlagen“
+```
+
+Der Satz in Abschnitt 6 lautet nun:
+
+```
+Nur die ersten zehn Fragen eines Quiz über alle Verben reichen ein Ergebnis ein, und zwar in der Bestenliste der Stufe des Quiz; ein Quiz über Ihre eigenen Verben, ein einzelnes Verb, selbst gewählte Conjugationgroups und Verben oder Ihre anstehenden Fragen oder Fehler tut das nicht, ebenso wenig die Verb-Grundlagen und die zehn weiteren Fragen, die Sie anhängen können.
+```

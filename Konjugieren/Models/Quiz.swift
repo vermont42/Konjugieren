@@ -242,7 +242,8 @@ class Quiz {
       // A re-ask is not asked a third time, whatever its answer, so that one stubborn question
       // cannot fill a ten-question round (Josh, T3.1).
       if !question.isReask {
-        questions.insert(question.reasked(), at: min(currentIndex + 1 + Quiz.reaskGap, questions.count))
+        let placement = Self.reaskPlacement(of: currentIndex, in: questions)
+        questions.insert(question.reasked(stepID: placement.stepID), at: placement.position)
       }
       correction = QuizCorrection(
         willBeReasked: !question.isReask,
@@ -353,8 +354,8 @@ class Quiz {
     lastPreferredSpelling = nil
   }
 
-  /// `excluded` names the record's items the session has already asked, which only a Review or My
-  /// Mistakes round reads.
+  /// `excluded` names the record's items the session has already asked, which a Review, My
+  /// Mistakes, or Verb Essentials round reads.
   private func generateQuestions(excluding excluded: Set<String>) -> [QuizItem] {
     #if DEBUG
     switch UserDefaults.standard.string(forKey: "KONJUGIEREN_QUIZ_FIXTURE") {
@@ -372,12 +373,18 @@ class Quiz {
       return generateSlipsFixture()
     case "diagnoses":
       return generateDiagnosesFixture()
+    case "essentials" where scope.isVerbEssentials:
+      return generateVerbEssentialsFixture()
     default:
       break
     }
     #endif
 
     let verbs = scope.verbs ?? Self.defaultVerbs(for: level)
+    if scope.isVerbEssentials {
+      return QuizDraw.verbEssentialsSteps(verbs: verbs, count: QuizScope.verbEssentialsVerbCount, excluded: excluded, using: &randomSource)
+        .flatMap(makeStep)
+    }
     if let session = scope.recordSession {
       return QuizDraw.sessionQuestions(
         for: session.items(from: Current.practice),
@@ -416,7 +423,15 @@ class Quiz {
     return verbs.sorted { $0.infinitiv < $1.infinitiv }
   }
 
-  func makeQuizItem(verb: Verb, conjugationgroup: Conjugationgroup, readingIndex: Int? = nil) -> QuizItem {
+  /// Questions shown together, sharing one step.
+  private func makeStep(_ step: [QuizDrawnQuestion]) -> [QuizItem] {
+    let stepID = UUID()
+    return step.map { question in
+      makeQuizItem(verb: question.verb, conjugationgroup: question.conjugationgroup, readingIndex: question.readingIndex, stepID: stepID)
+    }
+  }
+
+  func makeQuizItem(verb: Verb, conjugationgroup: Conjugationgroup, readingIndex: Int? = nil, stepID: UUID? = nil) -> QuizItem {
     // A question asks about exactly one reading, and the prompt shows that reading's gloss,
     // so a two-reading verb has one right answer rather than two. Without this, hängen in
     // the Präteritum would accept hing and hängte indistinguishably and teach neither.
@@ -464,7 +479,8 @@ class Quiz {
       correctAnswer: correctAnswer,
       acceptableAnswers: acceptableAnswers,
       regionalSpellings: regionalSpellings,
-      readingIndex: readingIndex
+      readingIndex: readingIndex,
+      stepID: stepID
     )
   }
 
@@ -620,6 +636,22 @@ class Quiz {
     }
   }
 
+  // Five verbs for Verb Essentials, one of each kind the phase names (Phase 15 of the pedagogy
+  // plan): fahren as travel (an umlaut and sein: fährt, fuhr, ist gefahren), aufstehen (separable: steht
+  // auf, stand auf, ist aufgestanden), verstehen (inseparable: versteht, verstand, hat
+  // verstanden), denken (mixed: denkt, dachte, hat gedacht), and gehen (sein: geht, ging, ist
+  // gegangen). Wrong answers worth typing: fahrt, standete auf, hat verstehen, denkte, and hat
+  // gegangen.
+  private func generateVerbEssentialsFixture() -> [QuizItem] {
+    let plan: [(infinitiv: String, readingIndex: Int)] = [("fahren", 1), ("aufstehen", 0), ("verstehen", 0), ("denken", 0), ("gehen", 0)]
+    return plan.flatMap { spec in
+      guard let verb = Verb.verbs[spec.infinitiv] else {
+        preconditionFailure("Quiz fixture references missing verb: \(spec.infinitiv)")
+      }
+      return makeStep(QuizDraw.verbEssentialsStep(verb: verb, readingIndex: spec.readingIndex))
+    }
+  }
+
   // Repeated to a round's length, so that the progress dots and the finish behave as usual.
   // Each repeat is a new item, since the dots tell items apart by id.
   private func repeatedFixture(_ plan: [(infinitiv: String, group: Conjugationgroup)]) -> [QuizItem] {
@@ -726,8 +758,9 @@ class Quiz {
     Current.practice.recordResult(LastQuizResult(quiz: self))
     announceQuizCompletion()
     let isFirstRound = roundCount == 1
-    // The tip suggests another level, which a session drawn from the record does not ask by.
-    if isFirstRound, scope.continues, scope.recordSession == nil {
+    // The tip suggests another level, which a session drawn from the record does not ask by, and
+    // whose pool Verb Essentials does not ask.
+    if isFirstRound, scope.continues, scope.recordSession == nil, !scope.isVerbEssentials {
       ChangeLevelTip.quizCompleted.sendDonation()
     }
 
@@ -740,8 +773,10 @@ class Quiz {
     Current.reviewPrompter.promptableActionHappened()
   }
 
+  /// A step's later questions are not announced, since the verb is already on screen, and VoiceOver
+  /// moves to the next blank, whose label names what it asks.
   private func announceQuestion() {
-    guard UIAccessibility.isVoiceOverRunning, let question = currentQuestion else { return }
+    guard UIAccessibility.isVoiceOverRunning, let question = currentQuestion, currentStepRange.lowerBound == currentIndex else { return }
     var delay = 1.0
     if question.isReask {
       DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -830,18 +865,21 @@ struct QuizScope {
   /// quiz.
   var recordSession: QuizRecordSession?
 
+  /// Verb Essentials, which asks each verb's three key conjugations together (Phase 15).
+  var isVerbEssentials = false
+
   /// Only a default quiz posts, to the leaderboard of its level, as Josh decided on 2026-11-13: a
   /// score over a learner's own verbs or conjugationgroups, or over three questions, compares with
   /// nothing. Only its first round posts.
   var isRanked: Bool {
-    verbs == nil && custom == nil && recordSession == nil && continues
+    verbs == nil && custom == nil && recordSession == nil && !isVerbEssentials && continues
   }
 
   /// Only the default quiz mixes in items the practice record says are due, up to
   /// `QuizDraw.dueItemLimit` a round (Phase 11). A quiz over chosen verbs or conjugationgroups asks
   /// what was chosen.
   var mixesDueItems: Bool {
-    verbs == nil && custom == nil && recordSession == nil && continues
+    verbs == nil && custom == nil && recordSession == nil && !isVerbEssentials && continues
   }
 
   /// A Review or My Mistakes session's length is the number of items due or missed, when fewer
@@ -860,9 +898,10 @@ struct QuizScope {
     custom?.pool(level: level) ?? level.pool
   }
 
-  /// Whether the results offer Ten More. Every quiz does but a verb page's three questions.
+  /// Whether the results offer Ten More, or for Verb Essentials five more verbs. Every quiz does but
+  /// a verb page's three questions.
   var continues: Bool {
-    questionCount == Quiz.questionCount
+    isVerbEssentials || questionCount == Quiz.questionCount
   }
 
   static let verbPageQuestionCount = 3
@@ -926,6 +965,9 @@ struct QuizItem: Identifiable {
   var firstAttemptDiagnosis: AnswerDiagnosis?
   /// A missed question asked once more, a few questions later. It earns half points.
   let isReask: Bool
+  /// The questions shown together on one screen, such as a verb's three key conjugations in Verb
+  /// Essentials, share a step. Nil for a question shown alone.
+  let stepID: UUID?
 
   var isAwaitingSecondAttempt: Bool {
     firstAttempt != nil && isCorrect == nil
@@ -953,9 +995,11 @@ struct QuizItem: Identifiable {
     acceptableAnswers: Set<String>? = nil,
     regionalSpellings: [String]? = nil,
     readingIndex: Int = 0,
-    isReask: Bool = false
+    isReask: Bool = false,
+    stepID: UUID? = nil
   ) {
     self.isReask = isReask
+    self.stepID = stepID
     self.verb = verb
     self.conjugationgroup = conjugationgroup
     self.correctAnswer = correctAnswer
@@ -1003,7 +1047,7 @@ struct QuizItem: Identifiable {
   }
 
   /// The question asked again, unanswered, as a new item, since the dots tell items apart by id.
-  func reasked() -> QuizItem {
+  func reasked(stepID: UUID? = nil) -> QuizItem {
     QuizItem(
       verb: verb,
       conjugationgroup: conjugationgroup,
@@ -1011,7 +1055,8 @@ struct QuizItem: Identifiable {
       acceptableAnswers: acceptableAnswers,
       regionalSpellings: regionalSpellings,
       readingIndex: readingIndex,
-      isReask: true
+      isReask: true,
+      stepID: stepID
     )
   }
 

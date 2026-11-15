@@ -27,6 +27,15 @@ class Quiz {
   /// The correction of a wrong answer, which holds the quiz on its question, with the clock
   /// stopped, until `continueAfterCorrection()`. A right answer advances at once.
   private(set) var correction: QuizCorrection?
+  /// True once a choice question is answered, right or wrong: its reason stays on screen, with the
+  /// clock stopped, until `continueAfterCorrection()`, since a choice of two can be a lucky guess
+  /// and the reason is the lesson (Josh, 2026-11-15).
+  private(set) var isHoldingChoice = false
+
+  /// Whether the quiz waits on its question for Continue.
+  var isHeld: Bool {
+    correction != nil || isHoldingChoice
+  }
   /// The conjugation's own spelling of the last answer, when that answer was right but written
   /// another way, such as with a digraph for an umlaut.
   private(set) var lastPreferredSpelling: String?
@@ -88,7 +97,7 @@ class Quiz {
 
   /// The record's items this session has asked, which a record session's Ten More skips.
   private var askedItemKeys: Set<String> {
-    Set(questions.map { PracticeItem.exercised(by: $0.conjugationgroup, of: $0.verb, readingIndex: $0.readingIndex).key })
+    Set(questions.filter { $0.choice == nil }.map { PracticeItem.exercised(by: $0.conjugationgroup, of: $0.verb, readingIndex: $0.readingIndex).key })
   }
 
   private var timer: Timer?
@@ -174,13 +183,14 @@ class Quiz {
   /// round has the default quiz's mix of verbs.
   func continueSession() {
     guard shouldShowResults, !isInProgress, canContinue else { return }
-    let more = generateQuestions(excluding: askedItemKeys.union(questions.compactMap(\.sentence?.id)))
+    let more = generateQuestions(excluding: askedItemKeys.union(questions.compactMap(\.sentence?.id)).union(questions.compactMap(\.choice?.question.id)))
     guard !more.isEmpty else {
       return
     }
     questions += more
     roundCount += 1
     correction = nil
+    isHoldingChoice = false
     lastPreferredSpelling = nil
     isInProgress = true
     shouldShowResults = false
@@ -204,7 +214,7 @@ class Quiz {
   }
 
   func submitAnswer(_ answer: String) {
-    guard isInProgress, correction == nil, currentIndex < questions.count else { return }
+    guard isInProgress, !isHeld, currentIndex < questions.count else { return }
 
     let isCorrect = questions[currentIndex].accepts(answer)
     let isSecondAttempt = questions[currentIndex].isAwaitingSecondAttempt
@@ -258,7 +268,7 @@ class Quiz {
   /// it, so the answer moves neither the practice record nor `QuizErrorHistory`, whose misses the
   /// Tutor reads as production errors (Josh, 2026-11-15).
   func submitRecognition(_ answer: RecognitionAnswer) {
-    guard isInProgress, correction == nil, currentIndex < questions.count, let recognition = questions[currentIndex].recognition else { return }
+    guard isInProgress, !isHeld, currentIndex < questions.count, let recognition = questions[currentIndex].recognition else { return }
     let grade = recognition.grade(answer)
     let summary = answer.summary(lang: Current.settings.conjugationgroupLang)
 
@@ -286,6 +296,30 @@ class Quiz {
         )
       }
     }
+  }
+
+  /// A choice question's answer (Phase 19 of the pedagogy plan), which holds the card with its
+  /// reason whether right or wrong. A choice of two is not given a second attempt or a re-ask,
+  /// since the learner would then know the answer. Choosing a sentence is not evidence of
+  /// producing its conjugation, so the choice moves neither the practice record nor
+  /// `QuizErrorHistory`, as with Name the Conjugation.
+  func submitChoice(_ index: Int) {
+    guard isInProgress, !isHeld, currentIndex < questions.count, let choice = questions[currentIndex].choice, choice.options.indices.contains(index) else { return }
+    let isCorrect = index == choice.rightIndex
+    questions[currentIndex].chosenOption = index
+    questions[currentIndex].userAnswer = choice.options[index].answer
+    questions[currentIndex].isCorrect = isCorrect
+    lastPreferredSpelling = nil
+    stopTimer()
+    isHoldingChoice = true
+    if isCorrect {
+      Current.soundPlayer.play(.chime)
+      HapticPlayer.playSuccess()
+    } else {
+      Current.soundPlayer.play(.buzz)
+      HapticPlayer.playError()
+    }
+    announceChoice(choice, isCorrect: isCorrect)
   }
 
   private func awaitSecondAttempt(prompt: String) {
@@ -333,8 +367,9 @@ class Quiz {
 
   /// Leaves a held correction for the next question, or for the results after the last.
   func continueAfterCorrection() {
-    guard isInProgress, correction != nil else { return }
+    guard isInProgress, isHeld else { return }
     correction = nil
+    isHoldingChoice = false
     advance()
     if isInProgress {
       startTimer()
@@ -395,6 +430,7 @@ class Quiz {
     roundCount = 0
     elapsedSeconds = 0
     correction = nil
+    isHoldingChoice = false
     lastPreferredSpelling = nil
   }
 
@@ -423,6 +459,8 @@ class Quiz {
       return generateRecognitionFixture()
     case "sentences" where scope.isSentences:
       return generateSentencesFixture()
+    case "choices" where scope.mixesChoiceQuestions:
+      return generateChoicesFixture()
     default:
       break
     }
@@ -474,19 +512,28 @@ class Quiz {
     let due = scope.mixesDueItems
       ? QuizDraw.dueQuestions(for: Current.practice.dueItems(), pool: pool, verbs: verbs, using: &randomSource)
       : []
+    // One question of each default round asks a choice from Elementary up (Josh, 2026-11-15), so
+    // that every ranked round of a level asks the same mix.
+    let choice = scope.mixesChoiceQuestions
+      ? QuizDraw.choice(from: ChoiceQuestions.askable(at: level), excluded: excluded, using: &randomSource).flatMap(makeChoiceItem)
+      : nil
     let drawn = QuizDraw.questions(
       pool: pool,
       verbs: verbs,
       readingIndex: scope.readingIndex,
-      count: scope.questionCount - due.count,
+      count: scope.questionCount - due.count - (choice == nil ? 0 : 1),
       distinctCells: !scope.continues,
       mixesVerbs: scope.mixesVerbs,
       relaxesRestrictions: scope.custom != nil,
       using: &randomSource
     )
-    return QuizDraw.mixing(due, into: drawn, using: &randomSource).map { question in
+    var items = QuizDraw.mixing(due, into: drawn, using: &randomSource).map { question in
       makeQuizItem(verb: question.verb, conjugationgroup: question.conjugationgroup, readingIndex: question.readingIndex)
     }
+    if let choice {
+      items.insert(choice, at: QuizDraw.choicePosition(in: items.count, using: &randomSource))
+    }
+    return items
   }
 
   /// The verbs of the level's band. Sorted so that a seeded random source draws the same quiz in
@@ -512,7 +559,8 @@ class Quiz {
     readingIndex: Int? = nil,
     stepID: UUID? = nil,
     clauses: [Clause] = Clause.allCases,
-    sentence: GapSentence? = nil
+    sentence: GapSentence? = nil,
+    choice: ChoicePrompt? = nil
   ) -> QuizItem {
     // A question asks about exactly one reading, and the prompt shows that reading's gloss,
     // so a two-reading verb has one right answer rather than two. Without this, hängen in
@@ -565,8 +613,20 @@ class Quiz {
       regionalSpellings: regionalSpellings,
       readingIndex: readingIndex,
       stepID: stepID,
-      sentence: sentence
+      sentence: sentence,
+      choice: choice
     )
+  }
+
+  /// A choice question: the item's verb and the right sentence's cell, whose conjugation, in that
+  /// sentence's word order, the results show as the answer. Nil for an item this version cannot
+  /// read.
+  func makeChoiceItem(_ choice: ChoicePrompt) -> QuizItem? {
+    let right = choice.question.rightSentence
+    guard let verb = Verb.verbs[right.verb], verb.reading(at: right.readingIndex) != nil, let conjugationgroup = right.conjugationgroup, choice.question.otherSentence.conjugationgroup != nil else {
+      return nil
+    }
+    return makeQuizItem(verb: verb, conjugationgroup: conjugationgroup, readingIndex: right.readingIndex, clauses: [right.clause], choice: choice)
   }
 
   /// A Sentences question (Phase 18 of the pedagogy plan): the sentence's verb and cell, graded in
@@ -643,6 +703,29 @@ class Quiz {
     return ids.map { id in
       guard let sentence = GapSentences.all.first(where: { $0.id == id }), let item = makeSentenceItem(sentence) else {
         preconditionFailure("Quiz fixture references missing sentence: \(id)")
+      }
+      return item
+    }
+  }
+
+  // A default round of choice questions for Phase 19 of the pedagogy plan, one per reason and
+  // drafts included, the right sentence first and second by turns, at whatever level is set.
+  private func generateChoicesFixture() -> [QuizItem] {
+    let ids = [
+      "machen.perfekt.1",
+      "sein.praeteritum.1",
+      "rufen.erzaehlung.1",
+      "kaufen.wuerde.1",
+      "können.konjunktiv_ii.1",
+      "fahren.zukunft.1",
+      "regnen.futur.1",
+      "sein.konjunktiv_i.1",
+      "kommen.indikativ.1",
+      "sein.futur.1"
+    ]
+    return ids.enumerated().map { index, id in
+      guard let question = ChoiceQuestions.all.first(where: { $0.id == id }), let item = makeChoiceItem(ChoicePrompt(question: question, rightIndex: index % 2)) else {
+        preconditionFailure("Quiz fixture references missing choice: \(id)")
       }
       return item
     }
@@ -895,7 +978,7 @@ class Quiz {
   }
 
   func resumeTimer() {
-    guard isInProgress, correction == nil, timer == nil else { return }
+    guard isInProgress, !isHeld, timer == nil else { return }
     startTimer()
   }
 
@@ -985,6 +1068,19 @@ class Quiz {
     }
   }
 
+  /// "Correct. In conversation, most verbs take the Perfekt Indikativ." A wrong choice reads the
+  /// right sentence before the reason.
+  private func announceChoice(_ choice: ChoicePrompt, isCorrect: Bool) {
+    guard UIAccessibility.isVoiceOverRunning else { return }
+    let reason = choice.question.reasonLine(lang: Current.settings.conjugationgroupLang)
+    let announcement = isCorrect
+      ? L.Choice.announceRight(reason)
+      : L.Choice.announceWrong(right: choice.question.rightSentence.completed.inUserRegion, reason: reason)
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+      UIAccessibility.post(notification: .announcement, argument: announcement)
+    }
+  }
+
   private func announceQuizCompletion() {
     guard UIAccessibility.isVoiceOverRunning else { return }
     var announcement = "\(L.Quiz.results). \(L.Quiz.score) \(finalScore). \(L.Quiz.correct) \(correctCount) / \(questionCount)."
@@ -1058,6 +1154,12 @@ struct QuizScope {
   /// `QuizDraw.dueItemLimit` a round (Phase 11). A quiz over chosen verbs or conjugationgroups asks
   /// what was chosen.
   var mixesDueItems: Bool {
+    isDefaultQuiz
+  }
+
+  /// Only the default quiz, and its Ten More, asks a choice question, one a round, at the levels
+  /// that have them (Phase 19).
+  var mixesChoiceQuestions: Bool {
     isDefaultQuiz
   }
 
@@ -1164,6 +1266,10 @@ struct QuizItem: Identifiable {
   let recognition: RecognitionQuestion?
   /// Set for a Sentences question, whose frame is the sentence (Phase 18).
   let sentence: GapSentence?
+  /// Set for a choice question, whose answer is one of two sentences (Phase 19).
+  let choice: ChoicePrompt?
+  /// Which of a choice question's sentences the learner chose.
+  var chosenOption: Int?
   /// A missed question asked once more, a few questions later. It earns half points.
   let isReask: Bool
   /// The questions shown together on one screen, such as a verb's three key conjugations in Verb
@@ -1202,12 +1308,14 @@ struct QuizItem: Identifiable {
     isReask: Bool = false,
     stepID: UUID? = nil,
     recognition: RecognitionQuestion? = nil,
-    sentence: GapSentence? = nil
+    sentence: GapSentence? = nil,
+    choice: ChoicePrompt? = nil
   ) {
     self.isReask = isReask
     self.stepID = stepID
     self.recognition = recognition
     self.sentence = sentence
+    self.choice = choice
     self.verb = verb
     self.conjugationgroup = conjugationgroup
     self.correctAnswer = correctAnswer
@@ -1266,7 +1374,8 @@ struct QuizItem: Identifiable {
       isReask: true,
       stepID: stepID,
       recognition: recognition,
-      sentence: sentence
+      sentence: sentence,
+      choice: choice
     )
   }
 

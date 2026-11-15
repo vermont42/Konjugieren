@@ -34,7 +34,7 @@ The quiz tests users' knowledge of German verb conjugations with timed, scored g
 1. User taps "Start" → `quiz.start(scope:)` generates the scope's ten questions (three on a verb page) and, except on a verb page, starts a Live Activity
 2. Timer begins, questions presented one at a time; Live Activity updates on each answer
 3. User types conjugation, presses return → `quiz.submitAnswer()`
-4. A right answer advances at once. A slip waits for one more attempt (see One More Try). A wrong one is recorded to `QuizErrorHistory`, queued to be asked again, and held on its question, with the clock stopped, until Continue (see The Held Correction, and Rounds and Re-asks)
+4. A right answer advances at once, except a choice question's, which holds its reason (see Choice Questions). A slip waits for one more attempt (see One More Try). A wrong one is recorded to `QuizErrorHistory`, queued to be asked again, and held on its question, with the clock stopped, until Continue (see The Held Correction, and Rounds and Re-asks)
 5. After the round's questions and re-asks → `quiz.finishQuiz()` shows ResultsView and ends the Live Activity
 6. Ten More (`quiz.continueSession()`) draws ten more questions into the same session, and the flow resumes at step 2
 
@@ -117,7 +117,7 @@ quiz in a sheet shows) and `collectionKey` (which `startQuiz` names).
 
 | Scope | Verbs | Questions | `source` | Ranked |
 |---|---|---|---|---|
-| `.allVerbs` | Every verb | 10, then Ten More | `tab` | First round |
+| `.allVerbs` | Every verb; from Elementary up, one question of each round is a choice question (pedagogy Phase 19) | 10, then Ten More | `tab` | First round |
 | `.myVerbs(_:)` | My Verbs (starred, then the 20 last opened), with replacement | 10, then Ten More | `myVerbs` | No |
 | `.verbPage(_:readingIndex:)` | The verb on screen, in the reading on screen | 3 | `verbPage` | No |
 | `.collection(_:)` | A collection's verbs (Phase 16), with replacement, in a sheet | 10, then Ten More | `list` | No |
@@ -662,7 +662,60 @@ own, a row in the hub's Exercises (Josh, 2026-11-15).
   sentences, one per kind of frame, when Sentences is started.
 - **The literary reward** (Josh, 2026-11-13 and 2026-11-15): on every quiz's results screen, the
   first row of each verb answered right offers its bundled literary example (`ExampleSentences`),
-  revealed by a tap. The quiz itself never pauses after a right answer. The reveal sends no signal.
+  revealed by a tap. The quiz never pauses after a right answer to show it, though a choice question
+  holds after any answer for its reason. The reveal sends no signal.
+
+### Choice Questions
+
+Built 2026-11-15 in Phase 19 of [`plans/pedagogy-implementation.md`](../plans/pedagogy-implementation.md)
+(T5.6): a setting and the same sentence in two conjugationgroups, of which the learner taps the one
+a German speaker or writer would use. The quiz otherwise never asks a learner to choose a
+conjugationgroup, and choosing is where much real difficulty lies. Not a mode: one question of every
+default round, Ten More's included, from Elementary up (Josh, 2026-11-13 and 2026-11-15).
+
+- **The content** is `Konjugieren/Models/ChoiceQuestions.json`: for each item an id, the verb (and
+  reading), one person for both sentences, the `QuizLevel` from which it is asked, a setting
+  (`ChoiceSetting`: conversation, news, story), a reason (`ChoiceReason`), the `right` and `other`
+  sentences (each a table and the German with the conjugation in braces, as in Sentences), the
+  English, and `reviewed`. Four contrasts across nine reasons: the Perfekt in conversation, with sein
+  and haben's Präteritum as the exception, and the Präteritum in a written story; würde for most
+  verbs, and the one-word Konjunktiv II of sein, haben, and the modals; the Präsens with a word for
+  when, and the Futur without one; the Konjunktiv I in a news report, and the Indikativ in
+  conversation. `scripts/choice_questions.py` writes a review sheet and marks approvals.
+- **The machine check** (`ChoiceQuestionTests`) reads each sentence as a `GapSentence`
+  (`ChoiceQuestion.rightSentence`, `.otherSentence`) and requires Phase 18's check of both: the
+  braces are the conjugator's conjugation of the cell in every region. Also: the two tables differ,
+  the item's level asks its verb, in its band, the right sentence's cell (`isAskable(at:)`), every
+  reason names its conjugationgroups in both name languages, and every contrast and level is
+  covered. The other sentence's cell may be one no level asks (kaufte as kaufen's Konjunktiv II).
+  Whether the choice is right in German is Josh's review, with Claude's reread.
+- **The reasons** are nine strings in `Localizable.xcstrings` (`Choice.reason…`), each naming the
+  right conjugationgroup, and two of them the other too, in the learner's chosen language for names
+  (`ChoiceQuestion.reasonLine(lang:)`), so that one string serves every item of its kind. The
+  setting is shown in German with its English gloss, as a verb is; it takes the verb's place on the
+  card.
+- **The draw** (`QuizDraw.choice`, `QuizDraw.choicePosition`): `QuizScope.mixesChoiceQuestions`,
+  true only for the default quiz, asks one item of those the level asks (from its level up, drafts
+  in debug builds), the session's unasked first, with the right sentence first or second at random.
+  It takes one of the round's ten places, anywhere but first, so that a round opens on the
+  keyboard, and the draw of the other nine shrinks by one. Beginner has no items and asks none. A
+  ranked first round still scores out of 100.
+- **The answer** (`Quiz.submitChoice`): 10 points if right, none if wrong, with no second attempt
+  and no re-ask, since a choice of two would then be known. Right or wrong, the card holds, with the
+  clock stopped, showing the right sentence in green, a wrong choice in red, the reason, and
+  Continue (`Quiz.isHoldingChoice`, `Quiz.isHeld`; Josh, 2026-11-15), because a right choice of two
+  can be a guess and the reason is the lesson. Choosing a sentence is not producing its
+  conjugation, so the practice record and `QuizErrorHistory` are untouched, as for Name the
+  Conjugation. The results row shows the right sentence's conjugation, and the chosen one in red
+  when wrong. `ChoiceQuestionView` draws the card.
+- **Signals.** None new: the question is part of a default round, whose signals are unchanged, and
+  which item was asked or how it was answered may not be sent (Decision 5).
+- **VoiceOver.** Each sentence is a button read as its sentence and conjugationgroup, under the
+  header "Which fits here?"; once chosen, its value says "Your choice" and "The right choice". The
+  answer is announced ("Correct. In conversation, most verbs take the Perfekt Indikativ." or
+  "Incorrect. The right choice: … ") and focus moves to the reason. Magic Tap continues.
+- **The fixture** `KONJUGIEREN_QUIZ_FIXTURE choices` asks ten choice questions, one per reason, when
+  the default quiz is started.
 
 ### The Quiz Clock
 

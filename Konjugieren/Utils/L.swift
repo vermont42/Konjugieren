@@ -171,6 +171,10 @@ enum L {
     static var quizContinueHint: String {
       String(localized: "Accessibility.quizContinueHint")
     }
+
+    static var choiceOptionHint: String {
+      String(localized: "Accessibility.choiceOptionHint")
+    }
   }
 
   enum RatingsFetcher {
@@ -1162,6 +1166,64 @@ enum L {
 
     static func reviewNextDue(_ days: Int) -> String {
       String(localized: "PracticeSession.reviewNextDue.\(days)")
+    }
+  }
+
+  enum Choice {
+    static func announceRight(_ reason: String) -> String {
+      String(localized: "Choice.announceRight \(reason)")
+    }
+
+    static func announceWrong(right: String, reason: String) -> String {
+      String(localized: "Choice.announceWrong \(right) \(reason)")
+    }
+
+    static var prompt: String {
+      String(localized: "Choice.prompt")
+    }
+
+    static func reasonFuturWithoutTimeWord(right: String, other: String) -> String {
+      String(localized: "Choice.reasonFuturWithoutTimeWord \(right) \(other)")
+    }
+
+    static func reasonIndikativInConversation(right: String, other: String) -> String {
+      String(localized: "Choice.reasonIndikativInConversation \(right) \(other)")
+    }
+
+    static func reasonKonjunktivIInReports(_ right: String) -> String {
+      String(localized: "Choice.reasonKonjunktivIInReports \(right)")
+    }
+
+    static func reasonOneWordKonjunktivII(_ right: String) -> String {
+      String(localized: "Choice.reasonOneWordKonjunktivII \(right)")
+    }
+
+    static func reasonPerfektInConversation(_ right: String) -> String {
+      String(localized: "Choice.reasonPerfektInConversation \(right)")
+    }
+
+    static func reasonPräsensForFuture(_ right: String) -> String {
+      String(localized: "Choice.reasonPraesensForFuture \(right)")
+    }
+
+    static func reasonPräteritumInWriting(_ right: String) -> String {
+      String(localized: "Choice.reasonPraeteritumInWriting \(right)")
+    }
+
+    static func reasonPräteritumOfSeinHaben(_ right: String) -> String {
+      String(localized: "Choice.reasonPraeteritumOfSeinHaben \(right)")
+    }
+
+    static func reasonWürdeForMostVerbs(_ right: String) -> String {
+      String(localized: "Choice.reasonWuerdeForMostVerbs \(right)")
+    }
+
+    static var rightChoice: String {
+      String(localized: "Choice.rightChoice")
+    }
+
+    static var yourChoice: String {
+      String(localized: "Choice.yourChoice")
     }
   }
 

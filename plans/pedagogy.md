@@ -928,6 +928,8 @@ use the term "principal parts".
 of the pedagogy plan: each ablaut group with more than one verb offers Verb Essentials over its ten
 most frequent verbs alone, and mixed, three of its verbs with two from the groups already known.
 A group is known once half of its key conjugations have left the first box of the practice record.
+It starts from each expanded group on the Families tab's Ablaut page and from an Ablaut Groups row
+in the Quiz tab's Exercises, which lists the groups by use.
 
 **Built on `main` 2026-11-15** by [Phase 17](pedagogy-implementation.md#phase-17-recognition)
 of the pedagogy plan: Name the Conjugation ("Konjugationen bestimmen"), from the hub's Exercises,
@@ -944,8 +946,15 @@ the sentence's English beneath. A machine check confirms every blank against the
 first 117 sentences cover the 25 most frequent verbs and are reviewed; about 625 for the other
 275 verbs of the top 300 are to come. Every quiz's results now offer, on each verb's first
 right answer, the verb's literary example sentence.
-It starts from each expanded group on the Families tab's Ablaut page and from an Ablaut Groups row
-in the Quiz tab's Exercises, which lists the groups by use.
+
+**Built on `main` 2026-11-15** by [Phase 19](pedagogy-implementation.md#phase-19-which-conjugationgroup-would-a-speaker-use)
+of the pedagogy plan: choice questions. From Elementary up, one question of each default round
+shows a setting (in conversation, in a written story, in a news report) and the same sentence in
+two conjugationgroups, and the learner taps the one a German speaker or writer would use. Right or
+wrong, the card then holds with a one-line reason. Forty items cover the Perfekt or the Präteritum,
+würde or a one-word Konjunktiv II, the Präsens or the Futur, and the Konjunktiv I or the Indikativ
+in reported speech, each leveled with Phase 5. A machine check confirms both sentences against the
+conjugator, and Josh reviewed and approved all forty.
 
 ### Tier 6: Rebuild Motivation Around Progress
 

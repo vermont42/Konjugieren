@@ -4,6 +4,261 @@
     "" : {
 
     },
+    "Accessibility.choiceOptionHint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wählt diesen Satz."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chooses this sentence."
+          }
+        }
+      }
+    },
+    "Choice.announceRight %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Richtig. %@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Correct. %@"
+          }
+        }
+      }
+    },
+    "Choice.announceWrong %@ %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Falsch. Richtig ist: %1$@ %2$@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Incorrect. The right choice: %1$@ %2$@"
+          }
+        }
+      }
+    },
+    "Choice.prompt" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Was passt hier?"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Which fits here?"
+          }
+        }
+      }
+    },
+    "Choice.reasonFuturWithoutTimeWord %@ %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ohne Zeitangabe sagt das %2$@, was jetzt ist; das %1$@ macht daraus eine Vorhersage oder Vermutung."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Without a word for when, the %2$@ says what is so now; the %1$@ makes it a prediction or a guess."
+          }
+        }
+      }
+    },
+    "Choice.reasonIndikativInConversation %@ %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Im Gespräch gibt man Gesagtes meist im %1$@ wieder, nicht im %2$@."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In conversation, speakers usually pass on what someone said in the %1$@, not the %2$@."
+          }
+        }
+      }
+    },
+    "Choice.reasonKonjunktivIInReports %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eine Nachrichtenmeldung gibt Gesagtes im %@ wieder."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A news report passes on what someone said in the %@."
+          }
+        }
+      }
+    },
+    "Choice.reasonOneWordKonjunktivII %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sein, haben und die Modalverben behalten ihren einfachen %@: wäre, hätte, könnte."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "sein, haben, and the modal verbs keep their one-word %@: wäre, hätte, könnte."
+          }
+        }
+      }
+    },
+    "Choice.reasonPerfektInConversation %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Im Gespräch stehen die meisten Verben im %@."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In conversation, most verbs take the %@."
+          }
+        }
+      }
+    },
+    "Choice.reasonPraesensForFuture %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mit einer Zeitangabe wie morgen spricht das %@ schon von der Zukunft."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "With a word for when, such as morgen, the %@ already speaks of the future."
+          }
+        }
+      }
+    },
+    "Choice.reasonPraeteritumInWriting %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Eine geschriebene Erzählung steht im %@."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A written story takes the %@."
+          }
+        }
+      }
+    },
+    "Choice.reasonPraeteritumOfSeinHaben %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Auch im Gespräch stehen sein, haben und die Modalverben meist im %@."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Even in conversation, sein, haben, and the modal verbs usually take the %@."
+          }
+        }
+      }
+    },
+    "Choice.reasonWuerdeForMostVerbs %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bei den meisten Verben sagt man würde mit dem Infinitiv, das %@."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "For most verbs, speakers use würde with the infinitive, the %@."
+          }
+        }
+      }
+    },
+    "Choice.rightChoice" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die richtige Wahl"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The right choice"
+          }
+        }
+      }
+    },
+    "Choice.yourChoice" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deine Wahl"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your choice"
+          }
+        }
+      }
+    },
     "Accessibility.exampleSentenceHint" : {
       "extractionState" : "manual",
       "localizations" : {

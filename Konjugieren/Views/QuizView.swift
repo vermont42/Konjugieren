@@ -20,12 +20,14 @@ struct QuizView: View {
   @FocusState private var focusedBlank: Int?
   @AccessibilityFocusState private var accessibilityFocusedBlank: Int?
   @AccessibilityFocusState private var correctionHasAccessibilityFocus: Bool
+  @AccessibilityFocusState private var choiceReasonHasAccessibilityFocus: Bool
   /// Pages opened from a held correction, pushed over the quiz, which waits beneath them.
   @State private var navigationPath = NavigationPath()
   private var settings: Settings { Current.settings }
   @State private var shakeOffset: CGFloat = 0
   @State private var showCorrectCheck = false
   @State private var showIncorrectFlash = false
+  @State private var wrongAnswerCount = 0
   @State private var rightAnswerCount = 0
   @State private var isShowingQRCode = false
   @State private var shareButtonFrame = CGRect.zero
@@ -50,6 +52,17 @@ struct QuizView: View {
                 }
                 correctionHasAccessibilityFocus = true
                 refocusAnswer(after: .milliseconds(50))
+                withAnimation(reduceMotion ? nil : .default) {
+                  proxy.scrollTo(QuizCorrectionView.continueButtonID, anchor: .bottom)
+                }
+              }
+              // A choice's reason and Continue appear below its sentences, out of sight on a small
+              // screen.
+              .onChange(of: quiz.isHoldingChoice) { _, isHeld in
+                guard isHeld else {
+                  return
+                }
+                choiceReasonHasAccessibilityFocus = true
                 withAnimation(reduceMotion ? nil : .default) {
                   proxy.scrollTo(QuizCorrectionView.continueButtonID, anchor: .bottom)
                 }
@@ -86,7 +99,7 @@ struct QuizView: View {
         }
       }
       .sensoryFeedback(.success, trigger: rightAnswerCount)
-      .sensoryFeedback(.error, trigger: showIncorrectFlash)
+      .sensoryFeedback(.error, trigger: wrongAnswerCount)
       .onAppear {
         TryQuizTip().invalidate(reason: .actionPerformed)
         guard let sheetScope else {
@@ -129,7 +142,7 @@ struct QuizView: View {
     // their practice must start from there.
     .environment(\.isBeneathQuiz, quiz.isInProgress)
     .accessibilityAction(.magicTap) {
-      if quiz.correction != nil {
+      if quiz.isHeld {
         quiz.continueAfterCorrection()
       }
     }
@@ -147,6 +160,17 @@ struct QuizView: View {
       recognitionPerson = nil
       focusedBlank = 0
       accessibilityFocusedBlank = 0
+    }
+    // A choice question has no field, so the next question's field must take the keyboard anew
+    // once it is on screen.
+    .onChange(of: quiz.currentQuestion?.choice != nil) { _, isChoice in
+      guard !isChoice, quiz.isInProgress else {
+        return
+      }
+      Task { @MainActor in
+        try? await Task.sleep(for: .milliseconds(100))
+        focusedBlank = 0
+      }
     }
     // Ten More leaves currentIndex where the results found it, at the first new question, and the
     // field returns only once the results sheet has gone.
@@ -203,8 +227,8 @@ struct QuizView: View {
             .accessibilityIdentifier("quiz_asked_again")
         }
 
-        // Only a debug build asks a sentence Josh has not yet approved.
-        if let sentence = question.sentence, !sentence.reviewed {
+        // Only a debug build asks a sentence or a choice Josh has not yet approved.
+        if question.sentence?.reviewed == false || question.choice?.question.reviewed == false {
           Label(L.Sentences.draft, systemImage: "pencil.and.list.clipboard")
             .font(.caption.bold())
             .foregroundStyle(.secondary)
@@ -214,6 +238,20 @@ struct QuizView: View {
         if let recognition = question.recognition {
           // The verb and its gloss are what a recognition question asks for, so neither is shown.
           RecognitionPromptView(prompt: recognition.prompt)
+        } else if let setting = question.choice?.question.choiceSetting {
+          // The setting decides the choice, so it takes the verb's place, with its gloss.
+          Text(verbatim: setting.german)
+            .font(.title.bold())
+            .foregroundStyle(.customForeground)
+            .fixedSize(horizontal: false, vertical: true)
+            .germanPronunciation()
+            .accessibilityAddTraits(.isHeader)
+            .accessibilityIdentifier("choice_setting")
+
+          Text(verbatim: setting.english)
+            .font(.subheadline)
+            .foregroundStyle(.secondary)
+            .englishPronunciation()
         } else {
           Text(verbatim: question.verb.infinitiv.inUserRegion)
             .font(.title.bold())
@@ -227,7 +265,7 @@ struct QuizView: View {
             .englishPronunciation()
         }
 
-        if essentialsRows == nil, question.recognition == nil {
+        if essentialsRows == nil, question.recognition == nil, question.choice == nil {
           labeledRow(L.Quiz.conjugationgroup) {
             Text(verbatim: question.displayName(lang: settings.conjugationgroupLang))
               .foregroundStyle(.customForeground)
@@ -299,24 +337,36 @@ struct QuizView: View {
             .accessibilityHidden(true)
         }
 
-        AnswerFrameView(
-          frame: question.answerFrame,
-          blanks: $answerBlanks,
-          focusedBlank: $focusedBlank,
-          accessibilityFocusedBlank: $accessibilityFocusedBlank,
-          identifier: "quiz_answer_field",
-          returnAlwaysSubmits: quiz.correction != nil,
-          spokenPrefix: question.recognition == nil ? currentRow?.conjugationgroup.displayName(lang: settings.conjugationgroupLang) : L.Recognition.infinitiveHeading,
-          placeholder: question.recognition == nil ? nil : L.Recognition.infinitiveHeading,
-          hint: question.recognition == nil ? nil : L.Accessibility.recognitionFieldHint
-        ) {
-          if quiz.correction != nil {
-            quiz.continueAfterCorrection()
-          } else {
-            submit(question)
+        if let choice = question.choice {
+          ChoiceQuestionView(
+            choice: choice,
+            chosenOption: quiz.isHoldingChoice ? question.chosenOption : nil,
+            lang: settings.conjugationgroupLang,
+            reasonIsFocused: $choiceReasonHasAccessibilityFocus,
+            onChoose: choose,
+            onContinue: { quiz.continueAfterCorrection() }
+          )
+          .offset(x: shakeOffset)
+        } else {
+          AnswerFrameView(
+            frame: question.answerFrame,
+            blanks: $answerBlanks,
+            focusedBlank: $focusedBlank,
+            accessibilityFocusedBlank: $accessibilityFocusedBlank,
+            identifier: "quiz_answer_field",
+            returnAlwaysSubmits: quiz.correction != nil,
+            spokenPrefix: question.recognition == nil ? currentRow?.conjugationgroup.displayName(lang: settings.conjugationgroupLang) : L.Recognition.infinitiveHeading,
+            placeholder: question.recognition == nil ? nil : L.Recognition.infinitiveHeading,
+            hint: question.recognition == nil ? nil : L.Accessibility.recognitionFieldHint
+          ) {
+            if quiz.correction != nil {
+              quiz.continueAfterCorrection()
+            } else {
+              submit(question)
+            }
           }
+          .offset(x: shakeOffset)
         }
-        .offset(x: shakeOffset)
 
         if let sentence = question.sentence {
           Text(verbatim: sentence.english)
@@ -484,7 +534,7 @@ struct QuizView: View {
         }
       }
     case .incorrect:
-      showIncorrectFlash.toggle()
+      flashIncorrect()
       if !reduceMotion {
         withAnimation(.spring(response: 0.08, dampingFraction: 0.3)) {
           shakeOffset = 10
@@ -504,6 +554,31 @@ struct QuizView: View {
           }
         }
       }
+    }
+  }
+
+  private func flashIncorrect() {
+    wrongAnswerCount += 1
+    showIncorrectFlash = true
+    Task { @MainActor in
+      try? await Task.sleep(for: .seconds(0.6))
+      withAnimation { showIncorrectFlash = false }
+    }
+  }
+
+  private func choose(_ index: Int) {
+    let questionIndex = quiz.currentIndex
+    quiz.submitChoice(index)
+    guard questionIndex < quiz.questions.count else {
+      return
+    }
+    switch quiz.questions[questionIndex].isCorrect {
+    case true:
+      rightAnswerCount += 1
+    case false:
+      flashIncorrect()
+    case nil:
+      break
     }
   }
 

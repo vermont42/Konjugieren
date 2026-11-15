@@ -33,7 +33,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 16 | Done | 2026-11-15 | `bd0537e` | T5.2 |
 | 17 | Done | 2026-11-15 | `010e2dc` | T5.4 |
 | 18 | Partly done: the app, the check, and 117 reviewed sentences for the 25 most frequent verbs; about 625 sentences for the rest of the top 300 remain | 2026-11-15 | `9ab13cc` | T5.5 |
-| 19 | Not started | | | T5.6 |
+| 19 | Done | 2026-11-15 | | T5.6 |
 | 20 | Not started | | | T6.2 |
 | 21 | Not started | | | T5.7 |
 | 22 | Not started | | | T6.3 |
@@ -1950,7 +1950,7 @@ questions appear where decided, and tests pin the check.
 
 ## Phase 19: Which Conjugationgroup Would a Speaker Use?
 
-**Suggestions:** T5.6. **Depends on:** Phase 18 for its content pipeline. **Status:** Not started.
+**Suggestions:** T5.6. **Depends on:** Phase 18 for its content pipeline. **Status:** Done.
 
 A context and two conjugationgroups, with the learner choosing the one a speaker would use. The
 report notes that choosing is where much real difficulty lies and that the quiz never asks for it.
@@ -1968,7 +1968,99 @@ tests pin the item data's integrity.
 
 **How it differed:**
 
-(To be written by the session that finishes this phase.)
+- **Josh decided four things on 2026-11-15**, asked before building, each the recommended option.
+  (1) **One choice question per round**, in every default round from Elementary up, Ten More's
+  included (over one round in two, and two a round), so that every ranked round of a level asks
+  the same mix. (2) The learner chooses between **two sentences, each named**: the same sentence in
+  each conjugationgroup, the conjugation in bold yellow, its conjugationgroup's name beneath (over
+  names shown only after the choice, and over one blank with two names, which would test the
+  metalanguage). (3) The card **holds after every choice**, right or wrong, with the reason and
+  Continue (over the reason riding quietly on the next card, and over a reason after a wrong choice
+  alone), since a choice of two can be a lucky guess and the reason is the lesson. This is the one
+  place the quiz pauses after a right answer. (4) A first batch of **about 40 items** (over 20 and
+  80).
+- **Not a mode**, as the phase decided: `QuizScope.mixesChoiceQuestions` is true for the default
+  quiz alone, so My Verbs, custom quizzes, practice sets, Review, and the exercises ask none.
+- **The batch.** 40 drafts in `Konjugieren/Models/ChoiceQuestions.json`, nine reasons over the four
+  contrasts: Elementary 12 (the Perfekt in conversation, 8; sein and haben's Präteritum, 4),
+  Intermediate 18 (the Präteritum in a written story, 5; würde for most verbs, 5; the one-word
+  Konjunktiv II of sein, haben, and the modals, 4; the Präsens with a word for when, 2; the Futur
+  without one, 2, one a prediction and one a guess, "Das wird der Postbote sein"), and Advanced 10
+  (the Konjunktiv I in a news report, 6, one of them a Futur Konjunktiv I; the Indikativ in
+  conversation, 4). Weak verbs carry the würde items, since kaufte reads as the Präteritum, while
+  käme or ginge are still heard. Modals carry no Perfekt item, since their real Perfekt (hat
+  arbeiten müssen) is not a cell; no würde sentence sits after wenn, since the conjugator writes
+  compounds in main-clause order. **Josh reviewed all 40 on 2026-11-15** from
+  `plans/choice-questions-batch-1.md` and approved them unchanged ("Looks good"). Claude's flag of
+  the "usually" items (sein's Präteritum in a southern question, the Präsens for the future, the
+  Indikativ in reported conversation) changed nothing. A later batch follows the same path: draft,
+  run `ChoiceQuestionTests`, `python3 scripts/choice_questions.py review --out …`, then `approve`.
+- **Leveled, decided in the session.** Each item names the level from which it is asked, and the
+  check requires that level to ask the item's verb, in its band, in the right sentence's cell. A
+  computed level would have put the reported-speech items at Beginner, whose Präsens is their right
+  answer. Levels are cumulative, so Advanced asks all 40; Beginner asks none.
+- **The other sentence's cell may be one no level asks**, decided in the session: kaufte as kaufen's
+  Konjunktiv II, schlief at Elementary. The learner reads it and is never asked to write it.
+- **Scoring, decided in the session.** 10 points if right, none if wrong, with no second attempt and
+  no re-ask, since either would ask a choice of two whose answer is now known. A ranked round still
+  scores out of 100. Choosing is not producing, so the practice record and `QuizErrorHistory` are
+  untouched, as for Phase 17.
+- **Where it sits, decided in the session.** Anywhere in the round but first, so that a round opens
+  on a typed question with the keyboard up. The session's unasked items come first, so Ten More
+  draws a new one.
+- **The setting takes the verb's place** on the card, in German with its English gloss, as the
+  mockup showed. **The reasons** are nine strings in `Localizable.xcstrings`, each with the
+  conjugationgroups' names filled in from the item, so that they follow the setting for names
+  ("Perfekt Indikativ" or "Present Perfect Indicative") and one string serves every item of its
+  kind; two name both conjugationgroups. The prompt is "Which fits here?" / "Was passt hier?", since
+  two of the settings are written.
+- **How it is built.** `ChoiceQuestion` reads each sentence as a `GapSentence`, so Phase 18's
+  braces, answer, and clause serve both, and so does its machine check. `ChoicePrompt` places the
+  right sentence first or second. `QuizItem.choice`; `Quiz.submitChoice`, `isHoldingChoice`, and
+  `isHeld`, which the answer guards, the clock, and Magic Tap now read in place of `correction`;
+  `ChoiceQuestionView`. The results row shows the right sentence's conjugation, and the chosen one
+  in red when wrong, through the existing row.
+- **Analytics.** None new. The choice is one question of a default round, whose signals are
+  unchanged, and which item was asked or how it was answered may not be sent (Decision 5). Nothing
+  to stage in the privacy policy.
+- **VoiceOver.** Each sentence is one button, read as the sentence and its conjugationgroup, under
+  the "Which fits here?" header; once chosen, its value is "Your choice", "The right choice", or
+  both. The answer is announced with the reason ("Incorrect. The right choice: Der Urlaub war
+  wunderschön. Even in conversation, …"), and focus moves to the reason. Read from the
+  accessibility tree; nobody has listened to it.
+- **A new fixture**, `KONJUGIEREN_QUIZ_FIXTURE choices`: ten choice questions, one per reason and
+  `sein.futur.1`, the right sentence first and second by turns, when the default quiz is started.
+- **Tests:** `ChoiceQuestionTests`, 18 functions: the machine check (well formed, both sentences the
+  conjugator's in every region, the item's level asks its answer, every reason names its
+  conjugationgroups in both name languages, every reason, setting, and level covered), the two
+  sentences, a two-name reason, the prompt's order, levels, Beginner's none, drafts in release
+  builds, the item's answer, and the draw and its position. Nested in `QuizTests`, 7: one choice a
+  round at each level from Elementary and none at Beginner or in other quizzes, a right choice held
+  with nothing recorded, a wrong one held and not re-asked, Ten More's unasked choice, and a ranked
+  round out of 100. The check **caught a draft on its first run**: "Lasest" for du's Präteritum of
+  lesen, which the conjugator writes "last". Run in English with `xcodebuild -testLanguage en`: 845
+  passed and 2 skipped (the environment-gated harnesses); `check_docs.py` counts 847 `@Test`s.
+- **Verified on the iPhone 17**, in dark mode, with the fixture. In German: the card, machtest
+  chosen wrongly (the right sentence green, machtest red, "Im Gespräch stehen die meisten Verben im
+  Perfekt Indikativ.", Weiter), then the right one, then the round through the story, the
+  two-name Futur reason, and the news report ("Eine Nachrichtenmeldung gibt Gesagtes im Präsens
+  Konjunktiv I wieder."). In English: a wrong choice, then sein's Präteritum right, and the results
+  (40, "Correct: 4 / 10", each row's right conjugation with the chosen one in red, the literary
+  reward on rufen's row). **On the iPad Pro 11-inch (M5)**, in light mode and English, at Advanced,
+  a real draw: the choice came eleventh after typed questions and their re-asks (gehen's Perfekt in
+  conversation, an Elementary item), chosen wrongly, and the next question's field took typing at
+  once. Not tried: VoiceOver by ear, Ten More from the device (unit-tested), the Live Activity, and a
+  release build. The fixture default was removed from
+  the iPhone afterward.
+- **Found by looking.** `.disabled` dimmed both sentences once chosen, the right one included, just
+  when it should be read; the buttons now stop taking taps without the dimming. And the quiz card's
+  red rim, meant as a flash on a wrong answer, was a toggle, so after an odd number of wrong answers
+  it stayed lit through every later question, typed or chosen, right answers included. It now
+  lights for 0.6 seconds, with the error haptic on a counter of its own. The choice fixture, half
+  of whose answers I chose wrongly, made it plain.
+- **Also fixed:** in `plans/pedagogy.md`, Phase 16's last sentence ("It starts from each expanded
+  group…") had been stranded after the Phase 17 and 18 lines inserted above it; it is back in its
+  paragraph.
 
 ## Phase 20: Mastery
 

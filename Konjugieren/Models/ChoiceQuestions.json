@@ -1,0 +1,724 @@
+[
+  {
+    "id": "machen.perfekt.1",
+    "verb": "machen",
+    "person": "ss",
+    "level": "elementary",
+    "setting": "conversation",
+    "reason": "perfekt_in_conversation",
+    "right": {
+      "table": "perfekt_indikativ",
+      "de": "Was {hast} du letztes Wochenende {gemacht}?"
+    },
+    "other": {
+      "table": "praeteritum_indikativ",
+      "de": "Was {machtest} du letztes Wochenende?"
+    },
+    "en": "What did you do last weekend?",
+    "reviewed": true
+  },
+  {
+    "id": "sehen.perfekt.1",
+    "verb": "sehen",
+    "person": "fp",
+    "level": "elementary",
+    "setting": "conversation",
+    "reason": "perfekt_in_conversation",
+    "right": {
+      "table": "perfekt_indikativ",
+      "de": "Gestern {haben} wir einen tollen Film {gesehen}."
+    },
+    "other": {
+      "table": "praeteritum_indikativ",
+      "de": "Gestern {sahen} wir einen tollen Film."
+    },
+    "en": "Yesterday we saw a great movie.",
+    "reviewed": true
+  },
+  {
+    "id": "kaufen.perfekt.1",
+    "verb": "kaufen",
+    "person": "fs",
+    "level": "elementary",
+    "setting": "conversation",
+    "reason": "perfekt_in_conversation",
+    "right": {
+      "table": "perfekt_indikativ",
+      "de": "Ich {habe} mir neue Schuhe {gekauft}."
+    },
+    "other": {
+      "table": "praeteritum_indikativ",
+      "de": "Ich {kaufte} mir neue Schuhe."
+    },
+    "en": "I bought myself new shoes.",
+    "reviewed": true
+  },
+  {
+    "id": "spielen.perfekt.1",
+    "verb": "spielen",
+    "person": "tp",
+    "level": "elementary",
+    "setting": "conversation",
+    "reason": "perfekt_in_conversation",
+    "right": {
+      "table": "perfekt_indikativ",
+      "de": "Am Samstag {haben} die Kinder im Park Fußball {gespielt}."
+    },
+    "other": {
+      "table": "praeteritum_indikativ",
+      "de": "Am Samstag {spielten} die Kinder im Park Fußball."
+    },
+    "en": "On Saturday the kids played soccer in the park.",
+    "reviewed": true
+  },
+  {
+    "id": "lesen.perfekt.1",
+    "verb": "lesen",
+    "person": "ss",
+    "level": "elementary",
+    "setting": "conversation",
+    "reason": "perfekt_in_conversation",
+    "right": {
+      "table": "perfekt_indikativ",
+      "de": "{Hast} du das Buch schon {gelesen}?"
+    },
+    "other": {
+      "table": "praeteritum_indikativ",
+      "de": "{Last} du das Buch schon?"
+    },
+    "en": "Have you read the book yet?",
+    "reviewed": true
+  },
+  {
+    "id": "treffen.perfekt.1",
+    "verb": "treffen",
+    "person": "fs",
+    "level": "elementary",
+    "setting": "conversation",
+    "reason": "perfekt_in_conversation",
+    "right": {
+      "table": "perfekt_indikativ",
+      "de": "Heute Morgen {habe} ich Anna im Supermarkt {getroffen}."
+    },
+    "other": {
+      "table": "praeteritum_indikativ",
+      "de": "Heute Morgen {traf} ich Anna im Supermarkt."
+    },
+    "en": "This morning I ran into Anna at the supermarket.",
+    "reviewed": true
+  },
+  {
+    "id": "gehen.perfekt.1",
+    "verb": "gehen",
+    "person": "fp",
+    "level": "elementary",
+    "setting": "conversation",
+    "reason": "perfekt_in_conversation",
+    "right": {
+      "table": "perfekt_indikativ",
+      "de": "Nach dem Essen {sind} wir spazieren {gegangen}."
+    },
+    "other": {
+      "table": "praeteritum_indikativ",
+      "de": "Nach dem Essen {gingen} wir spazieren."
+    },
+    "en": "After dinner we went for a walk.",
+    "reviewed": true
+  },
+  {
+    "id": "fahren.perfekt.1",
+    "verb": "fahren",
+    "reading": 1,
+    "person": "fp",
+    "level": "elementary",
+    "setting": "conversation",
+    "reason": "perfekt_in_conversation",
+    "right": {
+      "table": "perfekt_indikativ",
+      "de": "Letzten Sommer {sind} wir nach Italien {gefahren}."
+    },
+    "other": {
+      "table": "praeteritum_indikativ",
+      "de": "Letzten Sommer {fuhren} wir nach Italien."
+    },
+    "en": "Last summer we went to Italy.",
+    "reviewed": true
+  },
+  {
+    "id": "sein.praeteritum.1",
+    "verb": "sein",
+    "person": "ts",
+    "level": "elementary",
+    "setting": "conversation",
+    "reason": "praeteritum_of_sein_haben",
+    "right": {
+      "table": "praeteritum_indikativ",
+      "de": "Der Urlaub {war} wunderschön."
+    },
+    "other": {
+      "table": "perfekt_indikativ",
+      "de": "Der Urlaub {ist} wunderschön {gewesen}."
+    },
+    "en": "The vacation was wonderful.",
+    "reviewed": true
+  },
+  {
+    "id": "sein.praeteritum.2",
+    "verb": "sein",
+    "person": "ss",
+    "level": "elementary",
+    "setting": "conversation",
+    "reason": "praeteritum_of_sein_haben",
+    "right": {
+      "table": "praeteritum_indikativ",
+      "de": "Wo {warst} du gestern Abend?"
+    },
+    "other": {
+      "table": "perfekt_indikativ",
+      "de": "Wo {bist} du gestern Abend {gewesen}?"
+    },
+    "en": "Where were you last night?",
+    "reviewed": true
+  },
+  {
+    "id": "haben.praeteritum.1",
+    "verb": "haben",
+    "person": "fs",
+    "level": "elementary",
+    "setting": "conversation",
+    "reason": "praeteritum_of_sein_haben",
+    "right": {
+      "table": "praeteritum_indikativ",
+      "de": "Ich {hatte} heute keine Zeit."
+    },
+    "other": {
+      "table": "perfekt_indikativ",
+      "de": "Ich {habe} heute keine Zeit {gehabt}."
+    },
+    "en": "I didn't have time today.",
+    "reviewed": true
+  },
+  {
+    "id": "haben.praeteritum.2",
+    "verb": "haben",
+    "person": "sp",
+    "level": "elementary",
+    "setting": "conversation",
+    "reason": "praeteritum_of_sein_haben",
+    "right": {
+      "table": "praeteritum_indikativ",
+      "de": "{Hattet} ihr einen schönen Abend?"
+    },
+    "other": {
+      "table": "perfekt_indikativ",
+      "de": "{Habt} ihr einen schönen Abend {gehabt}?"
+    },
+    "en": "Did you have a nice evening?",
+    "reviewed": true
+  },
+  {
+    "id": "rufen.erzaehlung.1",
+    "verb": "rufen",
+    "person": "ts",
+    "level": "intermediate",
+    "setting": "story",
+    "reason": "praeteritum_in_writing",
+    "right": {
+      "table": "praeteritum_indikativ",
+      "de": "Der König {rief} seine drei Töchter zu sich."
+    },
+    "other": {
+      "table": "perfekt_indikativ",
+      "de": "Der König {hat} seine drei Töchter zu sich {gerufen}."
+    },
+    "en": "The king called his three daughters to him.",
+    "reviewed": true
+  },
+  {
+    "id": "öffnen.erzaehlung.1",
+    "verb": "öffnen",
+    "person": "ts",
+    "level": "intermediate",
+    "setting": "story",
+    "reason": "praeteritum_in_writing",
+    "right": {
+      "table": "praeteritum_indikativ",
+      "de": "Langsam {öffnete} sie die Tür."
+    },
+    "other": {
+      "table": "perfekt_indikativ",
+      "de": "Langsam {hat} sie die Tür {geöffnet}."
+    },
+    "en": "Slowly she opened the door.",
+    "reviewed": true
+  },
+  {
+    "id": "laufen.erzaehlung.1",
+    "verb": "laufen",
+    "person": "ts",
+    "level": "intermediate",
+    "setting": "story",
+    "reason": "praeteritum_in_writing",
+    "right": {
+      "table": "praeteritum_indikativ",
+      "de": "Der Hund {lief} in den Wald."
+    },
+    "other": {
+      "table": "perfekt_indikativ",
+      "de": "Der Hund {ist} in den Wald {gelaufen}."
+    },
+    "en": "The dog ran into the forest.",
+    "reviewed": true
+  },
+  {
+    "id": "nehmen.erzaehlung.1",
+    "verb": "nehmen",
+    "person": "ts",
+    "level": "intermediate",
+    "setting": "story",
+    "reason": "praeteritum_in_writing",
+    "right": {
+      "table": "praeteritum_indikativ",
+      "de": "Er {nahm} den Brief vom Tisch."
+    },
+    "other": {
+      "table": "perfekt_indikativ",
+      "de": "Er {hat} den Brief vom Tisch {genommen}."
+    },
+    "en": "He took the letter from the table.",
+    "reviewed": true
+  },
+  {
+    "id": "leben.erzaehlung.1",
+    "verb": "leben",
+    "person": "ts",
+    "level": "intermediate",
+    "setting": "story",
+    "reason": "praeteritum_in_writing",
+    "right": {
+      "table": "praeteritum_indikativ",
+      "de": "Vor langer Zeit {lebte} in einem kleinen Dorf ein alter Müller."
+    },
+    "other": {
+      "table": "perfekt_indikativ",
+      "de": "Vor langer Zeit {hat} in einem kleinen Dorf ein alter Müller {gelebt}."
+    },
+    "en": "Long ago, an old miller lived in a small village.",
+    "reviewed": true
+  },
+  {
+    "id": "kaufen.wuerde.1",
+    "verb": "kaufen",
+    "person": "fs",
+    "level": "intermediate",
+    "setting": "conversation",
+    "reason": "wuerde_for_most_verbs",
+    "right": {
+      "table": "futur_konjunktiv_ii",
+      "de": "An deiner Stelle {würde} ich das Auto nicht {kaufen}."
+    },
+    "other": {
+      "table": "praeteritum_konjunktiv_ii",
+      "de": "An deiner Stelle {kaufte} ich das Auto nicht."
+    },
+    "en": "If I were you, I wouldn't buy the car.",
+    "reviewed": true
+  },
+  {
+    "id": "reisen.wuerde.1",
+    "verb": "reisen",
+    "person": "fs",
+    "level": "intermediate",
+    "setting": "conversation",
+    "reason": "wuerde_for_most_verbs",
+    "right": {
+      "table": "futur_konjunktiv_ii",
+      "de": "Mit mehr Geld {würde} ich um die Welt {reisen}."
+    },
+    "other": {
+      "table": "praeteritum_konjunktiv_ii",
+      "de": "Mit mehr Geld {reiste} ich um die Welt."
+    },
+    "en": "With more money, I would travel around the world.",
+    "reviewed": true
+  },
+  {
+    "id": "wohnen.wuerde.1",
+    "verb": "wohnen",
+    "person": "fs",
+    "level": "intermediate",
+    "setting": "conversation",
+    "reason": "wuerde_for_most_verbs",
+    "right": {
+      "table": "futur_konjunktiv_ii",
+      "de": "Am liebsten {würde} ich am Meer {wohnen}."
+    },
+    "other": {
+      "table": "praeteritum_konjunktiv_ii",
+      "de": "Am liebsten {wohnte} ich am Meer."
+    },
+    "en": "Most of all, I'd like to live by the ocean.",
+    "reviewed": true
+  },
+  {
+    "id": "spielen.wuerde.1",
+    "verb": "spielen",
+    "person": "ss",
+    "level": "intermediate",
+    "setting": "conversation",
+    "reason": "wuerde_for_most_verbs",
+    "right": {
+      "table": "futur_konjunktiv_ii",
+      "de": "{Würdest} du mit uns Karten {spielen}?"
+    },
+    "other": {
+      "table": "praeteritum_konjunktiv_ii",
+      "de": "{Spieltest} du mit uns Karten?"
+    },
+    "en": "Would you play cards with us?",
+    "reviewed": true
+  },
+  {
+    "id": "kochen.wuerde.1",
+    "verb": "kochen",
+    "person": "fs",
+    "level": "intermediate",
+    "setting": "conversation",
+    "reason": "wuerde_for_most_verbs",
+    "right": {
+      "table": "futur_konjunktiv_ii",
+      "de": "Heute Abend {würde} ich gern etwas Italienisches {kochen}."
+    },
+    "other": {
+      "table": "praeteritum_konjunktiv_ii",
+      "de": "Heute Abend {kochte} ich gern etwas Italienisches."
+    },
+    "en": "Tonight I'd like to cook something Italian.",
+    "reviewed": true
+  },
+  {
+    "id": "haben.konjunktiv_ii.1",
+    "verb": "haben",
+    "person": "fs",
+    "level": "intermediate",
+    "setting": "conversation",
+    "reason": "one_word_konjunktiv_ii",
+    "right": {
+      "table": "praeteritum_konjunktiv_ii",
+      "de": "Ich {hätte} gern einen Kaffee."
+    },
+    "other": {
+      "table": "futur_konjunktiv_ii",
+      "de": "Ich {würde} gern einen Kaffee {haben}."
+    },
+    "en": "I'd like a coffee.",
+    "reviewed": true
+  },
+  {
+    "id": "sein.konjunktiv_ii.1",
+    "verb": "sein",
+    "person": "ts",
+    "level": "intermediate",
+    "setting": "conversation",
+    "reason": "one_word_konjunktiv_ii",
+    "right": {
+      "table": "praeteritum_konjunktiv_ii",
+      "de": "Das {wäre} wirklich schön."
+    },
+    "other": {
+      "table": "futur_konjunktiv_ii",
+      "de": "Das {würde} wirklich schön {sein}."
+    },
+    "en": "That would be really nice.",
+    "reviewed": true
+  },
+  {
+    "id": "können.konjunktiv_ii.1",
+    "verb": "können",
+    "person": "ss",
+    "level": "intermediate",
+    "setting": "conversation",
+    "reason": "one_word_konjunktiv_ii",
+    "right": {
+      "table": "praeteritum_konjunktiv_ii",
+      "de": "{Könntest} du mir bitte helfen?"
+    },
+    "other": {
+      "table": "futur_konjunktiv_ii",
+      "de": "{Würdest} du mir bitte helfen {können}?"
+    },
+    "en": "Could you help me, please?",
+    "reviewed": true
+  },
+  {
+    "id": "sollen.konjunktiv_ii.1",
+    "verb": "sollen",
+    "person": "ss",
+    "level": "intermediate",
+    "setting": "conversation",
+    "reason": "one_word_konjunktiv_ii",
+    "right": {
+      "table": "praeteritum_konjunktiv_ii",
+      "de": "Du {solltest} mehr schlafen."
+    },
+    "other": {
+      "table": "futur_konjunktiv_ii",
+      "de": "Du {würdest} mehr schlafen {sollen}."
+    },
+    "en": "You should get more sleep.",
+    "reviewed": true
+  },
+  {
+    "id": "fahren.zukunft.1",
+    "verb": "fahren",
+    "reading": 1,
+    "person": "fs",
+    "level": "intermediate",
+    "setting": "conversation",
+    "reason": "praesens_for_future",
+    "right": {
+      "table": "praesens_indikativ",
+      "de": "Morgen {fahre} ich nach Berlin."
+    },
+    "other": {
+      "table": "futur_indikativ",
+      "de": "Morgen {werde} ich nach Berlin {fahren}."
+    },
+    "en": "Tomorrow I'm going to Berlin.",
+    "reviewed": true
+  },
+  {
+    "id": "kommen.zukunft.1",
+    "verb": "kommen",
+    "person": "ts",
+    "level": "intermediate",
+    "setting": "conversation",
+    "reason": "praesens_for_future",
+    "right": {
+      "table": "praesens_indikativ",
+      "de": "Nächste Woche {kommt} meine Schwester zu Besuch."
+    },
+    "other": {
+      "table": "futur_indikativ",
+      "de": "Nächste Woche {wird} meine Schwester zu Besuch {kommen}."
+    },
+    "en": "My sister is coming to visit next week.",
+    "reviewed": true
+  },
+  {
+    "id": "regnen.futur.1",
+    "verb": "regnen",
+    "person": "ts",
+    "level": "intermediate",
+    "setting": "conversation",
+    "reason": "futur_without_time_word",
+    "right": {
+      "table": "futur_indikativ",
+      "de": "Schau dir die Wolken an! Es {wird} {regnen}."
+    },
+    "other": {
+      "table": "praesens_indikativ",
+      "de": "Schau dir die Wolken an! Es {regnet}."
+    },
+    "en": "Look at those clouds! It's going to rain.",
+    "reviewed": true
+  },
+  {
+    "id": "sein.futur.1",
+    "verb": "sein",
+    "person": "ts",
+    "level": "intermediate",
+    "setting": "conversation",
+    "reason": "futur_without_time_word",
+    "right": {
+      "table": "futur_indikativ",
+      "de": "Es klingelt. Das {wird} der Postbote {sein}."
+    },
+    "other": {
+      "table": "praesens_indikativ",
+      "de": "Es klingelt. Das {ist} der Postbote."
+    },
+    "en": "The doorbell's ringing. That'll be the mail carrier.",
+    "reviewed": true
+  },
+  {
+    "id": "sein.konjunktiv_i.1",
+    "verb": "sein",
+    "person": "ts",
+    "level": "advanced",
+    "setting": "news",
+    "reason": "konjunktiv_i_in_reports",
+    "right": {
+      "table": "praesens_konjunktiv_i",
+      "de": "Der Minister sagte, er {sei} krank."
+    },
+    "other": {
+      "table": "praesens_indikativ",
+      "de": "Der Minister sagte, er {ist} krank."
+    },
+    "en": "The minister said he was sick.",
+    "reviewed": true
+  },
+  {
+    "id": "haben.konjunktiv_i.1",
+    "verb": "haben",
+    "person": "ts",
+    "level": "advanced",
+    "setting": "news",
+    "reason": "konjunktiv_i_in_reports",
+    "right": {
+      "table": "praesens_konjunktiv_i",
+      "de": "Die Polizei teilte mit, sie {habe} noch keine Spur."
+    },
+    "other": {
+      "table": "praesens_indikativ",
+      "de": "Die Polizei teilte mit, sie {hat} noch keine Spur."
+    },
+    "en": "The police said they had no leads yet.",
+    "reviewed": true
+  },
+  {
+    "id": "kommen.konjunktiv_i.1",
+    "verb": "kommen",
+    "person": "ts",
+    "level": "advanced",
+    "setting": "news",
+    "reason": "konjunktiv_i_in_reports",
+    "right": {
+      "table": "praesens_konjunktiv_i",
+      "de": "Die Sängerin erklärte, sie {komme} im Herbst wieder nach Wien."
+    },
+    "other": {
+      "table": "praesens_indikativ",
+      "de": "Die Sängerin erklärte, sie {kommt} im Herbst wieder nach Wien."
+    },
+    "en": "The singer said she would come back to Vienna in the fall.",
+    "reviewed": true
+  },
+  {
+    "id": "wollen.konjunktiv_i.1",
+    "verb": "wollen",
+    "person": "ts",
+    "level": "advanced",
+    "setting": "news",
+    "reason": "konjunktiv_i_in_reports",
+    "right": {
+      "table": "praesens_konjunktiv_i",
+      "de": "Der Bürgermeister sagte, er {wolle} die Schule renovieren."
+    },
+    "other": {
+      "table": "praesens_indikativ",
+      "de": "Der Bürgermeister sagte, er {will} die Schule renovieren."
+    },
+    "en": "The mayor said he wanted to renovate the school.",
+    "reviewed": true
+  },
+  {
+    "id": "müssen.konjunktiv_i.1",
+    "verb": "müssen",
+    "person": "ts",
+    "level": "advanced",
+    "setting": "news",
+    "reason": "konjunktiv_i_in_reports",
+    "right": {
+      "table": "praesens_konjunktiv_i",
+      "de": "Die Regierung betonte, jeder {müsse} Energie sparen."
+    },
+    "other": {
+      "table": "praesens_indikativ",
+      "de": "Die Regierung betonte, jeder {muss} Energie sparen."
+    },
+    "en": "The government stressed that everyone had to save energy.",
+    "reviewed": true
+  },
+  {
+    "id": "zurücktreten.konjunktiv_i.1",
+    "verb": "zurücktreten",
+    "person": "ts",
+    "level": "advanced",
+    "setting": "news",
+    "reason": "konjunktiv_i_in_reports",
+    "right": {
+      "table": "futur_konjunktiv_i",
+      "de": "Die Ministerin kündigte an, sie {werde} {zurücktreten}."
+    },
+    "other": {
+      "table": "futur_indikativ",
+      "de": "Die Ministerin kündigte an, sie {wird} {zurücktreten}."
+    },
+    "en": "The minister announced that she would resign.",
+    "reviewed": true
+  },
+  {
+    "id": "sein.indikativ.1",
+    "verb": "sein",
+    "person": "ts",
+    "level": "advanced",
+    "setting": "conversation",
+    "reason": "indikativ_in_conversation",
+    "right": {
+      "table": "praesens_indikativ",
+      "de": "Anna hat gesagt, sie {ist} krank."
+    },
+    "other": {
+      "table": "praesens_konjunktiv_i",
+      "de": "Anna hat gesagt, sie {sei} krank."
+    },
+    "en": "Anna said she's sick.",
+    "reviewed": true
+  },
+  {
+    "id": "kommen.indikativ.1",
+    "verb": "kommen",
+    "person": "ts",
+    "level": "advanced",
+    "setting": "conversation",
+    "reason": "indikativ_in_conversation",
+    "right": {
+      "table": "praesens_indikativ",
+      "de": "Tom meint, er {kommt} später."
+    },
+    "other": {
+      "table": "praesens_konjunktiv_i",
+      "de": "Tom meint, er {komme} später."
+    },
+    "en": "Tom says he's coming later.",
+    "reviewed": true
+  },
+  {
+    "id": "haben.indikativ.1",
+    "verb": "haben",
+    "person": "ts",
+    "level": "advanced",
+    "setting": "conversation",
+    "reason": "indikativ_in_conversation",
+    "right": {
+      "table": "praesens_indikativ",
+      "de": "Mein Bruder hat erzählt, er {hat} einen neuen Job."
+    },
+    "other": {
+      "table": "praesens_konjunktiv_i",
+      "de": "Mein Bruder hat erzählt, er {habe} einen neuen Job."
+    },
+    "en": "My brother told me he has a new job.",
+    "reviewed": true
+  },
+  {
+    "id": "können.indikativ.1",
+    "verb": "können",
+    "person": "ts",
+    "level": "advanced",
+    "setting": "conversation",
+    "reason": "indikativ_in_conversation",
+    "right": {
+      "table": "praesens_indikativ",
+      "de": "Lisa sagt, sie {kann} heute nicht."
+    },
+    "other": {
+      "table": "praesens_konjunktiv_i",
+      "de": "Lisa sagt, sie {könne} heute nicht."
+    },
+    "en": "Lisa says she can't make it today.",
+    "reviewed": true
+  }
+]

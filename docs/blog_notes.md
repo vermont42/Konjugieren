@@ -11229,3 +11229,72 @@ of Norman French and German straight from the Romans. We kept basement anyway.
 His pace, about two and a half seconds a sentence, answered the phase's open question. The rest of
 the top 300 gets three sentences a verb up to rank 100 and two after it, about 625 in all, roughly
 half an hour of reading for him.
+
+## Which Conjugationgroup Would a Speaker Use? (2026-11-15)
+
+Phase 19 of the pedagogy plan adds the one thing the quiz had never asked: to choose. Every
+question until now named the conjugationgroup and asked for its conjugation. Real difficulty, the
+report argued, sits a step earlier. A learner who can write both "habe geschlafen" and "schlief"
+still has to know that a German telling a friend about Saturday says the first, and that the same
+German writing a fairy tale says the second.
+
+### The shape Josh chose
+
+Josh answered four questions before any code, each with the recommended option. One choice question
+in every default round from Elementary up, so that each ranked round of a level asks the same mix.
+Two whole sentences to tap, each with its conjugation in bold and its conjugationgroup named
+beneath, rather than one blank with two names, which would have tested the metalanguage that Phase
+17 deliberately avoided. A hold after every choice, right or wrong, with a one-line reason and
+Continue. And about forty items to start.
+
+The hold is the interesting decision, because it breaks a rule the plan had kept since Phase 3: the
+quiz moves on at once after a right answer. The rule comes from feedback research on recall, where a
+right answer is evidence of knowing. A choice between two is not. Half the learners who have no idea
+will pick right, and the reason is the only part of the exercise that teaches them anything. One
+extra tap a round seemed a fair price.
+
+### Content as data, checked like Phase 18's
+
+Each item is two sentences in braces, the same notation as Phase 18's gap sentences, so the model
+reads each side as a `GapSentence` and inherits that phase's machine check whole: the braces must be
+the conjugator's conjugation of the cell in every region. The check earned its place on its first
+run. I had written "Lasest du das Buch schon?" as the Präteritum distractor, and the conjugator
+writes "last". Duden allows both, but the app teaches one, and a distractor that disagrees with the
+verb page is a small lie the learner could later trip over.
+
+Two decisions came from trying to automate what should not be. I first meant to compute each item's
+level from its right sentence's cell, which works beautifully until the reported-speech items, whose
+right answer in conversation ("Anna hat gesagt, sie ist krank") is the plain Präsens and would have
+landed at Beginner, two levels before the Konjunktiv I it is contrasted with. So each item names its
+level, and the check confirms that level asks its answer. And the distractor's cell is allowed to be
+one no level asks: kaufte as kaufen's Konjunktiv II is exactly the conjugation nobody uses, which is
+the point of showing it.
+
+The reasons are nine strings, not forty. Each names its conjugationgroups through placeholders, so
+"In conversation, most verbs take the Perfekt Indikativ" becomes "...the Present Perfect Indicative"
+for a learner who reads English names, and one sentence serves all eight Perfekt items.
+
+There is a small etymological knot in the Futur items. "Es klingelt. Das wird der Postbote sein" is
+the Futur of sein used as a guess about now. The name Futur comes from Latin *futurus*, "about to
+be", the future participle of *esse*, built on the root *bʰuH-*, "become, grow". German *bin* and
+*bist* come from that same root, while the infinitive *sein* comes from the other, *h₁es-*, which
+also gave Latin *est* and English *is*. Latin and German each stitched those two roots into one verb
+"to be", and a Futur of sein carries both: one in the name of its conjugationgroup, one in its verb.
+
+### What looking found
+
+Two things, neither in the new logic. Disabling the buttons once a choice was made dimmed both
+sentences, including the right one at the moment it most needed reading; they now just stop taking
+taps. And the quiz card's red rim, which I had taken for a flash on a wrong answer, turned out to be
+a toggle: after an odd number of wrong answers it stayed lit through every later question, right
+ones included. Typed quizzes had it too, but a fixture where I chose wrongly every other time made it
+impossible to miss. It now lights for 0.6 seconds.
+
+### What waits
+
+The forty items are drafts until Josh reads them, in `plans/choice-questions-batch-1.md`. Several
+are "usually" claims rather than rules: "Wo bist du gestern Abend gewesen?" is ordinary in the south,
+and "Morgen werde ich nach Berlin fahren" is not wrong, only less usual. The reasons say "usually"
+and "most" for that reason, and those are the items worth his second look.
+
+He read the sheet the same afternoon and approved all forty as written: "Looks good."

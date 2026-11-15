@@ -64,6 +64,14 @@ enum L {
       String(localized: "Accessibility.sentencesStartHint")
     }
 
+    static var speedRoundAgainHint: String {
+      String(localized: "Accessibility.speedRoundAgainHint")
+    }
+
+    static var speedRoundStartHint: String {
+      String(localized: "Accessibility.speedRoundStartHint")
+    }
+
     static var verbEssentialsStartHint: String {
       String(localized: "Accessibility.verbEssentialsStartHint")
     }
@@ -1354,6 +1362,56 @@ enum L {
 
     static var title: String {
       String(localized: "Sentences.title")
+    }
+  }
+
+  enum SpeedRound {
+    static var again: String {
+      String(localized: "SpeedRound.again")
+    }
+
+    static func announceTimeUp(_ correctCount: Int) -> String {
+      String(localized: "SpeedRound.announceTimeUp \(correctCount)")
+    }
+
+    static var announceWarning: String {
+      String(localized: "SpeedRound.announceWarning")
+    }
+
+    static func best(_ best: Int) -> String {
+      String(localized: "SpeedRound.best \(best)")
+    }
+
+    static var description: String {
+      String(localized: "SpeedRound.description")
+    }
+
+    static func descriptionWithBest(_ best: Int) -> String {
+      String(localized: "SpeedRound.descriptionWithBest \(best)")
+    }
+
+    static func locked(needed: Int, mastered: Int) -> String {
+      String(localized: "SpeedRound.locked \(needed) \(mastered)")
+    }
+
+    static func missed(_ answer: String) -> String {
+      String(localized: "SpeedRound.missed \(answer)")
+    }
+
+    static var newBest: String {
+      String(localized: "SpeedRound.newBest")
+    }
+
+    static var resultsHeading: String {
+      String(localized: "SpeedRound.resultsHeading")
+    }
+
+    static var timeLeft: String {
+      String(localized: "SpeedRound.timeLeft")
+    }
+
+    static var title: String {
+      String(localized: "SpeedRound.title")
     }
   }
 

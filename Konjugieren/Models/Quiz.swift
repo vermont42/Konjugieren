@@ -39,6 +39,18 @@ class Quiz {
   /// The conjugation's own spelling of the last answer, when that answer was right but written
   /// another way, such as with a digraph for an umlaut.
   private(set) var lastPreferredSpelling: String?
+  /// A Speed Round's last question when it was missed, whose right answer the next question shows,
+  /// since the round does not stop for a correction (Josh, 2026-11-15).
+  private(set) var speedRoundMiss: QuizItem?
+  /// The best a Speed Round had to beat, read as it finished. Nil when there was none.
+  private(set) var speedRoundPreviousBest: Int?
+  /// Whether the finished Speed Round set a new personal best.
+  private(set) var isNewSpeedRoundBest = false
+
+  /// The seconds a Speed Round has left.
+  var speedRoundSecondsLeft: Int {
+    max(SpeedRound.duration - elapsedSeconds, 0)
+  }
 
   private(set) var questions: [QuizItem] = []
   private(set) var scope = QuizScope.allVerbs
@@ -215,6 +227,10 @@ class Quiz {
 
   func submitAnswer(_ answer: String) {
     guard isInProgress, !isHeld, currentIndex < questions.count else { return }
+    if scope.isSpeedRound {
+      submitSpeedRoundAnswer(answer)
+      return
+    }
 
     let isCorrect = questions[currentIndex].accepts(answer)
     let isSecondAttempt = questions[currentIndex].isAwaitingSecondAttempt
@@ -322,6 +338,26 @@ class Quiz {
     announceChoice(choice, isCorrect: isCorrect)
   }
 
+  /// A Speed Round's answer, which never holds the round: no second attempt, no correction, no
+  /// re-ask, and nothing recorded. A miss's right answer rides on the next question.
+  private func submitSpeedRoundAnswer(_ answer: String) {
+    let isCorrect = questions[currentIndex].accepts(answer)
+    questions[currentIndex].userAnswer = answer
+    questions[currentIndex].isCorrect = isCorrect
+    if isCorrect {
+      speedRoundMiss = nil
+      acceptAnswer(preferredSpelling: questions[currentIndex].preferredSpelling(of: answer))
+    } else {
+      let question = questions[currentIndex]
+      speedRoundMiss = question
+      lastPreferredSpelling = nil
+      Current.soundPlayer.play(.buzz)
+      HapticPlayer.playError()
+      announceSpeedRoundMiss(question)
+      advance()
+    }
+  }
+
   private func awaitSecondAttempt(prompt: String) {
     lastPreferredSpelling = nil
     Current.soundPlayer.play(.pop)
@@ -378,13 +414,21 @@ class Quiz {
 
   private func advance() {
     currentIndex += 1
+    // A Speed Round draws its next batch as it reaches the last question of this one.
+    if scope.isSpeedRound, currentIndex >= questions.count - 1 {
+      questions += generateQuestions(excluding: [])
+    }
 
     if let liveActivity {
       LiveActivityManager.update(liveActivity, state: makeContentState(isFinished: false))
     }
 
     if currentIndex >= questions.count {
-      finishQuiz()
+      if scope.isSpeedRound {
+        finishSpeedRound()
+      } else {
+        finishQuiz()
+      }
     } else {
       recordProgress()
       announceQuestion()
@@ -432,6 +476,9 @@ class Quiz {
     correction = nil
     isHoldingChoice = false
     lastPreferredSpelling = nil
+    speedRoundMiss = nil
+    speedRoundPreviousBest = nil
+    isNewSpeedRoundBest = false
   }
 
   /// `excluded` names the record's items the session has already asked, which a Review, My
@@ -467,6 +514,20 @@ class Quiz {
     #endif
 
     let verbs = scope.verbs ?? Self.defaultVerbs(for: level)
+    if scope.isSpeedRound {
+      // The batch before ends with the round's current question, which the next must not repeat.
+      let previous = isInProgress ? questions.last.map { PracticeItem.exercised(by: $0.conjugationgroup, of: $0.verb, readingIndex: $0.readingIndex) } : nil
+      return QuizDraw.speedRoundQuestions(
+        for: SpeedRound.masteredItems(in: Current.practice.record),
+        pool: level.pool,
+        verbs: verbs,
+        count: SpeedRound.batchSize,
+        after: previous,
+        using: &randomSource
+      ).map { question in
+        makeQuizItem(verb: question.verb, conjugationgroup: question.conjugationgroup, readingIndex: question.readingIndex)
+      }
+    }
     if let session = scope.ablautPractice {
       return QuizDraw.ablautPracticeSteps(for: session, record: Current.practice.record, excluded: excluded, using: &randomSource)
         .flatMap(makeStep)
@@ -943,11 +1004,38 @@ class Quiz {
   private func startTimer() {
     timer = Timer.scheduledTimer(withTimeInterval: timerInterval, repeats: true) { [weak self] _ in
       MainActor.assumeIsolated {
-        guard let self else { return }
-        self.elapsedSeconds += 1
-        self.updateLiveActivityTime()
+        self?.clockTicked()
       }
     }
+  }
+
+  /// One second of the clock. A Speed Round ends when its minute is up. Called by the timer, and
+  /// by tests, which do not wait sixty seconds.
+  func clockTicked() {
+    guard isInProgress else {
+      return
+    }
+    elapsedSeconds += 1
+    updateLiveActivityTime()
+    guard scope.isSpeedRound else {
+      return
+    }
+    if speedRoundSecondsLeft == SpeedRound.warningSecondsLeft {
+      announceSpeedRoundWarning()
+    }
+    if speedRoundSecondsLeft == 0 {
+      finishSpeedRound()
+    }
+  }
+
+  /// Time is up. The question on screen, unanswered, and the rest of the batch are dropped, so the
+  /// results list what was answered, and the right answers are measured against the best.
+  private func finishSpeedRound() {
+    questions = Array(questions.prefix(currentIndex))
+    speedRoundMiss = nil
+    speedRoundPreviousBest = Current.practice.speedRoundBest
+    isNewSpeedRoundBest = Current.practice.recordSpeedRound(correctCount)
+    finishQuiz()
   }
 
   private func updateLiveActivityTime() {
@@ -1081,8 +1169,33 @@ class Quiz {
     }
   }
 
+  private func announceSpeedRoundMiss(_ question: QuizItem) {
+    guard UIAccessibility.isVoiceOverRunning else { return }
+    let answer = [question.pronoun, MixedCaseAccessibility.accessibilityLabel(for: question.correctAnswer)].compactMap { $0 }.joined(separator: " ")
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+      UIAccessibility.post(notification: .announcement, argument: L.SpeedRound.missed(answer))
+    }
+  }
+
+  private func announceSpeedRoundWarning() {
+    guard UIAccessibility.isVoiceOverRunning else { return }
+    UIAccessibility.post(notification: .announcement, argument: L.SpeedRound.announceWarning)
+  }
+
   private func announceQuizCompletion() {
     guard UIAccessibility.isVoiceOverRunning else { return }
+    if scope.isSpeedRound {
+      var announcement = L.SpeedRound.announceTimeUp(correctCount)
+      if isNewSpeedRoundBest {
+        announcement += " " + L.SpeedRound.newBest
+      } else if let speedRoundPreviousBest {
+        announcement += " " + L.SpeedRound.best(speedRoundPreviousBest)
+      }
+      DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+        UIAccessibility.post(notification: .announcement, argument: announcement)
+      }
+      return
+    }
     var announcement = "\(L.Quiz.results). \(L.Quiz.score) \(finalScore). \(L.Quiz.correct) \(correctCount) / \(questionCount)."
     if secondAttemptCount > 0 {
       announcement += " \(L.Quiz.secondTry) \(secondAttemptCount)."
@@ -1143,6 +1256,9 @@ struct QuizScope {
   /// Sentences, which asks a conjugation in a short sentence (Phase 18).
   var isSentences = false
 
+  /// The Speed Round, sixty seconds on mastered items (Phase 21).
+  var isSpeedRound = false
+
   /// Only a default quiz posts, to the leaderboard of its level, as Josh decided on 2026-11-13: a
   /// score over a learner's own verbs or conjugationgroups, or over three questions, compares with
   /// nothing. Only its first round posts.
@@ -1164,16 +1280,17 @@ struct QuizScope {
   }
 
   private var isDefaultQuiz: Bool {
-    verbs == nil && custom == nil && recordSession == nil && !isVerbEssentials && !isRecognition && !isSentences && continues
+    verbs == nil && custom == nil && recordSession == nil && !isVerbEssentials && !isRecognition && !isSentences && !isSpeedRound && continues
   }
 
   /// A Review or My Mistakes session's length is the number of items due or missed, when fewer
   /// than ten, so its signals carry neither the questions asked nor the question reached: either
   /// would tell how many answers were wrong, which Decision 5 of the pedagogy plan forbids. A
   /// mixed ablaut round can be short too, when the known groups hold few verbs, and which groups
-  /// are known comes from the learner's answers.
+  /// are known comes from the learner's answers. A Speed Round's length is how many questions the
+  /// learner answered in a minute, which measures the answers themselves.
   var sendsQuestionCounts: Bool {
-    recordSession == nil && ablautPractice?.mode != .mixed
+    recordSession == nil && ablautPractice?.mode != .mixed && !isSpeedRound
   }
 
   /// A Review, My Mistakes, or ablaut-group session asks the same whatever the level.
@@ -1191,9 +1308,9 @@ struct QuizScope {
   }
 
   /// Whether the results offer Ten More, or for Verb Essentials five more verbs. Every quiz does but
-  /// a verb page's three questions.
+  /// a verb page's three questions and a Speed Round, whose results offer a new round instead.
   var continues: Bool {
-    isVerbEssentials || questionCount == Quiz.questionCount
+    !isSpeedRound && (isVerbEssentials || questionCount == Quiz.questionCount)
   }
 
   static let verbPageQuestionCount = 3

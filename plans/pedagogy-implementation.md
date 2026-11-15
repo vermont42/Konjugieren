@@ -35,7 +35,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 18 | Partly done: the app, the check, and 117 reviewed sentences for the 25 most frequent verbs; about 625 sentences for the rest of the top 300 remain | 2026-11-15 | `9ab13cc` | T5.5 |
 | 19 | Done | 2026-11-15 | `81f3c6b` | T5.6 |
 | 20 | Done | 2026-11-15 | `2608a03` | T6.2 |
-| 21 | Not started | | | T5.7 |
+| 21 | Awaiting Josh | 2026-11-15 | | T5.7 |
 | 22 | Not started | | | T6.3 |
 | 23 | Not started | | | T6.6 (personal bests and achievements) |
 | 24 | Not started | | | T6.8 |
@@ -2150,7 +2150,7 @@ screen.
 
 ## Phase 21: Speed Round
 
-**Suggestions:** T5.7. **Depends on:** Phases 11 and 20. **Status:** Not started.
+**Suggestions:** T5.7. **Depends on:** Phases 11 and 20. **Status:** Awaiting Josh.
 
 A speed round over items already mastered, the one place where the clock counts. It belongs to
 what Paul Nation calls the fluency strand: speed for material already accurate.
@@ -2172,7 +2172,75 @@ scoring.
 
 **How it differed:**
 
-(To be written by the session that finishes this phase.)
+- **Josh decided four things on 2026-11-15**, asked before building, each the recommended option.
+  (1) The phase's Ask Josh: the round **opens at 5 mastered items and repeats them** as a round
+  needs (over opening at any number, at 10, and over topping up with items still learning, which
+  would break "only mastered"). Below 5, the hub's row is not a button and says how many are
+  mastered. He was told the arithmetic: nothing is mastered sooner than three days after its first
+  right answer. (2) **A miss does not stop the round**: the next question appears at once, with the
+  missed one's right answer above it, and the clock runs on; no second attempt, no re-ask (over a
+  brief hold with the clock running, and over holding until Continue). (3) **A mastered key
+  conjugation asks any cell of its stem that the level asks**, or its own er cell where the level
+  asks none (mastered fuhr asks du fuhrst at Intermediate, er fuhr at Elementary), which is what
+  Phase 11's mapping credits; a pattern asks a fresh weak verb of the band each time (over the
+  item's own cell alone). (4) **The round records nothing**, right or wrong (over right answers
+  moving a due item up), so that the record is not one-sided.
+- **Decided in the session.** The name is **"Speed Round" / "Blitzrunde"**, a row at the foot of the
+  hub's Exercises with a bolt; Josh can change it. Mastered items are **not held to the level**
+  beyond the cells a key conjugation's stem asks, since a mastered item stays mastered when the
+  level changes; a pattern mastered at Advanced is still asked at Elementary. **One personal best**,
+  not one per level (Phase 23 does per-level bests for quizzes), kept by `PracticeStore` beside the
+  last result and forgotten by Reset Practice, whose description and alert now say so. A round with
+  none right sets no best. The results offer **"Another Round"**, which starts a fresh minute, and
+  show "Right Answers in 60 Seconds", the count, and "New personal best!" or "Your best: n". The
+  card shows "Correct" and "Time Left" whatever the clock setting, the last ten seconds red, and no
+  row of dots, since its questions are drawn as it goes. The hub's Last Quiz row shows the round
+  without points.
+- **How it is built.** `Models/SpeedRound.swift`: `SpeedRound` (the constants and
+  `masteredItems(in:)`), `QuizScope.speedRound()`, and `QuizDraw.speedRoundQuestions` with
+  `speedRoundCells`. In `Quiz`: `submitSpeedRoundAnswer`, `speedRoundMiss`, a batch of ten drawn
+  in `advance()` as the round reaches the last question, and `clockTicked()`, the timer's tick made a
+  method so that tests run a minute without waiting one. At zero the question on screen and the rest
+  of the batch are dropped, and the best is measured. `QuizScope.continues` is false, so there is no
+  Ten More, Live Activity, or level tip.
+- **Analytics.** A new `source` value, `speedRound`. **No counts** (`QuizScope.sendsQuestionCounts`):
+  a round's length is how many questions were answered in a minute. The best is never sent. Staged in
+  [`docs/privacy-policy-pending.md`](../docs/privacy-policy-pending.md) in both languages: the quiz
+  bullet, the section 6 sentence, Phase 12's sentence about counts, and the practice-record
+  paragraph, which now names the best.
+- **VoiceOver.** A miss is announced with its right answer ("Incorrect. The answer was er fährt."),
+  so is "Ten seconds left.", and the end ("Time is up. Right answers: 12. New personal best!"). The
+  miss line reads the same; the row and Another Round have hints. Read from the accessibility tree;
+  nobody has listened to it, and a miss's announcement may overlap the next question's spoken verb.
+- **Also fixed: starting a session from the hub now gives the answer field the keyboard**, which
+  Phases 15 and 17 noted and left; a running clock made it matter. So does closing the results with
+  Another Round.
+- **Tests:** `SpeedRoundTests`, 18 functions. Ten on the parts: the third box as mastered, unaskable
+  items left out, only mastered items asked, each in turn and never twice running across batches,
+  one item repeated, nothing from nothing, a pattern's weak verbs of the band, a key conjugation's
+  stem cells at three levels, the scope, and the best across a launch and a reset. Eight nested in
+  `QuizTests`: nothing mastered starting nothing, a right answer counting and a miss moving on at
+  once with its answer kept, a slip as a miss, the record and error history untouched, every
+  question a mastered item over 25 answers, sixty ticks ending the round with the unanswered
+  question dropped and the best kept then not beaten, no score posted and no counts sent, and a
+  pause keeping the time. Run in English with `xcodebuild -testLanguage en`: 879 passed and 2
+  skipped (the environment-gated harnesses), 881 in all.
+- **Verified on the iPhone 17**, in dark mode at Grundstufe, with eight items moved to the third box
+  of its real record (and the App Group's defaults restored afterward, checked key by key against
+  the backup). In German: the locked row ("Bisher: 0") before seeding, the open row after, a round
+  whose field had the keyboard at once (fahren's er Präsens), fahrt answered and "fahren · er fährt"
+  above brauchen's Perfekt, a right answer, and time running out to results of 1, "Neuer
+  Bestwert!", "Richtig: 1 / 2", the unanswered gehen dropped. In English: the hub's "Best: 1" and
+  Last Quiz row without points, a miss, the countdown as 0:57, results of 0 with "Your best: 1", and
+  Another Round, whose field took typing at once (kam), then fahren's du Imperativ, a Präsens-stem
+  cell of mastered fährt. **On the iPad Pro 11-inch (M5)**, in light mode and English at Advanced,
+  with six items seeded and restored the same way: the hub's row, aufstehen's du Präteritum
+  Konjunktiv II and singen's (mastered Präteritum stems in cells only Advanced asks), a miss, and
+  results of 0 with no best line. Not tried: VoiceOver by ear, the software keyboard, a round with a
+  new best beaten on the device (unit-tested), and a learner's record mastered by real days.
+- **Found by looking.** The countdown read "1:00" then "59", since `formatIntTime` drops the minutes
+  below one; it now uses `formatMinutesSeconds`. The locked row's German runs to five lines on an
+  iPhone, since it says what mastered means; Josh may want it shorter.
 
 ## Phase 22: A Daily Session and a Streak
 

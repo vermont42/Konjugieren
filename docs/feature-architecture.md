@@ -129,6 +129,7 @@ quiz in a sheet shows) and `collectionKey` (which `startQuiz` names).
 | `.ablautPractice(_:)` | Verb Essentials over an ablaut group's ten most frequent verbs, alone, or mixed: three of the group's verbs and two of the known groups' (pedagogy Phase 16), in a sheet | Up to 15, then another round | `ablautAlone` or `ablautMixed` | No |
 | `.recognition()` | Name the Conjugation: the level's pool and band, each question a conjugation to name by infinitive, conjugationgroup, and person (pedagogy Phase 17) | 10, then Ten More | `recognition` | No |
 | `.sentences()` | Sentences: the authored sentences whose verb is in the level's band and whose cell is in its pool, one a verb where they allow (pedagogy Phase 18) | Up to 10, then Ten More | `sentences` | No |
+| `.speedRound()` | Speed Round: the practice record's mastered items, in turn, for 60 seconds (pedagogy Phase 21) | As many as answered in a minute, drawn 10 at a time; then another round | `speedRound` | No |
 
 A quiz whose rounds are ten (`QuizScope.continues`) draws as above. The verb page's three
 questions ask distinct cells and no participle, from the learner's level, since every Perfekt
@@ -749,12 +750,59 @@ default round, Ten More's included, from Elementary up (Josh, 2026-11-13 and 202
 - **The fixture** `KONJUGIEREN_QUIZ_FIXTURE choices` asks ten choice questions, one per reason, when
   the default quiz is started.
 
+### Speed Round
+
+Built 2026-11-15 in Phase 21 of [`plans/pedagogy-implementation.md`](../plans/pedagogy-implementation.md)
+(T5.7): sixty seconds of questions on items already mastered, counting right answers. It is Paul
+Nation's fluency strand, speed for material already accurate, and the one place the clock counts.
+"Speed Round" / "Blitzrunde", a row in the hub's Exercises.
+
+- **What it asks** (`Models/SpeedRound.swift`). `SpeedRound.masteredItems(in:)`: the record's items
+  in box 2 or higher (`MasteryState.masteredBox`, the seven-day interval, as on the Mastery page),
+  that can still be asked, in key order. `QuizDraw.speedRoundQuestions` asks each item once before
+  any again, never the same item twice running, the last of the batch before included. A mastered
+  key conjugation asks any cell built on its stem that the level asks of the verb, or its own er
+  cell (`QuizDraw.speedRoundCells`: mastered fuhr can ask du fuhrst at Intermediate, and asks er fuhr
+  at Elementary, whose Präteritum is sein's, haben's, and the modals'). A pattern asks its cell of a
+  weak verb of the level's band, a fresh one each time. Otherwise not held to the level, since a
+  mastered item stays mastered when the level changes (Josh, 2026-11-15, all four).
+- **When it opens.** At `SpeedRound.minimumMasteredCount`, 5 mastered items; a round repeats them as
+  it needs. Below that the row is not a button and says how many are mastered so far.
+- **The round.** `QuizScope.speedRound()`; `Quiz.generateQuestions` draws `SpeedRound.batchSize`, 10,
+  and `advance()` draws another batch as the round reaches the last question of this one. An answer
+  (`Quiz.submitSpeedRoundAnswer`) never holds: no second attempt (a slip is a miss), no diagnosis, no
+  correction, no re-ask. A miss's right answer shows above the next question
+  (`Quiz.speedRoundMiss`, `SpeedRoundMissLine`), "fahren · er fährt". The card shows "Correct" and
+  "Time Left" (0:59 …) whatever the clock setting, the last ten seconds in red; there is no row of
+  dots, since the questions are drawn as it goes.
+- **The clock.** `Quiz.clockTicked()`, which the timer calls each second and tests call directly.
+  At 0 (`speedRoundSecondsLeft`) the round ends: the question on screen, unanswered, and the rest of
+  the batch are dropped, so the results list what was answered. Leaving the app pauses it, as for
+  every quiz.
+- **Nothing recorded.** The round leaves the practice record and `QuizErrorHistory` untouched: a miss
+  does not send an item down the ladder, since speed errors are often haste (Josh, 2026-11-13), and
+  counting only hits would make the record one-sided (Josh, 2026-11-15).
+- **The personal best** (`PracticeStore.speedRoundBest`, under `speedRoundBest` in the App Group) is
+  the most right answers in one round, kept on the device. `recordSpeedRound(_:)` keeps a count that
+  beats it (a round with none right sets none). Reset Practice forgets it. The results show "Right
+  Answers in 60 Seconds", the count, "New personal best!" or "Your best: n", the questions, and
+  Another Round, which starts a fresh round; the hub's row shows "Best: n". The last result's kind is
+  `.speedRound`, and its row shows no points.
+- **Never ranked, never continued** (`continues` false: no Ten More, no Live Activity, no level tip).
+- **Signals.** `source` `speedRound` on the quiz signals. **No counts**
+  (`QuizScope.sendsQuestionCounts`): a round's length is how many questions were answered in a
+  minute, a measure of the answers. The best is never sent.
+- **VoiceOver.** A miss is announced ("Incorrect. The answer was er fährt."), so is "Ten seconds
+  left.", and the end ("Time is up. Right answers: 12. New personal best!"). The miss line reads the
+  same. The row has a hint, and so does Another Round.
+
 ### The Quiz Clock
 
 `Settings.quizClock` (`QuizClock`: `.hide`, `.show`), default `.hide` (T6.5). While it is hidden,
 the quiz card, the results, and the Live Activity show no time; `elapsedTimeLiveActivity` is nil
 and the timer's Live Activity updates are skipped. The clock still counts, still stops while a
-correction is held, and still runs across Ten More.
+correction is held, and still runs across Ten More. A Speed Round shows its time left whatever the
+setting.
 
 ### Scoring
 

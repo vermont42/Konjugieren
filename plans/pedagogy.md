@@ -956,6 +956,14 @@ würde or a one-word Konjunktiv II, the Präsens or the Futur, and the Konjunkti
 in reported speech, each leveled with Phase 5. A machine check confirms both sentences against the
 conjugator, and Josh reviewed and approved all forty.
 
+**Built on `main` 2026-11-15** by [Phase 21](pedagogy-implementation.md#phase-21-speed-round)
+of the pedagogy plan: the Speed Round ("Blitzrunde"), from the hub's Exercises, asks for sixty
+seconds what the practice record says is mastered (the third box of the ladder, a week or more to
+the next review) and counts right answers. A mastered key conjugation asks any cell of its stem
+that the level asks, and a mastered pattern a fresh weak verb each time. A miss does not stop the
+round: its right answer rides on the next question. The round opens once five items are mastered,
+records nothing in the practice record, and keeps a personal best on the device.
+
 ### Tier 6: Rebuild Motivation Around Progress
 
 | Suggestion | Basis | Effort | Verdict |

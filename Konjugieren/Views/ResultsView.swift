@@ -10,6 +10,9 @@ struct ResultsView: View {
   @State private var shownExamples: Set<UUID> = []
 
   private var scoreColor: Color {
+    if quiz.scope.isSpeedRound {
+      return quiz.isNewSpeedRoundBest ? .green : .customYellow
+    }
     // A right second attempt and a right re-ask earn half points, and the credit here follows
     // the points.
     let percentage = Double(quiz.score) / Double(max(quiz.maximumScore, 1))
@@ -29,7 +32,7 @@ struct ResultsView: View {
 
       VStack(alignment: .leading, spacing: 0) {
         VStack(spacing: Layout.defaultSpacing) {
-          Text(L.Quiz.results)
+          Text(quiz.scope.isSpeedRound ? L.SpeedRound.resultsHeading : L.Quiz.results)
             .subheadingLabel()
             .accessibilityAddTraits(.isHeader)
 
@@ -37,8 +40,12 @@ struct ResultsView: View {
             .font(.system(size: 48, weight: .bold, design: .rounded))
             .foregroundStyle(scoreColor)
             .contentTransition(.numericText())
-            .accessibilityLabel(Text(verbatim: "\(L.Quiz.score) \(quiz.finalScore)"))
+            .accessibilityLabel(Text(verbatim: quiz.scope.isSpeedRound ? "\(quiz.correctCount)" : "\(L.Quiz.score) \(quiz.finalScore)"))
             .accessibilityIdentifier("results_score")
+
+          if quiz.scope.isSpeedRound {
+            speedRoundBest
+          }
 
           // A flow, since a second try and a re-ask can make five items, more than an iPhone's
           // line holds.
@@ -60,7 +67,7 @@ struct ResultsView: View {
               Text(label: L.Quiz.level, value: quiz.level.localizedName)
                 .font(.caption)
             }
-            if settings.quizClock == .show {
+            if settings.quizClock == .show, !quiz.scope.isSpeedRound {
               Text(label: L.Quiz.time, value: TimeFormatter.formatIntTime(quiz.elapsedSeconds))
                 .font(.caption.monospacedDigit())
             }
@@ -72,7 +79,18 @@ struct ResultsView: View {
         .padding(.horizontal, Layout.doubleDefaultSpacing)
         .padding(.top, Layout.tripleDefaultSpacing)
 
-        if quiz.canContinue {
+        if quiz.scope.isSpeedRound {
+          Button {
+            quiz.start(scope: .speedRound())
+          } label: {
+            Label(L.SpeedRound.again, systemImage: "bolt.fill")
+          }
+          .funButton()
+          .frame(maxWidth: .infinity)
+          .padding(.top, Layout.doubleDefaultSpacing)
+          .accessibilityHint(L.Accessibility.speedRoundAgainHint)
+          .accessibilityIdentifier("results_speed_round_again")
+        } else if quiz.canContinue {
           Button {
             quiz.continueSession()
           } label: {
@@ -103,8 +121,24 @@ struct ResultsView: View {
     }
     .onAppear {
       withAnimation(.easeOut(duration: 0.6)) {
-        displayedScore = quiz.finalScore
+        displayedScore = quiz.scope.isSpeedRound ? quiz.correctCount : quiz.finalScore
       }
+    }
+  }
+
+  /// "New personal best!", or the best this round did not beat.
+  @ViewBuilder
+  private var speedRoundBest: some View {
+    if quiz.isNewSpeedRoundBest {
+      Label(L.SpeedRound.newBest, systemImage: "star.fill")
+        .font(.headline)
+        .foregroundStyle(.customYellow)
+        .accessibilityIdentifier("results_speed_round_new_best")
+    } else if let best = quiz.speedRoundPreviousBest {
+      Text(L.SpeedRound.best(best))
+        .font(.subheadline)
+        .foregroundStyle(.secondary)
+        .accessibilityIdentifier("results_speed_round_best")
     }
   }
 

@@ -2548,6 +2548,38 @@
         }
       }
     },
+    "Accessibility.speedRoundAgainHint" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Startet eine weitere Runde von 60 Sekunden."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starts another 60-second round."
+          }
+        }
+      }
+    },
+    "Accessibility.speedRoundStartHint" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Startet 60 Sekunden Fragen zu dem, was du beherrschst."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starts 60 seconds of questions on what you have mastered."
+          }
+        }
+      }
+    },
     "Accessibility.verbEssentialsMoreHint" : {
       "localizations" : {
         "de" : {
@@ -8879,13 +8911,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Die App vergisst, welche Konjugationen du geübt hast, wann jede wieder ansteht und das Ergebnis deines letzten Quiz. Deine Verben mit Stern und deine zuletzt geöffneten Verben bleiben. Das lässt sich nicht rückgängig machen."
+            "value" : "Die App vergisst, welche Konjugationen du geübt hast, wann jede wieder ansteht, das Ergebnis deines letzten Quiz und deinen Bestwert in der Blitzrunde. Deine Verben mit Stern und deine zuletzt geöffneten Verben bleiben. Das lässt sich nicht rückgängig machen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The app will forget which conjugations you have practiced, when each is due again, and your last quiz's results. Your starred and recent verbs stay. This cannot be undone."
+            "value" : "The app will forget which conjugations you have practiced, when each is due again, your last quiz's results, and your Speed Round best. Your starred and recent verbs stay. This cannot be undone."
           }
         }
       }
@@ -8911,13 +8943,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Diese Schaltfläche löscht deinen Übungsstand, der auf deinem Gerät bleibt: welche Konjugationen du beim Quiz und auf Wiederholungskarten geübt hast, wie es lief, wann jede wieder ansteht und das Ergebnis deines letzten Quiz."
+            "value" : "Diese Schaltfläche löscht deinen Übungsstand, der auf deinem Gerät bleibt: welche Konjugationen du beim Quiz und auf Wiederholungskarten geübt hast, wie es lief, wann jede wieder ansteht, das Ergebnis deines letzten Quiz und deinen Bestwert in der Blitzrunde."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This button erases your practice record, which stays on your device: which conjugations you have practiced in quizzes and on review cards, how each went, when each is due again, and your last quiz's results."
+            "value" : "This button erases your practice record, which stays on your device: which conjugations you have practiced in quizzes and on review cards, how each went, when each is due again, your last quiz's results, and your Speed Round best."
           }
         }
       }
@@ -9014,6 +9046,198 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "3P-Pronoun Gender"
+          }
+        }
+      }
+    },
+    "SpeedRound.again" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Noch eine Runde"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Another Round"
+          }
+        }
+      }
+    },
+    "SpeedRound.announceTimeUp %lld" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Die Zeit ist um. Richtige Antworten: %lld."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Time is up. Right answers: %lld."
+          }
+        }
+      }
+    },
+    "SpeedRound.announceWarning" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Noch zehn Sekunden."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ten seconds left."
+          }
+        }
+      }
+    },
+    "SpeedRound.best %lld" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dein Bestwert: %lld"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your best: %lld"
+          }
+        }
+      }
+    },
+    "SpeedRound.description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "So viele richtige Antworten wie möglich in 60 Sekunden, zu dem, was du beherrschst"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "As many right answers as you can in 60 seconds, on what you have mastered"
+          }
+        }
+      }
+    },
+    "SpeedRound.descriptionWithBest %lld" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "So viele richtige Antworten wie möglich in 60 Sekunden, zu dem, was du beherrschst · Bestwert: %lld"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "As many right answers as you can in 60 seconds, on what you have mastered · Best: %lld"
+          }
+        }
+      }
+    },
+    "SpeedRound.locked %lld %lld" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öffnet sich ab %1$lld beherrschten Mustern oder Konjugationen starker Verben, also solchen, deren nächste Wiederholung frühestens in einer Woche ansteht. Bisher: %2$lld"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opens at %1$lld mastered patterns or strong-verb conjugations, those whose next review is a week or more away. So far: %2$lld"
+          }
+        }
+      }
+    },
+    "SpeedRound.missed %@" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Falsch. Richtig war %@."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Incorrect. The answer was %@."
+          }
+        }
+      }
+    },
+    "SpeedRound.newBest" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neuer Bestwert!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New personal best!"
+          }
+        }
+      }
+    },
+    "SpeedRound.resultsHeading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Richtige Antworten in 60 Sekunden"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Right Answers in 60 Seconds"
+          }
+        }
+      }
+    },
+    "SpeedRound.timeLeft" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Restzeit:"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Time Left:"
+          }
+        }
+      }
+    },
+    "SpeedRound.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Blitzrunde"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Speed Round"
           }
         }
       }

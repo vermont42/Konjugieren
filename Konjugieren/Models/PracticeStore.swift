@@ -9,6 +9,8 @@ final class PracticeStore {
   private(set) var record: PracticeRecord
   /// The results of the last quiz the learner saw, for the Quiz tab's hub.
   private(set) var lastResult: LastQuizResult?
+  /// The most right answers in one Speed Round, kept on the device and sent nowhere (Phase 21).
+  private(set) var speedRoundBest: Int?
   private let getterSetter: GetterSetter
   private let calendar: Calendar
 
@@ -35,7 +37,10 @@ final class PracticeStore {
       save()
     }
     lastResult = getterSetter.getCodable(key: LastQuizResult.storageKey)
+    speedRoundBest = getterSetter.getCodable(key: Self.speedRoundBestKey)
   }
+
+  static let speedRoundBestKey = "speedRoundBest"
 
   var isEmpty: Bool {
     record.isEmpty
@@ -117,13 +122,27 @@ final class PracticeStore {
     getterSetter.setCodable(key: LastQuizResult.storageKey, value: result)
   }
 
-  /// Settings' Reset Practice, which forgets the last result too. The record is saved empty
+  /// A finished Speed Round's right answers, kept when they beat the best. Returns whether they did.
+  /// A round with none right sets no best.
+  @discardableResult
+  func recordSpeedRound(_ correctCount: Int) -> Bool {
+    guard correctCount > (speedRoundBest ?? 0) else {
+      return false
+    }
+    speedRoundBest = correctCount
+    getterSetter.setCodable(key: Self.speedRoundBestKey, value: correctCount)
+    return true
+  }
+
+  /// Settings' Reset Practice, which forgets the last result and the Speed Round's best too. The record is saved empty
   /// rather than removed, so that the next launch does not migrate the old schedules again.
   func reset() {
     record.reset()
     save()
     lastResult = nil
     getterSetter.remove(key: LastQuizResult.storageKey)
+    speedRoundBest = nil
+    getterSetter.remove(key: Self.speedRoundBestKey)
   }
 
   private func save() {

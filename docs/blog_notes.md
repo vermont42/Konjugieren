@@ -11353,3 +11353,72 @@ byte. Reading that record taught one small thing: `defaults read` prints ü as t
 `\374`, which is not JSON, so the seeding script reads the plist through `defaults export` instead.
 
 Josh has not judged it on a device yet, and the phase is not done until he has.
+
+## The Speed Round (2026-11-15)
+
+Phase 21 of the pedagogy plan adds the one place where Konjugieren's clock counts: sixty seconds of
+questions on what the practice record says is already mastered, counting right answers. The report
+filed it under Paul Nation's fluency strand, speed for material that is already accurate, which is
+a different thing from the accuracy every other mode trains. Josh had settled the frame on
+2026-11-13 (sixty seconds, the third box of the ladder as "mastered", a best kept on the device, and
+no demotion for a miss, since speed errors are often haste) and left one question until Phase 20
+showed how fast items reach that box.
+
+### Four decisions
+
+The ladder answers the open question by arithmetic. A new item answered right enters the second
+box, due in three days, and climbs only when answered right again once due, so nothing is mastered
+sooner than three days after its first right answer. A learner who quizzes daily has a few patterns
+mastered by day four. I put that to Josh with three related choices, and he took the recommended
+option each time:
+
+- **Open at five mastered items, and repeat them as a round needs.** Below five, the row says how
+  many are mastered so far. Topping up with items still learning was the alternative, and it would
+  have broken the phase's one rule.
+- **A miss does not stop the round.** The next question appears at once, and the missed one's right
+  answer rides above it ("fahren · er fährt"). Holding a correction, as every other mode does, would
+  have turned the clock off just when it is the point.
+- **A mastered item asks any cell of its stem that the level asks.** Mastered fuhr can come back as
+  du fuhrst or wir fuhren, which is exactly what Phase 11's mapping already credits to the fuhr
+  item. Without this, five mastered items would be five questions asked over and over.
+- **The round records nothing.** Misses were already not to demote, and promoting on hits alone would
+  make the record a ratchet that only turns one way.
+
+### How it fits the quiz
+
+It is a scope like the other exercises (`QuizScope.speedRound()`), so the card, the answer frame,
+the letter keys, the results sheet, and the quit trombone all come for free. What differs lives in
+three places. The draw (`QuizDraw.speedRoundQuestions`) cycles the mastered items in a fresh order,
+never the same item twice running, and draws ten at a time, topping up as the learner reaches the
+last, since nobody knows in advance how many a learner answers in a minute. The answer path skips
+second attempts, diagnoses, corrections, and re-asks. And the timer's tick became a method,
+`clockTicked()`, so tests can run a minute in a loop instead of waiting one. At zero, the question
+on screen is dropped, so the results list only what was answered.
+
+Analytics carries the new `source` and no counts. A round's length is how many questions the
+learner answered in a minute, which is a measure of the answers, and Decision 5 keeps those on the
+device. The best lives beside the practice record, and Reset Practice forgets it.
+
+### Found by looking
+
+Two things showed up on the simulator that the tests could not see. The countdown read "1:00", then
+"59": `formatIntTime` drops the minutes below one, which suits elapsed time and looks broken in a
+countdown. It now reads 0:59. And starting any session from the hub never gave the answer field the
+keyboard, which Phases 15 and 17 both noted and left. With a clock running from the first second,
+that was no longer a cosmetic issue, so the hub now focuses the field when a session starts, and
+again when Another Round closes the results sheet. Every hub session benefits.
+
+Seeding the simulators' records taught one more thing about `defaults`: `defaults import` merges
+into a domain rather than replacing it, so restoring a backup left the new `speedRoundBest` key
+behind until it was deleted by name. The check that caught it compared the exported plist with the
+backup, key by key.
+
+### The German name
+
+The German is "Blitzrunde", what German quiz shows call their lightning round. *Blitz* goes back to
+Middle High German *blitzen*, "to flash", and further to Old High German *blecchazzen*, an intensive
+of a verb for gleaming that also gave *Blick*, a glance, which first meant a flash of light. English
+borrowed the word twice: once in 1939, and once at the chessboard, where speed chess is "blitz"
+after German *Blitzschach*. The Speed Round is blitz chess for conjugations.
+
+Tests: 18 new, 881 in all, 879 passed and the 2 environment-gated harnesses skipped.

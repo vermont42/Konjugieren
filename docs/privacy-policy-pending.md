@@ -795,3 +795,67 @@ Der Absatz über den Übungsstand lautet nun:
 ```
 Die App führt außerdem einen Übungsstand: welche Konjugationen Sie im Quiz und auf Wiederholungskarten geübt haben, ob Ihre letzte Antwort darauf richtig war, wann jede wieder zur Wiederholung ansteht und das Ergebnis Ihres letzten Quiz, damit sie Wiederholungskarten zeigen, Verfehltes wiederholen, zeigen kann, wie Ihr letztes Quiz lief, und zeigen kann, welche Konjugationen Sie beherrschen. Der Übungsstand bleibt auf Ihrem Gerät und wird nie gesendet. „Übungsstand zurücksetzen“ in den Einstellungen löscht ihn.
 ```
+
+## Speed Round (pedagogy plan, Phase 21, 2026-11-15)
+
+Adds the value `speedRound` to the quiz signals' `source`, for the Speed Round ("Blitzrunde"), an
+exercise begun from the Quiz tab that asks, for sixty seconds, conjugations the practice record says
+the learner has mastered. **It sends no counts**: neither `completeQuiz`'s `questionCount` nor
+`quitQuiz`'s and `abandonQuiz`'s `questionNumber`, since a round's length is how many questions the
+learner answered in a minute, a measure of the answers (Decision 5). It posts no score. Its answers
+go nowhere, not even into the practice record. The learner's best round, the most right answers in
+one, is kept on the device beside the practice record and never sent, so the practice-record
+paragraph names it. The lines change the first quiz bullet, the section 6 sentence, the Phase 12
+sentence about counts, and the practice-record paragraph as last given above.
+
+### English
+
+The first quiz bullet in section 2 now reads:
+
+```
+- Quiz lifecycle events (starting, quitting, completing a round of questions, and how many rounds the quiz has reached), and where the quiz was begun: the quiz screen, your own verbs, a verb's page, a collection, and which collection, a quiz you put together, and whether you chose conjugationgroups, verbs, or both (not which), a practice set someone shared with you, and whether it came as a link or a QR code, a review of your due questions or of your mistakes, the Verb Essentials exercise, the practice of an ablaut group, alone or mixed, and which group, the Name the Conjugation exercise, the Sentences exercise, or the Speed Round
+```
+
+The sentence in section 6 now reads:
+
+```
+Only the first ten questions of a quiz over all verbs post a score, to the leaderboard of the quiz's level; a quiz over your own verbs, a single verb, conjugationgroups and verbs you chose, or your due questions or mistakes does not, nor do Verb Essentials, the practice of an ablaut group, Name the Conjugation, Sentences, and the Speed Round, and neither do the ten more questions you may add.
+```
+
+The sentence about counts now reads:
+
+```
+A review of your due questions or of your mistakes, and a Speed Round, report neither how many questions they asked nor how far you got, since either would tell how many answers you had missed, or how quickly you answered.
+```
+
+The practice-record paragraph now reads:
+
+```
+The app also keeps a practice record: which conjugations you have practiced in quizzes and on review cards, whether your last answer to each was right, when each is due for review, the results of your last quiz, and your best Speed Round, so that it can show review cards, bring back what you missed, show how your last quiz went, show which conjugations you have mastered, and show your best. The record stays on your device and is never sent. Reset Practice in Settings erases it.
+```
+
+### German
+
+Der erste Punkt über das Quiz in Abschnitt 2 lautet nun:
+
+```
+- Quiz-Lebenszyklus-Ereignisse (Starten, Abbrechen, Abschließen einer Fragerunde und wie viele Runden das Quiz erreicht hat) und wo das Quiz begonnen wurde: auf dem Quiz-Bildschirm, mit Ihren eigenen Verben, auf der Seite eines Verbs, in einer Sammlung, samt der Angabe, welche Sammlung, in einem selbst zusammengestellten Quiz, samt der Angabe, ob Sie Conjugationgroups, Verben oder beides gewählt haben (nicht aber, welche), in einem Übungsset, das jemand mit Ihnen geteilt hat, samt der Angabe, ob es als Link oder als QR-Code kam, bei der Wiederholung Ihrer anstehenden Fragen oder Ihrer Fehler, in der Übung „Verb-Grundlagen“, in der Übung einer Ablautgruppe, allein oder gemischt, samt der Angabe, welche Gruppe, in der Übung „Konjugationen bestimmen“, in der Übung „Lückensätze“ oder in der „Blitzrunde“
+```
+
+Der Satz in Abschnitt 6 lautet nun:
+
+```
+Nur die ersten zehn Fragen eines Quiz über alle Verben reichen ein Ergebnis ein, und zwar in der Bestenliste der Stufe des Quiz; ein Quiz über Ihre eigenen Verben, ein einzelnes Verb, selbst gewählte Conjugationgroups und Verben oder Ihre anstehenden Fragen oder Fehler tut das nicht, ebenso wenig die Verb-Grundlagen, die Übung einer Ablautgruppe, „Konjugationen bestimmen“, „Lückensätze“, die „Blitzrunde“ und die zehn weiteren Fragen, die Sie anhängen können.
+```
+
+Der Satz über die Anzahl der Fragen lautet nun:
+
+```
+Eine Wiederholung Ihrer anstehenden Fragen oder Ihrer Fehler und eine „Blitzrunde“ melden weder, wie viele Fragen sie gestellt haben, noch, wie weit Sie gekommen sind, denn beides verriete, wie viele Antworten Sie verfehlt hatten oder wie schnell Sie geantwortet haben.
+```
+
+Der Absatz über den Übungsstand lautet nun:
+
+```
+Die App führt außerdem einen Übungsstand: welche Konjugationen Sie im Quiz und auf Wiederholungskarten geübt haben, ob Ihre letzte Antwort darauf richtig war, wann jede wieder zur Wiederholung ansteht, das Ergebnis Ihres letzten Quiz und Ihren Bestwert in der „Blitzrunde“, damit sie Wiederholungskarten zeigen, Verfehltes wiederholen, zeigen kann, wie Ihr letztes Quiz lief, welche Konjugationen Sie beherrschen und was Ihr Bestwert ist. Der Übungsstand bleibt auf Ihrem Gerät und wird nie gesendet. „Übungsstand zurücksetzen“ in den Einstellungen löscht ihn.
+```

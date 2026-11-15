@@ -154,8 +154,24 @@ struct QuizView: View {
       if sheetScope != nil, !quiz.isInProgress {
         dismiss()
       }
+      // Another Speed Round, started from the results, runs its clock from the start, so the
+      // field takes the keyboard as soon as the sheet has gone.
+      if quiz.isInProgress {
+        focusedBlank = 0
+      }
     }) {
       ResultsView(quiz: quiz)
+    }
+    // A session started from the hub takes the keyboard at once, as a sheet's does, which a Speed
+    // Round's running clock needs most.
+    .onChange(of: quiz.isInProgress) { _, isInProgress in
+      guard isInProgress, sheetScope == nil, quiz.roundCount == 1 else {
+        return
+      }
+      Task { @MainActor in
+        try? await Task.sleep(for: .milliseconds(100))
+        focusedBlank = 0
+      }
     }
     .onChange(of: quiz.currentIndex) {
       answerBlanks = []
@@ -223,6 +239,10 @@ struct QuizView: View {
     let currentRow = currentRowIndex.flatMap { essentialsRows?[$0] }
     VStack(spacing: Layout.doubleDefaultSpacing) {
       VStack(alignment: .leading, spacing: Layout.defaultSpacing) {
+        if let miss = quiz.speedRoundMiss {
+          SpeedRoundMissLine(question: miss)
+        }
+
         if question.isReask {
           Label(L.Quiz.askedAgain, systemImage: "arrow.counterclockwise")
             .font(.subheadline.bold())
@@ -277,13 +297,17 @@ struct QuizView: View {
           }
         }
 
-        HStack {
-          Text(label: L.Quiz.score, value: "\(quiz.score)")
-            .font(.caption.monospacedDigit())
-          Spacer()
-          if settings.quizClock == .show {
-            Text(label: L.Quiz.elapsed, value: quiz.elapsedText)
+        if quiz.scope.isSpeedRound {
+          speedRoundStatus
+        } else {
+          HStack {
+            Text(label: L.Quiz.score, value: "\(quiz.score)")
               .font(.caption.monospacedDigit())
+            Spacer()
+            if settings.quizClock == .show {
+              Text(label: L.Quiz.elapsed, value: quiz.elapsedText)
+                .font(.caption.monospacedDigit())
+            }
           }
         }
 
@@ -444,34 +468,56 @@ struct QuizView: View {
       .padding(.horizontal, Layout.doubleDefaultSpacing)
       .padding(.top, Layout.doubleDefaultSpacing)
 
-      // Wraps, since Ten More and re-asks can take the row past thirty dots, wider than an iPhone.
-      FlowLayout(spacing: 4, centersRows: true) {
-        ForEach(Array(quiz.questions.enumerated()), id: \.element.id) { index, item in
-          // A re-ask's dot is a diamond, so the row shows which questions return.
-          Image(systemName: item.isReask ? "diamond.fill" : "circle.fill")
-            .font(.system(size: 8))
-            .frame(width: 8, height: 8)
-            .foregroundStyle(item.state.dotColor)
-            .scaleEffect(index == quiz.currentIndex ? 1.4 : 1.0)
-            .symbolEffect(
-              .pulse.byLayer,
-              options: reduceMotion ? .nonRepeating : .repeating,
-              isActive: index == quiz.currentIndex
-            )
-            .animation(.spring(duration: 0.3), value: item.isCorrect)
-        }
+      // A Speed Round's questions are drawn as it goes, so it has no row of what is to come.
+      if !quiz.scope.isSpeedRound {
+        progressDots
       }
-      .padding(.horizontal, Layout.doubleDefaultSpacing)
-      .accessibilityElement(children: .ignore)
-      .accessibilityLabel(L.Accessibility.quizDotRow(
-        current: quiz.currentIndex + 1,
-        total: quiz.questions.count,
-        correct: quiz.questions.filter { $0.state == .correct }.count,
-        secondTry: quiz.questions.filter { $0.state == .correctOnSecondAttempt }.count,
-        incorrect: quiz.questions.filter { $0.state == .incorrect }.count,
-        remaining: quiz.questions.count - quiz.currentIndex - 1
-      ))
     }
+  }
+
+  /// The right answers so far and the time left, which shows whatever the clock setting, since this
+  /// is the one place the clock counts (T5.7). The last seconds turn red.
+  private var speedRoundStatus: some View {
+    HStack {
+      Text(label: L.Quiz.correct, value: "\(quiz.correctCount)")
+        .accessibilityIdentifier("speed_round_correct")
+      Spacer()
+      Text(label: L.SpeedRound.timeLeft, value: TimeFormatter.formatMinutesSeconds(quiz.speedRoundSecondsLeft))
+        .foregroundStyle(quiz.speedRoundSecondsLeft <= SpeedRound.warningSecondsLeft ? Color.customRed : Color.customForeground)
+        .contentTransition(.numericText(countsDown: true))
+        .accessibilityIdentifier("speed_round_time_left")
+    }
+    .font(.headline.monospacedDigit())
+  }
+
+  private var progressDots: some View {
+    // Wraps, since Ten More and re-asks can take the row past thirty dots, wider than an iPhone.
+    FlowLayout(spacing: 4, centersRows: true) {
+      ForEach(Array(quiz.questions.enumerated()), id: \.element.id) { index, item in
+        // A re-ask's dot is a diamond, so the row shows which questions return.
+        Image(systemName: item.isReask ? "diamond.fill" : "circle.fill")
+          .font(.system(size: 8))
+          .frame(width: 8, height: 8)
+          .foregroundStyle(item.state.dotColor)
+          .scaleEffect(index == quiz.currentIndex ? 1.4 : 1.0)
+          .symbolEffect(
+            .pulse.byLayer,
+            options: reduceMotion ? .nonRepeating : .repeating,
+            isActive: index == quiz.currentIndex
+          )
+          .animation(.spring(duration: 0.3), value: item.isCorrect)
+      }
+    }
+    .padding(.horizontal, Layout.doubleDefaultSpacing)
+    .accessibilityElement(children: .ignore)
+    .accessibilityLabel(L.Accessibility.quizDotRow(
+      current: quiz.currentIndex + 1,
+      total: quiz.questions.count,
+      correct: quiz.questions.filter { $0.state == .correct }.count,
+      secondTry: quiz.questions.filter { $0.state == .correctOnSecondAttempt }.count,
+      incorrect: quiz.questions.filter { $0.state == .incorrect }.count,
+      remaining: quiz.questions.count - quiz.currentIndex - 1
+    ))
   }
 
   private static let secondAttemptLineID = "quiz_second_attempt_line"
@@ -599,6 +645,9 @@ struct QuizView: View {
     }
     if quiz.scope.isSentences {
       return L.Sentences.title
+    }
+    if quiz.scope.isSpeedRound {
+      return L.SpeedRound.title
     }
     return quiz.scope.recordSession?.title
   }
@@ -994,6 +1043,20 @@ struct QuizView: View {
         isLarge: isLarge,
         start: hasSentences ? { quiz.start(scope: .sentences()) } : nil
       )
+
+      let masteredCount = SpeedRound.masteredItems(in: Current.practice.record).count
+      let opensSpeedRound = masteredCount >= SpeedRound.minimumMasteredCount
+      QuizHubRow(
+        title: L.SpeedRound.title,
+        detail: opensSpeedRound
+          ? Current.practice.speedRoundBest.map { L.SpeedRound.descriptionWithBest($0) } ?? L.SpeedRound.description
+          : L.SpeedRound.locked(needed: SpeedRound.minimumMasteredCount, mastered: masteredCount),
+        systemImage: "bolt.fill",
+        identifier: "quiz_speed_round",
+        hint: L.Accessibility.speedRoundStartHint,
+        isLarge: isLarge,
+        start: opensSpeedRound ? { quiz.start(scope: .speedRound()) } : nil
+      )
     }
     .frame(maxWidth: .infinity, alignment: .leading)
   }
@@ -1044,6 +1107,28 @@ struct QuizView: View {
         value()
       }
     }
+  }
+}
+
+/// A Speed Round's missed question, shown above the next one, since the round does not stop for a
+/// correction: "fahren · er fuhr".
+private struct SpeedRoundMissLine: View {
+  let question: QuizItem
+
+  var body: some View {
+    let answer = [question.pronoun, question.correctAnswer].compactMap { $0 }.joined(separator: " ")
+    HStack(spacing: 6) {
+      Image(systemName: "xmark.circle.fill")
+        .foregroundStyle(.customRed)
+      Text(verbatim: question.verb.infinitiv.inUserRegion + " ·")
+        .foregroundStyle(Color.secondary)
+      Text(mixedCaseString: answer)
+        .foregroundStyle(.customForeground)
+    }
+    .font(.subheadline)
+    .accessibilityElement(children: .ignore)
+    .accessibilityLabel(L.SpeedRound.missed(MixedCaseAccessibility.accessibilityLabel(for: answer)))
+    .accessibilityIdentifier("speed_round_miss")
   }
 }
 
@@ -1165,7 +1250,10 @@ private struct LastQuizResultRow: View {
     if result.secondAttemptCount > 0 {
       parts.append("\(L.Quiz.secondTry) \(result.secondAttemptCount)")
     }
-    parts.append("\(L.Quiz.score) \(result.score)")
+    // A Speed Round counts right answers and scores no points.
+    if result.kind != .speedRound {
+      parts.append("\(L.Quiz.score) \(result.score)")
+    }
     return parts.joined(separator: " · ")
   }
 

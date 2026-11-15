@@ -11,6 +11,9 @@ final class PracticeStore {
   private(set) var lastResult: LastQuizResult?
   /// The most right answers in one Speed Round, kept on the device and sent nowhere (Phase 21).
   private(set) var speedRoundBest: Int?
+  /// The days a daily session was finished, kept on the device and sent nowhere but as a band
+  /// (Phase 22).
+  private(set) var dailyStreak = DailyStreak()
   private let getterSetter: GetterSetter
   private let calendar: Calendar
 
@@ -38,6 +41,7 @@ final class PracticeStore {
     }
     lastResult = getterSetter.getCodable(key: LastQuizResult.storageKey)
     speedRoundBest = getterSetter.getCodable(key: Self.speedRoundBestKey)
+    dailyStreak = getterSetter.getCodable(key: DailyStreak.storageKey) ?? DailyStreak()
   }
 
   static let speedRoundBestKey = "speedRoundBest"
@@ -134,7 +138,20 @@ final class PracticeStore {
     return true
   }
 
-  /// Settings' Reset Practice, which forgets the last result and the Speed Round's best too. The record is saved empty
+  /// A daily session was finished. Returns the streak it leaves.
+  @discardableResult
+  func recordDailySession(at date: Date = .now) -> DailyStreak.Status {
+    dailyStreak.recordSession(at: date, calendar: calendar)
+    getterSetter.setCodable(key: DailyStreak.storageKey, value: dailyStreak)
+    return dailyStreak.status(at: date, calendar: calendar)
+  }
+
+  func streakStatus(at date: Date = .now) -> DailyStreak.Status {
+    dailyStreak.status(at: date, calendar: calendar)
+  }
+
+  /// Settings' Reset Practice, which forgets the last result, the Speed Round's best, and the daily
+  /// streak too. The record is saved empty
   /// rather than removed, so that the next launch does not migrate the old schedules again.
   func reset() {
     record.reset()
@@ -143,6 +160,8 @@ final class PracticeStore {
     getterSetter.remove(key: LastQuizResult.storageKey)
     speedRoundBest = nil
     getterSetter.remove(key: Self.speedRoundBestKey)
+    dailyStreak = DailyStreak()
+    getterSetter.remove(key: DailyStreak.storageKey)
   }
 
   private func save() {

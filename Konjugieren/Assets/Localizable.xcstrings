@@ -21,6 +21,38 @@
         }
       }
     },
+    "Accessibility.dailySessionAgainHint" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Startet eine weitere tägliche Übung."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starts another daily session."
+          }
+        }
+      }
+    },
+    "Accessibility.dailySessionStartHint" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Startet zehn Fragen, zuerst mit dem, was zur Wiederholung ansteht."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starts ten questions, beginning with what is due for review."
+          }
+        }
+      }
+    },
     "Choice.announceRight %@" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -289,6 +321,438 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Starts ten questions, each a sentence with its verb left blank."
+          }
+        }
+      }
+    },
+    "DailyReminder.body" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deine tägliche Übung wartet: zehn Fragen in zwei bis drei Minuten."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your daily session is ready: ten questions in two or three minutes."
+          }
+        }
+      }
+    },
+    "DailyReminder.bodyDue.%lld" : {
+      "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Deine tägliche Übung wartet, mit 1 Konjugation zur Wiederholung."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Deine tägliche Übung wartet, mit %lld Konjugationen zur Wiederholung."
+                }
+              }
+            }
+          }
+        },
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Your daily session is ready, with 1 conjugation due for review."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Your daily session is ready, with %lld conjugations due for review."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "DailyReminder.denied" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mitteilungen von Konjugieren sind ausgeschaltet, daher kann die Erinnerung nicht erscheinen. Du kannst sie in der Einstellungen-App erlauben."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Notifications from Konjugieren are off, so the reminder cannot appear. You can allow them in the Settings app."
+          }
+        }
+      }
+    },
+    "DailyReminder.description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Einstellung bestimmt, ob Konjugieren dich jeden Tag zur gewählten Uhrzeit an deine tägliche Übung erinnert. Die Erinnerung sagt, wie viele Konjugationen zur Wiederholung anstehen, und sie kommt nicht an einem Tag, dessen Übung du schon abgeschlossen hast."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This setting determines whether Konjugieren reminds you each day, at the time you choose, to finish your daily session. The reminder says how many conjugations are due for review, and it does not come on a day whose session you have finished."
+          }
+        }
+      }
+    },
+    "DailyReminder.heading" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tägliche Erinnerung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily Reminder"
+          }
+        }
+      }
+    },
+    "DailyReminder.off" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aus"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Off"
+          }
+        }
+      }
+    },
+    "DailyReminder.on" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "On"
+          }
+        }
+      }
+    },
+    "DailyReminder.openSettings" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Einstellungen öffnen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open Settings"
+          }
+        }
+      }
+    },
+    "DailyReminder.time" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Uhrzeit"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Time"
+          }
+        }
+      }
+    },
+    "DailyReminder.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zeit zum Üben"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Time to Practice"
+          }
+        }
+      }
+    },
+    "DailySession.another" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Noch eine Übung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Another Session"
+          }
+        }
+      }
+    },
+    "DailySession.description" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Zehn Fragen, zuerst das, was zur Wiederholung ansteht. Schließe jeden Tag eine ab, und deine Serie wächst."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ten questions, starting with what is due for review. Finish one a day to build a streak."
+          }
+        }
+      }
+    },
+    "DailySession.repairOne.%lld" : {
+      "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Noch eine Übung heute rettet deine Serie von 1 Tag."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Noch eine Übung heute rettet deine Serie von %lld Tagen."
+                }
+              }
+            }
+          }
+        },
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "One more session today keeps your 1-day streak."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "One more session today keeps your %lld-day streak."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "DailySession.repairTwo.%lld" : {
+      "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Gestern hast du ausgesetzt. Zwei Übungen heute retten deine Serie von 1 Tag."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Gestern hast du ausgesetzt. Zwei Übungen heute retten deine Serie von %lld Tagen."
+                }
+              }
+            }
+          }
+        },
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "You missed yesterday. Two sessions today keep your 1-day streak."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "You missed yesterday. Two sessions today keep your %lld-day streak."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "DailySession.streak.%lld" : {
+      "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Serie: 1 Tag"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Serie: %lld Tage"
+                }
+              }
+            }
+          }
+        },
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Streak: 1 day"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Streak: %lld days"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "DailySession.streakDoneToday.%lld" : {
+      "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Serie: 1 Tag. Für heute erledigt."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Serie: %lld Tage. Für heute erledigt."
+                }
+              }
+            }
+          }
+        },
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Streak: 1 day. Done for today."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Streak: %lld days. Done for today."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "DailySession.streakKeepGoing.%lld" : {
+      "localizations" : {
+        "de" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Serie: 1 Tag. Die heutige Übung setzt sie fort."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Serie: %lld Tage. Die heutige Übung setzt sie fort."
+                }
+              }
+            }
+          }
+        },
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Streak: 1 day. Today’s session keeps it going."
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Streak: %lld days. Today’s session keeps it going."
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "DailySession.title" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tägliche Übung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily Session"
           }
         }
       }
@@ -8911,13 +9375,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Die App vergisst, welche Konjugationen du geübt hast, wann jede wieder ansteht, das Ergebnis deines letzten Quiz und deinen Bestwert in der Blitzrunde. Deine Verben mit Stern und deine zuletzt geöffneten Verben bleiben. Das lässt sich nicht rückgängig machen."
+            "value" : "Die App vergisst, welche Konjugationen du geübt hast, wann jede wieder ansteht, das Ergebnis deines letzten Quiz, deinen Bestwert in der Blitzrunde und deine tägliche Serie. Deine Verben mit Stern und deine zuletzt geöffneten Verben bleiben. Das lässt sich nicht rückgängig machen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The app will forget which conjugations you have practiced, when each is due again, your last quiz's results, and your Speed Round best. Your starred and recent verbs stay. This cannot be undone."
+            "value" : "The app will forget which conjugations you have practiced, when each is due again, your last quiz's results, your Speed Round best, and your daily streak. Your starred and recent verbs stay. This cannot be undone."
           }
         }
       }
@@ -8943,13 +9407,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Diese Schaltfläche löscht deinen Übungsstand, der auf deinem Gerät bleibt: welche Konjugationen du beim Quiz und auf Wiederholungskarten geübt hast, wie es lief, wann jede wieder ansteht, das Ergebnis deines letzten Quiz und deinen Bestwert in der Blitzrunde."
+            "value" : "Diese Schaltfläche löscht deinen Übungsstand, der auf deinem Gerät bleibt: welche Konjugationen du beim Quiz und auf Wiederholungskarten geübt hast, wie es lief, wann jede wieder ansteht, das Ergebnis deines letzten Quiz, deinen Bestwert in der Blitzrunde und deine tägliche Serie."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This button erases your practice record, which stays on your device: which conjugations you have practiced in quizzes and on review cards, how each went, when each is due again, your last quiz's results, and your Speed Round best."
+            "value" : "This button erases your practice record, which stays on your device: which conjugations you have practiced in quizzes and on review cards, how each went, when each is due again, your last quiz's results, your Speed Round best, and your daily streak."
           }
         }
       }

@@ -47,6 +47,15 @@ struct ResultsView: View {
             speedRoundBest
           }
 
+          if let line = quiz.dailyStreakStatus?.resultsLine, !line.isEmpty {
+            Label(line, systemImage: "flame.fill")
+              .font(.headline)
+              .foregroundStyle(.customYellow)
+              .multilineTextAlignment(.center)
+              .fixedSize(horizontal: false, vertical: true)
+              .accessibilityIdentifier("results_daily_streak")
+          }
+
           // A flow, since a second try and a re-ask can make five items, more than an iPhone's
           // line holds.
           FlowLayout(spacing: Layout.doubleDefaultSpacing, centersRows: true) {
@@ -90,6 +99,17 @@ struct ResultsView: View {
           .padding(.top, Layout.doubleDefaultSpacing)
           .accessibilityHint(L.Accessibility.speedRoundAgainHint)
           .accessibilityIdentifier("results_speed_round_again")
+        } else if quiz.dailyStreakStatus?.awaitsRepairSession == true {
+          Button {
+            quiz.start(scope: .daily())
+          } label: {
+            Label(L.DailySession.another, systemImage: "flame.fill")
+          }
+          .funButton()
+          .frame(maxWidth: .infinity)
+          .padding(.top, Layout.doubleDefaultSpacing)
+          .accessibilityHint(L.Accessibility.dailySessionAgainHint)
+          .accessibilityIdentifier("results_daily_another")
         } else if quiz.canContinue {
           Button {
             quiz.continueSession()

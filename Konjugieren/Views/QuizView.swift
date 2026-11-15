@@ -104,6 +104,7 @@ struct QuizView: View {
         TryQuizTip().invalidate(reason: .actionPerformed)
         guard let sheetScope else {
           Current.analytics.signal(name: .viewQuizView)
+          startRequestedDailySession()
           return
         }
         if !quiz.isInProgress, !quiz.shouldShowResults {
@@ -172,6 +173,9 @@ struct QuizView: View {
         try? await Task.sleep(for: .milliseconds(100))
         focusedBlank = 0
       }
+    }
+    .onChange(of: Current.dailySessionRequest) {
+      startRequestedDailySession()
     }
     .onChange(of: quiz.currentIndex) {
       answerBlanks = []
@@ -631,6 +635,20 @@ struct QuizView: View {
     }
   }
 
+  /// The reminder's daily session, unless a quiz is under way or showing its results, which the
+  /// learner returns to instead.
+  private func startRequestedDailySession() {
+    guard sheetScope == nil, let request = Current.dailySessionRequest else {
+      return
+    }
+    Current.dailySessionRequest = nil
+    guard !quiz.isInProgress, !quiz.shouldShowResults else {
+      return
+    }
+    navigationPath = NavigationPath()
+    quiz.start(scope: .daily(source: request.source))
+  }
+
   /// A Review, My Mistakes, or Verb Essentials session names itself in the tab's bar, since its
   /// questions look like any quiz's.
   private var tabSessionTitle: String? {
@@ -648,6 +666,9 @@ struct QuizView: View {
     }
     if quiz.scope.isSpeedRound {
       return L.SpeedRound.title
+    }
+    if quiz.scope.isDaily {
+      return L.DailySession.title
     }
     return quiz.scope.recordSession?.title
   }
@@ -947,14 +968,27 @@ struct QuizView: View {
     .accessibilityIdentifier("custom_quiz_share_button")
   }
 
-  /// Review and My Mistakes, each started directly or saying why there is nothing to ask (Phase
-  /// 12 of the pedagogy plan), Mastery (Phase 20), and the last quiz's results.
+  /// The daily session with its streak (Phase 22 of the pedagogy plan), Review and My Mistakes,
+  /// each started directly or saying why there is nothing to ask (Phase 12), Mastery (Phase 20),
+  /// and the last quiz's results.
   private var practiceSection: some View {
     VStack(alignment: .leading, spacing: Layout.defaultSpacing) {
       Text(L.PracticeSession.heading)
         .font(isLarge ? .title3.bold() : .headline)
         .foregroundStyle(.customForeground)
         .accessibilityAddTraits(.isHeader)
+
+      let streak = Current.practice.streakStatus()
+      QuizHubRow(
+        title: L.DailySession.title,
+        detail: streak.hubDetail,
+        systemImage: streak.length > 0 ? "flame.fill" : "calendar",
+        identifier: "quiz_daily",
+        hint: L.Accessibility.dailySessionStartHint,
+        isLarge: isLarge
+      ) {
+        quiz.start(scope: .daily())
+      }
 
       ForEach([QuizRecordSession.review, .mistakes], id: \.self) { session in
         let count = session.askableCount(from: Current.practice)

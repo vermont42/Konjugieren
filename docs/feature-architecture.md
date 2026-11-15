@@ -130,6 +130,7 @@ quiz in a sheet shows) and `collectionKey` (which `startQuiz` names).
 | `.recognition()` | Name the Conjugation: the level's pool and band, each question a conjugation to name by infinitive, conjugationgroup, and person (pedagogy Phase 17) | 10, then Ten More | `recognition` | No |
 | `.sentences()` | Sentences: the authored sentences whose verb is in the level's band and whose cell is in its pool, one a verb where they allow (pedagogy Phase 18) | Up to 10, then Ten More | `sentences` | No |
 | `.speedRound()` | Speed Round: the practice record's mastered items, in turn, for 60 seconds (pedagogy Phase 21) | As many as answered in a minute, drawn 10 at a time; then another round | `speedRound` | No |
+| `.daily(source:)` | The daily session: due items the level asks and the band holds, then the default quiz's draw, no choice question (pedagogy Phase 22) | 10; no Ten More, but Another Session while a repair needs a second | `daily`, or `reminder` from the reminder | No |
 
 A quiz whose rounds are ten (`QuizScope.continues`) draws as above. The verb page's three
 questions ask distinct cells and no participle, from the learner's level, since every Perfekt
@@ -146,7 +147,7 @@ symbol for the chosen scope (books for All Verbs, a star for My Verbs, sliders f
 and a line about what it asks, the All Verbs / My Verbs / Custom picker, three tiles (ten
 questions, "2–3 Minutes", and the level, whose tile is a menu that sets `Settings.quizLevel`, the
 same setting as Settings' level picker), for My Verbs its verbs as chips (up to twelve), and Start.
-Below Start, "From Your Practice" holds Review, My Mistakes, and the last quiz's results
+Below Start, "From Your Practice" holds the Daily Session (pedagogy Phase 22), Review, My Mistakes, and the last quiz's results
 (`LastQuizResultRow`), then "Exercises" holds Verb Essentials (pedagogy Phase 15) and Ablaut Groups (pedagogy Phase 16), a row with a chevron that pushes `AblautPracticeListView`, and last of all, while signed in to Game Center, a small "View Leaderboard"
 button that opens the current level's board. The results screen no longer has one (T6.6). In the
 regular size class the whole composition scales up. Start is disabled while My Verbs is empty.
@@ -796,6 +797,60 @@ Nation's fluency strand, speed for material already accurate, and the one place 
   left.", and the end ("Time is up. Right answers: 12. New personal best!"). The miss line reads the
   same. The row has a hint, and so does Another Round.
 
+### The Daily Session and the Streak
+
+Built 2026-11-15 in Phase 22 of [`plans/pedagogy-implementation.md`](../plans/pedagogy-implementation.md)
+(T6.3): a short daily session, a streak that one missed day does not break if repaired, and an
+optional reminder. "Daily Session" / "Tägliche Übung", the first row of the hub's From Your
+Practice, with a flame once there is a streak.
+
+- **What it asks** (`Models/DailySession.swift`, `QuizDraw.dailyQuestions`). Ten questions at the
+  learner's level (Josh, 2026-11-13): first the record's due items that the level asks and the band
+  holds, most overdue first (`QuizDraw.dueQuestions` with a limit of ten), then the default quiz's
+  balanced draw for the rest, the due questions placed among them at random. An item the level does
+  not ask waits for Review, as in the default quiz. No choice question, since a choice moves nothing
+  in the record. Every answer moves the record as in any quiz.
+- **The scope.** `QuizScope.daily(source:)`, `isDaily`. Never ranked; `continues` false, so no Ten
+  More and no level tip, though it starts a Live Activity, since ten questions are a real session.
+  `LastQuizResult.Kind.daily`.
+- **The streak** (`Models/DailyStreak.swift`). `DailyStreak` keeps finished daily sessions per day
+  (`2026-11-15`, the learner's calendar) under `dailyStreak` in the App Group, through
+  `PracticeStore.dailyStreak`, `recordDailySession(at:)`, and `streakStatus(at:)`. A session counts
+  when its results appear (`Quiz.finishQuiz`); a quit one does not. `status(at:)` is `.none`,
+  `.active(length:isDoneToday:)`, or `.repairable(length:sessionsToday:)`. Days join a run when
+  consecutive, or across one missed day when the day after has **two** sessions (Josh, 2026-11-13);
+  the missed day does not count toward the length. One session on that day starts a run of its own,
+  reported as `.repairable(…, sessionsToday: 1)` until the second, and if the day ends there the old
+  streak is gone. Only the last two runs are kept. Day arithmetic is in calendar days, so a 25-hour
+  day is one. Reset Practice forgets the streak.
+- **The hub and the results.** The row says, by status: what the session is and that one a day
+  builds a streak; "Streak: 5 days. Today's session keeps it going." or "… Done for today."; "You
+  missed yesterday. Two sessions today keep your 5-day streak."; "One more session today keeps your
+  5-day streak." It always starts a session; a second on an ordinary day changes nothing. The
+  results show the streak with a flame, and while a repair awaits its second session, Another
+  Session in place of Ten More (`DailyStreak.Status.awaitsRepairSession`).
+- **The reminder** (`Models/DailyReminder.swift`, `Utils/ReminderSchedulerReal.swift`). Settings'
+  Daily Reminder, Off or On (`Settings.dailyReminder`, off by default), and a time
+  (`Settings.dailyReminderMinutes`, 18:00). **Permission is asked only when it is turned on**
+  (`ReminderScheduler.requestAuthorization`); refused, the setting stays Off with a line and Open
+  Settings, which also show while On if notifications were later turned off in the Settings app.
+  `DailyReminderPlan.reminders` writes one notification per day for 14 days, not a repeating one,
+  so that each says what that day will have due ("Your daily session is ready, with 8 conjugations
+  due for review.") or that its streak needs repair, and a day whose session is done gets none.
+  `World.rescheduleReminders()` replaces them when the setting or time changes, a daily session
+  finishes, practice is reset, and the app becomes active or goes to the background. A learner who
+  does not open the app for two weeks stops being reminded. Tapping a reminder opens
+  `konjugieren://quiz/daily?source=reminder` (`ReminderNotificationDelegate`, set in `AppDelegate`),
+  which starts a session unless a quiz is under way. A reminder due while the app is open is not
+  shown. The widgets do not show the streak (Josh, 2026-11-13).
+- **Signals.** `source` `daily` or `reminder` on the quiz signals; `completeQuiz` of a daily session
+  carries `streak` in bands (`AnalyticsBand.streak`: `1`, `2-6`, `7-29`, `30+`), the streak at stake
+  while a repair awaits its second session; `tapDailyReminder` with `enabled`. Question counts are
+  sent, since a daily session is always ten.
+- **VoiceOver.** The row reads its title and its line, with a hint ("Starts ten questions, beginning
+  with what is due for review."); the results' announcement ends with the streak line; Another
+  Session has a hint. Every quiz state inside the session is an ordinary one.
+
 ### The Quiz Clock
 
 `Settings.quizClock` (`QuizClock`: `.hide`, `.show`), default `.hide` (T6.5). While it is hidden,
@@ -984,7 +1039,7 @@ konjugieren://<route>[/<target>][?<item>=<value>&…]
 | `search` | None | `q`, the text; `source` | The verb list with its search field. With text, the results show with the keyboard down; with none (or `q` empty), the field is cleared and focused for typing | Phase 11 |
 | `info` | A `stableKey`, or a legacy position | None | The article | Before 2026; keys Phase 11 |
 | `family` | A `BrowseableFamily` raw value | None | The family's page | Before 2026 |
-| `quiz` | `set`, or any other (today `start`) | For `set`: `groups`, `verbs` or `infinitives`, `level`, `source` | `set` shows a practice set in a sheet over the open tab; any other target, the Quiz tab | Before 2026; `set` pedagogy Phase 10 |
+| `quiz` | `set`, `daily`, or any other (today `start`) | For `set`: `groups`, `verbs` or `infinitives`, `level`, `source`; for `daily`, `source` | `set` shows a practice set in a sheet over the open tab; `daily` opens the Quiz tab and starts a daily session unless a quiz is under way or showing results (`World.dailySessionRequest`), which the reminder taps (`quiz/daily?source=reminder`); any other target, the Quiz tab | Before 2026; `set` pedagogy Phase 10; `daily` pedagogy Phase 22 |
 | `list` | A collection's key: `top100`, `modals`, `sein`, or `ablaut-<exemplar>` (`ablaut-hängen`, percent-encoded) | `source` | The Families tab, on the collection's page, or for an ablaut group, the Ablaut page with that group expanded | Phase 16 |
 
 **Collections (Phase 16, 2026-11-13).** A collection is `list/<key>`. The `quiz/start?list=<key>`
@@ -1595,6 +1650,7 @@ Counts and durations go out in bands (`AnalyticsBand`), never as exact numbers.
 | `viewCollection` | `collection` (its key, such as `modals` or `ablaut-gehen`), `source` (`family`, `sharedLink`, `deeplink`, `quizCorrection`) | When a collection's page appears, once per arrival, or an ablaut group is expanded on the Ablaut page (Phase 16). The ideas document's "lists opened". The key names a fixed list, not anything the learner chose |
 | `tapShareCollection` | `collection` | When a collection's share button is tapped, whether or not the learner then shares (Phase 16) |
 | `tapResetPractice` | None | When Reset Practice in Settings is confirmed (pedagogy Phase 11). Nothing about the record is sent |
+| `tapDailyReminder` | `enabled` (`true`, `false`, `denied`) | When Settings' Daily Reminder is set On or Off (pedagogy Phase 22). `denied`: turned on, and notification permission refused, now or before, so the reminder stays off. Changing the time sends nothing |
 | `viewMastery` | None | When the Mastery page, pushed from the Quiz tab's hub, appears (pedagogy Phase 20). Nothing about the record or the level is sent |
 | `tapRevealReviewCard` | None | When a tap reveals the review card's key conjugations, once per card (Phase 15). A page opened from the card then sends `viewVerbView` with `source` `reviewCard` |
 | `tapViewLeaderboard` | `source` (`tab`) from the Quiz tab's hub; none from Settings | When View Leaderboard on the Quiz tab's hub (pedagogy Phase 13) or View Leaderboards in Settings is tapped. The results screen's button, which sent nothing, is gone |
@@ -1664,6 +1720,9 @@ My Verbs scope, the list it was begun on.
 | `ablautAlone`, `ablautMixed` | Yes | The quiz signals only: an ablaut group's practice, alone or mixed (pedagogy Phase 16) |
 | `recognition` | Yes | The quiz signals only: Name the Conjugation from the Quiz tab (pedagogy Phase 17) |
 | `sentences` | Yes | The quiz signals only: Sentences from the Quiz tab (pedagogy Phase 18) |
+| `speedRound` | Yes | The quiz signals only: the Speed Round from the Quiz tab (pedagogy Phase 21) |
+| `daily` | Yes | The quiz signals only: a daily session from the Quiz tab, or from Another Session on its results (pedagogy Phase 22) |
+| `reminder` | Yes | The quiz signals only: a daily session started by tapping the daily reminder (pedagogy Phase 22) |
 | `tab` | Yes | A search begun in the Verbs tab (Phase 11); for the quiz signals, a quiz over every verb from the Quiz tab (Phase 13) |
 | `verbPage` | Yes | The quiz signals only: "Test me on this verb" (Phase 13) |
 

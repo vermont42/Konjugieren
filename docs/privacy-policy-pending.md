@@ -859,3 +859,73 @@ Der Absatz über den Übungsstand lautet nun:
 ```
 Die App führt außerdem einen Übungsstand: welche Konjugationen Sie im Quiz und auf Wiederholungskarten geübt haben, ob Ihre letzte Antwort darauf richtig war, wann jede wieder zur Wiederholung ansteht, das Ergebnis Ihres letzten Quiz und Ihren Bestwert in der „Blitzrunde“, damit sie Wiederholungskarten zeigen, Verfehltes wiederholen, zeigen kann, wie Ihr letztes Quiz lief, welche Konjugationen Sie beherrschen und was Ihr Bestwert ist. Der Übungsstand bleibt auf Ihrem Gerät und wird nie gesendet. „Übungsstand zurücksetzen“ in den Einstellungen löscht ihn.
 ```
+
+## A daily session and a streak (pedagogy plan, Phase 22, 2026-11-15)
+
+Adds the values `daily` and `reminder` to the quiz signals' `source`: a daily session ("Tägliche
+Übung") begun from the Quiz tab, and one begun by tapping the daily reminder, which opens the app
+and starts the session. `completeQuiz` for a daily session also carries the new parameter `streak`,
+the days in a row the learner has finished one, in bands (`1`, `2-6`, `7-29`, `30+`); a streak
+awaiting repair is sent as the streak at stake. The daily session sends its question count as the
+default quiz does, since it is always ten. Adds the signal `tapDailyReminder`, with the parameter
+`enabled` (`true`, `false`, or `denied` when the learner turned the reminder on and refused the
+system's request to send notifications). The reminder is a local notification, scheduled by the app
+on the device; its text is written there and nothing about it leaves the device. The days on which
+daily sessions were finished are kept on the device with the practice record and never sent but as
+the band, so the practice-record paragraph names the streak. The lines change the first quiz
+bullet, the taps bullet, the section 6 sentence, and the practice-record paragraph as last given
+above.
+
+### English
+
+The first quiz bullet in section 2 now reads:
+
+```
+- Quiz lifecycle events (starting, quitting, completing a round of questions, and how many rounds the quiz has reached), and where the quiz was begun: the quiz screen, your own verbs, a verb's page, a collection, and which collection, a quiz you put together, and whether you chose conjugationgroups, verbs, or both (not which), a practice set someone shared with you, and whether it came as a link or a QR code, a review of your due questions or of your mistakes, the Verb Essentials exercise, the practice of an ablaut group, alone or mixed, and which group, the Name the Conjugation exercise, the Sentences exercise, the Speed Round, or the daily session, and whether you began it from its reminder. When you finish a daily session, roughly how many days in a row you have finished one (1, 2 to 6, 7 to 29, or 30 or more)
+```
+
+The taps bullet in section 2, as last given above, now ends as follows, the "and" before resetting
+the practice record moving to the new last item:
+
+```
+, resetting your practice record, and turning the daily reminder on or off, and whether you allowed notifications
+```
+
+The sentence in section 6 now reads:
+
+```
+Only the first ten questions of a quiz over all verbs post a score, to the leaderboard of the quiz's level; a quiz over your own verbs, a single verb, conjugationgroups and verbs you chose, or your due questions or mistakes does not, nor do Verb Essentials, the practice of an ablaut group, Name the Conjugation, Sentences, the Speed Round, and the daily session, and neither do the ten more questions you may add.
+```
+
+The practice-record paragraph now reads:
+
+```
+The app also keeps a practice record: which conjugations you have practiced in quizzes and on review cards, whether your last answer to each was right, when each is due for review, the results of your last quiz, your best Speed Round, and the days on which you finished a daily session, so that it can show review cards, bring back what you missed, show how your last quiz went, show which conjugations you have mastered, show your best, and show your streak. The record stays on your device and is never sent. Reset Practice in Settings erases it. The daily reminder, if you turn it on, is scheduled on your device, which writes what it says from the record; nothing about it is sent.
+```
+
+### German
+
+Der erste Punkt über das Quiz in Abschnitt 2 lautet nun:
+
+```
+- Quiz-Lebenszyklus-Ereignisse (Starten, Abbrechen, Abschließen einer Fragerunde und wie viele Runden das Quiz erreicht hat) und wo das Quiz begonnen wurde: auf dem Quiz-Bildschirm, mit Ihren eigenen Verben, auf der Seite eines Verbs, in einer Sammlung, samt der Angabe, welche Sammlung, in einem selbst zusammengestellten Quiz, samt der Angabe, ob Sie Conjugationgroups, Verben oder beides gewählt haben (nicht aber, welche), in einem Übungsset, das jemand mit Ihnen geteilt hat, samt der Angabe, ob es als Link oder als QR-Code kam, bei der Wiederholung Ihrer anstehenden Fragen oder Ihrer Fehler, in der Übung „Verb-Grundlagen“, in der Übung einer Ablautgruppe, allein oder gemischt, samt der Angabe, welche Gruppe, in der Übung „Konjugationen bestimmen“, in der Übung „Lückensätze“, in der „Blitzrunde“ oder in der täglichen Übung, samt der Angabe, ob Sie diese über ihre Erinnerung begonnen haben. Wenn Sie eine tägliche Übung abschließen, ungefähr, an wie vielen Tagen in Folge Sie eine abgeschlossen haben (1, 2 bis 6, 7 bis 29 oder 30 und mehr)
+```
+
+Der Punkt über das Antippen in Abschnitt 2, wie oben zuletzt angegeben, endet nun so; das „und“
+vor dem Zurücksetzen des Übungsstands rückt zum neuen letzten Glied:
+
+```
+, den Übungsstand zurücksetzen und die tägliche Erinnerung ein- oder ausschalten, samt der Angabe, ob Sie Mitteilungen erlaubt haben
+```
+
+Der Satz in Abschnitt 6 lautet nun:
+
+```
+Nur die ersten zehn Fragen eines Quiz über alle Verben reichen ein Ergebnis ein, und zwar in der Bestenliste der Stufe des Quiz; ein Quiz über Ihre eigenen Verben, ein einzelnes Verb, selbst gewählte Conjugationgroups und Verben oder Ihre anstehenden Fragen oder Fehler tut das nicht, ebenso wenig die Verb-Grundlagen, die Übung einer Ablautgruppe, „Konjugationen bestimmen“, „Lückensätze“, die „Blitzrunde“, die tägliche Übung und die zehn weiteren Fragen, die Sie anhängen können.
+```
+
+Der Absatz über den Übungsstand lautet nun:
+
+```
+Die App führt außerdem einen Übungsstand: welche Konjugationen Sie im Quiz und auf Wiederholungskarten geübt haben, ob Ihre letzte Antwort darauf richtig war, wann jede wieder zur Wiederholung ansteht, das Ergebnis Ihres letzten Quiz, Ihren Bestwert in der „Blitzrunde“ und die Tage, an denen Sie eine tägliche Übung abgeschlossen haben, damit sie Wiederholungskarten zeigen, Verfehltes wiederholen, zeigen kann, wie Ihr letztes Quiz lief, welche Konjugationen Sie beherrschen, was Ihr Bestwert ist und wie lang Ihre Serie ist. Der Übungsstand bleibt auf Ihrem Gerät und wird nie gesendet. „Übungsstand zurücksetzen“ in den Einstellungen löscht ihn. Die tägliche Erinnerung wird, wenn Sie sie einschalten, auf Ihrem Gerät geplant, das ihren Text aus dem Übungsstand schreibt; nichts davon wird gesendet.
+```

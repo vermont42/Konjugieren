@@ -57,12 +57,20 @@ extension URL {
   }
 
   /// `konjugieren://quiz/set?groups=imperativ&verbs=modals&source=qrCode`. The quiz route's
-  /// other targets (`quiz/start`) still open the Quiz tab.
+  /// other targets but `daily` (`quiz/start`) still open the Quiz tab.
   static func practiceSetDeeplink(custom: CustomQuiz, level: QuizLevel?, source: AnalyticsSource) -> URL? {
     var components = URLComponents()
     components.percentEncodedQuery = custom.rawValue
     return deeplink(host: quizHost, target: practiceSetTarget, queryItems: (components.queryItems ?? []) + [
       level.map { URLQueryItem(name: levelQueryName, value: $0.rawValue) },
+      URLQueryItem(name: sourceQueryName, value: source.rawValue),
+    ])
+  }
+
+  /// `konjugieren://quiz/daily?source=reminder`, which opens the Quiz tab and starts a daily
+  /// session unless a quiz is already under way (Phase 22 of the pedagogy plan).
+  static func dailySessionDeeplink(source: AnalyticsSource) -> URL? {
+    deeplink(host: quizHost, target: dailySessionTarget, queryItems: [
       URLQueryItem(name: sourceQueryName, value: source.rawValue),
     ])
   }
@@ -110,5 +118,6 @@ extension URL {
   static let matchQueryName = "match"
   static let searchTextQueryName = "q"
   static let practiceSetTarget = "set"
+  static let dailySessionTarget = "daily"
   static let levelQueryName = "level"
 }

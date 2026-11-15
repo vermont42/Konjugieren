@@ -72,6 +72,14 @@ enum L {
       String(localized: "Accessibility.speedRoundStartHint")
     }
 
+    static var dailySessionStartHint: String {
+      String(localized: "Accessibility.dailySessionStartHint")
+    }
+
+    static var dailySessionAgainHint: String {
+      String(localized: "Accessibility.dailySessionAgainHint")
+    }
+
     static var verbEssentialsStartHint: String {
       String(localized: "Accessibility.verbEssentialsStartHint")
     }
@@ -1362,6 +1370,82 @@ enum L {
 
     static var title: String {
       String(localized: "Sentences.title")
+    }
+  }
+
+  enum DailySession {
+    static var another: String {
+      String(localized: "DailySession.another")
+    }
+
+    static var description: String {
+      String(localized: "DailySession.description")
+    }
+
+    static func repairOne(_ length: Int) -> String {
+      String(localized: "DailySession.repairOne.\(length)")
+    }
+
+    static func repairTwo(_ length: Int) -> String {
+      String(localized: "DailySession.repairTwo.\(length)")
+    }
+
+    static func streak(_ length: Int) -> String {
+      String(localized: "DailySession.streak.\(length)")
+    }
+
+    static func streakDoneToday(_ length: Int) -> String {
+      String(localized: "DailySession.streakDoneToday.\(length)")
+    }
+
+    static func streakKeepGoing(_ length: Int) -> String {
+      String(localized: "DailySession.streakKeepGoing.\(length)")
+    }
+
+    static var title: String {
+      String(localized: "DailySession.title")
+    }
+  }
+
+  enum DailyReminder {
+    static var body: String {
+      String(localized: "DailyReminder.body")
+    }
+
+    static func bodyDue(_ count: Int) -> String {
+      String(localized: "DailyReminder.bodyDue.\(count)")
+    }
+
+    static var denied: String {
+      String(localized: "DailyReminder.denied")
+    }
+
+    static var description: String {
+      String(localized: "DailyReminder.description")
+    }
+
+    static var heading: String {
+      String(localized: "DailyReminder.heading")
+    }
+
+    static var off: String {
+      String(localized: "DailyReminder.off")
+    }
+
+    static var on: String {
+      String(localized: "DailyReminder.on")
+    }
+
+    static var openSettings: String {
+      String(localized: "DailyReminder.openSettings")
+    }
+
+    static var time: String {
+      String(localized: "DailyReminder.time")
+    }
+
+    static var title: String {
+      String(localized: "DailyReminder.title")
     }
   }
 

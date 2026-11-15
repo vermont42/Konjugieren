@@ -50,6 +50,10 @@ struct KonjugierenApp: App {
             WidgetCenter.shared.reloadAllTimelines()
             Current.languageModelService.refreshAvailability()
           }
+          // The day may have turned, and the record changed, since the reminders were scheduled.
+          if scenePhase == .active || scenePhase == .background {
+            Current.rescheduleReminders()
+          }
         }
         .onChange(of: Current.settings.thirdPersonPronounGender) {
           WidgetSnapshotWriter.writeSnapshot()

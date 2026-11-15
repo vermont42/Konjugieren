@@ -8,6 +8,7 @@ enum ParameterKey: String {
   case deepestSection
   case duration
   case dwell
+  case enabled
   case level
   case matchKind
   case method
@@ -19,6 +20,7 @@ enum ParameterKey: String {
   case resultPosition
   case source
   case starred
+  case streak
 }
 
 enum AnalyticsName: String {
@@ -32,6 +34,7 @@ enum AnalyticsName: String {
   case startGame
   case startQuiz
   case tapConjugationgroupArticle
+  case tapDailyReminder
   case tapDeleteChatHistory
   case tapExplainError
   case tapPlayGame
@@ -72,6 +75,7 @@ enum AnalyticsSource: String, CaseIterable {
   case browse
   case control
   case custom
+  case daily
   case deeplink
   case family
   case handoff
@@ -86,6 +90,7 @@ enum AnalyticsSource: String, CaseIterable {
   case recent
   case recognition
   case related
+  case reminder
   case resume
   case review
   case reviewCard

@@ -17,6 +17,19 @@ struct SettingsTests {
     #expect(settings.reviewCardSuppression == .off)
     #expect(settings.appIcon == .hat)
     #expect(settings.hasSeenOnboarding == false)
+    #expect(settings.dailyReminder == .off)
+    #expect(settings.dailyReminderMinutes == 18 * 60)
+  }
+
+  @Test func theDailyReminderPersists() {
+    let fake = GetterSetterFake()
+    let settings = Settings(getterSetter: fake)
+    settings.dailyReminder = .on
+    settings.dailyReminderMinutes = 7 * 60 + 30
+
+    let restored = Settings(getterSetter: fake)
+    #expect(restored.dailyReminder == .on)
+    #expect(restored.dailyReminderMinutes == 450)
   }
 
   @Test func restoresPersistedValues() {

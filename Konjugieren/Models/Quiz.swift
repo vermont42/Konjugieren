@@ -46,6 +46,8 @@ class Quiz {
   private(set) var speedRoundPreviousBest: Int?
   /// Whether the finished Speed Round set a new personal best.
   private(set) var isNewSpeedRoundBest = false
+  /// The streak a finished daily session left, which its results show. Nil for any other quiz.
+  private(set) var dailyStreakStatus: DailyStreak.Status?
 
   /// The seconds a Speed Round has left.
   var speedRoundSecondsLeft: Int {
@@ -116,6 +118,8 @@ class Quiz {
   private(set) var level: QuizLevel = Settings.quizLevelDefault
   private let timerInterval: TimeInterval
   private var randomSource: AnyRandomNumberGenerator
+  /// The clock a daily session's streak is recorded by, which tests set to other days.
+  private let now: () -> Date
   private var liveActivity: Activity<QuizActivityAttributes>?
   private var startDate = Date()
   /// Names this quiz's entry in `QuizAbandonment`, since a quiz in a sheet can run beside the
@@ -154,9 +158,10 @@ class Quiz {
     score
   }
 
-  init(timerInterval: TimeInterval = 1.0, randomSource: any RandomNumberGenerator = SystemRandomNumberGenerator()) {
+  init(timerInterval: TimeInterval = 1.0, randomSource: any RandomNumberGenerator = SystemRandomNumberGenerator(), now: @escaping () -> Date = Date.init) {
     self.timerInterval = timerInterval
     self.randomSource = AnyRandomNumberGenerator(randomSource)
+    self.now = now
   }
 
   func start(scope: QuizScope = .allVerbs) {
@@ -216,7 +221,7 @@ class Quiz {
 
   // A three-question quiz on a verb's page is over before a Live Activity would be noticed.
   private func startLiveActivity() {
-    guard scope.continues else {
+    guard scope.continues || scope.isDaily else {
       return
     }
     liveActivity = LiveActivityManager.start(
@@ -479,6 +484,7 @@ class Quiz {
     speedRoundMiss = nil
     speedRoundPreviousBest = nil
     isNewSpeedRoundBest = false
+    dailyStreakStatus = nil
   }
 
   /// `excluded` names the record's items the session has already asked, which a Review, My
@@ -546,6 +552,13 @@ class Quiz {
       ).map { question in
         makeQuizItem(verb: question.verb, conjugationgroup: question.conjugationgroup, readingIndex: question.readingIndex)
       }
+    }
+
+    if scope.isDaily {
+      return QuizDraw.dailyQuestions(for: Current.practice.dueItems(at: now()), pool: level.pool, verbs: verbs, count: scope.questionCount, using: &randomSource)
+        .map { question in
+          makeQuizItem(verb: question.verb, conjugationgroup: question.conjugationgroup, readingIndex: question.readingIndex)
+        }
     }
 
     if scope.isSentences {
@@ -1088,6 +1101,12 @@ class Quiz {
     if scope.sendsQuestionCounts {
       parameters[ParameterKey.questionCount.rawValue] = "\(questionCount)"
     }
+    if scope.isDaily {
+      let status = Current.practice.recordDailySession(at: now())
+      dailyStreakStatus = status
+      parameters[ParameterKey.streak.rawValue] = AnalyticsBand.streak(status.length)
+      Current.rescheduleReminders(now: now())
+    }
     Current.analytics.signal(name: .completeQuiz, parameters: parameters)
     Current.practice.recordResult(LastQuizResult(quiz: self))
     announceQuizCompletion()
@@ -1203,6 +1222,9 @@ class Quiz {
     if reaskCount > 0 {
       announcement += " \(L.Quiz.askedAgainLabel) \(reaskCorrectCount) / \(reaskCount)."
     }
+    if let line = dailyStreakStatus?.resultsLine, !line.isEmpty {
+      announcement += " \(line)"
+    }
     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
       UIAccessibility.post(notification: .announcement, argument: announcement)
     }
@@ -1259,6 +1281,9 @@ struct QuizScope {
   /// The Speed Round, sixty seconds on mastered items (Phase 21).
   var isSpeedRound = false
 
+  /// The daily session, whose results extend the streak (Phase 22).
+  var isDaily = false
+
   /// Only a default quiz posts, to the leaderboard of its level, as Josh decided on 2026-11-13: a
   /// score over a learner's own verbs or conjugationgroups, or over three questions, compares with
   /// nothing. Only its first round posts.
@@ -1280,7 +1305,7 @@ struct QuizScope {
   }
 
   private var isDefaultQuiz: Bool {
-    verbs == nil && custom == nil && recordSession == nil && !isVerbEssentials && !isRecognition && !isSentences && !isSpeedRound && continues
+    verbs == nil && custom == nil && recordSession == nil && !isVerbEssentials && !isRecognition && !isSentences && !isSpeedRound && !isDaily && continues
   }
 
   /// A Review or My Mistakes session's length is the number of items due or missed, when fewer
@@ -1308,9 +1333,10 @@ struct QuizScope {
   }
 
   /// Whether the results offer Ten More, or for Verb Essentials five more verbs. Every quiz does but
-  /// a verb page's three questions and a Speed Round, whose results offer a new round instead.
+  /// a verb page's three questions, a Speed Round, whose results offer a new round instead, and a
+  /// daily session, whose next session is one of its own.
   var continues: Bool {
-    !isSpeedRound && (isVerbEssentials || questionCount == Quiz.questionCount)
+    !isSpeedRound && !isDaily && (isVerbEssentials || questionCount == Quiz.questionCount)
   }
 
   static let verbPageQuestionCount = 3

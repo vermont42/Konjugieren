@@ -76,6 +76,27 @@ class Settings {
   static let customQuizKey = "customQuiz"
   static let customQuizDefault = CustomQuiz()
 
+  var dailyReminder: DailyReminder = dailyReminderDefault {
+    didSet {
+      if dailyReminder != oldValue {
+        getterSetter.set(key: Settings.dailyReminderKey, value: dailyReminder.rawValue)
+      }
+    }
+  }
+  static let dailyReminderKey = "dailyReminder"
+  static let dailyReminderDefault: DailyReminder = .off
+
+  /// When the daily reminder comes, in minutes after midnight.
+  var dailyReminderMinutes: Int = dailyReminderMinutesDefault {
+    didSet {
+      if dailyReminderMinutes != oldValue {
+        getterSetter.set(key: Settings.dailyReminderMinutesKey, value: "\(dailyReminderMinutes)")
+      }
+    }
+  }
+  static let dailyReminderMinutesKey = "dailyReminderMinutes"
+  static let dailyReminderMinutesDefault = DailyReminderPlan.defaultMinutes
+
   var audioFeedback: AudioFeedback = audioFeedbackDefault {
     didSet {
       if audioFeedback != oldValue {
@@ -178,6 +199,8 @@ class Settings {
     quizLevel = restore(key: Settings.quizLevelKey, default: Settings.quizLevelDefault)
     quizClock = restore(key: Settings.quizClockKey, default: Settings.quizClockDefault)
     customQuiz = restore(key: Settings.customQuizKey, default: Settings.customQuizDefault)
+    dailyReminder = restore(key: Settings.dailyReminderKey, default: Settings.dailyReminderDefault)
+    dailyReminderMinutes = restore(key: Settings.dailyReminderMinutesKey, default: Settings.dailyReminderMinutesDefault)
     audioFeedback = restore(key: Settings.audioFeedbackKey, default: Settings.audioFeedbackDefault)
     searchScope = restore(key: Settings.searchScopeKey, default: Settings.searchScopeDefault)
     flipSearchScopeDefaultOnce()

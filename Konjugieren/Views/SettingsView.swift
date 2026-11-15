@@ -7,6 +7,8 @@ struct SettingsView: View {
   @State private var hasChatHistory = false
   @State private var hasQuizErrors = false
   @State private var isConfirmingReset = false
+  /// Notifications are not allowed, so the reminder cannot appear.
+  @State private var areRemindersDenied = false
   @State private var rateReviewDescription = ""
   @State private var showingOnboarding = false
   @State private var showingGame = false
@@ -141,6 +143,15 @@ struct SettingsView: View {
                 }
                 .pickerStyle(.segmented)
               }
+
+              GradientDivider()
+
+              settingSection(
+                heading: L.DailyReminder.heading,
+                description: L.DailyReminder.description
+              ) {
+                dailyReminderControls
+              }
             }
 
             settingsCard {
@@ -233,7 +244,7 @@ struct SettingsView: View {
                   }
                 }
 
-                if !Current.practice.isEmpty || Current.practice.lastResult != nil || hasQuizErrors {
+                if !Current.practice.isEmpty || Current.practice.lastResult != nil || !Current.practice.dailyStreak.isEmpty || hasQuizErrors {
                   settingsAction(
                     title: L.Settings.resetPractice,
                     systemImage: "arrow.counterclockwise",
@@ -265,6 +276,13 @@ struct SettingsView: View {
         Current.analytics.signal(name: .viewSettingsView)
         hasChatHistory = !TutorChatHistory.isEmpty(getterSetter: Current.getterSetter)
         hasQuizErrors = !QuizErrorHistory.load(getterSetter: Current.getterSetter).isEmpty
+      }
+      // Notifications can be turned off in the Settings app while the reminder is on.
+      .task(id: isOnScreen) {
+        guard isOnScreen, Current.settings.dailyReminder == .on else {
+          return
+        }
+        areRemindersDenied = !(await Current.reminderScheduler.isAuthorized())
       }
       .alert(L.Settings.resetPracticeConfirmTitle, isPresented: $isConfirmingReset) {
         Button(L.Settings.resetPracticeConfirm, role: .destructive) {
@@ -301,8 +319,77 @@ struct SettingsView: View {
     Current.practice.reset()
     QuizErrorHistory.clear(getterSetter: Current.getterSetter)
     hasQuizErrors = false
+    Current.rescheduleReminders()
     Current.analytics.signal(name: .tapResetPractice)
   }
+
+  /// Off and On, the time while on, and a way to the Settings app while notifications are not
+  /// allowed. Permission is asked for only when the learner turns the reminder on (T6.3).
+  @ViewBuilder
+  private var dailyReminderControls: some View {
+    Picker(L.DailyReminder.heading, selection: Binding(get: { Current.settings.dailyReminder }, set: { setDailyReminder($0) })) {
+      ForEach(DailyReminder.allCases, id: \.self) { reminder in
+        Text(reminder.localizedDailyReminder).tag(reminder)
+      }
+    }
+    .pickerStyle(.segmented)
+    .accessibilityIdentifier("daily_reminder_picker")
+
+    if Current.settings.dailyReminder == .on {
+      DatePicker(L.DailyReminder.time, selection: dailyReminderTime, displayedComponents: .hourAndMinute)
+        .foregroundStyle(.customForeground)
+        .accessibilityIdentifier("daily_reminder_time")
+    }
+
+    if areRemindersDenied {
+      Text(L.DailyReminder.denied)
+        .font(.callout)
+        .foregroundStyle(.customRed)
+        .fixedSize(horizontal: false, vertical: true)
+        .accessibilityIdentifier("daily_reminder_denied")
+      Button(L.DailyReminder.openSettings) {
+        if let url = URL(string: UIApplication.openNotificationSettingsURLString) {
+          UIApplication.shared.open(url)
+        }
+      }
+      .buttonStyle(.bordered)
+      .tint(.customYellow)
+      .accessibilityIdentifier("daily_reminder_open_settings")
+    }
+  }
+
+  /// Today at the reminder's time, which the picker shows as a time alone.
+  private var dailyReminderTime: Binding<Date> {
+    Binding {
+      let minutes = Current.settings.dailyReminderMinutes
+      return Calendar.current.date(bySettingHour: minutes / 60, minute: minutes % 60, second: 0, of: .now) ?? .now
+    } set: { date in
+      let components = Calendar.current.dateComponents([.hour, .minute], from: date)
+      Current.settings.dailyReminderMinutes = (components.hour ?? 0) * 60 + (components.minute ?? 0)
+      Current.rescheduleReminders()
+    }
+  }
+
+  /// Turning the reminder on asks for permission, and a refusal leaves it off, with a line saying
+  /// why. The signal says which: `true`, `false`, or `denied`.
+  private func setDailyReminder(_ reminder: DailyReminder) {
+    guard reminder == .on else {
+      Current.settings.dailyReminder = .off
+      areRemindersDenied = false
+      Current.rescheduleReminders()
+      Current.analytics.signal(name: .tapDailyReminder, parameters: [ParameterKey.enabled.rawValue: "false"])
+      return
+    }
+    Task {
+      let isAllowed = await Current.reminderScheduler.requestAuthorization()
+      Current.settings.dailyReminder = isAllowed ? .on : .off
+      areRemindersDenied = !isAllowed
+      Current.rescheduleReminders()
+      Current.analytics.signal(name: .tapDailyReminder, parameters: [ParameterKey.enabled.rawValue: isAllowed ? "true" : Self.deniedValue])
+    }
+  }
+
+  static let deniedValue = "denied"
 
   private var aboutFooter: some View {
     VStack(spacing: Layout.defaultSpacing / 2) {

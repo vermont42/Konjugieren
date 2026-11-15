@@ -304,6 +304,20 @@ struct DeeplinkTests {
     #expect(Current.info == nil)
   }
 
+  /// The reminder's link opens the Quiz tab with a request for a daily session, which names it.
+  @Test func handleURLDailySessionDeeplink() throws {
+    let url = try #require(URL.dailySessionDeeplink(source: .reminder))
+    #expect(url.absoluteString == "konjugieren://quiz/daily?source=reminder")
+    Current.selectedTab = .verbs
+    Current.handleURL(url)
+    #expect(Current.selectedTab == .quiz)
+    #expect(Current.dailySessionRequest?.source == .reminder)
+    #expect(Current.practiceSet == nil)
+
+    Current.handleURL(URL(string: "konjugieren://quiz/start")!)
+    #expect(Current.dailySessionRequest == nil)
+  }
+
   @Test func handleURLRandomVerbDeeplink() {
     let url = URL(string: "konjugieren://verb/random")!
     Current.handleURL(url)

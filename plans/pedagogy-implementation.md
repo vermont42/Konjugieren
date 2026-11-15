@@ -36,7 +36,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 19 | Done | 2026-11-15 | `81f3c6b` | T5.6 |
 | 20 | Done | 2026-11-15 | `2608a03` | T6.2 |
 | 21 | Done | 2026-11-15 | `38d4496` | T5.7 |
-| 22 | Not started | | | T6.3 |
+| 22 | Done | 2026-11-15 | | T6.3 |
 | 23 | Not started | | | T6.6 (personal bests and achievements) |
 | 24 | Not started | | | T6.8 |
 | Closing | Not started | | | Audit, report notes, porting list, Decision 10 |
@@ -2245,7 +2245,7 @@ scoring.
 
 ## Phase 22: A Daily Session and a Streak
 
-**Suggestions:** T6.3. **Depends on:** Phases 11, 12, and 13. **Status:** Not started.
+**Suggestions:** T6.3. **Depends on:** Phases 11, 12, and 13. **Status:** Done.
 
 A short daily session, a streak that can be repaired, and an optional reminder at a time the
 learner picks. About 37% of iOS education-app users allow notifications (**secondhand**, in the
@@ -2273,7 +2273,87 @@ controllable clock in tests, and the reminder fires on the simulator at the chos
 
 **How it differed:**
 
-(To be written by the session that finishes this phase.)
+- **Nothing was asked of Josh.** The phase lists no Ask Josh items, and every choice below was made
+  in the session. Each is a guess he can overrule.
+- **The session** (`QuizScope.daily(source:)`, `QuizDraw.dailyQuestions`, `Models/DailySession.swift`).
+  "At the learner's level" was read as the default quiz reads it: due items are taken only where the
+  level asks the cell and the band holds the verb, most overdue first, up to all ten, and a due
+  Präteritum looked up at Elementary still waits for Review. The rest is the default quiz's balanced
+  draw. **No choice question**, though the default quiz has one from Elementary up, since a choice
+  moves nothing in the record and the session's purpose is the record. **No Ten More**: a second
+  session is a session of its own, which a repair counts. While a repair awaits its second session,
+  the results offer **Another Session** ("Noch eine Übung") in Ten More's place. Never ranked; it
+  does start a Live Activity. A quit session does not count.
+- **The streak** (`Models/DailyStreak.swift`), kept by `PracticeStore` under `dailyStreak` in the App
+  Group. Its length is days practiced: **the missed day a repair bridges does not count**. One
+  session on the day after a missed day starts a run of its own and shows as a repair in progress
+  ("Noch eine Übung heute rettet deine Serie von 2 Tagen."); if the day ends there, the old streak
+  is gone and the new one is one day long. Only the last two runs are stored. Day arithmetic counts
+  calendar days, so a 25-hour day is one. **Reset Practice forgets the streak**, as it forgets the
+  Speed Round's best, and its description and alert now say so; a learner who wants a fresh record
+  but a kept streak cannot have both.
+- **The hub.** "Daily Session" / "Tägliche Übung" is the **first row of From Your Practice**, with a
+  calendar, or a flame once there is a streak. Its line follows the status: what the session is and
+  that one a day builds a streak; "Streak: 3 days. Today's session keeps it going." or "… Done for
+  today."; the two repair lines. It always starts a session, a second on an ordinary day changing
+  nothing. **On an iPhone it pushes Review below the fold**, which Phase 13 had brought above it;
+  the row could instead replace a tile or sit under Start, if Josh prefers.
+- **The reminder.** In Settings' quiz card, after Audio Feedback: Daily Reminder ("Tägliche
+  Erinnerung"), Off or On, and a time while on, **18:00 by default**. Permission is asked only on
+  turning it on; refused, the setting stays Off with a red line and Open Settings, which also show
+  while On if notifications were later turned off in the Settings app. **One notification per day
+  for 14 days** rather than one that repeats, so that each can say what that day will have due
+  ("Deine tägliche Übung wartet, mit 11 Konjugationen zur Wiederholung.") or that its streak needs
+  repair, and so that **a day whose session is done gets none**. They are rescheduled when the
+  setting or time changes, a daily session finishes, practice is reset, and the app becomes active
+  or goes to the background; a learner away for two weeks stops being reminded. **Tapping a reminder
+  starts a daily session** (`konjugieren://quiz/daily?source=reminder`, a new deeplink target),
+  unless a quiz is under way or showing results, rather than only opening the hub. A reminder due
+  while the app is open shows nothing.
+- **Analytics** as decided, with two choices in the session. `tapDailyReminder` carries `enabled`
+  with a third value, `denied`, for a learner who turned it on and refused permission, since the
+  report's 37% makes that number worth having. The `streak` band of a session that leaves a repair
+  pending is the streak at stake. The daily session sends its question count, since it is always
+  ten. Staged in [`docs/privacy-policy-pending.md`](../docs/privacy-policy-pending.md) in both
+  languages: the quiz bullet, the taps bullet, the section 6 sentence, and the practice-record
+  paragraph, which names the streak and says the reminder is written and scheduled on the device.
+- **VoiceOver.** The row reads its title and line, with a hint; the results' announcement ends with
+  the streak line; Another Session has a hint. Nobody has listened to it.
+- **Found while building.** Passing the method `setDailyReminder` as a `Binding` setter crashed the
+  compiler in IR generation (a reabstraction thunk over the new enum); a closure that calls it does
+  not. And `docs/feature-architecture.md`'s table of `source` values lacked Phase 21's
+  `speedRound`, now added beside `daily` and `reminder`.
+- **Tests:** `DailySessionTests`, 24 functions. Eighteen on the parts, under a fixed Berlin calendar
+  and explicit dates: no streak, a streak through the next day and repairable the day after, a day
+  counted once, two sessions repairing, one session starting anew, two missed days, a 25-hour day,
+  pruning, the bands (7 cases), the store across a launch and a reset, the draw (due items first,
+  ten due, one beyond the level), the scope, and the reminder plan (each day at the time, today's
+  past, a done day skipped with the repair line after, what will be due). Six nested in `QuizTests`,
+  with `Quiz`'s new injectable `now`: a session at the level with its due item, the streak extended
+  and its band sent with no score posted, a quit not counting, a repair across four days, the
+  reminder rescheduled and cleared, and `reminder` as the source. Plus the setting's default and
+  persistence in `SettingsTests` and the `quiz/daily` route in `DeeplinkTests`. Run in English with
+  `xcodebuild -testLanguage en`: 905 passed and 2 skipped (the environment-gated harnesses), 907 in
+  all.
+- **Verified on the iPhone 17**, in dark mode at Grundstufe. In German: the hub's row with no streak;
+  Settings' section, the system's request appearing only on tapping An, Allow, and the time picker;
+  the reminder **fired on the simulator at the chosen time** (set two minutes ahead), reading "Zeit
+  zum Üben" and the 11 items the real record had due; the reminder's deeplink opening straight into
+  a "Tägliche Übung" with its field focused; a session finished to "Serie: 1 Tag"; the Last Quiz row
+  naming it; a seeded streak of the 12th and 13th showing the repair line on the 15th, a first
+  session showing "Noch eine Übung heute rettet …" with Noch eine Übung, and the second, started from
+  that button with the field typing at once, ending "Serie: 3 Tage". In English: the row's "Streak: 3
+  days. Done for today.", the reminder section, and Reset Practice's description. **On the iPad Pro
+  11-inch (M5)**, in light mode and English at Advanced: the request refused, leaving Off with the
+  red line and Open Settings; the hub's row; and a session's results with "Streak: 1 day". Both
+  simulators' defaults were restored afterward and checked key by key, apart from GameKit's own
+  sign-in banner key; the iPhone's 13 remaining reminders were cleared by one launch with the
+  reminder off. **The iPhone simulator now allows Konjugieren's notifications and the iPad's refuses
+  them**; the iOS Settings app resets either. Not tried: tapping the delivered notification itself
+  (AXe's taps did not open a cell on the Lock Screen sheet, so the deeplink it carries was opened
+  with `simctl openurl`), the time picker by tap (the time was written to the defaults), Open
+  Settings, VoiceOver by ear, and a real day passing.
+- **Josh asked for the commit** on 2026-11-15.
 
 ## Phase 23: Personal Bests and Achievements
 

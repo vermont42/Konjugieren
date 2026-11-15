@@ -54,6 +54,9 @@ Konjugieren/
 │   ├── Conjugator.swift        # Core conjugation logic for all conjugationgroups; joined (subordinate-clause) conjugations by default, the Wiktionary oracle
 │   ├── ConjugatorError.swift   # Error enum for conjugation failures
 │   ├── CustomQuiz.swift        # The Quiz tab's custom quiz (Phase 9 of the pedagogy plan): chosen tables and a QuizVerbSet (a band, every verb, My Verbs, or a collection), either falling back to the level's; its permanent stored form (groups=…&verbs=…, or infinitives=… for a practice set's list of verbs); QuizScope.custom
+│   ├── DailyReminder.swift     # The daily reminder (pedagogy Phase 22): the DailyReminder setting (off, on), DailyReminderPlan (one notification a day for 14 days at the chosen time, worded with what will be due or the streak's repair, none on a done day), the ReminderScheduler protocol, DailySessionRequest, and World.rescheduleReminders
+│   ├── DailySession.swift      # The daily session (pedagogy Phase 22): QuizScope.daily, QuizDraw.dailyQuestions (due items the level asks first, then the default draw), the streak's bands, and what the hub and the results say about the streak
+│   ├── DailyStreak.swift       # The daily streak (pedagogy Phase 22): finished daily sessions by day, and the status a day has (none, active, or repairable by two sessions the day after one missed day); only the last two runs are kept
 │   ├── Etymologies.json        # Bundled verb etymologies keyed by language and infinitive
 │   ├── Etymology.swift         # Lazy-loading etymology lookup by infinitive
 │   ├── ExampleSentence.swift   # Lazy-loading literary example sentence lookup by infinitive
@@ -145,6 +148,8 @@ Konjugieren/
 │   ├── Modifiers.swift         # Custom ViewModifiers (headingLabel, funButton, speakOnTap, copyOnLongPress, etc.)
 │   ├── QRCode.swift            # A QR code made on the device with Core Image, for a practice set
 │   ├── RatingsFetcher.swift    # Fetches app ratings from iTunes API
+│   ├── ReminderSchedulerReal.swift # Schedules the daily reminders as local notifications, each carrying the daily session's deeplink, and ReminderNotificationDelegate, which opens a tapped one and shows none while the app is open
+│   ├── ReminderSchedulerSpy.swift  # Records scheduled reminders and authorization requests under unit tests
 │   ├── RegionalRendering.swift # ß→ss display transform + RegionalConjugator (region-aware wrapper over the region-free Conjugator, defaulting to main-clause conjugations: steht auf); search folding lives in VerbSearch
 │   ├── ReviewPrompter.swift    # Protocol for review-prompting behavior
 │   ├── ReviewPrompterDummy.swift   # No-op stub for tests
@@ -260,6 +265,7 @@ KonjugierenTests/
 │   ├── ConjugationgroupTests.swift # Conjugationgroup.ending(family:) ending-table tests
 │   ├── ChoiceQuestionTests.swift # Choice questions: the machine check over every bundled item (well formed, both sentences the conjugator's conjugations in every region, the item's level asks its answer, every reason names its conjugationgroups, every contrast and level covered), the two sentences and the prompt's order, levels and drafts, the draw and its position; nested in QuizTests, one choice a default round from Elementary up and none elsewhere, a right choice held with its reason and nothing recorded, a wrong one held and not re-asked, Ten More's unasked choice, and a ranked round still out of 100
 │   ├── CustomQuizTests.swift   # The custom quiz's stored form and keys, its pool at each level, the restricted-table fallback, its scope (never ranked, mixed only for bands), the setting's persistence; nested in QuizTests, sessions that ask only the choice, post no score, and send source custom
+│   ├── DailySessionTests.swift # The daily streak across days (repair by two sessions, a failed repair, two missed days, a 25-hour day, pruning, the bands, the store across a launch and a reset), the draw (due items first, ten due, one beyond the level), the scope, and the reminder plan (each day at the time, today's past or done, the repair line, what will be due); nested in QuizTests, a session at the level, the streak extended and sent, a quit not counting, a repair across days, the reminder rescheduled, and the reminder as source
 │   ├── ConjugatorTests.swift   # Comprehensive conjugation tests (~50 test functions), incl. error paths
 │   ├── LearnerVerbsTests.swift # The learner's verbs: opens, stars, recents, My Verbs, removal, clearing, JSON round trip and an old record's decoding, and the store's reload
 │   ├── MasteryTests.swift      # The Mastery page's model: the state by box, each level's pattern count and which conjugationgroups have patterns, the Futurs serving every verb, the 50 core verbs, the stems each level asks, a verb mastered when every asked stem in every strong reading is, and answers landing where the item mapping sends them

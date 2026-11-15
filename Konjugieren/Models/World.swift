@@ -20,6 +20,7 @@ class World {
   var session: URLSession
   var learnerVerbs: LearnerVerbStore
   var practice: PracticeStore
+  var reminderScheduler: ReminderScheduler
   var verb: Verb?
   var verbSource: AnalyticsSource = .deeplink
   var verbMarks: MarkedConjugations?
@@ -28,10 +29,12 @@ class World {
   var info: Info?
   var searchRequest: SearchRequest?
   var practiceSet: PracticeSetRequest?
+  /// A daily session the Quiz tab should start, asked for by the reminder (Phase 22).
+  var dailySessionRequest: DailySessionRequest?
   var selectedTab: TabSelection = .verbs
   var shouldNavigateToTutor = false
 
-  init(settings: Settings, gameCenter: GameCenter, getterSetter: GetterSetter, languageModelService: LanguageModelService, reviewPrompter: ReviewPrompter, soundPlayer: SoundPlayer, utterer: Utterer, fatalError: FatalError, analytics: Analytics, session: URLSession, learnerVerbs: LearnerVerbStore, practice: PracticeStore) {
+  init(settings: Settings, gameCenter: GameCenter, getterSetter: GetterSetter, languageModelService: LanguageModelService, reviewPrompter: ReviewPrompter, soundPlayer: SoundPlayer, utterer: Utterer, fatalError: FatalError, analytics: Analytics, session: URLSession, learnerVerbs: LearnerVerbStore, practice: PracticeStore, reminderScheduler: ReminderScheduler) {
     self.settings = settings
     self.gameCenter = gameCenter
     self.getterSetter = getterSetter
@@ -44,6 +47,7 @@ class World {
     self.session = session
     self.learnerVerbs = learnerVerbs
     self.practice = practice
+    self.reminderScheduler = reminderScheduler
   }
 
   nonisolated static let isRunningUnitTests = NSClassFromString("XCTestCase") != nil
@@ -56,13 +60,13 @@ class World {
     let getterSetter = GetterSetterReal()
     let settings = Settings(getterSetter: getterSetter)
     let sharedGetterSetter = GetterSetterReal(userDefaults: WidgetConstants.sharedDefaults ?? .standard)
-    return World(settings: settings, gameCenter: GameCenterReal(), getterSetter: getterSetter, languageModelService: LanguageModelServiceReal(), reviewPrompter: ReviewPrompterReal(settings: settings), soundPlayer: SoundPlayerReal(), utterer: UttererReal(), fatalError: FatalErrorReal(), analytics: AnalyticsReal(), session: .shared, learnerVerbs: LearnerVerbStore(getterSetter: sharedGetterSetter), practice: PracticeStore(getterSetter: sharedGetterSetter))
+    return World(settings: settings, gameCenter: GameCenterReal(), getterSetter: getterSetter, languageModelService: LanguageModelServiceReal(), reviewPrompter: ReviewPrompterReal(settings: settings), soundPlayer: SoundPlayerReal(), utterer: UttererReal(), fatalError: FatalErrorReal(), analytics: AnalyticsReal(), session: .shared, learnerVerbs: LearnerVerbStore(getterSetter: sharedGetterSetter), practice: PracticeStore(getterSetter: sharedGetterSetter), reminderScheduler: ReminderSchedulerReal())
   }()
 
   static let unitTest: World = {
     let getterSetter = GetterSetterFake()
     let settings = Settings(getterSetter: getterSetter)
-    return World(settings: settings, gameCenter: GameCenterSpy(), getterSetter: getterSetter, languageModelService: LanguageModelServiceDummy(), reviewPrompter: ReviewPrompterDummy(), soundPlayer: SoundPlayerDummy(), utterer: UttererDummy(), fatalError: FatalErrorSpy(), analytics: AnalyticsSpy(), session: .stubSession(ratingsCount: 1), learnerVerbs: LearnerVerbStore(getterSetter: GetterSetterFake()), practice: PracticeStore(getterSetter: GetterSetterFake()))
+    return World(settings: settings, gameCenter: GameCenterSpy(), getterSetter: getterSetter, languageModelService: LanguageModelServiceDummy(), reviewPrompter: ReviewPrompterDummy(), soundPlayer: SoundPlayerDummy(), utterer: UttererDummy(), fatalError: FatalErrorSpy(), analytics: AnalyticsSpy(), session: .stubSession(ratingsCount: 1), learnerVerbs: LearnerVerbStore(getterSetter: GetterSetterFake()), practice: PracticeStore(getterSetter: GetterSetterFake()), reminderScheduler: ReminderSchedulerSpy())
   }()
 
   static let viewVerbActivityType = "biz.joshadams.Konjugieren.viewVerb"
@@ -75,6 +79,7 @@ class World {
     info = nil
     searchRequest = nil
     practiceSet = nil
+    dailySessionRequest = nil
   }
 
   /// Shows the verb list with its search field. A nil `text` keeps what the field holds, as
@@ -134,6 +139,9 @@ class World {
       // A practice set shows over whatever tab is open, as a sheet with Start (Phase 10).
       if url.pathComponents[1] == URL.practiceSetTarget {
         practiceSet = PracticeSetRequest(practiceSet: PracticeSet(url: url), source: url.analyticsSource ?? .deeplink)
+      } else if url.pathComponents[1] == URL.dailySessionTarget {
+        dailySessionRequest = DailySessionRequest(source: url.analyticsSource ?? .deeplink)
+        selectedTab = .quiz
       } else {
         selectedTab = .quiz
       }

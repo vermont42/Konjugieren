@@ -11422,3 +11422,79 @@ borrowed the word twice: once in 1939, and once at the chessboard, where speed c
 after German *Blitzschach*. The Speed Round is blitz chess for conjugations.
 
 Tests: 18 new, 881 in all, 879 passed and the 2 environment-gated harnesses skipped.
+
+## A Daily Session and a Streak (2026-11-15)
+
+Phase 22 of the pedagogy plan built T6.3: a short daily session, a streak one missed day cannot
+break if the learner repairs it, and an optional reminder. Josh had settled the shape on 2026-11-13
+(ten questions at the learner's level, due items first; two sessions the day after a missed day
+repair the streak; the widgets stay out of it; three signals), so the session's work was the
+details, and the details were mostly about what a "day" is.
+
+### The session
+
+The daily session reuses two pieces already on `main`. Phase 11's `QuizDraw.dueQuestions` picks due
+items the level asks, most overdue first, and the default quiz's balanced draw fills the rest. The
+only change is the limit: the default quiz takes up to three due items a round, and the daily session
+takes up to all ten. It leaves out the default quiz's one choice question, because a choice moves
+nothing in the record and the record is the point. It offers no Ten More either, since a second
+session has to be a session of its own for the repair rule to mean anything. While a repair waits on
+its second session, the results offer "Another Session" in Ten More's place.
+
+### What a streak is
+
+The first design considered, before any code, was a compact state machine: the run's length, its
+last day, today's count. It falls apart on the case the rule creates. A learner misses Tuesday, finishes one session on Wednesday,
+and the app must say "one more keeps your 5-day streak" while also knowing that, if Wednesday ends
+there, a new streak of one began that morning. The state machine would need a second shadow streak. A
+history did not: `DailyStreak` keeps a count of finished sessions per calendar day and computes runs
+from it. A day joins the run before it when it follows that run's last day, or when it follows a
+missed day with two sessions. Everything else (the hub's line, the results, the reminder's text, the
+analytics band) asks one function for the status on a given date.
+
+Two choices fell out of that. The missed day a repair bridges does not count toward the length, so a
+streak of five days means five days practiced. And only the last two runs are stored, because a run
+can only ever be joined to the one just before it, so the history stays a handful of entries.
+
+Days are counted in calendar days rather than in 24-hour steps. Berlin's clocks went back on 25
+October 2026, a day of 25 hours, and one of the tests records sessions at half past eleven at night
+on either side of it to pin that.
+
+### A reminder that says something
+
+The obvious reminder is one repeating notification at the chosen time. It cannot change its text,
+and it fires on a day whose session is already done. So the app schedules one notification per day
+for the next fourteen days, each written when scheduled: how many conjugations the record will have
+due that day, or, when the streak will need repair, the repair line. A finished session reschedules
+them, and today's disappears. So does every trip to the background, since the record changes as the
+learner practices. Someone who does not open the app for two weeks stops being reminded, which
+seemed kinder than reminding forever.
+
+Permission is asked only when the learner turns the reminder on. Refused, the setting falls back to
+Off with a line saying why and a button to the Settings app. The signal for the toggle gained a third
+value, `denied`, because the report's figure (about 37% of education-app users allow notifications)
+is exactly the kind of number this app could check for itself, without sending anything about the
+learner's practice.
+
+On the simulator the reminder fired at the minute it was set for, in German, and said "11
+Konjugationen", which was the real record's due count. Tapping it opens
+`konjugieren://quiz/daily?source=reminder`, a new deeplink target that starts the session at once.
+AXe could not open a notification on the Lock Screen sheet, so the link itself was opened with
+`simctl openurl`.
+
+### A compiler crash
+
+Passing `setDailyReminder` as a `Binding`'s setter, a method reference where a closure was expected,
+crashed `swift-frontend` in IR generation while it emitted a reabstraction thunk for the new enum.
+Wrapping the call in a closure fixed it. The log showed only a stack dump, and the line that named
+the culprit was "While emitting IR SIL function", with a mangled name containing `DailyReminder`.
+
+### Serie and streak
+
+The German hub says "Serie", from Latin *series*, a row, from *serere*, to join or link in a row.
+The same verb, with a prefix that undoes, gives *deserere*, to unjoin, and English "desert". A repair
+is *serere* again: it links the day after the gap back to the row. English "streak" has a different
+history: Old English *strica*, a stroke or a line, kin to "strike" and to German *Strich*. A streak
+is the line you draw by practicing, and a Serie is the chain the days make.
+
+Tests: 26 new, 907 in all, 905 passed and the 2 environment-gated harnesses skipped.

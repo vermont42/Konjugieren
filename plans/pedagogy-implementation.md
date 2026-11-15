@@ -36,7 +36,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 19 | Done | 2026-11-15 | `81f3c6b` | T5.6 |
 | 20 | Done | 2026-11-15 | `2608a03` | T6.2 |
 | 21 | Done | 2026-11-15 | `38d4496` | T5.7 |
-| 22 | Done | 2026-11-15 | | T6.3 |
+| 22 | Done | 2026-11-15 | `5579305` | T6.3 |
 | 23 | Not started | | | T6.6 (personal bests and achievements) |
 | 24 | Not started | | | T6.8 |
 | Closing | Not started | | | Audit, report notes, porting list, Decision 10 |

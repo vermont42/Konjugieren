@@ -12026,3 +12026,54 @@ Entries above from 2026-11-14 and 2026-11-15, and the phase notes in
 with `-testLanguage en`. They were true when written. If the simulator is switched to German
 again, seven suites that assert English strings will fail by the dozen while nothing is broken,
 and that flag on the raw `xcodebuild` command is the remedy.
+
+## The README catches up with the quiz and the reference (2026-11-16)
+
+The README still described the app of early summer: a quiz of thirty timed questions with a
+Pronoun row, a verb list without reverse lookup, and screenshots from January. Two finished plans,
+sixteen browse phases and twenty-four pedagogy phases, had changed both halves of the app since.
+Josh asked for a big refresh with new screenshots, and to see the rendered README in Chrome before
+anything was pushed.
+
+### Screenshots, twice
+
+The first pass was shot in light mode, as the request said. Partway through, Josh asked for dark
+mode instead, so the sweep was run again. The light pass was not wasted, since it had worked out
+how to reach each screen, and the dark pass was a script. Dark mode has a side benefit: the
+widgets and Tutor shots from January were already dark, and neither can be retaken on this Intel
+host (the Tutor needs Apple Intelligence, per `CLAUDE.md`), so they still sit comfortably beside
+the new ones.
+
+The quiz fixtures made the quiz screens repeatable. Launched with `-KONJUGIEREN_QUIZ_FIXTURE
+diagnoses`, the default quiz asks hängen's Präteritum first, and typing hängte twice yields both
+the "Try once more" prompt and the held correction with its diagnosis. The `essentials`,
+`sentences`, `recognition`, and `choices` fixtures did the same for their exercises. Three
+mechanical lessons: the hub keeps its scroll position across tab switches, so a later tap on Start
+found nothing on screen; a tap sent while a scroll view is still decelerating is dropped; and the
+system search field is not in the accessibility tree, so it was tapped by position.
+
+One misstep touched the simulator's data. A tap meant for Verb Essentials landed on Review, which
+sat where the button had been before a scroll, and two of my answers went into the practice record
+as wrong before I noticed. A fixture round also recorded an Elementary personal best of 60. Both
+live only in this simulator's App Group.
+
+### What the text says now
+
+The README now opens by calling the app two apps in one, then gives each half its own section:
+search that finds conjugations and the conjugation map as a build product; grading, the answer
+frame, rule-based diagnosis, the held correction, levels and bands, the practice record, the seven
+exercises, and the analytics rules. Stale facts went: the Tutor paragraph's "988-verb engine", the
+ablaut groups counted as 73 in one paragraph and 76 in another, the percent-delimited URLs (the
+parser uses ‡), and every em dash. Checking my own draft caught two more errors before Josh saw
+it: I had called the conjugation map a quarter of a million spellings, when it holds about 50,000,
+and had listed flag bullets as a sixth markup syntax, which the parser does not parse. A full test
+run confirmed the README's 953 tests: 953 in 100 suites, passing, in English.
+
+GitHub sizes table columns by their content, so a header like "Search by Conjugation" made its
+screenshot visibly larger than "Verb" beside it. Each screenshot is now an `<img>` with
+`width="190"`, which the preview, rendered through GitHub's own Markdown API, showed lines up.
+
+English *screen* came through Old French *escren* from Middle Dutch *scherm*, a shield, which is
+German *Schirm*: the *Schirm* of *Bildschirm*, *Regenschirm*, and *Fallschirm*. The Frankish verb
+behind it, *\*skirmjan*, "to protect", also gave Old French *eskermir*, to fence, and so English
+*skirmish*. Twenty-three new screenshots are, etymologically, a set of small picture shields.

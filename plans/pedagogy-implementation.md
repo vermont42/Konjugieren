@@ -39,7 +39,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 22 | Done | 2026-11-15 | `5579305` | T6.3 |
 | 23 | Done | 2026-11-15 | `fa7d846` | T6.6 (personal bests and achievements) |
 | 24 | Done | 2026-11-15 | `4fb4d5e` | T6.8 |
-| Closing | Awaiting Josh | 2026-11-15 | | Audit, report notes, porting list, Decision 10 |
+| Closing | Done | 2026-11-15 | `4d22060` | Audit, report notes, porting list, Decision 10 |
 
 **The plan is finished** (2026-11-15), with one exception: Phase 18's sentences for the other 275
 verbs of the top 300, about 625, which its **How it differed** says how to draft, check, and
@@ -2615,7 +2615,7 @@ with it, sharing produces the agreed text, and tests pin the seeding.
 
 ## Closing
 
-**Status:** Awaiting Josh (2026-11-15).
+**Status:** Done (2026-11-15).
 
 - Run the full suite and `check_docs.py`.
 - Confirm that every suggestion in the Suggestion Index marked for a phase carries its **Built on

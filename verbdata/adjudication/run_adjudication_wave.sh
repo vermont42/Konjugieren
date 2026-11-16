@@ -23,13 +23,13 @@
 #      Note that `claude-opus-4-8` is not offered by the interactive /model picker; the picker
 #      curates, while --model passes through to the API, which still serves it.
 #
-# Consumes: prompts/gloss_adjudication.md (the brief, passed verbatim),
+# Consumes: plans/gloss_adjudication.md (the brief, passed verbatim),
 #           verbdata/adjudication/shards/adj_<NNN>.in.json
 # Produces: verbdata/adjudication/shards/adj_<NNN>.out.json, meta/, metrics.jsonl
 set -u
 BASELINE="$(git status --porcelain -- . ':(exclude)verbdata/adjudication' 2>/dev/null || true)"
-BRIEF="$(cat prompts/gloss_adjudication.md)"
-BRIEF_SHA="$(shasum -a 256 prompts/gloss_adjudication.md | cut -c1-12)"
+BRIEF="$(cat plans/gloss_adjudication.md)"
+BRIEF_SHA="$(shasum -a 256 plans/gloss_adjudication.md | cut -c1-12)"
 export BRIEF_SHA
 mkdir -p verbdata/adjudication/meta
 pids=()

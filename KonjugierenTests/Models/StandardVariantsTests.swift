@@ -5,7 +5,7 @@ import Testing
 @testable import Konjugieren
 
 /// The variants Josh accepted on 2026-11-13, by their row in
-/// plans/pedagogy-phase1-variant-audit.md, and the ones he rejected.
+/// plans/pedagogy_phase1_variant_audit.md, and the ones he rejected.
 @Suite(.serialized)
 @MainActor
 struct StandardVariantsTests {

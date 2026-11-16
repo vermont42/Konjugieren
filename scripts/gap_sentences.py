@@ -15,7 +15,7 @@ Produces, by subcommand:
   status
       Counts of reviewed and draft sentences, and the verbs covered.
 
-Run from the repo root:  python3 scripts/gap_sentences.py review --out plans/gap-sentences-batch-1.md
+Run from the repo root:  python3 scripts/gap_sentences.py review --out plans/gap_sentences_batch_1.md
 
 Why it rewrites the whole file: GapSentences.json is written by json.dumps(indent=2,
 ensure_ascii=False) and nothing else, so a load-and-dump round trip reproduces it byte for byte

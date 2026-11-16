@@ -30,7 +30,7 @@ extension QuizTests {
       quiz.continueAfterCorrection()
     }
 
-    // These IDs are permanent in App Store Connect; see docs/game-center-setup.md.
+    // These IDs are permanent in App Store Connect; see docs/game_center_setup.md.
     @Test(arguments: zip(QuizLevel.allCases, [
       "konjugieren.level.beginner",
       "konjugieren.level.elementary",

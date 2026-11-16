@@ -194,7 +194,7 @@ None. The line stands as written in both languages.
   Cited for the point neither prior agent made: "the rest" assigns supernovae the larger share, so
   line 187's compression follows the essay's own apportionment.
 
-- Konjugieren, `prompts/verify-verb-history.md` line 315:
+- Konjugieren, `plans/verify_verb_history.md` line 315:
   > "**nitpick** — a specialist's quibble that misleads nobody"
 
   Cited for the grading threshold. Specialists publish under this phrase, so there is no quibble to

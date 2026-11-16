@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
-"""Build shards for the gloss audit — prompts/gloss_review.md, item 1 of
-prompts/example_review_followups.md.
+"""Build shards for the gloss audit — plans/gloss_review.md, item 1 of
+plans/example_review_followups.md.
 
 Consumes:
   Konjugieren/Models/Verbs.xml        the shipped gloss, in the tn attribute of <reading>
@@ -8,11 +8,11 @@ Consumes:
   verbdata/authored/provenance.json   the 1,097 verbs the example-sentence review already covered
 
 Produces, in the default single-reading mode:
-  verbdata/gloss-review/shards/gloss_NNN.in.json    50 verbs each
-  verbdata/gloss-review/skipped-multi-reading.txt   verbs excluded, with their readings
+  verbdata/gloss_review/shards/gloss_NNN.in.json    50 verbs each
+  verbdata/gloss_review/skipped_multi_reading.txt   verbs excluded, with their readings
 
 Produces, with --multi-reading:
-  verbdata/gloss-review/shards/multi_000.in.json    one record per READING, 88 of them
+  verbdata/gloss_review/shards/multi_000.in.json    one record per READING, 88 of them
 
 Run from the repo root:  python3 verbdata/authored/build_gloss_shards.py [--multi-reading]
 
@@ -50,7 +50,7 @@ MULTI-READING VERBS ARE SKIPPED BY THE DEFAULT MODE, LOUDLY — AND SERVED BY --
 add_readings.py gave 44 dual-auxiliary verbs a second <reading>, each with its own tn. On such a verb
 "the shipped gloss" is not a single value, and apply_gloss_corrections.py originally refused to write
 one rather than guess which sense to rewrite, so the default mode excludes them and lists them in
-skipped-multi-reading.txt rather than dropping them in silence. That exclusion was mechanical, never
+skipped_multi_reading.txt rather than dropping them in silence. That exclusion was mechanical, never
 linguistic: each reading has its own gloss and each is independently auditable.
 
 --multi-reading audits them, emitting one record per READING keyed `<verb>#<index>`. The applier now
@@ -86,7 +86,7 @@ import os
 import re
 
 SIZE = 50
-OUT = "verbdata/gloss-review/shards"
+OUT = "verbdata/gloss_review/shards"
 
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument("--multi-reading", action="store_true",
@@ -150,7 +150,7 @@ def build_multi_reading():
     THE REVIEWED FILTER IS DELIBERATELY NOT APPLIED HERE, and that is not a shortcut. In the
     default mode the two filters run in sequence — already-reviewed first, multi-reading second —
     and only the second writes a record, so `überkochen` was removed from the pool before the
-    multi-reading check ever saw it and is absent from skipped-multi-reading.txt. That file says
+    multi-reading check ever saw it and is absent from skipped_multi_reading.txt. That file says
     43; the corpus holds 44. Its glosses have never been audited: provenance.json records that its
     example SENTENCE was reviewed, which is a different pass with a different subject. Any
     exclusion file inherits the blindness of every filter that ran before it.
@@ -198,7 +198,7 @@ def build_multi_reading():
           f"shortened {kinds['shortened']}, none {kinds['none']}")
     print(f"  readings overriding the parent's separability: {len(overrides)} {overrides}")
     print(f"  readings taking sein: {sum(1 for r in records if r['auxiliary'] == 'sein')}")
-    print(f"  in provenance.json (invisible to skipped-multi-reading.txt): "
+    print(f"  in provenance.json (invisible to skipped_multi_reading.txt): "
           f"{sorted(verbs & REVIEWED)}")
 
 
@@ -245,7 +245,7 @@ for i in range(0, len(entries), SIZE):
     json.dump({"shard": n, "verbs": entries[i:i + SIZE]},
               open(f"{OUT}/gloss_{n:03d}.in.json", "w"), ensure_ascii=False, indent=2)
 
-with open("verbdata/gloss-review/skipped-multi-reading.txt", "w") as f:
+with open("verbdata/gloss_review/skipped_multi_reading.txt", "w") as f:
     # Kept in sync with the checked-in file by hand. A regeneration must not read as a fresh
     # to-do list: these verbs were audited on 2026-07-26 via --multi-reading.
     f.write("# Verbs excluded from the DEFAULT-mode gloss audit: more than one <reading>, so 'the\n"
@@ -280,4 +280,4 @@ print(f"  gloss tracks a kaikki sense: exact {kinds['exact']}, shortened {kinds[
 print(f"  first-sense picks among multi-sense verbs : {first}")
 print(f"  kaikki listed one sense or none           : {single}")
 print(f"  skipped, multi-reading                    : {len(skipped)}"
-      f"  -> verbdata/gloss-review/skipped-multi-reading.txt")
+      f"  -> verbdata/gloss_review/skipped_multi_reading.txt")

@@ -2,7 +2,7 @@
 """Apply a gloss-corrections file to Konjugieren/Models/Verbs.xml.
 
 Consumes: a corrections JSON  (key -> {old, new, why}), default
-          verbdata/authored/gloss-corrections.json
+          verbdata/authored/gloss_corrections.json
           A key is either a bare lemma (`ablesen`) for a single-reading verb, or a
           reading-scoped `<lemma>#<index>` (`abbrechen#1`) for a verb with several.
 Rewrites: Konjugieren/Models/Verbs.xml  (the tn= attribute of one <reading>)
@@ -50,7 +50,7 @@ import xml.etree.ElementTree as ET
 from xml.sax.saxutils import escape, unescape
 
 XML = pathlib.Path("Konjugieren/Models/Verbs.xml")
-DEFAULT_CORR = "verbdata/authored/gloss-corrections.json"
+DEFAULT_CORR = "verbdata/authored/gloss_corrections.json"
 
 # argparse rather than `"--dry-run" in sys.argv`. The hand-rolled version accepted --dryrun, -n, and
 # every other near-miss silently: the flag simply did not match, dry_run stayed False, and the script

@@ -74,7 +74,7 @@ with a preposition or a dative to a direct object") describe the *same operation
 of verbs. Sense 0's own exemplar `besteigen` is literally *auf etwas steigen* → *etwas besteigen*,
 which is sense 1's definition. Shard 025 resolved it by base-verb transitivity, noted that the rule
 was its own invention, and correctly predicted another shard would invent a different one — the
-`abmelken`/`abladen` situation that `sense-exemplars.json` was built to end, recurring one level up.
+`abmelken`/`abladen` situation that `sense_exemplars.json` was built to end, recurring one level up.
 
 The discriminating fact looks like **object type**: sense 0's exemplars (`besteigen`, `betreten`,
 `bewohnen`) all take a ground or location; sense 1's (`beantworten`, `besprechen`, `betrauern`) take

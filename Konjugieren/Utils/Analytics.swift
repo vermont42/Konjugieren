@@ -69,7 +69,7 @@ enum AnalyticsName: String {
 
 /// How the learner reached a verb page, began a search, or, once the quiz track sends it, began
 /// a quiz. The signals share one vocabulary so that a verb page, a search, and a quiz reached
-/// from the same surface carry the same value. `docs/feature-architecture.md` says which values
+/// from the same surface carry the same value. `docs/feature_architecture.md` says which values
 /// are sent today.
 enum AnalyticsSource: String, CaseIterable {
   case ablautAlone

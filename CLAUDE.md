@@ -109,7 +109,7 @@ If the app ID is empty (or `Secrets.xcconfig` is missing), analytics silently di
 
 ### App Store Screenshot Workflow
 
-The 36 App Store screenshots are captured by `scripts/take_screenshots.sh`. See [`docs/screenshot-playbook.md`](docs/screenshot-playbook.md) for setup, the driver flag surface, and recovery guidance.
+The 36 App Store screenshots are captured by `scripts/take_screenshots.sh`. See [`docs/screenshot_playbook.md`](docs/screenshot_playbook.md) for setup, the driver flag surface, and recovery guidance.
 
 ## Test Suite
 
@@ -122,7 +122,7 @@ which loads when working in that folder.
 
 Some suites in `KonjugierenTests/Utils/` are not tests but harnesses: they drive app code over the
 whole corpus and write a file. `VerbClassificationTests` (classify-and-verify, see
-[`docs/verb-classification.md`](docs/verb-classification.md)) and `VerbExportTests` (every verb's
+[`docs/verb_classification.md`](docs/verb_classification.md)) and `VerbExportTests` (every verb's
 page as JSON, for `scripts/generate_verb_pdf.py`; gated on `KONJUGIEREN_EXPORT_OUT` since
 2026-11-12, when it was 200 of the suite's 215 seconds) are the current ones. Each takes its
 paths from the environment and is gated with
@@ -134,7 +134,7 @@ prefer a host tool, as below.
 longer comes from a harness. `scripts/write_forms_json.sh` builds `ConjugationMapTool`, the macOS
 target that also writes the app's bundled conjugation map, and runs it. It fails loudly where the
 retired `CorpusFormsDumpTests` could succeed while writing nothing. See
-[`docs/feature-architecture.md`](docs/feature-architecture.md) § Conjugation Map.
+[`docs/feature_architecture.md`](docs/feature_architecture.md) § Conjugation Map.
 
 **`xcodebuild` forwards a host environment variable into the simulator only when it is named
 `TEST_RUNNER_<NAME>`**, stripping the prefix on the way in. Setting the bare name leaves the gate
@@ -167,9 +167,52 @@ The Claude Code mascot is **Clawd** 🦀, a small, pixelated, crab-like characte
 
 ## Project Structure
 
-See [`docs/project-structure.md`](docs/project-structure.md) for the full annotated directory tree.
+See [`docs/project_structure.md`](docs/project_structure.md) for the full annotated directory tree.
 
-**Cache maintenance:** When you add, remove, or rename a source file, update `docs/project-structure.md` to match. This doc is a cache. Future contexts rely on it to orient quickly, so staleness has a real cost. The two staleness modes are not equally bad: a *missing* entry costs a session one `find`, because it sees the gap and reads the file, while a *wrong* entry gets believed. Prioritize renames and repurposed files.
+**Cache maintenance:** When you add, remove, or rename a source file, update `docs/project_structure.md` to match. This doc is a cache. Future contexts rely on it to orient quickly, so staleness has a real cost. The two staleness modes are not equally bad: a *missing* entry costs a session one `find`, because it sees the gap and reads the file, while a *wrong* entry gets believed. Prioritize renames and repurposed files.
+
+## Prompts, Plans, and Documents
+
+Three folders hold the project's prose, sorted by who wrote a file and what it is for:
+
+- **`prompts/`**: what Josh writes to get Claude to do something.
+- **`plans/`**: what Claude writes to get another session to do something. Orchestrator plans,
+  subagent briefs, handoffs, and resume prompts all count. So do prompts Claude writes for
+  another tool, such as an image generator or Claude in Chrome, and a file Josh began that Claude
+  has mostly written since and that still has work to do.
+- **`docs/`**: Claude's output that holds information and is not a plan: research, audits,
+  playbooks, and reference guides.
+
+The reason is how Josh finds files. He often does not remember a filename, only that he wrote a
+prompt, or that Claude wrote a plan, about some subject. So authorship decides the folder, and
+when a file fits two folders, choose the one where he would look first. A review sheet that a
+plan's phase generates stays in `plans/` beside that plan.
+
+Save a new file by this rule and list it in `docs/project_structure.md`, whose one-line
+descriptions are what make a file findable by subject. When a file moves, update the references
+to it, and in `docs/blog_notes.md` retarget link targets only, leaving the words as written.
+Decided 2026-11-16.
+
+## File Naming
+
+**Name files and directories in snake_case, not kebab-case**: `verb_sources.md`, not
+`verb-sources.md`. Josh prefers it, and since 2026-11-16 everything in `docs/`, `plans/`,
+`prompts/`, and `verbdata/` follows it, including the working files that scripts there generate.
+A script that builds a filename at runtime must build it in snake_case too.
+
+**Do not repeat in a filename what the folder already says.** A file in `plans/` is a plan and a
+file in `prompts/` is a prompt, so neither word belongs in the name: `plans/screenshot.md`, not
+`plans/screenshot-plan.md`. If dropping the word leaves a name that no longer identifies the
+file, name it for its subject instead, as `plans/example_authoring.md` was.
+
+Some names are not ours to choose. Swift source files are named for their type. A name that a
+tool dictates, such as `.claude/ios-build-verify.config.sh` or the files of an installed skill,
+stays as the tool wants it. A downloaded file keeps its publisher's name, as
+`verbdata/kaikki.org-dictionary-German-by-pos-verb.jsonl` does.
+
+**Before renaming a file, search for GitHub URLs that point at it**, in this repo and in
+`~/Desktop/workspace/Blog`. A link in a sent email or a published post cannot be updated, and it
+breaks when the rename is pushed.
 
 ## Documentation Consistency: `scripts/check_docs.py`
 
@@ -179,14 +222,14 @@ Run it after any change to the corpus, the test suite, or the docs:
 python3 scripts/check_docs.py
 ```
 
-It asserts the claims this repo's documentation makes that a machine can settle: corpus, ablaut-group, and test counts in the four cache files (`README.md`, `CLAUDE.md`, `docs/description.md`, `docs/project-structure.md`); every relative Markdown link resolving; commit hashes cited in `roadmap.md`; the CC BY-SA invariant that kaikki-derived verbs shipping implies `creditsText` crediting kaikki; and `etymology-pipeline.md` not claiming completeness while coverage is short.
+It asserts the claims this repo's documentation makes that a machine can settle: corpus, ablaut-group, and test counts in the four cache files (`README.md`, `CLAUDE.md`, `docs/description.md`, `docs/project_structure.md`); every relative Markdown link resolving; commit hashes cited in `roadmap.md`; the CC BY-SA invariant that kaikki-derived verbs shipping implies `creditsText` crediting kaikki; and `etymology_pipeline.md` not claiming completeness while coverage is short.
 
 Two design rules govern extending it, and both were learned by getting them wrong on the first run:
 
 - **Caches assert, journals narrate.** Count checks are scoped by *file*, never repo-wide. `blog_notes.md` is supposed to say 990 in an entry written when the corpus held 990, and `roadmap.md` records "3,383 → 3,572" as history. Adding a file to `CACHE_FILES` is a promise that it makes no historical claims.
 - **A count is checkable only if its subject is unambiguous.** "3,572 verbs" is, because the app has one corpus. "~25 test functions" is not: it is scoped to `ConjugatorTests.swift`, and the checker skips lines naming a `.swift` file for exactly that reason.
 
-The script exists because prose asking to be re-read does not get re-read. `docs/verb-sources.md` § "Verify counts, do not trust them" asked politely for five days while four claim sites went stale, `docs/description.md` among them, which means the App Store shipped a wrong verb count twice.
+The script exists because prose asking to be re-read does not get re-read. `docs/verb_sources.md` § "Verify counts, do not trust them" asked politely for five days while four claim sites went stale, `docs/description.md` among them, which means the App Store shipped a wrong verb count twice.
 
 ## Xcode Project Organization: Folders, Not Groups
 
@@ -246,7 +289,7 @@ does not relax the style doc's broader ban on em dashes in other positions.
 
 ## Grep on long-line files
 
-Never treat grep silence as absence on long-line files: if `grep -c` > 0 while `grep -n` shows nothing, verify via `Read` with an offset. The Bash-tool cause was fixed on 2026-06-11; history and recovery recipe are in [`docs/grep-gotchas.md`](docs/grep-gotchas.md). The **Grep tool** still truncates long matched lines to `[Omitted long matching line]`; see "Searching Within Localizable.xcstrings" below.
+Never treat grep silence as absence on long-line files: if `grep -c` > 0 while `grep -n` shows nothing, verify via `Read` with an offset. The Bash-tool cause was fixed on 2026-06-11; history and recovery recipe are in [`docs/grep_gotchas.md`](docs/grep_gotchas.md). The **Grep tool** still truncates long matched lines to `[Omitted long matching line]`; see "Searching Within Localizable.xcstrings" below.
 
 ## Swift Coding Conventions
 
@@ -370,7 +413,7 @@ When referring to a specific inflected verb in English text, use "conjugation" r
 
 ## Writing Conjugationgroup Articles
 
-These are instructions for writing a description (e.g., `perfektpartizipText`) for a new conjugationgroup. See [`docs/conjugationgroupText.md`](docs/conjugationgroupText.md) for:
+These are instructions for writing a description (e.g., `perfektpartizipText`) for a new conjugationgroup. See [`docs/conjugationgroup_text.md`](docs/conjugationgroup_text.md) for:
 
 - Literary source URLs (Goethe, Kafka, Mann - German and English)
 - Old High German text references (Hildebrandslied, Tatian)
@@ -382,7 +425,7 @@ When asked to create a new conjugationgroup article (e.g., "Please create präse
 
 ## Adding Verbs
 
-See [`docs/adding-verbs.md`](docs/adding-verbs.md) for the complete verb-addition guide, including XML formats, the ablaut system, verb families, and lessons learned.
+See [`docs/adding_verbs.md`](docs/adding_verbs.md) for the complete verb-addition guide, including XML formats, the ablaut system, verb families, and lessons learned.
 
 **Expanding the corpus is a sequenced, multi-session project. Start at
 [`docs/roadmap.md`](docs/roadmap.md)**, which gives the order, what gates what, and the prompt to
@@ -408,15 +451,15 @@ Setting descriptions in `Localizable.xcstrings` should begin with "This setting 
 
 ## Feature Architecture
 
-See [`docs/feature-architecture.md`](docs/feature-architecture.md) for architecture details on the Quiz, Game Center, Info, and Deeplink systems.
+See [`docs/feature_architecture.md`](docs/feature_architecture.md) for architecture details on the Quiz, Game Center, Info, and Deeplink systems.
 
 ## On-Device Tool Design
 
-See [`docs/on-device-tool-design.md`](docs/on-device-tool-design.md) for lessons learned from implementing Foundation Models `Tool` conformances. Key rule: minimize what the model must decide. Push complexity into tool code, not the tool schema.
+See [`docs/on_device_tool_design.md`](docs/on_device_tool_design.md) for lessons learned from implementing Foundation Models `Tool` conformances. Key rule: minimize what the model must decide. Push complexity into tool code, not the tool schema.
 
 ## Control Center Controls
 
-See [`docs/control-center-controls.md`](docs/control-center-controls.md) for iOS 18+ constraints on `openAppWhenRun` and `OpenURLIntent` from widget extensions, plus the `Shared/` dual-target pattern that makes ControlWidget intents actually open the app.
+See [`docs/control_center_controls.md`](docs/control_center_controls.md) for iOS 18+ constraints on `openAppWhenRun` and `OpenURLIntent` from widget extensions, plus the `Shared/` dual-target pattern that makes ControlWidget intents actually open the app.
 
 ## Localization System
 

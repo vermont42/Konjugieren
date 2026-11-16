@@ -23,11 +23,11 @@ struct ConjugationMapTests {
       #expect(differing.isEmpty, "Stale entries, first few: \(differing.prefix(5))")
     }
 
-    // The method is Scan 2 of plans/fix-reference-defects.md, so that this test and that scan
+    // The method is Scan 2 of plans/fix_reference_defects.md, so that this test and that scan
     // count the same thing. ß and ss are folded on both sides, as search folds them, so Kafka's
     // läßt counts. A finite part counts only when its particle is also in the sentence: halt
     // attests warmhalten only beside warm. On 2026-11-12 it found 3,547 of 3,572 (99.3%). The
-    // 25 misses are sorted in docs/browse-and-verb-ideas.md, "Appendix: What the Map Misses":
+    // 25 misses are sorted in docs/browse_and_verb_ideas.md, "Appendix: What the Map Misses":
     // conjugations the Conjugator does not produce, adjective endings, short imperatives, and
     // spellings older than the ß rule.
     @Test func findsTheVerbOfNearlyEveryExampleSentence() {

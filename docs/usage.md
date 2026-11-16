@@ -37,7 +37,7 @@ there is nothing to gain by running the probe from elsewhere.
 **The cost is one turn of the *calling* session**, which re-reads its whole context in order to run
 the Bash call and read the answer back. From a large orchestrator that came to roughly one point of
 the five-hour window, about what a 25-verb authoring shard costs, fitted across six waves on
-2026-07-25 (see [`prompts/example_generation.md`](../prompts/example_generation.md)). Josh accepts
+2026-07-25 (see [`plans/example_generation.md`](../plans/example_generation.md)). Josh accepts
 that cost.
 
 Two rules follow from the payer being the calling session rather than the child:
@@ -52,7 +52,7 @@ Two rules follow from the payer being the calling session rather than the child:
 
 ### The attribution this corrects
 
-`prompts/example_generation.md` and `prompts/uses_etymologies.md` both originally blamed the child:
+`plans/example_generation.md` and `plans/uses_etymologies.md` both originally blamed the child:
 one said every headless child pays ~23k cache-creation input regardless of how little it does, the
 other called the call "about one request, negligible." They also contradicted each other, since the
 first had measured the probe at a whole shard's worth of window. Both are now corrected in place.

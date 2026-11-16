@@ -9,8 +9,8 @@ Consumes
 
 Produces / updates
     verbdata/roots.json
-    verbdata/prefixes-inseparable.json
-    verbdata/prefixes-separable.json
+    verbdata/prefixes_inseparable.json
+    verbdata/prefixes_separable.json
 
 Run
     python3 verbdata/merge_reuse_files.py --shards <dir>
@@ -56,8 +56,8 @@ REPO = pathlib.Path(__file__).resolve().parent.parent
 VERBS_XML = REPO / "Konjugieren/Models/Verbs.xml"
 ETYMOLOGIES = REPO / "Konjugieren/Models/Etymologies.json"
 ROOTS = REPO / "verbdata/roots.json"
-INSEP = REPO / "verbdata/prefixes-inseparable.json"
-SEP = REPO / "verbdata/prefixes-separable.json"
+INSEP = REPO / "verbdata/prefixes_inseparable.json"
+SEP = REPO / "verbdata/prefixes_separable.json"
 LANGS = ("de", "en")
 
 FORBIDDEN = {"`": "section-heading marker", "$": "ablaut-highlight marker",

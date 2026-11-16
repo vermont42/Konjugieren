@@ -1,6 +1,6 @@
 # Phase 2 of the verb-history fact-check: adversarial verification
 
-Run 2026-07-28 and 2026-07-29 against [`prompts/verify-verb-history.md`](../prompts/verify-verb-history.md),
+Run 2026-07-28 and 2026-07-29 against [`plans/verify_verb_history.md`](../plans/verify_verb_history.md),
 over the 31 findings in [`docs/verb_history_phase1.md`](verb_history_phase1.md). Fifty-one agents,
 no failures: 31 skeptics, 19 second opinions, and one coverage auditor. 2,376,954 subagent tokens,
 592 tool calls, 303 web searches of the session's 600, about 22 minutes of wall clock across two

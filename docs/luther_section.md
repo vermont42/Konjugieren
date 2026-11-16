@@ -1,7 +1,7 @@
 # The Luther section: what shipped, what did not, and why
 
 **Status: SHIPPED, 2026-07-29.** Both localizations are in `Localizable.xcstrings`. Written against
-[`prompts/luther-bible-section.md`](../prompts/luther-bible-section.md), which briefed four candidate
+[`plans/luther_bible_section.md`](../plans/luther_bible_section.md), which briefed four candidate
 claims and predicted a ranking. **Two shipped, two were refuted, and the ranking was wrong in both
 directions**: the candidate rated strongest survived only after being reframed, and the candidate
 rated weakest turned out to be the best-evidenced thing in the section.

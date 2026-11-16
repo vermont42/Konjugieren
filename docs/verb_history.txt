@@ -49,7 +49,7 @@ Conventions the script warns about rather than failing on:
     BodyTextView substitutes an asset for any of the five whether it arrives as an ^…^
     segment or as a bare character inside plain text. The split is the catalog's habit
     rather than a requirement, and it is lopsided, roughly 1,522 bare flags against a
-    handful of wrapped horses. See docs/emoji-assets.md.
+    handful of wrapped horses. See docs/emoji_assets.md.
   • A heading opens with no newline before its backtick, per the next section.
 
 Conventions nothing checks at all, so nothing will catch a slip:

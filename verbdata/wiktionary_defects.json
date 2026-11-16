@@ -1,0 +1,226 @@
+{
+  "_comment": [
+    "Verbs where Konjugieren deliberately disagrees with English Wiktionary because Wiktionary",
+    "is wrong. Consumed by summarize_classification.py, which subtracts these from the",
+    "at-odds count and reports them separately.",
+    "",
+    "Why this file exists. The classify-and-verify pipeline treats agreement with Wiktionary as",
+    "ground truth, and the at-odds count is the repo's regression gate ('it should never rise').",
+    "That breaks down when Wiktionary itself is wrong: fixing such a verb RAISES the count, so a",
+    "future session reading only the number would revert the fix to restore it.",
+    "",
+    "The failure mode found on 2026-07-20: English Wiktionary auto-generates a default WEAK",
+    "conjugation table for verb pages no editor has supplied a strong template for. The tables",
+    "contain non-words -- 'angelest' for anlesen, 'aufgewascht' for aufwaschen -- while the base",
+    "entries (lesen, waschen) are correctly strong. kaikki faithfully extracts the garbage, the",
+    "classifier hypothesizes weak, the comparison matches exactly, and the verb ships wrong with",
+    "a clean bill of health. 'Verified' means 'agrees with Wiktionary', not 'correct'.",
+    "",
+    "Arbitration therefore cannot use kaikki. Each entry below was checked against GERMAN",
+    "Wiktionary's {{Deutsch Verb Uebersicht}} box, which is independently edited, via",
+    "  https://de.wiktionary.org/w/api.php?action=parse&page=<verb>&prop=wikitext&format=json",
+    "",
+    "Adding an entry is a claim that an outside source contradicts Wiktionary. Record that",
+    "source in 'authority'. Do not add a verb here to silence a number.",
+    "",
+    "Discriminator, for triage: a weak derivative of a strong base is normally denominal or",
+    "deadjectival (umringen from Ring, bemitleiden from Mitleid, aufweichen from weich), and",
+    "those are genuinely weak. A transparent prefix + strong verb compound encoded weak is the",
+    "defect signature."
+  ],
+  "defects": [
+    {
+      "verb": "abgleiten",
+      "wiktionary": "abgleitete / abgegleitet",
+      "correct": "glitt ab / abgeglitten",
+      "authority": "de.wiktionary",
+      "checked": "2026-07-20"
+    },
+    {
+      "verb": "absaugen",
+      "wiktionary": "absaugte / abgesaugt",
+      "correct": "sog ab / abgesogen",
+      "authority": "de.wiktionary",
+      "checked": "2026-07-20"
+    },
+    {
+      "verb": "anhauen",
+      "wiktionary": "haute an / angehaut",
+      "correct": "haute an / angehauen",
+      "authority": "DWDS https://www.dwds.de/wb/anhauen (hieb an / haute an, hat angehauen)",
+      "note": "English Wiktionary's auto-generated weak table. The base hauen lists gehauen beside gehaut, and the derivative moved to the hauen group in defect plan Part 7a.",
+      "checked": "2026-11-10"
+    },
+    {
+      "verb": "anlesen",
+      "wiktionary": "anleste / angelest",
+      "correct": "las an / angelesen",
+      "authority": "de.wiktionary",
+      "checked": "2026-07-20"
+    },
+    {
+      "verb": "aufwaschen",
+      "wiktionary": "aufwaschte / aufgewascht",
+      "correct": "wusch auf / aufgewaschen",
+      "authority": "base verb waschen is strong and the compound is transparent; no de.wiktionary entry exists",
+      "checked": "2026-07-20"
+    },
+    {
+      "verb": "aushauen",
+      "wiktionary": "haute aus / ausgehaut",
+      "correct": "haute aus / ausgehauen",
+      "authority": "DWDS https://www.dwds.de/wb/aushauen (hieb aus / haute aus, hat ausgehauen)",
+      "note": "English Wiktionary's auto-generated weak table. The base hauen lists gehauen beside gehaut, and the derivative moved to the hauen group in defect plan Part 7a.",
+      "checked": "2026-11-10"
+    },
+    {
+      "verb": "auspfeifen",
+      "wiktionary": "auspfeifte / ausgepfeift",
+      "correct": "pfiff aus / ausgepfiffen",
+      "authority": "de.wiktionary",
+      "checked": "2026-07-20"
+    },
+    {
+      "verb": "einflechten",
+      "wiktionary": "einflechtete / eingeflechtet",
+      "correct": "flocht ein / eingeflochten",
+      "authority": "de.wiktionary",
+      "checked": "2026-07-20"
+    },
+    {
+      "verb": "entgelten",
+      "wiktionary": "entgeltete / entgeltet",
+      "correct": "entgalt / entgolten",
+      "authority": "de.wiktionary",
+      "checked": "2026-07-20"
+    },
+    {
+      "verb": "krauchen",
+      "wiktionary": "kroch / gekrochen",
+      "correct": "krauchte / gekraucht",
+      "authority": "Duden (schwaches Verb; ist) and DWDS (kraucht, krauchte, ist gekraucht). de.wiktionary lists krauchte and gekraucht first, beside kroch and gekrochen, and says the verb is strong only in the Rhineland, the Mosel valley, and Saxony",
+      "note": "The reverse of this file's usual defect: English Wiktionary gives only the strong table, which is the paradigm of kriechen. Defect plan Part 7b.",
+      "checked": "2026-11-10"
+    },
+    {
+      "verb": "nachsalzen",
+      "wiktionary": "salzte nach / nachgesalzt",
+      "correct": "salzte nach / nachgesalzen",
+      "authority": "DWDS https://www.dwds.de/wb/nachsalzen (hat nachgesalzen/nachgesalzt); Duden on salzen: in the food sense, 2. Partizip gewöhnlich gesalzen",
+      "note": "Incomplete rather than wrong: Wiktionary omits the usual participle. Moved to the salzen group in defect plan Part 7a.",
+      "checked": "2026-11-10"
+    },
+    {
+      "verb": "niederhauen",
+      "wiktionary": "haute nieder / niedergehaut",
+      "correct": "haute nieder / niedergehauen",
+      "authority": "DWDS https://www.dwds.de/wb/niederhauen (hat niedergehauen)",
+      "note": "English Wiktionary's auto-generated weak table. The base hauen lists gehauen beside gehaut, and the derivative moved to the hauen group in defect plan Part 7a.",
+      "checked": "2026-11-10"
+    },
+    {
+      "verb": "rauslassen",
+      "wiktionary": "rauslasste / rausgelasst",
+      "correct": "liess raus / rausgelassen",
+      "authority": "de.wiktionary",
+      "checked": "2026-07-20"
+    },
+    {
+      "verb": "reinhauen",
+      "wiktionary": "haute rein / reingehaut",
+      "correct": "haute rein / reingehauen",
+      "authority": "DWDS https://www.dwds.de/wb/reinhauen (haute rein, hat reingehauen)",
+      "note": "English Wiktionary's auto-generated weak table. The base hauen lists gehauen beside gehaut, and the derivative moved to the hauen group in defect plan Part 7a.",
+      "checked": "2026-11-10"
+    },
+    {
+      "verb": "reinwaschen",
+      "wiktionary": "reinwaschte / reingewascht",
+      "correct": "wusch rein / reingewaschen",
+      "authority": "de.wiktionary",
+      "checked": "2026-07-20"
+    },
+    {
+      "verb": "verschreien",
+      "wiktionary": "verschreite / verschreit",
+      "correct": "verschrie / verschrien",
+      "authority": "de.wiktionary",
+      "checked": "2026-07-20",
+      "note": "Deferred on 2026-07-20 pending the vowel-stem -n rule, then fixed the same day once Conjugator gained it."
+    },
+    {
+      "verb": "verweben",
+      "wiktionary": "verwebte / verwebt",
+      "correct": "verwob / verwoben",
+      "authority": "de.wiktionary",
+      "checked": "2026-07-20"
+    },
+    {
+      "verb": "wegbegeben",
+      "wiktionary": "wegbegabte / weggebegabt",
+      "correct": "begab weg / wegbegeben",
+      "authority": "de.wiktionary",
+      "checked": "2026-07-20"
+    },
+    {
+      "verb": "zusammenhauen",
+      "wiktionary": "haute zusammen / zusammengehaut",
+      "correct": "haute zusammen / zusammengehauen",
+      "authority": "DWDS https://www.dwds.de/wb/zusammenhauen (haute zusammen, hat zusammengehauen)",
+      "note": "English Wiktionary's auto-generated weak table. The base hauen lists gehauen beside gehaut, and the derivative moved to the hauen group in defect plan Part 7a.",
+      "checked": "2026-11-10"
+    }
+  ],
+  "deferred": [
+    {
+      "verb": "verglimmen",
+      "correct": "verglimmte / verglommen",
+      "reason": "Weak Praeteritum with strong participle -- wrinkle 4 in verb_sources.md, the mahlen/spalten class. Neither the weak nor the mixed family can express it. Left encoded weak, which is half right, until that model gap is closed.",
+      "authority": "de.wiktionary",
+      "checked": "2026-07-20"
+    }
+  ],
+  "_screen_of_incoming_pool": [
+    "Screened 2026-07-20, all 5,218 verified incoming verbs, for the auto-generated-weak-table",
+    "defect. Result: ONE genuine instance (rauswaschen, below). The incoming pool is far cleaner",
+    "than the shipping corpus was, where 11 of 38 candidates were defects.",
+    "",
+    "Method, and its limits, so a future session need not redo the dead ends:",
+    "  1. kaikki's own class tag is USELESS here. Zero weak-classified verbs carry a 'N strong'",
+    "     tag, because the tag comes from the strong template -- exactly what a corrupt page is",
+    "     missing. The corruption is invisible to the metadata that would flag it.",
+    "  2. Prefix + known-strong-base: of 1,998 prefixed incoming weak verbs, the base is a known",
+    "     strong verb for exactly 1 (rauswaschen). 493 bases were unknown to the corpus; resolving",
+    "     them against kaikki found only spalten, which is wrinkle 4, not corruption.",
+    "  3. de.wiktionary does NOT categorize verbs as strong or weak, so there is no category to",
+    "     intersect. Checked; the route does not exist.",
+    "  4. de.wikipedia's 'Liste starker Verben' works as a broad net: 566 bolded verb tokens,",
+    "     intersected against all 5,035 incoming weak/-ieren verbs, gave 21 hits. Most are expected,",
+    "     because the list bolds weak causatives beside their strong relatives -- traenken beside",
+    "     trinken, saeugen beside saugen, henken beside haengen. Arbitrating the genuine maybes",
+    "     against de.wiktionary cleared schrecken, abschrecken, aufschrecken, kreischen, heischen",
+    "     and zerspalten as correctly weak.",
+    "",
+    "The blind spot that remains: a BARE strong verb whose page is corrupt has no prefix and no",
+    "base to compare against, and would be caught only if it appears in the Wikipedia list. That",
+    "list is thorough for standard strong verbs, so coverage is good but not provable.",
+    "",
+    "Two findings that are NOT this defect, recorded so they are not rediscovered as one:",
+    "  - abspalten, aufspalten: de.wiktionary gives 'spaltete ab / abgespalten', weak Praeteritum",
+    "    with strong participle. That is wrinkle 4, the mahlen/spalten class the model cannot",
+    "    express. Same status as verglimmen in 'deferred' above.",
+    "  - lobpreisen: kaikki lists BOTH paradigms (lobpreiste/gelobpreist and lobpries/lobgepriesen),",
+    "    so the weak classification verified legitimately. Dual-paradigm verbs are an editorial",
+    "    choice at import, not a defect; see verb_sources.md step 5 on melken, weben, sieden."
+  ],
+  "incoming": [
+    {
+      "verb": "rauswaschen",
+      "wiktionary": "rauswaschte / rausgewascht",
+      "correct": "wusch raus / rausgewaschen",
+      "authority": "no de.wiktionary entry; base waschen is strong and the compound is transparent, identical to reinwaschen which was repaired the same day",
+      "checked": "2026-07-20",
+      "note": "NOT YET SHIPPING. Encode it strong on import (raus+w^a^schen, ag=wachsen); do not trust the kaikki table, which gives non-words."
+    }
+  ]
+}

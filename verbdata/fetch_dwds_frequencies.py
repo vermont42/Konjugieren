@@ -8,7 +8,7 @@ Usage:
 ## Permission
 
 BBAW granted permission for exactly this use on 2026-08-26, by mail from Franziska Nojack to
-Josh, in reply to the request in `docs/dwds-permission-email.md`. Two conditions travel with
+Josh, in reply to the request in `docs/dwds_permission_email.md`. Two conditions travel with
 it. The query volume must stay modest, which is why `--delay` throttles by default and why
 the corpus-wide run of 2026-08-26 used two workers rather than the eight the machine could
 manage. And the app must credit DWDS in the wording BBAW supplied, which it does, in both
@@ -334,7 +334,7 @@ def read_records(path: pathlib.Path) -> list[tuple[str, list[str]]]:
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--lemmas", type=pathlib.Path, help="lemma per line, optional tab-separated probes")
-    parser.add_argument("--out", type=pathlib.Path, default=REPO / "verbdata/dwds-frequencies.json")
+    parser.add_argument("--out", type=pathlib.Path, default=REPO / "verbdata/dwds_frequencies.json")
     parser.add_argument("--workers", type=int, default=4)
     parser.add_argument("--check", type=pathlib.Path, help="verify an existing snapshot; no network, no write")
     parser.add_argument(

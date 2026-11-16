@@ -8,7 +8,7 @@ Run:       python3 scripts/check_docs.py
 
 Why this exists
 ---------------
-`docs/verb-sources.md` § "Verify counts, do not trust them" was written after three documents
+`docs/verb_sources.md` § "Verify counts, do not trust them" was written after three documents
 claimed 989 verbs while the corpus held 990, one of them `docs/description.md`, which shipped the
 wrong number to the App Store. That section asked future sessions to verify by set difference.
 Five days later all four claim sites were stale again, `description.md` among them, so the App
@@ -18,11 +18,11 @@ Caches assert, journals narrate
 -------------------------------
 The design constraint is that a naive grep for "N verbs" across the repo is ~90% false positives.
 `docs/blog_notes.md` is *supposed* to say 990 in an entry written when the corpus held 990;
-`docs/roadmap.md` records "corpus 3,383 → 3,572" as history; `docs/verb-sources.md` quotes
+`docs/roadmap.md` records "corpus 3,383 → 3,572" as history; `docs/verb_sources.md` quotes
 Conjuguer's 6,200 and a 9,217-candidate pool, neither of which is Konjugieren's corpus.
 
 So the count checks are scoped **by file, not by pattern**, using a distinction the repo already
-draws in prose: CLAUDE.md calls `project-structure.md` a cache, `roadmap.md` opens by calling
+draws in prose: CLAUDE.md calls `project_structure.md` a cache, `roadmap.md` opens by calling
 itself one, and `blog_notes.md` is dated project memory whose value is preserving what was true
 then. Only files that describe the app *as it is now* are checked. That set is deliberately tiny
 and is listed in CACHE_FILES; adding a file to it is a promise that the file makes no historical
@@ -48,7 +48,7 @@ CACHE_FILES = [
     "README.md",
     "CLAUDE.md",
     "docs/description.md",
-    "docs/project-structure.md",
+    "docs/project_structure.md",
     # Not documentation, but it makes the same kind of claim and went stale the same way: a
     # calibration comment justified the iPad's wait budget with "990 verbs" long after the
     # corpus reached 3,572. Nothing here is historical, and the file cites no test or pattern
@@ -91,7 +91,7 @@ TEST_COUNT_RE = re.compile(r"\b(\d[\d.,]{1,})\s+tests?\b(?!\s*/)", re.IGNORECASE
 
 # A count is checkable only when its subject is the whole thing. "3,572 verbs" is unambiguous
 # because the app has one corpus, but prose routinely scopes a test count to a single suite:
-# CLAUDE.md says ConjugatorTests contains "~25 test functions" and project-structure.md says
+# CLAUDE.md says ConjugatorTests contains "~25 test functions" and project_structure.md says
 # "~50", both true and both about one file. The discriminator is that a scoped claim names the
 # file it is scoped to, so a line mentioning a .swift file is left alone.
 SCOPED_TO_FILE_RE = re.compile(r"\.swift\b")
@@ -149,7 +149,7 @@ def check_links():
     """Every relative Markdown link points at a file that exists.
 
     Checked in all Markdown, journals included: unlike a count, a link is not true-as-of-a-date.
-    This is the check that would have caught `verb-sources.md` pointing at `etymology-pipeline.md`
+    This is the check that would have caught `verb_sources.md` pointing at `etymology_pipeline.md`
     while calling it nonexistent, and README pointing at Models/GameState.swift after the file
     moved to Models/Game/.
     """
@@ -259,7 +259,7 @@ def check_attribution():
 # ---------------------------------------------------------------------------
 
 def check_etymology_completeness():
-    """docs/etymology-pipeline.md may not claim completeness while coverage is short.
+    """docs/etymology_pipeline.md may not claim completeness while coverage is short.
 
     That file led with "COMPLETE — every verb in Verbs.xml is translated" from 2026-07-19 until
     2026-07-20, during which the corpus went 990 → 3,572 and 2,582 verbs acquired no etymology.
@@ -271,7 +271,7 @@ def check_etymology_completeness():
     becomes true and the check goes quiet without anyone editing this script.
     """
     failures = []
-    doc = REPO / "docs/etymology-pipeline.md"
+    doc = REPO / "docs/etymology_pipeline.md"
     # Match the bolded status headline, not the word. A plain substring test fails twice over on
     # the current text: "INCOMPLETE" contains "COMPLETE", and the paragraph explaining the
     # correction quotes the old headline verbatim. The claim is specifically a line beginning
@@ -288,7 +288,7 @@ def check_etymology_completeness():
         missing = verbs - set(section)
         if missing:
             failures.append(
-                f"docs/etymology-pipeline.md claims COMPLETE, but {len(missing)} verbs "
+                f"docs/etymology_pipeline.md claims COMPLETE, but {len(missing)} verbs "
                 f'have no "{lang}" etymology (e.g. {", ".join(sorted(missing)[:3])})'
             )
     return failures

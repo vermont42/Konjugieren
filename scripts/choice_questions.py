@@ -19,7 +19,7 @@ Produces, by subcommand:
   status
       Counts of reviewed and draft items by level.
 
-Run from the repo root:  python3 scripts/choice_questions.py review --out plans/choice-questions-batch-1.md
+Run from the repo root:  python3 scripts/choice_questions.py review --out plans/choice_questions_batch_1.md
 
 Why it rewrites the whole file: ChoiceQuestions.json is written by json.dumps(indent=2,
 ensure_ascii=False) and nothing else, so a load-and-dump round trip reproduces it byte for byte

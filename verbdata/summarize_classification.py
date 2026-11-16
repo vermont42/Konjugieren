@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Render verbdata/classification.json as a readable Markdown summary.
 
-Stage C of the classify-and-verify pipeline described in docs/verb-sources.md.
+Stage C of the classify-and-verify pipeline described in docs/verb_sources.md.
 Groups the queue by failure cause so a reader sees a handful of systematic causes
 rather than thousands of individual misses.
 """
@@ -14,7 +14,7 @@ import re
 
 REPO = pathlib.Path(__file__).resolve().parent.parent
 DEFAULT_IN = REPO / "verbdata" / "classification.json"
-DEFAULT_OUT = REPO / "verbdata" / "classification-summary.md"
+DEFAULT_OUT = REPO / "verbdata" / "classification_summary.md"
 
 MISMATCH = re.compile(r"^(?P<slot>[^:]+): expected (?P<expected>.*), got (?P<got>.+)$")
 
@@ -197,9 +197,9 @@ def main():
                   if entry.get("shippedEncodingFailed") and entry.get("readingCount", 1) == 1]
     # Verbs where the app deliberately disagrees with Wiktionary because Wiktionary is wrong.
     # Without this subtraction the gate punishes correctness: fixing such a verb raises the
-    # count, and the roadmap says the count must never rise. See wiktionary-defects.json for
+    # count, and the roadmap says the count must never rise. See wiktionary_defects.json for
     # the failure mode (auto-generated weak tables on under-edited pages) and the evidence.
-    defects_path = pathlib.Path(__file__).with_name("wiktionary-defects.json")
+    defects_path = pathlib.Path(__file__).with_name("wiktionary_defects.json")
     known_wrong = set()
     if defects_path.exists():
         known_wrong = {d["verb"] for d in json.loads(defects_path.read_text())["defects"]}
@@ -221,7 +221,7 @@ def main():
                f"already does. Total shipping verbs at odds with Wiktionary: {at_odds}.")
     out.append("")
     if deliberate:
-        out.append(f"That total excludes {deliberate} verbs listed in `wiktionary-defects.json`, "
+        out.append(f"That total excludes {deliberate} verbs listed in `wiktionary_defects.json`, "
                    f"where the app is right and Wiktionary is wrong. English Wiktionary "
                    f"auto-generates a default *weak* table for verb pages nobody has supplied a "
                    f"strong template for, producing non-words like *angelest* and *aufgewascht* "
@@ -299,7 +299,7 @@ def main():
     disagree = [entry for entry in verified(entries) if family_disagrees(entry)]
     contrived = [entry for entry in verified(incoming) if person_split(entry.get("proposedAblautPattern"))]
     out.append(table([
-        ["Dual-auxiliary (see prompts/dual_auxiliary.md)", len(dual), ", ".join(e["word"] for e in dual[:4])],
+        ["Dual-auxiliary (see plans/dual_auxiliary.md)", len(dual), ", ".join(e["word"] for e in dual[:4])],
         ["Family disagrees with Wiktionary's own class tag — a dual-paradigm verb whose "
          "second paradigm this run never saw", len(disagree), ", ".join(e["word"] for e in disagree[:6])],
         ["Proposed group varies by person inside a past tense, so it is probably encoding "

@@ -6,7 +6,7 @@
 /// takes sein when something becomes liquid and haben when someone makes it so; *hängen*
 /// additionally inflects strong in the first reading and weak in the second; *übersetzen*
 /// differs in prefix separability. The unit that varies is therefore the reading, not the
-/// auxiliary, and a verb owns an ordered list of them. See `prompts/dual_auxiliary.md`.
+/// auxiliary, and a verb owns an ordered list of them. See `plans/dual_auxiliary.md`.
 ///
 /// Variation by *which codified standard is in force* is deliberately not modeled here; two
 /// readings differing only in an auxiliary would tell every user both forms are available to

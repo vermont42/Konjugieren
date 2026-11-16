@@ -38,7 +38,7 @@ struct Verb: Identifiable, Hashable {
   /// True when `hits` is an editorial estimate rather than a measured DWDS count, because
   /// the verb was imported while bulk querying was blocked. Affects nothing the user sees
   /// (the rank derives from `hits` either way), and exists so the provisional population
-  /// stays findable rather than quietly becoming permanent. See `hp` in `verb-sources.md`.
+  /// stays findable rather than quietly becoming permanent. See `hp` in `verb_sources.md`.
   let hitsAreProvisional: Bool
 
   /// Dense rank over the whole corpus, 1 being the most common verb. Derived from `hits`

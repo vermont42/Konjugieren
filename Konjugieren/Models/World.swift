@@ -109,7 +109,7 @@ class World {
     }
   }
 
-  /// The grammar is in docs/feature-architecture.md § Deeplink System.
+  /// The grammar is in docs/feature_architecture.md § Deeplink System.
   func handleURL(_ url: URL) {
     guard url.isDeeplink else {
       return

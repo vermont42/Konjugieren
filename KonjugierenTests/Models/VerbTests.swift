@@ -21,7 +21,7 @@ struct VerbTests {
     let keys = pattern.matches(in: text, range: range).compactMap { match -> String? in
       guard let matched = Range(match.range(at: 1), in: text) else { return nil }
       // The documented collation: prefix and ablaut markers ignored, umlauts folded to their
-      // base vowel, sharp s left where its code point falls. See docs/adding-verbs.md.
+      // base vowel, sharp s left where its code point falls. See docs/adding_verbs.md.
       var folded = String(text[matched]).replacingOccurrences(of: "[+*^]", with: "", options: .regularExpression).lowercased()
       for (umlaut, base) in [("ä", "a"), ("ö", "o"), ("ü", "u")] {
         folded = folded.replacingOccurrences(of: umlaut, with: base)

@@ -5198,7 +5198,7 @@ correction by `(verb, reading index)` — or by its `old` value, which is alread
 it, and the shard builder would emit one record per reading instead of one per verb. That is an
 afternoon, not a data-model migration, and it does not wait on anything.
 
-**Handoff written for the 44 (2026-07-26).** [`prompts/multi_reading_glosses.md`](../prompts/multi_reading_glosses.md),
+**Handoff written for the 44 (2026-07-26).** [`prompts/multi_reading_glosses.md`](../plans/multi_reading_glosses.md),
 on the `example_review_followups.md` model, so the next session starts from a plan rather than a
 clipboard. Two things surfaced while writing it that were not known before.
 
@@ -7639,7 +7639,7 @@ way, and enabled `computer-use`, whose tools are deferred and cost nothing up fr
 
 Josh is disappointed with Konjugieren's usage, and to a lesser degree Conjuguer's and Conjugar's,
 and asked for every usage number TelemetryDeck holds, as a baseline for growth work. The result is
-[`docs/telemetry-usage.md`](telemetry-usage.md).
+[`docs/telemetry-usage.md`](telemetry_usage.md).
 
 There is no TelemetryDeck MCP server, so the work went through the dashboard in Chrome. The first
 approach was to replay the dashboard's own TQL requests from inside the page, which meant lifting
@@ -7680,12 +7680,12 @@ long baseline.
 
 Josh wrote in [`prompts/pedagogy.md`](../prompts/pedagogy.md) that he is not a teacher and that the
 quiz is his best uninformed effort, and asked whether its method is sound, what methods work, and
-what to change. The deliverable is [`docs/pedagogy.md`](../plans/pedagogy.md). No code changed.
+what to change. The deliverable is [`docs/pedagogy.md`](pedagogy_research.md). No code changed.
 
 The work had four inputs, and two of them arrived as mid-session suggestions from Josh. The first
 was the code. The second was his suggestion to launch the app and take a quiz with
 `ios-build-verify`, which turned out to matter more than expected. The third was
-[`docs/telemetry-usage.md`](telemetry-usage.md), written by a parallel session the same day. The
+[`docs/telemetry-usage.md`](telemetry_usage.md), written by a parallel session the same day. The
 fourth was the literature, gathered by Sonnet research agents under the deep-research skill.
 
 The literature pass is the part that went wrong first. Five broad briefs came back thin: each agent
@@ -7737,7 +7737,7 @@ the feedback for the question just answered and the prompt for the next.
 
 The TelemetryDeck snapshot earlier today could see only what happens after launch, so Josh asked
 for App Store Connect's analytics as well. Both halves now live in
-[`docs/telemetry-usage.md`](telemetry-usage.md).
+[`docs/telemetry-usage.md`](telemetry_usage.md).
 
 The method again was the dashboard itself. App Store Connect's Metrics explorer has a metric
 menu, a grouping menu, and a Lifetime range; about 25 selections per app were driven by in-page
@@ -7770,7 +7770,7 @@ in Germany and the US, and its second-day return rate is 42% rather than 31%.
 
 ## The pedagogy report absorbs the App Store data, and loses a claim (2026-11-10)
 
-A few hours after [`docs/pedagogy.md`](../plans/pedagogy.md) was written, the usage snapshot it leans on
+A few hours after [`docs/pedagogy.md`](pedagogy_research.md) was written, the usage snapshot it leans on
 changed underneath it. The parallel session added App Store Connect and worked out that 20 of
 Konjugieren's 77 TelemetryDeck devices are one-day automated visitors on UTC+8. Josh asked for the
 relevant parts to be folded into the report.
@@ -7821,7 +7821,7 @@ version within about five days of reaching ordinary users, sometimes within hour
 visit every ten days is roughly a 1-in-40,000 coincidence. Three visits ran builds older than the
 current one, so the source keeps an archive. The best reading is an automated service that watches
 for updates, grabs a copy, and runs a scripted two-minute tour. The findings went into the China
-section of [`docs/telemetry-usage.md`](telemetry-usage.md).
+section of [`docs/telemetry-usage.md`](telemetry_usage.md).
 
 ## A plan for the Browse and Verb screens (2026-11-10)
 
@@ -7833,7 +7833,7 @@ feature that gives anyone a reason to return between lookup needs. The connectin
 lookups feed practice.
 
 Rather than ideate further here, the work went into a brief for a fresh session,
-[`plans/browse-and-verb-ideation.md`](../plans/browse-and-verb-ideation.md), the first file in a
+[`plans/browse-and-verb-ideation.md`](../plans/browse_and_verb_ideation.md), the first file in a
 new `plans/` folder. It points that session at the usage snapshot and the pedagogy report, records
 the three ideas already raised (reverse lookup from a conjugation using the existing
 `CorpusFormsDumpTests` map, measuring the lookup path before redesigning it, and lookups feeding a
@@ -7843,7 +7843,7 @@ pieces get named rather than built twice.
 ## Ideas for the Browse and Verb screens (2026-11-10)
 
 The brief in `plans/browse-and-verb-ideation.md` was carried out the same day it was written, and
-the result is [`docs/browse-and-verb-ideas.md`](browse-and-verb-ideas.md). No app code changed.
+the result is [`docs/browse-and-verb-ideas.md`](browse_and_verb_ideas.md). No app code changed.
 
 The brief warned that the lookup "mostly works already", and the first surprise was how narrowly
 that is true. Replaying the app's search rule over the corpus, and then typing the same queries
@@ -7920,7 +7920,7 @@ participle), which it had recorded only for verbs that were never imported. They
 the classification pipeline because Wiktionary lists both participles and a verb verifies against
 any listed alternative. That is a hypothesis for the fixing session to confirm.
 
-The plan is [`plans/fix-reference-defects.md`](../plans/fix-reference-defects.md), with the audit
+The plan is [`plans/fix-reference-defects.md`](../plans/fix_reference_defects.md), with the audit
 script beside it. It is ordered so that the certain fixes land first: the 37 auxiliaries, then
 the override fix, then two small code bugs (the shortcut picker cannot find kommen by name, and
 the glosses of second readings are never searched), five example sentences that quote the wrong
@@ -11740,3 +11740,228 @@ English on the iPad. Each round asked ten different verbs, and no card said "Dra
 The exercise is called Lückensätze, and *Lücke*, a gap, goes back with *Loch*, a hole, to a
 Germanic root for closing something off, the same root as English *lock*. A gap sentence is a
 small lock, and the conjugation is its key. There are now 736 of them, and the plan is finished.
+
+## Prompts, plans, and documents, each in its own folder (2026-11-16)
+
+Josh wrote down a rule he had been carrying in his head. A prompt is something he writes to get
+Claude to do something. A plan is something Claude writes to get another session to do something.
+A document is Claude's output that holds information and is not a plan, such as research. The
+folders had drifted from that rule, and he had been losing a few seconds at a time looking for
+files. His prompt, `prompts/location_cleanup.md`, named three moves and then asked whether
+authorship was obvious enough from the files themselves to sort the rest.
+
+It was. Of the 36 files in `prompts/`, ten are his and 26 are Claude's, and no file needed a
+second look. His prompts open in the first person with no heading, address Claude as "you", and
+run a few paragraphs. Claude's open with a title, name an audience ("a future session", "an
+orchestrator session"), carry a status line and the date they were written, and run to hundreds
+of lines. The one group that gave pause was the subagent briefs and resume prompts, such as
+`example_prompt.md` and `frame_parity_repair.md`. They are prompts in the ordinary sense of the
+word, but Claude wrote them to direct another session, which is the definition of a plan, and
+`plans/gap-sentences-batch-2-prompt.md` had already set that precedent. All 26 went to `plans/`.
+
+Two of the three moves Josh named did not end where he first put them, and both changes came from
+asking him. He had asked for `plans/browse-and-verb-ideation.md` to go to `docs/`. That file is
+the brief written for a fresh session, and the research it produced, `browse-and-verb-ideas.md`,
+was in `docs/` already. Asked which he meant, he sent the brief back to `plans/`. The quiz report
+did move, from `plans/pedagogy.md` to `docs/pedagogy_research.md`, which undoes the move of
+2026-11-13 recorded above, when it was called "a plan in all but name". The new name also ends a
+small ambiguity, since `prompts/pedagogy.md` is the prompt that asked for it. Three more files in
+`plans/` are not plans: the two review sheets that `scripts/gap_sentences.py` and
+`scripts/choice_questions.py` generate, and the Phase 1 variant audit. Josh chose to leave them
+beside the plan they belong to.
+
+Moving a Markdown file breaks links in two directions. Links to the file go stale, and the file's
+own relative links change meaning, because a link to a bare sibling filename resolves against the
+folder the file now sits in. A find-and-replace of `prompts/` with `plans/` repairs only the first kind. So a
+short script resolved every link against its file's old folder, mapped the target through the
+moves, and wrote it again relative to the new folder. The report alone had 58 links to re-derive.
+A second pass rewrote paths written out in prose, comments, and code, with one guard that earned
+its place on the first dry run: `Conjugar.mig/prompts/sweep-comments.md` names a file in another
+repository, and a rewrite that ignored the prefix would have pointed it at a path that does not
+exist. In all, 27 files moved and about 60 others changed. Four of those are shell scripts whose
+path is not a citation but an argument, as in `cat plans/example_prompt.md`, so a stale path
+there would have stopped the next authoring or review wave.
+
+Josh's fourth instruction said to update references everywhere except this journal, and
+`scripts/check_docs.py` checks the journal's links on purpose, on the ground that a link is not
+true as of a date. The two rules met in three links. Josh's answer was the one the journal had
+already used once: retarget the link, and leave the words. So an entry above still says
+`docs/pedagogy.md`, as it did on the day, and the link behind those words now goes to
+`pedagogy_research.md`. `check_docs.py` passes. The four Swift files that changed did so in one
+comment line each, so no build was run.
+
+`docs/project-structure.md` gained a `prompts/` tree, which it had never had, and the headers of
+its `prompts/` and `plans/` trees now state Josh's rule, so that a session deciding where to save
+a file finds the rule where it is looking.
+
+The three words bear the rule out. A prompt is something brought forth, from Latin *promptus*,
+the participle of *promere*. A plan was first a drawing of a building laid flat, from *planus*,
+which also gave English *plain*. A document is a lesson, *documentum*, from *docere*, to teach,
+the root of *doctor* and *docile*. One brings the work forth, one lays it out flat, and one
+teaches whoever reads it later.
+
+## The same sorting, applied to `docs/` (2026-11-16)
+
+Josh read the summary of the entry above and said yes to both things it offered: writing his rule
+into `CLAUDE.md`, and sorting `docs/`, which the first pass had left alone because his prompt named
+only `prompts/` and `plans/`.
+
+The first pass had guessed at the candidates in `docs/` from filenames, and the guess was wrong
+in both directions, so this pass read the opening of every Markdown file there. Two files with
+"plan" in the name are not plans. `platform-features-plan.md` is tiered recommendations with a
+"why it matters" under each, the same shape as the pedagogy research, and it stayed.
+`screenshot-plan.md` began as Josh's own instruction and has since become the capture spec that
+the playbook, the release list, and the driver all point to, with sections Claude added, so it
+stayed too. Going the other way, `code-review.md` has no telling word in its name and turned out
+to be five lines of Josh asking for a review of the codebase. It went to `prompts/`. Seven files
+went to `plans/`: three session prompts Claude wrote (`regenerate-verbs-pdf-prompt.md`,
+`swift-testing-doc-improvements-prompt.md`, `example-sentence-prompt.md`), one handoff
+(`ui-audit-2-next-session.md`), and three plans (`fix-cold-launch-widget-deeplink-race.md`,
+`fix-languagemodel-availability-poll.md`, `localize-tutor-suggestions.md`). Five of the eight had
+never been listed in `docs/project-structure.md`, which is the less harmful of that file's two
+kinds of staleness and still explains why nobody had noticed them sitting in the wrong folder.
+
+The line this pass drew is between a file that tells one session what to do and a file that
+describes how something is done whenever it is done. The pipelines and playbooks
+(`etymology-pipeline.md`, `example-sentence-pipeline.md`, `pdf.md`, `screenshot-playbook.md`) are
+the second kind and stayed in `docs/`. So did the two files of prompts written for other tools,
+an image generator and Claude in Chrome, which fit none of the three definitions cleanly. Those
+are Josh's to rule on.
+
+While the moves ran, Josh added the reason behind the rule, and it is worth more than the rule.
+If only Claude worked here, he wrote, everything could live in one folder. The folders are for
+him: he often does not remember a filename, only a vague sense that he wrote a prompt, or that
+Claude wrote a plan, about some subject. That makes authorship the thing to sort by, because it
+is the thing he remembers, and it settles borderline files better than any definition: put the
+file where he would look first. The new section in `CLAUDE.md`, "Prompts, Plans, and Documents",
+states the rule and that reason together, along with two decisions from the first pass, that a
+generated review sheet stays beside its plan and that a move retargets this journal's links
+without rewording it. This time the journal had no links to retarget.
+
+## Josh rules on the three files left over (2026-11-16)
+
+The entry above left three files in `docs/` for Josh to rule on, and he ruled on all three after
+opening the first in his editor. Each went to `plans/`, and each ruling adds something to the
+rule.
+
+`screenshot-plan.md` moved, and his reason has two halves: Claude wrote most of the file, and it
+has work to do. The first half answers the question of mixed authorship, which the rule had not
+faced. The file opens with Josh's nine views and his device list, and everything after that,
+from the note on the iPad simulator's name through the section on alpha channels, is Claude's. A
+file belongs to whoever wrote most of it, not to whoever began it. The second half says what a
+plan is for. This one is not finished history, since `docs/release.md` has the screenshots redone
+for the 2027 release and the playbook says to update this file first when the shipped views
+change.
+
+The two files of prompts for other tools moved as well, and lost the `-prompts` in their names:
+`bratwurst-icon-prompts.md` became `plans/bratwurst-icon.md`, and `sound-replacement-prompts.md`
+became `plans/sound-replacement.md`. They had seemed to fit none of the three folders, being
+written for an image generator and for Claude in Chrome rather than for a Claude Code session.
+Josh's ruling reads "another session" broadly: what Claude writes to get work done elsewhere is a
+plan. The renaming follows from that, because a file in `plans/` with "prompts" in its name
+points him back toward the wrong folder.
+
+Both refinements are now in the `CLAUDE.md` section. `docs/` no longer holds anything that is a
+prompt or a plan by the rule as it stands.
+
+## One name per file, in snake_case (2026-11-16)
+
+With every file in the right folder, Josh turned to the names. He tries to live by DRY, he
+wrote, in filenames too, and the folder now says whether a file is a plan or a prompt, so the
+name should not say it again. He also prefers snake_case to kebab-case. He asked for both
+changes in `prompts/` and `plans/`, and while the first dry run was on screen he extended them
+to `docs/`.
+
+Sixty-nine files were renamed: 25 in `prompts/` and `plans/`, and 44 in `docs/`, three of them
+the gitignored WWDC transcripts, which moved with a plain rename and took their `.gitignore`
+lines along. Most renames only swap hyphens for underscores. Seven also lose a word. Five of
+those are the mechanical case, where `plans/screenshot-plan.md` becomes `plans/screenshot.md`,
+and `docs/platform-features-plan.md`, which the last entry found was never a plan, becomes
+`docs/platform_features.md`. The other two needed a decision, because dropping the word left
+too little. `example_prompt.md` would have become `example.md`, in a folder with six other
+files that begin with "example", so it is `example_authoring.md`, after what the other plans
+already call it, the authoring brief. `example-sentence-prompt.md` became
+`example_sentence_extraction.md`, from its own title. These two are a judgment, and the rule in
+`CLAUDE.md` now covers the case: when dropping the word leaves a name that no longer identifies
+the file, name it for its subject.
+
+A rename breaks more references than a move does. When `sweep-comments.md` changed folders, a
+bare mention of it stayed true. When its name changes, every bare mention is wrong, and there
+were 193 of them among 534 written-out mentions and 268 link targets, across 112 files. So the
+script gained a third rule, for bare basenames, and the guard from this morning carried more
+weight: a name is rewritten only when it stands alone or sits behind this repository's own
+folder. `Conjugar.mig/prompts/sweep-comments.md` was skipped again, correctly, since Conjugar
+has not renamed anything. Two checks ran before anything was applied. No GitHub URL in the app
+or the README points at a renamed file, which matters because a shipped app cannot be told that
+a file moved. And the string catalog was untouched. Afterwards, every changed line of Swift
+proved to be a comment, and `check_docs.py`, which had ten of its own mentions of these files rewritten
+by the same pass, including the list of cache files it asserts, still passed.
+
+This journal kept its words. Entries above still say `docs/project-structure.md` and
+`plans/pedagogy.md`, because that is what those files were called on the day, and the links
+behind them now go to the present names. A reader following an old entry lands in the right
+place, and a reader of the prose sees the history.
+
+Rebuilding the three trees in `docs/project_structure.md` meant comparing each against its
+folder, and eight files turned out never to have been listed, the privacy policy and the App
+Store description among them. They are listed now. `CLAUDE.md` gained a "File Naming" section
+with both rules and their two exceptions: Swift files are named for their types, and a name a
+tool dictates stays as the tool wants it. About seventy tracked files outside the three folders
+still have a hyphen in their names, most of them assets and data files, along with installed skill
+files and a handful in `verbdata/` that scripts read by name. Josh has not asked for those.
+
+Snake case is named for how it looks, low to the ground with the underscores as its belly, and
+kebab case for words skewered on a line. The older name for the second is the one Lisp
+programmers used, where the hyphen was simply how one wrote a name. The underscore itself is a
+typewriter's leftover: it existed so that a typist could back up and underline a word, and it
+became a letter only when programming languages needed a space that was not a space.
+
+## Snake case reaches `verbdata/`, and one link is broken on purpose (2026-11-16)
+
+The entry above ended by listing what had not been renamed: two files in `docs/` that were not
+kebab-case but were not snake_case either, and a handful of files in `verbdata/`. Josh asked for
+all of them. `Localization.md` became `localization.md` and `conjugationgroupText.md` became
+`conjugationgroup_text.md`.
+
+"A handful" was wrong, and the error was mine. The count behind it had filtered out JSON files
+along with the image assets, and `verbdata/` is mostly JSON. The true inventory was 36 tracked
+files, 13 gitignored files that scripts generate, and 14 more working files in the gitignored
+`verbdata/dwds/`, which the first listing showed only as a directory. All 63 are renamed. So are
+three directories, which Josh approved when asked, since he had said files:
+`verbdata/gloss_review/`, and `meta_multi/` and `shards_multi/` under `adjudication/`. Renaming
+only the tracked files would have left each script writing its output under the old name on its
+next run, so the generated files had to move with the scripts that name them.
+
+Data files raise a problem that prose does not: a name can be built when the script runs. A
+search for the old names found one such case. `verbdata/style/new_round.py` archives the previous
+round with the format string `"%s-round%d.json"`, which no search for `fixes-round3.json` will
+ever match, and it now writes an underscore. `CLAUDE.md` says so in a sentence, because the next
+script that formats a filename will not be caught by a rename. A directory name needed its own
+rule as well. "gloss-review" is a path segment in about four hundred places and an English
+compound in two, as in "the gloss-review driver", so the rewrite fired only where the name
+touched a slash.
+
+The dry run stopped on one file. `docs/reply_about_wiktionary_defects.txt` is the record of a
+reply Josh sent to a reader, and it says the defects file is public and gives its address on
+GitHub. Renaming `verbdata/wiktionary-defects.json` breaks that address once the rename is
+pushed, because GitHub does not redirect a file's old path on a branch. The script had skipped
+the URL, as it skips anything it cannot be sure is this repository's own path, and that skip was
+the only notice. The file was held back and the question put to Josh, who chose to rename it
+anyway. The record of the reply still shows the address as it was sent. A search of the Blog
+repository found no post linking to any file renamed today, and `CLAUDE.md` now asks for that
+search before any rename, since a sent email and a published post are the two kinds of reference
+no script can repair.
+
+One name in `verbdata/` keeps its hyphens: `kaikki.org-dictionary-German-by-pos-verb.jsonl`, the
+dump as kaikki.org publishes it. A downloaded file keeps its publisher's name, so that the name
+still says where to get it again. *Kaikki* is Finnish for "all", which suits a site whose
+business is every word of every Wiktionary.
+
+Verification went past the documentation checker this time, because scripts read these files.
+Every changed Python and shell script still parses, all 294 tracked JSON files in `verbdata/`
+still load, every path that a changed script names exists on disk, and
+`verbdata/audit_auxiliaries.py --check`, which reads the renamed rulings table, reports no
+problems. The mining, review, and adjudication waves were not run, since each costs a usage
+window, so their paths are checked by reading and not by running. The same pass corrected one
+wrong line in `docs/project_structure.md`, which described `localization.md` as workflow
+documentation when it is a table of word counts.

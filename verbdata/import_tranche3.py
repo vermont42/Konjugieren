@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Import tranche 3: new weak and -ieren stems, ranked by DWDS frequency.
 
-Step 9 of docs/roadmap.md, item 7 of docs/verb-sources.md's next steps. Written 2026-11-10.
+Step 9 of docs/roadmap.md, item 7 of docs/verb_sources.md's next steps. Written 2026-11-10.
 Consumes verbdata/classification.json (the classify-and-verify pipeline's verdicts),
 verbdata/candidates.json (kaikki glosses and forms), the gitignored kaikki snapshot (through
 verbdata/auxiliary_screen.py), and a DWDS frequency snapshot fetched for this tranche. Writes
@@ -10,31 +10,31 @@ Konjugieren/Models/Verbs.xml only on a real run with a cutoff.
 Run, in this order, from the repository root:
 
   python3 verbdata/import_tranche3.py --write-lemmas
-      Writes verbdata/dwds/tranche3-lemmas.tsv: every candidate that survives the filters that
+      Writes verbdata/dwds/tranche3_lemmas.tsv: every candidate that survives the filters that
       need no network, with two probes each (see "FREQUENCY" below). Prints the fetch command.
 
-  python3 verbdata/fetch_dwds_frequencies.py --lemmas verbdata/dwds/tranche3-lemmas.tsv \\
-      --out verbdata/dwds/tranche3-frequencies.json \\
-      --quarantine verbdata/dwds/tranche3-quarantine.json --workers 2
+  python3 verbdata/fetch_dwds_frequencies.py --lemmas verbdata/dwds/tranche3_lemmas.tsv \\
+      --out verbdata/dwds/tranche3_frequencies.json \\
+      --quarantine verbdata/dwds/tranche3_quarantine.json --workers 2
       The fetch. BBAW asked that the volume stay modest; two workers and the default delay
       are what the corpus-wide run of 2026-08-26 used. Expect an hour or two.
 
   python3 verbdata/import_tranche3.py --write-repair-lemmas
-  python3 verbdata/fetch_dwds_frequencies.py --lemmas verbdata/dwds/tranche3-repair-lemmas.tsv \
-      --out verbdata/dwds/tranche3-frequencies-repair.json \
-      --quarantine verbdata/dwds/tranche3-quarantine-repair.json --workers 2
+  python3 verbdata/fetch_dwds_frequencies.py --lemmas verbdata/dwds/tranche3_repair_lemmas.tsv \
+      --out verbdata/dwds/tranche3_frequencies_repair.json \
+      --quarantine verbdata/dwds/tranche3_quarantine_repair.json --workers 2
       The repair pass, for two kinds of quarantined row that are the probe's fault and not the
       verb's (see "THE REPAIR PASS" below). A few dozen lemmas, a minute or two.
 
   python3 verbdata/import_tranche3.py --check [--top N | --min-hits H]
-      The dry run. Writes verbdata/tranche3-ranked.tsv (every importable verb, most frequent
-      first, with the corpus rank it would take) and verbdata/tranche3-deferred.txt (every
+      The dry run. Writes verbdata/tranche3_ranked.tsv (every importable verb, most frequent
+      first, with the corpus rank it would take) and verbdata/tranche3_deferred.txt (every
       verb held back, and why). Touches nothing else. The ranked list is what a human reads
       to choose the cutoff, which the roadmap leaves to taste.
 
   python3 verbdata/import_tranche3.py --top N        (or --min-hits H)
       The import. Inserts the chosen verbs into Verbs.xml and appends `proposed` rows for the
-      verbs the auxiliary screen held back to verbdata/auxiliary-rulings.tsv. Refuses to run
+      verbs the auxiliary screen held back to verbdata/auxiliary_rulings.tsv. Refuses to run
       without a cutoff, because "all of them" is a decision nobody has made.
 
 WHY A NEW SCRIPT, NOT import_tranche2.py
@@ -142,9 +142,9 @@ symbols that already ship, so no new asset is needed.
 WHAT A NEW VERB LACKS
 ---------------------
 An etymology and an example sentence. VerbView shows neither section when the verb has none,
-so nothing breaks, but the step-10 pipeline (prompts/uses_etymologies.md and the `integrate`
+so nothing breaks, but the step-10 pipeline (plans/uses_etymologies.md and the `integrate`
 skill) has to run over the new verbs before the corpus is whole again, and
-docs/etymology-pipeline.md must not claim completeness meanwhile (check_docs.py checks it).
+docs/etymology_pipeline.md must not claim completeness meanwhile (check_docs.py checks it).
 """
 
 import argparse
@@ -172,14 +172,14 @@ REPO = pathlib.Path(__file__).resolve().parent.parent
 VERBS_XML = REPO / "Konjugieren" / "Models" / "Verbs.xml"
 CLASSIFICATION = REPO / "verbdata" / "classification.json"
 CANDIDATES = REPO / "verbdata" / "candidates.json"
-RULINGS = REPO / "verbdata" / "auxiliary-rulings.tsv"
-LEMMAS = REPO / "verbdata" / "dwds" / "tranche3-lemmas.tsv"
-FREQUENCIES = REPO / "verbdata" / "dwds" / "tranche3-frequencies.json"
-QUARANTINE = REPO / "verbdata" / "dwds" / "tranche3-quarantine.json"
-REPAIR_LEMMAS = REPO / "verbdata" / "dwds" / "tranche3-repair-lemmas.tsv"
-REPAIR_FREQUENCIES = REPO / "verbdata" / "dwds" / "tranche3-frequencies-repair.json"
-RANKED = REPO / "verbdata" / "tranche3-ranked.tsv"
-DEFERRED = REPO / "verbdata" / "tranche3-deferred.txt"
+RULINGS = REPO / "verbdata" / "auxiliary_rulings.tsv"
+LEMMAS = REPO / "verbdata" / "dwds" / "tranche3_lemmas.tsv"
+FREQUENCIES = REPO / "verbdata" / "dwds" / "tranche3_frequencies.json"
+QUARANTINE = REPO / "verbdata" / "dwds" / "tranche3_quarantine.json"
+REPAIR_LEMMAS = REPO / "verbdata" / "dwds" / "tranche3_repair_lemmas.tsv"
+REPAIR_FREQUENCIES = REPO / "verbdata" / "dwds" / "tranche3_frequencies_repair.json"
+RANKED = REPO / "verbdata" / "tranche3_ranked.tsv"
+DEFERRED = REPO / "verbdata" / "tranche3_deferred.txt"
 
 FAMILIES = {"w", "i"}
 
@@ -501,7 +501,7 @@ def main():
               f"{len(deferred)} filtered out before fetching)")
         print("fetch with:\n  python3 verbdata/fetch_dwds_frequencies.py "
               f"--lemmas {LEMMAS.relative_to(REPO)} --out {FREQUENCIES.relative_to(REPO)} "
-              "--quarantine verbdata/dwds/tranche3-quarantine.json --workers 2")
+              "--quarantine verbdata/dwds/tranche3_quarantine.json --workers 2")
         return 0
 
     if args.write_repair_lemmas:
@@ -544,7 +544,7 @@ def main():
                                    f"({hits:,} hits); no verb-only count exists"))
             continue
         if word in ruled:
-            deferred.append((word, "has rows in auxiliary-rulings.tsv; add it by hand per its ruling"))
+            deferred.append((word, "has rows in auxiliary_rulings.tsv; add it by hand per its ruling"))
             continue
         result = auxiliary_screen.screen(lemmas.get(word), source)
         if result.flagged:

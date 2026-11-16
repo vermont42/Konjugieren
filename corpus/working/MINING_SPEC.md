@@ -1,4 +1,4 @@
-# Mining brief — Phase 4 of `prompts/uses_etymologies.md`
+# Mining brief — Phase 4 of `plans/uses_etymologies.md`
 
 You are producing, for each verb in one shard, **an etymology and an example sentence**, in
 German and English. Your shard is self-contained: everything you need has been joined into it.

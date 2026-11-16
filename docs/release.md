@@ -15,9 +15,9 @@ and do not count on shipping a fix or an analytics signal in order to learn from
 outside the apps, such as the privacy policy, can still change at any time.
 
 The shipped version is 1.4. What has accumulated since is recorded in the plans' Status tables
-([`plans/browse-and-verb-implementation.md`](../plans/browse-and-verb-implementation.md),
-[`plans/pedagogy-implementation.md`](../plans/pedagogy-implementation.md)) and in the **Built on
-`main`** lines of [`plans/pedagogy.md`](../plans/pedagogy.md), which are the raw material for the
+([`plans/browse_and_verb_implementation.md`](../plans/browse_and_verb_implementation.md),
+[`plans/pedagogy_implementation.md`](../plans/pedagogy_implementation.md)) and in the **Built on
+`main`** lines of [`docs/pedagogy_research.md`](pedagogy_research.md), which are the raw material for the
 release notes.
 
 ## Before Submitting
@@ -28,10 +28,10 @@ release notes.
    visible to a development build on 2026-11-14, probably because no app version existed to add
    them to. Once they are added, finish a quiz over all verbs and tap View Leaderboard; it should
    open that level's board with the score. Keep GameKit debug mode off in the scheme, since it
-   hides every leaderboard. See [`game-center-setup.md`](game-center-setup.md) § Testing Before
+   hides every leaderboard. See [`game_center_setup.md`](game_center_setup.md) § Testing Before
    Release.
 3. **Create the eight achievements** (pedagogy Phase 23) by the walkthrough in
-   [`game-center-setup.md`](game-center-setup.md) § The Achievements, with the artwork Josh chose,
+   [`game_center_setup.md`](game_center_setup.md) § The Achievements, with the artwork Josh chose,
    add them to the version, and on the development build open View Achievements on the Quiz tab:
    the eight should be listed, with progress on any the build's record has begun.
 4. **Write the release notes** in English and German in
@@ -42,8 +42,8 @@ release notes.
    seven exercises, a practice record, a daily session, and a daily challenge, so the description
    wants rewriting as a whole rather than checking. Paste it into App Store Connect.
 6. **Redo the screenshots** (Josh, 2026-11-15), 36 in all, by
-   [`screenshot-playbook.md`](screenshot-playbook.md) and `scripts/take_screenshots.sh`. Revise
-   the nine views in [`screenshot-plan.md`](screenshot-plan.md) first; the driver's `VIEWS`
+   [`screenshot_playbook.md`](screenshot_playbook.md) and `scripts/take_screenshots.sh`. Revise
+   the nine views in [`screenshot.md`](../plans/screenshot.md) first; the driver's `VIEWS`
    follows. As of 2026-11-15 the plan predates the pedagogy work: the Quiz tab now opens on the
    practice hub, not a quiz, so `quiz_mid` needs Start first and shows the answer frame (Phase 2);
    `quiz_results` asks for elapsed time, which a hidden Quiz Clock, the default since Phase 7,
@@ -72,9 +72,9 @@ release notes.
 
 1. **The privacy policy.** Analytics added on `main` since the last release need lines in the
    policy on the day the release ships, and not before. They wait in
-   [`privacy-policy-pending.md`](privacy-policy-pending.md), which says how to apply them.
+   [`privacy_policy_pending.md`](privacy_policy_pending.md), which says how to apply them.
 2. **Archive the old leaderboard**, `Leaderboard`, once the release is live, and consider making
-   Beginner the default. See [`game-center-setup.md`](game-center-setup.md) § On Release Day.
+   Beginner the default. See [`game_center_setup.md`](game_center_setup.md) § On Release Day.
 
 ## Afterward
 

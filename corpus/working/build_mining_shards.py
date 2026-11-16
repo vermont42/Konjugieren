@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 """
-Phase 4 of prompts/uses_etymologies.md: build self-contained mining shards.
+Phase 4 of plans/uses_etymologies.md: build self-contained mining shards.
 
 Consumes
     Konjugieren/Models/Verbs.xml           — targets (hp="y") and their readings
     Konjugieren/Models/Etymologies.json    — to identify what is already done
     corpus/working/corpus_index.json       — pre-found, pre-ranked example candidates
     verbdata/roots.json                    — root → etymology
-    verbdata/prefixes-inseparable.json     — prefix → {chain, senses}
-    verbdata/prefixes-separable.json       — particle → {kind, chain, senses}
-    verbdata/sense-exemplars.json          — exemplar verbs per sense, a picking aid
+    verbdata/prefixes_inseparable.json     — prefix → {chain, senses}
+    verbdata/prefixes_separable.json       — particle → {kind, chain, senses}
+    verbdata/sense_exemplars.json          — exemplar verbs per sense, a picking aid
 
 Produces
     corpus/working/shards/mine_<NNN>.in.json
@@ -51,9 +51,9 @@ VERBS_XML = REPO / "Konjugieren/Models/Verbs.xml"
 ETYMOLOGIES = REPO / "Konjugieren/Models/Etymologies.json"
 INDEX = REPO / "corpus/working/corpus_index.json"
 ROOTS = REPO / "verbdata/roots.json"
-INSEP = REPO / "verbdata/prefixes-inseparable.json"
-SEP = REPO / "verbdata/prefixes-separable.json"
-EXEMPLARS = REPO / "verbdata/sense-exemplars.json"
+INSEP = REPO / "verbdata/prefixes_inseparable.json"
+SEP = REPO / "verbdata/prefixes_separable.json"
+EXEMPLARS = REPO / "verbdata/sense_exemplars.json"
 OUT_DIR = REPO / "corpus/working/shards"
 LANGS = ("de", "en")
 

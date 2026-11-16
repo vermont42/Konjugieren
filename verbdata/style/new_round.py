@@ -11,7 +11,7 @@ Why each round must re-extract
 ------------------------------
 `dashfix.py --apply` rewrites the corpus, so the previous round's "before" strings no longer
 occur in it. Re-extracting is not merely tidy: it is the only way the remaining population is
-counted correctly, and it makes the archived `fixes-roundN.json` an immutable record of what
+counted correctly, and it makes the archived `fixes_roundN.json` an immutable record of what
 was decided rather than a live input that would silently stop matching.
 
 Sentence splitting
@@ -59,7 +59,7 @@ def main():
     for name in ("fixes", "sentences"):
         live = STYLE / ("%s.json" % name)
         if live.exists():
-            live.rename(STYLE / ("%s-round%d.json" % (name, n - 1)))
+            live.rename(STYLE / ("%s_round%d.json" % (name, n - 1)))
 
     subprocess.run([sys.executable, str(STYLE / "extract_units.py"),
                     "--out", str(STYLE / "units.json")], check=True)

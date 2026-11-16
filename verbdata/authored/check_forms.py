@@ -18,7 +18,7 @@ fixes live in corrections.json, keyed by verb, and every consumer applies them o
 the shape the adversarial review's fix_de/fix_en findings need, so the two paths converge.
 
 Produces:
-  verbdata/authored/forms-gate.json          per-verb verdict + the matched token
+  verbdata/authored/forms_gate.json          per-verb verdict + the matched token
   a printed report: overall hit rate, by model, by verb family, and the calibration cut
 
 Run: python3 verbdata/authored/check_forms.py
@@ -26,7 +26,7 @@ Run: python3 verbdata/authored/check_forms.py
 WHY THIS IS THE UNCONFOUNDED QUALITY SIGNAL. Every other quality measure available for the
 Opus 4.8 vs 5.0 comparison needs an LLM judge, which introduces self-preference bias. This
 one is pure string matching against forms the app itself generates, so it has no opinion
-about style. See prompts/example_analysis.md, "Run the unconfounded signals first".
+about style. See plans/example_analysis.md, "Run the unconfounded signals first".
 
 Three facts about forms.json drive the matching logic, none obvious from the call site:
 
@@ -104,7 +104,7 @@ for verb, e in sorted(sentences.items()):
         "de": e.get("de", ""),
     }
 
-json.dump(results, open("verbdata/authored/forms-gate.json", "w"), ensure_ascii=False, indent=2)
+json.dump(results, open("verbdata/authored/forms_gate.json", "w"), ensure_ascii=False, indent=2)
 
 
 def rate(rows):

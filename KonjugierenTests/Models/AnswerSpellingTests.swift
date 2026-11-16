@@ -16,7 +16,7 @@ struct AnswerSpellingTests {
     return Quiz().makeQuizItem(verb: verb, conjugationgroup: conjugationgroup, readingIndex: readingIndex)
   }
 
-  // The three simulator cases from plans/pedagogy.md.
+  // The three simulator cases from docs/pedagogy_research.md.
   @Test func reportCasesPass() throws {
     #expect(try item("ferngucken", .perfektIndikativ(.secondPlural)).accepts("ihr habt ferngeguckt"))
     #expect(try item("übernehmen", .präsensIndikativ(.firstSingular)).accepts("uebernehme"))

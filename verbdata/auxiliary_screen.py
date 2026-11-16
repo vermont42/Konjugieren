@@ -1,6 +1,6 @@
 """Auxiliary screen: decides whether an incoming verb's auxiliary can be imported without a human.
 
-Written 2026-11-10 for Part 6, "Stop the cause", of plans/fix-reference-defects.md. Imported by
+Written 2026-11-10 for Part 6, "Stop the cause", of plans/fix_reference_defects.md. Imported by
 verbdata/import_tranche2.py, and meant to be imported, not copied, by whatever script imports
 tranche 3 (docs/roadmap.md step 9). It has no command line of its own; run the importer's
 `--check --screen VERB,...` to exercise it on named verbs.
@@ -42,15 +42,15 @@ THE RULE THIS MODULE IMPLEMENTS
 An auxiliary is taken from the same kaikki sense as the gloss. When that sense says nothing, the
 lemma's auxiliary is used only if the lemma names exactly one and nothing in kaikki contradicts
 it. Everything else is FLAGGED, and a flagged verb is not imported. It goes to
-verbdata/auxiliary-rulings.tsv as rows with the outcome `proposed`, one per reading the senses
+verbdata/auxiliary_rulings.tsv as rows with the outcome `proposed`, one per reading the senses
 suggest, and `python3 verbdata/audit_auxiliaries.py --check` fails while any proposed row remains.
 Ruling a proposed row means rewriting it with a real outcome, a source, and a note, exactly as
 Part 6 did, and then adding the verb to Verbs.xml by hand with the readings the ruling chose.
 
 Why the importer does not write the second readings into Verbs.xml itself: the readings need
-glosses that tell them apart, and prompts/multi_reading_glosses.md records that a reviewer who
+glosses that tell them apart, and plans/multi_reading_glosses.md records that a reviewer who
 reads one gloss at a time misses swapped pairs. An importer that wrote readings straight into
-Verbs.xml would skip the gloss review in prompts/gloss_review.md. The proposed rows are a
+Verbs.xml would skip the gloss review in plans/gloss_review.md. The proposed rows are a
 starting point for that review, not a substitute for it.
 
 THE FLAGS, AND WHAT IN KAIKKI EACH ONE READS
@@ -64,7 +64,7 @@ THE FLAGS, AND WHAT IN KAIKKI EACH ONE READS
                        record's spec offers two paradigms that differ in family AND auxiliary
                        (bleichen). A dual paradigm with one auxiliary (triefen, sieden) is NOT
                        flagged: that is one meaning with two form sets, wrinkle 1 of
-                       docs/verb-sources.md, and not a ruling about meaning.
+                       docs/verb_sources.md, and not a ruling about meaning.
   sense contradicts    The gloss's own sense contradicts the lemma's single auxiliary: an explicit
   lemma                "[auxiliary sein]" note under a haben lemma (or the reverse); a sense tagged
                        intransitive whose English gloss is a verb of motion or change of state
@@ -473,7 +473,7 @@ def propose(lemma, result, marked, normalize):
 
 
 def rulings_rows(word, result, proposals, encoding, date):
-    """TSV lines for verbdata/auxiliary-rulings.tsv, outcome `proposed`, in the file's column order.
+    """TSV lines for verbdata/auxiliary_rulings.tsv, outcome `proposed`, in the file's column order.
 
     The file is read with csv.QUOTE_NONE, so a tab or newline in any cell would corrupt it.
     """

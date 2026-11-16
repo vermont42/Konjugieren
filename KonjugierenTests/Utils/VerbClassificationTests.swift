@@ -4,7 +4,7 @@ import Foundation
 import Testing
 @testable import Konjugieren
 
-// Stage B of the classify-and-verify pipeline described in docs/verb-sources.md.
+// Stage B of the classify-and-verify pipeline described in docs/verb_sources.md.
 //
 // Consumes verbdata/candidates.json (written by verbdata/build_candidates.py) and,
 // for every candidate, searches for the Verbs.xml encoding whose Conjugator output
@@ -14,7 +14,7 @@ import Testing
 //
 // Not part of ordinary test runs: it mutates Verb.verbs and AblautGroup.ablautGroups,
 // which every other suite reads, and it takes minutes. Gated on an environment
-// variable; see docs/verb-sources.md for the invocation.
+// variable; see docs/verb_sources.md for the invocation.
 
 @MainActor
 @Suite("VerbClassification", .serialized, .enabled(if: ProcessInfo.processInfo.environment["KONJUGIEREN_CLASSIFY_IN"] != nil))
@@ -874,7 +874,7 @@ private final class Classifier {
     }
     if value.contains("or") {
       // kaikki's ordering names the primary reading first; the interim policy in
-      // prompts/dual_auxiliary.md governs which one ships.
+      // plans/dual_auxiliary.md governs which one ships.
       return (value.hasPrefix("sein") ? "s" : "h", true)
     }
     return (value == "sein" ? "s" : "h", false)

@@ -3,7 +3,7 @@
 """Count how often each conjugationgroup occurs in a sample of the text corpus.
 
 The verb page orders its simple conjugationgroups, and then its compound ones, by these counts
-(Phase 7 of plans/browse-and-verb-implementation.md). docs/conjugationgroup-frequency.md gives
+(Phase 7 of plans/browse_and_verb_implementation.md). docs/conjugationgroup_frequency.md gives
 the method and the results, and should be updated if this script changes.
 
 Consumes

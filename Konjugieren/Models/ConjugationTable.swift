@@ -6,7 +6,7 @@
 /// ordered by how often its conjugationgroup occurs in a sample of the text corpus, with one
 /// exception: the two participles, one conjugation each, close the simple block rather than
 /// sitting between the six-row tables, as Josh chose for the page's look.
-/// docs/conjugationgroup-frequency.md gives the counts, and scripts/count_conjugationgroups.py
+/// docs/conjugationgroup_frequency.md gives the counts, and scripts/count_conjugationgroups.py
 /// reproduces them. Change the order there before changing it here.
 // Semantic ordering: the verb page's order, top to bottom.
 enum ConjugationTable: CaseIterable {

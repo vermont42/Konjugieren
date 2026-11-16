@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
 """Normalize prefix/particle `senses` to complete sentences, in place.
 
-Consumes and rewrites `verbdata/prefixes-inseparable.json` and
-`verbdata/prefixes-separable.json`. Idempotent: a second run is asserted to be a no-op (see main()).
+Consumes and rewrites `verbdata/prefixes_inseparable.json` and
+`verbdata/prefixes_separable.json`. Idempotent: a second run is asserted to be a no-op (see main()).
 
     python3 verbdata/normalize_prefix_senses.py [--dry-run]
 
@@ -64,7 +64,7 @@ import json
 import pathlib
 import re
 
-FILES = ("verbdata/prefixes-inseparable.json", "verbdata/prefixes-separable.json")
+FILES = ("verbdata/prefixes_inseparable.json", "verbdata/prefixes_separable.json")
 
 # Finite 3sg verbs that open a predicate sense. Curated from the full observed set;
 # see the module docstring for why -s/-t shape tests are not usable here.

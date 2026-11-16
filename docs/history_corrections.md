@@ -1,7 +1,7 @@
 # Corrections to "A History of the German Verb System"
 
 This is the deliverable of the fact-check described in
-[`prompts/verify-verb-history.md`](../prompts/verify-verb-history.md). It merges four finished
+[`plans/verify_verb_history.md`](../plans/verify_verb_history.md). It merges four finished
 inputs into one document: the 27 findings that survived Phase 2's adversarial verification, agent
 H's internal-consistency items, Phase 3's check of the essay against Konjugieren's own conjugator,
 and the coverage audit's list of confirmed rows whose reasoning does not carry their verdict.

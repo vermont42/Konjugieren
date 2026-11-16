@@ -3,7 +3,7 @@
 // The --cells-json output: every one-word conjugation of every verb, with the conjugationgroup
 // it belongs to. scripts/count_conjugationgroups.py reads it to count how often each
 // conjugationgroup occurs in the text corpus, which orders the verb page's sections. See
-// docs/conjugationgroup-frequency.md.
+// docs/conjugationgroup_frequency.md.
 //
 // The shape is form → [[group, infinitive, auxiliary], …], with the form lowercased:
 //

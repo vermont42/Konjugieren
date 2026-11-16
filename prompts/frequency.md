@@ -1,4 +1,4 @@
-Please read `docs/dwds-permission-email.md` and files referenced in it.
+Please read `docs/dwds_permission_email.md` and files referenced in it.
 
 Good news! I just got this email:
 

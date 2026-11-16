@@ -889,7 +889,7 @@ struct ConjugatorTests {
   }
 
   // Every expectation below is Wiktionary's, via the classify-and-verify pipeline in
-  // docs/verb-classification.md, not the engine's own output.
+  // docs/verb_classification.md, not the engine's own output.
 
   @Test func epentheticEInImperativ() {
     expectConjugation(infinitiv: "arbeiten", conjugationgroup: .imperativ(.secondPlural), expected: "arbeitet")
@@ -1257,7 +1257,7 @@ struct ConjugatorTests {
   // Defect plan, Part 2. A full override (a trailing * in AblautGroups.xml) spells out the
   // base verb's conjugation, and until 2026-11-10 the derivative's prefix was never put back:
   // bedürfen showed ich darf. Expectations are German Wiktionary's; kaikki's weak table for
-  // entgelten is a known English-Wiktionary defect (verbdata/wiktionary-defects.json).
+  // entgelten is a known English-Wiktionary defect (verbdata/wiktionary_defects.json).
   @Test func overridesKeepTheirPrefix() {
     let bedürfen = ["bedarF", "bedArfst", "bedarF", "bedürfen", "bedürft", "bedürfen"]
     let vermögen = ["vermAG", "vermAGst", "vermAG", "vermögen", "vermögt", "vermögen"]
@@ -1319,7 +1319,7 @@ struct ConjugatorTests {
   // Defect plan, Part 1. The tranche-2 importer took a verb's auxiliary from kaikki's
   // first-listed one and its gloss from a separate sense, so aufstehen shipped "get up" with
   // haben. Every expectation here comes from DWDS or German Wiktionary, never from the engine;
-  // verbdata/auxiliary-rulings.tsv records the source for each.
+  // verbdata/auxiliary_rulings.tsv records the source for each.
   @Test func auxiliariesRuledAgainstTheDictionary() {
     expectConjugation(infinitiv: "stattfinden", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt stattgefUnden")
     expectConjugation(infinitiv: "reisen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "IST gereist")
@@ -1336,7 +1336,7 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "schmelzen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt geschmOlzen", readingIndex: 1)
   }
 
-  // One row per reading in verbdata/auxiliary-rulings.tsv. This pins the rulings without a
+  // One row per reading in verbdata/auxiliary_rulings.tsv. This pins the rulings without a
   // hand-written mixed-case string for each, and Part 6 of the defect plan extends it.
   nonisolated private static let auxiliaryRulings: [(String, Int, Auxiliary)] = [
     ("stattfinden", 0, .haben),
@@ -1718,7 +1718,7 @@ struct ConjugatorTests {
 
   // Defect plan, Part 7b. krauchen shipped with kriechen's paradigm (kroch, gekrochen), which
   // is all English Wiktionary gives. Duden and DWDS conjugate it weak; verbdata/
-  // wiktionary-defects.json records the disagreement.
+  // wiktionary_defects.json records the disagreement.
   @Test func krauchenIsWeak() {
     expectConjugation(infinitiv: "krauchen", conjugationgroup: .präteritumIndikativ(.thirdSingular), expected: "krauchte")
     expectConjugation(infinitiv: "krauchen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "IST gekraucht")

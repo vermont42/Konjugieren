@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Collapse gloss-review findings into a corrections file apply_gloss_corrections.py can write.
 
-Consumes: verbdata/gloss-review/shards/gloss_NNN.out.json   reviewer findings
-          verbdata/gloss-review/shards/gloss_NNN.in.json    shipped gloss + kaikki candidates
-Produces: verbdata/gloss-review/gloss-corrections-sweep.json  (verb -> {old, new, why, ...})
-          verbdata/gloss-review/triage.md                     human-readable, traceability-sorted
+Consumes: verbdata/gloss_review/shards/gloss_NNN.out.json   reviewer findings
+          verbdata/gloss_review/shards/gloss_NNN.in.json    shipped gloss + kaikki candidates
+Produces: verbdata/gloss_review/gloss_corrections_sweep.json  (verb -> {old, new, why, ...})
+          verbdata/gloss_review/triage.md                     human-readable, traceability-sorted
 
 Run from the repo root:  python3 verbdata/authored/build_gloss_corrections.py
   --min-severity high|medium|low   default low (everything)
@@ -71,15 +71,15 @@ parser = argparse.ArgumentParser()
 parser.add_argument("--min-severity", choices=["high", "medium", "low"], default="low")
 parser.add_argument("--partial", action="store_true",
                     help="proceed even though some input shards have no reviewer output")
-parser.add_argument("--out", default="verbdata/gloss-review/gloss-corrections-sweep.json")
-parser.add_argument("--triage", default="verbdata/gloss-review/triage.md")
+parser.add_argument("--out", default="verbdata/gloss_review/gloss_corrections_sweep.json")
+parser.add_argument("--triage", default="verbdata/gloss_review/triage.md")
 parser.add_argument("--pattern", choices=["gloss", "multi"], default="gloss",
                     help="'gloss' reads the 49 per-verb shards; 'multi' reads the per-reading "
                          "shard, whose records are keyed <verb>#<index>")
 args = parser.parse_args()
 cutoff = RANK[args.min_severity]
 
-SHARDS = "verbdata/gloss-review/shards"
+SHARDS = "verbdata/gloss_review/shards"
 PREFIX = args.pattern
 # The two shard shapes differ in one field name each: the record list, and the record's key.
 LIST_FIELD, KEY_FIELD = ("verbs", "verb") if PREFIX == "gloss" else ("readings", "key")
@@ -201,7 +201,7 @@ for path in (args.out, args.triage):
 
 header = {
     "_source": f"{SHARDS}/{PREFIX}_*.out.json",
-    "_brief": "prompts/gloss_review.md",
+    "_brief": "plans/gloss_review.md",
     "_min_severity": args.min_severity,
     "_shards_total": len(in_ids),
     "_shards_reviewed": len(out_ids),

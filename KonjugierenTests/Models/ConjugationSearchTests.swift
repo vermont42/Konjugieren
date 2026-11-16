@@ -18,8 +18,8 @@ struct ConjugationSearchTests {
   @MainActor
   @Suite("Matching")
   struct Matching {
-    // The rows of "What Search Returns" in docs/browse-and-verb-ideas.md that Phase 6 of
-    // plans/browse-and-verb-implementation.md addresses.
+    // The rows of "What Search Returns" in docs/browse_and_verb_ideas.md that Phase 6 of
+    // plans/browse_and_verb_implementation.md addresses.
     @Test(arguments: zip(
       ["ging", "gefunden", "war", "ist", "kam", "wurde", "geht", "muss", "will", "darf", "stand auf", "weiß"],
       ["gehen", "finden", "sein", "sein", "kommen", "werden", "gehen", "müssen", "wollen", "dürfen", "aufstehen", "wissen"]

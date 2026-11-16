@@ -1,10 +1,10 @@
 """Auxiliary audit: compares each shipped reading's auxiliary with kaikki and with the rulings file.
 
-Promoted from plans/fix-reference-defects-audit.py in Part 6 of plans/fix-reference-defects.md.
+Promoted from plans/fix-reference-defects-audit.py in Part 6 of plans/fix_reference_defects.md.
 
 Consumes:
   * Konjugieren/Models/Verbs.xml
-  * verbdata/auxiliary-rulings.tsv, one row per ruled reading (columns below)
+  * verbdata/auxiliary_rulings.tsv, one row per ruled reading (columns below)
   * the gitignored kaikki snapshot, verbdata/kaikki.org-dictionary-German-by-pos-verb.jsonl
 
 Two modes, both run from the repository root:
@@ -69,7 +69,7 @@ import xml.etree.ElementTree as ET
 
 SNAPSHOT = "verbdata/kaikki.org-dictionary-German-by-pos-verb.jsonl"
 VERBS = "Konjugieren/Models/Verbs.xml"
-RULINGS = "verbdata/auxiliary-rulings.tsv"
+RULINGS = "verbdata/auxiliary_rulings.tsv"
 OUTCOMES = {"two readings", "flip", "flip and re-gloss", "re-gloss", "keep"}
 PROPOSED = "proposed"
 

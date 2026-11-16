@@ -5,13 +5,13 @@
 # per shard to verbdata/authored/metrics.jsonl. Skips shards whose .out.json already exists,
 # so a killed run costs at most one shard's work.
 #
-# Consumes: prompts/example_prompt.md (the subagent brief, passed verbatim),
+# Consumes: plans/example_authoring.md (the subagent brief, passed verbatim),
 #           verbdata/authored/shards/auth_<NNN>.in.json
 # Produces: verbdata/authored/shards/auth_<NNN>.out.json  (written by the child)
 #           verbdata/authored/meta/auth_<NNN>.meta.json   (the child's raw --output-format json)
 #           verbdata/authored/metrics.jsonl               (one row per completed shard)
 set -u
-BRIEF="$(cat prompts/example_prompt.md)"
+BRIEF="$(cat plans/example_authoring.md)"
 mkdir -p verbdata/authored/meta
 pids=()
 for spec in "$@"; do

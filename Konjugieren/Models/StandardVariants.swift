@@ -5,7 +5,7 @@ import Foundation
 /// Standard conjugations that Duden lists beside the one the conjugator writes, such as komme
 /// beside komm and stünde beside stände. The quiz accepts them; the verb page keeps showing the
 /// conjugator's conjugation. Josh ruled on each kind on 2026-11-13, from the audit in
-/// `plans/pedagogy-phase1-variant-audit.md`, whose row letters the comments below cite.
+/// `plans/pedagogy_phase1_variant_audit.md`, whose row letters the comments below cite.
 enum StandardVariants {
   /// The variants of one conjugation, as one region and clause write it. Variants keep the
   /// conjugator's capitals where they keep its letters; the caller lowercases them for grading.

@@ -51,7 +51,7 @@ import json
 import pathlib
 import re
 
-FILES = ("verbdata/prefixes-inseparable.json", "verbdata/prefixes-separable.json")
+FILES = ("verbdata/prefixes_inseparable.json", "verbdata/prefixes_separable.json")
 # The left edge of whatever the subagent wrote: the end of the preceding sentence, the bullet's
 # own `~morpheme~: ` label, or a line break.
 #

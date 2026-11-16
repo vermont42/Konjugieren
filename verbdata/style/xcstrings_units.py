@@ -2,8 +2,8 @@
 """Extract and repair dashed sentences in a .xcstrings catalog.
 
 Consumes:  Konjugieren/Assets/Localizable.xcstrings (or the widget catalog)
-Produces:  verbdata/style/xc-sentences.json  (extract mode)
-           a rewritten catalog                (apply mode, using verbdata/style/xc-fixes.json)
+Produces:  verbdata/style/xc_sentences.json  (extract mode)
+           a rewritten catalog                (apply mode, using verbdata/style/xc_fixes.json)
 Run:       python3 verbdata/style/xcstrings_units.py extract
            python3 verbdata/style/xcstrings_units.py apply
 
@@ -32,8 +32,8 @@ import re
 import sys
 
 CATALOG = pathlib.Path("Konjugieren/Assets/Localizable.xcstrings")
-SENTENCES = pathlib.Path("verbdata/style/xc-sentences.json")
-FIXES = pathlib.Path("verbdata/style/xc-fixes.json")
+SENTENCES = pathlib.Path("verbdata/style/xc_sentences.json")
+FIXES = pathlib.Path("verbdata/style/xc_fixes.json")
 
 SPAN = re.compile(r"\s*—\s*|\s+–\s*|\s+--\s*")
 # Sentence boundary: terminal punctuation (optionally inside a closing quote) then

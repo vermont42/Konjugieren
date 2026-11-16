@@ -15,7 +15,7 @@ struct PrefixMeaning: Identifiable {
   }
 
   // Alphabetical, folding umlauts to their base vowel, which is the collation Verbs.xml
-  // uses; see docs/adding-verbs.md. The array order is the display order.
+  // uses; see docs/adding_verbs.md. The array order is the display order.
   private static let separableData: [(String, String, String)] = [
     ("ab-", "off, away, down", "*h₂epó"),
     ("an-", "at, on, to", "*h₂en"),

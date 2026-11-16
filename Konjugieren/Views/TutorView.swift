@@ -75,7 +75,7 @@ struct TutorView: View {
             VStack(alignment: .leading, spacing: Layout.doubleDefaultSpacing) {
               // TODO: 1.0-disabled surface. recommendPractice hallucinates from
               // tense labels (e.g., "Past Indicative" → "errors in recalling past
-              // events"). See "Currently disabled in 1.0" in docs/cloud-llm-tier.md.
+              // events"). See "Currently disabled in 1.0" in docs/cloud_llm_tier.md.
               // Restore when HybridLanguageModelService ships AND the input shape
               // is enriched with concrete missed verbs, not just aggregated counts.
               // if hasQuizHistory {

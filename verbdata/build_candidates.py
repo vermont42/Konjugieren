@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Reduce the kaikki German-verb snapshot to a compact candidate file.
 
-Stage A of the classify-and-verify pipeline described in docs/verb-sources.md.
+Stage A of the classify-and-verify pipeline described in docs/verb_sources.md.
 Reads verbdata/kaikki.org-dictionary-German-by-pos-verb.jsonl (294 MB) plus
 Konjugieren/Models/Verbs.xml, and writes verbdata/candidates.json holding one
 record per single-word lemma absent from Konjugieren, with its conjugation table
@@ -138,7 +138,7 @@ def main():
                              "splits separable/inseparable homographs across Etymology sections, so the "
                              "default single-record view drops one reading of übersetzen, durchbrechen, "
                              "umfahren and ~200 others. Required for the dual-auxiliary pass; see "
-                             "prompts/dual_auxiliary.md. Records gain a 'recordIndex' field, and the "
+                             "plans/dual_auxiliary.md. Records gain a 'recordIndex' field, and the "
                              "classifier keys on 'word', so do not feed this file to Stage B unmodified.")
     args = parser.parse_args()
 

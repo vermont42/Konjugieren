@@ -4,36 +4,36 @@ The order to execute things in, and what gates what. Written 2026-07-19.
 
 **This file is an index, not a source.** It says *what* to do next and *why that order*; the
 *how* lives in the linked prompt or doc, which is authoritative wherever the two disagree. Like
-`project-structure.md`, it is a cache, and staleness has a real cost — update it when a step
+`project_structure.md`, it is a cache, and staleness has a real cost — update it when a step
 completes.
 
 ## The sequence at a glance
 
 | # | Step | Where | Status | Gated on |
 |---|---|---|---|---|
-| 1 | Get the Wiktionary snapshot | [`verb-sources.md`](verb-sources.md) | ✅ 2026-07-18 | — |
-| 2 | Build the classify-and-verify pipeline | [`verb-classification.md`](verb-classification.md) | ✅ 2026-07-19 | — |
-| 3 | Fix what it found in the shipping corpus | [`verb-classification.md`](verb-classification.md) | ✅ 2026-07-19 | — |
-| 4 | Regional variety support | [`../prompts/regional_variation.md`](../prompts/regional_variation.md) | ✅ 2026-07-19 | — |
-| 5 | Dual auxiliaries + double-prefix grammar | [`../prompts/dual_auxiliary.md`](../prompts/dual_auxiliary.md) | ✅ 2026-07-19 | step 4 ✅ |
-| 6 | Refactor `fr`: store hits, derive rank | [`verb-sources.md`](verb-sources.md) § "Step 4 in detail" | ✅ 2026-07-19 | — |
-| 7 | Import tranche 1: strong bases | [`verb-sources.md`](verb-sources.md) next-steps item 5 | ✅ 2026-07-19 | steps 4–6 ✅; `hi` policy decided |
-| 8 | Import tranche 2: prefixed derivatives | [`verb-sources.md`](verb-sources.md) next-steps item 6 | ✅ 2026-07-19 | step 5 ✅; prefix inventory widened |
+| 1 | Get the Wiktionary snapshot | [`verb_sources.md`](verb_sources.md) | ✅ 2026-07-18 | — |
+| 2 | Build the classify-and-verify pipeline | [`verb_classification.md`](verb_classification.md) | ✅ 2026-07-19 | — |
+| 3 | Fix what it found in the shipping corpus | [`verb_classification.md`](verb_classification.md) | ✅ 2026-07-19 | — |
+| 4 | Regional variety support | [`../plans/regional_variation.md`](../plans/regional_variation.md) | ✅ 2026-07-19 | — |
+| 5 | Dual auxiliaries + double-prefix grammar | [`../plans/dual_auxiliary.md`](../plans/dual_auxiliary.md) | ✅ 2026-07-19 | step 4 ✅ |
+| 6 | Refactor `fr`: store hits, derive rank | [`verb_sources.md`](verb_sources.md) § "Step 4 in detail" | ✅ 2026-07-19 | — |
+| 7 | Import tranche 1: strong bases | [`verb_sources.md`](verb_sources.md) next-steps item 5 | ✅ 2026-07-19 | steps 4–6 ✅; `hi` policy decided |
+| 8 | Import tranche 2: prefixed derivatives | [`verb_sources.md`](verb_sources.md) next-steps item 6 | ✅ 2026-07-19 | step 5 ✅; prefix inventory widened |
 | 8b | Clear the tranche-2 deferrals | this file, § "The tranche-2 deferrals" | ✅ 2026-07-19 | step 8 ✅ |
-| 9 | Import tranche 3: weak stems by frequency | [`verb-sources.md`](verb-sources.md) next-steps item 7 | ⏸ paused by Josh 2026-11-11; importer written and dry-run 2026-11-10 | ✅ the auxiliary screen (Part 6 of [`../plans/fix-reference-defects.md`](../plans/fix-reference-defects.md)); a cutoff, chosen from `verbdata/tranche3-ranked.tsv` |
-| 10 | Etymologies **and example sentences**, in one pipeline | [`../prompts/uses_etymologies.md`](../prompts/uses_etymologies.md) | ✅ 2026-07-23 | phase 0 ✅ |
-| 11 | The docs sweep | [`verb-sources.md`](verb-sources.md) next-steps item 9 | ✅ 2026-07-24 | step 10 ✅ |
+| 9 | Import tranche 3: weak stems by frequency | [`verb_sources.md`](verb_sources.md) next-steps item 7 | ⏸ paused by Josh 2026-11-11; importer written and dry-run 2026-11-10 | ✅ the auxiliary screen (Part 6 of [`../plans/fix_reference_defects.md`](../plans/fix_reference_defects.md)); a cutoff, chosen from `verbdata/tranche3_ranked.tsv` |
+| 10 | Etymologies **and example sentences**, in one pipeline | [`../plans/uses_etymologies.md`](../plans/uses_etymologies.md) | ✅ 2026-07-23 | phase 0 ✅ |
+| 11 | The docs sweep | [`verb_sources.md`](verb_sources.md) next-steps item 9 | ✅ 2026-07-24 | step 10 ✅ |
 
 **Step 9 was held on 2026-11-10 and released the same day.** BBAW's permission (2026-08-26)
 unblocked it, but the tranche-2 importer took a verb's auxiliary from kaikki's first-listed one
 and its gloss from a separate sense, and nothing tied the two together. That is how aufstehen
 shipped "get up" with haben, and Parts 1 and 6 of
-[`../plans/fix-reference-defects.md`](../plans/fix-reference-defects.md) ruled 252 verbs to undo
+[`../plans/fix_reference_defects.md`](../plans/fix_reference_defects.md) ruled 252 verbs to undo
 it. The cause is now fixed in `verbdata/auxiliary_screen.py`, which `import_tranche2.py` calls:
 `ay` comes from the same kaikki sense as `tn`, and a verb kaikki marks with both auxiliaries,
 with a separable and an inseparable verb under one spelling, with a strong and a weak verb under
 one spelling, or with a sense that contradicts the lemma's auxiliary is not imported. It goes to
-`verbdata/auxiliary-rulings.tsv` as `proposed` rows, and `audit_auxiliaries.py --check` fails
+`verbdata/auxiliary_rulings.tsv` as `proposed` rows, and `audit_auxiliaries.py --check` fails
 until they are ruled. Screening the shipped corpus as if it were incoming, it flags 125 of the
 128 verbs Parts 1 and 6 changed, and the other three were never the importer's.
 
@@ -42,8 +42,8 @@ until they are ruled. Screening the shipped corpus as if it were incoming, it fl
 normalizer and filters, sets `hi` to a real DWDS count (two-probe verified, fetched under BBAW's
 permission at two workers), and picks icons from a keyword map over the gloss. Its header has the
 run order. The dry run found **2,505 importable** and wrote them, most frequent first, to
-`verbdata/tranche3-ranked.tsv`: the top 100 would land above corpus rank 1,223, the top 500 above
-1,809, the top 1,000 above 2,367. `verbdata/tranche3-deferred.txt` holds the rest with reasons:
+`verbdata/tranche3_ranked.tsv`: the top 100 would land above corpus rank 1,223, the top 500 above
+1,809, the top 1,000 above 2,367. `verbdata/tranche3_deferred.txt` holds the rest with reasons:
 221 without a verified count, 115 held for an auxiliary ruling (187 proposed rows on a real
 run), 132 by tranche 2's quality filters, and two kinds the first dry run exposed. Three
 **same-string homographs** (*sondern*, *sieben*, *modern*) defeat the probe gate, because DWDS
@@ -64,7 +64,7 @@ for etymologies and sentences, since new verbs have neither. The 2,230 prefixed 
 tranche 3 adds become tranche 2's work, by re-running `import_tranche2.py` to a fixpoint.
 
 **Step 10 was larger than it looked, and its own doc said otherwise — now settled.**
-[`etymology-pipeline.md`](etymology-pipeline.md) led with "COMPLETE — every verb in `Verbs.xml` is
+[`etymology_pipeline.md`](etymology_pipeline.md) led with "COMPLETE — every verb in `Verbs.xml` is
 translated" until 2026-07-20. That was true on 2026-07-19 and false hours later, when tranche 1 took
 the corpus 990 → 3,572 and left 2,582 verbs with no etymology in either language. **Closed
 2026-07-23:** the one-pipeline mine (Phase 4) plus the `integrate` skill's new Mode B (Phase 5,
@@ -83,23 +83,23 @@ were. The paragraph is kept as the record of the gap. It was found still standin
 2026-11-11, when a session repeated its 1,134 as current.
 
 **What step 10 did not finish was a register gap, not a bug.** 1,134 verbs shipped an etymology but no
-example sentence, listed in `verbdata/no-corpus-example.txt` (995 with no corpus candidate at all,
+example sentence, listed in `verbdata/no_corpus_example.txt` (995 with no corpus candidate at all,
 141 whose candidates were all unusable — 34 of those only for the 55-word ceiling). The mined texts
 are literary and historical; the un-attested verbs are administrative, commercial, and technical
 vocabulary those authors never wrote. Closing it is corpus **expansion** followed by a re-mine
 (another Phase 4 pass over the same machinery), which is the next feature but is deliberately *not*
-part of the docs sweep. See [`../prompts/uses_etymologies.md`](../prompts/uses_etymologies.md)
+part of the docs sweep. See [`../plans/uses_etymologies.md`](../plans/uses_etymologies.md)
 Phase 5 for the shape of what to add.
 
-### These step numbers are not `verb-sources.md`'s numbers
+### These step numbers are not `verb_sources.md`'s numbers
 
 The Where column points into that file's numbered "Recommended next steps" list, and from step 6
 onward the two numberings are offset by one. The collision is worth stating outright because it
 lands on the two items most likely to be discussed together: **roadmap step 9** is the blocked
-tranche-3 import, while **`verb-sources.md` item 9** is the docs sweep, which is roadmap
+tranche-3 import, while **`verb_sources.md` item 9** is the docs sweep, which is roadmap
 step 11 and is not blocked by anything.
 
-| roadmap step | `verb-sources.md` item | What |
+| roadmap step | `verb_sources.md` item | What |
 |---|---|---|
 | 1 | 1 | Get the kaikki snapshot |
 | 2, 3 | 2 | Build the pipeline, then fix what it found |
@@ -112,10 +112,10 @@ step 11 and is not blocked by anything.
 | 10 | 8 | Etymologies **and example sentences**, one pipeline |
 | 11 | 9 | The docs sweep |
 
-The offset is not a mistake in either file. The roadmap splits some of `verb-sources.md`'s items
+The offset is not a mistake in either file. The roadmap splits some of `verb_sources.md`'s items
 because they gate each other — its steps 4 and 5 are one item there, and their *order* is the
 whole point — and 8b has no counterpart at all, having been discovered only once step 8 ran.
-`verb-sources.md` is the source for what each item requires; this file is the source for the order
+`verb_sources.md` is the source for what each item requires; this file is the source for the order
 and the gating. Where they disagree on *how*, that file wins.
 
 ## The one check that runs through all of it
@@ -152,7 +152,7 @@ python3 verbdata/summarize_classification.py
 ```
 
 Baseline it before starting a step, re-run it after. **It should never rise.** The one legitimate
-exception is a verb added to `verbdata/wiktionary-defects.json`, where the app is right and
+exception is a verb added to `verbdata/wiktionary_defects.json`, where the app is right and
 Wiktionary is wrong; those are subtracted, so the reported number still must not rise. If it does,
 something regressed — find it before continuing.
 
@@ -165,11 +165,11 @@ Each of these is enough to start. The prompts are written to be self-contained.
 
 **Step 4 — regional variety**
 
-> Please execute `prompts/regional_variation.md`.
+> Please execute `plans/regional_variation.md`.
 
 **Step 5 — dual auxiliaries**
 
-> Please execute `prompts/dual_auxiliary.md`. It assumes `prompts/regional_variation.md` has
+> Please execute `plans/dual_auxiliary.md`. It assumes `plans/regional_variation.md` has
 > already run; it has, on 2026-07-19. Read "Regional before dual-auxiliary" below first: it
 > records the exact post-step-4 state of the `ay` attribute and the three `ay="r"` verbs you must
 > not disturb.
@@ -183,7 +183,7 @@ ablaut group (was 26 until the classifier learned to try shipping groups on 2026
 ## The tranche-2 deferrals
 
 **Cleared on 2026-07-19.** Step 8 left four groups behind; step 8b imported 189 of them, taking
-the corpus from 3,383 to **3,572**, and reduced `verbdata/tranche2-deferred.txt` from 270 rows to
+the corpus from 3,383 to **3,572**, and reduced `verbdata/tranche2_deferred.txt` from 270 rows to
 78. The at-odds count held at 8 through every pass.
 
 What remains in that file is 78 verbs in four groups, and **52 of them are deliberate exclusions
@@ -210,7 +210,7 @@ to 193 rows, 17 of them added by 8b's import — see below.
 
 Nearly all of them were a shipping group seen through an ablaut region one consonant too narrow —
 *abbeissen* proposed as `b^ei^ssen`/`I` where the corpus writes *reißen* as `r^eiß^en`/`Iss`. The
-technique for spotting that is `adding-verbs.md` § "Widen the region before you propose a new
+technique for spotting that is `adding_verbs.md` § "Widen the region before you propose a new
 group", but the fix belongs in `VerbClassificationTests.swift`, not in 182 hand edits: the
 classifier enumerated regions shortest-first and **returned on the first one that verified**, so
 the narrow encoding won before the wide one was ever tried. Preferring a region whose group
@@ -247,9 +247,9 @@ the choice between them is about which data the corpus has to carry.
   category fell from 26 verbs to **11**. See "Known gaps" below. The rest need judgment one verb
   at a time.
 - ~~**193 verbs are dual-auxiliary and ship one reading.**~~ **Closed 2026-11-10.**
-  `verbdata/tranche2-dual-auxiliary.txt` was the worklist, and it is history now: frozen, no
+  `verbdata/tranche2_dual_auxiliary.txt` was the worklist, and it is history now: frozen, no
   longer written, and every row of it that still ships has been ruled. **The current record is
-  `verbdata/auxiliary-rulings.tsv`**, 332 readings of 252 verbs, each with a source, checked by
+  `verbdata/auxiliary_rulings.tsv`**, 332 readings of 252 verbs, each with a source, checked by
   `python3 verbdata/audit_auxiliaries.py --check` and pinned by `ConjugatorTests.ruledAuxiliary`.
   The importer no longer ships a dual-auxiliary verb with one reading at all. It holds the verb
   back and proposes its readings in the rulings file as `proposed` rows, which fail `--check`
@@ -257,13 +257,13 @@ the choice between them is about which data the corpus has to carry.
   was written as a union because a verb that ships is skipped by the classifier and can never
   be rediscovered, after step 8b's first re-run overwrote 176 rows of history with 17.)
 - **bevorstehen is the one tranche-2 verb the screen holds back today.** The old rule would have
-  shipped it with one reading. `import_tranche2.py --check` lists it in `tranche2-deferred.txt`
+  shipped it with one reading. `import_tranche2.py --check` lists it in `tranche2_deferred.txt`
   as needing an auxiliary ruling, and a real run would propose it. Fourteen more derivatives
   pass the screen and would import. Nothing is scheduled to import them.
 - **~28 verbs still fail the prefix check** — mostly noun and adjective compounds whose participle
   gives no usable evidence (*arschkriechen*, *bauchreden*).
 - **Derivatives of the override bases are unblocked in `Conjugator` and still blocked in the
-  classifier** (2026-11-10). Until Part 2 of `plans/fix-reference-defects.md`, a full override
+  classifier** (2026-11-10). Until Part 2 of `plans/fix_reference_defects.md`, a full override
   dropped the derivative's prefix, so no derivative of tun, essen, werden, können, or the other
   modals could ship correctly. `Conjugator` now restores the prefix, and removes an override
   participle's ge- after an inseparable one (ver + tan). But 94 incoming candidates on those
@@ -271,10 +271,10 @@ the choice between them is about which data the corpus has to carry.
   and werden, 3 on dürfen and mögen; among them *abtun*, *aufessen*, *loswerden*), because the classifier never proposes an override group:
   `derive` falls back to weak and emits *abtute* and *aufesst*. The missing hypothesis is "try the
   base verb's own group", which the shipping-group retry would supply if it ran for them. Not
-  part of that plan, which imports nothing. They are not in `tranche2-deferred.txt`, which lists
+  part of that plan, which imports nothing. They are not in `tranche2_deferred.txt`, which lists
   only verbs that verified.
 
-Unlike the dual-auxiliary list, `verbdata/tranche2-deferred.txt` is **recomputed on every run**,
+Unlike the dual-auxiliary list, `verbdata/tranche2_deferred.txt` is **recomputed on every run**,
 so it always describes the current corpus. Regenerate it with
 `python3 verbdata/import_tranche2.py --check`.
 
@@ -339,7 +339,7 @@ touching `Verbs.xml`:
 ## The formerly blocked one
 
 **Unblocked 2026-08-26.** BBAW granted permission; see the outcome section at the top of
-[`dwds-permission-email.md`](dwds-permission-email.md) for the reply and the three things it
+[`dwds_permission_email.md`](dwds_permission_email.md) for the reply and the three things it
 settles. The whole corpus was re-fetched that day, so `hp="y"` is retired from every verb the
 fetch could measure, and step 9 may now rank the weak tail by measured frequency. Everything
 below is the reasoning from the blocked period, kept because it explains why the corpus carried
@@ -348,7 +348,7 @@ estimates at all and what the cleanup was designed to be.
 Step 9 needs frequency ranks for thousands of weak verbs, and DWDS is the only good German
 frequency source. BBAW reserves § 44b UrhG, so bulk querying and shipping derived ranks needs
 written permission. The request went to `dwds@bbaw.de` on 2026-07-19; see
-[`dwds-permission-email.md`](dwds-permission-email.md).
+[`dwds_permission_email.md`](dwds_permission_email.md).
 
 **It blocks step 9 outright, and now touches steps 7 and 8 too.** Those two are defined by
 membership — the strong bases, the prefixed derivatives — not by frequency order, so their
@@ -380,7 +380,7 @@ Two constraints on how estimates are formed:
   comparable and take a value between their `hi` values. Round numbers like `100000` land the verb
   wherever that happens to fall, which is not a judgment about anything.
 - **Do not consult Leipzig's numbers, even informally.** It was evaluated and rejected on
-  2026-07-19 — see `verb-sources.md` — and its API data is CC BY-NC. An estimate "informed by"
+  2026-07-19 — see `verb_sources.md` — and its API data is CC BY-NC. An estimate "informed by"
   their measurements is still derived from them; the fact that a human retypes the number in
   between does not change that. The rejection is not merely that the numbers are bad, though they
   are; it is that they are not ours to ship.
@@ -389,19 +389,19 @@ Two constraints on how estimates are formed:
 
 Small things the pipeline surfaced that no plan currently owns. None blocks the sequence.
 
-- **Dual paradigms: decided, unscheduled.** Wrinkle 1 in `verb-sources.md`, resolved
+- **Dual paradigms: decided, unscheduled.** Wrinkle 1 in `verb_sources.md`, resolved
   **2026-07-25** in favor of **extending the model** so a verb can carry two parallel paradigms,
   rather than continuing to pick one editorially per verb. **111 of 3,572 shipping verbs (3.1%)**
   are affected, 35 of them in the 1,097 authored-example gap set — *abhauen* (abhaute/abhieb),
   *absenden* (absandte/absendete), *aufsaugen* (aufsaugte/aufsog), *anwenden*
   (anwandte/anwendete). Comparable in size to the dual-auxiliary pass, and it wants the same
-  treatment: its own prompt doc, on the `prompts/dual_auxiliary.md` model. The `<reading>`
+  treatment: its own prompt doc, on the `plans/dual_auxiliary.md` model. The `<reading>`
   mechanism cannot be reused, because readings distinguish *meanings* and this is one meaning with
   two form sets. `Quiz` needs no design change; its `acceptableAnswers` is already a `Set`.
   Prompted by the example-sentence gate, where 9 misses turned out to be authors writing the
-  paradigm the app does not ship. Full analysis in `verb-sources.md` wrinkle 1.
+  paradigm the app does not ship. Full analysis in `verb_sources.md` wrinkle 1.
 
-  **The 111 undercounts derivatives** (2026-11-10, Part 4 of `plans/fix-reference-defects.md`).
+  **The 111 undercounts derivatives** (2026-11-10, Part 4 of `plans/fix_reference_defects.md`).
   It was measured from kaikki `forms`, and kaikki often lists one paradigm for a derivative whose
   base carries two. The shipped example sentences show the class directly: *wenden* (wandte),
   *verglimmen* (verglomm), and *klieben* (klob) are in the measured set, while *voraussenden*
@@ -414,7 +414,7 @@ Small things the pipeline surfaced that no plan currently owns. None blocks the 
   *schaffen* "manage, accomplish" is weak (schaffte, geschafft), so it wants two readings, the
   hängen shape. **Done 2026-11-10:** strong "create, bring about" is now the first reading and
   weak "manage, accomplish" the second, and schaffen left the at-odds count (5 → 4).
-- **Part 6's leftovers** (2026-11-10, `plans/fix-reference-defects.md`). The auxiliary rulings
+- **Part 6's leftovers** (2026-11-10, `plans/fix_reference_defects.md`). The auxiliary rulings
   finished with every listed verb ruled and these left open, each by a recorded decision. They
   live nowhere else but that plan's review list, so they are gathered here.
   - ~~**schaffen's strong reading, plan step 6a.**~~ **Done 2026-11-10**, the same day it was
@@ -446,7 +446,7 @@ Small things the pipeline surfaced that no plan currently owns. None blocks the 
     nähergestanden*). The screen's state-or-posture test, added for tranche 3, surfaced them. `import_tranche2.py --check --screen` lists any of them.
 - **`mahlen` and `spalten`** — weak Präteritum with strong participle (*mahlte*, but
   *gemahlen*). Neither the mixed family nor the weak family fits. Wrinkle 4 in
-  `verb-sources.md`; needs a new family or a full-override ablaut group. Step 7 confirmed the
+  `verb_sources.md`; needs a new family or a full-override ablaut group. Step 7 confirmed the
   diagnosis and left both out: kaikki lists *only* the strong participle for these two, so
   nothing verifies. *salzen* looks identical but kaikki also lists the weak *gesalzt*, so it
   verified weak and shipped weak. **The mechanism exists as of 2026-11-10** (defect plan Part
@@ -491,7 +491,7 @@ Small things the pipeline surfaced that no plan currently owns. None blocks the 
   shipping groups themselves against the full table**. It runs only where the classifier would
   otherwise invent one, a few dozen verbs per run rather than all 9,217, so it cost 4 seconds.
   Incoming verbs needing a new group fell **37 → 18** and proposed patterns **23 → 14**;
-  `tranche2-deferred.txt`'s ablaut-group category fell **26 → 11**. Four clusters collapsed,
+  `tranche2_deferred.txt`'s ablaut-group category fell **26 → 11**. Four clusters collapsed,
   only one of which was the target: the *schreien* eight, plus *gutgehen*/*schiefgehen*,
   *unterbleiben*/*zubleiben*, and *festwachsen*/*widerfahren*.
 
@@ -514,14 +514,14 @@ Small things the pipeline surfaced that no plan currently owns. None blocks the 
   a group: the `schaffen` group shipped with erschaffen, and what the verb lacked was a strong
   reading, now added. This entry went stale in two places at once, and a session believed it.
   **Corrected 2026-11-13:** none is left. *vergleichen* now takes `gleichen`'s group (`streichen`,
-  with the region `eich`), found again by Phase 1 of `plans/pedagogy-implementation.md`, which also
+  with the region `eich`), found again by Phase 1 of `plans/pedagogy_implementation.md`, which also
   found *scheiden* encoded `sch^eid^en` (schie, geschien). The classifier never flagged *scheiden*
   because it skips verbs with more than one reading.
 - **Two verbs are editorially ambiguous** — *helfen* (Wiktionary's *hülfe* against the shipped
   *hälfe*) and *verstoßen* (the shipped Präsens umlaut *du verstößt* against a table without it).
   Both need a human to pick, not more code. **Settled for helfen 2026-11-13:** Duden gives both
   *hälfe* and *hülfe*. The verb page keeps *hälfe*, and the quiz accepts both (`StandardVariants`,
-  row D1 of `plans/pedagogy-phase1-variant-audit.md`).
+  row D1 of `plans/pedagogy_phase1_variant_audit.md`).
 - ~~**A bulk DWDS fetch still needs probe generation.**~~ **Reconsidered 2026-08-26**, when the
   corpus-wide fetch actually ran. Probes are the repair, not the first move. The gate already
   catches the failure a bare infinitive causes, because a contaminated answer comes back under a
@@ -553,7 +553,7 @@ Small things the pipeline surfaced that no plan currently owns. None blocks the 
   it faithfully, the classifier hypothesizes weak, the comparison matches exactly, and the verb
   ships wrong with a clean bill of health. **"Verified" means "agrees with Wiktionary", not
   "correct"**, and nothing inside the pipeline distinguishes the two. Eleven such verbs were
-  repaired and are listed in `verbdata/wiktionary-defects.json`, which
+  repaired and are listed in `verbdata/wiktionary_defects.json`, which
   `summarize_classification.py` now subtracts from the at-odds count, since fixing them raises it.
   Arbitration used **German** Wiktionary's `{{Deutsch Verb Übersicht}}` box, which is
   independently edited. The triage discriminator: a weak derivative of a strong base is normally
@@ -563,7 +563,7 @@ Small things the pipeline surfaced that no plan currently owns. None blocks the 
 
   **The incoming pool was screened the same day and is nearly clean: one instance,
   *rauswaschen*, which is not yet shipping.** Method and dead ends are recorded in
-  `wiktionary-defects.json` under `_screen_of_incoming_pool`; two are worth knowing before
+  `wiktionary_defects.json` under `_screen_of_incoming_pool`; two are worth knowing before
   repeating the work. kaikki's own class tag cannot flag this, because the tag is emitted by the
   strong template a corrupt page is missing, so the metadata that would identify the defect is
   absent for the same reason the defect exists. And de.wiktionary does not categorize verbs as
@@ -576,9 +576,9 @@ Small things the pipeline surfaced that no plan currently owns. None blocks the 
   **Corrected 2026-11-10:** two of the three were not correct. bedürfen and vermögen lost their
   prefix under the override (ich darf, ich mag), and the classifier rescued each with a different
   encoding, which is why both sat in the at-odds count. Part 2 of
-  `plans/fix-reference-defects.md` fixed the cause, both now verify on their shipped encoding,
+  `plans/fix_reference_defects.md` fixed the cause, both now verify on their shipped encoding,
   and the at-odds count fell from 7 to 5.
-- ~~**`prompts/prefix_coverage.md` is written and not executed.**~~ **Executed 2026-07-19**,
+- ~~**`plans/prefix_coverage.md` is written and not executed.**~~ **Executed 2026-07-19**,
   commit `08a5e93`. The Families tab bucketed verbs into a hand-curated prefix list, so 923 verbs
   the app conjugates correctly could not be reached by browsing. Everything in `prompts/` is now
   executed and carries a status line saying so. Note that the separable side is open class, so
@@ -593,7 +593,7 @@ Small things the pipeline surfaced that no plan currently owns. None blocks the 
 
 | What | Commit | Notes |
 |---|---|---|
-| Verb-source research | — | Produced `verb-sources.md` from `prompts/more_verbs.md` |
+| Verb-source research | — | Produced `verb_sources.md` from `prompts/more_verbs.md` |
 | DTD given teeth + build-phase validation | `b8bf6fb`, `bc31b22` | `xmllint --valid` before compilation |
 | Classify-and-verify pipeline | `1ae08da` | 6,857 of 8,232 incoming verbs verified |
 | `Conjugator` epenthetic -e and -ern/-eln | `1ae08da` | 354 → 51 verbs at odds |
@@ -607,6 +607,6 @@ Small things the pipeline surfaced that no plan currently owns. None blocks the 
 | Prefix inventory widened | — | The classifier now reads the separable head off Wiktionary's own participle instead of off a shipping-verb inventory, since German infixes the participle's *ge-* after a separable first element. Incoming verification 84.4% → **94.6%**; the prefix-gap queue collapsed 747 → 28, and adjective and noun compounds (*kaputtmachen*, *achtgeben*) became expressible |
 | Clear the tranche-2 deferrals | — | 189 verbs, corpus 3,383 → **3,572**, no new ablaut groups. The 182 derivatives blocked on a missing group fell to 26, almost entirely by one classifier fix: prefer a region whose group already ships over the shortest region that verifies. Two shipping-data blockers cleared with it — `haben`'s nine full-word overrides became the mixed pattern they were spelling out, and identity replacements like `treten`'s `ET,pp` are now ignored when matching. 106 shipped translations rewritten after finding that a semicolon inside a kaikki gloss separates synonyms, not senses (*aufbleiben* shipped as "wake"). At-odds held at 8 |
 | Import tranche 2: prefixed derivatives | — | 2,315 verbs, corpus 1,068 → **3,383**, no new ablaut groups. `hi` derived from each base by a ratio measured off the corpus's own 446 real derivative/base pairs, clamped to the rank-900 count; `ic` inherited from the base; `tn` normalized from kaikki. All 2,315 verify with their shipped encoding; at-odds held at 8 |
-| Etymologies + example sentences (step 10) | `34e57ab` | The one-pipeline mine of [`../prompts/uses_etymologies.md`](../prompts/uses_etymologies.md): Phases 0–4 (104 shards, all validator-clean) then Phase 5, folding both halves into the bundle via a new Mode B in `.claude/skills/integrate` rather than a parallel merge. `Etymologies.json` 990 → **3,572** per language; `ExampleSentences.json` 990 → **2,438** (1,448 corpus-mined). 1,134 verbs etymology-only, logged to `verbdata/no-corpus-example.txt` for the re-mine. Neither half touches `Verbs.xml`; at-odds held at the git-integrity level |
+| Etymologies + example sentences (step 10) | `34e57ab` | The one-pipeline mine of [`../plans/uses_etymologies.md`](../plans/uses_etymologies.md): Phases 0–4 (104 shards, all validator-clean) then Phase 5, folding both halves into the bundle via a new Mode B in `.claude/skills/integrate` rather than a parallel merge. `Etymologies.json` 990 → **3,572** per language; `ExampleSentences.json` 990 → **2,438** (1,448 corpus-mined). 1,134 verbs etymology-only, logged to `verbdata/no_corpus_example.txt` for the re-mine. Neither half touches `Verbs.xml`; at-odds held at the git-integrity level |
 | Etymology formatting sweep | `3e37016` | Systemic cosmetic fixes across both languages of `Etymologies.json`, from inspecting ten random mined verbs: 12,388 morpheme bullets `-` → `•`, and 1,375 sentence-initial cited forms capitalized (abbreviation-guarded so descent chains stay lowercase; reconstructed `*~` forms left lowercase by PIE convention). `MINING_SPEC.md` updated so future mining does not reintroduce either. The whole-file rewrite also cleared the two Phase-3 shipping-data defects (49 literal `\n` in German, 36 `ķ`-for-`ḱ`) as a side effect |
-| The docs sweep (step 11) | — | Flipped this roadmap's steps 10–11 to done, corrected `etymology-pipeline.md`'s three-day-stale "INCOMPLETE" headline to a now-actively-verified `COMPLETE`, marked `uses_etymologies.md` Phase 5 done, and wrote the missing Phase 5 blog entry. `check_docs.py` clean |
+| The docs sweep (step 11) | — | Flipped this roadmap's steps 10–11 to done, corrected `etymology_pipeline.md`'s three-day-stale "INCOMPLETE" headline to a now-actively-verified `COMPLETE`, marked `uses_etymologies.md` Phase 5 done, and wrote the missing Phase 5 blog entry. `check_docs.py` clean |

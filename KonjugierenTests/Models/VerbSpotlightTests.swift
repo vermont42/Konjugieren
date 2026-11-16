@@ -28,7 +28,7 @@ struct VerbSpotlightTests {
     #expect(!aufstehen.contains("steht"))
   }
 
-  // The case from docs/browse-and-verb-ideas.md that Spotlight missed: aufgestanden and "get up"
+  // The case from docs/browse_and_verb_ideas.md that Spotlight missed: aufgestanden and "get up"
   // found nothing.
   @Test func aufstehenCanBeFoundByItsParticipleAndItsGloss() {
     let aufstehen = text("aufstehen")

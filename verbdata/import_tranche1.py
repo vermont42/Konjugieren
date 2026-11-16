@@ -7,7 +7,7 @@ session cannot recover by reading code:
 
   1. de.wikipedia "Liste starker Verben (deutsche Sprache)", set-differenced against
      Konjugieren/Models/Verbs.xml. That yielded 82 missing bases, not the 87 the prose
-     in docs/verb-sources.md claims -- the prose was stale, exactly as roadmap.md warned.
+     in docs/verb_sources.md claims -- the prose was stale, exactly as roadmap.md warned.
   2. verbdata/classification.json, the classify-and-verify pipeline's proposal for each
      one: family, ablaut group, auxiliary, and a marked infinitive whose Conjugator
      output reproduces Wiktionary's table exactly.
@@ -35,7 +35,7 @@ because the reworded region matches a group that already ships:
       waegen, saugen, luegen,
       truegen, krauchen
 
-This is the same lesson adding-verbs.md records for the sibilant: the ablaut region has
+This is the same lesson adding_verbs.md records for the sibilant: the ablaut region has
 to be wide enough to spell every consonant that travels with the vowel.
 
 WHY SOME LIST MEMBERS SHIP WEAK
@@ -52,13 +52,13 @@ glimmen/geglommen, dingen/gedungen) ship strong.
 
 WHAT IS DEFERRED, AND WHY
 -------------------------
-  mahlen, spalten -- wrinkle 4 in verb-sources.md: weak Praeteritum with strong participle.
+  mahlen, spalten -- wrinkle 4 in verb_sources.md: weak Praeteritum with strong participle.
     kaikki lists ONLY the strong participle for these two, so neither family expresses them
     and neither verifies. Unchanged by this tranche.
   salzen -- the same shape, but kaikki also lists the weak `gesalzt`, so it verifies weak
     and ships weak here.
   speien -- verifies only via `I,b1p,b3p,dA,pp|IE,b1s,b2p,b2s,b3s`, which splits the
-    Praeteritum by person. That is the signature docs/verb-classification.md names as a
+    Praeteritum by person. That is the signature docs/verb_classification.md names as a
     Conjugator gap smuggled into an ablaut group, and its sequencing argument says
     explicitly not to import such a group. The real defect: a strong verb whose stem ends
     in a vowel takes -n, not -en, in the 1p/3p (spien, schrien), the same rule
@@ -71,12 +71,12 @@ WHAT IS DEFERRED, AND WHY
 PROVISIONAL HIT COUNTS
 ----------------------
 Every verb here carries hp="y". DWDS bulk querying is blocked pending BBAW (see
-docs/dwds-permission-email.md), and Josh decided on 2026-07-19 to import with editorial
+docs/dwds_permission_email.md), and Josh decided on 2026-07-19 to import with editorial
 estimates rather than wait. Each `hi` below was placed between the real counts of shipping
 verbs judged comparable -- the anchors are named in the `near` field -- rather than at a
 round number, which would land the verb wherever that happened to fall.
 
-Deliberately NOT used as input: the real DWDS counts quoted in docs/verb-sources.md for
+Deliberately NOT used as input: the real DWDS counts quoted in docs/verb_sources.md for
 about twenty of these verbs. Those are in the repo under the citation allowance, and the
 same reasoning the repo applies to Leipzig applies to them -- an estimate informed by a
 measurement is still derived from it. When permission arrives, re-query all of these with
@@ -212,10 +212,10 @@ def bare(marked: str) -> str:
 def sort_key(marked: str) -> str:
     """Verbs.xml's alphabetical order: markers ignored, umlauts folded to base vowels.
 
-    Documented in adding-verbs.md. Folding matters: `waegen` must sort between `wachsen`
+    Documented in adding_verbs.md. Folding matters: `waegen` must sort between `wachsen`
     and `wagen`, not after `wynden`.
 
-    Sharp s is deliberately NOT folded to ss, though adding-verbs.md's phrasing invites
+    Sharp s is deliberately NOT folded to ss, though adding_verbs.md's phrasing invites
     it. Measured against the shipping file, folding produces three order violations and
     leaving it produces none: U+00DF sorts after every ASCII letter, which is why the file
     reads `reiten` then `reissen` and `weiterlesen` then `weissen`. Match the corpus.

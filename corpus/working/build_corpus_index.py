@@ -2,7 +2,7 @@
 """Build an inverted verb→occurrences index over the German example corpus.
 
 This is the cheap, deterministic *retrieval* half of the etymology-and-example pipeline
-(`prompts/uses_etymologies.md` § Phase 2). It locates candidate sentences for every verb so that
+(`plans/uses_etymologies.md` § Phase 2). It locates candidate sentences for every verb so that
 the Phase 4 subagents only do the expensive *select + translate* judgment on a handful of
 pre-found sentences, instead of each one re-reading a ~6.5 MB corpus.
 
@@ -242,7 +242,7 @@ def is_defective(text, rel="", truncated=False):
 
     Deliberately *not* filtered: candidates whose furniture would have to be stripped to reach
     the matched verb. Subagents reject those visibly, which is better than a silent edit --- see
-    Phase 4's note in `prompts/uses_etymologies.md`.
+    Phase 4's note in `plans/uses_etymologies.md`.
 
     Severity matters, and `DEMOTE_ONLY` below says which defects merely sort last rather than
     disqualify. `unbalanced` is not always damage: German quoted speech spans sentences freely

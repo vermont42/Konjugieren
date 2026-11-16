@@ -1,6 +1,6 @@
 # Claim inventory for "A History of the German Verb System"
 
-Built in Phase 0 of [`prompts/verify-verb-history.md`](../prompts/verify-verb-history.md) on
+Built in Phase 0 of [`plans/verify_verb_history.md`](../plans/verify_verb_history.md) on
 2026-07-28, before any researcher was spawned. **This file, not the section ranges in the
 prompt, is what each cluster works from.** Where the two disagree, this wins, because it is the
 only artifact that guarantees no claim is researched twice and none is researched zero times.

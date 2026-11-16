@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Write measured DWDS hit counts back into `Konjugieren/Models/Verbs.xml`.
 
-Consumes:  verbdata/dwds-frequencies.json (gitignored), the output of
+Consumes:  verbdata/dwds_frequencies.json (gitignored), the output of
            `fetch_dwds_frequencies.py`, plus the XML itself.
 Produces:  an in-place edit of Verbs.xml: every lemma present in the snapshot gets its
            measured `hi`, and loses `hp="y"` if it carried one.
@@ -33,7 +33,7 @@ import sys
 
 REPO = pathlib.Path(__file__).resolve().parent.parent
 XML = REPO / "Konjugieren/Models/Verbs.xml"
-SNAPSHOT = REPO / "verbdata/dwds-frequencies.json"
+SNAPSHOT = REPO / "verbdata/dwds_frequencies.json"
 
 # One `<verb …>` opening tag. Non-greedy up to the first `>`, which is safe because no
 # attribute value in this file contains one.

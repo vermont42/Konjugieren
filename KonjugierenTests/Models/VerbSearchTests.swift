@@ -10,8 +10,8 @@ struct VerbSearchTests {
     VerbSearch.matches(for: query, in: verbs, includeGlosses: includeGlosses).map(\.verb.infinitiv)
   }
 
-  // The rows of "What Search Returns" in docs/browse-and-verb-ideas.md that Phase 1 of
-  // plans/browse-and-verb-implementation.md addresses, plus Josh's own example, "es".
+  // The rows of "What Search Returns" in docs/browse_and_verb_ideas.md that Phase 1 of
+  // plans/browse_and_verb_implementation.md addresses, plus Josh's own example, "es".
   @Test(arguments: zip(
     ["konnen", "koennen", "können", "go", "to go", "eat", "essen", "es", "mussen", "Gehen", " gehen "],
     ["können", "können", "können", "gehen", "gehen", "essen", "essen", "essen", "müssen", "gehen", "gehen"]
@@ -124,7 +124,7 @@ struct VerbSearchTests {
     #expect(VerbEntityQuery.verbs(matching: "travel").contains { $0.infinitiv == "fahren" })
   }
 
-  // A4 in docs/browse-and-verb-ideas.md: a failed search offers the nearest verb as a guess.
+  // A4 in docs/browse_and_verb_ideas.md: a failed search offers the nearest verb as a guess.
   @Test(arguments: zip(
     ["gehn", "gheen", "konen", "machn", "sprechn", "Schwimen"],
     ["gehen", "gehen", "können", "machen", "sprechen", "schwimmen"]

@@ -1,8 +1,8 @@
 #!/usr/bin/env python3
-"""Build shards for the gloss adjudication — prompts/gloss_adjudication.md.
+"""Build shards for the gloss adjudication — plans/gloss_adjudication.md.
 
-Consumes: verbdata/gloss-review/gloss-corrections-sweep.json  the 220 proposed corrections
-          verbdata/gloss-review/shards/gloss_NNN.in.json      kaikki senses + separability
+Consumes: verbdata/gloss_review/gloss_corrections_sweep.json  the 220 proposed corrections
+          verbdata/gloss_review/shards/gloss_NNN.in.json      kaikki senses + separability
 Produces: verbdata/adjudication/shards/adj_NNN.in.json        25 records each
 
 Run from the repo root:  python3 verbdata/adjudication/build_adjudication_shards.py
@@ -49,7 +49,7 @@ import json
 import os
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--corrections", default="verbdata/gloss-review/gloss-corrections-sweep.json")
+parser.add_argument("--corrections", default="verbdata/gloss_review/gloss_corrections_sweep.json")
 parser.add_argument("--size", type=int, default=25)
 parser.add_argument("--out", default="verbdata/adjudication/shards")
 parser.add_argument("--pattern", choices=["gloss", "multi"], default="gloss",
@@ -64,7 +64,7 @@ if not corrections:
 
 # kaikki senses and separability come from the review shards, which read them from Verbs.xml.
 meta = {}
-for f in glob.glob(f"verbdata/gloss-review/shards/{args.pattern}_*.in.json"):
+for f in glob.glob(f"verbdata/gloss_review/shards/{args.pattern}_*.in.json"):
     for entry in json.load(open(f))[LIST_FIELD]:
         meta[entry[KEY_FIELD]] = entry
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Phase 3 of prompts/uses_etymologies.md: build the three reuse files by *parsing*
+Phase 3 of plans/uses_etymologies.md: build the three reuse files by *parsing*
 the etymologies the app already ships, rather than by generating them again.
 
 Consumes
@@ -11,8 +11,8 @@ Consumes
 
 Produces
     verbdata/roots.json                    — {"de": {...}, "en": {...}}, root → etymology
-    verbdata/prefixes-inseparable.json     — {"de": {...}, "en": {...}}, prefix → {chain, senses}
-    verbdata/prefixes-separable.json       — same shape
+    verbdata/prefixes_inseparable.json     — {"de": {...}, "en": {...}}, prefix → {chain, senses}
+    verbdata/prefixes_separable.json       — same shape
     <workdir>/reuse_gaps.json              — the authoring worklist for what parsing
                                              could not recover (path via --gaps)
 
@@ -66,8 +66,8 @@ REPO = pathlib.Path(__file__).resolve().parent.parent
 VERBS_XML = REPO / "Konjugieren/Models/Verbs.xml"
 ETYMOLOGIES = REPO / "Konjugieren/Models/Etymologies.json"
 ROOTS_OUT = REPO / "verbdata/roots.json"
-INSEP_OUT = REPO / "verbdata/prefixes-inseparable.json"
-SEP_OUT = REPO / "verbdata/prefixes-separable.json"
+INSEP_OUT = REPO / "verbdata/prefixes_inseparable.json"
+SEP_OUT = REPO / "verbdata/prefixes_separable.json"
 
 LANGS = ("de", "en")
 

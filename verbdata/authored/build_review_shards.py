@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build review shards for prompts/example_review.md.
+"""Build review shards for plans/example_review.md.
 
 Consumes:
   verbdata/authored/shards/auth_NNN.in.json    verb, gloss, separability (what the author saw)
@@ -21,7 +21,7 @@ Run: python3 verbdata/authored/build_review_shards.py
 WHY THE REVIEWER GETS MORE CONTEXT THAN THE AUTHOR DID. The author was given only verb, gloss, and
 separability, deliberately: a minimal, identical input so shard size could not bias the A/B token
 comparison. That constraint is gone. The quality comparison between models was ruled out of scope on
-2026-07-25 (prompts/example_analysis.md, "Scope decision"), so nothing is being measured here and the
+2026-07-25 (plans/example_analysis.md, "Scope decision"), so nothing is being measured here and the
 reviewer can be given everything that helps it judge:
 
   candidate_glosses  Lets the reviewer settle a `bad_gloss` finding against the source rather than

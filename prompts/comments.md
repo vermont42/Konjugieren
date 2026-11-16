@@ -1,4 +1,4 @@
-**Status:** ✅ superseded by `sweep-comments.md`, executed in `3f7b8fd`.
+**Status:** ✅ superseded by `plans/sweep_comments.md`, executed in `3f7b8fd`.
 
 Conjugar is Konjugieren's equivalent for Spanish verbs. Conjugar lives locally in /Users/josh/Desktop/workspace/Conjugar.mig .
 

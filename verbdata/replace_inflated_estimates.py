@@ -9,7 +9,7 @@ Run:       python3 verbdata/replace_inflated_estimates.py [--dry-run]
 ## Why
 
 83 verbs carry `hp="y"` because DWDS cannot measure them: it has no lemma for compounds such as
-*madigmachen* and echoes the query string's own count instead (see `docs/verb-sources.md`,
+*madigmachen* and echoes the query string's own count instead (see `docs/verb_sources.md`,
 "The 83 that DWDS cannot measure" in `docs/blog_notes.md`). Their estimates came from
 `import_tranche2.py`, which scaled the base verb's count by a ratio. For a base as common as
 *machen*, *halten*, or *gehen*, the ratio put the compound near 574,000 hits, rank ~940. So 56
@@ -23,7 +23,7 @@ the estimates rather than have the quiz skip provisional verbs.
 
 ## How a value is chosen
 
-`docs/verb-sources.md` § "Provisional hit counts" gives the rule: pick a neighbourhood by
+`docs/verb_sources.md` § "Provisional hit counts" gives the rule: pick a neighbourhood by
 judgment ("about as common as *gedeihen*") and take a value between its neighbours' real
 counts. So each verb below names a measured, shipping anchor, and the script places it just
 under the anchor, at the midpoint between the anchor's count and the next measured count below

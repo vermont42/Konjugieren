@@ -1,6 +1,6 @@
 # Adjudication triage — 245 of 246 proposals judged
 
-**218 accepted · 2 amended · 25 rejected.** 220 correction(s) written to `verbdata/gloss-review/gloss-corrections-final.json`.
+**218 accepted · 2 amended · 25 rejected.** 220 correction(s) written to `verbdata/gloss_review/gloss_corrections_final.json`.
 
 ## Verdict by traceability
 

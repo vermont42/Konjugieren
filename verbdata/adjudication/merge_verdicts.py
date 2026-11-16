@@ -1,16 +1,16 @@
 #!/usr/bin/env python3
 """Apply adjudication verdicts to the proposed corrections, producing the file that ships.
 
-Consumes: verbdata/gloss-review/gloss-corrections-sweep.json   220 proposals (claude-opus-5)
+Consumes: verbdata/gloss_review/gloss_corrections_sweep.json   220 proposals (claude-opus-5)
           verbdata/adjudication/shards/adj_NNN.out.json        verdicts (claude-opus-4-8)
-Produces: verbdata/gloss-review/gloss-corrections-final.json   accepted + amended, for the applier
+Produces: verbdata/gloss_review/gloss_corrections_final.json   accepted + amended, for the applier
           verbdata/adjudication/triage.md                      the full record, including rejections
 
 Run from the repo root:  python3 verbdata/adjudication/merge_verdicts.py
   --partial   proceed although some proposals have no verdict
 
 Feed the output to:
-  python3 verbdata/authored/apply_gloss_corrections.py verbdata/gloss-review/gloss-corrections-final.json --dry-run
+  python3 verbdata/authored/apply_gloss_corrections.py verbdata/gloss_review/gloss_corrections_final.json --dry-run
 
 WHAT EACH VERDICT DOES:
   accept  the proposal is written as-is.
@@ -43,11 +43,11 @@ import json
 import os
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--corrections", default="verbdata/gloss-review/gloss-corrections-sweep.json")
-parser.add_argument("--out", default="verbdata/gloss-review/gloss-corrections-final.json")
+parser.add_argument("--corrections", default="verbdata/gloss_review/gloss_corrections_sweep.json")
+parser.add_argument("--out", default="verbdata/gloss_review/gloss_corrections_final.json")
 parser.add_argument("--triage", default="verbdata/adjudication/triage.md")
 parser.add_argument("--verdicts", default="verbdata/adjudication/shards/adj_*.out.json",
-                    help="glob of adjudicator output; the per-reading run writes to shards-multi/")
+                    help="glob of adjudicator output; the per-reading run writes to shards_multi/")
 parser.add_argument("--partial", action="store_true")
 args = parser.parse_args()
 
@@ -121,7 +121,7 @@ for path in (args.out, args.triage):
 header = {
     "_source": args.corrections,
     "_adjudicated_by": "claude-opus-4-8",
-    "_brief": "prompts/gloss_adjudication.md",
+    "_brief": "plans/gloss_adjudication.md",
     "_proposed": len(proposals),
     "_accepted": sum(1 for c in final.values() if c["verdict"] == "accept"),
     "_amended": len(amended),

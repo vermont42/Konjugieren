@@ -6,7 +6,7 @@
 // ImageRenderer all produce [?] tofu glyphs for the regional flag tag sequence
 // (🏴󠁧󠁢󠁥󠁮󠁧󠁿) and 🐎. macOS's NSAttributedString → NSImage rendering pipeline
 // resolves the glyphs correctly, so we render PNGs once on the host and ship
-// them as image assets. See docs/emoji-assets.md for the full story.
+// them as image assets. See docs/emoji_assets.md for the full story.
 //
 // Run from the project root: swift scripts/render_emoji.swift
 //

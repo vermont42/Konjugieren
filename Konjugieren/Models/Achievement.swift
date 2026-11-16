@@ -4,7 +4,7 @@
 /// the list on 2026-11-15). Each counts what the Mastery page counts, an item in the third box or
 /// beyond, so the record that fills the page also earns these. Their titles, descriptions, and
 /// artwork live in App Store Connect and `GameCenterResources.gamekit`; see
-/// docs/game-center-setup.md.
+/// docs/game_center_setup.md.
 // Semantic ordering: as Game Center lists them, the patterns level by level, then the verbs.
 enum Achievement: String, CaseIterable {
   case patternsBeginner
@@ -35,7 +35,7 @@ enum Achievement: String, CaseIterable {
   }
 
   // Achievement IDs are permanent in App Store Connect, so these must match
-  // docs/game-center-setup.md exactly and never change, even if an achievement is renamed.
+  // docs/game_center_setup.md exactly and never change, even if an achievement is renamed.
   var identifier: String {
     switch self {
     case .patternsBeginner:

@@ -17,11 +17,11 @@
 #      invents a type produces findings the triage step will silently drop, so catch it per
 #      shard while the run can still be stopped.
 #
-# Consumes: prompts/example_review.md (the brief, passed verbatim),
+# Consumes: plans/example_review.md (the brief, passed verbatim),
 #           verbdata/review/shards/rev_<NNN>.in.json  (build_review_shards.py makes these)
 # Produces: verbdata/review/shards/rev_<NNN>.out.json, verbdata/review/meta/, metrics.jsonl
 set -u
-BRIEF="$(cat prompts/example_review.md)"
+BRIEF="$(cat plans/example_review.md)"
 mkdir -p verbdata/review/meta
 pids=()
 for spec in "$@"; do

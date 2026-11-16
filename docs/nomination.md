@@ -74,9 +74,9 @@ Konjugieren 1.2 (build 2) is uploaded to App Store Connect. Description, Helpful
 
 ## WWDC2026 Editorial Angle (for the next nomination)
 
-The 1.2 nomination above is submitted and locked. This section is for the *next* nomination cycle. It captures how WWDC2026 strengthens Konjugieren's editorial case. See `docs/wwdc2026-platforms-sotu.md` for the full analysis.
+The 1.2 nomination above is submitted and locked. This section is for the *next* nomination cycle. It captures how WWDC2026 strengthens Konjugieren's editorial case. See `docs/wwdc2026_platforms_sotu.md` for the full analysis.
 
-**Apple keeps choosing language and education apps as Foundation Models exemplars.** The WWDC2026 Platforms State of the Union cited "educational apps like CellWalk" as a Foundation Models showcase; the WWDC2025 cycle showcased Grammo, a grammar-learning app (see `docs/platform-features-plan.md`). Konjugieren is a German-conjugation app whose Tutor already runs on the on-device Foundation Models framework, which places it squarely in the category Apple repeatedly spotlights. The 1.2 Description and Supplemental #2 (the Tutor screen recording) already lead with this; the next nomination should keep it front and center.
+**Apple keeps choosing language and education apps as Foundation Models exemplars.** The WWDC2026 Platforms State of the Union cited "educational apps like CellWalk" as a Foundation Models showcase; the WWDC2025 cycle showcased Grammo, a grammar-learning app (see `docs/platform_features.md`). Konjugieren is a German-conjugation app whose Tutor already runs on the on-device Foundation Models framework, which places it squarely in the category Apple repeatedly spotlights. The 1.2 Description and Supplemental #2 (the Tutor screen recording) already lead with this; the next nomination should keep it front and center.
 
 **The on-device-AI story is honest and grounded, which editorial review rewards.** Konjugieren's Tutor is not freeform chat: it calls the same Conjugator engine the quiz uses (already stated in Helpful Details), so its conjugations are computed, not guessed. "Privacy-preserving on-device intelligence, grounded in a real conjugation engine" is a clean, defensible editorial line.
 
@@ -84,7 +84,7 @@ The 1.2 nomination above is submitted and locked. This section is for the *next*
 
 None of these ship in 1.2. They become available on the fall iOS 27 releases, and several require an Apple-silicon Mac to build (see the WWDC report, section 5). Each would strengthen a future nomination. Adopt first, then nominate the version that ships them; do not nominate on the promise.
 
-- **Private Cloud Compute, at no cloud cost.** Re-lighting the two AI surfaces that ship dark in 1.0 (`explainError`, `recommendPractice`; see `docs/cloud-llm-tier.md`) through Apple's free Private Cloud Compute model would let the nomination claim frontier-level AI with Apple-grade privacy and no third-party data sharing. Strong, and uniquely on-brand for Apple's own infrastructure.
+- **Private Cloud Compute, at no cloud cost.** Re-lighting the two AI surfaces that ship dark in 1.0 (`explainError`, `recommendPractice`; see `docs/cloud_llm_tier.md`) through Apple's free Private Cloud Compute model would let the nomination claim frontier-level AI with Apple-grade privacy and no third-party data sharing. Strong, and uniquely on-brand for Apple's own infrastructure.
 - **Image input plus on-device Vision OCR.** Photograph German text in the wild, extract it, then conjugate or explain it. A novel, demoable feature that connects the app to real-world German, and a screenshot-friendly one for the Supplemental Materials.
 - **Dynamic Profiles and the Evaluations framework.** Less user-visible, but they signal serious, current adoption of the newest framework surface, which editorial and developer-relations reviewers notice.
 
@@ -94,4 +94,4 @@ Apple's editorial appetite for apps demonstrating a new framework is highest aro
 
 ### Honest caveat
 
-A nomination should describe only what ships in the nominated build. The strongest AI surfaces are dark in 1.0 for good reason: on-device hallucination on the long tail (see `docs/cloud-llm-tier.md`). Until they re-light, lean the AI pitch on the on-device Tutor that ships live, plus the App Intents / Siri / Spotlight integration and the VoiceOver work, all of which are real today.
+A nomination should describe only what ships in the nominated build. The strongest AI surfaces are dark in 1.0 for good reason: on-device hallucination on the long tail (see `docs/cloud_llm_tier.md`). Until they re-light, lean the AI pitch on the on-device Tutor that ships live, plus the App Intents / Siri / Spotlight integration and the VoiceOver work, all of which are real today.

@@ -16,7 +16,7 @@ end up saying several things about one etymology. Users compare entries; the pip
 never has. So: deduplicate first, fix each distinct string once, then fan the fix back
 out by exact-string replacement.
 
-Two sweeps consume this (prompts/em_dash_sweep.md and prompts/cognate_precision.md), which
+Two sweeps consume this (plans/em_dash_sweep.md and plans/cognate_precision.md), which
 is why the pattern is a flag rather than a constant.
 
 Unit boundaries

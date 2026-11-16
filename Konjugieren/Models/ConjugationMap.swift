@@ -7,7 +7,7 @@ import Foundation
 ///
 /// ConjugationMapTool builds the map at build time and writes it into the app bundle, and the
 /// app reads that copy. The tool compiles this file and the conjugation core from the app's own
-/// sources, so the two cannot disagree; see docs/feature-architecture.md § Conjugation Map.
+/// sources, so the two cannot disagree; see docs/feature_architecture.md § Conjugation Map.
 ///
 /// Compound conjugations have no entries, because their parts already do: hat gefunden resolves
 /// through gefunden. Entries for haben and werden would otherwise attach to every verb.

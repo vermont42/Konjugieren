@@ -7,7 +7,7 @@ extension String {
   ///
   /// The uppercase half is not cosmetic. Ablaut replacements spell the sibilant with the
   /// capital sharp s `ẞ` (U+1E9E) so that mixed-case highlighting covers it; see
-  /// `docs/adding-verbs.md`. Mapping `ẞ` to `SS` keeps both output characters uppercase,
+  /// `docs/adding_verbs.md`. Mapping `ẞ` to `SS` keeps both output characters uppercase,
   /// so `MixedCaseSegmenter` still sees one unbroken irregular run rather than two.
   nonisolated func inRegion(_ region: Region) -> String {
     guard !region.writesSharpS else { return self }

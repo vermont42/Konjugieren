@@ -81,7 +81,7 @@
   },
   "anreisen": {
     "en": "Most guests travel in as early as Friday evening so they can stay for the whole weekend.",
-    "reason": "Accepted low/wrong_sense. Gloss also corrected (see gloss-corrections.json).",
+    "reason": "Accepted low/wrong_sense. Gloss also corrected (see gloss_corrections.json).",
     "source": "adversarial review, 2026-07-25, applied without human triage"
   },
   "ansenken": {
@@ -153,7 +153,7 @@
   },
   "ausschweigen": {
     "en": "Gloss should read: keep silent (about something), refuse to comment.",
-    "reason": "Accepted medium/bad_gloss. Gloss also corrected (see gloss-corrections.json).",
+    "reason": "Accepted medium/bad_gloss. Gloss also corrected (see gloss_corrections.json).",
     "source": "adversarial review, 2026-07-25, applied without human triage"
   },
   "auswaschen": {
@@ -296,7 +296,7 @@
   },
   "fernschauen": {
     "en": "In Austria many families settle in together on Sunday evenings to watch TV.",
-    "reason": "Accepted high/bad_gloss. Gloss also corrected (see gloss-corrections.json).",
+    "reason": "Accepted high/bad_gloss. Gloss also corrected (see gloss_corrections.json).",
     "source": "adversarial review, 2026-07-25, applied without human triage"
   },
   "festbacken": {
@@ -408,7 +408,7 @@
   },
   "kaltmachen": {
     "en": "Suggested gloss: \"bump off, kill\".",
-    "reason": "Accepted medium/bad_gloss. Gloss also corrected (see gloss-corrections.json).",
+    "reason": "Accepted medium/bad_gloss. Gloss also corrected (see gloss_corrections.json).",
     "source": "adversarial review, 2026-07-25, applied without human triage"
   },
   "kaputtlachen": {
@@ -580,7 +580,7 @@
   },
   "vorbeischauen": {
     "en": "Why don't you drop by our place tomorrow? We've baked a fresh cake.",
-    "reason": "Accepted low/comma_splice; superseded high/bad_gloss. Gloss also corrected (see gloss-corrections.json).",
+    "reason": "Accepted low/comma_splice; superseded high/bad_gloss. Gloss also corrected (see gloss_corrections.json).",
     "source": "adversarial review, 2026-07-25, applied without human triage"
   },
   "vorherberechnen": {
@@ -668,7 +668,7 @@
   },
   "übereinanderhalten": {
     "en": "Shivering with cold, she held her numb hands pressed one on top of the other to warm them.",
-    "reason": "Accepted low/translation; superseded medium/bad_gloss. Gloss also corrected (see gloss-corrections.json).",
+    "reason": "Accepted low/translation; superseded medium/bad_gloss. Gloss also corrected (see gloss_corrections.json).",
     "source": "adversarial review, 2026-07-25, applied without human triage"
   },
   "übereintreffen": {
@@ -679,7 +679,7 @@
   },
   "überhelfen": {
     "en": "It was freezing outside, so he helped his grandmother on with her heavy coat.",
-    "reason": "Accepted low/bad_gloss. Gloss also corrected (see gloss-corrections.json).",
+    "reason": "Accepted low/bad_gloss. Gloss also corrected (see gloss_corrections.json).",
     "source": "adversarial review, 2026-07-25, applied without human triage"
   },
   "überzahlen": {

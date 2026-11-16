@@ -1,6 +1,6 @@
 # Phase 0 of the verb-history fact-check: extract, validate, patch
 
-Run 2026-07-28 against [`prompts/verify-verb-history.md`](../prompts/verify-verb-history.md).
+Run 2026-07-28 against [`plans/verify_verb_history.md`](../plans/verify_verb_history.md).
 This document is what Josh reads alongside the diff to `docs/verb_history.txt` and
 `docs/verb_history_de.txt`. It records what was applied, what was deliberately not applied,
 where the applied prose diverges from Conjugar's, and what the patch could not reach.

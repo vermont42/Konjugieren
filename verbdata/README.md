@@ -1,6 +1,6 @@
 # verbdata
 
-Data files supporting the verb-corpus expansion described in [`docs/verb-sources.md`](../docs/verb-sources.md). The JSONL below is gitignored (`verbdata/*.jsonl`); this README is tracked so that provenance and the re-download recipe live in git.
+Data files supporting the verb-corpus expansion described in [`docs/verb_sources.md`](../docs/verb_sources.md). The JSONL below is gitignored (`verbdata/*.jsonl`); this README is tracked so that provenance and the re-download recipe live in git.
 
 This folder sits at the repo root deliberately: the `Konjugieren/` app directory uses Xcode folder references, so any file placed there joins the app target. A 294 MB data file must stay outside it.
 
@@ -20,7 +20,7 @@ This folder sits at the repo root deliberately: the `Konjugieren/` app directory
 | Single-word lemmas with `forms[]` tables | 9,505 |
 | Single-word lemmas absent from Konjugieren's current 990 | 8,736 |
 
-These counts differ slightly from the category-membership numbers in `docs/verb-sources.md` (10,407 category lemmas; 8,346 missing) because the category crawl filtered titles by infinitive-shaped endings and reflects live category membership, while these counts come from the snapshot's own records.
+These counts differ slightly from the category-membership numbers in `docs/verb_sources.md` (10,407 category lemmas; 8,346 missing) because the category crawl filtered titles by infinitive-shaped endings and reflects live category membership, while these counts come from the snapshot's own records.
 
 **Record structure:** `word`, `pos`, `senses[].glosses` (English, labeled), `etymology_text` (plain prose, wiki templates resolved), and `forms[]` tagged by person, number, mood, and auxiliary, plus `table-tags` entries carrying Wiktionary's own weak/strong classification. Lemma filtering: keep records in which no sense contains `form_of`.
 
@@ -35,7 +35,7 @@ curl -C - -A "Konjugieren verb research (contact: <email>)" \
 ## The classify-and-verify pipeline
 
 Three scripts and one test suite turn the snapshot above into classified verbs. Full design
-and findings: [`docs/verb-classification.md`](../docs/verb-classification.md).
+and findings: [`docs/verb_classification.md`](../docs/verb_classification.md).
 
 | File | Role | Tracked |
 |---|---|---|
@@ -44,7 +44,7 @@ and findings: [`docs/verb-classification.md`](../docs/verb-classification.md).
 | `../KonjugierenTests/Utils/VerbClassificationTests.swift` | Stage B: drives `Conjugator` over every candidate, searching for the `Verbs.xml` encoding that reproduces Wiktionary's table | yes |
 | `classification.json` | Per-verb results, ~40 s to rebuild | no |
 | `summarize_classification.py` | Stage C: renders the queue grouped by cause | yes |
-| `classification-summary.md` | The rendered report | no |
+| `classification_summary.md` | The rendered report | no |
 
 Pass `--include-existing` to `build_candidates.py` (the default invocation does) so the 985
 shipping verbs stay in the candidate set. For those the correct answer is already in
@@ -53,15 +53,15 @@ a defect, not an unknown. The first run found 354 such verbs.
 
 ## The etymology reuse files
 
-Phase 3 of [`prompts/uses_etymologies.md`](../prompts/uses_etymologies.md). Three lookup tables
+Phase 3 of [`plans/uses_etymologies.md`](../plans/uses_etymologies.md). Three lookup tables
 that let a Phase 4 subagent *compose* a compound verb's etymology from parts instead of
 re-deriving one, keyed so it can look up rather than search.
 
 | File | Key | Value | Tracked |
 |---|---|---|---|
 | `roots.json` | final root infinitive | `{bullet, full}` per language | yes |
-| `prefixes-inseparable.json` | bare prefix (`ver`, not `ver-`) | `{chain, senses, occurrences}` | yes |
-| `prefixes-separable.json` | bare particle (`ab`, `tot`, `preis`) | `{kind, chain, senses, occurrences}` | yes |
+| `prefixes_inseparable.json` | bare prefix (`ver`, not `ver-`) | `{chain, senses, occurrences}` | yes |
+| `prefixes_separable.json` | bare particle (`ab`, `tot`, `preis`) | `{kind, chain, senses, occurrences}` | yes |
 | `build_reuse_files.py` | — | seeds the above from existing entries, emits the gap worklist | yes |
 | `merge_reuse_files.py` | — | folds authored shards in; `--validate-only` re-checks | yes |
 
@@ -101,12 +101,12 @@ only runaways, over 700 characters.
 
 ### `kind`, and why the entry count misleads
 
-German's separable prefixes are an **open class**, so `prefixes-separable.json` is not a list
+German's separable prefixes are an **open class**, so `prefixes_separable.json` is not a list
 of 233 prefixes. Each entry records one of seven kinds, since a composing subagent treats them
 differently. Derive the tally rather than quoting one:
 
 ```bash
-python3 -c "import json,collections; d=json.load(open('verbdata/prefixes-separable.json'))['en']; \
+python3 -c "import json,collections; d=json.load(open('verbdata/prefixes_separable.json'))['en']; \
 print(collections.Counter(v['kind'] for v in d.values()))"
 ```
 
@@ -155,7 +155,7 @@ into the reuse files by the `sanitize` helper in each script. **Neither is fixed
   PIE palatal are nearly identical, which is presumably how it survived review. In a
   reconstructed etymon it is a different sound.
 
-## dwds-frequencies.json
+## dwds_frequencies.json
 
 | Fact | Value |
 |---|---|

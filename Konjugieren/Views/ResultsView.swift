@@ -340,7 +340,7 @@ struct ResultsView: View {
 }
 
 /// A challenge's five outcomes as the quiz's own dots, rather than the shared text's emoji, which
-/// the iOS 26 simulator draws as tofu (see `docs/emoji-assets.md`).
+/// the iOS 26 simulator draws as tofu (see `docs/emoji_assets.md`).
 struct ChallengeDots: View {
   let outcomes: [DailyChallenge.Outcome]
   var size: CGFloat = 12

@@ -1,6 +1,6 @@
 # Phase 1 of the verb-history fact-check: the fan-out over the German-specific claims
 
-Run 2026-07-28 against [`prompts/verify-verb-history.md`](../prompts/verify-verb-history.md),
+Run 2026-07-28 against [`plans/verify_verb_history.md`](../plans/verify_verb_history.md),
 working from the Phase 0.5 inventory in [`docs/verb_history_claims.md`](verb_history_claims.md).
 Eight agents: seven cluster researchers, each handed an explicit list of inventory rows rather
 than a section range, and agent H, which held the whole essay in both languages and did no web

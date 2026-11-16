@@ -8,7 +8,7 @@
 #   scripts/verify_store_media.sh docs/screenshots/version_5
 #
 # Every check below corresponds to a real rejection or near-miss on 2026-07-25; see
-# docs/video_script.md and docs/screenshot-plan.md for the narrative.
+# docs/video_script.md and plans/screenshot.md for the narrative.
 #
 # Requires: ffprobe, sips (macOS built-in). Screenshot dimension/alpha checks use sips
 # so the script works with no third-party image tooling installed.

@@ -93,13 +93,13 @@ A verb can verify perfectly and still not belong in the app. Four filters run be
     form of ausbauen", "obsolete spelling of ...". These are pointers to another entry; the
     entry they point at is usually already in the tranche.
   * pre-1996 or archaic orthography -- the `bey-` spellings (beybringen), the `auss-` ones
-    (aussbauen). docs/adding-verbs.md's note about which side of the 1996 reform a spelling
+    (aussbauen). docs/adding_verbs.md's note about which side of the 1996 reform a spelling
     comes from applies here.
   * Swiss ss-spellings whose sharp-s twin exists. Same verb, not a second one; Swiss
-    rendering is a display transform, never stored. See adding-verbs.md.
+    rendering is a display transform, never stored. See adding_verbs.md.
   * A verb needing an ablaut group that does not ship. Tranche 1 added groups deliberately,
     five of them, each checked by hand. Adding 182 mechanically is how workarounds become
-    permanent data -- the exact failure docs/verb-classification.md's sequencing argument
+    permanent data -- the exact failure docs/verb_classification.md's sequencing argument
     warns about. These are deferred to a pass that can look at them.
 
 AUXILIARIES (rewritten 2026-11-10; the old rule is the reason Part 6 existed)
@@ -108,7 +108,7 @@ Until 2026-11-10 this section said that dual-auxiliary verbs ship "with kaikki's
 auxiliary and a single reading", and it worked worse than that sounds. `ay` came from the
 lemma-level auxiliary of the FIRST kaikki record, the gloss from whichever sense normalized
 first, and nothing tied the two together. aufstehen shipped "get up" with haben. Parts 1 and 6
-of plans/fix-reference-defects.md then ruled 252 verbs against DWDS, and 128 of them changed.
+of plans/fix_reference_defects.md then ruled 252 verbs against DWDS, and 128 of them changed.
 
 The rule now lives in verbdata/auxiliary_screen.py, whose header gives it in full with the four
 shipped verbs that motivated each part (zuziehen, durchlaufen, abschieben, bleichen). In short:
@@ -118,12 +118,12 @@ shipped verbs that motivated each part (zuziehen, durchlaufen, abschieben, bleic
   * A verb is FLAGGED, and not imported, when kaikki gives it both auxiliaries, has a separable
     and an inseparable verb under its spelling, has a strong and a weak verb under its
     spelling, or has a sense whose own evidence contradicts the lemma's auxiliary.
-  * A flagged verb goes to verbdata/auxiliary-rulings.tsv as rows with the outcome `proposed`,
+  * A flagged verb goes to verbdata/auxiliary_rulings.tsv as rows with the outcome `proposed`,
     one per reading its senses suggest (a real run writes them; --check only lists the verb in
-    tranche2-deferred.txt). `python3 verbdata/audit_auxiliaries.py --check` fails while any
+    tranche2_deferred.txt). `python3 verbdata/audit_auxiliaries.py --check` fails while any
     proposed row remains, so an unreviewed verb cannot slip through the gate Part 6 built.
     Ruling it means rewriting the rows with real outcomes, sources, and notes, putting new
-    glosses through prompts/gloss_review.md, and adding the verb to Verbs.xml by hand.
+    glosses through plans/gloss_review.md, and adding the verb to Verbs.xml by hand.
 
 Measured on 2026-11-10 by screening all 3,572 shipping verbs as if they were incoming: it flags
 125 of the 128 verbs whose auxiliary or readings Parts 1 and 6 changed. The three it passes
@@ -132,7 +132,7 @@ importer, and the screen gives each the auxiliary the ruling chose. Among the 3,
 ruling touched, it flags 109, 43 of them verbs the July pass had already given two readings.
 That is the review cost a tranche can expect: a few percent of its verbs.
 
-verbdata/tranche2-dual-auxiliary.txt was this section's worklist. It is history now and the
+verbdata/tranche2_dual_auxiliary.txt was this section's worklist. It is history now and the
 importer no longer writes it; the rulings file is the current record.
 """
 
@@ -152,8 +152,8 @@ REPO = pathlib.Path(__file__).resolve().parent.parent
 VERBS_XML = REPO / "Konjugieren" / "Models" / "Verbs.xml"
 CLASSIFICATION = REPO / "verbdata" / "classification.json"
 CANDIDATES = REPO / "verbdata" / "candidates.json"
-RULINGS = REPO / "verbdata" / "auxiliary-rulings.tsv"
-DEFERRED_WORKLIST = REPO / "verbdata" / "tranche2-deferred.txt"
+RULINGS = REPO / "verbdata" / "auxiliary_rulings.tsv"
+DEFERRED_WORKLIST = REPO / "verbdata" / "tranche2_deferred.txt"
 
 GLOBAL_RATIO = 0.174
 MIN_PAIRS_FOR_PER_PREFIX_RATIO = 5
@@ -410,19 +410,19 @@ def write_worklists(deferred: list[str]) -> None:
     is what step 8b wanted. Since 2026-11-10 it also lists the verbs the auxiliary screen held
     back, with the screen's reasons, so --check shows them without touching the rulings file.
 
-    This function used to write a second file, verbdata/tranche2-dual-auxiliary.txt, as a
+    This function used to write a second file, verbdata/tranche2_dual_auxiliary.txt, as a
     cumulative UNION of every verb shipped with one reading of two. It was a union because a
     verb that has shipped is skipped by the classifier and can never be rediscovered, and step
     8b's first re-run, when it was still a replacement, overwrote 176 rows of history with 17.
     The auxiliary screen retired it: a dual-auxiliary verb is no longer shipped with one
     reading, so there is nothing to add. The file stays as history, and
-    verbdata/auxiliary-rulings.tsv is the current record.
+    verbdata/auxiliary_rulings.tsv is the current record.
     """
     DEFERRED_WORKLIST.write_text(
         "# Verified by the pipeline but NOT imported, and why. Recomputed on every run.\n"
         "# See docs/roadmap.md, \"The tranche-2 deferrals\". Rows reading \"needs an auxiliary\n"
         "# ruling\" were held back by verbdata/auxiliary_screen.py; a real run writes them to\n"
-        "# verbdata/auxiliary-rulings.tsv as proposed rows.\n"
+        "# verbdata/auxiliary_rulings.tsv as proposed rows.\n"
         "# verb\treason\n"
         + "\n".join(sorted(deferred)) + "\n"
     )
@@ -430,7 +430,7 @@ def write_worklists(deferred: list[str]) -> None:
 
 
 def append_proposed_rulings(lines: list[str]) -> None:
-    """Append `proposed` rows to verbdata/auxiliary-rulings.tsv, as text, never rewriting the file.
+    """Append `proposed` rows to verbdata/auxiliary_rulings.tsv, as text, never rewriting the file.
 
     The file is hand-maintained and read with csv.QUOTE_NONE (see audit_auxiliaries.py), so it
     is appended to exactly as Part 6's sessions edited it: whole lines at the end. The caller
@@ -503,7 +503,7 @@ def print_screened(word, ships, translation, source_gloss, result, lemma, marked
     print("  HELD: not imported. Flagged:")
     for reason in result.reasons:
         print(f"    - {reason}")
-    print("  would append to verbdata/auxiliary-rulings.tsv:")
+    print("  would append to verbdata/auxiliary_rulings.tsv:")
     proposals = auxiliary_screen.propose(lemma, result, marked, normalize_one_gloss)
     for line in auxiliary_screen.rulings_rows(word, result, proposals, encoding,
                                               datetime.date.today().isoformat()):
@@ -638,12 +638,12 @@ def main() -> int:
                            lemmas.get(word), marked, encoding)
             continue
         if word in ruled:
-            rejected["has rows in auxiliary-rulings.tsv; add it by hand per its ruling"] += 1
-            deferred.append(f"{word}\thas rows in auxiliary-rulings.tsv; add it by hand per its ruling")
+            rejected["has rows in auxiliary_rulings.tsv; add it by hand per its ruling"] += 1
+            deferred.append(f"{word}\thas rows in auxiliary_rulings.tsv; add it by hand per its ruling")
             continue
         if result.flagged:
             reason = "needs an auxiliary ruling: " + "; ".join(result.reasons)
-            rejected["needs an auxiliary ruling (proposed in auxiliary-rulings.tsv)"] += 1
+            rejected["needs an auxiliary ruling (proposed in auxiliary_rulings.tsv)"] += 1
             deferred.append(f"{word}\t{reason}")
             flagged.append(word)
             proposals = auxiliary_screen.propose(lemmas[word], result, marked, normalize_one_gloss)

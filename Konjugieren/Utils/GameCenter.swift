@@ -13,7 +13,7 @@ protocol GameCenter {
 
 extension QuizLevel {
   // Leaderboard IDs are permanent in App Store Connect, so these must match
-  // docs/game-center-setup.md exactly and never change, even if a level is renamed.
+  // docs/game_center_setup.md exactly and never change, even if a level is renamed.
   var leaderboardID: String {
     switch self {
     case .beginner:

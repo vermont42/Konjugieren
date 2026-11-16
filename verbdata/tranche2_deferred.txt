@@ -1,0 +1,69 @@
+# Verified by the pipeline but NOT imported, and why. Recomputed on every run.
+# See docs/roadmap.md, "The tranche-2 deferrals". Rows reading "needs an auxiliary
+# ruling" were held back by verbdata/auxiliary_screen.py; a real run writes them to
+# verbdata/auxiliary_rulings.tsv as proposed rows.
+# verb	reason
+abscheren	needs an ablaut group that does not ship
+aufbraten	needs an ablaut group that does not ship
+ausnützen	every gloss points at another entry rather than translating
+außbauen	archaic or pre-1996 orthography
+außbilden	archaic or pre-1996 orthography
+außbrechen	archaic or pre-1996 orthography
+außlegen	archaic or pre-1996 orthography
+beklimmen	needs an ablaut group that does not ship
+benützen	every gloss points at another entry rather than translating
+bestehenbleiben	every gloss points at another entry rather than translating
+bevorstehen	needs an auxiliary ruling: dual auxiliary: kaikki gives both haben and sein
+beybringen	archaic or pre-1996 orthography
+beyfügen	archaic or pre-1996 orthography
+beygeben	archaic or pre-1996 orthography
+beylegen	archaic or pre-1996 orthography
+beyspringen	archaic or pre-1996 orthography
+beystehen	archaic or pre-1996 orthography
+beytragen	archaic or pre-1996 orthography
+beytreten	archaic or pre-1996 orthography
+breitschlagen	needs an ablaut group that does not ship
+freikommen	needs an ablaut group that does not ship
+grossschreiben	Swiss ss-spelling of a verb written with ß
+heraufgehen	every gloss points at another entry rather than translating
+heruntergehen	every gloss points at another entry rather than translating
+kahlscheren	needs an ablaut group that does not ship
+krummmachen	every gloss points at another entry rather than translating
+liebhaben	every gloss points at another entry rather than translating
+liegenbleiben	every gloss points at another entry rather than translating
+maschineschreiben	archaic or pre-1996 orthography
+masshalten	Swiss ss-spelling of a verb written with ß
+massnehmen	Swiss ss-spelling of a verb written with ß
+probefahren	archaic or pre-1996 orthography
+radfahren	archaic or pre-1996 orthography
+rangehen	every gloss points at another entry rather than translating
+rankommen	every gloss points at another entry rather than translating
+rausbekommen	every gloss points at another entry rather than translating
+rausfinden	every gloss points at another entry rather than translating
+rausholen	every gloss points at another entry rather than translating
+rauswaschen	every gloss points at another entry rather than translating
+rauswerfen	every gloss points at another entry rather than translating
+reinlegen	every gloss points at another entry rather than translating
+rumfahren	every gloss points at another entry rather than translating
+rumhängen	every gloss points at another entry rather than translating
+rumkriegen	every gloss points at another entry rather than translating
+rumspringen	every gloss points at another entry rather than translating
+runterfallen	every gloss points at another entry rather than translating
+runterholen	every gloss points at another entry rather than translating
+runtermachen	every gloss points at another entry rather than translating
+runterstellen	every gloss points at another entry rather than translating
+rüberkommen	every gloss points at another entry rather than translating
+sitzenbleiben	every gloss points at another entry rather than translating
+spazierengehen	archaic or pre-1996 orthography
+theilhaben	archaic or pre-1996 orthography
+theilnehmen	archaic or pre-1996 orthography
+verbacken	needs an ablaut group that does not ship
+verwringen	needs an ablaut group that does not ship
+vortrinken	needs an ablaut group that does not ship
+wachliegen	every gloss points at another entry rather than translating
+weiterbestehen	every gloss points at another entry rather than translating
+wiederspiegeln	every gloss points at another entry rather than translating
+zugrunderichten	every gloss points at another entry rather than translating
+zurückfahren	needs an ablaut group that does not ship
+zurückhaben	every gloss points at another entry rather than translating
+zusammenhelfen	needs an ablaut group that does not ship

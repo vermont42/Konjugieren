@@ -455,7 +455,7 @@ struct QuizView: View {
 
           // TODO: 1.0-disabled surface. FM hallucinates fake grammar rules
           // (e.g., singen Präteritum → "-en changes to -t"). See "Currently
-          // disabled in 1.0" in docs/cloud-llm-tier.md. Restore when
+          // disabled in 1.0" in docs/cloud_llm_tier.md. Restore when
           // HybridLanguageModelService ships.
           // if Current.languageModelService.isAvailable {
           //   ErrorExplainerView(context: correction.errorContext)

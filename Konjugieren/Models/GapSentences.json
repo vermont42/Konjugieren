@@ -1050,5 +1050,5589 @@
     "de": "{Ladet} doch eure Freunde {ein}!",
     "en": "Do invite your friends!",
     "reviewed": true
+  },
+  {
+    "id": "wissen.praesens.1",
+    "verb": "wissen",
+    "table": "praesens_indikativ",
+    "person": "fs",
+    "de": "Ich {weiß} die Antwort nicht.",
+    "en": "I don't know the answer.",
+    "reviewed": true
+  },
+  {
+    "id": "wissen.perfekt.1",
+    "verb": "wissen",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Das {habe} ich nicht {gewusst}.",
+    "en": "I didn't know that.",
+    "reviewed": true
+  },
+  {
+    "id": "wissen.konjunktiv_i.1",
+    "verb": "wissen",
+    "table": "praesens_konjunktiv_i",
+    "person": "ts",
+    "de": "Er sagt, sie {wisse} die Antwort.",
+    "en": "He says she knows the answer.",
+    "reviewed": true
+  },
+  {
+    "id": "halten.imperativ.1",
+    "verb": "halten",
+    "table": "imperativ",
+    "person": "sp",
+    "de": "{Haltet} bitte kurz meine Tasche!",
+    "en": "Please hold my bag for a moment!",
+    "reviewed": true
+  },
+  {
+    "id": "halten.perfekt.1",
+    "verb": "halten",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Der Bus {hat} an der Ecke {gehalten}.",
+    "en": "The bus stopped at the corner.",
+    "reviewed": true
+  },
+  {
+    "id": "halten.konjunktiv_ii.1",
+    "verb": "halten",
+    "table": "praeteritum_konjunktiv_ii",
+    "person": "fs",
+    "de": "Ich {hielte} das für eine schlechte Idee.",
+    "en": "I would consider that a bad idea.",
+    "reviewed": true
+  },
+  {
+    "id": "spielen.praesens.1",
+    "verb": "spielen",
+    "table": "praesens_indikativ",
+    "person": "tp",
+    "de": "Die Kinder {spielen} im Garten.",
+    "en": "The children are playing in the yard.",
+    "reviewed": true
+  },
+  {
+    "id": "spielen.perfekt.1",
+    "verb": "spielen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Meine Schwester {hat} als Kind Klavier {gespielt}.",
+    "en": "My sister played piano as a child.",
+    "reviewed": true
+  },
+  {
+    "id": "spielen.praeteritum.1",
+    "verb": "spielen",
+    "table": "praeteritum_indikativ",
+    "person": "fs",
+    "de": "Als Kind {spielte} ich oft mit meinem Bruder.",
+    "en": "As a child, I often played with my brother.",
+    "reviewed": true
+  },
+  {
+    "id": "bieten.praesens.1",
+    "verb": "bieten",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Das Hotel {bietet} ein gutes Frühstück.",
+    "en": "The hotel offers a good breakfast.",
+    "reviewed": true
+  },
+  {
+    "id": "bieten.perfekt.1",
+    "verb": "bieten",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Die Firma {hat} ihm eine neue Stelle {geboten}.",
+    "en": "The company offered him a new job.",
+    "reviewed": true
+  },
+  {
+    "id": "bieten.futur_konjunktiv_ii.1",
+    "verb": "bieten",
+    "table": "futur_konjunktiv_ii",
+    "person": "fp",
+    "de": "Wir {würden} Ihnen gern mehr {bieten}.",
+    "en": "We would like to offer you more.",
+    "reviewed": true
+  },
+  {
+    "id": "setzen.imperativ.1",
+    "verb": "setzen",
+    "table": "imperativ",
+    "person": "ss",
+    "de": "{Setz} dich bitte neben mich!",
+    "en": "Please sit down next to me!",
+    "reviewed": true
+  },
+  {
+    "id": "setzen.perfekt.1",
+    "verb": "setzen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Er {hat} das Kind auf den Stuhl {gesetzt}.",
+    "en": "He put the child on the chair.",
+    "reviewed": true
+  },
+  {
+    "id": "setzen.praeteritum.1",
+    "verb": "setzen",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Sie {setzte} die Tasse auf den Tisch.",
+    "en": "She set the cup on the table.",
+    "reviewed": true
+  },
+  {
+    "id": "erhalten.praesens.1",
+    "verb": "erhalten",
+    "table": "praesens_indikativ",
+    "person": "ss",
+    "de": "Du {erhältst} morgen deine Karte.",
+    "en": "You'll get your card tomorrow.",
+    "reviewed": true
+  },
+  {
+    "id": "erhalten.perfekt.1",
+    "verb": "erhalten",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Ich {habe} gestern einen Brief {erhalten}.",
+    "en": "I received a letter yesterday.",
+    "reviewed": true
+  },
+  {
+    "id": "erhalten.konjunktiv_i.1",
+    "verb": "erhalten",
+    "table": "praesens_konjunktiv_i",
+    "person": "ts",
+    "de": "Der Chef sagt, er {erhalte} bald neue Informationen.",
+    "en": "The boss says he will get new information soon.",
+    "reviewed": true
+  },
+  {
+    "id": "bekommen.praesens.1",
+    "verb": "bekommen",
+    "table": "praesens_indikativ",
+    "person": "fp",
+    "de": "Wir {bekommen} heute Besuch.",
+    "en": "We're having company today.",
+    "reviewed": true
+  },
+  {
+    "id": "bekommen.perfekt.1",
+    "verb": "bekommen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Sie {hat} zum Geburtstag ein Fahrrad {bekommen}.",
+    "en": "She got a bike for her birthday.",
+    "reviewed": true
+  },
+  {
+    "id": "bekommen.konjunktiv_ii.1",
+    "verb": "bekommen",
+    "table": "praeteritum_konjunktiv_ii",
+    "person": "fs",
+    "de": "Wenn ich mehr Geld {bekäme}, würde ich reisen.",
+    "en": "If I got more money, I would travel.",
+    "reviewed": true
+  },
+  {
+    "id": "tun.praesens.1",
+    "verb": "tun",
+    "table": "praesens_indikativ",
+    "person": "ss",
+    "de": "Was {tust} du heute Abend?",
+    "en": "What are you doing this evening?",
+    "reviewed": true
+  },
+  {
+    "id": "tun.perfekt.1",
+    "verb": "tun",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Das {habe} ich nicht mit Absicht {getan}.",
+    "en": "I didn't do that on purpose.",
+    "reviewed": true
+  },
+  {
+    "id": "tun.praeteritum.1",
+    "verb": "tun",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Er {tat}, was seine Mutter ihm sagte.",
+    "en": "He did what his mother told him.",
+    "reviewed": true
+  },
+  {
+    "id": "gehören.praesens.1",
+    "verb": "gehören",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Das Buch {gehört} meiner Schwester.",
+    "en": "The book belongs to my sister.",
+    "reviewed": true
+  },
+  {
+    "id": "gehören.perfekt.1",
+    "verb": "gehören",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Das Haus {hat} früher meinem Großvater {gehört}.",
+    "en": "The house used to belong to my grandfather.",
+    "reviewed": true
+  },
+  {
+    "id": "gehören.konjunktiv_i.1",
+    "verb": "gehören",
+    "table": "praesens_konjunktiv_i",
+    "person": "ts",
+    "de": "Er sagt, das Fahrrad {gehöre} seiner Tante.",
+    "en": "He says the bike belongs to his aunt.",
+    "reviewed": true
+  },
+  {
+    "id": "gelten.praesens.1",
+    "verb": "gelten",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Die Regel {gilt} für alle.",
+    "en": "The rule applies to everyone.",
+    "reviewed": true
+  },
+  {
+    "id": "gelten.perfekt.1",
+    "verb": "gelten",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Das Angebot {hat} nur bis Freitag {gegolten}.",
+    "en": "The offer was valid only until Friday.",
+    "reviewed": true
+  },
+  {
+    "id": "gelten.praeteritum.1",
+    "verb": "gelten",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Der Vertrag {galt} nur ein Jahr.",
+    "en": "The contract was valid for only one year.",
+    "reviewed": true
+  },
+  {
+    "id": "erklären.imperativ.1",
+    "verb": "erklären",
+    "table": "imperativ",
+    "person": "ss",
+    "de": "{Erklär} mir bitte das Wort!",
+    "en": "Please explain the word to me!",
+    "reviewed": true
+  },
+  {
+    "id": "erklären.perfekt.1",
+    "verb": "erklären",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Die Lehrerin {hat} uns die Aufgabe {erklärt}.",
+    "en": "The teacher explained the assignment to us.",
+    "reviewed": true
+  },
+  {
+    "id": "erklären.futur_konjunktiv_ii.1",
+    "verb": "erklären",
+    "table": "futur_konjunktiv_ii",
+    "person": "fs",
+    "de": "Ich {würde} dir das gern {erklären}.",
+    "en": "I would gladly explain that to you.",
+    "reviewed": true
+  },
+  {
+    "id": "schreiben.praesens.1",
+    "verb": "schreiben",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Mein Bruder {schreibt} mir jede Woche.",
+    "en": "My brother writes to me every week.",
+    "reviewed": true
+  },
+  {
+    "id": "schreiben.perfekt.1",
+    "verb": "schreiben",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Ich {habe} dir gestern eine Nachricht {geschrieben}.",
+    "en": "I wrote you a message yesterday.",
+    "reviewed": true
+  },
+  {
+    "id": "schreiben.praeteritum.1",
+    "verb": "schreiben",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Sie {schrieb} jeden Abend in ihr Tagebuch.",
+    "en": "She wrote in her diary every evening.",
+    "reviewed": true
+  },
+  {
+    "id": "beginnen.praesens.1",
+    "verb": "beginnen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Der Film {beginnt} um acht Uhr.",
+    "en": "The movie starts at eight.",
+    "reviewed": true
+  },
+  {
+    "id": "beginnen.perfekt.1",
+    "verb": "beginnen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Der Unterricht {hat} pünktlich {begonnen}.",
+    "en": "Class started on time.",
+    "reviewed": true
+  },
+  {
+    "id": "beginnen.konjunktiv_i.1",
+    "verb": "beginnen",
+    "table": "praesens_konjunktiv_i",
+    "person": "ts",
+    "de": "Sie sagt, der Kurs {beginne} im Herbst.",
+    "en": "She says the course starts in the fall.",
+    "reviewed": true
+  },
+  {
+    "id": "nutzen.praesens.1",
+    "verb": "nutzen",
+    "table": "praesens_indikativ",
+    "person": "fp",
+    "de": "Wir {nutzen} das Wohnzimmer als Büro.",
+    "en": "We use the living room as an office.",
+    "reviewed": true
+  },
+  {
+    "id": "nutzen.perfekt.1",
+    "verb": "nutzen",
+    "table": "perfekt_indikativ",
+    "person": "tp",
+    "de": "Sie {haben} das schöne Wetter {genutzt}.",
+    "en": "They took advantage of the nice weather.",
+    "reviewed": true
+  },
+  {
+    "id": "nutzen.futur_konjunktiv_ii.1",
+    "verb": "nutzen",
+    "table": "futur_konjunktiv_ii",
+    "person": "fs",
+    "de": "An deiner Stelle {würde} ich die Zeit {nutzen}.",
+    "en": "If I were you, I would use the time.",
+    "reviewed": true
+  },
+  {
+    "id": "sprechen.imperativ.1",
+    "verb": "sprechen",
+    "table": "imperativ",
+    "person": "tp",
+    "de": "{Sprechen} Sie bitte langsamer!",
+    "en": "Please speak more slowly!",
+    "reviewed": true
+  },
+  {
+    "id": "sprechen.perfekt.1",
+    "verb": "sprechen",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Gestern {habe} ich mit deiner Mutter {gesprochen}.",
+    "en": "Yesterday I spoke with your mother.",
+    "reviewed": true
+  },
+  {
+    "id": "sprechen.konjunktiv_ii.1",
+    "verb": "sprechen",
+    "table": "praeteritum_konjunktiv_ii",
+    "person": "fs",
+    "de": "Wenn ich besser Deutsch {spräche}, würde ich dort arbeiten.",
+    "en": "If I spoke better German, I would work there.",
+    "reviewed": true
+  },
+  {
+    "id": "heißen.praesens.1",
+    "verb": "heißen",
+    "table": "praesens_indikativ",
+    "person": "ss",
+    "de": "Wie {heißt} du?",
+    "en": "What's your name?",
+    "reviewed": true
+  },
+  {
+    "id": "heißen.perfekt.1",
+    "verb": "heißen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Wie {hat} die Straße früher {geheißen}?",
+    "en": "What was the street called before?",
+    "reviewed": true
+  },
+  {
+    "id": "heißen.praeteritum.1",
+    "verb": "heißen",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Die Stadt {hieß} früher anders.",
+    "en": "The city used to have a different name.",
+    "reviewed": true
+  },
+  {
+    "id": "arbeiten.praesens.1",
+    "verb": "arbeiten",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Mein Vater {arbeitet} in einer Bank.",
+    "en": "My father works at a bank.",
+    "reviewed": true
+  },
+  {
+    "id": "arbeiten.perfekt.1",
+    "verb": "arbeiten",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} den ganzen Tag im Garten {gearbeitet}.",
+    "en": "We worked in the yard all day.",
+    "reviewed": true
+  },
+  {
+    "id": "arbeiten.futur_konjunktiv_ii.1",
+    "verb": "arbeiten",
+    "table": "futur_konjunktiv_ii",
+    "person": "fs",
+    "de": "Ich {würde} gern von zu Hause {arbeiten}.",
+    "en": "I would like to work from home.",
+    "reviewed": true
+  },
+  {
+    "id": "treffen.praesens.1",
+    "verb": "treffen",
+    "table": "praesens_indikativ",
+    "person": "fp",
+    "de": "Wir {treffen} uns um drei Uhr am Bahnhof.",
+    "en": "We're meeting at the train station at three.",
+    "reviewed": true
+  },
+  {
+    "id": "treffen.perfekt.1",
+    "verb": "treffen",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Ich {habe} gestern einen alten Freund {getroffen}.",
+    "en": "I met an old friend yesterday.",
+    "reviewed": true
+  },
+  {
+    "id": "treffen.praeteritum.1",
+    "verb": "treffen",
+    "table": "praeteritum_indikativ",
+    "person": "fp",
+    "de": "Am Bahnhof {trafen} wir zufällig unseren Lehrer.",
+    "en": "At the station we ran into our teacher by chance.",
+    "reviewed": true
+  },
+  {
+    "id": "gewinnen.praesens.1",
+    "verb": "gewinnen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Unsere Mannschaft {gewinnt} heute bestimmt.",
+    "en": "Our team will definitely win today.",
+    "reviewed": true
+  },
+  {
+    "id": "gewinnen.perfekt.1",
+    "verb": "gewinnen",
+    "table": "perfekt_indikativ",
+    "person": "ss",
+    "de": "Du {hast} das Spiel {gewonnen}!",
+    "en": "You won the game!",
+    "reviewed": true
+  },
+  {
+    "id": "gewinnen.konjunktiv_i.1",
+    "verb": "gewinnen",
+    "table": "praesens_konjunktiv_i",
+    "person": "ts",
+    "de": "Der Trainer sagt, sein Team {gewinne} jedes Heimspiel.",
+    "en": "The coach says his team wins every home game.",
+    "reviewed": true
+  },
+  {
+    "id": "schaffen.praesens.1",
+    "verb": "schaffen",
+    "reading": 1,
+    "table": "praesens_indikativ",
+    "person": "fs",
+    "de": "Ich {schaffe} das heute nicht.",
+    "en": "I can't manage that today.",
+    "reviewed": true
+  },
+  {
+    "id": "schaffen.perfekt.1",
+    "verb": "schaffen",
+    "reading": 1,
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} es {geschafft}!",
+    "en": "We did it!",
+    "reviewed": true
+  },
+  {
+    "id": "schaffen.praeteritum.1",
+    "verb": "schaffen",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Der Künstler {schuf} ein großes Bild.",
+    "en": "The artist created a large painting.",
+    "reviewed": true
+  },
+  {
+    "id": "freuen.praesens.1",
+    "verb": "freuen",
+    "table": "praesens_indikativ",
+    "person": "tp",
+    "de": "Die Kinder {freuen} sich über das Geschenk.",
+    "en": "The children are happy about the present.",
+    "reviewed": true
+  },
+  {
+    "id": "freuen.perfekt.1",
+    "verb": "freuen",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Ich {habe} mich sehr über deinen Brief {gefreut}.",
+    "en": "I was very happy about your letter.",
+    "reviewed": true
+  },
+  {
+    "id": "freuen.konjunktiv_i.1",
+    "verb": "freuen",
+    "table": "praesens_konjunktiv_i",
+    "person": "ts",
+    "de": "Sie sagt, sie {freue} sich auf die Reise.",
+    "en": "She says she is looking forward to the trip.",
+    "reviewed": true
+  },
+  {
+    "id": "brauchen.praesens.1",
+    "verb": "brauchen",
+    "table": "praesens_indikativ",
+    "person": "ss",
+    "de": "{Brauchst} du einen Regenschirm?",
+    "en": "Do you need an umbrella?",
+    "reviewed": true
+  },
+  {
+    "id": "brauchen.perfekt.1",
+    "verb": "brauchen",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} dafür viel Zeit {gebraucht}.",
+    "en": "We needed a lot of time for it.",
+    "reviewed": true
+  },
+  {
+    "id": "brauchen.praeteritum.1",
+    "verb": "brauchen",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Er {brauchte} dringend Ruhe.",
+    "en": "He urgently needed rest.",
+    "reviewed": true
+  },
+  {
+    "id": "ziehen.imperativ.1",
+    "verb": "ziehen",
+    "table": "imperativ",
+    "person": "sp",
+    "de": "{Zieht} bitte kräftig am Seil!",
+    "en": "Please pull hard on the rope!",
+    "reviewed": true
+  },
+  {
+    "id": "ziehen.perfekt.1",
+    "verb": "ziehen",
+    "reading": 1,
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Meine Schwester {ist} letztes Jahr nach Berlin {gezogen}.",
+    "en": "My sister moved to Berlin last year.",
+    "reviewed": true
+  },
+  {
+    "id": "ziehen.praeteritum.1",
+    "verb": "ziehen",
+    "reading": 1,
+    "table": "praeteritum_indikativ",
+    "person": "fp",
+    "de": "Damals {zogen} wir aufs Land.",
+    "en": "We moved to the country back then.",
+    "reviewed": true
+  },
+  {
+    "id": "erreichen.praesens.1",
+    "verb": "erreichen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Man {erreicht} den Bahnhof in zehn Minuten.",
+    "en": "You can reach the station in ten minutes.",
+    "reviewed": true
+  },
+  {
+    "id": "erreichen.perfekt.1",
+    "verb": "erreichen",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} den Zug gerade noch {erreicht}.",
+    "en": "We just barely caught the train.",
+    "reviewed": true
+  },
+  {
+    "id": "erreichen.futur_konjunktiv_ii.1",
+    "verb": "erreichen",
+    "table": "futur_konjunktiv_ii",
+    "person": "fp",
+    "de": "Mit dem Auto {würden} wir den Bahnhof schneller {erreichen}.",
+    "en": "We would reach the station faster by car.",
+    "reviewed": true
+  },
+  {
+    "id": "laufen.praesens.1",
+    "verb": "laufen",
+    "table": "praesens_indikativ",
+    "person": "tp",
+    "de": "Die Kinder {laufen} durch den Park.",
+    "en": "The children are running through the park.",
+    "reviewed": true
+  },
+  {
+    "id": "laufen.perfekt.1",
+    "verb": "laufen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Er {ist} zum Bahnhof {gelaufen}.",
+    "en": "He ran to the station.",
+    "reviewed": true
+  },
+  {
+    "id": "laufen.praeteritum.1",
+    "verb": "laufen",
+    "table": "praeteritum_indikativ",
+    "person": "fp",
+    "de": "Als es anfing zu regnen, {liefen} wir schnell nach Hause.",
+    "en": "When it started raining, we ran home quickly.",
+    "reviewed": true
+  },
+  {
+    "id": "suchen.praesens.1",
+    "verb": "suchen",
+    "table": "praesens_indikativ",
+    "person": "fp",
+    "de": "Wir {suchen} einen Parkplatz.",
+    "en": "We're looking for a parking spot.",
+    "reviewed": true
+  },
+  {
+    "id": "suchen.perfekt.1",
+    "verb": "suchen",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Ich {habe} meinen Schlüssel überall {gesucht}.",
+    "en": "I looked everywhere for my key.",
+    "reviewed": true
+  },
+  {
+    "id": "suchen.praeteritum.1",
+    "verb": "suchen",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Der Hund {suchte} stundenlang nach seinem Ball.",
+    "en": "The dog searched for his ball for hours.",
+    "reviewed": true
+  },
+  {
+    "id": "helfen.imperativ.1",
+    "verb": "helfen",
+    "table": "imperativ",
+    "person": "ss",
+    "de": "{Hilf} mir bitte mit dem Koffer!",
+    "en": "Please help me with the suitcase!",
+    "reviewed": true
+  },
+  {
+    "id": "helfen.perfekt.1",
+    "verb": "helfen",
+    "table": "perfekt_indikativ",
+    "person": "tp",
+    "de": "Meine Nachbarn {haben} uns beim Umzug {geholfen}.",
+    "en": "My neighbors helped us with the move.",
+    "reviewed": true
+  },
+  {
+    "id": "helfen.futur_konjunktiv_ii.1",
+    "verb": "helfen",
+    "table": "futur_konjunktiv_ii",
+    "person": "fs",
+    "de": "Ich {würde} dir gern beim Kochen {helfen}.",
+    "en": "I would be glad to help you cook.",
+    "reviewed": true
+  },
+  {
+    "id": "bestehen.praesens.1",
+    "verb": "bestehen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Meine Schwester {besteht} die Prüfung bestimmt.",
+    "en": "My sister will surely pass the exam.",
+    "reviewed": true
+  },
+  {
+    "id": "bestehen.perfekt.1",
+    "verb": "bestehen",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} die Fahrprüfung beide {bestanden}.",
+    "en": "We both passed the driving test.",
+    "reviewed": true
+  },
+  {
+    "id": "bestehen.praeteritum.1",
+    "verb": "bestehen",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Die Firma {bestand} über fünfzig Jahre.",
+    "en": "The company existed for over fifty years.",
+    "reviewed": true
+  },
+  {
+    "id": "sorgen.praesens.1",
+    "verb": "sorgen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Meine Mutter {sorgt} für das Essen.",
+    "en": "My mother is taking care of the food.",
+    "reviewed": true
+  },
+  {
+    "id": "sorgen.perfekt.1",
+    "verb": "sorgen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Die Stadt {hat} für neue Parkplätze {gesorgt}.",
+    "en": "The city provided new parking spaces.",
+    "reviewed": true
+  },
+  {
+    "id": "sorgen.futur_konjunktiv_ii.1",
+    "verb": "sorgen",
+    "table": "futur_konjunktiv_ii",
+    "person": "fp",
+    "de": "Wir {würden} für gutes Wetter {sorgen}, wenn wir könnten.",
+    "en": "We would arrange good weather if we could.",
+    "reviewed": true
+  },
+  {
+    "id": "tragen.praesens.1",
+    "verb": "tragen",
+    "table": "praesens_indikativ",
+    "person": "ss",
+    "de": "Du {trägst} heute eine blaue Jacke.",
+    "en": "You're wearing a blue jacket today.",
+    "reviewed": true
+  },
+  {
+    "id": "tragen.perfekt.1",
+    "verb": "tragen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Er {hat} die schweren Taschen allein {getragen}.",
+    "en": "He carried the heavy bags by himself.",
+    "reviewed": true
+  },
+  {
+    "id": "tragen.praeteritum.1",
+    "verb": "tragen",
+    "table": "praeteritum_indikativ",
+    "person": "tp",
+    "de": "Früher {trugen} alle Schüler Uniformen.",
+    "en": "In the past, all the students wore uniforms.",
+    "reviewed": true
+  },
+  {
+    "id": "entstehen.praesens.1",
+    "verb": "entstehen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Hier {entsteht} ein neues Haus.",
+    "en": "A new house is going up here.",
+    "reviewed": true
+  },
+  {
+    "id": "entstehen.perfekt.1",
+    "verb": "entstehen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Wie {ist} dieser Fleck auf dem Teppich {entstanden}?",
+    "en": "How did this stain on the carpet get here?",
+    "reviewed": true
+  },
+  {
+    "id": "entstehen.praeteritum.1",
+    "verb": "entstehen",
+    "table": "praeteritum_indikativ",
+    "person": "tp",
+    "de": "Im Mittelalter {entstanden} viele Städte.",
+    "en": "Many cities arose in the Middle Ages.",
+    "reviewed": true
+  },
+  {
+    "id": "fahren.praesens.1",
+    "verb": "fahren",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Mein Vater {fährt} einen alten Wagen.",
+    "en": "My father drives an old car.",
+    "reviewed": true
+  },
+  {
+    "id": "fahren.perfekt.1",
+    "verb": "fahren",
+    "reading": 1,
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {sind} letzten Sommer nach Italien {gefahren}.",
+    "en": "We went to Italy last summer.",
+    "reviewed": true
+  },
+  {
+    "id": "fahren.praeteritum.1",
+    "verb": "fahren",
+    "reading": 1,
+    "table": "praeteritum_indikativ",
+    "person": "fs",
+    "de": "Als Kind {fuhr} ich jeden Sommer zu meiner Oma.",
+    "en": "As a child, I went to my grandmother's every summer.",
+    "reviewed": true
+  },
+  {
+    "id": "berichten.praesens.1",
+    "verb": "berichten",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Die Zeitung {berichtet} heute über das Wetter.",
+    "en": "The newspaper reports on the weather today.",
+    "reviewed": true
+  },
+  {
+    "id": "berichten.perfekt.1",
+    "verb": "berichten",
+    "table": "perfekt_indikativ",
+    "person": "tp",
+    "de": "Die Reporter {haben} live vom Fest {berichtet}.",
+    "en": "The reporters reported live from the festival.",
+    "reviewed": true
+  },
+  {
+    "id": "berichten.praeteritum.1",
+    "verb": "berichten",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Der Lehrer {berichtete} von seiner Reise nach Japan.",
+    "en": "The teacher told us about his trip to Japan.",
+    "reviewed": true
+  },
+  {
+    "id": "kennen.praesens.1",
+    "verb": "kennen",
+    "table": "praesens_indikativ",
+    "person": "ss",
+    "de": "{Kennst} du den neuen Lehrer?",
+    "en": "Do you know the new teacher?",
+    "reviewed": true
+  },
+  {
+    "id": "kennen.perfekt.1",
+    "verb": "kennen",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} uns schon als Kinder {gekannt}.",
+    "en": "We knew each other as children.",
+    "reviewed": true
+  },
+  {
+    "id": "kennen.praeteritum.1",
+    "verb": "kennen",
+    "table": "praeteritum_indikativ",
+    "person": "fs",
+    "de": "Ich {kannte} sie damals noch nicht.",
+    "en": "I didn't know her yet back then.",
+    "reviewed": true
+  },
+  {
+    "id": "leben.praesens.1",
+    "verb": "leben",
+    "table": "praesens_indikativ",
+    "person": "tp",
+    "de": "Meine Großeltern {leben} auf dem Land.",
+    "en": "My grandparents live in the country.",
+    "reviewed": true
+  },
+  {
+    "id": "leben.perfekt.1",
+    "verb": "leben",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} zwei Jahre in Berlin {gelebt}.",
+    "en": "We lived in Berlin for two years.",
+    "reviewed": true
+  },
+  {
+    "id": "leben.futur_konjunktiv_ii.1",
+    "verb": "leben",
+    "table": "futur_konjunktiv_ii",
+    "person": "ss",
+    "de": "{Würdest} du lieber in der Stadt {leben}?",
+    "en": "Would you rather live in the city?",
+    "reviewed": true
+  },
+  {
+    "id": "unterstützen.praesens.1",
+    "verb": "unterstützen",
+    "table": "praesens_indikativ",
+    "person": "tp",
+    "de": "Meine Eltern {unterstützen} mich beim Studium.",
+    "en": "My parents support me in my studies.",
+    "reviewed": true
+  },
+  {
+    "id": "unterstützen.perfekt.1",
+    "verb": "unterstützen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Der Verein {hat} die Kinder jahrelang {unterstützt}.",
+    "en": "The club supported the children for years.",
+    "reviewed": true
+  },
+  {
+    "id": "unterstützen.praeteritum.1",
+    "verb": "unterstützen",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Die Firma {unterstützte} das Fest mit Getränken.",
+    "en": "The company supported the festival by donating drinks.",
+    "reviewed": true
+  },
+  {
+    "id": "entscheiden.praesens.1",
+    "verb": "entscheiden",
+    "table": "praesens_indikativ",
+    "person": "fs",
+    "de": "Heute {entscheide} ich, was wir essen.",
+    "en": "Today I decide what we're eating.",
+    "reviewed": true
+  },
+  {
+    "id": "entscheiden.perfekt.1",
+    "verb": "entscheiden",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} uns für das blaue Auto {entschieden}.",
+    "en": "We decided on the blue car.",
+    "reviewed": true
+  },
+  {
+    "id": "entscheiden.futur_konjunktiv_ii.1",
+    "verb": "entscheiden",
+    "table": "futur_konjunktiv_ii",
+    "person": "fs",
+    "de": "An deiner Stelle {würde} ich mich schnell {entscheiden}.",
+    "en": "In your place, I would decide quickly.",
+    "reviewed": true
+  },
+  {
+    "id": "denken.praesens.1",
+    "verb": "denken",
+    "table": "praesens_indikativ",
+    "person": "fs",
+    "de": "Ich {denke} oft an meine Familie.",
+    "en": "I often think of my family.",
+    "reviewed": true
+  },
+  {
+    "id": "denken.perfekt.1",
+    "verb": "denken",
+    "table": "perfekt_indikativ",
+    "person": "ss",
+    "de": "{Hast} du an den Einkauf {gedacht}?",
+    "en": "Did you remember the groceries?",
+    "reviewed": true
+  },
+  {
+    "id": "denken.konjunktiv_i.1",
+    "verb": "denken",
+    "table": "praesens_konjunktiv_i",
+    "person": "ts",
+    "de": "Sie sagt, er {denke} nur an sich.",
+    "en": "She says he only thinks of himself.",
+    "reviewed": true
+  },
+  {
+    "id": "folgen.imperativ.1",
+    "verb": "folgen",
+    "table": "imperativ",
+    "person": "sp",
+    "de": "{Folgt} dem Weg bis zum See!",
+    "en": "Follow the path to the lake!",
+    "reviewed": true
+  },
+  {
+    "id": "folgen.perfekt.1",
+    "verb": "folgen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Der Hund {ist} dem Jungen nach Hause {gefolgt}.",
+    "en": "The dog followed the boy home.",
+    "reviewed": true
+  },
+  {
+    "id": "folgen.praeteritum.1",
+    "verb": "folgen",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Auf den Regen {folgte} ein kalter Wind.",
+    "en": "A cold wind followed the rain.",
+    "reviewed": true
+  },
+  {
+    "id": "lesen.praesens.1",
+    "verb": "lesen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Mein Bruder {liest} jeden Abend ein Buch.",
+    "en": "My brother reads a book every evening.",
+    "reviewed": true
+  },
+  {
+    "id": "lesen.perfekt.1",
+    "verb": "lesen",
+    "table": "perfekt_indikativ",
+    "person": "sp",
+    "de": "Ihr {habt} den Brief noch nicht {gelesen}.",
+    "en": "You haven't read the letter yet.",
+    "reviewed": true
+  },
+  {
+    "id": "lesen.praeteritum.1",
+    "verb": "lesen",
+    "table": "praeteritum_indikativ",
+    "person": "fs",
+    "de": "Früher {las} ich jeden Abend die Zeitung.",
+    "en": "I used to read the newspaper every evening.",
+    "reviewed": true
+  },
+  {
+    "id": "legen.imperativ.1",
+    "verb": "legen",
+    "table": "imperativ",
+    "person": "ss",
+    "de": "{Leg} das Buch bitte auf den Tisch!",
+    "en": "Please put the book on the table!",
+    "reviewed": true
+  },
+  {
+    "id": "legen.perfekt.1",
+    "verb": "legen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Sie {hat} die Schlüssel in die Schublade {gelegt}.",
+    "en": "She put the keys in the drawer.",
+    "reviewed": true
+  },
+  {
+    "id": "legen.praeteritum.1",
+    "verb": "legen",
+    "table": "praeteritum_indikativ",
+    "person": "tp",
+    "de": "Die Kinder {legten} ihre Mäntel aufs Bett.",
+    "en": "The children laid their coats on the bed.",
+    "reviewed": true
+  },
+  {
+    "id": "meinen.praesens.1",
+    "verb": "meinen",
+    "table": "praesens_indikativ",
+    "person": "ss",
+    "de": "Was {meinst} du dazu?",
+    "en": "What do you think about that?",
+    "reviewed": true
+  },
+  {
+    "id": "meinen.perfekt.1",
+    "verb": "meinen",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Das {habe} ich nicht so {gemeint}.",
+    "en": "I didn't mean it that way.",
+    "reviewed": true
+  },
+  {
+    "id": "meinen.konjunktiv_i.1",
+    "verb": "meinen",
+    "table": "praesens_konjunktiv_i",
+    "person": "ts",
+    "de": "Er sagt, sie {meine} das ernst.",
+    "en": "He says she is serious.",
+    "reviewed": true
+  },
+  {
+    "id": "handeln.praesens.1",
+    "verb": "handeln",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Der Mann {handelt} mit alten Büchern.",
+    "en": "The man deals in old books.",
+    "reviewed": true
+  },
+  {
+    "id": "handeln.perfekt.1",
+    "verb": "handeln",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} schnell {gehandelt}.",
+    "en": "We acted quickly.",
+    "reviewed": true
+  },
+  {
+    "id": "handeln.futur_konjunktiv_ii.1",
+    "verb": "handeln",
+    "table": "futur_konjunktiv_ii",
+    "person": "ts",
+    "de": "So {würde} niemand {handeln}.",
+    "en": "Nobody would act like that.",
+    "reviewed": true
+  },
+  {
+    "id": "verlieren.praesens.1",
+    "verb": "verlieren",
+    "table": "praesens_indikativ",
+    "person": "ss",
+    "de": "Du {verlierst} immer deine Handschuhe.",
+    "en": "You always lose your gloves.",
+    "reviewed": true
+  },
+  {
+    "id": "verlieren.perfekt.1",
+    "verb": "verlieren",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Unsere Mannschaft {hat} das Spiel {verloren}.",
+    "en": "Our team lost the game.",
+    "reviewed": true
+  },
+  {
+    "id": "verlieren.praeteritum.1",
+    "verb": "verlieren",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Im Park {verlor} er seinen Hut.",
+    "en": "He lost his hat in the park.",
+    "reviewed": true
+  },
+  {
+    "id": "versuchen.praesens.1",
+    "verb": "versuchen",
+    "table": "praesens_indikativ",
+    "person": "fp",
+    "de": "Wir {versuchen} es noch einmal.",
+    "en": "We're trying again.",
+    "reviewed": true
+  },
+  {
+    "id": "versuchen.perfekt.1",
+    "verb": "versuchen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Er {hat} dreimal {versucht}, dich anzurufen.",
+    "en": "He tried to call you three times.",
+    "reviewed": true
+  },
+  {
+    "id": "versuchen.konjunktiv_i.1",
+    "verb": "versuchen",
+    "table": "praesens_konjunktiv_i",
+    "person": "ts",
+    "de": "Sie sagt, er {versuche} es morgen wieder.",
+    "en": "She says he will try again tomorrow.",
+    "reviewed": true
+  },
+  {
+    "id": "teilen.imperativ.1",
+    "verb": "teilen",
+    "table": "imperativ",
+    "person": "ss",
+    "de": "{Teil} den Kuchen bitte mit deiner Schwester!",
+    "en": "Please share the cake with your sister!",
+    "reviewed": true
+  },
+  {
+    "id": "teilen.perfekt.1",
+    "verb": "teilen",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} uns die Rechnung {geteilt}.",
+    "en": "We split the check.",
+    "reviewed": true
+  },
+  {
+    "id": "teilen.praeteritum.1",
+    "verb": "teilen",
+    "table": "praeteritum_indikativ",
+    "person": "fp",
+    "de": "Als Kinder {teilten} wir ein Zimmer.",
+    "en": "As kids, we shared a room.",
+    "reviewed": true
+  },
+  {
+    "id": "nennen.praesens.1",
+    "verb": "nennen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Man {nennt} ihn hier nur Opa Karl.",
+    "en": "Here people just call him Grandpa Karl.",
+    "reviewed": true
+  },
+  {
+    "id": "nennen.perfekt.1",
+    "verb": "nennen",
+    "table": "perfekt_indikativ",
+    "person": "tp",
+    "de": "Sie {haben} ihre Tochter Marie {genannt}.",
+    "en": "They named their daughter Marie.",
+    "reviewed": true
+  },
+  {
+    "id": "nennen.futur_konjunktiv_ii.1",
+    "verb": "nennen",
+    "table": "futur_konjunktiv_ii",
+    "person": "ss",
+    "de": "Wie {würdest} du dieses Gefühl {nennen}?",
+    "en": "What would you call this feeling?",
+    "reviewed": true
+  },
+  {
+    "id": "entwickeln.praesens.1",
+    "verb": "entwickeln",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Die Firma {entwickelt} neue Spiele.",
+    "en": "The company is developing new games.",
+    "reviewed": true
+  },
+  {
+    "id": "entwickeln.perfekt.1",
+    "verb": "entwickeln",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Mein Sohn {hat} sich sehr gut {entwickelt}.",
+    "en": "My son has developed really well.",
+    "reviewed": true
+  },
+  {
+    "id": "entwickeln.praeteritum.1",
+    "verb": "entwickeln",
+    "table": "praeteritum_indikativ",
+    "person": "tp",
+    "de": "Im Labor {entwickelten} die Forscher ein neues Medikament.",
+    "en": "In the lab, the researchers developed a new medicine.",
+    "reviewed": true
+  },
+  {
+    "id": "erwarten.praesens.1",
+    "verb": "erwarten",
+    "table": "praesens_indikativ",
+    "person": "fp",
+    "de": "Wir {erwarten} heute Besuch.",
+    "en": "We're expecting company today.",
+    "reviewed": true
+  },
+  {
+    "id": "erwarten.perfekt.1",
+    "verb": "erwarten",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Ich {habe} dich erst morgen {erwartet}.",
+    "en": "I didn't expect you until tomorrow.",
+    "reviewed": true
+  },
+  {
+    "id": "erwarten.futur_konjunktiv_ii.1",
+    "verb": "erwarten",
+    "table": "futur_konjunktiv_ii",
+    "person": "fs",
+    "de": "Das {würde} ich nie von dir {erwarten}.",
+    "en": "I would never expect that from you.",
+    "reviewed": true
+  },
+  {
+    "id": "fragen.imperativ.1",
+    "verb": "fragen",
+    "table": "imperativ",
+    "person": "ss",
+    "de": "{Frag} doch deinen Lehrer!",
+    "en": "Just ask your teacher!",
+    "reviewed": true
+  },
+  {
+    "id": "fragen.perfekt.1",
+    "verb": "fragen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Sie {hat} mich nach dem Weg {gefragt}.",
+    "en": "She asked me for directions.",
+    "reviewed": true
+  },
+  {
+    "id": "fragen.praeteritum.1",
+    "verb": "fragen",
+    "table": "praeteritum_indikativ",
+    "person": "fs",
+    "de": "Im Laden {fragte} ich nach einem Rabatt.",
+    "en": "In the store, I asked for a discount.",
+    "reviewed": true
+  },
+  {
+    "id": "übernehmen.praesens.1",
+    "verb": "übernehmen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Meine Schwester {übernimmt} das Geschäft.",
+    "en": "My sister is taking over the business.",
+    "reviewed": true
+  },
+  {
+    "id": "übernehmen.perfekt.1",
+    "verb": "übernehmen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Er {hat} gestern die Rechnung {übernommen}.",
+    "en": "He picked up the check yesterday.",
+    "reviewed": true
+  },
+  {
+    "id": "übernehmen.futur_konjunktiv_ii.1",
+    "verb": "übernehmen",
+    "table": "futur_konjunktiv_ii",
+    "person": "fs",
+    "de": "Ich {würde} die Aufgabe gern {übernehmen}.",
+    "en": "I would like to take on the task.",
+    "reviewed": true
+  },
+  {
+    "id": "kaufen.imperativ.1",
+    "verb": "kaufen",
+    "table": "imperativ",
+    "person": "ss",
+    "de": "{Kauf} bitte Brot und Milch!",
+    "en": "Please buy bread and milk!",
+    "reviewed": true
+  },
+  {
+    "id": "kaufen.perfekt.1",
+    "verb": "kaufen",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} gestern ein neues Sofa {gekauft}.",
+    "en": "We bought a new sofa yesterday.",
+    "reviewed": true
+  },
+  {
+    "id": "kaufen.praeteritum.1",
+    "verb": "kaufen",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Als Kind {kaufte} sie jeden Samstag Eis.",
+    "en": "As a child, she bought ice cream every Saturday.",
+    "reviewed": true
+  },
+  {
+    "id": "glauben.praesens.1",
+    "verb": "glauben",
+    "table": "praesens_indikativ",
+    "person": "fs",
+    "de": "Ich {glaube} dir.",
+    "en": "I believe you.",
+    "reviewed": true
+  },
+  {
+    "id": "glauben.perfekt.1",
+    "verb": "glauben",
+    "table": "perfekt_indikativ",
+    "person": "tp",
+    "de": "Meine Eltern {haben} mir nicht {geglaubt}.",
+    "en": "My parents didn't believe me.",
+    "reviewed": true
+  },
+  {
+    "id": "glauben.konjunktiv_i.1",
+    "verb": "glauben",
+    "table": "praesens_konjunktiv_i",
+    "person": "ts",
+    "de": "Der Lehrer sagt, der Schüler {glaube} das nicht.",
+    "en": "The teacher says the student doesn't believe that.",
+    "reviewed": true
+  },
+  {
+    "id": "feiern.praesens.1",
+    "verb": "feiern",
+    "table": "praesens_indikativ",
+    "person": "fp",
+    "de": "Wir {feiern} heute Omas Geburtstag.",
+    "en": "We're celebrating Grandma's birthday today.",
+    "reviewed": true
+  },
+  {
+    "id": "feiern.perfekt.1",
+    "verb": "feiern",
+    "table": "perfekt_indikativ",
+    "person": "sp",
+    "de": "Ihr {habt} gestern lange {gefeiert}.",
+    "en": "You partied for a long time yesterday.",
+    "reviewed": true
+  },
+  {
+    "id": "feiern.praeteritum.1",
+    "verb": "feiern",
+    "table": "praeteritum_indikativ",
+    "person": "fp",
+    "de": "Früher {feierten} wir Weihnachten bei den Großeltern.",
+    "en": "We used to celebrate Christmas at our grandparents'.",
+    "reviewed": true
+  },
+  {
+    "id": "starten.praesens.1",
+    "verb": "starten",
+    "table": "praesens_indikativ",
+    "person": "fs",
+    "de": "Ich {starte} den Computer.",
+    "en": "I'm starting the computer.",
+    "reviewed": true
+  },
+  {
+    "id": "starten.perfekt.1",
+    "verb": "starten",
+    "reading": 1,
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Das Flugzeug {ist} pünktlich {gestartet}.",
+    "en": "The plane took off on time.",
+    "reviewed": true
+  },
+  {
+    "id": "starten.futur_konjunktiv_ii.1",
+    "verb": "starten",
+    "table": "futur_konjunktiv_ii",
+    "person": "fs",
+    "de": "Ich {würde} das Projekt gern im Mai {starten}.",
+    "en": "I would like to start the project in May.",
+    "reviewed": true
+  },
+  {
+    "id": "befinden.praesens.1",
+    "verb": "befinden",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Das Hotel {befindet} sich am Bahnhof.",
+    "en": "The hotel is right by the train station.",
+    "reviewed": true
+  },
+  {
+    "id": "befinden.perfekt.1",
+    "verb": "befinden",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Der Schlüssel {hat} sich die ganze Zeit in meiner Tasche {befunden}.",
+    "en": "The key was in my bag the whole time.",
+    "reviewed": true
+  },
+  {
+    "id": "befinden.praeteritum.1",
+    "verb": "befinden",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Das alte Rathaus {befand} sich damals am Marktplatz.",
+    "en": "The old town hall was located at the market square back then.",
+    "reviewed": true
+  },
+  {
+    "id": "fordern.praesens.1",
+    "verb": "fordern",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Der Lehrer {fordert} mehr Ruhe.",
+    "en": "The teacher demands more quiet.",
+    "reviewed": true
+  },
+  {
+    "id": "fordern.perfekt.1",
+    "verb": "fordern",
+    "table": "perfekt_indikativ",
+    "person": "tp",
+    "de": "Die Fans {haben} laut eine Zugabe {gefordert}.",
+    "en": "The fans loudly demanded an encore.",
+    "reviewed": true
+  },
+  {
+    "id": "fordern.konjunktiv_i.1",
+    "verb": "fordern",
+    "table": "praesens_konjunktiv_i",
+    "person": "ts",
+    "de": "Der Chef sagt, er {fordere} mehr Pünktlichkeit.",
+    "en": "The boss says he demands more punctuality.",
+    "reviewed": true
+  },
+  {
+    "id": "öffnen.imperativ.1",
+    "verb": "öffnen",
+    "table": "imperativ",
+    "person": "ss",
+    "de": "{Öffne} bitte das Fenster!",
+    "en": "Please open the window!",
+    "reviewed": true
+  },
+  {
+    "id": "öffnen.perfekt.1",
+    "verb": "öffnen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Wer {hat} die Tür {geöffnet}?",
+    "en": "Who opened the door?",
+    "reviewed": true
+  },
+  {
+    "id": "öffnen.praeteritum.1",
+    "verb": "öffnen",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Der Laden {öffnete} früher um sieben.",
+    "en": "The store used to open at seven.",
+    "reviewed": true
+  },
+  {
+    "id": "gelingen.praesens.1",
+    "verb": "gelingen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Der Kuchen {gelingt} mir immer.",
+    "en": "The cake always turns out well for me.",
+    "reviewed": true
+  },
+  {
+    "id": "gelingen.perfekt.1",
+    "verb": "gelingen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Das Foto {ist} dir wirklich {gelungen}.",
+    "en": "The photo really turned out well.",
+    "reviewed": true
+  },
+  {
+    "id": "gelingen.praeteritum.1",
+    "verb": "gelingen",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Der Plan {gelang} beim ersten Versuch.",
+    "en": "The plan succeeded on the first try.",
+    "reviewed": true
+  },
+  {
+    "id": "steigen.praesens.1",
+    "verb": "steigen",
+    "table": "praesens_indikativ",
+    "person": "tp",
+    "de": "Die Preise {steigen} jedes Jahr.",
+    "en": "Prices rise every year.",
+    "reviewed": true
+  },
+  {
+    "id": "steigen.perfekt.1",
+    "verb": "steigen",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Am Sonntag {sind} wir auf den Hügel {gestiegen}.",
+    "en": "On Sunday we climbed the hill.",
+    "reviewed": true
+  },
+  {
+    "id": "steigen.konjunktiv_i.1",
+    "verb": "steigen",
+    "table": "praesens_konjunktiv_i",
+    "person": "ts",
+    "de": "Die Firma meldet, der Umsatz {steige} weiter.",
+    "en": "The company reports that sales keep rising.",
+    "reviewed": true
+  },
+  {
+    "id": "schließen.imperativ.1",
+    "verb": "schließen",
+    "table": "imperativ",
+    "person": "sp",
+    "de": "{Schließt} bitte die Fenster, es regnet!",
+    "en": "Please close the windows, it's raining!",
+    "reviewed": true
+  },
+  {
+    "id": "schließen.perfekt.1",
+    "verb": "schließen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Der Laden {hat} um sechs {geschlossen}.",
+    "en": "The store closed at six.",
+    "reviewed": true
+  },
+  {
+    "id": "schließen.futur_konjunktiv_ii.1",
+    "verb": "schließen",
+    "table": "futur_konjunktiv_ii",
+    "person": "ss",
+    "de": "{Würdest} du bitte das Fenster {schließen}?",
+    "en": "Would you please close the window?",
+    "reviewed": true
+  },
+  {
+    "id": "scheinen.praesens.1",
+    "verb": "scheinen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Heute {scheint} die Sonne.",
+    "en": "The sun is shining today.",
+    "reviewed": true
+  },
+  {
+    "id": "scheinen.perfekt.1",
+    "verb": "scheinen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Gestern {hat} die Sonne den ganzen Tag {geschienen}.",
+    "en": "Yesterday the sun shone all day.",
+    "reviewed": true
+  },
+  {
+    "id": "scheinen.konjunktiv_i.1",
+    "verb": "scheinen",
+    "table": "praesens_konjunktiv_i",
+    "person": "ts",
+    "de": "Der Wetterbericht sagt, morgen {scheine} die Sonne.",
+    "en": "The forecast says the sun will shine tomorrow.",
+    "reviewed": true
+  },
+  {
+    "id": "verwenden.praesens.1",
+    "verb": "verwenden",
+    "table": "praesens_indikativ",
+    "person": "fp",
+    "de": "Wir {verwenden} im Unterricht ein Wörterbuch.",
+    "en": "We use a dictionary in class.",
+    "reviewed": true
+  },
+  {
+    "id": "verwenden.perfekt.1",
+    "verb": "verwenden",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Sie {hat} dafür einen Bleistift {verwendet}.",
+    "en": "She used a pencil for it.",
+    "reviewed": true
+  },
+  {
+    "id": "verwenden.praeteritum.1",
+    "verb": "verwenden",
+    "table": "praeteritum_indikativ",
+    "person": "tp",
+    "de": "Früher {verwendeten} die Leute Kerzen.",
+    "en": "In the old days people used candles.",
+    "reviewed": true
+  },
+  {
+    "id": "lernen.praesens.1",
+    "verb": "lernen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Meine Tochter {lernt} Klavier.",
+    "en": "My daughter is learning piano.",
+    "reviewed": true
+  },
+  {
+    "id": "lernen.perfekt.1",
+    "verb": "lernen",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Ich {habe} gestern zwei Stunden Deutsch {gelernt}.",
+    "en": "I studied German for two hours yesterday.",
+    "reviewed": true
+  },
+  {
+    "id": "lernen.futur_konjunktiv_ii.1",
+    "verb": "lernen",
+    "table": "futur_konjunktiv_ii",
+    "person": "fs",
+    "de": "Ich {würde} gern Spanisch {lernen}.",
+    "en": "I would like to learn Spanish.",
+    "reviewed": true
+  },
+  {
+    "id": "verstehen.praesens.1",
+    "verb": "verstehen",
+    "table": "praesens_indikativ",
+    "person": "fs",
+    "de": "Ich {verstehe} die Frage nicht.",
+    "en": "I don't understand the question.",
+    "reviewed": true
+  },
+  {
+    "id": "verstehen.perfekt.1",
+    "verb": "verstehen",
+    "table": "perfekt_indikativ",
+    "person": "ss",
+    "de": "{Hast} du den Film {verstanden}?",
+    "en": "Did you understand the movie?",
+    "reviewed": true
+  },
+  {
+    "id": "verstehen.praeteritum.1",
+    "verb": "verstehen",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Der Lehrer {verstand} den Witz nicht.",
+    "en": "The teacher didn't get the joke.",
+    "reviewed": true
+  },
+  {
+    "id": "fehlen.praesens.1",
+    "verb": "fehlen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Mir {fehlt} noch ein Stift.",
+    "en": "I'm still missing a pen.",
+    "reviewed": true
+  },
+  {
+    "id": "fehlen.perfekt.1",
+    "verb": "fehlen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Gestern {hat} die halbe Klasse {gefehlt}.",
+    "en": "Half the class was absent yesterday.",
+    "reviewed": true
+  },
+  {
+    "id": "fehlen.konjunktiv_i.1",
+    "verb": "fehlen",
+    "table": "praesens_konjunktiv_i",
+    "person": "ts",
+    "de": "Er sagt, ihm {fehle} die Zeit.",
+    "en": "He says he lacks the time.",
+    "reviewed": true
+  },
+  {
+    "id": "treten.praesens.1",
+    "verb": "treten",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Der Junge {tritt} gegen den Ball.",
+    "en": "The boy kicks the ball.",
+    "reviewed": true
+  },
+  {
+    "id": "treten.perfekt.1",
+    "verb": "treten",
+    "reading": 1,
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Sie {ist} in die Pfütze {getreten}.",
+    "en": "She stepped in the puddle.",
+    "reviewed": true
+  },
+  {
+    "id": "treten.praeteritum.1",
+    "verb": "treten",
+    "reading": 1,
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Als es klingelte, {trat} sie vor die Tür.",
+    "en": "When the doorbell rang, she stepped outside.",
+    "reviewed": true
+  },
+  {
+    "id": "erscheinen.praesens.1",
+    "verb": "erscheinen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Das Buch {erscheint} im Herbst.",
+    "en": "The book comes out in the fall.",
+    "reviewed": true
+  },
+  {
+    "id": "erscheinen.perfekt.1",
+    "verb": "erscheinen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Der Artikel {ist} gestern in der Zeitung {erschienen}.",
+    "en": "The article appeared in the newspaper yesterday.",
+    "reviewed": true
+  },
+  {
+    "id": "erscheinen.praeteritum.1",
+    "verb": "erscheinen",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Plötzlich {erschien} ein Regenbogen am Himmel.",
+    "en": "Suddenly a rainbow appeared in the sky.",
+    "reviewed": true
+  },
+  {
+    "id": "erfahren.praesens.1",
+    "verb": "erfahren",
+    "table": "praesens_indikativ",
+    "person": "fp",
+    "de": "Wir {erfahren} die Wahrheit morgen.",
+    "en": "We'll find out the truth tomorrow.",
+    "reviewed": true
+  },
+  {
+    "id": "erfahren.perfekt.1",
+    "verb": "erfahren",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Ich {habe} es erst gestern {erfahren}.",
+    "en": "I only found out about it yesterday.",
+    "reviewed": true
+  },
+  {
+    "id": "erfahren.praeteritum.1",
+    "verb": "erfahren",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Sie {erfuhr} die Nachricht aus dem Radio.",
+    "en": "She heard the news on the radio.",
+    "reviewed": true
+  },
+  {
+    "id": "planen.praesens.1",
+    "verb": "planen",
+    "table": "praesens_indikativ",
+    "person": "fp",
+    "de": "Wir {planen} eine Reise nach Italien.",
+    "en": "We're planning a trip to Italy.",
+    "reviewed": true
+  },
+  {
+    "id": "planen.perfekt.1",
+    "verb": "planen",
+    "table": "perfekt_indikativ",
+    "person": "tp",
+    "de": "Meine Eltern {haben} die Party lange {geplant}.",
+    "en": "My parents planned the party for a long time.",
+    "reviewed": true
+  },
+  {
+    "id": "planen.konjunktiv_i.1",
+    "verb": "planen",
+    "table": "praesens_konjunktiv_i",
+    "person": "ts",
+    "de": "Sie sagt, ihre Firma {plane} ein neues Büro.",
+    "en": "She says her company is planning a new office.",
+    "reviewed": true
+  },
+  {
+    "id": "erzählen.imperativ.1",
+    "verb": "erzählen",
+    "table": "imperativ",
+    "person": "ss",
+    "de": "{Erzähl} mir bitte eine Geschichte!",
+    "en": "Please tell me a story!",
+    "reviewed": true
+  },
+  {
+    "id": "erzählen.perfekt.1",
+    "verb": "erzählen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Opa {hat} uns viel von früher {erzählt}.",
+    "en": "Grandpa told us a lot about the old days.",
+    "reviewed": true
+  },
+  {
+    "id": "erzählen.futur_konjunktiv_ii.1",
+    "verb": "erzählen",
+    "table": "futur_konjunktiv_ii",
+    "person": "fs",
+    "de": "Ich {würde} dir gern mehr {erzählen}, aber ich muss los.",
+    "en": "I would love to tell you more, but I have to go.",
+    "reviewed": true
+  },
+  {
+    "id": "fühlen.praesens.1",
+    "verb": "fühlen",
+    "table": "praesens_indikativ",
+    "person": "fs",
+    "de": "Ich {fühle} mich heute nicht gut.",
+    "en": "I don't feel well today.",
+    "reviewed": true
+  },
+  {
+    "id": "fühlen.perfekt.1",
+    "verb": "fühlen",
+    "table": "perfekt_indikativ",
+    "person": "ss",
+    "de": "Wie {hast} du dich nach dem Test {gefühlt}?",
+    "en": "How did you feel after the test?",
+    "reviewed": true
+  },
+  {
+    "id": "fühlen.praeteritum.1",
+    "verb": "fühlen",
+    "table": "praeteritum_indikativ",
+    "person": "tp",
+    "de": "Nach dem Urlaub {fühlten} sich alle erholt.",
+    "en": "After the vacation, everyone felt rested.",
+    "reviewed": true
+  },
+  {
+    "id": "wählen.praesens.1",
+    "verb": "wählen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Meine Mutter {wählt} immer den Fisch.",
+    "en": "My mother always chooses the fish.",
+    "reviewed": true
+  },
+  {
+    "id": "wählen.perfekt.1",
+    "verb": "wählen",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} gestern einen neuen Bürgermeister {gewählt}.",
+    "en": "We elected a new mayor yesterday.",
+    "reviewed": true
+  },
+  {
+    "id": "wählen.futur_konjunktiv_ii.1",
+    "verb": "wählen",
+    "table": "futur_konjunktiv_ii",
+    "person": "fs",
+    "de": "Ich {würde} die blaue Jacke {wählen}.",
+    "en": "I would choose the blue jacket.",
+    "reviewed": true
+  },
+  {
+    "id": "passen.praesens.1",
+    "verb": "passen",
+    "table": "praesens_indikativ",
+    "person": "tp",
+    "de": "Die Schuhe {passen} mir gut.",
+    "en": "The shoes fit me well.",
+    "reviewed": true
+  },
+  {
+    "id": "passen.perfekt.1",
+    "verb": "passen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Die Jacke {hat} gestern noch {gepasst}.",
+    "en": "The jacket still fit yesterday.",
+    "reviewed": true
+  },
+  {
+    "id": "passen.konjunktiv_i.1",
+    "verb": "passen",
+    "table": "praesens_konjunktiv_i",
+    "person": "ts",
+    "de": "Er sagt, der Termin {passe} ihm nicht.",
+    "en": "He says the appointment doesn't suit him.",
+    "reviewed": true
+  },
+  {
+    "id": "hören.praesens.1",
+    "verb": "hören",
+    "table": "praesens_indikativ",
+    "person": "ss",
+    "de": "{Hörst} du die Vögel?",
+    "en": "Do you hear the birds?",
+    "reviewed": true
+  },
+  {
+    "id": "hören.perfekt.1",
+    "verb": "hören",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Ich {habe} dich gar nicht {gehört}.",
+    "en": "I didn't hear you at all.",
+    "reviewed": true
+  },
+  {
+    "id": "hören.praeteritum.1",
+    "verb": "hören",
+    "table": "praeteritum_indikativ",
+    "person": "fp",
+    "de": "Nachts {hörten} wir einen Fuchs im Garten.",
+    "en": "At night we heard a fox in the garden.",
+    "reviewed": true
+  },
+  {
+    "id": "bedeuten.praesens.1",
+    "verb": "bedeuten",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Was {bedeutet} dieses Wort?",
+    "en": "What does this word mean?",
+    "reviewed": true
+  },
+  {
+    "id": "bedeuten.perfekt.1",
+    "verb": "bedeuten",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Das {hat} mir viel {bedeutet}.",
+    "en": "That meant a lot to me.",
+    "reviewed": true
+  },
+  {
+    "id": "wünschen.praesens.1",
+    "verb": "wünschen",
+    "table": "praesens_indikativ",
+    "person": "fp",
+    "de": "Wir {wünschen} Ihnen einen schönen Urlaub!",
+    "en": "We wish you a nice vacation!",
+    "reviewed": true
+  },
+  {
+    "id": "wünschen.perfekt.1",
+    "verb": "wünschen",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Ich {habe} mir ein Fahrrad {gewünscht}.",
+    "en": "I wished for a bike.",
+    "reviewed": true
+  },
+  {
+    "id": "laden.praesens.1",
+    "verb": "laden",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Der Mann {lädt} die Kisten ins Auto.",
+    "en": "The man loads the boxes into the car.",
+    "reviewed": true
+  },
+  {
+    "id": "laden.perfekt.1",
+    "verb": "laden",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} gestern den Akku {geladen}.",
+    "en": "We charged the battery yesterday.",
+    "reviewed": true
+  },
+  {
+    "id": "verbinden.praesens.1",
+    "verb": "verbinden",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Diese Brücke {verbindet} die beiden Städte.",
+    "en": "This bridge connects the two cities.",
+    "reviewed": true
+  },
+  {
+    "id": "verbinden.perfekt.1",
+    "verb": "verbinden",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Die Sekretärin {hat} mich mit dem Chef {verbunden}.",
+    "en": "The secretary put me through to the boss.",
+    "reviewed": true
+  },
+  {
+    "id": "erkennen.praesens.1",
+    "verb": "erkennen",
+    "table": "praesens_indikativ",
+    "person": "ss",
+    "de": "{Erkennst} du mich nicht mehr?",
+    "en": "Don't you recognize me anymore?",
+    "reviewed": true
+  },
+  {
+    "id": "erkennen.perfekt.1",
+    "verb": "erkennen",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Ich {habe} ihn sofort {erkannt}.",
+    "en": "I recognized him right away.",
+    "reviewed": true
+  },
+  {
+    "id": "wirken.praesens.1",
+    "verb": "wirken",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Die Medizin {wirkt} schnell.",
+    "en": "The medicine works quickly.",
+    "reviewed": true
+  },
+  {
+    "id": "wirken.praeteritum.1",
+    "verb": "wirken",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Das Medikament {wirkte} nach einer Stunde.",
+    "en": "The medication took effect after an hour.",
+    "reviewed": true
+  },
+  {
+    "id": "hoffen.praesens.1",
+    "verb": "hoffen",
+    "table": "praesens_indikativ",
+    "person": "fp",
+    "de": "Wir {hoffen} auf gutes Wetter.",
+    "en": "We're hoping for good weather.",
+    "reviewed": true
+  },
+  {
+    "id": "hoffen.perfekt.1",
+    "verb": "hoffen",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Ich {habe} so {gehofft}, dass du kommst.",
+    "en": "I was really hoping you would come.",
+    "reviewed": true
+  },
+  {
+    "id": "ändern.praesens.1",
+    "verb": "ändern",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Das Wetter {ändert} sich oft.",
+    "en": "The weather changes often.",
+    "reviewed": true
+  },
+  {
+    "id": "ändern.perfekt.1",
+    "verb": "ändern",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Meine Schwester {hat} ihre Meinung {geändert}.",
+    "en": "My sister changed her mind.",
+    "reviewed": true
+  },
+  {
+    "id": "fallen.praesens.1",
+    "verb": "fallen",
+    "table": "praesens_indikativ",
+    "person": "tp",
+    "de": "Im Herbst {fallen} die Blätter von den Bäumen.",
+    "en": "In the fall, the leaves fall from the trees.",
+    "reviewed": true
+  },
+  {
+    "id": "fallen.perfekt.1",
+    "verb": "fallen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Das Kind {ist} vom Stuhl {gefallen}.",
+    "en": "The child fell off the chair.",
+    "reviewed": true
+  },
+  {
+    "id": "gefallen.praesens.1",
+    "verb": "gefallen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Das Bild {gefällt} mir sehr.",
+    "en": "I like the picture a lot.",
+    "reviewed": true
+  },
+  {
+    "id": "gefallen.konjunktiv_i.1",
+    "verb": "gefallen",
+    "table": "praesens_konjunktiv_i",
+    "person": "ts",
+    "de": "Sie sagt, das Kleid {gefalle} ihr.",
+    "en": "She says she likes the dress.",
+    "reviewed": true
+  },
+  {
+    "id": "erfolgen.praesens.1",
+    "verb": "erfolgen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Die Zahlung {erfolgt} per Überweisung.",
+    "en": "Payment is made by bank transfer.",
+    "reviewed": true
+  },
+  {
+    "id": "erfolgen.praeteritum.1",
+    "verb": "erfolgen",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Die Antwort {erfolgte} erst am nächsten Tag.",
+    "en": "The answer didn't come until the next day.",
+    "reviewed": true
+  },
+  {
+    "id": "anbieten.praesens.1",
+    "verb": "anbieten",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Das Café {bietet} auch Frühstück {an}.",
+    "en": "The café also offers breakfast.",
+    "reviewed": true
+  },
+  {
+    "id": "anbieten.perfekt.1",
+    "verb": "anbieten",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Der Nachbar {hat} mir seine Hilfe {angeboten}.",
+    "en": "The neighbor offered me his help.",
+    "reviewed": true
+  },
+  {
+    "id": "bauen.praesens.1",
+    "verb": "bauen",
+    "table": "praesens_indikativ",
+    "person": "tp",
+    "de": "Meine Eltern {bauen} ein kleines Haus.",
+    "en": "My parents are building a small house.",
+    "reviewed": true
+  },
+  {
+    "id": "bauen.futur_konjunktiv_ii.1",
+    "verb": "bauen",
+    "table": "futur_konjunktiv_ii",
+    "person": "fp",
+    "de": "Wir {würden} gern ein Haus {bauen}.",
+    "en": "We would like to build a house.",
+    "reviewed": true
+  },
+  {
+    "id": "sitzen.praesens.1",
+    "verb": "sitzen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Die Katze {sitzt} auf dem Sofa.",
+    "en": "The cat is sitting on the sofa.",
+    "reviewed": true
+  },
+  {
+    "id": "sitzen.praeteritum.1",
+    "verb": "sitzen",
+    "table": "praeteritum_indikativ",
+    "person": "fp",
+    "de": "Wir {saßen} lange im Garten.",
+    "en": "We sat in the garden for a long time.",
+    "reviewed": true
+  },
+  {
+    "id": "erinnern.praesens.1",
+    "verb": "erinnern",
+    "table": "praesens_indikativ",
+    "person": "fs",
+    "de": "Ich {erinnere} mich gut an meine Kindheit.",
+    "en": "I remember my childhood well.",
+    "reviewed": true
+  },
+  {
+    "id": "erinnern.perfekt.1",
+    "verb": "erinnern",
+    "table": "perfekt_indikativ",
+    "person": "ss",
+    "de": "Du {hast} mich an den Termin {erinnert}.",
+    "en": "You reminded me of the appointment.",
+    "reviewed": true
+  },
+  {
+    "id": "erleben.praesens.1",
+    "verb": "erleben",
+    "table": "praesens_indikativ",
+    "person": "fp",
+    "de": "Wir {erleben} hier jeden Tag etwas Neues.",
+    "en": "We experience something new here every day.",
+    "reviewed": true
+  },
+  {
+    "id": "erleben.perfekt.1",
+    "verb": "erleben",
+    "table": "perfekt_indikativ",
+    "person": "tp",
+    "de": "Auf der Reise {haben} sie viel {erlebt}.",
+    "en": "They experienced a lot on the trip.",
+    "reviewed": true
+  },
+  {
+    "id": "präsentieren.praesens.1",
+    "verb": "präsentieren",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Die Firma {präsentiert} heute ihr neues Produkt.",
+    "en": "The company is presenting its new product today.",
+    "reviewed": true
+  },
+  {
+    "id": "präsentieren.perfekt.1",
+    "verb": "präsentieren",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Sie {hat} die Ergebnisse gut {präsentiert}.",
+    "en": "She presented the results well.",
+    "reviewed": true
+  },
+  {
+    "id": "enthalten.praesens.1",
+    "verb": "enthalten",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Diese Suppe {enthält} kein Fleisch.",
+    "en": "This soup contains no meat.",
+    "reviewed": true
+  },
+  {
+    "id": "enthalten.perfekt.1",
+    "verb": "enthalten",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Das Paket {hat} nur Bücher {enthalten}.",
+    "en": "The package contained only books.",
+    "reviewed": true
+  },
+  {
+    "id": "vorstellen.praesens.1",
+    "verb": "vorstellen",
+    "table": "praesens_indikativ",
+    "person": "fs",
+    "de": "Ich {stelle} dir meinen Bruder {vor}.",
+    "en": "Let me introduce my brother to you.",
+    "reviewed": true
+  },
+  {
+    "id": "vorstellen.perfekt.1",
+    "verb": "vorstellen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Die Kollegin {hat} uns den neuen Chef {vorgestellt}.",
+    "en": "The colleague introduced the new boss to us.",
+    "reviewed": true
+  },
+  {
+    "id": "schauen.imperativ.1",
+    "verb": "schauen",
+    "table": "imperativ",
+    "person": "ss",
+    "de": "{Schau} mal, es schneit!",
+    "en": "Look, it's snowing!",
+    "reviewed": true
+  },
+  {
+    "id": "schauen.perfekt.1",
+    "verb": "schauen",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} gestern Abend einen Film {geschaut}.",
+    "en": "We watched a movie last night.",
+    "reviewed": true
+  },
+  {
+    "id": "zählen.praesens.1",
+    "verb": "zählen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Das Kind {zählt} bis zehn.",
+    "en": "The child counts to ten.",
+    "reviewed": true
+  },
+  {
+    "id": "zählen.perfekt.1",
+    "verb": "zählen",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Ich {habe} die Gäste {gezählt}.",
+    "en": "I counted the guests.",
+    "reviewed": true
+  },
+  {
+    "id": "lieben.praesens.1",
+    "verb": "lieben",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Meine Oma {liebt} ihren Garten.",
+    "en": "My grandma loves her garden.",
+    "reviewed": true
+  },
+  {
+    "id": "lieben.praeteritum.1",
+    "verb": "lieben",
+    "table": "praeteritum_indikativ",
+    "person": "fs",
+    "de": "Als Kind {liebte} ich Schokolade.",
+    "en": "As a child, I loved chocolate.",
+    "reviewed": true
+  },
+  {
+    "id": "kosten.praesens.1",
+    "verb": "kosten",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Was {kostet} das Brot?",
+    "en": "How much does the bread cost?",
+    "reviewed": true
+  },
+  {
+    "id": "kosten.perfekt.1",
+    "verb": "kosten",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Die Reise {hat} uns viel Geld {gekostet}.",
+    "en": "The trip cost us a lot of money.",
+    "reviewed": true
+  },
+  {
+    "id": "veröffentlichen.praesens.1",
+    "verb": "veröffentlichen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Die Zeitung {veröffentlicht} jeden Tag ein Rätsel.",
+    "en": "The newspaper publishes a puzzle every day.",
+    "reviewed": true
+  },
+  {
+    "id": "veröffentlichen.perfekt.1",
+    "verb": "veröffentlichen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Sie {hat} ihr erstes Buch {veröffentlicht}.",
+    "en": "She published her first book.",
+    "reviewed": true
+  },
+  {
+    "id": "ermöglichen.praesens.1",
+    "verb": "ermöglichen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Das Stipendium {ermöglicht} mir ein Studium im Ausland.",
+    "en": "The scholarship makes it possible for me to study abroad.",
+    "reviewed": true
+  },
+  {
+    "id": "ermöglichen.perfekt.1",
+    "verb": "ermöglichen",
+    "table": "perfekt_indikativ",
+    "person": "tp",
+    "de": "Meine Eltern {haben} mir die Reise {ermöglicht}.",
+    "en": "My parents made the trip possible for me.",
+    "reviewed": true
+  },
+  {
+    "id": "schlagen.praesens.1",
+    "verb": "schlagen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Die Uhr {schlägt} zwölf.",
+    "en": "The clock strikes twelve.",
+    "reviewed": true
+  },
+  {
+    "id": "schlagen.perfekt.1",
+    "verb": "schlagen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Unsere Mannschaft {hat} den Gegner {geschlagen}.",
+    "en": "Our team beat the opponent.",
+    "reviewed": true
+  },
+  {
+    "id": "informieren.imperativ.1",
+    "verb": "informieren",
+    "table": "imperativ",
+    "person": "tp",
+    "de": "{Informieren} Sie mich bitte über alle Änderungen!",
+    "en": "Please inform me of any changes!",
+    "reviewed": true
+  },
+  {
+    "id": "informieren.perfekt.1",
+    "verb": "informieren",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Der Lehrer {hat} die Eltern rechtzeitig {informiert}.",
+    "en": "The teacher informed the parents in time.",
+    "reviewed": true
+  },
+  {
+    "id": "einsetzen.praesens.1",
+    "verb": "einsetzen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Die Firma {setzt} neue Maschinen {ein}.",
+    "en": "The company is using new machines.",
+    "reviewed": true
+  },
+  {
+    "id": "einsetzen.perfekt.1",
+    "verb": "einsetzen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Die Feuerwehr {hat} viele Helfer {eingesetzt}.",
+    "en": "The fire department deployed many helpers.",
+    "reviewed": true
+  },
+  {
+    "id": "melden.praesens.1",
+    "verb": "melden",
+    "table": "praesens_indikativ",
+    "person": "fs",
+    "de": "Ich {melde} den Schaden meiner Versicherung.",
+    "en": "I'm reporting the damage to my insurance company.",
+    "reviewed": true
+  },
+  {
+    "id": "melden.perfekt.1",
+    "verb": "melden",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Der Nachbar {hat} den Unfall der Polizei {gemeldet}.",
+    "en": "The neighbor reported the accident to the police.",
+    "reviewed": true
+  },
+  {
+    "id": "betonen.praesens.1",
+    "verb": "betonen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Meine Mutter {betont} immer, wie wichtig Pünktlichkeit ist.",
+    "en": "My mother always stresses how important punctuality is.",
+    "reviewed": true
+  },
+  {
+    "id": "betonen.praeteritum.1",
+    "verb": "betonen",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Der Minister {betonte}, dass alle helfen müssen.",
+    "en": "The minister emphasized that everyone has to help.",
+    "reviewed": true
+  },
+  {
+    "id": "holen.imperativ.1",
+    "verb": "holen",
+    "table": "imperativ",
+    "person": "ss",
+    "de": "{Hol} bitte die Zeitung!",
+    "en": "Please get the newspaper!",
+    "reviewed": true
+  },
+  {
+    "id": "holen.perfekt.1",
+    "verb": "holen",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Ich {habe} uns Kaffee {geholt}.",
+    "en": "I got us coffee.",
+    "reviewed": true
+  },
+  {
+    "id": "funktionieren.praesens.1",
+    "verb": "funktionieren",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Der Drucker {funktioniert} heute nicht.",
+    "en": "The printer isn't working today.",
+    "reviewed": true
+  },
+  {
+    "id": "funktionieren.futur.1",
+    "verb": "funktionieren",
+    "table": "futur_indikativ",
+    "person": "ts",
+    "de": "Ich glaube, das {wird} morgen {funktionieren}.",
+    "en": "I think it will work tomorrow.",
+    "reviewed": true
+  },
+  {
+    "id": "reichen.praesens.1",
+    "verb": "reichen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Das Geld {reicht} nicht für zwei Karten.",
+    "en": "The money isn't enough for two tickets.",
+    "reviewed": true
+  },
+  {
+    "id": "reichen.perfekt.1",
+    "verb": "reichen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Ein Stück Kuchen {hat} mir völlig {gereicht}.",
+    "en": "One piece of cake was plenty for me.",
+    "reviewed": true
+  },
+  {
+    "id": "warten.imperativ.1",
+    "verb": "warten",
+    "table": "imperativ",
+    "person": "ss",
+    "de": "{Warte} bitte kurz auf mich!",
+    "en": "Please wait for me a moment!",
+    "reviewed": true
+  },
+  {
+    "id": "warten.perfekt.1",
+    "verb": "warten",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} eine Stunde auf den Bus {gewartet}.",
+    "en": "We waited an hour for the bus.",
+    "reviewed": true
+  },
+  {
+    "id": "empfehlen.praesens.1",
+    "verb": "empfehlen",
+    "table": "praesens_indikativ",
+    "person": "fs",
+    "de": "Ich {empfehle} dir das neue Restaurant.",
+    "en": "I recommend the new restaurant to you.",
+    "reviewed": true
+  },
+  {
+    "id": "empfehlen.perfekt.1",
+    "verb": "empfehlen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Meine Freundin {hat} mir das Buch {empfohlen}.",
+    "en": "My friend recommended the book to me.",
+    "reviewed": true
+  },
+  {
+    "id": "verkaufen.praesens.1",
+    "verb": "verkaufen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Der Bäcker {verkauft} frische Brötchen.",
+    "en": "The baker sells fresh rolls.",
+    "reviewed": true
+  },
+  {
+    "id": "verkaufen.perfekt.1",
+    "verb": "verkaufen",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} unser altes Auto {verkauft}.",
+    "en": "We sold our old car.",
+    "reviewed": true
+  },
+  {
+    "id": "fällen.praesens.1",
+    "verb": "fällen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Der Förster {fällt} heute drei alte Bäume.",
+    "en": "The forester is cutting down three old trees today.",
+    "reviewed": true
+  },
+  {
+    "id": "fällen.perfekt.1",
+    "verb": "fällen",
+    "table": "perfekt_indikativ",
+    "person": "tp",
+    "de": "Die Arbeiter {haben} den Baum im Garten {gefällt}.",
+    "en": "The workers cut down the tree in the yard.",
+    "reviewed": true
+  },
+  {
+    "id": "passieren.praesens.1",
+    "verb": "passieren",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Was {passiert}, wenn es regnet?",
+    "en": "What happens if it rains?",
+    "reviewed": true
+  },
+  {
+    "id": "passieren.perfekt.1",
+    "verb": "passieren",
+    "reading": 1,
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} die Grenze um Mitternacht {passiert}.",
+    "en": "We crossed the border at midnight.",
+    "reviewed": true
+  },
+  {
+    "id": "bestätigen.imperativ.1",
+    "verb": "bestätigen",
+    "table": "imperativ",
+    "person": "tp",
+    "de": "{Bestätigen} Sie bitte Ihre Anmeldung!",
+    "en": "Please confirm your registration!",
+    "reviewed": true
+  },
+  {
+    "id": "bestätigen.perfekt.1",
+    "verb": "bestätigen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Das Hotel {hat} unsere Reservierung {bestätigt}.",
+    "en": "The hotel confirmed our reservation.",
+    "reviewed": true
+  },
+  {
+    "id": "besuchen.praesens.1",
+    "verb": "besuchen",
+    "table": "praesens_indikativ",
+    "person": "fp",
+    "de": "Am Wochenende {besuchen} wir meine Großeltern.",
+    "en": "This weekend we're visiting my grandparents.",
+    "reviewed": true
+  },
+  {
+    "id": "besuchen.perfekt.1",
+    "verb": "besuchen",
+    "table": "perfekt_indikativ",
+    "person": "sp",
+    "de": "Ihr {habt} uns lange nicht {besucht}.",
+    "en": "You haven't visited us in a long time.",
+    "reviewed": true
+  },
+  {
+    "id": "bilden.praesens.1",
+    "verb": "bilden",
+    "table": "praesens_indikativ",
+    "person": "tp",
+    "de": "Die Kinder {bilden} einen Kreis.",
+    "en": "The children form a circle.",
+    "reviewed": true
+  },
+  {
+    "id": "bilden.perfekt.1",
+    "verb": "bilden",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} eine Lerngruppe {gebildet}.",
+    "en": "We formed a study group.",
+    "reviewed": true
+  },
+  {
+    "id": "rechnen.imperativ.1",
+    "verb": "rechnen",
+    "table": "imperativ",
+    "person": "sp",
+    "de": "{Rechnet} bitte die Aufgabe noch einmal!",
+    "en": "Please work out the problem again!",
+    "reviewed": true
+  },
+  {
+    "id": "rechnen.perfekt.1",
+    "verb": "rechnen",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Ich {habe} nicht mit so viel Verkehr {gerechnet}.",
+    "en": "I didn't expect so much traffic.",
+    "reviewed": true
+  },
+  {
+    "id": "benötigen.praesens.1",
+    "verb": "benötigen",
+    "table": "praesens_indikativ",
+    "person": "tp",
+    "de": "Für die Reise {benötigen} Sie einen Pass.",
+    "en": "You need a passport for the trip.",
+    "reviewed": true
+  },
+  {
+    "id": "benötigen.praeteritum.1",
+    "verb": "benötigen",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Die Reparatur {benötigte} viel Zeit.",
+    "en": "The repair took a lot of time.",
+    "reviewed": true
+  },
+  {
+    "id": "aufnehmen.praesens.1",
+    "verb": "aufnehmen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Die Schule {nimmt} im Herbst neue Schüler {auf}.",
+    "en": "The school admits new students in the fall.",
+    "reviewed": true
+  },
+  {
+    "id": "aufnehmen.perfekt.1",
+    "verb": "aufnehmen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Er {hat} das Lied zu Hause {aufgenommen}.",
+    "en": "He recorded the song at home.",
+    "reviewed": true
+  },
+  {
+    "id": "liefern.praesens.1",
+    "verb": "liefern",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Der Supermarkt {liefert} auch nach Hause.",
+    "en": "The supermarket also delivers.",
+    "reviewed": true
+  },
+  {
+    "id": "liefern.perfekt.1",
+    "verb": "liefern",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Der Bote {hat} das Paket gestern {geliefert}.",
+    "en": "The delivery driver dropped off the package yesterday.",
+    "reviewed": true
+  },
+  {
+    "id": "leisten.praesens.1",
+    "verb": "leisten",
+    "table": "praesens_indikativ",
+    "person": "tp",
+    "de": "Die Helfer {leisten} gute Arbeit.",
+    "en": "The helpers are doing good work.",
+    "reviewed": true
+  },
+  {
+    "id": "leisten.perfekt.1",
+    "verb": "leisten",
+    "table": "perfekt_indikativ",
+    "person": "ss",
+    "de": "Du {hast} heute wirklich viel {geleistet}.",
+    "en": "You really accomplished a lot today.",
+    "reviewed": true
+  },
+  {
+    "id": "erhöhen.praesens.1",
+    "verb": "erhöhen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Der Laden {erhöht} nächsten Monat die Preise.",
+    "en": "The store is raising its prices next month.",
+    "reviewed": true
+  },
+  {
+    "id": "erhöhen.perfekt.1",
+    "verb": "erhöhen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Die Stadt {hat} die Parkgebühren {erhöht}.",
+    "en": "The city raised the parking fees.",
+    "reviewed": true
+  },
+  {
+    "id": "dienen.praesens.1",
+    "verb": "dienen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Die Kiste {dient} als Tisch.",
+    "en": "The crate serves as a table.",
+    "reviewed": true
+  },
+  {
+    "id": "dienen.perfekt.1",
+    "verb": "dienen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Der Keller {hat} früher als Lager {gedient}.",
+    "en": "The basement used to serve as a storeroom.",
+    "reviewed": true
+  },
+  {
+    "id": "stimmen.praesens.1",
+    "verb": "stimmen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Die Rechnung {stimmt} nicht.",
+    "en": "The bill isn't right.",
+    "reviewed": true
+  },
+  {
+    "id": "stimmen.perfekt.1",
+    "verb": "stimmen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Die Mehrheit {hat} für den Plan {gestimmt}.",
+    "en": "The majority voted for the plan.",
+    "reviewed": true
+  },
+  {
+    "id": "beschäftigen.praesens.1",
+    "verb": "beschäftigen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Die Firma {beschäftigt} zwanzig Mitarbeiter.",
+    "en": "The company employs twenty people.",
+    "reviewed": true
+  },
+  {
+    "id": "beschäftigen.perfekt.1",
+    "verb": "beschäftigen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Das Problem {hat} mich lange {beschäftigt}.",
+    "en": "The problem occupied my mind for a long time.",
+    "reviewed": true
+  },
+  {
+    "id": "verlassen.praesens.1",
+    "verb": "verlassen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Der Zug {verlässt} um acht Uhr den Bahnhof.",
+    "en": "The train leaves the station at eight.",
+    "reviewed": true
+  },
+  {
+    "id": "verlassen.perfekt.1",
+    "verb": "verlassen",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} das Haus heute früh {verlassen}.",
+    "en": "We left the house early today.",
+    "reviewed": true
+  },
+  {
+    "id": "zahlen.praesens.1",
+    "verb": "zahlen",
+    "table": "praesens_indikativ",
+    "person": "fs",
+    "de": "Heute {zahle} ich!",
+    "en": "Today it's on me!",
+    "reviewed": true
+  },
+  {
+    "id": "zahlen.perfekt.1",
+    "verb": "zahlen",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} schon {gezahlt}.",
+    "en": "We already paid.",
+    "reviewed": true
+  },
+  {
+    "id": "überzeugen.praesens.1",
+    "verb": "überzeugen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Das Argument {überzeugt} mich nicht.",
+    "en": "The argument doesn't convince me.",
+    "reviewed": true
+  },
+  {
+    "id": "überzeugen.perfekt.1",
+    "verb": "überzeugen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Meine Schwester {hat} mich am Ende {überzeugt}.",
+    "en": "My sister convinced me in the end.",
+    "reviewed": true
+  },
+  {
+    "id": "gestalten.praesens.1",
+    "verb": "gestalten",
+    "table": "praesens_indikativ",
+    "person": "tp",
+    "de": "Die Kinder {gestalten} eine Karte für Oma.",
+    "en": "The children are making a card for Grandma.",
+    "reviewed": true
+  },
+  {
+    "id": "gestalten.perfekt.1",
+    "verb": "gestalten",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} den Garten neu {gestaltet}.",
+    "en": "We redesigned the garden.",
+    "reviewed": true
+  },
+  {
+    "id": "entdecken.praesens.1",
+    "verb": "entdecken",
+    "table": "praesens_indikativ",
+    "person": "ss",
+    "de": "Du {entdeckst} immer neue Cafés in der Stadt.",
+    "en": "You always discover new cafés in the city.",
+    "reviewed": true
+  },
+  {
+    "id": "entdecken.perfekt.1",
+    "verb": "entdecken",
+    "table": "perfekt_indikativ",
+    "person": "tp",
+    "de": "Die Kinder {haben} am Strand eine Muschel {entdeckt}.",
+    "en": "The children discovered a shell on the beach.",
+    "reviewed": true
+  },
+  {
+    "id": "ergeben.praesens.1",
+    "verb": "ergeben",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Zwei plus drei {ergibt} fünf.",
+    "en": "Two plus three equals five.",
+    "reviewed": true
+  },
+  {
+    "id": "ergeben.perfekt.1",
+    "verb": "ergeben",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Die Umfrage {hat} ein klares Ergebnis {ergeben}.",
+    "en": "The survey produced a clear result.",
+    "reviewed": true
+  },
+  {
+    "id": "wachsen.praesens.1",
+    "verb": "wachsen",
+    "table": "praesens_indikativ",
+    "person": "tp",
+    "de": "Die Tomaten {wachsen} in unserem Garten sehr gut.",
+    "en": "The tomatoes grow very well in our garden.",
+    "reviewed": true
+  },
+  {
+    "id": "wachsen.perfekt.1",
+    "verb": "wachsen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Mein Sohn {ist} im Sommer zehn Zentimeter {gewachsen}.",
+    "en": "My son grew ten centimeters this summer.",
+    "reviewed": true
+  },
+  {
+    "id": "betreffen.praesens.1",
+    "verb": "betreffen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Die neue Regel {betrifft} alle Schüler.",
+    "en": "The new rule affects all students.",
+    "reviewed": true
+  },
+  {
+    "id": "betreffen.perfekt.1",
+    "verb": "betreffen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Der Streik {hat} viele Reisende {betroffen}.",
+    "en": "The strike affected many travelers.",
+    "reviewed": true
+  },
+  {
+    "id": "erzielen.praesens.1",
+    "verb": "erzielen",
+    "table": "praesens_indikativ",
+    "person": "sp",
+    "de": "Ihr {erzielt} im Test immer gute Ergebnisse.",
+    "en": "You always get good results on the test.",
+    "reviewed": true
+  },
+  {
+    "id": "erzielen.praeteritum.1",
+    "verb": "erzielen",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Unsere Mannschaft {erzielte} kurz vor der Pause ein Tor.",
+    "en": "Our team scored a goal shortly before halftime.",
+    "reviewed": true
+  },
+  {
+    "id": "verhindern.praesens.1",
+    "verb": "verhindern",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Ein Helm {verhindert} schwere Verletzungen.",
+    "en": "A helmet prevents serious injuries.",
+    "reviewed": true
+  },
+  {
+    "id": "verhindern.perfekt.1",
+    "verb": "verhindern",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} den Streit gerade noch {verhindert}.",
+    "en": "We just barely prevented the argument.",
+    "reviewed": true
+  },
+  {
+    "id": "eröffnen.praesens.1",
+    "verb": "eröffnen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Die Bäckerei {eröffnet} nächste Woche eine neue Filiale.",
+    "en": "The bakery is opening a new branch next week.",
+    "reviewed": true
+  },
+  {
+    "id": "eröffnen.futur.1",
+    "verb": "eröffnen",
+    "table": "futur_indikativ",
+    "person": "ts",
+    "de": "Der Bürgermeister {wird} das Fest morgen {eröffnen}.",
+    "en": "The mayor will open the festival tomorrow.",
+    "reviewed": true
+  },
+  {
+    "id": "sterben.praesens.1",
+    "verb": "sterben",
+    "table": "praesens_indikativ",
+    "person": "tp",
+    "de": "Ohne Wasser {sterben} die Blumen.",
+    "en": "Without water, the flowers die.",
+    "reviewed": true
+  },
+  {
+    "id": "sterben.perfekt.1",
+    "verb": "sterben",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Mein Großvater {ist} vor zehn Jahren {gestorben}.",
+    "en": "My grandfather died ten years ago.",
+    "reviewed": true
+  },
+  {
+    "id": "weisen.praesens.1",
+    "verb": "weisen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Der Zeiger der Uhr {weist} auf zwölf.",
+    "en": "The hand of the clock points to twelve.",
+    "reviewed": true
+  },
+  {
+    "id": "weisen.perfekt.1",
+    "verb": "weisen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Der Pfeil {hat} uns den richtigen Weg {gewiesen}.",
+    "en": "The arrow showed us the right way.",
+    "reviewed": true
+  },
+  {
+    "id": "rufen.imperativ.1",
+    "verb": "rufen",
+    "table": "imperativ",
+    "person": "sp",
+    "de": "{Ruft} bitte den Arzt!",
+    "en": "Please call the doctor!",
+    "reviewed": true
+  },
+  {
+    "id": "rufen.perfekt.1",
+    "verb": "rufen",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Ich {habe} dich dreimal {gerufen}.",
+    "en": "I called you three times.",
+    "reviewed": true
+  },
+  {
+    "id": "beschreiben.praesens.1",
+    "verb": "beschreiben",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Der Reiseführer {beschreibt} den Weg zum Schloss.",
+    "en": "The guidebook describes the way to the castle.",
+    "reviewed": true
+  },
+  {
+    "id": "beschreiben.perfekt.1",
+    "verb": "beschreiben",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Der Zeuge {hat} den Mann genau {beschrieben}.",
+    "en": "The witness described the man precisely.",
+    "reviewed": true
+  },
+  {
+    "id": "sichern.praesens.1",
+    "verb": "sichern",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Der Bergsteiger {sichert} das Seil am Felsen.",
+    "en": "The climber secures the rope to the rock.",
+    "reviewed": true
+  },
+  {
+    "id": "sichern.perfekt.1",
+    "verb": "sichern",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} alle Daten auf einer Festplatte {gesichert}.",
+    "en": "We backed up all the data on a hard drive.",
+    "reviewed": true
+  },
+  {
+    "id": "bitten.praesens.1",
+    "verb": "bitten",
+    "table": "praesens_indikativ",
+    "person": "fs",
+    "de": "Ich {bitte} dich um Hilfe.",
+    "en": "I'm asking you for help.",
+    "reviewed": true
+  },
+  {
+    "id": "bitten.perfekt.1",
+    "verb": "bitten",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Die Lehrerin {hat} uns um Ruhe {gebeten}.",
+    "en": "The teacher asked us for quiet.",
+    "reviewed": true
+  },
+  {
+    "id": "bezeichnen.praesens.1",
+    "verb": "bezeichnen",
+    "table": "praesens_indikativ",
+    "person": "tp",
+    "de": "Viele {bezeichnen} ihn als den besten Koch der Stadt.",
+    "en": "Many call him the best cook in town.",
+    "reviewed": true
+  },
+  {
+    "id": "bezeichnen.perfekt.1",
+    "verb": "bezeichnen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Er {hat} den Film als langweilig {bezeichnet}.",
+    "en": "He called the movie boring.",
+    "reviewed": true
+  },
+  {
+    "id": "dauern.praesens.1",
+    "verb": "dauern",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Die Fahrt nach Hamburg {dauert} zwei Stunden.",
+    "en": "The trip to Hamburg takes two hours.",
+    "reviewed": true
+  },
+  {
+    "id": "dauern.perfekt.1",
+    "verb": "dauern",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Der Film {hat} fast drei Stunden {gedauert}.",
+    "en": "The movie lasted almost three hours.",
+    "reviewed": true
+  },
+  {
+    "id": "erfüllen.praesens.1",
+    "verb": "erfüllen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Das Hotel {erfüllt} alle unsere Wünsche.",
+    "en": "The hotel fulfills all our wishes.",
+    "reviewed": true
+  },
+  {
+    "id": "erfüllen.perfekt.1",
+    "verb": "erfüllen",
+    "table": "perfekt_indikativ",
+    "person": "tp",
+    "de": "Ihre Eltern {haben} ihr den Wunsch {erfüllt}.",
+    "en": "Her parents granted her wish.",
+    "reviewed": true
+  },
+  {
+    "id": "eignen.praesens.1",
+    "verb": "eignen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Dieser Stoff {eignet} sich gut für Kleider.",
+    "en": "This fabric is well suited for dresses.",
+    "reviewed": true
+  },
+  {
+    "id": "eignen.praeteritum.1",
+    "verb": "eignen",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Das kleine Zimmer {eignete} sich gut als Büro.",
+    "en": "The small room was well suited as an office.",
+    "reviewed": true
+  },
+  {
+    "id": "lösen.imperativ.1",
+    "verb": "lösen",
+    "table": "imperativ",
+    "person": "sp",
+    "de": "{Löst} bitte die Aufgabe!",
+    "en": "Please solve the problem!",
+    "reviewed": true
+  },
+  {
+    "id": "lösen.perfekt.1",
+    "verb": "lösen",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} das Rätsel schnell {gelöst}.",
+    "en": "We solved the puzzle quickly.",
+    "reviewed": true
+  },
+  {
+    "id": "schützen.praesens.1",
+    "verb": "schützen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Der Hut {schützt} dich vor der Sonne.",
+    "en": "The hat protects you from the sun.",
+    "reviewed": true
+  },
+  {
+    "id": "schützen.perfekt.1",
+    "verb": "schützen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Der Regenschirm {hat} mich vor dem Regen {geschützt}.",
+    "en": "The umbrella protected me from the rain.",
+    "reviewed": true
+  },
+  {
+    "id": "verfügen.praesens.1",
+    "verb": "verfügen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Unser Hotel {verfügt} über einen großen Garten.",
+    "en": "Our hotel has a large garden.",
+    "reviewed": true
+  },
+  {
+    "id": "verfügen.praeteritum.1",
+    "verb": "verfügen",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Die Schule {verfügte} damals nur über einen Computer.",
+    "en": "At the time, the school had only one computer.",
+    "reviewed": true
+  },
+  {
+    "id": "werfen.imperativ.1",
+    "verb": "werfen",
+    "table": "imperativ",
+    "person": "ss",
+    "de": "{Wirf} den Ball zu mir!",
+    "en": "Throw the ball to me!",
+    "reviewed": true
+  },
+  {
+    "id": "werfen.perfekt.1",
+    "verb": "werfen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Der Junge {hat} den Ball über den Zaun {geworfen}.",
+    "en": "The boy threw the ball over the fence.",
+    "reviewed": true
+  },
+  {
+    "id": "durchführen.praesens.1",
+    "verb": "durchführen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Die Firma {führt} jedes Jahr eine Umfrage {durch}.",
+    "en": "The company conducts a survey every year.",
+    "reviewed": true
+  },
+  {
+    "id": "durchführen.perfekt.1",
+    "verb": "durchführen",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} gestern einen Test {durchgeführt}.",
+    "en": "We carried out a test yesterday.",
+    "reviewed": true
+  },
+  {
+    "id": "verletzen.praesens.1",
+    "verb": "verletzen",
+    "table": "praesens_indikativ",
+    "person": "ss",
+    "de": "Vorsicht, du {verletzt} dich noch!",
+    "en": "Careful, you're going to hurt yourself!",
+    "reviewed": true
+  },
+  {
+    "id": "verletzen.perfekt.1",
+    "verb": "verletzen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Er {hat} sich beim Fußball am Knie {verletzt}.",
+    "en": "He injured his knee playing soccer.",
+    "reviewed": true
+  },
+  {
+    "id": "betragen.praesens.1",
+    "verb": "betragen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Die Miete {beträgt} achthundert Euro im Monat.",
+    "en": "The rent is eight hundred euros a month.",
+    "reviewed": true
+  },
+  {
+    "id": "betragen.praeteritum.1",
+    "verb": "betragen",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Die Wartezeit {betrug} fast zwei Stunden.",
+    "en": "The wait was almost two hours.",
+    "reviewed": true
+  },
+  {
+    "id": "verbessern.imperativ.1",
+    "verb": "verbessern",
+    "table": "imperativ",
+    "person": "sp",
+    "de": "{Verbessert} bitte eure Fehler!",
+    "en": "Please correct your mistakes!",
+    "reviewed": true
+  },
+  {
+    "id": "verbessern.perfekt.1",
+    "verb": "verbessern",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Sie {hat} ihre Noten deutlich {verbessert}.",
+    "en": "She improved her grades a lot.",
+    "reviewed": true
+  },
+  {
+    "id": "fördern.praesens.1",
+    "verb": "fördern",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Die Stadt {fördert} junge Künstler.",
+    "en": "The city supports young artists.",
+    "reviewed": true
+  },
+  {
+    "id": "fördern.perfekt.1",
+    "verb": "fördern",
+    "table": "perfekt_indikativ",
+    "person": "tp",
+    "de": "Seine Eltern {haben} ihn immer {gefördert}.",
+    "en": "His parents always supported him.",
+    "reviewed": true
+  },
+  {
+    "id": "wechseln.praesens.1",
+    "verb": "wechseln",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Die Ampel {wechselt} gleich auf Grün.",
+    "en": "The light is about to turn green.",
+    "reviewed": true
+  },
+  {
+    "id": "wechseln.perfekt.1",
+    "verb": "wechseln",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Ich {habe} im Frühling den Job {gewechselt}.",
+    "en": "I switched jobs in the spring.",
+    "reviewed": true
+  },
+  {
+    "id": "stattfinden.praesens.1",
+    "verb": "stattfinden",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Das Konzert {findet} heute Abend im Park {statt}.",
+    "en": "The concert takes place in the park this evening.",
+    "reviewed": true
+  },
+  {
+    "id": "stattfinden.perfekt.1",
+    "verb": "stattfinden",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Das Fest {hat} letzten Sommer im Garten {stattgefunden}.",
+    "en": "The party took place in the garden last summer.",
+    "reviewed": true
+  },
+  {
+    "id": "bestimmen.praesens.1",
+    "verb": "bestimmen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Der Lehrer {bestimmt} das Thema.",
+    "en": "The teacher determines the topic.",
+    "reviewed": true
+  },
+  {
+    "id": "bestimmen.perfekt.1",
+    "verb": "bestimmen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Wer {hat} das Datum {bestimmt}?",
+    "en": "Who set the date?",
+    "reviewed": true
+  },
+  {
+    "id": "richten.praesens.1",
+    "verb": "richten",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Sie {richtet} die Kamera auf den Turm.",
+    "en": "She aims the camera at the tower.",
+    "reviewed": true
+  },
+  {
+    "id": "richten.perfekt.1",
+    "verb": "richten",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Er {hat} seine Frage an den Chef {gerichtet}.",
+    "en": "He directed his question to the boss.",
+    "reviewed": true
+  },
+  {
+    "id": "stecken.imperativ.1",
+    "verb": "stecken",
+    "table": "imperativ",
+    "person": "ss",
+    "de": "{Steck} den Schlüssel bitte in die Tasche!",
+    "en": "Please put the key in your pocket!",
+    "reviewed": true
+  },
+  {
+    "id": "stecken.perfekt.1",
+    "verb": "stecken",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Ich {habe} das Geld in die Jacke {gesteckt}.",
+    "en": "I put the money in my jacket.",
+    "reviewed": true
+  },
+  {
+    "id": "begleiten.praesens.1",
+    "verb": "begleiten",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Mein Bruder {begleitet} mich zum Bahnhof.",
+    "en": "My brother is walking me to the train station.",
+    "reviewed": true
+  },
+  {
+    "id": "begleiten.perfekt.1",
+    "verb": "begleiten",
+    "table": "perfekt_indikativ",
+    "person": "tp",
+    "de": "Die Eltern {haben} die Kinder zur Schule {begleitet}.",
+    "en": "The parents walked the children to school.",
+    "reviewed": true
+  },
+  {
+    "id": "vertreten.praesens.1",
+    "verb": "vertreten",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Frau Weber {vertritt} heute den Chef.",
+    "en": "Ms. Weber is standing in for the boss today.",
+    "reviewed": true
+  },
+  {
+    "id": "vertreten.perfekt.1",
+    "verb": "vertreten",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Mein Kollege {hat} mich letzte Woche {vertreten}.",
+    "en": "My coworker filled in for me last week.",
+    "reviewed": true
+  },
+  {
+    "id": "genießen.praesens.1",
+    "verb": "genießen",
+    "table": "praesens_indikativ",
+    "person": "fp",
+    "de": "Wir {genießen} die Sonne am Strand.",
+    "en": "We're enjoying the sun on the beach.",
+    "reviewed": true
+  },
+  {
+    "id": "genießen.perfekt.1",
+    "verb": "genießen",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Ich {habe} den Urlaub sehr {genossen}.",
+    "en": "I really enjoyed the vacation.",
+    "reviewed": true
+  },
+  {
+    "id": "beschließen.praesens.1",
+    "verb": "beschließen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Der Verein {beschließt} heute das neue Programm.",
+    "en": "The club is deciding on its new program today.",
+    "reviewed": true
+  },
+  {
+    "id": "beschließen.perfekt.1",
+    "verb": "beschließen",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} gestern {beschlossen}, umzuziehen.",
+    "en": "Yesterday we decided to move.",
+    "reviewed": true
+  },
+  {
+    "id": "bezahlen.imperativ.1",
+    "verb": "bezahlen",
+    "table": "imperativ",
+    "person": "tp",
+    "de": "{Bezahlen} Sie bitte an der Kasse!",
+    "en": "Please pay at the register!",
+    "reviewed": true
+  },
+  {
+    "id": "bezahlen.perfekt.1",
+    "verb": "bezahlen",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Ich {habe} die Rechnung schon {bezahlt}.",
+    "en": "I already paid the bill.",
+    "reviewed": true
+  },
+  {
+    "id": "beteiligen.praesens.1",
+    "verb": "beteiligen",
+    "table": "praesens_indikativ",
+    "person": "tp",
+    "de": "Alle Kinder {beteiligen} sich am Spiel.",
+    "en": "All the children take part in the game.",
+    "reviewed": true
+  },
+  {
+    "id": "beteiligen.perfekt.1",
+    "verb": "beteiligen",
+    "table": "perfekt_indikativ",
+    "person": "ss",
+    "de": "{Hast} du dich an der Sammlung {beteiligt}?",
+    "en": "Did you contribute to the collection?",
+    "reviewed": true
+  },
+  {
+    "id": "gründen.praesens.1",
+    "verb": "gründen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Meine Schwester {gründet} eine kleine Firma.",
+    "en": "My sister is starting a small company.",
+    "reviewed": true
+  },
+  {
+    "id": "gründen.perfekt.1",
+    "verb": "gründen",
+    "table": "perfekt_indikativ",
+    "person": "tp",
+    "de": "Die Brüder {haben} 1990 einen Verein {gegründet}.",
+    "en": "The brothers founded a club in 1990.",
+    "reviewed": true
+  },
+  {
+    "id": "hängen.praesens.1",
+    "verb": "hängen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Das Bild {hängt} schon lange an der Wand.",
+    "en": "The picture has been hanging on the wall for a long time.",
+    "reviewed": true
+  },
+  {
+    "id": "hängen.perfekt.1",
+    "verb": "hängen",
+    "reading": 1,
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Ich {habe} die Jacke an den Haken {gehängt}.",
+    "en": "I hung the jacket on the hook.",
+    "reviewed": true
+  },
+  {
+    "id": "verändern.praesens.1",
+    "verb": "verändern",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Die Stadt {verändert} sich schnell.",
+    "en": "The city is changing quickly.",
+    "reviewed": true
+  },
+  {
+    "id": "verändern.perfekt.1",
+    "verb": "verändern",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Der Umzug {hat} mein Leben {verändert}.",
+    "en": "The move changed my life.",
+    "reviewed": true
+  },
+  {
+    "id": "verdienen.praesens.1",
+    "verb": "verdienen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Meine Mutter {verdient} als Ärztin sehr gut.",
+    "en": "My mother makes very good money as a doctor.",
+    "reviewed": true
+  },
+  {
+    "id": "verdienen.perfekt.1",
+    "verb": "verdienen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Er {hat} im Sommer viel Geld {verdient}.",
+    "en": "He earned a lot of money in the summer.",
+    "reviewed": true
+  },
+  {
+    "id": "bewegen.praesens.1",
+    "verb": "bewegen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Der Wind {bewegt} die Blätter.",
+    "en": "The wind moves the leaves.",
+    "reviewed": true
+  },
+  {
+    "id": "bewegen.perfekt.1",
+    "verb": "bewegen",
+    "reading": 1,
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Was {hat} dich dazu {bewogen}?",
+    "en": "What prompted you to do that?",
+    "reviewed": true
+  },
+  {
+    "id": "kämpfen.praesens.1",
+    "verb": "kämpfen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Die Mannschaft {kämpft} bis zum Schluss.",
+    "en": "The team fights until the end.",
+    "reviewed": true
+  },
+  {
+    "id": "kämpfen.perfekt.1",
+    "verb": "kämpfen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Er {hat} lange gegen die Krankheit {gekämpft}.",
+    "en": "He fought the illness for a long time.",
+    "reviewed": true
+  },
+  {
+    "id": "betreiben.praesens.1",
+    "verb": "betreiben",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Meine Tante {betreibt} ein kleines Café.",
+    "en": "My aunt runs a small café.",
+    "reviewed": true
+  },
+  {
+    "id": "betreiben.perfekt.1",
+    "verb": "betreiben",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Die Familie {hat} den Laden dreißig Jahre {betrieben}.",
+    "en": "The family ran the store for thirty years.",
+    "reviewed": true
+  },
+  {
+    "id": "besitzen.praesens.1",
+    "verb": "besitzen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Er {besitzt} ein kleines Haus am See.",
+    "en": "He owns a small house by the lake.",
+    "reviewed": true
+  },
+  {
+    "id": "besitzen.perfekt.1",
+    "verb": "besitzen",
+    "table": "perfekt_indikativ",
+    "person": "tp",
+    "de": "Sie {haben} nie ein Auto {besessen}.",
+    "en": "They never owned a car.",
+    "reviewed": true
+  },
+  {
+    "id": "sammeln.praesens.1",
+    "verb": "sammeln",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Meine Tochter {sammelt} bunte Steine.",
+    "en": "My daughter collects colorful stones.",
+    "reviewed": true
+  },
+  {
+    "id": "sammeln.perfekt.1",
+    "verb": "sammeln",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} im Wald Pilze {gesammelt}.",
+    "en": "We gathered mushrooms in the forest.",
+    "reviewed": true
+  },
+  {
+    "id": "erstellen.imperativ.1",
+    "verb": "erstellen",
+    "table": "imperativ",
+    "person": "tp",
+    "de": "{Erstellen} Sie bitte eine Liste!",
+    "en": "Please make a list!",
+    "reviewed": true
+  },
+  {
+    "id": "erstellen.perfekt.1",
+    "verb": "erstellen",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Ich {habe} gestern einen Plan {erstellt}.",
+    "en": "I made a plan yesterday.",
+    "reviewed": true
+  },
+  {
+    "id": "entsprechen.praesens.1",
+    "verb": "entsprechen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Das Ergebnis {entspricht} nicht meinen Erwartungen.",
+    "en": "The result does not match my expectations.",
+    "reviewed": true
+  },
+  {
+    "id": "entsprechen.perfekt.1",
+    "verb": "entsprechen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Das Hotel {hat} unseren Wünschen {entsprochen}.",
+    "en": "The hotel was just what we wanted.",
+    "reviewed": true
+  },
+  {
+    "id": "umsetzen.praesens.1",
+    "verb": "umsetzen",
+    "table": "praesens_indikativ",
+    "person": "fp",
+    "de": "Wir {setzen} die Idee nächste Woche {um}.",
+    "en": "We are implementing the idea next week.",
+    "reviewed": true
+  },
+  {
+    "id": "umsetzen.perfekt.1",
+    "verb": "umsetzen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Die Stadt {hat} das Projekt schnell {umgesetzt}.",
+    "en": "The city implemented the project quickly.",
+    "reviewed": true
+  },
+  {
+    "id": "reagieren.praesens.1",
+    "verb": "reagieren",
+    "table": "praesens_indikativ",
+    "person": "ss",
+    "de": "Du {reagierst} immer so schnell!",
+    "en": "You always react so quickly!",
+    "reviewed": true
+  },
+  {
+    "id": "reagieren.perfekt.1",
+    "verb": "reagieren",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Wie {hat} er auf die Nachricht {reagiert}?",
+    "en": "How did he react to the news?",
+    "reviewed": true
+  },
+  {
+    "id": "verzichten.praesens.1",
+    "verb": "verzichten",
+    "table": "praesens_indikativ",
+    "person": "fs",
+    "de": "Ich {verzichte} im Winter auf Eis.",
+    "en": "I go without ice cream in the winter.",
+    "reviewed": true
+  },
+  {
+    "id": "verzichten.perfekt.1",
+    "verb": "verzichten",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} auf den Nachtisch {verzichtet}.",
+    "en": "We skipped dessert.",
+    "reviewed": true
+  },
+  {
+    "id": "prüfen.imperativ.1",
+    "verb": "prüfen",
+    "table": "imperativ",
+    "person": "ss",
+    "de": "{Prüf} bitte noch einmal die Rechnung!",
+    "en": "Please check the bill again!",
+    "reviewed": true
+  },
+  {
+    "id": "prüfen.perfekt.1",
+    "verb": "prüfen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Der Mechaniker {hat} die Bremsen {geprüft}.",
+    "en": "The mechanic checked the brakes.",
+    "reviewed": true
+  },
+  {
+    "id": "stammen.praesens.1",
+    "verb": "stammen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Der Käse {stammt} aus der Schweiz.",
+    "en": "The cheese comes from Switzerland.",
+    "reviewed": true
+  },
+  {
+    "id": "stammen.praeteritum.1",
+    "verb": "stammen",
+    "table": "praeteritum_indikativ",
+    "person": "tp",
+    "de": "Meine Großeltern {stammten} aus einem kleinen Dorf.",
+    "en": "My grandparents came from a small village.",
+    "reviewed": true
+  },
+  {
+    "id": "schicken.imperativ.1",
+    "verb": "schicken",
+    "table": "imperativ",
+    "person": "sp",
+    "de": "{Schickt} mir bitte ein Foto!",
+    "en": "Please send me a photo!",
+    "reviewed": true
+  },
+  {
+    "id": "schicken.perfekt.1",
+    "verb": "schicken",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Meine Tante {hat} mir eine Karte {geschickt}.",
+    "en": "My aunt sent me a card.",
+    "reviewed": true
+  },
+  {
+    "id": "drehen.praesens.1",
+    "verb": "drehen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Sie {dreht} den Schlüssel im Schloss.",
+    "en": "She turns the key in the lock.",
+    "reviewed": true
+  },
+  {
+    "id": "drehen.perfekt.1",
+    "verb": "drehen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Er {hat} den Kopf {gedreht}.",
+    "en": "He turned his head.",
+    "reviewed": true
+  },
+  {
+    "id": "geraten.praesens.1",
+    "verb": "geraten",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Er {gerät} schnell in Panik.",
+    "en": "He panics easily.",
+    "reviewed": true
+  },
+  {
+    "id": "geraten.perfekt.1",
+    "verb": "geraten",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {sind} gestern in einen Stau {geraten}.",
+    "en": "We got stuck in a traffic jam yesterday.",
+    "reviewed": true
+  },
+  {
+    "id": "vergessen.praesens.1",
+    "verb": "vergessen",
+    "table": "praesens_indikativ",
+    "person": "ss",
+    "de": "Du {vergisst} immer deinen Schlüssel!",
+    "en": "You always forget your key!",
+    "reviewed": true
+  },
+  {
+    "id": "vergessen.perfekt.1",
+    "verb": "vergessen",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Ich {habe} meinen Regenschirm im Zug {vergessen}.",
+    "en": "I forgot my umbrella on the train.",
+    "reviewed": true
+  },
+  {
+    "id": "ansehen.imperativ.1",
+    "verb": "ansehen",
+    "table": "imperativ",
+    "person": "ss",
+    "de": "{Sieh} dir das Bild {an}!",
+    "en": "Look at the picture!",
+    "reviewed": true
+  },
+  {
+    "id": "ansehen.perfekt.1",
+    "verb": "ansehen",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} uns den Film zusammen {angesehen}.",
+    "en": "We watched the movie together.",
+    "reviewed": true
+  },
+  {
+    "id": "darstellen.praesens.1",
+    "verb": "darstellen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Das Bild {stellt} einen Hafen {dar}.",
+    "en": "The picture shows a harbor.",
+    "reviewed": true
+  },
+  {
+    "id": "darstellen.perfekt.1",
+    "verb": "darstellen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Der Autor {hat} die Stadt sehr genau {dargestellt}.",
+    "en": "The author portrayed the city very precisely.",
+    "reviewed": true
+  },
+  {
+    "id": "aufbauen.imperativ.1",
+    "verb": "aufbauen",
+    "table": "imperativ",
+    "person": "tp",
+    "de": "{Bauen} Sie bitte das Zelt {auf}!",
+    "en": "Please set up the tent!",
+    "reviewed": true
+  },
+  {
+    "id": "aufbauen.perfekt.1",
+    "verb": "aufbauen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Mein Vater {hat} die Firma {aufgebaut}.",
+    "en": "My father built up the company.",
+    "reviewed": true
+  },
+  {
+    "id": "greifen.praesens.1",
+    "verb": "greifen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Das Kind {greift} nach dem Ball.",
+    "en": "The child reaches for the ball.",
+    "reviewed": true
+  },
+  {
+    "id": "greifen.perfekt.1",
+    "verb": "greifen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Der Fahrer {hat} zu spät zur Bremse {gegriffen}.",
+    "en": "The driver reached for the brake too late.",
+    "reviewed": true
+  },
+  {
+    "id": "entfernen.praesens.1",
+    "verb": "entfernen",
+    "table": "praesens_indikativ",
+    "person": "fs",
+    "de": "Ich {entferne} den Fleck mit Salz.",
+    "en": "I remove the stain with salt.",
+    "reviewed": true
+  },
+  {
+    "id": "entfernen.perfekt.1",
+    "verb": "entfernen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Der Hausmeister {hat} das Schild {entfernt}.",
+    "en": "The janitor removed the sign.",
+    "reviewed": true
+  },
+  {
+    "id": "annehmen.imperativ.1",
+    "verb": "annehmen",
+    "table": "imperativ",
+    "person": "ss",
+    "de": "{Nimm} das Geschenk bitte {an}!",
+    "en": "Please accept the gift!",
+    "reviewed": true
+  },
+  {
+    "id": "annehmen.perfekt.1",
+    "verb": "annehmen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Sie {hat} die Einladung gern {angenommen}.",
+    "en": "She gladly accepted the invitation.",
+    "reviewed": true
+  },
+  {
+    "id": "gebären.perfekt.1",
+    "verb": "gebären",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Meine Schwester {hat} im Mai eine Tochter {geboren}.",
+    "en": "My sister gave birth to a daughter in May.",
+    "reviewed": true
+  },
+  {
+    "id": "gebären.praeteritum.1",
+    "verb": "gebären",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Im Jahr 1904 {gebar} sie einen Sohn.",
+    "en": "In 1904 she gave birth to a son.",
+    "reviewed": true
+  },
+  {
+    "id": "mitteilen.praesens.1",
+    "verb": "mitteilen",
+    "table": "praesens_indikativ",
+    "person": "fp",
+    "de": "Wir {teilen} Ihnen die Uhrzeit später {mit}.",
+    "en": "We'll let you know the time later.",
+    "reviewed": true
+  },
+  {
+    "id": "mitteilen.perfekt.1",
+    "verb": "mitteilen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Die Schule {hat} den Eltern den Termin {mitgeteilt}.",
+    "en": "The school informed the parents of the date.",
+    "reviewed": true
+  },
+  {
+    "id": "feststellen.praesens.1",
+    "verb": "feststellen",
+    "table": "praesens_indikativ",
+    "person": "fs",
+    "de": "Ich {stelle} plötzlich {fest}, dass mein Handy weg ist.",
+    "en": "Suddenly I notice that my phone is gone.",
+    "reviewed": true
+  },
+  {
+    "id": "feststellen.perfekt.1",
+    "verb": "feststellen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Der Arzt {hat} eine Erkältung {festgestellt}.",
+    "en": "The doctor diagnosed a cold.",
+    "reviewed": true
+  },
+  {
+    "id": "versprechen.imperativ.1",
+    "verb": "versprechen",
+    "table": "imperativ",
+    "person": "ss",
+    "de": "{Versprich} mir, dass du anrufst!",
+    "en": "Promise me you'll call!",
+    "reviewed": true
+  },
+  {
+    "id": "versprechen.perfekt.1",
+    "verb": "versprechen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Er {hat} mir ein Eis {versprochen}.",
+    "en": "He promised me an ice cream.",
+    "reviewed": true
+  },
+  {
+    "id": "diskutieren.praesens.1",
+    "verb": "diskutieren",
+    "table": "praesens_indikativ",
+    "person": "tp",
+    "de": "Die Schüler {diskutieren} über das Buch.",
+    "en": "The students are discussing the book.",
+    "reviewed": true
+  },
+  {
+    "id": "diskutieren.perfekt.1",
+    "verb": "diskutieren",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} lange über den Urlaub {diskutiert}.",
+    "en": "We discussed the vacation for a long time.",
+    "reviewed": true
+  },
+  {
+    "id": "erlauben.praesens.1",
+    "verb": "erlauben",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Meine Mutter {erlaubt} mir keine Süßigkeiten.",
+    "en": "My mom doesn't let me have candy.",
+    "reviewed": true
+  },
+  {
+    "id": "erlauben.perfekt.1",
+    "verb": "erlauben",
+    "table": "perfekt_indikativ",
+    "person": "tp",
+    "de": "Meine Eltern {haben} mir {erlaubt}, länger aufzubleiben.",
+    "en": "My parents let me stay up later.",
+    "reviewed": true
+  },
+  {
+    "id": "beziehen.praesens.1",
+    "verb": "beziehen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Meine Frage {bezieht} sich auf die Hausaufgabe.",
+    "en": "My question refers to the homework.",
+    "reviewed": true
+  },
+  {
+    "id": "beziehen.perfekt.1",
+    "verb": "beziehen",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} die Wohnung im Mai {bezogen}.",
+    "en": "We moved into the apartment in May.",
+    "reviewed": true
+  },
+  {
+    "id": "einstellen.praesens.1",
+    "verb": "einstellen",
+    "table": "praesens_indikativ",
+    "person": "fs",
+    "de": "Ich {stelle} den Wecker auf sieben Uhr {ein}.",
+    "en": "I'm setting the alarm for seven o'clock.",
+    "reviewed": true
+  },
+  {
+    "id": "einstellen.perfekt.1",
+    "verb": "einstellen",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} die Heizung niedriger {eingestellt}.",
+    "en": "We turned the heat down.",
+    "reviewed": true
+  },
+  {
+    "id": "beenden.praesens.1",
+    "verb": "beenden",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Der Lehrer {beendet} den Unterricht um zwölf Uhr.",
+    "en": "The teacher ends class at twelve.",
+    "reviewed": true
+  },
+  {
+    "id": "beenden.perfekt.1",
+    "verb": "beenden",
+    "table": "perfekt_indikativ",
+    "person": "tp",
+    "de": "Sie {haben} das Projekt letzte Woche {beendet}.",
+    "en": "They finished the project last week.",
+    "reviewed": true
+  },
+  {
+    "id": "organisieren.praesens.1",
+    "verb": "organisieren",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Meine Schwester {organisiert} die Party.",
+    "en": "My sister is organizing the party.",
+    "reviewed": true
+  },
+  {
+    "id": "organisieren.perfekt.1",
+    "verb": "organisieren",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} die Reise selbst {organisiert}.",
+    "en": "We organized the trip ourselves.",
+    "reviewed": true
+  },
+  {
+    "id": "abschließen.imperativ.1",
+    "verb": "abschließen",
+    "table": "imperativ",
+    "person": "sp",
+    "de": "{Schließt} bitte die Tür {ab}!",
+    "en": "Please lock the door!",
+    "reviewed": true
+  },
+  {
+    "id": "abschließen.perfekt.1",
+    "verb": "abschließen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Sie {hat} im Juni ihr Studium {abgeschlossen}.",
+    "en": "She completed her degree in June.",
+    "reviewed": true
+  },
+  {
+    "id": "belegen.praesens.1",
+    "verb": "belegen",
+    "table": "praesens_indikativ",
+    "person": "tp",
+    "de": "Die Zahlen {belegen} das eindeutig.",
+    "en": "The numbers clearly prove it.",
+    "reviewed": true
+  },
+  {
+    "id": "belegen.perfekt.1",
+    "verb": "belegen",
+    "table": "perfekt_indikativ",
+    "person": "tp",
+    "de": "Die Gäste {haben} alle Tische {belegt}.",
+    "en": "The guests took all the tables.",
+    "reviewed": true
+  },
+  {
+    "id": "klingen.praesens.1",
+    "verb": "klingen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Deine Idee {klingt} wirklich gut.",
+    "en": "Your idea sounds really good.",
+    "reviewed": true
+  },
+  {
+    "id": "klingen.praeteritum.1",
+    "verb": "klingen",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Ihre Stimme {klang} müde.",
+    "en": "Her voice sounded tired.",
+    "reviewed": true
+  },
+  {
+    "id": "verlangen.praesens.1",
+    "verb": "verlangen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Die Firma {verlangt} gute Deutschkenntnisse.",
+    "en": "The company requires good German skills.",
+    "reviewed": true
+  },
+  {
+    "id": "verlangen.perfekt.1",
+    "verb": "verlangen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Der Händler {hat} zu viel Geld {verlangt}.",
+    "en": "The seller asked too much.",
+    "reviewed": true
+  },
+  {
+    "id": "interessieren.praesens.1",
+    "verb": "interessieren",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Das Buch {interessiert} mich nicht.",
+    "en": "The book doesn't interest me.",
+    "reviewed": true
+  },
+  {
+    "id": "interessieren.perfekt.1",
+    "verb": "interessieren",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Das Thema {hat} uns schon immer {interessiert}.",
+    "en": "The topic has always interested us.",
+    "reviewed": true
+  },
+  {
+    "id": "drohen.praesens.1",
+    "verb": "drohen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Am Wochenende {droht} schlechtes Wetter.",
+    "en": "Bad weather is looming this weekend.",
+    "reviewed": true
+  },
+  {
+    "id": "drohen.perfekt.1",
+    "verb": "drohen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Der Nachbar {hat} mit einer Klage {gedroht}.",
+    "en": "The neighbor threatened a lawsuit.",
+    "reviewed": true
+  },
+  {
+    "id": "enden.praesens.1",
+    "verb": "enden",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Der Film {endet} um halb elf.",
+    "en": "The movie ends at ten thirty.",
+    "reviewed": true
+  },
+  {
+    "id": "enden.praeteritum.1",
+    "verb": "enden",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Die Party {endete} erst um drei Uhr.",
+    "en": "The party didn't end until three.",
+    "reviewed": true
+  },
+  {
+    "id": "herstellen.praesens.1",
+    "verb": "herstellen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Diese Firma {stellt} Fahrräder {her}.",
+    "en": "This company makes bicycles.",
+    "reviewed": true
+  },
+  {
+    "id": "herstellen.perfekt.1",
+    "verb": "herstellen",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} den Käse selbst {hergestellt}.",
+    "en": "We made the cheese ourselves.",
+    "reviewed": true
+  },
+  {
+    "id": "sparen.imperativ.1",
+    "verb": "sparen",
+    "table": "imperativ",
+    "person": "ss",
+    "de": "{Spar} dein Geld für den Urlaub!",
+    "en": "Save your money for vacation!",
+    "reviewed": true
+  },
+  {
+    "id": "sparen.perfekt.1",
+    "verb": "sparen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Sie {hat} lange auf ein Auto {gespart}.",
+    "en": "She saved for a car for a long time.",
+    "reviewed": true
+  },
+  {
+    "id": "lauten.praesens.1",
+    "verb": "lauten",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Wie {lautet} die Antwort?",
+    "en": "What is the answer?",
+    "reviewed": true
+  },
+  {
+    "id": "lauten.praeteritum.1",
+    "verb": "lauten",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Die Frage {lautete}: Wer kommt mit?",
+    "en": "The question was: Who's coming along?",
+    "reviewed": true
+  },
+  {
+    "id": "verfolgen.praesens.1",
+    "verb": "verfolgen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Der Hund {verfolgt} die Katze durch den Garten.",
+    "en": "The dog is chasing the cat through the garden.",
+    "reviewed": true
+  },
+  {
+    "id": "verfolgen.perfekt.1",
+    "verb": "verfolgen",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Ich {habe} das Spiel im Fernsehen {verfolgt}.",
+    "en": "I followed the game on TV.",
+    "reviewed": true
+  },
+  {
+    "id": "essen.imperativ.1",
+    "verb": "essen",
+    "table": "imperativ",
+    "person": "ss",
+    "de": "{Iss} bitte dein Gemüse!",
+    "en": "Please eat your vegetables!",
+    "reviewed": true
+  },
+  {
+    "id": "essen.perfekt.1",
+    "verb": "essen",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} gestern Abend Pizza {gegessen}.",
+    "en": "We ate pizza last night.",
+    "reviewed": true
+  },
+  {
+    "id": "aussehen.praesens.1",
+    "verb": "aussehen",
+    "table": "praesens_indikativ",
+    "person": "ss",
+    "de": "Du {siehst} heute müde {aus}.",
+    "en": "You look tired today.",
+    "reviewed": true
+  },
+  {
+    "id": "aussehen.perfekt.1",
+    "verb": "aussehen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Das Haus {hat} früher ganz anders {ausgesehen}.",
+    "en": "The house used to look completely different.",
+    "reviewed": true
+  },
+  {
+    "id": "bestellen.praesens.1",
+    "verb": "bestellen",
+    "table": "praesens_indikativ",
+    "person": "fs",
+    "de": "Ich {bestelle} einen Kaffee und ein Wasser.",
+    "en": "I'll order a coffee and a water.",
+    "reviewed": true
+  },
+  {
+    "id": "bestellen.perfekt.1",
+    "verb": "bestellen",
+    "table": "perfekt_indikativ",
+    "person": "tp",
+    "de": "Sie {haben} die Bücher im Internet {bestellt}.",
+    "en": "They ordered the books online.",
+    "reviewed": true
+  },
+  {
+    "id": "teilnehmen.praesens.1",
+    "verb": "teilnehmen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Meine Schwester {nimmt} am Kurs {teil}.",
+    "en": "My sister is taking part in the course.",
+    "reviewed": true
+  },
+  {
+    "id": "teilnehmen.futur.1",
+    "verb": "teilnehmen",
+    "table": "futur_indikativ",
+    "person": "fs",
+    "de": "Ich {werde} nächste Woche am Workshop {teilnehmen}.",
+    "en": "I will take part in the workshop next week.",
+    "reviewed": true
+  },
+  {
+    "id": "beobachten.praesens.1",
+    "verb": "beobachten",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Der Junge {beobachtet} die Vögel am Fenster.",
+    "en": "The boy watches the birds at the window.",
+    "reviewed": true
+  },
+  {
+    "id": "beobachten.perfekt.1",
+    "verb": "beobachten",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} gestern einen Fuchs im Garten {beobachtet}.",
+    "en": "Yesterday we watched a fox in the garden.",
+    "reviewed": true
+  },
+  {
+    "id": "benutzen.praesens.1",
+    "verb": "benutzen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Meine Oma {benutzt} kein Handy.",
+    "en": "My grandma doesn't use a cell phone.",
+    "reviewed": true
+  },
+  {
+    "id": "benutzen.perfekt.1",
+    "verb": "benutzen",
+    "table": "perfekt_indikativ",
+    "person": "ss",
+    "de": "{Hast} du meinen Stift {benutzt}?",
+    "en": "Did you use my pen?",
+    "reviewed": true
+  },
+  {
+    "id": "achten.imperativ.1",
+    "verb": "achten",
+    "table": "imperativ",
+    "person": "tp",
+    "de": "{Achten} Sie bitte auf die Stufe!",
+    "en": "Please watch the step!",
+    "reviewed": true
+  },
+  {
+    "id": "achten.perfekt.1",
+    "verb": "achten",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Er {hat} nicht auf die Uhr {geachtet}.",
+    "en": "He didn't pay attention to the clock.",
+    "reviewed": true
+  },
+  {
+    "id": "investieren.praesens.1",
+    "verb": "investieren",
+    "table": "praesens_indikativ",
+    "person": "tp",
+    "de": "Meine Eltern {investieren} ihr Geld in ein Haus.",
+    "en": "My parents are investing their money in a house.",
+    "reviewed": true
+  },
+  {
+    "id": "investieren.perfekt.1",
+    "verb": "investieren",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Sie {hat} viel Zeit in das Projekt {investiert}.",
+    "en": "She invested a lot of time in the project.",
+    "reviewed": true
+  },
+  {
+    "id": "beachten.imperativ.1",
+    "verb": "beachten",
+    "table": "imperativ",
+    "person": "sp",
+    "de": "{Beachtet} bitte die Regeln!",
+    "en": "Please follow the rules!",
+    "reviewed": true
+  },
+  {
+    "id": "beachten.perfekt.1",
+    "verb": "beachten",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Er {hat} das Schild nicht {beachtet}.",
+    "en": "He didn't pay attention to the sign.",
+    "reviewed": true
+  },
+  {
+    "id": "reden.praesens.1",
+    "verb": "reden",
+    "table": "praesens_indikativ",
+    "person": "fp",
+    "de": "Wir {reden} oft über Musik.",
+    "en": "We often talk about music.",
+    "reviewed": true
+  },
+  {
+    "id": "reden.perfekt.1",
+    "verb": "reden",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Gestern {habe} ich lange mit meiner Mutter {geredet}.",
+    "en": "Yesterday I talked with my mother for a long time.",
+    "reviewed": true
+  },
+  {
+    "id": "behandeln.praesens.1",
+    "verb": "behandeln",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Der Arzt {behandelt} meinen Rücken.",
+    "en": "The doctor is treating my back.",
+    "reviewed": true
+  },
+  {
+    "id": "behandeln.perfekt.1",
+    "verb": "behandeln",
+    "table": "perfekt_indikativ",
+    "person": "tp",
+    "de": "Sie {haben} uns sehr freundlich {behandelt}.",
+    "en": "They treated us very kindly.",
+    "reviewed": true
+  },
+  {
+    "id": "vorbereiten.praesens.1",
+    "verb": "vorbereiten",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Die Lehrerin {bereitet} den Unterricht {vor}.",
+    "en": "The teacher is preparing the lesson.",
+    "reviewed": true
+  },
+  {
+    "id": "vorbereiten.perfekt.1",
+    "verb": "vorbereiten",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} das Abendessen früh {vorbereitet}.",
+    "en": "We prepared dinner early.",
+    "reviewed": true
+  },
+  {
+    "id": "geschehen.praesens.1",
+    "verb": "geschehen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Was {geschieht} hier eigentlich?",
+    "en": "What is actually happening here?",
+    "reviewed": true
+  },
+  {
+    "id": "geschehen.perfekt.1",
+    "verb": "geschehen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Wann {ist} das {geschehen}?",
+    "en": "When did that happen?",
+    "reviewed": true
+  },
+  {
+    "id": "profitieren.praesens.1",
+    "verb": "profitieren",
+    "table": "praesens_indikativ",
+    "person": "tp",
+    "de": "Viele Kinder {profitieren} von dem neuen Programm.",
+    "en": "Many children benefit from the new program.",
+    "reviewed": true
+  },
+  {
+    "id": "profitieren.perfekt.1",
+    "verb": "profitieren",
+    "table": "perfekt_indikativ",
+    "person": "ss",
+    "de": "Du {hast} sehr von ihrem Rat {profitiert}.",
+    "en": "You benefited a lot from her advice.",
+    "reviewed": true
+  },
+  {
+    "id": "kündigen.praesens.1",
+    "verb": "kündigen",
+    "table": "praesens_indikativ",
+    "person": "fs",
+    "de": "Ich {kündige} morgen meinen Handyvertrag.",
+    "en": "I'm canceling my cell phone contract tomorrow.",
+    "reviewed": true
+  },
+  {
+    "id": "kündigen.perfekt.1",
+    "verb": "kündigen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Meine Nachbarin {hat} ihre Wohnung {gekündigt}.",
+    "en": "My neighbor gave notice on her apartment.",
+    "reviewed": true
+  },
+  {
+    "id": "reduzieren.praesens.1",
+    "verb": "reduzieren",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Im Sommer {reduziert} der Laden die Preise.",
+    "en": "In the summer the store lowers its prices.",
+    "reviewed": true
+  },
+  {
+    "id": "reduzieren.perfekt.1",
+    "verb": "reduzieren",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} unseren Stromverbrauch {reduziert}.",
+    "en": "We reduced our electricity consumption.",
+    "reviewed": true
+  },
+  {
+    "id": "schätzen.praesens.1",
+    "verb": "schätzen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Meine Mutter {schätzt} ehrliche Menschen.",
+    "en": "My mother appreciates honest people.",
+    "reviewed": true
+  },
+  {
+    "id": "schätzen.perfekt.1",
+    "verb": "schätzen",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} die Kosten auf tausend Euro {geschätzt}.",
+    "en": "We estimated the cost at a thousand euros.",
+    "reviewed": true
+  },
+  {
+    "id": "vermeiden.imperativ.1",
+    "verb": "vermeiden",
+    "table": "imperativ",
+    "person": "tp",
+    "de": "{Vermeiden} Sie bitte die Innenstadt!",
+    "en": "Please avoid downtown.",
+    "reviewed": true
+  },
+  {
+    "id": "vermeiden.perfekt.1",
+    "verb": "vermeiden",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Er {hat} den Stau durch eine frühe Abfahrt {vermieden}.",
+    "en": "He avoided the traffic jam by leaving early.",
+    "reviewed": true
+  },
+  {
+    "id": "vermitteln.praesens.1",
+    "verb": "vermitteln",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Die Schule {vermittelt} den Kindern viel Wissen.",
+    "en": "The school teaches the children a lot.",
+    "reviewed": true
+  },
+  {
+    "id": "vermitteln.perfekt.1",
+    "verb": "vermitteln",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Ein Freund {hat} mir den Job {vermittelt}.",
+    "en": "A friend got me the job.",
+    "reviewed": true
+  },
+  {
+    "id": "landen.praesens.1",
+    "verb": "landen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Das Flugzeug {landet} um zehn Uhr in Berlin.",
+    "en": "The plane lands in Berlin at ten o'clock.",
+    "reviewed": true
+  },
+  {
+    "id": "landen.perfekt.1",
+    "verb": "landen",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {sind} pünktlich in München {gelandet}.",
+    "en": "We landed in Munich on time.",
+    "reviewed": true
+  },
+  {
+    "id": "testen.imperativ.1",
+    "verb": "testen",
+    "table": "imperativ",
+    "person": "sp",
+    "de": "{Testet} das Spiel bitte noch einmal!",
+    "en": "Please test the game one more time!",
+    "reviewed": true
+  },
+  {
+    "id": "testen.perfekt.1",
+    "verb": "testen",
+    "table": "perfekt_indikativ",
+    "person": "tp",
+    "de": "Die Schüler {haben} das neue Programm {getestet}.",
+    "en": "The students tested the new program.",
+    "reviewed": true
+  },
+  {
+    "id": "sinken.praesens.1",
+    "verb": "sinken",
+    "table": "praesens_indikativ",
+    "person": "tp",
+    "de": "Im Herbst {sinken} die Temperaturen schnell.",
+    "en": "In the fall, temperatures drop quickly.",
+    "reviewed": true
+  },
+  {
+    "id": "sinken.perfekt.1",
+    "verb": "sinken",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Der Wasserstand {ist} über Nacht {gesunken}.",
+    "en": "The water level dropped overnight.",
+    "reviewed": true
+  },
+  {
+    "id": "merken.praesens.1",
+    "verb": "merken",
+    "table": "praesens_indikativ",
+    "person": "fs",
+    "de": "Ich {merke} nichts davon.",
+    "en": "I don't notice anything about it.",
+    "reviewed": true
+  },
+  {
+    "id": "merken.perfekt.1",
+    "verb": "merken",
+    "table": "perfekt_indikativ",
+    "person": "ss",
+    "de": "{Hast} du den Fehler nicht {gemerkt}?",
+    "en": "Didn't you notice the mistake?",
+    "reviewed": true
+  },
+  {
+    "id": "singen.praesens.1",
+    "verb": "singen",
+    "table": "praesens_indikativ",
+    "person": "sp",
+    "de": "Ihr {singt} heute Abend im Chor.",
+    "en": "You are singing in the choir tonight.",
+    "reviewed": true
+  },
+  {
+    "id": "singen.perfekt.1",
+    "verb": "singen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Mein Opa {hat} früher in einer Band {gesungen}.",
+    "en": "My grandpa used to sing in a band.",
+    "reviewed": true
+  },
+  {
+    "id": "kritisieren.praesens.1",
+    "verb": "kritisieren",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Der Trainer {kritisiert} die Spieler nie vor der Presse.",
+    "en": "The coach never criticizes the players in front of the press.",
+    "reviewed": true
+  },
+  {
+    "id": "kritisieren.perfekt.1",
+    "verb": "kritisieren",
+    "table": "perfekt_indikativ",
+    "person": "tp",
+    "de": "Die Kunden {haben} den Service {kritisiert}.",
+    "en": "The customers criticized the service.",
+    "reviewed": true
+  },
+  {
+    "id": "betrachten.praesens.1",
+    "verb": "betrachten",
+    "table": "praesens_indikativ",
+    "person": "fs",
+    "de": "Ich {betrachte} ihn als guten Freund.",
+    "en": "I consider him a good friend.",
+    "reviewed": true
+  },
+  {
+    "id": "betrachten.perfekt.1",
+    "verb": "betrachten",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} die Sterne lange {betrachtet}.",
+    "en": "We looked at the stars for a long time.",
+    "reviewed": true
+  },
+  {
+    "id": "gedenken.praesens.1",
+    "verb": "gedenken",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Die Familie {gedenkt} am Sonntag des Großvaters.",
+    "en": "On Sunday the family remembers the grandfather.",
+    "reviewed": true
+  },
+  {
+    "id": "gedenken.perfekt.1",
+    "verb": "gedenken",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} gestern unserer Oma {gedacht}.",
+    "en": "Yesterday we honored the memory of our grandma.",
+    "reviewed": true
+  },
+  {
+    "id": "beraten.praesens.1",
+    "verb": "beraten",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Die Verkäuferin {berät} uns beim Kauf.",
+    "en": "The salesperson advises us on the purchase.",
+    "reviewed": true
+  },
+  {
+    "id": "beraten.perfekt.1",
+    "verb": "beraten",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Der Anwalt {hat} mich gut {beraten}.",
+    "en": "The lawyer advised me well.",
+    "reviewed": true
+  },
+  {
+    "id": "wenden.imperativ.1",
+    "verb": "wenden",
+    "table": "imperativ",
+    "person": "tp",
+    "de": "{Wenden} Sie sich bitte an den Empfang!",
+    "en": "Please ask at the front desk.",
+    "reviewed": true
+  },
+  {
+    "id": "wenden.perfekt.1",
+    "verb": "wenden",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Ich {habe} den Pfannkuchen {gewendet}.",
+    "en": "I flipped the pancake.",
+    "reviewed": true
+  },
+  {
+    "id": "kümmern.praesens.1",
+    "verb": "kümmern",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Meine Schwester {kümmert} sich um den Hund.",
+    "en": "My sister takes care of the dog.",
+    "reviewed": true
+  },
+  {
+    "id": "kümmern.perfekt.1",
+    "verb": "kümmern",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} uns gestern um den Garten {gekümmert}.",
+    "en": "We took care of the garden yesterday.",
+    "reviewed": true
+  },
+  {
+    "id": "ersetzen.praesens.1",
+    "verb": "ersetzen",
+    "table": "praesens_indikativ",
+    "person": "fp",
+    "de": "Wir {ersetzen} die alte Lampe.",
+    "en": "We are replacing the old lamp.",
+    "reviewed": true
+  },
+  {
+    "id": "ersetzen.perfekt.1",
+    "verb": "ersetzen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Der Händler {hat} das kaputte Gerät {ersetzt}.",
+    "en": "The dealer replaced the broken device.",
+    "reviewed": true
+  },
+  {
+    "id": "abgeben.imperativ.1",
+    "verb": "abgeben",
+    "table": "imperativ",
+    "person": "ss",
+    "de": "{Gib} die Hausaufgaben bitte morgen {ab}!",
+    "en": "Please hand in the homework tomorrow!",
+    "reviewed": true
+  },
+  {
+    "id": "abgeben.perfekt.1",
+    "verb": "abgeben",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Ich {habe} den Schlüssel an der Rezeption {abgegeben}.",
+    "en": "I handed in the key at the front desk.",
+    "reviewed": true
+  },
+  {
+    "id": "produzieren.praesens.1",
+    "verb": "produzieren",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Diese Fabrik {produziert} Schokolade.",
+    "en": "This factory produces chocolate.",
+    "reviewed": true
+  },
+  {
+    "id": "produzieren.futur.1",
+    "verb": "produzieren",
+    "table": "futur_indikativ",
+    "person": "ts",
+    "de": "Die Firma {wird} bald Elektroautos {produzieren}.",
+    "en": "The company will soon produce electric cars.",
+    "reviewed": true
+  },
+  {
+    "id": "verbringen.praesens.1",
+    "verb": "verbringen",
+    "table": "praesens_indikativ",
+    "person": "fp",
+    "de": "Wir {verbringen} den Sommer am Meer.",
+    "en": "We spend the summer by the sea.",
+    "reviewed": true
+  },
+  {
+    "id": "verbringen.perfekt.1",
+    "verb": "verbringen",
+    "table": "perfekt_indikativ",
+    "person": "tp",
+    "de": "Sie {haben} ein schönes Wochenende in Hamburg {verbracht}.",
+    "en": "They spent a nice weekend in Hamburg.",
+    "reviewed": true
+  },
+  {
+    "id": "verpflichten.praesens.1",
+    "verb": "verpflichten",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Der Vertrag {verpflichtet} beide Seiten.",
+    "en": "The contract obligates both parties.",
+    "reviewed": true
+  },
+  {
+    "id": "verpflichten.perfekt.1",
+    "verb": "verpflichten",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Die Firma {hat} sich {verpflichtet}, weniger Plastik zu benutzen.",
+    "en": "The company committed to using less plastic.",
+    "reviewed": true
+  },
+  {
+    "id": "anzeigen.praesens.1",
+    "verb": "anzeigen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Das Navi {zeigt} die Route auf dem Display {an}.",
+    "en": "The GPS shows the route on the display.",
+    "reviewed": true
+  },
+  {
+    "id": "anzeigen.perfekt.1",
+    "verb": "anzeigen",
+    "table": "perfekt_indikativ",
+    "person": "tp",
+    "de": "Sie {haben} den Unfall gestern bei der Polizei {angezeigt}.",
+    "en": "They reported the accident to the police yesterday.",
+    "reviewed": true
+  },
+  {
+    "id": "warnen.praesens.1",
+    "verb": "warnen",
+    "table": "praesens_indikativ",
+    "person": "fs",
+    "de": "Ich {warne} dich: Der Hund beißt manchmal.",
+    "en": "I'm warning you: the dog sometimes bites.",
+    "reviewed": true
+  },
+  {
+    "id": "warnen.perfekt.1",
+    "verb": "warnen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Der Wetterdienst {hat} vor dem Sturm {gewarnt}.",
+    "en": "The weather service warned of the storm.",
+    "reviewed": true
+  },
+  {
+    "id": "erwerben.praesens.1",
+    "verb": "erwerben",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Mit dem Kurs {erwirbt} man ein Zertifikat.",
+    "en": "The course earns you a certificate.",
+    "reviewed": true
+  },
+  {
+    "id": "erwerben.perfekt.1",
+    "verb": "erwerben",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Sie {hat} letztes Jahr ein kleines Haus am See {erworben}.",
+    "en": "Last year she acquired a small house by the lake.",
+    "reviewed": true
+  },
+  {
+    "id": "ergänzen.imperativ.1",
+    "verb": "ergänzen",
+    "table": "imperativ",
+    "person": "tp",
+    "de": "{Ergänzen} Sie bitte die Liste!",
+    "en": "Please add to the list!",
+    "reviewed": true
+  },
+  {
+    "id": "ergänzen.perfekt.1",
+    "verb": "ergänzen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Mein Bruder {hat} meine Antwort kurz {ergänzt}.",
+    "en": "My brother added briefly to my answer.",
+    "reviewed": true
+  },
+  {
+    "id": "lohnen.praesens.1",
+    "verb": "lohnen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Der Ausflug {lohnt} sich bestimmt.",
+    "en": "The excursion is definitely worth it.",
+    "reviewed": true
+  },
+  {
+    "id": "lohnen.perfekt.1",
+    "verb": "lohnen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Die Mühe {hat} sich {gelohnt}.",
+    "en": "The effort was worth it.",
+    "reviewed": true
+  },
+  {
+    "id": "leiden.praesens.1",
+    "verb": "leiden",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Meine Oma {leidet} an Rückenschmerzen.",
+    "en": "My grandma suffers from back pain.",
+    "reviewed": true
+  },
+  {
+    "id": "leiden.perfekt.1",
+    "verb": "leiden",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Im Sommer {haben} wir sehr unter der Hitze {gelitten}.",
+    "en": "In the summer we suffered a lot from the heat.",
+    "reviewed": true
+  },
+  {
+    "id": "verteilen.imperativ.1",
+    "verb": "verteilen",
+    "table": "imperativ",
+    "person": "sp",
+    "de": "{Verteilt} die Kekse bitte gleichmäßig!",
+    "en": "Please distribute the cookies evenly!",
+    "reviewed": true
+  },
+  {
+    "id": "verteilen.perfekt.1",
+    "verb": "verteilen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Die Lehrerin {hat} die Hefte an die Klasse {verteilt}.",
+    "en": "The teacher handed out the notebooks to the class.",
+    "reviewed": true
+  },
+  {
+    "id": "verweisen.praesens.1",
+    "verb": "verweisen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Der Text {verweist} auf eine Quelle im Internet.",
+    "en": "The text refers to a source on the Internet.",
+    "reviewed": true
+  },
+  {
+    "id": "verweisen.perfekt.1",
+    "verb": "verweisen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Der Lehrer {hat} mich auf ein gutes Buch {verwiesen}.",
+    "en": "The teacher referred me to a good book.",
+    "reviewed": true
+  },
+  {
+    "id": "hinterlassen.praesens.1",
+    "verb": "hinterlassen",
+    "table": "praesens_indikativ",
+    "person": "fs",
+    "de": "Ich {hinterlasse} dir eine Nachricht auf dem Tisch.",
+    "en": "I'm leaving you a note on the table.",
+    "reviewed": true
+  },
+  {
+    "id": "hinterlassen.perfekt.1",
+    "verb": "hinterlassen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Der Gast {hat} ein großes Trinkgeld {hinterlassen}.",
+    "en": "The guest left a big tip.",
+    "reviewed": true
+  },
+  {
+    "id": "erläutern.praesens.1",
+    "verb": "erläutern",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Der Lehrer {erläutert} die Regel an der Tafel.",
+    "en": "The teacher explains the rule on the board.",
+    "reviewed": true
+  },
+  {
+    "id": "erläutern.praeteritum.1",
+    "verb": "erläutern",
+    "table": "praeteritum_indikativ",
+    "person": "ts",
+    "de": "Die Ärztin {erläuterte} dem Patienten die Behandlung.",
+    "en": "The doctor explained the treatment to the patient.",
+    "reviewed": true
+  },
+  {
+    "id": "erheben.praesens.1",
+    "verb": "erheben",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Der Verein {erhebt} einen kleinen Beitrag.",
+    "en": "The club charges a small fee.",
+    "reviewed": true
+  },
+  {
+    "id": "erheben.perfekt.1",
+    "verb": "erheben",
+    "table": "perfekt_indikativ",
+    "person": "tp",
+    "de": "Alle Gäste {haben} das Glas {erhoben}.",
+    "en": "All the guests raised their glasses.",
+    "reviewed": true
+  },
+  {
+    "id": "retten.imperativ.1",
+    "verb": "retten",
+    "table": "imperativ",
+    "person": "sp",
+    "de": "{Rettet} das Kätzchen vom Baum!",
+    "en": "Rescue the kitten from the tree!",
+    "reviewed": true
+  },
+  {
+    "id": "retten.perfekt.1",
+    "verb": "retten",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Der Bademeister {hat} das Kind {gerettet}.",
+    "en": "The lifeguard saved the child.",
+    "reviewed": true
+  },
+  {
+    "id": "zeichnen.praesens.1",
+    "verb": "zeichnen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Meine Tochter {zeichnet} gern Pferde.",
+    "en": "My daughter likes to draw horses.",
+    "reviewed": true
+  },
+  {
+    "id": "zeichnen.perfekt.1",
+    "verb": "zeichnen",
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Ich {habe} gestern ein Bild von unserem Haus {gezeichnet}.",
+    "en": "Yesterday I drew a picture of our house.",
+    "reviewed": true
+  },
+  {
+    "id": "drücken.imperativ.1",
+    "verb": "drücken",
+    "table": "imperativ",
+    "person": "ss",
+    "de": "{Drück} bitte auf den roten Knopf!",
+    "en": "Please press the red button!",
+    "reviewed": true
+  },
+  {
+    "id": "drücken.perfekt.1",
+    "verb": "drücken",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} dir fest die Daumen {gedrückt}.",
+    "en": "We kept our fingers crossed for you.",
+    "reviewed": true
+  },
+  {
+    "id": "beweisen.praesens.1",
+    "verb": "beweisen",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Der Test {beweist} gar nichts.",
+    "en": "The test proves nothing at all.",
+    "reviewed": true
+  },
+  {
+    "id": "beweisen.perfekt.1",
+    "verb": "beweisen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Sie {hat} ihr Talent beim Konzert {bewiesen}.",
+    "en": "She proved her talent at the concert.",
+    "reviewed": true
+  },
+  {
+    "id": "ermitteln.praesens.1",
+    "verb": "ermitteln",
+    "table": "praesens_indikativ",
+    "person": "tp",
+    "de": "Die Behörden {ermitteln} noch in dem Fall.",
+    "en": "The authorities are still investigating the case.",
+    "reviewed": true
+  },
+  {
+    "id": "ermitteln.perfekt.1",
+    "verb": "ermitteln",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Die Polizei {hat} den Täter schnell {ermittelt}.",
+    "en": "The police quickly identified the culprit.",
+    "reviewed": true
+  },
+  {
+    "id": "überlegen.praesens.1",
+    "verb": "überlegen",
+    "table": "praesens_indikativ",
+    "person": "fs",
+    "de": "Ich {überlege}, ob ich am Samstag mitkomme.",
+    "en": "I'm thinking about whether to come along on Saturday.",
+    "reviewed": true
+  },
+  {
+    "id": "überlegen.perfekt.1",
+    "verb": "überlegen",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} lange {überlegt}, aber dann zugesagt.",
+    "en": "We thought about it for a long time, but then said yes.",
+    "reviewed": true
+  },
+  {
+    "id": "äußern.praesens.1",
+    "verb": "äußern",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Die Kundin {äußert} ihre Meinung höflich.",
+    "en": "The customer expresses her opinion politely.",
+    "reviewed": true
+  },
+  {
+    "id": "äußern.perfekt.1",
+    "verb": "äußern",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Er {hat} gestern seine Wünsche {geäußert}.",
+    "en": "He expressed his wishes yesterday.",
+    "reviewed": true
+  },
+  {
+    "id": "ausgehen.praesens.1",
+    "verb": "ausgehen",
+    "table": "praesens_indikativ",
+    "person": "fp",
+    "de": "Wir {gehen} heute Abend {aus}.",
+    "en": "We're going out tonight.",
+    "reviewed": true
+  },
+  {
+    "id": "ausgehen.perfekt.1",
+    "verb": "ausgehen",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Das Licht {ist} plötzlich {ausgegangen}.",
+    "en": "The light suddenly went out.",
+    "reviewed": true
+  },
+  {
+    "id": "stoßen.imperativ.1",
+    "verb": "stoßen",
+    "table": "imperativ",
+    "person": "ss",
+    "de": "{Stoß} mich bitte nicht!",
+    "en": "Please don't push me!",
+    "reviewed": true
+  },
+  {
+    "id": "stoßen.perfekt.1",
+    "verb": "stoßen",
+    "reading": 1,
+    "table": "perfekt_indikativ",
+    "person": "fs",
+    "de": "Beim Spazierengehen {bin} ich auf einen alten Brunnen {gestoßen}.",
+    "en": "On a walk I came across an old well.",
+    "reviewed": true
+  },
+  {
+    "id": "leiten.praesens.1",
+    "verb": "leiten",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Frau Weber {leitet} die Abteilung.",
+    "en": "Ms. Weber heads the department.",
+    "reviewed": true
+  },
+  {
+    "id": "leiten.perfekt.1",
+    "verb": "leiten",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Er {hat} die Sitzung {geleitet}.",
+    "en": "He led the meeting.",
+    "reviewed": true
+  },
+  {
+    "id": "begrüßen.imperativ.1",
+    "verb": "begrüßen",
+    "table": "imperativ",
+    "person": "tp",
+    "de": "{Begrüßen} Sie bitte unsere Gäste!",
+    "en": "Please welcome our guests!",
+    "reviewed": true
+  },
+  {
+    "id": "begrüßen.perfekt.1",
+    "verb": "begrüßen",
+    "table": "perfekt_indikativ",
+    "person": "tp",
+    "de": "Die Kinder {haben} den Gast herzlich {begrüßt}.",
+    "en": "The children welcomed the guest warmly.",
+    "reviewed": true
+  },
+  {
+    "id": "verschwinden.praesens.1",
+    "verb": "verschwinden",
+    "table": "praesens_indikativ",
+    "person": "ts",
+    "de": "Die Sonne {verschwindet} hinter den Wolken.",
+    "en": "The sun disappears behind the clouds.",
+    "reviewed": true
+  },
+  {
+    "id": "verschwinden.perfekt.1",
+    "verb": "verschwinden",
+    "table": "perfekt_indikativ",
+    "person": "ts",
+    "de": "Mein Schlüssel {ist} plötzlich {verschwunden}.",
+    "en": "My key suddenly disappeared.",
+    "reviewed": true
+  },
+  {
+    "id": "anpassen.praesens.1",
+    "verb": "anpassen",
+    "table": "praesens_indikativ",
+    "person": "fs",
+    "de": "Ich {passe} das Rezept meinem Geschmack {an}.",
+    "en": "I'm adapting the recipe to my taste.",
+    "reviewed": true
+  },
+  {
+    "id": "anpassen.perfekt.1",
+    "verb": "anpassen",
+    "table": "perfekt_indikativ",
+    "person": "fp",
+    "de": "Wir {haben} den Plan {angepasst}.",
+    "en": "We adjusted the plan.",
+    "reviewed": true
   }
 ]

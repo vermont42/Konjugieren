@@ -106,11 +106,16 @@ struct GapSentenceTests {
     }
   }
 
-  /// The first batch, as Josh chose on 2026-11-15: the 25 most frequent verbs.
-  @Test func theFirstBatchCoversTheTwentyFiveMostFrequentVerbs() {
-    let covered = Set(GapSentences.all.map(\.verb))
-    for verb in Verb.verbsSortedByFrequency.prefix(25) where !covered.contains(verb.infinitiv) {
-      Issue.record("\(verb.infinitiv) has no sentence")
+  /// The counts Josh set on 2026-11-15: at least three sentences for each of the 100 most frequent
+  /// verbs, and two for each of the next 200.
+  @Test func everyTopThreeHundredVerbHasItsSentences() {
+    let counts = Dictionary(grouping: GapSentences.all, by: \.verb).mapValues(\.count)
+    for (index, verb) in Verb.verbs(in: .top300).enumerated() {
+      let wanted = index < FrequencyBand.top100.verbCount ? 3 : 2
+      let count = counts[verb.infinitiv] ?? 0
+      if count < wanted {
+        Issue.record("\(verb.infinitiv) (#\(index + 1)) has \(count) sentences, not \(wanted)")
+      }
     }
   }
 

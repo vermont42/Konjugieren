@@ -11687,3 +11687,56 @@ exist. Those are Tier 1 work, and Tier 1 came first here for a reason.
 
 The plan is finished but for one thing, Phase 18's sentences for the rest of the top 300, about
 625, whose note says how to draft and check them.
+
+## Six Hundred Nineteen Sentences, and No Second Reader (2026-11-15)
+
+Phase 18 shipped the Sentences exercise with 117 sentences for the 25 most frequent verbs, and
+Josh read every one before approving it. The other 275 verbs of the top 300 needed about 625 more.
+His review had taken five minutes for 117, and he judged only the English, since he does not read
+German well enough to judge the rest. So on the day the plan closed he made a different decision:
+he would not review these. The machine check would settle each conjugation, and I would settle
+everything else by reading every sentence, not a sample.
+
+The drafting went to eleven Sonnet subagents in parallel, one per range of about 25 verbs, as the
+plan requires. Each brief was self-contained: the JSON format with three real entries, the brace
+rules, the cell rules, American English, and the range's verbs with their gloss, family,
+auxiliary, prefix, and readings, generated from `Verbs.xml` in the order `VerbParser.ranked`
+derives. Writing the cell rules meant reading `QuizLevel` closely, and it turned up a trap the
+phase notes had not named. No level ever asks a weak verb's Präteritum Konjunktiv II, because
+*machte* repeats *machte*, so a drafter who reached for one would write a sentence no learner
+could ever see, and `everySentenceIsAskedAtSomeLevel` would fail it. The brief steered weak verbs
+to the Präteritum, the Konjunktiv I in reported speech, or *würde* plus the infinitive. It also
+kept sitzen, whose auxiliary differs by region like stehen's and liegen's, out of compound cells.
+
+The prompt itself held one wrong instruction. It said the wir or Sie of an Imperativ goes in
+braces, but the shipped sentences and the test that guards them put the pronoun right after the
+first brace, outside it: "{Nehmen} Sie bitte Platz!" The frame supplies the pronoun as part of the
+answer. A braced Sie would have made a second blank and failed. The brief followed the code.
+
+All eleven drafters finished in about a minute each. The reread took longer and changed 61 of the
+619. Most changes were English idiom: "The secretary connected me with the boss" became "put me
+through to the boss". Some were German that was grammatical but nobody would say: *Der Regen
+schlägt gegen das Fenster* became *Die Uhr schlägt zwölf*, and *Informieren Sie mich bitte
+morgen!* became a request to be told of any changes. A few were stilted Konjunktiv II forms the
+brief had warned against (*träfen*, *läse*), moved to the Präteritum. One sentence had children
+walking their parents to school. gebären's Präteritum needed a better frame than a cow calving at
+night, and it became *Im Jahr 1904 gebar sie einen Sohn*, the year Clifford Schmiesing was born
+in Minster.
+
+Then the machine check, and its one failure was mine. Rewriting beschließen's sentence, I had
+changed the subject to *Der Verein* and left the drafter's plural person, so the conjugator
+expected *beschließen* and the braces gave *beschließt*. That is the check working as designed.
+It also showed a gap the check cannot close. Some cells share a conjugation (wir and sie both
+*haben*, ich and er both *spielte*), so a sentence labeled with the wrong person can pass. A short
+script compared every person with its subject pronoun and found nothing, but that is a scan, not
+a guarantee.
+
+The first batch's coverage test became `everyTopThreeHundredVerbHasItsSentences`, which pins
+Josh's counts. The full suite passed in English, 951 functions. In the app, a script read each
+card's VoiceOver label, found the sentence in the JSON, and typed its blanks, so every round was
+a real draw answered to the end: German and English on the iPhone at Elementary and Advanced, and
+English on the iPad. Each round asked ten different verbs, and no card said "Draft".
+
+The exercise is called Lückensätze, and *Lücke*, a gap, goes back with *Loch*, a hole, to a
+Germanic root for closing something off, the same root as English *lock*. A gap sentence is a
+small lock, and the conjugation is its key. There are now 736 of them, and the plan is finished.

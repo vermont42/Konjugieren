@@ -8,7 +8,7 @@ Consumes: Konjugieren/Models/GapSentences.json, a JSON array in which each sente
 Produces, by subcommand:
   review [--all] [--out PATH]
       A Markdown sheet of the drafts (or, with --all, every sentence), grouped by verb, with the
-      blank filled in bold, for Josh to read. Prints to stdout unless --out is given.
+      blank filled in bold, for the reviewer to read. Prints to stdout unless --out is given.
   approve ID [ID ...] | approve --all [--except ID ...]
       Marks sentences reviewed. The app's release build asks only reviewed sentences; a debug
       build asks drafts too and marks them "Draft" on the card (GapSentences.includesDrafts).

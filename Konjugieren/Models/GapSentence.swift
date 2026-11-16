@@ -11,7 +11,7 @@ extension QuizScope {
 /// A short authored sentence with its verb blanked, "Gestern {sind} wir ins Kino {gegangen}.",
 /// which ties a conjugation to a meaning (Phase 18 of the pedagogy plan). The sentences live in
 /// `GapSentences.json`. Claude drafts them, `GapSentenceTests` confirms every blank against the
-/// conjugator, and Josh reviews each one before it ships, which `reviewed` records.
+/// conjugator, and each is reviewed before it ships, which `reviewed` records.
 struct GapSentence: Decodable, Identifiable, Equatable {
   let id: String
   /// The infinitive, a key of `Verb.verbs`.
@@ -188,8 +188,8 @@ enum GapSentences {
     (try? JSONDecoder().decode([GapSentence].self, from: data)) ?? []
   }
 
-  // A debug build asks drafts too, marked as drafts on the card, so that Josh can try a sentence
-  // in the app before he approves it. A release build asks only what he has approved.
+  // A debug build asks drafts too, marked as drafts on the card, so that a sentence can be tried
+  // in the app before it is approved. A release build asks only approved sentences.
   #if DEBUG
   static let includesDrafts = true
   #else

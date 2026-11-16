@@ -32,7 +32,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 15 | Done | 2026-11-14 | `a324232` | T5.1 |
 | 16 | Done | 2026-11-15 | `bd0537e` | T5.2 |
 | 17 | Done | 2026-11-15 | `010e2dc` | T5.4 |
-| 18 | Partly done: the app, the check, and 117 reviewed sentences for the 25 most frequent verbs; about 625 sentences for the rest of the top 300 remain | 2026-11-15 | `9ab13cc` | T5.5 |
+| 18 | Done | 2026-11-15 | `9ab13cc` (the app and 117 sentences); the other 619 sentences, uncommitted | T5.5 |
 | 19 | Done | 2026-11-15 | `81f3c6b` | T5.6 |
 | 20 | Done | 2026-11-15 | `2608a03` | T6.2 |
 | 21 | Done | 2026-11-15 | `38d4496` | T5.7 |
@@ -41,9 +41,9 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 24 | Done | 2026-11-15 | `4fb4d5e` | T6.8 |
 | Closing | Done | 2026-11-15 | `4d22060` | Audit, report notes, porting list, Decision 10 |
 
-**The plan is finished** (2026-11-15), with one exception: Phase 18's sentences for the other 275
-verbs of the top 300, about 625, which its **How it differed** says how to draft, check, and
-approve. Every other suggestion the plan took on is built on `main`, waiting for the 2027 release.
+**The plan is finished** (2026-11-15). Every suggestion the plan took on is built on `main`,
+waiting for the 2027 release. Phase 18's last piece, 619 sentences for verbs 26 to 300, came from
+[`gap-sentences-batch-2-prompt.md`](gap-sentences-batch-2-prompt.md) the same day.
 
 ## How to Work This Plan
 
@@ -1804,8 +1804,8 @@ record if Phase 11 maps them, with tests on ambiguous conjugations.
 
 ## Phase 18: Sentences with a Blank
 
-**Suggestions:** T5.5. **Depends on:** Phases 2 and 3. **Status:** Partly done (the app and a first
-batch; see How it differed for what remains).
+**Suggestions:** T5.5. **Depends on:** Phases 2 and 3. **Status:** Done (the app and 117 sentences
+in one session, the other 619 in a second; see How it differed).
 
 Short authored sentences for the core verbs, with the verb blanked, so the conjugation is tied to
 a meaning. Both sides of the drill debate agree that practice linked to meaning is the strong
@@ -1825,7 +1825,8 @@ blank; the report suggests them as a reward after a correct answer instead.
 **Decided (Josh, 2026-11-13):**
 
 - Claude drafts the sentences, a machine check confirms each blank against the conjugator, and
-  Josh reviews every sentence before it ships.
+  Josh reviews every sentence before it ships. (For the second batch, Josh replaced his review
+  with Claude's full reread on 2026-11-15; see How it differed.)
 - Sentences cover the 300 most frequent verbs from the start, at the levels' conjugationgroups.
 - The literary reward appears on the results screen, where each question's row can show its verb's
   literary sentence. The quiz itself never pauses after a right answer.
@@ -1840,11 +1841,9 @@ questions appear where decided, and tests pin the check.
 **How it differed:**
 
 - **Split, as the phase allowed.** This session built the app, the machine check, the review
-  tooling, and a first batch of 117 sentences, which Josh reviewed and approved the same day.
-  **What remains:** the sentences for the other 275 verbs of the top 300, at the counts below, about
-  625 in all: draft them, run `GapSentenceTests`, write a sheet with
-  `python3 scripts/gap_sentences.py review --out plans/gap-sentences-batch-2.md`, and approve what
-  Josh passes with `approve`. Write American English (see below).
+  tooling, and a first batch of 117 sentences, which Josh reviewed and approved the same day. A
+  second session wrote the other 619, for the rest of the top 300 at the counts below; see
+  **The second batch**, the last note here.
 - **The review and the Ask Josh, 2026-11-15.** Josh read all 117 in **five minutes**, about 2.5
   seconds a sentence. He does not read German well enough to judge it, so he judged the English and
   the meaning; the conjugations rest on the machine check, and the German on Claude's reread, which
@@ -1951,6 +1950,53 @@ questions appear where decided, and tests pin the check.
   ausgehen, not gehen (the separated prefix at the end); the example-sentence pipeline's split-
   particle rule should have caught it, and other verbs may share the fault. And starting from the
   hub still does not focus the field, as Phase 15 noted.
+- **The second batch (2026-11-15).** **Josh decided that day not to review these sentences**,
+  replacing his 2026-11-13 decision to review every sentence before it ships. The machine check
+  settles each conjugation, and Claude settles everything else by reading every sentence, not a
+  sample. 619 sentences: three for each of verbs 26 to 100, one from each level group (the Präsens
+  or Imperativ, the Perfekt, then the Präteritum or a Konjunktiv), and two for each of verbs 101 to
+  300 (anfangen, ankommen, and einladen already had theirs). The ranking is `Verbs.xml`'s hits,
+  descending, ties broken on the infinitive, as `VerbParser.ranked` derives it. Eleven Sonnet
+  subagents drafted ranges of about 25 verbs in parallel, each from a self-contained brief (the
+  format with three real entries, the brace rules, the cell rules below, American English, and the
+  range's verbs with gloss, family, auxiliary, prefix, and readings), into the session's scratchpad;
+  a script merged them through `json.dumps`, so the 117 approved sentences did not change (5,584
+  insertions, no deletions). The cells: 251 Perfekt, 223 Präsens, 54 Präteritum, 48 Imperativ, 19
+  Futur Konjunktiv II, 17 Konjunktiv I, 4 Futur, 3 Präteritum Konjunktiv II.
+  - **Cell rules the brief added**, beyond the phase's: a weak or -ieren verb's Präteritum
+    Konjunktiv II is never asked by any level (it repeats the Präteritum), so it would fail
+    `everySentenceIsAskedAtSomeLevel`; Konjunktiv II only in everyday forms (käme, wüsste, bekäme),
+    with würde + infinitive in place of stilted ones; Konjunktiv I in third-person reported speech;
+    sitzen, REGIONAL like stehen and liegen, never in a compound cell; a second reading named with
+    `"reading": 1` (starten, fahren, ziehen, schaffen, treten, passieren, hängen, bewegen, stoßen).
+    **The prompt's brace rule** said the wir or Sie of an Imperativ goes in braces; the shipped
+    sentences and `aWirOrSieImperativSuppliesItsPronoun` put it right after the first brace,
+    outside it ("{Nehmen} Sie bitte Platz!"), and the brief followed the code.
+  - **The reread changed 61**, almost all before the first test run. German: frames that were
+    unnatural (*Der Regen schlägt gegen das Fenster* became *Die Uhr schlägt zwölf*; *Informieren
+    Sie mich bitte morgen!*; *Die Kinder diskutieren über das Wochenende*), a mismatched subject
+    (children walking their parents to school), stilted Konjunktiv II (träfen, läse, both moved to
+    the Präteritum), *Beim Spazieren* (Spazierengehen), and frames that repeated another verb's
+    (zahlen's Imperativ beside bezahlen's, schließen's beside abschließen's). English: idiom over
+    translation ("put me through to the boss", "picked up the check", "He panics easily"), and
+    doubled words ("used to use"). gebären's Präteritum became *Im Jahr 1904 gebar sie einen
+    Sohn*, the year of Clifford Schmiesing's birth. One drafter had transliterated the umlauts in
+    12 ids (ueberzeugen.*); the merge rewrote each id from its verb.
+  - **The machine check failed once, on Claude's own edit**: a rewritten subject (*Der Verein
+    beschließt*) kept the drafter's plural person. Fixed; 22 of 22 then passed. Since some cells
+    share a conjugation (wir and sie haben, ich and er spielte), a check the conjugator cannot
+    make, every person against its subject pronoun, was scanned separately and found nothing.
+  - **The coverage test** `theFirstBatchCoversTheTwentyFiveMostFrequentVerbs` became
+    `everyTopThreeHundredVerbHasItsSentences`, which pins Josh's counts: at least three for each
+    of the top 100, two for each of the next 200. The test count is unchanged. The full suite, in
+    English: 951 test functions passed, 2 skipped (the gated harnesses).
+  - **Verified in the app**, a real draw with no fixture, answering every question with a script
+    that read each card's VoiceOver label and typed its blanks: on the iPhone 17 in dark mode, in
+    German at Elementary (Grundstufe) and Advanced (Oberstufe) and in English at both; on the iPad
+    Pro 11-inch (M5) in light mode and English at Advanced. Every round was 10 of 10 from ten
+    different verbs, and no card said "Draft" or "Entwurf". On the iPad hub, `tap_id` hit the AXe
+    decoding error the skill documents for a numeric `AXValue`, so the row was tapped by its frame.
+    The iPhone's level was set back to Elementary afterward.
 
 ## Phase 19: Which Conjugationgroup Would a Speaker Use?
 

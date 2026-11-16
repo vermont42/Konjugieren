@@ -939,12 +939,12 @@ fuhr accepts both readings of fahren and weiß accepts weißen's Imperativ. An a
 right gets one more try at half points, with a line naming what to check. Recognition answers do
 not move the practice record.
 
-**Partly built on `main` 2026-11-15** by [Phase 18](pedagogy-implementation.md#phase-18-sentences-with-a-blank)
+**Built on `main` 2026-11-15** by [Phase 18](pedagogy-implementation.md#phase-18-sentences-with-a-blank)
 of the pedagogy plan: Sentences ("Lückensätze"), from the hub's Exercises, asks a verb's conjugation
 in a short authored sentence at the learner's level, graded in the sentence's own word order, with
-the sentence's English beneath. A machine check confirms every blank against the conjugator. The
-first 117 sentences cover the 25 most frequent verbs and are reviewed; about 625 for the other
-275 verbs of the top 300 are to come. Every quiz's results now offer, on each verb's first
+the sentence's English beneath. A machine check confirms every blank against the conjugator. 736
+sentences cover the 300 most frequent verbs: four to six for each of the top 25, three for each
+of the next 75, and two for each of the 200 after. Every quiz's results now offer, on each verb's first
 right answer, the verb's literary example sentence.
 
 **Built on `main` 2026-11-15** by [Phase 19](pedagogy-implementation.md#phase-19-which-conjugationgroup-would-a-speaker-use)

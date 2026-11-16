@@ -659,21 +659,24 @@ own, a row in the hub's Exercises (Josh, 2026-11-13); the default quiz stays pro
 ### Sentences
 
 Built 2026-11-15 in Phase 18 of [`plans/pedagogy-implementation.md`](../plans/pedagogy-implementation.md)
-(T5.5), so far with a first batch of content: a short authored sentence with its verb blanked, so
+(T5.5): a short authored sentence with its verb blanked, so
 that a conjugation is tied to a meaning. "Sentences" ("Lückensätze", Josh's choice) is a mode of its
 own, a row in the hub's Exercises (Josh, 2026-11-15).
 
 - **The content** is `Konjugieren/Models/GapSentences.json`: for each sentence an id, the verb, a
   table (`ConjugationTable.articleKey`) and person (`PersonNumber` raw value), the German with each
   word of the conjugation in braces ("Gestern {sind} wir ins Kino {gegangen}."), the English, and
-  `reviewed`. Claude drafts, `GapSentenceTests` checks, and Josh reviews every sentence (Josh,
-  2026-11-13). `scripts/gap_sentences.py` writes a review sheet and marks approvals.
+  `reviewed`. 736 sentences cover the 300 most frequent verbs, at least three for each of the top
+  100 and two for each of the next 200 (`everyTopThreeHundredVerbHasItsSentences`). Claude drafts
+  and `GapSentenceTests` checks. Josh reviewed the first 117; for the other 619 he chose Claude's
+  full reread instead (2026-11-15). `scripts/gap_sentences.py` writes a review sheet and marks
+  approvals.
 - **The machine check** (`GapSentenceTests.everyBlankIsTheConjugatorsConjugation`) reads each
   sentence's braces in order and requires the conjugator's conjugation of its cell, in the main or
   the subordinate clause's word order, and the same words in every region (Swiss ss aside), so that
   no sentence teaches a wrong conjugation or shows an Austrian learner a German auxiliary. It cannot
   judge whether the word order suits the sentence: "{fängt} {an}" after *wann* passes it, so that is
-  Josh's review. Other checks: one or two one-word blanks, a verb in the top 300, a cell some level
+  the reviewer's to judge. Other checks: one or two one-word blanks, a verb in the top 300, a cell some level
   asks, and the wir or Sie of an Imperativ after the first blank.
 - **Drafts.** A release build asks only reviewed sentences; a debug build asks drafts too and marks
   each card "Draft" ("Entwurf"), so that a draft can be tried in the app (`GapSentences.includesDrafts`).

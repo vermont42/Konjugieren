@@ -2595,7 +2595,7 @@ with it, sharing produces the agreed text, and tests pin the seeding.
   category from Education to Reference, the siblings' category. Josh expects little from it. If
   App Store Connect applies the change only with a new version, it waits for the 2027 release;
   the Closing checks which. **It does** (Closing, 2026-11-15): Apple does not list Primary
-  Category among the properties editable without a new version, so the change is step 6 of
+  Category among the properties editable without a new version, so the change is the category step of
   [`docs/release.md`](../docs/release.md) § Before Submitting.
 - **Leaderboards and achievements**, by the walkthrough Phases 8 and 23 write. Phase 8's four
   leaderboards exist in App Store Connect (2026-11-14). What remains for Josh: open
@@ -2678,7 +2678,7 @@ with it, sharing produces the agreed text, and tests pin the seeding.
   [table of required, localizable, and editable properties](https://developer.apple.com/help/app-store-connect/reference/app-information/required-localizable-and-editable-properties)
   marks Primary Category as required and not as editable, the column it defines as editable "at
   any time without submitting a new version". The fetch tool summarized the table's markers
-  away, so the session read the page's HTML. `docs/release.md` step 6 now says so.
+  away, so the session read the page's HTML. `docs/release.md`'s category step now says so.
 
 ### Porting to Conjuguer and Conjugar
 

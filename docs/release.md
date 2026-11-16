@@ -36,16 +36,34 @@ release notes.
    the eight should be listed, with progress on any the build's record has begun.
 4. **Write the release notes** in English and German in
    [`release_notes.txt`](release_notes.txt), as for 1.3 and 1.4.
-5. **Check the App Store description**, [`description.md`](description.md), which `main` keeps
-   current (the levels, the per-level leaderboards, and the achievements are already in it), and paste it into App
-   Store Connect if it changed.
-6. **The store category** (Decision 10 of the pedagogy report): change the primary category from
+5. **Redo the App Store description**, [`description.md`](description.md), in English and German
+   (Josh, 2026-11-15). `main` has kept it current piece by piece (the levels, the per-level
+   leaderboards, and the achievements are already in it), but the quiz became a practice hub with
+   seven exercises, a practice record, a daily session, and a daily challenge, so the description
+   wants rewriting as a whole rather than checking. Paste it into App Store Connect.
+6. **Redo the screenshots** (Josh, 2026-11-15), 36 in all, by
+   [`screenshot-playbook.md`](screenshot-playbook.md) and `scripts/take_screenshots.sh`. Revise
+   the nine views in [`screenshot-plan.md`](screenshot-plan.md) first; the driver's `VIEWS`
+   follows. As of 2026-11-15 the plan predates the pedagogy work: the Quiz tab now opens on the
+   practice hub, not a quiz, so `quiz_mid` needs Start first and shows the answer frame (Phase 2);
+   `quiz_results` asks for elapsed time, which a hidden Quiz Clock, the default since Phase 7,
+   leaves off the results; and nothing shows the hub, Mastery, or an exercise. The playbook's
+   hardware-keyboard mechanism has never been run here, so shoot `--view quiz_mid` alone first.
+   Run `scripts/verify_store_media.sh` on the bundle before uploading.
+7. **Redo the App Store previews** (Josh, 2026-11-15), the videos, by
+   [`video_script.md`](video_script.md), in both languages and on both devices, 886 × 1920 and
+   1200 × 1600, at 30.000 s. The fourth clip's caption, "Thirty timed questions", is now wrong:
+   a round is ten questions, and the clock is hidden by default. Its clip shows a quiz begun from
+   the old Quiz tab, so it changes too, and the hub may deserve a clip of its own. The fifth clip
+   needs a real iPhone and iPad. Run `scripts/verify_store_media.sh` on the video folder before
+   uploading.
+8. **The store category** (Decision 10 of the pedagogy report): change the primary category from
    Education to Reference, in App Information, while the new version is being prepared. It cannot
    be done sooner: Apple's table of
    [required, localizable, and editable properties](https://developer.apple.com/help/app-store-connect/reference/app-information/required-localizable-and-editable-properties)
    does not mark Primary Category as editable without submitting a new version (checked
    2026-11-15, in the pedagogy plan's Closing). The change ships with the version.
-7. **Submit the version with the four leaderboards and the eight achievements in the same
+9. **Submit the version with the four leaderboards and the eight achievements in the same
    submission.** On each one's page, click **Add for Review** and choose the draft submission that
    holds the version. Apple
    requires first-time Game Center components to go with an app version.

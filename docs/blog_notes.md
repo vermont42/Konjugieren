@@ -11674,8 +11674,8 @@ Josh decided to move Konjugieren from Education to Reference, where its siblings
 Store Connect allows that without a new version took two tries to learn. The web-fetch tool
 returned Apple's table of editable properties with its checkmarks summarized away, so I read the
 page's HTML: Primary Category is required and not marked editable, the column Apple defines as
-"edited at any time without submitting a new version". It waits for the 2027 release, as step 6
-of `docs/release.md`.
+"edited at any time without submitting a new version". It waits for the 2027 release, as the
+category step of `docs/release.md`.
 
 The porting list, phase by phase, closes the plan. It draws on the report's survey of the
 siblings, not a new read of their code. Its main conclusion is about order. The siblings already

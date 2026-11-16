@@ -1242,25 +1242,44 @@ funnel "before" is every month until then, measured with the signals that exist 
    [Phase 4](browse-and-verb-implementation.md#phase-4-separable-verbs-as-a-main-clause-writes-them)
    of the browse plan: the app shows the split conjugation, and the quiz accepts either.
 2. **Purpose of the quiz.** Is it an examination to be passed or practice to be accumulated? Most
-   suggestions here assume practice. Answer: practice.
+   suggestions here assume practice. Answer: practice. Done throughout the
+   [pedagogy plan](pedagogy-implementation.md) (2026-11-13 to 2026-11-15): a wrong answer holds
+   with its correction, a slip gets one more try, missed questions return, a practice record
+   schedules review, the clock hides by default, and only a default quiz's first ten questions rank.
 3. **Primary audience.** Residents of German-speaking countries, English-speaking learners abroad,
    native speakers, or schools? The answer sets the default level, the prompt language, and how
    much weight "my verbs" deserves. The usage data favor the first group. Answer: serve both.
+   Done: the English glosses and the setting for the language of conjugationgroup names stayed,
+   every new string is in English and German, and Sentences shows each sentence's English beneath.
 4. **The leaderboard.** Keep it in the main path, move it aside, or re-scope it by level? Answer: re-scope by level.
    Built on `main` 2026-11-14 by [Phase 8](pedagogy-implementation.md#phase-8-leaderboards-by-level)
    of the pedagogy plan.
-5. **Privacy policy.** Is aggregate accuracy worth a revision? Answer: no.
+5. **Privacy policy.** Is aggregate accuracy worth a revision? Answer: no. Done: no signal carries
+   an answer, a score, a count of right or wrong answers, or a verb. The practice record stays on
+   the device, and the policy's "does not record your quiz answers, your scores" is staged to read
+   "does not send" in [`privacy-policy-pending.md`](../docs/privacy-policy-pending.md). The plan's
+   Closing audited every call site on 2026-11-15 and stopped `questionNumber` counting re-asks,
+   which had let a quit tell how many answers were wrong.
 6. **Where to try things first.** Konjugieren, where the code is freshest, or a sibling, where the
    numbers would speak sooner? With no release before 2027, this is now a question of which app
-   is released first. Answer: Konjugieren.
+   is released first. Answer: Konjugieren. Done: all of the pedagogy plan was built in
+   Konjugieren alone, and its Closing lists, phase by phase, what each would mean for Conjuguer and
+   Conjugar ([Porting](pedagogy-implementation.md#porting-to-conjuguer-and-conjugar)).
 7. **The game.** Tie it to conjugation or leave it as play? Answer: leave for now. A future project might make the game conjugation-focused.
+   Done: the game is unchanged.
 8. **Schools.** Is the classroom a channel to design for? Shareable practice sets are the smallest
    step toward it. Answer: yes, that is one channel, and shareable practice sets could be helpful.
+   Built on `main` 2026-11-14 by [Phase 10](pedagogy-implementation.md#phase-10-practice-sets-to-share)
+   of the pedagogy plan: a custom quiz shared as a link or a QR code, with the sharer's level.
 9. **Conjuguer's minimum OS.** Is it worth checking whether the move to iOS 26 shut out the Swiss
    institution, and lowering the minimum if it did? The check needs no release. Lowering the
    minimum does, and the institution's installs came each September. Answer: no. I don't want to worry about whether certain OS or SwiftUI features are available. I'll leave the minimum version at 26 for now, not increasing to 27.
+   Done: nothing in the pedagogy plan touched Conjuguer.
 10. **Store category.** Konjugieren is listed under Education and its siblings under Reference,
     while people use all three as references. Whether the category affects discovery is unknown. Answer: given the better download numbers of Conjuguer and Conjugar, the plan should include changing Konjugieren's category to reference. That said, this likely isn't a big lever.
+    Not yet done, and it cannot be: Apple does not let the primary category change without a new
+    version, so it waits for the 2027 release, as
+    [`docs/release.md`](../docs/release.md) § Before Submitting says (checked 2026-11-15).
 
 ## Limits of This Research
 

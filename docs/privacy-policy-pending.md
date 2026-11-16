@@ -1050,3 +1050,18 @@ Ein neuer letzter Satz für den Absatz über den Übungsstand:
 ```
 Die Ergebnisse der täglichen Herausforderungen, die Sie zuletzt abgeschlossen haben, bleiben ebenfalls auf Ihrem Gerät, damit die App das heutige zeigen und Sie es teilen können, und werden nie gesendet, es sei denn, Sie teilen sie selbst.
 ```
+
+## The audit (pedagogy plan, Closing, 2026-11-15)
+
+No new signal or parameter, and no line above changes. The Closing diffed `Analytics.swift` against
+`e385749`, the commit before the plan's Phase 1, read every call site, and found each new signal,
+parameter key, and `source` value staged above in both languages. It changed one value's meaning
+to match the lines already staged. `quitQuiz`'s and `abandonQuiz`'s `questionNumber` counted
+re-asks until then. A re-ask follows only a wrong answer, so a question reached of 13 in a round of
+ten told that at least three answers were wrong (Decision 5). It now counts the round's questions
+alone, which is what "question number reached" in the progress bullet already says.
+
+Josh kept the `quizCorrection` source on 2026-11-15, though a held correction follows only a wrong
+answer. It says that a link under a correction was followed, as `mistakes` says that My Mistakes
+was begun: a surface, not a count of answers. Phase 18 sends nothing for the example sentence that
+only a right answer's row offers, and the two rulings stand side by side.

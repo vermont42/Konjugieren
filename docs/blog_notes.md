@@ -11621,3 +11621,69 @@ keeps the day's results, since forgetting one would reopen its challenge. The ve
 longer pages the quiz widget, and a tap on the quiz widget opens the day's challenge.
 
 Tests: 21 new, 951 in all, 949 passed and the 2 environment-gated harnesses skipped.
+
+## Closing the Pedagogy Plan (2026-11-15)
+
+The pedagogy plan's Closing was an audit rather than a build: run everything, confirm that the
+report says what was built, check every analytics call against the staged privacy lines, find out
+whether the store category can change before a release, and write the list of what each phase
+would mean for Conjuguer and Conjugar. Twenty-four phases in three days left a lot to confirm.
+
+### Twenty-seven failures that were not
+
+The first full run failed 27 issues in seven suites, and every one was an English expectation
+meeting German text: "Prüfe den Infinitiv." where the test wanted "Check the infinitive." Nothing
+had broken. Since 2026-11-14 the iPhone simulator's system language has been German, so that the
+phases' visual checks show German by default, and every phase since has run its tests with
+`xcodebuild -testLanguage en`. Their notes say so, but the build instructions do not, and a fresh
+session following the instructions trips on it. Run in English, 949 tests passed and
+2 skipped, as Phase 24 had left them, and 951 after the Closing's two new tests.
+
+### The leak in a question number
+
+The audit diffed `Analytics.swift` against the commit before Phase 1 and read all 45 call sites.
+Nine signals, seven parameter keys, and sixteen `source` values were new, and every one had its
+lines waiting in both languages. Decision 5 is strict: no signal may carry an answer, a score, a
+count of right or wrong answers, or a verb. Nothing carried any of those directly.
+
+One carried a count indirectly. When a quiz is quit, or the app is closed during one, the signal
+reports the question reached, and that was `currentIndex + 1`. But since Phase 7 a wrong answer
+inserts its re-ask three questions later, into the same list `currentIndex` walks. A learner who
+quit at question 13 of a round of ten had told the analytics that at least three answers were
+wrong. Phase 12 had seen exactly this shape in Review sessions, whose length is the number of items
+due, and stripped their counts for it. The architecture doc had even written "`questionNumber`
+counts re-asks", as a neutral fact, without noticing what it implied. The fix counts only the
+round's own questions, which is also what the privacy line already said: "question number
+reached". Two tests pin it, one of them a quit while a re-ask is on screen, where the old code
+sent one more than the new.
+
+The second case went to Josh. A verb page opened from a held correction sends the source
+`quizCorrection`, and a correction appears only after a wrong answer. Phase 18 had refused the
+mirror image, a signal for the example sentence that only a right answer offers, for precisely
+that reason. Josh kept `quizCorrection`: it says a surface was used, as starting My Mistakes does,
+not how many answers were wrong. Both rulings now stand side by side in the pending policy, so
+release day does not have to rediscover the reasoning.
+
+"Audit" comes from Latin *audire*, to hear. Medieval accounts were checked by being read aloud to
+an auditor, a hearer. This one was mostly reading, but the leak was found the old way, by
+following a number through to what it would say to someone listening.
+
+### The category, and the porting list
+
+Josh decided to move Konjugieren from Education to Reference, where its siblings sit. Whether App
+Store Connect allows that without a new version took two tries to learn. The web-fetch tool
+returned Apple's table of editable properties with its checkmarks summarized away, so I read the
+page's HTML: Primary Category is required and not marked editable, the column Apple defines as
+"edited at any time without submitting a new version". It waits for the 2027 release, as step 6
+of `docs/release.md`.
+
+The porting list, phase by phase, closes the plan. It draws on the report's survey of the
+siblings, not a new read of their code. Its main conclusion is about order. The siblings already
+do much of Phase 6 by hand, with curated lists and fixed quotas per tense, but each has its own
+grading defects: Conjugar gives half credit for an accent that marks another tense (hablo for
+habló), and Conjuguer shows a success haptic and no correction for a half-credit answer, defaults
+compound être answers to the feminine, and asks for conjugations of defective verbs that do not
+exist. Those are Tier 1 work, and Tier 1 came first here for a reason.
+
+The plan is finished but for one thing, Phase 18's sentences for the rest of the top 300, about
+625, whose note says how to draft and check them.

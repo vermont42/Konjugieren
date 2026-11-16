@@ -40,8 +40,11 @@ release notes.
    current (the levels, the per-level leaderboards, and the achievements are already in it), and paste it into App
    Store Connect if it changed.
 6. **The store category** (Decision 10 of the pedagogy report): change the primary category from
-   Education to Reference, if App Store Connect did not already allow it without a version. The
-   pedagogy plan's Closing checks which.
+   Education to Reference, in App Information, while the new version is being prepared. It cannot
+   be done sooner: Apple's table of
+   [required, localizable, and editable properties](https://developer.apple.com/help/app-store-connect/reference/app-information/required-localizable-and-editable-properties)
+   does not mark Primary Category as editable without submitting a new version (checked
+   2026-11-15, in the pedagogy plan's Closing). The change ships with the version.
 7. **Submit the version with the four leaderboards and the eight achievements in the same
    submission.** On each one's page, click **Add for Review** and choose the draft submission that
    holds the version. Apple

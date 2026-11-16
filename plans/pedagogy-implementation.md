@@ -39,7 +39,11 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 22 | Done | 2026-11-15 | `5579305` | T6.3 |
 | 23 | Done | 2026-11-15 | `fa7d846` | T6.6 (personal bests and achievements) |
 | 24 | Done | 2026-11-15 | `4fb4d5e` | T6.8 |
-| Closing | Not started | | | Audit, report notes, porting list, Decision 10 |
+| Closing | Awaiting Josh | 2026-11-15 | | Audit, report notes, porting list, Decision 10 |
+
+**The plan is finished** (2026-11-15), with one exception: Phase 18's sentences for the other 275
+verbs of the top 300, about 625, which its **How it differed** says how to draft, check, and
+approve. Every other suggestion the plan took on is built on `main`, waiting for the 2027 release.
 
 ## How to Work This Plan
 
@@ -2590,7 +2594,9 @@ with it, sharing produces the agreed text, and tests pin the seeding.
 - **The store category** (Decision 10). In App Store Connect, change Konjugieren's primary
   category from Education to Reference, the siblings' category. Josh expects little from it. If
   App Store Connect applies the change only with a new version, it waits for the 2027 release;
-  the Closing checks which.
+  the Closing checks which. **It does** (Closing, 2026-11-15): Apple does not list Primary
+  Category among the properties editable without a new version, so the change is step 6 of
+  [`docs/release.md`](../docs/release.md) § Before Submitting.
 - **Leaderboards and achievements**, by the walkthrough Phases 8 and 23 write. Phase 8's four
   leaderboards exist in App Store Connect (2026-11-14). What remains for Josh: open
   `GameCenterResources.gamekit` in Xcode once, post a score from a development build, and on
@@ -2609,7 +2615,7 @@ with it, sharing produces the agreed text, and tests pin the seeding.
 
 ## Closing
 
-**Status:** Not started.
+**Status:** Awaiting Josh (2026-11-15).
 
 - Run the full suite and `check_docs.py`.
 - Confirm that every suggestion in the Suggestion Index marked for a phase carries its **Built on
@@ -2629,4 +2635,89 @@ with it, sharing produces the agreed text, and tests pin the seeding.
 
 **How it differed:**
 
-(To be written by the session that finishes the Closing.)
+- **The checks.** The first full run, through `run_tests.sh`, failed 27 issues in seven suites,
+  every one an English expectation meeting German text ("Prüfe den Infinitiv." for "Check the
+  infinitive."). The iPhone simulator's system language has been German since 2026-11-14, and the
+  phases since have run the suite with `xcodebuild -testLanguage en`, which their notes say but no
+  doc for running tests does. Run that way, 949 passed and 2 skipped (the environment-gated
+  harnesses), the count Phase 24 left. After the Closing's fix and its two tests, 951 passed and 2 skipped
+  (one test's line in the log was cut mid-word by an `xcodebuild` message, so a count by pattern
+  read 950; it passed). `check_docs.py` found 0 problems before the Closing's edits, then caught
+  `README.md`'s three test counts, which the two new tests moved from 951 to 953 `@Test`
+  occurrences; after updating them, 0.
+- **Every suggestion carries its line.** Each suggestion the Suggestion Index gives a phase has a
+  **Built on `main`** or **Partly built** line under its tier in the report, T5.5 the one partly
+  built (Phase 18), and M1 to M3 have theirs under "What to Measure". The report's Decisions for
+  Josh gave answers but, for eight of the ten, not what was done; each now says, Decision 10 why
+  it waits.
+- **The privacy audit found one leak, now fixed.** `Analytics.swift` was diffed against
+  `e385749`, the commit before Phase 1, and all 45 call sites read (44 signals and the initializer). Nine signals (`abandonQuiz`,
+  `tapDailyReminder`, `tapKeepPracticeSet`, `tapResetPractice`, `tapShareChallenge`,
+  `tapSharePracticeSet`, `tapViewAchievements`, `viewMastery`, `viewPracticeSet`), seven parameter
+  keys (`customChoice`, `duration`, `enabled`, `level`, `method`, `questionCount`, `streak`, with
+  `difficulty` retired), and 16 `source` values all have staged lines in both languages. None
+  carries an answer, a score, or a verb. But `quitQuiz`'s and `abandonQuiz`'s `questionNumber` was
+  `currentIndex + 1`, and `currentIndex` indexes a list into which a wrong answer inserts its
+  re-ask. A quit at 13 in a round of ten said that at least three answers were wrong, the
+  reasoning by which Phase 12 had stripped counts from Review. `feature-architecture.md` even said
+  "`questionNumber` counts re-asks", without the consequence. It now counts the round's questions
+  alone (`Quiz.questionReached`), which is what the staged "question number reached" already
+  says, so no policy line changed. Two tests in `QuizTests/AbandonmentTests` pin it: every
+  question missed, the question reached keeps step with the originals asked; and a quit on a
+  re-ask sends the originals before it, where the old code sent one more.
+- **One ruling asked of Josh.** A verb page or ablaut group opened from a held correction sends
+  `source` `quizCorrection`, and a correction follows only a wrong answer. Phase 18 had refused the
+  mirror case, sending nothing for the example sentence that only a right answer's row offers.
+  Josh kept `quizCorrection` on 2026-11-15, as a surface rather than a count, as `mistakes` says
+  only that My Mistakes was begun. The pending policy's new last section records both rulings.
+- **Game Center, not analytics.** Achievement progress (Phase 23) is computed from the practice
+  record and sent to Game Center while the learner is signed in, as leaderboard scores always
+  were. It is staged for section 6 of the policy, apart from the analytics list, and Decision 5,
+  which concerns the analytics, does not reach it.
+- **The category waits for the release.** Apple's
+  [table of required, localizable, and editable properties](https://developer.apple.com/help/app-store-connect/reference/app-information/required-localizable-and-editable-properties)
+  marks Primary Category as required and not as editable, the column it defines as editable "at
+  any time without submitting a new version". The fetch tool summarized the table's markers
+  away, so the session read the page's HTML. `docs/release.md` step 6 now says so.
+
+### Porting to Conjuguer and Conjugar
+
+A starting point, phase by phase. Neither sibling's code was read for it: the sibling facts come
+from the report's [Conjugar and Conjuguer](pedagogy.md#conjugar-and-conjuguer) section, a
+read-only survey of 2026-11-13, and from the browse plan's porting list. Inferences are marked.
+Each sibling starts with a quiz of thirty typed questions, no retry, no re-asking, no memory, and a
+leaderboard.
+
+| Phase | Conjuguer (French) | Conjugar (Spanish) |
+|---:|---|---|
+| 1 | Trim whitespace, which neither sibling does. Strip a leading pronoun, elided j' included. Accent keys above the field. Audit standard variants such as paie and paye (**inference**). | Trim whitespace. Strip yo, tú, usted, and the rest. Accent and ñ keys. Accept both imperfect-subjunctive endings, -ra and -se (**inference**). |
+| 2 | A frame settles the pronoun and elision (j' before a vowel), and can show the participle's agreement. | A frame settles the negative imperative's "no", which must be typed and is nowhere said. |
+| 3 | Most needed here: a half-credit answer (parle for parlé) gets a success haptic and no correction until the results. | The same hold, with the differing letters marked, accents among them. |
+| 4 | A dropped circumflex earns full credit. Make it a slip with one more try, and where the accent marks another cell (eut for eût), a real error, by Phase 4's rule. | An accent error earns half credit even where it marks another tense (hablo for habló). Phase 4's rule applies directly: another cell is a real error, not a slip. |
+| 5 | Ridiculous is the same thirty verb-and-tense pairs on every run. Levels ordered by use need a French progression (**inference**). Rename Ridiculous. | The score is scaled by difficulty and region; levels replace the scaling. Easy's three tenses are a start on a first level. Rename as needed. |
+| 6 | Curated lists and être, avoir, and aller once each already do most of this. Keep them; filter the defective verbs it now asks (faillir's imperative, falloir's other persons, about one Regular quiz in five). | Curated lists and five regular, five irregular per tense already do most of this. Fix the "regular" lists that hold verbs the engine classes otherwise (buscar, leer, romper). |
+| 7 | Ten questions, Ten More, one re-ask, a hidden clock. Speed outranks accuracy in the score, so the hidden clock needs a new score too. | The same. Conjugar is where quizzes get finished, so its numbers will show the change soonest. |
+| 8 | A board per level, in App Store Connect, with the release. | A board per level; scores scaled by region also mix on one board today, so region may need a board too (**inference**). |
+| 9 | A scope type first, as the browse list said. The Models tab groups verbs by pattern, a natural scope (**inference**). | The same. |
+| 10 | Strongest here, because of the Swiss institution's purchases. Check the Camera app with the sibling's URL scheme, and QR on a Mac (**inference**). | The same design, lower priority. |
+| 11 | The two kinds of item have analogues: an irregular verb's key conjugations, and a regular pattern (**inference**). | The same; stem-changing verbs (e to ie) are a third kind to weigh (**inference**). |
+| 12 | Review and My Mistakes, once the record exists. | The same. |
+| 13 | The hub. | The same. |
+| 14 | The wrong auxiliary (avoir for être) is a strong class here, and participle agreement with être another (**inference**). Fix first the être-verb answer that follows the pronoun-gender setting, feminine by default, and marks suis allé wrong. | No auxiliary choice. A regular conjugation of an irregular verb, the weak-for-strong analogue, and another cell (hablo for habló) carry most of it (**inference**). |
+| 15 | French has its own key conjugations, the temps primitifs; avoid any "principal parts" label, as here. | Irregular preterite stems (tuve, estuve) and yo forms suggest a set (**inference**). |
+| 16 | Practice by model from the Models tab, one then mixed. | The same, lower priority. |
+| 17 | Needs the conjugation map (browse Phase 5's row: about 6,326 verbs, so measure first). Lower value: francophone users know the infinitive. | Highest value, for American learners reading Spanish. About 4,811 verbs; measure first. |
+| 18 | Authored sentences, the largest content cost, with the same machine check against the conjugator. | The same; subjunctive triggers suit a blank (**inference**). |
+| 19 | Passé composé or imparfait, subjonctif or indicatif: classic contrasts, perhaps worth more than German's (**inference**). | Pretérito or imperfecto, subjuntivo or indicativo: the same (**inference**). |
+| 20 | Mastery from the record, kept modest. | The same. |
+| 21 | The speed round, the one place the clock counts. | The same. |
+| 22 | The daily session, the streak, the reminder. | The same. |
+| 23 | A personal best per level and achievements for mastery, through App Store Connect. | The same. |
+| 24 | The daily challenge, if the sibling's widget has a daily question to build on (not verified). | The same. |
+
+The report advises building shared changes into all three apps, and Josh chose Konjugieren first
+(Decision 6). What the siblings do better, curated lists and fixed per-tense quotas, means Phase 6
+there is mostly keeping what exists. Their own grading defects (Conjugar's half credit for
+accents, Conjuguer's uncorrected half credit, its gender default, its defective verbs, and
+neither trimming whitespace) are Tier 1 work, and come before anything else on this list, as Tier 1
+came first here.

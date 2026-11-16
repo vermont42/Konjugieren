@@ -268,6 +268,54 @@ extension QuizTests {
       #expect(QuizAbandonment.entries(getterSetter: getterSetter).isEmpty)
     }
 
+    /// A re-ask follows only a wrong answer, so counting it would let the question reached tell how
+    /// many answers were wrong (Decision 5). Every question is missed here, and the question reached
+    /// still matches the questions of the round asked so far.
+    @Test func theQuestionReachedDoesNotCountReasks() {
+      reset()
+      // Beginner asks no choice question, which takes a tap rather than a typed answer.
+      Current.settings.quizLevel = .beginner
+      defer { Current.settings.quizLevel = .intermediate }
+      let quiz = Quiz(timerInterval: 0.001)
+      quiz.start()
+      var originalsAsked = 0
+      while quiz.isInProgress {
+        if quiz.currentQuestion?.isReask == false {
+          originalsAsked += 1
+        }
+        #expect(QuizAbandonment.entries(getterSetter: getterSetter).values.map(\.questionNumber) == [originalsAsked])
+        quiz.submitAnswer("xqzv")
+        if quiz.isHeld {
+          quiz.continueAfterCorrection()
+        }
+      }
+      #expect(quiz.reaskCount > 0)
+      #expect(originalsAsked == Quiz.questionCount)
+    }
+
+    @Test func aQuitOnAReaskSendsTheQuestionReachedWithoutReasks() {
+      reset()
+      // Beginner asks no choice question, which takes a tap rather than a typed answer.
+      Current.settings.quizLevel = .beginner
+      defer { Current.settings.quizLevel = .intermediate }
+      let quiz = Quiz(timerInterval: 0.001)
+      quiz.start()
+      while quiz.isInProgress, quiz.currentQuestion?.isReask == false {
+        quiz.submitAnswer("xqzv")
+        if quiz.isHeld {
+          quiz.continueAfterCorrection()
+        }
+      }
+      let reached = quiz.questions.prefix(while: { !$0.isReask }).count
+      #expect(reached < Quiz.questionCount)
+
+      let spy = Current.analytics as! AnalyticsSpy
+      let before = spy.signalNames.count
+      quiz.quit()
+      let quit = Array(zip(spy.signalNames, spy.signalParameters).dropFirst(before)).first { $0.0 == .quitQuiz }
+      #expect(quit?.1[ParameterKey.questionNumber.rawValue] == "\(reached)")
+    }
+
     @Test func reachingTheResultsClearsTheRecordAndTenMoreRestoresIt() {
       reset()
       let quiz = Quiz(timerInterval: 0.001)

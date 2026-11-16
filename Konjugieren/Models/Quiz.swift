@@ -457,8 +457,15 @@ class Quiz {
     }
   }
 
+  /// The question reached, re-asks not counted, which `quitQuiz` and `abandonQuiz` send. A re-ask
+  /// is inserted only after a wrong answer, so a position that counted re-asks would tell how many
+  /// answers were wrong, which Decision 5 of the pedagogy plan forbids.
+  private var questionReached: Int {
+    questions.prefix(currentIndex + 1).filter { !$0.isReask }.count
+  }
+
   func quit() {
-    let questionNumber = currentIndex + 1
+    let questionNumber = questionReached
     let duration = Date().timeIntervalSince(startDate)
     stopTimer()
     QuizAbandonment.clear(id: abandonmentID, getterSetter: Current.getterSetter)
@@ -487,7 +494,7 @@ class Quiz {
   /// (M2).
   private func recordProgress() {
     QuizAbandonment.record(
-      QuizAbandonment.Entry(level: level.rawValue, source: scope.source.rawValue, questionNumber: scope.sendsQuestionCounts ? currentIndex + 1 : nil),
+      QuizAbandonment.Entry(level: level.rawValue, source: scope.source.rawValue, questionNumber: scope.sendsQuestionCounts ? questionReached : nil),
       id: abandonmentID,
       getterSetter: Current.getterSetter
     )

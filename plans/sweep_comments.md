@@ -8,7 +8,7 @@ and test tooling — see its "Comments" section before applying this to `verbdat
 ## Why this exists
 
 Konjugieren's sibling app Conjugar recently ran a comment-only sweep
-(`Conjugar.mig/prompts/sweep-comments.md`, commits `ee61032` / `c2e9632`) that
+(`Conjugar/plans/sweep_comments.md`, commits `ee61032` / `c2e9632`) that
 stripped a dense **provenance paper trail** — Fable-audit `item N` citations,
 build-plan `Phase N` pointers, cross-app `audit §N` / `K#` / `C#` codes, the
 external verb-reference book/taxonomy oracle, and "ported from Konjugieren"

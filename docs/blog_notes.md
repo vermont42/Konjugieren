@@ -11974,3 +11974,55 @@ narrowed that after the push. The reply to the reader went out a while ago, he s
 recipient who has not opened the file by now is not going to. So an old email no longer stops a
 rename. A published blog post still does, and the section in `CLAUDE.md` now says to search the
 Blog repository and ask him only in that case.
+
+## A search that could not fail, and the two links it missed (2026-11-16)
+
+Two entries above say that a search of the Blog repository found no post linking to any file
+renamed today. That was false, and the commit message of `42ef201` repeats it. One published
+post, "The Aside That Built a Test Suite" of 2026-07-24, links to four files in this repository,
+and the push renamed two of them: `docs/etymology-pipeline.md` and
+`verbdata/wiktionary-defects.json`. Both links have returned 404 since.
+
+The search was written as `timeout 40 grep … 2>/dev/null`. `timeout` is not installed on this
+Mac, so the shell never ran `grep`, the "command not found" went to `/dev/null` with everything
+else, and nothing was printed. Nothing printed looks exactly like nothing found. The same
+wrapper had been used twice earlier in the day, with the same empty result, and it had been
+believed each time. It surfaced only when a third search, for the sibling apps, returned nothing
+for a repository that an unwrapped search a minute before had shown to be full of links.
+
+This is the fifth entry in a list `CLAUDE.md` already keeps: ways a check reports success while
+doing nothing. The others are a test filter that matches no test, a suite gated on an
+environment variable that was never forwarded, and a build log that lists tasks it did not run.
+The remedy is the same each time. A check has to be seen to find something before its silence
+means anything. `CLAUDE.md` now carries the search as a recipe to be run bare, with that story
+beside it.
+
+It matters more than a broken link usually would, because an hour earlier Josh had ruled on
+exactly this. An old email is no reason to hold a rename back, he said, and a published post is.
+The post was the case he meant, and the check that should have caught it was the one that could
+not fail. The choice between repairing the two links in the post and restoring the two names
+here is his, and it has been put to him.
+
+The same session wrote `scripts/rename_files.py`, the three rewrite rules of the day in one
+tool, so that the two sibling apps can be sorted the same way. It was tested by replaying the
+day: a clone of the commit before the renames, the full map of moves, and a comparison with what
+was committed. Twenty-one files differed, all of them accounted for, either edits made by hand
+or mentions of generated files that a fresh clone does not contain. The plans for the siblings
+are `plans/location_cleanup.md` in Conjugar and in Conjuguer. Conjuguer's plan opens with the
+blog, because a post of 2026-06-09 links to its `prompts/` folder and to six files that the
+sorting would move.
+
+## The simulator speaks English again (2026-11-16)
+
+Josh set the iPhone 17 simulator back to English and removed the "Run the suite in English"
+paragraph from `CLAUDE.md`. He mostly runs the simulator in English, so the paragraph had become
+an instruction for an exception that no longer held. The simulator's language list now reads
+`en-US` first and `de-US` second, which keeps German one tap away for the visual checks without
+making it the system language. An ordinary `run_tests.sh` should no longer need
+`-testLanguage en`, though no test run was made to confirm it.
+
+Entries above from 2026-11-14 and 2026-11-15, and the phase notes in
+`plans/pedagogy_implementation.md`, say the simulator is German and that the suite must be run
+with `-testLanguage en`. They were true when written. If the simulator is switched to German
+again, seven suites that assert English strings will fail by the dozen while nothing is broken,
+and that flag on the raw `xcodebuild` command is the remedy.

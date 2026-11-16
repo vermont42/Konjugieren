@@ -464,6 +464,7 @@ scripts/
 ├── gap_sentences.py           # Sentences' content (pedagogy Phase 18): `review` writes a Markdown sheet of the drafts, `approve` marks sentences reviewed, `status` counts them
 ├── generate_verb_pdf.py       # Generates PDF verb conjugation tables from VerbExportTests' JSON (default /tmp/konjugieren-export.json)
 ├── render_emoji.swift         # Renders emoji glyphs to PNG assets in Assets.xcassets (workaround for iOS 26 emoji-rendering bug; see docs/emoji_assets.md)
+├── rename_files.py            # Renames or moves files and directories from a JSON map and repairs the references: Markdown link targets, written-out paths, and bare names. Skips and reports any path whose prefix names a different file, which is how an inbound GitHub link gets noticed. Run from the root of the repo being changed, so Conjugar and Conjuguer use it too
 ├── sync_verb_history.py       # Validates docs/verb_history{,_de}.txt against StringExtensions' markup rules and writes the body back into Localizable.xcstrings
 ├── test_sync_verb_history.py  # Negative-tests every validator in sync_verb_history.py by corrupting a copy of the essay one way at a time; also asserts both shipping extracts validate clean
 ├── take_screenshots.sh        # Drives ios-build-verify + axe/simctl through 36 App Store screenshots (9 views × 2 langs × 2 devices); see docs/screenshot_playbook.md

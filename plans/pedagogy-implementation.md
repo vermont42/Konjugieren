@@ -32,7 +32,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 15 | Done | 2026-11-14 | `a324232` | T5.1 |
 | 16 | Done | 2026-11-15 | `bd0537e` | T5.2 |
 | 17 | Done | 2026-11-15 | `010e2dc` | T5.4 |
-| 18 | Done | 2026-11-15 | `9ab13cc` (the app and 117 sentences); the other 619 sentences, uncommitted | T5.5 |
+| 18 | Done | 2026-11-15 | `9ab13cc` (the app and 117 sentences), `b1b5261` (the other 619) | T5.5 |
 | 19 | Done | 2026-11-15 | `81f3c6b` | T5.6 |
 | 20 | Done | 2026-11-15 | `2608a03` | T6.2 |
 | 21 | Done | 2026-11-15 | `38d4496` | T5.7 |

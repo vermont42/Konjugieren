@@ -11557,3 +11557,67 @@ holds the IDs, both languages' names and descriptions, and Apple's rules, and `d
 holds the step.
 
 Tests: 23 new, 930 in all, 928 passed and the 2 environment-gated harnesses skipped.
+
+## The Daily Challenge (2026-11-15)
+
+Phase 24 of the pedagogy plan, the last before the Closing, built the daily shared challenge: five
+questions a day at each level, the same on every device on the same date, with a result that can
+be shared as text. The report rated the evidence for this format as speculative, a designer's
+testimony and one survey, and Josh accepted it anyway, which is fair for something that costs
+little and might bring a friend.
+
+### Four questions, four recommended answers
+
+Before building, I asked Josh four things, each with a mockup of the text: what the shared text
+says, whether it carries a link to the same challenge, how often a challenge can be taken, and where
+its row goes. He chose a row of dots and the points ("🟡🟡🟠🔴🟡  35 / 50"), a link above the App
+Store's, once a day per level, and the row under the Daily Session. The dots are the quiz's own
+progress-dot colors: gold for right, orange for right on the second try, red for wrong. That makes
+the text the app's rather than Wordle's green and yellow squares, and it puts the German flag's
+gold and red to work once more.
+
+The words have a nice divergence. English "challenge" comes through Old French *chalenge*, an
+accusation or claim, from Latin *calumnia*, a false accusation, which also gives "calumny". German
+*Herausforderung* is built from *heraus* and *fordern*, to demand, which goes back to Old High
+German *fordarōn*, from *fordar*, "forward". The English word began as an accusation in court; the
+German one is literally a calling-out, demanding that someone step forward.
+
+### The same for everyone, within a build
+
+The seed is the FNV-1a fold the widget already used, over `challenge-2026-11-15-elementary`. The
+draw is the default quiz's balanced draw at that level, with nothing from the device in it: no due
+items, no My Verbs, no settings, and not the quiz's own random source. Two learners in different
+time zones share a challenge by date, as Wordle players do, not by instant.
+
+The honest limit took some thought. `QuizDraw` uses the standard library's `randomElement` and
+`shuffled`, and those generic algorithms are compiled into the app rather than called from the OS,
+so every device running one build agrees. A new toolchain could change them, though, and so could
+a verb import, which shifts the frequency bands. So the tests pin the seed, its text, and the
+draw's determinism, but not a golden list of questions, which every corpus import would break.
+Nothing ships before 2027, and a challenge shared across app versions may differ.
+
+### Two things the simulator showed
+
+The results first showed the shared text's emoji, and the iPhone simulator drew all five as tofu.
+It is the iOS 26 rendering bug the project already documents for flags and the horse, and it
+reached plain colored circles too. The shared text keeps its emoji, since it is read in Messages
+on real devices, but the app now draws its dots as SwiftUI circles in the dot colors, which also
+match the progress dots exactly. A share symbol drew as a blank disc for the same kind of reason
+and was swapped.
+
+The quiz widget's daily question is now the challenge's first question at the learner's level,
+which is how the phase made the widget "follow the challenge". Its wrong answers come from the
+same verb's other cells, and reading the widget's bundle on the simulator turned up "dürfen wir"
+offered against wir durften. The wir and Sie Imperativ carry their pronoun, so they gave
+themselves away as wrong; they are now offered only when the question is an Imperativ. The test
+first written for that was too strict, since a du Imperativ such as *erwarte* is also the ich
+Präsens, a perfectly fair option.
+
+### What else changed around it
+
+A challenge asks no re-ask, so its results are exactly the five questions the text reports. A
+slip still earns its second try at half points, which is what the orange dot means. Reset Practice
+keeps the day's results, since forgetting one would reopen its challenge. The verb widgets' Next no
+longer pages the quiz widget, and a tap on the quiz widget opens the day's challenge.
+
+Tests: 21 new, 951 in all, 949 passed and the 2 environment-gated harnesses skipped.

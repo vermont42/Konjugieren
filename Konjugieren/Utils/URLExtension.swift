@@ -57,7 +57,7 @@ extension URL {
   }
 
   /// `konjugieren://quiz/set?groups=imperativ&verbs=modals&source=qrCode`. The quiz route's
-  /// other targets but `daily` (`quiz/start`) still open the Quiz tab.
+  /// other targets but `daily` and `challenge` (`quiz/start`) still open the Quiz tab.
   static func practiceSetDeeplink(custom: CustomQuiz, level: QuizLevel?, source: AnalyticsSource) -> URL? {
     var components = URLComponents()
     components.percentEncodedQuery = custom.rawValue
@@ -71,6 +71,17 @@ extension URL {
   /// session unless a quiz is already under way (Phase 22 of the pedagogy plan).
   static func dailySessionDeeplink(source: AnalyticsSource) -> URL? {
     deeplink(host: quizHost, target: dailySessionTarget, queryItems: [
+      URLQueryItem(name: sourceQueryName, value: source.rawValue),
+    ])
+  }
+
+  /// `konjugieren://quiz/challenge?date=2026-11-15&level=intermediate&source=challengeLink`, which
+  /// opens that day's challenge at that level (Phase 24 of the pedagogy plan). With no key, as the
+  /// quiz widget sends it, today's at the learner's level.
+  static func challengeDeeplink(_ key: DailyChallenge.Key?, source: AnalyticsSource) -> URL? {
+    deeplink(host: quizHost, target: challengeTarget, queryItems: [
+      key.map { URLQueryItem(name: dateQueryName, value: $0.day) },
+      key.map { URLQueryItem(name: levelQueryName, value: $0.levelKey) },
       URLQueryItem(name: sourceQueryName, value: source.rawValue),
     ])
   }
@@ -119,5 +130,7 @@ extension URL {
   static let searchTextQueryName = "q"
   static let practiceSetTarget = "set"
   static let dailySessionTarget = "daily"
+  static let challengeTarget = "challenge"
+  static let dateQueryName = "date"
   static let levelQueryName = "level"
 }

@@ -63,6 +63,11 @@ struct KonjugierenApp: App {
           WidgetSnapshotWriter.writeSnapshot()
           WidgetCenter.shared.reloadAllTimelines()
         }
+        // The quiz widget asks the first question of the day's challenge at the learner's level.
+        .onChange(of: Current.settings.quizLevel) {
+          WidgetSnapshotWriter.writeSnapshot()
+          WidgetCenter.shared.reloadAllTimelines()
+        }
     }
     .commands {
       VerbSearchCommands()

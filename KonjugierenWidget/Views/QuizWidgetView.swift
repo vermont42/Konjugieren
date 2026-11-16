@@ -46,7 +46,8 @@ struct QuizWidgetView: View {
         }
       }
     }
-    .widgetURL(URL(string: "konjugieren://verb/\(quiz.infinitiv)?source=widget"))
+    // The question is the first of today's challenge, so a tap beside the answers opens the rest.
+    .widgetURL(URL(string: "konjugieren://quiz/challenge?source=challengeWidget"))
   }
 
   private var answeredView: some View {

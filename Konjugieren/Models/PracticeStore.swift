@@ -18,6 +18,10 @@ final class PracticeStore {
   /// default quiz, what the level's leaderboard takes. Kept on the device and sent nowhere
   /// (Phase 23).
   private(set) var levelBests: [String: Int] = [:]
+  /// The challenges finished lately, the newest last, kept on the device and sent nowhere
+  /// (Phase 24). Reset Practice keeps them, since each is a day's result rather than a record of
+  /// what is known, and forgetting one would let its challenge be taken again.
+  private(set) var challengeResults: [DailyChallengeResult] = []
   private let getterSetter: GetterSetter
   private let calendar: Calendar
 
@@ -47,6 +51,7 @@ final class PracticeStore {
     speedRoundBest = getterSetter.getCodable(key: Self.speedRoundBestKey)
     dailyStreak = getterSetter.getCodable(key: DailyStreak.storageKey) ?? DailyStreak()
     levelBests = getterSetter.getCodable(key: Self.levelBestsKey) ?? [:]
+    challengeResults = getterSetter.getCodable(key: DailyChallengeResult.storageKey) ?? []
   }
 
   static let speedRoundBestKey = "speedRoundBest"
@@ -158,6 +163,22 @@ final class PracticeStore {
     levelBests[level.rawValue] = score
     getterSetter.setCodable(key: Self.levelBestsKey, value: levelBests)
     return true
+  }
+
+  func challengeResult(for key: DailyChallenge.Key) -> DailyChallengeResult? {
+    challengeResults.last { $0.key == key }
+  }
+
+  /// A finished challenge, kept unless its key was finished before, since a challenge is taken
+  /// once (Josh, 2026-11-15). Returns the result the challenge keeps.
+  @discardableResult
+  func recordChallenge(_ result: DailyChallengeResult) -> DailyChallengeResult {
+    if let kept = challengeResult(for: result.key) {
+      return kept
+    }
+    challengeResults = Array((challengeResults + [result]).suffix(DailyChallengeResult.keptCount))
+    getterSetter.setCodable(key: DailyChallengeResult.storageKey, value: challengeResults)
+    return result
   }
 
   /// A daily session was finished. Returns the streak it leaves.

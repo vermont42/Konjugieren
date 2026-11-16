@@ -318,6 +318,39 @@ struct DeeplinkTests {
     #expect(Current.dailySessionRequest == nil)
   }
 
+  /// A shared result's link names its day and level, which a friend's app asks whatever its own
+  /// level (Phase 24).
+  @Test func handleURLChallengeDeeplink() throws {
+    let key = DailyChallenge.Key(day: "2026-11-15", level: .advanced)
+    let url = try #require(URL.challengeDeeplink(key, source: .challengeLink))
+    #expect(url.absoluteString == "konjugieren://quiz/challenge?date=2026-11-15&level=advanced&source=challengeLink")
+    Current.selectedTab = .verbs
+    Current.handleURL(url)
+    #expect(Current.selectedTab == .quiz)
+    #expect(Current.challengeRequest?.key == key)
+    #expect(Current.challengeRequest?.source == .challengeLink)
+
+    Current.handleURL(URL(string: "konjugieren://quiz/start")!)
+    #expect(Current.challengeRequest == nil)
+  }
+
+  /// The quiz widget's link names no day, asking for today's at the learner's level, and so does
+  /// a link whose date is not one.
+  @Test(arguments: ["konjugieren://quiz/challenge?source=challengeWidget", "konjugieren://quiz/challenge?date=2026-02-30&source=challengeWidget"])
+  func handleURLChallengeDeeplinkWithoutADay(link: String) throws {
+    Current.handleURL(try #require(URL(string: link)))
+    #expect(Current.selectedTab == .quiz)
+    #expect(Current.challengeRequest != nil)
+    #expect(Current.challengeRequest?.key == nil)
+    #expect(Current.challengeRequest?.source == .challengeWidget)
+  }
+
+  @Test(arguments: ["konjugieren://quiz/challenge?date=2026-11-15", "konjugieren://quiz/challenge?date=2026-11-15&level=ridiculous"])
+  func aChallengeLinkWithoutAKnownLevelAsksAtTheLearnersLevel(link: String) throws {
+    let url = try #require(URL(string: link))
+    #expect(World.challengeKey(in: url, level: .elementary) == DailyChallenge.Key(day: "2026-11-15", level: .elementary))
+  }
+
   @Test func handleURLRandomVerbDeeplink() {
     let url = URL(string: "konjugieren://verb/random")!
     Current.handleURL(url)

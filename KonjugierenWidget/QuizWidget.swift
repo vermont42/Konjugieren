@@ -31,9 +31,9 @@ struct QuizProvider: TimelineProvider {
     completion(Timeline(entries: entries, policy: .after(refreshDate)))
   }
 
-  private var pageOffset: Int {
-    WidgetConstants.sharedDefaults?.integer(forKey: WidgetConstants.debugOffsetKey) ?? 0
-  }
+  // The verb widgets' Next pages their verb, not this question, which is the first question of
+  // the day's challenge and must stay that day's (Phase 24 of the pedagogy plan).
+  private let pageOffset = 0
 
   private func readQuizState(snapshot: WidgetSnapshot) -> (isAnswered: Bool, wasCorrect: Bool) {
     guard let defaults = WidgetConstants.sharedDefaults else { return (false, false) }

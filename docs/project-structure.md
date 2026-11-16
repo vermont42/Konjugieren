@@ -55,6 +55,7 @@ Konjugieren/
 │   ├── Conjugator.swift        # Core conjugation logic for all conjugationgroups; joined (subordinate-clause) conjugations by default, the Wiktionary oracle
 │   ├── ConjugatorError.swift   # Error enum for conjugation failures
 │   ├── CustomQuiz.swift        # The Quiz tab's custom quiz (Phase 9 of the pedagogy plan): chosen tables and a QuizVerbSet (a band, every verb, My Verbs, or a collection), either falling back to the level's; its permanent stored form (groups=…&verbs=…, or infinitives=… for a practice set's list of verbs); QuizScope.custom
+│   ├── DailyChallenge.swift    # The daily challenge (pedagogy Phase 24): DailyChallenge.Key (a day and a level, seeded by FNV-1a), the five-question draw seeded by the key alone and memoized, DailyChallengeResult (the outcomes, the dots, the agreed share text, the share signal), QuizScope.challenge, and DailyChallengeRequest
 │   ├── DailyReminder.swift     # The daily reminder (pedagogy Phase 22): the DailyReminder setting (off, on), DailyReminderPlan (one notification a day for 14 days at the chosen time, worded with what will be due or the streak's repair, none on a done day), the ReminderScheduler protocol, DailySessionRequest, and World.rescheduleReminders
 │   ├── DailySession.swift      # The daily session (pedagogy Phase 22): QuizScope.daily, QuizDraw.dailyQuestions (due items the level asks first, then the default draw), the streak's bands, and what the hub and the results say about the streak
 │   ├── DailyStreak.swift       # The daily streak (pedagogy Phase 22): finished daily sessions by day, and the status a day has (none, active, or repairable by two sessions the day after one missed day); only the last two runs are kept
@@ -172,7 +173,7 @@ Konjugieren/
 │   ├── Utterer.swift           # Protocol for text-to-speech with UttererLocale constants
 │   ├── UttererDummy.swift      # No-op TTS implementation for tests
 │   ├── UttererReal.swift       # AVSpeechSynthesizer implementation
-│   └── WidgetSnapshotWriter.swift  # Generates and persists the 10-day widget bundle from VerbDraw, keeping the verb the widget shows today
+│   └── WidgetSnapshotWriter.swift  # Generates and persists the 10-day widget bundle from VerbDraw, keeping the verb the widget shows today; each day's quiz question is the first of that day's challenge at the learner's level (pedagogy Phase 24)
 └── Views/
     ├── AblautPracticeCard.swift # An ablaut group's practice (pedagogy Phase 16): Alone and Mixed, each a Verb Essentials sheet, a line naming the known groups Mixed adds or saying why it is closed, a Known seal, and for a single-verb group why it has no practice
     ├── AblautPracticeListView.swift # Pushed by the Quiz tab's Ablaut Groups row: the 58 groups with a pattern, the most used first, each expanding onto its AblautPracticeCard; defines AblautPracticeDestination
@@ -216,7 +217,7 @@ KonjugierenWidget/
 ├── Localizable.xcstrings       # Widget-target string catalog (en/de); resolved against the widget bundle
 ├── NextVerbIntent.swift        # AppIntent for advancing to the next verb in the widget
 ├── QuickQuizControl.swift      # Control Center button launching the quiz
-├── QuizWidget.swift            # Timeline-based widget for daily quiz questions
+├── QuizWidget.swift            # Timeline-based widget for daily quiz questions, the first of each day's challenge, unpaged by Next
 ├── RandomVerbControl.swift     # Control Center button opening a random verb
 ├── SnapshotReader.swift        # Reads the multi-day WidgetSnapshotBundle from shared container; emits per-day timeline entries with page offset
 ├── VerbDesTagesWidget.swift    # Timeline-based widget displaying the daily verb
@@ -266,6 +267,7 @@ KonjugierenTests/
 │   ├── ConjugationgroupTests.swift # Conjugationgroup.ending(family:) ending-table tests
 │   ├── ChoiceQuestionTests.swift # Choice questions: the machine check over every bundled item (well formed, both sentences the conjugator's conjugations in every region, the item's level asks its answer, every reason names its conjugationgroups, every contrast and level covered), the two sentences and the prompt's order, levels and drafts, the draw and its position; nested in QuizTests, one choice a default round from Elementary up and none elsewhere, a right choice held with its reason and nothing recorded, a wrong one held and not re-asked, Ten More's unasked choice, and a ranked round still out of 100
 │   ├── CustomQuizTests.swift   # The custom quiz's stored form and keys, its pool at each level, the restricted-table fallback, its scope (never ranked, mixed only for bands), the setting's persistence; nested in QuizTests, sessions that ask only the choice, post no score, and send source custom
+│   ├── DailyChallengeTests.swift # The seed pinned, days round-tripped, the same key drawing the same challenge, days and levels differing, each level's five balanced questions, the result and the agreed share text, and the quiz widget's question agreeing; nested in QuizTests, the same five whatever the device, a result kept once and unranked, no re-ask, a quit keeping nothing, the store's limit and persistence, and the share signal
 │   ├── DailySessionTests.swift # The daily streak across days (repair by two sessions, a failed repair, two missed days, a 25-hour day, pruning, the bands, the store across a launch and a reset), the draw (due items first, ten due, one beyond the level), the scope, and the reminder plan (each day at the time, today's past or done, the repair line, what will be due); nested in QuizTests, a session at the level, the streak extended and sent, a quit not counting, a repair across days, the reminder rescheduled, and the reminder as source
 │   ├── ConjugatorTests.swift   # Comprehensive conjugation tests (~50 test functions), incl. error paths
 │   ├── LearnerVerbsTests.swift # The learner's verbs: opens, stars, recents, My Verbs, removal, clearing, JSON round trip and an old record's decoding, and the store's reload

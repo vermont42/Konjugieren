@@ -38,7 +38,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 21 | Done | 2026-11-15 | `38d4496` | T5.7 |
 | 22 | Done | 2026-11-15 | `5579305` | T6.3 |
 | 23 | Done | 2026-11-15 | `fa7d846` | T6.6 (personal bests and achievements) |
-| 24 | Not started | | | T6.8 |
+| 24 | Done | 2026-11-15 | | T6.8 |
 | Closing | Not started | | | Audit, report notes, porting list, Decision 10 |
 
 ## How to Work This Plan
@@ -2470,7 +2470,7 @@ and the walkthrough covers achievements.
 
 ## Phase 24: The Daily Challenge
 
-**Suggestions:** T6.8. **Depends on:** Phases 5 and 22. **Status:** Not started.
+**Suggestions:** T6.8. **Depends on:** Phases 5 and 22. **Status:** Done.
 
 A daily shared challenge built on the quiz widget's daily question: the same short set for
 everyone that day, seeded by the date as the widget already seeds its question
@@ -2493,7 +2493,97 @@ with it, sharing produces the agreed text, and tests pin the seeding.
 
 **How it differed:**
 
-(To be written by the session that finishes this phase.)
+- **Josh decided four things on 2026-11-15**, asked before building, each the recommended option.
+  (1) **The shared text**: the title, the date in the app's language and the level, a dot per
+  question in the quiz's dot colors (🟡 right, 🟠 right on the second try, 🔴 wrong) with the points
+  out of 50, then the App Store link (over the dots with the count right, and over the dots alone).
+  (2) **A link that opens the same challenge** above the App Store link, as a practice set's text
+  has, so a friend at another level, or a day later, gets the same five questions. (3) **Once a day
+  per level**: after it is finished, the hub's row shows the result and shares it. (4) **The row
+  goes under the Daily Session.** The English and German texts:
+
+  ```
+  Konjugieren · Daily Challenge
+  November 15, 2026 · Elementary
+  🟡🟠🔴🟡🟡  35 / 50
+
+  Take this challenge in Konjugieren:
+  konjugieren://quiz/challenge?date=2026-11-15&level=elementary&source=challengeLink
+
+  Get Konjugieren on the App Store:
+  https://apps.apple.com/app/konjugieren/id6758258747
+  ```
+
+  "Konjugieren · Tägliche Herausforderung", "15. November 2026 · Grundstufe", "Diese
+  Herausforderung in Konjugieren annehmen:", and "Konjugieren im App Store:".
+- **The seed** (`Models/DailyChallenge.swift`). `DailyChallenge.Key` is the day, `yyyy-MM-dd` in the
+  learner's calendar, and the level, so learners in different time zones share a challenge by date,
+  as Wordle's do, not by instant. The seed is `WidgetQuizQuestion.stableSeed` of
+  `challenge-<day>-<level>`, as the phase asked; a test pins both the text and the number.
+- **The draw** is the default quiz's balanced draw at the key's level, five questions, drawn again
+  with the same generator until no verb repeats. Nothing on the device enters it: not the practice
+  record (no due items), not My Verbs, not the quiz's random source, and no choice question.
+  **"The same for everyone" holds within a build and a corpus**, not across them: `QuizDraw` uses
+  the standard library's `randomElement` and `shuffled`, compiled into the app, and a verb import
+  changes the bands. So a test pins determinism and the seed rather than a golden list of
+  questions, which every corpus change would break. Nothing ships before 2027.
+- **Decided in the session, not asked.** **No re-ask** in a challenge, so its results are the five
+  questions the shared text reports; the correction still holds, and a slip still earns its second
+  attempt at half points, which is what 🟠 means. Answers move the practice record as in any quiz.
+  Never ranked or continued, no Live Activity (five questions are over before one would be
+  noticed). **Reset Practice keeps the challenge results**, since each is a day's result rather
+  than part of the record, and forgetting one would reopen its challenge; the last 12 are kept. A
+  quit challenge keeps nothing and can be started again. A link to a challenge already taken opens
+  the hub and starts nothing. A link with no valid date asks for today's, and one with no known
+  level asks at the learner's.
+- **The widget.** The quiz widget's question for each day is now **the first question of that
+  day's challenge at the learner's level**, no longer a question about the verb of the day, which
+  the verb widgets still show. Its wrong answers are the same reading's other cells (one of the
+  same table, one of the same person, one more), never a wir or Sie Imperativ for another cell,
+  whose pronoun gave it away: the first draft offered "dürfen wir" for wir durften. The app
+  rewrites the bundle when the level changes. Two changes the phase did not name: **the verb
+  widgets' Next no longer pages the quiz widget**, whose question must stay the day's, and
+  **tapping the quiz widget beside its answers opens the day's challenge**
+  (`konjugieren://quiz/challenge?source=challengeWidget`), where it used to open the verb.
+- **The dots in the app are circles, not emoji.** The results first showed the shared text's emoji,
+  and the iPhone simulator drew all five as tofu, the iOS 26 bug of
+  [`docs/emoji-assets.md`](../docs/emoji-assets.md). The shared text keeps its emoji, since it is
+  read in other apps, but the hub and the results draw `ChallengeDots`, circles in the quiz's dot
+  colors, which also match the progress dots exactly. The row's share symbol,
+  `square.and.arrow.up.circle.fill`, drew as a blank disc, so it is
+  `arrowshape.turn.up.right.circle.fill`.
+- **Analytics.** `source` `challenge`, `challengeLink`, or `challengeWidget` on the quiz signals,
+  with the question count, always five; `tapShareChallenge` with `level`, never the result. Staged
+  in [`docs/privacy-policy-pending.md`](../docs/privacy-policy-pending.md) in both languages: the
+  quiz bullet, the taps bullet, the section 6 sentence, and a sentence after the practice-record
+  paragraph.
+- **VoiceOver.** The dots are read as a sentence ("3 of 5 right on the first try, 1 on the second.
+  35 of 50 points."), on the hub and the results; the row and Share Result have hints. Nobody has
+  listened to it.
+- **Tests:** 21 new. `DailyChallengeTests`, 18 functions, eleven on the parts: the seed pinned, a day round
+  trip, four days that are not dates, the same key drawing the same five (4 levels), days and
+  levels differing, each level's 20 days of five balanced questions (its cells and band, two
+  strong, two core, a prefixed verb, no verb twice; 4 levels), a result's outcomes and points, the
+  agreed English text in full, the German date, the widget's question agreeing with the challenge
+  for ten days (4 levels), and the widget's bundle. Seven nested in `QuizTests`: the same five
+  whatever the random source, the learner's level, and the record; a result kept once and unranked;
+  no re-ask; a quit keeping nothing; the store's limit; persistence; and the share signal. Three in
+  `DeeplinkTests` for the links. Run in English with `xcodebuild -testLanguage en`: 949 passed and 2 skipped (the
+  environment-gated harnesses), 951 in all.
+- **Verified on the iPhone 17**, in dark mode at Grundstufe. In German: the hub's row; the widget's
+  bundle for today asking dürfen, wir, Präteritum, and the challenge opening on the same question;
+  a challenge with one right, a slip and its second try, a wrong answer whose correction promised
+  no re-ask, and two right, ending 35 with the dots and Ergebnis teilen; the hub's row taken,
+  "Heute geschafft: 35 / 50" over the dots; the share sheet from the row, and Copy giving the agreed
+  German text; a link to the taken challenge opening the hub, and a link to the 14th at Oberstufe
+  starting that challenge (untertauchen), quit. In English: the taken row and the agreed English
+  text by Copy. **On the iPad Pro 11-inch (M5)**, in light mode and English at Advanced: the
+  widget's bundle and the challenge both opening on niederdrücken, er, Präsens; a challenge of one
+  right and four wrong; Share Result's popover anchored to the button; and the taken row. Both
+  simulators' defaults were restored afterward from copies made before. Not tried: the widget on a
+  home screen (the bundle it reads was checked instead), a tap on it, VoiceOver by ear, two real
+  devices, and a real midnight.
+- **Josh asked for the commit** on 2026-11-15.
 
 ## Tasks for Josh Outside the Code
 

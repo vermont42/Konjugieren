@@ -31,6 +31,9 @@ class World {
   var practiceSet: PracticeSetRequest?
   /// A daily session the Quiz tab should start, asked for by the reminder (Phase 22).
   var dailySessionRequest: DailySessionRequest?
+  /// A daily challenge the Quiz tab should start, asked for by a shared link or the quiz widget
+  /// (Phase 24).
+  var challengeRequest: DailyChallengeRequest?
   var selectedTab: TabSelection = .verbs
   var shouldNavigateToTutor = false
 
@@ -80,6 +83,7 @@ class World {
     searchRequest = nil
     practiceSet = nil
     dailySessionRequest = nil
+    challengeRequest = nil
   }
 
   /// Shows the verb list with its search field. A nil `text` keeps what the field holds, as
@@ -142,6 +146,9 @@ class World {
       } else if url.pathComponents[1] == URL.dailySessionTarget {
         dailySessionRequest = DailySessionRequest(source: url.analyticsSource ?? .deeplink)
         selectedTab = .quiz
+      } else if url.pathComponents[1] == URL.challengeTarget {
+        challengeRequest = DailyChallengeRequest(key: Self.challengeKey(in: url, level: settings.quizLevel), source: url.analyticsSource ?? .deeplink)
+        selectedTab = .quiz
       } else {
         selectedTab = .quiz
       }
@@ -163,6 +170,18 @@ class World {
     default:
       return
     }
+  }
+}
+
+extension World {
+  /// The challenge a link names. A link without a valid date asks for today's, and one without a
+  /// level asks at the learner's.
+  static func challengeKey(in url: URL, level: QuizLevel) -> DailyChallenge.Key? {
+    guard let day = url.deeplinkQueryValue(named: URL.dateQueryName) else {
+      return nil
+    }
+    let linkedLevel = url.deeplinkQueryValue(named: URL.levelQueryName).flatMap(QuizLevel.init(rawValue:)) ?? level
+    return DailyChallenge.Key(dayString: day, level: linkedLevel)
   }
 }
 

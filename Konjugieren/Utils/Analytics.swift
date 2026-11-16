@@ -43,6 +43,7 @@ enum AnalyticsName: String {
   case tapRevealReviewCard
   case tapSendTutorMessage
   case tapKeepPracticeSet
+  case tapShareChallenge
   case tapShareCollection
   case tapSharePracticeSet
   case tapShareVerb
@@ -74,6 +75,9 @@ enum AnalyticsSource: String, CaseIterable {
   case ablautAlone
   case ablautMixed
   case browse
+  case challenge
+  case challengeLink
+  case challengeWidget
   case control
   case custom
   case daily

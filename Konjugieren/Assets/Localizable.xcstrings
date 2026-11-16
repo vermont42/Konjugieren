@@ -21,6 +21,40 @@
         }
       }
     },
+    "Accessibility.dailyChallengeShareHint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Teilt dein Ergebnis als Text, mit einem Link, der dieselbe Herausforderung öffnet."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shares your result as text, with a link that opens the same challenge."
+          }
+        }
+      }
+    },
+    "Accessibility.dailyChallengeStartHint" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Startet die heutige Herausforderung mit fünf Fragen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Starts today's challenge of five questions."
+          }
+        }
+      }
+    },
     "Accessibility.dailySessionAgainHint" : {
       "localizations" : {
         "de" : {
@@ -505,6 +539,108 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Time to Practice"
+          }
+        }
+      }
+    },
+    "DailyChallenge.description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fünf Fragen auf deiner Stufe, heute für alle dieselben. Einmal lösen, dann dein Ergebnis teilen."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Five questions at your level, the same for everyone today. Take it once, then share how you did."
+          }
+        }
+      }
+    },
+    "DailyChallenge.doneToday %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heute geschafft: %@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Done today: %@"
+          }
+        }
+      }
+    },
+    "DailyChallenge.share" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ergebnis teilen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Share Result"
+          }
+        }
+      }
+    },
+    "DailyChallenge.shareText %@ %@ %@ %lld %lld %@ %@" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konjugieren · Tägliche Herausforderung\n%1$@ · %2$@\n%3$@  %4$lld / %5$lld\n\nDiese Herausforderung in Konjugieren annehmen:\n%6$@\n\nKonjugieren im App Store:\n%7$@"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Konjugieren · Daily Challenge\n%1$@ · %2$@\n%3$@  %4$lld / %5$lld\n\nTake this challenge in Konjugieren:\n%6$@\n\nGet Konjugieren on the App Store:\n%7$@"
+          }
+        }
+      }
+    },
+    "DailyChallenge.spokenResult %lld %lld %lld %lld %lld" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld von %3$lld beim ersten Versuch richtig, %2$lld beim zweiten. %4$lld von %5$lld Punkten."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$lld of %3$lld right on the first try, %2$lld on the second. %4$lld of %5$lld points."
+          }
+        }
+      }
+    },
+    "DailyChallenge.title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tägliche Herausforderung"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily Challenge"
           }
         }
       }

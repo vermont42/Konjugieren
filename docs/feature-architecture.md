@@ -131,6 +131,7 @@ quiz in a sheet shows) and `collectionKey` (which `startQuiz` names).
 | `.sentences()` | Sentences: the authored sentences whose verb is in the level's band and whose cell is in its pool, one a verb where they allow (pedagogy Phase 18) | Up to 10, then Ten More | `sentences` | No |
 | `.speedRound()` | Speed Round: the practice record's mastered items, in turn, for 60 seconds (pedagogy Phase 21) | As many as answered in a minute, drawn 10 at a time; then another round | `speedRound` | No |
 | `.daily(source:)` | The daily session: due items the level asks and the band holds, then the default quiz's draw, no choice question (pedagogy Phase 22) | 10; no Ten More, but Another Session while a repair needs a second | `daily`, or `reminder` from the reminder | No |
+| `.challenge(_:source:)` | The daily challenge: the default quiz's draw at the key's level, seeded by its day and level alone, no due items, no choice question, no re-ask (pedagogy Phase 24) | 5, once per day and level | `challenge`, `challengeLink` from a shared result, or `challengeWidget` from the quiz widget | No |
 
 A quiz whose rounds are ten (`QuizScope.continues`) draws as above. The verb page's three
 questions ask distinct cells and no participle, from the learner's level, since every Perfekt
@@ -147,7 +148,7 @@ symbol for the chosen scope (books for All Verbs, a star for My Verbs, sliders f
 and a line about what it asks, the All Verbs / My Verbs / Custom picker, three tiles (ten
 questions, "2–3 Minutes", and the level, whose tile is a menu that sets `Settings.quizLevel`, the
 same setting as Settings' level picker), for My Verbs its verbs as chips (up to twelve), and Start.
-Below Start, "From Your Practice" holds the Daily Session (pedagogy Phase 22), Review, My Mistakes, and the last quiz's results
+Below Start, "From Your Practice" holds the Daily Session (pedagogy Phase 22), the Daily Challenge (Phase 24), Review, My Mistakes, and the last quiz's results
 (`LastQuizResultRow`), then "Exercises" holds Verb Essentials (pedagogy Phase 15) and Ablaut Groups (pedagogy Phase 16), a row with a chevron that pushes `AblautPracticeListView`, and last of all, while signed in to Game Center, a small "View Leaderboard"
 button that opens the current level's board, with "View Achievements" beside it (pedagogy Phase 23). The results screen no longer has one (T6.6). In the
 regular size class the whole composition scales up. Start is disabled while My Verbs is empty.
@@ -852,6 +853,56 @@ Practice, with a flame once there is a streak.
   with what is due for review."); the results' announcement ends with the streak line; Another
   Session has a hint. Every quiz state inside the session is an ordinary one.
 
+### The Daily Challenge
+
+Built 2026-11-15 in Phase 24 of [`plans/pedagogy-implementation.md`](../plans/pedagogy-implementation.md)
+(T6.8): five questions a day at each level, the same on every device on the same date, taken once
+and shared as text (Josh, 2026-11-13 and 2026-11-15). "Daily Challenge" / "Tägliche
+Herausforderung", the hub's row under the Daily Session.
+
+- **The key** (`Models/DailyChallenge.swift`). `DailyChallenge.Key` is a day, `yyyy-MM-dd` in the
+  learner's calendar, and a level. Two learners in different time zones share a challenge by date,
+  not by instant, as Wordle does. Its seed is `WidgetQuizQuestion.stableSeed` (FNV-1a) of
+  `challenge-<day>-<level>`, pinned by `DailyChallengeTests.theSeedIsPinned`.
+- **The draw.** `DailyChallenge.questions(for:)`: the default quiz's balanced draw
+  (`QuizDraw.questions(mixesVerbs: true)`) from the level's pool and `Quiz.defaultVerbs` (sorted),
+  five questions, drawn again with the same generator until no verb repeats (at most 20 tries).
+  Nothing on the device enters it: not the practice record, My Verbs, the settings, or the quiz's
+  random source. Memoized per key, since the widget's ten days draw at every activation. **Two
+  devices agree when they run the same corpus and the same build**: `QuizDraw` uses the standard
+  library's `randomElement` and `shuffled`, inlined at compile time, so a toolchain could change
+  them, and a corpus that gains verbs changes the band. A challenge shared across app versions may
+  differ; nothing ships before 2027, and the test pins determinism within a build rather than a
+  golden list that every verb import would break.
+- **The scope.** `QuizScope.challenge(_:source:)`, with `challenge` set and `level` the key's, so
+  that a friend's link asks the friend's questions at any level. Never ranked or continued, no Live
+  Activity, and **no re-ask**, so that the results are the five questions the shared text reports;
+  the correction still holds a wrong answer, and a slip still earns its second attempt at half
+  points. Answers move the practice record as in any quiz. `LastQuizResult.Kind.challenge`.
+- **Once a day per level** (Josh, 2026-11-15). `Quiz.finishQuiz` keeps a `DailyChallengeResult` (the
+  key and five outcomes: right, second try, wrong) through `PracticeStore.recordChallenge`, under
+  `dailyChallengeResults` in the App Group, the last 12. A key finished already keeps its first
+  result. A quit challenge keeps nothing and can be started again. Reset Practice keeps them, since
+  each is a day's result rather than part of the record, and forgetting one would reopen it.
+- **The hub and the results.** Not yet taken, the row says what it is and starts it. Taken, it says
+  "Done today: 35 / 50" over the five dots, and shares. The results show the dots under the score
+  and Share Result in Ten More's place. In the app the dots are drawn as circles in the quiz's dot
+  colors (`ChallengeDots`), not as the shared text's emoji, which the iOS 26 simulator draws as
+  tofu (see [`emoji-assets.md`](emoji-assets.md)).
+- **The shared text** (`DailyChallengeResult.shareText`, approved by Josh on 2026-11-15): the title,
+  the date in the app's language and the level, the dots in the quiz's dot colors (🟡 right, 🟠 right
+  on the second try, 🔴 wrong) with the points out of 50, a link that opens the same challenge
+  (`konjugieren://quiz/challenge?date=…&level=…&source=challengeLink`), and the App Store link.
+- **The links.** `quiz/challenge` sets `World.challengeRequest`, which the Quiz tab starts unless a
+  quiz is under way or showing results, or the key is taken already, which leaves the hub showing
+  today's result. A link without a valid date asks for today's, and one without a known level asks
+  at the learner's (`World.challengeKey(in:level:)`).
+- **The quiz widget** asks the challenge's first question. See [Quiz Widget](#quiz-widget).
+- **Signals.** `source` `challenge`, `challengeLink`, or `challengeWidget` on the quiz signals, with
+  the question count, always five; `tapShareChallenge` with `level`. Never the result.
+- **VoiceOver.** The dots are read as a sentence ("3 of 5 right on the first try, 1 on the second.
+  35 of 50 points."), on the hub and the results; Share Result and the row have hints.
+
 ### Personal Bests by Level
 
 Built 2026-11-15 in Phase 23 of [`plans/pedagogy-implementation.md`](../plans/pedagogy-implementation.md)
@@ -1071,7 +1122,7 @@ konjugieren://<route>[/<target>][?<item>=<value>&…]
 | `search` | None | `q`, the text; `source` | The verb list with its search field. With text, the results show with the keyboard down; with none (or `q` empty), the field is cleared and focused for typing | Phase 11 |
 | `info` | A `stableKey`, or a legacy position | None | The article | Before 2026; keys Phase 11 |
 | `family` | A `BrowseableFamily` raw value | None | The family's page | Before 2026 |
-| `quiz` | `set`, `daily`, or any other (today `start`) | For `set`: `groups`, `verbs` or `infinitives`, `level`, `source`; for `daily`, `source` | `set` shows a practice set in a sheet over the open tab; `daily` opens the Quiz tab and starts a daily session unless a quiz is under way or showing results (`World.dailySessionRequest`), which the reminder taps (`quiz/daily?source=reminder`); any other target, the Quiz tab | Before 2026; `set` pedagogy Phase 10; `daily` pedagogy Phase 22 |
+| `quiz` | `set`, `daily`, `challenge`, or any other (today `start`) | For `set`: `groups`, `verbs` or `infinitives`, `level`, `source`; for `daily`, `source`; for `challenge`, `date`, `level`, `source` | `set` shows a practice set in a sheet over the open tab; `daily` opens the Quiz tab and starts a daily session unless a quiz is under way or showing results (`World.dailySessionRequest`), which the reminder taps (`quiz/daily?source=reminder`); `challenge` opens the Quiz tab and starts that day's challenge at that level, or today's at the learner's level without a date, unless a quiz is under way or the challenge was taken (`World.challengeRequest`); any other target, the Quiz tab | Before 2026; `set` pedagogy Phase 10; `daily` pedagogy Phase 22; `challenge` pedagogy Phase 24 |
 | `list` | A collection's key: `top100`, `modals`, `sein`, or `ablaut-<exemplar>` (`ablaut-hängen`, percent-encoded) | `source` | The Families tab, on the collection's page, or for an ablaut group, the Ablaut page with that group expanded | Phase 16 |
 
 **Collections (Phase 16, 2026-11-13).** A collection is `list/<key>`. The `quiz/start?list=<key>`
@@ -1419,7 +1470,7 @@ The app provides home screen, lock screen, and Control Center widgets via a sepa
 |------|---------|
 | `KonjugierenWidgetBundle.swift` | Widget bundle entry point combining all widgets and live activities |
 | `VerbDesTagesWidget.swift` | Daily verb widget; emits one timeline entry per cached day so the verb advances at midnight with no app launch |
-| `QuizWidget.swift` | Daily quiz question widget with interactive answer buttons; per-day entries, each grading its own question ID |
+| `QuizWidget.swift` | Daily quiz question widget with interactive answer buttons; per-day entries, each grading its own question ID; the verb widgets' Next does not page it |
 | `SnapshotReader.swift` | Reads the `WidgetSnapshotBundle` from shared App Group container; derives per-day entries with the page offset |
 | `WidgetSnapshotWriter.swift` | App-side: generates and writes an N-day snapshot bundle to shared container |
 | `WidgetSnapshot.swift` | Data models for serialized widget state (verb + quiz question); `WidgetSnapshotBundle` holds the N-day array + base date and the paging math |
@@ -1483,6 +1534,16 @@ Timeline refreshes daily at midnight via `.after(nextMidnight)` policy.
 ### Quiz Widget
 
 Presents a daily multiple-choice conjugation question. Users tap an answer directly on the widget via `AnswerQuizIntent`. State (answered/correct) is tracked in shared `UserDefaults`.
+
+Since pedagogy Phase 24 (2026-11-15), each day's question is the **first question of that day's
+challenge at the learner's level** (`WidgetSnapshotWriter.quizQuestion(on:level:fallbackVerb:)`),
+not a question about the verb of the day, which the verb widgets still show. Its wrong answers are
+the same reading's other cells, no Imperativ unless the question is one (its pronoun gives it away): one of the same table, one of the same person in another of the
+level's tables, and one more of either, shuffled by a generator seeded with the question's ID,
+`<day>-<level>-<infinitive>`. The app rewrites the bundle when the level changes, as well as at
+each activation. The verb widgets' Next no longer pages the quiz widget, whose question must stay
+the day's. Tapping the widget beside its answers opens the day's challenge
+(`konjugieren://quiz/challenge?source=challengeWidget`); the answered widget still opens the verb.
 
 ### Widget Views
 
@@ -1680,6 +1741,7 @@ Counts and durations go out in bands (`AnalyticsBand`), never as exact numbers.
 | `tapTestVerb` | None | When "Test me on this verb" in a verb page's navigation bar is tapped (Phase 13). The quiz it opens sends `startQuiz` with `source` `verbPage` |
 | `viewReviewCard` | None | Once per card shown: when the review card first appears after a launch or a return from the background (Phase 15) |
 | `viewCollection` | `collection` (its key, such as `modals` or `ablaut-gehen`), `source` (`family`, `sharedLink`, `deeplink`, `quizCorrection`) | When a collection's page appears, once per arrival, or an ablaut group is expanded on the Ablaut page (Phase 16). The ideas document's "lists opened". The key names a fixed list, not anything the learner chose |
+| `tapShareChallenge` | `level` | When Share Result on a daily challenge's results, or its row on the hub once taken, is tapped, whether or not the learner then shares (pedagogy Phase 24). Never the result |
 | `tapShareCollection` | `collection` | When a collection's share button is tapped, whether or not the learner then shares (Phase 16) |
 | `tapResetPractice` | None | When Reset Practice in Settings is confirmed (pedagogy Phase 11). Nothing about the record is sent |
 | `tapDailyReminder` | `enabled` (`true`, `false`, `denied`) | When Settings' Daily Reminder is set On or Off (pedagogy Phase 22). `denied`: turned on, and notification permission refused, now or before, so the reminder stays off. Changing the time sends nothing |
@@ -1756,6 +1818,9 @@ My Verbs scope, the list it was begun on.
 | `speedRound` | Yes | The quiz signals only: the Speed Round from the Quiz tab (pedagogy Phase 21) |
 | `daily` | Yes | The quiz signals only: a daily session from the Quiz tab, or from Another Session on its results (pedagogy Phase 22) |
 | `reminder` | Yes | The quiz signals only: a daily session started by tapping the daily reminder (pedagogy Phase 22) |
+| `challenge` | Yes | The quiz signals only: the daily challenge from the Quiz tab (pedagogy Phase 24) |
+| `challengeLink` | Yes | The quiz signals only: a daily challenge opened from the link in a shared result (pedagogy Phase 24) |
+| `challengeWidget` | Yes | The quiz signals only: a daily challenge opened by tapping the quiz widget (pedagogy Phase 24) |
 | `tab` | Yes | A search begun in the Verbs tab (Phase 11); for the quiz signals, a quiz over every verb from the Quiz tab (Phase 13) |
 | `verbPage` | Yes | The quiz signals only: "Test me on this verb" (Phase 13) |
 

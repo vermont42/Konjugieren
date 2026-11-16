@@ -1038,6 +1038,13 @@ conjugations of sein, haben, werden, and the modals, and those of 10, 25, and 50
 frequent strong verbs. Game Center shows progress toward each. They wait for App Store Connect and
 the 2027 release.
 
+**Built on `main` 2026-11-15** by [Phase 24](pedagogy-implementation.md#phase-24-the-daily-challenge)
+of the pedagogy plan: the daily shared challenge. Five questions a day at each level, the same on
+every device on the same date, seeded by the date and the level, taken once. The result is shared
+as a short text: the date, the level, a dot per question in the quiz's colors, the points out of
+50, a link that opens the same challenge, and the App Store link. The quiz widget's daily question
+is now the challenge's first. As this table rates it, the evidence is speculative.
+
 A warning about this tier. Meta-analysis finds the effects of gamification on learning small, and
 its effects on motivation and behavior less stable than its effects on test scores (Sailer & Homner
 2020, **secondhand**). Streaks and badges laid over the present quiz would decorate a loop that

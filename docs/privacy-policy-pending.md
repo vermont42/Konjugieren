@@ -981,3 +981,72 @@ Der Absatz über den Übungsstand lautet nun:
 ```
 Die App führt außerdem einen Übungsstand: welche Konjugationen Sie im Quiz und auf Wiederholungskarten geübt haben, ob Ihre letzte Antwort darauf richtig war, wann jede wieder zur Wiederholung ansteht, das Ergebnis Ihres letzten Quiz, Ihren Bestwert in der „Blitzrunde“, Ihren Bestwert auf jeder Quizstufe und die Tage, an denen Sie eine tägliche Übung abgeschlossen haben, damit sie Wiederholungskarten zeigen, Verfehltes wiederholen, zeigen kann, wie Ihr letztes Quiz lief, welche Konjugationen Sie beherrschen, was Ihre Bestwerte sind und wie lang Ihre Serie ist. Der Übungsstand bleibt auf Ihrem Gerät und wird nie gesendet. „Übungsstand zurücksetzen“ in den Einstellungen löscht ihn. Die tägliche Erinnerung wird, wenn Sie sie einschalten, auf Ihrem Gerät geplant, das ihren Text aus dem Übungsstand schreibt; nichts davon wird gesendet.
 ```
+
+## The daily challenge (pedagogy plan, Phase 24, 2026-11-15)
+
+Adds the values `challenge`, `challengeLink`, and `challengeWidget` to the quiz signals' `source`: a
+daily challenge ("Tägliche Herausforderung") begun from the Quiz tab, from a link in a result
+someone shared, or by tapping the quiz widget. The challenge sends its question count as the
+default quiz does, since it is always five. Adds the signal `tapShareChallenge`, with the parameter
+`level`, the level of the challenge whose result was shared; nothing about the result is sent,
+and the shared text goes only where the learner sends it. The results of the challenges finished
+lately are kept on the device and never sent, so that the hub can show the day's result and a
+challenge is taken once; Reset Practice does not erase them, since each is a day's result rather
+than part of the record, so the practice-record paragraph gains a sentence rather than an item. The
+lines change the first quiz bullet, the taps bullet, the section 6 sentence, and the
+practice-record paragraph as last given above.
+
+### English
+
+In the first quiz bullet in section 2, as last given above, "the Speed Round, or the daily session,
+and whether you began it from its reminder." now reads:
+
+```
+the Speed Round, the daily session, and whether you began it from its reminder, or the daily challenge, and whether you began it from the quiz screen, from a link someone shared with you, or from the quiz widget.
+```
+
+The taps bullet in section 2, as last given above, now ends as follows:
+
+```
+, resetting your practice record, turning the daily reminder on or off, and whether you allowed notifications, and sharing the result of a daily challenge, and at which level
+```
+
+In the sentence in section 6, "the Speed Round, and the daily session" now reads:
+
+```
+the Speed Round, the daily session, and the daily challenge
+```
+
+A new last sentence for the practice-record paragraph:
+
+```
+The results of the daily challenges you finished lately are kept on your device too, so that the app can show today's and let you share it, and are never sent unless you share them yourself.
+```
+
+### German
+
+Im ersten Punkt über das Quiz in Abschnitt 2, wie oben zuletzt angegeben, lautet „in der
+„Blitzrunde“ oder in der täglichen Übung, samt der Angabe, ob Sie diese über ihre Erinnerung
+begonnen haben.“ nun:
+
+```
+in der „Blitzrunde“, in der täglichen Übung, samt der Angabe, ob Sie diese über ihre Erinnerung begonnen haben, oder in der täglichen Herausforderung, samt der Angabe, ob Sie diese auf dem Quiz-Bildschirm, über einen Link, den jemand mit Ihnen geteilt hat, oder über das Quiz-Widget begonnen haben.
+```
+
+Der Punkt über das Antippen in Abschnitt 2, wie oben zuletzt angegeben, endet nun so:
+
+```
+, den Übungsstand zurücksetzen, die tägliche Erinnerung ein- oder ausschalten, samt der Angabe, ob Sie Mitteilungen erlaubt haben, und das Ergebnis einer täglichen Herausforderung teilen, samt der Angabe, auf welcher Stufe
+```
+
+Im Satz in Abschnitt 6 lautet „die „Blitzrunde“, die tägliche Übung“ nun:
+
+```
+die „Blitzrunde“, die tägliche Übung, die tägliche Herausforderung
+```
+
+Ein neuer letzter Satz für den Absatz über den Übungsstand:
+
+```
+Die Ergebnisse der täglichen Herausforderungen, die Sie zuletzt abgeschlossen haben, bleiben ebenfalls auf Ihrem Gerät, damit die App das heutige zeigen und Sie es teilen können, und werden nie gesendet, es sei denn, Sie teilen sie selbst.
+```

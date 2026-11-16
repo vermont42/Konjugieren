@@ -31,6 +31,7 @@ struct QuizView: View {
   @State private var rightAnswerCount = 0
   @State private var isShowingQRCode = false
   @State private var shareButtonFrame = CGRect.zero
+  @State private var challengeRowFrame = CGRect.zero
 
   var body: some View {
     @Bindable var quiz = quiz
@@ -105,6 +106,7 @@ struct QuizView: View {
         guard let sheetScope else {
           Current.analytics.signal(name: .viewQuizView)
           startRequestedDailySession()
+          startRequestedChallenge()
           return
         }
         if !quiz.isInProgress, !quiz.shouldShowResults {
@@ -176,6 +178,9 @@ struct QuizView: View {
     }
     .onChange(of: Current.dailySessionRequest) {
       startRequestedDailySession()
+    }
+    .onChange(of: Current.challengeRequest) {
+      startRequestedChallenge()
     }
     .onChange(of: quiz.currentIndex) {
       answerBlanks = []
@@ -649,6 +654,24 @@ struct QuizView: View {
     quiz.start(scope: .daily(source: request.source))
   }
 
+  /// A shared link's or the quiz widget's challenge, unless a quiz is under way or showing its
+  /// results, or the challenge was taken already, which leaves the hub showing today's result.
+  private func startRequestedChallenge() {
+    guard sheetScope == nil, let request = Current.challengeRequest else {
+      return
+    }
+    Current.challengeRequest = nil
+    guard !quiz.isInProgress, !quiz.shouldShowResults else {
+      return
+    }
+    navigationPath = NavigationPath()
+    let key = request.key ?? DailyChallenge.Key(date: .now, level: level)
+    guard Current.practice.challengeResult(for: key) == nil else {
+      return
+    }
+    quiz.start(scope: .challenge(key, source: request.source))
+  }
+
   /// A Review, My Mistakes, or Verb Essentials session names itself in the tab's bar, since its
   /// questions look like any quiz's.
   private var tabSessionTitle: String? {
@@ -669,6 +692,9 @@ struct QuizView: View {
     }
     if quiz.scope.isDaily {
       return L.DailySession.title
+    }
+    if quiz.scope.isChallenge {
+      return L.DailyChallenge.title
     }
     return quiz.scope.recordSession?.title
   }
@@ -1016,6 +1042,8 @@ struct QuizView: View {
         quiz.start(scope: .daily())
       }
 
+      challengeRow
+
       ForEach([QuizRecordSession.review, .mistakes], id: \.self) { session in
         let count = session.askableCount(from: Current.practice)
         QuizHubRow(
@@ -1047,6 +1075,35 @@ struct QuizView: View {
       }
     }
     .frame(maxWidth: .infinity, alignment: .leading)
+  }
+
+  /// Today's challenge at the learner's level (Phase 24 of the pedagogy plan), which starts it, or,
+  /// once it is taken, shows its result and shares it.
+  private var challengeRow: some View {
+    let key = DailyChallenge.Key(date: .now, level: level)
+    let result = Current.practice.challengeResult(for: key)
+    return QuizHubRow(
+      title: L.DailyChallenge.title,
+      detail: result.map { L.DailyChallenge.doneToday($0.pointsLine) } ?? L.DailyChallenge.description,
+      accessibilityDetail: result.map { L.DailyChallenge.doneToday($0.spokenSummary) },
+      outcomes: result?.outcomes,
+      systemImage: result == nil ? "flag.2.crossed" : "flag.2.crossed.fill",
+      identifier: result == nil ? "quiz_challenge" : "quiz_challenge_share",
+      hint: result == nil ? L.Accessibility.dailyChallengeStartHint : L.Accessibility.dailyChallengeShareHint,
+      isLarge: isLarge,
+      trailingSystemImage: result == nil ? "play.circle.fill" : "arrowshape.turn.up.right.circle.fill"
+    ) {
+      if let result {
+        result.share(anchorRect: challengeRowFrame)
+      } else {
+        quiz.start(scope: .challenge(key))
+      }
+    }
+    .onGeometryChange(for: CGRect.self) { proxy in
+      proxy.frame(in: .global)
+    } action: { frame in
+      challengeRowFrame = frame
+    }
   }
 
   /// Ways to practice beside the quiz: Verb Essentials (Phase 15 of the pedagogy plan), the ablaut
@@ -1336,6 +1393,10 @@ private struct LastQuizResultRow: View {
 private struct QuizHubRow: View {
   let title: String
   let detail: String
+  /// What VoiceOver reads in the detail's place, such as a sentence for a challenge's dots.
+  var accessibilityDetail: String?
+  /// A taken challenge's dots, under the detail.
+  var outcomes: [DailyChallenge.Outcome]?
   let systemImage: String
   /// Ends in `_button` while the row starts something, and in `_empty` otherwise.
   let identifier: String
@@ -1377,6 +1438,12 @@ private struct QuizHubRow: View {
           .font(isLarge ? .body : .subheadline)
           .foregroundStyle(Color.secondary)
           .fixedSize(horizontal: false, vertical: true)
+          .accessibilityLabel(accessibilityDetail ?? detail)
+        if let outcomes {
+          ChallengeDots(outcomes: outcomes, size: isLarge ? 16 : 12)
+            .padding(.top, 4)
+            .accessibilityHidden(true)
+        }
       }
 
       Spacer(minLength: 0)

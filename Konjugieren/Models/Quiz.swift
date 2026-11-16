@@ -53,6 +53,9 @@ class Quiz {
   private(set) var levelPreviousBest: Int?
   /// Whether a ranked session's first round set a new best at its level.
   private(set) var isNewLevelBest = false
+  /// A finished challenge's result, which its results show and share (Phase 24). Nil for any
+  /// other quiz.
+  private(set) var challengeResult: DailyChallengeResult?
 
   /// Whether the results show the level's best: a ranked session's first round only, since Ten
   /// More's results show more than the ten questions the best measures.
@@ -397,12 +400,13 @@ class Quiz {
     lastPreferredSpelling = nil
     stopTimer()
     // A re-ask is not asked a third time, whatever its answer, so that one stubborn question
-    // cannot fill a ten-question round (Josh, T3.1).
-    if !question.isReask {
+    // cannot fill a ten-question round (Josh, T3.1). A challenge asks none, so that its results
+    // are the five questions its shared text reports.
+    if !question.isReask, !scope.isChallenge {
       let placement = Self.reaskPlacement(of: currentIndex, in: questions)
       questions.insert(question.reasked(stepID: placement.stepID), at: placement.position)
     }
-    correction = makeCorrection(!question.isReask)
+    correction = makeCorrection(!question.isReask && !scope.isChallenge)
     Current.soundPlayer.play(.buzz)
     HapticPlayer.playError()
   }
@@ -502,6 +506,7 @@ class Quiz {
     dailyStreakStatus = nil
     levelPreviousBest = nil
     isNewLevelBest = false
+    challengeResult = nil
   }
 
   /// `excluded` names the record's items the session has already asked, which a Review, My
@@ -535,6 +540,12 @@ class Quiz {
       break
     }
     #endif
+
+    if let challenge = scope.challenge {
+      return DailyChallenge.questions(for: challenge).map { question in
+        makeQuizItem(verb: question.verb, conjugationgroup: question.conjugationgroup, readingIndex: question.readingIndex)
+      }
+    }
 
     let verbs = scope.verbs ?? Self.defaultVerbs(for: level)
     if scope.isSpeedRound {
@@ -1125,6 +1136,9 @@ class Quiz {
       Current.rescheduleReminders(now: now())
     }
     Current.analytics.signal(name: .completeQuiz, parameters: parameters)
+    if let challenge = scope.challenge {
+      challengeResult = Current.practice.recordChallenge(DailyChallengeResult(key: challenge, questions: questions))
+    }
     Current.practice.recordResult(LastQuizResult(quiz: self))
     let isFirstRound = roundCount == 1
     if isFirstRound, scope.isRanked {
@@ -1311,6 +1325,13 @@ struct QuizScope {
   /// The daily session, whose results extend the streak (Phase 22).
   var isDaily = false
 
+  /// A day's challenge, the same five questions on every device (Phase 24).
+  var challenge: DailyChallenge.Key?
+
+  var isChallenge: Bool {
+    challenge != nil
+  }
+
   /// Only a default quiz posts, to the leaderboard of its level, as Josh decided on 2026-11-13: a
   /// score over a learner's own verbs or conjugationgroups, or over three questions, compares with
   /// nothing. Only its first round posts.
@@ -1332,7 +1353,7 @@ struct QuizScope {
   }
 
   private var isDefaultQuiz: Bool {
-    verbs == nil && custom == nil && recordSession == nil && !isVerbEssentials && !isRecognition && !isSentences && !isSpeedRound && !isDaily && continues
+    verbs == nil && custom == nil && recordSession == nil && !isVerbEssentials && !isRecognition && !isSentences && !isSpeedRound && !isDaily && !isChallenge && continues
   }
 
   /// A Review or My Mistakes session's length is the number of items due or missed, when fewer
@@ -1360,10 +1381,10 @@ struct QuizScope {
   }
 
   /// Whether the results offer Ten More, or for Verb Essentials five more verbs. Every quiz does but
-  /// a verb page's three questions, a Speed Round, whose results offer a new round instead, and a
-  /// daily session, whose next session is one of its own.
+  /// a verb page's three questions, a Speed Round, whose results offer a new round instead, a
+  /// daily session, whose next session is one of its own, and a challenge, taken once.
   var continues: Bool {
-    !isSpeedRound && !isDaily && (isVerbEssentials || questionCount == Quiz.questionCount)
+    !isSpeedRound && !isDaily && !isChallenge && (isVerbEssentials || questionCount == Quiz.questionCount)
   }
 
   static let verbPageQuestionCount = 3
@@ -1584,18 +1605,7 @@ struct QuizItem: Identifiable {
   }
 
   var pronoun: String? {
-    switch conjugationgroup {
-    case .präsenspartizip, .perfektpartizip:
-      return nil
-    case .präsensIndikativ(let pn), .präsensKonjunktivI(let pn),
-         .präteritumIndikativ(let pn), .präteritumKonjunktivII(let pn),
-         .perfektIndikativ(let pn), .perfektKonjunktivI(let pn),
-         .plusquamperfektIndikativ(let pn), .plusquamperfektKonjunktivII(let pn),
-         .futurIndikativ(let pn), .futurKonjunktivI(let pn), .futurKonjunktivII(let pn):
-      return pn.pronounWithSieDisambiguation
-    case .imperativ(let pn):
-      return pn.imperativPronoun
-    }
+    conjugationgroup.quizPronoun
   }
 
   /// The shape of the answer around the field, built when shown so that it follows the
@@ -1618,5 +1628,24 @@ struct QuizItem: Identifiable {
 
   func displayName(lang: ConjugationgroupLang) -> String {
     conjugationgroup.displayName(lang: lang)
+  }
+}
+
+extension Conjugationgroup {
+  /// The pronoun a question shows beside the cell, as the quiz and the quiz widget ask it. Nil
+  /// for a participle.
+  var quizPronoun: String? {
+    switch self {
+    case .präsenspartizip, .perfektpartizip:
+      return nil
+    case .präsensIndikativ(let pn), .präsensKonjunktivI(let pn),
+         .präteritumIndikativ(let pn), .präteritumKonjunktivII(let pn),
+         .perfektIndikativ(let pn), .perfektKonjunktivI(let pn),
+         .plusquamperfektIndikativ(let pn), .plusquamperfektKonjunktivII(let pn),
+         .futurIndikativ(let pn), .futurKonjunktivI(let pn), .futurKonjunktivII(let pn):
+      return pn.pronounWithSieDisambiguation
+    case .imperativ(let pn):
+      return pn.imperativPronoun
+    }
   }
 }

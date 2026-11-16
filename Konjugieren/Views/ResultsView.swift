@@ -8,6 +8,7 @@ struct ResultsView: View {
   @State private var displayedScore = 0
   /// The rows whose literary example the learner has opened.
   @State private var shownExamples: Set<UUID> = []
+  @State private var shareButtonFrame = CGRect.zero
 
   private var scoreColor: Color {
     if quiz.scope.isSpeedRound {
@@ -47,6 +48,13 @@ struct ResultsView: View {
             speedRoundBest
           } else if quiz.showsLevelBest {
             levelBest
+          }
+
+          if let result = quiz.challengeResult {
+            ChallengeDots(outcomes: result.outcomes, size: 18)
+              .accessibilityElement(children: .ignore)
+              .accessibilityLabel(result.spokenSummary)
+              .accessibilityIdentifier("results_challenge_dots")
           }
 
           if let line = quiz.dailyStreakStatus?.resultsLine, !line.isEmpty {
@@ -112,6 +120,22 @@ struct ResultsView: View {
           .padding(.top, Layout.doubleDefaultSpacing)
           .accessibilityHint(L.Accessibility.dailySessionAgainHint)
           .accessibilityIdentifier("results_daily_another")
+        } else if let result = quiz.challengeResult {
+          Button {
+            result.share(anchorRect: shareButtonFrame)
+          } label: {
+            Label(L.DailyChallenge.share, systemImage: "square.and.arrow.up")
+          }
+          .funButton()
+          .onGeometryChange(for: CGRect.self) { proxy in
+            proxy.frame(in: .global)
+          } action: { frame in
+            shareButtonFrame = frame
+          }
+          .frame(maxWidth: .infinity)
+          .padding(.top, Layout.doubleDefaultSpacing)
+          .accessibilityHint(L.Accessibility.dailyChallengeShareHint)
+          .accessibilityIdentifier("results_challenge_share")
         } else if quiz.canContinue {
           Button {
             quiz.continueSession()
@@ -313,6 +337,36 @@ struct ResultsView: View {
     .frame(maxWidth: .infinity)
   }
 
+}
+
+/// A challenge's five outcomes as the quiz's own dots, rather than the shared text's emoji, which
+/// the iOS 26 simulator draws as tofu (see `docs/emoji-assets.md`).
+struct ChallengeDots: View {
+  let outcomes: [DailyChallenge.Outcome]
+  var size: CGFloat = 12
+
+  var body: some View {
+    HStack(spacing: size / 2) {
+      ForEach(Array(outcomes.enumerated()), id: \.offset) { _, outcome in
+        Circle()
+          .fill(outcome.state.dotColor)
+          .frame(width: size, height: size)
+      }
+    }
+  }
+}
+
+private extension DailyChallenge.Outcome {
+  var state: QuizItem.State {
+    switch self {
+    case .right:
+      return .correct
+    case .secondTry:
+      return .correctOnSecondAttempt
+    case .wrong:
+      return .incorrect
+    }
+  }
 }
 
 #Preview {

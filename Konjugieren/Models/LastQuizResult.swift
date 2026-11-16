@@ -11,6 +11,7 @@ struct LastQuizResult: Codable, Equatable {
     case ablautAlone
     case ablautMixed
     case allVerbs
+    case challenge
     case collection
     case custom
     case daily
@@ -62,7 +63,7 @@ struct LastQuizResult: Codable, Equatable {
       subject = quiz.scope.collectionKey
     case .verbPage:
       subject = quiz.scope.verbs?.first?.infinitiv
-    case .allVerbs, .custom, .daily, .mistakes, .myVerbs, .practiceSet, .recognition, .review, .sentences, .speedRound, .verbEssentials:
+    case .allVerbs, .challenge, .custom, .daily, .mistakes, .myVerbs, .practiceSet, .recognition, .review, .sentences, .speedRound, .verbEssentials:
       subject = nil
     }
     self.init(
@@ -86,6 +87,8 @@ struct LastQuizResult: Codable, Equatable {
       return ablautSession(.mixed)?.title ?? L.AblautPractice.title
     case .allVerbs:
       return L.Quiz.allVerbs
+    case .challenge:
+      return L.DailyChallenge.title
     case .collection:
       return subject.flatMap(VerbCollection.init(key:))?.title ?? L.PracticeSet.title
     case .custom:
@@ -149,6 +152,8 @@ extension LastQuizResult.Kind {
       self = .speedRound
     } else if scope.isDaily {
       self = .daily
+    } else if scope.isChallenge {
+      self = .challenge
     } else if scope.source == .verbPage {
       self = .verbPage
     } else if scope.custom != nil {

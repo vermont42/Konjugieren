@@ -72,6 +72,14 @@ enum L {
       String(localized: "Accessibility.speedRoundStartHint")
     }
 
+    static var dailyChallengeShareHint: String {
+      String(localized: "Accessibility.dailyChallengeShareHint")
+    }
+
+    static var dailyChallengeStartHint: String {
+      String(localized: "Accessibility.dailyChallengeStartHint")
+    }
+
     static var dailySessionStartHint: String {
       String(localized: "Accessibility.dailySessionStartHint")
     }
@@ -1374,6 +1382,32 @@ enum L {
 
     static var title: String {
       String(localized: "Sentences.title")
+    }
+  }
+
+  enum DailyChallenge {
+    static var description: String {
+      String(localized: "DailyChallenge.description")
+    }
+
+    static func doneToday(_ result: String) -> String {
+      String(localized: "DailyChallenge.doneToday \(result)")
+    }
+
+    static var share: String {
+      String(localized: "DailyChallenge.share")
+    }
+
+    static func shareText(date: String, level: String, dots: String, score: Int, maximum: Int, link: String, appStoreLink: String) -> String {
+      String(localized: "DailyChallenge.shareText \(date) \(level) \(dots) \(score) \(maximum) \(link) \(appStoreLink)")
+    }
+
+    static func spokenResult(right: Int, secondTry: Int, count: Int, score: Int, maximum: Int) -> String {
+      String(localized: "DailyChallenge.spokenResult \(right) \(secondTry) \(count) \(score) \(maximum)")
+    }
+
+    static var title: String {
+      String(localized: "DailyChallenge.title")
     }
   }
 

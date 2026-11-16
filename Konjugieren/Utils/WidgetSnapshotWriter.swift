@@ -5,10 +5,6 @@ import Foundation
 enum WidgetSnapshotWriter {
   private static let calendar = WidgetConstants.gregorianCalendar
 
-  private static let referenceDate: Date = {
-    calendar.date(from: DateComponents(year: 2025, month: 1, day: 1)) ?? Date()
-  }()
-
   @MainActor static func writeSnapshot(now: Date = Date()) {
     guard let url = WidgetConstants.snapshotURL else { return }
     let pageOffset = WidgetConstants.sharedDefaults?.integer(forKey: WidgetConstants.debugOffsetKey) ?? 0
@@ -23,7 +19,7 @@ enum WidgetSnapshotWriter {
 
   /// `keeping` is the verb the widget shows now. It stays in the place the widget will show
   /// today, so that a change to My Verbs since the last write cannot replace it.
-  @MainActor static func generateBundle(startDate: Date = Date(), myVerbs: [Verb] = [], keeping displayed: Verb? = nil, pageOffset: Int = 0) -> WidgetSnapshotBundle? {
+  @MainActor static func generateBundle(startDate: Date = Date(), myVerbs: [Verb] = [], keeping displayed: Verb? = nil, pageOffset: Int = 0, level: QuizLevel = Current.settings.quizLevel) -> WidgetSnapshotBundle? {
     let baseDay = calendar.startOfDay(for: startDate)
     let dayCount = WidgetConstants.snapshotDayCount
     let displayedIndex = WidgetSnapshotBundle.snapshotIndex(dayOffset: 0, pageOffset: pageOffset, count: dayCount)
@@ -34,7 +30,7 @@ enum WidgetSnapshotWriter {
       guard let day = calendar.date(byAdding: .day, value: dayOffset, to: baseDay) else { continue }
       let kept = dayOffset == displayedIndex ? displayed : nil
       guard let verb = kept ?? VerbDraw.verbOfTheDay(on: day, myVerbs: eligibleMyVerbs, frequentVerbs: eligibleFrequentVerbs) else { return nil }
-      snapshots.append(generateSnapshot(verb: verb, date: day))
+      snapshots.append(generateSnapshot(verb: verb, date: day, level: level))
     }
     guard !snapshots.isEmpty else { return nil }
     return WidgetSnapshotBundle(baseDate: baseDay, snapshots: snapshots)
@@ -45,7 +41,7 @@ enum WidgetSnapshotWriter {
     ExampleSentences.pair(for: verb.infinitiv) != nil
   }
 
-  @MainActor static func generateSnapshot(verb: Verb, date: Date) -> WidgetSnapshot {
+  @MainActor static func generateSnapshot(verb: Verb, date: Date, level: QuizLevel = Current.settings.quizLevel) -> WidgetSnapshot {
     let paradigm = präsensParadigm(for: verb.infinitiv)
     let partizip = RegionalConjugator.conjugate(infinitiv: verb.infinitiv, conjugationgroup: .perfektpartizip)
     let partizipString: String
@@ -59,7 +55,7 @@ enum WidgetSnapshotWriter {
     let examplePair = ExampleSentences.pair(for: verb.infinitiv)
     let etymology = Etymology.text(for: verb.infinitiv)
     let truncatedEtymology = etymology.map { truncateToSentenceBoundary($0, maxLength: 450) }
-    let quiz = generateQuizQuestion(verb: verb, date: date, debugOffset: 0)
+    let quiz = quizQuestion(on: date, level: level, fallbackVerb: verb)
 
     return WidgetSnapshot(
       infinitiv: verb.infinitiv,
@@ -89,131 +85,71 @@ enum WidgetSnapshotWriter {
     }
   }
 
-  @MainActor private static func generateQuizQuestion(verb: Verb, date: Date, debugOffset: Int) -> WidgetQuizQuestion {
-    let seed = abs((calendar.dateComponents([.day], from: referenceDate, to: date).day ?? 0) + debugOffset)
-    let conjugationgroupOptions = regularConjugationgroups(seed: seed)
-    let conjugationgroupIndex = (seed * 31) % conjugationgroupOptions.count
-    let conjugationgroup = conjugationgroupOptions[conjugationgroupIndex]
+  /// The quiz widget's question for a day: the first question of that day's challenge at the
+  /// level (Phase 24 of the pedagogy plan), so that the widget and the challenge agree. Its wrong
+  /// answers are the same reading's other cells: one of the same table, one of the same person in
+  /// another of the level's tables, and one more of either, chosen by a generator seeded with the
+  /// question's ID.
+  @MainActor static func quizQuestion(on date: Date, level: QuizLevel, fallbackVerb verb: Verb) -> WidgetQuizQuestion {
+    let key = DailyChallenge.Key(date: date, level: level)
+    let question = DailyChallenge.questions(for: key).first
+      ?? QuizDrawnQuestion(verb: verb, conjugationgroup: .präsensIndikativ(.thirdSingular), readingIndex: 0)
+    return quizQuestion(for: question, key: key)
+  }
 
-    let correctResult = RegionalConjugator.conjugate(infinitiv: verb.infinitiv, conjugationgroup: conjugationgroup)
-    let correctAnswer: String
-    switch correctResult {
-    case .success(let value):
-      correctAnswer = value
-    case .failure:
-      correctAnswer = "?"
-    }
-
-    let wrongAnswers = generateWrongAnswers(
-      verb: verb,
-      correctConjugationgroup: conjugationgroup,
-      correctAnswer: correctAnswer,
-      seed: seed
-    )
-
-    let pronoun: String?
-    switch conjugationgroup {
-    case .perfektpartizip, .präsenspartizip:
-      pronoun = nil
-    case .präsensIndikativ(let pn), .perfektIndikativ(let pn), .futurIndikativ(let pn):
-      pronoun = pn.pronounWithSieDisambiguation
-    case .imperativ(let pn):
-      pronoun = pn.imperativPronoun
-    default:
-      pronoun = nil
-    }
-
-    let displayName = conjugationgroup.displayName(lang: Current.settings.conjugationgroupLang)
-
+  @MainActor static func quizQuestion(for question: QuizDrawnQuestion, key: DailyChallenge.Key) -> WidgetQuizQuestion {
+    let cell = question.conjugationgroup
+    let correctAnswer = conjugation(of: question, in: cell) ?? "?"
+    let questionID = "\(key.day)-\(key.levelKey)-\(question.verb.infinitiv)"
+    var generator = SeededRNG(seed: WidgetQuizQuestion.stableSeed(for: questionID))
     return WidgetQuizQuestion(
-      infinitiv: verb.infinitiv,
-      conjugationgroupDisplay: displayName,
-      pronoun: pronoun,
-      correctAnswer: correctAnswer.lowercased(),
-      wrongAnswers: wrongAnswers,
-      questionID: "\(dateString(for: date))-\(verb.infinitiv)"
+      infinitiv: question.verb.infinitiv,
+      conjugationgroupDisplay: cell.displayName(lang: Current.settings.conjugationgroupLang),
+      pronoun: cell.quizPronoun,
+      correctAnswer: correctAnswer,
+      wrongAnswers: wrongAnswers(for: question, correctAnswer: correctAnswer, tables: key.level.pool.map(\.table), using: &generator),
+      questionID: questionID
     )
   }
 
-  @MainActor private static func generateWrongAnswers(
-    verb: Verb,
-    correctConjugationgroup: Conjugationgroup,
-    correctAnswer: String,
-    seed: Int
-  ) -> [String] {
-    var candidates: [String] = []
-    let allPersonNumbers = PersonNumber.allCases
-
-    // Wrong 1: same conjugationgroup, different person
-    for pn in allPersonNumbers {
-      let altGroup = swapPerson(correctConjugationgroup, to: pn)
-      guard let altGroup else { continue }
-      let result = RegionalConjugator.conjugate(infinitiv: verb.infinitiv, conjugationgroup: altGroup)
-      if case .success(let form) = result, form.lowercased() != correctAnswer.lowercased() {
-        candidates.append(form.lowercased())
-        break
+  @MainActor private static func wrongAnswers(for question: QuizDrawnQuestion, correctAnswer: String, tables: [ConjugationTable], using generator: inout SeededRNG) -> [String] {
+    let cell = question.conjugationgroup
+    // An Imperativ carries its pronoun (dürfen wir, kommen Sie), so it would stand out among a
+    // finite question's options as plainly wrong.
+    let tables = cell.table == .imperativ ? tables : tables.filter { $0 != .imperativ }
+    let sameTable = cell.table.cells.filter { $0 != cell }.shuffled(using: &generator)
+    let samePerson = tables
+      .filter { $0 != cell.table }
+      .compactMap { table in table.cells.first { $0.personNumber == cell.personNumber } }
+      .shuffled(using: &generator)
+    let anyCell = tables.flatMap(\.cells).filter { $0 != cell }.shuffled(using: &generator)
+    var answers: [String] = []
+    func take(from cells: [Conjugationgroup], upTo count: Int) {
+      for candidate in cells where answers.count < count {
+        if let form = conjugation(of: question, in: candidate), form != correctAnswer, !answers.contains(form) {
+          answers.append(form)
+        }
       }
     }
-
-    // Wrong 2: same person, different conjugationgroup from regular pool
-    let regularGroups = regularConjugationgroups(seed: seed + 7)
-    for group in regularGroups {
-      if group == correctConjugationgroup { continue }
-      let result = RegionalConjugator.conjugate(infinitiv: verb.infinitiv, conjugationgroup: group)
-      if case .success(let form) = result, form.lowercased() != correctAnswer.lowercased(), !candidates.contains(form.lowercased()) {
-        candidates.append(form.lowercased())
-        break
-      }
+    take(from: sameTable, upTo: 1)
+    take(from: samePerson, upTo: answers.count + 1)
+    take(from: anyCell, upTo: wrongAnswerCount)
+    // A level whose tables give too few distinct conjugations, which none does today.
+    while answers.count < wrongAnswerCount {
+      answers.append(correctAnswer + String(repeating: "x", count: wrongAnswerCount - answers.count))
     }
-
-    // Wrong 3: another person/conjugationgroup combo
-    let otherGroups = regularConjugationgroups(seed: seed + 13)
-    for group in otherGroups {
-      let result = RegionalConjugator.conjugate(infinitiv: verb.infinitiv, conjugationgroup: group)
-      if case .success(let form) = result, form.lowercased() != correctAnswer.lowercased(), !candidates.contains(form.lowercased()) {
-        candidates.append(form.lowercased())
-        break
-      }
-    }
-
-    // Pad with Perfektpartizip if we still need more
-    while candidates.count < 3 {
-      let fallback = RegionalConjugator.conjugate(infinitiv: verb.infinitiv, conjugationgroup: .perfektpartizip)
-      if case .success(let form) = fallback, form.lowercased() != correctAnswer.lowercased(), !candidates.contains(form.lowercased()) {
-        candidates.append(form.lowercased())
-      } else {
-        candidates.append(correctAnswer.lowercased() + String(repeating: "x", count: 3 - candidates.count))
-      }
-    }
-
-    return Array(candidates.prefix(3))
+    return answers
   }
 
-  private static func regularConjugationgroups(seed: Int) -> [Conjugationgroup] {
-    let persons = PersonNumber.allCases
-    let imperativPersons = PersonNumber.imperativPersonNumbers
-    let pnIndex = abs(seed) % persons.count
-    let impIndex = abs(seed) % imperativPersons.count
-    return [
-      .präsensIndikativ(persons[pnIndex]),
-      .perfektIndikativ(persons[(pnIndex + 1) % persons.count]),
-      .futurIndikativ(persons[(pnIndex + 2) % persons.count]),
-      .imperativ(imperativPersons[impIndex])
-    ]
-  }
+  private static let wrongAnswerCount = 3
 
-  private static func swapPerson(_ conjugationgroup: Conjugationgroup, to personNumber: PersonNumber) -> Conjugationgroup? {
-    switch conjugationgroup {
-    case .präsensIndikativ:
-      return .präsensIndikativ(personNumber)
-    case .perfektIndikativ:
-      return .perfektIndikativ(personNumber)
-    case .futurIndikativ:
-      return .futurIndikativ(personNumber)
-    case .imperativ:
-      guard PersonNumber.imperativPersonNumbers.contains(personNumber) else { return nil }
-      return .imperativ(personNumber)
-    default:
+  /// Lowercased, since the conjugator's capitals mark ablaut for the app to highlight and the
+  /// widget's buttons show plain text.
+  @MainActor private static func conjugation(of question: QuizDrawnQuestion, in cell: Conjugationgroup) -> String? {
+    switch RegionalConjugator.conjugate(infinitiv: question.verb.infinitiv, conjugationgroup: cell, readingIndex: question.readingIndex) {
+    case .success(let form):
+      return form.lowercased()
+    case .failure:
       return nil
     }
   }
@@ -225,13 +161,5 @@ enum WidgetSnapshotWriter {
       return String(prefix[...lastPeriod])
     }
     return prefix + "..."
-  }
-
-  static func dateString(for date: Date) -> String {
-    let formatter = DateFormatter()
-    formatter.calendar = WidgetConstants.gregorianCalendar
-    formatter.locale = Locale(identifier: "en_US_POSIX")
-    formatter.dateFormat = "yyyy-MM-dd"
-    return formatter.string(from: date)
   }
 }

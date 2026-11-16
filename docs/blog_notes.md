@@ -11965,3 +11965,12 @@ problems. The mining, review, and adjudication waves were not run, since each co
 window, so their paths are checked by reading and not by running. The same pass corrected one
 wrong line in `docs/project_structure.md`, which described `localization.md` as workflow
 documentation when it is a table of word counts.
+
+## Only a published post stops a rename (2026-11-16)
+
+The entry above says `CLAUDE.md` asks for a search for GitHub links before any rename, on the
+ground that a sent email and a published post are the two references no script can repair. Josh
+narrowed that after the push. The reply to the reader went out a while ago, he said, and a
+recipient who has not opened the file by now is not going to. So an old email no longer stops a
+rename. A published blog post still does, and the section in `CLAUDE.md` now says to search the
+Blog repository and ask him only in that case.

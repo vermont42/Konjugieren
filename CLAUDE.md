@@ -210,9 +210,10 @@ tool dictates, such as `.claude/ios-build-verify.config.sh` or the files of an i
 stays as the tool wants it. A downloaded file keeps its publisher's name, as
 `verbdata/kaikki.org-dictionary-German-by-pos-verb.jsonl` does.
 
-**Before renaming a file, search for GitHub URLs that point at it**, in this repo and in
-`~/Desktop/workspace/Blog`. A link in a sent email or a published post cannot be updated, and it
-breaks when the rename is pushed.
+**Before renaming a file, search `~/Desktop/workspace/Blog` for GitHub URLs that point at it**,
+and stop to ask Josh if a published post links to it, because the link breaks when the rename is
+pushed. A link in an old email is not a reason to stop. Josh's ruling of 2026-11-16: a recipient
+who has not opened the file by now is not going to.
 
 ## Documentation Consistency: `scripts/check_docs.py`
 

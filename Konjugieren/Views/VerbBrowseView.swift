@@ -390,6 +390,7 @@ struct VerbBrowseView: View {
       return
     }
     Current.practice.recordReview(reviewCard.offer)
+    Current.reportAchievements()
     Current.analytics.signal(name: .tapRevealReviewCard)
     withAnimation {
       self.reviewCard?.isRevealed = true

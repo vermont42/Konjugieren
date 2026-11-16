@@ -170,6 +170,18 @@ struct Mastery {
     }
   }
 
+  /// Whether every key conjugation of every strong reading is mastered, whatever the level asks,
+  /// as the strong-verb achievements count a verb (Phase 23), so that changing the level to
+  /// Beginner, which asks only the Präsens, cannot earn one.
+  static func isFullyMastered(_ verb: Verb, in record: PracticeRecord) -> Bool {
+    let readingIndices = strongReadingIndices(of: verb)
+    return !readingIndices.isEmpty && readingIndices.allSatisfy { readingIndex in
+      PracticeItem.Stem.allCases.allSatisfy { stem in
+        record.masteryState(of: .keyConjugation(infinitiv: verb.infinitiv, readingIndex: readingIndex, stem: stem)) == .mastered
+      }
+    }
+  }
+
   private static func strongReadingIndices(of verb: Verb) -> [Int] {
     verb.readings.indices.filter { QuizDraw.isStrong(verb.readings[$0]) }
   }

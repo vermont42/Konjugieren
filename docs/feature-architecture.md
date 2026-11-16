@@ -149,7 +149,7 @@ questions, "2–3 Minutes", and the level, whose tile is a menu that sets `Setti
 same setting as Settings' level picker), for My Verbs its verbs as chips (up to twelve), and Start.
 Below Start, "From Your Practice" holds the Daily Session (pedagogy Phase 22), Review, My Mistakes, and the last quiz's results
 (`LastQuizResultRow`), then "Exercises" holds Verb Essentials (pedagogy Phase 15) and Ablaut Groups (pedagogy Phase 16), a row with a chevron that pushes `AblautPracticeListView`, and last of all, while signed in to Game Center, a small "View Leaderboard"
-button that opens the current level's board. The results screen no longer has one (T6.6). In the
+button that opens the current level's board, with "View Achievements" beside it (pedagogy Phase 23). The results screen no longer has one (T6.6). In the
 regular size class the whole composition scales up. Start is disabled while My Verbs is empty.
 Custom shows its summary and Choose or Change in place of the tiles (see The Custom Quiz).
 
@@ -469,7 +469,8 @@ outside Phase 6's mix, which balances the other seven. Scoped quizzes mix in not
 
 **Reset Practice**, in Settings' last card while there is a record, a last result, or a kept wrong
 answer, asks for confirmation, then empties the record (saving it empty, so the migration does not
-run again), forgets the last result (since Phase 13), and empties `QuizErrorHistory`, which Josh kept on 2026-11-14 for the Tutor's recommendations and Phase
+run again), forgets the last result (since Phase 13), the Speed Round's best (Phase 21), the
+streak (Phase 22), and each level's best (Phase 23), and empties `QuizErrorHistory`, which Josh kept on 2026-11-14 for the Tutor's recommendations and Phase
 14. Starred and recent verbs stay.
 
 ### Review and My Mistakes
@@ -851,6 +852,24 @@ Practice, with a flame once there is a streak.
   with what is due for review."); the results' announcement ends with the streak line; Another
   Session has a hint. Every quiz state inside the session is an ordinary one.
 
+### Personal Bests by Level
+
+Built 2026-11-15 in Phase 23 of [`plans/pedagogy-implementation.md`](../plans/pedagogy-implementation.md)
+(T6.6), beside the achievements (see [Game Center Integration](#game-center-integration)).
+
+- **What is measured** (Josh, 2026-11-15): the best ranked score at each level, `Quiz.firstRoundScore`
+  of a default quiz over all verbs, the number its level's leaderboard takes, out of 100.
+  `PracticeStore.levelBests`, keyed by `QuizLevel.rawValue`, under `levelBests` in the App Group, kept
+  on the device and never sent. `recordRankedScore(_:level:)` keeps a score that beats the level's
+  best; a score of 0 sets none. Reset Practice forgets them (Josh, 2026-11-15).
+- **Where.** `Quiz.finishQuiz` records it on a ranked session's first round only, reading
+  `levelPreviousBest` and setting `isNewLevelBest`; Ten More clears both, so its results show no
+  best, since they count more than the ten questions measured. The results show "New personal
+  best!" with a star or "Your best: n" under the score, which may differ from the score above it,
+  since re-asks earn points the best does not count. The hub shows "Your best at this level: n"
+  under Start, for the All Verbs scope, once the current level has a best.
+- **VoiceOver.** The results' announcement includes the best line.
+
 ### The Quiz Clock
 
 `Settings.quizClock` (`QuizClock`: `.hide`, `.show`), default `.hide` (T6.5). While it is hidden,
@@ -911,7 +930,8 @@ Quiz uses `SoundPlayer` for audio feedback:
 ## Game Center Integration
 
 The app posts quiz scores to Game Center, one leaderboard per quiz level (Phase 8 of the pedagogy
-plan, 2026-11-14). The configuration in App Store Connect and in `GameCenterResources.gamekit`,
+plan, 2026-11-14), and reports progress toward eight achievements for mastery milestones (Phase 23,
+2026-11-15). The configuration in App Store Connect and in `GameCenterResources.gamekit`,
 with every leaderboard's ID, names, and settings, is in
 [`game-center-setup.md`](game-center-setup.md).
 
@@ -919,13 +939,25 @@ with every leaderboard's ID, names, and settings, is in
 
 | File | Purpose |
 |------|---------|
-| `GameCenter.swift` | Protocol for authentication, score submission, and showing leaderboards; `QuizLevel.leaderboardID` |
-| `GameCenterReal.swift` | Real `GKLocalPlayer` and `GKLeaderboard` implementation |
-| `GameCenterSpy.swift` | Records submissions and shown leaderboards, for tests (`World.unitTest`) |
+| `GameCenter.swift` | Protocol for authentication, score submission, achievement progress, and showing leaderboards and achievements; `QuizLevel.leaderboardID` |
+| `GameCenterReal.swift` | Real `GKLocalPlayer`, `GKLeaderboard`, and `GKAchievement` implementation |
+| `GameCenterSpy.swift` | Records submissions, achievement reports, and what was shown, for tests (`World.unitTest`) |
+| `Achievement.swift` | The eight achievements, their permanent IDs and points, their progress computed from the practice record, and `World.reportAchievements()` |
 | `QuizView.swift` | "View Leaderboard", the current level's board, at the foot of the Quiz tab's hub (pedagogy Phase 13; until then on a ranked quiz's results) |
-| `SettingsView.swift` | "View Leaderboards", Game Center's list of the app's boards |
+| `SettingsView.swift` | "View Leaderboards", Game Center's list of the app's boards, and "View Achievements" |
 
-Both buttons appear only while the player is signed in to Game Center.
+These buttons appear only while the player is signed in to Game Center.
+
+### Achievements
+
+Each is earned by mastery, an item in the third box, as the Mastery page counts it: every weak-verb
+pattern of a level (four achievements), the key conjugations of sein, haben, werden, and the
+modals, and of 10, 25, and 50 of the Mastery page's 50 core strong and mixed verbs, all three key
+conjugations whatever the level. `Achievement.progress(in:)` computes each from the record;
+`World.reportAchievements()` sends the percentages at launch, at each quiz's results or quit, and
+when a review card is revealed. `GameCenterReal` holds them until sign-in and its load of what Game
+Center holds, then sends only what has risen. IDs, names, descriptions, artwork, and the
+walkthrough are in [`game-center-setup.md`](game-center-setup.md#the-achievements).
 
 ### Leaderboards
 
@@ -1653,6 +1685,7 @@ Counts and durations go out in bands (`AnalyticsBand`), never as exact numbers.
 | `tapDailyReminder` | `enabled` (`true`, `false`, `denied`) | When Settings' Daily Reminder is set On or Off (pedagogy Phase 22). `denied`: turned on, and notification permission refused, now or before, so the reminder stays off. Changing the time sends nothing |
 | `viewMastery` | None | When the Mastery page, pushed from the Quiz tab's hub, appears (pedagogy Phase 20). Nothing about the record or the level is sent |
 | `tapRevealReviewCard` | None | When a tap reveals the review card's key conjugations, once per card (Phase 15). A page opened from the card then sends `viewVerbView` with `source` `reviewCard` |
+| `tapViewAchievements` | `source` (`tab`) from the Quiz tab's hub; none from Settings | When View Achievements on the hub or in Settings is tapped (pedagogy Phase 23). Nothing about progress is sent |
 | `tapViewLeaderboard` | `source` (`tab`) from the Quiz tab's hub; none from Settings | When View Leaderboard on the Quiz tab's hub (pedagogy Phase 13) or View Leaderboards in Settings is tapped. The results screen's button, which sent nothing, is gone |
 | `startQuiz`, `quitQuiz`, `completeQuiz` | `source` (`tab`, `myVerbs`, `verbPage`, `list`, `custom`); `level` (`beginner`, `elementary`, `intermediate`, `advanced`); `quitQuiz` also `questionNumber` and `duration` (`0-3s`, `3-15s`, `15-40s`, `40s-2m`, `2m+`); `completeQuiz` also `questionCount` (`10`, `20`, `30`, …, or `3`); `startQuiz` alone also carries `collection` for a collection's quiz (Phase 16), or for a custom quiz over a collection, and `customChoice` (`conjugationgroups`, `verbs`, `both`) for a custom quiz (pedagogy Phase 9). A Review or My Mistakes session (`review`, `mistakes`, pedagogy Phase 12) sends neither `questionCount` nor `questionNumber`, since either would tell how many items were due or missed, and neither does a mixed ablaut session (`ablautMixed`, pedagogy Phase 16); an ablaut group's practice carries `collection` | When a quiz starts, is quit, or reaches its results (`source` since Phase 13). Without it, three-question quizzes would inflate the completion rate of the default quiz. `level` replaced `difficulty` (`regular`, `ridiculous`), which only `quitQuiz` and `completeQuiz` sent, in Phase 5 of the pedagogy plan, and `startQuiz` gained it then (M1). Since Phase 7, `completeQuiz` is sent at each round's results, and its `questionCount` says how many rounds' questions the session has asked, so Ten More shows as `20` and `30`. `duration` (M3) is wall-clock time from the start to the quit, background included. `questionNumber` counts re-asks |
 | `abandonQuiz` | `source`, `level`, `questionNumber` (not for `review` or `mistakes`) | At launch, once for each quiz the last run left in progress (M2, Phase 7 of the pedagogy plan): the app was closed or killed during a question. `QuizAbandonment` keeps an entry per running quiz in `GetterSetter`, written at the start and at each question and removed at a quit or the results. A quiz left at its results is not abandoned |

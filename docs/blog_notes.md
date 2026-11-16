@@ -11498,3 +11498,62 @@ history: Old English *strica*, a stroke or a line, kin to "strike" and to German
 is the line you draw by practicing, and a Serie is the chain the days make.
 
 Tests: 26 new, 907 in all, 905 passed and the 2 environment-gated harnesses skipped.
+
+## Personal Bests and Achievements (2026-11-15)
+
+Phase 23 of the pedagogy plan finishes the tier the report calls "Rebuild Motivation Around
+Progress". It adds two things: a personal best at each quiz level, and eight Game Center achievements.
+
+### Asking first
+
+The phase told the session to propose achievements tied to mastery, not to volume of play, and to
+ask Josh before any artwork was made. The proposal leaned on what Phase 20 had already built. The
+Mastery page counts an item as mastered once it reaches the third box of the review ladder, a week
+or more from its next review, and it counts two kinds of item: the weak verbs' patterns at each
+level, and the key conjugations of the 50 most frequent strong and mixed verbs. So four achievements
+follow the patterns, one per level, and four follow the verbs: sein, haben, werden, and the modals,
+then 10, 25, and all 50. Josh approved the list, chose the best ranked score as the personal best
+(the first ten questions of a quiz over all verbs, the leaderboard's own number), and had Reset
+Practice forget the bests, as it already forgets the Speed Round's best and the streak.
+
+One rule came from thinking about a loophole. The Mastery page counts a strong verb against what the
+learner's level asks, and Beginner asks only the Präsens. An achievement counted the same way could
+be earned by switching to Beginner. So the verb achievements ask for all three key conjugations
+whatever the level.
+
+### Reporting without nagging Game Center
+
+Mastery can fall: a wrong answer sends an item back to the first box. Game Center achievements
+should not. `GameCenterReal` therefore loads what Game Center already holds when the player signs
+in, holds every report until then, and sends only percentages that have risen. That made it safe
+to report often: at launch, at every quiz's results and at a quit (answers are recorded as they are
+given), and when a review card is revealed, which also moves items up the ladder. The tests drive a
+Review whose single due pattern is Beginner's ninth and watch the spy receive 100 at the results.
+
+### Names and pictures
+
+The pattern achievements build an arch: Foundation Stones, Masonry, Vault, and Keystone, in German
+Grundsteine, Mauerwerk, Gewölbe, and Schlussstein, the "closing stone" that locks the arch. The verb
+achievements borrow the old way of counting a company, "fifty strong". It fits because the verbs
+themselves are strong: Jacob Grimm named the strong and weak verbs, *starke* and *schwache Verben*,
+in his *Deutsche Grammatik* of 1819.
+
+The artwork prompts had to give the app's colors as hex values, read from the asset catalog. Three
+of them turned out to be the German flag: #000000, #DD0000, and #FFCE00, the usual screen values of
+Schwarz-Rot-Gold. The app's dark-mode accent has been the flag's gold all along. Sixteen drafts,
+two per achievement, cost about 87 cents, and they share one preamble so they read as a set: a
+gold-rimmed medallion, since Game Center crops achievement art to a circle. Josh picked his eight
+from a contact sheet. As PNGs they would have added 17 MB to the app, because the build copies the
+Game Center configuration folder into the bundle, so they went in as JPEGs: 3.1 MB, with no
+difference visible even at twice the size.
+
+### What waits
+
+The achievements are not in App Store Connect yet, since none can be seen by a development build
+until the 2027 version exists. They are in the `.gamekit`, written by hand in the shape of App Store
+Connect's API. Josh opened the file in Xcode, whose editor listed all eight with their badges and
+left the file byte for byte as written. The walkthrough in `docs/game-center-setup.md`
+holds the IDs, both languages' names and descriptions, and Apple's rules, and `docs/release.md`
+holds the step.
+
+Tests: 23 new, 930 in all, 928 passed and the 2 environment-gated harnesses skipped.

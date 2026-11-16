@@ -929,3 +929,55 @@ Der Absatz über den Übungsstand lautet nun:
 ```
 Die App führt außerdem einen Übungsstand: welche Konjugationen Sie im Quiz und auf Wiederholungskarten geübt haben, ob Ihre letzte Antwort darauf richtig war, wann jede wieder zur Wiederholung ansteht, das Ergebnis Ihres letzten Quiz, Ihren Bestwert in der „Blitzrunde“ und die Tage, an denen Sie eine tägliche Übung abgeschlossen haben, damit sie Wiederholungskarten zeigen, Verfehltes wiederholen, zeigen kann, wie Ihr letztes Quiz lief, welche Konjugationen Sie beherrschen, was Ihr Bestwert ist und wie lang Ihre Serie ist. Der Übungsstand bleibt auf Ihrem Gerät und wird nie gesendet. „Übungsstand zurücksetzen“ in den Einstellungen löscht ihn. Die tägliche Erinnerung wird, wenn Sie sie einschalten, auf Ihrem Gerät geplant, das ihren Text aus dem Übungsstand schreibt; nichts davon wird gesendet.
 ```
+
+## Personal bests and achievements (pedagogy plan, Phase 23, 2026-11-15)
+
+Adds the signal `tapViewAchievements`, with `source` `tab` when sent from the Quiz tab and none
+from Settings, when View Achievements is tapped. Nothing about progress is sent with it. The app
+now reports progress toward eight Game Center achievements, each earned by mastering conjugations,
+to Game Center while the learner is signed in, so section 6 says so; the progress is a percentage
+for each achievement, computed on the device from the practice record, which itself is never sent.
+The best score of a quiz over all verbs at each level is kept on the device beside the practice
+record and never sent, so the practice-record paragraph names it. The lines change the taps bullet
+and the practice-record paragraph as last given above, and add a sentence to section 6.
+
+### English
+
+In the taps bullet in section 2, as last given above, "viewing the leaderboard" now reads:
+
+```
+viewing the leaderboard or the achievements
+```
+
+A new sentence for section 6, after the sentence about which quizzes post a score:
+
+```
+If you are signed in to Game Center, the app also reports your progress toward its achievements, which you earn by mastering conjugations, as a percentage for each achievement. It works that progress out on your device from your practice record, which is never sent.
+```
+
+The practice-record paragraph now reads:
+
+```
+The app also keeps a practice record: which conjugations you have practiced in quizzes and on review cards, whether your last answer to each was right, when each is due for review, the results of your last quiz, your best Speed Round, your best score at each quiz level, and the days on which you finished a daily session, so that it can show review cards, bring back what you missed, show how your last quiz went, show which conjugations you have mastered, show your bests, and show your streak. The record stays on your device and is never sent. Reset Practice in Settings erases it. The daily reminder, if you turn it on, is scheduled on your device, which writes what it says from the record; nothing about it is sent.
+```
+
+### German
+
+Im Punkt über das Antippen in Abschnitt 2, wie oben zuletzt angegeben, lautet „die Bestenliste
+ansehen“ nun:
+
+```
+die Bestenliste oder die Erfolge ansehen
+```
+
+Ein neuer Satz für Abschnitt 6, nach dem Satz darüber, welche Quiz ein Ergebnis einreichen:
+
+```
+Wenn Sie bei Game Center angemeldet sind, meldet die App außerdem Ihren Fortschritt bei ihren Erfolgen, die Sie durch das Beherrschen von Konjugationen erringen, als Prozentwert je Erfolg. Diesen Fortschritt berechnet sie auf Ihrem Gerät aus Ihrem Übungsstand, der nie gesendet wird.
+```
+
+Der Absatz über den Übungsstand lautet nun:
+
+```
+Die App führt außerdem einen Übungsstand: welche Konjugationen Sie im Quiz und auf Wiederholungskarten geübt haben, ob Ihre letzte Antwort darauf richtig war, wann jede wieder zur Wiederholung ansteht, das Ergebnis Ihres letzten Quiz, Ihren Bestwert in der „Blitzrunde“, Ihren Bestwert auf jeder Quizstufe und die Tage, an denen Sie eine tägliche Übung abgeschlossen haben, damit sie Wiederholungskarten zeigen, Verfehltes wiederholen, zeigen kann, wie Ihr letztes Quiz lief, welche Konjugationen Sie beherrschen, was Ihre Bestwerte sind und wie lang Ihre Serie ist. Der Übungsstand bleibt auf Ihrem Gerät und wird nie gesendet. „Übungsstand zurücksetzen“ in den Einstellungen löscht ihn. Die tägliche Erinnerung wird, wenn Sie sie einschalten, auf Ihrem Gerät geplant, das ihren Text aus dem Übungsstand schreibt; nichts davon wird gesendet.
+```

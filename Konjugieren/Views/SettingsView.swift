@@ -209,6 +209,16 @@ struct SettingsView: View {
                     Current.gameCenter.showLeaderboards()
                     Current.analytics.signal(name: .tapViewLeaderboard)
                   }
+
+                  settingsAction(
+                    title: L.GameCenter.viewAchievements,
+                    systemImage: "rosette",
+                    description: L.GameCenter.viewAchievementsDescription,
+                    accessibilityHint: L.Accessibility.achievementsHint
+                  ) {
+                    Current.gameCenter.showAchievements()
+                    Current.analytics.signal(name: .tapViewAchievements)
+                  }
                 }
 
                 settingsAction(

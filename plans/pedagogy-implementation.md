@@ -37,7 +37,7 @@ Josh has not yet tried is "Awaiting Josh", with the Commit cell empty until it i
 | 20 | Done | 2026-11-15 | `2608a03` | T6.2 |
 | 21 | Done | 2026-11-15 | `38d4496` | T5.7 |
 | 22 | Done | 2026-11-15 | `5579305` | T6.3 |
-| 23 | Not started | | | T6.6 (personal bests and achievements) |
+| 23 | Done | 2026-11-15 | | T6.6 (personal bests and achievements) |
 | 24 | Not started | | | T6.8 |
 | Closing | Not started | | | Audit, report notes, porting list, Decision 10 |
 
@@ -2358,7 +2358,7 @@ controllable clock in tests, and the reminder fires on the simulator at the chos
 ## Phase 23: Personal Bests and Achievements
 
 **Suggestions:** T6.6 (personal bests and achievements). **Depends on:** Phases 8, 20, and 22.
-**Status:** Not started.
+**Status:** Done.
 
 Personal bests per level, kept on the device, and Game Center achievements for mastery
 milestones. The report's evidence says comparisons with one's own past motivate weaker performers
@@ -2386,7 +2386,87 @@ and the walkthrough covers achievements.
 
 **How it differed:**
 
-(To be written by the session that finishes this phase.)
+- **Josh decided three things on 2026-11-15**, asked before building, each the recommended option.
+  (1) **The eight achievements as proposed** (over six without the 10 and 25 steps, and over adding
+  streak achievements, which reward a habit rather than mastery): Foundation Stones, Masonry,
+  Vault, and Keystone (Grundsteine, Mauerwerk, Gewölbe, Schlussstein) for every weak-verb pattern of
+  Beginner (9), Elementary (17), Intermediate (47), and Advanced (66); The Pillars (Die Säulen) for
+  sein, haben, werden, and the six modals; Ten, Twenty-Five, and Fifty Strong (Zehn,
+  Fünfundzwanzig, Fünfzig Starke) for the core strong verbs. 10, 25, 50, 100, 25, 25, 50, and 100
+  points, 385 of Apple's 1,000. (2) **The personal best is the best ranked score per level**, the
+  first ten questions of a default quiz, what the leaderboard takes (over the longest run of right
+  answers, and over the score with ties broken by time when the clock shows). (3) **Reset Practice
+  forgets the bests**, as it does the Speed Round's best and the streak.
+- **Decided in the session.** Every achievement counts what the Mastery page counts, an item in the
+  third box. A pattern achievement counts its level's patterns whatever level is chosen. A strong
+  verb counts only when **all three** key conjugations of every strong reading are mastered
+  (`Mastery.isFullyMastered`), whatever the level, so switching to Beginner, which asks only the
+  Präsens, earns nothing; the 50 are the Mastery page's `coreVerbs`, and the nine pillars are among
+  them. None is hidden. **Progress is reported as a percentage**, so Game Center shows each
+  unearned achievement's progress. IDs are `konjugieren.achievement.patterns.<level>` and
+  `konjugieren.achievement.verbs.{pillars,core10,core25,core50}`, pinned by a test.
+- **How it reports.** `World.reportAchievements()` sends every achievement's percentage at launch,
+  at every quiz's results and at a quit (the answers are recorded as given), and when a review card
+  is revealed, which moves due items up a box. `GameCenter` gained `reportAchievementProgress(_:)`
+  and `showAchievements()`. `GameCenterReal` holds reports until the player is signed in and
+  `GKAchievement.loadAchievements` has said what Game Center holds, then sends only what has risen,
+  so a fall in the record (a wrong answer) never reaches Game Center and calling often costs
+  nothing; it loads afresh at each sign-in. `GameCenterSpy` records each report.
+- **Where the best shows.** Under the score on a ranked session's first results: "New personal
+  best!" with a star, or "Your best: n" ("Neuer Bestwert!", "Dein Bestwert: n", the Speed Round's
+  words under keys of their own). Ten More's results show none, since they count more than the ten
+  questions measured. A score of 0 sets none. On the hub, "Your best at this level: n" ("Dein
+  Bestwert auf dieser Stufe: n") under Start, for All Verbs, once the level has a best. **On an
+  iPhone that line pushes Review one more line below the fold**; it could instead sit in the Last
+  Quiz row, if Josh prefers.
+- **View Achievements** ("Erfolge anzeigen"), not asked for by the phase: a small button beside View
+  Leaderboard at the hub's foot, and a row in Settings below View Leaderboards with a "This button
+  shows…" description. Both appear only while signed in, so neither was seen on a simulator.
+- **Analytics.** `tapViewAchievements`, with `source` `tab` from the hub and none from Settings, as
+  `tapViewLeaderboard` does. No signal for earning one, which would report mastery. Staged in
+  [`docs/privacy-policy-pending.md`](../docs/privacy-policy-pending.md) in both languages: the taps
+  bullet, a new section 6 sentence saying the progress percentages go to Game Center while signed in,
+  and the practice-record paragraph naming the bests.
+- **The walkthrough** is [`docs/game-center-setup.md`](../docs/game-center-setup.md) § The
+  Achievements: IDs, points, English and German names and pre- and post-earned descriptions,
+  Apple's limits and image requirements (read from Apple's help pages and GameKit article through a
+  subagent on 2026-11-15), the steps as Apple's help page gives them, the reporting, and release-day
+  testing. **The achievements were not created in App Store Connect**, since nothing makes them
+  visible before the 2027 version exists. They are in `GameCenterResources.gamekit` with their
+  images, added by hand in App Store Connect's API attributes, as Phase 8's leaderboards were. Josh
+  opened it in Xcode the same day: the editor read all eight, with their images, and rewrote
+  nothing. `docs/release.md` gains the step, and
+  `docs/description.md` mentions the achievements in both languages.
+- **The artwork.** Sixteen drafts, two per achievement, made with `gpt-image` (`gpt-image-2.5-sunburst`,
+  high quality, 1024 × 1024, opaque) for about $0.87, every prompt giving the color sets' hex values:
+  `customBackground` #000000, `customCardBackground` #1C1C1E and #F2F2F7, `customYellow` #FFCE00 and
+  #665300, `customRed` #DD0000, and white. `AccentColor` has no value of its own and
+  `customCardBorder` is the yellow at 8%, so neither was named. Black, #DD0000, and #FFCE00 are the
+  German flag's colors. One shared preamble keeps them a set: a gold-rimmed round medallion, since
+  Game Center shows achievements in a circle. The patterns build an arch (a stone course, a wall,
+  a vault missing its crown, the gold keystone); the verbs are columns and numbered shields, the
+  last in an oak wreath. **Josh picked** the first draft of each but Vault and Ten Strong
+  (2026-11-15). As PNGs the sixteen files (two locales) added 17 MB to the app, since the build
+  copies the `.gamekit`; **Josh chose JPEG at quality 92**, 3.1 MB in all, which Apple accepts.
+- **VoiceOver.** The results' announcement includes the best line; the hub's line is read as is;
+  View Achievements has a hint. Nobody has listened to it.
+- **Tests:** `AchievementTests`, 23 functions. Thirteen on the parts: each ID (8 cases), distinct IDs,
+  the points, the pillars, an empty record, each level's patterns earning its own and the lower
+  levels' (4 cases), one pattern short, learning counting for nothing, all three key conjugations
+  needed, each core-verb step, fahren's two readings, a weak verb never mastered. Ten nested in
+  `QuizTests`: a Review whose one due pattern completes Beginner's reporting 100 at the results, a
+  quit reporting, the first best, a lower score not beating it, a higher one replacing it, each
+  level its own, none after Ten More, none for a daily session, across a launch and a reset, and
+  none for 0. Run in English with `xcodebuild -testLanguage en`: 928 passed and 2 skipped (the
+  environment-gated harnesses), 930 in all.
+- **Verified on the iPad Pro 11-inch (M5)**, in light mode and English at Advanced, with the
+  screenshot fixture typed in: a first quiz's results with "New personal best!", the hub's "Your
+  best at this level: 100", and a second quiz's "Your best: 100". **On the iPhone 17**, in dark mode
+  at Grundstufe: in German, "Neuer Bestwert!" and "Dein Bestwert auf dieser Stufe: 100"; in English,
+  "Your best: 100" and Reset Practice's new description. Both simulators' defaults were restored
+  afterward and checked key by key. Not tried: anything signed in to Game Center (the buttons, the
+  reports, the banner), VoiceOver by ear, and an achievement earned by real days.
+- **Josh tried the personal bests and asked for the commit** on 2026-11-15.
 
 ## Phase 24: The Daily Challenge
 

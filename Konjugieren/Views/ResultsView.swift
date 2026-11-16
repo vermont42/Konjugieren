@@ -45,6 +45,8 @@ struct ResultsView: View {
 
           if quiz.scope.isSpeedRound {
             speedRoundBest
+          } else if quiz.showsLevelBest {
+            levelBest
           }
 
           if let line = quiz.dailyStreakStatus?.resultsLine, !line.isEmpty {
@@ -159,6 +161,24 @@ struct ResultsView: View {
         .font(.subheadline)
         .foregroundStyle(.secondary)
         .accessibilityIdentifier("results_speed_round_best")
+    }
+  }
+
+  /// A ranked session's first round against its level's best (Phase 23). The best measures the
+  /// first ten questions without their re-asks, the leaderboard's score, so the number shown may
+  /// be below the score above it.
+  @ViewBuilder
+  private var levelBest: some View {
+    if quiz.isNewLevelBest {
+      Label(L.PersonalBest.newBest, systemImage: "star.fill")
+        .font(.headline)
+        .foregroundStyle(.customYellow)
+        .accessibilityIdentifier("results_level_new_best")
+    } else if let best = quiz.levelPreviousBest {
+      Text(L.PersonalBest.best(best))
+        .font(.subheadline)
+        .foregroundStyle(.secondary)
+        .accessibilityIdentifier("results_level_best")
     }
   }
 

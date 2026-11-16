@@ -30,16 +30,21 @@ release notes.
    open that level's board with the score. Keep GameKit debug mode off in the scheme, since it
    hides every leaderboard. See [`game-center-setup.md`](game-center-setup.md) § Testing Before
    Release.
-3. **Write the release notes** in English and German in
+3. **Create the eight achievements** (pedagogy Phase 23) by the walkthrough in
+   [`game-center-setup.md`](game-center-setup.md) § The Achievements, with the artwork Josh chose,
+   add them to the version, and on the development build open View Achievements on the Quiz tab:
+   the eight should be listed, with progress on any the build's record has begun.
+4. **Write the release notes** in English and German in
    [`release_notes.txt`](release_notes.txt), as for 1.3 and 1.4.
-4. **Check the App Store description**, [`description.md`](description.md), which `main` keeps
-   current (the levels and the per-level leaderboards are already in it), and paste it into App
+5. **Check the App Store description**, [`description.md`](description.md), which `main` keeps
+   current (the levels, the per-level leaderboards, and the achievements are already in it), and paste it into App
    Store Connect if it changed.
-5. **The store category** (Decision 10 of the pedagogy report): change the primary category from
+6. **The store category** (Decision 10 of the pedagogy report): change the primary category from
    Education to Reference, if App Store Connect did not already allow it without a version. The
    pedagogy plan's Closing checks which.
-6. **Submit the version with the four leaderboards in the same submission.** On each leaderboard's
-   page, click **Add for Review** and choose the draft submission that holds the version. Apple
+7. **Submit the version with the four leaderboards and the eight achievements in the same
+   submission.** On each one's page, click **Add for Review** and choose the draft submission that
+   holds the version. Apple
    requires first-time Game Center components to go with an app version.
 
 ## On Release Day

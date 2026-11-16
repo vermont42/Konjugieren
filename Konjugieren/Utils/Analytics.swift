@@ -49,6 +49,7 @@ enum AnalyticsName: String {
   case tapShowOnboarding
   case tapStarVerb
   case tapTestVerb
+  case tapViewAchievements
   case tapViewLeaderboard
   case viewCollection
   case viewFamilyBrowseView

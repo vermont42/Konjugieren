@@ -48,6 +48,17 @@ class Quiz {
   private(set) var isNewSpeedRoundBest = false
   /// The streak a finished daily session left, which its results show. Nil for any other quiz.
   private(set) var dailyStreakStatus: DailyStreak.Status?
+  /// The best at its level that a ranked session's first round had to beat, read as the round
+  /// finished. Nil when there was none, or the session is not ranked (Phase 23).
+  private(set) var levelPreviousBest: Int?
+  /// Whether a ranked session's first round set a new best at its level.
+  private(set) var isNewLevelBest = false
+
+  /// Whether the results show the level's best: a ranked session's first round only, since Ten
+  /// More's results show more than the ten questions the best measures.
+  var showsLevelBest: Bool {
+    isNewLevelBest || levelPreviousBest != nil
+  }
 
   /// The seconds a Speed Round has left.
   var speedRoundSecondsLeft: Int {
@@ -206,6 +217,8 @@ class Quiz {
     }
     questions += more
     roundCount += 1
+    levelPreviousBest = nil
+    isNewLevelBest = false
     correction = nil
     isHoldingChoice = false
     lastPreferredSpelling = nil
@@ -462,6 +475,8 @@ class Quiz {
       parameters[ParameterKey.questionNumber.rawValue] = "\(questionNumber)"
     }
     Current.analytics.signal(name: .quitQuiz, parameters: parameters)
+    // The answers given before quitting are in the record already.
+    Current.reportAchievements()
   }
 
   /// Where the quiz has reached, for the next launch to report should the app be left during it
@@ -485,6 +500,8 @@ class Quiz {
     speedRoundPreviousBest = nil
     isNewSpeedRoundBest = false
     dailyStreakStatus = nil
+    levelPreviousBest = nil
+    isNewLevelBest = false
   }
 
   /// `excluded` names the record's items the session has already asked, which a Review, My
@@ -1109,8 +1126,12 @@ class Quiz {
     }
     Current.analytics.signal(name: .completeQuiz, parameters: parameters)
     Current.practice.recordResult(LastQuizResult(quiz: self))
-    announceQuizCompletion()
     let isFirstRound = roundCount == 1
+    if isFirstRound, scope.isRanked {
+      levelPreviousBest = Current.practice.levelBest(at: level)
+      isNewLevelBest = Current.practice.recordRankedScore(firstRoundScore, level: level)
+    }
+    announceQuizCompletion()
     // The tip suggests another level, which a session drawn from the record does not ask by, and
     // whose pool Verb Essentials does not ask, an ablaut group's included.
     if isFirstRound, scope.continues, scope.recordSession == nil, !scope.isVerbEssentials {
@@ -1123,6 +1144,7 @@ class Quiz {
     if isFirstRound, scope.isRanked {
       Current.gameCenter.submitScore(firstRoundScore, level: level)
     }
+    Current.reportAchievements()
     Current.reviewPrompter.promptableActionHappened()
   }
 
@@ -1221,6 +1243,11 @@ class Quiz {
     }
     if reaskCount > 0 {
       announcement += " \(L.Quiz.askedAgainLabel) \(reaskCorrectCount) / \(reaskCount)."
+    }
+    if isNewLevelBest {
+      announcement += " " + L.PersonalBest.newBest
+    } else if let levelPreviousBest {
+      announcement += " " + L.PersonalBest.best(levelPreviousBest)
     }
     if let line = dailyStreakStatus?.resultsLine, !line.isEmpty {
       announcement += " \(line)"

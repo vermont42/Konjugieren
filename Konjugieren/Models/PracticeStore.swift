@@ -14,6 +14,10 @@ final class PracticeStore {
   /// The days a daily session was finished, kept on the device and sent nowhere but as a band
   /// (Phase 22).
   private(set) var dailyStreak = DailyStreak()
+  /// The best ranked score at each level, by `QuizLevel.rawValue`: the first ten questions of a
+  /// default quiz, what the level's leaderboard takes. Kept on the device and sent nowhere
+  /// (Phase 23).
+  private(set) var levelBests: [String: Int] = [:]
   private let getterSetter: GetterSetter
   private let calendar: Calendar
 
@@ -42,9 +46,11 @@ final class PracticeStore {
     lastResult = getterSetter.getCodable(key: LastQuizResult.storageKey)
     speedRoundBest = getterSetter.getCodable(key: Self.speedRoundBestKey)
     dailyStreak = getterSetter.getCodable(key: DailyStreak.storageKey) ?? DailyStreak()
+    levelBests = getterSetter.getCodable(key: Self.levelBestsKey) ?? [:]
   }
 
   static let speedRoundBestKey = "speedRoundBest"
+  static let levelBestsKey = "levelBests"
 
   var isEmpty: Bool {
     record.isEmpty
@@ -138,6 +144,22 @@ final class PracticeStore {
     return true
   }
 
+  func levelBest(at level: QuizLevel) -> Int? {
+    levelBests[level.rawValue]
+  }
+
+  /// A ranked session's score at its level, kept when it beats the level's best. Returns whether
+  /// it did. A score of nothing sets no best.
+  @discardableResult
+  func recordRankedScore(_ score: Int, level: QuizLevel) -> Bool {
+    guard score > (levelBest(at: level) ?? 0) else {
+      return false
+    }
+    levelBests[level.rawValue] = score
+    getterSetter.setCodable(key: Self.levelBestsKey, value: levelBests)
+    return true
+  }
+
   /// A daily session was finished. Returns the streak it leaves.
   @discardableResult
   func recordDailySession(at date: Date = .now) -> DailyStreak.Status {
@@ -150,8 +172,8 @@ final class PracticeStore {
     dailyStreak.status(at: date, calendar: calendar)
   }
 
-  /// Settings' Reset Practice, which forgets the last result, the Speed Round's best, and the daily
-  /// streak too. The record is saved empty
+  /// Settings' Reset Practice, which forgets the last result, the Speed Round's best, the daily
+  /// streak, and each level's best too. The record is saved empty
   /// rather than removed, so that the next launch does not migrate the old schedules again.
   func reset() {
     record.reset()
@@ -162,6 +184,8 @@ final class PracticeStore {
     getterSetter.remove(key: Self.speedRoundBestKey)
     dailyStreak = DailyStreak()
     getterSetter.remove(key: DailyStreak.storageKey)
+    levelBests = [:]
+    getterSetter.remove(key: Self.levelBestsKey)
   }
 
   private func save() {

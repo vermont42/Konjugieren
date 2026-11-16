@@ -2512,6 +2512,22 @@
         }
       }
     },
+    "Accessibility.achievementsHint" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Öffnet deine Game-Center-Erfolge"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opens your Game Center achievements"
+          }
+        }
+      }
+    },
     "Accessibility.areIrregular" : {
       "localizations" : {
         "de" : {
@@ -4434,6 +4450,38 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Leaderboard"
+          }
+        }
+      }
+    },
+    "GameCenter.viewAchievements" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erfolge anzeigen"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "View Achievements"
+          }
+        }
+      }
+    },
+    "GameCenter.viewAchievementsDescription" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Diese Schaltfläche zeigt deine Game-Center-Erfolge, die du erringst, indem du die Muster jeder Stufe und die wichtigsten starken Verben beherrschst."
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "This button shows your Game Center achievements, which you earn by mastering the patterns of each level and the strong verbs that matter most."
           }
         }
       }
@@ -7327,6 +7375,54 @@
         }
       }
     },
+    "PersonalBest.best %lld" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dein Bestwert: %lld"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your best: %lld"
+          }
+        }
+      }
+    },
+    "PersonalBest.hubLine %lld" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dein Bestwert auf dieser Stufe: %lld"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your best at this level: %lld"
+          }
+        }
+      }
+    },
+    "PersonalBest.newBest" : {
+      "localizations" : {
+        "de" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Neuer Bestwert!"
+          }
+        },
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New personal best!"
+          }
+        }
+      }
+    },
     "Pluperfect Conditional" : {
 
     },
@@ -9375,13 +9471,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Die App vergisst, welche Konjugationen du geübt hast, wann jede wieder ansteht, das Ergebnis deines letzten Quiz, deinen Bestwert in der Blitzrunde und deine tägliche Serie. Deine Verben mit Stern und deine zuletzt geöffneten Verben bleiben. Das lässt sich nicht rückgängig machen."
+            "value" : "Die App vergisst, welche Konjugationen du geübt hast, wann jede wieder ansteht, das Ergebnis deines letzten Quiz, deinen Bestwert in der Blitzrunde, deine tägliche Serie und deinen Bestwert auf jeder Stufe. Deine Verben mit Stern und deine zuletzt geöffneten Verben bleiben. Das lässt sich nicht rückgängig machen."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "The app will forget which conjugations you have practiced, when each is due again, your last quiz's results, your Speed Round best, and your daily streak. Your starred and recent verbs stay. This cannot be undone."
+            "value" : "The app will forget which conjugations you have practiced, when each is due again, your last quiz's results, your Speed Round best, your daily streak, and your best score at each level. Your starred and recent verbs stay. This cannot be undone."
           }
         }
       }
@@ -9407,13 +9503,13 @@
         "de" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Diese Schaltfläche löscht deinen Übungsstand, der auf deinem Gerät bleibt: welche Konjugationen du beim Quiz und auf Wiederholungskarten geübt hast, wie es lief, wann jede wieder ansteht, das Ergebnis deines letzten Quiz, deinen Bestwert in der Blitzrunde und deine tägliche Serie."
+            "value" : "Diese Schaltfläche löscht deinen Übungsstand, der auf deinem Gerät bleibt: welche Konjugationen du beim Quiz und auf Wiederholungskarten geübt hast, wie es lief, wann jede wieder ansteht, das Ergebnis deines letzten Quiz, deinen Bestwert in der Blitzrunde, deine tägliche Serie und deinen Bestwert auf jeder Stufe."
           }
         },
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This button erases your practice record, which stays on your device: which conjugations you have practiced in quizzes and on review cards, how each went, when each is due again, your last quiz's results, your Speed Round best, and your daily streak."
+            "value" : "This button erases your practice record, which stays on your device: which conjugations you have practiced in quizzes and on review cards, how each went, when each is due again, your last quiz's results, your Speed Round best, your daily streak, and your best score at each level."
           }
         }
       }

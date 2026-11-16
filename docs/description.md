@@ -33,9 +33,9 @@ Retro Arcade Game
 
 Konjugieren also features a German-themed retro arcade shooter. Tilt your device to steer a pretzel and fire German-flag bullets at a 6×6 grid of top hats, beer steins, dachshunds, and cuckoo clocks. Collect power-ups, dodge dive-bombers, and survive rotating mechanics. How long can you hold the line?
 
-Game Center Leaderboards
+Game Center Leaderboards and Achievements
 
-Compete globally on the way to conjugation mastery, on a leaderboard for each quiz level.
+Compete globally on the way to conjugation mastery, on a leaderboard for each quiz level, and earn achievements as you master the patterns of each level and the most used strong verbs.
 
 Widgets, Shortcuts, and More
 
@@ -112,9 +112,9 @@ Retro-Arcade-Spiel
 
 Konjugieren bietet außerdem ein deutsches Retro-Arcade-Spiel: Steuern Sie per Neigung eine Brezel und schießen Sie auf ein 6×6-Raster aus Zylindern, Bierkrügen, Dackeln und Kuckucksuhren. Sammeln Sie Power-ups und überleben Sie wechselnde Spielmechaniken.
 
-Game-Center-Bestenlisten
+Game-Center-Bestenlisten und -Erfolge
 
-Messen Sie sich weltweit auf dem Weg zur Meisterschaft.
+Messen Sie sich weltweit auf dem Weg zur Meisterschaft, und erringen Sie Erfolge, wenn Sie die Muster jeder Stufe und die wichtigsten starken Verben beherrschen.
 
 Widgets, Kurzbefehle und mehr
 

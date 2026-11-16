@@ -29,6 +29,7 @@ Konjugieren/
 │   ├── Ablaut.swift            # Single ablaut: replacement + target conjugationgroups
 │   ├── AblautGroup.swift       # Named collection of ablauts for a verb pattern
 │   ├── AblautPractice.swift    # Ablaut-group practice (pedagogy Phase 16): AblautPracticeGroup (a group's ten most frequent verbs with their readings of the group, its key conjugations, isKnown: half past the first box of the practice record, mixPartners, practicedAloneByUse), AblautPracticeSession (alone or mixed), QuizScope.ablautPractice, and QuizDraw.ablautPracticeSteps and ablautMixSteps (three verbs of the group, two of the known groups)
+│   ├── Achievement.swift       # The eight Game Center achievements for mastery milestones (pedagogy Phase 23): permanent IDs, points, each one's progress computed from the practice record (a level's weak patterns, or all three key conjugations of the pillars or of 10, 25, or 50 core strong verbs), and World.reportAchievements()
 │   ├── AblautGroupInfo.swift   # Identifiable struct with localized ablaut-group descriptions
 │   ├── AblautGroupParser.swift # XMLParser delegate that parses AblautGroups.xml
 │   ├── AblautGroups.xml        # 76 ablaut pattern definitions
@@ -86,7 +87,7 @@ Konjugieren/
 │   ├── Mastery.swift           # The Mastery page's model (pedagogy Phase 20): MasteryState (not practiced, learning, or mastered at the third box of the ladder, which Phase 21's speed round shares), the level's weak patterns by conjugationgroup and person (the Futurs serving every verb), and the key conjugations each level asks of the 50 most frequent strong and mixed verbs, a row per strong reading; the counts the hub's row shows
 │   ├── PracticeItemMapping.swift # Which PracticeItem a question exercises (a strong reading's key conjugation by the stem its cell is built on, otherwise its cell's pattern; the Futurs are patterns for every verb), the items a lookup schedules, the cell an item asks, and PracticeItem.Stem's tables and key cell
 │   ├── PracticeSet.swift       # A custom quiz shared as a link or QR code (pedagogy Phase 10): reads and writes konjugieren://quiz/set, carries the sharer's level while a part is left to it, turns My Verbs into a list of infinitives, its scope, share text, and summary; PracticeSetRequest, which World.handleURL sets
-│   ├── PracticeStore.swift     # Current.practice: @Observable view of Shared/PracticeRecord.swift that records answers and lookups, offers the review card's verb, reviews and snoozes it, resets, keeps the last quiz's result (lastResult, recordResult), saves to the App Group's defaults, and migrates browse Phase 15's per-verb schedules once
+│   ├── PracticeStore.swift     # Current.practice: @Observable view of Shared/PracticeRecord.swift that records answers and lookups, offers the review card's verb, reviews and snoozes it, resets, keeps the last quiz's result (lastResult, recordResult), the Speed Round's best, the daily streak, and each level's best ranked score (levelBests, recordRankedScore, pedagogy Phase 23), saves to the App Group's defaults, and migrates browse Phase 15's per-verb schedules once
 │   ├── PersonNumber.swift      # 1s, 2s, 3s, 1p, 2p, 3p (pronouns live in ConjugationLabels.swift)
 │   ├── Prefix.swift            # Separable/inseparable prefix enum ([Prefix] helpers live in Reading.swift)
 │   ├── PrefixMeaning.swift     # Prefix meanings with PIE etymologies
@@ -132,8 +133,8 @@ Konjugieren/
 │   ├── FatalErrorReal.swift    # Production implementation (calls Swift.fatalError)
 │   ├── FatalErrorSpy.swift     # Test implementation (captures error messages)
 │   ├── GameCenter.swift        # Protocol for Game Center operations; QuizLevel.leaderboardID, the per-level leaderboard IDs (docs/game-center-setup.md)
-│   ├── GameCenterReal.swift    # Real GKLocalPlayer authentication, per-level score submission, and the leaderboard views
-│   ├── GameCenterSpy.swift     # Records submissions and shown leaderboards for tests (replaced GameCenterDummy in pedagogy Phase 8)
+│   ├── GameCenterReal.swift    # Real GKLocalPlayer authentication, per-level score submission, achievement progress (held until sign-in, only what has risen), and the leaderboard and achievement views
+│   ├── GameCenterSpy.swift     # Records submissions, achievement reports, and what was shown, for tests (replaced GameCenterDummy in pedagogy Phase 8)
 │   ├── GetterSetter.swift      # Protocol for key-value storage abstraction
 │   ├── GetterSetterFake.swift  # In-memory dictionary implementation for tests
 │   ├── GetterSetterReal.swift  # UserDefaults implementation of GetterSetter; standard defaults unless given others (the learner's verbs use the App Group's)
@@ -286,6 +287,7 @@ KonjugierenTests/
 │   ├── QuizVerbMixTests.swift  # The default quiz's verbs over 40 seeds per level: each level's band, half strong, two core verbs, a prefixed verb, one to three rare derivatives, and no provisional count in a band
 │   ├── QuizTests.swift         # Quiz logic, scoring, and timer pause/resume tests; scopes (My Verbs, three questions on a verb page, ranking, the source on start, quit, and completion)
 │   ├── StandardVariantsTests.swift # Every row Josh accepted in the Phase 1 variant audit, and the ones he rejected
+│   ├── AchievementTests.swift  # The achievements (pedagogy Phase 23): each permanent ID, the points within Apple's limits, the pillars, each level's patterns earning its own and the lower levels', one short, learning counting for nothing, all three key conjugations needed, each core-verb step, both of fahren's readings; nested in QuizTests, the answer that reaches a milestone reported at the results, a quit reporting, and the per-level bests (new, not beaten, replaced, per level, none after Ten More or for an unranked quiz, across a launch and a reset, none for 0)
 │   ├── AblautPracticeTests.swift # Ablaut-group practice (pedagogy Phase 16): a group's ten most frequent verbs and their readings of the group, the 18 single-verb groups, known at half of the key conjugations (either reading, lookups and wrong answers not counting), mix partners, the draws (alone; mixed three and two, partners one group at a time, a short side, unasked verbs first), the scopes, and the last result; nested in QuizTests, a group practiced alone becoming known and joining another's mix, another round, and the signals
 │   ├── SearchReportTests.swift # SearchTracker lifecycle, finishSearch parameters, and the no-typed-text guarantee
 │   ├── ReviewScheduleTests.swift # The ladder alone: due the next morning, the boxes, snoozes, a quiz answer moving up only when due, a miss starting over, a new item's first answer

@@ -1029,6 +1029,15 @@ the day after. The reminder is off until the learner turns it on, which is when 
 it comes at the chosen time, says how many conjugations are due or that the streak needs repair,
 and skips a day already done. As this table warns, the session and the streak work without it.
 
+**Built on `main` 2026-11-15** by [Phase 23](pedagogy-implementation.md#phase-23-personal-bests-and-achievements)
+of the pedagogy plan: personal bests and achievements, completing this row. A personal best per
+level, kept on the device: the best score of a quiz's first ten questions over all verbs, the number
+its level's leaderboard takes, shown on the results and under Start. Eight Game Center achievements,
+each for mastery rather than volume of play: every weak-verb pattern of each level (four), the key
+conjugations of sein, haben, werden, and the modals, and those of 10, 25, and 50 of the most
+frequent strong verbs. Game Center shows progress toward each. They wait for App Store Connect and
+the 2027 release.
+
 A warning about this tier. Meta-analysis finds the effects of gamification on learning small, and
 its effects on motivation and behavior less stable than its effects on test scores (Sailer & Homner
 2020, **secondhand**). Streaks and badges laid over the present quiz would decorate a loop that

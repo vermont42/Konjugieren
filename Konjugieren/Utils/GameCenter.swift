@@ -6,6 +6,9 @@ protocol GameCenter {
   func submitScore(_ score: Int, level: QuizLevel)
   func showLeaderboard(level: QuizLevel)
   func showLeaderboards()
+  /// Each achievement's progress, 0 to 100, as the practice record now stands.
+  func reportAchievementProgress(_ percentComplete: [Achievement: Double])
+  func showAchievements()
 }
 
 extension QuizLevel {

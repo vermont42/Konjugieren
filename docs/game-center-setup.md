@@ -2,7 +2,8 @@
 
 What Konjugieren's Game Center configuration is, where it lives, and how to change it. Written
 2026-11-14 for Phase 8 of the [pedagogy plan](../plans/pedagogy-implementation.md#phase-8-leaderboards-by-level),
-which gave each quiz level its own leaderboard. Phase 23 adds achievements here.
+which gave each quiz level its own leaderboard. [Phase 23](../plans/pedagogy-implementation.md#phase-23-personal-bests-and-achievements)
+added the achievements on 2026-11-15; see [The Achievements](#the-achievements) below.
 
 ## Where the Configuration Lives
 
@@ -143,3 +144,139 @@ Two curiosities of a development build, seen the same day, are expected: Game Ce
 screen says "Download the game to rank on this leaderboard", since the installed app is not the
 App Store's, and its View button says "This app is not available in the Games app", which seems
 to list only apps in the Games category.
+
+## The Achievements
+
+Eight achievements, approved by Josh on 2026-11-15, each for a mastery milestone rather than
+for volume of play. An item counts once it is **mastered**, as the app's Mastery page counts it:
+in the third box of the review ladder, a week or more from its next review. The code is
+`Konjugieren/Models/Achievement.swift`; `AchievementTests.eachAchievementHasItsID` pins each ID
+literally. **None of them exists in App Store Connect yet.** Create them by the steps below.
+They are in `GameCenterResources.gamekit` with their artwork (2026-11-15), added by hand in the
+shape of App Store Connect's API attributes (`vendorIdentifier`, `points`, `showBeforeEarned`,
+`repeatable`, `beforeEarnedDescription`, `afterEarnedDescription`), as the leaderboards were.
+Josh opened it in Xcode on 2026-11-15, and the editor listed all eight with their IDs, points,
+both localizations, and images, and left the file unchanged.
+
+| # | Reference name | Achievement ID | Points | Milestone |
+|---:|---|---|---:|---|
+| 1 | Patterns Beginner | `konjugieren.achievement.patterns.beginner` | 10 | All 9 weak-verb patterns that Beginner asks |
+| 2 | Patterns Elementary | `konjugieren.achievement.patterns.elementary` | 25 | All 17 that Elementary asks |
+| 3 | Patterns Intermediate | `konjugieren.achievement.patterns.intermediate` | 50 | All 47 that Intermediate asks |
+| 4 | Patterns Advanced | `konjugieren.achievement.patterns.advanced` | 100 | All 66 that Advanced asks |
+| 5 | Pillars | `konjugieren.achievement.verbs.pillars` | 25 | The three key conjugations of sein, haben, werden, and the six modals |
+| 6 | Ten Strong | `konjugieren.achievement.verbs.core10` | 25 | The three key conjugations of 10 of the 50 most frequent strong and mixed verbs |
+| 7 | Twenty-Five Strong | `konjugieren.achievement.verbs.core25` | 50 | The same, of 25 |
+| 8 | Fifty Strong | `konjugieren.achievement.verbs.core50` | 100 | The same, of all 50, both strong readings of fahren and ziehen included |
+
+385 of Apple's 1,000 points, so there is room for more. Apple's limits, from its GameKit article
+"Rewarding players with achievements" (read 2026-11-15): "a maximum of 100 achievements, 100
+points per achievement, and 1000 points total for all achievements." A point value cannot change
+once the achievement has been live, and the ID never can.
+
+The four pattern achievements count each level's patterns whatever level the learner has chosen.
+The strong-verb achievements ask for **all three** key conjugations (Präsens, Präteritum,
+Perfekt) whatever the level, so a learner cannot earn one by switching to Beginner, which asks
+only the Präsens. The 50 verbs are the Mastery page's (`Mastery.coreVerbs`), and the pillars are
+among them.
+
+Each has the same settings: **Hidden** No (a learner should see what to aim for), **Achievable
+More Than Once** No.
+
+### Names and Descriptions
+
+The titles follow two themes. The patterns build a stone arch, from the foundation to the
+keystone that locks it. The strong verbs borrow the old idiom for a company's size, "fifty
+strong", since Jacob Grimm named the strong and weak verbs (*starke* and *schwache Verben*) in his
+*Deutsche Grammatik* of 1819. Apple's help pages state no character limits for these fields; each
+is short regardless.
+
+| # | English name | Pre-earned description | Earned description |
+|---:|---|---|---|
+| 1 | Foundation Stones | Master all 9 weak-verb patterns that Beginner asks. A pattern is mastered once its next review is a week or more away. | Every weak-verb pattern of Beginner, mastered. |
+| 2 | Masonry | Master all 17 weak-verb patterns that Elementary asks. A pattern is mastered once its next review is a week or more away. | Every weak-verb pattern of Elementary, mastered. |
+| 3 | Vault | Master all 47 weak-verb patterns that Intermediate asks. A pattern is mastered once its next review is a week or more away. | Every weak-verb pattern of Intermediate, mastered. |
+| 4 | Keystone | Master all 66 weak-verb patterns that Advanced asks. A pattern is mastered once its next review is a week or more away. | Every weak-verb pattern of Advanced, mastered. |
+| 5 | The Pillars | Master the three key conjugations, as in ist · war · ist gewesen, of sein, haben, werden, and the six modal verbs. | sein, haben, werden, and the modals, mastered. |
+| 6 | Ten Strong | Master the three key conjugations, as in fährt · fuhr · ist gefahren, of 10 of the 50 most used strong verbs. | 10 of the 50 most used strong verbs, mastered. |
+| 7 | Twenty-Five Strong | Master the three key conjugations, as in fährt · fuhr · ist gefahren, of 25 of the 50 most used strong verbs. | 25 of the 50 most used strong verbs, mastered. |
+| 8 | Fifty Strong | Master the three key conjugations, as in fährt · fuhr · ist gefahren, of all 50 of the most used strong verbs. | All 50 of the most used strong verbs, mastered. |
+
+| # | German name | Beschreibung vorher | Beschreibung nachher |
+|---:|---|---|---|
+| 1 | Grundsteine | Beherrsche alle 9 Muster der schwachen Verben, die die Stufe Einstieg abfragt. Beherrscht ist, was frühestens in einer Woche wieder ansteht. | Alle Muster der schwachen Verben auf der Stufe Einstieg beherrscht. |
+| 2 | Mauerwerk | Beherrsche alle 17 Muster der schwachen Verben, die die Grundstufe abfragt. Beherrscht ist, was frühestens in einer Woche wieder ansteht. | Alle Muster der schwachen Verben auf der Grundstufe beherrscht. |
+| 3 | Gewölbe | Beherrsche alle 47 Muster der schwachen Verben, die die Mittelstufe abfragt. Beherrscht ist, was frühestens in einer Woche wieder ansteht. | Alle Muster der schwachen Verben auf der Mittelstufe beherrscht. |
+| 4 | Schlussstein | Beherrsche alle 66 Muster der schwachen Verben, die die Oberstufe abfragt. Beherrscht ist, was frühestens in einer Woche wieder ansteht. | Alle Muster der schwachen Verben auf der Oberstufe beherrscht. |
+| 5 | Die Säulen | Beherrsche bei sein, haben, werden und den sechs Modalverben je die drei Konjugationen wie ist · war · ist gewesen. | sein, haben, werden und die Modalverben beherrscht. |
+| 6 | Zehn Starke | Beherrsche bei 10 der 50 häufigsten starken Verben je die drei Konjugationen wie fährt · fuhr · ist gefahren. | 10 der 50 häufigsten starken Verben beherrscht. |
+| 7 | Fünfundzwanzig Starke | Beherrsche bei 25 der 50 häufigsten starken Verben je die drei Konjugationen wie fährt · fuhr · ist gefahren. | 25 der 50 häufigsten starken Verben beherrscht. |
+| 8 | Fünfzig Starke | Beherrsche bei allen 50 der häufigsten starken Verben je die drei Konjugationen wie fährt · fuhr · ist gefahren. | Alle 50 der häufigsten starken Verben beherrscht. |
+
+"Strong verbs" here includes the mixed verbs (bringen, denken, kennen), as the Mastery page's
+heading does not; the descriptions keep it short.
+
+### The Artwork
+
+Apple requires an image for each achievement, in each localization: "a `.jpeg`, `.jpg`, or `.png`
+file that's 1024 x 1024 pixels, at least 72 ppi, and in the RGB color space." Game Center shows it
+in a circle, so each image is a round medallion with everything important inside the middle 80%.
+The same image serves both languages, since none has words; the strong-verb badges carry only a
+numeral.
+
+The drafts were made with the `gpt-image` skill on 2026-11-15, two per achievement, every prompt
+giving the colors of `Konjugieren/Assets/Assets.xcassets` as hex values, as Josh decided:
+`customBackground` #000000 (dark) and #FFFFFF (light), `customCardBackground` #1C1C1E and #F2F2F7,
+`customYellow` #FFCE00 (dark) and #665300 (light), `customRed` #DD0000, and `customForeground`
+white for glints. `customCardBorder` is `customYellow` at 8% opacity, and `AccentColor` has no
+value of its own (the system blue), so neither was named. Black, #DD0000, and #FFCE00 are the
+German flag's colors, which is why the badges look of a piece with it.
+
+Josh picked on 2026-11-15: the first draft of each but Vault and Ten Strong, whose second he
+chose. The images are in `GameCenterResources.gamekit/<locale>/AchievementImage-<ID>-<locale>.jpg`,
+the same image under `en-US` and `de-DE`, and these are the files to upload. They are **JPEGs at
+quality 92**, 1024 × 1024, RGB, 72 ppi, about 0.2 MB each. The build copies the `.gamekit` into the
+app, and as PNGs the sixteen came to 17 MB; Josh chose JPEG on 2026-11-15, and no difference
+showed at twice the size.
+
+### Creating an Achievement
+
+As Apple's "Manage achievements" help page gave the steps on 2026-11-15 (not yet followed in
+App Store Connect itself, so check each step against what the page shows):
+
+1. **Apps** › Konjugieren › **Game Center** in the sidebar, as for a leaderboard.
+2. Click **Add Achievement**, or the **+** beside Achievements once one exists.
+3. Enter the Reference Name and the Achievement ID from the first table. Click **Create**.
+4. Enter the Point Value, and leave Hidden and Achievable More Than Once off.
+5. Under **Achievement Localization**, click **Add Localization**. Choose English (U.S.), enter
+   the name, both descriptions, and the image. Click **Save**. Repeat for German.
+6. Click **Save** again.
+7. Do **not** add it for review until the release that reports it (below).
+
+Game Center lists the achievements in App Store Connect's order; **Edit Order** changes it. Keep
+the table's order: the patterns by level, then the verbs.
+
+### How the App Reports Them
+
+`Current.reportAchievements()` computes each achievement's progress from the practice record and
+passes it to `GameCenter.reportAchievementProgress(_:)` as a percentage, so Game Center shows an
+unearned achievement's progress. It is called at launch, when any quiz finishes or is quit, and
+when a review card is revealed, the moments an item can reach the third box. `GameCenterReal`
+holds what it is given until the player is signed in and Game Center has said what it already
+holds (`GKAchievement.loadAchievements`), then sends only what has risen. The record can fall, a
+wrong answer sending an item back down the ladder, but an achievement once earned stays earned.
+Game Center shows its own banner when one completes (`showsCompletionBanner`).
+
+The hub's **View Achievements** and Settings' row of the same name open Game Center's
+achievements (`GKAccessPoint.shared.trigger(state: .achievements)`). Both appear only while signed
+in.
+
+### Release Day and Testing
+
+Add the eight achievements for review with the version, as for the level leaderboards. Apple says
+achievements "must be approved before they are available to players", and that a development
+build sees unreleased ones with a prerelease indicator. Given what Phase 8 found with the
+leaderboards, expect them to be visible to a development build only once they are added to the
+version under test. Then, on Josh's iPhone signed in to Game Center: finish a quiz, open **View
+Achievements**, and check that the eight are listed with any progress. Earning one for real takes
+at least three days of practice (a first right answer, then another when it is due).

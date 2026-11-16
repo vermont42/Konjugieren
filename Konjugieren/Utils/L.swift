@@ -144,6 +144,10 @@ enum L {
       String(localized: "Accessibility.leaderboardsHint")
     }
 
+    static var achievementsHint: String {
+      String(localized: "Accessibility.achievementsHint")
+    }
+
     static var showOnboardingHint: String {
       String(localized: "Accessibility.showOnboardingHint")
     }
@@ -1449,6 +1453,20 @@ enum L {
     }
   }
 
+  enum PersonalBest {
+    static func best(_ best: Int) -> String {
+      String(localized: "PersonalBest.best \(best)")
+    }
+
+    static func hubLine(_ best: Int) -> String {
+      String(localized: "PersonalBest.hubLine \(best)")
+    }
+
+    static var newBest: String {
+      String(localized: "PersonalBest.newBest")
+    }
+  }
+
   enum SpeedRound {
     static var again: String {
       String(localized: "SpeedRound.again")
@@ -1828,6 +1846,14 @@ enum L {
 
     static var viewLeaderboardsDescription: String {
       String(localized: "GameCenter.viewLeaderboardsDescription")
+    }
+
+    static var viewAchievements: String {
+      String(localized: "GameCenter.viewAchievements")
+    }
+
+    static var viewAchievementsDescription: String {
+      String(localized: "GameCenter.viewAchievementsDescription")
     }
   }
 

@@ -737,6 +737,13 @@ struct QuizView: View {
             .disabled(!canStart)
             .accessibilityHint(tabScope == .custom ? L.Accessibility.customQuizStartHint : L.Accessibility.quizStartHint)
             .accessibilityIdentifier("quiz_start_button")
+
+            if tabScope == .allVerbs, let best = Current.practice.levelBest(at: level) {
+              Label(L.PersonalBest.hubLine(best), systemImage: "star.fill")
+                .font(isLarge ? .body : .subheadline)
+                .foregroundStyle(.secondary)
+                .accessibilityIdentifier("quiz_level_best")
+            }
           }
 
           practiceSection
@@ -744,7 +751,11 @@ struct QuizView: View {
           exercisesSection
 
           if Current.gameCenter.isAuthenticated {
-            leaderboardButton
+            // A flow, since the two German labels need more than an iPhone's line at large sizes.
+            FlowLayout(spacing: Layout.defaultSpacing, centersRows: true) {
+              leaderboardButton
+              achievementsButton
+            }
           }
         }
         .padding(.horizontal, Layout.doubleDefaultSpacing)
@@ -801,6 +812,21 @@ struct QuizView: View {
     .controlSize(isLarge ? .regular : .small)
     .accessibilityHint(L.Accessibility.leaderboardHint)
     .accessibilityIdentifier("quiz_leaderboard_button")
+  }
+
+  private var achievementsButton: some View {
+    Button {
+      Current.gameCenter.showAchievements()
+      Current.analytics.signal(name: .tapViewAchievements, parameters: [ParameterKey.source.rawValue: AnalyticsSource.tab.rawValue])
+    } label: {
+      Label(L.GameCenter.viewAchievements, systemImage: "rosette")
+        .font(isLarge ? .body : .subheadline)
+    }
+    .buttonStyle(.bordered)
+    .tint(.customYellow)
+    .controlSize(isLarge ? .regular : .small)
+    .accessibilityHint(L.Accessibility.achievementsHint)
+    .accessibilityIdentifier("quiz_achievements_button")
   }
 
   /// A big symbol for the chosen scope, its name, and a line saying what the quiz will ask about.

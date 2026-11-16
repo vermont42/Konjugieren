@@ -73,6 +73,8 @@ struct KonjugierenApp: App {
     Current.soundPlayer.setup()
     Current.utterer.setup()
     Current.gameCenter.authenticate()
+    // Held by GameCenterReal until sign-in finishes, which also sends progress made signed out.
+    Current.reportAchievements()
     let appID = Bundle.main.infoDictionary?["TelemetryDeckAppID"] as? String ?? ""
     Current.analytics.initialize(appID: appID)
     QuizAbandonment.reportAndClear(getterSetter: Current.getterSetter, analytics: Current.analytics)

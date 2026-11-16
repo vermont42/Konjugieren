@@ -3,6 +3,300 @@
     "version" : "2024-11-15"
   },
   "resources" : {
+    "achievementImages" : {
+      "konjugieren.achievement.patterns.beginner-de-DE" : [
+        {
+          "localID" : "konjugieren.achievement.patterns.beginner-de-DE",
+          "url" : "de-DE\/AchievementImage-konjugieren.achievement.patterns.beginner-de-DE.jpg"
+        }
+      ],
+      "konjugieren.achievement.patterns.beginner-en-US" : [
+        {
+          "localID" : "konjugieren.achievement.patterns.beginner-en-US",
+          "url" : "en-US\/AchievementImage-konjugieren.achievement.patterns.beginner-en-US.jpg"
+        }
+      ],
+      "konjugieren.achievement.patterns.elementary-de-DE" : [
+        {
+          "localID" : "konjugieren.achievement.patterns.elementary-de-DE",
+          "url" : "de-DE\/AchievementImage-konjugieren.achievement.patterns.elementary-de-DE.jpg"
+        }
+      ],
+      "konjugieren.achievement.patterns.elementary-en-US" : [
+        {
+          "localID" : "konjugieren.achievement.patterns.elementary-en-US",
+          "url" : "en-US\/AchievementImage-konjugieren.achievement.patterns.elementary-en-US.jpg"
+        }
+      ],
+      "konjugieren.achievement.patterns.intermediate-de-DE" : [
+        {
+          "localID" : "konjugieren.achievement.patterns.intermediate-de-DE",
+          "url" : "de-DE\/AchievementImage-konjugieren.achievement.patterns.intermediate-de-DE.jpg"
+        }
+      ],
+      "konjugieren.achievement.patterns.intermediate-en-US" : [
+        {
+          "localID" : "konjugieren.achievement.patterns.intermediate-en-US",
+          "url" : "en-US\/AchievementImage-konjugieren.achievement.patterns.intermediate-en-US.jpg"
+        }
+      ],
+      "konjugieren.achievement.patterns.advanced-de-DE" : [
+        {
+          "localID" : "konjugieren.achievement.patterns.advanced-de-DE",
+          "url" : "de-DE\/AchievementImage-konjugieren.achievement.patterns.advanced-de-DE.jpg"
+        }
+      ],
+      "konjugieren.achievement.patterns.advanced-en-US" : [
+        {
+          "localID" : "konjugieren.achievement.patterns.advanced-en-US",
+          "url" : "en-US\/AchievementImage-konjugieren.achievement.patterns.advanced-en-US.jpg"
+        }
+      ],
+      "konjugieren.achievement.verbs.pillars-de-DE" : [
+        {
+          "localID" : "konjugieren.achievement.verbs.pillars-de-DE",
+          "url" : "de-DE\/AchievementImage-konjugieren.achievement.verbs.pillars-de-DE.jpg"
+        }
+      ],
+      "konjugieren.achievement.verbs.pillars-en-US" : [
+        {
+          "localID" : "konjugieren.achievement.verbs.pillars-en-US",
+          "url" : "en-US\/AchievementImage-konjugieren.achievement.verbs.pillars-en-US.jpg"
+        }
+      ],
+      "konjugieren.achievement.verbs.core10-de-DE" : [
+        {
+          "localID" : "konjugieren.achievement.verbs.core10-de-DE",
+          "url" : "de-DE\/AchievementImage-konjugieren.achievement.verbs.core10-de-DE.jpg"
+        }
+      ],
+      "konjugieren.achievement.verbs.core10-en-US" : [
+        {
+          "localID" : "konjugieren.achievement.verbs.core10-en-US",
+          "url" : "en-US\/AchievementImage-konjugieren.achievement.verbs.core10-en-US.jpg"
+        }
+      ],
+      "konjugieren.achievement.verbs.core25-de-DE" : [
+        {
+          "localID" : "konjugieren.achievement.verbs.core25-de-DE",
+          "url" : "de-DE\/AchievementImage-konjugieren.achievement.verbs.core25-de-DE.jpg"
+        }
+      ],
+      "konjugieren.achievement.verbs.core25-en-US" : [
+        {
+          "localID" : "konjugieren.achievement.verbs.core25-en-US",
+          "url" : "en-US\/AchievementImage-konjugieren.achievement.verbs.core25-en-US.jpg"
+        }
+      ],
+      "konjugieren.achievement.verbs.core50-de-DE" : [
+        {
+          "localID" : "konjugieren.achievement.verbs.core50-de-DE",
+          "url" : "de-DE\/AchievementImage-konjugieren.achievement.verbs.core50-de-DE.jpg"
+        }
+      ],
+      "konjugieren.achievement.verbs.core50-en-US" : [
+        {
+          "localID" : "konjugieren.achievement.verbs.core50-en-US",
+          "url" : "en-US\/AchievementImage-konjugieren.achievement.verbs.core50-en-US.jpg"
+        }
+      ]
+    },
+    "achievementLocalizations" : {
+      "konjugieren.achievement.patterns.beginner" : [
+        {
+          "afterEarnedDescription" : "Alle Muster der schwachen Verben auf der Stufe Einstieg beherrscht.",
+          "beforeEarnedDescription" : "Beherrsche alle 9 Muster der schwachen Verben, die die Stufe Einstieg abfragt. Beherrscht ist, was frühestens in einer Woche wieder ansteht.",
+          "locale" : "de-DE",
+          "localID" : "konjugieren.achievement.patterns.beginner-de-DE",
+          "name" : "Grundsteine"
+        },
+        {
+          "afterEarnedDescription" : "Every weak-verb pattern of Beginner, mastered.",
+          "beforeEarnedDescription" : "Master all 9 weak-verb patterns that Beginner asks. A pattern is mastered once its next review is a week or more away.",
+          "locale" : "en-US",
+          "localID" : "konjugieren.achievement.patterns.beginner-en-US",
+          "name" : "Foundation Stones"
+        }
+      ],
+      "konjugieren.achievement.patterns.elementary" : [
+        {
+          "afterEarnedDescription" : "Alle Muster der schwachen Verben auf der Grundstufe beherrscht.",
+          "beforeEarnedDescription" : "Beherrsche alle 17 Muster der schwachen Verben, die die Grundstufe abfragt. Beherrscht ist, was frühestens in einer Woche wieder ansteht.",
+          "locale" : "de-DE",
+          "localID" : "konjugieren.achievement.patterns.elementary-de-DE",
+          "name" : "Mauerwerk"
+        },
+        {
+          "afterEarnedDescription" : "Every weak-verb pattern of Elementary, mastered.",
+          "beforeEarnedDescription" : "Master all 17 weak-verb patterns that Elementary asks. A pattern is mastered once its next review is a week or more away.",
+          "locale" : "en-US",
+          "localID" : "konjugieren.achievement.patterns.elementary-en-US",
+          "name" : "Masonry"
+        }
+      ],
+      "konjugieren.achievement.patterns.intermediate" : [
+        {
+          "afterEarnedDescription" : "Alle Muster der schwachen Verben auf der Mittelstufe beherrscht.",
+          "beforeEarnedDescription" : "Beherrsche alle 47 Muster der schwachen Verben, die die Mittelstufe abfragt. Beherrscht ist, was frühestens in einer Woche wieder ansteht.",
+          "locale" : "de-DE",
+          "localID" : "konjugieren.achievement.patterns.intermediate-de-DE",
+          "name" : "Gewölbe"
+        },
+        {
+          "afterEarnedDescription" : "Every weak-verb pattern of Intermediate, mastered.",
+          "beforeEarnedDescription" : "Master all 47 weak-verb patterns that Intermediate asks. A pattern is mastered once its next review is a week or more away.",
+          "locale" : "en-US",
+          "localID" : "konjugieren.achievement.patterns.intermediate-en-US",
+          "name" : "Vault"
+        }
+      ],
+      "konjugieren.achievement.patterns.advanced" : [
+        {
+          "afterEarnedDescription" : "Alle Muster der schwachen Verben auf der Oberstufe beherrscht.",
+          "beforeEarnedDescription" : "Beherrsche alle 66 Muster der schwachen Verben, die die Oberstufe abfragt. Beherrscht ist, was frühestens in einer Woche wieder ansteht.",
+          "locale" : "de-DE",
+          "localID" : "konjugieren.achievement.patterns.advanced-de-DE",
+          "name" : "Schlussstein"
+        },
+        {
+          "afterEarnedDescription" : "Every weak-verb pattern of Advanced, mastered.",
+          "beforeEarnedDescription" : "Master all 66 weak-verb patterns that Advanced asks. A pattern is mastered once its next review is a week or more away.",
+          "locale" : "en-US",
+          "localID" : "konjugieren.achievement.patterns.advanced-en-US",
+          "name" : "Keystone"
+        }
+      ],
+      "konjugieren.achievement.verbs.pillars" : [
+        {
+          "afterEarnedDescription" : "sein, haben, werden und die Modalverben beherrscht.",
+          "beforeEarnedDescription" : "Beherrsche bei sein, haben, werden und den sechs Modalverben je die drei Konjugationen wie ist · war · ist gewesen.",
+          "locale" : "de-DE",
+          "localID" : "konjugieren.achievement.verbs.pillars-de-DE",
+          "name" : "Die Säulen"
+        },
+        {
+          "afterEarnedDescription" : "sein, haben, werden, and the modals, mastered.",
+          "beforeEarnedDescription" : "Master the three key conjugations, as in ist · war · ist gewesen, of sein, haben, werden, and the six modal verbs.",
+          "locale" : "en-US",
+          "localID" : "konjugieren.achievement.verbs.pillars-en-US",
+          "name" : "The Pillars"
+        }
+      ],
+      "konjugieren.achievement.verbs.core10" : [
+        {
+          "afterEarnedDescription" : "10 der 50 häufigsten starken Verben beherrscht.",
+          "beforeEarnedDescription" : "Beherrsche bei 10 der 50 häufigsten starken Verben je die drei Konjugationen wie fährt · fuhr · ist gefahren.",
+          "locale" : "de-DE",
+          "localID" : "konjugieren.achievement.verbs.core10-de-DE",
+          "name" : "Zehn Starke"
+        },
+        {
+          "afterEarnedDescription" : "10 of the 50 most used strong verbs, mastered.",
+          "beforeEarnedDescription" : "Master the three key conjugations, as in fährt · fuhr · ist gefahren, of 10 of the 50 most used strong verbs.",
+          "locale" : "en-US",
+          "localID" : "konjugieren.achievement.verbs.core10-en-US",
+          "name" : "Ten Strong"
+        }
+      ],
+      "konjugieren.achievement.verbs.core25" : [
+        {
+          "afterEarnedDescription" : "25 der 50 häufigsten starken Verben beherrscht.",
+          "beforeEarnedDescription" : "Beherrsche bei 25 der 50 häufigsten starken Verben je die drei Konjugationen wie fährt · fuhr · ist gefahren.",
+          "locale" : "de-DE",
+          "localID" : "konjugieren.achievement.verbs.core25-de-DE",
+          "name" : "Fünfundzwanzig Starke"
+        },
+        {
+          "afterEarnedDescription" : "25 of the 50 most used strong verbs, mastered.",
+          "beforeEarnedDescription" : "Master the three key conjugations, as in fährt · fuhr · ist gefahren, of 25 of the 50 most used strong verbs.",
+          "locale" : "en-US",
+          "localID" : "konjugieren.achievement.verbs.core25-en-US",
+          "name" : "Twenty-Five Strong"
+        }
+      ],
+      "konjugieren.achievement.verbs.core50" : [
+        {
+          "afterEarnedDescription" : "Alle 50 der häufigsten starken Verben beherrscht.",
+          "beforeEarnedDescription" : "Beherrsche bei allen 50 der häufigsten starken Verben je die drei Konjugationen wie fährt · fuhr · ist gefahren.",
+          "locale" : "de-DE",
+          "localID" : "konjugieren.achievement.verbs.core50-de-DE",
+          "name" : "Fünfzig Starke"
+        },
+        {
+          "afterEarnedDescription" : "All 50 of the most used strong verbs, mastered.",
+          "beforeEarnedDescription" : "Master the three key conjugations, as in fährt · fuhr · ist gefahren, of all 50 of the most used strong verbs.",
+          "locale" : "en-US",
+          "localID" : "konjugieren.achievement.verbs.core50-en-US",
+          "name" : "Fifty Strong"
+        }
+      ]
+    },
+    "achievements" : [
+      {
+        "archived" : false,
+        "points" : 10,
+        "referenceName" : "Patterns Beginner",
+        "repeatable" : false,
+        "showBeforeEarned" : true,
+        "vendorIdentifier" : "konjugieren.achievement.patterns.beginner"
+      },
+      {
+        "archived" : false,
+        "points" : 25,
+        "referenceName" : "Patterns Elementary",
+        "repeatable" : false,
+        "showBeforeEarned" : true,
+        "vendorIdentifier" : "konjugieren.achievement.patterns.elementary"
+      },
+      {
+        "archived" : false,
+        "points" : 50,
+        "referenceName" : "Patterns Intermediate",
+        "repeatable" : false,
+        "showBeforeEarned" : true,
+        "vendorIdentifier" : "konjugieren.achievement.patterns.intermediate"
+      },
+      {
+        "archived" : false,
+        "points" : 100,
+        "referenceName" : "Patterns Advanced",
+        "repeatable" : false,
+        "showBeforeEarned" : true,
+        "vendorIdentifier" : "konjugieren.achievement.patterns.advanced"
+      },
+      {
+        "archived" : false,
+        "points" : 25,
+        "referenceName" : "Pillars",
+        "repeatable" : false,
+        "showBeforeEarned" : true,
+        "vendorIdentifier" : "konjugieren.achievement.verbs.pillars"
+      },
+      {
+        "archived" : false,
+        "points" : 25,
+        "referenceName" : "Ten Strong",
+        "repeatable" : false,
+        "showBeforeEarned" : true,
+        "vendorIdentifier" : "konjugieren.achievement.verbs.core10"
+      },
+      {
+        "archived" : false,
+        "points" : 50,
+        "referenceName" : "Twenty-Five Strong",
+        "repeatable" : false,
+        "showBeforeEarned" : true,
+        "vendorIdentifier" : "konjugieren.achievement.verbs.core25"
+      },
+      {
+        "archived" : false,
+        "points" : 100,
+        "referenceName" : "Fifty Strong",
+        "repeatable" : false,
+        "showBeforeEarned" : true,
+        "vendorIdentifier" : "konjugieren.achievement.verbs.core50"
+      }
+    ],
     "leaderboardImages" : {
       "Leaderboard-de-DE" : [
         {

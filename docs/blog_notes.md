@@ -12077,3 +12077,52 @@ English *screen* came through Old French *escren* from Middle Dutch *scherm*, a 
 German *Schirm*: the *Schirm* of *Bildschirm*, *Regenschirm*, and *Fallschirm*. The Frankish verb
 behind it, *\*skirmjan*, "to protect", also gave Old French *eskermir*, to fence, and so English
 *skirmish*. Twenty-three new screenshots are, etymologically, a set of small picture shields.
+
+## rename_files.py learns that a bare name can be a path (2026-11-16)
+
+Two sessions in other repositories found the same hole in `scripts/rename_files.py` this morning,
+minutes apart, and each fixed its own damage by hand. Josh asked for the tool itself to be fixed
+from the session that was drafting the blog post about the cleanup.
+
+The three sibling repositories that are not apps are private. This repository is public, so
+this entry and the tool's docstring call them AcmeBot, HappyBot, and AcmeSite, the names the
+blog post gives them, and the folder called `mockups/` here has another name there.
+
+The hole was in rule 3. The tool treated a bare name as only a name, and a name survives a change
+of folder, so it rewrote a bare mention only when the basename changed. That reasoning fails
+where the bare name is also a path. HappyBot moved `design.md` from the root to `docs/design.md`.
+At the root, `design.md` had been the file's whole path, and 17 mentions plus three link labels
+went stale with no line in the report. AcmeSite moved the folder `mockups/` to
+`docs/mockups/`, and the dry run said "0 files to edit" while six files named the folder.
+
+The fix names the two kinds of bare mention that are paths. A top-level file or directory is
+rewritten to its full new path, unless another tracked path shares its name, in which case the
+mention goes to "Needs a human". A directory below the top level, mentioned before a slash, is a
+path relative to its parent, and it goes to "Needs a human" when the parent changes.
+
+Testing the fix found a second bug that nobody had reported. In a Markdown file the tool runs its
+regex on the stretches of text between link targets, but the check for "is this directory name
+followed by a slash" indexed into the whole file with an offset from one stretch. After a file's
+first link, the check read the wrong character. A directory mention there was skipped or
+rewritten by luck. The fix is `m.string` in place of `text`. Konjugieren's own run this morning
+renamed three directories, so it was exposed to this, and nothing flagged it. A search for the
+three old names as path segments found none left outside this journal.
+
+The checks were made to fail first. A throwaway repository reproduced both reports, and the old
+tool printed the same silence the two sessions had seen. Then each real cleanup was replayed in a
+clean clone at the commit before it, once with the old tool and once with the new:
+
+- HappyBot: 22 lines differed between the old tool's result and what the session committed
+  after its hand fixes. With the new tool, five differ, and all five are choices the tool cannot
+  make: two AcmeBot paths from another repository's map, one sentence the session left as
+  written, and two `SKILL.md` files that the session left stale on purpose and would now pass to
+  `--exclude`.
+- AcmeSite, with `mockups/` as one directory entry: the old tool found 0 mentions and the new
+  one finds 15 in six files. It would also rewrite `deploy.yml` and one of Josh's prompts, which
+  is what `--exclude` is for.
+- Conjugar, Conjuguer, and AcmeBot: byte-identical results from both tools. Conjugar's run
+  gains one "Needs a human" line, for a relative mention of a directory whose parent changed.
+
+*Segment* is Latin *segmentum*, a piece cut off, from *secāre*, to cut, the verb behind
+*section*, *sector*, and *insect*, an animal cut into parts. A path segment is what the slashes
+cut, and the bug was a name that was a whole path without a single cut.

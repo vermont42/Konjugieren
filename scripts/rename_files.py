@@ -31,14 +31,24 @@ All three rules are computed against the tree as it is BEFORE anything moves.
    folder. One rule therefore repairs links TO a moved file and the moved file's OWN links,
    which change meaning the moment the file sits in a different folder.
 2. Written-out paths, `plans/sweep-comments.md`, in prose, comments, and code.
-3. Bare basenames, `sweep-comments.md`. These survive a change of folder and go stale only
-   when the NAME changes, which is why a move-only pass never needs this rule and a rename
-   always does.
+3. Bare basenames, `sweep-comments.md`. A name survives a change of folder and goes stale only
+   when the NAME changes. The exceptions are the bare names that are also paths, below.
 
 Rules 2 and 3 share one regex. It captures whatever path-like text precedes the basename, and
 that prefix decides the case:
 
-- empty: a bare mention. Rewritten when the basename changes.
+- empty: a bare mention. Rewritten when the basename changes. Two kinds of bare mention are
+  also paths, and a path goes stale when the FOLDER changes, whether or not the name does:
+  - A top-level file or directory. Its bare name is its whole path from the root, so
+    `design.md` becomes `docs/design.md` and `mockups/README.md` becomes
+    `docs/mockups/README.md`. If another tracked path shares the name, the mention is
+    reported for a human instead, since it may mean that other one.
+  - A directory below the top level, mentioned before a slash: `shots/a.png` for
+    `plans/archive/shots/`. That is a path relative to the parent, and it is reported for a
+    human if the parent changes.
+  Until 2026-11-16 both were left alone without a word whenever the name stayed the same. The
+  dry run said "0 files to edit" for AcmeSite's `mockups/` and nothing at all about
+  HappyBot's `design.md`.
 - an allowed lead plus the file's own folder: a written-out path. Rewritten in full. Allowed
   leads are nothing, `./`, a run of `../`, and anything ending in this repo's folder name
   (`~/Desktop/workspace/Konjugieren/`).
@@ -161,6 +171,12 @@ def main():
         + r")(?![\w\-])(?!\.\w)"
     ) if by_name else None
 
+    # How many tracked paths, files and directories alike, end in each name. A top-level
+    # entry's bare name is its path only if nothing else in the tree shares that name.
+    shared_names = {}
+    for p in {t[:i] for t in tracked for i in [*(j for j, c in enumerate(t) if c == "/"), len(t)]}:
+        shared_names[os.path.basename(p)] = shared_names.get(os.path.basename(p), 0) + 1
+
     def lead_ok(lead):
         return (lead in ("", "./") or re.fullmatch(r"(?:\.\./)+", lead) is not None
                 or lead == repo_name + "/" or lead.endswith("/" + repo_name + "/"))
@@ -192,16 +208,35 @@ def main():
         def repl(m):
             prefix, name = m.group("prefix"), m.group("name")
             entries = by_name[name]
-            touches_slash = prefix.endswith("/") or text[m.end():m.end() + 1] == "/"
+            # m.string, not text: in a Markdown file the regex runs on the stretches between
+            # link targets, so m.end() is an offset into one stretch and not into the file.
+            touches_slash = prefix.endswith("/") or m.string[m.end():m.end() + 1] == "/"
             if prefix == "":
+                # A directory's bare name counts only as a path segment.
+                if all(is_dir for _, _, is_dir in entries) and not touches_slash:
+                    return m.group(0)
+                # For these entries the bare name is more than a name: it is a path, and a path
+                # goes stale when the folder changes even though the name does not. A top-level
+                # entry's bare name is its whole path from the root. A directory's bare name
+                # before a slash is a path relative to its parent.
+                movers = [(old, new) for old, new, is_dir in entries
+                          if os.path.dirname(old) != os.path.dirname(new) and ("/" not in old or is_dir)]
+                if movers:
+                    old, new = movers[0]
+                    if len(entries) > 1 or "/" in old:
+                        by_hand.append(f"{path}: `{name}` is relative, and {old} changes folder")
+                        return m.group(0)
+                    if shared_names.get(name, 0) > 1:
+                        by_hand.append(f"{path}: bare `{name}` is {old}, which changes folder, "
+                                       f"or another path named `{name}`")
+                        return m.group(0)
+                    counts["path"] += 1
+                    return new
                 new_names = {os.path.basename(new) for _, new, _ in entries}
                 if new_names == {name}:
                     return m.group(0)
                 if len(new_names) > 1:
                     by_hand.append(f"{path}: bare `{name}` could mean {sorted(n for _, n, _ in entries)}")
-                    return m.group(0)
-                # A directory's bare name counts only as a path segment.
-                if all(is_dir for _, _, is_dir in entries) and not touches_slash:
                     return m.group(0)
                 counts["bare"] += 1
                 return new_names.pop()

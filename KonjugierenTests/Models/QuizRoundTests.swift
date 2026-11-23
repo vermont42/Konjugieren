@@ -229,6 +229,45 @@ extension QuizTests {
       #expect(AnalyticsBand.quizDuration(seconds) == band)
     }
 
+    // These ask which quiz holds the Live Activity's place, not whether ActivityKit granted one:
+    // the simulator refuses requests (`targetMaximumExceeded`) long before a full run ends.
+    @Test func aCollectionsQuizOverTheTabsQuizStartsNoSecondLiveActivity() {
+      let tab = startedQuiz()
+      #expect(tab.holdsLiveActivity)
+      let sheet = startedQuiz(scope: .collection(.modals))
+      #expect(!sheet.holdsLiveActivity)
+
+      sheet.quit()
+      #expect(tab.holdsLiveActivity)
+      tab.quit()
+    }
+
+    @Test func endingTheHoldersQuizFreesTheLiveActivityForTheNextQuiz() {
+      let tab = startedQuiz()
+      finishRight(tab)
+      #expect(!tab.holdsLiveActivity)
+
+      let sheet = startedQuiz(scope: .collection(.modals))
+      #expect(sheet.holdsLiveActivity)
+      sheet.quit()
+    }
+
+    @Test func aReleasedQuizFreesTheLiveActivity() {
+      var abandoned: Quiz? = startedQuiz()
+      #expect(abandoned?.holdsLiveActivity == true)
+      abandoned = nil
+
+      let next = startedQuiz()
+      #expect(next.holdsLiveActivity)
+      next.quit()
+    }
+
+    @Test func aVerbPageQuizTakesNoLiveActivity() {
+      let quiz = startedQuiz(scope: .verbPage(Verb.verbs["singen"]!, readingIndex: 0))
+      #expect(!quiz.holdsLiveActivity)
+      quiz.quit()
+    }
+
     @Test func theLiveActivityShowsNoTimeWhileTheClockIsHidden() {
       let quiz = startedQuiz()
       Current.settings.quizClock = .hide

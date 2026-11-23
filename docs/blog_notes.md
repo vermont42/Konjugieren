@@ -12126,3 +12126,36 @@ clean clone at the commit before it, once with the old tool and once with the ne
 *Segment* is Latin *segmentum*, a piece cut off, from *secāre*, to cut, the verb behind
 *section*, *sector*, and *insect*, an animal cut into parts. A path segment is what the slashes
 cut, and the bug was a name that was a whole path without a single cut.
+
+## One Live Activity for the whole app (2026-11-22)
+
+Conjugar's session, reading Konjugieren's code during its own browse work, reported a likely bug:
+a collection's quiz, run in `QuizSheet` over a quiz in progress in the Quiz tab, would start a
+second quiz Live Activity. It was real, and wider than reported. `startLiveActivity()` was gated
+only on `scope.continues || scope.isDaily`, and every full-length quiz continues, so each sheet
+that runs one (a collection, a practice set from a link, an ablaut group's Verb Essentials) gave
+the Lock Screen and the Dynamic Island a second activity. Neither said which quiz it was, and
+ending one quiz left the other's showing. A test written against the old guard failed, which
+confirmed the bug on the simulator rather than only in a reading of the code.
+
+Conjugar's fix ties its one activity to the tab's quiz by scope (`collectionKey == nil`). That
+does not carry over cleanly here, because a practice set's scope has the same shape as the tab's
+custom quiz, so the scope cannot say whether a quiz runs in a sheet. Konjugieren instead keeps a
+`private static weak var liveActivityHolder: Quiz?`. The first qualifying quiz to start takes the
+place, `quit()` and `finishQuiz()` give it back, and a sheet over a quiz in progress gets none.
+When the tab is idle, a sheet's quiz does get one, which Conjugar's rule would not allow. Ten
+More asks for the place again, since finishing gave it up. The reference is weak, so a quiz that
+is released still holding the place frees it, and `deinit` now ends that quiz's activity, which
+would otherwise have stayed on the Lock Screen until the next launch.
+
+The first version recorded the holder only when ActivityKit granted an activity. Its tests
+passed alone and failed in the full run. Temporary logging showed the holder was nil every time,
+and that `Activity.request` had thrown `targetMaximumExceeded` 191 times: the suite starts so many
+quizzes that the simulator stops granting activities long before it ends. So a quiz now takes the
+place whether or not the system grants the activity. The rule no longer depends on what ActivityKit
+allows, and four tests in `QuizRoundTests` check it deterministically. The suite's flood of real
+activity requests predates this change and is left alone. If it ever matters, the fix would be a
+`Current` dependency for Live Activities with a fake under tests.
+
+*Activity* is Latin *activitas*, from *agere*, to drive or do, the verb behind *agent*, *act*, and
+*ambiguous* (*ambi-* + *agere*, driven both ways). Two activities for one learner was exactly that.

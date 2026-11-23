@@ -135,6 +135,15 @@ class Quiz {
   /// The clock a daily session's streak is recorded by, which tests set to other days.
   private let now: () -> Date
   private var liveActivity: Activity<QuizActivityAttributes>?
+  /// The one quiz whose Live Activity shows, since a quiz in a sheet can run over the Quiz tab's,
+  /// and two activities on the Lock Screen would not say which quiz each one is. A quiz holds the
+  /// place whether or not ActivityKit grants it an activity, so that the rule does not depend on
+  /// what the system allows. Weak, so that a quiz released while holding it frees it.
+  private static weak var liveActivityHolder: Quiz?
+
+  var holdsLiveActivity: Bool {
+    Quiz.liveActivityHolder === self
+  }
   private var startDate = Date()
   /// Names this quiz's entry in `QuizAbandonment`, since a quiz in a sheet can run beside the
   /// Quiz tab's.
@@ -235,15 +244,27 @@ class Quiz {
     announceQuestion()
   }
 
-  // A three-question quiz on a verb's page is over before a Live Activity would be noticed.
+  // A three-question quiz on a verb's page is over before a Live Activity would be noticed. The
+  // first quiz to take the place keeps it, so a quiz in a sheet over a quiz in progress has none.
   private func startLiveActivity() {
-    guard scope.continues || scope.isDaily else {
+    guard scope.continues || scope.isDaily, Quiz.liveActivityHolder == nil else {
       return
     }
+    Quiz.liveActivityHolder = self
     liveActivity = LiveActivityManager.start(
       attributes: QuizActivityAttributes(level: level.localizedName),
       initialState: makeContentState(isFinished: false)
     )
+  }
+
+  private func endLiveActivity(isFinished: Bool) {
+    if holdsLiveActivity {
+      Quiz.liveActivityHolder = nil
+    }
+    if let liveActivity {
+      LiveActivityManager.end(liveActivity, finalState: makeContentState(isFinished: isFinished))
+      self.liveActivity = nil
+    }
   }
 
   func submitAnswer(_ answer: String) {
@@ -470,10 +491,7 @@ class Quiz {
     stopTimer()
     QuizAbandonment.clear(id: abandonmentID, getterSetter: Current.getterSetter)
     isInProgress = false
-    if let liveActivity {
-      LiveActivityManager.end(liveActivity, finalState: makeContentState(isFinished: false))
-      self.liveActivity = nil
-    }
+    endLiveActivity(isFinished: false)
     resetProgressState()
     questions = []
     Current.soundPlayer.play(Sound.randomSadTrombone)
@@ -1123,10 +1141,7 @@ class Quiz {
     QuizAbandonment.clear(id: abandonmentID, getterSetter: Current.getterSetter)
     isInProgress = false
     shouldShowResults = true
-    if let liveActivity {
-      LiveActivityManager.end(liveActivity, finalState: makeContentState(isFinished: true))
-      self.liveActivity = nil
-    }
+    endLiveActivity(isFinished: true)
     Current.soundPlayer.play(Sound.randomApplause, shouldDebounce: false)
     HapticPlayer.playSuccess()
     var parameters = [
@@ -1281,6 +1296,11 @@ class Quiz {
   @MainActor
   deinit {
     timer?.invalidate()
+    // A Live Activity outlives the quiz that started it unless ended, and would stay on the Lock
+    // Screen beside the next quiz's, since a released quiz no longer holds the place.
+    if let liveActivity {
+      LiveActivityManager.end(liveActivity, finalState: makeContentState(isFinished: false))
+    }
   }
 }
 

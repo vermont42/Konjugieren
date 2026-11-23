@@ -173,7 +173,7 @@ struct AnswerDiagnosisTests {
     quiz.quit()
   }
 
-  @Test func aSlipStillSaysAlmost() throws {
+  @Test func aSlipSaysAlmostRatherThanADiagnosis() throws {
     let quiz = try startedQuiz()
     quiz.submitAnswer(quiz.questions[0].correctAnswer.lowercased() + "x")
 

@@ -216,7 +216,7 @@ extension DeeplinkTests {
     #expect(Current.practiceSet?.source == .deeplink)
   }
 
-  @Test func theQuizStartLinkStillOpensTheQuizTab() {
+  @Test func theQuizStartLinkOpensTheQuizTab() {
     Current.handleURL(URL(string: "konjugieren://quiz/start")!)
     #expect(Current.selectedTab == .quiz)
     #expect(Current.practiceSet == nil)

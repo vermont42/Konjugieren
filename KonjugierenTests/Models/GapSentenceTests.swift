@@ -185,7 +185,7 @@ struct GapSentenceTests {
     #expect(imperativ.answerFrame.blankCount == 1)
   }
 
-  @Test func theOneLineQuizStillTakesEitherOrder() throws {
+  @Test func theOneLineQuizTakesEitherOrder() throws {
     let verb = try #require(Verb.verbs["anfangen"])
     let item = Quiz().makeQuizItem(verb: verb, conjugationgroup: .präsensIndikativ(.thirdSingular))
     #expect(item.accepts("fängt an"))

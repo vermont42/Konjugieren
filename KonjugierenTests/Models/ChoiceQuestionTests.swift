@@ -377,7 +377,7 @@ extension QuizTests {
       quiz.quit()
     }
 
-    @Test func aRankedRoundStillPostsOutOfAHundred() throws {
+    @Test func aRankedRoundPostsOutOfAHundred() throws {
       _ = freshPractice()
       defer { Current.practice = PracticeStore(getterSetter: GetterSetterFake()) }
       let gameCenter = Current.gameCenter as! GameCenterSpy

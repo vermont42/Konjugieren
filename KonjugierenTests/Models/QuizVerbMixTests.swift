@@ -107,7 +107,7 @@ struct QuizVerbMixTests {
     }
   }
 
-  @Test func theElementaryPräteritumStillAsksOnlyCoreVerbs() {
+  @Test func theElementaryPräteritumAsksOnlyCoreVerbs() {
     let präteritum = Self.seeds.flatMap { defaultQuiz(.elementary, seed: $0) }.filter {
       ConjugationTable.präteritumIndikativ.cells.contains($0.conjugationgroup)
     }

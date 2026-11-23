@@ -12250,3 +12250,30 @@ end the new quiz's activity. Unlikely, since the Task is queued first, but not g
 The fix is Conjugar's: read both lists synchronously in `endAll()` and give the snapshot to the
 Task, so it ends only the activities that existed when it was called. It is unconfirmed on a
 device, but it is correct whatever the ordering.
+
+## Test names that carried history (2026-11-22)
+
+The comment sweep left test names alone, because renaming a function is a code change. Josh asked
+for them next. Eleven names told a reader when a test was written rather than what it checks.
+
+Six were in `ConjugatorTests`. `newAblautGroups`, `newVerbs`, `newAblautGroupsPhase2`, and
+`newAblautGroupsPhase3` were batches of strong verbs, each "new" when its batch went in. Nothing
+but the date of writing separated them, but their verbs' corpus ranks turned out to follow a
+gradient (medians of 46, 103, 299, and 480), so frequency gave honest names:
+`mostFrequentStrongMixedAndWeakVerbs`, `frequentStrongVerbs`, and `lessFrequentStrongVerbs`. Phase
+2 and Phase 3 overlapped in rank and sat next to each other, so they merged into the last of
+these. That is why the suite went from 958 tests to 957, and README's three test counts went with
+it (`check_docs.py` caught them). "core" was the first choice for the most frequent batch, and
+was dropped because `QuizDraw.isCore` already means sein, haben, werden, and the modals.
+
+The three `strongBasesTranche1…` tests became `rareStrongVerbsWithTheirOwnAblautGroups`,
+`rareStrongVerbsInSharedAblautGroups`, and `rareStrongVerbsTakeSeinOrHaben`; their verbs rank
+from about 1,100 to 2,700. `encodingsTheOracleUsedToHide` became
+`beschreibenScheinenSchwimmenAndBewegen`, following the file's `scheidenAndVergleichen`. Its
+comment still explains why those four verbs got past the classifier.
+
+Five more names said "Still": `aSlipStillSaysAlmost` and the like. Each was written to guard old
+behavior beside a new feature in the same suite, and the word made sense only on that day. The
+names read correctly without it, and `aSlipSaysAlmostRatherThanADiagnosis` reads better. Names
+with "NoLonger", such as `theStoreSkipsAVerbNoLongerInTheCorpus`, stayed: they describe a state
+the app meets at run time, not a moment in the project's history.

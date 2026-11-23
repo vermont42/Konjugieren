@@ -317,7 +317,7 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "tun", conjugationgroup: .perfektpartizip, expected: "getAn")
   }
 
-  @Test func newAblautGroups() {
+  @Test func frequentStrongVerbs() {
     expectConjugation(infinitiv: "fahren", conjugationgroup: .präsensIndikativ(.secondSingular), expected: "fÄhrst")
     expectConjugation(infinitiv: "fahren", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "fÄhrt")
     expectConjugation(infinitiv: "fahren", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "fUhr")
@@ -465,7 +465,7 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "stattfinden", conjugationgroup: .perfektpartizip, expected: "stattgefUnden")
   }
 
-  @Test func newVerbs() {
+  @Test func mostFrequentStrongMixedAndWeakVerbs() {
     expectConjugation(infinitiv: "gelten", conjugationgroup: .präsensIndikativ(.secondSingular), expected: "gIltst")
     expectConjugation(infinitiv: "gelten", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "gIlt")
     expectConjugation(infinitiv: "gelten", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "gAlt")
@@ -644,7 +644,7 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "vergleichen", conjugationgroup: .präsensIndikativ(.firstSingular), expected: "vergleiche")
   }
 
-  @Test func newAblautGroupsPhase2() {
+  @Test func lessFrequentStrongVerbs() {
     expectConjugation(infinitiv: "fangen", conjugationgroup: .präsensIndikativ(.secondSingular), expected: "fÄngst")
     expectConjugation(infinitiv: "fangen", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "fÄngt")
     expectConjugation(infinitiv: "fangen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "fIng")
@@ -717,9 +717,7 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "messen", conjugationgroup: .präsensIndikativ(.thirdSingular), expected: "mIsst")
     expectConjugation(infinitiv: "messen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "mAẞ")
     expectConjugation(infinitiv: "messen", conjugationgroup: .perfektpartizip, expected: "gemessen")
-  }
 
-  @Test func newAblautGroupsPhase3() {
     expectConjugation(infinitiv: "reißen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "rISS")
     expectConjugation(infinitiv: "reißen", conjugationgroup: .präteritumIndikativ(.secondSingular), expected: "rISSt")
     expectConjugation(infinitiv: "reißen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "rISSe")
@@ -1726,7 +1724,7 @@ struct ConjugatorTests {
   // reported as verified: when the shipped hypothesis failed, the classifier went on to find
   // a different *already-shipping* ablaut group that worked, and the at-odds count only
   // flagged verbs needing a group that does not ship. Every expectation here is Wiktionary's.
-  @Test func encodingsTheOracleUsedToHide() {
+  @Test func beschreibenScheinenSchwimmenAndBewegen() {
     // Shipped weak, so the app produced "beschreibt" and "hat beschreibt".
     expectConjugation(infinitiv: "beschreiben", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "beschrIEb")
     expectConjugation(infinitiv: "beschreiben", conjugationgroup: .perfektpartizip, expected: "beschrIEben")
@@ -1762,7 +1760,7 @@ struct ConjugatorTests {
     expectFailure(infinitiv: "machen", expectedError: .readingNotRecognized, readingIndex: 1)
   }
 
-  @Test func strongBasesTranche1NewAblautGroups() {
+  @Test func rareStrongVerbsWithTheirOwnAblautGroups() {
     // bersten is defective in the Präsens: du birst and er birst are the same word built
     // two different ways, so the group replaces the region differently in 2s and 3s.
     expectConjugation(infinitiv: "bersten", conjugationgroup: .präsensIndikativ(.secondSingular), expected: "bIrst")
@@ -1808,7 +1806,7 @@ struct ConjugatorTests {
   // The classifier's proposed region was always the shortest one that worked, which put a
   // doubled consonant across the region boundary (kn^ei^fen + IF). Widening the region to
   // the house convention lets each of these reuse a group that already shipped.
-  @Test func strongBasesTranche1ReuseExistingGroups() {
+  @Test func rareStrongVerbsInSharedAblautGroups() {
     expectConjugation(infinitiv: "kneifen", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "knIff")
     expectConjugation(infinitiv: "kneifen", conjugationgroup: .perfektpartizip, expected: "geknIffen")
     expectConjugation(infinitiv: "pfeifen", conjugationgroup: .perfektpartizip, expected: "gepfIffen")
@@ -1845,7 +1843,7 @@ struct ConjugatorTests {
   // The classify-and-verify pipeline never compares a compound tense, so a wrong `ay` is
   // invisible to it and cannot move the at-odds count. These are the only guard these verbs'
   // auxiliaries have.
-  @Test func strongBasesTranche1Auxiliaries() {
+  @Test func rareStrongVerbsTakeSeinOrHaben() {
     expectConjugation(infinitiv: "gedeihen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "BIN gedIEhen")
     expectConjugation(infinitiv: "gleiten", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "BIN geglItten")
     expectConjugation(infinitiv: "schleichen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "BIN geschlIchen")

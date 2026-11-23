@@ -120,8 +120,8 @@ struct QuizPoolEntry: Equatable {
 
   // Josh chose these on 2026-11-13. Each kind is weighted as a whole, whatever its number of
   // cells, so a participle's one cell gets the least weight. The three Futurs are light because
-  // only their auxiliary varies (T2.6). The weights never change with what the learner has done,
-  // since Josh rejected adapting the quiz to the conjugationgroups opened (T2.4).
+  // only their auxiliary varies. The weights never change with what the learner has done,
+  // since Josh rejected adapting the quiz to the conjugationgroups opened.
   var weight: Int {
     switch table {
     case .perfektIndikativ, .präsensIndikativ:

@@ -12191,3 +12191,48 @@ With the spy, ActivityKit can no longer refuse under tests, so the choice no lon
 them. It was kept because it is harmless in the app: when the system refuses the tab's quiz an
 activity, it would almost surely refuse the sheet's too. Keeping it also keeps the rule about
 quizzes rather than about what the system allowed at a given moment.
+
+## Rerunning the comment sweep, and a sweep of the docs (2026-11-22)
+
+Josh asked for `plans/sweep_comments.md` to be rerun, and for the long-lived Markdown files to be
+swept of the same kind of cruft. He had noticed that `docs/project_structure.md` said "pedagogy
+Phase 16" in several places.
+
+The July plan opened by saying Konjugieren had no provenance trail to strip, unlike Conjugar. That
+was true in July. It is not true now. The two implementation plans of November, pedagogy (24
+phases) and browse (16), left their mark everywhere: `(Phase 22 of the pedagogy plan, T6.3)` on a
+type's doc comment, `(M2)` on an analytics note, `Decision 5` on a test, a route table in
+`feature_architecture.md` with a whole **Since** column of phase numbers. Each pointer made sense
+on the day it was written, as a link from the code to the plan that asked for it. Once a plan is
+done, the pointer only tells a reader which session built a thing, and it tempts the reader to go
+and read a finished plan to understand code that already explains itself.
+
+The work went to four agents with disjoint files: the app's Swift, the tests' Swift,
+`feature_architecture.md` alone (about 160 hits), and the other long-lived docs. The rules they
+shared: drop a pointer that only says when or by which phase something was built; rewrite a phase
+reference that does grammatical work ("Phase 11's mapping" became "`PracticeItemMapping`"); keep
+`(Josh, date)` rulings, because they tell a future session that a choice was deliberate; keep
+pointers to documents whose content still governs the code, such as `plans/dual_auxiliary.md` or
+the variant audit that records Josh's rulings. The journal, `roadmap.md`, `plans/`, `prompts/`,
+and the dated research and fact-check records were out of scope, since history is what they are
+for. Roadmap step pointers on the `verbdata/` import scripts also stayed, because the roadmap is a
+live doc organized by step.
+
+About 140 Swift comments lost a pointer, and a few dozen needed real rewrites. The rewrites were
+the risky part, since a rewritten comment can say something the code does not do. The agents
+checked theirs against the code, for example the practice record's migration from
+`LearnerVerbs`, and the two facts `feature_architecture.md` gained were confirmed against
+`Settings.swift`. All ten MARKs went too, nine of them in the classification harness, along with
+almost no labels: the July sweep had removed them, and the newer comments state reasons.
+
+Proving the Swift change comment-only took a small script with two tests. The first is that every
+changed line is a comment or blank. The second, which catches what a diff check can miss, is
+that each file's code, with comment lines removed, matches HEAD's exactly. Both passed on 64
+files. The build was green, SwiftLint's output matched HEAD's apart from shorter file lengths,
+and 958 tests passed in 55.5 seconds. That is the second run at about 55 seconds since unit tests
+stopped requesting real Live Activities, which settles the previous entry's single measurement.
+
+One wrinkle: the test agent stripped `(Decision 5)` from test comments, and the docs agent kept it
+in `privacy_policy_pending.md` as a pointer to a ruling. Both are defensible. The comments already
+state the rule (no signal may reveal accuracy), and the release-day worklist is a place where
+naming the ruling helps.

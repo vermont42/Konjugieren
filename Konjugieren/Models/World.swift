@@ -30,10 +30,9 @@ class World {
   var info: Info?
   var searchRequest: SearchRequest?
   var practiceSet: PracticeSetRequest?
-  /// A daily session the Quiz tab should start, asked for by the reminder (Phase 22).
+  /// A daily session the Quiz tab should start, asked for by the reminder.
   var dailySessionRequest: DailySessionRequest?
-  /// A daily challenge the Quiz tab should start, asked for by a shared link or the quiz widget
-  /// (Phase 24).
+  /// A daily challenge the Quiz tab should start, asked for by a shared link or the quiz widget.
   var challengeRequest: DailyChallengeRequest?
   var selectedTab: TabSelection = .verbs
   var shouldNavigateToTutor = false
@@ -142,7 +141,7 @@ class World {
         selectedTab = .verbs
       }
     case URL.quizHost:
-      // A practice set shows over whatever tab is open, as a sheet with Start (Phase 10).
+      // A practice set shows over whatever tab is open, as a sheet with Start.
       if url.pathComponents[1] == URL.practiceSetTarget {
         practiceSet = PracticeSetRequest(practiceSet: PracticeSet(url: url), source: url.analyticsSource ?? .deeplink)
       } else if url.pathComponents[1] == URL.dailySessionTarget {

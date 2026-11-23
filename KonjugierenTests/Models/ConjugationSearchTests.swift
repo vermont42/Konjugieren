@@ -18,8 +18,8 @@ struct ConjugationSearchTests {
   @MainActor
   @Suite("Matching")
   struct Matching {
-    // The rows of "What Search Returns" in docs/browse_and_verb_ideas.md that Phase 6 of
-    // plans/browse_and_verb_implementation.md addresses.
+    // The rows of "What Search Returns" in docs/browse_and_verb_ideas.md whose query is a
+    // conjugation.
     @Test(arguments: zip(
       ["ging", "gefunden", "war", "ist", "kam", "wurde", "geht", "muss", "will", "darf", "stand auf", "weiß"],
       ["gehen", "finden", "sein", "sein", "kommen", "werden", "gehen", "müssen", "wollen", "dürfen", "aufstehen", "wissen"]
@@ -58,7 +58,7 @@ struct ConjugationSearchTests {
     }
 
     // Josh, 2026-11-12: fold unless the query is itself an infinitive, so that searching gehen
-    // lists its derivatives as it did before Phase 6.
+    // keeps listing its derivatives.
     @Test(arguments: ["gehen", "kommen", "halten", "konnen"])
     func infinitiveQueryHasNoStrandedParts(query: String) {
       #expect(!matches(query).contains { $0.kind == .finitePart })

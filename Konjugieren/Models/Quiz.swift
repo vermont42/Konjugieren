@@ -49,12 +49,11 @@ class Quiz {
   /// The streak a finished daily session left, which its results show. Nil for any other quiz.
   private(set) var dailyStreakStatus: DailyStreak.Status?
   /// The best at its level that a ranked session's first round had to beat, read as the round
-  /// finished. Nil when there was none, or the session is not ranked (Phase 23).
+  /// finished. Nil when there was none, or the session is not ranked.
   private(set) var levelPreviousBest: Int?
   /// Whether a ranked session's first round set a new best at its level.
   private(set) var isNewLevelBest = false
-  /// A finished challenge's result, which its results show and share (Phase 24). Nil for any
-  /// other quiz.
+  /// A finished challenge's result, which its results show and share. Nil for any other quiz.
   private(set) var challengeResult: DailyChallengeResult?
 
   /// Whether the results show the level's best: a ranked session's first round only, since Ten
@@ -87,7 +86,7 @@ class Quiz {
   }
 
   /// The score of the first round's questions, re-asks not counted, which is what a ranked
-  /// session posts (Phase 8 of the pedagogy plan).
+  /// session posts.
   var firstRoundScore: Int {
     questions.filter { !$0.isReask }.prefix(scope.questionCount).reduce(0) { $0 + $1.points }
   }
@@ -320,7 +319,7 @@ class Quiz {
     }
   }
 
-  /// A Name the Conjugation answer (Phase 17 of the pedagogy plan). An answer with any part right
+  /// A Name the Conjugation answer. An answer with any part right
   /// earns one more try at half points, its line saying which parts to check; otherwise it goes to
   /// the correction, which lists every right answer. Recognizing fuhr is not evidence of producing
   /// it, so the answer moves neither the practice record nor `QuizErrorHistory`, whose misses the
@@ -356,7 +355,7 @@ class Quiz {
     }
   }
 
-  /// A choice question's answer (Phase 19 of the pedagogy plan), which holds the card with its
+  /// A choice question's answer, which holds the card with its
   /// reason whether right or wrong. A choice of two is not given a second attempt or a re-ask,
   /// since the learner would then know the answer. Choosing a sentence is not evidence of
   /// producing its conjugation, so the choice moves neither the practice record nor
@@ -421,8 +420,8 @@ class Quiz {
     lastPreferredSpelling = nil
     stopTimer()
     // A re-ask is not asked a third time, whatever its answer, so that one stubborn question
-    // cannot fill a ten-question round (Josh, T3.1). A challenge asks none, so that its results
-    // are the five questions its shared text reports.
+    // cannot fill a ten-question round, as Josh decided. A challenge asks none, so that its
+    // results are the five questions its shared text reports.
     if !question.isReask, !scope.isChallenge {
       let placement = Self.reaskPlacement(of: currentIndex, in: questions)
       questions.insert(question.reasked(stepID: placement.stepID), at: placement.position)
@@ -433,7 +432,7 @@ class Quiz {
   }
 
   /// Each final answer goes into the practice record as it is given, so that a quiz quit after
-  /// six questions has still practiced six (T6.4). A slip's right second attempt counts as right,
+  /// six questions has still practiced six. A slip's right second attempt counts as right,
   /// since one letter was all that stood between the learner and the conjugation.
   private func recordPractice(of question: QuizItem, isCorrect: Bool) {
     Current.practice.recordAnswer(
@@ -480,7 +479,7 @@ class Quiz {
 
   /// The question reached, re-asks not counted, which `quitQuiz` and `abandonQuiz` send. A re-ask
   /// is inserted only after a wrong answer, so a position that counted re-asks would tell how many
-  /// answers were wrong, which Decision 5 of the pedagogy plan forbids.
+  /// answers were wrong, and no signal carries accuracy.
   private var questionReached: Int {
     questions.prefix(currentIndex + 1).filter { !$0.isReask }.count
   }
@@ -508,8 +507,7 @@ class Quiz {
     Current.reportAchievements()
   }
 
-  /// Where the quiz has reached, for the next launch to report should the app be left during it
-  /// (M2).
+  /// Where the quiz has reached, for the next launch to report should the app be left during it.
   private func recordProgress() {
     QuizAbandonment.record(
       QuizAbandonment.Entry(level: level.rawValue, source: scope.source.rawValue, questionNumber: scope.sendsQuestionCounts ? questionReached : nil),
@@ -756,8 +754,8 @@ class Quiz {
     return makeQuizItem(verb: verb, conjugationgroup: conjugationgroup, readingIndex: right.readingIndex, clauses: [right.clause], choice: choice)
   }
 
-  /// A Sentences question (Phase 18 of the pedagogy plan): the sentence's verb and cell, graded in
-  /// the sentence's own word order. Nil for a sentence whose verb or cell this version cannot read.
+  /// A Sentences question: the sentence's verb and cell, graded in the sentence's own word order.
+  /// Nil for a sentence whose verb or cell this version cannot read.
   func makeSentenceItem(_ sentence: GapSentence) -> QuizItem? {
     guard let verb = Verb.verbs[sentence.verb], verb.reading(at: sentence.readingIndex) != nil, let conjugationgroup = sentence.conjugationgroup else {
       return nil
@@ -777,7 +775,7 @@ class Quiz {
   }
 
   #if DEBUG
-  // Prompts for Name the Conjugation (Phase 17 of the pedagogy plan), each offered every table,
+  // Prompts for Name the Conjugation, each offered every table,
   // several with more than one right answer: käme (ich or er), fuhr (either reading of fahren),
   // kam an (ankommen, not kommen), weiß (wissen's ich or er, or weißen's du Imperativ), machte
   // (the Präteritum or the Konjunktiv II), ist gegangen, gesungen (no person), kommen (the
@@ -809,7 +807,7 @@ class Quiz {
     }
   }
 
-  // Sentences for Phase 18 of the pedagogy plan, one per kind of frame, drafts included, with
+  // Gap sentences, one per kind of frame, drafts included, with
   // answers worth trying: one blank (kommst), the Perfekt's two (sind / gegangen), a separable
   // verb's two in a main clause (fängt / an) and its one after weil (anfängt, where "fängt an" is
   // wrong), the Sie Imperativ with Sie given (Nehmen), the du Imperativ (Komm), a Präteritum
@@ -835,8 +833,8 @@ class Quiz {
     }
   }
 
-  // A default round of choice questions for Phase 19 of the pedagogy plan, one per reason and
-  // drafts included, the right sentence first and second by turns, at whatever level is set.
+  // A default round of choice questions, one per reason and drafts included, the right sentence
+  // first and second by turns, at whatever level is set.
   private func generateChoicesFixture() -> [QuizItem] {
     let ids = [
       "machen.perfekt.1",
@@ -899,7 +897,7 @@ class Quiz {
     }
   }
 
-  // The answers Phase 1 of the pedagogy plan made right, one per question, for trying by hand:
+  // Answers the grader accepts beside the conjugation shown, one per question, for trying by hand:
   // ihr habt ferngeguckt, uebernehme, stossen Sie um, stuende, sammle, verglich, gehe, kämst,
   // sandte, and erkennt an.
   private func generateGradingFixture() -> [QuizItem] {
@@ -918,9 +916,9 @@ class Quiz {
     return repeatedFixture(plan)
   }
 
-  // One question per shape of answer frame from Phase 2 of the pedagogy plan, with its right
-  // answer: angekommen, ankommend, ich stehe auf, sie (3p) kommen an, ihr seid angekommen,
-  // (du) komm an!, (ihr) geht!, steigen wir nach!, stoßen Sie um!, and gehen Sie!
+  // One question per shape of answer frame, with its right answer: angekommen, ankommend, ich
+  // stehe auf, sie (3p) kommen an, ihr seid angekommen, (du) komm an!, (ihr) geht!, steigen wir
+  // nach!, stoßen Sie um!, and gehen Sie!
   private func generateFramesFixture() -> [QuizItem] {
     let plan: [(infinitiv: String, group: Conjugationgroup)] = [
       ("ankommen", .perfektpartizip),
@@ -937,8 +935,8 @@ class Quiz {
     return repeatedFixture(plan)
   }
 
-  // Questions to answer wrongly by hand for Phase 3 of the pedagogy plan, with a wrong answer
-  // for each that shows a kind of marking: fahrt (a missing umlaut), komst (a missing letter),
+  // Questions to answer wrongly by hand, with a wrong answer for each that shows a kind of
+  // marking: fahrt (a missing umlaut), komst (a missing letter),
   // ankomt (nearer the joined conjugation than kommt an), hat gemachen (a weak verb, which links
   // to its family), studirt (an -ieren verb), dachte (a mixed verb's wrong cell), gehne Sie (two
   // swapped letters), and singte (a strong verb made weak).
@@ -956,7 +954,7 @@ class Quiz {
     return repeatedFixture(plan)
   }
 
-  // Answers to type by hand for Phase 4 of the pedagogy plan. Each slip below is offered one
+  // Answers to type by hand. Each slip below is offered one
   // more try: fahrst (a missing umlaut), komst (a missing letter), weis (a missing ß), sanf (a
   // wrong letter), ubernehme (a missing umlaut, which is not a digraph), and bin aufgestandn. Each
   // of these goes straight to the correction instead: kommt (er's cell, not du's), geb (under
@@ -978,7 +976,7 @@ class Quiz {
     return repeatedFixture(plan)
   }
 
-  // One question per diagnosis from Phase 14 of the pedagogy plan, with the wrong answer that
+  // One question per `AnswerDiagnosis` case, with the wrong answer that
   // shows it: hängte (hängen's other reading), aufsteh (the prefix at the end), gestanden auf
   // (the participle is one word), gegangen (the auxiliary missing), hat gegangen (the wrong
   // auxiliary), macht (no ge-), geverstanden (ge- on an inseparable verb), gestudiert (on an
@@ -1009,12 +1007,11 @@ class Quiz {
     }
   }
 
-  // Five verbs for Verb Essentials, one of each kind the phase names (Phase 15 of the pedagogy
-  // plan): fahren as travel (an umlaut and sein: fährt, fuhr, ist gefahren), aufstehen (separable: steht
-  // auf, stand auf, ist aufgestanden), verstehen (inseparable: versteht, verstand, hat
-  // verstanden), denken (mixed: denkt, dachte, hat gedacht), and gehen (sein: geht, ging, ist
-  // gegangen). Wrong answers worth typing: fahrt, standete auf, hat verstehen, denkte, and hat
-  // gegangen.
+  // Five verbs for Verb Essentials, one of each kind: fahren as travel (an umlaut and sein: fährt,
+  // fuhr, ist gefahren), aufstehen (separable: steht auf, stand auf, ist aufgestanden), verstehen
+  // (inseparable: versteht, verstand, hat verstanden), denken (mixed: denkt, dachte, hat
+  // gedacht), and gehen (sein: geht, ging, ist gegangen). Wrong answers worth typing: fahrt,
+  // standete auf, hat verstehen, denkte, and hat gegangen.
   private func generateVerbEssentialsFixture() -> [QuizItem] {
     let plan: [(infinitiv: String, readingIndex: Int)] = [("fahren", 1), ("aufstehen", 0), ("verstehen", 0), ("denken", 0), ("gehen", 0)]
     return plan.flatMap { spec in
@@ -1304,8 +1301,7 @@ class Quiz {
   }
 }
 
-/// What a quiz asks about, how many questions it asks, and where it was begun. The quiz track
-/// can add scopes, such as Phase 16's collections, as further constructors.
+/// What a quiz asks about, how many questions it asks, and where it was begun.
 struct QuizScope {
   /// Nil asks about the level's band of verbs.
   let verbs: [Verb]?
@@ -1319,40 +1315,39 @@ struct QuizScope {
   /// What a quiz in a sheet shows as its title. Nil for the Quiz tab, which is titled Quiz.
   var title: String?
 
-  /// The collection a quiz was started from, which `startQuiz` names (Phase 16).
+  /// The collection a quiz was started from, which `startQuiz` names.
   var collectionKey: String?
 
   /// The learner's own choice of conjugationgroups and verbs, from the Quiz tab, or a practice
   /// set's.
   var custom: CustomQuiz?
 
-  /// A practice set's level, so that every learner who opens it is asked the same set (Phase 10).
+  /// A practice set's level, so that every learner who opens it is asked the same set.
   /// Nil asks at the learner's own level.
   var level: QuizLevel?
 
-  /// Review or My Mistakes, which draw from the practice record (Phase 12). Nil for every other
-  /// quiz.
+  /// Review or My Mistakes, which draw from the practice record. Nil for every other quiz.
   var recordSession: QuizRecordSession?
 
-  /// Verb Essentials, which asks each verb's three key conjugations together (Phase 15).
+  /// Verb Essentials, which asks each verb's three key conjugations together.
   var isVerbEssentials = false
 
-  /// Verb Essentials over an ablaut group, alone or mixed with the known groups (Phase 16).
+  /// Verb Essentials over an ablaut group, alone or mixed with the known groups.
   var ablautPractice: AblautPracticeSession?
 
-  /// Name the Conjugation, which shows a conjugation and asks which verb and cell it is (Phase 17).
+  /// Name the Conjugation, which shows a conjugation and asks which verb and cell it is.
   var isRecognition = false
 
-  /// Sentences, which asks a conjugation in a short sentence (Phase 18).
+  /// Sentences, which asks a conjugation in a short sentence.
   var isSentences = false
 
-  /// The Speed Round, sixty seconds on mastered items (Phase 21).
+  /// The Speed Round, sixty seconds on mastered items.
   var isSpeedRound = false
 
-  /// The daily session, whose results extend the streak (Phase 22).
+  /// The daily session, whose results extend the streak.
   var isDaily = false
 
-  /// A day's challenge, the same five questions on every device (Phase 24).
+  /// A day's challenge, the same five questions on every device.
   var challenge: DailyChallenge.Key?
 
   var isChallenge: Bool {
@@ -1367,14 +1362,14 @@ struct QuizScope {
   }
 
   /// Only the default quiz mixes in items the practice record says are due, up to
-  /// `QuizDraw.dueItemLimit` a round (Phase 11). A quiz over chosen verbs or conjugationgroups asks
+  /// `QuizDraw.dueItemLimit` a round. A quiz over chosen verbs or conjugationgroups asks
   /// what was chosen.
   var mixesDueItems: Bool {
     isDefaultQuiz
   }
 
   /// Only the default quiz, and its Ten More, asks a choice question, one a round, at the levels
-  /// that have them (Phase 19).
+  /// that have them.
   var mixesChoiceQuestions: Bool {
     isDefaultQuiz
   }
@@ -1385,7 +1380,7 @@ struct QuizScope {
 
   /// A Review or My Mistakes session's length is the number of items due or missed, when fewer
   /// than ten, so its signals carry neither the questions asked nor the question reached: either
-  /// would tell how many answers were wrong, which Decision 5 of the pedagogy plan forbids. A
+  /// would tell how many answers were wrong, and no signal carries accuracy. A
   /// mixed ablaut round can be short too, when the known groups hold few verbs, and which groups
   /// are known comes from the learner's answers. A Speed Round's length is how many questions the
   /// learner answered in a minute, which measures the answers themselves.
@@ -1398,7 +1393,7 @@ struct QuizScope {
     recordSession == nil && ablautPractice == nil
   }
 
-  /// A quiz whose verbs the learner did not list is balanced as the default quiz is (Phase 6).
+  /// A quiz whose verbs the learner did not list is balanced as the default quiz is.
   var mixesVerbs: Bool {
     verbs == nil || custom?.verbSet?.mixesVerbs == true
   }
@@ -1432,7 +1427,7 @@ struct QuizCorrection: Equatable {
   /// False for a re-ask, which does not return again.
   let willBeReasked: Bool
   let difference: AnswerDifference
-  /// Why the final answer is wrong, when that is certain (Phase 14 of the pedagogy plan).
+  /// Why the final answer is wrong, when that is certain.
   let diagnosis: AnswerDiagnosis?
   /// What `ErrorExplainerView` would explain, were it enabled.
   let errorContext: ErrorExplainerContext
@@ -1480,11 +1475,11 @@ struct QuizItem: Identifiable {
   /// For a recognition question, which parts of the first attempt were wrong.
   var firstAttemptRecognition: RecognitionGrade?
   /// Set for a Name the Conjugation question, whose prompt is `correctAnswer` and whose answer is
-  /// a verb and a cell rather than a conjugation (Phase 17 of the pedagogy plan).
+  /// a verb and a cell rather than a conjugation.
   let recognition: RecognitionQuestion?
-  /// Set for a Sentences question, whose frame is the sentence (Phase 18).
+  /// Set for a Sentences question, whose frame is the sentence.
   let sentence: GapSentence?
-  /// Set for a choice question, whose answer is one of two sentences (Phase 19).
+  /// Set for a choice question, whose answer is one of two sentences.
   let choice: ChoicePrompt?
   /// Which of a choice question's sentences the learner chose.
   var chosenOption: Int?
@@ -1511,7 +1506,7 @@ struct QuizItem: Identifiable {
   }
 
   /// The gloss to show with the prompt. Always the asked reading's, which for a
-  /// single-reading verb is exactly the verb's translation as before.
+  /// single-reading verb is exactly the verb's translation.
   var translation: String {
     (verb.reading(at: readingIndex) ?? verb.primaryReading).translation
   }
@@ -1549,7 +1544,7 @@ struct QuizItem: Identifiable {
   }
 
   /// Whether an answer as typed is right. Case is ignored, and so is spacing, which matters
-  /// now that a separable verb's answer has two words: "kommt  an" is still kommt an. A
+  /// because a separable verb's answer has two words: "kommt  an" is still kommt an. A
   /// leading pronoun of the asked person is ignored too, and an umlaut may be written as a
   /// digraph: "ich uebernehme" is übernehme.
   func accepts(_ answer: String) -> Bool {

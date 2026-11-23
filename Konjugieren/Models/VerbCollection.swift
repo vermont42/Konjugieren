@@ -140,7 +140,6 @@ enum VerbCollection: Hashable, Identifiable {
 
   static let shareSampleCount = 6
 
-  /// `viewCollection`, the ideas document's "lists opened".
   func signalView(source: AnalyticsSource) {
     Current.analytics.signal(name: .viewCollection, parameters: [
       ParameterKey.collection.rawValue: key,

@@ -2,9 +2,8 @@
 
 import Foundation
 
-/// Whether Konjugieren reminds the learner each day to finish a daily session (Phase 22 of the
-/// pedagogy plan, T6.3). Off by default: notification permission is asked for only when the
-/// learner turns the reminder on.
+/// Whether Konjugieren reminds the learner each day to finish a daily session. Off by default:
+/// notification permission is asked for only when the learner turns the reminder on.
 enum DailyReminder: String, CaseIterable {
   case off
   case on

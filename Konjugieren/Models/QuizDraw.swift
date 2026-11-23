@@ -16,8 +16,8 @@ enum QuizDraw {
   static let strongShareDivisor = 2
   static let minimumCoreQuestions = 2
   static let rareDerivativeRange = 1...3
-  /// A prefixed verb in this band draws as freely as a base verb. Josh chose this reading of
-  /// T2.2 on 2026-11-13: bekommen and verstehen are as basic as kommen and stehen.
+  /// A prefixed verb in this band draws as freely as a base verb (Josh, 2026-11-13): bekommen and
+  /// verstehen are as basic as kommen and stehen.
   static let frequentDerivativeBand = FrequencyBand.top300
 
   /// With `distinctCells`, for a quiz as short as three questions on a verb's page, no cell is

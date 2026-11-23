@@ -3,7 +3,7 @@
 import CoreImage.CIFilterBuiltins
 import UIKit
 
-/// QR codes made on the device, so that a practice set needs no server (Phase 10).
+/// QR codes made on the device, so that a practice set needs no server.
 enum QRCode {
   /// Black modules on white, each `moduleSize` points square, with no smoothing between them.
   /// Medium error correction survives a projector's glare and a phone held at an angle, and a

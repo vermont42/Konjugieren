@@ -2,14 +2,14 @@
 
 import Foundation
 
-/// The daily session's streak (Phase 22 of the pedagogy plan, T6.3): the days on which the learner
-/// finished a daily session, and how many each day. It is kept on the device beside the practice
-/// record and sent nowhere but as a band.
+/// The daily session's streak: the days on which the learner finished a daily session, and how
+/// many each day. It is kept on the device beside the practice record and sent nowhere but as a
+/// band.
 ///
 /// A streak broken by one missed day is repaired by finishing two daily sessions the following day
 /// (Josh, 2026-11-13), since a broken streak lowers later engagement unless it can be repaired
-/// (Silverman and Barasch 2023, secondhand in the report). The missed day does not count toward
-/// the length, which is the days practiced.
+/// (Silverman and Barasch 2023, secondhand in `docs/pedagogy_research.md`). The missed day does
+/// not count toward the length, which is the days practiced.
 nonisolated struct DailyStreak: Codable, Equatable, Sendable {
   /// What the streak is on a day, before or after that day's sessions.
   enum Status: Equatable, Sendable {

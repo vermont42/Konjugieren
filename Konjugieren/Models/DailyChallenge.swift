@@ -3,7 +3,7 @@
 import Foundation
 import UIKit
 
-/// The daily challenge (Phase 24 of the pedagogy plan, T6.8): five questions a day at each level,
+/// The daily challenge: five questions a day at each level,
 /// the same on every device on the same date, taken once and shared as a short text (Josh,
 /// 2026-11-13 and 2026-11-15).
 enum DailyChallenge {
@@ -218,7 +218,7 @@ struct DailyChallengeResult: Codable, Equatable {
 
 extension DailyChallengeResult {
   /// The share sheet with `shareText()`, and `tapShareChallenge`, which names the level and never
-  /// the result (Decision 5 of the pedagogy plan).
+  /// the result, since no signal carries accuracy.
   func share(anchorRect: CGRect?) {
     signalShare()
     ShareSheet.present(

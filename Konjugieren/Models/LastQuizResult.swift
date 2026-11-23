@@ -2,8 +2,8 @@
 
 import Foundation
 
-/// The results of the last quiz the learner saw, which the Quiz tab's hub shows (Phase 13 of the
-/// pedagogy plan). It is kept on the device beside the practice record and sent nowhere.
+/// The results of the last quiz the learner saw, which the Quiz tab's hub shows. It is kept on the
+/// device beside the practice record and sent nowhere.
 struct LastQuizResult: Codable, Equatable {
   /// What was quizzed. A kind, not a title, so that the hub names it in the app's current
   /// language.

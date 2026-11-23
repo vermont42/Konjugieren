@@ -215,8 +215,6 @@ class VerbParser: NSObject, XMLParserDelegate {
     currentReadings = []
   }
 
-  // MARK: The `in` grammar
-
   private static let separableMarker: Character = "+"
   private static let inseparableMarker: Character = "*"
   private static let ablautMarker: Character = "^"

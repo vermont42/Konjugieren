@@ -2,7 +2,7 @@
 
 import Foundation
 
-/// The Speed Round (Phase 21 of the pedagogy plan, T5.7): sixty seconds of questions on what the
+/// The Speed Round: sixty seconds of questions on what the
 /// practice record says is mastered, counting right answers. It is Paul Nation's fluency strand,
 /// speed for material already accurate, and the one place the quiz's clock counts.
 ///
@@ -47,11 +47,11 @@ extension QuizScope {
 extension QuizDraw {
   /// `count` questions on mastered items, each item asked once before any is asked again, and never
   /// the same item twice running, `previous` included, which is the last question of the batch
-  /// before. A key conjugation asks any cell of its stem that the level asks, as Phase 11's mapping
-  /// credits them, or its own er cell, which is what was mastered: mastered fuhr can ask du fuhrst
-  /// (Josh, 2026-11-15). A pattern asks its cell of a weak verb from `verbs`, the level's band, a
-  /// fresh one each time it comes back. Neither is held to the level otherwise, since a mastered item
-  /// stays mastered when the level changes.
+  /// before. A key conjugation asks any cell of its stem that the level asks, as
+  /// `PracticeItemMapping` credits them, or its own er cell, which is what was mastered: mastered
+  /// fuhr can ask du fuhrst (Josh, 2026-11-15). A pattern asks its cell of a weak verb from
+  /// `verbs`, the level's band, a fresh one each time it comes back. Neither is held to the level
+  /// otherwise, since a mastered item stays mastered when the level changes.
   static func speedRoundQuestions(
     for items: [PracticeItem],
     pool: [QuizPoolEntry],

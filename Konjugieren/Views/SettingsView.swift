@@ -334,7 +334,7 @@ struct SettingsView: View {
   }
 
   /// Off and On, the time while on, and a way to the Settings app while notifications are not
-  /// allowed. Permission is asked for only when the learner turns the reminder on (T6.3).
+  /// allowed. Permission is asked for only when the learner turns the reminder on.
   @ViewBuilder
   private var dailyReminderControls: some View {
     Picker(L.DailyReminder.heading, selection: Binding(get: { Current.settings.dailyReminder }, set: { setDailyReminder($0) })) {

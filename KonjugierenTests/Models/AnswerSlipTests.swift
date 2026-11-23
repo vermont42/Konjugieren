@@ -50,8 +50,8 @@ struct AnswerSlipTests {
   // another conjugationgroup, too short to call a slip, or not wrong at all.
   @Test(arguments: [
     ("kommen", Conjugationgroup.präsensIndikativ(.secondSingular), "kommt"),
-    // A missing umlaut, yet also ihr fahrt, so it is the wrong person until Phase 14 can say
-    // which error it is.
+    // A missing umlaut, yet also ihr fahrt, so it counts as another person rather than a slip.
+    // The diagnosis names it a weak conjugation.
     ("fahren", .präsensIndikativ(.thirdSingular), "fahrt"),
     ("müssen", .präteritumKonjunktivII(.secondSingular), "musstest"),
     ("singen", .präteritumIndikativ(.firstSingular), "sing"),

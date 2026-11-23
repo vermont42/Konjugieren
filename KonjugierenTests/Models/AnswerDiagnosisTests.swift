@@ -42,8 +42,7 @@ struct AnswerDiagnosisTests {
     ("singen", .perfektpartizip, 0, "gesingt", .weakConjugation(infinitiv: "singen", isMixed: false)),
     ("aufstehen", .präteritumIndikativ(.firstSingular), 0, "stehte auf", .weakConjugation(infinitiv: "aufstehen", isMixed: false)),
     ("fahren", .präsensIndikativ(.secondSingular), 0, "fahrst", .weakConjugation(infinitiv: "fahren", isMixed: false)),
-    // Also ihr fahrt, but the weak conjugation explains the missing umlaut, which Phase 4 left
-    // for this phase to name.
+    // Also ihr fahrt, but the weak conjugation explains the missing umlaut.
     ("fahren", .präsensIndikativ(.thirdSingular), 0, "fahrt", .weakConjugation(infinitiv: "fahren", isMixed: false)),
     ("denken", .präteritumIndikativ(.firstSingular), 0, "denkte", .weakConjugation(infinitiv: "denken", isMixed: true)),
     ("kommen", .präsensIndikativ(.secondSingular), 0, "kommt", .otherPerson([.thirdSingular, .secondPlural], isImperativ: false)),

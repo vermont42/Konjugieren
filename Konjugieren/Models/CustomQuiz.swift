@@ -2,7 +2,7 @@
 
 import Foundation
 
-/// A quiz the learner puts together on the Quiz tab (T2.8): conjugationgroups, a verb set, or
+/// A quiz the learner puts together on the Quiz tab: conjugationgroups, a verb set, or
 /// both. A part left unchosen is the learner's level's, so a choice of verbs alone asks the level's
 /// conjugationgroups, and a choice of conjugationgroups alone asks the level's verbs, mixed as the
 /// default quiz's are. Josh decided on 2026-11-13 that any conjugationgroup may be chosen, above
@@ -49,7 +49,7 @@ struct CustomQuiz: Equatable {
 }
 
 /// Stored as `groups=praesens_indikativ,imperativ&verbs=modals`. The keys are permanent, since a
-/// learner's choice is kept between launches and a practice set shares it as a link (Phase 10). A
+/// learner's choice is kept between launches and a practice set shares it as a link. A
 /// list of verbs, which a shared My Verbs becomes, travels as `infinitives=gehen,kommen` in place
 /// of `verbs`, because an infinitive can equal a set's key (`sein`). A key that no longer names
 /// anything is dropped rather than failing the whole choice.
@@ -88,7 +88,7 @@ enum QuizVerbSet: Hashable {
   case all
   case band(FrequencyBand)
   case collection(VerbCollection)
-  /// Infinitives, in the sharer's order: My Verbs as a practice set carries them (Phase 10).
+  /// Infinitives, in the sharer's order: My Verbs as a practice set carries them.
   case list([String])
   case myVerbs
 

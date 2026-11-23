@@ -4,10 +4,9 @@ import Foundation
 import Testing
 @testable import Konjugieren
 
-/// The machine check of Phase 19 of the pedagogy plan: no bundled choice may show a wrong
-/// conjugation in either sentence, or be asked at a level that does not ask its answer. Each test
-/// walks every item and records each failure with the item's id, so that one run lists every draft
-/// that needs fixing.
+/// No bundled choice may show a wrong conjugation in either sentence, or be asked at a level that
+/// does not ask its answer. Each test walks every item and records each failure with the item's
+/// id, so that one run lists every draft that needs fixing.
 @MainActor
 @Suite("Choice questions")
 struct ChoiceQuestionTests {
@@ -90,7 +89,7 @@ struct ChoiceQuestionTests {
     }
   }
 
-  /// The check the phase asks for, Phase 18's on each sentence: its braces, read in order, are the
+  /// The gap sentences' check, applied to each sentence: its braces, read in order, are the
   /// conjugator's conjugation of its cell in one clause's word order, in every region, Swiss ss
   /// for ß aside, so that neither sentence can show a wrong conjugation.
   @Test func bothSentencesAreTheConjugatorsConjugations() {
@@ -112,8 +111,7 @@ struct ChoiceQuestionTests {
     }
   }
 
-  /// Items are leveled with Phase 5: an item's own level asks its verb, in its band, the right
-  /// sentence's cell.
+  /// An item's own level asks its verb, in its band, the right sentence's cell.
   @Test func everyItemsLevelAsksItsAnswer() {
     for item in ChoiceQuestions.all {
       guard let level = item.quizLevel else {

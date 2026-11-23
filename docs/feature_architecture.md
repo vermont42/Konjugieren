@@ -40,11 +40,9 @@ The quiz tests users' knowledge of German verb conjugations with timed, scored g
 
 ### Question Generation
 
-Built 2026-11-13 in Phase 5 of [`plans/pedagogy_implementation.md`](../plans/pedagogy_implementation.md),
-replacing Regular and Ridiculous (which asked four and twelve conjugationgroups, with a fixed quota
-of one Präsenspartizip and two Perfektpartizip questions per quiz). The learner chooses one of four
-levels in Settings (`Settings.quizLevel`), and each adds conjugationgroups to the one before, in
-the order of the report's ladder:
+The learner chooses one of four levels in Settings (`Settings.quizLevel`), and each adds
+conjugationgroups to the one before, in the order of the ladder in
+[`pedagogy_research.md`](pedagogy_research.md):
 
 | Level | Roughly | Adds |
 |---|---|---|
@@ -67,7 +65,8 @@ The weights, which Josh chose on 2026-11-13, are fixed and never adapt to the le
 | 1 | Futur Indikativ, Futur Konjunktiv I, Futur Konjunktiv II (only their auxiliary varies), and both participles (one cell each) |
 
 A weight belongs to a kind as a whole, whatever its number of cells. At Beginner, a quiz is
-therefore about 60% Präsens and 40% Imperativ. Every level scores 10 points a right answer.
+therefore about 60% Präsens and 40% Imperativ. Every level scores 10 points a right answer. A
+stored setting of the retired Regular or Ridiculous difficulty becomes Elementary or Advanced.
 
 `Quiz(randomSource:)` takes any `RandomNumberGenerator`, so a test can pass `SeededRNG` and draw the
 same quiz every time. `Quiz` sorts the verbs by infinitive before drawing, since a dictionary's
@@ -76,7 +75,6 @@ verbs, and each kind's share of 40,000 seeded draws.
 
 ### Which Verbs the Default Quiz Asks
 
-Built 2026-11-13 in Phase 6 of [`plans/pedagogy_implementation.md`](../plans/pedagogy_implementation.md).
 A quiz whose scope names no verbs (`QuizScope.allVerbs`, the Quiz tab's default) draws from its
 level's `QuizLevel.band`: the 100 most frequent verbs at Beginner, 300 at Elementary, 1,000 at
 Intermediate, and the whole corpus at Advanced. `Quiz.defaultVerbs(for:)` supplies them, and
@@ -101,37 +99,34 @@ Only then does it draw, for each slot, a verb whose reading fits all three. A sc
 Verbs, a collection, a verb's page) is never mixed, because its verbs were chosen.
 `QuizVerbMixTests` pins each rule over 40 seeds per level.
 
-The bands exposed a data defect, fixed the same day. 56 of the 83 verbs whose `hi` is an estimate
-(`hp="y"`, compounds DWDS cannot measure) sat at ranks 937 to 994, put there by tranche 2's ratio
-from a common base (*madigmachen* beside *machen*). `verbdata/replace_inflated_estimates.py` moved
-61 of them beside measured verbs of similar use, and `QuizVerbMixTests` checks that no provisional
-count reaches the top 1,000.
+No verb whose `hi` is an estimate (`hp="y"`, compounds DWDS cannot measure) may reach the top
+1,000, and `QuizVerbMixTests` checks it. Estimates taken as a ratio from a common base
+(*madigmachen* beside *machen*) had put 56 of the 83 such verbs at ranks 937 to 994;
+`verbdata/replace_inflated_estimates.py` moved 61 of them beside measured verbs of similar use.
 
 ### Scopes
 
 A `QuizScope` names the verbs a quiz asks about (nil for every verb), the reading to ask about,
-the question count, and the `source` its analytics signals carry. Built 2026-11-13 in Phase 13 of
-[`plans/browse_and_verb_implementation.md`](../plans/browse_and_verb_implementation.md) as the
-minimal piece the quiz track is to extend. Phase 16 added `.collection(_:)`, and `title` (what a
-quiz in a sheet shows) and `collectionKey` (which `startQuiz` names).
+the question count, and the `source` its analytics signals carry, along with `title` (what a quiz
+in a sheet shows) and `collectionKey` (which `startQuiz` names).
 
 | Scope | Verbs | Questions | `source` | Ranked |
 |---|---|---|---|---|
-| `.allVerbs` | Every verb; from Elementary up, one question of each round is a choice question (pedagogy Phase 19) | 10, then Ten More | `tab` | First round |
+| `.allVerbs` | Every verb; from Elementary up, one question of each round is a choice question | 10, then Ten More | `tab` | First round |
 | `.myVerbs(_:)` | My Verbs (starred, then the 20 last opened), with replacement | 10, then Ten More | `myVerbs` | No |
 | `.verbPage(_:readingIndex:)` | The verb on screen, in the reading on screen | 3 | `verbPage` | No |
-| `.collection(_:)` | A collection's verbs (Phase 16), with replacement, in a sheet | 10, then Ten More | `list` | No |
-| `.custom(_:myVerbs:)` | The custom quiz's verb set, or the level's band (pedagogy Phase 9) | 10, then Ten More | `custom` | No |
-| `PracticeSet.scope(source:)` | A shared practice set's verb set, or its level's band, in a sheet (pedagogy Phase 10) | 10, then Ten More | `sharedLink` or `qrCode` | No |
-| `.recordSession(.review)` | Due items of the practice record; a pattern asks a weak verb of the level's band (pedagogy Phase 12) | Up to 10, then Ten More while any are due | `review` | No |
+| `.collection(_:)` | A collection's verbs, with replacement, in a sheet | 10, then Ten More | `list` | No |
+| `.custom(_:myVerbs:)` | The custom quiz's verb set, or the level's band | 10, then Ten More | `custom` | No |
+| `PracticeSet.scope(source:)` | A shared practice set's verb set, or its level's band, in a sheet | 10, then Ten More | `sharedLink` or `qrCode` | No |
+| `.recordSession(.review)` | Due items of the practice record; a pattern asks a weak verb of the level's band | Up to 10, then Ten More while any are due | `review` | No |
 | `.recordSession(.mistakes)` | Items whose last answer was wrong, likewise | Up to 10, then Ten More while any remain | `mistakes` | No |
-| `.verbEssentials(_:)` | Five strong or mixed verbs of the level's band, or of the verbs passed, each asked its three key conjugations (pedagogy Phase 15) | 15, then five more verbs | `verbEssentials` | No |
-| `.ablautPractice(_:)` | Verb Essentials over an ablaut group's ten most frequent verbs, alone, or mixed: three of the group's verbs and two of the known groups' (pedagogy Phase 16), in a sheet | Up to 15, then another round | `ablautAlone` or `ablautMixed` | No |
-| `.recognition()` | Name the Conjugation: the level's pool and band, each question a conjugation to name by infinitive, conjugationgroup, and person (pedagogy Phase 17) | 10, then Ten More | `recognition` | No |
-| `.sentences()` | Sentences: the authored sentences whose verb is in the level's band and whose cell is in its pool, one a verb where they allow (pedagogy Phase 18) | Up to 10, then Ten More | `sentences` | No |
-| `.speedRound()` | Speed Round: the practice record's mastered items, in turn, for 60 seconds (pedagogy Phase 21) | As many as answered in a minute, drawn 10 at a time; then another round | `speedRound` | No |
-| `.daily(source:)` | The daily session: due items the level asks and the band holds, then the default quiz's draw, no choice question (pedagogy Phase 22) | 10; no Ten More, but Another Session while a repair needs a second | `daily`, or `reminder` from the reminder | No |
-| `.challenge(_:source:)` | The daily challenge: the default quiz's draw at the key's level, seeded by its day and level alone, no due items, no choice question, no re-ask (pedagogy Phase 24) | 5, once per day and level | `challenge`, `challengeLink` from a shared result, or `challengeWidget` from the quiz widget | No |
+| `.verbEssentials(_:)` | Five strong or mixed verbs of the level's band, or of the verbs passed, each asked its three key conjugations | 15, then five more verbs | `verbEssentials` | No |
+| `.ablautPractice(_:)` | Verb Essentials over an ablaut group's ten most frequent verbs, alone, or mixed: three of the group's verbs and two of the known groups', in a sheet | Up to 15, then another round | `ablautAlone` or `ablautMixed` | No |
+| `.recognition()` | Name the Conjugation: the level's pool and band, each question a conjugation to name by infinitive, conjugationgroup, and person | 10, then Ten More | `recognition` | No |
+| `.sentences()` | Sentences: the authored sentences whose verb is in the level's band and whose cell is in its pool, one a verb where they allow | Up to 10, then Ten More | `sentences` | No |
+| `.speedRound()` | Speed Round: the practice record's mastered items, in turn, for 60 seconds | As many as answered in a minute, drawn 10 at a time; then another round | `speedRound` | No |
+| `.daily(source:)` | The daily session: due items the level asks and the band holds, then the default quiz's draw, no choice question | 10; no Ten More, but Another Session while a repair needs a second | `daily`, or `reminder` from the reminder | No |
+| `.challenge(_:source:)` | The daily challenge: the default quiz's draw at the key's level, seeded by its day and level alone, no due items, no choice question, no re-ask | 5, once per day and level | `challenge`, `challengeLink` from a shared result, or `challengeWidget` from the quiz widget | No |
 
 A quiz whose rounds are ten (`QuizScope.continues`) draws as above. The verb page's three
 questions ask distinct cells and no participle, from the learner's level, since every Perfekt
@@ -140,17 +135,18 @@ level's leaderboard: Josh decided on 2026-11-13 that neither a scoped quiz nor a
 three-question quiz should post. Only a quiz of ten-question rounds starts a Live Activity and
 counts toward `ChangeLevelTip`, the latter on its first results only. Every scope uses the
 learner's level, except a practice set's, which carries the sharer's level in `QuizScope.level`
-when it leaves a part to the level. Before Phase 7 of the pedagogy plan (2026-11-13), every quiz but the verb page's
-was 30 questions.
+when it leaves a part to the level.
 
-The Quiz tab's start screen is a practice hub (pedagogy Phase 13, T6.1). It shows a yellow
+The Quiz tab's start screen is a practice hub. It shows a yellow
 symbol for the chosen scope (books for All Verbs, a star for My Verbs, sliders for Custom), its name
 and a line about what it asks, the All Verbs / My Verbs / Custom picker, three tiles (ten
 questions, "2–3 Minutes", and the level, whose tile is a menu that sets `Settings.quizLevel`, the
 same setting as Settings' level picker), for My Verbs its verbs as chips (up to twelve), and Start.
-Below Start, "From Your Practice" holds the Daily Session (pedagogy Phase 22), the Daily Challenge (Phase 24), Review, My Mistakes, and the last quiz's results
-(`LastQuizResultRow`), then "Exercises" holds Verb Essentials (pedagogy Phase 15) and Ablaut Groups (pedagogy Phase 16), a row with a chevron that pushes `AblautPracticeListView`, and last of all, while signed in to Game Center, a small "View Leaderboard"
-button that opens the current level's board, with "View Achievements" beside it (pedagogy Phase 23). The results screen no longer has one (T6.6). In the
+Below Start, "From Your Practice" holds the Daily Session, the Daily Challenge, Review, My
+Mistakes, and the last quiz's results (`LastQuizResultRow`), then "Exercises" holds Verb
+Essentials and Ablaut Groups, a row with a chevron that pushes `AblautPracticeListView`, and last
+of all, while signed in to Game Center, a small "View Leaderboard" button that opens the current
+level's board, with "View Achievements" beside it. The results screen has no leaderboard button. In the
 regular size class the whole composition scales up. Start is disabled while My Verbs is empty.
 Custom shows its summary and Choose or Change in place of the tiles (see The Custom Quiz).
 
@@ -158,8 +154,8 @@ Custom shows its summary and Choose or Change in place of the tiles (see The Cus
 Group's defaults, written by `Quiz.finishQuiz` at each round's results, so after Ten More it
 describes the session so far. A quit quiz writes nothing. It stores a kind (all verbs, My Verbs,
 custom, practice set, collection, verb page, Review, My Mistakes) and a verb or collection key
-rather than a title, so the hub names it in the current language (Verb Essentials too, since
-pedagogy Phase 15, and an ablaut group's practice, alone or mixed, since Phase 16); the level (none for Review, My Mistakes, and an ablaut group's practice); the counts right, right on a second try, and asked; the score; and the date. It is never
+rather than a title, so the hub names it in the current language (Verb Essentials too, and an
+ablaut group's practice, alone or mixed); the level (none for Review, My Mistakes, and an ablaut group's practice); the counts right, right on a second try, and asked; the score; and the date. It is never
 sent, and Reset Practice forgets it.
 
 "Test me on this verb" presents `QuizView(sheetScope:)` with its own `Quiz`, so a quiz in
@@ -169,8 +165,7 @@ it starts ends in `quitQuiz` or `completeQuiz`.
 
 ### The Custom Quiz
 
-Built 2026-11-14 in Phase 9 of [`plans/pedagogy_implementation.md`](../plans/pedagogy_implementation.md)
-(T2.8). The Quiz tab's picker gained a third segment, Custom (Eigene Auswahl), beside All Verbs and
+The Quiz tab's picker has a third segment, Custom (Eigene Auswahl), beside All Verbs and
 My Verbs. The tab opens on All Verbs at every launch, so the default stays the default. The segment
 shows what the custom quiz will ask and a Choose or Change button that pushes `CustomQuizEditor`,
 where the learner picks any of the fourteen tables and one verb set: the 100, 300, or 1,000 most
@@ -182,8 +177,8 @@ Start is disabled until something is chosen, or while the choice names an empty 
 - **Kept between launches** in `Settings.customQuiz`, stored as
   `groups=praesens_indikativ,imperativ&verbs=ablaut-singen`. Table keys are
   `ConjugationTable.articleKey`, and verb-set keys are `all`, `top100`, `top300`, `top1000`,
-  `myVerbs`, or a collection's key. The form is permanent, since Phase 10 shares it as a link, and a
-  key that names nothing is dropped. `CustomQuizTests` pins it.
+  `myVerbs`, or a collection's key. The form is permanent, since a practice set shares it as a
+  link, and a key that names nothing is dropped. `CustomQuizTests` pins it.
 - **Any table at any level** (Josh, 2026-11-13). A chosen table's kind is Advanced's, the fullest:
   the Präteritum of every verb, the wir Imperativ, and the Präteritum Konjunktiv II of strong and
   mixed readings and the core verbs. When no verb of the set fits that restriction, as with a My
@@ -198,9 +193,8 @@ Start is disabled until something is chosen, or while the choice names an empty 
 
 ### Practice Sets
 
-Built 2026-11-14 in Phase 10 of [`plans/pedagogy_implementation.md`](../plans/pedagogy_implementation.md)
-(T2.9, Decision 8), so that a teacher can hand a class one practice set without accounts or a
-server. A practice set is a custom quiz shared as a link.
+A practice set is a custom quiz shared as a link, so that a teacher can hand a class one practice
+set without accounts or a server.
 
 - **Sharing.** Beside Change on the Custom segment, Share is a menu: Share Link sends text with the
   set's summary, its `quiz/set` link with `source` `sharedLink`, and the App Store link, as a
@@ -228,7 +222,6 @@ server. A practice set is a custom quiz shared as a link.
 
 ### Grading
 
-Built 2026-11-13 in Phase 1 of [`plans/pedagogy_implementation.md`](../plans/pedagogy_implementation.md).
 `Quiz.makeQuizItem` fills `QuizItem.acceptableAnswers` with the cell's conjugation in every region
 and both clauses, plus the variants `StandardVariants` gives for each. `QuizItem.accepts` then
 grades an answer:
@@ -260,9 +253,7 @@ exercise all of this. See the comment on `Quiz.generateGradingFixture()`.
 
 ### The Answer Frame
 
-Built 2026-11-13 in Phase 2 of [`plans/pedagogy_implementation.md`](../plans/pedagogy_implementation.md).
-The answer field sits inside the shape of the expected answer, which replaced the Pronoun row.
-`QuizItem.answerFrame` builds an `AnswerFrame`, a list of segments, and `AnswerFrameView` draws it
+The answer field sits inside the shape of the expected answer. `QuizItem.answerFrame` builds an `AnswerFrame`, a list of segments, and `AnswerFrameView` draws it
 on one line with a rounded text field per blank:
 
 | Question | Frame |
@@ -280,7 +271,7 @@ reading's `separableRun`, so übersetzen asks `[ ] wir!` for translating and `[ 
 ferrying across. The second blank reveals separability for a prefix like um-; Josh accepted that.
 
 `AnswerFrame.answer(filling:)` joins the blanks and the frame's own words of the answer (the Sie,
-never the pronoun in front), and the quiz grades that string as before. A pronoun typed into the
+never the pronoun in front), and the quiz grades that string. A pronoun typed into the
 blank anyway is still stripped by grading. Return moves to the next empty blank and submits once
 none is empty (`blankAfterReturn`); the letter keys insert into whichever blank has the cursor.
 The blanks keep their identity from question to question, keyed by blank index rather than by
@@ -289,19 +280,17 @@ accessibility label reads the whole frame ("blank, Sie, blank. Blank 1 of 2"), a
 other text is hidden from VoiceOver. The first field keeps the identifier `quiz_answer_field`; a
 second is `quiz_answer_field_2`.
 
-The frame is meant for reuse: Phase 15's three blanks and Phase 18's sentence frames are more
-segments of the same kind. `KONJUGIEREN_QUIZ_FIXTURE frames` asks one question per frame above.
+The Sentences mode reuses the frame, with the sentence's words as more segments of the same kind (see
+[Sentences](#sentences)). `KONJUGIEREN_QUIZ_FIXTURE frames` asks one question per frame above.
 A fixture is cut or repeated to a round's ten questions, and Ten More asks it again.
 
 ### The Held Correction
 
-Built 2026-11-13 in Phase 3 of [`plans/pedagogy_implementation.md`](../plans/pedagogy_implementation.md),
-replacing the Last Answer and Correct Answer rows that showed on the *next* question's card while
-its clock ran. A wrong answer sets `Quiz.correction` and stops the timer, and the quiz stays on the
+A wrong answer sets `Quiz.correction` and stops the timer, and the quiz stays on the
 missed question. `submitAnswer` ignores answers while a correction is held, `resumeTimer` (on
 return to the foreground) leaves the clock stopped, and `continueAfterCorrection()` clears it,
 advances, and restarts the clock, or after the last question shows the results. A right answer
-still advances at once.
+advances at once.
 
 `QuizCorrectionView`, under the answer frame, shows:
 
@@ -323,7 +312,7 @@ still advances at once.
   Return in the answer field also continues, from any blank. Return resigns the
   field, so the view refocuses it on holding and again after Back from a linked page.
 
-VoiceOver: a wrong answer is no longer announced by `Quiz`. Instead focus moves to the correction,
+VoiceOver: `Quiz` does not announce a wrong answer. Focus moves instead to the correction,
 which reads "Incorrect. Your answer: … Correct answer: … Letters that differ: …" (the letters only
 when three or fewer), with a hint that Continue follows. A Magic Tap continues too.
 
@@ -332,7 +321,6 @@ comment on `Quiz.generateCorrectionsFixture()`.
 
 ### One More Try
 
-Built 2026-11-13 in Phase 4 of [`plans/pedagogy_implementation.md`](../plans/pedagogy_implementation.md).
 A wrong answer that is only a slip gets one more attempt before any correction. `QuizItem.isSlip`
 decides, on the answer with a leading pronoun of the asked person dropped, as grading drops it:
 
@@ -343,7 +331,7 @@ decides, on the answer with a leading pronoun of the asked person dropped, as gr
 - **Not another cell.** If `Verb.conjugations(matching:)` finds the answer anywhere in the verb's
   tables, any reading, it is a grammatical error and goes to the correction: kommt for du kommst
   (er's cell), musstest for müsstest (the Indikativ). This rule also makes fahrt for er fährt a
-  real error, since fahrt is ihr's cell. Phase 14 named such errors; see
+  real error, since fahrt is ihr's cell. Such errors are named; see
   [Naming the Error](#naming-the-error).
 
 A slip sets `QuizItem.firstAttempt` and leaves `isCorrect` nil, so `Quiz.isAwaitingSecondAttempt`
@@ -365,8 +353,7 @@ comment on `Quiz.generateSlipsFixture()`.
 
 ### Naming the Error
 
-Built 2026-11-14 in Phase 14 of [`plans/pedagogy_implementation.md`](../plans/pedagogy_implementation.md)
-(T4.2 and T4.3). `QuizItem.diagnosis(of:)` returns an `AnswerDiagnosis` for a wrong answer when
+`QuizItem.diagnosis(of:)` returns an `AnswerDiagnosis` for a wrong answer when
 the answer is exactly what a known error would produce, and nil otherwise. No language model is
 involved: each check builds the wrong conjugations an error would yield, in every region's spelling
 and clause order and with digraphs, and asks whether the answer (pronoun dropped) is one of them.
@@ -404,19 +391,18 @@ the comment on `Quiz.generateDiagnosesFixture()`.
 
 ### Rounds and Re-asks
 
-Built 2026-11-13 in Phase 7 of [`plans/pedagogy_implementation.md`](../plans/pedagogy_implementation.md).
 A session is rounds of `Quiz.questionCount` (10) questions. The results of each round offer **Ten
 More**, which calls `Quiz.continueSession()`: ten more questions, drawn afresh so that each round
 has the default quiz's mix (half strong, two core, one to three rare derivatives), are appended to
-`questions`, and the score, the clock, and the earlier questions carry on. There is no limit; two
-rounds of Ten More reach the thirty the quiz used to ask. `roundCount` counts the rounds begun,
+`questions`, and the score, the clock, and the earlier questions carry on. There is no limit.
+`roundCount` counts the rounds begun,
 and `questionCount` is the rounds' questions so far (10, 20, 30), re-asks excluded. A verb page's
 three questions do not continue (`canContinue`, from `QuizScope.continues`).
 
 A question answered wrongly, after any second attempt, is **re-asked once**: a copy of it
 (`QuizItem.reasked()`, `isReask`) is inserted `Quiz.reaskGap` (3) questions later, or at the
 round's end when fewer remain, so a question missed near the end returns before the results. A
-re-ask is never re-asked, whatever its answer (Josh, T3.1). The correction says "This question
+re-ask is never re-asked, whatever its answer (Josh's decision). The correction says "This question
 will come up again." for a question that will return, and VoiceOver reads it with the correction.
 A re-ask's card carries an "Asked Again" line, which VoiceOver announces before the verb; its dot
 is a diamond; and its results row carries the same line. A re-ask may still earn a slip's second
@@ -429,8 +415,7 @@ the position and the step for every re-ask, and for a question shown alone it is
 
 ### The Practice Record
 
-Built 2026-11-14 in Phase 11 of [`plans/pedagogy_implementation.md`](../plans/pedagogy_implementation.md)
-(T3.3's record, T3.4, T3.5, T6.4). Every final answer in every scope goes into an on-device record
+Every final answer in every scope goes into an on-device record
 as it is given, so a quiz quit after six questions has still practiced six; the trombone still
 plays. A slip's first attempt records nothing, and a right second attempt counts as right.
 
@@ -439,10 +424,10 @@ plays. A slip's first attempt records nothing, and a right second attempt counts
 | `Shared/PracticeRecord.swift` | `PracticeItem` (an item and its permanent `key`) and `PracticeRecord` (an `Entry` per key: a `ReviewSchedule`, the last answer's date and rightness, the last lookup). Compiled into the widget, which has no corpus |
 | `Shared/ReviewSchedule.swift` | The ladder: 1, 3, 7, 14, and 30 days, the last repeating; due dates fall at the start of a day. `answered(correctly:)` is the quiz's move |
 | `PracticeItemMapping.swift` | Which item a question exercises, the items a lookup schedules, and the cell an item asks |
-| `PracticeStore.swift` | `Current.practice`: saves each change to the App Group's defaults under `practiceRecord`, offers the review card, resets, and migrates browse Phase 15's schedules once |
+| `PracticeStore.swift` | `Current.practice`: saves each change to the App Group's defaults under `practiceRecord`, offers the review card, resets, and once migrates the review card's older schedules from `LearnerVerbs` |
 | `QuizDueItems.swift` | `QuizDraw.dueQuestions` and `mixing`: the due items a default round takes |
 
-**Two kinds of item (T3.5).** A strong or mixed reading's question exercises one of the verb's key
+**Two kinds of item.** A strong or mixed reading's question exercises one of the verb's key
 conjugations, `key:<infinitiv>:<reading>:<stem>`, chosen by the stem its cell is built on:
 `praesens` for the Präsens Indikativ, the Präsens Konjunktiv I, the Imperativ, and the
 Präsenspartizip; `praeteritum` for the Präteritum Indikativ and Konjunktiv II; `perfekt` for the
@@ -466,18 +451,17 @@ overdue first, placed at random among a draw of the rest. A key conjugation asks
 er form of the Präsens, Präteritum, or Perfekt) of its verb; a pattern asks its cell of a weak verb
 from the level's band. An item the level does not ask, or a verb beyond the band, waits for Review,
 so the default quiz stays within its level. Every Ten More round does the same. Due questions sit
-outside Phase 6's mix, which balances the other seven. Scoped quizzes mix in nothing.
+outside the default quiz's verb mix, which balances the other seven. Scoped quizzes mix in nothing.
 
 **Reset Practice**, in Settings' last card while there is a record, a last result, or a kept wrong
 answer, asks for confirmation, then empties the record (saving it empty, so the migration does not
-run again), forgets the last result (since Phase 13), the Speed Round's best (Phase 21), the
-streak (Phase 22), and each level's best (Phase 23), and empties `QuizErrorHistory`, which Josh kept on 2026-11-14 for the Tutor's recommendations and Phase
-14. Starred and recent verbs stay.
+run again), forgets the last result, the Speed Round's best, the streak, and each level's best,
+and empties `QuizErrorHistory`, which Josh kept beside the record on 2026-11-14 because the Tutor's
+recommendations read it. Starred and recent verbs stay.
 
 ### Review and My Mistakes
 
-Built 2026-11-14 in Phase 12 of [`plans/pedagogy_implementation.md`](../plans/pedagogy_implementation.md)
-(T3.2, and T3.3's session). Two sessions drawn from the practice record rather than from a level's
+Review and My Mistakes are two sessions drawn from the practice record rather than from a level's
 pool, each a `QuizScope.recordSession` (`QuizRecordSession.review`, `.mistakes`) started from a
 "From Your Practice" section below the Quiz tab's Start. Each row shows its count and starts the
 session, or, with nothing to ask, says why: Review gives the days to the next due item, or says
@@ -498,13 +482,12 @@ session runs, the tab's bar is titled with its name (an iPad's tab bar shows no 
 - **Never ranked**, mixing in no due items, and donating no level tip.
 - **No counts in signals** (`QuizScope.sendsQuestionCounts`). A session shorter than ten is as
   long as the learner's due or missed items, so `completeQuiz` omits `questionCount` and `quitQuiz`
-  and `abandonQuiz` omit `questionNumber` (Decision 5). `QuizAbandonment.Entry.questionNumber` is
-  optional for this.
+  and `abandonQuiz` omit `questionNumber`, since no signal may reveal accuracy.
+  `QuizAbandonment.Entry.questionNumber` is optional for this.
 
 ### Mastery
 
-Built 2026-11-15 in Phase 20 of [`plans/pedagogy_implementation.md`](../plans/pedagogy_implementation.md)
-(T6.2). A Mastery row ("Lernstand") in From Your Practice, below My Mistakes, says "Mastered: 7 of 17
+A Mastery row ("Lernstand") in From Your Practice, below My Mistakes, says "Mastered: 7 of 17
 patterns · 2 of 50 verbs" and pushes `MasteryView`, which shows what the practice record has made
 secure at the learner's level. `Mastery` (in `Models/Mastery.swift`) builds it from the record and
 the level; it reads the record and writes nothing.
@@ -520,7 +503,7 @@ the level; it reads the record and writes nothing.
   shown a strong verb's Präsens and Imperativ, or Perfekt and Perfektpartizip, as two cells always
   alike, since each pair is one item.
 - **States.** `MasteryState`: not practiced (no entry), learning (box 0 or 1), mastered (box 2 or
-  higher, `MasteryState.masteredBox`, the seven-day interval). Phase 21's speed round uses the same
+  higher, `MasteryState.masteredBox`, the seven-day interval). The Speed Round uses the same
   threshold. A lookup puts an item in learning; a wrong answer drops a mastered item back to it.
 - **Counts.** A pattern counts once its own item is mastered; a pattern beyond the level is kept in
   the record but not counted there. A verb counts once every stem the level asks, in every strong
@@ -535,11 +518,11 @@ the level; it reads the record and writes nothing.
 
 ### Verb Essentials
 
-Built 2026-11-14 in Phase 15 of [`plans/pedagogy_implementation.md`](../plans/pedagogy_implementation.md)
-(T5.1). "Verb Essentials" ("Verb-Grundlagen", Josh's choice of name) asks a strong or mixed verb's
+"Verb Essentials" ("Verb-Grundlagen", Josh's choice of name) asks a strong or mixed verb's
 three key conjugations, er's Präsens, Präteritum, and Perfekt (fährt, fuhr, ist gefahren), as the
 Goethe-Institut's B1 list prints them. No "principal parts" label appears anywhere, in the interface
-or in code (Decisions Already Made). It starts from a row in the hub's "Exercises" section.
+or in code: Josh rejected it, partly because learners do not know the term. It starts from a row
+in the hub's "Exercises" section.
 
 - **Each blank is its own question.** A verb is three `QuizItem`s sharing a `stepID`, in the verb
   page's order (`QuizDraw.verbEssentialsStep`). Each is graded alone, on Return, and records its
@@ -572,8 +555,7 @@ or in code (Decisions Already Made). It starts from a row in the hub's "Exercise
 
 ### Ablaut-Group Practice
 
-Built 2026-11-15 in Phase 16 of [`plans/pedagogy_implementation.md`](../plans/pedagogy_implementation.md)
-(T5.2): work through one ablaut group, then mix it with the groups already known. The support is
+The learner works through one ablaut group, then mixes it with the groups already known. The support is
 Pan et al. (2019), where practicing a pattern alone before mixing it did better; for ablaut groups
 as such there is no study, so it is a bet. The practice is Verb Essentials, since the vowel changes
 a group shares are what it asks.
@@ -605,24 +587,23 @@ a group shares are what it asks.
   or saying why it is closed. The hub's Ablaut Groups row pushes `AblautPracticeListView`, the 58
   groups with a pattern ordered by use (each group's most frequent verb: haben, geben, kommen),
   with a seal on the known ones, each expanding onto the same card. The Ablaut page was not pushed
-  from the hub, since its article is more than a screen long. `isBeneathQuiz` is now true only
+  from the hub, since its article is more than a screen long. `isBeneathQuiz` is true only
   while a quiz is in progress, so the cards work on pages the hub pushes.
 - The results offer "Another Round" ("Noch eine Runde"), since a round may be fewer than five
   verbs, and show no level, which changes nothing here. Never ranked, no due items mixed in, no
   level tip. `startQuiz` carries the group's collection key. A mixed session sends neither
   `questionCount` nor `questionNumber`: its round can be short when the known groups hold few
-  verbs, and which groups are known comes from the learner's answers (Decision 5).
+  verbs, and which groups are known comes from the learner's answers, which no signal may reveal.
 
 ### Name the Conjugation
 
-Built 2026-11-15 in Phase 17 of [`plans/pedagogy_implementation.md`](../plans/pedagogy_implementation.md)
-(T5.4): recognition, the direction a reader needs. "Name the Conjugation" ("Konjugationen
+This mode practices recognition, the direction a reader needs. "Name the Conjugation" ("Konjugationen
 bestimmen", Josh's choice; *bestimmen* is the German classroom's word for naming a verb's cell)
 shows a conjugation, such as käme, and asks for its infinitive, typed, and its conjugationgroup and
 person, chosen from chips, since typing their names would test the metalanguage. It is a mode of its
 own, a row in the hub's Exercises (Josh, 2026-11-13); the default quiz stays production practice.
 
-- **The draw** is the default quiz's: the level's pool and band, mixed as in Phase 6
+- **The draw** is the default quiz's: the level's pool and band, balanced the same way
   (`QuizScope.recognition()`, ten a round, Ten More). The prompt is the asked cell's conjugation in
   the user's region and the main clause's word order (kam an, ist gekommen, seien Sie), ablaut in
   red. The verb and its gloss are not shown, since they are what is asked.
@@ -643,7 +624,7 @@ own, a row in the hub's Exercises (Josh, 2026-11-13); the default quiz stays pro
 - **The grade** (`RecognitionQuestion.grade`) is judged against the typed verb's cells when it is
   one of them, and against every cell otherwise, and names a part wrong only when changing it can
   make the answer right. An answer with any part right earns one more try at half points, with a
-  line naming what to check ("Check the person. Try once more."), through Phase 4's mechanism
+  line naming what to check ("Check the person. Try once more."), through One More Try's mechanism
   (`QuizItem.firstAttemptRecognition`, Josh, 2026-11-15). Nothing right goes to the correction at
   once. The correction shows the answer part by part, the wrong parts in red, and lists every right
   answer, one line per verb and table ("kommen · Präteritum Konjunktiv II · ich, er"); the re-ask
@@ -658,9 +639,8 @@ own, a row in the hub's Exercises (Josh, 2026-11-13); the default quiz stays pro
 
 ### Sentences
 
-Built 2026-11-15 in Phase 18 of [`plans/pedagogy_implementation.md`](../plans/pedagogy_implementation.md)
-(T5.5): a short authored sentence with its verb blanked, so
-that a conjugation is tied to a meaning. "Sentences" ("Lückensätze", Josh's choice) is a mode of its
+Each question is a short authored sentence with its verb blanked, so that a conjugation is tied
+to a meaning. "Sentences" ("Lückensätze", Josh's choice) is a mode of its
 own, a row in the hub's Exercises (Josh, 2026-11-15).
 
 - **The content** is `Konjugieren/Models/GapSentences.json`: for each sentence an id, the verb, a
@@ -680,7 +660,7 @@ own, a row in the hub's Exercises (Josh, 2026-11-15).
   asks, and the wir or Sie of an Imperativ after the first blank.
 - **Drafts.** A release build asks only reviewed sentences; a debug build asks drafts too and marks
   each card "Draft" ("Entwurf"), so that a draft can be tried in the app (`GapSentences.includesDrafts`).
-- **The frame** is Phase 2's `AnswerFrame`, with the sentence's words as `.context` segments, laid
+- **The frame** is the quiz's `AnswerFrame` (see [The Answer Frame](#the-answer-frame)), with the sentence's words as `.context` segments, laid
   out word by word in a `FlowLayout` so that a long sentence wraps; every blank is one width, so it
   does not hint at the answer's length, and a full stop written against a blank stays with it. The
   wir and Sie of an Imperativ are a `.word` the frame supplies ("{Nehmen} Sie bitte Platz!"), as in
@@ -695,7 +675,8 @@ own, a row in the hub's Exercises (Josh, 2026-11-15).
   a shorter round, and once every sentence is asked, Ten More asks them again. The hub's row says
   when a level has none.
 - **Recorded as production.** A sentence answer goes through `submitAnswer`, so it moves the practice
-  record and, when wrong, `QuizErrorHistory`, and earns Phase 4's and Phase 14's second attempt.
+  record and, when wrong, `QuizErrorHistory`, and a slip or a diagnosed error earns its second
+  attempt.
   Never ranked, no due items, the level tip donated as for the default quiz.
   `LastQuizResult.Kind.sentences`. The fixture `KONJUGIEREN_QUIZ_FIXTURE sentences` asks ten
   sentences, one per kind of frame, when Sentences is started.
@@ -706,9 +687,8 @@ own, a row in the hub's Exercises (Josh, 2026-11-15).
 
 ### Choice Questions
 
-Built 2026-11-15 in Phase 19 of [`plans/pedagogy_implementation.md`](../plans/pedagogy_implementation.md)
-(T5.6): a setting and the same sentence in two conjugationgroups, of which the learner taps the one
-a German speaker or writer would use. The quiz otherwise never asks a learner to choose a
+A choice question shows a setting and the same sentence in two conjugationgroups, of which the
+learner taps the one a German speaker or writer would use. The quiz otherwise never asks a learner to choose a
 conjugationgroup, and choosing is where much real difficulty lies. Not a mode: one question of every
 default round, Ten More's included, from Elementary up (Josh, 2026-11-13 and 2026-11-15).
 
@@ -722,7 +702,7 @@ default round, Ten More's included, from Elementary up (Josh, 2026-11-13 and 202
   when, and the Futur without one; the Konjunktiv I in a news report, and the Indikativ in
   conversation. `scripts/choice_questions.py` writes a review sheet and marks approvals.
 - **The machine check** (`ChoiceQuestionTests`) reads each sentence as a `GapSentence`
-  (`ChoiceQuestion.rightSentence`, `.otherSentence`) and requires Phase 18's check of both: the
+  (`ChoiceQuestion.rightSentence`, `.otherSentence`) and requires the Sentences check of both: the
   braces are the conjugator's conjugation of the cell in every region. Also: the two tables differ,
   the item's level asks its verb, in its band, the right sentence's cell (`isAskable(at:)`), every
   reason names its conjugationgroups in both name languages, and every contrast and level is
@@ -748,7 +728,7 @@ default round, Ten More's included, from Elementary up (Josh, 2026-11-13 and 202
   Conjugation. The results row shows the right sentence's conjugation, and the chosen one in red
   when wrong. `ChoiceQuestionView` draws the card.
 - **Signals.** None new: the question is part of a default round, whose signals are unchanged, and
-  which item was asked or how it was answered may not be sent (Decision 5).
+  which item was asked or how it was answered may not be sent, since no signal may reveal accuracy.
 - **VoiceOver.** Each sentence is a button read as its sentence and conjugationgroup, under the
   header "Which fits here?"; once chosen, its value says "Your choice" and "The right choice". The
   answer is announced ("Correct. In conversation, most verbs take the Perfekt Indikativ." or
@@ -758,9 +738,8 @@ default round, Ten More's included, from Elementary up (Josh, 2026-11-13 and 202
 
 ### Speed Round
 
-Built 2026-11-15 in Phase 21 of [`plans/pedagogy_implementation.md`](../plans/pedagogy_implementation.md)
-(T5.7): sixty seconds of questions on items already mastered, counting right answers. It is Paul
-Nation's fluency strand, speed for material already accurate, and the one place the clock counts.
+The Speed Round is sixty seconds of questions on items already mastered, counting right answers.
+It is Paul Nation's fluency strand, speed for material already accurate, and the one place the clock counts.
 "Speed Round" / "Blitzrunde", a row in the hub's Exercises.
 
 - **What it asks** (`Models/SpeedRound.swift`). `SpeedRound.masteredItems(in:)`: the record's items
@@ -804,9 +783,8 @@ Nation's fluency strand, speed for material already accurate, and the one place 
 
 ### The Daily Session and the Streak
 
-Built 2026-11-15 in Phase 22 of [`plans/pedagogy_implementation.md`](../plans/pedagogy_implementation.md)
-(T6.3): a short daily session, a streak that one missed day does not break if repaired, and an
-optional reminder. "Daily Session" / "Tägliche Übung", the first row of the hub's From Your
+The app offers a short daily session, a streak that one missed day does not break if repaired,
+and an optional reminder. "Daily Session" / "Tägliche Übung", the first row of the hub's From Your
 Practice, with a flame once there is a streak.
 
 - **What it asks** (`Models/DailySession.swift`, `QuizDraw.dailyQuestions`). Ten questions at the
@@ -858,9 +836,8 @@ Practice, with a flame once there is a streak.
 
 ### The Daily Challenge
 
-Built 2026-11-15 in Phase 24 of [`plans/pedagogy_implementation.md`](../plans/pedagogy_implementation.md)
-(T6.8): five questions a day at each level, the same on every device on the same date, taken once
-and shared as text (Josh, 2026-11-13 and 2026-11-15). "Daily Challenge" / "Tägliche
+The daily challenge is five questions a day at each level, the same on every device on the same
+date, taken once and shared as text (Josh, 2026-11-13 and 2026-11-15). "Daily Challenge" / "Tägliche
 Herausforderung", the hub's row under the Daily Session.
 
 - **The key** (`Models/DailyChallenge.swift`). `DailyChallenge.Key` is a day, `yyyy-MM-dd` in the
@@ -908,8 +885,8 @@ Herausforderung", the hub's row under the Daily Session.
 
 ### Personal Bests by Level
 
-Built 2026-11-15 in Phase 23 of [`plans/pedagogy_implementation.md`](../plans/pedagogy_implementation.md)
-(T6.6), beside the achievements (see [Game Center Integration](#game-center-integration)).
+The app keeps a personal best at each level, beside the achievements (see
+[Game Center Integration](#game-center-integration)).
 
 - **What is measured** (Josh, 2026-11-15): the best ranked score at each level, `Quiz.firstRoundScore`
   of a default quiz over all verbs, the number its level's leaderboard takes, out of 100.
@@ -926,7 +903,7 @@ Built 2026-11-15 in Phase 23 of [`plans/pedagogy_implementation.md`](../plans/pe
 
 ### The Quiz Clock
 
-`Settings.quizClock` (`QuizClock`: `.hide`, `.show`), default `.hide` (T6.5). While it is hidden,
+`Settings.quizClock` (`QuizClock`: `.hide`, `.show`), default `.hide`. While it is hidden,
 the quiz card, the results, and the Live Activity show no time; `elapsedTimeLiveActivity` is nil
 and the timer's Live Activity updates are skipped. The clock still counts, still stops while a
 correction is held, and still runs across Ten More. A Speed Round shows its time left whatever the
@@ -940,13 +917,12 @@ setting.
   `secondAttemptCount`, `reaskCount`, and `reaskCorrectCount` are computed from `questions`.
   `correctCount` and `secondAttemptCount` exclude re-asks. The results' score color is
   `score / maximumScore`
-- **The same at every level.** Ridiculous's doubling went with the levels (Phase 5); each level
-  has its own leaderboard (Phase 8), so no score compares across levels
+- **The same at every level.** Each level has its own leaderboard, so no score compares across
+  levels
 - **Leaderboard:** only a ranked quiz (every verb, the default scope) submits a score, and only
   when its first round's results appear: `firstRoundScore`, the first ten questions' points
-  without their re-asks, so every ranked score has a ceiling of 100 (Josh, 2026-11-13, for Phase
-  8; adopted early in Phase 7). Ten More's points are never posted. The score goes to the
-  leaderboard of the level the quiz started at (`QuizLevel.leaderboardID`)
+  without their re-asks, so every ranked score has a ceiling of 100 (Josh, 2026-11-13). Ten
+  More's points are never posted. The score goes to the leaderboard of the level the quiz started at (`QuizLevel.leaderboardID`)
 - `quiz.finalScore` equals `score`
 
 ### Key Properties
@@ -961,7 +937,7 @@ setting.
 | `level` | `QuizLevel` | The level the quiz was started at |
 | `score` | `Int` | Points so far, summed from the items |
 | `firstRoundScore` | `Int` | The first round's points without re-asks: what a ranked session posts |
-| `finalScore` | `Int` | The score submitted and shown in the results; equal to `score` since Phase 5 |
+| `finalScore` | `Int` | The score submitted and shown in the results; equal to `score` |
 | `elapsedSeconds` | `Int` | Time elapsed |
 | `correctCount` | `Int` | Number right on the first attempt |
 | `secondAttemptCount` | `Int` | Number right on the second attempt |
@@ -983,9 +959,8 @@ Quiz uses `SoundPlayer` for audio feedback:
 
 ## Game Center Integration
 
-The app posts quiz scores to Game Center, one leaderboard per quiz level (Phase 8 of the pedagogy
-plan, 2026-11-14), and reports progress toward eight achievements for mastery milestones (Phase 23,
-2026-11-15). The configuration in App Store Connect and in `GameCenterResources.gamekit`,
+The app posts quiz scores to Game Center, one leaderboard per quiz level, and reports progress
+toward eight achievements for mastery milestones. The configuration in App Store Connect and in `GameCenterResources.gamekit`,
 with every leaderboard's ID, names, and settings, is in
 [`game_center_setup.md`](game_center_setup.md).
 
@@ -997,7 +972,7 @@ with every leaderboard's ID, names, and settings, is in
 | `GameCenterReal.swift` | Real `GKLocalPlayer`, `GKLeaderboard`, and `GKAchievement` implementation |
 | `GameCenterSpy.swift` | Records submissions, achievement reports, and what was shown, for tests (`World.unitTest`) |
 | `Achievement.swift` | The eight achievements, their permanent IDs and points, their progress computed from the practice record, and `World.reportAchievements()` |
-| `QuizView.swift` | "View Leaderboard", the current level's board, at the foot of the Quiz tab's hub (pedagogy Phase 13; until then on a ranked quiz's results) |
+| `QuizView.swift` | "View Leaderboard", the current level's board, at the foot of the Quiz tab's hub |
 | `SettingsView.swift` | "View Leaderboards", Game Center's list of the app's boards, and "View Achievements" |
 
 These buttons appear only while the player is signed in to Game Center.
@@ -1038,7 +1013,7 @@ the deprecated `GKGameCenterViewController` and `GKGameCenterControllerDelegate`
 
 ## Info System
 
-The Info system provides educational content about German verb conjugation, the dedication, and credits. It replaces the original single-view approach with a flexible article-based architecture.
+The Info system provides educational content about German verb conjugation, the dedication, and credits, as a list of articles.
 
 ### Architecture
 
@@ -1083,9 +1058,9 @@ RichTextView renders with appropriate styling
 
 Info articles support internal linking via the `konjugieren://info/{stableKey}` scheme. Links in article text can reference other articles or verbs, handled by `InfoView.handleInfoLink(_:)`.
 
-Since 2026-11-12 (Phase 11 of the browse plan) an `info/` link names an article by its
-`stableKey` (`info/futur_ii`), which survives the reordering of `Info.infos`. A link that names a
-position (`info/20`) still opens the article at that position, as every link did before. An
+An `info/` link names an article by its `stableKey` (`info/futur_ii`), which survives the
+reordering of `Info.infos`. A legacy link that names a position (`info/20`) still opens the
+article at that position. An
 article link in the text (`‡Futur II‡`) names a heading in the text's own language, so a German
 text must use German headings (`‡Genus Verbi‡`, not `‡Voice‡`). `InfoTests` checks every link in
 both catalogs.
@@ -1094,13 +1069,11 @@ both catalogs.
 
 The app opens `konjugieren://` links from widgets, controls, intents, quick actions, Info
 articles, and Spotlight. Anything outside the app that can hand Konjugieren only a URL uses one.
-There is no web domain, so there are no universal links (decided 2026-11-12; see the browse plan).
+There is no web domain, so there are no universal links (decided 2026-11-12).
 
 ### Grammar
 
-Written 2026-11-12 for Phase 11 of
-[`plans/browse_and_verb_implementation.md`](../plans/browse_and_verb_implementation.md), before the
-`search` route was added, so that every route follows one shape:
+Every route follows one shape:
 
 ```
 konjugieren://<route>[/<target>][?<item>=<value>&…]
@@ -1111,7 +1084,7 @@ konjugieren://<route>[/<target>][?<item>=<value>&…]
   infinitive, a stable key. A route that needs no target takes none.
 - **Text travels in query items, never in the path**, because it can hold spaces and slashes
   ("stand auf"). Query items modify a route; unknown ones are ignored.
-- **`source`** may follow any route that leads to a verb page, a search, or (Phase 13) a quiz. It
+- **`source`** may follow any route that leads to a verb page, a search, or a quiz. It
   names the surface that built the link, from `AnalyticsSource`, because a widget or an intent can
   hand the app nothing but a URL. A missing or unknown value counts as `deeplink`.
 - **Builders, not literals.** App code builds links with `URL.verbDeeplink`, `URL.searchDeeplink`,
@@ -1119,20 +1092,18 @@ konjugieren://<route>[/<target>][?<item>=<value>&…]
   cannot see `AnalyticsSource`, write literals, and `DeeplinkTests` pins each literal's source to
   the vocabulary.
 
-| Route | Target | Query items | Opens | Since |
-|---|---|---|---|---|
-| `verb` | An infinitive, or `random` | `source`; `match`, a conjugation the page marks as it marks a search's match (`verb/gehen?match=ging`) | The verb page, on the reading and section of the match | Before 2026; `match` Phase 11 |
-| `search` | None | `q`, the text; `source` | The verb list with its search field. With text, the results show with the keyboard down; with none (or `q` empty), the field is cleared and focused for typing | Phase 11 |
-| `info` | A `stableKey`, or a legacy position | None | The article | Before 2026; keys Phase 11 |
-| `family` | A `BrowseableFamily` raw value | None | The family's page | Before 2026 |
-| `quiz` | `set`, `daily`, `challenge`, or any other (today `start`) | For `set`: `groups`, `verbs` or `infinitives`, `level`, `source`; for `daily`, `source`; for `challenge`, `date`, `level`, `source` | `set` shows a practice set in a sheet over the open tab; `daily` opens the Quiz tab and starts a daily session unless a quiz is under way or showing results (`World.dailySessionRequest`), which the reminder taps (`quiz/daily?source=reminder`); `challenge` opens the Quiz tab and starts that day's challenge at that level, or today's at the learner's level without a date, unless a quiz is under way or the challenge was taken (`World.challengeRequest`); any other target, the Quiz tab | Before 2026; `set` pedagogy Phase 10; `daily` pedagogy Phase 22; `challenge` pedagogy Phase 24 |
-| `list` | A collection's key: `top100`, `modals`, `sein`, or `ablaut-<exemplar>` (`ablaut-hängen`, percent-encoded) | `source` | The Families tab, on the collection's page, or for an ablaut group, the Ablaut page with that group expanded | Phase 16 |
+| Route | Target | Query items | Opens |
+|---|---|---|---|
+| `verb` | An infinitive, or `random` | `source`; `match`, a conjugation the page marks as it marks a search's match (`verb/gehen?match=ging`) | The verb page, on the reading and section of the match |
+| `search` | None | `q`, the text; `source` | The verb list with its search field. With text, the results show with the keyboard down; with none (or `q` empty), the field is cleared and focused for typing |
+| `info` | A `stableKey`, or a legacy position | None | The article |
+| `family` | A `BrowseableFamily` raw value | None | The family's page |
+| `quiz` | `set`, `daily`, `challenge`, or any other (today `start`) | For `set`: `groups`, `verbs` or `infinitives`, `level`, `source`; for `daily`, `source`; for `challenge`, `date`, `level`, `source` | `set` shows a practice set in a sheet over the open tab; `daily` opens the Quiz tab and starts a daily session unless a quiz is under way or showing results (`World.dailySessionRequest`), which the reminder taps (`quiz/daily?source=reminder`); `challenge` opens the Quiz tab and starts that day's challenge at that level, or today's at the learner's level without a date, unless a quiz is under way or the challenge was taken (`World.challengeRequest`); any other target, the Quiz tab |
+| `list` | A collection's key: `top100`, `modals`, `sein`, or `ablaut-<exemplar>` (`ablaut-hängen`, percent-encoded) | `source` | The Families tab, on the collection's page, or for an ablaut group, the Ablaut page with that group expanded |
 
-**Collections (Phase 16, 2026-11-13).** A collection is `list/<key>`. The `quiz/start?list=<key>`
-link that Phase 11 reserved was not built: a shared collection opens its page, where Quiz is one
-tap, so the quiz route took no query items until pedagogy Phase 10 gave its `set` target the
-practice set's (below). A shared collection's text carries its `list` link
-with `source` `sharedLink` beside the App Store link, as Josh chose on 2026-11-13, knowing that
+**Collections.** A collection is `list/<key>`. No quiz link names a collection: a shared
+collection opens its page, where Quiz is one tap. A shared collection's text carries its `list`
+link with `source` `sharedLink` beside the App Store link, as Josh chose on 2026-11-13, knowing that
 Messages may not make a `konjugieren://` link tappable and that it does nothing without the app.
 
 ### Architecture
@@ -1141,7 +1112,7 @@ Messages may not make a `konjugieren://` link tappable and that it does nothing 
 |------|---------|
 | `URLExtension.swift` | The grammar's constants (routes, query-item names), `isDeeplink`, `analyticsSource`, `deeplinkQueryValue(named:)`, and the builders, `practiceSetDeeplink` among them |
 | `PracticeSet.swift` | Reads a `quiz/set` link (`PracticeSet(url:)`) and writes one |
-| `World.swift` | `handleURL(_:)` parses a link and sets `verb` (with `verbSource` and `verbMarks`), `searchRequest`, `family`, `collection` (Phase 16), `practiceSet` (pedagogy Phase 10), or `info`, and the selected tab; `openSearch(text:source:)` is the search route's effect, which Command-F also uses |
+| `World.swift` | `handleURL(_:)` parses a link and sets `verb` (with `verbSource` and `verbMarks`), `searchRequest`, `family`, `collection`, `practiceSet`, or `info`, and the selected tab; `openSearch(text:source:)` is the search route's effect, which Command-F also uses |
 | `Info.swift` | `Info.info(deeplinkTarget:)` resolves a stable key or a legacy position |
 | `VerbBrowseView.swift` | Consumes `verb` and `searchRequest` on appear and on change, since a link can arrive before the tab first appears |
 | `FamilyBrowseView.swift` | Consumes `family` and `collection` the same way |
@@ -1170,9 +1141,7 @@ Info articles can link to verbs or other articles using the `‡...‡` markup. 
 
 A map from every one-word conjugation of every verb to the verbs it belongs to: ging → gehen,
 gehört → gehören and hören, halte → halten and the 67 separable verbs built on it. Reverse lookup
-in search reads it ([below](#search-by-conjugation)). Built 2026-11-12, in Phase 5 of
-[`plans/browse_and_verb_implementation.md`](../plans/browse_and_verb_implementation.md); search
-began reading it the same day, in Phase 6.
+in search reads it ([below](#search-by-conjugation)).
 
 ### What It Holds
 
@@ -1219,15 +1188,13 @@ Within a line, whole verbs come first, then finite parts, each alphabetical. The
 
 The Python pipelines (`corpus/working/build_corpus_index.py`, `verbdata/authored/check_forms.py`,
 `verbdata/authored/build_review_shards.py`) read the same map as `corpus/working/forms.json`, in
-the older JSON shape `{form: [{verb, contiguous, particle?}]}`. `scripts/write_forms_json.sh`
-builds the tool and runs it with `--forms-json`. Until 2026-11-12 a gated test harness,
-`CorpusFormsDumpTests`, wrote that file. The tool's first output was byte-identical to the
-harness's last, and the harness was deleted, so the pipelines and the app's search share one
+the JSON shape `{form: [{verb, contiguous, particle?}]}`. `scripts/write_forms_json.sh`
+builds the tool and runs it with `--forms-json`, so the pipelines and the app's search share one
 writer.
 
 ### `--cells-json`
 
-A third output, added 2026-11-12 for Phase 7 of the browse plan: every one-word conjugation with
+A third output: every one-word conjugation with
 its conjugationgroup and its verb's auxiliary (`ConjugationMapTool/CellsJSON.swift`).
 `scripts/count_conjugationgroups.py` reads it to count conjugationgroups in the corpus; see
 [`conjugationgroup_frequency.md`](conjugationgroup_frequency.md). Nothing in the app reads it.
@@ -1238,15 +1205,15 @@ its conjugationgroup and its verb's auxiliary (`ConjugationMapTool/CellsJSON.swi
 whose conjugation equals a text, as `ConjugationMatch` values (reading, conjugationgroup, and
 whether the text is only a finite part). It matches against every region and both clauses,
 ignoring case and spacing, as the quiz grades, but without the quiz's pronoun stripping, digraphs,
-or standard variants (Phase 1 of the pedagogy plan), which a cell lookup does not need: "stand auf" and "aufstand" both match aufstehen's Präteritum,
-and "ist gestanden" matches stehen. Search uses it to name a match, and the quiz's Tier 4
-diagnosis (`docs/pedagogy_research.md`) can use it to say which other cell an answer belongs to. The map
-says which verbs to ask; this function says which cells. The infinitive and the zu-infinitive are
+or standard variants, which a cell lookup does not need: "stand auf" and "aufstand" both match
+aufstehen's Präteritum, and "ist gestanden" matches stehen. Search uses it to name a match, and
+the quiz uses it to tell a slip from another cell's conjugation (see [One More Try](#one-more-try)).
+The map says which verbs to ask; this function says which cells. The infinitive and the zu-infinitive are
 not cells and never match.
 
 ### Search by Conjugation
 
-Built 2026-11-12, in Phase 6 of the browse plan. `VerbSearch.matches` looks the query up in
+`VerbSearch.matches` looks the query up in
 `ConjugationIndex` (`ConjugationIndex.swift`), which wraps the bundled map with a folded-spelling
 index and length buckets, and is built once, off the main actor, when the verb list first appears.
 
@@ -1264,8 +1231,8 @@ matches. A finite part comes only from a literal spelling, or zahl would gather 
 verbs.
 
 **Stranded parts.** A finite part (hielt, of aufhalten) matches only when the query is not itself
-an infinitive. Josh chose this on 2026-11-12, so that gehen and kommen search as they did before
-Phase 6. The verb list (`VerbSearchResults`) folds two or more finite-part matches into one row,
+an infinitive. Josh chose this on 2026-11-12, so that a search for gehen or kommen does not also
+list every separable verb whose finite part it spells. The verb list (`VerbSearchResults`) folds two or more finite-part matches into one row,
 "Also in 67 separable verbs", placed after the base verb and opened in place; a lone finite part
 gets an ordinary row. The shortcut picker passes `includeFiniteParts: false`, since it cannot fold
 them and 62 separable verbs would fill its 25 slots for komm.
@@ -1284,11 +1251,8 @@ ging, and the guess's row names ging's cells.
 ## Learner's Verbs
 
 One on-device record of the learner's own verbs: each verb opened, with its first and last dates
-and a count, and each verb starred, with the date. Built 2026-11-13 in Phase 12 of
-[`plans/browse_and_verb_implementation.md`](../plans/browse_and_verb_implementation.md), as the
-shared piece the ideas document's coordination table assigns to the browse track. Recents, My
-Verbs, the quiz's My Verbs scope, the verb of the day and random verb (Phase 14), and the review
-card (Phase 15), and collections (Phase 16) read it today; the quiz track will.
+and a count, and each verb starred, with the date. Recents, My Verbs, the quiz's My Verbs scope,
+the verb of the day and random verb, and collections read it.
 
 | Piece | Role |
 |---|---|
@@ -1298,16 +1262,16 @@ card (Phase 15), and collections (Phase 16) read it today; the quiz track will.
 **Where it lives.** JSON under the key `learnerVerbs` in the App Group's defaults
 (`WidgetConstants.sharedDefaults`), written through a `GetterSetterReal` given those defaults, so
 the widget extension, which has no corpus, can read the infinitives. Under unit tests it uses a
-`GetterSetterFake`. iCloud sync was rejected with the ideas document's smaller ideas.
+`GetterSetterFake`. iCloud sync was rejected.
 
 **What counts as an open.** Every `viewVerbView` whose source is not `resume`: a verb page
 arriving by any route, but not the same page reappearing after another tab or the background.
 
 **Adding a field.** It must be optional. Synthesized decoding ignores a default value and requires
 the key, so a required field would fail to decode every older record, and the learner's verbs
-would vanish without an error. `LearnerVerbsTests` pins the decoding of a minimal entry. Browse
-Phase 15's `review` was such a field; pedagogy Phase 11 moved it into the practice record, and
-decoding ignores it in records written before.
+would vanish without an error. `LearnerVerbsTests` pins the decoding of a minimal entry. The
+review card's old `review` field was such a field. The practice record now holds that schedule,
+and decoding ignores the field in older records.
 
 **Where it shows.** The verb page's star. The verb list's picker, whose third segment, My Verbs,
 lists the starred verbs, then the recent ones not starred, with Clear on the recent heading.
@@ -1321,8 +1285,7 @@ Return on iPad and Mac. Nothing is shown when there is no history.
 
 ### The Review Card
 
-Built 2026-11-13 in Phase 15 of the browse plan, for idea D4, and moved onto the practice record
-(§ The Practice Record, under Quiz System) on 2026-11-14 in Phase 11 of the pedagogy plan. Each
+The review card reads the practice record (§ The Practice Record, under Quiz System). Each
 launch, and each return from the background, the verb list shows one card above its rows when a
 strong or mixed verb has a key conjugation due: the verb whose item is longest overdue, a caption
 saying when it was last touched ("Looked up 3 days ago", or "Practiced 3 days ago" when a quiz
@@ -1339,25 +1302,23 @@ underneath.
 | `PracticeStore.recordLookup(_:source:)` | Called by the verb page on every open; puts a strong verb's key conjugations in the first box |
 | `ReviewCardView.swift` | The card. `VerbBrowseView` chooses the offer and applies each tap to the record |
 
-**What moves a verb (Josh, 2026-11-13, kept in Phase 11).** An open puts each strong or mixed
+**What moves a verb (Josh, 2026-11-13).** An open puts each strong or mixed
 reading's three key conjugations in the first box, due the next day, and so does any later open,
 since looking a verb up again suggests it was forgotten. An open from the card itself is the
 exception. Revealing moves each due key conjugation of the offered reading up a box; one not yet due
 keeps its place. Dismissing before revealing is no review: each due one keeps its box and returns
 the next day. Quiz answers move the same items.
 
-**Weak verbs are no longer offered** (Josh, 2026-11-14). Their conjugations are patterns shared by
-every weak verb, so a lookup of a weak verb schedules nothing, and Review (pedagogy Phase 12) drills
-the patterns. On the first launch with a practice record, each strong verb's Phase 15 schedule
-(`LearnerVerbs.Entry.review`, or for an older entry its last open) became its key conjugations'
-schedule, and weak verbs' schedules were dropped.
+**Weak verbs are not offered** (Josh, 2026-11-14). Their conjugations are patterns shared by
+every weak verb, so a lookup of a weak verb schedules nothing, and Review drills the patterns. On
+the first launch with a practice record, each strong verb's per-verb schedule in `LearnerVerbs`
+(`LearnerVerbs.Entry.review`, or for an older entry its last open) becomes its key conjugations'
+schedule, and weak verbs' schedules are dropped.
 
 ## Collections
 
-Fixed lists as places to go, from idea D6 of
-[`browse_and_verb_ideas.md`](browse_and_verb_ideas.md): the 100 most frequent verbs, the modal
-verbs, the verbs that take sein, and each of the 76 ablaut groups. Built 2026-11-13 in Phase 16 of
-[`plans/browse_and_verb_implementation.md`](../plans/browse_and_verb_implementation.md). Each shows
+Fixed lists as places to go: the 100 most frequent verbs, the modal verbs, the verbs that take
+sein, and each of the 76 ablaut groups. Each shows
 how many of its verbs have been looked up, starts an unranked ten-question quiz on itself in a
 sheet, and is shared as text with a `list/<key>` link and the App Store link.
 
@@ -1369,8 +1330,8 @@ sheet, and is shared as text with a `list/<key>` link and the App Store link.
 | `LearnerVerbs.hasOpened(_:)` | What counts toward progress: a verb with a last open. Clear in My Verbs forgets opens, so it resets every collection's progress; a star alone does not count |
 
 **Where they live (Josh, 2026-11-13).** At the top of the Families tab, which keeps its name. The
-ablaut groups stay on the Ablaut page, where an expanded group now begins with the bar, rather
-than each getting a page of its own. The seven family pages did not become collections.
+ablaut groups stay on the Ablaut page, where an expanded group begins with the bar, rather
+than each getting a page of its own. The seven family pages are not collections.
 
 **Membership.** The modal verbs are the six by name. The verbs that take sein are those with any
 reading that takes sein in the learner's region, so fahren is in for "ist gefahren", and liegen,
@@ -1381,7 +1342,7 @@ bar too.
 
 ## Game System
 
-A space-invaders-style arcade game where players shoot descending enemies. It involves no conjugation: the enemies carry app-icon images, and nothing in `GameState` asks for or checks a verb form. (Until 2026-11-10 this sentence said players shoot "by conjugating verbs"; `docs/pedagogy_research.md` discusses whether the game should.) The game features wave-based progression, power-ups, special mechanics, and Live Activity integration.
+A space-invaders-style arcade game where players shoot descending enemies. It involves no conjugation: the enemies carry app-icon images, and nothing in `GameState` asks for or checks a verb form. Josh decided to leave the game as play. The game features wave-based progression, power-ups, special mechanics, and Live Activity integration.
 
 ### Architecture
 
@@ -1501,11 +1462,10 @@ NextVerbIntent
 ### Choosing the Verb
 
 `VerbDraw` chooses the widget's verb for each day and every random verb (the `verb/random`
-deeplink, which the Random Verb control and shortcut send). Built 2026-11-13 in Phase 14 of
-[`plans/browse_and_verb_implementation.md`](../plans/browse_and_verb_implementation.md).
+deeplink, which the Random Verb control and shortcut send).
 
 - **The frequent verbs** are `FrequencyBand.top1000`, the bands being defined once on `Verb`
-  (`isIn(_:)`, `verbs(in:)`) for the quiz track as well. A draw weights each verb by 2 if it is
+  (`isIn(_:)`, `verbs(in:)`), where the quiz's levels read them too. A draw weights each verb by 2 if it is
   strong or mixed and by 2 if it has no prefix, so gehen counts 4 and abarbeiten 1. About 80% of
   draws land on a strong or unprefixed verb, against 64% of the band.
 - **My Verbs** (starred, then recent, as `LearnerVerbs.myVerbs`) gets one draw in three once it
@@ -1538,13 +1498,12 @@ Timeline refreshes daily at midnight via `.after(nextMidnight)` policy.
 
 Presents a daily multiple-choice conjugation question. Users tap an answer directly on the widget via `AnswerQuizIntent`. State (answered/correct) is tracked in shared `UserDefaults`.
 
-Since pedagogy Phase 24 (2026-11-15), each day's question is the **first question of that day's
-challenge at the learner's level** (`WidgetSnapshotWriter.quizQuestion(on:level:fallbackVerb:)`),
+Each day's question is the **first question of that day's challenge at the learner's level** (`WidgetSnapshotWriter.quizQuestion(on:level:fallbackVerb:)`),
 not a question about the verb of the day, which the verb widgets still show. Its wrong answers are
 the same reading's other cells, no Imperativ unless the question is one (its pronoun gives it away): one of the same table, one of the same person in another of the
 level's tables, and one more of either, shuffled by a generator seeded with the question's ID,
 `<day>-<level>-<infinitive>`. The app rewrites the bundle when the level changes, as well as at
-each activation. The verb widgets' Next no longer pages the quiz widget, whose question must stay
+each activation. The verb widgets' Next does not page the quiz widget, whose question must stay
 the day's. Tapping the widget beside its answers opens the day's challenge
 (`konjugieren://quiz/challenge?source=challengeWidget`); the answered widget still opens the verb.
 
@@ -1610,7 +1569,7 @@ Three Control Center buttons provide quick access to app features.
 
 | File | Purpose |
 |------|---------|
-| `FindVerbControl.swift` | Control Center button that opens the verb search, empty and focused (Phase 11 of the browse plan) |
+| `FindVerbControl.swift` | Control Center button that opens the verb search, empty and focused |
 | `QuickQuizControl.swift` | Control Center button that launches the quiz via deeplink |
 | `RandomVerbControl.swift` | Control Center button that opens a random verb via deeplink |
 
@@ -1619,7 +1578,7 @@ The buttons run `OpenVerbSearchIntent`, `OpenQuizIntent`, and `OpenRandomVerbCon
 ## Home Screen Quick Actions
 
 A long press on the app icon offers **Find a Verb**, which opens
-`konjugieren://search?source=quickAction`. Added 2026-11-12, in Phase 11 of the browse plan.
+`konjugieren://search?source=quickAction`.
 
 `QuickActions.swift` installs the item at launch (`UIApplication.shortcutItems`) rather than
 declaring it in Info.plist, so its title comes from the string catalog (`L.VerbBrowse.findVerb`,
@@ -1627,7 +1586,7 @@ the Command-F menu item's title). SwiftUI has no hook for quick actions, so an `
 adopted with `@UIApplicationDelegateAdaptor`, names `QuickActionSceneDelegate` as the scene
 delegate. A quick action that launches the app arrives in `scene(_:willConnectTo:options:)`, and
 one that brings it forward in `windowScene(_:performActionFor:completionHandler:)`. SwiftUI still
-manages the window, and `.onOpenURL` and Spotlight continuation work as before (checked in the
+manages the window, and `.onOpenURL` and Spotlight continuation still work (checked in the
 iOS 26.3 simulator, with the app running and not running).
 
 ## Siri Shortcuts / App Intents
@@ -1661,11 +1620,11 @@ The app registers five Siri Shortcuts via the App Intents framework.
 
 ### Look Up a Verb
 
-Added 2026-11-12, in Phase 11 of the browse plan. App Shortcut phrases can name only an entity or
+App Shortcut phrases can name only an entity or
 enum parameter, not free text, so the phrase is "Look up a verb with Konjugieren" and the intent
 asks for the word. The prompt turns off autocorrection and capitalization: in the simulator, an
 English keyboard turned ging into Going before the intent saw it. The phrases are English only,
-as the other shortcuts' are, since C3 (German phrases) was rejected.
+as the other shortcuts' are, since German phrases were rejected.
 
 The intent reads `VerbLookup`, which runs the verb list's own search (`VerbSearchResults`) with
 the learner's Search Scope and answers in the learner's language and conjugationgroup names:
@@ -1688,8 +1647,7 @@ without the answer showing; Siri should speak it, which needs a device to check.
 ## Spotlight
 
 Every verb has a Spotlight entry, indexed at each launch by `VerbSpotlight.indexVerbs()` into the
-named index `verbs`. Until 2026-11-12 the entries went into the default index with only a title
-and a subtitle. Phase 11 of the browse plan added:
+named index `verbs`. Each entry holds:
 
 | Field | Holds | Example (aufstehen) |
 |---|---|---|
@@ -1710,8 +1668,8 @@ description. Indexing classic `CSSearchableItem`s with the same fields, linked w
 `associateAppEntity`, matched no better, so the entities stayed. Developers report that keywords
 match less reliably than titles; a device test is the open question.
 
-**Leaving the default index.** On its first launch after the change, the app deletes the
-`VerbEntity` entries from the default index once (`spotlightLeftDefaultIndex`). It does so
+**Leaving the default index.** Earlier versions indexed the entries in the default index, so the
+app deletes the `VerbEntity` entries from it once (`spotlightLeftDefaultIndex`). It does so
 **before** indexing: deleting app entities by type, called on the default index, emptied the named
 index too in the simulator, and run afterward it left no entries at all.
 
@@ -1751,28 +1709,26 @@ Counts and durations go out in bands (`AnalyticsBand`), never as exact numbers.
 | `finishSearch` | `source` (where the search began; below), `outcome` (`opened`, `abandoned`, `noResult`), `queryLength` (`1-2`, `3-5`, `6-9`, `10+`), `resultCount` (`0`, `1`, `2-10`, `11+`), `matchKind`, `resultPosition` (`1`, `2-5`, `6+`, `none`) | Once per search: when a result or the guess is opened, the field is cleared, or the app goes to the background with text in the field |
 | `tapConjugationgroupArticle` | None | When the ⓘ button beside a verb page's conjugationgroup heading opens that conjugationgroup's article. The article itself also sends `viewInfoView` |
 | `tapShareVerb` | None | When the share button in a verb page's navigation bar is tapped, whether or not the learner then shares. Copying a conjugation with a long press sends nothing |
-| `tapStarVerb` | `starred` (`true`, `false`: the state after the tap) | When the star in a verb page's navigation bar is tapped (Phase 12) |
-| `tapTestVerb` | None | When "Test me on this verb" in a verb page's navigation bar is tapped (Phase 13). The quiz it opens sends `startQuiz` with `source` `verbPage` |
-| `viewReviewCard` | None | Once per card shown: when the review card first appears after a launch or a return from the background (Phase 15) |
-| `viewCollection` | `collection` (its key, such as `modals` or `ablaut-gehen`), `source` (`family`, `sharedLink`, `deeplink`, `quizCorrection`) | When a collection's page appears, once per arrival, or an ablaut group is expanded on the Ablaut page (Phase 16). The ideas document's "lists opened". The key names a fixed list, not anything the learner chose |
-| `tapShareChallenge` | `level` | When Share Result on a daily challenge's results, or its row on the hub once taken, is tapped, whether or not the learner then shares (pedagogy Phase 24). Never the result |
-| `tapShareCollection` | `collection` | When a collection's share button is tapped, whether or not the learner then shares (Phase 16) |
-| `tapResetPractice` | None | When Reset Practice in Settings is confirmed (pedagogy Phase 11). Nothing about the record is sent |
-| `tapDailyReminder` | `enabled` (`true`, `false`, `denied`) | When Settings' Daily Reminder is set On or Off (pedagogy Phase 22). `denied`: turned on, and notification permission refused, now or before, so the reminder stays off. Changing the time sends nothing |
-| `viewMastery` | None | When the Mastery page, pushed from the Quiz tab's hub, appears (pedagogy Phase 20). Nothing about the record or the level is sent |
-| `tapRevealReviewCard` | None | When a tap reveals the review card's key conjugations, once per card (Phase 15). A page opened from the card then sends `viewVerbView` with `source` `reviewCard` |
-| `tapViewAchievements` | `source` (`tab`) from the Quiz tab's hub; none from Settings | When View Achievements on the hub or in Settings is tapped (pedagogy Phase 23). Nothing about progress is sent |
-| `tapViewLeaderboard` | `source` (`tab`) from the Quiz tab's hub; none from Settings | When View Leaderboard on the Quiz tab's hub (pedagogy Phase 13) or View Leaderboards in Settings is tapped. The results screen's button, which sent nothing, is gone |
-| `startQuiz`, `quitQuiz`, `completeQuiz` | `source` (`tab`, `myVerbs`, `verbPage`, `list`, `custom`); `level` (`beginner`, `elementary`, `intermediate`, `advanced`); `quitQuiz` also `questionNumber` and `duration` (`0-3s`, `3-15s`, `15-40s`, `40s-2m`, `2m+`); `completeQuiz` also `questionCount` (`10`, `20`, `30`, …, or `3`); `startQuiz` alone also carries `collection` for a collection's quiz (Phase 16), or for a custom quiz over a collection, and `customChoice` (`conjugationgroups`, `verbs`, `both`) for a custom quiz (pedagogy Phase 9). A Review or My Mistakes session (`review`, `mistakes`, pedagogy Phase 12) sends neither `questionCount` nor `questionNumber`, since either would tell how many items were due or missed, and neither does a mixed ablaut session (`ablautMixed`, pedagogy Phase 16); an ablaut group's practice carries `collection` | When a quiz starts, is quit, or reaches its results (`source` since Phase 13). Without it, three-question quizzes would inflate the completion rate of the default quiz. `level` replaced `difficulty` (`regular`, `ridiculous`), which only `quitQuiz` and `completeQuiz` sent, in Phase 5 of the pedagogy plan, and `startQuiz` gained it then (M1). Since Phase 7, `completeQuiz` is sent at each round's results, and its `questionCount` says how many rounds' questions the session has asked, so Ten More shows as `20` and `30`. `duration` (M3) is wall-clock time from the start to the quit, background included. `questionNumber` does not count re-asks (`Quiz.questionReached`): a re-ask follows only a wrong answer, so a position counting them, such as 13 in a round of ten, told how many answers were wrong. It counted them until the pedagogy plan's Closing (2026-11-15) |
-| `abandonQuiz` | `source`, `level`, `questionNumber` (not for `review` or `mistakes`) | At launch, once for each quiz the last run left in progress (M2, Phase 7 of the pedagogy plan): the app was closed or killed during a question. `QuizAbandonment` keeps an entry per running quiz in `GetterSetter`, written at the start and at each question and removed at a quit or the results. A quiz left at its results is not abandoned |
+| `tapStarVerb` | `starred` (`true`, `false`: the state after the tap) | When the star in a verb page's navigation bar is tapped |
+| `tapTestVerb` | None | When "Test me on this verb" in a verb page's navigation bar is tapped. The quiz it opens sends `startQuiz` with `source` `verbPage` |
+| `viewReviewCard` | None | Once per card shown: when the review card first appears after a launch or a return from the background |
+| `viewCollection` | `collection` (its key, such as `modals` or `ablaut-gehen`), `source` (`family`, `sharedLink`, `deeplink`, `quizCorrection`) | When a collection's page appears, once per arrival, or an ablaut group is expanded on the Ablaut page. The key names a fixed list, not anything the learner chose |
+| `tapShareChallenge` | `level` | When Share Result on a daily challenge's results, or its row on the hub once taken, is tapped, whether or not the learner then shares. Never the result |
+| `tapShareCollection` | `collection` | When a collection's share button is tapped, whether or not the learner then shares |
+| `tapResetPractice` | None | When Reset Practice in Settings is confirmed. Nothing about the record is sent |
+| `tapDailyReminder` | `enabled` (`true`, `false`, `denied`) | When Settings' Daily Reminder is set On or Off. `denied`: turned on, and notification permission refused, now or before, so the reminder stays off. Changing the time sends nothing |
+| `viewMastery` | None | When the Mastery page, pushed from the Quiz tab's hub, appears. Nothing about the record or the level is sent |
+| `tapRevealReviewCard` | None | When a tap reveals the review card's key conjugations, once per card. A page opened from the card then sends `viewVerbView` with `source` `reviewCard` |
+| `tapViewAchievements` | `source` (`tab`) from the Quiz tab's hub; none from Settings | When View Achievements on the hub or in Settings is tapped. Nothing about progress is sent |
+| `tapViewLeaderboard` | `source` (`tab`) from the Quiz tab's hub; none from Settings | When View Leaderboard on the Quiz tab's hub or View Leaderboards in Settings is tapped |
+| `startQuiz`, `quitQuiz`, `completeQuiz` | `source` (`tab`, `myVerbs`, `verbPage`, `list`, `custom`); `level` (`beginner`, `elementary`, `intermediate`, `advanced`); `quitQuiz` also `questionNumber` and `duration` (`0-3s`, `3-15s`, `15-40s`, `40s-2m`, `2m+`); `completeQuiz` also `questionCount` (`10`, `20`, `30`, …, or `3`); `startQuiz` alone also carries `collection` for a collection's quiz, or for a custom quiz over a collection, and `customChoice` (`conjugationgroups`, `verbs`, `both`) for a custom quiz. A Review or My Mistakes session (`review`, `mistakes`) sends neither `questionCount` nor `questionNumber`, since either would tell how many items were due or missed, and neither does a mixed ablaut session (`ablautMixed`); an ablaut group's practice carries `collection` | When a quiz starts, is quit, or reaches its results. Without `source`, three-question quizzes would inflate the completion rate of the default quiz. `level` replaces `difficulty` (`regular`, `ridiculous`), which the shipped app sends with `quitQuiz` and `completeQuiz` only. `completeQuiz` is sent at each round's results, and its `questionCount` says how many rounds' questions the session has asked, so Ten More shows as `20` and `30`. `duration` is wall-clock time from the start to the quit, background included. `questionNumber` does not count re-asks (`Quiz.questionReached`): a re-ask follows only a wrong answer, so a position counting them, such as 13 in a round of ten, would tell how many answers were wrong |
+| `abandonQuiz` | `source`, `level`, `questionNumber` (not for `review` or `mistakes`) | At launch, once for each quiz the last run left in progress: the app was closed or killed during a question. `QuizAbandonment` keeps an entry per running quiz in `GetterSetter`, written at the start and at each question and removed at a quit or the results. A quiz left at its results is not abandoned |
 
 `VerbVisit` models one stretch of a verb page on screen, and `SearchTracker` and `SearchReport`
 model one search. A section counts as reached when a third of its block's first card is on screen
 (`onScrollVisibilityChange`); `simple` is the Präsens Indikativ card and `compound` the Perfekt
-Indikativ card, the first of each block in `ConjugationTable`. Until Phase 7 of the browse plan
-reordered the page (2026-11-12), `simple` was the Perfektpartizip card, which sat higher, so
-`header` alone is likelier than before. Returning to the results and opening another verb without editing the text sends
-no second `finishSearch`. An abandoned search's `matchKind` is that of the top result it passed
+Indikativ card, the first of each block in `ConjugationTable`. Returning to the results and
+opening another verb without editing the text sends no second `finishSearch`. An abandoned search's `matchKind` is that of the top result it passed
 over.
 
 A search's `source` is the surface that opened the field for it: `control` (Find a Verb in
@@ -1780,65 +1736,63 @@ Control Center), `quickAction`, `lookup` (Look Up a Verb, when it opens the sear
 `deeplink` (a `search` link from elsewhere). A search the learner began in the Verbs tab,
 Command-F included, is `tab`. Only the first search after another surface opens the field takes
 that surface's value; clearing the field and typing again is `tab`, and so is typing after the
-field was closed untouched (`SearchTracker.fieldOpened(from:)`, `fieldClosed()`). Added
-2026-11-12 in Phase 11, so that a verb page reached through a search still says which outside
-surface led there.
+field was closed untouched (`SearchTracker.fieldOpened(from:)`, `fieldClosed()`). This way a
+verb page reached through a search still says which outside surface led there.
 
 `matchKind` values are `VerbSearch.MatchKind`'s eleven cases by name, including `conjugation`,
-`finitePart`, and `foldedConjugation` from Phase 6 of
-[`plans/browse_and_verb_implementation.md`](../plans/browse_and_verb_implementation.md), plus
+`finitePart`, and `foldedConjugation` (see [Search by Conjugation](#search-by-conjugation)), plus
 `guess` (the empty state's closest verb) and `none`. `resultCount` counts verbs, including those
 inside a folded row, and `resultPosition` counts rows as shown, so the verbs of an open folded row
 follow it. Opening or closing that row sends nothing.
 
 ### The `source` vocabulary
 
-`AnalyticsSource` is one vocabulary for `viewVerbView`, `finishSearch` (since Phase 11), and the
-three quiz signals (since Phase 13). A quiz's `source` is where it was begun, or for the Quiz tab's
+`AnalyticsSource` is one vocabulary for `viewVerbView`, `finishSearch`, and the three quiz
+signals. A quiz's `source` is where it was begun, or for the Quiz tab's
 My Verbs scope, the list it was begun on.
 
 | Value | Sent today? | Meaning |
 |---|---|---|
-| `ablautAlone` | Yes | The quiz signals only: an ablaut group practiced alone (pedagogy Phase 16) |
-| `ablautMixed` | Yes | The quiz signals only: an ablaut group practiced mixed with the known groups (pedagogy Phase 16) |
+| `ablautAlone` | Yes | The quiz signals only: an ablaut group practiced alone |
+| `ablautMixed` | Yes | The quiz signals only: an ablaut group practiced mixed with the known groups |
 | `browse` | Yes | A row of the verb list with the search field empty |
 | `control` | Yes | The Random Verb control in Control Center; for `finishSearch`, the Find a Verb control |
-| `custom` | Yes | The quiz signals only: a custom quiz from the Quiz tab (pedagogy Phase 9) |
+| `custom` | Yes | The quiz signals only: a custom quiz from the Quiz tab |
 | `deeplink` | Yes | A `konjugieren://` link with no recognized `source` |
-| `lookup` | Yes | Look Up a Verb: the page it opens, or the search it opens when the word is ambiguous (Phase 11) |
+| `lookup` | Yes | Look Up a Verb: the page it opens, or the search it opens when the word is ambiguous |
 | `family` | Yes | A verb on a family's page, including an expanded ablaut group; for `viewCollection`, a collection opened from the Families tab |
 | `handoff` | Yes | Handoff from another device |
 | `infoLink` | Yes | A verb linked from an Info article |
 | `related` | Yes | A verb in a verb page's Related Verbs card, or in the full list it opens |
-| `quizCorrection` | Yes | A verb page opened from a quiz's held correction; for `viewCollection`, an ablaut group opened from it (pedagogy Phase 3) |
-| `quickAction` | Yes | `finishSearch` only: the Find a Verb quick action on the app icon (Phase 11) |
+| `quizCorrection` | Yes | A verb page opened from a quiz's held correction; for `viewCollection`, an ablaut group opened from it |
+| `quickAction` | Yes | `finishSearch` only: the Find a Verb quick action on the app icon |
 | `resume` | Yes | The same page appearing again (see above) |
 | `search` | Yes | A search result, opened by tap, Return, or the arrow keys |
 | `searchGuess` | Yes | The guess under "No verbs found" |
 | `shortcut` | Yes | The Open Verb and Random Verb shortcuts |
 | `spotlight` | Yes | A Spotlight result |
 | `widget` | Yes | Any home-screen, lock-screen, or quiz widget |
-| `sharedLink` | Yes | `viewCollection` only: a collection's `list` link inside the text its share button sends (Phase 16). A verb's share text carries only the App Store link, as Josh chose on 2026-11-12 |
-| `myVerbs` | Yes | A verb in the verb list's My Verbs (Phase 12); for the quiz signals, a quiz over My Verbs (Phase 13) |
-| `recent` | Yes | A recent verb, listed while the search field is focused and empty (Phase 12) |
-| `list` | Yes | A verb on a featured collection's page; for the quiz signals, a collection's quiz (Phase 16) |
-| `reviewCard` | Yes | The review card, tapped after its conjugations are revealed (Phase 15) |
-| `review` | Yes | The quiz signals only: a Review session from the Quiz tab (pedagogy Phase 12) |
-| `mistakes` | Yes | The quiz signals only: a Practice My Mistakes session from the Quiz tab (pedagogy Phase 12) |
-| `verbEssentials` | Yes | The quiz signals only: Verb Essentials from the Quiz tab (pedagogy Phase 15) |
-| `ablautAlone`, `ablautMixed` | Yes | The quiz signals only: an ablaut group's practice, alone or mixed (pedagogy Phase 16) |
-| `recognition` | Yes | The quiz signals only: Name the Conjugation from the Quiz tab (pedagogy Phase 17) |
-| `sentences` | Yes | The quiz signals only: Sentences from the Quiz tab (pedagogy Phase 18) |
-| `speedRound` | Yes | The quiz signals only: the Speed Round from the Quiz tab (pedagogy Phase 21) |
-| `daily` | Yes | The quiz signals only: a daily session from the Quiz tab, or from Another Session on its results (pedagogy Phase 22) |
-| `reminder` | Yes | The quiz signals only: a daily session started by tapping the daily reminder (pedagogy Phase 22) |
-| `challenge` | Yes | The quiz signals only: the daily challenge from the Quiz tab (pedagogy Phase 24) |
-| `challengeLink` | Yes | The quiz signals only: a daily challenge opened from the link in a shared result (pedagogy Phase 24) |
-| `challengeWidget` | Yes | The quiz signals only: a daily challenge opened by tapping the quiz widget (pedagogy Phase 24) |
-| `tab` | Yes | A search begun in the Verbs tab (Phase 11); for the quiz signals, a quiz over every verb from the Quiz tab (Phase 13) |
-| `verbPage` | Yes | The quiz signals only: "Test me on this verb" (Phase 13) |
+| `sharedLink` | Yes | `viewCollection` only: a collection's `list` link inside the text its share button sends. A verb's share text carries only the App Store link, as Josh chose on 2026-11-12 |
+| `myVerbs` | Yes | A verb in the verb list's My Verbs; for the quiz signals, a quiz over My Verbs |
+| `recent` | Yes | A recent verb, listed while the search field is focused and empty |
+| `list` | Yes | A verb on a featured collection's page; for the quiz signals, a collection's quiz |
+| `reviewCard` | Yes | The review card, tapped after its conjugations are revealed |
+| `review` | Yes | The quiz signals only: a Review session from the Quiz tab |
+| `mistakes` | Yes | The quiz signals only: a Practice My Mistakes session from the Quiz tab |
+| `verbEssentials` | Yes | The quiz signals only: Verb Essentials from the Quiz tab |
+| `ablautAlone`, `ablautMixed` | Yes | The quiz signals only: an ablaut group's practice, alone or mixed |
+| `recognition` | Yes | The quiz signals only: Name the Conjugation from the Quiz tab |
+| `sentences` | Yes | The quiz signals only: Sentences from the Quiz tab |
+| `speedRound` | Yes | The quiz signals only: the Speed Round from the Quiz tab |
+| `daily` | Yes | The quiz signals only: a daily session from the Quiz tab, or from Another Session on its results |
+| `reminder` | Yes | The quiz signals only: a daily session started by tapping the daily reminder |
+| `challenge` | Yes | The quiz signals only: the daily challenge from the Quiz tab |
+| `challengeLink` | Yes | The quiz signals only: a daily challenge opened from the link in a shared result |
+| `challengeWidget` | Yes | The quiz signals only: a daily challenge opened by tapping the quiz widget |
+| `tab` | Yes | A search begun in the Verbs tab; for the quiz signals, a quiz over every verb from the Quiz tab |
+| `verbPage` | Yes | The quiz signals only: "Test me on this verb" |
 
-A phase that adds a way to reach a verb page passes its value in `VerbDestination`, the value the
+A new way to reach a verb page passes its value in `VerbDestination`, the value the
 `Verbs` and `Families` navigation stacks push, or in the deeplink's `source` query item. It also
 adds the privacy-policy lines to [`privacy_policy_pending.md`](privacy_policy_pending.md).
 

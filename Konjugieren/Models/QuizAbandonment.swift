@@ -2,8 +2,8 @@
 
 import Foundation
 
-/// The quizzes in progress, kept so that the next launch can report one the app was left during
-/// (the report's M2). A quiz writes its entry as it starts and at each question, and removes it
+/// The quizzes in progress, kept so that the next launch can report one the app was left during.
+/// A quiz writes its entry as it starts and at each question, and removes it
 /// when it is quit or reaches its results, so an entry still present at launch belongs to a quiz
 /// that ended with the app. Entries are keyed by quiz, since a quiz in a sheet can run beside the
 /// Quiz tab's.

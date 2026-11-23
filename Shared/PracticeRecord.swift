@@ -2,7 +2,7 @@
 
 import Foundation
 
-/// What one quiz answer exercises, and what the review ladder schedules (T3.5). A strong or mixed
+/// What one quiz answer exercises, and what the review ladder schedules. A strong or mixed
 /// reading's question exercises one of the verb's key conjugations, the stem it is built on. A
 /// weak verb's question exercises a pattern, a conjugationgroup and person that every weak verb
 /// shares, since a learner who can write machte can write sagte. The app decides which question
@@ -66,8 +66,7 @@ nonisolated enum PracticeItem: Hashable, Sendable {
 
 /// The learner's practice record: a box and a due date for each item a quiz answer, a lookup, or
 /// the review card has touched, and how the last answer went. It is kept in the App Group's shared
-/// defaults, so that a widget or a reminder can read it, and it is never sent anywhere (Decision 5
-/// of the pedagogy plan).
+/// defaults, so that a widget or a reminder can read it, and it is never sent anywhere.
 nonisolated struct PracticeRecord: Codable, Equatable, Sendable {
   // A field added later must be optional. Synthesized decoding ignores a default value and
   // requires the key, so any other field would fail to decode every record written before it,
@@ -126,7 +125,7 @@ nonisolated struct PracticeRecord: Codable, Equatable, Sendable {
   }
 
   /// A quiz's answer, recorded as it is given, so that a quiz quit after six questions has still
-  /// practiced six (T6.4).
+  /// practiced six.
   mutating func recordAnswer(_ item: PracticeItem, isCorrect: Bool, at date: Date, calendar: Calendar = .current) {
     var entry = entries[item.key] ?? Entry(schedule: .new(at: date))
     entry.schedule = entry.schedule.answered(correctly: isCorrect, at: date, calendar: calendar)

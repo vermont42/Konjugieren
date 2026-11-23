@@ -34,7 +34,7 @@ struct CustomQuizTests {
     }
   }
 
-  // The stored form is permanent: it is kept between launches, and Phase 10 shares it as a link.
+  // The stored form is permanent: it is kept between launches and carried in shared links.
   @Test func theStoredFormIsPinned() {
     let custom = CustomQuiz(tables: [.präteritumIndikativ, .präsensIndikativ], verbSet: .collection(.modals))
     #expect(custom.rawValue == "groups=praesens_indikativ,praeteritum_indikativ&verbs=modals")

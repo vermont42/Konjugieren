@@ -18,8 +18,8 @@ import Testing
 // Ungated, the export of all 3,572 verbs took about 200 of the suite's 215 seconds, and it wrote
 // to a uniquely named temporary file that nothing read. Gated on 2026-11-12, at Josh's request.
 //
-// The export calls Conjugator directly, so separable verbs come out joined (anfängt), not as the
-// verb page shows them since Phase 4 of the browse plan (fängt an).
+// The export calls Conjugator directly, so separable verbs come out joined (anfängt), not split
+// as the verb page shows them (fängt an).
 @Suite("VerbExport", .enabled(if: ProcessInfo.processInfo.environment["KONJUGIEREN_EXPORT_OUT"] != nil))
 @MainActor
 struct VerbExportTests {

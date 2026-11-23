@@ -195,9 +195,9 @@ enum AnalyticsBand {
     }
   }
 
-  /// From a quiz's start to its quit. The report reads a quit within three seconds as exploring
-  /// and one after forty as struggling; the longer bands split a round of ten, which often runs
-  /// one to three minutes.
+  /// From a quiz's start to its quit. `docs/pedagogy_research.md` reads a quit within three seconds
+  /// as exploring and one after forty as struggling; the longer bands split a round of ten, which
+  /// often runs one to three minutes.
   nonisolated static func quizDuration(_ seconds: TimeInterval) -> String {
     switch seconds {
     case ..<3:

@@ -2,7 +2,7 @@
 
 import SwiftUI
 
-/// An expanded ablaut group's practice (Phase 16 of the pedagogy plan): Verb Essentials over the
+/// An expanded ablaut group's practice: Verb Essentials over the
 /// group alone, and mixed with the groups the learner knows. A single-verb group says why it has
 /// neither.
 struct AblautPracticeCard: View {

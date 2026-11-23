@@ -64,8 +64,7 @@ Additional iOS-platform features not covered in `platform_features.md`. These co
 **Key APIs:** `UserNotifications`, `UNUserNotificationCenter`, `UNMutableNotificationContent`
 **Availability:** iOS 10.0+
 
-**Built on `main` 2026-11-15** by Phase 22 of [`plans/pedagogy_implementation.md`](../plans/pedagogy_implementation.md):
-the daily practice reminder, worded with how many conjugations are due and whether the streak
+**Built on `main` 2026-11-15**: the daily practice reminder, worded with how many conjugations are due and whether the streak
 needs repair, which covers the spaced-repetition follow-ups and streak protection above in one
 notification a day. See [`feature_architecture.md`](feature_architecture.md) § The Daily Session
 and the Streak.

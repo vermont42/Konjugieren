@@ -276,7 +276,7 @@ extension QuizTests {
       #expect(PracticeStore(getterSetter: getterSetter).challengeResult(for: result.key) == result)
     }
 
-    /// Sharing says which level's challenge was shared, and never how it went (Decision 5).
+    /// Sharing says which level's challenge was shared, and never how it went.
     @Test func sharingSendsTheLevelAlone() throws {
       let spy = Current.analytics as! AnalyticsSpy
       DailyChallengeResult(key: key(0, level: .advanced), outcomes: [.right, .wrong]).signalShare()

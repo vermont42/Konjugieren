@@ -4,7 +4,7 @@ import Foundation
 
 /// A context and the same sentence in two conjugationgroups, of which the learner picks the one a
 /// German speaker or writer would use: "Am Samstag habe ich lange geschlafen." over "Am Samstag
-/// schlief ich lange." in conversation (Phase 19 of the pedagogy plan). The items live in
+/// schlief ich lange." in conversation. The items live in
 /// `ChoiceQuestions.json`. Claude drafts them, `ChoiceQuestionTests` confirms both sentences
 /// against the conjugator, and Josh reviews each before it ships, which `reviewed` records.
 struct ChoiceQuestion: Decodable, Identifiable, Equatable {

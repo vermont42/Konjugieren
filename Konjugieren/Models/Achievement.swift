@@ -1,7 +1,7 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
-/// Game Center achievements for mastery milestones, never for volume of play (T6.6; Josh approved
-/// the list on 2026-11-15). Each counts what the Mastery page counts, an item in the third box or
+/// Game Center achievements for mastery milestones, never for volume of play (Josh approved the
+/// list on 2026-11-15). Each counts what the Mastery page counts, an item in the third box or
 /// beyond, so the record that fills the page also earns these. Their titles, descriptions, and
 /// artwork live in App Store Connect and `GameCenterResources.gamekit`; see
 /// docs/game_center_setup.md.

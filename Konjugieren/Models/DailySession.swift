@@ -2,7 +2,7 @@
 
 import Foundation
 
-/// The daily session (Phase 22 of the pedagogy plan, T6.3): ten questions at the learner's level,
+/// The daily session: ten questions at the learner's level,
 /// filled first from what the practice record has due and then with the default quiz's draw
 /// (Josh, 2026-11-13). Finishing one extends the streak.
 enum DailySession {

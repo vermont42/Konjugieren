@@ -319,7 +319,7 @@ struct DeeplinkTests {
   }
 
   /// A shared result's link names its day and level, which a friend's app asks whatever its own
-  /// level (Phase 24).
+  /// level.
   @Test func handleURLChallengeDeeplink() throws {
     let key = DailyChallenge.Key(day: "2026-11-15", level: .advanced)
     let url = try #require(URL.challengeDeeplink(key, source: .challengeLink))

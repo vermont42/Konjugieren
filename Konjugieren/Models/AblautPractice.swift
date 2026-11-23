@@ -2,7 +2,7 @@
 
 import Foundation
 
-/// An ablaut group as its practice sees it (Phase 16 of the pedagogy plan, T5.2): Verb Essentials
+/// An ablaut group as its practice sees it: Verb Essentials
 /// over one group alone, then mixed with the groups already known. Practicing a pattern alone
 /// before mixing it did better in Pan et al. (2019); for ablaut groups as such there is no study,
 /// so this is a bet.

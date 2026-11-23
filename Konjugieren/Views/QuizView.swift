@@ -485,7 +485,7 @@ struct QuizView: View {
   }
 
   /// The right answers so far and the time left, which shows whatever the clock setting, since this
-  /// is the one place the clock counts (T5.7). The last seconds turn red.
+  /// is the one place the clock counts. The last seconds turn red.
   private var speedRoundStatus: some View {
     HStack {
       Text(label: L.Quiz.correct, value: "\(quiz.correctCount)")
@@ -713,9 +713,8 @@ struct QuizView: View {
     sizeClass == .regular
   }
 
-  /// The practice hub (Phase 13 of the pedagogy plan): what a session is, how long it takes, the
-  /// level, Start, what the record has due or missed, the last result, the exercises beside the
-  /// quiz, and the leaderboard last.
+  /// The practice hub: what a session is, how long it takes, the level, Start, what the record has
+  /// due or missed, the last result, the exercises beside the quiz, and the leaderboard last.
   private var startScreen: some View {
     GeometryReader { geometry in
       ScrollView {
@@ -824,7 +823,7 @@ struct QuizView: View {
   }
 
   /// A modest control below everything else, since the leaderboard is beside the point of
-  /// practice, though one tap away (T6.6).
+  /// practice, though one tap away.
   private var leaderboardButton: some View {
     Button {
       Current.gameCenter.showLeaderboard(level: level)
@@ -974,7 +973,7 @@ struct QuizView: View {
     }
   }
 
-  /// The custom quiz as a practice set, for a teacher to hand a class (Phase 10).
+  /// The custom quiz as a practice set, for a teacher to hand a class.
   private var sharedPracticeSet: PracticeSet {
     PracticeSet(sharing: customQuiz, level: level, myVerbs: myVerbs)
   }
@@ -1020,9 +1019,8 @@ struct QuizView: View {
     .accessibilityIdentifier("custom_quiz_share_button")
   }
 
-  /// The daily session with its streak (Phase 22 of the pedagogy plan), Review and My Mistakes,
-  /// each started directly or saying why there is nothing to ask (Phase 12), Mastery (Phase 20),
-  /// and the last quiz's results.
+  /// The daily session with its streak, Review and My Mistakes, each started directly or saying
+  /// why there is nothing to ask, Mastery, and the last quiz's results.
   private var practiceSection: some View {
     VStack(alignment: .leading, spacing: Layout.defaultSpacing) {
       Text(L.PracticeSession.heading)
@@ -1077,8 +1075,8 @@ struct QuizView: View {
     .frame(maxWidth: .infinity, alignment: .leading)
   }
 
-  /// Today's challenge at the learner's level (Phase 24 of the pedagogy plan), which starts it, or,
-  /// once it is taken, shows its result and shares it.
+  /// Today's challenge at the learner's level, which starts it, or, once it is taken, shows its
+  /// result and shares it.
   private var challengeRow: some View {
     let key = DailyChallenge.Key(date: .now, level: level)
     let result = Current.practice.challengeResult(for: key)
@@ -1106,9 +1104,8 @@ struct QuizView: View {
     }
   }
 
-  /// Ways to practice beside the quiz: Verb Essentials (Phase 15 of the pedagogy plan), the ablaut
-  /// groups' practice (Phase 16), which opens a list of the groups, Name the Conjugation (Phase
-  /// 17), Sentences (Phase 18), and the exercises of later phases.
+  /// Ways to practice beside the quiz: Verb Essentials, the ablaut groups' practice, which opens a
+  /// list of the groups, Name the Conjugation, Sentences, and the Speed Round.
   private var exercisesSection: some View {
     VStack(alignment: .leading, spacing: Layout.defaultSpacing) {
       Text(L.Quiz.exercises)

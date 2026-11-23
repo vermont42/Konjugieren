@@ -3,8 +3,7 @@
 import SwiftUI
 
 /// A choice question's two sentences, each with its conjugation highlighted and its
-/// conjugationgroup named beneath, and, once one is chosen, the reason and Continue (Phase 19 of
-/// the pedagogy plan).
+/// conjugationgroup named beneath, and, once one is chosen, the reason and Continue.
 struct ChoiceQuestionView: View {
   let choice: ChoicePrompt
   /// The chosen sentence, once the learner has chosen.

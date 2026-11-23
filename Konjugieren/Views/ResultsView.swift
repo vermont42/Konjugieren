@@ -188,7 +188,7 @@ struct ResultsView: View {
     }
   }
 
-  /// A ranked session's first round against its level's best (Phase 23). The best measures the
+  /// A ranked session's first round against its level's best. The best measures the
   /// first ten questions without their re-asks, the leaderboard's score, so the number shown may
   /// be below the score above it.
   @ViewBuilder
@@ -225,7 +225,7 @@ struct ResultsView: View {
   /// The rows that offer the verb's literary example: the first right answer of each verb, so
   /// that a Verb Essentials verb's three right blanks offer it once. A reward for a right answer
   /// shown after the quiz, never during it, since the quiz moves on at once after a right answer
-  /// (Phase 18 of the pedagogy plan, as Josh decided on 2026-11-13 and 2026-11-15).
+  /// (Josh, 2026-11-13 and 2026-11-15).
   private var exampleRowIDs: Set<UUID> {
     var verbs: Set<String> = []
     var ids: Set<UUID> = []

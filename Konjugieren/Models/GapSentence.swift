@@ -9,7 +9,7 @@ extension QuizScope {
 }
 
 /// A short authored sentence with its verb blanked, "Gestern {sind} wir ins Kino {gegangen}.",
-/// which ties a conjugation to a meaning (Phase 18 of the pedagogy plan). The sentences live in
+/// which ties a conjugation to a meaning. The sentences live in
 /// `GapSentences.json`. Claude drafts them, `GapSentenceTests` confirms every blank against the
 /// conjugator, and each is reviewed before it ships, which `reviewed` records.
 struct GapSentence: Decodable, Identifiable, Equatable {

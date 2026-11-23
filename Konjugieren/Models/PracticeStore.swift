@@ -9,18 +9,16 @@ final class PracticeStore {
   private(set) var record: PracticeRecord
   /// The results of the last quiz the learner saw, for the Quiz tab's hub.
   private(set) var lastResult: LastQuizResult?
-  /// The most right answers in one Speed Round, kept on the device and sent nowhere (Phase 21).
+  /// The most right answers in one Speed Round, kept on the device and sent nowhere.
   private(set) var speedRoundBest: Int?
-  /// The days a daily session was finished, kept on the device and sent nowhere but as a band
-  /// (Phase 22).
+  /// The days a daily session was finished, kept on the device and sent nowhere but as a band.
   private(set) var dailyStreak = DailyStreak()
   /// The best ranked score at each level, by `QuizLevel.rawValue`: the first ten questions of a
-  /// default quiz, what the level's leaderboard takes. Kept on the device and sent nowhere
-  /// (Phase 23).
+  /// default quiz, what the level's leaderboard takes. Kept on the device and sent nowhere.
   private(set) var levelBests: [String: Int] = [:]
-  /// The challenges finished lately, the newest last, kept on the device and sent nowhere
-  /// (Phase 24). Reset Practice keeps them, since each is a day's result rather than a record of
-  /// what is known, and forgetting one would let its challenge be taken again.
+  /// The challenges finished lately, the newest last, kept on the device and sent nowhere. Reset
+  /// Practice keeps them, since each is a day's result rather than a record of what is known, and
+  /// forgetting one would let its challenge be taken again.
   private(set) var challengeResults: [DailyChallengeResult] = []
   private let getterSetter: GetterSetter
   private let calendar: Calendar
@@ -215,10 +213,10 @@ final class PracticeStore {
     }
   }
 
-  /// Browse Phase 15 kept one review schedule per verb, on `LearnerVerbs.Entry.review`, and an
-  /// entry from before that phase counted as looked up on its last open. Each strong or mixed
-  /// verb's schedule becomes its key conjugations' schedule. A weak verb's is dropped, since the
-  /// card no longer offers weak verbs (Josh, 2026-11-14).
+  /// Before the practice record, `LearnerVerbs.Entry.review` kept one review schedule per verb,
+  /// and an entry with no schedule, which predates that field, counts as looked up on its last
+  /// open. Each strong or mixed verb's schedule becomes its key conjugations' schedule. A weak
+  /// verb's is dropped, since the card no longer offers weak verbs (Josh, 2026-11-14).
   private static func migrated(from getterSetter: GetterSetter, calendar: Calendar) -> PracticeRecord {
     var record = PracticeRecord()
     guard let legacy: LegacyLearnerVerbs = getterSetter.getCodable(key: LearnerVerbs.storageKey) else {

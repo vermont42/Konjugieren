@@ -3,8 +3,7 @@
 import Foundation
 
 /// A session drawn from the practice record rather than from a level's pool: Review, of whatever
-/// is due, and Practice My Mistakes, of what was last answered wrongly (Phase 12 of the pedagogy
-/// plan, T3.2 and T3.3).
+/// is due, and Practice My Mistakes, of what was last answered wrongly.
 enum QuizRecordSession: CaseIterable {
   case mistakes
   case review
@@ -61,7 +60,7 @@ extension PracticeItem {
 extension QuizDraw {
   /// A round of a Review or My Mistakes session: a question for each of the first `limit` items
   /// that can be asked, beyond the level's pool and band, since the learner practiced or looked up
-  /// each one (Phase 11 left Review the items the default quiz's level keeps out). A pattern asks
+  /// each one (the default quiz leaves Review the items its level keeps out). A pattern asks
   /// its cell of a weak verb from `verbs`, the learner's band. Items in `excluded`, the session's
   /// earlier rounds, are skipped, since a mistake missed again would otherwise return in Ten More.
   ///

@@ -334,7 +334,7 @@ extension QuizTests {
     }
 
     /// A re-ask follows only a wrong answer, so counting it would let the question reached tell how
-    /// many answers were wrong (Decision 5). Every question is missed here, and the question reached
+    /// many answers were wrong. Every question is missed here, and the question reached
     /// still matches the questions of the round asked so far.
     @Test func theQuestionReachedDoesNotCountReasks() {
       reset()

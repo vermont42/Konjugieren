@@ -3,15 +3,14 @@
 import Foundation
 
 /// When an item of the practice record is next due, and which box of the ladder it is in. This is
-/// the Leitner system of the pedagogy report's Tier 3: an item enters the first box, a right answer
-/// or a revealed review card moves it up one, and a wrong answer or a later lookup sends it back to
-/// the first.
+/// the Leitner system: an item enters the first box, a right answer or a revealed review card
+/// moves it up one, and a wrong answer or a later lookup sends it back to the first.
 ///
 /// Due dates fall at the start of a day, so an item missed late in the evening waits until the
 /// next morning rather than an hour.
 nonisolated struct ReviewSchedule: Codable, Equatable, Sendable {
-  /// Days between reviews, box by box. The last box repeats. The pedagogy report proposes these
-  /// numbers and warns against agonizing over them, since the evidence singles out none.
+  /// Days between reviews, box by box. The last box repeats. `docs/pedagogy_research.md` proposes
+  /// these numbers and warns against agonizing over them, since the evidence singles out none.
   static let intervals = [1, 3, 7, 14, 30]
 
   let box: Int

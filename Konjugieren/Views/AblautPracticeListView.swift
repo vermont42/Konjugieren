@@ -6,7 +6,7 @@ import SwiftUI
 struct AblautPracticeDestination: Hashable {}
 
 /// The ablaut groups that can be practiced alone, the most used first, each opening onto its
-/// practice (Phase 16 of the pedagogy plan). The Families tab's Ablaut page offers the same
+/// practice. The Families tab's Ablaut page offers the same
 /// practice in each expanded group, below an article too long to put between the hub and a round.
 struct AblautPracticeListView: View {
   @State private var expandedGroups: Set<String> = []

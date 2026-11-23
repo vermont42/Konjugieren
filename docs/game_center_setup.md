@@ -1,9 +1,8 @@
 # Game Center Setup
 
 What Konjugieren's Game Center configuration is, where it lives, and how to change it. Written
-2026-11-14 for Phase 8 of the [pedagogy plan](../plans/pedagogy_implementation.md#phase-8-leaderboards-by-level),
-which gave each quiz level its own leaderboard. [Phase 23](../plans/pedagogy_implementation.md#phase-23-personal-bests-and-achievements)
-added the achievements on 2026-11-15; see [The Achievements](#the-achievements) below.
+2026-11-14, when each quiz level got its own leaderboard. The achievements followed on 2026-11-15;
+see [The Achievements](#the-achievements) below.
 
 ## Where the Configuration Lives
 
@@ -33,7 +32,7 @@ notice a schema mistake.
 | Intermediate | `konjugieren.level.intermediate` | Intermediate | Mittelstufe |
 | Advanced | `konjugieren.level.advanced` | Advanced | Oberstufe |
 
-`Leaderboard` is the original, live since release 1.x, and retired on `main` by Phase 8: nothing
+`Leaderboard` is the original, live since release 1.x, and retired on `main`: nothing
 on `main` posts to it. The other four belong to the levels, and the code takes their IDs from
 `QuizLevel.leaderboardID` in `Konjugieren/Utils/GameCenter.swift`.
 `QuizLeaderboardTests.eachLevelHasItsOwnLeaderboard` pins each ID literally.
@@ -129,7 +128,7 @@ should open Game Center's list of all the app's boards.
 - **GameKit debug mode hides every leaderboard.** The shared scheme had `enableGameKitDebugMode`
   on, from the original Game Center commit. With it on, Game Center offered the app no leaderboards
   at all ("Leaderboards 0 / 0 Ranked"), the live `Leaderboard` included, and View Leaderboard
-  showed "Cannot Connect". Phase 8 turned it off in the scheme.
+  showed "Cannot Connect". It is now off in the scheme.
 - **With it off, the build saw only the live board** ("1 / 1 Ranked"), and opening an Elementary
   quiz's board still showed "Cannot Connect". The four level boards were not visible to a
   development build. The likely reason is that Apple's testing steps have you add leaderboards to
@@ -275,8 +274,8 @@ in.
 
 Add the eight achievements for review with the version, as for the level leaderboards. Apple says
 achievements "must be approved before they are available to players", and that a development
-build sees unreleased ones with a prerelease indicator. Given what Phase 8 found with the
-leaderboards, expect them to be visible to a development build only once they are added to the
+build sees unreleased ones with a prerelease indicator. Given what the 2026-11-14 test found with
+the leaderboards, expect them to be visible to a development build only once they are added to the
 version under test. Then, on Josh's iPhone signed in to Game Center: finish a quiz, open **View
 Achievements**, and check that the eight are listed with any progress. Earning one for real takes
 at least three days of practice (a first right answer, then another when it is due).

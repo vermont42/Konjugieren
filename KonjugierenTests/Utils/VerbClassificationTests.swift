@@ -45,8 +45,6 @@ struct VerbClassificationTests {
   }
 }
 
-// MARK: - Input
-
 private struct CandidateFile: Decodable {
   let candidates: [Candidate]
 }
@@ -61,8 +59,6 @@ private struct Candidate: Decodable {
   let forms: [String: [String]]
   let alreadyShipping: Bool
 }
-
-// MARK: - Output
 
 private struct Report: Encodable {
   let classifications: [Classification]
@@ -98,8 +94,6 @@ private struct Classification: Encodable {
   /// the *second* reading registers as a failure that is not one.
   let readingCount: Int
 }
-
-// MARK: - Classifier
 
 @MainActor
 private final class Classifier {
@@ -229,8 +223,6 @@ private final class Classifier {
       readingCount: originalVerbs[candidate.word]?.readings.count ?? 1
     )
   }
-
-  // MARK: Hypothesis search
 
   private struct Solution {
     let markedInfinitiv: String
@@ -571,8 +563,6 @@ private final class Classifier {
     }
   }
 
-  // MARK: World mutation
-
   private func install(word: String, family: Family, prefixes: [Prefix]) {
     Verb.verbs[word] = Verb(
       infinitiv: word,
@@ -598,8 +588,6 @@ private final class Classifier {
     group.ablauts = ablauts
     AblautGroup.ablautGroups[Self.syntheticGroupKey] = group
   }
-
-  // MARK: Prefixes
 
   private func prefixHypotheses(for candidate: Candidate) -> [[Prefix]] {
     let word = candidate.word
@@ -695,8 +683,6 @@ private final class Classifier {
     }
   }
 
-  // MARK: Expectations
-
   private static func expectations(from forms: [String: [String]]) -> [(group: Conjugationgroup, slot: String, forms: [String])] {
     // Präteritum and Perfektpartizip lead: they are where ablaut shows, so a wrong
     // region dies on the first slot instead of after twenty-odd needless probes.
@@ -749,8 +735,6 @@ private final class Classifier {
       return false
     }
   }
-
-  // MARK: Regions and rendering
 
   private static func regions(in word: String, from lowerLimit: Int, to upperLimit: Int) -> [Range<Int>] {
     let characters = Array(word)
@@ -857,8 +841,6 @@ private final class Classifier {
       return "3p"
     }
   }
-
-  // MARK: Glosses and auxiliary
 
   private static func shortened(_ gloss: String) -> String {
     var text = gloss

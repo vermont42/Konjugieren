@@ -1,9 +1,8 @@
 # How Often Each Conjugationgroup Occurs
 
 The verb page orders its tables by these counts: the simple conjugationgroups first, then the
-compound ones, each block from most to least frequent. Measured on 2026-11-12 for Phase 7 of
-[`plans/browse_and_verb_implementation.md`](../plans/browse_and_verb_implementation.md), as Josh's
-verdict on idea B3 in [`browse_and_verb_ideas.md`](browse_and_verb_ideas.md) asked.
+compound ones, each block from most to least frequent. Measured on 2026-11-12, as Josh's verdict in
+[`browse_and_verb_ideas.md`](browse_and_verb_ideas.md) asked.
 `ConjugationTable` in `Konjugieren/Models/ConjugationTable.swift` holds the resulting order.
 
 To reproduce:

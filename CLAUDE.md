@@ -75,7 +75,7 @@ shows only what this build did. The `.xcactivitylog` files under
 them (`gunzip -c … | LC_ALL=C tr '\r' '\n' | LC_ALL=C grep -a …`) has the same trap. To settle
 whether a task ran, compare the timestamps of its outputs on disk with the build's time, and print
 dates with times (`stat -f "%Sm" -t "%Y-%m-%d %H:%M:%S"`), since a bare time of day misleads across
-days. Learned on 2026-11-12, in Phase 5 of the browse plan.
+days. Learned on 2026-11-12.
 
 **If computer use cannot take screenshots** ("CU display unavailable", with the only display
 reported as "not primary"), reboot.

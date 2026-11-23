@@ -86,7 +86,7 @@ enum WidgetSnapshotWriter {
   }
 
   /// The quiz widget's question for a day: the first question of that day's challenge at the
-  /// level (Phase 24 of the pedagogy plan), so that the widget and the challenge agree. Its wrong
+  /// level, so that the widget and the challenge agree. Its wrong
   /// answers are the same reading's other cells: one of the same table, one of the same person in
   /// another of the level's tables, and one more of either, chosen by a generator seeded with the
   /// question's ID.

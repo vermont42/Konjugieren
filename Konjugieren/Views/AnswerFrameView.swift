@@ -57,7 +57,7 @@ struct AnswerFrameView: View {
   }
 
   /// A sentence laid out word by word, wrapping between words, with a field of one width for every
-  /// blank, so that its width does not hint at the answer's length (Phase 18).
+  /// blank, so that its width does not hint at the answer's length.
   private var sentence: some View {
     // About a space's width at this size, so that the words read as a sentence.
     FlowLayout(spacing: 5) {

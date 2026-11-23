@@ -203,7 +203,7 @@ struct PracticeRecordTests {
       #expect(practice.record.entry(for: item)?.schedule == reviewed)
       #expect(practice.record.entry(for: item)?.lastLookedUp == date(4))
     }
-    // An entry from before browse Phase 15 counts as looked up on its last open.
+    // An entry without a review schedule counts as looked up on its last open.
     for item in keys("sinken") {
       #expect(practice.record.entry(for: item)?.schedule == ReviewSchedule(box: 0, due: startOf(5)))
     }

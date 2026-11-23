@@ -9,8 +9,8 @@ extension QuizDraw {
   /// A question for each due item that the level asks and the band holds, in the record's order,
   /// most overdue first, and at most `limit`. A key conjugation asks its own cell of its verb. A
   /// pattern asks its cell of a weak verb from `verbs`. An item the level does not ask, such as a
-  /// Präteritum looked up by a Beginner, or a looked-up verb beyond the band, waits for Review
-  /// (Phase 12), so that the default quiz stays within its level.
+  /// Präteritum looked up by a Beginner, or a looked-up verb beyond the band, waits for Review,
+  /// so that the default quiz stays within its level.
   static func dueQuestions(
     for items: [PracticeItem],
     pool: [QuizPoolEntry],

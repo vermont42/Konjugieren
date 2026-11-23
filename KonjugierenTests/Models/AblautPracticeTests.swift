@@ -62,7 +62,7 @@ struct AblautPracticeTests {
     #expect(AblautPracticeGroup.all.allSatisfy { !$0.members.isEmpty && $0.members.count <= AblautPracticeGroup.verbLimit })
   }
 
-  /// One verb is not a pattern (Josh, 2026-11-13). The plan counted 18 such groups.
+  /// One verb is not a pattern (Josh, 2026-11-13).
   @Test func theSingleVerbGroupsOfferNoPracticeAlone() throws {
     let single = AblautPracticeGroup.all.filter { !$0.offersPracticeAlone }
 
@@ -345,7 +345,7 @@ struct AblautPracticeTests {
   }
 
   /// A mixed round's length can depend on which groups are known, which comes from the learner's
-  /// answers, so it sends no counts (Decision 5).
+  /// answers, so it sends no counts.
   @Test func onlyAMixedSessionWithholdsItsQuestionCounts() {
     #expect(QuizScope.ablautPractice(AblautPracticeSession(exemplar: "singen", mode: .alone)).sendsQuestionCounts)
     #expect(!QuizScope.ablautPractice(AblautPracticeSession(exemplar: "singen", mode: .mixed)).sendsQuestionCounts)
@@ -397,8 +397,8 @@ extension QuizTests {
       Array(zip(spy.signalNames, spy.signalParameters).dropFirst(count))
     }
 
-    /// The whole of the phase in one session: a group practiced alone becomes known, and then
-    /// another group's mix draws on it.
+    /// Ablaut practice end to end in one session: a group practiced alone becomes known, and
+    /// then another group's mix draws on it.
     @Test func aGroupPracticedAloneBecomesKnownAndJoinsAnotherGroupsMix() throws {
       let practice = freshPractice()
       defer { Current.practice = PracticeStore(getterSetter: GetterSetterFake()) }

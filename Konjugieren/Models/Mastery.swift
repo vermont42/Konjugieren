@@ -2,14 +2,14 @@
 
 import Foundation
 
-/// How far up the review ladder an item has come, as the Mastery page shows it (T6.2).
+/// How far up the review ladder an item has come, as the Mastery page shows it.
 // Semantic ordering: up the ladder.
 enum MasteryState: Equatable {
   case notPracticed
   case learning
   case mastered
 
-  /// The third box, whose interval is seven days. Phase 21's speed round draws the same items
+  /// The third box, whose interval is seven days. The Speed Round draws the same items
   /// (Josh, 2026-11-13).
   static let masteredBox = 2
 
@@ -171,7 +171,7 @@ struct Mastery {
   }
 
   /// Whether every key conjugation of every strong reading is mastered, whatever the level asks,
-  /// as the strong-verb achievements count a verb (Phase 23), so that changing the level to
+  /// as the strong-verb achievements count a verb, so that changing the level to
   /// Beginner, which asks only the Präsens, cannot earn one.
   static func isFullyMastered(_ verb: Verb, in record: PracticeRecord) -> Bool {
     let readingIndices = strongReadingIndices(of: verb)

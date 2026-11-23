@@ -2,7 +2,7 @@
 
 import Foundation
 
-/// Verb Essentials (Phase 15 of the pedagogy plan, T5.1): given a strong or mixed verb, the learner
+/// Verb Essentials: given a strong or mixed verb, the learner
 /// supplies its three key conjugations, fährt · fuhr · ist gefahren, as the Goethe-Institut's B1
 /// list prints them. Each is its own question, graded alone and recorded as its own item, but the
 /// three are shown together as one step, so the learner sees the verb's pattern assemble.
@@ -52,8 +52,7 @@ extension QuizDraw {
     return verbEssentialsSteps(members: members, count: count, excluded: excluded, using: &generator)
   }
 
-  /// A round over verbs whose askable readings are already chosen, as an ablaut group's are
-  /// (Phase 16).
+  /// A round over verbs whose askable readings are already chosen, as an ablaut group's are.
   static func verbEssentialsSteps(
     members: [AblautPracticeGroup.Member],
     count: Int,

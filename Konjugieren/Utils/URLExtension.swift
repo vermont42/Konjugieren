@@ -68,7 +68,7 @@ extension URL {
   }
 
   /// `konjugieren://quiz/daily?source=reminder`, which opens the Quiz tab and starts a daily
-  /// session unless a quiz is already under way (Phase 22 of the pedagogy plan).
+  /// session unless a quiz is already under way.
   static func dailySessionDeeplink(source: AnalyticsSource) -> URL? {
     deeplink(host: quizHost, target: dailySessionTarget, queryItems: [
       URLQueryItem(name: sourceQueryName, value: source.rawValue),
@@ -76,8 +76,8 @@ extension URL {
   }
 
   /// `konjugieren://quiz/challenge?date=2026-11-15&level=intermediate&source=challengeLink`, which
-  /// opens that day's challenge at that level (Phase 24 of the pedagogy plan). With no key, as the
-  /// quiz widget sends it, today's at the learner's level.
+  /// opens that day's challenge at that level. With no key, as the quiz widget sends it, today's at
+  /// the learner's level.
   static func challengeDeeplink(_ key: DailyChallenge.Key?, source: AnalyticsSource) -> URL? {
     deeplink(host: quizHost, target: challengeTarget, queryItems: [
       key.map { URLQueryItem(name: dateQueryName, value: $0.day) },

@@ -3,7 +3,7 @@
 import Foundation
 
 /// A custom quiz shared as a link or a QR code, so that a teacher can hand a class one practice
-/// set without accounts or a server (T2.9, Phase 10 of the pedagogy plan). Opening one shows the
+/// set without accounts or a server. Opening one shows the
 /// set with Start rather than starting a quiz unasked.
 struct PracticeSet: Equatable {
   var custom: CustomQuiz

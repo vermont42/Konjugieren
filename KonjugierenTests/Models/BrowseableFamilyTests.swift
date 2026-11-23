@@ -50,7 +50,7 @@ struct BrowseableFamilyTests {
   }
 
   // The Ablaut screen lists AblautGroupInfo.exemplars, a hand-kept list, not the groups the
-  // engine loads. Eight groups added with tranche 1 never reached it, so from July to
+  // engine loads. Eight groups added to AblautGroups.xml never reached it, so from July to
   // November 2026 the Families tab silently omitted bersten, hängen, messen, saufen, schinden,
   // schmelzen, sieden, and sollen while their verbs conjugated on them.
   @Test func everyAblautGroupIsListedAndDescribed() {

@@ -2,7 +2,7 @@
 
 import Foundation
 
-/// Name the Conjugation (Phase 17 of the pedagogy plan, T5.4): the quiz shows a conjugation, such
+/// Name the Conjugation: the quiz shows a conjugation, such
 /// as käme, and the learner types its infinitive and chooses its conjugationgroup and person. This
 /// is the direction a reader needs, and practice develops in the direction practiced.
 extension QuizScope {

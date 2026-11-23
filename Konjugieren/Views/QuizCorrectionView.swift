@@ -63,7 +63,7 @@ struct QuizCorrectionView: View {
       .accessibilityFocused(accessibilityIsFocused)
       .accessibilityIdentifier("quiz_correction")
 
-      // The sentence read whole, with the conjugation in place (Phase 18 of the pedagogy plan).
+      // The sentence read whole, with the conjugation in place.
       if let sentence = question.sentence {
         Label {
           Text(verbatim: sentence.completed.inUserRegion)

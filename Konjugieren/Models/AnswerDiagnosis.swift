@@ -2,10 +2,10 @@
 
 import Foundation
 
-/// Why a wrong quiz answer is wrong, in the cases where the conjugator can say so for certain
-/// (T4.2). Every case is an exact construction from the verb's own tables, never a guess at
-/// what the learner meant, because a wrong diagnosis is worse than none. An answer that fits no
-/// case gets none.
+/// Why a wrong quiz answer is wrong, in the cases where the conjugator can say so for certain.
+/// Every case is an exact construction from the verb's own tables, never a guess at what the
+/// learner meant, because a wrong diagnosis is worse than none. An answer that fits no case gets
+/// none.
 enum AnswerDiagnosis: Equatable {
   /// aufsteh for steh auf: a separable verb's du or ihr Imperativ puts its prefix at the end.
   case prefixAtEnd(prefix: String)

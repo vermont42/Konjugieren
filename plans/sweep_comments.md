@@ -1,9 +1,17 @@
 # Sweep low-value comments (declutter to CLAUDE.md's comment policy)
 
-**Status:** ✅ executed in `3f7b8fd`. Kept for the rationale; not outstanding work.
-Note that `CLAUDE.md`'s comment policy has since been relaxed for scripts, harnesses,
-and test tooling — see its "Comments" section before applying this to `verbdata/` or
-`KonjugierenTests/Utils/`.
+**Status:** ✅ executed in `3f7b8fd` (July 2026) and rerun on 2026-11-22. Kept for the
+rationale; not outstanding work. Note that `CLAUDE.md`'s comment policy has since been
+relaxed for scripts, harnesses, and test tooling, and now permits a non-obvious *why* in
+shipping code. See its "Comments" section before rerunning.
+
+**The rerun found what the July sweep did not: a provenance trail.** The pedagogy and browse
+implementation plans left about 140 comments citing `Phase N of the pedagogy plan`, research
+suggestion IDs (`T5.7`, `M2`), and `Decision N`. The rerun stripped them from Swift comments
+and from the long-lived docs (`project_structure.md`, `feature_architecture.md`,
+`privacy_policy_pending.md`, and others), keeping `(Josh, date)` rulings and pointers to
+documents whose content still governs the code. When rerunning, treat "Why this exists" below
+as July's finding, not a description of the current tree.
 
 ## Why this exists
 

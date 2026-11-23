@@ -9,15 +9,15 @@ its effective date in both, deploy it, and empty this file back down to this int
 lines in the order given, after the bullet about taps on buttons in section 2.
 
 **When adding a signal or parameter on `main`:** add its lines here in English and German, in the
-policy's plain register, naming the bands rather than the code's parameter keys. Name the plan and
-phase that added it.
+policy's plain register, naming the bands rather than the code's parameter keys. Put the date in
+its section's heading, as below.
 
-## Lookup signals (browse plan, Phase 3, 2026-11-12)
+## Lookup signals (2026-11-12)
 
-Adds `source` to `viewVerbView`, and the signals `finishSearch` and `leaveVerbView`. Phase 6 added
-three `matchKind` values for matches by conjugation, which the search bullet's examples now name.
-Phase 9 began sending the `related` source, which the first bullet's examples now name. Phase 11
-added `source` to `finishSearch` (where the search began), which the search bullet now names. See
+Adds `source` to `viewVerbView`, and the signals `finishSearch` and `leaveVerbView`. `finishSearch`'s
+`matchKind` includes three values for matches by conjugation, which the search bullet's examples
+name, and `finishSearch` carries `source` (where the search began), which the search bullet names.
+`viewVerbView`'s `source` includes `related`, which the first bullet's examples name. See
 [`feature_architecture.md`](feature_architecture.md#analytics) for the vocabulary.
 
 ### English
@@ -52,10 +52,10 @@ Der Absatz nach der Liste lautet nun:
 Ein Bildschirmbesuch oder ein Antippen wird nur als Ereignis erfasst, abgesehen von den oben genannten Angaben zu Verbseiten und Suchen. Nichts, was Sie eingeben, und nichts, was auf dem Bildschirm steht, wird mit einem Ereignis gesendet. Erfasst wird, dass Sie gesucht haben, mit den oben genannten groben Zahlen, nicht aber, was Sie eingegeben haben. Erfasst wird, dass Sie die Seite eines Verbs geöffnet haben, nicht aber, welches Verb.
 ```
 
-## Taps on a verb page (browse plan, Phases 7 and 10, 2026-11-12)
+## Taps on a verb page (2026-11-12)
 
-Adds the signals `tapConjugationgroupArticle` (Phase 7), the ⓘ button beside a conjugationgroup's
-heading on a verb page, and `tapShareVerb` (Phase 10), the share button on a verb page. Neither has
+Adds the signals `tapConjugationgroupArticle`, the ⓘ button beside a conjugationgroup's
+heading on a verb page, and `tapShareVerb`, the share button on a verb page. Neither has
 parameters, and neither says which verb. They change an existing bullet rather than adding one.
 
 ### English
@@ -74,12 +74,12 @@ Der Punkt über das Antippen in Abschnitt 2 lautet nun:
 - Das Antippen einiger Schaltflächen: das Spiel starten, die App bewerten oder rezensieren, die Einführung anzeigen, die Bestenliste ansehen, dem Tutor eine Nachricht senden, einen Fehler erklären lassen, den Chatverlauf löschen, den Artikel über eine Conjugationgroup von der Seite eines Verbs aus öffnen und die Seite eines Verbs teilen
 ```
 
-## My Verbs and quizzes (browse plan, Phases 12 and 13, 2026-11-13)
+## My Verbs and quizzes (2026-11-13)
 
-Adds the signals `tapStarVerb` (Phase 12), with a `starred` parameter saying whether the tap
-starred the verb or removed its star, and `tapTestVerb` (Phase 13), and adds `source` to
-`startQuiz`, `quitQuiz`, and `completeQuiz` (Phase 13): the Quiz tab, My Verbs, or a verb's page.
-Phase 12 also began sending the `recent` and `myVerbs` sources for verb pages, which the first
+Adds the signals `tapStarVerb`, with a `starred` parameter saying whether the tap
+starred the verb or removed its star, and `tapTestVerb`, and adds `source` to
+`startQuiz`, `quitQuiz`, and `completeQuiz`: the Quiz tab, My Verbs, or a verb's page.
+Also begins sending the `recent` and `myVerbs` sources for verb pages, which the first
 bullet of the lookup section above covers with "for example". These lines replace the taps
 bullet as given in the section above this one, and change the quiz bullets. The rest says that the
 learner's verbs stay on the device, which changes the "That is all" sentence, and that only a full
@@ -151,11 +151,11 @@ Neuer Satz am Ende des ersten Absatzes von Abschnitt 6:
 Nur ein Quiz über alle Verben reicht ein Ergebnis ein; ein Quiz über Ihre eigenen Verben oder ein einzelnes Verb tut das nicht.
 ```
 
-## The review card (browse plan, Phase 15, 2026-11-13)
+## The review card (2026-11-13)
 
 Adds the signals `viewReviewCard`, sent when the review card above the verb list appears, and
 `tapRevealReviewCard`, sent when a tap reveals its conjugations. Neither has parameters, and
-neither says which verb. Phase 15 also began sending the `reviewCard` source for verb pages, which
+neither says which verb. Also begins sending the `reviewCard` source for verb pages, which
 the first bullet of the lookup section covers with "for example". These lines replace the taps
 bullet as given in the My Verbs section above, and the paragraph about the list kept on the
 device, since the list now also holds when each verb is due for review.
@@ -200,14 +200,14 @@ Der Absatz über die Liste auf dem Gerät lautet nun:
 Die App führt eine Liste der Verben, die Sie geöffnet, und der Verben, die Sie mit einem Stern markiert haben, samt dem Tag, an dem jedes wieder zur Wiederholung ansteht, damit sie Ihre zuletzt geöffneten Verben, „Meine Verben“ und Wiederholungskarten zeigen kann. Die Liste bleibt auf Ihrem Gerät und wird nie gesendet.
 ```
 
-## Collections (browse plan, Phase 16, 2026-11-13)
+## Collections (2026-11-13)
 
 Adds the signals `viewCollection`, sent when a collection's page opens or an ablaut group is
 expanded, with which collection and whether it was opened in the Families tab or from a link, and
 `tapShareCollection`, with which collection. Adds `collection` to `startQuiz` for a quiz begun on
 a collection, and the `list` value to the quiz signals' `source`. A collection is one of the app's
 fixed lists, such as the modal verbs, so naming it says nothing the learner typed or chose beyond
-opening it. Phase 16 also began sending the `list` source for verb pages, which the first bullet
+opening it. Also begins sending the `list` source for verb pages, which the first bullet
 of the lookup section covers with "for example". These lines replace the taps bullet as given in
 the review-card section above, the first quiz bullet as given in the My Verbs section, and the
 paragraph about the list kept on the device, since collections count the verbs in it.
@@ -264,19 +264,19 @@ Der Absatz über die Liste auf dem Gerät lautet nun:
 Die App führt eine Liste der Verben, die Sie geöffnet, und der Verben, die Sie mit einem Stern markiert haben, samt dem Tag, an dem jedes wieder zur Wiederholung ansteht, damit sie Ihre zuletzt geöffneten Verben, „Meine Verben“, Wiederholungskarten und die Zahl der nachgeschlagenen Verben jeder Sammlung zeigen kann. Die Liste bleibt auf Ihrem Gerät und wird nie gesendet.
 ```
 
-## A correction's links (pedagogy plan, Phase 3, 2026-11-13)
+## A correction's links (2026-11-13)
 
 Begins sending the `quizCorrection` source for verb pages opened from a quiz's held correction,
 and for an ablaut group opened from it (`viewCollection`). The first bullet of the lookup section
 covers the verb page with "for example", and the collection bullet's "in the app" covers the
 ablaut group, so no line changes. The source says only that a link under a correction was
-followed, never which verb or answer, as Decision 5 of the plan requires.
+followed, never which verb or answer, as Decision 5 of the pedagogy plan requires.
 
-## Quiz levels (pedagogy plan, Phase 5, 2026-11-13)
+## Quiz levels (2026-11-13)
 
 Replaces the quiz's `difficulty` parameter (`regular`, `ridiculous`), sent with `quitQuiz` and
 `completeQuiz`, with `level` (`beginner`, `elementary`, `intermediate`, `advanced`), and adds it to
-`startQuiz` (the report's M1). A level is a setting the learner chose, like the difficulty before
+`startQuiz`. A level is a setting the learner chose, like the difficulty before
 it, so it says nothing about an answer or a score. The line changes rather than a new one being
 added.
 
@@ -296,13 +296,13 @@ Der Punkt über den Quiz-Schwierigkeitsgrad in Abschnitt 2 lautet nun:
 - Die gewählte Quizstufe (Einstieg, Grundstufe, Mittelstufe oder Oberstufe) beim Starten, Abbrechen oder Abschließen eines Quiz
 ```
 
-## Ten-question rounds, abandoned quizzes, and time to quit (pedagogy plan, Phase 7, 2026-11-13)
+## Ten-question rounds, abandoned quizzes, and time to quit (2026-11-13)
 
 Adds `questionCount` to `completeQuiz`, which is now sent at the results of each round of ten (10,
 then 20 after Ten More, and so on), `duration` to `quitQuiz` (the time from the start to the quit,
-in the bands below; the report's M3), and the signal `abandonQuiz`, sent at the next launch after
+in the bands below), and the signal `abandonQuiz`, sent at the next launch after
 the app was closed during a quiz, with the level, where the quiz was begun, and the question
-reached (M2). None says which verb was asked, what was answered, or how many answers were right
+reached. None says which verb was asked, what was answered, or how many answers were right
 (Decision 5). The lines change the quiz bullets as given in the Collections section above, the
 level bullet as given in the Quiz levels section above, and the existing bullet about progress in
 a quiz.
@@ -359,10 +359,10 @@ Der in Abschnitt 6 ergänzte Satz aus dem Abschnitt über „Meine Verben“ obe
 Nur die ersten zehn Fragen eines Quiz über alle Verben reichen ein Ergebnis ein; ein Quiz über Ihre eigenen Verben oder ein einzelnes Verb tut das nicht, ebenso wenig die zehn weiteren Fragen, die Sie anhängen können.
 ```
 
-## Leaderboards by level (pedagogy plan, Phase 8, 2026-11-14)
+## Leaderboards by level (2026-11-14)
 
 No new signal or parameter. Each quiz level now has its own Game Center leaderboard, so section 6
-names them, and the sentence the Phase 7 section above gives for section 6 changes again.
+names them, and the sentence the Ten-question rounds section above gives for section 6 changes again.
 
 ### English
 
@@ -372,7 +372,7 @@ The first sentence of section 6 now reads:
 Konjugieren integrates with Apple Game Center for quiz leaderboards, one for each quiz level.
 ```
 
-The sentence added to section 6 in the Phase 7 section above now reads:
+The sentence added to section 6 in the Ten-question rounds section above now reads:
 
 ```
 Only the first ten questions of a quiz over all verbs post a score, to the leaderboard of the quiz's level; a quiz over your own verbs or a single verb does not, and neither do the ten more questions you may add.
@@ -386,19 +386,19 @@ Der erste Satz von Abschnitt 6 lautet nun:
 Konjugieren ist mit Apple Game Center für Quiz-Bestenlisten integriert, eine für jede Quizstufe.
 ```
 
-Der im Abschnitt zu Phase 7 oben ergänzte Satz in Abschnitt 6 lautet nun:
+Der im Abschnitt zu den Runden mit zehn Fragen oben ergänzte Satz in Abschnitt 6 lautet nun:
 
 ```
 Nur die ersten zehn Fragen eines Quiz über alle Verben reichen ein Ergebnis ein, und zwar in der Bestenliste der Stufe des Quiz; ein Quiz über Ihre eigenen Verben oder ein einzelnes Verb tut das nicht, ebenso wenig die zehn weiteren Fragen, die Sie anhängen können.
 ```
 
-## Custom quizzes (pedagogy plan, Phase 9, 2026-11-14)
+## Custom quizzes (2026-11-14)
 
 Adds the `custom` value to the quiz signals' `source`, for a quiz the learner put together on the
 Quiz tab, and the parameter `customChoice` to `startQuiz`, which says whether the learner chose
 conjugationgroups, verbs, or both, but not which. A custom quiz over a collection also sends the
 collection, as a collection's quiz does. The lines change the first quiz bullet as given in the
-Phase 7 section above. A custom quiz posts no score, which the section 6 sentence already implies
+Ten-question rounds section above. A custom quiz posts no score, which the section 6 sentence already implies
 by naming only a quiz over all verbs; it is changed to say so.
 
 ### English
@@ -429,16 +429,16 @@ Der im Abschnitt zu den Bestenlisten oben ergänzte Satz in Abschnitt 6 lautet n
 Nur die ersten zehn Fragen eines Quiz über alle Verben reichen ein Ergebnis ein, und zwar in der Bestenliste der Stufe des Quiz; ein Quiz über Ihre eigenen Verben, ein einzelnes Verb oder selbst gewählte Conjugationgroups und Verben tut das nicht, ebenso wenig die zehn weiteren Fragen, die Sie anhängen können.
 ```
 
-## Practice sets (pedagogy plan, Phase 10, 2026-11-14)
+## Practice sets (2026-11-14)
 
 Adds the `qrCode` value to the quiz signals' `source`, beside the existing `sharedLink`, for a
 quiz begun from a practice set that someone shared as a QR code or as a link, and three signals:
 `tapSharePracticeSet`, with how it was shared (`link` or `qrCode`) and the kind of choice it holds
-(`customChoice`, as Phase 9 sends it); `viewPracticeSet`, with whether it arrived as a link or a
+(`customChoice`, as `startQuiz` sends it for a custom quiz); `viewPracticeSet`, with whether it arrived as a link or a
 QR code and whether the app could read it (`opened` or `invalid`); and `tapKeepPracticeSet`, which
 carries nothing. None says which conjugationgroups or verbs the set holds. A practice set's quiz
 sends the set's level as `level`, since that is the level it asks. The lines change the first quiz
-bullet as given in the Phase 9 section above, and add to the taps bullet as last given. A shared
+bullet as given in the Custom quizzes section above, and add to the taps bullet as last given. A shared
 set's link holds the sharer's chosen verbs, but it goes only where the learner sends it, and the
 app sends none of it, so no line is needed for that.
 
@@ -482,7 +482,7 @@ Ein neuer Punkt folgt dem über Sammlungen:
 - Dass Sie ein geteiltes Übungsset geöffnet haben, ob es als Link oder als QR-Code kam und ob die App es lesen konnte, nicht aber, welche Conjugationgroups oder Verben es enthält
 ```
 
-## The practice record (pedagogy plan, Phase 11, 2026-11-14)
+## The practice record (2026-11-14)
 
 Adds the signal `tapResetPractice`, sent when Reset Practice in Settings is confirmed, which carries
 nothing. The practice record itself is kept on the device and never sent (Decision 5 of the
@@ -534,7 +534,7 @@ Ein neuer Absatz folgt:
 Die App führt außerdem einen Übungsstand: welche Konjugationen Sie im Quiz und auf Wiederholungskarten geübt haben, ob Ihre letzte Antwort darauf richtig war und wann jede wieder zur Wiederholung ansteht, damit sie Wiederholungskarten zeigen und Verfehltes wiederholen kann. Der Übungsstand bleibt auf Ihrem Gerät und wird nie gesendet. „Übungsstand zurücksetzen“ in den Einstellungen löscht ihn.
 ```
 
-## Review and My Mistakes (pedagogy plan, Phase 12, 2026-11-14)
+## Review and My Mistakes (2026-11-14)
 
 Adds the values `review` and `mistakes` to the quiz signals' `source`, for a Review session of the
 practice record's due questions and a session of the questions last answered wrongly, both begun
@@ -542,7 +542,7 @@ from the Quiz tab. Neither session sends how many questions it asked (`completeQ
 `questionCount`) or the question reached (`quitQuiz`'s and `abandonQuiz`'s `questionNumber`), since
 a session shorter than ten is exactly as long as the learner's due or missed questions, and that
 would be a count of wrong answers (Decision 5). Neither posts a score. The lines change the first
-quiz bullet as given in the Phase 10 section above, and add a sentence after it.
+quiz bullet as given in the Practice sets section above, and add a sentence after it.
 
 ### English
 
@@ -584,14 +584,14 @@ Der Satz in Abschnitt 6, wie zuletzt im Abschnitt zu selbst zusammengestellten Q
 Nur die ersten zehn Fragen eines Quiz über alle Verben reichen ein Ergebnis ein, und zwar in der Bestenliste der Stufe des Quiz; ein Quiz über Ihre eigenen Verben, ein einzelnes Verb, selbst gewählte Conjugationgroups und Verben oder Ihre anstehenden Fragen oder Fehler tut das nicht, ebenso wenig die zehn weiteren Fragen, die Sie anhängen können.
 ```
 
-## The practice hub (pedagogy plan, Phase 13, 2026-11-14)
+## The practice hub (2026-11-14)
 
 Adds the parameter `source`, with the one value `tab`, to the existing signal `tapViewLeaderboard`
 when the leaderboard is opened from the Quiz tab rather than from Settings. The bullet already says
 "viewing the leaderboard", so its wording does not change. The Quiz tab now shows the results of
 the last quiz (how many answers were right, the score, the level, and the day), which the app keeps
 on the device with the practice record and never sends, so the practice-record paragraph added in
-the Phase 11 section above names it.
+the practice-record section above names it.
 
 ### English
 
@@ -609,14 +609,14 @@ Der Absatz über den Übungsstand lautet nun:
 Die App führt außerdem einen Übungsstand: welche Konjugationen Sie im Quiz und auf Wiederholungskarten geübt haben, ob Ihre letzte Antwort darauf richtig war, wann jede wieder zur Wiederholung ansteht und das Ergebnis Ihres letzten Quiz, damit sie Wiederholungskarten zeigen, Verfehltes wiederholen und zeigen kann, wie Ihr letztes Quiz lief. Der Übungsstand bleibt auf Ihrem Gerät und wird nie gesendet. „Übungsstand zurücksetzen“ in den Einstellungen löscht ihn.
 ```
 
-## Verb Essentials (pedagogy plan, Phase 15, 2026-11-14)
+## Verb Essentials (2026-11-14)
 
 Adds the value `verbEssentials` to the quiz signals' `source`, for Verb Essentials, an exercise
 begun from the Quiz tab that asks three conjugations of each of five strong verbs. Its rounds are
 fifteen questions, so the bullet's "a round of ten questions" becomes "a round of questions". Its
 `completeQuiz` carries `questionCount` as other quizzes do, since a round's length depends on no
 answer. It posts no score. The lines change the first quiz bullet and the section 6 sentence as
-given in the Phase 12 section above.
+given in the Review and My Mistakes section above.
 
 ### English
 
@@ -646,7 +646,7 @@ Der Satz in Abschnitt 6 lautet nun:
 Nur die ersten zehn Fragen eines Quiz über alle Verben reichen ein Ergebnis ein, und zwar in der Bestenliste der Stufe des Quiz; ein Quiz über Ihre eigenen Verben, ein einzelnes Verb, selbst gewählte Conjugationgroups und Verben oder Ihre anstehenden Fragen oder Fehler tut das nicht, ebenso wenig die Verb-Grundlagen und die zehn weiteren Fragen, die Sie anhängen können.
 ```
 
-## Ablaut-group practice (pedagogy plan, Phase 16, 2026-11-15)
+## Ablaut-group practice (2026-11-15)
 
 Adds the values `ablautAlone` and `ablautMixed` to the quiz signals' `source`, for the practice of
 an ablaut group alone or mixed with the groups the learner knows. `startQuiz` carries the group's
@@ -654,7 +654,7 @@ an ablaut group alone or mixed with the groups the learner knows. `startQuiz` ca
 the learner typed. A mixed session sends neither `questionCount` nor `questionNumber`, since its
 length can depend on which groups the learner knows. Which groups are known is computed on the
 device from the practice record and is never sent. Neither session posts a score. The lines change
-the first quiz bullet and the section 6 sentence as given in the Phase 15 section above.
+the first quiz bullet and the section 6 sentence as given in the Verb Essentials section above.
 
 ### English
 
@@ -684,14 +684,14 @@ Der Satz in Abschnitt 6 lautet nun:
 Nur die ersten zehn Fragen eines Quiz über alle Verben reichen ein Ergebnis ein, und zwar in der Bestenliste der Stufe des Quiz; ein Quiz über Ihre eigenen Verben, ein einzelnes Verb, selbst gewählte Conjugationgroups und Verben oder Ihre anstehenden Fragen oder Fehler tut das nicht, ebenso wenig die Verb-Grundlagen, die Übung einer Ablautgruppe und die zehn weiteren Fragen, die Sie anhängen können.
 ```
 
-## Name the Conjugation (pedagogy plan, Phase 17, 2026-11-15)
+## Name the Conjugation (2026-11-15)
 
 Adds the value `recognition` to the quiz signals' `source`, for Name the Conjugation, an exercise
 begun from the Quiz tab that shows a conjugation and asks for its verb, conjugationgroup, and
 person. Its rounds are ten questions, so `completeQuiz` carries `questionCount` as the default quiz
 does. It posts no score, and its answers are kept neither in the practice record nor anywhere else,
 so the practice-record paragraph is unchanged. The lines change the first quiz bullet and the
-section 6 sentence as given in the Phase 16 section above.
+section 6 sentence as given in the Ablaut-group practice section above.
 
 ### English
 
@@ -721,7 +721,7 @@ Der Satz in Abschnitt 6 lautet nun:
 Nur die ersten zehn Fragen eines Quiz über alle Verben reichen ein Ergebnis ein, und zwar in der Bestenliste der Stufe des Quiz; ein Quiz über Ihre eigenen Verben, ein einzelnes Verb, selbst gewählte Conjugationgroups und Verben oder Ihre anstehenden Fragen oder Fehler tut das nicht, ebenso wenig die Verb-Grundlagen, die Übung einer Ablautgruppe, „Konjugationen bestimmen“ und die zehn weiteren Fragen, die Sie anhängen können.
 ```
 
-## Sentences (pedagogy plan, Phase 18, 2026-11-15)
+## Sentences (2026-11-15)
 
 Adds the value `sentences` to the quiz signals' `source`, for Sentences ("Lückensätze"), an
 exercise begun from the Quiz tab that asks a verb's conjugation in a short sentence. Its rounds are
@@ -730,7 +730,7 @@ score. Its answers go into the practice record, which stays on the device, as ev
 answer does, so the practice-record paragraph is unchanged. Opening a verb's example sentence on the
 results screen sends nothing: only a right answer's row offers it, so a signal for it would count
 right answers (Decision 5). The lines change the first quiz bullet and the section 6 sentence as
-given in the Phase 17 section above.
+given in the Name the Conjugation section above.
 
 ### English
 
@@ -760,12 +760,12 @@ Der Satz in Abschnitt 6 lautet nun:
 Nur die ersten zehn Fragen eines Quiz über alle Verben reichen ein Ergebnis ein, und zwar in der Bestenliste der Stufe des Quiz; ein Quiz über Ihre eigenen Verben, ein einzelnes Verb, selbst gewählte Conjugationgroups und Verben oder Ihre anstehenden Fragen oder Fehler tut das nicht, ebenso wenig die Verb-Grundlagen, die Übung einer Ablautgruppe, „Konjugationen bestimmen“, „Lückensätze“ und die zehn weiteren Fragen, die Sie anhängen können.
 ```
 
-## Mastery (pedagogy plan, Phase 20, 2026-11-15)
+## Mastery (2026-11-15)
 
 Adds the signal `viewMastery`, sent when the Mastery page, reached from the Quiz tab, appears. It
 carries nothing: not the level, and nothing of what the page shows. The page shows, from the
 practice record kept on the device, which conjugations the learner has mastered, so the
-practice-record paragraph as last given in the Phase 13 section above names it. The screens bullet
+practice-record paragraph as last given in the practice-hub section above names it. The screens bullet
 in section 2 gains the page.
 
 ### English
@@ -796,7 +796,7 @@ Der Absatz über den Übungsstand lautet nun:
 Die App führt außerdem einen Übungsstand: welche Konjugationen Sie im Quiz und auf Wiederholungskarten geübt haben, ob Ihre letzte Antwort darauf richtig war, wann jede wieder zur Wiederholung ansteht und das Ergebnis Ihres letzten Quiz, damit sie Wiederholungskarten zeigen, Verfehltes wiederholen, zeigen kann, wie Ihr letztes Quiz lief, und zeigen kann, welche Konjugationen Sie beherrschen. Der Übungsstand bleibt auf Ihrem Gerät und wird nie gesendet. „Übungsstand zurücksetzen“ in den Einstellungen löscht ihn.
 ```
 
-## Speed Round (pedagogy plan, Phase 21, 2026-11-15)
+## Speed Round (2026-11-15)
 
 Adds the value `speedRound` to the quiz signals' `source`, for the Speed Round ("Blitzrunde"), an
 exercise begun from the Quiz tab that asks, for sixty seconds, conjugations the practice record says
@@ -805,8 +805,8 @@ the learner has mastered. **It sends no counts**: neither `completeQuiz`'s `ques
 learner answered in a minute, a measure of the answers (Decision 5). It posts no score. Its answers
 go nowhere, not even into the practice record. The learner's best round, the most right answers in
 one, is kept on the device beside the practice record and never sent, so the practice-record
-paragraph names it. The lines change the first quiz bullet, the section 6 sentence, the Phase 12
-sentence about counts, and the practice-record paragraph as last given above.
+paragraph names it. The lines change the first quiz bullet, the section 6 sentence, the Review and
+My Mistakes section's sentence about counts, and the practice-record paragraph as last given above.
 
 ### English
 
@@ -860,7 +860,7 @@ Der Absatz über den Übungsstand lautet nun:
 Die App führt außerdem einen Übungsstand: welche Konjugationen Sie im Quiz und auf Wiederholungskarten geübt haben, ob Ihre letzte Antwort darauf richtig war, wann jede wieder zur Wiederholung ansteht, das Ergebnis Ihres letzten Quiz und Ihren Bestwert in der „Blitzrunde“, damit sie Wiederholungskarten zeigen, Verfehltes wiederholen, zeigen kann, wie Ihr letztes Quiz lief, welche Konjugationen Sie beherrschen und was Ihr Bestwert ist. Der Übungsstand bleibt auf Ihrem Gerät und wird nie gesendet. „Übungsstand zurücksetzen“ in den Einstellungen löscht ihn.
 ```
 
-## A daily session and a streak (pedagogy plan, Phase 22, 2026-11-15)
+## A daily session and a streak (2026-11-15)
 
 Adds the values `daily` and `reminder` to the quiz signals' `source`: a daily session ("Tägliche
 Übung") begun from the Quiz tab, and one begun by tapping the daily reminder, which opens the app
@@ -930,7 +930,7 @@ Der Absatz über den Übungsstand lautet nun:
 Die App führt außerdem einen Übungsstand: welche Konjugationen Sie im Quiz und auf Wiederholungskarten geübt haben, ob Ihre letzte Antwort darauf richtig war, wann jede wieder zur Wiederholung ansteht, das Ergebnis Ihres letzten Quiz, Ihren Bestwert in der „Blitzrunde“ und die Tage, an denen Sie eine tägliche Übung abgeschlossen haben, damit sie Wiederholungskarten zeigen, Verfehltes wiederholen, zeigen kann, wie Ihr letztes Quiz lief, welche Konjugationen Sie beherrschen, was Ihr Bestwert ist und wie lang Ihre Serie ist. Der Übungsstand bleibt auf Ihrem Gerät und wird nie gesendet. „Übungsstand zurücksetzen“ in den Einstellungen löscht ihn. Die tägliche Erinnerung wird, wenn Sie sie einschalten, auf Ihrem Gerät geplant, das ihren Text aus dem Übungsstand schreibt; nichts davon wird gesendet.
 ```
 
-## Personal bests and achievements (pedagogy plan, Phase 23, 2026-11-15)
+## Personal bests and achievements (2026-11-15)
 
 Adds the signal `tapViewAchievements`, with `source` `tab` when sent from the Quiz tab and none
 from Settings, when View Achievements is tapped. Nothing about progress is sent with it. The app
@@ -982,7 +982,7 @@ Der Absatz über den Übungsstand lautet nun:
 Die App führt außerdem einen Übungsstand: welche Konjugationen Sie im Quiz und auf Wiederholungskarten geübt haben, ob Ihre letzte Antwort darauf richtig war, wann jede wieder zur Wiederholung ansteht, das Ergebnis Ihres letzten Quiz, Ihren Bestwert in der „Blitzrunde“, Ihren Bestwert auf jeder Quizstufe und die Tage, an denen Sie eine tägliche Übung abgeschlossen haben, damit sie Wiederholungskarten zeigen, Verfehltes wiederholen, zeigen kann, wie Ihr letztes Quiz lief, welche Konjugationen Sie beherrschen, was Ihre Bestwerte sind und wie lang Ihre Serie ist. Der Übungsstand bleibt auf Ihrem Gerät und wird nie gesendet. „Übungsstand zurücksetzen“ in den Einstellungen löscht ihn. Die tägliche Erinnerung wird, wenn Sie sie einschalten, auf Ihrem Gerät geplant, das ihren Text aus dem Übungsstand schreibt; nichts davon wird gesendet.
 ```
 
-## The daily challenge (pedagogy plan, Phase 24, 2026-11-15)
+## The daily challenge (2026-11-15)
 
 Adds the values `challenge`, `challengeLink`, and `challengeWidget` to the quiz signals' `source`: a
 daily challenge ("Tägliche Herausforderung") begun from the Quiz tab, from a link in a result
@@ -1051,10 +1051,10 @@ Ein neuer letzter Satz für den Absatz über den Übungsstand:
 Die Ergebnisse der täglichen Herausforderungen, die Sie zuletzt abgeschlossen haben, bleiben ebenfalls auf Ihrem Gerät, damit die App das heutige zeigen und Sie es teilen können, und werden nie gesendet, es sei denn, Sie teilen sie selbst.
 ```
 
-## The audit (pedagogy plan, Closing, 2026-11-15)
+## The audit (2026-11-15)
 
-No new signal or parameter, and no line above changes. The Closing diffed `Analytics.swift` against
-`e385749`, the commit before the plan's Phase 1, read every call site, and found each new signal,
+No new signal or parameter, and no line above changes. An audit diffed `Analytics.swift` against
+`e385749`, the commit before the quiz's redesign began, read every call site, and found each new signal,
 parameter key, and `source` value staged above in both languages. It changed one value's meaning
 to match the lines already staged. `quitQuiz`'s and `abandonQuiz`'s `questionNumber` counted
 re-asks until then. A re-ask follows only a wrong answer, so a question reached of 13 in a round of
@@ -1063,5 +1063,5 @@ alone, which is what "question number reached" in the progress bullet already sa
 
 Josh kept the `quizCorrection` source on 2026-11-15, though a held correction follows only a wrong
 answer. It says that a link under a correction was followed, as `mistakes` says that My Mistakes
-was begun: a surface, not a count of answers. Phase 18 sends nothing for the example sentence that
-only a right answer's row offers, and the two rulings stand side by side.
+was begun: a surface, not a count of answers. Nothing is sent for the example sentence that only
+a right answer's row offers (see the Sentences section above), and the two rulings stand side by side.

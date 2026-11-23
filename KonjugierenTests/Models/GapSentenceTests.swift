@@ -4,9 +4,8 @@ import Foundation
 import Testing
 @testable import Konjugieren
 
-/// The machine check of Phase 18 of the pedagogy plan: no bundled sentence may teach a wrong
-/// conjugation. Each test walks every sentence and records each failure with the sentence's id,
-/// so that one run lists every draft that needs fixing.
+/// No bundled sentence may teach a wrong conjugation. Each test walks every sentence and records
+/// each failure with the sentence's id, so that one run lists every draft that needs fixing.
 @MainActor
 @Suite("Gap sentences")
 struct GapSentenceTests {
@@ -67,10 +66,10 @@ struct GapSentenceTests {
     }
   }
 
-  /// The check the phase asks for: each sentence's braces, read in order, are the conjugator's
-  /// conjugation of its cell, in the main clause's word order or the subordinate clause's. The
-  /// same words must be right in every region, Swiss ss for ß aside, so that a sentence never shows
-  /// an Austrian learner a German auxiliary (habe gestanden) as the answer.
+  /// Each sentence's braces, read in order, are the conjugator's conjugation of its cell, in the
+  /// main clause's word order or the subordinate clause's. The same words must be right in every
+  /// region, Swiss ss for ß aside, so that a sentence never shows an Austrian learner a German
+  /// auxiliary (habe gestanden) as the answer.
   @Test func everyBlankIsTheConjugatorsConjugation() {
     for sentence in GapSentences.all {
       guard let conjugationgroup = sentence.conjugationgroup, Verb.verbs[sentence.verb] != nil else {

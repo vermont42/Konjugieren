@@ -629,9 +629,8 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "verstehen", conjugationgroup: .futurKonjunktivII(.firstSingular), expected: "wÜrde verstehen")
   }
 
-  // Both were wrong until 2026-11-13, found by Phase 1 of the pedagogy plan: scheiden's ablaut
-  // region swallowed its d (schie, geschien), and vergleichen sat in bleiben's group
-  // (vergliech) rather than gleichen's.
+  // Both were wrong until 2026-11-13: scheiden's ablaut region swallowed its d (schie,
+  // geschien), and vergleichen sat in bleiben's group (vergliech) rather than gleichen's.
   @Test func scheidenAndVergleichen() {
     expectConjugation(infinitiv: "scheiden", conjugationgroup: .präteritumIndikativ(.firstSingular), expected: "schIEd")
     expectConjugation(infinitiv: "scheiden", conjugationgroup: .präteritumIndikativ(.secondSingular), expected: "schIEdest")
@@ -807,8 +806,8 @@ struct ConjugatorTests {
   }
 
   @Test func schaffenAblaut() {
-    // schaffen is two verbs (plan step 6a): strong "create" first, on the group erschaffen
-    // uses, and weak "manage" second. DWDS gives each its own paradigm.
+    // schaffen is two verbs: strong "create" first, on the group erschaffen uses, and weak
+    // "manage" second. DWDS gives each its own paradigm.
     expectConjugation(infinitiv: "schaffen", conjugationgroup: .präteritumIndikativ(.thirdSingular), expected: "schUf")
     expectConjugation(infinitiv: "schaffen", conjugationgroup: .präteritumKonjunktivII(.firstSingular), expected: "schÜfe")
     expectConjugation(infinitiv: "schaffen", conjugationgroup: .perfektpartizip, expected: "geschaffen")
@@ -1142,9 +1141,9 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "übersetzen", conjugationgroup: .imperativ(.secondPlural), expected: "setzt über", readingIndex: 1)
     expectConjugation(infinitiv: "übersetzen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "IST übergesetzt", readingIndex: 1)
 
-    // Part 6 of the defect plan, from DWDS: über*fahren "run over" (hat überfahren) beside
-    // über+fahren "cross by boat" (ist übergefahren), and um*fahren "drive around" (hat
-    // umfahren) beside um+fahren "knock over" (hat umgefahren), which keeps haben.
+    // From DWDS: über*fahren "run over" (hat überfahren) beside über+fahren "cross by boat"
+    // (ist übergefahren), and um*fahren "drive around" (hat umfahren) beside um+fahren "knock
+    // over" (hat umgefahren), which keeps haben.
     expectConjugation(infinitiv: "überfahren", conjugationgroup: .perfektpartizip, expected: "überfahren")
     expectConjugation(infinitiv: "überfahren", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt überfahren")
     expectConjugation(infinitiv: "überfahren", conjugationgroup: .perfektpartizip, expected: "übergefahren", readingIndex: 1)
@@ -1225,9 +1224,8 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "überspringen", conjugationgroup: .imperativ(.secondPlural), expected: "springt über", readingIndex: 1)
     expectConjugation(infinitiv: "überspringen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "IST übergesprUngen", readingIndex: 1)
 
-    // übergehen (plan step 6): inseparable with haben (DWDS II, hat übergangen) beside separable
-    // über+gehen with sein (I, ist übergegangen). kaikki gives sein to both, which is why the
-    // audit never listed it.
+    // übergehen: inseparable with haben (DWDS II, hat übergangen) beside separable über+gehen
+    // with sein (I, ist übergegangen). kaikki gives sein to both.
     expectConjugation(infinitiv: "übergehen", conjugationgroup: .perfektpartizip, expected: "übergANGen")
     expectConjugation(infinitiv: "übergehen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt übergANGen")
     expectConjugation(infinitiv: "übergehen", conjugationgroup: .perfektpartizip, expected: "übergegANGen", readingIndex: 1)
@@ -1254,10 +1252,10 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "weichen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt geweicht", readingIndex: 1)
   }
 
-  // Defect plan, Part 2. A full override (a trailing * in AblautGroups.xml) spells out the
-  // base verb's conjugation, and until 2026-11-10 the derivative's prefix was never put back:
-  // bedürfen showed ich darf. Expectations are German Wiktionary's; kaikki's weak table for
-  // entgelten is a known English-Wiktionary defect (verbdata/wiktionary_defects.json).
+  // A full override (a trailing * in AblautGroups.xml) spells out the base verb's conjugation,
+  // and until 2026-11-10 the derivative's prefix was never put back: bedürfen showed ich darf.
+  // Expectations are German Wiktionary's; kaikki's weak table for entgelten is a known
+  // English-Wiktionary defect (verbdata/wiktionary_defects.json).
   @Test func overridesKeepTheirPrefix() {
     let bedürfen = ["bedarF", "bedArfst", "bedarF", "bedürfen", "bedürft", "bedürfen"]
     let vermögen = ["vermAG", "vermAGst", "vermAG", "vermögen", "vermögt", "vermögen"]
@@ -1316,10 +1314,10 @@ struct ConjugatorTests {
     return Verb(infinitiv: infinitiv, hits: 0, hitsAreProvisional: false, frequency: 0, frequencyIcon: "", readings: [reading])
   }
 
-  // Defect plan, Part 1. The tranche-2 importer took a verb's auxiliary from kaikki's
-  // first-listed one and its gloss from a separate sense, so aufstehen shipped "get up" with
-  // haben. Every expectation here comes from DWDS or German Wiktionary, never from the engine;
-  // verbdata/auxiliary_rulings.tsv records the source for each.
+  // The importer took a verb's auxiliary from kaikki's first-listed one and its gloss from a
+  // separate sense, so aufstehen shipped "get up" with haben. Every expectation here comes
+  // from DWDS or German Wiktionary, never from the engine; verbdata/auxiliary_rulings.tsv
+  // records the source for each.
   @Test func auxiliariesRuledAgainstTheDictionary() {
     expectConjugation(infinitiv: "stattfinden", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "hAt stattgefUnden")
     expectConjugation(infinitiv: "reisen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "IST gereist")
@@ -1337,7 +1335,7 @@ struct ConjugatorTests {
   }
 
   // One row per reading in verbdata/auxiliary_rulings.tsv. This pins the rulings without a
-  // hand-written mixed-case string for each, and Part 6 of the defect plan extends it.
+  // hand-written mixed-case string for each.
   nonisolated private static let auxiliaryRulings: [(String, Int, Auxiliary)] = [
     ("stattfinden", 0, .haben),
     ("angehen", 0, .haben),
@@ -1685,9 +1683,9 @@ struct ConjugatorTests {
     #expect(reading.auxiliary == auxiliary)
   }
 
-  // Defect plan, Part 7a. backen, hauen, and salzen kept a strong participle after their
-  // Präteritum went weak, so neither family describes them. Each is mixed with a group holding
-  // only a participle override; the mixed family's weak endings supply backte and haute.
+  // backen, hauen, and salzen kept a strong participle after their Präteritum went weak, so
+  // neither family describes them. Each is mixed with a group holding only a participle
+  // override; the mixed family's weak endings supply backte and haute.
   // Expectations are DWDS's and Duden's. kaikki lists the weak participle beside the strong one
   // for all three (gebackt, gehaut, gesalzt), which is how the weak encoding passed as verified.
   // Duden marks gehaut Austrian or regional, and gesalzt is usual only for salting roads.
@@ -1716,9 +1714,9 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "versalzen", conjugationgroup: .perfektpartizip, expected: "versalzEN")
   }
 
-  // Defect plan, Part 7b. krauchen shipped with kriechen's paradigm (kroch, gekrochen), which
-  // is all English Wiktionary gives. Duden and DWDS conjugate it weak; verbdata/
-  // wiktionary_defects.json records the disagreement.
+  // krauchen shipped with kriechen's paradigm (kroch, gekrochen), which is all English
+  // Wiktionary gives. Duden and DWDS conjugate it weak; verbdata/wiktionary_defects.json
+  // records the disagreement.
   @Test func krauchenIsWeak() {
     expectConjugation(infinitiv: "krauchen", conjugationgroup: .präteritumIndikativ(.thirdSingular), expected: "krauchte")
     expectConjugation(infinitiv: "krauchen", conjugationgroup: .perfektIndikativ(.thirdSingular), expected: "IST gekraucht")
@@ -1764,7 +1762,6 @@ struct ConjugatorTests {
     expectFailure(infinitiv: "machen", expectedError: .readingNotRecognized, readingIndex: 1)
   }
 
-  // The five ablaut groups added by the strong-bases tranche (docs/roadmap.md step 7).
   @Test func strongBasesTranche1NewAblautGroups() {
     // bersten is defective in the Präsens: du birst and er birst are the same word built
     // two different ways, so the group replaces the region differently in 2s and 3s.
@@ -1846,8 +1843,8 @@ struct ConjugatorTests {
   }
 
   // The classify-and-verify pipeline never compares a compound tense, so a wrong `ay` is
-  // invisible to it and cannot move the at-odds count. These are the only guard the
-  // tranche's auxiliaries have.
+  // invisible to it and cannot move the at-odds count. These are the only guard these verbs'
+  // auxiliaries have.
   @Test func strongBasesTranche1Auxiliaries() {
     expectConjugation(infinitiv: "gedeihen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "BIN gedIEhen")
     expectConjugation(infinitiv: "gleiten", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "BIN geglItten")
@@ -1863,8 +1860,8 @@ struct ConjugatorTests {
     expectConjugation(infinitiv: "schwellen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "BIN geschwOllen")
     expectConjugation(infinitiv: "zerschellen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "BIN zerschellt")
 
-    // haben, for contrast: schmelzen's transitive reading, which was its only reading until
-    // the defect plan gave it a second, and graben and melken, which take haben outright.
+    // haben, for contrast: schmelzen's transitive reading, and graben and melken, which take
+    // haben outright.
     expectConjugation(infinitiv: "schmelzen", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "habe geschmOlzen", readingIndex: 1)
     expectConjugation(infinitiv: "graben", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "habe gegraben")
     expectConjugation(infinitiv: "melken", conjugationgroup: .perfektIndikativ(.firstSingular), expected: "habe gemOlken")

@@ -7,8 +7,8 @@ import Testing
 @MainActor
 @Suite("Verb")
 struct VerbTests {
-  // Nothing checked this until 2026-07-19, and the strong-bases tranche shipped 14 verbs out
-  // of order because of it: the import script inserted back-to-front without accounting for
+  // Nothing checked this until 2026-07-19, and an import shipped 14 verbs out of order
+  // because of it: the import script inserted back-to-front without accounting for
   // repeated insert() at one index reversing the batch, so verbs sharing an anchor came out
   // as glimmen before gleiten. Verb.verbs is a dictionary, so file order survives nowhere in
   // the parsed model; the raw XML is the only place this can be checked.

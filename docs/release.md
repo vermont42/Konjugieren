@@ -24,13 +24,13 @@ release notes.
 
 1. **Create the new version in App Store Connect.**
 2. **Add the four per-level leaderboards to it, and test leaderboard access** on a development
-   build before submitting the version for review. The leaderboards (pedagogy Phase 8) were not
+   build before submitting the version for review. The leaderboards were not
    visible to a development build on 2026-11-14, probably because no app version existed to add
    them to. Once they are added, finish a quiz over all verbs and tap View Leaderboard; it should
    open that level's board with the score. Keep GameKit debug mode off in the scheme, since it
    hides every leaderboard. See [`game_center_setup.md`](game_center_setup.md) § Testing Before
    Release.
-3. **Create the eight achievements** (pedagogy Phase 23) by the walkthrough in
+3. **Create the eight achievements** by the walkthrough in
    [`game_center_setup.md`](game_center_setup.md) § The Achievements, with the artwork Josh chose,
    add them to the version, and on the development build open View Achievements on the Quiz tab:
    the eight should be listed, with progress on any the build's record has begun.
@@ -44,9 +44,9 @@ release notes.
 6. **Redo the screenshots** (Josh, 2026-11-15), 36 in all, by
    [`screenshot_playbook.md`](screenshot_playbook.md) and `scripts/take_screenshots.sh`. Revise
    the nine views in [`screenshot.md`](../plans/screenshot.md) first; the driver's `VIEWS`
-   follows. As of 2026-11-15 the plan predates the pedagogy work: the Quiz tab now opens on the
-   practice hub, not a quiz, so `quiz_mid` needs Start first and shows the answer frame (Phase 2);
-   `quiz_results` asks for elapsed time, which a hidden Quiz Clock, the default since Phase 7,
+   follows. As of 2026-11-15 the plan predates the quiz's redesign: the Quiz tab now opens on the
+   practice hub, not a quiz, so `quiz_mid` needs Start first and shows the answer frame;
+   `quiz_results` asks for elapsed time, which a hidden Quiz Clock, now the default,
    leaves off the results; and nothing shows the hub, Mastery, or an exercise. The playbook's
    hardware-keyboard mechanism has never been run here, so shoot `--view quiz_mid` alone first.
    Run `scripts/verify_store_media.sh` on the bundle before uploading.
@@ -62,7 +62,7 @@ release notes.
    be done sooner: Apple's table of
    [required, localizable, and editable properties](https://developer.apple.com/help/app-store-connect/reference/app-information/required-localizable-and-editable-properties)
    does not mark Primary Category as editable without submitting a new version (checked
-   2026-11-15, in the pedagogy plan's Closing). The change ships with the version.
+   2026-11-15). The change ships with the version.
 9. **Submit the version with the four leaderboards and the eight achievements in the same
    submission.** On each one's page, click **Add for Review** and choose the draft submission that
    holds the version. Apple

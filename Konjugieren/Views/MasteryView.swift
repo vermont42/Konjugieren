@@ -5,7 +5,7 @@ import SwiftUI
 /// What the Quiz tab's hub pushes for its Mastery row.
 struct MasteryDestination: Hashable {}
 
-/// What the practice record has made secure at the learner's level (T6.2): the weak verbs'
+/// What the practice record has made secure at the learner's level: the weak verbs'
 /// patterns, then the key conjugations of the 50 most frequent strong and mixed verbs. It only
 /// shows. A verb here links to nothing, since opening a verb page is a lookup, which would send
 /// the verb's key conjugations back to the first box.

@@ -4,15 +4,15 @@ import Foundation
 
 /// The shape of an expected answer: the blanks the learner fills, and the words around them that
 /// the learner does not type. `ihr ______` settles that the pronoun is not part of the answer, and
-/// `______ Sie ______!` settles where a separable prefix goes. Phase 15's key conjugations and
-/// Phase 18's sentence frames of the pedagogy plan are the same idea with more blanks.
+/// `______ Sie ______!` settles where a separable prefix goes. Verb Essentials' key conjugations
+/// and the Sentences quiz's gap sentences are the same idea with more blanks.
 struct AnswerFrame: Equatable {
   enum Segment: Equatable {
     /// Who an Imperativ addresses, shown as (du) or (ihr). The du and ihr imperatives take no
     /// pronoun, but the learner must still know which one is asked.
     case addressee(String)
     case blank
-    /// A sentence's words around its blanks, which are not part of the answer (Phase 18). The
+    /// A sentence's words around its blanks, which are not part of the answer. The
     /// text keeps its spacing, so that a comma or full stop written against a blank stays there.
     case context(String)
     /// Which sie a third-person question means, since the one pronoun asks for two conjugations.

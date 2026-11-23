@@ -12236,3 +12236,17 @@ One wrinkle: the test agent stripped `(Decision 5)` from test comments, and the 
 in `privacy_policy_pending.md` as a pointer to a ruling. Both are defensible. The comments already
 state the rule (no signal may reveal accuracy), and the release-day worklist is a place where
 naming the ruling helps.
+
+## Closing a launch race in endAll (2026-11-22)
+
+A Conjugar session, porting the Live Activities dependency, noticed a race on reading Konjugieren's
+code and sent word. `KonjugierenApp.init()` calls `Current.liveActivities.endAll()` to clear
+activities a killed launch left behind, and `LiveActivitiesReal.endAll()` read
+`Activity<…>.activities` inside a `Task { @MainActor in … }`. That Task cannot run until the caller
+returns, and nothing orders it before a cold launch's deeplink. If the quiz widget's daily
+challenge, a quiz link, or the reminder's daily session started a quiz first, the cleanup would
+end the new quiz's activity. Unlikely, since the Task is queued first, but not guaranteed.
+
+The fix is Conjugar's: read both lists synchronously in `endAll()` and give the snapshot to the
+Task, so it ends only the activities that existed when it was called. It is unconfirmed on a
+device, but it is correct whatever the ordering.

@@ -39,12 +39,16 @@ final class LiveActivitiesReal: LiveActivities {
     }
   }
 
+  // The lists are read now, not in the Task, which runs only after the caller returns. A cold
+  // launch by a deeplink can start a quiz before then, and the Task would end its activity.
   func endAll() {
+    let quizActivities = Activity<QuizActivityAttributes>.activities
+    let gameActivities = Activity<GameActivityAttributes>.activities
     Task { @MainActor in
-      for activity in Activity<QuizActivityAttributes>.activities {
+      for activity in quizActivities {
         await activity.end(nil, dismissalPolicy: .immediate)
       }
-      for activity in Activity<GameActivityAttributes>.activities {
+      for activity in gameActivities {
         await activity.end(nil, dismissalPolicy: .immediate)
       }
     }

@@ -27,7 +27,7 @@ The quiz tests users' knowledge of German verb conjugations with timed, scored g
 | `QuizAbandonment.swift` | The quizzes in progress, so that the next launch can report one the app was left during (`abandonQuiz`) |
 | `QuizClock.swift` | The setting that shows or hides the quiz's time, hidden by default |
 | `ErrorExplainerView.swift` | On-demand AI explanation of why an answer was wrong |
-| `LiveActivityManager.swift` | Starts/updates/ends quiz Live Activity on lock screen |
+| `LiveActivitiesReal.swift` | Starts/updates/ends quiz Live Activity on lock screen, through `Current.liveActivities` |
 
 ### Quiz Flow
 
@@ -1389,7 +1389,7 @@ A space-invaders-style arcade game where players shoot descending enemies. It in
 |------|---------|
 | `GameState.swift` | `@Observable` class with all game state: enemies, bullets, power-ups, waves, physics |
 | `GameView.swift` | SwiftUI view using `TimelineView(.animation)` for 60fps rendering |
-| `LiveActivityManager.swift` | Starts/updates/ends game Live Activity showing wave, score, and health |
+| `LiveActivitiesReal.swift` | Starts/updates/ends game Live Activity showing wave, score, and health, through `Current.liveActivities` |
 
 ### Game Entities
 
@@ -1567,11 +1567,22 @@ Both the quiz and game use ActivityKit Live Activities to show real-time progres
 
 | File | Purpose |
 |------|---------|
-| `LiveActivityManager.swift` | Static methods to start, update, and end activities |
+| `LiveActivities.swift` | The `LiveActivities` protocol, which `Current.liveActivities` holds, and `LiveActivity`, the handle a quiz or the game keeps |
+| `LiveActivitiesReal.swift` | Starts, updates, and ends activities through ActivityKit |
+| `LiveActivitiesSpy.swift` | Records started and ended activities under unit tests (`World.unitTest`), which start no real ones |
 | `QuizActivityAttributes.swift` | ActivityKit model: level (its localized name), current state |
 | `GameActivityAttributes.swift` | ActivityKit model: wave, score, health fraction, phase |
 | `QuizLiveActivityView.swift` | Widget-side view rendering quiz progress |
 | `GameLiveActivityView.swift` | Widget-side view rendering game state |
+
+### One Quiz Activity at a Time
+
+A quiz in a sheet (a collection, a practice set, an ablaut group's Verb Essentials) can run over a
+quiz in progress in the Quiz tab. Only one of them shows a Live Activity: `Quiz.liveActivityHolder`,
+a weak static, names the quiz that holds the place. The first qualifying quiz to start takes it,
+`quit()` and `finishQuiz()` give it back, and Ten More asks again. A quiz takes the place whether or
+not ActivityKit grants the activity, and a quiz released while holding it ends its activity in
+`deinit`. Decided 2026-11-22; see `docs/blog_notes.md`.
 
 ### Quiz Live Activity State
 

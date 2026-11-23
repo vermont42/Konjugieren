@@ -67,7 +67,7 @@ class GameState {
   private var diveTimer: CGFloat = 0
   private let motionManager = CMMotionManager()
   private var lastUpdateTime: Date?
-  private var liveActivity: Activity<GameActivityAttributes>?
+  private var liveActivity: LiveActivity<GameActivityAttributes>?
   private var lastActivityUpdateTime: Date?
   private static let activityUpdateInterval: TimeInterval = 2.0
 
@@ -205,7 +205,7 @@ class GameState {
     spawnEnemyGrid()
 
     startMotion()
-    liveActivity = LiveActivityManager.start(
+    liveActivity = Current.liveActivities.start(
       attributes: GameActivityAttributes(),
       initialState: GameActivityAttributes.ContentState(
         wave: 1,
@@ -955,7 +955,7 @@ class GameState {
       healthFraction: Double(playerHealth),
       phase: phase.rawValue
     )
-    LiveActivityManager.update(liveActivity, state: state)
+    Current.liveActivities.update(liveActivity, state: state)
   }
 
   private func forceLiveActivityUpdate() {
@@ -967,7 +967,7 @@ class GameState {
       healthFraction: Double(playerHealth),
       phase: phase.rawValue
     )
-    LiveActivityManager.update(liveActivity, state: state)
+    Current.liveActivities.update(liveActivity, state: state)
   }
 
   private func endLiveActivity() {
@@ -978,7 +978,7 @@ class GameState {
       healthFraction: Double(playerHealth),
       phase: phase.rawValue
     )
-    LiveActivityManager.end(liveActivity, finalState: finalState)
+    Current.liveActivities.end(liveActivity, finalState: finalState)
     self.liveActivity = nil
   }
 

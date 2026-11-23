@@ -12159,3 +12159,35 @@ activity requests predates this change and is left alone. If it ever matters, th
 
 *Activity* is Latin *activitas*, from *agere*, to drive or do, the verb behind *agent*, *act*, and
 *ambiguous* (*ambi-* + *agere*, driven both ways). Two activities for one learner was exactly that.
+
+## Live Activities become a Current dependency (2026-11-22)
+
+The previous entry left a note: unit tests were starting hundreds of real Live Activities, and a
+`Current` dependency with a fake would stop it. Josh asked for that the same evening.
+
+`LiveActivityManager`, an enum of static methods over ActivityKit, became the `LiveActivities`
+protocol on `World`, with `LiveActivitiesReal` (the old file, renamed with
+`scripts/rename_files.py`) on device and `LiveActivitiesSpy` under tests. The awkward part is
+that ActivityKit's `Activity` has no public initializer, so a fake cannot hand one back. The
+protocol therefore returns a small `LiveActivity<Attributes>` handle that holds an ID and an
+optional `Activity`. The real implementation fills in both, and the spy fills in only the ID.
+`Quiz` and `GameState` hold the handle and never touch ActivityKit. The launch-time cleanup
+became `Current.liveActivities.endAll()`.
+
+The spy made the one-activity tests stronger. Before, they could check only which quiz held the
+place. Now they also check that a sheet's quiz requests no activity, that quitting it ends
+nothing of the tab's, that a released quiz's `deinit` ends its activity, and that Ten More starts
+a new one. `Current` is shared with suites running in parallel, so each test compares the spy's
+counts before and after its own steps. That is safe because the steps run synchronously on the
+main actor, so no other test can start or end a quiz between them.
+
+There was a side effect nobody asked for. The full suite took 102 to 107 seconds in four runs
+earlier today and 55 seconds in the first run after the change, so the real ActivityKit requests
+(and their refusals) had been costing close to fifty seconds a run. That is one measurement, and
+worth re-checking before anyone cites it.
+
+The holder rule stays as it was: a quiz takes the place whether or not an activity is granted.
+With the spy, ActivityKit can no longer refuse under tests, so the choice no longer protects
+them. It was kept because it is harmless in the app: when the system refuses the tab's quiz an
+activity, it would almost surely refuse the sheet's too. Keeping it also keeps the rule about
+quizzes rather than about what the system allowed at a given moment.

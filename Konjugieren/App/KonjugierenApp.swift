@@ -87,7 +87,7 @@ struct KonjugierenApp: App {
       try? Tips.configure()
     }
     KonjugierenShortcuts.updateAppShortcutParameters()
-    LiveActivityManager.endAllActivities()
+    Current.liveActivities.endAll()
     Task {
       await VerbSpotlight.indexVerbs()
     }

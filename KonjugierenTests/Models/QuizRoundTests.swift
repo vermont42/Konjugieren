@@ -229,42 +229,68 @@ extension QuizTests {
       #expect(AnalyticsBand.quizDuration(seconds) == band)
     }
 
-    // These ask which quiz holds the Live Activity's place, not whether ActivityKit granted one:
-    // the simulator refuses requests (`targetMaximumExceeded`) long before a full run ends.
+    // `Current.liveActivities` is shared with suites running in parallel, so each test compares
+    // the spy's counts before and after its own steps. The steps are synchronous on the main
+    // actor, so no other test's quiz can start or end between them.
+    private var liveActivities: LiveActivitiesSpy {
+      Current.liveActivities as! LiveActivitiesSpy
+    }
+
     @Test func aCollectionsQuizOverTheTabsQuizStartsNoSecondLiveActivity() {
       let tab = startedQuiz()
       #expect(tab.holdsLiveActivity)
+      let startsBefore = liveActivities.startCount
       let sheet = startedQuiz(scope: .collection(.modals))
       #expect(!sheet.holdsLiveActivity)
+      #expect(liveActivities.startCount == startsBefore)
 
+      let activeBefore = liveActivities.activeIDs
       sheet.quit()
+      #expect(liveActivities.activeIDs == activeBefore)
       #expect(tab.holdsLiveActivity)
       tab.quit()
     }
 
     @Test func endingTheHoldersQuizFreesTheLiveActivityForTheNextQuiz() {
       let tab = startedQuiz()
+      let activeCount = liveActivities.activeIDs.count
       finishRight(tab)
       #expect(!tab.holdsLiveActivity)
+      #expect(liveActivities.activeIDs.count == activeCount - 1)
 
       let sheet = startedQuiz(scope: .collection(.modals))
       #expect(sheet.holdsLiveActivity)
+      #expect(liveActivities.activeIDs.count == activeCount)
       sheet.quit()
     }
 
-    @Test func aReleasedQuizFreesTheLiveActivity() {
+    @Test func aReleasedQuizEndsItsLiveActivityAndFreesThePlace() {
       var abandoned: Quiz? = startedQuiz()
       #expect(abandoned?.holdsLiveActivity == true)
+      let activeCount = liveActivities.activeIDs.count
       abandoned = nil
+      #expect(liveActivities.activeIDs.count == activeCount - 1)
 
       let next = startedQuiz()
       #expect(next.holdsLiveActivity)
       next.quit()
     }
 
+    @Test func tenMoreStartsANewLiveActivity() {
+      let quiz = startedQuiz()
+      finishRight(quiz)
+      let startsBefore = liveActivities.startCount
+      quiz.continueSession()
+      #expect(quiz.holdsLiveActivity)
+      #expect(liveActivities.startCount == startsBefore + 1)
+      quiz.quit()
+    }
+
     @Test func aVerbPageQuizTakesNoLiveActivity() {
+      let startsBefore = liveActivities.startCount
       let quiz = startedQuiz(scope: .verbPage(Verb.verbs["singen"]!, readingIndex: 0))
       #expect(!quiz.holdsLiveActivity)
+      #expect(liveActivities.startCount == startsBefore)
       quiz.quit()
     }
 

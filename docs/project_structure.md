@@ -145,7 +145,9 @@ Konjugieren/
 │   ├── KonjugierenLogger.swift # os.Logger factory with app subsystem
 │   ├── L.swift                 # Type-safe localization string accessors
 │   ├── Layout.swift            # Spacing constants (8pt, 16pt, 24pt)
-│   ├── LiveActivityManager.swift   # Creates and updates Live Activities for quiz and game
+│   ├── LiveActivities.swift    # The LiveActivities protocol (Current.liveActivities) and LiveActivity, the handle a quiz or the game holds
+│   ├── LiveActivitiesReal.swift  # Starts, updates, and ends quiz and game Live Activities through ActivityKit (was LiveActivityManager)
+│   ├── LiveActivitiesSpy.swift   # Records started and ended activities under unit tests, which start no real ones
 │   ├── MixedCaseAccessibility.swift  # VoiceOver labels for mixed-case ablaut strings
 │   ├── Modifiers.swift         # Custom ViewModifiers (headingLabel, funButton, speakOnTap, copyOnLongPress, etc.)
 │   ├── QRCode.swift            # A QR code made on the device with Core Image, for a practice set

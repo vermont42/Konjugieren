@@ -134,7 +134,7 @@ class Quiz {
   private var randomSource: AnyRandomNumberGenerator
   /// The clock a daily session's streak is recorded by, which tests set to other days.
   private let now: () -> Date
-  private var liveActivity: Activity<QuizActivityAttributes>?
+  private var liveActivity: LiveActivity<QuizActivityAttributes>?
   /// The one quiz whose Live Activity shows, since a quiz in a sheet can run over the Quiz tab's,
   /// and two activities on the Lock Screen would not say which quiz each one is. A quiz holds the
   /// place whether or not ActivityKit grants it an activity, so that the rule does not depend on
@@ -251,7 +251,7 @@ class Quiz {
       return
     }
     Quiz.liveActivityHolder = self
-    liveActivity = LiveActivityManager.start(
+    liveActivity = Current.liveActivities.start(
       attributes: QuizActivityAttributes(level: level.localizedName),
       initialState: makeContentState(isFinished: false)
     )
@@ -262,7 +262,7 @@ class Quiz {
       Quiz.liveActivityHolder = nil
     }
     if let liveActivity {
-      LiveActivityManager.end(liveActivity, finalState: makeContentState(isFinished: isFinished))
+      Current.liveActivities.end(liveActivity, finalState: makeContentState(isFinished: isFinished))
       self.liveActivity = nil
     }
   }
@@ -463,7 +463,7 @@ class Quiz {
     }
 
     if let liveActivity {
-      LiveActivityManager.update(liveActivity, state: makeContentState(isFinished: false))
+      Current.liveActivities.update(liveActivity, state: makeContentState(isFinished: false))
     }
 
     if currentIndex >= questions.count {
@@ -1106,7 +1106,7 @@ class Quiz {
 
   private func updateLiveActivityTime() {
     guard let liveActivity, Current.settings.quizClock == .show else { return }
-    LiveActivityManager.update(liveActivity, state: makeContentState(isFinished: false))
+    Current.liveActivities.update(liveActivity, state: makeContentState(isFinished: false))
   }
 
   private func makeContentState(isFinished: Bool) -> QuizActivityAttributes.ContentState {
@@ -1299,7 +1299,7 @@ class Quiz {
     // A Live Activity outlives the quiz that started it unless ended, and would stay on the Lock
     // Screen beside the next quiz's, since a released quiz no longer holds the place.
     if let liveActivity {
-      LiveActivityManager.end(liveActivity, finalState: makeContentState(isFinished: false))
+      Current.liveActivities.end(liveActivity, finalState: makeContentState(isFinished: false))
     }
   }
 }

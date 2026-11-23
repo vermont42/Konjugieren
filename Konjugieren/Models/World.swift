@@ -21,6 +21,7 @@ class World {
   var learnerVerbs: LearnerVerbStore
   var practice: PracticeStore
   var reminderScheduler: ReminderScheduler
+  var liveActivities: LiveActivities
   var verb: Verb?
   var verbSource: AnalyticsSource = .deeplink
   var verbMarks: MarkedConjugations?
@@ -37,7 +38,7 @@ class World {
   var selectedTab: TabSelection = .verbs
   var shouldNavigateToTutor = false
 
-  init(settings: Settings, gameCenter: GameCenter, getterSetter: GetterSetter, languageModelService: LanguageModelService, reviewPrompter: ReviewPrompter, soundPlayer: SoundPlayer, utterer: Utterer, fatalError: FatalError, analytics: Analytics, session: URLSession, learnerVerbs: LearnerVerbStore, practice: PracticeStore, reminderScheduler: ReminderScheduler) {
+  init(settings: Settings, gameCenter: GameCenter, getterSetter: GetterSetter, languageModelService: LanguageModelService, reviewPrompter: ReviewPrompter, soundPlayer: SoundPlayer, utterer: Utterer, fatalError: FatalError, analytics: Analytics, session: URLSession, learnerVerbs: LearnerVerbStore, practice: PracticeStore, reminderScheduler: ReminderScheduler, liveActivities: LiveActivities) {
     self.settings = settings
     self.gameCenter = gameCenter
     self.getterSetter = getterSetter
@@ -51,6 +52,7 @@ class World {
     self.learnerVerbs = learnerVerbs
     self.practice = practice
     self.reminderScheduler = reminderScheduler
+    self.liveActivities = liveActivities
   }
 
   nonisolated static let isRunningUnitTests = NSClassFromString("XCTestCase") != nil
@@ -63,13 +65,13 @@ class World {
     let getterSetter = GetterSetterReal()
     let settings = Settings(getterSetter: getterSetter)
     let sharedGetterSetter = GetterSetterReal(userDefaults: WidgetConstants.sharedDefaults ?? .standard)
-    return World(settings: settings, gameCenter: GameCenterReal(), getterSetter: getterSetter, languageModelService: LanguageModelServiceReal(), reviewPrompter: ReviewPrompterReal(settings: settings), soundPlayer: SoundPlayerReal(), utterer: UttererReal(), fatalError: FatalErrorReal(), analytics: AnalyticsReal(), session: .shared, learnerVerbs: LearnerVerbStore(getterSetter: sharedGetterSetter), practice: PracticeStore(getterSetter: sharedGetterSetter), reminderScheduler: ReminderSchedulerReal())
+    return World(settings: settings, gameCenter: GameCenterReal(), getterSetter: getterSetter, languageModelService: LanguageModelServiceReal(), reviewPrompter: ReviewPrompterReal(settings: settings), soundPlayer: SoundPlayerReal(), utterer: UttererReal(), fatalError: FatalErrorReal(), analytics: AnalyticsReal(), session: .shared, learnerVerbs: LearnerVerbStore(getterSetter: sharedGetterSetter), practice: PracticeStore(getterSetter: sharedGetterSetter), reminderScheduler: ReminderSchedulerReal(), liveActivities: LiveActivitiesReal())
   }()
 
   static let unitTest: World = {
     let getterSetter = GetterSetterFake()
     let settings = Settings(getterSetter: getterSetter)
-    return World(settings: settings, gameCenter: GameCenterSpy(), getterSetter: getterSetter, languageModelService: LanguageModelServiceDummy(), reviewPrompter: ReviewPrompterDummy(), soundPlayer: SoundPlayerDummy(), utterer: UttererDummy(), fatalError: FatalErrorSpy(), analytics: AnalyticsSpy(), session: .stubSession(ratingsCount: 1), learnerVerbs: LearnerVerbStore(getterSetter: GetterSetterFake()), practice: PracticeStore(getterSetter: GetterSetterFake()), reminderScheduler: ReminderSchedulerSpy())
+    return World(settings: settings, gameCenter: GameCenterSpy(), getterSetter: getterSetter, languageModelService: LanguageModelServiceDummy(), reviewPrompter: ReviewPrompterDummy(), soundPlayer: SoundPlayerDummy(), utterer: UttererDummy(), fatalError: FatalErrorSpy(), analytics: AnalyticsSpy(), session: .stubSession(ratingsCount: 1), learnerVerbs: LearnerVerbStore(getterSetter: GetterSetterFake()), practice: PracticeStore(getterSetter: GetterSetterFake()), reminderScheduler: ReminderSchedulerSpy(), liveActivities: LiveActivitiesSpy())
   }()
 
   static let viewVerbActivityType = "biz.joshadams.Konjugieren.viewVerb"

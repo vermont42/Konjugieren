@@ -17,7 +17,9 @@ extension GameState {
   }
 
   func updateGhosts(dt: CGFloat) {
-    guard !ghosts.isEmpty || geisterjagdActive else { return }
+    guard !ghosts.isEmpty || geisterjagdActive else {
+      return
+    }
 
     if geisterjagdActive {
       geisterjagdTimer -= dt

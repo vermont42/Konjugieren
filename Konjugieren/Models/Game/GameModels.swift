@@ -8,9 +8,9 @@ struct Enemy: Identifiable, Codable {
   let col: Int
   var x: CGFloat
   var y: CGFloat
-  var isAlive: Bool = true
+  var isAlive = true
   let imageName: String
-  var isDiving: Bool = false
+  var isDiving = false
   var diveProgress: CGFloat = 0
   var diveStartX: CGFloat = 0
   var diveStartY: CGFloat = 0
@@ -23,7 +23,7 @@ struct Bullet: Identifiable, Codable {
   var x: CGFloat
   var y: CGFloat
   let isPlayerBullet: Bool
-  var useRed: Bool = false
+  var useRed = false
 }
 
 struct Zigzagger: Codable {
@@ -125,7 +125,7 @@ struct RobotBrain: Codable {
   var hitsRemaining: Int = 3
   var targetEnemyIndex: Int?
   var lockOnTimer: CGFloat = 0
-  var showBolt: Bool = false
+  var showBolt = false
 }
 
 struct RobotMinion: Codable {
@@ -133,9 +133,9 @@ struct RobotMinion: Codable {
   var y: CGFloat
   var homeX: CGFloat
   var homeY: CGFloat
-  var hasLeftArm: Bool = true
-  var hasRightArm: Bool = true
-  var isDiving: Bool = false
+  var hasLeftArm = true
+  var hasRightArm = true
+  var isDiving = false
   var diveProgress: CGFloat = 0
   var diveStartX: CGFloat = 0
   var diveStartY: CGFloat = 0

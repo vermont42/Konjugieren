@@ -1,8 +1,8 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
 import Foundation
-import Testing
 @testable import Konjugieren
+import Testing
 
 @MainActor
 @Suite("Verb visit")
@@ -33,7 +33,7 @@ struct VerbVisitTests {
     visit.reach(.compound)
     #expect(visit.leaveParameters(end: start.addingTimeInterval(20)) == [
       "deepestSection": "compound",
-      "dwell": "15-60s",
+      "dwell": "15-60s"
     ])
   }
 }

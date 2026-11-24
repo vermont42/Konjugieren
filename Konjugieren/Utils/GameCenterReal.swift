@@ -2,8 +2,8 @@
 
 import GameKit
 import Observation
-import UIKit
 import os
+import UIKit
 
 private let gameCenterLogger = KonjugierenLogger.logger(category: "GameCenter")
 
@@ -61,13 +61,17 @@ class GameCenterReal: GameCenter {
   /// Sends only progress that has risen. The practice record can fall, a wrong answer sending an
   /// item down the ladder, but an achievement once earned stays earned, so a fall is never sent.
   private func sendPendingAchievements() {
-    guard isAuthenticated, let reported = reportedAchievements else { return }
+    guard isAuthenticated, let reported = reportedAchievements else {
+      return
+    }
 
     let risen = pendingAchievements.filter { achievement, percent in
       percent > (reported[achievement.identifier] ?? 0)
     }
     pendingAchievements = [:]
-    guard !risen.isEmpty else { return }
+    guard !risen.isEmpty else {
+      return
+    }
 
     let achievements = risen.map { achievement, percent in
       let gkAchievement = GKAchievement(identifier: achievement.identifier)
@@ -89,7 +93,9 @@ class GameCenterReal: GameCenter {
   }
 
   func showAchievements() {
-    guard isAuthenticated else { return }
+    guard isAuthenticated else {
+      return
+    }
 
     GKAccessPoint.shared.trigger(state: .achievements) {}
   }
@@ -106,7 +112,9 @@ class GameCenterReal: GameCenter {
   }
 
   func submitScore(_ score: Int, level: QuizLevel) {
-    guard isAuthenticated else { return }
+    guard isAuthenticated else {
+      return
+    }
 
     let leaderboardID = level.leaderboardID
     Task {
@@ -124,7 +132,9 @@ class GameCenterReal: GameCenter {
   }
 
   func showLeaderboard(level: QuizLevel) {
-    guard isAuthenticated else { return }
+    guard isAuthenticated else {
+      return
+    }
 
     GKAccessPoint.shared.trigger(
       leaderboardID: level.leaderboardID,
@@ -134,7 +144,9 @@ class GameCenterReal: GameCenter {
   }
 
   func showLeaderboards() {
-    guard isAuthenticated else { return }
+    guard isAuthenticated else {
+      return
+    }
 
     GKAccessPoint.shared.trigger(state: .leaderboards) {}
   }

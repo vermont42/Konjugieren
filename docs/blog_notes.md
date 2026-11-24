@@ -12277,3 +12277,64 @@ behavior beside a new feature in the same suite, and the word made sense only on
 names read correctly without it, and `aSlipSaysAlmostRatherThanADiagnosis` reads better. Names
 with "NoLonger", such as `theStoreSkipsAVerbNoLongerInTheCorpus`, stayed: they describe a state
 the app meets at run time, not a moment in the project's history.
+
+## SwiftLint, and a linter older than the language it read (2026-11-24)
+
+Josh asked for SwiftLint "using the same configuration as in ../Conjugar and ../Conjuguer". The
+two configs turned out not to be the same. Conjugar's runs SwiftLint's defaults with thirteen rules
+off. Conjuguer's, last touched in 2023, also turns on about thirty-five opt-in rules
+(`conditional_returns_on_newline`, `multiline_arguments`, `sorted_imports`, `implicit_return`, and
+so on). On Konjugieren they reported 149 and 477 violations. Josh chose the union: Conjuguer's
+opt-ins plus every rule either app disables. That is the stricter style, and it already matches
+this repo's switch-case-on-its-own-line convention.
+
+The first `swiftlint --fix` deleted eight test `init()`s. Each was a Swift Testing suite's setup
+(`Current.settings.region = .north` and the like), which `unneeded_synthesized_initializer`
+mistook for a synthesized initializer. The ninth hit, `ConjugationMap.init(entriesByConjugation:)`,
+was also wrong: the struct body declares two other inits, which suppress the memberwise one, so
+deleting it would not have compiled. The tests might have kept passing by luck of ordering, which
+is worse than failing. The fix was reverted before anything else ran.
+
+Then came the switch expressions. All four `let x = switch …` in the repo were flagged as
+misaligned, and `URLProtocolStub.swift` was skipped as unparseable because of
+`nonisolated(unsafe)`. The installed SwiftLint was 0.52.3, from May 2023, which predates Swift
+5.9's switch expressions. A portable 0.65.1 binary in the scratchpad confirmed that the newer
+version gets all three right. It also showed what an upgrade would cost: Conjugar would go from 0
+warnings to 3, and Conjuguer from 0 to 14. Josh chose to upgrade through Homebrew and fix all
+three apps. One of Conjuguer's fourteen was a `superfluous_disable_command`: a bracketed
+`redundant_type_annotation` exception around TipKit's `@Parameter static var isUnlocked: Bool`.
+It was a workaround for the same 0.52.3 false positive, and 0.65.1 no longer needs it.
+
+Most fixes were mechanical. 99 one-line `guard … else { return }` became three lines, by a script
+driven only by the lines SwiftLint flagged. Conjuguer has zero one-liners, so that is the house
+style under this rule. 96 `multiline_arguments` came from the game's `rectsIntersect(ax:ay:aSize:
+bx:by:bSize:)` calls, split three-and-three across two lines, and each now sits on one line. Five
+`orphaned_doc_comment`s came from the `// Semantic ordering:` line that this repo's own CLAUDE.md
+requires above certain enums. It sat between the `///` doc and the declaration and detached the
+doc, so it moved above the doc block.
+
+Three of autocorrect's changes compiled under the linter's eyes but not under Swift's, because
+autocorrect is not type-aware. `empty_count` turned `entry.count > 0` into `!entry.isEmpty`, but
+`entry` was a `(day:, count:)` tuple. The field is now `sessionCount`, a better name anyway.
+`redundant_nil_coalescing` stripped `expected[table] ?? nil` in a test where `expected` is a
+`[ConjugationTable: Stem?]`, so the lookup is `Stem??` and `?? nil` flattens it. That line became
+`if case let stem?? = expected[table]`. And 0.52.3's `redundant_type_annotation` stripped the
+`@Parameter` type, which the macro cannot expand without.
+
+`function_default_parameter_at_end` was the one rule that argued with good code. Ten of its
+sixteen hits end in `using generator: inout some RandomNumberGenerator`, which belongs last, as in
+the standard library's `shuffled(using:)`. Conjugar has the same shape and simply does not opt
+into the rule. Those ten carry a line-scoped `disable:this`. The other six were reordered, or lost
+a default where the natural order mattered more: `ConjugationRow(pronoun:form:)` reads
+pronoun-first, so `pronoun` stopped defaulting to nil.
+
+Tests may force-cast and force-try, as they may force-unwrap, through a nested
+`KonjugierenTests/.swiftlint.yml`. Conjugar does this with inline `disable:this force_cast`. Here
+that would have taken 43 comments.
+
+The build phase copies Conjugar's, with one difference. Konjugieren sets
+`ENABLE_USER_SCRIPT_SANDBOXING = YES`, and Conjugar does not. A sandboxed script phase may read only
+its declared inputs, which works for Validate Verbs.xml and Generate Conjugation Map but not for a
+linter that reads every file. So the app target alone opts out. The script also appends
+`/opt/homebrew/bin` to `PATH`, for the Apple Silicon Mac that arrives in 2027. All 957 tests pass,
+and the tree lints clean under 0.65.1.

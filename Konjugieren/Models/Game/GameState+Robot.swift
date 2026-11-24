@@ -17,7 +17,9 @@ extension GameState {
   }
 
   private func updateRobotBrain(dt: CGFloat) {
-    guard var brain = robotBrain else { return }
+    guard var brain = robotBrain else {
+      return
+    }
 
     switch brain.phase {
     case .ascending:
@@ -98,7 +100,9 @@ extension GameState {
   }
 
   private func updateRobotMinion(dt: CGFloat) {
-    guard var minion = robotMinion else { return }
+    guard var minion = robotMinion else {
+      return
+    }
 
     if minion.isDiving {
       minion.diveProgress += dt / Self.robotDiveDuration

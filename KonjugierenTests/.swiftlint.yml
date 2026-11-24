@@ -1,0 +1,5 @@
+# Merges over the root .swiftlint.yml. Force-unwrapping is conventional in tests (see CLAUDE.md),
+# and a failed `as!` or `try!` fails the test, which is what the test wants.
+disabled_rules:
+  - force_cast
+  - force_try

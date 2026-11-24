@@ -111,7 +111,7 @@ enum EmojiAsset {
     "\u{1F1E8}\u{1F1ED}": "EmojiSwissFlag",
     "\u{1F1E9}\u{1F1EA}": "EmojiGermanFlag",
     "\u{1F3F4}\u{E0067}\u{E0062}\u{E0065}\u{E006E}\u{E0067}\u{E007F}": "EmojiEnglandFlag",
-    "\u{1F40E}": "EmojiHorse",
+    "\u{1F40E}": "EmojiHorse"
   ]
 
   static func assetName(for emoji: String) -> String? {

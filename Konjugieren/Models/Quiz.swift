@@ -149,7 +149,9 @@ class Quiz {
   private let abandonmentID = UUID().uuidString
 
   var currentQuestion: QuizItem? {
-    guard isInProgress, currentIndex < questions.count else { return nil }
+    guard isInProgress, currentIndex < questions.count else {
+      return nil
+    }
     return questions[currentIndex]
   }
 
@@ -221,7 +223,9 @@ class Quiz {
   /// and the questions so far carry on, and the new questions are a fresh draw, so that every
   /// round has the default quiz's mix of verbs.
   func continueSession() {
-    guard shouldShowResults, !isInProgress, canContinue else { return }
+    guard shouldShowResults, !isInProgress, canContinue else {
+      return
+    }
     let more = generateQuestions(excluding: askedItemKeys.union(questions.compactMap(\.sentence?.id)).union(questions.compactMap(\.choice?.question.id)))
     guard !more.isEmpty else {
       return
@@ -267,7 +271,9 @@ class Quiz {
   }
 
   func submitAnswer(_ answer: String) {
-    guard isInProgress, !isHeld, currentIndex < questions.count else { return }
+    guard isInProgress, !isHeld, currentIndex < questions.count else {
+      return
+    }
     if scope.isSpeedRound {
       submitSpeedRoundAnswer(answer)
       return
@@ -325,7 +331,9 @@ class Quiz {
   /// it, so the answer moves neither the practice record nor `QuizErrorHistory`, whose misses the
   /// Tutor reads as production errors (Josh, 2026-11-15).
   func submitRecognition(_ answer: RecognitionAnswer) {
-    guard isInProgress, !isHeld, currentIndex < questions.count, let recognition = questions[currentIndex].recognition else { return }
+    guard isInProgress, !isHeld, currentIndex < questions.count, let recognition = questions[currentIndex].recognition else {
+      return
+    }
     let grade = recognition.grade(answer)
     let summary = answer.summary(lang: Current.settings.conjugationgroupLang)
 
@@ -361,7 +369,9 @@ class Quiz {
   /// producing its conjugation, so the choice moves neither the practice record nor
   /// `QuizErrorHistory`, as with Name the Conjugation.
   func submitChoice(_ index: Int) {
-    guard isInProgress, !isHeld, currentIndex < questions.count, let choice = questions[currentIndex].choice, choice.options.indices.contains(index) else { return }
+    guard isInProgress, !isHeld, currentIndex < questions.count, let choice = questions[currentIndex].choice, choice.options.indices.contains(index) else {
+      return
+    }
     let isCorrect = index == choice.rightIndex
     questions[currentIndex].chosenOption = index
     questions[currentIndex].userAnswer = choice.options[index].answer
@@ -445,7 +455,9 @@ class Quiz {
 
   /// Leaves a held correction for the next question, or for the results after the last.
   func continueAfterCorrection() {
-    guard isInProgress, isHeld else { return }
+    guard isInProgress, isHeld else {
+      return
+    }
     correction = nil
     isHoldingChoice = false
     advance()
@@ -581,7 +593,8 @@ class Quiz {
         count: SpeedRound.batchSize,
         after: previous,
         using: &randomSource
-      ).map { question in
+      )
+      .map { question in
         makeQuizItem(verb: question.verb, conjugationgroup: question.conjugationgroup, readingIndex: question.readingIndex)
       }
     }
@@ -600,7 +613,8 @@ class Quiz {
         excluded: excluded,
         limit: scope.questionCount,
         using: &randomSource
-      ).map { question in
+      )
+      .map { question in
         makeQuizItem(verb: question.verb, conjugationgroup: question.conjugationgroup, readingIndex: question.readingIndex)
       }
     }
@@ -630,7 +644,8 @@ class Quiz {
         distinctCells: false,
         mixesVerbs: true,
         using: &randomSource
-      ).map { question in
+      )
+      .map { question in
         makeRecognitionItem(verb: question.verb, conjugationgroup: question.conjugationgroup, readingIndex: question.readingIndex, tables: tables)
       }
     }
@@ -1102,7 +1117,9 @@ class Quiz {
   }
 
   private func updateLiveActivityTime() {
-    guard let liveActivity, Current.settings.quizClock == .show else { return }
+    guard let liveActivity, Current.settings.quizClock == .show else {
+      return
+    }
     Current.liveActivities.update(liveActivity, state: makeContentState(isFinished: false))
   }
 
@@ -1123,13 +1140,17 @@ class Quiz {
   }
 
   func pauseTimer() {
-    guard isInProgress else { return }
+    guard isInProgress else {
+      return
+    }
     timer?.invalidate()
     timer = nil
   }
 
   func resumeTimer() {
-    guard isInProgress, !isHeld, timer == nil else { return }
+    guard isInProgress, !isHeld, timer == nil else {
+      return
+    }
     startTimer()
   }
 
@@ -1185,7 +1206,9 @@ class Quiz {
   /// moves to the next blank, whose label names what it asks. A recognition question speaks its
   /// prompt alone, since the verb and its gloss are what it asks for.
   private func announceQuestion() {
-    guard UIAccessibility.isVoiceOverRunning, let question = currentQuestion, currentStepRange.lowerBound == currentIndex else { return }
+    guard UIAccessibility.isVoiceOverRunning, let question = currentQuestion, currentStepRange.lowerBound == currentIndex else {
+      return
+    }
     var delay = 1.0
     if question.isReask {
       DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -1210,7 +1233,9 @@ class Quiz {
   // A wrong answer is not announced here: QuizView moves VoiceOver to the held correction,
   // which reads the result, both answers, and the letters that differ.
   private func announceAnswerResult(correct: Bool, preferredSpelling: String? = nil) {
-    guard UIAccessibility.isVoiceOverRunning else { return }
+    guard UIAccessibility.isVoiceOverRunning else {
+      return
+    }
     let announcement: String
     if let preferredSpelling {
       announcement = L.Quiz.announceCorrectSpelling(MixedCaseAccessibility.accessibilityLabel(for: preferredSpelling))
@@ -1224,7 +1249,9 @@ class Quiz {
 
   // The answer stays in the field for the learner to edit, and VoiceOver's focus with it.
   private func announceSecondAttempt(_ prompt: String) {
-    guard UIAccessibility.isVoiceOverRunning else { return }
+    guard UIAccessibility.isVoiceOverRunning else {
+      return
+    }
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
       UIAccessibility.post(notification: .announcement, argument: prompt)
     }
@@ -1233,7 +1260,9 @@ class Quiz {
   /// "Correct. In conversation, most verbs take the Perfekt Indikativ." A wrong choice reads the
   /// right sentence before the reason.
   private func announceChoice(_ choice: ChoicePrompt, isCorrect: Bool) {
-    guard UIAccessibility.isVoiceOverRunning else { return }
+    guard UIAccessibility.isVoiceOverRunning else {
+      return
+    }
     let reason = choice.question.reasonLine(lang: Current.settings.conjugationgroupLang)
     let announcement = isCorrect
       ? L.Choice.announceRight(reason)
@@ -1244,7 +1273,9 @@ class Quiz {
   }
 
   private func announceSpeedRoundMiss(_ question: QuizItem) {
-    guard UIAccessibility.isVoiceOverRunning else { return }
+    guard UIAccessibility.isVoiceOverRunning else {
+      return
+    }
     let answer = [question.pronoun, MixedCaseAccessibility.accessibilityLabel(for: question.correctAnswer)].compactMap { $0 }.joined(separator: " ")
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
       UIAccessibility.post(notification: .announcement, argument: L.SpeedRound.missed(answer))
@@ -1252,12 +1283,16 @@ class Quiz {
   }
 
   private func announceSpeedRoundWarning() {
-    guard UIAccessibility.isVoiceOverRunning else { return }
+    guard UIAccessibility.isVoiceOverRunning else {
+      return
+    }
     UIAccessibility.post(notification: .announcement, argument: L.SpeedRound.announceWarning)
   }
 
   private func announceQuizCompletion() {
-    guard UIAccessibility.isVoiceOverRunning else { return }
+    guard UIAccessibility.isVoiceOverRunning else {
+      return
+    }
     if scope.isSpeedRound {
       var announcement = L.SpeedRound.announceTimeUp(correctCount)
       if isNewSpeedRoundBest {
@@ -1621,8 +1656,12 @@ struct QuizItem: Identifiable {
   }
 
   var state: State {
-    guard let isCorrect else { return .unanswered }
-    guard isCorrect else { return .incorrect }
+    guard let isCorrect else {
+      return .unanswered
+    }
+    guard isCorrect else {
+      return .incorrect
+    }
     return firstAttempt == nil ? .correct : .correctOnSecondAttempt
   }
 

@@ -12,7 +12,9 @@ struct FamilyBrowseView: View {
   @State private var navigationPath = NavigationPath()
 
   private var fillerCount: Int {
-    guard gridWidth > 0 else { return 0 }
+    guard gridWidth > 0 else {
+      return 0
+    }
     let spacing = Layout.doubleDefaultSpacing
     let minimum = Layout.showcaseCardGridMinimum
     let columnCount = max(1, Int((gridWidth + spacing) / (minimum + spacing)))
@@ -122,14 +124,18 @@ struct FamilyBrowseView: View {
   }
 
   private func navigateToDeeplinkedFamily() {
-    guard let name = world.family, let family = BrowseableFamily(rawValue: name) else { return }
+    guard let name = world.family, let family = BrowseableFamily(rawValue: name) else {
+      return
+    }
     navigationPath = NavigationPath()
     navigationPath.append(family)
     world.family = nil
   }
 
   private func navigateToDeeplinkedCollection() {
-    guard let request = world.collection else { return }
+    guard let request = world.collection else {
+      return
+    }
     navigationPath = NavigationPath()
     navigationPath.append(request)
     world.collection = nil

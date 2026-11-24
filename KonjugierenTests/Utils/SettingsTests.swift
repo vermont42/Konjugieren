@@ -1,7 +1,7 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
-import Testing
 @testable import Konjugieren
+import Testing
 
 @Suite("Settings", .serialized)
 @MainActor
@@ -40,7 +40,7 @@ struct SettingsTests {
       Settings.audioFeedbackKey: "disable",
       Settings.searchScopeKey: "infinitiveAndTranslation",
       Settings.reviewCardSuppressionKey: "on",
-      Settings.hasSeenOnboardingKey: "true",
+      Settings.hasSeenOnboardingKey: "true"
     ])
 
     let settings = Settings(getterSetter: fake)
@@ -57,7 +57,7 @@ struct SettingsTests {
     let fake = GetterSetterFake(dictionary: [
       Settings.conjugationgroupLangKey: "nonsense",
       Settings.quizLevelKey: "extreme",
-      Settings.hasSeenOnboardingKey: "maybe",
+      Settings.hasSeenOnboardingKey: "maybe"
     ])
 
     let settings = Settings(getterSetter: fake)

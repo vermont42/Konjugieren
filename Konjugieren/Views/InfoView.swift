@@ -32,7 +32,7 @@ struct InfoView: View {
           case .photo(let filename, let accessibilityLabel):
             Image(filename)
               .resizable()
-              .aspectRatio(contentMode: .fit)
+              .scaledToFit()
               .frame(width: 270)
               .frame(maxWidth: .infinity)
               .accessibilityLabel(accessibilityLabel)

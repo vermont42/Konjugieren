@@ -31,7 +31,7 @@ let emojis: [(String, String)] = [
   ("EmojiEnglandFlag", "🏴󠁧󠁢󠁥󠁮󠁧󠁿"),
   ("EmojiGermanFlag", "🇩🇪"),
   ("EmojiHorse", "🐎"),
-  ("EmojiSwissFlag", "🇨🇭"),
+  ("EmojiSwissFlag", "🇨🇭")
 ]
 
 func contentBounds(of rep: NSBitmapImageRep) -> NSRect {
@@ -50,7 +50,9 @@ func contentBounds(of rep: NSBitmapImageRep) -> NSRect {
       if y > maxY { maxY = y }
     }
   }
-  guard maxX >= minX, maxY >= minY else { return .zero }
+  guard maxX >= minX, maxY >= minY else {
+    return .zero
+  }
   return NSRect(x: minX, y: minY, width: maxX - minX + 1, height: maxY - minY + 1)
 }
 

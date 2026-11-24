@@ -627,8 +627,7 @@ struct VerbBrowseView: View {
     var text = AttributedString(L.VerbBrowse.verbRequest(query: query, address: address))
     if
       let range = text.range(of: address, options: .backwards),
-      let url = URL.mailto(address, subject: L.VerbBrowse.verbRequestSubject(query: query), body: L.VerbBrowse.verbRequestBody(query: query))
-    {
+      let url = URL.mailto(address, subject: L.VerbBrowse.verbRequestSubject(query: query), body: L.VerbBrowse.verbRequestBody(query: query)) {
       text[range].link = url
     }
     return text
@@ -757,7 +756,7 @@ struct VerbBrowseView: View {
       return
     }
     if let search = searchTracker.finish() {
-      signal(.opened(query: search.query, source: search.source, resultCount: searchResults.matchCount, kind: kind, position: index))
+      signal(.opened(query: search.query, resultCount: searchResults.matchCount, kind: kind, position: index, source: search.source))
     }
     pushFromSearch(VerbDestination(verb: hit.verb, source: .search, marks: hit.conjugation?.marks(on: hit.verb)))
   }
@@ -771,7 +770,7 @@ struct VerbBrowseView: View {
 
   private func signalEndedSearch(_ search: SearchTracker.Search) {
     let matches = VerbSearch.matches(for: search.query, in: Verb.verbsSortedByFrequency, includeGlosses: searchIncludesGlosses)
-    signal(.ended(query: search.query, source: search.source, matches: matches))
+    signal(.ended(query: search.query, matches: matches, source: search.source))
   }
 
   private func signal(_ report: SearchReport) {

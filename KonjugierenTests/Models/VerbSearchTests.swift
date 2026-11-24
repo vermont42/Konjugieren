@@ -1,7 +1,7 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
-import Testing
 @testable import Konjugieren
+import Testing
 
 @MainActor
 @Suite("Verb search")
@@ -86,7 +86,7 @@ struct VerbSearchTests {
     ("eat", "threaten", false),
     ("go out", "go out, assume", true),
     ("go", "forgo", false),
-    ("come", "come off, come loose", true),
+    ("come", "come off, come loose", true)
   ])
   func wholeWordMatchNeedsNonLettersAround(word: String, text: String, expected: Bool) {
     #expect(VerbSearch.containsWholeWord(word, in: text) == expected)
@@ -152,7 +152,7 @@ struct VerbSearchTests {
     ("gheen", "gehen", 1),
     ("kitten", "sitting", 3),
     ("", "abc", 3),
-    ("abc", "", 3),
+    ("abc", "", 3)
   ])
   func editDistanceCountsASwapAsOneEdit(lhs: String, rhs: String, expected: Int) {
     #expect(VerbSearch.editDistance(Array(lhs), Array(rhs)) == expected)

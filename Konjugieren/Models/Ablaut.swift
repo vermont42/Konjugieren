@@ -11,7 +11,7 @@ struct Ablaut: Hashable {
     "b": Conjugationgroup.präteritumIndikativ,
     "c": Conjugationgroup.präsensKonjunktivI,
     "d": Conjugationgroup.präteritumKonjunktivII,
-    "i": Conjugationgroup.imperativ,
+    "i": Conjugationgroup.imperativ
   ]
 
   private static let personNumberCodes: [String: PersonNumber] = [
@@ -20,7 +20,7 @@ struct Ablaut: Hashable {
     "3s": .thirdSingular,
     "1p": .firstPlural,
     "2p": .secondPlural,
-    "3p": .thirdPlural,
+    "3p": .thirdPlural
   ]
 
   init(xmlString: String) {

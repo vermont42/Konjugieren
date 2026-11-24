@@ -6,7 +6,7 @@ import Testing
 
 @MainActor
 @Suite("StringExtensions")
-struct StringExtensionsTests {
+enum StringExtensionsTests {
   @MainActor
   @Suite("Subheading Parsing")
   struct SubheadingParsing {

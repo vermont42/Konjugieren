@@ -1,7 +1,7 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
-import Testing
 @testable import Konjugieren
+import Testing
 
 @Suite("Quiz levels")
 @MainActor
@@ -156,7 +156,9 @@ struct QuizLevelTests {
   }
 
   @Test func theSameSeedDrawsTheSameQuestions() {
-    #expect(draw(.advanced, count: 30, seed: 99) == draw(.advanced, count: 30, seed: 99))
+    let first = draw(.advanced, count: 30, seed: 99)
+    let second = draw(.advanced, count: 30, seed: 99)
+    #expect(first == second)
     #expect(draw(.advanced, count: 30, seed: 99) != draw(.advanced, count: 30, seed: 100))
   }
 }

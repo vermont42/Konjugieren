@@ -81,3 +81,6 @@ verbdata/review/run.log
 verbdata/style/sentences*.json
 verbdata/style/units.json
 verbdata/style/xc_sentences.json
+
+# LLVM coverage output that test runs drop at the repo root
+*.profraw

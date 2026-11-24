@@ -1,8 +1,8 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
 import Foundation
-import Testing
 @testable import Konjugieren
+import Testing
 
 /// No bundled sentence may teach a wrong conjugation. Each test walks every sentence and records
 /// each failure with the sentence's id, so that one run lists every draft that needs fixing.
@@ -20,7 +20,6 @@ struct GapSentenceTests {
     let data = (try? JSONSerialization.data(withJSONObject: [json])) ?? Data()
     return GapSentences.decode(data)[0]
   }
-
 
   @Test func theBundleHoldsTheSentences() {
     #expect(GapSentences.all.count >= 100)
@@ -122,7 +121,6 @@ struct GapSentenceTests {
     text.lowercased().replacingOccurrences(of: "ß", with: "ss")
   }
 
-
   @Test func thePerfektTakesTwoBlanksAroundTheSentence() throws {
     let sentence = try Self.sentence("gehen.perfekt.1")
     #expect(sentence.frame == AnswerFrame(segments: [.context("Gestern "), .blank, .context(" wir ins Kino "), .blank, .context(".")]))
@@ -159,7 +157,6 @@ struct GapSentenceTests {
     #expect(Self.sentence(verb: "kommen", table: "praesens_indikativ", person: "xx", german: "{Kommt}.").conjugationgroup == nil)
     #expect(Self.sentence(verb: "kommen", table: "nonsense", person: "ts", german: "{Kommt}.").conjugationgroup == nil)
   }
-
 
   @Test func aSeparableVerbAfterWeilIsInTheSubordinateClause() throws {
     #expect(try Self.sentence("anfangen.praesens.1").clause == .main)
@@ -202,7 +199,6 @@ struct GapSentenceTests {
     #expect(item.reasked().sentence == sentence)
   }
 
-
   @Test func aLevelAsksItsBandAndPool() throws {
     let beginner = GapSentences.askable(at: .beginner)
     #expect(!beginner.isEmpty)
@@ -227,7 +223,6 @@ struct GapSentenceTests {
     #expect(GapSentences.askable(at: .advanced, from: [draft, reviewed], includesDrafts: false) == [reviewed])
     #expect(GapSentences.askable(at: .advanced, from: [draft, reviewed], includesDrafts: true).count == 2)
   }
-
 
   @Test func aRoundAsksOneSentenceAVerbWhereItCan() {
     var generator = SeededRNG(seed: 3)

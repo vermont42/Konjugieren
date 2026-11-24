@@ -1,12 +1,12 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
 import Foundation
-import Testing
 @testable import Konjugieren
+import Testing
 
 @MainActor
 @Suite("Conjugation search")
-struct ConjugationSearchTests {
+enum ConjugationSearchTests {
   private static func matches(_ query: String, includeFiniteParts: Bool = true) -> [VerbSearch.Match] {
     VerbSearch.matches(for: query, in: Verb.verbsSortedByFrequency, includeGlosses: true, includeFiniteParts: includeFiniteParts)
   }
@@ -223,7 +223,7 @@ struct ConjugationSearchTests {
       ("geht", "gehen", "Präsens Indikativ (3s, ihr) · Imperativ (ihr)"),
       ("gegangen", "gehen", "Perfektpartizip"),
       ("hat gefunden", "finden", "Perfekt Indikativ (3s)"),
-      ("anzufangen", "anfangen", "zu-Infinitiv"),
+      ("anzufangen", "anfangen", "zu-Infinitiv")
     ])
     func namesTheCellsInGerman(text: String, infinitiv: String, expected: String) throws {
       let pronoun = PersonNumber.thirdSingular.pronoun

@@ -1,7 +1,7 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
-import Testing
 @testable import Konjugieren
+import Testing
 
 @MainActor
 @Suite("Search report")
@@ -109,7 +109,7 @@ struct SearchReportTests {
       "queryLength": "3-5",
       "resultCount": AnalyticsBand.resultCount(matches("gehen").count),
       "matchKind": "exactInfinitive",
-      "resultPosition": "1",
+      "resultPosition": "1"
     ])
   }
 
@@ -159,7 +159,7 @@ struct SearchReportTests {
       "queryLength": "3-5",
       "resultCount": "0",
       "matchKind": "guess",
-      "resultPosition": "1",
+      "resultPosition": "1"
     ])
   }
 
@@ -177,7 +177,7 @@ struct SearchReportTests {
     let reports = [
       SearchReport.ended(query: query, matches: found),
       SearchReport.opened(query: query, resultCount: found.count, kind: found.first?.kind ?? .glossSubstring, position: 0),
-      SearchReport.openedGuess(query: query),
+      SearchReport.openedGuess(query: query)
     ]
     for report in reports {
       #expect(Set(report.parameters.values).isSubset(of: vocabulary))

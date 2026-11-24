@@ -1,7 +1,7 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
-import Testing
 @testable import Konjugieren
+import Testing
 
 @Suite("Conjugator")
 @MainActor
@@ -258,7 +258,6 @@ struct ConjugatorTests {
   }
 
   @Test func imperativ() {
-
     expectConjugation(infinitiv: "machen", conjugationgroup: .imperativ(.secondSingular), expected: "mach")
 
     expectConjugation(infinitiv: "geben", conjugationgroup: .imperativ(.secondSingular), expected: "gIb")
@@ -1276,7 +1275,7 @@ struct ConjugatorTests {
     let synthetic = [
       Self.syntheticVerb("dasein", group: "sein", prefixes: [.separable("da")], ablautRange: 2..<5),
       Self.syntheticVerb("vertun", group: "tun", prefixes: [.inseparable("ver")], ablautRange: 4..<5),
-      Self.syntheticVerb("aufessen", group: "essen", prefixes: [.separable("auf")], ablautRange: 3..<6),
+      Self.syntheticVerb("aufessen", group: "essen", prefixes: [.separable("auf")], ablautRange: 3..<6)
     ]
     for verb in synthetic {
       Verb.verbs[verb.infinitiv] = verb
@@ -1672,7 +1671,7 @@ struct ConjugatorTests {
     ("schaffen", 0, .haben),
     ("schaffen", 1, .haben),
     ("bereitstehen", 0, .haben),
-    ("näherstehen", 0, .haben),
+    ("näherstehen", 0, .haben)
   ]
 
   @Test("Each ruled reading carries its dictionary auxiliary", arguments: auxiliaryRulings)

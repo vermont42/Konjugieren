@@ -375,14 +375,13 @@ struct VerbView: View {
   private func conjugationSection(for table: ConjugationTable) -> some View {
     let section = ConjugationSectionView(
       title: table.displayName(lang: settings.conjugationgroupLang),
+      conjugations: rows(for: table),
       titleIsGerman: titleIsGerman,
       secondName: table.secondName(lang: settings.conjugationgroupLang),
-      conjugations: rows(for: table),
-      openArticle: table.article.map { info in
-        {
+      openArticle: table.article.map { info in {
           Current.analytics.signal(name: .tapConjugationgroupArticle)
           article = info
-        }
+      }
       }
     )
     .id(table.scrollID)
@@ -398,7 +397,6 @@ struct VerbView: View {
     } else {
       section
     }
-
   }
 
   private static let firstSimpleTable = ConjugationTable.allCases.first { !$0.isCompound }
@@ -407,7 +405,7 @@ struct VerbView: View {
   private func rows(for table: ConjugationTable) -> [ConjugationRow] {
     switch table {
     case .perfektpartizip, .präsenspartizip:
-      return table.cells.map { ConjugationRow(form: conjugate($0), isMarked: isMarked($0)) }
+      return table.cells.map { ConjugationRow(pronoun: nil, form: conjugate($0), isMarked: isMarked($0)) }
     case .imperativ:
       return imperativConjugations()
     case .präsensIndikativ, .präteritumIndikativ, .präteritumKonjunktivII, .präsensKonjunktivI, .perfektIndikativ, .futurIndikativ,
@@ -497,7 +495,8 @@ struct VerbView: View {
       conjugationgroup: .perfektIndikativ(.thirdSingular),
       region: .austria,
       readingIndex: readingIndex
-    ).lowercased()
+    )
+    .lowercased()
   }
 
   private func metadataPill<Content: View>(
@@ -579,7 +578,7 @@ struct ConjugationRow: Identifiable {
     return spokenForm
   }
 
-  init(pronoun: String? = nil, form: String, isMarked: Bool = false) {
+  init(pronoun: String?, form: String, isMarked: Bool = false) {
     self.pronoun = pronoun
     self.form = form
     self.isMarked = isMarked
@@ -597,9 +596,9 @@ struct ConjugationSectionView: View {
 
   init(
     title: String,
+    conjugations: [ConjugationRow],
     titleIsGerman: Bool = true,
     secondName: ConjugationTable.SecondName? = nil,
-    conjugations: [ConjugationRow],
     openArticle: (() -> Void)? = nil
   ) {
     self.title = title
@@ -712,8 +711,7 @@ private struct ConjugationgroupArticleSheet: View {
   private func open(_ url: URL) {
     if
       url.host == URL.infoHost,
-      let info = url.pathComponents.dropFirst().first.flatMap(Info.info(deeplinkTarget:))
-    {
+      let info = url.pathComponents.dropFirst().first.flatMap(Info.info(deeplinkTarget:)) {
       path.append(info)
       return
     }

@@ -70,7 +70,7 @@ extension QuizDraw {
     for items: [PracticeItem],
     verbs: [Verb],
     excluded: Set<String> = [],
-    limit: Int = Quiz.questionCount,
+    limit: Int = Quiz.questionCount, // swiftlint:disable:this function_default_parameter_at_end
     using generator: inout some RandomNumberGenerator
   ) -> [QuizDrawnQuestion] {
     let available = items.filter { !excluded.contains($0.key) }

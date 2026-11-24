@@ -1,8 +1,8 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
 import Foundation
-import Testing
 @testable import Konjugieren
+import Testing
 
 @MainActor
 @Suite("RelatedVerbs")
@@ -17,7 +17,7 @@ struct RelatedVerbsTests {
     ("verstehen", "stehen"),
     ("anerkennen", "kennen"),
     ("beginnen", "ginnen"),
-    ("machen", "machen"),
+    ("machen", "machen")
   ])
   func root(infinitiv: String, expected: String) throws {
     #expect(try #require(Verb.verbs[infinitiv]).root == expected)
@@ -98,7 +98,7 @@ struct RelatedVerbsTests {
     ("verstehen", [.strong, .inseparable]),
     ("machen", [.weak]),
     ("denken", [.mixed]),
-    ("studieren", [.ieren]),
+    ("studieren", [.ieren])
   ])
   func families(infinitiv: String, expected: [BrowseableFamily]) throws {
     #expect(try related(infinitiv).families == expected)

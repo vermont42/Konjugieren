@@ -56,8 +56,8 @@ enum RatingsFetcher {
   }
 
   nonisolated static func stubData(ratingsCount: Int) -> Data {
-    """
+    Data("""
     {"resultCount":1,"results":[{"userRatingCountForCurrentVersion":\(ratingsCount)}]}
-    """.data(using: .utf8)!
+    """.utf8)
   }
 }

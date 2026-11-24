@@ -84,13 +84,14 @@ nonisolated struct DailyStreak: Codable, Equatable, Sendable {
   /// day, or follows a missed day with two sessions.
   private static func runs(of sessions: [String: Int], calendar: Calendar) -> [Run] {
     let days = sessions.compactMap { key, count in
-      dayNumber(key: key, calendar: calendar).map { (day: $0, count: count) }
-    }.sorted { $0.day < $1.day }
+      dayNumber(key: key, calendar: calendar).map { (day: $0, sessionCount: count) }
+    }
+    .sorted { $0.day < $1.day }
     var runs: [Run] = []
-    for entry in days where entry.count > 0 {
+    for entry in days where entry.sessionCount > 0 {
       if var run = runs.last, let lastDay = run.days.last {
         let gap = entry.day - lastDay
-        if gap == 1 || (gap == 2 && entry.count >= repairSessionCount) {
+        if gap == 1 || (gap == 2 && entry.sessionCount >= repairSessionCount) {
           run.days.append(entry.day)
           run.length += 1
           runs[runs.count - 1] = run

@@ -205,8 +205,7 @@ enum Conjugator {
     .mixed(ablautGroup: let ablautKey, ablautStartIndex: let ablautStartIndex, ablautEndIndex: let ablautEndIndex):
       if
         let ablautGroup = AblautGroup.ablautGroups[ablautKey],
-        let ablaut = ablautGroup.ablauts[.präsensIndikativ(.secondSingular)]
-      {
+        let ablaut = ablautGroup.ablauts[.präsensIndikativ(.secondSingular)] {
         if ablaut.hasSuffix("*") {
           return stamm
         }
@@ -249,8 +248,7 @@ enum Conjugator {
     .mixed(ablautGroup: let ablautKey, ablautStartIndex: let ablautStartIndex, ablautEndIndex: let ablautEndIndex):
       if
         let ablautGroup = AblautGroup.ablautGroups[ablautKey],
-        let ablaut = ablautGroup.ablauts[conjugationgroup]
-      {
+        let ablaut = ablautGroup.ablauts[conjugationgroup] {
         if ablaut.hasSuffix("*") {
           // An override spells out the base verb's whole conjugation, so a derivative's
           // prefixes go back in front of it: be + darf. A participle override already carries

@@ -29,7 +29,7 @@ nonisolated struct ConjugationMap: Equatable, Sendable {
   /// before finite parts, and each kind is alphabetical.
   let entriesByConjugation: [String: [Entry]]
 
-  init(entriesByConjugation: [String: [Entry]]) {
+  init(entriesByConjugation: [String: [Entry]]) { // swiftlint:disable:this unneeded_synthesized_initializer
     self.entriesByConjugation = entriesByConjugation
   }
 
@@ -59,14 +59,16 @@ nonisolated extension ConjugationMap {
   ///
   ///     fängt	fangen	anfangen an
   var text: String {
-    entriesByConjugation.keys.sorted().map { conjugation in
-      let entries = entriesByConjugation[conjugation] ?? []
-      let fields = entries.map { entry in
-        entry.particle.map { "\(entry.infinitiv) \($0)" } ?? entry.infinitiv
+    entriesByConjugation.keys
+      .sorted()
+      .map { conjugation in
+        let entries = entriesByConjugation[conjugation] ?? []
+        let fields = entries.map { entry in
+          entry.particle.map { "\(entry.infinitiv) \($0)" } ?? entry.infinitiv
+        }
+        return ([conjugation] + fields).joined(separator: "\t")
       }
-      return ([conjugation] + fields).joined(separator: "\t")
-    }
-    .joined(separator: "\n")
+      .joined(separator: "\n")
   }
 
   init(text: String) {
@@ -90,7 +92,7 @@ nonisolated extension ConjugationMap {
 
   init(compressed data: Data) throws {
     let decompressed = try (data as NSData).decompressed(using: .lzfse) as Data
-    self.init(text: String(decoding: decompressed, as: UTF8.self))
+    self.init(text: String(bytes: decompressed, encoding: .utf8) ?? "")
   }
 }
 
@@ -101,7 +103,7 @@ extension ConjugationMap {
     Conjugationgroup.präsensIndikativ,
     Conjugationgroup.präsensKonjunktivI,
     Conjugationgroup.präteritumIndikativ,
-    Conjugationgroup.präteritumKonjunktivII,
+    Conjugationgroup.präteritumKonjunktivII
   ]
 
   /// Builds the map from `Verb.verbs` and `AblautGroup.ablautGroups`, which must be loaded.
@@ -156,8 +158,7 @@ extension ConjugationMap {
           if
             particle != nil,
             let main = conjugate(infinitiv, group, readingIndex, .main),
-            let finitePart = main.split(separator: " ").first
-          {
+            let finitePart = main.split(separator: " ").first {
             add(finitePart, infinitiv: infinitiv, particle: particle)
           }
         }
@@ -168,8 +169,7 @@ extension ConjugationMap {
       for personNumber in PersonNumber.imperativPersonNumbers {
         if
           let imperativ = conjugate(infinitiv, .imperativ(personNumber), readingIndex, .main),
-          let head = imperativ.split(separator: " ").first
-        {
+          let head = imperativ.split(separator: " ").first {
           add(head, infinitiv: infinitiv, particle: particle)
         }
       }

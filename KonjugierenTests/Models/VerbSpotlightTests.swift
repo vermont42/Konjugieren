@@ -2,8 +2,8 @@
 
 import CoreSpotlight
 import Foundation
-import Testing
 @testable import Konjugieren
+import Testing
 
 @MainActor
 @Suite("Verb Spotlight")

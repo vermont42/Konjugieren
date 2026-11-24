@@ -70,7 +70,7 @@ struct SearchReport: Equatable {
 
   /// `resultCount` counts verbs, including those inside a folded row. `position` counts rows
   /// as shown, so an open folded row's verbs follow it.
-  static func opened(query: String, source: AnalyticsSource = .tab, resultCount: Int, kind: VerbSearch.MatchKind, position: Int) -> SearchReport {
+  static func opened(query: String, resultCount: Int, kind: VerbSearch.MatchKind, position: Int, source: AnalyticsSource = .tab) -> SearchReport {
     SearchReport(
       source: source,
       outcome: .opened,
@@ -87,7 +87,7 @@ struct SearchReport: Equatable {
 
   /// A search that ended without a verb opened. Its match kind is the top result's, which says
   /// what the learner saw first and passed over.
-  static func ended(query: String, source: AnalyticsSource = .tab, matches: [VerbSearch.Match]) -> SearchReport {
+  static func ended(query: String, matches: [VerbSearch.Match], source: AnalyticsSource = .tab) -> SearchReport {
     SearchReport(
       source: source,
       outcome: matches.isEmpty ? .noResult : .abandoned,
@@ -105,7 +105,7 @@ struct SearchReport: Equatable {
       ParameterKey.queryLength.rawValue: AnalyticsBand.queryLength(queryLength),
       ParameterKey.resultCount.rawValue: AnalyticsBand.resultCount(resultCount),
       ParameterKey.matchKind.rawValue: matchKind.rawValue,
-      ParameterKey.resultPosition.rawValue: AnalyticsBand.resultPosition(resultPosition),
+      ParameterKey.resultPosition.rawValue: AnalyticsBand.resultPosition(resultPosition)
     ]
   }
 }

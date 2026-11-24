@@ -43,7 +43,7 @@ struct LastQuizResult: Codable, Equatable {
     levelKey.flatMap(QuizLevel.init(rawValue:))
   }
 
-  init(kind: Kind, subject: String? = nil, level: QuizLevel?, score: Int, correctCount: Int, secondAttemptCount: Int, questionCount: Int, date: Date) {
+  init(kind: Kind, subject: String?, level: QuizLevel?, score: Int, correctCount: Int, secondAttemptCount: Int, questionCount: Int, date: Date) {
     self.kind = kind
     self.subject = subject
     levelKey = level?.rawValue

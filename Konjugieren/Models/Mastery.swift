@@ -2,8 +2,8 @@
 
 import Foundation
 
-/// How far up the review ladder an item has come, as the Mastery page shows it.
 // Semantic ordering: up the ladder.
+/// How far up the review ladder an item has come, as the Mastery page shows it.
 enum MasteryState: Equatable {
   case notPracticed
   case learning

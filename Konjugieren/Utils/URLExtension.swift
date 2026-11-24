@@ -31,7 +31,7 @@ extension URL {
   static func verbDeeplink(_ infinitiv: String, source: AnalyticsSource, match: String? = nil) -> URL? {
     deeplink(host: verbHost, target: infinitiv, queryItems: [
       URLQueryItem(name: sourceQueryName, value: source.rawValue),
-      match.map { URLQueryItem(name: matchQueryName, value: $0) },
+      match.map { URLQueryItem(name: matchQueryName, value: $0) }
     ])
   }
 
@@ -39,7 +39,7 @@ extension URL {
   static func searchDeeplink(text: String?, source: AnalyticsSource) -> URL? {
     deeplink(host: searchHost, target: nil, queryItems: [
       text.map { URLQueryItem(name: searchTextQueryName, value: $0) },
-      URLQueryItem(name: sourceQueryName, value: source.rawValue),
+      URLQueryItem(name: sourceQueryName, value: source.rawValue)
     ])
   }
 
@@ -52,7 +52,7 @@ extension URL {
   /// `konjugieren://list/ablaut-gehen?source=sharedLink`.
   static func listDeeplink(_ collection: VerbCollection, source: AnalyticsSource) -> URL? {
     deeplink(host: listHost, target: collection.key, queryItems: [
-      URLQueryItem(name: sourceQueryName, value: source.rawValue),
+      URLQueryItem(name: sourceQueryName, value: source.rawValue)
     ])
   }
 
@@ -63,7 +63,7 @@ extension URL {
     components.percentEncodedQuery = custom.rawValue
     return deeplink(host: quizHost, target: practiceSetTarget, queryItems: (components.queryItems ?? []) + [
       level.map { URLQueryItem(name: levelQueryName, value: $0.rawValue) },
-      URLQueryItem(name: sourceQueryName, value: source.rawValue),
+      URLQueryItem(name: sourceQueryName, value: source.rawValue)
     ])
   }
 
@@ -71,7 +71,7 @@ extension URL {
   /// session unless a quiz is already under way.
   static func dailySessionDeeplink(source: AnalyticsSource) -> URL? {
     deeplink(host: quizHost, target: dailySessionTarget, queryItems: [
-      URLQueryItem(name: sourceQueryName, value: source.rawValue),
+      URLQueryItem(name: sourceQueryName, value: source.rawValue)
     ])
   }
 
@@ -82,7 +82,7 @@ extension URL {
     deeplink(host: quizHost, target: challengeTarget, queryItems: [
       key.map { URLQueryItem(name: dateQueryName, value: $0.day) },
       key.map { URLQueryItem(name: levelQueryName, value: $0.levelKey) },
-      URLQueryItem(name: sourceQueryName, value: source.rawValue),
+      URLQueryItem(name: sourceQueryName, value: source.rawValue)
     ])
   }
 

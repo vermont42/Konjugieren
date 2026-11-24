@@ -6,14 +6,20 @@ enum WidgetSnapshotWriter {
   private static let calendar = WidgetConstants.gregorianCalendar
 
   @MainActor static func writeSnapshot(now: Date = Date()) {
-    guard let url = WidgetConstants.snapshotURL else { return }
+    guard let url = WidgetConstants.snapshotURL else {
+      return
+    }
     let pageOffset = WidgetConstants.sharedDefaults?.integer(forKey: WidgetConstants.debugOffsetKey) ?? 0
     let displayed = (try? Data(contentsOf: url))
       .flatMap { try? JSONDecoder().decode(WidgetSnapshotBundle.self, from: $0) }
       .flatMap { $0.displayedSnapshot(at: now, pageOffset: pageOffset) }
       .flatMap { Verb.verbs[$0.infinitiv] }
-    guard let bundle = generateBundle(startDate: now, myVerbs: Current.learnerVerbs.myVerbs, keeping: displayed, pageOffset: pageOffset) else { return }
-    guard let data = try? JSONEncoder().encode(bundle) else { return }
+    guard let bundle = generateBundle(startDate: now, myVerbs: Current.learnerVerbs.myVerbs, keeping: displayed, pageOffset: pageOffset) else {
+      return
+    }
+    guard let data = try? JSONEncoder().encode(bundle) else {
+      return
+    }
     try? data.write(to: url, options: .atomic)
   }
 
@@ -29,10 +35,14 @@ enum WidgetSnapshotWriter {
     for dayOffset in 0..<dayCount {
       guard let day = calendar.date(byAdding: .day, value: dayOffset, to: baseDay) else { continue }
       let kept = dayOffset == displayedIndex ? displayed : nil
-      guard let verb = kept ?? VerbDraw.verbOfTheDay(on: day, myVerbs: eligibleMyVerbs, frequentVerbs: eligibleFrequentVerbs) else { return nil }
+      guard let verb = kept ?? VerbDraw.verbOfTheDay(on: day, myVerbs: eligibleMyVerbs, frequentVerbs: eligibleFrequentVerbs) else {
+        return nil
+      }
       snapshots.append(generateSnapshot(verb: verb, date: day, level: level))
     }
-    guard !snapshots.isEmpty else { return nil }
+    guard !snapshots.isEmpty else {
+      return nil
+    }
     return WidgetSnapshotBundle(baseDate: baseDay, snapshots: snapshots)
   }
 
@@ -155,7 +165,9 @@ enum WidgetSnapshotWriter {
   }
 
   private static func truncateToSentenceBoundary(_ text: String, maxLength: Int) -> String {
-    guard text.count > maxLength else { return text }
+    guard text.count > maxLength else {
+      return text
+    }
     let prefix = String(text.prefix(maxLength))
     if let lastPeriod = prefix.lastIndex(of: ".") {
       return String(prefix[...lastPeriod])

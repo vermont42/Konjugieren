@@ -36,9 +36,13 @@ struct QuizProvider: TimelineProvider {
   private let pageOffset = 0
 
   private func readQuizState(snapshot: WidgetSnapshot) -> (isAnswered: Bool, wasCorrect: Bool) {
-    guard let defaults = WidgetConstants.sharedDefaults else { return (false, false) }
+    guard let defaults = WidgetConstants.sharedDefaults else {
+      return (false, false)
+    }
     let storedID = defaults.string(forKey: WidgetConstants.quizQuestionIDKey) ?? ""
-    guard storedID == snapshot.quizQuestion.questionID else { return (false, false) }
+    guard storedID == snapshot.quizQuestion.questionID else {
+      return (false, false)
+    }
     let isAnswered = defaults.bool(forKey: WidgetConstants.quizAnsweredKey)
     let wasCorrect = defaults.bool(forKey: WidgetConstants.quizCorrectKey)
     return (isAnswered, wasCorrect)

@@ -1,7 +1,7 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
-import Testing
 @testable import Konjugieren
+import Testing
 
 @MainActor
 @Suite("ConjugationTable")
@@ -21,7 +21,7 @@ struct ConjugationTableTests {
       .futurKonjunktivII,
       .plusquamperfektKonjunktivII,
       .perfektKonjunktivI,
-      .futurKonjunktivI,
+      .futurKonjunktivI
     ])
   }
 

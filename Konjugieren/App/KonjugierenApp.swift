@@ -19,8 +19,7 @@ struct KonjugierenApp: App {
         }
         .onContinueUserActivity(CSSearchableItemActionType) { userActivity in
           if
-            let rawIdentifier = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String
-          {
+            let rawIdentifier = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String {
             let infinitiv = rawIdentifier.replacingOccurrences(of: "VerbEntity/", with: "")
             if let url = URL.verbDeeplink(infinitiv, source: .spotlight) {
               Current.handleURL(url)
@@ -41,8 +40,7 @@ struct KonjugierenApp: App {
           if scenePhase == .active {
             if
               let deeplink = WidgetConstants.sharedDefaults?.string(forKey: WidgetConstants.pendingDeeplinkKey),
-              let url = URL(string: deeplink)
-            {
+              let url = URL(string: deeplink) {
               WidgetConstants.sharedDefaults?.removeObject(forKey: WidgetConstants.pendingDeeplinkKey)
               Current.handleURL(url)
             }

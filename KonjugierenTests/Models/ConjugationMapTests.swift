@@ -1,12 +1,12 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
 import Foundation
-import Testing
 @testable import Konjugieren
+import Testing
 
 @MainActor
 @Suite("ConjugationMap")
-struct ConjugationMapTests {
+enum ConjugationMapTests {
   @MainActor
   @Suite("The bundled map")
   struct Bundled {
@@ -78,7 +78,7 @@ struct ConjugationMapTests {
       ("gehört", "gehören", nil),
       ("hing", "hängen", nil),
       ("hängte", "hängen", nil),
-      ("steh", "aufstehen", "auf"),
+      ("steh", "aufstehen", "auf")
     ] as [(String, String, String?)])
     func contains(conjugation: String, infinitiv: String, particle: String?) {
       #expect(ConjugationMap.bundled.entries(for: conjugation).contains(ConjugationMap.Entry(infinitiv: infinitiv, particle: particle)))
@@ -106,9 +106,9 @@ struct ConjugationMapTests {
     let map = ConjugationMap(entriesByConjugation: [
       "fängt": [
         ConjugationMap.Entry(infinitiv: "fangen", particle: nil),
-        ConjugationMap.Entry(infinitiv: "anfangen", particle: "an"),
+        ConjugationMap.Entry(infinitiv: "anfangen", particle: "an")
       ],
-      "ging": [ConjugationMap.Entry(infinitiv: "gehen", particle: nil)],
+      "ging": [ConjugationMap.Entry(infinitiv: "gehen", particle: nil)]
     ])
 
     @Test func writesOneLinePerConjugation() {

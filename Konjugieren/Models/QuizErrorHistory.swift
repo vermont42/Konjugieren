@@ -30,7 +30,9 @@ enum QuizErrorHistory {
 
   static func aggregated(getterSetter: GetterSetter) -> String {
     let records = load(getterSetter: getterSetter)
-    guard !records.isEmpty else { return "" }
+    guard !records.isEmpty else {
+      return ""
+    }
 
     var counts: [String: Int] = [:]
     for record in records {

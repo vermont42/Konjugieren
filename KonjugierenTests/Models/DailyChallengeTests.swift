@@ -1,8 +1,8 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
 import Foundation
-import Testing
 @testable import Konjugieren
+import Testing
 
 /// What a drawn question asks, in a form two draws can be compared by.
 @MainActor private func signature(_ question: QuizDrawnQuestion) -> String {

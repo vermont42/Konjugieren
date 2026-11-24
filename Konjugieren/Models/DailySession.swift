@@ -26,7 +26,7 @@ extension QuizDraw {
     for dueItems: [PracticeItem],
     pool: [QuizPoolEntry],
     verbs: [Verb],
-    count: Int = DailySession.questionCount,
+    count: Int = DailySession.questionCount, // swiftlint:disable:this function_default_parameter_at_end
     using generator: inout some RandomNumberGenerator
   ) -> [QuizDrawnQuestion] {
     let due = dueQuestions(for: dueItems, pool: pool, verbs: verbs, limit: count, using: &generator)

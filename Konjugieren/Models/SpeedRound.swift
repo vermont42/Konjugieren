@@ -57,7 +57,7 @@ extension QuizDraw {
     pool: [QuizPoolEntry],
     verbs: [Verb],
     count: Int,
-    after previous: PracticeItem? = nil,
+    after previous: PracticeItem? = nil, // swiftlint:disable:this function_default_parameter_at_end
     using generator: inout some RandomNumberGenerator
   ) -> [QuizDrawnQuestion] {
     var weakVerbs: [(verb: Verb, readingIndices: [Int])]?

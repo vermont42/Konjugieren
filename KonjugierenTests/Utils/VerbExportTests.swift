@@ -1,8 +1,8 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
 import Foundation
-import Testing
 @testable import Konjugieren
+import Testing
 
 // Harness: exports every verb's page (conjugations, etymology, example sentences, metadata) as
 // pretty-printed JSON, which scripts/generate_verb_pdf.py turns into a PDF. It reads

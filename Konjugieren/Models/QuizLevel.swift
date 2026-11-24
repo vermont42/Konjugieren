@@ -1,8 +1,8 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
+// Semantic ordering: each level adds to the one before.
 /// What the quiz asks, chosen by the learner. Each level adds conjugationgroups to the one before,
 /// in the order of the ladder in `docs/pedagogy_research.md`, and nothing unlocks.
-// Semantic ordering: each level adds to the one before.
 enum QuizLevel: String, CaseIterable {
   case beginner
   case elementary

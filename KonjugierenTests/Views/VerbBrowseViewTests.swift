@@ -1,7 +1,7 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
-import Testing
 @testable import Konjugieren
+import Testing
 
 @Suite("Verb browse keyboard selection")
 struct VerbBrowseViewTests {
@@ -13,7 +13,7 @@ struct VerbBrowseViewTests {
     (4, 1, 5, 4),
     (0, -1, 5, 0),
     (nil, 1, 0, nil),
-    (2, 1, 0, nil),
+    (2, 1, 0, nil)
   ] as [(Int?, Int, Int, Int?)])
   func arrowKeysMoveTheSelectionAndStopAtTheEnds(current: Int?, offset: Int, count: Int, expected: Int?) {
     #expect(VerbBrowseView.keyboardSelection(after: current, moving: offset, count: count) == expected)

@@ -12,7 +12,7 @@ struct VerbEntity: AppEntity, IndexedEntity {
 
   /// Set only on the entities that `VerbSpotlight` indexes. A query's entities leave it nil,
   /// because a picker shows only the title and subtitle.
-  var spotlight: VerbSpotlight.Text? = nil
+  var spotlight: VerbSpotlight.Text?
 
   var displayRepresentation: DisplayRepresentation {
     DisplayRepresentation(title: "\(id)", subtitle: "\(translation)")
@@ -45,7 +45,9 @@ struct VerbEntityQuery: EntityStringQuery, EnumerableEntityQuery {
   func entities(for identifiers: [String]) async -> [VerbEntity] {
     await MainActor.run {
       identifiers.compactMap { infinitiv in
-        guard let verb = Verb.verbs[infinitiv] else { return nil }
+        guard let verb = Verb.verbs[infinitiv] else {
+          return nil
+        }
         return VerbEntity(id: verb.infinitiv, translation: verb.translation)
       }
     }
@@ -53,7 +55,9 @@ struct VerbEntityQuery: EntityStringQuery, EnumerableEntityQuery {
 
   func entities(matching string: String) async -> [VerbEntity] {
     await MainActor.run {
-      guard !Verb.verbs.isEmpty else { return [] }
+      guard !Verb.verbs.isEmpty else {
+        return []
+      }
       return Self.verbs(matching: string)
         .map { VerbEntity(id: $0.infinitiv, translation: $0.translation) }
     }
@@ -61,7 +65,9 @@ struct VerbEntityQuery: EntityStringQuery, EnumerableEntityQuery {
 
   func suggestedEntities() async -> [VerbEntity] {
     await MainActor.run {
-      guard !Verb.verbs.isEmpty else { return [] }
+      guard !Verb.verbs.isEmpty else {
+        return []
+      }
       return Verb.verbsSortedByFrequency
         .prefix(10)
         .map { VerbEntity(id: $0.infinitiv, translation: $0.translation) }
@@ -70,7 +76,9 @@ struct VerbEntityQuery: EntityStringQuery, EnumerableEntityQuery {
 
   func allEntities() async -> [VerbEntity] {
     await MainActor.run {
-      guard !Verb.verbs.isEmpty else { return [] }
+      guard !Verb.verbs.isEmpty else {
+        return []
+      }
       return Verb.verbsSortedAlphabetically
         .map { VerbEntity(id: $0.infinitiv, translation: $0.translation) }
     }

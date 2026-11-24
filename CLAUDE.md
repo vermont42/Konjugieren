@@ -80,6 +80,28 @@ days. Learned on 2026-11-12.
 **If computer use cannot take screenshots** ("CU display unavailable", with the only display
 reported as "not primary"), reboot.
 
+### SwiftLint
+
+`.swiftlint.yml` combines the configs of Conjugar and Conjuguer: Conjuguer's opt-in rules, plus every
+rule either app disables. `KonjugierenTests/.swiftlint.yml` merges over it to allow `force_cast` and
+`force_try`. The app target's **Run SwiftLint** phase lints the whole repo on every build, which is
+why that target sets `ENABLE_USER_SCRIPT_SANDBOXING = NO`: a sandboxed script phase may read only
+its declared inputs. Keep the tree at zero warnings. Run `swiftlint` from the repo root to check.
+
+**SwiftLint ≥ 0.65.1** (Homebrew). 0.52.3 could not parse Swift 6 syntax and misfired on switch
+expressions and test `init()`s.
+
+**`swiftlint --fix` is not type-aware, so build and run the tests after it.** On 2026-11-24 it
+broke three things that a plain lint run would not show. `empty_count` turned a tuple field named
+`count` into `.isEmpty`. `redundant_nil_coalescing` stripped `?? nil` from a lookup into a
+dictionary of optionals, where it flattens `Stem??`. And 0.52.3 stripped the type from a TipKit
+`@Parameter` property, which the macro needs.
+
+**Ten functions keep a `// swiftlint:disable:this function_default_parameter_at_end`** on their
+first defaulted parameter, because `using generator: inout some RandomNumberGenerator` goes last,
+as in the standard library's `shuffled(using:)`. 0.65.1 reports this rule on that parameter's line,
+not on the `func` line.
+
 ### Diagnostic fallback (raw xcodebuild)
 
 When `xcbeautify`'s lossy filter drops an early-stage error or you need raw `xcodebuild` output:

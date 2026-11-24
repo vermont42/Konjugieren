@@ -40,7 +40,7 @@ enum QuizDraw {
     count: Int,
     distinctCells: Bool,
     mixesVerbs: Bool = false,
-    relaxesRestrictions: Bool = false,
+    relaxesRestrictions: Bool = false, // swiftlint:disable:this function_default_parameter_at_end
     using generator: inout some RandomNumberGenerator
   ) -> [QuizDrawnQuestion] {
     var candidatesByVerbs: [QuizVerbs: [Candidate]] = [:]
@@ -92,7 +92,7 @@ enum QuizDraw {
     readingIndex: Int?,
     count: Int,
     distinctCells: Bool,
-    mixesVerbs: Bool = false,
+    mixesVerbs: Bool = false, // swiftlint:disable:this function_default_parameter_at_end
     using generator: inout some RandomNumberGenerator
   ) -> [QuizDrawnQuestion] {
     questions(pool: level.pool, verbs: verbs, readingIndex: readingIndex, count: count, distinctCells: distinctCells, mixesVerbs: mixesVerbs, using: &generator)

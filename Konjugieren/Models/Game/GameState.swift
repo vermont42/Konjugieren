@@ -17,8 +17,8 @@ class GameState {
   var zigzagger: Zigzagger?
   var coins: [Coin] = []
   var powerUps: [PowerUp] = []
-  var shieldActive: Bool = false
-  var rapidFireActive: Bool = false
+  var shieldActive = false
+  var rapidFireActive = false
   var eggs: [Egg] = []
   var hatchlings: [Hatchling] = []
   var portalSide: PortalSide?
@@ -31,13 +31,13 @@ class GameState {
   var kristallkugel: Kristallkugel?
   var robotBrain: RobotBrain?
   var robotMinion: RobotMinion?
-  var robotBulletUseRed: Bool = false
+  var robotBulletUseRed = false
   var deathEffects: [DeathEffect] = []
-  var geisterjagdActive: Bool = false
+  var geisterjagdActive = false
   var score: Int = 0
   var highScore: Int = 0
   var finalScore: Int = 0
-  var achievedNewHighScore: Bool = false
+  var achievedNewHighScore = false
   var wave: Int = 1
   var lastWaveScore: Int = 0
   var waveCompleteTime: Date?
@@ -228,7 +228,9 @@ class GameState {
       return
     }
 
-    guard phase == .playing else { return }
+    guard phase == .playing else {
+      return
+    }
 
     let dt: CGFloat
     if let last = lastUpdateTime {
@@ -238,7 +240,9 @@ class GameState {
     }
     lastUpdateTime = currentTime
 
-    guard dt > 0, dt < 1 else { return }
+    guard dt > 0, dt < 1 else {
+      return
+    }
 
     if damageCooldown > 0 {
       damageCooldown = max(0, damageCooldown - dt)
@@ -267,7 +271,9 @@ class GameState {
   }
 
   func playerFire() {
-    guard phase == .playing, playerBullet == nil else { return }
+    guard phase == .playing, playerBullet == nil else {
+      return
+    }
     var bullet = Bullet(x: playerX, y: playerY - Self.playerSize / 2, isPlayerBullet: true)
     if isRobotActive {
       bullet.useRed = robotBulletUseRed
@@ -444,7 +450,9 @@ class GameState {
   }
 
   func reflow(screenWidth newWidth: CGFloat, screenHeight newHeight: CGFloat, topInset newTopInset: CGFloat) {
-    guard screenWidth > 0, screenHeight > 0, newWidth > 0, newHeight > 0 else { return }
+    guard screenWidth > 0, screenHeight > 0, newWidth > 0, newHeight > 0 else {
+      return
+    }
     let scaleX = newWidth / screenWidth
     let scaleY = newHeight / screenHeight
     screenWidth = newWidth
@@ -521,7 +529,9 @@ class GameState {
   }
 
   var canRestart: Bool {
-    guard let gameOverTime else { return false }
+    guard let gameOverTime else {
+      return false
+    }
     return Date.now.timeIntervalSince(gameOverTime) >= Self.gameOverCooldown
   }
 
@@ -606,7 +616,9 @@ class GameState {
   }
 
   private func startMotion() {
-    guard motionManager.isDeviceMotionAvailable, !motionManager.isDeviceMotionActive else { return }
+    guard motionManager.isDeviceMotionAvailable, !motionManager.isDeviceMotionActive else {
+      return
+    }
     motionManager.deviceMotionUpdateInterval = 1.0 / 60.0
     motionManager.startDeviceMotionUpdates()
   }
@@ -618,7 +630,9 @@ class GameState {
   }
 
   private func updatePlayerPosition(dt: CGFloat) {
-    guard let gravity = motionManager.deviceMotion?.gravity else { return }
+    guard let gravity = motionManager.deviceMotion?.gravity else {
+      return
+    }
     let tilt: Double
     switch interfaceOrientation {
     case .landscapeLeft:
@@ -766,7 +780,9 @@ class GameState {
       zigzaggerSpawnTimer = 0
     }
 
-    guard var z = zigzagger else { return }
+    guard var z = zigzagger else {
+      return
+    }
 
     let dx = Self.zigzaggerSpeedH * dt * (z.movingRight ? 1 : -1)
     z.x += dx
@@ -894,12 +910,16 @@ class GameState {
   }
 
   private func updateSpecialMechanic(dt: CGFloat) {
-    guard activeMechanic == nil else { return }
+    guard activeMechanic == nil else {
+      return
+    }
     let threshold = hasSpawnedFirstMechanic
       ? Self.mechanicSpawnInterval
       : Self.initialMechanicDelay
     mechanicSpawnTimer += dt
-    guard mechanicSpawnTimer >= threshold else { return }
+    guard mechanicSpawnTimer >= threshold else {
+      return
+    }
     mechanicSpawnTimer = 0
     hasSpawnedFirstMechanic = true
     if mechanicBag.isEmpty {
@@ -931,9 +951,13 @@ class GameState {
   }
 
   private func attemptEnemyFire(dt: CGFloat) {
-    guard enemyBullet == nil else { return }
+    guard enemyBullet == nil else {
+      return
+    }
     let aliveEnemies = enemies.filter { $0.isAlive && !$0.isDiving }
-    guard !aliveEnemies.isEmpty else { return }
+    guard !aliveEnemies.isEmpty else {
+      return
+    }
 
     if Double.random(in: 0...1) < Self.enemyFiresPerSecond * Double(dt) {
       let shooter = aliveEnemies.randomElement() ?? aliveEnemies[0]
@@ -943,7 +967,9 @@ class GameState {
   }
 
   private func updateLiveActivity(currentTime: Date) {
-    guard let liveActivity else { return }
+    guard let liveActivity else {
+      return
+    }
     if let last = lastActivityUpdateTime,
        currentTime.timeIntervalSince(last) < Self.activityUpdateInterval {
       return
@@ -959,7 +985,9 @@ class GameState {
   }
 
   private func forceLiveActivityUpdate() {
-    guard let liveActivity else { return }
+    guard let liveActivity else {
+      return
+    }
     lastActivityUpdateTime = .now
     let state = GameActivityAttributes.ContentState(
       wave: wave,
@@ -971,7 +999,9 @@ class GameState {
   }
 
   private func endLiveActivity() {
-    guard let liveActivity else { return }
+    guard let liveActivity else {
+      return
+    }
     let finalState = GameActivityAttributes.ContentState(
       wave: wave,
       score: score,
@@ -983,7 +1013,9 @@ class GameState {
   }
 
   private func checkGameOver() {
-    guard !enemies.isEmpty else { return }
+    guard !enemies.isEmpty else {
+      return
+    }
     let aliveEnemies = enemies.filter(\.isAlive)
 
     if aliveEnemies.isEmpty {

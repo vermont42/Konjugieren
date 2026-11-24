@@ -1,8 +1,8 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
 import Foundation
-import Testing
 @testable import Konjugieren
+import Testing
 
 /// The variants Josh accepted on 2026-11-13, by their row in
 /// plans/pedagogy_phase1_variant_audit.md, and the ones he rejected.

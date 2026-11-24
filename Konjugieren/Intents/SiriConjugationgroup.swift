@@ -38,7 +38,7 @@ enum SiriConjugationgroup: String, AppEnum {
     .plusquamperfektKonjunktivII: "Pluperfect Conditional",
     .futurIndikativ: "Future Indicative",
     .futurKonjunktivI: "Future Subjunctive",
-    .futurKonjunktivII: "Future Conditional",
+    .futurKonjunktivII: "Future Conditional"
   ]
 
   func conjugationgroups() -> [Conjugationgroup] {

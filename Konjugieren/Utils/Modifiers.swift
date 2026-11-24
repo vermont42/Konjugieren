@@ -142,7 +142,9 @@ private struct SpeakOnTap: ViewModifier {
       .background(Color.customYellow.opacity(isSpeaking ? 0.15 : 0))
       .animation(.easeOut(duration: 0.15), value: isSpeaking)
       .onTapGesture {
-        guard !UIAccessibility.isVoiceOverRunning else { return }
+        guard !UIAccessibility.isVoiceOverRunning else {
+          return
+        }
         Current.utterer.utter(text, localeString: localeString)
         isSpeaking = true
         Task { @MainActor in

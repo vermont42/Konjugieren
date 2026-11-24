@@ -9,9 +9,9 @@ import Foundation
 /// maps to which item (`PracticeItemMapping.swift`). This file only names items, so that the
 /// widget, which has no corpus, can read the record.
 nonisolated enum PracticeItem: Hashable, Sendable {
+  // Semantic ordering: the order the key conjugations are shown in.
   /// The three stems a strong verb's key conjugations show: steht auf, stand auf, ist
   /// aufgestanden.
-  // Semantic ordering: the order the key conjugations are shown in.
   enum Stem: String, CaseIterable, Sendable {
     case präsens = "praesens"
     case präteritum = "praeteritum"

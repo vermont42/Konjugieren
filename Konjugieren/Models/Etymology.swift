@@ -6,7 +6,9 @@ enum Etymology {
   @MainActor private static var etymologies: [String: String]?
 
   @MainActor private static func loadIfNeeded() {
-    guard etymologies == nil else { return }
+    guard etymologies == nil else {
+      return
+    }
     guard
       let url = Bundle.main.url(forResource: "Etymologies", withExtension: "json"),
       let data = try? Data(contentsOf: url),

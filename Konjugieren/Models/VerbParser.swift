@@ -79,8 +79,7 @@ class VerbParser: NSObject, XMLParserDelegate {
 
     if
       let hits = attributeDict["hi"],
-      let hitsInt = Int(hits)
-    {
+      let hitsInt = Int(hits) {
       currentHits = hitsInt
     } else {
       Current.fatalError.fatalError("No hit count specified for verb '\(currentVerb)'.")

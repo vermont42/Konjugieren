@@ -15,7 +15,7 @@ The project uses Swift Testing (`import Testing`), not XCTest.
 
 - Swift Testing runs suites and tests **in parallel by default**.
 - A suite that mutates shared global state (the `@MainActor var Current` world, or any `static`) must be `@Suite(.serialized)` so its tests don't race each other. That's why `SettingsTests`, `DeeplinkTests`, `QuizTests`, `QuizErrorHistoryTests`, and the `Unterminated Delimiters` sub-suite of `StringExtensionsTests` are serialized: each one swaps out parts of `Current` (e.g. `Current.fatalError = spy`) or touches UserDefaults-backed state.
-- There is no `setUp`/`tearDown`. Do per-test setup in the suite `init` or in a helper called at the top of each `@Test`. Note: on a `struct` with no stored properties, a parameterless `init()` used only for side-effecting reset can trip SwiftLint's `unneeded_synthesized_initializer`. Prefer an explicit reset helper if that rule is enabled here.
+- There is no `setUp`/`tearDown`. Do per-test setup in the suite `init` or in a helper called at the top of each `@Test`. SwiftLint 0.52.3 flagged such a side-effecting `init()` as `unneeded_synthesized_initializer`, and its `--fix` deleted eight of them on 2026-11-24. 0.65.1 does not flag them, so a suite `init()` is fine. If an older SwiftLint flags one, upgrade rather than delete it.
 
 ## Test Suites Need `@MainActor`
 

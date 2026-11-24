@@ -2,16 +2,16 @@
 
 import CoreImage
 import Foundation
+@testable import Konjugieren
 import Testing
 import UIKit
-@testable import Konjugieren
 
 @Suite("Practice sets")
 @MainActor
 struct PracticeSetTests {
   private static let lists: [QuizVerbSet] = [
     .list(["gehen", "hängen", "grüßen", "fühlen"]),
-    .list(["sein"]),
+    .list(["sein"])
   ]
 
   private static let sets: [PracticeSet] = [
@@ -21,7 +21,7 @@ struct PracticeSetTests {
     PracticeSet(custom: CustomQuiz(tables: [.imperativ, .futurKonjunktivI], verbSet: .band(.top1000)), level: nil),
     PracticeSet(custom: CustomQuiz(tables: [.perfektpartizip], verbSet: lists[0]), level: nil),
     PracticeSet(custom: CustomQuiz(verbSet: lists[1]), level: .intermediate),
-    PracticeSet(custom: CustomQuiz(verbSet: .collection(.ablautGroup("hängen"))), level: .elementary),
+    PracticeSet(custom: CustomQuiz(verbSet: .collection(.ablautGroup("hängen"))), level: .elementary)
   ]
 
   private func verbs(_ infinitives: [String]) -> [Verb] {
@@ -130,7 +130,7 @@ struct PracticeSetTests {
     "konjugieren://quiz/start?groups=imperativ",
     "konjugieren://verb/set?groups=imperativ",
     "konjugieren://quiz/set/extra?groups=imperativ",
-    "https://example.com/quiz/set?groups=imperativ",
+    "https://example.com/quiz/set?groups=imperativ"
   ])
   func aLinkThatNamesNothingIsNoSet(string: String) {
     #expect(PracticeSet(url: url(string)) == nil)

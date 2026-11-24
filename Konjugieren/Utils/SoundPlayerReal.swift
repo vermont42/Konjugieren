@@ -65,7 +65,9 @@ class SoundPlayerReal: SoundPlayer {
       let rawType = notification.userInfo?[AVAudioSessionInterruptionTypeKey] as? UInt
       let didEnd = rawType.flatMap(AVAudioSession.InterruptionType.init(rawValue:)) == .ended
       MainActor.assumeIsolated {
-        guard didEnd else { return }
+        guard didEnd else {
+          return
+        }
         self?.configureSession()
       }
     }
@@ -105,14 +107,18 @@ class SoundPlayerReal: SoundPlayer {
   }
 
   func startMusic() {
-    if Current.settings.audioFeedback == .disable { return }
+    if Current.settings.audioFeedback == .disable {
+      return
+    }
     if musicPlayer == nil {
       if let url = Bundle.main.url(forResource: "beethoven", withExtension: soundExtension) {
         musicPlayer = try? AVAudioPlayer(contentsOf: url)
         musicPlayer?.numberOfLoops = -1
       }
     }
-    guard let player = musicPlayer else { return }
+    guard let player = musicPlayer else {
+      return
+    }
     if let saved = savedMusicTime {
       player.currentTime = saved
       savedMusicTime = nil
@@ -149,7 +155,9 @@ class SoundPlayerReal: SoundPlayer {
       return
     }
 
-    guard let player = sounds[sound.rawValue] else { return }
+    guard let player = sounds[sound.rawValue] else {
+      return
+    }
     player.volume = volume
     // A player orphaned by a media-services reset returns false rather than throwing, so this is
     // the only in-band signal that the session and the players need rebuilding. Recovering here as

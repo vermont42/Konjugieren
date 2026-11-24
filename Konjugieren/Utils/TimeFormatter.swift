@@ -4,7 +4,9 @@ import Foundation
 
 enum TimeFormatter {
   nonisolated static func formatIntTime(_ time: Int) -> String {
-    guard time >= 0 else { return "0" }
+    guard time >= 0 else {
+      return "0"
+    }
 
     let hours = time / 3600
     let minutes = (time % 3600) / 60
@@ -20,7 +22,9 @@ enum TimeFormatter {
   }
 
   nonisolated static func formatMinutesSeconds(_ time: Int) -> String {
-    guard time >= 0 else { return "0:00" }
+    guard time >= 0 else {
+      return "0:00"
+    }
 
     let minutes = time / 60
     let seconds = time % 60

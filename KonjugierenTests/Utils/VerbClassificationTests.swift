@@ -1,8 +1,8 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
 import Foundation
-import Testing
 @testable import Konjugieren
+import Testing
 
 // Stage B of the classify-and-verify pipeline described in docs/verb_sources.md.
 //
@@ -262,7 +262,9 @@ private final class Classifier {
 
     let stammLength = word.hasSuffix("en") ? word.count - 2 : word.count - 1
     let prefixLength = prefixes.totalLength
-    guard stammLength > prefixLength else { return nil }
+    guard stammLength > prefixLength else {
+      return nil
+    }
 
     // Shortest regions first, so k^om^men beats k^omm^en when neither matches anything.
     let regions = Self.regions(in: word, from: prefixLength, to: stammLength)
@@ -413,7 +415,9 @@ private final class Classifier {
          accepted.contains(produced.lowercased()) {
         continue
       }
-      guard Self.isAblautable(expectation.group) else { return nil }
+      guard Self.isAblautable(expectation.group) else {
+        return nil
+      }
 
       installAblauts([expectation.group: Self.sentinel])
       guard
@@ -438,11 +442,15 @@ private final class Classifier {
       ablauts[expectation.group] = replacement
     }
 
-    guard !ablauts.isEmpty else { return nil }
+    guard !ablauts.isEmpty else {
+      return nil
+    }
 
     install(word: word, family: family, prefixes: prefixes)
     installAblauts(ablauts)
-    guard verify(word: word, prefixes: prefixes, expectations: expectations).isEmpty else { return nil }
+    guard verify(word: word, prefixes: prefixes, expectations: expectations).isEmpty else {
+      return nil
+    }
     return ablauts
   }
 
@@ -688,7 +696,9 @@ private final class Classifier {
     // region dies on the first slot instead of after twenty-odd needless probes.
     let priority = ["präteritumIndikativ.fs": 0, "perfektpartizip": 1, "präsensIndikativ.ts": 2, "präteritumKonjunktivII.fs": 3]
     return forms.compactMap { slot, values in
-      guard let group = conjugationgroup(slot: slot), !values.isEmpty else { return nil }
+      guard let group = conjugationgroup(slot: slot), !values.isEmpty else {
+        return nil
+      }
       return (group, slot, values)
     }
     .sorted { ((priority[$0.slot] ?? 9), $0.slot) < ((priority[$1.slot] ?? 9), $1.slot) }
@@ -709,7 +719,9 @@ private final class Classifier {
       }
     }
 
-    guard let personNumber = PersonNumber(rawValue: String(parts[1])) else { return nil }
+    guard let personNumber = PersonNumber(rawValue: String(parts[1])) else {
+      return nil
+    }
     switch name {
     case "präsensIndikativ":
       return .präsensIndikativ(personNumber)

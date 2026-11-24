@@ -39,7 +39,9 @@ extension Verb {
               region: region,
               readingIndex: readingIndex,
               clause: clause
-            ).get().lowercased()
+            )
+            .get()
+            .lowercased()
           }
         })
         if spellings.contains(wanted) {

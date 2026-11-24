@@ -52,7 +52,7 @@ struct PracticeSetView: View {
       hasSignaledView = true
       Current.analytics.signal(name: .viewPracticeSet, parameters: [
         ParameterKey.outcome.rawValue: request.practiceSet == nil ? "invalid" : "opened",
-        ParameterKey.source.rawValue: request.source.rawValue,
+        ParameterKey.source.rawValue: request.source.rawValue
       ])
     }
     .sheet(isPresented: $isQuizzing) {

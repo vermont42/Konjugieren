@@ -40,7 +40,7 @@ extension QuizDraw {
   static func verbEssentialsSteps(
     verbs: [Verb],
     count: Int,
-    excluded: Set<String> = [],
+    excluded: Set<String> = [], // swiftlint:disable:this function_default_parameter_at_end
     using generator: inout some RandomNumberGenerator
   ) -> [[QuizDrawnQuestion]] {
     let members: [AblautPracticeGroup.Member] = verbs.compactMap { verb in
@@ -56,7 +56,7 @@ extension QuizDraw {
   static func verbEssentialsSteps(
     members: [AblautPracticeGroup.Member],
     count: Int,
-    excluded: Set<String> = [],
+    excluded: Set<String> = [], // swiftlint:disable:this function_default_parameter_at_end
     using generator: inout some RandomNumberGenerator
   ) -> [[QuizDrawnQuestion]] {
     freshFirst(members, asked: askedInfinitives(excluded), using: &generator)

@@ -10,7 +10,7 @@ struct Info: Hashable, Identifiable {
   let alwaysUsesGermanPronunciation: Bool
   let media: InfoMedia
 
-  private init(stableKey: String, heading: String, text: String, alwaysUsesGermanPronunciation: Bool = false, media: InfoMedia) {
+  private init(stableKey: String, heading: String, text: String, media: InfoMedia, alwaysUsesGermanPronunciation: Bool = false) {
     self.stableKey = stableKey
     self.heading = heading
     richTextBlocks = text.richTextBlocks
@@ -25,24 +25,24 @@ struct Info: Hashable, Identifiable {
     Info(stableKey: "tense", heading: L.Info.tenseHeading, text: L.Info.tenseText, media: .sfSymbol(name: "clock.fill")),
     Info(stableKey: "mood", heading: L.Info.moodHeading, text: L.Info.moodText, media: .sfSymbol(name: "theatermasks.fill")),
     Info(stableKey: "voice", heading: L.Info.voiceHeading, text: L.Info.voiceText, media: .sfSymbol(name: "megaphone.fill")),
-    Info(stableKey: "perfektpartizip", heading: L.Info.perfektpartizipHeading, text: L.Info.perfektpartizipText, alwaysUsesGermanPronunciation: true, media: .sfSymbol(name: "checkmark.seal.fill")),
-    Info(stableKey: "praesenspartizip", heading: L.Info.präsenspartizipHeading, text: L.Info.präsenspartizipText, alwaysUsesGermanPronunciation: true, media: .sfSymbol(name: "arrow.forward.circle.fill")),
-    Info(stableKey: "praesens_indikativ", heading: L.Info.präsensIndikativHeading, text: L.Info.präsensIndikativText, alwaysUsesGermanPronunciation: true, media: .sfSymbol(name: "sun.max.fill")),
-    Info(stableKey: "praeteritum_indikativ", heading: L.Info.präteritumIndikativHeading, text: L.Info.präteritumIndikativText, alwaysUsesGermanPronunciation: true, media: .sfSymbol(name: "clock.arrow.circlepath")),
-    Info(stableKey: "praesens_konjunktiv_i", heading: L.Info.präsensKonjunktivIHeading, text: L.Info.präsensKonjunktivIText, alwaysUsesGermanPronunciation: true, media: .sfSymbol(name: "cloud.fill")),
-    Info(stableKey: "praeteritum_konjunktiv_ii", heading: L.Info.präteritumKonjunktivIIHeading, text: L.Info.präteritumKonjunktivIIText, alwaysUsesGermanPronunciation: true, media: .sfSymbol(name: "cloud.bolt.fill")),
-    Info(stableKey: "imperativ", heading: L.Info.imperativHeading, text: L.Info.imperativText, alwaysUsesGermanPronunciation: true, media: .sfSymbol(name: "exclamationmark.bubble.fill")),
-    Info(stableKey: "perfekt_indikativ", heading: L.Info.perfektIndikativHeading, text: L.Info.perfektIndikativText, alwaysUsesGermanPronunciation: true, media: .sfSymbol(name: "checkmark.circle.fill")),
-    Info(stableKey: "perfekt_konjunktiv_i", heading: L.Info.perfektKonjunktivIHeading, text: L.Info.perfektKonjunktivIText, alwaysUsesGermanPronunciation: true, media: .sfSymbol(name: "checkmark.diamond.fill")),
-    Info(stableKey: "plusquamperfekt_indikativ", heading: L.Info.plusquamperfektIndikativHeading, text: L.Info.plusquamperfektIndikativText, alwaysUsesGermanPronunciation: true, media: .sfSymbol(name: "clock.badge.checkmark.fill")),
-    Info(stableKey: "plusquamperfekt_konjunktiv_ii", heading: L.Info.plusquamperfektKonjunktivIIHeading, text: L.Info.plusquamperfektKonjunktivIIText, alwaysUsesGermanPronunciation: true, media: .sfSymbol(name: "arrow.counterclockwise.circle.fill")),
-    Info(stableKey: "futur_indikativ", heading: L.Info.futurIndikativHeading, text: L.Info.futurIndikativText, alwaysUsesGermanPronunciation: true, media: .sfSymbol(name: "forward.fill")),
-    Info(stableKey: "futur_konjunktiv_i", heading: L.Info.futurKonjunktivIHeading, text: L.Info.futurKonjunktivIText, alwaysUsesGermanPronunciation: true, media: .sfSymbol(name: "forward.circle.fill")),
-    Info(stableKey: "futur_konjunktiv_ii", heading: L.Info.futurKonjunktivIIHeading, text: L.Info.futurKonjunktivIIText, alwaysUsesGermanPronunciation: true, media: .sfSymbol(name: "forward.end.fill")),
-    Info(stableKey: "futur_ii", heading: L.Info.futurIIHeading, text: L.Info.futurIIText, alwaysUsesGermanPronunciation: true, media: .sfSymbol(name: "flag.checkered")),
+    Info(stableKey: "perfektpartizip", heading: L.Info.perfektpartizipHeading, text: L.Info.perfektpartizipText, media: .sfSymbol(name: "checkmark.seal.fill"), alwaysUsesGermanPronunciation: true),
+    Info(stableKey: "praesenspartizip", heading: L.Info.präsenspartizipHeading, text: L.Info.präsenspartizipText, media: .sfSymbol(name: "arrow.forward.circle.fill"), alwaysUsesGermanPronunciation: true),
+    Info(stableKey: "praesens_indikativ", heading: L.Info.präsensIndikativHeading, text: L.Info.präsensIndikativText, media: .sfSymbol(name: "sun.max.fill"), alwaysUsesGermanPronunciation: true),
+    Info(stableKey: "praeteritum_indikativ", heading: L.Info.präteritumIndikativHeading, text: L.Info.präteritumIndikativText, media: .sfSymbol(name: "clock.arrow.circlepath"), alwaysUsesGermanPronunciation: true),
+    Info(stableKey: "praesens_konjunktiv_i", heading: L.Info.präsensKonjunktivIHeading, text: L.Info.präsensKonjunktivIText, media: .sfSymbol(name: "cloud.fill"), alwaysUsesGermanPronunciation: true),
+    Info(stableKey: "praeteritum_konjunktiv_ii", heading: L.Info.präteritumKonjunktivIIHeading, text: L.Info.präteritumKonjunktivIIText, media: .sfSymbol(name: "cloud.bolt.fill"), alwaysUsesGermanPronunciation: true),
+    Info(stableKey: "imperativ", heading: L.Info.imperativHeading, text: L.Info.imperativText, media: .sfSymbol(name: "exclamationmark.bubble.fill"), alwaysUsesGermanPronunciation: true),
+    Info(stableKey: "perfekt_indikativ", heading: L.Info.perfektIndikativHeading, text: L.Info.perfektIndikativText, media: .sfSymbol(name: "checkmark.circle.fill"), alwaysUsesGermanPronunciation: true),
+    Info(stableKey: "perfekt_konjunktiv_i", heading: L.Info.perfektKonjunktivIHeading, text: L.Info.perfektKonjunktivIText, media: .sfSymbol(name: "checkmark.diamond.fill"), alwaysUsesGermanPronunciation: true),
+    Info(stableKey: "plusquamperfekt_indikativ", heading: L.Info.plusquamperfektIndikativHeading, text: L.Info.plusquamperfektIndikativText, media: .sfSymbol(name: "clock.badge.checkmark.fill"), alwaysUsesGermanPronunciation: true),
+    Info(stableKey: "plusquamperfekt_konjunktiv_ii", heading: L.Info.plusquamperfektKonjunktivIIHeading, text: L.Info.plusquamperfektKonjunktivIIText, media: .sfSymbol(name: "arrow.counterclockwise.circle.fill"), alwaysUsesGermanPronunciation: true),
+    Info(stableKey: "futur_indikativ", heading: L.Info.futurIndikativHeading, text: L.Info.futurIndikativText, media: .sfSymbol(name: "forward.fill"), alwaysUsesGermanPronunciation: true),
+    Info(stableKey: "futur_konjunktiv_i", heading: L.Info.futurKonjunktivIHeading, text: L.Info.futurKonjunktivIText, media: .sfSymbol(name: "forward.circle.fill"), alwaysUsesGermanPronunciation: true),
+    Info(stableKey: "futur_konjunktiv_ii", heading: L.Info.futurKonjunktivIIHeading, text: L.Info.futurKonjunktivIIText, media: .sfSymbol(name: "forward.end.fill"), alwaysUsesGermanPronunciation: true),
+    Info(stableKey: "futur_ii", heading: L.Info.futurIIHeading, text: L.Info.futurIIText, media: .sfSymbol(name: "flag.checkered"), alwaysUsesGermanPronunciation: true),
     Info(stableKey: "duden", heading: L.Info.dudenHeading, text: L.Info.dudenText, media: .sfSymbol(name: "books.vertical.fill")),
     Info(stableKey: "game", heading: L.Info.gameHeading, text: L.Info.gameText, media: .sfSymbol(name: "gamecontroller.fill")),
-    Info(stableKey: "credits", heading: L.Info.creditsHeading, text: L.Info.creditsText, media: .photo(filename: "JoshAdams", accessibilityLabel: L.ImageInfo.joshAdams)),
+    Info(stableKey: "credits", heading: L.Info.creditsHeading, text: L.Info.creditsText, media: .photo(filename: "JoshAdams", accessibilityLabel: L.ImageInfo.joshAdams))
   ]
 
   /// The article an `info/` deeplink names: by stable key, or by position in `infos`, which
@@ -70,7 +70,9 @@ struct Info: Hashable, Identifiable {
   var previewSegments: [TextSegment] {
     for block in richTextBlocks {
       if case .body(let segments) = block {
-        guard !segments.isEmpty else { return segments }
+        guard !segments.isEmpty else {
+          return segments
+        }
         var result = segments
         if case .plain(let text) = result[0] {
           let trimmed = text.trimmingLeadingNewlines()

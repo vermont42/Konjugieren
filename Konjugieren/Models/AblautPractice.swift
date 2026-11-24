@@ -182,7 +182,7 @@ extension QuizDraw {
     for session: AblautPracticeSession,
     record: PracticeRecord,
     count: Int = QuizScope.verbEssentialsVerbCount,
-    excluded: Set<String> = [],
+    excluded: Set<String> = [], // swiftlint:disable:this function_default_parameter_at_end
     using generator: inout some RandomNumberGenerator
   ) -> [[QuizDrawnQuestion]] {
     guard let group = AblautPracticeGroup.group(session.exemplar) else {
@@ -212,7 +212,7 @@ extension QuizDraw {
     partners: [AblautPracticeGroup],
     count: Int,
     groupCount: Int,
-    excluded: Set<String> = [],
+    excluded: Set<String> = [], // swiftlint:disable:this function_default_parameter_at_end
     using generator: inout some RandomNumberGenerator
   ) -> [[QuizDrawnQuestion]] {
     let asked = askedInfinitives(excluded)

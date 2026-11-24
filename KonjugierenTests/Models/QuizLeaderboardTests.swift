@@ -1,7 +1,7 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
-import Testing
 @testable import Konjugieren
+import Testing
 
 // Nested in QuizTests so that its .serialized trait keeps these from racing it over Current.
 extension QuizTests {

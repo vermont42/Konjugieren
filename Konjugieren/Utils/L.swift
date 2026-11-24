@@ -2139,5 +2139,4 @@ enum L {
       String(localized: "Onboarding.readArticlesButton")
     }
   }
-
 }

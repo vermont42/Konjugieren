@@ -209,7 +209,7 @@ extension String {
 
     var parts: [ConjugationPart] = []
     var currentRun = ""
-    var currentIsUpper: Bool? = nil
+    var currentIsUpper: Bool?
 
     for char in self {
       let isUpper = char.isUppercase

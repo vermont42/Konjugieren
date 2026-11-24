@@ -15,7 +15,9 @@ extension GameState {
   }
 
   func updateFussball(dt: CGFloat) {
-    guard var ball = fussball else { return }
+    guard var ball = fussball else {
+      return
+    }
     ball.remainingTime -= dt
     if ball.remainingTime <= 0 {
       fussball = nil

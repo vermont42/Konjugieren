@@ -103,7 +103,7 @@ struct PracticeSet: Equatable {
   func signalShare(method: String) {
     Current.analytics.signal(name: .tapSharePracticeSet, parameters: [
       ParameterKey.customChoice.rawValue: custom.choiceParameter,
-      ParameterKey.method.rawValue: method,
+      ParameterKey.method.rawValue: method
     ])
   }
 }

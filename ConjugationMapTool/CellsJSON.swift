@@ -25,7 +25,7 @@ enum CellsJSON {
     ("praesensIndikativ", Conjugationgroup.präsensIndikativ),
     ("praesensKonjunktivI", Conjugationgroup.präsensKonjunktivI),
     ("praeteritumIndikativ", Conjugationgroup.präteritumIndikativ),
-    ("praeteritumKonjunktivII", Conjugationgroup.präteritumKonjunktivII),
+    ("praeteritumKonjunktivII", Conjugationgroup.präteritumKonjunktivII)
   ]
 
   /// Only the du and ihr Imperativ: the wir and Sie Imperativ (gehen wir, gehen Sie) are the

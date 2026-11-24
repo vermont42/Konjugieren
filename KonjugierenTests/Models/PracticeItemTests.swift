@@ -1,8 +1,8 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
 import Foundation
-import Testing
 @testable import Konjugieren
+import Testing
 
 @MainActor
 struct PracticeItemTests {
@@ -60,7 +60,7 @@ struct PracticeItemTests {
     for table in ConjugationTable.allCases {
       for cell in table.cells {
         let item = PracticeItem.exercised(by: cell, of: fahren, readingIndex: readingIndex)
-        if let stem = expected[table] ?? nil {
+        if case let stem?? = expected[table] {
           #expect(item == .keyConjugation(infinitiv: "fahren", readingIndex: readingIndex, stem: stem), "\(cell)")
         } else {
           #expect(item == PracticeItem.pattern(of: cell), "\(cell)")

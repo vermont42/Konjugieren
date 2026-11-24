@@ -1,8 +1,8 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
 import Foundation
-import Testing
 @testable import Konjugieren
+import Testing
 
 /// A fixed calendar, so that a day is the same day on every machine.
 private let berlin: Calendar = {
@@ -27,7 +27,6 @@ struct DailySessionTests {
     }
     return streak
   }
-
 
   @Test func noSessionIsNoStreak() {
     #expect(DailyStreak().status(at: day(0), calendar: berlin) == .none)
@@ -113,7 +112,6 @@ struct DailySessionTests {
     #expect(PracticeStore(getterSetter: getterSetter, calendar: berlin).streakStatus(at: day(1)) == .none)
   }
 
-
   private func dueRecord(_ items: [PracticeItem]) -> PracticeRecord {
     var record = PracticeRecord()
     for item in items {
@@ -179,7 +177,6 @@ struct DailySessionTests {
     #expect(QuizScope.daily(source: .reminder).source == .reminder)
     #expect(LastQuizResult.Kind(scope: scope) == .daily)
   }
-
 
   @Test func remindersComeEachDayAtTheChosenTime() {
     let reminders = DailyReminderPlan.reminders(record: PracticeRecord(), streak: DailyStreak(), minutes: 18 * 60 + 15, now: day(0, hour: 9), calendar: berlin)

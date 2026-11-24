@@ -1,8 +1,8 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
 import Foundation
-import Testing
 @testable import Konjugieren
+import Testing
 
 @MainActor
 @Suite("Verb")
@@ -19,7 +19,9 @@ struct VerbTests {
     let pattern = try NSRegularExpression(pattern: "<verb in=\"([^\"]+)\"")
     let range = NSRange(text.startIndex..., in: text)
     let keys = pattern.matches(in: text, range: range).compactMap { match -> String? in
-      guard let matched = Range(match.range(at: 1), in: text) else { return nil }
+      guard let matched = Range(match.range(at: 1), in: text) else {
+        return nil
+      }
       // The documented collation: prefix and ablaut markers ignored, umlauts folded to their
       // base vowel, sharp s left where its code point falls. See docs/adding_verbs.md.
       var folded = String(text[matched]).replacingOccurrences(of: "[+*^]", with: "", options: .regularExpression).lowercased()

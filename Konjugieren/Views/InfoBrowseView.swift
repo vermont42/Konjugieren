@@ -47,7 +47,9 @@ struct InfoBrowseView: View {
         InfoView(info: info)
       }
       .task(id: world.shouldNavigateToTutor) {
-        guard world.shouldNavigateToTutor else { return }
+        guard world.shouldNavigateToTutor else {
+          return
+        }
         try? await Task.sleep(for: .milliseconds(500))
         world.shouldNavigateToTutor = false
         navigationPath.append("tutor")
@@ -99,7 +101,7 @@ struct InfoRowView: View {
       case .photo(let filename, let accessibilityLabel):
         Image(filename)
           .resizable()
-          .aspectRatio(contentMode: .fit)
+          .scaledToFit()
           .frame(width: 60, height: 60)
           .clipShape(RoundedRectangle(cornerRadius: 8))
           .accessibilityLabel(accessibilityLabel)
@@ -259,7 +261,9 @@ struct TutorUnavailableRowView: View {
   }
 
   private func handleTap() {
-    guard isActionable, let url = URL(string: UIApplication.openSettingsURLString) else { return }
+    guard isActionable, let url = URL(string: UIApplication.openSettingsURLString) else {
+      return
+    }
     UIApplication.shared.open(url)
   }
 }

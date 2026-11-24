@@ -10,7 +10,9 @@ struct WidgetSnapshotBundle: Codable, Equatable {
   // The page offset advances the verb on a Next tap and wraps around the cached range.
   func pagedSnapshotIndices(pageOffset: Int) -> [Int] {
     let count = snapshots.count
-    guard count > 0 else { return [] }
+    guard count > 0 else {
+      return []
+    }
     return (0..<count).map { dayOffset in
       Self.snapshotIndex(dayOffset: dayOffset, pageOffset: pageOffset, count: count)
     }

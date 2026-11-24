@@ -1,8 +1,8 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
 import Foundation
-import Testing
 @testable import Konjugieren
+import Testing
 
 /// No bundled choice may show a wrong conjugation in either sentence, or be asked at a level that
 /// does not ask its answer. Each test walks every item and records each failure with the item's
@@ -31,7 +31,6 @@ struct ChoiceQuestionTests {
     let data = (try? JSONSerialization.data(withJSONObject: [json])) ?? Data()
     return ChoiceQuestions.decode(data)[0]
   }
-
 
   /// The first batch, as Josh chose on 2026-11-15: about forty.
   @Test func theBundleHoldsTheItems() {
@@ -145,7 +144,6 @@ struct ChoiceQuestionTests {
     text.lowercased().replacingOccurrences(of: "ß", with: "ss")
   }
 
-
   @Test func anItemReadsItsTwoSentences() throws {
     let item = try Self.item("machen.perfekt.1")
     #expect(item.rightSentence.answer == "hast gemacht")
@@ -207,7 +205,6 @@ struct ChoiceQuestionTests {
     #expect(item.choice?.rightIndex == 1)
     #expect(item.reasked().choice == item.choice)
   }
-
 
   @Test func theDrawPrefersUnaskedItems() throws {
     var generator = SeededRNG(seed: 4)

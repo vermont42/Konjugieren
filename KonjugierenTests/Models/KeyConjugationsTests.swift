@@ -1,8 +1,8 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
 import Foundation
-import Testing
 @testable import Konjugieren
+import Testing
 
 @MainActor
 @Suite("KeyConjugations")
@@ -15,7 +15,7 @@ struct KeyConjugationsTests {
     ("aufstehen", ["steht auf", "stAND auf", "IST aufgestANDen"]),
     ("machen", ["macht", "machte", "hAt gemacht"]),
     ("sein", ["IST", "WAR", "IST geWESen"]),
-    ("können", ["kAnn", "kOnnte", "hAt gekOnnt"]),
+    ("können", ["kAnn", "kOnnte", "hAt gekOnnt"])
   ])
   func keyConjugations(infinitiv: String, expected: [String]) throws {
     let actual = try verb(infinitiv).keyConjugations(region: .north)
@@ -62,13 +62,13 @@ struct KeyConjugationsTests {
   @Test(arguments: [
     ("stEhe auf", "stehe auf"),
     ("ist gewEsen", "ist gewesen"),
-    ("gefÄhrlich", "gefährlich"),
+    ("gefÄhrlich", "gefährlich")
   ])
   func copyTextIsLowercase(form: String, expected: String) {
     #expect(ConjugationRow(pronoun: "ich", form: form).copyText == expected)
   }
 
   @Test func unavailableCellCopiesNothing() {
-    #expect(ConjugationRow(form: ConjugationRow.unavailable).copyText == nil)
+    #expect(ConjugationRow(pronoun: nil, form: ConjugationRow.unavailable).copyText == nil)
   }
 }

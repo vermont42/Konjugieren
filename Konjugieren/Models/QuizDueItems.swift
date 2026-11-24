@@ -15,7 +15,7 @@ extension QuizDraw {
     for items: [PracticeItem],
     pool: [QuizPoolEntry],
     verbs: [Verb],
-    limit: Int = dueItemLimit,
+    limit: Int = dueItemLimit, // swiftlint:disable:this function_default_parameter_at_end
     using generator: inout some RandomNumberGenerator
   ) -> [QuizDrawnQuestion] {
     recordQuestions(for: items, pool: pool, verbs: verbs, limit: limit, using: &generator).map(\.question)

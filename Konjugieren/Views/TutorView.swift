@@ -338,7 +338,9 @@ struct TutorView: View {
 
   private func sendMessage() {
     let trimmed = inputText.trimmingCharacters(in: .whitespaces)
-    guard !trimmed.isEmpty, !isGenerating else { return }
+    guard !trimmed.isEmpty, !isGenerating else {
+      return
+    }
 
     let userMessage = TutorMessage(role: .user, content: trimmed)
     messages.append(userMessage)
@@ -374,7 +376,9 @@ struct TutorView: View {
 
   private func loadRecommendations() {
     let aggregated = QuizErrorHistory.aggregated(getterSetter: Current.getterSetter)
-    guard !aggregated.isEmpty else { return }
+    guard !aggregated.isEmpty else {
+      return
+    }
 
     isLoadingRecommendation = true
     Task {

@@ -1,8 +1,8 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
-import Testing
 import Foundation
 @testable import Konjugieren
+import Testing
 
 @Suite("WidgetSnapshot")
 @MainActor
@@ -176,7 +176,8 @@ struct WidgetAnswerShuffleTests {
 
   @Test func shuffleOrderIsStableAcrossComputations() {
     let question = question(id: "2026-03-01-gehen")
-    #expect(question.shuffledAnswers == question.shuffledAnswers)
+    let first = question.shuffledAnswers
+    #expect(first == question.shuffledAnswers)
   }
 
   @Test func shuffleContainsEveryAnswerExactlyOnce() {

@@ -261,7 +261,7 @@ class LanguageModelServiceReal: LanguageModelService {
     "ich bin ein ki,",
     "ich bin eine ki,",
     "ich bin ein sprachmodell",
-    "auf deinem handy",
+    "auf deinem handy"
   ]
 
   // Returns the refusal phrase that matched, or nil if the response is not a refusal.
@@ -302,7 +302,8 @@ struct ConjugationTool: Tool {
       "Futur", "Imperativ", "Partizip I", "Partizip II",
       "Konjunktiv I", "Konjunktiv II",
       "Perfekt Konjunktiv I", "Plusquamperfekt Konjunktiv II",
-      "Futur Konjunktiv I", "Futur Konjunktiv II"]))
+      "Futur Konjunktiv I", "Futur Konjunktiv II"
+    ]))
     var conjugationgroup: String
   }
 

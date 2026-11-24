@@ -1,8 +1,8 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
 import Foundation
-import Testing
 @testable import Konjugieren
+import Testing
 
 @Suite(.serialized)
 @MainActor
@@ -88,7 +88,6 @@ struct AnswerDiagnosisTests {
     #expect(AnswerDiagnosis.otherConjugationgroup(.präteritumIndikativ(.firstSingular), persons: []).line == "That conjugation belongs to the Past Indicative.")
   }
 
-
   /// A quiz on verstehen, whose questions are drawn at random from its cells.
   private func startedQuiz() throws -> Quiz {
     let quiz = Quiz(timerInterval: 0.001)
@@ -98,9 +97,11 @@ struct AnswerDiagnosisTests {
 
   /// Another cell's conjugation that the question does not accept and can diagnose.
   private func diagnosableAnswer(for question: QuizItem) throws -> String {
-    let answer = Conjugationgroup.allCells.lazy.compactMap { conjugationgroup in
-      try? Conjugator.conjugate(infinitiv: question.verb.infinitiv, conjugationgroup: conjugationgroup, clause: .main).get().lowercased()
-    }.first { !question.accepts($0) && question.diagnosis(of: $0) != nil }
+    let answer = Conjugationgroup.allCells.lazy
+      .compactMap { conjugationgroup in
+        try? Conjugator.conjugate(infinitiv: question.verb.infinitiv, conjugationgroup: conjugationgroup, clause: .main).get().lowercased()
+      }
+      .first { !question.accepts($0) && question.diagnosis(of: $0) != nil }
     return try #require(answer)
   }
 

@@ -143,7 +143,7 @@ enum VerbCollection: Hashable, Identifiable {
   func signalView(source: AnalyticsSource) {
     Current.analytics.signal(name: .viewCollection, parameters: [
       ParameterKey.collection.rawValue: key,
-      ParameterKey.source.rawValue: source.rawValue,
+      ParameterKey.source.rawValue: source.rawValue
     ])
   }
 }

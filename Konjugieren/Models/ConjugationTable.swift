@@ -1,5 +1,6 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
+// Semantic ordering: the verb page's order, top to bottom.
 /// One table of the verb page: a conjugationgroup without its person.
 ///
 /// The simple conjugationgroups come first and the compound ones after them, and each block is
@@ -8,7 +9,6 @@
 /// sitting between the six-row tables, as Josh chose for the page's look.
 /// docs/conjugationgroup_frequency.md gives the counts, and scripts/count_conjugationgroups.py
 /// reproduces them. Change the order there before changing it here.
-// Semantic ordering: the verb page's order, top to bottom.
 enum ConjugationTable: CaseIterable {
   case präsensIndikativ
   case präteritumIndikativ

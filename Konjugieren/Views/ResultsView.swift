@@ -336,7 +336,6 @@ struct ResultsView: View {
     }
     .frame(maxWidth: .infinity)
   }
-
 }
 
 /// A challenge's five outcomes as the quiz's own dots, rather than the shared text's emoji, which

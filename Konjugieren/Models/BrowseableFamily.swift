@@ -121,7 +121,9 @@ enum BrowseableFamily: String, CaseIterable, Identifiable {
   }
 
   var verbsByPrefix: [(section: PrefixSection, verbs: [Verb])] {
-    guard hasPrefixList else { return [] }
+    guard hasPrefixList else {
+      return []
+    }
 
     let curated = Set(prefixes.map { String($0.prefix.dropLast()) })
 
@@ -131,7 +133,9 @@ enum BrowseableFamily: String, CaseIterable, Identifiable {
         .filter { $0.prefix.name == prefixString }
         .sorted { $0.infinitiv < $1.infinitiv }
 
-      guard !matchingVerbs.isEmpty else { return nil }
+      guard !matchingVerbs.isEmpty else {
+        return nil
+      }
       return (section: .curated(prefixMeaning), verbs: matchingVerbs)
     }
 
@@ -140,7 +144,9 @@ enum BrowseableFamily: String, CaseIterable, Identifiable {
     // anywhere on the screen, so the Separable card said 2,035 and listed 1,245.
     let uncurated = verbs
       .filter { verb in
-        guard let name = verb.prefix.name else { return true }
+        guard let name = verb.prefix.name else {
+          return true
+        }
         return !curated.contains(name)
       }
       .sorted { $0.infinitiv < $1.infinitiv }
@@ -199,7 +205,9 @@ enum BrowseableFamily: String, CaseIterable, Identifiable {
   }
 
   var ablautGroups: [AblautGroupInfo] {
-    guard hasAblautList else { return [] }
+    guard hasAblautList else {
+      return []
+    }
     return AblautGroupInfo.allGroups
   }
 }

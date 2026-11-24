@@ -207,6 +207,7 @@
 				033FC2832EF3161C00F9EE04 /* Resources */,
 				C0A1B2C3D4E5F60718293A0C /* Generate Conjugation Map */,
 				3E7D80FDFED273606F4C76FF /* Embed Foundation Extensions */,
+				2B84644153BCB8A2AED22D14 /* Run SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -404,6 +405,25 @@
 			shellPath = /bin/sh;
 			shellScript = "# Writes the conjugation map into the app bundle. Xcode runs this phase only when an input\n# is newer than the output; the tool is an input, so a change to any Conjugator source,\n# which relinks the tool, regenerates the map too. See ConjugationMapTool/main.swift.\n\"$SCRIPT_INPUT_FILE_2\" --verbs \"$SCRIPT_INPUT_FILE_0\" --ablaut-groups \"$SCRIPT_INPUT_FILE_1\" --map \"$SCRIPT_OUTPUT_FILE_0\"\n";
 		};
+		2B84644153BCB8A2AED22D14 /* Run SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Run SwiftLint";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "export PATH=\"$PATH:/opt/homebrew/bin\"\nif command -v swiftlint >/dev/null 2>&1; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed; run brew install swiftlint\"\nfi\n";
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -598,6 +618,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V3L2PL4QC9;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Konjugieren/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -628,6 +649,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = V3L2PL4QC9;
 				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = Konjugieren/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

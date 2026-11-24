@@ -1,7 +1,7 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
-import Testing
 @testable import Konjugieren
+import Testing
 
 @MainActor
 @Suite("ConjugationMatch")
@@ -17,7 +17,7 @@ struct ConjugationMatchTests {
   @Test func namesEveryCellThatMatches() {
     #expect(matches("ging", of: "gehen") == [
       whole(.präteritumIndikativ(.firstSingular)),
-      whole(.präteritumIndikativ(.thirdSingular)),
+      whole(.präteritumIndikativ(.thirdSingular))
     ])
   }
 
@@ -25,7 +25,7 @@ struct ConjugationMatchTests {
   func acceptsEitherClauseCaseAndSpacing(text: String) {
     #expect(matches(text, of: "aufstehen") == [
       whole(.präteritumIndikativ(.firstSingular)),
-      whole(.präteritumIndikativ(.thirdSingular)),
+      whole(.präteritumIndikativ(.thirdSingular))
     ])
   }
 

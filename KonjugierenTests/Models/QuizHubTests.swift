@@ -1,8 +1,8 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
 import Foundation
-import Testing
 @testable import Konjugieren
+import Testing
 
 @MainActor
 @Suite("The practice hub's last result")
@@ -18,7 +18,7 @@ struct QuizHubTests {
     let json = #"{"kind":"allVerbs","levelKey":"intermediate","score":75,"correctCount":7,"secondAttemptCount":1,"questionCount":10,"date":816303588}"#
     let result = try JSONDecoder().decode(LastQuizResult.self, from: Data(json.utf8))
 
-    #expect(result == LastQuizResult(kind: .allVerbs, level: .intermediate, score: 75, correctCount: 7, secondAttemptCount: 1, questionCount: 10, date: date))
+    #expect(result == LastQuizResult(kind: .allVerbs, subject: nil, level: .intermediate, score: 75, correctCount: 7, secondAttemptCount: 1, questionCount: 10, date: date))
   }
 
   @Test func roundTrips() throws {
@@ -27,7 +27,7 @@ struct QuizHubTests {
   }
 
   @Test func anUnknownLevelReadsAsNone() {
-    let result = LastQuizResult(kind: .review, level: nil, score: 0, correctCount: 0, secondAttemptCount: 0, questionCount: 1, date: date)
+    let result = LastQuizResult(kind: .review, subject: nil, level: nil, score: 0, correctCount: 0, secondAttemptCount: 0, questionCount: 1, date: date)
     #expect(result.level == nil)
     #expect(sample.level == .elementary)
   }

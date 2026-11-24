@@ -138,7 +138,9 @@ private struct AnswerDiagnoser {
           conjugationgroup: conjugationgroup,
           auxiliary: auxiliary?(region) ?? reading.regionalAuxiliary(in: region),
           clause: clause
-        ).get().inRegion(region)
+        )
+        .get()
+        .inRegion(region)
       }
     }
   }
@@ -162,7 +164,8 @@ private struct AnswerDiagnoser {
           reading: reading,
           conjugationgroup: conjugationgroup,
           auxiliary: reading.regionalAuxiliary(in: region)
-        ).get()) ?? ""
+        )
+        .get()) ?? ""
         guard let auxiliary = compound.split(separator: " ").first else {
           return [String]()
         }

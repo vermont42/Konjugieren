@@ -159,8 +159,7 @@ struct GameView: View {
                  let targetIdx = brain.targetEnemyIndex,
                  targetIdx < gameState.enemies.count {
                 let enemy = gameState.enemies[targetIdx]
-                let boltAlpha = min(1.0, max(0.0,
-                  Double(brain.lockOnTimer - GameState.boltAppearDelay) / Double(GameState.conversionDelay)))
+                let boltAlpha = min(1.0, max(0.0, Double(brain.lockOnTimer - GameState.boltAppearDelay) / Double(GameState.conversionDelay)))
                 Text("⚡")
                   .font(.system(size: 20))
                   .opacity(boltAlpha)
@@ -217,7 +216,6 @@ struct GameView: View {
           } else {
             gameOverOverlay
           }
-
         }
         .onTapGesture(coordinateSpace: .local) { _ in
           if gameState.phase == .playing {

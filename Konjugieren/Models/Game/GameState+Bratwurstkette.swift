@@ -14,7 +14,9 @@ extension GameState {
   }
 
   func updateWurstChains(dt: CGFloat) {
-    guard !wurstChains.isEmpty else { return }
+    guard !wurstChains.isEmpty else {
+      return
+    }
     var chainsToRemove: [UUID] = []
     for i in wurstChains.indices {
       let nearPlayer = wurstChains[i].segments.contains { abs($0.y - playerY) < 100 }

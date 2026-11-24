@@ -256,6 +256,7 @@ Shared/
 
 KonjugierenTests/
 ├── CLAUDE.md                   # Lazily loaded Claude Code guidance: Swift Testing conventions for this target
+├── .swiftlint.yml              # Nested SwiftLint config merged over the root one: allows force_cast and force_try in tests
 ├── Models/
 │   ├── AnswerDiagnosisTests.swift  # Each diagnosis for real verbs, undiagnosable answers getting none, the lines, and the repair sharing the slip's one more attempt
 │   ├── AnswerDifferenceTests.swift # The held correction's marking: a missing umlaut, a missing or extra letter, a swap, case as no difference, the nearer word order, a dropped pronoun
@@ -512,4 +513,6 @@ verbdata/                      # Verb-corpus-expansion data (see docs/verb_sourc
 GameCenterResources.gamekit/   # Xcode's local Game Center configuration: the retired Leaderboard (with its images) and the four per-level leaderboards; see docs/game_center_setup.md
 
 Images/                        # README and App Store screenshot images
+
+.swiftlint.yml                 # SwiftLint rules, shared with Conjugar and Conjuguer; the app target's Run SwiftLint phase lints the whole repo
 ```

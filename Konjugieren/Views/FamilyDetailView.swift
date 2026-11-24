@@ -160,8 +160,8 @@ struct CuratedPrefixHeaderView: View {
 
 struct VerbRow: View {
   let verb: Verb
-  var showFamilyBadge: Bool = false
-  var showsLookedUp: Bool = false
+  var showFamilyBadge = false
+  var showsLookedUp = false
   var leadingInset: CGFloat = 0
   let navigate: () -> Void
 

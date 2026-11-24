@@ -49,7 +49,7 @@ struct VerbVisit {
   func leaveParameters(end: Date) -> [String: String] {
     [
       ParameterKey.deepestSection.rawValue: deepestSection.rawValue,
-      ParameterKey.dwell.rawValue: AnalyticsBand.dwell(end.timeIntervalSince(start)),
+      ParameterKey.dwell.rawValue: AnalyticsBand.dwell(end.timeIntervalSince(start))
     ]
   }
 }

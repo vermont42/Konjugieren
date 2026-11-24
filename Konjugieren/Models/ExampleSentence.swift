@@ -16,7 +16,9 @@ enum ExampleSentences {
   @MainActor private static var pairs: [String: ExampleSentencePair]?
 
   @MainActor private static func loadIfNeeded() {
-    guard pairs == nil else { return }
+    guard pairs == nil else {
+      return
+    }
     guard
       let url = Bundle.main.url(forResource: "ExampleSentences", withExtension: "json"),
       let data = try? Data(contentsOf: url),

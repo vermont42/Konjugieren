@@ -1,11 +1,11 @@
 // Copyright © 2026 Josh Adams. All rights reserved.
 
+// Semantic ordering: as Game Center lists them, the patterns level by level, then the verbs.
 /// Game Center achievements for mastery milestones, never for volume of play (Josh approved the
 /// list on 2026-11-15). Each counts what the Mastery page counts, an item in the third box or
 /// beyond, so the record that fills the page also earns these. Their titles, descriptions, and
 /// artwork live in App Store Connect and `GameCenterResources.gamekit`; see
 /// docs/game_center_setup.md.
-// Semantic ordering: as Game Center lists them, the patterns level by level, then the verbs.
 enum Achievement: String, CaseIterable {
   case patternsBeginner
   case patternsElementary

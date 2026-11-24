@@ -28,12 +28,16 @@ class ReviewPrompterReal: ReviewPrompter {
   func promptableActionHappened() {
     settings.promptActionCount += 1
 
-    guard settings.promptActionCount % Self.promptInterval == 0 else { return }
+    guard settings.promptActionCount % Self.promptInterval == 0 else {
+      return
+    }
 
     let currentDate = now()
     if let lastDate = settings.lastReviewPromptDate {
       let daysSinceLastPrompt = Calendar.current.dateComponents([.day], from: lastDate, to: currentDate).day ?? 0
-      guard daysSinceLastPrompt >= Self.daysBetweenPrompts else { return }
+      guard daysSinceLastPrompt >= Self.daysBetweenPrompts else {
+        return
+      }
     }
 
     settings.lastReviewPromptDate = currentDate

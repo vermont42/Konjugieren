@@ -10,7 +10,9 @@ extension String {
   /// `docs/adding_verbs.md`. Mapping `ẞ` to `SS` keeps both output characters uppercase,
   /// so `MixedCaseSegmenter` still sees one unbroken irregular run rather than two.
   nonisolated func inRegion(_ region: Region) -> String {
-    guard !region.writesSharpS else { return self }
+    guard !region.writesSharpS else {
+      return self
+    }
     return replacingOccurrences(of: "ß", with: "ss")
       .replacingOccurrences(of: "ẞ", with: "SS")
   }

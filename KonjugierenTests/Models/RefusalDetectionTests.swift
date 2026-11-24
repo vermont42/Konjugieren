@@ -12,7 +12,7 @@ struct RefusalDetectionTests {
     "Die Stunde Null bezeichnet den Neubeginn nach 1945.",
     "Zähle von null bis zehn: null, eins, zwei.",
     // English "nullify" contains the substring "null" but is a real word.
-    "This rule does not nullify the ablaut pattern.",
+    "This rule does not nullify the ablaut pattern."
   ])
   func legitimateAnswers(_ response: String) {
     #expect(LanguageModelServiceReal.refusalPhrase(in: response) == nil)
@@ -22,7 +22,7 @@ struct RefusalDetectionTests {
     "null",
     "  null  ",
     "NULL",
-    "\nnull\n",
+    "\nnull\n"
   ])
   func literalNull(_ response: String) {
     #expect(LanguageModelServiceReal.refusalPhrase(in: response) == "null")
@@ -33,13 +33,13 @@ struct RefusalDetectionTests {
       "I can't assist with that request.",
       "That's outside the scope of what I do.",
       "Ich kann dir keine Prognosen geben.",
-      "Ich bin ein Sprachmodell und kann das nicht.",
+      "Ich bin ein Sprachmodell und kann das nicht."
     ],
     [
       "can't assist",
       "outside the scope",
       "ich kann dir keine",
-      "ich bin ein sprachmodell",
+      "ich bin ein sprachmodell"
     ]
   ))
   func knownRefusals(_ response: String, _ expectedPhrase: String) {

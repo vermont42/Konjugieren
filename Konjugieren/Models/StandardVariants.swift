@@ -102,7 +102,6 @@ enum StandardVariants {
     return variants
   }
 
-
   private static let noSyncopeAfter: Set<Character> = ["a", "e", "i", "o", "u", "ä", "ö", "ü", "s", "ß", "z", "x", "d", "t"]
 
   /// kämest to kämst and kämet to kämt. Not after a sibilant, d, or t (äßest only, hättest
@@ -143,7 +142,6 @@ enum StandardVariants {
     }
   }
 
-
   /// Verbs whose Konjunktiv II Duden gives with either vowel, keyed by the infinitive's ending
   /// so that derivatives match (verstehen, entgelten). The conjugator writes the first vowel,
   /// in capitals, since it is ablaut.
@@ -168,7 +166,6 @@ enum StandardVariants {
     result.replaceSubrange(index...index, with: String(doublet.alternative))
     return result
   }
-
 
   /// A verb that Duden conjugates two ways, keyed by the base verb, which a derivative ends
   /// with (versenden, abwinken). The conjugator writes one way; this gives the other.
@@ -253,7 +250,6 @@ enum StandardVariants {
     }
   }
 
-
   /// Duden gives anerkennen split (erkennt an) and, "besonders schweizerisch", joined
   /// (anerkennt). The corpus encodes it inseparable, so the conjugator writes only the joined
   /// one, and every cell whose finite verb a main clause would split takes the split one too.
@@ -273,7 +269,6 @@ enum StandardVariants {
       return []
     }
   }
-
 
   /// The finite verb is the first word: the only one in a simple conjugation, the one before
   /// the particle in a main clause (sammle ein), and the auxiliary in a compound one.

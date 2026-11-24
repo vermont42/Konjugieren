@@ -7,7 +7,7 @@ struct KonjugierenShortcuts: AppShortcutsProvider {
     AppShortcut(
       intent: ConjugateVerbIntent(),
       phrases: [
-        "Conjugate \(\.$verb) with \(.applicationName)",
+        "Conjugate \(\.$verb) with \(.applicationName)"
       ],
       shortTitle: "Conjugate a Verb",
       systemImageName: "textformat.abc"
@@ -18,7 +18,7 @@ struct KonjugierenShortcuts: AppShortcutsProvider {
       phrases: [
         "Look up a verb with \(.applicationName)",
         "Look up a word with \(.applicationName)",
-        "Look up a conjugation with \(.applicationName)",
+        "Look up a conjugation with \(.applicationName)"
       ],
       shortTitle: "Look Up a Verb",
       systemImageName: "magnifyingglass"
@@ -28,7 +28,7 @@ struct KonjugierenShortcuts: AppShortcutsProvider {
       intent: OpenVerbIntent(),
       phrases: [
         "Show \(\.$verb) with \(.applicationName)",
-        "Open \(\.$verb) with \(.applicationName)",
+        "Open \(\.$verb) with \(.applicationName)"
       ],
       shortTitle: "Open Verb",
       systemImageName: "book"
@@ -38,7 +38,7 @@ struct KonjugierenShortcuts: AppShortcutsProvider {
       intent: OpenQuizIntent(),
       phrases: [
         "Start a quiz with \(.applicationName)",
-        "Quiz me with \(.applicationName)",
+        "Quiz me with \(.applicationName)"
       ],
       shortTitle: "Start Quiz",
       systemImageName: "questionmark.circle"
@@ -48,7 +48,7 @@ struct KonjugierenShortcuts: AppShortcutsProvider {
       intent: OpenRandomVerbIntent(),
       phrases: [
         "Show a random verb with \(.applicationName)",
-        "Random verb with \(.applicationName)",
+        "Random verb with \(.applicationName)"
       ],
       shortTitle: "Random Verb",
       systemImageName: "dice"

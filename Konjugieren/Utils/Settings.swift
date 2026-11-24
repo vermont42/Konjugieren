@@ -147,7 +147,7 @@ class Settings {
     }
   }
   static let hasSeenOnboardingKey = "hasSeenOnboarding"
-  static let hasSeenOnboardingDefault: Bool = false
+  static let hasSeenOnboardingDefault = false
 
   var gameHighScore: Int = gameHighScoreDefault {
     didSet {
@@ -182,7 +182,9 @@ class Settings {
   static let lastReviewPromptDateDefault: Date? = nil
 
   private func setAppIcon(_ icon: AppIcon) {
-    guard UIApplication.shared.supportsAlternateIcons else { return }
+    guard UIApplication.shared.supportsAlternateIcons else {
+      return
+    }
     UIApplication.shared.setAlternateIconName(icon.alternateIconName) { error in
       if let error {
         settingsLogger.warning("Failed to set icon: \(error.localizedDescription)")

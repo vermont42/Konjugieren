@@ -50,7 +50,9 @@ extension PersonNumber {
 
   var pronounWithSieDisambiguation: String {
     let base = pronoun
-    guard base == "sie" else { return base }
+    guard base == "sie" else {
+      return base
+    }
     switch self {
     case .thirdSingular:
       return "sie (3s)"

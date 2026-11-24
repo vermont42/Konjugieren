@@ -146,14 +146,15 @@ enum EmojiAsset {
         return
       }
       let run = Text(verbatim: pending)
-      result = result + (color.map { run.foregroundStyle($0) } ?? run)
+      let styledRun = color.map { run.foregroundStyle($0) } ?? run
+      result = Text("\(result)\(styledRun)")
       pending = ""
     }
 
     for character in string {
       if let assetName = assetNames[String(character)] {
         flushPending()
-        result = result + Text("\(Image(assetName).renderingMode(.original))")
+        result = Text("\(result)\(Image(assetName).renderingMode(.original))")
       } else {
         pending.append(character)
       }

@@ -12338,3 +12338,24 @@ its declared inputs, which works for Validate Verbs.xml and Generate Conjugation
 linter that reads every file. So the app target alone opts out. The script also appends
 `/opt/homebrew/bin` to `PATH`, for the Apple Silicon Mac that arrives in 2027. All 957 tests pass,
 and the tree lints clean under 0.65.1.
+
+## Text concatenation after iOS 26 (2026-11-24)
+
+The SwiftLint build turned up two compiler warnings it had nothing to do with: iOS 26 deprecated
+joining `Text` values with `+`, and `EmojiAsset.text(substitutingIn:color:)` in `RichTextView.swift`
+did it twice. That helper swaps the emoji whose glyphs iOS 26 renders as tofu for image assets.
+It draws every flag bullet in the Info articles and the "haben 🇩🇪 · sein 🇦🇹🇨🇭" pill on a verb
+page. Apple's replacement is interpolation, `Text("\(result)\(run)")`.
+
+The catch is that a string literal passed to `Text` is a `LocalizedStringKey`, and with
+`SWIFT_EMIT_LOC_STRINGS` on, Xcode extracts such literals into `Localizable.xcstrings`. Two
+interpolated values make the key `%@%@`. The catalog already held `%@%@` and `%@` as empty,
+untranslated entries (`%@` from the same helper's existing `Text("\(Image(...))")`), so the change
+added nothing to it. An untranslated key formats as itself, which is what this needs.
+
+The check was visual as well as by test. The futur_indikativ article and stehen's verb page were
+captured on the new build and on the old one, then diffed. The article matched except for the
+glass Dismiss button, and the verb page's header matched except for a one-level wobble in the
+toolbar glass. The rest of the verb page differed only because TipKit's Red Letters tip was
+caught mid-entrance in one capture and settled in the other, which is a reminder that a pixel
+diff of a page with a tip needs its region chosen by hand.

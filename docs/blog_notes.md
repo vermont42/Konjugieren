@@ -12631,3 +12631,32 @@ it again. Now it plays as a search begins to fail. `searchFocusLostAt`, a `Date`
 that never reset, became `searchIsLingering`, derived from the two states that already said what
 it meant. And the sort picker is disabled while the field has text, since search ignores the
 order.
+
+## The Verb List's View, in Four Pieces (2026-11-25)
+
+Phase 5 of `plans/verb_browse_fixes.md` finished the split that Phase 4's search model began.
+`VerbBrowseView` had grown, one feature at a time, to 898 lines and ten `@State` properties. It
+now holds the navigation stack, the list or grid, the picker or letter row, and the deeplink
+requests, in 645 lines and five. My Verbs became `MyVerbsList`, with its unstar alert. A failed
+search became `FailedSearchHelp`, with "No verbs found", the guess, the mail link, and the note
+that the address was copied.
+
+**The review card could not simply become a view.** The obvious seam was a view that owns the
+card's state and chooses the card when it appears. But the card sits inside the scroll view,
+which disappears whenever My Verbs is chosen, and inside a condition that removes it during a
+search. Every disappearance would have thrown its state away, and every reappearance would have
+chosen again. A learner who revealed a card, glanced at My Verbs, and came back would have found
+a different verb, and a dismissed card would have returned. So the choice, the reveal, the
+snooze, and the signals went into `ReviewCardHost`, an `@Observable` class the list owns for its
+lifetime, and a thin `ReviewCardHostView` draws whatever it chose. SwiftUI's `@State` is tied to
+a view's identity in the tree, and an `if` that removes a view ends that identity. State that has
+to outlive the condition belongs to whatever sits above it.
+
+**Getting the host out of the view made it testable**, which the review had also hoped for the
+search. Eight tests now pin the card's lifecycle: one choice per opening, a new one only after a
+real trip to the background, one review recorded per reveal, a dismissal that waits a day, and a
+suppression that hides a card without forgetting it.
+
+One behaviour moved by a hair. The copied-address note used to live in the parent view, so it
+could outlive the failed search that showed it. Now it leaves with the search. Nobody would
+notice, but the phase promised no change in behaviour, so the plan records it.

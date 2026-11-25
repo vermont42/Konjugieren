@@ -364,6 +364,9 @@ as `ablautGroup`. Otherwise amend the staged policy line, which is Josh's call.
   tracker, and the keyboard selection. The last would also make the search flow testable, which
   today only two static functions are. **The search model is on `main` 2026-11-25**, by Phase 4 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md):
   `VerbSearchModel`, with its own tests. The other three seams are Phase 5's.
+  **The other three seams are on `main` 2026-11-25**, by Phase 5 of [`verb_browse_fixes.md`](../plans/verb_browse_fixes.md):
+  `MyVerbsList`, `FailedSearchHelp`, and `ReviewCardHost` with `ReviewCardHostView`. The view went
+  from 898 lines to 645 and from 10 `@State` properties to 5.
 - **S2. `searchFocusLostAt` is a `Date` used as a `Bool`, and it never resets.** It is assigned
   `.now` and compared only with `nil` (`VerbBrowseView.swift:19`, `:68-71`, `:86`). After the
   field first loses focus it stays set, so every later push from the list goes through `Task {

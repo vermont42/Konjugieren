@@ -1297,8 +1297,8 @@ upgrade the learner's verbs would vanish without an error. `LearnerVerbsTests` p
 review card's old `review` field was such a field. The practice record now holds that schedule,
 and decoding ignores the field in older records.
 
-**Where it shows.** The verb page's star. The verb list's picker, whose third segment, My Verbs,
-lists the starred verbs, then the recent ones not starred, with Clear on the recent heading.
+**Where it shows.** The verb page's star. The verb list's picker, whose third segment, My Verbs
+(`MyVerbsList`), lists the starred verbs, then the recent ones not starred, with Clear on the recent heading.
 It is a `List`, unlike the rest of the verb list, because only a `List`'s rows can be swiped: a
 left swipe deletes a recent verb at once, and a starred verb after an alert asking to remove its
 star. Deleting forgets the star and the last open, so an opened, starred verb leaves My Verbs
@@ -1324,7 +1324,9 @@ underneath.
 |---|---|
 | `PracticeStore.cardOffer(at:)` | The verb and reading of the longest-overdue key conjugation, with every due key conjugation of that reading, the days since the last activity, and whether that was a lookup |
 | `PracticeStore.recordLookup(_:source:)` | Called by the verb page on every open; puts a strong verb's key conjugations in the first box |
-| `ReviewCardView.swift` | The card. `VerbBrowseView` chooses the offer and applies each tap to the record |
+| `ReviewCardHost.swift` | Chooses the offer once per opening, and again after a return from the background; applies each tap to the record and sends its signal. The verb list owns one for its lifetime, because the card's place comes and goes with search and My Verbs |
+| `ReviewCardHostView.swift` | Places the chosen card above the verb list |
+| `ReviewCardView.swift` | The card, which leaves to its caller which verb it shows and what each tap does |
 
 **What moves a verb (Josh, 2026-11-13).** An open puts each strong or mixed
 reading's three key conjugations in the first box, due the next day, and so does any later open,

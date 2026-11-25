@@ -23,7 +23,7 @@ empty until it is committed.
 | 2 | Done | 2026-11-25 | `c731457` | P1, two analytics nits | No |
 | 3 | Done | 2026-11-25 | `eb8d40b` | C2, C4, C7 (recents), G1, G4, S9 (`limit`) | No; he answered its question |
 | 4 | Done | 2026-11-25 | `905c500` | F1, F2 (the repeated search), S1 (the search model), S2, S8 | Yes |
-| 5 | Not started | | | S1 (the rest) | Yes |
+| 5 | Awaiting Josh | 2026-11-25 | | S1 (the rest) | Yes |
 | 6 | Not started | | | C5, C6, C7 (ablaut row), D5, F2 (related verbs), S3 (`FlowLayout`) | Yes |
 | 7 | Not started | | | C3, D4, E2, E3, G5, G6 | Yes |
 | 8 | Not started | | | D1, D2, D3, E1, S3 (the rest), S4 | No |
@@ -307,7 +307,36 @@ navigation stack, the list or grid, the picker or letter row, and the deeplink r
 failed search's mail link in the simulator, and the review card (reveal, open, dismiss, Suppress
 Review Card on and off), on both devices.
 
-**How it differed:**
+**How it differed:** In the review card's host, which became a model and a view, because a view
+alone would have changed behaviour. The suite went from 994 to 1002 tests, in 102 suites.
+
+- **The host is `ReviewCardHost`, an `@Observable` class, beside `ReviewCardHostView`.** The card's
+  place in the list sits inside the `ScrollView`, which is absent while My Verbs shows, and inside
+  a condition that drops it while a search or the recents show. A view holding the card's state
+  would have lost it each time, and choosing again on its next appearance would have swapped a
+  revealed card for the next offer and brought back a dismissed one. So `VerbBrowseView` owns the
+  host for its lifetime, as it owns `VerbSearchModel`, and forwards the three events the host
+  cannot see: the list's appearance, the scene phase, and the suppression setting. The host also
+  took `appWasInBackground` and `reviewCardMaxWidth` (now the host view's).
+- **The host has tests, which no finding asked for.** Eight, in `ReviewCardHostTests`: one choice
+  per opening, a new one only after the background (not after a mere `inactive`), one review and
+  one signal per reveal, one signal per showing, a dismissal snoozing until tomorrow, the
+  destination's source, and suppression hiding a card without forgetting it. A refactor has no
+  test that fails without it, so these were not run against the old code; they pin what the move
+  had to keep. `Current.reportAchievements()` is injected as a closure, since it writes to the
+  shared Game Center spy that other suites read.
+- **`FailedSearchHelp` also holds "No verbs found"**, since the two always appear together. Its
+  body returns both without a container, so the `ScrollView`'s implicit stack lays them out as
+  before.
+- **One small difference: the copied-address note now belongs to `FailedSearchHelp`.** Before, it
+  lived in `VerbBrowseView`, so a learner who copied the address, typed a letter that found a
+  verb, and deleted it again within four seconds saw the note still showing. Now the note goes
+  with the failed search. The four-second task still runs to its end, harmlessly.
+- **`VerbRowView`, `VerbGridCell`, and `SeparableVerbsRow` stay in `VerbBrowseView.swift`.** They
+  are rows of the list, not seams the review named, and S3's moves are Phase 8's.
+- **Checked in the simulator:** a `search` deeplink for xyzzyq showed "No verbs found" and the mail
+  link, with the sort picker disabled. The rest was left for Josh, as the phase says.
+- `README.md`'s three test counts went to 1002, and its file count to sixty-six.
 
 ## Phase 6: Order, Spelling, and the Lists' Shared Pieces
 

@@ -19,7 +19,7 @@ empty until it is committed.
 
 | Phase | Status | Date | Commit | Findings | Waits for Josh |
 |---:|---|---|---|---|---|
-| 1 | Done | 2026-11-25 | | C1 | No |
+| 1 | Done | 2026-11-25 | `d6640eb` | C1 | No |
 | 2 | Not started | | | P1, two analytics nits | No |
 | 3 | Not started | | | C2, C4, C7 (recents), G1, G4 | No, but it has a question for him |
 | 4 | Not started | | | F1, F2 (the repeated search), S1 (the search model), S2, S8 | Yes |
